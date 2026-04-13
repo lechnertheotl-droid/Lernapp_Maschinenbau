@@ -1,8 +1,8 @@
-import ReactMarkdown from 'react-markdown'
 import { VisualizationEngine } from '@/components/visualizations/VisualizationEngine'
 import { ExerciseEngine } from '@/components/exercises/ExerciseEngine'
 import { Button } from '@/components/ui/Button'
 import { useState } from 'react'
+import { MarkdownContent } from './MarkdownContent'
 
 export function LessonStep({ step, topicId, lessonId, onComplete }) {
   const [reflectionDone, setReflectionDone] = useState(false)
@@ -14,9 +14,7 @@ export function LessonStep({ step, topicId, lessonId, onComplete }) {
       return (
         <div className="flex flex-col gap-4">
           <h3 className="font-semibold text-surface-900">{step.title}</h3>
-          <div className="prose prose-sm max-w-none text-surface-700 leading-relaxed">
-            <ReactMarkdown>{step.content}</ReactMarkdown>
-          </div>
+          <MarkdownContent>{step.content}</MarkdownContent>
           <Button size="lg" fullWidth onClick={onComplete}>Verstanden, weiter →</Button>
         </div>
       )
@@ -26,9 +24,7 @@ export function LessonStep({ step, topicId, lessonId, onComplete }) {
         <div className="flex flex-col gap-4">
           <h3 className="font-semibold text-surface-900">{step.title}</h3>
           <div className="bg-surface-50 border border-surface-200 rounded-2xl p-4">
-            <div className="prose prose-sm max-w-none text-surface-800 leading-relaxed">
-              <ReactMarkdown>{step.content}</ReactMarkdown>
-            </div>
+            <MarkdownContent className="text-surface-800">{step.content}</MarkdownContent>
           </div>
           <Button size="lg" fullWidth onClick={onComplete}>Verstanden, weiter →</Button>
         </div>

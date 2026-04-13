@@ -1,6 +1,6 @@
 import { cn } from '@/utils/cn'
 import { Button } from '@/components/ui/Button'
-import ReactMarkdown from 'react-markdown'
+import { MarkdownContent } from './MarkdownContent'
 
 export function FeedbackDisplay({ isCorrect, explanation, onNext }) {
   return (
@@ -18,9 +18,9 @@ export function FeedbackDisplay({ isCorrect, explanation, onNext }) {
       </div>
 
       {explanation && (
-        <div className={cn('text-sm leading-relaxed', isCorrect ? 'text-green-800' : 'text-red-800')}>
-          <ReactMarkdown>{explanation}</ReactMarkdown>
-        </div>
+        <MarkdownContent className={cn(isCorrect ? 'text-green-800' : 'text-red-800')}>
+          {explanation}
+        </MarkdownContent>
       )}
 
       <Button

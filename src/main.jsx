@@ -5,6 +5,7 @@ import { registerSW } from 'virtual:pwa-register'
 import App from './App.jsx'
 import { AppProvider } from '@/context/AppContext'
 import { ToastProvider } from '@/components/ui/Toast'
+import 'katex/dist/katex.min.css'
 import './index.css'
 
 registerSW({ immediate: true })
