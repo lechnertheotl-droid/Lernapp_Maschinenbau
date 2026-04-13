@@ -46,15 +46,23 @@ export function LessonView() {
     }
   }
 
+  const handleBack = () => {
+    if (safeIndex > 0) {
+      dispatch({ type: ACTIONS.SET_STEP_INDEX, topicId, stepIndex: safeIndex - 1 })
+      return
+    }
+    navigate(`/topics/${topicId}`)
+  }
+
   return (
     <div className="max-w-xl mx-auto flex flex-col min-h-[100dvh]">
 
       {/* Sticky header */}
       <div className="sticky top-0 z-30 bg-paper/95 backdrop-blur-sm border-b-2 border-ink px-4 py-3 flex items-center gap-3">
         <button
-          onClick={() => navigate(`/topics/${topicId}`)}
+          onClick={handleBack}
           className="w-10 h-10 flex items-center justify-center rounded-retro border-2 border-ink bg-white shadow-hard-sm text-ink flex-shrink-0 tap-highlight-none retro-press font-mono font-black"
-          aria-label="Zurück"
+          aria-label={safeIndex > 0 ? 'Einen Schritt zurück' : 'Zur Themenübersicht'}
         >
           ←
         </button>
@@ -112,6 +120,15 @@ export function LessonView() {
         )}
 
         <div className="animate-fade-in" key={currentStep?.id}>
+          {safeIndex > 0 && (
+            <button
+              type="button"
+              onClick={handleBack}
+              className="mb-3 min-h-10 px-3 rounded-retro border-2 border-ink bg-white shadow-hard-sm text-ink font-mono text-[10px] font-black uppercase tracking-wider retro-press tap-highlight-none"
+            >
+              ← Vorheriger Schritt
+            </button>
+          )}
           <LessonStep
             step={currentStep}
             topicId={topicId}

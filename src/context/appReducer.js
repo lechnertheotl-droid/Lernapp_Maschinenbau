@@ -7,6 +7,7 @@ export const ACTIONS = {
   SET_USER:             'SET_USER',
   START_LESSON:         'START_LESSON',
   ADVANCE_STEP:         'ADVANCE_STEP',
+  SET_STEP_INDEX:       'SET_STEP_INDEX',
   COMPLETE_LESSON:      'COMPLETE_LESSON',
   RECORD_ATTEMPT:       'RECORD_ATTEMPT',
   UPDATE_MASTERY:       'UPDATE_MASTERY',
@@ -107,6 +108,25 @@ export function appReducer(state, action) {
             [topicId]: {
               ...tp,
               currentStepIndex: tp.currentStepIndex + 1,
+            },
+          },
+        },
+      }
+    }
+
+    case ACTIONS.SET_STEP_INDEX: {
+      const { topicId, stepIndex } = action
+      const tp = state.progress.topicProgress[topicId]
+      if (!tp) return state
+      return {
+        ...state,
+        progress: {
+          ...state.progress,
+          topicProgress: {
+            ...state.progress.topicProgress,
+            [topicId]: {
+              ...tp,
+              currentStepIndex: Math.max(0, stepIndex),
             },
           },
         },
