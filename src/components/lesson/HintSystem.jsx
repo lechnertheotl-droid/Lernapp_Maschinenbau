@@ -1,0 +1,34 @@
+import { useState } from 'react'
+import { getNextHint } from '@/utils/hints'
+
+export function HintSystem({ hints = [], disabled }) {
+  const [currentIndex, setCurrentIndex] = useState(-1)
+
+  if (!hints.length) return null
+
+  const revealedHints = hints.slice(0, currentIndex + 1)
+  const allShown = currentIndex >= hints.length - 1
+
+  return (
+    <div className="flex flex-col gap-2">
+      {revealedHints.map((hint, i) => (
+        <div key={i} className="flex gap-2 items-start bg-yellow-50 border border-yellow-200 rounded-xl px-3 py-2 text-sm text-yellow-800 animate-fade-in">
+          <span className="text-yellow-500 mt-0.5">💡</span>
+          <span>{hint}</span>
+        </div>
+      ))}
+
+      {!allShown && !disabled && (
+        <button
+          onClick={() => {
+            const { index } = getNextHint(currentIndex, hints)
+            setCurrentIndex(index)
+          }}
+          className="text-sm text-surface-400 hover:text-surface-600 underline underline-offset-2 self-start transition-colors"
+        >
+          {currentIndex === -1 ? 'Tipp anzeigen' : 'Nächster Tipp'}
+        </button>
+      )}
+    </div>
+  )
+}
