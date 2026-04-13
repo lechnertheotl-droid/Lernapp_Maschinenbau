@@ -11,7 +11,6 @@ const sizes = {
 export function Modal({ isOpen, onClose, title, children, size = 'md' }) {
   const overlayRef = useRef(null)
 
-  // Trap focus and close on Escape
   useEffect(() => {
     if (!isOpen) return
     const handleKey = (e) => { if (e.key === 'Escape') onClose() }
@@ -32,26 +31,29 @@ export function Modal({ isOpen, onClose, title, children, size = 'md' }) {
       onClick={(e) => { if (e.target === overlayRef.current) onClose() }}
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-fade-in" />
 
-      {/* Panel */}
-      <div className={cn(
-        'relative bg-white rounded-2xl w-full shadow-2xl animate-slide-up',
-        sizes[size]
-      )}>
+      {/* Panel — retro card style */}
+      <div
+        className={cn(
+          'relative bg-paper w-full border-2 border-ink shadow-hard-lg rounded-retro animate-slide-in-up',
+          sizes[size]
+        )}
+      >
+        {/* Retro header bar */}
         {title && (
-          <div className="flex items-center justify-between p-5 border-b border-surface-100">
-            <h2 className="text-lg font-semibold text-surface-900">{title}</h2>
+          <div className="flex items-center justify-between px-5 py-3.5 border-b-2 border-ink bg-ink">
+            <h2 className="text-base font-bold text-lemon font-mono tracking-wide">{title}</h2>
             <button
               onClick={onClose}
-              className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-100 text-surface-500 transition-colors"
+              className="w-7 h-7 flex items-center justify-center border border-surface-600 text-surface-400 hover:text-lemon hover:border-lemon rounded transition-colors text-sm"
               aria-label="Schließen"
             >
               ✕
             </button>
           </div>
         )}
-        <div className="p-5">{children}</div>
+        <div className="p-5 bg-graph-paper-sm">{children}</div>
       </div>
     </div>,
     document.body

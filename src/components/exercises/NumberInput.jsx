@@ -19,7 +19,7 @@ export function NumberInput({ exercise, onSubmit, disabled }) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <p className="text-base font-medium text-surface-900 leading-relaxed">{exercise.question}</p>
+      <p className="text-base font-black text-ink leading-relaxed">{exercise.question}</p>
 
       <div className="flex items-center gap-2">
         <input
@@ -29,14 +29,14 @@ export function NumberInput({ exercise, onSubmit, disabled }) {
           onChange={(e) => setValue(e.target.value)}
           disabled={disabled}
           placeholder="Antwort eingeben..."
-          className="flex-1 h-12 px-4 text-base border-2 border-surface-200 rounded-xl focus:outline-none focus:border-primary-500 disabled:opacity-60"
+          className="flex-1 h-12 px-4 text-base border-2 border-ink rounded-retro bg-white shadow-hard-sm focus:outline-none focus:ring-2 focus:ring-primary-700 disabled:opacity-60"
         />
         {exercise.unit && (
-          <span className="text-surface-500 text-sm font-medium whitespace-nowrap">{exercise.unit}</span>
+          <span className="text-ink-soft text-sm font-mono font-black whitespace-nowrap">{exercise.unit}</span>
         )}
       </div>
 
-      <Button type="submit" fullWidth size="lg" disabled={!value.trim() || disabled}>
+      <Button type="submit" fullWidth size="lg" variant="dark" disabled={!value.trim() || disabled}>
         Antwort prüfen
       </Button>
     </form>

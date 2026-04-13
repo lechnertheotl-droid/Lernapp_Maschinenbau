@@ -4,22 +4,24 @@ import { useAppState, useAppDispatch } from '@/context/AppContext'
 import { ACTIONS } from '@/context/appReducer'
 import { getLesson, getAllLessons } from '@/content/index'
 import { LessonStep } from '@/components/lesson/LessonStep'
-import { ProgressBar } from '@/components/ui/ProgressBar'
 import { Modal } from '@/components/ui/Modal'
 import { Button } from '@/components/ui/Button'
+import { Calculator } from '@/components/ui/Calculator'
+import { FormulaSheet, hasFormulas } from '@/components/ui/FormulaSheet'
 
 export function LessonView() {
   const { topicId, lessonId } = useParams()
-  const navigate  = useNavigate()
-  const state     = useAppState()
-  const dispatch  = useAppDispatch()
-  const lesson    = getLesson(topicId, lessonId)
+  const navigate       = useNavigate()
+  const state          = useAppState()
+  const dispatch       = useAppDispatch()
+  const lesson         = getLesson(topicId, lessonId)
   const [showComplete, setShowComplete] = useState(false)
+  const [showCalculator, setShowCalculator] = useState(false)
+  const [showFormulaSheet, setShowFormulaSheet] = useState(false)
 
   const tp           = state.progress.topicProgress[topicId]
   const currentIndex = tp?.currentStepIndex ?? 0
 
-  // Init lesson on mount
   useEffect(() => {
     dispatch({ type: ACTIONS.START_LESSON, topicId, lessonId })
   }, [topicId, lessonId]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -28,13 +30,14 @@ export function LessonView() {
     <div className="p-6 text-center text-surface-400">Lektion nicht gefunden: {lessonId}</div>
   )
 
-  const totalSteps   = lesson.steps.length
-  const currentStep  = lesson.steps[currentIndex]
-  const progress     = Math.round((currentIndex / totalSteps) * 100)
+  const totalSteps  = lesson.steps.length
+  const safeIndex   = Math.min(currentIndex, Math.max(totalSteps - 1, 0))
+  const currentStep = lesson.steps[safeIndex]
+  const pct         = Math.round((safeIndex / totalSteps) * 100)
+  const canShowFormulas = hasFormulas(topicId)
 
   const handleStepComplete = () => {
-    if (currentIndex >= totalSteps - 1) {
-      // Lesson complete
+    if (safeIndex >= totalSteps - 1) {
       const totalLessons = getAllLessons(topicId).length
       dispatch({ type: ACTIONS.COMPLETE_LESSON, topicId, lessonId, totalLessons })
       setShowComplete(true)
@@ -44,67 +47,101 @@ export function LessonView() {
   }
 
   return (
-    <div className="max-w-xl mx-auto px-4 py-4 flex flex-col gap-4">
-      {/* Header */}
-      <div className="flex items-center gap-3">
+    <div className="max-w-xl mx-auto flex flex-col min-h-[100dvh]">
+
+      {/* Sticky header */}
+      <div className="sticky top-0 z-30 bg-paper/95 backdrop-blur-sm border-b-2 border-ink px-4 py-3 flex items-center gap-3">
         <button
           onClick={() => navigate(`/topics/${topicId}`)}
-          className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-100 text-surface-500 flex-shrink-0"
+          className="w-10 h-10 flex items-center justify-center rounded-retro border-2 border-ink bg-white shadow-hard-sm text-ink flex-shrink-0 tap-highlight-none retro-press font-mono font-black"
+          aria-label="Zurück"
         >
           ←
         </button>
         <div className="flex-1 min-w-0">
-          <p className="text-xs text-surface-400 truncate">{lesson.title}</p>
-          <div className="flex items-center gap-2 mt-1">
-            <ProgressBar value={progress} size="sm" className="flex-1" />
-            <span className="text-xs text-surface-400 whitespace-nowrap">{currentIndex + 1}/{totalSteps}</span>
+          <p className="font-mono text-[10px] font-bold text-ink-soft uppercase tracking-widest truncate">{lesson.title}</p>
+          {/* Progress bar */}
+          <div className="flex items-center gap-2 mt-1.5">
+            <div className="flex-1 h-2 bg-white border border-ink rounded-sm overflow-hidden">
+              <div
+                className="h-full bg-primary-700 transition-all duration-500"
+                style={{ width: `${pct}%` }}
+              />
+            </div>
+            <span className="num text-[11px] text-ink-soft flex-shrink-0">{safeIndex + 1}/{totalSteps}</span>
           </div>
+        </div>
+        <div className="flex items-center gap-1.5">
+          {canShowFormulas && (
+            <button
+              type="button"
+              onClick={() => setShowFormulaSheet(true)}
+              className="w-10 h-10 flex items-center justify-center rounded-retro border-2 border-ink bg-lemon shadow-hard-lemon text-ink tap-highlight-none retro-press font-mono font-black"
+              aria-label="Formelsammlung öffnen"
+            >
+              f
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={() => setShowCalculator(true)}
+            className="w-10 h-10 flex items-center justify-center rounded-retro border-2 border-ink bg-white shadow-hard-sm text-ink tap-highlight-none retro-press font-mono font-black"
+            aria-label="Taschenrechner öffnen"
+          >
+            =
+          </button>
         </div>
       </div>
 
-      {/* Learning goals (only on first step) */}
-      {currentIndex === 0 && lesson.learningGoals?.length > 0 && (
-        <div className="bg-primary-50 border border-primary-100 rounded-xl p-3">
-          <p className="text-xs font-semibold text-primary-700 uppercase tracking-wide mb-2">Lernziele</p>
-          <ul className="flex flex-col gap-1">
-            {lesson.learningGoals.map((g, i) => (
-              <li key={i} className="text-primary-800 text-sm flex items-start gap-1.5">
-                <span className="mt-0.5">→</span><span>{g}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {/* Step content — scrollable */}
+      <div className="flex-1 px-4 py-5 overflow-y-auto">
 
-      {/* Step content */}
-      <div className="animate-fade-in">
-        <LessonStep
-          key={currentStep?.id}
-          step={currentStep}
-          topicId={topicId}
-          lessonId={lessonId}
-          onComplete={handleStepComplete}
-        />
+        {/* Learning goals on first step */}
+        {safeIndex === 0 && lesson.learningGoals?.length > 0 && (
+          <div className="bg-lemon-light border-2 border-ink rounded-retro shadow-hard-sm p-3.5 mb-4">
+            <p className="font-mono text-[10px] font-black text-ink uppercase tracking-widest mb-2">// Lernziele</p>
+            <ul className="flex flex-col gap-1.5">
+              {lesson.learningGoals.map((g, i) => (
+                <li key={i} className="text-ink text-sm flex items-start gap-2">
+                  <span className="text-primary-700 flex-shrink-0 mt-0.5 font-mono font-black">→</span>
+                  <span>{g}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <div className="animate-fade-in" key={currentStep?.id}>
+          <LessonStep
+            step={currentStep}
+            topicId={topicId}
+            lessonId={lessonId}
+            onComplete={handleStepComplete}
+          />
+        </div>
       </div>
 
       {/* Completion modal */}
-      <Modal isOpen={showComplete} onClose={() => { setShowComplete(false); navigate(`/topics/${topicId}`) }} title="Lektion abgeschlossen! 🎉">
+      <Modal
+        isOpen={showComplete}
+        onClose={() => { setShowComplete(false); navigate(`/topics/${topicId}`) }}
+        title="Lektion abgeschlossen! 🎉"
+      >
         <div className="flex flex-col gap-4">
-          <p className="text-surface-600 text-sm">
-            Du hast <strong>{lesson.title}</strong> erfolgreich abgeschlossen. Diese Lektion wurde zur Wiederholungsliste hinzugefügt.
+          <p className="text-surface-600 text-sm leading-relaxed">
+            Du hast <strong>{lesson.title}</strong> abgeschlossen. Die Lektion wird zur Wiederholung eingeplant.
           </p>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2.5">
             {lesson.nextLessonId && (
               <Button
-                fullWidth
+                fullWidth size="lg"
                 onClick={() => { setShowComplete(false); navigate(`/topics/${topicId}/${lesson.nextLessonId}`) }}
               >
                 Nächste Lektion →
               </Button>
             )}
             <Button
-              variant="secondary"
-              fullWidth
+              variant="secondary" fullWidth size="lg"
               onClick={() => { setShowComplete(false); navigate(`/topics/${topicId}`) }}
             >
               Zur Themenübersicht
@@ -112,6 +149,13 @@ export function LessonView() {
           </div>
         </div>
       </Modal>
+
+      <Calculator isOpen={showCalculator} onClose={() => setShowCalculator(false)} />
+      <FormulaSheet
+        isOpen={showFormulaSheet}
+        onClose={() => setShowFormulaSheet(false)}
+        topicId={topicId}
+      />
     </div>
   )
 }

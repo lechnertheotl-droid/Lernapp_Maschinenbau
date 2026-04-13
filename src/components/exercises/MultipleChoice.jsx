@@ -3,40 +3,46 @@ import { cn } from '@/utils/cn'
 import { Button } from '@/components/ui/Button'
 
 export function validate(answer, exercise) {
-  const isCorrect = answer.selectedIndex === exercise.correctIndex
-  return { isCorrect }
+  return { isCorrect: answer.selectedIndex === exercise.correctIndex }
 }
 
 export function MultipleChoice({ exercise, onSubmit, disabled }) {
   const [selected, setSelected] = useState(null)
 
-  return (
-    <div className="flex flex-col gap-3">
-      <p className="text-base font-medium text-surface-900 leading-relaxed">{exercise.question}</p>
+  const letters = ['A', 'B', 'C', 'D', 'E']
 
-      <div className="flex flex-col gap-2">
+  return (
+    <div className="flex flex-col gap-4">
+      <p className="text-base font-black text-ink leading-relaxed">{exercise.question}</p>
+
+      <div className="flex flex-col gap-2.5">
         {exercise.options.map((option, i) => (
           <button
             key={i}
             disabled={disabled}
             onClick={() => !disabled && setSelected(i)}
             className={cn(
-              'w-full text-left px-4 py-3 rounded-xl border-2 text-sm font-medium transition-all duration-150 tap-highlight-none',
+              // min-h-[52px] ensures ≥44pt touch target on iPhone
+              'w-full text-left min-h-[52px] px-4 py-3 rounded-retro border-2 text-sm font-semibold transition-all duration-150 tap-highlight-none flex items-center gap-3 retro-press',
               selected === i
-                ? 'border-primary-600 bg-primary-50 text-primary-800'
-                : 'border-surface-200 bg-white text-surface-700 hover:border-surface-300',
+                ? 'border-ink bg-lemon text-ink shadow-hard-lemon'
+                : 'border-ink bg-white text-ink-soft shadow-hard-sm hover:bg-surface-50',
               disabled && 'opacity-60 cursor-not-allowed'
             )}
           >
-            <span className="text-surface-400 mr-2">{String.fromCharCode(65 + i)}.</span>
-            {option}
+            <span className={cn(
+              'w-7 h-7 rounded-sm border-2 border-ink flex items-center justify-center text-xs font-mono font-black flex-shrink-0 transition-colors',
+              selected === i ? 'bg-ink text-lemon' : 'bg-paper text-ink'
+            )}>
+              {letters[i]}
+            </span>
+            <span className="flex-1">{option}</span>
           </button>
         ))}
       </div>
 
       <Button
-        fullWidth
-        size="lg"
+        fullWidth size="lg"
         disabled={selected === null || disabled}
         onClick={() => onSubmit({ selectedIndex: selected })}
       >

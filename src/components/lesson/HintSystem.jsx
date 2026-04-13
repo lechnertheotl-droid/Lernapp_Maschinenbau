@@ -12,8 +12,8 @@ export function HintSystem({ hints = [], disabled }) {
   return (
     <div className="flex flex-col gap-2">
       {revealedHints.map((hint, i) => (
-        <div key={i} className="flex gap-2 items-start bg-yellow-50 border border-yellow-200 rounded-xl px-3 py-2 text-sm text-yellow-800 animate-fade-in">
-          <span className="text-yellow-500 mt-0.5">💡</span>
+        <div key={i} className="flex gap-2 items-start bg-lemon-light border-2 border-ink rounded-retro px-3 py-2 text-sm text-ink animate-fade-in shadow-hard-sm">
+          <span className="text-primary-700 mt-0.5 font-mono font-black">!</span>
           <span>{hint}</span>
         </div>
       ))}
@@ -24,7 +24,7 @@ export function HintSystem({ hints = [], disabled }) {
             const { index } = getNextHint(currentIndex, hints)
             setCurrentIndex(index)
           }}
-          className="text-sm text-surface-400 hover:text-surface-600 underline underline-offset-2 self-start transition-colors"
+          className="self-start font-mono text-xs font-black text-primary-700 hover:text-primary-900 underline underline-offset-4 transition-colors tap-highlight-none"
         >
           {currentIndex === -1 ? 'Tipp anzeigen' : 'Nächster Tipp'}
         </button>

@@ -184,7 +184,7 @@ export function UnitCircle({ angle: controlledAngle, interactive = true, showSin
     <div className="flex flex-col items-center gap-3">
       <canvas
         ref={canvasRef}
-        className="w-full max-w-xs aspect-square cursor-crosshair rounded-xl bg-surface-50"
+        className="w-full max-w-xs aspect-square cursor-crosshair rounded-retro bg-white border-2 border-ink shadow-hard-sm"
         onMouseDown={(e) => handleInteraction(e.clientX, e.clientY)}
         onMouseMove={handleMouseMove}
         onTouchStart={(e) => { const t = e.touches[0]; handleInteraction(t.clientX, t.clientY) }}
@@ -202,11 +202,11 @@ export function UnitCircle({ angle: controlledAngle, interactive = true, showSin
               setInternalAngle(v)
               onChange?.(v)
             }}
-            className="w-full accent-primary-700"
+            className="w-full accent-lemon-dark"
           />
-          <div className="flex justify-between text-xs text-surface-400 mt-1">
+          <div className="flex justify-between text-xs text-ink-soft mt-1 font-mono">
             <span>0°</span>
-            <span className="font-medium text-primary-700">{angle}°</span>
+            <span className="font-black text-primary-700">{angle}°</span>
             <span>359°</span>
           </div>
         </div>

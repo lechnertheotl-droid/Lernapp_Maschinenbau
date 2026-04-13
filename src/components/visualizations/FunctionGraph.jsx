@@ -93,7 +93,7 @@ export function FunctionGraph({ functions, xRange, yRange, showGrid = true, mark
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-48 rounded-xl bg-surface-50"
+      className="w-full h-48 rounded-retro bg-white border-2 border-ink shadow-hard-sm"
     />
   )
 }

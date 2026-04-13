@@ -15,18 +15,18 @@ export function TrueFalse({ exercise, onSubmit, disabled }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-base font-medium text-surface-900 leading-relaxed">{exercise.question}</p>
+      <p className="text-base font-black text-ink leading-relaxed">{exercise.question}</p>
       <div className="grid grid-cols-2 gap-3">
-        {[{ label: 'Richtig', val: true, color: 'border-green-400 bg-green-50 text-green-800 hover:bg-green-100' },
-          { label: 'Falsch', val: false, color: 'border-red-400 bg-red-50 text-red-800 hover:bg-red-100' }
+        {[{ label: 'Richtig', val: true, color: 'border-green-800 bg-green-600 text-white shadow-hard-green' },
+          { label: 'Falsch', val: false, color: 'border-red-800 bg-red-600 text-white shadow-hard-red' }
         ].map(({ label, val, color }) => (
           <button
             key={label}
             disabled={disabled}
             onClick={() => !disabled && submit(val)}
             className={cn(
-              'py-5 rounded-2xl border-2 text-base font-semibold transition-all duration-150 tap-highlight-none',
-              selected === val ? color : 'border-surface-200 bg-white text-surface-700',
+              'py-5 rounded-retro border-2 text-base font-black transition-all duration-150 tap-highlight-none retro-press',
+              selected === val ? color : 'border-ink bg-white text-ink shadow-hard-sm',
               disabled && 'opacity-60 cursor-not-allowed'
             )}
           >

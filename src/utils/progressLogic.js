@@ -19,12 +19,9 @@ export function getLessonStatus(masteryEntry) {
  */
 const UNLOCKED_STATUSES = new Set(['understood', 'practiced', 'secure', 'review'])
 
-export function isLessonUnlocked(prerequisites, masteryMap) {
-  if (!prerequisites || prerequisites.length === 0) return true
-  return prerequisites.every((prereqId) => {
-    const entry = masteryMap[prereqId]
-    return entry && UNLOCKED_STATUSES.has(entry.status)
-  })
+// All lessons are always available — no locks
+export function isLessonUnlocked(_prerequisites, _masteryMap) {
+  return true
 }
 
 /**

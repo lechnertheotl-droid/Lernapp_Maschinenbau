@@ -2,9 +2,8 @@ import { useNavigate } from 'react-router-dom'
 import { useAppState } from '@/context/AppContext'
 import { getAllTopics, getAllLessons } from '@/content/index'
 import { computeTopicProgress } from '@/utils/progressLogic'
-import { Card } from '@/components/ui/Card'
-import { ProgressBar } from '@/components/ui/ProgressBar'
-import { Badge } from '@/components/ui/Badge'
+
+const DIFF_STARS = (n) => '★'.repeat(n) + '☆'.repeat(5 - n)
 
 export function TopicOverview() {
   const state    = useAppState()
@@ -13,42 +12,54 @@ export function TopicOverview() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-6">
-      <h1 className="text-2xl font-bold text-surface-900 mb-1">Alle Themen</h1>
-      <p className="text-surface-500 text-sm mb-6">{topics.length} Themenbereiche</p>
+      <div className="flex items-baseline gap-3 mb-5">
+        <h1 className="font-black text-2xl text-ink">Themenbereiche</h1>
+        <span className="font-mono text-xs text-ink-soft">{topics.length} verfügbar</span>
+      </div>
 
       <div className="flex flex-col gap-3">
-        {topics.map((topic) => {
-          const tp = state.progress.topicProgress[topic.id]
-          const totalLessons = getAllLessons(topic.id).length
+        {topics.map((topic, i) => {
+          const tp       = state.progress.topicProgress[topic.id]
+          const total    = getAllLessons(topic.id).length
           const completed = tp?.completedLessons?.length ?? 0
-          const progress = computeTopicProgress(tp?.completedLessons ?? [], totalLessons)
-
-          const status = !tp?.started ? 'not-started'
-            : progress === 100        ? 'secure'
-            : progress > 0            ? 'started'
-            : 'not-started'
+          const pct      = computeTopicProgress(tp?.completedLessons ?? [], total)
 
           return (
-            <Card key={topic.id} onClick={() => navigate(`/topics/${topic.id}`)} elevated className="p-4">
-              <div className="flex items-start gap-4">
-                <div className="text-3xl flex-shrink-0">{topic.icon}</div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-start justify-between gap-2 mb-1">
-                    <h2 className="font-semibold text-surface-900">{topic.title}</h2>
-                    <Badge status={status} />
-                  </div>
-                  <p className="text-surface-500 text-xs leading-snug mb-3">{topic.description}</p>
-                  <ProgressBar value={progress} size="sm" />
-                  <div className="flex gap-3 mt-1.5 text-xs text-surface-400">
-                    <span>{completed}/{totalLessons} Lektionen</span>
-                    <span>·</span>
-                    <span>{topic.estimatedHours}h geschätzt</span>
-                    <span>·</span>
-                    <span>Schwierigkeit {topic.difficulty}/5</span>
-                  </div>
+            <button
+              key={topic.id}
+              onClick={() => navigate(`/topics/${topic.id}`)}
+              className="w-full text-left bg-white border-2 border-ink rounded-retro shadow-hard p-4 flex items-start gap-4 retro-press tap-highlight-none hover:bg-surface-50 animate-slide-up"
+              style={{ animationDelay: `${i * 50}ms` }}
+            >
+              <div className="text-4xl flex-shrink-0 leading-none">{topic.icon}</div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-start justify-between gap-2 mb-1">
+                  <h2 className="font-black text-ink text-base leading-tight">{topic.title}</h2>
+                  {pct === 100
+                    ? <span className="stamp text-green-700 flex-shrink-0">Fertig</span>
+                    : pct > 0
+                    ? <span className="stamp text-primary-700 flex-shrink-0">{pct}%</span>
+                    : null
+                  }
+                </div>
+                <p className="text-ink-soft text-xs leading-snug mb-3">{topic.description}</p>
+                {/* Retro progress bar */}
+                <div className="h-2.5 bg-surface-100 border border-ink rounded-sm overflow-hidden mb-2">
+                  <div
+                    className="h-full bg-primary-700 transition-all duration-500"
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
+                <div className="flex items-center gap-3 font-mono text-[10px] text-ink-soft">
+                  <span>{completed}/{total} Lekt.</span>
+                  <span>·</span>
+                  <span>{topic.estimatedHours}h</span>
+                  <span>·</span>
+                  <span className="text-lemon-dark">{DIFF_STARS(topic.difficulty)}</span>
                 </div>
               </div>
-            </Card>
+              <span className="text-ink-soft font-mono font-black text-xl flex-shrink-0 self-center">›</span>
+            </button>
           )
         })}
       </div>

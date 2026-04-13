@@ -1,11 +1,15 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useAppState } from '@/context/AppContext'
 import { getTopic } from '@/content/index'
-import { isLessonUnlocked } from '@/utils/progressLogic'
-import { Badge } from '@/components/ui/Badge'
-import { ProgressBar } from '@/components/ui/ProgressBar'
-import { Button } from '@/components/ui/Button'
 import { cn } from '@/utils/cn'
+
+const STATUS_CONFIG = {
+  'secure':     { icon: '✓', label: 'Sicher',     dot: 'bg-green-500',   text: 'text-green-700'  },
+  'practiced':  { icon: '●', label: 'Geübt',      dot: 'bg-blue-500',    text: 'text-blue-700'   },
+  'understood': { icon: '◕', label: 'Verstanden', dot: 'bg-teal-500',    text: 'text-teal-700'   },
+  'started':    { icon: '◑', label: 'Begonnen',   dot: 'bg-yellow-500',  text: 'text-yellow-700' },
+  'not-started':{ icon: '○', label: 'Neu',        dot: 'bg-surface-300', text: 'text-surface-500'},
+}
 
 export function TopicDetail() {
   const { topicId } = useParams()
@@ -14,71 +18,101 @@ export function TopicDetail() {
   const topic       = getTopic(topicId)
 
   if (!topic) return (
-    <div className="p-6 text-center text-surface-400">Thema nicht gefunden: {topicId}</div>
+    <div className="p-6 text-center text-ink-soft font-mono">Thema nicht gefunden: {topicId}</div>
   )
 
-  const mastery = state.mastery
-  const tp      = state.progress.topicProgress[topicId]
+  const mastery          = state.mastery
+  const tp               = state.progress.topicProgress[topicId]
   const completedLessons = tp?.completedLessons ?? []
-  const totalLessons = topic.units.flatMap((u) => u.lessons).length
-  const progress = totalLessons > 0 ? Math.round((completedLessons.length / totalLessons) * 100) : 0
+  const totalLessons     = topic.units.flatMap((u) => u.lessons).length
+  const pct              = totalLessons > 0 ? Math.round((completedLessons.length / totalLessons) * 100) : 0
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-6 flex flex-col gap-6">
-      {/* Back */}
-      <button onClick={() => navigate('/topics')} className="flex items-center gap-1 text-surface-500 text-sm hover:text-surface-700 self-start">
-        ← Zurück
+    <div className="max-w-2xl mx-auto px-4 py-5 flex flex-col gap-5">
+
+      {/* ── Back ─────────────────────────────────────────────────── */}
+      <button
+        onClick={() => navigate('/topics')}
+        className="flex items-center gap-1.5 text-ink-soft text-sm font-mono hover:text-ink self-start tap-highlight-none transition-colors"
+      >
+        ← Alle Themen
       </button>
 
-      {/* Header */}
-      <div className="flex items-start gap-4">
-        <div className="text-4xl">{topic.icon}</div>
-        <div className="flex-1">
-          <h1 className="text-2xl font-bold text-surface-900">{topic.title}</h1>
-          <p className="text-surface-500 text-sm mt-0.5">{topic.description}</p>
-          <div className="mt-3">
-            <ProgressBar value={progress} />
-            <p className="text-xs text-surface-400 mt-1">{completedLessons.length} von {totalLessons} Lektionen abgeschlossen</p>
+      {/* ── Topic header ─────────────────────────────────────────── */}
+      <div className="bg-ink border-2 border-ink rounded-retro shadow-hard-lg overflow-hidden">
+        <div className="px-5 py-4 flex items-start gap-4">
+          <div className="text-5xl flex-shrink-0 leading-none mt-0.5">{topic.icon}</div>
+          <div className="flex-1 min-w-0">
+            <h1 className="font-black text-white text-xl leading-tight">{topic.title}</h1>
+            <p className="text-surface-400 text-xs leading-snug mt-1">{topic.description}</p>
+          </div>
+        </div>
+        {/* Progress bar */}
+        <div className="px-5 pb-4">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="font-mono text-[10px] text-surface-500 uppercase tracking-wider">
+              {completedLessons.length}/{totalLessons} Lektionen
+            </span>
+            <span className="num font-black text-lemon text-sm">{pct}%</span>
+          </div>
+          <div className="h-3 bg-surface-800 border border-surface-600 rounded-sm overflow-hidden">
+            <div
+              className="h-full bg-lemon transition-all duration-700"
+              style={{ width: `${pct}%` }}
+            />
           </div>
         </div>
       </div>
 
-      {/* Units */}
-      {topic.units.map((unit) => (
+      {/* ── Units & Lessons ───────────────────────────────────────── */}
+      {topic.units.map((unit, ui) => (
         <div key={unit.id}>
-          <h2 className="font-semibold text-surface-800 mb-3 flex items-center gap-2">
-            <span className="w-6 h-6 rounded-full bg-primary-100 text-primary-700 text-xs flex items-center justify-center font-bold">{unit.order}</span>
-            {unit.title}
-          </h2>
+          {/* Unit header */}
+          <div className="flex items-center gap-2.5 mb-2.5 px-0.5">
+            <div className="w-6 h-6 rounded-sm bg-ink text-lemon font-mono font-black text-xs flex items-center justify-center flex-shrink-0">
+              {unit.order}
+            </div>
+            <h2 className="font-black text-ink text-sm uppercase tracking-wide">{unit.title}</h2>
+            <div className="flex-1 h-px bg-ink/20 ml-1" />
+          </div>
 
           <div className="flex flex-col gap-2">
-            {unit.lessons.map((lesson) => {
-              const m = mastery[lesson.id]
-              const status = m?.status ?? 'not-started'
-              const unlocked = isLessonUnlocked(lesson.prerequisites, mastery)
+            {unit.lessons.map((lesson, li) => {
+              const m         = mastery[lesson.id]
+              const status    = m?.status ?? 'not-started'
+              const cfg       = STATUS_CONFIG[status] ?? STATUS_CONFIG['not-started']
               const isCurrent = tp?.currentLessonId === lesson.id
 
               return (
                 <button
                   key={lesson.id}
-                  disabled={!unlocked}
                   onClick={() => navigate(`/topics/${topicId}/${lesson.id}`)}
                   className={cn(
-                    'w-full text-left flex items-center gap-3 px-4 py-3 rounded-xl border transition-all duration-150 tap-highlight-none',
-                    unlocked
-                      ? 'bg-white border-surface-200 hover:border-primary-300 hover:bg-primary-50 cursor-pointer'
-                      : 'bg-surface-50 border-surface-100 opacity-50 cursor-not-allowed',
-                    isCurrent && 'border-primary-400 bg-primary-50'
+                    'w-full text-left flex items-center gap-3 px-4 py-3.5',
+                    'border-2 rounded-retro transition-all tap-highlight-none retro-press',
+                    'animate-slide-up',
+                    isCurrent
+                      ? 'bg-lemon border-lemon-dark shadow-hard-lemon'
+                      : 'bg-white border-ink shadow-hard-sm hover:bg-surface-50',
                   )}
+                  style={{ animationDelay: `${(ui * 3 + li) * 40}ms` }}
                 >
-                  <span className="text-lg">
-                    {!unlocked ? '🔒' : status === 'secure' ? '✅' : status === 'not-started' ? '⭕' : '🔵'}
-                  </span>
+                  {/* Status dot */}
+                  <span className={cn('w-3 h-3 rounded-full flex-shrink-0', cfg.dot)} />
+
                   <div className="flex-1 min-w-0">
-                    <p className="font-medium text-surface-900 text-sm">{lesson.title}</p>
-                    <p className="text-surface-400 text-xs">{lesson.estimatedMinutes} Min.</p>
+                    <p className={cn('font-bold text-sm leading-snug', isCurrent ? 'text-ink' : 'text-ink')}>
+                      {lesson.title}
+                    </p>
+                    <p className="font-mono text-[10px] text-ink-soft mt-0.5 uppercase tracking-wide">
+                      {lesson.estimatedMinutes} Min · {lesson.steps?.length ?? 0} Schritte
+                    </p>
                   </div>
-                  <Badge status={status} />
+
+                  <div className="flex items-center gap-2 flex-shrink-0">
+                    <span className={cn('stamp', cfg.text)}>{cfg.label}</span>
+                    <span className="font-mono font-black text-ink-soft">›</span>
+                  </div>
                 </button>
               )
             })}

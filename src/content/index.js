@@ -1,8 +1,14 @@
 import { trigonometryTopic } from './mathematics/trigonometry/index'
+import { ableitungTopic }    from './mathematics/ableitung/index'
+import { vektorenTopic }     from './mathematics/vektoren/index'
+import { algebraTopic }      from './mathematics/algebra/index'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
 const TOPICS = {
   trigonometry: trigonometryTopic,
+  ableitung:    ableitungTopic,
+  vektoren:     vektorenTopic,
+  algebra:      algebraTopic,
 }
 
 export function getAllTopics() {

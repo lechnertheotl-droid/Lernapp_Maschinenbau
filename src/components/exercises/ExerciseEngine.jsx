@@ -26,7 +26,7 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }) {
   const [streak, setStreak]         = useState(0)
 
   if (!exercise) {
-    return <div className="text-surface-400 text-sm">Aufgabe nicht gefunden: {exerciseId}</div>
+    return <div className="text-ink-soft text-sm font-mono">Aufgabe nicht gefunden: {exerciseId}</div>
   }
 
   const entry = EXERCISE_COMPONENTS[exercise.type] ?? EXERCISE_COMPONENTS['multiple-choice']
@@ -53,7 +53,10 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }) {
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="bg-white border-2 border-ink rounded-retro shadow-hard p-4 flex flex-col gap-4">
+      <p className="font-mono text-[10px] font-black text-primary-700 uppercase tracking-widest">
+        // Aufgabe
+      </p>
       <Component
         exercise={exercise}
         onSubmit={handleSubmit}

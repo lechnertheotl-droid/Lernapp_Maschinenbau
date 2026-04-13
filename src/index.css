@@ -6,56 +6,121 @@
   html {
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-tap-highlight-color: transparent;
+    background-color: #F5F5EF;
   }
-
   body {
-    @apply bg-surface-50 text-surface-900;
+    color: #1a1a1a;
+    background-color: #F5F5EF;
   }
-
-  /* Safe area insets for iPhone notch / home bar */
   #root {
     padding-top: env(safe-area-inset-top);
-    padding-bottom: env(safe-area-inset-bottom);
   }
 }
 
 @layer utilities {
-  .tap-highlight-none {
-    -webkit-tap-highlight-color: transparent;
+  /* ── Interaction ─────────────────────────────────────────────────── */
+  .tap-highlight-none { -webkit-tap-highlight-color: transparent; }
+
+  /* ── Graph paper backgrounds ─────────────────────────────────────── */
+  .bg-graph-paper {
+    background-image:
+      linear-gradient(rgba(0,61,165,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,61,165,0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .bg-graph-paper-sm {
+    background-image:
+      linear-gradient(rgba(0,61,165,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,61,165,0.04) 1px, transparent 1px);
+    background-size: 12px 12px;
   }
 
-  .markdown-content > :first-child {
-    margin-top: 0;
+  /* ── Hard retro shadows ──────────────────────────────────────────── */
+  .shadow-hard      { box-shadow: 3px 3px 0 0 #1a1a1a; }
+  .shadow-hard-sm   { box-shadow: 2px 2px 0 0 #1a1a1a; }
+  .shadow-hard-lg   { box-shadow: 5px 5px 0 0 #1a1a1a; }
+  .shadow-hard-xl   { box-shadow: 7px 7px 0 0 #1a1a1a; }
+  .shadow-hard-blue  { box-shadow: 3px 3px 0 0 #003DA5; }
+  .shadow-hard-lemon { box-shadow: 3px 3px 0 0 #E5BE00; }
+  .shadow-hard-green { box-shadow: 3px 3px 0 0 #166534; }
+  .shadow-hard-red   { box-shadow: 3px 3px 0 0 #991b1b; }
+
+  /* ── Retro press effect ──────────────────────────────────────────── */
+  .retro-press { transition: transform 0.07s ease, box-shadow 0.07s ease; }
+  .retro-press:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 0 #1a1a1a !important;
   }
 
-  .markdown-content > :last-child {
-    margin-bottom: 0;
+  /* ── Monospace numbers ───────────────────────────────────────────── */
+  .num {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
   }
 
+  /* ── Stamp labels ────────────────────────────────────────────────── */
+  .stamp {
+    display: inline-flex;
+    align-items: center;
+    font-family: ui-monospace, monospace;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 2px solid currentColor;
+    border-radius: 3px;
+    padding: 1px 5px;
+  }
+
+  /* ── Markdown content ────────────────────────────────────────────── */
+  .markdown-content > :first-child { margin-top: 0; }
+  .markdown-content > :last-child  { margin-bottom: 0; }
   .markdown-content p,
   .markdown-content ul,
   .markdown-content ol,
-  .markdown-content .katex-display {
+  .markdown-content .katex-display { margin-bottom: 0.75rem; }
+  .markdown-content ul { list-style: disc;    padding-left: 1.25rem; }
+  .markdown-content ol { list-style: decimal; padding-left: 1.25rem; }
+  .markdown-content li { margin-bottom: 0.2rem; }
+  .markdown-content strong { font-weight: 700; }
+  .markdown-content .katex-display { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.25rem; }
+  .markdown-content .katex { font-size: 1.02em; }
+
+  /* Tables — retro bordered */
+  .markdown-content table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    border: 2px solid #1a1a1a;
     margin-bottom: 0.75rem;
+    overflow: hidden;
+    border-radius: 4px;
   }
-
-  .markdown-content ul {
-    list-style: disc;
-    padding-left: 1.25rem;
+  .markdown-content th {
+    background: #1a1a1a;
+    color: #FFD60A;
+    padding: 6px 10px;
+    text-align: left;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
-
-  .markdown-content ol {
-    list-style: decimal;
-    padding-left: 1.25rem;
+  .markdown-content td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0;
   }
+  .markdown-content tr:nth-child(even) td { background: #f8f8f2; }
+  .markdown-content tr:last-child td { border-bottom: none; }
 
-  .markdown-content .katex-display {
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-bottom: 0.25rem;
-  }
-
-  .markdown-content .katex {
-    font-size: 1.02em;
+  /* ── Formula box (retro notebook style) ─────────────────────────── */
+  .formula-box {
+    background: #FFFDE7;
+    border: 2px solid #1a1a1a;
+    border-radius: 4px;
+    padding: 12px 14px;
+    box-shadow: 3px 3px 0 0 #1a1a1a;
   }
 }
