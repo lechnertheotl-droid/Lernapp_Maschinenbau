@@ -5,7 +5,7 @@ export const algebraTopic = {
   title: 'Algebra & Potenzen',
   description: 'Potenzgesetze, Wurzeln, Logarithmen — Grundlagen für alle technischen Fächer',
   subject: 'mathematics',
-  icon: '🔢',
+  icon: 'ALG',
   color: 'orange',
   estimatedHours: 3,
   difficulty: 1,

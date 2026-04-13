@@ -13,7 +13,9 @@ export function Header() {
   return (
     <header className="hidden md:flex h-14 items-center justify-between px-6 bg-ink border-b-2 border-ink sticky top-0 z-40">
       <Link to="/" className="flex items-center gap-2.5 tap-highlight-none">
-        <span className="text-2xl leading-none">⚙️</span>
+        <span className="w-9 h-9 inline-flex items-center justify-center rounded-retro border-2 border-lemon bg-ink text-lemon font-mono font-black text-xs shadow-hard-sm">
+          MB
+        </span>
         <span className="font-mono font-black text-lemon text-base tracking-wider uppercase">
           MB<span className="text-surface-500">·</span>LERNAPP
         </span>

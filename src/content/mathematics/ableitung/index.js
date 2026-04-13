@@ -5,7 +5,7 @@ export const ableitungTopic = {
   title: 'Ableitung',
   description: 'Differentialrechnung: Ableitungsregeln, Kettenregel, Extremwerte & Kurvendiskussion',
   subject: 'mathematics',
-  icon: '📈',
+  icon: 'DIF',
   color: 'green',
   estimatedHours: 5,
   difficulty: 3,

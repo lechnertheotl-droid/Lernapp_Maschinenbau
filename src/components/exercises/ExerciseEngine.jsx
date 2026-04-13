@@ -9,6 +9,7 @@ import { TrueFalse, validate as validateTF } from './TrueFalse'
 import { NumberInput, validate as validateNI } from './NumberInput'
 import { HintSystem } from '@/components/lesson/HintSystem'
 import { FeedbackDisplay } from '@/components/lesson/FeedbackDisplay'
+import { Calculator } from '@/components/ui/Calculator'
 
 const EXERCISE_COMPONENTS = {
   'multiple-choice': { Component: MultipleChoice, validate: validateMC },
@@ -24,6 +25,7 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }) {
   const [submitted, setSubmitted]   = useState(false)
   const [isCorrect, setIsCorrect]   = useState(null)
   const [streak, setStreak]         = useState(0)
+  const [showCalculator, setShowCalculator] = useState(false)
 
   if (!exercise) {
     return <div className="text-ink-soft text-sm font-mono">Aufgabe nicht gefunden: {exerciseId}</div>
@@ -54,9 +56,18 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }) {
 
   return (
     <div className="bg-white border-2 border-ink rounded-retro shadow-hard p-4 flex flex-col gap-4">
-      <p className="font-mono text-[10px] font-black text-primary-700 uppercase tracking-widest">
-        // Aufgabe
-      </p>
+      <div className="flex items-center justify-between gap-3">
+        <p className="font-mono text-[10px] font-black text-primary-700 uppercase tracking-widest">
+          // Aufgabe
+        </p>
+        <button
+          type="button"
+          onClick={() => setShowCalculator(true)}
+          className="min-h-9 px-3 rounded-retro border-2 border-ink bg-lemon shadow-hard-lemon text-ink font-mono text-[10px] font-black uppercase tracking-wider retro-press tap-highlight-none"
+        >
+          Rechner
+        </button>
+      </div>
       <Component
         exercise={exercise}
         onSubmit={handleSubmit}
@@ -72,6 +83,7 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }) {
           onNext={onComplete}
         />
       )}
+      <Calculator isOpen={showCalculator} onClose={() => setShowCalculator(false)} />
     </div>
   )
 }

@@ -10,6 +10,9 @@ function calcEval(expr, isDeg) {
 
     // Pre-process: handle implicit multiplication like 2π → 2*π
     let e = expr
+      .replace(/arcsin/g, 'asin')
+      .replace(/arccos/g, 'acos')
+      .replace(/arctan/g, 'atan')
       .replace(/×/g, '*')
       .replace(/÷/g, '/')
       .replace(/−/g, '-')
@@ -62,16 +65,26 @@ function formatResult(val) {
   return s.length > 14 ? val.toPrecision(10) : s
 }
 
+function formatExpression(expr) {
+  return expr
+    .replace(/asin\(/g, 'arcsin(')
+    .replace(/acos\(/g, 'arccos(')
+    .replace(/atan\(/g, 'arctan(')
+    .replace(/sqrt\(/g, '√(')
+    .replace(/abs\(/g, '|(')
+    .replace(/\*/g, '·')
+}
+
 // ── Button grid config ────────────────────────────────────────────────────────
 const ROWS = [
   // [label, action, style]
-  ['sin',  'fn:sin',  'sci'],  ['cos',  'fn:cos',  'sci'],  ['tan',  'fn:tan',  'sci'],  ['ln',   'fn:ln',   'sci'],  ['log',  'fn:log',  'sci'],
-  ['x²',   'sq',      'sci'],  ['√',    'fn:sqrt', 'sci'],  ['π',    'sym:π',   'sci'],  ['ℯ',    'sym:ℯ',   'sci'],  ['|x|',  'fn:abs',  'sci'],
-  ['AC',   'ac',      'clear'],['(',    'sym:(',   'paren'],[')',    'sym:)',   'paren'],['⌫',    'del',     'del'],  ['÷',    'sym:÷',   'op'],
-  ['7',    'num:7',   'num'],  ['8',    'num:8',   'num'],  ['9',    'num:9',   'num'],  ['×',    'sym:×',   'op'],   [null,   null,      null],
-  ['4',    'num:4',   'num'],  ['5',    'num:5',   'num'],  ['6',    'num:6',   'num'],  ['−',    'sym:−',   'op'],   [null,   null,      null],
-  ['1',    'num:1',   'num'],  ['2',    'num:2',   'num'],  ['3',    'num:3',   'num'],  ['+',    'sym:+',   'op'],   ['=',    'eq',      'eq'],
-  ['0',    'num:0',   'num'],  [null,   null,      null],   ['.',    'sym:.',   'num'],  ['%',    'sym:%',   'op'],   [null,   null,      null],
+  ['sin',   'fn:sin',  'sci'],  ['cos',   'fn:cos',  'sci'],  ['tan',   'fn:tan',  'sci'],  ['arcsin','fn:asin', 'sci'],  ['arccos','fn:acos','sci'],
+  ['arctan','fn:atan', 'sci'],  ['ln',    'fn:ln',   'sci'],  ['log',   'fn:log',  'sci'],  ['√',     'fn:sqrt','sci'],  ['x²',   'sq',      'sci'],
+  ['x³',    'cube',    'sci'],  ['π',     'sym:π',   'sci'],  ['ℯ',     'sym:ℯ',   'sci'],  ['|x|',   'fn:abs', 'sci'],  ['AC',   'ac',      'clear'],
+  ['(',     'sym:(',   'paren'],[')',     'sym:)',   'paren'],['⌫',     'del',     'del'],  ['÷',     'sym:÷',  'op'],   ['×',    'sym:×',   'op'],
+  ['7',     'num:7',   'num'],  ['8',     'num:8',   'num'],  ['9',     'num:9',   'num'],  ['−',     'sym:−',  'op'],   ['%',    'sym:%',   'op'],
+  ['4',     'num:4',   'num'],  ['5',     'num:5',   'num'],  ['6',     'num:6',   'num'],  ['+',     'sym:+',  'op'],   ['=',    'eq',      'eq'],
+  ['1',     'num:1',   'num'],  ['2',     'num:2',   'num'],  ['3',     'num:3',   'num'],  ['0',     'num:0',  'num'],  ['.',    'sym:.',   'num'],
 ]
 
 const cellStyles = {
@@ -91,6 +104,7 @@ export function Calculator({ isOpen, onClose }) {
   const [justEq, setJustEq] = useState(false)
 
   const result = expr ? calcEval(expr, isDeg) : null
+  const displayExpr = expr ? formatExpression(expr) : ' '
   const displayResult = expr ? formatResult(result) : '0'
 
   const press = useCallback((action) => {
@@ -110,6 +124,11 @@ export function Calculator({ isOpen, onClose }) {
     if (action === 'sq') {
       if (justEq && expr) { setExpr(`(${expr})²`); setJustEq(false) }
       else { setExpr((e) => e + '²'); setJustEq(false) }
+      return
+    }
+    if (action === 'cube') {
+      if (justEq && expr) { setExpr(`(${expr})³`); setJustEq(false) }
+      else { setExpr((e) => e + '³'); setJustEq(false) }
       return
     }
 
@@ -168,8 +187,8 @@ export function Calculator({ isOpen, onClose }) {
         {/* Display */}
         <div className="px-4 py-3 bg-green-950 border-b-2 border-ink min-h-[72px] flex flex-col justify-end">
           {/* Expression */}
-          <p className="text-green-400/70 font-mono text-xs text-right truncate min-h-[16px]">
-            {expr || ' '}
+          <p className="text-green-400/80 font-mono text-sm text-right truncate min-h-[20px]">
+            {displayExpr}
           </p>
           {/* Result */}
           <p className={cn(
@@ -194,14 +213,11 @@ export function Calculator({ isOpen, onClose }) {
                 key={i}
                 onClick={() => press(action)}
                 className={cn(
-                  'h-12 flex items-center justify-center font-mono font-semibold text-sm',
+                  'h-12 flex items-center justify-center font-mono font-semibold text-xs sm:text-sm',
                   'transition-colors select-none tap-highlight-none',
                   'active:brightness-75',
                   cellStyles[style] ?? cellStyles.num,
-                  // = button spans 1 row (we handle it via position)
-                  action === 'eq' && 'row-span-2 h-full'
                 )}
-                style={action === 'eq' ? { gridRow: 'span 2' } : undefined}
               >
                 {label}
               </button>

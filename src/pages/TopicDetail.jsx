@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useAppState } from '@/context/AppContext'
 import { getTopic } from '@/content/index'
 import { cn } from '@/utils/cn'
+import { TopicIcon } from '@/components/ui/TopicIcon'
 
 const STATUS_CONFIG = {
   'secure':     { icon: '✓', label: 'Sicher',     dot: 'bg-green-500',   text: 'text-green-700'  },
@@ -41,7 +42,7 @@ export function TopicDetail() {
       {/* ── Topic header ─────────────────────────────────────────── */}
       <div className="bg-ink border-2 border-ink rounded-retro shadow-hard-lg overflow-hidden">
         <div className="px-5 py-4 flex items-start gap-4">
-          <div className="text-5xl flex-shrink-0 leading-none mt-0.5">{topic.icon}</div>
+          <TopicIcon topic={topic} size="lg" className="mt-0.5" />
           <div className="flex-1 min-w-0">
             <h1 className="font-black text-white text-xl leading-tight">{topic.title}</h1>
             <p className="text-surface-400 text-xs leading-snug mt-1">{topic.description}</p>

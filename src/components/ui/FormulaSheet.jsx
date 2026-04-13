@@ -157,6 +157,84 @@ const FORMULAS = {
       },
     ],
   },
+  'technische-mechanik': {
+    title: 'Technische Mechanik',
+    sections: [
+      {
+        name: 'Statik',
+        items: [
+          { label: 'Gleichgewicht', formula: 'ΣF = 0, ΣM = 0' },
+          { label: 'Resultierende', formula: 'R = √(Fx² + Fy²)' },
+          { label: 'Moment', formula: 'M = F · l⊥' },
+        ],
+      },
+      {
+        name: 'Dynamik',
+        items: [
+          { label: 'Newton', formula: 'ΣF = m · a' },
+          { label: 'Gewichtskraft', formula: 'FG = m · g' },
+          { label: 'Arbeit', formula: 'W = F · s · cos α' },
+        ],
+      },
+    ],
+  },
+  festigkeitslehre: {
+    title: 'Festigkeitslehre',
+    sections: [
+      {
+        name: 'Grundbeanspruchung',
+        items: [
+          { label: 'Normalspannung', formula: 'σ = F / A' },
+          { label: 'Hooke', formula: 'σ = E · ε' },
+          { label: 'Biegung', formula: 'σb = Mb / Wb' },
+          { label: 'Nachweis', formula: 'σvorh ≤ R / S' },
+        ],
+      },
+    ],
+  },
+  thermodynamik: {
+    title: 'Thermodynamik',
+    sections: [
+      {
+        name: 'Grundlagen',
+        items: [
+          { label: 'Ideales Gas', formula: 'pV = nRT' },
+          { label: 'Kelvin', formula: 'T/K = T/°C + 273,15' },
+          { label: 'Volumenarbeit', formula: 'W = ∫ p dV' },
+          { label: '1. Hauptsatz', formula: 'ΔU = Q − W' },
+          { label: 'Wirkungsgrad', formula: 'η = Enutz / Ezu' },
+        ],
+      },
+    ],
+  },
+  fluidmechanik: {
+    title: 'Fluidmechanik',
+    sections: [
+      {
+        name: 'Hydrostatik & Strömung',
+        items: [
+          { label: 'Hydrostatischer Druck', formula: 'p = ρgh' },
+          { label: 'Auftrieb', formula: 'FA = ρgV' },
+          { label: 'Kontinuität', formula: 'A1v1 = A2v2' },
+          { label: 'Bernoulli', formula: 'p + ρv²/2 + ρgz = const.' },
+        ],
+      },
+    ],
+  },
+  maschinenelemente: {
+    title: 'Maschinenelemente',
+    sections: [
+      {
+        name: 'Grundformeln',
+        items: [
+          { label: 'Übersetzung', formula: 'i = z2/z1 = n1/n2' },
+          { label: 'Leistung', formula: 'P = M · ω' },
+          { label: 'Umfangskraft', formula: 'Ft = 2M / d' },
+          { label: 'Anteil', formula: 'Anteil = Teil / Gesamt' },
+        ],
+      },
+    ],
+  },
 }
 
 // ── Component ─────────────────────────────────────────────────────────────────

@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAppState } from '@/context/AppContext'
 import { getAllTopics, getAllLessons } from '@/content/index'
 import { computeTopicProgress } from '@/utils/progressLogic'
+import { TopicIcon } from '@/components/ui/TopicIcon'
 
 const DIFF_STARS = (n) => '★'.repeat(n) + '☆'.repeat(5 - n)
 
@@ -31,7 +32,7 @@ export function TopicOverview() {
               className="w-full text-left bg-white border-2 border-ink rounded-retro shadow-hard p-4 flex items-start gap-4 retro-press tap-highlight-none hover:bg-surface-50 animate-slide-up"
               style={{ animationDelay: `${i * 50}ms` }}
             >
-              <div className="text-4xl flex-shrink-0 leading-none">{topic.icon}</div>
+              <TopicIcon topic={topic} size="md" />
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2 mb-1">
                   <h2 className="font-black text-ink text-base leading-tight">{topic.title}</h2>

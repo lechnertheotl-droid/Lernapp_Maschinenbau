@@ -228,7 +228,7 @@ $$\\vec{a} \\times \\vec{b} = \\begin{pmatrix} a_y b_z - a_z b_y \\\\ a_z b_x - 
     nextLessonId: null,
     steps: [
       {
-        id: 'vek-1-4-s1', type: 'explanation-intuitive', title: '⚙️ Kräfte im Maschinenbau',
+        id: 'vek-1-4-s1', type: 'explanation-intuitive', title: 'Kräfte im Maschinenbau',
         content: `In der Technischen Mechanik werden Kräfte immer als Vektoren behandelt.
 
 **Gleichgewichtsbedingung (Statik):**

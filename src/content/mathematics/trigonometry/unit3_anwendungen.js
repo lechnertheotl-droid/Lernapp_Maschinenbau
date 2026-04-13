@@ -177,6 +177,11 @@ $$x(t) = A \\cdot \\sin(\\omega t + \\varphi)$$
 
 mit Amplitude A, Kreisfrequenz ω und Phasenwinkel φ.`,
       },
+      {
+        id: 'trig-3-3-s2-viz', type: 'visualization', title: 'Sinusschwingung erkunden',
+        visualizationId: 'sin-wave-explorer',
+        params: { initialAmplitude: 1, initialFrequency: 1, initialPhase: 0 },
+      },
       { id: 'trig-3-3-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-trig-3-3-a' },
       { id: 'trig-3-3-s3', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-trig-3-3-b' },
       { id: 'trig-3-3-s4', type: 'mastery-check', title: 'Verständnischeck', exerciseRef: 'ex-trig-3-3-mastery' },

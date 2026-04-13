@@ -5,7 +5,7 @@ export const vektorenTopic = {
   title: 'Vektoren',
   description: 'Vektorrechnung, Skalar- und Kreuzprodukt, Kräfte als Vektoren',
   subject: 'mathematics',
-  icon: '➡️',
+  icon: 'VEC',
   color: 'purple',
   estimatedHours: 4,
   difficulty: 2,

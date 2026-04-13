@@ -69,9 +69,9 @@ export const exercises_abl_u1 = {
   'ex-abl-1-2-mastery': {
     id: 'ex-abl-1-2-mastery', lessonId: 'abl-1-2', type: 'multiple-choice', isMasteryCheck: true,
     question: 'f(x) = 2x⁴ − 3x² + 7. Berechne f\'(2).',
-    options: ['32', '20', '40', '25'],
-    correctIndex: 2,
-    explanation: "f'(x) = 8x³ − 6x. f'(2) = 8·8 − 6·2 = 64 − 12 = 52... Warte: f'(x) = 8x³ − 6x. f'(2) = 64 − 12 = 52. Nächste korrekte Option ist 40 bei f(x)=x⁴-3x²+7 → 4x³-6x → 32-12=20. Mit 2x⁴: 8x³-6x → f'(2)=64-12=52 → Antwort 40 nächste. Korrektur: f'(x)=8x³-6x, f'(2)=64-12=52.",
+    options: ['52', '20', '40', '25'],
+    correctIndex: 0,
+    explanation: "f'(x) = 8x³ − 6x. Einsetzen von x = 2 ergibt f'(2) = 8·8 − 6·2 = 64 − 12 = 52.",
     hints: ['f\'(x) = 8x³ − 6x. Setze x = 2 ein.'],
   },
 
@@ -226,6 +226,11 @@ $$f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}$$
 Der Bruch $\\frac{f(x+h)-f(x)}{h}$ heißt **Differenzenquotient** — er berechnet die mittlere Steigung zwischen den Punkten x und x+h.
 
 Für h→0 rücken die zwei Punkte zusammen, die Sekante wird zur Tangente, und der Differenzenquotient wird zum **Differentialquotienten** f'(x).`,
+      },
+      {
+        id: 'abl-1-1-s3-limit', type: 'visualization', title: 'Grenzwert numerisch erkunden',
+        visualizationId: 'limit-explorer',
+        params: { initialFunction: 'removable', initialEpsilon: 0.8 },
       },
       { id: 'abl-1-1-s4', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-abl-1-1-a' },
       { id: 'abl-1-1-s5', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-abl-1-1-b' },

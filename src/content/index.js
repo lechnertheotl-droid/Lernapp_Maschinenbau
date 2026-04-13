@@ -2,13 +2,19 @@ import { trigonometryTopic } from './mathematics/trigonometry/index'
 import { ableitungTopic }    from './mathematics/ableitung/index'
 import { vektorenTopic }     from './mathematics/vektoren/index'
 import { algebraTopic }      from './mathematics/algebra/index'
+import { engineeringTopics } from './engineering/maschinenbau'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
-const TOPICS = {
+const BASE_TOPICS = {
   trigonometry: trigonometryTopic,
   ableitung:    ableitungTopic,
   vektoren:     vektorenTopic,
   algebra:      algebraTopic,
+}
+
+const TOPICS = {
+  ...BASE_TOPICS,
+  ...Object.fromEntries(engineeringTopics.map((topic) => [topic.id, topic])),
 }
 
 export function getAllTopics() {

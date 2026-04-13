@@ -125,7 +125,7 @@ export function LessonView() {
       <Modal
         isOpen={showComplete}
         onClose={() => { setShowComplete(false); navigate(`/topics/${topicId}`) }}
-        title="Lektion abgeschlossen! 🎉"
+        title="Lektion abgeschlossen"
       >
         <div className="flex flex-col gap-4">
           <p className="text-surface-600 text-sm leading-relaxed">

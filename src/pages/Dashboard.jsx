@@ -3,6 +3,7 @@ import { useAppState } from '@/context/AppContext'
 import { getAllTopics, getAllLessons } from '@/content/index'
 import { getDueItems } from '@/utils/reviewScheduler'
 import { computeTopicProgress } from '@/utils/progressLogic'
+import { TopicIcon } from '@/components/ui/TopicIcon'
 
 function greeting(name) {
   const h = new Date().getHours()
@@ -75,7 +76,7 @@ export function Dashboard() {
         return (
           <div className="bg-white border-2 border-ink rounded-retro shadow-hard overflow-hidden animate-fade-in">
             <div className="px-4 pt-4 pb-3 flex items-start gap-3">
-              <span className="text-3xl flex-shrink-0 leading-none">{topic?.icon ?? '📖'}</span>
+              <TopicIcon topic={topic} size="md" />
               <div className="flex-1 min-w-0">
                 <p className="font-mono text-[10px] font-bold text-primary-700 uppercase tracking-widest mb-1">
                   // Weitermachen
@@ -119,7 +120,7 @@ export function Dashboard() {
                 style={{ animationDelay: `${i * 60}ms` }}
               >
                 <div className="flex items-start justify-between">
-                  <span className="text-2xl leading-none">{topic.icon}</span>
+                  <TopicIcon topic={topic} size="sm" />
                   {started && (
                     <span className="num text-[10px] font-black text-primary-700 bg-primary-50 border border-primary-200 rounded px-1.5 py-0.5">
                       {pct}%

@@ -8,7 +8,7 @@ export const trigonometryTopic = {
   title: 'Trigonometrie',
   description: 'Winkelfunktionen, Einheitskreis und Anwendungen für Maschinenbauingenieure',
   subject: 'mathematics',
-  icon: '📐',
+  icon: 'TRI',
   color: 'blue',
   estimatedHours: 6,
   difficulty: 2,

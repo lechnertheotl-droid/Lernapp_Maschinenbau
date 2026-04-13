@@ -6,19 +6,19 @@ import { Button } from '@/components/ui/Button'
 
 const steps = [
   {
-    icon: '⚙',
+    icon: 'MB',
     eyebrow: 'TU Wien · Maschinenbau',
     title: 'Lernen wie im Laborheft',
     text: 'Interaktive Lektionen, Formeln, Rechner und Aufgaben — optimiert für Mathe-Grundlagen im Maschinenbau.',
   },
   {
-    icon: '✓',
+    icon: 'OK',
     eyebrow: 'Mastery',
     title: 'Verstehen, üben, sichern',
     text: 'Jede Aufgabe aktualisiert deinen Fortschritt. Wiederholungen werden automatisch eingeplant, sobald eine Lektion abgeschlossen ist.',
   },
   {
-    icon: '▣',
+    icon: 'PWA',
     eyebrow: 'PWA',
     title: 'Offline am iPhone nutzen',
     text: 'Tippe in Safari auf das Teilen-Symbol → "Zum Home-Bildschirm" — dann läuft die App wie eine native App, auch ohne Internet.',
@@ -82,7 +82,7 @@ export function Onboarding() {
       <div className="flex-1 flex flex-col items-center justify-center gap-8 w-full max-w-sm text-center">
         <div className="relative">
           <div className="w-24 h-24 bg-ink border-2 border-ink rounded-retro shadow-hard-lg flex items-center justify-center">
-            <span className="font-mono font-black text-5xl text-lemon">{s.icon}</span>
+            <span className="font-mono font-black text-2xl text-lemon tracking-tight">{s.icon}</span>
           </div>
           <div className="absolute -right-3 -bottom-3 bg-primary-700 border-2 border-ink rounded-retro shadow-hard-sm px-2 py-1 font-mono text-[10px] font-black text-white">
             {step + 1}/{steps.length}

@@ -37,8 +37,8 @@ export const exercises_u4 = {
     id: 'ex-trig-4-1-d', lessonId: 'trig-4-1', type: 'multiple-choice',
     question: '[PRÜFUNG] Berechne: cos(α)·cos(β) + sin(α)·sin(β) für α = 75°, β = 30°.',
     options: ['1/2', '√2/2', '√3/2', '0'],
-    correctIndex: 0,
-    explanation: 'Dies ist cos(α - β) = cos(75° - 30°) = cos(45°) = √2/2. Warte — nochmal: cos(α-β) = cos(α)cos(β) + sin(α)sin(β). Also cos(45°) = √2/2.',
+    correctIndex: 1,
+    explanation: 'Dies ist cos(α - β) = cos(75° - 30°) = cos(45°) = √2/2.',
     hints: ['Erkenne das Muster: cos(α)cos(β) + sin(α)sin(β) = cos(α - β)', 'cos(75° - 30°) = cos(45°)'],
   },
   'ex-trig-4-1-mastery': {
@@ -145,7 +145,7 @@ const lessons_u4 = [
     nextLessonId: 'trig-4-2',
     steps: [
       {
-        id: 'trig-4-1-s1', type: 'explanation-intuitive', title: '🎯 Prüfungsstrategie',
+        id: 'trig-4-1-s1', type: 'explanation-intuitive', title: 'Prüfungsstrategie',
         content: `**Prüfungsaufgaben Trigonometrie** folgen meist einem dieser Muster:
 
 1. **Identitäten umformen** — Nutze sin²+cos²=1, Additionstheoreme, Doppelwinkel
@@ -175,7 +175,7 @@ const lessons_u4 = [
     nextLessonId: 'trig-4-3',
     steps: [
       {
-        id: 'trig-4-2-s1', type: 'explanation-intuitive', title: '⚙️ Technische Anwendungen in der Prüfung',
+        id: 'trig-4-2-s1', type: 'explanation-intuitive', title: 'Technische Anwendungen in der Prüfung',
         content: `In technischen Prüfungen kommen Trigonometrie-Aufgaben fast immer in diesen Formen:
 
 **Kräftezerlegung:**
@@ -210,7 +210,7 @@ $$a^2 = b^2 + c^2 - 2bc \\cdot \\cos(\\alpha)$$
     nextLessonId: null,
     steps: [
       {
-        id: 'trig-4-3-s1', type: 'explanation-formal', title: '📋 Gleichungen systematisch lösen',
+        id: 'trig-4-3-s1', type: 'explanation-formal', title: 'Gleichungen systematisch lösen',
         content: `**Vorgehen bei trig. Gleichungen in der Prüfung:**
 
 1. **Vereinfache** mit Identitäten (sin²+cos²=1, Doppelwinkel, etc.)

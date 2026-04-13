@@ -248,8 +248,8 @@ Der Grund: Diese Winkel kommen in regelmäßigen Geometrien vor (gleichseitiges 
       },
       {
         id: 'trig-1-3-s3', type: 'visualization', title: 'Einheitskreis erkunden',
-        visualizationId: 'unit-circle',
-        params: { showSine: true, showCosine: true, interactive: true, initialAngle: 30 },
+        visualizationId: 'trig-explorer',
+        params: { initialAngle: 30, showTangent: false },
       },
       { id: 'trig-1-3-s4', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-trig-1-3-a' },
       { id: 'trig-1-3-s5', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-trig-1-3-b' },
@@ -289,8 +289,8 @@ Am Einheitskreis können wir jeden Winkel darstellen, nicht nur die zwischen 0°
       },
       {
         id: 'trig-1-4-s3', type: 'visualization', title: 'Vorzeichen erkunden',
-        visualizationId: 'unit-circle',
-        params: { showSine: true, showCosine: true, interactive: true, showQuadrants: true, initialAngle: 120 },
+        visualizationId: 'trig-explorer',
+        params: { initialAngle: 120, showTangent: true },
       },
       { id: 'trig-1-4-s4', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-trig-1-4-a' },
       { id: 'trig-1-4-s5', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-trig-1-4-b' },

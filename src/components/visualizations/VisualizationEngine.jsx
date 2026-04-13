@@ -2,12 +2,18 @@ import { UnitCircle } from './UnitCircle'
 import { FunctionGraph } from './FunctionGraph'
 import { DerivativeGraph } from './DerivativeGraph'
 import { VectorDiagram } from './VectorDiagram'
+import { TrigExplorer } from './TrigExplorer'
+import { LimitExplorer } from './LimitExplorer'
+import { SinWaveExplorer } from './SinWaveExplorer'
 
 const VIZ_MAP = {
   'unit-circle':      UnitCircle,
   'function-graph':   FunctionGraph,
   'derivative-graph': DerivativeGraph,
   'vector-diagram':   VectorDiagram,
+  'trig-explorer':    TrigExplorer,
+  'limit-explorer':   LimitExplorer,
+  'sin-wave-explorer': SinWaveExplorer,
 }
 
 export function VisualizationEngine({ visualizationId, params = {} }) {
