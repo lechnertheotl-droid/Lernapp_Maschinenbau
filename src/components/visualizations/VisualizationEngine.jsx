@@ -5,6 +5,12 @@ import { VectorDiagram } from './VectorDiagram'
 import { TrigExplorer } from './TrigExplorer'
 import { LimitExplorer } from './LimitExplorer'
 import { SinWaveExplorer } from './SinWaveExplorer'
+import { ForceParallelogram } from './ForceParallelogram'
+import { BeamReactions } from './BeamReactions'
+import { StressStrainDiagram } from './StressStrainDiagram'
+import { SpringMassDamper } from './SpringMassDamper'
+import { MohrCircle } from './MohrCircle'
+import { PVDiagram } from './PVDiagram'
 
 const VIZ_MAP = {
   'unit-circle':      UnitCircle,
@@ -14,6 +20,12 @@ const VIZ_MAP = {
   'trig-explorer':    TrigExplorer,
   'limit-explorer':   LimitExplorer,
   'sin-wave-explorer': SinWaveExplorer,
+  'force-parallelogram': ForceParallelogram,
+  'beam-reactions':   BeamReactions,
+  'stress-strain':    StressStrainDiagram,
+  'spring-mass-damper': SpringMassDamper,
+  'mohr-circle':      MohrCircle,
+  'pv-diagram':       PVDiagram,
 }
 
 export function VisualizationEngine({ visualizationId, params = {} }) {

@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAppState } from '@/context/AppContext'
+import { useAppState, useAppDispatch } from '@/context/AppContext'
+import { ACTIONS } from '@/context/appReducer'
 import { getAllTopics, getAllLessons } from '@/content/index'
 import { getDueItems } from '@/utils/reviewScheduler'
 import { computeTopicProgress } from '@/utils/progressLogic'
@@ -17,8 +19,10 @@ const DIFF_LABEL = ['', 'Einsteiger', 'Grundlagen', 'Mittel', 'Fortgeschr.', 'Ex
 
 export function Dashboard() {
   const state    = useAppState()
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const topics   = getAllTopics()
+  const [showReset, setShowReset] = useState(false)
   const due      = getDueItems(state.review.queue, Date.now())
 
   const lastActive = Object.entries(state.progress.topicProgress)
@@ -140,6 +144,39 @@ export function Dashboard() {
             )
           })}
         </div>
+      </div>
+
+      {/* ── Reset progress ───────────────────────────────────────── */}
+      <div className="mt-2 mb-6">
+        {!showReset ? (
+          <button
+            onClick={() => setShowReset(true)}
+            className="w-full text-center font-mono text-xs text-ink-soft hover:text-red-600 transition-colors py-2"
+          >
+            Fortschritt zurücksetzen…
+          </button>
+        ) : (
+          <div className="bg-red-50 border-2 border-red-600 rounded-retro p-4 shadow-hard-red animate-pop">
+            <p className="font-black text-red-700 text-sm mb-1">Alles zurücksetzen?</p>
+            <p className="text-xs text-red-600/80 mb-3">
+              Alle Lektionen, Aufgaben und der Wiederholungsplan werden gelöscht. Dein Name bleibt erhalten.
+            </p>
+            <div className="flex gap-2">
+              <button
+                onClick={() => { dispatch({ type: ACTIONS.RESET_PROGRESS }); setShowReset(false) }}
+                className="flex-1 py-2.5 bg-red-600 text-white font-mono font-black text-xs uppercase tracking-wider rounded-retro border-2 border-red-800 shadow-hard-red retro-press"
+              >
+                Ja, zurücksetzen
+              </button>
+              <button
+                onClick={() => setShowReset(false)}
+                className="flex-1 py-2.5 bg-white text-ink font-mono font-black text-xs uppercase tracking-wider rounded-retro border-2 border-ink shadow-hard-sm retro-press"
+              >
+                Abbrechen
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )

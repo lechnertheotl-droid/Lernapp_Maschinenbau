@@ -79,7 +79,7 @@ const BASIC_ROWS = [
   ['4', 'num:4', 'num'], ['5', 'num:5', 'num'], ['6', 'num:6', 'num'], ['×', 'sym:×', 'op'],
   ['1', 'num:1', 'num'], ['2', 'num:2', 'num'], ['3', 'num:3', 'num'], ['−', 'sym:−', 'op'],
   ['0', 'num:0', 'num'], ['.', 'sym:.', 'num'], ['π', 'sym:π', 'sci'], ['+', 'sym:+', 'op'],
-  ['√', 'fn:sqrt', 'sci'], ['x²', 'sq', 'sci'], ['x³', 'cube', 'sci'], ['=', 'eq', 'eq'],
+  ['√', 'fn:sqrt', 'sci'], ['x²', 'sq', 'sci'], ['xʸ', 'sym:^', 'sci'], ['=', 'eq', 'eq'],
 ]
 
 const FUNCTION_ROWS = [

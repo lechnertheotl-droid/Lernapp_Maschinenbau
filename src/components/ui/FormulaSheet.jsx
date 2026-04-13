@@ -235,6 +235,39 @@ const FORMULAS = {
       },
     ],
   },
+  'python-matlab': {
+    title: 'Python & Matlab',
+    sections: [
+      {
+        name: 'Python ↔ Matlab',
+        items: [
+          { label: 'Index Start', formula: 'Python: 0 | Matlab: 1' },
+          { label: 'Matrixmult.', formula: 'Python: @ | Matlab: *' },
+          { label: 'Elementweise', formula: 'Python: * | Matlab: .*' },
+          { label: 'Potenz', formula: 'Python: ** | Matlab: ^' },
+          { label: 'LGS lösen', formula: 'np.linalg.solve | A\\b' },
+        ],
+      },
+      {
+        name: 'NumPy Essentials',
+        items: [
+          { label: 'Nullmatrix', formula: 'np.zeros((m, n))' },
+          { label: 'Einheitsmatrix', formula: 'np.eye(n)' },
+          { label: 'Gleichverteilt', formula: 'np.linspace(a, b, n)' },
+          { label: 'Mittelwert', formula: 'np.mean(a)' },
+        ],
+      },
+      {
+        name: 'SciPy Solver',
+        items: [
+          { label: 'Nullstelle', formula: 'fsolve(f, x0)' },
+          { label: 'Integral', formula: 'quad(f, a, b)' },
+          { label: 'DGL', formula: 'solve_ivp(f, [t0,t1], y0)' },
+          { label: 'Minimierung', formula: 'minimize(f, x0)' },
+        ],
+      },
+    ],
+  },
 }
 
 // ── Component ─────────────────────────────────────────────────────────────────

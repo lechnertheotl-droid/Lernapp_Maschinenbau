@@ -1,20 +1,28 @@
 import { trigonometryTopic } from './mathematics/trigonometry/index'
 import { ableitungTopic }    from './mathematics/ableitung/index'
 import { vektorenTopic }     from './mathematics/vektoren/index'
-import { algebraTopic }      from './mathematics/algebra/index'
+import { algebraTopic }          from './mathematics/algebra/index'
+import { lineareAlgebraTopic }   from './mathematics/lineare_algebra/index'
+import { integralrechnungTopic } from './mathematics/integralrechnung/index'
+import { dglTopic }             from './mathematics/dgl/index'
 import { engineeringTopics } from './engineering/maschinenbau'
+import { pythonMatlabTopic }  from './programming/python_matlab'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
 const BASE_TOPICS = {
   trigonometry: trigonometryTopic,
   ableitung:    ableitungTopic,
   vektoren:     vektorenTopic,
-  algebra:      algebraTopic,
+  algebra:          algebraTopic,
+  'lineare-algebra': lineareAlgebraTopic,
+  integralrechnung:  integralrechnungTopic,
+  differentialgleichungen: dglTopic,
 }
 
 const TOPICS = {
   ...BASE_TOPICS,
   ...Object.fromEntries(engineeringTopics.map((topic) => [topic.id, topic])),
+  'python-matlab': pythonMatlabTopic,
 }
 
 export function getAllTopics() {

@@ -1,5 +1,5 @@
 import { evaluateAttempt } from '@/utils/masteryCheck'
-import { buildReviewQueue } from '@/utils/reviewScheduler'
+import { buildReviewQueue, updateEaseFactor } from '@/utils/reviewScheduler'
 
 // ── Action Types ──────────────────────────────────────────────────────────────
 export const ACTIONS = {
@@ -202,12 +202,17 @@ export function appReducer(state, action) {
 
     case ACTIONS.COMPLETE_REVIEW: {
       const { lessonId, isCorrect } = action
+      const prev = state.mastery[lessonId] ?? {}
+      const quality = isCorrect ? 5 : 1
+      const newEase = updateEaseFactor(prev.easeFactor, quality)
       const updatedMastery = {
         ...state.mastery,
         [lessonId]: {
-          ...(state.mastery[lessonId] ?? {}),
-          reviewCount: (state.mastery[lessonId]?.reviewCount ?? 0) + 1,
+          ...prev,
+          reviewCount: isCorrect ? (prev.reviewCount ?? 0) + 1 : 0,
+          consecutiveCorrect: isCorrect ? (prev.consecutiveCorrect ?? 0) + 1 : 0,
           status: isCorrect ? 'secure' : 'review',
+          easeFactor: newEase,
           lastPracticeDate: new Date().toISOString(),
         },
       }

@@ -8,6 +8,7 @@ import { Modal } from '@/components/ui/Modal'
 import { Button } from '@/components/ui/Button'
 import { Calculator } from '@/components/ui/Calculator'
 import { FormulaSheet, hasFormulas } from '@/components/ui/FormulaSheet'
+import { VariableGlossary } from '@/components/ui/VariableGlossary'
 
 export function LessonView() {
   const { topicId, lessonId } = useParams()
@@ -18,6 +19,7 @@ export function LessonView() {
   const [showComplete, setShowComplete] = useState(false)
   const [showCalculator, setShowCalculator] = useState(false)
   const [showFormulaSheet, setShowFormulaSheet] = useState(false)
+  const [showVariables, setShowVariables] = useState(false)
 
   const tp           = state.progress.topicProgress[topicId]
   const currentIndex = tp?.currentStepIndex ?? 0
@@ -80,6 +82,14 @@ export function LessonView() {
           </div>
         </div>
         <div className="flex items-center gap-1.5">
+          <button
+            type="button"
+            onClick={() => setShowVariables(true)}
+            className="w-10 h-10 flex items-center justify-center rounded-retro border-2 border-ink bg-white shadow-hard-sm text-ink tap-highlight-none retro-press font-mono text-[11px] font-black"
+            aria-label="Variablen-Glossar öffnen"
+          >
+            x,y
+          </button>
           {canShowFormulas && (
             <button
               type="button"
@@ -173,6 +183,7 @@ export function LessonView() {
         onClose={() => setShowFormulaSheet(false)}
         topicId={topicId}
       />
+      <VariableGlossary isOpen={showVariables} onClose={() => setShowVariables(false)} />
     </div>
   )
 }

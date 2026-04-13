@@ -1,14 +1,16 @@
 import { abl_unit1 } from './unit1_grundlagen'
+import { abl_unit2 } from './unit2_rechenregeln'
+import { abl_unit3 } from './unit3_kurvendiskussion'
 
 export const ableitungTopic = {
   id: 'ableitung',
-  title: 'Ableitung',
-  description: 'Differentialrechnung: Ableitungsregeln, Kettenregel, Extremwerte & Kurvendiskussion',
+  title: 'Differentialrechnung',
+  description: 'Ableitungsbegriff, Rechenregeln, Kurvendiskussion — zentral für technische Anwendungen',
   subject: 'mathematics',
-  icon: 'DIF',
-  color: 'green',
-  estimatedHours: 5,
+  icon: '📈',
+  color: 'indigo',
+  estimatedHours: 7,
   difficulty: 3,
-  units: [abl_unit1],
-  prerequisites: [],
+  units: [abl_unit1, abl_unit2, abl_unit3],
+  prerequisites: ['algebra'],
 }

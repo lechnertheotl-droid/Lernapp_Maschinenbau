@@ -7,6 +7,8 @@ import { useToast } from '@/components/ui/Toast'
 import { MultipleChoice, validate as validateMC } from './MultipleChoice'
 import { TrueFalse, validate as validateTF } from './TrueFalse'
 import { NumberInput, validate as validateNI } from './NumberInput'
+import { Matching, validate as validateMA } from './Matching'
+import { Sorting, validate as validateSO } from './Sorting'
 import { HintSystem } from '@/components/lesson/HintSystem'
 import { FeedbackDisplay } from '@/components/lesson/FeedbackDisplay'
 import { Calculator } from '@/components/ui/Calculator'
@@ -15,6 +17,8 @@ const EXERCISE_COMPONENTS = {
   'multiple-choice': { Component: MultipleChoice, validate: validateMC },
   'true-false':      { Component: TrueFalse,      validate: validateTF },
   'number-input':    { Component: NumberInput,     validate: validateNI },
+  'matching':        { Component: Matching,        validate: validateMA },
+  'sorting':         { Component: Sorting,         validate: validateSO },
 }
 
 export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }) {
