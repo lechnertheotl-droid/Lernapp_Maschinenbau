@@ -19,12 +19,16 @@ function sorting(question, items, correctOrder, explanation, hints = []) {
 }
 
 function bank(profile) {
+  const sortingSlot = profile.sortingOverride
+    ? mc(profile.sortingOverride.question, profile.sortingOverride.options, profile.sortingOverride.correctIndex, profile.sortingOverride.explanation, profile.sortingOverride.hints)
+    : sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints)
+
   return [
     mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints),
     ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints),
     tf(profile.trueFalseStatement, profile.trueFalseCorrect, profile.trueFalseExplanation, profile.trueFalseHints),
     matching(profile.matchingQuestion, profile.matchingPairs, profile.matchingExplanation, profile.matchingHints),
-    sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints),
+    sortingSlot,
     mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints),
     ni(profile.transferQuestion, profile.transferAnswer, profile.transferTolerance, profile.transferUnit, profile.transferExplanation, profile.transferHints),
   ]
@@ -366,11 +370,18 @@ const profiles = {
     matchingPairs: [{ left: 'Definitionsbereich', right: 'erlaubte x-Werte' }, { left: 'Wertebereich', right: 'mögliche y-Werte' }, { left: 'bijektiv', right: 'injektiv und surjektiv' }],
     matchingExplanation: 'Diese Begriffe sind Grundlage für Umkehrfunktionen und Modellfunktionen.',
     matchingHints: ['Definition = Eingaben.', 'Wertebereich = Ausgaben.'],
-    sortingQuestion: 'Bringe die Funktionsprüfung einer Zuordnung in die richtige Reihenfolge.',
-    sortingItems: ['Eingabemenge ansehen', 'für jeden Eingang die Ausgänge prüfen', 'Eindeutigkeit kontrollieren', 'Definitionsbereich notieren', 'Wertebereich bestimmen'],
-    sortingOrder: [0, 1, 2, 3, 4],
-    sortingExplanation: 'Erst muss klar sein, ob die Zuordnung überhaupt eine Funktion ist. Danach sind Definitions- und Wertebereich sinnvoll.',
-    sortingHints: ['Eindeutigkeit kommt vor Wertebereich.', 'Jeder Eingang darf nur einen Ausgang haben.'],
+    sortingOverride: {
+      question: 'Welcher Schritt muss bei der Funktionsprüfung einer Zuordnung zwingend als erstes erfolgen?',
+      options: [
+        'Eindeutigkeit prüfen – hat jeder Eingang genau einen Ausgang?',
+        'Wertebereich bestimmen',
+        'Definitionsbereich notieren',
+        'Den Graphen zeichnen',
+      ],
+      correctIndex: 0,
+      explanation: 'Die Eindeutigkeit ist das Kernkriterium einer Funktion. Erst wenn jeder Eingang genau einen Ausgang hat, macht es Sinn, Definitions- und Wertebereich zu bestimmen.',
+      hints: ['Eine Funktion ist per Definition eindeutig.', 'Ohne Eindeutigkeitsprüfung ist alles Weitere sinnlos.'],
+    },
     errorQuestion: 'Welche Aussage ist falsch?',
     errorOptions: ['Eine Funktion darf einem x-Wert beliebig viele y-Werte zuordnen', 'Eine Funktion hat einen Definitionsbereich', 'f(2) ist der Funktionswert bei x=2', 'Bijektiv bedeutet injektiv und surjektiv'],
     errorCorrect: 0,

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { getNextHint } from '@/utils/hints'
+import { MathText } from '@/components/ui/MathText'
 
 export function HintSystem({ hints = [], disabled }) {
   const [currentIndex, setCurrentIndex] = useState(-1)
@@ -14,7 +15,7 @@ export function HintSystem({ hints = [], disabled }) {
       {revealedHints.map((hint, i) => (
         <div key={i} className="flex gap-2 items-start bg-lemon-light border-2 border-ink rounded-retro px-3 py-2 text-sm text-ink animate-fade-in shadow-hard-sm">
           <span className="text-primary-700 mt-0.5 font-mono font-black">!</span>
-          <span>{hint}</span>
+          <MathText>{hint}</MathText>
         </div>
       ))}
 

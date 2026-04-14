@@ -30,12 +30,16 @@ function withExamPrefix(exercise, exam) {
 }
 
 function bank(profile) {
+  const sortingSlot = profile.sortingOverride
+    ? mc(profile.sortingOverride.question, profile.sortingOverride.options, profile.sortingOverride.correctIndex, profile.sortingOverride.explanation, profile.sortingOverride.hints)
+    : sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints)
+
   const exercises = [
     mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints),
     ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints),
     tf(profile.trueFalseStatement, profile.trueFalseCorrect, profile.trueFalseExplanation, profile.trueFalseHints),
     matching(profile.matchingQuestion, profile.matchingPairs, profile.matchingExplanation, profile.matchingHints),
-    sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints),
+    sortingSlot,
     mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints),
     ni(profile.transferQuestion, profile.transferAnswer, profile.transferTolerance, profile.transferUnit, profile.transferExplanation, profile.transferHints),
   ]
@@ -140,11 +144,13 @@ const profiles = {
     matchingPairs: [{ left: 'sin30°', right: '1/2' }, { left: 'cos45°', right: '√2/2' }, { left: 'cos60°', right: '1/2' }],
     matchingExplanation: 'Diese Werte müssen abrufbar sein, bevor Additionstheoreme sinnvoll trainiert werden.',
     matchingHints: ['Sinus-Reihe steigt von 0 auf 1.', 'Kosinus-Reihe fällt von 1 auf 0.'],
-    sortingQuestion: 'Sortiere die Sinuswerte von 0° bis 90° aufsteigend.',
-    sortingItems: ['sin0° = 0', 'sin30° = 1/2', 'sin45° = √2/2', 'sin60° = √3/2', 'sin90° = 1'],
-    sortingOrder: [0, 1, 2, 3, 4],
-    sortingExplanation: 'Sinus steigt im ersten Quadranten monoton von 0 auf 1.',
-    sortingHints: ['0° unten am Kreis, 90° oben.', 'Die Wurzelzähler laufen 0,1,2,3,4.'],
+    sortingOverride: {
+      question: 'Welcher der folgenden Sinuswerte ist am größten?',
+      options: ['sin0°', 'sin30°', 'sin60°', 'sin90°'],
+      correctIndex: 3,
+      explanation: 'Sinus steigt im ersten Quadranten monoton von 0 (bei 0°) bis 1 (bei 90°). sin90° = 1 ist der größte Wert.',
+      hints: ['Sinus wächst zwischen 0° und 90° monoton.', 'sin90° erreicht das Maximum 1.'],
+    },
     errorQuestion: 'Welcher Grundwert ist falsch?',
     errorOptions: ['sin30°=1/2', 'cos60°=1/2', 'tan45°=1', 'cos90°=1'],
     errorCorrect: 3,

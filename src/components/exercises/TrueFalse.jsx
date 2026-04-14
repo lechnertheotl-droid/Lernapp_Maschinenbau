@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { cn } from '@/utils/cn'
+import { MathText } from '@/components/ui/MathText'
 
 export function validate(answer, exercise) {
   const expected = 'correct' in exercise ? exercise.correct : exercise.isTrue
@@ -16,7 +17,7 @@ export function TrueFalse({ exercise, onSubmit, disabled }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-base font-black text-ink leading-relaxed">{exercise.statement ?? exercise.question}</p>
+      <MathText className="text-base font-black text-ink leading-relaxed block">{exercise.statement ?? exercise.question}</MathText>
       <div className="grid grid-cols-2 gap-3">
         {[{ label: 'Richtig', val: true, color: 'border-green-800 bg-green-600 text-white shadow-hard-green' },
           { label: 'Falsch', val: false, color: 'border-red-800 bg-red-600 text-white shadow-hard-red' }

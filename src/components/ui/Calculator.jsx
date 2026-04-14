@@ -54,7 +54,7 @@ function calcEval(expr, isDeg) {
   }
 }
 
-// ── Equation solver ──────────────────────────────────────────────────────────
+// ── Equation solver (single variable) ────────────────────────────────────────
 function solveEquation(eqStr, isDeg) {
   try {
     // Split on '=' — must have exactly one
@@ -70,16 +70,36 @@ function solveEquation(eqStr, isDeg) {
     const varMatch = cleaned.match(/[a-z]/i)
     const v = varMatch ? varMatch[0] : 'x'
 
+    return solveForVar(eqStr, v, isDeg)
+  } catch {
+    return { error: 'Ungültige Gleichung' }
+  }
+}
+
+function escapeRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+function solveForVar(eqStr, v, isDeg) {
+  try {
+    const parts = eqStr.split('=')
+    if (parts.length !== 2) return { error: 'Genau ein = erwartet' }
+    const [lhs, rhs] = parts.map(s => s.trim())
+
     // Build f(v) = lhs - rhs, evaluate numerically
     const buildFn = (val) => {
       const substitute = (expr) => {
-        // Replace variable with value, handling implicit multiplication: 2x → 2*x
+        const re = new RegExp(`(\\d)(${escapeRegex(v)})`, 'g')
+        const re2 = new RegExp(`(${escapeRegex(v)})(\\d)`, 'g')
+        const re3 = new RegExp(`(\\))(${escapeRegex(v)})`, 'g')
+        const re4 = new RegExp(`(${escapeRegex(v)})(\\()`, 'g')
+        const reV = new RegExp(escapeRegex(v), 'g')
         return expr
-          .replace(new RegExp(`(\\d)(${v})`, 'g'), '$1*$2')
-          .replace(new RegExp(`(${v})(\\d)`, 'g'), '$1*$2')
-          .replace(new RegExp(`(\\))(${v})`, 'g'), '$1*$2')
-          .replace(new RegExp(`(${v})(\\()`, 'g'), '$1*$2')
-          .replace(new RegExp(v, 'g'), `(${val})`)
+          .replace(re, '$1*$2')
+          .replace(re2, '$1*$2')
+          .replace(re3, '$1*$2')
+          .replace(re4, '$1*$2')
+          .replace(reV, `(${val})`)
       }
       const lEval = calcEval(substitute(lhs), isDeg)
       const rEval = calcEval(substitute(rhs), isDeg)
@@ -87,7 +107,7 @@ function solveEquation(eqStr, isDeg) {
       return lEval - rEval
     }
 
-    // Try multiple starting points (Newton's method can miss with bad initial guess)
+    // Newton-Raphson with multiple starting points
     const h = 1e-8
     const starts = [0, 1, -1, 5, -5, 10, -10, 0.5, -0.5, 100, -100, 0.01, Math.PI]
     let bestSolution = null
@@ -103,7 +123,7 @@ function solveEquation(eqStr, isDeg) {
         const fxh = buildFn(x + h)
         if (fxh === null) break
         const deriv = (fxh - fx) / h
-        if (Math.abs(deriv) < 1e-15) break // flat region
+        if (Math.abs(deriv) < 1e-15) break
 
         const step = fx / deriv
         x = x - step
@@ -121,7 +141,6 @@ function solveEquation(eqStr, isDeg) {
     }
 
     if (bestSolution !== null && bestResidual < 1e-6) {
-      // Round near-integers
       const rounded = Math.round(bestSolution * 1e8) / 1e8
       return { variable: v, value: parseFloat(rounded.toPrecision(10)) }
     }
@@ -130,6 +149,54 @@ function solveEquation(eqStr, isDeg) {
   } catch {
     return { error: 'Ungültige Gleichung' }
   }
+}
+
+// ── Multi-variable solver ─────────────────────────────────────────────────────
+function solveWithVars(equation, vars, targetVar, isDeg) {
+  try {
+    // Substitute all known vars into equation (longest names first to avoid partial matches)
+    const knownVars = vars.filter(v => v.name.trim() && v.value.trim() && v.name.trim() !== targetVar.trim())
+    const sortedByLength = [...knownVars].sort((a, b) => b.name.length - a.name.length)
+
+    let substituted = equation
+    for (const { name, value } of sortedByLength) {
+      const num = parseFloat(value.replace(',', '.'))
+      if (isNaN(num)) return { error: `Ungültiger Wert für ${name}` }
+      const re = new RegExp(`\\b${escapeRegex(name)}\\b`, 'g')
+      substituted = substituted.replace(re, `(${num})`)
+    }
+
+    const target = targetVar.trim()
+    if (!target) return { error: 'Gesuchte Variable angeben' }
+
+    // Check if target still in equation
+    const targetRe = new RegExp(`\\b${escapeRegex(target)}\\b`)
+    if (!targetRe.test(substituted)) {
+      // No unknown left — evaluate directly
+      const parts = substituted.split('=')
+      if (parts.length === 2) {
+        const lVal = calcEval(parts[0].trim(), isDeg)
+        const rVal = calcEval(parts[1].trim(), isDeg)
+        if (lVal !== null && rVal !== null) {
+          const diff = Math.abs(lVal - rVal)
+          return { variable: target, value: lVal, note: diff < 1e-6 ? 'Gleichung erfüllt' : 'Widerspruch' }
+        }
+      }
+      return { error: 'Variable nicht in Gleichung gefunden' }
+    }
+
+    return solveForVar(substituted, target, isDeg)
+  } catch {
+    return { error: 'Fehler bei der Berechnung' }
+  }
+}
+
+// ── Detect variable names in an equation ─────────────────────────────────────
+function detectVarsInEquation(equation) {
+  const funcNames = new Set(['sin', 'cos', 'tan', 'asin', 'acos', 'atan', 'arcsin', 'arccos', 'arctan', 'ln', 'log', 'sqrt', 'cbrt', 'abs', 'exp'])
+  const cleaned = equation.replace(/\b(sin|cos|tan|asin|acos|atan|arcsin|arccos|arctan|ln|log|sqrt|cbrt|abs|exp)\b/g, '')
+  const matches = cleaned.match(/[a-zA-Z_][a-zA-Z0-9_]*/g) ?? []
+  return [...new Set(matches)].filter(m => !funcNames.has(m))
 }
 
 function formatResult(val) {
@@ -188,6 +255,154 @@ const cellStyles = {
   eq: 'bg-lemon text-ink hover:bg-lemon-dark border-lemon-dark font-black text-lg',
 }
 
+// ── Multi-tab panel ───────────────────────────────────────────────────────────
+function MultiPanel({ isDeg }) {
+  const [vars, setVars] = useState([
+    { name: '', value: '' },
+    { name: '', value: '' },
+  ])
+  const [equation, setEquation] = useState('')
+  const [targetVar, setTargetVar] = useState('')
+  const [result, setResult] = useState(null)
+
+  const detectedVars = detectVarsInEquation(equation)
+  const knownNames = new Set(vars.map(v => v.name.trim()).filter(Boolean))
+  const unknowns = detectedVars.filter(v => !knownNames.has(v) || vars.find(r => r.name.trim() === v)?.value.trim() === '')
+
+  function addVar() {
+    setVars(prev => [...prev, { name: '', value: '' }])
+  }
+
+  function removeVar(i) {
+    setVars(prev => prev.filter((_, idx) => idx !== i))
+  }
+
+  function updateVar(i, field, val) {
+    setVars(prev => prev.map((v, idx) => idx === i ? { ...v, [field]: val } : v))
+  }
+
+  function handleSolve() {
+    if (!equation.trim() || !targetVar.trim()) return
+    const res = solveWithVars(equation, vars, targetVar, isDeg)
+    setResult(res)
+  }
+
+  const resultText = result
+    ? result.error
+      ? result.error
+      : `${result.variable} = ${formatResult(result.value)}`
+    : null
+
+  return (
+    <div className="flex flex-col gap-0 overflow-y-auto max-h-[calc(100dvh-180px)]">
+      {/* Result display */}
+      <div className="px-4 py-2 bg-green-950 border-b-2 border-ink min-h-[52px] flex items-center justify-end">
+        <p className={cn(
+          'font-mono font-bold text-right text-xl leading-tight',
+          !result ? 'text-green-400/50 text-sm' : result.error ? 'text-red-400' : 'text-green-300'
+        )}>
+          {resultText ?? 'Ergebnis erscheint hier'}
+        </p>
+      </div>
+
+      <div className="p-3 flex flex-col gap-3">
+        {/* Hint */}
+        <p className="text-[10px] font-mono text-ink-soft text-center">Werte in SI-Einheiten (K, Pa, m³, …)</p>
+
+        {/* Variables */}
+        <div className="flex flex-col gap-1.5">
+          <p className="text-[10px] font-mono font-bold text-primary-700 uppercase tracking-widest">Bekannte Variablen</p>
+          {vars.map((v, i) => (
+            <div key={i} className="flex items-center gap-1.5">
+              <input
+                type="text"
+                value={v.name}
+                onChange={e => updateVar(i, 'name', e.target.value)}
+                placeholder="Name"
+                className="w-20 h-9 px-2 border-2 border-ink rounded-retro font-mono text-sm bg-white focus:outline-none focus:border-primary-700"
+              />
+              <span className="font-mono text-ink font-black">=</span>
+              <input
+                inputMode="decimal"
+                type="text"
+                value={v.value}
+                onChange={e => updateVar(i, 'value', e.target.value)}
+                placeholder="Wert"
+                className="flex-1 h-9 px-2 border-2 border-ink rounded-retro font-mono text-sm bg-white focus:outline-none focus:border-primary-700"
+              />
+              <button
+                type="button"
+                onClick={() => removeVar(i)}
+                className="w-8 h-9 flex items-center justify-center border-2 border-ink rounded-retro font-mono text-xs font-black bg-white text-ink-soft hover:bg-red-50 hover:text-red-600 tap-highlight-none"
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={addVar}
+            className="self-start text-xs font-mono font-black text-primary-700 hover:text-primary-900 underline underline-offset-2 tap-highlight-none"
+          >
+            + Variable hinzufügen
+          </button>
+        </div>
+
+        {/* Equation */}
+        <div className="flex flex-col gap-1">
+          <p className="text-[10px] font-mono font-bold text-primary-700 uppercase tracking-widest">Gleichung</p>
+          <input
+            type="text"
+            value={equation}
+            onChange={e => { setEquation(e.target.value); setResult(null) }}
+            placeholder="z.B. V_2/V_1 = T_2/T_1"
+            className="w-full h-10 px-3 border-2 border-ink rounded-retro font-mono text-sm bg-white focus:outline-none focus:border-primary-700"
+          />
+        </div>
+
+        {/* Target variable + solve */}
+        <div className="flex items-end gap-2">
+          <div className="flex flex-col gap-1 flex-1">
+            <p className="text-[10px] font-mono font-bold text-primary-700 uppercase tracking-widest">Gesucht</p>
+            {unknowns.length > 0 ? (
+              <select
+                value={targetVar}
+                onChange={e => { setTargetVar(e.target.value); setResult(null) }}
+                className="h-10 px-2 border-2 border-ink rounded-retro font-mono text-sm bg-white focus:outline-none focus:border-primary-700"
+              >
+                <option value="">– auswählen –</option>
+                {unknowns.map(v => <option key={v} value={v}>{v}</option>)}
+              </select>
+            ) : (
+              <input
+                type="text"
+                value={targetVar}
+                onChange={e => { setTargetVar(e.target.value); setResult(null) }}
+                placeholder="Variable"
+                className="h-10 px-2 border-2 border-ink rounded-retro font-mono text-sm bg-white focus:outline-none focus:border-primary-700"
+              />
+            )}
+          </div>
+          <button
+            type="button"
+            onClick={handleSolve}
+            disabled={!equation.trim() || !targetVar.trim()}
+            className={cn(
+              'h-10 px-5 border-2 rounded-retro font-mono text-sm font-black tap-highlight-none retro-press',
+              equation.trim() && targetVar.trim()
+                ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon'
+                : 'bg-surface-100 border-surface-300 text-ink-soft cursor-not-allowed'
+            )}
+          >
+            Lösen
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ── Main Calculator component ─────────────────────────────────────────────────
 export function Calculator({ isOpen, onClose }) {
   const [expr, setExpr] = useState('')
   const [isDeg, setIsDeg] = useState(true)
@@ -197,6 +412,7 @@ export function Calculator({ isOpen, onClose }) {
 
   const result = expr ? calcEval(expr, isDeg) : null
   const isSolver = page === 'solver'
+  const isMulti = page === 'multi'
   const displayExpr = expr ? (isSolver ? expr : formatExpression(expr)) : ' '
   const displayResult = isSolver
     ? (solverResult ? (solverResult.error ?? `${solverResult.variable} = ${formatResult(solverResult.value)}`) : 'Gleichung eingeben')
@@ -241,43 +457,56 @@ export function Calculator({ isOpen, onClose }) {
     <div className="fixed inset-0 z-[70] flex items-end justify-center">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm animate-fade-in" onClick={onClose} />
       <div className="relative w-full max-w-sm border-t-2 border-x-2 border-ink bg-paper animate-slide-in-up rounded-t-retro overflow-hidden shadow-hard-xl">
+
+        {/* Header */}
         <div className="flex items-center justify-between px-4 py-2.5 bg-ink border-b-2 border-ink">
           <div className="flex items-center gap-2">
             <span className="text-lemon font-mono font-black text-sm tracking-widest">RECHNER</span>
-            <button onClick={() => setIsDeg((d) => !d)} className="ml-1 flex items-center border border-surface-600 rounded overflow-hidden text-xs font-mono font-bold">
-              <span className={cn('px-2 py-0.5 transition-colors', isDeg ? 'bg-lemon text-ink' : 'text-surface-500')}>DEG</span>
-              <span className={cn('px-2 py-0.5 transition-colors', !isDeg ? 'bg-lemon text-ink' : 'text-surface-500')}>RAD</span>
-            </button>
+            {!isMulti && (
+              <button onClick={() => setIsDeg((d) => !d)} className="ml-1 flex items-center border border-surface-600 rounded overflow-hidden text-xs font-mono font-bold">
+                <span className={cn('px-2 py-0.5 transition-colors', isDeg ? 'bg-lemon text-ink' : 'text-surface-500')}>DEG</span>
+                <span className={cn('px-2 py-0.5 transition-colors', !isDeg ? 'bg-lemon text-ink' : 'text-surface-500')}>RAD</span>
+              </button>
+            )}
           </div>
           <button onClick={onClose} className="text-surface-400 hover:text-lemon text-lg leading-none font-mono transition-colors w-8 h-8 flex items-center justify-center">✕</button>
         </div>
 
-        <div className="px-4 py-3 bg-green-950 border-b-2 border-ink min-h-[78px] flex flex-col justify-end">
-          <p className="text-green-400/80 font-mono text-sm text-right truncate min-h-[20px]">{isSolver && !expr ? 'z.B. 2x+3=7' : displayExpr}</p>
-          <p className={cn('font-mono font-bold text-right text-3xl leading-tight',
-            isSolver
-              ? (solverResult?.error ? 'text-red-400' : solverResult ? 'text-green-300' : 'text-green-400/50 text-lg')
-              : (result === null && expr ? 'text-red-400' : 'text-green-300')
-          )}>{displayResult}</p>
-        </div>
+        {/* Display (hidden for multi tab) */}
+        {!isMulti && (
+          <div className="px-4 py-3 bg-green-950 border-b-2 border-ink min-h-[78px] flex flex-col justify-end">
+            <p className="text-green-400/80 font-mono text-sm text-right truncate min-h-[20px]">{isSolver && !expr ? 'z.B. 2x+3=7' : displayExpr}</p>
+            <p className={cn('font-mono font-bold text-right text-3xl leading-tight',
+              isSolver
+                ? (solverResult?.error ? 'text-red-400' : solverResult ? 'text-green-300' : 'text-green-400/50 text-lg')
+                : (result === null && expr ? 'text-red-400' : 'text-green-300')
+            )}>{displayResult}</p>
+          </div>
+        )}
 
-        <div className="grid grid-cols-3 gap-1.5 p-2 bg-paper border-b-2 border-ink">
-          {[['basic', 'Basis'], ['functions', 'f(x)'], ['solver', 'Löser']].map(([key, label]) => (
+        {/* Tab bar */}
+        <div className="grid grid-cols-4 gap-1.5 p-2 bg-paper border-b-2 border-ink">
+          {[['basic', 'Basis'], ['functions', 'f(x)'], ['solver', 'Löser'], ['multi', 'Multi']].map(([key, label]) => (
             <button key={key} type="button" onClick={() => { setPage(key); setSolverResult(null) }} className={cn('h-10 rounded-retro border-2 font-mono text-xs font-black uppercase tracking-wider retro-press', page === key ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon' : 'bg-white border-ink text-ink-soft shadow-hard-sm')}>{label}</button>
           ))}
         </div>
 
-        <div className="grid grid-cols-4 gap-px bg-ink p-px">
-          {rows.map(([label, action, style], i) => (
-            <button
-              key={`${page}-${i}-${label}`}
-              onClick={() => press(action)}
-              className={cn('h-14 flex items-center justify-center font-mono font-black text-sm transition-colors select-none tap-highlight-none active:brightness-75', cellStyles[style] ?? cellStyles.num)}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
+        {/* Content */}
+        {isMulti ? (
+          <MultiPanel isDeg={isDeg} />
+        ) : (
+          <div className="grid grid-cols-4 gap-px bg-ink p-px">
+            {rows.map(([label, action, style], i) => (
+              <button
+                key={`${page}-${i}-${label}`}
+                onClick={() => press(action)}
+                className={cn('h-14 flex items-center justify-center font-mono font-black text-sm transition-colors select-none tap-highlight-none active:brightness-75', cellStyles[style] ?? cellStyles.num)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        )}
 
         <div className="bg-paper" style={{ height: 'env(safe-area-inset-bottom, 0px)' }} />
       </div>

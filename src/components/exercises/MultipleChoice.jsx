@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { cn } from '@/utils/cn'
 import { Button } from '@/components/ui/Button'
+import { MathText } from '@/components/ui/MathText'
 
 export function validate(answer, exercise) {
   return { isCorrect: answer.selectedIndex === exercise.correctIndex }
@@ -13,7 +14,7 @@ export function MultipleChoice({ exercise, onSubmit, disabled }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-base font-black text-ink leading-relaxed">{exercise.question}</p>
+      <MathText className="text-base font-black text-ink leading-relaxed block">{exercise.question}</MathText>
 
       <div className="flex flex-col gap-2.5">
         {exercise.options.map((option, i) => (
@@ -36,7 +37,7 @@ export function MultipleChoice({ exercise, onSubmit, disabled }) {
             )}>
               {letters[i]}
             </span>
-            <span className="flex-1">{option}</span>
+            <MathText className="flex-1">{option}</MathText>
           </button>
         ))}
       </div>

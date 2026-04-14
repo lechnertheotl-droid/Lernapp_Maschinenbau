@@ -1,8 +1,10 @@
+import { useRef, useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import { cn } from '@/utils/cn'
+import { useFormulaPopover } from '@/utils/formulaPopoverContext'
 
 const markdownComponents = {
   table: ({ children }) => (
@@ -26,8 +28,41 @@ const markdownComponents = {
 }
 
 export function MarkdownContent({ children, className }) {
+  const containerRef = useRef(null)
+  const { setOpenLatex } = useFormulaPopover()
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    const mathSpans = container.querySelectorAll('.katex')
+    const handlers = []
+
+    mathSpans.forEach((span) => {
+      // KaTeX embeds the original LaTeX in <annotation encoding="application/x-tex">
+      const annotation = span.querySelector('annotation[encoding="application/x-tex"]')
+      const latex = annotation?.textContent?.trim()
+      if (!latex) return
+
+      span.classList.add('clickable-math')
+      const handler = (e) => {
+        e.stopPropagation()
+        setOpenLatex(latex)
+      }
+      span.addEventListener('click', handler)
+      handlers.push({ span, handler })
+    })
+
+    return () => {
+      handlers.forEach(({ span, handler }) => {
+        span.removeEventListener('click', handler)
+        span.classList.remove('clickable-math')
+      })
+    }
+  }, [children, setOpenLatex])
+
   return (
-    <div className={cn('markdown-content text-sm leading-relaxed text-surface-700', className)}>
+    <div ref={containerRef} className={cn('markdown-content text-sm leading-relaxed text-surface-700', className)}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkMath]}
         rehypePlugins={[rehypeKatex]}

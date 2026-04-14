@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
+import { MathText } from '@/components/ui/MathText'
 
 export function validate(answer, exercise) {
   const tolerance = exercise.tolerance ?? 0.01
@@ -19,7 +20,7 @@ export function NumberInput({ exercise, onSubmit, disabled }) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <p className="text-base font-black text-ink leading-relaxed">{exercise.question}</p>
+      <MathText className="text-base font-black text-ink leading-relaxed block">{exercise.question}</MathText>
 
       <div className="flex items-center gap-2">
         <input

@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { cn } from '@/utils/cn'
 import { Button } from '@/components/ui/Button'
+import { MathText } from '@/components/ui/MathText'
 
 const PAIR_COLORS = [
   'bg-primary-100 border-primary-700',
@@ -80,7 +81,7 @@ export function Matching({ exercise, onSubmit, disabled }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-base font-black text-ink leading-relaxed">{exercise.question}</p>
+      <MathText className="text-base font-black text-ink leading-relaxed block">{exercise.question}</MathText>
 
       <div className="grid grid-cols-2 gap-3">
         {/* Left column */}
@@ -103,7 +104,7 @@ export function Matching({ exercise, onSubmit, disabled }) {
                   disabled && 'opacity-60 cursor-not-allowed'
                 )}
               >
-                {entry.item}
+                <MathText>{entry.item}</MathText>
               </button>
             )
           })}
@@ -129,7 +130,7 @@ export function Matching({ exercise, onSubmit, disabled }) {
                   disabled && 'opacity-60 cursor-not-allowed'
                 )}
               >
-                {entry.item}
+                <MathText>{entry.item}</MathText>
               </button>
             )
           })}

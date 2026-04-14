@@ -115,6 +115,19 @@
   .markdown-content tr:nth-child(even) td { background: #f8f8f2; }
   .markdown-content tr:last-child td { border-bottom: none; }
 
+  /* ── Clickable math formulas ─────────────────────────────────────── */
+  .clickable-math {
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.1s ease;
+  }
+  .clickable-math:hover {
+    background-color: rgba(255, 214, 10, 0.25);
+  }
+  .clickable-math:active {
+    background-color: rgba(255, 214, 10, 0.5);
+  }
+
   /* ── Formula box (retro notebook style) ─────────────────────────── */
   .formula-box {
     background: #FFFDE7;
