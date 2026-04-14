@@ -30,8 +30,8 @@ export const exercises_alg_u3 = {
   },
   'ex-alg-3-1-c': {
     id: 'ex-alg-3-1-c', lessonId: 'alg-3-1', type: 'true-false',
-    question: 'f(x) = x² ist injektiv (verschiedene x-Werte haben verschiedene y-Werte).',
-    isTrue: false,
+    statement: 'f(x) = x² ist injektiv (verschiedene x-Werte haben verschiedene y-Werte).',
+    correct: false,
     explanation: 'f(2) = 4 und f(−2) = 4. Zwei verschiedene x-Werte haben denselben y-Wert → f ist **nicht injektiv**.',
     hints: ['Injektiv: Wenn f(x₁) = f(x₂), dann muss x₁ = x₂ gelten.'],
   },
@@ -153,8 +153,8 @@ export const exercises_alg_u3 = {
   },
   'ex-alg-3-4-c': {
     id: 'ex-alg-3-4-c', lessonId: 'alg-3-4', type: 'true-false',
-    question: 'Der Graph einer Umkehrfunktion f⁻¹ entsteht durch Spiegelung des Graphen von f an der Geraden y = x.',
-    isTrue: true,
+    statement: 'Der Graph einer Umkehrfunktion f⁻¹ entsteht durch Spiegelung des Graphen von f an der Geraden y = x.',
+    correct: true,
     explanation: 'Ja! Bei der Umkehrung werden x und y vertauscht. Geometrisch entspricht das einer **Spiegelung an y = x**. Deshalb sind z.B. eˣ und ln(x) spiegelsymmetrisch zu y = x.',
     hints: ['x und y tauschen → Punkt (a,b) wird zu (b,a) → Spiegelung an y = x.'],
   },

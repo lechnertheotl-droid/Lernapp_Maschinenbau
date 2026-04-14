@@ -69,8 +69,8 @@ export const exercises_dgl_u2 = {
   },
   'ex-dgl-2-2-b': {
     id: 'ex-dgl-2-2-b', lessonId: 'dgl-2-2', type: 'true-false',
-    question: 'Jede DGL höherer Ordnung lässt sich in ein System von DGL 1. Ordnung umschreiben.',
-    isTrue: true,
+    statement: 'Jede DGL höherer Ordnung lässt sich in ein System von DGL 1. Ordnung umschreiben.',
+    correct: true,
     explanation: 'Ja! Trick: Substitution $y_1 = y$, $y_2 = y\'$, $y_3 = y\'\'$, ... Zum Beispiel wird $y\'\' + 3y\' + 2y = 0$ zu: $y_1\' = y_2$ und $y_2\' = -3y_2 - 2y_1$.',
     hints: ['Einführung neuer Variablen für jede Ableitung.'],
   },

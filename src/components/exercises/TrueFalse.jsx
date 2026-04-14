@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { cn } from '@/utils/cn'
 
 export function validate(answer, exercise) {
-  return { isCorrect: answer.value === exercise.isTrue }
+  const expected = 'correct' in exercise ? exercise.correct : exercise.isTrue
+  return { isCorrect: answer.value === expected }
 }
 
 export function TrueFalse({ exercise, onSubmit, disabled }) {
@@ -15,7 +16,7 @@ export function TrueFalse({ exercise, onSubmit, disabled }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-base font-black text-ink leading-relaxed">{exercise.question}</p>
+      <p className="text-base font-black text-ink leading-relaxed">{exercise.statement ?? exercise.question}</p>
       <div className="grid grid-cols-2 gap-3">
         {[{ label: 'Richtig', val: true, color: 'border-green-800 bg-green-600 text-white shadow-hard-green' },
           { label: 'Falsch', val: false, color: 'border-red-800 bg-red-600 text-white shadow-hard-red' }

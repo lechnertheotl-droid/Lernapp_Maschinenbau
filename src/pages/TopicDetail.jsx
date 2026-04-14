@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useAppState } from '@/context/AppContext'
-import { getTopic } from '@/content/index'
+import { getTopic, isExamCompleted } from '@/content/index'
 import { cn } from '@/utils/cn'
 import { TopicIcon } from '@/components/ui/TopicIcon'
 
@@ -27,6 +27,7 @@ export function TopicDetail() {
   const completedLessons = tp?.completedLessons ?? []
   const totalLessons     = topic.units.flatMap((u) => u.lessons).length
   const pct              = totalLessons > 0 ? Math.round((completedLessons.length / totalLessons) * 100) : 0
+  const examDone         = isExamCompleted(topicId, completedLessons)
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-5 flex flex-col gap-5">
@@ -40,7 +41,12 @@ export function TopicDetail() {
       </button>
 
       {/* ── Topic header ─────────────────────────────────────────── */}
-      <div className="bg-ink border-2 border-ink rounded-retro shadow-hard-lg overflow-hidden">
+      <div className={cn('border-2 rounded-retro shadow-hard-lg overflow-hidden', examDone ? 'bg-lemon-dark border-lemon-dark' : 'bg-ink border-ink')}>
+        {examDone && (
+          <div className="px-5 py-2 bg-lemon text-ink font-mono font-black text-xs uppercase tracking-widest text-center border-b-2 border-lemon-dark">
+            Prüfung bestanden
+          </div>
+        )}
         <div className="px-5 py-4 flex items-start gap-4">
           <TopicIcon topic={topic} size="lg" className="mt-0.5" />
           <div className="flex-1 min-w-0">
@@ -58,7 +64,7 @@ export function TopicDetail() {
           </div>
           <div className="h-3 bg-surface-800 border border-surface-600 rounded-sm overflow-hidden">
             <div
-              className="h-full bg-lemon transition-all duration-700"
+              className={cn('h-full transition-all duration-700', examDone ? 'bg-lemon' : 'bg-lemon')}
               style={{ width: `${pct}%` }}
             />
           </div>
@@ -66,14 +72,18 @@ export function TopicDetail() {
       </div>
 
       {/* ── Units & Lessons ───────────────────────────────────────── */}
-      {topic.units.map((unit, ui) => (
+      {topic.units.map((unit, ui) => {
+        const isExamUnit = /prüfung/i.test(unit.title)
+        const unitDone = isExamUnit && unit.lessons.every((l) => completedLessons.includes(l.id))
+        return (
         <div key={unit.id}>
           {/* Unit header */}
           <div className="flex items-center gap-2.5 mb-2.5 px-0.5">
-            <div className="w-6 h-6 rounded-sm bg-ink text-lemon font-mono font-black text-xs flex items-center justify-center flex-shrink-0">
-              {unit.order}
+            <div className={cn('w-6 h-6 rounded-sm font-mono font-black text-xs flex items-center justify-center flex-shrink-0', unitDone ? 'bg-lemon text-ink' : 'bg-ink text-lemon')}>
+              {unitDone ? '✓' : unit.order}
             </div>
             <h2 className="font-black text-ink text-sm uppercase tracking-wide">{unit.title}</h2>
+            {unitDone && <span className="stamp text-lemon-dark">Bestanden</span>}
             <div className="flex-1 h-px bg-ink/20 ml-1" />
           </div>
 
@@ -119,7 +129,7 @@ export function TopicDetail() {
             })}
           </div>
         </div>
-      ))}
+      )})}
     </div>
   )
 }

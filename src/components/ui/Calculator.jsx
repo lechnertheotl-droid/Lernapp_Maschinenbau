@@ -54,6 +54,84 @@ function calcEval(expr, isDeg) {
   }
 }
 
+// ── Equation solver ──────────────────────────────────────────────────────────
+function solveEquation(eqStr, isDeg) {
+  try {
+    // Split on '=' — must have exactly one
+    const parts = eqStr.split('=')
+    if (parts.length !== 2) return { error: 'Genau ein = erwartet' }
+
+    const [lhs, rhs] = parts.map(s => s.trim())
+    if (!lhs || !rhs) return { error: 'Beide Seiten ausfüllen' }
+
+    // Detect variable (x, t, or first lowercase letter that isn't a function name)
+    const funcNames = /\b(sin|cos|tan|asin|acos|atan|arcsin|arccos|arctan|ln|log|sqrt|cbrt|abs|exp)\b/g
+    const cleaned = eqStr.replace(funcNames, '')
+    const varMatch = cleaned.match(/[a-z]/i)
+    const v = varMatch ? varMatch[0] : 'x'
+
+    // Build f(v) = lhs - rhs, evaluate numerically
+    const buildFn = (val) => {
+      const substitute = (expr) => {
+        // Replace variable with value, handling implicit multiplication: 2x → 2*x
+        return expr
+          .replace(new RegExp(`(\\d)(${v})`, 'g'), '$1*$2')
+          .replace(new RegExp(`(${v})(\\d)`, 'g'), '$1*$2')
+          .replace(new RegExp(`(\\))(${v})`, 'g'), '$1*$2')
+          .replace(new RegExp(`(${v})(\\()`, 'g'), '$1*$2')
+          .replace(new RegExp(v, 'g'), `(${val})`)
+      }
+      const lEval = calcEval(substitute(lhs), isDeg)
+      const rEval = calcEval(substitute(rhs), isDeg)
+      if (lEval === null || rEval === null) return null
+      return lEval - rEval
+    }
+
+    // Try multiple starting points (Newton's method can miss with bad initial guess)
+    const h = 1e-8
+    const starts = [0, 1, -1, 5, -5, 10, -10, 0.5, -0.5, 100, -100, 0.01, Math.PI]
+    let bestSolution = null
+    let bestResidual = Infinity
+
+    for (const x0 of starts) {
+      let x = x0
+      for (let i = 0; i < 200; i++) {
+        const fx = buildFn(x)
+        if (fx === null) break
+        if (Math.abs(fx) < 1e-12) break
+
+        const fxh = buildFn(x + h)
+        if (fxh === null) break
+        const deriv = (fxh - fx) / h
+        if (Math.abs(deriv) < 1e-15) break // flat region
+
+        const step = fx / deriv
+        x = x - step
+        if (!isFinite(x)) break
+        if (Math.abs(fx) < 1e-10) break
+      }
+
+      if (isFinite(x)) {
+        const residual = Math.abs(buildFn(x) ?? Infinity)
+        if (residual < bestResidual) {
+          bestResidual = residual
+          bestSolution = x
+        }
+      }
+    }
+
+    if (bestSolution !== null && bestResidual < 1e-6) {
+      // Round near-integers
+      const rounded = Math.round(bestSolution * 1e8) / 1e8
+      return { variable: v, value: parseFloat(rounded.toPrecision(10)) }
+    }
+
+    return { error: 'Keine Lösung gefunden' }
+  } catch {
+    return { error: 'Ungültige Gleichung' }
+  }
+}
+
 function formatResult(val) {
   if (val === null) return 'Fehler'
   const s = String(val)
@@ -91,6 +169,15 @@ const FUNCTION_ROWS = [
   ['AC', 'ac', 'clear'], ['⌫', 'del', 'del'], ['(', 'sym:(', 'paren'], [')', 'sym:)', 'paren'],
 ]
 
+const SOLVER_ROWS = [
+  ['x', 'sym:x', 'sci'], ['=', 'sym:=', 'op'], ['(', 'sym:(', 'paren'], [')', 'sym:)', 'paren'],
+  ['7', 'num:7', 'num'], ['8', 'num:8', 'num'], ['9', 'num:9', 'num'], ['÷', 'sym:÷', 'op'],
+  ['4', 'num:4', 'num'], ['5', 'num:5', 'num'], ['6', 'num:6', 'num'], ['×', 'sym:×', 'op'],
+  ['1', 'num:1', 'num'], ['2', 'num:2', 'num'], ['3', 'num:3', 'num'], ['−', 'sym:−', 'op'],
+  ['0', 'num:0', 'num'], ['.', 'sym:.', 'num'], ['π', 'sym:π', 'sci'], ['+', 'sym:+', 'op'],
+  ['AC', 'ac', 'clear'], ['⌫', 'del', 'del'], ['x²', 'sq', 'sci'], ['Lösen', 'solve', 'eq'],
+]
+
 const cellStyles = {
   sci: 'bg-surface-100 text-ink hover:bg-surface-200 border-surface-300',
   clear: 'bg-red-600 text-white hover:bg-red-700 border-red-800',
@@ -106,11 +193,15 @@ export function Calculator({ isOpen, onClose }) {
   const [isDeg, setIsDeg] = useState(true)
   const [justEq, setJustEq] = useState(false)
   const [page, setPage] = useState('basic')
+  const [solverResult, setSolverResult] = useState(null)
 
   const result = expr ? calcEval(expr, isDeg) : null
-  const displayExpr = expr ? formatExpression(expr) : ' '
-  const displayResult = expr ? formatResult(result) : '0'
-  const rows = page === 'basic' ? BASIC_ROWS : FUNCTION_ROWS
+  const isSolver = page === 'solver'
+  const displayExpr = expr ? (isSolver ? expr : formatExpression(expr)) : ' '
+  const displayResult = isSolver
+    ? (solverResult ? (solverResult.error ?? `${solverResult.variable} = ${formatResult(solverResult.value)}`) : 'Gleichung eingeben')
+    : (expr ? formatResult(result) : '0')
+  const rows = page === 'basic' ? BASIC_ROWS : page === 'functions' ? FUNCTION_ROWS : SOLVER_ROWS
 
   const wrapCurrent = useCallback((wrapper) => {
     setExpr((e) => e ? wrapper(e) : '')
@@ -120,8 +211,12 @@ export function Calculator({ isOpen, onClose }) {
   const press = useCallback((action) => {
     if (!action) return
 
-    if (action === 'ac') { setExpr(''); setJustEq(false); return }
+    if (action === 'ac') { setExpr(''); setJustEq(false); setSolverResult(null); return }
     if (action === 'del') { setExpr((e) => e.slice(0, -1)); setJustEq(false); return }
+    if (action === 'solve') {
+      if (expr) setSolverResult(solveEquation(expr, isDeg))
+      return
+    }
     if (action === 'eq') {
       const val = calcEval(expr, isDeg)
       if (val !== null) { setExpr(String(val)); setJustEq(true) }
@@ -158,13 +253,18 @@ export function Calculator({ isOpen, onClose }) {
         </div>
 
         <div className="px-4 py-3 bg-green-950 border-b-2 border-ink min-h-[78px] flex flex-col justify-end">
-          <p className="text-green-400/80 font-mono text-sm text-right truncate min-h-[20px]">{displayExpr}</p>
-          <p className={cn('font-mono font-bold text-right text-3xl leading-tight', result === null && expr ? 'text-red-400' : 'text-green-300')}>{displayResult}</p>
+          <p className="text-green-400/80 font-mono text-sm text-right truncate min-h-[20px]">{isSolver && !expr ? 'z.B. 2x+3=7' : displayExpr}</p>
+          <p className={cn('font-mono font-bold text-right text-3xl leading-tight',
+            isSolver
+              ? (solverResult?.error ? 'text-red-400' : solverResult ? 'text-green-300' : 'text-green-400/50 text-lg')
+              : (result === null && expr ? 'text-red-400' : 'text-green-300')
+          )}>{displayResult}</p>
         </div>
 
-        <div className="grid grid-cols-2 gap-2 p-2 bg-paper border-b-2 border-ink">
-          <button type="button" onClick={() => setPage('basic')} className={cn('h-10 rounded-retro border-2 font-mono text-xs font-black uppercase tracking-wider retro-press', page === 'basic' ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon' : 'bg-white border-ink text-ink-soft shadow-hard-sm')}>Basis</button>
-          <button type="button" onClick={() => setPage('functions')} className={cn('h-10 rounded-retro border-2 font-mono text-xs font-black uppercase tracking-wider retro-press', page === 'functions' ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon' : 'bg-white border-ink text-ink-soft shadow-hard-sm')}>Funktionen</button>
+        <div className="grid grid-cols-3 gap-1.5 p-2 bg-paper border-b-2 border-ink">
+          {[['basic', 'Basis'], ['functions', 'f(x)'], ['solver', 'Löser']].map(([key, label]) => (
+            <button key={key} type="button" onClick={() => { setPage(key); setSolverResult(null) }} className={cn('h-10 rounded-retro border-2 font-mono text-xs font-black uppercase tracking-wider retro-press', page === key ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon' : 'bg-white border-ink text-ink-soft shadow-hard-sm')}>{label}</button>
+          ))}
         </div>
 
         <div className="grid grid-cols-4 gap-px bg-ink p-px">

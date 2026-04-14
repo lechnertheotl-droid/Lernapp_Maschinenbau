@@ -1,6 +1,7 @@
 import { alg_unit1 } from './unit1_potenzen'
 import { alg_unit2 } from './unit2_gleichungen'
 import { alg_unit3 } from './unit3_funktionen'
+import { alg_unit4 } from './unit4_pruefung'
 
 export const algebraTopic = {
   id: 'algebra',
@@ -11,6 +12,6 @@ export const algebraTopic = {
   color: 'orange',
   estimatedHours: 5,
   difficulty: 1,
-  units: [alg_unit1, alg_unit2, alg_unit3],
+  units: [alg_unit1, alg_unit2, alg_unit3, alg_unit4],
   prerequisites: [],
 }

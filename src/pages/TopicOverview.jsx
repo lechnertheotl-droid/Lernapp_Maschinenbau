@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useAppState } from '@/context/AppContext'
-import { getAllTopics, getAllLessons } from '@/content/index'
+import { getAllTopics, getAllLessons, isExamCompleted } from '@/content/index'
 import { computeTopicProgress } from '@/utils/progressLogic'
 import { TopicIcon } from '@/components/ui/TopicIcon'
 
@@ -24,19 +24,26 @@ export function TopicOverview() {
           const total    = getAllLessons(topic.id).length
           const completed = tp?.completedLessons?.length ?? 0
           const pct      = computeTopicProgress(tp?.completedLessons ?? [], total)
+          const examDone = isExamCompleted(topic.id, tp?.completedLessons ?? [])
 
           return (
             <button
               key={topic.id}
               onClick={() => navigate(`/topics/${topic.id}`)}
-              className="w-full text-left bg-white border-2 border-ink rounded-retro shadow-hard p-4 flex items-start gap-4 retro-press tap-highlight-none hover:bg-surface-50 animate-slide-up"
+              className={`w-full text-left border-2 rounded-retro p-4 flex items-start gap-4 retro-press tap-highlight-none animate-slide-up ${
+                examDone
+                  ? 'bg-lemon/30 border-lemon-dark shadow-hard-lemon hover:bg-lemon/40'
+                  : 'bg-white border-ink shadow-hard hover:bg-surface-50'
+              }`}
               style={{ animationDelay: `${i * 50}ms` }}
             >
               <TopicIcon topic={topic} size="md" />
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2 mb-1">
                   <h2 className="font-black text-ink text-base leading-tight">{topic.title}</h2>
-                  {pct === 100
+                  {examDone
+                    ? <span className="stamp text-lemon-dark flex-shrink-0">Prüfung ✓</span>
+                    : pct === 100
                     ? <span className="stamp text-green-700 flex-shrink-0">Fertig</span>
                     : pct > 0
                     ? <span className="stamp text-primary-700 flex-shrink-0">{pct}%</span>
@@ -45,9 +52,9 @@ export function TopicOverview() {
                 </div>
                 <p className="text-ink-soft text-xs leading-snug mb-3">{topic.description}</p>
                 {/* Retro progress bar */}
-                <div className="h-2.5 bg-surface-100 border border-ink rounded-sm overflow-hidden mb-2">
+                <div className={`h-2.5 border rounded-sm overflow-hidden mb-2 ${examDone ? 'bg-lemon-light border-lemon-dark' : 'bg-surface-100 border-ink'}`}>
                   <div
-                    className="h-full bg-primary-700 transition-all duration-500"
+                    className={`h-full transition-all duration-500 ${examDone ? 'bg-lemon-dark' : 'bg-primary-700'}`}
                     style={{ width: `${pct}%` }}
                   />
                 </div>

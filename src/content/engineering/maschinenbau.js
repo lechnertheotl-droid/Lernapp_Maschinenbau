@@ -8,13 +8,14 @@ function exerciseId(lessonId, index) {
 function expandExplanation(lesson) {
   return `${lesson.content}
 
-**Arbeitsmuster:**
-1. Lies zuerst die gesuchte Größe ab und markiere alle gegebenen Werte.
-2. Prüfe die Einheiten. Rechne bei Bedarf in SI-Einheiten oder die zur Formel passende Einheit um.
-3. Schreibe die Grundformel hin, stelle sie bei Bedarf um und setze erst danach Zahlen ein.
-4. Prüfe am Ende, ob Größenordnung und Einheit plausibel sind.
+**Arbeitsmuster für Studium und Prüfung:**
+1. Markiere zuerst **gesucht** und **gegeben** samt Einheiten.
+2. Zeichne bei Kräften/Strömungen/Systemen eine kleine Skizze oder ein Freikörperbild.
+3. Wähle den Ansatz erst danach: Gleichgewicht, Energie, Stoffgesetz, Bilanz oder Geometrie.
+4. Rechne vor dem Einsetzen in passende SI- oder Aufgaben-Einheiten um.
+5. Prüfe am Ende Vorzeichen, Größenordnung und Einheit.
 
-**Typische Fehler:** Formel ohne Einheitenkontrolle einsetzen, falsche Richtung/Vorzeichen übernehmen oder eine Prozentangabe nicht als Dezimalzahl interpretieren.`
+**Typische Fehler:** Formel ohne Einheitenkontrolle einsetzen, Vektor-/Vorzeichenrichtung übersehen, Prozentwerte nicht als Dezimalzahl schreiben oder eine idealisierte Formel außerhalb ihrer Annahmen verwenden.`
 }
 
 function buildTopic(def) {
@@ -119,7 +120,7 @@ const topicDefinitions = [
             exercises: [
               { type: 'multiple-choice', question: 'Was gehört in ein Freikörperbild?', options: ['Nur bekannte Kräfte', 'Alle äußeren Kräfte und Lagerreaktionen', 'Nur Beschleunigungen', 'Nur Maße'], correctIndex: 1, explanation: 'Ein Freikörperbild zeigt alle äußeren Kräfte und unbekannten Reaktionsgrößen.', hints: ['Kontakte werden durch Reaktionskräfte ersetzt.'] },
               { type: 'number-input', question: 'Zwei rechtwinklige Kräfte 3 N und 4 N wirken am Punkt. Betrag der Resultierenden?', correctAnswer: 5, tolerance: 0.01, unit: 'N', explanation: 'R = sqrt(3² + 4²) = 5 N.', hints: ['Pythagoras: 3-4-5-Dreieck.'] },
-              { type: 'true-false', question: 'Im statischen Gleichgewicht muss die Summe aller Kräfte null sein.', isTrue: true, explanation: 'Für Translation gilt ΣF = 0; zusätzlich gilt für Rotation ΣM = 0.', hints: ['Statik bedeutet keine resultierende Beschleunigung.'] },
+              { type: 'true-false', statement: 'Im statischen Gleichgewicht muss die Summe aller Kräfte null sein.', correct: true, explanation: 'Für Translation gilt ΣF = 0; zusätzlich gilt für Rotation ΣM = 0.', hints: ['Statik bedeutet keine resultierende Beschleunigung.'] },
             ],
           },
           {
@@ -137,7 +138,7 @@ Dabei ist $l_\perp$ der senkrechte Abstand zwischen Drehpunkt und Wirkungslinie 
             exercises: [
               { type: 'number-input', question: 'Eine Kraft F = 20 N greift mit senkrechtem Hebelarm l = 0,5 m an. Berechne das Moment.', correctAnswer: 10, tolerance: 0.01, unit: 'Nm', explanation: 'M = F·l = 20·0,5 = 10 Nm.', hints: ['Einheit: Newtonmeter.'] },
               { type: 'multiple-choice', question: 'Der wirksame Hebelarm ist ...', options: ['immer die Stablänge', 'der senkrechte Abstand zur Wirkungslinie', 'die Kraft mal Weg', 'der Winkel in Grad'], correctIndex: 1, explanation: 'Nur der senkrechte Abstand zur Wirkungslinie zählt.', hints: ['Drehwirkung entsteht senkrecht zur Kraftlinie.'] },
-              { type: 'true-false', question: 'Wenn die Wirkungslinie durch den Drehpunkt geht, ist das Moment null.', isTrue: true, explanation: 'Dann ist der senkrechte Hebelarm 0.', hints: ['M = F·l_perp.'] },
+              { type: 'true-false', statement: 'Wenn die Wirkungslinie durch den Drehpunkt geht, ist das Moment null.', correct: true, explanation: 'Dann ist der senkrechte Hebelarm 0.', hints: ['M = F·l_perp.'] },
             ],
           },
         ],
@@ -162,7 +163,7 @@ Masse ist eine Eigenschaft des Körpers. Gewichtskraft ist die Kraft im Schweref
             exercises: [
               { type: 'number-input', question: 'Welche Kraft beschleunigt 4 kg mit 3 m/s²?', correctAnswer: 12, tolerance: 0.01, unit: 'N', explanation: 'F = m·a = 4·3 = 12 N.', hints: ['Nutze F = m·a.'] },
               { type: 'multiple-choice', question: 'Gewichtskraft wird berechnet mit:', options: ['m/a', 'm·g', 'g/m', 'm+g'], correctIndex: 1, explanation: 'F_G = m·g.', hints: ['g ≈ 9,81 m/s².'] },
-              { type: 'true-false', question: 'Bei doppelter Masse und gleicher Beschleunigung ist die nötige Kraft doppelt so groß.', isTrue: true, explanation: 'F ist proportional zu m.', hints: ['F = m·a.'] },
+              { type: 'true-false', statement: 'Bei doppelter Masse und gleicher Beschleunigung ist die nötige Kraft doppelt so groß.', correct: true, explanation: 'F ist proportional zu m.', hints: ['F = m·a.'] },
             ],
           },
           {
@@ -177,7 +178,7 @@ Ist Kraft und Weg gleichgerichtet, gilt $W = F \cdot s$.`,
             exercises: [
               { type: 'number-input', question: 'Eine Kraft von 50 N wirkt 3 m in Wegrichtung. Arbeit?', correctAnswer: 150, tolerance: 0.01, unit: 'J', explanation: 'W = F·s = 50·3 = 150 J.', hints: ['1 J = 1 Nm.'] },
               { type: 'multiple-choice', question: 'Wenn Kraft senkrecht zum Weg steht, ist die Arbeit:', options: ['maximal', 'negativ maximal', 'null', 'immer F·s'], correctIndex: 2, explanation: 'cos(90°)=0, also W=0.', hints: ['Skalarprodukt von senkrechten Vektoren ist 0.'] },
-              { type: 'true-false', question: 'Potentielle Energie im Schwerefeld ist E = m·g·h.', isTrue: true, explanation: 'Diese Formel gilt nahe der Erdoberfläche bei konstanter Fallbeschleunigung.', hints: ['Höhe h zählt relativ zum Nullniveau.'] },
+              { type: 'true-false', statement: 'Potentielle Energie im Schwerefeld ist E = m·g·h.', correct: true, explanation: 'Diese Formel gilt nahe der Erdoberfläche bei konstanter Fallbeschleunigung.', hints: ['Höhe h zählt relativ zum Nullniveau.'] },
             ],
           },
         ],
@@ -210,7 +211,7 @@ Ist Kraft und Weg gleichgerichtet, gilt $W = F \cdot s$.`,
             },
             exercises: [
               { type: 'number-input', question: '[PRÜFUNG] Balken (4 m), Festlager links, Loslager rechts. Einzellast F = 600 N bei x = 1 m vom linken Lager. Berechne R_B (rechtes Lager).', correctAnswer: 150, tolerance: 1, unit: 'N', explanation: 'ΣM_A = 0: F·1 = R_B·4 → R_B = 600·1/4 = 150 N.', hints: ['Momentengleichung um Punkt A aufstellen.', 'F·a = R_B·L'] },
-              { type: 'number-input', question: '[PRÜFUNG] Zwei Kräfte F₁ = 5 kN (30° zur Horizontalen) und F₂ = 3 kN (vertikal). Betrag der Resultierenden?', correctAnswer: 7.18, tolerance: 0.1, unit: 'kN', explanation: 'Rx = 5·cos30° = 4.33. Ry = 5·sin30° + 3 = 5.5. R = √(4.33² + 5.5²) ≈ 7.0 kN.', hints: ['Zerlege F₁ in Komponenten.', 'R = √(Rx² + Ry²)'] },
+              { type: 'number-input', question: '[PRÜFUNG] Zwei Kräfte F₁ = 5 kN (30° zur Horizontalen) und F₂ = 3 kN (vertikal). Betrag der Resultierenden? Runde auf eine Dezimalstelle.', correctAnswer: 7.0, tolerance: 0.1, unit: 'kN', explanation: 'Zerlege zuerst F₁: Rx = 5·cos30° = 4,33 kN und Ry = 5·sin30° + 3 = 5,5 kN. Dann R = √(4,33² + 5,5²) = √49,0 ≈ 7,0 kN. Typischer Fehler: die vertikale 3-kN-Kraft nicht zu Ry addieren.', hints: ['Zerlege F₁ in horizontale und vertikale Komponente.', 'Addiere F₂ zur vertikalen Komponente.', 'R = √(Rx² + Ry²).'] },
               { type: 'multiple-choice', question: '[PRÜFUNG] Ein Loslager kann aufnehmen:', options: ['Kräfte in alle Richtungen + Moment', 'Nur eine Kraft senkrecht zur Auflagerfläche', 'Kräfte in x und y, aber kein Moment', 'Nur ein Moment'], correctIndex: 1, explanation: 'Ein Loslager (Gleitlager) nimmt nur eine Kraft senkrecht zur Gleitfläche auf.', hints: ['Das Loslager kann sich in einer Richtung frei bewegen.'] },
               { type: 'number-input', question: '[PRÜFUNG] Kragbalken (Einspannung links), Länge 2 m, Einzellast F = 500 N am freien Ende. Einspannmoment?', correctAnswer: 1000, tolerance: 1, unit: 'Nm', explanation: 'M = F·L = 500·2 = 1000 Nm.', hints: ['Bei einem Kragbalken: M_Einspannung = F·L'] },
             ],
@@ -273,7 +274,7 @@ $$\sigma = \frac{F}{A}$$
             exercises: [
               { type: 'number-input', question: 'F = 1000 N, A = 100 mm². Spannung in N/mm²?', correctAnswer: 10, tolerance: 0.01, unit: 'N/mm²', explanation: 'σ = F/A = 1000/100 = 10 N/mm² = 10 MPa.', hints: ['N/mm² entspricht MPa.'] },
               { type: 'multiple-choice', question: 'Welche Einheit passt zu Spannung?', options: ['N', 'Nm', 'Pa', 'm/s²'], correctIndex: 2, explanation: 'Spannung ist Kraft pro Fläche, also N/m² = Pa.', hints: ['Druck und Spannung haben dieselbe SI-Einheit.'] },
-              { type: 'true-false', question: 'Bei gleicher Kraft sinkt die Spannung, wenn die Fläche größer wird.', isTrue: true, explanation: 'σ = F/A; größere Fläche bedeutet kleinere Spannung.', hints: ['Fläche steht im Nenner.'] },
+              { type: 'true-false', statement: 'Bei gleicher Kraft sinkt die Spannung, wenn die Fläche größer wird.', correct: true, explanation: 'σ = F/A; größere Fläche bedeutet kleinere Spannung.', hints: ['Fläche steht im Nenner.'] },
             ],
           },
           {
@@ -289,7 +290,7 @@ Der E-Modul beschreibt die Steifigkeit des Materials. Stahl hat ungefähr $E = 2
             exercises: [
               { type: 'number-input', question: 'Im elastischen Bereich gilt E = 200000 MPa und ε = 0,001. Berechne die Spannung σ.', correctAnswer: 200, tolerance: 0.01, unit: 'MPa', explanation: 'σ = E·ε = 200000·0,001 = 200 MPa.', hints: ['Dehnung ist dimensionslos.'] },
               { type: 'multiple-choice', question: 'Ein größerer E-Modul bedeutet:', options: ['geringere Steifigkeit', 'höhere Steifigkeit', 'immer höhere Dichte', 'keine elastische Verformung'], correctIndex: 1, explanation: 'Je größer E, desto mehr Spannung ist für dieselbe Dehnung nötig.', hints: ['E ist die Steigung im σ-ε-Diagramm.'] },
-              { type: 'true-false', question: 'Hooke gilt uneingeschränkt bis zum Bruch.', isTrue: false, explanation: 'Hooke gilt nur im linear-elastischen Bereich.', hints: ['Nach der Streckgrenze wird das Verhalten nichtlinear/plastisch.'] },
+              { type: 'true-false', statement: 'Hooke gilt uneingeschränkt bis zum Bruch.', correct: false, explanation: 'Hooke gilt nur im linear-elastischen Bereich.', hints: ['Nach der Streckgrenze wird das Verhalten nichtlinear/plastisch.'] },
             ],
           },
         ],
@@ -311,7 +312,7 @@ Das Widerstandsmoment $W_b$ hängt stark von der Querschnittsform ab.`,
             exercises: [
               { type: 'number-input', question: 'Gegeben sind M_b = 200 Nm und W_b = 20 cm³. Mit 1 Nm = 1000 Nmm und 1 cm³ = 1000 mm³: Berechne σ_b.', correctAnswer: 10, tolerance: 0.01, unit: 'N/mm²', explanation: '200 Nm = 200000 Nmm, 20 cm³ = 20000 mm³, σ = 10 N/mm².', hints: ['Einheiten zuerst auf Nmm und mm³ bringen.'] },
               { type: 'multiple-choice', question: 'Biegespannung ist bei symmetrischem Balken maximal ...', options: ['in der neutralen Faser', 'an der Randfaser', 'immer in der Mitte', 'außerhalb des Balkens'], correctIndex: 1, explanation: 'Die Spannung steigt mit dem Abstand von der neutralen Faser und ist an der Randfaser maximal.', hints: ['σ = M·y/I.'] },
-              { type: 'true-false', question: 'Das Widerstandsmoment hat Einfluss auf die Biegespannung.', isTrue: true, explanation: 'σ_b = M_b/W_b.', hints: ['W_b steht im Nenner.'] },
+              { type: 'true-false', statement: 'Das Widerstandsmoment hat Einfluss auf die Biegespannung.', correct: true, explanation: 'σ_b = M_b/W_b.', hints: ['W_b steht im Nenner.'] },
             ],
           },
           {
@@ -325,7 +326,7 @@ $$\sigma_\text{vorh} \le \sigma_\text{zul} = \frac{R}{S}$$
 $R$ ist eine Materialkennzahl, $S$ die Sicherheitszahl.`,
             exercises: [
               { type: 'number-input', question: 'Für eine Materialkennzahl R = 300 MPa und Sicherheitszahl S = 2: Berechne die zulässige Spannung.', correctAnswer: 150, tolerance: 0.01, unit: 'MPa', explanation: 'σ_zul = R/S = 300/2 = 150 MPa.', hints: ['Sicherheitszahl steht im Nenner.'] },
-              { type: 'true-false', question: 'Der Nachweis ist erfüllt, wenn σ_vorh kleiner oder gleich σ_zul ist.', isTrue: true, explanation: 'Dann bleibt die vorhandene Beanspruchung unter der zulässigen Grenze.', hints: ['Vorhanden ≤ zulässig.'] },
+              { type: 'true-false', statement: 'Der Nachweis ist erfüllt, wenn σ_vorh kleiner oder gleich σ_zul ist.', correct: true, explanation: 'Dann bleibt die vorhandene Beanspruchung unter der zulässigen Grenze.', hints: ['Vorhanden ≤ zulässig.'] },
               { type: 'multiple-choice', question: 'Wenn S größer gewählt wird, wird σ_zul ...', options: ['größer', 'kleiner', 'unverändert', 'negativ'], correctIndex: 1, explanation: 'σ_zul = R/S; größere Sicherheit senkt die zulässige Spannung.', hints: ['S steht im Nenner.'] },
             ],
           },
@@ -361,8 +362,8 @@ $R$ ist eine Materialkennzahl, $S$ die Sicherheitszahl.`,
             exercises: [
               { type: 'number-input', question: '[PRÜFUNG] Rundstab d = 20 mm, Zugkraft F = 15 kN. Normalspannung σ in MPa?', correctAnswer: 47.75, tolerance: 0.5, unit: 'MPa', explanation: 'A = π·20²/4 = 314,16 mm². σ = 15000/314,16 ≈ 47,7 MPa.', hints: ['A = π·d²/4', 'F in N umrechnen: 15 kN = 15000 N'] },
               { type: 'number-input', question: '[PRÜFUNG] Rechteckbalken b = 40 mm, h = 80 mm. Biegemoment M = 800 Nm. Maximale Biegespannung?', correctAnswer: 18.75, tolerance: 0.2, unit: 'MPa', explanation: 'W = bh²/6 = 40·80²/6 = 42667 mm³. σ = 800000/42667 ≈ 18,8 MPa.', hints: ['W = bh²/6', 'M in Nmm: 800·1000 = 800000 Nmm'] },
-              { type: 'number-input', question: '[PRÜFUNG] σ = 120 MPa, τ = 60 MPa. Von-Mises-Vergleichsspannung?', correctAnswer: 150, tolerance: 1, unit: 'MPa', explanation: 'σ_v = √(120² + 3·60²) = √(14400 + 10800) = √25200 ≈ 158,7 MPa. (Vereinfacht: ≈150 bei korrekter Berechnung der einachsigen v. Mises-Spannung)', hints: ['σ_v = √(σ² + 3τ²)', '120² = 14400, 3·60² = 10800'] },
-              { type: 'true-false', question: '[PRÜFUNG] Die Streckgrenze Re von S235 beträgt mindestens 235 MPa.', isTrue: true, explanation: 'S235 bedeutet: Mindeststreckgrenze 235 MPa (daher der Name).', hints: ['Die Zahl im Werkstoffnamen gibt die Streckgrenze an.'] },
+              { type: 'number-input', question: '[PRÜFUNG] σ = 120 MPa und τ = 60 MPa wirken gleichzeitig. Berechne die Von-Mises-Vergleichsspannung auf eine Dezimalstelle.', correctAnswer: 158.7, tolerance: 1, unit: 'MPa', explanation: 'Für Normalspannung plus Schubspannung gilt σ_v = √(σ² + 3τ²). Einsetzen: σ_v = √(120² + 3·60²) = √(14400 + 10800) = √25200 ≈ 158,7 MPa. Typischer Fehler: den Faktor 3 vor τ² wegzulassen.', hints: ['Nutze σ_v = √(σ² + 3τ²).', 'Berechne zuerst 120² und 3·60².', 'Ziehe am Ende die Wurzel aus 25200.'] },
+              { type: 'true-false', statement: '[PRÜFUNG] Die Streckgrenze Re von S235 beträgt mindestens 235 MPa.', correct: true, explanation: 'S235 bedeutet: Mindeststreckgrenze 235 MPa (daher der Name).', hints: ['Die Zahl im Werkstoffnamen gibt die Streckgrenze an.'] },
             ],
           },
         ],
@@ -402,7 +403,7 @@ Wichtig: Temperatur immer in Kelvin einsetzen. $T_K = T_{°C} + 273{,}15$.`,
             exercises: [
               { type: 'number-input', question: '20 °C entsprechen gerundet wie viel Kelvin?', correctAnswer: 293.15, tolerance: 0.1, unit: 'K', explanation: 'T = 20 + 273,15 = 293,15 K.', hints: ['Addiere 273,15.'] },
               { type: 'multiple-choice', question: 'Welche Größe ist absolute Temperatur?', options: ['°C', 'K', 'bar', 'Pa'], correctIndex: 1, explanation: 'Thermodynamische Rechnungen verwenden Kelvin.', hints: ['Kelvin beginnt beim absoluten Nullpunkt.'] },
-              { type: 'true-false', question: 'Bei konstantem Volumen steigt der Druck eines idealen Gases mit der Temperatur.', isTrue: true, explanation: 'Aus pV=nRT folgt bei V,n konstant: p proportional T.', hints: ['T muss in Kelvin betrachtet werden.'] },
+              { type: 'true-false', statement: 'Bei konstantem Volumen steigt der Druck eines idealen Gases mit der Temperatur.', correct: true, explanation: 'Aus pV=nRT folgt bei V,n konstant: p proportional T.', hints: ['T muss in Kelvin betrachtet werden.'] },
             ],
           },
           {
@@ -417,7 +418,7 @@ Bei konstantem Druck vereinfacht sich das zu $W = p \cdot \Delta V$.`,
             exercises: [
               { type: 'number-input', question: 'Bei konstantem Druck p = 200 kPa vergrößert sich das Volumen um ΔV = 0,01 m³. Berechne die Volumenänderungsarbeit.', correctAnswer: 2000, tolerance: 1, unit: 'J', explanation: '200 kPa = 200000 Pa. W = p·ΔV = 200000·0,01 = 2000 J.', hints: ['Pa·m³ = J.'] },
               { type: 'multiple-choice', question: 'Im p-V-Diagramm entspricht Arbeit ...', options: ['der Steigung', 'der Fläche unter der Kurve', 'dem Achsenabschnitt', 'nur dem Enddruck'], correctIndex: 1, explanation: 'W = ∫p dV ist eine Fläche.', hints: ['Integral über p nach V.'] },
-              { type: 'true-false', question: 'Bei ΔV = 0 ist die Volumenänderungsarbeit null.', isTrue: true, explanation: 'Ohne Volumenänderung ist ∫p dV = 0.', hints: ['Isochorer Prozess.'] },
+              { type: 'true-false', statement: 'Bei ΔV = 0 ist die Volumenänderungsarbeit null.', correct: true, explanation: 'Ohne Volumenänderung ist ∫p dV = 0.', hints: ['Isochorer Prozess.'] },
             ],
           },
         ],
@@ -439,7 +440,7 @@ $Q$ ist zugeführte Wärme, $W$ ist vom System abgegebene Arbeit.`,
             exercises: [
               { type: 'number-input', question: 'Ein System erhält Q = 500 J Wärme und gibt W = 200 J Arbeit ab. Berechne ΔU nach dem ersten Hauptsatz.', correctAnswer: 300, tolerance: 0.01, unit: 'J', explanation: 'ΔU = Q − W = 500 − 200 = 300 J.', hints: ['Vorzeichenkonvention beachten.'] },
               { type: 'multiple-choice', question: 'Der erste Hauptsatz beschreibt:', options: ['Impulserhaltung', 'Energieerhaltung', 'Massenerhaltung', 'Reibungsgesetz'], correctIndex: 1, explanation: 'Er bilanziert Wärme, Arbeit und innere Energie.', hints: ['ΔU = Q − W.'] },
-              { type: 'true-false', question: 'Wenn ein System Arbeit abgibt und keine Wärme erhält, sinkt seine innere Energie.', isTrue: true, explanation: 'Q=0, W>0 → ΔU = −W.', hints: ['Setze in ΔU = Q − W ein.'] },
+              { type: 'true-false', statement: 'Wenn ein System Arbeit abgibt und keine Wärme erhält, sinkt seine innere Energie.', correct: true, explanation: 'Q=0, W>0 → ΔU = −W.', hints: ['Setze in ΔU = Q − W ein.'] },
             ],
           },
           {
@@ -454,7 +455,7 @@ Er liegt bei realen Maschinen kleiner als 1.`,
             exercises: [
               { type: 'number-input', question: 'Eine Maschine liefert 80 J Nutzenergie bei 100 J zugeführter Energie. Berechne den Wirkungsgrad η.', correctAnswer: 0.8, tolerance: 0.01, unit: '', explanation: 'η = 80/100 = 0,8 = 80%.', hints: ['Quotient aus Nutzen und Aufwand.'] },
               { type: 'multiple-choice', question: 'η = 0,35 bedeutet:', options: ['35% Nutzanteil', '3,5% Nutzanteil', '350% Nutzanteil', 'keine Verluste'], correctIndex: 0, explanation: '0,35 entspricht 35%.', hints: ['Mit 100 multiplizieren.'] },
-              { type: 'true-false', question: 'Ein realer Wärmekraftprozess hat η = 1.', isTrue: false, explanation: 'Reale Prozesse haben Verluste und liegen unter 1.', hints: ['Zweiter Hauptsatz begrenzt die Umwandlung.'] },
+              { type: 'true-false', statement: 'Ein realer Wärmekraftprozess hat η = 1.', correct: false, explanation: 'Reale Prozesse haben Verluste und liegen unter 1.', hints: ['Zweiter Hauptsatz begrenzt die Umwandlung.'] },
             ],
           },
         ],
@@ -488,7 +489,7 @@ Er liegt bei realen Maschinen kleiner als 1.`,
               { type: 'number-input', question: '[PRÜFUNG] Carnot-Maschine: T_warm = 600 K, T_kalt = 300 K. Maximaler Wirkungsgrad?', correctAnswer: 0.5, tolerance: 0.01, unit: '', explanation: 'η_C = 1 - 300/600 = 1 - 0,5 = 0,5 = 50%.', hints: ['η_C = 1 - T_kalt/T_warm', 'Temperaturen in Kelvin!'] },
               { type: 'number-input', question: '[PRÜFUNG] Isotherme Expansion: 1 mol ideales Gas bei T = 300 K expandiert von 10 L auf 20 L. Arbeit W? (R = 8,314)', correctAnswer: 1729, tolerance: 20, unit: 'J', explanation: 'W = nRT·ln(V₂/V₁) = 1·8,314·300·ln(2) = 2494·0,693 ≈ 1729 J.', hints: ['W = nRT·ln(V₂/V₁)', 'ln(2) ≈ 0,693'] },
               { type: 'number-input', question: '[PRÜFUNG] Adiabatische Kompression: p₁ = 100 kPa, V₁ = 0,01 m³, V₂ = 0,005 m³, γ = 1,4. Berechne p₂.', correctAnswer: 264, tolerance: 5, unit: 'kPa', explanation: 'p₁V₁^γ = p₂V₂^γ → p₂ = p₁·(V₁/V₂)^γ = 100·2^1,4 = 100·2,639 ≈ 264 kPa.', hints: ['pV^γ = const', '2^1,4 ≈ 2,64'] },
-              { type: 'true-false', question: '[PRÜFUNG] Bei einer isochoren Zustandsänderung wird keine Volumenänderungsarbeit verrichtet.', isTrue: true, explanation: 'Isochor: V = const → ΔV = 0 → W = ∫p dV = 0.', hints: ['Was bedeutet isochor?'] },
+              { type: 'true-false', statement: '[PRÜFUNG] Bei einer isochoren Zustandsänderung wird keine Volumenänderungsarbeit verrichtet.', correct: true, explanation: 'Isochor: V = const → ΔV = 0 → W = ∫p dV = 0.', hints: ['Was bedeutet isochor?'] },
             ],
           },
         ],
@@ -525,7 +526,7 @@ Dazu kommt je nach Bezug noch der Umgebungsdruck.`,
             exercises: [
               { type: 'number-input', question: 'Wasser: ρ = 1000 kg/m³, g = 9,81 m/s², h = 2 m. p gerundet?', correctAnswer: 19620, tolerance: 20, unit: 'Pa', explanation: 'p = 1000·9,81·2 = 19620 Pa.', hints: ['Setze direkt in ρgh ein.'] },
               { type: 'multiple-choice', question: 'Hydrostatischer Druck hängt direkt ab von:', options: ['Tiefe', 'Behälterfarbe', 'Oberflächenrauheit', 'Zeit'], correctIndex: 0, explanation: 'p = ρgh.', hints: ['h steht in der Formel.'] },
-              { type: 'true-false', question: 'In doppelter Tiefe ist der hydrostatische Druck doppelt so groß.', isTrue: true, explanation: 'Bei konstantem ρ und g ist p proportional h.', hints: ['Lineare Abhängigkeit.'] },
+              { type: 'true-false', statement: 'In doppelter Tiefe ist der hydrostatische Druck doppelt so groß.', correct: true, explanation: 'Bei konstantem ρ und g ist p proportional h.', hints: ['Lineare Abhängigkeit.'] },
             ],
           },
           {
@@ -538,7 +539,7 @@ $$F_A = \rho_\text{Fluid} \cdot g \cdot V_\text{verdrängt}$$`,
             exercises: [
               { type: 'number-input', question: 'Ein Körper verdrängt 0,01 m³ Wasser. Berechne die Auftriebskraft in Wasser gerundet.', correctAnswer: 98.1, tolerance: 0.5, unit: 'N', explanation: 'F_A = 1000·9,81·0,01 = 98,1 N.', hints: ['Nutze Archimedes.'] },
               { type: 'multiple-choice', question: 'Auftrieb hängt ab vom ...', options: ['Volumen des verdrängten Fluids', 'Namen des Körpers', 'Farbton', 'Luftdruck allein'], correctIndex: 0, explanation: 'Das verdrängte Fluidvolumen bestimmt die Auftriebskraft.', hints: ['F_A = ρgV.'] },
-              { type: 'true-false', question: 'Ein Körper schwimmt, wenn Auftrieb und Gewichtskraft im Gleichgewicht sind.', isTrue: true, explanation: 'Im stationären Schwimmen gilt F_A = F_G.', hints: ['Kräftegleichgewicht vertikal.'] },
+              { type: 'true-false', statement: 'Ein Körper schwimmt, wenn Auftrieb und Gewichtskraft im Gleichgewicht sind.', correct: true, explanation: 'Im stationären Schwimmen gilt F_A = F_G.', hints: ['Kräftegleichgewicht vertikal.'] },
             ],
           },
         ],
@@ -560,7 +561,7 @@ Wird der Querschnitt kleiner, steigt die Strömungsgeschwindigkeit.`,
             exercises: [
               { type: 'number-input', question: 'Für eine inkompressible Strömung gilt A1 = 4 cm², v1 = 2 m/s und A2 = 2 cm². Berechne v2.', correctAnswer: 4, tolerance: 0.01, unit: 'm/s', explanation: 'A1 v1 = A2 v2 → v2 = 4·2/2 = 4 m/s.', hints: ['Querschnitt halbiert → Geschwindigkeit verdoppelt.'] },
               { type: 'multiple-choice', question: 'Volumenstrom wird berechnet mit:', options: ['A·v', 'A/v', 'v/A', 'ρgH'], correctIndex: 0, explanation: 'Vdot = A·v.', hints: ['Fläche mal Geschwindigkeit.'] },
-              { type: 'true-false', question: 'Bei kleinerem Querschnitt und gleichem Volumenstrom wird v größer.', isTrue: true, explanation: 'A·v bleibt konstant.', hints: ['Kontinuitätsgleichung.'] },
+              { type: 'true-false', statement: 'Bei kleinerem Querschnitt und gleichem Volumenstrom wird v größer.', correct: true, explanation: 'A·v bleibt konstant.', hints: ['Kontinuitätsgleichung.'] },
             ],
           },
           {
@@ -574,7 +575,7 @@ $$p + \frac{1}{2}\rho v^2 + \rho g z = \text{konstant}$$
 Das ist Energieerhaltung pro Volumen.`,
             exercises: [
               { type: 'multiple-choice', question: 'Der Term 1/2 ρ v² beschreibt:', options: ['statischen Druck', 'dynamischen Druck', 'Höhendruck', 'Temperatur'], correctIndex: 1, explanation: '1/2 ρ v² ist der dynamische Druck.', hints: ['Der Term enthält v².'] },
-              { type: 'true-false', question: 'Bernoulli berücksichtigt im Grundmodell keine Reibungsverluste.', isTrue: true, explanation: 'Die einfache Bernoulli-Gleichung gilt idealisiert reibungsfrei.', hints: ['Reale Rohrströmung braucht Verlustterme.'] },
+              { type: 'true-false', statement: 'Bernoulli berücksichtigt im Grundmodell keine Reibungsverluste.', correct: true, explanation: 'Die einfache Bernoulli-Gleichung gilt idealisiert reibungsfrei.', hints: ['Reale Rohrströmung braucht Verlustterme.'] },
               { type: 'number-input', question: 'ρ = 1000 kg/m³, v = 2 m/s. Dynamischer Druck?', correctAnswer: 2000, tolerance: 1, unit: 'Pa', explanation: 'q = 1/2·1000·2² = 2000 Pa.', hints: ['v² = 4.'] },
             ],
           },
@@ -637,7 +638,7 @@ $$p_1 + \frac{1}{2}\rho v_1^2 + \rho g z_1 = p_2 + \frac{1}{2}\rho v_2^2 + \rho 
 Bei Betriebslast darf die Klemmkraft nicht vollständig abgebaut werden, sonst können Fugen öffnen und Schrauben zyklisch überlastet werden.`,
             exercises: [
               { type: 'multiple-choice', question: 'Wozu dient Schraubenvorspannung hauptsächlich?', options: ['Dekoration', 'Klemmkraft in der Fuge erzeugen', 'Masse erhöhen', 'Drehzahl messen'], correctIndex: 1, explanation: 'Vorspannung erzeugt Klemmkraft und stabilisiert die Verbindung.', hints: ['Schrauben klemmen Bauteile zusammen.'] },
-              { type: 'true-false', question: 'Eine korrekt vorgespannte Schraube kann Betriebslasten günstiger aufnehmen.', isTrue: true, explanation: 'Die Vorspannung reduziert ungünstige Lastwechsel im Schraubenschaft.', hints: ['Kraftfluss wird aufgeteilt.'] },
+              { type: 'true-false', statement: 'Eine korrekt vorgespannte Schraube kann Betriebslasten günstiger aufnehmen.', correct: true, explanation: 'Die Vorspannung reduziert ungünstige Lastwechsel im Schraubenschaft.', hints: ['Kraftfluss wird aufgeteilt.'] },
               { type: 'number-input', question: 'Eine Schraube trägt 12 kN von insgesamt 48 kN. Berechne den Lastanteil als Dezimalzahl.', correctAnswer: 0.25, tolerance: 0.01, unit: '', explanation: '12/48 = 0,25 = 25%.', hints: ['Teil durch Gesamt.'] },
             ],
           },
@@ -650,7 +651,7 @@ Bei Betriebslast darf die Klemmkraft nicht vollständig abgebaut werden, sonst k
 Formschluss bedeutet: Geometrie verhindert Relativbewegung. Kraftschluss bedeutet: Reibung verhindert Relativbewegung.`,
             exercises: [
               { type: 'multiple-choice', question: 'Eine Passfeder ist primär eine ...', options: ['stoffschlüssige Verbindung', 'formschlüssige Verbindung', 'thermische Isolation', 'Messsensorik'], correctIndex: 1, explanation: 'Passfedern übertragen Drehmoment durch Formschluss.', hints: ['Geometrie greift ineinander.'] },
-              { type: 'true-false', question: 'Kraftschluss beruht im Kern auf Reibung.', isTrue: true, explanation: 'Kraftschluss nutzt Normalkraft und Reibwert.', hints: ['Beispiel: Klemmverbindung.'] },
+              { type: 'true-false', statement: 'Kraftschluss beruht im Kern auf Reibung.', correct: true, explanation: 'Kraftschluss nutzt Normalkraft und Reibwert.', hints: ['Beispiel: Klemmverbindung.'] },
               { type: 'multiple-choice', question: 'Drehmoment wird bei Welle-Nabe-Verbindungen übertragen, um ...', options: ['Rotation weiterzugeben', 'Temperatur zu senken', 'Druck zu messen', 'Gewicht zu erzeugen'], correctIndex: 0, explanation: 'Welle-Nabe-Verbindungen dienen der Drehmomentübertragung.', hints: ['Welle rotiert.'] },
             ],
           },
@@ -670,7 +671,7 @@ Formschluss bedeutet: Geometrie verhindert Relativbewegung. Kraftschluss bedeute
 Radiallast wirkt quer zur Wellenachse, Axiallast entlang der Wellenachse.`,
             exercises: [
               { type: 'multiple-choice', question: 'Eine Radiallast wirkt ...', options: ['entlang der Wellenachse', 'quer zur Wellenachse', 'immer tangential', 'nie auf Lager'], correctIndex: 1, explanation: 'Radial bedeutet quer zur Achse.', hints: ['Radiusrichtung liegt quer zur Achse.'] },
-              { type: 'true-false', question: 'Lager sollen Bewegung führen und Kräfte aufnehmen.', isTrue: true, explanation: 'Lager erfüllen Führungs- und Stützfunktion.', hints: ['Ohne Lager keine definierte Wellenlagerung.'] },
+              { type: 'true-false', statement: 'Lager sollen Bewegung führen und Kräfte aufnehmen.', correct: true, explanation: 'Lager erfüllen Führungs- und Stützfunktion.', hints: ['Ohne Lager keine definierte Wellenlagerung.'] },
               { type: 'multiple-choice', question: 'Eine Welle dient hauptsächlich der Übertragung von:', options: ['Drehmoment', 'Farbe', 'Temperatur allein', 'Druckhöhe'], correctIndex: 0, explanation: 'Wellen übertragen Drehmoment und Drehbewegung.', hints: ['Rotierende Maschine.'] },
             ],
           },
@@ -686,7 +687,7 @@ Mehr Zähne am Abtriebsrad bedeuten geringere Abtriebsdrehzahl und höheres Dreh
             exercises: [
               { type: 'number-input', question: 'Ein Zahnradpaar hat z1 = 20 und z2 = 60 Zähne. Berechne die Übersetzung i = z2/z1.', correctAnswer: 3, tolerance: 0.01, unit: '', explanation: 'i = z2/z1 = 60/20 = 3.', hints: ['Abtriebszähne durch Antriebszähne.'] },
               { type: 'multiple-choice', question: 'Bei i = 3 ist n2 gegenüber n1 ...', options: ['dreimal so groß', 'gleich groß', 'ein Drittel', 'negativ'], correctIndex: 2, explanation: 'i = n1/n2 = 3 → n2 = n1/3.', hints: ['Drehzahl sinkt bei Untersetzung.'] },
-              { type: 'true-false', question: 'Mehr Zähne am Abtriebsrad senken typischerweise die Abtriebsdrehzahl.', isTrue: true, explanation: 'Bei z2 > z1 entsteht eine Untersetzung.', hints: ['i = z2/z1.'] },
+              { type: 'true-false', statement: 'Mehr Zähne am Abtriebsrad senken typischerweise die Abtriebsdrehzahl.', correct: true, explanation: 'Bei z2 > z1 entsteht eine Untersetzung.', hints: ['i = z2/z1.'] },
             ],
           },
         ],
