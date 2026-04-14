@@ -3,6 +3,8 @@ import { useAppState } from '@/context/AppContext'
 import { getTopic, isExamCompleted } from '@/content/index'
 import { cn } from '@/utils/cn'
 import { TopicIcon } from '@/components/ui/TopicIcon'
+import { NotFound } from '@/components/NotFound'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 
 const STATUS_CONFIG = {
   'secure':     { icon: '✓', label: 'Sicher',     dot: 'bg-green-500',   text: 'text-green-700'  },
@@ -19,7 +21,11 @@ export function TopicDetail() {
   const topic       = getTopic(topicId)
 
   if (!topic) return (
-    <div className="p-6 text-center text-ink-soft font-mono">Thema nicht gefunden: {topicId}</div>
+    <NotFound
+      title="Thema nicht gefunden"
+      message="Das angeforderte Thema existiert nicht oder wurde umbenannt."
+      detail={topicId}
+    />
   )
 
   const mastery          = state.mastery
@@ -31,6 +37,12 @@ export function TopicDetail() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-5 flex flex-col gap-5">
+
+      {/* ── Breadcrumbs ──────────────────────────────────────────── */}
+      <Breadcrumbs items={[
+        { label: 'Themen', to: '/topics' },
+        { label: topic.title },
+      ]} />
 
       {/* ── Back ─────────────────────────────────────────────────── */}
       <button

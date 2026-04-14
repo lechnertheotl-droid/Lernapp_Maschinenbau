@@ -15,6 +15,47 @@
   #root {
     padding-top: env(safe-area-inset-top);
   }
+
+  /* ── Dark mode overrides ─────────────────────────────────────── */
+  html.dark {
+    background-color: #0f172a;
+  }
+  html.dark body {
+    color: #e2e8f0;
+    background-color: #0f172a;
+  }
+  html.dark .bg-paper { background-color: #0f172a !important; }
+  html.dark .bg-white { background-color: #1e293b !important; }
+  html.dark .bg-surface-50 { background-color: #1e293b !important; }
+  html.dark .bg-surface-100 { background-color: #334155 !important; }
+  html.dark .bg-surface-200 { background-color: #475569 !important; }
+  html.dark .text-ink,
+  html.dark .text-ink-light,
+  html.dark .text-ink-soft { color: #e2e8f0 !important; }
+  html.dark .text-surface-700,
+  html.dark .text-surface-800,
+  html.dark .text-surface-900 { color: #e2e8f0 !important; }
+  html.dark .text-surface-400,
+  html.dark .text-surface-500,
+  html.dark .text-surface-600 { color: #94a3b8 !important; }
+  html.dark .border-ink { border-color: #475569 !important; }
+  html.dark .border-surface-100,
+  html.dark .border-surface-200,
+  html.dark .border-surface-300 { border-color: #334155 !important; }
+  html.dark .shadow-hard { box-shadow: 3px 3px 0 0 #000 !important; }
+  html.dark .shadow-hard-sm { box-shadow: 2px 2px 0 0 #000 !important; }
+  html.dark .shadow-hard-lg { box-shadow: 5px 5px 0 0 #000 !important; }
+  html.dark .bg-ink { background-color: #020617 !important; }
+  html.dark .bg-graph-paper,
+  html.dark .bg-graph-paper-sm {
+    background-image:
+      linear-gradient(rgba(56,189,248,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,189,248,0.07) 1px, transparent 1px);
+  }
+  /* Markdown tables in dark mode */
+  html.dark .markdown-content table { border-color: #475569; }
+  html.dark .markdown-content td { border-color: #334155; }
+  html.dark .markdown-content tr:nth-child(even) td { background: #1e293b; }
 }
 
 @layer utilities {

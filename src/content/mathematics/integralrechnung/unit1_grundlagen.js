@@ -308,7 +308,7 @@ Probe: $(x^2 + C)' = 2x + 0 = 2x$ ✓`,
       {
         id: 'int-1-1-s3', type: 'visualization', title: 'Ableitung und Stammfunktion',
         visualizationId: 'derivative-graph',
-        params: { fnName: 'x²', showDerivative: true, showArea: true },
+        params: { fnName: 'x²', showDerivative: true, showTangent: true, interactive: true },
       },
       { id: 'int-1-1-s4', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-int-1-1-a' },
       { id: 'int-1-1-s5', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-int-1-1-b' },
@@ -334,7 +334,7 @@ Die folgenden Integrale sind die Bausteine für alles Weitere. Man erhält sie, 
 | $f(x)$ (Integrand)  | $\\int f(x)\\,dx$ (Stammfunktion) |
 |----------------------|----------------------------------|
 | $x^n$ $(n \\neq -1)$ | $\\dfrac{x^{n+1}}{n+1} + C$       |
-| $\\dfrac{1}{x}$      | $\\ln|x| + C$                     |
+| $\\dfrac{1}{x}$      | $\\ln\\lvert x\\rvert + C$         |
 | $e^x$               | $e^x + C$                        |
 | $\\sin(x)$           | $-\\cos(x) + C$                   |
 | $\\cos(x)$           | $\\sin(x) + C$                    |

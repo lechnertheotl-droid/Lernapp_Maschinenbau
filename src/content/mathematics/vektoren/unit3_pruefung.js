@@ -4,111 +4,111 @@ export const exercises_vek_u3 = {
   // ── Lesson 1: Gemischte Aufgaben Skalar- und Kreuzprodukt ──
   'ex-vek-3-1-a': {
     id: 'ex-vek-3-1-a', lessonId: 'vek-3-1', type: 'multiple-choice',
-    question: '[PRÜFUNG] a⃗ = (1, 2, 2), b⃗ = (2, −1, 2). Berechne a⃗ · b⃗.',
+    question: '[PRÜFUNG] $\\vec{a}$ = (1, 2, 2), $\\vec{b}$ = (2, −1, 2). Berechne $\\vec{a}$ · $\\vec{b}$.',
     options: ['4', '6', '0', '2'],
     correctIndex: 1,
-    explanation: 'a⃗ · b⃗ = 1·2 + 2·(−1) + 2·2 = 2 − 2 + 4 = 4. Moment: 2 − 2 + 4 = 4. Korrektur: Richtig ist 4.',
-    hints: ['a⃗ · b⃗ = ax·bx + ay·by + az·bz'],
+    explanation: '$\\vec{a}$ · $\\vec{b}$ = 1·2 + 2·(−1) + 2·2 = 2 − 2 + 4 = 4. Moment: 2 − 2 + 4 = 4. Korrektur: Richtig ist 4.',
+    hints: ['$\\vec{a}$ · $\\vec{b}$ = ax·bx + ay·by + az·bz'],
   },
   'ex-vek-3-1-b': {
     id: 'ex-vek-3-1-b', lessonId: 'vek-3-1', type: 'number-input',
-    question: '[PRÜFUNG] a⃗ = (3, 0, 4). Berechne den Betrag |a⃗|.',
+    question: '[PRÜFUNG] $\\vec{a}$ = (3, 0, 4). Berechne den Betrag |$\\vec{a}$|.',
     correctAnswer: 5,
     tolerance: 0.01,
     unit: '',
-    explanation: '|a⃗| = √(3² + 0² + 4²) = √(9 + 0 + 16) = √25 = 5.',
-    hints: ['|a⃗| = √(ax² + ay² + az²)', '9 + 16 = 25'],
+    explanation: '|$\\vec{a}$| = √(3² + 0² + 4²) = √(9 + 0 + 16) = √25 = 5.',
+    hints: ['|$\\vec{a}$| = √(ax² + ay² + az²)', '9 + 16 = 25'],
   },
   'ex-vek-3-1-c': {
     id: 'ex-vek-3-1-c', lessonId: 'vek-3-1', type: 'multiple-choice',
-    question: '[PRÜFUNG] a⃗ = (1, 0, 0), b⃗ = (0, 1, 0). Was ist a⃗ × b⃗?',
+    question: '[PRÜFUNG] $\\vec{a}$ = (1, 0, 0), $\\vec{b}$ = (0, 1, 0). Was ist $\\vec{a}$ × $\\vec{b}$?',
     options: ['(0, 0, 1)', '(0, 0, −1)', '(1, 1, 0)', '0'],
     correctIndex: 0,
-    explanation: 'a⃗ × b⃗ = (0·0−0·1, 0·0−1·0, 1·1−0·0) = (0, 0, 1). Das ist der Einheitsvektor in z-Richtung (Rechte-Hand-Regel).',
+    explanation: '$\\vec{a}$ × $\\vec{b}$ = (0·0−0·1, 0·0−1·0, 1·1−0·0) = (0, 0, 1). Das ist der Einheitsvektor in z-Richtung (Rechte-Hand-Regel).',
     hints: ['è₁ × è₂ = è₃ nach der Rechte-Hand-Regel.'],
   },
   'ex-vek-3-1-d': {
     id: 'ex-vek-3-1-d', lessonId: 'vek-3-1', type: 'multiple-choice',
-    question: '[PRÜFUNG] a⃗ = (2, 1, −1), b⃗ = (1, 3, 2). Was ist a⃗ × b⃗?',
+    question: '[PRÜFUNG] $\\vec{a}$ = (2, 1, −1), $\\vec{b}$ = (1, 3, 2). Was ist $\\vec{a}$ × $\\vec{b}$?',
     options: ['(5, −5, 5)', '(5, 5, 5)', '(−5, 5, −5)', '(5, −5, −5)'],
     correctIndex: 0,
-    explanation: 'a⃗ × b⃗ = (1·2−(−1)·3, (−1)·1−2·2, 2·3−1·1) = (2+3, −1−4, 6−1) = (5, −5, 5).',
+    explanation: '$\\vec{a}$ × $\\vec{b}$ = (1·2−(−1)·3, (−1)·1−2·2, 2·3−1·1) = (2+3, −1−4, 6−1) = (5, −5, 5).',
     hints: ['Kreuzprodukt: (ay·bz−az·by, az·bx−ax·bz, ax·by−ay·bx)'],
   },
   'ex-vek-3-1-e': {
     id: 'ex-vek-3-1-e', lessonId: 'vek-3-1', type: 'true-false',
-    statement: '[PRÜFUNG] Das Kreuzprodukt ist kommutativ: a⃗ × b⃗ = b⃗ × a⃗.',
+    statement: '[PRÜFUNG] Das Kreuzprodukt ist kommutativ: $\\vec{a}$ × $\\vec{b}$ = $\\vec{b}$ × $\\vec{a}$.',
     correct: false,
-    explanation: 'Das Kreuzprodukt ist **antikommutativ**: a⃗ × b⃗ = −(b⃗ × a⃗). Die Reihenfolge ist wichtig!',
+    explanation: 'Das Kreuzprodukt ist **antikommutativ**: $\\vec{a}$ × $\\vec{b}$ = −($\\vec{b}$ × $\\vec{a}$). Die Reihenfolge ist wichtig!',
     hints: ['Beim Vertauschen ändert sich das Vorzeichen.'],
   },
   'ex-vek-3-1-mastery': {
     id: 'ex-vek-3-1-mastery', lessonId: 'vek-3-1', type: 'number-input', isMasteryCheck: true,
-    question: '[PRÜFUNG] Winkel zwischen a⃗ = (1, 1, 0) und b⃗ = (0, 1, 1) in Grad. Runde auf ganze Grad.',
+    question: '[PRÜFUNG] Winkel zwischen $\\vec{a}$ = (1, 1, 0) und $\\vec{b}$ = (0, 1, 1) in Grad. Runde auf ganze Grad.',
     correctAnswer: 60,
     tolerance: 1,
     unit: '',
-    explanation: 'cos(φ) = (a⃗·b⃗)/(|a⃗|·|b⃗|) = (0+1+0)/(√2·√2) = 1/2. φ = arccos(1/2) = 60°.',
-    hints: ['a⃗·b⃗ = 0+1+0 = 1. |a⃗| = √2, |b⃗| = √2.', 'cos(φ) = 1/2 → φ = 60°'],
+    explanation: 'cos(φ) = ($\\vec{a}$·$\\vec{b}$)/(|$\\vec{a}$|·|$\\vec{b}$|) = (0+1+0)/(√2·√2) = 1/2. φ = arccos(1/2) = 60°.',
+    hints: ['$\\vec{a}$·$\\vec{b}$ = 0+1+0 = 1. |$\\vec{a}$| = √2, |$\\vec{b}$| = √2.', 'cos(φ) = 1/2 → φ = 60°'],
   },
 
   // ── Lesson 2: Flächen- und Volumenberechnung ──
   'ex-vek-3-2-a': {
     id: 'ex-vek-3-2-a', lessonId: 'vek-3-2', type: 'multiple-choice',
-    question: '[PRÜFUNG] Die Fläche eines von a⃗ und b⃗ aufgespannten Parallelogramms ist:',
-    options: ['|a⃗ · b⃗|', '|a⃗ × b⃗|', 'a⃗ · (b⃗ × c⃗)', '|a⃗| + |b⃗|'],
+    question: '[PRÜFUNG] Die Fläche eines von $\\vec{a}$ und $\\vec{b}$ aufgespannten Parallelogramms ist:',
+    options: ['|$\\vec{a}$ · $\\vec{b}$|', '|$\\vec{a}$ × $\\vec{b}$|', '$\\vec{a}$ · ($\\vec{b}$ × $\\vec{c}$)', '|$\\vec{a}$| + |$\\vec{b}$|'],
     correctIndex: 1,
-    explanation: 'Die Parallelogrammfläche ist der **Betrag des Kreuzprodukts**: A = |a⃗ × b⃗| = |a⃗|·|b⃗|·sin(φ).',
+    explanation: 'Die Parallelogrammfläche ist der **Betrag des Kreuzprodukts**: A = |$\\vec{a}$ × $\\vec{b}$| = |$\\vec{a}$|·|$\\vec{b}$|·sin(φ).',
     hints: ['Kreuzprodukt → Fläche. Skalarprodukt → Winkel/Projektion.'],
   },
   'ex-vek-3-2-b': {
     id: 'ex-vek-3-2-b', lessonId: 'vek-3-2', type: 'number-input',
-    question: '[PRÜFUNG] a⃗ = (3, 0, 0), b⃗ = (0, 4, 0). Berechne die Parallelogrammfläche A = |a⃗ × b⃗|.',
+    question: '[PRÜFUNG] $\\vec{a}$ = (3, 0, 0), $\\vec{b}$ = (0, 4, 0). Berechne die Parallelogrammfläche A = |$\\vec{a}$ × $\\vec{b}$|.',
     correctAnswer: 12,
     tolerance: 0.01,
     unit: '',
-    explanation: 'a⃗ × b⃗ = (0·0−0·4, 0·0−3·0, 3·4−0·0) = (0, 0, 12). |a⃗ × b⃗| = 12. Das Parallelogramm ist ein Rechteck mit Seiten 3 und 4.',
-    hints: ['Kreuzprodukt berechnen, dann den Betrag nehmen.', 'Alternativ: Die Vektoren stehen senkrecht → A = |a⃗|·|b⃗| = 3·4 = 12'],
+    explanation: '$\\vec{a}$ × $\\vec{b}$ = (0·0−0·4, 0·0−3·0, 3·4−0·0) = (0, 0, 12). |$\\vec{a}$ × $\\vec{b}$| = 12. Das Parallelogramm ist ein Rechteck mit Seiten 3 und 4.',
+    hints: ['Kreuzprodukt berechnen, dann den Betrag nehmen.', 'Alternativ: Die Vektoren stehen senkrecht → A = |$\\vec{a}$|·|$\\vec{b}$| = 3·4 = 12'],
   },
   'ex-vek-3-2-c': {
     id: 'ex-vek-3-2-c', lessonId: 'vek-3-2', type: 'multiple-choice',
     question: '[PRÜFUNG] Das Volumen eines Spats (Parallelepiped) wird berechnet durch:',
-    options: ['V = |a⃗ × b⃗|', 'V = a⃗ · b⃗ · c⃗', 'V = |a⃗ · (b⃗ × c⃗)|', 'V = |a⃗| · |b⃗| · |c⃗|'],
+    options: ['V = |$\\vec{a}$ × $\\vec{b}$|', 'V = $\\vec{a}$ · $\\vec{b}$ · $\\vec{c}$', 'V = |$\\vec{a}$ · ($\\vec{b}$ × $\\vec{c}$)|', 'V = |$\\vec{a}$| · |$\\vec{b}$| · |$\\vec{c}$|'],
     correctIndex: 2,
-    explanation: 'Das **Spatprodukt** V = |a⃗ · (b⃗ × c⃗)| gibt das Volumen des von drei Vektoren aufgespannten Parallelepipeds.',
-    hints: ['Erst Kreuzprodukt b⃗ × c⃗ (→ Flächenvektor), dann Skalarprodukt mit a⃗ (→ Höhe × Fläche = Volumen).'],
+    explanation: 'Das **Spatprodukt** V = |$\\vec{a}$ · ($\\vec{b}$ × $\\vec{c}$)| gibt das Volumen des von drei Vektoren aufgespannten Parallelepipeds.',
+    hints: ['Erst Kreuzprodukt $\\vec{b}$ × $\\vec{c}$ (→ Flächenvektor), dann Skalarprodukt mit $\\vec{a}$ (→ Höhe × Fläche = Volumen).'],
   },
   'ex-vek-3-2-mastery': {
     id: 'ex-vek-3-2-mastery', lessonId: 'vek-3-2', type: 'number-input', isMasteryCheck: true,
-    question: '[PRÜFUNG] a⃗ = (1,0,0), b⃗ = (0,1,0), c⃗ = (0,0,3). Berechne das Spatvolumen V = |a⃗ · (b⃗ × c⃗)|.',
+    question: '[PRÜFUNG] $\\vec{a}$ = (1,0,0), $\\vec{b}$ = (0,1,0), $\\vec{c}$ = (0,0,3). Berechne das Spatvolumen V = |$\\vec{a}$ · ($\\vec{b}$ × $\\vec{c}$)|.',
     correctAnswer: 3,
     tolerance: 0.01,
     unit: '',
-    explanation: 'b⃗ × c⃗ = (1·3−0·0, 0·0−0·3, 0·0−1·0) = (3, 0, 0). a⃗ · (3, 0, 0) = 1·3 + 0 + 0 = 3. V = |3| = 3. Das ist ein Quader mit den Seiten 1, 1 und 3.',
-    hints: ['b⃗ × c⃗ zuerst berechnen, dann mit a⃗ das Skalarprodukt bilden.'],
+    explanation: '$\\vec{b}$ × $\\vec{c}$ = (1·3−0·0, 0·0−0·3, 0·0−1·0) = (3, 0, 0). $\\vec{a}$ · (3, 0, 0) = 1·3 + 0 + 0 = 3. V = |3| = 3. Das ist ein Quader mit den Seiten 1, 1 und 3.',
+    hints: ['$\\vec{b}$ × $\\vec{c}$ zuerst berechnen, dann mit $\\vec{a}$ das Skalarprodukt bilden.'],
   },
 
   // ── Lesson 3: Technische Anwendungen ──
   'ex-vek-3-3-a': {
     id: 'ex-vek-3-3-a', lessonId: 'vek-3-3', type: 'multiple-choice',
     question: '[PRÜFUNG] Das Drehmoment wird berechnet durch:',
-    options: ['M⃗ = r⃗ · F⃗', 'M⃗ = r⃗ × F⃗', 'M⃗ = |r⃗| · |F⃗|', 'M⃗ = F⃗ × r⃗'],
+    options: ['$\\vec{M}$ = $\\vec{r}$ · $\\vec{F}$', '$\\vec{M}$ = $\\vec{r}$ × $\\vec{F}$', '$\\vec{M}$ = |$\\vec{r}$| · |$\\vec{F}$|', '$\\vec{M}$ = $\\vec{F}$ × $\\vec{r}$'],
     correctIndex: 1,
-    explanation: 'Das Drehmoment ist M⃗ = r⃗ × F⃗ (Kreuzprodukt). r⃗ ist der Hebelarm (Ortsvektor vom Drehpunkt zur Kraft), F⃗ ist die Kraft. Achtung: Reihenfolge wichtig!',
+    explanation: 'Das Drehmoment ist $\\vec{M}$ = $\\vec{r}$ × $\\vec{F}$ (Kreuzprodukt). $\\vec{r}$ ist der Hebelarm (Ortsvektor vom Drehpunkt zur Kraft), $\\vec{F}$ ist die Kraft. Achtung: Reihenfolge wichtig!',
     hints: ['Drehmoment = Kreuzprodukt aus Hebelarm und Kraft.'],
   },
   'ex-vek-3-3-b': {
     id: 'ex-vek-3-3-b', lessonId: 'vek-3-3', type: 'number-input',
-    question: '[PRÜFUNG] Hebelarm r⃗ = (0,5, 0, 0) m, Kraft F⃗ = (0, 100, 0) N. Berechne |M⃗| = |r⃗ × F⃗| in Nm.',
+    question: '[PRÜFUNG] Hebelarm $\\vec{r}$ = (0,5, 0, 0) m, Kraft $\\vec{F}$ = (0, 100, 0) N. Berechne |$\\vec{M}$| = |$\\vec{r}$ × $\\vec{F}$| in Nm.',
     correctAnswer: 50,
     tolerance: 0.1,
     unit: '',
-    explanation: 'r⃗ × F⃗ = (0·0−0·100, 0·0−0,5·0, 0,5·100−0·0) = (0, 0, 50). |M⃗| = 50 Nm. Der Hebel ist 0,5 m lang, die Kraft steht senkrecht → M = 0,5·100 = 50 Nm.',
-    hints: ['Da r⃗ und F⃗ senkrecht stehen: |M⃗| = |r⃗|·|F⃗|·sin(90°) = 0,5·100 = 50'],
+    explanation: '$\\vec{r}$ × $\\vec{F}$ = (0·0−0·100, 0·0−0,5·0, 0,5·100−0·0) = (0, 0, 50). |$\\vec{M}$| = 50 Nm. Der Hebel ist 0,5 m lang, die Kraft steht senkrecht → M = 0,5·100 = 50 Nm.',
+    hints: ['Da $\\vec{r}$ und $\\vec{F}$ senkrecht stehen: |$\\vec{M}$| = |$\\vec{r}$|·|$\\vec{F}$|·sin(90°) = 0,5·100 = 50'],
   },
   'ex-vek-3-3-c': {
     id: 'ex-vek-3-3-c', lessonId: 'vek-3-3', type: 'multiple-choice',
-    question: '[PRÜFUNG] Eine Kraft F⃗ = (100, 0) N wirkt auf einen Körper. Zerlege sie in Komponenten parallel und senkrecht zu einer Rampe mit Neigung α = 30°. Wie groß ist die Hangabtriebskraft?',
+    question: '[PRÜFUNG] Eine Kraft $\\vec{F}$ = (100, 0) N wirkt auf einen Körper. Zerlege sie in Komponenten parallel und senkrecht zu einer Rampe mit Neigung α = 30°. Wie groß ist die Hangabtriebskraft?',
     options: ['100·cos(30°) ≈ 86,6 N', '100·sin(30°) = 50 N', '100·tan(30°) ≈ 57,7 N', '100 N'],
     correctIndex: 1,
     explanation: 'Die **Hangabtriebskraft** (parallel zur Rampe) ist F_parallel = F·sin(α) = 100·sin(30°) = 50 N. Die Normalkraft (senkrecht zur Rampe) ist F_normal = F·cos(α).',
@@ -116,15 +116,15 @@ export const exercises_vek_u3 = {
   },
   'ex-vek-3-3-mastery': {
     id: 'ex-vek-3-3-mastery', lessonId: 'vek-3-3', type: 'multiple-choice', isMasteryCheck: true,
-    question: '[PRÜFUNG] Ein Kran hebt eine Last mit F⃗ = (0, 0, −500) N. Der Seilansatzpunkt ist r⃗ = (3, 4, 0) m vom Drehpunkt. Welche Aussage zum Drehmoment ist korrekt?',
+    question: '[PRÜFUNG] Ein Kran hebt eine Last mit $\\vec{F}$ = (0, 0, −500) N. Der Seilansatzpunkt ist $\\vec{r}$ = (3, 4, 0) m vom Drehpunkt. Welche Aussage zum Drehmoment ist korrekt?',
     options: [
-      'M⃗ = (−2000, 1500, 0) Nm',
-      'M⃗ = (2000, −1500, 0) Nm',
-      'M⃗ = (0, 0, −2500) Nm',
-      '|M⃗| = 2500 Nm',
+      '$\\vec{M}$ = (−2000, 1500, 0) Nm',
+      '$\\vec{M}$ = (2000, −1500, 0) Nm',
+      '$\\vec{M}$ = (0, 0, −2500) Nm',
+      '|$\\vec{M}$| = 2500 Nm',
     ],
     correctIndex: 0,
-    explanation: 'M⃗ = r⃗ × F⃗ = (3,4,0) × (0,0,−500) = (4·(−500)−0·0, 0·0−3·(−500), 3·0−4·0) = (−2000, 1500, 0) Nm.',
+    explanation: '$\\vec{M}$ = $\\vec{r}$ × $\\vec{F}$ = (3,4,0) × (0,0,−500) = (4·(−500)−0·0, 0·0−3·(−500), 3·0−4·0) = (−2000, 1500, 0) Nm.',
     hints: ['Kreuzprodukt Schritt für Schritt: (ay·bz−az·by, az·bx−ax·bz, ax·by−ay·bx)'],
   },
 }
@@ -158,16 +158,16 @@ const lessons_vek_u3 = [
         id: 'vek-3-2-s1', type: 'explanation-formal', title: 'Flächen und Volumen mit Vektoren',
         content: `Vektoren sind perfekt geeignet, um Flächen und Volumen zu berechnen!
 
-**Parallelogrammfläche** (aufgespannt von a⃗ und b⃗):
+**Parallelogrammfläche** (aufgespannt von $\\vec{a}$ und $\\vec{b}$):
 $$A = |\\vec{a} \\times \\vec{b}| = |\\vec{a}| \\cdot |\\vec{b}| \\cdot \\sin(\\varphi)$$
 
 **Dreiecksfläche** = halbe Parallelogrammfläche:
 $$A_{\\triangle} = \\frac{1}{2} |\\vec{a} \\times \\vec{b}|$$
 
-**Spatprodukt** (Volumen des Parallelepipeds, aufgespannt von a⃗, b⃗, c⃗):
+**Spatprodukt** (Volumen des Parallelepipeds, aufgespannt von $\\vec{a}$, $\\vec{b}$, $\\vec{c}$):
 $$V = |\\vec{a} \\cdot (\\vec{b} \\times \\vec{c})|$$
 
-**Idee:** Erst b⃗ × c⃗ berechnen (ergibt einen Flächenvektor). Dann Skalarprodukt mit a⃗ (projiziert die Höhe auf die Fläche). Das Ergebnis ist Grundfläche × Höhe = Volumen.
+**Idee:** Erst $\\vec{b}$ × $\\vec{c}$ berechnen (ergibt einen Flächenvektor). Dann Skalarprodukt mit $\\vec{a}$ (projiziert die Höhe auf die Fläche). Das Ergebnis ist Grundfläche × Höhe = Volumen.
 
 **Tetraedervolumen** = 1/6 des Spatvolumens:
 $$V_{\\text{Tetraeder}} = \\frac{1}{6} |\\vec{a} \\cdot (\\vec{b} \\times \\vec{c})|$$`,
@@ -191,14 +191,14 @@ $$V_{\\text{Tetraeder}} = \\frac{1}{6} |\\vec{a} \\cdot (\\vec{b} \\times \\vec{
         content: `Vektoren sind das **Handwerkszeug** des Ingenieurs. Zwei zentrale Anwendungen:
 
 **1. Kräftezerlegung (schiefe Ebene):**
-Stell dir einen Koffer auf einer Rampe vor. Die Gewichtskraft F⃗_G zeigt senkrecht nach unten. Aber der Koffer rutscht **parallel zur Rampe** hinunter.
+Stell dir einen Koffer auf einer Rampe vor. Die Gewichtskraft $\\vec{F}$_G zeigt senkrecht nach unten. Aber der Koffer rutscht **parallel zur Rampe** hinunter.
 
 Zerlegung bei Neigungswinkel α:
 - **Hangabtriebskraft:** $F_{\\parallel} = F_G \\cdot \\sin(\\alpha)$ (zieht den Koffer die Rampe hinunter)
 - **Normalkraft:** $F_{\\perp} = F_G \\cdot \\cos(\\alpha)$ (drückt den Koffer auf die Rampe)
 
-**2. Drehmoment M⃗ = r⃗ × F⃗:**
-Stell dir einen Schraubenschlüssel vor. Je länger der Hebel (r⃗) und je stärker du drückst (F⃗), desto größer das Drehmoment. Und: Am besten senkrecht zum Hebel drücken!
+**2. Drehmoment $\\vec{M}$ = $\\vec{r}$ × $\\vec{F}$:**
+Stell dir einen Schraubenschlüssel vor. Je länger der Hebel ($\\vec{r}$) und je stärker du drückst ($\\vec{F}$), desto größer das Drehmoment. Und: Am besten senkrecht zum Hebel drücken!
 
 $$|\\vec{M}| = |\\vec{r}| \\cdot |\\vec{F}| \\cdot \\sin(\\alpha)$$
 

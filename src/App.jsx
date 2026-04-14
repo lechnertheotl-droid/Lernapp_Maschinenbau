@@ -7,6 +7,8 @@ import { Onboarding } from '@/pages/Onboarding'
 import { ReviewArea } from '@/pages/ReviewArea'
 import { TopicDetail } from '@/pages/TopicDetail'
 import { TopicOverview } from '@/pages/TopicOverview'
+import { Settings } from '@/pages/Settings'
+import { NotFound } from '@/components/NotFound'
 
 function RequireUser() {
   const { user } = useAppState()
@@ -28,10 +30,6 @@ function OnboardingRoute() {
   return <Onboarding />
 }
 
-function NotFoundRedirect() {
-  return <Navigate to="/" replace />
-}
-
 export default function App() {
   return (
     <Routes>
@@ -43,9 +41,11 @@ export default function App() {
         <Route path="topics/:topicId" element={<TopicDetail />} />
         <Route path="topics/:topicId/:lessonId" element={<LessonView />} />
         <Route path="review" element={<ReviewArea />} />
+        <Route path="settings" element={<Settings />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
 
-      <Route path="*" element={<NotFoundRedirect />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
 }

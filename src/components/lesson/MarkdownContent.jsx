@@ -25,6 +25,29 @@ const markdownComponents = {
       {children}
     </td>
   ),
+  code: ({ className, children, ...props }) => {
+    const isFenced = /language-/.test(className || '')
+    if (isFenced) {
+      return (
+        <code className={cn('font-mono text-[0.8rem]', className)} {...props}>
+          {children}
+        </code>
+      )
+    }
+    return (
+      <code
+        className="font-mono text-[0.85em] bg-surface-100 text-ink px-1 py-0.5 rounded border border-surface-200"
+        {...props}
+      >
+        {children}
+      </code>
+    )
+  },
+  pre: ({ children }) => (
+    <pre className="my-3 bg-ink text-paper font-mono text-[0.8rem] leading-relaxed border-2 border-ink rounded-retro shadow-hard-sm p-3 overflow-x-auto">
+      {children}
+    </pre>
+  ),
 }
 
 export function MarkdownContent({ children, className }) {

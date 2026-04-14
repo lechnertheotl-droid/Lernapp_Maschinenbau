@@ -438,8 +438,8 @@ Polynomdivision → restliche Nullstellen bestimmen.`,
 | Typ | Methode | Pflicht |
 |---|---|---|
 | Wurzelgleichung $\\sqrt{f} = g$ | Quadrieren | **Probe**, da Scheinlösungen möglich |
-| Betragsgleichung $|f| = c$ | Fallunterscheidung $f = \\pm c$ | Beide Fälle prüfen |
-| Betragsungleichung $|f| \\leq c$ | Umformen: $-c \\leq f \\leq c$ | Vorzeichen beachten |
+| Betragsgleichung $\\lvert f\\rvert = c$ | Fallunterscheidung $f = \\pm c$ | Beide Fälle prüfen |
+| Betragsungleichung $\\lvert f\\rvert \\leq c$ | Umformen: $-c \\leq f \\leq c$ | Vorzeichen beachten |
 | Exponentialgleichung $a^x = b$ | Logarithmieren | $b > 0$ erforderlich |
 
 ---

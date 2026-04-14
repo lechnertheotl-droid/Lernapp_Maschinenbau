@@ -535,9 +535,9 @@ Für $A\\vec{x} = \\vec{b}$ mit $n$ Unbekannten:
 
 | Bedingung | Lösungstyp |
 |---|---|
-| $\\text{rang}(A) < \\text{rang}([A|\\vec{b}])$ | **Keine Lösung** (Widerspruch) |
-| $\\text{rang}(A) = \\text{rang}([A|\\vec{b}]) = n$ | **Genau eine Lösung** |
-| $\\text{rang}(A) = \\text{rang}([A|\\vec{b}]) < n$ | **Unendlich viele Lösungen** ($n - \\text{rang}$ freie Variablen) |
+| $\\text{rang}(A) < \\text{rang}([A\\vert\\vec{b}])$ | **Keine Lösung** (Widerspruch) |
+| $\\text{rang}(A) = \\text{rang}([A\\vert\\vec{b}]) = n$ | **Genau eine Lösung** |
+| $\\text{rang}(A) = \\text{rang}([A\\vert\\vec{b}]) < n$ | **Unendlich viele Lösungen** ($n - \\text{rang}$ freie Variablen) |
 
 **Gauss-Algorithmus Schritt für Schritt:**
 1. Erweiterte Matrix $[A|\\vec{b}]$ aufstellen
@@ -602,7 +602,7 @@ Die Spalten von $P$ sind die Eigenvektoren, die Diagonale von $D$ enthält die E
 | **Trägheitstensor** $J$ | Hauptträgheitsmomente, Eigenvektoren = Hauptträgheitsachsen |
 | **Spannungstensor** $\\sigma$ | Hauptspannungen, Eigenvektoren = Hauptspannungsrichtungen |
 | **Schwingungssystem** $K\\vec{x} = \\omega^2 M\\vec{x}$ | Eigenfrequenzen $\\omega$ und Schwingungsmoden |
-| **Lineare Iteration** $\\vec{x}_{k+1} = A\\vec{x}_k$ | Stabilität: alle $|\\lambda_i| < 1$ |
+| **Lineare Iteration** $\\vec{x}_{k+1} = A\\vec{x}_k$ | Stabilität: alle $\\lvert\\lambda_i\\rvert < 1$ |
 | **Matrixpotenzen** $A^k$ | $A^k = P D^k P^{-1}$ — direkt durch $\\lambda_i^k$ |
 
 **Spektralsatz (für symmetrische Matrizen):**

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAppState, useAppDispatch } from '@/context/AppContext'
 import { ACTIONS } from '@/context/appReducer'
 import { getAllTopics, getAllLessons } from '@/content/index'
@@ -37,8 +37,8 @@ export function Dashboard() {
     <div className="max-w-2xl mx-auto px-4 pt-6 pb-2 flex flex-col gap-5">
 
       {/* ── Greeting bar ─────────────────────────────────────────── */}
-      <div className="bg-ink border-2 border-ink rounded-retro shadow-hard-lg px-5 py-4 flex items-center justify-between">
-        <div>
+      <div className="bg-ink border-2 border-ink rounded-retro shadow-hard-lg px-5 py-4 flex items-center justify-between gap-3">
+        <div className="min-w-0">
           <p className="text-surface-500 font-mono text-xs uppercase tracking-widest mb-0.5">
             {new Date().toLocaleDateString('de-AT', { weekday: 'short', day: 'numeric', month: 'short' })}
           </p>
@@ -46,12 +46,22 @@ export function Dashboard() {
             {greeting(state.user.name ?? 'du')}
           </h1>
         </div>
-        {totalCompleted > 0 && (
-          <div className="flex flex-col items-center bg-lemon border-2 border-lemon-dark rounded-retro shadow-hard-lemon px-3 py-2 min-w-[56px]">
-            <span className="num text-xl font-black text-ink leading-none">{totalCompleted}</span>
-            <span className="font-mono text-[9px] font-bold text-ink-soft uppercase tracking-wide mt-0.5">Lekt.</span>
-          </div>
-        )}
+        <div className="flex items-center gap-2 flex-shrink-0">
+          {totalCompleted > 0 && (
+            <div className="flex flex-col items-center bg-lemon border-2 border-lemon-dark rounded-retro shadow-hard-lemon px-3 py-2 min-w-[56px]">
+              <span className="num text-xl font-black text-ink leading-none">{totalCompleted}</span>
+              <span className="font-mono text-[9px] font-bold text-ink-soft uppercase tracking-wide mt-0.5">Lekt.</span>
+            </div>
+          )}
+          <Link
+            to="/settings"
+            aria-label="Einstellungen"
+            title="Einstellungen"
+            className="w-10 h-10 flex items-center justify-center rounded-retro border-2 border-surface-600 text-lemon hover:border-lemon font-mono text-base transition-colors"
+          >
+            ⚙
+          </Link>
+        </div>
       </div>
 
       {/* ── Review CTA ───────────────────────────────────────────── */}

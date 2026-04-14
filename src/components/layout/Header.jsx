@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { cn } from '@/utils/cn'
+import { useTheme } from '@/context/ThemeContext'
 
 const navLinks = [
   { to: '/',       label: 'Dashboard' },
@@ -9,6 +10,7 @@ const navLinks = [
 
 export function Header() {
   const { pathname } = useLocation()
+  const { theme, toggleTheme } = useTheme()
 
   return (
     <header className="hidden md:flex h-14 items-center justify-between px-6 bg-ink border-b-2 border-ink sticky top-0 z-40">
@@ -39,6 +41,28 @@ export function Header() {
             </Link>
           )
         })}
+        <button
+          type="button"
+          onClick={toggleTheme}
+          aria-label={theme === 'dark' ? 'Zu hellem Modus wechseln' : 'Zu dunklem Modus wechseln'}
+          title={theme === 'dark' ? 'Heller Modus' : 'Dunkler Modus'}
+          className="ml-2 w-9 h-9 flex items-center justify-center rounded-retro border-2 border-surface-600 text-lemon hover:border-lemon font-mono text-sm transition-colors"
+        >
+          {theme === 'dark' ? '☀' : '☾'}
+        </button>
+        <Link
+          to="/settings"
+          aria-label="Einstellungen"
+          title="Einstellungen"
+          className={cn(
+            'w-9 h-9 flex items-center justify-center rounded-retro border-2 font-mono text-sm transition-colors',
+            pathname === '/settings'
+              ? 'bg-lemon text-ink border-lemon-dark shadow-hard-sm'
+              : 'border-surface-600 text-lemon hover:border-lemon'
+          )}
+        >
+          ⚙
+        </Link>
       </nav>
     </header>
   )

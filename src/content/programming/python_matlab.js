@@ -112,6 +112,7 @@ const pythonMatlabTopic = buildTopic({
 | \`bool\` | \`b = True\` | Wahrheitswert |
 
 **Typumwandlung:**
+
 \`\`\`python
 x = int("42")      # str → int
 y = float(7)       # int → float

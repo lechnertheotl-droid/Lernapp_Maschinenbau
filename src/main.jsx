@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { registerSW } from 'virtual:pwa-register'
 import App from './App.jsx'
 import { AppProvider } from '@/context/AppContext'
+import { ThemeProvider } from '@/context/ThemeContext'
 import { ToastProvider } from '@/components/ui/Toast'
 import { FormulaPopoverProvider } from '@/utils/formulaPopoverContext'
 import { FormulaPopoverRoot } from '@/components/ui/FormulaPopoverRoot'
@@ -15,14 +16,16 @@ registerSW({ immediate: true })
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <AppProvider>
-        <FormulaPopoverProvider>
-          <ToastProvider>
-            <App />
-            <FormulaPopoverRoot />
-          </ToastProvider>
-        </FormulaPopoverProvider>
-      </AppProvider>
+      <ThemeProvider>
+        <AppProvider>
+          <FormulaPopoverProvider>
+            <ToastProvider>
+              <App />
+              <FormulaPopoverRoot />
+            </ToastProvider>
+          </FormulaPopoverProvider>
+        </AppProvider>
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
 )

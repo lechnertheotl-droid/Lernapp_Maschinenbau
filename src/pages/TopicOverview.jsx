@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAppState } from '@/context/AppContext'
 import { getAllTopics, getAllLessons, isExamCompleted } from '@/content/index'
@@ -10,16 +11,51 @@ export function TopicOverview() {
   const state    = useAppState()
   const navigate = useNavigate()
   const topics   = getAllTopics()
+  const [query, setQuery] = useState('')
+
+  const filteredTopics = useMemo(() => {
+    const q = query.trim().toLowerCase()
+    if (!q) return topics
+    return topics.filter((topic) => {
+      if (topic.title.toLowerCase().includes(q)) return true
+      if (topic.description?.toLowerCase().includes(q)) return true
+      const lessonTitles = (topic.units ?? []).flatMap((u) => (u.lessons ?? []).map((l) => l.title?.toLowerCase() ?? ''))
+      return lessonTitles.some((t) => t.includes(q))
+    })
+  }, [topics, query])
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-6">
-      <div className="flex items-baseline gap-3 mb-5">
+      <div className="flex items-baseline gap-3 mb-4">
         <h1 className="font-black text-2xl text-ink">Themenbereiche</h1>
-        <span className="font-mono text-xs text-ink-soft">{topics.length} verfügbar</span>
+        <span className="font-mono text-xs text-ink-soft">
+          {query ? `${filteredTopics.length}/${topics.length}` : `${topics.length} verfügbar`}
+        </span>
       </div>
 
+      <div className="mb-5">
+        <label className="sr-only" htmlFor="topic-search">Thema suchen</label>
+        <div className="relative">
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 font-mono text-ink-soft text-sm pointer-events-none">⌕</span>
+          <input
+            id="topic-search"
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Thema oder Lektion suchen…"
+            className="w-full pl-9 pr-3 py-2.5 border-2 border-ink rounded-retro bg-white shadow-hard-sm font-mono text-sm placeholder:text-ink-soft focus:outline-none focus:ring-2 focus:ring-primary-500"
+          />
+        </div>
+      </div>
+
+      {filteredTopics.length === 0 && (
+        <div className="text-center py-8 text-ink-soft text-sm font-mono">
+          Keine Treffer für „{query}".
+        </div>
+      )}
+
       <div className="flex flex-col gap-3">
-        {topics.map((topic, i) => {
+        {filteredTopics.map((topic, i) => {
           const tp       = state.progress.topicProgress[topic.id]
           const total    = getAllLessons(topic.id).length
           const completed = tp?.completedLessons?.length ?? 0
