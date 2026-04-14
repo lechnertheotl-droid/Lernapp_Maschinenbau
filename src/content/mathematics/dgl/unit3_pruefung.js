@@ -249,6 +249,129 @@ export const exercises_dgl_u3 = {
     explanation: 'Char. Gleichung: $\\lambda^2 + 4\\lambda + 3 = (\\lambda + 1)(\\lambda + 3) = 0$. Wurzeln: $\\lambda_1 = -1$, $\\lambda_2 = -3$ (beide reell, verschieden, negativ). Das ist der Kriechfall. Allg. Lösung: $x = C_1 e^{-t} + C_2 e^{-3t}$. AWP: $C_1 + C_2 = 2$, $-C_1 - 3C_2 = -2 \\Rightarrow C_1 = 2$, $C_2 = 0$. Lösung: $x = 2e^{-t}$.',
     hints: ['Berechne die Diskriminante: $b^2 - 4ac = 16 - 12 = 4 > 0$, also zwei reelle Wurzeln.', 'Beide Wurzeln negativ → Kriechfall (kein Überschwingen).'],
   },
+
+  // ── Lektion 3-3: Systeme von DGL & technische Modellbildung ───────────────
+  'ex-dgl-3-3-a': {
+    id: 'ex-dgl-3-3-a', lessonId: 'dgl-3-3', type: 'multiple-choice',
+    question: '[PRÜFUNG] Ein RLC-Stromkreis (Spannung $u$): $L \\ddot q + R \\dot q + \\frac{1}{C} q = u(t)$. Welcher Parameter wirkt wie eine "Federkonstante"?',
+    options: [
+      '$L$ (Induktivität, wirkt wie Masse)',
+      '$1/C$ (Reziproke Kapazität, wirkt wie Federkonstante $k$)',
+      '$R$ (Widerstand, wirkt wie Federkonstante)',
+      '$u(t)$ (Spannung, wirkt wie Federkonstante)',
+    ],
+    correctIndex: 1,
+    explanation: 'Vergleich Mechanik ($m\\ddot x + d\\dot x + kx = F$) ↔ Elektrotechnik ($L\\ddot q + R\\dot q + q/C = u$): $m \\leftrightarrow L$, $d \\leftrightarrow R$ (Dämpfung/Widerstand), $k \\leftrightarrow 1/C$ (Steifigkeit/inverse Kapazität), $F \\leftrightarrow u$ (Antrieb). Diese Analogie erlaubt, dieselbe DGL-Mathematik in beiden Domänen zu nutzen.',
+    hints: ['Schau auf den Term, der die Auslenkung selbst ($q$ oder $x$) ohne Ableitung enthält.', 'Im mechanischen System steht dort $k \\cdot x$.'],
+  },
+  'ex-dgl-3-3-b': {
+    id: 'ex-dgl-3-3-b', lessonId: 'dgl-3-3', type: 'number-input',
+    question: '[PRÜFUNG] System: $\\dot x_1 = 2x_1 + x_2$, $\\dot x_2 = x_1 + 2x_2$. Wie groß ist der größere Eigenwert der Systemmatrix (entscheidend für die Stabilität)?',
+    correctAnswer: 3,
+    tolerance: 0.01,
+    unit: '',
+    explanation: 'Systemmatrix $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$. Char. Polynom: $(2-\\lambda)^2 - 1 = 0 \\Rightarrow 2-\\lambda = \\pm 1 \\Rightarrow \\lambda = 1$ oder $3$. Größter Eigenwert: $\\lambda_{\\max} = 3 > 0$ → System ist instabil (wächst exponentiell).',
+    hints: ['DGL-System linear: $\\dot{\\vec x} = A\\vec x$. Systemmatrix aus den Koeffizienten ablesen.', 'Eigenwerte aus $\\det(A - \\lambda I) = 0$.', 'Stabilität: alle $\\text{Re}(\\lambda) < 0$.'],
+  },
+  'ex-dgl-3-3-c': {
+    id: 'ex-dgl-3-3-c', lessonId: 'dgl-3-3', type: 'true-false',
+    statement: '[PRÜFUNG] Ein lineares DGL-System $\\dot{\\vec x} = A\\vec x$ ist asymptotisch stabil genau dann, wenn alle Eigenwerte von $A$ negativen Realteil haben.',
+    correct: true,
+    explanation: 'Asymptotische Stabilität: Lösungen klingen für $t \\to \\infty$ ab. Allgemeine Lösung enthält Terme $e^{\\lambda_i t}$ — diese gehen gegen 0 genau dann, wenn alle $\\text{Re}(\\lambda_i) < 0$. Bei $\\text{Re}(\\lambda) = 0$ entstehen ungedämpfte Schwingungen (Grenzstabilität); $\\text{Re}(\\lambda) > 0$ bedeutet instabil.',
+    hints: ['Lösungen sind Linearkombinationen von $e^{\\lambda_i t} \\vec v_i$.', '$e^{\\lambda t} \\to 0$ genau bei $\\text{Re}(\\lambda) < 0$.'],
+  },
+  'ex-dgl-3-3-d': {
+    id: 'ex-dgl-3-3-d', lessonId: 'dgl-3-3', type: 'matching',
+    question: '[PRÜFUNG] Ordne die technischen Modelle ihren DGL-Typen zu.',
+    pairs: [
+      { left: 'Newton-Abkühlung $\\dot T = -k(T - T_U)$', right: 'Lineare DGL 1. Ordnung' },
+      { left: 'Feder-Masse-Schwinger $m\\ddot x + kx = 0$', right: 'Homogene lineare DGL 2. Ordnung' },
+      { left: 'RLC-Kreis mit Spannung $u(t)$', right: 'Inhomogene lineare DGL 2. Ordnung' },
+      { left: 'Zwei gekoppelte Pendel', right: 'System linearer DGL 2. Ordnung' },
+    ],
+    explanation: 'Diese vier Modelle decken den Großteil aller technischen Anwendungen ab. Erkenne: Wie viele Variablen? Wie hoch die Ableitungs-Ordnung? Mit oder ohne Antrieb? Daraus folgt der Lösungsweg.',
+    hints: ['Wie viele Bewegungsvariablen — eine oder mehrere?', 'Höchste Ableitung bestimmt die Ordnung.'],
+  },
+  'ex-dgl-3-3-e': {
+    id: 'ex-dgl-3-3-e', lessonId: 'dgl-3-3', type: 'number-input',
+    question: '[PRÜFUNG] Newton-Abkühlung: Ein Werkstück hat $T(0) = 200$ °C in einer Umgebung mit $T_U = 20$ °C. Nach $t = 10$ min ist $T = 110$ °C. Wie groß ist $k$ in 1/min?',
+    correctAnswer: 0.0693,
+    tolerance: 0.001,
+    unit: '1/min',
+    explanation: 'Lösung: $T(t) = T_U + (T_0 - T_U) e^{-kt} = 20 + 180 e^{-kt}$. Bei $t = 10$: $110 = 20 + 180 e^{-10k} \\Rightarrow e^{-10k} = 90/180 = 0{,}5 \\Rightarrow -10k = \\ln(0{,}5) \\Rightarrow k = \\ln(2)/10 \\approx 0{,}0693$ 1/min.',
+    hints: ['Newton-Abkühlung hat Lösung der Form $T = T_U + (T_0 - T_U) e^{-kt}$.', 'Setze $T(10)$ ein und löse nach $k$ auf.', '$\\ln(2) \\approx 0{,}693$.'],
+  },
+  'ex-dgl-3-3-f': {
+    id: 'ex-dgl-3-3-f', lessonId: 'dgl-3-3', type: 'multiple-choice',
+    question: '[PRÜFUNG] Ein Tank hat Zufluss $q_{ein} = 5$ L/min, Abfluss proportional zum Inhalt: $q_{aus} = 0{,}1 \\cdot V$. Was ist die DGL für $V(t)$?',
+    options: [
+      '$\\dot V = 5 - 0{,}1 V$',
+      '$\\dot V = 5 \\cdot 0{,}1 V$',
+      '$\\dot V = 5 + V$',
+      '$\\dot V = -5 + 0{,}1 V$',
+    ],
+    correctIndex: 0,
+    explanation: 'Massenbilanz: Änderungsrate = Zufluss − Abfluss. $\\dot V = q_{ein} - q_{aus} = 5 - 0{,}1 V$. Stationärer Zustand $\\dot V = 0$ liefert $V_\\infty = 50$ L. Lineare DGL 1. Ordnung — analytisch lösbar.',
+    hints: ['Bilanz: Was kommt rein minus was geht raus.', 'Abfluss ist proportional zum Inhalt: $q_{aus} = k V$.'],
+  },
+  'ex-dgl-3-3-g': {
+    id: 'ex-dgl-3-3-g', lessonId: 'dgl-3-3', type: 'sorting',
+    question: '[PRÜFUNG] Ordne die Schritte der technischen Modellbildung mit DGL.',
+    items: [
+      'System abgrenzen: Was ist im System, was ist Umgebung?',
+      'Variablen identifizieren: Was ändert sich? Was sind die Treibkräfte?',
+      'Bilanzgleichung aufstellen (Masse, Energie, Kraft, Impuls)',
+      'Aus der Bilanz die DGL formulieren',
+      'Anfangsbedingungen festlegen',
+      'DGL lösen (analytisch oder numerisch)',
+      'Lösung interpretieren und mit Realität vergleichen',
+    ],
+    correctOrder: [0, 1, 2, 3, 4, 5, 6],
+    explanation: 'Modellbildung folgt einer klaren Hierarchie: erst System, dann Variablen, dann Bilanzen, dann DGL, dann Lösung, dann Validierung. Der letzte Schritt ist oft der wichtigste — er prüft, ob das Modell zur Realität passt.',
+    hints: ['Erst System verstehen, dann modellieren.', 'Bilanzgleichungen sind das physikalische Fundament.'],
+  },
+  'ex-dgl-3-3-h': {
+    id: 'ex-dgl-3-3-h', lessonId: 'dgl-3-3', type: 'multiple-choice',
+    question: '[PRÜFUNG] Welche Aussage zum Euler-Verfahren $y_{n+1} = y_n + h \\cdot f(x_n, y_n)$ ist FALSCH?',
+    options: [
+      'Es ist ein expliziter Einschrittverfahren erster Ordnung',
+      'Der Fehler pro Schritt ist $O(h^2)$, der globale Fehler $O(h)$',
+      'Es ist immer stabil, unabhängig von $h$',
+      'Es eignet sich für DGL der Form $\\dot y = f(t, y)$',
+    ],
+    correctIndex: 2,
+    explanation: 'Euler ist NICHT immer stabil — bei zu großem $h$ entstehen numerische Instabilitäten, besonders bei "steifen" DGL. Stabilitätsbedingung etwa $|1 + h\\lambda| \\leq 1$ für lineare Systeme. Die anderen Aussagen stimmen: explizit, Ordnung 1, lokal $O(h^2)$, global $O(h)$.',
+    hints: ['Numerische Stabilität hängt von Schrittweite und DGL-Eigenschaften ab.', 'Steife Systeme erfordern implizite Verfahren oder kleines $h$.'],
+  },
+  'ex-dgl-3-3-i': {
+    id: 'ex-dgl-3-3-i', lessonId: 'dgl-3-3', type: 'true-false',
+    statement: '[PRÜFUNG] Ein homogenes DGL-System $\\dot{\\vec x} = A\\vec x$ wird durch Diagonalisierung von $A$ in entkoppelte skalare DGL $\\dot u_i = \\lambda_i u_i$ überführt.',
+    correct: true,
+    explanation: 'Mit der Substitution $\\vec x = P \\vec u$ (Spalten von $P$ = Eigenvektoren) wird $\\dot{\\vec u} = P^{-1} A P \\vec u = D \\vec u$. Da $D$ diagonal, zerfällt das System in unabhängige skalare DGL $\\dot u_i = \\lambda_i u_i$, jede mit Lösung $u_i(t) = u_i(0) e^{\\lambda_i t}$. Rücktransformation: $\\vec x(t) = P \\vec u(t)$.',
+    hints: ['Diagonalisierung entkoppelt den Zustand in Eigenrichtungen.', 'In jeder Eigenrichtung ist die DGL skalar und trivial lösbar.'],
+  },
+  'ex-dgl-3-3-j': {
+    id: 'ex-dgl-3-3-j', lessonId: 'dgl-3-3', type: 'number-input',
+    question: '[PRÜFUNG] Euler-Verfahren für $\\dot y = -2y$, $y(0) = 1$, Schrittweite $h = 0{,}1$. Berechne $y_2$ (Wert nach zwei Schritten).',
+    correctAnswer: 0.64,
+    tolerance: 0.005,
+    unit: '',
+    explanation: 'Schritt 1: $y_1 = y_0 + h \\cdot f(x_0, y_0) = 1 + 0{,}1 \\cdot (-2 \\cdot 1) = 1 - 0{,}2 = 0{,}8$. Schritt 2: $y_2 = y_1 + h \\cdot f(x_1, y_1) = 0{,}8 + 0{,}1 \\cdot (-2 \\cdot 0{,}8) = 0{,}8 - 0{,}16 = 0{,}64$. Exakte Lösung: $y(0{,}2) = e^{-0{,}4} \\approx 0{,}670$ — Euler unterschätzt etwas.',
+    hints: ['Iteration: $y_{n+1} = y_n + h \\cdot f(x_n, y_n)$.', 'Hier $f(x, y) = -2y$.', 'Nach 2 Schritten: $y_2 = y_0 \\cdot (1 - 2h)^2$ direkt.'],
+  },
+  'ex-dgl-3-3-mastery': {
+    id: 'ex-dgl-3-3-mastery', lessonId: 'dgl-3-3', type: 'multiple-choice', isMasteryCheck: true,
+    question: '[PRÜFUNG] Eine Heizung füllt einen Raum mit Wärmeleistung $\\dot Q_{ein} = 2$ kW, Wärmeverlust nach außen ist proportional zur Temperaturdifferenz: $\\dot Q_{aus} = \\alpha (T - T_U)$ mit $\\alpha = 100$ W/K, $T_U = 0$ °C. Wärmekapazität $C_W = 1$ kJ/K. Welche stationäre Raumtemperatur stellt sich ein?',
+    options: [
+      '$T_\\infty = 20$ °C',
+      '$T_\\infty = 200$ °C',
+      '$T_\\infty = 2$ °C',
+      '$T_\\infty = 0$ °C',
+    ],
+    correctIndex: 0,
+    explanation: 'DGL: $C_W \\dot T = \\dot Q_{ein} - \\alpha(T - T_U) = 2000 - 100 T$ (in W mit $T_U = 0$). Stationär: $\\dot T = 0 \\Rightarrow 2000 = 100 \\cdot T_\\infty \\Rightarrow T_\\infty = 20$ K = 20 °C über Umgebungstemperatur. Da $T_U = 0$ °C, ist $T_\\infty = 20$ °C.',
+    hints: ['Bilanz: $C_W \\dot T = $ Zufluss − Abfluss.', 'Stationär: $\\dot T = 0$.', 'Auflösen nach $T_\\infty$.'],
+  },
 }
 
 const lessons_dgl_u3 = [
@@ -308,7 +431,7 @@ $$\\frac{dy}{g(y)} = f(x)\\,dx \\quad \\Rightarrow \\quad \\int \\frac{dy}{g(y)}
       'Schwingungsverhalten eines Feder-Masse-Systems analysieren',
     ],
     prerequisites: [],
-    nextLessonId: null,
+    nextLessonId: 'dgl-3-3',
     steps: [
       {
         id: 'dgl-3-2-s1', type: 'explanation-formal', title: 'Prüfungsstrategie DGL 2. Ordnung',
@@ -344,6 +467,68 @@ $$y'' + ay' + by = q(x)$$
       { id: 'dgl-3-2-s10', type: 'exercise', title: 'Aufgabe 9 — Superposition', exerciseRef: 'ex-dgl-3-2-i' },
       { id: 'dgl-3-2-s11', type: 'exercise', title: 'Aufgabe 10 — AWP Konstante', exerciseRef: 'ex-dgl-3-2-j' },
       { id: 'dgl-3-2-s12', type: 'mastery-check', title: 'Prüfungsfrage', exerciseRef: 'ex-dgl-3-2-mastery' },
+    ],
+  },
+  {
+    id: 'dgl-3-3', unitId: 'dgl-unit-3',
+    title: 'Prüfung: Systeme & technische Modellbildung',
+    order: 3, estimatedMinutes: 30,
+    learningGoals: [
+      'Lineare DGL-Systeme analysieren (Eigenwerte, Stabilität)',
+      'Reale technische Systeme als DGL formulieren (Wärme, Strömung, Elektrik)',
+      'Numerische Lösung mit Euler-Verfahren durchführen',
+      'Stationäre Lösungen aus Bilanzgleichungen ermitteln',
+    ],
+    prerequisites: [],
+    nextLessonId: null,
+    steps: [
+      {
+        id: 'dgl-3-3-s1', type: 'explanation-formal', title: 'Prüfungsstrategie: Systeme & Modellbildung',
+        content: `**Lineare DGL-Systeme:** $\\dot{\\vec{x}} = A\\vec{x}$ mit $\\vec{x} \\in \\mathbb{R}^n$. Allgemeine Lösung über Eigenwerte und Eigenvektoren von $A$:
+
+$$\\vec{x}(t) = \\sum_i c_i e^{\\lambda_i t} \\vec{v}_i$$
+
+**Stabilität:** Asymptotisch stabil $\\Leftrightarrow$ alle $\\text{Re}(\\lambda_i) < 0$. Bei $\\lambda$ rein imaginär: ungedämpfte Schwingung. Bei $\\text{Re}(\\lambda) > 0$: instabil.
+
+---
+
+**Modellbildung-Schema (Maschinenbau):**
+
+| Bilanz | Beispiel | Form |
+|---|---|---|
+| **Massenbilanz** | Tankzu-/abfluss | $\\dot V = q_{ein} - q_{aus}$ |
+| **Energiebilanz** | Wärmeverlust | $C_W \\dot T = \\dot Q_{ein} - \\alpha (T - T_U)$ |
+| **Kräftebilanz** | Feder-Masse | $m \\ddot x = -k x - d \\dot x + F$ |
+| **Ladungsbilanz** | RLC-Kreis | $L \\ddot q + R \\dot q + q/C = u(t)$ |
+
+**Mechanik-Elektrotechnik-Analogie:** Masse ↔ Induktivität, Dämpfung ↔ Widerstand, Federsteifigkeit ↔ $1/C$, Kraft ↔ Spannung. Selbe Mathematik, andere Domäne.
+
+---
+
+**Numerische Lösung — Euler-Verfahren:**
+
+$$y_{n+1} = y_n + h \\cdot f(x_n, y_n)$$
+
+Einfaches explizites Verfahren erster Ordnung. Globaler Fehler $O(h)$. Achtung: Kann bei großem $h$ instabil werden — speziell bei steifen Systemen.
+
+**Stationäre Lösungen:** $\\dot y = 0$ gibt den Gleichgewichtszustand. Oft schneller herzuleiten als die volle DGL.
+
+**Prüfungsfallen:**
+- Bilanzgleichung mit falschem Vorzeichen
+- Stabilitätskriterium auf Realteil prüfen, nicht auf Vorzeichen von $\\lambda$ direkt
+- Euler-Schrittweite zu groß → numerische Instabilität`,
+      },
+      { id: 'dgl-3-3-s2', type: 'exercise', title: 'Aufgabe 1: Mechanik-Elektrik-Analogie', exerciseRef: 'ex-dgl-3-3-a' },
+      { id: 'dgl-3-3-s3', type: 'exercise', title: 'Aufgabe 2: System-Eigenwerte', exerciseRef: 'ex-dgl-3-3-b' },
+      { id: 'dgl-3-3-s4', type: 'exercise', title: 'Aufgabe 3: Stabilitätskriterium', exerciseRef: 'ex-dgl-3-3-c' },
+      { id: 'dgl-3-3-s5', type: 'exercise', title: 'Aufgabe 4: Modelle zuordnen', exerciseRef: 'ex-dgl-3-3-d' },
+      { id: 'dgl-3-3-s6', type: 'exercise', title: 'Aufgabe 5: Newton-Abkühlung', exerciseRef: 'ex-dgl-3-3-e' },
+      { id: 'dgl-3-3-s7', type: 'exercise', title: 'Aufgabe 6: Tankbilanz', exerciseRef: 'ex-dgl-3-3-f' },
+      { id: 'dgl-3-3-s8', type: 'exercise', title: 'Aufgabe 7: Modellierungsstrategie', exerciseRef: 'ex-dgl-3-3-g' },
+      { id: 'dgl-3-3-s9', type: 'exercise', title: 'Aufgabe 8: Euler-Stabilität', exerciseRef: 'ex-dgl-3-3-h' },
+      { id: 'dgl-3-3-s10', type: 'exercise', title: 'Aufgabe 9: System-Entkopplung', exerciseRef: 'ex-dgl-3-3-i' },
+      { id: 'dgl-3-3-s11', type: 'exercise', title: 'Aufgabe 10: Euler-Schrittberechnung', exerciseRef: 'ex-dgl-3-3-j' },
+      { id: 'dgl-3-3-s12', type: 'mastery-check', title: 'Prüfungsfrage: Heizungs-Modellbildung', exerciseRef: 'ex-dgl-3-3-mastery' },
     ],
   },
 ]

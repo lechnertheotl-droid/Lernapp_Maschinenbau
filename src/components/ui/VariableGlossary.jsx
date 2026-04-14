@@ -39,6 +39,8 @@ const VARIABLES = {
   'Mb': { name: 'Biegemoment', unit: 'Nm', desc: 'Moment das Biegung verursacht' },
   Re: { name: 'Streckgrenze (Werkstoff)', unit: 'MPa', desc: 'Mindeststreckgrenze. S235 → Re = 235 MPa' },
   Rm: { name: 'Zugfestigkeit', unit: 'MPa', desc: 'Maximale Spannung im Zugversuch' },
+  Wp: { name: 'Polares Widerstandsmoment', unit: 'mm³', desc: 'Für Torsion. Kreis: Wp = πd³/16. Doppelt so groß wie axiales W bei Vollkreis' },
+  Mt: { name: 'Torsionsmoment', unit: 'Nm', desc: 'Moment um die Längsachse. τ = Mt/Wp' },
 
   // ── Thermodynamik ──
   T: { name: 'Temperatur', unit: 'K', desc: 'Absolute Temperatur in Kelvin. T = °C + 273,15' },
@@ -53,6 +55,8 @@ const VARIABLES = {
   cp: { name: 'Spez. Wärme (p=const)', unit: 'J/(kg·K)', desc: 'Spezifische Wärmekapazität bei konstantem Druck' },
   cv: { name: 'Spez. Wärme (V=const)', unit: 'J/(kg·K)', desc: 'Spezifische Wärmekapazität bei konstantem Volumen' },
   'ηC': { name: 'Carnot-Wirkungsgrad', unit: '–', desc: 'ηC = 1 − Tkalt/Twarm. Maximal möglicher Wirkungsgrad' },
+  COP: { name: 'Leistungszahl', unit: '–', desc: 'Coefficient of Performance. Wärmepumpe: COPWP = Qab/Wzu. Kältemaschine: COPK = Qzu/Wzu' },
+  'κ': { name: 'Adiabatenexponent', unit: '–', desc: 'κ = cp/cv. Luft: κ ≈ 1,4. Für Adiabat: pVκ = const' },
 
   // ── Fluidmechanik ──
   'ρ': { name: 'Dichte', unit: 'kg/m³', desc: 'Masse pro Volumen. Wasser: ~1000 kg/m³, Luft: ~1,2 kg/m³' },
@@ -68,6 +72,9 @@ const VARIABLES = {
   k: { name: 'Federsteifigkeit', unit: 'N/m', desc: 'Federkonstante. F = k·x (Hookesches Federgesetz)' },
   Ft: { name: 'Umfangskraft', unit: 'N', desc: 'Ft = 2M/d. Tangentialkraft am Zahnrad' },
   'n_dreh': { name: 'Drehzahl', unit: '1/min', desc: 'Umdrehungen pro Minute. ω = 2πn/60' },
+  FV: { name: 'Vorspannkraft', unit: 'N', desc: 'Schraubenvorspannung nach Anziehen. FV = σ·As. Muss bei Betriebslasten erhalten bleiben' },
+  MA: { name: 'Anziehdrehmoment', unit: 'Nm', desc: 'Drehmoment beim Anziehen der Schraube. MA ≈ K·FV·d mit K ≈ 0,2 (K ≈ 0,12 geölt)' },
+  As: { name: 'Spannungsquerschnitt', unit: 'mm²', desc: 'Tragender Gewindequerschnitt der Schraube. Immer kleiner als πd²/4 (steht in DIN-Tabellen)' },
 
   // ── Schwingungen ──
   'ω0': { name: 'Eigenkreisfrequenz', unit: 'rad/s', desc: 'ω₀ = √(k/m). Frequenz der freien Schwingung' },
@@ -89,10 +96,10 @@ const VARIABLES = {
 // Group variables by category for display
 const CATEGORIES = [
   { name: 'Mechanik', keys: ['F', 'FG', 'FN', 'FR', 'm', 'a', 'g', 'v', 's', 't', 'W', 'P', 'M', 'ω', 'α', 'μ', 'Ekin', 'Epot'] },
-  { name: 'Festigkeitslehre', keys: ['σ', 'σb', 'σv', 'σy', 'τ', 'ε', 'E', 'A', 'I', 'Wb', 'Mb', 'Re', 'Rm', 'S', 'D'] },
-  { name: 'Thermodynamik', keys: ['T', 'p', 'V', 'Q', 'U', 'η', 'ηC', 'R', 'n', 'γ', 'cp', 'cv'] },
+  { name: 'Festigkeitslehre', keys: ['σ', 'σb', 'σv', 'σy', 'τ', 'ε', 'E', 'A', 'I', 'Wb', 'Wp', 'Mb', 'Mt', 'Re', 'Rm', 'S', 'D'] },
+  { name: 'Thermodynamik', keys: ['T', 'p', 'V', 'Q', 'U', 'η', 'ηC', 'COP', 'R', 'n', 'γ', 'κ', 'cp', 'cv'] },
   { name: 'Fluidmechanik', keys: ['ρ', 'Re_fluid', 'FA', 'μ_dyn', 'Vdot'] },
-  { name: 'Maschinenelemente', keys: ['i', 'z', 'd', 'k', 'Ft', 'n_dreh'] },
+  { name: 'Maschinenelemente', keys: ['i', 'z', 'd', 'k', 'Ft', 'n_dreh', 'FV', 'MA', 'As'] },
   { name: 'Schwingungen', keys: ['ω0', 'f', 'T_per'] },
   { name: 'Geometrie / Mathe', keys: ['x', 'y', 'π', 'e', 'b', 'h', 'r', 'L', 'l'] },
 ]

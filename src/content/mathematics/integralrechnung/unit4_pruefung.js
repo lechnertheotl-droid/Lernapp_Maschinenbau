@@ -260,6 +260,123 @@ const exercises_int_u4 = {
     explanation: 'f(x) = −x²+4 hat Nullstellen bei x=±2. Scheibenformel: V = π·∫₋₂² (−x²+4)² dx. (−x²+4)² = x⁴−8x²+16. ∫₋₂²(x⁴−8x²+16) dx = 2·∫₀²(x⁴−8x²+16) dx (Symmetrie) = 2·[x⁵/5−8x³/3+16x]₀² = 2·(32/5−64/3+32) = 2·(256/15) = 512/15. V = 512π/15.',
     hints: ['Scheibenformel: V = π·∫[f(x)]² dx. Nullstellen bestimmen die Grenzen.', '(−x²+4)² = x⁴−8x²+16. Nutze die Symmetrie um x=0.'],
   },
+
+  // ── Lektion 4-3: Uneigentliche & numerische Integration ────────────────────
+  'ex-int-4-3-a': {
+    id: 'ex-int-4-3-a', lessonId: 'int-4-3', type: 'multiple-choice',
+    question: '[PRÜFUNG] Welche Aussage zu uneigentlichen Integralen ist KORREKT?',
+    options: [
+      'Ein uneigentliches Integral konvergiert, wenn der Grenzwert $\\lim_{b \\to \\infty} \\int_a^b f(x)\\,dx$ existiert',
+      'Uneigentliche Integrale haben nie einen endlichen Wert',
+      'Sie sind dasselbe wie unbestimmte Integrale',
+      'Sie sind nur über symmetrische Bereiche definiert',
+    ],
+    correctIndex: 0,
+    explanation: 'Uneigentliche Integrale entstehen, wenn der Integrationsbereich unbeschränkt ist ($\\infty$) oder der Integrand bei einer Grenze divergiert. Sie konvergieren, wenn der Grenzwert existiert und endlich ist. Beispiel: $\\int_1^\\infty x^{-2} dx = 1$ konvergiert, $\\int_1^\\infty x^{-1} dx$ divergiert.',
+    hints: ['Definition über Grenzwert.', 'Konvergenz hängt vom Abklingverhalten des Integranden ab.'],
+  },
+  'ex-int-4-3-b': {
+    id: 'ex-int-4-3-b', lessonId: 'int-4-3', type: 'number-input',
+    question: '[PRÜFUNG] Berechne $\\int_1^\\infty \\frac{1}{x^2}\\,dx$.',
+    correctAnswer: 1,
+    tolerance: 0.001,
+    unit: '',
+    explanation: '$\\int_1^b x^{-2}\\,dx = [-x^{-1}]_1^b = -1/b + 1$. Grenzwert für $b \\to \\infty$: $0 + 1 = 1$. Konvergent.',
+    hints: ['Stammfunktion von $x^{-2}$ ist $-x^{-1}$.', 'Grenzwert für $b \\to \\infty$ bilden.'],
+  },
+  'ex-int-4-3-c': {
+    id: 'ex-int-4-3-c', lessonId: 'int-4-3', type: 'true-false',
+    statement: '[PRÜFUNG] Das Integral $\\int_0^1 \\frac{1}{\\sqrt{x}}\\,dx$ ist uneigentlich (Singularität an der unteren Grenze) und konvergiert mit Wert $2$.',
+    correct: true,
+    explanation: 'Bei $x = 0$ wird $1/\\sqrt{x}$ unendlich. $\\int_a^1 x^{-1/2} dx = [2\\sqrt{x}]_a^1 = 2 - 2\\sqrt{a}$. Für $a \\to 0$: $2 - 0 = 2$. Konvergiert. Allgemein: $\\int_0^1 x^{-p} dx$ konvergiert für $p < 1$.',
+    hints: ['Singularität bei der unteren Grenze: Grenzwert $a \\to 0^+$ bilden.', 'Stammfunktion: $2\\sqrt{x}$.'],
+  },
+  'ex-int-4-3-d': {
+    id: 'ex-int-4-3-d', lessonId: 'int-4-3', type: 'matching',
+    question: '[PRÜFUNG] Ordne die Vergleichskriterien für die Konvergenz von $\\int_1^\\infty x^{-p} dx$ zu.',
+    pairs: [
+      { left: '$p > 1$', right: 'Konvergent (Wert $1/(p-1)$)' },
+      { left: '$p = 1$', right: 'Divergent ($\\ln$-Wachstum)' },
+      { left: '$p < 1$', right: 'Divergent ($x^{1-p}$ wächst unbeschränkt)' },
+      { left: '$p = 2$', right: 'Konvergent, Wert $1$' },
+    ],
+    explanation: 'Die p-Integrale sind die Standardvergleiche für Konvergenzfragen. Über $[1,\\infty)$: konvergent gdw. $p > 1$. Über $(0,1]$: konvergent gdw. $p < 1$ (umgekehrt!).',
+    hints: ['Schlüsselgrenze ist $p = 1$ (Logarithmus).', 'Im Unendlichen: schnelles Abklingen nötig.'],
+  },
+  'ex-int-4-3-e': {
+    id: 'ex-int-4-3-e', lessonId: 'int-4-3', type: 'number-input',
+    question: '[PRÜFUNG] Numerische Integration mit Trapezregel: $\\int_0^1 x^2\\,dx$, Schrittweite $h = 0{,}5$ (3 Stützstellen). Berechne den Trapez-Näherungswert.',
+    correctAnswer: 0.375,
+    tolerance: 0.001,
+    unit: '',
+    explanation: 'Stützstellen: $x_0=0$, $x_1=0{,}5$, $x_2=1$ mit $f$-Werten $0$, $0{,}25$, $1$. Trapez: $T = h \\cdot (f_0/2 + f_1 + f_2/2) = 0{,}5 \\cdot (0 + 0{,}25 + 0{,}5) = 0{,}5 \\cdot 0{,}75 = 0{,}375$. Exakter Wert: $1/3 \\approx 0{,}333$ — Trapez überschätzt bei konvexen Funktionen.',
+    hints: ['Trapezregel: $T = h \\cdot (f_0/2 + f_1 + \\ldots + f_{n-1} + f_n/2)$.', 'Bei nur 3 Punkten: $T = h(f_0/2 + f_1 + f_2/2)$.'],
+  },
+  'ex-int-4-3-f': {
+    id: 'ex-int-4-3-f', lessonId: 'int-4-3', type: 'multiple-choice',
+    question: '[PRÜFUNG] Welche Methode ist für $\\int_0^1 \\sqrt{1 - x^2}\\,dx$ am effizientesten?',
+    options: [
+      'Trigonometrische Substitution $x = \\sin u$ — liefert $\\pi/4$ (Viertelkreis-Fläche)',
+      'Partielle Integration',
+      'Partialbrüche',
+      'Direkte Stammfunktion mit der Potenzregel',
+    ],
+    correctIndex: 0,
+    explanation: '$x = \\sin u$, $dx = \\cos u\\,du$, $\\sqrt{1-x^2} = \\cos u$. Grenzen: $u = 0$ bis $\\pi/2$. Integral: $\\int_0^{\\pi/2} \\cos^2 u\\,du = \\pi/4$. Geometrisch: Viertel des Einheitskreises mit Fläche $\\pi/4$.',
+    hints: ['$\\sqrt{1 - x^2}$ schreit nach trigonometrischer Substitution.', 'Geometrische Interpretation: Viertelkreis.'],
+  },
+  'ex-int-4-3-g': {
+    id: 'ex-int-4-3-g', lessonId: 'int-4-3', type: 'sorting',
+    question: '[PRÜFUNG] Bringe die Schritte zur Konvergenzprüfung eines uneigentlichen Integrals in die richtige Reihenfolge.',
+    items: [
+      'Singularitäten und unbeschränkte Bereiche identifizieren',
+      'Integral als Grenzwert eines bestimmten Integrals schreiben',
+      'Stammfunktion $F(x)$ ermitteln',
+      'Grenzwert $\\lim F$ bilden',
+      'Wenn Grenzwert endlich → konvergent; sonst divergent',
+    ],
+    correctOrder: [0, 1, 2, 3, 4],
+    explanation: 'Grenzwertbildung ist der entscheidende Schritt. Bei mehreren Singularitäten: Integral aufteilen und jede Stelle separat prüfen.',
+    hints: ['Erst die Singularitäten finden.', 'Stammfunktion → Grenzwert.'],
+  },
+  'ex-int-4-3-h': {
+    id: 'ex-int-4-3-h', lessonId: 'int-4-3', type: 'number-input',
+    question: '[PRÜFUNG] Berechne $\\int_0^\\infty e^{-x}\\,dx$.',
+    correctAnswer: 1,
+    tolerance: 0.001,
+    unit: '',
+    explanation: '$\\int_0^b e^{-x}\\,dx = [-e^{-x}]_0^b = -e^{-b} + 1$. Grenzwert $b \\to \\infty$: $-0 + 1 = 1$. Konvergiert. Diese Form taucht in der Wärmelehre, Diffusion und Wahrscheinlichkeitstheorie ständig auf.',
+    hints: ['Stammfunktion: $-e^{-x}$.', '$e^{-b} \\to 0$ für $b \\to \\infty$.'],
+  },
+  'ex-int-4-3-i': {
+    id: 'ex-int-4-3-i', lessonId: 'int-4-3', type: 'true-false',
+    statement: '[PRÜFUNG] Die Simpson-Regel ist genauer als die Trapezregel, weil sie Polynome bis Grad 3 exakt integriert.',
+    correct: true,
+    explanation: 'Simpson nutzt eine quadratische Interpolation (3 Punkte → Parabel) und integriert diese exakt. Daher liefert sie Polynome bis Grad 3 fehlerfrei. Lokaler Fehler: $O(h^5)$, global $O(h^4)$ — deutlich besser als Trapez ($O(h^3)$ lokal, $O(h^2)$ global).',
+    hints: ['Simpson basiert auf Parabel-Interpolation.', 'Höhere Konvergenzordnung als Trapez.'],
+  },
+  'ex-int-4-3-j': {
+    id: 'ex-int-4-3-j', lessonId: 'int-4-3', type: 'number-input',
+    question: '[PRÜFUNG] Berechne $\\int_0^\\infty x \\cdot e^{-x}\\,dx$ (uneigentlich, partielle Integration).',
+    correctAnswer: 1,
+    tolerance: 0.005,
+    unit: '',
+    explanation: 'Partielle Integration: $u = x$, $v\' = e^{-x}$, $u\' = 1$, $v = -e^{-x}$. $\\int x e^{-x}\\,dx = -x e^{-x} + \\int e^{-x}\\,dx = -x e^{-x} - e^{-x} = -(x+1)e^{-x}$. Bestimmtes Integral: $[-(x+1)e^{-x}]_0^\\infty = 0 - (-1) = 1$ (mit $\\lim_{x \\to \\infty} (x+1)e^{-x} = 0$).',
+    hints: ['Partielle Integration mit $u = x$, $v\' = e^{-x}$.', 'Grenzwert $x e^{-x} \\to 0$ schneller als $x \\to \\infty$.'],
+  },
+  'ex-int-4-3-mastery': {
+    id: 'ex-int-4-3-mastery', lessonId: 'int-4-3', type: 'multiple-choice', isMasteryCheck: true,
+    question: '[PRÜFUNG] Welche Aussage zu $\\int_0^\\infty \\frac{1}{1+x^2}\\,dx$ ist korrekt?',
+    options: [
+      'Konvergent mit Wert $\\pi/2$ (Stammfunktion: $\\arctan x$)',
+      'Divergent, weil $1/(1+x^2)$ nicht abklingt',
+      'Konvergent mit Wert $\\pi$',
+      'Konvergent mit Wert $1$',
+    ],
+    correctIndex: 0,
+    explanation: 'Stammfunktion: $\\arctan x$. $[\\arctan x]_0^b = \\arctan b - 0$. Grenzwert: $\\arctan(\\infty) = \\pi/2$. Konvergent. Dieses Integral spielt in der Wahrscheinlichkeit (Cauchy-Verteilung) und Signalverarbeitung eine zentrale Rolle.',
+    hints: ['Stammfunktion: $\\arctan x$.', '$\\arctan(\\infty) = \\pi/2$.'],
+  },
 }
 
 const lessons_int_u4 = [
@@ -317,7 +434,7 @@ $$\\sin^2(x) = \\frac{1 - \\cos(2x)}{2}, \\quad \\cos^2(x) = \\frac{1 + \\cos(2x
       'Technische Anwendungen (Arbeit, Trägheitsmoment, Bogenlänge) lösen',
     ],
     prerequisites: [],
-    nextLessonId: null,
+    nextLessonId: 'int-4-3',
     steps: [
       {
         id: 'int-4-2-s1', type: 'explanation-intuitive', title: 'Anwendungen in der Prüfung',
@@ -353,6 +470,76 @@ $$L = \\int_a^b \\sqrt{1 + [f'(x)]^2}\\,dx$$`,
       { id: 'int-4-2-s10', type: 'exercise', title: 'Aufgabe 9 — Trägheitsmoment', exerciseRef: 'ex-int-4-2-i' },
       { id: 'int-4-2-s11', type: 'exercise', title: 'Aufgabe 10 — Bogenlänge', exerciseRef: 'ex-int-4-2-j' },
       { id: 'int-4-2-s12', type: 'mastery-check', title: 'Prüfungsfrage', exerciseRef: 'ex-int-4-2-mastery' },
+    ],
+  },
+  {
+    id: 'int-4-3', unitId: 'int-unit-4',
+    title: 'Prüfung: Uneigentliche & numerische Integrale',
+    order: 3, estimatedMinutes: 30,
+    learningGoals: [
+      'Uneigentliche Integrale erkennen und auf Konvergenz prüfen',
+      'p-Integrale als Vergleichsmaßstab nutzen',
+      'Numerische Integration (Trapez, Simpson) anwenden und Fehler abschätzen',
+      'Komplexe Integrale durch Methodenmix lösen',
+    ],
+    prerequisites: [],
+    nextLessonId: null,
+    steps: [
+      {
+        id: 'int-4-3-s1', type: 'explanation-formal', title: 'Prüfungsstrategie: Uneigentliche & numerische Integrale',
+        content: `**Uneigentliche Integrale** entstehen, wenn:
+- Der Integrationsbereich unbeschränkt ist: $\\int_a^\\infty f(x)\\,dx$
+- Der Integrand bei einer Grenze divergiert: $\\int_a^b f(x)\\,dx$ mit $f(x) \\to \\infty$ bei $x \\to a$ oder $b$
+
+**Definition über Grenzwert:**
+$$\\int_a^\\infty f(x)\\,dx = \\lim_{b \\to \\infty} \\int_a^b f(x)\\,dx$$
+
+Existiert der Grenzwert und ist endlich → konvergent. Sonst → divergent.
+
+**p-Integrale (Standardvergleich):**
+
+| $\\int_1^\\infty x^{-p} dx$ | $\\int_0^1 x^{-p} dx$ |
+|---|---|
+| $p > 1$: konvergent ($1/(p-1)$) | $p < 1$: konvergent |
+| $p \\leq 1$: divergent | $p \\geq 1$: divergent |
+
+---
+
+**Numerische Integration** — wenn keine elementare Stammfunktion existiert oder nur Messwerte vorliegen:
+
+**Trapezregel:** $T = h \\cdot \\left( \\frac{f_0 + f_n}{2} + \\sum_{i=1}^{n-1} f_i \\right)$, Fehler $O(h^2)$
+
+**Simpson-Regel** (nur für gerades $n$): $S = \\frac{h}{3} \\left( f_0 + 4 \\sum_{\\text{ungerade}} f_i + 2 \\sum_{\\text{gerade}} f_i + f_n \\right)$, Fehler $O(h^4)$
+
+Simpson ist deutlich genauer — integriert Polynome bis Grad 3 exakt.
+
+---
+
+**Standard-uneigentliche Integrale (auswendig):**
+
+| Integral | Wert |
+|---|---|
+| $\\int_0^\\infty e^{-x}\\,dx$ | $1$ |
+| $\\int_0^\\infty x \\cdot e^{-x}\\,dx$ | $1$ |
+| $\\int_{-\\infty}^\\infty \\frac{1}{1+x^2}\\,dx$ | $\\pi$ |
+| $\\int_0^\\infty e^{-x^2}\\,dx$ | $\\sqrt{\\pi}/2$ |
+
+**Prüfungsfallen:**
+- Konvergenz übersehen → falsche Anwendung der Stammfunktion ohne Grenzwert
+- Trapezregel-Endfaktoren $1/2$ vergessen
+- Simpson nur mit gerader Anzahl Teilintervallen anwendbar`,
+      },
+      { id: 'int-4-3-s2', type: 'exercise', title: 'Aufgabe 1: Konvergenzdefinition', exerciseRef: 'ex-int-4-3-a' },
+      { id: 'int-4-3-s3', type: 'exercise', title: 'Aufgabe 2: Konvergente p-Integrale', exerciseRef: 'ex-int-4-3-b' },
+      { id: 'int-4-3-s4', type: 'exercise', title: 'Aufgabe 3: Singularität bei 0', exerciseRef: 'ex-int-4-3-c' },
+      { id: 'int-4-3-s5', type: 'exercise', title: 'Aufgabe 4: p-Vergleich', exerciseRef: 'ex-int-4-3-d' },
+      { id: 'int-4-3-s6', type: 'exercise', title: 'Aufgabe 5: Trapezregel anwenden', exerciseRef: 'ex-int-4-3-e' },
+      { id: 'int-4-3-s7', type: 'exercise', title: 'Aufgabe 6: Trigonometrische Substitution', exerciseRef: 'ex-int-4-3-f' },
+      { id: 'int-4-3-s8', type: 'exercise', title: 'Aufgabe 7: Konvergenzanalyse-Schritte', exerciseRef: 'ex-int-4-3-g' },
+      { id: 'int-4-3-s9', type: 'exercise', title: 'Aufgabe 8: Exponential bis ∞', exerciseRef: 'ex-int-4-3-h' },
+      { id: 'int-4-3-s10', type: 'exercise', title: 'Aufgabe 9: Trapez vs. Simpson', exerciseRef: 'ex-int-4-3-i' },
+      { id: 'int-4-3-s11', type: 'exercise', title: 'Aufgabe 10: Partielle Integration uneigentlich', exerciseRef: 'ex-int-4-3-j' },
+      { id: 'int-4-3-s12', type: 'mastery-check', title: 'Prüfungsfrage: Cauchy-Integral', exerciseRef: 'ex-int-4-3-mastery' },
     ],
   },
 ]

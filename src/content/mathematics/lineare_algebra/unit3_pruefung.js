@@ -335,6 +335,130 @@ const exercises_la_u3 = {
     ],
   },
 
+  // ── Lektion 3-3: Diagonalisierung & technische Anwendungen ─────────────────
+  'ex-la-3-3-a': {
+    id: 'ex-la-3-3-a', lessonId: 'la-3-3', type: 'multiple-choice',
+    question: '[PRÜFUNG] Eine Matrix $A$ ist genau dann diagonalisierbar, wenn:',
+    options: [
+      'Sie symmetrisch ist (notwendig)',
+      'Sie $n$ linear unabhängige Eigenvektoren besitzt',
+      'Ihre Determinante positiv ist',
+      'Alle Eigenwerte verschieden sind (notwendig)',
+    ],
+    correctIndex: 1,
+    explanation: 'Eine $n \\times n$-Matrix ist diagonalisierbar genau dann, wenn sie $n$ linear unabhängige Eigenvektoren besitzt. Verschiedene Eigenwerte garantieren das (hinreichend, nicht notwendig). Symmetrische Matrizen sind immer diagonalisierbar — aber unsymmetrische können es auch sein.',
+    hints: ['Diagonalisierung: $A = P D P^{-1}$ mit $D$ diagonal. Was muss $P$ können?', 'Spalten von $P$ sind Eigenvektoren — sie müssen eine Basis bilden.'],
+  },
+  'ex-la-3-3-b': {
+    id: 'ex-la-3-3-b', lessonId: 'la-3-3', type: 'number-input',
+    question: '[PRÜFUNG] Gegeben $A = \\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix}$. Berechne den größeren Eigenwert $\\lambda_{\\max}$.',
+    correctAnswer: 5,
+    tolerance: 0.01,
+    unit: '',
+    explanation: 'Charakteristisches Polynom: $\\det(A - \\lambda I) = (4-\\lambda)(3-\\lambda) - 2 = \\lambda^2 - 7\\lambda + 10 = 0$. Nullstellen: $\\lambda = (7 \\pm \\sqrt{9})/2$, also $\\lambda_1 = 5$, $\\lambda_2 = 2$. Probe: Spur $= 4+3 = 7 = \\lambda_1+\\lambda_2$ ✓, $\\det = 12-2 = 10 = \\lambda_1\\lambda_2$ ✓.',
+    hints: ['$\\det(A - \\lambda I) = 0$ liefert ein quadratisches Polynom in $\\lambda$.', 'Schreibe $(4-\\lambda)(3-\\lambda) - 1 \\cdot 2$ aus.', 'Kontrolle: Summe = Spur, Produkt = Determinante.'],
+  },
+  'ex-la-3-3-c': {
+    id: 'ex-la-3-3-c', lessonId: 'la-3-3', type: 'true-false',
+    statement: '[PRÜFUNG] Für eine reell-symmetrische Matrix sind alle Eigenwerte reell und Eigenvektoren zu verschiedenen Eigenwerten zueinander orthogonal.',
+    correct: true,
+    explanation: 'Spektralsatz: Reelle symmetrische Matrizen sind immer orthogonal diagonalisierbar — alle Eigenwerte reell, Eigenvektoren orthogonal. In der Mechanik nutzt man das beim Trägheitstensor: die Hauptträgheitsachsen sind orthogonal.',
+    hints: ['Spektralsatz für symmetrische Matrizen.', 'Anwendung: Hauptträgheitsachsen, Hauptspannungen.'],
+  },
+  'ex-la-3-3-d': {
+    id: 'ex-la-3-3-d', lessonId: 'la-3-3', type: 'matching',
+    question: '[PRÜFUNG] Ordne die technische Anwendung der Eigenwert-Aufgabe zu.',
+    pairs: [
+      { left: 'Trägheitstensor', right: 'Eigenwerte = Hauptträgheitsmomente' },
+      { left: 'Spannungstensor', right: 'Eigenwerte = Hauptspannungen' },
+      { left: 'Schwingungs-Massensystem', right: 'Eigenwerte ↔ Eigenfrequenzen $\\omega^2$' },
+      { left: 'Markow-Kette (stationär)', right: 'Eigenvektor zum Eigenwert 1' },
+    ],
+    explanation: 'Eigenwerte sind in fast jedem Bereich der Ingenieurwissenschaften zentral. Trägheits- und Spannungstensor: durch Diagonalisierung erhält man die "natürlichen" Achsen ohne Schubkomponenten. Schwingungssysteme: $\\det(K - \\omega^2 M) = 0$ liefert die Eigenfrequenzen.',
+    hints: ['Diagonalisierung = Wahl eines "natürlichen" Koordinatensystems.', 'Schwingungseigenwerte sind die Quadrate der Eigenfrequenzen.'],
+  },
+  'ex-la-3-3-e': {
+    id: 'ex-la-3-3-e', lessonId: 'la-3-3', type: 'number-input',
+    question: '[PRÜFUNG] $A = \\begin{pmatrix} 2 & 0 \\\\ 0 & 5 \\end{pmatrix}$. Berechne $\\det(A^{10})$.',
+    correctAnswer: 10000000000,
+    tolerance: 0,
+    unit: '',
+    explanation: 'Direkter Weg: $\\det(A^k) = (\\det A)^k$. $\\det A = 2 \\cdot 5 = 10$, also $\\det(A^{10}) = 10^{10} = 10\\,000\\,000\\,000$. Alternativ: $A^{10} = \\text{diag}(2^{10}, 5^{10}) = \\text{diag}(1024, 9765625)$, Determinante $= 1024 \\cdot 9765625 = 10^{10}$.',
+    hints: ['$\\det(A^k) = (\\det A)^k$ — Potenzregel der Determinante.', '$\\det A$ einer Diagonalmatrix ist das Produkt der Diagonalelemente.', 'Ergebnis: $10^{10}$.'],
+  },
+  'ex-la-3-3-f': {
+    id: 'ex-la-3-3-f', lessonId: 'la-3-3', type: 'multiple-choice',
+    question: '[PRÜFUNG] Welche Matrix ist NICHT diagonalisierbar?',
+    options: [
+      '$\\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}$',
+      '$\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$',
+      '$\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$',
+      '$\\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix}$',
+    ],
+    correctIndex: 1,
+    explanation: '$\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ hat $\\lambda = 1$ doppelt, aber nur einen Eigenvektor (geometrische Vielfachheit 1, algebraische 2). Daher nicht diagonalisierbar — defekte Matrix. Die anderen drei haben verschiedene Eigenwerte oder eine vollständige Eigenvektor-Basis.',
+    hints: ['Diagonalisierbar braucht $n$ unabhängige Eigenvektoren.', 'Bei doppelten Eigenwerten: Anzahl Eigenvektoren prüfen.'],
+  },
+  'ex-la-3-3-g': {
+    id: 'ex-la-3-3-g', lessonId: 'la-3-3', type: 'number-input',
+    question: '[PRÜFUNG] Schwingungssystem: $K = \\begin{pmatrix} 4 & -1 \\\\ -1 & 4 \\end{pmatrix}$, $M = I$. Welches ist die kleinere Eigenfrequenz $\\omega_{\\min}$ in rad/s? (Gib $\\sqrt{3}$ als 1.732 an.)',
+    correctAnswer: 1.732,
+    tolerance: 0.005,
+    unit: 'rad/s',
+    explanation: '$\\det(K - \\omega^2 M) = (4-\\omega^2)^2 - 1 = 0 \\Rightarrow (4-\\omega^2)^2 = 1 \\Rightarrow 4 - \\omega^2 = \\pm 1$. Also $\\omega^2 = 3$ oder $\\omega^2 = 5$. Kleinere Eigenfrequenz: $\\omega_{\\min} = \\sqrt{3} \\approx 1{,}732$ rad/s.',
+    hints: ['Schwingung: $\\det(K - \\omega^2 M) = 0$ liefert die Eigenfrequenzen.', 'Mit $M = I$ wird das ein normales Eigenwertproblem $K\\vec{x} = \\omega^2 \\vec{x}$.', '$\\sqrt{3} \\approx 1{,}732$.'],
+  },
+  'ex-la-3-3-h': {
+    id: 'ex-la-3-3-h', lessonId: 'la-3-3', type: 'multiple-choice',
+    question: '[PRÜFUNG] Eine Matrix $A$ hat Eigenwerte $\\lambda_1 = 0{,}5$, $\\lambda_2 = 0{,}9$. Wie verhält sich die Iteration $\\vec{x}_{k+1} = A \\vec{x}_k$?',
+    options: [
+      'Konvergiert gegen den Nullvektor (Stabilität)',
+      'Wächst exponentiell (Instabilität)',
+      'Schwingt periodisch',
+      'Bleibt konstant',
+    ],
+    correctIndex: 0,
+    explanation: 'Wenn alle Eigenwerte $|\\lambda_i| < 1$, geht $A^k \\to 0$ und $\\vec{x}_k \\to 0$. Die Iteration konvergiert gegen den Nullvektor. Bei mindestens einem $|\\lambda| > 1$ wächst die Iteration. Stabilitätskriterium: max $|\\lambda_i| < 1$.',
+    hints: ['Iterationsverhalten: $A^k \\vec{x}_0 = \\sum c_i \\lambda_i^k \\vec{v}_i$.', 'Beträge der Eigenwerte entscheiden über Wachstum/Abklingen.'],
+  },
+  'ex-la-3-3-i': {
+    id: 'ex-la-3-3-i', lessonId: 'la-3-3', type: 'sorting',
+    question: '[PRÜFUNG] Bringe die Schritte zur Diagonalisierung einer Matrix in die richtige Reihenfolge.',
+    items: [
+      'Eigenwerte $\\lambda_i$ aus $\\det(A - \\lambda I) = 0$ bestimmen',
+      'Eigenvektoren $\\vec{v}_i$ aus $(A - \\lambda_i I)\\vec{v} = \\vec{0}$ berechnen',
+      'Lineare Unabhängigkeit der Eigenvektoren prüfen (sonst nicht diagonalisierbar)',
+      'Matrix $P = (\\vec{v}_1 | \\vec{v}_2 | \\ldots)$ aufstellen',
+      'Diagonalmatrix $D = \\text{diag}(\\lambda_1, \\lambda_2, \\ldots)$',
+      'Probe: $A = P D P^{-1}$ oder äquivalent $P^{-1} A P = D$',
+    ],
+    correctOrder: [0, 1, 2, 3, 4, 5],
+    explanation: 'Diagonalisierung in 6 Schritten: Eigenwerte → Eigenvektoren → Unabhängigkeit prüfen → $P$ aufbauen → $D$ aufschreiben → kontrollieren. Der Test auf Unabhängigkeit ist wichtig: bei defekten Matrizen scheitert das Verfahren.',
+    hints: ['Erst Werte, dann Vektoren — beides braucht $\\det(A - \\lambda I)$.', 'Kontrolle am Ende: $P D P^{-1}$ muss wieder $A$ ergeben.'],
+  },
+  'ex-la-3-3-j': {
+    id: 'ex-la-3-3-j', lessonId: 'la-3-3', type: 'number-input',
+    question: '[PRÜFUNG] Trägheitstensor (in kg·m²): $J = \\begin{pmatrix} 5 & 0 & 0 \\\\ 0 & 4 & 2 \\\\ 0 & 2 & 4 \\end{pmatrix}$. Wie groß ist das größte Hauptträgheitsmoment in kg·m²?',
+    correctAnswer: 6,
+    tolerance: 0.01,
+    unit: 'kg·m²',
+    explanation: 'Eigenwerte: $\\lambda_1 = 5$ (aus erster Spalte). Für 2x2-Block $\\begin{pmatrix} 4 & 2 \\\\ 2 & 4 \\end{pmatrix}$: $\\det \\begin{pmatrix} 4-\\lambda & 2 \\\\ 2 & 4-\\lambda \\end{pmatrix} = (4-\\lambda)^2 - 4 = 0 \\Rightarrow \\lambda = 4 \\pm 2 = 6$ oder $2$. Hauptträgheitsmomente: 5, 6, 2. Größtes: $\\lambda_{\\max} = 6$ kg·m².',
+    hints: ['Block-Diagonalstruktur: erste Eigenwert ist 5 direkt.', 'Für den 2x2-Block: $\\det(B - \\lambda I) = (4-\\lambda)^2 - 4 = 0$.', 'Größtes Hauptträgheitsmoment ist die größte aller drei Eigenwerte.'],
+  },
+  'ex-la-3-3-mastery': {
+    id: 'ex-la-3-3-mastery', lessonId: 'la-3-3', type: 'multiple-choice', isMasteryCheck: true,
+    question: '[PRÜFUNG] $A = \\begin{pmatrix} 3 & 1 \\\\ 0 & 2 \\end{pmatrix}$. Welche Aussage ist KORREKT?',
+    options: [
+      '$A$ ist nicht diagonalisierbar, da $\\det(A) = 6$',
+      '$A$ ist diagonalisierbar; Eigenwerte 3 und 2, Eigenvektoren $(1,0)$ und $(1,-1)$',
+      'Die Eigenwerte sind komplex',
+      '$A$ ist symmetrisch',
+    ],
+    correctIndex: 1,
+    explanation: '$\\det(A - \\lambda I) = (3-\\lambda)(2-\\lambda) = 0 \\Rightarrow \\lambda = 3, 2$. Verschiedene Eigenwerte → diagonalisierbar. Eigenvektor zu $\\lambda = 3$: $(A-3I)\\vec{v} = 0$ liefert $-v_2 = 0$, also $\\vec{v}_1 = (1,0)$. Zu $\\lambda = 2$: $(A-2I)\\vec{v} = 0$ liefert $v_1 + v_2 = 0$, also $\\vec{v}_2 = (1,-1)$.',
+    hints: ['Dreiecksmatrix: Eigenwerte sind die Diagonalelemente.', 'Eigenvektoren: $(A - \\lambda I)\\vec{v} = \\vec{0}$ pro Eigenwert lösen.'],
+  },
+
 }
 
 const lessons_la_u3 = [
@@ -401,7 +525,7 @@ Bestimmung durch Gauss-Elimination: Anzahl der Nicht-Null-Zeilen in der Stufenfo
       'Eigenschaften von Eigenwerten interpretieren',
     ],
     prerequisites: [],
-    nextLessonId: null,
+    nextLessonId: 'la-3-3',
     steps: [
       {
         id: 'la-3-2-s1', type: 'explanation-formal', title: 'Prüfungsstrategie: LGS & Eigenwerte',
@@ -448,6 +572,64 @@ Eigenwert $\\lambda$: $A\\vec{v} = \\lambda \\vec{v}$ mit $\\vec{v} \\neq \\vec{
       { id: 'la-3-2-s10', type: 'exercise', title: 'Aufgabe 9: LGS Lösungsmenge', exerciseRef: 'ex-la-3-2-i' },
       { id: 'la-3-2-s11', type: 'exercise', title: 'Aufgabe 10: Diagonalmatrix', exerciseRef: 'ex-la-3-2-j' },
       { id: 'la-3-2-s12', type: 'mastery-check', title: 'Prüfungsfrage: Defekte Eigenwerte', exerciseRef: 'ex-la-3-2-mastery' },
+    ],
+  },
+  {
+    id: 'la-3-3', unitId: 'la-unit-3',
+    title: 'Prüfung: Diagonalisierung & technische Anwendungen',
+    order: 3, estimatedMinutes: 30,
+    learningGoals: [
+      'Matrizen diagonalisieren $A = P D P^{-1}$',
+      'Eigenwerte für technische Probleme interpretieren (Trägheitstensor, Schwingungen, Stabilität)',
+      'Defekte Matrizen erkennen',
+      'Spektralsatz auf symmetrische Matrizen anwenden',
+    ],
+    prerequisites: [],
+    nextLessonId: null,
+    steps: [
+      {
+        id: 'la-3-3-s1', type: 'explanation-formal', title: 'Prüfungsstrategie: Diagonalisierung & Anwendungen',
+        content: `**Diagonalisierung — Kernidee:** Eine Matrix $A$ lässt sich durch Wahl einer Eigenbasis als Diagonalmatrix schreiben:
+
+$$A = P \\cdot D \\cdot P^{-1}, \\qquad D = \\text{diag}(\\lambda_1, \\lambda_2, \\ldots, \\lambda_n)$$
+
+Die Spalten von $P$ sind die Eigenvektoren, die Diagonale von $D$ enthält die Eigenwerte. Bedingung: $A$ muss $n$ linear unabhängige Eigenvektoren haben.
+
+**Wichtige Anwendungen im Maschinenbau:**
+
+| Anwendung | Eigenwert-Bedeutung |
+|---|---|
+| **Trägheitstensor** $J$ | Hauptträgheitsmomente, Eigenvektoren = Hauptträgheitsachsen |
+| **Spannungstensor** $\\sigma$ | Hauptspannungen, Eigenvektoren = Hauptspannungsrichtungen |
+| **Schwingungssystem** $K\\vec{x} = \\omega^2 M\\vec{x}$ | Eigenfrequenzen $\\omega$ und Schwingungsmoden |
+| **Lineare Iteration** $\\vec{x}_{k+1} = A\\vec{x}_k$ | Stabilität: alle $|\\lambda_i| < 1$ |
+| **Matrixpotenzen** $A^k$ | $A^k = P D^k P^{-1}$ — direkt durch $\\lambda_i^k$ |
+
+**Spektralsatz (für symmetrische Matrizen):**
+- Alle Eigenwerte sind reell.
+- Eigenvektoren zu verschiedenen Eigenwerten sind orthogonal.
+- $A$ ist orthogonal diagonalisierbar: $A = Q \\Lambda Q^T$ mit $Q^T Q = I$.
+
+Das nutzt man bei Trägheits- und Spannungstensoren — sie sind immer symmetrisch, also gibt es immer ein orthogonales Hauptachsensystem.
+
+**Defekte Matrizen:** Wenn algebraische Vielfachheit eines Eigenwerts > geometrische Vielfachheit, ist die Matrix nicht diagonalisierbar. Beispiel: $\\begin{pmatrix}1 & 1\\\\0 & 1\\end{pmatrix}$ hat $\\lambda = 1$ doppelt, aber nur einen Eigenvektor.
+
+**Prüfungsfallen:**
+- Eigenwerte berechnet, aber Diagonalisierbarkeit nicht geprüft
+- $\\det(A^k)$ direkt statt über $(\\det A)^k$
+- Symmetrische Eigenschaft nicht ausgenutzt — orthogonale $Q$ macht $Q^{-1} = Q^T$ trivial`,
+      },
+      { id: 'la-3-3-s2', type: 'exercise', title: 'Aufgabe 1: Diagonalisierbarkeit', exerciseRef: 'ex-la-3-3-a' },
+      { id: 'la-3-3-s3', type: 'exercise', title: 'Aufgabe 2: Eigenwerte berechnen', exerciseRef: 'ex-la-3-3-b' },
+      { id: 'la-3-3-s4', type: 'exercise', title: 'Aufgabe 3: Spektralsatz', exerciseRef: 'ex-la-3-3-c' },
+      { id: 'la-3-3-s5', type: 'exercise', title: 'Aufgabe 4: Technische Anwendungen', exerciseRef: 'ex-la-3-3-d' },
+      { id: 'la-3-3-s6', type: 'exercise', title: 'Aufgabe 5: Determinante einer Potenz', exerciseRef: 'ex-la-3-3-e' },
+      { id: 'la-3-3-s7', type: 'exercise', title: 'Aufgabe 6: Defekte Matrix erkennen', exerciseRef: 'ex-la-3-3-f' },
+      { id: 'la-3-3-s8', type: 'exercise', title: 'Aufgabe 7: Schwingungseigenfrequenz', exerciseRef: 'ex-la-3-3-g' },
+      { id: 'la-3-3-s9', type: 'exercise', title: 'Aufgabe 8: Stabilität von Iterationen', exerciseRef: 'ex-la-3-3-h' },
+      { id: 'la-3-3-s10', type: 'exercise', title: 'Aufgabe 9: Diagonalisierungs-Algorithmus', exerciseRef: 'ex-la-3-3-i' },
+      { id: 'la-3-3-s11', type: 'exercise', title: 'Aufgabe 10: Hauptträgheitsmoment', exerciseRef: 'ex-la-3-3-j' },
+      { id: 'la-3-3-s12', type: 'mastery-check', title: 'Prüfungsfrage: Vollständige Diagonalisierung', exerciseRef: 'ex-la-3-3-mastery' },
     ],
   },
 ]

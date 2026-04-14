@@ -9,12 +9,34 @@ import { engineeringTopics } from './engineering/maschinenbau'
 import { pythonMatlabTopic }  from './programming/python_matlab'
 import { trigonometrySupplements } from './supplements/trigonometry'
 import { algebraSupplements } from './supplements/algebra'
+import { ableitungSupplements } from './supplements/ableitung'
+import { vektorenSupplements } from './supplements/vektoren'
+import { integralrechnungSupplements } from './supplements/integralrechnung'
+import { dglSupplements } from './supplements/dgl'
+import { lineareAlgebraSupplements } from './supplements/lineare_algebra'
+import { pythonMatlabSupplements } from './supplements/python_matlab'
+import { mechanikSupplements } from './supplements/mechanik'
+import { festigkeitSupplements } from './supplements/festigkeit'
+import { thermodynamikSupplements } from './supplements/thermodynamik'
+import { fluidmechanikSupplements } from './supplements/fluidmechanik'
+import { maschinenelementeSupplements } from './supplements/maschinenelemente'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
 const MIN_EXERCISES_PER_LESSON = 10
 const MANUAL_SUPPLEMENTS = {
   ...trigonometrySupplements,
   ...algebraSupplements,
+  ...ableitungSupplements,
+  ...vektorenSupplements,
+  ...integralrechnungSupplements,
+  ...dglSupplements,
+  ...lineareAlgebraSupplements,
+  ...pythonMatlabSupplements,
+  ...mechanikSupplements,
+  ...festigkeitSupplements,
+  ...thermodynamikSupplements,
+  ...fluidmechanikSupplements,
+  ...maschinenelementeSupplements,
 }
 
 function countExerciseSteps(lesson) {

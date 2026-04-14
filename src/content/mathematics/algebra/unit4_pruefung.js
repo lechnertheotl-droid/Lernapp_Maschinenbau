@@ -190,6 +190,123 @@ export const exercises_alg_u4 = {
     explanation: 'U(x) = x·(100 − 2x) = 100x − 2x². Das ist eine nach unten geöffnete Parabel. Maximum bei x_S = −100/(2·(−2)) = 100/4 = 25. U(25) = 25·50 = 1250 €.',
     hints: ['U(x) = 100x − 2x² ist eine nach unten geöffnete Parabel', 'x_S = −b/(2a) = −100/(−4) = 25'],
   },
+
+  // ── Lektion 4-3: Gleichungssysteme & technische Anwendungen ────────────────
+  'ex-alg-4-3-a': {
+    id: 'ex-alg-4-3-a', lessonId: 'alg-4-3', type: 'multiple-choice',
+    question: '[PRÜFUNG] Welche Lösungsstrategie ist für das System $2x + 3y = 7$, $x - y = 1$ am effizientesten?',
+    options: [
+      'Einsetzungsverfahren: aus Zeile 2 $x = 1+y$, dann in Zeile 1 einsetzen',
+      'Nur Multiplizieren beider Gleichungen',
+      'Probieren mit ganzen Zahlen',
+      'Matrix transponieren',
+    ],
+    correctIndex: 0,
+    explanation: 'Einsetzen: $x = 1+y$, eingesetzt: $2(1+y) + 3y = 7 \\Rightarrow 2 + 5y = 7 \\Rightarrow y = 1$. Dann $x = 2$. Probe: $2\\cdot2 + 3\\cdot1 = 7$ ✓. Additions-/Einsetzungsverfahren sind bei 2-Variablen-Systemen am direktesten.',
+    hints: ['Eine Gleichung nach einer Variablen auflösen.', 'In die andere Gleichung einsetzen.', 'Zwei unbekannte, zwei Gleichungen — lineares Einsetzungsverfahren reicht.'],
+  },
+  'ex-alg-4-3-b': {
+    id: 'ex-alg-4-3-b', lessonId: 'alg-4-3', type: 'number-input',
+    question: '[PRÜFUNG] Ein Tragwerk hat zwei Stäbe mit Kräften $F_1$, $F_2$. Gleichgewicht: $F_1 + 2F_2 = 12$ kN, $2F_1 - F_2 = 4$ kN. Welchen Wert hat $F_1$ in kN?',
+    correctAnswer: 4,
+    tolerance: 0.01,
+    unit: 'kN',
+    explanation: 'Aus Zeile 1: $F_1 = 12 - 2F_2$. Einsetzen in Zeile 2: $2(12 - 2F_2) - F_2 = 4 \\Rightarrow 24 - 5F_2 = 4 \\Rightarrow F_2 = 4$. Damit $F_1 = 12 - 8 = 4$ kN. Probe: $4 + 8 = 12$ ✓, $8 - 4 = 4$ ✓.',
+    hints: ['Aus einer Gleichung eine Variable isolieren.', 'In die andere einsetzen und auflösen.', 'Probe im Ergebnis nicht vergessen.'],
+  },
+  'ex-alg-4-3-c': {
+    id: 'ex-alg-4-3-c', lessonId: 'alg-4-3', type: 'true-false',
+    statement: '[PRÜFUNG] Eine Wurzelgleichung $\\sqrt{f(x)} = g(x)$ löst man durch Quadrieren beider Seiten — die erhaltene Lösung muss IMMER in die Originalgleichung eingesetzt werden, weil Quadrieren Scheinlösungen erzeugen kann.',
+    correct: true,
+    explanation: 'Richtig. Quadrieren ist keine Äquivalenzumformung — es vergrößert den Lösungsraum. Beispiel: $x = -1$ quadriert gibt $x^2 = 1$, was auch $x = 1$ zulässt. Immer zurück einsetzen, um Scheinlösungen zu eliminieren.',
+    hints: ['Quadrieren ist nur Implikation, keine Äquivalenz.', 'Bei Wurzelgleichungen: Probe ist Pflicht.'],
+  },
+  'ex-alg-4-3-d': {
+    id: 'ex-alg-4-3-d', lessonId: 'alg-4-3', type: 'matching',
+    question: '[PRÜFUNG] Ordne den Gleichungstypen ihre Standardlösungsmethode zu.',
+    pairs: [
+      { left: 'Lineares System 2×2', right: 'Einsetzungs-/Additionsverfahren' },
+      { left: 'Lineares System n×n', right: 'Gauss-Verfahren' },
+      { left: 'Wurzelgleichung $\\sqrt{f(x)} = g(x)$', right: 'Quadrieren + Probe' },
+      { left: 'Betragsgleichung $|f(x)| = c$', right: 'Fallunterscheidung: $f = c$ oder $f = -c$' },
+    ],
+    explanation: 'Jeder Gleichungstyp hat eine natürliche Lösungsmethode. Bei Wurzeln und Beträgen ist sorgfältige Probe bzw. Fallunterscheidung unverzichtbar, sonst entstehen falsche Lösungen.',
+    hints: ['Lineare Systeme: Gauss oder Einsetzen.', 'Wurzeln und Beträge: nicht-äquivalente Umformungen brauchen Probe.'],
+  },
+  'ex-alg-4-3-e': {
+    id: 'ex-alg-4-3-e', lessonId: 'alg-4-3', type: 'number-input',
+    question: '[PRÜFUNG] Löse $\\sqrt{x + 5} = x - 1$. Gib die gültige Lösung $x$ an.',
+    correctAnswer: 4,
+    tolerance: 0.001,
+    unit: '',
+    explanation: 'Quadrieren: $x + 5 = (x-1)^2 = x^2 - 2x + 1 \\Rightarrow x^2 - 3x - 4 = 0 \\Rightarrow x = (3 \\pm 5)/2$, also $x = 4$ oder $x = -1$. Probe: $x = 4$: $\\sqrt{9} = 3 = 4-1$ ✓. $x = -1$: $\\sqrt{4} = 2 \\neq -2$. Scheinlösung. Gültige Lösung: $x = 4$.',
+    hints: ['Beide Seiten quadrieren (nur dann: Wurzel verschwindet).', 'Quadratische Gleichung lösen.', 'Probe: nur Lösungen mit $x - 1 \\geq 0$ sind gültig, da $\\sqrt{\\cdot} \\geq 0$.'],
+  },
+  'ex-alg-4-3-f': {
+    id: 'ex-alg-4-3-f', lessonId: 'alg-4-3', type: 'multiple-choice',
+    question: '[PRÜFUNG] Eine Betragsungleichung $|2x - 3| \\leq 5$ hat welche Lösungsmenge?',
+    options: [
+      '$-1 \\leq x \\leq 4$',
+      '$x \\leq 4$ (nur)',
+      '$x \\geq -1$ (nur)',
+      '$x = 4$ (Einzellösung)',
+    ],
+    correctIndex: 0,
+    explanation: '$|2x - 3| \\leq 5 \\Leftrightarrow -5 \\leq 2x - 3 \\leq 5 \\Leftrightarrow -2 \\leq 2x \\leq 8 \\Leftrightarrow -1 \\leq x \\leq 4$. In Toleranzrechnung wichtig: Maßtoleranzen sind oft Betragsbedingungen.',
+    hints: ['$|u| \\leq c \\Leftrightarrow -c \\leq u \\leq c$.', 'Umformen in Doppelungleichung und durch 2 teilen.'],
+  },
+  'ex-alg-4-3-g': {
+    id: 'ex-alg-4-3-g', lessonId: 'alg-4-3', type: 'number-input',
+    question: '[PRÜFUNG] Exponentialzerfall: Radioaktive Probe mit Halbwertszeit $T_{1/2} = 10$ min. Wie lange (in min) dauert es, bis nur noch 25 % der ursprünglichen Menge da sind?',
+    correctAnswer: 20,
+    tolerance: 0.1,
+    unit: 'min',
+    explanation: '25 % = 1/4 = (1/2)². Nach 2 Halbwertszeiten ist ein Viertel übrig. $t = 2 \\cdot T_{1/2} = 20$ min. Allgemein: $N(t) = N_0 \\cdot (1/2)^{t/T_{1/2}}$, Gleichung $0{,}25 = (1/2)^{t/10}$ liefert $t/10 = 2$, also $t = 20$ min.',
+    hints: ['Halbwertszeit halbiert die Menge. 25 % = 1/4 = Halbierung zweimal.', 'Gleichung: $0{,}25 = (1/2)^{t/T_{1/2}}$.', 'Logarithmieren oder direkt sehen: $(1/2)^2 = 1/4$.'],
+  },
+  'ex-alg-4-3-h': {
+    id: 'ex-alg-4-3-h', lessonId: 'alg-4-3', type: 'sorting',
+    question: '[PRÜFUNG] Ordne die Schritte zur Lösung einer Exponentialgleichung $a^x = b$.',
+    items: [
+      'Gleichung in die Form $a^x = b$ bringen (alle Exponentialterme isolieren)',
+      'Definitionsbereich prüfen: $b > 0$ erforderlich',
+      'Beide Seiten logarithmieren: $x \\cdot \\ln(a) = \\ln(b)$',
+      'Nach $x$ auflösen: $x = \\ln(b)/\\ln(a)$',
+      'Probe durch Einsetzen',
+    ],
+    correctOrder: [0, 1, 2, 3, 4],
+    explanation: 'Exponentialgleichungen werden durch Logarithmieren gelöst. Vorher prüfen: Die linke Seite $a^x$ ist immer positiv, also muss $b > 0$ gelten.',
+    hints: ['Logarithmieren ist der Schlüsselschritt.', 'Vorher: Definitionsbereich kontrollieren.'],
+  },
+  'ex-alg-4-3-i': {
+    id: 'ex-alg-4-3-i', lessonId: 'alg-4-3', type: 'true-false',
+    statement: '[PRÜFUNG] Ein überbestimmtes lineares Gleichungssystem (mehr Gleichungen als Unbekannte) hat IMMER keine Lösung.',
+    correct: false,
+    explanation: 'Falsch. Ein überbestimmtes System HAT oft keine exakte Lösung — aber nicht immer. Wenn die zusätzlichen Gleichungen linear abhängig sind, bleibt das System lösbar. Beispiel: $x = 2, 2x = 4$ hat drei Gleichungen über einer Unbekannten, aber eine konsistente Lösung. In der Praxis (Messdaten) wird oft mit Methode der kleinsten Quadrate eine Näherungslösung gesucht.',
+    hints: ['Lineare Abhängigkeit kann überbestimmte Systeme lösbar machen.', 'Bei inkonsistenten Systemen: kleinste Quadrate.'],
+  },
+  'ex-alg-4-3-j': {
+    id: 'ex-alg-4-3-j', lessonId: 'alg-4-3', type: 'number-input',
+    question: '[PRÜFUNG] Zwei Stromquellen laden einen Kondensator. System: $I_1 + I_2 = 3$ A und $R_1 I_1 - R_2 I_2 = 0$ mit $R_1 = 2\\,\\Omega$, $R_2 = 4\\,\\Omega$. Welchen Wert hat $I_1$ in A?',
+    correctAnswer: 2,
+    tolerance: 0.01,
+    unit: 'A',
+    explanation: 'Aus zweiter Gleichung: $2 I_1 = 4 I_2 \\Rightarrow I_1 = 2 I_2$. Einsetzen: $2 I_2 + I_2 = 3 \\Rightarrow I_2 = 1$, also $I_1 = 2$ A. Probe: $2 + 1 = 3$ ✓ und $2\\cdot 2 - 4\\cdot 1 = 0$ ✓.',
+    hints: ['Eine Gleichung nach $I_1$ oder $I_2$ auflösen.', 'Einsetzen in die andere.', 'Probe am Schluss.'],
+  },
+  'ex-alg-4-3-mastery': {
+    id: 'ex-alg-4-3-mastery', lessonId: 'alg-4-3', type: 'multiple-choice', isMasteryCheck: true,
+    question: '[PRÜFUNG] Die pH-Skala: $\\text{pH} = -\\log_{10}[\\text{H}^+]$. Eine Säure hat $[\\text{H}^+] = 10^{-3}$ mol/L. Welche pH und wie ändert sie sich, wenn die Konzentration verdoppelt wird?',
+    options: [
+      'pH = 3; bei Verdopplung sinkt pH um $\\log_{10}(2) \\approx 0{,}30$',
+      'pH = 3; bei Verdopplung steigt pH um 2',
+      'pH = 0{,}3; bei Verdopplung halbiert sich pH',
+      'pH = -3; verdoppelt sich zu -6',
+    ],
+    correctIndex: 0,
+    explanation: 'pH $= -\\log_{10}(10^{-3}) = 3$. Bei Verdopplung: $[\\text{H}^+] = 2 \\cdot 10^{-3}$, also pH $= -\\log_{10}(2 \\cdot 10^{-3}) = -(\\log_{10} 2 - 3) = 3 - 0{,}30 = 2{,}70$. Änderung: um $0{,}30$ gesunken. Logarithmische Skala: Verdopplung der Konzentration = Änderung um $\\log_{10}(2) \\approx 0{,}30$ Einheiten.',
+    hints: ['$-\\log_{10}(10^{-3}) = 3$.', 'Logarithmusregel: $\\log(2x) = \\log(2) + \\log(x)$.', '$\\log_{10}(2) \\approx 0{,}30$.'],
+  },
 }
 
 const lessons_alg_u4 = [
@@ -252,7 +369,7 @@ $$x_{1,2} = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}, \\quad D = b^2 - 4ac$$
       'Funktionen auf technische Probleme anwenden',
     ],
     prerequisites: [],
-    nextLessonId: null,
+    nextLessonId: 'alg-4-3',
     steps: [
       {
         id: 'alg-4-2-s1', type: 'explanation-formal', title: 'Prüfungsstrategie: Funktionen & Anwendungen',
@@ -290,6 +407,75 @@ Polynomdivision → restliche Nullstellen bestimmen.`,
       { id: 'alg-4-2-s10', type: 'exercise', title: 'Aufgabe 9 (wahr oder falsch)', exerciseRef: 'ex-alg-4-2-i' },
       { id: 'alg-4-2-s11', type: 'exercise', title: 'Aufgabe 10 (Polynomdivision)', exerciseRef: 'ex-alg-4-2-j' },
       { id: 'alg-4-2-s12', type: 'mastery-check', title: 'Prüfungsfrage: Umsatzmaximierung', exerciseRef: 'ex-alg-4-2-mastery' },
+    ],
+  },
+  {
+    id: 'alg-4-3', unitId: 'alg-unit-4',
+    title: 'Prüfung: Gleichungssysteme & technische Anwendungen',
+    order: 3, estimatedMinutes: 30,
+    learningGoals: [
+      'Lineare Gleichungssysteme im Technik-Kontext lösen',
+      'Wurzel-, Betrags- und Exponentialgleichungen mit Probe handhaben',
+      'Logarithmische Skalen (pH, dB, Bel) verstehen und rechnen',
+      'Typische Prüfungsfallen (Scheinlösungen, Definitionsbereiche) erkennen',
+    ],
+    prerequisites: [],
+    nextLessonId: null,
+    steps: [
+      {
+        id: 'alg-4-3-s1', type: 'explanation-formal', title: 'Prüfungsstrategie: Gleichungssysteme & Anwendungen',
+        content: `**Lineare Gleichungssysteme** — zwei Hauptmethoden:
+
+**Einsetzungsverfahren** (bei kleinen Systemen): Eine Gleichung nach einer Variablen auflösen und in die andere einsetzen.
+
+**Additionsverfahren**: Gleichungen so multiplizieren, dass sich eine Variable bei Addition eliminiert.
+
+---
+
+**Spezialgleichungen — nicht-äquivalente Umformungen:**
+
+| Typ | Methode | Pflicht |
+|---|---|---|
+| Wurzelgleichung $\\sqrt{f} = g$ | Quadrieren | **Probe**, da Scheinlösungen möglich |
+| Betragsgleichung $|f| = c$ | Fallunterscheidung $f = \\pm c$ | Beide Fälle prüfen |
+| Betragsungleichung $|f| \\leq c$ | Umformen: $-c \\leq f \\leq c$ | Vorzeichen beachten |
+| Exponentialgleichung $a^x = b$ | Logarithmieren | $b > 0$ erforderlich |
+
+---
+
+**Logarithmische Skalen (technisch wichtig):**
+
+- **pH-Wert:** $\\text{pH} = -\\log_{10}[\\text{H}^+]$ — jede Änderung um 1 entspricht Faktor 10 in Konzentration
+- **Dezibel:** $L = 10 \\log_{10}(P/P_0)$ — Leistungsverhältnisse in dB
+- **Halbwertszeit:** $N(t) = N_0 \\cdot (1/2)^{t/T_{1/2}}$ — Zerfall
+
+**Merke:** Verdopplung in linearer Skala = $\\log_{10}(2) \\approx 0{,}30$ Einheiten in logarithmischer Skala.
+
+---
+
+**Überbestimmte & unterbestimmte Systeme:**
+
+- **Unterbestimmt** (weniger Gleichungen als Unbekannte): unendlich viele Lösungen oder keine
+- **Überbestimmt**: meist keine exakte Lösung, aber bei konsistenten Gleichungen trotzdem möglich
+- **Methode der kleinsten Quadrate**: Näherungslösung bei inkonsistenten Messdaten
+
+**Prüfungsfallen:**
+- Wurzelgleichung ohne Probe → Scheinlösungen nicht eliminiert
+- Logarithmus eines negativen Arguments (undefiniert!)
+- Betragsgleichungen: Fallunterscheidung vergessen
+- Exponentialgleichung mit $b \\leq 0$ (keine reelle Lösung)`,
+      },
+      { id: 'alg-4-3-s2', type: 'exercise', title: 'Aufgabe 1: Lineares 2x2-System', exerciseRef: 'ex-alg-4-3-a' },
+      { id: 'alg-4-3-s3', type: 'exercise', title: 'Aufgabe 2: Tragwerk-Stabkräfte', exerciseRef: 'ex-alg-4-3-b' },
+      { id: 'alg-4-3-s4', type: 'exercise', title: 'Aufgabe 3: Quadrieren erzeugt Scheinlösungen', exerciseRef: 'ex-alg-4-3-c' },
+      { id: 'alg-4-3-s5', type: 'exercise', title: 'Aufgabe 4: Gleichungstypen zuordnen', exerciseRef: 'ex-alg-4-3-d' },
+      { id: 'alg-4-3-s6', type: 'exercise', title: 'Aufgabe 5: Wurzelgleichung lösen', exerciseRef: 'ex-alg-4-3-e' },
+      { id: 'alg-4-3-s7', type: 'exercise', title: 'Aufgabe 6: Betragsungleichung', exerciseRef: 'ex-alg-4-3-f' },
+      { id: 'alg-4-3-s8', type: 'exercise', title: 'Aufgabe 7: Halbwertszeit', exerciseRef: 'ex-alg-4-3-g' },
+      { id: 'alg-4-3-s9', type: 'exercise', title: 'Aufgabe 8: Exponentialgleichung', exerciseRef: 'ex-alg-4-3-h' },
+      { id: 'alg-4-3-s10', type: 'exercise', title: 'Aufgabe 9: Überbestimmtheit', exerciseRef: 'ex-alg-4-3-i' },
+      { id: 'alg-4-3-s11', type: 'exercise', title: 'Aufgabe 10: Stromverzweigung', exerciseRef: 'ex-alg-4-3-j' },
+      { id: 'alg-4-3-s12', type: 'mastery-check', title: 'Prüfungsfrage: pH-Skala', exerciseRef: 'ex-alg-4-3-mastery' },
     ],
   },
 ]
