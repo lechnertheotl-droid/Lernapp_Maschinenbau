@@ -8,11 +8,13 @@ import { dglTopic }             from './mathematics/dgl/index'
 import { engineeringTopics } from './engineering/maschinenbau'
 import { pythonMatlabTopic }  from './programming/python_matlab'
 import { trigonometrySupplements } from './supplements/trigonometry'
+import { algebraSupplements } from './supplements/algebra'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
 const MIN_EXERCISES_PER_LESSON = 10
 const MANUAL_SUPPLEMENTS = {
   ...trigonometrySupplements,
+  ...algebraSupplements,
 }
 
 function countExerciseSteps(lesson) {

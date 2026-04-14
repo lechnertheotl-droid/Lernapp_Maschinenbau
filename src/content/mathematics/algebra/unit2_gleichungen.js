@@ -38,10 +38,10 @@ export const exercises_alg_u2 = {
   'ex-alg-2-1-mastery': {
     id: 'ex-alg-2-1-mastery', lessonId: 'alg-2-1', type: 'number-input', isMasteryCheck: true,
     question: '[PRÜFUNG] Löse: (2x + 1)/3 = (x − 2)/2 + 1. Gib x an.',
-    correctAnswer: 1,
-    tolerance: 0.01,
+    correctAnswer: -2,
+    tolerance: 0,
     unit: '',
-    explanation: 'Hauptnenner 6: 2(2x+1) = 3(x−2) + 6 → 4x+2 = 3x−6+6 → 4x+2 = 3x → x = −2. Korrektur: 4x+2 = 3x+0 → x = −2.',
+    explanation: 'Hauptnenner 6: 2(2x+1) = 3(x−2) + 6 → 4x+2 = 3x−6+6 = 3x → x = −2. Probe: links (−4+1)/3 = −1, rechts (−2−2)/2 + 1 = −1.',
     hints: ['Hauptnenner bilden (6), dann alle Terme multiplizieren.'],
   },
 
@@ -166,7 +166,7 @@ export const exercises_alg_u2 = {
     question: 'Löse: x² − 4 > 0',
     options: ['x > 2', 'x < −2 oder x > 2', '−2 < x < 2', 'x > 4'],
     correctIndex: 1,
-    explanation: 'x² − 4 > 0 → (x−2)(x+2) > 0. Vorzeichentabelle: Für x < −2: (+)(−) nein. Für −2 < x < 2: (−)(+) nein. Für x > 2: (+)(+) ja. Korrektur: Für x < −2: (−)(−) = (+) ja! Lösung: x < −2 oder x > 2.',
+    explanation: 'x² − 4 > 0 → (x−2)(x+2) > 0. Kritische Punkte sind −2 und 2. Für x < −2 sind beide Faktoren negativ, also ist das Produkt positiv. Für −2 < x < 2 ist das Produkt negativ. Für x > 2 ist es positiv. Lösung: x < −2 oder x > 2.',
     hints: ['Faktorisieren: (x−2)(x+2) > 0. Vorzeichentabelle aufstellen.'],
   },
   'ex-alg-2-4-mastery': {
