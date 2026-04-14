@@ -7,9 +7,13 @@ import { integralrechnungTopic } from './mathematics/integralrechnung/index'
 import { dglTopic }             from './mathematics/dgl/index'
 import { engineeringTopics } from './engineering/maschinenbau'
 import { pythonMatlabTopic }  from './programming/python_matlab'
+import { trigonometrySupplements } from './supplements/trigonometry'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
 const MIN_EXERCISES_PER_LESSON = 10
+const MANUAL_SUPPLEMENTS = {
+  ...trigonometrySupplements,
+}
 
 function countExerciseSteps(lesson) {
   return (lesson.steps ?? []).filter((step) => step.type === 'exercise' || step.type === 'mastery-check').length
@@ -259,6 +263,17 @@ function lessonProfile(topic, unit, lesson) {
 }
 
 function supplementalExplanation(lesson, unit, topic) {
+  const manual = MANUAL_SUPPLEMENTS[lesson.id]
+  if (manual?.explanation) {
+    const prefix = /prüfung/i.test(unit.title) ? '[PRÜFUNG] ' : ''
+    return {
+      id: `${lesson.id}-supp-explanation`,
+      type: 'explanation-formal',
+      title: `${prefix}Vertiefung: Prüfungsstrategie`,
+      content: manual.explanation,
+    }
+  }
+
   const profile = lessonProfile(topic, unit, lesson)
   const prefix = /prüfung/i.test(unit.title) ? '[PRÜFUNG] ' : ''
   return {
@@ -282,6 +297,16 @@ function supplementalExplanation(lesson, unit, topic) {
 }
 
 function supplementalExercise(lesson, index, unit, topic) {
+  const manual = MANUAL_SUPPLEMENTS[lesson.id]?.exercises?.[index]
+  if (manual) {
+    return {
+      ...manual,
+      id: `ex-${lesson.id}-manual-${index + 1}`,
+      lessonId: lesson.id,
+      isSupplemental: true,
+    }
+  }
+
   const title = lesson.title
   const profile = lessonProfile(topic, unit, lesson)
   const goal = lesson.learningGoals?.[index % (lesson.learningGoals?.length || 1)] ?? profile.concept
