@@ -521,6 +521,7 @@ grid on
               items: ['Daten berechnen (y = np.sin(x))', 'plt.figure() aufrufen', 'plt.plot(x, y) aufrufen', 'Achsen beschriften', 'plt.show() aufrufen'],
               correctOrder: [0, 1, 2, 3, 4],
               explanation: 'Erst Daten, dann Figur erstellen, plotten, formatieren, und zuletzt anzeigen.',
+              hints: ['Imports müssen zuerst kommen.', '`plt.show()` ist immer der letzte Schritt.'],
             },
             {
               type: 'true-false',
@@ -814,6 +815,7 @@ Matlab: \`p = polyfit(zeit, kraft, 2); plot(zeit, polyval(p, zeit))\``,
               items: ['Datei einlesen', 'Daten auf Ausreißer prüfen', 'Statistik berechnen', 'Kurve fitten', 'Ergebnis plotten'],
               correctOrder: [0, 1, 2, 3, 4],
               explanation: 'Erst einlesen, dann prüfen, analysieren, modellieren, visualisieren.',
+              hints: ['Daten müssen vorhanden sein bevor man sie auswertet.', 'Visualisierung kommt nach der Analyse.'],
             },
             {
               type: 'true-false',

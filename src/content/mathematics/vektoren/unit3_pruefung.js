@@ -4,7 +4,7 @@ export const exercises_vek_u3 = {
   // ── Lesson 1: Gemischte Aufgaben Skalar- und Kreuzprodukt ──
   'ex-vek-3-1-a': {
     id: 'ex-vek-3-1-a', lessonId: 'vek-3-1', type: 'multiple-choice',
-    question: 'a⃗ = (1, 2, 2), b⃗ = (2, −1, 2). Berechne a⃗ · b⃗.',
+    question: '[PRÜFUNG] a⃗ = (1, 2, 2), b⃗ = (2, −1, 2). Berechne a⃗ · b⃗.',
     options: ['4', '6', '0', '2'],
     correctIndex: 1,
     explanation: 'a⃗ · b⃗ = 1·2 + 2·(−1) + 2·2 = 2 − 2 + 4 = 4. Moment: 2 − 2 + 4 = 4. Korrektur: Richtig ist 4.',
@@ -12,7 +12,7 @@ export const exercises_vek_u3 = {
   },
   'ex-vek-3-1-b': {
     id: 'ex-vek-3-1-b', lessonId: 'vek-3-1', type: 'number-input',
-    question: 'a⃗ = (3, 0, 4). Berechne den Betrag |a⃗|.',
+    question: '[PRÜFUNG] a⃗ = (3, 0, 4). Berechne den Betrag |a⃗|.',
     correctAnswer: 5,
     tolerance: 0.01,
     unit: '',
@@ -21,7 +21,7 @@ export const exercises_vek_u3 = {
   },
   'ex-vek-3-1-c': {
     id: 'ex-vek-3-1-c', lessonId: 'vek-3-1', type: 'multiple-choice',
-    question: 'a⃗ = (1, 0, 0), b⃗ = (0, 1, 0). Was ist a⃗ × b⃗?',
+    question: '[PRÜFUNG] a⃗ = (1, 0, 0), b⃗ = (0, 1, 0). Was ist a⃗ × b⃗?',
     options: ['(0, 0, 1)', '(0, 0, −1)', '(1, 1, 0)', '0'],
     correctIndex: 0,
     explanation: 'a⃗ × b⃗ = (0·0−0·1, 0·0−1·0, 1·1−0·0) = (0, 0, 1). Das ist der Einheitsvektor in z-Richtung (Rechte-Hand-Regel).',
@@ -29,7 +29,7 @@ export const exercises_vek_u3 = {
   },
   'ex-vek-3-1-d': {
     id: 'ex-vek-3-1-d', lessonId: 'vek-3-1', type: 'multiple-choice',
-    question: 'a⃗ = (2, 1, −1), b⃗ = (1, 3, 2). Was ist a⃗ × b⃗?',
+    question: '[PRÜFUNG] a⃗ = (2, 1, −1), b⃗ = (1, 3, 2). Was ist a⃗ × b⃗?',
     options: ['(5, −5, 5)', '(5, 5, 5)', '(−5, 5, −5)', '(5, −5, −5)'],
     correctIndex: 0,
     explanation: 'a⃗ × b⃗ = (1·2−(−1)·3, (−1)·1−2·2, 2·3−1·1) = (2+3, −1−4, 6−1) = (5, −5, 5).',
@@ -37,7 +37,7 @@ export const exercises_vek_u3 = {
   },
   'ex-vek-3-1-e': {
     id: 'ex-vek-3-1-e', lessonId: 'vek-3-1', type: 'true-false',
-    statement: 'Das Kreuzprodukt ist kommutativ: a⃗ × b⃗ = b⃗ × a⃗.',
+    statement: '[PRÜFUNG] Das Kreuzprodukt ist kommutativ: a⃗ × b⃗ = b⃗ × a⃗.',
     correct: false,
     explanation: 'Das Kreuzprodukt ist **antikommutativ**: a⃗ × b⃗ = −(b⃗ × a⃗). Die Reihenfolge ist wichtig!',
     hints: ['Beim Vertauschen ändert sich das Vorzeichen.'],
@@ -55,7 +55,7 @@ export const exercises_vek_u3 = {
   // ── Lesson 2: Flächen- und Volumenberechnung ──
   'ex-vek-3-2-a': {
     id: 'ex-vek-3-2-a', lessonId: 'vek-3-2', type: 'multiple-choice',
-    question: 'Die Fläche eines von a⃗ und b⃗ aufgespannten Parallelogramms ist:',
+    question: '[PRÜFUNG] Die Fläche eines von a⃗ und b⃗ aufgespannten Parallelogramms ist:',
     options: ['|a⃗ · b⃗|', '|a⃗ × b⃗|', 'a⃗ · (b⃗ × c⃗)', '|a⃗| + |b⃗|'],
     correctIndex: 1,
     explanation: 'Die Parallelogrammfläche ist der **Betrag des Kreuzprodukts**: A = |a⃗ × b⃗| = |a⃗|·|b⃗|·sin(φ).',
@@ -63,7 +63,7 @@ export const exercises_vek_u3 = {
   },
   'ex-vek-3-2-b': {
     id: 'ex-vek-3-2-b', lessonId: 'vek-3-2', type: 'number-input',
-    question: 'a⃗ = (3, 0, 0), b⃗ = (0, 4, 0). Berechne die Parallelogrammfläche A = |a⃗ × b⃗|.',
+    question: '[PRÜFUNG] a⃗ = (3, 0, 0), b⃗ = (0, 4, 0). Berechne die Parallelogrammfläche A = |a⃗ × b⃗|.',
     correctAnswer: 12,
     tolerance: 0.01,
     unit: '',
@@ -72,7 +72,7 @@ export const exercises_vek_u3 = {
   },
   'ex-vek-3-2-c': {
     id: 'ex-vek-3-2-c', lessonId: 'vek-3-2', type: 'multiple-choice',
-    question: 'Das Volumen eines Spats (Parallelepiped) wird berechnet durch:',
+    question: '[PRÜFUNG] Das Volumen eines Spats (Parallelepiped) wird berechnet durch:',
     options: ['V = |a⃗ × b⃗|', 'V = a⃗ · b⃗ · c⃗', 'V = |a⃗ · (b⃗ × c⃗)|', 'V = |a⃗| · |b⃗| · |c⃗|'],
     correctIndex: 2,
     explanation: 'Das **Spatprodukt** V = |a⃗ · (b⃗ × c⃗)| gibt das Volumen des von drei Vektoren aufgespannten Parallelepipeds.',
@@ -91,7 +91,7 @@ export const exercises_vek_u3 = {
   // ── Lesson 3: Technische Anwendungen ──
   'ex-vek-3-3-a': {
     id: 'ex-vek-3-3-a', lessonId: 'vek-3-3', type: 'multiple-choice',
-    question: 'Das Drehmoment wird berechnet durch:',
+    question: '[PRÜFUNG] Das Drehmoment wird berechnet durch:',
     options: ['M⃗ = r⃗ · F⃗', 'M⃗ = r⃗ × F⃗', 'M⃗ = |r⃗| · |F⃗|', 'M⃗ = F⃗ × r⃗'],
     correctIndex: 1,
     explanation: 'Das Drehmoment ist M⃗ = r⃗ × F⃗ (Kreuzprodukt). r⃗ ist der Hebelarm (Ortsvektor vom Drehpunkt zur Kraft), F⃗ ist die Kraft. Achtung: Reihenfolge wichtig!',
@@ -99,7 +99,7 @@ export const exercises_vek_u3 = {
   },
   'ex-vek-3-3-b': {
     id: 'ex-vek-3-3-b', lessonId: 'vek-3-3', type: 'number-input',
-    question: 'Hebelarm r⃗ = (0,5, 0, 0) m, Kraft F⃗ = (0, 100, 0) N. Berechne |M⃗| = |r⃗ × F⃗| in Nm.',
+    question: '[PRÜFUNG] Hebelarm r⃗ = (0,5, 0, 0) m, Kraft F⃗ = (0, 100, 0) N. Berechne |M⃗| = |r⃗ × F⃗| in Nm.',
     correctAnswer: 50,
     tolerance: 0.1,
     unit: '',
@@ -108,7 +108,7 @@ export const exercises_vek_u3 = {
   },
   'ex-vek-3-3-c': {
     id: 'ex-vek-3-3-c', lessonId: 'vek-3-3', type: 'multiple-choice',
-    question: 'Eine Kraft F⃗ = (100, 0) N wirkt auf einen Körper. Zerlege sie in Komponenten parallel und senkrecht zu einer Rampe mit Neigung α = 30°. Wie groß ist die Hangabtriebskraft?',
+    question: '[PRÜFUNG] Eine Kraft F⃗ = (100, 0) N wirkt auf einen Körper. Zerlege sie in Komponenten parallel und senkrecht zu einer Rampe mit Neigung α = 30°. Wie groß ist die Hangabtriebskraft?',
     options: ['100·cos(30°) ≈ 86,6 N', '100·sin(30°) = 50 N', '100·tan(30°) ≈ 57,7 N', '100 N'],
     correctIndex: 1,
     explanation: 'Die **Hangabtriebskraft** (parallel zur Rampe) ist F_parallel = F·sin(α) = 100·sin(30°) = 50 N. Die Normalkraft (senkrecht zur Rampe) ist F_normal = F·cos(α).',

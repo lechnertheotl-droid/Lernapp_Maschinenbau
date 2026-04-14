@@ -156,6 +156,7 @@ export const exercises_alg_u4 = {
       'x = ln((y + 1)/2) logarithmieren',
       'x und y tauschen: f⁻¹(x) = ln((x + 1)/2)',
     ],
+    correctOrder: [0, 1, 2, 3, 4],
     explanation: 'Vorgehen: (1) y = f(x) hinschreiben, (2–4) schrittweise nach x auflösen, (5) x und y tauschen. Ergebnis: f⁻¹(x) = ln((x + 1)/2), definiert für x > −1.',
     hints: ['Ziel: die Gleichung nach x auflösen', 'Logarithmus ist die Umkehrung der Exponentialfunktion'],
   },
