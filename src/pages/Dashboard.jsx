@@ -12,6 +12,7 @@ import {
   computeTopicStatus,
   nextRecommendedTopic,
 } from '@/utils/topicGraph'
+import { LEVEL_HEADINGS, groupTopicsByLevel } from '@/utils/topicLevels'
 
 function greeting(name) {
   const h = new Date().getHours()
@@ -193,41 +194,56 @@ export function Dashboard() {
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-1 xs:grid-cols-2 gap-3">
-          {topics.map((topic, i) => {
-            const tp      = state.progress.topicProgress[topic.id]
-            const total   = getAllLessons(topic.id).length
-            const pct     = tp ? computeTopicProgress(tp.completedLessons, total) : 0
-            const started = (tp?.completedLessons?.length ?? 0) > 0
-
-            return (
-              <button
-                key={topic.id}
-                onClick={() => navigate(`/topics/${topic.id}`)}
-                className="text-left bg-white border-2 border-ink rounded-retro shadow-hard p-3.5 flex flex-col gap-2.5 tap-highlight-none retro-press hover:bg-surface-50 animate-pop"
-                style={{ animationDelay: `${i * 60}ms` }}
-              >
-                <div className="flex items-start justify-between">
-                  <TopicIcon topic={topic} size="sm" />
-                  {started && (
-                    <span className="num text-[10px] font-black text-primary-700 bg-primary-50 border border-primary-200 rounded px-1.5 py-0.5">
-                      {pct}%
-                    </span>
-                  )}
-                </div>
-                <div>
-                  <p className="font-black text-ink dark:text-paper text-sm leading-tight line-clamp-2 break-words">{topic.title}</p>
-                  <p className="font-mono text-[10px] text-ink-soft mt-0.5 uppercase tracking-wider">
-                    {DIFF_LABEL[topic.difficulty] ?? ''} · {total} Lekt.
+        {(() => {
+          let globalIndex = 0
+          return (
+            <div className="flex flex-col gap-4">
+              {groupTopicsByLevel(topics).map(([level, group]) => (
+                <section key={level}>
+                  <p className="font-mono text-[10px] font-black text-primary-700 dark:text-lemon uppercase tracking-widest mb-2 pb-1 border-b-2 border-primary-200 dark:border-surface-700">
+                    {LEVEL_HEADINGS[level]}
                   </p>
-                </div>
-                <div className="h-2 bg-surface-100 border border-ink rounded-sm overflow-hidden">
-                  <div className="h-full bg-primary-700 transition-all duration-500" style={{ width: `${pct}%` }} />
-                </div>
-              </button>
-            )
-          })}
-        </div>
+                  <div className="grid grid-cols-1 xs:grid-cols-2 gap-3">
+                    {group.map((topic) => {
+                      const tp      = state.progress.topicProgress[topic.id]
+                      const total   = getAllLessons(topic.id).length
+                      const pct     = tp ? computeTopicProgress(tp.completedLessons, total) : 0
+                      const started = (tp?.completedLessons?.length ?? 0) > 0
+                      const i       = globalIndex++
+
+                      return (
+                        <button
+                          key={topic.id}
+                          onClick={() => navigate(`/topics/${topic.id}`)}
+                          className="text-left bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard p-3.5 flex flex-col gap-2.5 tap-highlight-none retro-press hover:bg-surface-50 dark:hover:bg-surface-700 animate-pop"
+                          style={{ animationDelay: `${i * 60}ms` }}
+                        >
+                          <div className="flex items-start justify-between">
+                            <TopicIcon topic={topic} size="sm" />
+                            {started && (
+                              <span className="num text-[10px] font-black text-primary-700 bg-primary-50 border border-primary-200 rounded px-1.5 py-0.5">
+                                {pct}%
+                              </span>
+                            )}
+                          </div>
+                          <div>
+                            <p className="font-black text-ink dark:text-paper text-sm leading-tight line-clamp-2 break-words">{topic.title}</p>
+                            <p className="font-mono text-[10px] text-ink-soft dark:text-surface-300 mt-0.5 uppercase tracking-wider">
+                              {DIFF_LABEL[topic.difficulty] ?? ''} · {total} Lekt.
+                            </p>
+                          </div>
+                          <div className="h-2 bg-surface-100 dark:bg-surface-700 border border-ink rounded-sm overflow-hidden">
+                            <div className="h-full bg-primary-700 transition-all duration-500" style={{ width: `${pct}%` }} />
+                          </div>
+                        </button>
+                      )
+                    })}
+                  </div>
+                </section>
+              ))}
+            </div>
+          )
+        })()}
       </div>
 
       {/* ── Reset progress ───────────────────────────────────────── */}

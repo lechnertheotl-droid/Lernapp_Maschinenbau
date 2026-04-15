@@ -5,14 +5,9 @@ import { getAllTopics, getAllLessons, isExamCompleted } from '@/content/index'
 import { computeTopicProgress } from '@/utils/progressLogic'
 import { TopicIcon } from '@/components/ui/TopicIcon'
 import { cn } from '@/utils/cn'
+import { LEVEL_HEADINGS, groupTopicsByLevel, topicLevelOf } from '@/utils/topicLevels'
 
 const DIFF_STARS = (n) => '★'.repeat(n) + '☆'.repeat(5 - n)
-
-const LEVEL_ORDER = { grundlagen: 0, vertiefung: 1 }
-const LEVEL_HEADINGS = {
-  grundlagen: 'Grundlagen (1.–2. Semester)',
-  vertiefung: 'Vertiefung (ab 3. Semester)',
-}
 
 export function TopicOverview() {
   const state    = useAppState()
@@ -32,20 +27,12 @@ export function TopicOverview() {
           return lessonTitles.some((t) => t.includes(q))
         })
     if (filter === 'grundlagen') {
-      return afterSearch.filter((t) => (t.level ?? 'grundlagen') === 'grundlagen')
+      return afterSearch.filter((t) => topicLevelOf(t) === 'grundlagen')
     }
     return afterSearch
   }, [topics, query, filter])
 
-  const groupedTopics = useMemo(() => {
-    const groups = new Map()
-    for (const topic of filteredTopics) {
-      const level = topic.level ?? 'grundlagen'
-      if (!groups.has(level)) groups.set(level, [])
-      groups.get(level).push(topic)
-    }
-    return [...groups.entries()].sort(([a], [b]) => (LEVEL_ORDER[a] ?? 9) - (LEVEL_ORDER[b] ?? 9))
-  }, [filteredTopics])
+  const groupedTopics = useMemo(() => groupTopicsByLevel(filteredTopics), [filteredTopics])
 
   let animationIndex = 0
 

@@ -1,4 +1,4 @@
-import { useState, type ComponentType } from 'react'
+import { useState, useEffect, useRef, type ComponentType } from 'react'
 import { useAppDispatch } from '@/context/AppContext'
 import { ACTIONS } from '@/context/appReducer'
 import { getExercise } from '@/content/index'
@@ -65,6 +65,15 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
   const [showCalculator, setShowCalculator] = useState(false)
   const [showFormulas, setShowFormulas] = useState(false)
   const [resetKey, setResetKey] = useState(0)
+  const feedbackAnchorRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (submitted) {
+      requestAnimationFrame(() => {
+        feedbackAnchorRef.current?.scrollIntoView({ block: 'end', behavior: 'smooth' })
+      })
+    }
+  }, [submitted])
 
   if (!exercise) {
     return <div className="text-ink-soft text-sm font-mono">Aufgabe nicht gefunden: {exerciseId}</div>
@@ -102,40 +111,51 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
   }
 
   return (
-    <div className="bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard p-4 flex flex-col gap-4">
-      <div className="flex items-center justify-between gap-3">
-        <p className="font-mono text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest">
-          // Aufgabe
-        </p>
-        <button
-          type="button"
-          onClick={() => setShowCalculator(true)}
-          className="min-h-9 px-3 rounded-retro border-2 border-ink bg-lemon shadow-hard-lemon text-ink font-mono text-[10px] font-black uppercase tracking-wider retro-press tap-highlight-none"
-        >
-          Rechner
-        </button>
-      </div>
-      <Component
-        key={resetKey}
-        exercise={exercise}
-        onSubmit={handleSubmit}
-        disabled={submitted}
-      />
+    <>
+      <div className={`bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard p-4 flex flex-col gap-4 ${submitted ? 'pb-[320px] sm:pb-[280px]' : ''}`}>
+        <div className="flex items-center justify-between gap-3">
+          <p className="font-mono text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest">
+            // Aufgabe
+          </p>
+          <button
+            type="button"
+            onClick={() => setShowCalculator(true)}
+            className="min-h-9 px-3 rounded-retro border-2 border-ink bg-lemon shadow-hard-lemon text-ink font-mono text-[10px] font-black uppercase tracking-wider retro-press tap-highlight-none"
+          >
+            Rechner
+          </button>
+        </div>
+        <Component
+          key={resetKey}
+          exercise={exercise}
+          onSubmit={handleSubmit}
+          disabled={submitted}
+        />
 
-      <HintSystem hints={exercise.hints ?? []} disabled={submitted} />
+        <HintSystem hints={exercise.hints ?? []} disabled={submitted} />
+        <div ref={feedbackAnchorRef} aria-hidden="true" />
+      </div>
 
       {submitted && (
-        <FeedbackDisplay
-          isCorrect={!!isCorrect}
-          exercise={exercise}
-          userAnswer={lastAnswer}
-          onNext={onComplete}
-          onRetry={!isCorrect ? handleRetry : undefined}
-          onOpenFormulas={!isCorrect && exercise.relatedFormulaId ? () => setShowFormulas(true) : undefined}
-        />
+        <div
+          className="fixed inset-x-0 bottom-0 z-40 bg-paper/95 dark:bg-surface-900/95 backdrop-blur border-t-2 border-ink shadow-hard-lg"
+          style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+        >
+          <div className="max-w-xl mx-auto px-3 py-3 max-h-[60vh] overflow-y-auto overscroll-contain">
+            <FeedbackDisplay
+              isCorrect={!!isCorrect}
+              exercise={exercise}
+              userAnswer={lastAnswer}
+              onNext={onComplete}
+              onRetry={!isCorrect ? handleRetry : undefined}
+              onOpenFormulas={!isCorrect && exercise.relatedFormulaId ? () => setShowFormulas(true) : undefined}
+            />
+          </div>
+        </div>
       )}
+
       <Calculator isOpen={showCalculator} onClose={() => setShowCalculator(false)} />
       <FormulaSheet isOpen={showFormulas} onClose={() => setShowFormulas(false)} topicId={topicId} />
-    </div>
+    </>
   )
 }

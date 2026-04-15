@@ -70,6 +70,10 @@ export default {
         'celebrate':   'celebrate 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
         'slide-in-up': 'slideInUp 0.35s cubic-bezier(0.22, 1, 0.36, 1)',
         'pulse-soft':  'pulseSoft 2s ease-in-out infinite',
+        'stamp-in':    'stampIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+        'check-draw':  'checkDraw 0.5s ease-out 0.4s forwards',
+        'sparkle':     'sparkle 1.4s ease-in-out infinite',
+        'badge-shine': 'badgeShine 2.4s linear 0.6s infinite',
       },
       keyframes: {
         fadeIn: {
@@ -107,6 +111,25 @@ export default {
         pulseSoft: {
           '0%,100%': { opacity: '1' },
           '50%':     { opacity: '0.6' },
+        },
+        stampIn: {
+          '0%':   { opacity: '0', transform: 'scale(0) rotate(-15deg)' },
+          '60%':  { opacity: '1', transform: 'scale(1.18) rotate(6deg)' },
+          '80%':  { transform: 'scale(0.95) rotate(-2deg)' },
+          '100%': { opacity: '1', transform: 'scale(1) rotate(0deg)' },
+        },
+        checkDraw: {
+          from: { strokeDashoffset: '60' },
+          to:   { strokeDashoffset: '0' },
+        },
+        sparkle: {
+          '0%,100%': { opacity: '0', transform: 'scale(0.4) rotate(0deg)' },
+          '40%':     { opacity: '1', transform: 'scale(1.1) rotate(20deg)' },
+          '60%':     { opacity: '1', transform: 'scale(1.0) rotate(-10deg)' },
+        },
+        badgeShine: {
+          '0%':   { transform: 'translateX(-120%) skewX(-20deg)' },
+          '100%': { transform: 'translateX(220%) skewX(-20deg)' },
         },
       },
     },

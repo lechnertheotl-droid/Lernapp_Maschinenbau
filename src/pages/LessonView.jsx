@@ -12,6 +12,7 @@ import { VariableGlossary } from '@/components/ui/VariableGlossary'
 import { NotFound } from '@/components/NotFound'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { Confetti } from '@/components/ui/Confetti'
+import { LessonCompleteBadge } from '@/components/lesson/LessonCompleteBadge'
 import { getTopic } from '@/content/index'
 import { useFormulaPopover } from '@/utils/formulaPopoverContext'
 
@@ -216,7 +217,7 @@ export function LessonView() {
         title="Lektion abgeschlossen"
       >
         <div className="flex flex-col gap-4">
-          <div className="text-5xl text-center animate-celebrate" aria-hidden="true">🎉</div>
+          <LessonCompleteBadge />
           <p className="text-surface-600 text-sm leading-relaxed text-center">
             {state.user?.name ? <>Super, <strong>{state.user.name}</strong>! </> : null}
             Du hast <strong>{lesson.title}</strong> abgeschlossen. Die Lektion wird zur Wiederholung eingeplant.

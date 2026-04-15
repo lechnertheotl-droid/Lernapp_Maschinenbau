@@ -1,3 +1,5 @@
+import { parseNumericAnswer } from './parseNumericAnswer'
+
 /**
  * Anzahl Nachkommastellen im Nutzer-Input (Komma oder Punkt erlaubt).
  * `7.7`     → 1
@@ -38,13 +40,14 @@ export function isNumericMatch(
   if (studentRaw == null) return false
   const trimmed = studentRaw.trim()
   if (trimmed === '') return false
-  const student = parseFloat(trimmed.replace(',', '.'))
-  if (!Number.isFinite(student)) return false
+  const student = parseNumericAnswer(trimmed)
+  if (student == null) return false
 
   // Pfad 1: klassische absolute Toleranz
   if (Math.abs(student - correct) <= tolerance) return true
 
-  // Pfad 2: Präzisions-Match (Schüler hat sauber gerundet)
+  // Pfad 2: Präzisions-Match (Schüler hat sauber gerundet) — nur sinnvoll
+  // bei reinen Dezimal-Eingaben, nicht bei Brüchen oder Ausdrücken
   const dec = decimalsOf(trimmed)
   if (dec >= 0 && dec <= 6) {
     const rounded = roundTo(correct, dec)

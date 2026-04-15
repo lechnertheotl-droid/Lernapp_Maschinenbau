@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { Button } from '@/components/ui/Button'
 import { MathText } from '@/components/ui/MathText'
 import { isNumericMatch } from '@/utils/numericTolerance'
+import { parseNumericAnswer } from '@/utils/parseNumericAnswer'
 
 interface NumberExercise {
   question: string
@@ -33,8 +34,8 @@ export function NumberInput({ exercise, onSubmit, disabled }: Props) {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    const num = parseFloat(value.replace(',', '.'))
-    if (Number.isNaN(num)) return
+    const num = parseNumericAnswer(value)
+    if (num == null) return
     onSubmit({ value: num, raw: value })
   }
 
@@ -46,13 +47,16 @@ export function NumberInput({ exercise, onSubmit, disabled }: Props) {
 
       <div className="flex items-center gap-2">
         <input
-          type="number"
-          step="any"
+          type="text"
+          inputMode="text"
+          autoComplete="off"
+          autoCapitalize="off"
+          spellCheck={false}
           value={value}
           onChange={(e) => setValue(e.target.value)}
           disabled={disabled}
-          placeholder="Antwort eingeben..."
-          aria-label="Numerische Antwort"
+          placeholder="z.B. 1.5  oder  3/4"
+          aria-label="Numerische Antwort (Bruch oder Dezimalzahl)"
           className="flex-1 h-12 px-4 text-base border-2 border-ink rounded-retro bg-white dark:bg-surface-800 dark:text-paper shadow-hard-sm focus:outline-none focus:ring-2 focus:ring-primary-700 disabled:opacity-60"
         />
         {exercise.unit && (

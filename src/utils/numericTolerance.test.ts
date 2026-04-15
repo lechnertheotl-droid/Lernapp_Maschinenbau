@@ -79,4 +79,25 @@ describe('isNumericMatch', () => {
     // 7.6712 mit 7 Nachkommastellen → 7.6712000, vergleicht exakt mit 7.6712 → akzeptiert klassisch
     expect(isNumericMatch('7.67120000', 7.6712, 0)).toBe(true)
   })
+
+  describe('fractions', () => {
+    it('accepts simple fractions equal to correct value', () => {
+      expect(isNumericMatch('1/2', 0.5, 0.001)).toBe(true)
+      expect(isNumericMatch('3/4', 0.75, 0.001)).toBe(true)
+      expect(isNumericMatch('-2/5', -0.4, 0.001)).toBe(true)
+    })
+    it('accepts equivalent fractions', () => {
+      expect(isNumericMatch('2/4', 0.5, 0.001)).toBe(true)
+      expect(isNumericMatch('6/8', 0.75, 0.001)).toBe(true)
+    })
+    it('accepts comma-decimal fractions', () => {
+      expect(isNumericMatch('1,5/3', 0.5, 0.001)).toBe(true)
+    })
+    it('rejects malformed fraction-like and expression input', () => {
+      expect(isNumericMatch('1//2', 0.5, 0.1)).toBe(false)
+      expect(isNumericMatch('1/', 0.5, 0.1)).toBe(false)
+      expect(isNumericMatch('sqrt(2)', 1.4142, 0.1)).toBe(false)
+      expect(isNumericMatch('1+2', 3, 0.1)).toBe(false)
+    })
+  })
 })

@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { useAppState, useAppDispatch } from '@/context/AppContext'
 import { ACTIONS } from '@/context/appReducer'
 import { getDueItems, getUpcomingItems, getReviewStats } from '@/utils/reviewScheduler'
-import { getLessonById } from '@/content/index'
+import { getLessonById, getTopic } from '@/content/index'
+import { pickReviewExercise } from '@/utils/reviewExercisePicker'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { ExerciseEngine } from '@/components/exercises/ExerciseEngine'
@@ -21,23 +22,22 @@ export function ReviewArea() {
   const [done, setDone]           = useState([])
   const [mode, setMode]           = useState('exercise') // 'exercise' | 'self'
   const [showExercise, setShowExercise] = useState(true)
+  const [shownIds, setShownIds]   = useState(() => new Set())
 
-  // Pick a random exercise from the lesson for exercise-based review
+  // Pick a fresh exercise from the topic pool for exercise-based review
   const currentItem = due[activeIdx]
   const lessonLookup = currentItem ? getLessonById(currentItem.lessonId) : null
   const lesson = lessonLookup?.lesson ?? null
 
-  const reviewExerciseRef = useMemo(() => {
+  const reviewPick = useMemo(() => {
     if (!lessonLookup || !currentItem) return null
-    const lessonObj = lesson
-    if (!lessonObj) return null
-    const exerciseRefs = lessonObj.steps
-      .filter((s) => s.type === 'exercise' || s.type === 'mastery-check')
-      .map((s) => s.exerciseRef)
-      .filter(Boolean)
-    if (exerciseRefs.length === 0) return null
-    return exerciseRefs[Math.floor(Math.random() * exerciseRefs.length)]
-  }, [currentItem?.lessonId])
+    const topic = getTopic(lessonLookup.topicId)
+    return pickReviewExercise({ topic, lessonId: currentItem.lessonId, excludeExerciseIds: shownIds })
+    // shownIds intentionally not in deps — we want a stable pick per item; reset on advance
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentItem?.lessonId, lessonLookup?.topicId])
+  const reviewExerciseRef = reviewPick?.exerciseId ?? null
+  const reviewSource      = reviewPick?.source ?? null
 
   // ── No items due ──────────────────────────────────────────────────────
   if (due.length === 0) {
@@ -135,6 +135,13 @@ export function ReviewArea() {
 
   const handleResult = (isCorrect) => {
     dispatch({ type: ACTIONS.COMPLETE_REVIEW, lessonId: currentItem.lessonId, isCorrect })
+    if (reviewExerciseRef) {
+      setShownIds((prev) => {
+        const next = new Set(prev)
+        next.add(reviewExerciseRef)
+        return next
+      })
+    }
     setDone((d) => [...d, currentItem.lessonId])
     setActiveIdx((i) => i + 1)
     setShowExercise(true)
@@ -199,9 +206,14 @@ export function ReviewArea() {
           {masteryEntry && <Badge status={masteryEntry.status} />}
         </div>
 
-        {/* Exercise mode: show an exercise from the lesson */}
+        {/* Exercise mode: show a fresh exercise from the topic pool */}
         {mode === 'exercise' && showExercise && reviewExerciseRef ? (
-          <div className="border-t-2 border-surface-200 pt-4 -mx-5 px-5">
+          <div className="border-t-2 border-surface-200 pt-4 -mx-5 px-5 flex flex-col gap-3">
+            {reviewSource && reviewSource !== 'self' && (
+              <p className="font-mono text-[10px] font-black text-primary-700 uppercase tracking-widest">
+                {reviewSource === 'supplement' ? '// Frische Übung aus dem Themenpool' : '// Frische Übung aus dem Thema'}
+              </p>
+            )}
             <ExerciseEngine
               exerciseId={reviewExerciseRef}
               topicId={lessonLookup?.topicId}
