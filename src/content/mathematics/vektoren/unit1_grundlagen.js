@@ -214,6 +214,17 @@ $$\\vec{a} \\times \\vec{b} = \\begin{pmatrix} a_y b_z - a_z b_y \\\\ a_z b_x - 
 
 **Anwendungen:** Drehmoment $\\vec{M}$ = $\\vec{r}$ × $\\vec{F}$`,
       },
+      {
+        id: 'vek-1-3-s-viz',
+        type: 'visualization',
+        title: '3D-Ansicht drehbar — Rechte-Hand-Regel live',
+        visualizationId: 'vector-3d',
+        params: {
+          initialA: { x: 2, y: 0, z: 0 },
+          initialB: { x: 0, y: 2, z: 0 },
+          mode: 'cross',
+        },
+      },
       { id: 'vek-1-3-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-vek-1-3-a' },
       { id: 'vek-1-3-s3', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-vek-1-3-b' },
       { id: 'vek-1-3-s4', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-vek-1-3-mastery' },

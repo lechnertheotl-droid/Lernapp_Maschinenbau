@@ -267,6 +267,44 @@ $$c' = 0$$
 - $(\\sqrt{x})' = (x^{1/2})' = \\frac{1}{2\\sqrt{x}}$`,
       },
       {
+        id: 'abl-1-2-s-herleitung',
+        type: 'derivation',
+        title: 'Herleitung der Potenzregel für $f(x)=x^2$',
+        defaultOpen: false,
+        steps: [
+          {
+            explanation: 'Start mit dem Differenzenquotienten für $f(x) = x^2$:',
+            formula: '\\frac{f(x+h) - f(x)}{h} = \\frac{(x+h)^2 - x^2}{h}',
+          },
+          {
+            explanation: 'Binomische Formel anwenden und $x^2$ kürzen:',
+            formula: '\\frac{x^2 + 2xh + h^2 - x^2}{h} = \\frac{2xh + h^2}{h}',
+          },
+          {
+            explanation: '$h$ ausklammern und kürzen (geht, solange $h \\neq 0$):',
+            formula: '\\frac{h(2x + h)}{h} = 2x + h',
+          },
+          {
+            explanation: 'Grenzübergang $h \\to 0$:',
+            formula: "f'(x) = \\lim_{h \\to 0}(2x + h) = 2x",
+          },
+          {
+            explanation:
+              'Das passt zur Potenzregel mit $n=2$: $(x^2)\' = 2 \\cdot x^{2-1} = 2x$. Für allgemeine $n$ funktioniert die gleiche Idee mit dem binomischen Lehrsatz.',
+          },
+        ],
+      },
+      {
+        id: 'abl-1-2-s-fehler',
+        type: 'typical-error',
+        title: 'Typischer Fehler bei negativen Exponenten',
+        wrong:
+          'Für $f(x) = x^{-2}$ wäre $f\'(x) = -2 \\cdot x^{-1} = -2/x$. (falsch: Exponent nur um 1 reduziert, Regel aber falsch angewandt)',
+        right:
+          'Richtig ist $f\'(x) = -2 \\cdot x^{-2-1} = -2 \\cdot x^{-3} = -\\frac{2}{x^3}$. Die Potenzregel gilt auch für negative und gebrochene Exponenten — **Exponent um 1 verringern** bedeutet bei $-2$ nicht $-1$, sondern $-3$.',
+        hint: 'Eselsbrücke: „Exponent wandert nach vorne, dann minus eins" — auch wenn der Exponent negativ ist!',
+      },
+      {
         id: 'abl-1-2-s2', type: 'visualization', title: 'Ableitung von x²',
         visualizationId: 'derivative-graph',
         params: { fnName: 'x²', showDerivative: true },

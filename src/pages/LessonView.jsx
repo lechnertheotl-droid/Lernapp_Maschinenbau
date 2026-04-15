@@ -13,6 +13,7 @@ import { NotFound } from '@/components/NotFound'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { Confetti } from '@/components/ui/Confetti'
 import { getTopic } from '@/content/index'
+import { useFormulaPopover } from '@/utils/formulaPopoverContext'
 
 export function LessonView() {
   const { topicId, lessonId } = useParams()
@@ -27,10 +28,17 @@ export function LessonView() {
 
   const tp           = state.progress.topicProgress[topicId]
   const currentIndex = tp?.currentStepIndex ?? 0
+  const { setTopicId: setPopoverTopicId } = useFormulaPopover()
 
   useEffect(() => {
     dispatch({ type: ACTIONS.START_LESSON, topicId, lessonId })
   }, [topicId, lessonId]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Topic an Formula-Popover-Context melden, damit Variablen-Disambiguierung funktioniert
+  useEffect(() => {
+    setPopoverTopicId(topicId ?? null)
+    return () => setPopoverTopicId(null)
+  }, [topicId, setPopoverTopicId])
 
   if (!lesson) return (
     <NotFound
@@ -95,12 +103,12 @@ export function LessonView() {
                     }}
                     disabled={i > safeIndex}
                     aria-label={`Schritt ${i + 1} von ${totalSteps}${isCurrent ? ' (aktuell)' : isVisited ? ' (besucht)' : ' (noch nicht erreicht)'}`}
-                    className={`flex-1 h-2 border border-ink rounded-sm transition-colors ${
+                    className={`flex-1 h-2.5 border-2 border-ink rounded-sm transition-colors ${
                       isCurrent
-                        ? 'bg-primary-700'
+                        ? 'bg-primary-700 dark:bg-primary-400'
                         : isVisited
-                        ? 'bg-primary-500 hover:bg-primary-600 cursor-pointer'
-                        : 'bg-white cursor-not-allowed'
+                        ? 'bg-primary-500 dark:bg-primary-300 hover:bg-primary-600 cursor-pointer'
+                        : 'bg-white dark:bg-surface-600 dark:!border-surface-400 cursor-not-allowed'
                     }`}
                   />
                 )
@@ -138,6 +146,15 @@ export function LessonView() {
             title="Taschenrechner"
           >
             =
+          </button>
+          <button
+            type="button"
+            onClick={() => navigate(`/topics/${topicId}/${lessonId}/zusammenfassung`)}
+            className="w-10 h-10 flex items-center justify-center rounded-retro border-2 border-ink bg-white shadow-hard-sm text-ink tap-highlight-none retro-press font-mono text-[10px] font-black"
+            aria-label="Zusammenfassung der Lektion öffnen"
+            title="Zusammenfassung"
+          >
+            ∑
           </button>
         </div>
       </div>

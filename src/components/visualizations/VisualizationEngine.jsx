@@ -7,6 +7,14 @@ import { LimitExplorer } from './LimitExplorer'
 import { SinWaveExplorer } from './SinWaveExplorer'
 import { ForceParallelogram } from './ForceParallelogram'
 import { BeamReactions } from './BeamReactions'
+import { InteractiveBeam } from './InteractiveBeam'
+import { IntegralArea } from './IntegralArea'
+import { ComplexPlane } from './ComplexPlane'
+import { TaylorApproximation } from './TaylorApproximation'
+import { FreeBodyDiagram } from './FreeBodyDiagram'
+import { EigenvectorViz } from './EigenvectorViz'
+import { LagerIllustration } from './LagerIllustration'
+import { Vector3D } from './Vector3D'
 import { StressStrainDiagram } from './StressStrainDiagram'
 import { SpringMassDamper } from './SpringMassDamper'
 import { MohrCircle } from './MohrCircle'
@@ -22,6 +30,14 @@ const VIZ_MAP = {
   'sin-wave-explorer': SinWaveExplorer,
   'force-parallelogram': ForceParallelogram,
   'beam-reactions':   BeamReactions,
+  'interactive-beam': InteractiveBeam,
+  'integral-area':    IntegralArea,
+  'complex-plane':    ComplexPlane,
+  'taylor-approx':    TaylorApproximation,
+  'free-body-diagram': FreeBodyDiagram,
+  'eigenvector-viz':   EigenvectorViz,
+  'lager-illustration': LagerIllustration,
+  'vector-3d':         Vector3D,
   'stress-strain':    StressStrainDiagram,
   'spring-mass-damper': SpringMassDamper,
   'mohr-circle':      MohrCircle,

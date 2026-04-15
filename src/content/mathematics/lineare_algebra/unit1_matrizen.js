@@ -573,6 +573,13 @@ $$\\lambda_1 = 5, \\quad \\lambda_2 = 2$$
 - Summe der Eigenwerte = **Spur** der Matrix ($a_{11} + a_{22} + ...$)
 - Produkt der Eigenwerte = **Determinante** der Matrix`,
       },
+      {
+        id: 'la-1-5-s-viz',
+        type: 'visualization',
+        title: 'Eigenvektoren geometrisch — gestrichelte Linien bleiben gleich',
+        visualizationId: 'eigenvector-viz',
+        params: {},
+      },
       { id: 'la-1-5-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-la-1-5-a' },
       { id: 'la-1-5-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-la-1-5-b' },
       { id: 'la-1-5-s5', type: 'exercise', title: 'Aufgabe 3', exerciseRef: 'ex-la-1-5-c' },

@@ -2,6 +2,12 @@ import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { VARIABLES, CATEGORIES, DISPLAY_LABELS } from '@/utils/variablesDB'
 
+// Holt den primären Eintrag aus dem (immer-Array-)VARIABLES-Format.
+function primary(k) {
+  const list = VARIABLES[k]
+  return Array.isArray(list) ? list[0] : list
+}
+
 export function VariableGlossary({ isOpen, onClose }) {
   const [search, setSearch] = useState('')
   const [expanded, setExpanded] = useState(null)
@@ -13,7 +19,7 @@ export function VariableGlossary({ isOpen, onClose }) {
     ? CATEGORIES.map((cat) => ({
         ...cat,
         keys: cat.keys.filter((k) => {
-          const v = VARIABLES[k]
+          const v = primary(k)
           if (!v) return false
           return k.toLowerCase().includes(lc) || v.name.toLowerCase().includes(lc) || v.desc.toLowerCase().includes(lc)
         }),
@@ -52,7 +58,7 @@ export function VariableGlossary({ isOpen, onClose }) {
               </p>
               <div className="flex flex-col gap-1">
                 {cat.keys.map((k) => {
-                  const v = VARIABLES[k]
+                  const v = primary(k)
                   if (!v) return null
                   const isExpanded = expanded === k
                   const displayKey = DISPLAY_LABELS[k] || k

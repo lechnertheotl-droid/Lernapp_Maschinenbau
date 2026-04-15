@@ -212,6 +212,45 @@ $$\\tan(\\alpha) = \\frac{G}{A} = \\frac{\\text{Gegenkathete}}{\\text{Ankathete}
 
 **Wichtig:** Diese Definitionen gelten nur im rechtwinkligen Dreieck und nur für Winkel zwischen 0° und 90°. Für andere Winkel brauchen wir den Einheitskreis.`,
       },
+      {
+        id: 'trig-1-2-s-herleitung',
+        type: 'derivation',
+        title: 'Herleitung: 30°-60°-90°-Dreieck',
+        defaultOpen: false,
+        steps: [
+          {
+            explanation:
+              'Starte mit einem gleichseitigen Dreieck mit Seitenlänge 2. Alle Winkel betragen 60°.',
+          },
+          {
+            explanation:
+              'Halbiere es senkrecht zu einer Seite. Daraus entstehen zwei identische rechtwinklige Dreiecke mit den Winkeln 30°, 60°, 90°.',
+          },
+          {
+            explanation: 'Die Seiten dieses halbierten Dreiecks sind: Hypotenuse = 2, kurze Kathete = 1 (halbe Seite), lange Kathete = ?',
+            formula: 'a^2 + 1^2 = 2^2 \\;\\Rightarrow\\; a = \\sqrt{3}',
+          },
+          {
+            explanation:
+              'Für den Winkel $\\alpha = 30°$ ist die Gegenkathete $= 1$ und die Ankathete $= \\sqrt{3}$:',
+            formula: "\\sin(30°) = \\tfrac{1}{2}, \\quad \\cos(30°) = \\tfrac{\\sqrt{3}}{2}, \\quad \\tan(30°) = \\tfrac{1}{\\sqrt{3}}",
+          },
+          {
+            explanation:
+              'Für $\\alpha = 60°$ sind Gegen- und Ankathete vertauscht. Damit gilt $\\sin(60°) = \\tfrac{\\sqrt{3}}{2}$, $\\cos(60°) = \\tfrac{1}{2}$. Diese Werte tauchen in Prüfungen ständig auf — auswendig lernen lohnt sich.',
+          },
+        ],
+      },
+      {
+        id: 'trig-1-2-s-fehler',
+        type: 'typical-error',
+        title: 'Typische Fehler: sin/cos verwechselt oder Grad/Radiant',
+        wrong:
+          '**Fehler A:** „$\\sin(\\alpha) = A/H$" — Ankathete durch Hypotenuse.\n\n**Fehler B:** $\\sin(30) = -0{,}988$. (Taschenrechner steht im Radiant-Modus.)',
+        right:
+          '**Richtig A:** $\\sin(\\alpha) = \\frac{\\text{Gegenkathete}}{\\text{Hypotenuse}}$. Eselsbrücke SOH: **S**inus = **O**pposite/**H**ypotenuse.\n\n**Richtig B:** $\\sin(30°) = 0{,}5$. Taschenrechner auf DEG umstellen — oder im Radiant $\\sin(\\pi/6) = 0{,}5$ rechnen.',
+        hint: 'Immer beim Ergebnis auf Plausibilität prüfen: $\\sin$ eines spitzen Winkels liegt zwischen 0 und 1. Negative Werte sind dort ein Warnsignal für DEG/RAD-Fehler.',
+      },
       { id: 'trig-1-2-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-trig-1-2-a' },
       { id: 'trig-1-2-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-trig-1-2-b' },
       { id: 'trig-1-2-s5', type: 'exercise', title: 'Aufgabe 3', exerciseRef: 'ex-trig-1-2-c' },

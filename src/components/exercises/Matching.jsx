@@ -4,13 +4,15 @@ import { Button } from '@/components/ui/Button'
 import { MathText } from '@/components/ui/MathText'
 
 const PAIR_COLORS = [
-  'bg-primary-100 border-primary-700',
-  'bg-green-100 border-green-700',
-  'bg-amber-100 border-amber-700',
-  'bg-rose-100 border-rose-700',
-  'bg-violet-100 border-violet-700',
-  'bg-cyan-100 border-cyan-700',
+  'bg-primary-100 dark:bg-primary-900/60 border-primary-700 dark:border-primary-400',
+  'bg-green-100 dark:bg-green-900/60 border-green-700 dark:border-green-400',
+  'bg-amber-100 dark:bg-amber-900/60 border-amber-700 dark:border-amber-400',
+  'bg-rose-100 dark:bg-rose-900/60 border-rose-700 dark:border-rose-400',
+  'bg-violet-100 dark:bg-violet-900/60 border-violet-700 dark:border-violet-400',
+  'bg-cyan-100 dark:bg-cyan-900/60 border-cyan-700 dark:border-cyan-400',
 ]
+
+const PAIR_LABELS = ['A', 'B', 'C', 'D', 'E', 'F']
 
 export function validate(answer, exercise) {
   if (!answer.pairs || answer.pairs.length !== exercise.pairs.length) {
@@ -47,11 +49,18 @@ export function Matching({ exercise, onSubmit, disabled }) {
   const matchedLeftIndices = new Set(matches.map(m => m.leftShuffled))
   const matchedRightIndices = new Set(matches.map(m => m.rightShuffled))
 
-  function getMatchColor(leftShuffled, rightShuffled) {
-    const idx = matches.findIndex(
+  function getMatchIdx(leftShuffled, rightShuffled) {
+    return matches.findIndex(
       m => m.leftShuffled === leftShuffled || m.rightShuffled === rightShuffled
     )
+  }
+  function getMatchColor(leftShuffled, rightShuffled) {
+    const idx = getMatchIdx(leftShuffled, rightShuffled)
     return idx >= 0 ? PAIR_COLORS[idx % PAIR_COLORS.length] : null
+  }
+  function getMatchLabel(leftShuffled, rightShuffled) {
+    const idx = getMatchIdx(leftShuffled, rightShuffled)
+    return idx >= 0 ? PAIR_LABELS[idx % PAIR_LABELS.length] : null
   }
 
   function handleLeftTap(shuffledIdx) {
@@ -81,56 +90,77 @@ export function Matching({ exercise, onSubmit, disabled }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <MathText className="text-base font-black text-ink leading-relaxed block">{exercise.question}</MathText>
+      <MathText className="text-base font-black text-ink dark:text-paper leading-relaxed block">{exercise.question}</MathText>
+
+      <p className="sr-only" aria-live="polite">
+        {matches.length} von {exercise.pairs.length} Paaren zugeordnet
+      </p>
 
       <div className="grid grid-cols-2 gap-3">
         {/* Left column */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2" role="list" aria-label="Erste Spalte">
           {shuffledLeft.map((entry, i) => {
             const matched = matchedLeftIndices.has(i)
             const color = getMatchColor(i, null)
+            const label = getMatchLabel(i, null)
             return (
               <button
                 key={i}
+                role="listitem"
                 disabled={disabled || matched}
                 onClick={() => handleLeftTap(i)}
+                aria-label={matched ? `Element ${entry.item}, zugeordnet als Paar ${label}` : `Element ${entry.item}, auswählen`}
+                aria-pressed={selectedLeft === i}
                 className={cn(
-                  'min-h-[48px] px-3 py-2 border-2 rounded-retro text-sm font-mono font-semibold transition-all duration-150 tap-highlight-none retro-press text-left',
+                  'min-h-[48px] px-3 py-2 border-2 rounded-retro text-sm font-mono font-semibold transition-all duration-150 tap-highlight-none retro-press text-left flex items-center gap-2',
                   selectedLeft === i
                     ? 'border-ink bg-lemon text-ink shadow-hard-lemon'
                     : matched && color
-                      ? `${color} text-ink shadow-hard-sm`
-                      : 'border-ink bg-white text-ink-soft shadow-hard-sm hover:bg-surface-50',
+                      ? `${color} text-ink dark:text-paper shadow-hard-sm`
+                      : 'border-ink bg-white dark:bg-surface-800 text-ink-soft dark:text-surface-300 shadow-hard-sm hover:bg-surface-50',
                   disabled && 'opacity-60 cursor-not-allowed'
                 )}
               >
-                <MathText>{entry.item}</MathText>
+                {matched && label && (
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full border-2 border-ink bg-white dark:bg-surface-900 text-ink dark:text-paper text-[11px] font-black flex items-center justify-center" aria-hidden>
+                    {label}
+                  </span>
+                )}
+                <span className="flex-1"><MathText>{entry.item}</MathText></span>
               </button>
             )
           })}
         </div>
 
         {/* Right column */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2" role="list" aria-label="Zweite Spalte">
           {shuffledRight.map((entry, i) => {
             const matched = matchedRightIndices.has(i)
             const color = getMatchColor(null, i)
+            const label = getMatchLabel(null, i)
             return (
               <button
                 key={i}
+                role="listitem"
                 disabled={disabled || matched || selectedLeft === null}
                 onClick={() => handleRightTap(i)}
+                aria-label={matched ? `Element ${entry.item}, zugeordnet als Paar ${label}` : selectedLeft !== null ? `Element ${entry.item}, als Partner wählen` : `Element ${entry.item}`}
                 className={cn(
-                  'min-h-[48px] px-3 py-2 border-2 rounded-retro text-sm font-mono font-semibold transition-all duration-150 tap-highlight-none retro-press text-left',
+                  'min-h-[48px] px-3 py-2 border-2 rounded-retro text-sm font-mono font-semibold transition-all duration-150 tap-highlight-none retro-press text-left flex items-center gap-2',
                   matched && color
-                    ? `${color} text-ink shadow-hard-sm`
+                    ? `${color} text-ink dark:text-paper shadow-hard-sm`
                     : selectedLeft !== null && !matched
-                      ? 'border-ink bg-white text-ink shadow-hard-sm hover:bg-lemon hover:shadow-hard-lemon'
-                      : 'border-ink bg-white text-ink-soft shadow-hard-sm',
+                      ? 'border-ink bg-white dark:bg-surface-800 text-ink dark:text-paper shadow-hard-sm hover:bg-lemon hover:shadow-hard-lemon'
+                      : 'border-ink bg-white dark:bg-surface-800 text-ink-soft dark:text-surface-300 shadow-hard-sm',
                   disabled && 'opacity-60 cursor-not-allowed'
                 )}
               >
-                <MathText>{entry.item}</MathText>
+                {matched && label && (
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full border-2 border-ink bg-white dark:bg-surface-900 text-ink dark:text-paper text-[11px] font-black flex items-center justify-center" aria-hidden>
+                    {label}
+                  </span>
+                )}
+                <span className="flex-1"><MathText>{entry.item}</MathText></span>
               </button>
             )
           })}

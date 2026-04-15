@@ -76,7 +76,7 @@ export function TopicOverview() {
               <TopicIcon topic={topic} size="md" />
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2 mb-1">
-                  <h2 className="font-black text-ink text-base leading-tight">{topic.title}</h2>
+                  <h2 className="font-black text-ink dark:text-paper text-base leading-tight line-clamp-2 break-words">{topic.title}</h2>
                   {examDone
                     ? <span className="stamp text-lemon-dark flex-shrink-0">Prüfung ✓</span>
                     : pct === 100

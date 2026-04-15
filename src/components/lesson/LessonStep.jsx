@@ -3,6 +3,9 @@ import { ExerciseEngine } from '@/components/exercises/ExerciseEngine'
 import { Button } from '@/components/ui/Button'
 import { useState } from 'react'
 import { MarkdownContent } from './MarkdownContent'
+import { FormelBlock } from './FormelBlock'
+import { HerleitungAccordion } from './HerleitungAccordion'
+import { FehlerBlock } from './FehlerBlock'
 
 export function LessonStep({ step, topicId, lessonId, onComplete }) {
   const [reflectionDone, setReflectionDone] = useState(false)
@@ -25,11 +28,34 @@ export function LessonStep({ step, topicId, lessonId, onComplete }) {
     case 'explanation-formal':
       return (
         <div className="flex flex-col gap-4">
-          <div className="formula-box">
-            <p className="font-mono text-[10px] font-black text-primary-700 uppercase tracking-widest mb-2">// Formelblock</p>
-            <h3 className="font-black text-ink text-lg leading-tight mb-3">{step.title}</h3>
-            <MarkdownContent className="text-ink">{step.content}</MarkdownContent>
-          </div>
+          <FormelBlock title={step.title} priority={step.priority ?? 'wichtig'}>
+            <MarkdownContent className="text-ink dark:text-paper">{step.content}</MarkdownContent>
+          </FormelBlock>
+          <Button size="lg" variant="dark" fullWidth onClick={onComplete}>Verstanden, weiter →</Button>
+        </div>
+      )
+
+    case 'derivation':
+      return (
+        <div className="flex flex-col gap-4">
+          <HerleitungAccordion
+            title={step.title ?? 'Herleitung'}
+            steps={step.steps ?? []}
+            defaultOpen={step.defaultOpen ?? false}
+          />
+          <Button size="lg" variant="dark" fullWidth onClick={onComplete}>Verstanden, weiter →</Button>
+        </div>
+      )
+
+    case 'typical-error':
+      return (
+        <div className="flex flex-col gap-4">
+          <FehlerBlock
+            wrong={step.wrong}
+            right={step.right}
+            hint={step.hint}
+            title={step.title}
+          />
           <Button size="lg" variant="dark" fullWidth onClick={onComplete}>Verstanden, weiter →</Button>
         </div>
       )

@@ -5,8 +5,21 @@
 @layer base {
   html {
     font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
     -webkit-tap-highlight-color: transparent;
     background-color: #F5F5EF;
+  }
+  /* Prevent iOS Safari from zooming on focus of form inputs.
+     Only fires on small viewports — larger screens keep current input sizing. */
+  @media (max-width: 640px) {
+    input[type='text'],
+    input[type='number'],
+    input[type='search'],
+    input[type='email'],
+    textarea,
+    select {
+      font-size: 16px;
+    }
   }
   body {
     color: #1a1a1a;
@@ -56,6 +69,16 @@
   html.dark .markdown-content table { border-color: #475569; }
   html.dark .markdown-content td { border-color: #334155; }
   html.dark .markdown-content tr:nth-child(even) td { background: #1e293b; }
+
+  /* ── Dark-Mode-Overrides für gelbe Akzent-Boxen (WCAG AA fix) ─── */
+  html.dark .bg-lemon-light { background-color: #3a3410 !important; }
+  html.dark .bg-lemon       { background-color: #4a3f10 !important; }
+  html.dark .formula-box {
+    background: #1a1a0a !important;
+    border-color: #475569 !important;
+    box-shadow: 3px 3px 0 0 #000 !important;
+  }
+  html.dark .formula-box .katex { color: #FFE066 !important; }
 }
 
 @layer utilities {
@@ -156,6 +179,17 @@
   .markdown-content tr:nth-child(even) td { background: #f8f8f2; }
   .markdown-content tr:last-child td { border-bottom: none; }
 
+  /* ── Glossary tooltips (auto-annotated terms) ───────────────────── */
+  abbr.glossary-term {
+    text-decoration: underline dotted rgba(0, 61, 165, 0.45);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    cursor: help;
+  }
+  html.dark abbr.glossary-term {
+    text-decoration-color: rgba(255, 214, 10, 0.55);
+  }
+
   /* ── Clickable math formulas ─────────────────────────────────────── */
   .clickable-math {
     cursor: pointer;
@@ -167,6 +201,27 @@
   }
   .clickable-math:active {
     background-color: rgba(255, 214, 10, 0.5);
+  }
+
+  /* ── Shiki code blocks (dark/light-theme-aware) ─────────────────── */
+  .shiki-wrapper .shiki {
+    margin: 0;
+    padding: 12px 14px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.8rem;
+    line-height: 1.55;
+    background-color: var(--shiki-light-bg) !important;
+  }
+  .shiki-wrapper .shiki,
+  .shiki-wrapper .shiki span {
+    color: var(--shiki-light);
+  }
+  html.dark .shiki-wrapper .shiki {
+    background-color: var(--shiki-dark-bg) !important;
+  }
+  html.dark .shiki-wrapper .shiki,
+  html.dark .shiki-wrapper .shiki span {
+    color: var(--shiki-dark) !important;
   }
 
   /* ── Formula box (retro notebook style) ─────────────────────────── */

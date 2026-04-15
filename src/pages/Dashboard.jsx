@@ -6,6 +6,12 @@ import { getAllTopics, getAllLessons } from '@/content/index'
 import { getDueItems } from '@/utils/reviewScheduler'
 import { computeTopicProgress } from '@/utils/progressLogic'
 import { TopicIcon } from '@/components/ui/TopicIcon'
+import { StreakBadge } from '@/components/ui/StreakBadge'
+import {
+  getTopicMeta,
+  computeTopicStatus,
+  nextRecommendedTopic,
+} from '@/utils/topicGraph'
 
 function greeting(name) {
   const h = new Date().getHours()
@@ -33,6 +39,27 @@ export function Dashboard() {
   const totalCompleted = Object.values(state.progress.topicProgress)
     .flatMap((tp) => tp.completedLessons ?? []).length
 
+  // Compute recommended next topic from skill-tree
+  const completionByTopic = Object.fromEntries(
+    topics.map((topic) => {
+      const total = getAllLessons(topic.id).length
+      const done = state.progress.topicProgress[topic.id]?.completedLessons?.length ?? 0
+      return [topic.id, total > 0 ? done / total : 0]
+    })
+  )
+  const statusByTopic = Object.fromEntries(
+    topics.map((topic) => {
+      const ratio = completionByTopic[topic.id] ?? 0
+      const prereqs = getTopicMeta(topic.id).prerequisiteTopics
+      const prereqDone = prereqs.every((pid) => (completionByTopic[pid] ?? 0) >= 1)
+      return [topic.id, computeTopicStatus(topic.id, ratio, prereqDone)]
+    })
+  )
+  const recommendedId = lastActive
+    ? null
+    : nextRecommendedTopic(topics.map((t) => t.id), statusByTopic)
+  const recommendedTopic = recommendedId ? topics.find((t) => t.id === recommendedId) : null
+
   return (
     <div className="max-w-2xl mx-auto px-4 pt-6 pb-2 flex flex-col gap-5">
 
@@ -47,11 +74,20 @@ export function Dashboard() {
           </h1>
         </div>
         <div className="flex items-center gap-2 flex-shrink-0">
+          {(state.streak?.current ?? 0) > 0 && (
+            <Link to="/erfolge" aria-label="Erfolge ansehen">
+              <StreakBadge current={state.streak.current} longest={state.streak.longest} size="md" />
+            </Link>
+          )}
           {totalCompleted > 0 && (
-            <div className="flex flex-col items-center bg-lemon border-2 border-lemon-dark rounded-retro shadow-hard-lemon px-3 py-2 min-w-[56px]">
+            <Link
+              to="/erfolge"
+              className="flex flex-col items-center bg-lemon border-2 border-lemon-dark rounded-retro shadow-hard-lemon px-3 py-2 min-w-[56px] retro-press"
+              aria-label={`${totalCompleted} Lektionen abgeschlossen — Erfolge ansehen`}
+            >
               <span className="num text-xl font-black text-ink leading-none">{totalCompleted}</span>
               <span className="font-mono text-[9px] font-bold text-ink-soft uppercase tracking-wide mt-0.5">Lekt.</span>
-            </div>
+            </Link>
           )}
           <Link
             to="/settings"
@@ -114,12 +150,50 @@ export function Dashboard() {
         )
       })()}
 
+      {/* ── Recommended next (when no active lesson) ─────────────── */}
+      {!lastActive && recommendedTopic && (
+        <button
+          onClick={() => navigate(`/topics/${recommendedTopic.id}`)}
+          className="w-full text-left bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard p-4 flex items-center gap-3 retro-press tap-highlight-none animate-fade-in"
+        >
+          <TopicIcon topic={recommendedTopic} size="md" />
+          <div className="flex-1 min-w-0">
+            <p className="font-mono text-[10px] font-bold text-primary-700 dark:text-primary-300 uppercase tracking-widest mb-0.5">
+              // Empfohlener Start
+            </p>
+            <p className="font-black text-ink dark:text-paper text-sm leading-snug line-clamp-2">
+              {recommendedTopic.title}
+            </p>
+            <p className="text-ink-soft dark:text-surface-400 text-[11px] mt-0.5 line-clamp-1">
+              {recommendedTopic.description}
+            </p>
+          </div>
+          <span className="font-mono font-black text-ink dark:text-paper text-lg">›</span>
+        </button>
+      )}
+
       {/* ── Topics grid ──────────────────────────────────────────── */}
       <div>
-        <h2 className="font-mono font-black text-[11px] text-ink-soft uppercase tracking-widest mb-3">
-          // Themenbereiche
-        </h2>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="flex items-baseline justify-between mb-3">
+          <h2 className="font-mono font-black text-[11px] text-ink-soft uppercase tracking-widest">
+            // Themenbereiche
+          </h2>
+          <div className="flex gap-3">
+            <Link
+              to="/lernpfad"
+              className="font-mono text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-wider hover:underline"
+            >
+              Lernpfad →
+            </Link>
+            <Link
+              to="/formelsammlung"
+              className="font-mono text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-wider hover:underline"
+            >
+              Formeln →
+            </Link>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 xs:grid-cols-2 gap-3">
           {topics.map((topic, i) => {
             const tp      = state.progress.topicProgress[topic.id]
             const total   = getAllLessons(topic.id).length
@@ -142,7 +216,7 @@ export function Dashboard() {
                   )}
                 </div>
                 <div>
-                  <p className="font-black text-ink text-sm leading-tight">{topic.title}</p>
+                  <p className="font-black text-ink dark:text-paper text-sm leading-tight line-clamp-2 break-words">{topic.title}</p>
                   <p className="font-mono text-[10px] text-ink-soft mt-0.5 uppercase tracking-wider">
                     {DIFF_LABEL[topic.difficulty] ?? ''} · {total} Lekt.
                   </p>

@@ -5,6 +5,8 @@ import { cn } from '@/utils/cn'
 import { TopicIcon } from '@/components/ui/TopicIcon'
 import { NotFound } from '@/components/NotFound'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
+import { LessonMetaBadges } from '@/components/ui/LessonMetaBadges'
+import { getLessonDifficulty } from '@/utils/lessonMeta'
 
 const STATUS_CONFIG = {
   'secure':     { icon: '✓', label: 'Sicher',     dot: 'bg-green-500',   text: 'text-green-700'  },
@@ -127,9 +129,15 @@ export function TopicDetail() {
                     <p className={cn('font-bold text-sm leading-snug', isCurrent ? 'text-ink' : 'text-ink')}>
                       {lesson.title}
                     </p>
-                    <p className="font-mono text-[10px] text-ink-soft mt-0.5 uppercase tracking-wide">
-                      {lesson.estimatedMinutes} Min · {lesson.steps?.length ?? 0} Schritte
-                    </p>
+                    <div className="mt-1.5 flex items-center gap-2 flex-wrap">
+                      <LessonMetaBadges
+                        minutes={lesson.estimatedMinutes}
+                        difficulty={getLessonDifficulty(topic, unit, lesson)}
+                      />
+                      <span className="font-mono text-[10px] text-ink-soft uppercase tracking-wide">
+                        · {lesson.steps?.length ?? 0} Schritte
+                      </span>
+                    </div>
                   </div>
 
                   <div className="flex items-center gap-2 flex-shrink-0">

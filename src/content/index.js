@@ -5,7 +5,13 @@ import { algebraTopic }          from './mathematics/algebra/index'
 import { lineareAlgebraTopic }   from './mathematics/lineare_algebra/index'
 import { integralrechnungTopic } from './mathematics/integralrechnung/index'
 import { dglTopic }             from './mathematics/dgl/index'
+import { komplexeZahlenTopic }  from './mathematics/komplexe_zahlen/index'
+import { reihenFolgenTopic }    from './mathematics/reihen_folgen/index'
+import { mehrdimAnalysisTopic } from './mathematics/mehrdim_analysis/index'
+import { numerikTopic }         from './mathematics/numerik/index'
+import { statistikTopic }       from './mathematics/statistik/index'
 import { engineeringTopics } from './engineering/maschinenbau'
+import { werkstoffkundeTopic }  from './engineering/werkstoffkunde/index'
 import { pythonMatlabTopic }  from './programming/python_matlab'
 import { trigonometrySupplements } from './supplements/trigonometry'
 import { algebraSupplements } from './supplements/algebra'
@@ -264,6 +270,114 @@ function lessonProfile(topic, unit, lesson) {
       ],
     },
     {
+      match: ['komplex', 'imaginär', 'gauss'],
+      concept: 'Komplexe Zahlen als Punkte in der Gaußschen Ebene mit Betrag und Argument',
+      method: 'In passender Form rechnen (kartesisch für +/−, polar für ·/÷, Euler für Potenzen)',
+      check: 'Real- und Imaginärteil getrennt kontrollieren, Betrag ≥ 0, Argument im Hauptwert',
+      workedExample: 'Beispiel: z=1+i hat |z|=√2 und arg(z)=π/4.',
+      mcQuestion: 'Welche Form eignet sich am besten für Multiplikation komplexer Zahlen?',
+      mcOptions: ['Polarform: Beträge multiplizieren, Argumente addieren', 'Kartesische Form reicht immer', 'Nur Realteile verwenden', 'Dezimaldarstellung'],
+      numberQuestion: 'Für z=1+i: Welchen Betrag |z| hat die Zahl?',
+      correctAnswer: 1.41421356,
+      unit: '',
+      tolerance: 0.01,
+      matchingPairs: [
+        { left: '|z|', right: 'Betrag der komplexen Zahl' },
+        { left: 'arg(z)', right: 'Argument (Winkel zur reellen Achse)' },
+        { left: 'e^{iφ}', right: 'Euler-Formel cos(φ)+i·sin(φ)' },
+      ],
+    },
+    {
+      match: ['reihe', 'folge', 'taylor', 'konvergenz'],
+      concept: 'Folgen/Reihen als Grenzwertprozesse; Taylor-Reihe approximiert differenzierbare Funktionen',
+      method: 'Konvergenz mit Quotienten-/Wurzel-/Leibniz-Kriterium prüfen; Taylor durch wiederholtes Ableiten bilden',
+      check: 'Konvergenzradius, Entwicklungspunkt und Restglied bedenken',
+      workedExample: 'Beispiel: e^x = Σ xⁿ/n!, nahe x=0 gilt e^x ≈ 1+x+x²/2.',
+      mcQuestion: 'Was sichert die Konvergenz einer geometrischen Reihe Σ qⁿ?',
+      mcOptions: ['|q|<1', 'q=1', 'q beliebig', 'q ganzzahlig'],
+      numberQuestion: 'Grenzwert von Σ (1/2)ⁿ für n=0,1,2,… ?',
+      correctAnswer: 2,
+      unit: '',
+      tolerance: 0.001,
+      matchingPairs: [
+        { left: 'Σ qⁿ', right: 'geometrische Reihe, konvergiert für |q|<1' },
+        { left: 'Σ 1/n', right: 'harmonische Reihe, divergiert' },
+        { left: 'Σ xⁿ/n!', right: 'Taylor-Reihe von e^x um 0' },
+      ],
+    },
+    {
+      match: ['mehrdim', 'partiell', 'gradient', 'lagrange'],
+      concept: 'Funktionen mehrerer Variablen mit partiellen Ableitungen und Gradient als Steilste-Anstieg-Vektor',
+      method: 'Variable einzeln ableiten, restliche Variablen als Konstante behandeln; Extrema über ∇f=0',
+      check: 'Hesse-Matrix-Definitheit, Randbedingungen und Definitionsbereich prüfen',
+      workedExample: 'Beispiel: f(x,y)=x²+y² hat ∇f=(2x,2y), Minimum bei (0,0).',
+      mcQuestion: 'Was zeigt der Gradient ∇f an einem Punkt?',
+      mcOptions: ['Richtung des steilsten Anstiegs', 'Zufällige Richtung', 'Nur x-Anteil', 'Die Fläche selbst'],
+      numberQuestion: 'Für f(x,y)=x²+y² bei (1,2): Wie groß ist |∇f|?',
+      correctAnswer: 4.47213595,
+      unit: '',
+      tolerance: 0.01,
+      matchingPairs: [
+        { left: '∂f/∂x', right: 'partielle Ableitung nach x' },
+        { left: '∇f', right: 'Gradient-Vektor' },
+        { left: 'Hesse-Matrix', right: 'Definitheit → Extremumtyp' },
+      ],
+    },
+    {
+      match: ['numerik', 'numerisch', 'newton', 'interpolation', 'simpson'],
+      concept: 'Numerische Verfahren: iterieren statt exakt lösen, Fehler kontrollieren',
+      method: 'Verfahren passend zum Problem wählen (Newton für Nullstellen, Trapez/Simpson für Integrale)',
+      check: 'Konvergenzordnung, Abbruchkriterium und Rundungsfehler abschätzen',
+      workedExample: 'Beispiel: Newton x_{n+1}=x_n−f(x_n)/f′(x_n). Für f(x)=x²−2, x₀=1 → x₁=1,5.',
+      mcQuestion: 'Wovon hängt die Konvergenzgeschwindigkeit des Newton-Verfahrens ab?',
+      mcOptions: ['Quadratische Konvergenz bei einfachen Nullstellen', 'Gar nicht', 'Nur vom Zufall', 'Immer linear'],
+      numberQuestion: 'Newton auf f(x)=x²−2, Start x₀=1: Wie lautet x₁?',
+      correctAnswer: 1.5,
+      unit: '',
+      tolerance: 0.001,
+      matchingPairs: [
+        { left: 'Bisektion', right: 'Halbierung, linear konvergent' },
+        { left: 'Newton', right: 'Tangente, quadratisch konvergent' },
+        { left: 'Simpson', right: 'numerische Integration mit Parabeln' },
+      ],
+    },
+    {
+      match: ['statistik', 'wahrscheinlichkeit', 'verteilung', 'konfidenz'],
+      concept: 'Zufallsgrößen, Verteilungen und Schätzer — aus Messungen gesicherte Aussagen ableiten',
+      method: 'Stichprobe → Schätzer → Verteilung wählen → Testgröße + Konfidenzniveau prüfen',
+      check: 'Unabhängigkeit, Stichprobengröße, Signifikanzniveau und einseitig vs. zweiseitig kontrollieren',
+      workedExample: 'Beispiel: Normalverteilung, x̄=10, s=2, n=25 → 95%-KI ≈ 10 ± 1,96·2/√25 = [9,22; 10,78].',
+      mcQuestion: 'Was bedeutet ein 95%-Konfidenzintervall?',
+      mcOptions: ['95% der so gebildeten Intervalle enthalten den wahren Wert', '95% der Daten liegen drin', 'Der Mittelwert ist zu 95% richtig', 'Der p-Wert beträgt 95%'],
+      numberQuestion: '5 Werte: 4, 5, 6, 7, 8. Berechne den Mittelwert.',
+      correctAnswer: 6,
+      unit: '',
+      tolerance: 0.001,
+      matchingPairs: [
+        { left: 'Erwartungswert', right: 'Mittelwert auf lange Sicht' },
+        { left: 'Varianz', right: 'Streuung um den Erwartungswert' },
+        { left: 'Zentraler Grenzwertsatz', right: 'Summen zufälliger Größen → Normalverteilung' },
+      ],
+    },
+    {
+      match: ['werkstoff', 'stahl', 'metall', 'zug', 'härte', 'polymer', 'keramik'],
+      concept: 'Werkstoffeigenschaften aus Struktur, Belastung und Verarbeitung',
+      method: 'Kennwert aus passender Prüfung (Zugversuch, Härte, Kerbschlag) ableiten und auf Anwendung übertragen',
+      check: 'Einheiten (MPa, HV, J), Temperatur- und Lastabhängigkeit prüfen',
+      workedExample: 'Beispiel: Zugversuch S235: R_e≈235 MPa, R_m≈360 MPa, Bruchdehnung A≈25%.',
+      mcQuestion: 'Was liest man direkt aus dem Spannungs-Dehnungs-Diagramm ab?',
+      mcOptions: ['Streckgrenze, Zugfestigkeit und Bruchdehnung', 'Nur die Härte', 'Nur die Masse', 'Die Dichte'],
+      numberQuestion: 'Stahlprobe mit R_m=400 MPa und Sicherheitszahl S=2: Wie groß ist σ_zul in MPa?',
+      correctAnswer: 200,
+      unit: 'MPa',
+      tolerance: 0.1,
+      matchingPairs: [
+        { left: 'R_e', right: 'Streckgrenze' },
+        { left: 'R_m', right: 'Zugfestigkeit' },
+        { left: 'E', right: 'Elastizitätsmodul' },
+      ],
+    },
+    {
       match: ['mechanik', 'statik', 'dynamik', 'kraft', 'moment'],
       concept: 'Mechanik über Kräfte, Momente und Energien',
       method: 'Freikörperbild zeichnen, Kräfte zerlegen, Gleichgewicht oder Bewegungsgleichung aufstellen',
@@ -462,11 +576,17 @@ const BASE_TOPICS = {
   'lineare-algebra': lineareAlgebraTopic,
   integralrechnung:  integralrechnungTopic,
   differentialgleichungen: dglTopic,
+  'komplexe-zahlen':   komplexeZahlenTopic,
+  'reihen-folgen':     reihenFolgenTopic,
+  'mehrdim-analysis':  mehrdimAnalysisTopic,
+  numerik:             numerikTopic,
+  statistik:           statistikTopic,
 }
 
 const TOPICS = Object.fromEntries(Object.entries({
   ...BASE_TOPICS,
   ...Object.fromEntries(engineeringTopics.map((topic) => [topic.id, topic])),
+  werkstoffkunde:   werkstoffkundeTopic,
   'python-matlab': pythonMatlabTopic,
 }).map(([id, topic]) => [id, withMinimumExercises(topic)]))
 

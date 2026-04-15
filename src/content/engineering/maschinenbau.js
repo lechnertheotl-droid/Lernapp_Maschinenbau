@@ -112,10 +112,19 @@ const topicDefinitions = [
 1. Körper freischneiden
 2. Gewicht, Lagerreaktionen und äußere Kräfte eintragen
 3. Koordinatensystem festlegen
-4. Gleichgewichtsbedingungen aufstellen: $\sum F_x = 0$, $\sum F_y = 0$, $\sum M = 0$`,
+4. Gleichgewichtsbedingungen aufstellen: $\sum F_x = 0$, $\sum F_y = 0$, $\sum M = 0$
+
+**Übung unten:** Zeichne für einen Block, der auf dem Boden liegt, die Gewichtskraft ($F_G$ nach unten) und die Normalkraft ($F_N$ nach oben) ein.`,
             visualization: {
-              title: 'Kräfteparallelogramm', visualizationId: 'force-parallelogram',
-              params: {},
+              title: 'Freikörperbild — zeichne die Kräfte',
+              visualizationId: 'free-body-diagram',
+              params: {
+                body: 'block',
+                target: [
+                  { dir: { x: 0, y: 1 },  magnitude: 1, name: 'Gewichtskraft F_G (nach unten)' },
+                  { dir: { x: 0, y: -1 }, magnitude: 1, name: 'Normalkraft F_N (nach oben)' },
+                ],
+              },
             },
             exercises: [
               { type: 'multiple-choice', question: 'Was gehört in ein Freikörperbild?', options: ['Nur bekannte Kräfte', 'Alle äußeren Kräfte und Lagerreaktionen', 'Nur Beschleunigungen', 'Nur Maße'], correctIndex: 1, explanation: 'Ein Freikörperbild zeigt alle äußeren Kräfte und unbekannten Reaktionsgrößen.', hints: ['Kontakte werden durch Reaktionskräfte ersetzt.'] },
@@ -139,6 +148,46 @@ Dabei ist $l_\perp$ der senkrechte Abstand zwischen Drehpunkt und Wirkungslinie 
               { type: 'number-input', question: 'Eine Kraft F = 20 N greift mit senkrechtem Hebelarm l = 0,5 m an. Berechne das Moment.', correctAnswer: 10, tolerance: 0.01, unit: 'Nm', explanation: 'M = F·l = 20·0,5 = 10 Nm.', hints: ['Einheit: Newtonmeter.'] },
               { type: 'multiple-choice', question: 'Der wirksame Hebelarm ist ...', options: ['immer die Stablänge', 'der senkrechte Abstand zur Wirkungslinie', 'die Kraft mal Weg', 'der Winkel in Grad'], correctIndex: 1, explanation: 'Nur der senkrechte Abstand zur Wirkungslinie zählt.', hints: ['Drehwirkung entsteht senkrecht zur Kraftlinie.'] },
               { type: 'true-false', statement: 'Wenn die Wirkungslinie durch den Drehpunkt geht, ist das Moment null.', correct: true, explanation: 'Dann ist der senkrechte Hebelarm 0.', hints: ['M = F·l_perp.'] },
+            ],
+          },
+          {
+            id: 'mech-1-3',
+            title: 'Schnittkräfte N(x), Q(x), M(x)',
+            learningGoals: [
+              'Schnittkräfte und Schnittmomente am Balken berechnen',
+              'Querkraft- und Biegemomentverlauf skizzieren',
+              'Die gefährliche Stelle (max. Biegemoment) identifizieren',
+            ],
+            content: String.raw`**Schnittprinzip:** Zerschneidet man einen Balken gedanklich an der Stelle $x$, müssen am Schnittufer **Schnittgrößen** angreifen, damit jede Hälfte für sich im Gleichgewicht steht.
+
+Drei Schnittgrößen:
+- **Normalkraft** $N(x)$ — in Balkenachse
+- **Querkraft** $Q(x)$ — senkrecht zur Balkenachse
+- **Biegemoment** $M(x)$ — Moment um die Querachse
+
+**Einfeldträger mit Einzellast $F$ bei $x = a$ und Stützweite $L$:**
+
+$$R_A = F \cdot \frac{L-a}{L}, \qquad R_B = F \cdot \frac{a}{L}$$
+
+Zwischen $x = 0$ und $x = a$:
+$$Q(x) = R_A, \qquad M(x) = R_A \cdot x$$
+
+Zwischen $x = a$ und $x = L$:
+$$Q(x) = R_A - F = -R_B, \qquad M(x) = R_A \cdot x - F(x-a)$$
+
+**Kontrolle:** Sprung von $Q(x)$ am Lastangriff hat die Größe $-F$. Maximum von $M(x)$ liegt **genau unter der Last**:
+$$M_\text{max} = R_A \cdot a = F \cdot \frac{a(L-a)}{L}$$
+
+**Typischer Fehler:** Vorzeichenkonvention nicht konsequent durchhalten — am besten **Drehsinn am Schnittufer** vorher festlegen.`,
+            visualization: {
+              title: 'Schnittkräfte live', visualizationId: 'interactive-beam', params: {},
+            },
+            exercises: [
+              { type: 'number-input', question: 'Balken L = 4 m, F = 600 N bei a = 1 m. Wie groß ist R_A?', correctAnswer: 450, tolerance: 0.5, unit: 'N', explanation: 'R_A = F·(L−a)/L = 600·3/4 = 450 N. Kontrolle: R_A + R_B = 600 N ✓.', hints: ['ΣM um B: R_A·L = F·(L−a)', 'R_A = F·(L−a)/L'] },
+              { type: 'number-input', question: 'Gleicher Balken (L = 4 m, F = 600 N bei a = 1 m): Wie groß ist M_max?', correctAnswer: 450, tolerance: 1, unit: 'Nm', explanation: 'M_max = R_A·a = 450·1 = 450 Nm. Liegt genau unter der Last.', hints: ['M_max = R_A · a', 'Max. Moment unter der Last.'] },
+              { type: 'multiple-choice', question: 'Wo liegt das maximale Biegemoment bei Einzellast auf Einfeldträger?', options: ['Unter der Last', 'Am Festlager', 'Am Loslager', 'In der Balkenmitte'], correctIndex: 0, explanation: 'Die M(x)-Linie ist dreieckförmig mit Maximum direkt unter der Einzellast.', hints: ['Wo hat die M-Linie ihren Knick?'] },
+              { type: 'true-false', statement: 'Der Sprung in Q(x) am Lastangriff hat den Betrag F.', correct: true, explanation: 'Q springt um −F von R_A auf −R_B. Daraus ergibt sich die typische „Treppenstufe" im Querkraftverlauf.', hints: ['|ΔQ| = |F|'] },
+              { type: 'multiple-choice', question: '[PRÜFUNG] Warum interessiert uns M_max in der Festigkeitslehre besonders?', options: ['Weil dort die maximale Biegespannung auftritt', 'Weil dort N am größten ist', 'Weil dort Q am größten ist', 'Zufall'], correctIndex: 0, explanation: 'Die Biegespannung ist σ_b = M/W mit W = Widerstandsmoment. M_max liefert die größte Spannung und damit die gefährliche Stelle.', hints: ['σ_b = M/W'] },
             ],
           },
         ],
@@ -207,7 +256,7 @@ Ist Kraft und Weg gleichgerichtet, gilt $W = F \cdot s$.`,
 - Lagerreaktionen vergessen (z.B. Horizontalkraft am Loslager)
 - Hebelarm nicht senkrecht zur Kraftlinie gemessen`,
             visualization: {
-              title: 'Balken mit Einzellast', visualizationId: 'beam-reactions', params: {},
+              title: 'Lagertypen im Überblick', visualizationId: 'lager-illustration', params: {},
             },
             exercises: [
               { type: 'number-input', question: '[PRÜFUNG] Balken (4 m), Festlager links, Loslager rechts. Einzellast F = 600 N bei x = 1 m vom linken Lager. Berechne R_B (rechtes Lager).', correctAnswer: 150, tolerance: 1, unit: 'N', explanation: 'ΣM_A = 0: F·1 = R_B·4 → R_B = 600·1/4 = 150 N.', hints: ['Momentengleichung um Punkt A aufstellen.', 'F·a = R_B·L'] },

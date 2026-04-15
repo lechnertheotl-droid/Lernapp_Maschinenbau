@@ -486,8 +486,27 @@ export function Calculator({ isOpen, onClose }) {
 
         {/* Tab bar */}
         <div className="grid grid-cols-4 gap-1.5 p-2 bg-paper border-b-2 border-ink">
-          {[['basic', 'Basis'], ['functions', 'f(x)'], ['solver', 'Löser'], ['multi', 'Multi']].map(([key, label]) => (
-            <button key={key} type="button" onClick={() => { setPage(key); setSolverResult(null) }} className={cn('h-10 rounded-retro border-2 font-mono text-xs font-black uppercase tracking-wider retro-press', page === key ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon' : 'bg-white border-ink text-ink-soft shadow-hard-sm')}>{label}</button>
+          {[
+            ['basic',     'Standard', '+ − × ÷ und Grundoperationen'],
+            ['functions', 'Funktion', 'sin, cos, log, exp, Wurzeln'],
+            ['solver',    'Löser',    'Gleichung f(x) = 0 mit Newton-Verfahren'],
+            ['multi',     'System',   'Mehrere Gleichungen zugleich lösen'],
+          ].map(([key, label, tooltip]) => (
+            <button
+              key={key}
+              type="button"
+              onClick={() => { setPage(key); setSolverResult(null) }}
+              title={tooltip}
+              aria-label={`${label} — ${tooltip}`}
+              className={cn(
+                'h-10 rounded-retro border-2 font-mono text-xs font-black uppercase tracking-wider retro-press',
+                page === key
+                  ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon'
+                  : 'bg-white dark:bg-surface-800 border-ink text-ink-soft dark:text-surface-300 shadow-hard-sm'
+              )}
+            >
+              {label}
+            </button>
           ))}
         </div>
 
