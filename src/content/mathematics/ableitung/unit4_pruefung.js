@@ -15,7 +15,7 @@ export const exercises_abl_u4 = {
     ],
     correctIndex: 1,
     explanation: 'Kettenregel: $f(x) = \\sin(u)$ mit $u = x^2 + 1$. Also $f\'(x) = \\cos(u) \\cdot u\' = \\cos(x^2+1) \\cdot 2x$.',
-    hints: ['Kettenregel: $(\\sin(u))\' = \\cos(u) \\cdot u\'', 'Die innere Funktion ist $u = x^2 + 1$, also $u\' = 2x$.'],
+    hints: ['Kettenregel: $(\\sin(u))\' = \\cos(u) \\cdot u\'$', 'Die innere Funktion ist $u = x^2 + 1$, also $u\' = 2x$.'],
   },
   'ex-abl-4-1-b': {
     id: 'ex-abl-4-1-b', lessonId: 'abl-4-1', type: 'multiple-choice',
@@ -28,7 +28,7 @@ export const exercises_abl_u4 = {
     ],
     correctIndex: 0,
     explanation: 'Produktregel: $f\' = (e^{3x})\' \\cdot \\cos(x) + e^{3x} \\cdot (\\cos x)\' = 3e^{3x}\\cos(x) + e^{3x}(-\\sin(x)) = 3e^{3x}\\cos(x) - e^{3x}\\sin(x)$.',
-    hints: ['Produktregel: $(u \\cdot v)\' = u\'v + uv\'', '$(e^{3x})\' = 3e^{3x}$ (Kettenregel!), $(\\cos x)\' = -\\sin x$'],
+    hints: ['Produktregel: $(u \\cdot v)\' = u\'v + uv\'$', '$(e^{3x})\' = 3e^{3x}$ (Kettenregel!), $(\\cos x)\' = -\\sin x$'],
   },
   'ex-abl-4-1-c': {
     id: 'ex-abl-4-1-c', lessonId: 'abl-4-1', type: 'multiple-choice',
@@ -46,7 +46,7 @@ export const exercises_abl_u4 = {
   'ex-abl-4-1-d': {
     id: 'ex-abl-4-1-d', lessonId: 'abl-4-1', type: 'number-input',
     question: '[PRÜFUNG] $f(x) = \\ln(x^2 + 4)$. Berechne $f\'(2)$.',
-    correctAnswer: 0.5,
+    correctValue: 0.5,
     tolerance: 0.01,
     unit: '',
     explanation: 'Kettenregel: $f\'(x) = \\frac{1}{x^2+4} \\cdot 2x = \\frac{2x}{x^2+4}$. Einsetzen: $f\'(2) = \\frac{4}{4+4} = \\frac{4}{8} = 0{,}5$.',
@@ -107,7 +107,7 @@ export const exercises_abl_u4 = {
   'ex-abl-4-1-j': {
     id: 'ex-abl-4-1-j', lessonId: 'abl-4-1', type: 'number-input',
     question: '[PRÜFUNG] $f(x) = \\dfrac{\\sin(x)}{x}$ für $x \\neq 0$. Berechne $f\'(\\pi/2)$ (exakt als Dezimalzahl, 4 Stellen).',
-    correctAnswer: -0.4053,
+    correctValue: -0.4053,
     tolerance: 0.002,
     unit: '',
     explanation: 'Quotientenregel: $f\'(x) = \\frac{\\cos(x) \\cdot x - \\sin(x) \\cdot 1}{x^2} = \\frac{x\\cos x - \\sin x}{x^2}$. Bei $x = \\pi/2$: Zähler $= \\frac{\\pi}{2} \\cdot 0 - 1 = -1$. Nenner $= (\\pi/2)^2 \\approx 2{,}467$. $f\'(\\pi/2) \\approx -1/2{,}467 \\approx -0{,}4053$.',
@@ -144,7 +144,7 @@ export const exercises_abl_u4 = {
   'ex-abl-4-2-b': {
     id: 'ex-abl-4-2-b', lessonId: 'abl-4-2', type: 'number-input',
     question: '[PRÜFUNG] $f(x) = 2x^3 - 9x^2 + 12x - 4$. An welcher Stelle $x$ liegt der Wendepunkt?',
-    correctAnswer: 1.5,
+    correctValue: 1.5,
     tolerance: 0.01,
     unit: '',
     explanation: '$f\'(x) = 6x^2 - 18x + 12$. $f\'\'(x) = 12x - 18 = 0 \\Rightarrow x = 3/2 = 1{,}5$. $f\'\'\'(x) = 12 \\neq 0$ → Wendepunkt bei $x = 1{,}5$.',
@@ -211,7 +211,7 @@ export const exercises_abl_u4 = {
   'ex-abl-4-2-h': {
     id: 'ex-abl-4-2-h', lessonId: 'abl-4-2', type: 'number-input',
     question: '[PRÜFUNG] Ein zylindrischer Behälter ohne Deckel soll ein Volumen von $V = \\pi$ L = $\\pi \\cdot 10^{-3}$ m³ fassen. Gesucht ist der Radius $r$ (in m), der die Oberfläche minimiert. Berechne $r$ (auf 4 Stellen nach dem Komma).',
-    correctAnswer: 0.1,
+    correctValue: 0.1,
     tolerance: 0.001,
     unit: 'm',
     explanation: 'Oberfläche: $A = \\pi r^2 + 2\\pi r h$ (Boden + Mantel, kein Deckel). Nebenbedingung: $V = \\pi r^2 h = \\pi \\cdot 10^{-3} \\Rightarrow h = \\frac{10^{-3}}{r^2}$. Einsetzen: $A(r) = \\pi r^2 + \\frac{2\\pi \\cdot 10^{-3}}{r}$. $A\'(r) = 2\\pi r - \\frac{2\\pi \\cdot 10^{-3}}{r^2} = 0 \\Rightarrow r^3 = 10^{-3} \\Rightarrow r = 0{,}1$ m.',
@@ -274,7 +274,7 @@ export const exercises_abl_u4 = {
   'ex-abl-4-3-b': {
     id: 'ex-abl-4-3-b', lessonId: 'abl-4-3', type: 'number-input',
     question: '[PRÜFUNG] Aus einem rechteckigen Karton ($30 \\times 20$ cm) werden in den Ecken Quadrate (Seite $x$) ausgeschnitten und die Seiten hochgeklappt. Welche Schnitttiefe $x$ in cm maximiert das Volumen der entstehenden Schachtel?',
-    correctAnswer: 3.92,
+    correctValue: 3.92,
     tolerance: 0.05,
     unit: 'cm',
     explanation: 'Volumen: $V(x) = x \\cdot (30 - 2x)(20 - 2x) = x(600 - 100x + 4x^2) = 4x^3 - 100x^2 + 600x$. $V\'(x) = 12x^2 - 200x + 600 = 0 \\Rightarrow x^2 - 50x/3 + 50 = 0$. $x = (50/3 \\pm \\sqrt{(50/3)^2 - 200})/2 = (50/3 \\pm \\sqrt{2500/9 - 1800/9})/2 = (50/3 \\pm \\sqrt{700}/3)/2$. Numerisch: $x \\approx 3{,}92$ cm (die andere Lösung wäre $> 10$, unphysikalisch).',
@@ -302,7 +302,7 @@ export const exercises_abl_u4 = {
   'ex-abl-4-3-e': {
     id: 'ex-abl-4-3-e', lessonId: 'abl-4-3', type: 'number-input',
     question: '[PRÜFUNG] Aus einem Rundholz ($d = 30$ cm) soll der Balken mit maximaler Tragfähigkeit (Widerstandsmoment $W = bh^2/6$) ausgeschnitten werden. Wie groß ist die optimale Breite $b$ in cm? (Nebenbedingung: $b^2 + h^2 = d^2$.)',
-    correctAnswer: 17.32,
+    correctValue: 17.32,
     tolerance: 0.05,
     unit: 'cm',
     explanation: 'Mit $h^2 = d^2 - b^2$: $W(b) = b(d^2 - b^2)/6$. $W\'(b) = (d^2 - 3b^2)/6 = 0 \\Rightarrow b = d/\\sqrt{3} = 30/\\sqrt{3} \\approx 17{,}32$ cm. Höhe: $h = d \\cdot \\sqrt{2/3} \\approx 24{,}49$ cm. Verhältnis $h/b = \\sqrt{2}$.',
@@ -360,7 +360,7 @@ export const exercises_abl_u4 = {
   'ex-abl-4-3-j': {
     id: 'ex-abl-4-3-j', lessonId: 'abl-4-3', type: 'number-input',
     question: '[PRÜFUNG] Maximale Stromaufnahme einer Batterie mit Innenwiderstand $R_i = 2\\,\\Omega$ und Spannung $U_0 = 12$ V. Bei welchem Lastwiderstand $R_L$ in $\\Omega$ liefert die Batterie maximale Leistung an die Last? (Maximum-Power-Theorem)',
-    correctAnswer: 2,
+    correctValue: 2,
     tolerance: 0.01,
     unit: 'Ω',
     explanation: 'Strom: $I = U_0/(R_i + R_L)$. Leistung an der Last: $P_L(R_L) = I^2 R_L = U_0^2 R_L/(R_i + R_L)^2$. Ableiten und null setzen: $P_L\'(R_L) = U_0^2 [(R_i + R_L)^2 - 2R_L(R_i + R_L)]/(R_i + R_L)^4 = 0 \\Rightarrow R_i + R_L - 2R_L = 0 \\Rightarrow R_L = R_i = 2\\,\\Omega$. Klassisches Maximum-Power-Theorem: maximale Leistung bei Lastanpassung.',

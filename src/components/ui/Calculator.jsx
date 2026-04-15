@@ -55,20 +55,23 @@ function calcEval(expr, isDeg) {
 }
 
 // ── Equation solver (single variable) ────────────────────────────────────────
-function solveEquation(eqStr, isDeg) {
+export function solveEquation(eqStr, isDeg) {
   try {
-    // Split on '=' — must have exactly one
     const parts = eqStr.split('=')
     if (parts.length !== 2) return { error: 'Genau ein = erwartet' }
 
     const [lhs, rhs] = parts.map(s => s.trim())
     if (!lhs || !rhs) return { error: 'Beide Seiten ausfüllen' }
 
-    // Detect variable (x, t, or first lowercase letter that isn't a function name)
-    const funcNames = /\b(sin|cos|tan|asin|acos|atan|arcsin|arccos|arctan|ln|log|sqrt|cbrt|abs|exp)\b/g
-    const cleaned = eqStr.replace(funcNames, '')
-    const varMatch = cleaned.match(/[a-z]/i)
-    const v = varMatch ? varMatch[0] : 'x'
+    const unknowns = detectVarsInEquation(eqStr)
+    if (unknowns.length === 0) return { error: 'Keine Variable erkennbar' }
+
+    // Pick target: prefer x, then t, otherwise the single remaining var
+    let v
+    if (unknowns.includes('x')) v = 'x'
+    else if (unknowns.includes('t')) v = 't'
+    else if (unknowns.length === 1) v = unknowns[0]
+    else return { error: `Mehrdeutige Unbekannte: ${unknowns.join(', ')} — System-Tab nutzen` }
 
     return solveForVar(eqStr, v, isDeg)
   } catch {
@@ -85,6 +88,11 @@ function solveForVar(eqStr, v, isDeg) {
     const parts = eqStr.split('=')
     if (parts.length !== 2) return { error: 'Genau ein = erwartet' }
     const [lhs, rhs] = parts.map(s => s.trim())
+
+    const leftoverVars = detectVarsInEquation(eqStr).filter((name) => name !== v)
+    if (leftoverVars.length > 0) {
+      return { error: `Unbekannte Variable(n): ${leftoverVars.join(', ')} — Werte im System-Tab angeben` }
+    }
 
     // Build f(v) = lhs - rhs, evaluate numerically
     const buildFn = (val) => {
@@ -107,7 +115,30 @@ function solveForVar(eqStr, v, isDeg) {
       return lEval - rEval
     }
 
-    // Newton-Raphson with multiple starting points
+    // Fast path for linear equations: f(x) = a·x + b, solve x = -b/a
+    const f0 = buildFn(0)
+    const f1 = buildFn(1)
+    const f2 = buildFn(2)
+    if (f0 !== null && f1 !== null && f2 !== null) {
+      const secondDiff = f2 - 2 * f1 + f0
+      if (Math.abs(secondDiff) < 1e-9) {
+        const a = f1 - f0
+        if (Math.abs(a) > 1e-12) {
+          const x = -f0 / a
+          const residual = Math.abs(buildFn(x) ?? Infinity)
+          if (residual < 1e-6) {
+            const rounded = Math.round(x * 1e10) / 1e10
+            return { variable: v, value: parseFloat(rounded.toPrecision(10)) }
+          }
+        } else if (Math.abs(f0) < 1e-9) {
+          return { variable: v, value: 0, note: 'Gleichung für alle Werte erfüllt' }
+        } else {
+          return { error: 'Keine Lösung (Widerspruch)' }
+        }
+      }
+    }
+
+    // Newton-Raphson with multiple starting points (nichtlinear)
     const h = 1e-8
     const starts = [0, 1, -1, 5, -5, 10, -10, 0.5, -0.5, 100, -100, 0.01, Math.PI]
     let bestSolution = null
@@ -152,7 +183,7 @@ function solveForVar(eqStr, v, isDeg) {
 }
 
 // ── Multi-variable solver ─────────────────────────────────────────────────────
-function solveWithVars(equation, vars, targetVar, isDeg) {
+export function solveWithVars(equation, vars, targetVar, isDeg) {
   try {
     // Substitute all known vars into equation (longest names first to avoid partial matches)
     const knownVars = vars.filter(v => v.name.trim() && v.value.trim() && v.name.trim() !== targetVar.trim())
@@ -502,7 +533,7 @@ export function Calculator({ isOpen, onClose }) {
                 'h-10 rounded-retro border-2 font-mono text-xs font-black uppercase tracking-wider retro-press',
                 page === key
                   ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon'
-                  : 'bg-white dark:bg-surface-800 border-ink text-ink-soft dark:text-surface-300 shadow-hard-sm'
+                  : 'bg-white dark:bg-surface-800 border-ink text-ink dark:text-surface-100 shadow-hard-sm'
               )}
             >
               {label}

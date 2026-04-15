@@ -62,7 +62,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Welche Kontrolle ist bei trigonometrischen Aufgaben am wichtigsten?',
       mcOptions: ['Grad/Radiant, Quadrant und Vorzeichen prüfen', 'Immer nur sin verwenden', 'Einheiten ignorieren', 'Den Taschenrechner im Zufallsmodus lassen'],
       numberQuestion: 'Ein rechter Winkel entspricht wie vielen Radiant? Gib den Faktor vor π an.',
-      correctAnswer: 0.5,
+      correctValue: 0.5,
       unit: 'π',
       tolerance: 0.001,
       matchingPairs: [
@@ -80,7 +80,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Was ist bei zusammengesetzten Funktionen der häufigste Fehler?',
       mcOptions: ['Die innere Ableitung zu vergessen', 'Die Variable x zu notieren', 'Das Ergebnis zu vereinfachen', 'Eine Probe zu machen'],
       numberQuestion: 'Für f(x)=3x²: Welchen Wert hat f′(2)?',
-      correctAnswer: 12,
+      correctValue: 12,
       unit: '',
       tolerance: 0.001,
       matchingPairs: [
@@ -98,7 +98,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Was darf bei einem unbestimmten Integral nicht fehlen?',
       mcOptions: ['Die Integrationskonstante C', 'Ein zufälliger Faktor 2', 'Ein negatives Vorzeichen immer', 'Eine Matrix'],
       numberQuestion: 'Berechne ∫₀² 2x dx.',
-      correctAnswer: 4,
+      correctValue: 4,
       unit: '',
       tolerance: 0.001,
       matchingPairs: [
@@ -116,7 +116,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Was macht aus einer allgemeinen DGL-Lösung eine spezielle Lösung?',
       mcOptions: ['Eine Anfangs- oder Randbedingung', 'Ein längerer Funktionsname', 'Einheiten weglassen', 'Nur die höchste Ableitung betrachten'],
       numberQuestion: 'Für y′=3 und y(0)=2: Welchen Wert hat y(2)?',
-      correctAnswer: 8,
+      correctValue: 8,
       unit: '',
       tolerance: 0.001,
       matchingPairs: [
@@ -134,7 +134,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Welche Operation prüft besonders direkt Orthogonalität?',
       mcOptions: ['Skalarprodukt', 'Addition der Beträge', 'Komponenten vertauschen', 'Nur x-Komponente vergleichen'],
       numberQuestion: 'Berechne (1,2,2)·(2,0,1).',
-      correctAnswer: 4,
+      correctValue: 4,
       unit: '',
       tolerance: 0.001,
       matchingPairs: [
@@ -152,7 +152,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Wann ist eine 2×2-Matrix sicher nicht invertierbar?',
       mcOptions: ['Wenn ihre Determinante 0 ist', 'Wenn sie negative Einträge enthält', 'Wenn sie zwei Spalten hat', 'Wenn sie transponiert werden kann'],
       numberQuestion: 'Berechne det[[2,1],[3,4]].',
-      correctAnswer: 5,
+      correctValue: 5,
       unit: '',
       tolerance: 0.001,
       matchingPairs: [
@@ -170,7 +170,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Was ist bei Gleichungen die wichtigste Regel?',
       mcOptions: ['Dieselbe Operation auf beide Seiten anwenden', 'Nur links umformen', 'Vorzeichen ignorieren', 'x immer auf 1 setzen'],
       numberQuestion: 'Löse 2x+6=14. Gib x an.',
-      correctAnswer: 4,
+      correctValue: 4,
       unit: '',
       tolerance: 0.001,
       matchingPairs: [
@@ -188,7 +188,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Was ist in NumPy der Unterschied zwischen * und @?',
       mcOptions: ['* ist elementweise, @ ist Matrixmultiplikation', '* ist immer Matrixmultiplikation', '@ ist ein Kommentar', 'Es gibt keinen Unterschied'],
       numberQuestion: 'Was ergibt len([0, 1, 2]) in Python?',
-      correctAnswer: 3,
+      correctValue: 3,
       unit: '',
       tolerance: 0,
       matchingPairs: [
@@ -206,7 +206,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Warum sinkt die Normalspannung bei größerer Fläche?',
       mcOptions: ['Weil A im Nenner von σ=F/A steht', 'Weil Kraft verschwindet', 'Weil MPa keine Einheit ist', 'Weil Spannung immer konstant bleibt'],
       numberQuestion: 'F=1000 N, A=100 mm². Berechne σ in MPa.',
-      correctAnswer: 10,
+      correctValue: 10,
       unit: 'MPa',
       tolerance: 0.001,
       matchingPairs: [
@@ -224,7 +224,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Warum muss man in Gasgleichungen Kelvin verwenden?',
       mcOptions: ['Weil die absolute Temperatur benötigt wird', 'Weil Celsius immer negativ ist', 'Weil Kelvin eine Kraft ist', 'Weil Druck dann keine Einheit braucht'],
       numberQuestion: '20 °C entsprechen wie vielen Kelvin?',
-      correctAnswer: 293.15,
+      correctValue: 293.15,
       unit: 'K',
       tolerance: 0.1,
       matchingPairs: [
@@ -242,7 +242,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Was sagt die Kontinuitätsgleichung bei inkompressibler Strömung?',
       mcOptions: ['A·v bleibt entlang eines Stromfadens konstant', 'Dichte ist immer 0', 'Druck ist immer gleich', 'Geschwindigkeit hängt nur von Farbe ab'],
       numberQuestion: 'Wasser: ρ=1000 kg/m³, g=9,81 m/s², h=1 m. Berechne p.',
-      correctAnswer: 9810,
+      correctValue: 9810,
       unit: 'Pa',
       tolerance: 1,
       matchingPairs: [
@@ -260,7 +260,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Was bedeutet eine Übersetzung i=3 bei einem einfachen Zahnradpaar typischerweise?',
       mcOptions: ['Die Abtriebsdrehzahl ist ein Drittel der Antriebsdrehzahl', 'Die Drehzahl verdreifacht sich immer', 'Es entsteht keine Kraft', 'Zähnezahl ist irrelevant'],
       numberQuestion: 'Zahnradpaar: z1=20, z2=60. Berechne i=z2/z1.',
-      correctAnswer: 3,
+      correctValue: 3,
       unit: '',
       tolerance: 0.001,
       matchingPairs: [
@@ -278,7 +278,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Welche Form eignet sich am besten für Multiplikation komplexer Zahlen?',
       mcOptions: ['Polarform: Beträge multiplizieren, Argumente addieren', 'Kartesische Form reicht immer', 'Nur Realteile verwenden', 'Dezimaldarstellung'],
       numberQuestion: 'Für z=1+i: Welchen Betrag |z| hat die Zahl?',
-      correctAnswer: 1.41421356,
+      correctValue: 1.41421356,
       unit: '',
       tolerance: 0.01,
       matchingPairs: [
@@ -296,7 +296,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Was sichert die Konvergenz einer geometrischen Reihe Σ qⁿ?',
       mcOptions: ['|q|<1', 'q=1', 'q beliebig', 'q ganzzahlig'],
       numberQuestion: 'Grenzwert von Σ (1/2)ⁿ für n=0,1,2,… ?',
-      correctAnswer: 2,
+      correctValue: 2,
       unit: '',
       tolerance: 0.001,
       matchingPairs: [
@@ -314,7 +314,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Was zeigt der Gradient ∇f an einem Punkt?',
       mcOptions: ['Richtung des steilsten Anstiegs', 'Zufällige Richtung', 'Nur x-Anteil', 'Die Fläche selbst'],
       numberQuestion: 'Für f(x,y)=x²+y² bei (1,2): Wie groß ist |∇f|?',
-      correctAnswer: 4.47213595,
+      correctValue: 4.47213595,
       unit: '',
       tolerance: 0.01,
       matchingPairs: [
@@ -332,7 +332,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Wovon hängt die Konvergenzgeschwindigkeit des Newton-Verfahrens ab?',
       mcOptions: ['Quadratische Konvergenz bei einfachen Nullstellen', 'Gar nicht', 'Nur vom Zufall', 'Immer linear'],
       numberQuestion: 'Newton auf f(x)=x²−2, Start x₀=1: Wie lautet x₁?',
-      correctAnswer: 1.5,
+      correctValue: 1.5,
       unit: '',
       tolerance: 0.001,
       matchingPairs: [
@@ -350,7 +350,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Was bedeutet ein 95%-Konfidenzintervall?',
       mcOptions: ['95% der so gebildeten Intervalle enthalten den wahren Wert', '95% der Daten liegen drin', 'Der Mittelwert ist zu 95% richtig', 'Der p-Wert beträgt 95%'],
       numberQuestion: '5 Werte: 4, 5, 6, 7, 8. Berechne den Mittelwert.',
-      correctAnswer: 6,
+      correctValue: 6,
       unit: '',
       tolerance: 0.001,
       matchingPairs: [
@@ -368,7 +368,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Was liest man direkt aus dem Spannungs-Dehnungs-Diagramm ab?',
       mcOptions: ['Streckgrenze, Zugfestigkeit und Bruchdehnung', 'Nur die Härte', 'Nur die Masse', 'Die Dichte'],
       numberQuestion: 'Stahlprobe mit R_m=400 MPa und Sicherheitszahl S=2: Wie groß ist σ_zul in MPa?',
-      correctAnswer: 200,
+      correctValue: 200,
       unit: 'MPa',
       tolerance: 0.1,
       matchingPairs: [
@@ -386,7 +386,7 @@ function lessonProfile(topic, unit, lesson) {
       mcQuestion: 'Was gehört in ein Freikörperbild?',
       mcOptions: ['Alle äußeren Kräfte und Lagerreaktionen', 'Nur bekannte Zahlen', 'Nur Beschleunigungen', 'Keine unbekannten Lagerkräfte'],
       numberQuestion: 'm=4 kg, a=3 m/s². Berechne F=m·a.',
-      correctAnswer: 12,
+      correctValue: 12,
       unit: 'N',
       tolerance: 0.001,
       matchingPairs: [
@@ -522,7 +522,7 @@ function supplementalExercise(lesson, index, unit, topic) {
       ...common,
       type: 'number-input',
       question: `${prefix}Rechenaufgabe zu "${title}": ${profile.numberQuestion}`,
-      correctAnswer: profile.correctAnswer,
+      correctValue: profile.correctValue,
       tolerance: profile.tolerance,
       unit: profile.unit,
       explanation: `${profile.workedExample} Danach gilt als Kontrolle: ${profile.check}.`,
@@ -597,6 +597,37 @@ function getExerciseFromTopic(topic, exerciseId) {
   return null
 }
 
+function countUnescapedDollars(str) {
+  if (typeof str !== 'string') return 0
+  let count = 0
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] !== '$') continue
+    if (i > 0 && str[i - 1] === '\\') continue
+    count++
+  }
+  return count
+}
+
+function collectVisibleStrings(exercise) {
+  const fields = []
+  const push = (v) => { if (typeof v === 'string') fields.push(v) }
+  push(exercise.question)
+  push(exercise.statement)
+  push(exercise.explanation)
+  push(exercise.questionTemplate)
+  if (Array.isArray(exercise.hints)) exercise.hints.forEach(push)
+  if (Array.isArray(exercise.options)) exercise.options.forEach(push)
+  if (Array.isArray(exercise.items)) exercise.items.forEach(push)
+  if (Array.isArray(exercise.pairs)) {
+    for (const p of exercise.pairs) { push(p.left); push(p.right) }
+  }
+  if (Array.isArray(exercise.blanks)) exercise.blanks.forEach((b) => push(b.hint))
+  if (exercise.wrongAnswerExplanations && typeof exercise.wrongAnswerExplanations === 'object') {
+    Object.values(exercise.wrongAnswerExplanations).forEach(push)
+  }
+  return fields
+}
+
 export function getContentQualityIssues() {
   const issues = []
 
@@ -630,11 +661,21 @@ export function getContentQualityIssues() {
             const text = exercise.question ?? exercise.statement ?? ''
             if (!text.includes('[PRÜFUNG]')) issues.push(`${exercise.id}: Prüfungsaufgabe ohne [PRÜFUNG]`)
           }
+
+          for (const field of collectVisibleStrings(exercise)) {
+            if (countUnescapedDollars(field) % 2 !== 0) {
+              issues.push(`${exercise.id}: ungerade Anzahl \`$\` in String (nicht-geschlossenes $...$): ${JSON.stringify(field.slice(0, 80))}`)
+            }
+          }
+
           if (exercise.type === 'true-false') {
+            if ('isTrue' in exercise) issues.push(`${exercise.id}: true-false darf kein Feld \`isTrue\` mehr haben — nutze \`correct: boolean\``)
             if (typeof exercise.correct !== 'boolean') issues.push(`${exercise.id}: true-false braucht correct:boolean`)
             if (!exercise.statement) issues.push(`${exercise.id}: true-false braucht statement`)
           }
           if (exercise.type === 'number-input') {
+            if ('correctAnswer' in exercise) issues.push(`${exercise.id}: number-input darf kein Feld \`correctAnswer\` mehr haben — nutze \`correctValue: number\``)
+            if (typeof exercise.correctValue !== 'number') issues.push(`${exercise.id}: number-input braucht correctValue:number`)
             if (!('unit' in exercise)) issues.push(`${exercise.id}: number-input braucht unit`)
             if (!('tolerance' in exercise)) issues.push(`${exercise.id}: number-input braucht tolerance`)
           }

@@ -117,7 +117,7 @@ export function Matching({ exercise, onSubmit, disabled }) {
                     ? 'border-ink bg-lemon text-ink shadow-hard-lemon'
                     : matched && color
                       ? `${color} text-ink dark:text-paper shadow-hard-sm`
-                      : 'border-ink bg-white dark:bg-surface-800 text-ink-soft dark:text-surface-300 shadow-hard-sm hover:bg-surface-50',
+                      : 'border-ink bg-white dark:bg-surface-800 text-ink dark:text-surface-100 shadow-hard-sm hover:bg-surface-50 dark:hover:bg-surface-700',
                   disabled && 'opacity-60 cursor-not-allowed'
                 )}
               >
@@ -151,7 +151,7 @@ export function Matching({ exercise, onSubmit, disabled }) {
                     ? `${color} text-ink dark:text-paper shadow-hard-sm`
                     : selectedLeft !== null && !matched
                       ? 'border-ink bg-white dark:bg-surface-800 text-ink dark:text-paper shadow-hard-sm hover:bg-lemon hover:shadow-hard-lemon'
-                      : 'border-ink bg-white dark:bg-surface-800 text-ink-soft dark:text-surface-300 shadow-hard-sm',
+                      : 'border-ink bg-white dark:bg-surface-800 text-ink dark:text-surface-100 shadow-hard-sm',
                   disabled && 'opacity-60 cursor-not-allowed'
                 )}
               >

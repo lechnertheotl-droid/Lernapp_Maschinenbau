@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import katex from 'katex'
 import { extractVariables, type ExtractedVariable } from '@/utils/extractVariables'
@@ -13,6 +13,13 @@ interface Props {
 export function FormulaVariablePopover({ latex, onClose, onOpenGlossary }: Props) {
   const { topicId } = useFormulaPopover()
   const [expandedKey, setExpandedKey] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!latex) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = prev }
+  }, [latex])
 
   if (!latex) return null
 
@@ -60,7 +67,10 @@ export function FormulaVariablePopover({ latex, onClose, onOpenGlossary }: Props
         )}
 
         {/* Variables list */}
-        <div className="overflow-y-auto flex-1 p-4 flex flex-col gap-2">
+        <div
+          className="overflow-y-auto overscroll-contain flex-1 p-4 flex flex-col gap-2"
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
           {variables.length === 0 ? (
             <div className="text-center py-4 flex flex-col gap-3 items-center">
               <p className="text-sm text-ink-soft dark:text-surface-400">
@@ -112,7 +122,7 @@ function VariableCard({
           {v.displayLabel}
         </span>
         <div className="flex items-center gap-2 flex-1 min-w-0 justify-end">
-          <span className="text-xs text-ink-soft dark:text-surface-300 truncate">{v.name}</span>
+          <span className="text-xs text-ink-soft dark:text-surface-200 truncate">{v.name}</span>
           {v.unit && (
             <span className="font-mono text-[10px] text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-950/50 px-1.5 py-0.5 rounded flex-shrink-0">
               {v.unit}

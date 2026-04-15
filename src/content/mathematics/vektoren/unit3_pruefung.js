@@ -13,7 +13,7 @@ export const exercises_vek_u3 = {
   'ex-vek-3-1-b': {
     id: 'ex-vek-3-1-b', lessonId: 'vek-3-1', type: 'number-input',
     question: '[PRÜFUNG] $\\vec{a}$ = (3, 0, 4). Berechne den Betrag |$\\vec{a}$|.',
-    correctAnswer: 5,
+    correctValue: 5,
     tolerance: 0.01,
     unit: '',
     explanation: '|$\\vec{a}$| = √(3² + 0² + 4²) = √(9 + 0 + 16) = √25 = 5.',
@@ -45,7 +45,7 @@ export const exercises_vek_u3 = {
   'ex-vek-3-1-mastery': {
     id: 'ex-vek-3-1-mastery', lessonId: 'vek-3-1', type: 'number-input', isMasteryCheck: true,
     question: '[PRÜFUNG] Winkel zwischen $\\vec{a}$ = (1, 1, 0) und $\\vec{b}$ = (0, 1, 1) in Grad. Runde auf ganze Grad.',
-    correctAnswer: 60,
+    correctValue: 60,
     tolerance: 1,
     unit: '',
     explanation: 'cos(φ) = ($\\vec{a}$·$\\vec{b}$)/(|$\\vec{a}$|·|$\\vec{b}$|) = (0+1+0)/(√2·√2) = 1/2. φ = arccos(1/2) = 60°.',
@@ -64,7 +64,7 @@ export const exercises_vek_u3 = {
   'ex-vek-3-2-b': {
     id: 'ex-vek-3-2-b', lessonId: 'vek-3-2', type: 'number-input',
     question: '[PRÜFUNG] $\\vec{a}$ = (3, 0, 0), $\\vec{b}$ = (0, 4, 0). Berechne die Parallelogrammfläche A = |$\\vec{a}$ × $\\vec{b}$|.',
-    correctAnswer: 12,
+    correctValue: 12,
     tolerance: 0.01,
     unit: '',
     explanation: '$\\vec{a}$ × $\\vec{b}$ = (0·0−0·4, 0·0−3·0, 3·4−0·0) = (0, 0, 12). |$\\vec{a}$ × $\\vec{b}$| = 12. Das Parallelogramm ist ein Rechteck mit Seiten 3 und 4.',
@@ -81,7 +81,7 @@ export const exercises_vek_u3 = {
   'ex-vek-3-2-mastery': {
     id: 'ex-vek-3-2-mastery', lessonId: 'vek-3-2', type: 'number-input', isMasteryCheck: true,
     question: '[PRÜFUNG] $\\vec{a}$ = (1,0,0), $\\vec{b}$ = (0,1,0), $\\vec{c}$ = (0,0,3). Berechne das Spatvolumen V = |$\\vec{a}$ · ($\\vec{b}$ × $\\vec{c}$)|.',
-    correctAnswer: 3,
+    correctValue: 3,
     tolerance: 0.01,
     unit: '',
     explanation: '$\\vec{b}$ × $\\vec{c}$ = (1·3−0·0, 0·0−0·3, 0·0−1·0) = (3, 0, 0). $\\vec{a}$ · (3, 0, 0) = 1·3 + 0 + 0 = 3. V = |3| = 3. Das ist ein Quader mit den Seiten 1, 1 und 3.',
@@ -100,7 +100,7 @@ export const exercises_vek_u3 = {
   'ex-vek-3-3-b': {
     id: 'ex-vek-3-3-b', lessonId: 'vek-3-3', type: 'number-input',
     question: '[PRÜFUNG] Hebelarm $\\vec{r}$ = (0,5, 0, 0) m, Kraft $\\vec{F}$ = (0, 100, 0) N. Berechne |$\\vec{M}$| = |$\\vec{r}$ × $\\vec{F}$| in Nm.',
-    correctAnswer: 50,
+    correctValue: 50,
     tolerance: 0.1,
     unit: '',
     explanation: '$\\vec{r}$ × $\\vec{F}$ = (0·0−0·100, 0·0−0,5·0, 0,5·100−0·0) = (0, 0, 50). |$\\vec{M}$| = 50 Nm. Der Hebel ist 0,5 m lang, die Kraft steht senkrecht → M = 0,5·100 = 50 Nm.',

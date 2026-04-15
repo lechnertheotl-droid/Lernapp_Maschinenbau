@@ -3,10 +3,8 @@ import { cn } from '@/utils/cn'
 import { MathText } from '@/components/ui/MathText'
 
 interface TFExercise {
-  statement?: string
-  question?: string
-  correct?: boolean
-  isTrue?: boolean
+  statement: string
+  correct: boolean
 }
 
 export interface TFAnswer {
@@ -20,10 +18,7 @@ interface Props {
 }
 
 export function validate(answer: TFAnswer, exercise: TFExercise) {
-  const expected = 'correct' in exercise && exercise.correct !== undefined
-    ? exercise.correct
-    : exercise.isTrue
-  return { isCorrect: answer.value === expected }
+  return { isCorrect: answer.value === exercise.correct }
 }
 
 const OPTIONS = [
@@ -42,7 +37,7 @@ export function TrueFalse({ exercise, onSubmit, disabled }: Props) {
   return (
     <div className="flex flex-col gap-4">
       <MathText className="text-base font-black text-ink dark:text-paper leading-relaxed block">
-        {exercise.statement ?? exercise.question ?? ''}
+        {exercise.statement}
       </MathText>
       <div className="grid grid-cols-2 gap-3">
         {OPTIONS.map(({ label, val, color }) => (

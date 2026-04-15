@@ -15,8 +15,8 @@ const styleByPriority: Record<Priority, { wrapper: string; accent: string; chip:
     chip: 'bg-red-600 text-white',
   },
   wichtig: {
-    wrapper: 'border-ink bg-lemon-light formula-box-like',
-    accent: 'text-primary-700 dark:text-lemon',
+    wrapper: 'border-ink bg-lemon-light dark:bg-surface-800 formula-box-like',
+    accent: 'text-primary-700 dark:text-paper',
     chip: 'bg-lemon text-ink',
   },
   optional: {

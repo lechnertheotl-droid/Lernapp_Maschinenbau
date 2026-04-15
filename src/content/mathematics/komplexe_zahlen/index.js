@@ -302,6 +302,7 @@ export const komplexeZahlenTopic = {
   color: 'purple',
   estimatedHours: 3,
   difficulty: 3,
+  level: 'vertiefung',
   units: [unit1, unit2, unit3, unit4],
   prerequisites: ['algebra', 'trigonometry'],
 }

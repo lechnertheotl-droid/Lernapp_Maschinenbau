@@ -53,7 +53,7 @@ export const exercises_dgl_u3 = {
   'ex-dgl-3-1-e': {
     id: 'ex-dgl-3-1-e', lessonId: 'dgl-3-1', type: 'number-input',
     question: '[PRÜFUNG] Anfangswertproblem: $y\' = -2y$, $y(0) = 5$. Welchen Wert hat $y(1)$ (auf 4 Dezimalstellen: $e^{-2} \\approx 0{,}1353$)?',
-    correctAnswer: 0.6767,
+    correctValue: 0.6767,
     tolerance: 0.001,
     unit: '',
     explanation: 'Allgemeine Lösung: $y = Ce^{-2x}$. Anfangsbedingung: $y(0) = C = 5$. Also $y(1) = 5e^{-2} \\approx 5 \\cdot 0{,}1353 = 0{,}6767$.',
@@ -176,7 +176,7 @@ export const exercises_dgl_u3 = {
   'ex-dgl-3-2-e': {
     id: 'ex-dgl-3-2-e', lessonId: 'dgl-3-2', type: 'number-input',
     question: '[PRÜFUNG] Ein Feder-Masse-System: $m = 1$ kg, $k = 9$ N/m, keine Dämpfung. Berechne die Eigenkreisfrequenz $\\omega_0$ in rad/s.',
-    correctAnswer: 3,
+    correctValue: 3,
     tolerance: 0.01,
     unit: 'rad/s',
     explanation: '$\\omega_0 = \\sqrt{k/m} = \\sqrt{9/1} = \\sqrt{9} = 3$ rad/s. Die Schwingungsgleichung lautet $x\'\' + 9x = 0$ mit der Lösung $x(t) = C_1\\cos(3t) + C_2\\sin(3t)$.',
@@ -230,7 +230,7 @@ export const exercises_dgl_u3 = {
   'ex-dgl-3-2-j': {
     id: 'ex-dgl-3-2-j', lessonId: 'dgl-3-2', type: 'number-input',
     question: '[PRÜFUNG] AWP: $y\'\' - y\' - 6y = 0$, $y(0) = 1$, $y\'(0) = 0$. Berechne $C_1$ in der Lösung $y = C_1 e^{3x} + C_2 e^{-2x}$.',
-    correctAnswer: 0.4,
+    correctValue: 0.4,
     tolerance: 0.01,
     unit: '',
     explanation: 'Char. Gleichung: $\\lambda^2 - \\lambda - 6 = (\\lambda - 3)(\\lambda + 2) = 0$, Wurzeln $\\lambda_1 = 3$, $\\lambda_2 = -2$. Allg. Lösung: $y = C_1 e^{3x} + C_2 e^{-2x}$. AWP: $y(0) = C_1 + C_2 = 1$ und $y\'(0) = 3C_1 - 2C_2 = 0$. Aus dem System: $C_1 = \\frac{2}{5} = 0{,}4$, $C_2 = \\frac{3}{5}$.',
@@ -267,7 +267,7 @@ export const exercises_dgl_u3 = {
   'ex-dgl-3-3-b': {
     id: 'ex-dgl-3-3-b', lessonId: 'dgl-3-3', type: 'number-input',
     question: '[PRÜFUNG] System: $\\dot x_1 = 2x_1 + x_2$, $\\dot x_2 = x_1 + 2x_2$. Wie groß ist der größere Eigenwert der Systemmatrix (entscheidend für die Stabilität)?',
-    correctAnswer: 3,
+    correctValue: 3,
     tolerance: 0.01,
     unit: '',
     explanation: 'Systemmatrix $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$. Char. Polynom: $(2-\\lambda)^2 - 1 = 0 \\Rightarrow 2-\\lambda = \\pm 1 \\Rightarrow \\lambda = 1$ oder $3$. Größter Eigenwert: $\\lambda_{\\max} = 3 > 0$ → System ist instabil (wächst exponentiell).',
@@ -295,7 +295,7 @@ export const exercises_dgl_u3 = {
   'ex-dgl-3-3-e': {
     id: 'ex-dgl-3-3-e', lessonId: 'dgl-3-3', type: 'number-input',
     question: '[PRÜFUNG] Newton-Abkühlung: Ein Werkstück hat $T(0) = 200$ °C in einer Umgebung mit $T_U = 20$ °C. Nach $t = 10$ min ist $T = 110$ °C. Wie groß ist $k$ in 1/min?',
-    correctAnswer: 0.0693,
+    correctValue: 0.0693,
     tolerance: 0.001,
     unit: '1/min',
     explanation: 'Lösung: $T(t) = T_U + (T_0 - T_U) e^{-kt} = 20 + 180 e^{-kt}$. Bei $t = 10$: $110 = 20 + 180 e^{-10k} \\Rightarrow e^{-10k} = 90/180 = 0{,}5 \\Rightarrow -10k = \\ln(0{,}5) \\Rightarrow k = \\ln(2)/10 \\approx 0{,}0693$ 1/min.',
@@ -353,7 +353,7 @@ export const exercises_dgl_u3 = {
   'ex-dgl-3-3-j': {
     id: 'ex-dgl-3-3-j', lessonId: 'dgl-3-3', type: 'number-input',
     question: '[PRÜFUNG] Euler-Verfahren für $\\dot y = -2y$, $y(0) = 1$, Schrittweite $h = 0{,}1$. Berechne $y_2$ (Wert nach zwei Schritten).',
-    correctAnswer: 0.64,
+    correctValue: 0.64,
     tolerance: 0.005,
     unit: '',
     explanation: 'Schritt 1: $y_1 = y_0 + h \\cdot f(x_0, y_0) = 1 + 0{,}1 \\cdot (-2 \\cdot 1) = 1 - 0{,}2 = 0{,}8$. Schritt 2: $y_2 = y_1 + h \\cdot f(x_1, y_1) = 0{,}8 + 0{,}1 \\cdot (-2 \\cdot 0{,}8) = 0{,}8 - 0{,}16 = 0{,}64$. Exakte Lösung: $y(0{,}2) = e^{-0{,}4} \\approx 0{,}670$ — Euler unterschätzt etwas.',

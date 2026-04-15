@@ -101,7 +101,7 @@ export const exercises_la_u1 = {
   'ex-la-1-2-d': {
     id: 'ex-la-1-2-d', lessonId: 'la-1-2', type: 'number-input',
     question: 'Berechne das Element $c_{11}$ von $C = A \\cdot B$ mit $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$ und $B = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}$',
-    correctAnswer: 19,
+    correctValue: 19,
     tolerance: 0.01,
     unit: '',
     explanation: '$c_{11}$ = Zeile 1 von A mal Spalte 1 von B = $1 \\cdot 5 + 2 \\cdot 7 = 5 + 14 = 19$.',
@@ -110,7 +110,7 @@ export const exercises_la_u1 = {
   'ex-la-1-2-e': {
     id: 'ex-la-1-2-e', lessonId: 'la-1-2', type: 'number-input',
     question: 'Berechne das Element $c_{22}$ von $C = A \\cdot B$ mit $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$ und $B = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}$',
-    correctAnswer: 50,
+    correctValue: 50,
     tolerance: 0.01,
     unit: '',
     explanation: '$c_{22}$ = Zeile 2 von A mal Spalte 2 von B = $3 \\cdot 6 + 4 \\cdot 8 = 18 + 32 = 50$.',
@@ -155,7 +155,7 @@ export const exercises_la_u1 = {
   'ex-la-1-3-c': {
     id: 'ex-la-1-3-c', lessonId: 'la-1-3', type: 'number-input',
     question: 'Berechne die Determinante von $A = \\begin{pmatrix} 4 & 7 \\\\ 2 & 6 \\end{pmatrix}$, die du für die Inverse brauchst: $\\det(A) = ad - bc$',
-    correctAnswer: 10,
+    correctValue: 10,
     tolerance: 0.01,
     unit: '',
     explanation: '$\\det(A) = 4 \\cdot 6 - 7 \\cdot 2 = 24 - 14 = 10$.',
@@ -192,7 +192,7 @@ export const exercises_la_u1 = {
   'ex-la-1-4-a': {
     id: 'ex-la-1-4-a', lessonId: 'la-1-4', type: 'number-input',
     question: 'Berechne: $\\det\\begin{pmatrix} 3 & 8 \\\\ 4 & 6 \\end{pmatrix}$',
-    correctAnswer: -14,
+    correctValue: -14,
     tolerance: 0.01,
     unit: '',
     explanation: '$\\det = 3 \\cdot 6 - 8 \\cdot 4 = 18 - 32 = -14$.',
@@ -214,7 +214,7 @@ export const exercises_la_u1 = {
   'ex-la-1-4-c': {
     id: 'ex-la-1-4-c', lessonId: 'la-1-4', type: 'number-input',
     question: 'Berechne mit der Regel von Sarrus: $\\det\\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{pmatrix}$',
-    correctAnswer: 0,
+    correctValue: 0,
     tolerance: 0.01,
     unit: '',
     explanation: 'Sarrus: $(1 \\cdot 5 \\cdot 9 + 2 \\cdot 6 \\cdot 7 + 3 \\cdot 4 \\cdot 8) - (3 \\cdot 5 \\cdot 7 + 2 \\cdot 4 \\cdot 9 + 1 \\cdot 6 \\cdot 8)$ = $(45 + 84 + 96) - (105 + 72 + 48) = 225 - 225 = 0$. Die Zeilen sind linear abhängig!',
@@ -236,7 +236,7 @@ export const exercises_la_u1 = {
   'ex-la-1-4-mastery': {
     id: 'ex-la-1-4-mastery', lessonId: 'la-1-4', type: 'number-input', isMasteryCheck: true,
     question: '[PRÜFUNG] Berechne: $\\det\\begin{pmatrix} 2 & 0 & 1 \\\\ 3 & 1 & 0 \\\\ 1 & 2 & 3 \\end{pmatrix}$',
-    correctAnswer: 1,
+    correctValue: 1,
     tolerance: 0.01,
     unit: '',
     explanation: 'Sarrus: $(2 \\cdot 1 \\cdot 3 + 0 \\cdot 0 \\cdot 1 + 1 \\cdot 3 \\cdot 2) - (1 \\cdot 1 \\cdot 1 + 0 \\cdot 3 \\cdot 3 + 2 \\cdot 0 \\cdot 2) = (6 + 0 + 6) - (1 + 0 + 0) = 12 - 11 = 1$.',
@@ -273,7 +273,7 @@ export const exercises_la_u1 = {
   'ex-la-1-5-c': {
     id: 'ex-la-1-5-c', lessonId: 'la-1-5', type: 'number-input',
     question: 'Berechne die Summe der Eigenwerte von $A = \\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix}$. (Tipp: Die Summe der Eigenwerte = Spur der Matrix = Summe der Diagonalelemente)',
-    correctAnswer: 7,
+    correctValue: 7,
     tolerance: 0.01,
     unit: '',
     explanation: 'Die Spur (Summe der Diagonalelemente) ist $4 + 3 = 7$. Man kann auch rechnen: $\\det(A - \\lambda I) = (4-\\lambda)(3-\\lambda) - 2 = \\lambda^2 - 7\\lambda + 10 = 0$, also $\\lambda_1 = 5, \\lambda_2 = 2$, Summe $= 7$.',

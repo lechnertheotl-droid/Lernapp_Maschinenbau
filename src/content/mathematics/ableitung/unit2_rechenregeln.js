@@ -38,7 +38,7 @@ export const exercises_abl_u2 = {
   'ex-abl-2-1-d': {
     id: 'ex-abl-2-1-d', lessonId: 'abl-2-1', type: 'number-input',
     question: '$f(x) = x \\cdot e^x$. Berechne $f\'(1)$ (auf 2 Dezimalstellen).',
-    correctAnswer: 5.44,
+    correctValue: 5.44,
     tolerance: 0.05,
     unit: '',
     explanation: "Produktregel: $f'(x) = 1 \\cdot e^x + x \\cdot e^x = (1 + x)e^x$. Einsetzen: $f'(1) = 2 \\cdot e^1 = 2e \\approx 5.44$.",
@@ -179,7 +179,7 @@ export const exercises_abl_u2 = {
   'ex-abl-2-3-e': {
     id: 'ex-abl-2-3-e', lessonId: 'abl-2-3', type: 'number-input',
     question: '$f(x) = \\sqrt{4x+1} = (4x+1)^{1/2}$. Berechne $f\'(2)$.',
-    correctAnswer: 0.67,
+    correctValue: 0.67,
     tolerance: 0.02,
     unit: '',
     explanation: "$f'(x) = \\frac{1}{2}(4x+1)^{-1/2} \\cdot 4 = \\frac{2}{\\sqrt{4x+1}}$. $f'(2) = \\frac{2}{\\sqrt{9}} = \\frac{2}{3} \\approx 0.67$.",
@@ -241,7 +241,7 @@ export const exercises_abl_u2 = {
   'ex-abl-2-4-d': {
     id: 'ex-abl-2-4-d', lessonId: 'abl-2-4', type: 'number-input',
     question: '$f(x) = (x+1)^3 \\cdot \\ln(x)$. Berechne $f\'(1)$ (auf 1 Dezimalstelle).',
-    correctAnswer: 8.0,
+    correctValue: 8.0,
     tolerance: 0.1,
     unit: '',
     explanation: "$f'(x) = 3(x+1)^2 \\cdot \\ln(x) + (x+1)^3 \\cdot \\frac{1}{x}$. Bei $x = 1$: $f'(1) = 3 \\cdot 4 \\cdot 0 + 8 \\cdot 1 = 8$.",

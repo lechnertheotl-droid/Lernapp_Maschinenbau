@@ -12,6 +12,7 @@ export const integralrechnungTopic = {
   color: 'green',
   estimatedHours: 6,
   difficulty: 3,
+  level: 'grundlagen',
   units: [int_unit1, int_unit2, int_unit3, int_unit4],
   prerequisites: ['ableitung'],
 }

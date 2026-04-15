@@ -36,7 +36,7 @@ const exercises_la_u3 = {
   'ex-la-3-1-c': {
     id: 'ex-la-3-1-c', lessonId: 'la-3-1', type: 'number-input',
     question: '[PRÜFUNG] Berechne die Determinante: $\\det\\begin{pmatrix} 4 & 7 \\\\ 2 & 6 \\end{pmatrix}$',
-    correctAnswer: 10,
+    correctValue: 10,
     tolerance: 0,
     unit: '',
     explanation: 'Für eine 2×2-Matrix gilt: $\\det\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} = ad - bc$.\n$\\det(A) = 4 \\cdot 6 - 7 \\cdot 2 = 24 - 14 = 10$.',
@@ -66,7 +66,7 @@ const exercises_la_u3 = {
   'ex-la-3-1-e': {
     id: 'ex-la-3-1-e', lessonId: 'la-3-1', type: 'number-input',
     question: '[PRÜFUNG] Berechne $\\det(A)$ für $A = \\begin{pmatrix} 2 & 0 & 1 \\\\ 3 & 1 & -1 \\\\ 0 & 2 & 4 \\end{pmatrix}$ mit Entwicklung nach der ersten Spalte.',
-    correctAnswer: 18,
+    correctValue: 18,
     tolerance: 0,
     unit: '',
     explanation: 'Laplace-Entwicklung nach der 1. Spalte (Vorzeichen: $+, -, +$):\n$\\det(A) = 2 \\cdot \\det\\begin{pmatrix} 1 & -1 \\\\ 2 & 4 \\end{pmatrix} - 3 \\cdot \\det\\begin{pmatrix} 0 & 1 \\\\ 2 & 4 \\end{pmatrix} + 0 \\cdot \\det\\begin{pmatrix} 0 & 1 \\\\ 1 & -1 \\end{pmatrix}$\n$= 2 \\cdot (1\\cdot4 - (-1)\\cdot2) - 3 \\cdot (0\\cdot4 - 1\\cdot2) + 0$\n$= 2 \\cdot (4 + 2) - 3 \\cdot (0 - 2)$\n$= 2 \\cdot 6 - 3 \\cdot (-2)$\n$= 12 + 6 = 18$',
@@ -246,7 +246,7 @@ const exercises_la_u3 = {
   'ex-la-3-2-f': {
     id: 'ex-la-3-2-f', lessonId: 'la-3-2', type: 'number-input',
     question: '[PRÜFUNG] Die Spur (Trace) einer Matrix ist die Summe der Diagonaleinträge. Für $A = \\begin{pmatrix} 5 & 2 \\\\ -1 & 3 \\end{pmatrix}$: Was ist $\\text{tr}(A)$, und was ist die Summe der Eigenwerte? (Antworte mit dem gemeinsamen Wert)',
-    correctAnswer: 8,
+    correctValue: 8,
     tolerance: 0,
     unit: '',
     explanation: '$\\text{tr}(A) = 5 + 3 = 8$.\nDie Eigenwerte berechnen sich aus $\\det(A - \\lambda I) = 0$:\n$(5-\\lambda)(3-\\lambda) + 2 = \\lambda^2 - 8\\lambda + 17 = 0$\n$\\lambda_{1,2} = 4 \\pm i$.\nSumme der Eigenwerte: $(4+i) + (4-i) = 8 = \\text{tr}(A)$.\nAllgemein gilt: Die Summe aller Eigenwerte = Spur der Matrix.',
@@ -352,7 +352,7 @@ const exercises_la_u3 = {
   'ex-la-3-3-b': {
     id: 'ex-la-3-3-b', lessonId: 'la-3-3', type: 'number-input',
     question: '[PRÜFUNG] Gegeben $A = \\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix}$. Berechne den größeren Eigenwert $\\lambda_{\\max}$.',
-    correctAnswer: 5,
+    correctValue: 5,
     tolerance: 0.01,
     unit: '',
     explanation: 'Charakteristisches Polynom: $\\det(A - \\lambda I) = (4-\\lambda)(3-\\lambda) - 2 = \\lambda^2 - 7\\lambda + 10 = 0$. Nullstellen: $\\lambda = (7 \\pm \\sqrt{9})/2$, also $\\lambda_1 = 5$, $\\lambda_2 = 2$. Probe: Spur $= 4+3 = 7 = \\lambda_1+\\lambda_2$ ✓, $\\det = 12-2 = 10 = \\lambda_1\\lambda_2$ ✓.',
@@ -380,7 +380,7 @@ const exercises_la_u3 = {
   'ex-la-3-3-e': {
     id: 'ex-la-3-3-e', lessonId: 'la-3-3', type: 'number-input',
     question: '[PRÜFUNG] $A = \\begin{pmatrix} 2 & 0 \\\\ 0 & 5 \\end{pmatrix}$. Berechne $\\det(A^{10})$.',
-    correctAnswer: 10000000000,
+    correctValue: 10000000000,
     tolerance: 0,
     unit: '',
     explanation: 'Direkter Weg: $\\det(A^k) = (\\det A)^k$. $\\det A = 2 \\cdot 5 = 10$, also $\\det(A^{10}) = 10^{10} = 10\\,000\\,000\\,000$. Alternativ: $A^{10} = \\text{diag}(2^{10}, 5^{10}) = \\text{diag}(1024, 9765625)$, Determinante $= 1024 \\cdot 9765625 = 10^{10}$.',
@@ -402,7 +402,7 @@ const exercises_la_u3 = {
   'ex-la-3-3-g': {
     id: 'ex-la-3-3-g', lessonId: 'la-3-3', type: 'number-input',
     question: '[PRÜFUNG] Schwingungssystem: $K = \\begin{pmatrix} 4 & -1 \\\\ -1 & 4 \\end{pmatrix}$, $M = I$. Welches ist die kleinere Eigenfrequenz $\\omega_{\\min}$ in rad/s? (Gib $\\sqrt{3}$ als 1.732 an.)',
-    correctAnswer: 1.732,
+    correctValue: 1.732,
     tolerance: 0.005,
     unit: 'rad/s',
     explanation: '$\\det(K - \\omega^2 M) = (4-\\omega^2)^2 - 1 = 0 \\Rightarrow (4-\\omega^2)^2 = 1 \\Rightarrow 4 - \\omega^2 = \\pm 1$. Also $\\omega^2 = 3$ oder $\\omega^2 = 5$. Kleinere Eigenfrequenz: $\\omega_{\\min} = \\sqrt{3} \\approx 1{,}732$ rad/s.',
@@ -439,7 +439,7 @@ const exercises_la_u3 = {
   'ex-la-3-3-j': {
     id: 'ex-la-3-3-j', lessonId: 'la-3-3', type: 'number-input',
     question: '[PRÜFUNG] Trägheitstensor (in kg·m²): $J = \\begin{pmatrix} 5 & 0 & 0 \\\\ 0 & 4 & 2 \\\\ 0 & 2 & 4 \\end{pmatrix}$. Wie groß ist das größte Hauptträgheitsmoment in kg·m²?',
-    correctAnswer: 6,
+    correctValue: 6,
     tolerance: 0.01,
     unit: 'kg·m²',
     explanation: 'Eigenwerte: $\\lambda_1 = 5$ (aus erster Spalte). Für 2x2-Block $\\begin{pmatrix} 4 & 2 \\\\ 2 & 4 \\end{pmatrix}$: $\\det \\begin{pmatrix} 4-\\lambda & 2 \\\\ 2 & 4-\\lambda \\end{pmatrix} = (4-\\lambda)^2 - 4 = 0 \\Rightarrow \\lambda = 4 \\pm 2 = 6$ oder $2$. Hauptträgheitsmomente: 5, 6, 2. Größtes: $\\lambda_{\\max} = 6$ kg·m².',

@@ -88,6 +88,7 @@ export const mehrdimAnalysisTopic = {
   color: 'indigo',
   estimatedHours: 4,
   difficulty: 4,
+  level: 'vertiefung',
   units: [unit1, unit2],
   prerequisites: ['ableitung', 'integralrechnung', 'vektoren'],
 }

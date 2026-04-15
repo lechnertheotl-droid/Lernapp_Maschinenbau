@@ -12,6 +12,7 @@ export const trigonometryTopic = {
   color: 'blue',
   estimatedHours: 6,
   difficulty: 2,
+  level: 'grundlagen',
   units: [unit1, unit2, unit3, unit4],
   prerequisites: [],
 }

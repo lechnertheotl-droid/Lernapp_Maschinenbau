@@ -88,6 +88,7 @@ const pythonMatlabTopic = buildTopic({
     color: 'blue',
     estimatedHours: 10,
     difficulty: 2,
+    level: 'vertiefung',
     prerequisites: [],
   },
   units: [
@@ -176,7 +177,7 @@ s = str(3.14)      # float → str
             {
               type: 'number-input',
               question: 'Was ergibt `17 // 5` in Python?',
-              correctAnswer: 3,
+              correctValue: 3,
               tolerance: 0,
               unit: '',
               explanation: '`17 // 5 = 3` — Ganzzahldivision rundet ab (17 ÷ 5 = 3.4 → 3).',
@@ -185,7 +186,7 @@ s = str(3.14)      # float → str
             {
               type: 'number-input',
               question: 'Was ergibt `17 % 5` in Python?',
-              correctAnswer: 2,
+              correctValue: 2,
               tolerance: 0,
               unit: '',
               explanation: '`17 % 5 = 2` — der Rest der Division (17 = 3×5 + 2).',
@@ -246,7 +247,7 @@ mean(a)    % → 2.5
             {
               type: 'number-input',
               question: 'Gegeben: `a = [10, 20, 30, 40, 50]`. Was ergibt `a[2]` in Python?',
-              correctAnswer: 30,
+              correctValue: 30,
               tolerance: 0,
               unit: '',
               explanation: 'Python zählt ab 0: a[0]=10, a[1]=20, a[2]=30.',
@@ -731,7 +732,7 @@ subplot(1,2,2); plot(x, sigma/1e6); title('Spannung');
             {
               type: 'number-input',
               question: 'Ein Rechteckquerschnitt hat b = 40 mm und h = 80 mm. Wie groß ist das Widerstandsmoment W = bh²/6 in mm³? (Ganzzahl)',
-              correctAnswer: 42667,
+              correctValue: 42667,
               tolerance: 1,
               unit: 'mm³',
               explanation: 'W = 40 × 80² / 6 = 40 × 6400 / 6 ≈ 42667 mm³.',
@@ -879,7 +880,7 @@ plt.legend(); plt.grid(True); plt.show()
             {
               type: 'number-input',
               question: 'Berechne die Eigenkreisfrequenz ω₀ für m = 2 kg und k = 200 N/m.',
-              correctAnswer: 10,
+              correctValue: 10,
               tolerance: 0.1,
               unit: 'rad/s',
               explanation: 'ω₀ = √(k/m) = √(200/2) = √100 = 10 rad/s.',
@@ -896,7 +897,7 @@ plt.legend(); plt.grid(True); plt.show()
             {
               type: 'number-input',
               question: 'Berechne den Dämpfungsgrad D für m = 1 kg, d = 4 Ns/m, k = 100 N/m.',
-              correctAnswer: 0.2,
+              correctValue: 0.2,
               tolerance: 0.01,
               unit: '',
               explanation: 'D = d / (2√(km)) = 4 / (2√(100·1)) = 4 / 20 = 0.2.',
@@ -934,7 +935,7 @@ plt.legend(); plt.grid(True); plt.show()
             {
               type: 'number-input',
               question: '[PRÜFUNG] Was gibt folgender Code aus?\n```python\na = [2, 4, 6, 8, 10]\ns = 0\nfor i in range(1, 4):\n    s += a[i]\nprint(s)\n```',
-              correctAnswer: 18,
+              correctValue: 18,
               tolerance: 0,
               unit: '',
               explanation: 'range(1,4) → i = 1, 2, 3. a[1]=4, a[2]=6, a[3]=8. Summe: 4+6+8 = 18.',
@@ -951,7 +952,7 @@ plt.legend(); plt.grid(True); plt.show()
             {
               type: 'number-input',
               question: '[PRÜFUNG] Was gibt `np.dot(np.array([1,2,3]), np.array([4,5,6]))` zurück?',
-              correctAnswer: 32,
+              correctValue: 32,
               tolerance: 0,
               unit: '',
               explanation: 'Skalarprodukt: 1×4 + 2×5 + 3×6 = 4 + 10 + 18 = 32.',
@@ -968,7 +969,7 @@ plt.legend(); plt.grid(True); plt.show()
             {
               type: 'number-input',
               question: '[PRÜFUNG] Was gibt folgender Code aus?\n```python\nimport numpy as np\nA = np.array([[1,2],[3,4]])\nprint(np.trace(A))\n```',
-              correctAnswer: 5,
+              correctValue: 5,
               tolerance: 0,
               unit: '',
               explanation: 'np.trace berechnet die Spur (Summe der Diagonalelemente): 1 + 4 = 5.',
@@ -984,7 +985,7 @@ plt.legend(); plt.grid(True); plt.show()
             {
               type: 'number-input',
               question: '[PRÜFUNG] Was gibt folgender Code aus?\n```python\nx = 10\nfor i in range(3):\n    x = x // 2\nprint(x)\n```',
-              correctAnswer: 1,
+              correctValue: 1,
               tolerance: 0,
               unit: '',
               explanation: 'Iteration 1: 10//2=5. Iteration 2: 5//2=2. Iteration 3: 2//2=1.',
@@ -1001,7 +1002,7 @@ plt.legend(); plt.grid(True); plt.show()
             {
               type: 'number-input',
               question: '[PRÜFUNG] Was gibt `len([x for x in range(10) if x % 3 == 0])` zurück?',
-              correctAnswer: 4,
+              correctValue: 4,
               tolerance: 0,
               unit: '',
               explanation: 'range(10) = 0..9. Durch 3 teilbar: 0, 3, 6, 9 → 4 Elemente.',

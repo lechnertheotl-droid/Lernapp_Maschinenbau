@@ -5,7 +5,7 @@ import { isNumericMatch } from '@/utils/numericTolerance'
 
 interface NumberExercise {
   question: string
-  correctAnswer: number
+  correctValue: number
   tolerance?: number
   unit?: string
 }
@@ -24,7 +24,7 @@ interface Props {
 export function validate(answer: NumberAnswer, exercise: NumberExercise) {
   const tolerance = exercise.tolerance ?? 0.01
   const raw = typeof answer.raw === 'string' ? answer.raw : String(answer.value ?? '')
-  const isCorrect = isNumericMatch(raw, exercise.correctAnswer, tolerance)
+  const isCorrect = isNumericMatch(raw, exercise.correctValue, tolerance)
   return { isCorrect }
 }
 

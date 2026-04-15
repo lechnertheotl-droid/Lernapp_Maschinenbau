@@ -11,6 +11,7 @@ export const dglTopic = {
   color: 'rose',
   estimatedHours: 5,
   difficulty: 4,
+  level: 'vertiefung',
   units: [dgl_unit1, dgl_unit2, dgl_unit3],
   prerequisites: ['ableitung', 'integralrechnung'],
 }

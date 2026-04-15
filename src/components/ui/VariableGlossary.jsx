@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { VARIABLES, CATEGORIES, DISPLAY_LABELS } from '@/utils/variablesDB'
 
@@ -11,6 +11,13 @@ function primary(k) {
 export function VariableGlossary({ isOpen, onClose }) {
   const [search, setSearch] = useState('')
   const [expanded, setExpanded] = useState(null)
+
+  useEffect(() => {
+    if (!isOpen) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = prev }
+  }, [isOpen])
 
   if (!isOpen) return null
 
@@ -50,7 +57,10 @@ export function VariableGlossary({ isOpen, onClose }) {
         </div>
 
         {/* Content */}
-        <div className="overflow-y-auto flex-1 p-4 flex flex-col gap-4">
+        <div
+          className="overflow-y-auto overscroll-contain flex-1 p-4 flex flex-col gap-4"
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
           {filtered.map((cat) => (
             <div key={cat.name}>
               <p className="text-[10px] font-mono font-bold text-primary-700 uppercase tracking-widest mb-2 border-b border-primary-200 pb-1">

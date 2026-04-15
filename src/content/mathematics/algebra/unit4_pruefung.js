@@ -23,7 +23,7 @@ export const exercises_alg_u4 = {
   'ex-alg-4-1-c': {
     id: 'ex-alg-4-1-c', lessonId: 'alg-4-1', type: 'number-input',
     question: '[PRÜFUNG] Berechne: log₂(128). Gib eine ganze Zahl ein.',
-    correctAnswer: 7,
+    correctValue: 7,
     tolerance: 0,
     unit: '',
     explanation: '128 = 2⁷, also log₂(128) = 7. Allgemein: log_a(aⁿ) = n.',
@@ -55,7 +55,7 @@ export const exercises_alg_u4 = {
   'ex-alg-4-1-g': {
     id: 'ex-alg-4-1-g', lessonId: 'alg-4-1', type: 'number-input',
     question: '[PRÜFUNG] Die Gleichung 2x² + 4x − 6 = 0 hat zwei Lösungen. Was ist die größere Lösung?',
-    correctAnswer: 1,
+    correctValue: 1,
     tolerance: 0.01,
     unit: '',
     explanation: '2x² + 4x − 6 = 0 → x² + 2x − 3 = 0 (÷2). Diskriminante: D = 4 + 12 = 16. x = (−2 ± 4)/2. Also x₁ = 1, x₂ = −3. Die größere Lösung ist x = 1.',
@@ -132,7 +132,7 @@ export const exercises_alg_u4 = {
   'ex-alg-4-2-e': {
     id: 'ex-alg-4-2-e', lessonId: 'alg-4-2', type: 'number-input',
     question: '[PRÜFUNG] f(x) = x² − 4x + 3. An welcher x-Stelle liegt der Scheitelpunkt (Minimum)?',
-    correctAnswer: 2,
+    correctValue: 2,
     tolerance: 0.01,
     unit: '',
     explanation: 'Scheitelpunkt bei x_S = −b/(2a) = −(−4)/(2·1) = 4/2 = 2. Oder: quadratische Ergänzung: x² − 4x + 3 = (x−2)² − 1 → Scheitelpunkt S(2 | −1).',
@@ -209,7 +209,7 @@ export const exercises_alg_u4 = {
   'ex-alg-4-3-b': {
     id: 'ex-alg-4-3-b', lessonId: 'alg-4-3', type: 'number-input',
     question: '[PRÜFUNG] Ein Tragwerk hat zwei Stäbe mit Kräften $F_1$, $F_2$. Gleichgewicht: $F_1 + 2F_2 = 12$ kN, $2F_1 - F_2 = 4$ kN. Welchen Wert hat $F_1$ in kN?',
-    correctAnswer: 4,
+    correctValue: 4,
     tolerance: 0.01,
     unit: 'kN',
     explanation: 'Aus Zeile 1: $F_1 = 12 - 2F_2$. Einsetzen in Zeile 2: $2(12 - 2F_2) - F_2 = 4 \\Rightarrow 24 - 5F_2 = 4 \\Rightarrow F_2 = 4$. Damit $F_1 = 12 - 8 = 4$ kN. Probe: $4 + 8 = 12$ ✓, $8 - 4 = 4$ ✓.',
@@ -237,7 +237,7 @@ export const exercises_alg_u4 = {
   'ex-alg-4-3-e': {
     id: 'ex-alg-4-3-e', lessonId: 'alg-4-3', type: 'number-input',
     question: '[PRÜFUNG] Löse $\\sqrt{x + 5} = x - 1$. Gib die gültige Lösung $x$ an.',
-    correctAnswer: 4,
+    correctValue: 4,
     tolerance: 0.001,
     unit: '',
     explanation: 'Quadrieren: $x + 5 = (x-1)^2 = x^2 - 2x + 1 \\Rightarrow x^2 - 3x - 4 = 0 \\Rightarrow x = (3 \\pm 5)/2$, also $x = 4$ oder $x = -1$. Probe: $x = 4$: $\\sqrt{9} = 3 = 4-1$ ✓. $x = -1$: $\\sqrt{4} = 2 \\neq -2$. Scheinlösung. Gültige Lösung: $x = 4$.',
@@ -259,7 +259,7 @@ export const exercises_alg_u4 = {
   'ex-alg-4-3-g': {
     id: 'ex-alg-4-3-g', lessonId: 'alg-4-3', type: 'number-input',
     question: '[PRÜFUNG] Exponentialzerfall: Radioaktive Probe mit Halbwertszeit $T_{1/2} = 10$ min. Wie lange (in min) dauert es, bis nur noch 25 % der ursprünglichen Menge da sind?',
-    correctAnswer: 20,
+    correctValue: 20,
     tolerance: 0.1,
     unit: 'min',
     explanation: '25 % = 1/4 = (1/2)². Nach 2 Halbwertszeiten ist ein Viertel übrig. $t = 2 \\cdot T_{1/2} = 20$ min. Allgemein: $N(t) = N_0 \\cdot (1/2)^{t/T_{1/2}}$, Gleichung $0{,}25 = (1/2)^{t/10}$ liefert $t/10 = 2$, also $t = 20$ min.',
@@ -289,7 +289,7 @@ export const exercises_alg_u4 = {
   'ex-alg-4-3-j': {
     id: 'ex-alg-4-3-j', lessonId: 'alg-4-3', type: 'number-input',
     question: '[PRÜFUNG] Zwei Stromquellen laden einen Kondensator. System: $I_1 + I_2 = 3$ A und $R_1 I_1 - R_2 I_2 = 0$ mit $R_1 = 2\\,\\Omega$, $R_2 = 4\\,\\Omega$. Welchen Wert hat $I_1$ in A?',
-    correctAnswer: 2,
+    correctValue: 2,
     tolerance: 0.01,
     unit: 'A',
     explanation: 'Aus zweiter Gleichung: $2 I_1 = 4 I_2 \\Rightarrow I_1 = 2 I_2$. Einsetzen: $2 I_2 + I_2 = 3 \\Rightarrow I_2 = 1$, also $I_1 = 2$ A. Probe: $2 + 1 = 3$ ✓ und $2\\cdot 2 - 4\\cdot 1 = 0$ ✓.',

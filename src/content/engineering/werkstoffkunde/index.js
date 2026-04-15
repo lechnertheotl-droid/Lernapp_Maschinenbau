@@ -94,6 +94,7 @@ export const werkstoffkundeTopic = {
   color: 'slate',
   estimatedHours: 3,
   difficulty: 2,
+  level: 'grundlagen',
   units: [unit1, unit2],
   prerequisites: ['algebra'],
 }

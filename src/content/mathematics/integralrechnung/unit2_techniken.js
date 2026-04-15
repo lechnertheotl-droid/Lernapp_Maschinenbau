@@ -125,7 +125,7 @@ export const exercises_int_u2 = {
   'ex-int-2-3-c': {
     id: 'ex-int-2-3-c', lessonId: 'int-2-3', type: 'number-input',
     question: 'Partialbruchzerlegung: 1/((x−1)(x+1)) = A/(x−1) + B/(x+1). Bestimme A. (Tipp: Setze x = 1 ein)',
-    correctAnswer: 0.5,
+    correctValue: 0.5,
     tolerance: 0.01,
     unit: '',
     explanation: 'Multipliziere mit (x−1)(x+1): 1 = A(x+1) + B(x−1). Setze x = 1: 1 = A·2 + B·0 = 2A → A = 1/2 = 0,5. Setze x = −1: 1 = A·0 + B·(−2) → B = −1/2.',
@@ -165,7 +165,7 @@ export const exercises_int_u2 = {
   'ex-int-2-4-c': {
     id: 'ex-int-2-4-c', lessonId: 'int-2-4', type: 'number-input',
     question: '[PRÜFUNG] Berechne: ∫₀¹ x·eˣ dx (Ergebnis auf 2 Nachkommastellen)',
-    correctAnswer: 1.00,
+    correctValue: 1.00,
     tolerance: 0.02,
     unit: '',
     explanation: 'Partielle Integration: u = x, v\' = eˣ, u\' = 1, v = eˣ. ∫₀¹ x·eˣ dx = [x·eˣ]₀¹ − ∫₀¹ eˣ dx = (1·e − 0) − [eˣ]₀¹ = e − (e − 1) = 1.',
@@ -200,7 +200,7 @@ export const exercises_int_u2 = {
   'ex-int-2-4-mastery': {
     id: 'ex-int-2-4-mastery', lessonId: 'int-2-4', type: 'number-input', isMasteryCheck: true,
     question: '[PRÜFUNG] Berechne: ∫₀^(π/2) x·cos(x) dx (Ergebnis auf 2 Nachkommastellen)',
-    correctAnswer: 0.57,
+    correctValue: 0.57,
     tolerance: 0.02,
     unit: '',
     explanation: 'Partielle Integration: u = x, v\' = cos(x), u\' = 1, v = sin(x). ∫₀^(π/2) x·cos(x) dx = [x·sin(x)]₀^(π/2) − ∫₀^(π/2) sin(x) dx = (π/2)·1 − 0 − [−cos(x)]₀^(π/2) = π/2 − (−cos(π/2) + cos(0)) = π/2 − (0 + 1) = π/2 − 1 ≈ 0,57.',

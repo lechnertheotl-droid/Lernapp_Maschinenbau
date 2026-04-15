@@ -72,7 +72,7 @@ export const exercises_dgl_u1 = {
   'ex-dgl-1-2-c': {
     id: 'ex-dgl-1-2-c', lessonId: 'dgl-1-2', type: 'number-input',
     question: 'Gegeben: $y\' = 2y$ mit $y(0) = 3$. Berechne $y(1)$ (auf 2 Dezimalstellen gerundet).',
-    correctAnswer: 22.17,
+    correctValue: 22.17,
     tolerance: 0.1,
     unit: '',
     explanation: 'Trennung: $\\frac{dy}{y} = 2\\,dx \\Rightarrow \\ln|y| = 2x + C_1 \\Rightarrow y = Ce^{2x}$. Anfangsbedingung: $y(0) = C = 3$. Also $y(1) = 3e^2 \\approx 22.17$.',
@@ -134,7 +134,7 @@ export const exercises_dgl_u1 = {
   'ex-dgl-1-3-d': {
     id: 'ex-dgl-1-3-d', lessonId: 'dgl-1-3', type: 'number-input',
     question: 'DGL: $y\' + y = 3$, AWP: $y(0) = 1$. Berechne $y(1)$ (auf 2 Dezimalstellen).',
-    correctAnswer: 2.26,
+    correctValue: 2.26,
     tolerance: 0.1,
     unit: '',
     explanation: '$\\mu = e^x$. $(e^x y)\' = 3e^x \\Rightarrow e^x y = 3e^x + C \\Rightarrow y = 3 + Ce^{-x}$. AWP: $y(0) = 1 = 3 + C \\Rightarrow C = -2$. Also $y(x) = 3 - 2e^{-x}$, $y(1) = 3 - 2e^{-1} \\approx 2.26$.',

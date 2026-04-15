@@ -43,7 +43,7 @@ export const exercises_abl_u3 = {
   'ex-abl-3-1-d': {
     id: 'ex-abl-3-1-d', lessonId: 'abl-3-1', type: 'number-input',
     question: '$f(x) = x^3 - 6x^2 + 9x + 1$. An welcher Stelle $x$ liegt das lokale Maximum?',
-    correctAnswer: 1,
+    correctValue: 1,
     tolerance: 0.01,
     unit: '',
     explanation: "$f'(x) = 3x^2 - 12x + 9 = 3(x^2 - 4x + 3) = 3(x-1)(x-3) = 0 \\Rightarrow x = 1$ oder $x = 3$. $f''(x) = 6x - 12$. $f''(1) = -6 < 0$ → Maximum bei $x = 1$. $f''(3) = 6 > 0$ → Minimum bei $x = 3$.",
@@ -92,7 +92,7 @@ export const exercises_abl_u3 = {
   'ex-abl-3-2-c': {
     id: 'ex-abl-3-2-c', lessonId: 'abl-3-2', type: 'number-input',
     question: '$f(x) = x^3 - 3x$. An welcher Stelle $x$ liegt der Wendepunkt?',
-    correctAnswer: 0,
+    correctValue: 0,
     tolerance: 0.01,
     unit: '',
     explanation: "$f'(x) = 3x^2 - 3$. $f''(x) = 6x = 0 \\Rightarrow x = 0$. $f'''(x) = 6 \\neq 0$ → Wendepunkt bei $x = 0$. $f(0) = 0$, also Wendepunkt $(0, 0)$.",
@@ -153,7 +153,7 @@ export const exercises_abl_u3 = {
   'ex-abl-3-3-d': {
     id: 'ex-abl-3-3-d', lessonId: 'abl-3-3', type: 'number-input',
     question: '$f(x) = x^3 - 3x + 2$. Berechne den y-Wert des lokalen Maximums.',
-    correctAnswer: 4,
+    correctValue: 4,
     tolerance: 0.01,
     unit: '',
     explanation: "$f'(x) = 3x^2 - 3 = 0 \\Rightarrow x = \\pm 1$. $f''(x) = 6x$. $f''(-1) = -6 < 0$ → Maximum bei $x = -1$. $f(-1) = -1 + 3 + 2 = 4$.",
@@ -189,7 +189,7 @@ export const exercises_abl_u3 = {
   'ex-abl-3-4-b': {
     id: 'ex-abl-3-4-b', lessonId: 'abl-3-4', type: 'number-input',
     question: '$f(x) = e^{-x^2}$. An welcher positiven Stelle $x > 0$ liegt der Wendepunkt? (Auf 2 Dezimalstellen.)',
-    correctAnswer: 0.71,
+    correctValue: 0.71,
     tolerance: 0.02,
     unit: '',
     explanation: "$f'(x) = -2xe^{-x^2}$. $f''(x) = (-2 + 4x^2)e^{-x^2} = 0 \\Rightarrow 4x^2 - 2 = 0 \\Rightarrow x^2 = 1/2 \\Rightarrow x = \\pm 1/\\sqrt{2} \\approx \\pm 0.71$.",

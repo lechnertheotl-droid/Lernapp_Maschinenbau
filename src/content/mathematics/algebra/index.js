@@ -12,6 +12,7 @@ export const algebraTopic = {
   color: 'orange',
   estimatedHours: 5,
   difficulty: 1,
+  level: 'grundlagen',
   units: [alg_unit1, alg_unit2, alg_unit3, alg_unit4],
   prerequisites: [],
 }

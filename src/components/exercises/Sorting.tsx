@@ -74,11 +74,18 @@ function SortableItem({
     <div
       ref={setNodeRef}
       style={style}
+      role="button"
+      tabIndex={disabled ? -1 : 0}
+      aria-label={`Position ${pos + 1}: ${text}. Zum Verschieben ziehen.`}
+      aria-roledescription="sortierbar"
       className={cn(
-        'flex items-center gap-2 min-h-[52px] px-3 py-2 border-2 border-ink rounded-retro shadow-hard-sm bg-white dark:bg-surface-800 transition-shadow',
-        isDragging && 'shadow-hard-lemon z-10 cursor-grabbing',
-        disabled && 'opacity-60'
+        'flex items-center gap-2 min-h-[56px] px-3 py-2 border-2 border-ink rounded-retro shadow-hard-sm bg-white dark:bg-surface-800 transition-shadow select-none touch-none',
+        !disabled && 'cursor-grab active:cursor-grabbing hover:bg-surface-50 dark:hover:bg-surface-700',
+        isDragging && 'shadow-hard-lemon z-10 cursor-grabbing ring-2 ring-lemon',
+        disabled && 'opacity-60 cursor-not-allowed'
       )}
+      {...attributes}
+      {...listeners}
     >
       <span className="w-7 h-7 rounded-sm border-2 border-ink bg-paper dark:bg-surface-900 flex items-center justify-center text-xs font-mono font-black text-ink dark:text-paper flex-shrink-0">
         {pos + 1}
@@ -86,21 +93,17 @@ function SortableItem({
 
       <MathText className="flex-1 text-sm font-semibold text-ink dark:text-paper font-mono">{text}</MathText>
 
-      <button
-        type="button"
-        disabled={disabled}
+      <span
+        aria-hidden="true"
         className={cn(
-          'w-8 h-9 flex items-center justify-center border-2 border-ink rounded-retro text-base font-black tap-highlight-none select-none touch-none flex-shrink-0',
+          'w-9 h-10 flex items-center justify-center border-2 border-ink rounded-retro text-base font-black flex-shrink-0',
           disabled
-            ? 'bg-surface-100 dark:bg-surface-700 text-ink-soft cursor-not-allowed'
-            : 'bg-lemon text-ink shadow-hard-lemon cursor-grab active:cursor-grabbing'
+            ? 'bg-surface-100 dark:bg-surface-700 text-ink-soft dark:text-surface-300'
+            : 'bg-lemon text-ink shadow-hard-lemon'
         )}
-        aria-label="Zum Verschieben ziehen"
-        {...attributes}
-        {...listeners}
       >
         ⋮⋮
-      </button>
+      </span>
     </div>
   )
 }
@@ -113,8 +116,8 @@ export function Sorting({ exercise, onSubmit, disabled }: Props) {
   const [order, setOrder] = useState<number[]>(shuffled)
 
   const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 4 } }),
-    useSensor(TouchSensor, { activationConstraint: { delay: 150, tolerance: 5 } }),
+    useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
+    useSensor(TouchSensor, { activationConstraint: { delay: 80, tolerance: 8 } }),
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
   )
 

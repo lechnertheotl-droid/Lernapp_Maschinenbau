@@ -131,7 +131,7 @@ export const exercises_int_u1 = {
   'ex-int-1-3-c': {
     id: 'ex-int-1-3-c', lessonId: 'int-1-3', type: 'number-input',
     question: '∫(4x³ − 6x + 1) dx = x⁴ − 3x² + x + C. Wie lautet der Wert von F(2), wenn C = 0? (F(x) = x⁴ − 3x² + x)',
-    correctAnswer: 6,
+    correctValue: 6,
     tolerance: 0.01,
     unit: '',
     explanation: 'F(2) = 2⁴ − 3·2² + 2 = 16 − 12 + 2 = 6. Die Stammfunktion ist F(x) = x⁴ − 3x² + x (mit C = 0).',
@@ -163,7 +163,7 @@ export const exercises_int_u1 = {
   'ex-int-1-4-a': {
     id: 'ex-int-1-4-a', lessonId: 'int-1-4', type: 'number-input',
     question: 'Berechne: ∫₀² 2x dx',
-    correctAnswer: 4,
+    correctValue: 4,
     tolerance: 0.01,
     unit: '',
     explanation: 'Stammfunktion: F(x) = x². Hauptsatz: F(2) − F(0) = 2² − 0² = 4 − 0 = 4. Geometrisch: Fläche des Dreiecks mit Grundseite 2 und Höhe 4 ergibt (2·4)/2 = 4.',
@@ -172,7 +172,7 @@ export const exercises_int_u1 = {
   'ex-int-1-4-b': {
     id: 'ex-int-1-4-b', lessonId: 'int-1-4', type: 'number-input',
     question: 'Berechne: ∫₁³ x² dx (Ergebnis als Dezimalzahl, gerundet auf 2 Nachkommastellen)',
-    correctAnswer: 8.67,
+    correctValue: 8.67,
     tolerance: 0.01,
     unit: '',
     explanation: 'Stammfunktion: F(x) = x³/3. F(3) − F(1) = 27/3 − 1/3 = 9 − 1/3 = 26/3 ≈ 8,67.',
@@ -194,7 +194,7 @@ export const exercises_int_u1 = {
   'ex-int-1-4-d': {
     id: 'ex-int-1-4-d', lessonId: 'int-1-4', type: 'number-input',
     question: 'Berechne: ∫₀^π sin(x) dx (ganzzahliges Ergebnis)',
-    correctAnswer: 2,
+    correctValue: 2,
     tolerance: 0.01,
     unit: '',
     explanation: 'Stammfunktion: F(x) = -cos(x). F(π) − F(0) = -cos(π) − (-cos(0)) = -(-1) − (-1) = 1 + 1 = 2. Die Fläche unter einer halben Sinuswelle beträgt genau 2.',
@@ -203,7 +203,7 @@ export const exercises_int_u1 = {
   'ex-int-1-4-mastery': {
     id: 'ex-int-1-4-mastery', lessonId: 'int-1-4', type: 'number-input', isMasteryCheck: true,
     question: '[PRÜFUNG] Berechne: ∫₁² (3x² + 1) dx',
-    correctAnswer: 8,
+    correctValue: 8,
     tolerance: 0.01,
     unit: '',
     explanation: 'Stammfunktion: F(x) = x³ + x. F(2) − F(1) = (8 + 2) − (1 + 1) = 10 − 2 = 8.',
@@ -248,7 +248,7 @@ export const exercises_int_u1 = {
   'ex-int-1-5-mastery': {
     id: 'ex-int-1-5-mastery', lessonId: 'int-1-5', type: 'number-input', isMasteryCheck: true,
     question: '[PRÜFUNG] Berechne mit dem Hauptsatz: ∫₀¹ (eˣ + 2x) dx (Ergebnis auf 2 Nachkommastellen gerundet)',
-    correctAnswer: 2.72,
+    correctValue: 2.72,
     tolerance: 0.02,
     unit: '',
     explanation: 'Stammfunktion: F(x) = eˣ + x². F(1) − F(0) = (e¹ + 1) − (e⁰ + 0) = e + 1 − 1 = e ≈ 2,72.',

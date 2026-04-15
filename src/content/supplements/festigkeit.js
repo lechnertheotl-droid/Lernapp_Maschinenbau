@@ -2,8 +2,8 @@ function mc(question, options, correctIndex, explanation, hints = []) {
   return { type: 'multiple-choice', question, options, correctIndex, explanation, hints }
 }
 
-function ni(question, correctAnswer, tolerance, unit, explanation, hints = []) {
-  return { type: 'number-input', question, correctAnswer, tolerance, unit, explanation, hints }
+function ni(question, correctValue, tolerance, unit, explanation, hints = []) {
+  return { type: 'number-input', question, correctValue, tolerance, unit, explanation, hints }
 }
 
 function tf(statement, correct, explanation, hints = []) {

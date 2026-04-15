@@ -85,7 +85,7 @@ export const exercises_la_u2 = {
   'ex-la-2-2-c': {
     id: 'ex-la-2-2-c', lessonId: 'la-2-2', type: 'number-input',
     question: 'Nach dem Gauss-Algorithmus erhältst du $\\left(\\begin{array}{cc|c} 1 & 2 & 5 \\\\ 0 & -2 & -4 \\end{array}\\right)$. Welchen Wert hat $y$?',
-    correctAnswer: 2,
+    correctValue: 2,
     tolerance: 0.01,
     unit: '',
     explanation: 'Aus Zeile 2: $-2y = -4$, also $y = 2$.',
@@ -94,7 +94,7 @@ export const exercises_la_u2 = {
   'ex-la-2-2-d': {
     id: 'ex-la-2-2-d', lessonId: 'la-2-2', type: 'number-input',
     question: 'Weiter: $\\left(\\begin{array}{cc|c} 1 & 2 & 5 \\\\ 0 & -2 & -4 \\end{array}\\right)$ mit $y = 2$. Berechne $x$ durch Rückeinsetzen.',
-    correctAnswer: 1,
+    correctValue: 1,
     tolerance: 0.01,
     unit: '',
     explanation: 'Zeile 1: $x + 2y = 5$. Mit $y = 2$: $x + 4 = 5$, also $x = 1$.',
@@ -185,7 +185,7 @@ export const exercises_la_u2 = {
   'ex-la-2-4-b': {
     id: 'ex-la-2-4-b', lessonId: 'la-2-4', type: 'number-input',
     question: 'Löse mit Cramer: $2x + y = 5$, $x - y = 1$. Berechne $\\det(A)$.',
-    correctAnswer: -3,
+    correctValue: -3,
     tolerance: 0.01,
     unit: '',
     explanation: '$A = \\begin{pmatrix} 2 & 1 \\\\ 1 & -1 \\end{pmatrix}$. $\\det(A) = 2 \\cdot (-1) - 1 \\cdot 1 = -2 - 1 = -3$.',
@@ -194,7 +194,7 @@ export const exercises_la_u2 = {
   'ex-la-2-4-c': {
     id: 'ex-la-2-4-c', lessonId: 'la-2-4', type: 'number-input',
     question: 'Weiter: $2x + y = 5$, $x - y = 1$. Berechne $x$ mit der Cramerschen Regel: $x = \\det(A_x)/\\det(A)$. ($A_x$ = Spalte 1 durch $\\vec{b}$ ersetzen.)',
-    correctAnswer: 2,
+    correctValue: 2,
     tolerance: 0.01,
     unit: '',
     explanation: '$A_x = \\begin{pmatrix} 5 & 1 \\\\ 1 & -1 \\end{pmatrix}$. $\\det(A_x) = 5 \\cdot (-1) - 1 \\cdot 1 = -6$. Also $x = \\frac{-6}{-3} = 2$.',

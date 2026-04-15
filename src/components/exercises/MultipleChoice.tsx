@@ -44,7 +44,7 @@ export function MultipleChoice({ exercise, onSubmit, disabled }: Props) {
               'w-full text-left min-h-[52px] px-4 py-3 rounded-retro border-2 text-sm font-semibold transition-all duration-150 tap-highlight-none flex items-center gap-3 retro-press',
               selected === i
                 ? 'border-ink bg-lemon text-ink shadow-hard-lemon'
-                : 'border-ink bg-white dark:bg-surface-800 text-ink-soft dark:text-surface-300 shadow-hard-sm hover:bg-surface-50',
+                : 'border-ink bg-white dark:bg-surface-800 text-ink dark:text-surface-100 shadow-hard-sm hover:bg-surface-50 dark:hover:bg-surface-700',
               disabled && 'opacity-60 cursor-not-allowed'
             )}
           >

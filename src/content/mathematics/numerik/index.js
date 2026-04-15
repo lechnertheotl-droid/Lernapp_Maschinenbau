@@ -82,6 +82,7 @@ export const numerikTopic = {
   color: 'cyan',
   estimatedHours: 3,
   difficulty: 3,
+  level: 'vertiefung',
   units: [unit1, unit2],
   prerequisites: ['algebra', 'ableitung'],
 }

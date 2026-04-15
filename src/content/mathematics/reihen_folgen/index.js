@@ -89,6 +89,7 @@ export const reihenFolgenTopic = {
   color: 'teal',
   estimatedHours: 2,
   difficulty: 3,
+  level: 'vertiefung',
   units: [unit1, unit2],
   prerequisites: ['ableitung', 'integralrechnung'],
 }

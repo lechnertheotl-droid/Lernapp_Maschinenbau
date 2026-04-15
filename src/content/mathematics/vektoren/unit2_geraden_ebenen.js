@@ -103,7 +103,7 @@ export const exercises_vek_u2 = {
   'ex-vek-2-3-b': {
     id: 'ex-vek-2-3-b', lessonId: 'vek-2-3', type: 'number-input',
     question: 'Ebene E: 2x + 2y + z = 9. Punkt Q = (1, 1, 1). Berechne den Abstand d von Q zu E.',
-    correctAnswer: 1.33,
+    correctValue: 1.33,
     tolerance: 0.02,
     unit: '',
     explanation: 'd = |2·1 + 2·1 + 1·1 − 9| / √(2² + 2² + 1²) = |2 + 2 + 1 − 9| / √9 = |−4| / 3 = 4/3 ≈ 1,33.',
@@ -120,7 +120,7 @@ export const exercises_vek_u2 = {
   'ex-vek-2-3-d': {
     id: 'ex-vek-2-3-d', lessonId: 'vek-2-3', type: 'number-input',
     question: 'Gerade g: $\\vec{r}$ = (1,0,0) + t·(1,1,1). Ebene E: x + y + z = 6. Berechne den Parameter t für den Schnittpunkt.',
-    correctAnswer: 1.67,
+    correctValue: 1.67,
     tolerance: 0.02,
     unit: '',
     explanation: 'Einsetzen: (1+t) + (0+t) + (0+t) = 6 → 1 + 3t = 6 → 3t = 5 → t = 5/3 ≈ 1,67.',
@@ -129,7 +129,7 @@ export const exercises_vek_u2 = {
   'ex-vek-2-3-mastery': {
     id: 'ex-vek-2-3-mastery', lessonId: 'vek-2-3', type: 'number-input', isMasteryCheck: true,
     question: '[PRÜFUNG] Abstand des Punktes Q = (3, 0, 4) von der Ebene E: 2x − y + 2z = 1. Gib den Abstand an.',
-    correctAnswer: 3,
+    correctValue: 3,
     tolerance: 0.01,
     unit: '',
     explanation: 'd = |2·3 + (−1)·0 + 2·4 − 1| / √(4 + 1 + 4) = |6 + 0 + 8 − 1| / √9 = 13/3 ≈ ... Moment: |6 − 0 + 8 − 1| = 13, √(4+1+4) = 3. d = 13/3 ≈ 4,33. Korrektur: d = |2·3 − 0 + 2·4 − 1| / 3 = |6 + 8 − 1| / 3 = 13/3. Richtig: ≈ 4,33.',
@@ -169,7 +169,7 @@ export const exercises_vek_u2 = {
   'ex-vek-2-4-d': {
     id: 'ex-vek-2-4-d', lessonId: 'vek-2-4', type: 'number-input',
     question: '[PRÜFUNG] Abstand der parallelen Ebenen E₁: x + y + z = 1 und E₂: x + y + z = 4. Berechne den Abstand.',
-    correctAnswer: 1.73,
+    correctValue: 1.73,
     tolerance: 0.02,
     unit: '',
     explanation: 'Abstand paralleler Ebenen: d = |d₂ − d₁| / |$\\vec{n}$| = |4 − 1| / √(1+1+1) = 3/√3 = √3 ≈ 1,73.',

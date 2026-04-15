@@ -50,7 +50,7 @@ const exercises_int_u4 = {
   'ex-int-4-1-d': {
     id: 'ex-int-4-1-d', lessonId: 'int-4-1', type: 'number-input',
     question: '[PRÜFUNG] Berechne das bestimmte Integral: ∫₀¹ x·eˣ dx. Runde auf 2 Dezimalstellen.',
-    correctAnswer: 1,
+    correctValue: 1,
     tolerance: 0.01,
     unit: '',
     explanation: 'Partielle Integration: u = x → u\' = 1; v\' = eˣ → v = eˣ. [x·eˣ − eˣ]₀¹ = [eˣ(x−1)]₀¹ = e¹·(1−1) − e⁰·(0−1) = 0 − (−1) = 1.',
@@ -96,7 +96,7 @@ const exercises_int_u4 = {
   'ex-int-4-1-h': {
     id: 'ex-int-4-1-h', lessonId: 'int-4-1', type: 'number-input',
     question: '[PRÜFUNG] Berechne: ∫₁ᵉ ln(x) dx. (Tipp: Partielle Integration mit u = ln(x), v\' = 1)',
-    correctAnswer: 1,
+    correctValue: 1,
     tolerance: 0.01,
     unit: '',
     explanation: 'Partielle Integration: u = ln(x) → u\' = 1/x; v\' = 1 → v = x. [x·ln(x) − x]₁ᵉ = (e·1 − e) − (1·0 − 1) = 0 − (−1) = 1.',
@@ -139,7 +139,7 @@ const exercises_int_u4 = {
   'ex-int-4-2-a': {
     id: 'ex-int-4-2-a', lessonId: 'int-4-2', type: 'number-input',
     question: '[PRÜFUNG] Berechne die Fläche, die von f(x) = x² − 4 und der x-Achse eingeschlossen wird. (Tipp: Nullstellen bei x = ±2)',
-    correctAnswer: 10.67,
+    correctValue: 10.67,
     tolerance: 0.02,
     unit: 'FE',
     explanation: 'Nullstellen: x² − 4 = 0 → x = ±2. Auf [−2, 2] gilt f(x) ≤ 0, also A = |∫₋₂² (x²−4) dx| = |[x³/3 − 4x]₋₂²| = |(8/3 − 8) − (−8/3 + 8)| = |−16/3 − 16/3| = 32/3 ≈ 10,67 FE.',
@@ -163,7 +163,7 @@ const exercises_int_u4 = {
   'ex-int-4-2-c': {
     id: 'ex-int-4-2-c', lessonId: 'int-4-2', type: 'number-input',
     question: '[PRÜFUNG] Berechne die Fläche zwischen f(x) = x² und g(x) = x auf [0, 1].',
-    correctAnswer: 0.17,
+    correctValue: 0.17,
     tolerance: 0.02,
     unit: 'FE',
     explanation: 'Auf [0, 1] gilt g(x) = x ≥ x² = f(x). A = ∫₀¹ (x − x²) dx = [x²/2 − x³/3]₀¹ = 1/2 − 1/3 = 1/6 ≈ 0,167 FE.',
@@ -209,7 +209,7 @@ const exercises_int_u4 = {
   'ex-int-4-2-g': {
     id: 'ex-int-4-2-g', lessonId: 'int-4-2', type: 'number-input',
     question: '[PRÜFUNG] Berechne das Volumen des Rotationskörpers, der entsteht, wenn f(x) = 2 auf [0, 3] um die x-Achse gedreht wird. Gib das Ergebnis als Vielfaches von π an.',
-    correctAnswer: 12,
+    correctValue: 12,
     tolerance: 0.01,
     unit: '·π m³',
     explanation: 'V = π·∫₀³ [f(x)]² dx = π·∫₀³ 4 dx = π·[4x]₀³ = 12π m³. Das ist ein Zylinder mit Radius 2 und Länge 3: V = π·r²·l = π·4·3 = 12π ✓',
@@ -278,7 +278,7 @@ const exercises_int_u4 = {
   'ex-int-4-3-b': {
     id: 'ex-int-4-3-b', lessonId: 'int-4-3', type: 'number-input',
     question: '[PRÜFUNG] Berechne $\\int_1^\\infty \\frac{1}{x^2}\\,dx$.',
-    correctAnswer: 1,
+    correctValue: 1,
     tolerance: 0.001,
     unit: '',
     explanation: '$\\int_1^b x^{-2}\\,dx = [-x^{-1}]_1^b = -1/b + 1$. Grenzwert für $b \\to \\infty$: $0 + 1 = 1$. Konvergent.',
@@ -306,7 +306,7 @@ const exercises_int_u4 = {
   'ex-int-4-3-e': {
     id: 'ex-int-4-3-e', lessonId: 'int-4-3', type: 'number-input',
     question: '[PRÜFUNG] Numerische Integration mit Trapezregel: $\\int_0^1 x^2\\,dx$, Schrittweite $h = 0{,}5$ (3 Stützstellen). Berechne den Trapez-Näherungswert.',
-    correctAnswer: 0.375,
+    correctValue: 0.375,
     tolerance: 0.001,
     unit: '',
     explanation: 'Stützstellen: $x_0=0$, $x_1=0{,}5$, $x_2=1$ mit $f$-Werten $0$, $0{,}25$, $1$. Trapez: $T = h \\cdot (f_0/2 + f_1 + f_2/2) = 0{,}5 \\cdot (0 + 0{,}25 + 0{,}5) = 0{,}5 \\cdot 0{,}75 = 0{,}375$. Exakter Wert: $1/3 \\approx 0{,}333$ — Trapez überschätzt bei konvexen Funktionen.',
@@ -342,7 +342,7 @@ const exercises_int_u4 = {
   'ex-int-4-3-h': {
     id: 'ex-int-4-3-h', lessonId: 'int-4-3', type: 'number-input',
     question: '[PRÜFUNG] Berechne $\\int_0^\\infty e^{-x}\\,dx$.',
-    correctAnswer: 1,
+    correctValue: 1,
     tolerance: 0.001,
     unit: '',
     explanation: '$\\int_0^b e^{-x}\\,dx = [-e^{-x}]_0^b = -e^{-b} + 1$. Grenzwert $b \\to \\infty$: $-0 + 1 = 1$. Konvergiert. Diese Form taucht in der Wärmelehre, Diffusion und Wahrscheinlichkeitstheorie ständig auf.',
@@ -358,7 +358,7 @@ const exercises_int_u4 = {
   'ex-int-4-3-j': {
     id: 'ex-int-4-3-j', lessonId: 'int-4-3', type: 'number-input',
     question: '[PRÜFUNG] Berechne $\\int_0^\\infty x \\cdot e^{-x}\\,dx$ (uneigentlich, partielle Integration).',
-    correctAnswer: 1,
+    correctValue: 1,
     tolerance: 0.005,
     unit: '',
     explanation: 'Partielle Integration: $u = x$, $v\' = e^{-x}$, $u\' = 1$, $v = -e^{-x}$. $\\int x e^{-x}\\,dx = -x e^{-x} + \\int e^{-x}\\,dx = -x e^{-x} - e^{-x} = -(x+1)e^{-x}$. Bestimmtes Integral: $[-(x+1)e^{-x}]_0^\\infty = 0 - (-1) = 1$ (mit $\\lim_{x \\to \\infty} (x+1)e^{-x} = 0$).',

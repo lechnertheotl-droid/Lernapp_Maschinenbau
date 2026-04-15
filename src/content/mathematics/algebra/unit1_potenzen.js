@@ -124,13 +124,13 @@ const lessons_alg_u1 = [
 
 | Regel | Formel | Beispiel |
 |-------|--------|---------|
-| Gleiche Basis · | xᵃ · xᵇ = x^(a+b) | x² · x³ = x⁵ |
-| Gleiche Basis ÷ | xᵃ / xᵇ = x^(a−b) | x⁵ / x² = x³ |
-| Potenz der Potenz | (xᵃ)ᵇ = x^(a·b) | (x²)³ = x⁶ |
-| Produkt | (xy)ⁿ = xⁿ·yⁿ | (2x)³ = 8x³ |
-| Negativer Exp. | x⁻ⁿ = 1/xⁿ | x⁻² = 1/x² |
-| Nullter Exp. | x⁰ = 1 | 5⁰ = 1 |
-| Gebroch. Exp. | x^(m/n) = (ⁿ√x)^m | x^(1/2) = √x |`,
+| Gleiche Basis · | $x^{a} \\cdot x^{b} = x^{a+b}$ | $x^{2} \\cdot x^{3} = x^{5}$ |
+| Gleiche Basis ÷ | $\\dfrac{x^{a}}{x^{b}} = x^{a-b}$ | $\\dfrac{x^{5}}{x^{2}} = x^{3}$ |
+| Potenz der Potenz | $(x^{a})^{b} = x^{a \\cdot b}$ | $(x^{2})^{3} = x^{6}$ |
+| Produkt | $(x\\,y)^{n} = x^{n} \\cdot y^{n}$ | $(2x)^{3} = 8x^{3}$ |
+| Negativer Exp. | $x^{-n} = \\dfrac{1}{x^{n}}$ | $x^{-2} = \\dfrac{1}{x^{2}}$ |
+| Nullter Exp. | $x^{0} = 1$ | $5^{0} = 1$ |
+| Gebrochener Exp. | $x^{m/n} = \\sqrt[n]{x^{m}}$ | $x^{1/2} = \\sqrt{x}$ |`,
       },
       { id: 'alg-1-1-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-alg-1-1-a' },
       { id: 'alg-1-1-s3', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-alg-1-1-b' },

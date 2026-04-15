@@ -12,6 +12,7 @@ export const ableitungTopic = {
   color: 'indigo',
   estimatedHours: 7,
   difficulty: 3,
+  level: 'grundlagen',
   units: [abl_unit1, abl_unit2, abl_unit3, abl_unit4],
   prerequisites: ['algebra'],
 }

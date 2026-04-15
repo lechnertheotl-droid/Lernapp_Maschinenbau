@@ -18,7 +18,7 @@ export const exercises_int_u3 = {
   'ex-int-3-1-b': {
     id: 'ex-int-3-1-b', lessonId: 'int-3-1', type: 'number-input',
     question: 'Berechne die Fläche zwischen f(x) = x² und der x-Achse (g(x) = 0) auf dem Intervall [0, 3].',
-    correctAnswer: 9,
+    correctValue: 9,
     tolerance: 0.01,
     unit: '',
     explanation: 'A = ∫₀³ x² dx = [x³/3]₀³ = 27/3 − 0 = 9. Da x² ≥ 0 auf [0,3], ist das Integral direkt die Fläche.',
@@ -27,7 +27,7 @@ export const exercises_int_u3 = {
   'ex-int-3-1-c': {
     id: 'ex-int-3-1-c', lessonId: 'int-3-1', type: 'number-input',
     question: 'Berechne die Fläche zwischen f(x) = x und g(x) = x² auf [0, 1].',
-    correctAnswer: 0.17,
+    correctValue: 0.17,
     tolerance: 0.02,
     unit: '',
     explanation: 'Auf [0,1] gilt x ≥ x² (prüfe z.B. bei x = 0,5: 0,5 > 0,25). A = ∫₀¹ (x − x²) dx = [x²/2 − x³/3]₀¹ = (1/2 − 1/3) − 0 = 3/6 − 2/6 = 1/6 ≈ 0,167.',
@@ -49,7 +49,7 @@ export const exercises_int_u3 = {
   'ex-int-3-1-mastery': {
     id: 'ex-int-3-1-mastery', lessonId: 'int-3-1', type: 'number-input', isMasteryCheck: true,
     question: '[PRÜFUNG] Berechne die Fläche, die von f(x) = 4 − x² und der x-Achse eingeschlossen wird. (Tipp: Nullstellen bei x = ±2)',
-    correctAnswer: 10.67,
+    correctValue: 10.67,
     tolerance: 0.02,
     unit: '',
     explanation: 'Nullstellen: 4 − x² = 0 → x = ±2. Auf [−2, 2] gilt f(x) ≥ 0. A = ∫₋₂² (4 − x²) dx = [4x − x³/3]₋₂² = (8 − 8/3) − (−8 + 8/3) = (16/3) − (−16/3) = 32/3 ≈ 10,67.',
@@ -73,7 +73,7 @@ export const exercises_int_u3 = {
   'ex-int-3-2-b': {
     id: 'ex-int-3-2-b', lessonId: 'int-3-2', type: 'number-input',
     question: 'Berechne das Volumen des Kegels, der entsteht, wenn f(x) = x auf [0, 3] um die x-Achse rotiert. Ergebnis als Vielfaches von π angeben (also V/(π) berechnen).',
-    correctAnswer: 9,
+    correctValue: 9,
     tolerance: 0.01,
     unit: '',
     explanation: 'V = π · ∫₀³ x² dx = π · [x³/3]₀³ = π · (27/3) = 9π. Also V/π = 9. Das ist tatsächlich ein Kegel mit Radius 3 und Höhe 3. Probe mit Kegelformel: V = (1/3)·π·r²·h = (1/3)·π·9·3 = 9π ✓',
@@ -82,7 +82,7 @@ export const exercises_int_u3 = {
   'ex-int-3-2-c': {
     id: 'ex-int-3-2-c', lessonId: 'int-3-2', type: 'number-input',
     question: 'Berechne das Volumen der Kugel mit Radius R = 2 (Halbkreis f(x) = √(4 − x²) um x-Achse rotiert). Ergebnis auf 2 Nachkommastellen.',
-    correctAnswer: 33.51,
+    correctValue: 33.51,
     tolerance: 0.1,
     unit: '',
     explanation: 'V = π · ∫₋₂² (4 − x²) dx = π · [4x − x³/3]₋₂² = π · [(8 − 8/3) − (−8 + 8/3)] = π · 32/3 ≈ 33,51. Probe mit Kugelformel: V = (4/3)·π·r³ = (4/3)·π·8 = 32π/3 ≈ 33,51 ✓',
@@ -91,7 +91,7 @@ export const exercises_int_u3 = {
   'ex-int-3-2-mastery': {
     id: 'ex-int-3-2-mastery', lessonId: 'int-3-2', type: 'number-input', isMasteryCheck: true,
     question: '[PRÜFUNG] f(x) = √x wird auf [0, 4] um die x-Achse rotiert. Berechne V/π.',
-    correctAnswer: 8,
+    correctValue: 8,
     tolerance: 0.01,
     unit: '',
     explanation: 'V = π · ∫₀⁴ (√x)² dx = π · ∫₀⁴ x dx = π · [x²/2]₀⁴ = π · (16/2) = 8π. Also V/π = 8.',
@@ -115,7 +115,7 @@ export const exercises_int_u3 = {
   'ex-int-3-3-b': {
     id: 'ex-int-3-3-b', lessonId: 'int-3-3', type: 'number-input',
     question: 'Eine Feder hat die Federkraft F(x) = 200·x [N] (Hookesches Gesetz mit k = 200 N/m). Berechne die Arbeit (in Joule), um die Feder von x = 0 auf x = 0,1 m zu dehnen.',
-    correctAnswer: 1,
+    correctValue: 1,
     tolerance: 0.01,
     unit: '',
     explanation: 'W = ∫₀^0,1 200x dx = 200 · [x²/2]₀^0,1 = 200 · (0,01/2) = 200 · 0,005 = 1 J. Alternativ: W = (1/2)·k·x² = (1/2)·200·0,01 = 1 J.',
@@ -137,7 +137,7 @@ export const exercises_int_u3 = {
   'ex-int-3-3-mastery': {
     id: 'ex-int-3-3-mastery', lessonId: 'int-3-3', type: 'number-input', isMasteryCheck: true,
     question: '[PRÜFUNG] Eine Kraft F(x) = 3x² [N] wirkt auf einen Körper von x = 0 bis x = 2 m. Berechne die verrichtete Arbeit W in Joule.',
-    correctAnswer: 8,
+    correctValue: 8,
     tolerance: 0.01,
     unit: '',
     explanation: 'W = ∫₀² 3x² dx = [x³]₀² = 8 − 0 = 8 J.',

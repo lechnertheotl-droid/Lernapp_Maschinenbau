@@ -78,6 +78,7 @@ export const statistikTopic = {
   color: 'emerald',
   estimatedHours: 3,
   difficulty: 3,
+  level: 'vertiefung',
   units: [unit1, unit2],
   prerequisites: ['algebra', 'integralrechnung'],
 }

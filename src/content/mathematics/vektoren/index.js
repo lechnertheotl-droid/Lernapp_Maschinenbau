@@ -11,6 +11,7 @@ export const vektorenTopic = {
   color: 'purple',
   estimatedHours: 6,
   difficulty: 2,
+  level: 'grundlagen',
   units: [vek_unit1, vek_unit2, vek_unit3],
   prerequisites: [],
 }

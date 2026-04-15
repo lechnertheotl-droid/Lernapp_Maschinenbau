@@ -11,6 +11,7 @@ export const lineareAlgebraTopic = {
   color: 'teal',
   estimatedHours: 5,
   difficulty: 3,
+  level: 'vertiefung',
   units: [la_unit1, la_unit2, la_unit3],
   prerequisites: ['algebra'],
 }

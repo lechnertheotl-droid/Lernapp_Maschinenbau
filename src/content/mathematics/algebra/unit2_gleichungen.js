@@ -13,7 +13,7 @@ export const exercises_alg_u2 = {
   'ex-alg-2-1-b': {
     id: 'ex-alg-2-1-b', lessonId: 'alg-2-1', type: 'number-input',
     question: 'Löse: 5x − 3 = 2x + 9',
-    correctAnswer: 4,
+    correctValue: 4,
     tolerance: 0.01,
     unit: '',
     explanation: '5x − 3 = 2x + 9 → 3x = 12 → x = 4. Probe: 5·4−3 = 17, 2·4+9 = 17 ✓',
@@ -38,7 +38,7 @@ export const exercises_alg_u2 = {
   'ex-alg-2-1-mastery': {
     id: 'ex-alg-2-1-mastery', lessonId: 'alg-2-1', type: 'number-input', isMasteryCheck: true,
     question: '[PRÜFUNG] Löse: (2x + 1)/3 = (x − 2)/2 + 1. Gib x an.',
-    correctAnswer: -2,
+    correctValue: -2,
     tolerance: 0,
     unit: '',
     explanation: 'Hauptnenner 6: 2(2x+1) = 3(x−2) + 6 → 4x+2 = 3x−6+6 = 3x → x = −2. Probe: links (−4+1)/3 = −1, rechts (−2−2)/2 + 1 = −1.',
@@ -65,7 +65,7 @@ export const exercises_alg_u2 = {
   'ex-alg-2-2-c': {
     id: 'ex-alg-2-2-c', lessonId: 'alg-2-2', type: 'number-input',
     question: 'Löse mit der p-q-Formel: x² + 4x − 5 = 0. Gib die POSITIVE Lösung an.',
-    correctAnswer: 1,
+    correctValue: 1,
     tolerance: 0.01,
     unit: '',
     explanation: 'p = 4, q = −5. x = −2 ± √(4+5) = −2 ± 3. x₁ = 1, x₂ = −5. Positive Lösung: x = 1.',
@@ -95,7 +95,7 @@ export const exercises_alg_u2 = {
   'ex-alg-2-2-mastery': {
     id: 'ex-alg-2-2-mastery', lessonId: 'alg-2-2', type: 'number-input', isMasteryCheck: true,
     question: '[PRÜFUNG] Löse: 2x² − 8x + 6 = 0. Gib die GRÖSSERE Lösung an.',
-    correctAnswer: 3,
+    correctValue: 3,
     tolerance: 0.01,
     unit: '',
     explanation: 'Durch 2 teilen: x² − 4x + 3 = 0. p-q-Formel: x = 2 ± √(4−3) = 2 ± 1. x₁ = 3, x₂ = 1. Größere Lösung: 3.',
