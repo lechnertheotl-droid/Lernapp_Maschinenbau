@@ -36,7 +36,48 @@ const unit1 = makeUnit({
       masteryExplanation:
         'Bis zur Streckgrenze $R_e$ federt die Probe zurück (elastisch). Ab $R_e$ bleibt nach Entlastung eine plastische Verformung. ' +
         '$R_m$ ist die höchste Spannung (kommt später), $A$ die Bruchdehnung, $E$ die Steigung im elastischen Bereich.',
-      masteryHints: ['Übergang elastisch → plastisch = ab wann „bleibende" Verformung.'],
+      masteryHints: [
+        'Übergang elastisch → plastisch = ab wann bleibt Verformung dauerhaft.',
+        '$R_e$ ist die **Streckgrenze** — vor ihr federt alles zurück.',
+        '$R_m$ kommt erst nach $R_e$ — es ist das Maximum, nicht der Übergang.',
+      ],
+      nextLessonId: 'werk-1-2',
+    }),
+    makeLesson({
+      id: 'werk-1-2',
+      title: 'Werkstoffgruppen',
+      estimatedMinutes: 14,
+      learningGoals: [
+        'Stahl, Aluminium, Kunststoff und Keramik qualitativ vergleichen',
+        'Anwendungsgebiete aus Werkstoffeigenschaften ableiten',
+      ],
+      createdAt: '2026-04-16',
+      intuitionTitle: 'Welcher Werkstoff für welchen Job?',
+      intuitionContent:
+        '**Metalle** (Stahl, Alu, Kupfer) sind zäh und gut verformbar — ideal für tragende Bauteile.\n\n' +
+        '**Keramiken** (Al₂O₃, SiC) sind sehr hart und hitzebeständig, aber spröde — kein Zug!\n\n' +
+        '**Kunststoffe** (PA, PTFE, POM) sind leicht und korrosionsbeständig, aber weniger steif.\n\n' +
+        '**Verbundwerkstoffe** (CFK, GFK) kombinieren hohe Steifigkeit mit geringem Gewicht.',
+      formulaTitle: 'Vergleichskennwerte',
+      formulaContent:
+        '| Werkstoff | E-Modul | $R_m$ | Dichte |\n' +
+        '|---|---|---|---|\n' +
+        '| Stahl S235 | 210 GPa | 360–510 MPa | 7,85 g/cm³ |\n' +
+        '| Alu 6060 | 70 GPa | 150–195 MPa | 2,70 g/cm³ |\n' +
+        '| Nylon (PA6) | 3 GPa | 70–80 MPa | 1,14 g/cm³ |\n' +
+        '| Al₂O₃ | 380 GPa | (Druck: ~2000 MPa) | 3,9 g/cm³ |\n\n' +
+        '**Spezifische Steifigkeit** = $E/\\rho$ — wichtig für Leichtbau.',
+      masteryQuestion: 'Welcher Werkstoff ist für eine hochtemperaturfeste, verschleißarme Gleitführung am besten geeignet?',
+      masteryOptions: ['Polyethylen (PE)', 'Stahl S235', 'Aluminiumoxid-Keramik (Al₂O₃)', 'Kupfer'],
+      correctIndex: 2,
+      masteryExplanation:
+        'Keramiken wie Al₂O₃ sind extrem hart (hohe Verschleißfestigkeit) und hitzebeständig bis über 1000 °C. ' +
+        'Kunststoffe erweichen bei hohen Temperaturen, Stahl und Kupfer haben zu geringe Härte für Gleitführungen unter extremer Belastung.',
+      masteryHints: [
+        'Hohe Temperatur + hohe Verschleißfestigkeit → Keramik.',
+        'Kunststoffe erweichen bei ca. 100–250 °C.',
+        'Keramiken sind hart und hitzebeständig, aber spröde.',
+      ],
       nextLessonId: 'werk-pruefung-1',
     }),
   ],
@@ -78,7 +119,11 @@ const unit2 = makeUnit({
       masteryOptions: ['$200$', '$800$', '$400$', '$100$'],
       correctIndex: 0,
       masteryExplanation: '$\\sigma_\\text{zul} = R_m/S = 400/2 = 200$ MPa.',
-      masteryHints: ['Sicherheitszahl steht im Nenner.'],
+      masteryHints: [
+        'Sicherheitszahl $S$ steht im Nenner: $\\sigma_\\text{zul} = R_m / S$.',
+        '$R_m = 400$ MPa, $S = 2$ → $400/2$.',
+        'Ergebnis: 200 MPa — nicht 800 (das wäre Produkt, nicht Quotient).',
+      ],
       prerequisites: ['werk-1-1'],
       nextLessonId: null,
     }),

@@ -27,7 +27,11 @@ const unit1 = makeUnit({
       masteryOptions: ['$3{,}5$', '$3$', '$6$', '$1$'],
       correctIndex: 0,
       masteryExplanation: '$E(X) = \\frac{1+2+3+4+5+6}{6} = 21/6 = 3{,}5$.',
-      masteryHints: ['Mittelwert aller Werte bei gleicher Wahrscheinlichkeit.'],
+      masteryHints: [
+        '$E(X) = \\sum_i x_i p_i$ — Werte mit Wahrscheinlichkeit gewichtet.',
+        'Gleichwahrscheinlich: $p_i = 1/6$ für jeden Würfelwert.',
+        '$(1+2+3+4+5+6) \\cdot (1/6) = 21/6 = 3{,}5$.',
+      ],
       masteryVisualization: {
         id: 'number-line',
         params: {
@@ -74,6 +78,7 @@ const unit1 = makeUnit({
       masteryHints: [
         '$\\sigma = \\sqrt{\\sigma^2} = \\sqrt{4} = 2$.',
         '95\\,% entspricht $\\mu \\pm 2\\sigma$.',
+        '$\\mu \\pm 2\\sigma = 10 \\pm 4 = [6, 14]$.',
       ],
       masteryVisualization: {
         id: 'bell-curve',
@@ -128,6 +133,7 @@ const unit1 = makeUnit({
       masteryHints: [
         'Vergleich: p-Wert vs. Signifikanzniveau $\\alpha$.',
         'Kleiner p-Wert = stärkere Evidenz gegen $H_0$.',
+        '$p = 0{,}03 < \\alpha = 0{,}05$: signifikant, $H_0$ ablehnen.',
       ],
       masteryVisualization: {
         id: 'bell-curve',
@@ -176,7 +182,11 @@ const unit2 = makeUnit({
       masteryOptions: ['$6$', '$5$', '$7$', '$4{,}5$'],
       correctIndex: 0,
       masteryExplanation: '$\\bar x = (4+5+6+7+8)/5 = 30/5 = 6$.',
-      masteryHints: ['Summe durch Anzahl.'],
+      masteryHints: [
+        'Mittelwert: Summe aller Werte geteilt durch Anzahl.',
+        'Summe: $4+5+6+7+8 = 30$.',
+        '$\\bar x = 30/5 = 6$.',
+      ],
       masteryVisualization: {
         id: 'bell-curve',
         params: {
@@ -190,6 +200,121 @@ const unit2 = makeUnit({
         alt: 'Glockenkurve mit Mittelwert 6 und schattiertem Konfidenzintervall',
       },
       prerequisites: ['stat-1-3'],
+      nextLessonId: 'stat-pruefung-2',
+    }),
+    makeLesson({
+      id: 'stat-pruefung-2',
+      title: 'Prüfung: Normalverteilung & Standardisierung',
+      estimatedMinutes: 22,
+      isExam: true,
+      learningGoals: [
+        '[PRÜFUNG] Standardisierung $Z=(X-\\mu)/\\sigma$ durchführen',
+        '[PRÜFUNG] Wahrscheinlichkeiten mit $\\Phi$-Tabelle berechnen',
+        '[PRÜFUNG] 68-95-99,7%-Regel anwenden',
+      ],
+      createdAt: '2026-04-16',
+      intuitionTitle: 'Umrechnen auf N(0,1)',
+      intuitionContent:
+        'Jede Normalverteilung $X \\sim N(\\mu, \\sigma^2)$ lässt sich durch Standardisierung ' +
+        'auf die **Standardnormalverteilung** $Z \\sim N(0,1)$ zurückführen.\n\n' +
+        'Wahrscheinlichkeiten liest man dann aus der $\\Phi$-Tabelle ab: ' +
+        '$P(X \\leq x) = \\Phi\\!\\left(\\frac{x-\\mu}{\\sigma}\\right)$.\n\n' +
+        '**68-95-99,7-Regel:** $P(\\mu-k\\sigma \\leq X \\leq \\mu+k\\sigma)$ für $k=1,2,3$.',
+      formulaTitle: 'Standardisierung & Wahrscheinlichkeiten',
+      formulaContent:
+        '**Standardisierung:** $Z = \\dfrac{X - \\mu}{\\sigma}$\n\n' +
+        '**Wahrscheinlichkeit:**\n' +
+        '$$P(a \\leq X \\leq b) = \\Phi\\!\\left(\\frac{b-\\mu}{\\sigma}\\right) - \\Phi\\!\\left(\\frac{a-\\mu}{\\sigma}\\right)$$\n\n' +
+        '**Symmetrie:** $\\Phi(-z) = 1 - \\Phi(z)$\n\n' +
+        '**Wichtige Quantile:** $\\Phi(1{,}645) = 0{,}95$, $\\Phi(1{,}96) = 0{,}975$, $\\Phi(2{,}576) = 0{,}995$',
+      masteryQuestion:
+        '[PRÜFUNG] $X \\sim N(5, 1)$. Wie groß ist $P(X > 6)$?',
+      masteryOptions: [
+        '$\\approx 0{,}159$ (= $1-\\Phi(1)$)',
+        '$\\approx 0{,}841$',
+        '$\\approx 0{,}500$',
+        '$\\approx 0{,}023$',
+      ],
+      correctIndex: 0,
+      masteryExplanation:
+        'Standardisierung: $z = (6-5)/1 = 1$. $P(X > 6) = 1 - \\Phi(1) \\approx 1 - 0{,}841 = 0{,}159$. ' +
+        'Nach der 68%-Regel liegen 68% der Werte in $[\\mu \\pm \\sigma]$, also $32\%/2 = 16\\%$ oberhalb $\\mu+\\sigma$.',
+      masteryHints: [
+        'Standardisieren: $z = (x - \\mu)/\\sigma = (6-5)/1 = 1$.',
+        '$P(X > 6) = P(Z > 1) = 1 - \\Phi(1)$.',
+        '$\\Phi(1) \\approx 0{,}841$, also $P(X>6) \\approx 1 - 0{,}841 = 0{,}159$.',
+      ],
+      masteryVisualization: {
+        id: 'bell-curve',
+        params: {
+          mu: 5,
+          sigma: 1,
+          xRange: [1, 9],
+          shade: [6, 9],
+          showBands: true,
+        },
+        caption: 'N(5,1): schattierter Bereich P(X>6) ≈ 15,9%',
+        alt: 'Glockenkurve N(5,1) mit schattiertem Bereich rechts von x=6',
+      },
+      prerequisites: ['stat-pruefung-1'],
+      nextLessonId: 'stat-pruefung-3',
+    }),
+    makeLesson({
+      id: 'stat-pruefung-3',
+      title: 'Prüfung: Konfidenzintervall & Gesamtaufgaben',
+      estimatedMinutes: 22,
+      isExam: true,
+      learningGoals: [
+        '[PRÜFUNG] 95%-Konfidenzintervall für Mittelwert berechnen',
+        '[PRÜFUNG] Stichprobenmittel und -standardabweichung berechnen',
+        '[PRÜFUNG] Stichprobenumfang für gewünschte Präzision bestimmen',
+      ],
+      createdAt: '2026-04-16',
+      intuitionTitle: 'Wie präzise ist der geschätzte Mittelwert?',
+      intuitionContent:
+        'Aus einer Stichprobe vom Umfang $n$ schätzt man den wahren Mittelwert $\\mu$. ' +
+        'Das **95%-Konfidenzintervall** gibt den Bereich an, ' +
+        'in dem $\\mu$ mit 95%iger Wahrscheinlichkeit liegt.\n\n' +
+        '**Je größer $n$, desto enger das Intervall** — Faktor $1/\\sqrt{n}$.\n\n' +
+        '**Stichprobenumfang** für Halbbreite $\\Delta$: $n \\geq (1{,}96 \\cdot \\sigma/\\Delta)^2$.',
+      formulaTitle: 'KI und Stichprobenumfang',
+      formulaContent:
+        '**Stichprobenmittel und -standardabweichung:**\n' +
+        '$$\\bar x = \\frac{1}{n}\\sum_{i=1}^n x_i, \\qquad s = \\sqrt{\\frac{1}{n-1}\\sum_{i=1}^n(x_i-\\bar x)^2}$$\n\n' +
+        '**95%-Konfidenzintervall** (bekanntes $\\sigma$):\n' +
+        '$$\\left[\\bar x - 1{,}96\\frac{\\sigma}{\\sqrt{n}},\\; \\bar x + 1{,}96\\frac{\\sigma}{\\sqrt{n}}\\right]$$\n\n' +
+        '**Stichprobenumfang** für Halbbreite $\\leq \\Delta$:\n' +
+        '$$n \\geq \\left(\\frac{1{,}96 \\cdot \\sigma}{\\Delta}\\right)^2$$',
+      masteryQuestion:
+        '[PRÜFUNG] $\\bar x = 10$, $\\sigma = 2$, $n = 100$. 95%-Konfidenzintervall?',
+      masteryOptions: [
+        '$[9{,}608;\\; 10{,}392]$',
+        '$[8{,}04;\\; 11{,}96]$',
+        '$[9{,}5;\\; 10{,}5]$',
+        '$[10 \\pm 2]$',
+      ],
+      correctIndex: 0,
+      masteryExplanation:
+        '$1{,}96 \\cdot \\sigma/\\sqrt{n} = 1{,}96 \\cdot 2/\\sqrt{100} = 1{,}96 \\cdot 0{,}2 = 0{,}392$. ' +
+        'KI: $[10 - 0{,}392;\\; 10 + 0{,}392] = [9{,}608;\\; 10{,}392]$.',
+      masteryHints: [
+        'Halbbreite: $1{,}96 \\cdot \\sigma / \\sqrt{n}$.',
+        '$\\sigma/\\sqrt{n} = 2/\\sqrt{100} = 2/10 = 0{,}2$.',
+        '$1{,}96 \\cdot 0{,}2 = 0{,}392$, also KI: $10 \\pm 0{,}392$.',
+      ],
+      masteryVisualization: {
+        id: 'bell-curve',
+        params: {
+          mu: 10,
+          sigma: 0.2,
+          xRange: [9, 11],
+          shade: [9.608, 10.392],
+          showBands: false,
+        },
+        caption: '95%-KI: [9,608; 10,392] — Sampling-Verteilung des Mittelwerts',
+        alt: 'Schmale Glockenkurve der Stichprobenverteilung mit schattiertem 95%-KI',
+      },
+      prerequisites: ['stat-pruefung-2'],
       nextLessonId: null,
     }),
   ],

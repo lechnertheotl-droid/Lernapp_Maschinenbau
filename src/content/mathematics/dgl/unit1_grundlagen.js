@@ -12,7 +12,11 @@ export const exercises_dgl_u1 = {
     ],
     correctIndex: 1,
     explanation: 'Eine DGL enthält eine gesuchte Funktion y(x) und mindestens eine ihrer Ableitungen y\', y\'\', ... Das Ziel: die Funktion y(x) finden!',
-    hints: ['Das Wort "Differential" bezieht sich auf die Ableitung (den Differentialquotienten).'],
+    hints: [
+      'Was bedeutet das Wort "Differential" mathematisch?',
+      'Es bezieht sich auf die Ableitung (Differentialquotient).',
+      'Eine DGL verbindet eine Funktion mit ihren Ableitungen.',
+    ],
   },
   'ex-dgl-1-1-b': {
     id: 'ex-dgl-1-1-b', lessonId: 'dgl-1-1', type: 'multiple-choice',
@@ -20,14 +24,22 @@ export const exercises_dgl_u1 = {
     options: ['Ordnung 0', 'Ordnung 1', 'Ordnung 2', 'Ordnung 3'],
     correctIndex: 2,
     explanation: 'Die Ordnung einer DGL ist die höchste vorkommende Ableitung. Hier ist $y\'\'$ (zweite Ableitung) die höchste, also Ordnung 2.',
-    hints: ['Zähle die Striche bei der höchsten Ableitung: y\'\' hat zwei Striche.'],
+    hints: [
+      'Welche ist die höchste vorkommende Ableitung in der DGL?',
+      'Zähle die Striche: $y\'$ ist 1. Ordnung, $y\'\'$ ist 2. Ordnung.',
+      'Die höchste Ableitung in $y\'\' + 3y\' - 2y$ ist $y\'\'$ — also Ordnung 2.',
+    ],
   },
   'ex-dgl-1-1-c': {
     id: 'ex-dgl-1-1-c', lessonId: 'dgl-1-1', type: 'true-false',
     statement: 'Die DGL $y\' = y^2 + x$ ist linear.',
     correct: false,
     explanation: 'Die DGL ist nichtlinear, weil $y^2$ vorkommt. Bei einer linearen DGL darf y und seine Ableitungen nur in der 1. Potenz auftreten (also $y$, $y\'$, $y\'\'$, ... aber nicht $y^2$, $\\sin(y)$, $e^y$, ...).',
-    hints: ['Linear bedeutet: y und seine Ableitungen kommen nur in der 1. Potenz vor.'],
+    hints: [
+      'Was bedeutet "linear" im DGL-Kontext?',
+      '$y$ und alle Ableitungen dürfen nur in der 1. Potenz vorkommen.',
+      'Ist $y^2$ in der DGL? Dann ist sie nichtlinear.',
+    ],
   },
   'ex-dgl-1-1-mastery': {
     id: 'ex-dgl-1-1-mastery', lessonId: 'dgl-1-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -40,7 +52,11 @@ export const exercises_dgl_u1 = {
     ],
     correctIndex: 1,
     explanation: 'Ein AWP besteht aus einer DGL zusammen mit Anfangsbedingungen, z.B. $y(0) = 1$. Die Anfangsbedingung wählt eine bestimmte Lösung aus der allgemeinen Lösungsfamilie aus.',
-    hints: ['Die DGL allein hat unendlich viele Lösungen. Die Anfangsbedingung fixiert die Konstante C.'],
+    hints: [
+      'Was unterscheidet eine "allgemeine Lösung" von einer "speziellen Lösung"?',
+      'Die DGL allein hat unendlich viele Lösungen mit Konstante $C$.',
+      'Die Anfangsbedingung wählt aus dieser Schar genau eine Lösung aus, indem sie $C$ fixiert.',
+    ],
   },
 
   'ex-dgl-1-2-a': {
@@ -54,7 +70,11 @@ export const exercises_dgl_u1 = {
     ],
     correctIndex: 0,
     explanation: 'Man trennt die Variablen: alles mit y auf eine Seite, alles mit x auf die andere. Dann integriert man beide Seiten: $\\int \\frac{dy}{h(y)} = \\int g(x)\\,dx$.',
-    hints: ['Alle y-Terme (inkl. dy) nach links, alle x-Terme (inkl. dx) nach rechts.'],
+    hints: [
+      'Was ist die Idee bei "Trennung der Variablen"?',
+      'Alle $y$-Terme (inkl. $dy$) auf eine Seite, alle $x$-Terme (inkl. $dx$) auf die andere.',
+      'Aus $\\frac{dy}{dx} = g(x) \\cdot h(y)$ folgt nach Umordnen: $\\frac{dy}{h(y)} = g(x)\\,dx$.',
+    ],
   },
   'ex-dgl-1-2-b': {
     id: 'ex-dgl-1-2-b', lessonId: 'dgl-1-2', type: 'multiple-choice',
@@ -67,7 +87,11 @@ export const exercises_dgl_u1 = {
     ],
     correctIndex: 1,
     explanation: 'Trennung: $\\frac{dy}{y} = x\\,dx$. Integration: $\\ln|y| = \\frac{x^2}{2} + C_1$. Auflösen: $y = Ce^{x^2/2}$ mit $C = \\pm e^{C_1}$.',
-    hints: ['Schritt 1: $\\frac{dy}{y} = x\\,dx$. Schritt 2: Beide Seiten integrieren.'],
+    hints: [
+      'Trenne die Variablen: $y$-Terme links, $x$-Terme rechts.',
+      'Schritt 1: $\\frac{dy}{y} = x\\,dx$.',
+      'Schritt 2: Beide Seiten integrieren — links $\\ln|y|$, rechts $x^2/2 + C$.',
+    ],
     visualization: {
       id: 'function-graph',
       params: {
@@ -92,7 +116,11 @@ export const exercises_dgl_u1 = {
     tolerance: 0.1,
     unit: '',
     explanation: 'Trennung: $\\frac{dy}{y} = 2\\,dx \\Rightarrow \\ln|y| = 2x + C_1 \\Rightarrow y = Ce^{2x}$. Anfangsbedingung: $y(0) = C = 3$. Also $y(1) = 3e^2 \\approx 22.17$.',
-    hints: ['Allgemeine Lösung: $y = Ce^{2x}$. Setze $x = 0$ ein, um C zu bestimmen.'],
+    hints: [
+      'Trennung der Variablen liefert die allgemeine Lösung.',
+      'Form: $y = Ce^{2x}$. Setze $x=0$ ein, um $C$ zu bestimmen.',
+      'Mit $C = 3$: $y(1) = 3 e^{2} \\approx 22{,}17$.',
+    ],
   },
   'ex-dgl-1-2-mastery': {
     id: 'ex-dgl-1-2-mastery', lessonId: 'dgl-1-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -105,7 +133,11 @@ export const exercises_dgl_u1 = {
     ],
     correctIndex: 1,
     explanation: 'Trennung: $\\frac{dy}{y} = -3\\,dx \\Rightarrow \\ln|y| = -3x + C_1 \\Rightarrow y = Ce^{-3x}$. AWP: $y(0) = C = 5$. Also $y = 5e^{-3x}$.',
-    hints: ['Trennung der Variablen anwenden. Dann C aus der Anfangsbedingung bestimmen.'],
+    hints: [
+      'Trennung der Variablen: $\\frac{dy}{y} = -3 \\, dx$.',
+      'Integrieren ergibt $\\ln|y| = -3x + C_1$, also $y = Ce^{-3x}$.',
+      'Aus $y(0) = 5$ folgt $C = 5$.',
+    ],
     visualization: {
       id: 'function-graph',
       params: {
@@ -134,7 +166,11 @@ export const exercises_dgl_u1 = {
     ],
     correctIndex: 1,
     explanation: 'Die Standardform ist $y\' + p(x) \\cdot y = q(x)$. Dabei heißt $q(x)$ die Störfunktion. Für $q(x) = 0$ ist die DGL homogen.',
-    hints: ['Linear 1. Ordnung: y und y\' kommen nur in der 1. Potenz vor, höchste Ableitung ist y\'.'],
+    hints: [
+      'Wie sieht die kanonische Form einer linearen DGL 1. Ordnung aus?',
+      'Standardform: $y\' + p(x) \\cdot y = q(x)$ — höchste Ableitung $y\'$, Koeffizienten von $x$ abhängig.',
+      'Falls $q(x) = 0$: homogen; sonst inhomogen.',
+    ],
   },
   'ex-dgl-1-3-b': {
     id: 'ex-dgl-1-3-b', lessonId: 'dgl-1-3', type: 'multiple-choice',
@@ -147,7 +183,11 @@ export const exercises_dgl_u1 = {
     ],
     correctIndex: 1,
     explanation: 'Der integrierende Faktor ist $\\mu(x) = e^{\\int p(x)\\,dx}$. Multipliziert man die DGL mit $\\mu$, wird die linke Seite zu $(\\mu \\cdot y)\' = \\mu \\cdot q$.',
-    hints: ['Der integrierende Faktor hängt nur von $p(x)$ ab, nicht von $q(x)$.'],
+    hints: [
+      'Welche Funktion macht $y\' + p y$ zu einer Ableitung eines Produkts?',
+      'Trick: $\\mu \\cdot y\' + \\mu \\cdot p \\cdot y = (\\mu \\cdot y)\'$, wenn $\\mu\' = \\mu \\cdot p$.',
+      'Diese DGL für $\\mu$ hat die Lösung $\\mu = e^{\\int p \\, dx}$.',
+    ],
   },
   'ex-dgl-1-3-c': {
     id: 'ex-dgl-1-3-c', lessonId: 'dgl-1-3', type: 'multiple-choice',
@@ -160,7 +200,11 @@ export const exercises_dgl_u1 = {
     ],
     correctIndex: 1,
     explanation: 'Homogene lineare DGL: $y\' = -2y$. Lösung: $y = Ce^{-2x}$. Alternativ: $\\mu = e^{2x}$, dann $(e^{2x} \\cdot y)\' = 0 \\Rightarrow y = Ce^{-2x}$.',
-    hints: ['Homogene DGL $y\' + py = 0$ hat die Lösung $y = Ce^{-\\int p\\,dx}$.'],
+    hints: [
+      'Erkenne die Form: homogen mit konstantem Koeffizienten.',
+      'Trennung der Variablen: $\\frac{dy}{y} = -2 \\, dx$ → $\\ln|y| = -2x + C_1$.',
+      'Auflösen: $y = Ce^{-2x}$. Achte auf das negative Vorzeichen im Exponenten.',
+    ],
   },
   'ex-dgl-1-3-d': {
     id: 'ex-dgl-1-3-d', lessonId: 'dgl-1-3', type: 'number-input',
@@ -169,7 +213,11 @@ export const exercises_dgl_u1 = {
     tolerance: 0.1,
     unit: '',
     explanation: '$\\mu = e^x$. $(e^x y)\' = 3e^x \\Rightarrow e^x y = 3e^x + C \\Rightarrow y = 3 + Ce^{-x}$. AWP: $y(0) = 1 = 3 + C \\Rightarrow C = -2$. Also $y(x) = 3 - 2e^{-x}$, $y(1) = 3 - 2e^{-1} \\approx 2.26$.',
-    hints: ['Integrierender Faktor: $\\mu = e^{\\int 1\\,dx} = e^x$.'],
+    hints: [
+      'Erst integrierenden Faktor $\\mu = e^{\\int p \\, dx}$ berechnen.',
+      'Hier $p(x) = 1$ → $\\mu = e^x$. Dann $(e^x y)\' = 3 e^x$ integrieren.',
+      'Allgemein: $y = 3 + Ce^{-x}$. Mit $y(0) = 1$ folgt $C = -2$, also $y(1) = 3 - 2/e \\approx 2{,}26$.',
+    ],
   },
   'ex-dgl-1-3-mastery': {
     id: 'ex-dgl-1-3-mastery', lessonId: 'dgl-1-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -182,7 +230,11 @@ export const exercises_dgl_u1 = {
     ],
     correctIndex: 0,
     explanation: 'Homogene Lösung: $y_h = Ce^{3x}$. Partikuläre Lösung (Ansatz $y_p = \\text{const}$): $0 - 3y_p = 6 \\Rightarrow y_p = -2$. Allgemein: $y = Ce^{3x} - 2$.',
-    hints: ['Homogene Lösung + partikuläre Lösung = allgemeine Lösung.'],
+    hints: [
+      'Strategie: Homogene Lösung + partikuläre Lösung = allgemeine Lösung.',
+      'Homogen: $y_h\' - 3y_h = 0 \\Rightarrow y_h = Ce^{3x}$.',
+      'Partikulär: Ansatz $y_p = \\text{const}$, einsetzen in $y\' - 3y = 6$ ergibt $y_p = -2$.',
+    ],
   },
 
   'ex-dgl-1-4-a': {
@@ -196,7 +248,11 @@ export const exercises_dgl_u1 = {
     ],
     correctIndex: 1,
     explanation: 'Einsetzen von $y = e^{\\lambda x}$, $y\' = \\lambda e^{\\lambda x}$, $y\'\' = \\lambda^2 e^{\\lambda x}$ ergibt nach Kürzen von $e^{\\lambda x}$: $a\\lambda^2 + b\\lambda + c = 0$ (charakteristische Gleichung).',
-    hints: ['$y = e^{\\lambda x}$ einsetzen und $e^{\\lambda x} \\neq 0$ kürzen.'],
+    hints: [
+      'Setze den Exponentialansatz $y = e^{\\lambda x}$ in die DGL ein.',
+      '$y\' = \\lambda e^{\\lambda x}$, $y\'\' = \\lambda^2 e^{\\lambda x}$ — alles enthält Faktor $e^{\\lambda x}$.',
+      'Kürzen mit $e^{\\lambda x} \\neq 0$ liefert die quadratische Gleichung in $\\lambda$.',
+    ],
   },
   'ex-dgl-1-4-b': {
     id: 'ex-dgl-1-4-b', lessonId: 'dgl-1-4', type: 'multiple-choice',
@@ -209,7 +265,11 @@ export const exercises_dgl_u1 = {
     ],
     correctIndex: 1,
     explanation: 'Bei komplexen Wurzeln $\\alpha \\pm i\\beta$ ist die reelle Lösung: $y = e^{\\alpha x}(C_1 \\cos(\\beta x) + C_2 \\sin(\\beta x))$. Das beschreibt eine Schwingung (sin/cos) mit Dämpfung ($e^{\\alpha x}$).',
-    hints: ['Komplexe Wurzeln → Schwingung! $\\alpha$ bestimmt die Dämpfung, $\\beta$ die Frequenz.'],
+    hints: [
+      'Komplexe Wurzeln $\\Rightarrow$ Schwingungsverhalten.',
+      '$\\alpha$ ist der Realteil — bestimmt die exponentielle Dämpfung ($e^{\\alpha x}$).',
+      '$\\beta$ ist der Imaginärteil — bestimmt die Kreisfrequenz von $\\sin$ und $\\cos$.',
+    ],
   },
   'ex-dgl-1-4-c': {
     id: 'ex-dgl-1-4-c', lessonId: 'dgl-1-4', type: 'multiple-choice',
@@ -222,7 +282,11 @@ export const exercises_dgl_u1 = {
     ],
     correctIndex: 1,
     explanation: 'Charakteristische Gleichung: $\\lambda^2 + 4 = 0 \\Rightarrow \\lambda = \\pm 2i$. Also $\\alpha = 0$, $\\beta = 2$. Lösung: $y = C_1 \\cos(2x) + C_2 \\sin(2x)$ (reine Schwingung ohne Dämpfung).',
-    hints: ['$\\lambda^2 = -4 \\Rightarrow \\lambda = \\pm 2i$. Rein imaginär → ungedämpfte Schwingung.'],
+    hints: [
+      'Charakteristische Gleichung: $\\lambda^2 + 4 = 0$.',
+      '$\\lambda^2 = -4 \\Rightarrow \\lambda = \\pm 2i$ (rein imaginär, $\\alpha = 0$).',
+      'Rein imaginäre Wurzeln → ungedämpfte Schwingung mit Frequenz $\\beta = 2$.',
+    ],
   },
   'ex-dgl-1-4-mastery': {
     id: 'ex-dgl-1-4-mastery', lessonId: 'dgl-1-4', type: 'multiple-choice', isMasteryCheck: true,
@@ -235,7 +299,11 @@ export const exercises_dgl_u1 = {
     ],
     correctIndex: 0,
     explanation: 'Charakteristische Gleichung: $\\lambda^2 - 5\\lambda + 6 = 0 \\Rightarrow (\\lambda - 2)(\\lambda - 3) = 0 \\Rightarrow \\lambda_1 = 2, \\lambda_2 = 3$. Zwei verschiedene reelle Wurzeln → $y = C_1 e^{2x} + C_2 e^{3x}$.',
-    hints: ['$\\lambda^2 - 5\\lambda + 6 = 0$ mit pq-Formel oder Vieta lösen.'],
+    hints: [
+      'Charakteristische Gleichung: $\\lambda^2 - 5\\lambda + 6 = 0$.',
+      'Faktorisieren: $(\\lambda - 2)(\\lambda - 3) = 0$ (oder pq-Formel) → $\\lambda_1 = 2, \\lambda_2 = 3$.',
+      'Zwei verschiedene reelle Wurzeln → $y = C_1 e^{2x} + C_2 e^{3x}$.',
+    ],
   },
 }
 

@@ -37,6 +37,7 @@ const unit1Lessons = [
     masteryHints: [
       'Im(z) ist eine reelle Zahl — das i gehört nicht dazu.',
       'Achte auf das Vorzeichen vor dem i-Term.',
+      '$z = 3 - 2i$: Vergleiche mit $a + bi$, also $a=3$, $b=-2$.',
     ],
     masteryVisualization: {
       id: 'complex-plane',
@@ -79,6 +80,7 @@ const unit1Lessons = [
     masteryHints: [
       'Klammer wie $(a+b)(c+d)$ ausmultiplizieren.',
       'Am Ende alle $i^2$ durch $-1$ ersetzen.',
+      '$2\\cdot1 - 6i + i + 3 = 5 - 5i$ — Real- und Imaginärteil zusammenfassen.',
     ],
     prerequisites: ['komz-1-1'],
     nextLessonId: 'komz-2-1',
@@ -122,7 +124,11 @@ const unit2Lessons = [
     masteryOptions: ['5', '7', '$\\sqrt{7}$', '25'],
     correctIndex: 0,
     masteryExplanation: '$|z| = \\sqrt{3^2 + 4^2} = \\sqrt{9+16} = \\sqrt{25} = 5$.',
-    masteryHints: ['|z| = √(a² + b²).', 'Pythagoras in der Gaußschen Ebene.'],
+    masteryHints: [
+      '|z| = √(a² + b²) — Pythagoras in der Gaußschen Ebene.',
+      'Einsetzen: $\\sqrt{3^2 + 4^2} = \\sqrt{9 + 16}$.',
+      '$\\sqrt{25} = 5$ — ein pythagoreisches Tripel (3-4-5).',
+    ],
     masteryVisualization: {
       id: 'complex-plane',
       params: { initialZ1: { a: 3, b: 4 }, range: 5 },
@@ -167,8 +173,9 @@ const unit2Lessons = [
     masteryExplanation:
       '$e^{i\\pi/2} = \\cos(\\pi/2) + i\\sin(\\pi/2) = 0 + i\\cdot 1 = i$. Entspricht einer Drehung um 90°.',
     masteryHints: [
-      'Euler-Formel: e^(iφ) = cos φ + i·sin φ.',
-      'cos(π/2) = 0, sin(π/2) = 1.',
+      'Euler-Formel anwenden: $e^{i\\varphi} = \\cos\\varphi + i\\sin\\varphi$.',
+      'Einsetzen: $\\cos(\\pi/2) = 0$, $\\sin(\\pi/2) = 1$.',
+      '$0 + i \\cdot 1 = i$ — eine Drehung um 90° auf dem Einheitskreis.',
     ],
     masteryVisualization: {
       id: 'complex-plane',
@@ -214,8 +221,9 @@ const unit3Lessons = [
     masteryExplanation:
       '$z = 1+i$ hat $|z| = \\sqrt{2}$, $\\varphi = \\pi/4$. Damit $z^4 = (\\sqrt{2})^4 \\cdot e^{i\\pi} = 4\\cdot(-1) = -4$.',
     masteryHints: [
-      '1+i in Polarform umrechnen (|z|, φ).',
-      'Moivre: |z|^n, Argument mal n.',
+      '$1+i$ in Polarform: $|z| = \\sqrt{2}$, $\\varphi = \\pi/4$.',
+      'Moivre: $z^4 = (\\sqrt{2})^4 \\cdot e^{i \\cdot 4 \\cdot \\pi/4} = 4 \\cdot e^{i\\pi}$.',
+      '$e^{i\\pi} = -1$, also $z^4 = 4 \\cdot (-1) = -4$.',
     ],
     prerequisites: ['komz-2-2'],
     nextLessonId: 'komz-3-2',
@@ -245,8 +253,9 @@ const unit3Lessons = [
     masteryExplanation:
       'Im Komplexen hat $z^3 = 8$ genau drei Lösungen: $2$, $2e^{2\\pi i/3}$, $2e^{4\\pi i/3}$ — Ecken eines gleichseitigen Dreiecks auf dem Kreis $|z|=2$.',
     masteryHints: [
-      'Komplex: n-te Wurzeln haben immer n verschiedene Werte.',
-      'Liegen gleichverteilt auf einem Kreis.',
+      'Im Komplexen hat $z^n = w$ immer genau $n$ Lösungen.',
+      'Formel: $z_k = |w|^{1/n} e^{i(\\varphi + 2\\pi k)/n}$, $k = 0, 1, \\ldots, n-1$.',
+      '$8 = 8 e^{i \\cdot 0}$: drei Wurzeln mit $k=0,1,2$, gleichverteilt auf dem Kreis $|z|=2$.',
     ],
     prerequisites: ['komz-3-1'],
     nextLessonId: 'komz-pruefung-1',
@@ -296,10 +305,105 @@ const unit4Lessons = [
     masteryExplanation:
       'Der Betrag einer komplexen Impedanz ist der Scheinwiderstand. $|Z| = \\sqrt{3^2 + 4^2} = 5\\,\\Omega$.',
     masteryHints: [
-      'Betrag einer komplexen Zahl: √(Re² + Im²).',
-      'Bei Impedanzen: |Z| ist der Scheinwiderstand.',
+      'Betrag einer komplexen Zahl: $|Z| = \\sqrt{\\operatorname{Re}^2 + \\operatorname{Im}^2}$.',
+      'Bei Impedanzen ist $|Z|$ der Scheinwiderstand in Ohm.',
+      '$\\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$.',
     ],
     prerequisites: ['komz-3-2'],
+    nextLessonId: 'komz-pruefung-2',
+  }),
+
+  makeLesson({
+    id: 'komz-pruefung-2',
+    title: 'Prüfung: Polarform & Multiplikation',
+    estimatedMinutes: 22,
+    isExam: true,
+    learningGoals: [
+      '[PRÜFUNG] Komplexe Zahlen in Polarform umrechnen',
+      '[PRÜFUNG] Multiplikation und Division in Exponentialform',
+      '[PRÜFUNG] Argument im Hauptwert angeben',
+    ],
+    createdAt: '2026-04-16',
+    intuitionTitle: 'Drehen und Strecken',
+    intuitionContent:
+      'Multiplikation komplexer Zahlen in Polarform: Beträge multiplizieren, Argumente addieren. ' +
+      '$z_1 \\cdot z_2 = r_1 r_2 \\, e^{i(\\varphi_1 + \\varphi_2)}$. ' +
+      'Das ist geometrisch eine **Drehstreckung**.\n\n' +
+      '**Umrechnung kartesisch → polar:** $r = \\sqrt{a^2+b^2}$, $\\varphi = \\operatorname{atan2}(b,a)$. ' +
+      'Hauptwert: $\\varphi \\in (-\\pi, \\pi]$.',
+    formulaTitle: 'Polarform-Regeln',
+    formulaContent:
+      '**Kartesisch → Polar:**\n' +
+      '$$r = |z| = \\sqrt{a^2+b^2}, \\quad \\varphi = \\arg(z) \\in (-\\pi, \\pi]$$\n\n' +
+      '**Multiplikation:** $|z_1 z_2| = |z_1||z_2|$, $\\arg(z_1 z_2) = \\arg z_1 + \\arg z_2 \\pmod{2\\pi}$\n\n' +
+      '**Division:** $|z_1/z_2| = |z_1|/|z_2|$, $\\arg(z_1/z_2) = \\arg z_1 - \\arg z_2$\n\n' +
+      '**Euler:** $r e^{i\\varphi} = r(\\cos\\varphi + i\\sin\\varphi)$',
+    masteryQuestion: '[PRÜFUNG] $z_1 = 2e^{i\\pi/3}$, $z_2 = 3e^{i\\pi/6}$. Berechne $z_1 \\cdot z_2$.',
+    masteryOptions: [
+      '$6e^{i\\pi/2}$',
+      '$6e^{i\\pi/4}$',
+      '$5e^{i\\pi/2}$',
+      '$6e^{i\\pi/9}$',
+    ],
+    correctIndex: 0,
+    masteryExplanation:
+      'Beträge multiplizieren: $2 \\cdot 3 = 6$. Argumente addieren: $\\pi/3 + \\pi/6 = 2\\pi/6 + \\pi/6 = 3\\pi/6 = \\pi/2$. ' +
+      'Ergebnis: $6e^{i\\pi/2}$.',
+    masteryHints: [
+      'Exponentialform: Beträge multiplizieren, Argumente addieren.',
+      'Argumente: $\\pi/3 + \\pi/6$ — auf gleichen Nenner bringen.',
+      '$\\pi/3 = 2\\pi/6$, also $2\\pi/6 + \\pi/6 = 3\\pi/6 = \\pi/2$.',
+    ],
+    masteryVisualization: {
+      id: 'complex-plane',
+      params: { initialZ1: { a: 1, b: Math.sqrt(3) }, range: 7 },
+      caption: 'Multiplikation in der Gaußschen Ebene: Drehstreckung',
+      alt: 'Komplexe Ebene mit Darstellung der Multiplikation als Drehstreckung',
+    },
+    prerequisites: ['komz-pruefung-1'],
+    nextLessonId: 'komz-pruefung-3',
+  }),
+
+  makeLesson({
+    id: 'komz-pruefung-3',
+    title: 'Prüfung: Wurzeln & Gleichungen',
+    estimatedMinutes: 22,
+    isExam: true,
+    learningGoals: [
+      '[PRÜFUNG] Alle n-ten Wurzeln einer komplexen Zahl berechnen',
+      '[PRÜFUNG] Komplexe Gleichungen (z.B. $z^n = a$) lösen',
+      '[PRÜFUNG] Impedanz-Berechnungen in der Elektrotechnik',
+    ],
+    createdAt: '2026-04-16',
+    intuitionTitle: 'n-te Wurzeln sind n gleichmäßig verteilte Punkte',
+    intuitionContent:
+      'Die n-ten Wurzeln einer komplexen Zahl $w = re^{i\\varphi}$ liegen auf einem **Kreis** mit Radius $r^{1/n}$ ' +
+      'und sind gleichmäßig im Winkelabstand $2\\pi/n$ verteilt:\n\n' +
+      '$$z_k = r^{1/n}\\,e^{i(\\varphi + 2\\pi k)/n}, \\quad k = 0, 1, \\ldots, n-1$$\n\n' +
+      '**Merke:** Es gibt immer genau $n$ verschiedene n-te Wurzeln.',
+    formulaTitle: 'Wurzelformel & Impedanz',
+    formulaContent:
+      '**n-te Wurzeln** von $w = re^{i\\varphi}$:\n' +
+      '$$z_k = \\sqrt[n]{r}\\,e^{i(\\varphi + 2\\pi k)/n}, \\quad k = 0,1,\\ldots,n-1$$\n\n' +
+      '**Impedanz** in Reihenschaltung: $Z = R + i\\omega L - \\frac{i}{\\omega C}$\n\n' +
+      '**Betrag** (Scheinwiderstand): $|Z| = \\sqrt{R^2 + (\\omega L - 1/(\\omega C))^2}$',
+    masteryQuestion: '[PRÜFUNG] Alle Lösungen von $z^2 = i$ ($= e^{i\\pi/2}$)?',
+    masteryOptions: [
+      '$z_0 = e^{i\\pi/4}$, $z_1 = e^{i5\\pi/4}$',
+      '$z_0 = e^{i\\pi/2}$, $z_1 = e^{i\\pi}$',
+      '$z_0 = e^{i\\pi/4}$, $z_1 = e^{i3\\pi/4}$',
+      '$z_0 = e^{i\\pi/4}$ (nur eine Lösung)',
+    ],
+    correctIndex: 0,
+    masteryExplanation:
+      '$i = e^{i\\pi/2}$, also $r=1$, $\\varphi=\\pi/2$. Wurzeln: $z_k = e^{i(\\pi/2 + 2\\pi k)/2}$. ' +
+      '$k=0$: $e^{i\\pi/4}$. $k=1$: $e^{i(\\pi/2 + 2\\pi)/2} = e^{i5\\pi/4}$.',
+    masteryHints: [
+      '$i = e^{i\\pi/2}$: Betrag 1, Argument $\\pi/2$.',
+      'Wurzelformel: $z_k = 1^{1/2} \\cdot e^{i(\\pi/2 + 2\\pi k)/2}$, $k=0,1$.',
+      '$k=0$: Exponent $\\pi/4$. $k=1$: Exponent $(\\pi/2+2\\pi)/2 = 5\\pi/4$.',
+    ],
+    prerequisites: ['komz-pruefung-2'],
     nextLessonId: null,
   }),
 ]

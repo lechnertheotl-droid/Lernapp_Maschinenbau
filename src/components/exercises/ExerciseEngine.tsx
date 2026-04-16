@@ -138,10 +138,10 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
 
       {submitted && (
         <div
-          className="fixed inset-x-0 bottom-0 z-40 bg-paper/95 dark:bg-surface-900/95 backdrop-blur border-t-2 border-ink shadow-hard-lg"
+          className="fixed inset-x-0 bottom-0 z-50 bg-paper/95 dark:bg-surface-900/95 backdrop-blur border-t-2 border-ink shadow-hard-lg flex flex-col"
           style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
         >
-          <div className="max-w-xl mx-auto px-3 py-3 max-h-[60vh] overflow-y-auto overscroll-contain">
+          <div className="max-w-xl mx-auto w-full px-3 py-3 overflow-y-auto overscroll-contain flex-1" style={{ maxHeight: '55vh' }}>
             <FeedbackDisplay
               isCorrect={!!isCorrect}
               exercise={exercise}

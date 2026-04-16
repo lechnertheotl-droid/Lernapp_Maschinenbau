@@ -12,7 +12,11 @@ export const exercises_dgl_u2 = {
     ],
     correctIndex: 1,
     explanation: 'Die Idee: Man nimmt die homogene Lösung $y_h = Ce^{...}$ und ersetzt die Konstante $C$ durch eine **Funktion** $C(x)$. Dann bestimmt man $C(x)$ so, dass die inhomogene DGL erfüllt wird.',
-    hints: ['Der Name sagt es: Die Konstante wird "variiert", also durch eine Funktion ersetzt.'],
+    hints: [
+      'Was bedeutet "Variation der Konstanten" wörtlich?',
+      'Die Konstante $C$ wird "variiert" — sie wird zur Funktion $C(x)$.',
+      'Dann bestimmt man $C(x)$ aus der inhomogenen DGL.',
+    ],
   },
   'ex-dgl-2-1-b': {
     id: 'ex-dgl-2-1-b', lessonId: 'dgl-2-1', type: 'multiple-choice',
@@ -25,7 +29,11 @@ export const exercises_dgl_u2 = {
     ],
     correctIndex: 0,
     explanation: 'Einsetzen von $y = C(x) e^{-P(x)}$ in die DGL und Vereinfachen ergibt $C\'(x) = q(x) \\cdot e^{P(x)}$. Integration liefert $C(x) = \\int q(x) e^{P(x)}\\,dx$.',
-    hints: ['Setze den Ansatz in die DGL ein und nutze, dass $e^{-P(x)}$ bereits die homogene DGL löst.'],
+    hints: [
+      'Setze den Ansatz $y = C(x) e^{-P(x)}$ in die DGL ein.',
+      'Produktregel: $y\' = C\'(x) e^{-P(x)} - C(x) p(x) e^{-P(x)}$.',
+      'Nach Einsetzen heben sich die Terme mit $C(x)$ weg, übrig bleibt $C\'(x) e^{-P(x)} = q(x)$.',
+    ],
   },
   'ex-dgl-2-1-c': {
     id: 'ex-dgl-2-1-c', lessonId: 'dgl-2-1', type: 'multiple-choice',
@@ -38,7 +46,11 @@ export const exercises_dgl_u2 = {
     ],
     correctIndex: 0,
     explanation: 'Homogene Lösung: $y_h = Ce^x$. Ansatz: $y = C(x)e^x$. Einsetzen: $C\'(x)e^x = e^{2x} \\Rightarrow C\'(x) = e^x \\Rightarrow C(x) = e^x + \\tilde{C}$. Also $y = (\\tilde{C} + e^x)e^x = \\tilde{C}e^x + e^{2x}$.',
-    hints: ['Homogene Lösung: $y_h = Ce^x$ (da $y\' - y = 0 \\Rightarrow y = Ce^x$).'],
+    hints: [
+      'Erst homogene Lösung: $y_h = Ce^x$ aus $y\' - y = 0$.',
+      'Ansatz $y = C(x) e^x$, einsetzen: $C\'(x) e^x = e^{2x}$, also $C\'(x) = e^x$.',
+      'Integrieren: $C(x) = e^x + \\tilde C$, also $y = e^{2x} + \\tilde C \\, e^x$.',
+    ],
   },
   'ex-dgl-2-1-mastery': {
     id: 'ex-dgl-2-1-mastery', lessonId: 'dgl-2-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -51,7 +63,11 @@ export const exercises_dgl_u2 = {
     ],
     correctIndex: 0,
     explanation: 'Mit Variation der Konstanten oder dem Ansatz $y_p = A\\sin x + B\\cos x$: Einsetzen ergibt $A = \\frac{1}{2}$, $B = -\\frac{1}{2}$. Also $y_p = \\frac{1}{2}(\\sin x - \\cos x)$.',
-    hints: ['Ansatz: $y_p = A\\sin x + B\\cos x$. Einsetzen in die DGL und Koeffizientenvergleich.'],
+    hints: [
+      'Bei trigonometrischer Störfunktion: Ansatz $y_p = A \\sin x + B \\cos x$.',
+      'Einsetzen in $y\' + y = \\sin x$ liefert $A \\cos x - B \\sin x + A \\sin x + B \\cos x = \\sin x$.',
+      'Koeffizientenvergleich: $A - B = 0$ (für $\\sin$) und $A + B = 1$ (für $\\cos$? — sortiert nach $\\sin$/$\\cos$): $A = 1/2$, $B = -1/2$.',
+    ],
   },
 
   'ex-dgl-2-2-a': {
@@ -65,14 +81,22 @@ export const exercises_dgl_u2 = {
     ],
     correctIndex: 2,
     explanation: '$A$ ist eine quadratische **Matrix** (die Koeffizientenmatrix). $\\vec{y}$ ist ein Vektor von Funktionen. Das System koppelt mehrere DGL miteinander.',
-    hints: ['$\\vec{y}$ ist ein Vektor, $\\vec{y}\'$ auch. Damit die Multiplikation aufgeht, muss $A$ eine Matrix sein.'],
+    hints: [
+      'Was steht links vom Gleichheitszeichen? Was muss rechts dieselbe Form haben?',
+      '$\\vec y$ und $\\vec y\'$ sind Vektoren. Für $A \\vec y$ muss $A$ eine Matrix sein.',
+      'Konkret: bei $n$ Komponenten ist $A$ eine $n \\times n$-Matrix.',
+    ],
   },
   'ex-dgl-2-2-b': {
     id: 'ex-dgl-2-2-b', lessonId: 'dgl-2-2', type: 'true-false',
     statement: 'Jede DGL höherer Ordnung lässt sich in ein System von DGL 1. Ordnung umschreiben.',
     correct: true,
     explanation: 'Ja! Trick: Substitution $y_1 = y$, $y_2 = y\'$, $y_3 = y\'\'$, ... Zum Beispiel wird $y\'\' + 3y\' + 2y = 0$ zu: $y_1\' = y_2$ und $y_2\' = -3y_2 - 2y_1$.',
-    hints: ['Einführung neuer Variablen für jede Ableitung.'],
+    hints: [
+      'Trick: führe für jede Ableitung eine neue Variable ein.',
+      'Beispiel: $y_1 = y$, $y_2 = y\'$, $y_3 = y\'\'$, ...',
+      'Dann ist $y_1\' = y_2$, $y_2\' = y_3$ usw. — ein System 1. Ordnung.',
+    ],
   },
   'ex-dgl-2-2-mastery': {
     id: 'ex-dgl-2-2-mastery', lessonId: 'dgl-2-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -85,7 +109,11 @@ export const exercises_dgl_u2 = {
     ],
     correctIndex: 1,
     explanation: 'Aus $y\'\' + 5y\' + 6y = 0$ folgt $y\'\' = -5y\' - 6y$. Mit $y_2 = y\'$ und $y_1 = y$: $y_2\' = -6y_1 - 5y_2$.',
-    hints: ['$y\'\' = -5y\' - 6y$ umschreiben mit den neuen Variablen.'],
+    hints: [
+      'Löse zuerst die ursprüngliche DGL nach $y\'\'$ auf.',
+      '$y\'\' = -5y\' - 6y$. Ersetze nun $y \\to y_1$ und $y\' \\to y_2$.',
+      'Da $y_2\' = y\'\'$, folgt $y_2\' = -5 y_2 - 6 y_1$, also $y_2\' = -6 y_1 - 5 y_2$.',
+    ],
   },
 
   'ex-dgl-2-3-a': {
@@ -99,7 +127,11 @@ export const exercises_dgl_u2 = {
     ],
     correctIndex: 1,
     explanation: '$m\\ddot{x} + c\\dot{x} + kx = F(t)$: $m$ = Masse, $c$ = Dämpfungskonstante, $k$ = Federkonstante, $F(t)$ = äußere Kraft. Trägheit + Dämpfung + Federkraft = äußere Kraft.',
-    hints: ['Newton: Summe der Kräfte = Trägheitskraft. Federkraft $\\sim x$, Dämpfungskraft $\\sim \\dot{x}$.'],
+    hints: [
+      'Welche Kräfte wirken auf die Masse?',
+      'Federkraft $\\sim x$ (Hooke), Dämpfungskraft $\\sim \\dot x$ (proportional zur Geschwindigkeit).',
+      'Newton: $m \\ddot x = -k x - c \\dot x + F(t)$, also $m \\ddot x + c \\dot x + k x = F(t)$.',
+    ],
   },
   'ex-dgl-2-3-b': {
     id: 'ex-dgl-2-3-b', lessonId: 'dgl-2-3', type: 'matching',
@@ -111,7 +143,11 @@ export const exercises_dgl_u2 = {
       { left: 'Äußere Anregung', right: '$F(t)$' },
     ],
     explanation: '$mx\'\'$ ist die Trägheitskraft (Newton: $F = ma$), $cx\'$ die geschwindigkeitsproportionale Dämpfung, $kx$ die Federkraft (Hooke: $F = kx$), und $F(t)$ die äußere Kraft.',
-    hints: ['Masse × Beschleunigung = $mx\'\'$. Dämpfung ist proportional zur Geschwindigkeit $x\'$.'],
+    hints: [
+      'Welcher Term enthält welche Ableitung von $x$?',
+      'Newton: $F = m a$, also Trägheit $= m \\cdot x\'\'$ (zweite Ableitung = Beschleunigung).',
+      'Dämpfung wirkt gegen die Bewegung, proportional zur Geschwindigkeit $x\'$. Federkraft proportional zur Auslenkung $x$.',
+    ],
   },
   'ex-dgl-2-3-c': {
     id: 'ex-dgl-2-3-c', lessonId: 'dgl-2-3', type: 'multiple-choice',
@@ -124,7 +160,11 @@ export const exercises_dgl_u2 = {
     ],
     correctIndex: 0,
     explanation: 'Die DGL des RC-Glieds ist $RC \\cdot \\dot{u}_C + u_C = U_0$ (lineare DGL 1. Ordnung). Die Zeitkonstante ist $\\tau = RC$. Lösung: $u_C(t) = U_0(1 - e^{-t/(RC)})$ für Aufladung.',
-    hints: ['Kirchhoff: Spannung über R + Spannung über C = Quellspannung. $u_R = R \\cdot i = RC \\cdot u_C\'$.'],
+    hints: [
+      'Welche Maschenregel gilt für $R$ und $C$ in Reihe?',
+      'Kirchhoff: $u_R + u_C = U_0$. Strom $i = C \\cdot \\dot u_C$ (Kondensator-Gleichung).',
+      'Einsetzen: $R \\cdot C \\cdot \\dot u_C + u_C = U_0$ — das ist die DGL des RC-Glieds.',
+    ],
   },
   'ex-dgl-2-3-mastery': {
     id: 'ex-dgl-2-3-mastery', lessonId: 'dgl-2-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -137,7 +177,11 @@ export const exercises_dgl_u2 = {
     ],
     correctIndex: 1,
     explanation: '$\\omega_0 = \\sqrt{k/m} = \\sqrt{8/2} = \\sqrt{4} = 2$ rad/s. Die Lösung ist $x(t) = A\\cos(2t) + B\\sin(2t)$.',
-    hints: ['Charakteristische Gleichung: $2\\lambda^2 + 8 = 0 \\Rightarrow \\lambda = \\pm 2i$. Also $\\omega_0 = 2$.'],
+    hints: [
+      'Welche Formel gilt für die Eigenkreisfrequenz?',
+      '$\\omega_0 = \\sqrt{k / m}$ — kommt aus dem charakteristischen Polynom.',
+      'Hier $k = 8$ N/m, $m = 2$ kg → $\\omega_0 = \\sqrt{4} = 2$ rad/s.',
+    ],
   },
 }
 

@@ -7,21 +7,29 @@ export const exercises_la_u1 = {
     question: 'Eine Matrix mit 3 Zeilen und 2 Spalten ist eine...',
     options: ['2x3-Matrix', '3x2-Matrix', '3x3-Matrix', '6x1-Matrix'],
     correctIndex: 1,
-    explanation: 'Die Dimension einer Matrix wird immer als "Zeilen x Spalten" angegeben. 3 Zeilen und 2 Spalten ergibt eine 3x2-Matrix.',
-    hints: ['Merke: Zeilen kommen immer zuerst, dann Spalten (m x n).'],
+    explanation: 'Die Dimension einer Matrix wird immer als "Zeilen × Spalten" angegeben. 3 Zeilen und 2 Spalten ergibt eine 3×2-Matrix.',
+    hints: [
+      'Welche Reihenfolge gilt bei der Notation: Zeilen oder Spalten zuerst?',
+      'Merke: $m \\times n$ bedeutet "$m$ Zeilen, $n$ Spalten".',
+      'Setze $m = 3$ und $n = 2$ ein.',
+    ],
   },
   'ex-la-1-1-b': {
     id: 'ex-la-1-1-b', lessonId: 'la-1-1', type: 'multiple-choice',
-    question: 'Welche Matrix ist die 3x3-Einheitsmatrix I?',
+    question: 'Welche Matrix ist die 3×3-Einheitsmatrix $I$?',
     options: [
-      '[[1,1,1],[1,1,1],[1,1,1]]',
-      '[[1,0,0],[0,1,0],[0,0,1]]',
-      '[[0,0,0],[0,0,0],[0,0,0]]',
-      '[[3,0,0],[0,3,0],[0,0,3]]',
+      '$\\begin{pmatrix}1&1&1\\\\1&1&1\\\\1&1&1\\end{pmatrix}$',
+      '$\\begin{pmatrix}1&0&0\\\\0&1&0\\\\0&0&1\\end{pmatrix}$',
+      '$\\begin{pmatrix}0&0&0\\\\0&0&0\\\\0&0&0\\end{pmatrix}$',
+      '$\\begin{pmatrix}3&0&0\\\\0&3&0\\\\0&0&3\\end{pmatrix}$',
     ],
     correctIndex: 1,
-    explanation: 'Die Einheitsmatrix I hat Einsen auf der Hauptdiagonale und Nullen sonst. Sie ist das "neutrale Element" der Matrizenmultiplikation: A * I = A.',
-    hints: ['Die Einheitsmatrix hat nur auf der Diagonale von links oben nach rechts unten den Wert 1.'],
+    explanation: 'Die Einheitsmatrix $I$ hat Einsen auf der Hauptdiagonale und Nullen sonst. Sie ist das "neutrale Element" der Matrizenmultiplikation: $A \\cdot I = A$.',
+    hints: [
+      'Was ist das "neutrale Element" der Multiplikation für Matrizen?',
+      'Es muss gelten: $A \\cdot I = A$ für jede passende Matrix $A$.',
+      'Nur die Hauptdiagonale ist mit Einsen besetzt, alle anderen Einträge sind 0.',
+    ],
   },
   'ex-la-1-1-c': {
     id: 'ex-la-1-1-c', lessonId: 'la-1-1', type: 'multiple-choice',
@@ -33,96 +41,132 @@ export const exercises_la_u1 = {
       'Eine Matrix, bei der alle Einträge auf der Diagonale 0 sind',
     ],
     correctIndex: 1,
-    explanation: 'Bei einer Diagonalmatrix sind alle Einträge außerhalb der Hauptdiagonale gleich 0. Beispiel: [[5,0],[0,3]].',
-    hints: ['Diagonal = nur auf der Diagonale passiert etwas.'],
+    explanation: 'Bei einer Diagonalmatrix sind alle Einträge außerhalb der Hauptdiagonale gleich 0. Beispiel: $\\begin{pmatrix} 5 & 0 \\\\ 0 & 3 \\end{pmatrix}$.',
+    hints: [
+      'Wo sitzen die nicht-trivialen Einträge bei einer Diagonalmatrix?',
+      'Außerhalb der Hauptdiagonale: nur Nullen.',
+      'Die Einheitsmatrix ist ein Spezialfall einer Diagonalmatrix.',
+    ],
   },
   'ex-la-1-1-d': {
     id: 'ex-la-1-1-d', lessonId: 'la-1-1', type: 'multiple-choice',
-    question: 'A = [[2,5],[1,3]]. Welches Element ist a_{12}?',
-    options: ['2', '5', '1', '3'],
+    question: '$A = \\begin{pmatrix} 2 & 5 \\\\ 1 & 3 \\end{pmatrix}$. Welches Element ist $a_{12}$?',
+    options: ['$2$', '$5$', '$1$', '$3$'],
     correctIndex: 1,
-    explanation: '$a_{12}$ bedeutet: Zeile 1, Spalte 2. In der ersten Zeile [2,5] ist das zweite Element 5.',
-    hints: ['Der erste Index gibt die Zeile an, der zweite die Spalte.'],
+    explanation: '$a_{12}$ bedeutet: Zeile 1, Spalte 2. In der ersten Zeile $[2, 5]$ ist das zweite Element $5$.',
+    hints: [
+      'Welcher Index steht für die Zeile, welcher für die Spalte?',
+      'Konvention: $a_{ij}$ — erst Zeile $i$, dann Spalte $j$.',
+      'Hier: Zeile 1 ist $[2, 5]$. Davon das zweite Element nehmen.',
+    ],
   },
   'ex-la-1-1-mastery': {
     id: 'ex-la-1-1-mastery', lessonId: 'la-1-1', type: 'multiple-choice', isMasteryCheck: true,
-    question: '[PRÜFUNG] Welche Aussage über die Nullmatrix 0 ist korrekt?',
+    question: '[PRÜFUNG] Welche Aussage über die Nullmatrix $0$ ist korrekt?',
     options: [
-      'A + 0 = 0 für jede Matrix A',
-      'A * 0 = A für jede Matrix A',
-      'A + 0 = A für jede Matrix A gleicher Dimension',
+      '$A + 0 = 0$ für jede Matrix $A$',
+      '$A \\cdot 0 = A$ für jede Matrix $A$',
+      '$A + 0 = A$ für jede Matrix $A$ gleicher Dimension',
       'Die Nullmatrix hat keine Dimension',
     ],
     correctIndex: 2,
-    explanation: 'Die Nullmatrix ist das neutrale Element der Addition: A + 0 = A. Dabei müssen A und 0 die gleiche Dimension haben.',
-    hints: ['Die Nullmatrix verhält sich bei der Addition wie die Zahl 0 bei normalen Zahlen.'],
+    explanation: 'Die Nullmatrix ist das neutrale Element der Addition: $A + 0 = A$. Dabei müssen $A$ und $0$ die gleiche Dimension haben.',
+    hints: [
+      'Welche Eigenschaft hat die Zahl $0$ bei der Addition?',
+      'Übertrage das auf Matrizen: $A + 0 = A$ — analog zu Zahlen.',
+      'Achtung: Damit Addition definiert ist, müssen die Dimensionen übereinstimmen.',
+    ],
   },
 
   // ── Lesson 2: Matrizenrechnung ──────────────────────────────────────────────
   'ex-la-1-2-a': {
     id: 'ex-la-1-2-a', lessonId: 'la-1-2', type: 'multiple-choice',
-    question: 'A = [[1,2],[3,4]], B = [[5,6],[7,8]]. Was ist A + B?',
+    question: '$A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$, $B = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}$. Was ist $A + B$?',
     options: [
-      '[[6,8],[10,12]]',
-      '[[5,12],[21,32]]',
-      '[[6,8],[7,8]]',
-      '[[1,2],[10,12]]',
+      '$\\begin{pmatrix} 6 & 8 \\\\ 10 & 12 \\end{pmatrix}$',
+      '$\\begin{pmatrix} 5 & 12 \\\\ 21 & 32 \\end{pmatrix}$',
+      '$\\begin{pmatrix} 6 & 8 \\\\ 7 & 8 \\end{pmatrix}$',
+      '$\\begin{pmatrix} 1 & 2 \\\\ 10 & 12 \\end{pmatrix}$',
     ],
     correctIndex: 0,
-    explanation: 'Matrizen werden elementweise addiert: 1+5=6, 2+6=8, 3+7=10, 4+8=12. Also A+B = [[6,8],[10,12]].',
-    hints: ['Jedes Element wird einzeln addiert: (A+B)_{ij} = a_{ij} + b_{ij}.'],
+    explanation: 'Matrizen werden elementweise addiert: $1+5=6$, $2+6=8$, $3+7=10$, $4+8=12$. Also $A+B = \\begin{pmatrix} 6 & 8 \\\\ 10 & 12 \\end{pmatrix}$.',
+    hints: [
+      'Wie geht die Addition für Matrizen?',
+      'Regel: $(A+B)_{ij} = a_{ij} + b_{ij}$ — jedes Element einzeln.',
+      'Berechne alle vier Einträge separat und vergleiche mit den Optionen.',
+    ],
   },
   'ex-la-1-2-b': {
     id: 'ex-la-1-2-b', lessonId: 'la-1-2', type: 'multiple-choice',
-    question: 'A = [[1,2],[3,4]]. Was ist 3*A?',
+    question: '$A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$. Was ist $3 \\cdot A$?',
     options: [
-      '[[3,2],[3,4]]',
-      '[[3,6],[9,12]]',
-      '[[4,5],[6,7]]',
-      '[[1,2],[3,12]]',
+      '$\\begin{pmatrix} 3 & 2 \\\\ 3 & 4 \\end{pmatrix}$',
+      '$\\begin{pmatrix} 3 & 6 \\\\ 9 & 12 \\end{pmatrix}$',
+      '$\\begin{pmatrix} 4 & 5 \\\\ 6 & 7 \\end{pmatrix}$',
+      '$\\begin{pmatrix} 1 & 2 \\\\ 3 & 12 \\end{pmatrix}$',
     ],
     correctIndex: 1,
-    explanation: 'Bei der Skalarmultiplikation wird jedes Element mit dem Skalar multipliziert: 3*1=3, 3*2=6, 3*3=9, 3*4=12.',
-    hints: ['Jedes Element der Matrix wird mit der Zahl multipliziert.'],
+    explanation: 'Bei der Skalarmultiplikation wird jedes Element mit dem Skalar multipliziert: $3 \\cdot 1 = 3$, $3 \\cdot 2 = 6$, $3 \\cdot 3 = 9$, $3 \\cdot 4 = 12$.',
+    hints: [
+      'Was passiert bei einer Skalarmultiplikation?',
+      'Regel: $(c \\cdot A)_{ij} = c \\cdot a_{ij}$ — jedes Element mit dem Skalar.',
+      'Multipliziere alle vier Einträge mit $3$.',
+    ],
   },
   'ex-la-1-2-c': {
     id: 'ex-la-1-2-c', lessonId: 'la-1-2', type: 'multiple-choice',
-    question: 'Gilt für die Matrizenmultiplikation immer A*B = B*A?',
+    question: 'Gilt für die Matrizenmultiplikation immer $A \\cdot B = B \\cdot A$?',
     options: [
       'Ja, die Multiplikation ist kommutativ',
-      'Nein, im Allgemeinen gilt A*B != B*A',
+      'Nein, im Allgemeinen gilt $A \\cdot B \\neq B \\cdot A$',
       'Ja, aber nur für quadratische Matrizen',
       'Nein, Matrizen kann man nicht multiplizieren',
     ],
     correctIndex: 1,
-    explanation: 'Die Matrizenmultiplikation ist NICHT kommutativ. Im Allgemeinen gilt A*B != B*A. Das ist einer der wichtigsten Unterschiede zu normalen Zahlen!',
-    hints: ['Denke an die Reihenfolge: Zeile von A mal Spalte von B. Wenn du A und B vertauschst, ändert sich das Ergebnis.'],
+    explanation: 'Die Matrizenmultiplikation ist NICHT kommutativ. Im Allgemeinen gilt $A \\cdot B \\neq B \\cdot A$. Das ist einer der wichtigsten Unterschiede zu normalen Zahlen!',
+    hints: [
+      'Vertausche bei einem 2×2-Beispiel mal die Reihenfolge und rechne nach.',
+      'Sogar bei Drehmatrizen im Raum gilt: erst $A$ dann $B$ ist anders als erst $B$ dann $A$.',
+      'Gegenbeispiel reicht: ein einzelnes Paar $(A, B)$ mit $AB \\neq BA$ widerlegt die Kommutativität.',
+    ],
   },
   'ex-la-1-2-d': {
     id: 'ex-la-1-2-d', lessonId: 'la-1-2', type: 'number-input',
-    question: 'Berechne das Element $c_{11}$ von $C = A \\cdot B$ mit $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$ und $B = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}$',
+    question: 'Berechne das Element $c_{11}$ von $C = A \\cdot B$ mit $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$ und $B = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}$.',
     correctValue: 19,
     tolerance: 0.01,
     unit: '',
-    explanation: '$c_{11}$ = Zeile 1 von A mal Spalte 1 von B = $1 \\cdot 5 + 2 \\cdot 7 = 5 + 14 = 19$.',
-    hints: ['Zeile 1 von A ist [1, 2]. Spalte 1 von B ist [5, 7]. Multipliziere paarweise und addiere.'],
+    explanation: '$c_{11}$ = Zeile 1 von $A$ mal Spalte 1 von $B$ = $1 \\cdot 5 + 2 \\cdot 7 = 5 + 14 = 19$.',
+    hints: [
+      'Welche Zeile und Spalte brauchst du für $c_{11}$?',
+      'Zeile 1 von $A$ ist $[1, 2]$. Spalte 1 von $B$ ist $\\begin{pmatrix}5\\\\7\\end{pmatrix}$.',
+      'Multipliziere paarweise und addiere: $1 \\cdot 5 + 2 \\cdot 7$.',
+    ],
   },
   'ex-la-1-2-e': {
     id: 'ex-la-1-2-e', lessonId: 'la-1-2', type: 'number-input',
-    question: 'Berechne das Element $c_{22}$ von $C = A \\cdot B$ mit $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$ und $B = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}$',
+    question: 'Berechne das Element $c_{22}$ von $C = A \\cdot B$ mit $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$ und $B = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}$.',
     correctValue: 50,
     tolerance: 0.01,
     unit: '',
-    explanation: '$c_{22}$ = Zeile 2 von A mal Spalte 2 von B = $3 \\cdot 6 + 4 \\cdot 8 = 18 + 32 = 50$.',
-    hints: ['Zeile 2 von A ist [3, 4]. Spalte 2 von B ist [6, 8]. Multipliziere paarweise und addiere.'],
+    explanation: '$c_{22}$ = Zeile 2 von $A$ mal Spalte 2 von $B$ = $3 \\cdot 6 + 4 \\cdot 8 = 18 + 32 = 50$.',
+    hints: [
+      'Index $c_{22}$: Zeile 2 von $A$, Spalte 2 von $B$.',
+      'Zeile 2 von $A$ ist $[3, 4]$. Spalte 2 von $B$ ist $\\begin{pmatrix}6\\\\8\\end{pmatrix}$.',
+      'Skalarprodukt bilden: $3 \\cdot 6 + 4 \\cdot 8$.',
+    ],
   },
   'ex-la-1-2-mastery': {
     id: 'ex-la-1-2-mastery', lessonId: 'la-1-2', type: 'multiple-choice', isMasteryCheck: true,
-    question: '[PRÜFUNG] A ist eine 2x3-Matrix, B ist eine 3x4-Matrix. Welche Dimension hat A*B?',
-    options: ['2x4', '3x3', '2x3', 'Multiplikation nicht möglich'],
+    question: '[PRÜFUNG] $A$ ist eine $2 \\times 3$-Matrix, $B$ ist eine $3 \\times 4$-Matrix. Welche Dimension hat $A \\cdot B$?',
+    options: ['$2 \\times 4$', '$3 \\times 3$', '$2 \\times 3$', 'Multiplikation nicht möglich'],
     correctIndex: 0,
-    explanation: 'Bei A*B müssen die "inneren" Dimensionen übereinstimmen (3=3, passt!). Das Ergebnis hat die "äußeren" Dimensionen: 2x4.',
-    hints: ['(m x n) * (n x p) = (m x p). Die inneren Dimensionen müssen gleich sein.'],
+    explanation: 'Bei $A \\cdot B$ müssen die "inneren" Dimensionen übereinstimmen ($3 = 3$, passt!). Das Ergebnis hat die "äußeren" Dimensionen: $2 \\times 4$.',
+    hints: [
+      'Wie lautet die Dimensionsregel für Matrizenmultiplikation?',
+      '$(m \\times n) \\cdot (n \\times p) = (m \\times p)$ — die inneren Dimensionen müssen gleich sein.',
+      'Hier: $A = (2 \\times 3)$, $B = (3 \\times 4)$. Innere Dimensionen $3 = 3$ ✓, Ergebnis $(2 \\times 4)$.',
+    ],
   },
 
   // ── Lesson 3: Transponierte und Inverse ─────────────────────────────────────
@@ -130,14 +174,18 @@ export const exercises_la_u1 = {
     id: 'ex-la-1-3-a', lessonId: 'la-1-3', type: 'multiple-choice',
     question: '$A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$. Was ist $A^T$?',
     options: [
-      '[[1,3],[2,4]]',
-      '[[4,2],[3,1]]',
-      '[[1,2],[3,4]]',
-      '[[-1,-2],[-3,-4]]',
+      '$\\begin{pmatrix} 1 & 3 \\\\ 2 & 4 \\end{pmatrix}$',
+      '$\\begin{pmatrix} 4 & 2 \\\\ 3 & 1 \\end{pmatrix}$',
+      '$\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$',
+      '$\\begin{pmatrix} -1 & -2 \\\\ -3 & -4 \\end{pmatrix}$',
     ],
     correctIndex: 0,
-    explanation: 'Beim Transponieren werden Zeilen und Spalten getauscht. Zeile 1 [1,2] wird zu Spalte 1, Zeile 2 [3,4] wird zu Spalte 2. Also $A^T = [[1,3],[2,4]]$.',
-    hints: ['Transponieren = Zeilen werden zu Spalten (und umgekehrt). Element $a_{ij}$ wird zu $a_{ji}$.'],
+    explanation: 'Beim Transponieren werden Zeilen und Spalten getauscht. Zeile 1 $[1, 2]$ wird zu Spalte 1, Zeile 2 $[3, 4]$ wird zu Spalte 2. Also $A^T = \\begin{pmatrix} 1 & 3 \\\\ 2 & 4 \\end{pmatrix}$.',
+    hints: [
+      'Was bedeutet "transponieren" geometrisch?',
+      'Spiegelung an der Hauptdiagonale — Zeilen werden zu Spalten.',
+      'Element-Regel: $(A^T)_{ij} = a_{ji}$ — Indizes vertauschen.',
+    ],
   },
   'ex-la-1-3-b': {
     id: 'ex-la-1-3-b', lessonId: 'la-1-3', type: 'multiple-choice',
@@ -149,30 +197,42 @@ export const exercises_la_u1 = {
       '$A^{-1} = -A$',
     ],
     correctIndex: 2,
-    explanation: 'Die inverse Matrix ist das "Gegenstück" bei der Multiplikation: $A \\cdot A^{-1} = A^{-1} \\cdot A = I$ (Einheitsmatrix). Das ist wie $5 \\cdot \\frac{1}{5} = 1$ bei normalen Zahlen.',
-    hints: ['Die Inverse "macht die Multiplikation rückgängig". Welches Ergebnis erwartest du, wenn du etwas mit seinem Kehrwert multiplizierst?'],
+    explanation: 'Die inverse Matrix ist das "Gegenstück" bei der Multiplikation: $A \\cdot A^{-1} = A^{-1} \\cdot A = I$ (Einheitsmatrix). Das ist analog zu $5 \\cdot \\frac{1}{5} = 1$ bei normalen Zahlen.',
+    hints: [
+      'Welche Eigenschaft definiert den Kehrwert bei Zahlen ($5 \\cdot 1/5 = 1$)?',
+      'Übertrage das auf Matrizen — was ist die "Eins" der Matrizenmultiplikation?',
+      'Die Eins ist die Einheitsmatrix $I$, also $A \\cdot A^{-1} = I$.',
+    ],
   },
   'ex-la-1-3-c': {
     id: 'ex-la-1-3-c', lessonId: 'la-1-3', type: 'number-input',
-    question: 'Berechne die Determinante von $A = \\begin{pmatrix} 4 & 7 \\\\ 2 & 6 \\end{pmatrix}$, die du für die Inverse brauchst: $\\det(A) = ad - bc$',
+    question: 'Berechne die Determinante von $A = \\begin{pmatrix} 4 & 7 \\\\ 2 & 6 \\end{pmatrix}$, die du für die Inverse brauchst: $\\det(A) = ad - bc$.',
     correctValue: 10,
     tolerance: 0.01,
     unit: '',
     explanation: '$\\det(A) = 4 \\cdot 6 - 7 \\cdot 2 = 24 - 14 = 10$.',
-    hints: ['Für eine 2x2-Matrix [[a,b],[c,d]] ist det = a*d - b*c.'],
+    hints: [
+      'Welche Formel gilt für $\\det$ einer 2×2-Matrix?',
+      '$\\det \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} = ad - bc$.',
+      'Hier $a=4, b=7, c=2, d=6$. Setze ein.',
+    ],
   },
   'ex-la-1-3-d': {
     id: 'ex-la-1-3-d', lessonId: 'la-1-3', type: 'multiple-choice',
     question: 'Welche Matrix hat KEINE Inverse?',
     options: [
-      'Die Einheitsmatrix I',
-      'Eine Matrix mit det(A) = 5',
-      'Eine Matrix mit det(A) = 0',
-      'Eine Diagonalmatrix mit Einträgen 2 und 3',
+      'Die Einheitsmatrix $I$',
+      'Eine Matrix mit $\\det(A) = 5$',
+      'Eine Matrix mit $\\det(A) = 0$',
+      'Eine Diagonalmatrix mit Einträgen $2$ und $3$',
     ],
     correctIndex: 2,
-    explanation: 'Eine Matrix ist genau dann nicht invertierbar (singulär), wenn ihre Determinante 0 ist. In der Formel $A^{-1} = \\frac{1}{\\det(A)} \\cdot ...$ würde man durch 0 teilen!',
-    hints: ['Die Formel für die Inverse enthält $\\frac{1}{\\det(A)}$. Wann gibt es ein Problem?'],
+    explanation: 'Eine Matrix ist genau dann nicht invertierbar (singulär), wenn ihre Determinante $0$ ist. In der Formel $A^{-1} = \\frac{1}{\\det(A)} \\cdot \\ldots$ würde man durch $0$ teilen!',
+    hints: [
+      'Wo taucht $\\det(A)$ in der Formel für $A^{-1}$ auf?',
+      'Im Nenner: $A^{-1} = \\frac{1}{\\det(A)} \\cdot (\\ldots)$.',
+      'Welcher Wert von $\\det(A)$ macht das undefiniert?',
+    ],
   },
   'ex-la-1-3-mastery': {
     id: 'ex-la-1-3-mastery', lessonId: 'la-1-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -184,41 +244,57 @@ export const exercises_la_u1 = {
       '$\\begin{pmatrix} -2 & 1 \\\\ 5 & -3 \\end{pmatrix}$',
     ],
     correctIndex: 0,
-    explanation: '$\\det(A) = 3 \\cdot 2 - 1 \\cdot 5 = 1$. Formel: $A^{-1} = \\frac{1}{1} \\begin{pmatrix} 2 & -1 \\\\ -5 & 3 \\end{pmatrix}$. Man tauscht a und d, und ändert das Vorzeichen von b und c.',
-    hints: ['Formel für 2x2: $A^{-1} = \\frac{1}{ad-bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}$'],
+    explanation: '$\\det(A) = 3 \\cdot 2 - 1 \\cdot 5 = 1$. Formel: $A^{-1} = \\frac{1}{1} \\begin{pmatrix} 2 & -1 \\\\ -5 & 3 \\end{pmatrix}$. Man tauscht $a$ und $d$, und ändert das Vorzeichen von $b$ und $c$.',
+    hints: [
+      'Erst $\\det(A) = ad - bc$ ausrechnen.',
+      'Formel für 2×2-Inverse: $A^{-1} = \\frac{1}{\\det(A)} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}$.',
+      'Tausche die Diagonalelemente, kehre die Vorzeichen der Nebendiagonale um, teile durch $\\det$.',
+    ],
   },
 
   // ── Lesson 4: Determinanten ─────────────────────────────────────────────────
   'ex-la-1-4-a': {
     id: 'ex-la-1-4-a', lessonId: 'la-1-4', type: 'number-input',
-    question: 'Berechne: $\\det\\begin{pmatrix} 3 & 8 \\\\ 4 & 6 \\end{pmatrix}$',
+    question: 'Berechne: $\\det \\begin{pmatrix} 3 & 8 \\\\ 4 & 6 \\end{pmatrix}$',
     correctValue: -14,
     tolerance: 0.01,
     unit: '',
     explanation: '$\\det = 3 \\cdot 6 - 8 \\cdot 4 = 18 - 32 = -14$.',
-    hints: ['Formel für 2x2: det = a*d - b*c, also obere links mal untere rechts minus obere rechts mal untere links.'],
+    hints: [
+      'Welche Formel passt zur 2×2-Determinante?',
+      '$\\det = a \\cdot d - b \\cdot c$ (Hauptdiagonale minus Nebendiagonale).',
+      'Hier: $3 \\cdot 6 - 8 \\cdot 4$. Vorsicht — Ergebnis ist negativ!',
+    ],
   },
   'ex-la-1-4-b': {
     id: 'ex-la-1-4-b', lessonId: 'la-1-4', type: 'multiple-choice',
     question: 'Was bedeutet $\\det(A) = 0$ geometrisch (im 2D-Fall)?',
     options: [
-      'Die Spalten von A sind senkrecht zueinander',
-      'Die Spalten von A sind linear abhängig (zeigen in die gleiche Richtung)',
-      'Die Matrix A ist die Einheitsmatrix',
-      'A hat nur positive Einträge',
+      'Die Spalten von $A$ sind senkrecht zueinander',
+      'Die Spalten von $A$ sind linear abhängig (zeigen in die gleiche Richtung)',
+      'Die Matrix $A$ ist die Einheitsmatrix',
+      '$A$ hat nur positive Einträge',
     ],
     correctIndex: 1,
-    explanation: 'Wenn $\\det(A) = 0$, sind die Spalten (oder Zeilen) linear abhängig. Geometrisch: Die Fläche/das Volumen wird auf 0 zusammengedrückt. Die Matrix "verliert eine Dimension".',
-    hints: ['Die Determinante misst, wie stark eine Matrix Flächen/Volumina skaliert. Was passiert, wenn dieser Faktor 0 ist?'],
+    explanation: 'Wenn $\\det(A) = 0$, sind die Spalten (oder Zeilen) linear abhängig. Geometrisch: Die Fläche/das Volumen wird auf $0$ zusammengedrückt. Die Matrix "verliert eine Dimension".',
+    hints: [
+      'Welche geometrische Größe misst die Determinante?',
+      'Die Determinante = Flächeninhalt des Parallelogramms aus den Spaltenvektoren.',
+      'Wann hat ein Parallelogramm Fläche $0$?',
+    ],
   },
   'ex-la-1-4-c': {
     id: 'ex-la-1-4-c', lessonId: 'la-1-4', type: 'number-input',
-    question: 'Berechne mit der Regel von Sarrus: $\\det\\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{pmatrix}$',
+    question: 'Berechne mit der Regel von Sarrus: $\\det \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{pmatrix}$',
     correctValue: 0,
     tolerance: 0.01,
     unit: '',
-    explanation: 'Sarrus: $(1 \\cdot 5 \\cdot 9 + 2 \\cdot 6 \\cdot 7 + 3 \\cdot 4 \\cdot 8) - (3 \\cdot 5 \\cdot 7 + 2 \\cdot 4 \\cdot 9 + 1 \\cdot 6 \\cdot 8)$ = $(45 + 84 + 96) - (105 + 72 + 48) = 225 - 225 = 0$. Die Zeilen sind linear abhängig!',
-    hints: ['Regel von Sarrus: Schreibe die ersten zwei Spalten nochmal rechts daneben. Dann 3 Diagonalen von links oben nach rechts unten (Plus) und 3 Diagonalen von rechts oben nach links unten (Minus).'],
+    explanation: 'Sarrus: $(1 \\cdot 5 \\cdot 9 + 2 \\cdot 6 \\cdot 7 + 3 \\cdot 4 \\cdot 8) - (3 \\cdot 5 \\cdot 7 + 2 \\cdot 4 \\cdot 9 + 1 \\cdot 6 \\cdot 8) = (45 + 84 + 96) - (105 + 72 + 48) = 225 - 225 = 0$. Die Zeilen sind linear abhängig!',
+    hints: [
+      'Wie funktioniert die Regel von Sarrus?',
+      'Schreibe die ersten zwei Spalten rechts daneben — dann 3 Plus-Diagonalen (oben links → unten rechts) und 3 Minus-Diagonalen (oben rechts → unten links).',
+      'Hier sind die Zeilen linear abhängig (Zeile 2 = Mittelwert von Zeile 1 und 3) — das Ergebnis muss $0$ sein.',
+    ],
   },
   'ex-la-1-4-d': {
     id: 'ex-la-1-4-d', lessonId: 'la-1-4', type: 'multiple-choice',
@@ -230,45 +306,61 @@ export const exercises_la_u1 = {
       '$\\det(A^T) = -\\det(A)$',
     ],
     correctIndex: 1,
-    explanation: 'Die Determinante ist multiplikativ: $\\det(A \\cdot B) = \\det(A) \\cdot \\det(B)$. Ausserdem gilt $\\det(A^T) = \\det(A)$.',
-    hints: ['Die Determinante ist eine "multiplikative" Funktion. Was passiert bei einem Produkt?'],
+    explanation: 'Die Determinante ist multiplikativ: $\\det(A \\cdot B) = \\det(A) \\cdot \\det(B)$. Außerdem gilt $\\det(A^T) = \\det(A)$.',
+    hints: [
+      'Wie verhält sich die Determinante bei einem Produkt von Matrizen?',
+      'Sie ist multiplikativ — was bedeutet das genau?',
+      'Bei der Summe gilt KEINE einfache Regel — daher Vorsicht mit Antworten zu $A + B$.',
+    ],
   },
   'ex-la-1-4-mastery': {
     id: 'ex-la-1-4-mastery', lessonId: 'la-1-4', type: 'number-input', isMasteryCheck: true,
-    question: '[PRÜFUNG] Berechne: $\\det\\begin{pmatrix} 2 & 0 & 1 \\\\ 3 & 1 & 0 \\\\ 1 & 2 & 3 \\end{pmatrix}$',
+    question: '[PRÜFUNG] Berechne: $\\det \\begin{pmatrix} 2 & 0 & 1 \\\\ 3 & 1 & 0 \\\\ 1 & 2 & 3 \\end{pmatrix}$',
     correctValue: 1,
     tolerance: 0.01,
     unit: '',
     explanation: 'Sarrus: $(2 \\cdot 1 \\cdot 3 + 0 \\cdot 0 \\cdot 1 + 1 \\cdot 3 \\cdot 2) - (1 \\cdot 1 \\cdot 1 + 0 \\cdot 3 \\cdot 3 + 2 \\cdot 0 \\cdot 2) = (6 + 0 + 6) - (1 + 0 + 0) = 12 - 11 = 1$.',
-    hints: ['Verwende die Regel von Sarrus für 3x3-Determinanten.'],
+    hints: [
+      'Verwende die Regel von Sarrus für 3×3-Determinanten.',
+      'Plus-Diagonalen ergeben $6 + 0 + 6 = 12$, Minus-Diagonalen $1 + 0 + 0 = 1$.',
+      'Tipp: Bei Nullen kann man die Entwicklung nach Zeile/Spalte mit den meisten Nullen oft schneller machen — hier z.B. nach Spalte 2 entwickeln.',
+    ],
   },
 
   // ── Lesson 5: Eigenwerte und Eigenvektoren ──────────────────────────────────
   'ex-la-1-5-a': {
     id: 'ex-la-1-5-a', lessonId: 'la-1-5', type: 'multiple-choice',
-    question: 'Was bedeutet die Gleichung $A\\vec{x} = \\lambda\\vec{x}$?',
+    question: 'Was bedeutet die Gleichung $A \\vec{x} = \\lambda \\vec{x}$?',
     options: [
-      'Der Vektor $\\vec{x}$ wird durch A auf den Nullvektor abgebildet',
-      'Der Vektor $\\vec{x}$ wird durch A nur gestreckt/gestaucht, aber nicht gedreht',
-      'Die Matrix A hat keine Inverse',
+      'Der Vektor $\\vec{x}$ wird durch $A$ auf den Nullvektor abgebildet',
+      'Der Vektor $\\vec{x}$ wird durch $A$ nur gestreckt/gestaucht, aber nicht gedreht',
+      'Die Matrix $A$ hat keine Inverse',
       'Der Vektor $\\vec{x}$ ist immer der Nullvektor',
     ],
     correctIndex: 1,
-    explanation: 'Ein Eigenvektor $\\vec{x}$ behält bei der Multiplikation mit A seine Richtung. Er wird nur um den Faktor $\\lambda$ (den Eigenwert) gestreckt oder gestaucht. Deshalb "eigen" = er bleibt sich selbst treu!',
-    hints: ['Auf der linken Seite steht eine Matrix mal Vektor, auf der rechten steht eine Zahl mal der gleiche Vektor. Der Vektor ändert also nur seine Länge, nicht seine Richtung.'],
+    explanation: 'Ein Eigenvektor $\\vec{x}$ behält bei der Multiplikation mit $A$ seine Richtung. Er wird nur um den Faktor $\\lambda$ (den Eigenwert) gestreckt oder gestaucht. Deshalb "eigen" — er bleibt sich selbst treu!',
+    hints: [
+      'Auf der rechten Seite steht $\\lambda \\cdot \\vec{x}$ — was bedeutet das geometrisch?',
+      'Multiplikation mit einem Skalar $\\lambda$ ändert nur die Länge, nicht die Richtung.',
+      'Also bleibt der Vektor in Richtung gleich — und $\\lambda$ ist der Streckfaktor.',
+    ],
   },
   'ex-la-1-5-b': {
     id: 'ex-la-1-5-b', lessonId: 'la-1-5', type: 'multiple-choice',
-    question: 'Wie findet man die Eigenwerte einer Matrix A?',
+    question: 'Wie findet man die Eigenwerte einer Matrix $A$?',
     options: [
       'Man berechnet $A^{-1}$',
       'Man löst $\\det(A - \\lambda I) = 0$',
-      'Man transponiert A',
+      'Man transponiert $A$',
       'Man berechnet $\\det(A) = 0$',
     ],
     correctIndex: 1,
     explanation: 'Die Eigenwerte findet man aus dem charakteristischen Polynom: $\\det(A - \\lambda I) = 0$. Die Lösungen dieser Gleichung sind die Eigenwerte $\\lambda$.',
-    hints: ['Man bringt die Eigengleichung in die Form $(A - \\lambda I)\\vec{x} = 0$. Damit das eine nichttriviale Lösung hat, muss die Determinante 0 sein.'],
+    hints: [
+      'Schreibe $A \\vec{x} = \\lambda \\vec{x}$ um zu $(A - \\lambda I) \\vec{x} = \\vec{0}$.',
+      'Damit es eine nicht-triviale Lösung $\\vec{x} \\neq \\vec{0}$ gibt, muss $(A - \\lambda I)$ singulär sein.',
+      'Singulär $\\Leftrightarrow \\det(A - \\lambda I) = 0$ — das charakteristische Polynom.',
+    ],
   },
   'ex-la-1-5-c': {
     id: 'ex-la-1-5-c', lessonId: 'la-1-5', type: 'number-input',
@@ -276,8 +368,12 @@ export const exercises_la_u1 = {
     correctValue: 7,
     tolerance: 0.01,
     unit: '',
-    explanation: 'Die Spur (Summe der Diagonalelemente) ist $4 + 3 = 7$. Man kann auch rechnen: $\\det(A - \\lambda I) = (4-\\lambda)(3-\\lambda) - 2 = \\lambda^2 - 7\\lambda + 10 = 0$, also $\\lambda_1 = 5, \\lambda_2 = 2$, Summe $= 7$.',
-    hints: ['Die Summe der Eigenwerte ist gleich der Spur der Matrix (Summe der Diagonalelemente). Das ist viel einfacher als das char. Polynom!'],
+    explanation: 'Die Spur (Summe der Diagonalelemente) ist $4 + 3 = 7$. Verifikation: $\\det(A - \\lambda I) = (4-\\lambda)(3-\\lambda) - 2 = \\lambda^2 - 7\\lambda + 10 = 0$, also $\\lambda_1 = 5, \\lambda_2 = 2$, Summe $= 7$. ✓',
+    hints: [
+      'Welche Abkürzung für die Summe der Eigenwerte gibt es?',
+      'Spur = Summe der Diagonalelemente = Summe der Eigenwerte.',
+      'Hier: $4 + 3 = ?$',
+    ],
   },
   'ex-la-1-5-mastery': {
     id: 'ex-la-1-5-mastery', lessonId: 'la-1-5', type: 'multiple-choice', isMasteryCheck: true,
@@ -290,7 +386,11 @@ export const exercises_la_u1 = {
     ],
     correctIndex: 0,
     explanation: '$\\det(A - \\lambda I) = (2-\\lambda)(3-\\lambda) - 0 = 0$. Also $\\lambda_1 = 2$ und $\\lambda_2 = 3$. Bei einer Dreiecksmatrix stehen die Eigenwerte direkt auf der Diagonale!',
-    hints: ['A ist eine obere Dreiecksmatrix. Bei Dreiecksmatrizen sind die Eigenwerte die Diagonalelemente.'],
+    hints: [
+      'Welche besondere Form hat $A$?',
+      '$A$ ist obere Dreiecksmatrix — was bedeutet das für die Eigenwerte?',
+      'Bei Dreiecksmatrizen sind die Diagonalelemente direkt die Eigenwerte (ohne Rechnung).',
+    ],
   },
 }
 
@@ -306,7 +406,7 @@ const lessons_la_u1 = [
     steps: [
       {
         id: 'la-1-1-s1', type: 'explanation-intuitive', title: 'Was ist eine Matrix?',
-        content: `Stell dir eine **Tabelle mit Zahlen** vor -- das ist im Grunde schon eine Matrix!
+        content: `Stell dir eine **Tabelle mit Zahlen** vor — das ist im Grunde schon eine Matrix!
 
 **Alltagsbeispiel:** Ein Unternehmen produziert 3 Produkte in 2 Fabriken. Die Produktionszahlen pro Monat:
 
@@ -315,11 +415,11 @@ const lessons_la_u1 = [
 | Fabrik 1 | 100 | 200 | 150 |
 | Fabrik 2 | 80 | 300 | 120 |
 
-Diese Tabelle ist eine **2x3-Matrix** (2 Zeilen, 3 Spalten):
+Diese Tabelle ist eine **2×3-Matrix** (2 Zeilen, 3 Spalten):
 
 $$A = \\begin{pmatrix} 100 & 200 & 150 \\\\ 80 & 300 & 120 \\end{pmatrix}$$
 
-**Warum braucht man Matrizen im Maschinenbau?** Überall! Spannungstensoren, Trägheitsmomente, Steifigkeitsmatrizen in der FEM, Drehmatrizen in der Robotik -- Matrizen sind DAS Werkzeug der Ingenieurmathematik.`,
+**Warum braucht man Matrizen im Maschinenbau?** Überall! Spannungstensoren, Trägheitsmomente, Steifigkeitsmatrizen in der FEM, Drehmatrizen in der Robotik — Matrizen sind DAS Werkzeug der Ingenieurmathematik.`,
       },
       {
         id: 'la-1-1-s2', type: 'explanation-formal', title: 'Formale Notation',
@@ -372,7 +472,7 @@ $$3 \\cdot \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} = \\begin{pmatrix} 3
       },
       {
         id: 'la-1-2-s2', type: 'explanation-intuitive', title: 'Matrizenmultiplikation: Zeile mal Spalte',
-        content: `Die Matrizenmultiplikation ist die wichtigste Operation -- aber auch die ungewöhnlichste!
+        content: `Die Matrizenmultiplikation ist die wichtigste Operation — aber auch die ungewöhnlichste!
 
 **Rezept "Zeile mal Spalte":**
 Um das Element $c_{ij}$ von $C = A \\cdot B$ zu berechnen:
@@ -420,7 +520,7 @@ Stell es dir wie ein **Spiegeln an der Diagonale** vor:
 
 $$A = \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{pmatrix} \\quad \\Rightarrow \\quad A^T = \\begin{pmatrix} 1 & 4 \\\\ 2 & 5 \\\\ 3 & 6 \\end{pmatrix}$$
 
-Die erste Zeile [1, 2, 3] wird zur ersten Spalte. Die zweite Zeile [4, 5, 6] wird zur zweiten Spalte.
+Die erste Zeile $[1, 2, 3]$ wird zur ersten Spalte. Die zweite Zeile $[4, 5, 6]$ wird zur zweiten Spalte.
 
 **Formal:** $(A^T)_{ij} = a_{ji}$
 
@@ -447,7 +547,7 @@ $$A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\quad \\Rightarrow \\qua
 1. Berechne $\\det(A) = ad - bc$
 2. Falls $\\det(A) = 0$: **keine Inverse!** (Matrix ist "singulär")
 3. Tausche $a$ und $d$
-4. Aendere Vorzeichen von $b$ und $c$
+4. Ändere Vorzeichen von $b$ und $c$
 5. Teile alles durch $\\det(A)$
 
 **Beispiel:** $A = \\begin{pmatrix} 4 & 7 \\\\ 2 & 6 \\end{pmatrix}$
@@ -485,7 +585,7 @@ Stell dir das **Einheitsquadrat** vor (Seitenlängen 1, Fläche = 1). Wenn du es
 - $\\det(A) < 0$: Fläche wird skaliert, Orientierung wird **umgekehrt** (gespiegelt)
 - $\\det(A) = 0$: Alles wird auf eine Linie (oder einen Punkt) zusammengequetscht! Die Matrix ist **singulär** (nicht invertierbar).
 
-**Maschinenbau-Bezug:** Wenn bei einer FEM-Berechnung $\\det(A) = 0$ rauskommt, hat das System keine eindeutige Lösung -- z.B. fehlen Randbedingungen!`,
+**Maschinenbau-Bezug:** Wenn bei einer FEM-Berechnung $\\det(A) = 0$ rauskommt, hat das System keine eindeutige Lösung — z.B. fehlen Randbedingungen!`,
       },
       {
         id: 'la-1-4-s2', type: 'explanation-formal', title: 'Berechnung: 2x2 und 3x3',
@@ -530,17 +630,17 @@ $- a_3 b_2 c_1 - a_2 b_1 c_3 - a_1 b_3 c_2$
     nextLessonId: 'la-2-1',
     steps: [
       {
-        id: 'la-1-5-s1', type: 'explanation-intuitive', title: 'Vektoren, die ihre Richtung behälten',
+        id: 'la-1-5-s1', type: 'explanation-intuitive', title: 'Vektoren, die ihre Richtung behalten',
         content: `Wenn du eine Matrix $A$ auf einen Vektor $\\vec{x}$ anwendest, passiert meistens etwas Kompliziertes: Der Vektor wird gedreht, gestreckt, verzerrt.
 
-Aber es gibt **besondere Vektoren**, die ihre **Richtung behälten**! Sie werden nur gestreckt oder gestaucht:
+Aber es gibt **besondere Vektoren**, die ihre **Richtung behalten**! Sie werden nur gestreckt oder gestaucht:
 
 $$A\\vec{x} = \\lambda\\vec{x}$$
 
-- $\\vec{x}$ heißt **Eigenvektor** ("eigen" = "selbst" -- er bleibt sich selbst treu)
+- $\\vec{x}$ heißt **Eigenvektor** ("eigen" = "selbst" — er bleibt sich selbst treu)
 - $\\lambda$ heißt **Eigenwert** (der Streckungsfaktor)
 
-**Analogie:** Stell dir einen Ventilator vor, der Luft in verschiedene Richtungen bläst. Die meisten Papierstreifen flattern wild umher. Aber ein Streifen, der genau in der Rotationsachse hängt, wird nur nach vorne/hinten geblasen -- er behält seine Richtung. Das ist ein "Eigenvektor" des Ventilators!
+**Analogie:** Stell dir einen Ventilator vor, der Luft in verschiedene Richtungen bläst. Die meisten Papierstreifen flattern wild umher. Aber ein Streifen, der genau in der Rotationsachse hängt, wird nur nach vorne/hinten geblasen — er behält seine Richtung. Das ist ein "Eigenvektor" des Ventilators!
 
 **Wozu?** Eigenwerte bestimmen:
 - Ob eine Brücke schwingt (Eigenfrequenzen!)
