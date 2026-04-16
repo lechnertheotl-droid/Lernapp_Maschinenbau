@@ -38,6 +38,12 @@ const unit1Lessons = [
       'Im(z) ist eine reelle Zahl — das i gehört nicht dazu.',
       'Achte auf das Vorzeichen vor dem i-Term.',
     ],
+    masteryVisualization: {
+      id: 'complex-plane',
+      params: { initialZ1: { a: 3, b: -2 }, range: 4 },
+      caption: 'Punkt z in der Gaußschen Ebene: Re(z)=3, Im(z)=−2',
+      alt: 'Komplexe Zahl 3 − 2i in der Gaußschen Ebene.',
+    },
     nextLessonId: 'komz-1-2',
   }),
 
@@ -117,6 +123,12 @@ const unit2Lessons = [
     correctIndex: 0,
     masteryExplanation: '$|z| = \\sqrt{3^2 + 4^2} = \\sqrt{9+16} = \\sqrt{25} = 5$.',
     masteryHints: ['|z| = √(a² + b²).', 'Pythagoras in der Gaußschen Ebene.'],
+    masteryVisualization: {
+      id: 'complex-plane',
+      params: { initialZ1: { a: 3, b: 4 }, range: 5 },
+      caption: 'Betrag |z| = Abstand zum Ursprung (Pythagoras)',
+      alt: 'Komplexe Zahl 3+4i mit Abstand 5 zum Ursprung.',
+    },
     prerequisites: ['komz-1-2'],
     nextLessonId: 'komz-2-2',
   }),
@@ -158,6 +170,12 @@ const unit2Lessons = [
       'Euler-Formel: e^(iφ) = cos φ + i·sin φ.',
       'cos(π/2) = 0, sin(π/2) = 1.',
     ],
+    masteryVisualization: {
+      id: 'complex-plane',
+      params: { initialZ1: { a: 0, b: 1 }, range: 2 },
+      caption: 'e^(iφ) entspricht einem Punkt auf dem Einheitskreis beim Winkel φ',
+      alt: 'Komplexe Zahl i in der Gaußschen Ebene.',
+    },
     prerequisites: ['komz-2-1'],
     nextLessonId: 'komz-3-1',
   }),
@@ -302,7 +320,7 @@ export const komplexeZahlenTopic = {
   color: 'purple',
   estimatedHours: 3,
   difficulty: 3,
-  level: 'vertiefung',
+  level: 'grundlagen',
   units: [unit1, unit2, unit3, unit4],
   prerequisites: ['algebra', 'trigonometry'],
 }
