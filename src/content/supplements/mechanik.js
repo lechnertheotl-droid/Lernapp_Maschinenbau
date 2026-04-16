@@ -222,7 +222,7 @@ const profiles = {
       'Frage dich: welcher Freiheitsgrad wird zusätzlich gesperrt im Vergleich zum Festlager?',
     ],
 
-    transferQuestion: 'Ein 3 m langer Balken hängt waagrecht an zwei Seilen (Abstand 3 m). Mittig hängt eine Masse $m = 60$ kg. Wie groß ist die Zugkraft pro Seil in N ($g = 9{,}81$ m/s²)?',
+    transferQuestion: 'Ein 3 m langer Balken hängt waagrecht an zwei Seilen (Abstand 3 m). Mittig hängt eine Masse $m = 60$ kg. Wie groß ist die Zugkraft pro Seil in N ($g = 9{,}81$ $m/s^2$)?',
     transferAnswer: 294.3,
     transferTolerance: 1,
     transferUnit: 'N',
@@ -248,19 +248,19 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
 
     conceptQuestion: 'Ein Fahrzeug beschleunigt gleichmäßig von $v_0 = 10$ m/s auf $v = 30$ m/s in $t = 5$ s. Welche Aussage zur Beschleunigung ist korrekt?',
     conceptOptions: [
-      '$a = \\frac{v - v_0}{t} = 4$ m/s²',
-      '$a = v/t = 6$ m/s²',
-      '$a = v_0/t = 2$ m/s²',
-      '$a = v - v_0 = 20$ m/s²',
+      '$a = \\frac{v - v_0}{t} = 4$ $m/s^2$',
+      '$a = v/t = 6$ $m/s^2$',
+      '$a = v_0/t = 2$ $m/s^2$',
+      '$a = v - v_0 = 20$ $m/s^2$',
     ],
     conceptCorrect: 0,
-    conceptExplanation: 'Bei konstanter Beschleunigung ist $a = \\Delta v / \\Delta t = (30 - 10)/5 = 4$ m/s². Die Einheit passt: (m/s)/s = m/s². Option D vergisst die Division durch $t$ — dann stimmt die Einheit nicht.',
+    conceptExplanation: 'Bei konstanter Beschleunigung ist $a = \\Delta v / \\Delta t = (30 - 10)/5 = 4$ $m/s^2$. Die Einheit passt: (m/s)/s = $m/s^2$. Option D vergisst die Division durch $t$ — dann stimmt die Einheit nicht.',
     conceptHints: [
       'Beschleunigung ist die Änderungsrate der Geschwindigkeit.',
-      'Einheitencheck: (m/s) / s = m/s² — das ist die Probe für deine Formel.',
+      'Einheitencheck: (m/s) / s = $m/s^2$ — das ist die Probe für deine Formel.',
     ],
 
-    calcQuestion: 'Ein Auto beschleunigt aus dem Stand mit $a = 2{,}5$ m/s² über $t = 8$ s. Welche Geschwindigkeit in m/s erreicht es?',
+    calcQuestion: 'Ein Auto beschleunigt aus dem Stand mit $a = 2{,}5$ $m/s^2$ über $t = 8$ s. Welche Geschwindigkeit in m/s erreicht es?',
     calcAnswer: 20,
     calcTolerance: 0.1,
     calcUnit: 'm/s',
@@ -282,7 +282,7 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
     matchingPairs: [
       { left: 'Gleichförmig', right: '$a = 0$, $v = $ const' },
       { left: 'Gleichmäßig beschleunigt', right: '$a = $ const, $v$ linear in $t$' },
-      { left: 'Freier Fall', right: '$a = g = 9{,}81$ m/s² nach unten' },
+      { left: 'Freier Fall', right: '$a = g = 9{,}81$ $m/s^2$ nach unten' },
       { left: 'Kreisbewegung mit const. Drehzahl', right: '$|\\vec{v}| = $ const, $\\vec{a} \\neq 0$ (Zentripetal)' },
     ],
     matchingExplanation: 'Diese vier Bewegungsformen decken 90 % der Klausuraufgaben ab. Erkenne zuerst den Typ — dann steht die passende Formel fest.',
@@ -310,7 +310,7 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
     errorOptions: [
       'Die Einheit passt nicht — $g \\cdot h$ hat Einheit $m^2/s^2$, keine Geschwindigkeit. Richtig ist $v = \\sqrt{2gh}$.',
       'Der Faktor 2 fehlt, ansonsten ist die Formel richtig',
-      'Die Gravitation muss $g = 10$ m/s² sein, nicht 9,81',
+      'Die Gravitation muss $g = 10$ $m/s^2$ sein, nicht 9,81',
       'Freier Fall ist nicht gleichmäßig beschleunigt',
     ],
     errorCorrect: 0,
@@ -320,7 +320,7 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
       'Freier Fall ist gleichmäßig beschleunigt mit $a = g$ — dann gilt $v^2 = v_0^2 + 2gh$.',
     ],
 
-    transferQuestion: 'Ein Stein wird aus $h = 20$ m Höhe fallengelassen ($g = 9{,}81$ m/s²). Mit welcher Geschwindigkeit in m/s trifft er auf?',
+    transferQuestion: 'Ein Stein wird aus $h = 20$ m Höhe fallengelassen ($g = 9{,}81$ $m/s^2$). Mit welcher Geschwindigkeit in m/s trifft er auf?',
     transferAnswer: 19.81,
     transferTolerance: 0.1,
     transferUnit: 'm/s',
@@ -346,23 +346,23 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
 
     conceptQuestion: 'Eine Masse $m = 5$ kg liegt reibungsfrei auf dem Boden. Eine horizontale Kraft $F = 20$ N zieht an ihr. Wie groß ist die Beschleunigung?',
     conceptOptions: [
-      '$a = F/m = 4$ m/s²',
-      '$a = F \\cdot m = 100$ m/s²',
-      '$a = m/F = 0{,}25$ m/s²',
-      '$a = F - m = 15$ m/s²',
+      '$a = F/m = 4$ $m/s^2$',
+      '$a = F \\cdot m = 100$ $m/s^2$',
+      '$a = m/F = 0{,}25$ $m/s^2$',
+      '$a = F - m = 15$ $m/s^2$',
     ],
     conceptCorrect: 0,
-    conceptExplanation: 'Newton 2: $F = m \\cdot a \\Rightarrow a = F/m = 20/5 = 4$ m/s². Einheiten: N/kg = m/s². Reibungsfrei heißt: keine weiteren horizontalen Kräfte, $F$ ist bereits die Resultierende.',
+    conceptExplanation: 'Newton 2: $F = m \\cdot a \\Rightarrow a = F/m = 20/5 = 4$ $m/s^2$. Einheiten: N/kg = $m/s^2$. Reibungsfrei heißt: keine weiteren horizontalen Kräfte, $F$ ist bereits die Resultierende.',
     conceptHints: [
       '$F = m \\cdot a$ — nach $a$ auflösen.',
-      'Einheitencheck: $1$ N $= 1$ kg·m/s².',
+      'Einheitencheck: $1$ N $= 1$ $kg \\cdot m/s^2$.',
     ],
 
-    calcQuestion: 'Auf eine Kiste ($m = 20$ kg) wirkt horizontal $F = 100$ N. Gleitreibungskoeffizient $\\mu = 0{,}2$. Wie groß ist die Beschleunigung in m/s² ($g = 9{,}81$ m/s²)?',
+    calcQuestion: 'Auf eine Kiste ($m = 20$ kg) wirkt horizontal $F = 100$ N. Gleitreibungskoeffizient $\\mu = 0{,}2$. Wie groß ist die Beschleunigung in $m/s^2$ ($g = 9{,}81$ $m/s^2$)?',
     calcAnswer: 3.038,
     calcTolerance: 0.02,
-    calcUnit: 'm/s²',
-    calcExplanation: 'Normalkraft: $F_N = m g = 20 \\cdot 9{,}81 = 196{,}2$ N. Reibungskraft: $F_R = \\mu F_N = 0{,}2 \\cdot 196{,}2 = 39{,}24$ N. Resultierend: $F_{res} = F - F_R = 100 - 39{,}24 = 60{,}76$ N. Beschleunigung: $a = F_{res}/m = 60{,}76/20 \\approx 3{,}038$ m/s².',
+    calcUnit: 'm/s^2',
+    calcExplanation: 'Normalkraft: $F_N = m g = 20 \\cdot 9{,}81 = 196{,}2$ N. Reibungskraft: $F_R = \\mu F_N = 0{,}2 \\cdot 196{,}2 = 39{,}24$ N. Resultierend: $F_{res} = F - F_R = 100 - 39{,}24 = 60{,}76$ N. Beschleunigung: $a = F_{res}/m = 60{,}76/20 \\approx 3{,}038$ $m/s^2$.',
     calcHints: [
       'Zuerst Normalkraft bestimmen — bei ebenem Zug ist $F_N = m \\cdot g$.',
       'Reibung wirkt entgegen der Bewegung: $F_R = \\mu \\cdot F_N$.',
@@ -419,11 +419,11 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
       'Zeichne die Rampe und markiere den Winkel $\\alpha$ — dann wird $\\cos$ vs. $\\sin$ klar.',
     ],
 
-    transferQuestion: 'Auf einer Rampe mit $\\alpha = 20°$ rutscht ein Körper $m = 4$ kg reibungsfrei ab. Wie groß ist die Hangabtriebskraft in N ($g = 9{,}81$ m/s²)?',
+    transferQuestion: 'Auf einer Rampe mit $\\alpha = 20°$ rutscht ein Körper $m = 4$ kg reibungsfrei ab. Wie groß ist die Hangabtriebskraft in N ($g = 9{,}81$ $m/s^2$)?',
     transferAnswer: 13.42,
     transferTolerance: 0.1,
     transferUnit: 'N',
-    transferExplanation: '$F_{an} = m g \\sin(\\alpha) = 4 \\cdot 9{,}81 \\cdot \\sin(20°) = 4 \\cdot 9{,}81 \\cdot 0{,}342 \\approx 13{,}42$ N. Beschleunigung daraus: $a = g \\sin(\\alpha) \\approx 3{,}36$ m/s².',
+    transferExplanation: '$F_{an} = m g \\sin(\\alpha) = 4 \\cdot 9{,}81 \\cdot \\sin(20°) = 4 \\cdot 9{,}81 \\cdot 0{,}342 \\approx 13{,}42$ N. Beschleunigung daraus: $a = g \\sin(\\alpha) \\approx 3{,}36$ $m/s^2$.',
     transferHints: [
       'Hangabtriebskraft = Gewichtskraftanteil parallel zur Rampe.',
       '$F_{an} = m g \\sin(\\alpha)$ — $\\sin$, nicht $\\cos$, da die Komponente entlang der Rampe gesucht ist.',
@@ -568,7 +568,7 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
       'Plastischer Stoß: beide Körper bewegen sich nach dem Stoß gemeinsam.',
     ],
 
-    calcQuestion: 'Ein Körper ($m = 5$ kg) rutscht reibungsfrei eine Rampe von $h = 2$ m Höhe herunter. Wie groß ist seine Geschwindigkeit unten in m/s ($g = 9{,}81$ m/s²)?',
+    calcQuestion: 'Ein Körper ($m = 5$ kg) rutscht reibungsfrei eine Rampe von $h = 2$ m Höhe herunter. Wie groß ist seine Geschwindigkeit unten in m/s ($g = 9{,}81$ $m/s^2$)?',
     calcAnswer: 6.264,
     calcTolerance: 0.02,
     calcUnit: 'm/s',
@@ -588,9 +588,9 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
 
     matchingQuestion: 'Ordne die Größen ihren Einheiten zu.',
     matchingPairs: [
-      { left: 'Kraft', right: 'N = kg·m/s²' },
+      { left: 'Kraft', right: '$N = kg \\cdot m/s^2$' },
       { left: 'Impuls', right: 'kg·m/s oder N·s' },
-      { left: 'Energie/Arbeit', right: 'J = N·m = kg·m²/s²' },
+      { left: 'Energie/Arbeit', right: '$J = N \\cdot m = kg \\cdot m^2/s^2$' },
       { left: 'Leistung', right: 'W = J/s' },
     ],
     matchingExplanation: 'Die Grundeinheiten mechanischer Größen lassen sich alle auf kg, m und s zurückführen. Einheitencheck ist in Klausuren oft der erste Hinweis auf Fehler.',

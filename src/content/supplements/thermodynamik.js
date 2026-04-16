@@ -1,9 +1,9 @@
-function mc(question, options, correctIndex, explanation, hints = []) {
-  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints }
+function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined) {
+  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints, ...(visualization ? { visualization } : {}) }
 }
 
-function ni(question, correctValue, tolerance, unit, explanation, hints = []) {
-  return { type: 'number-input', question, correctValue, tolerance, unit, explanation, hints }
+function ni(question, correctValue, tolerance, unit, explanation, hints = [], visualization = undefined) {
+  return { type: 'number-input', question, correctValue, tolerance, unit, explanation, hints, ...(visualization ? { visualization } : {}) }
 }
 
 function tf(statement, correct, explanation, hints = []) {
@@ -31,8 +31,8 @@ function withExamPrefix(exercise, exam) {
 
 function bank(profile) {
   const exercises = [
-    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints),
-    ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints),
+    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization),
+    ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints, profile.calcVisualization),
     tf(profile.trueFalseStatement, profile.trueFalseCorrect, profile.trueFalseExplanation, profile.trueFalseHints),
     matching(profile.matchingQuestion, profile.matchingPairs, profile.matchingExplanation, profile.matchingHints),
     sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints),
@@ -73,12 +73,18 @@ $$p \cdot V = n \cdot R \cdot T$$
       'Denk an die molekulare Interpretation: Temperatur ∝ mittlere kinetische Energie.',
       'Celsius hat einen willkürlichen Nullpunkt (Eispunkt).',
     ],
+    conceptVisualization: {
+      id: 'pv-diagram',
+      params: { mode: 'static' },
+      caption: 'p-V-Diagramm: isotherme Kurven (T₁ < T₂) — pV = nRT = const',
+      alt: 'p-V-Diagramm mit isothermen Kurven für verschiedene Temperaturen',
+    },
 
-    calcQuestion: 'Ein Gas wird von $t_1 = 20$ °C auf $t_2 = 100$ °C bei konstantem Druck erwärmt. Das Anfangsvolumen ist $V_1 = 1$ m³. Wie groß ist $V_2$ in m³?',
+    calcQuestion: 'Ein Gas wird von $t_1 = 20$ °C auf $t_2 = 100$ °C bei konstantem Druck erwärmt. Das Anfangsvolumen ist $V_1 = 1$ $m^3$. Wie groß ist $V_2$ in $m^3$?',
     calcAnswer: 1.273,
     calcTolerance: 0.005,
-    calcUnit: 'm³',
-    calcExplanation: 'Isobar: $V_1/T_1 = V_2/T_2$. Umrechnen: $T_1 = 293{,}15$ K, $T_2 = 373{,}15$ K. $V_2 = V_1 \\cdot T_2/T_1 = 1 \\cdot 373{,}15/293{,}15 \\approx 1{,}273$ m³. Das Volumen wächst um ca. 27 %.',
+    calcUnit: 'm^3',
+    calcExplanation: 'Isobar: $V_1/T_1 = V_2/T_2$. Umrechnen: $T_1 = 293{,}15$ K, $T_2 = 373{,}15$ K. $V_2 = V_1 \\cdot T_2/T_1 = 1 \\cdot 373{,}15/293{,}15 \\approx 1{,}273$ $m^3$. Das Volumen wächst um ca. 27 %.',
     calcHints: [
       'Bei konstantem Druck: $V/T = $ const.',
       'Temperaturen in Kelvin umrechnen (addiere 273,15).',
@@ -95,8 +101,8 @@ $$p \cdot V = n \cdot R \cdot T$$
 
     matchingQuestion: 'Ordne die Zustandsgrößen ihren SI-Einheiten zu.',
     matchingPairs: [
-      { left: 'Druck $p$', right: 'Pa = N/m²' },
-      { left: 'Volumen $V$', right: 'm³' },
+      { left: 'Druck $p$', right: '$Pa = N/m^2$' },
+      { left: 'Volumen $V$', right: '$m^3$' },
       { left: 'Stoffmenge $n$', right: 'mol' },
       { left: 'Temperatur $T$', right: 'K (Kelvin)' },
     ],
@@ -181,7 +187,7 @@ mit Adiabatenexponent $\kappa = c_p/c_v$ (Luft: $\kappa \approx 1{,}4$).
       'Schnelle Prozesse ≈ adiabat, langsame ≈ isotherm.',
     ],
 
-    calcQuestion: 'Ein Gas ($n = 2$ mol) wird isotherm bei $T = 300$ K von $V_1 = 1$ m³ auf $V_2 = 2$ m³ expandiert. Wie viel Arbeit leistet es in kJ (Gaskonstante $R = 8{,}314$ J/(mol·K))?',
+    calcQuestion: 'Ein Gas ($n = 2$ mol) wird isotherm bei $T = 300$ K von $V_1 = 1$ $m^3$ auf $V_2 = 2$ $m^3$ expandiert. Wie viel Arbeit leistet es in kJ (Gaskonstante $R = 8{,}314$ J/(mol·K))?',
     calcAnswer: 3.457,
     calcTolerance: 0.02,
     calcUnit: 'kJ',
@@ -218,14 +224,14 @@ mit Adiabatenexponent $\kappa = c_p/c_v$ (Luft: $\kappa \approx 1{,}4$).
       'Prozesstyp identifizieren: isobar ($p = $ const)',
       'Anfangs- und Endvolumen bestimmen ($V_1, V_2$)',
       'Formel wählen: $W = p (V_2 - V_1)$',
-      'Einheitencheck: Pa · m³ = J',
+      'Einheitencheck: $Pa \\cdot m^3 = J$',
       'Vorzeichen interpretieren: positiv = Gas leistet Arbeit',
     ],
     sortingOrder: [0, 1, 2, 3, 4],
-    sortingExplanation: 'Prozesstyp zuerst — dann Volumenänderung, dann Formel. Der Einheitencheck Pa · m³ = J ist ein häufiger Zwischencheck.',
+    sortingExplanation: 'Prozesstyp zuerst — dann Volumenänderung, dann Formel. Der Einheitencheck $Pa \\cdot m^3 = J$ ist ein häufiger Zwischencheck.',
     sortingHints: [
       'Ohne Prozesstyp keine Formelwahl.',
-      'Pa · m³: erweitere Pa = N/m² → N · m = J.',
+      '$Pa \\cdot m^3$: erweitere $Pa = N/m^2$ → $N \\cdot m = J$.',
     ],
 
     errorQuestion: 'Ein Student rechnet für eine adiabate Zustandsänderung: "$p_1 V_1 = p_2 V_2$". Was ist der Fehler?',

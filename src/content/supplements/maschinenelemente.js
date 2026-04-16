@@ -1,9 +1,9 @@
-function mc(question, options, correctIndex, explanation, hints = []) {
-  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints }
+function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined) {
+  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints, ...(visualization ? { visualization } : {}) }
 }
 
-function ni(question, correctValue, tolerance, unit, explanation, hints = []) {
-  return { type: 'number-input', question, correctValue, tolerance, unit, explanation, hints }
+function ni(question, correctValue, tolerance, unit, explanation, hints = [], visualization = undefined) {
+  return { type: 'number-input', question, correctValue, tolerance, unit, explanation, hints, ...(visualization ? { visualization } : {}) }
 }
 
 function tf(statement, correct, explanation, hints = []) {
@@ -31,8 +31,8 @@ function withExamPrefix(exercise, exam) {
 
 function bank(profile) {
   const exercises = [
-    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints),
-    ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints),
+    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization),
+    ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints, profile.calcVisualization),
     tf(profile.trueFalseStatement, profile.trueFalseCorrect, profile.trueFalseExplanation, profile.trueFalseHints),
     matching(profile.matchingQuestion, profile.matchingPairs, profile.matchingExplanation, profile.matchingHints),
     sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints),
@@ -158,6 +158,19 @@ $$i = \frac{z_2}{z_1} = \frac{n_1}{n_2} = \frac{M_2}{M_1}$$
 
 **Typischer Fehler:** Axiale und radiale Lasten getrennt statt als äquivalente Last $P$ behandelt.`,
 
+    conceptVisualization: {
+      id: 'free-body-diagram',
+      params: {
+        mode: 'static',
+        body: { width: 120, height: 30, label: 'Welle' },
+        forces: [
+          { x: 60, y: 15, angle: 270, magnitude: 1.5, label: 'Querkraft F' },
+          { x: 120, y: 15, angle: 0, magnitude: 1.2, label: 'Mt' },
+        ],
+      },
+      caption: 'Welle: Querkraft (→ Biegung) und Torsionsmoment Mt wirken gleichzeitig',
+      alt: 'Freikörperbild einer Welle mit Querkraft und Torsionsmoment',
+    },
     conceptQuestion: 'Warum werden Wellen oft gegen Biegung und Torsion *zusammen* nachgewiesen?',
     conceptOptions: [
       'Beide Beanspruchungen wirken oft gleichzeitig — eine Vergleichsspannung fasst sie nach Von Mises zusammen',
@@ -236,7 +249,7 @@ $$i = \frac{z_2}{z_1} = \frac{n_1}{n_2} = \frac{M_2}{M_1}$$
     transferAnswer: 28.3,
     transferTolerance: 0.2,
     transferUnit: 'MPa',
-    transferExplanation: '$W_p = \\pi d^3/16 = \\pi \\cdot 27000/16 = 1687{,}5\\pi \\approx 5301$ mm³. $M_t = 150$ Nm $= 150000$ Nmm. $\\tau = M_t/W_p = 150000/5301 \\approx 28{,}3$ MPa.',
+    transferExplanation: '$W_p = \\pi d^3/16 = \\pi \\cdot 27000/16 = 1687{,}5\\pi \\approx 5301$ $mm^3$. $M_t = 150$ Nm $= 150000$ Nmm. $\\tau = M_t/W_p = 150000/5301 \\approx 28{,}3$ MPa.',
     transferHints: [
       'Polares Widerstandsmoment Kreis: $\\pi d^3/16$.',
       'Moment in Nmm umrechnen.',
@@ -282,7 +295,7 @@ mit Reibungsbeiwert-Koeffizient $K \approx 0{,}2$ (geölt: 0,12). $d$ ist der Ne
 
     trueFalseStatement: 'Die Spannung in einer vorgespannten Schraube wird mit dem Nenndurchmesser berechnet: $\\sigma = F_V/(\\pi d^2/4)$.',
     trueFalseCorrect: false,
-    trueFalseExplanation: 'Falsch. Das Gewinde schwächt die Schraube — der Spannungsquerschnitt $A_s$ ist kleiner als die Nennfläche. Für M10: $A_s \\approx 58$ mm² statt $\\pi \\cdot 10^2/4 \\approx 78{,}5$ mm². $A_s$ steht in Normtabellen (DIN 13).',
+    trueFalseExplanation: 'Falsch. Das Gewinde schwächt die Schraube — der Spannungsquerschnitt $A_s$ ist kleiner als die Nennfläche. Für M10: $A_s \\approx 58$ $mm^2$ statt $\\pi \\cdot 10^2/4 \\approx 78{,}5$ $mm^2$. $A_s$ steht in Normtabellen (DIN 13).',
     trueFalseHints: [
       'Gewinde reduziert die tragende Fläche.',
       'Normtabelle liefert $A_s$.',
@@ -317,7 +330,7 @@ mit Reibungsbeiwert-Koeffizient $K \approx 0{,}2$ (geölt: 0,12). $d$ ist der Ne
       'Anziehdrehmoment kommt zuletzt.',
     ],
 
-    errorQuestion: 'Ein Student rechnet für M12 ($d = 12$ mm, $A_s = 84{,}3$ mm²) Spannung bei $F_V = 30000$ N als $\\sigma = 30000/(\\pi \\cdot 144/4) = 265$ MPa. Was ist falsch?',
+    errorQuestion: 'Ein Student rechnet für M12 ($d = 12$ mm, $A_s = 84{,}3$ $mm^2$) Spannung bei $F_V = 30000$ N als $\\sigma = 30000/(\\pi \\cdot 144/4) = 265$ MPa. Was ist falsch?',
     errorOptions: [
       'Die Nennfläche ist zu groß — richtig: $\\sigma = F_V/A_s = 30000/84{,}3 \\approx 356$ MPa (höher)',
       'Die Vorspannkraft ist zu klein',
@@ -325,13 +338,13 @@ mit Reibungsbeiwert-Koeffizient $K \approx 0{,}2$ (geölt: 0,12). $d$ ist der Ne
       'Die Streckgrenze ist irrelevant',
     ],
     errorCorrect: 0,
-    errorExplanation: 'Der Student hat mit Nennfläche $\\pi d^2/4 \\approx 113$ mm² gerechnet. Richtig ist der Spannungsquerschnitt $A_s = 84{,}3$ mm² — die Fläche im Kerndurchmesser des Gewindes ist kleiner, deshalb ist die tatsächliche Spannung größer.',
+    errorExplanation: 'Der Student hat mit Nennfläche $\\pi d^2/4 \\approx 113$ $mm^2$ gerechnet. Richtig ist der Spannungsquerschnitt $A_s = 84{,}3$ $mm^2$ — die Fläche im Kerndurchmesser des Gewindes ist kleiner, deshalb ist die tatsächliche Spannung größer.',
     errorHints: [
       'Gewinde reduziert die tragende Fläche.',
       'Immer $A_s$ aus der Normtabelle.',
     ],
 
-    transferQuestion: 'Eine Schraube M8 ($d = 8$ mm, $A_s = 36{,}6$ mm², Festigkeitsklasse 8.8 mit $R_e = 640$ MPa) soll mit 70 % Ausnutzung der Streckgrenze vorgespannt werden. Wie groß ist $F_V$ in N?',
+    transferQuestion: 'Eine Schraube M8 ($d = 8$ mm, $A_s = 36{,}6$ $mm^2$, Festigkeitsklasse 8.8 mit $R_e = 640$ MPa) soll mit 70 % Ausnutzung der Streckgrenze vorgespannt werden. Wie groß ist $F_V$ in N?',
     transferAnswer: 16397,
     transferTolerance: 20,
     transferUnit: 'N',
@@ -480,11 +493,11 @@ Bei $n$ Stufen und gleicher Einzelübersetzung $i_\text{Stufe}$: $i_{ges} = i_\t
     calcAnswer: 43.3,
     calcTolerance: 0.5,
     calcUnit: 'MPa',
-    calcExplanation: '$W = \\pi d^3/32 = \\pi \\cdot 42875/32 \\approx 4209$ mm³; $W_p = 2W \\approx 8418$ mm³. $\\sigma_b = M_b/W = 100000/4209 \\approx 23{,}76$ MPa. $\\tau_t = M_t/W_p = 200000/8418 \\approx 23{,}76$ MPa. $\\sigma_v = \\sqrt{23{,}76^2 + 3 \\cdot 23{,}76^2} = \\sqrt{4 \\cdot 23{,}76^2} = 2 \\cdot 23{,}76 \\approx 47{,}5$ MPa. Rundung in Zwischenwerten: 43–47 MPa (Toleranz beachtet).',
+    calcExplanation: '$W = \\pi d^3/32 = \\pi \\cdot 42875/32 \\approx 4209$ $mm^3$; $W_p = 2W \\approx 8418$ $mm^3$. $\\sigma_b = M_b/W = 100000/4209 \\approx 23{,}76$ MPa. $\\tau_t = M_t/W_p = 200000/8418 \\approx 23{,}76$ MPa. $\\sigma_v = \\sqrt{23{,}76^2 + 3 \\cdot 23{,}76^2} = \\sqrt{4 \\cdot 23{,}76^2} = 2 \\cdot 23{,}76 \\approx 47{,}5$ MPa. Rundung in Zwischenwerten: 43–47 MPa (Toleranz beachtet).',
     calcHints: [
       'Zwei Widerstandsmomente: axial für Biegung, polar für Torsion.',
       'Von Mises: $\\sqrt{\\sigma_b^2 + 3\\tau_t^2}$.',
-      'Vorsicht: Moment in Nmm, Fläche in mm² → Spannung in MPa.',
+      'Vorsicht: Moment in Nmm, Fläche in $mm^2$ → Spannung in MPa.',
     ],
 
     trueFalseStatement: 'In einer vollständigen Welle-Lager-Schraube-Auslegung müssen alle drei Komponenten unabhängig voneinander nachgewiesen werden.',
@@ -539,7 +552,7 @@ Bei $n$ Stufen und gleicher Einzelübersetzung $i_\text{Stufe}$: $i_{ges} = i_\t
       '$\\omega$ in rad/s.',
     ],
 
-    transferQuestion: 'Ein Hebegetriebe muss eine Last $m = 500$ kg mit $v = 0{,}3$ m/s heben. Wie groß ist die erforderliche Antriebsleistung in kW ($g = 9{,}81$ m/s², $\\eta = 0{,}8$)?',
+    transferQuestion: 'Ein Hebegetriebe muss eine Last $m = 500$ kg mit $v = 0{,}3$ m/s heben. Wie groß ist die erforderliche Antriebsleistung in kW ($g = 9{,}81$ $m/s^2$, $\\eta = 0{,}8$)?',
     transferAnswer: 1.84,
     transferTolerance: 0.03,
     transferUnit: 'kW',

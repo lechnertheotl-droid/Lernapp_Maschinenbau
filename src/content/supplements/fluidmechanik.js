@@ -1,9 +1,9 @@
-function mc(question, options, correctIndex, explanation, hints = []) {
-  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints }
+function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined) {
+  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints, ...(visualization ? { visualization } : {}) }
 }
 
-function ni(question, correctValue, tolerance, unit, explanation, hints = []) {
-  return { type: 'number-input', question, correctValue, tolerance, unit, explanation, hints }
+function ni(question, correctValue, tolerance, unit, explanation, hints = [], visualization = undefined) {
+  return { type: 'number-input', question, correctValue, tolerance, unit, explanation, hints, ...(visualization ? { visualization } : {}) }
 }
 
 function tf(statement, correct, explanation, hints = []) {
@@ -31,8 +31,8 @@ function withExamPrefix(exercise, exam) {
 
 function bank(profile) {
   const exercises = [
-    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints),
-    ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints),
+    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization),
+    ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints, profile.calcVisualization),
     tf(profile.trueFalseStatement, profile.trueFalseCorrect, profile.trueFalseExplanation, profile.trueFalseHints),
     matching(profile.matchingQuestion, profile.matchingPairs, profile.matchingExplanation, profile.matchingHints),
     sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints),
@@ -64,7 +64,7 @@ $$p(h) = p_0 + \rho \cdot g \cdot h$$
       'Weil der Druck nur von der Tiefe $h$, Dichte $\\rho$ und $g$ abhängt — die Form spielt keine Rolle (hydrostatisches Paradoxon)',
       'Weil Flüssigkeiten inkompressibel sind',
       'Weil der Luftdruck alles ausgleicht',
-      'Weil Wasser immer 1000 kg/m³ hat',
+      'Weil Wasser immer 1000 $kg/m^3$ hat',
     ],
     conceptCorrect: 0,
     conceptExplanation: 'Das hydrostatische Paradoxon: Der Bodendruck in einem breiten See, einem schmalen Rohr und einem Kegel mit gleicher Höhe ist identisch — sofern gleiche Flüssigkeit. Nur die Höhe entscheidet. Die Bodenkraft hängt über $F = p \\cdot A$ dann von der Bodenfläche ab.',
@@ -72,8 +72,22 @@ $$p(h) = p_0 + \rho \cdot g \cdot h$$
       'Die Formel $p = \\rho g h$ enthält keine Formgröße.',
       'Druck ist Kraft pro Fläche — die gesamte Gewichtslast wird über die Flächen verteilt.',
     ],
+    calcVisualization: {
+      id: 'function-graph',
+      params: {
+        mode: 'static',
+        functions: [
+          { fn: (h) => 9.81 * h, color: '#3b82f6', label: 'p = ρgh (kPa, Wasser)' },
+        ],
+        xRange: [0, 10],
+        yRange: [0, 100],
+        showGrid: true,
+      },
+      caption: 'Hydrostatischer Druck wächst linear mit der Tiefe h',
+      alt: 'Linearer Graph: Druck in kPa als Funktion der Tiefe in Metern',
+    },
 
-    calcQuestion: 'In einem Wasserbecken ($\\rho = 1000$ kg/m³) in Tiefe $h = 5$ m. Wie groß ist der hydrostatische Druck $\\rho g h$ (ohne Luftdruck) in kPa?',
+    calcQuestion: 'In einem Wasserbecken ($\\rho = 1000$ $kg/m^3$) in Tiefe $h = 5$ m. Wie groß ist der hydrostatische Druck $\\rho g h$ (ohne Luftdruck) in kPa?',
     calcAnswer: 49.05,
     calcTolerance: 0.1,
     calcUnit: 'kPa',
@@ -93,14 +107,14 @@ $$p(h) = p_0 + \rho \cdot g \cdot h$$
 
     matchingQuestion: 'Ordne die Dichten ihren Materialien zu.',
     matchingPairs: [
-      { left: 'Wasser', right: '$\\rho \\approx 1000$ kg/m³' },
-      { left: 'Luft (Normbedingungen)', right: '$\\rho \\approx 1{,}2$ kg/m³' },
-      { left: 'Quecksilber', right: '$\\rho \\approx 13600$ kg/m³' },
-      { left: 'Stahl', right: '$\\rho \\approx 7850$ kg/m³' },
+      { left: 'Wasser', right: '$\\rho \\approx 1000$ $kg/m^3$' },
+      { left: 'Luft (Normbedingungen)', right: '$\\rho \\approx 1{,}2$ $kg/m^3$' },
+      { left: 'Quecksilber', right: '$\\rho \\approx 13600$ $kg/m^3$' },
+      { left: 'Stahl', right: '$\\rho \\approx 7850$ $kg/m^3$' },
     ],
     matchingExplanation: 'Dichten sind die Basis aller Strömungsrechnungen. Quecksilber wurde historisch für Barometer genutzt, weil seine hohe Dichte kompakte Säulen ermöglicht.',
     matchingHints: [
-      'Wasser: 1000 kg/m³ (Basis).',
+      'Wasser: 1000 $kg/m^3$ (Basis).',
       'Luft ist 800× weniger dicht als Wasser.',
     ],
 
@@ -133,7 +147,7 @@ $$p(h) = p_0 + \rho \cdot g \cdot h$$
       'Überdruck und Absolutdruck unterscheiden.',
     ],
 
-    transferQuestion: 'In einer Zisterne steht Öl ($\\rho_{Öl} = 800$ kg/m³) 4 m hoch, darunter 2 m Wasser. Wie groß ist der Überdruck am Boden in kPa?',
+    transferQuestion: 'In einer Zisterne steht Öl ($\\rho_{Öl} = 800$ $kg/m^3$) 4 m hoch, darunter 2 m Wasser. Wie groß ist der Überdruck am Boden in kPa?',
     transferAnswer: 51.0,
     transferTolerance: 0.3,
     transferUnit: 'kPa',
@@ -167,13 +181,13 @@ $$F_A = \rho_f \cdot V_v \cdot g$$
       'Die Dichte ist unwichtig',
     ],
     conceptCorrect: 0,
-    conceptExplanation: 'Im Schwimmgleichgewicht gilt Auftrieb = Gewicht. Daraus folgt: $V_v/V = \\rho_H/\\rho_W$. Ein Holzblock mit Dichte 500 kg/m³ taucht genau zur Hälfte ein (V_v/V = 0,5). Eisberg (900 kg/m³ in 1000 kg/m³ Salzwasser): 90 % unter Wasser.',
+    conceptExplanation: 'Im Schwimmgleichgewicht gilt Auftrieb = Gewicht. Daraus folgt: $V_v/V = \\rho_H/\\rho_W$. Ein Holzblock mit Dichte 500 $kg/m^3$ taucht genau zur Hälfte ein (V_v/V = 0,5). Eisberg (900 $kg/m^3$ in 1000 $kg/m^3$ Salzwasser): 90 % unter Wasser.',
     conceptHints: [
       'Im Gleichgewicht heben sich Auftrieb und Gewicht auf.',
       'Dichteverhältnis = Eintauchverhältnis.',
     ],
 
-    calcQuestion: 'Ein Würfel ($V = 0{,}001$ m³, Masse $m = 0{,}6$ kg) wird in Wasser ($\\rho_W = 1000$ kg/m³) getaucht. Wie groß ist die Auftriebskraft, wenn er voll getaucht ist, in N?',
+    calcQuestion: 'Ein Würfel ($V = 0{,}001$ $m^3$, Masse $m = 0{,}6$ kg) wird in Wasser ($\\rho_W = 1000$ $kg/m^3$) getaucht. Wie groß ist die Auftriebskraft, wenn er voll getaucht ist, in N?',
     calcAnswer: 9.81,
     calcTolerance: 0.02,
     calcUnit: 'N',
@@ -198,7 +212,7 @@ $$F_A = \rho_f \cdot V_v \cdot g$$
       { left: '$\\rho_{Körper} > \\rho_{Flüssigkeit}$', right: 'Sinkt bis zum Boden' },
       { left: 'Hohlkörper mit $\\bar{\\rho} < \\rho_{Flüssigkeit}$', right: 'Schwimmt wie U-Boot/Schiff' },
     ],
-    matchingExplanation: 'Entscheidend ist die mittlere Dichte des Körpers (inkl. Luft im Hohlraum). Deshalb schwimmen Stahlschiffe — die mittlere Dichte inklusive Luftraum liegt unter 1000 kg/m³.',
+    matchingExplanation: 'Entscheidend ist die mittlere Dichte des Körpers (inkl. Luft im Hohlraum). Deshalb schwimmen Stahlschiffe — die mittlere Dichte inklusive Luftraum liegt unter 1000 $kg/m^3$.',
     matchingHints: [
       'Mittlere Dichte zählt, nicht Materialdichte.',
       'Schweben = Grenzfall.',
@@ -233,7 +247,7 @@ $$F_A = \rho_f \cdot V_v \cdot g$$
       '$F_A$ hängt nur von Flüssigkeitseigenschaften und verdrängtem Volumen ab.',
     ],
 
-    transferQuestion: 'Ein Holzbalken ($\\rho_H = 600$ kg/m³, Volumen $V = 0{,}02$ m³) schwimmt in Wasser ($\\rho_W = 1000$ kg/m³). Welcher Anteil des Volumens ist getaucht, in Prozent?',
+    transferQuestion: 'Ein Holzbalken ($\\rho_H = 600$ $kg/m^3$, Volumen $V = 0{,}02$ $m^3$) schwimmt in Wasser ($\\rho_W = 1000$ $kg/m^3$). Welcher Anteil des Volumens ist getaucht, in Prozent?',
     transferAnswer: 60,
     transferTolerance: 0.5,
     transferUnit: '%',
@@ -275,14 +289,14 @@ $$\dot{V} = A_1 \cdot v_1 = A_2 \cdot v_2 = \text{const}$$
       'Geschwindigkeit ist invers proportional zur Querschnittsfläche.',
     ],
 
-    calcQuestion: 'In einem Rohr ($A_1 = 0{,}01$ m²) fließt Wasser mit $v_1 = 2$ m/s. An einer Verengung ist $A_2 = 0{,}004$ m². Wie groß ist $v_2$ in m/s?',
+    calcQuestion: 'In einem Rohr ($A_1 = 0{,}01$ $m^2$) fließt Wasser mit $v_1 = 2$ m/s. An einer Verengung ist $A_2 = 0{,}004$ $m^2$. Wie groß ist $v_2$ in m/s?',
     calcAnswer: 5,
     calcTolerance: 0.02,
     calcUnit: 'm/s',
     calcExplanation: 'Kontinuität: $v_2 = v_1 \\cdot A_1/A_2 = 2 \\cdot 0{,}01/0{,}004 = 5$ m/s. Die Geschwindigkeit steigt um den Faktor $A_1/A_2 = 2{,}5$.',
     calcHints: [
       '$A_1 v_1 = A_2 v_2$ umstellen nach $v_2$.',
-      'Kürzen: die Einheiten (m²/m²) heben sich auf.',
+      'Kürzen: die Einheiten ($m^2$/$m^2$) heben sich auf.',
     ],
 
     trueFalseStatement: 'Die Kontinuitätsgleichung $A_1 v_1 = A_2 v_2$ gilt auch für kompressible Gase.',
@@ -295,12 +309,12 @@ $$\dot{V} = A_1 \cdot v_1 = A_2 \cdot v_2 = \text{const}$$
 
     matchingQuestion: 'Ordne die Größen ihren Einheiten zu.',
     matchingPairs: [
-      { left: 'Volumenstrom $\\dot{V}$', right: 'm³/s' },
+      { left: 'Volumenstrom $\\dot{V}$', right: '$m^3/s$' },
       { left: 'Massenstrom $\\dot{m}$', right: 'kg/s' },
-      { left: 'Querschnittsfläche $A$', right: 'm²' },
+      { left: 'Querschnittsfläche $A$', right: '$m^2$' },
       { left: 'Geschwindigkeit $v$', right: 'm/s' },
     ],
-    matchingExplanation: 'Die Einheiten passen direkt zusammen: $\\dot{V} = A \\cdot v$ hat Einheit m² · m/s = m³/s. Massenstrom: $\\rho \\cdot \\dot{V}$ = kg/m³ · m³/s = kg/s.',
+    matchingExplanation: 'Die Einheiten passen direkt zusammen: $\\dot{V} = A \\cdot v$ hat Einheit $m^2$ · m/s = $m^3$/s. Massenstrom: $\\rho \\cdot \\dot{V}$ = $kg/m^3$ · $m^3$/s = kg/s.',
     matchingHints: [
       'Einheitencheck: Produkt der Einheiten muss passen.',
       'Strom = pro Zeit, also immer /s.',
@@ -321,15 +335,15 @@ $$\dot{V} = A_1 \cdot v_1 = A_2 \cdot v_2 = \text{const}$$
       'Bei Verengung: $v$ steigt, bei Erweiterung fällt $v$.',
     ],
 
-    errorQuestion: 'Ein Student berechnet Kreisfläche bei $d = 20$ mm als $A = \\pi \\cdot 20^2 = 1257$ mm². Was ist falsch?',
+    errorQuestion: 'Ein Student berechnet Kreisfläche bei $d = 20$ mm als $A = \\pi \\cdot 20^2 = 1257$ $mm^2$. Was ist falsch?',
     errorOptions: [
-      'Richtig wäre $A = \\pi d^2/4 = \\pi \\cdot 400/4 = 314$ mm² — Faktor 4 fehlt',
+      'Richtig wäre $A = \\pi d^2/4 = \\pi \\cdot 400/4 = 314$ $mm^2$ — Faktor 4 fehlt',
       'Kreisflächen haben keinen $\\pi$',
       'Die Formel gilt nur im Quadrat',
       'Der Durchmesser ist zu klein',
     ],
     errorCorrect: 0,
-    errorExplanation: '$A_{Kreis} = \\pi r^2 = \\pi (d/2)^2 = \\pi d^2/4$. Der Student hat den Faktor 4 vergessen und rechnet damit die Fläche um den Faktor 4 zu groß. Einheitencheck hätte geholfen: $\\pi \\cdot d^2$ liefert zwar mm², ist aber physikalisch falsch.',
+    errorExplanation: '$A_{Kreis} = \\pi r^2 = \\pi (d/2)^2 = \\pi d^2/4$. Der Student hat den Faktor 4 vergessen und rechnet damit die Fläche um den Faktor 4 zu groß. Einheitencheck hätte geholfen: $\\pi \\cdot d^2$ liefert zwar $mm^2$, ist aber physikalisch falsch.',
     errorHints: [
       'Kreisformel: $A = \\pi r^2 = \\pi d^2/4$.',
       'Immer mit $r$, nicht $d$ rechnen — oder Faktor 1/4 nicht vergessen.',
@@ -480,7 +494,7 @@ Die drei Terme:
       'Die Spiegelhöhe sinkt langsam — daher $v_{Tank} \\approx 0$.',
     ],
 
-    calcQuestion: 'Durch eine Venturi-Düse ($A_1 = 0{,}01$ m², $A_2 = 0{,}002$ m²) strömt Wasser. Druckdifferenz $\\Delta p = p_1 - p_2 = 4800$ Pa. Wie groß ist $v_2$ in m/s ($\\rho = 1000$ kg/m³)?',
+    calcQuestion: 'Durch eine Venturi-Düse ($A_1 = 0{,}01$ $m^2$, $A_2 = 0{,}002$ $m^2$) strömt Wasser. Druckdifferenz $\\Delta p = p_1 - p_2 = 4800$ Pa. Wie groß ist $v_2$ in m/s ($\\rho = 1000$ $kg/m^3$)?',
     calcAnswer: 3.162,
     calcTolerance: 0.05,
     calcUnit: 'm/s',
@@ -527,9 +541,9 @@ Die drei Terme:
       'Skizze erspart Einheitenfehler.',
     ],
 
-    errorQuestion: 'Ein Student rechnet für einen Wassertank mit Auslauf 3 m unter dem Spiegel: "$v = g h = 29{,}4$ m²/s²". Was stimmt nicht?',
+    errorQuestion: 'Ein Student rechnet für einen Wassertank mit Auslauf 3 m unter dem Spiegel: "$v = g h = 29{,}4$ $m^2/s^2$". Was stimmt nicht?',
     errorOptions: [
-      'Die Einheit ist m²/s² — das ist Energie pro Masse, keine Geschwindigkeit. Richtig: $v = \\sqrt{2gh} = 7{,}67$ m/s',
+      'Die Einheit ist $m^2/s^2$ — das ist Energie pro Masse, keine Geschwindigkeit. Richtig: $v = \\sqrt{2gh} = 7{,}67$ m/s',
       'Die Höhe ist zu klein',
       'Torricelli gilt nur für Luft',
       'Wasser fließt nicht aus Tanks',
@@ -537,11 +551,11 @@ Die drei Terme:
     errorCorrect: 0,
     errorExplanation: 'Der Student hat die Wurzel und den Faktor 2 vergessen. Torricelli: $v = \\sqrt{2gh}$. Ohne Wurzel erhält man die spezifische kinetische Energie ($v^2/2$), nicht die Geschwindigkeit. Einheitencheck fängt das sofort auf.',
     errorHints: [
-      'Einheitencheck: m²/s² ≠ m/s.',
+      'Einheitencheck: $m^2/s^2$ ≠ m/s.',
       'Torricelli enthält $\\sqrt{\\cdot}$ und Faktor 2.',
     ],
 
-    transferQuestion: 'In einem horizontalen Rohr ($\\rho = 1000$ kg/m³) misst man $p_1 = 200$ kPa bei $v_1 = 2$ m/s und $p_2 = ?$ bei $v_2 = 5$ m/s. Wie groß ist $p_2$ in kPa?',
+    transferQuestion: 'In einem horizontalen Rohr ($\\rho = 1000$ $kg/m^3$) misst man $p_1 = 200$ kPa bei $v_1 = 2$ m/s und $p_2 = ?$ bei $v_2 = 5$ m/s. Wie groß ist $p_2$ in kPa?',
     transferAnswer: 189.5,
     transferTolerance: 0.2,
     transferUnit: 'kPa',

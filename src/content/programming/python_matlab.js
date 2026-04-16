@@ -648,7 +648,7 @@ Matlab: \`[t, y] = ode45(@(t,y) schwinger(t, y, m, d, k), [0 20], [1; 0])\`
               question: 'Welche SciPy-Funktion berechnet ein bestimmtes Integral numerisch?',
               options: ['scipy.integrate.solve', 'scipy.integrate.quad', 'scipy.integrate.trapz', 'scipy.integrate.odeint'],
               correctIndex: 1,
-              explanation: '`quad` berechnet ∫f(x)dx numerisch mit adaptiver Quadratur.',
+              explanation: '`quad` berechnet $\\int f(x)\\,dx$ numerisch mit adaptiver Quadratur.',
               hints: ['quad = Quadratur = numerische Integration'],
             },
             {
@@ -731,12 +731,12 @@ subplot(1,2,2); plot(x, sigma/1e6); title('Spannung');
           exercises: [
             {
               type: 'number-input',
-              question: 'Ein Rechteckquerschnitt hat b = 40 mm und h = 80 mm. Wie groß ist das Widerstandsmoment W = bh²/6 in mm³? (Ganzzahl)',
+              question: 'Ein Rechteckquerschnitt hat b = 40 mm und h = 80 mm. Wie groß ist das Widerstandsmoment $W = bh^2/6$ in $mm^3$? (Ganzzahl)',
               correctValue: 42667,
               tolerance: 1,
               unit: 'mm³',
-              explanation: 'W = 40 × 80² / 6 = 40 × 6400 / 6 ≈ 42667 mm³.',
-              hints: ['W = b·h²/6', 'Setze b = 40 und h = 80 ein.'],
+              explanation: '$W = 40 \\times 80^2 / 6 = 40 \\times 6400 / 6 \\approx 42667\\,mm^3$.',
+              hints: ['$W = b \\cdot h^2/6$', 'Setze b = 40 und h = 80 ein.'],
             },
             {
               type: 'multiple-choice',
@@ -883,8 +883,8 @@ plt.legend(); plt.grid(True); plt.show()
               correctValue: 10,
               tolerance: 0.1,
               unit: 'rad/s',
-              explanation: 'ω₀ = √(k/m) = √(200/2) = √100 = 10 rad/s.',
-              hints: ['ω₀ = √(k/m)', 'Setze die Werte ein und ziehe die Wurzel.'],
+              explanation: '$\\omega_0 = \\sqrt{k/m} = \\sqrt{200/2} = \\sqrt{100} = 10$ rad/s.',
+              hints: ['$\\omega_0 = \\sqrt{k/m}$', 'Setze die Werte ein und ziehe die Wurzel.'],
             },
             {
               type: 'multiple-choice',
@@ -900,8 +900,8 @@ plt.legend(); plt.grid(True); plt.show()
               correctValue: 0.2,
               tolerance: 0.01,
               unit: '',
-              explanation: 'D = d / (2√(km)) = 4 / (2√(100·1)) = 4 / 20 = 0.2.',
-              hints: ['D = d / (2√(km))', '√(100·1) = 10'],
+              explanation: '$D = d / (2\\sqrt{km}) = 4 / (2\\sqrt{100 \\cdot 1}) = 4 / 20 = 0{,}2$.',
+              hints: ['$D = d / (2\\sqrt{km})$', '$\\sqrt{100 \\cdot 1} = 10$'],
             },
           ],
         },

@@ -1,9 +1,9 @@
-function mc(question, options, correctIndex, explanation, hints = []) {
-  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints }
+function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined) {
+  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints, ...(visualization ? { visualization } : {}) }
 }
 
-function ni(question, correctValue, tolerance, unit, explanation, hints = []) {
-  return { type: 'number-input', question, correctValue, tolerance, unit, explanation, hints }
+function ni(question, correctValue, tolerance, unit, explanation, hints = [], visualization = undefined) {
+  return { type: 'number-input', question, correctValue, tolerance, unit, explanation, hints, ...(visualization ? { visualization } : {}) }
 }
 
 function tf(statement, correct, explanation, hints = []) {
@@ -31,8 +31,8 @@ function withExamPrefix(exercise, exam) {
 
 function bank(profile) {
   const exercises = [
-    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints),
-    ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints),
+    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization),
+    ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints, profile.calcVisualization),
     tf(profile.trueFalseStatement, profile.trueFalseCorrect, profile.trueFalseExplanation, profile.trueFalseHints),
     matching(profile.matchingQuestion, profile.matchingPairs, profile.matchingExplanation, profile.matchingHints),
     sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints),
@@ -66,19 +66,25 @@ $$\varepsilon = \frac{\Delta l}{l_0} \qquad [\varepsilon] = \text{dimensionslos}
       '$\\sigma = F \\cdot A$ — je größer die Fläche, desto größer die Spannung',
     ],
     conceptCorrect: 0,
-    conceptExplanation: '$\\sigma = F/A$: Bei fester Kraft sinkt die Spannung mit wachsender Querschnittsfläche. Deshalb werden Stahlseile oder Säulen bei höherer Last dicker ausgeführt. Einheit: N/mm² = MPa.',
+    conceptExplanation: '$\\sigma = F/A$: Bei fester Kraft sinkt die Spannung mit wachsender Querschnittsfläche. Deshalb werden Stahlseile oder Säulen bei höherer Last dicker ausgeführt. Einheit: $N/mm^2$ = MPa.',
     conceptHints: [
       'Denk an Druck in einer Spritze: gleiche Kraft, kleinere Fläche → mehr Druck.',
       'Spannung ist Kraft pro Fläche, nicht Kraft mal Fläche.',
     ],
+    conceptVisualization: {
+      id: 'stress-strain',
+      params: { mode: 'static', highlightRegion: 'elastic' },
+      caption: 'Spannungs-Dehnungs-Diagramm: σ über ε mit Streckgrenze und Bruchpunkt',
+      alt: 'Spannungs-Dehnungs-Kurve eines Baustahls',
+    },
 
-    calcQuestion: 'Ein Stab wird mit $F = 5000$ N auf Zug belastet. Querschnittsfläche $A = 50$ mm². Wie groß ist $\\sigma$ in MPa?',
+    calcQuestion: 'Ein Stab wird mit $F = 5000$ N auf Zug belastet. Querschnittsfläche $A = 50$ $mm^2$. Wie groß ist $\\sigma$ in MPa?',
     calcAnswer: 100,
     calcTolerance: 0.1,
     calcUnit: 'MPa',
     calcExplanation: '$\\sigma = F/A = 5000 \\text{ N} / 50 \\text{ mm}^2 = 100 \\text{ N/mm}^2 = 100$ MPa. Dieser Wert liegt deutlich unter der Streckgrenze typischer Baustähle (~235 MPa), der Stab ist also sicher belastet.',
     calcHints: [
-      'Einheiten so wählen, dass das Ergebnis direkt in MPa herauskommt: N und mm² zusammen → MPa.',
+      'Einheiten so wählen, dass das Ergebnis direkt in MPa herauskommt: N und $mm^2$ zusammen → MPa.',
       '$5000 / 50 = 100$.',
     ],
 
@@ -118,17 +124,17 @@ $$\varepsilon = \frac{\Delta l}{l_0} \qquad [\varepsilon] = \text{dimensionslos}
       'Kontrolle durch Vergleich mit zulässiger Spannung.',
     ],
 
-    errorQuestion: 'Ein Student rechnet $\\sigma = 10000$ N $/ 0{,}01$ m² $= 1 \\cdot 10^6$ MPa. Was ist der Fehler?',
+    errorQuestion: 'Ein Student rechnet $\\sigma = 10000$ N $/ 0{,}01$ $m^2$ $= 1 \\cdot 10^6$ MPa. Was ist der Fehler?',
     errorOptions: [
       'Das Ergebnis ist in Pa, nicht MPa. Umrechnung: $1 \\cdot 10^6$ Pa $= 1$ MPa',
       'Die Kraft ist zu groß',
-      'Die Fläche muss in cm² angegeben sein',
+      'Die Fläche muss in $cm^2$ angegeben sein',
       '$\\sigma$ ist immer negativ',
     ],
     errorCorrect: 0,
-    errorExplanation: 'Bei N und m² ergibt sich Pa als Einheit: $\\sigma = 10^4 / 10^{-2}$ N/m² = $10^6$ Pa = 1 MPa. Der Student hat die Einheit nicht umgerechnet. Technische Rechnung empfiehlt: N und mm² verwenden — dann ergibt sich direkt MPa.',
+    errorExplanation: 'Bei N und $m^2$ ergibt sich Pa als Einheit: $\\sigma = 10^4 / 10^{-2}$ $N/m^2$ = $10^6$ Pa = 1 MPa. Der Student hat die Einheit nicht umgerechnet. Technische Rechnung empfiehlt: N und $mm^2$ verwenden — dann ergibt sich direkt MPa.',
     errorHints: [
-      'N/m² = Pa, nicht MPa.',
+      '$N/m^2$ = Pa, nicht MPa.',
       '$1$ MPa $= 10^6$ Pa.',
     ],
 
@@ -174,14 +180,20 @@ $$\Delta l = \frac{F \cdot l_0}{E \cdot A}$$
       'Im elastischen Bereich: Spannung ∝ Dehnung.',
       'Der Proportionalitätsfaktor ist der E-Modul $E$.',
     ],
+    conceptVisualization: {
+      id: 'stress-strain',
+      params: { mode: 'static' },
+      caption: 'Hookesches Gesetz: linearer Bereich (σ = E·ε) bis zur Streckgrenze',
+      alt: 'Spannungs-Dehnungs-Diagramm mit markiertem elastischen Bereich',
+    },
 
-    calcQuestion: 'Ein Stahlstab ($E = 210$ GPa, $A = 100$ mm², $l_0 = 2$ m) wird mit $F = 21000$ N belastet. Wie groß ist $\\Delta l$ in mm?',
+    calcQuestion: 'Ein Stahlstab ($E = 210$ GPa, $A = 100$ $mm^2$, $l_0 = 2$ m) wird mit $F = 21000$ N belastet. Wie groß ist $\\Delta l$ in mm?',
     calcAnswer: 2,
     calcTolerance: 0.02,
     calcUnit: 'mm',
     calcExplanation: '$\\Delta l = \\frac{F \\cdot l_0}{E \\cdot A}$. Mit $E = 210000$ MPa (GPa $\\to$ MPa), $l_0 = 2000$ mm: $\\Delta l = \\frac{21000 \\cdot 2000}{210000 \\cdot 100} = \\frac{4{,}2 \\cdot 10^7}{2{,}1 \\cdot 10^7} = 2$ mm.',
     calcHints: [
-      'Einheiten konsistent machen: $E$ in MPa, $l_0$ in mm, $A$ in mm², $F$ in N.',
+      'Einheiten konsistent machen: $E$ in MPa, $l_0$ in mm, $A$ in $mm^2$, $F$ in N.',
       '$1$ GPa $= 1000$ MPa.',
       'Formel: $\\Delta l = F l_0 / (E A)$.',
     ],
@@ -230,13 +242,13 @@ $$\Delta l = \frac{F \cdot l_0}{E \cdot A}$$
       'Es fehlt der Faktor 2',
     ],
     errorCorrect: 0,
-    errorExplanation: 'Der Student mischt SI und technische Einheiten: $l_0$ in m, $A$ in mm², $E$ in GPa. Richtig: entweder $l_0 = 1000$ mm, $A = 100$ mm², $E = 210000$ MPa → $\\Delta l = 1000 \\cdot 1000 / (210000 \\cdot 100) = 0{,}0476$ mm. Oder in SI: $l_0 = 1$ m, $A = 10^{-4}$ m², $E = 2{,}1 \\cdot 10^{11}$ Pa.',
+    errorExplanation: 'Der Student mischt SI und technische Einheiten: $l_0$ in m, $A$ in $mm^2$, $E$ in GPa. Richtig: entweder $l_0 = 1000$ mm, $A = 100$ $mm^2$, $E = 210000$ MPa → $\\Delta l = 1000 \\cdot 1000 / (210000 \\cdot 100) = 0{,}0476$ mm. Oder in SI: $l_0 = 1$ m, $A = 10^{-4}$ $m^2$, $E = 2{,}1 \\cdot 10^{11}$ Pa.',
     errorHints: [
       'Immer ein einheitliches Einheitensystem wählen.',
       'Technisch: N, mm, MPa. SI: N, m, Pa.',
     ],
 
-    transferQuestion: 'Ein Aluminiumstab ($E = 70$ GPa, $A = 200$ mm², $l_0 = 1{,}5$ m) wird mit $\\sigma = 140$ MPa belastet. Wie groß ist $\\Delta l$ in mm?',
+    transferQuestion: 'Ein Aluminiumstab ($E = 70$ GPa, $A = 200$ $mm^2$, $l_0 = 1{,}5$ m) wird mit $\\sigma = 140$ MPa belastet. Wie groß ist $\\Delta l$ in mm?',
     transferAnswer: 3,
     transferTolerance: 0.02,
     transferUnit: 'mm',
@@ -271,7 +283,7 @@ wobei $W$ das **Widerstandsmoment** des Querschnitts ist. Typische Werte:
       'Weil die Länge größer ist',
     ],
     conceptCorrect: 0,
-    conceptExplanation: 'Das Widerstandsmoment ist $W = I/e$. Das Flächenträgheitsmoment $I$ wächst mit dem Abstand² zur neutralen Achse. Deshalb ist es materialsparend, Flanschen (Material) weit von der Mitte wegzuverteilen, wie beim Doppel-T.',
+    conceptExplanation: 'Das Widerstandsmoment ist $W = I/e$. Das Flächenträgheitsmoment $I$ wächst mit dem $Abstand^2$ zur neutralen Achse. Deshalb ist es materialsparend, Flanschen (Material) weit von der Mitte wegzuverteilen, wie beim Doppel-T.',
     conceptHints: [
       'Denk an $W$ als Maß für Biegesteifigkeit bei gleicher Masse.',
       'Material weit von der neutralen Achse entfernt = großes $I$.',
@@ -281,10 +293,10 @@ wobei $W$ das **Widerstandsmoment** des Querschnitts ist. Typische Werte:
     calcAnswer: 100,
     calcTolerance: 0.5,
     calcUnit: 'MPa',
-    calcExplanation: '$W = b h^2 / 6 = 20 \\cdot 60^2 / 6 = 20 \\cdot 3600 / 6 = 12000$ mm³. $M$ in Nmm: $1200$ Nm $= 1{,}2 \\cdot 10^6$ Nmm. $\\sigma_b = M/W = 1{,}2 \\cdot 10^6 / 12000 = 100$ MPa.',
+    calcExplanation: '$W = b h^2 / 6 = 20 \\cdot 60^2 / 6 = 20 \\cdot 3600 / 6 = 12000$ $mm^3$. $M$ in Nmm: $1200$ Nm $= 1{,}2 \\cdot 10^6$ Nmm. $\\sigma_b = M/W = 1{,}2 \\cdot 10^6 / 12000 = 100$ MPa.',
     calcHints: [
       'Widerstandsmoment eines Rechtecks: $W = b h^2/6$.',
-      'Moment $M$ in Nmm umrechnen, wenn $W$ in mm³ und $\\sigma$ in MPa gesucht.',
+      'Moment $M$ in Nmm umrechnen, wenn $W$ in $mm^3$ und $\\sigma$ in MPa gesucht.',
       '$1$ Nm $= 1000$ Nmm.',
     ],
 
@@ -305,7 +317,7 @@ wobei $W$ das **Widerstandsmoment** des Querschnitts ist. Typische Werte:
     ],
     matchingExplanation: 'Die Formeln für $W$ folgen aus $W = I/e$. Bei symmetrischen Querschnitten ist der Randfaserabstand $e = h/2$ bzw. $D/2$.',
     matchingHints: [
-      'Rechteck: Fläche $bh$, Höhe² im Zähler.',
+      'Rechteck: Fläche $bh$, $Höhe^2$ im Zähler.',
       'Kreis: $d^3$ mit Faktor $\\pi/32$.',
     ],
 
@@ -332,9 +344,9 @@ wobei $W$ das **Widerstandsmoment** des Querschnitts ist. Typische Werte:
       'Kreise haben kein Widerstandsmoment',
     ],
     errorCorrect: 0,
-    errorExplanation: 'Flächenträgheitsmoment Kreis: $I = \\pi d^4/64$. Widerstandsmoment $W = I/e$ mit $e = d/2$: $W = (\\pi d^4/64)/(d/2) = \\pi d^3/32$. Die Formel $\\pi d^4/32$ ist falsch — die Einheit wäre mm⁴, also ein $I$, nicht ein $W$ (mm³).',
+    errorExplanation: 'Flächenträgheitsmoment Kreis: $I = \\pi d^4/64$. Widerstandsmoment $W = I/e$ mit $e = d/2$: $W = (\\pi d^4/64)/(d/2) = \\pi d^3/32$. Die Formel $\\pi d^4/32$ ist falsch — die Einheit wäre $mm^4$, also ein $I$, nicht ein $W$ ($mm^3$).',
     errorHints: [
-      'Einheitencheck: $W$ hat mm³, $I$ hat mm⁴.',
+      'Einheitencheck: $W$ hat $mm^3$, $I$ hat $mm^4$.',
       '$W = I/e$, mit $e$ = Randfaserabstand.',
     ],
 
@@ -342,11 +354,11 @@ wobei $W$ das **Widerstandsmoment** des Querschnitts ist. Typische Werte:
     transferAnswer: 80,
     transferTolerance: 1,
     transferUnit: 'MPa',
-    transferExplanation: '$W = \\pi d^3/32 = \\pi \\cdot 40^3 / 32 = \\pi \\cdot 64000/32 = 2000\\pi \\approx 6283$ mm³. $M = 502$ Nm $= 502000$ Nmm. $\\sigma_b = 502000/6283 \\approx 80$ MPa.',
+    transferExplanation: '$W = \\pi d^3/32 = \\pi \\cdot 40^3 / 32 = \\pi \\cdot 64000/32 = 2000\\pi \\approx 6283$ $mm^3$. $M = 502$ Nm $= 502000$ Nmm. $\\sigma_b = 502000/6283 \\approx 80$ MPa.',
     transferHints: [
       'Widerstandsmoment Kreis: $W = \\pi d^3/32$.',
       'Moment in Nmm für konsistente Einheiten.',
-      '$W$ in mm³, $M$ in Nmm → $\\sigma$ in MPa.',
+      '$W$ in $mm^3$, $M$ in Nmm → $\\sigma$ in MPa.',
     ],
   },
 
@@ -367,6 +379,12 @@ $$\sigma_v = \sqrt{\sigma_x^2 - \sigma_x \sigma_y + \sigma_y^2 + 3 \tau_{xy}^2}$
 
 **Typischer Fehler:** Spannungen vorzeichenbehaftet vergessen, Torsion vergessen, falsche Hypothese gewählt.`,
 
+    conceptVisualization: {
+      id: 'mohr-circle',
+      params: { mode: 'static', sigmaX: 80, sigmaY: 20, tau: 30 },
+      caption: "Mohr'scher Kreis: Spannungszustand mit σₓ, σᵧ und τ",
+      alt: "Mohr'scher Kreis für kombinierten Zug- und Schubspannungszustand",
+    },
     conceptQuestion: 'Wann wird die Von-Mises-Hypothese bevorzugt gegenüber Tresca?',
     conceptOptions: [
       'Bei zähen Werkstoffen wie Baustahl — Von Mises gibt realistischere Werte bei Kombination von Schub und Normalspannung',
@@ -492,10 +510,10 @@ $$\sigma_v = \sqrt{\sigma_x^2 - \sigma_x \sigma_y + \sigma_y^2 + 3 \tau_{xy}^2}$
     calcAnswer: 40.74,
     calcTolerance: 0.2,
     calcUnit: 'MPa',
-    calcExplanation: '$W_p = \\pi d^3/16 = \\pi \\cdot 125000/16 = 7812{,}5\\pi \\approx 24544$ mm³. $M_t = 1000$ Nm $= 10^6$ Nmm. $\\tau = M_t/W_p = 10^6 / 24544 \\approx 40{,}74$ MPa.',
+    calcExplanation: '$W_p = \\pi d^3/16 = \\pi \\cdot 125000/16 = 7812{,}5\\pi \\approx 24544$ $mm^3$. $M_t = 1000$ Nm $= 10^6$ Nmm. $\\tau = M_t/W_p = 10^6 / 24544 \\approx 40{,}74$ MPa.',
     calcHints: [
       'Polares Widerstandsmoment Kreis: $\\pi d^3/16$.',
-      'Einheiten: $M_t$ in Nmm, $W_p$ in mm³ → $\\tau$ in MPa.',
+      'Einheiten: $M_t$ in Nmm, $W_p$ in $mm^3$ → $\\tau$ in MPa.',
     ],
 
     trueFalseStatement: 'Die Sicherheitszahl $S$ muss für einen sicheren Nachweis größer als 1 sein, typisch 1,5 bis 3 bei statischen Lasten.',
@@ -535,9 +553,9 @@ $$\sigma_v = \sqrt{\sigma_x^2 - \sigma_x \sigma_y + \sigma_y^2 + 3 \tau_{xy}^2}$
       'Schnittgrößen kommen vor den Spannungen.',
     ],
 
-    errorQuestion: 'Ein Student rechnet: "Welle mit $M_t = 500$ Nm, $d = 30$ mm. $W = \\pi d^3/32 = 2650$ mm³. $\\tau = M_t/W = 189$ MPa." Was ist falsch?',
+    errorQuestion: 'Ein Student rechnet: "Welle mit $M_t = 500$ Nm, $d = 30$ mm. $W = \\pi d^3/32 = 2650$ $mm^3$. $\\tau = M_t/W = 189$ MPa." Was ist falsch?',
     errorOptions: [
-      'Für Torsion ist das polare $W_p = \\pi d^3/16 = 5300$ mm³ zu nutzen — korrekt: $\\tau = 94{,}3$ MPa',
+      'Für Torsion ist das polare $W_p = \\pi d^3/16 = 5300$ $mm^3$ zu nutzen — korrekt: $\\tau = 94{,}3$ MPa',
       'Die Einheiten sind falsch',
       '$M_t$ muss in Nm bleiben, nicht Nmm',
       'Torsion gibt Normalspannung, nicht Schubspannung',
