@@ -41,7 +41,7 @@ export const exercises_abl_u4 = {
     ],
     correctIndex: 2,
     explanation: 'Quotientenregel: $f\' = \\frac{(x^2+1)\' \\cdot (x-1) - (x^2+1) \\cdot (x-1)\'}{(x-1)^2} = \\frac{2x(x-1) - (x^2+1)}{(x-1)^2}$. Vereinfacht: $\\frac{x^2 - 2x - 1}{(x-1)^2}$.',
-    hints: ['NAZ: Nenner × Abl. Zähler − Zähler × Abl. Nenner, geteilt durch Nenner².', '$(x^2+1)\' = 2x$, $(x-1)\' = 1$'],
+    hints: ['NAZ: Nenner × Abl. Zähler − Zähler × Abl. Nenner, geteilt durch Nenner$^2$.', '$(x^2+1)\' = 2x$, $(x-1)\' = 1$'],
   },
   'ex-abl-4-1-d': {
     id: 'ex-abl-4-1-d', lessonId: 'abl-4-1', type: 'number-input',
@@ -210,7 +210,7 @@ export const exercises_abl_u4 = {
   },
   'ex-abl-4-2-h': {
     id: 'ex-abl-4-2-h', lessonId: 'abl-4-2', type: 'number-input',
-    question: '[PRÜFUNG] Ein zylindrischer Behälter ohne Deckel soll ein Volumen von $V = \\pi$ L = $\\pi \\cdot 10^{-3}$ m³ fassen. Gesucht ist der Radius $r$ (in m), der die Oberfläche minimiert. Berechne $r$ (auf 4 Stellen nach dem Komma).',
+    question: '[PRÜFUNG] Ein zylindrischer Behälter ohne Deckel soll ein Volumen von $V = \\pi\\,L = \\pi \\cdot 10^{-3}\\,m^3$ fassen. Gesucht ist der Radius $r$ (in m), der die Oberfläche minimiert. Berechne $r$ (auf 4 Stellen nach dem Komma).',
     correctValue: 0.1,
     tolerance: 0.001,
     unit: 'm',
@@ -391,7 +391,7 @@ const lessons_abl_u4 = [
       'Ableitungen trigonometrischer und Exponentialfunktionen berechnen',
       'Kombinierte Regeln auf Prüfungsniveau einsetzen',
     ],
-    prerequisites: [],
+    prerequisites: ['abl-2-4'],
     nextLessonId: 'abl-4-2',
     steps: [
       {
@@ -438,7 +438,7 @@ $$e^x \\to e^x \\qquad \\ln(x) \\to \\frac{1}{x} \\qquad x^n \\to nx^{n-1}$$
       'Optimierungsaufgaben lösen',
       'Taylor-Polynome aufstellen',
     ],
-    prerequisites: [],
+    prerequisites: ['abl-3-4', 'abl-4-1'],
     nextLessonId: 'abl-4-3',
     steps: [
       {
@@ -486,7 +486,7 @@ $$\\sin(x) \\approx x - \\frac{x^3}{6}, \\quad \\cos(x) \\approx 1 - \\frac{x^2}
       'Newton-Verfahren zur numerischen Nullstellensuche anwenden',
       'Globale vs. lokale Extrema unter Randwertbedingungen erkennen',
     ],
-    prerequisites: [],
+    prerequisites: ['abl-3-4', 'abl-4-2'],
     nextLessonId: null,
     steps: [
       {

@@ -26,7 +26,7 @@ export const exercises_dgl_u1 = {
     id: 'ex-dgl-1-1-c', lessonId: 'dgl-1-1', type: 'true-false',
     statement: 'Die DGL $y\' = y^2 + x$ ist linear.',
     correct: false,
-    explanation: 'Die DGL ist nichtlinear, weil $y^2$ vorkommt. Bei einer linearen DGL darf y und seine Ableitungen nur in der 1. Potenz auftreten (also y, y\', y\'\', ... aber nicht y², sin(y), e^y, ...).',
+    explanation: 'Die DGL ist nichtlinear, weil $y^2$ vorkommt. Bei einer linearen DGL darf y und seine Ableitungen nur in der 1. Potenz auftreten (also $y$, $y\'$, $y\'\'$, ... aber nicht $y^2$, $\\sin(y)$, $e^y$, ...).',
     hints: ['Linear bedeutet: y und seine Ableitungen kommen nur in der 1. Potenz vor.'],
   },
   'ex-dgl-1-1-mastery': {
@@ -68,6 +68,22 @@ export const exercises_dgl_u1 = {
     correctIndex: 1,
     explanation: 'Trennung: $\\frac{dy}{y} = x\\,dx$. Integration: $\\ln|y| = \\frac{x^2}{2} + C_1$. Auflösen: $y = Ce^{x^2/2}$ mit $C = \\pm e^{C_1}$.',
     hints: ['Schritt 1: $\\frac{dy}{y} = x\\,dx$. Schritt 2: Beide Seiten integrieren.'],
+    visualization: {
+      id: 'function-graph',
+      params: {
+        mode: 'static',
+        functions: [
+          { fn: (x) => Math.exp(x * x / 2), color: '#3b82f6', label: 'C=1: eˣ²/²' },
+          { fn: (x) => 0.5 * Math.exp(x * x / 2), color: '#22c55e', label: 'C=0.5' },
+          { fn: (x) => -Math.exp(x * x / 2), color: '#ef4444', label: 'C=−1' },
+        ],
+        xRange: [-2, 2],
+        yRange: [-3, 3],
+        showGrid: true,
+      },
+      caption: 'Lösungsfamilie y = C·e^(x²/2) für verschiedene Anfangsbedingungen',
+      alt: 'Drei Lösungskurven der DGL y\' = xy für verschiedene Konstanten C',
+    },
   },
   'ex-dgl-1-2-c': {
     id: 'ex-dgl-1-2-c', lessonId: 'dgl-1-2', type: 'number-input',
@@ -90,6 +106,21 @@ export const exercises_dgl_u1 = {
     correctIndex: 1,
     explanation: 'Trennung: $\\frac{dy}{y} = -3\\,dx \\Rightarrow \\ln|y| = -3x + C_1 \\Rightarrow y = Ce^{-3x}$. AWP: $y(0) = C = 5$. Also $y = 5e^{-3x}$.',
     hints: ['Trennung der Variablen anwenden. Dann C aus der Anfangsbedingung bestimmen.'],
+    visualization: {
+      id: 'function-graph',
+      params: {
+        mode: 'static',
+        functions: [
+          { fn: (x) => 5 * Math.exp(-3 * x), color: '#3b82f6', label: 'y = 5e⁻³ˣ' },
+          { fn: (x) => 5 * Math.exp(3 * x), color: '#ef4444', label: 'y = 5e³ˣ (falsch)' },
+        ],
+        xRange: [-0.1, 2],
+        yRange: [-1, 8],
+        showGrid: true,
+      },
+      caption: 'Exponentieller Zerfall y = 5e⁻³ˣ: y(0)=5 und fällt gegen 0',
+      alt: 'Graph des exponentiellen Zerfalls 5e hoch -3x',
+    },
   },
 
   'ex-dgl-1-3-a': {

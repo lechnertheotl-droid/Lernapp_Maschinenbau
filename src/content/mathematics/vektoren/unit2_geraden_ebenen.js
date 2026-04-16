@@ -106,8 +106,8 @@ export const exercises_vek_u2 = {
     correctValue: 1.33,
     tolerance: 0.02,
     unit: '',
-    explanation: 'd = |2·1 + 2·1 + 1·1 − 9| / √(2² + 2² + 1²) = |2 + 2 + 1 − 9| / √9 = |−4| / 3 = 4/3 ≈ 1,33.',
-    hints: ['d = |ax₀ + by₀ + cz₀ − d| / √(a² + b² + c²)', '|2 + 2 + 1 − 9| = 4, √(4+4+1) = 3'],
+    explanation: '$d = \\frac{|2\\cdot1 + 2\\cdot1 + 1\\cdot1 - 9|}{\\sqrt{2^2 + 2^2 + 1^2}} = \\frac{|2 + 2 + 1 - 9|}{\\sqrt{9}} = \\frac{4}{3} \\approx 1{,}33$.',
+    hints: ['$d = \\frac{|ax_0 + by_0 + cz_0 - d|}{\\sqrt{a^2 + b^2 + c^2}}$', '$|2 + 2 + 1 - 9| = 4$, $\\sqrt{4+4+1} = 3$'],
   },
   'ex-vek-2-3-c': {
     id: 'ex-vek-2-3-c', lessonId: 'vek-2-3', type: 'multiple-choice',
@@ -132,8 +132,8 @@ export const exercises_vek_u2 = {
     correctValue: 3,
     tolerance: 0.01,
     unit: '',
-    explanation: 'd = |2·3 + (−1)·0 + 2·4 − 1| / √(4 + 1 + 4) = |6 + 0 + 8 − 1| / √9 = 13/3 ≈ ... Moment: |6 − 0 + 8 − 1| = 13, √(4+1+4) = 3. d = 13/3 ≈ 4,33. Korrektur: d = |2·3 − 0 + 2·4 − 1| / 3 = |6 + 8 − 1| / 3 = 13/3. Richtig: ≈ 4,33.',
-    hints: ['Formel: d = |ax₀ + by₀ + cz₀ − d| / |$\\vec{n}$|', '|$\\vec{n}$| = √(4+1+4) = 3'],
+    explanation: '$d = \\frac{|2\\cdot3 + (-1)\\cdot0 + 2\\cdot4 - 1|}{\\sqrt{4 + 1 + 4}} = \\frac{|6 + 0 + 8 - 1|}{\\sqrt{9}} = \\frac{13}{3} \\approx 4{,}33$.',
+    hints: ['Formel: $d = \\frac{|ax_0 + by_0 + cz_0 - d|}{|\\vec{n}|}$', '$|\\vec{n}| = \\sqrt{4+1+4} = 3$'],
   },
 
   // ── Lesson 4: Prüfungsaufgaben Analytische Geometrie ──
@@ -160,20 +160,20 @@ export const exercises_vek_u2 = {
   },
   'ex-vek-2-4-c': {
     id: 'ex-vek-2-4-c', lessonId: 'vek-2-4', type: 'multiple-choice',
-    question: '[PRÜFUNG] Zwei Ebenen E₁: x + y + z = 1 und E₂: 2x + 2y + 2z = 5. Wie liegen sie zueinander?',
+    question: '[PRÜFUNG] Zwei Ebenen $E_1$: x + y + z = 1 und $E_2$: 2x + 2y + 2z = 5. Wie liegen sie zueinander?',
     options: ['Identisch', 'Parallel (verschieden)', 'Schneiden sich in einer Geraden', 'Senkrecht zueinander'],
     correctIndex: 1,
-    explanation: '$\\vec{n}$₁ = (1,1,1), $\\vec{n}$₂ = (2,2,2) = 2·$\\vec{n}$₁ → Normalenvektoren parallel → Ebenen parallel. Aber 2·1 ≠ 5, also nicht identisch. Die Ebenen sind **parallel und verschieden**.',
+    explanation: '$\\vec{n}_1 = (1,1,1)$, $\\vec{n}_2 = (2,2,2) = 2\\vec{n}_1$ → Normalenvektoren parallel → Ebenen parallel. Aber $2 \\cdot 1 \\neq 5$, also nicht identisch. Die Ebenen sind **parallel und verschieden**.',
     hints: ['Parallele Normalenvektoren → parallele Ebenen.'],
   },
   'ex-vek-2-4-d': {
     id: 'ex-vek-2-4-d', lessonId: 'vek-2-4', type: 'number-input',
-    question: '[PRÜFUNG] Abstand der parallelen Ebenen E₁: x + y + z = 1 und E₂: x + y + z = 4. Berechne den Abstand.',
+    question: '[PRÜFUNG] Abstand der parallelen Ebenen $E_1$: x + y + z = 1 und $E_2$: x + y + z = 4. Berechne den Abstand.',
     correctValue: 1.73,
     tolerance: 0.02,
     unit: '',
-    explanation: 'Abstand paralleler Ebenen: d = |d₂ − d₁| / |$\\vec{n}$| = |4 − 1| / √(1+1+1) = 3/√3 = √3 ≈ 1,73.',
-    hints: ['Erst E₂ auf gleiche Form bringen: x + y + z = 4. Dann |d₂−d₁|/|$\\vec{n}$|.'],
+    explanation: 'Abstand paralleler Ebenen: $d = \\frac{|d_2 - d_1|}{|\\vec{n}|} = \\frac{|4 - 1|}{\\sqrt{1+1+1}} = \\frac{3}{\\sqrt{3}} = \\sqrt{3} \\approx 1{,}73$.',
+    hints: ['Erst $E_2$ auf gleiche Form bringen: $x + y + z = 4$. Dann $\\frac{|d_2 - d_1|}{|\\vec{n}|}$.'],
   },
   'ex-vek-2-4-e': {
     id: 'ex-vek-2-4-e', lessonId: 'vek-2-4', type: 'multiple-choice',
@@ -190,7 +190,7 @@ export const exercises_vek_u2 = {
   },
   'ex-vek-2-4-mastery': {
     id: 'ex-vek-2-4-mastery', lessonId: 'vek-2-4', type: 'multiple-choice', isMasteryCheck: true,
-    question: '[PRÜFUNG] Schnittgerade zweier Ebenen E₁: x + y = 2 und E₂: y + z = 3. Der Richtungsvektor der Schnittgeraden ist:',
+    question: '[PRÜFUNG] Schnittgerade zweier Ebenen $E_1$: x + y = 2 und $E_2$: y + z = 3. Der Richtungsvektor der Schnittgeraden ist:',
     options: ['(1, −1, 1)', '(1, 1, 1)', '(0, 1, 0)', '(1, 0, −1)'],
     correctIndex: 0,
     explanation: 'Der Richtungsvektor der Schnittgeraden steht senkrecht auf beiden Normalenvektoren: $\\vec{v}$ = $\\vec{n}$₁ × $\\vec{n}$₂ = (1,1,0) × (0,1,1) = (1·1−0·1, 0·0−1·1, 1·1−1·0) = (1, −1, 1).',

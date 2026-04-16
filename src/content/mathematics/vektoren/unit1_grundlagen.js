@@ -14,8 +14,14 @@ export const exercises_vek_u1 = {
     question: 'Gegeben: $\\vec{a}$ = (3, 4). Was ist der Betrag |$\\vec{a}$|?',
     options: ['7', '5', '3,5', '12'],
     correctIndex: 1,
-    explanation: '|$\\vec{a}$| = √(3² + 4²) = √(9 + 16) = √25 = 5. Das 3-4-5 Dreieck!',
-    hints: ['Betrag: |$\\vec{a}$| = √(ax² + ay²)', '3² + 4² = 9 + 16 = 25'],
+    explanation: '$|\\vec{a}| = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$. Das 3-4-5 Dreieck!',
+    hints: ['Betrag: $|\\vec{a}| = \\sqrt{a_x^2 + a_y^2}$', '$3^2 + 4^2 = 9 + 16 = 25$'],
+    visualization: {
+      id: 'vector-diagram',
+      params: { vectors: [{ x: 3, y: 4, color: '#0ea5e9', label: 'a=(3,4), |a|=5' }], showComponents: true },
+      caption: '$|\\vec{a}| = \\sqrt{3^2 + 4^2} = 5$',
+      alt: 'Vektor (3,4) mit Komponenten und Betrag 5.',
+    },
   },
   'ex-vek-1-1-c': {
     id: 'ex-vek-1-1-c', lessonId: 'vek-1-1', type: 'multiple-choice',
@@ -24,6 +30,19 @@ export const exercises_vek_u1 = {
     correctIndex: 0,
     explanation: 'Vektoraddition komponentenweise: $\\vec{a}$ + $\\vec{b}$ = (2+1, 3+(−1)) = (3, 2).',
     hints: ['Vektoren komponentenweise addieren: (ax+bx, ay+by)'],
+    visualization: {
+      id: 'vector-diagram',
+      params: {
+        vectors: [
+          { x: 2, y: 3, color: '#0ea5e9', label: 'a' },
+          { x: 1, y: -1, color: '#dc2626', label: 'b' },
+          { x: 3, y: 2, color: '#16a34a', label: 'a+b' },
+        ],
+        showSum: false,
+      },
+      caption: 'Summenvektor a + b = (3, 2)',
+      alt: 'Zwei Vektoren a und b sowie ihr Summenvektor.',
+    },
   },
   'ex-vek-1-1-mastery': {
     id: 'ex-vek-1-1-mastery', lessonId: 'vek-1-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -32,6 +51,17 @@ export const exercises_vek_u1 = {
     correctIndex: 0,
     explanation: 'Skalarmultiplikation: 3·$\\vec{a}$ = (3·(−2), 3·5) = (−6, 15).',
     hints: ['Jeden Komponent mit dem Skalar multiplizieren.'],
+    visualization: {
+      id: 'vector-diagram',
+      params: {
+        vectors: [
+          { x: -2, y: 5, color: '#0ea5e9', label: 'a' },
+          { x: -6, y: 15, color: '#dc2626', label: '3a' },
+        ],
+      },
+      caption: 'Skalarmultiplikation verlängert den Vektor',
+      alt: 'Vektor a und sein dreifaches 3a.',
+    },
   },
 
   'ex-vek-1-2-a': {
@@ -49,6 +79,17 @@ export const exercises_vek_u1 = {
     correctIndex: 1,
     explanation: '$\\vec{a}$·$\\vec{b}$ = |$\\vec{a}$|·|$\\vec{b}$|·cos(90°) = 0, weil cos(90°) = 0. Skalarprodukt = 0 ↔ Vektoren senkrecht.',
     hints: ['cos(90°) = 0. Wenn das Produkt null ist, ist der Winkel 90°.'],
+    visualization: {
+      id: 'vector-diagram',
+      params: {
+        vectors: [
+          { x: 3, y: 0, color: '#0ea5e9', label: 'a' },
+          { x: 0, y: 2, color: '#dc2626', label: 'b' },
+        ],
+      },
+      caption: 'a ⊥ b → a·b = 0',
+      alt: 'Zwei senkrecht aufeinander stehende Vektoren.',
+    },
   },
   'ex-vek-1-2-c': {
     id: 'ex-vek-1-2-c', lessonId: 'vek-1-2', type: 'multiple-choice',
@@ -57,6 +98,17 @@ export const exercises_vek_u1 = {
     correctIndex: 2,
     explanation: 'cos(φ) = $\\vec{a}$·$\\vec{b}$ / (|$\\vec{a}$|·|$\\vec{b}$|) = (1·1+0·1)/(1·√2) = 1/√2. φ = arccos(1/√2) = 45°.',
     hints: ['$\\vec{a}$·$\\vec{b}$ = 1·1 + 0·1 = 1. |$\\vec{a}$| = 1, |$\\vec{b}$| = √2.', 'cos(φ) = 1/√2 → φ = 45°'],
+    visualization: {
+      id: 'vector-diagram',
+      params: {
+        vectors: [
+          { x: 2, y: 0, color: '#0ea5e9', label: 'a=(1,0)' },
+          { x: 2, y: 2, color: '#dc2626', label: 'b=(1,1)' },
+        ],
+      },
+      caption: 'Winkel zwischen a und b = 45°',
+      alt: 'Zwei Vektoren im 45-Grad-Winkel.',
+    },
   },
   'ex-vek-1-2-mastery': {
     id: 'ex-vek-1-2-mastery', lessonId: 'vek-1-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -82,14 +134,25 @@ export const exercises_vek_u1 = {
     correctIndex: 2,
     explanation: 'Wenn $\\vec{a}$ und $\\vec{b}$ parallel sind, gilt φ = 0° → sin(0°) = 0 → |$\\vec{a}$ × $\\vec{b}$| = 0.',
     hints: ['φ = 0° → sin(0°) = 0'],
+    visualization: {
+      id: 'vector-diagram',
+      params: {
+        vectors: [
+          { x: 3, y: 1, color: '#0ea5e9', label: 'a' },
+          { x: 1.5, y: 0.5, color: '#dc2626', label: 'b' },
+        ],
+      },
+      caption: 'Parallele Vektoren spannen keine Fläche → a × b = 0',
+      alt: 'Zwei parallele Vektoren.',
+    },
   },
   'ex-vek-1-3-mastery': {
     id: 'ex-vek-1-3-mastery', lessonId: 'vek-1-3', type: 'multiple-choice', isMasteryCheck: true,
-    question: '[PRÜFUNG] Das Kreuzprodukt è₁ × è₂ (Einheitsvektoren in x- und y-Richtung) ergibt:',
-    options: ['è₁', '−è₃', 'è₃', '0'],
+    question: '[PRÜFUNG] Das Kreuzprodukt $\\hat{e}_1 \\times \\hat{e}_2$ (Einheitsvektoren in x- und y-Richtung) ergibt:',
+    options: ['$\\hat{e}_1$', '$-\\hat{e}_3$', '$\\hat{e}_3$', '$\\mathbf{0}$'],
     correctIndex: 2,
-    explanation: 'è₁ × è₂ = è₃ (z-Richtung, nach Rechte-Hand-Regel). Zyklisch: è₁×è₂=è₃, è₂×è₃=è₁, è₃×è₁=è₂.',
-    hints: ['Rechte-Hand-Regel: Finger von è₁ nach è₂ krümmen → Daumen zeigt in è₃-Richtung.'],
+    explanation: '$\\hat{e}_1 \\times \\hat{e}_2 = \\hat{e}_3$ (z-Richtung, nach Rechte-Hand-Regel). Zyklisch: $\\hat{e}_1\\times\\hat{e}_2=\\hat{e}_3$, $\\hat{e}_2\\times\\hat{e}_3=\\hat{e}_1$, $\\hat{e}_3\\times\\hat{e}_1=\\hat{e}_2$.',
+    hints: ['Rechte-Hand-Regel: Finger von $\\hat{e}_1$ nach $\\hat{e}_2$ krümmen → Daumen zeigt in $\\hat{e}_3$-Richtung.'],
   },
 
   'ex-vek-1-4-a': {
@@ -99,6 +162,19 @@ export const exercises_vek_u1 = {
     correctIndex: 0,
     explanation: '$\\vec{R}$ = $\\vec{F}$₁ + $\\vec{F}$₂ + $\\vec{F}$₃ = (10+0+(−3), 0+5+(−2)) = (7, 3) N.',
     hints: ['Komponentenweise addieren: Rx = F1x+F2x+F3x, Ry = F1y+F2y+F3y'],
+    visualization: {
+      id: 'vector-diagram',
+      params: {
+        vectors: [
+          { x: 3, y: 0, color: '#0ea5e9', label: 'F₁' },
+          { x: 0, y: 1.5, color: '#dc2626', label: 'F₂' },
+          { x: -1, y: -0.7, color: '#f59e0b', label: 'F₃' },
+          { x: 2, y: 0.9, color: '#16a34a', label: 'R' },
+        ],
+      },
+      caption: 'Resultierende R = F₁ + F₂ + F₃ = (7, 3) N',
+      alt: 'Drei Kraftvektoren und ihr Summenvektor.',
+    },
   },
   'ex-vek-1-4-b': {
     id: 'ex-vek-1-4-b', lessonId: 'vek-1-4', type: 'multiple-choice',
@@ -110,7 +186,7 @@ export const exercises_vek_u1 = {
       'F₁·sin30° + F₂·sin45° = 0',
     ],
     correctIndex: 0,
-    explanation: 'ΣFx = 0: −F₁·sin30° + F₂·sin45° = 0 → F₁·sin30° = F₂·sin45°.',
+    explanation: '$\\sum F_x = 0$: $-F_1 \\cdot \\sin 30° + F_2 \\cdot \\sin 45° = 0$ → $F_1 \\cdot \\sin 30° = F_2 \\cdot \\sin 45°$.',
     hints: ['Gleichgewicht: Summe aller Kräfte = 0 in x- und y-Richtung.'],
   },
   'ex-vek-1-4-mastery': {

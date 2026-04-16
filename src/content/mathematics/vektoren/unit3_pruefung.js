@@ -16,8 +16,8 @@ export const exercises_vek_u3 = {
     correctValue: 5,
     tolerance: 0.01,
     unit: '',
-    explanation: '|$\\vec{a}$| = √(3² + 0² + 4²) = √(9 + 0 + 16) = √25 = 5.',
-    hints: ['|$\\vec{a}$| = √(ax² + ay² + az²)', '9 + 16 = 25'],
+    explanation: '$|\\vec{a}| = \\sqrt{3^2 + 0^2 + 4^2} = \\sqrt{9 + 0 + 16} = \\sqrt{25} = 5$.',
+    hints: ['$|\\vec{a}| = \\sqrt{a_x^2 + a_y^2 + a_z^2}$', '$9 + 16 = 25$'],
   },
   'ex-vek-3-1-c': {
     id: 'ex-vek-3-1-c', lessonId: 'vek-3-1', type: 'multiple-choice',
@@ -25,7 +25,7 @@ export const exercises_vek_u3 = {
     options: ['(0, 0, 1)', '(0, 0, −1)', '(1, 1, 0)', '0'],
     correctIndex: 0,
     explanation: '$\\vec{a}$ × $\\vec{b}$ = (0·0−0·1, 0·0−1·0, 1·1−0·0) = (0, 0, 1). Das ist der Einheitsvektor in z-Richtung (Rechte-Hand-Regel).',
-    hints: ['è₁ × è₂ = è₃ nach der Rechte-Hand-Regel.'],
+    hints: ['$\\hat{e}_1 \\times \\hat{e}_2 = \\hat{e}_3$ nach der Rechte-Hand-Regel.'],
   },
   'ex-vek-3-1-d': {
     id: 'ex-vek-3-1-d', lessonId: 'vek-3-1', type: 'multiple-choice',
@@ -48,8 +48,8 @@ export const exercises_vek_u3 = {
     correctValue: 60,
     tolerance: 1,
     unit: '',
-    explanation: 'cos(φ) = ($\\vec{a}$·$\\vec{b}$)/(|$\\vec{a}$|·|$\\vec{b}$|) = (0+1+0)/(√2·√2) = 1/2. φ = arccos(1/2) = 60°.',
-    hints: ['$\\vec{a}$·$\\vec{b}$ = 0+1+0 = 1. |$\\vec{a}$| = √2, |$\\vec{b}$| = √2.', 'cos(φ) = 1/2 → φ = 60°'],
+    explanation: '$\cos(\varphi) = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}| \\cdot |\\vec{b}|} = \\frac{0+1+0}{\\sqrt{2} \\cdot \\sqrt{2}} = \\frac{1}{2}$. $\\varphi = \\arccos(1/2) = 60°$.',
+    hints: ['$\\vec{a} \\cdot \\vec{b} = 0+1+0 = 1$. $|\\vec{a}| = \\sqrt{2}$, $|\\vec{b}| = \\sqrt{2}$.', '$\cos(\\varphi) = 1/2 \\Rightarrow \\varphi = 60°$'],
   },
 
   // ── Lesson 2: Flächen- und Volumenberechnung ──
@@ -135,7 +135,7 @@ const lessons_vek_u3 = [
     title: 'Gemischte Aufgaben Skalar- und Kreuzprodukt',
     order: 1, estimatedMinutes: 20,
     learningGoals: ['Skalar- und Kreuzprodukt sicher berechnen', 'Winkel zwischen Vektoren bestimmen', 'Rechenregeln sicher anwenden'],
-    prerequisites: [],
+    prerequisites: ['vek-1-4'],
     nextLessonId: 'vek-3-2',
     steps: [
       { id: 'vek-3-1-s1', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-vek-3-1-a' },
@@ -151,7 +151,7 @@ const lessons_vek_u3 = [
     title: 'Flächen- und Volumenberechnung',
     order: 2, estimatedMinutes: 15,
     learningGoals: ['Parallelogrammfläche mit Kreuzprodukt berechnen', 'Spatprodukt für Volumen anwenden'],
-    prerequisites: [],
+    prerequisites: ['vek-3-1'],
     nextLessonId: 'vek-3-3',
     steps: [
       {
@@ -183,7 +183,7 @@ $$V_{\\text{Tetraeder}} = \\frac{1}{6} |\\vec{a} \\cdot (\\vec{b} \\times \\vec{
     title: 'Technische Anwendungen',
     order: 3, estimatedMinutes: 18,
     learningGoals: ['Drehmoment als Kreuzprodukt berechnen', 'Kräftezerlegung an der schiefen Ebene', 'Vektoren in technischen Aufgaben anwenden'],
-    prerequisites: [],
+    prerequisites: ['vek-2-4', 'vek-3-2'],
     nextLessonId: null,
     steps: [
       {

@@ -438,11 +438,11 @@ const exercises_la_u3 = {
   },
   'ex-la-3-3-j': {
     id: 'ex-la-3-3-j', lessonId: 'la-3-3', type: 'number-input',
-    question: '[PRÜFUNG] Trägheitstensor (in kg·m²): $J = \\begin{pmatrix} 5 & 0 & 0 \\\\ 0 & 4 & 2 \\\\ 0 & 2 & 4 \\end{pmatrix}$. Wie groß ist das größte Hauptträgheitsmoment in kg·m²?',
+    question: '[PRÜFUNG] Trägheitstensor (in $kg \\cdot m^2$): $J = \\begin{pmatrix} 5 & 0 & 0 \\\\ 0 & 4 & 2 \\\\ 0 & 2 & 4 \\end{pmatrix}$. Wie groß ist das größte Hauptträgheitsmoment in $kg \\cdot m^2$?',
     correctValue: 6,
     tolerance: 0.01,
     unit: 'kg·m²',
-    explanation: 'Eigenwerte: $\\lambda_1 = 5$ (aus erster Spalte). Für 2x2-Block $\\begin{pmatrix} 4 & 2 \\\\ 2 & 4 \\end{pmatrix}$: $\\det \\begin{pmatrix} 4-\\lambda & 2 \\\\ 2 & 4-\\lambda \\end{pmatrix} = (4-\\lambda)^2 - 4 = 0 \\Rightarrow \\lambda = 4 \\pm 2 = 6$ oder $2$. Hauptträgheitsmomente: 5, 6, 2. Größtes: $\\lambda_{\\max} = 6$ kg·m².',
+    explanation: 'Eigenwerte: $\\lambda_1 = 5$ (aus erster Spalte). Für 2x2-Block $\\begin{pmatrix} 4 & 2 \\\\ 2 & 4 \\end{pmatrix}$: $\\det \\begin{pmatrix} 4-\\lambda & 2 \\\\ 2 & 4-\\lambda \\end{pmatrix} = (4-\\lambda)^2 - 4 = 0 \\Rightarrow \\lambda = 4 \\pm 2 = 6$ oder $2$. Hauptträgheitsmomente: 5, 6, 2. Größtes: $\\lambda_{\\max} = 6\\,kg \\cdot m^2$.',
     hints: ['Block-Diagonalstruktur: erste Eigenwert ist 5 direkt.', 'Für den 2x2-Block: $\\det(B - \\lambda I) = (4-\\lambda)^2 - 4 = 0$.', 'Größtes Hauptträgheitsmoment ist die größte aller drei Eigenwerte.'],
   },
   'ex-la-3-3-mastery': {

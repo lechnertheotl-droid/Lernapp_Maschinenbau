@@ -69,7 +69,7 @@ export const exercises_abl_u2 = {
     ],
     correctIndex: 1,
     explanation: "Quotientenregel: $\\left(\\frac{f}{g}\\right)' = \\frac{f' \\cdot g - f \\cdot g'}{g^2}$. Merke: **NAZ** — Nenner mal Ableitung Zähler minus Zähler mal Ableitung Nenner, geteilt durch Nenner zum Quadrat.",
-    hints: ['Eselsbrücke: NAZ — Nenner × Abl. Zähler − Zähler × Abl. Nenner, alles durch Nenner².'],
+    hints: ['Eselsbrücke: NAZ — Nenner × Abl. Zähler − Zähler × Abl. Nenner, alles durch Nenner$^2$.'],
   },
   'ex-abl-2-2-b': {
     id: 'ex-abl-2-2-b', lessonId: 'abl-2-2', type: 'multiple-choice',
