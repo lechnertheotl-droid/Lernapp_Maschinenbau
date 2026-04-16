@@ -33,7 +33,11 @@ const unit1 = makeUnit({
       correctIndex: 0,
       masteryExplanation:
         '$y$ wird als Konstante behandelt. $3y$ differenziert nach $x$ ergibt $0$. Bleibt $\\partial/\\partial x (x^2) = 2x$.',
-      masteryHints: ['y wie eine Konstante behandeln.', 'Potenzregel auf x² anwenden.'],
+      masteryHints: [
+        'y wie eine Konstante behandeln.',
+        'Potenzregel auf x² anwenden.',
+        '$f(x,y)=x^2+3y$: Ableitung von $x^2$ nach $x$ ist $2x$, Term $3y$ verschwindet.',
+      ],
       masteryVisualization: {
         id: 'function-graph',
         params: {
@@ -94,6 +98,7 @@ const unit1 = makeUnit({
       masteryHints: [
         '$\\det(H) = f_{xx}f_{yy} - f_{xy}^2$.',
         'Positives $\\det(H)$: Vorzeichen von $f_{xx}$ entscheidet zwischen Min und Max.',
+        'Hier: $\\det=4>0$ und $f_{xx}=2>0$ → lokales Minimum.',
       ],
       masteryVisualization: {
         id: 'function-graph',
@@ -148,8 +153,91 @@ const unit2 = makeUnit({
       correctIndex: 0,
       masteryExplanation:
         '$\\nabla f = (2x, 2y) = \\mathbf{0}$ nur bei $(0,0)$. Hesse = $\\begin{pmatrix}2&0\\\\0&2\\end{pmatrix}$, det=4>0, $f_{xx}$=2>0 → Minimum.',
-      masteryHints: ['Gradient null setzen.', 'Hesse-Determinante prüfen.'],
+      masteryHints: [
+        'Gradient null setzen.',
+        'Hesse-Determinante prüfen.',
+        '$(0,0)$: $H=\\begin{pmatrix}2&0\\\\0&2\\end{pmatrix}$, $\\det=4>0$, $f_{xx}=2>0$ → Minimum.',
+      ],
       prerequisites: ['mdim-1-2'],
+      nextLessonId: 'mdim-pruefung-2',
+    }),
+    makeLesson({
+      id: 'mdim-pruefung-2',
+      title: 'Prüfung: Fehlerfortpflanzung & totales Differential',
+      estimatedMinutes: 20,
+      isExam: true,
+      learningGoals: [
+        '[PRÜFUNG] Totales Differential $df = f_x dx + f_y dy$ berechnen',
+        '[PRÜFUNG] Maximale Fehlerabschätzung mit Teilfehlern',
+        '[PRÜFUNG] Gauß\'sche Fehlerfortpflanzung anwenden',
+      ],
+      createdAt: '2026-04-16',
+      intuitionTitle: 'Wie pflanzen sich Messfehler fort?',
+      intuitionContent:
+        'Wenn $y = f(x_1, x_2, \\ldots)$ von fehlerbehafteten Messgrößen abhängt, ' +
+        'pflanzt sich der Fehler gemäß dem **totalen Differential** fort:\n\n' +
+        '$$\\Delta y \\approx \\left|\\frac{\\partial f}{\\partial x_1}\\right| \\Delta x_1 + \\left|\\frac{\\partial f}{\\partial x_2}\\right| \\Delta x_2 + \\cdots$$\n\n' +
+        '**Gauß:** $\\Delta y = \\sqrt{\\left(\\frac{\\partial f}{\\partial x_1}\\Delta x_1\\right)^2 + \\left(\\frac{\\partial f}{\\partial x_2}\\Delta x_2\\right)^2 + \\cdots}$ (realistischer).',
+      formulaTitle: 'Totales Differential & Fehlerformeln',
+      formulaContent:
+        '**Totales Differential:**\n' +
+        '$$df = \\frac{\\partial f}{\\partial x}\\,dx + \\frac{\\partial f}{\\partial y}\\,dy$$\n\n' +
+        '**Maximale Fehlerabschätzung:**\n' +
+        '$$\\Delta z_{\\max} = \\left|f_x\\right|\\Delta x + \\left|f_y\\right|\\Delta y$$\n\n' +
+        '**Gauß\'sche Fehlerfortpflanzung:**\n' +
+        '$$\\Delta z_{\\text{Gauß}} = \\sqrt{(f_x \\Delta x)^2 + (f_y \\Delta y)^2}$$',
+      masteryQuestion:
+        '[PRÜFUNG] $z = x \\cdot y$, $x = 3 \\pm 0{,}1$, $y = 4 \\pm 0{,}2$. Maximaler absoluter Fehler $\\Delta z$?',
+      masteryOptions: ['$1{,}0$', '$0{,}4$', '$0{,}6$', '$1{,}4$'],
+      correctIndex: 0,
+      masteryExplanation:
+        '$\\partial z/\\partial x = y = 4$, $\\partial z/\\partial y = x = 3$. ' +
+        '$\\Delta z = |4| \\cdot 0{,}1 + |3| \\cdot 0{,}2 = 0{,}4 + 0{,}6 = 1{,}0$.',
+      masteryHints: [
+        'Partielle Ableitungen: $z_x = y$, $z_y = x$.',
+        'Maximale Fehlerabschätzung: $\\Delta z = |z_x|\\Delta x + |z_y|\\Delta y$.',
+        '$|4| \\cdot 0{,}1 + |3| \\cdot 0{,}2 = 0{,}4 + 0{,}6 = 1{,}0$.',
+      ],
+      prerequisites: ['mdim-pruefung-1'],
+      nextLessonId: 'mdim-pruefung-3',
+    }),
+    makeLesson({
+      id: 'mdim-pruefung-3',
+      title: 'Prüfung: Lagrange & Gesamtaufgaben',
+      estimatedMinutes: 22,
+      isExam: true,
+      learningGoals: [
+        '[PRÜFUNG] Lagrange-Multiplikatoren vollständig durchrechnen',
+        '[PRÜFUNG] Typ des Extremums mit Hesse-Matrix bestimmen',
+        '[PRÜFUNG] Gemischte Aufgaben aus partieller Ableitung, Extrema, Fehler',
+      ],
+      createdAt: '2026-04-16',
+      intuitionTitle: 'Gesamtstrategie für Prüfungsaufgaben',
+      intuitionContent:
+        '**Extrema ohne NB:** $\\nabla f = \\mathbf{0}$ → kritische Punkte → Hesse-Matrix auswerten.\n\n' +
+        '**Extrema mit NB:** Lagrange-Ansatz $\\nabla f = \\lambda \\nabla g$, zusammen mit $g=0$ ein LGS lösen.\n\n' +
+        '**Fehlerfortpflanzung:** Partielle Ableitungen berechnen, mit Messfehlern gewichten.',
+      formulaTitle: 'Lagrange vollständig',
+      formulaContent:
+        '**Lagrange:** Zu maximieren/minimieren: $f(x,y)$ unter $g(x,y)=0$.\n\n' +
+        '**Bedingungen:**\n' +
+        '$$\\frac{\\partial f}{\\partial x} = \\lambda \\frac{\\partial g}{\\partial x}, \\quad ' +
+        '\\frac{\\partial f}{\\partial y} = \\lambda \\frac{\\partial g}{\\partial y}, \\quad g(x,y) = 0$$\n\n' +
+        '→ 3 Gleichungen für 3 Unbekannte $(x, y, \\lambda)$.\n\n' +
+        '**Hesse-Kurztest:** $\\det(H) > 0$ und $f_{xx} > 0$: Minimum; $f_{xx} < 0$: Maximum; $\\det(H)<0$: Sattel.',
+      masteryQuestion:
+        '[PRÜFUNG] $f(x,y) = x^2 + y^2$ auf $x + y = 2$. Wo liegt das Minimum?',
+      masteryOptions: ['$(1, 1)$', '$(2, 0)$', '$(0, 2)$', '$(0, 0)$'],
+      correctIndex: 0,
+      masteryExplanation:
+        'Lagrange: $2x = \\lambda$, $2y = \\lambda$, $x+y=2$. Aus ersten zwei: $x = y$. ' +
+        'Einsetzen: $2x = 2 \\Rightarrow x = y = 1$. Minimum bei $(1,1)$, $f(1,1) = 2$.',
+      masteryHints: [
+        'Lagrange-Bedingungen: $f_x = \\lambda g_x$, $f_y = \\lambda g_y$, $g = 0$.',
+        'Aus $2x = \\lambda$ und $2y = \\lambda$ folgt $x = y$.',
+        'Mit $x = y$ in $x + y = 2$ einsetzen: $2x = 2$, also $x = y = 1$.',
+      ],
+      prerequisites: ['mdim-pruefung-2'],
       nextLessonId: null,
     }),
   ],

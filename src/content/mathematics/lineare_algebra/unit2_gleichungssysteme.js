@@ -12,8 +12,12 @@ export const exercises_la_u2 = {
       '$\\begin{pmatrix} x & y \\\\ x & y \\end{pmatrix}$',
     ],
     correctIndex: 0,
-    explanation: 'Die Koeffizienten der Variablen werden zeilenweise in die Matrix eingetragen. Gleichung 1: 2x + 3y, also [2, 3]. Gleichung 2: x - y, also [1, -1].',
-    hints: ['Jede Zeile der Matrix entspricht einer Gleichung. Die Koeffizienten vor x und y werden der Reihe nach eingetragen.'],
+    explanation: 'Die Koeffizienten der Variablen werden zeilenweise in die Matrix eingetragen. Gleichung 1: $2x + 3y$, also $[2, 3]$. Gleichung 2: $x - y$, also $[1, -1]$.',
+    hints: [
+      'Was steht in den Zeilen, was in den Spalten der Koeffizientenmatrix?',
+      'Jede Zeile = eine Gleichung; Spalten = Reihenfolge der Variablen ($x$, $y$).',
+      'Schreibe für Zeile 1 die Koeffizienten von $x$ und $y$ aus $2x + 3y = 7$.',
+    ],
   },
   'ex-la-2-1-b': {
     id: 'ex-la-2-1-b', lessonId: 'la-2-1', type: 'multiple-choice',
@@ -25,8 +29,12 @@ export const exercises_la_u2 = {
       '$\\begin{pmatrix} 2 & 3 & 7 \\\\ 1 & -1 & 0 \\end{pmatrix}$',
     ],
     correctIndex: 1,
-    explanation: 'Die erweiterte Koeffizientenmatrix hängt den Vektor $\\vec{b}$ (die rechte Seite) als zusätzliche Spalte an die Matrix $A$ an. Der Strich | trennt $A$ von $\\vec{b}$.',
-    hints: ['Die erweiterte Matrix = Koeffizientenmatrix | rechte Seite. Alle Informationen des LGS in einer Tabelle.'],
+    explanation: 'Die erweiterte Koeffizientenmatrix hängt den Vektor $\\vec{b}$ (die rechte Seite) als zusätzliche Spalte an die Matrix $A$ an. Der Strich $|$ trennt $A$ von $\\vec{b}$.',
+    hints: [
+      'Welche Information fehlt in $A$ allein?',
+      'Erweitert = Koeffizientenmatrix + rechte Seite, getrennt durch einen vertikalen Strich.',
+      'Anhängen, nicht ersetzen — die ursprünglichen Spalten bleiben unverändert.',
+    ],
   },
   'ex-la-2-1-c': {
     id: 'ex-la-2-1-c', lessonId: 'la-2-1', type: 'multiple-choice',
@@ -39,7 +47,11 @@ export const exercises_la_u2 = {
     ],
     correctIndex: 1,
     explanation: 'Die Matrixschreibweise erlaubt systematische Algorithmen (Gauss!) und tiefe Einsichten: z.B. ob Lösungen existieren, ob sie eindeutig sind, und wie die Lösungsmenge aussieht.',
-    hints: ['Denke an grosse Systeme mit 100 Gleichungen. Würdest du die per Hand lösen wollen?'],
+    hints: [
+      'Warum nutzen Ingenieure Matrizen statt verschachtelte Gleichungen?',
+      'Denke an FEM: 10 000 Gleichungen — Hand-Lösen unmöglich.',
+      'Mit Matrizen werden systematische Algorithmen wie Gauss möglich.',
+    ],
   },
   'ex-la-2-1-mastery': {
     id: 'ex-la-2-1-mastery', lessonId: 'la-2-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -51,8 +63,12 @@ export const exercises_la_u2 = {
       '$\\left(\\begin{array}{ccc|c} 3 & -2 & 1 & 0 \\\\ 1 & 4 & -2 & 0 \\\\ 2 & 1 & 3 & 0 \\end{array}\\right)$',
     ],
     correctIndex: 0,
-    explanation: 'Jede Zeile entspricht einer Gleichung. Die Koeffizienten kommen in der Reihenfolge x, y, z, und die rechte Seite nach dem Strich.',
-    hints: ['Zeile für Zeile: Koeffizienten vor x, y, z ablesen und die rechte Seite hinter den Strich schreiben.'],
+    explanation: 'Jede Zeile entspricht einer Gleichung. Die Koeffizienten kommen in der Reihenfolge $x$, $y$, $z$, und die rechte Seite nach dem Strich.',
+    hints: [
+      'Pro Gleichung eine Zeile — wie ist die Reihenfolge der Variablen?',
+      'Spaltenreihenfolge: $x$, $y$, $z$, dann Strich, dann $b$.',
+      'Achtung: Antwort B ist die transponierte (verwechselt Zeilen/Spalten).',
+    ],
   },
 
   // ── Lesson 2: Gauss-Algorithmus ─────────────────────────────────────────────
@@ -61,26 +77,34 @@ export const exercises_la_u2 = {
     question: 'Welche der folgenden Operationen ist beim Gauss-Algorithmus NICHT erlaubt?',
     options: [
       'Zwei Zeilen vertauschen',
-      'Eine Zeile mit einer Zahl != 0 multiplizieren',
+      'Eine Zeile mit einer Zahl $\\neq 0$ multiplizieren',
       'Zwei Spalten vertauschen',
       'Ein Vielfaches einer Zeile zu einer anderen addieren',
     ],
     correctIndex: 2,
     explanation: 'Beim Gauss-Algorithmus darf man nur ZEILEN-Operationen durchführen: Zeilen vertauschen, Zeilen skalieren, Vielfaches einer Zeile zu einer anderen addieren. Spalten vertauschen würde die Variablenzuordnung ändern!',
-    hints: ['Spaltenoperationen würden die Zuordnung der Variablen (x, y, z, ...) durcheinanderbringen.'],
+    hints: [
+      'Was würde ein Spaltentausch in der zugrundeliegenden Gleichung bedeuten?',
+      'Spalten = Variablen ($x$, $y$, $z$). Tauschen = Variablen verwechseln.',
+      'Erlaubt sind nur Operationen, die die Lösungsmenge nicht verändern.',
+    ],
   },
   'ex-la-2-2-b': {
     id: 'ex-la-2-2-b', lessonId: 'la-2-2', type: 'multiple-choice',
-    question: 'Die erweiterte Matrix $\\left(\\begin{array}{cc|c} 1 & 2 & 5 \\\\ 3 & 4 & 11 \\end{array}\\right)$. Welche Operation eliminiert die 3 in Zeile 2?',
+    question: 'Die erweiterte Matrix $\\left(\\begin{array}{cc|c} 1 & 2 & 5 \\\\ 3 & 4 & 11 \\end{array}\\right)$. Welche Operation eliminiert die $3$ in Zeile 2?',
     options: [
-      'Zeile 2 = Zeile 2 - 3 * Zeile 1',
-      'Zeile 2 = Zeile 2 + 3 * Zeile 1',
-      'Zeile 2 = Zeile 2 / 3',
-      'Zeile 1 = Zeile 1 - Zeile 2',
+      'Zeile 2 = Zeile 2 $-$ 3 $\\cdot$ Zeile 1',
+      'Zeile 2 = Zeile 2 $+$ 3 $\\cdot$ Zeile 1',
+      'Zeile 2 = Zeile 2 $/$ 3',
+      'Zeile 1 = Zeile 1 $-$ Zeile 2',
     ],
     correctIndex: 0,
-    explanation: 'Um die 3 zu eliminieren: Zeile 2 - 3 * Zeile 1. Dann: [3-3*1, 4-3*2, 11-3*5] = [0, -2, -4]. Die 3 ist weg!',
-    hints: ['Um ein Element in Spalte 1 zu eliminieren, subtrahiere ein passendes Vielfaches von Zeile 1. Welches Vielfache ergibt 3?'],
+    explanation: 'Um die $3$ zu eliminieren: Zeile 2 $-$ 3 $\\cdot$ Zeile 1. Dann: $[3 - 3 \\cdot 1, \\; 4 - 3 \\cdot 2, \\; 11 - 3 \\cdot 5] = [0, -2, -4]$. Die $3$ ist weg!',
+    hints: [
+      'Welches Vielfache von Zeile 1 muss man von Zeile 2 abziehen, damit der erste Eintrag $3$ verschwindet?',
+      'Pivotelement in Zeile 1: $1$. Faktor: $3 / 1 = 3$.',
+      'Operation: Zeile 2 $-$ (Faktor) $\\cdot$ Zeile 1 $=$ Zeile 2 $-$ 3 $\\cdot$ Zeile 1.',
+    ],
   },
   'ex-la-2-2-c': {
     id: 'ex-la-2-2-c', lessonId: 'la-2-2', type: 'number-input',
@@ -89,7 +113,11 @@ export const exercises_la_u2 = {
     tolerance: 0.01,
     unit: '',
     explanation: 'Aus Zeile 2: $-2y = -4$, also $y = 2$.',
-    hints: ['Zeile 2 lesen: $0 \\cdot x + (-2) \\cdot y = -4$. Nach y auflösen!'],
+    hints: [
+      'Welche Gleichung versteckt sich in Zeile 2?',
+      'Lies Zeile 2 zurück: $0 \\cdot x + (-2) \\cdot y = -4$.',
+      'Vereinfacht: $-2y = -4 \\Rightarrow y = ?$',
+    ],
   },
   'ex-la-2-2-d': {
     id: 'ex-la-2-2-d', lessonId: 'la-2-2', type: 'number-input',
@@ -98,7 +126,11 @@ export const exercises_la_u2 = {
     tolerance: 0.01,
     unit: '',
     explanation: 'Zeile 1: $x + 2y = 5$. Mit $y = 2$: $x + 4 = 5$, also $x = 1$.',
-    hints: ['Setze y = 2 in die erste Gleichung ein: x + 2*2 = 5.'],
+    hints: [
+      'Wie heißt der zweite Schritt nach Gauss-Vorwärts? Genau — Rücksubstitution.',
+      'Setze $y = 2$ in Zeile 1 ein: $x + 2 \\cdot 2 = 5$.',
+      'Löse nach $x$ auf.',
+    ],
   },
   'ex-la-2-2-mastery': {
     id: 'ex-la-2-2-mastery', lessonId: 'la-2-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -111,7 +143,11 @@ export const exercises_la_u2 = {
     ],
     correctIndex: 1,
     explanation: 'Das Ziel ist die Zeilenstufenform (obere Dreiecksform): Unter jedem Pivotelement stehen Nullen. Von dort kann man rückwärts einsetzen (Rücksubstitution). Bei der reduzierten Form stehen auch darüber Nullen.',
-    hints: ['Gauss bringt das System in eine Form, bei der die letzte Gleichung nur noch eine Unbekannte hat, die vorletzte zwei, usw.'],
+    hints: [
+      'Welche Form hat die Matrix nach Gauss-Vorwärtselimination?',
+      'Ein Trapez/Dreieck mit Nullen unter den Pivots.',
+      'Diese Form heißt "Zeilenstufenform" — daraus rücksubstituieren.',
+    ],
   },
 
   // ── Lesson 3: Lösbarkeit ───────────────────────────────────────────────────
@@ -125,8 +161,12 @@ export const exercises_la_u2 = {
       'Man muss noch weiter umformen',
     ],
     correctIndex: 2,
-    explanation: '$0 = 5$ ist ein Widerspruch -- das ist niemals wahr! Das bedeutet, die Gleichungen widersprechen sich. Das System hat keine Lösung.',
-    hints: ['Kann 0 jemals gleich 5 sein? Was sagt das über das Gleichungssystem?'],
+    explanation: '$0 = 5$ ist ein Widerspruch — das ist niemals wahr! Das bedeutet, die Gleichungen widersprechen sich. Das System hat keine Lösung.',
+    hints: [
+      'Lies die letzte Zeile als Gleichung — kann sie jemals stimmen?',
+      'Eine Gleichung wie "Null gleich Fünf" hat keine erfüllende Belegung.',
+      'Das nennt man "inkonsistent" oder "widersprüchlich".',
+    ],
   },
   'ex-la-2-3-b': {
     id: 'ex-la-2-3-b', lessonId: 'la-2-3', type: 'multiple-choice',
@@ -139,7 +179,11 @@ export const exercises_la_u2 = {
     ],
     correctIndex: 1,
     explanation: 'Der Rang ist die Anzahl der Pivotelemente (= von Null verschiedene Zeilen in der Stufenform). Er sagt, wie viele "unabhängige Gleichungen" tatsächlich im System stecken.',
-    hints: ['Bring die Matrix in Stufenform. Zähle die Zeilen, die nicht komplett aus Nullen bestehen.'],
+    hints: [
+      'Wie misst man, wie viele "echte" Informationen ein LGS enthält?',
+      'Bringe die Matrix in Stufenform und zähle die Pivot-Zeilen.',
+      'Nullzeilen tragen nichts bei — sie zählen nicht zum Rang.',
+    ],
   },
   'ex-la-2-3-c': {
     id: 'ex-la-2-3-c', lessonId: 'la-2-3', type: 'multiple-choice',
@@ -152,7 +196,11 @@ export const exercises_la_u2 = {
     ],
     correctIndex: 2,
     explanation: 'Genau eine Lösung gibt es, wenn $\\text{rang}(A) = \\text{rang}(A|b) = n$ (Anzahl der Unbekannten). Das bedeutet: Jede Gleichung bringt neue Information, und es gibt genau so viele "echte" Gleichungen wie Unbekannte.',
-    hints: ['Kronecker-Capelli: Lösbar wenn rang(A) = rang(A|b). Eindeutig wenn zusätzlich Rang = Anzahl Unbekannte.'],
+    hints: [
+      'Welcher Satz beschreibt die Lösbarkeit von LGS?',
+      'Kronecker-Capelli: Lösbar wenn $\\text{rang}(A) = \\text{rang}(A|b)$.',
+      'Eindeutig wenn dieser Rang zusätzlich gleich $n$ (Anzahl Unbekannte) ist.',
+    ],
   },
   'ex-la-2-3-mastery': {
     id: 'ex-la-2-3-mastery', lessonId: 'la-2-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -165,7 +213,11 @@ export const exercises_la_u2 = {
     ],
     correctIndex: 2,
     explanation: '$\\text{rang}(A) = \\text{rang}(A|b)$: Das System ist lösbar. Aber $\\text{rang} = 2 < 3 = n$: Es gibt $n - \\text{rang} = 3 - 2 = 1$ freien Parameter. Also unendlich viele Lösungen, die von einem Parameter abhängen.',
-    hints: ['Lösbar (gleicher Rang), aber nicht eindeutig (Rang < Anzahl Unbekannte). Wie viele freie Parameter? n - rang.'],
+    hints: [
+      'Erst Lösbarkeit prüfen: $\\text{rang}(A) = \\text{rang}(A|b)$?',
+      'Dann Eindeutigkeit: ist Rang gleich der Anzahl Unbekannten?',
+      'Anzahl freier Parameter $= n - \\text{rang}(A)$. Hier: $3 - 2 = 1$.',
+    ],
   },
 
   // ── Lesson 4: Cramersche Regel & Anwendungen ───────────────────────────────
@@ -180,7 +232,11 @@ export const exercises_la_u2 = {
     ],
     correctIndex: 1,
     explanation: 'Die Cramersche Regel funktioniert nur, wenn $\\det(A) \\neq 0$. Dann hat das System genau eine Lösung, und man kann jede Unbekannte einzeln mit Determinanten berechnen.',
-    hints: ['In der Formel $x_i = \\det(A_i)/\\det(A)$ steht $\\det(A)$ im Nenner. Was darf nicht passieren?'],
+    hints: [
+      'In welcher Position der Cramer-Formel steht $\\det(A)$?',
+      'Formel: $x_i = \\det(A_i) / \\det(A)$ — Determinante steht im Nenner.',
+      'Was darf nie im Nenner stehen?',
+    ],
   },
   'ex-la-2-4-b': {
     id: 'ex-la-2-4-b', lessonId: 'la-2-4', type: 'number-input',
@@ -189,7 +245,11 @@ export const exercises_la_u2 = {
     tolerance: 0.01,
     unit: '',
     explanation: '$A = \\begin{pmatrix} 2 & 1 \\\\ 1 & -1 \\end{pmatrix}$. $\\det(A) = 2 \\cdot (-1) - 1 \\cdot 1 = -2 - 1 = -3$.',
-    hints: ['$A = [[2, 1], [1, -1]]$. Formel: $ad - bc$.'],
+    hints: [
+      'Erst die Koeffizientenmatrix $A$ aus den Gleichungen ablesen.',
+      '$A = \\begin{pmatrix} 2 & 1 \\\\ 1 & -1 \\end{pmatrix}$ — 2×2-Determinante: $ad - bc$.',
+      'Achte auf das Vorzeichen: $2 \\cdot (-1) - 1 \\cdot 1 = ?$',
+    ],
   },
   'ex-la-2-4-c': {
     id: 'ex-la-2-4-c', lessonId: 'la-2-4', type: 'number-input',
@@ -198,7 +258,11 @@ export const exercises_la_u2 = {
     tolerance: 0.01,
     unit: '',
     explanation: '$A_x = \\begin{pmatrix} 5 & 1 \\\\ 1 & -1 \\end{pmatrix}$. $\\det(A_x) = 5 \\cdot (-1) - 1 \\cdot 1 = -6$. Also $x = \\frac{-6}{-3} = 2$.',
-    hints: ['$A_x$: Ersetze die erste Spalte von A durch den Vektor b = [5, 1]. Berechne die Determinante und teile durch det(A) = -3.'],
+    hints: [
+      'Wie konstruiert man $A_x$ aus $A$?',
+      'Spalte 1 von $A$ durch $\\vec{b} = \\begin{pmatrix}5\\\\1\\end{pmatrix}$ ersetzen.',
+      'Dann $\\det(A_x) = -6$, geteilt durch $\\det(A) = -3$.',
+    ],
   },
   'ex-la-2-4-mastery': {
     id: 'ex-la-2-4-mastery', lessonId: 'la-2-4', type: 'multiple-choice', isMasteryCheck: true,
@@ -210,8 +274,12 @@ export const exercises_la_u2 = {
       'Es müssen mehr Gleichungen als Unbekannte vorhanden sein',
     ],
     correctIndex: 0,
-    explanation: 'Damit 3 Gleichungen 3 Unbekannte eindeutig bestimmen, müssen sie linear unabhängig sein, d.h. $\\det(A) \\neq 0$. Falls $\\det(A) = 0$, ist das System statisch unbestimmt -- es gibt unendlich viele Lösungen oder gar keine.',
-    hints: ['Eindeutige Lösung bei n Gleichungen und n Unbekannten genau dann, wenn die Koeffizientenmatrix regulär ist. Was heißt das für die Determinante?'],
+    explanation: 'Damit 3 Gleichungen 3 Unbekannte eindeutig bestimmen, müssen sie linear unabhängig sein, d.h. $\\det(A) \\neq 0$. Falls $\\det(A) = 0$, ist das System statisch unbestimmt — es gibt unendlich viele Lösungen oder gar keine.',
+    hints: [
+      'Wann liefern 3 Gleichungen mit 3 Unbekannten genau eine Lösung?',
+      'Die Gleichungen müssen linear unabhängig sein — keine darf aus den anderen folgen.',
+      'Mathematisch: $\\det(A) \\neq 0$. Sonst: statisch unbestimmt → zusätzliche Bedingungen nötig.',
+    ],
   },
 }
 
@@ -232,7 +300,7 @@ const lessons_la_u2 = [
 $$2x + 3y = 7$$
 $$x - y = 1$$
 
-Das löst du in der Schule vielleicht mit Einsetzen oder Gleichsetzen. Aber was, wenn du **100 Gleichungen mit 100 Unbekannten** hast? (Das kommt im Maschinenbau ständig vor -- z.B. bei der Finite-Elemente-Methode!)
+Das löst du in der Schule vielleicht mit Einsetzen oder Gleichsetzen. Aber was, wenn du **100 Gleichungen mit 100 Unbekannten** hast? (Das kommt im Maschinenbau ständig vor — z.B. bei der Finite-Elemente-Methode!)
 
 Dann schreibst du alles als **Matrix-Gleichung**:
 
@@ -276,9 +344,9 @@ $$\\left(\\begin{array}{cccc|c} a_{11} & a_{12} & \\cdots & a_{1n} & b_1 \\\\ a_
     steps: [
       {
         id: 'la-2-2-s1', type: 'explanation-intuitive', title: 'Idee des Gauss-Algorithmus',
-        content: `Der Gauss-Algorithmus ist wie **Aufraumen**: Du bringst das Gleichungssystem Schritt für Schritt in eine einfache Form, aus der du die Lösung direkt ablesen kannst.
+        content: `Der Gauss-Algorithmus ist wie **Aufräumen**: Du bringst das Gleichungssystem Schritt für Schritt in eine einfache Form, aus der du die Lösung direkt ablesen kannst.
 
-**Analogie:** Stell dir vor, du hast ein Chaos aus Gleichungen. Gauss raumt auf:
+**Analogie:** Stell dir vor, du hast ein Chaos aus Gleichungen. Gauss räumt auf:
 - Erst löst du die letzte Gleichung (nur eine Unbekannte)
 - Dann setzt du ein und löst die vorletzte (zwei Unbekannte, eine schon bekannt)
 - Und so weiter, bis alles gelöst ist
@@ -297,7 +365,7 @@ $$\\left(\\begin{array}{cccc|c} a_{11} & a_{12} & \\cdots & a_{1n} & b_1 \\\\ a_
 **Schritt 1:** Erweiterte Matrix aufstellen:
 $$\\left(\\begin{array}{cc|c} 1 & 2 & 5 \\\\ 3 & 4 & 11 \\end{array}\\right)$$
 
-**Schritt 2:** Eliminiere die 3 in Zeile 2 (Zeile 2 - 3 * Zeile 1):
+**Schritt 2:** Eliminiere die 3 in Zeile 2 (Zeile 2 $-$ 3 $\\cdot$ Zeile 1):
 $$\\left(\\begin{array}{cc|c} 1 & 2 & 5 \\\\ 0 & -2 & -4 \\end{array}\\right)$$
 
 Das ist die **Stufenform**! Unter der Diagonale stehen nur Nullen.
@@ -306,7 +374,7 @@ Das ist die **Stufenform**! Unter der Diagonale stehen nur Nullen.
 - Zeile 2: $-2y = -4 \\Rightarrow y = 2$
 - Zeile 1: $x + 2 \\cdot 2 = 5 \\Rightarrow x = 1$
 
-**Lösung:** $x = 1, y = 2$ \\checkmark
+**Lösung:** $x = 1, y = 2$ ✓
 
 **Für größere Systeme** (3x3, 4x4, ...): Das gleiche Prinzip! Erst Spalte 1 "sauber machen" (überall 0 unter dem Pivot), dann Spalte 2, usw.`,
       },
@@ -385,7 +453,7 @@ Dabei ist $n$ die Anzahl der Unbekannten.
     steps: [
       {
         id: 'la-2-4-s1', type: 'explanation-intuitive', title: 'Cramersche Regel: Lösen mit Determinanten',
-        content: `Die Cramersche Regel ist eine elegante Methode, um die Lösung eines LGS direkt mit **Determinanten** auszurechnen -- ohne Gauss!
+        content: `Die Cramersche Regel ist eine elegante Methode, um die Lösung eines LGS direkt mit **Determinanten** auszurechnen — ohne Gauss!
 
 **Idee:** Jede Unbekannte $x_i$ ist ein Bruch aus zwei Determinanten:
 
@@ -404,7 +472,7 @@ $$x = \\frac{\\det\\begin{pmatrix} 5 & 1 \\\\ 1 & -1 \\end{pmatrix}}{\\det(A)} =
 $$y = \\frac{\\det\\begin{pmatrix} 2 & 5 \\\\ 1 & 1 \\end{pmatrix}}{\\det(A)} = \\frac{2-5}{-3} = \\frac{-3}{-3} = 1$$
 
 **Vorteil:** Man kann jede Variable **einzeln** berechnen, ohne das ganze System lösen zu müssen.
-**Nachteil:** Für grosse Systeme (n > 4) ist Gauss effizienter.`,
+**Nachteil:** Für grosse Systeme ($n > 4$) ist Gauss effizienter.`,
       },
       {
         id: 'la-2-4-s2', type: 'explanation-formal', title: 'Anwendung: Kräftegleichgewicht in der Statik',
@@ -419,9 +487,9 @@ Das ist ein LGS mit 3 Gleichungen und 3 Unbekannten ($S_1, S_2, S_3$)!
 
 $$\\begin{pmatrix} \\cos 30° & -\\cos 45° & 0 \\\\ \\sin 30° & \\sin 45° & -1 \\\\ 0 & 2\\sin 45° & -3 \\end{pmatrix} \\begin{pmatrix} S_1 \\\\ S_2 \\\\ S_3 \\end{pmatrix} = \\begin{pmatrix} 100 \\\\ 0 \\\\ 150 \\end{pmatrix}$$
 
-Falls $\\det(A) \\neq 0$: System ist **statisch bestimmt** -- eindeutige Lösung mit Cramer oder Gauss.
+Falls $\\det(A) \\neq 0$: System ist **statisch bestimmt** — eindeutige Lösung mit Cramer oder Gauss.
 
-Falls $\\det(A) = 0$: System ist **statisch unbestimmt** -- zusätzliche Gleichungen (z.B. Verformungen) nötig.`,
+Falls $\\det(A) = 0$: System ist **statisch unbestimmt** — zusätzliche Gleichungen (z.B. Verformungen) nötig.`,
       },
       { id: 'la-2-4-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-la-2-4-a' },
       { id: 'la-2-4-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-la-2-4-b' },

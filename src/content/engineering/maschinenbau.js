@@ -303,6 +303,46 @@ $$M_\text{max} = R_A \cdot a = F \cdot \frac{a(L-a)}{L}$$
               { type: 'multiple-choice', question: '[PRÜFUNG] Warum interessiert uns M_max in der Festigkeitslehre besonders?', options: ['Weil dort die maximale Biegespannung auftritt', 'Weil dort N am größten ist', 'Weil dort Q am größten ist', 'Zufall'], correctIndex: 0, explanation: 'Die Biegespannung ist σ_b = M/W mit W = Widerstandsmoment. M_max liefert die größte Spannung und damit die gefährliche Stelle.', hints: ['σ_b = M/W'] },
             ],
           },
+          {
+            id: 'mech-1-4',
+            title: 'Reibung',
+            estimatedMinutes: 14,
+            learningGoals: ['Haft- und Gleitreibung unterscheiden', 'Reibkraft mit Coulombschem Gesetz berechnen'],
+            content: String.raw`**Coulombsches Reibgesetz:**
+
+$$F_R = \mu \cdot F_N$$
+
+$\mu$ ist der Reibwert (dimensionslos), $F_N$ die Normalkraft. Man unterscheidet:
+- **Haftreibung** (statisch): $\mu_0 > \mu$ — tritt auf, solange kein Gleiten stattfindet
+- **Gleitreibung** (kinetisch): $\mu$ — tritt beim Gleiten auf
+
+**Vorgehen bei geneigter Ebene:** Zuerst $F_N = m g \cos\alpha$ bestimmen, dann $F_{R,\text{max}} = \mu_0 F_N$ mit Hangabtriebskraft $F_H = m g \sin\alpha$ vergleichen.`,
+            exercises: [
+              { type: 'number-input', question: 'Ein Block (m = 10 kg) liegt auf einer horizontalen Fläche (μ = 0,3, g = 9,81 m/s²). Reibkraft beim Gleiten?', correctValue: 29.43, tolerance: 0.1, unit: 'N', explanation: 'F_N = m·g = 10·9,81 = 98,1 N. F_R = μ·F_N = 0,3·98,1 = 29,43 N.', hints: ['Normalkraft auf ebener Fläche: F_N = m·g', 'F_R = μ·F_N', 'μ·F_N einsetzen'] },
+              { type: 'true-false', statement: 'Der Haftreibwert ist in der Regel größer als der Gleitreibwert.', correct: true, explanation: 'μ_0 > μ: Zum Losreißen braucht man mehr Kraft als zum Gleiterhalten.', hints: ['Anlaufkraft > Gleithaltekraft.'] },
+              { type: 'multiple-choice', question: '[PRÜFUNG] Block (m = 5 kg) auf geneigter Ebene α = 30°, Gleitreibwert μ = 0,3, g = 9,81. Reibkraft beim Gleiten in N (gerundet auf ganze Zahlen)?', options: ['13 N', '15 N', '20 N', '25 N'], correctIndex: 0, explanation: 'F_N = m·g·cos30° = 5·9,81·0,866 = 42,47 N. F_R = 0,3·42,47 ≈ 12,7 N ≈ 13 N.', hints: ['F_N = m·g·cosα auf geneigter Ebene', 'F_R = μ · F_N', 'cos30° ≈ 0,866'] },
+            ],
+          },
+          {
+            id: 'mech-1-5',
+            title: 'Schwerpunkt',
+            estimatedMinutes: 14,
+            learningGoals: ['Schwerpunkt zusammengesetzter Flächen berechnen', 'Flächenschwerpunkt als Summenregel anwenden'],
+            content: String.raw`Der **Schwerpunkt** (Massenmittelpunkt) eines Systems diskreter Massen liegt bei:
+
+$$x_S = \frac{\sum m_i \cdot x_i}{\sum m_i}, \qquad y_S = \frac{\sum m_i \cdot y_i}{\sum m_i}$$
+
+Für zusammengesetzte Flächen (homogenes Material) ersetzt man $m_i \to A_i$:
+
+$$x_S = \frac{\sum A_i \cdot x_{S,i}}{\sum A_i}$$
+
+**Loch = negative Fläche:** Ein Ausschnitt wird als negatives Teilgebiet subtrahiert.`,
+            exercises: [
+              { type: 'number-input', question: 'Zwei Massen: m1 = 3 kg bei x1 = 2 m, m2 = 1 kg bei x2 = 6 m. Schwerpunkt x_S?', correctValue: 3, tolerance: 0.01, unit: 'm', explanation: 'x_S = (3·2 + 1·6)/(3+1) = (6+6)/4 = 12/4 = 3 m.', hints: ['x_S = Σ(m·x)/Σm', 'Zähler: 3·2+1·6=12', 'Nenner: 4'] },
+              { type: 'true-false', statement: 'Ein symmetrischer Körper hat seinen Schwerpunkt auf der Symmetrieachse.', correct: true, explanation: 'Symmetrie bedeutet, dass sich die Beiträge beider Hälften aufheben.', hints: ['Gleichmäßige Massenverteilung auf beiden Seiten.'] },
+              { type: 'number-input', question: '[PRÜFUNG] L-Profil aus zwei Rechtecken: R1 (20×80 mm, x_{S1}=10 mm) und R2 (60×20 mm, x_{S2}=50 mm). Schwerpunkt x_S des L-Profils?', correctValue: 27.1, tolerance: 0.5, unit: 'mm', explanation: 'A1 = 20·80 = 1600 mm², A2 = 60·20 = 1200 mm². x_S = (A1·x1 + A2·x2)/(A1+A2) = (1600·10 + 1200·50)/2800 = 76000/2800 ≈ 27,1 mm.', hints: ['x_S = Σ(A_i·x_{S,i})/ΣA_i', 'Flächen berechnen: A = b·h', 'Schwerpunkte der Teilrechtecke einsetzen'] },
+            ],
+          },
         ],
       },
       {
@@ -341,6 +381,76 @@ Ist Kraft und Weg gleichgerichtet, gilt $W = F \cdot s$.`,
               { type: 'number-input', question: 'Eine Kraft von 50 N wirkt 3 m in Wegrichtung. Arbeit?', correctValue: 150, tolerance: 0.01, unit: 'J', explanation: 'W = F·s = 50·3 = 150 J.', hints: ['1 J = 1 Nm.'] },
               { type: 'multiple-choice', question: 'Wenn Kraft senkrecht zum Weg steht, ist die Arbeit:', options: ['maximal', 'negativ maximal', 'null', 'immer F·s'], correctIndex: 2, explanation: 'cos(90°)=0, also W=0.', hints: ['Skalarprodukt von senkrechten Vektoren ist 0.'] },
               { type: 'true-false', statement: 'Potentielle Energie im Schwerefeld ist E = m·g·h.', correct: true, explanation: 'Diese Formel gilt nahe der Erdoberfläche bei konstanter Fallbeschleunigung.', hints: ['Höhe h zählt relativ zum Nullniveau.'] },
+            ],
+          },
+          {
+            id: 'mech-2-3',
+            title: 'Kinematik',
+            estimatedMinutes: 14,
+            learningGoals: ['Geradlinige Bewegung mit Formeln beschreiben', 'Zusammenhang zwischen s, v, a und t herstellen'],
+            content: String.raw`**Geradlinige gleichmäßig beschleunigte Bewegung:**
+
+$$v(t) = v_0 + a \cdot t$$
+$$s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a t^2$$
+$$v^2 = v_0^2 + 2 a \cdot \Delta s$$
+
+**Kreisbewegung (gleichförmig):**
+$$\omega = \frac{2\pi}{T}, \qquad v = r \cdot \omega, \qquad a_z = \frac{v^2}{r} = r\omega^2$$
+
+$a_z$ ist die **Zentripetalbeschleunigung** — sie zeigt immer zur Kreismitte.`,
+            exercises: [
+              { type: 'number-input', question: 'Startgeschwindigkeit v0 = 0, Beschleunigung a = 2 m/s². Geschwindigkeit nach t = 5 s?', correctValue: 10, tolerance: 0.01, unit: 'm/s', explanation: 'v = v_0 + a·t = 0 + 2·5 = 10 m/s.', hints: ['v = v_0 + a·t', 'v_0 = 0 hier'] },
+              { type: 'number-input', question: 'Körper startet mit v0 = 3 m/s, a = 1,5 m/s². Zurückgelegter Weg nach t = 4 s?', correctValue: 24, tolerance: 0.1, unit: 'm', explanation: 's = v_0·t + ½·a·t² = 3·4 + ½·1,5·16 = 12 + 12 = 24 m.', hints: ['s = v_0·t + ½·a·t²', '½·1,5·4² = 12'] },
+              { type: 'number-input', question: '[PRÜFUNG] Kreis: r = 0,5 m, n = 600 1/min. Bahngeschwindigkeit v? (Runde auf eine Dezimalstelle)', correctValue: 31.4, tolerance: 0.5, unit: 'm/s', explanation: 'ω = 2π·n/60 = 2π·600/60 = 20π = 62,83 rad/s. v = r·ω = 0,5·62,83 ≈ 31,4 m/s.', hints: ['ω = 2πn/60 (n in 1/min)', 'v = r·ω', '20π ≈ 62,83 rad/s'] },
+            ],
+          },
+          {
+            id: 'mech-2-4',
+            title: 'Schwingungen',
+            estimatedMinutes: 16,
+            learningGoals: ['Eigenfrequenz eines Feder-Masse-Systems berechnen', 'Resonanzbedingung erkennen'],
+            content: String.raw`**Ungedämpfte freie Schwingung** des Feder-Masse-Systems ($m$, Federsteifigkeit $c$):
+
+$$\ddot{x} + \omega_0^2 x = 0, \qquad \omega_0 = \sqrt{\frac{c}{m}}$$
+
+**Schwingungsdauer und Frequenz:**
+$$T = \frac{2\pi}{\omega_0}, \qquad f_0 = \frac{1}{T}$$
+
+**Resonanz:** tritt auf, wenn Erregerfrequenz $\Omega \approx \omega_0$ — Amplitude wächst bei ungedämpftem System theoretisch gegen unendlich.
+
+**Gedämpfte Schwingung:** Das Lehrszensverhältnis $D = \frac{d}{2\sqrt{cm}}$ beschreibt die Dämpfungsstärke; $D < 1$ ist schwach gedämpft.`,
+            visualization: {
+              title: 'Feder-Masse-Dämpfer System', visualizationId: 'spring-mass-damper', params: {},
+            },
+            exercises: [
+              { type: 'number-input', question: 'Feder-Masse-System: c = 400 N/m, m = 1 kg. Eigenkreisfrequenz ω₀?', correctValue: 20, tolerance: 0.01, unit: 'rad/s', explanation: 'ω₀ = √(c/m) = √(400/1) = √400 = 20 rad/s.', hints: ['ω₀ = √(c/m)', '√400 = 20'] },
+              { type: 'number-input', question: 'Masse m = 4 kg, Federsteifigkeit c = 100 N/m. Schwingungsdauer T?', correctValue: 1.257, tolerance: 0.01, unit: 's', explanation: 'ω₀ = √(100/4) = 5 rad/s. T = 2π/ω₀ = 2π/5 ≈ 1,257 s.', hints: ['ω₀ = √(c/m) = 5 rad/s', 'T = 2π/ω₀', '2π/5 ≈ 1,257'] },
+              { type: 'multiple-choice', question: '[PRÜFUNG] Resonanz tritt auf, wenn die Erregerfrequenz Ω ...', options: ['gleich der Eigenfrequenz ω₀ ist', 'doppelt so groß wie ω₀ ist', 'null ist', 'größer als 100 rad/s ist'], correctIndex: 0, explanation: 'Resonanz tritt bei Ω = ω₀ auf. Bei ungedämpften Systemen wächst die Amplitude dabei theoretisch unbegrenzt an.', hints: ['Resonanz: Erregerfrequenz = Eigenfrequenz', 'ω₀ = √(c/m)'] },
+            ],
+          },
+          {
+            id: 'mech-2-5',
+            title: 'Dynamik starrer Körper',
+            estimatedMinutes: 16,
+            learningGoals: ['Massenträgheitsmoment interpretieren', 'Drallsatz M = J·α anwenden'],
+            content: String.raw`Für **Rotation** eines starren Körpers gilt das Analogon zu $F = m \cdot a$:
+
+$$M = J \cdot \alpha$$
+
+$J$ ist das **Massenträgheitsmoment** (Einheit: kg·m²), $\alpha = \dot\omega$ die **Winkelbeschleunigung**.
+
+**Wichtige Trägheitsmomente:**
+| Körper | Achse | $J$ |
+|---|---|---|
+| Vollzylinder (m, R) | Längsachse | $\tfrac{1}{2}mR^2$ |
+| Dünner Stab (m, L) | Schwerpunkt | $\tfrac{1}{12}mL^2$ |
+| Punktmasse m in Abstand r | — | $mr^2$ |
+
+**Steinerscher Anteil:** $J_A = J_S + m \cdot d^2$ (Parallelverschiebung der Achse um Abstand $d$).`,
+            exercises: [
+              { type: 'number-input', question: 'Vollzylinder: m = 2 kg, R = 0,1 m. Massenträgheitsmoment J?', correctValue: 0.01, tolerance: 0.001, unit: 'kg·m²', explanation: 'J = ½·m·R² = ½·2·0,1² = ½·2·0,01 = 0,01 kg·m².', hints: ['J_Zylinder = ½·m·R²', 'R² = 0,01'] },
+              { type: 'number-input', question: 'Ein Motor erzeugt M = 50 Nm. Trägheitsmoment J = 0,5 kg·m². Winkelbeschleunigung α?', correctValue: 100, tolerance: 0.1, unit: 'rad/s²', explanation: 'α = M/J = 50/0,5 = 100 rad/s².', hints: ['M = J·α → α = M/J', 'α = 50/0,5'] },
+              { type: 'number-input', question: '[PRÜFUNG] Stab (m = 6 kg, L = 1 m). J um Schwerpunkt = mL²/12. Jetzt Achse am Ende: J_Ende per Steiner? (J_Ende = J_S + m·d²)', correctValue: 2, tolerance: 0.01, unit: 'kg·m²', explanation: 'J_S = 6·1²/12 = 0,5 kg·m². d = L/2 = 0,5 m. J_Ende = 0,5 + 6·0,5² = 0,5 + 1,5 = 2 kg·m².', hints: ['J_S = mL²/12', 'Steiner: J_Ende = J_S + m·d²', 'd = L/2 (Abstand Schwerpunkt-Achse)'] },
             ],
           },
         ],
@@ -397,6 +507,32 @@ Ist Kraft und Weg gleichgerichtet, gilt $W = F \cdot s$.`,
               { type: 'number-input', question: '[PRÜFUNG] Ein 2 kg Block rutscht reibungsfrei eine 3 m hohe Rampe hinunter. Geschwindigkeit unten? (g = 9,81)', correctValue: 7.67, tolerance: 0.1, unit: 'm/s', explanation: '$\\frac{1}{2}mv^2$ = mgh → $v = \\sqrt{2gh}$ = $\\sqrt{2 \\cdot 9{,}81 \\cdot 3}$ = $\\sqrt{58{,}86}$ ≈ 7,67 m/s.', hints: ['Energieerhaltung: E_pot → E_kin', '$v = \\sqrt{2gh}$'] },
               { type: 'number-input', question: '[PRÜFUNG] Ein 5 kg Block wird mit μ = 0,3 auf ebenem Boden mit F = 40 N horizontal gezogen. Beschleunigung?', correctValue: 5.06, tolerance: 0.1, unit: 'm/s²', explanation: 'F_R = μ·m·g = 0,3·5·9,81 = 14,72 N. a = (F - F_R)/m = (40 - 14,72)/5 = 5,06 $m/s^2$.', hints: ['Reibkraft = μ·F_N = μ·m·g', 'F_netto = F - F_Reibung'] },
               { type: 'number-input', question: '[PRÜFUNG] Elastischer Stoß: Ball 1 (m=2kg, v=3m/s) trifft ruhenden Ball 2 (m=2kg). Geschwindigkeit von Ball 1 nach Stoß?', correctValue: 0, tolerance: 0.01, unit: 'm/s', explanation: 'Bei elastischem Stoß gleicher Massen: Ball 1 steht still, Ball 2 übernimmt die gesamte Geschwindigkeit.', hints: ['Gleiche Massen → vollständiger Geschwindigkeitstausch'] },
+            ],
+          },
+          {
+            id: 'mech-3-3',
+            title: 'Reibung, Kinematik & Schwingungen',
+            type: 'explanation-intuitive',
+            estimatedMinutes: 22,
+            learningGoals: ['Reibungs- und Kinematikaufgaben kombinieren', 'Schwingungsparameter aus Systemdaten ableiten'],
+            content: String.raw`**[PRÜFUNG] Reibung, Kinematik & Schwingungen**
+
+**Reibung auf geneigter Ebene:**
+$$F_H = mg\sin\alpha, \qquad F_{R,\text{max}} = \mu \cdot mg\cos\alpha$$
+Gleiten, wenn $F_H > F_{R,\text{max}}$.
+
+**Kinematik (Wurf- / Bremsaufgaben):**
+$$v^2 = v_0^2 - 2a \cdot s \quad \text{(Bremsweg)}$$
+
+**Schwingungen:**
+$$\omega_0 = \sqrt{c/m}, \qquad T = 2\pi/\omega_0, \qquad f_0 = \omega_0/(2\pi)$$
+
+**Drallsatz:** $M = J \cdot \alpha$, $J_\text{Zylinder} = \tfrac{1}{2}mR^2$.`,
+            exercises: [
+              { type: 'number-input', question: '[PRÜFUNG] Block (m = 8 kg) auf Ebene α = 20°, μ = 0,25. Gleitet er? Falls ja, Nettobeschleunigung a in m/s²? (g = 9,81)', correctValue: 1.06, tolerance: 0.1, unit: 'm/s²', explanation: 'F_N = 8·9,81·cos20° = 73,7 N. F_R = 0,25·73,7 = 18,43 N. F_H = 8·9,81·sin20° = 26,84 N. F_H > F_R → gleitet. a = (F_H − F_R)/m = (26,84−18,43)/8 = 8,41/8 ≈ 1,05 m/s².', hints: ['F_N = m·g·cosα, F_H = m·g·sinα', 'Gleiten wenn F_H > μ·F_N', 'a = (F_H − F_R)/m'] },
+              { type: 'number-input', question: '[PRÜFUNG] Bremsung: v0 = 72 km/h, a = −5 m/s². Bremsweg s?', correctValue: 40, tolerance: 0.5, unit: 'm', explanation: 'v0 = 72/3,6 = 20 m/s. v² = v0² − 2·a·s → 0 = 400 − 10s → s = 40 m.', hints: ['v0 in m/s umrechnen: /3,6', 'v² = v0² − 2|a|·s', 's = v0²/(2|a|)'] },
+              { type: 'number-input', question: '[PRÜFUNG] Maschine: Schwungscheibe m = 20 kg, R = 0,3 m (Vollzylinder). Anlaufmoment M = 9 Nm. Winkelbeschleunigung α?', correctValue: 10, tolerance: 0.2, unit: 'rad/s²', explanation: 'J = ½·m·R² = ½·20·0,09 = 0,9 kg·m². α = M/J = 9/0,9 = 10 rad/s².', hints: ['J = ½·m·R²', 'α = M/J', '½·20·0,3² = 0,9 kg·m²'] },
+              { type: 'number-input', question: '[PRÜFUNG] Feder-Masse-System: m = 0,25 kg, c = 100 N/m. Schwingungsfrequenz f0 in Hz? (Runde auf eine Dezimalstelle)', correctValue: 3.2, tolerance: 0.1, unit: 'Hz', explanation: 'ω₀ = √(100/0,25) = √400 = 20 rad/s. f0 = ω₀/(2π) = 20/(2π) ≈ 3,18 ≈ 3,2 Hz.', hints: ['ω₀ = √(c/m) = 20 rad/s', 'f0 = ω₀/(2π)', '20/(2π) ≈ 3,18'] },
             ],
           },
         ],
@@ -456,6 +592,92 @@ Der E-Modul beschreibt die Steifigkeit des Materials. Stahl hat ungefähr $E = 2
               { type: 'true-false', statement: 'Hooke gilt uneingeschränkt bis zum Bruch.', correct: false, explanation: 'Hooke gilt nur im linear-elastischen Bereich.', hints: ['Nach der Streckgrenze wird das Verhalten nichtlinear/plastisch.'] },
             ],
           },
+          {
+            id: 'fest-1-3',
+            title: 'Schubspannung und Torsion',
+            learningGoals: ['Torsionswiderstandsmoment berechnen', 'Maximale Schubspannung einer Welle bestimmen'],
+            content: String.raw`**Torsion** eines Kreisquerschnitt-Stabes (Durchmesser $d$, Länge $L$):
+
+$$\tau_{\max} = \frac{M_T}{W_p}, \qquad W_p = \frac{\pi d^3}{16}$$
+
+$$\varphi = \frac{M_T \cdot L}{G \cdot I_p}, \qquad I_p = \frac{\pi d^4}{32}$$
+
+$G$ ist der **Schubmodul** (Stahl: $G \approx 80000$ MPa). Bei reiner Schubspannung (z.B. Niet, Bolzen):
+
+$$\tau = \frac{F}{A}$$`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'Berechne das Torsionswiderstandsmoment $W_p$ für eine Welle mit $d = 40$ mm.',
+                correctValue: 12566,
+                tolerance: 100,
+                unit: 'mm³',
+                explanation: '$W_p = \\pi \\cdot d^3 / 16 = \\pi \\cdot 40^3 / 16 = \\pi \\cdot 64000 / 16 \\approx 12566$ mm³.',
+                hints: ['$W_p = \\pi \\cdot d^3 / 16$', '$d^3 = 40^3 = 64000$', '$W_p = \\pi \\cdot 64000 / 16 \\approx 12566$'],
+              },
+              {
+                type: 'number-input',
+                question: 'Welle mit $d = 40$ mm und Torsionsmoment $M_T = 200$ Nm. Berechne die maximale Schubspannung $\\tau_{\\max}$ in N/mm².',
+                correctValue: 15.9,
+                tolerance: 0.5,
+                unit: 'N/mm²',
+                explanation: '$W_p \\approx 12566$ mm³. $\\tau = M_T / W_p = 200000 / 12566 \\approx 15{,}9$ N/mm².',
+                hints: ['$\\tau = M_T / W_p$', '$M_T$ in Nmm: $200 \\cdot 1000 = 200000$ Nmm', '$W_p \\approx 12566$ mm³'],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] Eine Welle mit $d = 30$ mm wird mit $M_T = 100$ Nm belastet. Welcher Wert für $\\tau_{\\max}$ ist am nächsten?',
+                options: ['12 N/mm²', '19 N/mm²', '30 N/mm²', '50 N/mm²'],
+                correctIndex: 1,
+                explanation: '$W_p = \\pi \\cdot 30^3 / 16 \\approx 5301$ mm³. $\\tau = 100000 / 5301 \\approx 18{,}9$ N/mm² ≈ 19 N/mm².',
+                hints: ['$W_p = \\pi \\cdot d^3 / 16$', '$M_T$ in Nmm umrechnen: ×1000', '$\\tau = M_T / W_p$'],
+              },
+            ],
+          },
+          {
+            id: 'fest-1-4',
+            title: 'Knicken',
+            learningGoals: ['Eulersche Knicklast berechnen', 'Einspannbeiwert β anwenden'],
+            content: String.raw`**Eulersches Knicken** — kritische Last für einen Druckstab:
+
+$$F_{ki} = \frac{\pi^2 \cdot E \cdot I}{(\beta L)^2}$$
+
+$\beta$ ist der **Einspannbeiwert** (abhängig von Lagerungsart):
+| Lagerungsfall | $\beta$ |
+|---|---|
+| beidseitig gelenkig | 1 |
+| einseitig eingespannt, freies Ende | 2 |
+| beidseitig eingespannt | 0,5 |
+
+Das **Flächenträgheitsmoment** $I$ bestimmt die Knicklast maßgeblich (schwächste Achse!).`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'Gelenkig-gelenkig gelagerter Stab: $E = 210000$ MPa, $I = 1 \\times 10^4$ mm⁴, $L = 1000$ mm. Berechne die Knicklast $F_{ki}$.',
+                correctValue: 20708,
+                tolerance: 200,
+                unit: 'N',
+                explanation: '$F_{ki} = \\pi^2 \\cdot 210000 \\cdot 10000 / (1 \\cdot 1000)^2 = \\pi^2 \\cdot 2100 \\approx 20708$ N.',
+                hints: ['$F_{ki} = \\pi^2 \\cdot E \\cdot I / (\\beta L)^2$', '$\\beta = 1$ für beidseitig gelenkig', '$\\pi^2 \\approx 9{,}87$'],
+              },
+              {
+                type: 'true-false',
+                statement: 'Bei einseitig eingespanntem, freiem Ende ist die Knicklast am kleinsten (β = 2).',
+                correct: true,
+                explanation: 'Großes β bedeutet kleine Knicklast: $F_{ki} \\propto 1/(\\beta L)^2$. β = 2 liefert die kleinste Last.',
+                hints: ['Je größer β, desto kleiner $F_{ki}$', 'β = 2 → $(\\beta L)^2 = 4L^2$', 'Vergleiche mit β = 1: gleicher Nenner, 4-facher Unterschied'],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Gleicher Stab wie oben ($E = 210000$ MPa, $I = 10000$ mm⁴, $L = 1000$ mm), aber nun einseitig eingespannt ($\\beta = 2$). Knicklast $F_{ki}$?',
+                correctValue: 5177,
+                tolerance: 100,
+                unit: 'N',
+                explanation: '$F_{ki} = \\pi^2 \\cdot 210000 \\cdot 10000 / (2 \\cdot 1000)^2 = \\pi^2 \\cdot 525 \\approx 5177$ N.',
+                hints: ['Euler: $F_{ki} = \\pi^2 \\cdot E \\cdot I / (\\beta L)^2$', '$\\beta = 2 \\Rightarrow (\\beta L)^2 = (2 \\cdot 1000)^2 = 4 \\cdot 10^6$', '$\\pi^2 \\cdot 210000 \\cdot 10000 / 4 \\cdot 10^6$'],
+              },
+            ],
+          },
         ],
       },
       {
@@ -493,6 +715,95 @@ $R$ ist eine Materialkennzahl, $S$ die Sicherheitszahl.`,
               { type: 'multiple-choice', question: 'Wenn S größer gewählt wird, wird σ_zul ...', options: ['größer', 'kleiner', 'unverändert', 'negativ'], correctIndex: 1, explanation: 'σ_zul = R/S; größere Sicherheit senkt die zulässige Spannung.', hints: ['S steht im Nenner.'] },
             ],
           },
+          {
+            id: 'fest-2-3',
+            title: "Mohr'scher Spannungskreis",
+            learningGoals: ['Mittelpunkt und Radius des Mohr-Kreises berechnen', 'Hauptspannungen aus dem Mohr-Kreis ablesen'],
+            content: String.raw`Der **Mohr'sche Spannungskreis** visualisiert Spannungszustände bei Schnittwinkel-Variation.
+
+Gegeben: Normalspannungen $\sigma_x$, $\sigma_y$ und Schubspannung $\tau_{xy}$. Der Kreis hat:
+
+$$\text{Mittelpunkt: } \sigma_M = \frac{\sigma_x + \sigma_y}{2}$$
+$$\text{Radius: } R = \sqrt{\left(\frac{\sigma_x - \sigma_y}{2}\right)^2 + \tau_{xy}^2}$$
+
+**Hauptspannungen:**
+$$\sigma_{1/2} = \sigma_M \pm R$$
+
+**Maximale Schubspannung:** $\tau_{\max} = R$`,
+            visualization: { title: 'Mohrscher Spannungskreis', visualizationId: 'mohr-circle', params: {} },
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'Gegeben: $\\sigma_x = 70$ MPa, $\\sigma_y = 30$ MPa, $\\tau_{xy} = 30$ MPa. Berechne die größte Hauptspannung $\\sigma_1$.',
+                correctValue: 86.1,
+                tolerance: 0.5,
+                unit: 'MPa',
+                explanation: '$\\sigma_M = (70+30)/2 = 50$ MPa. $R = \\sqrt{20^2 + 30^2} = \\sqrt{1300} \\approx 36{,}1$ MPa. $\\sigma_1 = 50 + 36{,}1 \\approx 86{,}1$ MPa.',
+                hints: ['$\\sigma_M = (\\sigma_x + \\sigma_y)/2 = 50$', '$R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2} = \\sqrt{400+900}$', '$\\sigma_1 = \\sigma_M + R$'],
+              },
+              {
+                type: 'number-input',
+                question: 'Gleiche Werte ($\\sigma_x = 70$ MPa, $\\sigma_y = 30$ MPa, $\\tau_{xy} = 30$ MPa). Maximale Schubspannung $\\tau_{\\max}$?',
+                correctValue: 36.1,
+                tolerance: 0.5,
+                unit: 'MPa',
+                explanation: '$\\tau_{\\max}$ entspricht dem Radius des Mohr-Kreises: $R = \\sqrt{20^2 + 30^2} = \\sqrt{1300} \\approx 36{,}1$ MPa.',
+                hints: ['$\\tau_{\\max}$ = Radius des Mohr-Kreises', '$R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$', '$\\sqrt{1300} \\approx 36{,}1$'],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] $\\sigma_x = 100$ MPa, $\\sigma_y = 0$ MPa, $\\tau_{xy} = 0$ MPa. Was ist die kleinere Hauptspannung $\\sigma_2$?',
+                options: ['0 MPa', '50 MPa', '100 MPa', '−50 MPa'],
+                correctIndex: 0,
+                explanation: '$\\sigma_M = 50$ MPa, $R = 50$ MPa (da $\\tau = 0$). $\\sigma_2 = 50 - 50 = 0$ MPa.',
+                hints: ['$\\sigma_M = (\\sigma_x + \\sigma_y)/2$', '$R = (\\sigma_x - \\sigma_y)/2$ bei $\\tau = 0$', '$\\sigma_2 = \\sigma_M - R$'],
+              },
+            ],
+          },
+          {
+            id: 'fest-2-4',
+            title: 'Wechselfestigkeit und Betriebsfestigkeit',
+            learningGoals: ['Mittel- und Ausschlagspannung berechnen', 'Goodman-Nachweis anwenden'],
+            content: String.raw`**Wechselfestigkeit** beschreibt die ertragbare Spannung bei schwingender Beanspruchung.
+
+**Mittelspannung:** $\sigma_m = (\sigma_{\max} + \sigma_{\min})/2$
+
+**Ausschlagspannung:** $\sigma_a = (\sigma_{\max} - \sigma_{\min})/2$
+
+**Smith-Diagramm / Haigh-Diagramm:** Zulässiges $\sigma_a$ sinkt linear mit steigendem $\sigma_m$.
+
+**Einfache Abschätzung (Goodman-Gerade):**
+$$\frac{\sigma_a}{\sigma_W} + \frac{\sigma_m}{R_m} \le 1$$
+
+$\sigma_W$ = Wechselfestigkeit, $R_m$ = Zugfestigkeit. Sicherheit $S > 1$ erforderlich.`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: '$\\sigma_{\\max} = 200$ MPa, $\\sigma_{\\min} = 100$ MPa. Berechne die Ausschlagspannung $\\sigma_a$.',
+                correctValue: 50,
+                tolerance: 0.01,
+                unit: 'MPa',
+                explanation: '$\\sigma_a = (\\sigma_{\\max} - \\sigma_{\\min})/2 = (200 - 100)/2 = 50$ MPa.',
+                hints: ['$\\sigma_a = (\\sigma_{\\max} - \\sigma_{\\min})/2$', '$(200 - 100)/2$', 'Einheit: MPa'],
+              },
+              {
+                type: 'true-false',
+                statement: 'Eine höhere Mittelspannung reduziert die zulässige Ausschlagspannung.',
+                correct: true,
+                explanation: 'Die Goodman-Gerade zeigt: mit steigendem $\\sigma_m$ sinkt das zulässige $\\sigma_a$.',
+                hints: ['Goodman: $\\sigma_a/\\sigma_W + \\sigma_m/R_m \\le 1$', 'Terme addieren sich auf', 'Steigt $\\sigma_m$, muss $\\sigma_a$ sinken, damit die Summe ≤ 1 bleibt'],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Goodman-Nachweis: $\\sigma_W = 200$ MPa, $R_m = 400$ MPa, $\\sigma_m = 100$ MPa. Maximales zulässiges $\\sigma_a$?',
+                correctValue: 150,
+                tolerance: 0.5,
+                unit: 'MPa',
+                explanation: '$\\sigma_a/200 + 100/400 \\le 1 \\Rightarrow \\sigma_a/200 \\le 0{,}75 \\Rightarrow \\sigma_a \\le 150$ MPa.',
+                hints: ['Goodman: $\\sigma_a/\\sigma_W + \\sigma_m/R_m = 1$ (Grenze)', '$\\sigma_a = \\sigma_W \\cdot (1 - \\sigma_m/R_m)$', '$200 \\cdot (1 - 100/400) = 200 \\cdot 0{,}75$'],
+              },
+            ],
+          },
         ],
       },
       // ── Unit 3: Prüfungsaufgaben Festigkeit ──────────────────────────
@@ -527,6 +838,60 @@ $R$ ist eine Materialkennzahl, $S$ die Sicherheitszahl.`,
               { type: 'number-input', question: '[PRÜFUNG] Rechteckbalken b = 40 mm, h = 80 mm. Biegemoment M = 800 Nm. Maximale Biegespannung?', correctValue: 18.75, tolerance: 0.2, unit: 'MPa', explanation: '$W = bh^2/6$ = $40 \\cdot 80^2/6$ = 42667 $mm^3$. σ = 800000/42667 ≈ 18,8 MPa.', hints: ['$W = bh^2/6$', 'M in Nmm: 800·1000 = 800000 Nmm'] },
               { type: 'number-input', question: '[PRÜFUNG] σ = 120 MPa und τ = 60 MPa wirken gleichzeitig. Berechne die Von-Mises-Vergleichsspannung auf eine Dezimalstelle.', correctValue: 158.7, tolerance: 1, unit: 'MPa', explanation: 'Für Normalspannung plus Schubspannung gilt $\\sigma_v = \\sqrt{\\sigma^2 + 3\\tau^2}$. Einsetzen: $\\sigma_v = \\sqrt{120^2 + 3 \\cdot 60^2}$ = $\\sqrt{14400 + 10800}$ = $\\sqrt{25200}$ ≈ 158,7 MPa. Typischer Fehler: den Faktor 3 vor $\\tau^2$ wegzulassen.', hints: ['Nutze $\\sigma_v = \\sqrt{\\sigma^2 + 3\\tau^2}$.', 'Berechne zuerst $120^2$ und $3 \\cdot 60^2$.', 'Ziehe am Ende die Wurzel aus 25200.'] },
               { type: 'true-false', statement: '[PRÜFUNG] Die Streckgrenze Re von S235 beträgt mindestens 235 MPa.', correct: true, explanation: 'S235 bedeutet: Mindeststreckgrenze 235 MPa (daher der Name).', hints: ['Die Zahl im Werkstoffnamen gibt die Streckgrenze an.'] },
+            ],
+          },
+          {
+            id: 'fest-3-2',
+            title: 'Torsion, Knicken & Wechselfestigkeit',
+            type: 'explanation-intuitive',
+            learningGoals: ['Torsions- und Knickberechnung kombinieren', 'Goodman-Nachweis mit Sicherheit durchführen'],
+            content: String.raw`**[PRÜFUNG] Torsion, Knicken & Wechselfestigkeit**
+
+**Torsion:**
+- $W_p = \pi d^3/16$ (Kreis), $\tau = M_T/W_p$
+- Verdrehwinkel: $\varphi = M_T \cdot L/(G \cdot I_p)$, $I_p = \pi d^4/32$
+
+**Knicken (Euler):**
+- $F_{ki} = \pi^2 \cdot E \cdot I/(\beta L)^2$
+- $\beta$: 1 (gel.-gel.), 0,5 (beidseitig eingespannt), 2 (Kragstab)
+
+**Goodman (Wechselfestigkeit):**
+- $\sigma_a/\sigma_W + \sigma_m/R_m \le 1/S$`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Welle mit $d = 50$ mm wird mit $M_T = 500$ Nm belastet. Maximale Schubspannung $\\tau_{\\max}$ in MPa?',
+                correctValue: 20.4,
+                tolerance: 0.5,
+                unit: 'MPa',
+                explanation: '$W_p = \\pi \\cdot 50^3 / 16 = \\pi \\cdot 125000 / 16 \\approx 24544$ mm³. $\\tau = 500000 / 24544 \\approx 20{,}4$ MPa.',
+                hints: ['$W_p = \\pi \\cdot d^3 / 16$', '$d = 50$ mm → $d^3 = 125000$', '$\\tau = M_T\\text{(Nmm)} / W_p$'],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Stab beidseitig gelenkig: $E = 210000$ MPa, $I = 5000$ mm⁴, $L = 500$ mm. Knicklast $F_{ki}$?',
+                correctValue: 41425,
+                tolerance: 500,
+                unit: 'N',
+                explanation: '$F_{ki} = \\pi^2 \\cdot 210000 \\cdot 5000 / (1 \\cdot 500)^2 = \\pi^2 \\cdot 4200 \\approx 41425$ N.',
+                hints: ['$F_{ki} = \\pi^2 \\cdot E \\cdot I / (\\beta L)^2$', '$\\beta = 1$, $(\\beta L)^2 = 250000$', '$\\pi^2 \\cdot 210000 \\cdot 5000 / 250000$'],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Goodman mit Sicherheit: $\\sigma_W = 180$ MPa, $R_m = 360$ MPa, $\\sigma_m = 60$ MPa, $S = 1{,}5$. Zulässiges $\\sigma_a$?',
+                correctValue: 100,
+                tolerance: 0.5,
+                unit: 'MPa',
+                explanation: '$\\sigma_a = (\\sigma_W / S) \\cdot (1 - \\sigma_m/R_m) = (180/1{,}5) \\cdot (1 - 60/360) = 120 \\cdot 5/6 = 100$ MPa.',
+                hints: ['Goodman mit Sicherheit: $\\sigma_a \\le (\\sigma_W/S) \\cdot (1 - \\sigma_m/R_m)$', '$180/1{,}5 = 120$ MPa', '$1 - 60/360 = 5/6$'],
+              },
+              {
+                type: 'true-false',
+                statement: '[PRÜFUNG] Knicken ist ein Stabilitätsversagen, das auch unterhalb der Streckgrenze auftreten kann.',
+                correct: true,
+                explanation: 'Knicken ist ein geometrisches Stabilitätsproblem. Die kritische Last kann weit unterhalb der Druckfestigkeit liegen.',
+                hints: ['Euler-Knicklast hängt von $E \\cdot I / L^2$ ab', 'Nicht von der Streckgrenze $R_e$', 'Bei schlanken Stäben tritt Knicken vor Quetschung auf'],
+              },
             ],
           },
         ],
@@ -622,6 +987,96 @@ Er liegt bei realen Maschinen kleiner als 1.`,
               { type: 'true-false', statement: 'Ein realer Wärmekraftprozess hat η = 1.', correct: false, explanation: 'Reale Prozesse haben Verluste und liegen unter 1.', hints: ['Zweiter Hauptsatz begrenzt die Umwandlung.'] },
             ],
           },
+          {
+            id: 'thermo-2-3',
+            title: 'Kreisprozesse',
+            estimatedMinutes: 15,
+            learningGoals: ['Carnot-Wirkungsgrad berechnen', 'Otto-Wirkungsgrad aus Verdichtungsverhältnis bestimmen', 'Kreisprozesse als thermodynamische Grundlage verstehen'],
+            content: String.raw`**Kreisprozesse** wandeln Wärme in Arbeit um. Jeder Kreisprozess kehrt nach einem Umlauf in den Ausgangszustand zurück.
+
+**Carnot-Prozess** (idealer Vergleichsprozess):
+$$\eta_C = 1 - \frac{T_{\text{kalt}}}{T_{\text{warm}}} \quad \text{(Temperaturen in Kelvin!)}$$
+
+**Otto-Prozess** (Verbrennungsmotor, Verdichtungsverhältnis $\varepsilon = V_1/V_2$):
+$$\eta_{\text{Otto}} = 1 - \varepsilon^{1-\gamma}$$
+
+**Rankine-/Clausius-Rankine-Prozess** (Dampfkraftwerk): Enthalpiewerte aus Dampftafeln.
+
+**Leistung:** $P = Q_{\text{zu}} \cdot \eta / t$`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'Carnot-Maschine: T_warm = 800 K, T_kalt = 400 K. Wirkungsgrad η_C?',
+                correctValue: 0.5,
+                tolerance: 0.01,
+                unit: '',
+                explanation: 'η_C = 1 − T_kalt/T_warm = 1 − 400/800 = 0,5 = 50%.',
+                hints: ['η_C = 1 − T_kalt/T_warm', 'T in Kelvin einsetzen', '1 − 400/800'],
+              },
+              {
+                type: 'number-input',
+                question: 'Otto-Motor: Verdichtungsverhältnis ε = 8, γ = 1,4. η_Otto?',
+                correctValue: 0.565,
+                tolerance: 0.01,
+                unit: '',
+                explanation: 'η_Otto = 1 − ε^(1−γ) = 1 − 8^(−0,4). 8^0,4 ≈ 2,297. η ≈ 1 − 1/2,297 ≈ 0,565.',
+                hints: ['η_Otto = 1 − ε^(1−γ)', 'ε^(1−γ) = 8^(1−1,4) = 8^(−0,4)', '8^0,4 ≈ 2,30 → 1/2,30 ≈ 0,435'],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] Welche Maßnahme verbessert den Carnot-Wirkungsgrad am meisten?',
+                options: ['T_warm erhöhen', 'T_kalt erhöhen', 'Druck verringern', 'Volumen erhöhen'],
+                correctIndex: 0,
+                explanation: 'η_C = 1 − T_kalt/T_warm steigt, wenn T_warm steigt oder T_kalt sinkt. T_warm erhöhen ist die direktere Maßnahme (z.B. durch höheren Druck/Temp im Kessel).',
+                hints: ['η_C = 1 − T_kalt/T_warm', 'Bruch kleiner machen', 'T_warm im Nenner'],
+              },
+            ],
+          },
+          {
+            id: 'thermo-2-4',
+            title: 'Wärmeübertragung',
+            estimatedMinutes: 15,
+            learningGoals: ['Wärmeleitung nach Fourier berechnen', 'k-Wert einer mehrlagigen Wand bestimmen', 'Wärmeübergang und Wärmedurchgang unterscheiden'],
+            content: String.raw`**Wärmeleitung** (Fourier):
+$$\dot Q = \lambda \cdot A \cdot \frac{\Delta T}{d}$$
+$\lambda$ = Wärmeleitfähigkeit (W/(m·K)), $d$ = Wanddicke, $A$ = Fläche.
+
+**Wärmeübergang** (Newton):
+$$\dot Q = \alpha \cdot A \cdot \Delta T$$
+$\alpha$ = Wärmeübergangskoeffizient (W/(m²·K)).
+
+**k-Wert** (Wärmedurchgang durch mehrlagige Wand):
+$$\frac{1}{k} = \frac{1}{\alpha_1} + \frac{d}{\lambda} + \frac{1}{\alpha_2}$$
+
+**Fourier-Zahl und Biot-Zahl** charakterisieren instationäre Wärmeübertragung.`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'Wand: λ = 0,5 W/(mK), d = 0,1 m, A = 10 m², ΔT = 20 K. Wärmestrom Q̇ in W?',
+                correctValue: 1000,
+                tolerance: 1,
+                unit: 'W',
+                explanation: 'Q̇ = λ·A·ΔT/d = 0,5·10·20/0,1 = 1000 W.',
+                hints: ['Q̇ = λ·A·ΔT/d', 'Alle Einheiten in SI', '0,5·10·20/0,1'],
+              },
+              {
+                type: 'true-false',
+                statement: 'Ein kleinerer k-Wert bedeutet bessere Wärmedämmung.',
+                correct: true,
+                explanation: 'k-Wert ist der Wärmedurchgangskoeffizient; kleines k = großer Widerstand = gute Dämmung.',
+                hints: ['Q̇ = k·A·ΔT', 'Kleines k → kleiner Wärmestrom', 'k wie Widerstand: kleiner ist besser für Dämmung'],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Wand: α_1 = 10 W/(m²K), λ/d = 2,0 W/(m²K), α_2 = 20 W/(m²K). k-Wert in W/(m²K)?',
+                correctValue: 1.54,
+                tolerance: 0.05,
+                unit: 'W/(m²K)',
+                explanation: '1/k = 1/α_1 + d/λ + 1/α_2 = 1/10 + 1/2 + 1/20 = 0,1 + 0,5 + 0,05 = 0,65. k = 1/0,65 ≈ 1,54 W/(m²K).',
+                hints: ['1/k = 1/α_1 + d/λ + 1/α_2', 'λ/d = 2 → d/λ = 0,5', '1/10 + 1/2 + 1/20 = 0,65'],
+              },
+            ],
+          },
         ],
       },
       // ── Unit 3: Prüfungsaufgaben Thermo ───────────────────────────────
@@ -654,6 +1109,60 @@ Er liegt bei realen Maschinen kleiner als 1.`,
               { type: 'number-input', question: '[PRÜFUNG] Isotherme Expansion: 1 mol ideales Gas bei T = 300 K expandiert von 10 L auf 20 L. Arbeit W? (R = 8,314)', correctValue: 1729, tolerance: 20, unit: 'J', explanation: '$W = nRT \\cdot \\ln(V_2/V_1)$ = 1·8,314·300·ln(2) = 2494·0,693 ≈ 1729 J.', hints: ['$W = nRT \\cdot \\ln(V_2/V_1)$', 'ln(2) ≈ 0,693'] },
               { type: 'number-input', question: '[PRÜFUNG] Adiabatische Kompression: $p_1$ = 100 kPa, $V_1 = 0{,}01\\,m^3$, $V_2 = 0{,}005\\,m^3$, $\\gamma = 1{,}4$. Berechne $p_2$.', correctValue: 264, tolerance: 5, unit: 'kPa', explanation: '$p_1 V_1^\\gamma = p_2 V_2^\\gamma$ → $p_2 = p_1 \\cdot (V_1/V_2)^\\gamma$ = 100·2^1,4 = 100·2,639 ≈ 264 kPa.', hints: ['$pV^\\gamma = \\text{const}$', '2^1,4 ≈ 2,64'] },
               { type: 'true-false', statement: '[PRÜFUNG] Bei einer isochoren Zustandsänderung wird keine Volumenänderungsarbeit verrichtet.', correct: true, explanation: 'Isochor: $V = \\text{const}$ → $\\Delta V = 0$ → $W = \\int p\\,dV = 0$.', hints: ['Was bedeutet isochor?'] },
+            ],
+          },
+          {
+            id: 'thermo-3-2',
+            title: 'Kreisprozesse & Wärmeübertragung',
+            type: 'explanation-intuitive',
+            estimatedMinutes: 22,
+            learningGoals: ['Carnot- und Otto-Wirkungsgrad berechnen', 'Wärmebilanz eines Kraftwerks aufstellen', 'Wärmeleitung und k-Wert kombiniert anwenden'],
+            content: String.raw`**[PRÜFUNG] Kreisprozesse & Wärmeübertragung**
+
+**Carnot:** $\eta_C = 1 - T_{\text{kalt}}/T_{\text{warm}}$ (K!)
+
+**Otto:** $\eta_{\text{Otto}} = 1 - \varepsilon^{1-\gamma}$, $\varepsilon = V_1/V_2$
+
+**Leistung aus Wärme:** $P = \dot Q \cdot \eta$
+
+**Wärmeleitung:** $\dot Q = \lambda \cdot A \cdot \Delta T / d$
+
+**k-Wert:** $1/k = 1/\alpha_1 + d/\lambda + 1/\alpha_2$`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Carnot-Maschine: T_warm = 1000 K, T_kalt = 250 K. Wirkungsgrad?',
+                correctValue: 0.75,
+                tolerance: 0.01,
+                unit: '',
+                explanation: 'η_C = 1 − T_kalt/T_warm = 1 − 250/1000 = 0,75 = 75%.',
+                hints: ['η_C = 1 − T_kalt/T_warm', 'Beide T in Kelvin', '1 − 0,25'],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Kraftwerk: zugeführter Wärmestrom Q̇_zu = 500 MW, η = 0,4. Abgeführte Wärme Q̇_ab in MW?',
+                correctValue: 300,
+                tolerance: 1,
+                unit: 'MW',
+                explanation: 'Nutzleistung = 500·0,4 = 200 MW. Q̇_ab = 500 − 200 = 300 MW.',
+                hints: ['P_nutz = Q̇_zu · η', 'Q̇_ab = Q̇_zu − P_nutz', '500 − 200 = 300'],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Rohrwand: λ = 40 W/(mK), d = 0,01 m, A = 2 m², ΔT = 100 K. Wärmestrom Q̇ in W?',
+                correctValue: 800000,
+                tolerance: 1000,
+                unit: 'W',
+                explanation: 'Q̇ = λ·A·ΔT/d = 40·2·100/0,01 = 800000 W = 800 kW.',
+                hints: ['Q̇ = λ·A·ΔT/d', 'd = 0,01 m', '40·2·100/0,01'],
+              },
+              {
+                type: 'true-false',
+                statement: '[PRÜFUNG] Der Carnot-Wirkungsgrad ist die maximale theoretisch erreichbare Effizienz zwischen zwei gegebenen Temperaturniveaus.',
+                correct: true,
+                explanation: 'Der zweite Hauptsatz garantiert: kein realer Kreisprozess kann den Carnot-Wirkungsgrad zwischen T_kalt und T_warm überschreiten.',
+                hints: ['Zweiter Hauptsatz der Thermodynamik', 'Carnot = reversibler Grenzprozess', 'η_real ≤ η_Carnot'],
+              },
             ],
           },
         ],
@@ -744,6 +1253,98 @@ Das ist Energieerhaltung pro Volumen.`,
               { type: 'number-input', question: 'ρ = 1000 $kg/m^3$, v = 2 m/s. Dynamischer Druck?', correctValue: 2000, tolerance: 1, unit: 'Pa', explanation: '$q = \\frac{1}{2} \\cdot 1000 \\cdot 2^2 = 2000$ Pa.', hints: ['$v^2 = 4$.'] },
             ],
           },
+          {
+            id: 'fluid-2-3',
+            title: 'Rohrströmung und Druckverlust',
+            estimatedMinutes: 16,
+            learningGoals: ['Druckverlust nach Hagen-Poiseuille berechnen', 'Darcy-Weisbach-Gleichung anwenden', 'Strömungsregime mit Reynolds-Zahl beurteilen'],
+            content: String.raw`**Hagen-Poiseuille** (laminare Rohrströmung):
+$$\Delta p = \frac{128 \mu L \dot V}{\pi d^4}$$
+
+**Darcy-Weisbach** (allgemein, auch turbulent):
+$$\Delta p = \lambda \cdot \frac{L}{d} \cdot \frac{\rho v^2}{2}$$
+
+$\lambda$ ist der **Rohrreibungsbeiwert** (aus Moody-Diagramm oder Formeln).
+
+**Hydraulischer Durchmesser** für Nicht-Kreisquerschnitte: $d_h = 4A/U$.
+
+**Strömungsregime:** $Re = \rho v d / \mu$. Laminar: $Re < 2300$, turbulent: $Re > 4000$.`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'Laminare Strömung: d = 0,02 m, L = 10 m, μ = 0,001 Pa·s, V̇ = 1×10⁻⁴ m³/s. Druckverlust nach Hagen-Poiseuille in Pa?',
+                correctValue: 255,
+                tolerance: 5,
+                unit: 'Pa',
+                explanation: 'Δp = 128·μ·L·V̇/(π·d⁴) = 128·0,001·10·10⁻⁴/(π·1,6·10⁻⁷) ≈ 254,6 Pa ≈ 255 Pa.',
+                hints: ['Δp = 128·μ·L·V̇/(π·d⁴)', 'd⁴ = (0,02)⁴ = 1,6·10⁻⁷', '128·0,001·10·10⁻⁴ / (π·1,6·10⁻⁷)'],
+              },
+              {
+                type: 'multiple-choice',
+                question: 'Bei laminarer Rohrströmung (Kreisquerschnitt) ist das Geschwindigkeitsprofil:',
+                options: ['gleichförmig (Blockprofil)', 'parabolisch', 'dreieckig', 'logarithmisch'],
+                correctIndex: 1,
+                explanation: 'Hagen-Poiseuille liefert ein parabolisches Profil mit v_max in der Rohrmitte.',
+                hints: ['Laminare Strömung: Reibung dämpft Randschicht', 'Hagen-Poiseuille-Profil', 'Mittelpunkt schneller als Rand'],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Darcy-Weisbach: L = 50 m, d = 0,05 m, v = 3 m/s, ρ = 1000 kg/m³, λ = 0,02. Druckverlust Δp in Pa?',
+                correctValue: 90000,
+                tolerance: 500,
+                unit: 'Pa',
+                explanation: 'Δp = λ·(L/d)·(ρv²/2) = 0,02·(50/0,05)·(1000·9/2) = 0,02·1000·4500 = 90000 Pa.',
+                hints: ['Δp = λ·(L/d)·(ρv²/2)', 'L/d = 50/0,05 = 1000', 'ρv²/2 = 1000·9/2 = 4500'],
+              },
+            ],
+          },
+          {
+            id: 'fluid-2-4',
+            title: 'Ähnlichkeitsgesetze und Pumpen',
+            estimatedMinutes: 16,
+            learningGoals: ['Dimensionslose Kennzahlen einordnen', 'Pumpengesetze auf geänderte Drehzahl anwenden', 'Leistungsabhängigkeit von der Drehzahl erkennen'],
+            content: String.raw`**Dimensionslose Kennzahlen** der Strömungsmechanik:
+
+| Kennzahl | Formel | Bedeutung |
+|---|---|---|
+| Reynolds | $Re = \rho v L / \mu$ | Trägheit/Zähigkeit |
+| Froude | $Fr = v/\sqrt{gL}$ | Trägheit/Schwerkraft |
+| Euler | $Eu = \Delta p / (\rho v^2)$ | Druck/Trägheit |
+
+**Pumpengesetze** (Ähnlichkeitsgesetze):
+$$\frac{\dot V_2}{\dot V_1} = \frac{n_2}{n_1}, \qquad \frac{H_2}{H_1} = \left(\frac{n_2}{n_1}\right)^2, \qquad \frac{P_2}{P_1} = \left(\frac{n_2}{n_1}\right)^3$$
+
+Verdoppelung der Drehzahl → 8-fache Leistungsaufnahme!`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'Pumpe: n_1 = 1000 1/min, V̇_1 = 0,02 m³/s. Bei n_2 = 1500 1/min: V̇_2 in m³/s?',
+                correctValue: 0.03,
+                tolerance: 0.001,
+                unit: 'm³/s',
+                explanation: 'V̇_2 = V̇_1·(n_2/n_1) = 0,02·(1500/1000) = 0,02·1,5 = 0,03 m³/s.',
+                hints: ['V̇ proportional zu n', 'V̇_2 = V̇_1·(n_2/n_1)', '0,02·(1500/1000)'],
+              },
+              {
+                type: 'number-input',
+                question: 'Gleiche Pumpe: H_1 = 20 m bei n_1 = 1000 1/min. Förderhöhe H_2 bei n_2 = 1500 1/min in m?',
+                correctValue: 45,
+                tolerance: 0.1,
+                unit: 'm',
+                explanation: 'H_2 = H_1·(n_2/n_1)² = 20·(1500/1000)² = 20·2,25 = 45 m.',
+                hints: ['H proportional zu n²', 'H_2 = H_1·(n_2/n_1)²', '20·1,5² = 45'],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Gleiche Pumpe: P_1 = 2 kW bei n_1 = 1000 1/min. Leistung P_2 bei n_2 = 2000 1/min in kW?',
+                correctValue: 16,
+                tolerance: 0.1,
+                unit: 'kW',
+                explanation: 'P_2 = P_1·(n_2/n_1)³ = 2·(2000/1000)³ = 2·8 = 16 kW.',
+                hints: ['P proportional zu n³', 'P_2 = P_1·(n_2/n_1)³', '2·2³ = 16'],
+              },
+            ],
+          },
         ],
       },
       // ── Unit 3: Prüfungsaufgaben Fluid ────────────────────────────────
@@ -770,6 +1371,60 @@ $$p_1 + \frac{1}{2}\rho v_1^2 + \rho g z_1 = p_2 + \frac{1}{2}\rho v_2^2 + \rho 
               { type: 'number-input', question: '[PRÜFUNG] Ein Tank steht offen ($p_1$ = 101325 Pa). Ausflusshöhe h = 5 m über dem Auslass. Ausflussgeschwindigkeit? (ρ = 1000, g = 9,81)', correctValue: 9.9, tolerance: 0.2, unit: 'm/s', explanation: 'Torricelli: $v = \\sqrt{2gh}$ = $\\sqrt{2 \\cdot 9{,}81 \\cdot 5}$ = $\\sqrt{98{,}1}$ ≈ 9,9 m/s.', hints: ['Bernoulli mit $p_1 = p_2$ (beides offen), $v_1$ ≈ 0', '$v = \\sqrt{2gh}$'] },
               { type: 'number-input', question: '[PRÜFUNG] Wasser fließt mit v = 1 m/s durch ein Rohr d = 50 mm. Dynamische Viskosität μ = 0,001 Pa·s. Reynolds-Zahl?', correctValue: 50000, tolerance: 100, unit: '', explanation: 'Re = ρvd/μ = 1000·1·0,05/0,001 = 50000.', hints: ['Re = ρvd/μ', 'd in Meter: 50 mm = 0,05 m'] },
               { type: 'multiple-choice', question: '[PRÜFUNG] Bei Re = 50000 ist die Strömung:', options: ['laminar', 'im Übergangsbereich', 'turbulent', 'stationär'], correctIndex: 2, explanation: 'Re > 4000 → turbulent (Rohrströmung).', hints: ['Grenzwert: ca. 2300 (laminar/turbulent)'] },
+            ],
+          },
+          {
+            id: 'fluid-3-2',
+            title: 'Druckverlust, Pumpen & Ähnlichkeit',
+            type: 'explanation-intuitive',
+            estimatedMinutes: 22,
+            learningGoals: ['Darcy-Weisbach für Rohrdruckverlust anwenden', 'Pumpengesetze bei Drehzahländerung nutzen', 'Bernoulli mit Verlusten kombinieren'],
+            content: String.raw`**[PRÜFUNG] Druckverlust, Pumpen & Ähnlichkeit**
+
+**Druckverlust (Darcy-Weisbach):** $\Delta p = \lambda \cdot (L/d) \cdot (\rho v^2/2)$
+
+**Hagen-Poiseuille (laminar):** $\Delta p = 128 \mu L \dot V / (\pi d^4)$
+
+**Pumpengesetze:**
+- $\dot V \propto n$, $H \propto n^2$, $P \propto n^3$
+
+**Bernoulli mit Verlusten:** $p_1 + \frac12 \rho v_1^2 + \rho g z_1 = p_2 + \frac12 \rho v_2^2 + \rho g z_2 + \Delta p_V$`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Rohr: d = 0,1 m, L = 200 m, v = 2 m/s, ρ = 1000 kg/m³, λ = 0,025. Druckverlust Δp in Pa?',
+                correctValue: 100000,
+                tolerance: 1000,
+                unit: 'Pa',
+                explanation: 'Δp = λ·(L/d)·(ρv²/2) = 0,025·(200/0,1)·(1000·4/2) = 0,025·2000·2000 = 100000 Pa.',
+                hints: ['Δp = λ·(L/d)·(ρv²/2)', 'L/d = 2000', 'ρv²/2 = 1000·4/2 = 2000'],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Pumpe: n_1 = 3000 1/min, P_1 = 10 kW. Bei n_2 = 1500 1/min: Leistung P_2 in kW?',
+                correctValue: 1.25,
+                tolerance: 0.05,
+                unit: 'kW',
+                explanation: 'P_2 = P_1·(n_2/n_1)³ = 10·(1500/3000)³ = 10·0,125 = 1,25 kW.',
+                hints: ['P ∝ n³', 'n_2/n_1 = 0,5', '10·0,5³ = 1,25'],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Bernoulli mit Verlust: p_1 = 200000 Pa, v_1 = 1 m/s, z_1 = 0; v_2 = 4 m/s, z_2 = 0, ρ = 1000 kg/m³, Δp_V = 5000 Pa. p_2 in Pa?',
+                correctValue: 187500,
+                tolerance: 500,
+                unit: 'Pa',
+                explanation: 'p_2 = p_1 + ½ρ(v_1²−v_2²) − Δp_V = 200000 + 500·(1−16) − 5000 = 200000 − 7500 − 5000 = 187500 Pa.',
+                hints: ['Bernoulli: p_2 = p_1 + ½ρ(v_1²−v_2²) − Δp_V', '½·1000·(1−16) = −7500', '200000−7500−5000'],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] Wird die Drehzahl einer Pumpe verdoppelt, steigt der Volumenstrom auf:',
+                options: ['das 2-Fache', 'das 4-Fache', 'das 8-Fache', 'das 1,5-Fache'],
+                correctIndex: 0,
+                explanation: 'Pumpengesetz: V̇ ∝ n. Drehzahl ×2 → V̇ ×2. (H ∝ n² → ×4; P ∝ n³ → ×8).',
+                hints: ['V̇ ∝ n (linear!)', 'H ∝ n², P ∝ n³', 'Merke: 1-2-3 für V̇, H, P'],
+              },
             ],
           },
         ],
@@ -821,6 +1476,50 @@ Formschluss bedeutet: Geometrie verhindert Relativbewegung. Kraftschluss bedeute
               { type: 'multiple-choice', question: 'Drehmoment wird bei Welle-Nabe-Verbindungen übertragen, um ...', options: ['Rotation weiterzugeben', 'Temperatur zu senken', 'Druck zu messen', 'Gewicht zu erzeugen'], correctIndex: 0, explanation: 'Welle-Nabe-Verbindungen dienen der Drehmomentübertragung.', hints: ['Welle rotiert.'] },
             ],
           },
+          {
+            id: 'melem-1-3',
+            title: 'Schweißverbindungen',
+            estimatedMinutes: 12,
+            learningGoals: ['Schubspannung in Kehlnähten berechnen', 'Verbindungsarten vergleichen'],
+            content: String.raw`**Kehlnaht** (häufigste Schweißnahtform):
+
+$$\tau = \frac{F}{a \cdot l_w}$$
+
+$a$ = Nahtdicke (= $0{,}7 \cdot h$ für Kehlnaht mit Schenkellänge $h$), $l_w$ = tragende Nahtlänge.
+
+**Verbindungsarten im Vergleich:**
+| Typ | Prinzip | Eignung |
+|---|---|---|
+| Schweißen | Stoffschluss | dauerhaft, steif |
+| Schrauben | Kraft-/Formschluss | lösbar |
+| Kleben | Stoffschluss | flächige Verteilung |`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'Kehlnaht: Nahtdicke a = 5 mm, Nahtlänge l_w = 80 mm, Querkraft F = 8 kN. Schubspannung τ?',
+                correctValue: 20,
+                tolerance: 0.5,
+                unit: 'N/mm²',
+                explanation: 'τ = F/(a·l_w) = 8000/(5·80) = 8000/400 = 20 N/mm².',
+                hints: ['τ = F/(a·l_w)', 'F in N umrechnen: 8 kN = 8000 N', '5·80 = 400 mm²'],
+              },
+              {
+                type: 'true-false',
+                statement: 'Eine Schweißverbindung ist grundsätzlich lösbar.',
+                correct: false,
+                explanation: 'Schweißverbindungen sind stoffschlüssig und nicht zerstörungsfrei lösbar.',
+                hints: ['Stoffschluss verbindet dauerhaft', 'Beispiel lösbar: Schrauben'],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] Naht: a = 4 mm, l_w = 100 mm, F = 10 kN. Schubspannung τ?',
+                options: ['25 N/mm²', '40 N/mm²', '10 N/mm²', '50 N/mm²'],
+                correctIndex: 0,
+                explanation: 'τ = F/(a·l_w) = 10000/(4·100) = 10000/400 = 25 N/mm².',
+                hints: ['τ = F/(a·l_w)', 'F = 10000 N, a·l_w = 400 mm²', '10000/400 = 25'],
+              },
+            ],
+          },
         ],
       },
       {
@@ -856,6 +1555,51 @@ Mehr Zähne am Abtriebsrad bedeuten geringere Abtriebsdrehzahl und höheres Dreh
               { type: 'true-false', statement: 'Mehr Zähne am Abtriebsrad senken typischerweise die Abtriebsdrehzahl.', correct: true, explanation: 'Bei z2 > z1 entsteht eine Untersetzung.', hints: ['i = z2/z1.'] },
             ],
           },
+          {
+            id: 'melem-2-3',
+            title: 'Lagerlebensdauer',
+            estimatedMinutes: 14,
+            learningGoals: ['L10-Lebensdauer berechnen', 'Dynamische Tragzahl C interpretieren'],
+            content: String.raw`Die **nominelle Lebensdauer** $L_{10}$ gibt an, nach wie vielen Millionen Umdrehungen 10 % der Lager ausfallen:
+
+$$L_{10} = \left(\frac{C}{P}\right)^p \quad [\text{Mio. Umdrehungen}]$$
+
+- $C$ = dynamische Tragzahl (aus Lagerkatalog), Einheit N
+- $P$ = äquivalente dynamische Lagerbelastung, Einheit N
+- $p = 3$ für Kugellager, $p = 10/3$ für Rollenlager
+
+**Lebensdauer in Stunden:**
+$$L_{10h} = \frac{L_{10} \cdot 10^6}{60 \cdot n}$$`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'Kugellager: C = 30000 N, P = 10000 N. L₁₀ in Mio. Umdrehungen?',
+                correctValue: 27,
+                tolerance: 0.5,
+                unit: 'Mio. U',
+                explanation: 'L₁₀ = (C/P)³ = (30000/10000)³ = 3³ = 27 Mio. Umdrehungen.',
+                hints: ['L₁₀ = (C/P)^p', 'p = 3 für Kugellager', '(30000/10000)³ = 3³ = 27'],
+              },
+              {
+                type: 'number-input',
+                question: 'L₁₀ = 27 Mio. Umdrehungen, n = 1500 1/min. Lebensdauer L₁₀h in Stunden?',
+                correctValue: 300,
+                tolerance: 2,
+                unit: 'h',
+                explanation: 'L₁₀h = 27·10⁶/(60·1500) = 27000000/90000 = 300 h.',
+                hints: ['L₁₀h = L₁₀·10⁶/(60·n)', '60·1500 = 90000 U/h', '27·10⁶ / 90000 = 300'],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Rollenlager (p = 10/3): C = 50000 N, P = 20000 N. L₁₀ in Mio. U? (auf eine Dezimalstelle)',
+                correctValue: 21.2,
+                tolerance: 0.5,
+                unit: 'Mio. U',
+                explanation: 'L₁₀ = (C/P)^(10/3) = (50000/20000)^(10/3) = 2,5^(10/3). Berechnung: 2,5^3 = 15,625 und 2,5^(1/3) ≈ 1,357. Also 2,5^(10/3) = 2,5^3 · 2,5^(1/3) ≈ 15,625 · 1,357 ≈ 21,2 Mio. U.',
+                hints: ['L₁₀ = (C/P)^(10/3) für Rollenlager', 'C/P = 2,5 → 2,5^(10/3) = 2,5³ · 2,5^(1/3)', '2,5³ = 15,625; 2,5^(1/3) ≈ 1,357 → L₁₀ ≈ 21,2'],
+              },
+            ],
+          },
         ],
       },
       // ── Unit 3: Prüfungsaufgaben ME ─────────────────────────────────
@@ -883,7 +1627,62 @@ $$P = M \cdot \omega = M \cdot \frac{2\pi n}{60}$$
               { type: 'number-input', question: '[PRÜFUNG] Motor: P = 5 kW bei n = 1500 1/min. Drehmoment M?', correctValue: 31.83, tolerance: 0.5, unit: 'Nm', explanation: 'M = P/ω = 5000/(2π·1500/60) = 5000/157,08 ≈ 31,83 Nm.', hints: ['ω = 2πn/60', 'P in Watt: 5 kW = 5000 W'] },
               { type: 'number-input', question: '[PRÜFUNG] Zahnrad d = 100 mm, Drehmoment M = 50 Nm. Umfangskraft F_t?', correctValue: 1000, tolerance: 1, unit: 'N', explanation: 'F_t = 2M/d = 2·50/0,1 = 1000 N.', hints: ['F_t = 2M/d', 'd in Meter: 100 mm = 0,1 m'] },
               { type: 'number-input', question: '[PRÜFUNG] Zweistufiges Getriebe: $i_1$ = 3, $i_2$ = 4. Gesamtübersetzung?', correctValue: 12, tolerance: 0, unit: '', explanation: 'i_ges = $i_1$ · $i_2$ = 3 · 4 = 12.', hints: ['Mehrstufig: Übersetzungen multiplizieren.'] },
-              { type: 'number-input', question: '[PRÜFUNG] Antrieb $n_1$ = 3000 1/min, i_ges = 12. Abtriebsdrehzahl?', correctValue: 250, tolerance: 0, unit: '1/min', explanation: '$n_2$ = $n_1$/i = 3000/12 = 250 1/min.', hints: ['$n_2 = n_1$/i_ges'] },
+              { type: 'number-input', question: '[PRÜFUNG] Antrieb $n_1$ = 3000 1/min, i_ges = 12. Abtriebsdrehzahl?', correctValue: 250, tolerance: 0, unit: '1/min', explanation: '$n_2$ = $n_1$/i = 3000/12 = 250 1/min.', hints: ['$n_2 = n_1$/i_ges', 'i_ges im Nenner', '3000 / 12'] },
+            ],
+          },
+          {
+            id: 'melem-3-2',
+            title: 'Schweißnähte, Lager & Lebensdauer',
+            type: 'explanation-intuitive',
+            estimatedMinutes: 22,
+            learningGoals: ['Schweißnahtspannungen berechnen', 'Lagerlebensdauer bestimmen'],
+            content: String.raw`**[PRÜFUNG] Schweißnähte, Lager & Lebensdauer**
+
+**Kehlnaht:**
+$$\tau = \frac{F}{a \cdot l_w}, \qquad a \approx 0{,}7 \cdot h$$
+
+**Lagerlebensdauer:**
+$$L_{10} = \left(\frac{C}{P}\right)^p \quad [\text{Mio. U}], \qquad p = 3 \text{ (Kugel)}, \ p = 10/3 \text{ (Rolle)}$$
+
+$$L_{10h} = \frac{L_{10} \cdot 10^6}{60 \cdot n} \quad [\text{Stunden}]$$
+
+**Leistung-Drehmoment:**
+$$P = M \cdot \omega, \qquad \omega = \frac{2\pi n}{60}$$`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Kehlnaht: a = 6 mm, l_w = 120 mm, F = 15 kN. Schubspannung τ in N/mm²?',
+                correctValue: 20.83,
+                tolerance: 0.3,
+                unit: 'N/mm²',
+                explanation: 'τ = F/(a·l_w) = 15000/(6·120) = 15000/720 ≈ 20,83 N/mm².',
+                hints: ['τ = F/(a·l_w)', 'F = 15000 N, a·l_w = 720 mm²', '15000 / 720 ≈ 20,8'],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Kugellager: C = 45000 N, P = 15000 N, n = 3000 1/min. Lebensdauer L₁₀h in Stunden?',
+                correctValue: 150,
+                tolerance: 3,
+                unit: 'h',
+                explanation: 'L₁₀ = (45000/15000)³ = 3³ = 27 Mio. U. L₁₀h = 27·10⁶/(60·3000) = 27000000/180000 = 150 h.',
+                hints: ['L₁₀ = (C/P)³ = 3³ = 27 Mio. U', 'L₁₀h = L₁₀·10⁶ / (60·n)', '27·10⁶ / (60·3000) = 150 h'],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Elektromotor: P = 7,5 kW, n = 2900 1/min. Drehmoment M in Nm? (auf eine Dezimalstelle)',
+                correctValue: 24.7,
+                tolerance: 0.3,
+                unit: 'Nm',
+                explanation: 'ω = 2π·2900/60 = 303,7 rad/s. M = P/ω = 7500/303,7 ≈ 24,7 Nm.',
+                hints: ['ω = 2π·n/60', 'M = P/ω', '7500 / (2π·2900/60)'],
+              },
+              {
+                type: 'true-false',
+                statement: '[PRÜFUNG] Verdoppelt man die Lagerbelastung P bei einem Kugellager, sinkt L₁₀ auf ein Achtel.',
+                correct: true,
+                explanation: 'L₁₀ = (C/P)³. Verdoppelt man P: L₁₀_neu = (C/2P)³ = (1/2)³·(C/P)³ = L₁₀/8.',
+                hints: ['L₁₀ ∝ (1/P)³', 'Faktor 2 bei P → Faktor 2³ = 8 weniger L₁₀', 'P³ im Nenner'],
+              },
             ],
           },
         ],

@@ -1,129 +1,349 @@
 // ── Unit 2: Einheitskreis und Winkelfunktionen ────────────────────────────────
 
 export const exercises_u2 = {
+  // ───────────── Lektion 2-1: Der Einheitskreis ─────────────
   'ex-trig-2-1-a': {
     id: 'ex-trig-2-1-a', lessonId: 'trig-2-1', type: 'multiple-choice',
     question: 'Was ist der Radius des Einheitskreises?',
-    options: ['π', '2', '1', '360'],
+    options: ['$\\pi$', '$2$', '$1$', '$360$'],
     correctIndex: 2,
-    explanation: 'Der Einheitskreis hat per Definition den Radius 1. Daher der Name "Einheits"-Kreis.',
-    hints: ['"Einheit" bedeutet in der Mathematik "1".'],
+    explanation: `**Ansatz:** Namensdefinition. "Einheit" bedeutet in der Mathematik $1$.
+
+**Regel:** Der Einheitskreis ist der Kreis um den Ursprung mit Radius $r = 1$ in der $xy$-Ebene. Gleichung: $x^{2} + y^{2} = 1$.
+
+**Warum so?** Mit $r = 1$ lassen sich $\\sin$ und $\\cos$ direkt als Koordinaten eines Punkts auf dem Kreis definieren — ohne Division durch den Radius. Das vereinfacht alle Formeln.
+
+**Am Einheitskreis heißt das:** Jeder Punkt auf dem Kreis hat die Form $(\\cos\\alpha, \\sin\\alpha)$, und seine Distanz zum Ursprung ist immer $1$.
+
+**Typischer Fehler:** $2$ wählen, wenn man den Durchmesser statt des Radius meint.`,
+    hints: [
+      'Der Name verrät es: "Einheits"-Kreis.',
+      'In der Mathematik ist "Einheit" gleich $1$.',
+      'Kreisgleichung: $x^{2} + y^{2} = r^{2}$. Welches $r$?',
+    ],
   },
   'ex-trig-2-1-b': {
     id: 'ex-trig-2-1-b', lessonId: 'trig-2-1', type: 'multiple-choice',
-    question: 'Ein Punkt P liegt auf dem Einheitskreis beim Winkel α = 0°. Seine Koordinaten sind:',
-    options: ['(0, 0)', '(0, 1)', '(1, 0)', '(1, 1)'],
+    question: 'Ein Punkt $P$ liegt auf dem Einheitskreis beim Winkel $\\alpha = 0°$. Seine Koordinaten sind:',
+    options: ['$(0, 0)$', '$(0, 1)$', '$(1, 0)$', '$(1, 1)$'],
     correctIndex: 2,
-    explanation: 'Bei α = 0° liegt der Punkt ganz rechts auf dem Kreis: x = cos(0°) = 1, y = sin(0°) = 0 → P = (1, 0).',
-    hints: ['P = (cos(α), sin(α)). Was ist cos(0°) und sin(0°)?'],
+    explanation: `**Ansatz:** $P = (\\cos\\alpha, \\sin\\alpha)$, Winkelmaß vom positiven x-Achse-Strahl gegen den Uhrzeigersinn.
+
+**Rechnung:** Bei $\\alpha = 0°$: $\\cos(0°) = 1$, $\\sin(0°) = 0$. Also $P = (1, 0)$.
+
+**Am Einheitskreis heißt das:** Bei $\\alpha = 0°$ liegt der Punkt ganz rechts am Kreis, auf der positiven x-Achse. Noch keine Drehung.
+
+**Probe:** Überprüfe Kreisgleichung: $1^{2} + 0^{2} = 1$ ✓.
+
+**Typischer Fehler:** $(0, 0)$ wählen — das ist der Ursprung, nicht ein Punkt *auf* dem Kreis.`,
+    hints: [
+      'Skizze: wo landet der Strahl bei $\\alpha = 0°$?',
+      'Formel: $P = (\\cos\\alpha, \\sin\\alpha)$. Was sind $\\cos(0°)$ und $\\sin(0°)$?',
+      'Der Punkt liegt *auf* dem Kreis mit Radius $1$, also $\\neq (0,0)$.',
+    ],
   },
   'ex-trig-2-1-mastery': {
     id: 'ex-trig-2-1-mastery', lessonId: 'trig-2-1', type: 'multiple-choice', isMasteryCheck: true,
-    question: 'Welche Koordinaten hat der Punkt auf dem Einheitskreis bei α = 90°?',
-    options: ['(1, 0)', '(0, 1)', '(-1, 0)', '(0, -1)'],
+    question: '[PRÜFUNG] Welche Koordinaten hat der Punkt auf dem Einheitskreis bei $\\alpha = 90°$?',
+    options: ['$(1, 0)$', '$(0, 1)$', '$(-1, 0)$', '$(0, -1)$'],
     correctIndex: 1,
-    explanation: 'Bei 90°: x = cos(90°) = 0, y = sin(90°) = 1 → P = (0, 1). Das ist der höchste Punkt des Kreises.',
-    hints: ['P = (cos(90°), sin(90°))'],
+    explanation: `**Ansatz:** $P = (\\cos\\alpha, \\sin\\alpha)$ anwenden.
+
+**Rechnung:** Bei $\\alpha = 90°$: $\\cos(90°) = 0$, $\\sin(90°) = 1$. Also $P = (0, 1)$.
+
+**Am Einheitskreis heißt das:** Bei $90°$ bzw. $\\pi/2$ rad hat sich der Strahl um ein Viertel gegen den Uhrzeigersinn gedreht und zeigt nach oben. Höchster Punkt des Kreises.
+
+**Probe:** Kreisgleichung $0^{2} + 1^{2} = 1$ ✓. Außerdem: $\\sin^{2}(90°) + \\cos^{2}(90°) = 1 + 0 = 1$ ✓.
+
+**Typischer Fehler:** $(1, 0)$ (das ist bei $0°$) oder die Koordinaten vertauschen. Merke: Die **erste** Zahl ist $\\cos$, die **zweite** ist $\\sin$.`,
+    hints: [
+      'Skizze: wo liegt $90°$ am Einheitskreis? Oben.',
+      'Formel: $P = (\\cos(90°), \\sin(90°))$.',
+      'Am Einheitskreis heißt das: x-Koordinate $= \\cos$, y-Koordinate $= \\sin$.',
+    ],
   },
 
+  // ───────────── Lektion 2-2: sin und cos als Koordinaten ─────────────
   'ex-trig-2-2-a': {
     id: 'ex-trig-2-2-a', lessonId: 'trig-2-2', type: 'multiple-choice',
-    question: 'cos(α) entspricht am Einheitskreis:',
+    question: '$\\cos(\\alpha)$ entspricht am Einheitskreis:',
     options: ['der y-Koordinate', 'der x-Koordinate', 'dem Radius', 'dem Winkel'],
     correctIndex: 1,
-    explanation: 'Am Einheitskreis: P = (cos(α), sin(α)). cos = x-Koordinate, sin = y-Koordinate.',
-    hints: ['Der Punkt auf dem Einheitskreis hat die Koordinaten (cos(α), sin(α)).'],
+    explanation: `**Ansatz:** Definition am Einheitskreis.
+
+**Regel:** $P = (\\cos\\alpha, \\sin\\alpha)$, also ist die **x-Koordinate** gleich $\\cos(\\alpha)$, die **y-Koordinate** gleich $\\sin(\\alpha)$.
+
+**Am Einheitskreis heißt das:** Projektionslinie vom Punkt auf die x-Achse liefert den Kosinuswert, Projektion auf die y-Achse liefert den Sinuswert.
+
+**Probe:** Bei $\\alpha = 0°$: $P = (1, 0)$ und $\\cos(0°) = 1$ ✓. Bei $\\alpha = 90°$: $P = (0, 1)$ und $\\cos(90°) = 0$ ✓.
+
+**Typischer Fehler:** $\\sin$ und $\\cos$ verwechseln. Eselsbrücke: **c**osinus und **x**-Achse sind "horizontal"; **s**inus und **y**-Achse passen zur "Höhe".`,
+    hints: [
+      'Die grundlegende Definition: $P = (?, ?)$ auf dem Einheitskreis.',
+      'Der erste Koordinatenwert (x) entspricht welcher Funktion?',
+      'Skizze: Lot vom Punkt auf die x-Achse hat Länge $|\\cos\\alpha|$.',
+    ],
   },
   'ex-trig-2-2-b': {
     id: 'ex-trig-2-2-b', lessonId: 'trig-2-2', type: 'multiple-choice',
-    question: 'Welcher Punkt liegt bei α = 180°?',
-    options: ['(1, 0)', '(0, 1)', '(-1, 0)', '(0, -1)'],
+    question: 'Welcher Punkt liegt bei $\\alpha = 180°$?',
+    options: ['$(1, 0)$', '$(0, 1)$', '$(-1, 0)$', '$(0, -1)$'],
     correctIndex: 2,
-    explanation: 'cos(180°) = -1, sin(180°) = 0 → P = (-1, 0). Das ist der linkeste Punkt des Kreises.',
-    hints: ['Bei 180° zeigt die Drehung genau nach links.'],
+    explanation: `**Ansatz:** $P = (\\cos(180°), \\sin(180°))$ berechnen.
+
+**Rechnung:** $\\cos(180°) = -1$, $\\sin(180°) = 0$. Also $P = (-1, 0)$.
+
+**Am Einheitskreis heißt das:** $180° = \\pi$ rad entspricht einer halben Drehung. Der Punkt liegt ganz links auf der negativen x-Achse — gegenüber vom Startpunkt $(1, 0)$.
+
+**Probe:** Kreisgleichung $(-1)^{2} + 0^{2} = 1$ ✓.
+
+**Typischer Fehler:** $(0, -1)$ wählen — das ist bei $270°$.`,
+    hints: [
+      'Skizze: $180°$ ist eine halbe Drehung. Wo zeigt der Strahl hin?',
+      'Formel: $P = (\\cos(180°), \\sin(180°))$.',
+      'Am Einheitskreis heißt das: ganz links, x-Koordinate ist negativ.',
+    ],
   },
   'ex-trig-2-2-mastery': {
     id: 'ex-trig-2-2-mastery', lessonId: 'trig-2-2', type: 'multiple-choice', isMasteryCheck: true,
-    question: 'Ein Punkt hat die Koordinaten (-√2/2, √2/2). Welchem Winkel entspricht das?',
-    options: ['45°', '135°', '225°', '315°'],
+    question: '[PRÜFUNG] Ein Punkt hat die Koordinaten $\\left(-\\dfrac{\\sqrt{2}}{2}, \\dfrac{\\sqrt{2}}{2}\\right)$. Welchem Winkel entspricht das?',
+    options: ['$45°$', '$135°$', '$225°$', '$315°$'],
     correctIndex: 1,
-    explanation: 'x = -√2/2 = cos(135°), y = √2/2 = sin(135°). Im 2. Quadranten: α = 135°.',
-    hints: ['|x| = |y| → der Winkel ist ein Vielfaches von 45°.', 'x negativ, y positiv → 2. Quadrant.'],
+    explanation: `**Ansatz:** Quadrant aus Vorzeichen bestimmen, Referenzwinkel aus Beträgen.
+
+**Schritt 1 — Quadrant:** $x = -\\dfrac{\\sqrt{2}}{2} < 0$, $y = +\\dfrac{\\sqrt{2}}{2} > 0$. Das ist der **2. Quadrant** ($90° < \\alpha < 180°$).
+
+**Schritt 2 — Referenzwinkel:** $|x| = |y| = \\dfrac{\\sqrt{2}}{2}$. Das entspricht $45°$ (weil $\\cos(45°) = \\sin(45°) = \\dfrac{\\sqrt{2}}{2}$).
+
+**Schritt 3 — Gesamt:** Im 2. Quadrant gilt $\\alpha = 180° - 45° = 135°$.
+
+**Am Einheitskreis heißt das:** Der Punkt liegt links-oben, auf der Winkelhalbierenden des 2. Quadranten.
+
+**Probe:** $\\cos(135°) = -\\dfrac{\\sqrt{2}}{2}$ ✓, $\\sin(135°) = \\dfrac{\\sqrt{2}}{2}$ ✓.
+
+**Typischer Fehler:** $45°$ wählen, weil $|x| = |y|$ — aber das Vorzeichen von $x$ wird ignoriert. Immer zuerst den Quadranten prüfen.`,
+    hints: [
+      'Welches Winkelmaß? Grad. Skizze: Punkt mit $x < 0$, $y > 0$ — welcher Quadrant?',
+      '$|x| = |y| = \\dfrac{\\sqrt{2}}{2}$ → Referenzwinkel $45°$.',
+      'Im 2. Quadrant: $\\alpha = 180° - 45°$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
+    ],
   },
 
+  // ───────────── Lektion 2-3: Symmetrien und Periodizität ─────────────
   'ex-trig-2-3-a': {
     id: 'ex-trig-2-3-a', lessonId: 'trig-2-3', type: 'multiple-choice',
-    question: 'sin(α + 360°) =',
-    options: ['sin(α) + 1', '-sin(α)', 'sin(α)', '0'],
+    question: '$\\sin(\\alpha + 360°) = $?',
+    options: ['$\\sin(\\alpha) + 1$', '$-\\sin(\\alpha)$', '$\\sin(\\alpha)$', '$0$'],
     correctIndex: 2,
-    explanation: 'Der Sinus ist periodisch mit Periode 360°: sin(α + 360°) = sin(α).',
-    hints: ['Eine volle Umdrehung (360°) bringt den Punkt an dieselbe Stelle.'],
+    explanation: `**Ansatz:** Periodizität des Sinus.
+
+**Regel:** $\\sin$ und $\\cos$ sind periodisch mit Periode $360° = 2\\pi$.
+
+**Am Einheitskreis heißt das:** Nach einer vollen Umdrehung ($360°$) ist der Punkt wieder an derselben Stelle. Also sind $\\sin$ (y-Koordinate) und $\\cos$ (x-Koordinate) wieder gleich.
+
+**Rechnung:** $\\sin(\\alpha + 360°) = \\sin(\\alpha)$ für alle $\\alpha$.
+
+**Probe:** $\\sin(30° + 360°) = \\sin(390°) = \\sin(30°) = \\dfrac{1}{2}$. Taschenrechner im DEG-Modus bestätigt.
+
+**Typischer Fehler:** $\\sin(\\alpha) + 1$ wählen — die $1$ gehört nicht in die Formel, $\\sin$ ist keine additive Funktion.`,
+    hints: [
+      'Wie verhält sich $\\sin$ nach einer vollen Umdrehung? Skizze am Einheitskreis.',
+      'Periodizität: $\\sin(\\alpha + 360°) = \\sin(\\alpha)$.',
+      'Am Einheitskreis heißt das: nach $2\\pi$ ist der Punkt wieder an derselben Stelle.',
+    ],
   },
   'ex-trig-2-3-b': {
     id: 'ex-trig-2-3-b', lessonId: 'trig-2-3', type: 'multiple-choice',
-    question: 'sin(-α) =',
-    options: ['sin(α)', '-sin(α)', 'cos(α)', '-cos(α)'],
+    question: '$\\sin(-\\alpha) = $?',
+    options: ['$\\sin(\\alpha)$', '$-\\sin(\\alpha)$', '$\\cos(\\alpha)$', '$-\\cos(\\alpha)$'],
     correctIndex: 1,
-    explanation: 'Sinus ist eine ungerade Funktion: sin(-α) = -sin(α). Der Punkt wird an der x-Achse gespiegelt.',
-    hints: ['Negative Winkel = Drehung im Uhrzeigersinn. Der Punkt hat dieselbe x-, aber entgegengesetzte y-Koordinate.'],
+    explanation: `**Ansatz:** Symmetrie des Sinus am Einheitskreis.
+
+**Regel:** $\\sin$ ist eine **ungerade** Funktion: $\\sin(-\\alpha) = -\\sin(\\alpha)$.
+
+**Am Einheitskreis heißt das:** Der Winkel $-\\alpha$ entspricht einer Drehung im *Uhrzeigersinn*. Der Punkt liegt gespiegelt an der x-Achse: x bleibt, y wechselt das Vorzeichen. Da $\\sin$ die y-Koordinate ist, ändert sich das Vorzeichen.
+
+**Probe:** $\\sin(-30°) = -\\sin(30°) = -\\dfrac{1}{2}$. Taschenrechner (DEG-Modus) bestätigt.
+
+**Typischer Fehler:** $\\sin(-\\alpha) = \\sin(\\alpha)$ setzen — das ist die Regel für $\\cos$ (gerade Funktion), nicht für $\\sin$.`,
+    hints: [
+      'Skizze: negative Winkel drehen wie am Uhrzeigersinn. Spiegelung an welcher Achse?',
+      '$\\sin$ ist eine ungerade Funktion.',
+      'Am Einheitskreis heißt das: y-Koordinate kippt das Vorzeichen.',
+    ],
   },
   'ex-trig-2-3-mastery': {
     id: 'ex-trig-2-3-mastery', lessonId: 'trig-2-3', type: 'multiple-choice', isMasteryCheck: true,
-    question: 'cos(-α) =',
-    options: ['-cos(α)', 'cos(α)', 'sin(α)', '-sin(α)'],
+    question: '[PRÜFUNG] $\\cos(-\\alpha) = $?',
+    options: ['$-\\cos(\\alpha)$', '$\\cos(\\alpha)$', '$\\sin(\\alpha)$', '$-\\sin(\\alpha)$'],
     correctIndex: 1,
-    explanation: 'Kosinus ist eine gerade Funktion: cos(-α) = cos(α). Die x-Koordinate ändert sich bei Spiegelung an der x-Achse nicht.',
-    hints: ['Spiegelung an der x-Achse: x-Koordinate bleibt gleich → cos unverändert.'],
+    explanation: `**Ansatz:** Symmetrie des Kosinus.
+
+**Regel:** $\\cos$ ist eine **gerade** Funktion: $\\cos(-\\alpha) = \\cos(\\alpha)$.
+
+**Am Einheitskreis heißt das:** Der negative Winkel spiegelt den Punkt an der x-Achse. Die x-Koordinate bleibt unverändert (nur y kippt). Da $\\cos$ die x-Koordinate ist, ändert sie sich nicht.
+
+**Probe:** $\\cos(-60°) = \\cos(60°) = \\dfrac{1}{2}$. Taschenrechner (DEG-Modus) bestätigt.
+
+**Merke:**
+- $\\sin(-\\alpha) = -\\sin(\\alpha)$ (ungerade)
+- $\\cos(-\\alpha) = +\\cos(\\alpha)$ (gerade)
+- $\\tan(-\\alpha) = -\\tan(\\alpha)$ (ungerade, da $\\sin$ ungerade und $\\cos$ gerade)
+
+**Typischer Fehler:** $-\\cos(\\alpha)$ wählen — das ist die Formel für $\\cos(180° - \\alpha)$, nicht für $\\cos(-\\alpha)$.`,
+    hints: [
+      'Skizze: Spiegelung an der x-Achse. Wie ändert sich die x-Koordinate?',
+      '$\\cos$ ist eine gerade Funktion.',
+      'Am Einheitskreis heißt das: x-Koordinate bleibt bei Spiegelung gleich.',
+    ],
   },
 
+  // ───────────── Lektion 2-4: Tangens im Einheitskreis ─────────────
   'ex-trig-2-4-a': {
     id: 'ex-trig-2-4-a', lessonId: 'trig-2-4', type: 'multiple-choice',
-    question: 'Was beschreibt tan(α) geometrisch am Einheitskreis?',
-    options: ['Den Radius', 'Die x-Koordinate', 'Das Verhältnis y/x (= sin/cos)', 'Den Bogenlänge'],
+    question: 'Was beschreibt $\\tan(\\alpha)$ geometrisch am Einheitskreis?',
+    options: ['Den Radius', 'Die x-Koordinate', 'Das Verhältnis $y/x$ (= $\\sin/\\cos$)', 'Die Bogenlänge'],
     correctIndex: 2,
-    explanation: 'tan(α) = sin(α)/cos(α) = y/x am Einheitskreis. Geometrisch ist es die Steigung der Geraden durch den Ursprung zum Punkt P.',
-    hints: ['tan = sin/cos = Gegenkathete/Ankathete = y/x'],
+    explanation: `**Ansatz:** Definition von $\\tan$ als Quotient.
+
+**Regel:** $\\tan(\\alpha) = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)} = \\dfrac{y}{x}$ am Einheitskreis.
+
+**Am Einheitskreis heißt das:** $\\tan(\\alpha)$ ist die **Steigung** der Geraden vom Ursprung zum Punkt $P = (\\cos\\alpha, \\sin\\alpha)$. Steigung = $\\dfrac{\\Delta y}{\\Delta x} = \\dfrac{y - 0}{x - 0} = \\dfrac{y}{x}$.
+
+**Alternative Anschauung:** Zeichne die Tangente an den Einheitskreis bei $(1, 0)$. Schneide sie mit dem verlängerten Ortsvektor — die Höhe dieses Schnittpunkts ist $\\tan(\\alpha)$. Daher der Name.
+
+**Probe:** Bei $\\alpha = 45°$: $y/x = \\dfrac{\\sqrt{2}/2}{\\sqrt{2}/2} = 1 = \\tan(45°)$ ✓.`,
+    hints: [
+      'Formel: $\\tan(\\alpha) = \\dfrac{?}{?}$.',
+      '$\\tan = \\sin/\\cos$ — und $\\sin$, $\\cos$ sind welche Koordinaten?',
+      'Am Einheitskreis heißt das: Steigung der Geraden vom Ursprung zum Punkt.',
+    ],
   },
   'ex-trig-2-4-b': {
     id: 'ex-trig-2-4-b', lessonId: 'trig-2-4', type: 'multiple-choice',
-    question: 'Warum ist tan(90°) nicht definiert?',
-    options: ['Weil sin(90°) = 0', 'Weil cos(90°) = 0 (Division durch 0)', 'Weil 90° zu groß ist', 'Weil tan nur bis 45° gilt'],
+    question: 'Warum ist $\\tan(90°)$ nicht definiert?',
+    options: ['Weil $\\sin(90°) = 0$', 'Weil $\\cos(90°) = 0$ (Division durch 0)', 'Weil $90°$ zu groß ist', 'Weil $\\tan$ nur bis $45°$ gilt'],
     correctIndex: 1,
-    explanation: 'tan(α) = sin(α)/cos(α). Bei 90°: cos(90°) = 0. Division durch 0 ist undefiniert.',
-    hints: ['tan = sin/cos. Was ist der Nenner bei 90°?'],
+    explanation: `**Ansatz:** $\\tan = \\sin/\\cos$, Nenner kontrollieren.
+
+**Rechnung:** Bei $\\alpha = 90°$: $\\sin(90°) = 1$, $\\cos(90°) = 0$. Also $\\tan(90°) = \\dfrac{1}{0}$ — Division durch Null, undefiniert.
+
+**Am Einheitskreis heißt das:** Der Punkt liegt bei $(0, 1)$. Die Gerade vom Ursprung dorthin ist *senkrecht* — sie hat keine endliche Steigung. Daher wächst $\\tan(\\alpha)$ für $\\alpha \\to 90°$ gegen $+\\infty$ (Polstelle).
+
+**Weitere Polstellen:** $\\tan(\\alpha)$ ist undefiniert bei $\\alpha = 90° + k \\cdot 180°$ für $k \\in \\mathbb{Z}$, also bei $90°, 270°, 450°, \\ldots$.
+
+**Typischer Fehler:** "$\\sin(90°) = 0$" — falsch, es ist $\\sin(90°) = 1$.`,
+    hints: [
+      'Welche Formel? $\\tan = \\sin/\\cos$. Welche Werte bei $90°$?',
+      'Division durch $0$ ist nicht definiert — welcher Wert ist $0$?',
+      'Am Einheitskreis heißt das: Gerade zum Punkt $(0,1)$ ist senkrecht, Steigung undefiniert.',
+    ],
   },
   'ex-trig-2-4-mastery': {
     id: 'ex-trig-2-4-mastery', lessonId: 'trig-2-4', type: 'multiple-choice', isMasteryCheck: true,
-    question: 'tan(α) ist positiv, wenn:',
-    options: ['sin und cos beide positiv (1. Quadrant) oder beide negativ (3. Quadrant)', 'Nur im 1. Quadrant', 'sin positiv und cos negativ', 'Immer'],
+    question: '[PRÜFUNG] $\\tan(\\alpha)$ ist positiv, wenn:',
+    options: ['$\\sin$ und $\\cos$ beide positiv (1. Quadrant) oder beide negativ (3. Quadrant)', 'Nur im 1. Quadrant', '$\\sin$ positiv und $\\cos$ negativ', 'Immer'],
     correctIndex: 0,
-    explanation: 'tan = sin/cos. Positiv wenn beide gleiche Vorzeichen haben: 1. Quadrant (+/+) oder 3. Quadrant (-/-).',
-    hints: ['Vorzeichen: positiv/positiv = positiv, negativ/negativ = positiv'],
+    explanation: `**Ansatz:** $\\tan = \\sin/\\cos$, Vorzeichenregel für Quotienten.
+
+**Regel:** $\\dfrac{+}{+} = +$ und $\\dfrac{-}{-} = +$. Also ist $\\tan > 0$, wenn $\\sin$ und $\\cos$ **gleiche Vorzeichen** haben.
+
+**Am Einheitskreis heißt das:**
+- 1. Quadrant: $x > 0$, $y > 0$ → $\\tan > 0$
+- 2. Quadrant: $x < 0$, $y > 0$ → $\\tan < 0$
+- 3. Quadrant: $x < 0$, $y < 0$ → $\\tan > 0$
+- 4. Quadrant: $x > 0$, $y < 0$ → $\\tan < 0$
+
+**ASTC-Merkhilfe:** Im 3. Quadrant ist nur $\\tan$ positiv ("**T**ake").
+
+**Probe:** $\\tan(200°) = \\tan(180° + 20°) = \\tan(20°) > 0$ ✓ (3. Quadrant).
+
+**Typischer Fehler:** Nur den 1. Quadrant zu sehen — $\\tan$ hat Periode $180°$, daher Positivität auch im 3. Quadrant.`,
+    hints: [
+      'Formel: $\\tan = \\sin/\\cos$. Wann ist der Bruch positiv?',
+      'Zwei Fälle: beide Zahlen positiv ODER beide negativ.',
+      'Am Einheitskreis heißt das: 1. und 3. Quadrant. ASTC: "T" im 3. Quadrant.',
+    ],
   },
 
+  // ───────────── Lektion 2-5: Alle vier Quadranten ─────────────
   'ex-trig-2-5-a': {
     id: 'ex-trig-2-5-a', lessonId: 'trig-2-5', type: 'multiple-choice',
-    question: 'In welchem Quadranten liegt α = 200°?',
+    question: 'In welchem Quadranten liegt $\\alpha = 200°$?',
     options: ['1. Quadrant', '2. Quadrant', '3. Quadrant', '4. Quadrant'],
     correctIndex: 2,
-    explanation: '200° liegt zwischen 180° und 270° → 3. Quadrant.',
-    hints: ['1. Q: 0°–90°, 2. Q: 90°–180°, 3. Q: 180°–270°, 4. Q: 270°–360°'],
+    explanation: `**Ansatz:** Quadrantenbereiche prüfen.
+
+**Regel:**
+- 1. Q: $0°$–$90°$
+- 2. Q: $90°$–$180°$
+- 3. Q: $180°$–$270°$
+- 4. Q: $270°$–$360°$
+
+**Rechnung:** $200°$ liegt zwischen $180°$ und $270°$ → **3. Quadrant**.
+
+**Am Einheitskreis heißt das:** Der Punkt liegt links-unten ($x < 0$, $y < 0$). Nur $\\tan$ ist dort positiv (ASTC).
+
+**Probe:** $\\sin(200°) = \\sin(180° + 20°) = -\\sin(20°) < 0$ ✓.
+
+**Typischer Fehler:** $2°$ Abweichung übersehen — immer Grenzen genau prüfen ($180° < 200° < 270°$).`,
+    hints: [
+      'Welche Quadranten gibt es? Zeichne den Einheitskreis und markiere die Grenzen.',
+      '3. Quadrant: $180°$ bis $270°$.',
+      'Am Einheitskreis heißt das: Punkt links-unten, $x < 0$, $y < 0$.',
+    ],
   },
   'ex-trig-2-5-b': {
     id: 'ex-trig-2-5-b', lessonId: 'trig-2-5', type: 'multiple-choice',
-    question: 'sin(210°) =',
-    options: ['1/2', '√3/2', '-1/2', '-√3/2'],
+    question: '$\\sin(210°) = $?',
+    options: ['$\\dfrac{1}{2}$', '$\\dfrac{\\sqrt{3}}{2}$', '$-\\dfrac{1}{2}$', '$-\\dfrac{\\sqrt{3}}{2}$'],
     correctIndex: 2,
-    explanation: '210° = 180° + 30°. Im 3. Quadrant: sin ist negativ. sin(210°) = -sin(30°) = -1/2.',
-    hints: ['210° = 180° + 30°. Welches Vorzeichen hat sin im 3. Quadrant?'],
+    explanation: `**Ansatz:** Referenzwinkel finden, Vorzeichen mit ASTC setzen.
+
+**Schritt 1 — Quadrant:** $210°$ liegt zwischen $180°$ und $270°$ → **3. Quadrant**.
+
+**Schritt 2 — Referenzwinkel:** $210° - 180° = 30°$. Der Abstand zur negativen x-Achse beträgt $30°$.
+
+**Schritt 3 — Grundwert:** $\\sin(30°) = \\dfrac{1}{2}$.
+
+**Schritt 4 — Vorzeichen:** Im 3. Quadrant ist $\\sin$ negativ (ASTC: nur "T"angens positiv). Also $\\sin(210°) = -\\sin(30°) = -\\dfrac{1}{2}$.
+
+**Am Einheitskreis heißt das:** Bei $210°$ liegt der Punkt $\\left(-\\dfrac{\\sqrt{3}}{2}, -\\dfrac{1}{2}\\right)$. Die y-Koordinate ist $-\\dfrac{1}{2}$.
+
+**Probe (Taschenrechner, DEG-Modus):** $\\sin(210°) = -0{,}5$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen und $+\\dfrac{1}{2}$ angeben, oder $\\dfrac{\\sqrt{3}}{2}$ (das wäre $\\cos$, auch mit falschem Vorzeichen).`,
+    hints: [
+      'Welches Winkelmaß? Grad. Skizze: $210°$ ist im 3. Quadrant.',
+      'Referenzwinkel: $210° - 180° = 30°$. Grundwert $\\sin(30°) = ?$',
+      'Im 3. Quadrant ist $\\sin < 0$ (ASTC). Taschenrechner im richtigen Modus (DEG oder RAD)!',
+    ],
   },
   'ex-trig-2-5-mastery': {
     id: 'ex-trig-2-5-mastery', lessonId: 'trig-2-5', type: 'multiple-choice', isMasteryCheck: true,
-    question: 'cos(315°) =',
-    options: ['-√2/2', '√2/2', '-1/2', '1/2'],
+    question: '[PRÜFUNG] $\\cos(315°) = $?',
+    options: ['$-\\dfrac{\\sqrt{2}}{2}$', '$\\dfrac{\\sqrt{2}}{2}$', '$-\\dfrac{1}{2}$', '$\\dfrac{1}{2}$'],
     correctIndex: 1,
-    explanation: '315° = 360° - 45°. Im 4. Quadrant: cos positiv. cos(315°) = cos(45°) = √2/2.',
-    hints: ['315° = 360° - 45° → 4. Quadrant. cos ist dort positiv.'],
+    explanation: `**Ansatz:** Quadrant, Referenzwinkel, Vorzeichen.
+
+**Schritt 1 — Quadrant:** $315°$ liegt zwischen $270°$ und $360°$ → **4. Quadrant**.
+
+**Schritt 2 — Referenzwinkel:** $360° - 315° = 45°$.
+
+**Schritt 3 — Grundwert:** $\\cos(45°) = \\dfrac{\\sqrt{2}}{2}$.
+
+**Schritt 4 — Vorzeichen:** Im 4. Quadrant ist $\\cos > 0$ (ASTC: nur "C"osinus positiv). Also $\\cos(315°) = +\\cos(45°) = \\dfrac{\\sqrt{2}}{2}$.
+
+**Am Einheitskreis heißt das:** Bei $315°$ liegt der Punkt $\\left(\\dfrac{\\sqrt{2}}{2}, -\\dfrac{\\sqrt{2}}{2}\\right)$ im 4. Quadranten — rechts-unten. x-Koordinate ist positiv.
+
+**Probe (Taschenrechner, DEG-Modus):** $\\cos(315°) \\approx 0{,}707$ ✓.
+
+**Typischer Fehler:** Vorzeichen falsch setzen und $-\\dfrac{\\sqrt{2}}{2}$ angeben.`,
+    hints: [
+      'Welches Winkelmaß? Grad. Skizze: $315°$ liegt im 4. Quadrant.',
+      'Referenzwinkel: $360° - 315° = 45°$. Grundwert $\\cos(45°) = \\dfrac{\\sqrt{2}}{2}$.',
+      'Im 4. Quadrant ist $\\cos > 0$ (ASTC). Taschenrechner im richtigen Modus (DEG oder RAD)!',
+    ],
   },
 }
 
@@ -138,68 +358,74 @@ const lessons_u2 = [
     steps: [
       {
         id: 'trig-2-1-s1', type: 'explanation-intuitive', title: 'Warum der Einheitskreis?',
-        content: `Das rechtwinklige Dreieck erklärt sin und cos nur für 0°–90°. Um alle Winkel zu erfassen, brauchen wir eine bessere Definition.
+        content: `Das rechtwinklige Dreieck erklärt $\\sin$ und $\\cos$ nur für $0°$–$90°$. Um alle Winkel zu erfassen, brauchen wir eine bessere Definition.
 
-Die Lösung: Der **Einheitskreis** — ein Kreis mit **Radius = 1** im Koordinatensystem. Wir platzieren einen Punkt P auf diesem Kreis und messen den Winkel α von der positiven x-Achse im Gegenuhrzeigersinn.
+Die Lösung: Der **Einheitskreis** — ein Kreis mit **Radius $= 1$** im Koordinatensystem. Wir platzieren einen Punkt $P$ auf diesem Kreis und messen den Winkel $\\alpha$ von der positiven x-Achse im Gegenuhrzeigersinn.
 
-Die Koordinaten von P sind dann genau **(cos(α), sin(α))** — das ist die allgemeine Definition.`,
+Die Koordinaten von $P$ sind dann genau **$(\\cos(\\alpha), \\sin(\\alpha))$** — das ist die allgemeine Definition.
+
+**Am Einheitskreis heißt das:** Jede Aussage über $\\sin$ und $\\cos$ lässt sich geometrisch ablesen — Koordinaten, Vorzeichen, Symmetrie, Periodizität. Der Einheitskreis ist das zentrale Werkzeug der Trigonometrie.`,
       },
       {
         id: 'trig-2-1-s2', type: 'visualization', title: 'Interaktiver Einheitskreis',
         visualizationId: 'trig-explorer',
         params: { initialAngle: 45, showTangent: false },
       },
-      { id: 'trig-2-1-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-trig-2-1-a' },
-      { id: 'trig-2-1-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-trig-2-1-b' },
-      { id: 'trig-2-1-s5', type: 'mastery-check', title: 'Verständnischeck', exerciseRef: 'ex-trig-2-1-mastery' },
+      { id: 'trig-2-1-s3', type: 'exercise', title: 'Aufgabe 1 — Radius', exerciseRef: 'ex-trig-2-1-a' },
+      { id: 'trig-2-1-s4', type: 'exercise', title: 'Aufgabe 2 — Punkt bei 0°', exerciseRef: 'ex-trig-2-1-b' },
+      { id: 'trig-2-1-s5', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-trig-2-1-mastery' },
     ],
   },
   {
     id: 'trig-2-2', unitId: 'trig-unit-2',
     title: 'sin und cos als Koordinaten',
     order: 2, estimatedMinutes: 10,
-    learningGoals: ['sin und cos als x/y-Koordinaten am Einheitskreis verstehen'],
+    learningGoals: ['sin und cos als x/y-Koordinaten am Einheitskreis verstehen', 'Punkte ↔ Winkel umsetzen'],
     prerequisites: ['trig-2-1'],
     nextLessonId: 'trig-2-3',
     steps: [
       {
         id: 'trig-2-2-s1', type: 'explanation-formal', title: 'Die Definition',
-        content: `Für einen Punkt P auf dem Einheitskreis beim Winkel α gilt:
+        content: `Für einen Punkt $P$ auf dem Einheitskreis beim Winkel $\\alpha$ gilt:
 
 $$P = (\\cos(\\alpha),\\; \\sin(\\alpha))$$
 
 Das bedeutet:
-- **cos(α) = x-Koordinate** von P
-- **sin(α) = y-Koordinate** von P
+- **$\\cos(\\alpha) = $ x-Koordinate** von $P$
+- **$\\sin(\\alpha) = $ y-Koordinate** von $P$
 
-Diese Definition gilt für **alle reellen Winkel** — nicht nur 0°–90°.`,
+Diese Definition gilt für **alle reellen Winkel** — nicht nur $0°$–$90°$.
+
+**Am Einheitskreis heißt das:** Willst du $\\sin$/$\\cos$ eines beliebigen Winkels bestimmen, zeichne den Punkt auf dem Kreis und lies die Koordinaten ab. Das ist die geometrische Definition.`,
       },
       {
         id: 'trig-2-2-s2', type: 'visualization', title: 'Koordinaten ablesen',
         visualizationId: 'trig-explorer',
         params: { initialAngle: 60, showTangent: false },
       },
-      { id: 'trig-2-2-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-trig-2-2-a' },
-      { id: 'trig-2-2-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-trig-2-2-b' },
-      { id: 'trig-2-2-s5', type: 'mastery-check', title: 'Verständnischeck', exerciseRef: 'ex-trig-2-2-mastery' },
+      { id: 'trig-2-2-s3', type: 'exercise', title: 'Aufgabe 1 — cos als Koordinate', exerciseRef: 'ex-trig-2-2-a' },
+      { id: 'trig-2-2-s4', type: 'exercise', title: 'Aufgabe 2 — Punkt bei 180°', exerciseRef: 'ex-trig-2-2-b' },
+      { id: 'trig-2-2-s5', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-trig-2-2-mastery' },
     ],
   },
   {
     id: 'trig-2-3', unitId: 'trig-unit-2',
     title: 'Symmetrien und Periodizität',
     order: 3, estimatedMinutes: 12,
-    learningGoals: ['Periodizität von sin und cos verstehen', 'Symmetrieeigenschaften anwenden'],
+    learningGoals: ['Periodizität von sin und cos verstehen', 'Symmetrieeigenschaften anwenden', 'Reduktionsformeln aus dem Einheitskreis herleiten'],
     prerequisites: ['trig-2-2'],
     nextLessonId: 'trig-2-4',
     steps: [
       {
         id: 'trig-2-3-s1', type: 'explanation-intuitive', title: 'Immer im Kreis',
-        content: `Dreht sich der Punkt auf dem Einheitskreis einmal komplett herum (360° bzw. 2π), ist er wieder an derselben Stelle. Daher sind sin und cos **periodisch** mit Periode 360°:
+        content: `Dreht sich der Punkt auf dem Einheitskreis einmal komplett herum ($360°$ bzw. $2\\pi$), ist er wieder an derselben Stelle. Daher sind $\\sin$ und $\\cos$ **periodisch** mit Periode $360°$:
 
 $$\\sin(\\alpha + 360°) = \\sin(\\alpha)$$
 $$\\cos(\\alpha + 360°) = \\cos(\\alpha)$$
 
-Außerdem hat der Einheitskreis **Spiegelsymmetrien**, die nützliche Formeln ergeben.`,
+Außerdem hat der Einheitskreis **Spiegelsymmetrien**, die nützliche Formeln ergeben.
+
+**Am Einheitskreis heißt das:** Jede Symmetrie des Kreises (Spiegelung an x-Achse, y-Achse, Ursprung, Winkelhalbierender) entspricht einer Rechenformel für $\\sin$ und $\\cos$.`,
       },
       {
         id: 'trig-2-3-s2', type: 'explanation-formal', title: 'Symmetrieformeln',
@@ -209,41 +435,48 @@ $$\\cos(-\\alpha) = \\cos(\\alpha) \\quad \\text{(gerade Funktion)}$$
 
 **Spiegelung an der y-Achse** (Supplement):
 $$\\sin(180° - \\alpha) = \\sin(\\alpha)$$
-$$\\cos(180° - \\alpha) = -\\cos(\\alpha)$$`,
+$$\\cos(180° - \\alpha) = -\\cos(\\alpha)$$
+
+**Punktspiegelung am Ursprung:**
+$$\\sin(180° + \\alpha) = -\\sin(\\alpha)$$
+$$\\cos(180° + \\alpha) = -\\cos(\\alpha)$$
+
+**Spiegelung an der Winkelhalbierenden $y = x$** (Komplementwinkel):
+$$\\sin(90° - \\alpha) = \\cos(\\alpha), \\quad \\cos(90° - \\alpha) = \\sin(\\alpha)$$`,
       },
-      { id: 'trig-2-3-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-trig-2-3-a' },
-      { id: 'trig-2-3-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-trig-2-3-b' },
-      { id: 'trig-2-3-s5', type: 'mastery-check', title: 'Verständnischeck', exerciseRef: 'ex-trig-2-3-mastery' },
+      { id: 'trig-2-3-s3', type: 'exercise', title: 'Aufgabe 1 — Periodizität', exerciseRef: 'ex-trig-2-3-a' },
+      { id: 'trig-2-3-s4', type: 'exercise', title: 'Aufgabe 2 — sin negativer Winkel', exerciseRef: 'ex-trig-2-3-b' },
+      { id: 'trig-2-3-s5', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-trig-2-3-mastery' },
     ],
   },
   {
     id: 'trig-2-4', unitId: 'trig-unit-2',
     title: 'Tangens im Einheitskreis',
     order: 4, estimatedMinutes: 10,
-    learningGoals: ['Tangens als sin/cos verstehen', 'Polstellen von tan erkennen'],
+    learningGoals: ['Tangens als sin/cos verstehen', 'Polstellen von tan erkennen', 'Vorzeichen von tan in Quadranten bestimmen'],
     prerequisites: ['trig-2-2'],
     nextLessonId: 'trig-2-5',
     steps: [
       {
         id: 'trig-2-4-s1', type: 'explanation-formal', title: 'tan als Quotient',
-        content: `$$\\tan(\\alpha) = \\frac{\\sin(\\alpha)}{\\cos(\\alpha)} = \\frac{y}{x}$$
+        content: `$$\\tan(\\alpha) = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)} = \\dfrac{y}{x}$$
 
-Geometrisch: tan(α) ist die **Steigung** der Geraden vom Ursprung zum Punkt P(cos α, sin α).
+**Am Einheitskreis heißt das:** $\\tan(\\alpha)$ ist die **Steigung** der Geraden vom Ursprung zum Punkt $P(\\cos\\alpha, \\sin\\alpha)$. Die Steigung der Ursprungsgerade ist $m = \\dfrac{y}{x}$.
 
-**Wichtig:** tan ist **nicht definiert** wenn cos(α) = 0, also bei α = 90°, 270°, ... Dort gibt es senkrechte Asymptoten.
+**Wichtig:** $\\tan$ ist **nicht definiert**, wenn $\\cos(\\alpha) = 0$, also bei $\\alpha = 90°, 270°, \\ldots$. Dort gibt es senkrechte Asymptoten — die Gerade ist senkrecht und hat keine endliche Steigung.
 
-**Periode:** Der Tangens hat Periode 180° (nicht 360°!), weil die Steigung nach einer halben Drehung wieder dieselbe ist.`,
+**Periode:** Der Tangens hat Periode $180°$ (nicht $360°$!), weil die Steigung einer Geraden sich nach einer halben Drehung wiederholt: die Gerade zeigt zwar in die andere Richtung, die Steigung bleibt.`,
       },
-      { id: 'trig-2-4-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-trig-2-4-a' },
-      { id: 'trig-2-4-s3', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-trig-2-4-b' },
-      { id: 'trig-2-4-s4', type: 'mastery-check', title: 'Verständnischeck', exerciseRef: 'ex-trig-2-4-mastery' },
+      { id: 'trig-2-4-s2', type: 'exercise', title: 'Aufgabe 1 — tan geometrisch', exerciseRef: 'ex-trig-2-4-a' },
+      { id: 'trig-2-4-s3', type: 'exercise', title: 'Aufgabe 2 — tan(90°)', exerciseRef: 'ex-trig-2-4-b' },
+      { id: 'trig-2-4-s4', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-trig-2-4-mastery' },
     ],
   },
   {
     id: 'trig-2-5', unitId: 'trig-unit-2',
     title: 'Alle vier Quadranten',
     order: 5, estimatedMinutes: 15,
-    learningGoals: ['Winkel in allen Quadranten berechnen', 'Reduktionsformeln anwenden'],
+    learningGoals: ['Winkel in allen Quadranten berechnen', 'Reduktionsformeln anwenden', 'Referenzwinkel bilden'],
     prerequisites: ['trig-2-3', 'trig-2-4'],
     nextLessonId: 'trig-3-1',
     steps: [
@@ -253,23 +486,29 @@ Geometrisch: tan(α) ist die **Steigung** der Geraden vom Ursprung zum Punkt P(c
 
 **Zusammenfassung:**
 
-| Quadrant | Winkelbereich | sin | cos | tan |
-|----------|---------------|-----|-----|-----|
-| 1.       | 0°–90°        | +   | +   | +   |
-| 2.       | 90°–180°      | +   | −   | −   |
-| 3.       | 180°–270°     | −   | −   | +   |
-| 4.       | 270°–360°     | −   | +   | −   |
+| Quadrant | Winkelbereich    | $\\sin$ | $\\cos$ | $\\tan$ |
+|----------|------------------|---------|---------|---------|
+| 1.       | $0°$–$90°$       | $+$     | $+$     | $+$     |
+| 2.       | $90°$–$180°$     | $+$     | $-$     | $-$     |
+| 3.       | $180°$–$270°$    | $-$     | $-$     | $+$     |
+| 4.       | $270°$–$360°$    | $-$     | $+$     | $-$     |
 
-**Vorgehen:** 1. Quadrant bestimmen 2. Referenzwinkel = Abstand zur nächsten Achse 3. Vorzeichen aus Tabelle`,
+**Am Einheitskreis heißt das:** Die Vorzeichen folgen direkt aus dem Quadranten — links ist $x < 0$ (also $\\cos < 0$), unten ist $y < 0$ (also $\\sin < 0$).
+
+**Vorgehen in 4 Schritten:**
+1. Quadrant bestimmen
+2. Referenzwinkel $= $ Abstand zur nächsten x-Achsenhälfte ($0°$ oder $180°$)
+3. Grundwert im 1. Quadrant berechnen
+4. Vorzeichen aus Tabelle davorsetzen`,
       },
       {
         id: 'trig-2-5-s2', type: 'visualization', title: 'Alle Quadranten erkunden',
         visualizationId: 'trig-explorer',
         params: { initialAngle: 210, showTangent: true },
       },
-      { id: 'trig-2-5-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-trig-2-5-a' },
-      { id: 'trig-2-5-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-trig-2-5-b' },
-      { id: 'trig-2-5-s5', type: 'mastery-check', title: 'Verständnischeck', exerciseRef: 'ex-trig-2-5-mastery' },
+      { id: 'trig-2-5-s3', type: 'exercise', title: 'Aufgabe 1 — Quadrant von 200°', exerciseRef: 'ex-trig-2-5-a' },
+      { id: 'trig-2-5-s4', type: 'exercise', title: 'Aufgabe 2 — sin(210°)', exerciseRef: 'ex-trig-2-5-b' },
+      { id: 'trig-2-5-s5', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-trig-2-5-mastery' },
     ],
   },
 ]

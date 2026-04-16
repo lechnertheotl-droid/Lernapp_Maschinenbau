@@ -30,7 +30,11 @@ const unit1 = makeUnit({
       correctIndex: 0,
       masteryExplanation:
         '$f(1) = -1$, $f\'(1) = 2$. $x_1 = 1 - (-1)/2 = 1 + 0{,}5 = 1{,}5$. Nach zwei weiteren Iterationen nähert man sich $\\sqrt{2} \\approx 1{,}4142$.',
-      masteryHints: ['f(1) = 1² − 2 = −1, f\'(1) = 2.', 'x₁ = x₀ − f(x₀)/f\'(x₀).'],
+      masteryHints: [
+        'f(1) = 1² − 2 = −1, f\'(1) = 2.',
+        'x₁ = x₀ − f(x₀)/f\'(x₀).',
+        '$x_1 = 1 - (-1)/2 = 1 + 0{,}5 = 1{,}5$.',
+      ],
       masteryVisualization: {
         id: 'function-graph',
         params: {
@@ -83,6 +87,7 @@ const unit1 = makeUnit({
       masteryHints: [
         'Trapezregel: $(b-a)/2 \\cdot (f(a)+f(b))$.',
         '$f(0) = 0^2 = 0$, $f(2) = 2^2 = 4$.',
+        '$(2-0)/2 \\cdot (0 + 4) = 1 \\cdot 4 = 4$.',
       ],
       masteryVisualization: {
         id: 'function-graph',
@@ -135,8 +140,113 @@ const unit2 = makeUnit({
       correctIndex: 0,
       masteryExplanation:
         'Bei einfachen Nullstellen verdoppelt sich die Zahl korrekter Stellen pro Schritt — quadratische Konvergenz. Bei mehrfachen Nullstellen nur linear.',
-      masteryHints: ['„Verdoppelung der korrekten Stellen" deutet auf Ordnung 2.'],
+      masteryHints: [
+        '„Verdoppelung der korrekten Stellen pro Schritt" kennzeichnet quadratische Konvergenz.',
+        'Die Ordnung gibt an, wie der Fehler bei jeder Iteration schrumpft.',
+        'Newton: $e_{n+1} \\approx C \\cdot e_n^2$ — Fehler wird quadriert, also Ordnung 2.',
+      ],
       prerequisites: ['num-1-2'],
+      nextLessonId: 'num-pruefung-2',
+    }),
+    makeLesson({
+      id: 'num-pruefung-2',
+      title: 'Prüfung: Trapez, Simpson & Fehlerordnung',
+      estimatedMinutes: 20,
+      isExam: true,
+      learningGoals: [
+        '[PRÜFUNG] Trapezregel und Simpson-Regel mit mehreren Teilintervallen anwenden',
+        '[PRÜFUNG] Fehlerordnung $\\mathcal{O}(h^2)$ vs. $\\mathcal{O}(h^4)$ vergleichen',
+        '[PRÜFUNG] Anzahl der Teilintervalle für gegebene Genauigkeit bestimmen',
+      ],
+      createdAt: '2026-04-16',
+      intuitionTitle: 'Mehr Teilintervalle = weniger Fehler',
+      intuitionContent:
+        'Statt ein großes Trapez zu verwenden, teilt man das Intervall in $n$ Teilstücke der Breite $h = (b-a)/n$ auf. ' +
+        'Der Fehler sinkt dann mit $h^2$ (Trapez) oder $h^4$ (Simpson).\n\n' +
+        '**Praxis:** Simpson hat bei gleicher Schrittweite viel kleineren Fehler als Trapez — ' +
+        'besonders bei glatten Funktionen. Trapez ist einfacher zu implementieren.',
+      formulaTitle: 'Zusammengesetzte Regeln',
+      formulaContent:
+        '**Zusammengesetzte Trapezregel** ($n$ gleiche Teilintervalle, $h = (b-a)/n$):\n' +
+        '$$\\int_a^b f\\,dx \\approx \\frac{h}{2}\\left(f(x_0) + 2f(x_1) + \\cdots + 2f(x_{n-1}) + f(x_n)\\right)$$\n\n' +
+        '**Zusammengesetzte Simpson-Regel** ($n$ gerade):\n' +
+        '$$\\int_a^b f\\,dx \\approx \\frac{h}{3}\\left(f(x_0) + 4f(x_1) + 2f(x_2) + 4f(x_3) + \\cdots + f(x_n)\\right)$$\n\n' +
+        '**Fehler:** Trapez $\\mathcal{O}(h^2)$, Simpson $\\mathcal{O}(h^4)$.',
+      masteryQuestion:
+        '[PRÜFUNG] Trapezregel für $\\int_0^2 x^2\\,dx$ mit $n=2$ Teilintervallen ($h=1$)?',
+      masteryOptions: ['$3$', '$4$', '$8/3$', '$2$'],
+      correctIndex: 0,
+      masteryExplanation:
+        '$x_0=0, x_1=1, x_2=2$. $f(0)=0, f(1)=1, f(2)=4$. ' +
+        'Trapez: $\\frac{1}{2}(0 + 2\\cdot1 + 4) = \\frac{1}{2}\\cdot 6 = 3$. ' +
+        '(Exakt: $8/3 \\approx 2{,}67$.)',
+      masteryHints: [
+        'Stützstellen: $x_0=0, x_1=1, x_2=2$ (Breite $h=1$).',
+        'Zusammengesetzte Trapezregel: $h/2 \\cdot (f_0 + 2f_1 + f_2)$.',
+        '$1/2 \\cdot (0 + 2\\cdot1 + 4) = 1/2 \\cdot 6 = 3$.',
+      ],
+      masteryVisualization: {
+        id: 'function-graph',
+        params: {
+          mode: 'static',
+          functions: [
+            { fn: (x) => x * x, color: '#3b82f6', label: 'f(x)=x²' },
+          ],
+          xRange: [-0.5, 2.5],
+          yRange: [-0.5, 5],
+          showGrid: true,
+        },
+        caption: 'Zusammengesetzte Trapezregel mit n=2 für ∫x²dx von 0 bis 2',
+        alt: 'Graph von x² mit zwei Trapezen als Approximation',
+      },
+      prerequisites: ['num-pruefung-1'],
+      nextLessonId: 'num-pruefung-3',
+    }),
+    makeLesson({
+      id: 'num-pruefung-3',
+      title: 'Prüfung: Kombinierte Aufgaben & Abbruchkriterien',
+      estimatedMinutes: 22,
+      isExam: true,
+      learningGoals: [
+        '[PRÜFUNG] Verfahren dem Problem zuordnen',
+        '[PRÜFUNG] Abbruchkriterium korrekt anwenden',
+        '[PRÜFUNG] Vor- und Nachteile der Verfahren benennen',
+      ],
+      createdAt: '2026-04-16',
+      intuitionTitle: 'Das richtige Werkzeug für das Problem',
+      intuitionContent:
+        '**Entscheidungsbaum:**\n' +
+        '- Nullstelle gesucht? → Vorzeichen bekannt und Robustheit wichtig: **Bisektion**. Schnelle Konvergenz: **Newton**.\n' +
+        '- Integral gesucht? → Glatte Funktion, hohe Genauigkeit: **Simpson**. Einfach: **Trapez**.\n\n' +
+        '**Abbruch:** Iteration stoppen wenn $|x_{n+1} - x_n| < \\varepsilon$ (Schrittkontrolle) ' +
+        'oder $|f(x_n)| < \\delta$ (Residuumskontrolle).',
+      formulaTitle: 'Verfahrensvergleich',
+      formulaContent:
+        '| Verfahren | Typ | Konvergenz | Robustheit |\n' +
+        '|-----------|-----|-----------|------------|\n' +
+        '| Bisektion | Nullstelle | linear $\\mathcal{O}(1/2^n)$ | sehr robust |\n' +
+        '| Newton | Nullstelle | quadratisch | empfindlich |\n' +
+        '| Trapez | Integral | $\\mathcal{O}(h^2)$ | stabil |\n' +
+        '| Simpson | Integral | $\\mathcal{O}(h^4)$ | stabil |\n\n' +
+        '**Newton-Abbruch:** $|x_{n+1} - x_n| < \\varepsilon$ **und** $|f(x_n)| < \\delta$.',
+      masteryQuestion:
+        '[PRÜFUNG] Welches Verfahren ist robuster, wenn der Startwert weit von der Nullstelle entfernt liegt?',
+      masteryOptions: [
+        'Bisektion — garantiert Konvergenz bei Vorzeichenwechsel',
+        'Newton — konvergiert immer schneller',
+        'Simpson — hat keine Iterationen',
+        'Trapez — robuster als Newton',
+      ],
+      correctIndex: 0,
+      masteryExplanation:
+        'Bisektion braucht nur ein Vorzeichenwechsel-Intervall $[a,b]$ und halbiert sicher. ' +
+        'Newton kann divergieren, wenn der Startwert ungünstig ist (z.B. bei flacher Ableitung).',
+      masteryHints: [
+        'Robustheit = sichere Konvergenz ohne guten Startwert.',
+        'Bisektion garantiert Konvergenz, wenn $f(a) \\cdot f(b) < 0$.',
+        'Newton braucht einen guten Startwert — bei schlechtem Startwert kann er divergieren.',
+      ],
+      prerequisites: ['num-pruefung-2'],
       nextLessonId: null,
     }),
   ],

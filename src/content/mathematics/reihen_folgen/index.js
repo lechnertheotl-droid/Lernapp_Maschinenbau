@@ -28,7 +28,11 @@ const unit1 = makeUnit({
       masteryOptions: ['0', '1', '∞', 'existiert nicht'],
       correctIndex: 0,
       masteryExplanation: '$1/n$ wird für große $n$ beliebig klein, also $\\lim_{n\\to\\infty} 1/n = 0$.',
-      masteryHints: ['Werte einsetzen: 1, 1/2, 1/3, 1/4, ...'],
+      masteryHints: [
+        'Werte einsetzen: $a_1=1, a_2=1/2, a_3=1/3, \\ldots$ — wird kleiner.',
+        'Für beliebig kleines $\\varepsilon>0$ gilt ab einem $N$: $|1/n| < \\varepsilon$.',
+        'Der Grenzwert ist $L=0$, weil $1/n$ gegen 0 strebt.',
+      ],
       masteryVisualization: {
         id: 'number-line',
         params: {
@@ -84,6 +88,7 @@ const unit1 = makeUnit({
       masteryHints: [
         'Ableitungen von $e^x$ sind alle wieder $e^x$.',
         'Bei $x_0 = 0$: alle $f^{(k)}(0) = 1$.',
+        'Koeffizienten: $f^{(k)}(0)/k! = 1/k!$, also $T_2 = 1 + x + x^2/2!$.',
       ],
       masteryVisualization: {
         id: 'function-graph',
@@ -146,8 +151,112 @@ const unit2 = makeUnit({
       masteryOptions: ['$3/2$', '$1/3$', '$2/3$', 'divergiert'],
       correctIndex: 0,
       masteryExplanation: '$\\sum q^n = 1/(1-q)$ für $|q|<1$. Hier $q = 1/3$, also $1/(1-1/3) = 1/(2/3) = 3/2$.',
-      masteryHints: ['Geometrische Reihe: Summe = 1/(1−q).', 'q = 1/3 einsetzen.'],
+      masteryHints: [
+        'Geometrische Reihe: Summe = 1/(1−q).',
+        'q = 1/3 einsetzen.',
+        '$1/(1-1/3) = 1/(2/3) = 3/2$.',
+      ],
       prerequisites: ['rf-1-2'],
+      nextLessonId: 'rf-pruefung-2',
+    }),
+    makeLesson({
+      id: 'rf-pruefung-2',
+      title: 'Prüfung: Konvergenzkriterien & Potenzreihen',
+      estimatedMinutes: 20,
+      isExam: true,
+      learningGoals: [
+        '[PRÜFUNG] Quotientenkriterium anwenden',
+        '[PRÜFUNG] Konvergenzradius einer Potenzreihe berechnen',
+        '[PRÜFUNG] Majoranten- und Minorantenkriterium kennen',
+      ],
+      createdAt: '2026-04-16',
+      intuitionTitle: 'Wann konvergiert eine Reihe?',
+      intuitionContent:
+        'Eine Reihe $\\sum a_n$ konvergiert, wenn die Glieder schnell genug gegen null gehen. ' +
+        'Das **Quotientenkriterium** prüft, wie sich aufeinanderfolgende Glieder verhalten: ' +
+        'Wenn $|a_{n+1}/a_n| \\to q < 1$, dann konvergiert die Reihe absolut.\n\n' +
+        '**Potenzreihe** $\\sum c_n (x-x_0)^n$ konvergiert nur in einem Intervall $|x-x_0| < R$ ' +
+        '(Konvergenzradius $R$).',
+      formulaTitle: 'Kriterien & Konvergenzradius',
+      formulaContent:
+        '**Quotientenkriterium:** $\\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right| = q$\n' +
+        '- $q < 1$: absolut konvergent\n' +
+        '- $q > 1$: divergent\n' +
+        '- $q = 1$: keine Aussage\n\n' +
+        '**Konvergenzradius** einer Potenzreihe $\\sum c_n x^n$:\n' +
+        '$$R = \\lim_{n\\to\\infty}\\left|\\frac{c_n}{c_{n+1}}\\right| \\quad \\text{(falls der Limes existiert)}$$',
+      masteryQuestion:
+        '[PRÜFUNG] Konvergenzradius von $\\sum_{n=0}^\\infty \\frac{x^n}{n!}$ (Taylor-Reihe von $e^x$)?',
+      masteryOptions: ['$R = \\infty$', '$R = 1$', '$R = e$', '$R = 0$'],
+      correctIndex: 0,
+      masteryExplanation:
+        '$c_n = 1/n!$. $R = \\lim |c_n/c_{n+1}| = \\lim |(n+1)!/n!| = \\lim (n+1) = \\infty$. ' +
+        'Die $e^x$-Reihe konvergiert für alle $x \\in \\mathbb{R}$.',
+      masteryHints: [
+        'Konvergenzradius: $R = \\lim |c_n / c_{n+1}|$.',
+        '$c_n = 1/n!$, $c_{n+1} = 1/(n+1)!$. Quotient: $c_n/c_{n+1} = (n+1)!/n! = n+1$.',
+        '$\\lim_{n\\to\\infty}(n+1) = \\infty$, also $R = \\infty$ — konvergiert überall.',
+      ],
+      masteryVisualization: {
+        id: 'function-graph',
+        params: {
+          mode: 'static',
+          functions: [
+            { fn: (x) => Math.exp(x), color: '#3b82f6', label: 'eˣ (Radius ∞)' },
+            { fn: (x) => (Math.abs(x) < 1 ? 1 / (1 - x) : null), color: '#ef4444', label: '1/(1-x) (Radius 1)' },
+          ],
+          xRange: [-2, 0.9],
+          yRange: [-0.5, 8],
+          showGrid: true,
+        },
+        caption: 'Vergleich: eˣ (R=∞) vs. 1/(1-x) (R=1, Pol bei x=1)',
+        alt: 'Graph von eˣ und 1/(1-x) zum Vergleich der Konvergenzradien',
+      },
+      prerequisites: ['rf-pruefung-1'],
+      nextLessonId: 'rf-pruefung-3',
+    }),
+    makeLesson({
+      id: 'rf-pruefung-3',
+      title: 'Prüfung: Taylor-Restglied & Näherungen',
+      estimatedMinutes: 22,
+      isExam: true,
+      learningGoals: [
+        '[PRÜFUNG] Restglied nach Lagrange abschätzen',
+        '[PRÜFUNG] Taylor-Näherung für Berechnungen nutzen',
+        '[PRÜFUNG] Fehler einer Taylor-Näherung nach oben abschätzen',
+      ],
+      createdAt: '2026-04-16',
+      intuitionTitle: 'Wie gut ist die Näherung?',
+      intuitionContent:
+        'Das Taylor-Polynom $T_n(x)$ approximiert $f(x)$. Wie groß ist der Fehler?\n\n' +
+        '**Restglied nach Lagrange:** Es gibt ein $\\xi$ zwischen $x_0$ und $x$ mit:\n' +
+        '$$R_n(x) = f(x) - T_n(x) = \\frac{f^{(n+1)}(\\xi)}{(n+1)!}(x-x_0)^{n+1}$$\n\n' +
+        '**Abschätzung:** Man ersetzt $f^{(n+1)}(\\xi)$ durch sein Maximum auf dem Intervall.',
+      formulaTitle: 'Restglied-Abschätzung',
+      formulaContent:
+        '**Lagrange-Restglied:**\n' +
+        '$$|R_n(x)| \\leq \\frac{M_{n+1}}{(n+1)!}|x-x_0|^{n+1}$$\n\n' +
+        'mit $M_{n+1} = \\max_{\\xi \\in [x_0,x]}|f^{(n+1)}(\\xi)|$.\n\n' +
+        '**Wichtige Näherungen** (für kleine $x$):\n' +
+        '$$\\sin x \\approx x, \\quad \\cos x \\approx 1 - \\frac{x^2}{2}, \\quad e^x \\approx 1 + x$$',
+      masteryQuestion:
+        '[PRÜFUNG] Restglied $|R_1(x)|$ von $e^x \\approx 1+x$ auf $[0, 0{,}1]$ (Grad-1-Taylor um $x_0=0$)?',
+      masteryOptions: [
+        '$\\leq \\dfrac{e^{0{,}1}}{2} \\cdot (0{,}1)^2 \\approx 0{,}0055$',
+        '$\\leq 0{,}1$',
+        '$\\leq \\dfrac{1}{2}(0{,}1)^2 = 0{,}005$',
+        '$= 0$ (exakt)',
+      ],
+      correctIndex: 0,
+      masteryExplanation:
+        '$f^{(2)}(x) = e^x \\leq e^{0{,}1}$ auf $[0, 0{,}1]$. ' +
+        '$|R_1| \\leq \\frac{e^{0{,}1}}{2!} \\cdot (0{,}1)^2 = \\frac{e^{0{,}1}}{2} \\cdot 0{,}01 \\approx 0{,}0055$.',
+      masteryHints: [
+        'Restglied Grad 1: $|R_1| \\leq M_2/(2!) \\cdot |x-x_0|^2$.',
+        '$M_2 = \\max|f\'\'(\\xi)| = \\max e^\\xi = e^{0{,}1}$ auf $[0, 0{,}1]$.',
+        '$e^{0{,}1}/2 \\cdot (0{,}1)^2 = 1{,}105/2 \\cdot 0{,}01 \\approx 0{,}0055$.',
+      ],
+      prerequisites: ['rf-pruefung-2'],
       nextLessonId: null,
     }),
   ],

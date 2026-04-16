@@ -1,140 +1,351 @@
 // ── Unit 1: Grundlagen der Trigonometrie ─────────────────────────────────────
 
 export const exercises_u1 = {
-  // Lektion 1-1: Winkel und ihre Maße
+  // ───────────── Lektion 1-1: Winkel und ihre Maße ─────────────
   'ex-trig-1-1-a': {
     id: 'ex-trig-1-1-a', lessonId: 'trig-1-1', type: 'multiple-choice',
-    question: 'Wie viel Radiant entspricht einem Winkel von 90°?',
-    options: ['π/4', 'π/2', 'π', '2π'],
+    question: 'Wie viel Radiant entspricht einem Winkel von $90°$?',
+    options: ['$\\dfrac{\\pi}{4}$', '$\\dfrac{\\pi}{2}$', '$\\pi$', '$2\\pi$'],
     correctIndex: 1,
-    explanation: '90° ist ein Viertel des Vollkreises (360° = 2π). Also: 2π / 4 = π/2 ≈ 1,571 rad.',
-    hints: ['Der Vollkreis hat 360° oder 2π Radiant.', 'Teile 2π durch 4 für ein Viertel des Kreises.'],
+    explanation: `**Ansatz:** Der volle Kreis hat $360°$ bzw. $2\\pi$ Radiant. Teile in Viertel.
+
+**Rechnung:** $90° = \\dfrac{1}{4} \\cdot 360° \\Rightarrow \\dfrac{1}{4} \\cdot 2\\pi = \\dfrac{\\pi}{2}$.
+
+Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\dfrac{\\pi}{180} = 90 \\cdot \\dfrac{\\pi}{180} = \\dfrac{\\pi}{2}$.
+
+**Probe:** $\\dfrac{\\pi}{2} \\approx 1{,}571$ rad. Rückrechnung: $1{,}571 \\cdot \\dfrac{180}{\\pi} \\approx 90°$. ✓
+
+**Am Einheitskreis:** $90°$ entspricht dem obersten Punkt $(0,1)$. Der zurückgelegte Bogen von der positiven x-Achse ist ein Viertelumlauf $= \\dfrac{2\\pi}{4} = \\dfrac{\\pi}{2}$.
+
+**Typischer Fehler:** Taschenrechner in RAD-Modus, aber Winkel in Grad eingegeben — immer DEG/RAD-Einstellung prüfen!`,
+    hints: [
+      'Welches Winkelmaß suchst du? Radiant. Skizze am Einheitskreis: $90°$ = Viertelumlauf.',
+      'Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\dfrac{\\pi}{180}$. Der Vollkreis hat $2\\pi$.',
+      'Teile $2\\pi$ durch $4$ für ein Viertel. Taschenrechner im richtigen Modus (DEG oder RAD)!',
+    ],
   },
   'ex-trig-1-1-b': {
     id: 'ex-trig-1-1-b', lessonId: 'trig-1-1', type: 'multiple-choice',
-    question: 'Welcher Winkel im Gradmaß entspricht π Radiant?',
-    options: ['90°', '180°', '270°', '360°'],
+    question: 'Welcher Winkel im Gradmaß entspricht $\\pi$ Radiant?',
+    options: ['$90°$', '$180°$', '$270°$', '$360°$'],
     correctIndex: 1,
-    explanation: 'π Radiant ist genau der halbe Vollkreis = 180°.',
-    hints: ['2π Radiant = 360°. Was ist π Radiant?'],
+    explanation: `**Ansatz:** $\\pi$ rad ist genau der halbe Vollkreis ($2\\pi$ rad = ganzer Kreis).
+
+**Rechnung:** $\\alpha_{\\circ} = \\alpha_{\\text{rad}} \\cdot \\dfrac{180}{\\pi} = \\pi \\cdot \\dfrac{180}{\\pi} = 180°$.
+
+**Probe:** Setze $180°$ zurück: $180 \\cdot \\dfrac{\\pi}{180} = \\pi$. ✓
+
+**Am Einheitskreis:** $\\pi$ rad bringt dich zum Punkt $(-1, 0)$ — der gegenüberliegenden Seite des Startpunkts $(1,0)$. Das ist eine halbe Umdrehung.
+
+**Typischer Fehler:** $\\pi \\approx 3{,}14$ rad wird im DEG-Modus als $3{,}14°$ interpretiert — dort wäre $\\sin(\\pi) \\approx 0{,}055$ statt exakt $0$.`,
+    hints: [
+      'Welches Winkelmaß? Gradmaß. Skizze: $\\pi$ rad = halber Umlauf.',
+      'Formel: $\\alpha_{\\circ} = \\alpha_{\\text{rad}} \\cdot \\dfrac{180}{\\pi}$. $\\pi$ kürzt sich.',
+      '$2\\pi$ rad = $360°$, also $\\pi$ rad = $180°$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
+    ],
   },
   'ex-trig-1-1-c': {
     id: 'ex-trig-1-1-c', lessonId: 'trig-1-1', type: 'multiple-choice',
-    question: '270° in Radiant:',
-    options: ['π/2', 'π', '3π/2', '2π'],
+    question: '$270°$ in Radiant:',
+    options: ['$\\dfrac{\\pi}{2}$', '$\\pi$', '$\\dfrac{3\\pi}{2}$', '$2\\pi$'],
     correctIndex: 2,
-    explanation: '270° = 3/4 · 360°. In Radiant: 3/4 · 2π = 3π/2.',
-    hints: ['270° ist drei Viertel des Vollkreises.', '3/4 · 2π = ?'],
+    explanation: `**Ansatz:** $270°$ sind drei Viertel des Vollkreises.
+
+**Rechnung:** $270° = \\dfrac{3}{4} \\cdot 360° \\Rightarrow \\dfrac{3}{4} \\cdot 2\\pi = \\dfrac{3\\pi}{2}$.
+
+Alternativ: $\\alpha_{\\text{rad}} = 270 \\cdot \\dfrac{\\pi}{180} = \\dfrac{270\\pi}{180} = \\dfrac{3\\pi}{2}$.
+
+**Probe:** $\\dfrac{3\\pi}{2} \\approx 4{,}712$ rad. Rückrechnung: $4{,}712 \\cdot \\dfrac{180}{\\pi} \\approx 270°$. ✓
+
+**Am Einheitskreis:** $270°$ entspricht dem untersten Punkt $(0, -1)$. Dreiviertel-Umlauf gegen den Uhrzeigersinn.
+
+**Typischer Fehler:** $\\dfrac{\\pi}{2}$ verwechselt mit $\\dfrac{3\\pi}{2}$ — zähle im Einheitskreis die Viertelumläufe mit ($90°, 180°, 270°, 360°$).`,
+    hints: [
+      'Welches Winkelmaß? Radiant. Skizze: $270°$ = drei Viertel auf dem Einheitskreis, unten.',
+      'Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\dfrac{\\pi}{180}$.',
+      'Rechne $\\dfrac{3}{4} \\cdot 2\\pi$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
+    ],
   },
   'ex-trig-1-1-mastery': {
     id: 'ex-trig-1-1-mastery', lessonId: 'trig-1-1', type: 'multiple-choice', isMasteryCheck: true,
-    question: 'Welches Bogenmaß entspricht 135°?',
-    options: ['π/4', 'π/2', '3π/4', 'π'],
+    question: '[PRÜFUNG] Welches Bogenmaß entspricht $135°$?',
+    options: ['$\\dfrac{\\pi}{4}$', '$\\dfrac{\\pi}{2}$', '$\\dfrac{3\\pi}{4}$', '$\\pi$'],
     correctIndex: 2,
-    explanation: '135° = 3/4 · 180°. Formel: 135 · π/180 = 3π/4.',
-    hints: ['135° liegt genau zwischen 90° (π/2) und 180° (π).'],
+    explanation: `**Ansatz:** Umrechnen mit $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\dfrac{\\pi}{180}$.
+
+**Rechnung:** $135 \\cdot \\dfrac{\\pi}{180} = \\dfrac{135\\pi}{180} = \\dfrac{3\\pi}{4}$ (Bruch kürzen mit $45$).
+
+**Probe:** $\\dfrac{3\\pi}{4} \\cdot \\dfrac{180}{\\pi} = \\dfrac{3 \\cdot 180}{4} = 135°$. ✓
+
+**Am Einheitskreis:** $135°$ liegt im 2. Quadranten, genau zwischen $\\dfrac{\\pi}{2}$ (90°) und $\\pi$ (180°). Koordinaten: $\\left(-\\dfrac{\\sqrt{2}}{2}, \\dfrac{\\sqrt{2}}{2}\\right)$.
+
+**Typischer Fehler:** Nicht kürzen ($\\dfrac{135\\pi}{180}$ als Endergebnis stehen lassen) oder DEG/RAD vertauschen — Taschenrechner im richtigen Modus (DEG oder RAD) prüfen.`,
+    hints: [
+      'Welches Winkelmaß? Radiant gesucht. Skizze: $135°$ liegt zwischen $90°$ ($\\pi/2$) und $180°$ ($\\pi$).',
+      'Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\dfrac{\\pi}{180}$.',
+      'Kürze den Bruch $\\dfrac{135}{180}$ so weit wie möglich (ggT $= 45$).',
+    ],
   },
 
-  // Lektion 1-2: Rechtwinkliges Dreieck
+  // ───────────── Lektion 1-2: Rechtwinkliges Dreieck ─────────────
   'ex-trig-1-2-a': {
     id: 'ex-trig-1-2-a', lessonId: 'trig-1-2', type: 'multiple-choice',
-    question: 'In einem rechtwinkligen Dreieck ist sin(α) definiert als:',
+    question: 'In einem rechtwinkligen Dreieck ist $\\sin(\\alpha)$ definiert als:',
     options: ['Ankathete / Hypotenuse', 'Gegenkathete / Hypotenuse', 'Gegenkathete / Ankathete', 'Hypotenuse / Gegenkathete'],
     correctIndex: 1,
-    explanation: 'SOH-CAH-TOA: Sin = Gegenkathete / Hypotenuse.',
-    hints: ['Merkhilfe: SOH-CAH-TOA', 'S = G/H'],
+    explanation: `**Ansatz:** Eselsbrücke SOH-CAH-TOA anwenden.
+
+**Regel:** $\\sin(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Hypotenuse}} = \\dfrac{G}{H}$ (SOH).
+
+**Warum?** Am Einheitskreis ist die y-Koordinate gleich $\\sin(\\alpha)$. In einem rechtwinkligen Dreieck mit Hypotenuse $H$ entspricht die Gegenkathete der senkrechten Projektion — geteilt durch $H$ ergibt sich der Sinuswert.
+
+**Probe:** Bei $\\alpha = 30°$ in einem $30°-60°-90°$-Dreieck: $G = 1$, $H = 2$, also $\\sin(30°) = \\dfrac{1}{2}$. ✓
+
+**Typischer Fehler:** Gegenkathete und Ankathete verwechseln. Merke: Die Gegenkathete liegt *gegenüber* von $\\alpha$.`,
+    hints: [
+      'Welche Eselsbrücke hilft? SOH-CAH-TOA. Skizze mit markiertem Winkel $\\alpha$.',
+      'SOH: **S**inus = **O**pposite (Gegenkathete) / **H**ypotenuse.',
+      'Am Einheitskreis heißt das: $\\sin(\\alpha)$ ist die y-Koordinate. Taschenrechner im richtigen Modus (DEG oder RAD)!',
+    ],
   },
   'ex-trig-1-2-b': {
     id: 'ex-trig-1-2-b', lessonId: 'trig-1-2', type: 'multiple-choice',
-    question: 'cos(α) ist definiert als:',
+    question: '$\\cos(\\alpha)$ ist definiert als:',
     options: ['Gegenkathete / Hypotenuse', 'Ankathete / Hypotenuse', 'Gegenkathete / Ankathete', 'Hypotenuse / Ankathete'],
     correctIndex: 1,
-    explanation: 'SOH-CAH-TOA: Cos = Ankathete / Hypotenuse.',
-    hints: ['C = A/H'],
+    explanation: `**Ansatz:** Eselsbrücke CAH anwenden.
+
+**Regel:** $\\cos(\\alpha) = \\dfrac{\\text{Ankathete}}{\\text{Hypotenuse}} = \\dfrac{A}{H}$ (CAH).
+
+**Am Einheitskreis:** $\\cos(\\alpha)$ ist die x-Koordinate des Punkts auf dem Kreis. Die Ankathete ist die horizontale Projektion; geteilt durch $H$ ergibt den Kosinuswert.
+
+**Probe:** Bei $\\alpha = 60°$ in einem $30°-60°-90°$-Dreieck: $A = 1$, $H = 2$, also $\\cos(60°) = \\dfrac{1}{2}$. ✓
+
+**Typischer Fehler:** Ankathete mit Hypotenuse verwechseln. Die Hypotenuse liegt *gegenüber* vom rechten Winkel, die Ankathete *neben* $\\alpha$.`,
+    hints: [
+      'Welche Eselsbrücke? CAH. Skizze des Dreiecks mit $\\alpha$ markieren.',
+      'CAH: **C**osinus = **A**dj (Ankathete) / **H**ypotenuse.',
+      'Am Einheitskreis heißt das: $\\cos(\\alpha)$ ist die x-Koordinate. Taschenrechner im richtigen Modus (DEG oder RAD)!',
+    ],
   },
   'ex-trig-1-2-c': {
     id: 'ex-trig-1-2-c', lessonId: 'trig-1-2', type: 'multiple-choice',
-    question: 'tan(α) ist definiert als:',
+    question: '$\\tan(\\alpha)$ ist definiert als:',
     options: ['Hypotenuse / Gegenkathete', 'Ankathete / Gegenkathete', 'Gegenkathete / Ankathete', 'Ankathete / Hypotenuse'],
     correctIndex: 2,
-    explanation: 'SOH-CAH-TOA: Tan = Gegenkathete / Ankathete.',
-    hints: ['T = G/A'],
+    explanation: `**Ansatz:** Eselsbrücke TOA oder Quotientenformel.
+
+**Regel:** $\\tan(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Ankathete}} = \\dfrac{G}{A} = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)}$ (TOA).
+
+**Am Einheitskreis:** $\\tan(\\alpha) = \\dfrac{y}{x}$ ist die *Steigung* der Geraden vom Ursprung zum Punkt auf dem Kreis.
+
+**Probe:** Bei $\\alpha = 45°$: $G = A$, also $\\tan(45°) = 1$. ✓
+
+**Typischer Fehler:** $\\dfrac{A}{G}$ statt $\\dfrac{G}{A}$ — das wäre $\\cot(\\alpha)$ (Kotangens).`,
+    hints: [
+      'Welche Eselsbrücke? TOA. Skizze mit $\\alpha$.',
+      'TOA: **T**angens = **O**pposite (Gegenkathete) / **A**dj (Ankathete).',
+      'Zusammenhang: $\\tan(\\alpha) = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)}$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
+    ],
   },
   'ex-trig-1-2-mastery': {
     id: 'ex-trig-1-2-mastery', lessonId: 'trig-1-2', type: 'multiple-choice', isMasteryCheck: true,
-    question: 'Ein Dreieck hat Gegenkathete = 3, Ankathete = 4, Hypotenuse = 5. Was ist sin(α)?',
-    options: ['3/5', '4/5', '3/4', '4/3'],
+    question: '[PRÜFUNG] Ein Dreieck hat Gegenkathete $= 3$, Ankathete $= 4$, Hypotenuse $= 5$. Was ist $\\sin(\\alpha)$?',
+    options: ['$\\dfrac{3}{5}$', '$\\dfrac{4}{5}$', '$\\dfrac{3}{4}$', '$\\dfrac{4}{3}$'],
     correctIndex: 0,
-    explanation: 'sin(α) = Gegenkathete / Hypotenuse = 3/5 = 0,6.',
-    hints: ['sin = G/H. G = 3, H = 5.'],
+    explanation: `**Ansatz:** SOH anwenden: $\\sin(\\alpha) = \\dfrac{G}{H}$.
+
+**Rechnung:** $\\sin(\\alpha) = \\dfrac{G}{H} = \\dfrac{3}{5} = 0{,}6$.
+
+**Probe mit Pythagoras:** $3^{2} + 4^{2} = 9 + 16 = 25 = 5^{2}$ ✓ — das ist das klassische $3{-}4{-}5$-Dreieck.
+
+**Probe mit Identität:** $\\cos(\\alpha) = \\dfrac{4}{5} = 0{,}8$. Dann $\\sin^{2}(\\alpha) + \\cos^{2}(\\alpha) = 0{,}36 + 0{,}64 = 1$. ✓
+
+**Am Einheitskreis:** Skaliere das Dreieck so, dass $H = 1$ wird (Divisor $5$). Dann liegt der Punkt bei $\\left(\\dfrac{4}{5}, \\dfrac{3}{5}\\right) = (\\cos\\alpha, \\sin\\alpha)$.
+
+**Typischer Fehler:** $\\dfrac{4}{5}$ (das wäre $\\cos(\\alpha)$) oder $\\dfrac{3}{4}$ (das wäre $\\tan(\\alpha)$).`,
+    hints: [
+      'Welcher Winkel? $\\alpha$. Welche Formel? SOH: $\\sin = G/H$.',
+      'Formel: $\\sin(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Hypotenuse}}$.',
+      'Setze $G = 3$, $H = 5$ ein. Prüfe mit $\\sin^{2} + \\cos^{2} = 1$.',
+    ],
   },
 
-  // Lektion 1-3: Grundwerte
+  // ───────────── Lektion 1-3: Grundwerte ─────────────
   'ex-trig-1-3-a': {
     id: 'ex-trig-1-3-a', lessonId: 'trig-1-3', type: 'multiple-choice',
-    question: 'sin(30°) =',
-    options: ['0', '1/2', '√2/2', '√3/2'],
+    question: '$\\sin(30°) = $?',
+    options: ['$0$', '$\\dfrac{1}{2}$', '$\\dfrac{\\sqrt{2}}{2}$', '$\\dfrac{\\sqrt{3}}{2}$'],
     correctIndex: 1,
-    explanation: 'sin(30°) = 1/2. Grundwert, den du auswendig kennen solltest.',
-    hints: ['Die Grundwerte für 0°, 30°, 45°, 60°, 90° folgen dem Muster √0/2, √1/2, √2/2, √3/2, √4/2.'],
+    explanation: `**Ansatz:** Grundwert aus dem halbierten gleichseitigen Dreieck herleiten.
+
+**Rechnung:** Im $30°-60°-90°$-Dreieck mit Hypotenuse $2$ ist die Gegenkathete von $30°$ gerade $1$. Also $\\sin(30°) = \\dfrac{1}{2}$.
+
+**Eselsbrücke:** Sinus-Muster $\\dfrac{\\sqrt{0}}{2}, \\dfrac{\\sqrt{1}}{2}, \\dfrac{\\sqrt{2}}{2}, \\dfrac{\\sqrt{3}}{2}, \\dfrac{\\sqrt{4}}{2}$ für $0°, 30°, 45°, 60°, 90°$.
+
+**Am Einheitskreis:** $30° = \\dfrac{\\pi}{6}$. Der Punkt liegt bei $\\left(\\dfrac{\\sqrt{3}}{2}, \\dfrac{1}{2}\\right)$ — die y-Koordinate ist $\\dfrac{1}{2}$.
+
+**Probe:** $\\sin^{2}(30°) + \\cos^{2}(30°) = \\dfrac{1}{4} + \\dfrac{3}{4} = 1$. ✓
+
+**Typischer Fehler:** Taschenrechner im RAD-Modus und $\\sin(30)$ eingegeben $\\approx -0{,}988$ — falsches Winkelmaß!`,
+    hints: [
+      'Welches Winkelmaß? Grad. Welche Grundwerte kennst du auswendig?',
+      'Muster: $\\sin(0°) = 0$, $\\sin(30°) = ?$, $\\sin(45°) = \\dfrac{\\sqrt{2}}{2}$, $\\sin(60°) = \\dfrac{\\sqrt{3}}{2}$, $\\sin(90°) = 1$.',
+      'Am Einheitskreis: y-Koordinate bei $30°$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
+    ],
   },
   'ex-trig-1-3-b': {
     id: 'ex-trig-1-3-b', lessonId: 'trig-1-3', type: 'multiple-choice',
-    question: 'cos(60°) =',
-    options: ['√3/2', '√2/2', '1/2', '0'],
+    question: '$\\cos(60°) = $?',
+    options: ['$\\dfrac{\\sqrt{3}}{2}$', '$\\dfrac{\\sqrt{2}}{2}$', '$\\dfrac{1}{2}$', '$0$'],
     correctIndex: 2,
-    explanation: 'cos(60°) = 1/2. Beachte: cos(60°) = sin(30°) — Komplementwinkel!',
-    hints: ['cos(α) = sin(90° - α)', 'cos(60°) = sin(30°) = ?'],
+    explanation: `**Ansatz:** Grundwert oder Komplementärformel nutzen.
+
+**Regel:** $\\cos(\\alpha) = \\sin(90° - \\alpha)$. Also $\\cos(60°) = \\sin(30°) = \\dfrac{1}{2}$.
+
+**Am Einheitskreis:** $60° = \\dfrac{\\pi}{3}$. Der Punkt liegt bei $\\left(\\dfrac{1}{2}, \\dfrac{\\sqrt{3}}{2}\\right)$ — die x-Koordinate ist $\\dfrac{1}{2}$.
+
+**Probe:** $\\sin^{2}(60°) + \\cos^{2}(60°) = \\dfrac{3}{4} + \\dfrac{1}{4} = 1$. ✓
+
+**Typischer Fehler:** $\\dfrac{\\sqrt{3}}{2}$ wählen — das ist $\\sin(60°)$, nicht $\\cos(60°)$. Merke: Bei $60°$ ist $\\cos$ der *kleinere* Wert, bei $30°$ ist $\\sin$ der *kleinere*.`,
+    hints: [
+      'Welches Winkelmaß? Grad. Skizze am Einheitskreis: wo liegt $60°$?',
+      'Nutze $\\cos(\\alpha) = \\sin(90° - \\alpha)$.',
+      'Am Einheitskreis heißt das: x-Koordinate bei $60°$ ablesen. Taschenrechner im richtigen Modus (DEG oder RAD)!',
+    ],
   },
   'ex-trig-1-3-c': {
     id: 'ex-trig-1-3-c', lessonId: 'trig-1-3', type: 'multiple-choice',
-    question: 'sin(45°) =',
-    options: ['1/2', '√2/2', '√3/2', '1'],
+    question: '$\\sin(45°) = $?',
+    options: ['$\\dfrac{1}{2}$', '$\\dfrac{\\sqrt{2}}{2}$', '$\\dfrac{\\sqrt{3}}{2}$', '$1$'],
     correctIndex: 1,
-    explanation: 'sin(45°) = cos(45°) = √2/2 ≈ 0,707. Bei 45° sind sin und cos gleich.',
-    hints: ['Bei 45° ist das rechtwinklige Dreieck gleichschenklig.'],
+    explanation: `**Ansatz:** Aus dem gleichschenklig-rechtwinkligen Dreieck.
+
+**Herleitung:** Ein rechtwinkliges Dreieck mit zwei $45°$-Winkeln hat gleiche Katheten ($G = A$) und Hypotenuse $H = \\sqrt{2} \\cdot G$ (Pythagoras). Also:
+$$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2} \\cdot G} = \\dfrac{1}{\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2} \\approx 0{,}707.$$
+
+**Am Einheitskreis:** $45° = \\dfrac{\\pi}{4}$. Der Punkt liegt bei $\\left(\\dfrac{\\sqrt{2}}{2}, \\dfrac{\\sqrt{2}}{2}\\right)$ — x = y, die Winkelhalbierende.
+
+**Wichtig:** Bei $45°$ gilt $\\sin(45°) = \\cos(45°)$, daher $\\tan(45°) = 1$.
+
+**Typischer Fehler:** $\\dfrac{1}{\\sqrt{2}}$ nicht rationalisieren und als Endform stehen lassen.`,
+    hints: [
+      'Welches Winkelmaß? Grad. Skizze: gleichschenkliges rechtwinkliges Dreieck.',
+      'Bei $45°$: Katheten gleich lang, Hypotenuse $= \\sqrt{2} \\cdot$ Kathete.',
+      'Am Einheitskreis: Punkt liegt auf der Winkelhalbierenden $y = x$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
+    ],
   },
   'ex-trig-1-3-d': {
     id: 'ex-trig-1-3-d', lessonId: 'trig-1-3', type: 'multiple-choice',
-    question: 'tan(45°) =',
-    options: ['0', '1/2', '1', '√3'],
+    question: '$\\tan(45°) = $?',
+    options: ['$0$', '$\\dfrac{1}{2}$', '$1$', '$\\sqrt{3}$'],
     correctIndex: 2,
-    explanation: 'tan(45°) = sin(45°)/cos(45°) = 1. Beide Werte sind gleich.',
-    hints: ['tan = sin/cos. Bei 45° gilt sin = cos.'],
+    explanation: `**Ansatz:** $\\tan = \\dfrac{\\sin}{\\cos}$.
+
+**Rechnung:** $\\tan(45°) = \\dfrac{\\sin(45°)}{\\cos(45°)} = \\dfrac{\\sqrt{2}/2}{\\sqrt{2}/2} = 1$.
+
+**Am Einheitskreis:** Bei $45°$ ist der Punkt $\\left(\\dfrac{\\sqrt{2}}{2}, \\dfrac{\\sqrt{2}}{2}\\right)$. Die Steigung der Geraden vom Ursprung dorthin ist $\\dfrac{y}{x} = 1$ — die Winkelhalbierende hat Steigung $1$.
+
+**Probe:** $45°$ = gleichschenkliges rechtwinkliges Dreieck, Katheten gleich lang: $\\tan(45°) = \\dfrac{G}{A} = 1$. ✓
+
+**Typischer Fehler:** DEG/RAD-Verwechslung: $\\tan(45)$ im RAD-Modus $\\approx 1{,}62$, nicht $1$.`,
+    hints: [
+      'Welches Winkelmaß? Grad. Skizze: $45°$ ist Symmetrieachse im 1. Quadrant.',
+      'Formel: $\\tan(\\alpha) = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)}$.',
+      'Bei $45°$ gilt $\\sin = \\cos$, also ist der Quotient $= 1$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
+    ],
   },
   'ex-trig-1-3-mastery': {
     id: 'ex-trig-1-3-mastery', lessonId: 'trig-1-3', type: 'multiple-choice', isMasteryCheck: true,
-    question: 'Welcher Wert ist FALSCH?',
-    options: ['sin(0°) = 0', 'cos(0°) = 1', 'sin(90°) = 0', 'tan(0°) = 0'],
+    question: '[PRÜFUNG] Welcher Wert ist FALSCH?',
+    options: ['$\\sin(0°) = 0$', '$\\cos(0°) = 1$', '$\\sin(90°) = 0$', '$\\tan(0°) = 0$'],
     correctIndex: 2,
-    explanation: 'sin(90°) = 1, nicht 0! Am oberen Punkt des Einheitskreises ist die y-Koordinate = 1.',
-    hints: ['Am Einheitskreis: sin(90°) ist die y-Koordinate bei 90°.'],
+    explanation: `**Ansatz:** Jede Aussage am Einheitskreis prüfen.
+
+**Prüfung:**
+- $\\sin(0°) = 0$: Punkt $(1,0)$, y-Koordinate $= 0$ ✓
+- $\\cos(0°) = 1$: Punkt $(1,0)$, x-Koordinate $= 1$ ✓
+- $\\sin(90°) = 0$: FALSCH. Punkt $(0,1)$, y-Koordinate $= 1$, also $\\sin(90°) = 1$.
+- $\\tan(0°) = 0$: $\\tan(0°) = \\dfrac{0}{1} = 0$ ✓
+
+**Am Einheitskreis:** Bei $90°$ steht der Punkt oben auf $(0, 1)$. Die y-Koordinate ist $1$, die x-Koordinate ist $0$. Also $\\sin(90°) = 1$ (nicht $0$!) und $\\cos(90°) = 0$.
+
+**Typischer Fehler:** $\\sin$ und $\\cos$ bei $0°/90°$ verwechseln. Merke: $\\sin(0°) = 0$ (kein Anteil nach oben), $\\sin(90°) = 1$ (maximaler Anteil nach oben).`,
+    hints: [
+      'Prüfe jeden Wert einzeln am Einheitskreis — Skizze hilft.',
+      'Bei $90°$: Wo liegt der Punkt? Welche Koordinate ist sin, welche cos?',
+      'Am Einheitskreis heißt das: $\\sin(\\alpha) = y$, $\\cos(\\alpha) = x$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
+    ],
   },
 
-  // Lektion 1-4: Taschenrechner
+  // ───────────── Lektion 1-4: Vorzeichen und Quadranten ─────────────
   'ex-trig-1-4-a': {
     id: 'ex-trig-1-4-a', lessonId: 'trig-1-4', type: 'multiple-choice',
-    question: 'Im zweiten Quadranten (90°–180°) ist:',
-    options: ['sin > 0, cos > 0', 'sin > 0, cos < 0', 'sin < 0, cos < 0', 'sin < 0, cos > 0'],
+    question: 'Im zweiten Quadranten ($90°$–$180°$) ist:',
+    options: ['$\\sin > 0$, $\\cos > 0$', '$\\sin > 0$, $\\cos < 0$', '$\\sin < 0$, $\\cos < 0$', '$\\sin < 0$, $\\cos > 0$'],
     correctIndex: 1,
-    explanation: 'Im 2. Quadranten: x < 0 (→ cos < 0), y > 0 (→ sin > 0). Merkhilfe: "All Students Take Calculus" — im 2. Quadrant nur Sinus positiv.',
-    hints: ['Am Einheitskreis: cos = x-Koordinate, sin = y-Koordinate.'],
+    explanation: `**Ansatz:** ASTC-Regel oder Koordinaten am Einheitskreis prüfen.
+
+**Am Einheitskreis:** Im 2. Quadrant liegt der Punkt links-oben: $x < 0$, $y > 0$.
+- $\\cos(\\alpha) = x < 0$ (negativ)
+- $\\sin(\\alpha) = y > 0$ (positiv)
+
+**Eselsbrücke ASTC** ("All Students Take Calculus"):
+- 1. Q: Alle positiv
+- 2. Q: nur Sinus positiv
+- 3. Q: nur Tangens positiv
+- 4. Q: nur Cosinus positiv
+
+**Beispiel:** $\\sin(120°) = \\dfrac{\\sqrt{3}}{2} > 0$, $\\cos(120°) = -\\dfrac{1}{2} < 0$. ✓
+
+**Typischer Fehler:** ASTC in falsche Reihenfolge setzen. Merke: Die Buchstaben laufen *gegen den Uhrzeigersinn* durch die Quadranten, startend bei 1.`,
+    hints: [
+      'Skizze: Zeichne den 2. Quadrant ein und markiere einen Punkt darin.',
+      'Am Einheitskreis: $\\cos = x$-Koordinate, $\\sin = y$-Koordinate. Welches Vorzeichen?',
+      'ASTC-Regel: In welchem Quadrant ist *welche* Funktion positiv?',
+    ],
   },
   'ex-trig-1-4-b': {
     id: 'ex-trig-1-4-b', lessonId: 'trig-1-4', type: 'multiple-choice',
-    question: 'sin(150°) =',
-    options: ['-1/2', '0', '1/2', '√3/2'],
+    question: '$\\sin(150°) = $?',
+    options: ['$-\\dfrac{1}{2}$', '$0$', '$\\dfrac{1}{2}$', '$\\dfrac{\\sqrt{3}}{2}$'],
     correctIndex: 2,
-    explanation: 'sin(150°) = sin(180° - 30°) = sin(30°) = 1/2. Im 2. Quadrant bleibt sin positiv.',
-    hints: ['150° liegt im 2. Quadranten. sin ist dort positiv.', 'sin(180° - α) = sin(α)'],
+    explanation: `**Ansatz:** Reduktionsformel $\\sin(180° - \\alpha) = \\sin(\\alpha)$ anwenden.
+
+**Rechnung:** $\\sin(150°) = \\sin(180° - 30°) = \\sin(30°) = \\dfrac{1}{2}$.
+
+**Am Einheitskreis:** $150°$ liegt im 2. Quadrant. Der Referenzwinkel zur x-Achse ist $180° - 150° = 30°$. Im 2. Quadrant bleibt $\\sin$ positiv (ASTC: "Students"), also $\\sin(150°) = +\\sin(30°) = \\dfrac{1}{2}$.
+
+**Probe (Taschenrechner, DEG-Modus):** $\\sin(150°) = 0{,}5$ ✓.
+
+**Typischer Fehler:** Vorzeichen im 2. Quadrant vergessen und $-\\dfrac{1}{2}$ angeben — das wäre nur richtig, wenn der Winkel im 3. oder 4. Quadrant läge.`,
+    hints: [
+      'Welches Winkelmaß? Grad. Skizze: $150°$ liegt wo am Einheitskreis?',
+      'Formel: $\\sin(180° - \\alpha) = \\sin(\\alpha)$. Hier $\\alpha = 30°$.',
+      'Im 2. Quadrant ist $\\sin$ positiv (ASTC). Taschenrechner im richtigen Modus (DEG oder RAD)!',
+    ],
   },
   'ex-trig-1-4-mastery': {
     id: 'ex-trig-1-4-mastery', lessonId: 'trig-1-4', type: 'multiple-choice', isMasteryCheck: true,
-    question: 'cos(120°) =',
-    options: ['1/2', '√3/2', '-1/2', '-√3/2'],
+    question: '[PRÜFUNG] $\\cos(120°) = $?',
+    options: ['$\\dfrac{1}{2}$', '$\\dfrac{\\sqrt{3}}{2}$', '$-\\dfrac{1}{2}$', '$-\\dfrac{\\sqrt{3}}{2}$'],
     correctIndex: 2,
-    explanation: 'cos(120°) = -cos(60°) = -1/2. Im 2. Quadranten ist cos negativ.',
-    hints: ['120° = 180° - 60°. cos(180° - α) = -cos(α).'],
+    explanation: `**Ansatz:** Reduktionsformel $\\cos(180° - \\alpha) = -\\cos(\\alpha)$.
+
+**Rechnung:** $\\cos(120°) = \\cos(180° - 60°) = -\\cos(60°) = -\\dfrac{1}{2}$.
+
+**Am Einheitskreis:** $120°$ liegt im 2. Quadrant. Referenzwinkel $= 180° - 120° = 60°$. Im 2. Quadrant ist $\\cos < 0$ (ASTC: nur "Students"/Sinus positiv), daher Vorzeichen kehren: $\\cos(120°) = -\\cos(60°)$.
+
+**Koordinaten:** Bei $120°$: Punkt $\\left(-\\dfrac{1}{2}, \\dfrac{\\sqrt{3}}{2}\\right)$. x-Koordinate $= -\\dfrac{1}{2} = \\cos(120°)$. ✓
+
+**Probe (Taschenrechner, DEG-Modus):** $\\cos(120°) = -0{,}5$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen und $+\\dfrac{1}{2}$ angeben.`,
+    hints: [
+      'Welches Winkelmaß? Grad. Skizze: $120°$ ist im 2. Quadrant.',
+      'Formel: $\\cos(180° - \\alpha) = -\\cos(\\alpha)$.',
+      'Am Einheitskreis: x-Koordinate bei $120°$ ist negativ. Taschenrechner im richtigen Modus (DEG oder RAD)!',
+    ],
   },
 }
 
@@ -143,7 +354,7 @@ const lessons_u1 = [
     id: 'trig-1-1', unitId: 'trig-unit-1',
     title: 'Winkel und ihre Maße',
     order: 1, estimatedMinutes: 10,
-    learningGoals: ['Grad- und Bogenmaß umrechnen', 'Bedeutung von π im Einheitskreis verstehen'],
+    learningGoals: ['Grad- und Bogenmaß umrechnen', 'Bedeutung von π im Einheitskreis verstehen', 'DEG/RAD-Modus am Taschenrechner sicher wählen'],
     prerequisites: [],
     nextLessonId: 'trig-1-2',
     steps: [
@@ -153,64 +364,73 @@ const lessons_u1 = [
 
 Das gebräuchlichste Maß ist das **Gradmaß**: Der volle Kreis hat **360°**. Das ist eine willkürliche Wahl (aus dem babylonischen Zahlensystem).
 
-In der Mathematik und Technik verwendet man aber oft das **Bogenmaß (Radiant)**: Hier wird die Bogenlänge am Einheitskreis (Radius = 1) als Winkelmaß verwendet. Der volle Kreis hat **2π Radiant** ≈ 6,28 rad.`,
+In der Mathematik und Technik verwendet man aber oft das **Bogenmaß (Radiant)**: Hier wird die Bogenlänge am Einheitskreis (Radius = 1) als Winkelmaß verwendet. Der volle Kreis hat **$2\\pi$ Radiant** ≈ 6,28 rad.
+
+**Am Einheitskreis heißt das:** Der Bogen, den du beim Drehen um den Winkel $\\alpha$ auf dem Einheitskreis zurücklegst, ist exakt $\\alpha_{\\text{rad}}$ lang. Beim Vollumlauf ist der Bogen gerade der Kreisumfang $U = 2\\pi r = 2\\pi \\cdot 1 = 2\\pi$. Daher $360° \\widehat{=} 2\\pi$ rad.
+
+**Praxishinweis:** Taschenrechner im richtigen Modus (DEG oder RAD) — der häufigste Fehler in Prüfungen!`,
       },
       {
         id: 'trig-1-1-s2', type: 'explanation-formal', title: 'Umrechnungsformel',
         content: `**Umrechnung Grad ↔ Radiant:**
 
-$$\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\frac{\\pi}{180}$$
+$$\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\dfrac{\\pi}{180}$$
 
-$$\\alpha_{\\circ} = \\alpha_{\\text{rad}} \\cdot \\frac{180}{\\pi}$$
+$$\\alpha_{\\circ} = \\alpha_{\\text{rad}} \\cdot \\dfrac{180}{\\pi}$$
 
 **Wichtige Werte auswendig lernen:**
 
-| Grad | Radiant |
-|------|---------|
-| 0°   | 0       |
-| 30°  | π/6     |
-| 45°  | π/4     |
-| 60°  | π/3     |
-| 90°  | π/2     |
-| 180° | π       |
-| 360° | 2π      |`,
+| Grad | Radiant    |
+|------|------------|
+| $0°$   | $0$          |
+| $30°$  | $\\pi/6$     |
+| $45°$  | $\\pi/4$     |
+| $60°$  | $\\pi/3$     |
+| $90°$  | $\\pi/2$     |
+| $180°$ | $\\pi$       |
+| $270°$ | $3\\pi/2$    |
+| $360°$ | $2\\pi$      |
+
+**Merke:** Am Taschenrechner *immer* zuerst DEG/RAD prüfen. Im Zweifel mit $\\sin(90°) = 1$ oder $\\sin(\\pi/2) = 1$ testen.`,
       },
-      { id: 'trig-1-1-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-trig-1-1-a' },
-      { id: 'trig-1-1-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-trig-1-1-b' },
-      { id: 'trig-1-1-s5', type: 'exercise', title: 'Aufgabe 3', exerciseRef: 'ex-trig-1-1-c' },
-      { id: 'trig-1-1-s6', type: 'mastery-check', title: 'Verständnischeck', exerciseRef: 'ex-trig-1-1-mastery' },
+      { id: 'trig-1-1-s3', type: 'exercise', title: 'Aufgabe 1 — 90° in Radiant', exerciseRef: 'ex-trig-1-1-a' },
+      { id: 'trig-1-1-s4', type: 'exercise', title: 'Aufgabe 2 — π in Grad', exerciseRef: 'ex-trig-1-1-b' },
+      { id: 'trig-1-1-s5', type: 'exercise', title: 'Aufgabe 3 — 270° in Radiant', exerciseRef: 'ex-trig-1-1-c' },
+      { id: 'trig-1-1-s6', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-trig-1-1-mastery' },
     ],
   },
   {
     id: 'trig-1-2', unitId: 'trig-unit-1',
     title: 'Rechtwinkliges Dreieck',
     order: 2, estimatedMinutes: 12,
-    learningGoals: ['sin, cos, tan als Seitenverhältnisse kennen', 'SOH-CAH-TOA anwenden'],
+    learningGoals: ['sin, cos, tan als Seitenverhältnisse kennen', 'SOH-CAH-TOA anwenden', 'Verbindung zum Einheitskreis herstellen'],
     prerequisites: ['trig-1-1'],
     nextLessonId: 'trig-1-3',
     steps: [
       {
         id: 'trig-1-2-s1', type: 'explanation-intuitive', title: 'Seitenverhältnisse im Dreieck',
-        content: `Betrachte ein rechtwinkliges Dreieck mit einem Winkel α (nicht der rechte Winkel).
+        content: `Betrachte ein rechtwinkliges Dreieck mit einem Winkel $\\alpha$ (nicht der rechte Winkel).
 
 Die drei Seiten heißen:
 - **Hypotenuse (H)**: die längste Seite, gegenüber dem rechten Winkel
-- **Gegenkathete (G)**: die Seite gegenüber von α
-- **Ankathete (A)**: die Seite neben α (nicht die Hypotenuse)
+- **Gegenkathete (G)**: die Seite gegenüber von $\\alpha$
+- **Ankathete (A)**: die Seite neben $\\alpha$ (nicht die Hypotenuse)
 
-Die trigonometrischen Funktionen sind **Verhältnisse dieser Seiten**.`,
+Die trigonometrischen Funktionen sind **Verhältnisse dieser Seiten**.
+
+**Am Einheitskreis heißt das:** Skaliere das Dreieck so, dass $H = 1$. Dann liegt der Scheitel des Winkels im Ursprung, und der gegenüberliegende Eckpunkt ist ein Punkt auf dem Einheitskreis mit Koordinaten $(\\cos\\alpha, \\sin\\alpha) = (A, G)$. Die Definitionen aus dem Dreieck und dem Einheitskreis sind damit identisch.`,
       },
       {
         id: 'trig-1-2-s2', type: 'explanation-formal', title: 'SOH-CAH-TOA',
         content: `**Merkhilfe: SOH-CAH-TOA**
 
-$$\\sin(\\alpha) = \\frac{G}{H} = \\frac{\\text{Gegenkathete}}{\\text{Hypotenuse}}$$
+$$\\sin(\\alpha) = \\dfrac{G}{H} = \\dfrac{\\text{Gegenkathete}}{\\text{Hypotenuse}}$$
 
-$$\\cos(\\alpha) = \\frac{A}{H} = \\frac{\\text{Ankathete}}{\\text{Hypotenuse}}$$
+$$\\cos(\\alpha) = \\dfrac{A}{H} = \\dfrac{\\text{Ankathete}}{\\text{Hypotenuse}}$$
 
-$$\\tan(\\alpha) = \\frac{G}{A} = \\frac{\\text{Gegenkathete}}{\\text{Ankathete}} = \\frac{\\sin(\\alpha)}{\\cos(\\alpha)}$$
+$$\\tan(\\alpha) = \\dfrac{G}{A} = \\dfrac{\\text{Gegenkathete}}{\\text{Ankathete}} = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)}$$
 
-**Wichtig:** Diese Definitionen gelten nur im rechtwinkligen Dreieck und nur für Winkel zwischen 0° und 90°. Für andere Winkel brauchen wir den Einheitskreis.`,
+**Wichtig:** Diese Definitionen gelten im rechtwinkligen Dreieck direkt nur für Winkel zwischen $0°$ und $90°$. Für beliebige Winkel brauchen wir den Einheitskreis — dort gilt $\\sin(\\alpha) = y$ und $\\cos(\\alpha) = x$ für *jeden* reellen $\\alpha$.`,
       },
       {
         id: 'trig-1-2-s-herleitung',
@@ -248,92 +468,98 @@ $$\\tan(\\alpha) = \\frac{G}{A} = \\frac{\\text{Gegenkathete}}{\\text{Ankathete}
         wrong:
           '**Fehler A:** „$\\sin(\\alpha) = A/H$" — Ankathete durch Hypotenuse.\n\n**Fehler B:** $\\sin(30) = -0{,}988$. (Taschenrechner steht im Radiant-Modus.)',
         right:
-          '**Richtig A:** $\\sin(\\alpha) = \\frac{\\text{Gegenkathete}}{\\text{Hypotenuse}}$. Eselsbrücke SOH: **S**inus = **O**pposite/**H**ypotenuse.\n\n**Richtig B:** $\\sin(30°) = 0{,}5$. Taschenrechner auf DEG umstellen — oder im Radiant $\\sin(\\pi/6) = 0{,}5$ rechnen.',
+          '**Richtig A:** $\\sin(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Hypotenuse}}$. Eselsbrücke SOH: **S**inus = **O**pposite/**H**ypotenuse.\n\n**Richtig B:** $\\sin(30°) = 0{,}5$. Taschenrechner auf DEG umstellen — oder im Radiant $\\sin(\\pi/6) = 0{,}5$ rechnen.',
         hint: 'Immer beim Ergebnis auf Plausibilität prüfen: $\\sin$ eines spitzen Winkels liegt zwischen 0 und 1. Negative Werte sind dort ein Warnsignal für DEG/RAD-Fehler.',
       },
-      { id: 'trig-1-2-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-trig-1-2-a' },
-      { id: 'trig-1-2-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-trig-1-2-b' },
-      { id: 'trig-1-2-s5', type: 'exercise', title: 'Aufgabe 3', exerciseRef: 'ex-trig-1-2-c' },
-      { id: 'trig-1-2-s6', type: 'mastery-check', title: 'Verständnischeck', exerciseRef: 'ex-trig-1-2-mastery' },
+      { id: 'trig-1-2-s3', type: 'exercise', title: 'Aufgabe 1 — Sinus definieren', exerciseRef: 'ex-trig-1-2-a' },
+      { id: 'trig-1-2-s4', type: 'exercise', title: 'Aufgabe 2 — Cosinus definieren', exerciseRef: 'ex-trig-1-2-b' },
+      { id: 'trig-1-2-s5', type: 'exercise', title: 'Aufgabe 3 — Tangens definieren', exerciseRef: 'ex-trig-1-2-c' },
+      { id: 'trig-1-2-s6', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-trig-1-2-mastery' },
     ],
   },
   {
     id: 'trig-1-3', unitId: 'trig-unit-1',
     title: 'Die Grundwerte',
     order: 3, estimatedMinutes: 15,
-    learningGoals: ['Werte für 0°, 30°, 45°, 60°, 90° auswendig kennen', 'Muster in den Grundwerten erkennen'],
+    learningGoals: ['Werte für 0°, 30°, 45°, 60°, 90° auswendig kennen', 'Muster in den Grundwerten erkennen', 'Grundwerte am Einheitskreis ablesen'],
     prerequisites: ['trig-1-2'],
     nextLessonId: 'trig-1-4',
     steps: [
       {
         id: 'trig-1-3-s1', type: 'explanation-intuitive', title: 'Warum diese Winkel?',
-        content: `In der Technik begegnen dir immer wieder dieselben "speziellen" Winkel: **0°, 30°, 45°, 60°, 90°**.
+        content: `In der Technik begegnen dir immer wieder dieselben "speziellen" Winkel: **$0°$, $30°$, $45°$, $60°$, $90°$**.
 
-Der Grund: Diese Winkel kommen in regelmäßigen Geometrien vor (gleichseitiges Dreieck → 60°, gleichschenkliges rechtwinkliges Dreieck → 45°) und haben exakte, schöne Werte — keine krummen Dezimalzahlen.`,
+Der Grund: Diese Winkel kommen in regelmäßigen Geometrien vor (gleichseitiges Dreieck → $60°$, gleichschenkliges rechtwinkliges Dreieck → $45°$) und haben exakte, schöne Werte — keine krummen Dezimalzahlen.
+
+**Am Einheitskreis heißt das:** Die fünf Winkel erzeugen fünf Punkte mit besonders einfachen Koordinaten. Merkst du dir die Koordinaten $(\\cos\\alpha, \\sin\\alpha)$ dieser Punkte, hast du die gesamte Grundwerte-Tabelle auswendig.`,
       },
       {
         id: 'trig-1-3-s2', type: 'explanation-formal', title: 'Tabelle der Grundwerte',
-        content: `**Eselsbrücke:** Die Sinuswerte folgen dem Muster **√0/2, √1/2, √2/2, √3/2, √4/2**:
+        content: `**Eselsbrücke:** Die Sinuswerte folgen dem Muster $\\dfrac{\\sqrt{0}}{2}, \\dfrac{\\sqrt{1}}{2}, \\dfrac{\\sqrt{2}}{2}, \\dfrac{\\sqrt{3}}{2}, \\dfrac{\\sqrt{4}}{2}$:
 
-| Winkel | sin      | cos      | tan       |
-|--------|----------|----------|-----------|
-| 0°     | 0        | 1        | 0         |
-| 30°    | 1/2      | √3/2     | 1/√3      |
-| 45°    | √2/2     | √2/2     | 1         |
-| 60°    | √3/2     | 1/2      | √3        |
-| 90°    | 1        | 0        | —         |
+| Winkel | $\\sin$     | $\\cos$     | $\\tan$        |
+|--------|-------------|-------------|----------------|
+| $0°$     | $0$           | $1$           | $0$              |
+| $30°$    | $1/2$         | $\\sqrt{3}/2$ | $1/\\sqrt{3}$    |
+| $45°$    | $\\sqrt{2}/2$ | $\\sqrt{2}/2$ | $1$              |
+| $60°$    | $\\sqrt{3}/2$ | $1/2$         | $\\sqrt{3}$      |
+| $90°$    | $1$           | $0$           | —              |
 
-**Beachte:** cos(α) = sin(90° - α) — Sinus und Kosinus sind "komplementär"!`,
+**Beachte:** $\\cos(\\alpha) = \\sin(90° - \\alpha)$ — Sinus und Kosinus sind "komplementär"! Die cos-Zeile ist die sin-Zeile rückwärts gelesen.
+
+**Taschenrechner-Check:** $\\sin(30°) = 0{,}5$ im DEG-Modus. Bekommst du $-0{,}988$, steht der Rechner im RAD.`,
       },
       {
         id: 'trig-1-3-s3', type: 'visualization', title: 'Einheitskreis erkunden',
         visualizationId: 'trig-explorer',
         params: { initialAngle: 30, showTangent: false },
       },
-      { id: 'trig-1-3-s4', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-trig-1-3-a' },
-      { id: 'trig-1-3-s5', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-trig-1-3-b' },
-      { id: 'trig-1-3-s6', type: 'exercise', title: 'Aufgabe 3', exerciseRef: 'ex-trig-1-3-c' },
-      { id: 'trig-1-3-s7', type: 'exercise', title: 'Aufgabe 4', exerciseRef: 'ex-trig-1-3-d' },
-      { id: 'trig-1-3-s8', type: 'mastery-check', title: 'Verständnischeck', exerciseRef: 'ex-trig-1-3-mastery' },
+      { id: 'trig-1-3-s4', type: 'exercise', title: 'Aufgabe 1 — sin(30°)', exerciseRef: 'ex-trig-1-3-a' },
+      { id: 'trig-1-3-s5', type: 'exercise', title: 'Aufgabe 2 — cos(60°)', exerciseRef: 'ex-trig-1-3-b' },
+      { id: 'trig-1-3-s6', type: 'exercise', title: 'Aufgabe 3 — sin(45°)', exerciseRef: 'ex-trig-1-3-c' },
+      { id: 'trig-1-3-s7', type: 'exercise', title: 'Aufgabe 4 — tan(45°)', exerciseRef: 'ex-trig-1-3-d' },
+      { id: 'trig-1-3-s8', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-trig-1-3-mastery' },
     ],
   },
   {
     id: 'trig-1-4', unitId: 'trig-unit-1',
     title: 'Vorzeichen und Quadranten',
     order: 4, estimatedMinutes: 12,
-    learningGoals: ['Vorzeichen von sin/cos/tan in allen vier Quadranten bestimmen', 'Winkel > 90° berechnen'],
+    learningGoals: ['Vorzeichen von sin/cos/tan in allen vier Quadranten bestimmen', 'Winkel > 90° berechnen', 'Reduktionsformeln am Einheitskreis herleiten'],
     prerequisites: ['trig-1-3'],
     nextLessonId: 'trig-2-1',
     steps: [
       {
         id: 'trig-1-4-s1', type: 'explanation-intuitive', title: 'Über den ersten Quadranten hinaus',
-        content: `Bis jetzt haben wir nur Winkel zwischen 0° und 90° betrachtet. Aber in der Technik kommen auch größere Winkel vor — z.B. Phasenwinkel in der Elektrotechnik oder Kurbelwinkel in Motoren.
+        content: `Bis jetzt haben wir nur Winkel zwischen $0°$ und $90°$ betrachtet. Aber in der Technik kommen auch größere Winkel vor — z.B. Phasenwinkel in der Elektrotechnik oder Kurbelwinkel in Motoren.
 
-Am Einheitskreis können wir jeden Winkel darstellen, nicht nur die zwischen 0° und 90°. Die vier Quadranten haben unterschiedliche Vorzeichen für sin und cos.`,
+**Am Einheitskreis heißt das:** Jeder Winkel lässt sich als Drehwinkel eines Punkts auf dem Kreis darstellen, nicht nur $0°$–$90°$. Je nach Quadrant hat der Punkt unterschiedliche Vorzeichen für x und y — und damit für $\\cos$ und $\\sin$.`,
       },
       {
         id: 'trig-1-4-s2', type: 'explanation-formal', title: 'Vorzeichen-Regel (ASTC)',
         content: `**Merkhilfe "All Students Take Calculus" (ASTC):**
 
-- **1. Quadrant (0°–90°):** **A**lle positiv (sin > 0, cos > 0, tan > 0)
-- **2. Quadrant (90°–180°):** Nur **S**inus positiv
-- **3. Quadrant (180°–270°):** Nur **T**angens positiv
-- **4. Quadrant (270°–360°):** Nur **C**osinus positiv
+- **1. Quadrant ($0°$–$90°$):** **A**lle positiv ($\\sin > 0$, $\\cos > 0$, $\\tan > 0$)
+- **2. Quadrant ($90°$–$180°$):** Nur **S**inus positiv
+- **3. Quadrant ($180°$–$270°$):** Nur **T**angens positiv
+- **4. Quadrant ($270°$–$360°$):** Nur **C**osinus positiv
 
 **Reduktionsformeln:**
-- sin(180° - α) = sin(α)
-- cos(180° - α) = -cos(α)
-- sin(180° + α) = -sin(α)
-- cos(360° - α) = cos(α)`,
+- $\\sin(180° - \\alpha) = \\sin(\\alpha)$
+- $\\cos(180° - \\alpha) = -\\cos(\\alpha)$
+- $\\sin(180° + \\alpha) = -\\sin(\\alpha)$
+- $\\cos(360° - \\alpha) = \\cos(\\alpha)$
+
+**Strategie:** Finde den Referenzwinkel (Abstand zur x-Achse im 1. Quadrant), rechne $\\sin$/$\\cos$ damit, setze das Vorzeichen aus ASTC davor.`,
       },
       {
         id: 'trig-1-4-s3', type: 'visualization', title: 'Vorzeichen erkunden',
         visualizationId: 'trig-explorer',
         params: { initialAngle: 120, showTangent: true },
       },
-      { id: 'trig-1-4-s4', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-trig-1-4-a' },
-      { id: 'trig-1-4-s5', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-trig-1-4-b' },
-      { id: 'trig-1-4-s6', type: 'mastery-check', title: 'Verständnischeck', exerciseRef: 'ex-trig-1-4-mastery' },
+      { id: 'trig-1-4-s4', type: 'exercise', title: 'Aufgabe 1 — Vorzeichen im 2. Quadrant', exerciseRef: 'ex-trig-1-4-a' },
+      { id: 'trig-1-4-s5', type: 'exercise', title: 'Aufgabe 2 — sin(150°)', exerciseRef: 'ex-trig-1-4-b' },
+      { id: 'trig-1-4-s6', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-trig-1-4-mastery' },
     ],
   },
 ]
