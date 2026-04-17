@@ -1,47 +1,40 @@
-import { UnitCircle } from './UnitCircle'
-import { FunctionGraph } from './FunctionGraph'
-import { DerivativeGraph } from './DerivativeGraph'
-import { VectorDiagram } from './VectorDiagram'
-import { TrigExplorer } from './TrigExplorer'
-import { LimitExplorer } from './LimitExplorer'
-import { SinWaveExplorer } from './SinWaveExplorer'
-import { ForceParallelogram } from './ForceParallelogram'
-import { BeamReactions } from './BeamReactions'
-import { InteractiveBeam } from './InteractiveBeam'
-import { IntegralArea } from './IntegralArea'
-import { ComplexPlane } from './ComplexPlane'
-import { TaylorApproximation } from './TaylorApproximation'
-import { FreeBodyDiagram } from './FreeBodyDiagram'
-import { EigenvectorViz } from './EigenvectorViz'
-import { LagerIllustration } from './LagerIllustration'
-import { Vector3D } from './Vector3D'
-import { StressStrainDiagram } from './StressStrainDiagram'
-import { SpringMassDamper } from './SpringMassDamper'
-import { MohrCircle } from './MohrCircle'
-import { PVDiagram } from './PVDiagram'
+import { lazy, Suspense } from 'react'
+
+// Lazy-Loading: jede Visualisierung ist ein eigener Bundle-Split, der erst geladen
+// wird, wenn eine Lektion sie konkret verwendet. Ohne diesen Split landen alle 21
+// Komponenten (Canvas-Rendering, D3-Math, Physik-Sim) im Haupt-Chunk.
+const lazyNamed = (loader, name) => lazy(() => loader().then((m) => ({ default: m[name] })))
 
 const VIZ_MAP = {
-  'unit-circle':      UnitCircle,
-  'function-graph':   FunctionGraph,
-  'derivative-graph': DerivativeGraph,
-  'vector-diagram':   VectorDiagram,
-  'trig-explorer':    TrigExplorer,
-  'limit-explorer':   LimitExplorer,
-  'sin-wave-explorer': SinWaveExplorer,
-  'force-parallelogram': ForceParallelogram,
-  'beam-reactions':   BeamReactions,
-  'interactive-beam': InteractiveBeam,
-  'integral-area':    IntegralArea,
-  'complex-plane':    ComplexPlane,
-  'taylor-approx':    TaylorApproximation,
-  'free-body-diagram': FreeBodyDiagram,
-  'eigenvector-viz':   EigenvectorViz,
-  'lager-illustration': LagerIllustration,
-  'vector-3d':         Vector3D,
-  'stress-strain':    StressStrainDiagram,
-  'spring-mass-damper': SpringMassDamper,
-  'mohr-circle':      MohrCircle,
-  'pv-diagram':       PVDiagram,
+  'unit-circle':         lazyNamed(() => import('./UnitCircle'),         'UnitCircle'),
+  'function-graph':      lazyNamed(() => import('./FunctionGraph'),      'FunctionGraph'),
+  'derivative-graph':    lazyNamed(() => import('./DerivativeGraph'),    'DerivativeGraph'),
+  'vector-diagram':      lazyNamed(() => import('./VectorDiagram'),      'VectorDiagram'),
+  'trig-explorer':       lazyNamed(() => import('./TrigExplorer'),       'TrigExplorer'),
+  'limit-explorer':      lazyNamed(() => import('./LimitExplorer'),      'LimitExplorer'),
+  'sin-wave-explorer':   lazyNamed(() => import('./SinWaveExplorer'),    'SinWaveExplorer'),
+  'force-parallelogram': lazyNamed(() => import('./ForceParallelogram'), 'ForceParallelogram'),
+  'beam-reactions':      lazyNamed(() => import('./BeamReactions'),      'BeamReactions'),
+  'interactive-beam':    lazyNamed(() => import('./InteractiveBeam'),    'InteractiveBeam'),
+  'integral-area':       lazyNamed(() => import('./IntegralArea'),       'IntegralArea'),
+  'complex-plane':       lazyNamed(() => import('./ComplexPlane'),       'ComplexPlane'),
+  'taylor-approx':       lazyNamed(() => import('./TaylorApproximation'), 'TaylorApproximation'),
+  'free-body-diagram':   lazyNamed(() => import('./FreeBodyDiagram'),    'FreeBodyDiagram'),
+  'eigenvector-viz':     lazyNamed(() => import('./EigenvectorViz'),     'EigenvectorViz'),
+  'lager-illustration':  lazyNamed(() => import('./LagerIllustration'),  'LagerIllustration'),
+  'vector-3d':           lazyNamed(() => import('./Vector3D'),           'Vector3D'),
+  'stress-strain':       lazyNamed(() => import('./StressStrainDiagram'), 'StressStrainDiagram'),
+  'spring-mass-damper':  lazyNamed(() => import('./SpringMassDamper'),   'SpringMassDamper'),
+  'mohr-circle':         lazyNamed(() => import('./MohrCircle'),         'MohrCircle'),
+  'pv-diagram':          lazyNamed(() => import('./PVDiagram'),          'PVDiagram'),
+}
+
+function VizFallback() {
+  return (
+    <div className="flex items-center justify-center h-48 bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard-sm animate-pulse">
+      <span className="font-mono text-xs text-ink-soft dark:text-surface-100 uppercase tracking-widest">Lade Visualisierung…</span>
+    </div>
+  )
 }
 
 export function VisualizationEngine({ visualizationId, params = {} }) {
@@ -53,5 +46,9 @@ export function VisualizationEngine({ visualizationId, params = {} }) {
       </div>
     )
   }
-  return <Viz {...params} />
+  return (
+    <Suspense fallback={<VizFallback />}>
+      <Viz {...params} />
+    </Suspense>
+  )
 }

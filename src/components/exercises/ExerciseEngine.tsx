@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, type ComponentType } from 'react'
+import { useState, useEffect, useRef, lazy, Suspense, type ComponentType } from 'react'
 import { useAppDispatch } from '@/context/AppContext'
 import { ACTIONS } from '@/context/appReducer'
 import { getExercise } from '@/content/index'
@@ -14,8 +14,10 @@ import { FillInBlank,    validate as validateFIB } from './FillInBlank'
 import { MultiStepExercise, validate as validateMS } from './MultiStepExercise'
 import { HintSystem } from '@/components/lesson/HintSystem'
 import { FeedbackContent, FeedbackActions } from '@/components/lesson/FeedbackDisplay'
-import { Calculator } from '@/components/ui/Calculator'
-import { FormulaSheet } from '@/components/ui/FormulaSheet'
+
+// Tool-Modals erst beim ersten Öffnen laden (mathjs & Formeldatenbank sind groß).
+const Calculator   = lazy(() => import('@/components/ui/Calculator').then((m) => ({ default: m.Calculator })))
+const FormulaSheet = lazy(() => import('@/components/ui/FormulaSheet').then((m) => ({ default: m.FormulaSheet })))
 
 interface ExerciseLike {
   id: string
@@ -189,8 +191,10 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
         </div>
       )}
 
-      <Calculator isOpen={showCalculator} onClose={() => setShowCalculator(false)} />
-      <FormulaSheet isOpen={showFormulas} onClose={() => setShowFormulas(false)} topicId={topicId} />
+      <Suspense fallback={null}>
+        {showCalculator && <Calculator isOpen onClose={() => setShowCalculator(false)} />}
+        {showFormulas   && <FormulaSheet isOpen onClose={() => setShowFormulas(false)} topicId={topicId} />}
+      </Suspense>
     </>
   )
 }
