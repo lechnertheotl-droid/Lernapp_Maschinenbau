@@ -196,15 +196,15 @@ export function InteractiveBeam({
         </label>
       </div>
       <div className="grid grid-cols-3 gap-1.5 text-[11px] font-mono">
-        <div className="px-2 py-1 bg-blue-50 dark:bg-blue-950/30 border-2 border-blue-700 dark:border-blue-400 rounded">
+        <div className="px-2 py-1 bg-blue-50 dark:bg-blue-950 border-2 border-blue-700 dark:border-blue-400 rounded">
           <span className="text-blue-700 dark:text-blue-300 font-black">Rₐ</span>
           <span className="text-ink dark:text-paper num ml-1">{Ra.toFixed(1)} N</span>
         </div>
-        <div className="px-2 py-1 bg-red-50 dark:bg-red-950/30 border-2 border-red-700 dark:border-red-400 rounded">
+        <div className="px-2 py-1 bg-red-50 dark:bg-red-950 border-2 border-red-700 dark:border-red-400 rounded">
           <span className="text-red-700 dark:text-red-300 font-black">R_B</span>
           <span className="text-ink dark:text-paper num ml-1">{Rb.toFixed(1)} N</span>
         </div>
-        <div className="px-2 py-1 bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-700 dark:border-amber-400 rounded">
+        <div className="px-2 py-1 bg-amber-50 dark:bg-amber-950 border-2 border-amber-700 dark:border-amber-400 rounded">
           <span className="text-amber-700 dark:text-amber-300 font-black">M_max</span>
           <span className="text-ink dark:text-paper num ml-1">{Mmax.toFixed(0)} Nm</span>
         </div>

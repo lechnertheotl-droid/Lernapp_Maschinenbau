@@ -160,9 +160,9 @@ export function LimitExplorer({ initialFunction = 'removable', initialEpsilon = 
           </span>
           <input type="range" min={0.05} max={1.5} step={0.05} value={epsilon} onChange={(event) => setEpsilon(Number(event.target.value))} className="w-full accent-lemon-dark" />
         </label>
-        <div className="grid grid-cols-2 gap-2 font-mono text-[11px] font-black text-ink dark:text-paper">
-          <div className="bg-green-50 dark:bg-green-950/30 border border-green-700 dark:border-green-400 rounded-retro px-2 py-1">links: {nice(leftValue)}</div>
-          <div className="bg-orange-50 dark:bg-orange-950/30 border border-orange-700 dark:border-orange-400 rounded-retro px-2 py-1">rechts: {nice(rightValue)}</div>
+        <div className="grid grid-cols-2 gap-2 font-mono text-[11px] font-black">
+          <div className="bg-green-50 dark:bg-green-950 border border-green-700 dark:border-green-400 text-green-900 dark:text-green-200 rounded-retro px-2 py-1">links: {nice(leftValue)}</div>
+          <div className="bg-orange-50 dark:bg-orange-950 border border-orange-700 dark:border-orange-400 text-orange-900 dark:text-orange-200 rounded-retro px-2 py-1">rechts: {nice(rightValue)}</div>
         </div>
       </div>
     </div>

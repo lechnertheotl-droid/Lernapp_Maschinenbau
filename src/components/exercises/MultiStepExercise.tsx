@@ -162,7 +162,7 @@ export function MultiStepExercise({ exercise, onSubmit, disabled }: Props) {
           </div>
 
           {showWrong === current && (
-            <div className="border-2 border-red-600 bg-red-50 dark:bg-red-950/30 rounded-retro p-3 text-sm">
+            <div className="border-2 border-red-600 bg-red-50 dark:bg-red-950 rounded-retro p-3 text-sm">
               <p className="font-mono font-black text-red-700 dark:text-red-300 mb-1">
                 Nochmal ansehen:
               </p>

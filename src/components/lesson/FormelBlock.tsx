@@ -10,7 +10,7 @@ interface FormelBlockProps {
 
 const styleByPriority: Record<Priority, { wrapper: string; accent: string; chip: string }> = {
   kritisch: {
-    wrapper: 'border-red-600 bg-red-50 dark:bg-red-950/40',
+    wrapper: 'border-red-600 bg-red-50 dark:bg-red-950',
     accent: 'text-red-700 dark:text-red-300',
     chip: 'bg-red-600 text-white',
   },
@@ -20,7 +20,7 @@ const styleByPriority: Record<Priority, { wrapper: string; accent: string; chip:
     chip: 'bg-lemon text-ink',
   },
   optional: {
-    wrapper: 'border-green-700 bg-green-50 dark:bg-green-950/30',
+    wrapper: 'border-green-700 bg-green-50 dark:bg-green-950',
     accent: 'text-green-800 dark:text-green-300',
     chip: 'bg-green-700 text-white',
   },

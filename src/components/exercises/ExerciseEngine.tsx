@@ -164,7 +164,7 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
       {submitted && (
         <div
           ref={feedbackPanelRef}
-          className="fixed inset-x-0 bottom-0 z-50 bg-paper/95 dark:bg-surface-900/95 backdrop-blur border-t-2 border-ink dark:border-surface-500 shadow-hard-lg dark:shadow-none flex flex-col"
+          className="fixed inset-x-0 bottom-0 z-50 bg-paper dark:bg-surface-900 border-t-2 border-ink dark:border-surface-500 shadow-hard-lg dark:shadow-none flex flex-col"
           style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
         >
           <div
@@ -177,7 +177,7 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
               userAnswer={lastAnswer}
             />
           </div>
-          <div className="max-w-xl mx-auto w-full px-3 py-3 border-t-2 border-ink/20 dark:border-surface-500/60 bg-paper/95 dark:bg-surface-900/95">
+          <div className="max-w-xl mx-auto w-full px-3 py-3 border-t-2 border-ink/20 dark:border-surface-500/60 bg-paper dark:bg-surface-900">
             <FeedbackActions
               isCorrect={!!isCorrect}
               exercise={exercise}

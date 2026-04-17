@@ -9,7 +9,7 @@ interface FehlerBlockProps {
 
 export function FehlerBlock({ wrong, right, hint, title = 'Typischer Fehler' }: FehlerBlockProps) {
   return (
-    <div className="border-2 border-red-600 bg-red-50 dark:bg-red-950/30 rounded-retro shadow-hard-sm p-4">
+    <div className="border-2 border-red-600 bg-red-50 dark:bg-red-950 rounded-retro shadow-hard-sm p-4">
       <p className="font-mono text-[10px] font-black text-red-700 dark:text-red-300 uppercase tracking-widest mb-3">
         // {title}
       </p>

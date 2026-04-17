@@ -351,8 +351,8 @@ export function FreeBodyDiagram({
         <div
           className={`border-2 rounded-retro shadow-hard-sm p-3 ${
             allMatched
-              ? 'bg-green-50 dark:bg-green-950/40 border-green-700'
-              : 'bg-red-50 dark:bg-red-950/40 border-red-700'
+              ? 'bg-green-50 dark:bg-green-950 border-green-700'
+              : 'bg-red-50 dark:bg-red-950 border-red-700'
           }`}
         >
           <p className="font-mono text-[10px] font-black uppercase tracking-widest mb-2">

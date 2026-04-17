@@ -105,7 +105,7 @@ export function MarkdownContent({ children, className }: MarkdownContentProps) {
   return (
     <div
       ref={containerRef}
-      className={cn('markdown-content text-sm leading-relaxed text-surface-700', className)}
+      className={cn('markdown-content text-sm leading-relaxed text-surface-700 dark:text-surface-100', className)}
     >
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkMath]}

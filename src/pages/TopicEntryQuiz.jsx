@@ -105,7 +105,7 @@ export function TopicEntryQuiz() {
         <div
           className={`border-2 rounded-retro shadow-hard p-5 flex flex-col gap-3 ${
             passed
-              ? 'bg-green-50 dark:bg-green-950/40 border-green-700'
+              ? 'bg-green-50 dark:bg-green-950 border-green-700'
               : 'bg-lemon-light border-ink'
           }`}
         >
