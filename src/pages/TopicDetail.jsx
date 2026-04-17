@@ -6,6 +6,7 @@ import { TopicIcon } from '@/components/ui/TopicIcon'
 import { NotFound } from '@/components/NotFound'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { LessonMetaBadges } from '@/components/ui/LessonMetaBadges'
+import { ProgressBar } from '@/components/ui/ProgressBar'
 import { getLessonDifficulty } from '@/utils/lessonMeta'
 
 const STATUS_CONFIG = {
@@ -76,12 +77,7 @@ export function TopicDetail() {
             </span>
             <span className="num font-black text-lemon text-sm">{pct}%</span>
           </div>
-          <div className="h-3 bg-surface-800 border border-surface-600 rounded-sm overflow-hidden">
-            <div
-              className={cn('h-full transition-all duration-700', examDone ? 'bg-lemon' : 'bg-lemon')}
-              style={{ width: `${pct}%` }}
-            />
-          </div>
+          <ProgressBar value={pct} size="lg" tone="dark-lemon" />
         </div>
       </div>
 
