@@ -43,7 +43,7 @@ export function FormulaVariablePopover({ latex, onClose, onOpenGlossary }: Props
         onClick={onClose}
       />
 
-      <div className="relative w-full max-w-sm bg-paper dark:bg-surface-900 border-t-2 border-x-2 border-ink rounded-t-retro animate-slide-in-up shadow-hard-xl max-h-[70dvh] flex flex-col">
+      <div className="relative w-full max-w-sm bg-paper dark:bg-surface-900 border-t-2 border-x-2 border-ink rounded-t-retro animate-slide-in-up shadow-hard-xl max-h-[calc(100dvh-5rem-env(safe-area-inset-bottom))] md:max-h-[70dvh] flex flex-col min-h-0">
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-2.5 bg-ink border-b-2 border-ink flex-shrink-0">
           <span className="text-lemon font-mono font-black text-sm tracking-widest">
@@ -68,7 +68,7 @@ export function FormulaVariablePopover({ latex, onClose, onOpenGlossary }: Props
 
         {/* Variables list */}
         <div
-          className="overflow-y-auto overscroll-contain flex-1 p-4 flex flex-col gap-2"
+          className="overflow-y-auto overscroll-contain flex-1 min-h-0 p-4 flex flex-col gap-2"
           style={{ WebkitOverflowScrolling: 'touch' }}
         >
           {variables.length === 0 ? (

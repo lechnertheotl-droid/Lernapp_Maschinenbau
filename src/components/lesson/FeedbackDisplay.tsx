@@ -63,8 +63,8 @@ export function FeedbackContent({ isCorrect, exercise, userAnswer }: FeedbackCon
       className={cn(
         'rounded-retro border-2 p-4 flex flex-col gap-3 animate-slide-up shadow-hard-sm',
         isCorrect
-          ? 'bg-green-50 dark:bg-green-950/40 border-green-800 dark:border-green-400'
-          : 'bg-red-50 dark:bg-red-950/40 border-red-800 dark:border-red-400 animate-shake'
+          ? 'bg-green-50 dark:bg-green-950 border-green-800 dark:border-green-400'
+          : 'bg-red-50 dark:bg-red-950 border-red-800 dark:border-red-400 animate-shake'
       )}
       role="status"
       aria-live="polite"
@@ -92,7 +92,7 @@ export function FeedbackContent({ isCorrect, exercise, userAnswer }: FeedbackCon
       </div>
 
       {distractor && (
-        <div className="border-l-4 border-red-500 dark:border-red-400 bg-white/70 dark:bg-surface-900/60 px-3 py-2 rounded">
+        <div className="border-l-4 border-red-500 dark:border-red-400 bg-white/70 dark:bg-surface-900 px-3 py-2 rounded">
           <p className="font-mono text-[10px] font-black text-red-700 dark:text-red-300 uppercase tracking-widest mb-1">
             // Warum nicht diese Antwort?
           </p>
@@ -101,7 +101,7 @@ export function FeedbackContent({ isCorrect, exercise, userAnswer }: FeedbackCon
       )}
 
       {exercise.explanation && (
-        <div className="border-l-4 border-ink dark:border-surface-400 bg-white/70 dark:bg-surface-900/60 px-3 py-2 rounded">
+        <div className="border-l-4 border-ink dark:border-surface-400 bg-white/70 dark:bg-surface-900 px-3 py-2 rounded">
           <p className="font-mono text-[10px] font-black text-ink dark:text-paper uppercase tracking-widest mb-1">
             // {isCorrect ? 'Erklärung' : 'Lösungsweg'}
           </p>

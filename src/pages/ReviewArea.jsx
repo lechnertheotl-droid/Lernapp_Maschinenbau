@@ -282,16 +282,16 @@ export function ReviewArea() {
 
 function StatBox({ label, value, color }) {
   const bg = {
-    lemon: 'bg-lemon border-lemon-dark',
-    primary: 'bg-primary-50 border-primary-200',
-    green: 'bg-green-50 border-green-200',
-    surface: 'bg-surface-50 border-surface-200',
-  }[color] ?? 'bg-surface-50 border-surface-200'
+    lemon:   'bg-lemon border-lemon-dark',
+    primary: 'bg-primary-50 dark:bg-primary-950/60 border-primary-200 dark:border-primary-700',
+    green:   'bg-green-50 dark:bg-green-950/60 border-green-200 dark:border-green-700',
+    surface: 'bg-surface-50 dark:bg-surface-800 border-surface-200 dark:border-surface-600',
+  }[color] ?? 'bg-surface-50 dark:bg-surface-800 border-surface-200 dark:border-surface-600'
 
   return (
     <div className={`flex flex-col items-center rounded-retro border-2 py-2 ${bg}`}>
-      <span className="num text-lg font-black text-ink leading-none">{value}</span>
-      <span className="font-mono text-[9px] font-bold text-ink-soft uppercase tracking-wide mt-0.5">{label}</span>
+      <span className="num text-lg font-black text-ink dark:text-paper leading-none">{value}</span>
+      <span className="font-mono text-[9px] font-bold text-ink-soft dark:text-surface-300 uppercase tracking-wide mt-0.5">{label}</span>
     </div>
   )
 }
