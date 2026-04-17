@@ -40,6 +40,7 @@ export const abl_unit5 = makeUnit({
       masteryHints: [
         '$\\frac{\\sin(3x)}{x} = 3 \\cdot \\frac{\\sin(3x)}{3x}$ — Faktor 3 ausklammern.',
         'Standardgrenzwert: $\\lim_{u \\to 0} \\frac{\\sin u}{u} = 1$.',
+        'Mit $u = 3x$: $\\lim_{x\\to 0} 3\\cdot\\frac{\\sin(3x)}{3x} = 3 \\cdot 1 = 3$.',
       ],
       masteryVisualization: {
         id: 'function-graph',
@@ -101,6 +102,7 @@ export const abl_unit5 = makeUnit({
       masteryHints: [
         '„Hebbar" = man kann die Unstetigkeit durch Umdefinieren eines Punktes beheben.',
         'Bei Sprungstellen ist der Grenzwert nicht eindeutig — nicht hebbar.',
+        'Hebbare Unstetigkeit: $\\lim_{x\\to a} f(x)$ existiert, $f(a)$ fehlt oder weicht ab.',
       ],
       masteryVisualization: {
         id: 'function-graph',
