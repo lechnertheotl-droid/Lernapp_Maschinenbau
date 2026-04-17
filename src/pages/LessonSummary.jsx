@@ -35,7 +35,7 @@ export function LessonSummary() {
   return (
     <div className="max-w-xl mx-auto px-4 py-5 flex flex-col gap-5 min-h-[100dvh]">
       <Breadcrumbs items={[
-        { label: 'Themen', to: '/topics' },
+        { label: 'Start', to: '/' },
         { label: topic.title, to: `/topics/${topicId}` },
         { label: lesson.title, to: `/topics/${topicId}/${lessonId}` },
         { label: 'Zusammenfassung' },

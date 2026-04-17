@@ -167,7 +167,7 @@ export function LessonView() {
         <Breadcrumbs
           className="mb-3"
           items={[
-            { label: 'Themen', to: '/topics' },
+            { label: 'Start', to: '/' },
             { label: topic?.title ?? topicId, to: `/topics/${topicId}` },
             { label: lesson.title },
           ]}
