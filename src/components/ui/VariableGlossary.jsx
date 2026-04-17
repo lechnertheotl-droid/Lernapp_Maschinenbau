@@ -37,7 +37,7 @@ export function VariableGlossary({ isOpen, onClose }) {
     <div className="fixed inset-0 z-[70] flex items-end justify-center" onClick={(e) => { if (e.target === e.currentTarget) onClose() }}>
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm animate-fade-in" onClick={onClose} />
 
-      <div className="relative w-full max-w-sm bg-paper border-t-2 border-x-2 border-ink rounded-t-retro animate-slide-in-up shadow-hard-xl max-h-[80dvh] flex flex-col">
+      <div className="relative w-full max-w-sm bg-paper border-t-2 border-x-2 border-ink rounded-t-retro animate-slide-in-up shadow-hard-xl max-h-[calc(100dvh-5rem-env(safe-area-inset-bottom))] md:max-h-[80dvh] flex flex-col min-h-0">
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-2.5 bg-ink border-b-2 border-ink flex-shrink-0">
           <span className="text-lemon font-mono font-black text-sm tracking-widest">VARIABLEN</span>
@@ -58,7 +58,7 @@ export function VariableGlossary({ isOpen, onClose }) {
 
         {/* Content */}
         <div
-          className="overflow-y-auto overscroll-contain flex-1 p-4 flex flex-col gap-4"
+          className="overflow-y-auto overscroll-contain flex-1 min-h-0 p-4 flex flex-col gap-4"
           style={{ WebkitOverflowScrolling: 'touch' }}
         >
           {filtered.map((cat) => (
