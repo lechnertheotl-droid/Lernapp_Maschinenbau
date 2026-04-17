@@ -138,7 +138,7 @@ export function LagerIllustration({ initialKind = 'festlager' as LagerKind }) {
         ))}
       </div>
 
-      <div className="bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard-sm p-3">
+      <div className="bg-white dark:bg-surface-100 border-2 border-ink dark:border-surface-500 rounded-retro shadow-hard-sm p-3">
         <div className="aspect-square w-full max-w-[260px] mx-auto">
           {kind === 'festlager' && <FestlagerSVG />}
           {kind === 'loslager' && <LoslagerSVG />}

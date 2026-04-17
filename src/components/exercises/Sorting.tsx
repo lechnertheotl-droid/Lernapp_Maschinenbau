@@ -2,7 +2,6 @@ import { useState, useMemo } from 'react'
 import {
   DndContext,
   PointerSensor,
-  TouchSensor,
   KeyboardSensor,
   useSensor,
   useSensors,
@@ -96,7 +95,7 @@ function SortableItem({
       <span
         aria-hidden="true"
         className={cn(
-          'w-9 h-10 flex items-center justify-center border-2 border-ink rounded-retro text-base font-black flex-shrink-0',
+          'w-9 h-10 flex items-center justify-center border-2 border-ink rounded-retro text-base font-black flex-shrink-0 touch-none',
           disabled
             ? 'bg-surface-100 dark:bg-surface-700 text-ink-soft dark:text-surface-300'
             : 'bg-lemon text-ink shadow-hard-lemon'
@@ -116,8 +115,7 @@ export function Sorting({ exercise, onSubmit, disabled }: Props) {
   const [order, setOrder] = useState<number[]>(shuffled)
 
   const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
-    useSensor(TouchSensor, { activationConstraint: { delay: 80, tolerance: 8 } }),
+    useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
   )
 

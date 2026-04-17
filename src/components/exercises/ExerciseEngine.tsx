@@ -13,7 +13,7 @@ import { FreeTextInput,  validate as validateFT } from './FreeTextInput'
 import { FillInBlank,    validate as validateFIB } from './FillInBlank'
 import { MultiStepExercise, validate as validateMS } from './MultiStepExercise'
 import { HintSystem } from '@/components/lesson/HintSystem'
-import { FeedbackDisplay } from '@/components/lesson/FeedbackDisplay'
+import { FeedbackContent, FeedbackActions } from '@/components/lesson/FeedbackDisplay'
 import { Calculator } from '@/components/ui/Calculator'
 import { FormulaSheet } from '@/components/ui/FormulaSheet'
 
@@ -66,6 +66,8 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
   const [showFormulas, setShowFormulas] = useState(false)
   const [resetKey, setResetKey] = useState(0)
   const feedbackAnchorRef = useRef<HTMLDivElement>(null)
+  const feedbackPanelRef = useRef<HTMLDivElement>(null)
+  const [panelHeight, setPanelHeight] = useState(0)
 
   useEffect(() => {
     if (submitted) {
@@ -73,6 +75,26 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
         feedbackAnchorRef.current?.scrollIntoView({ block: 'end', behavior: 'smooth' })
       })
     }
+  }, [submitted])
+
+  // Misst die Höhe des Fixed-Feedback-Panels und überträgt sie als Bottom-Padding
+  // auf die Aufgaben-Card, damit kein Inhalt verdeckt wird und keine leere
+  // Lücke unter der Card entsteht.
+  useEffect(() => {
+    if (!submitted) {
+      setPanelHeight(0)
+      return
+    }
+    const el = feedbackPanelRef.current
+    if (!el) return
+    const observer = new ResizeObserver((entries) => {
+      const entry = entries[0]
+      if (entry) setPanelHeight(entry.contentRect.height)
+    })
+    observer.observe(el)
+    // Initialmessung
+    setPanelHeight(el.getBoundingClientRect().height)
+    return () => observer.disconnect()
   }, [submitted])
 
   if (!exercise) {
@@ -112,7 +134,10 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
 
   return (
     <>
-      <div className={`bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard p-4 flex flex-col gap-4 ${submitted ? 'pb-[320px] sm:pb-[280px]' : ''}`}>
+      <div
+        className="bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard p-4 flex flex-col gap-4"
+        style={submitted ? { paddingBottom: `${panelHeight + 24}px` } : undefined}
+      >
         <div className="flex items-center justify-between gap-3">
           <p className="font-mono text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest">
             // Aufgabe
@@ -138,14 +163,24 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
 
       {submitted && (
         <div
-          className="fixed inset-x-0 bottom-0 z-50 bg-paper/95 dark:bg-surface-900/95 backdrop-blur border-t-2 border-ink shadow-hard-lg flex flex-col"
+          ref={feedbackPanelRef}
+          className="fixed inset-x-0 bottom-0 z-50 bg-paper/95 dark:bg-surface-900/95 backdrop-blur border-t-2 border-ink dark:border-surface-500 shadow-hard-lg dark:shadow-none flex flex-col"
           style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
         >
-          <div className="max-w-xl mx-auto w-full px-3 py-3 overflow-y-auto overscroll-contain flex-1" style={{ maxHeight: '55vh' }}>
-            <FeedbackDisplay
+          <div
+            className="max-w-xl mx-auto w-full px-3 pt-3 overflow-y-auto overscroll-contain"
+            style={{ maxHeight: 'min(45vh, calc(100vh - 220px))' }}
+          >
+            <FeedbackContent
               isCorrect={!!isCorrect}
               exercise={exercise}
               userAnswer={lastAnswer}
+            />
+          </div>
+          <div className="max-w-xl mx-auto w-full px-3 py-3 border-t-2 border-ink/20 dark:border-surface-500/60 bg-paper/95 dark:bg-surface-900/95">
+            <FeedbackActions
+              isCorrect={!!isCorrect}
+              exercise={exercise}
               onNext={onComplete}
               onRetry={!isCorrect ? handleRetry : undefined}
               onOpenFormulas={!isCorrect && exercise.relatedFormulaId ? () => setShowFormulas(true) : undefined}

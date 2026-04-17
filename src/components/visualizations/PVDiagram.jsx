@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel } from './vizStyle'
 
 function draw(ctx, w, h, { process, T1, p1 }) {
-  const pad = { left: 55, right: 20, top: 20, bottom: 40 }
+  const style = getVizStyle(w)
+  const pad = { ...style.margin, left: Math.max(55, style.margin.left), bottom: Math.max(48, style.margin.bottom) }
   const pw = w - pad.left - pad.right
   const ph = h - pad.top - pad.bottom
 
@@ -17,7 +19,7 @@ function draw(ctx, w, h, { process, T1, p1 }) {
   const toY = (p) => pad.top + ph - (p / maxP) * ph
 
   // Grid
-  ctx.strokeStyle = '#f1f5f9'
+  ctx.strokeStyle = style.colors.grid
   ctx.lineWidth = 1
   for (let i = 1; i <= 4; i++) {
     const x = pad.left + (i / 5) * pw
@@ -29,7 +31,7 @@ function draw(ctx, w, h, { process, T1, p1 }) {
   }
 
   // Axes
-  ctx.strokeStyle = '#1a1a1a'
+  ctx.strokeStyle = style.colors.text
   ctx.lineWidth = 2
   ctx.beginPath()
   ctx.moveTo(pad.left, pad.top)
@@ -38,14 +40,16 @@ function draw(ctx, w, h, { process, T1, p1 }) {
   ctx.stroke()
 
   // Labels
-  ctx.fillStyle = '#1a1a1a'
-  ctx.font = 'bold 11px Inter, system-ui, sans-serif'
-  ctx.textAlign = 'center'
-  ctx.fillText('V [m³]', w / 2, h - 5)
+  ctx.font = style.fontLabel
+  drawLabel(ctx, 'V [m³]', w / 2, h - 6, {
+    align: 'center', baseline: 'bottom', color: style.colors.text, bg: true, style,
+  })
   ctx.save()
-  ctx.translate(14, h / 2)
+  ctx.translate(16, h / 2)
   ctx.rotate(-Math.PI / 2)
-  ctx.fillText('p [kPa]', 0, 0)
+  drawLabel(ctx, 'p [kPa]', 0, 0, {
+    align: 'center', baseline: 'alphabetic', color: style.colors.text, bg: true, style,
+  })
   ctx.restore()
 
   const steps = 200
@@ -104,16 +108,19 @@ function draw(ctx, w, h, { process, T1, p1 }) {
   ctx.fill()
 
   // Start/end points
-  ctx.fillStyle = '#1a1a1a'
+  ctx.fillStyle = style.colors.text
   ctx.beginPath(); ctx.arc(toX(points[0].V), toY(points[0].p), 5, 0, Math.PI * 2); ctx.fill()
   const last = points[points.length - 1]
   ctx.beginPath(); ctx.arc(toX(last.V), toY(last.p), 5, 0, Math.PI * 2); ctx.fill()
 
   // State labels
-  ctx.font = 'bold 11px Inter, system-ui, sans-serif'
-  ctx.textAlign = 'left'
-  ctx.fillText('1', toX(points[0].V) + 8, toY(points[0].p) - 6)
-  ctx.fillText('2', toX(last.V) + 8, toY(last.p) - 6)
+  ctx.font = style.fontAnnotation
+  drawLabel(ctx, '1', toX(points[0].V) + 10, toY(points[0].p) - 8, {
+    align: 'left', baseline: 'bottom', color: style.colors.text, bg: true, style,
+  })
+  drawLabel(ctx, '2', toX(last.V) + 10, toY(last.p) - 8, {
+    align: 'left', baseline: 'bottom', color: style.colors.text, bg: true, style,
+  })
 
   // Process name
   const processNames = {
@@ -122,20 +129,18 @@ function draw(ctx, w, h, { process, T1, p1 }) {
     isochor: 'Isochor (V = const)',
     adiabat: 'Adiabatisch (Q = 0)',
   }
-  ctx.fillStyle = colors[process]
-  ctx.font = 'bold 11px Inter, system-ui, sans-serif'
-  ctx.textAlign = 'right'
-  ctx.fillText(processNames[process], w - pad.right - 5, pad.top + 16)
+  drawLabel(ctx, processNames[process], w - pad.right - 6, pad.top + 18, {
+    align: 'right', baseline: 'alphabetic', color: colors[process], bg: true, style,
+  })
 
   // Work annotation
-  ctx.fillStyle = '#64748b'
-  ctx.font = '9px Inter, system-ui, sans-serif'
-  ctx.textAlign = 'center'
-  if (process !== 'isochor') {
-    ctx.fillText('W = ∫ p dV (schraffierte Fläche)', w / 2, h - pad.bottom + 28)
-  } else {
-    ctx.fillText('W = 0 (kein Volumenänderung)', w / 2, h - pad.bottom + 28)
-  }
+  ctx.font = style.fontTick
+  const workText = process !== 'isochor'
+    ? 'W = ∫ p dV (schraffierte Fläche)'
+    : 'W = 0 (keine Volumenänderung)'
+  drawLabel(ctx, workText, w / 2, h - pad.bottom + 30, {
+    align: 'center', baseline: 'top', color: style.colors.textMuted, bg: true, style,
+  })
 }
 
 const PROCESSES = [
@@ -154,13 +159,13 @@ export function PVDiagram() {
 
   return (
     <div className="flex flex-col gap-3">
-      <canvas ref={canvasRef} className="w-full h-52 rounded-retro bg-white border-2 border-ink shadow-hard-sm" />
+      <canvas ref={canvasRef} className="w-full h-72 sm:h-56 rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm" />
       <div className="flex gap-2 flex-wrap justify-center">
         {PROCESSES.map((p) => (
           <button
             key={p.id}
             onClick={() => setProcess(p.id)}
-            className={`px-3 py-1.5 rounded-retro border-2 font-mono text-[10px] font-bold retro-press ${process === p.id ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon' : 'bg-white border-ink text-ink-soft shadow-hard-sm'}`}
+            className={`px-3 py-1.5 rounded-retro border-2 font-mono text-[10px] font-bold retro-press ${process === p.id ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon' : 'bg-white dark:bg-surface-800 border-ink dark:border-surface-500 text-ink-soft dark:text-surface-300 shadow-hard-sm'}`}
           >
             {p.label}
           </button>
@@ -168,11 +173,11 @@ export function PVDiagram() {
       </div>
       <div className="grid grid-cols-2 gap-3">
         <label className="flex flex-col gap-1">
-          <span className="font-mono text-[10px] font-bold text-ink">T₁ = {T1} K</span>
+          <span className="font-mono text-[10px] font-bold text-ink dark:text-paper">T₁ = {T1} K</span>
           <input type="range" min="200" max="500" step="10" value={T1} onChange={(e) => setT1(+e.target.value)} />
         </label>
         <label className="flex flex-col gap-1">
-          <span className="font-mono text-[10px] font-bold text-ink">p₁ = {p1} kPa</span>
+          <span className="font-mono text-[10px] font-bold text-ink dark:text-paper">p₁ = {p1} kPa</span>
           <input type="range" min="50" max="500" step="10" value={p1} onChange={(e) => setP1(+e.target.value)} />
         </label>
       </div>

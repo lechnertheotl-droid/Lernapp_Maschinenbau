@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel } from './vizStyle'
 
 interface BeamParams {
   forcePos: number
@@ -16,7 +17,8 @@ interface BeamParams {
  */
 function drawBeam(ctx: CanvasRenderingContext2D, w: number, h: number, p: BeamParams) {
   const { forcePos: a, forceN: F, beamL: L } = p
-  const pad = { left: 40, right: 40, top: 10, bottom: 10 }
+  const style = getVizStyle(w)
+  const pad = { left: Math.max(40, style.margin.left), right: Math.max(40, style.margin.right), top: 10, bottom: 10 }
   const innerW = w - pad.left - pad.right
   const sections = 3 // statik / Q / M
   const sectionH = (h - pad.top - pad.bottom) / sections
@@ -32,7 +34,7 @@ function drawBeam(ctx: CanvasRenderingContext2D, w: number, h: number, p: BeamPa
   const beamY = pad.top + sectionH * 0.55
   // Beam
   ctx.fillStyle = '#e2e8f0'
-  ctx.strokeStyle = '#1a1a1a'
+  ctx.strokeStyle = style.colors.text
   ctx.lineWidth = 2
   ctx.beginPath(); ctx.rect(pad.left, beamY - 6, innerW, 12); ctx.fill(); ctx.stroke()
 
@@ -55,16 +57,22 @@ function drawBeam(ctx: CanvasRenderingContext2D, w: number, h: number, p: BeamPa
   ctx.strokeStyle = '#dc2626'; ctx.fillStyle = '#dc2626'; ctx.lineWidth = 2.5
   ctx.beginPath(); ctx.moveTo(fx, beamY - 40); ctx.lineTo(fx, beamY - 10); ctx.stroke()
   ctx.beginPath(); ctx.moveTo(fx, beamY - 6); ctx.lineTo(fx - 6, beamY - 14); ctx.lineTo(fx + 6, beamY - 14); ctx.closePath(); ctx.fill()
-  ctx.font = 'bold 11px ui-monospace, monospace'; ctx.textAlign = 'center'
-  ctx.fillText(`F = ${F.toFixed(0)} N`, fx, beamY - 44)
+  ctx.font = style.fontAnnotation
+  drawLabel(ctx, `F = ${F.toFixed(0)} N`, fx, beamY - 44, {
+    align: 'center', baseline: 'bottom', color: '#dc2626', bg: true, style,
+  })
 
   // Labels A/B/a
-  ctx.fillStyle = '#1a1a1a'; ctx.font = '10px ui-monospace, monospace'
-  ctx.textAlign = 'center'
-  ctx.fillText('A', ax, beamY + 36)
-  ctx.fillText('B', bx, beamY + 36)
-  ctx.fillStyle = '#64748b'
-  ctx.fillText(`a = ${a.toFixed(2)} m`, (ax + fx) / 2, beamY - 52)
+  ctx.font = style.fontTick
+  drawLabel(ctx, 'A', ax, beamY + 36, {
+    align: 'center', baseline: 'middle', color: style.colors.text, style,
+  })
+  drawLabel(ctx, 'B', bx, beamY + 36, {
+    align: 'center', baseline: 'middle', color: style.colors.text, style,
+  })
+  drawLabel(ctx, `a = ${a.toFixed(2)} m`, (ax + fx) / 2, beamY - 52, {
+    align: 'center', baseline: 'bottom', color: style.colors.textMuted, bg: true, style,
+  })
 
   // ── Section 2: Q(x) diagram ─────────────────────────────────────────
   const qY = pad.top + sectionH + sectionH * 0.55
@@ -72,7 +80,7 @@ function drawBeam(ctx: CanvasRenderingContext2D, w: number, h: number, p: BeamPa
   const qScale = qMax === 0 ? 0 : (sectionH * 0.35) / qMax
 
   // Zero line
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.setLineDash([3, 3])
+  ctx.strokeStyle = style.colors.textMuted; ctx.lineWidth = 1; ctx.setLineDash([3, 3])
   ctx.beginPath(); ctx.moveTo(pad.left, qY); ctx.lineTo(w - pad.right, qY); ctx.stroke()
   ctx.setLineDash([])
 
@@ -87,7 +95,7 @@ function drawBeam(ctx: CanvasRenderingContext2D, w: number, h: number, p: BeamPa
   ctx.lineTo(bx, qY)
   ctx.closePath(); ctx.fill()
 
-  ctx.strokeStyle = '#1a1a1a'; ctx.lineWidth = 2
+  ctx.strokeStyle = style.colors.text; ctx.lineWidth = 2
   ctx.beginPath()
   ctx.moveTo(ax, qY - Ra * qScale); ctx.lineTo(fx, qY - Ra * qScale)
   ctx.moveTo(fx, qY + Rb * qScale); ctx.lineTo(bx, qY + Rb * qScale)
@@ -96,19 +104,22 @@ function drawBeam(ctx: CanvasRenderingContext2D, w: number, h: number, p: BeamPa
   ctx.beginPath()
   ctx.moveTo(fx, qY - Ra * qScale); ctx.lineTo(fx, qY + Rb * qScale); ctx.stroke()
 
-  ctx.fillStyle = '#1a1a1a'
-  ctx.font = 'bold 10px ui-monospace, monospace'
-  ctx.textAlign = 'left'
-  ctx.fillText('Q(x)', pad.left, qY - sectionH * 0.4)
-  ctx.textAlign = 'right'
-  ctx.fillText(`Ra = +${Ra.toFixed(1)} N`, fx - 4, qY - Ra * qScale - 4)
-  ctx.fillText(`−Rb = ${(-Rb).toFixed(1)} N`, bx - 4, qY + Rb * qScale + 12)
+  ctx.font = style.fontAnnotation
+  drawLabel(ctx, 'Q(x)', pad.left, qY - sectionH * 0.4, {
+    align: 'left', baseline: 'alphabetic', color: style.colors.text, bg: true, style,
+  })
+  drawLabel(ctx, `Ra = +${Ra.toFixed(1)} N`, fx - 6, qY - Ra * qScale - 4, {
+    align: 'right', baseline: 'bottom', color: '#3b82f6', bg: true, style,
+  })
+  drawLabel(ctx, `−Rb = ${(-Rb).toFixed(1)} N`, bx - 6, qY + Rb * qScale + 14, {
+    align: 'right', baseline: 'top', color: '#ef4444', bg: true, style,
+  })
 
   // ── Section 3: M(x) diagram ─────────────────────────────────────────
   const mY = pad.top + sectionH * 2 + sectionH * 0.55
   const mScale = Mmax === 0 ? 0 : (sectionH * 0.4) / Mmax
 
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.setLineDash([3, 3])
+  ctx.strokeStyle = style.colors.textMuted; ctx.lineWidth = 1; ctx.setLineDash([3, 3])
   ctx.beginPath(); ctx.moveTo(pad.left, mY); ctx.lineTo(w - pad.right, mY); ctx.stroke()
   ctx.setLineDash([])
 
@@ -116,21 +127,22 @@ function drawBeam(ctx: CanvasRenderingContext2D, w: number, h: number, p: BeamPa
   ctx.fillStyle = 'rgba(234, 179, 8, 0.35)'
   ctx.beginPath()
   ctx.moveTo(ax, mY); ctx.lineTo(fx, mY + Mmax * mScale); ctx.lineTo(bx, mY); ctx.closePath(); ctx.fill()
-  ctx.strokeStyle = '#1a1a1a'; ctx.lineWidth = 2
+  ctx.strokeStyle = style.colors.text; ctx.lineWidth = 2
   ctx.beginPath()
   ctx.moveTo(ax, mY); ctx.lineTo(fx, mY + Mmax * mScale); ctx.lineTo(bx, mY); ctx.stroke()
 
   // Max marker
   ctx.fillStyle = '#ca8a04'
   ctx.beginPath(); ctx.arc(fx, mY + Mmax * mScale, 5, 0, Math.PI * 2); ctx.fill()
-  ctx.strokeStyle = '#1a1a1a'; ctx.lineWidth = 1.5; ctx.stroke()
+  ctx.strokeStyle = style.colors.text; ctx.lineWidth = 1.5; ctx.stroke()
 
-  ctx.fillStyle = '#1a1a1a'
-  ctx.font = 'bold 10px ui-monospace, monospace'
-  ctx.textAlign = 'left'
-  ctx.fillText('M(x)', pad.left, mY - sectionH * 0.4)
-  ctx.textAlign = 'center'
-  ctx.fillText(`M_max = ${Mmax.toFixed(1)} Nm bei x = ${a.toFixed(2)} m`, fx, mY + Mmax * mScale + 14)
+  ctx.font = style.fontAnnotation
+  drawLabel(ctx, 'M(x)', pad.left, mY - sectionH * 0.4, {
+    align: 'left', baseline: 'alphabetic', color: style.colors.text, bg: true, style,
+  })
+  drawLabel(ctx, `M_max = ${Mmax.toFixed(1)} Nm bei x = ${a.toFixed(2)} m`, fx, mY + Mmax * mScale + 16, {
+    align: 'center', baseline: 'top', color: '#ca8a04', bg: true, style,
+  })
 }
 
 interface Props {
@@ -157,7 +169,7 @@ export function InteractiveBeam({
     <div className="flex flex-col gap-3">
       <canvas
         ref={canvasRef}
-        className="w-full h-80 rounded-retro bg-white border-2 border-ink shadow-hard-sm"
+        className="w-full h-80 rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm"
       />
       <div className="grid grid-cols-2 gap-3">
         <label className="flex flex-col gap-1">

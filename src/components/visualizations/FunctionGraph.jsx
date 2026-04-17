@@ -1,7 +1,9 @@
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel, clampInside } from './vizStyle'
 
 function drawFunctionGraph(ctx, w, h, { functions = [], xRange = [-2 * Math.PI, 2 * Math.PI], yRange = [-1.5, 1.5], showGrid = true, marks = [] }) {
-  const pad = { top: 20, right: 20, bottom: 30, left: 40 }
+  const style = getVizStyle(w)
+  const pad = style.margin
   const pw = w - pad.left - pad.right
   const ph = h - pad.top - pad.bottom
 
@@ -10,7 +12,7 @@ function drawFunctionGraph(ctx, w, h, { functions = [], xRange = [-2 * Math.PI, 
 
   // Grid
   if (showGrid) {
-    ctx.strokeStyle = '#f1f5f9'
+    ctx.strokeStyle = style.colors.grid
     ctx.lineWidth = 1
     const xStep = (xRange[1] - xRange[0]) / 8
     for (let x = Math.ceil(xRange[0] / xStep) * xStep; x <= xRange[1]; x += xStep) {
@@ -23,7 +25,7 @@ function drawFunctionGraph(ctx, w, h, { functions = [], xRange = [-2 * Math.PI, 
   }
 
   // Axes
-  ctx.strokeStyle = '#cbd5e1'
+  ctx.strokeStyle = style.colors.axis
   ctx.lineWidth = 1.5
   if (yRange[0] <= 0 && yRange[1] >= 0) {
     const y0 = toY(0)
@@ -35,16 +37,19 @@ function drawFunctionGraph(ctx, w, h, { functions = [], xRange = [-2 * Math.PI, 
   }
 
   // Axis tick labels
-  ctx.fillStyle = '#94a3b8'
-  ctx.font = '10px Inter, sans-serif'
-  ctx.textAlign = 'center'
+  ctx.font = style.fontTick
 
   const piMarks = [-2, -1, -0.5, 0, 0.5, 1, 2]
   piMarks.forEach((m) => {
     const x = m * Math.PI
     if (x < xRange[0] || x > xRange[1]) return
     const label = m === 0 ? '0' : m === 1 ? 'π' : m === -1 ? '-π' : `${m}π`
-    ctx.fillText(label, toX(x), h - pad.bottom + 14)
+    drawLabel(ctx, label, toX(x), h - pad.bottom + 16, {
+      align: 'center',
+      baseline: 'top',
+      color: style.colors.textMuted,
+      style,
+    })
   })
 
   // Function curves
@@ -63,11 +68,16 @@ function drawFunctionGraph(ctx, w, h, { functions = [], xRange = [-2 * Math.PI, 
     ctx.stroke()
 
     if (fnLabel) {
-      ctx.fillStyle = color
-      ctx.font = '11px Inter, sans-serif'
-      ctx.textAlign = 'right'
-      const midX = (xRange[0] + xRange[1]) / 2
-      ctx.fillText(fnLabel, toX(xRange[1]) - 4, toY(fn(xRange[1])) - 6)
+      ctx.font = style.fontLabel
+      const endY = fn(xRange[1])
+      const anchor = clampInside(toX(xRange[1]) - 6, toY(endY) - 10, w, h, 6)
+      drawLabel(ctx, fnLabel, anchor.x, anchor.y, {
+        align: 'right',
+        baseline: 'bottom',
+        color,
+        bg: true,
+        style,
+      })
     }
   })
 
@@ -78,10 +88,14 @@ function drawFunctionGraph(ctx, w, h, { functions = [], xRange = [-2 * Math.PI, 
     ctx.fillStyle = mColor
     ctx.fill()
     if (mLabel) {
-      ctx.fillStyle = mColor
-      ctx.font = '10px Inter, sans-serif'
-      ctx.textAlign = 'center'
-      ctx.fillText(mLabel, toX(x), toY(y) - 8)
+      ctx.font = style.fontAnnotation
+      drawLabel(ctx, mLabel, toX(x), toY(y) - 10, {
+        align: 'center',
+        baseline: 'bottom',
+        color: mColor,
+        bg: true,
+        style,
+      })
     }
   })
 }
@@ -93,7 +107,7 @@ export function FunctionGraph({ functions, xRange, yRange, showGrid = true, mark
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-48 rounded-retro bg-white border-2 border-ink shadow-hard-sm"
+      className="w-full h-64 sm:h-56 rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm"
     />
   )
 }

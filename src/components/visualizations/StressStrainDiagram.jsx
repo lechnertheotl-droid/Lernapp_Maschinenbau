@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel } from './vizStyle'
 
 function draw(ctx, w, h, { E, sigma_y, material }) {
-  const pad = { left: 55, right: 20, top: 20, bottom: 40 }
+  const style = getVizStyle(w)
+  const pad = { ...style.margin, left: Math.max(55, style.margin.left), bottom: Math.max(48, style.margin.bottom) }
   const pw = w - pad.left - pad.right
   const ph = h - pad.top - pad.bottom
 
@@ -13,7 +15,7 @@ function draw(ctx, w, h, { E, sigma_y, material }) {
   const toY = (sig) => pad.top + ph - (sig / maxSig) * ph
 
   // Grid
-  ctx.strokeStyle = '#f1f5f9'
+  ctx.strokeStyle = style.colors.grid
   ctx.lineWidth = 1
   for (let i = 0; i <= 5; i++) {
     const y = pad.top + (i / 5) * ph
@@ -21,19 +23,21 @@ function draw(ctx, w, h, { E, sigma_y, material }) {
   }
 
   // Axes
-  ctx.strokeStyle = '#1a1a1a'
+  ctx.strokeStyle = style.colors.text
   ctx.lineWidth = 2
   ctx.beginPath(); ctx.moveTo(pad.left, pad.top); ctx.lineTo(pad.left, h - pad.bottom); ctx.lineTo(w - pad.right, h - pad.bottom); ctx.stroke()
 
   // Axis labels
-  ctx.fillStyle = '#1a1a1a'
-  ctx.font = 'bold 11px Inter, system-ui, sans-serif'
-  ctx.textAlign = 'center'
-  ctx.fillText('ε (Dehnung)', w / 2, h - 5)
+  ctx.font = style.fontLabel
+  drawLabel(ctx, 'ε (Dehnung)', w / 2, h - 6, {
+    align: 'center', baseline: 'bottom', color: style.colors.text, bg: true, style,
+  })
   ctx.save()
-  ctx.translate(14, h / 2)
+  ctx.translate(16, h / 2)
   ctx.rotate(-Math.PI / 2)
-  ctx.fillText('σ (Spannung) [MPa]', 0, 0)
+  drawLabel(ctx, 'σ (Spannung) [MPa]', 0, 0, {
+    align: 'center', baseline: 'alphabetic', color: style.colors.text, bg: true, style,
+  })
   ctx.restore()
 
   // Draw stress-strain curve
@@ -77,7 +81,7 @@ function draw(ctx, w, h, { E, sigma_y, material }) {
   ctx.arc(toX(epsY), toY(sigma_y), 5, 0, Math.PI * 2)
   ctx.fillStyle = '#ef4444'
   ctx.fill()
-  ctx.strokeStyle = '#1a1a1a'
+  ctx.strokeStyle = style.colors.text
   ctx.lineWidth = 1.5
   ctx.stroke()
 
@@ -92,10 +96,10 @@ function draw(ctx, w, h, { E, sigma_y, material }) {
   ctx.setLineDash([])
 
   // Labels
-  ctx.fillStyle = '#ef4444'
-  ctx.font = 'bold 10px Inter, system-ui, sans-serif'
-  ctx.textAlign = 'left'
-  ctx.fillText(`σ_y = ${sigma_y} MPa`, toX(epsY) + 10, toY(sigma_y) - 8)
+  ctx.font = style.fontAnnotation
+  drawLabel(ctx, `σ_y = ${sigma_y} MPa`, toX(epsY) + 10, toY(sigma_y) - 8, {
+    align: 'left', baseline: 'bottom', color: '#ef4444', bg: true, style,
+  })
 
   // E-Modul annotation (slope line)
   ctx.strokeStyle = '#10b981'
@@ -106,17 +110,19 @@ function draw(ctx, w, h, { E, sigma_y, material }) {
   ctx.lineTo(toX(epsY * 1.5), toY(sigma_y * 1.5))
   ctx.stroke()
   ctx.setLineDash([])
-  ctx.fillStyle = '#10b981'
-  ctx.font = '10px Inter, system-ui, sans-serif'
-  ctx.fillText(`E = ${E} MPa`, toX(epsY * 0.3) + 8, toY(sigma_y * 0.3) - 8)
+  ctx.font = style.fontTick
+  drawLabel(ctx, `E = ${E} MPa`, toX(epsY * 0.3) + 10, toY(sigma_y * 0.3) - 8, {
+    align: 'left', baseline: 'bottom', color: '#10b981', bg: true, style,
+  })
 
   // Region labels
-  ctx.fillStyle = '#64748b'
-  ctx.font = '9px Inter, system-ui, sans-serif'
-  ctx.textAlign = 'center'
-  ctx.fillText('elastisch', toX(epsY / 2), toY(sigma_y * 0.4))
+  drawLabel(ctx, 'elastisch', toX(epsY / 2), toY(sigma_y * 0.4), {
+    align: 'center', baseline: 'middle', color: style.colors.textMuted, bg: true, style,
+  })
   if (material !== 'brittle') {
-    ctx.fillText('plastisch', toX(maxEps * 0.4), toY(sigma_y * 0.4))
+    drawLabel(ctx, 'plastisch', toX(maxEps * 0.4), toY(sigma_y * 0.4), {
+      align: 'center', baseline: 'middle', color: style.colors.textMuted, bg: true, style,
+    })
   }
 }
 
@@ -133,13 +139,13 @@ export function StressStrainDiagram() {
 
   return (
     <div className="flex flex-col gap-3">
-      <canvas ref={canvasRef} className="w-full h-52 rounded-retro bg-white border-2 border-ink shadow-hard-sm" />
+      <canvas ref={canvasRef} className="w-full h-72 sm:h-56 rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm" />
       <div className="flex gap-2 justify-center">
         {Object.entries(MATERIALS).map(([key, m]) => (
           <button
             key={key}
             onClick={() => setMaterial(key)}
-            className={`px-3 py-1.5 rounded-retro border-2 font-mono text-[10px] font-bold retro-press ${material === key ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon' : 'bg-white border-ink text-ink-soft shadow-hard-sm'}`}
+            className={`px-3 py-1.5 rounded-retro border-2 font-mono text-[10px] font-bold retro-press ${material === key ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon' : 'bg-white dark:bg-surface-800 border-ink dark:border-surface-500 text-ink-soft dark:text-surface-300 shadow-hard-sm'}`}
           >
             {m.label}
           </button>

@@ -8,14 +8,21 @@ interface Exercise {
   relatedFormulaId?: string
 }
 
-interface FeedbackDisplayProps {
+interface FeedbackContentProps {
   isCorrect: boolean
   exercise: Exercise
   userAnswer?: unknown
+}
+
+interface FeedbackActionsProps {
+  isCorrect: boolean
+  exercise: Exercise
   onNext: () => void
   onRetry?: () => void
   onOpenFormulas?: (formulaId?: string) => void
 }
+
+interface FeedbackDisplayProps extends FeedbackContentProps, Omit<FeedbackActionsProps, 'isCorrect' | 'exercise'> {}
 
 function pickDistractorExplanation(
   exercise: Exercise,
@@ -43,14 +50,12 @@ function pickDistractorExplanation(
   return null
 }
 
-export function FeedbackDisplay({
-  isCorrect,
-  exercise,
-  userAnswer,
-  onNext,
-  onRetry,
-  onOpenFormulas,
-}: FeedbackDisplayProps) {
+/**
+ * Scrollbarer Inhalt des Feedback-Panels: Header, Distraktor-Box, Erklärung.
+ * Wird im `ExerciseEngine` zusammen mit `FeedbackActions` gerendert, damit
+ * die Action-Buttons immer sichtbar bleiben, auch wenn die Erklärung lang ist.
+ */
+export function FeedbackContent({ isCorrect, exercise, userAnswer }: FeedbackContentProps) {
   const distractor = isCorrect ? null : pickDistractorExplanation(exercise, userAnswer)
 
   return (
@@ -103,32 +108,73 @@ export function FeedbackDisplay({
           <MarkdownContent className="text-ink dark:text-paper">{exercise.explanation}</MarkdownContent>
         </div>
       )}
+    </div>
+  )
+}
 
-      <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-        {!isCorrect && onRetry && (
-          <Button variant="secondary" size="lg" className="flex-1" onClick={onRetry}>
-            Nochmal üben
-          </Button>
-        )}
-        {!isCorrect && onOpenFormulas && exercise.relatedFormulaId && (
-          <Button
-            variant="lemon"
-            size="lg"
-            className="flex-1"
-            onClick={() => onOpenFormulas(exercise.relatedFormulaId)}
-          >
-            Zur Formel ↗
-          </Button>
-        )}
+/**
+ * Action-Buttons des Feedback-Panels (Nochmal, Formel, Weiter). Wird vom
+ * `ExerciseEngine` OUTSIDE des Scroll-Containers gerendert, damit der
+ * „Weiter"-Button auch bei langen Erklärungen ohne Scrollen sichtbar ist.
+ */
+export function FeedbackActions({
+  isCorrect,
+  exercise,
+  onNext,
+  onRetry,
+  onOpenFormulas,
+}: FeedbackActionsProps) {
+  return (
+    <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+      {!isCorrect && onRetry && (
+        <Button variant="secondary" size="lg" className="flex-1" onClick={onRetry}>
+          Nochmal üben
+        </Button>
+      )}
+      {!isCorrect && onOpenFormulas && exercise.relatedFormulaId && (
         <Button
-          variant={isCorrect ? 'success' : 'dark'}
+          variant="lemon"
           size="lg"
           className="flex-1"
-          onClick={onNext}
+          onClick={() => onOpenFormulas(exercise.relatedFormulaId)}
         >
-          Weiter →
+          Zur Formel ↗
         </Button>
-      </div>
+      )}
+      <Button
+        variant={isCorrect ? 'success' : 'dark'}
+        size="lg"
+        className="flex-1"
+        onClick={onNext}
+      >
+        Weiter →
+      </Button>
+    </div>
+  )
+}
+
+/**
+ * Kombinierte Variante für Aufrufer, die beide Teile als ein Ganzes wollen.
+ * `ExerciseEngine` verwendet die Split-Variante für das Fixed-Panel-Layout.
+ */
+export function FeedbackDisplay({
+  isCorrect,
+  exercise,
+  userAnswer,
+  onNext,
+  onRetry,
+  onOpenFormulas,
+}: FeedbackDisplayProps) {
+  return (
+    <div className="flex flex-col gap-3">
+      <FeedbackContent isCorrect={isCorrect} exercise={exercise} userAnswer={userAnswer} />
+      <FeedbackActions
+        isCorrect={isCorrect}
+        exercise={exercise}
+        onNext={onNext}
+        onRetry={onRetry}
+        onOpenFormulas={onOpenFormulas}
+      />
     </div>
   )
 }

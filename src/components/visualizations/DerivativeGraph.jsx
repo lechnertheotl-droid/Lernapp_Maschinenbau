@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel, clampInside } from './vizStyle'
 
 // Built-in functions available by name
 const FN_MAP = {
@@ -16,7 +17,8 @@ function drawDerivativeGraph(ctx, w, h, { fnName = 'x²', tangentX = 1, showTang
 
   const xRange = [-3, 3]
   const yRange = [-3, 5]
-  const pad = { top: 20, right: 20, bottom: 30, left: 40 }
+  const style = getVizStyle(w)
+  const pad = { ...style.margin, top: Math.max(style.margin.top, 36) } // Platz für Legende oben
   const pw = w - pad.left - pad.right
   const ph = h - pad.top - pad.bottom
 
@@ -24,7 +26,7 @@ function drawDerivativeGraph(ctx, w, h, { fnName = 'x²', tangentX = 1, showTang
   const toY = (y) => pad.top  + ((yRange[1] - y) / (yRange[1] - yRange[0])) * ph
 
   // Grid
-  ctx.strokeStyle = '#f1f5f9'
+  ctx.strokeStyle = style.colors.grid
   ctx.lineWidth = 1
   for (let x = Math.ceil(xRange[0]); x <= xRange[1]; x++) {
     ctx.beginPath(); ctx.moveTo(toX(x), pad.top); ctx.lineTo(toX(x), h - pad.bottom); ctx.stroke()
@@ -34,15 +36,17 @@ function drawDerivativeGraph(ctx, w, h, { fnName = 'x²', tangentX = 1, showTang
   }
 
   // Axes
-  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.5
+  ctx.strokeStyle = style.colors.axis; ctx.lineWidth = 1.5
   ctx.beginPath(); ctx.moveTo(pad.left, toY(0)); ctx.lineTo(w - pad.right, toY(0)); ctx.stroke()
   ctx.beginPath(); ctx.moveTo(toX(0), pad.top); ctx.lineTo(toX(0), h - pad.bottom); ctx.stroke()
 
   // Axis labels
-  ctx.fillStyle = '#94a3b8'; ctx.font = '10px Inter, sans-serif'; ctx.textAlign = 'center'
+  ctx.font = style.fontTick
   for (let x = Math.ceil(xRange[0]); x <= xRange[1]; x++) {
     if (x === 0) continue
-    ctx.fillText(x, toX(x), h - pad.bottom + 14)
+    drawLabel(ctx, String(x), toX(x), h - pad.bottom + 16, {
+      align: 'center', baseline: 'top', color: style.colors.textMuted, style,
+    })
   }
 
   // f(x) curve
@@ -87,18 +91,35 @@ function drawDerivativeGraph(ctx, w, h, { fnName = 'x²', tangentX = 1, showTang
     ctx.strokeStyle = 'white'; ctx.lineWidth = 1.5; ctx.stroke()
 
     // Slope label
-    ctx.fillStyle = '#d97706'; ctx.font = '11px Inter, sans-serif'; ctx.textAlign = 'left'
-    ctx.fillText(`f'(${tx.toFixed(1)}) = ${slope.toFixed(2)}`, toX(tx) + 8, toY(ty) - 8)
+    ctx.font = style.fontAnnotation
+    const slopeText = `f'(${tx.toFixed(1)}) = ${slope.toFixed(2)}`
+    const anchor = clampInside(toX(tx) + 10, toY(ty) - 10, w, h, 6)
+    drawLabel(ctx, slopeText, anchor.x, anchor.y, {
+      align: 'left', baseline: 'bottom', color: '#d97706', bg: true, style,
+    })
   }
 
   // Legend
-  ctx.font = '10px Inter, sans-serif'; ctx.textAlign = 'left'
-  ctx.fillStyle = color; ctx.fillRect(pad.left, 4, 14, 3); ctx.fillText(`f(x) = ${fnName}`, pad.left + 18, 8)
+  ctx.font = style.fontTick
+  let legendX = pad.left
+  const legendY = 14
+  ctx.fillStyle = color; ctx.fillRect(legendX, legendY - 8, 14, 3)
+  drawLabel(ctx, `f(x) = ${fnName}`, legendX + 18, legendY, {
+    align: 'left', baseline: 'middle', color: style.colors.text, style,
+  })
+  legendX += 120
   if (showDerivative) {
-    ctx.fillStyle = '#ef4444'; ctx.fillRect(pad.left + 90, 4, 14, 3); ctx.fillText("f'(x)", pad.left + 108, 8)
+    ctx.fillStyle = '#ef4444'; ctx.fillRect(legendX, legendY - 8, 14, 3)
+    drawLabel(ctx, "f'(x)", legendX + 18, legendY, {
+      align: 'left', baseline: 'middle', color: style.colors.text, style,
+    })
+    legendX += 70
   }
   if (showTangent) {
-    ctx.fillStyle = '#f59e0b'; ctx.fillRect(pad.left + 140, 4, 14, 3); ctx.fillText('Tangente', pad.left + 158, 8)
+    ctx.fillStyle = '#f59e0b'; ctx.fillRect(legendX, legendY - 8, 14, 3)
+    drawLabel(ctx, 'Tangente', legendX + 18, legendY, {
+      align: 'left', baseline: 'middle', color: style.colors.text, style,
+    })
   }
 }
 
@@ -123,7 +144,7 @@ export function DerivativeGraph({ fnName = 'x²', showTangent = true, showDeriva
     <div className="flex flex-col gap-2">
       <canvas
         ref={canvasRef}
-        className="w-full h-48 rounded-retro bg-white border-2 border-ink shadow-hard-sm cursor-crosshair"
+        className="w-full h-64 sm:h-56 rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm cursor-crosshair"
         onClick={handleCanvasClick}
       />
       {interactive && showTangent && (

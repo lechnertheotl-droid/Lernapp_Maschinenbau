@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel } from './vizStyle'
 
 const FUNCTIONS = {
   removable: {
@@ -35,7 +36,8 @@ function nice(value) {
 function drawLimitExplorer(ctx, w, h, { functionKey, epsilon }) {
   const entry = FUNCTIONS[functionKey] ?? FUNCTIONS.removable
   const { fn, target, limit, yRange } = entry
-  const pad = { top: 22, right: 18, bottom: 34, left: 42 }
+  const style = getVizStyle(w)
+  const pad = style.margin
   const pw = w - pad.left - pad.right
   const ph = h - pad.top - pad.bottom
   const xRange = [target - 3, target + 3]
@@ -46,7 +48,7 @@ function drawLimitExplorer(ctx, w, h, { functionKey, epsilon }) {
   ctx.lineJoin = 'round'
 
   // Grid
-  ctx.strokeStyle = 'rgba(0,61,165,0.08)'
+  ctx.strokeStyle = style.colors.grid
   ctx.lineWidth = 1
   for (let i = 0; i <= 6; i++) {
     const x = pad.left + (i / 6) * pw
@@ -71,7 +73,7 @@ function drawLimitExplorer(ctx, w, h, { functionKey, epsilon }) {
   }
 
   // Axes
-  ctx.strokeStyle = '#1a1a1a'
+  ctx.strokeStyle = style.colors.text
   ctx.lineWidth = 2
   if (yRange[0] <= 0 && yRange[1] >= 0) {
     ctx.beginPath(); ctx.moveTo(pad.left, toY(0)); ctx.lineTo(w - pad.right, toY(0)); ctx.stroke()
@@ -122,13 +124,14 @@ function drawLimitExplorer(ctx, w, h, { functionKey, epsilon }) {
   })
 
   // Labels
-  ctx.fillStyle = '#1a1a1a'
-  ctx.font = '900 12px ui-monospace, monospace'
-  ctx.textAlign = 'left'
-  ctx.fillText(`f(x) = ${entry.label}`, pad.left, 16)
-  ctx.font = '800 10px ui-monospace, monospace'
-  ctx.fillStyle = '#555555'
-  ctx.fillText(`x → ${target}, ε = ${epsilon.toFixed(2)}, Grenzwert: ${nice(limit)}`, pad.left, h - 9)
+  ctx.font = style.fontLabel
+  drawLabel(ctx, `f(x) = ${entry.label}`, pad.left, 18, {
+    align: 'left', baseline: 'alphabetic', color: style.colors.text, bg: true, style,
+  })
+  ctx.font = style.fontTick
+  drawLabel(ctx, `x → ${target}, ε = ${epsilon.toFixed(2)}, Grenzwert: ${nice(limit)}`, pad.left, h - 10, {
+    align: 'left', baseline: 'alphabetic', color: style.colors.textMuted, bg: true, style,
+  })
 }
 
 export function LimitExplorer({ initialFunction = 'removable', initialEpsilon = 0.8 }) {
@@ -142,24 +145,24 @@ export function LimitExplorer({ initialFunction = 'removable', initialEpsilon = 
 
   return (
     <div className="flex flex-col gap-3">
-      <canvas ref={canvasRef} className="w-full h-56 rounded-retro bg-white border-2 border-ink shadow-hard-sm" />
-      <div className="bg-white border-2 border-ink rounded-retro shadow-hard-sm p-3 flex flex-col gap-3">
+      <canvas ref={canvasRef} className="w-full h-64 sm:h-56 rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm" />
+      <div className="bg-white dark:bg-surface-800 border-2 border-ink dark:border-surface-500 rounded-retro shadow-hard-sm p-3 flex flex-col gap-3">
         <label className="flex flex-col gap-1">
-          <span className="font-mono text-[10px] font-black uppercase tracking-wider text-ink-soft">Funktion</span>
-          <select value={functionKey} onChange={(event) => setFunctionKey(event.target.value)} className="h-10 border-2 border-ink rounded-retro bg-paper px-3 font-mono text-xs font-black text-ink">
+          <span className="font-mono text-[10px] font-black uppercase tracking-wider text-ink-soft dark:text-surface-400">Funktion</span>
+          <select value={functionKey} onChange={(event) => setFunctionKey(event.target.value)} className="h-10 border-2 border-ink dark:border-surface-500 rounded-retro bg-paper dark:bg-surface-900 px-3 font-mono text-xs font-black text-ink dark:text-paper">
             {Object.entries(FUNCTIONS).map(([key, item]) => <option key={key} value={key}>{item.label}</option>)}
           </select>
         </label>
         <label className="flex flex-col gap-1">
-          <span className="flex justify-between font-mono text-[10px] font-black uppercase tracking-wider text-ink-soft">
+          <span className="flex justify-between font-mono text-[10px] font-black uppercase tracking-wider text-ink-soft dark:text-surface-400">
             <span>Abstand ε</span>
-            <span className="text-primary-700">{epsilon.toFixed(2)}</span>
+            <span className="text-primary-700 dark:text-primary-300">{epsilon.toFixed(2)}</span>
           </span>
           <input type="range" min={0.05} max={1.5} step={0.05} value={epsilon} onChange={(event) => setEpsilon(Number(event.target.value))} className="w-full accent-lemon-dark" />
         </label>
-        <div className="grid grid-cols-2 gap-2 font-mono text-[11px] font-black text-ink">
-          <div className="bg-green-50 border border-green-700 rounded-retro px-2 py-1">links: {nice(leftValue)}</div>
-          <div className="bg-orange-50 border border-orange-700 rounded-retro px-2 py-1">rechts: {nice(rightValue)}</div>
+        <div className="grid grid-cols-2 gap-2 font-mono text-[11px] font-black text-ink dark:text-paper">
+          <div className="bg-green-50 dark:bg-green-950/30 border border-green-700 dark:border-green-400 rounded-retro px-2 py-1">links: {nice(leftValue)}</div>
+          <div className="bg-orange-50 dark:bg-orange-950/30 border border-orange-700 dark:border-orange-400 rounded-retro px-2 py-1">rechts: {nice(rightValue)}</div>
         </div>
       </div>
     </div>

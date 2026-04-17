@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel } from './vizStyle'
 
 interface Vec3 { x: number; y: number; z: number }
 
@@ -38,6 +39,7 @@ interface DrawParams {
 }
 
 function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawParams) {
+  const style = getVizStyle(w)
   const cx = w / 2, cy = h / 2
   const u = Math.min(w, h) / 6 * p.scale
 
@@ -48,7 +50,7 @@ function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawParams
   }
 
   // Grid on x-z plane (floor)
-  ctx.strokeStyle = 'rgba(0,61,165,0.08)'
+  ctx.strokeStyle = style.colors.grid
   ctx.lineWidth = 1
   for (let i = -3; i <= 3; i++) {
     const a = proj({ x: i, y: 0, z: -3 })
@@ -65,13 +67,14 @@ function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawParams
     const t = proj(to)
     ctx.strokeStyle = color; ctx.lineWidth = 2
     ctx.beginPath(); ctx.moveTo(o.x, o.y); ctx.lineTo(t.x, t.y); ctx.stroke()
-    ctx.fillStyle = color
-    ctx.font = 'bold 11px ui-monospace, monospace'
-    ctx.fillText(label, t.x + 4, t.y - 4)
+    ctx.font = style.fontAnnotation
+    drawLabel(ctx, label, t.x + 6, t.y - 6, {
+      align: 'left', baseline: 'bottom', color, bg: true, style,
+    })
   }
-  drawAxis({ x: 3, y: 0, z: 0 }, '#94a3b8', 'x')
-  drawAxis({ x: 0, y: 3, z: 0 }, '#94a3b8', 'y')
-  drawAxis({ x: 0, y: 0, z: 3 }, '#94a3b8', 'z')
+  drawAxis({ x: 3, y: 0, z: 0 }, style.colors.textMuted, 'x')
+  drawAxis({ x: 0, y: 3, z: 0 }, style.colors.textMuted, 'y')
+  drawAxis({ x: 0, y: 0, z: 3 }, style.colors.textMuted, 'z')
 
   const arrow = (from: Vec3, to: Vec3, color: string, label: string) => {
     const s = proj(from), e = proj(to)
@@ -88,9 +91,10 @@ function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawParams
       ctx.lineTo(e.x - ux * hs + uy * hs * 0.5, e.y - uy * hs - ux * hs * 0.5)
       ctx.closePath(); ctx.fill()
     }
-    ctx.fillStyle = color
-    ctx.font = 'bold 12px ui-monospace, monospace'
-    ctx.fillText(label, e.x + 6, e.y + 4)
+    ctx.font = style.fontLabel
+    drawLabel(ctx, label, e.x + 8, e.y + 6, {
+      align: 'left', baseline: 'alphabetic', color, bg: true, style,
+    })
   }
 
   const O: Vec3 = { x: 0, y: 0, z: 0 }
@@ -182,7 +186,7 @@ export function Vector3D({
     <div className="flex flex-col gap-3">
       <canvas
         ref={canvasRef}
-        className="w-full h-80 rounded-retro bg-white dark:bg-surface-800 border-2 border-ink shadow-hard-sm cursor-grab active:cursor-grabbing touch-none"
+        className="w-full h-80 rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm cursor-grab active:cursor-grabbing touch-none"
       />
 
       <p className="font-mono text-[10px] text-ink-soft dark:text-surface-400 text-center">

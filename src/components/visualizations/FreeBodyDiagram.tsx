@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel } from './vizStyle'
 
 export interface TargetForce {
   /** Anchor point on body in body-local coords (x: 0..1, y: 0..1). Falls `null`, zentriert. */
@@ -199,6 +200,7 @@ interface DrawState {
 }
 
 function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawState) {
+  const style = getVizStyle(w)
   drawBody(ctx, w, h, p.body)
   for (let i = 0; i < p.forces.length; i++) {
     const f = p.forces[i]
@@ -206,9 +208,19 @@ function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawState)
       p.checked && p.matched.includes(i) ? '#16a34a' :
       p.checked ? '#dc2626' : '#0ea5e9'
     drawUserArrow(ctx, f, color)
-    ctx.fillStyle = color
-    ctx.font = 'bold 10px ui-monospace, monospace'
-    ctx.fillText(`F${i + 1}`, f.endX + 6, f.endY)
+    ctx.font = style.fontAnnotation
+    // Label etwas weiter weg vom Pfeilende, damit es nicht vom Pfeilkopf verdeckt wird,
+    // und mit halbtransparentem Hintergrund, damit Zahlen lesbar bleiben.
+    const dx = f.endX - f.anchorX
+    const dy = f.endY - f.anchorY
+    const len = Math.max(1, Math.hypot(dx, dy))
+    const nx = dx / len
+    const ny = dy / len
+    const lx = Math.max(4, Math.min(w - 4, f.endX + nx * 14 + 4))
+    const ly = Math.max(8, Math.min(h - 4, f.endY + ny * 14))
+    drawLabel(ctx, `F${i + 1}`, lx, ly, {
+      align: 'left', baseline: 'middle', color, bg: true, style,
+    })
   }
   if (p.inProgress) {
     drawUserArrow(ctx, p.inProgress, '#94a3b8')
