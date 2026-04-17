@@ -57,7 +57,7 @@ export function NumberInput({ exercise, onSubmit, disabled }: Props) {
           disabled={disabled}
           placeholder="z.B. 1.5  oder  3/4"
           aria-label="Numerische Antwort (Bruch oder Dezimalzahl)"
-          className="flex-1 h-12 px-4 text-base border-2 border-ink rounded-retro bg-white dark:bg-surface-800 dark:text-paper shadow-hard-sm focus:outline-none focus:ring-2 focus:ring-primary-700 disabled:opacity-60"
+          className="flex-1 h-12 px-4 text-base border-2 border-ink rounded-retro bg-white dark:bg-surface-800 dark:text-paper dark:placeholder:text-surface-400 shadow-hard-sm focus:outline-none focus:ring-2 focus:ring-primary-700 disabled:opacity-60"
         />
         {exercise.unit && (
           <span className="text-ink-soft dark:text-surface-300 text-sm font-mono font-black whitespace-nowrap">

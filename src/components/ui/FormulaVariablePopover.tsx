@@ -37,13 +37,13 @@ export function FormulaVariablePopover({ latex, onClose, onOpenGlossary }: Props
   }
 
   return createPortal(
-    <div className="fixed inset-0 z-[80] flex items-end justify-center">
+    <div className="fixed inset-0 z-[90] flex items-end justify-center">
       <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm animate-fade-in"
         onClick={onClose}
       />
 
-      <div className="relative w-full max-w-sm bg-paper dark:bg-surface-900 border-t-2 border-x-2 border-ink rounded-t-retro animate-slide-in-up shadow-hard-xl max-h-[calc(100dvh-5rem-env(safe-area-inset-bottom))] md:max-h-[70dvh] flex flex-col min-h-0">
+      <div className="relative w-full max-w-sm bg-paper dark:bg-surface-900 border-t-2 border-x-2 border-ink rounded-t-retro animate-slide-in-up shadow-hard-xl h-[70dvh] md:h-[65dvh] flex flex-col min-h-0">
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-2.5 bg-ink border-b-2 border-ink flex-shrink-0">
           <span className="text-lemon font-mono font-black text-sm tracking-widest">
@@ -68,37 +68,38 @@ export function FormulaVariablePopover({ latex, onClose, onOpenGlossary }: Props
 
         {/* Variables list */}
         <div
-          className="overflow-y-auto overscroll-contain flex-1 min-h-0 p-4 flex flex-col gap-2"
-          style={{ WebkitOverflowScrolling: 'touch' }}
+          className="overflow-y-auto overscroll-contain flex-1 min-h-0 p-4"
+          style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-y' }}
         >
-          {variables.length === 0 ? (
-            <div className="text-center py-4 flex flex-col gap-3 items-center">
-              <p className="text-sm text-ink-soft dark:text-surface-400">
-                Keine bekannten Variablen erkannt.
-              </p>
-              {onOpenGlossary && (
-                <button
-                  type="button"
-                  onClick={() => { onClose(); onOpenGlossary() }}
-                  className="px-3 h-9 border-2 border-ink rounded-retro bg-lemon text-ink shadow-hard-lemon font-mono text-[11px] font-black uppercase tracking-wider retro-press"
-                >
-                  Volles Glossar →
-                </button>
-              )}
-            </div>
-          ) : (
-            variables.map((v) => (
-              <VariableCard
-                key={v.key}
-                v={v}
-                expanded={expandedKey === v.key}
-                onToggle={() => setExpandedKey(expandedKey === v.key ? null : v.key)}
-              />
-            ))
-          )}
+          <div className="flex flex-col gap-2">
+            {variables.length === 0 ? (
+              <div className="text-center py-4 flex flex-col gap-3 items-center">
+                <p className="text-sm text-ink-soft dark:text-surface-400">
+                  Keine bekannten Variablen erkannt.
+                </p>
+                {onOpenGlossary && (
+                  <button
+                    type="button"
+                    onClick={() => { onClose(); onOpenGlossary() }}
+                    className="px-3 h-9 border-2 border-ink rounded-retro bg-lemon text-ink shadow-hard-lemon font-mono text-[11px] font-black uppercase tracking-wider retro-press"
+                  >
+                    Volles Glossar →
+                  </button>
+                )}
+              </div>
+            ) : (
+              variables.map((v) => (
+                <VariableCard
+                  key={v.key}
+                  v={v}
+                  expanded={expandedKey === v.key}
+                  onToggle={() => setExpandedKey(expandedKey === v.key ? null : v.key)}
+                />
+              ))
+            )}
+            <div aria-hidden style={{ height: 'env(safe-area-inset-bottom, 0px)' }} />
+          </div>
         </div>
-
-        <div style={{ height: 'env(safe-area-inset-bottom, 0px)' }} />
       </div>
     </div>,
     document.body

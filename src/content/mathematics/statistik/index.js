@@ -23,26 +23,152 @@ const unit1 = makeUnit({
         '$$E(X) = \\sum_i x_i\\,p_i, \\qquad \\operatorname{Var}(X) = E((X-E(X))^2) = \\sum_i (x_i - E(X))^2\\,p_i$$\n\n' +
         '$$\\sigma(X) = \\sqrt{\\operatorname{Var}(X)}$$\n\n' +
         '**Kontrolle:** Varianz immer $\\geq 0$, Einheit $(\\text{Einheit von X})^2$.',
-      masteryQuestion: 'Erwartungswert eines fairen Würfels?',
-      masteryOptions: ['$3{,}5$', '$3$', '$6$', '$1$'],
-      correctIndex: 0,
-      masteryExplanation: '$E(X) = \\frac{1+2+3+4+5+6}{6} = 21/6 = 3{,}5$.',
-      masteryHints: [
-        '$E(X) = \\sum_i x_i p_i$ — Werte mit Wahrscheinlichkeit gewichtet.',
-        'Gleichwahrscheinlich: $p_i = 1/6$ für jeden Würfelwert.',
-        '$(1+2+3+4+5+6) \\cdot (1/6) = 21/6 = 3{,}5$.',
-      ],
-      masteryVisualization: {
-        id: 'number-line',
-        params: {
-          range: [0, 7],
-          step: 1,
-          marks: [{ value: 3.5, label: 'E(X)=3,5', filled: true }],
-          intervals: [{ from: 1, to: 6, closedLeft: true, closedRight: true, label: 'Würfel 1–6', color: '#16a34a' }],
+      exercises: [
+        {
+          type: 'number-input',
+          question:
+            'Eine Münze wird einmal geworfen. $X = 1$ bei Kopf, $X = 0$ bei Zahl. Berechne $E(X)$.',
+          correctValue: 0.5,
+          tolerance: 0.001,
+          unit: '',
+          explanation:
+            '$E(X) = 1 \\cdot 0{,}5 + 0 \\cdot 0{,}5 = 0{,}5$. Mittelwert auf lange Sicht.',
+          hints: [
+            '$E(X) = \\sum x_i p_i$.',
+            '$x_1 = 1, p_1 = 0{,}5$; $x_2 = 0, p_2 = 0{,}5$.',
+            '$0{,}5 + 0 = 0{,}5$.',
+          ],
         },
-        caption: 'Erwartungswert liegt in der Mitte der möglichen Ausgänge',
-        alt: 'Zahlenstrahl mit Würfelausgängen und Erwartungswert.',
-      },
+        {
+          type: 'multiple-choice',
+          question: 'Welche Einheit hat die **Varianz** einer Messgröße in Millimetern?',
+          options: ['$\\text{mm}^2$', '$\\text{mm}$', 'dimensionslos', 'N/mm'],
+          correctIndex: 0,
+          explanation:
+            'Varianz ist $E((X - E(X))^2)$ — quadrierte Abweichung. Einheit: (Einheit von X)$^2$. ' +
+            'Deshalb wird oft die **Standardabweichung** $\\sigma = \\sqrt{\\operatorname{Var}}$ verwendet, die die gleiche Einheit wie X hat.',
+          hints: [
+            'Varianz enthält ein Quadrat.',
+            'Wenn X in mm, dann $(X - \\mu)^2$ in ...?',
+            'Quadrat der Einheit.',
+          ],
+        },
+        {
+          type: 'number-input',
+          question:
+            'Eine Zufallsvariable nimmt Werte $-1, 0, 2$ an mit Wahrscheinlichkeiten $0{,}3,\\, 0{,}5,\\, 0{,}2$. Berechne $E(X)$.',
+          correctValue: 0.1,
+          tolerance: 0.001,
+          unit: '',
+          explanation:
+            '$E(X) = (-1)\\cdot 0{,}3 + 0 \\cdot 0{,}5 + 2 \\cdot 0{,}2 = -0{,}3 + 0 + 0{,}4 = 0{,}1$.',
+          hints: [
+            '$E(X) = \\sum x_i p_i$ — jeder Wert mit seiner Wahrscheinlichkeit.',
+            'Summe: $-0{,}3 + 0 + 0{,}4$.',
+            'Vorzeichen nicht vergessen bei $-1 \\cdot 0{,}3$.',
+          ],
+        },
+        {
+          type: 'true-false',
+          statement:
+            'Varianz kann negativ werden, wenn die Abweichungen großteils negativ sind.',
+          correct: false,
+          explanation:
+            'Falsch. Abweichungen werden **quadriert** vor der Mittelung: $(X - \\mu)^2 \\geq 0$ für jeden Ausgang. ' +
+            'Die Varianz ist deshalb immer nicht-negativ; $\\operatorname{Var} = 0$ genau dann, wenn $X$ konstant ist.',
+          hints: [
+            'Was macht die Quadrierung mit negativen Werten?',
+            '$(X - \\mu)^2 \\geq 0$ immer.',
+            'Mittelwert nicht-negativer Werte: auch nicht-negativ.',
+          ],
+        },
+        {
+          type: 'number-input',
+          question:
+            'Zufallsvariable $X$ nimmt die Werte $2, 4, 6$ mit gleicher Wahrscheinlichkeit $1/3$ an. Berechne $\\operatorname{Var}(X)$.',
+          correctValue: 2.666666667,
+          tolerance: 0.01,
+          unit: '',
+          explanation:
+            '$E(X) = (2+4+6)/3 = 4$. $\\operatorname{Var}(X) = \\frac{(2-4)^2 + (4-4)^2 + (6-4)^2}{3} = \\frac{4+0+4}{3} = 8/3 \\approx 2{,}67$.',
+          hints: [
+            'Erst $E(X) = 4$.',
+            'Abweichungen quadrieren: $(2-4)^2 = 4$, $(4-4)^2 = 0$, $(6-4)^2 = 4$.',
+            'Mittel: $(4 + 0 + 4)/3 = 8/3$.',
+          ],
+        },
+        {
+          type: 'matching',
+          question: 'Ordne jeder Kenngröße ihre Eigenschaft zu.',
+          pairs: [
+            { left: '$E(X)$',   right: 'Mittelwert auf lange Sicht' },
+            { left: '$\\operatorname{Var}(X)$', right: 'Mittel der quadratischen Abweichung' },
+            { left: '$\\sigma(X)$', right: 'Streuungsmaß in der Einheit von X' },
+            { left: '$\\sigma(X)^2$', right: 'Varianz' },
+          ],
+          explanation:
+            'Erwartungswert, Varianz und Standardabweichung sind die drei Grundkenngrößen einer Zufallsvariable. ' +
+            '$\\sigma$ hat die Einheit von $X$, $\\sigma^2$ die quadrierte Einheit.',
+          hints: [
+            'Erwartungswert = Mittel.',
+            'Standardabweichung = Wurzel der Varianz.',
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question:
+            'Welche Regel gilt für $\\operatorname{Var}(aX + b)$ mit Konstanten $a, b$?',
+          options: [
+            '$\\operatorname{Var}(aX + b) = a^2 \\cdot \\operatorname{Var}(X)$',
+            '$\\operatorname{Var}(aX + b) = a \\cdot \\operatorname{Var}(X) + b$',
+            '$\\operatorname{Var}(aX + b) = a^2 \\operatorname{Var}(X) + b^2$',
+            '$\\operatorname{Var}(aX + b) = |a| \\cdot \\operatorname{Var}(X)$',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Konstante $b$ verschiebt die Verteilung, ändert aber **nicht** die Streuung. Der Faktor $a$ skaliert die Abweichungen, die quadriert in die Varianz eingehen: $\\operatorname{Var}(aX + b) = a^2 \\operatorname{Var}(X)$. ' +
+            'Typische Fehler: $+b$ vergessen zu eliminieren, oder linear statt quadratisch in $a$.',
+          hints: [
+            'Konstante $b$ verschiebt — ändert Streuung $b$ die Varianz?',
+            'Faktor $a$ skaliert die Abweichungen $(X - \\mu)$; Varianz hat diese quadriert.',
+            'Ergebnis enthält $a^2$, kein $b$.',
+          ],
+        },
+        {
+          type: 'sorting',
+          question: 'Bringe die Schritte zur Berechnung der Varianz in die richtige Reihenfolge.',
+          items: [
+            'Erwartungswert $E(X) = \\sum x_i p_i$ berechnen',
+            'Abweichungen $(x_i - E(X))$ bilden',
+            'Abweichungen quadrieren: $(x_i - E(X))^2$',
+            'Quadrate gewichtet summieren: $\\sum (x_i - E(X))^2 p_i$',
+          ],
+          correctOrder: [0, 1, 2, 3],
+          explanation:
+            'Ohne $E(X)$ keine Abweichungen. Ohne Quadrierung heben sich positive und negative Abweichungen auf — deshalb zwingend quadrieren.',
+          hints: [
+            'Erwartungswert immer zuerst.',
+            'Quadrieren kommt vor der Summierung.',
+          ],
+        },
+      ],
+      masteryQuestion: 'Zwei Zufallsvariablen $X$ und $Y$ haben denselben Erwartungswert, aber $\\operatorname{Var}(X) > \\operatorname{Var}(Y)$. Welche Aussage ist richtig?',
+      masteryOptions: [
+        '$X$ streut stärker um den Mittelwert als $Y$',
+        '$X$ hat größere Werte als $Y$',
+        '$X$ und $Y$ haben unterschiedliche Mittelwerte',
+        'Das sagt nichts über die Streuung aus',
+      ],
+      correctIndex: 0,
+      masteryExplanation:
+        'Varianz misst die mittlere quadratische **Abweichung** vom Erwartungswert. Gleicher Erwartungswert heißt gleicher Mittelpunkt; ' +
+        'größere Varianz bei $X$ bedeutet, dass $X$ stärker um diesen Mittelpunkt streut. Wichtige Interpretation in der Qualitätskontrolle: ' +
+        'zwei Maschinen mit gleichem Sollmaß aber unterschiedlicher Präzision.',
+      masteryHints: [
+        'Erwartungswert = Lage. Varianz = Streuung.',
+        'Gleicher Mittelwert, aber unterschiedlich stark gestreut.',
+        'Höhere Varianz $\\Rightarrow$ stärkere Abweichungen im Mittel.',
+      ],
       nextLessonId: 'stat-1-2',
     }),
     makeLesson({
@@ -69,6 +195,130 @@ const unit1 = makeUnit({
         '**Standardisierung** (Transformation auf $N(0,1)$):\n' +
         '$$Z = \\frac{X - \\mu}{\\sigma}, \\quad Z \\sim N(0,1)$$\n\n' +
         '$$P(a \\leq X \\leq b) = \\Phi\\!\\left(\\frac{b-\\mu}{\\sigma}\\right) - \\Phi\\!\\left(\\frac{a-\\mu}{\\sigma}\\right)$$',
+      exercises: [
+        {
+          type: 'number-input',
+          question:
+            'Körpergröße $X \\sim N(175, 64)$ (cm). Welches $\\sigma$ (cm) hat die Verteilung?',
+          correctValue: 8,
+          tolerance: 0,
+          unit: 'cm',
+          explanation:
+            '$\\sigma = \\sqrt{\\sigma^2} = \\sqrt{64} = 8\\,\\text{cm}$. Vorsicht: zweite Zahl in $N(\\mu, \\sigma^2)$ ist die Varianz!',
+          hints: [
+            '$N(\\mu, \\sigma^2)$: zweiter Parameter ist die Varianz.',
+            '$\\sigma = \\sqrt{\\text{Varianz}}$.',
+            '$\\sqrt{64} = 8$.',
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question:
+            'Messfehler einer Waage ist $N(0, 0{,}04)$ g. Welches Intervall enthält $\\approx 68\\,\\%$ der Fehler?',
+          options: ['$[-0{,}2;\\, +0{,}2]$ g', '$[-0{,}04;\\, +0{,}04]$ g', '$[-0{,}5;\\, +0{,}5]$ g', '$[-2;\\, +2]$ g'],
+          correctIndex: 0,
+          explanation:
+            '$\\sigma = \\sqrt{0{,}04} = 0{,}2$. 68-Regel: $\\mu \\pm \\sigma = 0 \\pm 0{,}2 = [-0{,}2;\\, +0{,}2]$.',
+          hints: [
+            'Varianz $= 0{,}04$, also $\\sigma = 0{,}2$.',
+            '68 % in $\\mu \\pm \\sigma$.',
+            '$0 \\pm 0{,}2$.',
+          ],
+        },
+        {
+          type: 'number-input',
+          question:
+            'Standardisiere $x = 85$ für $X \\sim N(70, 100)$. Gib $z$ an.',
+          correctValue: 1.5,
+          tolerance: 0.01,
+          unit: '',
+          explanation:
+            '$z = (x - \\mu)/\\sigma = (85 - 70)/\\sqrt{100} = 15/10 = 1{,}5$.',
+          hints: [
+            'Formel: $z = (x - \\mu)/\\sigma$.',
+            '$\\sigma = \\sqrt{100} = 10$.',
+            '$(85 - 70)/10 = 15/10 = 1{,}5$.',
+          ],
+        },
+        {
+          type: 'true-false',
+          statement:
+            'In einer Normalverteilung $N(\\mu, \\sigma^2)$ sind Mittelwert, Median und Modus gleich.',
+          correct: true,
+          explanation:
+            'Richtig. Die Dichte ist **symmetrisch** um $\\mu$ und hat dort ihr Maximum. Daher fallen Mittelwert, Median und Modus alle auf $\\mu$.',
+          hints: [
+            'Wie sieht die Glockenkurve aus?',
+            'Symmetrie → Mittelwert = Median.',
+            'Maximum der Dichte → Modus.',
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question:
+            'Welche Wahrscheinlichkeit entspricht $P(X > \\mu + 2\\sigma)$ bei einer Normalverteilung?',
+          options: ['$\\approx 2{,}5\\,\\%$', '$\\approx 5\\,\\%$', '$\\approx 50\\,\\%$', '$\\approx 16\\,\\%$'],
+          correctIndex: 0,
+          explanation:
+            '95 %-Regel: $P(\\mu - 2\\sigma \\leq X \\leq \\mu + 2\\sigma) \\approx 0{,}95$. ' +
+            'Verbleibende 5 % verteilen sich symmetrisch: je 2,5 % außerhalb links und rechts. Daher $P(X > \\mu + 2\\sigma) \\approx 2{,}5\\,\\%$.',
+          hints: [
+            '95 % liegt innerhalb von $\\mu \\pm 2\\sigma$.',
+            '5 % liegen außerhalb.',
+            'Symmetrie: je 2,5 % auf jeder Seite.',
+          ],
+        },
+        {
+          type: 'number-input',
+          question:
+            'Produktionsteil $X \\sim N(50, 4)$ mm. Wie viel Prozent liegen zwischen $48$ und $52$ mm? (als Dezimalzahl)',
+          correctValue: 0.683,
+          tolerance: 0.01,
+          unit: '',
+          explanation:
+            '$\\sigma = \\sqrt{4} = 2$. Intervall $[48, 52] = [\\mu - \\sigma, \\mu + \\sigma]$. Das sind **68,3 %** nach der 68-Regel.',
+          hints: [
+            '$\\sigma = 2$, Intervallbreite $= 2\\sigma$.',
+            '$[50-2, 50+2] = [\\mu \\pm \\sigma]$.',
+            '$\\mu \\pm \\sigma$ enthält $\\approx 68\\,\\%$.',
+          ],
+        },
+        {
+          type: 'matching',
+          question: 'Ordne jeder Quantile (Standardnormal) ihre Wahrscheinlichkeit zu.',
+          pairs: [
+            { left: '$\\Phi(0)$', right: '$0{,}5$' },
+            { left: '$\\Phi(1)$', right: '$0{,}841$' },
+            { left: '$\\Phi(1{,}96)$', right: '$0{,}975$' },
+            { left: '$\\Phi(2{,}576)$', right: '$0{,}995$' },
+          ],
+          explanation:
+            'Standard-Quantile: $\\Phi(0) = 0{,}5$ (Median), $\\Phi(1) \\approx 0{,}841$ (68 %-Regel-Rand), ' +
+            '$\\Phi(1{,}96) = 0{,}975$ (95 %-Quantil), $\\Phi(2{,}576) = 0{,}995$ (99 %-Quantil).',
+          hints: [
+            '$\\Phi$ ist kumulative Verteilungsfunktion.',
+            '$\\Phi(0)$ = halbe Wahrscheinlichkeitsmasse.',
+            '1,96 und 2,576 sind Prüfungs-Standardwerte.',
+          ],
+        },
+        {
+          type: 'sorting',
+          question: 'Schritte zur Berechnung von $P(a \\leq X \\leq b)$ bei $X \\sim N(\\mu, \\sigma^2)$.',
+          items: [
+            'Grenzen standardisieren: $z_a = (a-\\mu)/\\sigma$, $z_b = (b-\\mu)/\\sigma$',
+            'Wahrscheinlichkeiten ablesen: $\\Phi(z_a)$ und $\\Phi(z_b)$',
+            'Differenz bilden: $P(a \\leq X \\leq b) = \\Phi(z_b) - \\Phi(z_a)$',
+            'Plausibilität prüfen: Ergebnis zwischen 0 und 1',
+          ],
+          correctOrder: [0, 1, 2, 3],
+          explanation:
+            'Standardisieren ist der Brückenschlag zur Tabelle, die nur $\\Phi$ für $N(0,1)$ enthält. Differenz gibt die Wahrscheinlichkeit für das Intervall.',
+          hints: [
+            'Ohne Standardisierung kein Tabellenwert.',
+            'Immer $\\Phi(z_b) - \\Phi(z_a)$, niemals umgekehrt.',
+          ],
+        },
+      ],
       masteryQuestion:
         '$X \\sim N(10, 4)$ (d.h. $\\mu = 10$, $\\sigma = 2$). In welchem Intervall liegen $\\approx 95\\,\\%$ der Werte?',
       masteryOptions: ['$[6,\\,14]$', '$[8,\\,12]$', '$[4,\\,16]$', '$[9,\\,11]$'],
@@ -119,6 +369,138 @@ const unit1 = makeUnit({
         '**95%-Konfidenzintervall** für $\\mu$ (unbekanntes $\\sigma$, t-Verteilung mit $n-1$ Freiheitsgraden):\n' +
         '$$\\bar{x} \\pm t_{n-1,\\,0{,}975} \\cdot \\frac{s}{\\sqrt{n}}$$\n\n' +
         'Für großes $n$: $t_{n-1,\\,0{,}975} \\approx 1{,}96$.',
+      exercises: [
+        {
+          type: 'multiple-choice',
+          question: 'Was ist die **Nullhypothese** $H_0$?',
+          options: [
+            'Die zu widerlegende Aussage („es gibt keinen Effekt")',
+            'Die gesuchte Alternative',
+            'Der Mittelwert der Stichprobe',
+            'Das Konfidenzintervall',
+          ],
+          correctIndex: 0,
+          explanation:
+            '$H_0$ ist die Hypothese, die man prüfen und (bei Signifikanz) verwerfen möchte — meist die „neutrale" Annahme „kein Effekt", „gleich", „identisch".',
+          hints: [
+            '$H_0$ wird getestet und ggf. abgelehnt.',
+            'Die Alternative ist $H_1$ — der vermutete Effekt.',
+          ],
+        },
+        {
+          type: 'true-false',
+          statement:
+            'Ein 95%-Konfidenzintervall bedeutet: Mit 95 % Wahrscheinlichkeit liegt der wahre Parameter in diesem konkreten Intervall.',
+          correct: false,
+          explanation:
+            'Falsch (frequentistisch). Das konkrete Intervall enthält $\\mu$ entweder oder nicht. Die korrekte Interpretation: ' +
+            '**Bei wiederholter Stichprobennahme würden 95 % der so gebildeten Intervalle** $\\mu$ **enthalten**. ' +
+            'Die 95 % beziehen sich auf die Methode, nicht auf das einzelne Ergebnis.',
+          hints: [
+            'Feinheit der Interpretation: Methode vs. einzelnes Intervall.',
+            'Im frequentistischen Rahmen ist $\\mu$ fix, das Intervall zufällig.',
+            'Prüfungsrelevant!',
+          ],
+        },
+        {
+          type: 'number-input',
+          question:
+            'Stichprobe: $\\bar x = 50$, $s = 10$, $n = 100$. Berechne die Breite des 95%-Konfidenzintervalls (Gesamtbreite, nicht Halbbreite) mit $t \\approx 1{,}96$.',
+          correctValue: 3.92,
+          tolerance: 0.05,
+          unit: '',
+          explanation:
+            'Halbbreite: $1{,}96 \\cdot s/\\sqrt{n} = 1{,}96 \\cdot 10/10 = 1{,}96$. Gesamtbreite: $2 \\cdot 1{,}96 = 3{,}92$.',
+          hints: [
+            'Halbbreite $= 1{,}96 \\cdot s/\\sqrt{n}$.',
+            '$s/\\sqrt{n} = 10/10 = 1$.',
+            'Gesamtbreite = doppelte Halbbreite.',
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question:
+            'Bei p-Wert $= 0{,}12$ und Signifikanzniveau $\\alpha = 0{,}05$: Was folgt?',
+          options: [
+            '$H_0$ **nicht** ablehnen — Ergebnis nicht signifikant',
+            '$H_0$ ablehnen — Ergebnis signifikant',
+            'Test ist fehlerhaft',
+            '$H_1$ ist bewiesen',
+          ],
+          correctIndex: 0,
+          explanation:
+            '$p = 0{,}12 > \\alpha = 0{,}05$: Daten liefern **keinen** Grund, $H_0$ zu verwerfen. ' +
+            '„Nicht ablehnen" ist nicht dasselbe wie „$H_0$ bestätigt"!',
+          hints: [
+            'Vergleich: $p$ vs. $\\alpha$.',
+            '$p > \\alpha$ bedeutet: nicht signifikant.',
+            'Nicht signifikant $\\neq$ $H_0$ wahr.',
+          ],
+        },
+        {
+          type: 'number-input',
+          question:
+            'Halbbreite eines 95%-KI ist $0{,}5$. Stichprobe $n = 64$, $\\sigma$ bekannt. Berechne $\\sigma$ (mit $z = 1{,}96$).',
+          correctValue: 2.04,
+          tolerance: 0.05,
+          unit: '',
+          explanation:
+            'Halbbreite $= z \\cdot \\sigma/\\sqrt{n}$ → $\\sigma = \\text{Halbbreite} \\cdot \\sqrt{n}/z = 0{,}5 \\cdot 8 / 1{,}96 \\approx 2{,}04$.',
+          hints: [
+            '$d = z \\cdot \\sigma/\\sqrt{n}$ nach $\\sigma$ umstellen.',
+            '$\\sigma = d \\cdot \\sqrt{n}/z$.',
+            '$0{,}5 \\cdot 8 = 4$, $4/1{,}96 \\approx 2{,}04$.',
+          ],
+        },
+        {
+          type: 'true-false',
+          statement:
+            'Wenn man mehr Stichproben nimmt (größeres $n$), wird das Konfidenzintervall schmaler.',
+          correct: true,
+          explanation:
+            'Richtig. Halbbreite $\\propto 1/\\sqrt{n}$. Vierfach größere Stichprobe → halb so breites Intervall. ' +
+            'Daher: **Präzision** des geschätzten Mittelwerts steigt mit $\\sqrt{n}$.',
+          hints: [
+            'Wo steht $n$ in der Formel?',
+            '$\\sigma/\\sqrt{n}$ — was passiert bei größerem $n$?',
+            'Nenner wächst → Bruch sinkt.',
+          ],
+        },
+        {
+          type: 'matching',
+          question: 'Ordne jedem Symbol seine Bedeutung zu.',
+          pairs: [
+            { left: '$\\alpha$',  right: 'Signifikanzniveau (Fehler 1. Art)' },
+            { left: '$p$',        right: 'p-Wert (Beobachtungswahrscheinlichkeit unter $H_0$)' },
+            { left: '$H_0$',       right: 'Nullhypothese' },
+            { left: '$H_1$',       right: 'Alternativhypothese' },
+          ],
+          explanation:
+            '$\\alpha$ setzt der Anwender (meist 5 %), $p$ kommt aus den Daten. $p < \\alpha$ → $H_0$ ablehnen.',
+          hints: [
+            '$\\alpha$ = erlaubte Fehlerrate.',
+            '$p$ = beobachtete Wahrscheinlichkeit.',
+          ],
+        },
+        {
+          type: 'sorting',
+          question: 'Bringe die Schritte eines Hypothesentests in die richtige Reihenfolge.',
+          items: [
+            'Hypothesen $H_0$ und $H_1$ formulieren',
+            'Signifikanzniveau $\\alpha$ festlegen (z.B. $0{,}05$)',
+            'Teststatistik aus Stichprobe berechnen',
+            'p-Wert bestimmen und mit $\\alpha$ vergleichen; Entscheidung treffen',
+          ],
+          correctOrder: [0, 1, 2, 3],
+          explanation:
+            'Die Reihenfolge verhindert „Cherry Picking": Hypothese und $\\alpha$ **vor** Datenauswertung festlegen. ' +
+            'Sonst verfälscht man die Fehlerrate.',
+          hints: [
+            'Hypothesen vor Datenauswertung.',
+            '$\\alpha$ wird VOR dem Test fixiert.',
+          ],
+        },
+      ],
       masteryQuestion:
         'Ein Experiment liefert $p = 0{,}03$ bei $\\alpha = 0{,}05$. Was schlussfolgert man?',
       masteryOptions: [
@@ -178,6 +560,134 @@ const unit2 = makeUnit({
       formulaContent:
         '$$\\bar x = \\frac{1}{n}\\sum x_i, \\qquad s^2 = \\frac{1}{n-1}\\sum (x_i-\\bar x)^2$$\n\n' +
         '**95%-KI:** $\\bar x \\pm 1{,}96 \\cdot s/\\sqrt{n}$ (für großes n).',
+      exercises: [
+        {
+          type: 'number-input',
+          question: '[PRÜFUNG] Aufwärmaufgabe: Mittelwert von $5$ Messungen: $10, 12, 11, 13, 14$.',
+          correctValue: 12,
+          tolerance: 0,
+          unit: '',
+          explanation: '$\\bar x = (10+12+11+13+14)/5 = 60/5 = 12$.',
+          hints: [
+            'Summe durch Anzahl.',
+            '$10+12+11+13+14 = 60$.',
+            '$60/5 = 12$.',
+          ],
+        },
+        {
+          type: 'number-input',
+          question:
+            '[PRÜFUNG] Stichprobenvarianz $s^2$ von $4, 6, 8$.',
+          correctValue: 4,
+          tolerance: 0.01,
+          unit: '',
+          explanation:
+            '$\\bar x = 6$. $\\sum (x_i - \\bar x)^2 = (-2)^2 + 0^2 + 2^2 = 8$. $s^2 = 8/(n-1) = 8/2 = 4$.',
+          hints: [
+            'Erst Mittelwert: $(4+6+8)/3 = 6$.',
+            'Abweichungen quadrieren: $4, 0, 4$. Summe: $8$.',
+            'Durch $n-1 = 2$ teilen: $s^2 = 4$.',
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question:
+            '[PRÜFUNG] Warum wird bei der Stichprobenvarianz durch $n-1$ (nicht $n$) geteilt?',
+          options: [
+            'Um einen **erwartungstreuen** Schätzer für $\\sigma^2$ zu erhalten (Bessel-Korrektur)',
+            'Aus Tradition',
+            'Um die Rechnung zu vereinfachen',
+            'Weil $n-1$ immer größer ist',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Mit $n$ würde $E(s^2) < \\sigma^2$ (Unterschätzung). Die Korrektur $n-1$ heißt **Bessel-Korrektur** und macht $s^2$ erwartungstreu: $E(s^2) = \\sigma^2$.',
+          hints: [
+            'Stichprobenvarianz vs. wahre Varianz.',
+            'Begriff: Erwartungstreu (unbiased).',
+            'Bessel-Korrektur — relevant bei Prüfungen.',
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question:
+            '[PRÜFUNG] Stichprobe $n = 25$, $\\bar x = 100$, $s = 10$. Halbbreite des 95%-KI (t-Wert $t_{24;0{,}975} \\approx 2{,}064$)?',
+          options: ['$\\approx 4{,}13$', '$\\approx 1{,}96$', '$\\approx 10$', '$\\approx 0{,}4$'],
+          correctIndex: 0,
+          explanation:
+            '$d = t \\cdot s/\\sqrt{n} = 2{,}064 \\cdot 10/\\sqrt{25} = 2{,}064 \\cdot 2 = 4{,}128 \\approx 4{,}13$.',
+          hints: [
+            'Halbbreite $= t \\cdot s/\\sqrt{n}$.',
+            '$s/\\sqrt{n} = 10/5 = 2$.',
+            '$2{,}064 \\cdot 2 \\approx 4{,}13$.',
+          ],
+        },
+        {
+          type: 'true-false',
+          statement:
+            '[PRÜFUNG] Bei kleinen Stichproben $n < 30$ sollte für das KI die t-Verteilung statt der Normalverteilung verwendet werden.',
+          correct: true,
+          explanation:
+            'Richtig. Bei kleinem $n$ ist $s$ ungenau — die t-Verteilung berücksichtigt diese Unsicherheit durch etwas schwerere Schwänze ($t > z$). ' +
+            'Für $n \\to \\infty$ konvergiert $t \\to z = 1{,}96$.',
+          hints: [
+            'Warum ist die t-Verteilung „breiter"?',
+            'Kleine $n$ → $s$ weniger zuverlässig → mehr Unsicherheit.',
+            'Mit größerem $n$ schrumpft der Unterschied.',
+          ],
+        },
+        {
+          type: 'number-input',
+          question:
+            '[PRÜFUNG] Wie viele Messungen $n$ sind nötig für eine KI-Halbbreite $\\leq 1$ bei $\\sigma = 5$ und 95%-KI ($z = 1{,}96$)?',
+          correctValue: 97,
+          tolerance: 2,
+          unit: '',
+          explanation:
+            '$n \\geq (z \\sigma/d)^2 = (1{,}96 \\cdot 5/1)^2 = (9{,}8)^2 = 96{,}04$, also $n \\geq 97$ (aufrunden).',
+          hints: [
+            '$d = z\\sigma/\\sqrt{n}$ nach $n$ umstellen.',
+            '$n \\geq (z\\sigma/d)^2$.',
+            '$(1{,}96 \\cdot 5)^2 = 9{,}8^2 \\approx 96$, aufrunden auf $97$.',
+          ],
+        },
+        {
+          type: 'matching',
+          question:
+            '[PRÜFUNG] Ordne jedem Stichproben-Kennwert seine Formel zu.',
+          pairs: [
+            { left: '$\\bar x$',  right: '$\\frac{1}{n}\\sum x_i$' },
+            { left: '$s^2$',      right: '$\\frac{1}{n-1}\\sum (x_i-\\bar x)^2$' },
+            { left: '$s$',        right: '$\\sqrt{s^2}$' },
+            { left: 'SE',         right: '$s/\\sqrt{n}$' },
+          ],
+          explanation:
+            'SE = Standardfehler des Mittelwerts, ein Maß für die Streuung des Stichprobenmittels. Zentrale Größe für KI: Halbbreite = $z \\cdot SE$.',
+          hints: [
+            'SE ist Streuung des **Mittelwerts**, nicht der Einzelwerte.',
+            '$s/\\sqrt{n}$ — klassischer Ausdruck.',
+          ],
+        },
+        {
+          type: 'sorting',
+          question:
+            '[PRÜFUNG] Strategie zur KI-Berechnung in Prüfungsaufgabe. Bringe die Schritte in Reihenfolge.',
+          items: [
+            'Stichprobenkennwerte $\\bar x$ und $s$ berechnen',
+            'Standardfehler $SE = s/\\sqrt{n}$ bilden',
+            't-Quantil (bzw. $1{,}96$ für großes $n$) aus Tabelle',
+            'KI: $\\bar x \\pm t \\cdot SE$',
+          ],
+          correctOrder: [0, 1, 2, 3],
+          explanation:
+            'Reihenfolge stellt sicher, dass alle Bausteine bereit sind, bevor der Schlussformel-Bau erfolgt. ' +
+            'Typischer Fehler: $t$ ohne Nachschlagen raten oder den Standardfehler vergessen.',
+          hints: [
+            'Erst Daten, dann Fehler, dann Quantil, dann KI.',
+            'SE und $t$ getrennt!',
+          ],
+        },
+      ],
       masteryQuestion: '[PRÜFUNG] Mittelwert von 4, 5, 6, 7, 8?',
       masteryOptions: ['$6$', '$5$', '$7$', '$4{,}5$'],
       correctIndex: 0,
@@ -227,6 +737,135 @@ const unit2 = makeUnit({
         '$$P(a \\leq X \\leq b) = \\Phi\\!\\left(\\frac{b-\\mu}{\\sigma}\\right) - \\Phi\\!\\left(\\frac{a-\\mu}{\\sigma}\\right)$$\n\n' +
         '**Symmetrie:** $\\Phi(-z) = 1 - \\Phi(z)$\n\n' +
         '**Wichtige Quantile:** $\\Phi(1{,}645) = 0{,}95$, $\\Phi(1{,}96) = 0{,}975$, $\\Phi(2{,}576) = 0{,}995$',
+      exercises: [
+        {
+          type: 'number-input',
+          question:
+            '[PRÜFUNG] Aufwärmaufgabe: $X \\sim N(100, 25)$. Standardisiere $x = 110$ zu $z$.',
+          correctValue: 2,
+          tolerance: 0.01,
+          unit: '',
+          explanation:
+            '$\\sigma = \\sqrt{25} = 5$. $z = (110 - 100)/5 = 10/5 = 2$.',
+          hints: [
+            '$\\sigma = \\sqrt{\\text{Varianz}} = 5$.',
+            '$z = (x - \\mu)/\\sigma$.',
+            '$10/5 = 2$.',
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question:
+            '[PRÜFUNG] $X \\sim N(50, 16)$. Berechne $P(X \\leq 42)$ mit $\\Phi(-2) = 1 - \\Phi(2) \\approx 0{,}023$.',
+          options: [
+            '$\\approx 0{,}023$',
+            '$\\approx 0{,}977$',
+            '$\\approx 0{,}5$',
+            '$\\approx 0{,}159$',
+          ],
+          correctIndex: 0,
+          explanation:
+            '$\\sigma = 4$, $z = (42-50)/4 = -2$. $P(X \\leq 42) = \\Phi(-2) = 1 - \\Phi(2) \\approx 1 - 0{,}977 = 0{,}023$.',
+          hints: [
+            '$\\sigma = \\sqrt{16} = 4$.',
+            '$z = -8/4 = -2$.',
+            'Symmetrie: $\\Phi(-z) = 1 - \\Phi(z)$.',
+          ],
+        },
+        {
+          type: 'number-input',
+          question:
+            '[PRÜFUNG] Werkstück-Dicke $X \\sim N(10\\,\\text{mm}, 0{,}25\\,\\text{mm}^2)$. ' +
+            'Bei welcher Toleranzbreite $\\Delta$ (symmetrisch um $\\mu$) liegen $\\approx 95\\,\\%$ der Werkstücke? Gib Halbbreite (in mm) an.',
+          correctValue: 1,
+          tolerance: 0.02,
+          unit: 'mm',
+          explanation:
+            '$\\sigma = \\sqrt{0{,}25} = 0{,}5\\,\\text{mm}$. 95-Regel: $\\mu \\pm 2\\sigma = 10 \\pm 1\\,\\text{mm}$. Halbbreite: $1\\,\\text{mm}$.',
+          hints: [
+            '$\\sigma = \\sqrt{0{,}25} = 0{,}5$.',
+            '95 % → $\\mu \\pm 2\\sigma$.',
+            '$2 \\cdot 0{,}5 = 1$.',
+          ],
+        },
+        {
+          type: 'true-false',
+          statement:
+            '[PRÜFUNG] Nach Standardisierung mit $Z = (X-\\mu)/\\sigma$ ist die neue Zufallsvariable Z standardnormalverteilt $N(0, 1)$.',
+          correct: true,
+          explanation:
+            'Richtig. $E(Z) = 0$, $\\operatorname{Var}(Z) = 1$ — Mittelwert und Varianz werden durch lineare Transformation auf die Standardnormalverteilung normiert.',
+          hints: [
+            '$E(aX + b) = a E(X) + b$, $\\operatorname{Var}(aX) = a^2\\operatorname{Var}(X)$.',
+            'Subtraktion von $\\mu$: neuer Mittelwert $0$.',
+            'Division durch $\\sigma$: neue Varianz $1$.',
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question:
+            '[PRÜFUNG] $X \\sim N(0, 1)$. Welches $z$ erfüllt $P(Z \\leq z) = 0{,}975$?',
+          options: ['$z = 1{,}96$', '$z = 1$', '$z = 2{,}576$', '$z = 0{,}975$'],
+          correctIndex: 0,
+          explanation:
+            '$\\Phi(1{,}96) = 0{,}975$ — zentrale Größe für das 95%-Konfidenzintervall (97,5 % links + 2,5 % rechts außen = 2-seitig 95 %).',
+          hints: [
+            'Standard-Quantile merken.',
+            '1,96 ist DER Prüfungswert.',
+          ],
+        },
+        {
+          type: 'matching',
+          question:
+            '[PRÜFUNG] Ordne jedem Intervall die zugehörige Wahrscheinlichkeit zu ($X \\sim N(\\mu, \\sigma^2)$).',
+          pairs: [
+            { left: '$P(\\mu - \\sigma \\leq X \\leq \\mu + \\sigma)$',      right: '$\\approx 0{,}683$' },
+            { left: '$P(\\mu - 2\\sigma \\leq X \\leq \\mu + 2\\sigma)$',    right: '$\\approx 0{,}954$' },
+            { left: '$P(\\mu - 3\\sigma \\leq X \\leq \\mu + 3\\sigma)$',    right: '$\\approx 0{,}997$' },
+            { left: '$P(X > \\mu + \\sigma)$',                                 right: '$\\approx 0{,}159$' },
+          ],
+          explanation:
+            '68-95-99,7-Regel in drei Zeilen. $P(X > \\mu + \\sigma)$ ist die Hälfte der 32 % Außenbereich.',
+          hints: [
+            'Die 68-95-99,7-Regel auswendig.',
+            'Außenbereich der 68-Regel: $1 - 0{,}683 = 0{,}317$, halbiert $\\approx 0{,}159$.',
+          ],
+        },
+        {
+          type: 'number-input',
+          question:
+            '[PRÜFUNG] Glühbirnen $X \\sim N(1000\\,\\text{h}, 2500\\,\\text{h}^2)$. Wahrscheinlichkeit, dass eine Birne **länger als 1100 h** hält? Nutze $\\Phi(2) = 0{,}977$.',
+          correctValue: 0.023,
+          tolerance: 0.01,
+          unit: '',
+          explanation:
+            '$\\sigma = 50$, $z = (1100 - 1000)/50 = 2$. $P(X > 1100) = 1 - \\Phi(2) \\approx 1 - 0{,}977 = 0{,}023$.',
+          hints: [
+            '$\\sigma = \\sqrt{2500} = 50$.',
+            '$z = 100/50 = 2$.',
+            '$P(X > x) = 1 - \\Phi(z)$.',
+          ],
+        },
+        {
+          type: 'sorting',
+          question:
+            '[PRÜFUNG] Strategie zur Berechnung von $P(X \\leq x)$ bei $X \\sim N(\\mu, \\sigma^2)$. Bringe die Schritte in Reihenfolge.',
+          items: [
+            'Varianz $\\sigma^2$ ablesen, $\\sigma = \\sqrt{\\sigma^2}$',
+            'Standardisieren: $z = (x - \\mu)/\\sigma$',
+            '$\\Phi(z)$ aus Tabelle ablesen (oder Symmetrie $\\Phi(-z) = 1 - \\Phi(z)$ nutzen)',
+            'Bei $P(X > x)$: $1 - \\Phi(z)$; bei $P(a \\leq X \\leq b)$: $\\Phi(z_b) - \\Phi(z_a)$',
+          ],
+          correctOrder: [0, 1, 2, 3],
+          explanation:
+            '$\\sigma$ muss zuerst sauber gezogen werden (typische Stolperstelle: $\\sigma^2$ vs $\\sigma$ verwechseln!). ' +
+            'Danach ist das Rezept mechanisch: standardisieren → Tabelle → je nach Fragestellung umrechnen.',
+          hints: [
+            '$\\sigma^2$ vs. $\\sigma$ — häufiger Fehler.',
+            'Immer standardisieren vor der Tabelle.',
+          ],
+        },
+      ],
       masteryQuestion:
         '[PRÜFUNG] $X \\sim N(5, 1)$. Wie groß ist $P(X > 6)$?',
       masteryOptions: [
@@ -285,6 +924,140 @@ const unit2 = makeUnit({
         '$$\\left[\\bar x - 1{,}96\\frac{\\sigma}{\\sqrt{n}},\\; \\bar x + 1{,}96\\frac{\\sigma}{\\sqrt{n}}\\right]$$\n\n' +
         '**Stichprobenumfang** für Halbbreite $\\leq \\Delta$:\n' +
         '$$n \\geq \\left(\\frac{1{,}96 \\cdot \\sigma}{\\Delta}\\right)^2$$',
+      exercises: [
+        {
+          type: 'number-input',
+          question:
+            '[PRÜFUNG] Aufwärmaufgabe: $\\bar x = 20$, $\\sigma = 4$, $n = 16$. Halbbreite des 95%-KI?',
+          correctValue: 1.96,
+          tolerance: 0.01,
+          unit: '',
+          explanation:
+            'Halbbreite $= 1{,}96 \\cdot \\sigma/\\sqrt{n} = 1{,}96 \\cdot 4/4 = 1{,}96$.',
+          hints: [
+            'Halbbreite $= z \\cdot \\sigma/\\sqrt{n}$.',
+            '$\\sigma/\\sqrt{n} = 4/4 = 1$.',
+            '$1{,}96 \\cdot 1 = 1{,}96$.',
+          ],
+        },
+        {
+          type: 'number-input',
+          question:
+            '[PRÜFUNG] Wie viele Messungen $n$ für KI-Halbbreite $\\leq 0{,}5$ bei $\\sigma = 2$ (95%-KI)?',
+          correctValue: 62,
+          tolerance: 2,
+          unit: '',
+          explanation:
+            '$n \\geq (1{,}96 \\cdot 2/0{,}5)^2 = (7{,}84)^2 = 61{,}47 \\to n \\geq 62$.',
+          hints: [
+            '$n \\geq (z\\sigma/d)^2$.',
+            '$(1{,}96 \\cdot 2/0{,}5)^2 = (7{,}84)^2$.',
+            'Aufrunden! Etwa $62$.',
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question:
+            '[PRÜFUNG] Um das KI auf die **halbe** Breite zu reduzieren, muss $n$ … werden:',
+          options: ['ver**vier**facht', 'verdoppelt', 'gleich gelassen', 'geviertelt'],
+          correctIndex: 0,
+          explanation:
+            'Halbbreite $\\propto 1/\\sqrt{n}$. Halbe Breite → $\\sqrt{n_{\\text{neu}}}/\\sqrt{n_{\\text{alt}}} = 2$, also $n_{\\text{neu}} = 4n_{\\text{alt}}$. ' +
+            '**Stichprobenumfang quadratisch mit Präzision** — wichtige Faustregel.',
+          hints: [
+            'Präzision $\\propto 1/\\sqrt{n}$.',
+            'Halbe Breite → $\\sqrt{n}$ verdoppeln.',
+            '$\\sqrt{4n} = 2\\sqrt{n}$.',
+          ],
+        },
+        {
+          type: 'true-false',
+          statement:
+            '[PRÜFUNG] Wenn das 95%-KI den Wert $0$ enthält, ist der geschätzte Mittelwert nicht signifikant verschieden von $0$.',
+          correct: true,
+          explanation:
+            'Richtig. Das 95%-KI umfasst Werte, die mit den Daten konsistent sind. Wenn $0$ drin liegt, ' +
+            'lässt sich $H_0: \\mu = 0$ auf dem 5%-Niveau nicht verwerfen — also nicht signifikant.',
+          hints: [
+            'Enger Zusammenhang KI ↔ Hypothesentest.',
+            'Wert nicht im KI → signifikant verschieden.',
+            'Wert im KI → nicht signifikant.',
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question:
+            '[PRÜFUNG] Messungen: $\\bar x = 5{,}2$, $s = 0{,}4$, $n = 16$. 95%-KI mit $t_{15;0{,}975} = 2{,}131$?',
+          options: [
+            '$[4{,}99;\\, 5{,}41]$',
+            '$[4{,}80;\\, 5{,}60]$',
+            '$[5{,}00;\\, 5{,}40]$',
+            '$[4{,}79;\\, 5{,}61]$',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Halbbreite: $2{,}131 \\cdot 0{,}4/\\sqrt{16} = 2{,}131 \\cdot 0{,}1 = 0{,}2131$. ' +
+            'KI: $[5{,}2 - 0{,}213;\\, 5{,}2 + 0{,}213] = [4{,}987;\\, 5{,}413] \\approx [4{,}99;\\, 5{,}41]$.',
+          hints: [
+            '$s/\\sqrt{n} = 0{,}4/4 = 0{,}1$.',
+            '$t \\cdot 0{,}1 = 0{,}213$.',
+            'KI: $\\bar x \\pm 0{,}213$.',
+          ],
+        },
+        {
+          type: 'matching',
+          question:
+            '[PRÜFUNG] Ordne jedem Effekt auf das KI seine Folge zu.',
+          pairs: [
+            { left: 'Größeres $n$',                    right: 'schmaleres KI' },
+            { left: 'Höheres Konfidenzniveau (99 %)',  right: 'breiteres KI' },
+            { left: 'Kleineres $\\sigma$',             right: 'schmaleres KI' },
+            { left: 'Kleineres $n$',                    right: 'breiteres KI' },
+          ],
+          explanation:
+            'Halbbreite = $z \\cdot \\sigma / \\sqrt{n}$: steigt mit $z$ und $\\sigma$, fällt mit $\\sqrt{n}$. ' +
+            'Für 99 %-KI: $z = 2{,}576$ statt $1{,}96$ → breiter.',
+          hints: [
+            '$n$ im Nenner — größer ist besser.',
+            'Höheres Konfidenzniveau → größeres $z$.',
+          ],
+        },
+        {
+          type: 'number-input',
+          question:
+            '[PRÜFUNG] Stichprobe von $25$ Widerständen: $\\bar x = 100{,}5\\,\\Omega$, $s = 2{,}0\\,\\Omega$. ' +
+            'Liegt der Sollwert $100\\,\\Omega$ im 95%-KI? ($t_{24;0{,}975} \\approx 2{,}064$.) Gib Halbbreite an.',
+          correctValue: 0.8256,
+          tolerance: 0.01,
+          unit: 'Ω',
+          explanation:
+            'Halbbreite: $2{,}064 \\cdot 2/\\sqrt{25} = 2{,}064 \\cdot 0{,}4 = 0{,}826\\,\\Omega$. ' +
+            'KI: $[100{,}5 - 0{,}83;\\, 100{,}5 + 0{,}83] = [99{,}67;\\, 101{,}33]$. Sollwert $100$ liegt drin → **nicht** signifikant abweichend.',
+          hints: [
+            '$s/\\sqrt{n} = 2/5 = 0{,}4$.',
+            'Halbbreite $= 2{,}064 \\cdot 0{,}4 = 0{,}826$.',
+            'Prüfen: liegt $100$ im Intervall $100{,}5 \\pm 0{,}83$?',
+          ],
+        },
+        {
+          type: 'sorting',
+          question:
+            '[PRÜFUNG] Gesamtstrategie für KI-Aufgabe. Bringe die Schritte in Reihenfolge.',
+          items: [
+            'Daten sichten: $n$, $\\bar x$, $s$ (oder $\\sigma$), gewünschtes Niveau',
+            'Passendes Quantil wählen ($z = 1{,}96$ oder $t_{n-1}$ je nach $n$ und $\\sigma$)',
+            'Halbbreite: $q \\cdot s/\\sqrt{n}$ (bzw. $\\sigma/\\sqrt{n}$)',
+            'KI angeben: $[\\bar x - d,\\, \\bar x + d]$; bei Hypothesentest vergleichen, ob Sollwert drin liegt',
+          ],
+          correctOrder: [0, 1, 2, 3],
+          explanation:
+            'Reihenfolge ist prüfungsrelevant: erst Daten, dann Quantil, dann Halbbreite, dann KI + Interpretation.',
+          hints: [
+            'Ohne $\\sigma$ vs. $s$: andere Quantil-Tabelle.',
+            'Zuletzt Interpretation — meist punkterelevant.',
+          ],
+        },
+      ],
       masteryQuestion:
         '[PRÜFUNG] $\\bar x = 10$, $\\sigma = 2$, $n = 100$. 95%-Konfidenzintervall?',
       masteryOptions: [

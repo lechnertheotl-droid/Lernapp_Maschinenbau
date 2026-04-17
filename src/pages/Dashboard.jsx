@@ -113,17 +113,19 @@ export function Dashboard() {
       {/* ── Review CTA ───────────────────────────────────────────── */}
       {due.length > 0 && (
         <button
+          type="button"
           onClick={() => navigate('/review')}
-          className="w-full text-left bg-lemon border-2 border-lemon-dark rounded-retro shadow-hard-lemon p-4 flex items-center gap-3 retro-press tap-highlight-none"
+          aria-label={`${due.length} Wiederholungen jetzt üben`}
+          className="w-full text-left bg-lemon border-2 border-lemon-dark rounded-retro shadow-hard-lemon p-4 flex items-center gap-3 retro-press tap-highlight-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-1"
         >
-          <span className="text-2xl flex-shrink-0 font-mono font-black">↻</span>
+          <span className="text-2xl flex-shrink-0 font-mono font-black text-ink" aria-hidden>↻</span>
           <div className="flex-1 min-w-0">
             <p className="font-black text-ink text-sm">
               {due.length} Wiederholung{due.length > 1 ? 'en' : ''} fällig
             </p>
-            <p className="text-ink-soft text-xs font-mono mt-0.5">Jetzt Wissen festigen →</p>
+            <p className="text-ink/70 text-xs font-mono mt-0.5">Jetzt Wissen festigen →</p>
           </div>
-          <span className="font-mono font-black text-ink text-lg">›</span>
+          <span className="font-mono font-black text-ink text-lg" aria-hidden>›</span>
         </button>
       )}
 

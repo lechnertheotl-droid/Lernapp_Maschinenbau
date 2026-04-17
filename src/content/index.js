@@ -616,6 +616,34 @@ function countUnescapedDollars(str) {
   return count
 }
 
+// Extrahiert den Inhalt jedes balanced $…$-Blocks (paarweise, sequentiell).
+// Ignoriert $$-Display-Math (das wird separat verarbeitet).
+function extractInlineMathBlocks(str) {
+  if (typeof str !== 'string') return []
+  const blocks = []
+  let open = -1
+  let i = 0
+  while (i < str.length) {
+    if (str[i] === '$' && str[i + 1] === '$') { i += 2; continue }
+    if (str[i] === '$' && (i === 0 || str[i - 1] !== '\\')) {
+      if (open === -1) open = i
+      else { blocks.push(str.slice(open + 1, i)); open = -1 }
+    }
+    i++
+  }
+  return blocks
+}
+
+// Flaggt verwaiste Mini-LaTeX-Blöcke wie `$= $`, `$ = $`, `$ $` — Inhalt leer
+// oder Whitespace-umhüllter Einzel-Operator. Reines `$=$`, `$-$`, `$+$` ohne
+// Whitespace ist erlaubt (rendert als saubere Mathe-Operatoren im Text).
+function findNonsenseMathBlocks(str) {
+  return extractInlineMathBlocks(str).filter((inner) => {
+    if (inner.length === 0 || /^\s+$/.test(inner)) return true
+    return /^\s/.test(inner) || /\s$/.test(inner)
+  }).filter((inner) => /^[\s=+\-,:;.]{1,6}$/.test(inner))
+}
+
 function collectVisibleStrings(exercise) {
   const fields = []
   const push = (v) => { if (typeof v === 'string') fields.push(v) }
@@ -673,6 +701,10 @@ export function getContentQualityIssues() {
           for (const field of collectVisibleStrings(exercise)) {
             if (countUnescapedDollars(field) % 2 !== 0) {
               issues.push(`${exercise.id}: ungerade Anzahl \`$\` in String (nicht-geschlossenes $...$): ${JSON.stringify(field.slice(0, 80))}`)
+            }
+            const nonsense = findNonsenseMathBlocks(field)
+            if (nonsense.length > 0) {
+              issues.push(`${exercise.id}: sinnloser $...$-Block ${JSON.stringify(nonsense[0])} in ${JSON.stringify(field.slice(0, 80))}`)
             }
           }
 

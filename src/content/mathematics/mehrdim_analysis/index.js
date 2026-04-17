@@ -28,6 +28,89 @@ const unit1 = makeUnit({
         '**Gradient-Vektor:**\n' +
         '$$\\nabla f = \\begin{pmatrix} \\partial f/\\partial x \\\\ \\partial f/\\partial y \\end{pmatrix}$$\n\n' +
         'Der Gradient zeigt in die Richtung des **steilsten Anstiegs**. Sein Betrag gibt die maximale Steigung an.',
+      exercises: [
+        {
+          type: 'multiple-choice',
+          question: 'Was ist $\\partial/\\partial y$ von $f(x,y) = x^3 y^2$?',
+          options: ['$2x^3 y$', '$3x^2 y^2$', '$x^3$', '$6x^2 y$'],
+          correctIndex: 0,
+          explanation: '$x^3$ wird als Konstante behandelt. $\\partial/\\partial y (y^2) = 2y$. Ergebnis: $x^3 \\cdot 2y = 2x^3 y$.',
+          hints: ['$x$ ist konstant, wenn wir nach $y$ ableiten.', '$(y^2)\' = 2y$.', '$x^3$ bleibt als Faktor stehen.'],
+        },
+        {
+          type: 'number-input',
+          question: 'Für $f(x,y) = x^2 + 2xy$ den Wert $\\partial f/\\partial x$ an $(3, 1)$.',
+          correctValue: 8,
+          tolerance: 0,
+          unit: '',
+          explanation: '$\\partial f/\\partial x = 2x + 2y$. An $(3,1)$: $2\\cdot 3 + 2\\cdot 1 = 8$.',
+          hints: ['$y$ als Konstante.', 'Ableitung: $2x + 2y$.', 'Einsetzen: $6 + 2 = 8$.'],
+        },
+        {
+          type: 'multiple-choice',
+          question: 'Was ist der **Gradient** von $f(x,y) = x^2 + y^2$ am Punkt $(1, 2)$?',
+          options: ['$(2, 4)$', '$(1, 2)$', '$(2, 2)$', '$(1, 4)$'],
+          correctIndex: 0,
+          explanation: '$\\nabla f = (2x, 2y)$. An $(1,2)$: $(2, 4)$.',
+          hints: ['Gradient = Vektor der partiellen Ableitungen.', '$(2x, 2y)$ einsetzen.', 'Achtung: zuerst $x$, dann $y$.'],
+        },
+        {
+          type: 'true-false',
+          statement: 'Der Gradient $\\nabla f$ zeigt **entlang** der Niveaulinien von $f$.',
+          correct: false,
+          explanation:
+            'Falsch — der Gradient zeigt **senkrecht** zu den Niveaulinien, in Richtung des steilsten Anstiegs. ' +
+            'Entlang der Niveaulinie bleibt der Funktionswert konstant, die Ableitung in diese Richtung ist 0. ' +
+            'Klassische Fangfrage.',
+          hints: [
+            'Auf einer Niveaulinie ändert sich $f$ nicht — welche Richtungsableitung hat das?',
+            'Gradient und Niveaulinie stehen in welchem Winkel zueinander?',
+            'Senkrecht. Nicht parallel.',
+          ],
+        },
+        {
+          type: 'number-input',
+          question: 'Betrag des Gradienten von $f(x,y) = x^2 + y^2$ an $(3, 4)$.',
+          correctValue: 10,
+          tolerance: 0.01,
+          unit: '',
+          explanation: '$\\nabla f = (2x, 2y) = (6, 8)$. $|\\nabla f| = \\sqrt{36 + 64} = \\sqrt{100} = 10$.',
+          hints: ['$\\nabla f = (6, 8)$.', '$|\\nabla f| = \\sqrt{6^2 + 8^2}$.', '3-4-5-Tripel, skaliert.'],
+        },
+        {
+          type: 'matching',
+          question: 'Ordne jeder Funktion ihren Gradienten zu.',
+          pairs: [
+            { left: '$f = x + y$',     right: '$(1, 1)$' },
+            { left: '$f = xy$',         right: '$(y, x)$' },
+            { left: '$f = x^2 + y^2$',  right: '$(2x, 2y)$' },
+            { left: '$f = e^x \\cdot y$', right: '$(e^x y, e^x)$' },
+          ],
+          explanation: 'Bei $xy$ vertauschen sich die Ableitungen: $\\partial/\\partial x = y$, $\\partial/\\partial y = x$.',
+          hints: ['Partielle Ableitung jede Variable separat.', 'Bei $e^x \\cdot y$: Produktregel.'],
+        },
+        {
+          type: 'multiple-choice',
+          question: 'Ein **Höhenlinienbild** $f(x,y) = $ const zeigt Niveaulinien. Wie steht $\\nabla f$ zur Niveaulinie?',
+          options: ['Senkrecht (orthogonal)', 'Parallel', 'Im Winkel von 45°', 'Kein Zusammenhang'],
+          correctIndex: 0,
+          explanation: 'Der Gradient zeigt zur **stärksten Änderung** — auf einer Höhenlinie ändert sich $f$ nicht, also Richtungsableitung entlang der Linie = 0. Daher $\\nabla f \\perp $ Höhenlinie.',
+          hints: ['Auf einer Höhenlinie: $f$ konstant.', 'Richtungsableitung = 0 entlang der Linie.', 'Gradient steht senkrecht.'],
+        },
+        {
+          type: 'sorting',
+          question: 'Bringe die Schritte zur Berechnung der Tangentialebene an $f(x,y)$ im Punkt $(x_0, y_0)$ in Reihenfolge.',
+          items: [
+            'Funktionswert $f(x_0, y_0)$ berechnen',
+            'Partielle Ableitungen $f_x, f_y$ an $(x_0, y_0)$ bestimmen',
+            'Tangentialebene: $z = f(x_0, y_0) + f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)$',
+            'Falls gewünscht: umformen zu Normalform $Ax + By + Cz = D$',
+          ],
+          correctOrder: [0, 1, 2, 3],
+          explanation: 'Tangentialebene ist das mehrdim. Analogon zur Tangente — lokale lineare Approximation.',
+          hints: ['Funktionswert zuerst.', 'Ableitungen geben Steigungen in beiden Richtungen.'],
+        },
+      ],
       masteryQuestion: 'Für $f(x,y) = x^2 + 3y$: Was ist $\\partial f/\\partial x$?',
       masteryOptions: ['$2x$', '$2x + 3$', '$3$', '$x^2$'],
       correctIndex: 0,
@@ -83,6 +166,81 @@ const unit1 = makeUnit({
         '- $\\det(H) < 0$: **Sattelpunkt**\n\n' +
         '**Lagrange-Ansatz** (Nebenbedingung $g(x,y) = 0$):\n' +
         '$$\\nabla f = \\lambda\\,\\nabla g \\quad \\text{und} \\quad g(x,y) = 0 \\quad \\Rightarrow \\text{ LGS lösen}$$',
+      exercises: [
+        {
+          type: 'multiple-choice',
+          question: 'Kritische Punkte von $f(x,y) = x^2 - y^2$ ergeben sich aus $\\nabla f = 0$. Wo liegen sie?',
+          options: ['nur $(0,0)$', 'entlang $x = y$', '$(1,1)$ und $(-1,-1)$', 'keine'],
+          correctIndex: 0,
+          explanation: '$\\nabla f = (2x, -2y) = 0 \\Rightarrow x = 0$ und $y = 0$. Ein einziger kritischer Punkt: $(0,0)$.',
+          hints: ['Beide Komponenten müssen null sein.', '$2x = 0$ und $-2y = 0$.', 'Schnittpunkt: $(0,0)$.'],
+        },
+        {
+          type: 'multiple-choice',
+          question: 'Hesse-Matrix von $f(x,y) = x^2 - y^2$ ist $H = \\begin{pmatrix}2 & 0\\\\ 0 & -2\\end{pmatrix}$. Klassifikation von $(0,0)$?',
+          options: ['Sattelpunkt', 'Minimum', 'Maximum', 'nicht klassifizierbar'],
+          correctIndex: 0,
+          explanation: '$\\det H = 2 \\cdot (-2) - 0 = -4 < 0$ → **Sattelpunkt**. Entlang $x$ Minimum, entlang $y$ Maximum.',
+          hints: ['$\\det(H) < 0$ → Sattel.', '$\\det = f_{xx} f_{yy} - f_{xy}^2 = 2 \\cdot (-2) = -4$.'],
+        },
+        {
+          type: 'number-input',
+          question: 'Hesse-Determinante von $f = xy$. Berechne $\\det H$.',
+          correctValue: -1,
+          tolerance: 0,
+          unit: '',
+          explanation: '$f_x = y$, $f_y = x$, $f_{xx} = 0$, $f_{yy} = 0$, $f_{xy} = 1$. $\\det = 0 \\cdot 0 - 1^2 = -1$ → Sattel überall.',
+          hints: ['Zweite Ableitungen: $f_{xx}, f_{yy}, f_{xy}$.', '$\\det = f_{xx} f_{yy} - f_{xy}^2$.', '$0 - 1 = -1$.'],
+        },
+        {
+          type: 'true-false',
+          statement: 'Bei einem Sattelpunkt gilt $\\det(H) > 0$ und $f_{xx} = 0$.',
+          correct: false,
+          explanation: 'Falsch. Sattelpunkte haben $\\det(H) < 0$ — unabhängig von $f_{xx}$.',
+          hints: ['Der Test für Sattelpunkt ist eindeutig am $\\det$-Vorzeichen.', '$\\det > 0$ → Extrempunkt, $\\det < 0$ → Sattel.'],
+        },
+        {
+          type: 'multiple-choice',
+          question: 'Lagrange: Extremum von $f = x + y$ unter $g = x^2 + y^2 - 2 = 0$. Welche Gleichung ergibt sich?',
+          options: ['$1 = 2\\lambda x$ und $1 = 2\\lambda y$', '$x = \\lambda y$', '$x + y = 0$', '$\\lambda = 1$'],
+          correctIndex: 0,
+          explanation: '$\\nabla f = (1, 1)$, $\\nabla g = (2x, 2y)$. Lagrange: $(1, 1) = \\lambda (2x, 2y)$ → $1 = 2\\lambda x$, $1 = 2\\lambda y$. Dann $x = y$. Mit $x^2+y^2=2$: $x = y = \\pm 1$.',
+          hints: ['Lagrange: $\\nabla f = \\lambda \\nabla g$.', '$\\nabla g = (2x, 2y)$.', 'Komponentenweise Gleichungen aufschreiben.'],
+        },
+        {
+          type: 'matching',
+          question: 'Ordne jedem Hesse-Resultat die Klassifikation zu.',
+          pairs: [
+            { left: '$\\det H > 0$, $f_{xx} > 0$', right: 'Minimum' },
+            { left: '$\\det H > 0$, $f_{xx} < 0$', right: 'Maximum' },
+            { left: '$\\det H < 0$',                 right: 'Sattelpunkt' },
+            { left: '$\\det H = 0$',                 right: 'kein Test (höhere Analyse nötig)' },
+          ],
+          explanation: 'Klassifikation ist ein 2-Schritt-Test: zuerst $\\det$, dann Vorzeichen von $f_{xx}$ (falls $\\det > 0$).',
+          hints: ['$\\det$-Vorzeichen unterscheidet Extremum vs. Sattel.', '$f_{xx}$-Vorzeichen unterscheidet Max vs. Min.'],
+        },
+        {
+          type: 'multiple-choice',
+          question: 'Geometrisch: Am Minimum ist der Gradient zur Niveaulinie …',
+          options: ['Null-Vektor', 'parallel', 'senkrecht', 'Winkel von 45°'],
+          correctIndex: 0,
+          explanation: 'Bei einem lokalen Extremum (Min, Max oder Sattel) gilt $\\nabla f = \\mathbf{0}$ — der Gradient verschwindet. Das ist die notwendige Bedingung erster Ordnung.',
+          hints: ['Notwendige Bedingung für Extremum.', '$\\nabla f = 0$.', 'Verschwindender Vektor, keine Richtung.'],
+        },
+        {
+          type: 'sorting',
+          question: 'Bringe die Lagrange-Methode in die richtige Reihenfolge.',
+          items: [
+            'Zielfunktion $f(x,y)$ und Nebenbedingung $g(x,y) = 0$ identifizieren',
+            '$\\nabla f = \\lambda \\nabla g$ aufstellen (zwei Gleichungen)',
+            'Zusammen mit $g(x,y) = 0$ ein System aus 3 Gleichungen für $(x, y, \\lambda)$ lösen',
+            'Extremum klassifizieren oder Funktionswerte vergleichen',
+          ],
+          correctOrder: [0, 1, 2, 3],
+          explanation: 'Lagrange ersetzt die direkte Elimination der NB durch einen Hilfsparameter $\\lambda$ — eleganter bei mehreren Variablen.',
+          hints: ['Zielfunktion vor Bedingungen.', 'Immer 3 Gleichungen für 2D-Problem.'],
+        },
+      ],
       masteryQuestion:
         'Für $f(x,y) = x^2 + y^2$ ist $H = \\begin{pmatrix}2&0\\\\0&2\\end{pmatrix}$ bei $(0,0)$. Klassifikation?',
       masteryOptions: [
@@ -148,6 +306,92 @@ const unit2 = makeUnit({
         '$$\\nabla f = \\mathbf{0}, \\quad H = \\begin{pmatrix} f_{xx} & f_{xy} \\\\ f_{xy} & f_{yy} \\end{pmatrix}$$\n\n' +
         '**Totales Differential:**\n' +
         '$$df = f_x\\,dx + f_y\\,dy$$',
+      exercises: [
+        {
+          type: 'multiple-choice',
+          question: '[PRÜFUNG] Aufwärmaufgabe: Notwendige Bedingung für Extremum von $f(x,y)$?',
+          options: ['$\\nabla f = \\mathbf{0}$', 'Hesse-Matrix positiv', '$f = 0$', '$f > 0$'],
+          correctIndex: 0,
+          explanation: 'Gradient verschwindet bei jedem lokalen Extremum (und auch am Sattel). Danach entscheidet die Hesse.',
+          hints: ['Notwendige vs. hinreichende Bedingung.', 'Gradient = 0 liefert kritische Punkte.'],
+        },
+        {
+          type: 'number-input',
+          question: '[PRÜFUNG] $f(x,y) = x^2 + xy + y^2$. Anzahl kritischer Punkte?',
+          correctValue: 1,
+          tolerance: 0,
+          unit: '',
+          explanation: '$\\nabla f = (2x+y, x+2y) = 0$: $2x + y = 0$, $x + 2y = 0$. Lösung: $x = y = 0$.',
+          hints: ['LGS: $2x+y=0$, $x+2y=0$.', 'Aus erster: $y=-2x$, einsetzen: $x+2(-2x)=-3x=0 \\to x=0$.', 'Ein Punkt.'],
+        },
+        {
+          type: 'multiple-choice',
+          question: '[PRÜFUNG] Hesse von $f = x^2 + xy + y^2$ bei $(0,0)$?',
+          options: [
+            '$\\begin{pmatrix}2 & 1\\\\ 1 & 2\\end{pmatrix}$',
+            '$\\begin{pmatrix}2 & 0\\\\ 0 & 2\\end{pmatrix}$',
+            '$\\begin{pmatrix}1 & 1\\\\ 1 & 1\\end{pmatrix}$',
+            '$\\begin{pmatrix}0 & 0\\\\ 0 & 0\\end{pmatrix}$',
+          ],
+          correctIndex: 0,
+          explanation: '$f_{xx} = 2$, $f_{yy} = 2$, $f_{xy} = 1$. Hesse: $\\begin{pmatrix}2 & 1\\\\ 1 & 2\\end{pmatrix}$.',
+          hints: ['Zweite Ableitungen.', '$\\partial/\\partial x (2x+y) = 2$, $\\partial/\\partial x (x+2y) = 1$.', 'Matrix symmetrisch füllen.'],
+        },
+        {
+          type: 'number-input',
+          question: '[PRÜFUNG] Bei welchem Winkel im Radiant (im Hauptwert) zeigt $\\nabla f$ für $f(x,y) = x^2 + y^2$ am Punkt $(1, 1)$?',
+          correctValue: 0.7854,
+          tolerance: 0.01,
+          unit: '',
+          explanation: '$\\nabla f = (2, 2)$ → Winkel $\\arctan(2/2) = \\arctan(1) = \\pi/4 \\approx 0{,}785$.',
+          hints: ['$\\nabla f = (2x, 2y)$ bei $(1,1)$: $(2, 2)$.', 'Winkel: $\\arctan(y/x) = \\arctan(1)$.', '$\\pi/4$.'],
+        },
+        {
+          type: 'true-false',
+          statement: '[PRÜFUNG] Wenn $\\nabla f$ und $\\nabla g$ an einem Punkt parallel sind und $g(x,y)=0$ gilt, dann ist der Punkt ein Kandidat für ein Extremum von $f$ unter der Nebenbedingung $g$.',
+          correct: true,
+          explanation: 'Richtig — das ist die Lagrange-Bedingung. $\\nabla f = \\lambda \\nabla g$ (parallel) plus $g = 0$.',
+          hints: ['Lagrange-Multiplikator.', 'Parallelität = gleiche Richtung (bis auf Skalar).'],
+        },
+        {
+          type: 'multiple-choice',
+          question: '[PRÜFUNG] Maximale Rechteckfläche mit Umfang $8$: Welche Methode passt?',
+          options: [
+            'Lagrange mit $f = xy$, $g = 2x + 2y - 8 = 0$',
+            'Newton-Verfahren',
+            'Fourier-Analyse',
+            'Diagonalisierung',
+          ],
+          correctIndex: 0,
+          explanation: 'Klassisches Lagrange-Problem: Fläche maximieren unter Umfang-Nebenbedingung. Ergebnis: $x = y = 2$ (Quadrat).',
+          hints: ['Extremum mit Nebenbedingung.', 'Fläche = $xy$, Umfang-Bedingung eingeschlossen.'],
+        },
+        {
+          type: 'matching',
+          question: '[PRÜFUNG] Ordne jede Situation ihrer Methode zu.',
+          pairs: [
+            { left: 'Extremum ohne Nebenbedingung', right: '$\\nabla f = 0$, Hesse-Test' },
+            { left: 'Extremum mit $g(x,y) = 0$',     right: 'Lagrange-Multiplikatoren' },
+            { left: 'Fehlerfortpflanzung',            right: 'Totales Differential' },
+            { left: 'Steigung in beliebiger Richtung', right: 'Richtungsableitung $\\nabla f \\cdot \\vec v$' },
+          ],
+          explanation: 'Vier Standardprobleme — jedem seine Standardmethode.',
+          hints: ['Ohne NB → Gradient = 0.', 'Mit NB → Lagrange.'],
+        },
+        {
+          type: 'sorting',
+          question: '[PRÜFUNG] Strategie zur Extremsuche in 2D. Bringe die Schritte in Reihenfolge.',
+          items: [
+            'Partielle Ableitungen $f_x, f_y$ aufstellen',
+            'Kritische Punkte aus $f_x = 0, f_y = 0$ bestimmen',
+            'Hesse-Matrix an jedem kritischen Punkt auswerten',
+            'Mit $\\det H$ und $f_{xx}$ klassifizieren (Min / Max / Sattel)',
+          ],
+          correctOrder: [0, 1, 2, 3],
+          explanation: 'Systematisch: erste Ableitungen → kritische Punkte → zweite Ableitungen → Klassifikation.',
+          hints: ['Erst suchen, dann klassifizieren.', 'Klassifikation ohne kritischen Punkt sinnlos.'],
+        },
+      ],
       masteryQuestion: '[PRÜFUNG] Für $f(x,y) = x^2 + y^2$: Welchen kritischen Punkt hat $f$?',
       masteryOptions: ['$(0,0)$ — Minimum', '$(0,0)$ — Sattel', 'keinen', '$(1,1)$ — Minimum'],
       correctIndex: 0,
@@ -186,6 +430,88 @@ const unit2 = makeUnit({
         '$$\\Delta z_{\\max} = \\left|f_x\\right|\\Delta x + \\left|f_y\\right|\\Delta y$$\n\n' +
         '**Gauß\'sche Fehlerfortpflanzung:**\n' +
         '$$\\Delta z_{\\text{Gauß}} = \\sqrt{(f_x \\Delta x)^2 + (f_y \\Delta y)^2}$$',
+      exercises: [
+        {
+          type: 'multiple-choice',
+          question: '[PRÜFUNG] Aufwärmaufgabe: Totales Differential von $z = x^2 + y^2$.',
+          options: ['$dz = 2x\\,dx + 2y\\,dy$', '$dz = x^2\\,dx$', '$dz = dx + dy$', '$dz = 2(x+y)\\,dx$'],
+          correctIndex: 0,
+          explanation: '$dz = z_x\\,dx + z_y\\,dy = 2x\\,dx + 2y\\,dy$.',
+          hints: ['$dz$-Formel: $f_x dx + f_y dy$.', 'Partielle Ableitungen je Variable.'],
+        },
+        {
+          type: 'number-input',
+          question: '[PRÜFUNG] $z = x/y$, $x = 10 \\pm 0{,}1$, $y = 2 \\pm 0{,}05$. Max. Fehler $\\Delta z$?',
+          correctValue: 0.175,
+          tolerance: 0.01,
+          unit: '',
+          explanation: '$z_x = 1/y = 0{,}5$, $z_y = -x/y^2 = -2{,}5$. $\\Delta z = 0{,}5 \\cdot 0{,}1 + 2{,}5 \\cdot 0{,}05 = 0{,}05 + 0{,}125 = 0{,}175$.',
+          hints: ['$\\Delta z = |z_x| \\Delta x + |z_y| \\Delta y$.', '$z_x = 1/y$, $z_y = -x/y^2$.', '$0{,}05 + 0{,}125 = 0{,}175$.'],
+        },
+        {
+          type: 'multiple-choice',
+          question: '[PRÜFUNG] $V = r^2 \\pi h$ (Zylindervolumen). Welches $\\partial V/\\partial r$?',
+          options: ['$2\\pi r h$', '$\\pi h$', '$r^2 \\pi$', '$2r \\pi h + r^2 \\pi$'],
+          correctIndex: 0,
+          explanation: '$h$ als Konstante. $\\partial V/\\partial r = 2r \\pi h$.',
+          hints: ['$h$ wie eine Konstante.', 'Potenzregel: $(r^2)\' = 2r$.', '$\\pi h$ als Faktor.'],
+        },
+        {
+          type: 'true-false',
+          statement: '[PRÜFUNG] Die **Gauß-Abschätzung** liefert **kleineren** Fehler als die Max-Abschätzung.',
+          correct: true,
+          explanation: 'Richtig. Max-Abschätzung summiert Beträge, Gauß quadriert und zieht Wurzel — das ergibt $\\leq$ Summe (Dreiecksungleichung). Realistischer bei unabhängigen Fehlern.',
+          hints: ['Max = lineare Summe.', 'Gauß = Wurzel aus Quadratsumme.', 'Wurzel ≤ Summe.'],
+        },
+        {
+          type: 'number-input',
+          question: '[PRÜFUNG] Fläche $A = l \\cdot b$. $l = 5 \\pm 0{,}1$, $b = 3 \\pm 0{,}05$. Gauß-Fehler $\\Delta A$?',
+          correctValue: 0.403,
+          tolerance: 0.02,
+          unit: '',
+          explanation: '$A_l = b = 3$, $A_b = l = 5$. $\\Delta A_\\text{Gauß} = \\sqrt{(3 \\cdot 0{,}1)^2 + (5 \\cdot 0{,}05)^2} = \\sqrt{0{,}09 + 0{,}0625} = \\sqrt{0{,}1525} \\approx 0{,}39$. Leicht $>$ reine Geometrie: $\\approx 0{,}40$.',
+          hints: ['$A_l = b = 3$, $A_b = l = 5$.', 'Jeder Term quadrieren, summieren, Wurzel.', '$\\sqrt{0{,}0025 + 0{,}0625}$ … moment, richtig: $\\sqrt{0{,}09 + 0{,}0625}$.'],
+        },
+        {
+          type: 'multiple-choice',
+          question: '[PRÜFUNG] Bei Fehlerfortpflanzung für Produkte $z = xy$: Welche **relative** Fehler-Formel gilt?',
+          options: [
+            '$\\Delta z/z = \\Delta x/x + \\Delta y/y$ (Summe der relativen Fehler)',
+            '$\\Delta z/z = \\Delta x \\cdot \\Delta y$',
+            '$\\Delta z = x\\,\\Delta y + y\\,\\Delta x$',
+            '$\\Delta z/z = (\\Delta x)^2 + (\\Delta y)^2$',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Für Produkte addieren sich die relativen Fehler (Max-Abschätzung). Herleitung: $\\Delta z = |y|\\Delta x + |x|\\Delta y$, geteilt durch $z = xy$ ergibt Summe der relativen Fehler.',
+          hints: ['Bei Produkten gilt eine schöne Regel.', 'Relative Fehler = $\\Delta/\\text{Wert}$.'],
+        },
+        {
+          type: 'matching',
+          question: '[PRÜFUNG] Ordne jeder Messformel den richtigen Fehler-Typ zu (relativ vs. absolut).',
+          pairs: [
+            { left: '$z = x + y$',       right: 'absoluter Fehler addieren' },
+            { left: '$z = x \\cdot y$',   right: 'relative Fehler addieren' },
+            { left: '$z = x / y$',        right: 'relative Fehler addieren' },
+            { left: '$z = x^n$',          right: 'relativer Fehler mal $n$' },
+          ],
+          explanation: 'Summen: absolut, Produkte/Quotienten/Potenzen: relativ. Dahinter steht immer das totale Differential.',
+          hints: ['Log-Ableitung macht Produkte zu Summen.', 'Daher bei Produkten: relative Fehler summieren.'],
+        },
+        {
+          type: 'sorting',
+          question: '[PRÜFUNG] Strategie zur Fehlerabschätzung bei $z = f(x, y, \\ldots)$. Bringe in Reihenfolge.',
+          items: [
+            'Partielle Ableitungen $f_x, f_y, \\ldots$ bestimmen',
+            'Ableitungen an Messwerten auswerten',
+            'Fehler-Formel wählen: Max-Abschätzung oder Gauß',
+            'Absoluten bzw. relativen Fehler berechnen',
+          ],
+          correctOrder: [0, 1, 2, 3],
+          explanation: 'Ohne Ableitungen keine Fehler. Bei Prüfungsaufgaben: meist Max-Abschätzung (konservativ) oder Gauß (realistisch) — Angabe aufmerksam lesen.',
+          hints: ['Ableitungen zuerst, dann Formel.', 'Max vs. Gauß je nach Aufgabenstellung.'],
+        },
+      ],
       masteryQuestion:
         '[PRÜFUNG] $z = x \\cdot y$, $x = 3 \\pm 0{,}1$, $y = 4 \\pm 0{,}2$. Maximaler absoluter Fehler $\\Delta z$?',
       masteryOptions: ['$1{,}0$', '$0{,}4$', '$0{,}6$', '$1{,}4$'],
@@ -225,6 +551,103 @@ const unit2 = makeUnit({
         '\\frac{\\partial f}{\\partial y} = \\lambda \\frac{\\partial g}{\\partial y}, \\quad g(x,y) = 0$$\n\n' +
         '→ 3 Gleichungen für 3 Unbekannte $(x, y, \\lambda)$.\n\n' +
         '**Hesse-Kurztest:** $\\det(H) > 0$ und $f_{xx} > 0$: Minimum; $f_{xx} < 0$: Maximum; $\\det(H)<0$: Sattel.',
+      exercises: [
+        {
+          type: 'multiple-choice',
+          question: '[PRÜFUNG] Aufwärmaufgabe: $f(x,y) = x + 2y$ unter NB $x^2 + y^2 = 5$. Bei welchen Punkten liegen Extrema?',
+          options: ['$(1, 2)$ und $(-1, -2)$', '$(0, 0)$', '$(\\sqrt 5, 0)$', 'Keine'],
+          correctIndex: 0,
+          explanation:
+            'Lagrange: $1 = 2\\lambda x$, $2 = 2\\lambda y$. Dann $y = 2x$. In $x^2 + 4x^2 = 5$: $x^2 = 1$, also $x = \\pm 1$, $y = \\pm 2$.',
+          hints: ['$\\nabla f = (1, 2)$, $\\nabla g = (2x, 2y)$.', 'Aus Lagrange: $y = 2x$.', 'In NB einsetzen.'],
+        },
+        {
+          type: 'number-input',
+          question: '[PRÜFUNG] Rechteck maximaler Fläche mit Umfang $12$: Welche Seitenlänge $x$?',
+          correctValue: 3,
+          tolerance: 0,
+          unit: '',
+          explanation: 'NB: $2x + 2y = 12 \\to y = 6 - x$. $A = xy = x(6-x)$. $A\'(x) = 6 - 2x = 0 \\to x = 3$. Also Quadrat mit $x = y = 3$.',
+          hints: ['Umfang auflösen: $y = 6 - x$.', 'Einsetzen: $A(x) = x(6-x)$.', '$A\' = 0$ bei $x = 3$.'],
+        },
+        {
+          type: 'multiple-choice',
+          question:
+            '[PRÜFUNG] $f(x,y) = x^2 y$ unter $x + y = 1$. Welche Gleichung folgt aus Lagrange?',
+          options: [
+            '$2xy = \\lambda$ und $x^2 = \\lambda$',
+            '$2x = \\lambda$ und $y = \\lambda$',
+            '$y = \\lambda$ und $x^2 = \\lambda$',
+            '$x^2 y = 0$',
+          ],
+          correctIndex: 0,
+          explanation:
+            '$\\nabla f = (2xy, x^2)$, $\\nabla g = (1, 1)$. Lagrange: $2xy = \\lambda \\cdot 1$, $x^2 = \\lambda \\cdot 1$. Dann $2xy = x^2$, also $y = x/2$ (falls $x \\neq 0$).',
+          hints: ['$f_x = 2xy$, $f_y = x^2$.', '$g_x = g_y = 1$.', 'Beide gleich $\\lambda$ setzen.'],
+        },
+        {
+          type: 'true-false',
+          statement:
+            '[PRÜFUNG] Bei Lagrange muss man **alle drei** Gleichungen ($f_x = \\lambda g_x$, $f_y = \\lambda g_y$, $g = 0$) zusammen lösen.',
+          correct: true,
+          explanation:
+            'Richtig. 3 Unbekannte $(x, y, \\lambda)$ erfordern 3 Gleichungen. Oft eliminiert man $\\lambda$, um ein 2x2-System in $(x,y)$ zu bekommen.',
+          hints: ['Zählen: 3 Variablen, 3 Gleichungen.', 'Nebenbedingung immer mitnehmen.'],
+        },
+        {
+          type: 'multiple-choice',
+          question:
+            '[PRÜFUNG] Geometrische Bedeutung der Lagrange-Bedingung $\\nabla f = \\lambda \\nabla g$ am Extremum?',
+          options: [
+            'Niveaulinien von $f$ und die Nebenbedingungskurve $g = 0$ berühren sich tangential',
+            'Die Nebenbedingung verschwindet',
+            '$f$ und $g$ sind identisch',
+            '$\\lambda = 0$',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Am Extremum sind Gradienten parallel → die Niveaulinien $f = c$ berühren die Kurve $g = 0$ tangential. Am Berührpunkt: gemeinsame Normalenrichtung.',
+          hints: ['Gradient = Normale zu Niveaulinie.', 'Parallele Gradienten → parallele Normalen.', 'Parallele Normalen → Tangentenberührung.'],
+        },
+        {
+          type: 'number-input',
+          question:
+            '[PRÜFUNG] $f(x,y) = xy$ unter $x^2 + y^2 = 2$. Maximum von $f$?',
+          correctValue: 1,
+          tolerance: 0,
+          unit: '',
+          explanation:
+            'Lagrange: $y = 2\\lambda x$, $x = 2\\lambda y$. Multiplizieren: $xy = 4\\lambda^2 xy$ → $\\lambda^2 = 1/4$ → $\\lambda = \\pm 1/2$. Dann $x^2 = y^2$, also $x = \\pm y$. In NB: $x = y = 1$ (Extremum). $f(1,1) = 1$.',
+          hints: ['$\\nabla f = (y, x)$, $\\nabla g = (2x, 2y)$.', 'Aus Lagrange: $x^2 = y^2$.', 'In NB: $2x^2 = 2 \\to x = \\pm 1$, dann $f = xy = 1$.'],
+        },
+        {
+          type: 'matching',
+          question: '[PRÜFUNG] Ordne jede Aufgabe ihrem Lösungsansatz zu.',
+          pairs: [
+            { left: 'Extremum ohne NB',                    right: '$\\nabla f = 0$, Hesse' },
+            { left: 'Extremum mit $g(x,y) = 0$',          right: 'Lagrange' },
+            { left: 'Steigung in Richtung $\\vec v$',      right: 'Richtungsableitung $\\nabla f \\cdot \\vec v$' },
+            { left: 'Linearisierung bei $(x_0, y_0)$',     right: 'Tangentialebene' },
+          ],
+          explanation: 'Jedes Problem hat seinen Standardansatz. Methoden sind nicht austauschbar — falsche Wahl = falsche Aufgabe.',
+          hints: ['Mit NB → Lagrange.', 'Richtungsableitung = Skalarprodukt.'],
+        },
+        {
+          type: 'sorting',
+          question:
+            '[PRÜFUNG] Strategie für Prüfungsaufgabe „Extremum unter Nebenbedingung". Bringe in Reihenfolge.',
+          items: [
+            'Zielfunktion $f$ und Nebenbedingung $g$ identifizieren',
+            'Lagrange-Gleichungen aufstellen: $\\nabla f = \\lambda \\nabla g$, $g = 0$',
+            'System lösen für $(x, y, \\lambda)$ — Kandidaten finden',
+            'Extremum klassifizieren (Werte vergleichen, Randpunkte prüfen)',
+          ],
+          correctOrder: [0, 1, 2, 3],
+          explanation:
+            'Typische Lagrange-Aufgabe ist vollständig algorithmisch. Am Ende unbedingt alle Kandidaten vergleichen — Max und Min können bei unterschiedlichen Punkten liegen.',
+          hints: ['Ziel vor Bedingung.', 'Alle Kandidaten am Ende vergleichen.'],
+        },
+      ],
       masteryQuestion:
         '[PRÜFUNG] $f(x,y) = x^2 + y^2$ auf $x + y = 2$. Wo liegt das Minimum?',
       masteryOptions: ['$(1, 1)$', '$(2, 0)$', '$(0, 2)$', '$(0, 0)$'],

@@ -72,8 +72,7 @@ export default {
         'pulse-soft':  'pulseSoft 2s ease-in-out infinite',
         'stamp-in':    'stampIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
         'check-draw':  'checkDraw 0.5s ease-out 0.4s forwards',
-        'sparkle':     'sparkle 1.4s ease-in-out infinite',
-        'badge-shine': 'badgeShine 2.4s linear 0.6s infinite',
+        'sparkle-in':  'sparkleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
       },
       keyframes: {
         fadeIn: {
@@ -122,14 +121,10 @@ export default {
           from: { strokeDashoffset: '60' },
           to:   { strokeDashoffset: '0' },
         },
-        sparkle: {
-          '0%,100%': { opacity: '0', transform: 'scale(0.4) rotate(0deg)' },
-          '40%':     { opacity: '1', transform: 'scale(1.1) rotate(20deg)' },
-          '60%':     { opacity: '1', transform: 'scale(1.0) rotate(-10deg)' },
-        },
-        badgeShine: {
-          '0%':   { transform: 'translateX(-120%) skewX(-20deg)' },
-          '100%': { transform: 'translateX(220%) skewX(-20deg)' },
+        sparkleIn: {
+          '0%':   { opacity: '0', transform: 'scale(0.4)' },
+          '70%':  { opacity: '1', transform: 'scale(1.15)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
         },
       },
     },

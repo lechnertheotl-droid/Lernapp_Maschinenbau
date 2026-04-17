@@ -95,8 +95,8 @@ export const exercises_alg_u1 = {
   },
   'ex-alg-1-1-mastery': {
     id: 'ex-alg-1-1-mastery', lessonId: 'alg-1-1', type: 'multiple-choice', isMasteryCheck: true,
-    question: '[PRÜFUNG] Vereinfache vollständig: $\\dfrac{x^{4} \\cdot y^{2}}{x^{2} \\cdot y^{5}}$',
-    options: ['$\\dfrac{x^{2}}{y^{3}}$', '$x^{2} \\cdot y^{3}$', '$\\dfrac{x^{6}}{y^{7}}$', '$x^{2} \\cdot y^{-3}$'],
+    question: '[PRÜFUNG] Vereinfache als einzelnen Bruch mit **positiven Exponenten**: $\\dfrac{x^{4} \\cdot y^{2}}{x^{2} \\cdot y^{5}}$',
+    options: ['$\\dfrac{x^{2}}{y^{3}}$', '$x^{2} \\cdot y^{3}$', '$\\dfrac{x^{6}}{y^{7}}$', '$\\dfrac{y^{3}}{x^{2}}$'],
     correctIndex: 0,
     explanation: `**Ansatz:** Jede Variable einzeln behandeln, Division gleicher Basen → Exponenten subtrahieren.
 
@@ -107,11 +107,11 @@ export const exercises_alg_u1 = {
 
 **Probe:** Setze $x=2, y=2$: Zähler $= 16 \\cdot 4 = 64$, Nenner $= 4 \\cdot 32 = 128$, Bruch $= 1/2$. Ergebnis $x^{2}/y^{3} = 4/8 = 1/2$. ✓
 
-**Typischer Fehler:** Antwort D $x^{2} \\cdot y^{-3}$ ist zwar mathematisch gleich, aber die Prüfungsform verlangt positive Exponenten in Zähler und Nenner.`,
+**Typischer Fehler:** Antwort D ($y^3/x^2$) vertauscht Zähler und Nenner — klassischer Vorzeichen-Fehler beim Exponenten-Subtrahieren.`,
     hints: [
       'Getrennt für jede Variable (x und y) arbeiten.',
       'Für $y$ wird der Exponent negativ — schreibe das als Bruch $1/y^{3}$.',
-      'Die Prüfungsform ist ein einziger Bruch mit positiven Exponenten.',
+      '$y^{2-5} = y^{-3}$, **nicht** $y^{5-2}$. Reihenfolge: Zähler − Nenner.',
     ],
   },
 

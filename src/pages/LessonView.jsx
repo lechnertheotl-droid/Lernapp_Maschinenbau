@@ -185,13 +185,14 @@ export function LessonView() {
 
         <div className="animate-fade-in" key={currentStep?.id}>
           {safeIndex > 0 && (
-            <button
-              type="button"
+            <Button
+              size="sm"
+              variant="secondary"
               onClick={handleBack}
-              className="mb-3 min-h-10 px-3 rounded-retro border-2 border-ink bg-white shadow-hard-sm text-ink font-mono text-[10px] font-black uppercase tracking-wider retro-press tap-highlight-none"
+              className="mb-3 font-mono uppercase tracking-wider"
             >
               ← Vorheriger Schritt
-            </button>
+            </Button>
           )}
           <LessonStep
             step={currentStep}
@@ -213,7 +214,7 @@ export function LessonView() {
       >
         <div className="flex flex-col gap-4">
           <LessonCompleteBadge />
-          <p className="text-surface-600 text-sm leading-relaxed text-center">
+          <p className="text-surface-600 dark:text-surface-300 text-sm leading-relaxed text-center">
             {state.user?.name ? <>Super, <strong>{state.user.name}</strong>! </> : null}
             Du hast <strong>{lesson.title}</strong> abgeschlossen. Die Lektion wird zur Wiederholung eingeplant.
           </p>

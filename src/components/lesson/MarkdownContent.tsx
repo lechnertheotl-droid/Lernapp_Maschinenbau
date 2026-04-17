@@ -22,20 +22,20 @@ function extractText(node: ReactNode): string {
 
 const markdownComponents: Components = {
   table: ({ children }) => (
-    <div className="my-3 overflow-x-auto rounded-xl border border-surface-200">
+    <div className="my-3 overflow-x-auto rounded-xl border border-surface-200 dark:border-surface-700">
       <table className="w-full min-w-max border-collapse text-left text-sm">
         {children}
       </table>
     </div>
   ),
-  thead: ({ children }) => <thead className="bg-surface-100">{children}</thead>,
+  thead: ({ children }) => <thead className="bg-surface-100 dark:bg-surface-800">{children}</thead>,
   th: ({ children }) => (
-    <th className="border-b border-surface-200 px-3 py-2 font-semibold text-surface-800">
+    <th className="border-b border-surface-200 dark:border-surface-700 px-3 py-2 font-semibold text-surface-800 dark:text-paper">
       {children}
     </th>
   ),
   td: ({ children }) => (
-    <td className="border-b border-surface-100 px-3 py-2 text-surface-700 last:border-b-0">
+    <td className="border-b border-surface-100 dark:border-surface-800 px-3 py-2 text-surface-700 dark:text-surface-200 last:border-b-0">
       {children}
     </td>
   ),
@@ -47,7 +47,7 @@ const markdownComponents: Components = {
     }
     return (
       <code
-        className="font-mono text-[0.85em] bg-surface-100 text-ink px-1 py-0.5 rounded border border-surface-200"
+        className="font-mono text-[0.85em] bg-surface-100 dark:bg-surface-800 text-ink dark:text-paper px-1 py-0.5 rounded border border-surface-200 dark:border-surface-700"
         {...props}
       >
         {children}
@@ -105,7 +105,7 @@ export function MarkdownContent({ children, className }: MarkdownContentProps) {
   return (
     <div
       ref={containerRef}
-      className={cn('markdown-content text-sm leading-relaxed text-surface-700', className)}
+      className={cn('markdown-content text-sm leading-relaxed text-surface-700 dark:text-surface-200', className)}
     >
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkMath]}

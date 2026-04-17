@@ -43,19 +43,30 @@ export const exercises_dgl_u1 = {
   },
   'ex-dgl-1-1-mastery': {
     id: 'ex-dgl-1-1-mastery', lessonId: 'dgl-1-1', type: 'multiple-choice', isMasteryCheck: true,
-    question: 'Ein Anfangswertproblem (AWP) besteht aus:',
+    question: '[PRÜFUNG] Welche Funktion löst das AWP $y\' = 2y$ mit $y(0) = 3$?',
     options: [
-      'Nur einer DGL',
-      'Einer DGL plus Anfangsbedingung(en) wie $y(x_0) = y_0$',
-      'Zwei verschiedenen DGL',
-      'Einer DGL ohne Lösung',
+      '$y(x) = 3e^{2x}$',
+      '$y(x) = e^{2x} + 3$',
+      '$y(x) = 2e^{3x}$',
+      '$y(x) = 3e^{x}$',
     ],
-    correctIndex: 1,
-    explanation: 'Ein AWP besteht aus einer DGL zusammen mit Anfangsbedingungen, z.B. $y(0) = 1$. Die Anfangsbedingung wählt eine bestimmte Lösung aus der allgemeinen Lösungsfamilie aus.',
+    correctIndex: 0,
+    explanation: `**Ansatz:** Zwei Bedingungen prüfen: (1) DGL erfüllt, (2) Anfangsbedingung erfüllt.
+
+**Prüfung $y = 3e^{2x}$:**
+- Ableitung: $y' = 3 \\cdot 2 e^{2x} = 6e^{2x} = 2 \\cdot (3e^{2x}) = 2y$ ✓ (DGL erfüllt)
+- Anfangsbedingung: $y(0) = 3 \\cdot e^{0} = 3 \\cdot 1 = 3$ ✓
+
+**Warum die anderen falsch sind:**
+- B: $y(0) = 1 + 3 = 4 \\neq 3$ und $y'(x) = 2e^{2x} \\neq 2y$.
+- C: $y' = 6e^{3x} \\neq 2 \\cdot 2e^{3x}$ — DGL nicht erfüllt (Faktor im Exponent falsch).
+- D: $y' = 3e^x \\neq 2 \\cdot 3e^x$ — falscher Exponent.
+
+**Merke:** Die allgemeine Lösung von $y' = ky$ ist $y = C e^{kx}$; die Anfangsbedingung fixiert $C$.`,
     hints: [
-      'Was unterscheidet eine "allgemeine Lösung" von einer "speziellen Lösung"?',
-      'Die DGL allein hat unendlich viele Lösungen mit Konstante $C$.',
-      'Die Anfangsbedingung wählt aus dieser Schar genau eine Lösung aus, indem sie $C$ fixiert.',
+      'Zwei Bedingungen müssen stimmen: DGL **und** $y(0) = 3$.',
+      'Die allgemeine Lösung von $y\' = ky$ ist $y = C e^{kx}$. Hier $k = 2$.',
+      '$y(0) = C \\cdot e^{0} = C$, also muss $C = 3$ sein.',
     ],
   },
 

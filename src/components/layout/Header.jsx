@@ -45,6 +45,7 @@ export function Header() {
             <Link
               key={to}
               to={to}
+              aria-current={isActive ? 'page' : undefined}
               className={cn(
                 'relative px-4 py-1.5 font-mono font-semibold text-xs uppercase tracking-wider rounded-retro border-2 transition-all',
                 isActive
@@ -70,6 +71,7 @@ export function Header() {
             <Link
               key={to}
               to={to}
+              aria-current={isActive ? 'page' : undefined}
               className={cn(
                 'px-3 py-1.5 font-mono text-xs uppercase tracking-wider rounded-retro border-2 transition-all',
                 isActive
@@ -94,6 +96,7 @@ export function Header() {
         <Link
           to="/settings"
           aria-label="Einstellungen"
+          aria-current={matchPath(pathname, '/settings') ? 'page' : undefined}
           title="Einstellungen"
           className={cn(
             'w-9 h-9 flex items-center justify-center rounded-retro border-2 font-mono text-sm transition-colors',
