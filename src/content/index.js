@@ -27,6 +27,9 @@ import { festigkeitSupplements } from './supplements/festigkeit'
 import { thermodynamikSupplements } from './supplements/thermodynamik'
 import { fluidmechanikSupplements } from './supplements/fluidmechanik'
 import { maschinenelementeSupplements } from './supplements/maschinenelemente'
+import { elektrotechnikSupplements } from './supplements/elektrotechnik'
+import { regelungstechnikSupplements } from './supplements/regelungstechnik'
+import { fourierLaplaceSupplements } from './supplements/fourier_laplace'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
 const MIN_EXERCISES_PER_LESSON = 10
@@ -44,6 +47,9 @@ const MANUAL_SUPPLEMENTS = {
   ...thermodynamikSupplements,
   ...fluidmechanikSupplements,
   ...maschinenelementeSupplements,
+  ...elektrotechnikSupplements,
+  ...regelungstechnikSupplements,
+  ...fourierLaplaceSupplements,
 }
 
 function countExerciseSteps(lesson) {
