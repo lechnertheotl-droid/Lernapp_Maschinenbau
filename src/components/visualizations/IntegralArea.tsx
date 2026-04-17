@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel } from './vizStyle'
 
 type FnKey = 'parabola' | 'linear' | 'sin' | 'cubic'
 
@@ -33,7 +34,8 @@ interface DrawParams {
 function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawParams) {
   const { fn, lowerBound, upperBound, xMin, xMax } = p
   const fnData = FUNCTIONS[fn]
-  const pad = { left: 40, right: 20, top: 20, bottom: 30 }
+  const style = getVizStyle(w)
+  const pad = style.margin
   const innerW = w - pad.left - pad.right
   const innerH = h - pad.top - pad.bottom
 
@@ -54,7 +56,7 @@ function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawParams
   const toPy = (y: number) => pad.top + innerH - ((y - yLo) / (yHi - yLo)) * innerH
 
   // Grid
-  ctx.strokeStyle = 'rgba(0,61,165,0.06)'
+  ctx.strokeStyle = style.colors.grid
   ctx.lineWidth = 1
   for (let gx = 0; gx <= 10; gx++) {
     const x = pad.left + (gx / 10) * innerW
@@ -66,7 +68,7 @@ function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawParams
   }
 
   // Axes
-  ctx.strokeStyle = '#1a1a1a'
+  ctx.strokeStyle = style.colors.text
   ctx.lineWidth = 1.5
   const zeroY = toPy(0)
   const zeroX = toPx(0)
@@ -112,11 +114,13 @@ function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawParams
   ctx.setLineDash([])
 
   // Labels
-  ctx.fillStyle = '#1a1a1a'
-  ctx.font = 'bold 10px ui-monospace, monospace'
-  ctx.textAlign = 'center'
-  ctx.fillText(`a = ${lo.toFixed(1)}`, toPx(lo), pad.top + innerH + 14)
-  ctx.fillText(`b = ${hi.toFixed(1)}`, toPx(hi), pad.top + innerH + 14)
+  ctx.font = style.fontAnnotation
+  drawLabel(ctx, `a = ${lo.toFixed(1)}`, toPx(lo), pad.top + innerH + 16, {
+    align: 'center', baseline: 'top', color: '#dc2626', bg: true, style,
+  })
+  drawLabel(ctx, `b = ${hi.toFixed(1)}`, toPx(hi), pad.top + innerH + 16, {
+    align: 'center', baseline: 'top', color: '#dc2626', bg: true, style,
+  })
 }
 
 interface Props {
@@ -146,7 +150,7 @@ export function IntegralArea({
     <div className="flex flex-col gap-3">
       <canvas
         ref={canvasRef}
-        className="w-full h-64 rounded-retro bg-white dark:bg-surface-800 border-2 border-ink shadow-hard-sm"
+        className="w-full h-72 sm:h-64 rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm"
       />
 
       <div className="flex gap-1.5 flex-wrap" role="radiogroup" aria-label="Funktion wählen">

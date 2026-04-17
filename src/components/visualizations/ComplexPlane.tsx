@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel } from './vizStyle'
 
 type Mode = 'single' | 'multiply'
 
@@ -29,11 +30,12 @@ function mul(a: ZPoint, b: ZPoint): ZPoint {
 }
 
 function drawAxes(ctx: CanvasRenderingContext2D, w: number, h: number, range: number) {
+  const style = getVizStyle(w)
   const cx = w / 2, cy = h / 2
-  const u = Math.min(w, h) / 2 / range // unit pixels per axis unit
+  const u = Math.min(w, h) / 2 / range
 
   // Grid
-  ctx.strokeStyle = 'rgba(0,61,165,0.06)'
+  ctx.strokeStyle = style.colors.grid
   ctx.lineWidth = 1
   for (let i = -range; i <= range; i++) {
     const x = cx + i * u
@@ -43,29 +45,30 @@ function drawAxes(ctx: CanvasRenderingContext2D, w: number, h: number, range: nu
   }
 
   // Axes
-  ctx.strokeStyle = '#1a1a1a'
+  ctx.strokeStyle = style.colors.text
   ctx.lineWidth = 1.5
   ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.stroke()
   ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, h); ctx.stroke()
 
   // Axis labels
-  ctx.fillStyle = '#1a1a1a'
-  ctx.font = 'bold 10px ui-monospace, monospace'
-  ctx.textAlign = 'right'
-  ctx.fillText('Re', w - 4, cy - 4)
-  ctx.textAlign = 'left'
-  ctx.fillText('Im', cx + 4, 12)
+  ctx.font = style.fontLabel
+  drawLabel(ctx, 'Re', w - 6, cy - 6, {
+    align: 'right', baseline: 'bottom', color: style.colors.text, bg: true, style,
+  })
+  drawLabel(ctx, 'Im', cx + 6, 14, {
+    align: 'left', baseline: 'alphabetic', color: style.colors.text, bg: true, style,
+  })
 
   // Unit markers
-  ctx.font = '10px ui-monospace, monospace'
-  ctx.textAlign = 'center'
-  ctx.fillStyle = '#64748b'
+  ctx.font = style.fontTick
   for (let i = -range; i <= range; i++) {
     if (i === 0) continue
-    ctx.fillText(String(i), cx + i * u, cy + 12)
-    ctx.textAlign = 'right'
-    ctx.fillText(String(i), cx - 4, cy - i * u + 4)
-    ctx.textAlign = 'center'
+    drawLabel(ctx, String(i), cx + i * u, cy + 14, {
+      align: 'center', baseline: 'top', color: style.colors.textMuted, bg: true, style,
+    })
+    drawLabel(ctx, String(i), cx - 6, cy - i * u, {
+      align: 'right', baseline: 'middle', color: style.colors.textMuted, bg: true, style,
+    })
   }
 }
 
@@ -106,17 +109,18 @@ function drawZ(
   ctx.setLineDash([])
 
   // Point
+  const style = getVizStyle(w)
   ctx.fillStyle = color
   ctx.beginPath(); ctx.arc(px, py, isHovered ? 8 : 6, 0, Math.PI * 2); ctx.fill()
-  ctx.strokeStyle = '#1a1a1a'
+  ctx.strokeStyle = style.colors.text
   ctx.lineWidth = 2
   ctx.stroke()
 
   // Label
-  ctx.fillStyle = '#1a1a1a'
-  ctx.font = 'bold 11px ui-monospace, monospace'
-  ctx.textAlign = 'left'
-  ctx.fillText(label, px + 10, py - 8)
+  ctx.font = style.fontAnnotation
+  drawLabel(ctx, label, px + 10, py - 8, {
+    align: 'left', baseline: 'bottom', color: style.colors.text, bg: true, style,
+  })
 }
 
 function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawParams) {
@@ -225,7 +229,7 @@ export function ComplexPlane({
     <div className="flex flex-col gap-3">
       <canvas
         ref={canvasRef}
-        className="w-full h-80 rounded-retro bg-white dark:bg-surface-800 border-2 border-ink shadow-hard-sm cursor-crosshair touch-none"
+        className="w-full h-80 rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm cursor-crosshair touch-none"
       />
 
       <div className="flex gap-1.5" role="radiogroup" aria-label="Modus">

@@ -1,7 +1,9 @@
 import { useState, useRef } from 'react'
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel } from './vizStyle'
 
 function draw(ctx, w, h, { m, k, d, time }) {
+  const style = getVizStyle(w)
   const omega0 = Math.sqrt(k / m)
   const D = d / (2 * Math.sqrt(k * m))
   const omegaD = omega0 * Math.sqrt(Math.max(0, 1 - D * D))
@@ -77,12 +79,12 @@ function draw(ctx, w, h, { m, k, d, time }) {
   ctx.stroke()
 
   // Mass box
-  ctx.fillStyle = '#1a1a1a'
+  ctx.fillStyle = style.colors.text
   ctx.fillRect(cx - 30, massY - 25, 60, 50)
-  ctx.fillStyle = '#FFD60A'
-  ctx.font = 'bold 14px Inter, system-ui, sans-serif'
-  ctx.textAlign = 'center'
-  ctx.fillText(`${m} kg`, cx, massY + 5)
+  ctx.font = style.fontLabel
+  drawLabel(ctx, `${m} kg`, cx, massY, {
+    align: 'center', baseline: 'middle', color: '#FFD60A', style,
+  })
 
   // Ground line
   ctx.strokeStyle = '#94a3b8'
@@ -173,21 +175,23 @@ function draw(ctx, w, h, { m, k, d, time }) {
   }
 
   // Labels
-  ctx.fillStyle = '#64748b'
-  ctx.font = '9px Inter, system-ui, sans-serif'
-  ctx.textAlign = 'center'
-  ctx.fillText('t [s]', graphLeft + graphW / 2, graphTop + graphH + 14)
-  ctx.textAlign = 'left'
-  ctx.fillText('x(t)', graphLeft + 4, graphTop + 12)
+  ctx.font = style.fontTick
+  drawLabel(ctx, 't [s]', graphLeft + graphW / 2, graphTop + graphH + 16, {
+    align: 'center', baseline: 'top', color: style.colors.textMuted, bg: true, style,
+  })
+  drawLabel(ctx, 'x(t)', graphLeft + 6, graphTop + 14, {
+    align: 'left', baseline: 'alphabetic', color: style.colors.textMuted, bg: true, style,
+  })
 
   // Info
-  ctx.fillStyle = '#1a1a1a'
-  ctx.font = 'bold 10px Inter, system-ui, sans-serif'
-  ctx.textAlign = 'right'
-  ctx.fillText(`D = ${D.toFixed(2)}  ω₀ = ${omega0.toFixed(1)} rad/s`, w - 20, graphTop - 6)
-  ctx.fillStyle = D < 1 ? '#3b82f6' : D === 1 ? '#10b981' : '#ef4444'
-  ctx.textAlign = 'left'
-  ctx.fillText(D < 1 ? 'unterdämpft' : D === 1 ? 'krit. gedämpft' : 'überdämpft', 20, graphTop - 6)
+  ctx.font = style.fontAnnotation
+  drawLabel(ctx, `D = ${D.toFixed(2)}  ω₀ = ${omega0.toFixed(1)} rad/s`, w - 20, graphTop - 6, {
+    align: 'right', baseline: 'bottom', color: style.colors.text, bg: true, style,
+  })
+  const regimeColor = D < 1 ? '#3b82f6' : D === 1 ? '#10b981' : '#ef4444'
+  drawLabel(ctx, D < 1 ? 'unterdämpft' : D === 1 ? 'krit. gedämpft' : 'überdämpft', 20, graphTop - 6, {
+    align: 'left', baseline: 'bottom', color: regimeColor, bg: true, style,
+  })
 }
 
 export function SpringMassDamper() {
@@ -220,7 +224,7 @@ export function SpringMassDamper() {
 
   return (
     <div className="flex flex-col gap-3">
-      <canvas ref={canvasRef} className="w-full h-72 rounded-retro bg-white border-2 border-ink shadow-hard-sm" />
+      <canvas ref={canvasRef} className="w-full h-80 sm:h-72 rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm" />
       <button
         onClick={togglePlay}
         className="mx-auto px-6 py-2 rounded-retro border-2 border-ink bg-lemon shadow-hard-lemon font-mono text-xs font-black uppercase tracking-wider retro-press"
@@ -229,15 +233,15 @@ export function SpringMassDamper() {
       </button>
       <div className="grid grid-cols-3 gap-3">
         <label className="flex flex-col gap-1">
-          <span className="font-mono text-[10px] font-bold text-ink">m = {m} kg</span>
+          <span className="font-mono text-[10px] font-bold text-ink dark:text-paper">m = {m} kg</span>
           <input type="range" min="0.5" max="5" step="0.5" value={m} onChange={(e) => setM(+e.target.value)} />
         </label>
         <label className="flex flex-col gap-1">
-          <span className="font-mono text-[10px] font-bold text-primary-700">k = {k} N/m</span>
+          <span className="font-mono text-[10px] font-bold text-primary-700 dark:text-primary-300">k = {k} N/m</span>
           <input type="range" min="10" max="200" step="10" value={k} onChange={(e) => setK(+e.target.value)} className="accent-primary-700" />
         </label>
         <label className="flex flex-col gap-1">
-          <span className="font-mono text-[10px] font-bold text-red-600">d = {d} Ns/m</span>
+          <span className="font-mono text-[10px] font-bold text-red-600 dark:text-red-400">d = {d} Ns/m</span>
           <input type="range" min="0" max="30" step="1" value={d} onChange={(e) => setD(+e.target.value)} className="accent-red-600" />
         </label>
       </div>

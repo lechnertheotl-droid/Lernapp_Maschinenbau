@@ -1,4 +1,5 @@
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel } from './vizStyle'
 
 function drawArrow(ctx, x1, y1, x2, y2, color, lineWidth = 2) {
   const headLen = 10
@@ -26,7 +27,8 @@ function drawVectorDiagram(ctx, w, h, {
 }) {
   const xRange = [-4, 4]
   const yRange = [-4, 4]
-  const pad = { top: 20, right: 20, bottom: 30, left: 40 }
+  const style = getVizStyle(w)
+  const pad = style.margin
   const pw = w - pad.left - pad.right
   const ph = h - pad.top - pad.bottom
 
@@ -34,7 +36,7 @@ function drawVectorDiagram(ctx, w, h, {
   const toY = (y) => pad.top  + ((yRange[1] - y) / (yRange[1] - yRange[0])) * ph
 
   // Grid
-  ctx.strokeStyle = '#f1f5f9'
+  ctx.strokeStyle = style.colors.grid
   ctx.lineWidth = 1
   for (let x = xRange[0]; x <= xRange[1]; x++) {
     ctx.beginPath(); ctx.moveTo(toX(x), pad.top); ctx.lineTo(toX(x), h - pad.bottom); ctx.stroke()
@@ -44,20 +46,23 @@ function drawVectorDiagram(ctx, w, h, {
   }
 
   // Axes
-  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.5
+  ctx.strokeStyle = style.colors.axis; ctx.lineWidth = 1.5
   ctx.beginPath(); ctx.moveTo(pad.left, toY(0)); ctx.lineTo(w - pad.right, toY(0)); ctx.stroke()
   ctx.beginPath(); ctx.moveTo(toX(0), pad.top); ctx.lineTo(toX(0), h - pad.bottom); ctx.stroke()
 
   // Axis labels
-  ctx.fillStyle = '#94a3b8'; ctx.font = '10px Inter, sans-serif'; ctx.textAlign = 'center'
+  ctx.font = style.fontTick
   for (let x = xRange[0] + 1; x < xRange[1]; x++) {
     if (x === 0) continue
-    ctx.fillText(x, toX(x), h - pad.bottom + 14)
+    drawLabel(ctx, String(x), toX(x), h - pad.bottom + 16, {
+      align: 'center', baseline: 'top', color: style.colors.textMuted, bg: true, style,
+    })
   }
-  ctx.textAlign = 'right'
   for (let y = yRange[0] + 1; y < yRange[1]; y++) {
     if (y === 0) continue
-    ctx.fillText(y, pad.left - 4, toY(y) + 3)
+    drawLabel(ctx, String(y), pad.left - 6, toY(y), {
+      align: 'right', baseline: 'middle', color: style.colors.textMuted, bg: true, style,
+    })
   }
 
   const ox = origin[0]
@@ -72,8 +77,10 @@ function drawVectorDiagram(ctx, w, h, {
     drawArrow(ctx, toX(ox), toY(oy), toX(ox + sumX), toY(oy + sumY), '#10b981', 2.5)
     ctx.setLineDash([])
     // Label
-    ctx.fillStyle = '#10b981'; ctx.font = 'bold 11px Inter, sans-serif'; ctx.textAlign = 'left'
-    ctx.fillText(`r(${sumX.toFixed(1)}, ${sumY.toFixed(1)})`, toX(ox + sumX) + 6, toY(oy + sumY) - 4)
+    ctx.font = style.fontAnnotation
+    drawLabel(ctx, `r(${sumX.toFixed(1)}, ${sumY.toFixed(1)})`, toX(ox + sumX) + 8, toY(oy + sumY) - 6, {
+      align: 'left', baseline: 'bottom', color: '#10b981', bg: true, style,
+    })
   }
 
   // Draw each vector
@@ -89,11 +96,13 @@ function drawVectorDiagram(ctx, w, h, {
       ctx.beginPath(); ctx.moveTo(toX(ox + v.x), toY(oy)); ctx.lineTo(toX(ox + v.x), toY(oy + v.y)); ctx.stroke()
       ctx.setLineDash([]); ctx.globalAlpha = 1
       // Component labels
-      ctx.fillStyle = color; ctx.font = '9px Inter, sans-serif'
-      ctx.textAlign = 'center'
-      ctx.fillText(`${v.x}`, toX(ox + v.x / 2), toY(oy) + 12)
-      ctx.textAlign = 'right'
-      ctx.fillText(`${v.y}`, toX(ox + v.x) - 4, toY(oy + v.y / 2) + 3)
+      ctx.font = style.fontTick
+      drawLabel(ctx, `${v.x}`, toX(ox + v.x / 2), toY(oy) + 14, {
+        align: 'center', baseline: 'top', color, bg: true, style,
+      })
+      drawLabel(ctx, `${v.y}`, toX(ox + v.x) - 6, toY(oy + v.y / 2), {
+        align: 'right', baseline: 'middle', color, bg: true, style,
+      })
     }
 
     // Main vector arrow
@@ -101,10 +110,12 @@ function drawVectorDiagram(ctx, w, h, {
 
     // Label
     if (label) {
-      ctx.fillStyle = color; ctx.font = 'bold 12px Inter, sans-serif'; ctx.textAlign = 'left'
+      ctx.font = style.fontLabel
       const midX = toX(ox + v.x / 2)
       const midY = toY(oy + v.y / 2)
-      ctx.fillText(label, midX + 6, midY - 4)
+      drawLabel(ctx, label, midX + 8, midY - 6, {
+        align: 'left', baseline: 'bottom', color, bg: true, style,
+      })
     }
   })
 }
@@ -121,7 +132,7 @@ export function VectorDiagram({
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-48 rounded-retro bg-white border-2 border-ink shadow-hard-sm"
+      className="w-full h-64 sm:h-56 rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm"
     />
   )
 }

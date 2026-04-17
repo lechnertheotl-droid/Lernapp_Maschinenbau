@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel } from './vizStyle'
 
 type FnKey = 'sin' | 'cos' | 'exp' | 'ln1p'
 
@@ -76,7 +77,8 @@ interface DrawParams {
 
 function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawParams) {
   const def = FUNCS[p.fnKey]
-  const pad = { left: 35, right: 15, top: 15, bottom: 28 }
+  const style = getVizStyle(w)
+  const pad = style.margin
   const innerW = w - pad.left - pad.right
   const innerH = h - pad.top - pad.bottom
   const [yLo, yHi] = def.yRange
@@ -85,7 +87,7 @@ function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawParams
   const toPy = (y: number) => pad.top + innerH - ((y - yLo) / (yHi - yLo)) * innerH
 
   // Grid
-  ctx.strokeStyle = 'rgba(0,61,165,0.06)'
+  ctx.strokeStyle = style.colors.grid
   ctx.lineWidth = 1
   for (let i = 0; i <= 10; i++) {
     const x = pad.left + (i / 10) * innerW
@@ -97,7 +99,7 @@ function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawParams
   }
 
   // Axes
-  ctx.strokeStyle = '#1a1a1a'
+  ctx.strokeStyle = style.colors.text
   ctx.lineWidth = 1.5
   const y0 = toPy(0)
   const x0 = toPx(0)
@@ -144,15 +146,16 @@ function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawParams
   // Entwicklungspunkt marker (x=0)
   ctx.fillStyle = '#16a34a'
   ctx.beginPath(); ctx.arc(x0, toPy(def.f(0)), 5, 0, Math.PI * 2); ctx.fill()
-  ctx.strokeStyle = '#1a1a1a'; ctx.lineWidth = 1.5; ctx.stroke()
+  ctx.strokeStyle = style.colors.text; ctx.lineWidth = 1.5; ctx.stroke()
 
   // Labels
-  ctx.fillStyle = '#003DA5'
-  ctx.font = 'bold 11px ui-monospace, monospace'
-  ctx.textAlign = 'left'
-  ctx.fillText(`f(x) = ${def.label}`, pad.left + 4, pad.top + 14)
-  ctx.fillStyle = '#f97316'
-  ctx.fillText(`Taylor-Polynom Grad n = ${p.order}`, pad.left + 4, pad.top + 28)
+  ctx.font = style.fontAnnotation
+  drawLabel(ctx, `f(x) = ${def.label}`, pad.left + 6, pad.top + 14, {
+    align: 'left', baseline: 'alphabetic', color: '#003DA5', bg: true, style,
+  })
+  drawLabel(ctx, `Taylor-Polynom Grad n = ${p.order}`, pad.left + 6, pad.top + 30, {
+    align: 'left', baseline: 'alphabetic', color: '#f97316', bg: true, style,
+  })
 }
 
 interface Props {
@@ -174,7 +177,7 @@ export function TaylorApproximation({
     <div className="flex flex-col gap-3">
       <canvas
         ref={canvasRef}
-        className="w-full h-64 rounded-retro bg-white dark:bg-surface-800 border-2 border-ink shadow-hard-sm"
+        className="w-full h-72 sm:h-64 rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm"
       />
 
       <div className="flex gap-1.5 flex-wrap" role="radiogroup" aria-label="Funktion">

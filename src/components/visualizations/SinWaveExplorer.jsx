@@ -1,8 +1,10 @@
 import { useMemo, useState } from 'react'
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel } from './vizStyle'
 
 function drawSinWaveExplorer(ctx, w, h, { amplitude, frequency, phase }) {
-  const pad = { top: 18, right: 18, bottom: 36, left: 42 }
+  const style = getVizStyle(w)
+  const pad = style.margin
   const pw = w - pad.left - pad.right
   const ph = h - pad.top - pad.bottom
   const xMin = 0
@@ -15,7 +17,7 @@ function drawSinWaveExplorer(ctx, w, h, { amplitude, frequency, phase }) {
   ctx.lineJoin = 'round'
 
   // Grid
-  ctx.strokeStyle = 'rgba(0,61,165,0.08)'
+  ctx.strokeStyle = style.colors.grid
   ctx.lineWidth = 1
   for (let i = 0; i <= 8; i++) {
     const x = pad.left + (i / 8) * pw
@@ -27,7 +29,7 @@ function drawSinWaveExplorer(ctx, w, h, { amplitude, frequency, phase }) {
   }
 
   // Axes
-  ctx.strokeStyle = '#1a1a1a'
+  ctx.strokeStyle = style.colors.text
   ctx.lineWidth = 2
   ctx.beginPath(); ctx.moveTo(pad.left, toY(0)); ctx.lineTo(w - pad.right, toY(0)); ctx.stroke()
   ctx.beginPath(); ctx.moveTo(pad.left, pad.top); ctx.lineTo(pad.left, h - pad.bottom); ctx.stroke()
@@ -65,28 +67,33 @@ function drawSinWaveExplorer(ctx, w, h, { amplitude, frequency, phase }) {
   ctx.setLineDash([])
 
   // Ticks
-  ctx.fillStyle = '#555555'
-  ctx.font = '800 10px ui-monospace, monospace'
-  ctx.textAlign = 'center'
+  ctx.font = style.fontTick
   const ticks = [['0', 0], ['π/2', Math.PI / 2], ['π', Math.PI], ['3π/2', 1.5 * Math.PI], ['2π', 2 * Math.PI]]
-  ticks.forEach(([label, x]) => ctx.fillText(label, toX(x), h - pad.bottom + 18))
-  ctx.textAlign = 'right'
-  ctx.fillText('0', pad.left - 6, toY(0) + 3)
-  ctx.fillText('A', pad.left - 6, toY(amplitude) + 3)
+  ticks.forEach(([label, x]) => {
+    drawLabel(ctx, label, toX(x), h - pad.bottom + 18, {
+      align: 'center', baseline: 'top', color: style.colors.textMuted, bg: true, style,
+    })
+  })
+  drawLabel(ctx, '0', pad.left - 8, toY(0), {
+    align: 'right', baseline: 'middle', color: style.colors.textMuted, bg: true, style,
+  })
+  drawLabel(ctx, 'A', pad.left - 8, toY(amplitude), {
+    align: 'right', baseline: 'middle', color: '#dc2626', bg: true, style,
+  })
 
   // Formula label
-  ctx.fillStyle = '#1a1a1a'
-  ctx.font = '900 12px ui-monospace, monospace'
-  ctx.textAlign = 'left'
-  ctx.fillText(`x(t) = ${amplitude.toFixed(1)} · sin(${frequency.toFixed(1)}t + ${phase.toFixed(2)})`, pad.left, 16)
+  ctx.font = style.fontLabel
+  drawLabel(ctx, `x(t) = ${amplitude.toFixed(1)} · sin(${frequency.toFixed(1)}t + ${phase.toFixed(2)})`, pad.left, 16, {
+    align: 'left', baseline: 'alphabetic', color: style.colors.text, bg: true, style,
+  })
 }
 
 function Control({ label, value, min, max, step, onChange }) {
   return (
     <label className="flex flex-col gap-1">
-      <span className="flex justify-between font-mono text-[10px] font-black uppercase tracking-wider text-ink-soft">
+      <span className="flex justify-between font-mono text-[10px] font-black uppercase tracking-wider text-ink-soft dark:text-surface-400">
         <span>{label}</span>
-        <span className="text-primary-700">{Number(value).toFixed(2)}</span>
+        <span className="text-primary-700 dark:text-primary-300">{Number(value).toFixed(2)}</span>
       </span>
       <input type="range" min={min} max={max} step={step} value={value} onChange={(event) => onChange(Number(event.target.value))} className="w-full accent-lemon-dark" />
     </label>
@@ -102,8 +109,8 @@ export function SinWaveExplorer({ initialAmplitude = 1, initialFrequency = 1, in
 
   return (
     <div className="flex flex-col gap-3">
-      <canvas ref={canvasRef} className="w-full h-56 rounded-retro bg-white border-2 border-ink shadow-hard-sm" />
-      <div className="grid grid-cols-1 gap-3 bg-white border-2 border-ink rounded-retro shadow-hard-sm p-3">
+      <canvas ref={canvasRef} className="w-full h-64 sm:h-56 rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm" />
+      <div className="grid grid-cols-1 gap-3 bg-white dark:bg-surface-800 border-2 border-ink dark:border-surface-500 rounded-retro shadow-hard-sm p-3">
         <Control label="Amplitude A" value={amplitude} min={0.2} max={2} step={0.1} onChange={setAmplitude} />
         <Control label="Kreisfrequenz ω" value={frequency} min={0.5} max={3} step={0.1} onChange={setFrequency} />
         <Control label="Phase φ" value={phase} min={-3.14} max={3.14} step={0.1} onChange={setPhase} />

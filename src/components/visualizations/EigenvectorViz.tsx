@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel } from './vizStyle'
 
 interface Matrix2 {
   a: number
@@ -49,11 +50,12 @@ interface DrawParams {
 }
 
 function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawParams) {
+  const style = getVizStyle(w)
   const cx = w / 2, cy = h / 2
   const u = Math.min(w, h) / 2 / p.range
 
   // Grid
-  ctx.strokeStyle = 'rgba(0,61,165,0.06)'
+  ctx.strokeStyle = style.colors.grid
   ctx.lineWidth = 1
   for (let i = -p.range; i <= p.range; i++) {
     ctx.beginPath(); ctx.moveTo(cx + i * u, 0); ctx.lineTo(cx + i * u, h); ctx.stroke()
@@ -61,7 +63,7 @@ function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawParams
   }
 
   // Axes
-  ctx.strokeStyle = '#1a1a1a'
+  ctx.strokeStyle = style.colors.text
   ctx.lineWidth = 1.5
   ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.stroke()
   ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, h); ctx.stroke()
@@ -131,9 +133,10 @@ function draw(ctx: CanvasRenderingContext2D, w: number, h: number, p: DrawParams
       ctx.closePath(); ctx.fill()
     }
     // Label
-    ctx.fillStyle = color
-    ctx.font = 'bold 11px ui-monospace, monospace'
-    ctx.fillText(`λ${i + 1} = ${pair.lambda.toFixed(2)}`, bx + 8, by)
+    ctx.font = style.fontAnnotation
+    drawLabel(ctx, `λ${i + 1} = ${pair.lambda.toFixed(2)}`, bx + 10, by, {
+      align: 'left', baseline: 'middle', color, bg: true, style,
+    })
   })
 }
 
@@ -163,7 +166,7 @@ export function EigenvectorViz({ initialMatrix = PRESETS[3].matrix, range = 3 }:
     <div className="flex flex-col gap-3">
       <canvas
         ref={canvasRef}
-        className="w-full h-72 rounded-retro bg-white dark:bg-surface-800 border-2 border-ink shadow-hard-sm"
+        className="w-full h-72 rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm"
       />
 
       <div className="flex gap-1.5 flex-wrap" role="radiogroup" aria-label="Beispielmatrix">

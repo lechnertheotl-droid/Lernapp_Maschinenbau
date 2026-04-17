@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useCanvas } from './useCanvas'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
+import { getVizStyle, drawLabel } from './vizStyle'
 
 const DEG = Math.PI / 180
 
@@ -10,8 +11,9 @@ function nice(value) {
 }
 
 function drawTrigExplorer(ctx, w, h, { angle, showTangent, hidePanel }) {
-  const pad = 18
-  const panelW = hidePanel ? 0 : Math.min(126, w * 0.34)
+  const style = getVizStyle(w)
+  const pad = 22
+  const panelW = hidePanel ? 0 : Math.min(148, w * 0.36)
   const graphX = pad
   const graphW = hidePanel ? w - pad * 2 : w - panelW - pad * 3
   const cx = graphX + graphW / 2
@@ -101,29 +103,30 @@ function drawTrigExplorer(ctx, w, h, { angle, showTangent, hidePanel }) {
   ctx.lineWidth = 2; ctx.strokeStyle = '#ffffff'; ctx.stroke()
 
   // Labels
-  ctx.font = '800 11px ui-monospace, monospace'
-  ctx.textAlign = 'center'
-  ctx.fillStyle = '#1a1a1a'
+  ctx.font = style.fontLabel
   quadrants.forEach(([label], idx) => {
     const a = (45 + idx * 90) * DEG
-    ctx.fillText(label, cx + r * 0.62 * Math.cos(a), cy - r * 0.62 * Math.sin(a))
+    drawLabel(ctx, label, cx + r * 0.62 * Math.cos(a), cy - r * 0.62 * Math.sin(a), {
+      align: 'center', baseline: 'middle', color: style.colors.text, bg: true, style,
+    })
   })
 
   // In-canvas value panel (only on wider viewports; mobile shows HTML panel below)
   if (hidePanel) return
+  const panelPadX = 14
   const panelX = w - panelW - pad
-  ctx.fillStyle = '#ffffff'
-  ctx.strokeStyle = '#1a1a1a'
+  ctx.fillStyle = style.colors.bg
+  ctx.strokeStyle = style.colors.text
   ctx.lineWidth = 2
   ctx.beginPath()
   ctx.rect(panelX, pad, panelW, h - pad * 2)
   ctx.fill()
   ctx.stroke()
 
-  ctx.fillStyle = '#003DA5'
-  ctx.font = '900 10px ui-monospace, monospace'
-  ctx.textAlign = 'left'
-  ctx.fillText('TRIG', panelX + 12, pad + 20)
+  ctx.font = style.fontLabel
+  drawLabel(ctx, 'TRIG', panelX + panelPadX, pad + 22, {
+    align: 'left', baseline: 'alphabetic', color: '#003DA5', style,
+  })
 
   const rows = [
     ['α', `${angle}°`],
@@ -133,15 +136,19 @@ function drawTrigExplorer(ctx, w, h, { angle, showTangent, hidePanel }) {
     ['tan', Math.abs(x) < 0.03 ? 'undef.' : nice(Math.tan(rad))],
   ]
   rows.forEach(([label, value], i) => {
-    const yy = pad + 44 + i * 24
-    ctx.fillStyle = '#555555'
-    ctx.font = '700 10px ui-monospace, monospace'
-    ctx.fillText(label, panelX + 12, yy)
-    ctx.fillStyle = label === 'sin' ? '#dc2626' : label === 'cos' ? '#16a34a' : label === 'tan' ? '#f97316' : '#1a1a1a'
-    ctx.font = '900 12px ui-monospace, monospace'
-    ctx.textAlign = 'right'
-    ctx.fillText(value, panelX + panelW - 12, yy)
-    ctx.textAlign = 'left'
+    const yy = pad + 50 + i * 26
+    ctx.font = style.fontTick
+    drawLabel(ctx, label, panelX + panelPadX, yy, {
+      align: 'left', baseline: 'alphabetic', color: style.colors.textMuted, style,
+    })
+    const valueColor = label === 'sin' ? '#dc2626'
+      : label === 'cos' ? '#16a34a'
+      : label === 'tan' ? '#f97316'
+      : style.colors.text
+    ctx.font = style.fontAnnotation
+    drawLabel(ctx, value, panelX + panelW - panelPadX, yy, {
+      align: 'right', baseline: 'alphabetic', color: valueColor, style,
+    })
   })
 }
 
@@ -166,7 +173,7 @@ export function TrigExplorer({ initialAngle = 45, showTangent = true }) {
 
   return (
     <div className="flex flex-col gap-3">
-      <canvas ref={canvasRef} className="w-full h-64 rounded-retro bg-white border-2 border-ink shadow-hard-sm" />
+      <canvas ref={canvasRef} className="w-full h-72 sm:h-64 rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm" />
 
       {isMobile && (
         <div className="grid grid-cols-5 gap-1.5 bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard-sm px-2 py-2">

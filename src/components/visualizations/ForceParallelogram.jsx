@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel } from './vizStyle'
 
 function drawArrow(ctx, x1, y1, x2, y2, color, lineWidth = 2.5) {
   const headLen = 12
@@ -20,6 +21,7 @@ function drawArrow(ctx, x1, y1, x2, y2, color, lineWidth = 2.5) {
 }
 
 function draw(ctx, w, h, { f1, angle1, f2, angle2 }) {
+  const style = getVizStyle(w)
   const cx = w / 2
   const cy = h * 0.6
   const scale = Math.min(w, h) / 6
@@ -53,20 +55,22 @@ function draw(ctx, w, h, { f1, angle1, f2, angle2 }) {
   drawArrow(ctx, cx, cy, cx + rx, cy + ry, '#10b981', 3.5)
 
   // Labels
-  ctx.font = 'bold 12px Inter, system-ui, sans-serif'
-  ctx.textAlign = 'left'
-  ctx.fillStyle = '#3b82f6'
-  ctx.fillText(`F₁ = ${f1.toFixed(1)} N`, cx + f1x * 0.5 + 8, cy + f1y * 0.5 - 6)
-  ctx.fillStyle = '#ef4444'
-  ctx.fillText(`F₂ = ${f2.toFixed(1)} N`, cx + f2x * 0.5 + 8, cy + f2y * 0.5 - 6)
-  ctx.fillStyle = '#10b981'
+  ctx.font = style.fontAnnotation
   const rMag = Math.sqrt(rx * rx + ry * ry) / scale
-  ctx.fillText(`R = ${rMag.toFixed(1)} N`, cx + rx * 0.5 + 8, cy + ry * 0.5 - 6)
+  drawLabel(ctx, `F₁ = ${f1.toFixed(1)} N`, cx + f1x * 0.5 + 10, cy + f1y * 0.5 - 8, {
+    align: 'left', baseline: 'bottom', color: '#3b82f6', bg: true, style,
+  })
+  drawLabel(ctx, `F₂ = ${f2.toFixed(1)} N`, cx + f2x * 0.5 + 10, cy + f2y * 0.5 - 8, {
+    align: 'left', baseline: 'bottom', color: '#ef4444', bg: true, style,
+  })
+  drawLabel(ctx, `R = ${rMag.toFixed(1)} N`, cx + rx * 0.5 + 10, cy + ry * 0.5 - 8, {
+    align: 'left', baseline: 'bottom', color: '#10b981', bg: true, style,
+  })
 
   // Origin dot
   ctx.beginPath()
   ctx.arc(cx, cy, 4, 0, Math.PI * 2)
-  ctx.fillStyle = '#1a1a1a'
+  ctx.fillStyle = style.colors.text
   ctx.fill()
 
   // Angle arc for F1
@@ -75,9 +79,10 @@ function draw(ctx, w, h, { f1, angle1, f2, angle2 }) {
   ctx.strokeStyle = '#3b82f6'
   ctx.lineWidth = 1.5
   ctx.stroke()
-  ctx.fillStyle = '#3b82f6'
-  ctx.font = '10px Inter, system-ui, sans-serif'
-  ctx.fillText(`${angle1}°`, cx + 34, cy - 4)
+  ctx.font = style.fontTick
+  drawLabel(ctx, `${angle1}°`, cx + 36, cy - 4, {
+    align: 'left', baseline: 'bottom', color: '#3b82f6', bg: true, style,
+  })
 }
 
 export function ForceParallelogram() {
@@ -90,7 +95,7 @@ export function ForceParallelogram() {
 
   return (
     <div className="flex flex-col gap-3">
-      <canvas ref={canvasRef} className="w-full h-52 rounded-retro bg-white border-2 border-ink shadow-hard-sm" />
+      <canvas ref={canvasRef} className="w-full h-64 sm:h-52 rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm" />
       <div className="grid grid-cols-2 gap-3">
         <label className="flex flex-col gap-1">
           <span className="font-mono text-[10px] font-bold text-primary-700">F₁ = {f1.toFixed(1)} N</span>

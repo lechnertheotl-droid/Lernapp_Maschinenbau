@@ -1,14 +1,16 @@
 import { useState, useCallback } from 'react'
 import { useCanvas } from './useCanvas'
+import { getVizStyle, drawLabel } from './vizStyle'
 
 const DEG = Math.PI / 180
 
 function drawUnitCircle(ctx, w, h, params) {
   const { angle = 45, showSine = true, showCosine = true, showLabels = true, showCoordinates = false, showQuadrants = false } = params
+  const style = getVizStyle(w)
   const rad = angle * DEG
   const cx = w / 2
   const cy = h / 2
-  const r  = Math.min(w, h) / 2 - 32
+  const r  = Math.min(w, h) / 2 - 40
 
   const px = cx + r * Math.cos(rad)
   const py = cy - r * Math.sin(rad)
@@ -31,7 +33,7 @@ function drawUnitCircle(ctx, w, h, params) {
   }
 
   // Grid lines at 30° intervals
-  ctx.strokeStyle = '#e2e8f0'
+  ctx.strokeStyle = style.colors.grid
   ctx.lineWidth = 0.5
   for (let a = 0; a < 360; a += 30) {
     ctx.beginPath()
@@ -43,12 +45,12 @@ function drawUnitCircle(ctx, w, h, params) {
   // Circle
   ctx.beginPath()
   ctx.arc(cx, cy, r, 0, 2 * Math.PI)
-  ctx.strokeStyle = '#94a3b8'
+  ctx.strokeStyle = style.colors.axis
   ctx.lineWidth = 1.5
   ctx.stroke()
 
   // Axes
-  ctx.strokeStyle = '#64748b'
+  ctx.strokeStyle = style.colors.textMuted
   ctx.lineWidth = 1.5
   // x-axis
   ctx.beginPath(); ctx.moveTo(cx - r - 12, cy); ctx.lineTo(cx + r + 12, cy); ctx.stroke()
@@ -56,7 +58,7 @@ function drawUnitCircle(ctx, w, h, params) {
   ctx.beginPath(); ctx.moveTo(cx, cy - r - 12); ctx.lineTo(cx, cy + r + 12); ctx.stroke()
 
   // Axis arrowheads
-  ctx.fillStyle = '#64748b'
+  ctx.fillStyle = style.colors.textMuted
   ;[[cx + r + 12, cy, 0], [cx, cy - r - 12, -Math.PI/2]].forEach(([ax, ay, rot]) => {
     ctx.save(); ctx.translate(ax, ay); ctx.rotate(rot)
     ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-6, -3); ctx.lineTo(-6, 3); ctx.closePath(); ctx.fill()
@@ -107,45 +109,46 @@ function drawUnitCircle(ctx, w, h, params) {
 
   if (!showLabels) return
 
-  ctx.font = '11px Inter, sans-serif'
-  ctx.textAlign = 'center'
+  ctx.font = style.fontAnnotation
 
   // Angle label
   const labelR = r * 0.28
   const labelAngle = rad / 2
-  ctx.fillStyle = '#3b82f6'
-  ctx.fillText(`${Math.round(angle)}°`, cx + labelR * Math.cos(labelAngle) + 6, cy - labelR * Math.sin(labelAngle))
+  drawLabel(ctx, `${Math.round(angle)}°`, cx + labelR * Math.cos(labelAngle) + 6, cy - labelR * Math.sin(labelAngle), {
+    align: 'center', baseline: 'middle', color: '#3b82f6', bg: true, style,
+  })
 
   // sin label
   if (showSine) {
-    ctx.fillStyle = '#ef4444'
     const midY = (cy + py) / 2
-    ctx.textAlign = px > cx ? 'left' : 'right'
-    ctx.fillText(`sin=${sinVal.toFixed(2)}`, px + (px > cx ? 6 : -6), midY)
+    drawLabel(ctx, `sin=${sinVal.toFixed(2)}`, px + (px > cx ? 8 : -8), midY, {
+      align: px > cx ? 'left' : 'right', baseline: 'middle', color: '#ef4444', bg: true, style,
+    })
   }
 
   // cos label
   if (showCosine) {
-    ctx.fillStyle = '#22c55e'
-    ctx.textAlign = 'center'
-    ctx.fillText(`cos=${cosVal.toFixed(2)}`, (cx + px) / 2, py + 14)
+    drawLabel(ctx, `cos=${cosVal.toFixed(2)}`, (cx + px) / 2, py + 16, {
+      align: 'center', baseline: 'top', color: '#22c55e', bg: true, style,
+    })
   }
 
   // Coordinate label
   if (showCoordinates) {
-    ctx.fillStyle = '#1e293b'
-    ctx.textAlign = px > cx + 20 ? 'left' : px < cx - 20 ? 'right' : 'center'
-    ctx.font = 'bold 11px Inter, sans-serif'
-    ctx.fillText(`(${cosVal.toFixed(2)}, ${sinVal.toFixed(2)})`, px + (px > cx ? 8 : -8), py - 8)
+    drawLabel(ctx, `(${cosVal.toFixed(2)}, ${sinVal.toFixed(2)})`, px + (px > cx ? 10 : -10), py - 10, {
+      align: px > cx + 20 ? 'left' : px < cx - 20 ? 'right' : 'center',
+      baseline: 'bottom', color: style.colors.text, bg: true, style,
+    })
   }
 
   // Axis labels
-  ctx.fillStyle = '#94a3b8'
-  ctx.font = '11px Inter, sans-serif'
-  ctx.textAlign = 'left'
-  ctx.fillText('x', cx + r + 16, cy + 4)
-  ctx.textAlign = 'center'
-  ctx.fillText('y', cx, cy - r - 16)
+  ctx.font = style.fontLabel
+  drawLabel(ctx, 'x', cx + r + 16, cy, {
+    align: 'left', baseline: 'middle', color: style.colors.textMuted, style,
+  })
+  drawLabel(ctx, 'y', cx, cy - r - 16, {
+    align: 'center', baseline: 'middle', color: style.colors.textMuted, style,
+  })
 }
 
 export function UnitCircle({ angle: controlledAngle, interactive = true, showSine = true, showCosine = true, showLabels = true, showCoordinates = false, showQuadrants = false, initialAngle = 45, onChange }) {
@@ -184,7 +187,7 @@ export function UnitCircle({ angle: controlledAngle, interactive = true, showSin
     <div className="flex flex-col items-center gap-3">
       <canvas
         ref={canvasRef}
-        className="w-full max-w-xs aspect-square cursor-crosshair rounded-retro bg-white border-2 border-ink shadow-hard-sm"
+        className="w-full max-w-xs aspect-square cursor-crosshair rounded-retro bg-white dark:bg-surface-900 border-2 border-ink dark:border-surface-500 shadow-hard-sm"
         onMouseDown={(e) => handleInteraction(e.clientX, e.clientY)}
         onMouseMove={handleMouseMove}
         onTouchStart={(e) => { const t = e.touches[0]; handleInteraction(t.clientX, t.clientY) }}
@@ -204,9 +207,9 @@ export function UnitCircle({ angle: controlledAngle, interactive = true, showSin
             }}
             className="w-full accent-lemon-dark"
           />
-          <div className="flex justify-between text-xs text-ink-soft mt-1 font-mono">
+          <div className="flex justify-between text-xs text-ink-soft dark:text-surface-400 mt-1 font-mono">
             <span>0°</span>
-            <span className="font-black text-primary-700">{angle}°</span>
+            <span className="font-black text-primary-700 dark:text-primary-300">{angle}°</span>
             <span>359°</span>
           </div>
         </div>
