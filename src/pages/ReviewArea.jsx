@@ -8,6 +8,7 @@ import { pickReviewExercise } from '@/utils/reviewExercisePicker'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { ProgressBar } from '@/components/ui/ProgressBar'
+import { StreakBadge } from '@/components/ui/StreakBadge'
 import { ExerciseEngine } from '@/components/exercises/ExerciseEngine'
 
 export function ReviewArea() {
@@ -126,7 +127,7 @@ export function ReviewArea() {
           <StatBox label="Reviews" value={stats.totalReviewed} color="primary" />
         </div>
 
-        <Button variant="secondary" size="lg" onClick={() => navigate('/')}>Zum Dashboard</Button>
+        <Button variant="secondary" size="lg" onClick={() => navigate('/')}>Zur Startseite</Button>
       </div>
     )
   }
@@ -164,7 +165,7 @@ export function ReviewArea() {
           </div>
           <div className="flex items-center gap-3">
             {stats.streakDays > 0 && (
-              <span className="font-mono text-xs font-bold text-lemon">🔥{stats.streakDays}d</span>
+              <StreakBadge current={stats.streakDays} size="sm" />
             )}
             <span className="num text-lemon font-black text-lg">{done.length}/{due.length}</span>
           </div>
