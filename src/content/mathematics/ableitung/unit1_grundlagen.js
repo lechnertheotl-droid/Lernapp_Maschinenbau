@@ -50,12 +50,12 @@ export const exercises_abl_u1 = {
   },
   'ex-abl-1-1-c': {
     id: 'ex-abl-1-1-c', lessonId: 'abl-1-1', type: 'multiple-choice',
-    question: 'Wo ist $f\'(x) = 0$?',
+    question: 'An welcher Stelle ist $f\'(x) = 0$ eine **notwendige** Bedingung?',
     options: [
-      'An Nullstellen von $f$',
+      'An Nullstellen von $f$ (also wo $f(x) = 0$)',
       'An lokalen Maxima und Minima von $f$',
       'Überall dort, wo $f$ wächst',
-      'An Wendepunkten von $f$',
+      'An Sprungstellen von $f$',
     ],
     correctIndex: 1,
     explanation: `**Ansatz:** An einem lokalen Hoch- oder Tiefpunkt verläuft die Tangente horizontal — also Steigung $0$.
@@ -98,20 +98,31 @@ export const exercises_abl_u1 = {
   },
   'ex-abl-1-1-mastery': {
     id: 'ex-abl-1-1-mastery', lessonId: 'abl-1-1', type: 'multiple-choice', isMasteryCheck: true,
-    question: '$f\'(x) > 0$ bedeutet:',
-    options: ['$f$ ist negativ', '$f$ ist konkav', '$f$ ist streng monoton steigend', '$f$ hat ein Maximum'],
-    correctIndex: 2,
-    explanation: `**Ansatz:** Die Ableitung $f'(x)$ ist die Tangentensteigung. Positive Steigung heißt: die Kurve steigt.
+    question: '[PRÜFUNG] Für eine Funktion $f$ gilt: $f\'(2) = 0$ und $f\'\'(2) > 0$. Was folgt daraus?',
+    options: [
+      '$f$ hat bei $x = 2$ ein lokales Minimum',
+      '$f$ hat bei $x = 2$ ein lokales Maximum',
+      '$f$ hat bei $x = 2$ einen Wendepunkt',
+      'Aus diesen Daten folgt nichts',
+    ],
+    correctIndex: 0,
+    explanation: `**Ansatz:** Zusammenspiel von $f'$ (notwendige Bedingung) und $f''$ (hinreichende Bedingung) für Extrema.
 
-**Rechnung:** Monotoniesatz: Ist $f'(x) > 0$ auf einem Intervall $I$, so ist $f$ auf $I$ streng monoton steigend.
+**Regel:**
+- $f'(x_0) = 0$: **notwendig** für ein Extremum (waagerechte Tangente, aber auch Sattelpunkt möglich).
+- $f''(x_0) > 0$: Funktion ist dort **linksgekrümmt** → die waagerechte Tangente muss ein **Tiefpunkt** sein (Minimum).
+- $f''(x_0) < 0$ hingegen → Maximum.
+- $f''(x_0) = 0$ → Test versagt, man muss anders prüfen.
 
-**Probe:** $f(x) = e^{x}$: $f'(x) = e^{x} > 0$ für alle $x$ — und tatsächlich ist $e^{x}$ streng monoton steigend. ✓
+**Bildlich:** $f''>0$ heißt, die Kurve „lächelt" — eine waagerechte Tangente im lächelnden Teil ist der Tiefpunkt.
 
-**Typischer Fehler:** Verwechslung von $f(x) > 0$ (Funktion ist *positiv*) und $f'(x) > 0$ (Funktion *steigt*). Eine Funktion kann negativ sein und trotzdem steigen (z.B. $f(x) = x - 10$ bei $x = 0$).`,
+**Probe:** $f(x) = (x-2)^2$ bei $x=2$: $f'(2) = 0$, $f''(2) = 2 > 0$ ✓ — und tatsächlich Minimum.
+
+**Typischer Fehler:** $f''>0$ mit Maximum verwechseln. Merksatz: „$f'' > 0$ $\\Rightarrow$ Minimum" (positive Krümmung $=$ Tal).`,
     hints: [
-      'Was sagt das Vorzeichen der Steigung über den Verlauf?',
-      'Positive Steigung $\\Rightarrow$ Funktion geht nach oben, wenn $x$ wächst.',
-      'Regel: $f\'(x) > 0$ auf $I$ $\\Rightarrow$ $f$ ist streng monoton steigend auf $I$.',
+      'Erst $f\'$: waagerechte Tangente = notwendige Bedingung für Extremum.',
+      '$f\'\' > 0$: Krümmung nach oben (Kurve lächelt). Was liegt dann im Tangentenpunkt?',
+      'Tiefpunkt! $f\'\'>0$ $\\Rightarrow$ Minimum.',
     ],
   },
 

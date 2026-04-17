@@ -101,7 +101,7 @@ export function FreeTextInput({ exercise, onSubmit, disabled }: Props) {
         disabled={disabled}
         placeholder={exercise.placeholder ?? 'Antwort eingeben…'}
         aria-label="Deine Antwort"
-        className="h-12 px-4 text-base font-mono border-2 border-ink rounded-retro bg-white dark:bg-surface-800 dark:text-paper shadow-hard-sm focus:outline-none focus:ring-2 focus:ring-primary-700 disabled:opacity-60"
+        className="h-12 px-4 text-base font-mono border-2 border-ink rounded-retro bg-white dark:bg-surface-800 dark:text-paper dark:placeholder:text-surface-400 shadow-hard-sm focus:outline-none focus:ring-2 focus:ring-primary-700 disabled:opacity-60"
       />
 
       <Button

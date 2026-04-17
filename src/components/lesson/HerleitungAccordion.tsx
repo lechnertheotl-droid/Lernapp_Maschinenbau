@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { MarkdownContent } from './MarkdownContent'
+import { MathText } from '@/components/ui/MathText'
 import type { DerivationStep } from '@/types/content'
 
 interface HerleitungAccordionProps {
@@ -20,8 +21,10 @@ export function HerleitungAccordion({
       open={open}
       onToggle={(e) => setOpen((e.currentTarget as HTMLDetailsElement).open)}
     >
-      <summary className="cursor-pointer p-3 font-mono font-black text-xs uppercase tracking-widest list-none flex items-center justify-between select-none">
-        <span className="text-primary-700 dark:text-primary-300">// {title}</span>
+      <summary className="cursor-pointer p-3 font-mono font-black text-xs uppercase tracking-widest list-none flex items-center justify-between select-none gap-2">
+        <MathText className="text-primary-700 dark:text-primary-300">
+          {`// ${title}`}
+        </MathText>
         <span
           className="w-6 h-6 flex items-center justify-center rounded border-2 border-ink bg-lemon-light dark:bg-surface-700 text-sm"
           aria-hidden

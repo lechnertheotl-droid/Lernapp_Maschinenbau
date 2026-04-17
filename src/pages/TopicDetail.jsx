@@ -10,11 +10,11 @@ import { ProgressBar } from '@/components/ui/ProgressBar'
 import { getLessonDifficulty } from '@/utils/lessonMeta'
 
 const STATUS_CONFIG = {
-  'secure':     { icon: '✓', label: 'Sicher',     dot: 'bg-green-500',   text: 'text-green-700'  },
-  'practiced':  { icon: '●', label: 'Geübt',      dot: 'bg-blue-500',    text: 'text-blue-700'   },
-  'understood': { icon: '◕', label: 'Verstanden', dot: 'bg-teal-500',    text: 'text-teal-700'   },
-  'started':    { icon: '◑', label: 'Begonnen',   dot: 'bg-yellow-500',  text: 'text-yellow-700' },
-  'not-started':{ icon: '○', label: 'Neu',        dot: 'bg-surface-300', text: 'text-surface-500'},
+  'secure':     { icon: '✓', label: 'Sicher',     dot: 'bg-green-500',   text: 'text-green-700 dark:text-green-400'   },
+  'practiced':  { icon: '●', label: 'Geübt',      dot: 'bg-blue-500',    text: 'text-blue-700 dark:text-blue-400'     },
+  'understood': { icon: '◕', label: 'Verstanden', dot: 'bg-teal-500',    text: 'text-teal-700 dark:text-teal-400'     },
+  'started':    { icon: '◑', label: 'Begonnen',   dot: 'bg-yellow-500',  text: 'text-yellow-700 dark:text-yellow-300' },
+  'not-started':{ icon: '○', label: 'Neu',        dot: 'bg-surface-300', text: 'text-surface-500 dark:text-surface-400' },
 }
 
 export function TopicDetail() {

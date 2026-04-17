@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import type { Priority } from '@/types/content'
+import { MathText } from '@/components/ui/MathText'
 
 interface FormelBlockProps {
   title: string
@@ -43,7 +44,7 @@ export function FormelBlock({ title, priority = 'wichtig', label, children }: Fo
           {label ?? priorityLabel[priority]}
         </span>
       </div>
-      <h3 className="font-black text-ink dark:text-paper text-lg leading-tight mb-3">{title}</h3>
+      <MathText className="font-black text-ink dark:text-paper text-lg leading-tight mb-3 block">{title}</MathText>
       <div className={s.accent}>{children}</div>
     </div>
   )

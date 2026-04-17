@@ -1,4 +1,5 @@
 import { MarkdownContent } from './MarkdownContent'
+import { MathText } from '@/components/ui/MathText'
 
 interface FehlerBlockProps {
   wrong: string
@@ -10,9 +11,9 @@ interface FehlerBlockProps {
 export function FehlerBlock({ wrong, right, hint, title = 'Typischer Fehler' }: FehlerBlockProps) {
   return (
     <div className="border-2 border-red-600 bg-red-50 dark:bg-red-950/30 rounded-retro shadow-hard-sm p-4">
-      <p className="font-mono text-[10px] font-black text-red-700 dark:text-red-300 uppercase tracking-widest mb-3">
-        // {title}
-      </p>
+      <MathText className="font-mono text-[10px] font-black text-red-700 dark:text-red-300 uppercase tracking-widest mb-3 block">
+        {`// ${title}`}
+      </MathText>
       <div className="space-y-2">
         <div className="flex gap-2 items-start">
           <span className="font-mono font-black text-red-700 dark:text-red-300 mt-0.5" aria-hidden>✗</span>

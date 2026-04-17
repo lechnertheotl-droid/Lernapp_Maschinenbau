@@ -73,12 +73,12 @@ export function evaluateAttempt(
 
 export function getMasteryColor(status: MasteryStatus | string | undefined): string {
   switch (status) {
-    case 'secure':      return 'text-green-700 bg-green-100'
-    case 'practiced':   return 'text-blue-700 bg-blue-100'
-    case 'understood':  return 'text-sky-700 bg-sky-100'
-    case 'started':     return 'text-yellow-700 bg-yellow-100'
-    case 'review':      return 'text-orange-700 bg-orange-100'
-    default:            return 'text-surface-500 bg-surface-100'
+    case 'secure':      return 'text-green-700  dark:text-green-300  bg-green-100  dark:bg-green-950/50'
+    case 'practiced':   return 'text-blue-700   dark:text-blue-300   bg-blue-100   dark:bg-blue-950/50'
+    case 'understood':  return 'text-sky-700    dark:text-sky-300    bg-sky-100    dark:bg-sky-950/50'
+    case 'started':     return 'text-yellow-700 dark:text-yellow-300 bg-yellow-100 dark:bg-yellow-950/50'
+    case 'review':      return 'text-orange-700 dark:text-orange-300 bg-orange-100 dark:bg-orange-950/50'
+    default:            return 'text-surface-500 dark:text-surface-400 bg-surface-100 dark:bg-surface-800'
   }
 }
 

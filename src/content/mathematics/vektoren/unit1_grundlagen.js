@@ -79,7 +79,7 @@ export const exercises_vek_u1 = {
           { x: 1, y: -1, color: '#dc2626', label: 'b' },
           { x: 3, y: 2, color: '#16a34a', label: 'a+b' },
         ],
-        showSum: false,
+        showSum: true,
       },
       caption: 'Summenvektor $\\vec{a} + \\vec{b} = (3, 2)$',
       alt: 'Zwei Vektoren a und b sowie ihr Summenvektor.',
@@ -87,33 +87,40 @@ export const exercises_vek_u1 = {
   },
   'ex-vek-1-1-mastery': {
     id: 'ex-vek-1-1-mastery', lessonId: 'vek-1-1', type: 'multiple-choice', isMasteryCheck: true,
-    question: '$\\vec{a} = (-2, 5)$. Was ist $3 \\cdot \\vec{a}$?',
-    options: ['$(-6, 15)$', '$(1, 8)$', '$(-5, 2)$', '$(6, 15)$'],
+    question: '[PRÜFUNG] Gegeben $\\vec{a} = (3, 4)$. Berechne $|2\\vec{a}|$ (Betrag des doppelten Vektors).',
+    options: ['$10$', '$5$', '$7$', '$14$'],
     correctIndex: 0,
-    explanation: `**Ansatz:** Skalarmultiplikation: jede Komponente wird mit dem Skalar multipliziert — Vorzeichen inklusive.
+    explanation: `**Ansatz:** Zwei Schritte kombinieren — Skalarmultiplikation **und** Betragsberechnung.
 
-**Formel:** $k \\cdot \\vec{a} = (k \\cdot a_x,\\; k \\cdot a_y)$.
+**Weg A (erst skalieren, dann Betrag):**
+- $2\\vec{a} = (6, 8)$
+- $|2\\vec{a}| = \\sqrt{6^2 + 8^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10$
 
-**Rechnung:** $3 \\cdot \\vec{a} = (3 \\cdot (-2),\\; 3 \\cdot 5) = (-6, 15)$.
+**Weg B (Homogenitäts-Regel):** $|k \\vec{a}| = |k| \\cdot |\\vec{a}|$.
+- $|\\vec{a}| = \\sqrt{9 + 16} = 5$
+- $|2\\vec{a}| = 2 \\cdot 5 = 10$ ✓
 
-**Probe:** Der neue Vektor hat denselben Richtungssinn (nicht Gegenrichtung, denn $k > 0$) und dreifache Länge: $|3 \\cdot \\vec{a}| = 3 \\cdot |\\vec{a}|$. ✓
+**Synthese:** Beide Wege müssen dasselbe Ergebnis liefern — das bestätigt die Regel $|k \\vec{a}| = |k| |\\vec{a}|$.
 
-**Typischer Fehler:** Antwort $(6, 15)$ ignoriert das Minuszeichen bei $a_x$. Antwort $(1, 8)$ *addiert* $3$ zu jeder Komponente statt zu multiplizieren.`,
+**Typische Fehler:**
+- $5$: $|\\vec{a}|$ berechnet, aber $2\\cdot$ vergessen.
+- $7 = |2| + |\\vec{a}|$: Skalar mit Betrag **addiert** statt multipliziert.
+- $14 = 2 \\cdot (3+4)$: Komponenten addiert statt $\\sqrt{}$-Betrag gebildet.`,
     hints: [
-      'Welche Operation ist Skalar $\\cdot$ Vektor? Multiplikation, nicht Addition.',
-      'Formel: $k \\cdot \\vec{a} = (k \\cdot a_x,\\; k \\cdot a_y)$.',
-      'Achte auf das Minuszeichen: $3 \\cdot (-2) = -6$, nicht $+6$.',
+      'Zwei Operationen: erst skalieren ($2\\vec{a}$), dann Betrag, oder umgekehrt.',
+      'Betrag: $|\\vec{a}| = \\sqrt{a_x^2 + a_y^2}$. Homogenität: $|k\\vec{a}| = |k| |\\vec{a}|$.',
+      '$|\\vec{a}| = \\sqrt{9+16} = 5 \\Rightarrow |2\\vec{a}| = 10$. 3-4-5-Tripel!',
     ],
     visualization: {
       id: 'vector-diagram',
       params: {
         vectors: [
-          { x: -2, y: 5, color: '#0ea5e9', label: 'a' },
-          { x: -6, y: 15, color: '#dc2626', label: '3a' },
+          { x: 3, y: 4, color: '#0ea5e9', label: 'a' },
+          { x: 6, y: 8, color: '#dc2626', label: '2a' },
         ],
       },
-      caption: 'Skalarmultiplikation verlängert den Vektor',
-      alt: 'Vektor a und sein dreifaches 3a.',
+      caption: 'Doppelter Vektor hat doppelten Betrag',
+      alt: 'Vektor a und sein doppeltes 2a.',
     },
   },
 

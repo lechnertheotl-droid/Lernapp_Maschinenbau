@@ -55,9 +55,16 @@
   html.dark .border-surface-100,
   html.dark .border-surface-200,
   html.dark .border-surface-300 { border-color: #334155 !important; }
-  html.dark .shadow-hard { box-shadow: 3px 3px 0 0 #000 !important; }
-  html.dark .shadow-hard-sm { box-shadow: 2px 2px 0 0 #000 !important; }
-  html.dark .shadow-hard-lg { box-shadow: 5px 5px 0 0 #000 !important; }
+  /* Im Dark-Mode müssen die harten Retro-Shadows gegen einen dunklen Grund
+     anspringen — reines Schwarz ist unsichtbar. Wir nutzen einen kühlen Akzent. */
+  html.dark .shadow-hard     { box-shadow: 3px 3px 0 0 #38bdf8 !important; }
+  html.dark .shadow-hard-sm  { box-shadow: 2px 2px 0 0 #38bdf8 !important; }
+  html.dark .shadow-hard-lg  { box-shadow: 5px 5px 0 0 #38bdf8 !important; }
+  html.dark .shadow-hard-xl  { box-shadow: 7px 7px 0 0 #38bdf8 !important; }
+  html.dark .shadow-hard-lemon { box-shadow: 3px 3px 0 0 #E5BE00 !important; }
+  html.dark .shadow-hard-green { box-shadow: 3px 3px 0 0 #22c55e !important; }
+  html.dark .shadow-hard-red   { box-shadow: 3px 3px 0 0 #ef4444 !important; }
+  html.dark .shadow-hard-blue  { box-shadow: 3px 3px 0 0 #38bdf8 !important; }
   html.dark .bg-ink { background-color: #020617 !important; }
   html.dark .bg-graph-paper,
   html.dark .bg-graph-paper-sm {

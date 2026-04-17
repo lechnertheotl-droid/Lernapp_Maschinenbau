@@ -22,6 +22,7 @@ export function makeLesson({
   correctIndex = 0,
   masteryExplanation,
   masteryHints = [],
+  exercises: extraExercises = [],
   prerequisites = [],
   nextLessonId = null,
   isExam = false,
@@ -58,6 +59,25 @@ export function makeLesson({
     })
   }
 
+  const exercises = {}
+
+  // Manuelle Übungsaufgaben (progressiv aufgebaut, VOR Mastery-Check)
+  extraExercises.forEach((ex, i) => {
+    const exId = ex.id ?? `ex-${id}-${i + 1}`
+    const fullEx = {
+      ...ex,
+      id: exId,
+      lessonId: id,
+    }
+    exercises[exId] = fullEx
+    steps.push({
+      id: `${id}-step-${i + 1}`,
+      type: 'exercise',
+      title: `Aufgabe ${i + 1}`,
+      exerciseRef: exId,
+    })
+  })
+
   const mcId = masteryId ?? `ex-${id}-mastery`
   steps.push({
     id: `${id}-mastery`,
@@ -66,18 +86,16 @@ export function makeLesson({
     exerciseRef: mcId,
   })
 
-  const exercises = {
-    [mcId]: {
-      id: mcId,
-      lessonId: id,
-      type: 'multiple-choice',
-      isMasteryCheck: true,
-      question: `${prefix}${masteryQuestion}`,
-      options: masteryOptions,
-      correctIndex,
-      explanation: masteryExplanation ?? '',
-      hints: masteryHints,
-    },
+  exercises[mcId] = {
+    id: mcId,
+    lessonId: id,
+    type: 'multiple-choice',
+    isMasteryCheck: true,
+    question: `${prefix}${masteryQuestion}`,
+    options: masteryOptions,
+    correctIndex,
+    explanation: masteryExplanation ?? '',
+    hints: masteryHints,
   }
 
   return {

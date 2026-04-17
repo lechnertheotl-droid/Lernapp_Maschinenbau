@@ -1,6 +1,7 @@
 import { VisualizationEngine } from '@/components/visualizations/VisualizationEngine'
 import { ExerciseEngine } from '@/components/exercises/ExerciseEngine'
 import { Button } from '@/components/ui/Button'
+import { MathText } from '@/components/ui/MathText'
 import { useState } from 'react'
 import { MarkdownContent } from './MarkdownContent'
 import { FormelBlock } from './FormelBlock'
@@ -18,7 +19,7 @@ export function LessonStep({ step, topicId, lessonId, onComplete }) {
         <div className="flex flex-col gap-4">
           <div className="bg-white border-2 border-ink rounded-retro shadow-hard p-4">
             <p className="font-mono text-[10px] font-black text-primary-700 uppercase tracking-widest mb-2">// Intuition</p>
-            <h3 className="font-black text-ink text-lg leading-tight mb-3">{step.title}</h3>
+            <MathText className="font-black text-ink dark:text-paper text-lg leading-tight mb-3 block">{step.title}</MathText>
             <MarkdownContent className="text-ink-soft">{step.content}</MarkdownContent>
           </div>
           <Button size="lg" variant="dark" fullWidth onClick={onComplete}>Verstanden, weiter →</Button>
@@ -63,7 +64,7 @@ export function LessonStep({ step, topicId, lessonId, onComplete }) {
     case 'visualization':
       return (
         <div className="flex flex-col gap-4">
-          {step.title && <h3 className="font-semibold text-surface-900">{step.title}</h3>}
+          {step.title && <MathText className="font-semibold text-surface-900 dark:text-paper block">{step.title}</MathText>}
           <VisualizationEngine visualizationId={step.visualizationId} params={step.params ?? {}} />
           <Button size="lg" variant="dark" fullWidth onClick={onComplete}>Weiter →</Button>
         </div>
@@ -91,7 +92,7 @@ export function LessonStep({ step, topicId, lessonId, onComplete }) {
     case 'reflection':
       return (
         <div className="flex flex-col gap-4">
-          <h3 className="font-semibold text-surface-900">{step.title ?? 'Reflexion'}</h3>
+          <MathText className="font-semibold text-surface-900 dark:text-paper block">{step.title ?? 'Reflexion'}</MathText>
           <div className="bg-white border-2 border-ink rounded-retro shadow-hard p-4 flex flex-col gap-2">
             {(step.questions ?? []).map((q, i) => (
               <p key={i} className="text-ink-soft text-sm font-semibold">? {q}</p>

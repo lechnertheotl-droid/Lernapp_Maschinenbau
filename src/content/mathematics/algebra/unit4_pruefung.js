@@ -9,7 +9,7 @@ export const exercises_alg_u4 = {
     question: '[PRÜFUNG] Vereinfache vollständig: $(8x^{6}y^{3})^{2/3}$',
     options: ['$4x^{4}y^{2}$', '$4x^{4}y^{3}$', '$8x^{4}y^{2}$', '$2x^{4}y^{2}$'],
     correctIndex: 0,
-    explanation: `**Ansatz:** Bei $(a \\cdot b \\cdot c)^{n}$ wird jeder Faktor einzeln mit $n$ potenziert. Gebrochene Exponenten $= $ Wurzel hoch Zähler.
+    explanation: `**Ansatz:** Bei $(a \\cdot b \\cdot c)^{n}$ wird jeder Faktor einzeln mit $n$ potenziert. Gebrochene Exponenten = Wurzel hoch Zähler.
 
 **Rechnung — Schritt für Schritt:**
 1. Jeden Faktor einzeln potenzieren: $(8x^{6}y^{3})^{2/3} = 8^{2/3} \\cdot (x^{6})^{2/3} \\cdot (y^{3})^{2/3}$

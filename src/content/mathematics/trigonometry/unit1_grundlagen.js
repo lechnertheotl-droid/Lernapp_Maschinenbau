@@ -45,45 +45,49 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
     ],
   },
   'ex-trig-1-1-c': {
-    id: 'ex-trig-1-1-c', lessonId: 'trig-1-1', type: 'multiple-choice',
-    question: '$270°$ in Radiant:',
-    options: ['$\\dfrac{\\pi}{2}$', '$\\pi$', '$\\dfrac{3\\pi}{2}$', '$2\\pi$'],
-    correctIndex: 2,
-    explanation: `**Ansatz:** $270°$ sind drei Viertel des Vollkreises.
+    id: 'ex-trig-1-1-c', lessonId: 'trig-1-1', type: 'number-input',
+    question: 'Eine Welle dreht sich um einen Winkel von $60°$. Welche Bogenlänge legt ein Punkt im Abstand $r = 0{,}5\\,\\text{m}$ von der Drehachse zurück? (in Meter, auf 3 Nachkommastellen)',
+    correctValue: 0.524,
+    tolerance: 0.005,
+    unit: 'm',
+    explanation: `**Ansatz:** Bogenlänge $s = r \\cdot \\alpha_{\\text{rad}}$ (der fundamentale Grund, warum man in Technik mit Bogenmaß rechnet).
 
-**Rechnung:** $270° = \\dfrac{3}{4} \\cdot 360° \\Rightarrow \\dfrac{3}{4} \\cdot 2\\pi = \\dfrac{3\\pi}{2}$.
+**Rechnung:**
+1. Winkel in Radiant: $\\alpha_{\\text{rad}} = 60 \\cdot \\dfrac{\\pi}{180} = \\dfrac{\\pi}{3} \\approx 1{,}047$.
+2. Bogenlänge: $s = 0{,}5 \\cdot \\dfrac{\\pi}{3} = \\dfrac{\\pi}{6} \\approx 0{,}524\\,\\text{m}$.
 
-Alternativ: $\\alpha_{\\text{rad}} = 270 \\cdot \\dfrac{\\pi}{180} = \\dfrac{270\\pi}{180} = \\dfrac{3\\pi}{2}$.
+**Warum Bogenmaß?** Die Formel $s = r\\cdot\\alpha$ gilt **nur**, wenn $\\alpha$ in Radiant eingesetzt wird. Mit Grad stünde ein Zusatzfaktor $\\pi/180$ drin.
 
-**Probe:** $\\dfrac{3\\pi}{2} \\approx 4{,}712$ rad. Rückrechnung: $4{,}712 \\cdot \\dfrac{180}{\\pi} \\approx 270°$. ✓
-
-**Am Einheitskreis:** $270°$ entspricht dem untersten Punkt $(0, -1)$. Dreiviertel-Umlauf gegen den Uhrzeigersinn.
-
-**Typischer Fehler:** $\\dfrac{\\pi}{2}$ verwechselt mit $\\dfrac{3\\pi}{2}$ — zähle im Einheitskreis die Viertelumläufe mit ($90°, 180°, 270°, 360°$).`,
+**Typischer Fehler:** Direkt $s = r \\cdot 60 = 30$ rechnen — ohne Umrechnung. Oder DEG statt RAD beim Taschenrechner.`,
     hints: [
-      'Welches Winkelmaß? Radiant. Skizze: $270°$ = drei Viertel auf dem Einheitskreis, unten.',
-      'Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\dfrac{\\pi}{180}$.',
-      'Rechne $\\dfrac{3}{4} \\cdot 2\\pi$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
+      'Formel: Bogenlänge $s = r \\cdot \\alpha$ — aber welches Winkelmaß?',
+      'Die Formel gilt nur in Radiant. $60°$ zuerst umrechnen: $\\pi/3$.',
+      '$s = 0{,}5 \\cdot \\pi/3 = \\pi/6 \\approx 0{,}524\\,\\text{m}$.',
     ],
   },
   'ex-trig-1-1-mastery': {
     id: 'ex-trig-1-1-mastery', lessonId: 'trig-1-1', type: 'multiple-choice', isMasteryCheck: true,
-    question: '[PRÜFUNG] Welches Bogenmaß entspricht $135°$?',
-    options: ['$\\dfrac{\\pi}{4}$', '$\\dfrac{\\pi}{2}$', '$\\dfrac{3\\pi}{4}$', '$\\pi$'],
-    correctIndex: 2,
-    explanation: `**Ansatz:** Umrechnen mit $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\dfrac{\\pi}{180}$.
+    question: '[PRÜFUNG] Ein Winkel beträgt $\\dfrac{5\\pi}{6}$ rad. In welchem Quadrant liegt der zugehörige Punkt auf dem Einheitskreis, und wie viele Grad sind das?',
+    options: [
+      '$150°$, 2. Quadrant',
+      '$150°$, 1. Quadrant',
+      '$120°$, 2. Quadrant',
+      '$225°$, 3. Quadrant',
+    ],
+    correctIndex: 0,
+    explanation: `**Ansatz:** Zuerst in Grad umrechnen, dann lokalisieren.
 
-**Rechnung:** $135 \\cdot \\dfrac{\\pi}{180} = \\dfrac{135\\pi}{180} = \\dfrac{3\\pi}{4}$ (Bruch kürzen mit $45$).
+**Rechnung:** $\\dfrac{5\\pi}{6} \\cdot \\dfrac{180}{\\pi} = \\dfrac{5 \\cdot 180}{6} = 150°$.
 
-**Probe:** $\\dfrac{3\\pi}{4} \\cdot \\dfrac{180}{\\pi} = \\dfrac{3 \\cdot 180}{4} = 135°$. ✓
+**Quadrant:** $150°$ liegt zwischen $90°$ und $180°$ → **2. Quadrant** (links-oben). Am Einheitskreis: Punkt $\\left(-\\dfrac{\\sqrt{3}}{2}, \\dfrac{1}{2}\\right)$.
 
-**Am Einheitskreis:** $135°$ liegt im 2. Quadranten, genau zwischen $\\dfrac{\\pi}{2}$ (90°) und $\\pi$ (180°). Koordinaten: $\\left(-\\dfrac{\\sqrt{2}}{2}, \\dfrac{\\sqrt{2}}{2}\\right)$.
+**Synthese-Check:** Ohne Umrechnung kannst du auch direkt sehen: $\\dfrac{5\\pi}{6}$ liegt zwischen $\\dfrac{\\pi}{2}$ ($=90°$) und $\\pi$ ($=180°$) — das ist der 2. Quadrant.
 
-**Typischer Fehler:** Nicht kürzen ($\\dfrac{135\\pi}{180}$ als Endergebnis stehen lassen) oder DEG/RAD vertauschen — Taschenrechner im richtigen Modus (DEG oder RAD) prüfen.`,
+**Typischer Fehler:** Option C („$120°$"): dies entspricht $\\dfrac{2\\pi}{3}$, nicht $\\dfrac{5\\pi}{6}$.`,
     hints: [
-      'Welches Winkelmaß? Radiant gesucht. Skizze: $135°$ liegt zwischen $90°$ ($\\pi/2$) und $180°$ ($\\pi$).',
-      'Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\dfrac{\\pi}{180}$.',
-      'Kürze den Bruch $\\dfrac{135}{180}$ so weit wie möglich (ggT $= 45$).',
+      'Zwei Schritte: erst Bogenmaß → Gradmaß, dann Quadrant bestimmen.',
+      'Formel: $\\alpha_{\\circ} = \\alpha_{\\text{rad}} \\cdot \\dfrac{180}{\\pi}$.',
+      '$\\dfrac{5\\pi}{6}$ liegt zwischen $\\dfrac{\\pi}{2}$ und $\\pi$ — welcher Quadrant ist das?',
     ],
   },
 

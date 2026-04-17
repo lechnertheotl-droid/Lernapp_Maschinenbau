@@ -76,8 +76,13 @@ export const exercises_int_u1 = {
   },
   'ex-int-1-1-d': {
     id: 'ex-int-1-1-d', lessonId: 'int-1-1', type: 'multiple-choice',
-    question: 'Welche der folgenden Funktionen ist eine Stammfunktion von $f(x) = 6x$?',
-    options: ['$F(x) = 6x^{2}$', '$F(x) = 3x^{2}$', '$F(x) = 3x^{2} + 5$', 'Sowohl $F(x) = 3x^{2}$ als auch $F(x) = 3x^{2} + 5$'],
+    question: 'Welche Aussage über Stammfunktionen von $f(x) = 6x$ ist korrekt?',
+    options: [
+      'Nur $F(x) = 3x^{2}$ ist eine Stammfunktion',
+      '$F(x) = 6x^{2}$ ist eine Stammfunktion',
+      '$F(x) = x^{3}$ ist eine Stammfunktion',
+      'Sowohl $F(x) = 3x^{2}$ als auch $F(x) = 3x^{2} + 5$ sind Stammfunktionen',
+    ],
     correctIndex: 3,
     explanation: `**Ansatz:** Alle Kandidaten ableiten und prüfen, welche $f(x) = 6x$ ergeben.
 

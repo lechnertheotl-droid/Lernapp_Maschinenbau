@@ -62,19 +62,23 @@ export const exercises_la_u1 = {
   },
   'ex-la-1-1-mastery': {
     id: 'ex-la-1-1-mastery', lessonId: 'la-1-1', type: 'multiple-choice', isMasteryCheck: true,
-    question: '[PRÜFUNG] Welche Aussage über die Nullmatrix $0$ ist korrekt?',
+    question: '[PRÜFUNG] Für $A = \\begin{pmatrix} 2 & 5 & 7 \\\\ 1 & 3 & 9 \\end{pmatrix}$: Welche Dimension hat $A$, und welchen Wert hat $a_{23}$?',
     options: [
-      '$A + 0 = 0$ für jede Matrix $A$',
-      '$A \\cdot 0 = A$ für jede Matrix $A$',
-      '$A + 0 = A$ für jede Matrix $A$ gleicher Dimension',
-      'Die Nullmatrix hat keine Dimension',
+      'Dimension $2 \\times 3$, $a_{23} = 9$',
+      'Dimension $3 \\times 2$, $a_{23} = 9$',
+      'Dimension $2 \\times 3$, $a_{23} = 3$',
+      'Dimension $3 \\times 2$, $a_{23} = 7$',
     ],
-    correctIndex: 2,
-    explanation: 'Die Nullmatrix ist das neutrale Element der Addition: $A + 0 = A$. Dabei müssen $A$ und $0$ die gleiche Dimension haben.',
+    correctIndex: 0,
+    explanation: `**Dimension:** $2$ Zeilen $\\times$ $3$ Spalten $= 2 \\times 3$ (immer **Zeilen $\\times$ Spalten**).
+
+**$a_{23}$:** Der Index $a_{ij}$ bedeutet Zeile $i$, Spalte $j$. Also Zeile 2, Spalte 3 → Element $9$.
+
+**Typischer Fehler:** Dimension als „Spalten × Zeilen" angeben ($3\\times 2$); $a_{23}$ mit $a_{32}$ verwechseln (letzteres existiert hier gar nicht, da nur 2 Zeilen).`,
     hints: [
-      'Welche Eigenschaft hat die Zahl $0$ bei der Addition?',
-      'Übertrage das auf Matrizen: $A + 0 = A$ — analog zu Zahlen.',
-      'Achtung: Damit Addition definiert ist, müssen die Dimensionen übereinstimmen.',
+      'Dimension = Zeilen × Spalten — in dieser Reihenfolge.',
+      '$a_{ij}$: erster Index = Zeile, zweiter = Spalte.',
+      '$a_{23}$ = Zeile 2, Spalte 3. Zeile 2 ist $[1, 3, 9]$ — das 3. Element ist $9$.',
     ],
   },
 

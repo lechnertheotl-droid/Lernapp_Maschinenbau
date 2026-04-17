@@ -36,6 +36,8 @@ export function MobileNav() {
           <Link
             key={to}
             to={to}
+            aria-current={isActive ? 'page' : undefined}
+            aria-label={label}
             className={cn(
               'flex-1 flex flex-col items-center justify-center py-2.5 gap-0.5 tap-highlight-none transition-colors relative',
               isActive ? 'text-lemon' : 'text-surface-500 hover:text-surface-300',
