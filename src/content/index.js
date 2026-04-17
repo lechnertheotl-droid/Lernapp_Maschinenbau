@@ -10,6 +10,7 @@ import { reihenFolgenTopic }    from './mathematics/reihen_folgen/index'
 import { mehrdimAnalysisTopic } from './mathematics/mehrdim_analysis/index'
 import { numerikTopic }         from './mathematics/numerik/index'
 import { statistikTopic }       from './mathematics/statistik/index'
+import { fourierLaplaceTopic }  from './mathematics/fourier_laplace/index'
 import { engineeringTopics } from './engineering/maschinenbau'
 import { werkstoffkundeTopic }  from './engineering/werkstoffkunde/index'
 import { pythonMatlabTopic }  from './programming/python_matlab'
@@ -581,6 +582,7 @@ const BASE_TOPICS = {
   'mehrdim-analysis':  mehrdimAnalysisTopic,
   numerik:             numerikTopic,
   statistik:           statistikTopic,
+  'fourier-laplace':   fourierLaplaceTopic,
 }
 
 const TOPICS = Object.fromEntries(Object.entries({

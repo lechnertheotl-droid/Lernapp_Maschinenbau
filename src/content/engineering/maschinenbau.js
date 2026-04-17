@@ -1689,6 +1689,980 @@ $$P = M \cdot \omega, \qquad \omega = \frac{2\pi n}{60}$$`,
       },
     ],
   },
+  // ─── Elektrotechnik ───────────────────────────────────────────────────────
+  {
+    topic: {
+      id: 'elektrotechnik',
+      title: 'Elektrotechnik',
+      description: 'Gleichstrom, Wechselstrom, Kirchhoffsche Gesetze und elektrische Leistung.',
+      subject: 'engineering',
+      icon: 'ELT',
+      color: 'yellow',
+      estimatedHours: 5,
+      difficulty: 3,
+      level: 'grundlagen',
+      prerequisites: ['algebra'],
+    },
+    units: [
+      {
+        id: 'et-unit-1',
+        title: 'Gleichstromkreise',
+        description: 'Ohmsches Gesetz, Kirchhoff und Leistung.',
+        lessons: [
+          // ── et-1-1 ────────────────────────────────────────────────────────
+          {
+            id: 'et-1-1',
+            title: 'Ohmsches Gesetz und Grundbegriffe',
+            estimatedMinutes: 12,
+            learningGoals: [
+              'Das Ohmsche Gesetz $U = R \\cdot I$ anwenden',
+              'Reihen- und Parallelschaltungen berechnen',
+            ],
+            content: String.raw`## Ohmsches Gesetz und Grundbegriffe
+
+Das **Ohmsche Gesetz** beschreibt den Zusammenhang zwischen Spannung, Widerstand und Strom:
+
+$$U = R \cdot I$$
+
+| Größe | Symbol | Einheit |
+|-------|--------|---------|
+| Spannung | $U$ | Volt (V) |
+| Strom | $I$ | Ampere (A) |
+| Widerstand | $R$ | Ohm ($\Omega$) |
+
+### Reihenschaltung
+
+$$R_\text{ges} = R_1 + R_2 + \ldots + R_n$$
+
+### Parallelschaltung
+
+$$\frac{1}{R_\text{ges}} = \frac{1}{R_1} + \frac{1}{R_2} + \ldots + \frac{1}{R_n}$$
+
+Für zwei Widerstände gilt: $R_\text{ges} = \frac{R_1 \cdot R_2}{R_1 + R_2}$
+`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'Ein Widerstand $R = 470\\,\\Omega$ wird von einem Strom $I = 20\\,\\text{mA}$ durchflossen. Welche Spannung $U$ liegt an?',
+                correctValue: 9.4,
+                tolerance: 0.05,
+                unit: 'V',
+                explanation: '$U = R \\cdot I = 470\\,\\Omega \\cdot 0{,}02\\,\\text{A} = 9{,}4\\,\\text{V}$',
+                hints: [
+                  '$U = R \\cdot I$',
+                  'Strom in Ampere umrechnen: $20\\,\\text{mA} = 0{,}02\\,\\text{A}$',
+                  '$470 \\cdot 0{,}02 = 9{,}4$',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: 'Zwei gleiche Widerstände $R$ in Parallelschaltung ergeben einen Gesamtwiderstand von $R/2$.',
+                correct: true,
+                explanation: '$\\frac{1}{R_\\text{ges}} = \\frac{1}{R} + \\frac{1}{R} = \\frac{2}{R} \\Rightarrow R_\\text{ges} = \\frac{R}{2}$',
+                hints: [
+                  '$\\frac{1}{R_\\text{ges}} = \\frac{1}{R_1} + \\frac{1}{R_2}$',
+                  '$\\frac{1}{R} + \\frac{1}{R} = \\frac{2}{R}$',
+                  '$R_\\text{ges} = R/2$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Reihenschaltung $R_1 = 100\\,\\Omega$ und $R_2 = 150\\,\\Omega$ an $U = 12\\,\\text{V}$. Wie groß ist der Strom $I$ in Ampere?',
+                correctValue: 0.048,
+                tolerance: 0.001,
+                unit: 'A',
+                explanation: '$R_\\text{ges} = 100 + 150 = 250\\,\\Omega$. $I = U/R_\\text{ges} = 12/250 = 0{,}048\\,\\text{A}$',
+                hints: [
+                  'Reihe: $R_\\text{ges} = R_1 + R_2$',
+                  '$I = U / R_\\text{ges}$',
+                  '$12 / 250 = 0{,}048\\,\\text{A}$',
+                ],
+              },
+            ],
+          },
+          // ── et-1-2 ────────────────────────────────────────────────────────
+          {
+            id: 'et-1-2',
+            title: 'Kirchhoffsche Gesetze',
+            estimatedMinutes: 13,
+            learningGoals: [
+              'Den Knotensatz (KCL) anwenden: $\\sum I = 0$',
+              'Den Maschensatz (KVL) anwenden: $\\sum U = 0$',
+            ],
+            content: String.raw`## Kirchhoffsche Gesetze
+
+### 1. Kirchhoffsches Gesetz — Knotensatz (KCL)
+
+Die Summe aller Ströme an einem Knoten ist null:
+
+$$\sum I = 0$$
+
+Zufliesende Ströme positiv, abfliesende negativ (oder umgekehrt — konsistent bleiben):
+
+$$I_1 = I_2 + I_3$$
+
+### 2. Kirchhoffsches Gesetz — Maschensatz (KVL)
+
+Die Summe aller Spannungen in einem geschlossenen Umlauf ist null:
+
+$$\sum U = 0$$
+
+Beispiel: $U_q - U_{R1} - U_{R2} = 0 \Rightarrow U_q = U_{R1} + U_{R2}$
+`,
+            exercises: [
+              {
+                type: 'multiple-choice',
+                question: 'Was besagt der Knotensatz (KCL) von Kirchhoff?',
+                options: [
+                  'Die Summe aller Ströme an einem Knoten ist null',
+                  'Die Summe aller Spannungen in einem Zweig ist null',
+                  'Leistung ist Strom mal Spannung',
+                  'Widerstand ist Spannung durch Strom',
+                ],
+                correctIndex: 0,
+                explanation: 'KCL beruht auf der Ladungserhaltung: Was in einen Knoten hineinfließt, muss auch wieder herausfließen.',
+                hints: [
+                  'KCL = Knotenstromsatz',
+                  'Ladungserhaltung am Knoten',
+                  '$\\sum I_\\text{ein} = \\sum I_\\text{aus}$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: 'An einem Knoten fließt $I_1 = 3\\,\\text{A}$ zu und $I_2 = 1\\,\\text{A}$ ab. Wie groß ist der dritte Strom $I_3$ (abfließend) in Ampere?',
+                correctValue: 2,
+                tolerance: 0.01,
+                unit: 'A',
+                explanation: 'KCL: $I_1 = I_2 + I_3 \\Rightarrow I_3 = 3 - 1 = 2\\,\\text{A}$',
+                hints: [
+                  'KCL: $\\sum I = 0$ am Knoten',
+                  '$I_1 = I_2 + I_3$',
+                  '$3 = 1 + I_3$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] In einer Masche gilt $U_q = 9\\,\\text{V}$ und $U_{R1} = 4\\,\\text{V}$. Wie groß ist $U_{R2}$ nach KVL in Volt?',
+                correctValue: 5,
+                tolerance: 0.01,
+                unit: 'V',
+                explanation: 'KVL: $U_q - U_{R1} - U_{R2} = 0 \\Rightarrow U_{R2} = 9 - 4 = 5\\,\\text{V}$',
+                hints: [
+                  'KVL: $\\sum U = 0$ im Umlauf',
+                  '$U_q = U_{R1} + U_{R2}$',
+                  '$9 = 4 + U_{R2}$',
+                ],
+              },
+            ],
+          },
+          // ── et-1-3 ────────────────────────────────────────────────────────
+          {
+            id: 'et-1-3',
+            title: 'Elektrische Leistung und Wirkungsgrad',
+            estimatedMinutes: 12,
+            learningGoals: [
+              'Elektrische Leistung mit $P = U \\cdot I$ berechnen',
+              'Wirkungsgrad $\\eta = P_\\text{ab}/P_\\text{zu}$ anwenden',
+            ],
+            content: String.raw`## Elektrische Leistung und Wirkungsgrad
+
+### Leistungsformeln
+
+$$P = U \cdot I = \frac{U^2}{R} = I^2 \cdot R$$
+
+Einheit: Watt (W). Energie: $W = P \cdot t$ (Joule).
+
+### Wirkungsgrad
+
+$$\eta = \frac{P_\text{ab}}{P_\text{zu}} \quad (0 < \eta \leq 1)$$
+
+### Wärmeverlust im Widerstand
+
+$$P_R = I^2 \cdot R$$
+`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'An einem Verbraucher liegt $U = 230\\,\\text{V}$ an und es fließt $I = 5\\,\\text{A}$. Wie groß ist die Leistung $P$ in Watt?',
+                correctValue: 1150,
+                tolerance: 1,
+                unit: 'W',
+                explanation: '$P = U \\cdot I = 230 \\cdot 5 = 1150\\,\\text{W}$',
+                hints: [
+                  '$P = U \\cdot I$',
+                  '$P$ in Watt',
+                  '$230 \\cdot 5 = 1150$',
+                ],
+              },
+              {
+                type: 'multiple-choice',
+                question: 'Eine Glühlampe hat $R = 529\\,\\Omega$ an $U = 230\\,\\text{V}$. Welche Leistung hat sie?',
+                options: ['100 W', '230 W', '529 W', '43 W'],
+                correctIndex: 0,
+                explanation: '$P = U^2/R = 230^2/529 = 52900/529 = 100\\,\\text{W}$',
+                hints: [
+                  '$P = U^2 / R$',
+                  '$230^2 = 52900$',
+                  '$52900 / 529 = 100$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Ein Motor hat eine Eingangsleistung $P_\\text{zu} = 2\\,\\text{kW}$ und einen Wirkungsgrad $\\eta = 0{,}8$. Wie groß ist die abgegebene Nutzleistung $P_\\text{ab}$ in Watt?',
+                correctValue: 1600,
+                tolerance: 1,
+                unit: 'W',
+                explanation: '$P_\\text{ab} = \\eta \\cdot P_\\text{zu} = 0{,}8 \\cdot 2000 = 1600\\,\\text{W}$',
+                hints: [
+                  '$\\eta = P_\\text{ab} / P_\\text{zu}$',
+                  '$P_\\text{ab} = \\eta \\cdot P_\\text{zu}$',
+                  '$0{,}8 \\cdot 2000 = 1600$',
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'et-unit-2',
+        title: 'Wechselstrom',
+        description: 'Impedanz, Phasenverschiebung und Leistungsfaktor.',
+        lessons: [
+          // ── et-2-1 ────────────────────────────────────────────────────────
+          {
+            id: 'et-2-1',
+            title: 'Wechselstromgrundlagen und Impedanz',
+            estimatedMinutes: 14,
+            learningGoals: [
+              'Wechselspannung und Kreisfrequenz $\\omega = 2\\pi f$ verstehen',
+              'Impedanzen $Z_R$, $Z_C$, $Z_L$ berechnen',
+            ],
+            content: String.raw`## Wechselstromgrundlagen und Impedanz
+
+### Wechselspannung
+
+$$u(t) = \hat{u} \cdot \sin(\omega t + \varphi), \quad \omega = 2\pi f$$
+
+**Effektivwert:** $U = \hat{u}/\sqrt{2}$
+
+### Impedanz (komplexer Widerstand)
+
+| Bauelement | Impedanz | Betrag |
+|-----------|----------|--------|
+| Ohmscher Widerstand | $Z_R = R$ | $R$ |
+| Kondensator | $Z_C = \frac{1}{j\omega C}$ | $\frac{1}{\omega C}$ |
+| Spule | $Z_L = j\omega L$ | $\omega L$ |
+
+Der **Betrag** der Impedanz gibt das Verhältnis $|Z| = U/I$ an.
+`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'Ein Kondensator $C = 10\\,\\mu\\text{F}$ wird mit $f = 50\\,\\text{Hz}$ betrieben. Wie groß ist der Impedanzbetrag $|Z_C|$ in Ohm?',
+                correctValue: 318,
+                tolerance: 5,
+                unit: 'Ohm',
+                explanation: '$|Z_C| = \\frac{1}{\\omega C} = \\frac{1}{2\\pi \\cdot 50 \\cdot 10^{-5}} \\approx 318\\,\\Omega$',
+                hints: [
+                  '$Z_C = 1/(j\\omega C)$',
+                  '$|Z_C| = 1/(\\omega C)$',
+                  '$\\omega = 2\\pi \\cdot 50 \\approx 314\\,\\text{rad/s}$',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: 'Der Effektivwert einer Sinusspannung beträgt $\\hat{u}/\\sqrt{2}$.',
+                correct: true,
+                explanation: 'Für reine Sinussignale gilt $U_\\text{eff} = \\hat{u}/\\sqrt{2} \\approx 0{,}707\\,\\hat{u}$.',
+                hints: [
+                  '$U_\\text{eff} = \\hat{u}/\\sqrt{2}$',
+                  'Für Sinus-Signale gilt diese Beziehung',
+                  '$\\sqrt{2} \\approx 1{,}414$',
+                ],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] Eine Spule $L = 0{,}1\\,\\text{H}$ liegt an $f = 50\\,\\text{Hz}$. Wie groß ist $|Z_L|$?',
+                options: [
+                  '$\\approx 31{,}4\\,\\Omega$',
+                  '$\\approx 5\\,\\Omega$',
+                  '$\\approx 100\\,\\Omega$',
+                  '$\\approx 314\\,\\Omega$',
+                ],
+                correctIndex: 0,
+                explanation: '$|Z_L| = \\omega L = 2\\pi \\cdot 50 \\cdot 0{,}1 = 10\\pi \\approx 31{,}4\\,\\Omega$',
+                hints: [
+                  '$Z_L = j\\omega L$',
+                  '$|Z_L| = \\omega L$',
+                  '$\\omega = 2\\pi \\cdot 50 \\approx 314 \\Rightarrow 314 \\cdot 0{,}1 = 31{,}4$',
+                ],
+              },
+            ],
+          },
+          // ── et-2-2 ────────────────────────────────────────────────────────
+          {
+            id: 'et-2-2',
+            title: 'RC- und RL-Schaltungen',
+            estimatedMinutes: 14,
+            learningGoals: [
+              'Grenzfrequenz eines RC-Tiefpasses berechnen',
+              'Impedanz einer RL-Schaltung bestimmen',
+              'Leistungsfaktor $\\cos\\varphi$ verstehen',
+            ],
+            content: String.raw`## RC- und RL-Schaltungen
+
+### RC-Tiefpass
+
+$$|G(j\omega)| = \frac{1}{\sqrt{1+(\omega RC)^2}}$$
+
+**Grenzfrequenz:** $f_g = \frac{1}{2\pi RC}$ (bei $f_g$: Betrag auf $1/\sqrt{2} \approx 0{,}707$ abgefallen)
+
+### RL-Schaltung
+
+Zeitkonstante: $\tau = L/R$
+
+Impedanzbetrag: $|Z| = \sqrt{R^2 + (\omega L)^2}$
+
+### Leistungsfaktor
+
+$$\cos\varphi = \frac{R}{|Z|}, \quad P = S \cdot \cos\varphi$$
+
+$\cos\varphi = 1$: rein ohmsche Last, keine Blindleistung.
+`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'RC-Tiefpass mit $R = 1\\,\\text{k}\\Omega$ und $C = 10\\,\\mu\\text{F}$. Wie groß ist die Grenzfrequenz $f_g$ in Hz?',
+                correctValue: 15.9,
+                tolerance: 0.5,
+                unit: 'Hz',
+                explanation: '$f_g = \\frac{1}{2\\pi RC} = \\frac{1}{2\\pi \\cdot 1000 \\cdot 10^{-5}} \\approx 15{,}9\\,\\text{Hz}$',
+                hints: [
+                  '$f_g = 1/(2\\pi R C)$',
+                  '$R \\cdot C = 1000 \\cdot 10^{-5} = 0{,}01\\,\\text{s}$',
+                  '$1/(2\\pi \\cdot 0{,}01) \\approx 15{,}9$',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: 'Bei $\\cos\\varphi = 1$ ist die gesamte Scheinleistung Wirkleistung (kein Blindanteil).',
+                correct: true,
+                explanation: '$\\cos\\varphi = 1 \\Rightarrow \\varphi = 0°$, d.h. Strom und Spannung sind phasengleich. $P = S \\cdot 1 = S$.',
+                hints: [
+                  '$\\cos\\varphi = 1 \\Rightarrow \\varphi = 0°$ (kein Phasenversatz)',
+                  '$P = S \\cdot \\cos\\varphi = S$',
+                  'Nur bei rein ohmscher Last',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] RL-Schaltung: $R = 50\\,\\Omega$, $L = 0{,}2\\,\\text{H}$, $f = 50\\,\\text{Hz}$. Wie groß ist der Impedanzbetrag $|Z|$ in Ohm?',
+                correctValue: 80.3,
+                tolerance: 1,
+                unit: 'Ohm',
+                explanation: '$\\omega L = 2\\pi \\cdot 50 \\cdot 0{,}2 \\approx 62{,}8\\,\\Omega$. $|Z| = \\sqrt{50^2 + 62{,}8^2} = \\sqrt{2500 + 3944} \\approx 80{,}3\\,\\Omega$',
+                hints: [
+                  '$|Z| = \\sqrt{R^2 + (\\omega L)^2}$',
+                  '$\\omega L = 2\\pi \\cdot 50 \\cdot 0{,}2 \\approx 62{,}8\\,\\Omega$',
+                  '$\\sqrt{50^2 + 62{,}8^2} = \\sqrt{6447} \\approx 80{,}3$',
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'et-unit-3',
+        title: 'Prüfungsaufgaben',
+        description: 'Klausurrelevante Elektrotechnik-Aufgaben.',
+        lessons: [
+          // ── et-3-1 ────────────────────────────────────────────────────────
+          {
+            id: 'et-3-1',
+            title: 'Gleichstrom Prüfungsaufgaben',
+            estimatedMinutes: 20,
+            learningGoals: [
+              'Kirchhoffsche Gesetze in komplexen Schaltungen anwenden',
+              'Spannungsteiler und Stromteiler berechnen',
+              'Elektrische Energie und Leistung klausurfertig lösen',
+            ],
+            content: String.raw`## [PRÜFUNG] Gleichstromkreise — Klausuraufgaben
+
+### Wichtige Formeln
+
+**Kirchhoff:**
+- KCL (Knoten): $\sum I = 0$
+- KVL (Masche): $\sum U = 0$
+
+**Schaltungen:**
+- Reihenschaltung: $R_\text{ges} = \sum R_i$
+- Parallelschaltung: $\frac{1}{R_\text{ges}} = \sum \frac{1}{R_i}$
+
+**Leistung:** $P = U \cdot I = \frac{U^2}{R} = I^2 R$
+
+**Spannungsteiler:**
+$$U_1 = U \cdot \frac{R_1}{R_1 + R_2}$$
+
+**Stromteiler:** Größerer Widerstand → kleinerer Teilstrom (umgekehrt proportional).
+`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Spannungsteiler: $U = 12\\,\\text{V}$, $R_1 = 300\\,\\Omega$, $R_2 = 700\\,\\Omega$. Wie groß ist die Spannung $U_2$ an $R_2$ in Volt?',
+                correctValue: 8.4,
+                tolerance: 0.05,
+                unit: 'V',
+                explanation: '$U_2 = U \\cdot \\frac{R_2}{R_1 + R_2} = 12 \\cdot \\frac{700}{1000} = 8{,}4\\,\\text{V}$',
+                hints: [
+                  'Spannungsteiler: $U_2 = U \\cdot R_2/(R_1 + R_2)$',
+                  '$R_1 + R_2 = 1000\\,\\Omega$',
+                  '$12 \\cdot 700/1000 = 8{,}4$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Parallelschaltung $R_1 = 60\\,\\Omega$ und $R_2 = 40\\,\\Omega$. Wie groß ist $R_\\text{ges}$ in Ohm?',
+                correctValue: 24,
+                tolerance: 0.1,
+                unit: 'Ohm',
+                explanation: '$\\frac{1}{R_\\text{ges}} = \\frac{1}{60} + \\frac{1}{40} = \\frac{2}{120} + \\frac{3}{120} = \\frac{5}{120} \\Rightarrow R_\\text{ges} = 24\\,\\Omega$',
+                hints: [
+                  '$1/R_\\text{ges} = 1/R_1 + 1/R_2$',
+                  '$1/60 + 1/40 = 5/120$',
+                  '$R_\\text{ges} = 120/5 = 24$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Heizwiderstand $R = 23\\,\\Omega$ an $U = 230\\,\\text{V}$ läuft 1 Stunde. Wie viel Energie $W$ wird verbraucht in kWh?',
+                correctValue: 2.3,
+                tolerance: 0.05,
+                unit: 'kWh',
+                explanation: '$P = U^2/R = 230^2/23 = 2300\\,\\text{W}$. $W = P \\cdot t = 2300\\,\\text{W} \\cdot 1\\,\\text{h} = 2{,}3\\,\\text{kWh}$',
+                hints: [
+                  '$P = U^2/R = 52900/23 = 2300\\,\\text{W}$',
+                  '$W = P \\cdot t$',
+                  'kWh: $2300\\,\\text{W} \\cdot 1\\,\\text{h} = 2{,}3\\,\\text{kWh}$',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: '[PRÜFUNG] Ein Stromteiler teilt den Strom umgekehrt proportional zu den Widerständen auf (größerer Widerstand → kleinerer Teilstrom).',
+                correct: true,
+                explanation: '$I_k = I_\\text{ges} \\cdot \\frac{R_\\text{parallel}}{R_k}$. Der Strom fließt bevorzugt durch den kleineren Widerstand.',
+                hints: [
+                  '$I_k = I_\\text{ges} \\cdot R_\\text{parallel}/R_k$',
+                  'Kleinerer Widerstand → größerer Anteil',
+                  'Umgekehrt proportional',
+                ],
+              },
+            ],
+          },
+          // ── et-3-2 ────────────────────────────────────────────────────────
+          {
+            id: 'et-3-2',
+            title: 'Wechselstrom Prüfungsaufgaben',
+            estimatedMinutes: 20,
+            learningGoals: [
+              'Resonanzfrequenz eines RLC-Kreises berechnen',
+              'Leistungsfaktor und Wirkleistung bestimmen',
+              'Tiefpass-Übertragungsverhalten klausurfertig beherrschen',
+            ],
+            content: String.raw`## [PRÜFUNG] Wechselstromkreise — Klausuraufgaben
+
+### Wichtige Formeln
+
+**Impedanzen:** $|Z_R| = R$, $|Z_C| = \frac{1}{\omega C}$, $|Z_L| = \omega L$
+
+**RLC-Reihenschaltung:**
+$$Z_\text{ges} = R + j\!\left(\omega L - \frac{1}{\omega C}\right), \quad |Z_\text{ges}| = \sqrt{R^2 + X^2}$$
+
+mit Reaktanz $X = \omega L - \frac{1}{\omega C}$
+
+**Resonanz:** $\omega_0 = \frac{1}{\sqrt{LC}}, \quad f_0 = \frac{1}{2\pi\sqrt{LC}}$
+
+**Leistungsfaktor:** $\cos\varphi = \frac{R}{|Z|}$, $\quad P = S \cdot \cos\varphi$
+`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] RLC-Reihenschaltung: $R = 100\\,\\Omega$, $L = 0{,}1\\,\\text{H}$, $C = 100\\,\\mu\\text{F}$. Wie groß ist die Resonanzfrequenz $f_0$ in Hz?',
+                correctValue: 50.3,
+                tolerance: 1,
+                unit: 'Hz',
+                explanation: '$f_0 = \\frac{1}{2\\pi\\sqrt{LC}} = \\frac{1}{2\\pi\\sqrt{0{,}1 \\cdot 10^{-4}}} = \\frac{1}{2\\pi \\cdot 0{,}00316} \\approx 50{,}3\\,\\text{Hz}$',
+                hints: [
+                  '$f_0 = 1/(2\\pi\\sqrt{LC})$',
+                  '$L \\cdot C = 0{,}1 \\cdot 10^{-4} = 10^{-5}$',
+                  '$1/(2\\pi \\cdot \\sqrt{10^{-5}}) \\approx 50{,}3\\,\\text{Hz}$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] RC-Tiefpass bei der Grenzfrequenz $f = f_g$. Wie groß ist der Übertragungsbetrags $|G|$?',
+                correctValue: 0.707,
+                tolerance: 0.005,
+                unit: '',
+                explanation: 'Bei $f = f_g$ gilt $\\omega RC = 1$: $|G| = 1/\\sqrt{1+1^2} = 1/\\sqrt{2} \\approx 0{,}707$ (der $-3\\,\\text{dB}$-Punkt).',
+                hints: [
+                  'Bei $f = f_g$ gilt $\\omega RC = 1$',
+                  '$|G| = 1/\\sqrt{1+(\\omega RC)^2}$',
+                  '$1/\\sqrt{2} \\approx 0{,}707$ ($-3\\,\\text{dB}$-Punkt)',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Scheinleistung $S = 5\\,\\text{kVA}$, Leistungsfaktor $\\cos\\varphi = 0{,}8$. Wie groß ist die Wirkleistung $P$ in Watt?',
+                correctValue: 4000,
+                tolerance: 10,
+                unit: 'W',
+                explanation: '$P = S \\cdot \\cos\\varphi = 5000 \\cdot 0{,}8 = 4000\\,\\text{W}$',
+                hints: [
+                  '$P = S \\cdot \\cos\\varphi$',
+                  '$S = 5000\\,\\text{VA}$',
+                  '$5000 \\cdot 0{,}8 = 4000\\,\\text{W}$',
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  // ─── Regelungstechnik ────────────────────────────────────────────────────
+  {
+    topic: {
+      id: 'regelungstechnik',
+      title: 'Regelungstechnik',
+      description: 'Regelkreis, Übertragungsfunktionen, PID-Regler und Stabilität.',
+      subject: 'engineering',
+      icon: 'RT',
+      color: 'teal',
+      estimatedHours: 5,
+      difficulty: 4,
+      level: 'vertiefung',
+      prerequisites: ['differentialgleichungen', 'elektrotechnik'],
+    },
+    units: [
+      {
+        id: 'rt-unit-1',
+        title: 'Grundlagen des Regelkreises',
+        description: 'Regelkreis, Grundbegriffe und Übertragungsfunktionen.',
+        lessons: [
+          // ── rt-1-1 ───────────────────────────────────────────────────────
+          {
+            id: 'rt-1-1',
+            title: 'Regelkreis Grundbegriffe',
+            estimatedMinutes: 12,
+            learningGoals: [
+              'Komponenten eines Regelkreises benennen',
+              'Regelabweichung $e = w - y$ erklären',
+              'Steuerung und Regelung unterscheiden',
+            ],
+            content: String.raw`## Regelkreis — Grundbegriffe
+
+### Komponenten
+
+| Komponente | Funktion |
+|-----------|----------|
+| Regelstrecke | Der zu regelnde Prozess |
+| Regler (Controller) | Berechnet die Stellgröße |
+| Stellglied | Setzt Stellgröße in physikalische Aktion um |
+| Messglied | Misst die Regelgröße (Istwert) |
+
+### Wichtige Größen
+
+- **Führungsgröße** $w$: Sollwert (gewünschter Zustand)
+- **Regelgröße** $y$: Istwert (tatsächlicher Zustand)
+- **Regelabweichung:** $e = w - y$ (Soll $-$ Ist)
+- **Stellgröße** $u$: Eingriff des Reglers in die Strecke
+
+### Steuerung vs. Regelung
+
+- **Steuerung** (offener Kreis): Kein Feedback — kann Störungen **nicht** ausregeln.
+- **Regelung** (geschlossener Kreis): Istwert wird gemessen und zurückgeführt → Störungen werden automatisch korrigiert.
+`,
+            exercises: [
+              {
+                type: 'multiple-choice',
+                question: 'Was ist die Regelabweichung $e$?',
+                options: [
+                  '$e = w - y$ (Soll minus Ist)',
+                  '$e = y - w$',
+                  '$e = u/y$',
+                  '$e = w \\cdot y$',
+                ],
+                correctIndex: 0,
+                explanation: 'Die Regelabweichung ist die Differenz aus Führungsgröße (Soll) und Regelgröße (Ist): $e = w - y$.',
+                hints: [
+                  '$e$ = Führungsgröße $-$ Regelgröße',
+                  'Soll $-$ Ist',
+                  '$e = w - y$',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: 'Eine Steuerung (offener Kreis) kann Störungen automatisch ausregeln.',
+                correct: false,
+                explanation: 'Ohne Rückkopplung (Messung des Istwerts) kann nicht auf Störungen reagiert werden. Nur die Regelung (geschlossener Kreis) kompensiert Störungen.',
+                hints: [
+                  'Steuerung hat keine Rückkopplung',
+                  'Nur Regelung (geschlossener Kreis) misst $y$',
+                  'Keine Messung → keine Störungskorrektur',
+                ],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] Welche Aussage über Regelungen ist richtig?',
+                options: [
+                  'Regelungen messen den Istwert und korrigieren Abweichungen automatisch',
+                  'Regelungen funktionieren ohne Rückkopplung',
+                  'Der Regler gibt immer konstante Stellgröße aus',
+                  'Störungen haben keinen Einfluss bei Steuerungen',
+                ],
+                correctIndex: 0,
+                explanation: 'Regelungen sind geschlossene Kreise: Der Istwert $y$ wird gemessen, mit dem Sollwert $w$ verglichen und der Regler korrigiert $e = w - y$.',
+                hints: [
+                  'Regelung = geschlossener Kreis',
+                  'Istwert wird gemessen und zurückgeführt',
+                  '$e = w - y \\Rightarrow$ Regler reagiert auf Abweichung',
+                ],
+              },
+            ],
+          },
+          // ── rt-1-2 ───────────────────────────────────────────────────────
+          {
+            id: 'rt-1-2',
+            title: 'Übertragungsfunktion',
+            estimatedMinutes: 15,
+            learningGoals: [
+              'Übertragungsfunktion $G(s) = Y(s)/U(s)$ im Laplace-Bereich definieren',
+              'PT1-Glied und Verstärkung bei $s = 0$ bestimmen',
+              'Führungsübertragungsfunktion $T = G_0/(1+G_0)$ berechnen',
+            ],
+            content: String.raw`## Übertragungsfunktion
+
+Im **Laplace-Bereich** wird ein lineares System durch seine Übertragungsfunktion beschrieben:
+
+$$G(s) = \frac{Y(s)}{U(s)}$$
+
+### Grundglieder
+
+| Glied | $G(s)$ | Eigenschaften |
+|-------|--------|---------------|
+| Proportionalglied (P) | $K$ | konstante Verstärkung |
+| Integrator (I) | $K/s$ | integriert Eingang |
+| PT1-Glied | $K/(1+Ts)$ | Tiefpass 1. Ordnung |
+| PT2-Glied | $K/(1+2DTs+T^2s^2)$ | Tiefpass 2. Ordnung |
+
+### Stationäre Verstärkung
+
+Für $s \to 0$: $G(0) = K$ (statisches Verhalten)
+
+### Schaltungen im s-Bereich
+
+- **Reihenschaltung:** $G_\text{ges} = G_1 \cdot G_2$
+- **Gegenkopplung (offene Schleife):** $G_0 = G_R \cdot G_S$
+- **Führungsübertragungsfunktion:** $T(s) = \dfrac{G_0}{1 + G_0}$
+`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'PT1-Glied: $G(s) = \\frac{2}{1+0{,}5s}$. Wie groß ist die stationäre Verstärkung $K$ (bei $s \\to 0$)?',
+                correctValue: 2,
+                tolerance: 0.01,
+                unit: '',
+                explanation: 'Stationäre Verstärkung: $G(0) = K/(1+T \\cdot 0) = K = 2$.',
+                hints: [
+                  'Stationäre Verstärkung: $s \\to 0$ einsetzen',
+                  '$G(0) = K/(1 + T \\cdot 0) = K$',
+                  '$G(0) = 2/1 = 2$',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: 'Bei Reihenschaltung zweier Übertragungsglieder $G_1$ und $G_2$ gilt $G_\\text{ges} = G_1 + G_2$.',
+                correct: false,
+                explanation: 'Bei Reihenschaltung wird **multipliziert**: $G_\\text{ges} = G_1 \\cdot G_2$. Erst die Parallelschaltung (Überlagerung) ergibt eine Addition.',
+                hints: [
+                  'Reihenschaltung: Ausgabe von $G_1$ ist Eingabe von $G_2$',
+                  '$G_\\text{ges} = G_1 \\cdot G_2$ (nicht $+$)',
+                  'Wie Signalkette: $Y = G_2 \\cdot (G_1 \\cdot U)$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Regler $G_R = 5$, Strecke $G_S(s) = 1/(s+2)$. Wie groß ist die Führungsübertragungsfunktion $T(0)$ bei $s = 0$?',
+                correctValue: 0.714,
+                tolerance: 0.005,
+                unit: '',
+                explanation: '$G_0(0) = 5 \\cdot (1/2) = 2{,}5$. $T(0) = 2{,}5/(1+2{,}5) = 2{,}5/3{,}5 \\approx 0{,}714$.',
+                hints: [
+                  '$G_0 = G_R \\cdot G_S$',
+                  '$T = G_0/(1+G_0)$',
+                  'Bei $s=0$: $G_0(0) = 5 \\cdot (1/2) = 2{,}5$',
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'rt-unit-2',
+        title: 'Regler und Stabilität',
+        description: 'PID-Regler und Stabilitätskriterien.',
+        lessons: [
+          // ── rt-2-1 ───────────────────────────────────────────────────────
+          {
+            id: 'rt-2-1',
+            title: 'PID-Regler',
+            estimatedMinutes: 15,
+            learningGoals: [
+              'P-, I- und D-Anteil des PID-Reglers erklären',
+              'Wirkung der drei Anteile im Zeitbereich verstehen',
+              'PID im Laplace-Bereich formulieren',
+            ],
+            content: String.raw`## PID-Regler
+
+Der PID-Regler kombiniert drei Anteile:
+
+$$u(t) = K_P \!\left(e(t) + \frac{1}{T_I}\int e\,\mathrm{d}t + T_D\,\frac{\mathrm{d}e}{\mathrm{d}t}\right)$$
+
+| Anteil | Formel | Wirkung | Nachteil |
+|--------|--------|---------|----------|
+| **P** (Proportional) | $u_P = K_P \cdot e$ | schnelle Reaktion | bleibender Dauerfehler |
+| **I** (Integral) | $u_I = K_I \int e\,\mathrm{d}t$ | löscht Dauerfehler | träge, Überschwingen |
+| **D** (Differential) | $u_D = K_D \cdot \dot{e}$ | antizipiert Trends | rauschempfindlich |
+
+### Im Laplace-Bereich
+
+$$G_R(s) = K_P\!\left(1 + \frac{1}{T_I s} + T_D s\right)$$
+
+- Für $s \to 0$ (DC): I-Anteil dominiert ($1/(T_I s) \to \infty$)
+- Für $s \to \infty$ (hohe Frequenz): D-Anteil dominiert ($T_D s \to \infty$)
+`,
+            exercises: [
+              {
+                type: 'multiple-choice',
+                question: 'Welcher Regleranteil beseitigt den stationären Fehler (bleibende Regelabweichung)?',
+                options: [
+                  'I-Anteil (Integral)',
+                  'P-Anteil',
+                  'D-Anteil',
+                  'Keiner davon',
+                ],
+                correctIndex: 0,
+                explanation: 'Der I-Anteil integriert den Fehler auf. Solange $e \\neq 0$, wächst der I-Anteil und zwingt $e \\to 0$ im stationären Zustand.',
+                hints: [
+                  'I-Anteil integriert den Fehler auf',
+                  'Solange $e \\neq 0$, wächst der I-Anteil',
+                  'I-Anteil zwingt $e \\to 0$ im stationären Zustand',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: 'Der D-Anteil eines PID-Reglers reagiert auf den aktuellen Fehlerwert $e(t)$.',
+                correct: false,
+                explanation: 'Der D-Anteil reagiert auf die **Änderungsrate** $\\mathrm{d}e/\\mathrm{d}t$ — er antizipiert Trends im Fehler, nicht den Fehler selbst.',
+                hints: [
+                  'D = Differential = Ableitung',
+                  'D-Anteil $\\propto \\mathrm{d}e/\\mathrm{d}t$, nicht $e$ selbst',
+                  'Schnelle Fehleränderung → große D-Wirkung',
+                ],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] PID im Laplace-Bereich: $G_R(s) = K_P(1 + 1/(T_I s) + T_D s)$. Was dominiert bei hohen Frequenzen ($s \\to \\infty$)?',
+                options: [
+                  'D-Anteil ($T_D s \\to \\infty$)',
+                  'I-Anteil ($1/(T_I s) \\to 0$)',
+                  'P-Anteil',
+                  'Alle gleich',
+                ],
+                correctIndex: 0,
+                explanation: 'Für $s \\to \\infty$: $T_D s \\to \\infty$ dominiert, $1/(T_I s) \\to 0$ verschwindet. D-Anteil dominiert bei schnellen Änderungen.',
+                hints: [
+                  'Für $s \\to \\infty$: $T_D s \\to \\infty$ dominiert',
+                  '$1/(T_I s) \\to 0$ (verschwindet)',
+                  'D ist dominant bei schnellen Änderungen (hohen Frequenzen)',
+                ],
+              },
+            ],
+          },
+          // ── rt-2-2 ───────────────────────────────────────────────────────
+          {
+            id: 'rt-2-2',
+            title: 'Stabilität',
+            estimatedMinutes: 14,
+            learningGoals: [
+              'Stabilitätsbedingung (Pole in linker Halbebene) formulieren',
+              'Hurwitz-Kriterium erklären',
+              'Phasenrand und Amplitudenrand im Bodediagramm interpretieren',
+            ],
+            content: String.raw`## Stabilität von Regelkreisen
+
+### Grundbedingung
+
+Ein System ist **stabil**, wenn alle Pole der geschlossenen Schleife **negativen Realteil** haben (linke $s$-Halbebene):
+
+$$\text{Re}(s_i) < 0 \quad \forall i$$
+
+Pole in der rechten Halbebene → instabil (Ausgabe wächst unbegrenzt).
+
+### Hurwitz-Kriterium
+
+Für Polynome $a_n s^n + \ldots + a_1 s + a_0$:
+- **Notwendig:** Alle Koeffizienten $a_i > 0$
+- **Hinreichend (für $n \geq 3$):** Hurwitz-Determinanten müssen positiv sein
+
+### Stabilität im Bodediagramm
+
+- **Phasenrand** $\varphi_R \geq 30°$: gute Stabilitätsreserve
+- **Amplitudenrand** $A_R \geq 6\,\text{dB}$: gute Amplitudenreserve
+
+Zu kleiner Phasenrand → starkes Überschwingen oder Instabilität.
+`,
+            exercises: [
+              {
+                type: 'multiple-choice',
+                question: 'Ein System ist stabil, wenn alle Pole der Übertragungsfunktion ...',
+                options: [
+                  'negativen Realteil haben (linke Halbebene)',
+                  'positiven Realteil haben',
+                  'auf der imaginären Achse liegen',
+                  'betragsmäßig $< 1$ sind',
+                ],
+                correctIndex: 0,
+                explanation: 'Pol bei $s = a + jb$: stabil genau dann, wenn $a < 0$. Dann klingt $e^{at} \\to 0$ ab.',
+                hints: [
+                  'Pol bei $s = a + jb$: stabil wenn $a < 0$',
+                  'Linke $s$-Halbebene → Zeitantwort klingt ab',
+                  '$e^{at} \\to 0$ nur wenn $a < 0$',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: 'Ein Phasenrand von $45°$ gilt als gute Stabilitätsreserve.',
+                correct: true,
+                explanation: 'Empfohlen: $\\varphi_R \\geq 30°$. Ein Phasenrand von $45°$ liefert moderates Überschwingen und ist in der Praxis gut akzeptiert.',
+                hints: [
+                  'Empfehlung: $\\varphi_R \\geq 30°$',
+                  '$\\varphi_R = 45°$ → moderates Überschwingen',
+                  '$\\varphi_R < 0° \\Rightarrow$ instabil',
+                ],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] System 3. Ordnung: Nenner $2s^3 + 3s^2 + s + k$. Welche Aussage zur Hurwitz-Bedingung ist richtig?',
+                options: [
+                  'Notwendig: alle Koeffizienten positiv; hinreichend braucht Hurwitz-Determinante',
+                  'Alle Koeffizienten positiv ist hinreichend für Stabilität',
+                  '$k$ hat keinen Einfluss auf Stabilität',
+                  'Nur der führende Koeffizient zählt',
+                ],
+                correctIndex: 0,
+                explanation: 'Für $n \\geq 3$ ist das positive Vorzeichen aller Koeffizienten nur **notwendig** — die Hurwitz-Determinante muss zusätzlich geprüft werden.',
+                hints: [
+                  'Alle Koeffizienten $> 0$ ist nur notwendig, nicht hinreichend',
+                  'Für $n \\geq 3$ braucht man die Hurwitz-Determinante',
+                  'Für $n = 1, 2$ reicht Koeffizientencheck',
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'rt-unit-3',
+        title: 'Prüfungsaufgaben',
+        description: 'Klausurrelevante Regelungstechnik-Aufgaben.',
+        lessons: [
+          // ── rt-3-1 ───────────────────────────────────────────────────────
+          {
+            id: 'rt-3-1',
+            title: 'Regelkreis & PID Prüfungsaufgaben',
+            estimatedMinutes: 22,
+            learningGoals: [
+              'Stationäre Regelabweichung beim P-Regler berechnen',
+              'Führungsübertragungsfunktion klausurfertig anwenden',
+              'Systemtyp und Rampenfolge einordnen',
+            ],
+            content: String.raw`## [PRÜFUNG] Regelungstechnik — Klausuraufgaben
+
+### Formeln auf einen Blick
+
+**Führungsübertragungsfunktion:**
+$$T(s) = \frac{G_0(s)}{1 + G_0(s)}, \quad G_0 = G_R \cdot G_S$$
+
+**Stationäre Regelverstärkung (P-Regler):**
+$$K_0 = K_P \cdot G_S(0), \quad e_\text{stat} = \frac{1}{1 + K_0}$$
+
+**PID im Laplace-Bereich:**
+$$G_R(s) = K_P\!\left(1 + \frac{1}{T_I s} + T_D s\right)$$
+
+**Stabilität:** Alle Pole von $T(s)$ müssen $\text{Re}(s) < 0$ haben.
+`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] P-Regler $K_P = 10$, Strecke $G_S(s) = 1/(s+1)$. Wie groß ist die bleibende Regelabweichung $e_\\text{stat}$ für einen Einheitssprung?',
+                correctValue: 0.091,
+                tolerance: 0.003,
+                unit: '',
+                explanation: '$K_0 = K_P \\cdot G_S(0) = 10 \\cdot 1 = 10$. $e_\\text{stat} = 1/(1+K_0) = 1/11 \\approx 0{,}091$.',
+                hints: [
+                  '$K_0 = K_P \\cdot G_S(0) = 10 \\cdot 1 = 10$',
+                  '$e_\\text{stat} = 1/(1 + K_0)$',
+                  '$1/(1+10) = 1/11 \\approx 0{,}091$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] PT1-Glied: $G(s) = 3/(1+2s)$. Wie groß ist die Verstärkung bei $f = 0\\,\\text{Hz}$ (DC)?',
+                correctValue: 3,
+                tolerance: 0.01,
+                unit: '',
+                explanation: 'DC-Verstärkung: $s = 0$ einsetzen: $G(0) = 3/(1+0) = 3$.',
+                hints: [
+                  'DC-Verstärkung: $s = 0$ einsetzen',
+                  '$G(0) = 3/(1+0) = 3$',
+                  'Stationärer Wert des PT1-Glieds',
+                ],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] Welcher Regler-Typ gewährleistet stationäre Genauigkeit bei einem Rampeneingang?',
+                options: [
+                  'PI-Regler oder I²-Regler (2 Integratoren in offener Schleife)',
+                  'P-Regler allein',
+                  'D-Regler allein',
+                  'PD-Regler',
+                ],
+                correctIndex: 0,
+                explanation: 'Für Rampenfolge braucht der offene Kreis mindestens 2 Integratoren (Systemtyp 2). Ein PI-Regler liefert einen Integrator, ein reiner I²-Regler zwei.',
+                hints: [
+                  'Rampe = Integral des Sprungs',
+                  'Systemtyp muss um 1 erhöht werden',
+                  'Für Rampe: mindestens 2 Integratoren in $G_0$',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: '[PRÜFUNG] Ein stabiler Regelkreis hat alle Pole der Führungsübertragungsfunktion $T(s)$ in der linken $s$-Halbebene.',
+                correct: true,
+                explanation: '$T = G_0/(1+G_0)$. Die Pole von $T$ sind die Nullstellen von $1 + G_0 = 0$. Stabilität: alle Pole mit $\\text{Re}(s) < 0$.',
+                hints: [
+                  '$T = G_0/(1+G_0)$',
+                  'Pole von $T$ = Nullstellen von $1 + G_0$',
+                  'Stabil: alle Pole mit $\\text{Re}(s) < 0$',
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ]
 
 export const engineeringTopics = topicDefinitions.map(buildTopic)
