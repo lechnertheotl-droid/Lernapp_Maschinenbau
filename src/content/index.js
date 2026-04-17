@@ -10,6 +10,7 @@ import { reihenFolgenTopic }    from './mathematics/reihen_folgen/index'
 import { mehrdimAnalysisTopic } from './mathematics/mehrdim_analysis/index'
 import { numerikTopic }         from './mathematics/numerik/index'
 import { statistikTopic }       from './mathematics/statistik/index'
+import { fourierLaplaceTopic }  from './mathematics/fourier_laplace/index'
 import { engineeringTopics } from './engineering/maschinenbau'
 import { werkstoffkundeTopic }  from './engineering/werkstoffkunde/index'
 import { pythonMatlabTopic }  from './programming/python_matlab'
@@ -26,6 +27,9 @@ import { festigkeitSupplements } from './supplements/festigkeit'
 import { thermodynamikSupplements } from './supplements/thermodynamik'
 import { fluidmechanikSupplements } from './supplements/fluidmechanik'
 import { maschinenelementeSupplements } from './supplements/maschinenelemente'
+import { elektrotechnikSupplements } from './supplements/elektrotechnik'
+import { regelungstechnikSupplements } from './supplements/regelungstechnik'
+import { fourierLaplaceSupplements } from './supplements/fourier_laplace'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
 const MIN_EXERCISES_PER_LESSON = 10
@@ -43,6 +47,9 @@ const MANUAL_SUPPLEMENTS = {
   ...thermodynamikSupplements,
   ...fluidmechanikSupplements,
   ...maschinenelementeSupplements,
+  ...elektrotechnikSupplements,
+  ...regelungstechnikSupplements,
+  ...fourierLaplaceSupplements,
 }
 
 function countExerciseSteps(lesson) {
@@ -581,6 +588,7 @@ const BASE_TOPICS = {
   'mehrdim-analysis':  mehrdimAnalysisTopic,
   numerik:             numerikTopic,
   statistik:           statistikTopic,
+  'fourier-laplace':   fourierLaplaceTopic,
 }
 
 const TOPICS = Object.fromEntries(Object.entries({

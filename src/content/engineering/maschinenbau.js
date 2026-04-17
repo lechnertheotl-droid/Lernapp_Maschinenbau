@@ -134,7 +134,7 @@ const topicDefinitions = [
                 options: ['Nur bekannte Kräfte', 'Alle äußeren Kräfte und Lagerreaktionen', 'Nur Beschleunigungen', 'Nur Maße'],
                 correctIndex: 1,
                 explanation: 'Ein Freikörperbild zeigt alle äußeren Kräfte und unbekannten Reaktionsgrößen.',
-                hints: ['Kontakte werden durch Reaktionskräfte ersetzt.'],
+                hints: ['Kontakte werden durch Reaktionskräfte ersetzt.', 'Alle äußeren Einwirkungen auf den freigeschnittenen Körper eintragen.', 'Bekannte und unbekannte Kräfte + Lagerreaktionen gehören ins Bild.'],
                 visualization: {
                   id: 'free-body-diagram',
                   params: {
@@ -155,7 +155,7 @@ const topicDefinitions = [
                 tolerance: 0.01,
                 unit: 'N',
                 explanation: 'R = $\\sqrt{3^2 + 4^2}$ = 5 N.',
-                hints: ['Pythagoras: 3-4-5-Dreieck.'],
+                hints: ['Resultierende zweier rechtwinkliger Kräfte: Pythagoras anwenden.', 'R = √(F_x² + F_y²)', '√(3² + 4²) = √25 = 5'],
                 visualization: {
                   id: 'vector-diagram',
                   params: {
@@ -174,7 +174,7 @@ const topicDefinitions = [
                 statement: 'Im statischen Gleichgewicht muss die Summe aller Kräfte null sein.',
                 correct: true,
                 explanation: 'Für Translation gilt ΣF = 0; zusätzlich gilt für Rotation ΣM = 0.',
-                hints: ['Statik bedeutet keine resultierende Beschleunigung.'],
+                hints: ['Statisches Gleichgewicht: Resultierende Kraft = 0.', 'ΣF = 0 für Translation, ΣM = 0 für Rotation.', 'Beide Bedingungen müssen erfüllt sein.'],
               },
             ],
           },
@@ -198,7 +198,7 @@ Dabei ist $l_\perp$ der senkrechte Abstand zwischen Drehpunkt und Wirkungslinie 
                 tolerance: 0.01,
                 unit: 'Nm',
                 explanation: 'M = F·l = 20·0,5 = 10 Nm.',
-                hints: ['Einheit: Newtonmeter.'],
+                hints: ['Moment: M = F · l_perp', 'l_perp ist der senkrechte Abstand zur Kraftlinie.', 'Einheit: N · m = Nm'],
                 visualization: {
                   id: 'beam-reactions',
                   params: {},
@@ -212,14 +212,14 @@ Dabei ist $l_\perp$ der senkrechte Abstand zwischen Drehpunkt und Wirkungslinie 
                 options: ['immer die Stablänge', 'der senkrechte Abstand zur Wirkungslinie', 'die Kraft mal Weg', 'der Winkel in Grad'],
                 correctIndex: 1,
                 explanation: 'Nur der senkrechte Abstand zur Wirkungslinie zählt.',
-                hints: ['Drehwirkung entsteht senkrecht zur Kraftlinie.'],
+                hints: ['Der Hebelarm ist senkrecht zur Wirkungslinie der Kraft.', 'Nicht die Stablänge, sondern der senkrechte Abstand zählt.', 'M = F · l_perp → nur l_perp relevant.'],
               },
               {
                 type: 'true-false',
                 statement: 'Wenn die Wirkungslinie durch den Drehpunkt geht, ist das Moment null.',
                 correct: true,
                 explanation: 'Dann ist der senkrechte Hebelarm 0.',
-                hints: ['M = F·l_perp.'],
+                hints: ['M = F · l_perp — l_perp ist der Senkrecht-Abstand.', 'Wenn Wirkungslinie durch Drehpunkt geht, ist l_perp = 0.', 'M = 0 bei l_perp = 0.'],
               },
             ],
           },
@@ -263,7 +263,7 @@ $$M_\text{max} = R_A \cdot a = F \cdot \frac{a(L-a)}{L}$$
                 tolerance: 0.5,
                 unit: 'N',
                 explanation: 'R_A = F·(L−a)/L = 600·3/4 = 450 N. Kontrolle: R_A + R_B = 600 N ✓.',
-                hints: ['ΣM um B: R_A·L = F·(L−a)', 'R_A = F·(L−a)/L'],
+                hints: ['ΣM um B: R_A·L = F·(L−a)', 'R_A = F·(L−a)/L', 'R_A = 600·3/4 = 450 N'],
                 visualization: {
                   id: 'interactive-beam',
                   params: {},
@@ -278,7 +278,7 @@ $$M_\text{max} = R_A \cdot a = F \cdot \frac{a(L-a)}{L}$$
                 tolerance: 1,
                 unit: 'Nm',
                 explanation: 'M_max = R_A·a = 450·1 = 450 Nm. Liegt genau unter der Last.',
-                hints: ['M_max = R_A · a', 'Max. Moment unter der Last.'],
+                hints: ['M_max liegt unter der Einzellast.', 'M_max = R_A · a', 'M_max = 450 · 1 = 450 Nm'],
                 visualization: {
                   id: 'interactive-beam',
                   params: {},
@@ -292,15 +292,15 @@ $$M_\text{max} = R_A \cdot a = F \cdot \frac{a(L-a)}{L}$$
                 options: ['Unter der Last', 'Am Festlager', 'Am Loslager', 'In der Balkenmitte'],
                 correctIndex: 0,
                 explanation: 'Die M(x)-Linie ist dreieckförmig mit Maximum direkt unter der Einzellast.',
-                hints: ['Wo hat die M-Linie ihren Knick?'],
+                hints: ['Die M-Linie ist dreieckförmig bei Einzellast.', 'Das Maximum liegt genau unter der Lastangriffsstelle.', 'Wo die Querkraft ihr Vorzeichen wechselt, ist M maximal.'],
                 visualization: {
                   id: 'interactive-beam',
                   params: {},
                   alt: 'Einfeldträger mit Biegemomentenverlauf.',
                 },
               },
-              { type: 'true-false', statement: 'Der Sprung in Q(x) am Lastangriff hat den Betrag F.', correct: true, explanation: 'Q springt um −F von R_A auf −R_B. Daraus ergibt sich die typische „Treppenstufe" im Querkraftverlauf.', hints: ['|ΔQ| = |F|'] },
-              { type: 'multiple-choice', question: '[PRÜFUNG] Warum interessiert uns M_max in der Festigkeitslehre besonders?', options: ['Weil dort die maximale Biegespannung auftritt', 'Weil dort N am größten ist', 'Weil dort Q am größten ist', 'Zufall'], correctIndex: 0, explanation: 'Die Biegespannung ist σ_b = M/W mit W = Widerstandsmoment. M_max liefert die größte Spannung und damit die gefährliche Stelle.', hints: ['σ_b = M/W'] },
+              { type: 'true-false', statement: 'Der Sprung in Q(x) am Lastangriff hat den Betrag F.', correct: true, explanation: 'Q springt um −F von R_A auf −R_B. Daraus ergibt sich die typische „Treppenstufe" im Querkraftverlauf.', hints: ['Querkraft Q(x) springt an der Lastangriffsstelle.', 'Der Sprung hat den Betrag der Einzellast F.', '|ΔQ| = |F| — Vorzeichen: von +R_A auf −R_B.'] },
+              { type: 'multiple-choice', question: '[PRÜFUNG] Warum interessiert uns M_max in der Festigkeitslehre besonders?', options: ['Weil dort die maximale Biegespannung auftritt', 'Weil dort N am größten ist', 'Weil dort Q am größten ist', 'Zufall'], correctIndex: 0, explanation: 'Die Biegespannung ist σ_b = M/W mit W = Widerstandsmoment. M_max liefert die größte Spannung und damit die gefährliche Stelle.', hints: ['Biegespannung: σ_b = M/W mit W = Widerstandsmoment.', 'M_max liefert die größte Biegespannung.', 'Die gefährliche Stelle ist dort, wo M am größten ist.'] },
             ],
           },
           {
@@ -319,7 +319,7 @@ $\mu$ ist der Reibwert (dimensionslos), $F_N$ die Normalkraft. Man unterscheidet
 **Vorgehen bei geneigter Ebene:** Zuerst $F_N = m g \cos\alpha$ bestimmen, dann $F_{R,\text{max}} = \mu_0 F_N$ mit Hangabtriebskraft $F_H = m g \sin\alpha$ vergleichen.`,
             exercises: [
               { type: 'number-input', question: 'Ein Block (m = 10 kg) liegt auf einer horizontalen Fläche (μ = 0,3, g = 9,81 m/s²). Reibkraft beim Gleiten?', correctValue: 29.43, tolerance: 0.1, unit: 'N', explanation: 'F_N = m·g = 10·9,81 = 98,1 N. F_R = μ·F_N = 0,3·98,1 = 29,43 N.', hints: ['Normalkraft auf ebener Fläche: F_N = m·g', 'F_R = μ·F_N', 'μ·F_N einsetzen'] },
-              { type: 'true-false', statement: 'Der Haftreibwert ist in der Regel größer als der Gleitreibwert.', correct: true, explanation: 'μ_0 > μ: Zum Losreißen braucht man mehr Kraft als zum Gleiterhalten.', hints: ['Anlaufkraft > Gleithaltekraft.'] },
+              { type: 'true-false', statement: 'Der Haftreibwert ist in der Regel größer als der Gleitreibwert.', correct: true, explanation: 'μ_0 > μ: Zum Losreißen braucht man mehr Kraft als zum Gleiterhalten.', hints: ['Haftreibwert μ_0 > Gleitreibwert μ.', 'Zum Losreißen braucht man mehr Kraft als zum Gleiterhalten.', 'Anlaufkraft > Gleithaltekraft.'] },
               { type: 'multiple-choice', question: '[PRÜFUNG] Block (m = 5 kg) auf geneigter Ebene α = 30°, Gleitreibwert μ = 0,3, g = 9,81. Reibkraft beim Gleiten in N (gerundet auf ganze Zahlen)?', options: ['13 N', '15 N', '20 N', '25 N'], correctIndex: 0, explanation: 'F_N = m·g·cos30° = 5·9,81·0,866 = 42,47 N. F_R = 0,3·42,47 ≈ 12,7 N ≈ 13 N.', hints: ['F_N = m·g·cosα auf geneigter Ebene', 'F_R = μ · F_N', 'cos30° ≈ 0,866'] },
             ],
           },
@@ -339,7 +339,7 @@ $$x_S = \frac{\sum A_i \cdot x_{S,i}}{\sum A_i}$$
 **Loch = negative Fläche:** Ein Ausschnitt wird als negatives Teilgebiet subtrahiert.`,
             exercises: [
               { type: 'number-input', question: 'Zwei Massen: m1 = 3 kg bei x1 = 2 m, m2 = 1 kg bei x2 = 6 m. Schwerpunkt x_S?', correctValue: 3, tolerance: 0.01, unit: 'm', explanation: 'x_S = (3·2 + 1·6)/(3+1) = (6+6)/4 = 12/4 = 3 m.', hints: ['x_S = Σ(m·x)/Σm', 'Zähler: 3·2+1·6=12', 'Nenner: 4'] },
-              { type: 'true-false', statement: 'Ein symmetrischer Körper hat seinen Schwerpunkt auf der Symmetrieachse.', correct: true, explanation: 'Symmetrie bedeutet, dass sich die Beiträge beider Hälften aufheben.', hints: ['Gleichmäßige Massenverteilung auf beiden Seiten.'] },
+              { type: 'true-false', statement: 'Ein symmetrischer Körper hat seinen Schwerpunkt auf der Symmetrieachse.', correct: true, explanation: 'Symmetrie bedeutet, dass sich die Beiträge beider Hälften aufheben.', hints: ['Symmetrie bedeutet: Massenverteilung auf beiden Seiten ist gleich.', 'Beiträge links und rechts heben sich in der Schwerpunktformel auf.', 'Gleichmäßige Massenverteilung auf beiden Seiten.'] },
               { type: 'number-input', question: '[PRÜFUNG] L-Profil aus zwei Rechtecken: R1 (20×80 mm, x_{S1}=10 mm) und R2 (60×20 mm, x_{S2}=50 mm). Schwerpunkt x_S des L-Profils?', correctValue: 27.1, tolerance: 0.5, unit: 'mm', explanation: 'A1 = 20·80 = 1600 mm², A2 = 60·20 = 1200 mm². x_S = (A1·x1 + A2·x2)/(A1+A2) = (1600·10 + 1200·50)/2800 = 76000/2800 ≈ 27,1 mm.', hints: ['x_S = Σ(A_i·x_{S,i})/ΣA_i', 'Flächen berechnen: A = b·h', 'Schwerpunkte der Teilrechtecke einsetzen'] },
             ],
           },
@@ -363,9 +363,9 @@ Masse ist eine Eigenschaft des Körpers. Gewichtskraft ist die Kraft im Schweref
               title: 'Feder-Masse-Dämpfer System', visualizationId: 'spring-mass-damper', params: {},
             },
             exercises: [
-              { type: 'number-input', question: 'Welche Kraft beschleunigt 4 kg mit $3\\,m/s^2$?', correctValue: 12, tolerance: 0.01, unit: 'N', explanation: 'F = m·a = 4·3 = 12 N.', hints: ['Nutze F = m·a.'] },
-              { type: 'multiple-choice', question: 'Gewichtskraft wird berechnet mit:', options: ['m/a', 'm·g', 'g/m', 'm+g'], correctIndex: 1, explanation: 'F_G = m·g.', hints: ['$g \\approx 9{,}81\\,m/s^2$.'] },
-              { type: 'true-false', statement: 'Bei doppelter Masse und gleicher Beschleunigung ist die nötige Kraft doppelt so groß.', correct: true, explanation: 'F ist proportional zu m.', hints: ['F = m·a.'] },
+              { type: 'number-input', question: 'Welche Kraft beschleunigt 4 kg mit $3\\,m/s^2$?', correctValue: 12, tolerance: 0.01, unit: 'N', explanation: 'F = m·a = 4·3 = 12 N.', hints: ['Grundgleichung: F = m · a', 'F in Newton, m in kg, a in m/s²', '4 · 3 = 12 N'] },
+              { type: 'multiple-choice', question: 'Gewichtskraft wird berechnet mit:', options: ['m/a', 'm·g', 'g/m', 'm+g'], correctIndex: 1, explanation: 'F_G = m·g.', hints: ['Gewichtskraft: F_G = m · g', 'g ≈ 9,81 m/s² (Erdschwerebeschleunigung)', 'F_G = m · 9,81'] },
+              { type: 'true-false', statement: 'Bei doppelter Masse und gleicher Beschleunigung ist die nötige Kraft doppelt so groß.', correct: true, explanation: 'F ist proportional zu m.', hints: ['F = m · a — Kraft proportional zu Masse und Beschleunigung.', 'Doppelte Masse bei gleicher Beschleunigung → doppelte Kraft.', 'F ∝ m gilt direkt aus F = m·a.'] },
             ],
           },
           {
@@ -378,9 +378,9 @@ $$W = F \cdot s \cdot \cos(\alpha)$$
 
 Ist Kraft und Weg gleichgerichtet, gilt $W = F \cdot s$.`,
             exercises: [
-              { type: 'number-input', question: 'Eine Kraft von 50 N wirkt 3 m in Wegrichtung. Arbeit?', correctValue: 150, tolerance: 0.01, unit: 'J', explanation: 'W = F·s = 50·3 = 150 J.', hints: ['1 J = 1 Nm.'] },
-              { type: 'multiple-choice', question: 'Wenn Kraft senkrecht zum Weg steht, ist die Arbeit:', options: ['maximal', 'negativ maximal', 'null', 'immer F·s'], correctIndex: 2, explanation: 'cos(90°)=0, also W=0.', hints: ['Skalarprodukt von senkrechten Vektoren ist 0.'] },
-              { type: 'true-false', statement: 'Potentielle Energie im Schwerefeld ist E = m·g·h.', correct: true, explanation: 'Diese Formel gilt nahe der Erdoberfläche bei konstanter Fallbeschleunigung.', hints: ['Höhe h zählt relativ zum Nullniveau.'] },
+              { type: 'number-input', question: 'Eine Kraft von 50 N wirkt 3 m in Wegrichtung. Arbeit?', correctValue: 150, tolerance: 0.01, unit: 'J', explanation: 'W = F·s = 50·3 = 150 J.', hints: ['Mechanische Arbeit: W = F · s (bei gleichgerichteter Kraft)', '1 Joule = 1 Newton · 1 Meter', '50 · 3 = 150 J'] },
+              { type: 'multiple-choice', question: 'Wenn Kraft senkrecht zum Weg steht, ist die Arbeit:', options: ['maximal', 'negativ maximal', 'null', 'immer F·s'], correctIndex: 2, explanation: 'cos(90°)=0, also W=0.', hints: ['W = F · s · cos(α) — cos(90°) = 0', 'Senkrechte Kraft leistet keine Arbeit am Weg.', 'Skalarprodukt F⃗ · s⃗ = 0 wenn 90° Winkel.'] },
+              { type: 'true-false', statement: 'Potentielle Energie im Schwerefeld ist E = m·g·h.', correct: true, explanation: 'Diese Formel gilt nahe der Erdoberfläche bei konstanter Fallbeschleunigung.', hints: ['Potentielle Energie: E_pot = m · g · h', 'h ist die Höhe über dem Bezugsniveau.', 'E_pot steigt linear mit h.'] },
             ],
           },
           {
@@ -399,8 +399,8 @@ $$\omega = \frac{2\pi}{T}, \qquad v = r \cdot \omega, \qquad a_z = \frac{v^2}{r}
 
 $a_z$ ist die **Zentripetalbeschleunigung** — sie zeigt immer zur Kreismitte.`,
             exercises: [
-              { type: 'number-input', question: 'Startgeschwindigkeit v0 = 0, Beschleunigung a = 2 m/s². Geschwindigkeit nach t = 5 s?', correctValue: 10, tolerance: 0.01, unit: 'm/s', explanation: 'v = v_0 + a·t = 0 + 2·5 = 10 m/s.', hints: ['v = v_0 + a·t', 'v_0 = 0 hier'] },
-              { type: 'number-input', question: 'Körper startet mit v0 = 3 m/s, a = 1,5 m/s². Zurückgelegter Weg nach t = 4 s?', correctValue: 24, tolerance: 0.1, unit: 'm', explanation: 's = v_0·t + ½·a·t² = 3·4 + ½·1,5·16 = 12 + 12 = 24 m.', hints: ['s = v_0·t + ½·a·t²', '½·1,5·4² = 12'] },
+              { type: 'number-input', question: 'Startgeschwindigkeit v0 = 0, Beschleunigung a = 2 m/s². Geschwindigkeit nach t = 5 s?', correctValue: 10, tolerance: 0.01, unit: 'm/s', explanation: 'v = v_0 + a·t = 0 + 2·5 = 10 m/s.', hints: ['v = v_0 + a·t', 'v_0 = 0 (startet aus dem Stand)', '0 + 2·5 = 10 m/s'] },
+              { type: 'number-input', question: 'Körper startet mit v0 = 3 m/s, a = 1,5 m/s². Zurückgelegter Weg nach t = 4 s?', correctValue: 24, tolerance: 0.1, unit: 'm', explanation: 's = v_0·t + ½·a·t² = 3·4 + ½·1,5·16 = 12 + 12 = 24 m.', hints: ['s = v_0·t + ½·a·t²', 'v_0·t = 3·4 = 12 m', '½·1,5·16 = 12 m → s = 24 m'] },
               { type: 'number-input', question: '[PRÜFUNG] Kreis: r = 0,5 m, n = 600 1/min. Bahngeschwindigkeit v? (Runde auf eine Dezimalstelle)', correctValue: 31.4, tolerance: 0.5, unit: 'm/s', explanation: 'ω = 2π·n/60 = 2π·600/60 = 20π = 62,83 rad/s. v = r·ω = 0,5·62,83 ≈ 31,4 m/s.', hints: ['ω = 2πn/60 (n in 1/min)', 'v = r·ω', '20π ≈ 62,83 rad/s'] },
             ],
           },
@@ -423,9 +423,9 @@ $$T = \frac{2\pi}{\omega_0}, \qquad f_0 = \frac{1}{T}$$
               title: 'Feder-Masse-Dämpfer System', visualizationId: 'spring-mass-damper', params: {},
             },
             exercises: [
-              { type: 'number-input', question: 'Feder-Masse-System: c = 400 N/m, m = 1 kg. Eigenkreisfrequenz ω₀?', correctValue: 20, tolerance: 0.01, unit: 'rad/s', explanation: 'ω₀ = √(c/m) = √(400/1) = √400 = 20 rad/s.', hints: ['ω₀ = √(c/m)', '√400 = 20'] },
+              { type: 'number-input', question: 'Feder-Masse-System: c = 400 N/m, m = 1 kg. Eigenkreisfrequenz ω₀?', correctValue: 20, tolerance: 0.01, unit: 'rad/s', explanation: 'ω₀ = √(c/m) = √(400/1) = √400 = 20 rad/s.', hints: ['ω₀ = √(c/m)', 'c/m = 400/1 = 400', '√400 = 20 rad/s'] },
               { type: 'number-input', question: 'Masse m = 4 kg, Federsteifigkeit c = 100 N/m. Schwingungsdauer T?', correctValue: 1.257, tolerance: 0.01, unit: 's', explanation: 'ω₀ = √(100/4) = 5 rad/s. T = 2π/ω₀ = 2π/5 ≈ 1,257 s.', hints: ['ω₀ = √(c/m) = 5 rad/s', 'T = 2π/ω₀', '2π/5 ≈ 1,257'] },
-              { type: 'multiple-choice', question: '[PRÜFUNG] Resonanz tritt auf, wenn die Erregerfrequenz Ω ...', options: ['gleich der Eigenfrequenz ω₀ ist', 'doppelt so groß wie ω₀ ist', 'null ist', 'größer als 100 rad/s ist'], correctIndex: 0, explanation: 'Resonanz tritt bei Ω = ω₀ auf. Bei ungedämpften Systemen wächst die Amplitude dabei theoretisch unbegrenzt an.', hints: ['Resonanz: Erregerfrequenz = Eigenfrequenz', 'ω₀ = √(c/m)'] },
+              { type: 'multiple-choice', question: '[PRÜFUNG] Resonanz tritt auf, wenn die Erregerfrequenz Ω ...', options: ['gleich der Eigenfrequenz ω₀ ist', 'doppelt so groß wie ω₀ ist', 'null ist', 'größer als 100 rad/s ist'], correctIndex: 0, explanation: 'Resonanz tritt bei Ω = ω₀ auf. Bei ungedämpften Systemen wächst die Amplitude dabei theoretisch unbegrenzt an.', hints: ['Resonanz tritt auf wenn Erregerfrequenz Ω = Eigenfrequenz ω₀.', 'ω₀ = √(c/m) ist die Eigenkreisfrequenz.', 'Bei ungedämpftem System → Amplitude → ∞'] },
             ],
           },
           {
@@ -448,8 +448,8 @@ $J$ ist das **Massenträgheitsmoment** (Einheit: kg·m²), $\alpha = \dot\omega$
 
 **Steinerscher Anteil:** $J_A = J_S + m \cdot d^2$ (Parallelverschiebung der Achse um Abstand $d$).`,
             exercises: [
-              { type: 'number-input', question: 'Vollzylinder: m = 2 kg, R = 0,1 m. Massenträgheitsmoment J?', correctValue: 0.01, tolerance: 0.001, unit: 'kg·m²', explanation: 'J = ½·m·R² = ½·2·0,1² = ½·2·0,01 = 0,01 kg·m².', hints: ['J_Zylinder = ½·m·R²', 'R² = 0,01'] },
-              { type: 'number-input', question: 'Ein Motor erzeugt M = 50 Nm. Trägheitsmoment J = 0,5 kg·m². Winkelbeschleunigung α?', correctValue: 100, tolerance: 0.1, unit: 'rad/s²', explanation: 'α = M/J = 50/0,5 = 100 rad/s².', hints: ['M = J·α → α = M/J', 'α = 50/0,5'] },
+              { type: 'number-input', question: 'Vollzylinder: m = 2 kg, R = 0,1 m. Massenträgheitsmoment J?', correctValue: 0.01, tolerance: 0.001, unit: 'kg·m²', explanation: 'J = ½·m·R² = ½·2·0,1² = ½·2·0,01 = 0,01 kg·m².', hints: ['J_Vollzylinder = ½·m·R²', 'R² = 0,1² = 0,01 m²', '½·2·0,01 = 0,01 kg·m²'] },
+              { type: 'number-input', question: 'Ein Motor erzeugt M = 50 Nm. Trägheitsmoment J = 0,5 kg·m². Winkelbeschleunigung α?', correctValue: 100, tolerance: 0.1, unit: 'rad/s²', explanation: 'α = M/J = 50/0,5 = 100 rad/s².', hints: ['Drallsatz: M = J·α → α = M/J', 'J = 0,5 kg·m², M = 50 Nm', '50/0,5 = 100 rad/s²'] },
               { type: 'number-input', question: '[PRÜFUNG] Stab (m = 6 kg, L = 1 m). J um Schwerpunkt = mL²/12. Jetzt Achse am Ende: J_Ende per Steiner? (J_Ende = J_S + m·d²)', correctValue: 2, tolerance: 0.01, unit: 'kg·m²', explanation: 'J_S = 6·1²/12 = 0,5 kg·m². d = L/2 = 0,5 m. J_Ende = 0,5 + 6·0,5² = 0,5 + 1,5 = 2 kg·m².', hints: ['J_S = mL²/12', 'Steiner: J_Ende = J_S + m·d²', 'd = L/2 (Abstand Schwerpunkt-Achse)'] },
             ],
           },
@@ -482,10 +482,10 @@ $J$ ist das **Massenträgheitsmoment** (Einheit: kg·m²), $\alpha = \dot\omega$
               title: 'Lagertypen im Überblick', visualizationId: 'lager-illustration', params: {},
             },
             exercises: [
-              { type: 'number-input', question: '[PRÜFUNG] Balken (4 m), Festlager links, Loslager rechts. Einzellast F = 600 N bei x = 1 m vom linken Lager. Berechne R_B (rechtes Lager).', correctValue: 150, tolerance: 1, unit: 'N', explanation: 'ΣM_A = 0: F·1 = R_B·4 → R_B = 600·1/4 = 150 N.', hints: ['Momentengleichung um Punkt A aufstellen.', 'F·a = R_B·L'] },
+              { type: 'number-input', question: '[PRÜFUNG] Balken (4 m), Festlager links, Loslager rechts. Einzellast F = 600 N bei x = 1 m vom linken Lager. Berechne R_B (rechtes Lager).', correctValue: 150, tolerance: 1, unit: 'N', explanation: 'ΣM_A = 0: F·1 = R_B·4 → R_B = 600·1/4 = 150 N.', hints: ['Momentengleichung um Punkt A aufstellen: ΣM_A = 0', 'F·a = R_B·L', 'R_B = F·a/L = 600·1/4 = 150 N'] },
               { type: 'number-input', question: '[PRÜFUNG] Zwei Kräfte $F_1$ = 5 kN (30° zur Horizontalen) und $F_2$ = 3 kN (vertikal). Betrag der Resultierenden? Runde auf eine Dezimalstelle.', correctValue: 7.0, tolerance: 0.1, unit: 'kN', explanation: 'Zerlege zuerst $F_1$: Rx = 5·cos30° = 4,33 kN und Ry = 5·sin30° + 3 = 5,5 kN. Dann R = $\\sqrt{4{,}33^2 + 5{,}5^2}$ = $\\sqrt{49{,}0}$ ≈ 7,0 kN. Typischer Fehler: die vertikale 3-kN-Kraft nicht zu Ry addieren.', hints: ['Zerlege $F_1$ in horizontale und vertikale Komponente.', 'Addiere $F_2$ zur vertikalen Komponente.', '$R = \\sqrt{R_x^2 + R_y^2}$.'] },
-              { type: 'multiple-choice', question: '[PRÜFUNG] Ein Loslager kann aufnehmen:', options: ['Kräfte in alle Richtungen + Moment', 'Nur eine Kraft senkrecht zur Auflagerfläche', 'Kräfte in x und y, aber kein Moment', 'Nur ein Moment'], correctIndex: 1, explanation: 'Ein Loslager (Gleitlager) nimmt nur eine Kraft senkrecht zur Gleitfläche auf.', hints: ['Das Loslager kann sich in einer Richtung frei bewegen.'] },
-              { type: 'number-input', question: '[PRÜFUNG] Kragbalken (Einspannung links), Länge 2 m, Einzellast F = 500 N am freien Ende. Einspannmoment?', correctValue: 1000, tolerance: 1, unit: 'Nm', explanation: 'M = F·L = 500·2 = 1000 Nm.', hints: ['Bei einem Kragbalken: M_Einspannung = F·L'] },
+              { type: 'multiple-choice', question: '[PRÜFUNG] Ein Loslager kann aufnehmen:', options: ['Kräfte in alle Richtungen + Moment', 'Nur eine Kraft senkrecht zur Auflagerfläche', 'Kräfte in x und y, aber kein Moment', 'Nur ein Moment'], correctIndex: 1, explanation: 'Ein Loslager (Gleitlager) nimmt nur eine Kraft senkrecht zur Gleitfläche auf.', hints: ['Loslager: eine Reaktionskraft, senkrecht zur Gleitfläche.', 'Festlager: zwei Reaktionskräfte (x und y).', 'Einspannung: Kraft + Moment = 3 Reaktionen.'] },
+              { type: 'number-input', question: '[PRÜFUNG] Kragbalken (Einspannung links), Länge 2 m, Einzellast F = 500 N am freien Ende. Einspannmoment?', correctValue: 1000, tolerance: 1, unit: 'Nm', explanation: 'M = F·L = 500·2 = 1000 Nm.', hints: ['Kragbalken: Einspannung nimmt Moment auf.', 'Gleichgewicht: M_E = F · L (Momentengleichung um Einspannung).', 'M_E = 500 · 2 = 1000 Nm'] },
             ],
           },
           {
@@ -504,9 +504,9 @@ $J$ ist das **Massenträgheitsmoment** (Einheit: kg·m²), $\alpha = \dot\omega$
               title: 'Feder-Masse-Dämpfer', visualizationId: 'spring-mass-damper', params: {},
             },
             exercises: [
-              { type: 'number-input', question: '[PRÜFUNG] Ein 2 kg Block rutscht reibungsfrei eine 3 m hohe Rampe hinunter. Geschwindigkeit unten? (g = 9,81)', correctValue: 7.67, tolerance: 0.1, unit: 'm/s', explanation: '$\\frac{1}{2}mv^2$ = mgh → $v = \\sqrt{2gh}$ = $\\sqrt{2 \\cdot 9{,}81 \\cdot 3}$ = $\\sqrt{58{,}86}$ ≈ 7,67 m/s.', hints: ['Energieerhaltung: E_pot → E_kin', '$v = \\sqrt{2gh}$'] },
-              { type: 'number-input', question: '[PRÜFUNG] Ein 5 kg Block wird mit μ = 0,3 auf ebenem Boden mit F = 40 N horizontal gezogen. Beschleunigung?', correctValue: 5.06, tolerance: 0.1, unit: 'm/s²', explanation: 'F_R = μ·m·g = 0,3·5·9,81 = 14,72 N. a = (F - F_R)/m = (40 - 14,72)/5 = 5,06 $m/s^2$.', hints: ['Reibkraft = μ·F_N = μ·m·g', 'F_netto = F - F_Reibung'] },
-              { type: 'number-input', question: '[PRÜFUNG] Elastischer Stoß: Ball 1 (m=2kg, v=3m/s) trifft ruhenden Ball 2 (m=2kg). Geschwindigkeit von Ball 1 nach Stoß?', correctValue: 0, tolerance: 0.01, unit: 'm/s', explanation: 'Bei elastischem Stoß gleicher Massen: Ball 1 steht still, Ball 2 übernimmt die gesamte Geschwindigkeit.', hints: ['Gleiche Massen → vollständiger Geschwindigkeitstausch'] },
+              { type: 'number-input', question: '[PRÜFUNG] Ein 2 kg Block rutscht reibungsfrei eine 3 m hohe Rampe hinunter. Geschwindigkeit unten? (g = 9,81)', correctValue: 7.67, tolerance: 0.1, unit: 'm/s', explanation: '$\\frac{1}{2}mv^2$ = mgh → $v = \\sqrt{2gh}$ = $\\sqrt{2 \\cdot 9{,}81 \\cdot 3}$ = $\\sqrt{58{,}86}$ ≈ 7,67 m/s.', hints: ['Energieerhaltung: E_pot → E_kin (reibungsfrei)', 'mgh = ½mv² → v = √(2gh)', '√(2·9,81·3) = √58,86 ≈ 7,67 m/s'] },
+              { type: 'number-input', question: '[PRÜFUNG] Ein 5 kg Block wird mit μ = 0,3 auf ebenem Boden mit F = 40 N horizontal gezogen. Beschleunigung?', correctValue: 5.06, tolerance: 0.1, unit: 'm/s²', explanation: 'F_R = μ·m·g = 0,3·5·9,81 = 14,72 N. a = (F - F_R)/m = (40 - 14,72)/5 = 5,06 $m/s^2$.', hints: ['Reibkraft: F_R = μ·F_N = μ·m·g', 'Nettokraft: F_netto = F − F_R', 'a = F_netto / m'] },
+              { type: 'number-input', question: '[PRÜFUNG] Elastischer Stoß: Ball 1 (m=2kg, v=3m/s) trifft ruhenden Ball 2 (m=2kg). Geschwindigkeit von Ball 1 nach Stoß?', correctValue: 0, tolerance: 0.01, unit: 'm/s', explanation: 'Bei elastischem Stoß gleicher Massen: Ball 1 steht still, Ball 2 übernimmt die gesamte Geschwindigkeit.', hints: ['Elastischer Stoß gleicher Massen: Geschwindigkeiten tauschen.', 'Ball 1 übergibt seine Geschwindigkeit komplett an Ball 2.', 'v₁_nach = 0, v₂_nach = v₁_vor'] },
             ],
           },
           {
@@ -571,9 +571,9 @@ $$\sigma = \frac{F}{A}$$
               title: 'Spannungs-Dehnungs-Diagramm', visualizationId: 'stress-strain', params: {},
             },
             exercises: [
-              { type: 'number-input', question: 'F = 1000 N, A = 100 $mm^2$. Spannung in $N/mm^2$?', correctValue: 10, tolerance: 0.01, unit: 'N/mm²', explanation: 'σ = F/A = 1000/100 = 10 $N/mm^2$ = 10 MPa.', hints: ['$N/mm^2$ entspricht MPa.'] },
-              { type: 'multiple-choice', question: 'Welche Einheit passt zu Spannung?', options: ['N', 'Nm', 'Pa', '$m/s^2$'], correctIndex: 2, explanation: 'Spannung ist Kraft pro Fläche, also $N/m^2$ = Pa.', hints: ['Druck und Spannung haben dieselbe SI-Einheit.'] },
-              { type: 'true-false', statement: 'Bei gleicher Kraft sinkt die Spannung, wenn die Fläche größer wird.', correct: true, explanation: 'σ = F/A; größere Fläche bedeutet kleinere Spannung.', hints: ['Fläche steht im Nenner.'] },
+              { type: 'number-input', question: 'F = 1000 N, A = 100 $mm^2$. Spannung in $N/mm^2$?', correctValue: 10, tolerance: 0.01, unit: 'N/mm²', explanation: 'σ = F/A = 1000/100 = 10 $N/mm^2$ = 10 MPa.', hints: ['σ = F/A', 'Einheit: N/mm² = MPa', '1000/100 = 10'] },
+              { type: 'multiple-choice', question: 'Welche Einheit passt zu Spannung?', options: ['N', 'Nm', 'Pa', '$m/s^2$'], correctIndex: 2, explanation: 'Spannung ist Kraft pro Fläche, also $N/m^2$ = Pa.', hints: ['Spannung = Kraft pro Fläche: σ = F/A', 'SI-Einheit: N/m² = Pa', 'In der Praxis: N/mm² = MPa'] },
+              { type: 'true-false', statement: 'Bei gleicher Kraft sinkt die Spannung, wenn die Fläche größer wird.', correct: true, explanation: 'σ = F/A; größere Fläche bedeutet kleinere Spannung.', hints: ['σ = F/A — A im Nenner.', 'Größere Fläche → kleinere Spannung bei gleicher Kraft.', 'σ ∝ 1/A'] },
             ],
           },
           {
@@ -587,9 +587,9 @@ $$\sigma = E \cdot \varepsilon$$
 Der E-Modul beschreibt die Steifigkeit des Materials. Stahl hat ungefähr $E = 210000$ MPa.`,
             visualization: { title: 'Mohrscher Spannungskreis', visualizationId: 'mohr-circle', params: {} },
             exercises: [
-              { type: 'number-input', question: 'Im elastischen Bereich gilt E = 200000 MPa und ε = 0,001. Berechne die Spannung σ.', correctValue: 200, tolerance: 0.01, unit: 'MPa', explanation: 'σ = E·ε = 200000·0,001 = 200 MPa.', hints: ['Dehnung ist dimensionslos.'] },
-              { type: 'multiple-choice', question: 'Ein größerer E-Modul bedeutet:', options: ['geringere Steifigkeit', 'höhere Steifigkeit', 'immer höhere Dichte', 'keine elastische Verformung'], correctIndex: 1, explanation: 'Je größer E, desto mehr Spannung ist für dieselbe Dehnung nötig.', hints: ['E ist die Steigung im σ-ε-Diagramm.'] },
-              { type: 'true-false', statement: 'Hooke gilt uneingeschränkt bis zum Bruch.', correct: false, explanation: 'Hooke gilt nur im linear-elastischen Bereich.', hints: ['Nach der Streckgrenze wird das Verhalten nichtlinear/plastisch.'] },
+              { type: 'number-input', question: 'Im elastischen Bereich gilt E = 200000 MPa und ε = 0,001. Berechne die Spannung σ.', correctValue: 200, tolerance: 0.01, unit: 'MPa', explanation: 'σ = E·ε = 200000·0,001 = 200 MPa.', hints: ['Hookesches Gesetz: σ = E · ε', 'ε ist dimensionslos (Längenänderung / Ausgangslänge).', '200000 · 0,001 = 200 MPa'] },
+              { type: 'multiple-choice', question: 'Ein größerer E-Modul bedeutet:', options: ['geringere Steifigkeit', 'höhere Steifigkeit', 'immer höhere Dichte', 'keine elastische Verformung'], correctIndex: 1, explanation: 'Je größer E, desto mehr Spannung ist für dieselbe Dehnung nötig.', hints: ['E-Modul = Steigung im σ-ε-Diagramm im elastischen Bereich.', 'Größeres E → mehr Spannung für gleiche Dehnung.', 'E ↑ bedeutet: steiferes Material.'] },
+              { type: 'true-false', statement: 'Hooke gilt uneingeschränkt bis zum Bruch.', correct: false, explanation: 'Hooke gilt nur im linear-elastischen Bereich.', hints: ['Hooke gilt nur im linear-elastischen Bereich.', 'Ab der Streckgrenze Re beginnt plastische Verformung.', 'Hooke ≠ gültig bis zum Bruch!'] },
             ],
           },
           {
@@ -695,9 +695,9 @@ $$\sigma_b = \frac{M_b}{W_b}$$
 
 Das Widerstandsmoment $W_b$ hängt stark von der Querschnittsform ab.`,
             exercises: [
-              { type: 'number-input', question: 'Gegeben sind $M_b$ = 200 Nm und $W_b$ = 20 $cm^3$. Mit 1 Nm = 1000 Nmm und 1 $cm^3$ = 1000 $mm^3$: Berechne $\\sigma_b$.', correctValue: 10, tolerance: 0.01, unit: 'N/mm²', explanation: '200 Nm = 200000 Nmm, 20 $cm^3$ = 20000 $mm^3$, $\\sigma$ = 10 $N/mm^2$.', hints: ['Einheiten zuerst auf Nmm und $mm^3$ bringen.'] },
-              { type: 'multiple-choice', question: 'Biegespannung ist bei symmetrischem Balken maximal ...', options: ['in der neutralen Faser', 'an der Randfaser', 'immer in der Mitte', 'außerhalb des Balkens'], correctIndex: 1, explanation: 'Die Spannung steigt mit dem Abstand von der neutralen Faser und ist an der Randfaser maximal.', hints: ['σ = M·y/I.'] },
-              { type: 'true-false', statement: 'Das Widerstandsmoment hat Einfluss auf die Biegespannung.', correct: true, explanation: 'σ_b = M_b/W_b.', hints: ['W_b steht im Nenner.'] },
+              { type: 'number-input', question: 'Gegeben sind $M_b$ = 200 Nm und $W_b$ = 20 $cm^3$. Mit 1 Nm = 1000 Nmm und 1 $cm^3$ = 1000 $mm^3$: Berechne $\\sigma_b$.', correctValue: 10, tolerance: 0.01, unit: 'N/mm²', explanation: '200 Nm = 200000 Nmm, 20 $cm^3$ = 20000 $mm^3$, $\\sigma$ = 10 $N/mm^2$.', hints: ['σ_b = M_b / W_b', 'Einheiten angleichen: M in Nmm, W in mm³', '200000 Nmm / 20000 mm³ = 10 N/mm²'] },
+              { type: 'multiple-choice', question: 'Biegespannung ist bei symmetrischem Balken maximal ...', options: ['in der neutralen Faser', 'an der Randfaser', 'immer in der Mitte', 'außerhalb des Balkens'], correctIndex: 1, explanation: 'Die Spannung steigt mit dem Abstand von der neutralen Faser und ist an der Randfaser maximal.', hints: ['Biegespannung wächst linear mit Abstand y von Neutralfaser.', 'Maximum an der Randfaser (y = max).', 'σ_b = M·y/I → σ_max = M/W_b'] },
+              { type: 'true-false', statement: 'Das Widerstandsmoment hat Einfluss auf die Biegespannung.', correct: true, explanation: 'σ_b = M_b/W_b.', hints: ['σ_b = M_b / W_b', 'W_b im Nenner: größeres W → kleinere Spannung.', 'W_b beeinflusst maßgeblich die Biegespannung.'] },
             ],
           },
           {
@@ -710,9 +710,9 @@ $$\sigma_\text{vorh} \le \sigma_\text{zul} = \frac{R}{S}$$
 
 $R$ ist eine Materialkennzahl, $S$ die Sicherheitszahl.`,
             exercises: [
-              { type: 'number-input', question: 'Für eine Materialkennzahl R = 300 MPa und Sicherheitszahl S = 2: Berechne die zulässige Spannung.', correctValue: 150, tolerance: 0.01, unit: 'MPa', explanation: 'σ_zul = R/S = 300/2 = 150 MPa.', hints: ['Sicherheitszahl steht im Nenner.'] },
-              { type: 'true-false', statement: 'Der Nachweis ist erfüllt, wenn σ_vorh kleiner oder gleich σ_zul ist.', correct: true, explanation: 'Dann bleibt die vorhandene Beanspruchung unter der zulässigen Grenze.', hints: ['Vorhanden ≤ zulässig.'] },
-              { type: 'multiple-choice', question: 'Wenn S größer gewählt wird, wird σ_zul ...', options: ['größer', 'kleiner', 'unverändert', 'negativ'], correctIndex: 1, explanation: 'σ_zul = R/S; größere Sicherheit senkt die zulässige Spannung.', hints: ['S steht im Nenner.'] },
+              { type: 'number-input', question: 'Für eine Materialkennzahl R = 300 MPa und Sicherheitszahl S = 2: Berechne die zulässige Spannung.', correctValue: 150, tolerance: 0.01, unit: 'MPa', explanation: 'σ_zul = R/S = 300/2 = 150 MPa.', hints: ['σ_zul = R/S', 'S (Sicherheitszahl) steht im Nenner.', '300/2 = 150 MPa'] },
+              { type: 'true-false', statement: 'Der Nachweis ist erfüllt, wenn σ_vorh kleiner oder gleich σ_zul ist.', correct: true, explanation: 'Dann bleibt die vorhandene Beanspruchung unter der zulässigen Grenze.', hints: ['Nachweis: σ_vorh ≤ σ_zul', 'σ_zul = R/S ist die Grenze.', 'Wenn σ_vorh < σ_zul → Nachweis erfüllt.'] },
+              { type: 'multiple-choice', question: 'Wenn S größer gewählt wird, wird σ_zul ...', options: ['größer', 'kleiner', 'unverändert', 'negativ'], correctIndex: 1, explanation: 'σ_zul = R/S; größere Sicherheit senkt die zulässige Spannung.', hints: ['σ_zul = R/S', 'Größeres S → kleineres σ_zul (konservativer).', 'S im Nenner → σ_zul sinkt.'] },
             ],
           },
           {
@@ -834,10 +834,10 @@ $\sigma_W$ = Wechselfestigkeit, $R_m$ = Zugfestigkeit. Sicherheit $S > 1$ erford
               title: 'Mohrscher Spannungskreis', visualizationId: 'mohr-circle', params: {},
             },
             exercises: [
-              { type: 'number-input', question: '[PRÜFUNG] Rundstab d = 20 mm, Zugkraft F = 15 kN. Normalspannung σ in MPa?', correctValue: 47.75, tolerance: 0.5, unit: 'MPa', explanation: 'A = $\\pi \\cdot 20^2/4$ = 314,16 $mm^2$. σ = 15000/314,16 ≈ 47,7 MPa.', hints: ['$A = \\pi \\cdot d^2/4$', 'F in N umrechnen: 15 kN = 15000 N'] },
-              { type: 'number-input', question: '[PRÜFUNG] Rechteckbalken b = 40 mm, h = 80 mm. Biegemoment M = 800 Nm. Maximale Biegespannung?', correctValue: 18.75, tolerance: 0.2, unit: 'MPa', explanation: '$W = bh^2/6$ = $40 \\cdot 80^2/6$ = 42667 $mm^3$. σ = 800000/42667 ≈ 18,8 MPa.', hints: ['$W = bh^2/6$', 'M in Nmm: 800·1000 = 800000 Nmm'] },
+              { type: 'number-input', question: '[PRÜFUNG] Rundstab d = 20 mm, Zugkraft F = 15 kN. Normalspannung σ in MPa?', correctValue: 47.75, tolerance: 0.5, unit: 'MPa', explanation: 'A = $\\pi \\cdot 20^2/4$ = 314,16 $mm^2$. σ = 15000/314,16 ≈ 47,7 MPa.', hints: ['$A = \\pi \\cdot d^2/4$', 'F in N umrechnen: 15 kN = 15000 N', 'σ = F/A = 15000 / 314,16 ≈ 47,7 MPa'] },
+              { type: 'number-input', question: '[PRÜFUNG] Rechteckbalken b = 40 mm, h = 80 mm. Biegemoment M = 800 Nm. Maximale Biegespannung?', correctValue: 18.75, tolerance: 0.2, unit: 'MPa', explanation: '$W = bh^2/6$ = $40 \\cdot 80^2/6$ = 42667 $mm^3$. σ = 800000/42667 ≈ 18,8 MPa.', hints: ['$W = bh^2/6$', 'M in Nmm: 800·1000 = 800000 Nmm', 'σ = 800000 / 42667 ≈ 18,8 MPa'] },
               { type: 'number-input', question: '[PRÜFUNG] σ = 120 MPa und τ = 60 MPa wirken gleichzeitig. Berechne die Von-Mises-Vergleichsspannung auf eine Dezimalstelle.', correctValue: 158.7, tolerance: 1, unit: 'MPa', explanation: 'Für Normalspannung plus Schubspannung gilt $\\sigma_v = \\sqrt{\\sigma^2 + 3\\tau^2}$. Einsetzen: $\\sigma_v = \\sqrt{120^2 + 3 \\cdot 60^2}$ = $\\sqrt{14400 + 10800}$ = $\\sqrt{25200}$ ≈ 158,7 MPa. Typischer Fehler: den Faktor 3 vor $\\tau^2$ wegzulassen.', hints: ['Nutze $\\sigma_v = \\sqrt{\\sigma^2 + 3\\tau^2}$.', 'Berechne zuerst $120^2$ und $3 \\cdot 60^2$.', 'Ziehe am Ende die Wurzel aus 25200.'] },
-              { type: 'true-false', statement: '[PRÜFUNG] Die Streckgrenze Re von S235 beträgt mindestens 235 MPa.', correct: true, explanation: 'S235 bedeutet: Mindeststreckgrenze 235 MPa (daher der Name).', hints: ['Die Zahl im Werkstoffnamen gibt die Streckgrenze an.'] },
+              { type: 'true-false', statement: '[PRÜFUNG] Die Streckgrenze Re von S235 beträgt mindestens 235 MPa.', correct: true, explanation: 'S235 bedeutet: Mindeststreckgrenze 235 MPa (daher der Name).', hints: ['Die Zahl im Werkstoffnamen S235 = Mindeststreckgrenze 235 MPa.', 'Streckgrenze Re: ab hier beginnt plastische Verformung.', 'S235 bedeutet: Re_min = 235 MPa (bei Dicke ≤ 16 mm).'] },
             ],
           },
           {
@@ -930,9 +930,9 @@ Wichtig: Temperatur immer in Kelvin einsetzen. $T_K = T_{°C} + 273{,}15$.`,
               title: 'p-V-Diagramm', visualizationId: 'pv-diagram', params: {},
             },
             exercises: [
-              { type: 'number-input', question: '20 °C entsprechen gerundet wie viel Kelvin?', correctValue: 293.15, tolerance: 0.1, unit: 'K', explanation: 'T = 20 + 273,15 = 293,15 K.', hints: ['Addiere 273,15.'] },
-              { type: 'multiple-choice', question: 'Welche Größe ist absolute Temperatur?', options: ['°C', 'K', 'bar', 'Pa'], correctIndex: 1, explanation: 'Thermodynamische Rechnungen verwenden Kelvin.', hints: ['Kelvin beginnt beim absoluten Nullpunkt.'] },
-              { type: 'true-false', statement: 'Bei konstantem Volumen steigt der Druck eines idealen Gases mit der Temperatur.', correct: true, explanation: 'Aus pV=nRT folgt bei V,n konstant: p proportional T.', hints: ['T muss in Kelvin betrachtet werden.'] },
+              { type: 'number-input', question: '20 °C entsprechen gerundet wie viel Kelvin?', correctValue: 293.15, tolerance: 0.1, unit: 'K', explanation: 'T = 20 + 273,15 = 293,15 K.', hints: ['T[K] = T[°C] + 273,15', '20 + 273,15 = 293,15', 'Kelvin-Null = absoluter Nullpunkt'] },
+              { type: 'multiple-choice', question: 'Welche Größe ist absolute Temperatur?', options: ['°C', 'K', 'bar', 'Pa'], correctIndex: 1, explanation: 'Thermodynamische Rechnungen verwenden Kelvin.', hints: ['Thermodynamische Rechnungen erfordern Kelvin.', 'K startet beim absoluten Nullpunkt (0 K = −273,15 °C).', 'Celsius kann negativ werden, Kelvin nicht.'] },
+              { type: 'true-false', statement: 'Bei konstantem Volumen steigt der Druck eines idealen Gases mit der Temperatur.', correct: true, explanation: 'Aus pV=nRT folgt bei V,n konstant: p proportional T.', hints: ['pV = nRT mit T in Kelvin!', 'p ∝ T bei V = const → p steigt mit T.', 'Nur absolute Temperatur in Kelvin ist physikalisch sinnvoll.'] },
             ],
           },
           {
@@ -945,9 +945,9 @@ $$W = \int p\,dV$$
 
 Bei konstantem Druck vereinfacht sich das zu $W = p \cdot \Delta V$.`,
             exercises: [
-              { type: 'number-input', question: 'Bei konstantem Druck p = 200 kPa vergrößert sich das Volumen um ΔV = 0,01 $m^3$. Berechne die Volumenänderungsarbeit.', correctValue: 2000, tolerance: 1, unit: 'J', explanation: '200 kPa = 200000 Pa. W = p·ΔV = 200000·0,01 = 2000 J.', hints: ['Pa·$m^3$ = J.'] },
-              { type: 'multiple-choice', question: 'Im p-V-Diagramm entspricht Arbeit ...', options: ['der Steigung', 'der Fläche unter der Kurve', 'dem Achsenabschnitt', 'nur dem Enddruck'], correctIndex: 1, explanation: '$W = \\int p\\,dV$ ist eine Fläche.', hints: ['Integral über p nach V.'] },
-              { type: 'true-false', statement: 'Bei ΔV = 0 ist die Volumenänderungsarbeit null.', correct: true, explanation: 'Ohne Volumenänderung ist $\\int p\\,dV = 0$.', hints: ['Isochorer Prozess.'] },
+              { type: 'number-input', question: 'Bei konstantem Druck p = 200 kPa vergrößert sich das Volumen um ΔV = 0,01 $m^3$. Berechne die Volumenänderungsarbeit.', correctValue: 2000, tolerance: 1, unit: 'J', explanation: '200 kPa = 200000 Pa. W = p·ΔV = 200000·0,01 = 2000 J.', hints: ['W = p · ΔV bei konstantem Druck', '1 Pa · 1 m³ = 1 J', '200000 Pa · 0,01 m³ = 2000 J'] },
+              { type: 'multiple-choice', question: 'Im p-V-Diagramm entspricht Arbeit ...', options: ['der Steigung', 'der Fläche unter der Kurve', 'dem Achsenabschnitt', 'nur dem Enddruck'], correctIndex: 1, explanation: '$W = \\int p\\,dV$ ist eine Fläche.', hints: ['Volumenarbeit: W = ∫p dV', 'Im p-V-Diagramm = Fläche unter der Kurve.', 'Bei isobar: W = p · ΔV (Rechteckfläche)'] },
+              { type: 'true-false', statement: 'Bei ΔV = 0 ist die Volumenänderungsarbeit null.', correct: true, explanation: 'Ohne Volumenänderung ist $\\int p\\,dV = 0$.', hints: ['Isochor: V = konstant, also ΔV = 0.', 'W = ∫p dV = 0 wenn V nicht ändert.', 'Kein Volumenänderungsarbeit → ganze Wärme geht in ΔU.'] },
             ],
           },
         ],
@@ -967,9 +967,9 @@ $$\Delta U = Q - W$$
 
 $Q$ ist zugeführte Wärme, $W$ ist vom System abgegebene Arbeit.`,
             exercises: [
-              { type: 'number-input', question: 'Ein System erhält Q = 500 J Wärme und gibt W = 200 J Arbeit ab. Berechne ΔU nach dem ersten Hauptsatz.', correctValue: 300, tolerance: 0.01, unit: 'J', explanation: 'ΔU = Q − W = 500 − 200 = 300 J.', hints: ['Vorzeichenkonvention beachten.'] },
-              { type: 'multiple-choice', question: 'Der erste Hauptsatz beschreibt:', options: ['Impulserhaltung', 'Energieerhaltung', 'Massenerhaltung', 'Reibungsgesetz'], correctIndex: 1, explanation: 'Er bilanziert Wärme, Arbeit und innere Energie.', hints: ['ΔU = Q − W.'] },
-              { type: 'true-false', statement: 'Wenn ein System Arbeit abgibt und keine Wärme erhält, sinkt seine innere Energie.', correct: true, explanation: 'Q=0, W>0 → ΔU = −W.', hints: ['Setze in ΔU = Q − W ein.'] },
+              { type: 'number-input', question: 'Ein System erhält Q = 500 J Wärme und gibt W = 200 J Arbeit ab. Berechne ΔU nach dem ersten Hauptsatz.', correctValue: 300, tolerance: 0.01, unit: 'J', explanation: 'ΔU = Q − W = 500 − 200 = 300 J.', hints: ['Erster Hauptsatz: ΔU = Q − W', 'Q zugeführt (+), W vom System abgegeben (+)', '500 − 200 = 300 J'] },
+              { type: 'multiple-choice', question: 'Der erste Hauptsatz beschreibt:', options: ['Impulserhaltung', 'Energieerhaltung', 'Massenerhaltung', 'Reibungsgesetz'], correctIndex: 1, explanation: 'Er bilanziert Wärme, Arbeit und innere Energie.', hints: ['Erster Hauptsatz: ΔU = Q − W', 'Beschreibt Energieerhaltung für thermodynamische Systeme.', 'Wärme und Arbeit können innere Energie ändern.'] },
+              { type: 'true-false', statement: 'Wenn ein System Arbeit abgibt und keine Wärme erhält, sinkt seine innere Energie.', correct: true, explanation: 'Q=0, W>0 → ΔU = −W.', hints: ['ΔU = Q − W mit Q = 0, W > 0.', 'ΔU = 0 − W = −W', 'W > 0 → ΔU < 0 → innere Energie sinkt.'] },
             ],
           },
           {
@@ -982,9 +982,9 @@ $$\eta = \frac{E_\text{nutz}}{E_\text{zu}}$$
 
 Er liegt bei realen Maschinen kleiner als 1.`,
             exercises: [
-              { type: 'number-input', question: 'Eine Maschine liefert 80 J Nutzenergie bei 100 J zugeführter Energie. Berechne den Wirkungsgrad η.', correctValue: 0.8, tolerance: 0.01, unit: '', explanation: 'η = 80/100 = 0,8 = 80%.', hints: ['Quotient aus Nutzen und Aufwand.'] },
-              { type: 'multiple-choice', question: 'η = 0,35 bedeutet:', options: ['35% Nutzanteil', '3,5% Nutzanteil', '350% Nutzanteil', 'keine Verluste'], correctIndex: 0, explanation: '0,35 entspricht 35%.', hints: ['Mit 100 multiplizieren.'] },
-              { type: 'true-false', statement: 'Ein realer Wärmekraftprozess hat η = 1.', correct: false, explanation: 'Reale Prozesse haben Verluste und liegen unter 1.', hints: ['Zweiter Hauptsatz begrenzt die Umwandlung.'] },
+              { type: 'number-input', question: 'Eine Maschine liefert 80 J Nutzenergie bei 100 J zugeführter Energie. Berechne den Wirkungsgrad η.', correctValue: 0.8, tolerance: 0.01, unit: '', explanation: 'η = 80/100 = 0,8 = 80%.', hints: ['η = E_nutz / E_zu', '80 / 100 = 0,8', 'η ≤ 1 bei realen Maschinen'] },
+              { type: 'multiple-choice', question: 'η = 0,35 bedeutet:', options: ['35% Nutzanteil', '3,5% Nutzanteil', '350% Nutzanteil', 'keine Verluste'], correctIndex: 0, explanation: '0,35 entspricht 35%.', hints: ['η = 0,35 entspricht 35%.', 'Wirkungsgrad als Dezimalzahl × 100 = Prozent.', '0,35 · 100 = 35 %'] },
+              { type: 'true-false', statement: 'Ein realer Wärmekraftprozess hat η = 1.', correct: false, explanation: 'Reale Prozesse haben Verluste und liegen unter 1.', hints: ['Zweiter Hauptsatz: nicht alle Wärme kann in Arbeit umgewandelt werden.', 'Reale Prozesse haben immer Verluste → η < 1.', 'η = 1 wäre ein „Perpetuum Mobile zweiter Art".'] },
             ],
           },
           {
@@ -1105,10 +1105,10 @@ $$\frac{1}{k} = \frac{1}{\alpha_1} + \frac{d}{\lambda} + \frac{1}{\alpha_2}$$
               title: 'Zustandsänderungen im p-V-Diagramm', visualizationId: 'pv-diagram', params: {},
             },
             exercises: [
-              { type: 'number-input', question: '[PRÜFUNG] Carnot-Maschine: T_warm = 600 K, T_kalt = 300 K. Maximaler Wirkungsgrad?', correctValue: 0.5, tolerance: 0.01, unit: '', explanation: 'η_C = 1 - 300/600 = 1 - 0,5 = 0,5 = 50%.', hints: ['η_C = 1 - T_kalt/T_warm', 'Temperaturen in Kelvin!'] },
-              { type: 'number-input', question: '[PRÜFUNG] Isotherme Expansion: 1 mol ideales Gas bei T = 300 K expandiert von 10 L auf 20 L. Arbeit W? (R = 8,314)', correctValue: 1729, tolerance: 20, unit: 'J', explanation: '$W = nRT \\cdot \\ln(V_2/V_1)$ = 1·8,314·300·ln(2) = 2494·0,693 ≈ 1729 J.', hints: ['$W = nRT \\cdot \\ln(V_2/V_1)$', 'ln(2) ≈ 0,693'] },
-              { type: 'number-input', question: '[PRÜFUNG] Adiabatische Kompression: $p_1$ = 100 kPa, $V_1 = 0{,}01\\,m^3$, $V_2 = 0{,}005\\,m^3$, $\\gamma = 1{,}4$. Berechne $p_2$.', correctValue: 264, tolerance: 5, unit: 'kPa', explanation: '$p_1 V_1^\\gamma = p_2 V_2^\\gamma$ → $p_2 = p_1 \\cdot (V_1/V_2)^\\gamma$ = 100·2^1,4 = 100·2,639 ≈ 264 kPa.', hints: ['$pV^\\gamma = \\text{const}$', '2^1,4 ≈ 2,64'] },
-              { type: 'true-false', statement: '[PRÜFUNG] Bei einer isochoren Zustandsänderung wird keine Volumenänderungsarbeit verrichtet.', correct: true, explanation: 'Isochor: $V = \\text{const}$ → $\\Delta V = 0$ → $W = \\int p\\,dV = 0$.', hints: ['Was bedeutet isochor?'] },
+              { type: 'number-input', question: '[PRÜFUNG] Carnot-Maschine: T_warm = 600 K, T_kalt = 300 K. Maximaler Wirkungsgrad?', correctValue: 0.5, tolerance: 0.01, unit: '', explanation: 'η_C = 1 - 300/600 = 1 - 0,5 = 0,5 = 50%.', hints: ['η_C = 1 - T_kalt/T_warm', 'Temperaturen in Kelvin!', '1 − 300/600 = 1 − 0,5 = 0,5'] },
+              { type: 'number-input', question: '[PRÜFUNG] Isotherme Expansion: 1 mol ideales Gas bei T = 300 K expandiert von 10 L auf 20 L. Arbeit W? (R = 8,314)', correctValue: 1729, tolerance: 20, unit: 'J', explanation: '$W = nRT \\cdot \\ln(V_2/V_1)$ = 1·8,314·300·ln(2) = 2494·0,693 ≈ 1729 J.', hints: ['$W = nRT \\cdot \\ln(V_2/V_1)$', 'ln(2) ≈ 0,693', '1 · 8,314 · 300 · 0,693 ≈ 1729 J'] },
+              { type: 'number-input', question: '[PRÜFUNG] Adiabatische Kompression: $p_1$ = 100 kPa, $V_1 = 0{,}01\\,m^3$, $V_2 = 0{,}005\\,m^3$, $\\gamma = 1{,}4$. Berechne $p_2$.', correctValue: 264, tolerance: 5, unit: 'kPa', explanation: '$p_1 V_1^\\gamma = p_2 V_2^\\gamma$ → $p_2 = p_1 \\cdot (V_1/V_2)^\\gamma$ = 100·2^1,4 = 100·2,639 ≈ 264 kPa.', hints: ['$pV^\\gamma = \\text{const}$', 'p_2 = p_1 · (V_1/V_2)^γ', '100 · 2^1,4 ≈ 100 · 2,64 = 264 kPa'] },
+              { type: 'true-false', statement: '[PRÜFUNG] Bei einer isochoren Zustandsänderung wird keine Volumenänderungsarbeit verrichtet.', correct: true, explanation: 'Isochor: $V = \\text{const}$ → $\\Delta V = 0$ → $W = \\int p\\,dV = 0$.', hints: ['Isochor bedeutet: V = konstant.', 'W = ∫p dV = 0 wenn ΔV = 0.', 'Keine Volumenänderung → keine Volumenänderungsarbeit.'] },
             ],
           },
           {
@@ -1198,9 +1198,9 @@ $$p = \rho g h$$
 
 Dazu kommt je nach Bezug noch der Umgebungsdruck.`,
             exercises: [
-              { type: 'number-input', question: 'Wasser: ρ = 1000 $kg/m^3$, g = 9,81 $m/s^2$, h = 2 m. p gerundet?', correctValue: 19620, tolerance: 20, unit: 'Pa', explanation: 'p = 1000·9,81·2 = 19620 Pa.', hints: ['Setze direkt in ρgh ein.'] },
-              { type: 'multiple-choice', question: 'Hydrostatischer Druck hängt direkt ab von:', options: ['Tiefe', 'Behälterfarbe', 'Oberflächenrauheit', 'Zeit'], correctIndex: 0, explanation: 'p = ρgh.', hints: ['h steht in der Formel.'] },
-              { type: 'true-false', statement: 'In doppelter Tiefe ist der hydrostatische Druck doppelt so groß.', correct: true, explanation: 'Bei konstantem ρ und g ist p proportional h.', hints: ['Lineare Abhängigkeit.'] },
+              { type: 'number-input', question: 'Wasser: ρ = 1000 $kg/m^3$, g = 9,81 $m/s^2$, h = 2 m. p gerundet?', correctValue: 19620, tolerance: 20, unit: 'Pa', explanation: 'p = 1000·9,81·2 = 19620 Pa.', hints: ['p = ρ · g · h', 'ρ = 1000 kg/m³, g = 9,81, h = 2 m', '1000 · 9,81 · 2 = 19620 Pa'] },
+              { type: 'multiple-choice', question: 'Hydrostatischer Druck hängt direkt ab von:', options: ['Tiefe', 'Behälterfarbe', 'Oberflächenrauheit', 'Zeit'], correctIndex: 0, explanation: 'p = ρgh.', hints: ['p = ρgh — h ist die Tiefe.', 'Druck steigt linear mit Tiefe h.', 'ρ, g konstant → p ∝ h'] },
+              { type: 'true-false', statement: 'In doppelter Tiefe ist der hydrostatische Druck doppelt so groß.', correct: true, explanation: 'Bei konstantem ρ und g ist p proportional h.', hints: ['p = ρgh — linearer Zusammenhang.', 'Doppelte Tiefe → doppelter Druck.', 'p ∝ h bei konstantem ρ und g.'] },
             ],
           },
           {
@@ -1211,9 +1211,9 @@ Dazu kommt je nach Bezug noch der Umgebungsdruck.`,
 
 $$F_A = \rho_\text{Fluid} \cdot g \cdot V_\text{verdrängt}$$`,
             exercises: [
-              { type: 'number-input', question: 'Ein Körper verdrängt 0,01 $m^3$ Wasser. Berechne die Auftriebskraft in Wasser gerundet.', correctValue: 98.1, tolerance: 0.5, unit: 'N', explanation: 'F_A = 1000·9,81·0,01 = 98,1 N.', hints: ['Nutze Archimedes.'] },
-              { type: 'multiple-choice', question: 'Auftrieb hängt ab vom ...', options: ['Volumen des verdrängten Fluids', 'Namen des Körpers', 'Farbton', 'Luftdruck allein'], correctIndex: 0, explanation: 'Das verdrängte Fluidvolumen bestimmt die Auftriebskraft.', hints: ['F_A = ρgV.'] },
-              { type: 'true-false', statement: 'Ein Körper schwimmt, wenn Auftrieb und Gewichtskraft im Gleichgewicht sind.', correct: true, explanation: 'Im stationären Schwimmen gilt F_A = F_G.', hints: ['Kräftegleichgewicht vertikal.'] },
+              { type: 'number-input', question: 'Ein Körper verdrängt 0,01 $m^3$ Wasser. Berechne die Auftriebskraft in Wasser gerundet.', correctValue: 98.1, tolerance: 0.5, unit: 'N', explanation: 'F_A = 1000·9,81·0,01 = 98,1 N.', hints: ['F_A = ρ_Fluid · g · V_verdrängt', 'ρ_Wasser = 1000 kg/m³', '1000 · 9,81 · 0,01 = 98,1 N'] },
+              { type: 'multiple-choice', question: 'Auftrieb hängt ab vom ...', options: ['Volumen des verdrängten Fluids', 'Namen des Körpers', 'Farbton', 'Luftdruck allein'], correctIndex: 0, explanation: 'Das verdrängte Fluidvolumen bestimmt die Auftriebskraft.', hints: ['Auftrieb = Gewicht der verdrängten Flüssigkeit.', 'F_A = ρ_Fluid · g · V_verdrängt', 'V_verdrängt ist das eingetauchte Volumen.'] },
+              { type: 'true-false', statement: 'Ein Körper schwimmt, wenn Auftrieb und Gewichtskraft im Gleichgewicht sind.', correct: true, explanation: 'Im stationären Schwimmen gilt F_A = F_G.', hints: ['Schwimmen: F_A = F_G (Gleichgewicht)', 'F_A = ρ_Fluid · g · V_verdrängt', 'F_G = m_Körper · g'] },
             ],
           },
         ],
@@ -1233,9 +1233,9 @@ $$A_1 v_1 = A_2 v_2 = \dot V$$
 
 Wird der Querschnitt kleiner, steigt die Strömungsgeschwindigkeit.`,
             exercises: [
-              { type: 'number-input', question: 'Für eine inkompressible Strömung gilt A1 = 4 $cm^2$, v1 = 2 m/s und A2 = 2 $cm^2$. Berechne v2.', correctValue: 4, tolerance: 0.01, unit: 'm/s', explanation: 'A1 v1 = A2 v2 → v2 = 4·2/2 = 4 m/s.', hints: ['Querschnitt halbiert → Geschwindigkeit verdoppelt.'] },
-              { type: 'multiple-choice', question: 'Volumenstrom wird berechnet mit:', options: ['A·v', 'A/v', 'v/A', 'ρgH'], correctIndex: 0, explanation: 'Vdot = A·v.', hints: ['Fläche mal Geschwindigkeit.'] },
-              { type: 'true-false', statement: 'Bei kleinerem Querschnitt und gleichem Volumenstrom wird v größer.', correct: true, explanation: 'A·v bleibt konstant.', hints: ['Kontinuitätsgleichung.'] },
+              { type: 'number-input', question: 'Für eine inkompressible Strömung gilt A1 = 4 $cm^2$, v1 = 2 m/s und A2 = 2 $cm^2$. Berechne v2.', correctValue: 4, tolerance: 0.01, unit: 'm/s', explanation: 'A1 v1 = A2 v2 → v2 = 4·2/2 = 4 m/s.', hints: ['Kontinuität: A1·v1 = A2·v2', 'A1/A2 = v2/v1', 'v2 = 4·2/2 = 4 m/s'] },
+              { type: 'multiple-choice', question: 'Volumenstrom wird berechnet mit:', options: ['A·v', 'A/v', 'v/A', 'ρgH'], correctIndex: 0, explanation: 'Vdot = A·v.', hints: ['Volumenstrom: V̇ = A · v', 'Einheit: m² · m/s = m³/s', 'V̇ bleibt bei inkompressibler Strömung konstant.'] },
+              { type: 'true-false', statement: 'Bei kleinerem Querschnitt und gleichem Volumenstrom wird v größer.', correct: true, explanation: 'A·v bleibt konstant.', hints: ['A·v = konstant bei inkompressibler Strömung.', 'Kleinere Fläche → größere Geschwindigkeit.', 'v ∝ 1/A'] },
             ],
           },
           {
@@ -1248,9 +1248,9 @@ $$p + \frac{1}{2}\rho v^2 + \rho g z = \text{konstant}$$
 
 Das ist Energieerhaltung pro Volumen.`,
             exercises: [
-              { type: 'multiple-choice', question: 'Der Term $\\frac{1}{2} \\rho v^2$ beschreibt:', options: ['statischen Druck', 'dynamischen Druck', 'Höhendruck', 'Temperatur'], correctIndex: 1, explanation: '$\\frac{1}{2}\\rho v^2$ ist der dynamische Druck.', hints: ['Der Term enthält $v^2$.'] },
-              { type: 'true-false', statement: 'Bernoulli berücksichtigt im Grundmodell keine Reibungsverluste.', correct: true, explanation: 'Die einfache Bernoulli-Gleichung gilt idealisiert reibungsfrei.', hints: ['Reale Rohrströmung braucht Verlustterme.'] },
-              { type: 'number-input', question: 'ρ = 1000 $kg/m^3$, v = 2 m/s. Dynamischer Druck?', correctValue: 2000, tolerance: 1, unit: 'Pa', explanation: '$q = \\frac{1}{2} \\cdot 1000 \\cdot 2^2 = 2000$ Pa.', hints: ['$v^2 = 4$.'] },
+              { type: 'multiple-choice', question: 'Der Term $\\frac{1}{2} \\rho v^2$ beschreibt:', options: ['statischen Druck', 'dynamischen Druck', 'Höhendruck', 'Temperatur'], correctIndex: 1, explanation: '$\\frac{1}{2}\\rho v^2$ ist der dynamische Druck.', hints: ['Dynamischer Druck: ½ρv²', 'Enthält v² → kinetische Energie pro Volumen.', '½ · 1000 · 2² = 2000 Pa'] },
+              { type: 'true-false', statement: 'Bernoulli berücksichtigt im Grundmodell keine Reibungsverluste.', correct: true, explanation: 'Die einfache Bernoulli-Gleichung gilt idealisiert reibungsfrei.', hints: ['Bernoulli gilt für reibungsfreie, stationäre Strömung.', 'Reale Strömung hat Reibungsverluste.', 'Verlust-Bernoulli: + Δp_V auf der rechten Seite.'] },
+              { type: 'number-input', question: 'ρ = 1000 $kg/m^3$, v = 2 m/s. Dynamischer Druck?', correctValue: 2000, tolerance: 1, unit: 'Pa', explanation: '$q = \\frac{1}{2} \\cdot 1000 \\cdot 2^2 = 2000$ Pa.', hints: ['q = ½ρv²', 'v² = 2² = 4', '½ · 1000 · 4 = 2000 Pa'] },
             ],
           },
           {
@@ -1367,10 +1367,10 @@ $$p_1 + \frac{1}{2}\rho v_1^2 + \rho g z_1 = p_2 + \frac{1}{2}\rho v_2^2 + \rho 
 
 **Reynolds-Zahl:** $Re = \frac{\rho \cdot v \cdot d}{\mu}$. Laminar: Re < 2300, turbulent: Re > 4000.`,
             exercises: [
-              { type: 'number-input', question: '[PRÜFUNG] Wasser (ρ = 1000) fließt durch ein Rohr: $v_1$ = 2 m/s, $d_1$ = 100 mm, $d_2$ = 50 mm. Berechne $v_2$.', correctValue: 8, tolerance: 0.1, unit: 'm/s', explanation: '$A_1 v_1 = A_2 v_2$. $A_1/A_2$ = $(d_1/d_2)^2$ = $(100/50)^2$ = 4. $v_2$ = 4·2 = 8 m/s.', hints: ['Kontinuität: $A_1 v_1 = A_2 v_2$', '$A = \\pi d^2/4$ → A-Verhältnis = $(d_1/d_2)^2$'] },
-              { type: 'number-input', question: '[PRÜFUNG] Ein Tank steht offen ($p_1$ = 101325 Pa). Ausflusshöhe h = 5 m über dem Auslass. Ausflussgeschwindigkeit? (ρ = 1000, g = 9,81)', correctValue: 9.9, tolerance: 0.2, unit: 'm/s', explanation: 'Torricelli: $v = \\sqrt{2gh}$ = $\\sqrt{2 \\cdot 9{,}81 \\cdot 5}$ = $\\sqrt{98{,}1}$ ≈ 9,9 m/s.', hints: ['Bernoulli mit $p_1 = p_2$ (beides offen), $v_1$ ≈ 0', '$v = \\sqrt{2gh}$'] },
-              { type: 'number-input', question: '[PRÜFUNG] Wasser fließt mit v = 1 m/s durch ein Rohr d = 50 mm. Dynamische Viskosität μ = 0,001 Pa·s. Reynolds-Zahl?', correctValue: 50000, tolerance: 100, unit: '', explanation: 'Re = ρvd/μ = 1000·1·0,05/0,001 = 50000.', hints: ['Re = ρvd/μ', 'd in Meter: 50 mm = 0,05 m'] },
-              { type: 'multiple-choice', question: '[PRÜFUNG] Bei Re = 50000 ist die Strömung:', options: ['laminar', 'im Übergangsbereich', 'turbulent', 'stationär'], correctIndex: 2, explanation: 'Re > 4000 → turbulent (Rohrströmung).', hints: ['Grenzwert: ca. 2300 (laminar/turbulent)'] },
+              { type: 'number-input', question: '[PRÜFUNG] Wasser (ρ = 1000) fließt durch ein Rohr: $v_1$ = 2 m/s, $d_1$ = 100 mm, $d_2$ = 50 mm. Berechne $v_2$.', correctValue: 8, tolerance: 0.1, unit: 'm/s', explanation: '$A_1 v_1 = A_2 v_2$. $A_1/A_2$ = $(d_1/d_2)^2$ = $(100/50)^2$ = 4. $v_2$ = 4·2 = 8 m/s.', hints: ['Kontinuität: $A_1 v_1 = A_2 v_2$', '$A = \\pi d^2/4$ → A-Verhältnis = $(d_1/d_2)^2$', 'v_2 = v_1 · (d_1/d_2)² = 2 · 4 = 8 m/s'] },
+              { type: 'number-input', question: '[PRÜFUNG] Ein Tank steht offen ($p_1$ = 101325 Pa). Ausflusshöhe h = 5 m über dem Auslass. Ausflussgeschwindigkeit? (ρ = 1000, g = 9,81)', correctValue: 9.9, tolerance: 0.2, unit: 'm/s', explanation: 'Torricelli: $v = \\sqrt{2gh}$ = $\\sqrt{2 \\cdot 9{,}81 \\cdot 5}$ = $\\sqrt{98{,}1}$ ≈ 9,9 m/s.', hints: ['Bernoulli mit $p_1 = p_2$ (beides offen), $v_1$ ≈ 0', '$v = \\sqrt{2gh}$', '$\\sqrt{2 \\cdot 9{,}81 \\cdot 5} = \\sqrt{98{,}1} \\approx 9{,}9$ m/s'] },
+              { type: 'number-input', question: '[PRÜFUNG] Wasser fließt mit v = 1 m/s durch ein Rohr d = 50 mm. Dynamische Viskosität μ = 0,001 Pa·s. Reynolds-Zahl?', correctValue: 50000, tolerance: 100, unit: '', explanation: 'Re = ρvd/μ = 1000·1·0,05/0,001 = 50000.', hints: ['Re = ρvd/μ', 'd in Meter: 50 mm = 0,05 m', '1000 · 1 · 0,05 / 0,001 = 50000'] },
+              { type: 'multiple-choice', question: '[PRÜFUNG] Bei Re = 50000 ist die Strömung:', options: ['laminar', 'im Übergangsbereich', 'turbulent', 'stationär'], correctIndex: 2, explanation: 'Re > 4000 → turbulent (Rohrströmung).', hints: ['Grenzwert: Re < 2300 laminar, Re > 4000 turbulent.', 'Re = 50000 >> 4000 → turbulent.', 'Grenzwert: ca. 2300 (laminar/turbulent)'] },
             ],
           },
           {
@@ -1458,9 +1458,9 @@ $$p_1 + \frac{1}{2}\rho v_1^2 + \rho g z_1 = p_2 + \frac{1}{2}\rho v_2^2 + \rho 
 
 Bei Betriebslast darf die Klemmkraft nicht vollständig abgebaut werden, sonst können Fugen öffnen und Schrauben zyklisch überlastet werden.`,
             exercises: [
-              { type: 'multiple-choice', question: 'Wozu dient Schraubenvorspannung hauptsächlich?', options: ['Dekoration', 'Klemmkraft in der Fuge erzeugen', 'Masse erhöhen', 'Drehzahl messen'], correctIndex: 1, explanation: 'Vorspannung erzeugt Klemmkraft und stabilisiert die Verbindung.', hints: ['Schrauben klemmen Bauteile zusammen.'] },
-              { type: 'true-false', statement: 'Eine korrekt vorgespannte Schraube kann Betriebslasten günstiger aufnehmen.', correct: true, explanation: 'Die Vorspannung reduziert ungünstige Lastwechsel im Schraubenschaft.', hints: ['Kraftfluss wird aufgeteilt.'] },
-              { type: 'number-input', question: 'Eine Schraube trägt 12 kN von insgesamt 48 kN. Berechne den Lastanteil als Dezimalzahl.', correctValue: 0.25, tolerance: 0.01, unit: '', explanation: '12/48 = 0,25 = 25%.', hints: ['Teil durch Gesamt.'] },
+              { type: 'multiple-choice', question: 'Wozu dient Schraubenvorspannung hauptsächlich?', options: ['Dekoration', 'Klemmkraft in der Fuge erzeugen', 'Masse erhöhen', 'Drehzahl messen'], correctIndex: 1, explanation: 'Vorspannung erzeugt Klemmkraft und stabilisiert die Verbindung.', hints: ['Vorspannung erzeugt Klemmkraft in der Fuge.', 'Klemmkraft verhindert Fugenöffnen unter Last.', 'Ohne Vorspannung: wechselnde Last direkt auf Schraube.'] },
+              { type: 'true-false', statement: 'Eine korrekt vorgespannte Schraube kann Betriebslasten günstiger aufnehmen.', correct: true, explanation: 'Die Vorspannung reduziert ungünstige Lastwechsel im Schraubenschaft.', hints: ['Vorspannung teilt den Kraftfluss auf Schraube und Bauteile auf.', 'Günstig: weniger Wechsellastanteil auf der Schraube.', 'Günstiger Kraftfluss → längere Lebensdauer.'] },
+              { type: 'number-input', question: 'Eine Schraube trägt 12 kN von insgesamt 48 kN. Berechne den Lastanteil als Dezimalzahl.', correctValue: 0.25, tolerance: 0.01, unit: '', explanation: '12/48 = 0,25 = 25%.', hints: ['Lastanteil = Einzellast / Gesamtlast', '12 / 48 = 0,25', '0,25 = 25 %'] },
             ],
           },
           {
@@ -1471,9 +1471,9 @@ Bei Betriebslast darf die Klemmkraft nicht vollständig abgebaut werden, sonst k
 
 Formschluss bedeutet: Geometrie verhindert Relativbewegung. Kraftschluss bedeutet: Reibung verhindert Relativbewegung.`,
             exercises: [
-              { type: 'multiple-choice', question: 'Eine Passfeder ist primär eine ...', options: ['stoffschlüssige Verbindung', 'formschlüssige Verbindung', 'thermische Isolation', 'Messsensorik'], correctIndex: 1, explanation: 'Passfedern übertragen Drehmoment durch Formschluss.', hints: ['Geometrie greift ineinander.'] },
-              { type: 'true-false', statement: 'Kraftschluss beruht im Kern auf Reibung.', correct: true, explanation: 'Kraftschluss nutzt Normalkraft und Reibwert.', hints: ['Beispiel: Klemmverbindung.'] },
-              { type: 'multiple-choice', question: 'Drehmoment wird bei Welle-Nabe-Verbindungen übertragen, um ...', options: ['Rotation weiterzugeben', 'Temperatur zu senken', 'Druck zu messen', 'Gewicht zu erzeugen'], correctIndex: 0, explanation: 'Welle-Nabe-Verbindungen dienen der Drehmomentübertragung.', hints: ['Welle rotiert.'] },
+              { type: 'multiple-choice', question: 'Eine Passfeder ist primär eine ...', options: ['stoffschlüssige Verbindung', 'formschlüssige Verbindung', 'thermische Isolation', 'Messsensorik'], correctIndex: 1, explanation: 'Passfedern übertragen Drehmoment durch Formschluss.', hints: ['Formschluss: Geometrie verhindert Relativbewegung.', 'Passfeder greift in Nut in Welle und Nabe.', 'Drehmoment wird über Flanken übertragen.'] },
+              { type: 'true-false', statement: 'Kraftschluss beruht im Kern auf Reibung.', correct: true, explanation: 'Kraftschluss nutzt Normalkraft und Reibwert.', hints: ['Kraftschluss beruht auf Reibung.', 'Reibkraft = μ · Normalkraft.', 'Beispiel: Pressverband, Klemmverbindung.'] },
+              { type: 'multiple-choice', question: 'Drehmoment wird bei Welle-Nabe-Verbindungen übertragen, um ...', options: ['Rotation weiterzugeben', 'Temperatur zu senken', 'Druck zu messen', 'Gewicht zu erzeugen'], correctIndex: 0, explanation: 'Welle-Nabe-Verbindungen dienen der Drehmomentübertragung.', hints: ['Welle überträgt Drehmoment (Rotation).', 'Nabe sitzt auf der Welle und nimmt Drehmoment ab.', 'Passfeder → formschlüssige Drehmomentübertragung.'] },
             ],
           },
           {
@@ -1508,7 +1508,7 @@ $a$ = Nahtdicke (= $0{,}7 \cdot h$ für Kehlnaht mit Schenkellänge $h$), $l_w$ 
                 statement: 'Eine Schweißverbindung ist grundsätzlich lösbar.',
                 correct: false,
                 explanation: 'Schweißverbindungen sind stoffschlüssig und nicht zerstörungsfrei lösbar.',
-                hints: ['Stoffschluss verbindet dauerhaft', 'Beispiel lösbar: Schrauben'],
+                hints: ['Stoffschluss verbindet dauerhaft', 'Schweißen ist nicht zerstörungsfrei trennbar.', 'Beispiel lösbar: Schrauben'],
               },
               {
                 type: 'multiple-choice',
@@ -1535,9 +1535,9 @@ $a$ = Nahtdicke (= $0{,}7 \cdot h$ für Kehlnaht mit Schenkellänge $h$), $l_w$ 
 
 Radiallast wirkt quer zur Wellenachse, Axiallast entlang der Wellenachse.`,
             exercises: [
-              { type: 'multiple-choice', question: 'Eine Radiallast wirkt ...', options: ['entlang der Wellenachse', 'quer zur Wellenachse', 'immer tangential', 'nie auf Lager'], correctIndex: 1, explanation: 'Radial bedeutet quer zur Achse.', hints: ['Radiusrichtung liegt quer zur Achse.'] },
-              { type: 'true-false', statement: 'Lager sollen Bewegung führen und Kräfte aufnehmen.', correct: true, explanation: 'Lager erfüllen Führungs- und Stützfunktion.', hints: ['Ohne Lager keine definierte Wellenlagerung.'] },
-              { type: 'multiple-choice', question: 'Eine Welle dient hauptsächlich der Übertragung von:', options: ['Drehmoment', 'Farbe', 'Temperatur allein', 'Druckhöhe'], correctIndex: 0, explanation: 'Wellen übertragen Drehmoment und Drehbewegung.', hints: ['Rotierende Maschine.'] },
+              { type: 'multiple-choice', question: 'Eine Radiallast wirkt ...', options: ['entlang der Wellenachse', 'quer zur Wellenachse', 'immer tangential', 'nie auf Lager'], correctIndex: 1, explanation: 'Radial bedeutet quer zur Achse.', hints: ['Radial = in Richtung des Radius, quer zur Achse.', 'Axiallast: entlang der Wellenachse (in Längsrichtung).', 'Querkräfte (z.B. aus Zahnrädern) = Radiallasten.'] },
+              { type: 'true-false', statement: 'Lager sollen Bewegung führen und Kräfte aufnehmen.', correct: true, explanation: 'Lager erfüllen Führungs- und Stützfunktion.', hints: ['Lager führen die Welle und nehmen Kräfte auf.', 'Ohne Lager: keine definierte Position der Welle.', 'Funktion: Führung + Stützung.'] },
+              { type: 'multiple-choice', question: 'Eine Welle dient hauptsächlich der Übertragung von:', options: ['Drehmoment', 'Farbe', 'Temperatur allein', 'Druckhöhe'], correctIndex: 0, explanation: 'Wellen übertragen Drehmoment und Drehbewegung.', hints: ['Welle: überträgt Drehmoment und Rotation.', 'Drehmoment M = F · r (Umfangskraft mal Radius).', 'Ohne Welle keine Drehmomentübertragung.'] },
             ],
           },
           {
@@ -1550,9 +1550,9 @@ $$i = \frac{z_2}{z_1} = \frac{n_1}{n_2}$$
 
 Mehr Zähne am Abtriebsrad bedeuten geringere Abtriebsdrehzahl und höheres Drehmoment.`,
             exercises: [
-              { type: 'number-input', question: 'Ein Zahnradpaar hat z1 = 20 und z2 = 60 Zähne. Berechne die Übersetzung i = z2/z1.', correctValue: 3, tolerance: 0.01, unit: '', explanation: 'i = z2/z1 = 60/20 = 3.', hints: ['Abtriebszähne durch Antriebszähne.'] },
-              { type: 'multiple-choice', question: 'Bei i = 3 ist n2 gegenüber n1 ...', options: ['dreimal so groß', 'gleich groß', 'ein Drittel', 'negativ'], correctIndex: 2, explanation: 'i = n1/n2 = 3 → n2 = n1/3.', hints: ['Drehzahl sinkt bei Untersetzung.'] },
-              { type: 'true-false', statement: 'Mehr Zähne am Abtriebsrad senken typischerweise die Abtriebsdrehzahl.', correct: true, explanation: 'Bei z2 > z1 entsteht eine Untersetzung.', hints: ['i = z2/z1.'] },
+              { type: 'number-input', question: 'Ein Zahnradpaar hat z1 = 20 und z2 = 60 Zähne. Berechne die Übersetzung i = z2/z1.', correctValue: 3, tolerance: 0.01, unit: '', explanation: 'i = z2/z1 = 60/20 = 3.', hints: ['Übersetzung: i = z2/z1 (Abtrieb/Antrieb)', 'z2 = 60, z1 = 20', 'i = 60/20 = 3'] },
+              { type: 'multiple-choice', question: 'Bei i = 3 ist n2 gegenüber n1 ...', options: ['dreimal so groß', 'gleich groß', 'ein Drittel', 'negativ'], correctIndex: 2, explanation: 'i = n1/n2 = 3 → n2 = n1/3.', hints: ['i = n1/n2 → n2 = n1/i', 'i = 3 → n2 = n1/3', 'Untersetzung: Abtriebsdrehzahl sinkt, Moment steigt.'] },
+              { type: 'true-false', statement: 'Mehr Zähne am Abtriebsrad senken typischerweise die Abtriebsdrehzahl.', correct: true, explanation: 'Bei z2 > z1 entsteht eine Untersetzung.', hints: ['i = z2/z1 (Übersetzung)', 'z2 > z1 → i > 1 → Untersetzung.', 'Mehr Zähne am Abtrieb → niedrigere Abtriebsdrehzahl.'] },
             ],
           },
           {
@@ -1624,9 +1624,9 @@ $$P = M \cdot \omega = M \cdot \frac{2\pi n}{60}$$
 
 **Lagerlebensdauer (vereinfacht):** $L_{10} = \left(\frac{C}{P}\right)^p$ mit p = 3 (Kugel) oder p = 10/3 (Rolle)`,
             exercises: [
-              { type: 'number-input', question: '[PRÜFUNG] Motor: P = 5 kW bei n = 1500 1/min. Drehmoment M?', correctValue: 31.83, tolerance: 0.5, unit: 'Nm', explanation: 'M = P/ω = 5000/(2π·1500/60) = 5000/157,08 ≈ 31,83 Nm.', hints: ['ω = 2πn/60', 'P in Watt: 5 kW = 5000 W'] },
-              { type: 'number-input', question: '[PRÜFUNG] Zahnrad d = 100 mm, Drehmoment M = 50 Nm. Umfangskraft F_t?', correctValue: 1000, tolerance: 1, unit: 'N', explanation: 'F_t = 2M/d = 2·50/0,1 = 1000 N.', hints: ['F_t = 2M/d', 'd in Meter: 100 mm = 0,1 m'] },
-              { type: 'number-input', question: '[PRÜFUNG] Zweistufiges Getriebe: $i_1$ = 3, $i_2$ = 4. Gesamtübersetzung?', correctValue: 12, tolerance: 0, unit: '', explanation: 'i_ges = $i_1$ · $i_2$ = 3 · 4 = 12.', hints: ['Mehrstufig: Übersetzungen multiplizieren.'] },
+              { type: 'number-input', question: '[PRÜFUNG] Motor: P = 5 kW bei n = 1500 1/min. Drehmoment M?', correctValue: 31.83, tolerance: 0.5, unit: 'Nm', explanation: 'M = P/ω = 5000/(2π·1500/60) = 5000/157,08 ≈ 31,83 Nm.', hints: ['ω = 2πn/60', 'P in Watt: 5 kW = 5000 W', 'M = P/ω = 5000 / (2π·1500/60) ≈ 31,83 Nm'] },
+              { type: 'number-input', question: '[PRÜFUNG] Zahnrad d = 100 mm, Drehmoment M = 50 Nm. Umfangskraft F_t?', correctValue: 1000, tolerance: 1, unit: 'N', explanation: 'F_t = 2M/d = 2·50/0,1 = 1000 N.', hints: ['F_t = 2M/d', 'd in Meter: 100 mm = 0,1 m', '2 · 50 / 0,1 = 1000 N'] },
+              { type: 'number-input', question: '[PRÜFUNG] Zweistufiges Getriebe: $i_1$ = 3, $i_2$ = 4. Gesamtübersetzung?', correctValue: 12, tolerance: 0, unit: '', explanation: 'i_ges = $i_1$ · $i_2$ = 3 · 4 = 12.', hints: ['Mehrstufig: Übersetzungen multiplizieren.', 'i_ges = i_1 · i_2', '3 · 4 = 12'] },
               { type: 'number-input', question: '[PRÜFUNG] Antrieb $n_1$ = 3000 1/min, i_ges = 12. Abtriebsdrehzahl?', correctValue: 250, tolerance: 0, unit: '1/min', explanation: '$n_2$ = $n_1$/i = 3000/12 = 250 1/min.', hints: ['$n_2 = n_1$/i_ges', 'i_ges im Nenner', '3000 / 12'] },
             ],
           },
@@ -1682,6 +1682,980 @@ $$P = M \cdot \omega, \qquad \omega = \frac{2\pi n}{60}$$`,
                 correct: true,
                 explanation: 'L₁₀ = (C/P)³. Verdoppelt man P: L₁₀_neu = (C/2P)³ = (1/2)³·(C/P)³ = L₁₀/8.',
                 hints: ['L₁₀ ∝ (1/P)³', 'Faktor 2 bei P → Faktor 2³ = 8 weniger L₁₀', 'P³ im Nenner'],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  // ─── Elektrotechnik ───────────────────────────────────────────────────────
+  {
+    topic: {
+      id: 'elektrotechnik',
+      title: 'Elektrotechnik',
+      description: 'Gleichstrom, Wechselstrom, Kirchhoffsche Gesetze und elektrische Leistung.',
+      subject: 'engineering',
+      icon: 'ELT',
+      color: 'yellow',
+      estimatedHours: 5,
+      difficulty: 3,
+      level: 'grundlagen',
+      prerequisites: ['algebra'],
+    },
+    units: [
+      {
+        id: 'et-unit-1',
+        title: 'Gleichstromkreise',
+        description: 'Ohmsches Gesetz, Kirchhoff und Leistung.',
+        lessons: [
+          // ── et-1-1 ────────────────────────────────────────────────────────
+          {
+            id: 'et-1-1',
+            title: 'Ohmsches Gesetz und Grundbegriffe',
+            estimatedMinutes: 12,
+            learningGoals: [
+              'Das Ohmsche Gesetz $U = R \\cdot I$ anwenden',
+              'Reihen- und Parallelschaltungen berechnen',
+            ],
+            content: String.raw`## Ohmsches Gesetz und Grundbegriffe
+
+Das **Ohmsche Gesetz** beschreibt den Zusammenhang zwischen Spannung, Widerstand und Strom:
+
+$$U = R \cdot I$$
+
+| Größe | Symbol | Einheit |
+|-------|--------|---------|
+| Spannung | $U$ | Volt (V) |
+| Strom | $I$ | Ampere (A) |
+| Widerstand | $R$ | Ohm ($\Omega$) |
+
+### Reihenschaltung
+
+$$R_\text{ges} = R_1 + R_2 + \ldots + R_n$$
+
+### Parallelschaltung
+
+$$\frac{1}{R_\text{ges}} = \frac{1}{R_1} + \frac{1}{R_2} + \ldots + \frac{1}{R_n}$$
+
+Für zwei Widerstände gilt: $R_\text{ges} = \frac{R_1 \cdot R_2}{R_1 + R_2}$
+`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'Ein Widerstand $R = 470\\,\\Omega$ wird von einem Strom $I = 20\\,\\text{mA}$ durchflossen. Welche Spannung $U$ liegt an?',
+                correctValue: 9.4,
+                tolerance: 0.05,
+                unit: 'V',
+                explanation: '$U = R \\cdot I = 470\\,\\Omega \\cdot 0{,}02\\,\\text{A} = 9{,}4\\,\\text{V}$',
+                hints: [
+                  '$U = R \\cdot I$',
+                  'Strom in Ampere umrechnen: $20\\,\\text{mA} = 0{,}02\\,\\text{A}$',
+                  '$470 \\cdot 0{,}02 = 9{,}4$',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: 'Zwei gleiche Widerstände $R$ in Parallelschaltung ergeben einen Gesamtwiderstand von $R/2$.',
+                correct: true,
+                explanation: '$\\frac{1}{R_\\text{ges}} = \\frac{1}{R} + \\frac{1}{R} = \\frac{2}{R} \\Rightarrow R_\\text{ges} = \\frac{R}{2}$',
+                hints: [
+                  '$\\frac{1}{R_\\text{ges}} = \\frac{1}{R_1} + \\frac{1}{R_2}$',
+                  '$\\frac{1}{R} + \\frac{1}{R} = \\frac{2}{R}$',
+                  '$R_\\text{ges} = R/2$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Reihenschaltung $R_1 = 100\\,\\Omega$ und $R_2 = 150\\,\\Omega$ an $U = 12\\,\\text{V}$. Wie groß ist der Strom $I$ in Ampere?',
+                correctValue: 0.048,
+                tolerance: 0.001,
+                unit: 'A',
+                explanation: '$R_\\text{ges} = 100 + 150 = 250\\,\\Omega$. $I = U/R_\\text{ges} = 12/250 = 0{,}048\\,\\text{A}$',
+                hints: [
+                  'Reihe: $R_\\text{ges} = R_1 + R_2$',
+                  '$I = U / R_\\text{ges}$',
+                  '$12 / 250 = 0{,}048\\,\\text{A}$',
+                ],
+              },
+            ],
+          },
+          // ── et-1-2 ────────────────────────────────────────────────────────
+          {
+            id: 'et-1-2',
+            title: 'Kirchhoffsche Gesetze',
+            estimatedMinutes: 13,
+            learningGoals: [
+              'Den Knotensatz (KCL) anwenden: $\\sum I = 0$',
+              'Den Maschensatz (KVL) anwenden: $\\sum U = 0$',
+            ],
+            content: String.raw`## Kirchhoffsche Gesetze
+
+### 1. Kirchhoffsches Gesetz — Knotensatz (KCL)
+
+Die Summe aller Ströme an einem Knoten ist null:
+
+$$\sum I = 0$$
+
+Zufliesende Ströme positiv, abfliesende negativ (oder umgekehrt — konsistent bleiben):
+
+$$I_1 = I_2 + I_3$$
+
+### 2. Kirchhoffsches Gesetz — Maschensatz (KVL)
+
+Die Summe aller Spannungen in einem geschlossenen Umlauf ist null:
+
+$$\sum U = 0$$
+
+Beispiel: $U_q - U_{R1} - U_{R2} = 0 \Rightarrow U_q = U_{R1} + U_{R2}$
+`,
+            exercises: [
+              {
+                type: 'multiple-choice',
+                question: 'Was besagt der Knotensatz (KCL) von Kirchhoff?',
+                options: [
+                  'Die Summe aller Ströme an einem Knoten ist null',
+                  'Die Summe aller Spannungen in einem Zweig ist null',
+                  'Leistung ist Strom mal Spannung',
+                  'Widerstand ist Spannung durch Strom',
+                ],
+                correctIndex: 0,
+                explanation: 'KCL beruht auf der Ladungserhaltung: Was in einen Knoten hineinfließt, muss auch wieder herausfließen.',
+                hints: [
+                  'KCL = Knotenstromsatz',
+                  'Ladungserhaltung am Knoten',
+                  '$\\sum I_\\text{ein} = \\sum I_\\text{aus}$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: 'An einem Knoten fließt $I_1 = 3\\,\\text{A}$ zu und $I_2 = 1\\,\\text{A}$ ab. Wie groß ist der dritte Strom $I_3$ (abfließend) in Ampere?',
+                correctValue: 2,
+                tolerance: 0.01,
+                unit: 'A',
+                explanation: 'KCL: $I_1 = I_2 + I_3 \\Rightarrow I_3 = 3 - 1 = 2\\,\\text{A}$',
+                hints: [
+                  'KCL: $\\sum I = 0$ am Knoten',
+                  '$I_1 = I_2 + I_3$',
+                  '$3 = 1 + I_3$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] In einer Masche gilt $U_q = 9\\,\\text{V}$ und $U_{R1} = 4\\,\\text{V}$. Wie groß ist $U_{R2}$ nach KVL in Volt?',
+                correctValue: 5,
+                tolerance: 0.01,
+                unit: 'V',
+                explanation: 'KVL: $U_q - U_{R1} - U_{R2} = 0 \\Rightarrow U_{R2} = 9 - 4 = 5\\,\\text{V}$',
+                hints: [
+                  'KVL: $\\sum U = 0$ im Umlauf',
+                  '$U_q = U_{R1} + U_{R2}$',
+                  '$9 = 4 + U_{R2}$',
+                ],
+              },
+            ],
+          },
+          // ── et-1-3 ────────────────────────────────────────────────────────
+          {
+            id: 'et-1-3',
+            title: 'Elektrische Leistung und Wirkungsgrad',
+            estimatedMinutes: 12,
+            learningGoals: [
+              'Elektrische Leistung mit $P = U \\cdot I$ berechnen',
+              'Wirkungsgrad $\\eta = P_\\text{ab}/P_\\text{zu}$ anwenden',
+            ],
+            content: String.raw`## Elektrische Leistung und Wirkungsgrad
+
+### Leistungsformeln
+
+$$P = U \cdot I = \frac{U^2}{R} = I^2 \cdot R$$
+
+Einheit: Watt (W). Energie: $W = P \cdot t$ (Joule).
+
+### Wirkungsgrad
+
+$$\eta = \frac{P_\text{ab}}{P_\text{zu}} \quad (0 < \eta \leq 1)$$
+
+### Wärmeverlust im Widerstand
+
+$$P_R = I^2 \cdot R$$
+`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'An einem Verbraucher liegt $U = 230\\,\\text{V}$ an und es fließt $I = 5\\,\\text{A}$. Wie groß ist die Leistung $P$ in Watt?',
+                correctValue: 1150,
+                tolerance: 1,
+                unit: 'W',
+                explanation: '$P = U \\cdot I = 230 \\cdot 5 = 1150\\,\\text{W}$',
+                hints: [
+                  '$P = U \\cdot I$',
+                  '$P$ in Watt',
+                  '$230 \\cdot 5 = 1150$',
+                ],
+              },
+              {
+                type: 'multiple-choice',
+                question: 'Eine Glühlampe hat $R = 529\\,\\Omega$ an $U = 230\\,\\text{V}$. Welche Leistung hat sie?',
+                options: ['100 W', '230 W', '529 W', '43 W'],
+                correctIndex: 0,
+                explanation: '$P = U^2/R = 230^2/529 = 52900/529 = 100\\,\\text{W}$',
+                hints: [
+                  '$P = U^2 / R$',
+                  '$230^2 = 52900$',
+                  '$52900 / 529 = 100$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Ein Motor hat eine Eingangsleistung $P_\\text{zu} = 2\\,\\text{kW}$ und einen Wirkungsgrad $\\eta = 0{,}8$. Wie groß ist die abgegebene Nutzleistung $P_\\text{ab}$ in Watt?',
+                correctValue: 1600,
+                tolerance: 1,
+                unit: 'W',
+                explanation: '$P_\\text{ab} = \\eta \\cdot P_\\text{zu} = 0{,}8 \\cdot 2000 = 1600\\,\\text{W}$',
+                hints: [
+                  '$\\eta = P_\\text{ab} / P_\\text{zu}$',
+                  '$P_\\text{ab} = \\eta \\cdot P_\\text{zu}$',
+                  '$0{,}8 \\cdot 2000 = 1600$',
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'et-unit-2',
+        title: 'Wechselstrom',
+        description: 'Impedanz, Phasenverschiebung und Leistungsfaktor.',
+        lessons: [
+          // ── et-2-1 ────────────────────────────────────────────────────────
+          {
+            id: 'et-2-1',
+            title: 'Wechselstromgrundlagen und Impedanz',
+            estimatedMinutes: 14,
+            learningGoals: [
+              'Wechselspannung und Kreisfrequenz $\\omega = 2\\pi f$ verstehen',
+              'Impedanzen $Z_R$, $Z_C$, $Z_L$ berechnen',
+            ],
+            content: String.raw`## Wechselstromgrundlagen und Impedanz
+
+### Wechselspannung
+
+$$u(t) = \hat{u} \cdot \sin(\omega t + \varphi), \quad \omega = 2\pi f$$
+
+**Effektivwert:** $U = \hat{u}/\sqrt{2}$
+
+### Impedanz (komplexer Widerstand)
+
+| Bauelement | Impedanz | Betrag |
+|-----------|----------|--------|
+| Ohmscher Widerstand | $Z_R = R$ | $R$ |
+| Kondensator | $Z_C = \frac{1}{j\omega C}$ | $\frac{1}{\omega C}$ |
+| Spule | $Z_L = j\omega L$ | $\omega L$ |
+
+Der **Betrag** der Impedanz gibt das Verhältnis $|Z| = U/I$ an.
+`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'Ein Kondensator $C = 10\\,\\mu\\text{F}$ wird mit $f = 50\\,\\text{Hz}$ betrieben. Wie groß ist der Impedanzbetrag $|Z_C|$ in Ohm?',
+                correctValue: 318,
+                tolerance: 5,
+                unit: 'Ohm',
+                explanation: '$|Z_C| = \\frac{1}{\\omega C} = \\frac{1}{2\\pi \\cdot 50 \\cdot 10^{-5}} \\approx 318\\,\\Omega$',
+                hints: [
+                  '$Z_C = 1/(j\\omega C)$',
+                  '$|Z_C| = 1/(\\omega C)$',
+                  '$\\omega = 2\\pi \\cdot 50 \\approx 314\\,\\text{rad/s}$',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: 'Der Effektivwert einer Sinusspannung beträgt $\\hat{u}/\\sqrt{2}$.',
+                correct: true,
+                explanation: 'Für reine Sinussignale gilt $U_\\text{eff} = \\hat{u}/\\sqrt{2} \\approx 0{,}707\\,\\hat{u}$.',
+                hints: [
+                  '$U_\\text{eff} = \\hat{u}/\\sqrt{2}$',
+                  'Für Sinus-Signale gilt diese Beziehung',
+                  '$\\sqrt{2} \\approx 1{,}414$',
+                ],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] Eine Spule $L = 0{,}1\\,\\text{H}$ liegt an $f = 50\\,\\text{Hz}$. Wie groß ist $|Z_L|$?',
+                options: [
+                  '$\\approx 31{,}4\\,\\Omega$',
+                  '$\\approx 5\\,\\Omega$',
+                  '$\\approx 100\\,\\Omega$',
+                  '$\\approx 314\\,\\Omega$',
+                ],
+                correctIndex: 0,
+                explanation: '$|Z_L| = \\omega L = 2\\pi \\cdot 50 \\cdot 0{,}1 = 10\\pi \\approx 31{,}4\\,\\Omega$',
+                hints: [
+                  '$Z_L = j\\omega L$',
+                  '$|Z_L| = \\omega L$',
+                  '$\\omega = 2\\pi \\cdot 50 \\approx 314 \\Rightarrow 314 \\cdot 0{,}1 = 31{,}4$',
+                ],
+              },
+            ],
+          },
+          // ── et-2-2 ────────────────────────────────────────────────────────
+          {
+            id: 'et-2-2',
+            title: 'RC- und RL-Schaltungen',
+            estimatedMinutes: 14,
+            learningGoals: [
+              'Grenzfrequenz eines RC-Tiefpasses berechnen',
+              'Impedanz einer RL-Schaltung bestimmen',
+              'Leistungsfaktor $\\cos\\varphi$ verstehen',
+            ],
+            content: String.raw`## RC- und RL-Schaltungen
+
+### RC-Tiefpass
+
+$$|G(j\omega)| = \frac{1}{\sqrt{1+(\omega RC)^2}}$$
+
+**Grenzfrequenz:** $f_g = \frac{1}{2\pi RC}$ (bei $f_g$: Betrag auf $1/\sqrt{2} \approx 0{,}707$ abgefallen)
+
+### RL-Schaltung
+
+Zeitkonstante: $\tau = L/R$
+
+Impedanzbetrag: $|Z| = \sqrt{R^2 + (\omega L)^2}$
+
+### Leistungsfaktor
+
+$$\cos\varphi = \frac{R}{|Z|}, \quad P = S \cdot \cos\varphi$$
+
+$\cos\varphi = 1$: rein ohmsche Last, keine Blindleistung.
+`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'RC-Tiefpass mit $R = 1\\,\\text{k}\\Omega$ und $C = 10\\,\\mu\\text{F}$. Wie groß ist die Grenzfrequenz $f_g$ in Hz?',
+                correctValue: 15.9,
+                tolerance: 0.5,
+                unit: 'Hz',
+                explanation: '$f_g = \\frac{1}{2\\pi RC} = \\frac{1}{2\\pi \\cdot 1000 \\cdot 10^{-5}} \\approx 15{,}9\\,\\text{Hz}$',
+                hints: [
+                  '$f_g = 1/(2\\pi R C)$',
+                  '$R \\cdot C = 1000 \\cdot 10^{-5} = 0{,}01\\,\\text{s}$',
+                  '$1/(2\\pi \\cdot 0{,}01) \\approx 15{,}9$',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: 'Bei $\\cos\\varphi = 1$ ist die gesamte Scheinleistung Wirkleistung (kein Blindanteil).',
+                correct: true,
+                explanation: '$\\cos\\varphi = 1 \\Rightarrow \\varphi = 0°$, d.h. Strom und Spannung sind phasengleich. $P = S \\cdot 1 = S$.',
+                hints: [
+                  '$\\cos\\varphi = 1 \\Rightarrow \\varphi = 0°$ (kein Phasenversatz)',
+                  '$P = S \\cdot \\cos\\varphi = S$',
+                  'Nur bei rein ohmscher Last',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] RL-Schaltung: $R = 50\\,\\Omega$, $L = 0{,}2\\,\\text{H}$, $f = 50\\,\\text{Hz}$. Wie groß ist der Impedanzbetrag $|Z|$ in Ohm?',
+                correctValue: 80.3,
+                tolerance: 1,
+                unit: 'Ohm',
+                explanation: '$\\omega L = 2\\pi \\cdot 50 \\cdot 0{,}2 \\approx 62{,}8\\,\\Omega$. $|Z| = \\sqrt{50^2 + 62{,}8^2} = \\sqrt{2500 + 3944} \\approx 80{,}3\\,\\Omega$',
+                hints: [
+                  '$|Z| = \\sqrt{R^2 + (\\omega L)^2}$',
+                  '$\\omega L = 2\\pi \\cdot 50 \\cdot 0{,}2 \\approx 62{,}8\\,\\Omega$',
+                  '$\\sqrt{50^2 + 62{,}8^2} = \\sqrt{6447} \\approx 80{,}3$',
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'et-unit-3',
+        title: 'Prüfungsaufgaben',
+        description: 'Klausurrelevante Elektrotechnik-Aufgaben.',
+        lessons: [
+          // ── et-3-1 ────────────────────────────────────────────────────────
+          {
+            id: 'et-3-1',
+            title: 'Gleichstrom Prüfungsaufgaben',
+            estimatedMinutes: 20,
+            learningGoals: [
+              'Kirchhoffsche Gesetze in komplexen Schaltungen anwenden',
+              'Spannungsteiler und Stromteiler berechnen',
+              'Elektrische Energie und Leistung klausurfertig lösen',
+            ],
+            content: String.raw`## [PRÜFUNG] Gleichstromkreise — Klausuraufgaben
+
+### Wichtige Formeln
+
+**Kirchhoff:**
+- KCL (Knoten): $\sum I = 0$
+- KVL (Masche): $\sum U = 0$
+
+**Schaltungen:**
+- Reihenschaltung: $R_\text{ges} = \sum R_i$
+- Parallelschaltung: $\frac{1}{R_\text{ges}} = \sum \frac{1}{R_i}$
+
+**Leistung:** $P = U \cdot I = \frac{U^2}{R} = I^2 R$
+
+**Spannungsteiler:**
+$$U_1 = U \cdot \frac{R_1}{R_1 + R_2}$$
+
+**Stromteiler:** Größerer Widerstand → kleinerer Teilstrom (umgekehrt proportional).
+`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Spannungsteiler: $U = 12\\,\\text{V}$, $R_1 = 300\\,\\Omega$, $R_2 = 700\\,\\Omega$. Wie groß ist die Spannung $U_2$ an $R_2$ in Volt?',
+                correctValue: 8.4,
+                tolerance: 0.05,
+                unit: 'V',
+                explanation: '$U_2 = U \\cdot \\frac{R_2}{R_1 + R_2} = 12 \\cdot \\frac{700}{1000} = 8{,}4\\,\\text{V}$',
+                hints: [
+                  'Spannungsteiler: $U_2 = U \\cdot R_2/(R_1 + R_2)$',
+                  '$R_1 + R_2 = 1000\\,\\Omega$',
+                  '$12 \\cdot 700/1000 = 8{,}4$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Parallelschaltung $R_1 = 60\\,\\Omega$ und $R_2 = 40\\,\\Omega$. Wie groß ist $R_\\text{ges}$ in Ohm?',
+                correctValue: 24,
+                tolerance: 0.1,
+                unit: 'Ohm',
+                explanation: '$\\frac{1}{R_\\text{ges}} = \\frac{1}{60} + \\frac{1}{40} = \\frac{2}{120} + \\frac{3}{120} = \\frac{5}{120} \\Rightarrow R_\\text{ges} = 24\\,\\Omega$',
+                hints: [
+                  '$1/R_\\text{ges} = 1/R_1 + 1/R_2$',
+                  '$1/60 + 1/40 = 5/120$',
+                  '$R_\\text{ges} = 120/5 = 24$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Heizwiderstand $R = 23\\,\\Omega$ an $U = 230\\,\\text{V}$ läuft 1 Stunde. Wie viel Energie $W$ wird verbraucht in kWh?',
+                correctValue: 2.3,
+                tolerance: 0.05,
+                unit: 'kWh',
+                explanation: '$P = U^2/R = 230^2/23 = 2300\\,\\text{W}$. $W = P \\cdot t = 2300\\,\\text{W} \\cdot 1\\,\\text{h} = 2{,}3\\,\\text{kWh}$',
+                hints: [
+                  '$P = U^2/R = 52900/23 = 2300\\,\\text{W}$',
+                  '$W = P \\cdot t$',
+                  'kWh: $2300\\,\\text{W} \\cdot 1\\,\\text{h} = 2{,}3\\,\\text{kWh}$',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: '[PRÜFUNG] Ein Stromteiler teilt den Strom umgekehrt proportional zu den Widerständen auf (größerer Widerstand → kleinerer Teilstrom).',
+                correct: true,
+                explanation: '$I_k = I_\\text{ges} \\cdot \\frac{R_\\text{parallel}}{R_k}$. Der Strom fließt bevorzugt durch den kleineren Widerstand.',
+                hints: [
+                  '$I_k = I_\\text{ges} \\cdot R_\\text{parallel}/R_k$',
+                  'Kleinerer Widerstand → größerer Anteil',
+                  'Umgekehrt proportional',
+                ],
+              },
+            ],
+          },
+          // ── et-3-2 ────────────────────────────────────────────────────────
+          {
+            id: 'et-3-2',
+            title: 'Wechselstrom Prüfungsaufgaben',
+            estimatedMinutes: 20,
+            learningGoals: [
+              'Resonanzfrequenz eines RLC-Kreises berechnen',
+              'Leistungsfaktor und Wirkleistung bestimmen',
+              'Tiefpass-Übertragungsverhalten klausurfertig beherrschen',
+            ],
+            content: String.raw`## [PRÜFUNG] Wechselstromkreise — Klausuraufgaben
+
+### Wichtige Formeln
+
+**Impedanzen:** $|Z_R| = R$, $|Z_C| = \frac{1}{\omega C}$, $|Z_L| = \omega L$
+
+**RLC-Reihenschaltung:**
+$$Z_\text{ges} = R + j\!\left(\omega L - \frac{1}{\omega C}\right), \quad |Z_\text{ges}| = \sqrt{R^2 + X^2}$$
+
+mit Reaktanz $X = \omega L - \frac{1}{\omega C}$
+
+**Resonanz:** $\omega_0 = \frac{1}{\sqrt{LC}}, \quad f_0 = \frac{1}{2\pi\sqrt{LC}}$
+
+**Leistungsfaktor:** $\cos\varphi = \frac{R}{|Z|}$, $\quad P = S \cdot \cos\varphi$
+`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] RLC-Reihenschaltung: $R = 100\\,\\Omega$, $L = 0{,}1\\,\\text{H}$, $C = 100\\,\\mu\\text{F}$. Wie groß ist die Resonanzfrequenz $f_0$ in Hz?',
+                correctValue: 50.3,
+                tolerance: 1,
+                unit: 'Hz',
+                explanation: '$f_0 = \\frac{1}{2\\pi\\sqrt{LC}} = \\frac{1}{2\\pi\\sqrt{0{,}1 \\cdot 10^{-4}}} = \\frac{1}{2\\pi \\cdot 0{,}00316} \\approx 50{,}3\\,\\text{Hz}$',
+                hints: [
+                  '$f_0 = 1/(2\\pi\\sqrt{LC})$',
+                  '$L \\cdot C = 0{,}1 \\cdot 10^{-4} = 10^{-5}$',
+                  '$1/(2\\pi \\cdot \\sqrt{10^{-5}}) \\approx 50{,}3\\,\\text{Hz}$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] RC-Tiefpass bei der Grenzfrequenz $f = f_g$. Wie groß ist der Übertragungsbetrags $|G|$?',
+                correctValue: 0.707,
+                tolerance: 0.005,
+                unit: '',
+                explanation: 'Bei $f = f_g$ gilt $\\omega RC = 1$: $|G| = 1/\\sqrt{1+1^2} = 1/\\sqrt{2} \\approx 0{,}707$ (der $-3\\,\\text{dB}$-Punkt).',
+                hints: [
+                  'Bei $f = f_g$ gilt $\\omega RC = 1$',
+                  '$|G| = 1/\\sqrt{1+(\\omega RC)^2}$',
+                  '$1/\\sqrt{2} \\approx 0{,}707$ ($-3\\,\\text{dB}$-Punkt)',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Scheinleistung $S = 5\\,\\text{kVA}$, Leistungsfaktor $\\cos\\varphi = 0{,}8$. Wie groß ist die Wirkleistung $P$ in Watt?',
+                correctValue: 4000,
+                tolerance: 10,
+                unit: 'W',
+                explanation: '$P = S \\cdot \\cos\\varphi = 5000 \\cdot 0{,}8 = 4000\\,\\text{W}$',
+                hints: [
+                  '$P = S \\cdot \\cos\\varphi$',
+                  '$S = 5000\\,\\text{VA}$',
+                  '$5000 \\cdot 0{,}8 = 4000\\,\\text{W}$',
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  // ─── Regelungstechnik ────────────────────────────────────────────────────
+  {
+    topic: {
+      id: 'regelungstechnik',
+      title: 'Regelungstechnik',
+      description: 'Regelkreis, Übertragungsfunktionen, PID-Regler und Stabilität.',
+      subject: 'engineering',
+      icon: 'RT',
+      color: 'teal',
+      estimatedHours: 5,
+      difficulty: 4,
+      level: 'vertiefung',
+      prerequisites: ['differentialgleichungen', 'elektrotechnik'],
+    },
+    units: [
+      {
+        id: 'rt-unit-1',
+        title: 'Grundlagen des Regelkreises',
+        description: 'Regelkreis, Grundbegriffe und Übertragungsfunktionen.',
+        lessons: [
+          // ── rt-1-1 ───────────────────────────────────────────────────────
+          {
+            id: 'rt-1-1',
+            title: 'Regelkreis Grundbegriffe',
+            estimatedMinutes: 12,
+            learningGoals: [
+              'Komponenten eines Regelkreises benennen',
+              'Regelabweichung $e = w - y$ erklären',
+              'Steuerung und Regelung unterscheiden',
+            ],
+            content: String.raw`## Regelkreis — Grundbegriffe
+
+### Komponenten
+
+| Komponente | Funktion |
+|-----------|----------|
+| Regelstrecke | Der zu regelnde Prozess |
+| Regler (Controller) | Berechnet die Stellgröße |
+| Stellglied | Setzt Stellgröße in physikalische Aktion um |
+| Messglied | Misst die Regelgröße (Istwert) |
+
+### Wichtige Größen
+
+- **Führungsgröße** $w$: Sollwert (gewünschter Zustand)
+- **Regelgröße** $y$: Istwert (tatsächlicher Zustand)
+- **Regelabweichung:** $e = w - y$ (Soll $-$ Ist)
+- **Stellgröße** $u$: Eingriff des Reglers in die Strecke
+
+### Steuerung vs. Regelung
+
+- **Steuerung** (offener Kreis): Kein Feedback — kann Störungen **nicht** ausregeln.
+- **Regelung** (geschlossener Kreis): Istwert wird gemessen und zurückgeführt → Störungen werden automatisch korrigiert.
+`,
+            exercises: [
+              {
+                type: 'multiple-choice',
+                question: 'Was ist die Regelabweichung $e$?',
+                options: [
+                  '$e = w - y$ (Soll minus Ist)',
+                  '$e = y - w$',
+                  '$e = u/y$',
+                  '$e = w \\cdot y$',
+                ],
+                correctIndex: 0,
+                explanation: 'Die Regelabweichung ist die Differenz aus Führungsgröße (Soll) und Regelgröße (Ist): $e = w - y$.',
+                hints: [
+                  '$e$ = Führungsgröße $-$ Regelgröße',
+                  'Soll $-$ Ist',
+                  '$e = w - y$',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: 'Eine Steuerung (offener Kreis) kann Störungen automatisch ausregeln.',
+                correct: false,
+                explanation: 'Ohne Rückkopplung (Messung des Istwerts) kann nicht auf Störungen reagiert werden. Nur die Regelung (geschlossener Kreis) kompensiert Störungen.',
+                hints: [
+                  'Steuerung hat keine Rückkopplung',
+                  'Nur Regelung (geschlossener Kreis) misst $y$',
+                  'Keine Messung → keine Störungskorrektur',
+                ],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] Welche Aussage über Regelungen ist richtig?',
+                options: [
+                  'Regelungen messen den Istwert und korrigieren Abweichungen automatisch',
+                  'Regelungen funktionieren ohne Rückkopplung',
+                  'Der Regler gibt immer konstante Stellgröße aus',
+                  'Störungen haben keinen Einfluss bei Steuerungen',
+                ],
+                correctIndex: 0,
+                explanation: 'Regelungen sind geschlossene Kreise: Der Istwert $y$ wird gemessen, mit dem Sollwert $w$ verglichen und der Regler korrigiert $e = w - y$.',
+                hints: [
+                  'Regelung = geschlossener Kreis',
+                  'Istwert wird gemessen und zurückgeführt',
+                  '$e = w - y \\Rightarrow$ Regler reagiert auf Abweichung',
+                ],
+              },
+            ],
+          },
+          // ── rt-1-2 ───────────────────────────────────────────────────────
+          {
+            id: 'rt-1-2',
+            title: 'Übertragungsfunktion',
+            estimatedMinutes: 15,
+            learningGoals: [
+              'Übertragungsfunktion $G(s) = Y(s)/U(s)$ im Laplace-Bereich definieren',
+              'PT1-Glied und Verstärkung bei $s = 0$ bestimmen',
+              'Führungsübertragungsfunktion $T = G_0/(1+G_0)$ berechnen',
+            ],
+            content: String.raw`## Übertragungsfunktion
+
+Im **Laplace-Bereich** wird ein lineares System durch seine Übertragungsfunktion beschrieben:
+
+$$G(s) = \frac{Y(s)}{U(s)}$$
+
+### Grundglieder
+
+| Glied | $G(s)$ | Eigenschaften |
+|-------|--------|---------------|
+| Proportionalglied (P) | $K$ | konstante Verstärkung |
+| Integrator (I) | $K/s$ | integriert Eingang |
+| PT1-Glied | $K/(1+Ts)$ | Tiefpass 1. Ordnung |
+| PT2-Glied | $K/(1+2DTs+T^2s^2)$ | Tiefpass 2. Ordnung |
+
+### Stationäre Verstärkung
+
+Für $s \to 0$: $G(0) = K$ (statisches Verhalten)
+
+### Schaltungen im s-Bereich
+
+- **Reihenschaltung:** $G_\text{ges} = G_1 \cdot G_2$
+- **Gegenkopplung (offene Schleife):** $G_0 = G_R \cdot G_S$
+- **Führungsübertragungsfunktion:** $T(s) = \dfrac{G_0}{1 + G_0}$
+`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'PT1-Glied: $G(s) = \\frac{2}{1+0{,}5s}$. Wie groß ist die stationäre Verstärkung $K$ (bei $s \\to 0$)?',
+                correctValue: 2,
+                tolerance: 0.01,
+                unit: '',
+                explanation: 'Stationäre Verstärkung: $G(0) = K/(1+T \\cdot 0) = K = 2$.',
+                hints: [
+                  'Stationäre Verstärkung: $s \\to 0$ einsetzen',
+                  '$G(0) = K/(1 + T \\cdot 0) = K$',
+                  '$G(0) = 2/1 = 2$',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: 'Bei Reihenschaltung zweier Übertragungsglieder $G_1$ und $G_2$ gilt $G_\\text{ges} = G_1 + G_2$.',
+                correct: false,
+                explanation: 'Bei Reihenschaltung wird **multipliziert**: $G_\\text{ges} = G_1 \\cdot G_2$. Erst die Parallelschaltung (Überlagerung) ergibt eine Addition.',
+                hints: [
+                  'Reihenschaltung: Ausgabe von $G_1$ ist Eingabe von $G_2$',
+                  '$G_\\text{ges} = G_1 \\cdot G_2$ (nicht $+$)',
+                  'Wie Signalkette: $Y = G_2 \\cdot (G_1 \\cdot U)$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Regler $G_R = 5$, Strecke $G_S(s) = 1/(s+2)$. Wie groß ist die Führungsübertragungsfunktion $T(0)$ bei $s = 0$?',
+                correctValue: 0.714,
+                tolerance: 0.005,
+                unit: '',
+                explanation: '$G_0(0) = 5 \\cdot (1/2) = 2{,}5$. $T(0) = 2{,}5/(1+2{,}5) = 2{,}5/3{,}5 \\approx 0{,}714$.',
+                hints: [
+                  '$G_0 = G_R \\cdot G_S$',
+                  '$T = G_0/(1+G_0)$',
+                  'Bei $s=0$: $G_0(0) = 5 \\cdot (1/2) = 2{,}5$',
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'rt-unit-2',
+        title: 'Regler und Stabilität',
+        description: 'PID-Regler und Stabilitätskriterien.',
+        lessons: [
+          // ── rt-2-1 ───────────────────────────────────────────────────────
+          {
+            id: 'rt-2-1',
+            title: 'PID-Regler',
+            estimatedMinutes: 15,
+            learningGoals: [
+              'P-, I- und D-Anteil des PID-Reglers erklären',
+              'Wirkung der drei Anteile im Zeitbereich verstehen',
+              'PID im Laplace-Bereich formulieren',
+            ],
+            content: String.raw`## PID-Regler
+
+Der PID-Regler kombiniert drei Anteile:
+
+$$u(t) = K_P \!\left(e(t) + \frac{1}{T_I}\int e\,\mathrm{d}t + T_D\,\frac{\mathrm{d}e}{\mathrm{d}t}\right)$$
+
+| Anteil | Formel | Wirkung | Nachteil |
+|--------|--------|---------|----------|
+| **P** (Proportional) | $u_P = K_P \cdot e$ | schnelle Reaktion | bleibender Dauerfehler |
+| **I** (Integral) | $u_I = K_I \int e\,\mathrm{d}t$ | löscht Dauerfehler | träge, Überschwingen |
+| **D** (Differential) | $u_D = K_D \cdot \dot{e}$ | antizipiert Trends | rauschempfindlich |
+
+### Im Laplace-Bereich
+
+$$G_R(s) = K_P\!\left(1 + \frac{1}{T_I s} + T_D s\right)$$
+
+- Für $s \to 0$ (DC): I-Anteil dominiert ($1/(T_I s) \to \infty$)
+- Für $s \to \infty$ (hohe Frequenz): D-Anteil dominiert ($T_D s \to \infty$)
+`,
+            exercises: [
+              {
+                type: 'multiple-choice',
+                question: 'Welcher Regleranteil beseitigt den stationären Fehler (bleibende Regelabweichung)?',
+                options: [
+                  'I-Anteil (Integral)',
+                  'P-Anteil',
+                  'D-Anteil',
+                  'Keiner davon',
+                ],
+                correctIndex: 0,
+                explanation: 'Der I-Anteil integriert den Fehler auf. Solange $e \\neq 0$, wächst der I-Anteil und zwingt $e \\to 0$ im stationären Zustand.',
+                hints: [
+                  'I-Anteil integriert den Fehler auf',
+                  'Solange $e \\neq 0$, wächst der I-Anteil',
+                  'I-Anteil zwingt $e \\to 0$ im stationären Zustand',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: 'Der D-Anteil eines PID-Reglers reagiert auf den aktuellen Fehlerwert $e(t)$.',
+                correct: false,
+                explanation: 'Der D-Anteil reagiert auf die **Änderungsrate** $\\mathrm{d}e/\\mathrm{d}t$ — er antizipiert Trends im Fehler, nicht den Fehler selbst.',
+                hints: [
+                  'D = Differential = Ableitung',
+                  'D-Anteil $\\propto \\mathrm{d}e/\\mathrm{d}t$, nicht $e$ selbst',
+                  'Schnelle Fehleränderung → große D-Wirkung',
+                ],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] PID im Laplace-Bereich: $G_R(s) = K_P(1 + 1/(T_I s) + T_D s)$. Was dominiert bei hohen Frequenzen ($s \\to \\infty$)?',
+                options: [
+                  'D-Anteil ($T_D s \\to \\infty$)',
+                  'I-Anteil ($1/(T_I s) \\to 0$)',
+                  'P-Anteil',
+                  'Alle gleich',
+                ],
+                correctIndex: 0,
+                explanation: 'Für $s \\to \\infty$: $T_D s \\to \\infty$ dominiert, $1/(T_I s) \\to 0$ verschwindet. D-Anteil dominiert bei schnellen Änderungen.',
+                hints: [
+                  'Für $s \\to \\infty$: $T_D s \\to \\infty$ dominiert',
+                  '$1/(T_I s) \\to 0$ (verschwindet)',
+                  'D ist dominant bei schnellen Änderungen (hohen Frequenzen)',
+                ],
+              },
+            ],
+          },
+          // ── rt-2-2 ───────────────────────────────────────────────────────
+          {
+            id: 'rt-2-2',
+            title: 'Stabilität',
+            estimatedMinutes: 14,
+            learningGoals: [
+              'Stabilitätsbedingung (Pole in linker Halbebene) formulieren',
+              'Hurwitz-Kriterium erklären',
+              'Phasenrand und Amplitudenrand im Bodediagramm interpretieren',
+            ],
+            content: String.raw`## Stabilität von Regelkreisen
+
+### Grundbedingung
+
+Ein System ist **stabil**, wenn alle Pole der geschlossenen Schleife **negativen Realteil** haben (linke $s$-Halbebene):
+
+$$\text{Re}(s_i) < 0 \quad \forall i$$
+
+Pole in der rechten Halbebene → instabil (Ausgabe wächst unbegrenzt).
+
+### Hurwitz-Kriterium
+
+Für Polynome $a_n s^n + \ldots + a_1 s + a_0$:
+- **Notwendig:** Alle Koeffizienten $a_i > 0$
+- **Hinreichend (für $n \geq 3$):** Hurwitz-Determinanten müssen positiv sein
+
+### Stabilität im Bodediagramm
+
+- **Phasenrand** $\varphi_R \geq 30°$: gute Stabilitätsreserve
+- **Amplitudenrand** $A_R \geq 6\,\text{dB}$: gute Amplitudenreserve
+
+Zu kleiner Phasenrand → starkes Überschwingen oder Instabilität.
+`,
+            exercises: [
+              {
+                type: 'multiple-choice',
+                question: 'Ein System ist stabil, wenn alle Pole der Übertragungsfunktion ...',
+                options: [
+                  'negativen Realteil haben (linke Halbebene)',
+                  'positiven Realteil haben',
+                  'auf der imaginären Achse liegen',
+                  'betragsmäßig $< 1$ sind',
+                ],
+                correctIndex: 0,
+                explanation: 'Pol bei $s = a + jb$: stabil genau dann, wenn $a < 0$. Dann klingt $e^{at} \\to 0$ ab.',
+                hints: [
+                  'Pol bei $s = a + jb$: stabil wenn $a < 0$',
+                  'Linke $s$-Halbebene → Zeitantwort klingt ab',
+                  '$e^{at} \\to 0$ nur wenn $a < 0$',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: 'Ein Phasenrand von $45°$ gilt als gute Stabilitätsreserve.',
+                correct: true,
+                explanation: 'Empfohlen: $\\varphi_R \\geq 30°$. Ein Phasenrand von $45°$ liefert moderates Überschwingen und ist in der Praxis gut akzeptiert.',
+                hints: [
+                  'Empfehlung: $\\varphi_R \\geq 30°$',
+                  '$\\varphi_R = 45°$ → moderates Überschwingen',
+                  '$\\varphi_R < 0° \\Rightarrow$ instabil',
+                ],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] System 3. Ordnung: Nenner $2s^3 + 3s^2 + s + k$. Welche Aussage zur Hurwitz-Bedingung ist richtig?',
+                options: [
+                  'Notwendig: alle Koeffizienten positiv; hinreichend braucht Hurwitz-Determinante',
+                  'Alle Koeffizienten positiv ist hinreichend für Stabilität',
+                  '$k$ hat keinen Einfluss auf Stabilität',
+                  'Nur der führende Koeffizient zählt',
+                ],
+                correctIndex: 0,
+                explanation: 'Für $n \\geq 3$ ist das positive Vorzeichen aller Koeffizienten nur **notwendig** — die Hurwitz-Determinante muss zusätzlich geprüft werden.',
+                hints: [
+                  'Alle Koeffizienten $> 0$ ist nur notwendig, nicht hinreichend',
+                  'Für $n \\geq 3$ braucht man die Hurwitz-Determinante',
+                  'Für $n = 1, 2$ reicht Koeffizientencheck',
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'rt-unit-3',
+        title: 'Prüfungsaufgaben',
+        description: 'Klausurrelevante Regelungstechnik-Aufgaben.',
+        lessons: [
+          // ── rt-3-1 ───────────────────────────────────────────────────────
+          {
+            id: 'rt-3-1',
+            title: 'Regelkreis & PID Prüfungsaufgaben',
+            estimatedMinutes: 22,
+            learningGoals: [
+              'Stationäre Regelabweichung beim P-Regler berechnen',
+              'Führungsübertragungsfunktion klausurfertig anwenden',
+              'Systemtyp und Rampenfolge einordnen',
+            ],
+            content: String.raw`## [PRÜFUNG] Regelungstechnik — Klausuraufgaben
+
+### Formeln auf einen Blick
+
+**Führungsübertragungsfunktion:**
+$$T(s) = \frac{G_0(s)}{1 + G_0(s)}, \quad G_0 = G_R \cdot G_S$$
+
+**Stationäre Regelverstärkung (P-Regler):**
+$$K_0 = K_P \cdot G_S(0), \quad e_\text{stat} = \frac{1}{1 + K_0}$$
+
+**PID im Laplace-Bereich:**
+$$G_R(s) = K_P\!\left(1 + \frac{1}{T_I s} + T_D s\right)$$
+
+**Stabilität:** Alle Pole von $T(s)$ müssen $\text{Re}(s) < 0$ haben.
+`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] P-Regler $K_P = 10$, Strecke $G_S(s) = 1/(s+1)$. Wie groß ist die bleibende Regelabweichung $e_\\text{stat}$ für einen Einheitssprung?',
+                correctValue: 0.091,
+                tolerance: 0.003,
+                unit: '',
+                explanation: '$K_0 = K_P \\cdot G_S(0) = 10 \\cdot 1 = 10$. $e_\\text{stat} = 1/(1+K_0) = 1/11 \\approx 0{,}091$.',
+                hints: [
+                  '$K_0 = K_P \\cdot G_S(0) = 10 \\cdot 1 = 10$',
+                  '$e_\\text{stat} = 1/(1 + K_0)$',
+                  '$1/(1+10) = 1/11 \\approx 0{,}091$',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] PT1-Glied: $G(s) = 3/(1+2s)$. Wie groß ist die Verstärkung bei $f = 0\\,\\text{Hz}$ (DC)?',
+                correctValue: 3,
+                tolerance: 0.01,
+                unit: '',
+                explanation: 'DC-Verstärkung: $s = 0$ einsetzen: $G(0) = 3/(1+0) = 3$.',
+                hints: [
+                  'DC-Verstärkung: $s = 0$ einsetzen',
+                  '$G(0) = 3/(1+0) = 3$',
+                  'Stationärer Wert des PT1-Glieds',
+                ],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] Welcher Regler-Typ gewährleistet stationäre Genauigkeit bei einem Rampeneingang?',
+                options: [
+                  'PI-Regler oder I²-Regler (2 Integratoren in offener Schleife)',
+                  'P-Regler allein',
+                  'D-Regler allein',
+                  'PD-Regler',
+                ],
+                correctIndex: 0,
+                explanation: 'Für Rampenfolge braucht der offene Kreis mindestens 2 Integratoren (Systemtyp 2). Ein PI-Regler liefert einen Integrator, ein reiner I²-Regler zwei.',
+                hints: [
+                  'Rampe = Integral des Sprungs',
+                  'Systemtyp muss um 1 erhöht werden',
+                  'Für Rampe: mindestens 2 Integratoren in $G_0$',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: '[PRÜFUNG] Ein stabiler Regelkreis hat alle Pole der Führungsübertragungsfunktion $T(s)$ in der linken $s$-Halbebene.',
+                correct: true,
+                explanation: '$T = G_0/(1+G_0)$. Die Pole von $T$ sind die Nullstellen von $1 + G_0 = 0$. Stabilität: alle Pole mit $\\text{Re}(s) < 0$.',
+                hints: [
+                  '$T = G_0/(1+G_0)$',
+                  'Pole von $T$ = Nullstellen von $1 + G_0$',
+                  'Stabil: alle Pole mit $\\text{Re}(s) < 0$',
+                ],
               },
             ],
           },
