@@ -7,6 +7,7 @@ import { getLessonById, getTopic } from '@/content/index'
 import { pickReviewExercise } from '@/utils/reviewExercisePicker'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
+import { ProgressBar } from '@/components/ui/ProgressBar'
 import { ExerciseEngine } from '@/components/exercises/ExerciseEngine'
 
 export function ReviewArea() {
@@ -168,9 +169,11 @@ export function ReviewArea() {
             <span className="num text-lemon font-black text-lg">{done.length}/{due.length}</span>
           </div>
         </div>
-        <div className="w-full bg-surface-800 border border-surface-600 rounded-sm h-3 overflow-hidden">
-          <div className="bg-lemon h-full transition-all duration-500" style={{ width: `${(done.length / due.length) * 100}%` }} />
-        </div>
+        <ProgressBar
+          value={(done.length / due.length) * 100}
+          size="lg"
+          tone="dark-lemon"
+        />
       </div>
 
       {/* Mode toggle */}

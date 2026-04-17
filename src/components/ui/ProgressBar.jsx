@@ -19,6 +19,12 @@ const TONE_CLASSES = {
     track: 'bg-surface-100 dark:bg-surface-700 border-ink',
     fill:  'bg-green-600',
   },
+  // Für dunkle Hintergründe (z.B. TopicDetail-Header, ReviewArea-Header):
+  // gelber Balken auf dunklem Track, damit der Akzent auch auf Ink sichtbar bleibt.
+  'dark-lemon': {
+    track: 'bg-surface-800 border-surface-600',
+    fill:  'bg-lemon',
+  },
 }
 
 /**

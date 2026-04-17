@@ -17,11 +17,19 @@ function ScrollToTop() {
 }
 
 export function AppLayout() {
+  const { pathname } = useLocation()
+  // Nur das erste Segment als Fade-Key, damit In-Page-Navigation (z.B. Step-Wechsel
+  // innerhalb einer Lektion via querystring/hash) nicht bei jedem Sub-State neu fadet.
+  const fadeKey = '/' + (pathname.split('/')[1] ?? '')
+
   return (
     <div className="min-h-[100dvh] flex flex-col bg-paper bg-graph-paper">
       <ScrollToTop />
       <Header />
-      <main className="flex-1 pb-[calc(5rem+env(safe-area-inset-bottom))] md:pb-8">
+      <main
+        key={fadeKey}
+        className="flex-1 pb-[calc(5rem+env(safe-area-inset-bottom))] md:pb-8 motion-safe:animate-fade-in"
+      >
         <Outlet />
       </main>
       <MobileNav />

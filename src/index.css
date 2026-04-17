@@ -73,12 +73,16 @@
   /* ── Dark-Mode-Overrides für gelbe Akzent-Boxen (WCAG AA fix) ─── */
   html.dark .bg-lemon-light { background-color: #3a3410 !important; }
   html.dark .bg-lemon       { background-color: #4a3f10 !important; }
+  /* Formula-Box: dunkler Hintergrund, aber mit Lemon-Border als Akzent,
+     damit sie visuell als "Formel" erkennbar bleibt (statt nur grauer Card). */
   html.dark .formula-box {
     background: #1a1a0a !important;
-    border-color: #475569 !important;
+    border-color: #E5BE00 !important;
     box-shadow: 3px 3px 0 0 #000 !important;
   }
-  html.dark .formula-box .katex { color: #FFE066 !important; }
+  html.dark .formula-box .katex,
+  html.dark .formula-box .katex .mord,
+  html.dark .formula-box .katex .mop { color: #FFE066 !important; }
 }
 
 @layer utilities {
