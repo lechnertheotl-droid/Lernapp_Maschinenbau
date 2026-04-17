@@ -5,10 +5,10 @@ export function NotFound({
   title = 'Seite nicht gefunden',
   message = 'Die gewünschte Seite existiert nicht oder wurde verschoben.',
   detail,
-  primaryTo = '/topics',
-  primaryLabel = 'Zur Themenübersicht',
-  secondaryTo = '/',
-  secondaryLabel = 'Zum Dashboard',
+  primaryTo = '/',
+  primaryLabel = 'Zur Startseite',
+  secondaryTo = '/mehr',
+  secondaryLabel = 'Mehr',
 }) {
   const navigate = useNavigate()
 

@@ -158,6 +158,19 @@ export function Dashboard() {
         )
       })()}
 
+      {/* ── Welcome-Hint für komplett neue Nutzer ─────────────────── */}
+      {!lastActive && totalCompleted === 0 && due.length === 0 && (
+        <div className="bg-lemon-light border-2 border-ink rounded-retro shadow-hard-sm p-4 flex items-start gap-3 animate-fade-in">
+          <span className="text-xl flex-shrink-0 font-mono font-black">👋</span>
+          <div className="flex-1 min-w-0">
+            <p className="font-black text-ink text-sm leading-tight">Los geht's!</p>
+            <p className="text-ink-soft dark:text-surface-100 text-xs leading-snug mt-1">
+              Wähle unten ein Thema oder nutze die Suche. Tipp: „Nur Grundlagen" zeigt die Themen aus den ersten beiden Semestern.
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* ── Recommended next (when no active lesson) ─────────────── */}
       {!lastActive && recommendedTopic && (
         <button

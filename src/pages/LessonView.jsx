@@ -1,20 +1,27 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, lazy, Suspense } from 'react'
 import { useAppState, useAppDispatch } from '@/context/AppContext'
 import { ACTIONS } from '@/context/appReducer'
 import { getLesson, getAllLessons } from '@/content/index'
 import { LessonStep } from '@/components/lesson/LessonStep'
 import { Modal } from '@/components/ui/Modal'
 import { Button } from '@/components/ui/Button'
-import { Calculator } from '@/components/ui/Calculator'
-import { FormulaSheet, hasFormulas } from '@/components/ui/FormulaSheet'
-import { VariableGlossary } from '@/components/ui/VariableGlossary'
+import { ToolButton } from '@/components/ui/ToolButton'
+import { hasFormulas } from '@/components/ui/formulaTopics'
 import { NotFound } from '@/components/NotFound'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { Confetti } from '@/components/ui/Confetti'
 import { LessonCompleteBadge } from '@/components/lesson/LessonCompleteBadge'
 import { getTopic } from '@/content/index'
 import { useFormulaPopover } from '@/utils/formulaPopoverContext'
+import { useSwipe } from '@/hooks/useSwipe'
+
+// Tool-Modals sind klassische On-Demand-UI: Nutzer öffnet sie per Icon-Klick.
+// Lazy-Loading hält Calculator (mathjs), FormulaSheet und VariableGlossary
+// aus dem initialen Lesson-Bundle raus.
+const Calculator       = lazy(() => import('@/components/ui/Calculator')       .then((m) => ({ default: m.Calculator })))
+const FormulaSheet     = lazy(() => import('@/components/ui/FormulaSheet')     .then((m) => ({ default: m.FormulaSheet })))
+const VariableGlossary = lazy(() => import('@/components/ui/VariableGlossary') .then((m) => ({ default: m.VariableGlossary })))
 
 export function LessonView() {
   const { topicId, lessonId } = useParams()
@@ -75,18 +82,26 @@ export function LessonView() {
     navigate(`/topics/${topicId}`)
   }
 
+  // Nur Swipe-nach-rechts (= einen Schritt zurück). Swipe-nach-links bewusst
+  // NICHT, weil der nächste Step erst nach Abschluss freigeschaltet wird —
+  // Swipe würde sonst Confusion beim Versuch den Schritt zu überspringen auslösen.
+  const swipeHandlers = useSwipe({
+    onSwipeRight: () => { if (safeIndex > 0) handleBack() },
+    threshold: 80,
+  })
+
   return (
     <div className="max-w-xl mx-auto flex flex-col min-h-[100dvh]">
 
       {/* Sticky header */}
       <div className="sticky top-0 z-30 bg-paper/95 backdrop-blur-sm border-b-2 border-ink px-4 py-3 flex items-center gap-3">
-        <button
+        <ToolButton
           onClick={handleBack}
-          className="w-10 h-10 flex items-center justify-center rounded-retro border-2 border-ink bg-white shadow-hard-sm text-ink flex-shrink-0 tap-highlight-none retro-press font-mono font-black"
-          aria-label={safeIndex > 0 ? 'Einen Schritt zurück' : 'Zur Themenübersicht'}
+          label={safeIndex > 0 ? 'Einen Schritt zurück' : 'Zur Themenübersicht'}
+          className="flex-shrink-0"
         >
           ←
-        </button>
+        </ToolButton>
         <div className="flex-1 min-w-0">
           <p className="font-mono text-[10px] font-bold text-ink-soft uppercase tracking-widest line-clamp-2 leading-tight">{lesson.title}</p>
           {/* Progress bar — segmented, visited steps clickable */}
@@ -119,49 +134,29 @@ export function LessonView() {
           </div>
         </div>
         <div className="flex items-center gap-1.5">
-          <button
-            type="button"
-            onClick={() => setShowVariables(true)}
-            className="w-10 h-10 flex items-center justify-center rounded-retro border-2 border-ink bg-white shadow-hard-sm text-ink tap-highlight-none retro-press font-mono text-[11px] font-black"
-            aria-label="Variablen-Glossar öffnen"
-            title="Variablen-Glossar"
-          >
+          <ToolButton onClick={() => setShowVariables(true)} label="Variablen-Glossar öffnen" className="text-[11px]">
             x,y
-          </button>
+          </ToolButton>
           {canShowFormulas && (
-            <button
-              type="button"
-              onClick={() => setShowFormulaSheet(true)}
-              className="w-10 h-10 flex items-center justify-center rounded-retro border-2 border-ink bg-lemon shadow-hard-lemon text-ink tap-highlight-none retro-press font-mono font-black"
-              aria-label="Formelsammlung öffnen"
-              title="Formelsammlung"
-            >
+            <ToolButton onClick={() => setShowFormulaSheet(true)} label="Formelsammlung öffnen" variant="lemon">
               f
-            </button>
+            </ToolButton>
           )}
-          <button
-            type="button"
-            onClick={() => setShowCalculator(true)}
-            className="w-10 h-10 flex items-center justify-center rounded-retro border-2 border-ink bg-white shadow-hard-sm text-ink tap-highlight-none retro-press font-mono font-black"
-            aria-label="Taschenrechner öffnen"
-            title="Taschenrechner"
-          >
+          <ToolButton onClick={() => setShowCalculator(true)} label="Taschenrechner öffnen">
             =
-          </button>
-          <button
-            type="button"
+          </ToolButton>
+          <ToolButton
             onClick={() => navigate(`/topics/${topicId}/${lessonId}/zusammenfassung`)}
-            className="w-10 h-10 flex items-center justify-center rounded-retro border-2 border-ink bg-white shadow-hard-sm text-ink tap-highlight-none retro-press font-mono text-[10px] font-black"
-            aria-label="Zusammenfassung der Lektion öffnen"
-            title="Zusammenfassung"
+            label="Zusammenfassung der Lektion öffnen"
+            className="text-[10px]"
           >
             ∑
-          </button>
+          </ToolButton>
         </div>
       </div>
 
-      {/* Step content — scrollable */}
-      <div className="flex-1 px-4 py-5 overflow-y-auto">
+      {/* Step content — scrollable, mit Swipe-nach-rechts für "zurück" */}
+      <div className="flex-1 px-4 py-5 overflow-y-auto" {...swipeHandlers}>
 
         {/* Breadcrumbs */}
         <Breadcrumbs
@@ -241,13 +236,15 @@ export function LessonView() {
         </div>
       </Modal>
 
-      <Calculator isOpen={showCalculator} onClose={() => setShowCalculator(false)} />
-      <FormulaSheet
-        isOpen={showFormulaSheet}
-        onClose={() => setShowFormulaSheet(false)}
-        topicId={topicId}
-      />
-      <VariableGlossary isOpen={showVariables} onClose={() => setShowVariables(false)} />
+      {/* Tool-Modals werden erst beim ersten Öffnen geladen — Fallback ist
+          leer, weil die Modals selbst ihre Sichtbarkeit über `isOpen` steuern. */}
+      <Suspense fallback={null}>
+        {showCalculator && <Calculator isOpen onClose={() => setShowCalculator(false)} />}
+        {showFormulaSheet && (
+          <FormulaSheet isOpen onClose={() => setShowFormulaSheet(false)} topicId={topicId} />
+        )}
+        {showVariables && <VariableGlossary isOpen onClose={() => setShowVariables(false)} />}
+      </Suspense>
     </div>
   )
 }

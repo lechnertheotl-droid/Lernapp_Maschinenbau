@@ -149,7 +149,7 @@ function VariableCard({
         <div className="mt-2 flex flex-col gap-1.5 pl-2 border-l-2 border-surface-300 dark:border-surface-600">
           {v.alternates!.map((alt, i) => (
             <div key={i} className="text-[11px]">
-              <span className="font-black text-ink-soft dark:text-surface-300">{alt.name}</span>
+              <span className="font-black text-ink dark:text-surface-100">{alt.name}</span>
               {alt.unit && <span className="font-mono text-ink-soft dark:text-surface-400 ml-1">[{alt.unit}]</span>}
               <p className="text-ink-soft dark:text-surface-400 leading-snug">{alt.desc}</p>
             </div>
