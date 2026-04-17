@@ -4,10 +4,19 @@ import { useAppState } from '@/context/AppContext'
 import { getDueItems } from '@/utils/reviewScheduler'
 
 const tabs = [
-  { to: '/',       icon: '⌂',  label: 'Home'   },
-  { to: '/topics', icon: '▤',  label: 'Themen' },
-  { to: '/review', icon: '↻',  label: 'Üben'   },
+  { to: '/',        icon: '⌂', label: 'Start'   },
+  { to: '/review',  icon: '↻', label: 'Üben'    },
+  { to: '/erfolge', icon: '★', label: 'Erfolge' },
+  { to: '/mehr',    icon: '≡', label: 'Mehr'    },
 ]
+
+const MORE_PATHS = new Set(['/mehr', '/lernpfad', '/formelsammlung', '/settings'])
+
+function isTabActive(pathname, tabTo) {
+  if (tabTo === '/mehr')    return MORE_PATHS.has(pathname)
+  if (tabTo === '/')        return pathname === '/'
+  return pathname === tabTo || pathname.startsWith(tabTo + '/')
+}
 
 export function MobileNav() {
   const { pathname } = useLocation()
@@ -20,7 +29,7 @@ export function MobileNav() {
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
     >
       {tabs.map(({ to, icon, label }) => {
-        const isActive  = pathname === to
+        const isActive  = isTabActive(pathname, to)
         const showBadge = to === '/review' && dueCount > 0
 
         return (

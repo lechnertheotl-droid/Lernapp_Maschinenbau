@@ -1,24 +1,46 @@
 import { cn } from '@/utils/cn'
 
-const colorMap = {
-  blue:   'bg-primary-600',
-  green:  'bg-green-500',
-  yellow: 'bg-yellow-400',
+const SIZE_CLASSES = {
+  sm: 'h-2',
+  md: 'h-2.5',
+  lg: 'h-3',
 }
 
-export function ProgressBar({ value = 0, color = 'blue', size = 'md', animated = false, className }) {
-  const clamped = Math.max(0, Math.min(100, value))
-  const height = size === 'sm' ? 'h-1.5' : 'h-2.5'
+const TONE_CLASSES = {
+  primary: {
+    track: 'bg-surface-100 dark:bg-surface-700 border-ink',
+    fill:  'bg-primary-700',
+  },
+  lemon:   {
+    track: 'bg-lemon-light border-lemon-dark',
+    fill:  'bg-lemon-dark',
+  },
+  green:   {
+    track: 'bg-surface-100 dark:bg-surface-700 border-ink',
+    fill:  'bg-green-600',
+  },
+}
+
+/**
+ * Einheitliche Progress-Bar im Retro-Stil (border 1px, gefüllter Block).
+ * `value` wird auf 0–100 geclampt.
+ */
+export function ProgressBar({ value = 0, size = 'md', tone = 'primary', className }) {
+  const pct  = Math.max(0, Math.min(100, Number.isFinite(value) ? value : 0))
+  const sz   = SIZE_CLASSES[size] ?? SIZE_CLASSES.md
+  const tn   = TONE_CLASSES[tone] ?? TONE_CLASSES.primary
 
   return (
-    <div className={cn('w-full bg-surface-100 rounded-full overflow-hidden', height, className)}>
+    <div
+      role="progressbar"
+      aria-valuenow={pct}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      className={cn(sz, 'border rounded-sm overflow-hidden', tn.track, className)}
+    >
       <div
-        className={cn(
-          'h-full rounded-full transition-all duration-500',
-          colorMap[color] ?? colorMap.blue,
-          animated && 'animate-pulse'
-        )}
-        style={{ width: `${clamped}%` }}
+        className={cn('h-full transition-all duration-500', tn.fill)}
+        style={{ width: `${pct}%` }}
       />
     </div>
   )

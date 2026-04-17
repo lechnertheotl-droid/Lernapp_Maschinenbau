@@ -42,16 +42,16 @@ export function TopicDetail() {
 
       {/* ── Breadcrumbs ──────────────────────────────────────────── */}
       <Breadcrumbs items={[
-        { label: 'Themen', to: '/topics' },
+        { label: 'Start', to: '/' },
         { label: topic.title },
       ]} />
 
       {/* ── Back ─────────────────────────────────────────────────── */}
       <button
-        onClick={() => navigate('/topics')}
-        className="flex items-center gap-1.5 text-ink-soft text-sm font-mono hover:text-ink self-start tap-highlight-none transition-colors"
+        onClick={() => navigate('/')}
+        className="flex items-center gap-1.5 text-ink-soft dark:text-surface-100 text-sm font-mono hover:text-ink dark:hover:text-paper self-start tap-highlight-none transition-colors"
       >
-        ← Alle Themen
+        ← Zurück zu allen Themen
       </button>
 
       {/* ── Topic header ─────────────────────────────────────────── */}

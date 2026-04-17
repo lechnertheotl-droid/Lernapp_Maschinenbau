@@ -57,7 +57,7 @@ export function TopicEntryQuiz() {
   const [finished, setFinished] = useState(false)
 
   if (!topic) {
-    return <NotFound title="Thema nicht gefunden" primaryTo="/topics" primaryLabel="Alle Themen" />
+    return <NotFound title="Thema nicht gefunden" primaryTo="/" primaryLabel="Zur Startseite" />
   }
 
   const quiz = topic.entryQuiz ?? []
@@ -65,7 +65,7 @@ export function TopicEntryQuiz() {
     return (
       <div className="max-w-xl mx-auto px-4 py-6 flex flex-col gap-4">
         <Breadcrumbs items={[
-          { label: 'Themen', to: '/topics' },
+          { label: 'Start', to: '/' },
           { label: topic.title, to: `/topics/${topicId}` },
           { label: 'Einstiegs-Check' },
         ]} />
@@ -98,7 +98,7 @@ export function TopicEntryQuiz() {
     return (
       <div className="max-w-xl mx-auto px-4 py-6 flex flex-col gap-5">
         <Breadcrumbs items={[
-          { label: 'Themen', to: '/topics' },
+          { label: 'Start', to: '/' },
           { label: topic.title, to: `/topics/${topicId}` },
           { label: 'Einstiegs-Check' },
         ]} />
@@ -150,7 +150,7 @@ export function TopicEntryQuiz() {
   return (
     <div className="max-w-xl mx-auto px-4 py-6 flex flex-col gap-5 min-h-[100dvh]">
       <Breadcrumbs items={[
-        { label: 'Themen', to: '/topics' },
+        { label: 'Start', to: '/' },
         { label: topic.title, to: `/topics/${topicId}` },
         { label: 'Einstiegs-Check' },
       ]} />

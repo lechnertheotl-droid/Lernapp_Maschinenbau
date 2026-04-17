@@ -42,7 +42,7 @@ export function Formelsammlung() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-5 flex flex-col gap-5 min-h-[100dvh]">
-      <Breadcrumbs items={[{ label: 'Themen', to: '/topics' }, { label: 'Formelsammlung' }]} />
+      <Breadcrumbs items={[{ label: 'Start', to: '/' }, { label: 'Formelsammlung' }]} />
 
       <header>
         <h1 className="font-black text-ink dark:text-paper text-2xl leading-tight">Formelsammlung</h1>

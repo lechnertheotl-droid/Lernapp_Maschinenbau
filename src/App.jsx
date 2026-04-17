@@ -7,11 +7,11 @@ import { LessonSummary } from '@/pages/LessonSummary'
 import { Onboarding } from '@/pages/Onboarding'
 import { ReviewArea } from '@/pages/ReviewArea'
 import { TopicDetail } from '@/pages/TopicDetail'
-import { TopicOverview } from '@/pages/TopicOverview'
 import { Skilltree } from '@/pages/Skilltree'
 import { TopicEntryQuiz } from '@/pages/TopicEntryQuiz'
 import { Formelsammlung } from '@/pages/Formelsammlung'
 import { Achievements } from '@/pages/Achievements'
+import { More } from '@/pages/More'
 import { Settings } from '@/pages/Settings'
 import { NotFound } from '@/components/NotFound'
 
@@ -42,10 +42,11 @@ export default function App() {
 
       <Route element={<RequireUser />}>
         <Route index element={<Dashboard />} />
-        <Route path="topics" element={<TopicOverview />} />
+        <Route path="topics" element={<Navigate to="/" replace />} />
         <Route path="lernpfad" element={<Skilltree />} />
         <Route path="formelsammlung" element={<Formelsammlung />} />
         <Route path="erfolge" element={<Achievements />} />
+        <Route path="mehr" element={<More />} />
         <Route path="topics/:topicId" element={<TopicDetail />} />
         <Route path="topics/:topicId/einstiegstest" element={<TopicEntryQuiz />} />
         <Route path="topics/:topicId/:lessonId" element={<LessonView />} />

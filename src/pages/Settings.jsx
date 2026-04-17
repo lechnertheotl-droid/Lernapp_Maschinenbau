@@ -29,7 +29,7 @@ export function Settings() {
 
   return (
     <div className="max-w-xl mx-auto px-4 py-6 flex flex-col gap-5">
-      <Breadcrumbs items={[{ label: 'Dashboard', to: '/' }, { label: 'Einstellungen' }]} />
+      <Breadcrumbs items={[{ label: 'Start', to: '/' }, { label: 'Mehr', to: '/mehr' }, { label: 'Einstellungen' }]} />
 
       <h1 className="font-black text-2xl text-ink">Einstellungen</h1>
 
