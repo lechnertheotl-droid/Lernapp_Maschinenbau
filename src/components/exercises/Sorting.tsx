@@ -67,6 +67,7 @@ function SortableItem({
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    touchAction: 'none' as const,
   }
 
   return (
