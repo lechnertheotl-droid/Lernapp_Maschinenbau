@@ -166,11 +166,17 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
       {submitted && (
         <div
           ref={feedbackPanelRef}
-          className="fixed inset-x-0 bottom-0 z-50 bg-paper/95 dark:bg-surface-900/95 backdrop-blur border-t-2 border-ink dark:border-surface-500 shadow-hard-lg dark:shadow-none flex flex-col"
-          style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+          className="fixed inset-x-0 bottom-0 z-50 bg-paper/95 dark:bg-surface-900/95 backdrop-blur border-t-2 border-ink dark:border-surface-500 flex flex-col"
+          style={{
+            paddingBottom: 'env(safe-area-inset-bottom)',
+            // Nach OBEN gerichteter Schatten — `shadow-hard-lg` (5px rechts/unten)
+            // ragte bei `inset-x-0` über den rechten Viewport-Rand und erzeugte
+            // 5px horizontalen Overflow → wirkte wie "nach rechts verschoben".
+            boxShadow: '0 -4px 0 0 rgba(26,26,26,0.18)',
+          }}
         >
           <div
-            className="max-w-xl mx-auto w-full px-3 pt-3 overflow-y-auto overscroll-contain"
+            className="max-w-xl mx-auto w-full px-4 pt-3 overflow-y-auto overscroll-contain"
             style={{ maxHeight: 'min(45vh, calc(100vh - 220px))' }}
           >
             <FeedbackContent
@@ -179,7 +185,7 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
               userAnswer={lastAnswer}
             />
           </div>
-          <div className="max-w-xl mx-auto w-full px-3 py-3 border-t-2 border-ink/20 dark:border-surface-500/60 bg-paper/95 dark:bg-surface-900/95">
+          <div className="max-w-xl mx-auto w-full px-4 py-3 border-t-2 border-ink/20 dark:border-surface-500/60 bg-paper/95 dark:bg-surface-900/95">
             <FeedbackActions
               isCorrect={!!isCorrect}
               exercise={exercise}
