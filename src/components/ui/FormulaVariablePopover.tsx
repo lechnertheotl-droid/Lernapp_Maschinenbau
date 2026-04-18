@@ -16,9 +16,28 @@ export function FormulaVariablePopover({ latex, onClose, onOpenGlossary }: Props
 
   useEffect(() => {
     if (!latex) return
-    const prev = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = prev }
+    // iOS-Scroll-Lock: `body { overflow: hidden }` alleine reicht auf iOS
+    // Safari nicht aus. Wir frieren den Body per `position: fixed` ein und
+    // stellen die Scrollposition beim Schließen wieder her.
+    const scrollY = window.scrollY
+    const body = document.body
+    const prev = {
+      position: body.style.position,
+      top: body.style.top,
+      width: body.style.width,
+      overflow: body.style.overflow,
+    }
+    body.style.position = 'fixed'
+    body.style.top = `-${scrollY}px`
+    body.style.width = '100%'
+    body.style.overflow = 'hidden'
+    return () => {
+      body.style.position = prev.position
+      body.style.top = prev.top
+      body.style.width = prev.width
+      body.style.overflow = prev.overflow
+      window.scrollTo(0, scrollY)
+    }
   }, [latex])
 
   if (!latex) return null
@@ -43,7 +62,15 @@ export function FormulaVariablePopover({ latex, onClose, onOpenGlossary }: Props
         onClick={onClose}
       />
 
-      <div className="relative w-full max-w-sm bg-paper dark:bg-surface-900 border-t-2 border-x-2 border-ink rounded-t-retro animate-slide-in-up shadow-hard-xl h-[70dvh] md:h-[65dvh] flex flex-col min-h-0">
+      <div
+        className="relative w-full max-w-sm h-[70vh] md:h-[65vh] bg-paper dark:bg-surface-900 border-t-2 border-x-2 border-ink rounded-t-retro animate-slide-in-up shadow-hard-xl flex flex-col min-h-0"
+        style={{
+          // Inline-Style überschreibt Tailwind-vh mit dvh in modernen Browsern.
+          // Ältere iOS fallen auf h-[70vh]/h-[65vh] zurück (kein dvh-Support).
+          height: '70dvh',
+          maxHeight: '100dvh',
+        }}
+      >
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-2.5 bg-ink border-b-2 border-ink flex-shrink-0">
           <span className="text-lemon font-mono font-black text-sm tracking-widest">

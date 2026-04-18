@@ -14,9 +14,29 @@ export function VariableGlossary({ isOpen, onClose }) {
 
   useEffect(() => {
     if (!isOpen) return
-    const prev = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = prev }
+    // iOS-Scroll-Lock: das einfache `body { overflow: hidden }` reicht auf iOS
+    // Safari nicht — der Hintergrund scrollt trotzdem mit. Wir frieren den
+    // Body per `position: fixed` ein und merken uns die Scrollposition, damit
+    // sie beim Schließen wiederhergestellt werden kann.
+    const scrollY = window.scrollY
+    const body = document.body
+    const prev = {
+      position: body.style.position,
+      top: body.style.top,
+      width: body.style.width,
+      overflow: body.style.overflow,
+    }
+    body.style.position = 'fixed'
+    body.style.top = `-${scrollY}px`
+    body.style.width = '100%'
+    body.style.overflow = 'hidden'
+    return () => {
+      body.style.position = prev.position
+      body.style.top = prev.top
+      body.style.width = prev.width
+      body.style.overflow = prev.overflow
+      window.scrollTo(0, scrollY)
+    }
   }, [isOpen])
 
   if (!isOpen) return null
@@ -37,7 +57,17 @@ export function VariableGlossary({ isOpen, onClose }) {
     <div className="fixed inset-0 z-[90] flex items-end justify-center" onClick={(e) => { if (e.target === e.currentTarget) onClose() }}>
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm animate-fade-in" onClick={onClose} />
 
-      <div className="relative w-full max-w-sm bg-paper dark:bg-surface-900 border-t-2 border-x-2 border-ink rounded-t-retro animate-slide-in-up shadow-hard-xl h-[85dvh] md:h-[80dvh] flex flex-col min-h-0">
+      <div
+        className="relative w-full max-w-sm h-[85vh] md:h-[80vh] bg-paper dark:bg-surface-900 border-t-2 border-x-2 border-ink rounded-t-retro animate-slide-in-up shadow-hard-xl flex flex-col min-h-0"
+        style={{
+          // Inline-Style überschreibt `h-[85vh]` in modernen Browsern mit `dvh`
+          // (berücksichtigt iOS-Browser-Chrome). Ältere iOS-Versionen kennen
+          // kein `dvh` → ignorieren die Regel → fallen auf das Tailwind-`vh` zurück.
+          // Ohne validen Höhenwert kollabiert flex-1 + overflow-y-auto → nicht scrollbar.
+          height: '85dvh',
+          maxHeight: '100dvh',
+        }}
+      >
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-2.5 bg-ink border-b-2 border-ink flex-shrink-0">
           <span className="text-lemon font-mono font-black text-sm tracking-widest">VARIABLEN</span>
