@@ -28,9 +28,11 @@ export function FehlerBlock({ wrong, right, hint, title = 'Typischer Fehler' }: 
           </div>
         </div>
         {hint && (
-          <p className="text-sm text-ink-soft dark:text-surface-300 italic mt-2 pt-2 border-t border-red-200 dark:border-red-900">
-            {hint}
-          </p>
+          <div className="mt-2 pt-2 border-t border-red-200 dark:border-red-900">
+            <MathText block className="text-sm text-ink-soft dark:text-surface-300 italic">
+              {hint}
+            </MathText>
+          </div>
         )}
       </div>
     </div>
