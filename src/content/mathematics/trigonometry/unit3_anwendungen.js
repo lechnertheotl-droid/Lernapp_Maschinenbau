@@ -28,6 +28,11 @@ export const exercises_u3 = {
       'Formel: Kreuzform mit sin·cos + cos·sin.',
       'Taschenrechner im richtigen Modus (DEG oder RAD) bei Probe: z.B. $\\sin(75°)$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Klassischer Linearitäts-Irrtum. $\\sin$ ist *nicht* additiv: $\\sin(\\alpha+\\beta) \\neq \\sin\\alpha + \\sin\\beta$. Gegenbeispiel: $\\sin(30°+60°) = \\sin(90°) = 1$, aber $\\sin(30°) + \\sin(60°) = \\dfrac{1}{2} + \\dfrac{\\sqrt{3}}{2} \\approx 1{,}37$.',
+      2: 'Das ist die Formel für $\\cos(\\alpha - \\beta)$, nicht für $\\sin(\\alpha + \\beta)$. Du hast die falschen Produkte kombiniert. Richtig ist die "Kreuzform": $\\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$.',
+      3: 'Das ist die Formel für $\\cos(\\alpha + \\beta)$, nicht für $\\sin(\\alpha + \\beta)$. Merke: Bei $\\sin(\\alpha+\\beta)$ ist es die Kreuzform $\\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$ mit gemischten Funktionen.',
+    },
   },
   'ex-trig-3-1-b': {
     id: 'ex-trig-3-1-b', lessonId: 'trig-3-1', type: 'multiple-choice',
@@ -55,6 +60,11 @@ export const exercises_u3 = {
       'Merkregel: bei $\\cos(\\alpha+\\beta)$ steht $-$, bei $\\cos(\\alpha-\\beta)$ steht $+$.',
       'Probe mit $\\alpha = \\beta = 30°$: $\\cos(60°) = \\dfrac{1}{2}$ — stimmt das mit deiner Formel?',
     ],
+    wrongAnswerExplanations: {
+      1: 'Das ist die Formel für $\\cos(\\alpha - \\beta)$ (mit $+$), nicht für $\\cos(\\alpha + \\beta)$. Merkregel: Bei $\\cos$ ist das Vorzeichen *umgekehrt* zum Winkel — bei $+$ im Winkel steht $-$ im Term.',
+      2: 'Klassischer Linearitäts-Irrtum. $\\cos$ ist *nicht* additiv: $\\cos(\\alpha+\\beta) \\neq \\cos\\alpha + \\cos\\beta$. Gegenbeispiel: $\\cos(60°+30°) = \\cos(90°) = 0$, aber $\\cos(60°) + \\cos(30°) = \\dfrac{1}{2} + \\dfrac{\\sqrt{3}}{2} \\approx 1{,}37$.',
+      3: 'Das ist die Formel für $\\sin(\\alpha + \\beta)$, nicht für $\\cos(\\alpha + \\beta)$. Beim cos-Theorem stehen *beide* Kosinusse zusammen und *beide* Sinusse zusammen (CosCos − SinSin), nicht gemischt.',
+    },
   },
   'ex-trig-3-1-mastery': {
     id: 'ex-trig-3-1-mastery', lessonId: 'trig-3-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -78,6 +88,11 @@ $$= \\dfrac{\\sqrt{6}}{4} + \\dfrac{\\sqrt{2}}{4} = \\dfrac{\\sqrt{6} + \\sqrt{2
       'Grundwerte: $\\sin(45°) = \\cos(45°) = \\dfrac{\\sqrt{2}}{2}$, $\\sin(30°) = \\dfrac{1}{2}$, $\\cos(30°) = \\dfrac{\\sqrt{3}}{2}$.',
       'Achte auf das Pluszeichen. Taschenrechner im richtigen Modus (DEG oder RAD) bei der Probe.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Falsches Vorzeichen. Das ist $\\sin(15°) = \\cos(75°) = \\dfrac{\\sqrt{6} - \\sqrt{2}}{4}$, nicht $\\sin(75°)$. Bei $\\sin(\\alpha + \\beta)$ steht $+$ zwischen den Produkten, nicht $-$. $\\sin(75°) \\approx 0{,}97$, aber $\\dfrac{\\sqrt{6} - \\sqrt{2}}{4} \\approx 0{,}26$.',
+      2: 'Das ist $\\sin(60°) = \\dfrac{\\sqrt{3}}{2}$, nicht $\\sin(75°)$. Du hast vermutlich nicht das Additionstheorem angewendet, sondern einen nahen Grundwert geraten. $\\sin(75°) \\approx 0{,}97$ — näher an $1$ als $\\dfrac{\\sqrt{3}}{2} \\approx 0{,}87$.',
+      3: 'Dieser Ausdruck entspricht keinem Standard-Sinuswert. Korrektes Einsetzen in $\\sin(\\alpha+\\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$ ergibt $\\dfrac{\\sqrt{6}+\\sqrt{2}}{4}$, und das lässt sich nicht auf $\\dfrac{\\sqrt{2}+1}{2}$ vereinfachen.',
+    },
   },
 
   // ───────────── Lektion 3-2: Doppelwinkel & Pythagoras ─────────────
@@ -102,6 +117,11 @@ $$= \\dfrac{\\sqrt{6}}{4} + \\dfrac{\\sqrt{2}}{4} = \\dfrac{\\sqrt{6} + \\sqrt{2
       'Formel: $\\sin(2\\alpha) = 2\\sin(\\alpha)\\cos(\\alpha)$.',
       'Probe mit $\\alpha = 30°$: stimmt $\\sin(60°) = 2 \\cdot \\sin(30°) \\cdot \\cos(30°)$?',
     ],
+    wrongAnswerExplanations: {
+      0: 'Klassischer Linearitäts-Irrtum. $\\sin(2\\alpha) \\neq 2\\sin(\\alpha)$. Gegenbeispiel: $\\sin(60°) = \\dfrac{\\sqrt{3}}{2} \\approx 0{,}87$, aber $2\\sin(30°) = 2 \\cdot \\dfrac{1}{2} = 1$. Du brauchst das Additionstheorem: $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$.',
+      1: 'Das ist die Pythagoreische Identität mit Wert $1$ (Konstante), nicht $\\sin(2\\alpha)$. $\\sin^{2}+\\cos^{2}=1$ ist unabhängig von $\\alpha$. $\\sin(2\\alpha)$ hängt dagegen von $\\alpha$ ab und oszilliert zwischen $-1$ und $+1$.',
+      3: 'Der Faktor $2$ fehlt. Aus dem Additionstheorem $\\sin(\\alpha+\\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$ mit $\\beta = \\alpha$ folgt $\\sin(2\\alpha) = \\sin\\alpha\\cos\\alpha + \\cos\\alpha\\sin\\alpha = 2\\sin\\alpha\\cos\\alpha$.',
+    },
   },
   'ex-trig-3-2-b': {
     id: 'ex-trig-3-2-b', lessonId: 'trig-3-2', type: 'multiple-choice',
@@ -125,6 +145,11 @@ $$\\cos(2\\alpha) = 2\\cos^{2}(\\alpha) - 1 = 1 - 2\\sin^{2}(\\alpha).$$
       'Formel: $\\cos(2\\alpha) = \\cos^{2}(\\alpha) - \\sin^{2}(\\alpha)$.',
       'Weitere Formen: $= 2\\cos^{2}\\alpha - 1 = 1 - 2\\sin^{2}\\alpha$ (mit $\\sin^{2}+\\cos^{2}=1$).',
     ],
+    wrongAnswerExplanations: {
+      0: 'Linearitäts-Irrtum. $\\cos(2\\alpha) \\neq 2\\cos(\\alpha)$. Gegenbeispiel: $\\cos(60°) = \\dfrac{1}{2}$, aber $2\\cos(30°) = \\sqrt{3} \\approx 1{,}73$. Richtig: $\\cos(2\\alpha) = \\cos^{2}\\alpha - \\sin^{2}\\alpha$.',
+      2: 'Es fehlt die $-1$. $2\\cos^{2}\\alpha$ allein ist nicht $\\cos(2\\alpha)$. Die korrekte Alternativform (mit $\\sin^{2}+\\cos^{2}=1$) ist $\\cos(2\\alpha) = 2\\cos^{2}\\alpha - 1$. Probe: $\\alpha = 0°$: $2 \\cdot 1 - 1 = 1 = \\cos(0°)$ ✓.',
+      3: 'Das ist $\\cos^{2}(\\alpha)$, nicht $\\cos(2\\alpha)$. Aus $\\sin^{2}+\\cos^{2}=1$ folgt $\\cos^{2}\\alpha = 1 - \\sin^{2}\\alpha$. Für $\\cos(2\\alpha)$ brauchst du den Faktor $2$ vor $\\sin^{2}$: $\\cos(2\\alpha) = 1 - 2\\sin^{2}\\alpha$.',
+    },
   },
   'ex-trig-3-2-mastery': {
     id: 'ex-trig-3-2-mastery', lessonId: 'trig-3-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -147,6 +172,11 @@ $$\\cos(2\\alpha) = 2\\cos^{2}(\\alpha) - 1 = 1 - 2\\sin^{2}(\\alpha).$$
       'Am Einheitskreis: $P = (\\cos\\alpha, \\sin\\alpha)$ liegt auf Kreis mit Gleichung $x^{2}+y^{2}=1$.',
       'Setze $P$ in die Kreisgleichung ein.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Du hast verdoppelt, aber der Ausdruck ist gerade $1$, nicht $2$. Am Einheitskreis: $x^{2} + y^{2} = 1$ (Radius $= 1$), und mit $x = \\cos\\alpha$, $y = \\sin\\alpha$ folgt direkt $\\sin^{2}+\\cos^{2} = 1$.',
+      1: 'Der Ausdruck ist nie $0$ (außer er wäre keine Summe von Quadraten). $\\sin^{2}$ und $\\cos^{2}$ sind beide $\\geq 0$, und sie summieren sich am Einheitskreis immer zu $1$ — nicht $0$.',
+      3: 'Verwechslung mit der Doppelwinkelformel. $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$ ist ein *Produkt* und hängt von $\\alpha$ ab (oszilliert zwischen $-1$ und $1$). $\\sin^{2}+\\cos^{2}$ ist die *Summe von Quadraten* und konstant $= 1$.',
+    },
   },
 
   // ───────────── Lektion 3-3: Technische Anwendungen ─────────────
@@ -172,6 +202,11 @@ $$\\cos(2\\alpha) = 2\\cos^{2}(\\alpha) - 1 = 1 - 2\\sin^{2}(\\alpha).$$
       '$|\\sin| \\leq 1$, also ist $|A \\sin(\\ldots)| \\leq A$.',
       '$A$ skaliert die Schwankung der Sinusfunktion.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das ist eine *zeitliche* Größe (Schwingungen pro Sekunde). $A$ steht aber *vor* dem Sinus und skaliert die Auslenkung in vertikaler Richtung. Die Frequenz steckt in $\\omega$ über $f = \\dfrac{\\omega}{2\\pi}$, nicht in $A$.',
+      2: 'Die Phasenverschiebung ist $\\varphi$ (im Argument), nicht $A$. $\\varphi$ verschiebt die Welle horizontal, $A$ skaliert sie vertikal. Unterscheide: $A$ steht *vor* $\\sin$, $\\varphi$ ist eine Konstante *im* Argument.',
+      3: 'Das ist $\\omega$, der Koeffizient von $t$ im Argument. $\\omega$ bestimmt, *wie schnell* die Schwingung verläuft. $A$ bestimmt dagegen, *wie weit* sie auslenkt — die Höhe, nicht die Geschwindigkeit.',
+    },
   },
   'ex-trig-3-3-b': {
     id: 'ex-trig-3-3-b', lessonId: 'trig-3-3', type: 'multiple-choice',
@@ -194,6 +229,11 @@ $$\\cos(2\\alpha) = 2\\cos^{2}(\\alpha) - 1 = 1 - 2\\sin^{2}(\\alpha).$$
       'Formel: $F_{x} = F \\cdot \\cos(\\alpha)$, $F_{y} = F \\cdot \\sin(\\alpha)$.',
       '$\\cos(30°) = \\dfrac{\\sqrt{3}}{2} \\approx 0{,}866$. Taschenrechner im richtigen Modus!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Du hast $\\sin$ und $\\cos$ vertauscht: $50$ N = $100 \\cdot \\sin(30°) = F_{y}$ (vertikale Komponente), nicht $F_{x}$. Für die horizontale Komponente gilt $F_{x} = F \\cos(\\alpha) = 100 \\cdot \\dfrac{\\sqrt{3}}{2} \\approx 86{,}6$ N.',
+      2: '$100$ N wäre der volle Kraftbetrag. Die horizontale Komponente ist aber immer $\\leq F$ (weil $|\\cos\\alpha| \\leq 1$). Nur bei $\\alpha = 0°$ (Kraft horizontal) wäre $F_{x} = F$. Bei $30°$ ist $F_{x}$ kleiner.',
+      3: 'Das wäre $F \\cdot \\tan(30°) = 100 \\cdot \\dfrac{1}{\\sqrt{3}} \\approx 57{,}7$ N — aber $\\tan$ wird hier nicht gebraucht. Für die Kräftezerlegung gilt $F_{x} = F\\cos(\\alpha)$, nicht $F\\tan(\\alpha)$.',
+    },
   },
   'ex-trig-3-3-mastery': {
     id: 'ex-trig-3-3-mastery', lessonId: 'trig-3-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -216,6 +256,11 @@ $$\\cos(2\\alpha) = 2\\cos^{2}(\\alpha) - 1 = 1 - 2\\sin^{2}(\\alpha).$$
       'Formel: $F_{y} = F \\cdot \\sin(\\alpha)$.',
       '$\\sin(60°) = \\dfrac{\\sqrt{3}}{2} \\approx 0{,}866$. Taschenrechner im richtigen Modus!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das ist $F_{x} = F\\cos(60°) = 200 \\cdot \\dfrac{1}{2} = 100$ N, also die *horizontale* Komponente. Du hast $\\sin$ und $\\cos$ verwechselt. Für $F_{y}$ gilt $F\\sin(60°) = 200 \\cdot \\dfrac{\\sqrt{3}}{2} \\approx 173$ N.',
+      1: '$141 \\approx 200 \\cdot \\dfrac{\\sqrt{2}}{2}$ entspricht $\\sin(45°)$ oder $\\cos(45°)$, nicht $\\sin(60°)$. Du hast den falschen Grundwert verwendet. $\\sin(60°) = \\dfrac{\\sqrt{3}}{2} \\approx 0{,}866$, nicht $\\dfrac{\\sqrt{2}}{2} \\approx 0{,}707$.',
+      3: '$200$ N wäre der volle Kraftbetrag, das ginge nur bei $\\alpha = 90°$ (Kraft genau vertikal). Bei $60°$ ist die vertikale Komponente kleiner als $F$: $F_{y} = F\\sin(60°) \\approx 173$ N.',
+    },
   },
 
   // ───────────── Lektion 3-4: Inverse Funktionen ─────────────
@@ -240,6 +285,11 @@ $$\\cos(2\\alpha) = 2\\cos^{2}(\\alpha) - 1 = 1 - 2\\sin^{2}(\\alpha).$$
       'Grundwert: $\\sin(30°) = \\dfrac{1}{2}$.',
       'Hauptast: $\\arcsin \\in [-90°, 90°]$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      1: '$\\sin(45°) = \\dfrac{\\sqrt{2}}{2} \\approx 0{,}707$, nicht $\\dfrac{1}{2}$. Du hast die Grundwerte verwechselt. Merke: $\\sin(30°) = \\dfrac{1}{2}$, $\\sin(45°) = \\dfrac{\\sqrt{2}}{2}$, $\\sin(60°) = \\dfrac{\\sqrt{3}}{2}$.',
+      2: '$\\sin(60°) = \\dfrac{\\sqrt{3}}{2} \\approx 0{,}866$, nicht $\\dfrac{1}{2}$. Du hast $\\sin(60°)$ und $\\sin(30°)$ verwechselt. $\\sin(30°) = \\dfrac{1}{2}$ wegen des halbierten gleichseitigen Dreiecks.',
+      3: '$\\sin(90°) = 1$, nicht $\\dfrac{1}{2}$. Bei $90°$ liegt der Punkt oben auf dem Einheitskreis, y-Koordinate maximal. $\\arcsin(1) = 90°$, aber $\\arcsin(1/2) = 30°$.',
+    },
   },
   'ex-trig-3-4-b': {
     id: 'ex-trig-3-4-b', lessonId: 'trig-3-4', type: 'multiple-choice',
@@ -260,6 +310,11 @@ $$\\cos(2\\alpha) = 2\\cos^{2}(\\alpha) - 1 = 1 - 2\\sin^{2}(\\alpha).$$
       'In welchem Bereich ist $\\sin$ streng monoton wachsend?',
       'Am Einheitskreis heißt das: rechte Hälfte, von $-90°$ bis $+90°$.',
     ],
+    wrongAnswerExplanations: {
+      0: '$[0°, 360°]$ ist der volle Kreis — dort ist $\\sin$ periodisch und nicht injektiv (viele Winkel liefern denselben $\\sin$-Wert). $\\arcsin$ braucht einen eingeschränkten Bereich, auf dem $\\sin$ streng monoton ist.',
+      1: '$[0°, 180°]$ ist der Hauptast von $\\arccos$ (nicht $\\arcsin$). Dort ist $\\cos$ streng monoton fallend. $\\sin$ ist auf $[0°, 180°]$ nicht injektiv (z.B. $\\sin(30°) = \\sin(150°) = \\dfrac{1}{2}$).',
+      3: '$[-180°, 180°]$ ist zu groß — dort ist $\\sin$ nicht injektiv (z.B. $\\sin(-180°) = \\sin(0°) = \\sin(180°) = 0$). Für Eindeutigkeit braucht man den monotonen Bereich $[-90°, 90°]$.',
+    },
   },
   'ex-trig-3-4-mastery': {
     id: 'ex-trig-3-4-mastery', lessonId: 'trig-3-4', type: 'multiple-choice', isMasteryCheck: true,
@@ -282,6 +337,11 @@ $$\\cos(2\\alpha) = 2\\cos^{2}(\\alpha) - 1 = 1 - 2\\sin^{2}(\\alpha).$$
       'Hauptast: $\\arccos \\in [0°, 180°]$ (oberer Halbkreis).',
       'Grundwert: $\\cos(90°) = 0$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: '$\\cos(0°) = 1$, nicht $0$. Bei $0°$ liegt der Punkt bei $(1, 0)$ — x-Koordinate maximal. Du suchst den Winkel, dessen x-Koordinate auf dem Einheitskreis gleich $0$ ist: das ist $90°$.',
+      1: '$\\cos(45°) = \\dfrac{\\sqrt{2}}{2} \\approx 0{,}707$, nicht $0$. $\\arccos(0) = 90°$, weil $\\cos(90°) = 0$ (Punkt bei $(0, 1)$, x-Koordinate null).',
+      3: '$\\cos(180°) = -1$, nicht $0$. Bei $180°$ liegt der Punkt bei $(-1, 0)$ — x-Koordinate minimal. Außerdem: obwohl $180°$ im Hauptast $[0°, 180°]$ liegt, liefert er nicht $\\cos = 0$, sondern $\\cos = -1$.',
+    },
   },
 }
 

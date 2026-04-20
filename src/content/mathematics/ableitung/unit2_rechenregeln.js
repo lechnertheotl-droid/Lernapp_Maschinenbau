@@ -12,6 +12,11 @@ export const exercises_abl_u2 = {
       '$(f + g) \\cdot (f\' + g\')$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Der häufigste Produktregel-Irrtum: Man darf Produkte *nicht* einfach einzeln ableiten. Test: $f=g=x$, also $fg=x^2$ mit $(x^2)\'=2x$. Aber $f\'\\cdot g\' = 1\\cdot 1 = 1 \\ne 2x$. Die richtige Formel hat zwei Summanden.',
+      2: 'Die Vorzeichen bzw. Operationen sind verwirrt: Das erste Summand-Paar müsste *Ableitungen* enthalten, nicht die Funktionen selbst. Richtig: $f\'\\cdot g + f\\cdot g\'$ (in jedem Summand ist *genau eine* Funktion abgeleitet).',
+      3: 'Das vermischt Summenregel und Produktregel zu einer falschen Kombination. Summenregel wäre $(f+g)\'=f\'+g\'$, die Produktregel ist aber etwas ganz anderes: zwei Terme, in denen je eine Funktion abgeleitet wird.',
+    },
     explanation: `**Ansatz:** Bei Produkten zweier differenzierbarer Funktionen gilt die Produktregel — man darf nicht einfach beide einzeln ableiten!
 
 **Rechnung:** $(f \\cdot g)' = f' \\cdot g + f \\cdot g'$. "Erst den ersten Faktor ableiten (mal zweiter), dann den zweiten Faktor ableiten (mal erster)."
@@ -35,6 +40,11 @@ export const exercises_abl_u2 = {
       '$2x \\cdot \\sin(x) - x^{2} \\cdot \\cos(x)$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Der klassische Produktregel-Fehler: $f\'\\cdot g\'$ statt $f\'g + fg\'$. Hier wurde nur $u\'=2x$ mit $v\'=\\cos x$ multipliziert — die beiden dominanten Summanden $u\'v$ und $uv\'$ fehlen.',
+      2: 'Vorzeichenfehler und Summanden vertauscht: Die Produktregel ist *Addition* ($f\'g + fg\'$), nicht Subtraktion. Das Minus gehört in die Quotientenregel, nicht hier. Beide Summanden kommen mit $+$.',
+      3: 'Gleiche Struktur wie richtig, aber mit Minus statt Plus — Produktregel ist jedoch ein *Plus*. Zudem wurde der $x^2\\cos x$-Term abgezogen, was keine Regel produziert. Richtig: $2x\\sin x + x^2\\cos x$.',
+    },
     explanation: `**Ansatz:** Produkt $u(x) \\cdot v(x)$ mit $u(x) = x^{2}$ und $v(x) = \\sin(x)$. Produktregel.
 
 **Rechnung:**
@@ -61,6 +71,11 @@ export const exercises_abl_u2 = {
       '$\\dfrac{e^{x}}{x} + \\ln(x)$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Das ist nur der *zweite* Summand $e^x\\cdot\\tfrac{1}{x}$. Der erste Summand $e^x\\ln x$ fehlt — vermutlich wurde nur der Term mit abgeleiteten $\\ln$ hingeschrieben und der Term mit abgeleitetem $e^x$ vergessen.',
+      2: 'Hier wurde $(\\ln x)\' = x$ falsch gerechnet. Richtig ist $(\\ln x)\' = \\tfrac{1}{x}$ — also Kehrwert, nicht $x$ selbst. Test bei $x=1$: $\\tfrac{1}{1}=1$, nicht $1$... aber bei $x=2$ wäre es $\\tfrac{1}{2}$, nicht $2$.',
+      3: 'Zwei Fehler kombiniert: Der erste Summand $e^x\\ln x$ wurde durch $\\tfrac{e^x}{x}$ ersetzt (also die falsche Rolle für $v$), und der zweite Summand reduziert sich auf $\\ln x$ ohne $e^x$-Faktor. Die Produktregel muss konsequent $u\'v + uv\'$ liefern.',
+    },
     explanation: `**Ansatz:** Produkt $u(x) = e^{x}$ und $v(x) = \\ln(x)$. Produktregel.
 
 **Rechnung:**
@@ -110,6 +125,11 @@ Schreibweise zusammengefasst: $f'(x) = e^{x}\\left(\\ln x + \\dfrac{1}{x}\\right
       'Die Ableitung wird $0$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Genau das stimmt *nicht*. Gegenbeispiel $f=g=x$: korrekt $(x^2)\'=2x$, falsch $f\'g\'=1\\cdot 1=1$. Für $x=2$ müsste $f\'=4$ herauskommen, die falsche Regel liefert aber $1$. Nur in seltenen Spezialfällen (z.B. wenn $f\' g + fg\' = f\'g\'$) stimmt sie zufällig.',
+      2: 'Nicht generell: Je nach Funktionen kann $f\'g\'$ auch viel kleiner oder viel größer als $f\'g+fg\'$ sein. Das Ergebnis ist nicht „doppelt" — z.B. bei $f=g=x$ ist die richtige Ableitung *doppelt* so groß wie $f\'g\'$, bei anderen Funktionen ganz anders.',
+      3: 'Das stimmt nur in sehr konstruierten Fällen (wenn $f\'g\'=0$, also eine der Ableitungen null ist). Generell ist die Ableitung eines Produkts nicht null — $x^2$ hat Ableitung $2x\\ne 0$ für $x\\ne 0$, nicht $0$.',
+    },
     explanation: `**Ansatz:** Geometrische Intuition: Betrachtet man $f \\cdot g$ als Fläche eines Rechtecks mit Seiten $f$ und $g$, setzt sich die Änderung aus drei Teilen zusammen:
 - Streifen oben: $f' \\cdot g$ (Seite $f$ wächst, $g$ bleibt)
 - Streifen rechts: $f \\cdot g'$ (Seite $g$ wächst, $f$ bleibt)
@@ -138,6 +158,11 @@ Schreibweise zusammengefasst: $f'(x) = e^{x}\\left(\\ln x + \\dfrac{1}{x}\\right
       '$3\\cos(x) \\cdot (-\\sin(x))$',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Vorzeichenfehler bei $(\\cos x)\' = -\\sin x$. Hier wurde $(\\cos x)\' = +\\sin x$ gerechnet, also das Minus vergessen. Test bei $x=0$: Richtig $3\\cos 0 - 0 = 3$, falsch $3\\cos 0 + 0 = 3$ (zufällig gleich), aber bei $x=\\pi/2$: richtig $0-(\\tfrac{3\\pi}{2}+1)\\cdot 1 < 0$, falsch $0+(\\tfrac{3\\pi}{2}+1)>0$.',
+      2: 'Hier wurde $(3x+1)\'=3$ mit $(\\cos x)\' = -\\sin x$ multipliziert ($f\'\\cdot g\'$-Fehler statt Produktregel). Das ergibt $-3\\sin x$, aber die beiden Hauptterme $3\\cos x$ und $(3x+1)(-\\sin x)$ fehlen.',
+      3: 'Das ist das Produkt der beiden Ableitungen $u\' = 3$ und $v\' = -\\sin x$ mal $\\cos x$ — völlig durchmischt. Die Produktregel liefert eine *Summe* zweier Terme, nicht ein dreifaches Produkt.',
+    },
     explanation: `**Ansatz:** Produkt $u(x) = 3x+1$, $v(x) = \\cos x$. Produktregel.
 
 **Rechnung:**
@@ -165,6 +190,11 @@ Schreibweise zusammengefasst: $f'(x) = e^{x}\\left(\\ln x + \\dfrac{1}{x}\\right
       '$\\dfrac{f \\cdot g\' - f\' \\cdot g}{g^{2}}$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Das analoge falsche Muster wie bei der Produktregel: $\\tfrac{f\'}{g\'}$ würde bedeuten, Zähler und Nenner einzeln ableiten. Test: $f=x^2$, $g=x$, also $\\tfrac{f}{g}=x$ mit Ableitung $1$. Aber $\\tfrac{f\'}{g\'}=\\tfrac{2x}{1}=2x \\ne 1$.',
+      2: 'Das ist die *Produktregel* auf den Zähler angewandt ($f\'g+fg\'$), kombiniert mit $g^2$ als Nenner — keine gültige Regel. Die Quotientenregel hat im Zähler ein *Minus*, nicht ein Plus.',
+      3: 'Reihenfolge im Zähler vertauscht: Richtig ist $f\'g - fg\'$ (erst Ableitung Zähler mal Nenner, dann minus Zähler mal Ableitung Nenner). Die umgekehrte Reihenfolge liefert das *negative* Ergebnis — klassischer Vorzeichenfehler.',
+    },
     explanation: `**Ansatz:** Brüche von Funktionen werden mit der Quotientenregel abgeleitet.
 
 **Rechnung:** $\\left(\\dfrac{f}{g}\\right)' = \\dfrac{f' \\cdot g - f \\cdot g'}{g^{2}}$ (für $g(x) \\neq 0$).
@@ -192,6 +222,11 @@ Schreibweise zusammengefasst: $f'(x) = e^{x}\\left(\\ln x + \\dfrac{1}{x}\\right
       '$\\dfrac{-1}{(x+1)^{2}}$',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Der Nenner $(x+1)^2$ wurde zu $(x+1)$ verkürzt — vermutlich das Quadrat vergessen. Die Quotientenregel hat immer $g^2$ im Nenner, nicht $g$. Test bei $x=0$: richtig $\\tfrac{1}{1}=1$, Antwort B hier $\\tfrac{1}{1}=1$ zufällig gleich; aber bei $x=1$ richtig $\\tfrac{1}{4}$, B wäre $\\tfrac{1}{2}$.',
+      2: 'Der Zähler wurde nicht vereinfacht: $(x+1)-x=1$, nicht $x$. Vermutlich nur der erste Term $1\\cdot(x+1)$ übernommen und ohne Subtraktion stehen gelassen, oder Zähler/Nenner durcheinandergebracht.',
+      3: 'Vorzeichenfehler: $f\'g - fg\' = 1\\cdot(x+1) - x\\cdot 1 = +1$, nicht $-1$. Vermutlich Reihenfolge vertauscht ($fg\'-f\'g$) und so das Minus reingebracht. Die Funktion $\\tfrac{x}{x+1}$ ist *steigend*, Ableitung also positiv.',
+    },
     explanation: `**Ansatz:** Quotientenregel mit $u = x$ (Zähler), $v = x+1$ (Nenner).
 
 **Rechnung:**
@@ -217,6 +252,11 @@ Schreibweise zusammengefasst: $f'(x) = e^{x}\\left(\\ln x + \\dfrac{1}{x}\\right
       '$\\dfrac{x\\cos(x) + \\sin(x)}{x^{2}}$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Quotientenregel nicht angewandt — Zähler und Nenner einzeln abgeleitet: $\\tfrac{(\\sin x)\'}{x\'}=\\tfrac{\\cos x}{1}=\\cos x$... aber durch was geteilt? Hier fehlt der $x$-Abhängigkeits-Term. Richtig ist $\\tfrac{x\\cos x - \\sin x}{x^2}$.',
+      2: 'Der Faktor $x$ im ersten Summanden wurde weggelassen: Richtig ist $\\cos x \\cdot x$ (NAZ: Nenner $x$ mal Abl. Zähler $\\cos x$), nicht nur $\\cos x$. Ohne dieses $x$ stimmt die Einheit nicht.',
+      3: 'Vorzeichen falsch: Quotientenregel ist *Minus* im Zähler ($f\'g - fg\'$), nicht Plus. Hier wurde $+\\sin x$ statt $-\\sin x$ genommen — klassische Verwechslung mit der Produktregel (die ein Plus hat).',
+    },
     explanation: `**Ansatz:** Quotientenregel mit $u = \\sin x$, $v = x$.
 
 **Rechnung:**
@@ -242,6 +282,11 @@ Schreibweise zusammengefasst: $f'(x) = e^{x}\\left(\\ln x + \\dfrac{1}{x}\\right
       '$\\dfrac{e^{x} \\cdot x^{2} - 2x \\cdot e^{x}}{x^{4}}$',
     ],
     correctIndex: 3,
+    wrongAnswerExplanations: {
+      0: 'Quotientenregel nicht angewandt — stattdessen einzeln abgeleitet: $\\tfrac{(e^x)\'}{(x^2)\'} = \\tfrac{e^x}{2x}$. Das entspricht dem klassischen Fehler $\\tfrac{f\'}{g\'}$. Die richtige Formel ist $\\tfrac{f\'g - fg\'}{g^2}$ mit beiden Summanden im Zähler.',
+      1: 'Ergebnis ist zwar algebraisch *korrekt* als vereinfachte Form, ABER: Die Frage verlangt die direkte Anwendung der Quotientenregel. Die vereinfachte Form $\\tfrac{e^x(x-2)}{x^3}$ ist zu D äquivalent, aber D ist die unvereinfachte Direktform.',
+      2: 'Ergebnis ist ebenfalls algebraisch zu D äquivalent (Zähler ausgeklammert, aber Nenner noch $x^4$), also teilweise gekürzt. D ist die direkte Quotientenregel-Form — hier wurde der Zähler zusammengefasst, aber nicht durch $x^3$ gekürzt.',
+    },
     explanation: `**Ansatz:** Quotientenregel mit $u = e^{x}$, $v = x^{2}$.
 
 **Rechnung:**
@@ -269,6 +314,11 @@ Alle drei Formen (C, D und die gekürzte in B) sind mathematisch äquivalent —
       'Das stimmt nicht — es sind zwei unabhängige Regeln',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Falsch: Quotienten $\\tfrac{f}{g}$ sind auf dem Definitionsbereich (wo $g\\ne 0$) ganz normal differenzierbar — schließlich gibt es ja die Quotientenregel, die überall anwendbar ist, wo $g(x)\\ne 0$.',
+      2: 'Nein, $g$ kann beliebig sein (nur $g\\ne 0$ wird verlangt). Wäre $g=1$ identisch, bräuchte man keine Quotientenregel. Die Frage gilt für allgemeine Quotienten wie $\\tfrac{\\sin x}{x^2+1}$, wo $g$ eine echte Funktion ist.',
+      3: 'Doch, die Herleitung $\\tfrac{f}{g} = f\\cdot g^{-1}$ + Produkt- und Kettenregel liefert exakt die Quotientenregel. Viele Lehrbücher stellen die Quotientenregel deshalb als Korollar der Produktregel dar — sie ist keine „eigenständige Entdeckung".',
+    },
     explanation: `**Ansatz:** Division lässt sich als Multiplikation mit dem Kehrwert schreiben: $\\dfrac{f}{g} = f \\cdot g^{-1}$.
 
 **Rechnung:** Mit Produkt- und Kettenregel:
@@ -297,6 +347,11 @@ Genau die Quotientenregel.
       '$-\\dfrac{1}{\\cos^{2}(x)}$',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Im Nenner steht $\\sin^2 x$ statt $\\cos^2 x$ — vermutlich $u$ und $v$ verwechselt (Zähler/Nenner vertauscht). $\\tan x = \\tfrac{\\sin x}{\\cos x}$, also $v=\\cos x$, damit $v^2 = \\cos^2 x$ im Nenner.',
+      2: 'Unvereinfacht stehengelassen: $\\sin^2+\\cos^2 = 1$ (Pythagoras), aber im Nenner muss $\\cos^2 x$ stehen, nicht $\\cos x$. Hier wurde vergessen zu quadrieren, und der Zähler wurde nicht zusammengefasst.',
+      3: 'Vorzeichenfehler: Das Minus aus $(\\cos x)\' = -\\sin x$ wird bei der Quotientenregel zu einem *Plus* (minus mal minus). Im Zähler: $\\cos^2 x - \\sin x\\cdot(-\\sin x) = \\cos^2 x + \\sin^2 x = +1$, nicht $-1$.',
+    },
     explanation: `**Ansatz:** $\\tan x$ als Quotient $\\sin x / \\cos x$. Quotientenregel.
 
 **Rechnung:**
@@ -327,6 +382,11 @@ Dabei wurde $\\sin^{2} x + \\cos^{2} x = 1$ (Pythagoras) genutzt. Alternative Fo
       'Äußere: $3$, Innere: $\\sin(x^{2})$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Vertauscht: Die äußere Funktion ist die *zuletzt ausgeführte* Operation — bei $\\sin(3x^2)$ wird zuerst $3x^2$ berechnet, dann $\\sin$ angewandt. Also ist $\\sin$ äußere, $3x^2$ innere (nicht umgekehrt).',
+      2: 'Willkürliche Zerlegung: $x^2$ als äußere und $3\\sin$ als innere ergibt keinen Sinn — das würde $(3\\sin x)^2$ bedeuten, nicht $\\sin(3x^2)$. Die Zerlegung muss der *Klammerstruktur* folgen.',
+      3: '$3$ ist eine *Konstante* und keine Funktion — kann also nicht die äußere Funktion sein. Außerdem wäre $\\sin(x^2)$ bereits selbst verkettet. Die korrekte Zerlegung ist eindeutig durch die Klammer vorgegeben: außen $\\sin(\\cdot)$, innen $3x^2$.',
+    },
     explanation: `**Ansatz:** Die *äußere* Funktion ist die, die zuletzt ausgeführt wird (die "äußerste Klammer"). Die *innere* ist das Argument.
 
 **Rechnung:** Bei $\\sin(3x^{2})$:
@@ -354,6 +414,11 @@ Ableitung: $f'(x) = \\cos(3x^{2}) \\cdot 6x = 6x\\cos(3x^{2})$.
       '$(20x^{3} - 8x)^{3}$',
     ],
     correctIndex: 2,
+    wrongAnswerExplanations: {
+      0: 'Innere Ableitung $(5x^3-2x)\' = 15x^2-2$ vergessen. Nur die äußere Potenzregel $4u^3$ angewandt: $4(5x^3-2x)^3$. Der Faktor der inneren Ableitung fehlt — die Kettenregel ist ein *Produkt*.',
+      1: 'Diese Antwort ist mathematisch korrekt, äquivalent zu C: $4(15x^2-2)(5x^3-2x)^3 = 4(5x^3-2x)^3\\cdot(15x^2-2)$. Nur die Reihenfolge der Faktoren unterscheidet sich — Multiplikation ist kommutativ, also gleich.',
+      3: 'Hier wurde die innere Funktion *in* die äußere gezogen: $(5x^3-2x)^4$ zu $(20x^3-8x)^3$ mit $\\cdot 4$ durchmultipliziert wäre komplett falsch. $(a)^4$ vs. $(4a)^3$ sind ganz unterschiedliche Ausdrücke — die Kettenregel funktioniert nicht so.',
+    },
     explanation: `**Ansatz:** Verkettung: außen $u^{4}$, innen $5x^{3}-2x$. Kettenregel.
 
 **Rechnung:**
@@ -382,6 +447,11 @@ Antworten B und C sind äquivalent — nur Reihenfolge der Faktoren unterschiedl
       '$\\cos(x) \\cdot e^{\\cos(x)}$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Der Exponent wurde abgeleitet: Bei $e^u$ bleibt $u$ im Exponenten *stehen*, nicht zu $u\'$. $(e^{\\sin x})\' = e^{\\sin x}\\cdot\\cos x$, *nicht* $e^{\\cos x}$. Analog zu $(e^{3x})\'=3e^{3x}$, nicht $e^3$.',
+      2: 'Innere Ableitung falsch: $(\\sin x)\' = \\cos x$, nicht $\\sin x$. Hier wurde einfach die innere Funktion kopiert statt abgeleitet. Der Faktor bei der Kettenregel muss die *Ableitung* der inneren Funktion sein.',
+      3: 'Beide Fehler zusammen: Der Exponent wurde fälschlich abgeleitet (zu $\\cos x$) *und* die innere Ableitung wurde als $\\cos x$ richtig erkannt, aber die äußere Ableitung ist falsch. $(e^u)\' = e^u$ — $u$ bleibt im Exponenten erhalten.',
+    },
     explanation: `**Ansatz:** Verkettung: außen $e^{u}$, innen $\\sin x$. Kettenregel.
 
 **Rechnung:**
@@ -408,6 +478,11 @@ Antworten B und C sind äquivalent — nur Reihenfolge der Faktoren unterschiedl
       '$\\dfrac{2}{x^{2} + 1}$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Innere Ableitung $(x^2+1)\' = 2x$ vergessen. Nur $(\\ln u)\' = \\tfrac{1}{u}$ eingesetzt ergibt $\\tfrac{1}{x^2+1}$ — dabei fehlt der Faktor $2x$ aus der Kettenregel. Test bei $x=1$: richtig $\\tfrac{2}{2}=1$, A gibt $\\tfrac{1}{2}$.',
+      2: 'Der Faktor $2$ aus der inneren Ableitung wurde halbiert oder vergessen: $(x^2+1)\' = 2x$, nicht $x$. Vermutlich Potenzregel nicht korrekt angewandt — Exponent $2$ wandert als Vorfaktor nach vorn.',
+      3: 'Das $x$ aus der inneren Ableitung fehlt: $(x^2)\' = 2x$ (Vorfaktor *und* Variable), nicht nur $2$. Die Potenzregel reduziert den Exponenten von $2$ auf $1$, und $x^1 = x$ muss erhalten bleiben.',
+    },
     explanation: `**Ansatz:** Verkettung: außen $\\ln u$, innen $x^{2}+1$. Kettenregel.
 
 **Rechnung:**
@@ -457,6 +532,11 @@ Antworten B und C sind äquivalent — nur Reihenfolge der Faktoren unterschiedl
       'Das stimmt nicht — einmaliges Anwenden reicht',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Die Schwierigkeit der Funktion ist nicht der Grund — die Kettenregel-Logik ist bei $e^{\\cos(3x)}$ genauso wie bei Polynom-Verkettungen. Das „mehrfach anwenden" liegt an der Struktur (drei Schichten), nicht an der Exponentialfunktion an sich.',
+      2: 'Die äußere Ableitung verschwindet nicht — $(e^u)\' = e^u$ bleibt bestehen und trägt den Faktor $e^{\\cos(3x)}$ bei. Hier wird nichts null oder verloren; jeder Faktor ist endlich und wichtig.',
+      3: 'Nein, bei Mehrfachverkettung reicht einmaliges Anwenden *nicht*. Gegenbeispiel $e^{\\cos(3x)}$: Ohne doppelte Kettenregel fehlt der Faktor $3$ (innerste Ableitung), und das Ergebnis ist um Faktor $3$ zu klein.',
+    },
     explanation: `**Ansatz:** Jede Schicht einer Verkettung transformiert ihr Argument mit eigener Rate — diese Raten multiplizieren sich.
 
 **Rechnung:** Für $f(x) = e^{\\cos(3x)}$ sind drei Schichten zu erkennen:
@@ -487,6 +567,11 @@ Produkt aller: $f'(x) = e^{\\cos(3x)} \\cdot (-\\sin(3x)) \\cdot 3 = -3\\sin(3x)
       '$e^{-\\sin(3x)} \\cdot 3$',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Vorzeichenfehler bei $(\\cos)\' = -\\sin$: Hier wurde $(\\cos v)\' = +\\cos v$ genommen. Richtig ist Minus, und die Funktion wechselt von Cosinus zu Sinus — also $-\\sin(3x)\\cdot 3 = -3\\sin(3x)$, nicht $3\\cos(3x)$.',
+      2: 'Innerste Ableitung $(3x)\' = 3$ vergessen. Nur zwei Schichten berücksichtigt: $e^{\\cos(3x)}\\cdot(-\\sin(3x))$. Der Faktor $3$ aus der dritten Schicht fehlt — klassischer Fehler bei Dreifach-Verkettung.',
+      3: 'Der Exponent von $e$ wurde fälschlich abgeleitet zu $-\\sin(3x)$. Bei $(e^u)\' = e^u$ bleibt $u$ im Exponenten *unverändert*, und $u\'$ kommt als separater Faktor dazu. Richtig: $e^{\\cos(3x)}$ bleibt, *mal* $(-\\sin(3x))\\cdot 3$.',
+    },
     explanation: `**Ansatz:** Drei Schichten: $e^{u}$ mit $u = \\cos(v)$ mit $v = 3x$. Kettenregel mehrfach.
 
 **Rechnung:**
@@ -516,6 +601,11 @@ Produkt aller: $f'(x) = e^{\\cos(3x)} \\cdot (-\\sin(3x)) \\cdot 3 = -3\\sin(3x)
       'Quotientenregel',
     ],
     correctIndex: 2,
+    wrongAnswerExplanations: {
+      0: 'Nur Kettenregel reicht nicht — $f$ ist primär ein *Produkt* $x^2\\cdot e^{3x}$ (zwei Faktoren durch Multiplikation verbunden), nicht eine einzelne Verkettung. Kettenregel wird *zusätzlich* für $(e^{3x})\'$ gebraucht.',
+      1: 'Nur Produktregel übersieht die Verkettung in $e^{3x}$: $(e^{3x})\' = 3e^{3x}$ (Kettenregel, nicht nur $e^{3x}$). Ohne Kettenregel fehlt der Faktor $3$ — klassischer Fehler bei Exponentialfunktionen mit Faktor im Exponenten.',
+      3: 'Kein Quotient vorhanden: $x^2\\cdot e^{3x}$ ist ein Produkt (Multiplikation), keine Division. Quotientenregel wäre nur bei $\\tfrac{x^2}{e^{3x}}$ oder $\\tfrac{e^{3x}}{x^2}$ nötig.',
+    },
     explanation: `**Ansatz:** Äußerste Struktur bestimmt die primäre Regel. Innerhalb braucht man ggf. weitere.
 
 **Rechnung:** $f$ ist ein Produkt $x^{2} \\cdot e^{3x}$ — Produktregel als Haupt. Für $(e^{3x})'$ braucht man zusätzlich die Kettenregel ($u = 3x$, innere Ableitung $3$): $(e^{3x})' = 3e^{3x}$.
@@ -539,6 +629,11 @@ Produkt aller: $f'(x) = e^{\\cos(3x)} \\cdot (-\\sin(3x)) \\cdot 3 = -3\\sin(3x)
       '$(2x + 3x^{2}) \\cdot e^{3x}$',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Produktregel komplett ignoriert: Hier wurde $x^2\\cdot e^{3x}$ so behandelt, als wäre es eine einzelne verkettete Funktion. $6x\\cdot e^{3x}$ entspricht etwa $(x^2)\'\\cdot(3e^{3x})$, also nur *ein* Summand statt zweien — die Produktregel fehlt.',
+      2: 'Klassischer Produktregel-Fehler: nur $u\'\\cdot v\' = 2x\\cdot 3e^{3x}$ gerechnet. Die beiden Hauptsummanden $u\'v = 2xe^{3x}$ und $uv\' = x^2\\cdot 3e^{3x}$ fehlen — bzw. einer ist übrig geblieben.',
+      3: 'Ergebnis ist *korrekt* und zu A äquivalent: $2xe^{3x} + 3x^2e^{3x} = (2x+3x^2)e^{3x}$. Das ist nur die ausgeklammerte Form, beide Antworten sind mathematisch gleich.',
+    },
     explanation: `**Ansatz:** Produktregel + Kettenregel (siehe vorherige Aufgabe).
 
 **Rechnung:**
@@ -567,6 +662,11 @@ Ausklammern: $= e^{3x}(2x + 3x^{2}) = xe^{3x}(2 + 3x)$. Antworten A und D sind �
       '$\\dfrac{2\\cos(2x) - \\sin(2x)}{(x+1)^{2}}$',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Quotientenregel komplett ignoriert: Hier wurde einfach Zähler abgeleitet ($2\\cos(2x)$) und durch den unveränderten Nenner geteilt. Das ist das falsche $\\tfrac{f\'}{g}$-Muster — richtig ist $\\tfrac{f\'g - fg\'}{g^2}$.',
+      2: 'Innere Ableitung im Zähler vergessen: $(\\sin(2x))\' = 2\\cos(2x)$ (Kettenregel mit Faktor $2$), nicht $\\cos(2x)$. Ohne den Faktor $2$ ist der erste Term um die Hälfte zu klein.',
+      3: 'Im Zähler fehlt der Faktor $(x+1)$ beim ersten Term: Die Quotientenregel multipliziert $u\'$ mit $v = (x+1)$ — nicht nur $u\'$. Richtig: $2\\cos(2x)\\cdot(x+1)$, nicht nur $2\\cos(2x)$.',
+    },
     explanation: `**Ansatz:** Quotientenregel (äußerste Struktur ist Bruch) + Kettenregel (für $\\sin(2x)$).
 
 **Rechnung:**
@@ -616,6 +716,11 @@ Ausklammern: $= e^{3x}(2x + 3x^{2}) = xe^{3x}(2 + 3x)$. Antworten A und D sind �
       'Weil das Ergebnis sonst eine andere Einheit hat',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Die Reihenfolge der Regeln hat nichts mit dem „Vergessen der Funktion" zu tun — man wendet alle nötigen Regeln nacheinander an. Der Punkt ist *Strategie*: richtig einzuordnen, welche Regel die äußerste Struktur abdeckt.',
+      2: 'Das stimmt nicht: Die Quotientenregel kommt nur, wenn die äußerste Struktur ein *Quotient* ist. Bei Produkten kommt Produktregel zuerst, bei Verkettungen Kettenregel. Es gibt keine feste Hierarchie „immer zuerst".',
+      3: 'Einheiten spielen bei der Ableitung keine Rolle in dieser Reihenfolge — die Mathematik sorgt automatisch für Konsistenz, solange man korrekt rechnet. Der Punkt ist reine *Rechenstrategie*, kein physikalisches Argument.',
+    },
     explanation: `**Ansatz:** Die Hierarchie von Operationen (außen → innen) bestimmt die Ableitungs-Hierarchie.
 
 **Rechnung:** Beispiel $f(x) = \\dfrac{\\sin(2x)}{x+1}$:
@@ -652,6 +757,11 @@ Tabelle der äußersten Strukturen:
       '$\\dfrac{e^{2x}}{2x\\sqrt{x}}$',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Quotientenregel ignoriert: Hier wurde nur der Zähler abgeleitet ($(e^{2x})\' = 2e^{2x}$) und durch den unveränderten Nenner geteilt. Der Term mit $(\\sqrt{x})\' = \\tfrac{1}{2\\sqrt{x}}$ fehlt komplett.',
+      2: 'Vorzeichenfehler: Die Quotientenregel subtrahiert, also $+4x - 1$, nicht $+4x+1$. Möglicherweise wurden die Reihenfolge der Terme ($f\'g - fg\'$ statt $fg\' - f\'g$) oder das Minus aus $-\\tfrac{1}{2\\sqrt{x}}$ verwechselt.',
+      3: 'Hier wurde die Quotientenregel auf $(e^{2x})\' \\cdot(\\sqrt{x})\'$ reduziert oder ähnlich verkürzt — die beiden Summanden im Zähler fehlen. Nur $\\tfrac{e^{2x}}{2x\\sqrt{x}}$ übrig lässt die Hauptableitung von $e^{2x}$ aus.',
+    },
     explanation: `**Ansatz:** Quotientenregel (äußerste Struktur: Bruch) + Kettenregel (für $e^{2x}$) + Potenzregel (für $\\sqrt{x}$).
 
 **Rechnung:**

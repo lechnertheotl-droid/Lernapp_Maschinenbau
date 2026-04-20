@@ -25,6 +25,11 @@ $$\\sin^{2}(\\alpha) \\cdot \\left(1 + \\dfrac{\\cos^{2}(\\alpha)}{\\sin^{2}(\\a
       'Schreibe $\\cot(\\alpha) = \\dfrac{\\cos(\\alpha)}{\\sin(\\alpha)}$.',
       'Nutze $\\sin^{2}(\\alpha) + \\cos^{2}(\\alpha) = 1$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Du hast nur einen Teil der Klammer berücksichtigt. $\\sin^{2}\\alpha \\cdot 1 = \\sin^{2}\\alpha$ wäre richtig, wenn in der Klammer nur $1$ stünde. Der $\\cot^{2}$-Term liefert aber noch $\\cos^{2}\\alpha$ dazu, und die Summe ergibt $1$.',
+      1: 'Du hast den $1$-Term aus der Klammer weggelassen. $\\sin^{2}\\alpha \\cdot \\cot^{2}\\alpha = \\sin^{2}\\alpha \\cdot \\dfrac{\\cos^{2}\\alpha}{\\sin^{2}\\alpha} = \\cos^{2}\\alpha$ — aber die $1$ in der Klammer liefert zusätzlich $\\sin^{2}\\alpha$, Summe $= 1$.',
+      3: 'Das Ergebnis wäre nur richtig, wenn $\\cos^{2} = 0$ wäre (also $\\alpha = 90°, 270°, \\ldots$). Für beliebige $\\alpha$ ergibt die korrekte Umformung $\\sin^{2}\\alpha + \\cos^{2}\\alpha = 1$. Bei $\\alpha = 30°$: Ergebnis $= 1$, nicht $\\tan^{2}(30°) = 1/3$.',
+    },
   },
   'ex-trig-4-1-b': {
     id: 'ex-trig-4-1-b', lessonId: 'trig-4-1', type: 'multiple-choice',
@@ -49,6 +54,11 @@ $$\\sin^{2}(\\alpha) \\cdot \\left(1 + \\dfrac{\\cos^{2}(\\alpha)}{\\sin^{2}(\\a
       '$\\sin(2\\alpha) = 1 \\Rightarrow 2\\alpha = 90° + k \\cdot 360°$, also $\\alpha = 45° + k \\cdot 180°$.',
       'Suche alle $\\alpha$ im Intervall $[0°, 360°)$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Probe scheitert: $2\\sin(30°)\\cos(30°) = 2 \\cdot \\dfrac{1}{2} \\cdot \\dfrac{\\sqrt{3}}{2} = \\dfrac{\\sqrt{3}}{2} \\neq 1$. Du hast nicht die Doppelwinkelformel erkannt. Richtig: $\\sin(2\\alpha) = 1 \\Rightarrow 2\\alpha = 90°$, also $\\alpha = 45°$ (und $225°$).',
+      2: 'Probe scheitert: $2\\sin(60°)\\cos(60°) = 2 \\cdot \\dfrac{\\sqrt{3}}{2} \\cdot \\dfrac{1}{2} = \\dfrac{\\sqrt{3}}{2} \\neq 1$. Das Maximum von $\\sin(2\\alpha)$ ist $1$, erreicht bei $2\\alpha = 90°$ (also $\\alpha = 45°$), nicht bei $60°$.',
+      3: '$135°$ ist keine Lösung: $\\sin(2 \\cdot 135°) = \\sin(270°) = -1 \\neq 1$. Du hast die Supplementärwinkel-Regel fälschlich angewendet. Richtig: $\\sin(2\\alpha) = 1$ hat nur Lösung $2\\alpha = 90° + k \\cdot 360°$ (keine $180°$-Supplementärwinkel, weil $\\sin$ bei $1$ *maximal* ist).',
+    },
   },
   'ex-trig-4-1-c': {
     id: 'ex-trig-4-1-c', lessonId: 'trig-4-1', type: 'multiple-choice',
@@ -78,6 +88,11 @@ $$\\sin^{2}(\\alpha) \\cdot \\left(1 + \\dfrac{\\cos^{2}(\\alpha)}{\\sin^{2}(\\a
       'Gegenbeispiel: $\\sin(60° + 30°) = \\sin(90°) = 1$. Stimmt das mit Option D überein?',
       'Richtige Formel: $\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$.',
     ],
+    wrongAnswerExplanations: {
+      0: '$\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$ ist korrekt (Doppelwinkelformel aus dem Additionstheorem mit $\\beta = \\alpha$). Du suchst die *falsche* Aussage — diese ist eine echte Identität.',
+      1: '$\\cos(2\\alpha) = 1 - 2\\sin^{2}\\alpha$ ist korrekt (Alternativform der Doppelwinkelformel mit $\\cos^{2} = 1 - \\sin^{2}$). Du suchst die *falsche* Aussage — diese ist richtig.',
+      2: '$\\tan = \\dfrac{\\sin}{\\cos}$ ist die Definition des Tangens, also trivial wahr. Du suchst die *falsche* Aussage — schau Option D an: der Linearitäts-Irrtum $\\sin(\\alpha+\\beta) = \\sin\\alpha + \\sin\\beta$ ist falsch.',
+    },
   },
   'ex-trig-4-1-d': {
     id: 'ex-trig-4-1-d', lessonId: 'trig-4-1', type: 'multiple-choice',
@@ -101,6 +116,11 @@ $\\cos(75°)\\cos(30°) + \\sin(75°)\\sin(30°) \\approx 0{,}2588 \\cdot 0{,}86
       'Formel: $\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$.',
       'Setze $\\alpha - \\beta = 45°$ ein. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das wäre $\\cos(60°)$ oder $\\sin(30°)$. Du hast entweder das Additionstheorem falsch angewendet (evtl. $\\cos(\\alpha+\\beta) = \\cos(105°)$ statt $\\cos(\\alpha-\\beta) = \\cos(45°)$) oder den falschen Differenzwinkel gebildet. Richtig: $75° - 30° = 45°$, und $\\cos(45°) = \\dfrac{\\sqrt{2}}{2}$.',
+      2: 'Das wäre $\\cos(30°)$ oder $\\sin(60°)$. Du hast vermutlich $\\alpha - \\beta = 30°$ statt $45°$ gerechnet. Richtig: $\\alpha - \\beta = 75° - 30° = 45°$. Dann $\\cos(45°) = \\dfrac{\\sqrt{2}}{2}$.',
+      3: 'Das wäre $\\cos(90°)$, also $\\alpha - \\beta = 90°$ — hier aber $\\alpha - \\beta = 45°$. Du hast vermutlich das *Additionstheorem* statt des Subtraktionstheorems verwendet: $\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$ (mit $-$).',
+    },
   },
   'ex-trig-4-1-mastery': {
     id: 'ex-trig-4-1-mastery', lessonId: 'trig-4-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -126,6 +146,11 @@ $$\\tan(\\alpha) = 1.$$
       'Dividiere durch $\\cos(\\alpha)$: $\\tan(\\alpha) = 1$.',
       '$\\tan$ hat Periode $180°$. Finde alle Lösungen in $[0°, 360°)$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Du hast nur den Hauptwert gefunden und die zweite Lösung vergessen. $\\tan$ hat Periode $180°$, also gibt es im Intervall $[0°, 360°)$ zwei Lösungen: $45°$ UND $225°$.',
+      2: '$315°$ ist keine Lösung: $\\sin(315°) = -\\dfrac{\\sqrt{2}}{2}$, aber $\\cos(315°) = +\\dfrac{\\sqrt{2}}{2}$ — die sind entgegengesetzt gleich, also $\\sin \\neq \\cos$. Du hast vermutlich an $\\sin = -\\cos$ gedacht.',
+      3: 'Es gibt Lösungen! $\\sin(\\alpha) = \\cos(\\alpha)$ gilt überall dort, wo die Winkelhalbierende $y = x$ den Einheitskreis schneidet — nämlich bei $45°$ (1. Q) und $225°$ (3. Q).',
+    },
   },
 
   // ── Lektion 4-2: Prüfung Anwendung ───────────────────────────────────────
@@ -152,6 +177,11 @@ $$\\tan(\\alpha) = 1.$$
       'Formel: $\\tan(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Ankathete}} = \\dfrac{\\text{Masthöhe}}{\\text{Schattenlänge}}$.',
       'Setze $G = 20$, $A = 15$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Du hast Ankathete und Gegenkathete vertauscht. $\\arctan(3/4)$ wäre der Winkel zwischen Sonnenstrahl und *Mast* (nicht zum Boden) oder mit vertauschten Seiten. Vom Schattenende aus: Mast $= G = 20$ m (gegenüber), Schatten $= A = 15$ m (daneben). Also $\\tan(\\alpha) = 20/15 = 4/3$.',
+      2: '$\\arcsin(3/4)$ wäre nur richtig, wenn der Mast durch die *Hypotenuse* (Sonnenstrahl-Länge) geteilt würde — aber die Hypotenuse kennst du gar nicht. Bei *zwei Katheten* (Mast + Schatten) nutzt man immer $\\tan$, nicht $\\sin$.',
+      3: '$\\arccos(3/4)$ wäre $\\arccos(\\text{Schatten/Hypotenuse})$, aber die Hypotenuse ist nicht gegeben (müsste $\\sqrt{20^2 + 15^2} = 25$ sein). Bei zwei Katheten verwende $\\tan$, nicht $\\cos$. Außerdem hast du Zähler und Nenner vertauscht.',
+    },
   },
   'ex-trig-4-2-b': {
     id: 'ex-trig-4-2-b', lessonId: 'trig-4-2', type: 'multiple-choice',
@@ -178,6 +208,11 @@ $$\\tan(\\alpha) = 1.$$
       'Formeln: $F_{x} = F \\cos\\alpha$ (horizontal), $F_{y} = F \\sin\\alpha$ (vertikal).',
       'Merke: $\\sin 37° \\approx 0{,}6$, $\\cos 37° \\approx 0{,}8$ — das 3-4-5-Dreieck!',
     ],
+    wrongAnswerExplanations: {
+      1: 'Du hast $\\sin$ und $\\cos$ vertauscht. $F_{x} = F\\cos(37°) = 500 \\cdot 0{,}8 = 400$ N (nicht $300$), und $F_{y} = F\\sin(37°) = 500 \\cdot 0{,}6 = 300$ N (nicht $400$). Merke: horizontal $\\to \\cos$, vertikal $\\to \\sin$.',
+      2: 'Das ist doppelt die volle Kraft. Die Komponenten $F_{x}$ und $F_{y}$ sind immer *kleiner* als $F$ (weil $|\\sin|, |\\cos| \\leq 1$). Nur die Vektorsumme $\\sqrt{F_{x}^2 + F_{y}^2} = F = 500$ N.',
+      3: 'Du hast beide Komponenten gleichgesetzt ($500 \\cdot \\dfrac{\\sqrt{2}}{2} \\approx 353$). Das gälte nur bei $\\alpha = 45°$, wo $\\sin = \\cos$. Bei $37°$ ist $\\cos > \\sin$, also $F_{x} > F_{y}$ ($400 > 300$).',
+    },
   },
   'ex-trig-4-2-c': {
     id: 'ex-trig-4-2-c', lessonId: 'trig-4-2', type: 'multiple-choice',
@@ -203,6 +238,11 @@ $$\\tan(\\alpha) = 1.$$
       '$A$ ist der Vorfaktor vor $\\sin$, $\\omega$ der Faktor vor $t$ im Argument.',
       '$\\varphi = \\pi/4$ ist die Phase (Konstante im Argument), nicht $\\omega$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Du hast $A$ und $\\omega$ vertauscht. In $3 \\cdot \\sin(2t + \\pi/4)$ steht $3$ als Vorfaktor *vor* dem Sinus (also $A = 3$), und $2$ als Koeffizient von $t$ *im Argument* (also $\\omega = 2$). Die Reihenfolge in der Formel $A\\sin(\\omega t + \\varphi)$ beachten.',
+      2: '$\\pi/4$ ist der Phasenwinkel $\\varphi$ (die Konstante im Argument), nicht die Kreisfrequenz. $\\omega$ ist der Koeffizient *von $t$*, nicht die additive Konstante. Also $\\omega = 2$.',
+      3: '$\\omega$ ist eine *Konstante* (Kreisfrequenz in rad/s), keine zeitabhängige Größe. Im Argument $\\omega t + \\varphi$ ist $t$ die Variable, $\\omega$ der konstante Vorfaktor. Aus $2t$ im Argument folgt $\\omega = 2$.',
+    },
   },
   'ex-trig-4-2-d': {
     id: 'ex-trig-4-2-d', lessonId: 'trig-4-2', type: 'multiple-choice',
@@ -227,6 +267,11 @@ $$a = \\sqrt{25} = 5.$$
       'Setze in $a^{2} = b^{2} + c^{2} - 2bc\\cos\\alpha$ ein.',
       'Wenn $\\alpha = 60°$ und $b = c$: gleichseitiges Dreieck, alle Seiten gleich.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Das wäre das Ergebnis für $\\alpha = 90°$ (rechtwinkliges Dreieck, Satz von Pythagoras): $a^{2} = 25 + 25 = 50$, also $a = 5\\sqrt{2}$. Aber bei $\\alpha = 60°$ ist $\\cos(60°) = \\dfrac{1}{2} \\neq 0$, der Korrekturterm $-2bc\\cos\\alpha = -25$ bringt $a^2 = 25$, also $a = 5$.',
+      2: 'Du hast $\\cos(60°) = \\dfrac{\\sqrt{3}}{2}$ angenommen (das ist aber $\\sin(60°)$) oder $\\cos(30°)$ verwendet. Richtig ist $\\cos(60°) = \\dfrac{1}{2}$. Damit ist $a^{2} = 50 - 50 \\cdot \\dfrac{1}{2} = 25$, also $a = 5$ (nicht $5\\sqrt{3}$).',
+      3: 'Das wäre der Fall $\\cos(\\alpha) = -1$, also $\\alpha = 180°$ (Dreieck entartet zur Linie). Bei $\\alpha = 60°$ ist $\\cos(60°) = +\\dfrac{1}{2}$, und die Formel liefert $a^2 = 25$, also $a = 5$ (gleichseitiges Dreieck).',
+    },
   },
   'ex-trig-4-2-mastery': {
     id: 'ex-trig-4-2-mastery', lessonId: 'trig-4-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -250,6 +295,11 @@ $$\\omega \\cdot (t + T) = \\omega t + 2\\pi \\Rightarrow \\omega T = 2\\pi \\Ri
       'Setze an: $\\omega T = 2\\pi$, löse nach $T$ auf.',
       'Einheitencheck: $\\omega$ in rad/s $\\Rightarrow T$ in s.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Einheiten passen nicht: $[\\omega] = $ rad/s, aber $[T] = $ s. $T = \\omega$ vermischt Winkelgeschwindigkeit und Zeit. Richtig: $T = \\dfrac{2\\pi}{\\omega}$, dann $[T] = \\dfrac{\\text{rad}}{\\text{rad/s}} = $ s ✓.',
+      2: 'Das ist die Frequenz $f = \\dfrac{\\omega}{2\\pi}$, nicht die Periode. Periode und Frequenz sind *Kehrwerte*: $T = \\dfrac{1}{f} = \\dfrac{2\\pi}{\\omega}$. Bruch falsch herum.',
+      3: 'Das wäre richtig, wenn $\\omega$ in Hz (Umdrehungen/s) wäre — aber $\\omega$ ist in rad/s. Für die vollständige Drehung braucht man $2\\pi$ rad, nicht $1$ rad. Daher Faktor $2\\pi$: $T = \\dfrac{2\\pi}{\\omega}$.',
+    },
   },
 
   // ── Lektion 4-3: Prüfungsaufgaben Einheitskreis & Gleichungen ─────────────
@@ -274,6 +324,11 @@ $$\\omega \\cdot (t + T) = \\omega t + 2\\pi \\Rightarrow \\omega T = 2\\pi \\Ri
       'In jeder Periode gibt es **zwei** Lösungen: $\\arcsin(0{,}5)$ und $\\pi - \\arcsin(0{,}5)$.',
       '$[0, 4\\pi]$ umfasst zwei volle Perioden.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Du hast nur den Hauptwert $\\arcsin(0{,}5) = \\pi/6$ gezählt. Aber $\\sin(x) = 0{,}5$ hat zwei Lösungen pro Periode: $\\pi/6$ und $5\\pi/6$ (Supplementärwinkel). Im Intervall $[0, 4\\pi]$ (zwei Perioden) sind es insgesamt $4$.',
+      1: 'Das ist die Anzahl in *einer* Periode $[0, 2\\pi]$. Aber das Intervall $[0, 4\\pi]$ umfasst *zwei* volle Perioden. Pro Periode 2 Lösungen, insgesamt $2 \\cdot 2 = 4$.',
+      3: 'Nicht unendlich — das Intervall $[0, 4\\pi]$ ist begrenzt. Auf ganz $\\mathbb{R}$ gäbe es zwar unendlich viele Lösungen, aber hier nur die 4 in den zwei Perioden.',
+    },
   },
   'ex-trig-4-3-b': {
     id: 'ex-trig-4-3-b', lessonId: 'trig-4-3', type: 'multiple-choice',
@@ -300,6 +355,11 @@ $$\\omega \\cdot (t + T) = \\omega t + 2\\pi \\Rightarrow \\omega T = 2\\pi \\Ri
       'Oder: $\\sin(-210°) = \\sin(-210° + 360°) = \\sin(150°)$.',
       '$\\sin(150°) = \\sin(30°) = \\dfrac{1}{2}$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Doppelter Fehler: falscher Betrag UND falsches Vorzeichen. $-210°$ entspricht $150°$ (addiere $360°$), und $\\sin(150°) = \\sin(30°) = \\dfrac{1}{2}$ (nicht $\\dfrac{\\sqrt{3}}{2}$). Das Vorzeichen ist positiv, weil $150°$ im 2. Quadrant liegt.',
+      1: 'Der Betrag stimmt nicht. $\\sin(150°) = \\sin(30°) = \\dfrac{1}{2}$, nicht $\\dfrac{\\sqrt{3}}{2}$. Du hast vermutlich $\\sin$ und $\\cos$ verwechselt: $\\cos(30°) = \\dfrac{\\sqrt{3}}{2}$. Vorzeichen ist aber korrekt positiv.',
+      3: 'Vorzeichen vergessen. $\\sin$ ist ungerade: $\\sin(-210°) = -\\sin(210°) = -(-\\dfrac{1}{2}) = +\\dfrac{1}{2}$. Zwei Minuszeichen heben sich auf. Oder einfacher: $-210° + 360° = 150°$ liegt im 2. Quadrant, wo $\\sin > 0$.',
+    },
   },
   'ex-trig-4-3-c': {
     id: 'ex-trig-4-3-c', lessonId: 'trig-4-3', type: 'multiple-choice',
@@ -322,6 +382,11 @@ $$\\omega \\cdot (t + T) = \\omega t + 2\\pi \\Rightarrow \\omega T = 2\\pi \\Ri
       'Grundwert: $\\tan(45°) = 1$. Was ist $\\tan(-45°)$?',
       'Vorzeichen beachten — $\\arctan$ von negativem Wert ist negativer Winkel.',
     ],
+    wrongAnswerExplanations: {
+      1: '$135°$ ist zwar eine Lösung der Gleichung $\\tan(x) = -1$ (im 2. Quadrant), aber *nicht* im Hauptast von $\\arctan$, der nur $(-90°, 90°)$ umfasst. $\\arctan$ liefert immer nur den Wert im Hauptast: $-45°$.',
+      2: '$225°$ ist zwar eine Lösung der Gleichung $\\tan(x) = -1$ — moment: $\\tan(225°) = \\tan(45°) = +1$, nicht $-1$. Doppelfehler: falsches Vorzeichen UND außerhalb des Hauptastes. $\\arctan(-1) = -45°$.',
+      3: '$315°$ ist zwar eine Lösung der Gleichung $\\tan(x) = -1$ (im 4. Quadrant, $315° = -45° + 360°$), aber nicht im Hauptast von $\\arctan$. Die Hauptast-Konvention verlangt $-90° < \\alpha < 90°$, also $-45°$.',
+    },
   },
   'ex-trig-4-3-d': {
     id: 'ex-trig-4-3-d', lessonId: 'trig-4-3', type: 'multiple-choice',
@@ -346,6 +411,11 @@ $$= (\\sin^{2}\\alpha + \\cos^{2}\\alpha) + 2\\sin\\alpha\\cos\\alpha = 1 + 2\\s
       'Pythagoras: $\\sin^{2}(\\alpha) + \\cos^{2}(\\alpha) = 1$.',
       'Der Mischterm $2\\sin(\\alpha)\\cos(\\alpha)$ bleibt übrig — erkenne die Doppelwinkelformel.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Du hast die $-1$ vergessen. $(\\sin\\alpha + \\cos\\alpha)^{2} = \\sin^{2}\\alpha + 2\\sin\\alpha\\cos\\alpha + \\cos^{2}\\alpha = 1 + 2\\sin\\alpha\\cos\\alpha$. Die $-1$ am Ende zieht gerade den Pythagoras-Teil weg, übrig bleibt $2\\sin\\alpha\\cos\\alpha$.',
+      2: 'Du hast die $-1$ nicht abgezogen. $(\\sin\\alpha + \\cos\\alpha)^{2} = 1 + 2\\sin\\alpha\\cos\\alpha$, und dann minus $1$ ergibt nur $2\\sin\\alpha\\cos\\alpha$. Die $+1$ in deiner Antwort hätte sich gerade weggekürzt.',
+      3: 'Der Ausdruck ist nicht identisch $0$. Beispiel $\\alpha = 30°$: $(\\sin 30° + \\cos 30°)^{2} - 1 \\approx 1{,}866 - 1 = 0{,}866 \\neq 0$. Richtig: $2\\sin\\alpha\\cos\\alpha = \\sin(2\\alpha)$, und $\\sin(60°) \\approx 0{,}866$ ✓.',
+    },
   },
   'ex-trig-4-3-mastery': {
     id: 'ex-trig-4-3-mastery', lessonId: 'trig-4-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -370,6 +440,11 @@ $$= \\dfrac{\\sqrt{2}}{2} \\cdot \\dfrac{\\sqrt{3}}{2} - \\dfrac{\\sqrt{2}}{2} \
       'Formel: $\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$ (beachte das Minus!).',
       'Grundwerte: $\\cos(45°) = \\sin(45°) = \\dfrac{\\sqrt{2}}{2}$, $\\cos(30°) = \\dfrac{\\sqrt{3}}{2}$, $\\sin(30°) = \\dfrac{1}{2}$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Falsches Vorzeichen. Das ist $\\sin(75°)$, nicht $\\cos(75°)$. Bei $\\cos(\\alpha + \\beta)$ steht zwischen den Produkten ein Minus: $\\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$. Probe: $\\cos(75°) \\approx 0{,}26$, aber $\\dfrac{\\sqrt{6}+\\sqrt{2}}{4} \\approx 0{,}97$.',
+      2: 'Vorzeichen vertauscht. $\\dfrac{\\sqrt{2} - \\sqrt{6}}{4} \\approx -0{,}26$ ist negativ — aber $\\cos(75°)$ liegt im 1. Quadrant und ist positiv (zwischen $0$ und $1$). Du hast Minuend und Subtrahend vertauscht. Richtig: $\\dfrac{\\sqrt{6} - \\sqrt{2}}{4}$.',
+      3: 'Dieser Ausdruck ist zwar nummerisch gleich $\\dfrac{\\sqrt{6} - \\sqrt{2}}{4} \\approx 0{,}259$ (durch Rationalisierung), aber nicht die Standardform. Bei Prüfungen die rationalisierte Form wählen: $\\dfrac{\\sqrt{6} - \\sqrt{2}}{4}$.',
+    },
   },
 }
 

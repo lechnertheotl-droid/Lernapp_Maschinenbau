@@ -151,6 +151,11 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
       'Formel: $\\alpha_{\\circ} = \\alpha_{\\text{rad}} \\cdot \\dfrac{180}{\\pi}$. $\\pi$ kürzt sich.',
       '$2\\pi$ rad = $360°$, also $\\pi$ rad = $180°$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Du hast nur ein Viertel statt einer Hälfte des Kreises gerechnet. $90°$ entspricht $\\dfrac{\\pi}{2}$ rad, nicht $\\pi$ rad. Formel: $\\alpha_{\\circ} = \\pi \\cdot \\dfrac{180}{\\pi} = 180°$ — das $\\pi$ kürzt sich komplett weg.',
+      2: 'Du hast $\\dfrac{3\\pi}{2}$ mit $\\pi$ verwechselt. $270°$ entspricht $\\dfrac{3\\pi}{2}$ rad (drei Viertel des Vollkreises), nicht $\\pi$. Bei $\\pi$ bist du erst bei der halben Umdrehung, also $180°$.',
+      3: 'Das ist der volle Kreis, der $2\\pi$ rad entspricht — nicht $\\pi$. Du hast die Hälfte verdoppelt. Merke: $2\\pi$ rad $= 360°$, also $\\pi$ rad $= 180°$ (halbe Umdrehung).',
+    },
   },
   'ex-trig-1-1-c': {
     id: 'ex-trig-1-1-c', lessonId: 'trig-1-1', type: 'number-input',
@@ -197,6 +202,11 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
       'Formel: $\\alpha_{\\circ} = \\alpha_{\\text{rad}} \\cdot \\dfrac{180}{\\pi}$.',
       '$\\dfrac{5\\pi}{6}$ liegt zwischen $\\dfrac{\\pi}{2}$ und $\\pi$ — welcher Quadrant ist das?',
     ],
+    wrongAnswerExplanations: {
+      1: 'Die Gradzahl stimmt, aber der Quadrant ist falsch. Der 1. Quadrant reicht nur von $0°$ bis $90°$. $150°$ liegt zwischen $90°$ und $180°$, also im 2. Quadrant. Prüfe die Quadrantengrenzen.',
+      2: 'Du hast den falschen Bruch umgerechnet: $120° = \\dfrac{2\\pi}{3}$, nicht $\\dfrac{5\\pi}{6}$. Rechnung: $\\dfrac{5\\pi}{6} \\cdot \\dfrac{180}{\\pi} = \\dfrac{5 \\cdot 180}{6} = 150°$ (nicht $120°$).',
+      3: 'Beide Angaben sind falsch. $225°$ entspricht $\\dfrac{5\\pi}{4}$ (nicht $\\dfrac{5\\pi}{6}$), und der 3. Quadrant beginnt erst bei $180°$. Setze korrekt ein: $\\dfrac{5\\pi}{6} \\cdot \\dfrac{180}{\\pi} = 150°$ → 2. Quadrant.',
+    },
   },
 
   // ───────────── Lektion 1-2: Rechtwinkliges Dreieck ─────────────
@@ -219,6 +229,11 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
       'SOH: **S**inus = **O**pposite (Gegenkathete) / **H**ypotenuse.',
       'Am Einheitskreis heißt das: $\\sin(\\alpha)$ ist die y-Koordinate. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das ist die Definition von $\\cos(\\alpha)$, nicht $\\sin(\\alpha)$. Du hast die Eselsbrücke SOH-CAH-TOA verwechselt: SOH steht für $\\sin$ = Opposite/Hypotenuse (Gegenkathete/Hypotenuse). Ankathete/Hypotenuse ist CAH = Cosinus.',
+      2: 'Das wäre $\\tan(\\alpha)$, nicht $\\sin(\\alpha)$. TOA = Tangens = Opposite/Adjacent (Gegenkathete/Ankathete). Bei $\\sin$ muss im Nenner die Hypotenuse stehen, nicht die Ankathete.',
+      3: 'Du hast den Bruch umgedreht. $\\sin(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Hypotenuse}}$, nicht $\\dfrac{\\text{Hypotenuse}}{\\text{Gegenkathete}}$. Da die Hypotenuse die längste Seite ist, läge $\\sin$ sonst über $1$ — das widerspricht $-1 \\leq \\sin \\leq 1$.',
+    },
   },
   'ex-trig-1-2-b': {
     id: 'ex-trig-1-2-b', lessonId: 'trig-1-2', type: 'multiple-choice',
@@ -239,6 +254,11 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
       'CAH: **C**osinus = **A**dj (Ankathete) / **H**ypotenuse.',
       'Am Einheitskreis heißt das: $\\cos(\\alpha)$ ist die x-Koordinate. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das ist die Definition von $\\sin(\\alpha)$, nicht $\\cos(\\alpha)$. Du hast $\\sin$ und $\\cos$ verwechselt. Eselsbrücke: SOH = Sinus/Opposite, CAH = Cosinus/Adjacent — Cosinus gehört zur Ankathete.',
+      2: 'Das ist $\\tan(\\alpha)$, nicht $\\cos(\\alpha)$. TOA = Tangens = Gegenkathete/Ankathete. Bei $\\cos$ muss im Nenner die Hypotenuse stehen. Am Einheitskreis ist $\\cos$ die x-Koordinate, $\\tan$ die Steigung $y/x$.',
+      3: 'Du hast den Bruch umgedreht. $\\cos(\\alpha) = \\dfrac{\\text{Ankathete}}{\\text{Hypotenuse}}$, nicht umgekehrt. Weil $H \\geq A$, würde $\\dfrac{H}{A} \\geq 1$ gelten — das widerspricht $-1 \\leq \\cos \\leq 1$.',
+    },
   },
   'ex-trig-1-2-c': {
     id: 'ex-trig-1-2-c', lessonId: 'trig-1-2', type: 'multiple-choice',
@@ -259,6 +279,11 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
       'TOA: **T**angens = **O**pposite (Gegenkathete) / **A**dj (Ankathete).',
       'Zusammenhang: $\\tan(\\alpha) = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)}$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Du hast Zähler und Nenner umgedreht UND falsche Seiten gewählt. Richtig ist TOA: $\\tan = \\dfrac{\\text{Gegenkathete}}{\\text{Ankathete}}$. Die Hypotenuse kommt bei $\\tan$ gar nicht vor — sie gehört zu $\\sin$ und $\\cos$.',
+      1: 'Du hast den Bruch umgedreht: Das ist $\\cot(\\alpha) = \\dfrac{1}{\\tan(\\alpha)} = \\dfrac{A}{G}$, nicht $\\tan$. Merke TOA: $\\tan$ hat die Gegenkathete oben (Opposite), die Ankathete unten (Adjacent).',
+      3: 'Das ist $\\cos(\\alpha)$, nicht $\\tan(\\alpha)$. Bei $\\tan$ steht im Nenner die Ankathete (nicht die Hypotenuse). Zur Sicherheit: $\\tan = \\sin/\\cos = (G/H)/(A/H) = G/A$.',
+    },
   },
   'ex-trig-1-2-mastery': {
     id: 'ex-trig-1-2-mastery', lessonId: 'trig-1-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -281,6 +306,11 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
       'Formel: $\\sin(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Hypotenuse}}$.',
       'Setze $G = 3$, $H = 5$ ein. Prüfe mit $\\sin^{2} + \\cos^{2} = 1$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Das ist $\\cos(\\alpha) = \\dfrac{A}{H} = \\dfrac{4}{5}$, nicht $\\sin(\\alpha)$. Du hast Ankathete und Gegenkathete verwechselt. SOH: bei $\\sin$ gehört die Gegenkathete ($G = 3$) in den Zähler, nicht die Ankathete.',
+      2: 'Das ist $\\tan(\\alpha) = \\dfrac{G}{A} = \\dfrac{3}{4}$, nicht $\\sin(\\alpha)$. Du hast die falsche Formel verwendet: bei $\\sin$ steht die Hypotenuse ($H = 5$) im Nenner, nicht die Ankathete.',
+      3: 'Das ist $\\dfrac{H}{G} = \\dfrac{5}{3}$, der Kehrwert von $\\sin(\\alpha)$ (also $\\csc(\\alpha)$). Der Wert ist größer als $1$ — unmöglich für $\\sin$, das stets im Bereich $[-1, 1]$ liegt. Bruch umdrehen.',
+    },
   },
 
   // ───────────── Lektion 1-3: Grundwerte ─────────────
@@ -305,6 +335,11 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
       'Muster: $\\sin(0°) = 0$, $\\sin(30°) = ?$, $\\sin(45°) = \\dfrac{\\sqrt{2}}{2}$, $\\sin(60°) = \\dfrac{\\sqrt{3}}{2}$, $\\sin(90°) = 1$.',
       'Am Einheitskreis: y-Koordinate bei $30°$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das ist $\\sin(0°)$, nicht $\\sin(30°)$. Bei $0°$ liegt der Punkt auf der x-Achse, y-Koordinate $= 0$. Bei $30°$ ist der Punkt schon nach oben gedreht, $\\sin(30°) = \\dfrac{1}{2}$.',
+      2: 'Das ist $\\sin(45°) = \\dfrac{\\sqrt{2}}{2}$, nicht $\\sin(30°)$. Du hast die Grundwerte vertauscht. Merke das Muster: $\\sin(0°){=}0$, $\\sin(30°){=}\\dfrac{1}{2}$, $\\sin(45°){=}\\dfrac{\\sqrt{2}}{2}$, $\\sin(60°){=}\\dfrac{\\sqrt{3}}{2}$, $\\sin(90°){=}1$.',
+      3: 'Das ist $\\sin(60°)$, nicht $\\sin(30°)$. Du hast die Komplementärwinkel verwechselt: $\\sin(60°) = \\cos(30°) = \\dfrac{\\sqrt{3}}{2}$, und $\\sin(30°) = \\cos(60°) = \\dfrac{1}{2}$.',
+    },
   },
   'ex-trig-1-3-b': {
     id: 'ex-trig-1-3-b', lessonId: 'trig-1-3', type: 'multiple-choice',
@@ -325,6 +360,11 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
       'Nutze $\\cos(\\alpha) = \\sin(90° - \\alpha)$.',
       'Am Einheitskreis heißt das: x-Koordinate bei $60°$ ablesen. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das ist $\\sin(60°)$ (oder $\\cos(30°)$), nicht $\\cos(60°)$. Du hast $\\sin$ und $\\cos$ verwechselt. Merke: $\\cos(60°) = \\sin(30°) = \\dfrac{1}{2}$ wegen der Komplementärformel $\\cos(\\alpha) = \\sin(90°-\\alpha)$.',
+      1: 'Das ist $\\sin(45°) = \\cos(45°)$, der Wert für $45°$, nicht für $60°$. Bei $60°$ ist der Punkt weiter nach oben gedreht, die x-Koordinate (= $\\cos$) ist kleiner.',
+      3: 'Das ist $\\cos(90°) = 0$, nicht $\\cos(60°)$. Bei $90°$ liegt der Punkt oben auf $(0,1)$, x-Koordinate = $0$. Bei $60°$ ist der Punkt noch nicht ganz oben, die x-Koordinate ist $\\dfrac{1}{2}$.',
+    },
   },
   'ex-trig-1-3-c': {
     id: 'ex-trig-1-3-c', lessonId: 'trig-1-3', type: 'multiple-choice',
@@ -346,6 +386,11 @@ $$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2} \\cdot G} = \\dfrac{1}{\\sq
       'Bei $45°$: Katheten gleich lang, Hypotenuse $= \\sqrt{2} \\cdot$ Kathete.',
       'Am Einheitskreis: Punkt liegt auf der Winkelhalbierenden $y = x$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das ist $\\sin(30°)$, nicht $\\sin(45°)$. Du hast Grundwerte verwechselt. Bei $45°$ ist der Punkt weiter nach oben gedreht als bei $30°$, also $\\sin(45°) > \\sin(30°)$. Richtig: $\\sin(45°) = \\dfrac{\\sqrt{2}}{2} \\approx 0{,}707$.',
+      2: 'Das ist $\\sin(60°)$, nicht $\\sin(45°)$. Bei $60°$ ist der Punkt weiter nach oben als bei $45°$, also $\\sin(60°) > \\sin(45°)$. Die Werte für $45°$ sind symmetrisch: $\\sin(45°) = \\cos(45°) = \\dfrac{\\sqrt{2}}{2}$.',
+      3: 'Das ist $\\sin(90°)$, der Maximalwert. Bei $45°$ ist der Punkt erst auf halbem Weg zum obersten Punkt des Kreises. $\\sin(45°) \\approx 0{,}707$, nicht $1$.',
+    },
   },
   'ex-trig-1-3-d': {
     id: 'ex-trig-1-3-d', lessonId: 'trig-1-3', type: 'multiple-choice',
@@ -366,6 +411,11 @@ $$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2} \\cdot G} = \\dfrac{1}{\\sq
       'Formel: $\\tan(\\alpha) = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)}$.',
       'Bei $45°$ gilt $\\sin = \\cos$, also ist der Quotient $= 1$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das ist $\\tan(0°)$, nicht $\\tan(45°)$. Bei $0°$ ist $\\sin = 0$ und damit $\\tan = 0/1 = 0$. Bei $45°$ sind $\\sin$ und $\\cos$ gleich groß — der Quotient ist $1$, nicht $0$.',
+      1: 'Das ist $\\sin(30°)$ oder $\\cos(60°) = \\dfrac{1}{2}$, aber nicht $\\tan(45°)$. Du hast vermutlich $\\tan(30°) = \\dfrac{1}{\\sqrt{3}}$ mit $\\dfrac{1}{2}$ verwechselt. Bei $45°$ gilt $\\tan = 1$ (Winkelhalbierende hat Steigung $1$).',
+      3: 'Das ist $\\tan(60°)$, nicht $\\tan(45°)$. Merke die Tangens-Grundwerte: $\\tan(30°) = \\dfrac{1}{\\sqrt{3}}$, $\\tan(45°) = 1$, $\\tan(60°) = \\sqrt{3}$. Bei $45°$ ist der Quotient $\\sin/\\cos$ genau $1$, weil beide gleich sind.',
+    },
   },
   'ex-trig-1-3-mastery': {
     id: 'ex-trig-1-3-mastery', lessonId: 'trig-1-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -388,6 +438,11 @@ $$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2} \\cdot G} = \\dfrac{1}{\\sq
       'Bei $90°$: Wo liegt der Punkt? Welche Koordinate ist sin, welche cos?',
       'Am Einheitskreis heißt das: $\\sin(\\alpha) = y$, $\\cos(\\alpha) = x$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: '$\\sin(0°) = 0$ ist korrekt. Bei $0°$ liegt der Punkt bei $(1, 0)$ — y-Koordinate ist $0$, also $\\sin = 0$. Du suchst die *falsche* Aussage — diese ist richtig. Prüfe die anderen Optionen.',
+      1: '$\\cos(0°) = 1$ ist korrekt. Bei $0°$ ist der Punkt bei $(1, 0)$ — x-Koordinate ist $1$, also $\\cos = 1$. Du suchst die *falsche* Aussage — diese ist richtig.',
+      3: '$\\tan(0°) = 0$ ist korrekt, weil $\\tan = \\dfrac{\\sin(0°)}{\\cos(0°)} = \\dfrac{0}{1} = 0$. Du suchst die *falsche* Aussage — diese ist richtig. Schau dir Option C an: $\\sin(90°) = 1$ (nicht $0$), also ist dort der Fehler.',
+    },
   },
 
   // ───────────── Lektion 1-4: Vorzeichen und Quadranten ─────────────
@@ -416,6 +471,11 @@ $$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2} \\cdot G} = \\dfrac{1}{\\sq
       'Am Einheitskreis: $\\cos = x$-Koordinate, $\\sin = y$-Koordinate. Welches Vorzeichen?',
       'ASTC-Regel: In welchem Quadrant ist *welche* Funktion positiv?',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das ist der 1. Quadrant ($0°$–$90°$, "All positive"), nicht der 2. Im 2. Quadrant liegt der Punkt links-oben, also $x < 0$ — damit ist $\\cos(\\alpha) = x < 0$.',
+      2: 'Das ist der 3. Quadrant ($180°$–$270°$), wo der Punkt links-unten liegt ($x < 0$, $y < 0$). Im 2. Quadrant ist aber $y > 0$ (oberhalb der x-Achse), also $\\sin > 0$.',
+      3: 'Das ist der 4. Quadrant ($270°$–$360°$), wo der Punkt rechts-unten liegt ($x > 0$, $y < 0$). Im 2. Quadrant ist es genau umgekehrt: $x < 0$, $y > 0$.',
+    },
   },
   'ex-trig-1-4-b': {
     id: 'ex-trig-1-4-b', lessonId: 'trig-1-4', type: 'multiple-choice',
@@ -436,6 +496,11 @@ $$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2} \\cdot G} = \\dfrac{1}{\\sq
       'Formel: $\\sin(180° - \\alpha) = \\sin(\\alpha)$. Hier $\\alpha = 30°$.',
       'Im 2. Quadrant ist $\\sin$ positiv (ASTC). Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Falsches Vorzeichen. $150°$ liegt im 2. Quadrant, wo $\\sin > 0$ ist (ASTC-Regel: "Students"). Das Minuszeichen gilt erst ab dem 3. Quadrant ($180° < \\alpha < 360°$). Richtig: $\\sin(150°) = +\\sin(30°) = +\\dfrac{1}{2}$.',
+      1: '$\\sin(150°) = 0$ würde $150°$ auf der x-Achse verlangen (bei $0°$ oder $180°$). $150°$ liegt aber *zwischen* $90°$ und $180°$, also oberhalb der x-Achse — damit ist $\\sin > 0$, nicht $0$.',
+      3: 'Das wäre $\\cos(30°)$ bzw. $\\sin(60°)$. Du hast den Referenzwinkel falsch berechnet: $180° - 150° = 30°$ (nicht $60°$). Oder $\\sin$ und $\\cos$ verwechselt. Richtig: $\\sin(150°) = \\sin(30°) = \\dfrac{1}{2}$.',
+    },
   },
   'ex-trig-1-4-mastery': {
     id: 'ex-trig-1-4-mastery', lessonId: 'trig-1-4', type: 'multiple-choice', isMasteryCheck: true,
@@ -458,6 +523,11 @@ $$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2} \\cdot G} = \\dfrac{1}{\\sq
       'Formel: $\\cos(180° - \\alpha) = -\\cos(\\alpha)$.',
       'Am Einheitskreis: x-Koordinate bei $120°$ ist negativ. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Vorzeichen vergessen. $120°$ liegt im 2. Quadrant, wo $\\cos < 0$ ist (ASTC: nur "Students"/Sinus positiv). Das ist zwar der Betrag, aber das Minuszeichen fehlt. Richtig: $\\cos(120°) = -\\dfrac{1}{2}$.',
+      1: 'Doppelter Fehler: falscher Betrag UND falsches Vorzeichen. Der Referenzwinkel zu $120°$ ist $60°$, und $\\cos(60°) = \\dfrac{1}{2}$ (nicht $\\dfrac{\\sqrt{3}}{2}$, das wäre $\\sin(60°)$). Außerdem fehlt das Minuszeichen.',
+      3: 'Falscher Betrag. Du hast $\\sin$ und $\\cos$ verwechselt: $\\dfrac{\\sqrt{3}}{2}$ ist $\\sin(60°)$, nicht $\\cos(60°)$. Zwar ist das Vorzeichen im 2. Quadrant korrekt negativ, aber der Betrag $|\\cos(120°)| = \\cos(60°) = \\dfrac{1}{2}$.',
+    },
   },
 }
 

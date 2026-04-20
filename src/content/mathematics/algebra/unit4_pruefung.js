@@ -21,6 +21,11 @@ export const exercises_alg_u4 = {
 **Probe:** Setze $x=1, y=1$: $(8 \\cdot 1 \\cdot 1)^{2/3} = 8^{2/3} = 4$. Antwort: $4 \\cdot 1 \\cdot 1 = 4$. ✓
 
 **Typischer Fehler:** Die Zahl $8$ unverändert zu lassen ($8x^{4}y^{2}$) oder $8^{2/3}$ als $8 \\cdot 2/3$ zu rechnen. Erst $\\sqrt[3]{\\cdot}$, dann Quadrat — oder umgekehrt.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast beim $y$-Exponenten gepatzt: $(y^{3})^{2/3} = y^{3 \\cdot 2/3} = y^{2}$, nicht $y^{3}$. Wahrscheinlich hast du dort den Originalexponent $3$ unverändert übernommen. Regel: Bei Klammerpotenz wird *jeder* Exponent mit dem äußeren Exponenten multipliziert — auch der von $y$.',
+      2: 'Du hast die Zahl $8$ unverändert gelassen, statt $8^{2/3}$ auszurechnen. Die Klammerpotenz verteilt sich auf *jeden* Faktor, auch auf die Konstante: $8^{2/3} = (\\sqrt[3]{8})^{2} = 2^{2} = 4$. Richtig: $4 x^{4} y^{2}$, nicht $8 x^{4} y^{2}$.',
+      3: 'Du hast $8^{2/3}$ mit $\\sqrt[3]{8} = 2$ gleichgesetzt — das ist aber nur $8^{1/3}$, nicht $8^{2/3}$. Die Regel lautet $x^{m/n} = (\\sqrt[n]{x})^{m}$, hier also $(\\sqrt[3]{8})^{2} = 2^{2} = 4$, nicht $2$.',
+    },
     hints: [
       'Denkrichtung: Klammerpotenz → jeder Faktor einzeln hoch $2/3$.',
       'Formel: $x^{m/n} = (\\sqrt[n]{x})^{m}$. Also $8^{2/3} = (\\sqrt[3]{8})^{2}$.',
@@ -44,6 +49,11 @@ export const exercises_alg_u4 = {
 **Definitionsbereich:** $2x - 1 > 0$, d.h. $x > 0{,}5$. Lösung erfüllt das.
 
 **Typischer Fehler:** Antwort C ($x = (e^{3}-1)/2$) entsteht durch Vorzeichenfehler beim Umstellen ($-1$ statt $+1$ auf die andere Seite). Antwort B vergisst die Konstante $-1$ komplett.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast die Konstante $-1$ beim Umstellen komplett vergessen und direkt $2x = e^{3}$ geschrieben. Beim Lösen von $2x - 1 = e^{3}$ muss aber zuerst $+1$ auf beiden Seiten addiert werden: $2x = e^{3} + 1$, dann $x = (e^{3}+1)/2$.',
+      2: 'Du hast beim Umstellen das Vorzeichen vertauscht: aus $2x - 1 = e^{3}$ folgt $2x = e^{3} + 1$ (die $-1$ wird zu $+1$, wenn sie auf die andere Seite kommt), nicht $e^{3} - 1$. Probe mit $x = (e^{3}-1)/2$: $2 \\cdot (e^{3}-1)/2 - 1 = e^{3} - 2$, nicht $e^{3}$ — Widerspruch.',
+      3: 'Du hast vergessen, am Ende durch $2$ zu teilen. Aus $2x = e^{3} + 1$ folgt $x = (e^{3}+1)/2$, nicht $e^{3} + 1$. Der letzte Schritt — Koeffizient $2$ wegdividieren — ist entscheidend, sonst ist $x$ doppelt so groß wie der richtige Wert.',
+    },
     hints: [
       'Denkrichtung: $\\ln$ rückgängig machen durch $e^{\\cdot}$ auf beiden Seiten.',
       'Formel: $\\ln(A) = B \\Leftrightarrow A = e^{B}$.',
@@ -115,6 +125,11 @@ Also $\\log_{2}(128) = 7$.
 **Probe:** $3^{3} = 27 = 81/3$. ✓
 
 **Typischer Fehler:** $\\log_{3}(81 - 3) = \\log_{3}(78)$ zu rechnen — das wäre falsch, Logarithmus ist *nicht* linear. Die Quotientenregel gilt nur für Differenzen **von Logarithmen**, nicht im Argument.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast $\\log_{3}(3)$ fälschlich als $2$ gerechnet — es ist aber $1$ (da $3 = 3^{1}$). Damit wäre deine Differenz $4 - 2 = 2$ statt $4 - 1 = 3$. Regel: $\\log_{a}(a) = 1$ für jede Basis $a > 0$.',
+      2: 'Du hast den ersten Logarithmus falsch gerechnet: $\\log_{3}(81) = 4$ (da $81 = 3^{4}$), nicht $5$. Damit wäre $5 - 1 = 4$. Zähle die Zweierschritte: $3^{1}=3$, $3^{2}=9$, $3^{3}=27$, $3^{4}=81$ — also Exponent $4$.',
+      3: 'Du hast die Quotientenregel nicht auf den Logarithmus angewandt, sondern direkt $\\log_{3}(81) - \\log_{3}(3)$ "gegenseitig gekürzt" oder $\\log_{3}(81/27)$ statt $\\log_{3}(81/3) = \\log_{3}(27) = 3$ gerechnet. Regel: $\\log(A) - \\log(B) = \\log(A/B)$. Hier: $81/3 = 27 = 3^{3}$, also $3$.',
+    },
     hints: [
       'Denkrichtung: Beide Logarithmen mit Basis $3$ — direkt ausrechnen oder Quotientenregel.',
       'Formel: $\\log(A) - \\log(B) = \\log(A/B)$ und $\\log_{a}(a^{n}) = n$.',
@@ -141,6 +156,11 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
 - $x = 3$: $9 - 15 + 6 = 0$ ✓
 
 **Typischer Fehler:** Vorzeichen vergessen: bei $(x-2)(x-3) = 0$ sind die Nullstellen $+2$ und $+3$, **nicht** $-2$ und $-3$ (Antwort C).`,
+    wrongAnswerExplanations: {
+      1: 'Du hast bei Vieta das zweite Zahlenpaar mit Produkt $6$ ausgewählt: $(1, 6)$ hat zwar Produkt $6$, aber Summe $7$, nicht $5$. Beide Bedingungen müssen gleichzeitig erfüllt sein: Produkt $q = 6$ *und* Summe $-p = 5$. Das trifft nur auf $(2, 3)$ zu.',
+      2: 'Du hast die Vorzeichen der Nullstellen vertauscht. Aus $(x-2)(x-3) = 0$ folgt $x = +2$ oder $x = +3$ (die Nullstellen sind die Werte, bei denen die Klammern null werden). Negative Werte hätte man bei $(x+2)(x+3) = x^{2} + 5x + 6 = 0$ — das ist aber eine andere Gleichung.',
+      3: 'Du hast ein Vorzeichen vertauscht und $(1, -6)$ ausprobiert. Aber $1 \\cdot (-6) = -6$ (nicht $+6$), also erfüllt das Paar die Vieta-Bedingung nicht. Richtig: $2 \\cdot 3 = 6$ und $2 + 3 = 5$ — also Nullstellen $2$ und $3$.',
+    },
     hints: [
       'Denkrichtung: Vieta — zwei Zahlen, deren Produkt $6$ und Summe $5$ ergibt.',
       'Formel: $x^{2} + px + q = (x - r_{1})(x - r_{2})$ mit $r_{1} \\cdot r_{2} = q$, $r_{1} + r_{2} = -p$.',
@@ -239,6 +259,11 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
 **Probe:** $(3 - 3)^{2} = 0$ ✓
 
 **Typischer Fehler:** Doppellösung als "zwei Lösungen" zählen (Antwort C). In der Prüfung wird explizit gefragt: "verschiedene" — eine Doppelnullstelle zählt als *eine* Lösung (mit algebraischer Vielfachheit 2).`,
+    wrongAnswerExplanations: {
+      0: 'Keine Lösung gäbe es nur bei $D < 0$. Hier ist $D = 36 - 36 = 0$, die Parabel berührt die $x$-Achse genau in einem Punkt ($x = 3$). Also existiert eine Lösung — mit Vielfachheit $2$, aber trotzdem genau eine.',
+      2: 'Bei $D = 0$ gibt es nur *eine* reelle Lösung, keine zwei verschiedenen. Die Klammerform $x^{2} - 6x + 9 = (x-3)^{2}$ zeigt es: Nullstelle ist $x = 3$ mit Vielfachheit $2$ — aber als *unterschiedliche* Werte gerechnet ist es nur einer. Prüfungen unterscheiden zwischen "Lösungen mit Vielfachheit" und "verschiedenen Lösungen".',
+      3: 'Unendlich viele Lösungen gibt es nur bei trivialen Identitäten wie $0 = 0$. Die Gleichung $x^{2} - 6x + 9 = 0$ ist eine echte quadratische Gleichung und hat höchstens zwei Lösungen — bei $D = 0$ genau eine (Doppellösung bei $x = 3$).',
+    },
     hints: [
       'Denkrichtung: Diskriminante bestimmt Anzahl der Lösungen.',
       'Formel: $D > 0$ → $2$ verschiedene; $D = 0$ → Doppellösung; $D < 0$ → keine reellen.',
@@ -264,6 +289,11 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
 **Einheitencheck:** $[k] = [1/t] = $ s$^{-1}$. ✓
 
 **Typischer Fehler:** Antwort D ($k = 5/\\ln(2)$) entsteht durch Kehrwertbildung zum falschen Zeitpunkt. Und $k = 1/5$ (Antwort B) ignoriert die exponentielle Natur des Zerfalls — das wäre ein linearer Ansatz.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast den exponentiellen Zerfall wie einen linearen Abfall behandelt: „Halb nach $5$ s → $k = 1/5$". Bei $e^{-kt}$ kommt aber kein einfacher Quotient heraus — du musst logarithmieren. Aus $e^{-5k} = 1/2$ folgt $k = \\ln(2)/5 \\approx 0{,}139$, nicht $1/5 = 0{,}2$.',
+      2: 'Du hast $\\ln(5)$ statt $\\ln(2)$ im Logarithmus-Schritt verwendet und Zähler/Nenner getauscht. Die Halbierung heißt $e^{-5k} = 1/2 = 2^{-1}$, logarithmiert: $-5k = -\\ln(2)$, also $k = \\ln(2)/5$. Die Zahl $5$ ist die Zeit, nicht das Argument des Logarithmus.',
+      3: 'Du hast Zähler und Nenner vertauscht. Aus $-5k = -\\ln(2)$ folgt $k = \\ln(2)/5$, nicht $5/\\ln(2)$. Dimensionscheck: $[k] = 1/[t]$, also $1/$s. $\\ln(2)/5 \\approx 0{,}139$ s$^{-1}$ ist plausibel, $5/\\ln(2) \\approx 7{,}21$ s$^{-1}$ wäre zu groß für eine Halbwertszeit von $5$ s.',
+    },
     hints: [
       'Denkrichtung: $p_{0}/2$ nach $5$ s → Gleichung aufstellen und logarithmieren.',
       'Formel: $e^{-kt} = 1/2$ bei $t = T_{1/2}$, also $k = \\ln(2)/T_{1/2}$.',
@@ -289,6 +319,11 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
 **Probe:** $f(1) = -2, f(-1) = 2$. Zwischen $-1$ und $1$ ist $f$ fallend (z.B. $f(0) = 0$), außerhalb steigend. ✓
 
 **Typischer Fehler:** Antwort C ($x = \\pm\\sqrt{3}$) entsteht durch falsches Wurzelziehen aus $x^{2} = 3$ statt $x^{2} = 1$.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast die Nullstellen der Funktion mit den Extremstellen verwechselt. $f(x) = x^{3} - 3x = x(x^{2} - 3)$ hat Nullstellen bei $x = 0$, $x = \\pm\\sqrt{3}$ — das sind aber nicht die Extremstellen. Extremstellen findest du durch Nullsetzen der *ersten Ableitung*: $f\'(x) = 3x^{2} - 3 = 0 \\Rightarrow x = \\pm 1$.',
+      2: 'Du hast die Ableitung falsch gebildet oder die Konstante $-3$ als Koeffizient stehen lassen. $f\'(x) = 3x^{2} - 3$, und $3x^{2} = 3 \\Rightarrow x^{2} = 1 \\Rightarrow x = \\pm 1$. Die Wurzel aus $1$ ist $\\pm 1$, nicht $\\pm\\sqrt{3}$ — bei $x^{2} = 3$ käme $\\pm\\sqrt{3}$ heraus, das ist hier aber nicht der Fall.',
+      3: 'Die Funktion hat Extrema — du hast vermutlich $f\'(x) = 0$ falsch gelöst oder gar nicht erst geprüft. Die Ableitung $f\'(x) = 3x^{2} - 3$ hat Nullstellen $x = \\pm 1$, und $f\'\'(\\pm 1) \\neq 0$ (hinreichende Bedingung erfüllt). Also existieren Extrema bei $x = 1$ (Min) und $x = -1$ (Max).',
+    },
     hints: [
       'Denkrichtung: Extrema wo $f\'(x) = 0$, Typ über $f\'\'(x)$.',
       'Formel: $f\'(x) = 3x^{2} - 3$, $f\'\'(x) = 6x$.',
@@ -315,6 +350,11 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
 **Definitionsbereich:** $f: \\mathbb{R} \\to \\mathbb{R}$ linear und bijektiv, also $f^{-1}: \\mathbb{R} \\to \\mathbb{R}$.
 
 **Typischer Fehler:** Vorzeichenfehler — bei Antwort B ($(x-2)/3$) hat man vergessen, dass beim Umstellen $-2$ zu $+2$ wird. Antwort D ist der **Kehrwert** $1/f(x)$, nicht die Umkehrfunktion $f^{-1}$.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast beim Umstellen das Vorzeichen von $-2$ nicht gedreht. Aus $y = 3x - 2$ folgt durch $+2$ auf beiden Seiten $y + 2 = 3x$, also $x = (y+2)/3$, nicht $(y-2)/3$. Probe mit deiner Lösung: $f((x-2)/3) = 3 \\cdot (x-2)/3 - 2 = x - 4 \\neq x$.',
+      2: 'Du hast einfach „alle Operationen umgedreht" nach dem Schema $3x - 2 \\to 3x + 2$ — das ist aber nicht die Umkehrfunktion, sondern eine Spiegelung der Konstante. Richtig: Gleichung $y = 3x - 2$ nach $x$ auflösen (nicht Zeichen flippen) und dann Namen vertauschen: $f^{-1}(x) = (x+2)/3$.',
+      3: 'Das ist der *Kehrwert* (multiplikative Inverse), nicht die Umkehrfunktion. $1/(3x-2)$ erfüllt $f(x) \\cdot 1/f(x) = 1$, hat aber nichts mit dem Rückgängig-Machen der Operation zu tun. Die Umkehrfunktion $f^{-1}$ erfüllt $f(f^{-1}(x)) = x$.',
+    },
     hints: [
       'Denkrichtung: Gleichung nach $x$ umstellen, dann Namen tauschen.',
       'Formel: Bei $y = ax + b$ ist $f^{-1}(x) = (x - b)/a$.',
@@ -361,6 +401,11 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
 - $f(4) = 2 \\cdot 1 + 1 = 3$, $f(2) = 2 \\cdot 1 + 1 = 3$ (Symmetrie um $x = 3$) ✓
 
 **Typischer Fehler:** Vorzeichenfehler bei $h$ — in $(x - 3)^{2}$ ist $h = +3$ (nicht $-3$!), weil von $x$ die $3$ *subtrahiert* wird. Antwort B ($-3$) ist der klassische Fehler.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast das Vorzeichen von $h$ aus der Klammer direkt übernommen — das ist der klassische Fehler. In $(x - 3)^{2}$ ist $h = +3$, nicht $-3$. Merke: Der Scheitel liegt dort, wo die Klammer null wird, also bei $x = 3$. Richtig: $S(3 \\mid 1)$.',
+      2: 'Du hast das Vorzeichen bei $k$ gedreht. Die konstante $+1$ außen steht genau so in der Form $a(x-h)^{2} + k$ — also $k = +1$, nicht $-1$. Probe: $f(3) = 2 \\cdot 0 + 1 = 1$, also liegt der Scheitel bei $(3, 1)$, nicht bei $(3, -1)$.',
+      3: 'Du hast vermutlich $f(0)$ ausgerechnet ($= 2 \\cdot 9 + 1 = 19$) und dies als Scheitel $(0 \\mid 19)$ gedeutet. Der Scheitel liegt aber nicht beim $y$-Achsenabschnitt, sondern beim Minimum/Maximum der Parabel — in Scheitelform direkt ablesbar als $(h, k) = (3, 1)$.',
+    },
     hints: [
       'Denkrichtung: Scheitelform $a(x-h)^{2} + k$ zeigt Scheitel direkt.',
       'Formel: $S(h \\mid k)$ — aber Achtung: $h$ ist das, was von $x$ **subtrahiert** wird.',
@@ -415,6 +460,11 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
 **Probe:** $\\ln(-1)$ ist nicht definiert, $\\ln(0)$ divergiert zu $-\\infty$, $\\ln(1) = 0, \\ln(e) = 1$. ✓
 
 **Typischer Fehler:** $e^{x}$ mit $\\ln(x)$ verwechseln — $e^{x}$ hat Definitionsbereich $\\mathbb{R}$, aber Wertebereich $(0, \\infty)$. $\\ln$ ist spiegelbildlich: Definitionsbereich $(0, \\infty)$, Wertebereich $\\mathbb{R}$.`,
+    wrongAnswerExplanations: {
+      1: '$x^{2}$ ist als Polynom für *alle* reellen Zahlen definiert, also $D = \\mathbb{R}$. Der *Wertebereich* ist $[0, \\infty)$, aber das ist nicht dasselbe wie der Definitionsbereich. Du hast vermutlich Definitions- und Wertebereich verwechselt.',
+      2: '$e^{x}$ hat Definitionsbereich $\\mathbb{R}$ (Exponentialfunktion ist überall definiert) — nur der *Wertebereich* ist $(0, \\infty)$. Du hast Definition- und Wertebereich vertauscht. $\\ln(x)$ ist die spiegelbildliche Situation: Definitionsbereich $(0, \\infty)$, Wertebereich $\\mathbb{R}$.',
+      3: '$\\sin(x)$ ist eine trigonometrische Funktion, die für *alle* reellen Zahlen definiert ist, also $D = \\mathbb{R}$. Der Wertebereich ist $[-1, 1]$, aber gefragt war der Definitionsbereich. Nur $\\ln(x)$ hat $D = (0, \\infty)$.',
+    },
     hints: [
       'Denkrichtung: Welcher Funktionstyp lässt nur positive Argumente zu?',
       'Formel: $\\ln(x)$ ist nur für $x > 0$ definiert. $e^{x}, x^{2}, \\sin(x)$ sind überall definiert.',
@@ -472,6 +522,11 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
 **Plausibilitätscheck:** Wärmeausdehnungen bei Metallen liegen typisch bei $10^{-5}$/K, d.h. bei $\\Delta T = 500$ K etwa $0{,}5\\,\\%$ bis $1\\,\\%$ Längenänderung. $1{,}01$ m passt. ✓
 
 **Typischer Fehler:** $2 \\cdot 10^{-5} \\cdot 500$ falsch zu $10^{-3}$ rechnen (Antwort B, $1{,}001$ m) — dabei $10^{3} \\cdot 10^{-5} = 10^{-2}$ richtig.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast bei den Zehnerpotenzen einen Faktor verloren: $2 \\cdot 10^{-5} \\cdot 500 = 10^{-2} = 0{,}01$, nicht $10^{-3} = 0{,}001$. Rechnung: $500 = 5 \\cdot 10^{2}$, also $2 \\cdot 10^{-5} \\cdot 5 \\cdot 10^{2} = 10 \\cdot 10^{-3} = 10^{-2}$. Richtig: $l = 1{,}01$ m.',
+      2: 'Du hast einen Faktor $10$ zu viel angesetzt: $0{,}1$ statt $0{,}01$. Rechne: $2 \\cdot 500 = 1000 = 10^{3}$ und $10^{3} \\cdot 10^{-5} = 10^{-2} = 0{,}01$, nicht $10^{-1} = 0{,}1$. Damit wäre die Längenänderung $10$ cm auf $1$ m — unrealistisch groß für $500$ K.',
+      3: 'Du hast den Term $\\alpha T$ komplett weggelassen und direkt $2 \\cdot l_{0} = 2$ m gerechnet, oder du hast $l_{0}$ und $\\alpha$ vertauscht. Die Ausdehnungsformel lautet $l = l_{0}(1 + \\alpha T)$, nicht $l = 2 l_{0}$. Eine Verdoppelung der Länge wäre physikalisch bei Stahl utopisch.',
+    },
     hints: [
       'Denkrichtung: Direkt einsetzen und Zehnerpotenzen zusammenfassen.',
       'Formel: $l(T) = l_{0}(1 + \\alpha T)$. Einheit von $\\alpha T$: dimensionslos.',
@@ -520,6 +575,11 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
 **Nullstellen des Quotienten:** $x^{2} - x - 6 = (x - 3)(x + 2) = 0 \\Rightarrow x = 3$ oder $x = -2$. Zusammen mit der ursprünglichen Nullstelle $x = 1$ ergeben sich alle drei Nullstellen: $\\{1, 3, -2\\}$.
 
 **Typischer Fehler:** Vorzeichen bei Subtraktion vergessen — insbesondere der Übergang $(x^{3} - 2x^{2}) - (x^{3} - x^{2}) = -x^{2}$ (nicht $-3x^{2}$).`,
+    wrongAnswerExplanations: {
+      1: 'Du hast das Vorzeichen beim mittleren Term verwechselt: $+x$ statt $-x$. Der erste Subtraktionsschritt ergibt $-x^{2}$, dann $-x^{2} : x = -x$ (nicht $+x$). Probe: $(x-1)(x^{2} + x - 6) = x^{3} + x^{2} - 6x - x^{2} - x + 6 = x^{3} - 7x + 6 \\neq P(x)$.',
+      2: 'Du hast beim ersten Subtraktionsschritt falsch gerechnet: $(x^{3} - 2x^{2}) - (x^{3} - x^{2}) = -x^{2}$, nicht $-3x^{2}$. Der Fehler kommt vom Vergessen der Klammer beim Abziehen — das Minuszeichen vor $-x^{2}$ muss zu $+x^{2}$ werden: $-2x^{2} - (-x^{2}) = -2x^{2} + x^{2} = -x^{2}$.',
+      3: 'Du hast das Vorzeichen des konstanten Gliedes vertauscht und $+6$ statt $-6$ im Quotienten gelassen. Der letzte Divisionsschritt lautet $-6x : x = -6$, und die Probe zeigt: $(x-1)(x^{2} - x + 6) = x^{3} - x^{2} + 6x - x^{2} + x - 6 = x^{3} - 2x^{2} + 7x - 6 \\neq P(x)$.',
+    },
     hints: [
       'Denkrichtung: Polynomdivision wie schriftliche Zahlendivision, höchste Potenz zuerst.',
       'Formel: Multiplizier und subtrahier, hole nächsten Term herunter, wiederhole.',
@@ -546,6 +606,11 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
 **Plausibilität:** Bei $x = 50$ wäre $p = 0$ (kein Preis) $\\Rightarrow U = 0$. Bei $x = 0$ wäre ebenfalls $U = 0$. Dazwischen muss das Maximum liegen — genau in der Mitte bei $x = 25$.
 
 **Typischer Fehler:** Antwort B ($x = 50$) ist die Nullstelle von $p(x)$, nicht die Stelle maximalen Umsatzes.`,
+    wrongAnswerExplanations: {
+      1: '$x = 50$ ist die Nullstelle der Preisfunktion $p(x) = 100 - 2x$ — dort wäre der Preis $0$ und damit auch der Umsatz $U = x \\cdot 0 = 0$. Das Umsatzmaximum liegt genau zwischen den beiden Nullstellen von $U(x) = 100x - 2x^{2}$ (also zwischen $0$ und $50$): in der Mitte bei $x = 25$.',
+      2: '$x = 100$ ist die Konstante $p(0) = 100$ (Höchstpreis bei Menge null), nicht die Stelle des Maximums. Du hast Preis und Menge verwechselt. Das Maximum der Umsatzfunktion $U = x \\cdot p(x) = 100x - 2x^{2}$ liegt beim Scheitel der nach unten geöffneten Parabel: $x_{S} = 25$.',
+      3: 'Du hast vermutlich $100/10 = 10$ gerechnet oder eine andere willkürliche Teilung vorgenommen. Der Scheitel einer Parabel $ax^{2} + bx + c$ liegt bei $x_{S} = -b/(2a)$. Hier $a = -2$, $b = 100$, also $x_{S} = -100/(-4) = 25$, nicht $10$.',
+    },
     hints: [
       'Denkrichtung: $U(x)$ ist eine nach unten geöffnete Parabel — Maximum am Scheitel.',
       'Formel: $x_{S} = -b/(2a)$ für $U(x) = ax^{2} + bx + c$.',
@@ -580,6 +645,11 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
 **Alternative — Additions­verfahren:** Zeile 2 mit $3$ multiplizieren: $3x - 3y = 3$. Addieren zu Zeile 1: $5x = 10 \\Rightarrow x = 2$. Dann $y = 1$.
 
 **Typischer Fehler:** Antwort C ("Probieren") scheitert bei nicht-ganzzahligen Lösungen. Bei 2×2-Systemen ist Einsetzen oder Addieren immer zielführend; Matrix-Gauss lohnt sich erst bei $n \\geq 3$.`,
+    wrongAnswerExplanations: {
+      1: 'Das Multiplizieren einer einzelnen Gleichung mit einer Konstanten ändert nichts an den Lösungen und löst das System nicht. Erst das *Addieren* zweier Gleichungen (eventuell nach Multiplikation mit passenden Faktoren) eliminiert eine Variable. Der vollständige Algorithmus: Zeile 2 mit $3$ multiplizieren, dann zu Zeile 1 addieren: $5x = 10 \\Rightarrow x = 2, y = 1$.',
+      2: 'Probieren ohne systematisches Vorgehen funktioniert nur zufällig — bei ganzzahligen, kleinen Lösungen vielleicht, aber schon bei rationalen oder großen Werten scheitert es. Das Einsetzungs- oder Additionsverfahren liefert die Lösung garantiert. Außerdem bekommst du in der Prüfung keine Punkte für „geraten".',
+      3: 'Das Transponieren einer Koeffizientenmatrix ist eine Operation aus der linearen Algebra, aber kein Lösungsverfahren für Gleichungssysteme. Es vertauscht Zeilen und Spalten, ändert aber nicht die Lösungen. Für $2 \\times 2$-Systeme verwendet man Einsetzungs- oder Additionsverfahren.',
+    },
     hints: [
       'Denkrichtung: Eine Variable aus einer Gleichung isolieren, einsetzen.',
       'Formel: Aus $x - y = 1$ folgt $x = 1 + y$.',
@@ -723,6 +793,11 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
 **Technische Relevanz:** In der Maß- und Toleranz­rechnung sind Bedingungen wie $|x - x_{0}| \\leq \\Delta$ typisch (Sollwert $x_{0}$ mit Toleranz $\\Delta$).
 
 **Typischer Fehler:** $|u| \\leq c$ mit $|u| \\geq c$ verwechseln — Erstere gibt ein **Intervall**, Letztere gibt das **Komplement** ($u \\leq -c$ oder $u \\geq c$).`,
+    wrongAnswerExplanations: {
+      1: 'Du hast nur die obere Grenze berücksichtigt und die untere vergessen. $|u| \\leq c$ liefert immer beidseitige Schranken: $-c \\leq u \\leq c$. Hier musst du also auch $-5 \\leq 2x - 3$ einbeziehen, was $x \\geq -1$ ergibt. Vollständig: $-1 \\leq x \\leq 4$.',
+      2: 'Du hast nur die untere Grenze $x \\geq -1$ behalten und die obere vergessen. Aus $|2x - 3| \\leq 5$ folgen gleichzeitig $2x - 3 \\geq -5$ (→ $x \\geq -1$) *und* $2x - 3 \\leq 5$ (→ $x \\leq 4$). Beide Grenzen gehören zur Lösung.',
+      3: 'Du hast die Ungleichung zur Gleichung gemacht. $|2x - 3| \\leq 5$ hat nicht nur einen Punkt als Lösung, sondern ein ganzes Intervall — alle $x$, deren Abstand von $1{,}5$ (Mittelpunkt) kleiner gleich $2{,}5$ ist. Richtig: $-1 \\leq x \\leq 4$.',
+    },
     hints: [
       'Denkrichtung: Betrag $\\leq c$ heißt Abstand zu Null kleiner gleich $c$.',
       'Formel: $|u| \\leq c \\Leftrightarrow -c \\leq u \\leq c$.',
@@ -872,6 +947,11 @@ $0{,}25 = (1/2)^{t/10} \\Rightarrow \\ln(0{,}25) = (t/10) \\ln(1/2) \\Rightarrow
 **Plausibilität:** Eine logarithmische Skala "komprimiert" Verhältnisse. Faktor $2$ in Konzentration $\\to$ $0{,}30$ Einheiten in pH. Faktor $10$ $\\to$ $1$ Einheit pH.
 
 **Typischer Fehler:** Antwort B ("steigt um $2$") entsteht durch Doppelfehler: Vorzeichen vergessen und Faktor $2$ linear zu verstehen (statt logarithmisch). Antwort D ignoriert das Minus in der pH-Definition.`,
+    wrongAnswerExplanations: {
+      1: 'Der pH-Wert ist korrekt ($3$), aber die Änderung bei Verdopplung der Konzentration ist falsch: Der pH *sinkt* um $\\log_{10}(2) \\approx 0{,}30$, er steigt nicht um $2$. Die logarithmische Skala verwandelt einen Faktor $2$ in eine Differenz von nur $\\approx 0{,}30$, und das Minus in $\\text{pH} = -\\log[\\text{H}^{+}]$ bedeutet: höhere Konzentration → niedrigerer pH.',
+      2: '$0{,}3$ ist der Wert $\\log_{10}(2)$, nicht der pH-Wert. Du hast die beiden Größen verwechselt. pH-Wert berechnet: $\\text{pH} = -\\log_{10}(10^{-3}) = 3$. Der Wert $0{,}3$ ist die *Änderung* bei Verdopplung — nicht der pH selbst. Außerdem halbiert sich pH bei Konzentrationsverdopplung nicht, sondern sinkt um $\\log_{10}(2)$.',
+      3: 'Du hast das Minus in der Definition $\\text{pH} = -\\log_{10}[\\text{H}^{+}]$ übersehen. $-\\log_{10}(10^{-3}) = -(-3) = +3$, nicht $-3$. Außerdem ist die Änderung bei Verdopplung nicht „verdoppeln", sondern „um $\\log_{10}(2) \\approx 0{,}30$ senken" — logarithmische Skalen arbeiten additiv bei multiplikativen Änderungen.',
+    },
     hints: [
       'Denkrichtung: pH direkt aus $[\\text{H}^{+}] = 10^{-3}$ ablesen; dann Verdopplung.',
       'Formel: $-\\log(2 \\cdot 10^{-3}) = -\\log 2 - \\log 10^{-3} = -\\log 2 + 3$.',
