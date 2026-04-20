@@ -94,7 +94,7 @@ export function LessonView() {
     <div className="max-w-xl mx-auto flex flex-col min-h-[100dvh]">
 
       {/* Sticky header */}
-      <div className="sticky top-0 z-30 bg-paper/95 backdrop-blur-sm border-b-2 border-ink px-4 py-3 flex items-center gap-3">
+      <div className="sticky top-0 z-30 bg-paper/95 dark:bg-surface-900/95 backdrop-blur-sm border-b-2 border-ink dark:border-surface-500 px-4 py-3 flex items-center gap-3">
         <ToolButton
           onClick={handleBack}
           label={safeIndex > 0 ? 'Einen Schritt zurück' : 'Zur Themenübersicht'}
