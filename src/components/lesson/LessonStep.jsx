@@ -75,9 +75,9 @@ export function LessonStep({ step, topicId, lessonId, onComplete }) {
       return (
         <div className="flex flex-col gap-4">
           {step.type === 'mastery-check' && (
-            <div className="bg-lemon-light border-2 border-ink rounded-retro shadow-hard-sm px-3 py-2 flex items-center gap-2">
-              <span className="font-mono font-black text-ink">✓</span>
-              <span className="text-ink text-sm font-black">Verständnischeck</span>
+            <div className="bg-lemon-light border-2 border-ink dark:border-lemon-dark rounded-retro shadow-hard-sm px-3 py-2 flex items-center gap-2">
+              <span className="font-mono font-black text-ink dark:text-lemon">✓</span>
+              <span className="text-ink dark:text-lemon text-sm font-black">Verständnischeck</span>
             </div>
           )}
           <ExerciseEngine

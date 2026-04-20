@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, lazy, Suspense, type ComponentType } from 
 import { useAppDispatch } from '@/context/AppContext'
 import { ACTIONS } from '@/context/appReducer'
 import { getExercise } from '@/content/index'
-import { generateFeedback } from '@/utils/feedbackGenerator'
+import { getEncouragementMessage } from '@/utils/feedbackGenerator'
 import { useToast } from '@/components/ui/Toast'
 import { MultipleChoice, validate as validateMC } from './MultipleChoice'
 import { TrueFalse,      validate as validateTF } from './TrueFalse'
@@ -118,8 +118,14 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
       isCorrect: correct,
     })
 
-    const { message, tone } = generateFeedback({ isCorrect: correct, streakCount: newStreak })
-    showToast({ message, tone })
+    // Kein Toast mehr bei normalem richtig/falsch — das fixe Feedback-Panel
+    // zeigt beides bereits deutlich. Toast nur noch als Streak-Belohnung.
+    if (correct) {
+      const streakMsg = getEncouragementMessage(newStreak)
+      if (streakMsg) {
+        showToast({ message: streakMsg, tone: newStreak >= 5 ? 'celebratory' : 'encouraging' })
+      }
+    }
 
     setIsCorrect(correct)
     setLastAnswer(answer)
