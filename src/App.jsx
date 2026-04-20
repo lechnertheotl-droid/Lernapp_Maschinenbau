@@ -21,6 +21,7 @@ const Achievements   = lazyNamed(() => import('@/pages/Achievements'),   'Achiev
 const More           = lazyNamed(() => import('@/pages/More'),           'More')
 const Settings       = lazyNamed(() => import('@/pages/Settings'),       'Settings')
 const LessonSummary  = lazyNamed(() => import('@/pages/LessonSummary'),  'LessonSummary')
+const Lehrplan       = lazyNamed(() => import('@/pages/Lehrplan'),       'Lehrplan')
 
 /**
  * Dezenter Lade-Platzhalter, wenn eine Route-Chunk gerade nachgeladen wird.
@@ -67,6 +68,7 @@ export default function App() {
           <Route index element={<Dashboard />} />
           <Route path="topics" element={<Navigate to="/" replace />} />
           <Route path="lernpfad" element={<Skilltree />} />
+          <Route path="lehrplan" element={<Lehrplan />} />
           <Route path="formelsammlung" element={<Formelsammlung />} />
           <Route path="erfolge" element={<Achievements />} />
           <Route path="mehr" element={<More />} />

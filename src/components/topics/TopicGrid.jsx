@@ -9,7 +9,7 @@ import { cn } from '@/utils/cn'
  * - `variant="compact"` → 2-Spalten-Grid, kleinere Cards (Home-Default bei schmaler Breite).
  * - `variant="detailed"` → einspaltige Liste, große Cards mit Description.
  */
-export function TopicGrid({ topics, variant = 'detailed', groupByLevel = true, emptyMessage }) {
+export function TopicGrid({ topics, variant = 'detailed', groupByLevel = true, emptyMessage, studienbeginBadge = false }) {
   const state = useAppState()
 
   if (topics.length === 0) {
@@ -46,6 +46,7 @@ export function TopicGrid({ topics, variant = 'detailed', groupByLevel = true, e
                   topic={topic}
                   progress={state.progress.topicProgress[topic.id]}
                   variant={variant}
+                  studienbeginBadge={studienbeginBadge}
                   style={{ animationDelay: `${delay}ms` }}
                 />
               )

@@ -216,6 +216,7 @@ export function Dashboard() {
           topics={filteredTopics}
           variant="detailed"
           groupByLevel
+          studienbeginBadge
           emptyMessage={query ? `Keine Treffer für „${query}".` : 'Keine Themen im aktuellen Filter.'}
         />
       </div>

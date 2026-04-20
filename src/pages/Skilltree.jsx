@@ -1,9 +1,15 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAppState } from '@/context/AppContext'
 import { getAllTopics, getAllLessons } from '@/content/index'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { TopicNode } from '@/components/skilltree/TopicNode'
-import { getTopicMeta, sortTopicsByOrder, computeTopicStatus } from '@/utils/topicGraph'
+import {
+  getTopicMeta,
+  sortTopicsByOrder,
+  computeTopicStatus,
+  isStudienbeginTopic,
+} from '@/utils/topicGraph'
 
 const CATEGORY_LABEL = {
   math: 'Mathematik',
@@ -14,7 +20,9 @@ const CATEGORY_LABEL = {
 export function Skilltree() {
   const state    = useAppState()
   const navigate = useNavigate()
-  const topics   = getAllTopics()
+  const [studienbeginOnly, setStudienbeginOnly] = useState(false)
+  const allTopics = getAllTopics()
+  const topics    = studienbeginOnly ? allTopics.filter((t) => isStudienbeginTopic(t.id)) : allTopics
 
   // Compute completion ratio per topic
   const completionByTopic = Object.fromEntries(
@@ -48,12 +56,40 @@ export function Skilltree() {
     <div className="max-w-3xl mx-auto px-4 py-5 flex flex-col gap-6">
       <Breadcrumbs items={[{ label: 'Start', to: '/' }, { label: 'Lernpfad' }]} />
 
-      <header>
-        <h1 className="font-black text-ink dark:text-paper text-2xl leading-tight">Lernpfad</h1>
-        <p className="text-ink-soft dark:text-surface-300 text-sm mt-1">
-          Empfohlene Reihenfolge nach Voraussetzungen. Gesperrte Themen werden freigeschaltet,
-          wenn alle Voraussetzungen abgeschlossen sind.
-        </p>
+      <header className="flex flex-col gap-3">
+        <div>
+          <h1 className="font-black text-ink dark:text-paper text-2xl leading-tight">Lernpfad</h1>
+          <p className="text-ink-soft dark:text-surface-300 text-sm mt-1">
+            Empfohlene Reihenfolge nach Voraussetzungen. Gesperrte Themen werden freigeschaltet,
+            wenn alle Voraussetzungen abgeschlossen sind.
+          </p>
+        </div>
+        <div className="flex gap-2 flex-wrap">
+          <button
+            type="button"
+            onClick={() => setStudienbeginOnly(false)}
+            className={`font-mono text-[11px] font-black uppercase tracking-widest px-3 py-1.5 rounded-retro border-2 ${
+              !studienbeginOnly
+                ? 'bg-ink text-paper border-ink'
+                : 'bg-white dark:bg-surface-800 text-ink dark:text-paper border-ink dark:border-surface-600'
+            }`}
+            aria-pressed={!studienbeginOnly}
+          >
+            Alle Themen
+          </button>
+          <button
+            type="button"
+            onClick={() => setStudienbeginOnly(true)}
+            className={`font-mono text-[11px] font-black uppercase tracking-widest px-3 py-1.5 rounded-retro border-2 ${
+              studienbeginOnly
+                ? 'bg-ink text-paper border-ink'
+                : 'bg-white dark:bg-surface-800 text-ink dark:text-paper border-ink dark:border-surface-600'
+            }`}
+            aria-pressed={studienbeginOnly}
+          >
+            Nur Studienbeginn (1./2. Sem)
+          </button>
+        </div>
       </header>
 
       {(['math', 'engineering', 'programming']).map((cat) => {

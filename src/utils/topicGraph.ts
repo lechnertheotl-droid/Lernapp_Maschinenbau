@@ -5,37 +5,61 @@
  */
 export type TopicCategory = 'math' | 'engineering' | 'programming'
 
+/**
+ * studienbeginPriority:
+ *   1 = 1. Semester (Phase 1) — enthält ggf. integrierte Vorkurs-Units (Phase 0).
+ *   2 = 2. Semester (Phase 2).
+ *   null/undefined = Vertiefung ab 3. Semester (Phase 3).
+ * Keine Blockier-Wirkung; nur für Badges und Filter (siehe Lehrplan).
+ */
 export interface TopicGraphEntry {
   order: number
   category: TopicCategory
   prerequisiteTopics: string[]
+  studienbeginPriority?: 1 | 2 | null
 }
 
 export const TOPIC_GRAPH: Record<string, TopicGraphEntry> = {
   // ── Mathematics track (0–19) ────────────────────────────────────────────
-  algebra:                 { order: 0,  category: 'math', prerequisiteTopics: [] },
-  trigonometry:            { order: 1,  category: 'math', prerequisiteTopics: ['algebra'] },
-  vektoren:                { order: 2,  category: 'math', prerequisiteTopics: ['algebra', 'trigonometry'] },
-  ableitung:               { order: 3,  category: 'math', prerequisiteTopics: ['algebra', 'trigonometry'] },
-  integralrechnung:        { order: 4,  category: 'math', prerequisiteTopics: ['ableitung'] },
-  'lineare-algebra':       { order: 5,  category: 'math', prerequisiteTopics: ['vektoren'] },
-  differentialgleichungen: { order: 6,  category: 'math', prerequisiteTopics: ['ableitung', 'integralrechnung'] },
-  'komplexe-zahlen':       { order: 7,  category: 'math', prerequisiteTopics: ['algebra', 'trigonometry'] },
-  'reihen-folgen':         { order: 8,  category: 'math', prerequisiteTopics: ['ableitung', 'integralrechnung'] },
-  'mehrdim-analysis':      { order: 9,  category: 'math', prerequisiteTopics: ['ableitung', 'integralrechnung', 'vektoren'] },
-  numerik:                 { order: 10, category: 'math', prerequisiteTopics: ['algebra', 'ableitung'] },
-  statistik:               { order: 11, category: 'math', prerequisiteTopics: ['algebra', 'integralrechnung'] },
+  algebra:                 { order: 0,  category: 'math', prerequisiteTopics: [], studienbeginPriority: 1 },
+  trigonometry:            { order: 1,  category: 'math', prerequisiteTopics: ['algebra'], studienbeginPriority: 1 },
+  vektoren:                { order: 2,  category: 'math', prerequisiteTopics: ['algebra', 'trigonometry'], studienbeginPriority: 1 },
+  ableitung:               { order: 3,  category: 'math', prerequisiteTopics: ['algebra', 'trigonometry'], studienbeginPriority: 1 },
+  integralrechnung:        { order: 4,  category: 'math', prerequisiteTopics: ['ableitung'], studienbeginPriority: 1 },
+  'lineare-algebra':       { order: 5,  category: 'math', prerequisiteTopics: ['vektoren'], studienbeginPriority: 2 },
+  differentialgleichungen: { order: 6,  category: 'math', prerequisiteTopics: ['ableitung', 'integralrechnung'], studienbeginPriority: 2 },
+  'komplexe-zahlen':       { order: 7,  category: 'math', prerequisiteTopics: ['algebra', 'trigonometry'], studienbeginPriority: 2 },
+  'reihen-folgen':         { order: 8,  category: 'math', prerequisiteTopics: ['ableitung', 'integralrechnung'], studienbeginPriority: 2 },
+  'mehrdim-analysis':      { order: 9,  category: 'math', prerequisiteTopics: ['ableitung', 'integralrechnung', 'vektoren'], studienbeginPriority: null },
+  numerik:                 { order: 10, category: 'math', prerequisiteTopics: ['algebra', 'ableitung'], studienbeginPriority: null },
+  statistik:               { order: 11, category: 'math', prerequisiteTopics: ['algebra', 'integralrechnung'], studienbeginPriority: null },
+  'fourier-laplace':       { order: 12, category: 'math', prerequisiteTopics: ['differentialgleichungen', 'komplexe-zahlen'], studienbeginPriority: null },
 
   // ── Engineering track (20–39) ───────────────────────────────────────────
-  'technische-mechanik':   { order: 20, category: 'engineering', prerequisiteTopics: ['algebra', 'trigonometry', 'vektoren'] },
-  festigkeitslehre:        { order: 21, category: 'engineering', prerequisiteTopics: ['technische-mechanik', 'ableitung'] },
-  thermodynamik:           { order: 22, category: 'engineering', prerequisiteTopics: ['ableitung', 'integralrechnung'] },
-  fluidmechanik:           { order: 23, category: 'engineering', prerequisiteTopics: ['ableitung', 'vektoren'] },
-  werkstoffkunde:          { order: 24, category: 'engineering', prerequisiteTopics: ['algebra'] },
-  maschinenelemente:       { order: 25, category: 'engineering', prerequisiteTopics: ['festigkeitslehre'] },
+  'technische-mechanik':   { order: 20, category: 'engineering', prerequisiteTopics: ['algebra', 'trigonometry', 'vektoren'], studienbeginPriority: 1 },
+  festigkeitslehre:        { order: 21, category: 'engineering', prerequisiteTopics: ['technische-mechanik', 'ableitung'], studienbeginPriority: 2 },
+  thermodynamik:           { order: 22, category: 'engineering', prerequisiteTopics: ['ableitung', 'integralrechnung'], studienbeginPriority: 2 },
+  fluidmechanik:           { order: 23, category: 'engineering', prerequisiteTopics: ['ableitung', 'vektoren'], studienbeginPriority: null },
+  werkstoffkunde:          { order: 24, category: 'engineering', prerequisiteTopics: ['algebra'], studienbeginPriority: 1 },
+  maschinenelemente:       { order: 25, category: 'engineering', prerequisiteTopics: ['festigkeitslehre'], studienbeginPriority: 2 },
+  elektrotechnik:          { order: 26, category: 'engineering', prerequisiteTopics: ['algebra'], studienbeginPriority: 1 },
+  regelungstechnik:        { order: 27, category: 'engineering', prerequisiteTopics: ['differentialgleichungen', 'komplexe-zahlen'], studienbeginPriority: null },
 
   // ── Programming track (40+) ─────────────────────────────────────────────
-  'python-matlab':         { order: 40, category: 'programming', prerequisiteTopics: ['algebra'] },
+  'python-matlab':         { order: 40, category: 'programming', prerequisiteTopics: ['algebra'], studienbeginPriority: 1 },
+}
+
+/** Liefert die Phase (1, 2, oder null) für ein Topic. */
+export function getStudienbeginPhase(topicId: string): 1 | 2 | null {
+  const entry = TOPIC_GRAPH[topicId]
+  if (!entry) return null
+  return entry.studienbeginPriority ?? null
+}
+
+/** True, wenn das Topic zu Studienbeginn (Phase 1 oder 2) gehört. */
+export function isStudienbeginTopic(topicId: string): boolean {
+  const phase = getStudienbeginPhase(topicId)
+  return phase === 1 || phase === 2
 }
 
 export function getTopicMeta(topicId: string): TopicGraphEntry {

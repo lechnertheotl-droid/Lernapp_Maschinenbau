@@ -4,6 +4,7 @@ import { ProgressBar } from '@/components/ui/ProgressBar'
 import { Stamp } from '@/components/ui/Stamp'
 import { computeTopicProgress } from '@/utils/progressLogic'
 import { getAllLessons, isExamCompleted } from '@/content/index'
+import { getStudienbeginPhase } from '@/utils/topicGraph'
 import { cn } from '@/utils/cn'
 
 const DIFF_LABEL = ['', 'Einsteiger', 'Grundlagen', 'Mittel', 'Fortgeschr.', 'Experte']
@@ -47,13 +48,15 @@ function TopicCardSkeleton({ variant = 'detailed' }) {
  *  - `compact` (Dashboard-Style): Icon oben, Titel, Meta, Progress-Bar — passt in 2-Spalten-Grid.
  *  - `detailed` (Browse-Style): Icon links, Stamp rechts, Description, Progress, Meta mit Stars/Hours.
  */
-export function TopicCard({ topic, progress, variant = 'detailed', style }) {
+export function TopicCard({ topic, progress, variant = 'detailed', style, studienbeginBadge = false }) {
   const navigate   = useNavigate()
   const completedLessons = progress?.completedLessons ?? []
   const total      = getAllLessons(topic.id).length
   const completed  = completedLessons.length
   const pct        = total > 0 ? computeTopicProgress(completedLessons, total) : 0
   const examDone   = isExamCompleted(topic.id, completedLessons)
+  const phase      = studienbeginBadge ? getStudienbeginPhase(topic.id) : null
+  const phaseLabel = phase === 1 ? '📚 1. Sem' : phase === 2 ? '📚 2. Sem' : null
 
   const handleClick = () => navigate(`/topics/${topic.id}`)
 
@@ -77,7 +80,7 @@ export function TopicCard({ topic, progress, variant = 'detailed', style }) {
         <div>
           <p className="font-black text-ink dark:text-paper text-sm leading-tight line-clamp-2 break-words">{topic.title}</p>
           <p className="font-mono text-[10px] text-ink-soft dark:text-surface-300 mt-0.5 uppercase tracking-wider">
-            {DIFF_LABEL[topic.difficulty] ?? ''} · {total} Lekt.
+            {DIFF_LABEL[topic.difficulty] ?? ''} · {total} Lekt.{phaseLabel ? ` · ${phaseLabel}` : ''}
           </p>
         </div>
         <ProgressBar value={pct} size="sm" tone={examDone ? 'lemon' : 'primary'} />
@@ -101,13 +104,20 @@ export function TopicCard({ topic, progress, variant = 'detailed', style }) {
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-2 mb-1">
           <h3 className="font-black text-ink dark:text-paper text-base leading-tight line-clamp-2 break-words">{topic.title}</h3>
-          {examDone ? (
-            <Stamp variant="exam">Prüfung ✓</Stamp>
-          ) : pct === 100 ? (
-            <Stamp variant="done">Fertig</Stamp>
-          ) : pct > 0 ? (
-            <Stamp variant="progress">{pct}%</Stamp>
-          ) : null}
+          <div className="flex flex-col items-end gap-1 flex-shrink-0">
+            {examDone ? (
+              <Stamp variant="exam">Prüfung ✓</Stamp>
+            ) : pct === 100 ? (
+              <Stamp variant="done">Fertig</Stamp>
+            ) : pct > 0 ? (
+              <Stamp variant="progress">{pct}%</Stamp>
+            ) : null}
+            {phaseLabel && (
+              <span className="font-mono text-[9px] font-black text-ink dark:text-paper bg-lemon border border-ink rounded px-1.5 py-0.5 uppercase tracking-wider whitespace-nowrap">
+                {phaseLabel}
+              </span>
+            )}
+          </div>
         </div>
         <p className="text-ink-soft dark:text-surface-100 text-xs leading-snug mb-3">{topic.description}</p>
         <ProgressBar value={pct} size="md" tone={examDone ? 'lemon' : 'primary'} className="mb-2" />
