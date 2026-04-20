@@ -1,6 +1,114 @@
 // ── Unit 1: Grundlagen der Trigonometrie ─────────────────────────────────────
 
 export const exercises_u1 = {
+  // ───────────── Lektion 1-0: Winkel-Intuition (Einstieg) ─────────────
+  'ex-trig-1-0-a': {
+    id: 'ex-trig-1-0-a', lessonId: 'trig-1-0', type: 'multiple-choice',
+    question: 'Wie viele Grad hat ein rechter Winkel?',
+    options: ['$90°$', '$180°$', '$45°$', '$360°$'],
+    correctIndex: 0,
+    explanation: `**Ansatz:** Ein rechter Winkel entsteht, wenn zwei Geraden senkrecht aufeinander stehen.
+
+**Rechnung:** Der volle Kreis hat $360°$. Ein Viertel davon ist $360°/4 = 90°$ — genau ein rechter Winkel.
+
+**Probe:** Eine Ecke eines Quadrats oder Rechtecks hat immer $90°$.
+
+**Typischer Fehler:** $180°$ ist ein gestreckter Winkel (Halbkreis, zwei gerade aufeinanderfolgende Linien) — das ist doppelt so viel wie ein rechter Winkel.`,
+    hints: [
+      'Denk an die Ecke eines Buches oder eines Fensters — wie groß ist der Winkel dort?',
+      'Ein Viertel eines vollen Kreises ($360°$).',
+    ],
+    wrongAnswerExplanations: {
+      1: 'Das wäre ein **gestreckter** Winkel (zwei Geraden bilden eine Linie). Ein rechter Winkel ist halb so groß.',
+      2: 'Das wäre ein **halb**-rechter Winkel. Ein rechter Winkel ist doppelt so groß.',
+      3: 'Das ist ein **voller** Kreis. Ein rechter Winkel ist nur ein Viertel davon.',
+    },
+  },
+  'ex-trig-1-0-b': {
+    id: 'ex-trig-1-0-b', lessonId: 'trig-1-0', type: 'true-false',
+    statement: 'Ein Winkel von $45°$ ist die Hälfte eines rechten Winkels.',
+    correct: true,
+    explanation: `**Ansatz:** Rechter Winkel $= 90°$. Die Hälfte davon ist $90°/2 = 45°$.
+
+**Rechnung:** $45° \\cdot 2 = 90°$. ✓
+
+**Probe:** Die Diagonale eines Quadrats teilt die $90°$-Ecke in zwei gleiche Winkel von je $45°$.
+
+**Typischer Fehler:** Die Hälfte des vollen Kreises ($180°$) mit dem halben rechten Winkel verwechseln.`,
+    hints: [
+      '$45° + 45° = ?$',
+      'Denk an die Diagonale eines Quadrats.',
+    ],
+  },
+  'ex-trig-1-0-c': {
+    id: 'ex-trig-1-0-c', lessonId: 'trig-1-0', type: 'multiple-choice',
+    question: 'Welche Aussage über Winkel stimmt?',
+    options: [
+      'Spitzer Winkel: kleiner als $90°$; stumpfer Winkel: zwischen $90°$ und $180°$',
+      'Spitzer Winkel: größer als $90°$; stumpfer Winkel: größer als $180°$',
+      'Ein $180°$-Winkel heißt „rechter Winkel"',
+      'Ein gestreckter Winkel hat $90°$',
+    ],
+    correctIndex: 0,
+    explanation: `**Ansatz:** Winkelklassen merken.
+
+**Rechnung:**
+- $0° < \\alpha < 90°$ → spitzer Winkel
+- $\\alpha = 90°$ → rechter Winkel
+- $90° < \\alpha < 180°$ → stumpfer Winkel
+- $\\alpha = 180°$ → gestreckter Winkel
+- $180° < \\alpha < 360°$ → überstumpfer Winkel
+
+**Probe:** Skizziere $30°$ (spitz), $120°$ (stumpf), $180°$ (gestreckt) zur Kontrolle.
+
+**Typischer Fehler:** „Rechter Winkel" meint nicht $180°$, sondern $90°$ (der „richtige/gerade" Winkel an einer Ecke).`,
+    hints: [
+      'Spitz = schmal, stumpf = weit offen.',
+      'Rechter Winkel = $90°$, gestreckter Winkel = $180°$.',
+    ],
+    wrongAnswerExplanations: {
+      1: 'Die Größenbeziehungen sind umgekehrt. Spitz ist **kleiner**, stumpf **zwischen $90°$ und $180°$**.',
+      2: '„Rechter Winkel" bezeichnet traditionell $90°$ — das kommt von „richtig/gerade" gegenüber einem flachen Boden.',
+      3: 'Ein gestreckter Winkel ist $180°$ (zwei Linien in entgegengesetzte Richtung). $90°$ ist der rechte Winkel.',
+    },
+  },
+  'ex-trig-1-0-d': {
+    id: 'ex-trig-1-0-d', lessonId: 'trig-1-0', type: 'matching',
+    question: 'Ordne jeden Winkel seiner Klasse zu.',
+    pairs: [
+      { left: '$30°$', right: 'spitzer Winkel' },
+      { left: '$90°$', right: 'rechter Winkel' },
+      { left: '$135°$', right: 'stumpfer Winkel' },
+      { left: '$180°$', right: 'gestreckter Winkel' },
+    ],
+    explanation: `**Ansatz:** Gradzahl mit Klassen-Definition vergleichen.
+
+**Rechnung:** $30°$ < $90°$ → spitz. $135°$ zwischen $90°$ und $180°$ → stumpf. Andere sind Fixpunkte.
+
+**Probe:** Zeichnerisch: $30°$ ist ein schmaler Öffnungswinkel, $135°$ eine weit offene Ecke.
+
+**Typischer Fehler:** $90°$ fälschlich als „spitz" klassifizieren — $90°$ ist genau die Grenze und heißt **rechter** Winkel.`,
+    hints: [
+      'Klassen: 0°–90° spitz, 90° rechter, 90°–180° stumpf, 180° gestreckt.',
+    ],
+  },
+  'ex-trig-1-0-mastery': {
+    id: 'ex-trig-1-0-mastery', lessonId: 'trig-1-0', type: 'number-input', isMasteryCheck: true,
+    question: 'Drei Winkel eines Dreiecks sind $60°$, $80°$ und $x$. Wie groß ist $x$ in Grad?',
+    correctValue: 40, tolerance: 0, unit: '°',
+    explanation: `**Ansatz:** Winkelsumme im Dreieck beträgt immer $180°$.
+
+**Rechnung:** $60 + 80 + x = 180 \\Rightarrow x = 180 - 140 = 40$.
+
+**Probe:** $60 + 80 + 40 = 180°$ ✓.
+
+**Typischer Fehler:** Mit $360°$ rechnen (das ist die Winkelsumme im Viereck, nicht im Dreieck).`,
+    hints: [
+      'Die drei Innenwinkel eines Dreiecks summieren sich auf $180°$.',
+      '$x = 180° - 60° - 80°$.',
+    ],
+  },
+
   // ───────────── Lektion 1-1: Winkel und ihre Maße ─────────────
   'ex-trig-1-1-a': {
     id: 'ex-trig-1-1-a', lessonId: 'trig-1-1', type: 'multiple-choice',
@@ -355,11 +463,58 @@ $$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2} \\cdot G} = \\dfrac{1}{\\sq
 
 const lessons_u1 = [
   {
+    id: 'trig-1-0', unitId: 'trig-unit-1',
+    title: 'Winkel-Intuition (Einstieg)',
+    order: 0, estimatedMinutes: 8,
+    learningGoals: [
+      'Spitzen, rechten, stumpfen, gestreckten Winkel visuell erkennen',
+      'Winkelsumme im Dreieck ($180°$) anwenden',
+      'Anschauung für $45°$, $90°$, $180°$, $360°$ entwickeln',
+    ],
+    prerequisites: [],
+    nextLessonId: 'trig-1-1',
+    steps: [
+      {
+        id: 'trig-1-0-s1', type: 'explanation-intuitive', title: 'Was ist ein Winkel überhaupt?',
+        content: `**Ein Winkel ist eine Drehung.** Stell dir einen Zeiger vor, der im Mittelpunkt fixiert ist und sich dreht: Der Winkel ist, wie weit er gedreht wurde.
+
+**Wichtige Landmarken auf dem vollen Kreis ($360°$):**
+
+| Winkel | Name | Bild |
+|---|---|---|
+| $0°$ | kein Winkel | zwei Linien übereinander |
+| $45°$ | halber rechter Winkel | Diagonale im Quadrat |
+| $90°$ | rechter Winkel | Buchecke, Fensterecke |
+| $135°$ | stumpf (eineinhalb rechte) | schräg geöffnetes Buch |
+| $180°$ | gestreckter Winkel | gerade Linie |
+| $270°$ | drei rechte Winkel | Dreiviertelkreis |
+| $360°$ | voller Kreis | zurück am Start |
+
+**Anwendung in Maschinenbau:** Wellen, die sich drehen, Kurbeltriebe, Zahnradübersetzungen — alles läuft über Winkel.`,
+      },
+      {
+        id: 'trig-1-0-s2', type: 'explanation-formal', title: 'Winkelsumme im Dreieck',
+        content: `**Fundamentale Regel:** Die drei Innenwinkel eines Dreiecks summieren sich **immer auf $180°$** — egal wie das Dreieck aussieht.
+
+$$\\alpha + \\beta + \\gamma = 180°$$
+
+**Beispiel:** Ein rechtwinkliges Dreieck hat einen $90°$-Winkel. Die anderen beiden müssen zusammen $90°$ ergeben.
+
+**Warum das wichtig ist:** Wenn du zwei Winkel kennst, kannst du den dritten direkt ausrechnen.`,
+      },
+      { id: 'trig-1-0-s3', type: 'exercise', title: 'Aufgabe 1 — Rechter Winkel', exerciseRef: 'ex-trig-1-0-a' },
+      { id: 'trig-1-0-s4', type: 'exercise', title: 'Aufgabe 2 — Halber rechter Winkel', exerciseRef: 'ex-trig-1-0-b' },
+      { id: 'trig-1-0-s5', type: 'exercise', title: 'Aufgabe 3 — Winkelklassen', exerciseRef: 'ex-trig-1-0-c' },
+      { id: 'trig-1-0-s6', type: 'exercise', title: 'Aufgabe 4 — Zuordnen', exerciseRef: 'ex-trig-1-0-d' },
+      { id: 'trig-1-0-s7', type: 'mastery-check', title: 'Verständnischeck', exerciseRef: 'ex-trig-1-0-mastery' },
+    ],
+  },
+  {
     id: 'trig-1-1', unitId: 'trig-unit-1',
     title: 'Winkel und ihre Maße',
     order: 1, estimatedMinutes: 10,
     learningGoals: ['Grad- und Bogenmaß umrechnen', 'Bedeutung von π im Einheitskreis verstehen', 'DEG/RAD-Modus am Taschenrechner sicher wählen'],
-    prerequisites: [],
+    prerequisites: ['trig-1-0'],
     nextLessonId: 'trig-1-2',
     steps: [
       {

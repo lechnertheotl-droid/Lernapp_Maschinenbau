@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useTheme } from '@/context/ThemeContext'
 
 const LINKS = [
+  { to: '/lehrplan',        icon: '✎', title: 'Lehrplan (TU Wien MB)', desc: 'Empfohlene Reihenfolge vom Studienbeginn bis zur Vertiefung' },
   { to: '/lernpfad',        icon: '⌬', title: 'Lernpfad',        desc: 'Abhängigkeits-Graph aller Themen' },
   { to: '/formelsammlung',  icon: 'ƒ', title: 'Formelsammlung',  desc: 'Alle Formeln mit Favoriten und Suche' },
   { to: '/erfolge',         icon: '★', title: 'Erfolge',         desc: 'Streak, Badges und Statistiken' },

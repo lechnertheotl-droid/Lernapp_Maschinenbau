@@ -8,6 +8,59 @@ interface Exercise {
   relatedFormulaId?: string
 }
 
+/**
+ * Feedback-Happen-Segmentierung: zerlegt Erklärungen nach dem Schema
+ *   **Ansatz:** … **Rechnung:** … **Probe:** … **Typischer Fehler:** …
+ * in vier farbige Sub-Boxen. Fällt auf Single-Block zurück, wenn keine Marker
+ * gefunden werden (Rückwärtskompatibilität für alte Erklärungen).
+ */
+interface ExplanationBlock {
+  key: 'ansatz' | 'rechnung' | 'probe' | 'fehler'
+  label: string
+  body: string
+}
+
+const BLOCK_ORDER: ExplanationBlock['key'][] = ['ansatz', 'rechnung', 'probe', 'fehler']
+const BLOCK_LABELS: Record<ExplanationBlock['key'], string> = {
+  ansatz: 'Ansatz',
+  rechnung: 'Rechnung',
+  probe: 'Probe',
+  fehler: 'Typischer Fehler',
+}
+const BLOCK_STYLES: Record<ExplanationBlock['key'], string> = {
+  ansatz:   'border-blue-500 dark:border-blue-400 bg-blue-50 dark:bg-blue-950/40',
+  rechnung: 'border-amber-500 dark:border-amber-400 bg-amber-50 dark:bg-amber-950/40',
+  probe:    'border-green-600 dark:border-green-400 bg-green-50 dark:bg-green-950/40',
+  fehler:   'border-red-500 dark:border-red-400 bg-red-50 dark:bg-red-950/40',
+}
+const BLOCK_LABEL_COLORS: Record<ExplanationBlock['key'], string> = {
+  ansatz:   'text-blue-800 dark:text-blue-200',
+  rechnung: 'text-amber-800 dark:text-amber-200',
+  probe:    'text-green-800 dark:text-green-200',
+  fehler:   'text-red-800 dark:text-red-200',
+}
+
+export function parseExplanationBlocks(text: string): ExplanationBlock[] | null {
+  if (typeof text !== 'string') return null
+  // Regex matcht **Label:** gefolgt von Inhalt bis zum nächsten Label oder Ende.
+  const regex = /\*\*(Ansatz|Rechnung|Probe|Typischer Fehler)\s*:\*\*\s*([\s\S]*?)(?=\n\s*\*\*(?:Ansatz|Rechnung|Probe|Typischer Fehler)\s*:\*\*|$)/gi
+  const blocks: ExplanationBlock[] = []
+  let match: RegExpExecArray | null
+  while ((match = regex.exec(text)) !== null) {
+    const labelRaw = match[1].toLowerCase()
+    const key: ExplanationBlock['key'] =
+      labelRaw === 'ansatz' ? 'ansatz'
+      : labelRaw === 'rechnung' ? 'rechnung'
+      : labelRaw === 'probe' ? 'probe'
+      : 'fehler'
+    blocks.push({ key, label: BLOCK_LABELS[key], body: match[2].trim() })
+  }
+  if (blocks.length < 2) return null // weniger als 2 Marker → Single-Block-Fallback
+  // In kanonischer Reihenfolge sortieren
+  blocks.sort((a, b) => BLOCK_ORDER.indexOf(a.key) - BLOCK_ORDER.indexOf(b.key))
+  return blocks
+}
+
 interface FeedbackContentProps {
   isCorrect: boolean
   exercise: Exercise
@@ -100,14 +153,34 @@ export function FeedbackContent({ isCorrect, exercise, userAnswer }: FeedbackCon
         </div>
       )}
 
-      {exercise.explanation && (
-        <div className="border-l-4 border-ink dark:border-surface-400 bg-white/70 dark:bg-surface-900 px-3 py-2 rounded">
-          <p className="font-mono text-[10px] font-black text-ink dark:text-paper uppercase tracking-widest mb-1">
-            // {isCorrect ? 'Erklärung' : 'Lösungsweg'}
-          </p>
-          <MarkdownContent className="text-ink dark:text-paper">{exercise.explanation}</MarkdownContent>
-        </div>
-      )}
+      {exercise.explanation && (() => {
+        const blocks = parseExplanationBlocks(exercise.explanation)
+        if (!blocks) {
+          return (
+            <div className="border-l-4 border-ink dark:border-surface-400 bg-white/70 dark:bg-surface-900 px-3 py-2 rounded">
+              <p className="font-mono text-[10px] font-black text-ink dark:text-paper uppercase tracking-widest mb-1">
+                // {isCorrect ? 'Erklärung' : 'Lösungsweg'}
+              </p>
+              <MarkdownContent className="text-ink dark:text-paper">{exercise.explanation!}</MarkdownContent>
+            </div>
+          )
+        }
+        return (
+          <div className="flex flex-col gap-2">
+            {blocks.map((block) => (
+              <div
+                key={block.key}
+                className={cn('border-l-4 px-3 py-2 rounded', BLOCK_STYLES[block.key])}
+              >
+                <p className={cn('font-mono text-[10px] font-black uppercase tracking-widest mb-1', BLOCK_LABEL_COLORS[block.key])}>
+                  // {block.label}
+                </p>
+                <MarkdownContent className="text-ink dark:text-paper">{block.body}</MarkdownContent>
+              </div>
+            ))}
+          </div>
+        )
+      })()}
     </div>
   )
 }

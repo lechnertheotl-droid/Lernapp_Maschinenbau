@@ -78,15 +78,115 @@ const unit1 = makeUnit({
         'Kunststoffe erweichen bei ca. 100–250 °C.',
         'Keramiken sind hart und hitzebeständig, aber spröde.',
       ],
-      nextLessonId: 'werk-pruefung-1',
+      nextLessonId: 'werk-2-1',
     }),
   ],
 })
 
 const unit2 = makeUnit({
   id: 'werk-unit-2',
-  title: 'Prüfung',
+  title: 'Prüfverfahren',
   order: 2,
+  lessons: [
+    makeLesson({
+      id: 'werk-2-1',
+      title: 'Härteprüfung (HV, HB, HRC)',
+      estimatedMinutes: 12,
+      learningGoals: [
+        'Prinzip der Härteprüfung verstehen',
+        'Vickers, Brinell, Rockwell unterscheiden',
+        'Härte mit Festigkeit korrelieren',
+      ],
+      createdAt: '2026-04-20',
+      intuitionTitle: 'Wie hart ist „hart"?',
+      intuitionContent:
+        '**Härte** ist der Widerstand eines Werkstoffs gegen das Eindringen eines anderen Körpers. ' +
+        'Die üblichen Prüfmethoden drücken einen normierten Eindringkörper (Kugel, Diamantpyramide, Diamantkegel) mit definierter Kraft in die Oberfläche und messen den Abdruck.\n\n' +
+        '- **Vickers (HV):** Diamantpyramide, kleiner Eindruck — auch für dünne Proben und harte Werkstoffe geeignet.\n' +
+        '- **Brinell (HB):** Kugel aus Hartmetall — für weichere Werkstoffe und größere Proben.\n' +
+        '- **Rockwell (HRC / HRB):** Diamantkegel (HRC) oder Kugel (HRB) — sehr schnell, direkt vom Messgerät ablesbar.',
+      formulaTitle: 'Kennwerte & Korrelation',
+      formulaContent:
+        '**Vickers-Härte:** HV $= 0{,}1891 \\cdot F / d^{2}$ (F in N, d als mittlere Diagonale in mm).\n\n' +
+        '**Brinell-Härte:** HB $\\approx 0{,}102 \\cdot F / A_\\text{abdruck}$.\n\n' +
+        '**Faustformel Stahl:** $R_m \\approx 3{,}5 \\cdot \\text{HB}$ (in MPa). So kann man aus einer schnellen Härteprüfung die Zugfestigkeit grob abschätzen.\n\n' +
+        '**Typische Werte:**\n' +
+        '- Reineisen: ~100 HV\n' +
+        '- Baustahl S235: ~120–150 HV\n' +
+        '- Vergütungsstahl 42CrMo4: ~280–320 HV\n' +
+        '- Gehärteter Werkzeugstahl: bis 900 HV\n' +
+        '- Al₂O₃-Keramik: ~2000 HV',
+      masteryQuestion: 'Welches Verfahren eignet sich am besten für eine dünne Oberflächenschicht (z. B. gehärtete Randschicht)?',
+      masteryOptions: ['Vickers (HV)', 'Brinell (HB) mit 10 mm Kugel', 'Rockwell B (HRB)', 'Keine der Methoden'],
+      correctIndex: 0,
+      masteryExplanation:
+        '**Ansatz:** Dünne Schicht braucht kleinen Eindruck.\n\n' +
+        '**Rechnung:** Vickers mit Diamantpyramide erzeugt sehr kleine Abdrücke (Micro-Vickers: F < 2 N).\n\n' +
+        '**Probe:** Brinell mit 10 mm Kugel würde die Schicht durchdrücken und den Grundwerkstoff mitmessen.\n\n' +
+        '**Typischer Fehler:** Brinell auch auf harte/dünne Schichten anwenden — das Ergebnis wird verfälscht.',
+      masteryHints: [
+        'Kleiner Eindruck ist nötig, um nur die dünne Schicht zu messen.',
+        'Welches Verfahren hat den kleinsten Eindruck?',
+      ],
+      prerequisites: ['werk-1-2'],
+      nextLessonId: 'werk-2-2',
+    }),
+    makeLesson({
+      id: 'werk-2-2',
+      title: 'Kerbschlagbiegeversuch',
+      estimatedMinutes: 12,
+      learningGoals: [
+        'Sprödbruch-Risiko erkennen',
+        'Übergangstemperatur zwischen zähem und sprödem Verhalten verstehen',
+        'Kerbschlagarbeit $KV$ als Kennwert interpretieren',
+      ],
+      createdAt: '2026-04-20',
+      intuitionTitle: 'Zäh oder spröde?',
+      intuitionContent:
+        'Ein Zugversuch gibt Festigkeit, aber keine Aussage über **Sprödbruch-Empfindlichkeit**. Dafür gibt es den **Kerbschlagbiegeversuch** (nach Charpy): ' +
+        'Eine gekerbte Probe wird durch ein Pendel schlagartig gebrochen. Die verbrauchte Energie heißt **Kerbschlagarbeit** $KV$ (in Joule).\n\n' +
+        '**Deutung:**\n' +
+        '- Hohe $KV$ → **zäher** Bruch (gute Verformung vor Trennung)\n' +
+        '- Niedrige $KV$ → **spröder** Bruch (plötzlich, ohne Warnung)\n\n' +
+        '**Übergangstemperatur:** Viele Stähle verhalten sich bei warmer Temperatur zäh, werden aber bei Kälte spröde. Unterhalb der **Übergangstemperatur** $T_Ü$ fällt $KV$ stark ab — gefährlich für Kalt-Konstruktionen!',
+      formulaTitle: 'Kerbschlagarbeit',
+      formulaContent:
+        '**Kerbschlagarbeit:** $KV = m \\cdot g \\cdot (h_0 - h_1)$\n\n' +
+        '- $h_0$: Anfangshöhe des Pendels\n' +
+        '- $h_1$: Endhöhe nach Bruch\n' +
+        '- $KV$ in Joule, wird direkt vom Gerät abgelesen\n\n' +
+        '**Typische Werte bei Raumtemperatur:**\n' +
+        '- Baustahl S235J2: > 27 J (zäh)\n' +
+        '- Grauguss: 3–5 J (spröde)\n' +
+        '- Vergütungsstahl: 40–100 J\n\n' +
+        '**Kritischer Grenzwert:** $KV < 27\\,\\text{J}$ gilt im Stahlbau als sprödbruchgefährdet.',
+      masteryQuestion: 'Eine Baustahlprobe hat bei $-20\\,°\\text{C}$ eine Kerbschlagarbeit von $15\\,\\text{J}$. Was bedeutet das für die Konstruktion?',
+      masteryOptions: [
+        'Sprödbruchgefahr bei tiefen Temperaturen — der Werkstoff ist ungeeignet',
+        'Alles in Ordnung — 15 J ist ausreichend',
+        'Das Ergebnis lässt sich nicht interpretieren',
+        'Höhere Festigkeit als S235',
+      ],
+      correctIndex: 0,
+      masteryExplanation:
+        '**Ansatz:** Grenzwert für sprödbruchsichere Konstruktionen ist $KV \\geq 27\\,\\text{J}$.\n\n' +
+        '**Rechnung:** $15\\,\\text{J} < 27\\,\\text{J}$ → sprödbruchgefährdet.\n\n' +
+        '**Probe:** Stähle mit $J2$-Zusatz sind für $-20\\,°\\text{C}$ geprüft und erreichen ≥27 J — hier offensichtlich nicht erreicht.\n\n' +
+        '**Typischer Fehler:** Die Temperatur ignorieren; bei Raumtemperatur wäre derselbe Stahl oft zäh.',
+      masteryHints: [
+        'Grenzwert für sprödbruchsichere Konstruktionen?',
+        '$KV \\geq 27\\,\\text{J}$ ist der kritische Wert im Stahlbau.',
+      ],
+      prerequisites: ['werk-2-1'],
+      nextLessonId: 'werk-pruefung-1',
+    }),
+  ],
+})
+
+const unit3 = makeUnit({
+  id: 'werk-unit-3',
+  title: 'Prüfung',
+  order: 3,
   lessons: [
     makeLesson({
       id: 'werk-pruefung-1',
@@ -124,7 +224,7 @@ const unit2 = makeUnit({
         '$R_m = 400$ MPa, $S = 2$ → $400/2$.',
         'Ergebnis: 200 MPa — nicht 800 (das wäre Produkt, nicht Quotient).',
       ],
-      prerequisites: ['werk-1-1'],
+      prerequisites: ['werk-1-1', 'werk-2-2'],
       nextLessonId: null,
     }),
   ],
@@ -133,13 +233,13 @@ const unit2 = makeUnit({
 export const werkstoffkundeTopic = {
   id: 'werkstoffkunde',
   title: 'Werkstoffkunde',
-  description: 'Zugversuch, Kennwerte, Werkstoffgruppen, Wärmebehandlung — Grundlage 2. Semester',
+  description: 'Zugversuch, Härteprüfung, Kerbschlag, Werkstoffgruppen — Grundlage 1./2. Semester',
   subject: 'engineering',
   icon: '⚙︎',
   color: 'slate',
-  estimatedHours: 3,
+  estimatedHours: 4,
   difficulty: 2,
   level: 'grundlagen',
-  units: [unit1, unit2],
+  units: [unit1, unit2, unit3],
   prerequisites: ['algebra'],
 }

@@ -99,6 +99,374 @@ const topicDefinitions = [
     },
     units: [
       {
+        id: 'mech-unit-0',
+        title: 'Einheiten & Dimensionsanalyse (Einstieg)',
+        description: 'SI-Einheiten, Präfixe, abgeleitete Einheiten und Dimensionscheck.',
+        lessons: [
+          {
+            id: 'mech-0-1',
+            title: 'SI-Basiseinheiten & Präfixe',
+            learningGoals: [
+              'Die sieben SI-Basiseinheiten kennen',
+              'Dezimale Vorsätze (nano, milli, kilo, mega, giga) anwenden',
+              'Einheiten in wissenschaftlicher Notation schreiben',
+            ],
+            content: String.raw`**Die sieben SI-Basiseinheiten** sind das Fundament aller physikalischen Messungen:
+
+| Größe | Einheit | Symbol |
+|---|---|---|
+| Länge | Meter | m |
+| Masse | Kilogramm | kg |
+| Zeit | Sekunde | s |
+| elektrische Stromstärke | Ampere | A |
+| thermodynamische Temperatur | Kelvin | K |
+| Stoffmenge | Mol | mol |
+| Lichtstärke | Candela | cd |
+
+Alle anderen Einheiten lassen sich daraus ableiten.
+
+**Dezimale Vorsätze (Präfixe):**
+
+| Präfix | Symbol | Faktor |
+|---|---|---|
+| giga- | G | $10^{9}$ |
+| mega- | M | $10^{6}$ |
+| kilo- | k | $10^{3}$ |
+| (keiner) | — | $10^{0}$ |
+| milli- | m | $10^{-3}$ |
+| mikro- | µ | $10^{-6}$ |
+| nano- | n | $10^{-9}$ |
+
+**Beispiel:** $1\,\text{km} = 10^{3}\,\text{m} = 1000\,\text{m}$. $1\,\text{GPa} = 10^{9}\,\text{Pa}$. $2{,}5\,\text{mm} = 2{,}5 \cdot 10^{-3}\,\text{m} = 0{,}0025\,\text{m}$.
+
+**Merkregel:** Ein Schritt im Präfix-Kalender bedeutet Faktor $1000$ (bei den gängigen Ingenieur-Präfixen).`,
+            exercises: [
+              {
+                type: 'multiple-choice',
+                question: 'Wie viel sind $2{,}5\,\text{GPa}$ in Pa?',
+                options: ['$2{,}5 \\cdot 10^{9}\\,\\text{Pa}$', '$2{,}5 \\cdot 10^{6}\\,\\text{Pa}$', '$2{,}5 \\cdot 10^{3}\\,\\text{Pa}$', '$25\\,\\text{Pa}$'],
+                correctIndex: 0,
+                explanation: `**Ansatz:** Präfix „G" = giga = $10^{9}$.
+
+**Rechnung:** $2{,}5\\,\\text{GPa} = 2{,}5 \\cdot 10^{9}\\,\\text{Pa}$.
+
+**Probe:** $2{,}5\\,\\text{GPa} = 2500\\,\\text{MPa} = 2\\,500\\,000\\,\\text{kPa} = 2\\,500\\,000\\,000\\,\\text{Pa}$.
+
+**Typischer Fehler:** „M" (mega) mit „G" (giga) verwechseln — Faktor $1000$ Unterschied.`,
+                hints: ['Präfix G = giga = $10^{9}$.', 'Die Zahl bleibt, der Faktor wird angefügt.'],
+                wrongAnswerExplanations: {
+                  1: 'Das wäre $2{,}5\\,\\text{MPa}$ (mega). Der Präfix G bedeutet giga = $10^{9}$, nicht mega = $10^{6}$.',
+                  2: 'Das wäre $2{,}5\\,\\text{kPa}$ (kilo). Zu weit unterschätzt — G ist $10^{9}$.',
+                  3: 'Hier wurde das Präfix komplett ignoriert.',
+                },
+              },
+              {
+                type: 'number-input',
+                question: 'Wie viele Millimeter sind $2{,}5\\,\\text{km}$? Gib das Ergebnis in $\\text{mm}$ an.',
+                correctValue: 2500000,
+                tolerance: 1,
+                unit: 'mm',
+                explanation: `**Ansatz:** Über die Basiseinheit Meter umrechnen.
+
+**Rechnung:** $2{,}5\\,\\text{km} = 2{,}5 \\cdot 10^{3}\\,\\text{m} = 2500\\,\\text{m} = 2500 \\cdot 10^{3}\\,\\text{mm} = 2\\,500\\,000\\,\\text{mm}$.
+
+**Probe:** km → mm = Faktor $10^{6}$. $2{,}5 \\cdot 10^{6} = 2{,}5 \\cdot 10^{6}$. ✓
+
+**Typischer Fehler:** Nur einmal den Faktor $1000$ anwenden statt zweimal (km → m → mm).`,
+                hints: [
+                  'km → m: Faktor $10^{3}$. m → mm: Faktor $10^{3}$.',
+                  'Insgesamt also Faktor $10^{6}$.',
+                ],
+              },
+              {
+                type: 'true-false',
+                statement: 'Die Masse wird in der SI-Einheit Kilogramm gemessen, nicht in Gramm — Gramm ist eigentlich das Abgeleitete.',
+                correct: true,
+                explanation: `**Ansatz:** SI-Basiseinheit der Masse ist das **Kilogramm** (kg), ein historischer Sonderfall.
+
+**Rechnung:** $1\\,\\text{g} = 10^{-3}\\,\\text{kg}$. Das Gramm ist also quasi $1\\,\\text{mkg}$ (milli-kg).
+
+**Probe:** Keine andere SI-Basiseinheit hat einen Präfix im Namen — das Kilogramm ist die Ausnahme.
+
+**Typischer Fehler:** Annehmen, Gramm sei die Grundeinheit. Im SI-System ist es historisch anders.`,
+                hints: ['Nur eine Basiseinheit hat bereits ein Präfix im Namen.'],
+              },
+              {
+                type: 'matching',
+                question: 'Ordne jeden Präfix dem passenden Faktor zu.',
+                pairs: [
+                  { left: 'nano (n)', right: '$10^{-9}$' },
+                  { left: 'milli (m)', right: '$10^{-3}$' },
+                  { left: 'kilo (k)', right: '$10^{3}$' },
+                  { left: 'mega (M)', right: '$10^{6}$' },
+                  { left: 'giga (G)', right: '$10^{9}$' },
+                ],
+                explanation: `**Ansatz:** Präfixe steigen in Faktoren von $10^{3}$.
+
+**Rechnung:** Merke: n ($10^{-9}$) → µ ($10^{-6}$) → m ($10^{-3}$) → (keins) → k ($10^{3}$) → M ($10^{6}$) → G ($10^{9}$).
+
+**Probe:** Prüfbeispiel: $1\\,\\text{mm} = 10^{-3}\\,\\text{m}$, $1\\,\\text{kg} = 10^{3}\\,\\text{g}$. ✓
+
+**Typischer Fehler:** Groß-/Kleinschreibung: **m**illi (klein) vs. **M**ega (groß).`,
+                hints: ['Jeder Schritt ist ein Faktor $1000$ auseinander.'],
+              },
+              {
+                type: 'number-input',
+                isMasteryCheck: true,
+                question: 'Eine Schraube hat einen Durchmesser von $8\\,\\text{mm}$ und eine Länge von $25\\,\\text{mm}$. Wie groß ist das Produkt Durchmesser × Länge in $\\text{m}^{2}$?',
+                correctValue: 2e-4,
+                tolerance: 1e-6,
+                unit: 'm²',
+                explanation: `**Ansatz:** Alle Werte in SI-Basiseinheiten umrechnen, dann multiplizieren.
+
+**Rechnung:** $d = 8\\,\\text{mm} = 0{,}008\\,\\text{m}$, $l = 25\\,\\text{mm} = 0{,}025\\,\\text{m}$. Produkt: $0{,}008 \\cdot 0{,}025 = 0{,}0002\\,\\text{m}^{2} = 2 \\cdot 10^{-4}\\,\\text{m}^{2}$.
+
+**Probe:** $8 \\cdot 25 = 200\\,\\text{mm}^{2}$. Umrechnung: $1\\,\\text{mm}^{2} = 10^{-6}\\,\\text{m}^{2}$, also $200 \\cdot 10^{-6} = 2 \\cdot 10^{-4}\\,\\text{m}^{2}$. ✓
+
+**Typischer Fehler:** In mm rechnen und Ergebnis nicht umrechnen — dann käme $200\\,\\text{mm}^{2}$ heraus, was zahlenmäßig völlig anders aussieht.`,
+                hints: [
+                  'Erst beide Werte in Meter umrechnen.',
+                  '$1\\,\\text{mm} = 10^{-3}\\,\\text{m}$.',
+                  'Dann multiplizieren.',
+                ],
+              },
+            ],
+          },
+          {
+            id: 'mech-0-2',
+            title: 'Abgeleitete Einheiten (N, J, Pa, W)',
+            learningGoals: [
+              'Die wichtigsten abgeleiteten Einheiten benennen',
+              'Formeln mit Einheiten korrekt rechnen',
+              'SI-zusammengesetzte Einheiten sicher umrechnen',
+            ],
+            content: String.raw`**Abgeleitete Einheiten** entstehen aus den Basiseinheiten durch physikalische Formeln:
+
+| Größe | Einheit | In Basis-Einheiten |
+|---|---|---|
+| Kraft | Newton (N) | $\text{kg} \cdot \text{m} / \text{s}^{2}$ |
+| Energie, Arbeit | Joule (J) | $\text{N} \cdot \text{m} = \text{kg} \cdot \text{m}^{2} / \text{s}^{2}$ |
+| Leistung | Watt (W) | $\text{J}/\text{s} = \text{kg} \cdot \text{m}^{2} / \text{s}^{3}$ |
+| Druck, Spannung | Pascal (Pa) | $\text{N}/\text{m}^{2} = \text{kg}/(\text{m} \cdot \text{s}^{2})$ |
+| Frequenz | Hertz (Hz) | $1/\text{s}$ |
+
+**Wichtige Umrechnungen für Maschinenbau:**
+- $1\,\text{MPa} = 1\,\text{N}/\text{mm}^{2}$ (nützlich für Spannungen)
+- $1\,\text{kN} \cdot \text{m} = 1\,\text{kJ}$
+- $1\,\text{kW} \cdot \text{h} = 3{,}6\,\text{MJ}$ (Kilowattstunde)
+
+**Typische Fallen:**
+- **MPa vs. N/mm²:** Beides identisch — Ingenieurstradition benutzt N/mm² häufig.
+- **mbar vs. Pa:** $1\,\text{bar} = 10^{5}\,\text{Pa}$, also $1\,\text{mbar} = 100\,\text{Pa}$.`,
+            exercises: [
+              {
+                type: 'number-input',
+                question: 'Ein Körper mit Masse $m = 10\\,\\text{kg}$ erfährt die Beschleunigung $a = 2\\,\\text{m/s}^{2}$. Wie groß ist die Kraft $F = m \\cdot a$ in $\\text{N}$?',
+                correctValue: 20,
+                tolerance: 0.01,
+                unit: 'N',
+                explanation: `**Ansatz:** Newtonsches Grundgesetz $F = m \\cdot a$.
+
+**Rechnung:** $F = 10 \\cdot 2 = 20\\,\\text{N}$.
+
+**Probe:** Einheit prüfen: $\\text{kg} \\cdot \\text{m/s}^{2} = \\text{N}$. ✓
+
+**Typischer Fehler:** Masse mit Gewichtskraft verwechseln. Masse ist ein Skalar in kg; die Gewichtskraft wäre $m \\cdot g \\approx 10 \\cdot 9{,}81 \\approx 98\\,\\text{N}$.`,
+                hints: ['Formel: $F = m \\cdot a$.', 'Einheiten: $\\text{kg} \\cdot \\text{m/s}^{2} = \\text{N}$.'],
+              },
+              {
+                type: 'multiple-choice',
+                question: 'Welche Umrechnung ist richtig?',
+                options: ['$1\\,\\text{MPa} = 1\\,\\text{N/mm}^{2}$', '$1\\,\\text{MPa} = 1\\,\\text{kN/m}^{2}$', '$1\\,\\text{MPa} = 1000\\,\\text{Pa}$', '$1\\,\\text{MPa} = 1\\,\\text{N/m}^{2}$'],
+                correctIndex: 0,
+                explanation: `**Ansatz:** $1\\,\\text{MPa} = 10^{6}\\,\\text{Pa} = 10^{6}\\,\\text{N/m}^{2}$. In N/mm² umrechnen: $1\\,\\text{m}^{2} = 10^{6}\\,\\text{mm}^{2}$.
+
+**Rechnung:** $10^{6}\\,\\text{N/m}^{2} = 10^{6}\\,\\text{N}/(10^{6}\\,\\text{mm}^{2}) = 1\\,\\text{N/mm}^{2}$.
+
+**Probe:** Praktisches Beispiel: Stahl S235 hat $R_{e} \\approx 235\\,\\text{MPa} = 235\\,\\text{N/mm}^{2}$. ✓
+
+**Typischer Fehler:** Präfix-Faktoren bei Flächen nicht quadrieren — dadurch Faktor $1000$ statt $10^{6}$.`,
+                hints: [
+                  '$1\\,\\text{MPa} = 10^{6}\\,\\text{Pa}$.',
+                  '$1\\,\\text{m}^{2} = (10^{3}\\,\\text{mm})^{2} = 10^{6}\\,\\text{mm}^{2}$ — Fläche ist quadratisch!',
+                ],
+                wrongAnswerExplanations: {
+                  1: 'Falscher Faktor: $1\\,\\text{MPa} = 1000\\,\\text{kN/m}^{2}$ ist richtig, nicht $1\\,\\text{kN/m}^{2}$.',
+                  2: 'MPa = mega-Pascal = $10^{6}$ Pa, nicht $10^{3}$.',
+                  3: 'Das wäre $1\\,\\text{Pa}$ ohne Präfix — um Faktor $10^{6}$ daneben.',
+                },
+              },
+              {
+                type: 'true-false',
+                statement: '$1\\,\\text{J}$ ist dasselbe wie $1\\,\\text{N} \\cdot \\text{m}$.',
+                correct: true,
+                explanation: `**Ansatz:** Energie = Kraft × Weg. $W = F \\cdot s$.
+
+**Rechnung:** $1\\,\\text{J} = 1\\,\\text{N} \\cdot 1\\,\\text{m}$.
+
+**Probe:** In Basiseinheiten: $\\text{J} = \\text{kg} \\cdot \\text{m}^{2}/\\text{s}^{2}$ und $\\text{N}\\cdot\\text{m} = \\text{kg}\\cdot\\text{m}/\\text{s}^{2} \\cdot \\text{m}$. ✓
+
+**Typischer Fehler:** $1\\,\\text{J}$ mit $1\\,\\text{W}$ (Leistung) verwechseln — Energie vs. Leistung.`,
+                hints: ['Energie = Kraft mal Weg.'],
+              },
+              {
+                type: 'matching',
+                question: 'Ordne jede abgeleitete Einheit der passenden physikalischen Größe zu.',
+                pairs: [
+                  { left: 'N', right: 'Kraft' },
+                  { left: 'J', right: 'Energie / Arbeit' },
+                  { left: 'W', right: 'Leistung' },
+                  { left: 'Pa', right: 'Druck / Spannung' },
+                  { left: 'Hz', right: 'Frequenz' },
+                ],
+                explanation: `**Ansatz:** Abgeleitete Einheiten durch ihre Definition zuordnen.
+
+**Rechnung:** N = kg·m/s², J = N·m, W = J/s, Pa = N/m², Hz = 1/s.
+
+**Probe:** Alle leiten sich aus Basiseinheiten ab.
+
+**Typischer Fehler:** W (Watt, Leistung) mit J (Joule, Energie) verwechseln.`,
+                hints: ['J und W unterscheiden sich um eine Zeit-Dimension (J = W·s).'],
+              },
+              {
+                type: 'number-input',
+                isMasteryCheck: true,
+                question: 'Ein Motor leistet $P = 2{,}5\\,\\text{kW}$ über $t = 4\\,\\text{h}$. Wie viel Energie in $\\text{MJ}$ gibt er ab? ($1\\,\\text{h} = 3600\\,\\text{s}$)',
+                correctValue: 36,
+                tolerance: 0.1,
+                unit: 'MJ',
+                explanation: `**Ansatz:** $E = P \\cdot t$. Alles in SI-Einheiten.
+
+**Rechnung:** $P = 2500\\,\\text{W}$; $t = 4 \\cdot 3600 = 14\\,400\\,\\text{s}$. $E = 2500 \\cdot 14\\,400 = 36\\,000\\,000\\,\\text{J} = 36\\,\\text{MJ}$.
+
+**Probe:** Alternativ über kWh: $E = 2{,}5\\,\\text{kWh} \\cdot 4 = 10\\,\\text{kWh} = 10 \\cdot 3{,}6\\,\\text{MJ} = 36\\,\\text{MJ}$. ✓
+
+**Typischer Fehler:** Stunden nicht in Sekunden umrechnen — Ergebnis dann in falscher Größenordnung.`,
+                hints: [
+                  'Energie = Leistung × Zeit.',
+                  'Alles in SI: P in W, t in s.',
+                  'Am Ende in MJ umrechnen ($1\\,\\text{MJ} = 10^{6}\\,\\text{J}$).',
+                ],
+              },
+            ],
+          },
+          {
+            id: 'mech-0-3',
+            title: 'Dimensionsanalyse — Einheitencheck',
+            learningGoals: [
+              'Einheiten in einer Formel prüfen',
+              'Plausibilität eines Rechenergebnisses über Einheiten kontrollieren',
+              'Formeln aus Dimensions-Überlegungen aufstellen',
+            ],
+            content: String.raw`**Warum Dimensionsanalyse?** Jede gültige physikalische Formel muss dimensional konsistent sein: Links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen. Das ist das **stärkste Prüfverfahren**, um Formelfehler zu erkennen.
+
+**Anwendung:**
+1. Jede Größe mit ihrer Einheit notieren.
+2. Einheiten mit den Rechenoperationen der Formel verknüpfen.
+3. Prüfen, ob die Zieleinheit korrekt herauskommt.
+
+**Beispiel 1 — Spannung:** $\sigma = F/A$ ✓
+- $F$: N, $A$: m²
+- $F/A$: N/m² = Pa ✓ (Spannung hat Einheit Pa)
+
+**Beispiel 2 — Fehler finden:**
+- Behauptung: „$E = \tfrac{1}{2} \cdot m \cdot v$" (kinetische Energie)
+- Einheiten: kg · m/s = kg·m/s — aber Energie ist kg·m²/s². Falsch!
+- Richtige Formel: $E = \tfrac{1}{2} m v^{2}$ → kg·m²/s² = J ✓
+
+**Merkschema für schnellen Check:**
+- Kraft: kg·m/s²
+- Energie: kg·m²/s²
+- Druck/Spannung: kg/(m·s²)
+- Leistung: kg·m²/s³`,
+            exercises: [
+              {
+                type: 'multiple-choice',
+                question: 'Welche der folgenden Formeln ist dimensional korrekt für die Spannung $\\sigma$?',
+                options: [
+                  '$\\sigma = F/A$ mit $F$ in N, $A$ in m²',
+                  '$\\sigma = F \\cdot A$ mit $F$ in N, $A$ in m²',
+                  '$\\sigma = m \\cdot g / L$ mit $L$ in m',
+                  '$\\sigma = F/L$ mit $L$ in m',
+                ],
+                correctIndex: 0,
+                explanation: `**Ansatz:** Zieleinheit $\\sigma$ in Pa = N/m².
+
+**Rechnung:** $F/A$ liefert N/m² = Pa ✓. Die anderen liefern falsche Einheiten.
+
+**Probe:** Option B: $\\text{N} \\cdot \\text{m}^{2}$ ist keine Druckeinheit. Option D: N/m ist eine Kraft pro Länge, keine Spannung.
+
+**Typischer Fehler:** Fläche und Länge verwechseln — $A$ in m² vs. $L$ in m ergibt unterschiedliche Einheiten.`,
+                hints: [
+                  'Spannung hat Einheit Pa = N/m².',
+                  'Welche Operation zwischen $F$ und Fläche liefert N/m²?',
+                ],
+                wrongAnswerExplanations: {
+                  1: '$F \\cdot A$ hat Einheit $\\text{N} \\cdot \\text{m}^{2}$ — das ist keine Druck- oder Spannungseinheit.',
+                  2: 'Zähler hat Einheit Kraft (N), Nenner Länge (m). N/m ist Kraft pro Länge (z. B. Streckenlast), nicht Spannung.',
+                  3: 'Gleiches Problem: $F/L$ hat Einheit N/m, nicht N/m² wie Spannung.',
+                },
+              },
+              {
+                type: 'true-false',
+                statement: 'Die Formel $s = v \\cdot t^{2}$ für den zurückgelegten Weg bei konstanter Geschwindigkeit ist dimensional konsistent.',
+                correct: false,
+                explanation: `**Ansatz:** Einheiten links und rechts vergleichen.
+
+**Rechnung:** Links: $s$ in m. Rechts: $v \\cdot t^{2} = (\\text{m/s}) \\cdot \\text{s}^{2} = \\text{m} \\cdot \\text{s}$. Das ist **nicht** m.
+
+**Probe:** Richtige Formel: $s = v \\cdot t$ für konstante Geschwindigkeit. Bei konstanter Beschleunigung: $s = \\tfrac{1}{2} a t^{2}$.
+
+**Typischer Fehler:** Fallbeschleunigung-Formel ($s = \\tfrac{1}{2}g t^{2}$) auf konstante Geschwindigkeit anwenden. Dimension verrät es: $g$ hat m/s², $v$ hat m/s.`,
+                hints: [
+                  'Einheiten links und rechts notieren.',
+                  'Ist m/s · s² dasselbe wie m?',
+                ],
+              },
+              {
+                type: 'sorting',
+                question: 'Bringe die Schritte einer Dimensionsanalyse in die richtige Reihenfolge.',
+                items: [
+                  'Zieleinheit der linken Seite bestimmen (z. B. N für Kraft)',
+                  'Einheiten jeder Größe auf der rechten Seite notieren',
+                  'Rechte Seite mit den Rechenoperationen verknüpfen',
+                  'Links und rechts vergleichen — identisch?',
+                  'Bei Nichtübereinstimmung: Formel ist falsch oder Zahlenwerte benötigen Umrechnung',
+                ],
+                correctOrder: [0, 1, 2, 3, 4],
+                explanation: `**Ansatz:** Standard-Prozess für jeden Einheitencheck.
+
+**Rechnung:** Zielrichtung festlegen, dann schrittweise verknüpfen und vergleichen.
+
+**Probe:** Wenn Schritt 4 nicht passt, **rechne nicht weiter**, sondern finde den Fehler.
+
+**Typischer Fehler:** Erst rechnen, dann prüfen — und Fehler später schwer finden.`,
+                hints: ['Immer von der Zieleinheit aus zurück denken.'],
+              },
+              {
+                type: 'number-input',
+                isMasteryCheck: true,
+                question: 'Die Einheit der kinetischen Energie ist $\\text{kg} \\cdot \\text{m}^{a} / \\text{s}^{b}$. Was ist $a + b$?',
+                correctValue: 4,
+                tolerance: 0,
+                unit: '',
+                explanation: `**Ansatz:** $E_\\text{kin} = \\tfrac{1}{2} m v^{2}$ hat Einheit $\\text{kg} \\cdot (\\text{m/s})^{2} = \\text{kg} \\cdot \\text{m}^{2}/\\text{s}^{2}$.
+
+**Rechnung:** $a = 2$, $b = 2$. Also $a + b = 4$.
+
+**Probe:** In Joule: $1\\,\\text{J} = 1\\,\\text{kg} \\cdot \\text{m}^{2}/\\text{s}^{2}$. ✓
+
+**Typischer Fehler:** Beim Quadrieren der Geschwindigkeit den Nenner vergessen — dann käme $\\text{kg} \\cdot \\text{m}^{2}/\\text{s}$ heraus, was Einheit $\\text{J} \\cdot \\text{s}$ wäre.`,
+                hints: [
+                  '$E_\\text{kin} = \\tfrac{1}{2} m v^{2}$.',
+                  'Einheit von $v^{2}$ ist $(\\text{m/s})^{2} = \\text{m}^{2}/\\text{s}^{2}$.',
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
         id: 'mech-unit-1',
         title: 'Statik',
         description: 'Kräfte, Momente und Gleichgewicht.',

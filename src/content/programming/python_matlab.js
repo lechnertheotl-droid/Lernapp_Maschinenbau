@@ -88,7 +88,7 @@ const pythonMatlabTopic = buildTopic({
     color: 'blue',
     estimatedHours: 10,
     difficulty: 2,
-    level: 'vertiefung',
+    level: 'grundlagen',
     prerequisites: [],
   },
   units: [

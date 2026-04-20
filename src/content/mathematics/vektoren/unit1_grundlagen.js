@@ -1,6 +1,109 @@
 // ── Vektoren Unit 1: Vektorrechnung Grundlagen ────────────────────────────────
 
 export const exercises_vek_u1 = {
+  // ───────────── Lektion 1-0: Koordinaten, Punkte, Pfeile (Einstieg) ─────────
+  'ex-vek-1-0-a': {
+    id: 'ex-vek-1-0-a', lessonId: 'vek-1-0', type: 'multiple-choice',
+    question: 'Welche Koordinaten hat der Punkt, der 3 Einheiten nach rechts und 2 Einheiten nach oben vom Ursprung liegt?',
+    options: ['$(3, 2)$', '$(2, 3)$', '$(-3, 2)$', '$(3, -2)$'],
+    correctIndex: 0,
+    explanation: `**Ansatz:** Im 2D-Koordinatensystem ist die erste Zahl der $x$-Wert (horizontal), die zweite der $y$-Wert (vertikal).
+
+**Rechnung:** „3 nach rechts" = $x = 3$, „2 nach oben" = $y = 2$. Punkt: $(3, 2)$.
+
+**Probe:** Rechts → positives $x$, oben → positives $y$. ✓
+
+**Typischer Fehler:** $x$ und $y$ vertauschen ($\\,(2,3)\\,$) — Koordinaten folgen immer der Reihenfolge $(x, y)$.`,
+    hints: [
+      'Reihenfolge in der Klammer: $(x, y)$.',
+      'Rechts bedeutet positives $x$, oben bedeutet positives $y$.',
+    ],
+    wrongAnswerExplanations: {
+      1: 'Du hast $x$ und $y$ vertauscht. Die Schreibweise ist immer $(x, y)$ — erst horizontal, dann vertikal.',
+      2: 'Das wäre 3 nach **links**. „Rechts" entspricht positivem $x$.',
+      3: 'Das wäre 2 nach **unten**. „Oben" entspricht positivem $y$.',
+    },
+  },
+  'ex-vek-1-0-b': {
+    id: 'ex-vek-1-0-b', lessonId: 'vek-1-0', type: 'true-false',
+    statement: 'Ein Punkt und ein Vektor haben im 2D-Koordinatensystem die gleiche Schreibweise $(x, y)$, aber eine unterschiedliche Bedeutung.',
+    correct: true,
+    explanation: `**Ansatz:** Schreibweise vs. Bedeutung trennen.
+
+**Rechnung:** Ein **Punkt** $P = (3, 2)$ beschreibt einen **Ort** im Raum. Ein **Vektor** $\\vec{v} = (3, 2)$ beschreibt eine **Verschiebung** (3 nach rechts, 2 nach oben) — unabhängig vom Startpunkt.
+
+**Probe:** Zwei Vektoren $(3,2)$, die an verschiedenen Stellen gezeichnet sind, sind gleich (gleiche Richtung und Länge). Zwei Punkte $(3,2)$ und $(5,1)$ sind verschieden — sie sind Orte.
+
+**Typischer Fehler:** Punkt und Vektor gleichsetzen. Beides sieht auf dem Papier ähnlich aus, aber der Unterschied ist wichtig: Vektoren sind verschiebbar, Punkte nicht.`,
+    hints: [
+      'Denk an den Unterschied: „Wo liegt etwas?" (Punkt) vs. „Wie weit/wohin bewegt sich etwas?" (Vektor).',
+    ],
+  },
+  'ex-vek-1-0-c': {
+    id: 'ex-vek-1-0-c', lessonId: 'vek-1-0', type: 'multiple-choice',
+    question: 'Welche Größe ist ein **Vektor** (hat Betrag UND Richtung)?',
+    options: ['Geschwindigkeit eines Autos', 'Masse eines Bauteils', 'Temperatur im Raum', 'Zeit seit Start'],
+    correctIndex: 0,
+    explanation: `**Ansatz:** Frage „Hat die Größe eine Richtung?" bestimmt Vektor oder Skalar.
+
+**Rechnung:** Geschwindigkeit „50 km/h nach Norden" — Betrag (50) und Richtung (Norden). Masse/Temperatur/Zeit haben keine Richtung — nur Betrag.
+
+**Probe:** Ingenieur-Klassiker: Kraft, Geschwindigkeit, Verschiebung, Beschleunigung = Vektoren. Masse, Temperatur, Energie, Zeit = Skalare.
+
+**Typischer Fehler:** Masse mit Gewicht verwechseln — **Gewicht** (Gewichtskraft) ist ein Vektor (Kraft), **Masse** ist ein Skalar.`,
+    hints: [
+      'Frag dich: „Kann ich nach Norden oder nach oben dazusagen — und ergibt das Sinn?"',
+      'Wenn ja → Vektor. Wenn nein → Skalar.',
+    ],
+    wrongAnswerExplanations: {
+      1: 'Masse ist nur eine Zahl (kg). Es gibt keine „Masse nach Norden" — also Skalar.',
+      2: 'Temperatur ist nur eine Zahl (°C). Es gibt keine „Temperatur nach rechts" — also Skalar.',
+      3: 'Zeit läuft nur in eine Richtung — sie hat keine räumliche Richtung. Skalar.',
+    },
+  },
+  'ex-vek-1-0-d': {
+    id: 'ex-vek-1-0-d', lessonId: 'vek-1-0', type: 'matching',
+    question: 'Ordne jedes Koordinatenpaar dem passenden Quadranten im 2D-Koordinatensystem zu.',
+    pairs: [
+      { left: '$(3, 2)$', right: '1. Quadrant (x>0, y>0)' },
+      { left: '$(-3, 2)$', right: '2. Quadrant (x<0, y>0)' },
+      { left: '$(-3, -2)$', right: '3. Quadrant (x<0, y<0)' },
+      { left: '$(3, -2)$', right: '4. Quadrant (x>0, y<0)' },
+    ],
+    explanation: `**Ansatz:** Vorzeichen von $x$ und $y$ bestimmen den Quadranten.
+
+**Rechnung:** Zählweise entgegen dem Uhrzeigersinn, beginnend rechts-oben.
+
+**Probe:** Zeichne Punkte in ein Koordinatensystem — das bestätigt die Zuordnung.
+
+**Typischer Fehler:** Die Reihenfolge der Quadranten im Uhrzeigersinn zählen (Q1→Q4→Q3→Q2) — Konvention ist aber **entgegen** dem Uhrzeigersinn.`,
+    hints: [
+      'Quadranten werden entgegen dem Uhrzeigersinn durchgezählt, beginnend rechts-oben.',
+    ],
+  },
+  'ex-vek-1-0-mastery': {
+    id: 'ex-vek-1-0-mastery', lessonId: 'vek-1-0', type: 'multiple-choice', isMasteryCheck: true,
+    question: 'Ein Vektor $\\vec{v}$ beschreibt die Verschiebung vom Punkt $A = (1, 2)$ zum Punkt $B = (4, 6)$. Wie lautet $\\vec{v}$?',
+    options: ['$(3, 4)$', '$(5, 8)$', '$(4, 6)$', '$(-3, -4)$'],
+    correctIndex: 0,
+    explanation: `**Ansatz:** Verschiebung von $A$ nach $B$: Zielpunkt minus Startpunkt, komponentenweise.
+
+**Rechnung:** $\\vec{v} = B - A = (4-1, 6-2) = (3, 4)$.
+
+**Probe:** Geh von $A = (1,2)$ um $\\vec{v} = (3,4)$ weiter → $(1+3, 2+4) = (4, 6) = B$. ✓
+
+**Typischer Fehler:** Koordinaten addieren statt subtrahieren ($(5, 8)$) oder Zielpunkt mit Vektor verwechseln ($(4, 6)$ ist der Punkt $B$, nicht der Vektor).`,
+    hints: [
+      'Vektor von $A$ nach $B$: $\\vec{v} = B - A$.',
+      'Komponentenweise: $(4-1,\\;6-2)$.',
+    ],
+    wrongAnswerExplanations: {
+      1: 'Du hast die Koordinaten addiert statt subtrahiert. Richtig ist Zielpunkt minus Startpunkt.',
+      2: 'Das sind die Koordinaten des Zielpunkts $B$, nicht der Vektor von $A$ nach $B$.',
+      3: 'Das wäre der Vektor von $B$ nach $A$ (entgegengesetzte Richtung).',
+    },
+  },
+
   'ex-vek-1-1-a': {
     id: 'ex-vek-1-1-a', lessonId: 'vek-1-1', type: 'multiple-choice',
     question: 'Was unterscheidet einen Vektor von einer Zahl (Skalar)?',
@@ -414,11 +517,60 @@ $$-F_1 \\sin 30° + F_2 \\sin 45° = 0 \\;\\Leftrightarrow\\; F_1 \\sin 30° = F
 
 const lessons_vek_u1 = [
   {
+    id: 'vek-1-0', unitId: 'vek-unit-1',
+    title: 'Koordinaten, Punkte & Pfeile (Einstieg)',
+    order: 0, estimatedMinutes: 10,
+    learningGoals: [
+      'Koordinaten $(x, y)$ in 2D lesen und zeichnen',
+      'Unterschied zwischen Punkt und Vektor verstehen',
+      'Vektor aus zwei Punkten bestimmen ($B - A$)',
+    ],
+    prerequisites: [],
+    nextLessonId: 'vek-1-1',
+    steps: [
+      {
+        id: 'vek-1-0-s1', type: 'explanation-intuitive', title: 'Das Koordinatensystem',
+        content: `**Grundidee:** Jeder Ort in einer 2D-Ebene lässt sich durch zwei Zahlen beschreiben — die **Koordinaten** $(x, y)$.
+
+- $x$ sagt, wie weit es **nach rechts** geht (negativ → nach links).
+- $y$ sagt, wie weit es **nach oben** geht (negativ → nach unten).
+- $(0, 0)$ ist der **Ursprung** — dort kreuzen sich die Achsen.
+
+**Quadranten:** Das Koordinatensystem zerfällt in vier Bereiche:
+- Q1: rechts oben ($x>0$, $y>0$)
+- Q2: links oben ($x<0$, $y>0$)
+- Q3: links unten ($x<0$, $y<0$)
+- Q4: rechts unten ($x>0$, $y<0$)
+
+Die Zählung läuft **entgegen dem Uhrzeigersinn**.`,
+      },
+      {
+        id: 'vek-1-0-s2', type: 'explanation-intuitive', title: 'Punkt vs. Vektor',
+        content: `**Punkt:** beschreibt einen **Ort**. Schreibweise $P = (x, y)$ — etwa $P = (3, 2)$.
+
+**Vektor:** beschreibt eine **Verschiebung** (Betrag + Richtung). Schreibweise $\\vec{v} = (v_x, v_y)$ oder als Pfeil. Zwei Pfeile an verschiedenen Stellen der Ebene stellen **denselben Vektor** dar, solange sie gleiche Länge und Richtung haben.
+
+**Vektor aus zwei Punkten:** Der Vektor **von $A$ nach $B$** ist
+
+$$\\vec{AB} = B - A = (B_x - A_x,\\; B_y - A_y)$$
+
+**Beispiel:** $A=(1,2)$, $B=(4,6)$ → $\\vec{AB} = (4-1,\\,6-2) = (3,4)$.
+
+**Anwendung in Maschinenbau:** Kräfte, Geschwindigkeiten, Verschiebungen sind Vektoren. Temperaturen, Massen, Zeiten sind Skalare (reine Zahlen).`,
+      },
+      { id: 'vek-1-0-s3', type: 'exercise', title: 'Aufgabe 1 — Koordinaten lesen', exerciseRef: 'ex-vek-1-0-a' },
+      { id: 'vek-1-0-s4', type: 'exercise', title: 'Aufgabe 2 — Punkt vs. Vektor', exerciseRef: 'ex-vek-1-0-b' },
+      { id: 'vek-1-0-s5', type: 'exercise', title: 'Aufgabe 3 — Vektor vs. Skalar', exerciseRef: 'ex-vek-1-0-c' },
+      { id: 'vek-1-0-s6', type: 'exercise', title: 'Aufgabe 4 — Quadranten', exerciseRef: 'ex-vek-1-0-d' },
+      { id: 'vek-1-0-s7', type: 'mastery-check', title: 'Verständnischeck', exerciseRef: 'ex-vek-1-0-mastery' },
+    ],
+  },
+  {
     id: 'vek-1-1', unitId: 'vek-unit-1',
     title: 'Vektoren — Grundbegriffe',
     order: 1, estimatedMinutes: 12,
     learningGoals: ['Vektor vs. Skalar sicher unterscheiden', 'Betrag eines Vektors berechnen', 'Vektoraddition und Skalarmultiplikation komponentenweise durchführen'],
-    prerequisites: [],
+    prerequisites: ['vek-1-0'],
     nextLessonId: 'vek-1-2',
     steps: [
       {

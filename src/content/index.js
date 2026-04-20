@@ -464,6 +464,24 @@ function supplementalExercise(lesson, index, unit, topic) {
     isSupplemental: true,
   }
 
+  // Generische Distraktor-Rebuttals für Auto-Supplementals.
+  // Schema: je 1–2 Sätze, nennen den vermuteten Fehler + Warum-nicht.
+  const genericMcRebuttals = {
+    1: `Klingt ähnlich, greift aber nicht den Kern: ${profile.concept}. Ohne diesen Kontrollschritt bleibt das Ergebnis unzuverlässig — ${profile.check}.`,
+    2: `Typischer Schnellschuss: das Vorgehen wird abgekürzt. Erst ${profile.method}, dann die Kontrolle — ${profile.check}.`,
+    3: `Das blendet die Kernidee aus: ${profile.concept}. So entstehen genau die Fehler, die ${profile.check} aufdecken soll.`,
+  }
+  const wrongAnswerGenericFehler = {
+    1: `Das ist gerade der gute Weg, nicht der Fehler. Richtig wäre: ${profile.check} **nicht** zu machen — genau das wäre der Fehler.`,
+    2: `Sauber zu dokumentieren ist richtiges Verhalten, kein Fehler. Der Fehler wäre: ${profile.check} überspringen.`,
+    3: `Einheit am Ende zu prüfen ist richtig, nicht falsch. Der eigentliche Fehler ist: ${profile.check} **nicht** durchzuführen.`,
+  }
+  const wrongAnswerGenericKontrolle = {
+    1: `Größe allein ist kein Qualitätsmerkmal — die richtige Endkontrolle lautet: ${profile.check}.`,
+    2: `Zwischenschritte zu löschen macht die Lösung unprüfbar. Die richtige Endkontrolle ist: ${profile.check}.`,
+    3: `Zufällige Formeln helfen nicht. Die richtige Endkontrolle ist: ${profile.check}.`,
+  }
+
   const templates = [
     {
       ...common,
@@ -471,8 +489,9 @@ function supplementalExercise(lesson, index, unit, topic) {
       question: `${prefix}Aufwärmaufgabe zu "${title}": ${profile.mcQuestion}`,
       options: profile.mcOptions,
       correctIndex: 0,
-      explanation: `${profile.mcOptions[0]} ist hier richtig. ${profile.workedExample} Kontrolliere danach: ${profile.check}.`,
+      explanation: `**Ansatz:** ${profile.concept}.\n\n**Rechnung:** ${profile.workedExample}\n\n**Probe:** ${profile.check}.\n\n**Typischer Fehler:** Kontrolle überspringen oder falsche Option wählen, weil sie plausibel klingt — genau dann bleibt ein echter Fehler unentdeckt.`,
       hints: [`Kernidee: ${profile.concept}.`, `Vorgehen: ${profile.method}.`],
+      wrongAnswerExplanations: genericMcRebuttals,
     },
     {
       ...common,
@@ -505,8 +524,9 @@ function supplementalExercise(lesson, index, unit, topic) {
       question: `${prefix}Welche Antwort beschreibt einen typischen Fehler bei "${title}"?`,
       options: [`${profile.check} nicht durchführen`, 'Das gesuchte Ergebnis klar notieren', 'Zwischenschritte sauber dokumentieren', 'Am Ende die Einheit prüfen'],
       correctIndex: 0,
-      explanation: `Genau dieser Check ist entscheidend: ${profile.check}. Ohne ihn kann ein formal richtig wirkender Rechenweg trotzdem falsch sein.`,
+      explanation: `**Ansatz:** Frage zielt auf Fehlverhalten, nicht auf gutes Vorgehen.\n\n**Rechnung:** Genau dieser Check ist entscheidend: ${profile.check}.\n\n**Probe:** ${profile.workedExample}\n\n**Typischer Fehler:** Die drei anderen Optionen beschreiben richtiges Vorgehen — wer sie wählt, hat die Fragestellung (gesucht: der Fehler) überlesen.`,
       hints: ['Gesucht ist der Fehler, nicht das gute Vorgehen.'],
+      wrongAnswerExplanations: wrongAnswerGenericFehler,
     },
     {
       ...common,
@@ -522,8 +542,9 @@ function supplementalExercise(lesson, index, unit, topic) {
       question: `${prefix}Welche Kontrolle passt am Ende einer Aufgabe zu "${title}" am besten?`,
       options: [profile.check, 'Nur prüfen, ob die Zahl groß aussieht', 'Alle Zwischenschritte löschen', 'Eine neue zufällige Formel probieren'],
       correctIndex: 0,
-      explanation: `Die passende Endkontrolle lautet: ${profile.check}. Sie ist Teil einer vollständigen Prüfungsantwort.`,
+      explanation: `**Ansatz:** Endkontrolle soll echte Fehler aufdecken, nicht nur oberflächlich wirken.\n\n**Rechnung:** Die passende Endkontrolle lautet: ${profile.check}.\n\n**Probe:** ${profile.workedExample}\n\n**Typischer Fehler:** Plausibilitätsblick statt konkreter Prüfung — die anderen Optionen wirken wie Abkürzungen, decken aber nichts auf.`,
       hints: ['Denke an die letzte Zeile deiner Lösung.'],
+      wrongAnswerExplanations: wrongAnswerGenericKontrolle,
     },
     {
       ...common,
@@ -664,6 +685,39 @@ function collectVisibleStrings(exercise) {
   return fields
 }
 
+export function getContentQualityWarnings() {
+  const warnings = []
+
+  for (const topic of Object.values(TOPICS)) {
+    for (const unit of topic.units) {
+      for (const lesson of unit.lessons) {
+        const exerciseSteps = (lesson.steps ?? []).filter((step) => step.type === 'exercise' || step.type === 'mastery-check')
+        for (const step of exerciseSteps) {
+          const exercise = getExerciseFromTopic(topic, step.exerciseRef)
+          if (!exercise) continue
+          // `wrongAnswerExplanations` Pflicht für MC mit ≥ 3 Optionen.
+          if (exercise.type === 'multiple-choice' && Array.isArray(exercise.options) && exercise.options.length >= 3) {
+            const wae = exercise.wrongAnswerExplanations
+            const wrongIndices = exercise.options
+              .map((_, i) => i)
+              .filter((i) => i !== exercise.correctIndex)
+            if (!wae || typeof wae !== 'object') {
+              warnings.push(`${exercise.id}: MC (${exercise.options.length} Optionen) hat keine wrongAnswerExplanations`)
+            } else {
+              const missing = wrongIndices.filter((i) => typeof wae[String(i)] !== 'string' || wae[String(i)].trim() === '')
+              if (missing.length > 0) {
+                warnings.push(`${exercise.id}: wrongAnswerExplanations fehlen für Indizes [${missing.join(', ')}]`)
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return warnings
+}
+
 export function getContentQualityIssues() {
   const issues = []
 
@@ -740,6 +794,20 @@ export function getContentQualityIssues() {
 const CONTENT_QUALITY_ISSUES = getContentQualityIssues()
 if (CONTENT_QUALITY_ISSUES.length > 0) {
   throw new Error(`Content quality audit failed:\n${CONTENT_QUALITY_ISSUES.join('\n')}`)
+}
+
+// Warnings (nicht blockierend) — fehlende wrongAnswerExplanations bei MC-Aufgaben.
+// Hilft sichtbar zu machen, wo noch nachgepflegt werden muss, bricht aber nichts.
+if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.DEV) {
+  const warnings = getContentQualityWarnings()
+  if (warnings.length > 0) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[content-audit] ${warnings.length} fehlende wrongAnswerExplanations:\n` +
+        warnings.slice(0, 20).join('\n') +
+        (warnings.length > 20 ? `\n… (+${warnings.length - 20} weitere)` : '')
+    )
+  }
 }
 
 export function getAllTopics() {
