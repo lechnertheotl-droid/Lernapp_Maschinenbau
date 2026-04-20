@@ -63,7 +63,7 @@ export function FormulaVariablePopover({ latex, onClose, onOpenGlossary }: Props
       />
 
       <div
-        className="relative w-full max-w-sm h-[70vh] md:h-[65vh] bg-paper dark:bg-surface-900 border-t-2 border-x-2 border-ink rounded-t-retro animate-slide-in-up shadow-hard-xl flex flex-col min-h-0"
+        className="relative w-full max-w-sm h-[70vh] md:h-[65vh] bg-paper dark:bg-surface-900 border-t-2 border-x-2 border-ink rounded-t-retro animate-slide-in-up shadow-hard-xl flex flex-col min-h-0 overflow-hidden"
         style={{
           // Inline-Style überschreibt Tailwind-vh mit dvh in modernen Browsern.
           // Ältere iOS fallen auf h-[70vh]/h-[65vh] zurück (kein dvh-Support).

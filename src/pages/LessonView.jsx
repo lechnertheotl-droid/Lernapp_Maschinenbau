@@ -170,12 +170,12 @@ export function LessonView() {
 
         {/* Learning goals on first step */}
         {safeIndex === 0 && lesson.learningGoals?.length > 0 && (
-          <div className="bg-lemon-light border-2 border-ink rounded-retro shadow-hard-sm p-3.5 mb-4">
-            <p className="font-mono text-[10px] font-black text-ink uppercase tracking-widest mb-2">// Lernziele</p>
+          <div className="bg-lemon-light border-2 border-ink dark:border-lemon-dark rounded-retro shadow-hard-sm p-3.5 mb-4">
+            <p className="font-mono text-[10px] font-black text-ink dark:text-lemon uppercase tracking-widest mb-2">// Lernziele</p>
             <ul className="flex flex-col gap-1.5">
               {lesson.learningGoals.map((g, i) => (
                 <li key={i} className="text-ink text-sm flex items-start gap-2">
-                  <span className="text-primary-700 flex-shrink-0 mt-0.5 font-mono font-black">→</span>
+                  <span className="text-primary-700 dark:text-primary-300 flex-shrink-0 mt-0.5 font-mono font-black">→</span>
                   <span>{g}</span>
                 </li>
               ))}

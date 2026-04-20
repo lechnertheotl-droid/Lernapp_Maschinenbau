@@ -58,7 +58,7 @@ export function VariableGlossary({ isOpen, onClose }) {
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm animate-fade-in" onClick={onClose} />
 
       <div
-        className="relative w-full max-w-sm h-[85vh] md:h-[80vh] bg-paper dark:bg-surface-900 border-t-2 border-x-2 border-ink rounded-t-retro animate-slide-in-up shadow-hard-xl flex flex-col min-h-0"
+        className="relative w-full max-w-sm h-[85vh] md:h-[80vh] bg-paper dark:bg-surface-900 border-t-2 border-x-2 border-ink rounded-t-retro animate-slide-in-up shadow-hard-xl flex flex-col min-h-0 overflow-hidden"
         style={{
           // Inline-Style überschreibt `h-[85vh]` in modernen Browsern mit `dvh`
           // (berücksichtigt iOS-Browser-Chrome). Ältere iOS-Versionen kennen

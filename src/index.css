@@ -65,7 +65,10 @@
   html.dark .shadow-hard-green { box-shadow: 3px 3px 0 0 #22c55e !important; }
   html.dark .shadow-hard-red   { box-shadow: 3px 3px 0 0 #ef4444 !important; }
   html.dark .shadow-hard-blue  { box-shadow: 3px 3px 0 0 #38bdf8 !important; }
-  html.dark .bg-ink { background-color: #020617 !important; }
+  /* `bg-ink` im Dark-Mode: dezente Separation zur Base (surface-900 = #0f172a)
+     ohne den harten Schwarz-Kontrast. Zwei-Ton-Palette: bg-paper=#0f172a (Base),
+     bg-ink=#111c33 (abgehobene Ink-Zone), bg-white=#1e293b (Cards). */
+  html.dark .bg-ink { background-color: #111c33 !important; }
   html.dark .bg-graph-paper,
   html.dark .bg-graph-paper-sm {
     background-image:
@@ -77,9 +80,14 @@
   html.dark .markdown-content td { border-color: #334155; }
   html.dark .markdown-content tr:nth-child(even) td { background: #1e293b; }
 
-  /* ── Dark-Mode-Overrides für gelbe Akzent-Boxen (WCAG AA fix) ─── */
-  html.dark .bg-lemon-light { background-color: #3a3410 !important; }
-  html.dark .bg-lemon       { background-color: #4a3f10 !important; }
+  /* ── Dark-Mode-Overrides für gelbe Akzent-Boxen ────────────────
+     Dekorative `bg-lemon-light`-Boxen (Verständnischeck, Lernziele) werden
+     auf die Card-Surface gezogen; die Lemon-Identität kommt über
+     `dark:border-lemon-dark` (in den JSX-Stellen ergänzt) zurück.
+     `bg-lemon`-Buttons bleiben als warmes Gold erkennbar — Kontrast zum
+     überschriebenen `text-ink` (#e2e8f0) > 4.5:1 (WCAG AA). */
+  html.dark .bg-lemon-light { background-color: #1e293b !important; }
+  html.dark .bg-lemon       { background-color: #8a6b00 !important; }
   /* Formula-Box: dunkler Hintergrund, aber mit Lemon-Border als Akzent,
      damit sie visuell als "Formel" erkennbar bleibt (statt nur grauer Card). */
   html.dark .formula-box {
