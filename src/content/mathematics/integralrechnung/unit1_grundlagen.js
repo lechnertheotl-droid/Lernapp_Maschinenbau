@@ -644,6 +644,11 @@ const lessons_int_u1 = [
     title: 'Stammfunktion — das Umkehren der Ableitung',
     order: 1, estimatedMinutes: 15,
     learningGoals: ['Stammfunktion als Umkehrung der Ableitung verstehen', 'Integrationskonstante C erklären können'],
+    subGoals: [
+      { label: 'Stammfunktion durch „Rückwärts-Ableiten" erkennen', examRelevance: 'hoch' },
+      { label: 'Integrationskonstante $+C$ nicht vergessen', examRelevance: 'hoch' },
+      { label: 'Probe durch Ableiten der gefundenen Stammfunktion', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'int-1-2',
     steps: [
@@ -706,6 +711,12 @@ Probe: $(x^{2} + C)' = 2x + 0 = 2x$. ✓
     title: 'Grundintegrale',
     order: 2, estimatedMinutes: 15,
     learningGoals: ['Grundintegrale auswendig kennen', 'Potenzregel für Integration anwenden'],
+    subGoals: [
+      { label: 'Potenzregel $\\int x^n dx = x^{n+1}/(n+1)+C$ für $n\\neq-1$', examRelevance: 'hoch' },
+      { label: 'Sonderfall $\\int \\frac{1}{x}dx = \\ln|x|+C$', examRelevance: 'hoch' },
+      { label: 'Stammfunktionen von $e^x$, $\\sin x$, $\\cos x$ auswendig', examRelevance: 'hoch' },
+      { label: 'Summen- und Faktorregel beim Integrieren', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'int-1-3',
     steps: [

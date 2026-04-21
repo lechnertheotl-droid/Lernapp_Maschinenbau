@@ -49,6 +49,7 @@ function buildTopic(def) {
         order: lessonIndex + 1,
         estimatedMinutes: lesson.estimatedMinutes ?? 12,
         learningGoals: lesson.learningGoals,
+        ...(lesson.subGoals ? { subGoals: lesson.subGoals } : {}),
         prerequisites: lesson.prerequisites ?? [],
         nextLessonId: nextById[lesson.id],
         steps: [
@@ -75,6 +76,7 @@ function buildTopic(def) {
       title: unit.title,
       order: unitIndex + 1,
       description: unit.description,
+      ...(unit.unitGoals ? { unitGoals: unit.unitGoals } : {}),
       lessons,
       exercises,
     }
@@ -96,6 +98,15 @@ const topicDefinitions = [
       difficulty: 3,
       level: 'grundlagen',
       prerequisites: ['vektoren', 'trigonometry'],
+      phase: 'semester-1',
+      examRelevance: 'pflicht',
+      topicGoals: [
+        'SI-Einheiten und Präfixe sicher umrechnen und dimensional prüfen',
+        'Freikörperbilder mit allen äußeren Kräften und Lagerreaktionen zeichnen',
+        'Gleichgewichtsbedingungen $\\Sigma F=0$ und $\\Sigma M=0$ in 2D konsequent anwenden',
+        'Kraftzerlegung, Reibung und Schwerpunkt bei ebenen Systemen berechnen',
+        'Newtonsche Grundgleichung für einfache dynamische Systeme einsetzen',
+      ],
     },
     units: [
       {
@@ -110,6 +121,11 @@ const topicDefinitions = [
               'Die sieben SI-Basiseinheiten kennen',
               'Dezimale Vorsätze (nano, milli, kilo, mega, giga) anwenden',
               'Einheiten in wissenschaftlicher Notation schreiben',
+            ],
+            subGoals: [
+              { label: 'SI-Präfixe giga, mega, kilo, milli, mikro, nano zuordnen', examRelevance: 'hoch' },
+              { label: 'Kilogramm als einzige SI-Basiseinheit mit Präfix', examRelevance: 'mittel' },
+              { label: 'Wissenschaftliche Notation $a \\cdot 10^n$ sicher schreiben', examRelevance: 'hoch' },
             ],
             content: String.raw`**Die sieben SI-Basiseinheiten** sind das Fundament aller physikalischen Messungen:
 
@@ -239,6 +255,12 @@ Alle anderen Einheiten lassen sich daraus ableiten.
               'Die wichtigsten abgeleiteten Einheiten benennen',
               'Formeln mit Einheiten korrekt rechnen',
               'SI-zusammengesetzte Einheiten sicher umrechnen',
+            ],
+            subGoals: [
+              { label: 'Newton $1\\,\\text{N} = 1\\,\\text{kg}\\cdot\\text{m}/\\text{s}^2$ zerlegen', examRelevance: 'hoch' },
+              { label: '$1\\,\\text{MPa} = 1\\,\\text{N}/\\text{mm}^2$ (Ingenieur-Konvention)', examRelevance: 'hoch' },
+              { label: 'bar $\\leftrightarrow$ Pa: $1\\,\\text{bar}=10^5\\,\\text{Pa}$', examRelevance: 'mittel' },
+              { label: 'Dimensionsanalyse als Kontrollschritt', examRelevance: 'hoch' },
             ],
             content: String.raw`**Abgeleitete Einheiten** entstehen aus den Basiseinheiten durch physikalische Formeln:
 

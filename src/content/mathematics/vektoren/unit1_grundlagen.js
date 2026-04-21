@@ -663,6 +663,12 @@ $$\\vec{AB} = B - A = (B_x - A_x,\\; B_y - A_y)$$
     title: 'Vektoren — Grundbegriffe',
     order: 1, estimatedMinutes: 12,
     learningGoals: ['Vektor vs. Skalar sicher unterscheiden', 'Betrag eines Vektors berechnen', 'Vektoraddition und Skalarmultiplikation komponentenweise durchführen'],
+    subGoals: [
+      { label: 'Betrag $|\\vec{v}|=\\sqrt{v_x^2+v_y^2+v_z^2}$', examRelevance: 'hoch' },
+      { label: 'Vektoraddition komponentenweise', examRelevance: 'hoch' },
+      { label: 'Einheitsvektor $\\vec{e}=\\vec{v}/|\\vec{v}|$ bilden', examRelevance: 'mittel' },
+      { label: 'Vektor vs. Skalar in technischen Größen erkennen', examRelevance: 'niedrig' },
+    ],
     prerequisites: ['vek-1-0'],
     nextLessonId: 'vek-1-2',
     steps: [
@@ -720,6 +726,12 @@ $$|\\vec{a}| = \\sqrt{a_x^{2} + a_y^{2}} \\quad \\text{(2D)}, \\qquad |\\vec{a}|
     title: 'Skalarprodukt',
     order: 2, estimatedMinutes: 15,
     learningGoals: ['Skalarprodukt in Komponenten- und Winkelform berechnen', 'Winkel zwischen Vektoren bestimmen', 'Orthogonalität per Skalarprodukt erkennen'],
+    subGoals: [
+      { label: 'Komponentenform $\\vec{a}\\cdot\\vec{b}=\\sum a_i b_i$', examRelevance: 'hoch' },
+      { label: 'Winkelform $\\vec{a}\\cdot\\vec{b}=|\\vec{a}||\\vec{b}|\\cos\\alpha$', examRelevance: 'hoch' },
+      { label: 'Orthogonalitäts-Test über $\\vec{a}\\cdot\\vec{b}=0$', examRelevance: 'hoch' },
+      { label: 'Projektion eines Vektors auf einen anderen', examRelevance: 'mittel' },
+    ],
     prerequisites: ['vek-1-1'],
     nextLessonId: 'vek-1-3',
     steps: [

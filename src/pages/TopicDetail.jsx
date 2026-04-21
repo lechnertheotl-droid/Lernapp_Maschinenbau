@@ -34,9 +34,31 @@ export function TopicDetail() {
   const mastery          = state.mastery
   const tp               = state.progress.topicProgress[topicId]
   const completedLessons = tp?.completedLessons ?? []
-  const totalLessons     = topic.units.flatMap((u) => u.lessons).length
+  const allLessons       = topic.units.flatMap((u) => u.lessons)
+  const totalLessons     = allLessons.length
   const pct              = totalLessons > 0 ? Math.round((completedLessons.length / totalLessons) * 100) : 0
   const examDone         = isExamCompleted(topicId, completedLessons)
+
+  // Topic-Lernziele: bevorzugt explizite topicGoals, sonst aggregiert aus
+  // Lesson-learningGoals (dedupliziert, auf max. 6 gekürzt).
+  const explicitGoals = Array.isArray(topic.topicGoals) ? topic.topicGoals.filter(Boolean) : []
+  let derivedGoals = explicitGoals
+  let derivedFromLessons = false
+  if (derivedGoals.length === 0) {
+    const seen = new Set()
+    for (const lesson of allLessons) {
+      for (const g of lesson.learningGoals ?? []) {
+        if (typeof g !== 'string') continue
+        const key = g.trim()
+        if (!key || seen.has(key)) continue
+        seen.add(key)
+      }
+    }
+    derivedGoals = [...seen]
+    derivedFromLessons = true
+  }
+  const visibleGoals = derivedGoals.slice(0, 6)
+  const hiddenGoalCount = Math.max(0, derivedGoals.length - visibleGoals.length)
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-5 flex flex-col gap-5">
@@ -80,6 +102,26 @@ export function TopicDetail() {
           <ProgressBar value={pct} size="lg" tone="dark-lemon" />
         </div>
       </div>
+
+      {/* ── Lernziele ────────────────────────────────────────────── */}
+      {visibleGoals.length > 0 && (
+        <div className="bg-lemon-light border-2 border-ink dark:border-lemon-dark rounded-retro shadow-hard-sm p-3.5">
+          <p className="font-mono text-[10px] font-black text-ink dark:text-lemon uppercase tracking-widest mb-2">
+            // Lernziele {derivedFromLessons ? '(aus Lektionen abgeleitet)' : 'dieses Themas'}
+          </p>
+          <ul className="flex flex-col gap-1.5">
+            {visibleGoals.map((g, i) => (
+              <li key={i} className="text-ink text-sm flex items-start gap-2">
+                <span className="text-primary-700 dark:text-primary-300 flex-shrink-0 mt-0.5 font-mono font-black">→</span>
+                <span>{g}</span>
+              </li>
+            ))}
+            {hiddenGoalCount > 0 && (
+              <li className="text-ink-soft text-xs font-mono">… +{hiddenGoalCount} weitere</li>
+            )}
+          </ul>
+        </div>
+      )}
 
       {/* ── Units & Lessons ───────────────────────────────────────── */}
       {topic.units.map((unit, ui) => {

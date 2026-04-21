@@ -589,6 +589,12 @@ $$\\alpha + \\beta + \\gamma = 180°$$
     title: 'Winkel und ihre Maße',
     order: 1, estimatedMinutes: 10,
     learningGoals: ['Grad- und Bogenmaß umrechnen', 'Bedeutung von π im Einheitskreis verstehen', 'DEG/RAD-Modus am Taschenrechner sicher wählen'],
+    subGoals: [
+      { label: 'DEG/RAD-Umschaltung am Taschenrechner', examRelevance: 'hoch' },
+      { label: 'π-Vielfache (π/6, π/4, π/3, π/2) als Grad erkennen', examRelevance: 'hoch' },
+      { label: 'Umrechnungsformel $\\alpha_{rad}=\\alpha_{deg}\\cdot\\pi/180$', examRelevance: 'hoch' },
+      { label: 'Bogenlänge am Einheitskreis als Winkelmaß', examRelevance: 'mittel' },
+    ],
     prerequisites: ['trig-1-0'],
     nextLessonId: 'trig-1-2',
     steps: [
@@ -638,6 +644,11 @@ $$\\alpha_{\\circ} = \\alpha_{\\text{rad}} \\cdot \\dfrac{180}{\\pi}$$
     title: 'Rechtwinkliges Dreieck',
     order: 2, estimatedMinutes: 12,
     learningGoals: ['sin, cos, tan als Seitenverhältnisse kennen', 'SOH-CAH-TOA anwenden', 'Verbindung zum Einheitskreis herstellen'],
+    subGoals: [
+      { label: 'SOH-CAH-TOA als Merkregel für Seitenverhältnisse', examRelevance: 'hoch' },
+      { label: 'Gegenkathete vs. Ankathete in beliebiger Dreiecksorientierung identifizieren', examRelevance: 'hoch' },
+      { label: 'Umkehrfunktionen arcsin/arccos/arctan sinnvoll einsetzen', examRelevance: 'mittel' },
+    ],
     prerequisites: ['trig-1-1'],
     nextLessonId: 'trig-1-3',
     steps: [
