@@ -1,12 +1,10 @@
 import { Link, useLocation } from 'react-router-dom'
 import { cn } from '@/utils/cn'
 import { useTheme } from '@/context/ThemeContext'
-import { useAppState } from '@/context/AppContext'
-import { getDueItems } from '@/utils/reviewScheduler'
 
 const navLinks = [
   { to: '/',        label: 'Start'   },
-  { to: '/review',  label: 'Üben'    },
+  { to: '/üben',    label: 'Üben'    },
   { to: '/erfolge', label: 'Erfolge' },
 ]
 
@@ -23,8 +21,6 @@ function matchPath(pathname, to) {
 export function Header() {
   const { pathname }          = useLocation()
   const { theme, toggleTheme } = useTheme()
-  const state                  = useAppState()
-  const dueCount               = getDueItems(state.review.queue, Date.now()).length
 
   return (
     <header className="hidden md:flex h-14 items-center justify-between px-6 bg-ink border-b-2 border-ink sticky top-0 z-40">
@@ -39,8 +35,7 @@ export function Header() {
 
       <nav className="flex items-center gap-1">
         {navLinks.map(({ to, label }) => {
-          const isActive  = matchPath(pathname, to)
-          const showBadge = to === '/review' && dueCount > 0
+          const isActive = matchPath(pathname, to)
           return (
             <Link
               key={to}
@@ -54,11 +49,6 @@ export function Header() {
               )}
             >
               {label}
-              {showBadge && (
-                <span className="absolute -top-1 -right-1 min-w-[16px] h-4 flex items-center justify-center bg-red-500 text-white text-[9px] font-bold rounded-full px-1 border border-ink">
-                  {dueCount}
-                </span>
-              )}
             </Link>
           )
         })}

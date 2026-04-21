@@ -1,6 +1,7 @@
 import { evaluateAttempt, type MasteryEntry } from '@/utils/masteryCheck'
 import { buildReviewQueue, updateEaseFactor, type ReviewItem } from '@/utils/reviewScheduler'
 import { updateStreak, type StreakState } from '@/utils/streakLogic'
+import { INITIAL_PRACTICE_STATE, type PracticeState } from '@/types/practice'
 
 const POINTS_CORRECT_ANSWER = 10
 const POINTS_COMPLETE_LESSON = 25
@@ -22,6 +23,7 @@ export const ACTIONS = {
   RESET_PROGRESS:       'RESET_PROGRESS',
   TOGGLE_BOOKMARK:      'TOGGLE_BOOKMARK',
   TRACK_ACTIVITY:       'TRACK_ACTIVITY',
+  RECORD_PRACTICE_ATTEMPT: 'RECORD_PRACTICE_ATTEMPT',
 } as const
 
 // ── State Shape ──────────────────────────────────────────────────────────────
@@ -67,6 +69,7 @@ export interface AppState {
   bookmarks: string[]
   streak: StreakState
   points: number
+  practice: PracticeState
 }
 
 export const INITIAL_STATE: AppState = {
@@ -79,6 +82,7 @@ export const INITIAL_STATE: AppState = {
   bookmarks: [],
   streak: { current: 0, longest: 0, lastActiveDate: null },
   points: 0,
+  practice: INITIAL_PRACTICE_STATE,
 }
 
 // ── Discriminated-Union der Actions ──────────────────────────────────────────
@@ -98,6 +102,7 @@ export type Action =
   | { type: typeof ACTIONS.RESET_PROGRESS }
   | { type: typeof ACTIONS.TOGGLE_BOOKMARK; bookmarkId: string }
   | { type: typeof ACTIONS.TRACK_ACTIVITY; today?: string }
+  | { type: typeof ACTIONS.RECORD_PRACTICE_ATTEMPT; exerciseId: string; correct: boolean; points: number }
 
 // ── Reducer ──────────────────────────────────────────────────────────────────
 export function appReducer(state: AppState, action: Action): AppState {
@@ -326,6 +331,30 @@ export function appReducer(state: AppState, action: Action): AppState {
 
     case ACTIONS.TRACK_ACTIVITY:
       return { ...state, streak: updateStreak(state.streak, action.today) }
+
+    case ACTIONS.RECORD_PRACTICE_ATTEMPT: {
+      const { exerciseId, correct, points } = action
+      const prev = state.practice.attempts[exerciseId]
+      const bestPoints = Math.max(prev?.bestPoints ?? 0, points)
+      return {
+        ...state,
+        practice: {
+          attempts: {
+            ...state.practice.attempts,
+            [exerciseId]: {
+              attempts: (prev?.attempts ?? 0) + 1,
+              lastAttemptAt: new Date().toISOString(),
+              lastCorrect: correct,
+              bestPoints,
+            },
+          },
+          totalAttempts: state.practice.totalAttempts + 1,
+          totalCorrect: state.practice.totalCorrect + (correct ? 1 : 0),
+        },
+        points: state.points + (correct ? POINTS_CORRECT_ANSWER : 0),
+        streak: updateStreak(state.streak),
+      }
+    }
 
     case ACTIONS.RESET_PROGRESS:
       return { ...INITIAL_STATE, user: state.user }

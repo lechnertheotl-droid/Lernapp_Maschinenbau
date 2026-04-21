@@ -1,0 +1,111 @@
+import type { PracticeExercise } from '@/types/practice'
+
+export const vektorenPractice: PracticeExercise[] = [
+  {
+    id: 'pr-vek-1',
+    topicId: 'vektoren',
+    title: 'Kräftegleichgewicht mit Vektoren',
+    difficulty: 'klausur',
+    points: 10,
+    estimatedMinutes: 10,
+    context: `Drei Kräfte greifen in einem Punkt an:
+$$\\vec F_1 = \\begin{pmatrix}4\\\\0\\\\3\\end{pmatrix}~\\text{N}, \\quad \\vec F_2 = \\begin{pmatrix}-2\\\\5\\\\-1\\end{pmatrix}~\\text{N}, \\quad \\vec F_3 = ?$$
+Der Punkt soll im Gleichgewicht sein.`,
+    subtasks: [
+      {
+        id: 'a',
+        prompt: 'a) Bestimmen Sie die $x$-Komponente von $\\vec F_3$ (in N).',
+        answer: -2,
+        unit: 'N',
+        tolerance: 1e-6,
+        points: 2,
+        explanation: `Gleichgewicht: $\\vec F_1 + \\vec F_2 + \\vec F_3 = \\vec 0$. $F_{3x} = -(4 + (-2)) = -2$.`,
+      },
+      {
+        id: 'b',
+        prompt: 'b) Berechnen Sie den Betrag $|\\vec F_3|$ (auf 3 Nachkommastellen).',
+        answer: 5.745,
+        unit: 'N',
+        tolerance: 0.02,
+        points: 3,
+        explanation: `$\\vec F_3 = (-2; -5; -2)$. $|\\vec F_3| = \\sqrt{4 + 25 + 4} = \\sqrt{33} \\approx 5{,}745~\\text{N}$.`,
+      },
+      {
+        id: 'c',
+        prompt: 'c) Welchen Winkel (in °) schließt $\\vec F_3$ mit der $x$-Achse ein? Tipp: $\\cos\\varphi = F_{3x}/|\\vec F_3|$.',
+        answer: 110.36,
+        unit: '°',
+        tolerance: 0.5,
+        points: 3,
+        explanation: `$\\cos\\varphi = -2/\\sqrt{33} \\approx -0{,}3482 \\Rightarrow \\varphi \\approx 110{,}36°$.`,
+      },
+      {
+        id: 'd',
+        prompt: 'd) Skalarprodukt $\\vec F_1 \\cdot \\vec F_2$?',
+        answer: -11,
+        unit: 'N²',
+        tolerance: 1e-3,
+        points: 2,
+        explanation: `$\\vec F_1 \\cdot \\vec F_2 = 4\\cdot(-2) + 0\\cdot 5 + 3\\cdot(-1) = -8 - 3 = -11$.`,
+      },
+    ],
+    hints: [
+      'Kräftegleichgewicht: alle Komponenten getrennt zu Null.',
+      'Winkel einer Kraft zur Koordinatenachse: $\\cos\\varphi = $ Komponente / Betrag.',
+    ],
+    tags: ['gleichgewicht', 'skalarprodukt', 'betrag'],
+  },
+  {
+    id: 'pr-vek-2',
+    topicId: 'vektoren',
+    title: 'Kreuzprodukt — Drehmoment und Fläche',
+    difficulty: 'klausur',
+    points: 10,
+    estimatedMinutes: 10,
+    context: `Eine Kraft $\\vec F = (0; 40; 0)~\\text{N}$ wirkt an einem Hebel mit dem Ortsvektor
+$\\vec r = (0{,}3;\\,0{,}1;\\,0)~\\text{m}$ gemessen vom Drehpunkt.`,
+    subtasks: [
+      {
+        id: 'a',
+        prompt: 'a) Berechnen Sie die $z$-Komponente des Drehmoments $\\vec M = \\vec r \\times \\vec F$ (in Nm).',
+        answer: 12,
+        unit: 'Nm',
+        tolerance: 1e-3,
+        points: 3,
+        explanation: `$\\vec M = \\vec r\\times\\vec F$. $z$-Komponente: $r_x F_y - r_y F_x = 0{,}3\\cdot 40 - 0{,}1\\cdot 0 = 12~\\text{Nm}$.`,
+      },
+      {
+        id: 'b',
+        prompt: 'b) Wie groß ist der Betrag $|\\vec M|$?',
+        answer: 12,
+        unit: 'Nm',
+        tolerance: 1e-3,
+        points: 2,
+        explanation: `Nur die $z$-Komponente ist ungleich Null, also $|\\vec M| = 12~\\text{Nm}$.`,
+      },
+      {
+        id: 'c',
+        prompt: 'c) Welchen Winkel $\\varphi$ (in °) schließen $\\vec r$ und $\\vec F$ ein (Tipp: $|\\vec M| = |\\vec r||\\vec F|\\sin\\varphi$)?',
+        answer: 71.57,
+        unit: '°',
+        tolerance: 0.5,
+        points: 3,
+        explanation: `$|\\vec r| = \\sqrt{0{,}09+0{,}01} = \\sqrt{0{,}1} \\approx 0{,}3162~\\text{m}$, $|\\vec F| = 40~\\text{N}$. $\\sin\\varphi = 12/(0{,}3162\\cdot 40) = 12/12{,}649 \\approx 0{,}9487 \\Rightarrow \\varphi \\approx 71{,}57°$.`,
+      },
+      {
+        id: 'd',
+        prompt: 'd) Welche Fläche eines Parallelogramms spannen $\\vec r$ und $\\vec F$ auf (in Nm)?',
+        answer: 12,
+        unit: 'Nm',
+        tolerance: 1e-3,
+        points: 2,
+        explanation: `Die Fläche des Parallelogramms ist gerade $|\\vec r\\times\\vec F| = 12$ (Einheit hier Nm, weil wir Kraft × Länge betrachten).`,
+      },
+    ],
+    hints: [
+      'Drehmoment als Kreuzprodukt: Reihenfolge $\\vec r\\times\\vec F$, nicht umgekehrt.',
+      'Der Betrag des Kreuzprodukts ist die Parallelogrammfläche.',
+    ],
+    tags: ['kreuzprodukt', 'drehmoment', 'fläche'],
+  },
+]
