@@ -198,6 +198,110 @@ const unit2 = makeUnit({
         "3": 'Kerbschlagarbeit sagt nichts über die Zugfestigkeit aus — sie misst Zähigkeit/Sprödigkeit, nicht Festigkeit. Verwechslung mit $R_m$. Ein niedriger $KV$-Wert bedeutet nur, dass der Werkstoff wenig Energie vor dem Bruch aufnimmt, nicht dass er fester wäre.',
       },
       prerequisites: ['werk-2-1'],
+      nextLessonId: 'werk-2-3',
+    }),
+    makeLesson({
+      id: 'werk-2-3',
+      title: 'Fe-C-Diagramm & Wärmebehandlung',
+      estimatedMinutes: 16,
+      learningGoals: [
+        'Die wichtigsten Gefüge des Fe-C-Systems (Ferrit, Austenit, Perlit, Martensit) unterscheiden',
+        'Den eutektischen Punkt und den für die Härtbarkeit nutzbaren C-Bereich kennen',
+        'Glühen, Härten und Vergüten als typische Wärmebehandlungen einordnen',
+      ],
+      createdAt: '2026-04-21',
+      intuitionTitle: 'Stahl als Legierungssystem',
+      intuitionContent:
+        'Stahl ist eine Legierung aus **Eisen** und **Kohlenstoff** (bis ca. $2\\%$ C). Die Eigenschaften hängen dramatisch vom Kohlenstoffgehalt und der thermischen Vorgeschichte ab — erkennbar im **Fe-C-Diagramm**.\n\n' +
+        '**Die wichtigsten Gefüge:**\n\n' +
+        '- **Ferrit** ($\\alpha$-Eisen, krz): weich, zäh, ferromagnetisch. Entsteht bei langsamer Abkühlung aus Austenit.\n' +
+        '- **Austenit** ($\\gamma$-Eisen, kfz): existiert nur bei hohen Temperaturen ($> 723\\,°\\text{C}$), löst viel Kohlenstoff.\n' +
+        '- **Perlit**: lamellare Mischung aus Ferrit und Zementit (Fe$_3$C). Entsteht aus Austenit bei **langsamer** Abkühlung.\n' +
+        '- **Martensit**: nadelartiges, stark verzerrtes Gefüge. Entsteht aus Austenit bei **schnellem Abschrecken** — sehr hart, aber spröde.\n\n' +
+        '**Eutektischer Punkt:** bei $0{,}83\\%$ C und $723\\,°\\text{C}$ — hier wandelt Austenit beim Abkühlen direkt in Perlit um (feinlamellar, gute Zähigkeit).\n\n' +
+        '**Härtbarkeit:** Nur Stähle mit $\\approx 0{,}3$–$0{,}8\\%$ C lassen sich sinnvoll härten — darunter zu wenig Kohlenstoff für Martensit, darüber zu spröde.',
+      formulaTitle: 'Wärmebehandlungen im Überblick',
+      formulaContent:
+        '| Verfahren | Temperatur | Abkühlung | Ziel / Ergebnis |\n' +
+        '|---|---|---|---|\n' +
+        '| **Normalglühen** | $\\approx 30\\,°\\text{C}$ über $A_3$ | an Luft | feinkörniges Ferrit-Perlit, gleichmäßige Eigenschaften |\n' +
+        '| **Weichglühen** | $\\approx 700\\,°\\text{C}$ | sehr langsam im Ofen | minimale Härte, gute Zerspanbarkeit |\n' +
+        '| **Härten** | $\\approx 50\\,°\\text{C}$ über $A_3$ | abschrecken (Wasser/Öl) | Martensit → hoch, aber spröde |\n' +
+        '| **Vergüten** | Härten + Anlassen bei $450$–$650\\,°\\text{C}$ | an Luft | **angelassener Martensit**: Festigkeit + Zähigkeit |\n\n' +
+        '**Faustregel Vergüten:**\n' +
+        '- Anlassen bei $180$–$250\\,°\\text{C}$: Werkzeugstähle (höchste Härte, wenig Zähigkeit)\n' +
+        '- Anlassen bei $450$–$650\\,°\\text{C}$: klassisches Vergüten von Baustählen (z.B. 42CrMo4, C45)\n\n' +
+        '**Kennwerte nach Vergütung (Beispiel 42CrMo4):**\n' +
+        '- $R_m \\approx 900$–$1100\\,\\text{MPa}$, $A \\approx 12$–$14\\%$, HV $\\approx 280$–$320$\n\n' +
+        '**Merkregel Perlit vs. Martensit:** Perlit = Lamellen (langsam), Martensit = Nadeln (schnell).',
+      exercises: [
+        {
+          type: 'multiple-choice',
+          question: 'Welches Gefüge entsteht beim **schnellen Abschrecken** von Austenit auf Raumtemperatur (genug Kohlenstoff vorausgesetzt)?',
+          options: ['Martensit', 'Perlit', 'Ferrit', 'Zementit'],
+          correctIndex: 0,
+          explanation: `**Ansatz:** Die Abkühlgeschwindigkeit entscheidet über das Gefüge: langsam → Diffusion → Ferrit/Perlit; schnell → diffusionslose Umklapp-Umwandlung → Martensit.
+
+**Rechnung:** Beim Abschrecken bleibt der Kohlenstoff zwangsgelöst in einem verzerrten Eisengitter sitzen — das ist Martensit.
+
+**Probe:** Gehärtete Werkzeuge (Bohrer, Feilen) sind vor dem Anlassen reiner Martensit — sehr hart, aber spröde.
+
+**Typischer Fehler:** Perlit mit Martensit verwechseln. Perlit entsteht nur bei **langsamer** Abkühlung.`,
+          hints: [
+            'Schnelle Abkühlung = keine Zeit für Diffusion.',
+            'Ohne Diffusion kein Perlit und kein Ferrit möglich.',
+            'Verzerrtes, nadelförmiges Gefüge: Martensit.',
+          ],
+          wrongAnswerExplanations: {
+            1: 'Perlit (lamellares Ferrit/Zementit-Gemisch) entsteht bei **langsamer** Abkühlung aus Austenit, wenn der Kohlenstoff durch Diffusion Zementit-Lamellen bilden kann. Beim Abschrecken bleibt die Zeit dafür nicht.',
+            2: 'Ferrit ist die weiche krz-Phase des Eisens und entsteht bei sehr langsamer Abkühlung aus Austenit. Beim schnellen Abschrecken wird die Ferrit-Bildung unterdrückt — stattdessen klappt das Gitter zu Martensit um.',
+            3: 'Zementit (Fe$_3$C) ist eine harte Carbidphase und entsteht als Begleitphase z.B. in Perlit oder in übereutektoiden Stählen — nicht als alleiniges Gefüge beim Abschrecken.',
+          },
+        },
+        {
+          type: 'number-input',
+          question: 'Ein Vergütungsstahl mit ca. $0{,}45\\%$ C wird gehärtet und anschließend vergütet. Welche **Anlasstemperatur** (in $°\\text{C}$) ist typisch für ein klassisches Vergüten mit guter Zähigkeit und hoher Festigkeit? Gib einen sinnvollen Mittelwert an.',
+          correctValue: 600,
+          tolerance: 50,
+          unit: '°C',
+          explanation: `**Ansatz:** Klassisches Vergüten = Härten + Anlassen im Bereich $450$–$650\\,°\\text{C}$.
+
+**Rechnung:** Ein typischer Mittelwert für Baustähle wie C45 oder 42CrMo4 ist ca. $600\\,°\\text{C}$ (Toleranzbereich $550$–$650\\,°\\text{C}$).
+
+**Probe:** Nach Vergütung erreicht 42CrMo4 $R_m \\approx 900$–$1100\\,\\text{MPa}$ bei $A \\approx 12$–$14\\%$ — genau das Ziel: hohe Festigkeit und ausreichende Zähigkeit.
+
+**Typischer Fehler:** Anlasstemperatur für Werkzeugstähle ($180$–$250\\,°\\text{C}$) mit Vergütungstemperatur verwechseln. Werkzeugstähle bleiben dort hart und spröde — das ist nicht „Vergüten" im klassischen Sinn.`,
+          hints: [
+            'Vergüten = Härten, dann Anlassen.',
+            'Typischer Bereich für Anlassen beim klassischen Vergüten: $450$–$650\\,°\\text{C}$.',
+            'Mitte des Bereichs wählen.',
+          ],
+        },
+      ],
+      masteryQuestion: 'Drei Stahlproben gleicher Zusammensetzung wurden unterschiedlich behandelt: (A) langsam im Ofen abgekühlt → Perlit, (B) abgeschreckt → Martensit, (C) isothermisch umgewandelt → Bainit. Welche Reihenfolge der Härte stimmt?',
+      masteryOptions: [
+        'Martensit > Bainit > Perlit',
+        'Perlit > Martensit > Bainit',
+        'Bainit > Martensit > Perlit',
+        'Alle drei Gefüge haben die gleiche Härte, weil der C-Gehalt gleich ist',
+      ],
+      correctIndex: 0,
+      masteryExplanation:
+        '**Ansatz:** Die Härte hängt vom Gefüge und seiner Feinheit ab, nicht nur vom Kohlenstoffgehalt.\n\n' +
+        '**Rechnung:** Martensit hat das stärkst verzerrte Gitter → höchste Härte (oft $> 60\\,\\text{HRC}$). Bainit liegt dazwischen (feines nicht-lamellares Gefüge, $\\approx 40$–$55\\,\\text{HRC}$). Perlit ist am weichsten ($\\approx 20$–$30\\,\\text{HRC}$) wegen der groben Lamellen.\n\n' +
+        '**Probe:** Technische Reihenfolge: Perlit (weich, zäh) < Bainit (mittel, sehr zäh) < Martensit (sehr hart, spröde). Bainit wird deshalb gern eingesetzt, wenn man Härte **und** Zähigkeit will.\n\n' +
+        '**Typischer Fehler:** Glauben, gleiche Zusammensetzung ergäbe gleiche Härte — das Gefüge ist entscheidend, nicht die Chemie allein.',
+      masteryHints: [
+        'Gleicher Kohlenstoff, unterschiedliche Gefüge → Härte kann sehr verschieden sein.',
+        'Martensit ist das härteste typische Gefüge — verzerrtes Gitter.',
+        'Perlit ist grob-lamellar → relativ weich.',
+      ],
+      masteryWrongAnswerExplanations: {
+        "1": 'Perlit ist das weichste der drei Gefüge, nicht das härteste. Die lamellare Ferrit-Zementit-Struktur ist grob und erlaubt Versetzungsbewegung. Richtige Reihenfolge: Martensit > Bainit > Perlit.',
+        "2": 'Bainit ist härter als Perlit, aber nicht härter als Martensit. Martensit ist die härteste der drei Phasen — durch die diffusionslose Gitterumklapp-Umwandlung wird der Kohlenstoff zwangsgelöst und verzerrt das Gitter maximal.',
+        "3": 'Gleicher C-Gehalt bedeutet **nicht** gleiche Härte. Gerade das ist der Trick der Wärmebehandlung: Durch unterschiedliche Abkühlstrategien lässt sich aus demselben Stahl Perlit (weich), Bainit (mittel) oder Martensit (hart) erzeugen.',
+      },
+      prerequisites: ['werk-2-2'],
       nextLessonId: 'werk-pruefung-1',
     }),
   ],
@@ -249,7 +353,7 @@ const unit3 = makeUnit({
         "2": '$400\\,\\text{MPa}$ ist $R_m$ selbst, ohne Sicherheitsabzug. Im Bauteil darf man aber niemals bis zur Zugfestigkeit belasten — dafür ist $S$ da. Die Sicherheitszahl wurde hier ignoriert.',
         "3": '$100\\,\\text{MPa}$ entspricht $R_m / 4$ (also $S = 4$) — der angegebene Sicherheitsfaktor ist aber $S = 2$. Wahrscheinlich mit anderem typischen $S$-Wert verwechselt. Korrekt: $400 / 2 = 200\\,\\text{MPa}$.',
       },
-      prerequisites: ['werk-1-1', 'werk-2-2'],
+      prerequisites: ['werk-1-1', 'werk-2-2', 'werk-2-3'],
       nextLessonId: null,
     }),
   ],

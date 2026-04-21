@@ -1243,6 +1243,120 @@ $\sigma_W$ = Wechselfestigkeit, $R_m$ = Zugfestigkeit. Sicherheit $S > 1$ erford
               },
             ],
           },
+          {
+            id: 'fest-2-5',
+            title: 'Kerbspannungen & Formzahl',
+            estimatedMinutes: 14,
+            learningGoals: [
+              'Formzahl $\\alpha_K$ als Verhältnis $\\sigma_\\text{max}/\\sigma_\\text{nenn}$ verstehen',
+              'Typische Kerben (Bohrung, Absatz, Gewindegrund) einordnen',
+              'Einfluss von Kerbwirkung auf die Dauerfestigkeit einschätzen',
+            ],
+            content: String.raw`**Kerbspannung** — wenn die Geometrie einer Welle, Platte oder eines Bauteils **springt** (Bohrung, Absatz, Gewindegrund), konzentrieren sich die Spannungen lokal. Das Verhältnis der maximalen zur nominellen Spannung heißt **Formzahl** $\alpha_K$:
+
+$$\alpha_K = \frac{\sigma_\text{max}}{\sigma_\text{nenn}}$$
+
+- $\sigma_\text{nenn}$: Spannung aus der einfachen Formel $F/A$ oder $M/W$ (ohne Kerbe)
+- $\sigma_\text{max}$: tatsächliche Spitzenspannung im Kerbgrund
+
+**Typische Werte** für $\alpha_K$:
+
+| Kerbe | $\alpha_K$ |
+|---|---|
+| Absatz Welle, scharf | 2–3 |
+| Absatz Welle, verrundet ($r/d = 0{,}1$) | 1,5–1,8 |
+| Querbohrung in Welle | 2–3 |
+| Gewindegrund (metrisch) | 3–5 |
+
+**Dauerfestigkeit mit Kerbwirkung:**
+$$\sigma_{W,K} = \frac{\sigma_W}{\beta_K}$$
+
+mit **Kerbwirkungszahl** $\beta_K \le \alpha_K$ (Kerbempfindlichkeit des Werkstoffs). Für spröde Werkstoffe ist $\beta_K \approx \alpha_K$, für zähe Werkstoffe deutlich kleiner (sie „entschärfen" Spitzen durch lokale Plastifizierung).
+
+**Gegenmaßnahmen:**
+- Übergänge großzügig verrunden ($r \uparrow \Rightarrow \alpha_K \downarrow$)
+- Oberflächenrauheit senken (Schleifen, Polieren)
+- Druckeigenspannungen einbringen (Kugelstrahlen, Festwalzen)
+
+Auch die **Oberflächengüte** beeinflusst die Dauerfestigkeit stark: geschliffene Proben halten deutlich länger als gedrehte mit Rillen, die selbst kleine Kerben bilden.`,
+            exercises: [
+              {
+                type: 'multiple-choice',
+                question: 'Eine Welle hat einen Absatz mit Formzahl $\\alpha_K = 2$. Was bedeutet das?',
+                options: [
+                  'Die maximale Spannung im Kerbgrund ist doppelt so groß wie die Nennspannung',
+                  'Der Bauteil hält nur die halbe Last aus wie ohne Kerbe',
+                  'Die Dauerfestigkeit ist genau halbiert',
+                  'Die Fläche am Absatz ist halbiert',
+                ],
+                correctIndex: 0,
+                explanation: `**Ansatz:** Die Formzahl $\\alpha_K$ ist als Verhältnis $\\sigma_\\text{max}/\\sigma_\\text{nenn}$ definiert.
+
+**Rechnung:** $\\alpha_K = 2 \\Rightarrow \\sigma_\\text{max} = 2 \\cdot \\sigma_\\text{nenn}$.
+
+**Probe:** Nennspannung z.B. $100$ MPa, dann ist im Kerbgrund lokal $200$ MPa — mehr als am ungestörten Querschnitt.
+
+**Typischer Fehler:** $\\alpha_K$ mit der Kerbwirkungszahl $\\beta_K$ (Einfluss auf Dauerfestigkeit) oder mit der Lastkapazität verwechseln.`,
+                hints: [
+                  'Definition: $\\alpha_K = \\sigma_\\text{max} / \\sigma_\\text{nenn}$.',
+                  '$\\alpha_K = 2$ heißt: die Spitze ist um Faktor 2 höher als die mittlere Spannung.',
+                  'Nicht dasselbe wie „hält nur halbe Last" — das wäre die Kerbwirkung auf Dauerfestigkeit.',
+                ],
+                wrongAnswerExplanations: {
+                  1: 'Die Formzahl $\\alpha_K$ beschreibt die lokale Spannungsspitze, nicht direkt die Tragfähigkeit. Bei statischer Last und zähem Werkstoff plastifiziert die Kerbstelle und die Gesamttragfähigkeit kann fast unverändert bleiben. Für dynamische Last zählt $\\beta_K \\le \\alpha_K$.',
+                  2: 'Halbierte Dauerfestigkeit gilt nur, wenn $\\beta_K = 2$ ist — und $\\beta_K$ ist meist kleiner als $\\alpha_K$, weil zähe Werkstoffe Spannungsspitzen lokal abbauen. Die Formzahl allein liefert die Dauerfestigkeit nicht.',
+                  3: 'Die Formzahl ist ein **Spannungs**-Verhältnis, kein Flächen-Verhältnis. Sie hängt von der Geometrie der Kerbe (Radius/Durchmesser) ab, nicht von einer Flächenhalbierung.',
+                },
+              },
+              {
+                type: 'number-input',
+                question: 'Nennspannung $\\sigma_\\text{nenn} = 100$ MPa an einem Wellenabsatz mit Kerbformzahl $\\alpha_K = 2{,}5$. Wie groß ist die maximale Spannung $\\sigma_\\text{max}$ im Kerbgrund?',
+                correctValue: 250,
+                tolerance: 0.5,
+                unit: 'MPa',
+                explanation: `**Ansatz:** $\\sigma_\\text{max} = \\alpha_K \\cdot \\sigma_\\text{nenn}$.
+
+**Rechnung:** $\\sigma_\\text{max} = 2{,}5 \\cdot 100 = 250$ MPa.
+
+**Probe:** Vergleich: ohne Kerbe wäre nur $100$ MPa vorhanden. Die Kerbe erzeugt eine Spannungsspitze von $250$ MPa — kritisch für Dauerfestigkeit.
+
+**Typischer Fehler:** Dividieren statt multiplizieren ($100 / 2{,}5 = 40$ MPa) oder $\\alpha_K$ mit Sicherheitsfaktor $S$ verwechseln.`,
+                hints: [
+                  'Formel: $\\sigma_\\text{max} = \\alpha_K \\cdot \\sigma_\\text{nenn}$.',
+                  'Einsetzen: $2{,}5 \\cdot 100$.',
+                  '$\\alpha_K$ verstärkt die Spannung — nicht abschwächen!',
+                ],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] Zwei gleiche Wellen aus demselben Stahl werden auf Dauer beansprucht. Welle A ist fein geschliffen ($R_a = 0{,}8\\,\\mu\\text{m}$), Welle B grob gedreht ($R_a = 6{,}3\\,\\mu\\text{m}$). Wie wirkt sich die Oberflächengüte auf die Dauerfestigkeit aus?',
+                options: [
+                  'Welle A hat höhere Dauerfestigkeit — raue Oberflächen enthalten Mikrokerben',
+                  'Welle B hat höhere Dauerfestigkeit — raue Oberfläche verteilt die Last besser',
+                  'Beide gleich — Dauerfestigkeit hängt nur vom Werkstoff ab',
+                  'Nur die statische Festigkeit ändert sich, nicht die Dauerfestigkeit',
+                ],
+                correctIndex: 0,
+                explanation: `**Ansatz:** Jede Rille in der Oberfläche wirkt wie eine winzige Kerbe und erzeugt eine Spannungsspitze.
+
+**Rechnung:** Der Oberflächenbeiwert $C_O$ reduziert die Dauerfestigkeit: $\\sigma_{W,\\text{real}} = C_O \\cdot \\sigma_W$. Typische Werte: poliert $C_O \\approx 1{,}0$; fein geschliffen $\\approx 0{,}9$; grob gedreht $\\approx 0{,}7$–$0{,}8$.
+
+**Probe:** Bei $\\sigma_W = 300$ MPa: geschliffen $\\approx 270$ MPa, gedreht $\\approx 225$ MPa — deutlicher Unterschied.
+
+**Typischer Fehler:** Glauben, Rauheit spiele nur im Aussehen eine Rolle. Gerade bei schwingender Last sind Mikrokerben Auslöser für Dauerbrüche.`,
+                hints: [
+                  'Raue Oberfläche = viele kleine Kerben.',
+                  'Kerben → Spannungsspitzen → frühere Rissinitiierung bei Wechsellast.',
+                  'Oberflächenbeiwert $C_O < 1$ bei rauen Oberflächen.',
+                ],
+                wrongAnswerExplanations: {
+                  1: 'Genau umgekehrt: Raue Oberflächen enthalten Rillen, die wie Mikrokerben wirken. Dort entstehen Spannungsspitzen, und der Dauerbruch beginnt bevorzugt an der Oberfläche.',
+                  2: 'Die Dauerfestigkeit hängt stark von Oberflächenzustand, Kerben, Eigenspannungen und Probengröße ab — nicht nur vom Grundwerkstoff. Deshalb gibt es in Normen die Beiwerte $C_O$, $C_G$, $\\beta_K$.',
+                  3: 'Die statische Zugfestigkeit $R_m$ ist praktisch unempfindlich gegen Oberflächenrauheit, aber die **Dauerfestigkeit** $\\sigma_W$ sehr wohl — Dauerbrüche starten fast immer an der Oberfläche.',
+                },
+              },
+            ],
+          },
         ],
       },
       // ── Unit 3: Prüfungsaufgaben Festigkeit ──────────────────────────
@@ -1791,6 +1905,108 @@ Verdoppelung der Drehzahl → 8-fache Leistungsaufnahme!`,
                 unit: 'kW',
                 explanation: 'P_2 = P_1·(n_2/n_1)³ = 2·(2000/1000)³ = 2·8 = 16 kW.',
                 hints: ['P proportional zu n³', 'P_2 = P_1·(n_2/n_1)³', '2·2³ = 16'],
+              },
+            ],
+          },
+          {
+            id: 'fluid-2-5',
+            title: 'Moody-Diagramm & Rohrreibung praktisch',
+            estimatedMinutes: 15,
+            learningGoals: [
+              'Rohrreibungszahl $\\lambda$ in Abhängigkeit von $\\text{Re}$ und $\\varepsilon/d$ bestimmen',
+              'Laminar-Formel $\\lambda = 64/\\text{Re}$ und Blasius-Formel sicher anwenden',
+              'Druckverlust aus $\\lambda$, $L$, $d$, $v$, $\\rho$ berechnen',
+            ],
+            content: String.raw`Die Rohrreibungszahl $\lambda$ (auch Darcy-Friktionsfaktor) ist der Schlüssel zum Druckverlust in Rohren:
+
+$$\Delta p = \lambda \cdot \frac{L}{d} \cdot \frac{\rho v^2}{2}$$
+
+Ihr Wert hängt vom **Strömungsregime** und bei turbulenter Strömung zusätzlich von der **relativen Rauhigkeit** $\varepsilon/d$ ab:
+
+| Regime | Formel für $\lambda$ |
+|---|---|
+| Laminar ($\text{Re} < 2300$) | $\lambda = 64/\text{Re}$ |
+| Turbulent, glattes Rohr (Blasius, $\text{Re} < 10^5$) | $\lambda = 0{,}316 / \text{Re}^{0{,}25}$ |
+| Turbulent, raues Rohr | Moody-Diagramm oder Colebrook-Gleichung |
+
+**Moody-Diagramm** — grafisches Werkzeug: auf der x-Achse $\text{Re}$ (logarithmisch), auf der y-Achse $\lambda$ (logarithmisch), Kurvenschar für verschiedene $\varepsilon/d$.
+
+**Typische Werte der Rohrrauhigkeit** $\varepsilon$:
+
+| Material | $\varepsilon$ (mm) |
+|---|---|
+| gezogenes Kupfer / Glas | 0,0015 |
+| Handelsstahl, geschweißt | 0,05 |
+| gußeisernes Rohr | 0,25 |
+| Beton rauh | 1–3 |
+
+Bei stark rauen Rohren und hohen $\text{Re}$ wird $\lambda$ praktisch **unabhängig von $\text{Re}$** (voll rauhes Regime) — nur $\varepsilon/d$ zählt dann.`,
+            exercises: [
+              {
+                type: 'multiple-choice',
+                question: 'Für eine laminare Rohrströmung ($\\text{Re} < 2300$) gilt die Rohrreibungszahl',
+                options: [
+                  '$\\lambda = 64/\\text{Re}$',
+                  '$\\lambda = 0{,}316/\\text{Re}^{0{,}25}$',
+                  '$\\lambda = \\text{Re}/64$',
+                  '$\\lambda$ ist konstant $= 0{,}02$',
+                ],
+                correctIndex: 0,
+                explanation: `**Ansatz:** Im laminaren Bereich liefert Hagen-Poiseuille die exakte Lösung.
+
+**Rechnung:** $\\lambda = 64/\\text{Re}$ folgt direkt aus dem parabolischen Geschwindigkeitsprofil in glatten Kreisrohren.
+
+**Probe:** Bei $\\text{Re} = 1000$: $\\lambda = 64/1000 = 0{,}064$. In Druckverlust-Formel eingesetzt liefert das dasselbe Ergebnis wie Hagen-Poiseuille.
+
+**Typischer Fehler:** Blasius-Formel ($0{,}316/\\text{Re}^{0{,}25}$) auch im laminaren Bereich einsetzen — sie gilt nur für turbulent-glatt.`,
+                hints: [
+                  'Laminar = Hagen-Poiseuille. Formel?',
+                  'Darcy-Weisbach & Hagen-Poiseuille vergleichen → $\\lambda = 64/\\text{Re}$.',
+                  'Blasius ($0{,}316/\\text{Re}^{0{,}25}$) gilt nur für turbulent-glatt.',
+                ],
+                wrongAnswerExplanations: {
+                  1: 'Das ist die Blasius-Formel für turbulent-glatte Rohre, gültig etwa $2300 < \\text{Re} < 10^5$. Im laminaren Bereich liefert sie falsche Werte.',
+                  2: '$\\text{Re}/64$ hat die falsche Tendenz — im laminaren Bereich **sinkt** $\\lambda$ mit steigendem $\\text{Re}$. Die korrekte Formel ist $\\lambda = 64/\\text{Re}$.',
+                  3: 'Konstantes $\\lambda$ gibt es nur im „voll rauhen" Regime bei sehr hohem $\\text{Re}$. Im laminaren Bereich ändert sich $\\lambda$ stark mit $\\text{Re}$.',
+                },
+              },
+              {
+                type: 'number-input',
+                question: 'Wasserströmung im glatten Rohr, $\\text{Re} = 10\\,000$. Berechne die Rohrreibungszahl $\\lambda$ nach Blasius (auf 4 Nachkommastellen).',
+                correctValue: 0.0316,
+                tolerance: 0.0005,
+                unit: '',
+                explanation: `**Ansatz:** Blasius-Formel für turbulent-glatt: $\\lambda = 0{,}316 / \\text{Re}^{0{,}25}$.
+
+**Rechnung:** $\\text{Re}^{0{,}25} = 10\\,000^{0{,}25} = \\sqrt{\\sqrt{10\\,000}} = \\sqrt{100} = 10$. Damit $\\lambda = 0{,}316 / 10 = 0{,}0316$.
+
+**Probe:** Typische Rohrreibungszahlen im turbulent-glatten Bereich liegen bei $0{,}02$–$0{,}04$. ✓
+
+**Typischer Fehler:** $\\text{Re}^{0{,}25}$ mit $\\text{Re}^{2}$ verwechseln oder $\\sqrt{\\sqrt{\\cdot}}$ unterlassen.`,
+                hints: [
+                  'Formel: $\\lambda = 0{,}316 / \\text{Re}^{0{,}25}$.',
+                  '$10\\,000^{0{,}25} = \\sqrt{\\sqrt{10\\,000}} = \\sqrt{100} = 10$.',
+                  '$0{,}316 / 10 = 0{,}0316$.',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: '[PRÜFUNG] Rohr $L = 100$ m, $d = 0{,}05$ m, Wasser ($\\rho = 1000\\,\\text{kg/m}^3$) mit $v = 2$ m/s, $\\lambda = 0{,}03$. Wie groß ist der Druckverlust $\\Delta p$ in $\\text{Pa}$?',
+                correctValue: 120000,
+                tolerance: 500,
+                unit: 'Pa',
+                explanation: `**Ansatz:** Darcy-Weisbach $\\Delta p = \\lambda \\cdot (L/d) \\cdot \\rho v^2/2$.
+
+**Rechnung:** $L/d = 100/0{,}05 = 2000$. $\\rho v^2/2 = 1000 \\cdot 4 / 2 = 2000$ Pa. $\\Delta p = 0{,}03 \\cdot 2000 \\cdot 2000 = 120\\,000$ Pa.
+
+**Probe:** $120$ kPa $= 1{,}2$ bar Druckverlust über $100$ m Rohr — plausibel für Industriewasser.
+
+**Typischer Fehler:** $d$ in mm statt m belassen oder den Faktor $1/2$ vor $\\rho v^2$ vergessen.`,
+                hints: [
+                  'Formel: $\\Delta p = \\lambda \\cdot (L/d) \\cdot (\\rho v^2/2)$.',
+                  '$L/d = 100/0{,}05 = 2000$, $\\rho v^2/2 = 2000\\,\\text{Pa}$.',
+                  'Alles in SI-Einheiten lassen.',
+                ],
               },
             ],
           },
@@ -2543,6 +2759,124 @@ $\cos\varphi = 1$: rein ohmsche Last, keine Blindleistung.
               },
             ],
           },
+          // ── et-2-3 ────────────────────────────────────────────────────────
+          {
+            id: 'et-2-3',
+            title: 'Drehstrom & 3-Phasensystem',
+            estimatedMinutes: 15,
+            learningGoals: [
+              'Stern- (Y) und Dreieckschaltung ($\\Delta$) unterscheiden',
+              'Verkettete Spannung $U_{LL} = \\sqrt{3} \\cdot U_{LN}$ anwenden',
+              'Wirkleistung im Drehstromsystem berechnen',
+            ],
+            content: String.raw`## Drehstrom (Dreiphasensystem)
+
+Ein Drehstromnetz besteht aus drei um $120°$ phasenverschobenen Wechselspannungen. Es gibt zwei Standard-Verschaltungen:
+
+### Sternschaltung (Y)
+
+Die drei Stränge sind an einem gemeinsamen **Sternpunkt** (Neutralleiter) zusammengeführt.
+
+- **Strangspannung** (Phase-Neutral): $U_{LN}$, z.B. $230\,\text{V}$
+- **Verkettete Spannung** (zwischen zwei Außenleitern): $U_{LL} = \sqrt{3} \cdot U_{LN}$, z.B. $400\,\text{V}$
+- **Strangstrom = Außenleiterstrom**
+
+### Dreieckschaltung ($\Delta$)
+
+Die drei Stränge bilden ein Dreieck — kein Neutralleiter.
+
+- **Strangspannung = verkettete Spannung** $U_{LL}$
+- **Außenleiterstrom** $I_L = \sqrt{3} \cdot I_\text{Strang}$
+
+### Wirkleistung im symmetrischen Drehstromsystem
+
+Unabhängig von der Schaltungsart:
+
+$$P = \sqrt{3} \cdot U_{LL} \cdot I_L \cdot \cos\varphi$$
+
+mit $U_{LL}$ der verketteten Spannung, $I_L$ dem Außenleiterstrom, $\cos\varphi$ dem Leistungsfaktor.
+
+### Stern-Dreieck-Anlauf (Motor)
+
+Drehstrom-Asynchronmotoren werden beim Anlauf in Y betrieben (niedrigerer Strang-Strom und damit kleinerer Einschaltstrom), dann auf $\Delta$ umgeschaltet (volle Leistung). Im Stern ist die Leistung nur **1/3** der Dreieck-Leistung bei gleichem Netz — ein guter Kompromiss für den Anlauf großer Motoren.`,
+            exercises: [
+              {
+                type: 'multiple-choice',
+                question: 'Ein Drehstrommotor ist in Stern geschaltet und an einem Netz mit $U_{LN} = 230\\,\\text{V}$ angeschlossen. Wie groß ist die verkettete Spannung $U_{LL}$ zwischen zwei Außenleitern?',
+                options: [
+                  '$\\approx 400\\,\\text{V}$ ($\\sqrt{3} \\cdot 230$)',
+                  '$230\\,\\text{V}$ (gleich wie $U_{LN}$)',
+                  '$115\\,\\text{V}$ (halb so groß)',
+                  '$690\\,\\text{V}$ ($3 \\cdot 230$)',
+                ],
+                correctIndex: 0,
+                explanation: `**Ansatz:** In Sternschaltung gilt $U_{LL} = \\sqrt{3} \\cdot U_{LN}$.
+
+**Rechnung:** $U_{LL} = \\sqrt{3} \\cdot 230\\,\\text{V} \\approx 1{,}732 \\cdot 230\\,\\text{V} \\approx 400\\,\\text{V}$.
+
+**Probe:** Das Standardnetz in Europa hat $230/400\\,\\text{V}$ — die verkettete Spannung $400\\,\\text{V}$ ist der Wert zwischen zwei Außenleitern, $230\\,\\text{V}$ zwischen Außenleiter und Neutralleiter.
+
+**Typischer Fehler:** $U_{LL} = 3 \\cdot U_{LN}$ statt $\\sqrt{3}$ — Faktor $\\sqrt{3} \\approx 1{,}73$, nicht 3.`,
+                hints: [
+                  'In Y-Schaltung ist zwischen zwei Außenleitern ein Faktor $\\sqrt{3}$ mehr Spannung als zwischen Außenleiter und Sternpunkt.',
+                  '$\\sqrt{3} \\approx 1{,}732$.',
+                  '$\\sqrt{3} \\cdot 230 \\approx 400$.',
+                ],
+                wrongAnswerExplanations: {
+                  1: 'In Sternschaltung sind Strang- und verkettete Spannung **nicht** gleich. Gleich wären sie nur in Dreieckschaltung. Zwischen zwei Außenleitern liegt hier das vektorielle Differenzsignal der um $120°$ phasenverschobenen Stränge — das gibt Faktor $\\sqrt{3}$.',
+                  2: 'Eine Halbierung tritt nicht auf — die verkettete Spannung ist **größer** als die Strangspannung. Faktor $\\sqrt{3} \\approx 1{,}73$.',
+                  3: '$3 \\cdot 230 = 690\\,\\text{V}$ ist der falsche Faktor. Die Stränge sind um $120°$ phasenverschoben, nicht in Phase — dadurch ergibt der Vektor-Unterschied nur Faktor $\\sqrt{3}$, nicht $3$.',
+                },
+              },
+              {
+                type: 'number-input',
+                question: 'Ein Drehstrommotor läuft an $U_{LL} = 400\\,\\text{V}$, zieht Strangstrom $I = 10\\,\\text{A}$ und hat Leistungsfaktor $\\cos\\varphi = 0{,}9$. Wie groß ist die Wirkleistung $P$ in Watt?',
+                correctValue: 6235,
+                tolerance: 30,
+                unit: 'W',
+                explanation: `**Ansatz:** Drehstrom-Wirkleistung: $P = \\sqrt{3} \\cdot U_{LL} \\cdot I \\cdot \\cos\\varphi$.
+
+**Rechnung:** $P = \\sqrt{3} \\cdot 400 \\cdot 10 \\cdot 0{,}9 = 1{,}732 \\cdot 4000 \\cdot 0{,}9 \\approx 6235\\,\\text{W}$.
+
+**Probe:** $\\approx 6{,}2\\,\\text{kW}$ — passt zu einem mittelgroßen Motor.
+
+**Typischer Fehler:** Den Faktor $\\sqrt{3}$ vergessen ($P = 4000 \\cdot 0{,}9 = 3600\\,\\text{W}$, ca. $1{,}7$-fach zu klein) oder $\\cos\\varphi$ weglassen.`,
+                hints: [
+                  'Formel: $P = \\sqrt{3} \\cdot U_{LL} \\cdot I \\cdot \\cos\\varphi$.',
+                  '$\\sqrt{3} \\approx 1{,}732$.',
+                  '$1{,}732 \\cdot 400 \\cdot 10 \\cdot 0{,}9 \\approx 6235\\,\\text{W}$.',
+                ],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] Warum wird ein großer Drehstrom-Asynchronmotor beim Anlauf in Stern und im Betrieb in Dreieck geschaltet?',
+                options: [
+                  'Im Stern ist der Anlaufstrom um Faktor 3 kleiner — der Motor zieht das Netz nicht zu stark ein',
+                  'Im Dreieck wäre der Motor mechanisch überlastet',
+                  'Stern liefert mehr Drehmoment als Dreieck',
+                  'Stern ist die Standardschaltung für niedrige Spannungen',
+                ],
+                correctIndex: 0,
+                explanation: `**Ansatz:** In Y liegt an jedem Strang nur $U_{LL}/\\sqrt{3}$ (statt $U_{LL}$ wie in $\\Delta$). Strom durch jeden Strang sinkt um Faktor $\\sqrt{3}$, und der Leiterstrom am Netz sinkt insgesamt um Faktor **3**.
+
+**Rechnung:** Leistung in Y ist $P_Y = P_\\Delta / 3$, Drehmoment ebenfalls — das Drehmoment am Anlauf reicht aber meist, da $M \\propto U^2$ bedeutet bei niedrigerer Belastung.
+
+**Probe:** Ein $10$-kW-Motor in $\\Delta$ zieht ca. $18\\,\\text{A}$; beim direkten Anlauf ginge der **Anlaufstrom** aber auf das 5- bis 8-fache, also $\\approx 100$ A — in Y auf ca. $33$ A reduziert.
+
+**Typischer Fehler:** Glauben, in Y sei die Leistung höher; tatsächlich ist sie im Anlauf nur ein Drittel — das reduziert Netzbelastung.`,
+                hints: [
+                  'Der **Einschaltstrom** ist das Problem, nicht die Dauerleistung.',
+                  'In Y fällt an jedem Strang nur $U_{LL}/\\sqrt{3}$, Ströme sinken.',
+                  'Faktor 3 kleinere Leistung und Strom in Y vs. $\\Delta$.',
+                ],
+                wrongAnswerExplanations: {
+                  1: 'Mechanische Überlastung tritt nicht direkt auf — problematisch ist der **elektrische** Einschaltstromstoß (5–8-fach). Der Stern-Anlauf reduziert genau diesen Einschaltstrom.',
+                  2: 'Umgekehrt: Im Stern sind Spannung pro Strang und damit das Drehmoment deutlich **kleiner** als im Dreieck (Faktor 3). Deshalb wechselt man nach dem Hochlauf auf $\\Delta$.',
+                  3: '$400\\,\\text{V}$-Netze sind der Standard — Y und $\\Delta$ sind Motoranschlüsse, keine Netzstandards. Die Wahl hängt am Motor, nicht am Netz.',
+                },
+              },
+            ],
+          },
         ],
       },
       {
@@ -3070,6 +3404,125 @@ Zu kleiner Phasenrand → starkes Überschwingen oder Instabilität.
                   1: 'Für $n \\geq 3$ reicht das nicht: Beispiel $s^3 + s^2 + s + 6$ hat alle positiven Koeffizienten, aber Pole mit Re(s) > 0. Man braucht zusätzlich die Hurwitz-Determinanten.',
                   2: '$k$ ist der konstante Koeffizient $a_0$; er beeinflusst sowohl die notwendige Bedingung ($k > 0$) als auch die Hurwitz-Determinante direkt.',
                   3: 'Alle Koeffizienten sind relevant: Erst die notwendige Bedingung ($a_i > 0$) und dann die Hurwitz-Determinanten verwenden alle Werte, nicht nur den führenden.',
+                },
+              },
+            ],
+          },
+          // ── rt-2-3 ───────────────────────────────────────────────────────
+          {
+            id: 'rt-2-3',
+            title: 'Bodediagramm & Phasengang',
+            estimatedMinutes: 15,
+            learningGoals: [
+              'Amplituden- und Phasengang typischer Übertragungsglieder kennen (P, I, D, PT1)',
+              'Grenzfrequenz und $-3\\,\\text{dB}$-Punkt interpretieren',
+              'Phasenreserve als Stabilitätsmaß lesen',
+            ],
+            content: String.raw`## Bodediagramm
+
+Das **Bodediagramm** zerlegt die Übertragungsfunktion $G(j\omega)$ in zwei getrennte Kurven über der Frequenz (logarithmische $\omega$-Achse):
+
+- **Amplitudengang** $|G(j\omega)|$ in Dezibel: $\;A_{\text{dB}} = 20 \cdot \log_{10}|G|$
+- **Phasengang** $\varphi(\omega) = \arg(G(j\omega))$
+
+### Grundbausteine
+
+| Glied | Amplitudengang | Phasengang |
+|---|---|---|
+| P ($G = K$) | $20\log K$ (konstant) | $0°$ |
+| I ($G = 1/(T_I s)$) | $-20\,\text{dB/Dek}$ | $-90°$ |
+| D ($G = T_D s$) | $+20\,\text{dB/Dek}$ | $+90°$ |
+| PT1 ($G = 1/(1+Ts)$) | $0$ dB unter $\omega_g$, $-20\,\text{dB/Dek}$ darüber | $0°$ bis $-90°$ |
+
+### Grenzfrequenz ($-3\,\text{dB}$-Punkt)
+
+Bei einem PT1-Tiefpass fällt der Betrag bei $\omega = \omega_g = 1/T$ auf $1/\sqrt{2} \approx 0{,}707$ ab — das sind genau $-3\,\text{dB}$. Ab der Grenzfrequenz fällt die Amplitude asymptotisch mit $-20\,\text{dB/Dek}$.
+
+### Phasenreserve
+
+Die **Phasenreserve** $\varphi_R$ ist der Abstand des Phasengangs von $-180°$ bei der Durchtrittsfrequenz $\omega_D$ (dort, wo $|G_0(j\omega_D)| = 1 = 0\,\text{dB}$):
+
+$$\varphi_R = 180° + \varphi(\omega_D)$$
+
+**Stabilitätseinschätzung:**
+- $\varphi_R > 60°$: sehr gute Reserve, langsam aber sicher
+- $30° \le \varphi_R \le 60°$: guter Kompromiss, typisch für Auslegungen
+- $0° < \varphi_R < 30°$: starkes Überschwingen
+- $\varphi_R \le 0°$: System ist instabil`,
+            exercises: [
+              {
+                type: 'multiple-choice',
+                question: 'Welche Steigung hat der Amplitudengang eines reinen I-Gliedes ($G(s) = 1/(T_I s)$) im Bodediagramm?',
+                options: [
+                  '$-20\\,\\text{dB}$ pro Dekade',
+                  '$+20\\,\\text{dB}$ pro Dekade',
+                  '$-40\\,\\text{dB}$ pro Dekade',
+                  'konstant $0\\,\\text{dB}$',
+                ],
+                correctIndex: 0,
+                explanation: `**Ansatz:** $|G(j\\omega)| = 1/(T_I \\omega)$, also $A_\\text{dB} = -20\\log_{10}(T_I \\omega)$.
+
+**Rechnung:** $\\omega$ wird um Faktor $10$ erhöht → $A_\\text{dB}$ sinkt um $20\\,\\text{dB}$. Steigung: $-20\\,\\text{dB/Dek}$.
+
+**Probe:** Bei $\\omega = 1/T_I$ ist $|G| = 1$, also $0\\,\\text{dB}$. Bei $\\omega = 10/T_I$: $|G| = 0{,}1$, also $-20\\,\\text{dB}$.
+
+**Typischer Fehler:** I-Glied mit D-Glied verwechseln — D-Glied steigt mit $+20\\,\\text{dB/Dek}$.`,
+                hints: [
+                  '$|G(j\\omega)| = 1/(T_I \\omega)$ — der Betrag fällt mit $1/\\omega$.',
+                  'In dB: $-20 \\log_{10}(T_I \\omega)$.',
+                  'Eine Dekade Frequenz mehr → $-20\\,\\text{dB}$.',
+                ],
+                wrongAnswerExplanations: {
+                  1: '$+20\\,\\text{dB/Dek}$ beschreibt ein D-Glied, nicht ein I-Glied. Das I-Glied integriert — je höher $\\omega$, desto kleiner der Ausgang.',
+                  2: '$-40\\,\\text{dB/Dek}$ entspricht einem $1/s^2$-Verhalten (z.B. zwei kaskadierte I-Glieder oder ein PT2 oberhalb der Grenzfrequenz), nicht einem einzelnen I-Glied.',
+                  3: 'Konstant $0\\,\\text{dB}$ gilt nur für ein reines P-Glied. Ein I-Glied verstärkt tiefe Frequenzen und dämpft hohe — nicht konstant.',
+                },
+              },
+              {
+                type: 'number-input',
+                question: 'Ein RC-Tiefpass (PT1) hat die Grenzfrequenz $f_g = 1\\,\\text{kHz}$. Wie groß ist die Verstärkung $|G|$ in Dezibel bei $f = f_g$?',
+                correctValue: -3,
+                tolerance: 0.2,
+                unit: 'dB',
+                explanation: `**Ansatz:** Bei der Grenzfrequenz hat ein PT1 den Betrag $|G| = 1/\\sqrt{2} \\approx 0{,}707$.
+
+**Rechnung:** $A_\\text{dB} = 20 \\log_{10}(1/\\sqrt{2}) = -20 \\log_{10}\\sqrt{2} = -10 \\log_{10}(2) \\approx -3\\,\\text{dB}$.
+
+**Probe:** Deshalb heißt $f_g$ auch **$-3\\,\\text{dB}$-Punkt**. Die Leistung ist dort halbiert ($10\\log(1/2) = -3\\,\\text{dB}$).
+
+**Typischer Fehler:** $-6\\,\\text{dB}$ (Halbierung der Amplitude) mit $-3\\,\\text{dB}$ (Halbierung der Leistung) verwechseln.`,
+                hints: [
+                  'PT1 bei $\\omega = \\omega_g$: Betrag $= 1/\\sqrt{2}$.',
+                  '$20 \\log_{10}(1/\\sqrt{2}) = -10 \\log_{10}(2)$.',
+                  '$\\log_{10}(2) \\approx 0{,}301$, also $\\approx -3\\,\\text{dB}$.',
+                ],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] Im Bodediagramm des offenen Regelkreises $G_0$ wird bei der Durchtrittsfrequenz $\\omega_D$ (wo $|G_0| = 0\\,\\text{dB}$) der Phasenwert $\\varphi(\\omega_D) = -160°$ abgelesen. Welche Aussage zur Stabilität ist korrekt?',
+                options: [
+                  'Phasenreserve $\\varphi_R = 20°$ — stabil, aber mit starkem Überschwingen',
+                  'Phasenreserve $\\varphi_R = 340°$ — sehr komfortabel stabil',
+                  'System instabil, da Phase $< -180°$',
+                  'Phasenreserve spielt für die Stabilität keine Rolle',
+                ],
+                correctIndex: 0,
+                explanation: `**Ansatz:** Phasenreserve $\\varphi_R = 180° + \\varphi(\\omega_D)$.
+
+**Rechnung:** $\\varphi_R = 180° + (-160°) = 20°$. Das ist **positiv** → System stabil, aber nahe an der Instabilitätsgrenze.
+
+**Probe:** Praxis-Richtwert: $\\varphi_R \\ge 30°$ für brauchbaren Betrieb, $\\ge 60°$ für sehr gutmütiges Einschwingen. $20°$ ergibt Überschwingen um $50\\%$ oder mehr.
+
+**Typischer Fehler:** $\\varphi_R$ als Betragsdifferenz der Winkel interpretieren — es ist ein signierter Zusatzwinkel zu $-180°$. $-160°$ liegt $20°$ „über" $-180°$, daher $\\varphi_R = +20°$.`,
+                hints: [
+                  'Definition: $\\varphi_R = 180° + \\varphi(\\omega_D)$.',
+                  '$180° + (-160°) = 20°$.',
+                  'Positiv → stabil, $> 30°$ wäre aber empfehlenswert.',
+                ],
+                wrongAnswerExplanations: {
+                  1: '$340°$ entsteht, wenn man $180° - (-160°)$ rechnet. Die Formel ist $\\varphi_R = 180° + \\varphi(\\omega_D)$ mit Vorzeichen — hier $180° + (-160°) = 20°$.',
+                  2: 'Die Phase liegt bei $-160°$, nicht unter $-180°$. $-160°$ ist weniger negativ als $-180°$, also $20°$ Reserve. Ein Phasenwert $< -180°$ (etwa $-200°$) wäre instabil.',
+                  3: 'Phasenreserve ist gerade **das** wichtigste Stabilitätsmaß im Frequenzbereich. Sie quantifiziert, wie viel zusätzliche Phasenverzögerung das System verträgt, bevor es instabil wird.',
                 },
               },
             ],
