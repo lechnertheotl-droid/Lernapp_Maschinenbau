@@ -785,6 +785,52 @@ $a_z$ ist die **Zentripetalbeschleunigung** — sie zeigt immer zur Kreismitte.`
               { type: 'number-input', question: 'Startgeschwindigkeit v0 = 0, Beschleunigung a = 2 m/s². Geschwindigkeit nach t = 5 s?', correctValue: 10, tolerance: 0.01, unit: 'm/s', explanation: 'v = v_0 + a·t = 0 + 2·5 = 10 m/s.', hints: ['v = v_0 + a·t', 'v_0 = 0 (startet aus dem Stand)', '0 + 2·5 = 10 m/s'] },
               { type: 'number-input', question: 'Körper startet mit v0 = 3 m/s, a = 1,5 m/s². Zurückgelegter Weg nach t = 4 s?', correctValue: 24, tolerance: 0.1, unit: 'm', explanation: 's = v_0·t + ½·a·t² = 3·4 + ½·1,5·16 = 12 + 12 = 24 m.', hints: ['s = v_0·t + ½·a·t²', 'v_0·t = 3·4 = 12 m', '½·1,5·16 = 12 m → s = 24 m'] },
               { type: 'number-input', question: '[PRÜFUNG] Kreis: r = 0,5 m, n = 600 1/min. Bahngeschwindigkeit v? (Runde auf eine Dezimalstelle)', correctValue: 31.4, tolerance: 0.5, unit: 'm/s', explanation: 'ω = 2π·n/60 = 2π·600/60 = 20π = 62,83 rad/s. v = r·ω = 0,5·62,83 ≈ 31,4 m/s.', hints: ['ω = 2πn/60 (n in 1/min)', 'v = r·ω', '20π ≈ 62,83 rad/s'] },
+              {
+                type: 'number-input',
+                question: 'Schräger Wurf: Ball mit $v_0 = 20\\,\\text{m/s}$ unter $\\alpha = 30°$ abgeworfen. Wie weit fliegt er (Wurfweite $w$), bevor er wieder die Starthöhe erreicht? ($g = 9{,}81\\,\\text{m/s}^2$)',
+                correctValue: 35.3,
+                tolerance: 0.5,
+                unit: 'm',
+                explanation: `**Ansatz:** Horizontale Bewegung gleichförmig ($v_x = v_0 \\cos\\alpha$), vertikale Bewegung freier Fall mit Startgeschwindigkeit $v_y = v_0 \\sin\\alpha$. Flugzeit bis zur Landung (gleiche Starthöhe): $t_\\text{flug} = 2 v_y / g$. Wurfweite: $w = v_x \\cdot t_\\text{flug}$.
+
+**Rechnung:**
+- $v_x = 20 \\cdot \\cos(30°) = 20 \\cdot 0{,}866 = 17{,}32\\,\\text{m/s}$
+- $v_y = 20 \\cdot \\sin(30°) = 20 \\cdot 0{,}5 = 10\\,\\text{m/s}$
+- $t_\\text{flug} = 2 \\cdot 10 / 9{,}81 \\approx 2{,}04\\,\\text{s}$
+- $w = 17{,}32 \\cdot 2{,}04 \\approx 35{,}3\\,\\text{m}$
+
+**Kompaktformel:** $w = \\dfrac{v_0^2 \\sin(2\\alpha)}{g}$. Hier: $\\dfrac{400 \\cdot \\sin(60°)}{9{,}81} = \\dfrac{400 \\cdot 0{,}866}{9{,}81} \\approx 35{,}3\\,\\text{m}$. ✓
+
+**Max Wurfweite bei $\\alpha = 45°$** (da $\\sin(2\\alpha)$ dort maximal $= 1$).
+
+**Typischer Fehler:** Vertikale und horizontale Bewegung nicht trennen; oder Winkel in Gradianten statt Radiant (bzw. umgekehrt) am Taschenrechner.`,
+                hints: [
+                  'Zerlege $v_0$ in horizontale und vertikale Komponente.',
+                  'Flugzeit: Ball steigt und fällt; $t_\\text{flug} = 2 v_y / g$.',
+                  'Wurfweite = $v_x \\cdot t_\\text{flug}$.',
+                ],
+              },
+              {
+                type: 'number-input',
+                question: 'Unelastischer Stoß: Kugel $m_1 = 2\\,\\text{kg}$ mit $v_1 = 5\\,\\text{m/s}$ trifft Kugel $m_2 = 3\\,\\text{kg}$ in Ruhe. Beide bleiben zusammen. Gemeinsame Geschwindigkeit $v\'$?',
+                correctValue: 2,
+                tolerance: 0.01,
+                unit: 'm/s',
+                explanation: `**Ansatz:** Impuls vor Stoss = Impuls nach Stoss (Impulserhaltung gilt IMMER, egal ob elastisch oder nicht).
+
+**Formel (unelastischer Stoss):** $(m_1 + m_2) \\cdot v\' = m_1 v_1 + m_2 v_2$.
+
+**Rechnung:** $v\' = \\dfrac{m_1 v_1 + m_2 v_2}{m_1 + m_2} = \\dfrac{2 \\cdot 5 + 3 \\cdot 0}{2 + 3} = \\dfrac{10}{5} = 2\\,\\text{m/s}$.
+
+**Probe (Energie):** Vor: $E_\\text{kin} = \\tfrac{1}{2} \\cdot 2 \\cdot 25 = 25\\,\\text{J}$. Nach: $\\tfrac{1}{2} \\cdot 5 \\cdot 4 = 10\\,\\text{J}$. Energieverlust: $15\\,\\text{J}$ — ging in Wärme/Verformung (Charakteristikum des unelastischen Stosses; anders als beim elastischen wird Energie **nicht** erhalten).
+
+**Typischer Fehler:** Energieerhaltung statt Impulserhaltung verwenden. Beim unelastischen Stoss geht kinetische Energie verloren — nur Impuls ($p = mv$) bleibt erhalten.`,
+                hints: [
+                  'Impulserhaltung: $p_\\text{vor} = p_\\text{nach}$.',
+                  '$p_\\text{nach} = (m_1 + m_2) v\'$.',
+                  '$v\' = (m_1 v_1 + m_2 v_2) / (m_1 + m_2)$.',
+                ],
+              },
             ],
           },
           {

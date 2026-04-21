@@ -352,6 +352,29 @@ export const exercises_vek_u1 = {
       alt: 'Zwei Vektoren im 45-Grad-Winkel.',
     },
   },
+  'ex-vek-1-2-d': {
+    id: 'ex-vek-1-2-d', lessonId: 'vek-1-2', type: 'number-input',
+    question: 'Projektion: Wie lang ist die Projektion des Vektors $\\vec{a} = (3, 4)$ auf den Einheitsvektor $\\hat{e}_x = (1, 0)$?',
+    correctValue: 3,
+    tolerance: 0.01,
+    unit: '',
+    explanation: `**Ansatz:** Die skalare Projektion von $\\vec{a}$ auf den Einheitsvektor $\\hat{e}$ ist das Skalarprodukt $\\vec{a} \\cdot \\hat{e}$. Sie sagt: *Wie viel von $\\vec{a}$ zeigt in Richtung $\\hat{e}$?*
+
+**Rechnung:** $\\vec{a} \\cdot \\hat{e}_x = 3 \\cdot 1 + 4 \\cdot 0 = 3$.
+
+**Probe:** Der Vektor $(3, 4)$ hat x-Komponente $3$ — und genau das ist die Projektion auf die x-Achse. Geometrisch offensichtlich.
+
+**Vektorielle Projektion:** Für die *vektorielle* Projektion multipliziert man die skalare Projektion mit dem Einheitsvektor: $\\vec{a}_{\\parallel} = (\\vec{a} \\cdot \\hat{e}) \\cdot \\hat{e} = 3 \\cdot (1, 0) = (3, 0)$.
+
+**Typischer Fehler:** Betrag von $\\vec{a}$ nehmen ($|\\vec{a}| = 5$) statt der Projektion. Das wäre die Projektion auf $\\vec{a}$ selbst, nicht auf $\\hat{e}_x$.
+
+**Anwendung in der Mechanik:** Kraft entlang einer schiefen Ebene, zurückgelegter Weg in Wegrichtung, Komponente einer Geschwindigkeit.`,
+    hints: [
+      'Skalare Projektion = $\\vec{a} \\cdot \\hat{e}$ (Skalarprodukt mit Einheitsvektor).',
+      '$(3, 4) \\cdot (1, 0) = ?$',
+      'Nur die x-Komponente bleibt stehen.',
+    ],
+  },
   'ex-vek-1-2-mastery': {
     id: 'ex-vek-1-2-mastery', lessonId: 'vek-1-2', type: 'multiple-choice', isMasteryCheck: true,
     question: '[PRÜFUNG] Die Arbeit $W = \\vec{F} \\cdot \\vec{s}$ bei $\\vec{F} = (10, 0)\\,\\text{N}$ und $\\vec{s} = (3, 4)\\,\\text{m}$ ist:',
@@ -730,7 +753,8 @@ wobei $\\varphi$ der eingeschlossene Winkel ist ($0° \\leq \\varphi \\leq 180°
       { id: 'vek-1-2-s2', type: 'exercise', title: 'Aufgabe 1 — Skalarprodukt berechnen', exerciseRef: 'ex-vek-1-2-a' },
       { id: 'vek-1-2-s3', type: 'exercise', title: 'Aufgabe 2 — Bedeutung $\\vec{a}\\cdot\\vec{b}=0$', exerciseRef: 'ex-vek-1-2-b' },
       { id: 'vek-1-2-s4', type: 'exercise', title: 'Aufgabe 3 — Winkel berechnen', exerciseRef: 'ex-vek-1-2-c' },
-      { id: 'vek-1-2-s5', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-vek-1-2-mastery' },
+      { id: 'vek-1-2-s5', type: 'exercise', title: 'Aufgabe 4 — Projektion eines Vektors', exerciseRef: 'ex-vek-1-2-d' },
+      { id: 'vek-1-2-s6', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-vek-1-2-mastery' },
     ],
   },
   {
