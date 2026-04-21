@@ -18,7 +18,7 @@
 | &nbsp;&nbsp;· ✅ true-false | 346 |
 | &nbsp;&nbsp;· 🔗 matching | 229 |
 | &nbsp;&nbsp;· 📋 sorting | 198 |
-| MC mit vollständigen `wrongAnswerExplanations` | 925 / 996 (93%) |
+| MC mit vollständigen `wrongAnswerExplanations` | 937 / 996 (94%) |
 | Erklärungen im 4-Block-Schema (Ansatz/Rechnung/Probe/Fehler) | 364 / 2275 (16%) |
 
 ## Topic-Überblick
@@ -573,7 +573,7 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Was ist der Radius des Einheitskreises? | wAE |
 | 2 | 🔘 multiple-choice | Ein Punkt $P$ liegt auf dem Einheitskreis beim Winkel $alpha = 0°$. Seine Koordinaten sind: | wAE 4B |
-| 3 | 🔘 multiple-choice | Welche Gleichung erfüllt jeder Punkt P=(x,y) auf dem Einheitskreis? | ➕ |
+| 3 | 🔘 multiple-choice | Welche Gleichung erfüllt jeder Punkt P=(x,y) auf dem Einheitskreis? | ➕ wAE |
 | 4 | 🔢 number-input | P=(0,1) liegt auf dem Einheitskreis. Welchem Winkel in Grad entspricht dieser Punkt? | ➕ |
 | 5 | ✅ true-false | Im 3. Quadranten sind sin und cos negativ, tan aber positiv. | ➕ |
 | 6 | 🔗 matching | Ordne Quadrant und positives Vorzeichen zu. | ➕ |
@@ -592,7 +592,7 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | $cos(alpha)$ entspricht am Einheitskreis: | wAE |
 | 2 | 🔘 multiple-choice | Welcher Punkt liegt bei $alpha = 180°$? | wAE 4B |
-| 3 | 🔘 multiple-choice | Ein Punkt am Einheitskreis hat P=(-1/2, √3/2). Was ist cos(α)? | ➕ |
+| 3 | 🔘 multiple-choice | Ein Punkt am Einheitskreis hat P=(-1/2, √3/2). Was ist cos(α)? | ➕ wAE |
 | 4 | 🔢 number-input | Für α=270°: Welche y-Koordinate hat P=(cosα,sinα)? | ➕ |
 | 5 | ✅ true-false | Im 3. Quadranten sind sin und cos negativ, tan aber positiv. | ➕ |
 | 6 | 🔗 matching | Ordne Quadrant und positives Vorzeichen zu. | ➕ |
@@ -612,7 +612,7 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | $sin(alpha + 360°) = $? | wAE 4B |
 | 2 | 🔘 multiple-choice | $sin(-alpha) = $? | wAE |
-| 3 | 🔘 multiple-choice | Welche Aussage beschreibt die Periodizität korrekt? | ➕ |
+| 3 | 🔘 multiple-choice | Welche Aussage beschreibt die Periodizität korrekt? | ➕ wAE |
 | 4 | 🔢 number-input | Berechne sin(390°). | ➕ |
 | 5 | ✅ true-false | Im 3. Quadranten sind sin und cos negativ, tan aber positiv. | ➕ |
 | 6 | 🔗 matching | Ordne Quadrant und positives Vorzeichen zu. | ➕ |
@@ -632,7 +632,7 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Was beschreibt $tan(alpha)$ geometrisch am Einheitskreis? | wAE |
 | 2 | 🔘 multiple-choice | Warum ist $tan(90°)$ nicht definiert? | wAE |
-| 3 | 🔘 multiple-choice | Warum ist tan(90°) nicht definiert? | ➕ |
+| 3 | 🔘 multiple-choice | Warum ist tan(90°) nicht definiert? | ➕ wAE |
 | 4 | 🔢 number-input | Berechne tan(30°) näherungsweise mit √3≈1,732. Verwende tan30°=1/√3. | ➕ |
 | 5 | ✅ true-false | Im 3. Quadranten sind sin und cos negativ, tan aber positiv. | ➕ |
 | 6 | 🔗 matching | Ordne Quadrant und positives Vorzeichen zu. | ➕ |
@@ -652,7 +652,7 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | In welchem Quadranten liegt $alpha = 200°$? | wAE 4B |
 | 2 | 🔘 multiple-choice | $sin(210°) = $? | wAE |
-| 3 | 🔘 multiple-choice | Wie lautet der Referenzwinkel zu 330°? | ➕ |
+| 3 | 🔘 multiple-choice | Wie lautet der Referenzwinkel zu 330°? | ➕ wAE |
 | 4 | 🔢 number-input | Berechne cos(300°). | ➕ |
 | 5 | ✅ true-false | Im 3. Quadranten sind sin und cos negativ, tan aber positiv. | ➕ |
 | 6 | 🔗 matching | Ordne Quadrant und positives Vorzeichen zu. | ➕ |
@@ -676,7 +676,7 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | $sin(alpha + beta) = $? | wAE |
 | 2 | 🔘 multiple-choice | $cos(alpha + beta) = $? | wAE |
-| 3 | 🔘 multiple-choice | Welche Formel ist korrekt? | ➕ |
+| 3 | 🔘 multiple-choice | Welche Formel ist korrekt? | ➕ wAE |
 | 4 | 🔢 number-input | Berechne sin(75°) näherungsweise mit sin75°=(√6+√2)/4, √6≈2,449, √2≈1,414. | ➕ |
 | 5 | ✅ true-false | sin(45°) und cos(45°) sind gleich groß. | ➕ |
 | 6 | 🔗 matching | Ordne die Grundwerte zu. | ➕ |
@@ -695,7 +695,7 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | $sin(2alpha) = $? | wAE |
 | 2 | 🔘 multiple-choice | $cos(2alpha) = $? | wAE |
-| 3 | 🔘 multiple-choice | Welche Formel ist eine gültige Doppelwinkelformel? | ➕ |
+| 3 | 🔘 multiple-choice | Welche Formel ist eine gültige Doppelwinkelformel? | ➕ wAE |
 | 4 | 🔢 number-input | Wenn sinα=0,6 und cosα=0,8: Berechne sin(2α). | ➕ |
 | 5 | ✅ true-false | sin(45°) und cos(45°) sind gleich groß. | ➕ |
 | 6 | 🔗 matching | Ordne die Grundwerte zu. | ➕ |
@@ -714,7 +714,7 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Eine Schwingung $x(t) = A cdot sin(omega t + varphi)$. Was beschreibt $A$? | wAE |
 | 2 | 🔘 multiple-choice | Eine Kraft $F = 100$ N wirkt unter Winkel $30°$ zur Horizontalen. Welche horizontale Komponente $F_{x}$ hat sie? | wAE 4B |
-| 3 | 🔘 multiple-choice | Eine Kraft ist zur Horizontalen gegeben. Welche Komponente nutzt den Kosinus? | ➕ |
+| 3 | 🔘 multiple-choice | Eine Kraft ist zur Horizontalen gegeben. Welche Komponente nutzt den Kosinus? | ➕ wAE |
 | 4 | 🔢 number-input | F=100 N, α=60° zur Horizontalen. Berechne Fx. | ➕ |
 | 5 | ✅ true-false | Die Hypotenuse liegt immer gegenüber dem rechten Winkel und ist im rechtwinkligen Dreieck die längste Seite. | ➕ |
 | 6 | 🔗 matching | Ordne SOH-CAH-TOA zu. | ➕ |
@@ -733,7 +733,7 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | $arcsin(1/2) = $? | wAE 4B |
 | 2 | 🔘 multiple-choice | Der Wertebereich (Hauptast) von $arcsin$ ist: | wAE |
-| 3 | 🔘 multiple-choice | Warum liefert arcsin(1/2) nicht automatisch alle Lösungen von sin(x)=1/2? | ➕ |
+| 3 | 🔘 multiple-choice | Warum liefert arcsin(1/2) nicht automatisch alle Lösungen von sin(x)=1/2? | ➕ wAE |
 | 4 | 🔢 number-input | Berechne arctan(1) in Grad. | ➕ |
 | 5 | ✅ true-false | Im 3. Quadranten sind sin und cos negativ, tan aber positiv. | ➕ |
 | 6 | 🔗 matching | Ordne Quadrant und positives Vorzeichen zu. | ➕ |
@@ -779,7 +779,7 @@
 | 2 | 🔘 multiple-choice | [PRÜFUNG] Für welchen Winkel $alpha in [0°, 360°)$ gilt: $2 cdot sin(alpha) cdot cos(alpha) = 1$? | wAE |
 | 3 | 🔘 multiple-choice | [PRÜFUNG] Welche Gleichung ist KEINE trigonometrische Identität? | wAE |
 | 4 | 🔘 multiple-choice | [PRÜFUNG] Berechne: $cos(alpha)cos(beta) + sin(alpha)sin(beta)$ für $alpha = 75°$, $beta = 30°$. | wAE |
-| 5 | 🔘 multiple-choice | [PRÜFUNG] Welches Muster steckt in 2sin(α)cos(α)=1? | ➕ |
+| 5 | 🔘 multiple-choice | [PRÜFUNG] Welches Muster steckt in 2sin(α)cos(α)=1? | ➕ wAE |
 | 6 | 🔢 number-input | [PRÜFUNG] Löse sin(2α)=1 für α im Intervall [0°,180°]. Gib die kleinere Lösung an. | ➕ |
 | 7 | ✅ true-false | [PRÜFUNG] sin(45°) und cos(45°) sind gleich groß. | ➕ |
 | 8 | 🔗 matching | [PRÜFUNG] Ordne die Grundwerte zu. | ➕ |
@@ -797,7 +797,7 @@
 | 2 | 🔘 multiple-choice | [PRÜFUNG] Eine Kraft $F = 500$ N wirkt unter $37°$ zur Horizontalen. Welche Komponenten $F_{x}$ und $F_{y}$ hat sie ($si | wAE |
 | 3 | 🔘 multiple-choice | [PRÜFUNG] Eine Schwingung $x(t) = 3 cdot sin(2t + pi/4)$ hat die Amplitude ... und die Kreisfrequenz ... | wAE |
 | 4 | 🔘 multiple-choice | [PRÜFUNG] Cosinus-Satz: In einem Dreieck gilt $a^{2} = b^{2} + c^{2} - 2bccos(alpha)$. Für $alpha = 60°$, $b = c = 5$: w | wAE 4B |
-| 5 | 🔘 multiple-choice | [PRÜFUNG] Welche Gleichung passt für die horizontale Kraftkomponente bei Winkel α zur Horizontalen? | ➕ |
+| 5 | 🔘 multiple-choice | [PRÜFUNG] Welche Gleichung passt für die horizontale Kraftkomponente bei Winkel α zur Horizontalen? | ➕ wAE |
 | 6 | 🔢 number-input | [PRÜFUNG] F=500 N, cos37°≈0,8. Berechne Fx. | ➕ |
 | 7 | ✅ true-false | [PRÜFUNG] Die Hypotenuse liegt immer gegenüber dem rechten Winkel und ist im rechtwinkligen Dreieck die längste Seite. | ➕ |
 | 8 | 🔗 matching | [PRÜFUNG] Ordne SOH-CAH-TOA zu. | ➕ |
@@ -816,7 +816,7 @@
 | 2 | 🔘 multiple-choice | [PRÜFUNG] Welcher Wert hat $sin(-210°)$? | wAE |
 | 3 | 🔘 multiple-choice | [PRÜFUNG] $arctan(-1) = $? | wAE |
 | 4 | 🔘 multiple-choice | [PRÜFUNG] Vereinfache: $(sin(alpha) + cos(alpha))^{2} - 1$ | wAE 4B |
-| 5 | 🔘 multiple-choice | [PRÜFUNG] Wie viele Lösungen hat sin(x)=1/2 in [0,2π]? | ➕ |
+| 5 | 🔘 multiple-choice | [PRÜFUNG] Wie viele Lösungen hat sin(x)=1/2 in [0,2π]? | ➕ wAE |
 | 6 | 🔢 number-input | [PRÜFUNG] sin(x)=1/2. Gib die kleinere Lösung in Grad im Intervall [0°,360°] an. | ➕ |
 | 7 | ✅ true-false | [PRÜFUNG] Im 3. Quadranten sind sin und cos negativ, tan aber positiv. | ➕ |
 | 8 | 🔗 matching | [PRÜFUNG] Ordne Quadrant und positives Vorzeichen zu. | ➕ |
