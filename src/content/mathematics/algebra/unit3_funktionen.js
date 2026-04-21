@@ -225,6 +225,35 @@ Exponentialfunktionen wachsen schneller als jede Potenzfunktion, die schneller a
       'Merke die Hierarchie: $\\ln(x) \\ll x^{n} \\ll a^{x}$.',
     ],
   },
+  'ex-alg-3-2-e': {
+    id: 'ex-alg-3-2-e', lessonId: 'alg-3-2', type: 'multiple-choice',
+    question: 'Vereinfache: $\\ln(e^{2x})$',
+    options: ['$2x$', '$e^{2x}$', '$2 \\ln(x)$', '$x^{2}$'],
+    correctIndex: 0,
+    explanation: `**Ansatz:** $\\ln$ und $e$ sind Umkehrfunktionen — sie heben sich gegenseitig auf. Dadurch gilt $\\ln(e^{y}) = y$ für jede reelle Zahl $y$.
+
+**Rechnung:** Mit $y = 2x$: $\\ln(e^{2x}) = 2x$.
+
+**Alternativer Weg (Logarithmus-Gesetz):** $\\ln(e^{2x}) = 2x \\cdot \\ln(e) = 2x \\cdot 1 = 2x$, weil $\\ln(e) = 1$.
+
+**Probe bei $x = 3$:** $\\ln(e^{6}) = 6 = 2 \\cdot 3$. ✓
+
+**Zwei wichtige Identitäten:**
+- $\\ln(e^{y}) = y$ für alle $y \\in \\mathbb{R}$ (Umkehrung „von innen nach außen")
+- $e^{\\ln(x)} = x$ für alle $x > 0$ (Umkehrung „von außen nach innen")
+
+**Typischer Fehler:** $\\ln$ und $e$ werden als unabhängige Funktionen behandelt (als wäre $\\ln(e^{2x}) = e^{2x}$). Tatsächlich annullieren sie sich — wie $\\sqrt{x^{2}} = |x|$ oder $\\arcsin(\\sin(x)) = x$ (für Hauptwerte).`,
+    wrongAnswerExplanations: {
+      1: 'Du hast den $\\ln$ nicht angewandt und den Ausdruck stehen gelassen. Die Kern-Identität ist: $\\ln$ und $e$ sind Umkehrfunktionen, also gilt $\\ln(e^{y}) = y$. Hier mit $y = 2x$ folgt sofort $2x$.',
+      2: 'Du hast das Logarithmus-Gesetz $\\ln(a^{b}) = b \\cdot \\ln(a)$ zwar angewandt, aber die Basis $e$ nicht vereinfacht. $\\ln(e) = 1$ — nicht $\\ln(x)$! Vollständig: $\\ln(e^{2x}) = 2x \\cdot \\ln(e) = 2x \\cdot 1 = 2x$, nicht $2\\ln(x)$.',
+      3: 'Du hast den Exponenten $2x$ als $x^{2}$ fehlgelesen. $e^{2x}$ ist $e$ hoch $2x$ (linearer Exponent), nicht $e$ hoch $x^{2}$ (quadratischer Exponent). Zwei verschiedene Funktionen mit völlig anderem Wachstumsverhalten.',
+    },
+    hints: [
+      'Welche Beziehung haben $\\ln$ und $e$ zueinander?',
+      'Umkehrfunktionen: $\\ln(e^{y}) = y$ — egal was $y$ ist.',
+      'Setze $y = 2x$ ein.',
+    ],
+  },
   'ex-alg-3-2-mastery': {
     id: 'ex-alg-3-2-mastery', lessonId: 'alg-3-2', type: 'multiple-choice', isMasteryCheck: true,
     question: '[PRÜFUNG] $f(x) = 2 \\cdot e^{x} - 1$. Was ist $f(0)$?',
@@ -620,7 +649,8 @@ Beispiel: $f(x) = 2x + 1$ ist bijektiv (als $\\mathbb{R} \\to \\mathbb{R}$).
       { id: 'alg-3-2-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-alg-3-2-b' },
       { id: 'alg-3-2-s5', type: 'exercise', title: 'Aufgabe 3', exerciseRef: 'ex-alg-3-2-c' },
       { id: 'alg-3-2-s6', type: 'exercise', title: 'Aufgabe 4', exerciseRef: 'ex-alg-3-2-d' },
-      { id: 'alg-3-2-s7', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-alg-3-2-mastery' },
+      { id: 'alg-3-2-s7', type: 'exercise', title: 'Aufgabe 5 — Umkehrung ln(e^x)', exerciseRef: 'ex-alg-3-2-e' },
+      { id: 'alg-3-2-s8', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-alg-3-2-mastery' },
     ],
   },
   {

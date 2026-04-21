@@ -383,6 +383,41 @@ Letzte Zahl in der Summenzeile ist $P(-1) = 0$. ✓
       'Addiere die Terme: $-2 + 3 - 1 = ?$',
     ],
   },
+  'ex-alg-2-3-d': {
+    id: 'ex-alg-2-3-d', lessonId: 'alg-2-3', type: 'multiple-choice',
+    question: 'Polynomdivision mit Rest: $(x^{2} + 3x + 5) : (x + 2) = ?$',
+    options: [
+      '$x + 1 \\; \\text{Rest} \\; 3$',
+      '$x + 1 \\; \\text{Rest} \\; 7$',
+      '$x + 5 \\; \\text{Rest} \\; 0$',
+      '$x + 3 \\; \\text{Rest} \\; 5$',
+    ],
+    correctIndex: 0,
+    explanation: `**Ansatz:** Polynomdivision Schritt für Schritt. Anders als bei den vorigen Aufgaben ist $x = -2$ hier **keine** Nullstelle — es bleibt ein Rest.
+
+**Rechnung:**
+1. $x^{2} : x = x$. Quotient bisher: $x$.
+2. $x \\cdot (x + 2) = x^{2} + 2x$. Subtrahieren: $(x^{2} + 3x + 5) - (x^{2} + 2x) = x + 5$.
+3. $x : x = 1$. Quotient: $x + 1$.
+4. $1 \\cdot (x + 2) = x + 2$. Subtrahieren: $(x + 5) - (x + 2) = 3$.
+5. Grad des Rests ($0$) ist kleiner als Grad des Divisors ($1$) → fertig.
+
+Also $(x^{2} + 3x + 5) = (x + 1)(x + 2) + 3$.
+
+**Probe:** Einsetzen von $x = -2$ in das Originalpolynom: $4 - 6 + 5 = 3$. Genau der Rest! Das ist kein Zufall — es folgt aus dem **Restsatz**: Rest von $P(x) : (x - a)$ ist $P(a)$.
+
+**Typischer Fehler:** Den Rest unterschlagen („Rest $0$") und einen glatten Quotienten angeben, obwohl $P(-2) \\neq 0$. Immer mit $P(a)$ prüfen, ob Division aufgeht.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast den Quotienten korrekt $x + 1$ bestimmt, aber den Rest falsch berechnet. Im letzten Schritt gilt $(x + 5) - (x + 2) = 3$, nicht $7$. Vermutlich hast du $5 + 2 = 7$ statt $5 - 2 = 3$ gerechnet.',
+      2: 'Du hast $-2$ als Nullstelle angenommen und direkt faktorisiert. Aber Probe: $(-2)^{2} + 3\\cdot(-2) + 5 = 4 - 6 + 5 = 3 \\neq 0$. Da $P(-2) \\neq 0$ ist $(x + 2)$ kein exakter Teiler — es muss ein Rest bleiben, nämlich $3$.',
+      3: 'Du hast die Koeffizienten des Polynoms einfach als Quotient und Rest angeschrieben ohne zu dividieren. Polynomdivision liefert hier $x + 1$ mit Rest $3$, nicht $x + 3$ mit Rest $5$. Prüfe immer durch Rückmultiplikation: $(x + 3)(x + 2) + 5 = x^{2} + 5x + 11 \\neq x^{2} + 3x + 5$.',
+    },
+    hints: [
+      'Dividiere wie bei Zahlen schriftlich — höchster Term zuerst.',
+      'Der Restsatz: Der Rest von $P(x) : (x - a)$ ist immer $P(a)$. Hier: $a = -2$, also $P(-2) = ?$',
+      'Quotient $x + 1$; Probe $P(-2) = 3$ sollte als Rest auftauchen.',
+    ],
+  },
   'ex-alg-2-3-mastery': {
     id: 'ex-alg-2-3-mastery', lessonId: 'alg-2-3', type: 'multiple-choice', isMasteryCheck: true,
     question: '[PRÜFUNG] Alle Nullstellen von $P(x) = x^{3} - 3x^{2} + 2x$ sind:',
@@ -702,7 +737,8 @@ Nützlich zum schnellen Raten ganzzahliger Lösungen oder zur Probe!`,
       { id: 'alg-2-3-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-alg-2-3-a' },
       { id: 'alg-2-3-s3', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-alg-2-3-b' },
       { id: 'alg-2-3-s4', type: 'exercise', title: 'Aufgabe 3', exerciseRef: 'ex-alg-2-3-c' },
-      { id: 'alg-2-3-s5', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-alg-2-3-mastery' },
+      { id: 'alg-2-3-s5', type: 'exercise', title: 'Aufgabe 4 — Division mit Rest', exerciseRef: 'ex-alg-2-3-d' },
+      { id: 'alg-2-3-s6', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-alg-2-3-mastery' },
     ],
   },
   {
