@@ -18,7 +18,7 @@
 | &nbsp;&nbsp;· ✅ true-false | 346 |
 | &nbsp;&nbsp;· 🔗 matching | 229 |
 | &nbsp;&nbsp;· 📋 sorting | 198 |
-| MC mit vollständigen `wrongAnswerExplanations` | 790 / 996 (79%) |
+| MC mit vollständigen `wrongAnswerExplanations` | 894 / 996 (90%) |
 | Erklärungen im 4-Block-Schema (Ansatz/Rechnung/Probe/Fehler) | 364 / 2275 (16%) |
 
 ## Topic-Überblick
@@ -495,7 +495,7 @@
 | 6 | ✅ true-false | Bei Kreisweg-Formeln wie s = r·α darf α ohne Umrechnung in Grad eingesetzt werden. | ➕ |
 | 7 | 🔗 matching | Ordne die Standardwinkel ihren Bogenmaßen zu. | ➕ |
 | 8 | 📋 sorting | Bringe die Umrechnung von 135° nach Radiant in die richtige Reihenfolge. | ➕ |
-| 9 | 🔘 multiple-choice | Welcher Fehler erklärt das falsche Ergebnis 90° = 90π rad? | ➕ |
+| 9 | 🔘 multiple-choice | Welcher Fehler erklärt das falsche Ergebnis 90° = 90π rad? | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Ein Winkel beträgt $dfrac{5pi}{6}$ rad. In welchem Quadrant liegt der zugehörige Punkt auf dem Einheitskreis,  | 🎯 wAE |
 
 #### Rechtwinkliges Dreieck  `trig-1-2` · 12 min
@@ -515,7 +515,7 @@
 | 6 | ✅ true-false | Die Hypotenuse liegt immer gegenüber dem rechten Winkel und ist im rechtwinkligen Dreieck die längste Seite. | ➕ |
 | 7 | 🔗 matching | Ordne SOH-CAH-TOA zu. | ➕ |
 | 8 | 📋 sorting | Ordne den Lösungsweg für eine Seitenberechnung im rechtwinkligen Dreieck. | ➕ |
-| 9 | 🔘 multiple-choice | Du rechnest cos(α)=G/H. Was ist daran falsch? | ➕ |
+| 9 | 🔘 multiple-choice | Du rechnest cos(α)=G/H. Was ist daran falsch? | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Ein Dreieck hat Gegenkathete $= 3$, Ankathete $= 4$, Hypotenuse $= 5$. Was ist $sin(alpha)$? | 🎯 wAE |
 
 #### Die Grundwerte  `trig-1-3` · 15 min
@@ -554,7 +554,7 @@
 | 5 | ✅ true-false | Im 3. Quadranten sind sin und cos negativ, tan aber positiv. | ➕ |
 | 6 | 🔗 matching | Ordne Quadrant und positives Vorzeichen zu. | ➕ |
 | 7 | 📋 sorting | Löse cos(240°) gedanklich in der richtigen Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Warum ist die Aussage sin(150°)=-1/2 falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Warum ist die Aussage sin(150°)=-1/2 falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Berechne tan(225°). | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] $cos(120°) = $? | 🎯 wAE |
 
@@ -578,7 +578,7 @@
 | 5 | ✅ true-false | Im 3. Quadranten sind sin und cos negativ, tan aber positiv. | ➕ |
 | 6 | 🔗 matching | Ordne Quadrant und positives Vorzeichen zu. | ➕ |
 | 7 | 📋 sorting | Löse cos(240°) gedanklich in der richtigen Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Warum ist die Aussage sin(150°)=-1/2 falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Warum ist die Aussage sin(150°)=-1/2 falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Für α=180°: Welche x-Koordinate hat P=(cosα,sinα)? | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Welche Koordinaten hat der Punkt auf dem Einheitskreis bei $alpha = 90°$? | 🎯 wAE 4B |
 
@@ -597,7 +597,7 @@
 | 5 | ✅ true-false | Im 3. Quadranten sind sin und cos negativ, tan aber positiv. | ➕ |
 | 6 | 🔗 matching | Ordne Quadrant und positives Vorzeichen zu. | ➕ |
 | 7 | 📋 sorting | Löse cos(240°) gedanklich in der richtigen Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Warum ist die Aussage sin(150°)=-1/2 falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Warum ist die Aussage sin(150°)=-1/2 falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Für P=(√2/2, √2/2): Gib den Winkel in Grad an. | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Ein Punkt hat die Koordinaten $left(-dfrac{sqrt{2}}{2}, dfrac{sqrt{2}}{2}right)$. Welchem Winkel entspricht da | 🎯 wAE |
 
@@ -617,7 +617,7 @@
 | 5 | ✅ true-false | Im 3. Quadranten sind sin und cos negativ, tan aber positiv. | ➕ |
 | 6 | 🔗 matching | Ordne Quadrant und positives Vorzeichen zu. | ➕ |
 | 7 | 📋 sorting | Löse cos(240°) gedanklich in der richtigen Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Warum ist die Aussage sin(150°)=-1/2 falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Warum ist die Aussage sin(150°)=-1/2 falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Berechne cos(-60°). | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] $cos(-alpha) = $? | 🎯 wAE |
 
@@ -637,7 +637,7 @@
 | 5 | ✅ true-false | Im 3. Quadranten sind sin und cos negativ, tan aber positiv. | ➕ |
 | 6 | 🔗 matching | Ordne Quadrant und positives Vorzeichen zu. | ➕ |
 | 7 | 📋 sorting | Löse cos(240°) gedanklich in der richtigen Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Warum ist die Aussage sin(150°)=-1/2 falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Warum ist die Aussage sin(150°)=-1/2 falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Berechne tan(180°). | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] $tan(alpha)$ ist positiv, wenn: | 🎯 wAE |
 
@@ -657,7 +657,7 @@
 | 5 | ✅ true-false | Im 3. Quadranten sind sin und cos negativ, tan aber positiv. | ➕ |
 | 6 | 🔗 matching | Ordne Quadrant und positives Vorzeichen zu. | ➕ |
 | 7 | 📋 sorting | Löse cos(240°) gedanklich in der richtigen Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Warum ist die Aussage sin(150°)=-1/2 falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Warum ist die Aussage sin(150°)=-1/2 falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Berechne sin(240°) mit √3≈1,732. | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] $cos(315°) = $? | 🎯 wAE |
 
@@ -681,7 +681,7 @@
 | 5 | ✅ true-false | sin(45°) und cos(45°) sind gleich groß. | ➕ |
 | 6 | 🔗 matching | Ordne die Grundwerte zu. | ➕ |
 | 7 | 🔘 multiple-choice | Welcher der folgenden Sinuswerte ist am größten? | ➕ |
-| 8 | 🔘 multiple-choice | Welcher Grundwert ist falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Welcher Grundwert ist falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Berechne cos(15°) näherungsweise mit cos(45°-30°)=(√6+√2)/4. | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Berechne $sin(75°) = sin(45° + 30°)$: | 🎯 wAE |
 
@@ -700,7 +700,7 @@
 | 5 | ✅ true-false | sin(45°) und cos(45°) sind gleich groß. | ➕ |
 | 6 | 🔗 matching | Ordne die Grundwerte zu. | ➕ |
 | 7 | 🔘 multiple-choice | Welcher der folgenden Sinuswerte ist am größten? | ➕ |
-| 8 | 🔘 multiple-choice | Welcher Grundwert ist falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Welcher Grundwert ist falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Wenn sinα=0,6: Berechne cos²α mit sin²α+cos²α=1. | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Vereinfache: $sin^{2}(alpha) + cos^{2}(alpha)$ | 🎯 wAE |
 
@@ -719,7 +719,7 @@
 | 5 | ✅ true-false | Die Hypotenuse liegt immer gegenüber dem rechten Winkel und ist im rechtwinkligen Dreieck die längste Seite. | ➕ |
 | 6 | 🔗 matching | Ordne SOH-CAH-TOA zu. | ➕ |
 | 7 | 📋 sorting | Ordne den Lösungsweg für eine Seitenberechnung im rechtwinkligen Dreieck. | ➕ |
-| 8 | 🔘 multiple-choice | Du rechnest cos(α)=G/H. Was ist daran falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Du rechnest cos(α)=G/H. Was ist daran falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Schwingung x(t)=4sin(3t+0,2). Welche Amplitude hat sie? | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Welche vertikale Komponente $F_{y}$ hat eine Kraft $F = 200$ N unter $60°$ zur Horizontalen? | 🎯 wAE 4B |
 
@@ -738,7 +738,7 @@
 | 5 | ✅ true-false | Im 3. Quadranten sind sin und cos negativ, tan aber positiv. | ➕ |
 | 6 | 🔗 matching | Ordne Quadrant und positives Vorzeichen zu. | ➕ |
 | 7 | 📋 sorting | Löse cos(240°) gedanklich in der richtigen Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Warum ist die Aussage sin(150°)=-1/2 falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Warum ist die Aussage sin(150°)=-1/2 falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Berechne arccos(-1) in Grad. | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] $arccos(0) = $? | 🎯 wAE 4B |
 
@@ -869,12 +869,12 @@
 | 1 | 🔘 multiple-choice | Was unterscheidet einen Vektor von einer Zahl (Skalar)? | wAE |
 | 2 | 🔘 multiple-choice | Gegeben: $vec{a} = (3, 4)$. Was ist der Betrag $\|vec{a}\|$? | wAE 4B |
 | 3 | 🔘 multiple-choice | $vec{a} = (2, 3)$, $vec{b} = (1, -1)$. Was ist $vec{a} + vec{b}$? | wAE |
-| 4 | 🔘 multiple-choice | Was ist das Ergebnis von $vec{a}$ + $vec{b}$ mit $vec{a}$ = (3, −1) und $vec{b}$ = (−2, 4)? | ➕ |
+| 4 | 🔘 multiple-choice | Was ist das Ergebnis von $vec{a}$ + $vec{b}$ mit $vec{a}$ = (3, −1) und $vec{b}$ = (−2, 4)? | ➕ wAE |
 | 5 | 🔢 number-input | Berechne den Betrag von $vec{a}$ = (5, 12). | ➕ |
 | 6 | ✅ true-false | Die Skalarmultiplikation 2·$vec{a}$ = (2·ax, 2·ay) verdoppelt den Betrag des Vektors, ändert aber nicht seine Richtung. | ➕ |
 | 7 | 🔗 matching | Ordne den Vektoroperationen ihre Ergebnistypen zu. | ➕ |
 | 8 | 📋 sorting | Bringe die Schritte zur Berechnung von \|3·$vec{a}$\| mit $vec{a}$ = (4, 3) in die richtige Reihenfolge. | ➕ |
-| 9 | 🔘 multiple-choice | Welcher Rechenschritt beim Betrag von $vec{a}$ = (3, 4) ist falsch? | ➕ |
+| 9 | 🔘 multiple-choice | Welcher Rechenschritt beim Betrag von $vec{a}$ = (3, 4) ist falsch? | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Gegeben $vec{a} = (3, 4)$. Berechne $\|2vec{a}\|$ (Betrag des doppelten Vektors). | 🎯 wAE |
 
 #### Skalarprodukt  `vek-1-2` · 15 min
@@ -890,7 +890,7 @@
 | 2 | 🔘 multiple-choice | Es gilt $vec{a} cdot vec{b} = \|vec{a}\| cdot \|vec{b}\| cdot cos(varphi)$. Was bedeutet $vec{a} cdot vec{b} = 0$ (für $ | wAE 4B |
 | 3 | 🔘 multiple-choice | [PRÜFUNG] Berechne den Winkel zwischen $vec{a} = (1, 0)$ und $vec{b} = (1, 1)$. | wAE 4B |
 | 4 | 🔢 number-input | Projektion: Wie lang ist die Projektion des Vektors $vec{a} = (3, 4)$ auf den Einheitsvektor $hat{e}_x = (1, 0)$? | 4B |
-| 5 | 🔘 multiple-choice | Warum ist das Skalarprodukt zweier Vektoren eine Zahl und kein Vektor? | ➕ |
+| 5 | 🔘 multiple-choice | Warum ist das Skalarprodukt zweier Vektoren eine Zahl und kein Vektor? | ➕ wAE |
 | 6 | 🔢 number-input | Berechne $vec{a}$·$vec{b}$ für $vec{a}$ = (2, 1, 3) und $vec{b}$ = (4, −2, 1). | ➕ |
 | 7 | ✅ true-false | Gilt $vec{a}$·$vec{b}$ = 0, so stehen $vec{a}$ und $vec{b}$ senkrecht aufeinander (sofern beide nicht der Nullvektor sin | ➕ |
 | 8 | 🔗 matching | Ordne Winkel und Skalarproduktvorzeichen zu. | ➕ |
@@ -908,12 +908,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Das Kreuzprodukt $vec{a} times vec{b}$ ergibt: | wAE |
 | 2 | 🔘 multiple-choice | Es gilt $\|vec{a} times vec{b}\| = \|vec{a}\| cdot \|vec{b}\| cdot sin(varphi)$. Was ist $\|vec{a} times vec{b}\|$, wenn | wAE |
-| 3 | 🔘 multiple-choice | Was ist das Kreuzprodukt $vec{a}$ × $vec{b}$ von $vec{a}$ = (1, 0, 0) und $vec{b}$ = (0, 0, 1)? | ➕ |
+| 3 | 🔘 multiple-choice | Was ist das Kreuzprodukt $vec{a}$ × $vec{b}$ von $vec{a}$ = (1, 0, 0) und $vec{b}$ = (0, 0, 1)? | ➕ wAE |
 | 4 | 🔢 number-input | Berechne den Betrag von $vec{a}$ × $vec{b}$ für $vec{a}$ = (2, 0, 0) und $vec{b}$ = (0, 3, 0). | ➕ |
 | 5 | ✅ true-false | Das Kreuzprodukt ist kommutativ: $vec{a}$ × $vec{b}$ = $vec{b}$ × $vec{a}$. | ➕ |
 | 6 | 🔗 matching | Ordne Kreuzprodukt-Ergebnisse den Einheitsvektorpaaren zu. | ➕ |
 | 7 | 📋 sorting | Bringe die Berechnung von $vec{a}$ × $vec{b}$ für $vec{a}$ = (1, 2, 3), $vec{b}$ = (4, 5, 6) in die richtige Reihenfolge | ➕ |
-| 8 | 🔘 multiple-choice | Was ist am Ergebnis $vec{a}$ × $vec{b}$ = 7 (eine Zahl) falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Was ist am Ergebnis $vec{a}$ × $vec{b}$ = 7 (eine Zahl) falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Drehmoment: $vec{r}$ = (0, 0.4, 0) m, $vec{F}$ = (200, 0, 0) N. Berechne \|$vec{M}$\| = \|$vec{r}$ × $vec{F}$\| in Nm. | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Das Kreuzprodukt der Einheitsvektoren $hat{e}_1 times hat{e}_2$ (x- und y-Richtung) ergibt: | 🎯 wAE |
 
@@ -928,12 +928,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | [PRÜFUNG] Drei Kräfte: $vec{F}_1 = (10, 0),text{N}$, $vec{F}_2 = (0, 5),text{N}$, $vec{F}_3 = (-3, -2),text{N}$. Resulti | wAE 4B |
 | 2 | 🔘 multiple-choice | [PRÜFUNG] Gleichgewicht: Eine Masse hängt an zwei Seilen mit Kräften $vec{F}_1 = (-F_1 sin 30°,, F_1 cos 30°)$ und $vec{ | wAE |
-| 3 | 🔘 multiple-choice | Was ist die Gleichgewichtsbedingung für Kräfte in der Ebene? | ➕ |
+| 3 | 🔘 multiple-choice | Was ist die Gleichgewichtsbedingung für Kräfte in der Ebene? | ➕ wAE |
 | 4 | 🔢 number-input | Resultierende $vec{R}$ = $vec{F}$₁ + $vec{F}$₂ + $vec{F}$₃ mit $vec{F}$₁=(5,0) N, $vec{F}$₂=(0,8) N, $vec{F}$₃=(−3,−2) N | ➕ |
 | 5 | ✅ true-false | Zwei Kräfte $vec{F}$₁ = (3, 4) N und $vec{F}$₂ = (−3, −4) N halten sich gegenseitig im Gleichgewicht. | ➕ |
 | 6 | 🔗 matching | Ordne die Kraftzerlegungsformeln bei Winkel α zur Horizontalen zu. | ➕ |
 | 7 | 📋 sorting | Löse die Aufgabe: Kraft F = 50 N unter 30° zur Horizontalen. Berechne Fx. | ➕ |
-| 8 | 🔘 multiple-choice | Kraft F = 100 N unter 60° zur Horizontalen. Jemand rechnet Fx = F·sin(60°) = 86,6 N. Was ist falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Kraft F = 100 N unter 60° zur Horizontalen. Jemand rechnet Fx = F·sin(60°) = 86,6 N. Was ist falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Normiere den Vektor $vec{a}$ = (3, 4). Wie groß ist die x-Komponente des Einheitsvektors? | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Ein Einheitsvektor hat Betrag ... und wird aus $vec{a} neq vec{0}$ berechnet durch ... | 🎯 wAE |
 
@@ -954,12 +954,12 @@
 | 1 | 🔘 multiple-choice | Welche Form hat eine Geradengleichung in Parameterform? | wAE |
 | 2 | 🔘 multiple-choice | Gerade $gcolon vec{r} = (1,2,3) + t cdot (2,0,1)$. Welcher Punkt liegt auf $g$? | wAE |
 | 3 | 🔘 multiple-choice | Zwei Geraden haben Richtungsvektoren $vec{v}_1 = (1, 2, 3)$ und $vec{v}_2 = (2, 4, 6)$. Wie liegen die Geraden zueinande | wAE |
-| 4 | 🔘 multiple-choice | Gerade g: $vec{r}$ = (2, 0, 1) + t·(1, 3, −1). Welcher Punkt liegt auf g? | ➕ |
+| 4 | 🔘 multiple-choice | Gerade g: $vec{r}$ = (2, 0, 1) + t·(1, 3, −1). Welcher Punkt liegt auf g? | ➕ wAE |
 | 5 | 🔢 number-input | Gerade g: $vec{r}$ = (1, 2, 3) + t·(2, −1, 0). Für welchen t-Wert hat $vec{r}$ die x-Koordinate 7? | ➕ |
 | 6 | ✅ true-false | Zwei Geraden im Raum mit parallelen Richtungsvektoren sind immer identisch. | ➕ |
 | 7 | 🔗 matching | Ordne die Lagebeziehungen zweier Geraden im Raum ihren Kriterien zu. | ➕ |
 | 8 | 📋 sorting | Prüfe, ob g₁: $vec{r}$ = (0,0,0)+t·(1,1,0) und g₂: $vec{r}$ = (1,0,1)+s·(1,1,0) parallel sind. | ➕ |
-| 9 | 🔘 multiple-choice | g₁: $vec{r}$ = t·(1,0,0), g₂: $vec{r}$ = (0,1,0) + s·(1,0,0). Jemand schlussfolgert: "gleiche Richtung → identisch". Was | ➕ |
+| 9 | 🔘 multiple-choice | g₁: $vec{r}$ = t·(1,0,0), g₂: $vec{r}$ = (0,1,0) + s·(1,0,0). Jemand schlussfolgert: "gleiche Richtung → identisch". Was | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Zwei Geraden im Raum sind weder parallel noch schneiden sie sich. Wie nennt man diese Lage? | 🎯 wAE |
 
 #### Ebenengleichung  `vek-2-2` · 18 min
@@ -975,7 +975,7 @@
 | 2 | 🔘 multiple-choice | Was beschreibt die Normalenform $vec{n} cdot (vec{r} - vec{p}) = 0$? | wAE |
 | 3 | 🔘 multiple-choice | Welche Koordinatenform gehört zum Normalvektor $vec{n} = (2, -1, 3)$ und Stützpunkt $vec{p} = (1, 0, 1)$? | wAE 4B |
 | 4 | ✅ true-false | Aus der Parameterform einer Ebene erhält man den Normalvektor durch das Kreuzprodukt der beiden Richtungsvektoren. |  |
-| 5 | 🔘 multiple-choice | Welche Information liefert der Normalenvektor einer Ebene? | ➕ |
+| 5 | 🔘 multiple-choice | Welche Information liefert der Normalenvektor einer Ebene? | ➕ wAE |
 | 6 | 🔢 number-input | Ebene E: 4x − 2y + z = 8. Welche z-Koordinate hat der Punkt P = (1, 2, ?) auf E? | ➕ |
 | 7 | ✅ true-false | Man erhält den Normalenvektor einer Ebene in Parameterform durch das Kreuzprodukt der beiden Richtungsvektoren. | ➕ |
 | 8 | 🔗 matching | Ordne die Ebenenform der passenden Eigenschaft zu. | ➕ |
@@ -995,7 +995,7 @@
 | 2 | 🔢 number-input | Ebene $Ecolon 2x + 2y + z = 9$. Punkt $Q = (1, 1, 1)$. Berechne den Abstand $d$ von $Q$ zu $E$. | 4B |
 | 3 | 🔘 multiple-choice | Gerade $gcolon vec{r} = (0, 0, 0) + t cdot (1, 1, 1)$. Ebene $Ecolon x + y + z = 6$. Für welchen Parameter $t$ schneidet | wAE 4B |
 | 4 | 🔢 number-input | Gerade $gcolon vec{r} = (1, 0, 0) + t cdot (1, 1, 1)$. Ebene $Ecolon x + y + z = 6$. Berechne den Parameter $t$ des Schn | 4B |
-| 5 | 🔘 multiple-choice | Warum dividiert man beim Abstand Punkt–Ebene durch \|$vec{n}$\|? | ➕ |
+| 5 | 🔘 multiple-choice | Warum dividiert man beim Abstand Punkt–Ebene durch \|$vec{n}$\|? | ➕ wAE |
 | 6 | 🔢 number-input | Abstand von Q = (2, 1, 0) zur Ebene E: x + 2y + 2z = 9. Berechne den Abstand d. | ➕ |
 | 7 | ✅ true-false | Wenn eine Gerade parallel zu einer Ebene verläuft, hat der Schnittpunktparameter t keine Lösung (Ebenengleichung führt z | ➕ |
 | 8 | 🔗 matching | Ordne das geometrische Ergebnis beim Schnitt Gerade–Ebene der algebraischen Situation zu. | ➕ |
@@ -1016,7 +1016,7 @@
 | 3 | 🔘 multiple-choice | [PRÜFUNG] Zwei Ebenen $E_1colon x + y + z = 1$ und $E_2colon 2x + 2y + 2z = 5$. Wie liegen sie zueinander? | wAE |
 | 4 | 🔢 number-input | [PRÜFUNG] Abstand der parallelen Ebenen $E_1colon x + y + z = 1$ und $E_2colon x + y + z = 4$. Berechne den Abstand. |  |
 | 5 | 🔘 multiple-choice | [PRÜFUNG] Eine Gerade steht senkrecht auf einer Ebene. Welcher Zusammenhang gilt zwischen Richtungsvektor $vec{v}$ der G | wAE |
-| 6 | 🔘 multiple-choice | [PRÜFUNG] Wie bestimmt man den Richtungsvektor der Schnittgeraden von zwei Ebenen E₁ und E₂? | ➕ |
+| 6 | 🔘 multiple-choice | [PRÜFUNG] Wie bestimmt man den Richtungsvektor der Schnittgeraden von zwei Ebenen E₁ und E₂? | ➕ wAE |
 | 7 | 🔢 number-input | [PRÜFUNG] Abstand von Q = (3, 1, 2) zur Ebene E: 2x − y + 2z = 6. Berechne d. | ➕ |
 | 8 | ✅ true-false | [PRÜFUNG] Zwei Ebenen mit Normalenvektoren $vec{n}$₁ = (1,2,3) und $vec{n}$₂ = (2,4,6) sind parallel. | ➕ |
 | 9 | 🔗 matching | [PRÜFUNG] Ordne die Lagebeziehungen zweier Ebenen den Normalenvektor-Kriterien zu. | ➕ |
@@ -1041,7 +1041,7 @@
 | 3 | 🔘 multiple-choice | [PRÜFUNG] $vec{a} = (1, 0, 0)$, $vec{b} = (0, 1, 0)$. Was ist $vec{a} times vec{b}$? | wAE 4B |
 | 4 | 🔘 multiple-choice | [PRÜFUNG] $vec{a} = (2, 1, -1)$, $vec{b} = (1, 3, 2)$. Was ist $vec{a} times vec{b}$? | wAE |
 | 5 | ✅ true-false | [PRÜFUNG] Das Kreuzprodukt ist kommutativ: $vec{a} times vec{b} = vec{b} times vec{a}$. |  |
-| 6 | 🔘 multiple-choice | [PRÜFUNG] $vec{a}$ = (1, 2, 2), $vec{b}$ = (2, −1, 2). Welchen Winkel schließen sie ein? | ➕ |
+| 6 | 🔘 multiple-choice | [PRÜFUNG] $vec{a}$ = (1, 2, 2), $vec{b}$ = (2, −1, 2). Welchen Winkel schließen sie ein? | ➕ wAE |
 | 7 | 🔢 number-input | [PRÜFUNG] Berechne den Betrag von $vec{a}$ = (2, 6, 3). | ➕ |
 | 8 | ✅ true-false | [PRÜFUNG] Das Skalarprodukt $vec{a}$·$vec{b}$ kann negativ sein, wenn der Winkel zwischen den Vektoren größer als 90° is | ➕ |
 | 9 | 🔗 matching | [PRÜFUNG] Ordne die Rechenoperationen ihrem Ergebnistyp zu. | ➕ |
@@ -1059,12 +1059,12 @@
 | 1 | 🔘 multiple-choice | [PRÜFUNG] Die Fläche des von $vec{a}$ und $vec{b}$ aufgespannten Parallelogramms ist: | wAE |
 | 2 | 🔢 number-input | [PRÜFUNG] $vec{a} = (3, 0, 0)$, $vec{b} = (0, 4, 0)$. Berechne die Parallelogrammfläche $A = \|vec{a} times vec{b}\|$. |  |
 | 3 | 🔘 multiple-choice | [PRÜFUNG] Das Volumen eines Spats (Parallelepiped) aus $vec{a}, vec{b}, vec{c}$ wird berechnet durch: | wAE |
-| 4 | 🔘 multiple-choice | [PRÜFUNG] Gerade g: $vec{r}$ = (0,1,0) + t·(1,0,1). Ebene E: x + z = 4. Für welches t schneidet g die Ebene E? | ➕ |
+| 4 | 🔘 multiple-choice | [PRÜFUNG] Gerade g: $vec{r}$ = (0,1,0) + t·(1,0,1). Ebene E: x + z = 4. Für welches t schneidet g die Ebene E? | ➕ wAE |
 | 5 | 🔢 number-input | [PRÜFUNG] Abstand von Q = (1, 0, 0) zur Ebene E: 3x + 4z = 15. Berechne d. | ➕ |
 | 6 | ✅ true-false | [PRÜFUNG] Wenn eine Gerade einen Richtungsvektor $vec{v}$ hat, der senkrecht auf dem Normalenvektor $vec{n}$ einer Ebene | ➕ |
 | 7 | 🔗 matching | [PRÜFUNG] Ordne die Situation beim Schnitt Gerade–Ebene dem algebraischen Ergebnis zu. | ➕ |
 | 8 | 📋 sorting | [PRÜFUNG] Finde den Schnittpunkt von g: $vec{r}$=(1,0,0)+t·(0,1,1) und E: y+z=4. | ➕ |
-| 9 | 🔘 multiple-choice | [PRÜFUNG] Für g: $vec{r}$=(0,0,0)+t·(1,2,3) und E: x+2y+3z=0 behauptet jemand, es gibt keinen Schnittpunkt. Was ist fals | ➕ |
+| 9 | 🔘 multiple-choice | [PRÜFUNG] Für g: $vec{r}$=(0,0,0)+t·(1,2,3) und E: x+2y+3z=0 behauptet jemand, es gibt keinen Schnittpunkt. Was ist fals | ➕ wAE |
 | 10 | 🔢 number-input | [PRÜFUNG] $vec{a} = (1, 0, 0)$, $vec{b} = (0, 1, 0)$, $vec{c} = (0, 0, 3)$. Berechne das Spatvolumen $V = \|vec{a} cdot  | 🎯 |
 
 #### Technische Anwendungen  `vek-3-3` · 18 min
@@ -1079,12 +1079,12 @@
 | 1 | 🔘 multiple-choice | [PRÜFUNG] Das Drehmoment wird berechnet durch: | wAE |
 | 2 | 🔢 number-input | [PRÜFUNG] Hebelarm $vec{r} = (0{,}5,, 0,, 0),text{m}$, Kraft $vec{F} = (0,, 100,, 0),text{N}$. Berechne $\|vec{M}\| = \| |  |
 | 3 | 🔘 multiple-choice | [PRÜFUNG] Eine Gewichtskraft $\|vec{G}\| = 100,text{N}$ wirkt vertikal auf einen Körper auf einer Rampe mit Neigungswink | wAE |
-| 4 | 🔘 multiple-choice | [PRÜFUNG] Warum ist das Kreuzprodukt besonders nützlich für Flächenberechnungen? | ➕ |
+| 4 | 🔘 multiple-choice | [PRÜFUNG] Warum ist das Kreuzprodukt besonders nützlich für Flächenberechnungen? | ➕ wAE |
 | 5 | 🔢 number-input | [PRÜFUNG] Fläche des Parallelogramms aus $vec{a}$ = (3, 0, 0) und $vec{b}$ = (0, 0, 5). Berechne A = \|$vec{a}$ × $vec{b | ➕ |
 | 6 | ✅ true-false | [PRÜFUNG] Das Spatprodukt V = \|$vec{a}$·($vec{b}$ × $vec{c}$)\| gibt das Volumen des von den drei Vektoren aufgespannte | ➕ |
 | 7 | 🔗 matching | [PRÜFUNG] Ordne die Formel der geometrischen Größe zu. | ➕ |
 | 8 | 📋 sorting | [PRÜFUNG] Berechne das Drehmoment $vec{M}$ = $vec{r}$ × $vec{F}$ für $vec{r}$ = (1,0,0) m und $vec{F}$ = (0,10,0) N. | ➕ |
-| 9 | 🔘 multiple-choice | [PRÜFUNG] Jemand berechnet die Dreiecksfläche aus $vec{a}$=(2,0,0), $vec{b}$=(0,3,0) als A = \|$vec{a}$ × $vec{b}$\| = 6 | ➕ |
+| 9 | 🔘 multiple-choice | [PRÜFUNG] Jemand berechnet die Dreiecksfläche aus $vec{a}$=(2,0,0), $vec{b}$=(0,3,0) als A = \|$vec{a}$ × $vec{b}$\| = 6 | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Ein Kran hebt eine Last mit $vec{F} = (0, 0, -500),text{N}$. Der Seilansatzpunkt liegt bei $vec{r} = (3, 4, 0) | 🎯 wAE |
 
 <a id="ableitung"></a>
@@ -1155,7 +1155,7 @@
 | 3 | 🔘 multiple-choice | Was ist $(e^{x})'$? | wAE 4B |
 | 4 | 🔘 multiple-choice | Was ist $(ln x)'$? | wAE 4B |
 | 5 | 🔘 multiple-choice | Welche Annahme ist kritisch, damit die Formel $(ln x)' = 1/x$ überhaupt Sinn ergibt? | wAE 4B |
-| 6 | 🔘 multiple-choice | Welche Funktion ist ihre eigene Ableitung? | ➕ |
+| 6 | 🔘 multiple-choice | Welche Funktion ist ihre eigene Ableitung? | ➕ wAE |
 | 7 | 🔢 number-input | f(x) = sin(x) + eˣ − 3x². Berechne f'(0). | ➕ |
 | 8 | ✅ true-false | Die Ableitung von f(x) = ln(x) ist f'(x) = 1/x und gilt für alle reellen x. | ➕ |
 | 9 | 🔗 matching | Ordne die Funktion ihrer Ableitung zu. | ➕ |
@@ -1175,7 +1175,7 @@
 | 3 | 🔘 multiple-choice | $f(x) = e^{x^{2}}$. Was ist $f'(x)$? | wAE 4B |
 | 4 | 🔘 multiple-choice | $f(x) = (2x + 1)^{5}$. Was ist $f'(x)$? | wAE 4B |
 | 5 | 🔘 multiple-choice | Was passiert, wenn man bei $f(x) = sin(3x)$ die *innere Ableitung* ($3$) in der Kettenregel weglässt? | wAE 4B |
-| 6 | 🔘 multiple-choice | f(x) = e^(3x²). Welche Ableitung ist korrekt? | ➕ |
+| 6 | 🔘 multiple-choice | f(x) = e^(3x²). Welche Ableitung ist korrekt? | ➕ wAE |
 | 7 | 🔢 number-input | f(x) = sin(2x). Berechne f'(π/4). Hinweis: cos(π/2) = 0. | ➕ |
 | 8 | ✅ true-false | Für f(x) = (x²+1)³ gilt f'(x) = 3(x²+1)². | ➕ |
 | 9 | 🔗 matching | Ordne die verkettete Funktion ihrer Ableitung zu. | ➕ |
@@ -1195,7 +1195,7 @@
 | 2 | 🔘 multiple-choice | $f(x) = x^{2} - 4x + 3$. Wo liegt das Minimum? | wAE 4B |
 | 3 | 🔘 multiple-choice | [PRÜFUNG] Wendepunkt: $f$ hat einen Wendepunkt bei $x_{0}$, wenn: | wAE 4B |
 | 4 | 🔘 multiple-choice | Warum ist der $f''$-Test ($f''(x_0) < 0 Rightarrow$ Max, $f''(x_0) > 0 Rightarrow$ Min) bei $f''(x_{0}) = 0$ *nicht hinr | wAE 4B |
-| 5 | 🔘 multiple-choice | f(x) = x³ − 3x. f'(x) = 3x² − 3 = 0 ergibt x = ±1. Was gilt bei x = 1? | ➕ |
+| 5 | 🔘 multiple-choice | f(x) = x³ − 3x. f'(x) = 3x² − 3 = 0 ergibt x = ±1. Was gilt bei x = 1? | ➕ wAE |
 | 6 | 🔢 number-input | f(x) = x² − 4x + 3. An welcher Stelle liegt das lokale Minimum? Gib den x-Wert an. | ➕ |
 | 7 | ✅ true-false | f''(x₀) < 0 ist hinreichend für ein lokales Maximum bei x₀, wenn f'(x₀) = 0. | ➕ |
 | 8 | 🔗 matching | Ordne das Vorzeichen von f''(x₀) der Extremstelle zu. | ➕ |
@@ -1221,7 +1221,7 @@
 | 3 | 🔘 multiple-choice | $f(x) = e^{x} cdot ln(x)$. Was ist $f'(x)$? | wAE 4B |
 | 4 | 🔢 number-input | $f(x) = x cdot e^{x}$. Berechne $f'(1)$ (auf 2 Dezimalstellen). | 4B |
 | 5 | 🔘 multiple-choice | Was passiert, wenn man beim Ableiten eines Produkts $f cdot g$ fälschlich $(f cdot g)' = f' cdot g'$ verwendet? | wAE 4B |
-| 6 | 🔘 multiple-choice | f(x) = x²·eˣ. Was ist f'(x)? | ➕ |
+| 6 | 🔘 multiple-choice | f(x) = x²·eˣ. Was ist f'(x)? | ➕ wAE |
 | 7 | 🔢 number-input | f(x) = x·eˣ. Berechne f'(1) auf 2 Dezimalstellen. (e ≈ 2,718) | ➕ |
 | 8 | ✅ true-false | Die Ableitung des Produkts (f·g)' ist gleich f'·g'. | ➕ |
 | 9 | 🔗 matching | Ordne die Funktion ihrer Ableitung via Produktregel zu. | ➕ |
@@ -1241,7 +1241,7 @@
 | 3 | 🔘 multiple-choice | $f(x) = dfrac{sin(x)}{x}$. Was ist $f'(x)$? | wAE 4B |
 | 4 | 🔘 multiple-choice | $f(x) = dfrac{e^{x}}{x^{2}}$. Was ist $f'(x)$? | wAE 4B |
 | 5 | 🔘 multiple-choice | Warum ist die Quotientenregel im Grunde nur eine Umformulierung der Produktregel? | wAE 4B |
-| 6 | 🔘 multiple-choice | f(x) = sin(x)/eˣ. Was ist f'(x)? | ➕ |
+| 6 | 🔘 multiple-choice | f(x) = sin(x)/eˣ. Was ist f'(x)? | ➕ wAE |
 | 7 | 🔢 number-input | f(x) = x/(x+1). Berechne f'(2) als gekürzten Bruch. Gib den Dezimalwert an. | ➕ |
 | 8 | ✅ true-false | Die Quotientenregel lautet (u/v)' = (u'v + uv')/v². | ➕ |
 | 9 | 🔗 matching | Ordne die Funktion ihrer Ableitung zu. | ➕ |
@@ -1262,7 +1262,7 @@
 | 4 | 🔘 multiple-choice | $f(x) = ln(x^{2} + 1)$. Was ist $f'(x)$? | wAE 4B |
 | 5 | 🔢 number-input | $f(x) = sqrt{4x+1} = (4x+1)^{1/2}$. Berechne $f'(2)$ (auf 2 Dezimalstellen). | 4B |
 | 6 | 🔘 multiple-choice | Bei mehrfach verketteten Funktionen wie $f(x) = e^{cos(3x)}$ — warum muss man die Kettenregel *mehrfach* anwenden, nicht | wAE 4B |
-| 7 | 🔘 multiple-choice | f(x) = sin(3x²). Welche Identifikation ist korrekt? | ➕ |
+| 7 | 🔘 multiple-choice | f(x) = sin(3x²). Welche Identifikation ist korrekt? | ➕ wAE |
 | 8 | 🔢 number-input | f(x) = e^(−2x). Berechne f'(0). | ➕ |
 | 9 | ✅ true-false | f(x) = ln(x²+1) hat die Ableitung f'(x) = 1/(x²+1). | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Doppelte Kettenregel: $f(x) = e^{cos(3x)}$. Was ist $f'(x)$? | 🎯 wAE 4B |
@@ -1281,7 +1281,7 @@
 | 3 | 🔘 multiple-choice | $f(x) = dfrac{sin(2x)}{x+1}$. Was ist $f'(x)$? | wAE 4B |
 | 4 | 🔢 number-input | $f(x) = (x+1)^{3} cdot ln(x)$. Berechne $f'(1)$ (auf 1 Dezimalstelle). | 4B |
 | 5 | 🔘 multiple-choice | Warum ist der Ansatz "erst die äußerste Struktur identifizieren" bei kombinierten Ableitungsregeln entscheidend? | wAE 4B |
-| 6 | 🔘 multiple-choice | f(x) = x²·sin(3x). Welche Regeln werden benötigt? | ➕ |
+| 6 | 🔘 multiple-choice | f(x) = x²·sin(3x). Welche Regeln werden benötigt? | ➕ wAE |
 | 7 | 🔢 number-input | f(x) = eˣ·sin(x). Berechne f'(π/2) näherungsweise. (e^(π/2) ≈ 4,81, sin(π/2) = 1, cos(π/2) = 0) | ➕ |
 | 8 | ✅ true-false | Bei f(x) = sin(x)/eˣ darf man Kettenregel und Quotientenregel nicht kombinieren. | ➕ |
 | 9 | 🔗 matching | Ordne die Funktion der Hauptregel zu, die benötigt wird. | ➕ |
@@ -1305,7 +1305,7 @@
 | 3 | 🔘 multiple-choice | $f'(x_0) = 0$ und $f''(x_0) > 0$. Was liegt bei $x_0$ vor? | wAE |
 | 4 | 🔢 number-input | $f(x) = x^3 - 6x^2 + 9x + 1$. An welcher Stelle $x$ liegt das lokale Maximum? |  |
 | 5 | ✅ true-false | Wenn $f$ auf einem Intervall $f'(x) geq 0$ erfüllt (mit $=0$ nur an einzelnen Punkten), dann ist $f$ dort monoton steige |  |
-| 6 | 🔘 multiple-choice | f'(x) wechselt bei x₀ das Vorzeichen von + nach −. Was bedeutet das? | ➕ |
+| 6 | 🔘 multiple-choice | f'(x) wechselt bei x₀ das Vorzeichen von + nach −. Was bedeutet das? | ➕ wAE |
 | 7 | 🔢 number-input | f(x) = x³ − 6x² + 9x + 1. Bestimme die x-Koordinate des lokalen Maximums. | ➕ |
 | 8 | ✅ true-false | f'(x) > 0 für alle x im Intervall (a,b) bedeutet, dass f auf (a,b) streng monoton steigend ist. | ➕ |
 | 9 | 🔗 matching | Ordne das Vorzeichen von f'(x) dem Monotonieverhalten zu. | ➕ |
@@ -1323,7 +1323,7 @@
 | 2 | 🔘 multiple-choice | Wendepunkt bei $x_0$: Welche Bedingung ist notwendig UND hinreichend? | wAE |
 | 3 | 🔢 number-input | $f(x) = x^3 - 3x$. An welcher Stelle $x$ liegt der Wendepunkt? |  |
 | 4 | 🔘 multiple-choice | Was passiert bei einer Funktion mit $f'(x_0) = f''(x_0) = 0$ und $f'''(x_0) neq 0$? | wAE |
-| 5 | 🔘 multiple-choice | Welche Aussage über f''(x) ist korrekt? | ➕ |
+| 5 | 🔘 multiple-choice | Welche Aussage über f''(x) ist korrekt? | ➕ wAE |
 | 6 | 🔢 number-input | f(x) = x⁴ − 6x² + 1. An welcher positiven Stelle liegt ein Wendepunkt? | ➕ |
 | 7 | ✅ true-false | f''(x₀) = 0 ist hinreichend für einen Wendepunkt bei x₀. | ➕ |
 | 8 | 🔗 matching | Ordne das Vorzeichen von f''(x) der Krümmungsform zu. | ➕ |
@@ -1342,7 +1342,7 @@
 | 2 | 🔘 multiple-choice | $f(x) = x^3 - 3x + 2$. Welche Symmetrie hat $f$? | wAE |
 | 3 | 🔘 multiple-choice | Für $f(x) = 2x^3 - 6x + 1$: Wie verhält sich $f$ für $x to +infty$? | wAE |
 | 4 | 🔢 number-input | $f(x) = x^3 - 3x + 2$. Berechne den y-Wert des lokalen Maximums. |  |
-| 5 | 🔘 multiple-choice | f(x) = x⁴ − 8x² ist punktsymmetrisch zum Ursprung. Stimmt das? | ➕ |
+| 5 | 🔘 multiple-choice | f(x) = x⁴ − 8x² ist punktsymmetrisch zum Ursprung. Stimmt das? | ➕ wAE |
 | 6 | 🔢 number-input | f(x) = x³ − 3x + 2. Berechne den y-Wert des lokalen Maximums. | ➕ |
 | 7 | ✅ true-false | Für f(x) = 2x³ − 6x + 1 gilt: f(x) → +∞ für x → +∞. | ➕ |
 | 8 | 🔗 matching | Ordne den Kurvendiskussions-Schritt dem zugehörigen Werkzeug zu. | ➕ |
@@ -1362,7 +1362,7 @@
 | 3 | 🔘 multiple-choice | [PRÜFUNG] $f(x) = dfrac{x^2}{x^2 + 1}$. Welche Aussage stimmt? | wAE |
 | 4 | 🔗 matching | [PRÜFUNG] Ordne die Funktionseigenschaften den richtigen Bedingungen zu: |  |
 | 5 | 🔘 multiple-choice | [PRÜFUNG] Vollständige Kurvendiskussion: $f(x) = x^3 - 12x$. Welche Aussage ist FALSCH? | wAE |
-| 6 | 🔘 multiple-choice | [PRÜFUNG] f(x) = xe^(−x) für x ≥ 0. Welche Aussage ist korrekt? | ➕ |
+| 6 | 🔘 multiple-choice | [PRÜFUNG] f(x) = xe^(−x) für x ≥ 0. Welche Aussage ist korrekt? | ➕ wAE |
 | 7 | 🔢 number-input | [PRÜFUNG] f(x) = x³ − 12x. Berechne den Wert des lokalen Maximums f(−2). | ➕ |
 | 8 | ✅ true-false | [PRÜFUNG] f(x) = x⁴ − 4x³ hat bei x = 0 einen Sattelpunkt (Terrassenpunkt), kein lokales Extremum. | ➕ |
 | 9 | 🔗 matching | [PRÜFUNG] Ordne die Eigenschaften von f(x) = x³ − 12x der richtigen Aussage zu. | ➕ |
@@ -1509,7 +1509,7 @@
 | 2 | 🔘 multiple-choice | Warum schreibt man bei unbestimmten Integralen immer "$+C$"? | wAE 4B |
 | 3 | 🔗 matching | Ordne jeder Funktion $f(x)$ eine Stammfunktion $F(x)$ zu: | 4B |
 | 4 | 🔘 multiple-choice | Welche Aussage über Stammfunktionen von $f(x) = 6x$ ist korrekt? | wAE 4B |
-| 5 | 🔘 multiple-choice | Was muss für eine Stammfunktion F(x) von f(x) stets gelten? | ➕ |
+| 5 | 🔘 multiple-choice | Was muss für eine Stammfunktion F(x) von f(x) stets gelten? | ➕ wAE |
 | 6 | 🔢 number-input | F(x) = x⁴ + 3x + 7 ist die Stammfunktion von f(x). Berechne f(2). | ➕ |
 | 7 | ✅ true-false | Zwei Stammfunktionen von f(x) können sich höchstens um eine additive Konstante unterscheiden. | ➕ |
 | 8 | 🔗 matching | Ordne jeder Funktion f(x) ihre Stammfunktion F(x) zu (C = 0). | ➕ |
@@ -1529,7 +1529,7 @@
 | 3 | 🔘 multiple-choice | $int e^{x},dx = ?$ | wAE |
 | 4 | 🔘 multiple-choice | $int dfrac{1}{x},dx = ?$ | wAE 4B |
 | 5 | 🔗 matching | Ordne jeder Funktion ihr unbestimmtes Integral zu: |  |
-| 6 | 🔘 multiple-choice | Welches Grundintegral ist korrekt? | ➕ |
+| 6 | 🔘 multiple-choice | Welches Grundintegral ist korrekt? | ➕ wAE |
 | 7 | 🔢 number-input | Berechne ∫x⁴ dx und werte die Stammfunktion (ohne C) bei x = 2 aus. | ➕ |
 | 8 | ✅ true-false | ∫(1/x) dx = ln(x) + C gilt für alle reellen x ≠ 0. | ➕ |
 | 9 | 🔗 matching | Ordne Funktion und Stammfunktion zu. | ➕ |
@@ -1547,7 +1547,7 @@
 | 2 | 🔘 multiple-choice | $int 5cos(x),dx = ?$ | wAE 4B |
 | 3 | 🔢 number-input | Gegeben: $int (4x^{3} - 6x + 1),dx = x^{4} - 3x^{2} + x + C$. Berechne $F(2)$ für $C = 0$, also mit $F(x) = x^{4} - 3x^{ | 4B |
 | 4 | 🔘 multiple-choice | $int (e^{x} - 2sin(x) + 3),dx = ?$ | wAE 4B |
-| 5 | 🔘 multiple-choice | Was besagt der Hauptsatz der Differential- und Integralrechnung? | ➕ |
+| 5 | 🔘 multiple-choice | Was besagt der Hauptsatz der Differential- und Integralrechnung? | ➕ wAE |
 | 6 | 🔢 number-input | Berechne ∫₁³ (2x + 1) dx mit dem Hauptsatz. | ➕ |
 | 7 | ✅ true-false | ∫₀² eˣ dx = e² − 1. | ➕ |
 | 8 | 🔗 matching | Ordne das Integral seinem Wert zu. | ➕ |
@@ -1566,7 +1566,7 @@
 | 2 | 🔢 number-input | Berechne: $int_{1}^{3} x^{2},dx$ (Ergebnis als Dezimalzahl, auf 2 Nachkommastellen gerundet) | 4B |
 | 3 | 🔘 multiple-choice | Was beschreibt $int_{a}^{b} f(x),dx$ geometrisch, wenn $f(x) geq 0$ auf $[a,b]$? | wAE 4B |
 | 4 | 🔢 number-input | Berechne: $int_{0}^{pi} sin(x),dx$ (ganzzahliges Ergebnis) |  |
-| 5 | 🔘 multiple-choice | Was muss man tun, damit das bestimmte Integral korrekt die Fläche (und nicht das Vorzeichen-behaftete Integral) berechne | ➕ |
+| 5 | 🔘 multiple-choice | Was muss man tun, damit das bestimmte Integral korrekt die Fläche (und nicht das Vorzeichen-behaftete Integral) berechne | ➕ wAE |
 | 6 | 🔢 number-input | Berechne die Fläche, die von f(x) = x² − 4 und der x-Achse eingeschlossen wird. (Nullstellen bei x = ±2) | ➕ |
 | 7 | ✅ true-false | ∫₀^(2π) sin(x) dx = 0, weil sich positive und negative Flächen aufheben. | ➕ |
 | 8 | 🔗 matching | Ordne Integralausdruck und seine geometrische Bedeutung zu. | ➕ |
@@ -1584,12 +1584,12 @@
 | 1 | 🔘 multiple-choice | Der Hauptsatz der Differential- und Integralrechnung besagt: | wAE 4B |
 | 2 | 🔘 multiple-choice | Sei $F(x) = int_{0}^{x} t^{2},dt$. Was ist $F'(x)$? | wAE |
 | 3 | 🔘 multiple-choice | Welche Aussage folgt aus dem Hauptsatz? | wAE 4B |
-| 4 | 🔘 multiple-choice | Warum entsteht bei ∫f(ax+b) dx ein Faktor 1/a im Ergebnis? | ➕ |
+| 4 | 🔘 multiple-choice | Warum entsteht bei ∫f(ax+b) dx ein Faktor 1/a im Ergebnis? | ➕ wAE |
 | 5 | 🔢 number-input | Berechne ∫cos(3x) dx und werte die Stammfunktion (ohne C) bei x = π/6 aus. | ➕ |
 | 6 | ✅ true-false | ∫e^(5x) dx = 5·e^(5x) + C. | ➕ |
 | 7 | 🔗 matching | Ordne Integral und Stammfunktion zu. | ➕ |
 | 8 | 📋 sorting | Berechne ∫(2x−1)³ dx durch lineare Substitution in der richtigen Reihenfolge. | ➕ |
-| 9 | 🔘 multiple-choice | Jemand berechnet ∫sin(4x) dx = cos(4x) + C. Welcher Fehler wurde gemacht? | ➕ |
+| 9 | 🔘 multiple-choice | Jemand berechnet ∫sin(4x) dx = cos(4x) + C. Welcher Fehler wurde gemacht? | ➕ wAE |
 | 10 | 🔢 number-input | [PRÜFUNG] Berechne mit dem Hauptsatz: $int_{0}^{1} (e^{x} + 2x),dx$ (Ergebnis auf 2 Nachkommastellen) | 🎯 4B |
 
 ### Integrationstechniken (Unit 2)
@@ -1609,7 +1609,7 @@
 | 2 | 🔘 multiple-choice | $int 2x cdot e^{x^{2}},dx = ?$ (Tipp: $u = x^{2}$) | wAE 4B |
 | 3 | 🔘 multiple-choice | $int cos(3x),dx = ?$ (Tipp: $u = 3x$) | wAE 4B |
 | 4 | 🔘 multiple-choice | $int x cdot (x^{2} + 1)^{4},dx = ?$ | wAE 4B |
-| 5 | 🔘 multiple-choice | Wie erkennt man, dass sich eine Substitution u = g(x) eignet? | ➕ |
+| 5 | 🔘 multiple-choice | Wie erkennt man, dass sich eine Substitution u = g(x) eignet? | ➕ wAE |
 | 6 | 🔢 number-input | Berechne ∫2x·(x² + 3)⁴ dx mit u = x² + 3. Gib den Koeffizienten vor (x²+3)⁵ an. | ➕ |
 | 7 | ✅ true-false | Bei der Substitution u = g(x) muss man nach dem Integrieren g(x) für u einsetzen (Rücksubstitution). | ➕ |
 | 8 | 🔗 matching | Ordne Integral und Substitution zu. | ➕ |
@@ -1628,7 +1628,7 @@
 | 2 | 🔘 multiple-choice | $int x cdot e^{x},dx = ?$ (partielle Integration mit $u = x$, $v' = e^{x}$) | wAE |
 | 3 | 🔘 multiple-choice | $int x cdot cos(x),dx = ?$ | wAE 4B |
 | 4 | 🔘 multiple-choice | $int ln(x),dx = ?$ (Tipp: Setze $u = ln(x)$, $v' = 1$) | wAE 4B |
-| 5 | 🔘 multiple-choice | Woher stammt die Formel für partielle Integration? | ➕ |
+| 5 | 🔘 multiple-choice | Woher stammt die Formel für partielle Integration? | ➕ wAE |
 | 6 | 🔢 number-input | ∫x·eˣ dx = x·eˣ − eˣ + C. Berechne den Wert des bestimmten Integrals ∫₀¹ x·eˣ dx auf 2 Nachkommastellen. | ➕ |
 | 7 | ✅ true-false | ∫ln(x) dx = x·ln(x) − x + C. | ➕ |
 | 8 | 🔗 matching | Ordne das Integral der richtigen Wahl von u und v′ zu. | ➕ |
@@ -1646,12 +1646,12 @@
 | 1 | 🔘 multiple-choice | Wann verwendet man die Partialbruchzerlegung? | wAE 4B |
 | 2 | 🔘 multiple-choice | $int dfrac{1}{x^{2} - 1},dx = int dfrac{1}{(x-1)(x+1)},dx$. Welcher Ansatz ist korrekt? | wAE 4B |
 | 3 | 🔢 number-input | Partialbruchzerlegung: $dfrac{1}{(x-1)(x+1)} = dfrac{A}{x-1} + dfrac{B}{x+1}$. Bestimme $A$. (Tipp: Setze $x = 1$ ein) | 4B |
-| 4 | 🔘 multiple-choice | Wann setzt man die Partialbruchzerlegung ein? | ➕ |
+| 4 | 🔘 multiple-choice | Wann setzt man die Partialbruchzerlegung ein? | ➕ wAE |
 | 5 | 🔢 number-input | Bestimme A in 1/(x(x+2)) = A/x + B/(x+2) durch Einsetzen von x = 0. | ➕ |
 | 6 | ✅ true-false | ∫1/(x−3) dx = ln\|x−3\| + C. | ➕ |
 | 7 | 🔗 matching | Ordne den Nennertyp und den Partialbruch-Ansatz zu. | ➕ |
 | 8 | 📋 sorting | Berechne ∫1/((x−1)(x+1)) dx durch Partialbruchzerlegung in der richtigen Reihenfolge. | ➕ |
-| 9 | 🔘 multiple-choice | Für 2/(x(x+2)) wird der Ansatz A/x² + B/(x+2) verwendet. Was ist falsch? | ➕ |
+| 9 | 🔘 multiple-choice | Für 2/(x(x+2)) wird der Ansatz A/x² + B/(x+2) verwendet. Was ist falsch? | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] $int dfrac{1}{x(x+1)},dx = ?$ | 🎯 wAE 4B |
 
 #### Gemischte Übungen  `int-2-4` · 20 min
@@ -1667,7 +1667,7 @@
 | 3 | 🔢 number-input | [PRÜFUNG] Berechne: $int_{0}^{1} x cdot e^{x},dx$ (Ergebnis auf 2 Nachkommastellen) | 4B |
 | 4 | 🔘 multiple-choice | [PRÜFUNG] Welche Methode ist am besten geeignet für $int sin^{2}(x),dx$? | wAE 4B |
 | 5 | 🔘 multiple-choice | [PRÜFUNG] $int dfrac{2x + 3}{x^{2} + 3x + 1},dx = ?$ (Tipp: Zähler ist Ableitung des Nenners) | wAE 4B |
-| 6 | 🔘 multiple-choice | Welche Technik eignet sich für ∫x·sin(x) dx? | ➕ |
+| 6 | 🔘 multiple-choice | Welche Technik eignet sich für ∫x·sin(x) dx? | ➕ wAE |
 | 7 | 🔢 number-input | ∫e^(2x) dx ergibt e^(2x)/2 + C. Berechne ∫₀¹ e^(2x) dx auf 2 Nachkommastellen. | ➕ |
 | 8 | ✅ true-false | ∫(2x+3)/(x²+3x+5) dx = ln\|x²+3x+5\| + C, weil der Zähler die Ableitung des Nenners ist. | ➕ |
 | 9 | 🔗 matching | Ordne den Integranden der passenden Methode zu. | ➕ |
@@ -1690,7 +1690,7 @@
 | 2 | 🔢 number-input | Berechne die Fläche zwischen $f(x) = x^{2}$ und der $x$-Achse auf dem Intervall $[0, 3]$. | 4B |
 | 3 | 🔢 number-input | Berechne die Fläche zwischen $f(x) = x$ und $g(x) = x^{2}$ auf $[0, 1]$ (Ergebnis auf 2 Nachkommastellen). | 4B |
 | 4 | 🔘 multiple-choice | Die Fläche $A$, die von $f(x) = sin(x)$ und der $x$-Achse auf $[0, 2pi]$ eingeschlossen wird, ist: | wAE 4B |
-| 5 | 🔘 multiple-choice | Warum steht in der Rotationsvolumen-Formel [f(x)]² und nicht f(x)? | ➕ |
+| 5 | 🔘 multiple-choice | Warum steht in der Rotationsvolumen-Formel [f(x)]² und nicht f(x)? | ➕ wAE |
 | 6 | 🔢 number-input | f(x) = 2 rotiert auf [0, 3] um die x-Achse (Zylinder). Berechne V/π. | ➕ |
 | 7 | ✅ true-false | Bei der Rotation von f(x) = √x auf [0, 4] um die x-Achse vereinfacht sich [f(x)]² = x. | ➕ |
 | 8 | 🔗 matching | Ordne Funktion/Intervall dem Rotationskörper zu. | ➕ |
@@ -1708,12 +1708,12 @@
 | 1 | 🔘 multiple-choice | Wie berechnet man das Volumen eines Rotationskörpers bei Drehung um die $x$-Achse? | wAE 4B |
 | 2 | 🔢 number-input | Berechne das Volumen des Kegels, der entsteht, wenn $f(x) = x$ auf $[0, 3]$ um die $x$-Achse rotiert. Gib das Ergebnis a |  |
 | 3 | 🔢 number-input | Berechne das Volumen der Kugel mit Radius $R = 2$ (Halbkreis $f(x) = sqrt{4 - x^{2}}$ um $x$-Achse rotiert). Ergebnis au |  |
-| 4 | 🔘 multiple-choice | Was bedeutet der Flächenschwerpunkt x̄ physikalisch? | ➕ |
+| 4 | 🔘 multiple-choice | Was bedeutet der Flächenschwerpunkt x̄ physikalisch? | ➕ wAE |
 | 5 | 🔢 number-input | Berechne x̄ für f(x) = x auf [0, 2]. (A = ∫₀² x dx = 2) | ➕ |
 | 6 | ✅ true-false | Der Schwerpunkt x̄ muss immer innerhalb des Integrationsintervalls [a, b] liegen. | ➕ |
 | 7 | 🔗 matching | Ordne die technische Größe ihrer Integralformel zu. | ➕ |
 | 8 | 📋 sorting | Berechne x̄ für f(x) = 1 auf [0, 3] in der richtigen Reihenfolge. | ➕ |
-| 9 | 🔘 multiple-choice | Jemand berechnet x̄ = ∫₀² x·f(x) dx ohne durch A zu dividieren. Was ist falsch? | ➕ |
+| 9 | 🔘 multiple-choice | Jemand berechnet x̄ = ∫₀² x·f(x) dx ohne durch A zu dividieren. Was ist falsch? | ➕ wAE |
 | 10 | 🔢 number-input | [PRÜFUNG] $f(x) = sqrt{x}$ wird auf $[0, 4]$ um die $x$-Achse rotiert. Berechne $V/pi$. | 🎯 4B |
 
 #### Technische Anwendungen  `int-3-3` · 16 min
@@ -1727,12 +1727,12 @@
 | 1 | 🔘 multiple-choice | Wie berechnet man die Arbeit $W$, wenn eine ortsabhängige Kraft $F(x)$ längs des Weges von $a$ bis $b$ wirkt? | wAE 4B |
 | 2 | 🔢 number-input | Eine Feder hat die Federkraft $F(x) = 200 cdot x,mathrm{N}$ (Hookesches Gesetz mit $k = 200,mathrm{N/m}$). Berechne die  |  |
 | 3 | 🔘 multiple-choice | Der $x$-Schwerpunkt einer homogenen Fläche unter $f(x)$ auf $[a, b]$ ist gegeben durch: | wAE 4B |
-| 4 | 🔘 multiple-choice | Warum ist numerische Integration manchmal notwendig? | ➕ |
+| 4 | 🔘 multiple-choice | Warum ist numerische Integration manchmal notwendig? | ➕ wAE |
 | 5 | 🔢 number-input | Trapezregel mit n = 2 für ∫₀² x² dx: h = 1, Stützstellen x₀=0, x₁=1, x₂=2. Berechne den Näherungswert. | ➕ |
 | 6 | ✅ true-false | Die Simpsonregel ist im Allgemeinen genauer als die Trapezregel, weil sie Parabeln statt Geraden durch die Stützpunkte l | ➕ |
 | 7 | 🔗 matching | Ordne Methode und Gewichtsschema zu. | ➕ |
 | 8 | 📋 sorting | Wende die Simpsonregel mit n = 2 auf ∫₀² x² dx an (h = 1) in der richtigen Reihenfolge. | ➕ |
-| 9 | 🔘 multiple-choice | Bei der Trapezregel für ∫₀⁴ f dx mit n = 2 setzt jemand h = 4. Was ist falsch? | ➕ |
+| 9 | 🔘 multiple-choice | Bei der Trapezregel für ∫₀⁴ f dx mit n = 2 setzt jemand h = 4. Was ist falsch? | ➕ wAE |
 | 10 | 🔢 number-input | [PRÜFUNG] Eine Kraft $F(x) = 3x^{2},mathrm{N}$ wirkt auf einen Körper von $x = 0$ bis $x = 2,mathrm{m}$. Berechne die ve | 🎯 4B |
 
 #### Bogenlänge & Durchschnittswert  `int-3-4` · 14 min
@@ -2118,12 +2118,12 @@
 | 1 | 🔘 multiple-choice | Was ist eine Differentialgleichung (DGL)? | wAE |
 | 2 | 🔘 multiple-choice | Welche Ordnung hat die DGL $y'' + 3y' - 2y = 0$? | wAE |
 | 3 | ✅ true-false | Die DGL $y' = y^2 + x$ ist linear. |  |
-| 4 | 🔘 multiple-choice | Was unterscheidet eine Differentialgleichung von einer gewöhnlichen algebraischen Gleichung? | ➕ |
+| 4 | 🔘 multiple-choice | Was unterscheidet eine Differentialgleichung von einer gewöhnlichen algebraischen Gleichung? | ➕ wAE |
 | 5 | 🔢 number-input | Welche Ordnung hat die DGL y'' + 5y' − 2y = 0? Gib die Ordnung als ganze Zahl an. | ➕ |
 | 6 | ✅ true-false | Die DGL y' = $y^2$ ist linear, weil nur die erste Ableitung y' vorkommt. | ➕ |
 | 7 | 🔗 matching | Ordne die DGL ihren Eigenschaften zu. | ➕ |
 | 8 | 📋 sorting | Bringe die Schritte zum Lösen eines Anfangswertproblems in die richtige Reihenfolge. | ➕ |
-| 9 | 🔘 multiple-choice | Jemand behauptet: „Die allgemeine Lösung von y' = 3y lautet y = 3x + C." Was ist daran falsch? | ➕ |
+| 9 | 🔘 multiple-choice | Jemand behauptet: „Die allgemeine Lösung von y' = 3y lautet y = 3x + C." Was ist daran falsch? | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Welche Funktion löst das AWP $y' = 2y$ mit $y(0) = 3$? | 🎯 wAE |
 
 #### Trennung der Variablen  `dgl-1-2` · 18 min
@@ -2138,12 +2138,12 @@
 | 1 | 🔘 multiple-choice | Bei der Trennung der Variablen bringt man die DGL $frac{dy}{dx} = g(x) cdot h(y)$ in welche Form? | wAE |
 | 2 | 🔘 multiple-choice | Löse die DGL $y' = xy$ mit Trennung der Variablen. Welche allgemeine Lösung erhältst du? | wAE |
 | 3 | 🔢 number-input | Gegeben: $y' = 2y$ mit $y(0) = 3$. Berechne $y(1)$ (auf 2 Dezimalstellen gerundet). |  |
-| 4 | 🔘 multiple-choice | Welche Voraussetzung muss eine DGL erfüllen, damit Trennung der Variablen anwendbar ist? | ➕ |
+| 4 | 🔘 multiple-choice | Welche Voraussetzung muss eine DGL erfüllen, damit Trennung der Variablen anwendbar ist? | ➕ wAE |
 | 5 | 🔢 number-input | y' = 3y, y(0) = 2. Berechne y(1). ($e^3$ ≈ 20,086) | ➕ |
 | 6 | ✅ true-false | Bei der Trennung der Variablen integriert man nur die linke Seite und setzt rechts einfach +C hinzu. | ➕ |
 | 7 | 🔗 matching | Ordne die Schritte der Variablentrennung für y' = xy den richtigen Ausdrücken zu. | ➕ |
 | 8 | 📋 sorting | Löse y' = −2y, y(0) = 5 in der richtigen Reihenfolge. | ➕ |
-| 9 | 🔘 multiple-choice | Jemand löst y' = 2x·y und schreibt: ∫ dy/y = ∫ 2x·y dx. Was ist der Fehler? | ➕ |
+| 9 | 🔘 multiple-choice | Jemand löst y' = 2x·y und schreibt: ∫ dy/y = ∫ 2x·y dx. Was ist der Fehler? | ➕ wAE |
 | 10 | 🔘 multiple-choice | Löse das AWP: $y' = -3y$, $y(0) = 5$. Was ist $y(x)$? | 🎯 wAE |
 
 #### Lineare DGL 1. Ordnung  `dgl-1-3` · 20 min
@@ -2159,7 +2159,7 @@
 | 2 | 🔘 multiple-choice | Wie lautet der integrierende Faktor $mu(x)$ für die DGL $y' + p(x) cdot y = q(x)$? | wAE |
 | 3 | 🔘 multiple-choice | Löse: $y' + 2y = 0$. Die allgemeine Lösung ist: | wAE |
 | 4 | 🔢 number-input | DGL: $y' + y = 3$, AWP: $y(0) = 1$. Berechne $y(1)$ (auf 2 Dezimalstellen). |  |
-| 5 | 🔘 multiple-choice | Wozu dient der integrierende Faktor μ(x) = e^{∫p(x) dx} bei y' + p(x)y = q(x)? | ➕ |
+| 5 | 🔘 multiple-choice | Wozu dient der integrierende Faktor μ(x) = e^{∫p(x) dx} bei y' + p(x)y = q(x)? | ➕ wAE |
 | 6 | 🔢 number-input | y' + y = 3, y(0) = 1. Berechne y(1). (e^{−1} ≈ 0,3679) | ➕ |
 | 7 | ✅ true-false | Die homogene lineare DGL y' + 3y = 0 hat die allgemeine Lösung y = Ce^{3x}. | ➕ |
 | 8 | 🔗 matching | Ordne die Schritte der Methode des integrierenden Faktors den richtigen Formeln zu. | ➕ |
@@ -2178,12 +2178,12 @@
 | 1 | 🔘 multiple-choice | Für die DGL $ay'' + by' + cy = 0$ macht man den Ansatz $y = e^{lambda x}$. Welche Gleichung ergibt sich für $lambda$? | wAE |
 | 2 | 🔘 multiple-choice | Die charakteristische Gleichung hat komplexe Wurzeln $lambda = alpha pm ibeta$. Welche Form hat die allgemeine Lösung? | wAE |
 | 3 | 🔘 multiple-choice | Löse: $y'' + 4y = 0$. Die allgemeine Lösung ist: | wAE |
-| 4 | 🔘 multiple-choice | Welchen Ansatz macht man bei homogenen linearen DGL 2. Ordnung mit konstanten Koeffizienten? | ➕ |
+| 4 | 🔘 multiple-choice | Welchen Ansatz macht man bei homogenen linearen DGL 2. Ordnung mit konstanten Koeffizienten? | ➕ wAE |
 | 5 | 🔢 number-input | Charakteristische Gleichung von $y'' - 5y' + 6y = 0$ ist $lambda^2 - 5lambda + 6 = 0$. Berechne die kleinere Wurzel $lam | ➕ |
 | 6 | ✅ true-false | Hat die charakteristische Gleichung eine Doppelwurzel $lambda$, so lautet die allgemeine Lösung $y = C_1 e^{lambda x} +  | ➕ |
 | 7 | 🔗 matching | Ordne die Art der Wurzeln der charakteristischen Gleichung der zugehörigen Lösungsform zu. | ➕ |
 | 8 | 📋 sorting | Löse y'' + 4y = 0 in der richtigen Reihenfolge. | ➕ |
-| 9 | 🔘 multiple-choice | Jemand löst y'' − 4y' + 4y = 0 mit der char. Gleichung $lambda^2 - 4lambda + 4 = (lambda-2)^2 = 0$ und schreibt y = C₁e^ | ➕ |
+| 9 | 🔘 multiple-choice | Jemand löst y'' − 4y' + 4y = 0 mit der char. Gleichung $lambda^2 - 4lambda + 4 = (lambda-2)^2 = 0$ und schreibt y = C₁e^ | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] $y'' - 5y' + 6y = 0$. Die allgemeine Lösung ist: | 🎯 wAE |
 
 ### Fortgeschrittene Methoden (Unit 2)
@@ -2202,12 +2202,12 @@
 | 1 | 🔘 multiple-choice | Bei der Variation der Konstanten ersetzt man die Konstante $C$ in der homogenen Lösung durch: | wAE |
 | 2 | 🔘 multiple-choice | Für $y' + p(x)y = q(x)$ mit homogener Lösung $y_h = Ce^{-P(x)}$ (wobei $P(x) = int p(x),dx$) ergibt der Ansatz $y = C(x) | wAE |
 | 3 | 🔘 multiple-choice | Löse mit Variation der Konstanten: $y' - y = e^{2x}$. | wAE |
-| 4 | 🔘 multiple-choice | Was ist die Kernidee der Variation der Konstanten? | ➕ |
+| 4 | 🔘 multiple-choice | Was ist die Kernidee der Variation der Konstanten? | ➕ wAE |
 | 5 | 🔢 number-input | y' − y = e^{2x}. Die allgemeine Lösung ist y = Ce^x + e^{2x}. Mit y(0) = 2: Berechne y(1). (e ≈ 2,718, $e^2$ ≈ 7,389) | ➕ |
 | 6 | ✅ true-false | Die Variation der Konstanten liefert nur die partikuläre Lösung, nicht die allgemeine. | ➕ |
 | 7 | 🔗 matching | Ordne die Schritte der Variation der Konstanten den richtigen Ausdrücken zu. | ➕ |
 | 8 | 📋 sorting | Löse y' + 2y = 4e^{−2x} mit Variation der Konstanten in der richtigen Reihenfolge. | ➕ |
-| 9 | 🔘 multiple-choice | Für y' + y = sin(x) setzt jemand direkt y_p = A·sin(x) an und erhält A·cos(x) + A·sin(x) = sin(x), woraus A = 1/2 und y_ | ➕ |
+| 9 | 🔘 multiple-choice | Für y' + y = sin(x) setzt jemand direkt y_p = A·sin(x) an und erhält A·cos(x) + A·sin(x) = sin(x), woraus A = 1/2 und y_ | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] $y' + y = sin(x)$. Die partikuläre Lösung (ohne homogenen Anteil) ist: | 🎯 wAE |
 
 #### DGL-Systeme  `dgl-2-2` · 15 min
@@ -2220,12 +2220,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Ein DGL-System 1. Ordnung hat die Form $vec{y}' = A cdot vec{y}$. Was ist $A$? | wAE |
 | 2 | ✅ true-false | Jede DGL höherer Ordnung lässt sich in ein System von DGL 1. Ordnung umschreiben. |  |
-| 3 | 🔘 multiple-choice | Welche mathematische Struktur hat ein lineares DGL-System 1. Ordnung? | ➕ |
+| 3 | 🔘 multiple-choice | Welche mathematische Struktur hat ein lineares DGL-System 1. Ordnung? | ➕ wAE |
 | 4 | 🔢 number-input | y'' + 3y' + 2y = 0 wird als System mit y₁=y, y₂=y' geschrieben. Wie lautet y₂'? | ➕ |
 | 5 | ✅ true-false | Jede DGL höherer Ordnung lässt sich in ein äquivalentes System von DGL 1. Ordnung umschreiben. | ➕ |
 | 6 | 🔗 matching | Ordne den Begriff dem Inhalt bei DGL-Systemen zu. | ➕ |
 | 7 | 📋 sorting | Bringe die Schritte zur Lösung von $vec{y}$' = A·$vec{y}$ in die richtige Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Jemand schreibt y'' + 5y' + 6y = 0 als System: y₁' = y₂, y₂' = −5y₁ − 6y₂. Was ist falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Jemand schreibt y'' + 5y' + 6y = 0 als System: y₁' = y₂, y₂' = −5y₁ − 6y₂. Was ist falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Für das System $vec{y}$' = A·$vec{y}$ mit A = [[0,1],[−2,−3]] lauten die Eigenwerte λ₁=−1 und λ₂=−2. Welches Langzeitver | ➕ |
 | 10 | 🔘 multiple-choice | Die DGL $y'' + 5y' + 6y = 0$ wird als System geschrieben mit $y_1 = y$, $y_2 = y'$. Wie lautet $y_2'$? | 🎯 wAE |
 
@@ -2241,12 +2241,12 @@
 | 1 | 🔘 multiple-choice | Die Schwingungsgleichung eines Feder-Masse-Dämpfer-Systems lautet: | wAE |
 | 2 | 🔗 matching | Ordne die physikalischen Größen den mathematischen Termen in $mx'' + cx' + kx = F(t)$ zu: |  |
 | 3 | 🔘 multiple-choice | Ein RC-Glied (Widerstand $R$, Kapazität $C$, Spannung $u_C$) wird durch welche DGL beschrieben? | wAE |
-| 4 | 🔘 multiple-choice | Wie setzt sich die allgemeine Lösung einer inhomogenen linearen DGL y'' + by' + cy = q(x) zusammen? | ➕ |
+| 4 | 🔘 multiple-choice | Wie setzt sich die allgemeine Lösung einer inhomogenen linearen DGL y'' + by' + cy = q(x) zusammen? | ➕ wAE |
 | 5 | 🔢 number-input | y'' + y = 4. Partikulärer Ansatz y_p = A. Berechne A. | ➕ |
 | 6 | ✅ true-false | Wenn q(x) = e^{2x} und λ=2 ein Eigenwert der homogenen DGL ist, muss der Ansatz y_p = A·x·e^{2x} gewählt werden. | ➕ |
 | 7 | 🔗 matching | Ordne den Typ der Störfunktion q(x) dem passenden Ansatz für y_p zu. | ➕ |
 | 8 | 📋 sorting | Löse y'' − 3y' + 2y = 4 in der richtigen Reihenfolge. | ➕ |
-| 9 | 🔘 multiple-choice | Für y'' + y = cos(x) wählt jemand den Ansatz y_p = A·cos(x). Nach Einsetzen ergibt sich 0 = cos(x) — die Methode scheite | ➕ |
+| 9 | 🔘 multiple-choice | Für y'' + y = cos(x) wählt jemand den Ansatz y_p = A·cos(x). Nach Einsetzen ergibt sich 0 = cos(x) — die Methode scheite | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Ein ungedämpftes Feder-Masse-System ($c = 0$): $m x'' + kx = 0$ mit $m = 2$ kg, $k = 8$ N/m. Die Eigenkreisfre | 🎯 wAE |
 
 ### 🏁 Prüfungsaufgaben (Unit 3)
@@ -3036,7 +3036,7 @@
 | 5 | 🔘 multiple-choice | Welche Frequenzen treten in der Fourier-Reihe einer $T$-periodischen Funktion auf? | wAE |
 | 6 | 🔗 matching | Ordne jeder Symmetrie die korrekte Vereinfachung der Fourier-Reihe zu. |  |
 | 7 | 📋 sorting | Bringe die Schritte zur Berechnung einer Fourier-Reihe in Reihenfolge. |  |
-| 8 | 🔘 multiple-choice | Was repräsentiert der Koeffizient $a_0/2$ einer Fourier-Reihe? | ➕ |
+| 8 | 🔘 multiple-choice | Was repräsentiert der Koeffizient $a_0/2$ einer Fourier-Reihe? | ➕ wAE |
 | 9 | 🔢 number-input | Wie groß ist $a_0$ für die Funktion $f(t) = sin(t)$ auf $[0, 2pi]$? | ➕ |
 | 10 | 🔘 multiple-choice | Eine gerade periodische Funktion $f(t)$ hat in ihrer Fourier-Reihe nur ... | 🎯 |
 
@@ -4632,12 +4632,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Was ist die Regelabweichung $e$? | wAE |
 | 2 | ✅ true-false | Eine Steuerung (offener Kreis) kann Störungen automatisch ausregeln. |  |
-| 3 | 🔘 multiple-choice | Wie ist die Regelabweichung $e$ in einem Standardregelkreis definiert? | ➕ |
+| 3 | 🔘 multiple-choice | Wie ist die Regelabweichung $e$ in einem Standardregelkreis definiert? | ➕ wAE |
 | 4 | 🔢 number-input | Führungsgröße $w = 80$ °C, Regelgröße $y = 72$ °C. Wie groß ist $e$ in °C? | ➕ |
 | 5 | ✅ true-false | Eine Steuerung (ohne Rückführung) kann Störungen der Regelgröße nicht korrigieren. | ➕ |
 | 6 | 🔗 matching | Ordne die Komponenten des Regelkreises ihrer Funktion zu. | ➕ |
 | 7 | 📋 sorting | Ordne den Signalfluss in einem geschlossenen Regelkreis. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student definiert: "$e = y - w$, weil der Istwert ja bekannt ist." Was ist problematisch? | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student definiert: "$e = y - w$, weil der Istwert ja bekannt ist." Was ist problematisch? | ➕ wAE |
 | 9 | 🔢 number-input | Eine Füllstandsregelung soll $w = 2{,}0$ m halten. Aktueller Istwert $y = 1{,}75$ m, P-Regler mit $K_P = 4$. Wie groß is | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Welche Aussage über Regelungen ist richtig? | 🎯 wAE |
 
@@ -4652,12 +4652,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | PT1-Glied: $G(s) = frac{2}{1+0{,}5s}$. Wie groß ist die stationäre Verstärkung $K$ (bei $s to 0$)? |  |
 | 2 | ✅ true-false | Bei Reihenschaltung zweier Übertragungsglieder $G_1$ und $G_2$ gilt $G_text{ges} = G_1 + G_2$. |  |
-| 3 | 🔘 multiple-choice | Was ist die Übertragungsfunktion $G(s)$ eines linearen Systems? | ➕ |
+| 3 | 🔘 multiple-choice | Was ist die Übertragungsfunktion $G(s)$ eines linearen Systems? | ➕ wAE |
 | 4 | 🔢 number-input | Für ein PT1-Glied $G(s) = 5/(1 + 2s)$: Wie groß ist $G(0)$ (stationäre Verstärkung)? | ➕ |
 | 5 | ✅ true-false | Zwei Übertragungsglieder in Reihe werden durch Multiplikation ihrer Übertragungsfunktionen zusammengefasst. | ➕ |
 | 6 | 🔗 matching | Ordne die Übertragungsglieder ihren Funktionen zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Überführung einer DGL in eine Übertragungsfunktion. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student sagt: "$G_1 = 2$ und $G_2 = 1/(1+s)$ in Reihe ergibt $G = 2 + 1/(1+s)$." Was ist falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student sagt: "$G_1 = 2$ und $G_2 = 1/(1+s)$ in Reihe ergibt $G = 2 + 1/(1+s)$." Was ist falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Rückkopplung: $G_o(s) = 4/(s+2)$ mit negativer Rückführung ($H = 1$). Wie groß ist die stationäre Verstärkung der Führun | ➕ |
 | 10 | 🔢 number-input | [PRÜFUNG] Regler $G_R = 5$, Strecke $G_S(s) = 1/(s+2)$. Wie groß ist die Führungsübertragungsfunktion $T(0)$ bei $s = 0$ | 🎯 |
 
@@ -4677,12 +4677,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Welcher Regleranteil beseitigt den stationären Fehler (bleibende Regelabweichung)? | wAE |
 | 2 | ✅ true-false | Der D-Anteil eines PID-Reglers reagiert auf den aktuellen Fehlerwert $e(t)$. |  |
-| 3 | 🔘 multiple-choice | Welcher Anteil des PID-Reglers beseitigt einen stationären Fehler bei einer Regelstrecke ohne Integration? | ➕ |
+| 3 | 🔘 multiple-choice | Welcher Anteil des PID-Reglers beseitigt einen stationären Fehler bei einer Regelstrecke ohne Integration? | ➕ wAE |
 | 4 | 🔢 number-input | PI-Regler mit $K_P = 2$, $T_I = 0{,}5$ s. Bei konstantem $e = 3$ nach $t = 1$ s (Integral von 0 bis 1): Wie groß ist $u( | ➕ |
 | 5 | ✅ true-false | Der D-Anteil eines PID-Reglers reagiert auf die Änderungsrate $de/dt$ der Regelabweichung. | ➕ |
 | 6 | 🔗 matching | Ordne die Anteile ihren typischen Wirkungen zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur empirischen Auslegung eines PID-Reglers (Ziegler-Nichols, Schwingungsmethode). | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student stellt fest: "Der I-Anteil mit großem $K_I$ macht den Regler noch besser." Was übersieht er? | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student stellt fest: "Der I-Anteil mit großem $K_I$ macht den Regler noch besser." Was übersieht er? | ➕ wAE |
 | 9 | 🔢 number-input | PI-Regler mit $K_P = 3$, $T_I = 2$ s. Regelabweichung steigt linear: $e(t) = 0{,}5 cdot t$ (in passender Einheit). Wie g | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] PID im Laplace-Bereich: $G_R(s) = K_P(1 + 1/(T_I s) + T_D s)$. Was dominiert bei hohen Frequenzen ($s to infty | 🎯 wAE |
 
@@ -4697,12 +4697,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Ein System ist stabil, wenn alle Pole der Übertragungsfunktion ... | wAE |
 | 2 | ✅ true-false | Ein Phasenrand von $45°$ gilt als gute Stabilitätsreserve. |  |
-| 3 | 🔘 multiple-choice | Welche Bedingung müssen die Pole erfüllen, damit ein lineares System stabil ist? | ➕ |
+| 3 | 🔘 multiple-choice | Welche Bedingung müssen die Pole erfüllen, damit ein lineares System stabil ist? | ➕ wAE |
 | 4 | 🔢 number-input | System mit $G(s) = 10/(s^2 + 3s + 2)$. Der Realteil beider Pole ist negativ? (Antwort: $-1$ oder $-2$ — gib den kleinere | ➕ |
 | 5 | ✅ true-false | Nullstellen der Übertragungsfunktion beeinflussen die Stabilität eines Systems. | ➕ |
 | 6 | 🔗 matching | Ordne Pollage und Zeitverhalten zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Stabilitätsprüfung eines Regelkreises. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student sagt: "Das System $G(s) = (s+10)/(s^2 + 4s + 4)$ ist instabil, weil die Nullstelle bei $s = -10$ liegt." Was | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student sagt: "Das System $G(s) = (s+10)/(s^2 + 4s + 4)$ ist instabil, weil die Nullstelle bei $s = -10$ liegt." Was | ➕ wAE |
 | 9 | 🔢 number-input | Charakteristische Gleichung $s^2 + a s + 4 = 0$. Welches minimale $a$ macht das System gerade grenzstabil (auf der Grenz | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] System 3. Ordnung: Nenner $2s^3 + 3s^2 + s + k$. Welche Aussage zur Hurwitz-Bedingung ist richtig? | 🎯 wAE |
 
@@ -4743,12 +4743,12 @@
 | 1 | 🔢 number-input | [PRÜFUNG] P-Regler $K_P = 10$, Strecke $G_S(s) = 1/(s+1)$. Wie groß ist die bleibende Regelabweichung $e_text{stat}$ für |  |
 | 2 | 🔢 number-input | [PRÜFUNG] PT1-Glied: $G(s) = 3/(1+2s)$. Wie groß ist die Verstärkung bei $f = 0,text{Hz}$ (DC)? |  |
 | 3 | 🔘 multiple-choice | [PRÜFUNG] Welcher Regler-Typ gewährleistet stationäre Genauigkeit bei einem Rampeneingang? | wAE |
-| 4 | 🔘 multiple-choice | [PRÜFUNG] Wovon hängt der stationäre Regelfehler eines geschlossenen Kreises bei konstanter Führungsgröße ab? | ➕ |
+| 4 | 🔘 multiple-choice | [PRÜFUNG] Wovon hängt der stationäre Regelfehler eines geschlossenen Kreises bei konstanter Führungsgröße ab? | ➕ wAE |
 | 5 | 🔢 number-input | [PRÜFUNG] P-Regler $K_P = 4$, PT1-Strecke $K_S = 2$, $T = 3$ s. Konstanter Sollwert $w_0 = 10$. Wie groß ist $e_{stat}$? | ➕ |
 | 6 | ✅ true-false | [PRÜFUNG] Ein Pol der Führungsübertragungsfunktion bei $s = +1$ macht das geschlossene System instabil. | ➕ |
 | 7 | 🔗 matching | [PRÜFUNG] Ordne Systemtyp und stat. Fehler bei Sprungeingang zu (offener Kreis). | ➕ |
 | 8 | 📋 sorting | [PRÜFUNG] Ordne die Schritte zur Reglerauslegung für einen stationären Fehler von null bei Sprung. | ➕ |
-| 9 | 🔘 multiple-choice | [PRÜFUNG] Ein Student schließt aus "Pol bei $s = -0{,}5 + 3j$" auf Instabilität. Was ist falsch? | ➕ |
+| 9 | 🔘 multiple-choice | [PRÜFUNG] Ein Student schließt aus "Pol bei $s = -0{,}5 + 3j$" auf Instabilität. Was ist falsch? | ➕ wAE |
 | 10 | ✅ true-false | [PRÜFUNG] Ein stabiler Regelkreis hat alle Pole der Führungsübertragungsfunktion $T(s)$ in der linken $s$-Halbebene. | 🎯 |
 
 <a id="python-matlab"></a>
@@ -4776,12 +4776,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Welchen Typ hat `x` nach `x = 3.0` in Python? | wAE |
 | 2 | 🔘 multiple-choice | Was ergibt `type(True)` in Python? | wAE |
-| 3 | 🔘 multiple-choice | Welchen Typ hat `x` nach `x = 7` in Python? | ➕ |
+| 3 | 🔘 multiple-choice | Welchen Typ hat `x` nach `x = 7` in Python? | ➕ wAE |
 | 4 | 🔢 number-input | Was gibt `len([1, 2, 3, 4, 5])` zurück? | ➕ |
 | 5 | ✅ true-false | In Matlab ist der Standarddatentyp für Zahlen `double`, während Python zwischen `int` und `float` unterscheidet. | ➕ |
 | 6 | 🔗 matching | Ordne Python-Datentypen ihrem Matlab-Äquivalent zu. | ➕ |
 | 7 | 📋 sorting | Bringe die Python-Zeilen in die richtige Reihenfolge, um den Typ einer Variable zu prüfen. | ➕ |
-| 8 | 🔘 multiple-choice | Was ist falsch an `x = int("3.14")` in Python? | ➕ |
+| 8 | 🔘 multiple-choice | Was ist falsch an `x = int("3.14")` in Python? | ➕ wAE |
 | 9 | 🔢 number-input | Was gibt `int(float("7.9"))` zurück? | ➕ |
 | 10 | ✅ true-false | In Python muss man den Datentyp einer Variable bei der Deklaration angeben. | 🎯 |
 
@@ -4796,12 +4796,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Was ergibt `17 // 5` in Python? |  |
 | 2 | 🔢 number-input | Was ergibt `17 % 5` in Python? |  |
-| 3 | 🔘 multiple-choice | Welcher Operator berechnet in Python den Rest einer Division? | ➕ |
+| 3 | 🔘 multiple-choice | Welcher Operator berechnet in Python den Rest einer Division? | ➕ wAE |
 | 4 | 🔢 number-input | Was ergibt `2 ** 10` in Python? | ➕ |
 | 5 | ✅ true-false | In Python ergibt `7 / 2` den Wert `3`, weil die Division ganzzahlig ist. | ➕ |
 | 6 | 🔗 matching | Ordne Python-Operatoren ihren Matlab-Äquivalenten zu. | ➕ |
 | 7 | 📋 sorting | Bringe die Auswertung von `3 + 2 ** 3 * 2` in die richtige Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Was ist am folgenden Matlab-Code falsch, wenn man ihn 1:1 in Python übernimmt: `x = 2^8`? | ➕ |
+| 8 | 🔘 multiple-choice | Was ist am folgenden Matlab-Code falsch, wenn man ihn 1:1 in Python übernimmt: `x = 2^8`? | ➕ wAE |
 | 9 | 🔢 number-input | Was ergibt `(100 % 7) + (100 // 7)` in Python? | ➕ |
 | 10 | 🔘 multiple-choice | Was ergibt `2 ** 3 + 1` in Python? | 🎯 wAE |
 
@@ -4816,12 +4816,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Gegeben: `a = [10, 20, 30, 40, 50]`. Was ergibt `a[2]` in Python? |  |
 | 2 | ✅ true-false | In Matlab gibt `a(0)` das erste Element eines Arrays zurück. |  |
-| 3 | 🔘 multiple-choice | Was ist der Hauptunterschied zwischen einer Python-`list` und einem `numpy.array`? | ➕ |
+| 3 | 🔘 multiple-choice | Was ist der Hauptunterschied zwischen einer Python-`list` und einem `numpy.array`? | ➕ wAE |
 | 4 | 🔢 number-input | Was gibt `len([10, 20, 30, 40])` zurück? | ➕ |
 | 5 | ✅ true-false | In Python startet der Listenindex bei 0, in Matlab startet der Vektorindex bei 1. | ➕ |
 | 6 | 🔗 matching | Ordne Python-Konstrukte ihren Matlab-Äquivalenten zu. | ➕ |
 | 7 | 📋 sorting | Bringe den Code zur Erstellung und Verwendung eines NumPy-Arrays in die richtige Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Was ist falsch, wenn man `a = [1, 2, 3]` als Python-`list` anlegt und dann `a * 2` als elementweise Verdoppelung interpr | ➕ |
+| 8 | 🔘 multiple-choice | Was ist falsch, wenn man `a = [1, 2, 3]` als Python-`list` anlegt und dann `a * 2` als elementweise Verdoppelung interpr | ➕ wAE |
 | 9 | 🔢 number-input | Was ist `np.array([3, 6, 9])[1]`? | ➕ |
 | 10 | 🔘 multiple-choice | Welcher Befehl erzeugt in Python ein NumPy-Array mit den Werten 1 bis 5? | 🎯 wAE |
 
@@ -4836,12 +4836,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Was gibt dieser Code aus? ```python for i in range(3):     print(i) ``` | wAE |
 | 2 | ✅ true-false | In Python wird ein Codeblock durch geschweifte Klammern `{}` definiert. |  |
-| 3 | 🔘 multiple-choice | Was erzeugt `range(5)` in Python? | ➕ |
+| 3 | 🔘 multiple-choice | Was erzeugt `range(5)` in Python? | ➕ wAE |
 | 4 | 🔢 number-input | Wie oft wird der Schleifenkörper bei `for i in range(3):` ausgeführt? | ➕ |
 | 5 | ✅ true-false | In Python werden Code-Blöcke (for, if, def) durch Einrückung definiert, nicht durch `end`-Schlüsselwörter. | ➕ |
 | 6 | 🔗 matching | Ordne Python-Kontrollstrukturen ihren Matlab-Äquivalenten zu. | ➕ |
 | 7 | 📋 sorting | Bringe die Python-Schleife zur Summe 1+2+3+4+5 in die richtige Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Was ist falsch an diesem Python-Code? ``` for i in range(5)     print(i) ``` | ➕ |
+| 8 | 🔘 multiple-choice | Was ist falsch an diesem Python-Code? ``` for i in range(5)     print(i) ``` | ➕ wAE |
 | 9 | 🔢 number-input | Was gibt diese Schleife aus? `s = 0 for i in range(4): s += i print(s)` — Welchen Wert hat `s`? | ➕ |
 | 10 | 🔘 multiple-choice | Wie lautet das Matlab-Äquivalent zu `for i in range(1, 6):`? | 🎯 wAE |
 
@@ -4856,12 +4856,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Was gibt `kraft(5)` zurück, wenn `def kraft(m, a=9.81): return m * a`? | wAE |
 | 2 | 🔘 multiple-choice | Wie definiert man in Matlab eine anonyme Funktion f(x) = sin(x)/x? | wAE |
-| 3 | 🔘 multiple-choice | Wie gibt eine Python-Funktion mehrere Werte gleichzeitig zurück? | ➕ |
+| 3 | 🔘 multiple-choice | Wie gibt eine Python-Funktion mehrere Werte gleichzeitig zurück? | ➕ wAE |
 | 4 | 🔢 number-input | Wie viele Parameter hat `def berechne(kraft, flaeche, faktor=1.0):`? | ➕ |
 | 5 | ✅ true-false | In Python ist das Schlüsselwort `def` nötig, um eine Funktion zu definieren, während Matlab das Schlüsselwort `function` | ➕ |
 | 6 | 🔗 matching | Ordne Python-Funktionssyntax ihrer Matlab-Entsprechung zu. | ➕ |
 | 7 | 📋 sorting | Bringe die Python-Funktion zur Berechnung von σ = F/A in die richtige Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Was ist falsch an dieser Python-Funktion? ``` def quadrat(x): return x ** 2 ``` | ➕ |
+| 8 | 🔘 multiple-choice | Was ist falsch an dieser Python-Funktion? ``` def quadrat(x): return x ** 2 ``` | ➕ wAE |
 | 9 | 🔢 number-input | Was gibt `def f(x): return x * 3` aufgerufen als `f(7)` zurück? | ➕ |
 | 10 | ✅ true-false | Eine Python-Funktion kann mehrere Werte gleichzeitig zurückgeben. | 🎯 |
 
@@ -4881,12 +4881,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Welcher Befehl erzeugt eine 3×3 Einheitsmatrix in NumPy? | wAE |
 | 2 | ✅ true-false | In NumPy führt `A * B` eine Matrixmultiplikation durch. |  |
-| 3 | 🔘 multiple-choice | Was bedeutet Broadcasting in NumPy? | ➕ |
+| 3 | 🔘 multiple-choice | Was bedeutet Broadcasting in NumPy? | ➕ wAE |
 | 4 | 🔢 number-input | Was gibt `np.zeros(4).size` zurück? | ➕ |
 | 5 | ✅ true-false | In NumPy führt `a * b` bei zwei Arrays eine elementweise Multiplikation durch, nicht eine Matrixmultiplikation. | ➕ |
 | 6 | 🔗 matching | Ordne NumPy-Funktionen ihren Matlab-Äquivalenten zu. | ➕ |
 | 7 | 📋 sorting | Bringe den Code zur Berechnung des Mittelwerts mit NumPy in die richtige Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Was ist falsch an `a = np.array([1, 2, 3]); b = np.array([1, 2]); c = a + b`? | ➕ |
+| 8 | 🔘 multiple-choice | Was ist falsch an `a = np.array([1, 2, 3]); b = np.array([1, 2]); c = a + b`? | ➕ wAE |
 | 9 | 🔢 number-input | Was ist `np.sum(np.array([1, 2, 3, 4]))`? | ➕ |
 | 10 | 🔘 multiple-choice | Was ist das Matlab-Äquivalent zu `np.linspace(0, 2*np.pi, 100)`? | 🎯 wAE |
 
@@ -4901,12 +4901,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Welcher Befehl fügt eine Legende zu einem Matplotlib-Plot hinzu? | wAE |
 | 2 | 📋 sorting | Bringe die Schritte zum Erstellen eines Plots in die richtige Reihenfolge: |  |
-| 3 | 🔘 multiple-choice | Welcher Befehl zeigt in Matplotlib den fertigen Plot an? | ➕ |
+| 3 | 🔘 multiple-choice | Welcher Befehl zeigt in Matplotlib den fertigen Plot an? | ➕ wAE |
 | 4 | 🔢 number-input | Wie viele Datenpunkte enthält `np.linspace(0, 10, 11)`? | ➕ |
 | 5 | ✅ true-false | Mit `plt.plot(x, y, label="Kurve")` und anschließendem `plt.legend()` erscheint eine Legende im Diagramm. | ➕ |
 | 6 | 🔗 matching | Ordne Matplotlib-Befehle ihren Matlab-Äquivalenten zu. | ➕ |
 | 7 | 📋 sorting | Bringe den Code für einen einfachen Sinus-Plot in die richtige Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Was fehlt in diesem Code, damit die Legende erscheint? ``` plt.plot(x, y) plt.show() ``` | ➕ |
+| 8 | 🔘 multiple-choice | Was fehlt in diesem Code, damit die Legende erscheint? ``` plt.plot(x, y) plt.show() ``` | ➕ wAE |
 | 9 | 🔢 number-input | Wie viele Datenpunkte plottet `plt.plot(np.linspace(0,5,6), np.linspace(0,5,6))`? | ➕ |
 | 10 | ✅ true-false | In Matplotlib speichert man einen Plot mit `plt.savefig()` VOR `plt.show()`. | 🎯 |
 
@@ -4921,12 +4921,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Wie löst man `Ax = b` in NumPy? | wAE |
 | 2 | 🔘 multiple-choice | Was ist das Matlab-Äquivalent zu `np.linalg.solve(A, b)`? | wAE |
-| 3 | 🔘 multiple-choice | Wie muss die Gleichung `x**2 = 4` formuliert werden, damit `fsolve` sie lösen kann? | ➕ |
+| 3 | 🔘 multiple-choice | Wie muss die Gleichung `x**2 = 4` formuliert werden, damit `fsolve` sie lösen kann? | ➕ wAE |
 | 4 | 🔢 number-input | Was gibt `fsolve(lambda x: x - 5, 0)` näherungsweise zurück? | ➕ |
 | 5 | ✅ true-false | `scipy.optimize.fsolve` kann nur Gleichungen mit einer Unbekannten lösen. | ➕ |
 | 6 | 🔗 matching | Ordne Python/SciPy-Funktionen ihren Matlab-Äquivalenten zu. | ➕ |
 | 7 | 📋 sorting | Bringe den Code zur Lösung von `x**3 - 8 = 0` mit fsolve in die richtige Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Was ist falsch, wenn man `fsolve(f, x0)` mit `f = lambda x: x**2 - 4` und `x0 = 0` aufruft? | ➕ |
+| 8 | 🔘 multiple-choice | Was ist falsch, wenn man `fsolve(f, x0)` mit `f = lambda x: x**2 - 4` und `x0 = 0` aufruft? | ➕ wAE |
 | 9 | 🔢 number-input | Was ist die Lösung von `x - 7 = 0`? (Gib x an.) | ➕ |
 | 10 | ✅ true-false | `scipy.optimize.fsolve` kann nur Funktionen mit einer Variable lösen. | 🎯 |
 
@@ -4941,12 +4941,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Welche SciPy-Funktion berechnet ein bestimmtes Integral numerisch? | wAE |
 | 2 | ✅ true-false | Um eine DGL 2. Ordnung mit solve_ivp zu lösen, muss man sie in ein System 1. Ordnung umschreiben. |  |
-| 3 | 🔘 multiple-choice | Welche Form muss die Funktion `f` haben, damit `solve_ivp(f, [0, 10], [1])` funktioniert? | ➕ |
+| 3 | 🔘 multiple-choice | Welche Form muss die Funktion `f` haben, damit `solve_ivp(f, [0, 10], [1])` funktioniert? | ➕ wAE |
 | 4 | 🔢 number-input | Was gibt `quad(lambda x: 1, 0, 5)` näherungsweise als ersten Rückgabewert zurück? | ➕ |
 | 5 | ✅ true-false | `scipy.integrate.quad(f, a, b)` gibt nur den Integralwert zurück, keine Fehlerabschätzung. | ➕ |
 | 6 | 🔗 matching | Ordne SciPy-Integrationsfunktionen ihren Matlab-Äquivalenten zu. | ➕ |
 | 7 | 📋 sorting | Bringe den Code zur numerischen Integration von $int_0^1 x^2,dx$ in die richtige Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Was ist falsch, wenn man `solve_ivp` aufruft als `solve_ivp(lambda t: -t, [0, 5], [1])`? | ➕ |
+| 8 | 🔘 multiple-choice | Was ist falsch, wenn man `solve_ivp` aufruft als `solve_ivp(lambda t: -t, [0, 5], [1])`? | ➕ wAE |
 | 9 | 🔢 number-input | Was ist $int_0^2 2,dx$? (Exakter Wert) | ➕ |
 | 10 | 🔘 multiple-choice | Was ist das Matlab-Äquivalent zu `solve_ivp`? | 🎯 wAE |
 
@@ -4966,12 +4966,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Ein Rechteckquerschnitt hat b = 40 mm und h = 80 mm. Wie groß ist das Widerstandsmoment $W = bh^2/6$ in $mm^3$? (Ganzzah |  |
 | 2 | 🔘 multiple-choice | Welches NumPy-Feature macht Festigkeitsberechnungen besonders effizient? | wAE |
-| 3 | 🔘 multiple-choice | Welche Python-Funktion berechnet die Normalspannung σ = F/A korrekt? | ➕ |
+| 3 | 🔘 multiple-choice | Welche Python-Funktion berechnet die Normalspannung σ = F/A korrekt? | ➕ wAE |
 | 4 | 🔢 number-input | Was gibt `1000 / 0.002` in Python zurück? ($sigma$ in Pa bei F=1000 N, A=0.002 $m^2$) | ➕ |
 | 5 | ✅ true-false | In Python kann man eine Festigkeitsberechnung für mehrere Kraftwerte gleichzeitig durchführen, indem man ein `numpy.arra | ➕ |
 | 6 | 🔗 matching | Ordne Festigkeitsvariablen ihrer Python-Entsprechung zu. | ➕ |
 | 7 | 📋 sorting | Bringe die Berechnung der Spannung eines Rundstabs in die richtige Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Was ist falsch, wenn man für $sigma = F/A$ die Fläche in $mm^2$ einsetzt und die Kraft in N? | ➕ |
+| 8 | 🔘 multiple-choice | Was ist falsch, wenn man für $sigma = F/A$ die Fläche in $mm^2$ einsetzt und die Kraft in N? | ➕ wAE |
 | 9 | 🔢 number-input | Berechne $sigma = F/A$ für $F = 2000$ N und $A = 0.004$ $m^2$. Gib $sigma$ in Pa an. | ➕ |
 | 10 | ✅ true-false | In der Matlab-Version muss man `.^` statt `^` für elementweise Potenzierung verwenden. | 🎯 |
 
@@ -4986,12 +4986,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Welche Python-Bibliothek ist am besten für tabellarische Messdaten geeignet? | wAE |
 | 2 | 📋 sorting | Bringe die Schritte der Messdatenauswertung in die richtige Reihenfolge: |  |
-| 3 | 🔘 multiple-choice | Was gibt `np.std(data)` zurück? | ➕ |
+| 3 | 🔘 multiple-choice | Was gibt `np.std(data)` zurück? | ➕ wAE |
 | 4 | 🔢 number-input | Was gibt `np.mean(np.array([2, 4, 6, 8]))` zurück? | ➕ |
 | 5 | ✅ true-false | `np.polyfit(x, y, 1)` gibt für eine lineare Regression die Koeffizienten in der Reihenfolge [Achsenabschnitt, Steigung]  | ➕ |
 | 6 | 🔗 matching | Ordne NumPy-Statistikfunktionen ihren Matlab-Äquivalenten zu. | ➕ |
 | 7 | 📋 sorting | Bringe die Schritte einer linearen Regression in die richtige Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Was gibt `np.std([5, 5, 5, 5])` zurück? | ➕ |
+| 8 | 🔘 multiple-choice | Was gibt `np.std([5, 5, 5, 5])` zurück? | ➕ wAE |
 | 9 | 🔢 number-input | Was ist `np.mean(np.array([10, 20, 30]))`? | ➕ |
 | 10 | ✅ true-false | `np.polyfit(x, y, 3)` fittet ein Polynom 3. Grades an die Daten. | 🎯 |
 
@@ -5006,12 +5006,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Berechne die Eigenkreisfrequenz ω₀ für m = 2 kg und k = 200 N/m. |  |
 | 2 | 🔘 multiple-choice | Was passiert bei Resonanz (Ω ≈ ω₀)? | wAE |
-| 3 | 🔘 multiple-choice | Warum wird eine DGL 2. Ordnung wie das Feder-Masse-System in zwei DGL 1. Ordnung umgewandelt? | ➕ |
+| 3 | 🔘 multiple-choice | Warum wird eine DGL 2. Ordnung wie das Feder-Masse-System in zwei DGL 1. Ordnung umgewandelt? | ➕ wAE |
 | 4 | 🔢 number-input | Für m=1, d=0, k=1, x(0)=1, ẋ(0)=0: Was ist die Eigenfrequenz $omega_0 = sqrt{k/m}$? | ➕ |
 | 5 | ✅ true-false | Für `solve_ivp` wird das Feder-Masse-Dämpfer-System als Funktion `f(t, y)` übergeben, wobei `y[0]` die Position und `y[1 | ➕ |
 | 6 | 🔗 matching | Ordne Systemparameter des Feder-Masse-Dämpfers ihrem Python-Code zu. | ➕ |
 | 7 | 📋 sorting | Bringe die Systemfunktion für einen ungedämpften Schwinger (d=0) in die richtige Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Was ist falsch an `def f(t, y): return -k * y` für ein Feder-Masse-System mit m=1, wenn y ein Vektor [x, v] ist? | ➕ |
+| 8 | 🔘 multiple-choice | Was ist falsch an `def f(t, y): return -k * y` für ein Feder-Masse-System mit m=1, wenn y ein Vektor [x, v] ist? | ➕ wAE |
 | 9 | 🔢 number-input | Für k=4, m=1: Was ist $omega_0 = sqrt{k/m}$? | ➕ |
 | 10 | 🔢 number-input | Berechne den Dämpfungsgrad D für m = 1 kg, d = 4 Ns/m, k = 100 N/m. | 🎯 |
 

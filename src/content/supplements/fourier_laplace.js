@@ -82,6 +82,11 @@ $a_0/2$ ist der Mittelwert (DC-Anteil).
       'Konstantglied der Reihe.',
       'Gleichanteil einer Funktion.',
     ],
+    conceptWrongAnswers: {
+      1: 'Die Amplitude der Grundschwingung steckt in $a_1$ und $b_1$ (bzw. $\\sqrt{a_1^2+b_1^2}$), nicht in $a_0/2$. $a_0/2$ ist der konstante Anteil ohne Schwingungsfrequenz.',
+      2: 'Die Phase der 1. Harmonischen folgt aus $\\arctan(b_1/a_1)$. $a_0/2$ hat mit Phase gar nichts zu tun — es ist ein reiner DC-Wert.',
+      3: 'Die Nyquist-Frequenz betrifft zeitdiskrete Abtastung ($f_{\\text{Nyq}} = f_s/2$), nicht Fourier-Reihen. Sie hat mit $a_0$ nichts zu tun.',
+    },
 
     calcQuestion: 'Wie groß ist $a_0$ für die Funktion $f(t) = \\sin(t)$ auf $[0, 2\\pi]$?',
     calcAnswer: 0,
