@@ -52,6 +52,11 @@ const unit1 = makeUnit({
             'Wenn X in mm, dann $(X - \\mu)^2$ in ...?',
             'Quadrat der Einheit.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Das ist die Einheit der Standardabweichung $\\sigma$ (Wurzel aus Varianz). Varianz enthält aber die quadrierte Abweichung $(X-\\mu)^2$, also $\\text{mm}^2$.',
+            '2': 'Dimensionslos ist z.B. ein Variationskoeffizient $\\sigma/\\mu$. Varianz ohne Normierung behält die (quadrierte) Einheit der Messgröße.',
+            '3': 'N/mm ist eine Kraft/Längen-Einheit — hat nichts mit Statistik zu tun. Varianz hängt nur von der Einheit von $X$ ab, quadriert.',
+          },
         },
         {
           type: 'number-input',
@@ -133,6 +138,11 @@ const unit1 = makeUnit({
             'Faktor $a$ skaliert die Abweichungen $(X - \\mu)$; Varianz hat diese quadriert.',
             'Ergebnis enthält $a^2$, kein $b$.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Der Faktor $a$ geht linear und $b$ additiv ein — beides falsch. Richtig: $a$ quadriert (weil Abweichung quadriert wird) und $b$ fällt ganz weg (reine Verschiebung).',
+            '2': 'Der Term $+b^2$ ist überflüssig — Verschiebung ändert die Streuung nicht. Richtig: $\\operatorname{Var}(aX+b) = a^2\\operatorname{Var}(X)$, ohne $b$.',
+            '3': '$|a|$ statt $a^2$ entsteht bei Verwechslung mit Standardabweichung: $\\sigma(aX+b) = |a|\\,\\sigma(X)$. Bei der **Varianz** wird aber quadriert.',
+          },
         },
         {
           type: 'sorting',
@@ -224,6 +234,11 @@ const unit1 = makeUnit({
             '68 % in $\\mu \\pm \\sigma$.',
             '$0 \\pm 0{,}2$.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Hier wurde die Varianz $0{,}04$ direkt als $\\sigma$ verwendet. Richtig: $\\sigma = \\sqrt{0{,}04} = 0{,}2$ — 68 %-Regel nutzt $\\sigma$, nicht $\\sigma^2$.',
+            '2': 'Die Halbbreite ist hier $2{,}5\\,\\sigma$, was eher $98{,}8\\,\\%$ entspricht. Die 68-Regel verlangt genau $\\mu \\pm \\sigma$.',
+            '3': 'Das wäre $10\\,\\sigma$ — enthält praktisch 100 % aller Werte. Viel zu breit für die 68-Regel.',
+          },
         },
         {
           type: 'number-input',
@@ -267,6 +282,11 @@ const unit1 = makeUnit({
             '5 % liegen außerhalb.',
             'Symmetrie: je 2,5 % auf jeder Seite.',
           ],
+          wrongAnswerExplanations: {
+            '1': '5 % sind die gesamte Restmasse außerhalb von $\\mu \\pm 2\\sigma$ (beide Seiten zusammen). Gefragt war nur die rechte Seite — also Hälfte davon, $2{,}5\\,\\%$.',
+            '2': '50 % entspricht $P(X > \\mu)$ (Median). Bei $\\mu + 2\\sigma$ liegt schon viel weiter rechts, daher deutlich kleiner.',
+            '3': '16 % entspricht $P(X > \\mu + \\sigma)$ (Hälfte der 32 % Außenbereich der 68-Regel), nicht $P(X > \\mu + 2\\sigma)$.',
+          },
         },
         {
           type: 'number-input',
@@ -386,6 +406,11 @@ const unit1 = makeUnit({
             '$H_0$ wird getestet und ggf. abgelehnt.',
             'Die Alternative ist $H_1$ — der vermutete Effekt.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Das beschreibt die **Alternativ**hypothese $H_1$. $H_0$ ist die Gegenaussage, die man widerlegen möchte.',
+            '2': '$\\bar x$ ist ein Schätzer, keine Hypothese. Hypothesen sind Aussagen über Parameter der Grundgesamtheit, nicht über Stichprobengrößen.',
+            '3': 'Das Konfidenzintervall ist ein Bereichsschätzer, keine Hypothese. Verbunden, aber konzeptionell verschieden.',
+          },
         },
         {
           type: 'true-false',
@@ -436,6 +461,11 @@ const unit1 = makeUnit({
             '$p > \\alpha$ bedeutet: nicht signifikant.',
             'Nicht signifikant $\\neq$ $H_0$ wahr.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Ablehnung erfordert $p < \\alpha$. Hier gilt $0{,}12 > 0{,}05$, daher **nicht** signifikant.',
+            '2': 'Ein hoher p-Wert deutet nicht auf einen Testfehler hin — er bedeutet einfach, dass die Daten mit $H_0$ kompatibel sind.',
+            '3': 'Beweis ist in der Statistik nie möglich. Selbst bei $p < \\alpha$ wird $H_0$ nur **abgelehnt**, nicht $H_1$ bewiesen.',
+          },
         },
         {
           type: 'number-input',
@@ -607,6 +637,11 @@ const unit2 = makeUnit({
             'Begriff: Erwartungstreu (unbiased).',
             'Bessel-Korrektur — relevant bei Prüfungen.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Keine Tradition, sondern Mathematik: Teilen durch $n$ liefert einen systematisch zu kleinen Schätzer. $n-1$ ist theoretisch begründet (Freiheitsgradverlust durch $\\bar x$).',
+            '2': 'Teilen durch $n$ wäre rechnerisch einfacher, ist aber statistisch verzerrt. Man akzeptiert die kleine Komplikation, um Erwartungstreue zu erhalten.',
+            '3': '$n-1$ ist per Definition **kleiner** als $n$. Der Grund ist statistischer Natur (Freiheitsgrade), nicht arithmetischer.',
+          },
         },
         {
           type: 'multiple-choice',
@@ -621,6 +656,11 @@ const unit2 = makeUnit({
             '$s/\\sqrt{n} = 10/5 = 2$.',
             '$2{,}064 \\cdot 2 \\approx 4{,}13$.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Hier wurde $z = 1{,}96$ statt $t_{24;0{,}975} = 2{,}064$ genommen und außerdem $s/\\sqrt{n} = 1$ angenommen. Beide Fehler kumuliert — richtig: $2{,}064 \\cdot 2 = 4{,}13$.',
+            '2': 'Hier ist der Faktor $t$ vergessen — nur $s = 10$ angegeben. Die Halbbreite muss $s$ mit $t/\\sqrt{n}$ multiplizieren, also $10 \\cdot 2{,}064/5 \\approx 4{,}13$.',
+            '3': 'Hier wurde $\\sqrt{n}$ mit $n$ verwechselt: $s/n = 10/25 = 0{,}4$, dann $\\cdot\\, 2{,}064 \\approx 0{,}83$ — gerundet $0{,}4$. Die Formel ist $s/\\sqrt{n}$, nicht $s/n$.',
+          },
         },
         {
           type: 'true-false',
@@ -771,6 +811,11 @@ const unit2 = makeUnit({
             '$z = -8/4 = -2$.',
             'Symmetrie: $\\Phi(-z) = 1 - \\Phi(z)$.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Das ist $\\Phi(+2) = P(Z \\leq 2)$, entstanden durch Vergessen des Vorzeichens bei $z = -2$. Bei $x < \\mu$ ist $z$ negativ und die Wahrscheinlichkeit klein.',
+            '2': '$0{,}5$ entspricht $P(X \\leq \\mu) = P(X \\leq 50)$. Hier ist aber $x = 42 < \\mu$, also deutlich kleiner als $0{,}5$.',
+            '3': '$0{,}159 = 1 - \\Phi(1)$ entsteht aus $z = -1$ statt $z = -2$. Hier aber: $z = (42-50)/4 = -2$, nicht $-1$.',
+          },
         },
         {
           type: 'number-input',
@@ -813,6 +858,11 @@ const unit2 = makeUnit({
             'Standard-Quantile merken.',
             '1,96 ist DER Prüfungswert.',
           ],
+          wrongAnswerExplanations: {
+            '1': '$\\Phi(1) \\approx 0{,}841$, nicht $0{,}975$. $z = 1$ gehört zur 68-Regel, nicht zum 95-%-Quantil.',
+            '2': '$\\Phi(2{,}576) = 0{,}995$ entspricht dem 99-%-Quantil (bzw. 2-seitig 99 %). Gesucht ist $0{,}975$, also 95 % zweiseitig mit $z = 1{,}96$.',
+            '3': 'Verwechslung von Quantil und Wahrscheinlichkeit: $z$ ist das Argument von $\\Phi$, nicht der Funktionswert selbst. $\\Phi(0{,}975) \\approx 0{,}835$, nicht $0{,}975$.',
+          },
         },
         {
           type: 'matching',
@@ -969,6 +1019,11 @@ const unit2 = makeUnit({
             'Halbe Breite → $\\sqrt{n}$ verdoppeln.',
             '$\\sqrt{4n} = 2\\sqrt{n}$.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Verdoppelung von $n$ reduziert die Halbbreite nur um Faktor $\\sqrt{2} \\approx 1{,}41$, nicht um Faktor 2. Für halbe Breite braucht es $4n$.',
+            '2': 'Bei unverändertem $n$ bleibt die Halbbreite gleich. Zur Reduktion muss $n$ wachsen.',
+            '3': 'Viertelung von $n$ **verdoppelt** die Halbbreite (wegen $1/\\sqrt{n/4} = 2/\\sqrt{n}$), statt sie zu halbieren.',
+          },
         },
         {
           type: 'true-false',
@@ -1003,6 +1058,11 @@ const unit2 = makeUnit({
             '$t \\cdot 0{,}1 = 0{,}213$.',
             'KI: $\\bar x \\pm 0{,}213$.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Hier wurde $\\sqrt{n} = 2$ statt $4$ verwendet, was die Halbbreite auf $0{,}4$ verdoppelt. Richtig: $\\sqrt{16} = 4$, Halbbreite $\\approx 0{,}21$.',
+            '2': 'Hier wurde $s = 0{,}4$ direkt als Halbbreite genommen, ohne $t$-Faktor und $\\sqrt{n}$. Die Halbbreite muss $t \\cdot s/\\sqrt{n}$ sein, nicht einfach $s$.',
+            '3': 'Kombination zweier Fehler: $\\sqrt{n}$ falsch **und** $t$ ignoriert. Die korrekte Halbbreite $\\approx 0{,}21$ weicht deutlich ab.',
+          },
         },
         {
           type: 'matching',

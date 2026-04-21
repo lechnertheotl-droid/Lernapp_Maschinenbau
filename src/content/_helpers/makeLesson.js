@@ -22,6 +22,7 @@ export function makeLesson({
   correctIndex = 0,
   masteryExplanation,
   masteryHints = [],
+  masteryWrongAnswerExplanations,
   exercises: extraExercises = [],
   prerequisites = [],
   nextLessonId = null,
@@ -96,6 +97,7 @@ export function makeLesson({
     correctIndex,
     explanation: masteryExplanation ?? '',
     hints: masteryHints,
+    ...(masteryWrongAnswerExplanations ? { wrongAnswerExplanations: masteryWrongAnswerExplanations } : {}),
   }
 
   return {

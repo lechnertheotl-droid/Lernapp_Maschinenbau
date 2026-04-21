@@ -39,6 +39,11 @@ const unit1Lessons = [
         correctIndex: 0,
         explanation: '„Gerade" bezieht sich auf **Symmetrie**, nicht auf ganzzahlige Werte. Spiegeln an der y-Achse ändert $f$ nicht. Beispiele: $\\cos t$, $t^2$, $|t|$.',
         hints: ['Geometrisch: Spiegeln an der y-Achse ändert nichts.', '$f(-t) = f(t)$.', 'Nichts mit geraden/ungeraden Zahlen zu tun.'],
+        wrongAnswerExplanations: {
+          '1': 'Das ist die Definition einer **ungeraden** Funktion (Punktsymmetrie zum Ursprung), z.B. $\\sin t$ oder $t^3$. Gerade Funktionen sind dagegen zur y-Achse symmetrisch.',
+          '2': 'Periodizität $f(t+T) = f(t)$ ist eine andere Eigenschaft. Eine Funktion kann periodisch sein, ohne gerade zu sein (z.B. $\\sin t$).',
+          '3': 'Die Bezeichnung „gerade" hat nichts mit Werten zu tun, sondern mit Spiegel-Symmetrie. $t^2$ ist gerade, obwohl $t^2$ selten ganzzahlig ist.',
+        },
       },
       {
         type: 'multiple-choice',
@@ -47,6 +52,11 @@ const unit1Lessons = [
         correctIndex: 0,
         explanation: '$a_0 = \\frac{1}{T}\\int_0^T f(t)\\,dt$ ist der **Mittelwert** über eine Periode. Der Faktor $1/2$ kommt aus der Konvention.',
         hints: ['Konstanter Term der Fourier-Reihe.', 'Integral über eine Periode, geteilt durch $T$.'],
+        wrongAnswerExplanations: {
+          '1': 'Die Amplitude der Grundwelle steckt in $a_1$ und $b_1$ (bzw. $\\sqrt{a_1^2 + b_1^2}$), nicht in $a_0/2$. $a_0/2$ ist der **konstante** Anteil ohne Frequenz.',
+          '2': 'Die Periode $T$ ist ein Parameter der Funktion, kein Koeffizient der Reihe. $a_0/2$ ist Teil der Reihe selbst (Gleichanteil).',
+          '3': 'Die Phase der ersten Harmonischen ist $\\arctan(b_1/a_1)$ — komplett andere Größe. $a_0/2$ ist rein der Mittelwert ohne Phase.',
+        },
       },
       {
         type: 'true-false',
@@ -82,6 +92,11 @@ const unit1Lessons = [
         correctIndex: 0,
         explanation: 'Diskretes Spektrum: nur **ganzzahlige** Vielfache der Grundfrequenz $\\omega_0 = 2\\pi/T$.',
         hints: ['Periodizität erzwingt diskrete Frequenzen.', 'Grundfrequenz + Harmonische.'],
+        wrongAnswerExplanations: {
+          '1': 'Ein kontinuierliches Spektrum mit allen reellen Frequenzen ergibt sich bei nicht-periodischen Signalen (Fourier-Transformation). Für periodische Funktionen liefert die Fourier-Reihe nur diskrete Linien.',
+          '2': 'Nur die Grundfrequenz reicht nicht — eine Rechteckfunktion z.B. hat neben $\\omega_0$ auch $3\\omega_0, 5\\omega_0, \\ldots$ Daher spricht man von Harmonischen.',
+          '3': '$T$ ist die Periode (Zeit), keine Frequenz. Die zugehörige Frequenz ist $\\omega_0 = 2\\pi/T$.',
+        },
       },
       {
         type: 'matching',
@@ -165,6 +180,11 @@ const unit1Lessons = [
         correctIndex: 0,
         explanation: 'Unstetige Funktionen (Sprungstellen) können nur durch unendlich viele Harmonische exakt dargestellt werden. Glatte Funktionen konvergieren viel schneller.',
         hints: ['Sprung = plötzliche Änderung.', 'Hohe Frequenzen erzeugen steile Flanken.'],
+        wrongAnswerExplanations: {
+          '1': 'Nicht jede Fourier-Reihe hat unendlich viele Terme — ein reiner Sinus $\\sin\\omega_0 t$ hat z.B. genau einen Koeffizienten. Hier ist die Unstetigkeit der entscheidende Grund.',
+          '2': 'Die Amplitude skaliert alle Koeffizienten gleichmäßig, erzeugt aber keine neuen Frequenzen. Unendlich viele Frequenzen entstehen nur durch Unstetigkeit (Sprünge).',
+          '3': 'Periodenlänge bestimmt die Grundfrequenz $\\omega_0 = 2\\pi/T$, aber nicht die Anzahl der Harmonischen. Auch kurze Rechtecksignale haben unendlich viele Oberschwingungen.',
+        },
       },
       {
         type: 'number-input',
@@ -195,6 +215,11 @@ const unit1Lessons = [
         explanation:
           'Halbwellensymmetrie: nach halber Periode kehrt sich das Vorzeichen um. Diese Symmetrie löscht alle geradzahligen Koeffizienten (Fourier-Eigenschaft).',
         hints: ['Nicht nur gerade/ungerade — es gibt noch weitere Symmetrien.', 'Halbwellen $\\to$ nur ungerade $n$.'],
+        wrongAnswerExplanations: {
+          '1': 'Gerade Symmetrie löscht nur die $b_n$, nicht die geraden Harmonischen insgesamt. Hier bleiben aber noch $a_0, a_2, a_4, \\ldots$ möglich.',
+          '2': 'Ungerade Symmetrie löscht $a_n$, erzwingt aber nicht das Verschwinden der geraden $b_n$. Die Reinigung auf ungerade $n$ liefert erst Halbwellensymmetrie.',
+          '3': 'Periodizität ist Voraussetzung für jede Fourier-Reihe, bewirkt aber keine Einschränkung auf ungerade Harmonische. Das leistet erst die Halbwellensymmetrie.',
+        },
       },
       {
         type: 'matching',
@@ -220,6 +245,11 @@ const unit1Lessons = [
         correctIndex: 0,
         explanation: 'Ideale Tiefpass-/Bandpass-Filter haben abrupte Frequenz-Übergänge → deren Impulsantwort zeigt Gibbs-Überschwinger. Deshalb in der Praxis Filter mit **glatten** Übergängen (Butterworth, Chebyshev).',
         hints: ['Filter mit steilen Übergängen → Gibbs.', 'Glatte Frequenzgänge vermeiden Überschwinger.'],
+        wrongAnswerExplanations: {
+          '1': 'Gibbs tritt bei der Fourier-**Reihe** endlicher Länge auf, nicht direkt bei der Fourier-Transformation periodischer Signale. Außerdem ist die Transformation periodischer Signale ohnehin ein Linienspektrum.',
+          '2': 'Fehlerabschätzungen hängen mit Konvergenzordnung zusammen — Gibbs ist dagegen ein qualitatives Phänomen an Sprungstellen, kein klassischer Abschätzungsfehler.',
+          '3': 'Laplace-Transformation arbeitet im Bildbereich mit komplexen $s$, hat kein Gibbs-Phänomen. Gibbs ist eine Fourier-Reihen-Eigenschaft bei Sprungstellen.',
+        },
       },
       {
         type: 'sorting',
@@ -295,6 +325,11 @@ const unit1Lessons = [
         correctIndex: 0,
         explanation: 'Fourier-Reihe → periodisch, diskretes Linienspektrum bei $n\\omega_0$. Fourier-Transformation → aperiodisch, kontinuierliches Spektrum $F(\\omega)$.',
         hints: ['Periode $T \\to \\infty$ macht Linien dicht.', 'Diskret vs. kontinuierlich.'],
+        wrongAnswerExplanations: {
+          '1': 'Die komplexe Exponentialform $e^{j\\omega t}$ lässt sich in beiden Darstellungen nutzen — die Reihe kann ebenfalls komplex geschrieben werden mit $c_n$. Der eigentliche Unterschied ist periodisch vs. aperiodisch.',
+          '2': 'Beide Verfahren bauen eine Brücke vom Zeit- in den Frequenzbereich — keines „lebt" nur auf einer Seite. Der Unterschied liegt in diskret vs. kontinuierlich.',
+          '3': 'Es gibt einen grundlegenden Unterschied: Anwendung auf periodische vs. aperiodische Signale und diskretes vs. kontinuierliches Spektrum.',
+        },
       },
       {
         type: 'multiple-choice',
@@ -303,6 +338,11 @@ const unit1Lessons = [
         correctIndex: 0,
         explanation: '$\\int_{-\\infty}^\\infty \\delta(t) e^{-j\\omega t}\\,dt = e^{-j\\omega\\cdot 0} = 1$. Ein Impuls enthält alle Frequenzen gleich stark.',
         hints: ['Ausblendeigenschaft des Dirac.', '$\\int \\delta(t) g(t)\\,dt = g(0)$.'],
+        wrongAnswerExplanations: {
+          '1': '$\\delta(\\omega)$ wäre die Transformierte einer **Konstanten** $f(t) = 1$ (skaliert mit $2\\pi$) — genau die duale Beziehung. Für $\\delta(t)$ selbst ergibt sich ein flaches Spektrum $F(\\omega) = 1$.',
+          '2': '$1/\\omega$ ist die Transformierte einer Sprung-ähnlichen Funktion (bis auf $\\pi\\delta$-Anteile), nicht von $\\delta$. Ergebnis bei $\\delta$: konstant $1$.',
+          '3': '$2\\pi$ wäre falsch skaliert — die direkte Anwendung der Ausblendeigenschaft liefert $e^{-j\\omega\\cdot 0} = 1$, nicht $2\\pi$.',
+        },
       },
       {
         type: 'matching',
@@ -344,6 +384,11 @@ const unit1Lessons = [
         correctIndex: 0,
         explanation: 'Zeitverschiebung dreht die Phase linear mit $\\omega$. Betragsspektrum $|F(\\omega)|$ bleibt unverändert.',
         hints: ['Betrag bleibt, Phase dreht.', 'Energie bleibt gleich.'],
+        wrongAnswerExplanations: {
+          '1': 'Eine Verschiebung des Spektrums im Frequenzbereich entspricht einer Modulation $e^{j\\omega_0 t}$ im Zeitbereich, nicht einer Zeitverschiebung. Zeitshift bewirkt nur Phasenänderung.',
+          '2': 'Skalierung im Zeit entspricht Skalierung im Frequenz: $f(at) \\leftrightarrow \\frac{1}{|a|}F(\\omega/a)$. Reine Verschiebung ändert aber keine Skalierung.',
+          '3': 'Zeitverschiebung bewirkt durchaus eine Phasenänderung $e^{-j\\omega t_0}$ — „keine Änderung" ist falsch, nur der Betrag bleibt gleich.',
+        },
       },
       {
         type: 'sorting',
@@ -426,6 +471,11 @@ const unit2Lessons = [
         correctIndex: 0,
         explanation: '$\\mathcal{L}\\{u(t)\\} = \\int_0^\\infty 1 \\cdot e^{-st}\\,dt = [-e^{-st}/s]_0^\\infty = 1/s$ (für $\\operatorname{Re}(s) > 0$).',
         hints: ['Integral $\\int_0^\\infty e^{-st}\\,dt$.', 'Konvergiert für $\\operatorname{Re}(s) > 0$.'],
+        wrongAnswerExplanations: {
+          '1': '$1$ ist die Laplace-Transformierte des **Dirac-Impulses** $\\delta(t)$, nicht des Einheitssprungs. Sprung integriert den Dirac, daher $\\mathcal{L}\\{u\\} = 1/s$.',
+          '2': '$s$ wäre keine sinnvolle Laplace-Transformierte einer beschränkten Funktion — die Laplace-Integrale erzeugen typischerweise Reziproke (Nennerterme mit $s$).',
+          '3': '$\\delta(s)$ gibt es als Formalismus kaum — Laplace-Transformierte sind typischerweise rationale Funktionen in $s$. Korrekt: $1/s$.',
+        },
       },
       {
         type: 'multiple-choice',
@@ -434,6 +484,11 @@ const unit2Lessons = [
         correctIndex: 0,
         explanation: '$\\mathcal{L}\\{e^{-at}\\} = 1/(s+a)$. Hier $a = 2$: $1/(s+2)$.',
         hints: ['Exponential-Transform: $1/(s+a)$.', 'Nicht verwechseln mit Fourier.'],
+        wrongAnswerExplanations: {
+          '1': 'Vorzeichen-Fehler: Bei $e^{-at}$ (Dämpfung) verschiebt sich der Pol in der Laplace-Transformation zu $s = -a$, also Nenner $(s+a)$. $1/(s-2)$ würde zu $e^{+2t}$ (instabil) gehören.',
+          '2': '$2/(s^2+4)$ ist die Laplace-Transformierte von $\\sin(2t)$, nicht von $e^{-2t}$. Unterschiedliche Zeitfunktionen — Sinus ist oszillierend, Exponential abklingend.',
+          '3': '$e^{-2s}$ gehört zur Laplace-Transformierten einer Zeitverschiebung (Satz von Heaviside): $\\mathcal{L}\\{u(t-2)\\cdot f(t-2)\\} = e^{-2s} F(s)$. Hat nichts mit $e^{-2t}$ im Zeitbereich zu tun.',
+        },
       },
       {
         type: 'number-input',
@@ -475,6 +530,11 @@ const unit2Lessons = [
         correctIndex: 0,
         explanation: 'Dämpfung im Zeit = Verschiebung im Frequenz. Damit lassen sich Transformationen wie $e^{-at}\\sin(\\omega t)$ direkt ablesen.',
         hints: ['Dämpfung $e^{-at}$ ↔ Shift $s \\to s+a$.', 'Gedämpfte Sinus aus Tabelle + Shift.'],
+        wrongAnswerExplanations: {
+          '1': 'Zeitverschiebung gehört zum Heaviside-Shift-Satz $\\mathcal{L}\\{f(t-a)u(t-a)\\} = e^{-as}F(s)$, nicht zum Dämpfungssatz $F(s+a)$.',
+          '2': 'Skalierung im Zeit $f(at)$ führt zu $\\frac{1}{a}F(s/a)$, also einer Streckung **und** Amplitudenskalierung. Der hier angegebene Satz ist aber eine reine **Verschiebung**.',
+          '3': 'Dämpfung ist eine echte Modifikation — der Dämpfungssatz $e^{-at}f(t) \\leftrightarrow F(s+a)$ ist einer der wichtigsten Sätze.',
+        },
       },
       {
         type: 'sorting',
@@ -549,6 +609,11 @@ const unit2Lessons = [
         correctIndex: 0,
         explanation: 'Ableitungssatz: $\\mathcal{L}\\{y\'\\} = s Y(s) - y(0) = s Y(s)$ (wg. $y(0)=0$). Also $s Y + 2Y = U \\Rightarrow (s+2)Y = U$.',
         hints: ['$\\mathcal{L}\\{y\'\\} = sY - y(0)$.', 'Mit $y(0) = 0$: nur $sY$.', 'Ausklammern $Y$.'],
+        wrongAnswerExplanations: {
+          '1': 'Hier wurde $2y$ als konstante $2$ transformiert statt als $2Y$ — die Zeitfunktion $y$ muss man ebenfalls Laplace-transformieren. Richtig: $sY + 2Y = U$.',
+          '2': 'Der Term $+2$ wurde wie ein Dividend umgestellt. Korrekt ist ein **Faktor** $(s+2)$ vor $Y$, nicht $+2$ nach dem Quotienten $U/s$.',
+          '3': 'Der Ableitungsterm $y\'$ wurde komplett vergessen — stattdessen nur $2Y = U$. Newton-Laplace fordert $\\mathcal{L}\\{y\'\\} = sY$, dieser Term fehlt.',
+        },
       },
       {
         type: 'multiple-choice',
@@ -562,6 +627,11 @@ const unit2Lessons = [
         correctIndex: 0,
         explanation: '$G(s)$ ist eine reine Systemeigenschaft. Für jeden Eingang $U(s)$ folgt $Y(s) = G(s)\\cdot U(s)$. Grundlage der Regelungstechnik.',
         hints: ['Nur Systemeigenschaft, kein Eingang.', 'Verhältnis der Transformationen.'],
+        wrongAnswerExplanations: {
+          '1': 'Die Sprungantwort ist $G(s)/s$ im Bildbereich, also $G$ angewandt auf einen **konkreten** Eingang (Sprung). $G(s)$ selbst ist aber eingangsunabhängig.',
+          '2': 'Anfangsbedingungen fließen bei der Definition der Übertragungsfunktion **nicht** ein — sie wird üblicherweise bei verschwindenden Anfangsbedingungen gebildet.',
+          '3': 'Eigenfrequenzen sind die Pole von $G(s)$ (Lage in $s$-Ebene). $G(s)$ selbst ist aber die **gesamte** rationale Funktion, nicht nur ein Parameter.',
+        },
       },
       {
         type: 'number-input',
@@ -603,6 +673,11 @@ const unit2Lessons = [
         correctIndex: 0,
         explanation: 'Partialbruchzerlegung kann bei komplizierten Nennern viel Rechenaufwand erzeugen. Transformation + Rücktransformation aus Tabelle sind meist schnell.',
         hints: ['Algebra vor Rücktransform.', 'Heaviside-Trick spart Zeit.'],
+        wrongAnswerExplanations: {
+          '1': 'Die Transformation der DGL ist mit dem Ableitungssatz nahezu mechanisch ($y^{(k)} \\to s^k Y - \\ldots$) — also der **leichteste** Schritt, nicht der aufwändigste.',
+          '2': '$U(s)$ wird aus einer Tabelle abgelesen (Sprung $= 1/s$, Impuls $= 1$, etc.) — trivial. Nicht der aufwändigste Schritt.',
+          '3': 'Anfangsbedingungen sind meist in der Aufgabe angegeben oder $= 0$. Kein rechenintensiver Schritt.',
+        },
       },
       {
         type: 'sorting',
@@ -682,6 +757,11 @@ const unit3Lessons = [
         correctIndex: 0,
         explanation: 'Der Term $5$ ergibt den Gleichanteil. $\\cos(3t)$ liegt bei $\\omega = 3$, $\\sin(6t)$ bei $\\omega = 6$.',
         hints: ['Konstante → Gleichanteil.', 'Frequenz = Argument durch $t$.'],
+        wrongAnswerExplanations: {
+          '1': 'Die Konstante $5$ wurde ignoriert. Jede Konstante liefert im Spektrum einen Gleichanteil (Linie bei $\\omega = 0$) — darf nicht vergessen werden.',
+          '2': 'Alle Frequenzen gäbe es bei einem breitbandigen Signal wie $\\delta(t)$. Hier ist das Signal aber eine **endliche** Summe weniger Sinus/Kosinus — nur diskrete Linien.',
+          '3': 'Die Kosinus- und Sinusterme tragen sehr wohl bei: $2\\cos(3t)$ erzeugt Linie bei $\\omega=3$, $4\\sin(6t)$ bei $\\omega=6$. Nur-Gleichanteil wäre eine Unterschlagung.',
+        },
       },
       {
         type: 'number-input',
@@ -699,6 +779,11 @@ const unit3Lessons = [
         correctIndex: 0,
         explanation: 'Gerade Funktion $\\Rightarrow$ nur $\\cos$-Terme. $b_n = 0$ für alle $n \\geq 1$.',
         hints: ['Gerade $\\times$ ungerade = ungerade.', 'Integral ungerader Funktion über Periode = 0.'],
+        wrongAnswerExplanations: {
+          '1': 'Das gilt bei **ungeraden** Funktionen (nur Sinus-Terme bleiben, $a_n = 0$). Gerade Funktionen haben dagegen nur $a_n \\neq 0$.',
+          '2': 'Nur $a_0$ = 0 gilt, wenn der Mittelwert der Funktion verschwindet — ist eine **separate** Bedingung, nicht aus Geradheit ableitbar. Gerade Rechtecke haben z.B. meist $a_0 \\neq 0$.',
+          '3': 'Warum sollte genau $b_1$ überleben? Bei gerader Funktion sind alle Sinus-Koeffizienten null — $b_1$ ist keine Ausnahme.',
+        },
       },
       {
         type: 'true-false',
@@ -792,6 +877,11 @@ const unit3Lessons = [
         correctIndex: 0,
         explanation: 'Pol bei $s = +2$ ($\\operatorname{Re} > 0$) → $e^{+2t}$ wächst unbegrenzt → **instabil**.',
         hints: ['Pol = Nullstelle des Nenners.', '$s - 2 = 0 \\Rightarrow s = +2$.', 'Rechte Halbebene = instabil.'],
+        wrongAnswerExplanations: {
+          '1': 'Vorzeichen-Fehler bei der Pol-Bestimmung: $s-2 = 0$ liefert $s = +2$ (nicht $-2$). Pol bei $+2$ liegt in der rechten Halbebene $\\to$ instabil.',
+          '2': 'Grenzstabilität tritt nur bei Polen auf der imaginären Achse auf ($\\operatorname{Re}(s) = 0$). Hier liegt der Pol bei $+2$ (rein real, positiv) — klar instabil.',
+          '3': 'Stabilität ist direkt aus der Polposition ablesbar: $s = +2$ ist eindeutig in der rechten Halbebene, also instabil. Keine Mehrdeutigkeit.',
+        },
       },
       {
         type: 'multiple-choice',
@@ -805,6 +895,11 @@ const unit3Lessons = [
         correctIndex: 0,
         explanation: 'Transformiert: $s^2 Y - s\\cdot 1 - 0 + 4Y = 0 \\Rightarrow (s^2+4)Y = s \\Rightarrow Y = s/(s^2+4)$. Rücktransform: $y(t) = \\cos(2t)$.',
         hints: ['$\\mathcal{L}\\{y\'\'\\} = s^2 Y - sy(0) - y\'(0)$.', 'Einsetzen AB.', 'Ausklammern $Y$.'],
+        wrongAnswerExplanations: {
+          '1': 'Hier wurde die Anfangsbedingung $y(0) = 1$ vergessen: Richtig ist $s^2 Y - s \\cdot y(0) - y\'(0) = s^2 Y - s$. Ohne den $-s$-Term erscheint $Y$ falsch als $1/(s^2+4)$ (zugehörig $\\tfrac{1}{2}\\sin(2t)$).',
+          '2': 'Vorzeichen-Fehler beim Koeffizienten: $y\'\' + 4y$ ergibt Nenner $s^2 + 4$, nicht $s^2 - 4$. Ein $s^2 - 4$ würde zu $y(t) = \\cosh(2t)$ (wachsend) führen.',
+          '3': 'Das ist keine sinnvolle Laplace-Darstellung für diese DGL — weder der Koeffizient $4$ noch das $s^2$ tauchen auf. Richtig: $Y = s/(s^2+4)$.',
+        },
       },
       {
         type: 'number-input',
@@ -846,6 +941,11 @@ const unit3Lessons = [
         correctIndex: 0,
         explanation: 'Transformiert: $(s+1)Y = 1/s \\Rightarrow Y = 1/[s(s+1)] = 1/s - 1/(s+1) \\Rightarrow y(t) = 1 - e^{-t}$.',
         hints: ['$(s+1)Y = U = 1/s$.', 'Partialbruch: $1/[s(s+1)] = 1/s - 1/(s+1)$.', 'Rücktransform.'],
+        wrongAnswerExplanations: {
+          '1': 'Das ist die Impulsantwort ($U(s) = 1$, also $Y = 1/(s+1)$), nicht die Sprungantwort. Für einen Sprung $U(s) = 1/s$ folgt $Y = 1/[s(s+1)]$ mit Rücktransform $1 - e^{-t}$.',
+          '2': 'Die Lösung $1 + e^{-t}$ startet bei $y(0) = 2$, verletzt also die Anfangsbedingung $y(0) = 0$. Die richtige Lösung beginnt bei $0$ und steigt auf $1$.',
+          '3': '$t\\,e^{-t}$ ist die Impulsantwort eines Doppelpol-Systems (z.B. $1/(s+1)^2$). Hier liegt nur ein einfacher Pol + Sprungeingang vor.',
+        },
       },
       {
         type: 'sorting',
