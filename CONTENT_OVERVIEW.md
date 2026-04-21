@@ -11,15 +11,15 @@
 |---|---|
 | Topics | **22** |
 | Units (davon Prüfungs-Units) | **71** (22) |
-| Lektionen | **221** |
-| Aufgaben gesamt | **2225** |
-| &nbsp;&nbsp;· 🔘 multiple-choice | 972 |
-| &nbsp;&nbsp;· 🔢 number-input | 500 |
-| &nbsp;&nbsp;· ✅ true-false | 336 |
-| &nbsp;&nbsp;· 🔗 matching | 224 |
-| &nbsp;&nbsp;· 📋 sorting | 193 |
-| MC mit vollständigen `wrongAnswerExplanations` | 764 / 972 (79%) |
-| Erklärungen im 4-Block-Schema (Ansatz/Rechnung/Probe/Fehler) | 334 / 2225 (15%) |
+| Lektionen | **226** |
+| Aufgaben gesamt | **2275** |
+| &nbsp;&nbsp;· 🔘 multiple-choice | 996 |
+| &nbsp;&nbsp;· 🔢 number-input | 506 |
+| &nbsp;&nbsp;· ✅ true-false | 346 |
+| &nbsp;&nbsp;· 🔗 matching | 229 |
+| &nbsp;&nbsp;· 📋 sorting | 198 |
+| MC mit vollständigen `wrongAnswerExplanations` | 790 / 996 (79%) |
+| Erklärungen im 4-Block-Schema (Ansatz/Rechnung/Probe/Fehler) | 364 / 2275 (16%) |
 
 ## Topic-Überblick
 
@@ -39,13 +39,13 @@
 | 12 | [Statistik & Wahrscheinlichkeit](#statistik) (`statistik`) | Vertiefung | Vertiefung | 2 | 6 | 60 | algebra, integralrechnung |
 | 13 | [Fourier & Laplace](#fourier-laplace) (`fourier-laplace`) | Vertiefung | Vertiefung | 3 | 7 | 70 | differentialgleichungen, komplexe-zahlen |
 | 14 | [Technische Mechanik](#technische-mechanik) (`technische-mechanik`) | Grundlagen | 1. Sem | 4 | 16 | 160 | algebra, trigonometry, vektoren |
-| 15 | [Festigkeitslehre](#festigkeitslehre) (`festigkeitslehre`) | Vertiefung | 2. Sem | 3 | 10 | 100 | technische-mechanik, ableitung |
+| 15 | [Festigkeitslehre](#festigkeitslehre) (`festigkeitslehre`) | Vertiefung | 2. Sem | 3 | 11 | 110 | technische-mechanik, ableitung |
 | 16 | [Thermodynamik](#thermodynamik) (`thermodynamik`) | Vertiefung | 2. Sem | 3 | 8 | 80 | ableitung, integralrechnung |
-| 17 | [Fluidmechanik](#fluidmechanik) (`fluidmechanik`) | Vertiefung | Vertiefung | 3 | 8 | 80 | ableitung, vektoren |
-| 18 | [Werkstoffkunde](#werkstoffkunde) (`werkstoffkunde`) | Grundlagen | 1. Sem | 3 | 5 | 50 | algebra |
+| 17 | [Fluidmechanik](#fluidmechanik) (`fluidmechanik`) | Vertiefung | Vertiefung | 3 | 9 | 90 | ableitung, vektoren |
+| 18 | [Werkstoffkunde](#werkstoffkunde) (`werkstoffkunde`) | Grundlagen | 1. Sem | 3 | 6 | 60 | algebra |
 | 19 | [Maschinenelemente](#maschinenelemente) (`maschinenelemente`) | Vertiefung | 2. Sem | 3 | 8 | 80 | festigkeitslehre |
-| 20 | [Elektrotechnik](#elektrotechnik) (`elektrotechnik`) | Grundlagen | 1. Sem | 3 | 7 | 70 | algebra |
-| 21 | [Regelungstechnik](#regelungstechnik) (`regelungstechnik`) | Vertiefung | Vertiefung | 3 | 5 | 50 | differentialgleichungen, komplexe-zahlen |
+| 20 | [Elektrotechnik](#elektrotechnik) (`elektrotechnik`) | Grundlagen | 1. Sem | 3 | 8 | 80 | algebra |
+| 21 | [Regelungstechnik](#regelungstechnik) (`regelungstechnik`) | Vertiefung | Vertiefung | 3 | 6 | 60 | differentialgleichungen, komplexe-zahlen |
 | 22 | [Python & Matlab](#python-matlab) (`python-matlab`) | Grundlagen | 1. Sem | 4 | 13 | 130 | algebra |
 
 <a id="algebra"></a>
@@ -1114,7 +1114,7 @@
 | 2 | 🔘 multiple-choice | Der Differenzenquotient $dfrac{f(x+h) - f(x)}{h}$ beschreibt für $h to 0$: | wAE 4B |
 | 3 | 🔘 multiple-choice | An welcher Stelle ist $f'(x) = 0$ eine **notwendige** Bedingung? | wAE 4B |
 | 4 | 🔘 multiple-choice | Warum ist die Bedingung $f'(x_0) = 0$ *notwendig*, aber *nicht hinreichend* für ein lokales Extremum? | wAE 4B |
-| 5 | 🔘 multiple-choice | Was beschreibt der Differenzenquotient [f(x+h) − f(x)] / h geometrisch? | ➕ |
+| 5 | 🔘 multiple-choice | Was beschreibt der Differenzenquotient [f(x+h) − f(x)] / h geometrisch? | ➕ wAE |
 | 6 | 🔢 number-input | Berechne den Differenzenquotienten von f(x) = x² zwischen x = 2 und x+h = 3. Gib die mittlere Steigung an. | ➕ |
 | 7 | ✅ true-false | Wenn f'(x₀) = 0, dann hat f bei x₀ zwingend ein lokales Extremum. | ➕ |
 | 8 | 🔗 matching | Ordne den Begriff seinem geometrischen Objekt zu. | ➕ |
@@ -1135,7 +1135,7 @@
 | 3 | 🔘 multiple-choice | $f(x) = sqrt{x} = x^{1/2}$. Was ist $f'(x)$? | wAE 4B |
 | 4 | 🔘 multiple-choice | Was ist $left(dfrac{1}{x}right)' = (x^{-1})'$? | wAE 4B |
 | 5 | 🔘 multiple-choice | Warum wirkt die Potenzregel $(x^{n})' = n x^{n-1}$ auch für negative und gebrochene Exponenten (nicht nur ganzzahlige $n | wAE 4B |
-| 6 | 🔘 multiple-choice | Was ist die Ableitung von f(x) = 5x³ − 2x + 7? | ➕ |
+| 6 | 🔘 multiple-choice | Was ist die Ableitung von f(x) = 5x³ − 2x + 7? | ➕ wAE |
 | 7 | 🔢 number-input | f(x) = 2x⁴ − 3x² + 7. Berechne f'(2). | ➕ |
 | 8 | ✅ true-false | Die Ableitung von f(x) = x^(−2) ist f'(x) = −2x^(−3). | ➕ |
 | 9 | 🔗 matching | Ordne die Funktion ihrer Ableitung zu. | ➕ |
@@ -3504,7 +3504,7 @@
 
 **Level:** Vertiefung · **Phase:** 2. Sem · **Category:** engineering  
 **Prerequisites:** `technische-mechanik`, `ableitung`  
-**3 Units** · **10 Lektionen** · **100 Aufgaben** (🔘 30 · 🔢 27 · ✅ 23 · 🔗 10 · 📋 10)
+**3 Units** · **11 Lektionen** · **110 Aufgaben** (🔘 35 · 🔢 28 · ✅ 25 · 🔗 11 · 📋 11)
 
 *Spannung, Dehnung, Biegung und Sicherheitsnachweise.*
 
@@ -3592,7 +3592,7 @@
 ### Biegung und Torsion (Unit 2)
 *Grundformeln für beanspruchte Bauteile.*
 
-4 Lektionen · 40 Aufgaben
+5 Lektionen · 50 Aufgaben
 
 #### Biegespannung  `fest-2-1` · 12 min
 
@@ -3669,6 +3669,26 @@
 | 8 | ✅ true-false | Eine vollständige Prüfungsantwort zu "Wechselfestigkeit und Betriebsfestigkeit" sollte den Lösungsweg nachvollziehbar ze | ➕ |
 | 9 | 🔘 multiple-choice | Welche Kontrolle passt am Ende einer Aufgabe zu "Wechselfestigkeit und Betriebsfestigkeit" am besten? | ➕ wAE 4B |
 | 10 | 🔢 number-input | [PRÜFUNG] Goodman-Nachweis: $sigma_W = 200$ MPa, $R_m = 400$ MPa, $sigma_m = 100$ MPa. Maximales zulässiges $sigma_a$? | 🎯 |
+
+#### Kerbspannungen & Formzahl  `fest-2-5` · 14 min
+
+**Lernziele:**
+- Formzahl $alpha_K$ als Verhältnis $sigma_text{max}/sigma_text{nenn}$ verstehen
+- Typische Kerben (Bohrung, Absatz, Gewindegrund) einordnen
+- Einfluss von Kerbwirkung auf die Dauerfestigkeit einschätzen
+
+| # | Typ | Titel / Frage | Flags |
+|---|---|---|---|
+| 1 | 🔘 multiple-choice | Eine Welle hat einen Absatz mit Formzahl $alpha_K = 2$. Was bedeutet das? | wAE 4B |
+| 2 | 🔢 number-input | Nennspannung $sigma_text{nenn} = 100$ MPa an einem Wellenabsatz mit Kerbformzahl $alpha_K = 2{,}5$. Wie groß ist die max | 4B |
+| 3 | 🔘 multiple-choice | Aufwärmaufgabe zu "Kerbspannungen & Formzahl": Warum sinkt die Normalspannung bei größerer Fläche? | ➕ wAE 4B |
+| 4 | ✅ true-false | Bei "Kerbspannungen & Formzahl" ist ein Einheiten-, Definitions- oder Annahmencheck vor dem Einsetzen in Formeln sinnvol | ➕ |
+| 5 | 🔗 matching | Ordne die Lernbausteine für "Kerbspannungen & Formzahl" richtig zu. | ➕ |
+| 6 | 📋 sorting | Bringe die Prüfungsstrategie für "Kerbspannungen & Formzahl" in die richtige Reihenfolge. | ➕ |
+| 7 | 🔘 multiple-choice | Welche Antwort beschreibt einen typischen Fehler bei "Kerbspannungen & Formzahl"? | ➕ wAE 4B |
+| 8 | ✅ true-false | Eine vollständige Prüfungsantwort zu "Kerbspannungen & Formzahl" sollte den Lösungsweg nachvollziehbar zeigen, nicht nur | ➕ |
+| 9 | 🔘 multiple-choice | Welche Kontrolle passt am Ende einer Aufgabe zu "Kerbspannungen & Formzahl" am besten? | ➕ wAE 4B |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] Zwei gleiche Wellen aus demselben Stahl werden auf Dauer beansprucht. Welle A ist fein geschliffen ($R_a = 0{, | 🎯 wAE 4B |
 
 ### 🏁 Prüfungsaufgaben (Unit 3)
 *Klausurrelevante Festigkeitsberechnungen.*
@@ -3897,7 +3917,7 @@
 
 **Level:** Vertiefung · **Phase:** Vertiefung · **Category:** engineering  
 **Prerequisites:** `ableitung`, `vektoren`  
-**3 Units** · **8 Lektionen** · **80 Aufgaben** (🔘 25 · 🔢 24 · ✅ 15 · 🔗 8 · 📋 8)
+**3 Units** · **9 Lektionen** · **90 Aufgaben** (🔘 29 · 🔢 26 · ✅ 17 · 🔗 9 · 📋 9)
 
 *Hydrostatik, Kontinuität und Bernoulli für Strömungen.*
 
@@ -3947,7 +3967,7 @@
 ### Strömung (Unit 2)
 *Kontinuität und Bernoulli.*
 
-4 Lektionen · 40 Aufgaben
+5 Lektionen · 50 Aufgaben
 
 #### Kontinuitätsgleichung  `fluid-2-1` · 12 min
 
@@ -4027,6 +4047,26 @@
 | 9 | 🔘 multiple-choice | Welche Kontrolle passt am Ende einer Aufgabe zu "Ähnlichkeitsgesetze und Pumpen" am besten? | ➕ wAE 4B |
 | 10 | 🔢 number-input | [PRÜFUNG] Gleiche Pumpe: P_1 = 2 kW bei n_1 = 1000 1/min. Leistung P_2 bei n_2 = 2000 1/min in kW? | 🎯 |
 
+#### Moody-Diagramm & Rohrreibung praktisch  `fluid-2-5` · 15 min
+
+**Lernziele:**
+- Rohrreibungszahl $lambda$ in Abhängigkeit von $text{Re}$ und $varepsilon/d$ bestimmen
+- Laminar-Formel $lambda = 64/text{Re}$ und Blasius-Formel sicher anwenden
+- Druckverlust aus $lambda$, $L$, $d$, $v$, $rho$ berechnen
+
+| # | Typ | Titel / Frage | Flags |
+|---|---|---|---|
+| 1 | 🔘 multiple-choice | Für eine laminare Rohrströmung ($text{Re} < 2300$) gilt die Rohrreibungszahl | wAE 4B |
+| 2 | 🔢 number-input | Wasserströmung im glatten Rohr, $text{Re} = 10,000$. Berechne die Rohrreibungszahl $lambda$ nach Blasius (auf 4 Nachkomm | 4B |
+| 3 | 🔘 multiple-choice | Aufwärmaufgabe zu "Moody-Diagramm & Rohrreibung praktisch": Was sagt die Kontinuitätsgleichung bei inkompressibler Ström | ➕ wAE 4B |
+| 4 | ✅ true-false | Bei "Moody-Diagramm & Rohrreibung praktisch" ist ein Einheiten-, Definitions- oder Annahmencheck vor dem Einsetzen in Fo | ➕ |
+| 5 | 🔗 matching | Ordne die Lernbausteine für "Moody-Diagramm & Rohrreibung praktisch" richtig zu. | ➕ |
+| 6 | 📋 sorting | Bringe die Prüfungsstrategie für "Moody-Diagramm & Rohrreibung praktisch" in die richtige Reihenfolge. | ➕ |
+| 7 | 🔘 multiple-choice | Welche Antwort beschreibt einen typischen Fehler bei "Moody-Diagramm & Rohrreibung praktisch"? | ➕ wAE 4B |
+| 8 | ✅ true-false | Eine vollständige Prüfungsantwort zu "Moody-Diagramm & Rohrreibung praktisch" sollte den Lösungsweg nachvollziehbar zeig | ➕ |
+| 9 | 🔘 multiple-choice | Welche Kontrolle passt am Ende einer Aufgabe zu "Moody-Diagramm & Rohrreibung praktisch" am besten? | ➕ wAE 4B |
+| 10 | 🔢 number-input | [PRÜFUNG] Rohr $L = 100$ m, $d = 0{,}05$ m, Wasser ($rho = 1000,text{kg/m}^3$) mit $v = 2$ m/s, $lambda = 0{,}03$. Wie g | 🎯 4B |
+
 ### 🏁 Prüfungsaufgaben (Unit 3)
 *Klausurrelevante Strömungsmechanik-Aufgaben.*
 
@@ -4076,7 +4116,7 @@
 
 **Level:** Grundlagen · **Phase:** 1. Sem · **Category:** engineering  
 **Prerequisites:** `algebra`  
-**3 Units** · **5 Lektionen** · **50 Aufgaben** (🔘 25 · ✅ 10 · 🔗 5 · 📋 5 · 🔢 5)
+**3 Units** · **6 Lektionen** · **60 Aufgaben** (🔘 30 · ✅ 12 · 🔗 6 · 📋 6 · 🔢 6)
 
 *Zugversuch, Härteprüfung, Kerbschlag, Werkstoffgruppen — Grundlage 1./2. Semester*
 
@@ -4125,7 +4165,7 @@
 
 ### Prüfverfahren (Unit 2)
 
-2 Lektionen · 20 Aufgaben
+3 Lektionen · 30 Aufgaben
 
 #### Härteprüfung (HV, HB, HRC)  `werk-2-1` · 12 min
 
@@ -4166,6 +4206,26 @@
 | 8 | 🔢 number-input | Rechenaufgabe zu "Kerbschlagbiegeversuch": Stahlprobe mit R_m=400 MPa und Sicherheitszahl S=2: Wie groß ist σ_zul in MPa | ➕ |
 | 9 | 🔘 multiple-choice | Aufwärmaufgabe zu "Kerbschlagbiegeversuch": Was liest man direkt aus dem Spannungs-Dehnungs-Diagramm ab? | ➕ wAE 4B |
 | 10 | 🔘 multiple-choice | Eine Baustahlprobe hat bei $-20,°text{C}$ eine Kerbschlagarbeit von $15,text{J}$. Was bedeutet das für die Konstruktion? | 🎯 wAE 4B |
+
+#### Fe-C-Diagramm & Wärmebehandlung  `werk-2-3` · 16 min
+
+**Lernziele:**
+- Die wichtigsten Gefüge des Fe-C-Systems (Ferrit, Austenit, Perlit, Martensit) unterscheiden
+- Den eutektischen Punkt und den für die Härtbarkeit nutzbaren C-Bereich kennen
+- Glühen, Härten und Vergüten als typische Wärmebehandlungen einordnen
+
+| # | Typ | Titel / Frage | Flags |
+|---|---|---|---|
+| 1 | 🔘 multiple-choice | Welches Gefüge entsteht beim **schnellen Abschrecken** von Austenit auf Raumtemperatur (genug Kohlenstoff vorausgesetzt) | wAE 4B |
+| 2 | 🔢 number-input | Ein Vergütungsstahl mit ca. $0{,}45%$ C wird gehärtet und anschließend vergütet. Welche **Anlasstemperatur** (in $°text{ | 4B |
+| 3 | 🔘 multiple-choice | Aufwärmaufgabe zu "Fe-C-Diagramm & Wärmebehandlung": Warum muss man in Gasgleichungen Kelvin verwenden? | ➕ wAE 4B |
+| 4 | ✅ true-false | Bei "Fe-C-Diagramm & Wärmebehandlung" ist ein Einheiten-, Definitions- oder Annahmencheck vor dem Einsetzen in Formeln s | ➕ |
+| 5 | 🔗 matching | Ordne die Lernbausteine für "Fe-C-Diagramm & Wärmebehandlung" richtig zu. | ➕ |
+| 6 | 📋 sorting | Bringe die Prüfungsstrategie für "Fe-C-Diagramm & Wärmebehandlung" in die richtige Reihenfolge. | ➕ |
+| 7 | 🔘 multiple-choice | Welche Antwort beschreibt einen typischen Fehler bei "Fe-C-Diagramm & Wärmebehandlung"? | ➕ wAE 4B |
+| 8 | ✅ true-false | Eine vollständige Prüfungsantwort zu "Fe-C-Diagramm & Wärmebehandlung" sollte den Lösungsweg nachvollziehbar zeigen, nic | ➕ |
+| 9 | 🔘 multiple-choice | Welche Kontrolle passt am Ende einer Aufgabe zu "Fe-C-Diagramm & Wärmebehandlung" am besten? | ➕ wAE 4B |
+| 10 | 🔘 multiple-choice | Drei Stahlproben gleicher Zusammensetzung wurden unterschiedlich behandelt: (A) langsam im Ofen abgekühlt → Perlit, (B)  | 🎯 wAE 4B |
 
 ### 🏁 Prüfung (Unit 3)
 
@@ -4372,7 +4432,7 @@
 
 **Level:** Grundlagen · **Phase:** 1. Sem · **Category:** engineering  
 **Prerequisites:** `algebra`  
-**3 Units** · **7 Lektionen** · **70 Aufgaben** (🔢 28 · 🔘 17 · ✅ 11 · 🔗 7 · 📋 7)
+**3 Units** · **8 Lektionen** · **80 Aufgaben** (🔢 29 · 🔘 22 · ✅ 13 · 🔗 8 · 📋 8)
 
 *Gleichstrom, Wechselstrom, Kirchhoffsche Gesetze und elektrische Leistung.*
 
@@ -4441,7 +4501,7 @@
 ### Wechselstrom (Unit 2)
 *Impedanz, Phasenverschiebung und Leistungsfaktor.*
 
-2 Lektionen · 20 Aufgaben
+3 Lektionen · 30 Aufgaben
 
 #### Wechselstromgrundlagen und Impedanz  `et-2-1` · 14 min
 
@@ -4481,6 +4541,26 @@
 | 8 | 🔘 multiple-choice | Ein Student sagt: "Bei $omega = 50$ Hz ist $X_L = 50 cdot 0{,}1 = 5$ $Omega$." Was ist falsch? | ➕ |
 | 9 | 🔢 number-input | RL-Hochpass: $R = 2$ k$Omega$, $L = 10$ mH. Grenzfrequenz $f_g$ in Hz? | ➕ |
 | 10 | 🔢 number-input | [PRÜFUNG] RL-Schaltung: $R = 50,Omega$, $L = 0{,}2,text{H}$, $f = 50,text{Hz}$. Wie groß ist der Impedanzbetrag $\|Z\|$  | 🎯 |
+
+#### Drehstrom & 3-Phasensystem  `et-2-3` · 15 min
+
+**Lernziele:**
+- Stern- (Y) und Dreieckschaltung ($Delta$) unterscheiden
+- Verkettete Spannung $U_{LL} = sqrt{3} cdot U_{LN}$ anwenden
+- Wirkleistung im Drehstromsystem berechnen
+
+| # | Typ | Titel / Frage | Flags |
+|---|---|---|---|
+| 1 | 🔘 multiple-choice | Ein Drehstrommotor ist in Stern geschaltet und an einem Netz mit $U_{LN} = 230,text{V}$ angeschlossen. Wie groß ist die  | wAE 4B |
+| 2 | 🔢 number-input | Ein Drehstrommotor läuft an $U_{LL} = 400,text{V}$, zieht Strangstrom $I = 10,text{A}$ und hat Leistungsfaktor $cosvarph | 4B |
+| 3 | 🔘 multiple-choice | Aufwärmaufgabe zu "Drehstrom & 3-Phasensystem": Was ist bei Gleichungen die wichtigste Regel? | ➕ wAE 4B |
+| 4 | ✅ true-false | Bei "Drehstrom & 3-Phasensystem" ist ein Einheiten-, Definitions- oder Annahmencheck vor dem Einsetzen in Formeln sinnvo | ➕ |
+| 5 | 🔗 matching | Ordne die Lernbausteine für "Drehstrom & 3-Phasensystem" richtig zu. | ➕ |
+| 6 | 📋 sorting | Bringe die Prüfungsstrategie für "Drehstrom & 3-Phasensystem" in die richtige Reihenfolge. | ➕ |
+| 7 | 🔘 multiple-choice | Welche Antwort beschreibt einen typischen Fehler bei "Drehstrom & 3-Phasensystem"? | ➕ wAE 4B |
+| 8 | ✅ true-false | Eine vollständige Prüfungsantwort zu "Drehstrom & 3-Phasensystem" sollte den Lösungsweg nachvollziehbar zeigen, nicht nu | ➕ |
+| 9 | 🔘 multiple-choice | Welche Kontrolle passt am Ende einer Aufgabe zu "Drehstrom & 3-Phasensystem" am besten? | ➕ wAE 4B |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] Warum wird ein großer Drehstrom-Asynchronmotor beim Anlauf in Stern und im Betrieb in Dreieck geschaltet? | 🎯 wAE 4B |
 
 ### 🏁 Prüfungsaufgaben (Unit 3)
 *Klausurrelevante Elektrotechnik-Aufgaben.*
@@ -4532,7 +4612,7 @@
 
 **Level:** Vertiefung · **Phase:** Vertiefung · **Category:** engineering  
 **Prerequisites:** `differentialgleichungen`, `komplexe-zahlen`  
-**3 Units** · **5 Lektionen** · **50 Aufgaben** (🔘 17 · 🔢 13 · ✅ 10 · 🔗 5 · 📋 5)
+**3 Units** · **6 Lektionen** · **60 Aufgaben** (🔘 22 · 🔢 14 · ✅ 12 · 🔗 6 · 📋 6)
 
 *Regelkreis, Übertragungsfunktionen, PID-Regler und Stabilität.*
 
@@ -4584,7 +4664,7 @@
 ### Regler und Stabilität (Unit 2)
 *PID-Regler und Stabilitätskriterien.*
 
-2 Lektionen · 20 Aufgaben
+3 Lektionen · 30 Aufgaben
 
 #### PID-Regler  `rt-2-1` · 15 min
 
@@ -4625,6 +4705,26 @@
 | 8 | 🔘 multiple-choice | Ein Student sagt: "Das System $G(s) = (s+10)/(s^2 + 4s + 4)$ ist instabil, weil die Nullstelle bei $s = -10$ liegt." Was | ➕ |
 | 9 | 🔢 number-input | Charakteristische Gleichung $s^2 + a s + 4 = 0$. Welches minimale $a$ macht das System gerade grenzstabil (auf der Grenz | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] System 3. Ordnung: Nenner $2s^3 + 3s^2 + s + k$. Welche Aussage zur Hurwitz-Bedingung ist richtig? | 🎯 wAE |
+
+#### Bodediagramm & Phasengang  `rt-2-3` · 15 min
+
+**Lernziele:**
+- Amplituden- und Phasengang typischer Übertragungsglieder kennen (P, I, D, PT1)
+- Grenzfrequenz und $-3,text{dB}$-Punkt interpretieren
+- Phasenreserve als Stabilitätsmaß lesen
+
+| # | Typ | Titel / Frage | Flags |
+|---|---|---|---|
+| 1 | 🔘 multiple-choice | Welche Steigung hat der Amplitudengang eines reinen I-Gliedes ($G(s) = 1/(T_I s)$) im Bodediagramm? | wAE 4B |
+| 2 | 🔢 number-input | Ein RC-Tiefpass (PT1) hat die Grenzfrequenz $f_g = 1,text{kHz}$. Wie groß ist die Verstärkung $\|G\|$ in Dezibel bei $f  | 4B |
+| 3 | 🔘 multiple-choice | Aufwärmaufgabe zu "Bodediagramm & Phasengang": Was ist bei Gleichungen die wichtigste Regel? | ➕ wAE 4B |
+| 4 | ✅ true-false | Bei "Bodediagramm & Phasengang" ist ein Einheiten-, Definitions- oder Annahmencheck vor dem Einsetzen in Formeln sinnvol | ➕ |
+| 5 | 🔗 matching | Ordne die Lernbausteine für "Bodediagramm & Phasengang" richtig zu. | ➕ |
+| 6 | 📋 sorting | Bringe die Prüfungsstrategie für "Bodediagramm & Phasengang" in die richtige Reihenfolge. | ➕ |
+| 7 | 🔘 multiple-choice | Welche Antwort beschreibt einen typischen Fehler bei "Bodediagramm & Phasengang"? | ➕ wAE 4B |
+| 8 | ✅ true-false | Eine vollständige Prüfungsantwort zu "Bodediagramm & Phasengang" sollte den Lösungsweg nachvollziehbar zeigen, nicht nur | ➕ |
+| 9 | 🔘 multiple-choice | Welche Kontrolle passt am Ende einer Aufgabe zu "Bodediagramm & Phasengang" am besten? | ➕ wAE 4B |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] Im Bodediagramm des offenen Regelkreises $G_0$ wird bei der Durchtrittsfrequenz $omega_D$ (wo $\|G_0\| = 0,tex | 🎯 wAE 4B |
 
 ### 🏁 Prüfungsaufgaben (Unit 3)
 *Klausurrelevante Regelungstechnik-Aufgaben.*
