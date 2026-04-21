@@ -18,7 +18,7 @@
 | &nbsp;&nbsp;· ✅ true-false | 346 |
 | &nbsp;&nbsp;· 🔗 matching | 229 |
 | &nbsp;&nbsp;· 📋 sorting | 198 |
-| MC mit vollständigen `wrongAnswerExplanations` | 937 / 996 (94%) |
+| MC mit vollständigen `wrongAnswerExplanations` | 996 / 996 (100%) |
 | Erklärungen im 4-Block-Schema (Ansatz/Rechnung/Probe/Fehler) | 364 / 2275 (16%) |
 
 ## Topic-Überblick
@@ -156,16 +156,16 @@
 
 | # | Typ | Titel / Frage | Flags |
 |---|---|---|---|
-| 1 | 🔘 multiple-choice | Vereinfache: $x^{3} cdot x^{4}$ | 4B |
-| 2 | 🔘 multiple-choice | Vereinfache: $(x^{3})^{4}$ |  |
-| 3 | 🔘 multiple-choice | Schreibe ohne negativen Exponenten: $x^{-3}$ | 4B |
-| 4 | 🔘 multiple-choice | Vereinfache: $(2x^{2}y)^{3}$ |  |
+| 1 | 🔘 multiple-choice | Vereinfache: $x^{3} cdot x^{4}$ | wAE 4B |
+| 2 | 🔘 multiple-choice | Vereinfache: $(x^{3})^{4}$ | wAE |
+| 3 | 🔘 multiple-choice | Schreibe ohne negativen Exponenten: $x^{-3}$ | wAE 4B |
+| 4 | 🔘 multiple-choice | Vereinfache: $(2x^{2}y)^{3}$ | wAE |
 | 5 | 🔢 number-input | Berechne: $dfrac{2^{10}}{2^{7}}$ |  |
 | 6 | 🔘 multiple-choice | Welche Regel passt zu x⁵ · x⁻²? | ➕ wAE |
 | 7 | 🔢 number-input | Vereinfache (2x³)². Gib den Zahlenfaktor vor x⁶ an. | ➕ |
 | 8 | ✅ true-false | x⁴ + x⁴ lässt sich zu x⁸ vereinfachen. | ➕ |
 | 9 | 🔗 matching | Ordne die Potenzregel dem richtigen Ergebnis zu. | ➕ |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] Vereinfache als einzelnen Bruch mit **positiven Exponenten**: $dfrac{x^{4} cdot y^{2}}{x^{2} cdot y^{5}}$ | 🎯 4B |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] Vereinfache als einzelnen Bruch mit **positiven Exponenten**: $dfrac{x^{4} cdot y^{2}}{x^{2} cdot y^{5}}$ | 🎯 wAE 4B |
 
 #### Wurzeln und gebrochene Exponenten  `alg-1-2` · 15 min
 
@@ -176,16 +176,16 @@
 
 | # | Typ | Titel / Frage | Flags |
 |---|---|---|---|
-| 1 | 🔘 multiple-choice | Was ist $sqrt{x^{2}}$? |  |
+| 1 | 🔘 multiple-choice | Was ist $sqrt{x^{2}}$? | wAE |
 | 2 | 🔢 number-input | Berechne: $sqrt[3]{8}$ |  |
-| 3 | 🔘 multiple-choice | Vereinfache: $sqrt{12}$ | 4B |
+| 3 | 🔘 multiple-choice | Vereinfache: $sqrt{12}$ | wAE 4B |
 | 4 | ✅ true-false | Für alle reellen Zahlen $a, b geq 0$ gilt: $sqrt{a+b} = sqrt{a} + sqrt{b}$. |  |
 | 5 | 🔘 multiple-choice | Welche Schreibweise ist äquivalent zu √(a⁵) für a ≥ 0? | ➕ wAE |
 | 6 | 🔢 number-input | Vereinfache √75 = k√3. Gib k an. | ➕ |
 | 7 | ✅ true-false | Für alle reellen x gilt √(x²) = x. | ➕ |
 | 8 | 🔗 matching | Ordne Wurzelschreibweise und Potenzschreibweise zu. | ➕ |
 | 9 | 📋 sorting | Bringe die Vereinfachung von √(48a²) für a ≥ 0 in die richtige Reihenfolge. | ➕ |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] Zu welchem Ausdruck ist $x^{2/3}$ äquivalent? | 🎯 |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] Zu welchem Ausdruck ist $x^{2/3}$ äquivalent? | 🎯 wAE |
 
 #### Logarithmen  `alg-1-3` · 18 min
 
@@ -198,14 +198,14 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Berechne: $log_{2}(8)$ |  |
 | 2 | 🔢 number-input | Berechne: $ln(e^{3})$ |  |
-| 3 | 🔘 multiple-choice | Was ist $ln(a cdot b)$ laut Logarithmusgesetz? |  |
-| 4 | 🔘 multiple-choice | Vereinfache: $ln(a^{5})$ |  |
+| 3 | 🔘 multiple-choice | Was ist $ln(a cdot b)$ laut Logarithmusgesetz? | wAE |
+| 4 | 🔘 multiple-choice | Vereinfache: $ln(a^{5})$ | wAE |
 | 5 | 🔘 multiple-choice | Was bedeutet log₂(32) = 5? | ➕ wAE |
 | 6 | 🔢 number-input | Löse ln(x) = 2. Gib x näherungsweise an. Nutze e² ≈ 7,389. | ➕ |
 | 7 | ✅ true-false | ln(a · b) = ln(a) + ln(b) für a > 0 und b > 0. | ➕ |
 | 8 | 🔗 matching | Ordne die Logarithmusregeln zu. | ➕ |
 | 9 | 📋 sorting | Bringe die Lösung von e^(2x) = 10 in die richtige Reihenfolge. | ➕ |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] Löse nach $x$ auf: $e^{x} = 5$ | 🎯 |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] Löse nach $x$ auf: $e^{x} = 5$ | 🎯 wAE |
 
 ### Gleichungen & Ungleichungen (Unit 2)
 *Lineare und quadratische Gleichungen, Polynomdivision, Ungleichungen*
@@ -490,7 +490,7 @@
 | 1 | 🔘 multiple-choice | Wie viel Radiant entspricht einem Winkel von $90°$? | wAE 4B |
 | 2 | 🔘 multiple-choice | Welcher Winkel im Gradmaß entspricht $pi$ Radiant? | wAE 4B |
 | 3 | 🔢 number-input | Eine Welle dreht sich um einen Winkel von $60°$. Welche Bogenlänge legt ein Punkt im Abstand $r = 0{,}5,text{m}$ von der |  |
-| 4 | 🔘 multiple-choice | Warum ist das Bogenmaß in technischen Formeln wie s = r·α praktischer als Gradmaß? | ➕ |
+| 4 | 🔘 multiple-choice | Warum ist das Bogenmaß in technischen Formeln wie s = r·α praktischer als Gradmaß? | ➕ wAE |
 | 5 | 🔢 number-input | Rechne 60° ins Bogenmaß um. Gib den Faktor vor π an. | ➕ |
 | 6 | ✅ true-false | Bei Kreisweg-Formeln wie s = r·α darf α ohne Umrechnung in Grad eingesetzt werden. | ➕ |
 | 7 | 🔗 matching | Ordne die Standardwinkel ihren Bogenmaßen zu. | ➕ |
@@ -510,7 +510,7 @@
 | 1 | 🔘 multiple-choice | In einem rechtwinkligen Dreieck ist $sin(alpha)$ definiert als: | wAE |
 | 2 | 🔘 multiple-choice | $cos(alpha)$ ist definiert als: | wAE |
 | 3 | 🔘 multiple-choice | $tan(alpha)$ ist definiert als: | wAE |
-| 4 | 🔘 multiple-choice | Welche Information musst du kennen, bevor du sin, cos oder tan im rechtwinkligen Dreieck auswählst? | ➕ |
+| 4 | 🔘 multiple-choice | Welche Information musst du kennen, bevor du sin, cos oder tan im rechtwinkligen Dreieck auswählst? | ➕ wAE |
 | 5 | 🔢 number-input | Gegenkathete = 6 cm, Hypotenuse = 10 cm. Berechne sin(α). | ➕ |
 | 6 | ✅ true-false | Die Hypotenuse liegt immer gegenüber dem rechten Winkel und ist im rechtwinkligen Dreieck die längste Seite. | ➕ |
 | 7 | 🔗 matching | Ordne SOH-CAH-TOA zu. | ➕ |
@@ -531,11 +531,11 @@
 | 2 | 🔘 multiple-choice | $cos(60°) = $? | wAE |
 | 3 | 🔘 multiple-choice | $sin(45°) = $? | wAE |
 | 4 | 🔘 multiple-choice | $tan(45°) = $? | wAE 4B |
-| 5 | 🔘 multiple-choice | Warum ist cos(30°) gleich sin(60°)? | ➕ |
+| 5 | 🔘 multiple-choice | Warum ist cos(30°) gleich sin(60°)? | ➕ wAE |
 | 6 | 🔢 number-input | Ein Mast wirft bei einem Sonnenstand von 60° einen 3 m langen Schatten. Wie hoch ist der Mast in Metern? (√3≈1,732) | ➕ |
 | 7 | ✅ true-false | sin(45°) und cos(45°) sind gleich groß. | ➕ |
 | 8 | 🔗 matching | Ordne die Grundwerte zu. | ➕ |
-| 9 | 🔘 multiple-choice | Welcher der folgenden Sinuswerte ist am größten? | ➕ |
+| 9 | 🔘 multiple-choice | Welcher der folgenden Sinuswerte ist am größten? | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Welcher Wert ist FALSCH? | 🎯 wAE |
 
 #### Vorzeichen und Quadranten  `trig-1-4` · 12 min
@@ -549,7 +549,7 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Im zweiten Quadranten ($90°$–$180°$) ist: | wAE |
 | 2 | 🔘 multiple-choice | $sin(150°) = $? | wAE |
-| 3 | 🔘 multiple-choice | Warum ist cos(120°) negativ? | ➕ |
+| 3 | 🔘 multiple-choice | Warum ist cos(120°) negativ? | ➕ wAE |
 | 4 | 🔢 number-input | Berechne sin(210°). | ➕ |
 | 5 | ✅ true-false | Im 3. Quadranten sind sin und cos negativ, tan aber positiv. | ➕ |
 | 6 | 🔗 matching | Ordne Quadrant und positives Vorzeichen zu. | ➕ |
@@ -680,7 +680,7 @@
 | 4 | 🔢 number-input | Berechne sin(75°) näherungsweise mit sin75°=(√6+√2)/4, √6≈2,449, √2≈1,414. | ➕ |
 | 5 | ✅ true-false | sin(45°) und cos(45°) sind gleich groß. | ➕ |
 | 6 | 🔗 matching | Ordne die Grundwerte zu. | ➕ |
-| 7 | 🔘 multiple-choice | Welcher der folgenden Sinuswerte ist am größten? | ➕ |
+| 7 | 🔘 multiple-choice | Welcher der folgenden Sinuswerte ist am größten? | ➕ wAE |
 | 8 | 🔘 multiple-choice | Welcher Grundwert ist falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Berechne cos(15°) näherungsweise mit cos(45°-30°)=(√6+√2)/4. | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Berechne $sin(75°) = sin(45° + 30°)$: | 🎯 wAE |
@@ -699,7 +699,7 @@
 | 4 | 🔢 number-input | Wenn sinα=0,6 und cosα=0,8: Berechne sin(2α). | ➕ |
 | 5 | ✅ true-false | sin(45°) und cos(45°) sind gleich groß. | ➕ |
 | 6 | 🔗 matching | Ordne die Grundwerte zu. | ➕ |
-| 7 | 🔘 multiple-choice | Welcher der folgenden Sinuswerte ist am größten? | ➕ |
+| 7 | 🔘 multiple-choice | Welcher der folgenden Sinuswerte ist am größten? | ➕ wAE |
 | 8 | 🔘 multiple-choice | Welcher Grundwert ist falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Wenn sinα=0,6: Berechne cos²α mit sin²α+cos²α=1. | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Vereinfache: $sin^{2}(alpha) + cos^{2}(alpha)$ | 🎯 wAE |
@@ -783,7 +783,7 @@
 | 6 | 🔢 number-input | [PRÜFUNG] Löse sin(2α)=1 für α im Intervall [0°,180°]. Gib die kleinere Lösung an. | ➕ |
 | 7 | ✅ true-false | [PRÜFUNG] sin(45°) und cos(45°) sind gleich groß. | ➕ |
 | 8 | 🔗 matching | [PRÜFUNG] Ordne die Grundwerte zu. | ➕ |
-| 9 | 🔘 multiple-choice | [PRÜFUNG] Welcher der folgenden Sinuswerte ist am größten? | ➕ |
+| 9 | 🔘 multiple-choice | [PRÜFUNG] Welcher der folgenden Sinuswerte ist am größten? | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Löse: $sin(alpha) = cos(alpha)$ für $alpha in [0°, 360°)$ | 🎯 wAE |
 
 #### Prüfung: Technische Anwendungen  `trig-4-2` · 20 min
@@ -1391,7 +1391,7 @@
 | 7 | 📋 sorting | Bringe die Prüfungsstrategie für "Grenzwerte von Funktionen" in die richtige Reihenfolge. | ➕ |
 | 8 | 🔘 multiple-choice | Welche Antwort beschreibt einen typischen Fehler bei "Grenzwerte von Funktionen"? | ➕ wAE 4B |
 | 9 | ✅ true-false | Eine vollständige Prüfungsantwort zu "Grenzwerte von Funktionen" sollte den Lösungsweg nachvollziehbar zeigen, nicht nur | ➕ |
-| 10 | 🔘 multiple-choice | Was ist $lim_{x to 0} dfrac{sin(3x)}{x}$? | 🎯 |
+| 10 | 🔘 multiple-choice | Was ist $lim_{x to 0} dfrac{sin(3x)}{x}$? | 🎯 wAE |
 
 #### Stetigkeit von Funktionen  `abl-5-2` · 12 min
 
@@ -1411,7 +1411,7 @@
 | 7 | 🔘 multiple-choice | Welche Kontrolle passt am Ende einer Aufgabe zu "Stetigkeit von Funktionen" am besten? | ➕ wAE 4B |
 | 8 | 🔢 number-input | Rechenaufgabe zu "Stetigkeit von Funktionen": Für f(x)=3x²: Welchen Wert hat f′(2)? | ➕ |
 | 9 | 🔘 multiple-choice | Aufwärmaufgabe zu "Stetigkeit von Funktionen": Was ist bei zusammengesetzten Funktionen der häufigste Fehler? | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | Welche Aussage beschreibt eine **hebbare** Unstetigkeit bei $x = a$? | 🎯 |
+| 10 | 🔘 multiple-choice | Welche Aussage beschreibt eine **hebbare** Unstetigkeit bei $x = a$? | 🎯 wAE |
 
 ### 🏁 Prüfungsaufgaben (Unit 4)
 *Ableitungsregeln, Kurvendiskussion, Optimierung und Taylor — auf TU Wien Klausurniveau*
@@ -1432,12 +1432,12 @@
 | 3 | 🔘 multiple-choice | [PRÜFUNG] $f(x) = dfrac{x^2 + 1}{x - 1}$. Was ist $f'(x)$? | wAE |
 | 4 | 🔢 number-input | [PRÜFUNG] $f(x) = ln(x^2 + 4)$. Berechne $f'(2)$. |  |
 | 5 | ✅ true-false | [PRÜFUNG] Die Ableitung von $f(x) = tan(x)$ ist $f'(x) = dfrac{1}{cos^2(x)}$. |  |
-| 6 | 🔘 multiple-choice | [PRÜFUNG] $f(x) = (x^3 - 2x)^5$. Welches ist $f'(x)$? |  |
-| 7 | 🔘 multiple-choice | [PRÜFUNG] $f(x) = x^2 cdot ln(x)$. Was ist $f'(x)$? |  |
+| 6 | 🔘 multiple-choice | [PRÜFUNG] $f(x) = (x^3 - 2x)^5$. Welches ist $f'(x)$? | wAE |
+| 7 | 🔘 multiple-choice | [PRÜFUNG] $f(x) = x^2 cdot ln(x)$. Was ist $f'(x)$? | wAE |
 | 8 | 🔗 matching | [PRÜFUNG] Ordne jede Funktion ihrer Ableitung zu: |  |
 | 9 | ✅ true-false | [PRÜFUNG] Für $f(x) = e^x cdot sin(x)$ gilt: $f'(0) = 1$. |  |
 | 10 | 🔢 number-input | [PRÜFUNG] $f(x) = dfrac{sin(x)}{x}$ für $x neq 0$. Berechne $f'(pi/2)$ (exakt als Dezimalzahl, 4 Stellen). |  |
-| 11 | 🔘 multiple-choice | [PRÜFUNG] $f(x) = dfrac{e^{2x}}{cos(x)}$. Was ist $f'(x)$? | 🎯 |
+| 11 | 🔘 multiple-choice | [PRÜFUNG] $f(x) = dfrac{e^{2x}}{cos(x)}$. Was ist $f'(x)$? | 🎯 wAE |
 
 #### Prüfung: Kurvendiskussion & Anwendungen  `abl-4-2` · 30 min
 
@@ -1449,17 +1449,17 @@
 
 | # | Typ | Titel / Frage | Flags |
 |---|---|---|---|
-| 1 | 🔘 multiple-choice | [PRÜFUNG] $f(x) = x^3 - 3x^2 - 9x + 5$. An welchen Stellen liegen die lokalen Extrema? |  |
+| 1 | 🔘 multiple-choice | [PRÜFUNG] $f(x) = x^3 - 3x^2 - 9x + 5$. An welchen Stellen liegen die lokalen Extrema? | wAE |
 | 2 | 🔢 number-input | [PRÜFUNG] $f(x) = 2x^3 - 9x^2 + 12x - 4$. An welcher Stelle $x$ liegt der Wendepunkt? |  |
-| 3 | 🔘 multiple-choice | [PRÜFUNG] Ein Rechteck hat den Umfang $U = 20$ cm. Für welche Seitenlänge $x$ wird der Flächeninhalt maximal? |  |
-| 4 | 🔘 multiple-choice | [PRÜFUNG] Das Taylor-Polynom 2. Grades von $f(x) = e^x$ um $x_0 = 0$ lautet: |  |
+| 3 | 🔘 multiple-choice | [PRÜFUNG] Ein Rechteck hat den Umfang $U = 20$ cm. Für welche Seitenlänge $x$ wird der Flächeninhalt maximal? | wAE |
+| 4 | 🔘 multiple-choice | [PRÜFUNG] Das Taylor-Polynom 2. Grades von $f(x) = e^x$ um $x_0 = 0$ lautet: | wAE |
 | 5 | ✅ true-false | [PRÜFUNG] $f(x) = x^4$ hat bei $x = 0$ ein lokales Minimum, obwohl $f''(0) = 0$. |  |
-| 6 | 🔘 multiple-choice | [PRÜFUNG] $f(x) = xe^{-x}$ auf $[0, infty)$. Welcher Wert ist das globale Maximum? |  |
+| 6 | 🔘 multiple-choice | [PRÜFUNG] $f(x) = xe^{-x}$ auf $[0, infty)$. Welcher Wert ist das globale Maximum? | wAE |
 | 7 | 🔗 matching | [PRÜFUNG] Ordne die Aussagen den richtigen Bedingungen zu: |  |
 | 8 | 🔢 number-input | [PRÜFUNG] Ein zylindrischer Behälter ohne Deckel soll ein Volumen von $V = pi,L = pi cdot 10^{-3},m^3$ fassen. Gesucht i |  |
-| 9 | 🔘 multiple-choice | [PRÜFUNG] $f(x) = x^3 - 12x$. Welche Aussage über Monotonie ist KORREKT? |  |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] Das Taylor-Polynom 3. Grades von $f(x) = sin(x)$ um $x_0 = 0$ lautet: |  |
-| 11 | 🔘 multiple-choice | [PRÜFUNG] Vollständige Kurvendiskussion: $f(x) = dfrac{x^2}{x^2 + 3}$. Welche Aussage ist FALSCH? | 🎯 |
+| 9 | 🔘 multiple-choice | [PRÜFUNG] $f(x) = x^3 - 12x$. Welche Aussage über Monotonie ist KORREKT? | wAE |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] Das Taylor-Polynom 3. Grades von $f(x) = sin(x)$ um $x_0 = 0$ lautet: | wAE |
+| 11 | 🔘 multiple-choice | [PRÜFUNG] Vollständige Kurvendiskussion: $f(x) = dfrac{x^2}{x^2 + 3}$. Welche Aussage ist FALSCH? | 🎯 wAE |
 
 #### Prüfung: Technische Optimierung & Newton-Verfahren  `abl-4-3` · 30 min
 
@@ -1471,17 +1471,17 @@
 
 | # | Typ | Titel / Frage | Flags |
 |---|---|---|---|
-| 1 | 🔘 multiple-choice | [PRÜFUNG] Eine zylindrische Dose ($V = $ const) soll minimale Oberfläche haben. Welche Beziehung zwischen Höhe $h$ und R |  |
+| 1 | 🔘 multiple-choice | [PRÜFUNG] Eine zylindrische Dose ($V = $ const) soll minimale Oberfläche haben. Welche Beziehung zwischen Höhe $h$ und R | wAE |
 | 2 | 🔢 number-input | [PRÜFUNG] Aus einem rechteckigen Karton ($30 times 20$ cm) werden in den Ecken Quadrate (Seite $x$) ausgeschnitten und d |  |
 | 3 | ✅ true-false | [PRÜFUNG] Bei Optimierungsaufgaben mit Randwerten muss man neben den Nullstellen von $f'(x)$ auch die Randwerte des Defi |  |
 | 4 | 🔗 matching | [PRÜFUNG] Ordne die Anwendung der zugehörigen Optimierungsstrategie zu. |  |
 | 5 | 🔢 number-input | [PRÜFUNG] Aus einem Rundholz ($d = 30$ cm) soll der Balken mit maximaler Tragfähigkeit (Widerstandsmoment $W = bh^2/6$)  |  |
-| 6 | 🔘 multiple-choice | [PRÜFUNG] Newton-Verfahren zur Nullstellensuche von $f(x) = x^2 - 2$ mit Startwert $x_0 = 1$. Welchen Wert hat $x_1$? |  |
+| 6 | 🔘 multiple-choice | [PRÜFUNG] Newton-Verfahren zur Nullstellensuche von $f(x) = x^2 - 2$ mit Startwert $x_0 = 1$. Welchen Wert hat $x_1$? | wAE |
 | 7 | 📋 sorting | [PRÜFUNG] Bringe die Schritte einer Optimierungsaufgabe in die richtige Reihenfolge. |  |
-| 8 | 🔘 multiple-choice | [PRÜFUNG] Welche Aussage zur Konvergenz des Newton-Verfahrens ist KORREKT? |  |
+| 8 | 🔘 multiple-choice | [PRÜFUNG] Welche Aussage zur Konvergenz des Newton-Verfahrens ist KORREKT? | wAE |
 | 9 | ✅ true-false | [PRÜFUNG] Bei einer Optimierungsaufgabe ohne Nebenbedingung muss die Zielfunktion in einer Variablen ausgedrückt werden, |  |
 | 10 | 🔢 number-input | [PRÜFUNG] Maximale Stromaufnahme einer Batterie mit Innenwiderstand $R_i = 2,Omega$ und Spannung $U_0 = 12$ V. Bei welch |  |
-| 11 | 🔘 multiple-choice | [PRÜFUNG] Ein Tank (Höhe $H = 4$ m) wird mit Wasser gefüllt. Eine Pumpe muss Energie $W = int_0^H rho g h cdot A(h),dh$  | 🎯 |
+| 11 | 🔘 multiple-choice | [PRÜFUNG] Ein Tank (Höhe $H = 4$ m) wird mit Wasser gefüllt. Eine Pumpe muss Energie $W = int_0^H rho g h cdot A(h),dh$  | 🎯 wAE |
 
 <a id="integralrechnung"></a>
 ## Integralrechnung `integralrechnung`
@@ -2066,7 +2066,7 @@
 | 6 | 🔢 number-input | [PRÜFUNG] Die Spur (Trace) einer Matrix ist die Summe der Diagonaleinträge. Für $A = begin{pmatrix} 5 & 2  -1 & 3 end{pm |  |
 | 7 | 🔘 multiple-choice | [PRÜFUNG] Welchen Zusammenhang gibt es zwischen Determinante und Eigenwerten einer $n times n$-Matrix $A$? | wAE |
 | 8 | ✅ true-false | [PRÜFUNG] Eine symmetrische reelle Matrix hat stets reelle Eigenwerte. |  |
-| 9 | 🔘 multiple-choice | [PRÜFUNG] Das LGS $Avec{x} = vec{b}$ mit $A = begin{pmatrix} 1 & 1 & 1  2 & 3 & 1  1 & 2 & 0 end{pmatrix}$, $vec{b} = be |  |
+| 9 | 🔘 multiple-choice | [PRÜFUNG] Das LGS $Avec{x} = vec{b}$ mit $A = begin{pmatrix} 1 & 1 & 1  2 & 3 & 1  1 & 2 & 0 end{pmatrix}$, $vec{b} = be | wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Gegeben $A = begin{pmatrix} 4 & 0  0 & -2 end{pmatrix}$ (Diagonalmatrix). Welche Eigenwerte und Eigenvektoren  | wAE |
 | 11 | 🔘 multiple-choice | [PRÜFUNG] Die Matrix $A = begin{pmatrix} 2 & 1  0 & 2 end{pmatrix}$ hat den doppelten Eigenwert $lambda = 2$. Wie viele  | 🎯 wAE |
 
@@ -2671,7 +2671,7 @@
 | 7 | 🔘 multiple-choice | Ein **Höhenlinienbild** $f(x,y) = $ const zeigt Niveaulinien. Wie steht $nabla f$ zur Niveaulinie? | wAE |
 | 8 | 📋 sorting | Bringe die Schritte zur Berechnung der Tangentialebene an $f(x,y)$ im Punkt $(x_0, y_0)$ in Reihenfolge. |  |
 | 9 | 🔘 multiple-choice | Aufwärmaufgabe zu "Partielle Ableitung verstehen": Was ist bei zusammengesetzten Funktionen der häufigste Fehler? | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | Für $f(x,y) = x^2 + 3y$: Was ist $partial f/partial x$? | 🎯 |
+| 10 | 🔘 multiple-choice | Für $f(x,y) = x^2 + 3y$: Was ist $partial f/partial x$? | 🎯 wAE |
 
 #### Hesse-Matrix und Lagrange-Multiplikatoren  `mdim-1-2` · 16 min
 
@@ -2691,7 +2691,7 @@
 | 7 | 🔘 multiple-choice | Geometrisch: Am Minimum ist der Gradient zur Niveaulinie … | wAE |
 | 8 | 📋 sorting | Bringe die Lagrange-Methode in die richtige Reihenfolge. |  |
 | 9 | 🔘 multiple-choice | Aufwärmaufgabe zu "Hesse-Matrix und Lagrange-Multiplikatoren": Was ist bei zusammengesetzten Funktionen der häufigste Fe | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | Für $f(x,y) = x^2 + y^2$ ist $H = begin{pmatrix}2&00&2end{pmatrix}$ bei $(0,0)$. Klassifikation? | 🎯 |
+| 10 | 🔘 multiple-choice | Für $f(x,y) = x^2 + y^2$ ist $H = begin{pmatrix}2&00&2end{pmatrix}$ bei $(0,0)$. Klassifikation? | 🎯 wAE |
 
 ### 🏁 Prüfung (Unit 2)
 
@@ -2715,7 +2715,7 @@
 | 7 | 🔗 matching | [PRÜFUNG] Ordne jede Situation ihrer Methode zu. |  |
 | 8 | 📋 sorting | [PRÜFUNG] Strategie zur Extremsuche in 2D. Bringe die Schritte in Reihenfolge. |  |
 | 9 | 🔘 multiple-choice | [PRÜFUNG] Aufwärmaufgabe zu "Prüfung: Extrema, Fehlerfortpflanzung": Was zeigt der Gradient ∇f an einem Punkt? | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] Für $f(x,y) = x^2 + y^2$: Welchen kritischen Punkt hat $f$? | 🎯 |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] Für $f(x,y) = x^2 + y^2$: Welchen kritischen Punkt hat $f$? | 🎯 wAE |
 
 #### Prüfung: Fehlerfortpflanzung & totales Differential  `mdim-pruefung-2` · 20 min
 
@@ -2735,7 +2735,7 @@
 | 7 | 🔗 matching | [PRÜFUNG] Ordne jeder Messformel den richtigen Fehler-Typ zu (relativ vs. absolut). |  |
 | 8 | 📋 sorting | [PRÜFUNG] Strategie zur Fehlerabschätzung bei $z = f(x, y, ldots)$. Bringe in Reihenfolge. |  |
 | 9 | 🔘 multiple-choice | [PRÜFUNG] Aufwärmaufgabe zu "Prüfung: Fehlerfortpflanzung & totales Differential": Was ist bei zusammengesetzten Funktio | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] $z = x cdot y$, $x = 3 pm 0{,}1$, $y = 4 pm 0{,}2$. Maximaler absoluter Fehler $Delta z$? | 🎯 |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] $z = x cdot y$, $x = 3 pm 0{,}1$, $y = 4 pm 0{,}2$. Maximaler absoluter Fehler $Delta z$? | 🎯 wAE |
 
 #### Prüfung: Lagrange & Gesamtaufgaben  `mdim-pruefung-3` · 22 min
 
@@ -2755,7 +2755,7 @@
 | 7 | 🔗 matching | [PRÜFUNG] Ordne jede Aufgabe ihrem Lösungsansatz zu. |  |
 | 8 | 📋 sorting | [PRÜFUNG] Strategie für Prüfungsaufgabe „Extremum unter Nebenbedingung". Bringe in Reihenfolge. |  |
 | 9 | 🔘 multiple-choice | [PRÜFUNG] Aufwärmaufgabe zu "Prüfung: Lagrange & Gesamtaufgaben": Was zeigt der Gradient ∇f an einem Punkt? | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] $f(x,y) = x^2 + y^2$ auf $x + y = 2$. Wo liegt das Minimum? | 🎯 |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] $f(x,y) = x^2 + y^2$ auf $x + y = 2$. Wo liegt das Minimum? | 🎯 wAE |
 
 <a id="numerik"></a>
 ## Numerische Mathematik `numerik`
@@ -2787,7 +2787,7 @@
 | 7 | 📋 sorting | Bringe einen Newton-Schritt in die richtige Reihenfolge. |  |
 | 8 | 🔢 number-input | Newton auf $f(x) = x^2 - 2$, $x_0 = 1{,}5$. Gib $x_1$ mit 4 Nachkommastellen an. |  |
 | 9 | 🔘 multiple-choice | Aufwärmaufgabe zu "Newton-Verfahren": Wovon hängt die Konvergenzgeschwindigkeit des Newton-Verfahrens ab? | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | Newton auf $f(x) = x^2 - 2$, Startwert $x_0 = 1$: Wie lautet $x_1$? | 🎯 |
+| 10 | 🔘 multiple-choice | Newton auf $f(x) = x^2 - 2$, Startwert $x_0 = 1$: Wie lautet $x_1$? | 🎯 wAE |
 
 #### Bisektion und numerische Integration  `num-1-2` · 14 min
 
@@ -2807,7 +2807,7 @@
 | 7 | 🔘 multiple-choice | Wann nutzt man **Bisektion** statt **Newton**? | wAE |
 | 8 | 📋 sorting | Schritte der Bisektion. Bringe in Reihenfolge. |  |
 | 9 | 🔘 multiple-choice | Aufwärmaufgabe zu "Bisektion und numerische Integration": Wovon hängt die Konvergenzgeschwindigkeit des Newton-Verfahren | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | Trapezregel für $int_0^2 x^2,dx$ mit einem Teilintervall [$a=0$, $b=2$]? | 🎯 |
+| 10 | 🔘 multiple-choice | Trapezregel für $int_0^2 x^2,dx$ mit einem Teilintervall [$a=0$, $b=2$]? | 🎯 wAE |
 
 ### 🏁 Prüfung (Unit 2)
 
@@ -2830,7 +2830,7 @@
 | 7 | 🔗 matching | [PRÜFUNG] Ordne jedem Problem das passendste Verfahren zu. |  |
 | 8 | 📋 sorting | [PRÜFUNG] Strategie zur Verfahrens-Wahl bei numerischen Problemen. Bringe in Reihenfolge. |  |
 | 9 | 🔘 multiple-choice | [PRÜFUNG] Aufwärmaufgabe zu "Prüfung: Numerische Methoden kombiniert": Wovon hängt die Konvergenzgeschwindigkeit des New | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] Welche Konvergenzordnung hat Newton bei einfachen Nullstellen? | 🎯 |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] Welche Konvergenzordnung hat Newton bei einfachen Nullstellen? | 🎯 wAE |
 
 #### Prüfung: Trapez, Simpson & Fehlerordnung  `num-pruefung-2` · 20 min
 
@@ -2850,7 +2850,7 @@
 | 7 | 🔗 matching | [PRÜFUNG] Ordne jeder Aussage das richtige Verfahren zu. |  |
 | 8 | 📋 sorting | [PRÜFUNG] Schritte zur Berechnung eines Integrals mit zusammengesetzter Trapezregel. Bringe in Reihenfolge. |  |
 | 9 | 🔘 multiple-choice | [PRÜFUNG] Aufwärmaufgabe zu "Prüfung: Trapez, Simpson & Fehlerordnung": Wovon hängt die Konvergenzgeschwindigkeit des Ne | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] Trapezregel für $int_0^2 x^2,dx$ mit $n=2$ Teilintervallen ($h=1$)? | 🎯 |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] Trapezregel für $int_0^2 x^2,dx$ mit $n=2$ Teilintervallen ($h=1$)? | 🎯 wAE |
 
 #### Prüfung: Kombinierte Aufgaben & Abbruchkriterien  `num-pruefung-3` · 22 min
 
@@ -2870,7 +2870,7 @@
 | 7 | ✅ true-false | [PRÜFUNG] Rundungsfehler und Verfahrensfehler sind dasselbe. |  |
 | 8 | 📋 sorting | [PRÜFUNG] Gesamtstrategie für ein numerisches Problem in der Prüfung. Bringe die Schritte in Reihenfolge. |  |
 | 9 | 🔘 multiple-choice | [PRÜFUNG] Aufwärmaufgabe zu "Prüfung: Kombinierte Aufgaben & Abbruchkriterien": Wovon hängt die Konvergenzgeschwindigkei | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] Welches Verfahren ist robuster, wenn der Startwert weit von der Nullstelle entfernt liegt? | 🎯 |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] Welches Verfahren ist robuster, wenn der Startwert weit von der Nullstelle entfernt liegt? | 🎯 wAE |
 
 <a id="statistik"></a>
 ## Statistik & Wahrscheinlichkeit `statistik`
@@ -2902,7 +2902,7 @@
 | 7 | 🔘 multiple-choice | Welche Regel gilt für $operatorname{Var}(aX + b)$ mit Konstanten $a, b$? | wAE |
 | 8 | 📋 sorting | Bringe die Schritte zur Berechnung der Varianz in die richtige Reihenfolge. |  |
 | 9 | 🔘 multiple-choice | Aufwärmaufgabe zu "Erwartungswert und Varianz": Was bedeutet ein 95%-Konfidenzintervall? | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | Zwei Zufallsvariablen $X$ und $Y$ haben denselben Erwartungswert, aber $operatorname{Var}(X) > operatorname{Var}(Y)$. We | 🎯 |
+| 10 | 🔘 multiple-choice | Zwei Zufallsvariablen $X$ und $Y$ haben denselben Erwartungswert, aber $operatorname{Var}(X) > operatorname{Var}(Y)$. We | 🎯 wAE |
 
 #### Normalverteilung  `stat-1-2` · 13 min
 
@@ -2922,7 +2922,7 @@
 | 7 | 🔗 matching | Ordne jeder Quantile (Standardnormal) ihre Wahrscheinlichkeit zu. |  |
 | 8 | 📋 sorting | Schritte zur Berechnung von $P(a leq X leq b)$ bei $X sim N(mu, sigma^2)$. |  |
 | 9 | 🔘 multiple-choice | Aufwärmaufgabe zu "Normalverteilung": Was bedeutet ein 95%-Konfidenzintervall? | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | $X sim N(10, 4)$ (d.h. $mu = 10$, $sigma = 2$). In welchem Intervall liegen $approx 95,%$ der Werte? | 🎯 |
+| 10 | 🔘 multiple-choice | $X sim N(10, 4)$ (d.h. $mu = 10$, $sigma = 2$). In welchem Intervall liegen $approx 95,%$ der Werte? | 🎯 wAE |
 
 #### Hypothesentest und Konfidenzintervall  `stat-1-3` · 15 min
 
@@ -2942,7 +2942,7 @@
 | 7 | 🔗 matching | Ordne jedem Symbol seine Bedeutung zu. |  |
 | 8 | 📋 sorting | Bringe die Schritte eines Hypothesentests in die richtige Reihenfolge. |  |
 | 9 | 🔘 multiple-choice | Aufwärmaufgabe zu "Hypothesentest und Konfidenzintervall": Was bedeutet ein 95%-Konfidenzintervall? | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | Ein Experiment liefert $p = 0{,}03$ bei $alpha = 0{,}05$. Was schlussfolgert man? | 🎯 |
+| 10 | 🔘 multiple-choice | Ein Experiment liefert $p = 0{,}03$ bei $alpha = 0{,}05$. Was schlussfolgert man? | 🎯 wAE |
 
 ### 🏁 Prüfung (Unit 2)
 
@@ -2966,7 +2966,7 @@
 | 7 | 🔗 matching | [PRÜFUNG] Ordne jedem Stichproben-Kennwert seine Formel zu. |  |
 | 8 | 📋 sorting | [PRÜFUNG] Strategie zur KI-Berechnung in Prüfungsaufgabe. Bringe die Schritte in Reihenfolge. |  |
 | 9 | 🔘 multiple-choice | [PRÜFUNG] Aufwärmaufgabe zu "Prüfung: Schätzung & Hypothesentest": Was bedeutet ein 95%-Konfidenzintervall? | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] Mittelwert von 4, 5, 6, 7, 8? | 🎯 |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] Mittelwert von 4, 5, 6, 7, 8? | 🎯 wAE |
 
 #### Prüfung: Normalverteilung & Standardisierung  `stat-pruefung-2` · 22 min
 
@@ -2986,7 +2986,7 @@
 | 7 | 🔢 number-input | [PRÜFUNG] Glühbirnen $X sim N(1000,text{h}, 2500,text{h}^2)$. Wahrscheinlichkeit, dass eine Birne **länger als 1100 h**  |  |
 | 8 | 📋 sorting | [PRÜFUNG] Strategie zur Berechnung von $P(X leq x)$ bei $X sim N(mu, sigma^2)$. Bringe die Schritte in Reihenfolge. |  |
 | 9 | 🔘 multiple-choice | [PRÜFUNG] Aufwärmaufgabe zu "Prüfung: Normalverteilung & Standardisierung": Welche Kontrolle ist bei trigonometrischen A | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] $X sim N(5, 1)$. Wie groß ist $P(X > 6)$? | 🎯 |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] $X sim N(5, 1)$. Wie groß ist $P(X > 6)$? | 🎯 wAE |
 
 #### Prüfung: Konfidenzintervall & Gesamtaufgaben  `stat-pruefung-3` · 22 min
 
@@ -3006,7 +3006,7 @@
 | 7 | 🔢 number-input | [PRÜFUNG] Stichprobe von $25$ Widerständen: $bar x = 100{,}5,Omega$, $s = 2{,}0,Omega$. Liegt der Sollwert $100,Omega$ i |  |
 | 8 | 📋 sorting | [PRÜFUNG] Gesamtstrategie für KI-Aufgabe. Bringe die Schritte in Reihenfolge. |  |
 | 9 | 🔘 multiple-choice | [PRÜFUNG] Aufwärmaufgabe zu "Prüfung: Konfidenzintervall & Gesamtaufgaben": Was bedeutet ein 95%-Konfidenzintervall? | ➕ wAE 4B |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] $bar x = 10$, $sigma = 2$, $n = 100$. 95%-Konfidenzintervall? | 🎯 |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] $bar x = 10$, $sigma = 2$, $n = 100$. 95%-Konfidenzintervall? | 🎯 wAE |
 
 <a id="fourier-laplace"></a>
 ## Fourier & Laplace `fourier-laplace`
@@ -3038,7 +3038,7 @@
 | 7 | 📋 sorting | Bringe die Schritte zur Berechnung einer Fourier-Reihe in Reihenfolge. |  |
 | 8 | 🔘 multiple-choice | Was repräsentiert der Koeffizient $a_0/2$ einer Fourier-Reihe? | ➕ wAE |
 | 9 | 🔢 number-input | Wie groß ist $a_0$ für die Funktion $f(t) = sin(t)$ auf $[0, 2pi]$? | ➕ |
-| 10 | 🔘 multiple-choice | Eine gerade periodische Funktion $f(t)$ hat in ihrer Fourier-Reihe nur ... | 🎯 |
+| 10 | 🔘 multiple-choice | Eine gerade periodische Funktion $f(t)$ hat in ihrer Fourier-Reihe nur ... | 🎯 wAE |
 
 #### Fourier-Reihe Rechteckimpuls  `fl-1-2` · 14 min
 
@@ -3057,7 +3057,7 @@
 | 7 | 📋 sorting | Bringe das Vorgehen bei der Rechteck-Fourier-Aufgabe in Reihenfolge. |  |
 | 8 | 🔘 multiple-choice | Warum enthält die Fourier-Reihe einer symmetrischen Rechteckfunktion nur ungerade Harmonische? | ➕ wAE |
 | 9 | 🔢 number-input | Fourier-Koeffizient $b_1$ einer Rechteckfunktion mit Amplitude $A = 1$, Periode $T = 2pi$: $b_1 = (2/T)int_0^T fsin(t),d | ➕ |
-| 10 | 🔘 multiple-choice | Warum sind beim Rechteckimpuls nur ungerade Vielfache der Grundfrequenz im Spektrum ($D = 0{,}5$)? | 🎯 |
+| 10 | 🔘 multiple-choice | Warum sind beim Rechteckimpuls nur ungerade Vielfache der Grundfrequenz im Spektrum ($D = 0{,}5$)? | 🎯 wAE |
 
 #### Fourier-Transformation  `fl-1-3` · 16 min
 
@@ -3076,7 +3076,7 @@
 | 7 | 📋 sorting | Bringe die Schritte zur Berechnung einer Fourier-Transformation in Reihenfolge. |  |
 | 8 | 🔘 multiple-choice | Wie lautet die Fourier-Transformierte der Dirac-Impulsfunktion $delta(t)$? | ➕ wAE |
 | 9 | 🔢 number-input | Zeitverschiebung: Wenn $mathcal{F}{f(t)} = F(omega)$, wie groß ist der Betrag von $mathcal{F}{f(t-3)}$ im Verhältnis zu  | ➕ |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] Die Fourier-Transformierte von $e^{-at}u(t)$ ($a > 0$) lautet: | 🎯 |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] Die Fourier-Transformierte von $e^{-at}u(t)$ ($a > 0$) lautet: | 🎯 wAE |
 
 ### Laplace-Transformation (Unit 2)
 
@@ -3099,7 +3099,7 @@
 | 7 | 📋 sorting | Bringe die Schritte zum Transformieren einer Zeitfunktion in Reihenfolge. |  |
 | 8 | 🔘 multiple-choice | Welcher Vorteil hat die Laplace- gegenüber der Fourier-Transformation bei DGL-Lösung? | ➕ wAE |
 | 9 | 🔢 number-input | Wie lautet $mathcal{L}{t^2}$ bei $s > 0$? Gib den Wert bei $s = 1$. | ➕ |
-| 10 | 🔘 multiple-choice | Wie lautet $mathcal{L}{sin(omega_0 t)}$? | 🎯 |
+| 10 | 🔘 multiple-choice | Wie lautet $mathcal{L}{sin(omega_0 t)}$? | 🎯 wAE |
 
 #### Laplace zur DGL-Lösung  `fl-2-2` · 16 min
 
@@ -3118,7 +3118,7 @@
 | 7 | 📋 sorting | Bringe die 4 Schritte zur DGL-Lösung per Laplace in Reihenfolge. |  |
 | 8 | 🔘 multiple-choice | Was ist die Impulsantwort $g(t)$ eines linearen, zeitinvarianten Systems? | ➕ wAE |
 | 9 | 🔢 number-input | Für ein PT1-System $G(s) = 1/(s + 2)$: Wie groß ist $g(t)$ bei $t = 0^+$? | ➕ |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] Übertragungsfunktion $G(s) = dfrac{1}{s+3}$. Was ist die Sprungantwort $y(t)$ für $t ge 0$? | 🎯 |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] Übertragungsfunktion $G(s) = dfrac{1}{s+3}$. Was ist die Sprungantwort $y(t)$ für $t ge 0$? | 🎯 wAE |
 
 ### 🏁 Prüfungsaufgaben (Unit 3)
 
@@ -3140,7 +3140,7 @@
 | 7 | 📋 sorting | [PRÜFUNG] Bringe die Prüfungsschritte zur Fourier-Analyse in Reihenfolge. |  |
 | 8 | 🔘 multiple-choice | [PRÜFUNG] Was besagt das Parseval-Theorem für die Fourier-Transformation? | ➕ wAE |
 | 9 | 🔢 number-input | [PRÜFUNG] Ein Signal hat $int \|f(t)\|^2,dt = 10$. Was ist $(1/(2pi))int\|F(omega)\|^2,domega$ nach Parseval? | ➕ |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] Gegeben sei $f(t) = 3cos(2t) + sin(4t)$. Was ist der Gleichanteil $a_0/2$? | 🎯 |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] Gegeben sei $f(t) = 3cos(2t) + sin(4t)$. Was ist der Gleichanteil $a_0/2$? | 🎯 wAE |
 
 #### Laplace Prüfungsaufgaben  `fl-3-2` · 22 min
 
@@ -3160,7 +3160,7 @@
 | 7 | 📋 sorting | [PRÜFUNG] Bringe die Prüfungsschritte zur Laplace-DGL-Aufgabe in Reihenfolge. |  |
 | 8 | 🔘 multiple-choice | [PRÜFUNG] Wann ist das lineare System mit $G(s) = (s+3)/((s+1)(s-2))$ stabil? | ➕ wAE |
 | 9 | 🔢 number-input | [PRÜFUNG] Regelkreis: $G_o(s) = 4/(s(s+2))$, negative Einheitsrückführung. Endwertsatz: $e_{stat}$ auf Sprung $w_0 = 1$? | ➕ |
-| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] $G(s) = dfrac{2}{s^2+2s+1} = dfrac{2}{(s+1)^2}$. Ist das System stabil? | 🎯 |
+| 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] $G(s) = dfrac{2}{s^2+2s+1} = dfrac{2}{(s+1)^2}$. Ist das System stabil? | 🎯 wAE |
 
 <a id="technische-mechanik"></a>
 ## Technische Mechanik `technische-mechanik`

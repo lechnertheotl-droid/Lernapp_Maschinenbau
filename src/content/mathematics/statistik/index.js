@@ -179,6 +179,11 @@ const unit1 = makeUnit({
         'Gleicher Mittelwert, aber unterschiedlich stark gestreut.',
         'Höhere Varianz $\\Rightarrow$ stärkere Abweichungen im Mittel.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Varianz misst Streuung, nicht Betrag. $X$ kann kleinere Werte haben und dennoch stärker streuen — entscheidend ist die Abweichung vom Mittelwert, nicht die absolute Höhe.',
+        2: 'Die Voraussetzung sagt: $E[X] = E[Y]$. Die Erwartungswerte sind gleich, nur die Varianzen unterscheiden sich. Die Aussage widerspricht der Angabe.',
+        3: 'Varianz ist **exakt** das Maß für Streuung: $\\operatorname{Var}(X) = E[(X - E[X])^2]$. Wer das verneint, verwechselt Varianz mit einer Lage-Kennzahl.',
+      },
       nextLessonId: 'stat-1-2',
     }),
     makeLesson({
@@ -350,6 +355,11 @@ const unit1 = makeUnit({
         '95\\,% entspricht $\\mu \\pm 2\\sigma$.',
         '$\\mu \\pm 2\\sigma = 10 \\pm 4 = [6, 14]$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: '$[8, 12] = \\mu \\pm 1\\sigma$ ist das 68-%-Intervall, nicht 95 %. Für 95 % braucht man $2\\sigma = 4$ auf beiden Seiten.',
+        2: '$[4, 16] = \\mu \\pm 3\\sigma$ ist das 99{,}7-%-Intervall. Für 95 % reicht $\\mu \\pm 2\\sigma$; hier wurde $\\sigma$ als $\\sigma^2 = 4$ verwechselt.',
+        3: '$[9, 11]$ entspricht $\\mu \\pm 0{,}5\\sigma$ — viel zu eng und beinhaltet nur etwa 38 %. Die 95-%-Faustregel verlangt $\\pm 2\\sigma$.',
+      },
       masteryVisualization: {
         id: 'bell-curve',
         params: {
@@ -547,6 +557,11 @@ const unit1 = makeUnit({
         'Kleiner p-Wert = stärkere Evidenz gegen $H_0$.',
         '$p = 0{,}03 < \\alpha = 0{,}05$: signifikant, $H_0$ ablehnen.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Die Logik wurde umgekehrt: Bei $p < \\alpha$ wird $H_0$ **abgelehnt**, nicht beibehalten. Die Beibehaltung gilt für $p \\geq \\alpha$.',
+        2: 'Ein Ergebnis mit $p < \\alpha$ ist per Definition statistisch signifikant — nicht bedeutungslos. Es liefert Evidenz gegen $H_0$.',
+        3: 'Eine Wiederholung ist nicht automatisch nötig. Der Test liefert hier bereits ein gültiges Ergebnis: $p < \\alpha$ → $H_0$ ablehnen.',
+      },
       masteryVisualization: {
         id: 'bell-curve',
         params: {
@@ -737,6 +752,11 @@ const unit2 = makeUnit({
         'Summe: $4+5+6+7+8 = 30$.',
         '$\\bar x = 30/5 = 6$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: '$5$ wäre der Median der ersten vier Werte ($4,5,6,7$) oder der Mittelwert von $4+5+6+7=22/4 = 5{,}5$. Aber hier sind 5 Werte; der Mittelwert ist $30/5 = 6$.',
+        2: '$7$ ist der zweitletzte Wert und nicht der Mittelwert. Der Mittelwert wird aus allen 5 Werten berechnet: $(4+5+6+7+8)/5 = 6$.',
+        3: '$4{,}5$ entsteht aus unklarer Rechnung — vielleicht $9/2$. Der Mittelwert liegt immer **innerhalb** der Werte-Spanne $[4, 8]$, deren Mitte ist $6$.',
+      },
       masteryVisualization: {
         id: 'bell-curve',
         params: {
@@ -933,6 +953,11 @@ const unit2 = makeUnit({
         '$P(X > 6) = P(Z > 1) = 1 - \\Phi(1)$.',
         '$\\Phi(1) \\approx 0{,}841$, also $P(X>6) \\approx 1 - 0{,}841 = 0{,}159$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: '$0{,}841 = \\Phi(1) = P(X \\leq 6)$ — das ist die Wahrscheinlichkeit **unter** 6, nicht oberhalb. Für $P(X > 6)$ braucht man die Gegenwahrscheinlichkeit $1 - \\Phi(1)$.',
+        2: '$0{,}5$ ergibt sich für $P(X > \\mu) = P(X > 5)$. Hier ist die Grenze aber $6 > \\mu$, also deutlich weniger als $50\\,\\%$ der Fläche liegt rechts davon.',
+        3: '$0{,}023 \\approx 1 - \\Phi(2)$ entspricht $P(X > \\mu + 2\\sigma) = P(X > 7)$. Hier ist die Grenze aber $6 = \\mu + \\sigma$, also $z = 1$ (nicht $2$).',
+      },
       masteryVisualization: {
         id: 'bell-curve',
         params: {
@@ -1135,6 +1160,11 @@ const unit2 = makeUnit({
         '$\\sigma/\\sqrt{n} = 2/\\sqrt{100} = 2/10 = 0{,}2$.',
         '$1{,}96 \\cdot 0{,}2 = 0{,}392$, also KI: $10 \\pm 0{,}392$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: '$\\sqrt{n}$ wurde vergessen: $1{,}96 \\cdot \\sigma = 3{,}92$ ergibt die hier angegebene Halbbreite. Der **Standardfehler** hat aber $\\sigma/\\sqrt{n}$, also Division durch $\\sqrt{100} = 10$.',
+        2: '$0{,}5$ als Halbbreite entspricht einem Quantil $2{,}5$ — zu groß für 95 %. Für 95 % gilt $z = 1{,}96$ (nicht $2{,}5$), also Halbbreite $\\approx 0{,}39$.',
+        3: '$\\pm 2 = \\pm\\sigma$ wurde ohne $\\sqrt{n}$-Division und ohne $1{,}96$-Skalierung verwendet. Das wäre der Bereich **einer einzelnen Beobachtung**, nicht das KI für den Mittelwert.',
+      },
       masteryVisualization: {
         id: 'bell-curve',
         params: {

@@ -42,6 +42,11 @@ export const abl_unit5 = makeUnit({
         'Standardgrenzwert: $\\lim_{u \\to 0} \\frac{\\sin u}{u} = 1$.',
         'Mit $u = 3x$: $\\lim_{x\\to 0} 3\\cdot\\frac{\\sin(3x)}{3x} = 3 \\cdot 1 = 3$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Der Standardgrenzwert $\\lim_{u\\to 0}\\sin(u)/u = 1$ wurde direkt übernommen, ohne den Innenfaktor $3$ zu berücksichtigen. Hier ist das Argument $3x$, der Nenner nur $x$ — der Faktor $3$ muss herausgezogen werden: Ergebnis $3\\cdot 1 = 3$.',
+        2: 'Das wäre richtig, wenn man $\\sin(3x)$ als $0$ ignorierte. Aber der Grenzwert $\\sin(3x)/x$ entspricht der Steigung von $\\sin$ bei 0, skaliert mit $3$ — also endlicher Wert, nicht null.',
+        3: 'Der Grenzwert existiert sehr wohl: Taylor-Reihe $\\sin(3x) = 3x - (3x)^3/6 + \\ldots$, geteilt durch $x$ ergibt $3 - 9x^2/2 + \\ldots \\to 3$ für $x\\to 0$.',
+      },
       exercises: [
         {
           id: 'ex-abl-5-1-a',
@@ -175,6 +180,11 @@ Zweite Ableitung: $\\lim_{x\\to 0} \\dfrac{e^{x}}{2} = \\dfrac{1}{2}$.
         'Bei Sprungstellen ist der Grenzwert nicht eindeutig — nicht hebbar.',
         'Hebbare Unstetigkeit: $\\lim_{x\\to a} f(x)$ existiert, $f(a)$ fehlt oder weicht ab.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Das ist die Definition einer *Sprungstelle*: links- und rechtsseitiger Grenzwert existieren, stimmen aber nicht überein. Sprungstellen sind *nicht* hebbar — kein einzelner Wert kann die Funktion dort stetig machen.',
+        2: 'Das beschreibt eine *Polstelle* ($|f| \\to \\infty$). Auch Pole sind nicht hebbar, da kein endlicher Grenzwert existiert. Hebbar: endlicher Grenzwert bei falschem/fehlendem $f(a)$.',
+        3: 'Differenzierbarkeit impliziert Stetigkeit — eine Funktion kann nicht gleichzeitig differenzierbar und unstetig sein. Diese Antwortoption ist logisch widersprüchlich.',
+      },
       masteryVisualization: {
         id: 'function-graph',
         params: {

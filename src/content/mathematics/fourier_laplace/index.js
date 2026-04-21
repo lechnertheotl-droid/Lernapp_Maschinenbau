@@ -140,6 +140,11 @@ const unit1Lessons = [
       'Sinus ist ungerade: $\\sin(-t) = -\\sin(t)$.',
       'Produkt gerade $\\times$ ungerade = ungerade $\\Rightarrow$ Integral über Periode = 0.',
     ],
+    masteryWrongAnswerExplanations: {
+      1: 'Umgekehrt: nur $\\sin$-Terme treten bei **ungeraden** Funktionen auf ($f(-t) = -f(t)$). Gerade Funktionen haben nur Kosinus, da das Integral von $f \\cdot \\sin$ verschwindet.',
+      2: 'Nur $a_0$ gilt ausschließlich für **konstante** Funktionen — jede nichtkonstante gerade Funktion hat zusätzlich Kosinusbeiträge $a_n \\neq 0$.',
+      3: 'Das wäre die Nullfunktion. Jede gerade Funktion mit $f \\not\\equiv 0$ hat mindestens $a_0 \\neq 0$ oder $a_n \\neq 0$.',
+    },
     nextLessonId: 'fl-1-2',
   }),
 
@@ -280,6 +285,11 @@ const unit1Lessons = [
       'Diese Symmetrie löscht alle geradzahligen Fourier-Koeffizienten.',
       'Nur $n = 1, 3, 5, \\ldots$ überleben im Spektrum.',
     ],
+    masteryWrongAnswerExplanations: {
+      1: 'Das ist zwar im Ergebnis richtig, aber keine tiefere Begründung. Die eigentliche Ursache ist die Halbwellensymmetrie $f(t+T/2) = -f(t)$, die allgemein gilt, nicht nur für Rechtecke.',
+      2: 'Gibbs-Phänomen beschreibt das Überschwingen an Sprungstellen, nicht das Verschwinden von Harmonischen. Es betrifft Konvergenz, nicht das Spektrum.',
+      3: 'Tastverhältnis $D = 0{,}5$ **erzeugt** die Halbwellensymmetrie — die eigentliche Ursache der verschwindenden geraden Koeffizienten ist aber diese Symmetrie, nicht $D$ selbst.',
+    },
     nextLessonId: 'fl-1-3',
   }),
 
@@ -420,6 +430,11 @@ const unit1Lessons = [
       'Exponentialintegral: $\\left[-\\frac{1}{a+j\\omega}e^{-(a+j\\omega)t}\\right]_0^\\infty$.',
       'Bei $t \\to \\infty$ verschwindet der Term wegen $a > 0$, unten bleibt $\\frac{1}{a+j\\omega}$.',
     ],
+    masteryWrongAnswerExplanations: {
+      1: 'Vorzeichenfehler im Exponenten der Transformationsformel: $\\mathcal{F}$ verwendet $e^{-j\\omega t}$ (Minus), also $a+j\\omega$ im Nenner. $\\frac{1}{a-j\\omega}$ wäre die **inverse** Transformation oder ein Rechenfehler.',
+      2: '$a/(a^2+\\omega^2)$ ist der **Realteil** von $1/(a+j\\omega)$, nicht die komplette Transformierte. Die vollständige Transformierte ist komplex: $1/(a+j\\omega) = (a-j\\omega)/(a^2+\\omega^2)$.',
+      3: '$e^{-a\\omega}$ ist eine Exponentialfunktion in $\\omega$. Die Transformierte eines abklingenden Signals ist aber typischerweise eine rationale Funktion, keine Exponentialfunktion.',
+    },
     nextLessonId: 'fl-2-1',
   }),
 ]
@@ -566,6 +581,11 @@ const unit2Lessons = [
       'Vergleiche mit $\\mathcal{L}\\{\\cos\\}$: dort steht $s$ im Zähler.',
       'Merke: $\\sin \\to \\omega_0$, $\\cos \\to s$ im Zähler.',
     ],
+    masteryWrongAnswerExplanations: {
+      1: 'Das ist die Transformierte von $\\cos(\\omega_0 t)$: $s/(s^2+\\omega_0^2)$. Sinus und Kosinus unterscheiden sich genau in diesem Zählerfaktor: $\\omega_0$ bei Sinus, $s$ bei Kosinus.',
+      2: '$1/(s+\\omega_0)$ ist die Transformierte von $e^{-\\omega_0 t}u(t)$ — eine gedämpfte Exponentialfunktion, kein Sinus. Merkmal: quadratischer Nenner $s^2+\\omega_0^2$ gehört zu Sinus/Kosinus.',
+      3: '$\\omega_0/(s+\\omega_0)$ ist eine Mischung: Zähler vom Sinus, Nenner vom Exponential — existiert so nicht in der Tabelle. Korrekt: quadratischer Nenner $s^2 + \\omega_0^2$.',
+    },
     nextLessonId: 'fl-2-2',
   }),
 
@@ -709,6 +729,11 @@ const unit2Lessons = [
       'Partialbruchzerlegung: $\\frac{1}{s(s+3)} = \\frac{A}{s} + \\frac{B}{s+3}$.',
       '$A = 1/3$, $B = -1/3$ $\\Rightarrow$ rücktransformieren.',
     ],
+    masteryWrongAnswerExplanations: {
+      1: '$e^{-3t}$ ist die Impulsantwort $h(t) = \\mathcal{L}^{-1}\\{G(s)\\}$, nicht die Sprungantwort. Die Sprungantwort ist $\\int_0^t h(\\tau)\\,d\\tau$ und enthält einen stationären Anteil.',
+      2: '$\\frac{1}{3}e^{-3t}$ startet bei $1/3 > 0$ und fällt ab — eine abklingende Exponentialfunktion. Die Sprungantwort muss aber bei $t=0$ null sein und stationär gegen $G(0) = 1/3$ konvergieren.',
+      3: '$1 - e^{-3t}$ konvergiert gegen $1$ — aber der stationäre Endwert ist $G(0) = 1/3$, nicht $1$. Der Vorfaktor $1/3$ wurde vergessen: richtig ist $\\tfrac{1}{3}(1-e^{-3t})$.',
+    },
     nextLessonId: 'fl-3-1',
   }),
 ]
@@ -838,6 +863,11 @@ const unit3Lessons = [
       '$\\cos$ und $\\sin$ haben je Mittelwert 0.',
       'Summe von Sinus/Kosinus ohne Konstante $\\Rightarrow$ Mittelwert = 0.',
     ],
+    masteryWrongAnswerExplanations: {
+      1: '$3$ ist die Amplitude des Kosinus-Terms $3\\cos(2t)$, nicht der Gleichanteil. Der Gleichanteil (Mittelwert) von $\\cos$ ist aber $0$, daher liefert $3\\cos(2t)$ keinen DC-Anteil.',
+      2: '$1$ ist die Amplitude des Sinus-Terms $\\sin(4t)$. Sinus hat ebenfalls Mittelwert $0$, also keinen DC-Anteil.',
+      3: '$4$ ist die Frequenz des Sinus-Terms, nicht der Gleichanteil. Der Gleichanteil misst das Zeitmittel von $f$, nicht eine Frequenz.',
+    },
     nextLessonId: 'fl-3-2',
   }),
 
@@ -977,6 +1007,11 @@ const unit3Lessons = [
       'Pol bei $s = -1$: $\\operatorname{Re}(-1) = -1 < 0$ $\\checkmark$.',
       'Linke Halbebene = stabil, rechte Halbebene = instabil.',
     ],
+    masteryWrongAnswerExplanations: {
+      1: 'Vorzeichenfehler beim Faktorisieren: $s^2 + 2s + 1 = (s+1)^2$, die Nullstellen sind $s = -1$ (doppelt), nicht $+1$. Die Pole liegen daher in der **linken** Halbebene.',
+      2: 'Der Pol $s = -1$ liegt **nicht** auf der imaginären Achse (das wäre $\\operatorname{Re}(s) = 0$), sondern streng links davon. Grenzstabilität wäre z.B. bei $s = \\pm j\\omega$.',
+      3: 'Stabilität hängt nur von den Polen der Übertragungsfunktion ab, nicht vom Eingangssignal. Pol links → stabil, unabhängig von der Anregung.',
+    },
     nextLessonId: null,
   }),
 ]

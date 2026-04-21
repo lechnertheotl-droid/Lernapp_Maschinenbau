@@ -353,7 +353,7 @@ const exercises_la_u3 = {
       'Unendlich viele Lösungen mit einer freien Variable.',
       'Genau eine Lösung: $\\vec{x} = (2, 1, 3)^T$.',
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: '$\\det(A) = 1(3\\cdot0 - 1\\cdot2) - 1(2\\cdot0 - 1\\cdot1) + 1(2\\cdot2 - 3\\cdot1) = 1(-2) - 1(-1) + 1(1) = -2 + 1 + 1 = 0$.\n\nTatsächlich: Gauss-Elimination der erweiterten Matrix:\n$\\left(\\begin{array}{ccc|c} 1 & 1 & 1 & 6 \\\\ 2 & 3 & 1 & 11 \\\\ 1 & 2 & 0 & 5 \\end{array}\\right)$\nZ2 - 2·Z1, Z3 - Z1:\n$\\left(\\begin{array}{ccc|c} 1 & 1 & 1 & 6 \\\\ 0 & 1 & -1 & -1 \\\\ 0 & 1 & -1 & -1 \\end{array}\\right)$\nZ3 - Z2: $\\left(\\begin{array}{ccc|c} 1 & 1 & 1 & 6 \\\\ 0 & 1 & -1 & -1 \\\\ 0 & 0 & 0 & 0 \\end{array}\\right)$\nFreie Variable $x_3 = t$: $x_2 = t-1$, $x_1 = 7-2t$. Unendlich viele Lösungen (Option C).',
     hints: [
       'Berechne zuerst $\\det(A)$. Wenn $\\det(A) = 0$: entweder keine oder unendlich viele Lösungen.',
@@ -361,8 +361,8 @@ const exercises_la_u3 = {
     ],
     wrongAnswerExplanations: {
       '0': 'Zwar ist $\\det(A) = 0$, aber das bedeutet NICHT automatisch "keine Lösung". Man muss prüfen, ob $\\vec{b}$ im Bildraum von $A$ liegt. Hier wird bei Gauss $[0, 0, 0 | 0]$ erreicht — also lösbar, sogar mit freiem Parameter.',
-      '1': 'Mit $\\det(A) = 0$ kann es keine EINDEUTIGE Lösung geben — entweder keine oder unendlich viele. Hier ist die Probe $(1, 2, 3)$ zwar eine mögliche Lösung, aber nicht die einzige.',
-      '3': 'Probe $(2, 1, 3)$: $2 + 1 + 3 = 6$ ✓, aber $2 \\cdot 2 + 3 \\cdot 1 + 3 = 10 \\neq 11$. Außerdem ist bei $\\det A = 0$ keine eindeutige Lösung möglich.',
+      '1': 'Mit $\\det(A) = 0$ kann es keine EINDEUTIGE Lösung geben — entweder keine oder unendlich viele. $(1, 2, 3)$ ist zwar eine mögliche Lösung, aber nicht die einzige: $(7-2t,\\,t-1,\\,t)$ für jedes $t \\in \\mathbb{R}$ erfüllt das LGS.',
+      '3': 'Probe $(2, 1, 3)$: $2 + 1 + 3 = 6$ ✓, aber $2 \\cdot 2 + 3 \\cdot 1 + 3 = 10 \\neq 11$ — erfüllt also bereits die zweite Gleichung nicht. Außerdem wäre bei $\\det A = 0$ keine eindeutige Lösung möglich.',
     },
   },
 

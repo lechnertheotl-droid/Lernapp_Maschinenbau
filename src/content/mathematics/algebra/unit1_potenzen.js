@@ -19,6 +19,11 @@ export const exercises_alg_u1 = {
       'Bei gleicher Basis und Multiplikation: Exponenten addieren, nicht multiplizieren.',
       'Rechne den Exponenten: $3 + 4 = ?$',
     ],
+    wrongAnswerExplanations: {
+      1: 'Hier wurden die Exponenten multipliziert ($3 \\cdot 4 = 12$). Das gilt nur bei Potenz einer Potenz $(x^{a})^{b}$. Bei Multiplikation gleicher Basen werden die Exponenten addiert: $x^{3}\\cdot x^{4} = x^{3+4} = x^{7}$.',
+      2: 'Der Faktor $2$ kommt aus dem Nichts. Bei $x^{3} \\cdot x^{4}$ wird kein Vorfaktor erzeugt — es entsteht nur ein höherer Exponent. Korrekt: $x^{7}$ ohne Vorfaktor.',
+      3: 'Das wäre $x^{3+4-6}$ oder ähnliches — passt zu keiner Potenzregel. Die Regel lautet: gleiche Basis, Multiplikation → Exponenten addieren, also $x^{3+4}=x^{7}$.',
+    },
   },
   'ex-alg-1-1-b': {
     id: 'ex-alg-1-1-b', lessonId: 'alg-1-1', type: 'multiple-choice',
@@ -37,6 +42,11 @@ export const exercises_alg_u1 = {
       'Regel: $(x^{a})^{b} = x^{a \\cdot b}$. Hier: $a=3$, $b=4$.',
       'Rechne $3 \\cdot 4$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Hier wurden die Exponenten addiert ($3+4=7$). Das gilt bei $x^{3}\\cdot x^{4}$, aber nicht bei $(x^{3})^{4}$. Bei Potenz einer Potenz werden die Exponenten multipliziert: $3 \\cdot 4 = 12$.',
+      2: '$x^{34}$ entsteht durch Aneinanderhängen der Ziffern — kein Rechenschritt. Korrekt ist $3 \\cdot 4 = 12$, also $x^{12}$.',
+      3: 'Hier wurde der äußere Exponent als Vorfaktor gesehen. Aber $(x^{3})^{4}$ bedeutet $x^{3}\\cdot x^{3}\\cdot x^{3}\\cdot x^{3} = x^{12}$, kein $4\\cdot x^{3}$.',
+    },
   },
   'ex-alg-1-1-c': {
     id: 'ex-alg-1-1-c', lessonId: 'alg-1-1', type: 'multiple-choice',
@@ -57,6 +67,11 @@ export const exercises_alg_u1 = {
       'Schieb die Basis mit umgekehrtem Vorzeichen des Exponenten in den Nenner.',
       'Regel: $x^{-n} = 1/x^{n}$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Der Minus im Exponent wirkt nicht auf das Vorzeichen der Basis, sondern verschiebt die Potenz in den Nenner. $x^{-3}$ ist nicht $-x^{3}$, sondern $1/x^{3}$. Test: $2^{-3} = 1/8$, nicht $-8$.',
+      2: '$x^{1/3}$ ist die dritte Wurzel — das entspricht einem *positiven Bruch* als Exponent, nicht einem negativen ganzzahligen. Regel: $x^{-3} = 1/x^{3}$.',
+      3: 'Das sieht aus wie Faktor-Zerlegung ($3 \\cdot x$), hat aber nichts mit Exponenten zu tun. Ein negativer Exponent erzeugt einen Kehrwert: $x^{-3} = 1/x^{3}$.',
+    },
   },
   'ex-alg-1-1-d': {
     id: 'ex-alg-1-1-d', lessonId: 'alg-1-1', type: 'multiple-choice',
@@ -77,6 +92,11 @@ export const exercises_alg_u1 = {
       'Achte darauf, dass $2^{3}$ (die Zahl selbst!) zum Ergebnis gehört.',
       'Für $(x^{2})^{3}$ multiplizierst du die Exponenten.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Die $2$ wurde unverändert gelassen. Die äußere Potenz wirkt aber auf *jeden* Faktor der Klammer — auch auf die Zahl. Richtig: $2^{3} = 8$, also $8x^{6}y^{3}$.',
+      1: 'Hier wurde $2$ mit $3$ *multipliziert* statt *potenziert* — klassischer Fehler. $2^{3}$ ist $8$, nicht $6$. Regel: $(2)^{3} = 2\\cdot 2\\cdot 2 = 8$.',
+      3: 'Der Exponent von $x$ ist falsch: $(x^{2})^{3} = x^{2\\cdot 3} = x^{6}$, nicht $x^{5}$. Bei Potenz einer Potenz werden die Exponenten multipliziert, nicht addiert.',
+    },
   },
   'ex-alg-1-1-e': {
     id: 'ex-alg-1-1-e', lessonId: 'alg-1-1', type: 'number-input',
@@ -113,6 +133,11 @@ export const exercises_alg_u1 = {
       'Für $y$ wird der Exponent negativ — schreibe das als Bruch $1/y^{3}$.',
       '$y^{2-5} = y^{-3}$, **nicht** $y^{5-2}$. Reihenfolge: Zähler − Nenner.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Das wäre das Ergebnis, wenn Zähler und Nenner *multipliziert* würden statt dividiert. Der Bruch verlangt Subtraktion der Exponenten: $y^{2-5} = y^{-3} = 1/y^{3}$, nicht $y^{3}$ im Zähler.',
+      2: 'Hier wurden die Exponenten addiert ($4+2=6$, $2+5=7$) statt subtrahiert. Die Regel für Divisionen gleicher Basen lautet $x^{a}/x^{b} = x^{a-b}$, also $x^{4-2}=x^{2}$ und $y^{2-5}=y^{-3}$.',
+      3: 'Hier wurde die Subtraktion falsch herum gemacht: $y^{5-2} = y^{3}$ landete im Zähler. Korrekt ist $y^{2-5} = y^{-3}$, was $1/y^{3}$ in den Nenner schiebt. Auch $x$ steht korrekt im Zähler, nicht im Nenner.',
+    },
   },
 
   // ───────────── Lektion 2: Wurzeln & gebrochene Exponenten ─────────────
@@ -133,6 +158,11 @@ export const exercises_alg_u1 = {
       'Die Wurzel ist definiert als nicht-negative Zahl.',
       'Wie schreibt man "positive Version von $x$" mathematisch?',
     ],
+    wrongAnswerExplanations: {
+      0: '$\\sqrt{x^{2}} = x$ gilt nur, wenn $x \\geq 0$ garantiert ist. Für $x=-3$ ergäbe das $\\sqrt{9} = -3$ — falsch, denn die Wurzel liefert immer ein nicht-negatives Ergebnis. Richtig ist $|x|$.',
+      2: '$x^{2}$ wäre das Ergebnis, wenn man die Wurzel *vergessen* hätte. Aber die Wurzel halbiert den Exponenten: $\\sqrt{x^{2}} = x^{2/2} = x^{1}$ — mit Betrag, also $|x|$.',
+      3: '$1/x$ ergibt sich nie aus einer Wurzel, sondern aus negativen Exponenten. Hier: $\\sqrt{x^{2}} = x^{2\\cdot 1/2} = x^{1}$ — betragsmäßig, also $|x|$.',
+    },
   },
   'ex-alg-1-2-b': {
     id: 'ex-alg-1-2-b', lessonId: 'alg-1-2', type: 'number-input',
@@ -167,6 +197,11 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
       'Welche Quadratzahl passt: $4$, $9$ oder $16$?',
       '$\\sqrt{a \\cdot b} = \\sqrt{a} \\cdot \\sqrt{b}$ — ziehe die Quadratwurzel aus dem Quadratzahl-Faktor.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Die Zerlegung $12 = 4 \\cdot 3$ ist richtig, aber unter der Wurzel muss dann $3$ stehen — nicht $6$. $2\\sqrt{6}$ entspräche $\\sqrt{4\\cdot 6} = \\sqrt{24}$, nicht $\\sqrt{12}$.',
+      2: '$3\\sqrt{2}$ würde $\\sqrt{9\\cdot 2} = \\sqrt{18}$ bedeuten — nicht $\\sqrt{12}$. Zerlege $12 = 4 \\cdot 3$: $\\sqrt{12} = 2\\sqrt{3}$.',
+      3: '$12 = 4 \\cdot 3$ hat den Quadratzahl-Faktor $4$; der lässt sich herausziehen: $\\sqrt{12} = 2\\sqrt{3}$. Wurzeln mit Quadratzahl-Faktoren müssen immer vereinfacht werden.',
+    },
   },
   'ex-alg-1-2-d': {
     id: 'ex-alg-1-2-d', lessonId: 'alg-1-2', type: 'true-false',
@@ -204,6 +239,11 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
       'Hier: $m=2$ (Potenz), $n=3$ (Wurzelgrad).',
       'Also dritte Wurzel, dann hoch 2 — oder umgekehrt (beides äquivalent).',
     ],
+    wrongAnswerExplanations: {
+      1: 'Hier wurden Zähler und Nenner des Bruchexponenten vertauscht: $\\sqrt{x^{3}} = x^{3/2}$, nicht $x^{2/3}$. Merkregel: *Nenner* des Exponenten = Wurzelgrad, *Zähler* = Potenz im Inneren.',
+      2: 'Das ist eine lineare Interpretation ($2x/3$), die der Exponent nicht hat. $x^{2/3}$ ist keine lineare Funktion, sondern eine Wurzel-Potenz.',
+      3: '$x^{2}\\cdot x^{3} = x^{5}$ — eine ganz andere Größe. Der Bruchexponent $2/3$ bedeutet *eine* Potenz mit Bruchexponent, nicht das Produkt zweier Potenzen.',
+    },
   },
 
   // ───────────── Lektion 3: Logarithmen ─────────────
@@ -256,6 +296,11 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
       'Er wandelt sie in eine *einfachere* Operation um.',
       'Regel: $\\log(a \\cdot b) = \\log(a) + \\log(b)$ — für alle Basen.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Der Logarithmus ist *nicht* multiplikativ — er wandelt Multiplikation in Addition um, nicht in Multiplikation. Richtig: $\\ln(a\\cdot b) = \\ln a + \\ln b$.',
+      2: 'Subtraktion gehört zur Division: $\\ln(a/b) = \\ln a - \\ln b$. Bei Multiplikation wird addiert.',
+      3: 'Der Logarithmus ist nicht linear: $\\ln(a+b) \\neq \\ln a + \\ln b$ (Gegenbeispiel: $\\ln(1+1) = \\ln 2 \\approx 0{,}69$, aber $\\ln 1 + \\ln 1 = 0$). Das hier geht um Multiplikation im Argument — da gilt die Produktregel $\\ln(a\\cdot b) = \\ln a + \\ln b$.',
+    },
   },
   'ex-alg-1-3-d': {
     id: 'ex-alg-1-3-d', lessonId: 'alg-1-3', type: 'multiple-choice',
@@ -272,6 +317,11 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
       'Regel: $\\ln(a^{n}) = n \\cdot \\ln(a)$.',
       'Der Exponent $n$ wird zum Vorfaktor.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Hier wurde der Exponent additiv angehängt. Die Potenzregel des Logarithmus zieht den Exponenten aber als *Faktor* heraus: $\\ln(a^{5}) = 5\\cdot\\ln(a)$, nicht $\\ln(a)+5$.',
+      2: '$\\ln(5a) = \\ln 5 + \\ln a$ — das wäre die Produktregel, wenn im Argument $5\\cdot a$ stünde. Hier steht aber $a^{5}$ (Potenz), also gilt $\\ln(a^{5}) = 5\\ln a$.',
+      3: 'Hier wurden Basis und Exponent vertauscht: das Ergebnis müsste $5\\cdot\\ln(a)$ sein, nicht $a\\cdot\\ln(5)$. Die Regel: der Exponent $n$ wandert als Vorfaktor vor den Logarithmus, die Basis bleibt im Argument.',
+    },
   },
   'ex-alg-1-3-mastery': {
     id: 'ex-alg-1-3-mastery', lessonId: 'alg-1-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -291,6 +341,11 @@ $$e^{x} = 5 \\quad \\Big| \\ln(\\ldots) \\\\ \\ln(e^{x}) = \\ln(5) \\\\ x = \\ln
       '$\\ln(e^{x}) = x$ — das ist der Trick.',
       'Also $x = \\ln(\\ldots)$ auf der rechten Seite.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Mit dem dekadischen $\\log = \\log_{10}$ ergibt sich $\\log(e^{x}) = x\\cdot\\log e \\approx 0{,}434\\,x$ — also $x = \\log(5)/\\log(e) \\approx 0{,}699/0{,}434 \\approx 1{,}609$. Direkt passt nur $\\ln$, da $\\ln(e^{x}) = x$.',
+      2: '$5/e$ entsteht, wenn man $e^{x}$ fälschlich wie $e\\cdot x$ liest und durch $e$ teilt. $e^{x}$ ist aber eine Potenz, keine Multiplikation. Nötig ist der Logarithmus: $x = \\ln(5)$.',
+      3: '$e^{5}$ wäre die Lösung von $\\ln x = 5$, nicht von $e^{x} = 5$. Hier steht $x$ im Exponenten — also logarithmieren beider Seiten: $x = \\ln(5)$.',
+    },
   },
 }
 

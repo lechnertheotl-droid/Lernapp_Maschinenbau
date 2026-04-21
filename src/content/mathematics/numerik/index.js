@@ -185,6 +185,11 @@ const unit1 = makeUnit({
         'x₁ = x₀ − f(x₀)/f\'(x₀).',
         '$x_1 = 1 - (-1)/2 = 1 + 0{,}5 = 1{,}5$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: '$2$ wäre $x_1 = 1 + 1 = 2$ — hier wurde $f(1) = 1$ gerechnet (ohne $-2$). Richtig: $f(1) = 1 - 2 = -1$, also $x_1 = 1 - (-1)/2 = 1{,}5$.',
+        2: '$1{,}41 \\approx \\sqrt{2}$ ist das Ziel, aber **nicht** $x_1$. Nach **einem** Newton-Schritt ist man erst bei $1{,}5$; $\\sqrt{2}$ wird erst nach mehreren Iterationen erreicht.',
+        3: '$0{,}5$ wäre $x_1 = 1 - 0{,}5$ (Vorzeichen des Korrekturterms falsch). Newton subtrahiert $f/f\' = -1/2 = -0{,}5$ von $x_0 = 1$: $1 - (-0{,}5) = 1{,}5$.',
+      },
       masteryVisualization: {
         id: 'function-graph',
         params: {
@@ -380,6 +385,11 @@ const unit1 = makeUnit({
         '$f(0) = 0^2 = 0$, $f(2) = 2^2 = 4$.',
         '$(2-0)/2 \\cdot (0 + 4) = 1 \\cdot 4 = 4$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: '$8/3 \\approx 2{,}67$ ist der **exakte** Integralwert, den die Trapezregel nicht liefert. Trapez überschätzt bei konvexem Integranden und ergibt $4 > 8/3$.',
+        2: '$2$ käme aus $(b-a)/2 \\cdot f(b) = 1\\cdot 4 / 2$ — eine falsche Formel, bei der $f(a)$ vergessen wird. Die Trapezregel summiert **beide** Endwerte.',
+        3: '$6$ wäre $(b-a) \\cdot (f(a) + f(b))$ — Faktor $1/2$ vergessen. Korrekt: $(b-a)/2 \\cdot (0+4) = 4$, nicht $6$.',
+      },
       masteryVisualization: {
         id: 'function-graph',
         params: {
@@ -575,6 +585,11 @@ const unit2 = makeUnit({
         'Die Ordnung gibt an, wie der Fehler bei jeder Iteration schrumpft.',
         'Newton: $e_{n+1} \\approx C \\cdot e_n^2$ — Fehler wird quadriert, also Ordnung 2.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Linear konvergiert Bisektion oder Newton bei **mehrfachen** Nullstellen. Bei einfachen Nullstellen mit $f\'(a) \\neq 0$ gilt der stärkere Satz $e_{n+1} \\leq C e_n^2$.',
+        2: 'Kubische Konvergenz erreichen spezielle Verfahren wie Halley, nicht klassisches Newton. Newton hat exakt Ordnung 2.',
+        3: 'Newton konvergiert bei einfachen Nullstellen und gutem Startwert garantiert — sogar besonders schnell. „Gar keine" wäre grob falsch.',
+      },
       prerequisites: ['num-1-2'],
       nextLessonId: 'num-pruefung-2',
     }),
@@ -753,6 +768,11 @@ const unit2 = makeUnit({
         'Zusammengesetzte Trapezregel: $h/2 \\cdot (f_0 + 2f_1 + f_2)$.',
         '$1/2 \\cdot (0 + 2\\cdot1 + 4) = 1/2 \\cdot 6 = 3$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: '$4$ käme aus einer einfachen Trapezregel $(b-a)/2 \\cdot (f(a)+f(b)) = 1 \\cdot 4$, also $n=1$ statt $n=2$. Bei $n=2$ fällt $f(1) = 1$ als doppelt gewichteter innerer Wert hinzu.',
+        2: '$8/3 \\approx 2{,}67$ ist der **exakte** Integralwert, den Trapez nur als Grenzwert $n \\to \\infty$ erreicht. Bei $n=2$ ergibt Trapez $3$.',
+        3: '$2$ wäre $h/2 \\cdot (f_1 + f_2) = 0{,}5 \\cdot (1+4) = 2{,}5$ — oder noch grober berechnet. Korrekt mit Endpunkten + doppeltem inneren Wert: $0{,}5 \\cdot (0 + 2 + 4) = 3$.',
+      },
       masteryVisualization: {
         id: 'function-graph',
         params: {
@@ -963,6 +983,11 @@ const unit2 = makeUnit({
         'Bisektion garantiert Konvergenz, wenn $f(a) \\cdot f(b) < 0$.',
         'Newton braucht einen guten Startwert — bei schlechtem Startwert kann er divergieren.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Newton konvergiert schneller, aber **nicht immer** — bei schlechtem Startwert oder kleinen Ableitungen kann es divergieren. Bei Robustheit gewinnt Bisektion.',
+        2: 'Simpson ist ein Integrationsverfahren, kein Nullstellen-Verfahren. Es kann gar nicht zum Finden einer Nullstelle verwendet werden.',
+        3: 'Trapez ist ebenfalls ein Integrationsverfahren, keine Alternative zu Newton für Nullstellen. Hier geht es um Robustheit bei Nullstellen, nicht um Integrale.',
+      },
       prerequisites: ['num-pruefung-2'],
       nextLessonId: null,
     }),

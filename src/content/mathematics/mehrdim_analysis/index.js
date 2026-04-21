@@ -136,6 +136,11 @@ const unit1 = makeUnit({
         'Potenzregel auf x² anwenden.',
         '$f(x,y)=x^2+3y$: Ableitung von $x^2$ nach $x$ ist $2x$, Term $3y$ verschwindet.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Hier wurde $3y$ als $3$ interpretiert (also $y$ ignoriert). Bei $\\partial/\\partial x$ verschwindet der Term $3y$ komplett, da $y$ Konstante ist — es entsteht kein Zusatz-$3$. Ergebnis: nur $2x$.',
+        2: 'Das ist die partielle Ableitung nach $y$, nicht nach $x$: $\\partial/\\partial y(3y) = 3$. Gesucht war $\\partial f/\\partial x$, dort wird $3y$ zu null.',
+        3: 'Hier wurde nichts abgeleitet — der Term $x^2$ blieb unverändert. Die Potenzregel liefert $(x^2)\' = 2x$, nicht $x^2$.',
+      },
       masteryVisualization: {
         id: 'function-graph',
         params: {
@@ -293,6 +298,11 @@ const unit1 = makeUnit({
         'Positives $\\det(H)$: Vorzeichen von $f_{xx}$ entscheidet zwischen Min und Max.',
         'Hier: $\\det=4>0$ und $f_{xx}=2>0$ → lokales Minimum.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Vorzeichen von $f_{xx}$ falsch bewertet: $f_{xx} = 2 > 0$ (nicht $< 0$). Mit $\\det H > 0$ und $f_{xx} > 0$ liegt ein Minimum, kein Maximum.',
+        2: 'Die Determinante ist positiv ($4$), nicht negativ. Ein Sattelpunkt erfordert $\\det H < 0$; hier schließt $\\det H = 4 > 0$ einen Sattel aus.',
+        3: '$\\det H = 4 \\neq 0$, also eindeutig klassifizierbar. „Nicht klassifizierbar" gilt nur, wenn $\\det H = 0$ — dann braucht es höhere Ableitungen.',
+      },
       masteryVisualization: {
         id: 'function-graph',
         params: {
@@ -452,6 +462,11 @@ const unit2 = makeUnit({
         'Hesse-Determinante prüfen.',
         '$(0,0)$: $H=\\begin{pmatrix}2&0\\\\0&2\\end{pmatrix}$, $\\det=4>0$, $f_{xx}=2>0$ → Minimum.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Der Punkt $(0,0)$ ist zwar kritischer Punkt, aber kein Sattel: $\\det H = 4 > 0$ schließt Sattelpunkte aus. Mit $f_{xx} = 2 > 0$ liegt ein Minimum vor.',
+        2: 'Kritische Punkte existieren — $\\nabla f = (2x, 2y) = \\mathbf{0}$ hat die eindeutige Lösung $(0,0)$. „Keinen" wäre nur bei einem widersprüchlichen LGS korrekt.',
+        3: 'Testweise eingesetzt ergibt $\\nabla f(1,1) = (2, 2) \\neq \\mathbf{0}$ — kein kritischer Punkt. Korrekt: nur $(0,0)$ ist kritischer Punkt.',
+      },
       prerequisites: ['mdim-1-2'],
       nextLessonId: 'mdim-pruefung-2',
     }),
@@ -589,6 +604,11 @@ const unit2 = makeUnit({
         'Maximale Fehlerabschätzung: $\\Delta z = |z_x|\\Delta x + |z_y|\\Delta y$.',
         '$|4| \\cdot 0{,}1 + |3| \\cdot 0{,}2 = 0{,}4 + 0{,}6 = 1{,}0$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Hier wurde nur der erste Beitrag $|z_x|\\Delta x = 4 \\cdot 0{,}1 = 0{,}4$ berechnet. Der zweite Term $|z_y|\\Delta y = 3 \\cdot 0{,}2 = 0{,}6$ fehlt — beide Messfehler tragen zum Gesamtfehler bei.',
+        2: 'Das ist nur der zweite Teilbeitrag $|z_y|\\Delta y = 0{,}6$. Der Beitrag $|z_x|\\Delta x = 0{,}4$ aus dem Fehler von $x$ fehlt. Gesamt: $0{,}4 + 0{,}6 = 1{,}0$.',
+        3: 'Hier wurden die Ableitungen vertauscht: $|z_x|\\cdot\\Delta y + |z_y|\\cdot\\Delta x = 4\\cdot 0{,}2 + 3\\cdot 0{,}1 = 0{,}8 + 0{,}3 = 1{,}1$ — dicht an $1{,}4$. Jeder Messfehler $\\Delta x_i$ muss mit *seiner eigenen* partiellen Ableitung multipliziert werden.',
+      },
       prerequisites: ['mdim-pruefung-1'],
       nextLessonId: 'mdim-pruefung-3',
     }),
@@ -740,6 +760,11 @@ const unit2 = makeUnit({
         'Aus $2x = \\lambda$ und $2y = \\lambda$ folgt $x = y$.',
         'Mit $x = y$ in $x + y = 2$ einsetzen: $2x = 2$, also $x = y = 1$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: '$(2,0)$ erfüllt zwar $x+y=2$, aber $f(2,0) = 4 > 2 = f(1,1)$ — also ist $(2,0)$ nicht das Minimum, sondern weiter vom Ursprung entfernt. Lagrange liefert $x=y=1$.',
+        2: 'Symmetrisch zu Option 1: $f(0,2) = 4 > 2$. Randpunkt auf der Geraden, aber nicht das Minimum. Das Minimum liegt dort, wo die Gerade dem Ursprung am nächsten ist — auf der Mittelpunkts-Loten.',
+        3: '$(0,0)$ liegt nicht auf der Nebenbedingungsgeraden $x+y=2$ (es gilt $0+0=0\\neq 2$). Der Punkt muss immer die NB erfüllen, sonst ist er kein Kandidat.',
+      },
       prerequisites: ['mdim-pruefung-2'],
       nextLessonId: null,
     }),
