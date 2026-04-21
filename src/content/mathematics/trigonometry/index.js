@@ -13,6 +13,15 @@ export const trigonometryTopic = {
   estimatedHours: 6,
   difficulty: 2,
   level: 'grundlagen',
+  phase: 'semester-1',
+  examRelevance: 'pflicht',
+  topicGoals: [
+    'Winkel zwischen Grad und Bogenmaß sicher umrechnen',
+    'sin, cos, tan am rechtwinkligen Dreieck und am Einheitskreis interpretieren',
+    'Quadranten- und Vorzeichenregeln für trigonometrische Funktionen anwenden',
+    'Standard-Additionstheoreme zur Vereinfachung nutzen',
+    'Technische Aufgaben mit Winkel und Kraftzerlegung (Schiefe Ebene, Kräfteparallelogramm) lösen',
+  ],
   units: [unit1, unit2, unit3, unit4],
   prerequisites: [],
 }

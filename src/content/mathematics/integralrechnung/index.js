@@ -13,6 +13,15 @@ export const integralrechnungTopic = {
   estimatedHours: 6,
   difficulty: 3,
   level: 'grundlagen',
+  phase: 'semester-1',
+  examRelevance: 'pflicht',
+  topicGoals: [
+    'Stammfunktionen elementarer Funktionen ohne Tabelle hinschreiben',
+    'Hauptsatz der Differential- und Integralrechnung sicher anwenden',
+    'Substitution und partielle Integration gezielt auswählen',
+    'Bestimmte Integrale als Flächen, Volumina und physikalische Gesamtgrößen interpretieren',
+    'Uneigentliche Integrale auf Konvergenz prüfen',
+  ],
   units: [int_unit1, int_unit2, int_unit3, int_unit4],
   prerequisites: ['ableitung'],
 }

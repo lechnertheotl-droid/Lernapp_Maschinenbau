@@ -782,6 +782,12 @@ export const vek_unit2 = {
   title: 'Geraden und Ebenen im Raum',
   order: 2,
   description: 'Geradengleichung, Ebenenformen, Abstände und Schnitte',
+  unitGoals: [
+    'Geraden in Parameter- und Punkt-Richtungs-Form angeben und zwischen den Darstellungen wechseln',
+    'Ebenen in Parameter-, Normal- und Koordinatenform umwandeln',
+    'Abstände Punkt–Gerade, Punkt–Ebene und windschiefer Geraden mit Projektionsformeln berechnen',
+    'Schnittgeraden und Schnittpunkte durch Lösen linearer Gleichungssysteme ermitteln',
+  ],
   lessons: lessons_vek_u2,
   exercises: exercises_vek_u2,
 }

@@ -594,6 +594,12 @@ export const unit3 = {
   title: 'Anwendungen und Identitäten',
   order: 3,
   description: 'Additionstheoreme, Doppelwinkel, technische Anwendungen und Umkehrfunktionen',
+  unitGoals: [
+    'Additionstheoreme und Doppelwinkelformeln zur Termvereinfachung einsetzen',
+    'Sinus-/Kosinus-Satz für allgemeine Dreiecke (ohne rechten Winkel) anwenden',
+    'Umkehrfunktionen arcsin/arccos/arctan mit Haupt-Wertebereichen sauber benutzen',
+    'Technische Anwendungen: Schwingungen, Phasenwinkel und Projektionen trigonometrisch beschreiben',
+  ],
   lessons: lessons_u3,
   exercises: exercises_u3,
 }

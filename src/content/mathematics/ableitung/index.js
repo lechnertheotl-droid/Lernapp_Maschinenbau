@@ -14,6 +14,15 @@ export const ableitungTopic = {
   estimatedHours: 8,
   difficulty: 3,
   level: 'grundlagen',
+  phase: 'semester-1',
+  examRelevance: 'pflicht',
+  topicGoals: [
+    'Ableitung als lokale Änderungsrate und Tangentensteigung interpretieren',
+    'Potenz-, Produkt-, Quotienten- und Kettenregel routiniert anwenden',
+    'Ableitungen elementarer Funktionen (sin, cos, exp, ln) auswendig beherrschen',
+    'Kurvendiskussion durchführen: Monotonie, Extremstellen, Wendepunkte, Krümmung',
+    'Grenzwerte und Stetigkeit sauber prüfen und l’Hospital korrekt einsetzen',
+  ],
   units: [abl_unit1, abl_unit2, abl_unit3, abl_unit5, abl_unit4],
   prerequisites: ['algebra'],
 }

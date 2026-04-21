@@ -569,6 +569,12 @@ export const la_unit2 = {
   title: 'Lineare Gleichungssysteme',
   order: 2,
   description: 'LGS in Matrixform, Gauss-Algorithmus, Lösbarkeit, Cramersche Regel',
+  unitGoals: [
+    'LGS als erweiterte Matrix $(A | \\vec{b})$ darstellen und mit Gauß-Eliminination in Stufenform bringen',
+    'Lösbarkeit am Rang entscheiden: $\\text{rg}(A) = \\text{rg}(A|\\vec{b})$ = # Unbekannte $\\Rightarrow$ eindeutig',
+    'Unterbestimmte Systeme parametrisieren und Lösungsraum als Vektoren angeben',
+    'Cramersche Regel $x_i = \\det(A_i)/\\det(A)$ bei kleinen quadratischen Systemen anwenden',
+  ],
   lessons: lessons_la_u2,
   exercises: exercises_la_u2,
 }

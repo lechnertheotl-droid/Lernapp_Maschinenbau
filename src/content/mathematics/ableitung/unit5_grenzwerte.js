@@ -4,6 +4,12 @@ export const abl_unit5 = makeUnit({
   id: 'abl-unit-5',
   title: 'Grenzwerte und Stetigkeit',
   order: 4,
+  unitGoals: [
+    'Grenzwerte rechnerisch durch Umformen, Faktorisieren und Kürzen ermitteln',
+    'L\'Hôpital bei unbestimmten Ausdrücken $0/0$ und $\\infty/\\infty$ anwenden',
+    'Stetigkeit an einer Stelle prüfen: links-, rechts- und Funktionswert müssen übereinstimmen',
+    'Unstetigkeitsstellen klassifizieren (hebbar / Sprung / Pol)',
+  ],
   lessons: [
     makeLesson({
       id: 'abl-5-1',

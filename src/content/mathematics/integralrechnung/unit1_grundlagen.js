@@ -644,6 +644,11 @@ const lessons_int_u1 = [
     title: 'Stammfunktion — das Umkehren der Ableitung',
     order: 1, estimatedMinutes: 15,
     learningGoals: ['Stammfunktion als Umkehrung der Ableitung verstehen', 'Integrationskonstante C erklären können'],
+    subGoals: [
+      { label: 'Stammfunktion durch „Rückwärts-Ableiten" erkennen', examRelevance: 'hoch' },
+      { label: 'Integrationskonstante $+C$ nicht vergessen', examRelevance: 'hoch' },
+      { label: 'Probe durch Ableiten der gefundenen Stammfunktion', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'int-1-2',
     steps: [
@@ -706,6 +711,12 @@ Probe: $(x^{2} + C)' = 2x + 0 = 2x$. ✓
     title: 'Grundintegrale',
     order: 2, estimatedMinutes: 15,
     learningGoals: ['Grundintegrale auswendig kennen', 'Potenzregel für Integration anwenden'],
+    subGoals: [
+      { label: 'Potenzregel $\\int x^n dx = x^{n+1}/(n+1)+C$ für $n\\neq-1$', examRelevance: 'hoch' },
+      { label: 'Sonderfall $\\int \\frac{1}{x}dx = \\ln|x|+C$', examRelevance: 'hoch' },
+      { label: 'Stammfunktionen von $e^x$, $\\sin x$, $\\cos x$ auswendig', examRelevance: 'hoch' },
+      { label: 'Summen- und Faktorregel beim Integrieren', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'int-1-3',
     steps: [
@@ -750,6 +761,12 @@ Weil $\\dfrac{x^{0}}{0}$ nicht definiert ist! Für $n = -1$ gilt stattdessen: $\
     title: 'Summenregel & Faktorregel',
     order: 3, estimatedMinutes: 12,
     learningGoals: ['Summenregel für Integration anwenden', 'Konstantenfaktor vor das Integral ziehen'],
+    subGoals: [
+      { label: 'Summenregel: $\\int (f + g) dx = \\int f\\,dx + \\int g\\,dx$ — gliedweise integrieren', examRelevance: 'hoch' },
+      { label: 'Faktorregel: $\\int c f(x) dx = c \\int f(x) dx$ — Konstante vors Integral ziehen', examRelevance: 'hoch' },
+      { label: 'Für Produkt $f(x) \\cdot g(x)$ gilt KEIN analoges Produktrecht — dort partielle Integration nötig', examRelevance: 'hoch' },
+      { label: 'Integrationskonstante $C$ bei unbestimmten Integralen konsequent mitschreiben', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'int-1-4',
     steps: [
@@ -787,6 +804,12 @@ $$= 2x^{3} - 2x^{2} + 3x + C$$`,
     title: 'Das bestimmte Integral',
     order: 4, estimatedMinutes: 18,
     learningGoals: ['Bestimmtes Integral berechnen', 'Geometrische Deutung als Fläche verstehen'],
+    subGoals: [
+      { label: 'Hauptsatz: $\\int_a^b f(x) dx = F(b) - F(a)$ mit beliebiger Stammfunktion $F$', examRelevance: 'hoch' },
+      { label: 'Geometrisch: Fläche *zwischen* Kurve und x-Achse — unterhalb wird NEGATIV gezählt', examRelevance: 'hoch' },
+      { label: 'Vertauschen der Grenzen dreht das Vorzeichen: $\\int_a^b = -\\int_b^a$', examRelevance: 'mittel' },
+      { label: 'Bei bestimmtem Integral fällt die Integrationskonstante $C$ weg (kürzt sich raus)', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'int-1-5',
     steps: [
@@ -909,6 +932,13 @@ export const int_unit1 = {
   title: 'Stammfunktionen & Grundintegrale',
   order: 1,
   description: 'Stammfunktionen, Grundintegrale, Rechenregeln, bestimmtes Integral und Hauptsatz',
+  unitGoals: [
+    'Stammfunktion als Umkehrung der Ableitung verstehen: $F\'(x) = f(x)$',
+    'Grundintegrale (Potenz, $e^x$, $1/x$, $\\sin x$, $\\cos x$) sicher aus dem Kopf abrufen',
+    'Linearitäts- und Faktorregel des Integrals sinnvoll einsetzen',
+    'Hauptsatz der Differential- und Integralrechnung $\\int_a^b f(x)dx = F(b) - F(a)$ korrekt anwenden',
+    'Integrationskonstante $C$ bei unbestimmten Integralen niemals vergessen',
+  ],
   lessons: lessons_int_u1,
   exercises: exercises_int_u1,
 }

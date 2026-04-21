@@ -90,6 +90,17 @@ const pythonMatlabTopic = buildTopic({
     difficulty: 2,
     level: 'grundlagen',
     prerequisites: [],
+    phase: 'semester-1',
+    examRelevance: 'pflicht',
+    topicGoals: [
+      'Python- und Matlab-Syntax parallel lesen (Indentation vs. end-Blöcke, 0- vs. 1-basiertes Indexing)',
+      'Variablen, Listen/Arrays und Dicts/Structs situationsgerecht einsetzen und Elementzugriff korrekt schreiben',
+      'Kontrollstrukturen (if/else, for, while) und Funktionen/Unterprogramme in beiden Sprachen formulieren',
+      'NumPy- bzw. Matlab-Vektor-/Matrix-Operationen anstelle expliziter Schleifen verwenden (Vektorisierung)',
+      'Lineare Gleichungssysteme $A x = b$ mit `numpy.linalg.solve` bzw. `A\\\\b` lösen und Dimensionen prüfen',
+      'Plots (matplotlib.pyplot bzw. plot) mit Achsenbeschriftung, Legende und mehreren Kurven erstellen',
+      'Typische Fehler (Indexing-off-by-one, Broadcasting, Float-Vergleich mit `==`) erkennen und vermeiden',
+    ],
   },
   units: [
     // ── Unit 1: Python Grundlagen ──────────────────────────────────────
@@ -102,6 +113,12 @@ const pythonMatlabTopic = buildTopic({
           id: 'py-1-1',
           title: 'Variablen & Datentypen',
           learningGoals: ['Variablen zuweisen und benennen', 'int, float, string und bool unterscheiden', 'Typumwandlungen durchführen'],
+          subGoals: [
+            { label: 'Dynamische Typisierung: keine Typangabe nötig, aber Typ ändert sich mit dem Wert', examRelevance: 'hoch' },
+            { label: 'int/float/str/bool mit `type(x)` prüfen', examRelevance: 'mittel' },
+            { label: 'Explizite Konvertierung `int("42")`, `float(3)`, `str(3.14)` — `int("3.14")` wirft `ValueError`', examRelevance: 'hoch' },
+            { label: '`snake_case` für Variablen in Python; Matlab nutzt `camelCase` oder Unterstrich-frei', examRelevance: 'niedrig' },
+          ],
           content: String.raw`In Python brauchst du **keinen Typ** bei der Deklaration — der Interpreter erkennt ihn automatisch.
 
 **Grundtypen:**
@@ -163,6 +180,13 @@ s = str(3.14)      # float → str
           id: 'py-1-2',
           title: 'Operatoren & Ausdrücke',
           learningGoals: ['Arithmetische Operatoren anwenden', 'Ganzzahldivision und Modulo verstehen', 'Vergleichs- und logische Operatoren verwenden'],
+          subGoals: [
+            { label: '`/` = Gleitkomma-Division, `//` = Ganzzahl-Division, `%` = Modulo', examRelevance: 'hoch' },
+            { label: 'Python: `**` für Potenz; Matlab: `^` (bei Arrays: `.^` elementweise)', examRelevance: 'hoch' },
+            { label: 'Logische Operatoren: Python `and/or/not`, Matlab `&&/||/~` (skalar) bzw. `&/|/~` (elementweise)', examRelevance: 'hoch' },
+            { label: 'Float-Vergleich mit `==` unzuverlässig — stattdessen `abs(a - b) < 1e-9`', examRelevance: 'hoch' },
+            { label: '`0 == False` und `1 == True` in Python — bool ist Subtyp von int', examRelevance: 'niedrig' },
+          ],
           content: String.raw`**Arithmetische Operatoren:**
 | Operator | Python | Matlab | Bedeutung |
 |---|---|---|---|
@@ -221,6 +245,12 @@ s = str(3.14)      # float → str
           id: 'py-1-3',
           title: 'Listen & Arrays',
           learningGoals: ['Python-Listen erstellen und manipulieren', 'Slicing und Indizierung verstehen', 'NumPy Arrays für Berechnungen nutzen'],
+          subGoals: [
+            { label: 'Python indiziert ab 0, Matlab ab 1 — Off-by-one-Fehler ist Quelle Nr. 1', examRelevance: 'hoch' },
+            { label: 'Slicing `liste[a:b]` liefert Elemente $a$ bis $b-1$ (rechte Grenze exklusiv)', examRelevance: 'hoch' },
+            { label: 'NumPy-Arrays: vektorisiert (elementweise `+ - * /`), viel schneller als reine Python-Listen', examRelevance: 'hoch' },
+            { label: 'Python-Listen können gemischte Typen; NumPy-Arrays nur einen Datentyp (dtype)', examRelevance: 'mittel' },
+          ],
           content: String.raw`**Python-Listen:**
 \`\`\`python
 werte = [1, 2, 3, 4, 5]
@@ -294,6 +324,12 @@ mean(a)    % → 2.5
           id: 'py-1-4',
           title: 'Kontrollstrukturen',
           learningGoals: ['if/elif/else Verzweigungen schreiben', 'for- und while-Schleifen anwenden', 'Unterschiede zwischen Python und Matlab kennen'],
+          subGoals: [
+            { label: 'Python: Einrückung (4 Spaces) definiert Block — kein `end`; Matlab: immer `end`', examRelevance: 'hoch' },
+            { label: 'Vergleiche: `==` prüft Gleichheit, `=` weist zu — Verwechslung erzeugt stummen Bug', examRelevance: 'hoch' },
+            { label: 'For-Schleife: `for i in range(n)` (0..n-1) in Python, `for i = 1:n` (1..n) in Matlab', examRelevance: 'hoch' },
+            { label: 'While-Schleife braucht zwingend einen Abbruch-Mechanismus (Zähler, Bedingung) um Endlos-Loops zu verhindern', examRelevance: 'mittel' },
+          ],
           content: String.raw`**If-Verzweigung:**
 \`\`\`python
 # Python                        # Matlab

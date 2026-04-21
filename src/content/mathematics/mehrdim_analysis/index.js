@@ -4,6 +4,13 @@ const unit1 = makeUnit({
   id: 'mdim-unit-1',
   title: 'Partielle Ableitungen & Gradient',
   order: 1,
+  unitGoals: [
+    'Partielle Ableitung $\\partial f / \\partial x$ als „andere Variablen konstant halten" mechanisch durchführen',
+    'Gradient $\\nabla f = (f_x, f_y, \\ldots)^T$ als Richtung des stärksten Anstiegs interpretieren',
+    'Richtungsableitung über $\\nabla f \\cdot \\vec{e}$ (mit Einheitsvektor $\\vec{e}$) berechnen',
+    'Hesse-Matrix aufstellen und mit Definitheitskriterium Max/Min/Sattel klassifizieren',
+    'Totales Differential $df = f_x dx + f_y dy$ für Fehlerfortpflanzung anwenden',
+  ],
   lessons: [
     makeLesson({
       id: 'mdim-1-1',
@@ -13,6 +20,13 @@ const unit1 = makeUnit({
         'Funktionen mehrerer Variablen verstehen',
         'Partielle Ableitung ∂f/∂x, ∂f/∂y berechnen',
         'Gradient als Vektor interpretieren',
+      ],
+      subGoals: [
+        { label: 'Beim Ableiten nach einer Variable: alle anderen sind **Konstanten**', examRelevance: 'hoch' },
+        { label: 'Schreibweisen $f_x$, $\\partial f/\\partial x$, $D_x f$ gleichwertig erkennen', examRelevance: 'mittel' },
+        { label: 'Gradient $\\nabla f = (f_x, f_y)^T$ zeigt Richtung des steilsten Anstiegs', examRelevance: 'hoch' },
+        { label: 'Gradient $\\perp$ Höhenlinie — Normale an Niveaumengen', examRelevance: 'hoch' },
+        { label: 'Satz von Schwarz: $f_{xy} = f_{yx}$ (bei stetigen zweiten Ableitungen)', examRelevance: 'mittel' },
       ],
       createdAt: '2026-04-14',
       intuitionTitle: 'Eine Richtung nach der anderen',
@@ -166,6 +180,13 @@ const unit1 = makeUnit({
         'Hesse-Matrix aufstellen und Extrema in 2D klassifizieren',
         'Lagrange-Multiplikatoren bei einer Nebenbedingung anwenden',
         'Sattel- von Extrempunkten unterscheiden',
+      ],
+      subGoals: [
+        { label: 'Notwendige Bedingung für Extremum: $\\nabla f = 0$ (kritischer Punkt)', examRelevance: 'hoch' },
+        { label: 'Hesse-Matrix $H = \\begin{pmatrix} f_{xx} & f_{xy} \\\\ f_{yx} & f_{yy} \\end{pmatrix}$ — Symmetrie nutzen', examRelevance: 'hoch' },
+        { label: '$\\det H > 0 \\wedge f_{xx} > 0$ → Minimum, $< 0 \\wedge f_{xx} < 0$ → Maximum, $\\det H < 0$ → Sattel', examRelevance: 'hoch' },
+        { label: 'Lagrange: $\\nabla f = \\lambda\\,\\nabla g$ bei Nebenbedingung $g(x,y) = 0$', examRelevance: 'hoch' },
+        { label: 'Lagrange-System: $\\nabla f - \\lambda \\nabla g = 0$ **und** $g = 0$ gemeinsam lösen', examRelevance: 'mittel' },
       ],
       createdAt: '2026-04-15',
       intuitionTitle: 'Krümmung entscheidet — Einschränkung erzwingt',
@@ -327,6 +348,11 @@ const unit2 = makeUnit({
   id: 'mdim-unit-2',
   title: 'Prüfung',
   order: 2,
+  unitGoals: [
+    'Extrema unter Nebenbedingungen mit Lagrange-Multiplikator $\\nabla f = \\lambda \\nabla g$ lösen',
+    'Gauß\'sche Fehlerfortpflanzung für unabhängige Messgrößen anwenden',
+    'Prüfungsaufgaben mit Kombination aus partiellen Ableitungen, Gradient und Hesse-Matrix',
+  ],
   lessons: [
     makeLesson({
       id: 'mdim-pruefung-1',
@@ -781,6 +807,16 @@ export const mehrdimAnalysisTopic = {
   estimatedHours: 4,
   difficulty: 4,
   level: 'vertiefung',
+  phase: 'vertiefung',
+  examRelevance: 'pflicht',
+  topicGoals: [
+    'Partielle Ableitungen $f_x$, $f_y$ fehlerfrei nach jeder Variable bilden, die anderen als Konstante behandeln',
+    'Den Gradienten $\\nabla f$ als Vektor des steilsten Anstiegs geometrisch und als Normale von Höhenlinien lesen',
+    'Totale Ableitung und Tangentialebene $z = f(x_0, y_0) + \\nabla f \\cdot (x-x_0, y-y_0)^T$ formulieren',
+    'Lokale Extrema über $\\nabla f = 0$ und die Hesse-Matrix (Definitheit) klassifizieren — inkl. Sattelpunkt',
+    'Extrema unter Nebenbedingungen mit Lagrange-Multiplikatoren ($\\nabla f = \\lambda\\,\\nabla g$) lösen',
+    'Doppel- und Dreifachintegrale über rechteckige, polare und zylindrische Bereiche aufstellen und in Iterationen zerlegen',
+  ],
   units: [unit1, unit2],
   prerequisites: ['ableitung', 'integralrechnung', 'vektoren'],
 }

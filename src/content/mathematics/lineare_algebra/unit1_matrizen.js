@@ -495,6 +495,12 @@ const lessons_la_u1 = [
     title: 'Was ist eine Matrix?',
     order: 1, estimatedMinutes: 15,
     learningGoals: ['Matrizen als Zahlentabellen verstehen', 'Dimension und Notation kennen', 'Spezialmatrizen erkennen'],
+    subGoals: [
+      { label: 'Dimension $m \\times n$ als „Zeilen $\\times$ Spalten" lesen (Reihenfolge nicht tauschen)', examRelevance: 'hoch' },
+      { label: 'Element $a_{ij}$: erster Index = Zeile, zweiter = Spalte', examRelevance: 'hoch' },
+      { label: 'Einheitsmatrix, Nullmatrix, Diagonalmatrix, quadratische Matrix auf einen Blick unterscheiden', examRelevance: 'mittel' },
+      { label: 'Transponierte $A^T$: Zeilen werden Spalten — praktisch für Dimensionscheck', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'la-1-2',
     steps: [
@@ -543,6 +549,12 @@ Das Element $a_{ij}$ steht in **Zeile $i$** und **Spalte $j$**.
     title: 'Matrizenrechnung',
     order: 2, estimatedMinutes: 20,
     learningGoals: ['Matrizen addieren und skalar multiplizieren', 'Matrizenmultiplikation beherrschen', 'Nicht-Kommutativität verstehen'],
+    subGoals: [
+      { label: 'Addition nur bei identischer Dimension — elementweise', examRelevance: 'hoch' },
+      { label: 'Matrizenmultiplikation: „Zeile mal Spalte" — Innen-Dimensionen müssen passen ($m\\!\\times\\!k$ · $k\\!\\times\\!n$)', examRelevance: 'hoch' },
+      { label: '$A\\,B \\neq B\\,A$ im Allgemeinen — Reihenfolge wichtig', examRelevance: 'hoch' },
+      { label: 'Rechenregeln: $(A\\,B)^T = B^T A^T$ (Reihenfolge dreht sich um)', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'la-1-3',
     steps: [
@@ -787,6 +799,12 @@ export const la_unit1 = {
   title: 'Matrizen & Determinanten',
   order: 1,
   description: 'Matrizenrechnung, Transponierte, Inverse, Determinanten, Eigenwerte',
+  unitGoals: [
+    'Matrizen addieren, mit Skalaren multiplizieren und Produkt $A \\cdot B$ bilden (Dimensions-Check $m \\times n$ mal $n \\times p$)',
+    'Transponierte $A^T$ und (falls existent) Inverse $A^{-1}$ für $2 \\times 2$-Matrizen direkt berechnen',
+    'Determinanten mit Sarrus-Regel (3×3) und Entwicklungssatz nach Zeile/Spalte bestimmen',
+    'Eigenwerte aus $\\det(A - \\lambda I) = 0$ und zugehörige Eigenvektoren aus $(A - \\lambda I)\\vec{v} = 0$ finden',
+  ],
   lessons: lessons_la_u1,
   exercises: exercises_la_u1,
 }

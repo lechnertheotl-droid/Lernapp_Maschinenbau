@@ -4,6 +4,13 @@ const unit1 = makeUnit({
   id: 'stat-unit-1',
   title: 'Zufallsvariablen & Verteilungen',
   order: 1,
+  unitGoals: [
+    'Diskrete und stetige Zufallsvariablen über Wahrscheinlichkeits- bzw. Dichtefunktion beschreiben',
+    'Erwartungswert $E[X]$, Varianz $\\text{Var}(X)$ und Standardabweichung $\\sigma$ für Standardverteilungen berechnen',
+    'Normalverteilung $N(\\mu, \\sigma^2)$ mit $z = (x-\\mu)/\\sigma$ standardisieren und Tabellenwerte ablesen',
+    'Konfidenzintervall um $\\bar x$ mit $\\pm z_{\\alpha/2} \\cdot \\sigma/\\sqrt{n}$ konstruieren',
+    'Hypothesentest mit $H_0$, $H_1$, Teststatistik, p-Wert/Signifikanzniveau $\\alpha$ durchführen',
+  ],
   lessons: [
     makeLesson({
       id: 'stat-1-1',
@@ -12,6 +19,12 @@ const unit1 = makeUnit({
       learningGoals: [
         'Erwartungswert und Varianz einer diskreten Zufallsvariablen berechnen',
         'Unterschied zwischen $\\sigma^2$ und $\\sigma$ kennen',
+      ],
+      subGoals: [
+        { label: 'Erwartungswert $E(X) = \\sum_i x_i\\,p_i$ bei diskreter $X$', examRelevance: 'hoch' },
+        { label: 'Verschiebungssatz: $\\operatorname{Var}(X) = E(X^2) - E(X)^2$ (rechnerisch meist einfacher)', examRelevance: 'hoch' },
+        { label: 'Einheiten: $E(X)$ wie $X$, $\\operatorname{Var}(X)$ wie $X^2$, $\\sigma$ wie $X$', examRelevance: 'mittel' },
+        { label: 'Linearität: $E(aX + b) = a\\,E(X) + b$, $\\operatorname{Var}(aX + b) = a^2\\,\\operatorname{Var}(X)$ (Konstante fällt weg)', examRelevance: 'hoch' },
       ],
       createdAt: '2026-04-14',
       intuitionTitle: 'Was ist der Durchschnitt auf lange Sicht?',
@@ -194,6 +207,13 @@ const unit1 = makeUnit({
         'Normalverteilung $N(\\mu, \\sigma^2)$ parametrieren und interpretieren',
         '68-95-99{,}7%-Regel anwenden',
         'Standardisierung $Z = (X-\\mu)/\\sigma$ durchführen',
+      ],
+      subGoals: [
+        { label: 'Parameter: $\\mu$ verschiebt, $\\sigma$ streckt die Glockenkurve', examRelevance: 'hoch' },
+        { label: 'z-Transformation $Z = (X-\\mu)/\\sigma$: jede Normalverteilung auf $N(0,1)$ zurückführen', examRelevance: 'hoch' },
+        { label: '68/95/99{,}7-Regel: $\\pm1\\sigma$, $\\pm2\\sigma$, $\\pm3\\sigma$-Intervalle als Schätzung auswendig', examRelevance: 'hoch' },
+        { label: '$\\Phi(z) = P(Z \\le z)$: Tabelle nur für $z \\ge 0$, für $z < 0$ Symmetrie $\\Phi(-z) = 1 - \\Phi(z)$ nutzen', examRelevance: 'hoch' },
+        { label: '$P(a \\le X \\le b) = \\Phi(\\tfrac{b-\\mu}{\\sigma}) - \\Phi(\\tfrac{a-\\mu}{\\sigma})$', examRelevance: 'hoch' },
       ],
       createdAt: '2026-04-15',
       intuitionTitle: 'Die Glockenkurve',
@@ -584,6 +604,11 @@ const unit2 = makeUnit({
   id: 'stat-unit-2',
   title: 'Prüfung',
   order: 2,
+  unitGoals: [
+    'Gemischte Prüfungsaufgaben mit Schätzung, Konfidenzintervall und Hypothesentest',
+    'Normalverteilungs-Berechnungen mit Tabelle $\\Phi(z)$ sicher durchführen',
+    'Interpretation von p-Wert, Annahme-/Ablehnungsbereich und Fehlerarten 1./2. Art',
+  ],
   lessons: [
     makeLesson({
       id: 'stat-pruefung-1',
@@ -1193,6 +1218,16 @@ export const statistikTopic = {
   estimatedHours: 3,
   difficulty: 3,
   level: 'vertiefung',
+  phase: 'vertiefung',
+  examRelevance: 'wahl',
+  topicGoals: [
+    'Kombinatorische Grundformeln (Permutation, Kombination mit/ohne Wiederholung) zielgerichtet auswählen',
+    'Laplace-Wahrscheinlichkeit, bedingte Wahrscheinlichkeit und Bayes-Formel in Textaufgaben sauber anwenden',
+    'Erwartungswert $E[X]$ und Varianz $\\operatorname{Var}(X)$ diskreter und stetiger Zufallsvariablen berechnen',
+    'Binomialverteilung, Poisson-Verteilung und Normalverteilung situationsgerecht unterscheiden und Parameter interpretieren',
+    'Die Standardnormalverteilung $\\Phi(z)$ zum Bestimmen von Wahrscheinlichkeiten und Quantilen nutzen (z-Transformation)',
+    'Stichprobenmittel, Stichprobenvarianz und Konfidenzintervalle bauen; einfachen Hypothesentest (z- oder t-Test) durchführen',
+  ],
   units: [unit1, unit2],
   prerequisites: ['algebra', 'integralrechnung'],
 }

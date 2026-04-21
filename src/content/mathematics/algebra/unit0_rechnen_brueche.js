@@ -500,6 +500,12 @@ const lessons_alg_u0 = [
       'Klammern korrekt auflösen (innen nach außen)',
       'Minuszeichen vor einer Klammer als Vorzeichenwechsel verstehen',
     ],
+    subGoals: [
+      { label: 'Vorrangregel Punkt-vor-Strich bei gemischten Termen', examRelevance: 'hoch' },
+      { label: 'Minuszeichen vor Klammer auf alle Summanden anwenden', examRelevance: 'hoch' },
+      { label: 'Doppel-Minus aufgelöst: $(-a)(-b)=+ab$', examRelevance: 'mittel' },
+      { label: 'Klammerschachtelung von innen nach außen abarbeiten', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'alg-0-2',
     steps: [
@@ -548,6 +554,12 @@ $-(3 - 5) = -3 + 5 = 2$.
       'Brüche kürzen, erweitern',
       'Brüche addieren und subtrahieren (Hauptnenner finden)',
       'Brüche multiplizieren und dividieren',
+    ],
+    subGoals: [
+      { label: 'Hauptnenner bei ungleichnamigen Brüchen finden (kgV)', examRelevance: 'hoch' },
+      { label: 'Division durch Bruch als Multiplikation mit Kehrwert', examRelevance: 'hoch' },
+      { label: 'Doppelbrüche auflösen', examRelevance: 'mittel' },
+      { label: 'Bruch vollständig kürzen per ggT', examRelevance: 'mittel' },
     ],
     prerequisites: ['alg-0-1'],
     nextLessonId: 'alg-0-3',
@@ -693,6 +705,12 @@ export const alg_unit0 = {
   title: 'Rechnen & Brüche (Vorkurs-Einstieg)',
   order: 0,
   description: 'Grundrechnen, Klammern, Brüche, Prozent, Termumformung — die Basis für alles Weitere.',
+  unitGoals: [
+    'Punkt-vor-Strich und Klammer-Vorrang sicher in komplexen Termen anwenden',
+    'Brüche erweitern, kürzen und auf gemeinsamen Nenner bringen',
+    'Prozentrechnung mit Grundwert/Prozentwert/Prozentsatz in Anwendungsaufgaben lösen',
+    'Terme durch Ausmultiplizieren, Ausklammern und Zusammenfassen vereinfachen',
+  ],
   lessons: lessons_alg_u0,
   exercises: exercises_alg_u0,
 }

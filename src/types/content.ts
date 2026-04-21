@@ -7,6 +7,17 @@ export type Difficulty =
 
 export type Priority = 'kritisch' | 'wichtig' | 'optional'
 
+export type StudyPhase = 'vorkurs' | 'semester-1' | 'semester-2' | 'vertiefung'
+
+export type ExamRelevance = 'pflicht' | 'wahl' | 'grundlage'
+
+export type SubGoalWeight = 'niedrig' | 'mittel' | 'hoch'
+
+export interface SubGoal {
+  label: string
+  examRelevance?: SubGoalWeight
+}
+
 export interface DerivationStep {
   explanation: string
   formula?: string
@@ -124,11 +135,20 @@ export interface Lesson {
   estimatedMinutes: number
   difficulty: Difficulty
   learningGoals: string[]
+  subGoals?: SubGoal[]
   prerequisites: string[]
   createdAt: string
   steps: LessonStep[]
   exercises?: Exercise[]
   nextLessonId?: string
+}
+
+export interface Unit {
+  id: string
+  title: string
+  unitGoals?: string[]
+  lessons: Lesson[]
+  exercises?: Record<string, Exercise>
 }
 
 export interface Topic {
@@ -138,8 +158,12 @@ export interface Topic {
   order: number
   level: Difficulty
   lessons: Lesson[]
+  units?: Unit[]
   prerequisiteTopics: string[]
   entryQuiz?: Exercise[]
+  topicGoals?: string[]
+  phase?: StudyPhase
+  examRelevance?: ExamRelevance
 }
 
 export interface GlossarEintrag {

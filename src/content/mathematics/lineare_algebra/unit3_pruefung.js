@@ -734,6 +734,11 @@ export const la_unit3 = {
   title: 'Prüfungsaufgaben',
   order: 3,
   description: 'Aufgaben auf TU Wien Prüfungsniveau — Matrizen, Determinanten, LGS und Eigenwerte',
+  unitGoals: [
+    'Gemischte Prüfungsaufgaben mit Matrixoperationen, Determinanten und Eigenwertproblemen lösen',
+    'Lineare Abbildungen: Matrix aus Bildvektoren der Basis aufstellen und Kern/Bild bestimmen',
+    'Lösbarkeits-Diskussionen mit Parameter in Koeffizienten oder rechter Seite durchführen',
+  ],
   lessons: lessons_la_u3,
   exercises: exercises_la_u3,
 }

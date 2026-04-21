@@ -4,6 +4,13 @@ const unit1 = makeUnit({
   id: 'num-unit-1',
   title: 'Nullstellen & Integration',
   order: 1,
+  unitGoals: [
+    'Newton-Verfahren $x_{n+1} = x_n - f(x_n)/f\'(x_n)$ per Hand für 2–3 Iterationen durchführen',
+    'Bisektion mit Zwischenwertsatz als garantiert konvergentes, aber langsames Verfahren nutzen',
+    'Numerische Integration mit Trapez- und Simpson-Regel auf gegebenen Stützstellen berechnen',
+    'Fehlerordnung der Verfahren kennen: Trapez $O(h^2)$, Simpson $O(h^4)$',
+    'Abbruchkriterien (Residuum, Schrittweite, max. Iterationen) korrekt wählen',
+  ],
   lessons: [
     makeLesson({
       id: 'num-1-1',
@@ -12,6 +19,12 @@ const unit1 = makeUnit({
       learningGoals: [
         'Newton-Iteration verstehen und anwenden',
         'Startwert und Konvergenz einschätzen',
+      ],
+      subGoals: [
+        { label: 'Iterationsvorschrift $x_{n+1} = x_n - f(x_n)/f\'(x_n)$ korrekt aufbauen', examRelevance: 'hoch' },
+        { label: 'Abbruchkriterium: $|x_{n+1} - x_n| < \\varepsilon$ **oder** $|f(x_n)| < \\delta$', examRelevance: 'hoch' },
+        { label: 'Quadratische Konvergenz: Anzahl korrekter Stellen verdoppelt sich pro Schritt (bei guten Startwerten)', examRelevance: 'mittel' },
+        { label: 'Stolperfallen: $f\'(x_n) = 0$ (Tangente horizontal), schlechter Startwert → Divergenz', examRelevance: 'hoch' },
       ],
       createdAt: '2026-04-14',
       intuitionTitle: 'Tangente schneidet x-Achse',
@@ -216,6 +229,13 @@ const unit1 = makeUnit({
         'Trapezregel und Simpson-Regel für bestimmte Integrale anwenden',
         'Fehlerordnung der Verfahren einordnen',
       ],
+      subGoals: [
+        { label: 'Bisektion benötigt Vorzeichenwechsel: $f(a)\\cdot f(b) < 0$', examRelevance: 'hoch' },
+        { label: 'Fehler der Bisektion nach $n$ Schritten: $(b-a)/2^n$ → Schrittzahl auflösen', examRelevance: 'hoch' },
+        { label: 'Trapezregel: $\\tfrac{h}{2}(f_0 + 2f_1 + \\ldots + 2f_{n-1} + f_n)$; Fehler $O(h^2)$', examRelevance: 'hoch' },
+        { label: 'Simpson: nur bei **gerader** Teilintervallanzahl anwendbar; Fehler $O(h^4)$', examRelevance: 'hoch' },
+        { label: 'Simpson ist exakt für Polynome bis Grad 3', examRelevance: 'mittel' },
+      ],
       createdAt: '2026-04-15',
       intuitionTitle: 'Halbieren bis zur Lösung',
       intuitionContent:
@@ -415,6 +435,11 @@ const unit2 = makeUnit({
   id: 'num-unit-2',
   title: 'Prüfung',
   order: 2,
+  unitGoals: [
+    'Gemischte Aufgaben mit Kombination aus Nullstellen- und Integrationsverfahren bearbeiten',
+    'Konvergenzordnung rechnerisch verifizieren (Fehlerhalbierung bei Schrittweitenhalbierung)',
+    'Abbruchkriterien auf gegebene Toleranzen anwenden und Iterationen abzählen',
+  ],
   lessons: [
     makeLesson({
       id: 'num-pruefung-1',
@@ -1004,6 +1029,16 @@ export const numerikTopic = {
   estimatedHours: 3,
   difficulty: 3,
   level: 'vertiefung',
+  phase: 'vertiefung',
+  examRelevance: 'wahl',
+  topicGoals: [
+    'Nullstellen nichtlinearer Gleichungen per Bisektion robust eingrenzen und Iterationszahl abschätzen',
+    'Newton-Verfahren mit $x_{n+1} = x_n - f(x_n)/f\'(x_n)$ anwenden und Konvergenz (quadratisch, divergent) diagnostizieren',
+    'Fixpunktiteration aufstellen und $|\\varphi\'(x^*)| < 1$ als Konvergenzbedingung prüfen',
+    'Bestimmte Integrale über Trapezregel und Simpson-Regel approximieren und den Fehler $O(h^2)$ bzw. $O(h^4)$ einordnen',
+    'Lineare Gleichungssysteme mit LR-Zerlegung und Pivotisierung stabil lösen',
+    'Iterative Lösung von LGS (Jacobi, Gauß-Seidel) auf Konvergenzkriterien (diagonaldominant) prüfen',
+  ],
   units: [unit1, unit2],
   prerequisites: ['algebra', 'ableitung'],
 }

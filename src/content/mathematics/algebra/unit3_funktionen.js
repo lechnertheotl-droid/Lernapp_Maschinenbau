@@ -539,6 +539,11 @@ const lessons_alg_u3 = [
     title: 'Funktionsbegriff',
     order: 1, estimatedMinutes: 12,
     learningGoals: ['Definition einer Funktion kennen', 'Definitions- und Wertebereich bestimmen', 'Injektiv, surjektiv, bijektiv unterscheiden'],
+    subGoals: [
+      { label: 'Funktion: jedem $x$ aus Definitionsbereich wird *genau ein* $y$ zugeordnet', examRelevance: 'hoch' },
+      { label: 'Definitionsbereich $D$: alle zulässigen $x$ (Division durch 0 ausschließen, Radikand $\\ge 0$, Logarithmus $>0$)', examRelevance: 'hoch' },
+      { label: 'Injektiv = verschiedene $x$ $\\to$ verschiedene $y$; surjektiv = jedes $y$ im Bild wird getroffen; bijektiv = beides', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'alg-3-2',
     steps: [
@@ -750,6 +755,12 @@ export const alg_unit3 = {
   title: 'Funktionen',
   order: 3,
   description: 'Funktionsbegriff, elementare Funktionen, Transformationen, Umkehrfunktionen',
+  unitGoals: [
+    'Funktionsbegriff, Definitions-/Wertebereich und Funktionsgraph klar unterscheiden',
+    'Elementare Funktionen (linear, quadratisch, Potenz, exponentiell, logarithmisch) am Graphen erkennen',
+    'Verschiebung, Streckung und Spiegelung von Graphen aus der Funktionsgleichung ablesen',
+    'Umkehrfunktion bestimmen und grafisch durch Spiegelung an $y = x$ visualisieren',
+  ],
   lessons: lessons_alg_u3,
   exercises: exercises_alg_u3,
 }

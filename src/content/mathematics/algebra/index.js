@@ -14,6 +14,15 @@ export const algebraTopic = {
   estimatedHours: 7,
   difficulty: 1,
   level: 'grundlagen',
+  phase: 'vorkurs',
+  examRelevance: 'grundlage',
+  topicGoals: [
+    'Brüche, Klammern, Potenzen und Logarithmen fehlerfrei umformen',
+    'Lineare und quadratische Gleichungen zielsicher nach einer Variable auflösen',
+    'Elementarfunktionen (linear, quadratisch, Potenz, exponentiell, logarithmisch) erkennen und grob skizzieren',
+    'Prozentrechnung und Einheitenumrechnung auf technische Aufgaben anwenden',
+    'Äquivalenzumformungen bewusst einsetzen und jede Umformung per Probe kontrollieren',
+  ],
   units: [alg_unit0, alg_unit1, alg_unit2, alg_unit3, alg_unit4],
   prerequisites: [],
 }

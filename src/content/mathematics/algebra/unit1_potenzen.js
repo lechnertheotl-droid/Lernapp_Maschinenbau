@@ -355,6 +355,12 @@ const lessons_alg_u1 = [
     title: 'Potenzgesetze',
     order: 1, estimatedMinutes: 15,
     learningGoals: ['Alle Potenzregeln kennen und sicher anwenden', 'Terme mit gleichen Basen vereinfachen', 'Typische Fehler (Multiplikation vs. Potenz) vermeiden'],
+    subGoals: [
+      { label: 'Gleiche Basis: $x^a \\cdot x^b = x^{a+b}$ und $x^a/x^b = x^{a-b}$', examRelevance: 'hoch' },
+      { label: 'Potenz einer Potenz: $(x^a)^b = x^{a \\cdot b}$ — niemals mit Multiplikation verwechseln', examRelevance: 'hoch' },
+      { label: 'Negativer Exponent $x^{-n} = 1/x^n$ und nullter Exponent $x^0 = 1$ (für $x \\neq 0$)', examRelevance: 'hoch' },
+      { label: 'Produkt/Quotient in Klammer: $(xy)^n = x^n y^n$, $(x/y)^n = x^n/y^n$', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'alg-1-2',
     steps: [
@@ -405,6 +411,11 @@ const lessons_alg_u1 = [
     title: 'Wurzeln und gebrochene Exponenten',
     order: 2, estimatedMinutes: 15,
     learningGoals: ['Wurzeln als gebrochene Potenzen verstehen', 'Wurzelterme vereinfachen', 'Typische Fehler (Wurzel von Summe) vermeiden'],
+    subGoals: [
+      { label: 'Wurzel als Bruchpotenz: $\\sqrt[n]{x} = x^{1/n}$, dadurch gelten alle Potenzgesetze', examRelevance: 'hoch' },
+      { label: 'Wurzel des Produkts: $\\sqrt{ab} = \\sqrt a \\cdot \\sqrt b$ — aber $\\sqrt{a+b} \\neq \\sqrt a + \\sqrt b$', examRelevance: 'hoch' },
+      { label: 'Nenner rational machen: Erweitern mit passender Wurzel löst Wurzeln aus dem Nenner', examRelevance: 'mittel' },
+    ],
     prerequisites: ['alg-1-1'],
     nextLessonId: 'alg-1-3',
     steps: [
@@ -518,6 +529,12 @@ export const alg_unit1 = {
   title: 'Potenzen, Wurzeln & Logarithmen',
   order: 1,
   description: 'Potenzgesetze, Wurzeln als Potenzen, natürlicher Logarithmus',
+  unitGoals: [
+    'Potenzgesetze $a^m \\cdot a^n = a^{m+n}$, $(a^m)^n = a^{m \\cdot n}$, $a^{-n} = 1/a^n$ sicher anwenden',
+    'Wurzeln als Bruchpotenzen lesen: $\\sqrt[n]{a} = a^{1/n}$ und mit Potenzgesetzen rechnen',
+    'Logarithmengesetze nutzen, um Produkte/Potenzen in Summen/Vielfache zu zerlegen',
+    'Exponentialgleichungen durch Logarithmieren und Logarithmusgleichungen durch Potenzieren lösen',
+  ],
   lessons: lessons_alg_u1,
   exercises: exercises_alg_u1,
 }

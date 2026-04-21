@@ -741,6 +741,12 @@ export const int_unit2 = {
   title: 'Integrationstechniken',
   order: 2,
   description: 'Substitution, partielle Integration, Partialbruchzerlegung und gemischte Übungen',
+  unitGoals: [
+    'Substitutionsregel — innere Funktion $u = g(x)$ identifizieren und $du = g\'(x) dx$ ersetzen',
+    'Partielle Integration $\\int u\'v = uv - \\int u v\'$ — strategisch $u\'$ und $v$ wählen (Merkhilfe: LIATE)',
+    'Partialbruchzerlegung bei rationalen Funktionen: echte Brüche auftrennen, einfache Stammfunktionen integrieren',
+    'Bei geschachtelten Integralen die passende Technik in 1–2 Sekunden erkennen',
+  ],
   lessons: lessons_int_u2,
   exercises: exercises_int_u2,
 }

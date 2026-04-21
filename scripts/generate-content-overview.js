@@ -16,6 +16,10 @@ import { fileURLToPath } from 'node:url'
 
 import { getAllTopics, getAllLessons } from '../src/content/index.js'
 import { getTopicMeta, getStudienbeginPhase } from '../src/utils/topicGraph.ts'
+import {
+  hasFourBlockExplanation,
+  isMcWithCompleteWae,
+} from './lib/content-metrics.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -57,30 +61,11 @@ function countExercisesOfType(topic) {
   return counts
 }
 
-function isMcWithWae(ex) {
-  if (ex.type !== 'multiple-choice') return null
-  if (!Array.isArray(ex.options) || ex.options.length < 3) return null
-  const wae = ex.wrongAnswerExplanations
-  if (!wae || typeof wae !== 'object') return false
-  const wrongIndices = ex.options.map((_, i) => i).filter((i) => i !== ex.correctIndex)
-  return wrongIndices.every((i) => typeof wae[String(i)] === 'string' && wae[String(i)].trim().length > 0)
-}
-
-function hasFourBlockExplanation(ex) {
-  if (typeof ex.explanation !== 'string') return false
-  return (
-    /\*\*Ansatz\s*:\*\*/i.test(ex.explanation) &&
-    /\*\*Rechnung\s*:\*\*/i.test(ex.explanation) &&
-    /\*\*Probe\s*:\*\*/i.test(ex.explanation) &&
-    /\*\*Typischer Fehler\s*:\*\*/i.test(ex.explanation)
-  )
-}
-
 function exerciseFlags(ex) {
   const flags = []
   if (ex.isMasteryCheck) flags.push('🎯')
   if (ex.isSupplemental) flags.push('➕')
-  if (isMcWithWae(ex) === true) flags.push('wAE')
+  if (isMcWithCompleteWae(ex) === true) flags.push('wAE')
   if (hasFourBlockExplanation(ex)) flags.push('4B')
   return flags.length > 0 ? flags.join(' ') : ''
 }
@@ -132,7 +117,7 @@ for (const topic of sortedTopics) {
       typeTotals[ex.type] = (typeTotals[ex.type] ?? 0) + 1
       if (ex.type === 'multiple-choice' && Array.isArray(ex.options) && ex.options.length >= 3) {
         mcTotal += 1
-        if (isMcWithWae(ex)) mcWithWae += 1
+        if (isMcWithCompleteWae(ex)) mcWithWae += 1
       }
       if (typeof ex.explanation === 'string' && ex.explanation.length > 0) {
         explTotal += 1

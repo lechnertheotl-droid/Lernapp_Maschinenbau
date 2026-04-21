@@ -4,6 +4,13 @@ const unit1 = makeUnit({
   id: 'rf-unit-1',
   title: 'Folgen, Reihen & Konvergenz',
   order: 1,
+  unitGoals: [
+    'Folgen als Abbildungen $\\mathbb{N} \\to \\mathbb{R}$ verstehen und ihren Grenzwert bestimmen',
+    'Konvergenz/Divergenz einer Reihe $\\sum a_n$ prüfen — notwendiges Kriterium: $a_n \\to 0$',
+    'Geometrische Reihe $\\sum q^n = 1/(1-q)$ für $|q|<1$ als Referenzfall sicher beherrschen',
+    'Quotienten-, Wurzel-, Leibniz- und Majoranten-Kriterium gezielt auswählen',
+    'Taylor-Polynome bis gewünschter Ordnung bilden und Restglied qualitativ abschätzen',
+  ],
   lessons: [
     makeLesson({
       id: 'rf-1-1',
@@ -13,6 +20,13 @@ const unit1 = makeUnit({
         'Folgen als Funktionen $\\mathbb{N} \\to \\mathbb{R}$ verstehen',
         'Konvergenz und Grenzwert definieren',
         'Monotonie und Beschränktheit prüfen',
+      ],
+      subGoals: [
+        { label: 'Grenzwert $\\lim_{n\\to\\infty} a_n$ anschaulich als „bleibt schließlich in jedem $\\varepsilon$-Schlauch" begreifen', examRelevance: 'hoch' },
+        { label: 'Rationale Folgen: Grad-Vergleich (Zähler/Nenner) entscheidet über $0$, endlicher Grenzwert oder $\\pm\\infty$', examRelevance: 'hoch' },
+        { label: 'Grenzwertsätze: Summe, Produkt, Quotient (sofern Nennergrenzwert $\\neq 0$)', examRelevance: 'hoch' },
+        { label: 'Monoton + beschränkt $\\Rightarrow$ konvergent (ohne Grenzwert ausrechnen zu müssen)', examRelevance: 'mittel' },
+        { label: 'Nullfolgen: $1/n$, $1/n^k$, $q^n$ mit $|q|<1$ — als Bausteine auswendig', examRelevance: 'hoch' },
       ],
       createdAt: '2026-04-14',
       intuitionTitle: 'Eine Folge nähert sich einem Wert an',
@@ -211,6 +225,12 @@ const unit1 = makeUnit({
         'Taylor-Polynom vom Grad $n$ um einen Entwicklungspunkt $x_0$ aufstellen',
         'Taylorentwicklung für $e^x$, $\\sin x$, $\\cos x$ kennen',
         'Restglied nach Lagrange abschätzen',
+      ],
+      subGoals: [
+        { label: 'Taylor-Formel $T_n(x) = \\sum_{k=0}^n f^{(k)}(x_0)/k! \\cdot (x-x_0)^k$', examRelevance: 'hoch' },
+        { label: 'Maclaurin-Reihen auswendig: $e^x$, $\\sin x$, $\\cos x$, $\\ln(1+x)$, $1/(1-x)$', examRelevance: 'hoch' },
+        { label: 'Lagrange-Restglied $R_n = f^{(n+1)}(\\xi)/(n+1)! \\cdot (x-x_0)^{n+1}$ zum Fehler abschätzen', examRelevance: 'mittel' },
+        { label: 'Gerade Funktionen (cos) haben nur gerade Potenzen; ungerade (sin) nur ungerade', examRelevance: 'mittel' },
       ],
       createdAt: '2026-04-15',
       intuitionTitle: 'Funktion durch Polynom ersetzen',
@@ -416,6 +436,11 @@ const unit2 = makeUnit({
   id: 'rf-unit-2',
   title: 'Prüfung',
   order: 2,
+  unitGoals: [
+    'Konvergenzradius von Potenzreihen $\\sum a_n (x-x_0)^n$ mit Cauchy-Hadamard oder Quotientenkriterium bestimmen',
+    'Taylor-Restglied mit Lagrange-Formel abschätzen, um numerische Näherungen zu rechtfertigen',
+    'Potenzreihen gliedweise ableiten/integrieren und den Konvergenzradius kontrollieren',
+  ],
   lessons: [
     makeLesson({
       id: 'rf-pruefung-1',
@@ -1050,6 +1075,16 @@ export const reihenFolgenTopic = {
   estimatedHours: 2,
   difficulty: 3,
   level: 'vertiefung',
+  phase: 'semester-2',
+  examRelevance: 'pflicht',
+  topicGoals: [
+    'Folgen auf Konvergenz prüfen und den Grenzwert per Grenzwertsätzen oder Einschnürung bestimmen',
+    'Geometrische und harmonische Reihe als Referenzfälle auswendig kennen und vergleichend einsetzen',
+    'Konvergenzkriterien (Quotienten-, Wurzel-, Leibniz-, Majoranten-/Minoranten-Kriterium) situationsgerecht auswählen',
+    'Potenzreihen $\\sum a_n (x-x_0)^n$ aufstellen und den Konvergenzradius $R = 1/\\limsup\\sqrt[n]{|a_n|}$ bestimmen',
+    'Taylor- und Maclaurin-Reihen elementarer Funktionen ($e^x$, $\\sin$, $\\cos$, $\\ln(1+x)$) hinschreiben und zum Approximieren verwenden',
+    'Restglieder nach Lagrange abschätzen und die Approximationsqualität für Ingenieuranwendungen bewerten',
+  ],
   units: [unit1, unit2],
   prerequisites: ['ableitung', 'integralrechnung'],
 }

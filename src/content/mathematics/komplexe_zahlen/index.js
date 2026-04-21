@@ -11,6 +11,12 @@ const unit1Lessons = [
       'Komplexe Zahlen als Punkte in der Gaußschen Ebene darstellen',
       'Real- und Imaginärteil ablesen',
     ],
+    subGoals: [
+      { label: '$i^2 = -1$ als Definition — $i$ ist keine Variable, sondern fixes Symbol', examRelevance: 'hoch' },
+      { label: '$\\operatorname{Re}(z)$ und $\\operatorname{Im}(z)$: beide reell (der Imaginärteil ist **nicht** $bi$, sondern $b$)', examRelevance: 'hoch' },
+      { label: 'Konjugierte $\\bar z = a - bi$: Spiegelung an reeller Achse', examRelevance: 'hoch' },
+      { label: 'Reelle Zahl ⇔ $\\operatorname{Im}(z) = 0$; rein imaginär ⇔ $\\operatorname{Re}(z) = 0$', examRelevance: 'mittel' },
+    ],
     createdAt: '2026-04-14',
     intuitionTitle: 'Warum braucht es komplexe Zahlen?',
     intuitionContent:
@@ -202,6 +208,12 @@ const unit1Lessons = [
       'Multiplikation mit i² = −1 anwenden',
       'Division via Erweitern mit dem konjugierten Nenner',
     ],
+    subGoals: [
+      { label: 'Addition/Subtraktion komponentenweise — wie Vektoren', examRelevance: 'hoch' },
+      { label: 'Multiplikation: $(a+bi)(c+di)$ ausmultiplizieren und $i^2 = -1$ einsetzen', examRelevance: 'hoch' },
+      { label: 'Division: Zähler **und** Nenner mit $\\bar{c+di} = c-di$ erweitern → Nenner reell $c^2 + d^2$', examRelevance: 'hoch' },
+      { label: '$z \\cdot \\bar z = |z|^2 = a^2 + b^2$ — immer reell und nicht-negativ', examRelevance: 'mittel' },
+    ],
     createdAt: '2026-04-14',
     intuitionTitle: 'Rechnen wie mit Klammer-Termen',
     intuitionContent:
@@ -382,6 +394,12 @@ const unit1 = makeUnit({
   id: 'komz-unit-1',
   title: 'Kartesische Form',
   order: 1,
+  unitGoals: [
+    'Komplexe Zahl $z = a + bi$ mit $i^2 = -1$ in Real- und Imaginärteil zerlegen',
+    'Addition, Subtraktion, Multiplikation und Division komplexer Zahlen in kartesischer Form beherrschen',
+    'Konjugiert Komplexes $\\bar z = a - bi$ für Division durch Erweiterung mit $\\bar z$ einsetzen',
+    'Betrag $|z| = \\sqrt{a^2 + b^2}$ als Abstand vom Ursprung in der Gauß-Ebene interpretieren',
+  ],
   lessons: unit1Lessons,
 })
 
@@ -782,6 +800,12 @@ const unit2 = makeUnit({
   id: 'komz-unit-2',
   title: 'Polarform, Euler & Rechnen',
   order: 2,
+  unitGoals: [
+    'Polarform $z = r(\\cos\\varphi + i\\sin\\varphi)$ aus kartesischer Form bestimmen — $r = |z|$, $\\varphi = \\arg z$',
+    'Euler-Formel $e^{i\\varphi} = \\cos\\varphi + i\\sin\\varphi$ und Exponentialform $z = r e^{i\\varphi}$ verwenden',
+    'Multiplikation in Polarform: Beträge multiplizieren, Winkel addieren — Division: dividieren/subtrahieren',
+    'Quadranten-abhängige Argument-Bestimmung (arctan allein reicht nicht!) sicher durchführen',
+  ],
   lessons: unit2Lessons,
 })
 
@@ -1158,6 +1182,12 @@ const unit3 = makeUnit({
   id: 'komz-unit-3',
   title: 'Potenzen & Wurzeln',
   order: 3,
+  unitGoals: [
+    'Satz von Moivre: $z^n = r^n(\\cos(n\\varphi) + i\\sin(n\\varphi))$ für ganzzahlige Potenzen anwenden',
+    'Alle $n$ komplexen $n$-ten Wurzeln einer komplexen Zahl berechnen ($n$ Lösungen auf einem Kreis)',
+    'Einheitswurzeln $z_k = e^{i \\cdot 2\\pi k / n}$ als regelmäßiges $n$-Eck auf dem Einheitskreis erkennen',
+    'Polynome mit komplexen Koeffizienten mittels Fundamentalsatz der Algebra vollständig in Linearfaktoren zerlegen',
+  ],
   lessons: unit3Lessons,
 })
 
@@ -1771,6 +1801,11 @@ const unit4 = makeUnit({
   id: 'komz-unit-4',
   title: 'Prüfung',
   order: 4,
+  unitGoals: [
+    'Gemischte Prüfungsaufgaben mit Konvertierungen zwischen kartesisch/polar/exponentiell',
+    'Komplexe Schwingungsbeschreibung und Anwendung in E-Technik (Zeigerdiagramme, Impedanz)',
+    'Gleichungen der Form $z^n = w$ systematisch lösen und Lösungen in der Gauß-Ebene einzeichnen',
+  ],
   lessons: unit4Lessons,
 })
 
@@ -1784,6 +1819,16 @@ export const komplexeZahlenTopic = {
   estimatedHours: 3,
   difficulty: 3,
   level: 'grundlagen',
+  phase: 'semester-2',
+  examRelevance: 'pflicht',
+  topicGoals: [
+    'Realteil, Imaginärteil, Betrag und Konjugierte einer komplexen Zahl zuverlässig bestimmen',
+    'Komplexe Zahlen in der Gaußschen Ebene zeichnen und zwischen kartesischer, Polar- und Exponentialform umrechnen',
+    'Multiplikation und Division in Polarform per Beträgen und Argumenten durchführen — nicht per Komponenten',
+    'Mit der Euler-Formel $e^{i\\varphi} = \\cos\\varphi + i\\sin\\varphi$ sicher Potenzen und Wurzeln per Moivre ziehen',
+    'Komplexe Wurzeln als gleichmäßig verteilte Punkte auf dem Kreis $r^{1/n}$ interpretieren (n Lösungen je Gleichung)',
+    'Komplexe Zahlen als Werkzeug für Schwingungs-DGL, Zeigerdarstellung im Wechselstrom und Resonanzphänomene einsetzen',
+  ],
   units: [unit1, unit2, unit3, unit4],
   prerequisites: ['algebra', 'trigonometry'],
 }

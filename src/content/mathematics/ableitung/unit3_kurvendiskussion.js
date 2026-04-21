@@ -833,6 +833,12 @@ export const abl_unit3 = {
   title: 'Kurvendiskussion',
   order: 3,
   description: 'Monotonie, Extremwerte, Wendepunkte, vollständige Kurvendiskussion',
+  unitGoals: [
+    'Monotonie über Vorzeichen der ersten Ableitung $f\'(x)$ intervallweise bestimmen',
+    'Kandidaten für Extrema aus $f\'(x) = 0$ ermitteln und mit $f\'\'(x)$ als Max/Min klassifizieren',
+    'Wendepunkte über $f\'\'(x) = 0$ mit Vorzeichenwechsel von $f\'\'$ finden',
+    'Vollständige Kurvendiskussion: Definitionsbereich, Symmetrie, Nullstellen, Asymptoten, Extrema, Wendepunkte — in korrekter Reihenfolge',
+  ],
   lessons: lessons_abl_u3,
   exercises: exercises_abl_u3,
 }

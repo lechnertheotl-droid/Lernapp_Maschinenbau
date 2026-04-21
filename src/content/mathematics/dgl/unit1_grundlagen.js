@@ -394,6 +394,13 @@ const lessons_dgl_u1 = [
     title: 'Was ist eine Differentialgleichung?',
     order: 1, estimatedMinutes: 15,
     learningGoals: ['DGL als Gleichung mit Funktion und Ableitungen verstehen', 'Ordnung und Linearität bestimmen', 'Anfangswertproblem verstehen'],
+    subGoals: [
+      { label: 'Ordnung = höchste vorkommende Ableitung ($y$, $y\'$, $y\'\'$ … )', examRelevance: 'hoch' },
+      { label: 'Linear ⇔ $y$ und alle Ableitungen nur in 1. Potenz, keine Produkte $y \\cdot y\'$', examRelevance: 'hoch' },
+      { label: 'Homogen ⇔ rechte Seite = 0; sonst inhomogen (wichtig für Ansatzwahl)', examRelevance: 'hoch' },
+      { label: 'Anfangswertproblem = DGL + Anfangsbedingung → eindeutige Lösung', examRelevance: 'mittel' },
+      { label: 'Gewöhnlich (ODE) vs. partiell (PDE): genau eine unabhängige Variable', examRelevance: 'niedrig' },
+    ],
     prerequisites: [],
     nextLessonId: 'dgl-1-2',
     steps: [
@@ -450,6 +457,13 @@ Die DGL allein hat unendlich viele Lösungen ($y = Ce^{2x}$ für jedes $C$). Die
     title: 'Trennung der Variablen',
     order: 2, estimatedMinutes: 18,
     learningGoals: ['Methode der Variablentrennung anwenden', 'Einfache DGL 1. Ordnung lösen', 'Anfangswerte einsetzen'],
+    subGoals: [
+      { label: 'Anwendbarkeit erkennen: $y\' = f(x)\\,g(y)$ — Produkt aus $x$- und $y$-Anteil', examRelevance: 'hoch' },
+      { label: '$dy/dx$-Schreibweise: $\\tfrac{dy}{g(y)} = f(x)\\,dx$ sauber trennen', examRelevance: 'hoch' },
+      { label: 'Beide Seiten integrieren, Integrationskonstante $C$ nur einmal ansetzen', examRelevance: 'hoch' },
+      { label: 'Anfangsbedingung $y(x_0) = y_0$ zum Bestimmen von $C$ einsetzen — vor dem Umformen nach $y$', examRelevance: 'hoch' },
+      { label: 'Betragsstriche bei $\\int 1/y\\,dy = \\ln|y|$ nicht vergessen und Fallunterscheidung prüfen', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'dgl-1-3',
     steps: [
@@ -631,6 +645,12 @@ export const dgl_unit1 = {
   title: 'Grundbegriffe & einfache DGL',
   order: 1,
   description: 'Was ist eine DGL, Trennung der Variablen, lineare DGL 1. und 2. Ordnung',
+  unitGoals: [
+    'Ordnung und Typ einer DGL (explizit, implizit, linear/nichtlinear, homogen/inhomogen) bestimmen',
+    'Trennung der Variablen bei DGL der Form $y\' = f(x) g(y)$ korrekt anwenden',
+    'Allgemeine und spezielle Lösung unterscheiden — Anfangswertproblem mit $y(x_0) = y_0$ fixiert die Konstante',
+    'Richtungsfeld als visuelle Vorschau der Lösungsscharen interpretieren',
+  ],
   lessons: lessons_dgl_u1,
   exercises: exercises_dgl_u1,
 }

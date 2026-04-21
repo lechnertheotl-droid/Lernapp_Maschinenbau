@@ -593,6 +593,12 @@ export const unit2 = {
   title: 'Einheitskreis und Winkelfunktionen',
   order: 2,
   description: 'Der Einheitskreis als universelle Definition von sin, cos und tan',
+  unitGoals: [
+    'Sinus/Kosinus am Einheitskreis als $y$- bzw. $x$-Koordinate eines Punktes verstehen',
+    'Symmetrien ($\\sin(-\\alpha) = -\\sin\\alpha$, $\\cos(-\\alpha) = \\cos\\alpha$) und Periodizität ($2\\pi$) anwenden',
+    'Werte in allen vier Quadranten durch Vorzeichen und Achsensymmetrie bestimmen',
+    'Zusammenhang $\\sin^2\\alpha + \\cos^2\\alpha = 1$ als Pythagoras am Einheitskreis erkennen',
+  ],
   lessons: lessons_u2,
   exercises: exercises_u2,
 }

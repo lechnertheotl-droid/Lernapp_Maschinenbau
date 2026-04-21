@@ -11,6 +11,7 @@ export function makeLesson({
   title,
   estimatedMinutes = 12,
   learningGoals = [],
+  subGoals,
   intuitionTitle,
   intuitionContent,
   formulaTitle,
@@ -106,6 +107,7 @@ export function makeLesson({
       title,
       estimatedMinutes,
       learningGoals,
+      ...(subGoals ? { subGoals } : {}),
       prerequisites,
       nextLessonId,
       createdAt,
@@ -119,7 +121,7 @@ export function makeLesson({
  * Bündelt mehrere `makeLesson`-Resultate in eine Unit mit gemeinsamem
  * Exercises-Dictionary.
  */
-export function makeUnit({ id, title, order, lessons }) {
+export function makeUnit({ id, title, order, unitGoals, lessons }) {
   const unitExercises = {}
   const unitLessons = lessons.map(({ lesson, exercises }) => {
     Object.assign(unitExercises, exercises)
@@ -129,6 +131,7 @@ export function makeUnit({ id, title, order, lessons }) {
     id,
     title,
     order,
+    ...(unitGoals ? { unitGoals } : {}),
     lessons: unitLessons,
     exercises: unitExercises,
   }

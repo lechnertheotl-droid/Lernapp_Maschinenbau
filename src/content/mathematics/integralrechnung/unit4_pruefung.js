@@ -629,6 +629,11 @@ export const int_unit4 = {
   title: 'Prüfungsaufgaben',
   order: 4,
   description: 'Aufgaben auf TU Wien Prüfungsniveau — Integrationstechniken und technische Anwendungen',
+  unitGoals: [
+    'Uneigentliche Integrale (unendliche Grenze oder Pol) als Grenzwert sauber berechnen',
+    'Kombination aus Substitution und partieller Integration bei komplexen Aufgaben wählen',
+    'Technische Prüfungsaufgaben (Arbeit, Volumen, Schwerpunkt) mit vollständigem Lösungsweg',
+  ],
   lessons: lessons_int_u4,
   exercises: exercises_int_u4,
 }

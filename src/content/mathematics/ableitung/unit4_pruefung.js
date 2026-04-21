@@ -640,6 +640,11 @@ export const abl_unit4 = {
   title: 'Prüfungsaufgaben',
   order: 4,
   description: 'Ableitungsregeln, Kurvendiskussion, Optimierung und Taylor — auf TU Wien Klausurniveau',
+  unitGoals: [
+    'Extremwertaufgaben mit Nebenbedingung: Hauptbedingung aufstellen, Nebenbedingung einsetzen, ableiten und lösen',
+    'Taylorpolynom bis zur benötigten Ordnung bilden und Restglied abschätzen',
+    'Regel von de l\'Hospital bei Grenzwerten der Form 0/0 oder ∞/∞ korrekt anwenden',
+  ],
   lessons: lessons_abl_u4,
   exercises: exercises_abl_u4,
 }
