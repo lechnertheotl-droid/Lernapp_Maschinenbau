@@ -343,6 +343,84 @@ $$\\cos(2\\alpha) = 2\\cos^{2}(\\alpha) - 1 = 1 - 2\\sin^{2}(\\alpha).$$
       3: '$\\cos(180°) = -1$, nicht $0$. Bei $180°$ liegt der Punkt bei $(-1, 0)$ — x-Koordinate minimal. Außerdem: obwohl $180°$ im Hauptast $[0°, 180°]$ liegt, liefert er nicht $\\cos = 0$, sondern $\\cos = -1$.',
     },
   },
+
+  // ───────────── Lektion 3-5: Sinussatz & Cosinussatz ─────────────
+  'ex-trig-3-5-a': {
+    id: 'ex-trig-3-5-a', lessonId: 'trig-3-5', type: 'multiple-choice',
+    question: 'Welche Formel beschreibt den **Sinussatz** im allgemeinen Dreieck?',
+    options: [
+      '$\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta} = \\dfrac{c}{\\sin\\gamma}$',
+      '$a^{2} = b^{2} + c^{2} - 2bc\\cos\\alpha$',
+      '$a \\cdot \\sin\\alpha = b \\cdot \\sin\\beta = c \\cdot \\sin\\gamma$',
+      '$\\sin^{2}\\alpha + \\cos^{2}\\alpha = 1$',
+    ],
+    correctIndex: 0,
+    explanation: `**Ansatz:** Im **allgemeinen Dreieck** (nicht nur rechtwinklig) gilt: Das Verhältnis Seite zu Sinus des gegenüberliegenden Winkels ist konstant.
+
+**Sinussatz:** $\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta} = \\dfrac{c}{\\sin\\gamma} = 2R$ (wobei $R$ der Umkreisradius ist).
+
+**Wann anwenden?** Wenn du **zwei Winkel und eine Seite** kennst (WWS/SWW), oder **zwei Seiten und einen nicht-eingeschlossenen Winkel** (SSW).
+
+**Probe:** Im rechtwinkligen Dreieck mit $\\gamma = 90°$ liefert $\\dfrac{c}{\\sin 90°} = \\dfrac{c}{1} = c$ — und $\\dfrac{a}{\\sin\\alpha} = \\dfrac{\\text{Gegenkathete}}{\\sin\\alpha} = c$ (Hypotenuse). Konsistent mit SOH-CAH-TOA. ✓
+
+**Typischer Fehler:** Seite und Sinus multiplizieren statt dividieren (Option C). Der Sinussatz ist ein Quotienten-Gesetz: Seite geteilt durch Sinus des Gegenwinkels.`,
+    wrongAnswerExplanations: {
+      1: 'Das ist der **Cosinussatz**, nicht der Sinussatz. Cosinussatz braucht zwei Seiten plus eingeschlossenen Winkel (SWS); Sinussatz arbeitet mit Gegenüberstellung Seite ↔ Gegenwinkel.',
+      2: 'Du hast Division und Multiplikation vertauscht. Der Sinussatz ist $\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta}$, also Seite **geteilt durch** Sinus — nicht Seite mal Sinus. Merke: Gleiches Verhältnis, nicht gleiches Produkt.',
+      3: 'Das ist die **Pythagoras-Identität** am Einheitskreis, keine Dreiecksbeziehung zwischen Seiten und Winkeln.',
+    },
+    hints: [
+      'Im allgemeinen Dreieck: Wie hängen Seiten und Winkel zusammen?',
+      'Die gegenüberliegenden Paare bilden ein konstantes Verhältnis.',
+      'Seite geteilt durch Sinus des Gegenwinkels = konstant.',
+    ],
+  },
+  'ex-trig-3-5-b': {
+    id: 'ex-trig-3-5-b', lessonId: 'trig-3-5', type: 'number-input',
+    question: 'In einem Dreieck gilt $a = 5$, $\\alpha = 30°$, $\\beta = 60°$. Wie lang ist die Seite $b$?',
+    correctValue: 8.66,
+    tolerance: 0.02,
+    unit: '',
+    explanation: `**Ansatz:** Zwei Winkel + eine Seite → **Sinussatz** anwenden.
+
+**Rechnung:** $\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta}$ → $b = a \\cdot \\dfrac{\\sin\\beta}{\\sin\\alpha} = 5 \\cdot \\dfrac{\\sin 60°}{\\sin 30°} = 5 \\cdot \\dfrac{\\sqrt{3}/2}{1/2} = 5\\sqrt{3} \\approx 8{,}66$.
+
+**Probe:** Dritter Winkel $\\gamma = 180° - 30° - 60° = 90°$ — rechtwinkliges Dreieck! $a = 5$ ist dann Gegenkathete zu $30°$, $b$ ist Gegenkathete zu $60°$. Bekanntes Verhältnis $1 : \\sqrt{3} : 2$ liefert $b = 5\\sqrt{3}$. ✓
+
+**Typischer Fehler:** $\\dfrac{a}{\\sin\\beta} = \\dfrac{b}{\\sin\\alpha}$ statt $\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta}$ — Seite und Gegenwinkel müssen **zusammengehören**. Hier: $a$ liegt $\\alpha$ gegenüber (beide mit gleichem Index).`,
+    hints: [
+      'Zwei Winkel + eine Seite → Sinussatz.',
+      'Achte darauf: $a$ liegt gegenüber $\\alpha$, $b$ gegenüber $\\beta$.',
+      '$b = a \\cdot \\sin\\beta / \\sin\\alpha$; $\\sin 60° / \\sin 30° = \\sqrt{3}$.',
+    ],
+  },
+  'ex-trig-3-5-mastery': {
+    id: 'ex-trig-3-5-mastery', lessonId: 'trig-3-5', type: 'multiple-choice', isMasteryCheck: true,
+    question: '[PRÜFUNG] Gegeben: zwei Seiten $b=4$, $c=6$ und der eingeschlossene Winkel $\\alpha = 60°$. Welcher Satz liefert direkt die dritte Seite $a$?',
+    options: ['Cosinussatz', 'Sinussatz', 'Pythagoras', 'Satz des Thales'],
+    correctIndex: 0,
+    explanation: `**Ansatz:** **SWS**-Konfiguration (Seite-Winkel-Seite mit eingeschlossenem Winkel) → **Cosinussatz**.
+
+**Rechnung:** Cosinussatz: $a^{2} = b^{2} + c^{2} - 2bc\\cos\\alpha = 16 + 36 - 48 \\cdot \\cos 60° = 52 - 24 = 28$. Also $a = \\sqrt{28} \\approx 5{,}29$.
+
+**Faustregel zur Wahl:**
+- **SWS** (Seite-Winkel-Seite) oder **SSS** (drei Seiten) → Cosinussatz.
+- **WWS/SWW** (zwei Winkel + Seite) oder **SSW** → Sinussatz.
+
+**Probe:** Bei $\\alpha = 90°$ wird $\\cos\\alpha = 0$ und der Cosinussatz reduziert sich zu $a^{2} = b^{2} + c^{2}$ — das ist **Pythagoras** als Spezialfall. ✓
+
+**Typischer Fehler:** Sinussatz wählen und $\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta}$ ansetzen — aber weder $\\beta$ noch $\\gamma$ ist bekannt, also geht's nicht ohne Umweg.`,
+    wrongAnswerExplanations: {
+      1: 'Sinussatz braucht mindestens einen **weiteren** Winkel (nicht nur $\\alpha$). Hier kennst du nur $\\alpha$ — für den Sinussatz fehlt $\\beta$ oder $\\gamma$. Cosinussatz löst das direkt.',
+      2: 'Pythagoras gilt nur im rechtwinkligen Dreieck ($\\alpha = 90°$). Hier ist $\\alpha = 60°$ — nicht rechtwinklig. Cosinussatz ist die Verallgemeinerung und wird hier gebraucht.',
+      3: 'Der Satz des Thales handelt von Halbkreisen und rechten Winkeln — nichts mit drei-Seiten-Berechnung im allgemeinen Dreieck.',
+    },
+    hints: [
+      'Welche Teile kennst du? $b, c$ und der Winkel *zwischen* ihnen.',
+      'SWS → Cosinussatz; WWS/SSW → Sinussatz.',
+      'Cosinussatz: $a^{2} = b^{2} + c^{2} - 2bc\\cos\\alpha$.',
+    ],
+  },
 }
 
 const lessons_u3 = [
@@ -445,7 +523,7 @@ mit Amplitude $A$, Kreisfrequenz $\\omega$ und Phasenwinkel $\\varphi$.
     order: 4, estimatedMinutes: 12,
     learningGoals: ['arcsin, arccos, arctan kennen und anwenden', 'Definitionsbereiche verstehen'],
     prerequisites: ['trig-2-5'],
-    nextLessonId: null,
+    nextLessonId: 'trig-3-5',
     steps: [
       {
         id: 'trig-3-4-s1', type: 'explanation-intuitive', title: 'Die Umkehrfunktionen',
@@ -464,6 +542,49 @@ mit Amplitude $A$, Kreisfrequenz $\\omega$ und Phasenwinkel $\\varphi$.
       { id: 'trig-3-4-s2', type: 'exercise', title: 'Aufgabe 1 — arcsin(1/2)', exerciseRef: 'ex-trig-3-4-a' },
       { id: 'trig-3-4-s3', type: 'exercise', title: 'Aufgabe 2 — Definitionsbereich arcsin', exerciseRef: 'ex-trig-3-4-b' },
       { id: 'trig-3-4-s4', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-trig-3-4-mastery' },
+    ],
+  },
+  {
+    id: 'trig-3-5', unitId: 'trig-unit-3',
+    title: 'Sinussatz & Cosinussatz',
+    order: 5, estimatedMinutes: 14,
+    learningGoals: [
+      'Sinussatz und Cosinussatz als Verallgemeinerung von SOH-CAH-TOA verstehen',
+      'WWS/SSW-Konfigurationen mit Sinussatz lösen',
+      'SWS/SSS-Konfigurationen mit Cosinussatz lösen',
+    ],
+    prerequisites: ['trig-3-4'],
+    nextLessonId: null,
+    steps: [
+      {
+        id: 'trig-3-5-s1', type: 'explanation-formal', title: 'Die zwei Werkzeuge fürs allgemeine Dreieck',
+        content: `Im **rechtwinkligen** Dreieck löst SOH-CAH-TOA alles. Aber nicht jedes Dreieck hat einen rechten Winkel — für das **allgemeine** Dreieck brauchen wir zwei erweiterte Werkzeuge:
+
+**Sinussatz:**
+$$\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta} = \\dfrac{c}{\\sin\\gamma}$$
+
+Das Verhältnis „Seite geteilt durch Sinus des gegenüberliegenden Winkels" ist konstant. Nutzen, wenn Seite und Gegenwinkel als Paar bekannt sind.
+
+**Cosinussatz:**
+$$a^{2} = b^{2} + c^{2} - 2bc\\cos\\alpha$$
+(und analog für $b^{2}, c^{2}$)
+
+Die verallgemeinerte Pythagoras-Formel. Bei $\\alpha = 90°$ wird $\\cos\\alpha = 0$ und die Formel wird zu $a^{2} = b^{2} + c^{2}$ — genau Pythagoras.
+
+**Welchen Satz wann?**
+
+| Gegeben | Methode |
+|---|---|
+| WWS / SWW (zwei Winkel + Seite) | Sinussatz |
+| SSW (zwei Seiten + nicht-eingeschlossener Winkel) | Sinussatz |
+| SWS (zwei Seiten + eingeschlossener Winkel) | Cosinussatz |
+| SSS (drei Seiten) | Cosinussatz (nach Winkel auflösen) |
+
+**Warum wichtig:** Maschinenbau-Geometrie (Fachwerke, Kurbeltriebe, Zahnräder) enthält oft nicht-rechtwinklige Dreiecke. Ohne Sinus-/Cosinussatz bleibst du auf dem Grundschul-Niveau Pythagoras stecken.`,
+      },
+      { id: 'trig-3-5-s2', type: 'exercise', title: 'Aufgabe 1 — Sinussatz-Formel', exerciseRef: 'ex-trig-3-5-a' },
+      { id: 'trig-3-5-s3', type: 'exercise', title: 'Aufgabe 2 — Seite berechnen', exerciseRef: 'ex-trig-3-5-b' },
+      { id: 'trig-3-5-s4', type: 'mastery-check', title: 'Prüfungsaufgabe — Methodenwahl', exerciseRef: 'ex-trig-3-5-mastery' },
     ],
   },
 ]
