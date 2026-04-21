@@ -147,6 +147,11 @@ $a_0/2$ ist der Mittelwert (DC-Anteil).
       'Orthogonalität: $\\int \\cos^2 = T/2$.',
       '$2/T$-Faktor normiert.',
     ],
+    errorWrongAnswers: {
+      1: 'Das Integrationsintervall $[0,T]$ ist in Ordnung — eine Periode reicht, und sie muss nicht symmetrisch sein. Auch $[-T/2, T/2]$ waere zulaessig, aendert aber am Vorfaktor $2/T$ nichts.',
+      2: '$n=0$ ist zulaessig — es liefert gerade $a_0 = (2/T)\\int f\\,dt$. Die Formel ist fuer alle $n\\in\\mathbb{N}_0$ korrekt, nur der Vorfaktor $2/T$ fehlt.',
+      3: 'Fuer $a_n$ ist der Cosinus richtig (gerade Basisfunktion). Die Sinus-Version gilt fuer $b_n$. Hier ist also nicht der Integrand falsch, sondern nur der fehlende Normierungsfaktor $2/T$.',
+    },
 
     transferQuestion: 'Für die Rechteckfunktion $f(t) = 1$ für $0 < t < T/2$, $f(t) = -1$ für $T/2 < t < T$: Wie groß ist $a_0$?',
     transferAnswer: 0,
@@ -183,6 +188,11 @@ Nur **ungerade** Harmonische erscheinen, weil die Funktion Halbwellensymmetrie b
       'Halbwellensymmetrie.',
       'Gerade Harmonische fallen weg.',
     ],
+    conceptWrongAnswers: {
+      1: 'Die "Energie" pro Harmonischer haengt zwar von der Signalform ab, aber das Verschwinden gerader Harmonischer ist keine Energie-, sondern eine Symmetrie-Aussage. Es gilt mathematisch $a_{2k}=b_{2k}=0$ wegen $f(t+T/2)=-f(t)$.',
+      2: 'Es gibt keine formale Rechenregel, die gerade Harmonische "verbietet". Sie verschwinden, weil die Integrale $\\int f(t)\\sin(2k\\omega_0 t)\\,dt$ durch Halbwellensymmetrie null werden.',
+      3: 'Der Rechteck ist gerade **nicht** sinusfoermig — er hat Spruenge und unendlich viele Harmonische. Genau deshalb braucht er eine Fourier-Reihe; eine reine Sinusschwingung haette nur $b_1$.',
+    },
 
     calcQuestion: 'Fourier-Koeffizient $b_1$ einer Rechteckfunktion mit Amplitude $A = 1$, Periode $T = 2\\pi$: $b_1 = (2/T)\\int_0^T f\\sin(t)\\,dt$. Wie groß ist $b_1$?',
     calcAnswer: 1.2732,
@@ -243,6 +253,11 @@ Nur **ungerade** Harmonische erscheinen, weil die Funktion Halbwellensymmetrie b
       'Amplitude beachten.',
       '$b_n$ skaliert mit $A$.',
     ],
+    errorWrongAnswers: {
+      1: '$\\pi$ steht in der Rechteck-Formel $b_n=4A/(n\\pi)$ bereits korrekt im Nenner. Das ist kein Fehler; nur die Amplitude $A$ wurde vergessen.',
+      2: '$b_1$ ist der Koeffizient fuer $n=1$ — da wird $1/n=1$, der Faktor faellt also weg. Die Formel $b_1=4A/\\pi$ stimmt strukturell; fehlt nur die Skalierung mit $A=5$.',
+      3: 'Doch — genau das ist der Inhalt dieser Lerneinheit. Jede periodische, stueckweise stetige Funktion (also auch Rechteck) hat eine Fourier-Reihe. Die Aussage waere grundsaetzlich falsch.',
+    },
 
     transferQuestion: 'Ein Rechteckimpuls mit Amplitude $A = 1$, Periode $T = 4$ s, Tastverhältnis $1/4$ (eingeschaltet $1$ s, ausgeschaltet $3$ s). Wie groß ist $a_0/2$ (Gleichanteil)?',
     transferAnswer: 0.25,
@@ -289,6 +304,11 @@ $$f(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty} F(\omega) e^{j\omega t}\,d\omega$
       'Ausblendeigenschaft der Delta.',
       'Flaches Spektrum.',
     ],
+    conceptWrongAnswers: {
+      1: '$F(\\omega)=\\delta(\\omega)$ gehoert zur konstanten Zeitfunktion $f(t)=\\tfrac{1}{2\\pi}$ (dualer Fall). Die Transformation dreht Delta im Zeitbereich zu flachem Spektrum, nicht umgekehrt.',
+      2: '$2\\pi$ als konstantes Spektrum waere die Transformierte von $\\delta(t)\\cdot 2\\pi$ — nur ein Skalierungsunterschied. Die korrekte Standard-Definition liefert exakt $1$, nicht $2\\pi$.',
+      3: '$F(\\omega)=\\omega$ entspricht keiner Standard-Transformierten und hat unbeschraenktes Betragsspektrum. Die Delta-Funktion hat dagegen ein streng flaches Betragsspektrum $|F|=1$.',
+    },
 
     calcQuestion: 'Zeitverschiebung: Wenn $\\mathcal{F}\\{f(t)\\} = F(\\omega)$, wie groß ist der Betrag von $\\mathcal{F}\\{f(t-3)\\}$ im Verhältnis zu $|F(\\omega)|$?',
     calcAnswer: 1,
@@ -349,6 +369,11 @@ $$f(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty} F(\omega) e^{j\omega t}\,d\omega$
       '$2\\pi$-Normierung.',
       'Symmetrie Hin- und Rücktransformation.',
     ],
+    errorWrongAnswers: {
+      1: 'Das Vorzeichen $+j\\omega t$ in der Ruecktransformation ist korrekt — die **Hin**-Transformation nutzt $-j\\omega t$. Das Paar Hin/Rueck hat entgegengesetzte Vorzeichen (Definition), also nicht das Problem.',
+      2: 'Das Integral $\\int F(\\omega)\\,d\\omega$ ueber den komplexen Integranden ist standardmaessig als komplexes Integral zu verstehen — diese Aussage bringt keinen inhaltlichen Fehler. Fehlender Faktor $1/(2\\pi)$ bleibt Hauptproblem.',
+      3: '$e^{j\\omega t}$ mit $2\\pi$ multipliziert waere $e^{j2\\pi\\omega t}$ und das entspricht einer anderen Konvention (Frequenz $f$ statt $\\omega$). Im $\\omega$-Formalismus ist $e^{j\\omega t}$ korrekt; $2\\pi$ gehoert nur in die Normierung.',
+    },
 
     transferQuestion: 'Gegeben $F(\\omega) = 2\\pi\\delta(\\omega - 3)$. Was ist $f(t)$ an der Stelle $t = 0$?',
     transferAnswer: 1,
@@ -397,6 +422,11 @@ $$F(s) = \mathcal{L}\{f(t)\} = \int_0^{\infty} f(t) e^{-st}\,dt$$
       'Anfangsbedingungen automatisch.',
       'Breiterer Konvergenzbereich.',
     ],
+    conceptWrongAnswers: {
+      1: '"Immer einfacher" stimmt nicht — bei reinen periodischen Signalen ist Fourier oft handlicher. Laplace ist dann vorteilhaft, wenn Anfangsbedingungen oder Einschaltvorgaenge im Spiel sind.',
+      2: 'Nichtlinearitaeten bleiben nichtlinear — Laplace ist eine lineare Integraltransformation und transformiert nur lineare DGL in algebraische Gleichungen. Nichtlineare DGL bleiben unloesbar damit.',
+      3: 'Die Transformation selbst ist ein Integral $\\int_0^\\infty f(t)e^{-st}\\,dt$ — man kommt um Integration nicht herum. Der Vorteil ist, dass die **DGL-Loesung** algebraisch wird, nicht das Vermeiden von Integralen.',
+    },
 
     calcQuestion: 'Wie lautet $\\mathcal{L}\\{t^2\\}$ bei $s > 0$? Gib den Wert bei $s = 1$.',
     calcAnswer: 2,
@@ -457,6 +487,11 @@ $$F(s) = \mathcal{L}\{f(t)\} = \int_0^{\infty} f(t) e^{-st}\,dt$$
       'Ableitungssatz mit $f(0)$.',
       'Partielle Integration.',
     ],
+    errorWrongAnswers: {
+      1: 'Das Vorzeichen von $s$ ist richtig: Partielle Integration liefert $+sF(s)$, nicht $-sF(s)$. Fehler ist ausschliesslich der fehlende Anfangswert $-f(0)$.',
+      2: '$2\\pi$ taucht in der Laplace-Transformation an keiner Stelle auf — das ist ein Fourier-Spezifikum. Die Laplace-Regeln sind frei von $2\\pi$-Faktoren.',
+      3: 'Doch, es fehlt der Anfangswert $-f(0)$. Der vollstaendige Ableitungssatz lautet $\\mathcal{L}\\{f\'\\}=sF(s)-f(0)$, und der fehlende Term verfaelscht DGL mit Anfangsbedingungen.',
+    },
 
     transferQuestion: 'Laplace von $f(t) = \\sin(2t) + \\cos(2t)$: Wie groß ist $F(s)$ bei $s = 2$? (Hinweis: $\\mathcal{L}\\{\\sin(\\omega t)\\} = \\omega/(s^2+\\omega^2)$ etc.)',
     transferAnswer: 0.5,
@@ -498,6 +533,11 @@ $$F(s) = \mathcal{L}\{f(t)\} = \int_0^{\infty} f(t) e^{-st}\,dt$$
       'Delta im Eingang.',
       'Rücktransformierte der Übertragungsfunktion.',
     ],
+    conceptWrongAnswers: {
+      1: 'Die Antwort auf einen Einheitssprung heisst **Sprungantwort** $h(t)$, nicht Impulsantwort. Es gilt $h(t)=\\int_0^t g(\\tau)\\,d\\tau$ — sie ist das Integral der Impulsantwort.',
+      2: 'Die stationaere Antwort $y_\\infty$ ist der Endwert bei konstantem Eingang (z.B. Sprung). Die Impulsantwort $g(t)$ ist dagegen die vollstaendige Zeitantwort auf $\\delta(t)$ und klingt bei stabilen Systemen ab.',
+      3: 'Der Gleichanteil ist eine Signaleigenschaft, keine Systemantwort. Die Impulsantwort charakterisiert das Uebertragungsverhalten, nicht einen Mittelwert.',
+    },
 
     calcQuestion: 'Für ein PT1-System $G(s) = 1/(s + 2)$: Wie groß ist $g(t)$ bei $t = 0^+$?',
     calcAnswer: 1,
@@ -558,6 +598,11 @@ $$F(s) = \mathcal{L}\{f(t)\} = \int_0^{\infty} f(t) e^{-st}\,dt$$
       'Partialbruchzerlegung: Residuen bestimmen.',
       'Zuhaltemethode.',
     ],
+    errorWrongAnswers: {
+      1: 'Die Faktoren bleiben im Nenner stehen; das Vorgehen der Partialbruchzerlegung **aufspaltet** $1/((s+1)(s+2))$ in eine Summe. "Multiplizieren" waere das Gegenteil.',
+      2: 'Ob das System stabil ist ($s=-1, -2$ in LHP) ist hier nicht das Thema — beide Pole sind tatsaechlich stabil. Der Fehler steckt in den fehlenden Residuen $(+1, -1)$, nicht in der Stabilitaet.',
+      3: 'Doch — die Formel stimmt nicht. Die korrekte Zerlegung hat Residuen $A=1$ und $B=-1$, also $1/(s+1)-1/(s+2)$. Die Zuhaltemethode $A=\\lim_{s\\to -1}1/(s+2)=1$ liefert das sofort.',
+    },
 
     transferQuestion: 'Sprungantwort eines PT1: $G(s) = 2/(s + 1)$, Eingang $u(t)$ = Sprung, also $U(s) = 1/s$. $Y(s) = 2/(s(s+1)) = 2/s - 2/(s+1)$. Wie groß ist $y(t)$ bei $t = 1$ s?',
     transferAnswer: 1.264,
@@ -605,6 +650,11 @@ Die Energie ist im Zeit- und Frequenzbereich gleich.
       'Energieerhaltung.',
       'Zeit- und Frequenzbereich äquivalent.',
     ],
+    conceptWrongAnswers: {
+      1: '"Leistung ist immer null" ist physikalisch unsinnig — jedes Signal $f\\neq 0$ hat Energie/Leistung $>0$. Parseval sagt nur, dass diese Energie in beiden Bereichen **gleich** ist, nicht null.',
+      2: 'Parseval betrifft ausschliesslich die **Amplitude** (Betragsquadrat) von $F(\\omega)$, nicht die Phase. Phasen koennen sehr wohl variieren, solange $|F|^2$ integriert die Energie ergibt.',
+      3: 'Frequenz $\\omega$ und Zeit $t$ sind zueinander **reziprok** ($\\omega\\cdot t$ dimensionslos), nicht proportional mit Faktor $2$. Diese Aussage verkennt fundamentale Einheiten.',
+    },
 
     calcQuestion: 'Ein Signal hat $\\int |f(t)|^2\\,dt = 10$. Was ist $(1/(2\\pi))\\int|F(\\omega)|^2\\,d\\omega$ nach Parseval?',
     calcAnswer: 10,
@@ -665,6 +715,11 @@ Die Energie ist im Zeit- und Frequenzbereich gleich.
       'Einheitenkontrolle.',
       'Transformation verändert Dimension.',
     ],
+    errorWrongAnswers: {
+      1: 'Doch, die Einheit ist falsch. Das Integral $\\int V(t)e^{-j\\omega t}\\,dt$ multipliziert Volt mit Sekunde (V$\\cdot$s). Die reine Einheit "V" unterschlaegt die Zeitdimension der Transformation.',
+      2: 'Man dividiert nicht durch Hz, sondern multipliziert mit Zeit. V/Hz ist identisch mit V$\\cdot$s (da Hz=1/s), aber die richtige Operation ist Multiplikation, nicht Division.',
+      3: 'Sehr wohl dimensionsbehaftet — die Fourier-Transformation hat eine Einheit (Produkt aus Signaleinheit und Zeit). Nur der Exponent $e^{-j\\omega t}$ ist dimensionslos, nicht das ganze Integral.',
+    },
 
     transferQuestion: 'Ein Rechteckimpuls der Dauer $T_p = 2$ s und Höhe $A = 1$ hat Energie $E = A^2 T_p$. Wie groß ist $E$?',
     transferAnswer: 2,
@@ -711,6 +766,11 @@ $$\lim_{t\to 0^+} y(t) = \lim_{s\to\infty} s \cdot Y(s)$$
       'Pole prüfen, nicht Nullstellen.',
       'Jeder Pol muss in LHP liegen.',
     ],
+    conceptWrongAnswers: {
+      1: '"Immer stabil" ist falsch — der Pol $s=+2$ in der rechten Halbebene erzeugt einen Mode $e^{2t}$, der fuer $t\\to\\infty$ divergiert. Ein einziger RHP-Pol reicht fuer Instabilitaet.',
+      2: 'Stabilitaet ist eine globale Eigenschaft fuer alle $t$, nicht fuer einen bestimmten $s$-Wert. "Bei $s=0$" ist konzeptuell falsch — Stabilitaet betrifft die Polverteilung.',
+      3: 'Nullstellen von $G(s)$ beeinflussen die Stabilitaet nicht; nur die Polstellen zaehlen. Die Nullstelle $s=-3$ zu entfernen aendert nichts am Pol $s=+2$ — das System bliebe instabil.',
+    },
 
     calcQuestion: 'Regelkreis: $G_o(s) = 4/(s(s+2))$, negative Einheitsrückführung. Endwertsatz: $e_{stat}$ auf Sprung $w_0 = 1$? (Hinweis: für Typ 1 ist $e_{stat}$ bei Sprung null.)',
     calcAnswer: 0,
@@ -771,6 +831,11 @@ $$\lim_{t\to 0^+} y(t) = \lim_{s\to\infty} s \cdot Y(s)$$
       'Stabilität prüfen.',
       'Pol in RHP → kein Endwert.',
     ],
+    errorWrongAnswers: {
+      1: '$K$ ist nur ein multiplikativer Vorfaktor und wuerde $y_\\infty=0$ nicht aendern (denn $K\\cdot 0=0$). Der Fehler ist grundlegender: der Endwertsatz ist gar nicht anwendbar.',
+      2: 'Ein Pol bei $s=0$ ist keine Voraussetzung fuer den Endwertsatz — er ist nur fuer Integrator-aehnliche Signale typisch. Problem hier ist der RHP-Pol bei $s=+1$, nicht das Fehlen eines Pols bei $0$.',
+      3: 'Genau das ist falsch: Der Endwertsatz gilt nur, wenn $sY(s)$ keine Pole in RHP oder auf $j\\omega$-Achse hat. Bei instabilen Systemen ist er unzulaessig.',
+    },
 
     transferQuestion: 'Charakteristisches Polynom $s^3 + 3s^2 + 2s + K = 0$. Nach Routh-Hurwitz: Das System ist stabil für $0 < K < ?$ (gib die obere Grenze).',
     transferAnswer: 6,

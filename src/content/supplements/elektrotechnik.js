@@ -191,6 +191,11 @@ $$\sum U_k = 0$$
       'Folgt aus der Ladungserhaltung.',
       'Zuflüsse und Abflüsse balancieren sich.',
     ],
+    conceptWrongAnswers: {
+      1: 'Das ist der **Maschen**satz (KVL), nicht der Knotensatz (KCL). KVL betrifft Spannungen in geschlossenen Umlaeufen, KCL betrifft Stroeme an Knoten.',
+      2: 'In Reihe ist der Strom konstant, in Parallelzweigen nicht. Der Knotensatz beschreibt Stromverteilung an Verzweigungen, nicht eine universelle Stromgleichheit.',
+      3: 'Dass ein Knoten "konstantes Potential" hat, ist trivial (Knoten = ein elektrischer Punkt). Das ist keine Aussage ueber Stroeme und nicht der Inhalt von KCL.',
+    },
 
     calcQuestion: 'An einem Knoten fließen $I_1 = 3$ A und $I_2 = 2$ A zu, $I_3$ fließt ab. Wie groß ist $I_3$ in A?',
     calcAnswer: 5,
@@ -251,6 +256,11 @@ $$\sum U_k = 0$$
       'Zählpfeile konsequent setzen.',
       'Quelle vs. Verbraucher unterscheiden.',
     ],
+    errorWrongAnswers: {
+      1: 'Das Ohmsche Gesetz taucht erst bei der Beziehung $U_R=RI$ auf, nicht beim Aufstellen des KVL. Der Verdacht im KVL-Umlauf sind Vorzeichenfehler, nicht das Ohmsche Gesetz.',
+      2: 'Der Knotensatz (KCL) ist vom Maschensatz (KVL) unabhaengig — in einer Maschengleichung kommen Stroeme nur via $U=RI$ vor. Der Fehler liegt in den Spannungsvorzeichen.',
+      3: 'Jede Masche ist per Definition ein geschlossener Umlauf; sonst koennte man KVL gar nicht anwenden. Das ist also keine sinnvolle Fehlerquelle.',
+    },
 
     transferQuestion: 'In einem Zweimaschennetzwerk gilt: $U_1 = 12$ V, $R_1 = 4$ $\\Omega$ (Masche 1), $R_2 = 6$ $\\Omega$ (Masche 2), gemeinsamer Widerstand $R_3 = 2$ $\\Omega$. Mit $I_1$ und $I_2$ gleichsinnig: KVL Masche 1: $12 - 4I_1 - 2(I_1 - I_2) = 0$. Masche 2: $-6I_2 - 2(I_2 - I_1) = 0$. Wie groß ist $I_1$ in A?',
     transferAnswer: 2.18,
@@ -294,6 +304,11 @@ bei jeder realen Maschine (Verluste durch Wärme, Reibung, Umwandlung).
       'Ohmsches Gesetz einsetzen.',
       'Drei äquivalente Formen.',
     ],
+    conceptWrongAnswers: {
+      1: 'Leistung ist ein **Produkt** von Spannung und Strom, nicht eine Summe. Eine Summe $U+I$ ist dimensionsfalsch (V+A ergibt keine Einheit).',
+      2: '$P=R/I$ ist dimensional falsch — das ergaebe $\\Omega/A=V/A^2$, nicht W. Zudem wuerde sich $P$ bei hoeherem Strom verkleinern, was physikalisch unsinnig ist.',
+      3: '$P=It$ waere Ladung $Q$ (As), nicht Leistung. Energie waere $W=UIt$. Die Formeln muessen dimensionsmaessig zu Watt (V$\\cdot$A) fuehren.',
+    },
 
     calcQuestion: 'Ein Verbraucher: $U = 230$ V, $I = 4$ A. Wie groß ist $P$ in W?',
     calcAnswer: 920,
@@ -354,6 +369,11 @@ bei jeder realen Maschine (Verluste durch Wärme, Reibung, Umwandlung).
       'kW = Leistung.',
       'kWh = Energie.',
     ],
+    errorWrongAnswers: {
+      1: 'Natuerlich haben Foehne eine Leistung (typisch $1500-2200$ W). Der Fehler ist nicht die Existenz, sondern die falsche Einheit (kWh statt kW).',
+      2: 'MWh wuerde fuer einen Haushaltsgeraet alle Groessenordnungen sprengen ($1$ MWh = $1000$ kWh). Das Problem ist nicht die Vorsilbe, sondern die Verwechslung Leistung$\\leftrightarrow$Energie.',
+      3: 'Die Aussage ist gerade **nicht** in Ordnung — kWh misst Energie (= Leistung$\\cdot$Zeit), nicht Leistung. Ein Foehn von "2 kWh" ergibt wortwoertlich keinen Sinn.',
+    },
 
     transferQuestion: 'Ein Elektromotor nimmt $P_{zu} = 2{,}5$ kW auf und gibt $P_{ab} = 2{,}1$ kW mechanisch ab. Wirkungsgrad $\\eta$ in %?',
     transferAnswer: 84,
@@ -392,6 +412,11 @@ mit $\omega = 2\pi f$.
       'Impedanz ist eine komplexe Zahl.',
       'Real- und Imaginärteil (Resistanz, Reaktanz).',
     ],
+    conceptWrongAnswers: {
+      1: 'Der reine Gleichstromwiderstand ist nur der **Spezialfall** $\\omega=0$ der Impedanz. Im Allgemeinen ist $Z$ frequenzabhaengig und komplex — $R$ ist nur der Realteil.',
+      2: 'Die Induktivitaet $L$ (in Henry) ist eine Bauteilgroesse, nicht die Impedanz. Die Impedanz einer Spule ergibt sich erst durch $Z_L=j\\omega L$, ist also frequenz- und phasenabhaengig.',
+      3: 'Die Resonanzfrequenz ist eine Schaltungs-Eigenschaft, bei der sich $X_L$ und $X_C$ kompensieren. Das ist ein **Ergebnis** aus Impedanzen, nicht die Definition von Impedanz.',
+    },
 
     calcQuestion: 'Eine Spule $L = 100$ mH bei $f = 50$ Hz. Wie groß ist $|Z_L|$ in $\\Omega$?',
     calcAnswer: 31.42,
@@ -452,6 +477,11 @@ mit $\omega = 2\pi f$.
       'Komplexe Zahlen: Realteil und Imaginärteil.',
       'Pythagoras für Beträge.',
     ],
+    errorWrongAnswers: {
+      1: '$\\omega=2\\pi\\cdot 50\\approx 314$ rad/s ist korrekt — der Student hat $\\omega$ richtig verwendet und $Z_L\\approx 3{,}14\\,\\Omega$ berechnet. Der Fehler liegt bei der **Addition** der Betraege.',
+      2: '$Z_L=j\\omega L$ hat positiven Imaginaerteil, ist also $+j3{,}14\\,\\Omega$, nicht negativ. Negative Reaktanz gehoert zum Kondensator ($Z_C=-j/(\\omega C)$).',
+      3: 'Widerstaende werden nicht geteilt — in Reihenschaltung werden Impedanzen **komplex addiert**: $Z_{ges}=R+j\\omega L$. Der Betrag folgt dann via Pythagoras, nicht durch Division.',
+    },
 
     transferQuestion: 'RLC-Reihe: $R = 10$ $\\Omega$, $L = 50$ mH, $C = 100$ $\\mu$F, $f = 50$ Hz. Wie groß ist $|Z|$ in $\\Omega$?',
     transferAnswer: 19.91,
@@ -497,6 +527,11 @@ mit $X = \omega L$ bzw. $X = -1/(\omega C)$.
       '-3 dB = $1/\\sqrt{2}$.',
       'R und C gleich groß bei $f_g$.',
     ],
+    conceptWrongAnswers: {
+      1: 'Es gibt keine absolute "hoechste moegliche Eingangsfrequenz" fuer einen RC-Tiefpass — das Signal wird bei hohen $f$ nur staerker gedaempft, aber nie komplett verboten. $f_g$ ist eine Kennfrequenz, keine Obergrenze.',
+      2: 'Resonanz tritt in RLC-Kreisen auf, wo sich $X_L$ und $X_C$ kompensieren. Ein RC-Filter hat kein $L$ und somit keine Resonanz, sondern nur ein monotones Uebertragungsverhalten.',
+      3: 'Der Filter geht nicht "aus"; er wirkt bei allen Frequenzen, daempft hohe Frequenzen aber zunehmend (−20 dB/Dekade oberhalb $f_g$). $f_g$ ist nur die $-3$-dB-Grenze.',
+    },
 
     calcQuestion: 'RC-Tiefpass mit $R = 1$ k$\\Omega$, $C = 1$ $\\mu$F. Wie groß ist $f_g$ in Hz?',
     calcAnswer: 159.15,
@@ -557,6 +592,11 @@ mit $X = \omega L$ bzw. $X = -1/(\omega C)$.
       '$\\omega \\neq f$.',
       '$\\omega = 2\\pi f$.',
     ],
+    errorWrongAnswers: {
+      1: 'Die Einheit der Induktivitaet muss nur selbstkonsistent sein (H = V$\\cdot$s/A). $0{,}1$ H $=$ $100$ mH, beides fuehrt zu demselben Ergebnis. Der Fehler ist der fehlende Faktor $2\\pi$.',
+      2: '$X_L=\\omega L$ ist immer positiv (fuer $\\omega>0, L>0$). Nur $X_C$ ist im Vorzeichen negativ. "Immer negativ" ist also falsch.',
+      3: 'Doch, der Fehler ist real: $\\omega\\neq f$. Der Student hat $f=50$ statt $\\omega=2\\pi\\cdot 50\\approx 314$ eingesetzt — das liefert einen um Faktor $2\\pi$ zu kleinen Blindwiderstand.',
+    },
 
     transferQuestion: 'RL-Hochpass: $R = 2$ k$\\Omega$, $L = 10$ mH. Grenzfrequenz $f_g$ in Hz?',
     transferAnswer: 31831,
@@ -598,6 +638,11 @@ $$I_1 = I \cdot \frac{R_2}{R_1 + R_2}$$
       'Systematische Verfahren.',
       'Linearität erlaubt Superposition.',
     ],
+    conceptWrongAnswers: {
+      1: 'Nur das Ohmsche Gesetz reicht bei mehreren Quellen nicht — man braucht auch Kirchhoffs Gesetze (KCL, KVL) um die Topologie zu erfassen. Ohmsches Gesetz liefert nur lokal $U=RI$.',
+      2: '"Der Reihe nach durchmessen" ist kein systematisches Verfahren; bei komplexer Topologie mit Maschen braucht man Gleichungssysteme. Messen ersetzt keine Netzwerkanalyse.',
+      3: 'Kleine Spannungen einfach zu vernachlaessigen ist unzulaessig — sie koennen im Zusammenspiel mit grossen Stroemen erhebliche Wirkung haben. Keine anerkannte Methode.',
+    },
 
     calcQuestion: 'Spannungsteiler: $U = 24$ V, $R_1 = 1$ k$\\Omega$, $R_2 = 3$ k$\\Omega$. Wie groß ist $U_2$ in V?',
     calcAnswer: 18,
@@ -658,6 +703,11 @@ $$I_1 = I \cdot \frac{R_2}{R_1 + R_2}$$
       'Zähler = eigener Widerstand.',
       'Plausibilität bei $R_1 = R_2$.',
     ],
+    errorWrongAnswers: {
+      1: 'Faktor $2$ ist kein Bestandteil der Spannungsteilerformel. Korrekt ist $U_2=U\\cdot R_2/(R_1+R_2)$ — das Problem ist einzig der getauschte Zaehler.',
+      2: 'Der Nenner $R_1+R_2$ ist korrekt (Gesamtwiderstand der Reihenschaltung). Im Zaehler muss hingegen $R_2$ stehen, weil die Spannung am Verbraucher $R_2$ proportional zu dessen Widerstand abfaellt.',
+      3: 'Bei konsistenter Zaehlpfeilwahl ist $U_2$ positiv. Negative Werte deuten auf Vorzeichenfehler oder eine gegenlaeufige Pfeildefinition hin, nicht auf den Grundfehler hier.',
+    },
 
     transferQuestion: 'Kombinationsschaltung: $R_1 = 4$ $\\Omega$ in Reihe mit der Parallelschaltung von $R_2 = 6$ $\\Omega$ und $R_3 = 12$ $\\Omega$ an $U = 20$ V. Gesamtstrom $I$ in A?',
     transferAnswer: 2.5,
@@ -702,6 +752,11 @@ $$P = U \cdot I \cdot \cos\varphi, \quad Q = U \cdot I \cdot \sin\varphi, \quad 
       '$X_L = X_C$ bei Resonanz.',
       '$\\omega_0 = 1/\\sqrt{LC}$.',
     ],
+    conceptWrongAnswers: {
+      1: '$1/(RC)$ ist die inverse Zeitkonstante eines RC-Glieds (Grenzfrequenz $f_g=1/(2\\pi RC)$), aber nicht die Resonanzfrequenz eines LC-Schwingkreises. Resonanz braucht zwingend $L$ **und** $C$.',
+      2: '$R/(2\\pi L)$ ist die Grenzfrequenz eines RL-Filters, nicht die Resonanz. Resonanz beschreibt das Zusammenspiel von $L$ und $C$, unabhaengig vom Widerstand $R$.',
+      3: '$\\sqrt{RC}$ ist dimensional falsch — $\\Omega\\cdot F = s$ ergibt Zeit, und die Wurzel daraus $\\sqrt{s}$ ist keine Frequenzeinheit. Die Formel ist formell unmoeglich.',
+    },
 
     calcQuestion: 'Reihenschwingkreis $L = 10$ mH, $C = 10$ $\\mu$F. Resonanzfrequenz $f_0$ in Hz?',
     calcAnswer: 503.3,
@@ -762,6 +817,11 @@ $$P = U \cdot I \cdot \cos\varphi, \quad Q = U \cdot I \cdot \sin\varphi, \quad 
       'Effektivwerte verwenden.',
       '$\\sqrt{2}$-Faktor.',
     ],
+    errorWrongAnswers: {
+      1: '$\\cos\\varphi$ fehlt zwar in der naiven Formel $P=UI$, aber das primaere Problem ist, dass $\\hat{U}=325$ V ein **Spitzenwert** ist, kein Effektivwert. Ohne Umrechnung ist das Ergebnis um $\\sqrt{2}$ falsch.',
+      2: '$\\hat{U}=325$ V ist genau der Spitzenwert des $230$-V-Netzes ($230\\cdot\\sqrt{2}\\approx 325$). Die Zahl stimmt also, sie wurde nur falsch (als Effektivwert) verwendet.',
+      3: '"Im Gleichstrom keine Leistung" ist grundsaetzlich falsch — $P=UI$ gilt direkt. Zudem geht es hier um Wechselstrom; Leistung ist sehr wohl definiert und nicht null.',
+    },
 
     transferQuestion: 'Induktiver Verbraucher: $P = 2$ kW, $U = 230$ V, $\\cos\\varphi = 0{,}7$. Welche parallele Kapazität $C$ in $\\mu$F korrigiert auf $\\cos\\varphi = 1$ bei $f = 50$ Hz?',
     transferAnswer: 123,

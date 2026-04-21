@@ -18,7 +18,7 @@
 | &nbsp;&nbsp;· ✅ true-false | 346 |
 | &nbsp;&nbsp;· 🔗 matching | 229 |
 | &nbsp;&nbsp;· 📋 sorting | 198 |
-| MC mit vollständigen `wrongAnswerExplanations` | 894 / 996 (90%) |
+| MC mit vollständigen `wrongAnswerExplanations` | 925 / 996 (93%) |
 | Erklärungen im 4-Block-Schema (Ansatz/Rechnung/Probe/Fehler) | 364 / 2275 (16%) |
 
 ## Topic-Überblick
@@ -1851,7 +1851,7 @@
 | 2 | 🔘 multiple-choice | Welche Matrix ist die 3×3-Einheitsmatrix $I$? | wAE |
 | 3 | 🔘 multiple-choice | Was ist eine Diagonalmatrix? | wAE |
 | 4 | 🔘 multiple-choice | $A = begin{pmatrix} 2 & 5  1 & 3 end{pmatrix}$. Welches Element ist $a_{12}$? | wAE |
-| 5 | 🔘 multiple-choice | Welche Bedingung muss gelten, damit A + B berechnet werden kann? | ➕ |
+| 5 | 🔘 multiple-choice | Welche Bedingung muss gelten, damit A + B berechnet werden kann? | ➕ wAE |
 | 6 | 🔢 number-input | A = [[3,1],[2,4]] und B = [[1,2],[3,0]]. Berechne das Element (1,2) von A + B. | ➕ |
 | 7 | ✅ true-false | Die Transposition einer 3×2-Matrix ergibt eine 2×3-Matrix. | ➕ |
 | 8 | 🔗 matching | Ordne die Grundoperationen ihren Rechenregeln zu. | ➕ |
@@ -1872,7 +1872,7 @@
 | 3 | 🔘 multiple-choice | Gilt für die Matrizenmultiplikation immer $A cdot B = B cdot A$? | wAE |
 | 4 | 🔢 number-input | Berechne das Element $c_{11}$ von $C = A cdot B$ mit $A = begin{pmatrix} 1 & 2  3 & 4 end{pmatrix}$ und $B = begin{pmatr |  |
 | 5 | 🔢 number-input | Berechne das Element $c_{22}$ von $C = A cdot B$ mit $A = begin{pmatrix} 1 & 2  3 & 4 end{pmatrix}$ und $B = begin{pmatr |  |
-| 6 | 🔘 multiple-choice | Welche Dimension hat das Produkt C = A·B, wenn A eine 3×4-Matrix und B eine 4×2-Matrix ist? | ➕ |
+| 6 | 🔘 multiple-choice | Welche Dimension hat das Produkt C = A·B, wenn A eine 3×4-Matrix und B eine 4×2-Matrix ist? | ➕ wAE |
 | 7 | 🔢 number-input | A = [[1,2],[3,4]] und B = [[1,0],[0,1]]. Berechne das Element (1,1) von A·B. | ➕ |
 | 8 | ✅ true-false | Für beliebige quadratische Matrizen A und B gilt immer A·B = B·A. | ➕ |
 | 9 | 🔗 matching | Ordne die Multiplikationseigenschaften ihren Aussagen zu. | ➕ |
@@ -1891,7 +1891,7 @@
 | 2 | 🔘 multiple-choice | Was gilt für die inverse Matrix $A^{-1}$? | wAE |
 | 3 | 🔢 number-input | Berechne die Determinante von $A = begin{pmatrix} 4 & 7  2 & 6 end{pmatrix}$, die du für die Inverse brauchst: $det(A) = |  |
 | 4 | 🔘 multiple-choice | Welche Matrix hat KEINE Inverse? | wAE |
-| 5 | 🔘 multiple-choice | Was bedeutet es, wenn det(A) = 0? | ➕ |
+| 5 | 🔘 multiple-choice | Was bedeutet es, wenn det(A) = 0? | ➕ wAE |
 | 6 | 🔢 number-input | Berechne det([[3,1],[2,4]]). | ➕ |
 | 7 | ✅ true-false | det(A·B) = det(A) · det(B) gilt für quadratische Matrizen gleicher Dimension. | ➕ |
 | 8 | 🔗 matching | Ordne die Determinanten-Rechenregeln ihren Aussagen zu. | ➕ |
@@ -1911,7 +1911,7 @@
 | 2 | 🔘 multiple-choice | Was bedeutet $det(A) = 0$ geometrisch (im 2D-Fall)? | wAE |
 | 3 | 🔢 number-input | Berechne mit der Regel von Sarrus: $det begin{pmatrix} 1 & 2 & 3  4 & 5 & 6  7 & 8 & 9 end{pmatrix}$ |  |
 | 4 | 🔘 multiple-choice | Welche Aussage ist korrekt? | wAE |
-| 5 | 🔘 multiple-choice | Wann existiert die Inverse einer quadratischen Matrix A? | ➕ |
+| 5 | 🔘 multiple-choice | Wann existiert die Inverse einer quadratischen Matrix A? | ➕ wAE |
 | 6 | 🔢 number-input | A = [[2,1],[1,1]]. Berechne det(A). | ➕ |
 | 7 | ✅ true-false | Wenn A^{-1} existiert, dann gilt A · A^{-1} = I (Einheitsmatrix). | ➕ |
 | 8 | 🔗 matching | Ordne die Begriffe zur Invertierbarkeit ihren Bedeutungen zu. | ➕ |
@@ -1930,12 +1930,12 @@
 | 1 | 🔘 multiple-choice | Was bedeutet die Gleichung $A vec{x} = lambda vec{x}$? | wAE |
 | 2 | 🔘 multiple-choice | Wie findet man die Eigenwerte einer Matrix $A$? | wAE |
 | 3 | 🔢 number-input | Berechne die Summe der Eigenwerte von $A = begin{pmatrix} 4 & 1  2 & 3 end{pmatrix}$. (Tipp: Die Summe der Eigenwerte =  |  |
-| 4 | 🔘 multiple-choice | Wie wird der Rang einer Matrix bestimmt? | ➕ |
+| 4 | 🔘 multiple-choice | Wie wird der Rang einer Matrix bestimmt? | ➕ wAE |
 | 5 | 🔢 number-input | Welchen maximalen Rang kann eine 3×4-Matrix haben? | ➕ |
 | 6 | ✅ true-false | Eine 4×4-Matrix mit det(A) ≠ 0 hat Rang 4. | ➕ |
 | 7 | 🔗 matching | Ordne die Rang-Aussagen ihren Bedeutungen zu. | ➕ |
 | 8 | 📋 sorting | Ordne die Schritte zur Rangbestimmung einer Matrix. | ➕ |
-| 9 | 🔘 multiple-choice | Welcher Fehler steckt in: "Eine 3×3-Matrix hat immer Rang 3"? | ➕ |
+| 9 | 🔘 multiple-choice | Welcher Fehler steckt in: "Eine 3×3-Matrix hat immer Rang 3"? | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] $A = begin{pmatrix} 2 & 1  0 & 3 end{pmatrix}$. Was sind die Eigenwerte? | 🎯 wAE |
 
 ### Lineare Gleichungssysteme (Unit 2)
@@ -1954,12 +1954,12 @@
 | 1 | 🔘 multiple-choice | Das Gleichungssystem $2x + 3y = 7$ und $x - y = 1$ kann man schreiben als $Avec{x} = vec{b}$. Wie sieht die Koeffiziente | wAE |
 | 2 | 🔘 multiple-choice | Was ist die erweiterte Koeffizientenmatrix $[A\|vec{b}]$ für $2x + 3y = 7$ und $x - y = 1$? | wAE |
 | 3 | 🔘 multiple-choice | Welchen Vorteil hat die Matrixschreibweise $Avec{x} = vec{b}$ gegenüber der normalen Schreibweise? | wAE |
-| 4 | 🔘 multiple-choice | Wann hat ein LGS A·x = b keine Lösung? | ➕ |
+| 4 | 🔘 multiple-choice | Wann hat ein LGS A·x = b keine Lösung? | ➕ wAE |
 | 5 | 🔢 number-input | LGS: x + 2y = 5, 3x + 6y = 15. Wie viele freie Parameter hat die Lösungsmenge? | ➕ |
 | 6 | ✅ true-false | Ein LGS mit mehr Gleichungen als Unbekannten ist immer unlösbar. | ➕ |
 | 7 | 🔗 matching | Ordne die Lösungsfälle ihren Bedingungen zu. | ➕ |
 | 8 | 📋 sorting | Ordne die Schritte der Gauss-Elimination für ein 3×3-LGS. | ➕ |
-| 9 | 🔘 multiple-choice | Welcher Fehler steckt in: "Ein LGS mit det(A)=0 hat immer keine Lösung"? | ➕ |
+| 9 | 🔘 multiple-choice | Welcher Fehler steckt in: "Ein LGS mit det(A)=0 hat immer keine Lösung"? | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Das System $3x - 2y + z = 5$, $x + 4y - 2z = 3$, $2x + y + 3z = 8$ hat die erweiterte Matrix... | 🎯 wAE |
 
 #### Gauss-Algorithmus  `la-2-2` · 25 min
@@ -1975,7 +1975,7 @@
 | 2 | 🔘 multiple-choice | Die erweiterte Matrix $left(begin{array}{cc\|c} 1 & 2 & 5  3 & 4 & 11 end{array}right)$. Welche Operation eliminiert die | wAE |
 | 3 | 🔢 number-input | Nach dem Gauss-Algorithmus erhältst du $left(begin{array}{cc\|c} 1 & 2 & 5  0 & -2 & -4 end{array}right)$. Welchen Wert  |  |
 | 4 | 🔢 number-input | Weiter: $left(begin{array}{cc\|c} 1 & 2 & 5  0 & -2 & -4 end{array}right)$ mit $y = 2$. Berechne $x$ durch Rückeinsetzen |  |
-| 5 | 🔘 multiple-choice | Was unterscheidet Gauss-Jordan von der einfachen Gauss-Elimination? | ➕ |
+| 5 | 🔘 multiple-choice | Was unterscheidet Gauss-Jordan von der einfachen Gauss-Elimination? | ➕ wAE |
 | 6 | 🔢 number-input | RREF-Matrix: [[1,0,\|3],[0,1,\|2]]. Was ist x₁? | ➕ |
 | 7 | ✅ true-false | Beim Gauss-Jordan-Verfahren zur Berechnung von A^{-1} wird die erweiterte Matrix [A\|I] in die Form [I\|A^{-1}] überführ | ➕ |
 | 8 | 🔗 matching | Ordne die Begriffe der reduzierten Zeilenstufenform zu. | ➕ |
@@ -1994,12 +1994,12 @@
 | 1 | 🔘 multiple-choice | Nach dem Gauss-Algorithmus steht in der letzten Zeile $0 = 5$. Was bedeutet das? | wAE |
 | 2 | 🔘 multiple-choice | Was ist der Rang einer Matrix? | wAE |
 | 3 | 🔘 multiple-choice | Wann hat ein LGS $Avec{x} = vec{b}$ mit $n$ Unbekannten genau EINE Lösung? | wAE |
-| 4 | 🔘 multiple-choice | Was beschreibt die Gleichung A·v = λ·v? | ➕ |
+| 4 | 🔘 multiple-choice | Was beschreibt die Gleichung A·v = λ·v? | ➕ wAE |
 | 5 | 🔢 number-input | A = [[3,0],[0,2]]. Berechne einen Eigenwert von A durch Ablesen der Diagonale. | ➕ |
 | 6 | ✅ true-false | Das charakteristische Polynom det(A − λI) = 0 liefert die Eigenwerte von A. | ➕ |
 | 7 | 🔗 matching | Ordne die Begriffe der Eigenwerttheorie ihren Definitionen zu. | ➕ |
 | 8 | 📋 sorting | Ordne den Berechnungsweg für Eigenwerte und Eigenvektoren einer 2×2-Matrix. | ➕ |
-| 9 | 🔘 multiple-choice | Welcher Fehler steckt in: "Der Nullvektor v=0 ist ein Eigenvektor"? | ➕ |
+| 9 | 🔘 multiple-choice | Welcher Fehler steckt in: "Der Nullvektor v=0 ist ein Eigenvektor"? | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Ein LGS mit 3 Unbekannten hat $text{rang}(A) = text{rang}(A\|b) = 2$. Wie viele Lösungen gibt es? | 🎯 wAE |
 
 #### Cramersche Regel & Anwendungen  `la-2-4` · 18 min
@@ -2013,12 +2013,12 @@
 | 1 | 🔘 multiple-choice | Wann kann man die Cramersche Regel anwenden? | wAE |
 | 2 | 🔢 number-input | Löse mit Cramer: $2x + y = 5$, $x - y = 1$. Berechne $det(A)$. |  |
 | 3 | 🔢 number-input | Weiter: $2x + y = 5$, $x - y = 1$. Berechne $x$ mit der Cramerschen Regel: $x = det(A_x)/det(A)$. ($A_x$ = Spalte 1 durc |  |
-| 4 | 🔘 multiple-choice | In einem Fachwerk mit 3 unbekannten Stabkräften werden 3 Gleichgewichtsbedingungen aufgestellt. Welches mathematische Pr | ➕ |
+| 4 | 🔘 multiple-choice | In einem Fachwerk mit 3 unbekannten Stabkräften werden 3 Gleichgewichtsbedingungen aufgestellt. Welches mathematische Pr | ➕ wAE |
 | 5 | 🔢 number-input | Ein System hat die Lösung x₁ = 3 kN, x₂ = 4 kN. Berechne die Resultierende F = √(x₁² + x₂²) in kN. | ➕ |
 | 6 | ✅ true-false | In der FEM werden Steifigkeitsmatrizen aufgestellt, die zu einem LGS K·u = f führen, wobei u die Knotenverschiebungen si | ➕ |
 | 7 | 🔗 matching | Ordne die Anwendungen linearer Gleichungssysteme im Maschinenbau zu. | ➕ |
 | 8 | 📋 sorting | Ordne die Schritte zur LGS-Lösung eines Fachwerkproblems. | ➕ |
-| 9 | 🔘 multiple-choice | In einem Fachwerk-LGS ergibt Gauss det(A) = 0. Was bedeutet das physikalisch? | ➕ |
+| 9 | 🔘 multiple-choice | In einem Fachwerk-LGS ergibt Gauss det(A) = 0. Was bedeutet das physikalisch? | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] In der Statik werden Kräftegleichgewichte oft als LGS formuliert. Wenn ein Fachwerk 3 unbekannte Stabkräfte $S | 🎯 wAE |
 
 ### 🏁 Prüfungsaufgaben (Unit 3)
@@ -3055,7 +3055,7 @@
 | 5 | 🔗 matching | Ordne jedem Signaltyp sein Spektrum zu. |  |
 | 6 | 🔘 multiple-choice | In welcher Anwendung ist das **Gibbs-Phänomen** praktisch problematisch? | wAE |
 | 7 | 📋 sorting | Bringe das Vorgehen bei der Rechteck-Fourier-Aufgabe in Reihenfolge. |  |
-| 8 | 🔘 multiple-choice | Warum enthält die Fourier-Reihe einer symmetrischen Rechteckfunktion nur ungerade Harmonische? | ➕ |
+| 8 | 🔘 multiple-choice | Warum enthält die Fourier-Reihe einer symmetrischen Rechteckfunktion nur ungerade Harmonische? | ➕ wAE |
 | 9 | 🔢 number-input | Fourier-Koeffizient $b_1$ einer Rechteckfunktion mit Amplitude $A = 1$, Periode $T = 2pi$: $b_1 = (2/T)int_0^T fsin(t),d | ➕ |
 | 10 | 🔘 multiple-choice | Warum sind beim Rechteckimpuls nur ungerade Vielfache der Grundfrequenz im Spektrum ($D = 0{,}5$)? | 🎯 |
 
@@ -3074,7 +3074,7 @@
 | 5 | 🔢 number-input | Rechteck-Breite $tau = 2$: Wo liegt die **erste Nullstelle** der sinc-Funktion $tauoperatorname{sinc}(omegatau/2)$? |  |
 | 6 | 🔘 multiple-choice | Zeitverschiebung $f(t - t_0)$ entspricht im Spektrum: | wAE |
 | 7 | 📋 sorting | Bringe die Schritte zur Berechnung einer Fourier-Transformation in Reihenfolge. |  |
-| 8 | 🔘 multiple-choice | Wie lautet die Fourier-Transformierte der Dirac-Impulsfunktion $delta(t)$? | ➕ |
+| 8 | 🔘 multiple-choice | Wie lautet die Fourier-Transformierte der Dirac-Impulsfunktion $delta(t)$? | ➕ wAE |
 | 9 | 🔢 number-input | Zeitverschiebung: Wenn $mathcal{F}{f(t)} = F(omega)$, wie groß ist der Betrag von $mathcal{F}{f(t-3)}$ im Verhältnis zu  | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Die Fourier-Transformierte von $e^{-at}u(t)$ ($a > 0$) lautet: | 🎯 |
 
@@ -3097,7 +3097,7 @@
 | 5 | 🔗 matching | Ordne Zeitfunktion ↔ Laplace-Transformierte. |  |
 | 6 | 🔘 multiple-choice | Der **Verschiebungssatz** $mathcal{L}{e^{-at}f(t)} = F(s+a)$ bedeutet: | wAE |
 | 7 | 📋 sorting | Bringe die Schritte zum Transformieren einer Zeitfunktion in Reihenfolge. |  |
-| 8 | 🔘 multiple-choice | Welcher Vorteil hat die Laplace- gegenüber der Fourier-Transformation bei DGL-Lösung? | ➕ |
+| 8 | 🔘 multiple-choice | Welcher Vorteil hat die Laplace- gegenüber der Fourier-Transformation bei DGL-Lösung? | ➕ wAE |
 | 9 | 🔢 number-input | Wie lautet $mathcal{L}{t^2}$ bei $s > 0$? Gib den Wert bei $s = 1$. | ➕ |
 | 10 | 🔘 multiple-choice | Wie lautet $mathcal{L}{sin(omega_0 t)}$? | 🎯 |
 
@@ -3116,7 +3116,7 @@
 | 5 | 🔗 matching | Ordne jedem Pol der Übertragungsfunktion sein Zeitverhalten zu. |  |
 | 6 | 🔘 multiple-choice | Welcher Schritt ist bei der DGL-Lösung per Laplace meist am aufwändigsten? | wAE |
 | 7 | 📋 sorting | Bringe die 4 Schritte zur DGL-Lösung per Laplace in Reihenfolge. |  |
-| 8 | 🔘 multiple-choice | Was ist die Impulsantwort $g(t)$ eines linearen, zeitinvarianten Systems? | ➕ |
+| 8 | 🔘 multiple-choice | Was ist die Impulsantwort $g(t)$ eines linearen, zeitinvarianten Systems? | ➕ wAE |
 | 9 | 🔢 number-input | Für ein PT1-System $G(s) = 1/(s + 2)$: Wie groß ist $g(t)$ bei $t = 0^+$? | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Übertragungsfunktion $G(s) = dfrac{1}{s+3}$. Was ist die Sprungantwort $y(t)$ für $t ge 0$? | 🎯 |
 
@@ -3138,7 +3138,7 @@
 | 5 | 🔗 matching | [PRÜFUNG] Ordne jedem Signal die zutreffende Eigenschaft zu. |  |
 | 6 | 🔢 number-input | [PRÜFUNG] $f(t) = cos(10t)$ wird um $t_0 = pi/20$ zeitverschoben. Welche Phasendrehung erhält das Spektrum bei $omega =  |  |
 | 7 | 📋 sorting | [PRÜFUNG] Bringe die Prüfungsschritte zur Fourier-Analyse in Reihenfolge. |  |
-| 8 | 🔘 multiple-choice | [PRÜFUNG] Was besagt das Parseval-Theorem für die Fourier-Transformation? | ➕ |
+| 8 | 🔘 multiple-choice | [PRÜFUNG] Was besagt das Parseval-Theorem für die Fourier-Transformation? | ➕ wAE |
 | 9 | 🔢 number-input | [PRÜFUNG] Ein Signal hat $int \|f(t)\|^2,dt = 10$. Was ist $(1/(2pi))int\|F(omega)\|^2,domega$ nach Parseval? | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] Gegeben sei $f(t) = 3cos(2t) + sin(4t)$. Was ist der Gleichanteil $a_0/2$? | 🎯 |
 
@@ -3158,7 +3158,7 @@
 | 5 | 🔗 matching | [PRÜFUNG] Ordne Polkonstellation ↔ Stabilität. |  |
 | 6 | 🔘 multiple-choice | [PRÜFUNG] $y' + y = u(t)$, $y(0) = 0$. Wie lautet $y(t)$ für $t ge 0$? | wAE |
 | 7 | 📋 sorting | [PRÜFUNG] Bringe die Prüfungsschritte zur Laplace-DGL-Aufgabe in Reihenfolge. |  |
-| 8 | 🔘 multiple-choice | [PRÜFUNG] Wann ist das lineare System mit $G(s) = (s+3)/((s+1)(s-2))$ stabil? | ➕ |
+| 8 | 🔘 multiple-choice | [PRÜFUNG] Wann ist das lineare System mit $G(s) = (s+3)/((s+1)(s-2))$ stabil? | ➕ wAE |
 | 9 | 🔢 number-input | [PRÜFUNG] Regelkreis: $G_o(s) = 4/(s(s+2))$, negative Einheitsrückführung. Endwertsatz: $e_{stat}$ auf Sprung $w_0 = 1$? | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] [PRÜFUNG] $G(s) = dfrac{2}{s^2+2s+1} = dfrac{2}{(s+1)^2}$. Ist das System stabil? | 🎯 |
 
@@ -4470,12 +4470,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Was besagt der Knotensatz (KCL) von Kirchhoff? | wAE |
 | 2 | 🔢 number-input | An einem Knoten fließt $I_1 = 3,text{A}$ zu und $I_2 = 1,text{A}$ ab. Wie groß ist der dritte Strom $I_3$ (abfließend) i |  |
-| 3 | 🔘 multiple-choice | Was besagt der Kirchhoffsche Knotensatz (KCL)? | ➕ |
+| 3 | 🔘 multiple-choice | Was besagt der Kirchhoffsche Knotensatz (KCL)? | ➕ wAE |
 | 4 | 🔢 number-input | An einem Knoten fließen $I_1 = 3$ A und $I_2 = 2$ A zu, $I_3$ fließt ab. Wie groß ist $I_3$ in A? | ➕ |
 | 5 | ✅ true-false | Beim Maschenumlauf werden Spannungen entgegen der Umlaufrichtung mit negativem Vorzeichen gezählt. | ➕ |
 | 6 | 🔗 matching | Ordne die Gesetze ihrer Aussage zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte der Maschenstromanalyse. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student stellt in einer Masche mit zwei Widerständen und einer Spannungsquelle auf: $U_q + U_{R1} + U_{R2} = 0$. Was | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student stellt in einer Masche mit zwei Widerständen und einer Spannungsquelle auf: $U_q + U_{R1} + U_{R2} = 0$. Was | ➕ wAE |
 | 9 | 🔢 number-input | In einem Zweimaschennetzwerk gilt: $U_1 = 12$ V, $R_1 = 4$ $Omega$ (Masche 1), $R_2 = 6$ $Omega$ (Masche 2), gemeinsamer | ➕ |
 | 10 | 🔢 number-input | [PRÜFUNG] In einer Masche gilt $U_q = 9,text{V}$ und $U_{R1} = 4,text{V}$. Wie groß ist $U_{R2}$ nach KVL in Volt? | 🎯 |
 
@@ -4489,12 +4489,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | An einem Verbraucher liegt $U = 230,text{V}$ an und es fließt $I = 5,text{A}$. Wie groß ist die Leistung $P$ in Watt? |  |
 | 2 | 🔘 multiple-choice | Eine Glühlampe hat $R = 529,Omega$ an $U = 230,text{V}$. Welche Leistung hat sie? | wAE |
-| 3 | 🔘 multiple-choice | Welche Formeln beschreiben alle die elektrische Leistung an einem ohmschen Widerstand? | ➕ |
+| 3 | 🔘 multiple-choice | Welche Formeln beschreiben alle die elektrische Leistung an einem ohmschen Widerstand? | ➕ wAE |
 | 4 | 🔢 number-input | Ein Verbraucher: $U = 230$ V, $I = 4$ A. Wie groß ist $P$ in W? | ➕ |
 | 5 | ✅ true-false | Der Wirkungsgrad einer realen Maschine ist immer kleiner als 1 (bzw. 100 %). | ➕ |
 | 6 | 🔗 matching | Ordne Formel und Beschreibung zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Berechnung der jährlichen Stromkosten eines Verbrauchers. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student schreibt: "Der Föhn hat 2 kWh Leistung." Was ist falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student schreibt: "Der Föhn hat 2 kWh Leistung." Was ist falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Ein Elektromotor nimmt $P_{zu} = 2{,}5$ kW auf und gibt $P_{ab} = 2{,}1$ kW mechanisch ab. Wirkungsgrad $eta$ in %? | ➕ |
 | 10 | 🔢 number-input | [PRÜFUNG] Ein Motor hat eine Eingangsleistung $P_text{zu} = 2,text{kW}$ und einen Wirkungsgrad $eta = 0{,}8$. Wie groß i | 🎯 |
 
@@ -4513,12 +4513,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Ein Kondensator $C = 10,mutext{F}$ wird mit $f = 50,text{Hz}$ betrieben. Wie groß ist der Impedanzbetrag $\|Z_C\|$ in Oh |  |
 | 2 | ✅ true-false | Der Effektivwert einer Sinusspannung beträgt $hat{u}/sqrt{2}$. |  |
-| 3 | 🔘 multiple-choice | Was beschreibt die komplexe Impedanz $Z$? | ➕ |
+| 3 | 🔘 multiple-choice | Was beschreibt die komplexe Impedanz $Z$? | ➕ wAE |
 | 4 | 🔢 number-input | Eine Spule $L = 100$ mH bei $f = 50$ Hz. Wie groß ist $\|Z_L\|$ in $Omega$? | ➕ |
 | 5 | ✅ true-false | Ein idealer Kondensator wirkt für Gleichstrom ($f = 0$) wie ein unendlich großer Widerstand. | ➕ |
 | 6 | 🔗 matching | Ordne Bauteil und Impedanz zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte der Impedanzberechnung einer RL-Reihenschaltung. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student rechnet: "$Z_L = 2pi cdot 50 cdot 0{,}01 = 3{,}14$ $Omega$, $Z_R = 10$ $Omega$, also $\|Z\| = 10 + 3{,}14 =  | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student rechnet: "$Z_L = 2pi cdot 50 cdot 0{,}01 = 3{,}14$ $Omega$, $Z_R = 10$ $Omega$, also $\|Z\| = 10 + 3{,}14 =  | ➕ wAE |
 | 9 | 🔢 number-input | RLC-Reihe: $R = 10$ $Omega$, $L = 50$ mH, $C = 100$ $mu$F, $f = 50$ Hz. Wie groß ist $\|Z\|$ in $Omega$? | ➕ |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Eine Spule $L = 0{,}1,text{H}$ liegt an $f = 50,text{Hz}$. Wie groß ist $\|Z_L\|$? | 🎯 wAE |
 
@@ -4533,12 +4533,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | RC-Tiefpass mit $R = 1,text{k}Omega$ und $C = 10,mutext{F}$. Wie groß ist die Grenzfrequenz $f_g$ in Hz? |  |
 | 2 | ✅ true-false | Bei $cosvarphi = 1$ ist die gesamte Scheinleistung Wirkleistung (kein Blindanteil). |  |
-| 3 | 🔘 multiple-choice | Was versteht man unter der Grenzfrequenz $f_g$ eines RC-Tiefpasses? | ➕ |
+| 3 | 🔘 multiple-choice | Was versteht man unter der Grenzfrequenz $f_g$ eines RC-Tiefpasses? | ➕ wAE |
 | 4 | 🔢 number-input | RC-Tiefpass mit $R = 1$ k$Omega$, $C = 1$ $mu$F. Wie groß ist $f_g$ in Hz? | ➕ |
 | 5 | ✅ true-false | Bei reinem ohmschen Verbraucher gilt $cosvarphi = 1$. | ➕ |
 | 6 | 🔗 matching | Ordne Bauelement und Phasenwinkel (zwischen $U$ und $I$) zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Frequenzgang-Analyse eines RC-Tiefpasses. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student sagt: "Bei $omega = 50$ Hz ist $X_L = 50 cdot 0{,}1 = 5$ $Omega$." Was ist falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student sagt: "Bei $omega = 50$ Hz ist $X_L = 50 cdot 0{,}1 = 5$ $Omega$." Was ist falsch? | ➕ wAE |
 | 9 | 🔢 number-input | RL-Hochpass: $R = 2$ k$Omega$, $L = 10$ mH. Grenzfrequenz $f_g$ in Hz? | ➕ |
 | 10 | 🔢 number-input | [PRÜFUNG] RL-Schaltung: $R = 50,Omega$, $L = 0{,}2,text{H}$, $f = 50,text{Hz}$. Wie groß ist der Impedanzbetrag $\|Z\|$  | 🎯 |
 
@@ -4579,12 +4579,12 @@
 | 1 | 🔢 number-input | [PRÜFUNG] Spannungsteiler: $U = 12,text{V}$, $R_1 = 300,Omega$, $R_2 = 700,Omega$. Wie groß ist die Spannung $U_2$ an $R |  |
 | 2 | 🔢 number-input | [PRÜFUNG] Parallelschaltung $R_1 = 60,Omega$ und $R_2 = 40,Omega$. Wie groß ist $R_text{ges}$ in Ohm? |  |
 | 3 | 🔢 number-input | [PRÜFUNG] Heizwiderstand $R = 23,Omega$ an $U = 230,text{V}$ läuft 1 Stunde. Wie viel Energie $W$ wird verbraucht in kWh |  |
-| 4 | 🔘 multiple-choice | [PRÜFUNG] Welche Methode ist bei einem linearen Gleichstromnetzwerk mit mehreren unabhängigen Quellen am systematischste | ➕ |
+| 4 | 🔘 multiple-choice | [PRÜFUNG] Welche Methode ist bei einem linearen Gleichstromnetzwerk mit mehreren unabhängigen Quellen am systematischste | ➕ wAE |
 | 5 | 🔢 number-input | [PRÜFUNG] Spannungsteiler: $U = 24$ V, $R_1 = 1$ k$Omega$, $R_2 = 3$ k$Omega$. Wie groß ist $U_2$ in V? | ➕ |
 | 6 | ✅ true-false | [PRÜFUNG] Die Summe der in einen Knoten hineinfließenden Ströme ist null (unter Beachtung der Vorzeichen). | ➕ |
 | 7 | 🔗 matching | [PRÜFUNG] Ordne die Aufgabenart der passenden Methode zu. | ➕ |
 | 8 | 📋 sorting | [PRÜFUNG] Ordne die Schritte zur Lösung einer Gleichstromaufgabe in der Prüfung. | ➕ |
-| 9 | 🔘 multiple-choice | [PRÜFUNG] Klausurfehler: "Spannung an $R_2$: $U_2 = U cdot R_1/(R_1 + R_2)$." Was ist falsch? | ➕ |
+| 9 | 🔘 multiple-choice | [PRÜFUNG] Klausurfehler: "Spannung an $R_2$: $U_2 = U cdot R_1/(R_1 + R_2)$." Was ist falsch? | ➕ wAE |
 | 10 | ✅ true-false | [PRÜFUNG] Ein Stromteiler teilt den Strom umgekehrt proportional zu den Widerständen auf (größerer Widerstand → kleinere | 🎯 |
 
 #### Wechselstrom Prüfungsaufgaben  `et-3-2` · 20 min
@@ -4598,12 +4598,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | [PRÜFUNG] RLC-Reihenschaltung: $R = 100,Omega$, $L = 0{,}1,text{H}$, $C = 100,mutext{F}$. Wie groß ist die Resonanzfrequ |  |
 | 2 | 🔢 number-input | [PRÜFUNG] RC-Tiefpass bei der Grenzfrequenz $f = f_g$. Wie groß ist der Übertragungsbetrags $\|G\|$? |  |
-| 3 | 🔘 multiple-choice | [PRÜFUNG] Wie berechnet sich die Resonanzfrequenz eines Reihenschwingkreises (RLC)? | ➕ |
+| 3 | 🔘 multiple-choice | [PRÜFUNG] Wie berechnet sich die Resonanzfrequenz eines Reihenschwingkreises (RLC)? | ➕ wAE |
 | 4 | 🔢 number-input | [PRÜFUNG] Reihenschwingkreis $L = 10$ mH, $C = 10$ $mu$F. Resonanzfrequenz $f_0$ in Hz? | ➕ |
 | 5 | ✅ true-false | [PRÜFUNG] Bei der Resonanzfrequenz eines RLC-Reihenschwingkreises ist die Gesamtimpedanz rein ohmsch. | ➕ |
 | 6 | 🔗 matching | [PRÜFUNG] Ordne den Frequenzbereich seinem Impedanzverhalten im RLC-Reihenschwingkreis zu. | ➕ |
 | 7 | 📋 sorting | [PRÜFUNG] Ordne die Schritte zur Analyse einer AC-Schaltung. | ➕ |
-| 8 | 🔘 multiple-choice | [PRÜFUNG] Ein Student rechnet mit $hat{U} = 325$ V und setzt dies in $P = U cdot I$ ein. Wo liegt der Fehler? | ➕ |
+| 8 | 🔘 multiple-choice | [PRÜFUNG] Ein Student rechnet mit $hat{U} = 325$ V und setzt dies in $P = U cdot I$ ein. Wo liegt der Fehler? | ➕ wAE |
 | 9 | 🔢 number-input | [PRÜFUNG] Induktiver Verbraucher: $P = 2$ kW, $U = 230$ V, $cosvarphi = 0{,}7$. Welche parallele Kapazität $C$ in $mu$F  | ➕ |
 | 10 | 🔢 number-input | [PRÜFUNG] Scheinleistung $S = 5,text{kVA}$, Leistungsfaktor $cosvarphi = 0{,}8$. Wie groß ist die Wirkleistung $P$ in Wa | 🎯 |
 
