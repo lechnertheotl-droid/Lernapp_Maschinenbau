@@ -20,6 +20,11 @@ const exercises_la_u3 = {
       'Zeile i von A mal Spalte j von B ergibt das Element $(AB)_{ij}$.',
       'Für das Element in Zeile 2, Spalte 2: $(2\\cdot(-1)) + (4\\cdot2) = -2 + 8 = 6$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Das Element $(AB)_{12}$ ist $3 \\cdot (-1) + 1 \\cdot 2 = -1$, nicht $1$. Du hast vermutlich das Minuszeichen von $B_{12} = -1$ übersehen.',
+      '2': 'Für $(AB)_{22}$: Zeile 2 von $A$ mal Spalte 2 von $B$: $2 \\cdot (-1) + 4 \\cdot 2 = -2 + 8 = 6$, nicht $10$. Mögliche Ursache: Vorzeichenfehler — du hast vielleicht $+2$ statt $-2$ gerechnet.',
+      '3': 'Für $(AB)_{22} = 8$: du hast $2 \\cdot 0 + 4 \\cdot 2 = 8$ gerechnet, also Spalte 1 statt Spalte 2 von $B$ genommen. Richtig ist Zeile 2 von $A$ mal Spalte 2 von $B$: $2 \\cdot (-1) + 4 \\cdot 2 = 6$.',
+    },
   },
 
   'ex-la-3-1-b': {
@@ -61,6 +66,11 @@ const exercises_la_u3 = {
       'Erinnerung: $A$ ist genau dann invertierbar, wenn $\\det(A) \\neq 0$.',
       'Singuläre Matrizen haben linear abhängige Zeilen — eine Zeile ist als Linearkombination der anderen darstellbar.',
     ],
+    wrongAnswerExplanations: {
+      '0': '$\\det(A) = 0$ bedeutet GENAU das Gegenteil: $A$ ist singulär, also NICHT invertierbar. Das LGS $A\\vec{x} = \\vec{b}$ hat dann keine oder unendlich viele Lösungen, nicht genau eine.',
+      '2': 'Eine Matrix kann Determinante $0$ haben, obwohl alle Einträge von Null verschieden sind (z.B. $\\begin{pmatrix} 1 & 2 \\\\ 2 & 4 \\end{pmatrix}$). $\\det = 0$ heißt lineare Abhängigkeit, nicht Null-Einträge.',
+      '3': '$\\det(A) = 0$ garantiert keine Unlösbarkeit — das inhomogene System $A\\vec{x} = \\vec{b}$ kann sehr wohl lösbar sein (dann aber mit unendlich vielen Lösungen). Es hängt davon ab, ob $\\vec{b}$ im Bildraum von $A$ liegt.',
+    },
   },
 
   'ex-la-3-1-e': {
@@ -91,6 +101,11 @@ const exercises_la_u3 = {
       'Berechne für jede Matrix $\\det = ad - bc$. Ist die Determinante 0, existiert keine Inverse.',
       'Bei $A$: Zeile 2 ist genau die Hälfte von Zeile 1 — das ist ein Hinweis auf lineare Abhängigkeit.',
     ],
+    wrongAnswerExplanations: {
+      '0': '$\\det(A) = 2 \\cdot 2 - 4 \\cdot 1 = 0$ — also NICHT invertierbar. Zeile 2 ist die halbe Zeile 1, d.h. linear abhängig. Singuläre Matrizen haben keine Inverse.',
+      '1': '$\\det(B) = 3 \\cdot 2 - 1 \\cdot 6 = 0$ — also NICHT invertierbar. Zeile 2 ist das Doppelte von Zeile 1, daher $\\det = 0$.',
+      '3': '$\\det(D) = 0 \\cdot 1 - 0 \\cdot 1 = 0$ — also NICHT invertierbar. Eine komplette Nullzeile (Zeile 1) macht die Determinante zwangsläufig $0$.',
+    },
   },
 
   'ex-la-3-1-g': {
@@ -108,6 +123,11 @@ const exercises_la_u3 = {
       '2×2-Inverse: Tausche $a$ und $d$ auf der Hauptdiagonale, negiere $b$ und $c$, dividiere durch $\\det(A)$.',
       '$\\det(A) = 5 \\cdot 1 - 2 \\cdot 3 = -1$. Division durch $-1$ kehrt alle Vorzeichen um.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast $\\det A = 5 \\cdot 1 - 2 \\cdot 3 = -1$ vergessen zu berücksichtigen. Nach Tauschen/Negieren müsstest du noch durch $\\det A = -1$ teilen — das kehrt alle Vorzeichen um. Ergebnis: $\\begin{pmatrix} -1 & 2 \\\\ 3 & -5 \\end{pmatrix}$.',
+      '2': 'Du hast nur $a$ und $d$ getauscht, aber die Nebendiagonale nicht negiert und $\\det$ nicht berücksichtigt. Formel: $A^{-1} = \\frac{1}{\\det A} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}$ — Minuszeichen UND Division erforderlich.',
+      '3': 'Du hast alle Vorzeichen einfach umgedreht. Die Formel fordert aber: Diagonalelemente $d, a$ TAUSCHEN (ohne Vorzeichenwechsel), und nur $b, c$ bekommen ein Minus, dann Division durch $\\det A$.',
+    },
   },
 
   'ex-la-3-1-h': {
@@ -131,6 +151,11 @@ const exercises_la_u3 = {
       'Erkenne: Zeile 2 ist ein Vielfaches von Zeile 1. Das reduziert den Rang.',
       'Führe den Gauss-Algorithmus durch und zähle die Nicht-Null-Zeilen in der Stufenform.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Zeile 3 $[0, 1, 1]$ ist nicht Vielfaches von Zeile 1 — sie liefert eine unabhängige Gleichung. Nach Reduktion bleiben 2 unabhängige Zeilen, also Rang 2 (nicht 1).',
+      '2': 'Rang 3 wäre der maximale Rang einer $3 \\times 3$-Matrix. Hier ist aber Zeile 2 $= 2 \\cdot$ Zeile 1, daher linear abhängig — eine Zeile wird zu Null, Rang ist nur 2.',
+      '3': 'Rang 0 hätte nur die Nullmatrix. Hier gibt es mindestens eine Nicht-Null-Zeile nach Elimination, also Rang $\\geq 1$. Tatsächlich sind es 2 unabhängige Zeilen.',
+    },
   },
 
   'ex-la-3-1-j': {
@@ -148,6 +173,11 @@ const exercises_la_u3 = {
       'Transponieren = Zeilen und Spalten vertauschen. Was passiert, wenn man das zweimal macht?',
       'Probiere ein kleines Beispiel: $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$, bilde $A^T$ und dann $(A^T)^T$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Zweimal transponieren ergibt $+A$, nicht $-A$. Vorzeichen spielen beim Transponieren keine Rolle — es werden nur Zeilen und Spalten getauscht.',
+      '2': '$(A^T)^T$ hat nichts mit $A^{-1}$ zu tun. Transponieren und Invertieren sind verschiedene Operationen (außer bei orthogonalen Matrizen mit $A^{-1} = A^T$).',
+      '3': 'Faktoren wie $\\det(A)$ tauchen beim Transponieren nicht auf. Die Transponierte erzeugt keinen Skalarfaktor, sondern tauscht nur die Indizes: $(A^T)_{ij} = a_{ji}$.',
+    },
   },
 
   'ex-la-3-1-mastery': {
@@ -160,6 +190,11 @@ const exercises_la_u3 = {
       'Setze $\\det(A) = ad - bc = 0$ und löse nach $k$.',
       '$\\det(A) = 1 \\cdot k - 2 \\cdot 3$. Wann wird dieser Ausdruck 0?',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Für $k = 3$: $\\det(A) = 1 \\cdot 3 - 2 \\cdot 3 = -3 \\neq 0$ — die Matrix ist also invertierbar. Setze $\\det = 0$ an: $k - 6 = 0 \\Rightarrow k = 6$.',
+      '2': 'Für $k = 2$: $\\det(A) = 2 - 6 = -4 \\neq 0$ — invertierbar. Die Bedingung ist $k - 6 = 0$, nicht $k = 2$. Vielleicht hast du $b = 2$ mit $k$ verwechselt.',
+      '3': 'Für $k = 1$: $\\det(A) = 1 - 6 = -5 \\neq 0$ — invertierbar. Du hast vielleicht das Diagonalelement $a = 1$ kopiert statt $\\det = 0$ zu lösen.',
+    },
   },
 
   // ── Lektion 3-2: Prüfung LGS & Eigenwerte ─────────────────────────────────
@@ -179,6 +214,11 @@ const exercises_la_u3 = {
       'Wenn nach Gauss eine Nullzeile $[0, 0, \\ldots | 0]$ entsteht: freie Variable → unendlich viele Lösungen.',
       'Wenn nach Gauss $[0, 0, \\ldots | c]$ mit $c \\neq 0$ entsteht: keine Lösung (Widerspruch).',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Zeile 2 ist exakt $2 \\cdot$ Zeile 1 (inklusive rechter Seite) — die Gleichungen sind äquivalent, nicht widersprüchlich. Es gibt 2 Unbekannte bei nur einer unabhängigen Gleichung, also freie Parameter.',
+      '1': 'Keine Lösung würde $[0, 0 | c]$ mit $c \\neq 0$ erfordern (Widerspruch). Hier aber: Zeile 2 $- 2 \\cdot$ Zeile 1 $= [0, 0 | 0]$, also KEIN Widerspruch, sondern freie Variable.',
+      '3': 'Ein lineares Gleichungssystem hat niemals "genau zwei" Lösungen — die Lösungsmenge ist entweder leer, einelementig oder unendlich (affiner Unterraum). Zwei Lösungen sind unmöglich.',
+    },
   },
 
   'ex-la-3-2-b': {
@@ -196,6 +236,11 @@ const exercises_la_u3 = {
       'Bilde die erweiterte Matrix $[A|\\vec{b}]$ und führe Zeilenoperationen durch.',
       'Mache zuerst die Probe: Setze die Kandidatenwerte in alle drei Gleichungen ein und prüfe, welcher Ansatz alle erfüllt.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Probe: $3 + 2 \\cdot 2 + 1 = 8$ ✓, aber $2 \\cdot 3 + 2 + 3 \\cdot 1 = 11 \\neq 13$. Die Kandidatenwerte erfüllen nicht alle Gleichungen — du hast Variablen verwechselt. Richtig: $(x, y, z) = (1, 2, 3)$.',
+      '2': 'Probe: $2 + 2 \\cdot 1 + 3 = 7 \\neq 8$ bereits in der ersten Gleichung falsch. Vermutlich hast du die Lösung transponiert (Indexverwechslung). Richtig: $(x, y, z) = (1, 2, 3)$.',
+      '3': 'Probe: $1 + 2 \\cdot 3 + 2 = 9 \\neq 8$ — erste Gleichung nicht erfüllt. Du hast $y = 3$ und $z = 2$ vertauscht. Mit $y = 2, z = 3$ stimmt es: $1 + 4 + 3 = 8$ ✓.',
+    },
   },
 
   'ex-la-3-2-c': {
@@ -224,6 +269,11 @@ const exercises_la_u3 = {
       'Eigenwerte: Löse $\\det(A - \\lambda I) = 0$.',
       'Bilde $A - \\lambda I$ und berechne die Determinante. Das ergibt ein Polynom in $\\lambda$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast vermutlich nur die Diagonaleinträge als Eigenwerte genommen. Das stimmt nur bei Dreiecks- oder Diagonalmatrizen. Hier mit Nebendiagonale $\\neq 0$ muss $\\det(A - \\lambda I) = (3-\\lambda)^2 - 1 = 0$ gelöst werden: $\\lambda = 3 \\pm 1 = 2, 4$.',
+      '2': 'Du hast den Nebendiagonal-Eintrag $1$ direkt als Eigenwert genommen und die Diagonalprodukte multipliziert. Richtig: $(3-\\lambda)^2 - 1 = \\lambda^2 - 6\\lambda + 8 = 0$, also $\\lambda = 2$ und $\\lambda = 4$.',
+      '3': 'Du hast wahrscheinlich gedacht, dass ein Eigenwert $0$ ist, weil Spur $= 6$ auf Summe $0 + 6$ deutet. Spur $= \\lambda_1 + \\lambda_2 = 6$ stimmt zwar, aber die korrekten Eigenwerte sind $2 + 4 = 6$, nicht $0 + 6$.',
+    },
   },
 
   'ex-la-3-2-e': {
@@ -241,6 +291,11 @@ const exercises_la_u3 = {
       'Eigenvektor zu $\\lambda$: Löse $(A - \\lambda I)\\vec{v} = \\vec{0}$ mit Gauss.',
       'Das homogene System $(A - 2I)\\vec{v} = \\vec{0}$ muss mindestens eine nichttriviale Lösung haben.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Probe: $A \\cdot (1, 1)^T = (4, 4)^T = 4 \\cdot (1, 1)^T$ — das ist Eigenvektor zu $\\lambda = 4$, nicht $\\lambda = 2$. Zu $\\lambda = 2$ gehört die orthogonale Richtung $(1, -1)$.',
+      '2': 'Probe: $A \\cdot (2, 1)^T = (7, 5)^T$, aber $2 \\cdot (2, 1)^T = (4, 2)^T$ — nicht gleich, also kein Eigenvektor zu $\\lambda = 2$. Das homogene System $x_1 + x_2 = 0$ (aus $A - 2I$) liefert nur Vektoren mit $x_1 = -x_2$.',
+      '3': 'Probe: $A \\cdot (0, 1)^T = (1, 3)^T$, aber $2 \\cdot (0, 1)^T = (0, 2)^T$ — nicht parallel. Der Standardbasisvektor $(0, 1)^T$ ist nur bei Diagonalmatrizen automatisch Eigenvektor.',
+    },
   },
 
   'ex-la-3-2-f': {
@@ -271,6 +326,11 @@ const exercises_la_u3 = {
       'Wenn ein Eigenwert 0 ist, was bedeutet das dann für $\\det(A)$?',
       'Für eine 2×2-Matrix: Schreibe das charakteristische Polynom auf und vergleiche den konstanten Term mit $\\det(A)$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Die SUMME der Eigenwerte ist die Spur, nicht die Determinante: $\\sum \\lambda_i = \\text{tr}(A)$. Die Determinante ist das PRODUKT: $\\det A = \\prod \\lambda_i$.',
+      '2': 'Das Maximum der Eigenwerte hat keinen direkten Bezug zur Determinante. Wenn etwa $\\lambda_1 = 10$, $\\lambda_2 = 0.1$, dann ist $\\max = 10$, aber $\\det = 1$.',
+      '3': 'Die Quadratsumme entspricht keiner Standardgröße von $A$. Determinante = Produkt der Eigenwerte $\\prod \\lambda_i$, was man direkt aus dem charakteristischen Polynom abliest.',
+    },
   },
 
   'ex-la-3-2-h': {
@@ -299,6 +359,11 @@ const exercises_la_u3 = {
       'Berechne zuerst $\\det(A)$. Wenn $\\det(A) = 0$: entweder keine oder unendlich viele Lösungen.',
       'Führe Gauss-Elimination durch und beobachte, was mit der letzten Zeile passiert.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Zwar ist $\\det(A) = 0$, aber das bedeutet NICHT automatisch "keine Lösung". Man muss prüfen, ob $\\vec{b}$ im Bildraum von $A$ liegt. Hier wird bei Gauss $[0, 0, 0 | 0]$ erreicht — also lösbar, sogar mit freiem Parameter.',
+      '1': 'Mit $\\det(A) = 0$ kann es keine EINDEUTIGE Lösung geben — entweder keine oder unendlich viele. Hier ist die Probe $(1, 2, 3)$ zwar eine mögliche Lösung, aber nicht die einzige.',
+      '3': 'Probe $(2, 1, 3)$: $2 + 1 + 3 = 6$ ✓, aber $2 \\cdot 2 + 3 \\cdot 1 + 3 = 10 \\neq 11$. Außerdem ist bei $\\det A = 0$ keine eindeutige Lösung möglich.',
+    },
   },
 
   'ex-la-3-2-j': {
@@ -316,6 +381,11 @@ const exercises_la_u3 = {
       'Bei einer Diagonalmatrix: Probe direkt mit $A \\cdot \\vec{e}_i$. Was kommt raus?',
       'Diagonaleinträge einer Diagonalmatrix = Eigenwerte. Eigenvektoren = Einheitsvektoren.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast die Eigenwerte vertauscht: $\\vec{e}_1 = (1, 0)^T$ gehört zum ersten Diagonalelement $a_{11} = 4$, nicht $-2$. Zuordnung: $A \\vec{e}_1 = 4 \\vec{e}_1$, $A \\vec{e}_2 = -2 \\vec{e}_2$.',
+      '2': 'Eigenvektoren werden NICHT mit den Eigenwerten multipliziert. $(4, 0)^T$ ist zwar proportional zu $(1, 0)^T$ und damit auch ein Eigenvektor, aber als Standardrepräsentant wählt man den normierten Basisvektor $(1, 0)^T$.',
+      '3': 'Bei einer Diagonalmatrix muss man KEIN charakteristisches Polynom lösen — die Eigenwerte stehen direkt auf der Diagonale: $\\lambda_1 = 4$, $\\lambda_2 = -2$.',
+    },
   },
 
   'ex-la-3-2-mastery': {
@@ -333,6 +403,11 @@ const exercises_la_u3 = {
       'Berechne $(A - 2I)$ und löse das homogene LGS. Wie viele freie Variablen gibt es?',
       'Algebraische Vielfachheit ≠ geometrische Vielfachheit (Dimension des Eigenraums). Bei defekten Matrizen ist die geometrische Vielfachheit kleiner.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Trugschluss "algebraische = geometrische Vielfachheit". Die Matrix $(A - 2I) = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$ hat Rang 1, also Kerndimension $2 - 1 = 1$ — nur EIN linear unabhängiger Eigenvektor (defekt).',
+      '1': 'Jede Matrix hat mindestens einen Eigenvektor pro (komplexem) Eigenwert. Hier $(A - 2I)\\vec{v} = \\vec{0}$ wird von $\\vec{v} = (1, 0)^T$ gelöst. Also mindestens 1, nicht 0.',
+      '3': 'Der Eigenraum wäre nur dann ganz $\\mathbb{R}^2$, wenn $A = 2I$ (Einheitsmatrix skaliert). Hier aber $A \\neq 2I$ wegen des Eintrags $a_{12} = 1$. Der Eigenraum ist 1-dimensional.',
+    },
   },
 
   // ── Lektion 3-3: Diagonalisierung & technische Anwendungen ─────────────────
@@ -348,6 +423,11 @@ const exercises_la_u3 = {
     correctIndex: 1,
     explanation: 'Eine $n \\times n$-Matrix ist diagonalisierbar genau dann, wenn sie $n$ linear unabhängige Eigenvektoren besitzt. Verschiedene Eigenwerte garantieren das (hinreichend, nicht notwendig). Symmetrische Matrizen sind immer diagonalisierbar — aber unsymmetrische können es auch sein.',
     hints: ['Diagonalisierung: $A = P D P^{-1}$ mit $D$ diagonal. Was muss $P$ können?', 'Spalten von $P$ sind Eigenvektoren — sie müssen eine Basis bilden.'],
+    wrongAnswerExplanations: {
+      '0': 'Symmetrie ist HINREICHEND (jede symmetrische Matrix ist diagonalisierbar), aber nicht NOTWENDIG. Viele unsymmetrische Matrizen wie $\\begin{pmatrix}1 & 2 \\\\ 0 & 3\\end{pmatrix}$ sind ebenfalls diagonalisierbar.',
+      '2': 'Die Determinante sagt nichts über Diagonalisierbarkeit aus. Beispiel: $\\begin{pmatrix}1 & 1 \\\\ 0 & 1\\end{pmatrix}$ hat $\\det = 1 > 0$, ist aber NICHT diagonalisierbar (defekter Eigenwert).',
+      '3': 'Verschiedene Eigenwerte sind HINREICHEND, aber nicht NOTWENDIG. $A = 2I$ hat doppelten Eigenwert $\\lambda = 2$ und ist dennoch (trivialerweise) diagonalisierbar. Entscheidend ist nur die Anzahl unabhängiger Eigenvektoren.',
+    },
   },
   'ex-la-3-3-b': {
     id: 'ex-la-3-3-b', lessonId: 'la-3-3', type: 'number-input',
@@ -398,6 +478,11 @@ const exercises_la_u3 = {
     correctIndex: 1,
     explanation: '$\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ hat $\\lambda = 1$ doppelt, aber nur einen Eigenvektor (geometrische Vielfachheit 1, algebraische 2). Daher nicht diagonalisierbar — defekte Matrix. Die anderen drei haben verschiedene Eigenwerte oder eine vollständige Eigenvektor-Basis.',
     hints: ['Diagonalisierbar braucht $n$ unabhängige Eigenvektoren.', 'Bei doppelten Eigenwerten: Anzahl Eigenvektoren prüfen.'],
+    wrongAnswerExplanations: {
+      '0': 'Diese Matrix ist bereits diagonal (Eigenwerte $2, 3$ direkt ablesbar, Eigenvektoren $\\vec{e}_1, \\vec{e}_2$). Also trivialerweise diagonalisierbar.',
+      '2': 'Diese Matrix $\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$ ist symmetrisch und hat verschiedene Eigenwerte $\\lambda = \\pm 1$ mit unabhängigen Eigenvektoren — also diagonalisierbar.',
+      '3': 'Diese Matrix hat verschiedene Eigenwerte ($\\lambda_1 = 5, \\lambda_2 = 2$ nach Aufgabe 3-3-b) mit unabhängigen Eigenvektoren — also diagonalisierbar. Verschiedene Eigenwerte sind hinreichend für Diagonalisierbarkeit.',
+    },
   },
   'ex-la-3-3-g': {
     id: 'ex-la-3-3-g', lessonId: 'la-3-3', type: 'number-input',
@@ -420,6 +505,11 @@ const exercises_la_u3 = {
     correctIndex: 0,
     explanation: 'Wenn alle Eigenwerte $|\\lambda_i| < 1$, geht $A^k \\to 0$ und $\\vec{x}_k \\to 0$. Die Iteration konvergiert gegen den Nullvektor. Bei mindestens einem $|\\lambda| > 1$ wächst die Iteration. Stabilitätskriterium: max $|\\lambda_i| < 1$.',
     hints: ['Iterationsverhalten: $A^k \\vec{x}_0 = \\sum c_i \\lambda_i^k \\vec{v}_i$.', 'Beträge der Eigenwerte entscheiden über Wachstum/Abklingen.'],
+    wrongAnswerExplanations: {
+      '1': 'Exponentielles Wachstum tritt auf, wenn mindestens ein $|\\lambda| > 1$. Hier sind beide Eigenwerte $< 1$ (im Betrag), also klingt die Iteration AB, nicht auf.',
+      '2': 'Periodisches Schwingen würde $|\\lambda| = 1$ mit komplexen $\\lambda$ erfordern (Einheitskreis). Hier sind beide $\\lambda$ reell und $< 1$ — kein Schwingen, sondern Abklingen.',
+      '3': 'Konstantes Verhalten braucht $\\lambda = 1$ als Eigenwert. Bei $\\lambda < 1$ schrumpft der Vektor mit jeder Iteration: $\\lambda^k \\to 0$ für $k \\to \\infty$.',
+    },
   },
   'ex-la-3-3-i': {
     id: 'ex-la-3-3-i', lessonId: 'la-3-3', type: 'sorting',
@@ -457,6 +547,11 @@ const exercises_la_u3 = {
     correctIndex: 1,
     explanation: '$\\det(A - \\lambda I) = (3-\\lambda)(2-\\lambda) = 0 \\Rightarrow \\lambda = 3, 2$. Verschiedene Eigenwerte → diagonalisierbar. Eigenvektor zu $\\lambda = 3$: $(A-3I)\\vec{v} = 0$ liefert $-v_2 = 0$, also $\\vec{v}_1 = (1,0)$. Zu $\\lambda = 2$: $(A-2I)\\vec{v} = 0$ liefert $v_1 + v_2 = 0$, also $\\vec{v}_2 = (1,-1)$.',
     hints: ['Dreiecksmatrix: Eigenwerte sind die Diagonalelemente.', 'Eigenvektoren: $(A - \\lambda I)\\vec{v} = \\vec{0}$ pro Eigenwert lösen.'],
+    wrongAnswerExplanations: {
+      '0': 'Falsche Schlussfolgerung: $\\det(A) \\neq 0$ sagt nur, dass $0$ kein Eigenwert ist. Diagonalisierbarkeit hängt von linearer Unabhängigkeit der Eigenvektoren ab — und hier gibt es zu verschiedenen Eigenwerten $3, 2$ unabhängige Eigenvektoren.',
+      '2': 'Charakteristisches Polynom: $(3-\\lambda)(2-\\lambda) = 0$ — das hat REELLE Nullstellen $\\lambda = 3$ und $\\lambda = 2$, keine komplexen. Bei oberen Dreiecksmatrizen sind die Eigenwerte immer die Diagonalelemente.',
+      '3': 'Symmetrie würde $A = A^T$ verlangen, d.h. $a_{12} = a_{21}$. Hier ist aber $a_{12} = 1$ und $a_{21} = 0$, also NICHT symmetrisch. Trotzdem diagonalisierbar wegen verschiedener Eigenwerte.',
+    },
   },
 
 }

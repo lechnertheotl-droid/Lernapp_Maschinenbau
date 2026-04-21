@@ -17,6 +17,11 @@ const exercises_int_u4 = {
     correctIndex: 1,
     explanation: 'Substitution: $u = x^2$, $du = 2x \\, dx$ → $x \\, dx = du/2$. Das Integral wird: $\\int e^u \\cdot \\frac{du}{2} = \\frac{1}{2} e^u + C = \\frac{1}{2} e^{x^2} + C$. Probe: $\\left(\\frac{1}{2} e^{x^2}\\right)\' = \\frac{1}{2} e^{x^2} \\cdot 2x = x e^{x^2}$ ✓',
     hints: ['Setze $u = x^2$. Was ist dann $du$?', '$du = 2x \\, dx$ → $x \\, dx = du/2$'],
+    wrongAnswerExplanations: {
+      '0': 'Du hast den Faktor $\\dfrac{1}{2}$ aus $x\\,dx = du/2$ vergessen. Mit $u = x^{2}$, $du = 2x\\,dx$ folgt $x\\,dx = du/2$, also $\\int x\\,e^{x^{2}}\\,dx = \\dfrac{1}{2}\\int e^{u}\\,du = \\dfrac{1}{2}e^{x^{2}} + C$. Probe: $\\left(\\dfrac{1}{2}e^{x^{2}}\\right)\' = x e^{x^{2}}$ ✓',
+      '2': 'Du hast die Produktregel rückwärts erfunden — Integration eines Produkts ist nicht das Produkt der Integrale. Die Substitution $u = x^{2}$ absorbiert den Faktor $x$: $\\int x e^{x^{2}}\\,dx = \\dfrac{1}{2} e^{x^{2}} + C$.',
+      '3': '$2x \\cdot e^{x^{2}}$ ist die Ableitung von $e^{x^{2}}$, nicht die Stammfunktion von $xe^{x^{2}}$. Mit Substitution $u = x^{2}$: $\\int x e^{x^{2}}\\,dx = \\dfrac{1}{2}e^{x^{2}} + C$.',
+    },
   },
 
   'ex-int-4-1-b': {
@@ -31,6 +36,11 @@ const exercises_int_u4 = {
     correctIndex: 0,
     explanation: 'Partielle Integration: $u = \\ln(x)$ → $u\' = 1/x$; $v\' = x$ → $v = x^2/2$. $\\int x \\ln(x) \\, dx = \\frac{x^2}{2} \\ln(x) - \\int \\frac{x^2}{2} \\cdot \\frac{1}{x} \\, dx = \\frac{x^2}{2} \\ln(x) - \\frac{1}{2} \\int x \\, dx = \\frac{x^2}{2} \\ln(x) - \\frac{x^2}{4} + C$.',
     hints: ['Wähle $u = \\ln(x)$ (wird beim Ableiten einfacher) und $v\' = x$.', '$u\' = 1/x$, $v = x^2/2$. Einsetzen in $\\int u \\cdot v\' = u \\cdot v - \\int u\' \\cdot v$.'],
+    wrongAnswerExplanations: {
+      '1': 'Vorzeichenfehler: In der Formel $\\int u \\cdot v\'\\,dx = u \\cdot v - \\int u\' \\cdot v\\,dx$ steht ein Minus. Also $\\dfrac{x^{2}}{2}\\ln(x) - \\dfrac{1}{2}\\int x\\,dx = \\dfrac{x^{2}\\ln(x)}{2} - \\dfrac{x^{2}}{4} + C$, nicht $+\\dfrac{x^{2}}{4}$.',
+      '2': 'Das ist die Stammfunktion von $\\ln(x)$ selbst ($\\int \\ln(x)\\,dx = x\\ln(x) - x + C$), nicht von $x \\ln(x)$. Für den Faktor $x$ muss partiell integriert werden mit $v\' = x$: $\\dfrac{x^{2}\\ln(x)}{2} - \\dfrac{x^{2}}{4} + C$.',
+      '3': 'Du hast Substitution $u = \\ln(x)$ falsch angewandt — das wäre $\\int \\dfrac{\\ln(x)}{x}\\,dx = \\dfrac{\\ln^{2}(x)}{2} + C$, aber hier ist das Integral $\\int x \\ln(x)\\,dx$ (ohne $1/x$). Richtig per partieller Integration: $\\dfrac{x^{2}\\ln(x)}{2} - \\dfrac{x^{2}}{4} + C$.',
+    },
   },
 
   'ex-int-4-1-c': {
@@ -45,6 +55,11 @@ const exercises_int_u4 = {
     correctIndex: 0,
     explanation: '$\\frac{1}{x^2-1} = \\frac{1}{(x-1)(x+1)} = \\frac{A}{x-1} + \\frac{B}{x+1}$. Ansatz: $1 = A(x+1) + B(x-1)$. $x=1$: $A=1/2$; $x=-1$: $B=-1/2$. Also: $\\int \\left[\\frac{1/2}{x-1} - \\frac{1/2}{x+1}\\right] dx = \\frac{1}{2} \\ln|x-1| - \\frac{1}{2} \\ln|x+1| + C$.',
     hints: ['$\\frac{1}{x^2-1} = \\frac{1}{(x-1)(x+1)}$', 'Partialbruchansatz: $\\frac{A}{x-1} + \\frac{B}{x+1}$. Einsetzen von $x=1$ und $x=-1$ liefert $A$ und $B$.'],
+    wrongAnswerExplanations: {
+      '1': 'Vorzeichenfehler bei $B$: Aus $1 = A(x+1) + B(x-1)$ folgt mit $x = -1$: $1 = -2B$, also $B = -\\dfrac{1}{2}$ (negativ). Damit ist der zweite Term $-\\dfrac{1}{2}\\ln|x+1|$, insgesamt $\\dfrac{1}{2}\\ln|x-1| - \\dfrac{1}{2}\\ln|x+1| + C$.',
+      '2': 'Die Bruchfunktion $\\dfrac{1}{x^{2}-1}$ hat keine $f\'/f$-Struktur — $(x^{2}-1)\' = 2x \\neq 1$. Deshalb funktioniert $\\int 1/u\\,du = \\ln|u|$ hier nicht direkt; Partialbruchzerlegung ist nötig: $\\dfrac{1}{2}\\ln|x-1| - \\dfrac{1}{2}\\ln|x+1| + C$.',
+      '3': 'Du hast abgeleitet oder mit $u^{-1}\\,du \\to -u^{-2}/2$ gerechnet, aber das gilt nicht für rationale Funktionen dieser Form. Korrekt per Partialbruchzerlegung: $\\dfrac{1}{2}\\ln|x-1| - \\dfrac{1}{2}\\ln|x+1| + C$.',
+    },
   },
 
   'ex-int-4-1-d': {
@@ -69,6 +84,11 @@ const exercises_int_u4 = {
     correctIndex: 1,
     explanation: 'Nutze die Halbwinkelformel: $\\sin^2(x) = \\frac{1 - \\cos(2x)}{2}$. Dann: $\\int \\frac{1 - \\cos(2x)}{2} \\, dx = \\frac{x}{2} - \\frac{\\sin(2x)}{4} + C$.',
     hints: ['$\\sin^2(x) = \\frac{1 - \\cos(2x)}{2}$ — Halbwinkelformel anwenden.', '$\\int \\cos(2x) \\, dx = \\frac{\\sin(2x)}{2}$'],
+    wrongAnswerExplanations: {
+      '0': 'Das ist nur ein Teil — du hast vergessen, den $\\dfrac{1}{2}$-Anteil (aus $\\dfrac{1 - \\cos(2x)}{2}$) zu integrieren: $\\int \\dfrac{1}{2}\\,dx = \\dfrac{x}{2}$. Richtig: $\\dfrac{x}{2} - \\dfrac{\\sin(2x)}{4} + C$.',
+      '2': 'Vorzeichenfehler: In $\\sin^{2}(x) = \\dfrac{1 - \\cos(2x)}{2}$ steht ein Minus. Nach Integration: $\\dfrac{x}{2} - \\dfrac{\\sin(2x)}{4} + C$, nicht $+\\dfrac{\\sin(2x)}{4}$. (Das $+$-Pendant wäre $\\int \\cos^{2}(x)\\,dx$.)',
+      '3': 'Das ergibt Ableiten statt Integrieren: $(-\\cos(x)\\sin(x))\' = \\sin^{2}(x) - \\cos^{2}(x)$, nicht $\\sin^{2}(x)$ allein. Korrekt per Halbwinkelformel: $\\dfrac{x}{2} - \\dfrac{\\sin(2x)}{4} + C$.',
+    },
   },
 
   'ex-int-4-1-f': {
@@ -91,6 +111,11 @@ const exercises_int_u4 = {
     correctIndex: 1,
     explanation: 'Die Substitution $x = \\sin(t)$ verwandelt $\\sqrt{1-x^2}$ in $\\sqrt{1-\\sin^2(t)} = \\sqrt{\\cos^2(t)} = \\cos(t)$. Dann gilt $dx = \\cos(t) \\, dt$ und das Integral wird $\\int \\cos^2(t) \\, dt$ — lösbar mit der Halbwinkelformel. Das Ergebnis ist $\\frac{1}{2}(\\arcsin(x) + x\\sqrt{1-x^2}) + C$.',
     hints: ['$\\sqrt{1-x^2}$ erinnert an die Identität $\\sin^2 + \\cos^2 = 1$.', 'Setze $x = \\sin(t)$, dann wird $1-x^2 = \\cos^2(t)$.'],
+    wrongAnswerExplanations: {
+      '0': 'Mit $u = 1 - x^{2}$, $du = -2x\\,dx$ bräuchtest du einen $x$-Faktor im Integrand — hier steht aber nur $\\sqrt{1-x^{2}}$ ohne $x$ davor. Die trigonometrische Substitution $x = \\sin(t)$ hebt die Wurzel sauber auf: $\\sqrt{1-\\sin^{2}(t)} = \\cos(t)$.',
+      '2': '$x = \\tan(t)$ wäre für $\\sqrt{1 + x^{2}}$ ideal (da $1 + \\tan^{2} = \\sec^{2}$), aber hier steht $\\sqrt{1 - x^{2}}$. Passend ist $x = \\sin(t)$, weil $1 - \\sin^{2}(t) = \\cos^{2}(t)$.',
+      '3': 'Mit $u = x^{2}$, $du = 2x\\,dx$ bräuchtest du wieder einen $x$-Faktor, der hier fehlt. Außerdem bleibt die Wurzel $\\sqrt{1-u}$ stehen — nicht einfacher. Passend: $x = \\sin(t)$, wodurch $\\sqrt{1-x^{2}} = \\cos(t)$ wird.',
+    },
   },
 
   'ex-int-4-1-h': {
@@ -123,6 +148,11 @@ const exercises_int_u4 = {
     correctIndex: 0,
     explanation: 'Zweifache partielle Integration. Runde 1: $u=x^2$, $v\'=e^x$ → $x^2 e^x - \\int 2x e^x \\, dx$. Runde 2: $u=2x$, $v\'=e^x$ → $2x e^x - \\int 2e^x \\, dx = 2x e^x - 2e^x$. Gesamt: $x^2 e^x - (2x e^x - 2e^x) + C = x^2 e^x - 2x e^x + 2e^x + C = e^x(x^2-2x+2) + C$.',
     hints: ['Zweimal partielle Integration: zuerst $u=x^2$, $v\'=e^x$, dann $u=2x$, $v\'=e^x$.', 'Jedes Mal nimmt der Grad des Polynoms um 1 ab.'],
+    wrongAnswerExplanations: {
+      '1': 'Vorzeichenfehler: Die partielle Integration liefert $\\int u v\'\\,dx = uv - \\int u\'v\\,dx$. Nach zwei Runden: $x^{2}e^{x} - (2xe^{x} - 2e^{x}) + C = x^{2}e^{x} - 2xe^{x} + 2e^{x} + C$ — Mittelterm mit Minus, nicht Plus.',
+      '2': 'Du hast die zweite partielle Integration nicht durchgeführt: Nach Runde 1 bleibt $-\\int 2xe^{x}\\,dx$ übrig, das selbst noch partielle Integration braucht und $-(2xe^{x} - 2e^{x})$ liefert. Richtig: $x^{2}e^{x} - 2xe^{x} + 2e^{x} + C$.',
+      '3': 'Der $-2xe^{x}$-Term fehlt: Nach zwei partiellen Integrationen bekommst du $x^{2}e^{x} - 2xe^{x} + 2e^{x} + C = e^{x}(x^{2} - 2x + 2) + C$, nicht $(x^{2} - 2)e^{x}$.',
+    },
   },
 
   'ex-int-4-1-mastery': {
@@ -132,6 +162,11 @@ const exercises_int_u4 = {
     correctIndex: 2,
     explanation: 'Methode 1 (Substitution): $u = \\sin(x)$, $du = \\cos(x) \\, dx$. Grenzen: $x=0 \\to u=0$, $x=\\pi/2 \\to u=1$. Integral: $\\int_0^1 u \\, du = [u^2/2]_0^1 = 1/2$. Methode 2 (Identität): $\\sin(x) \\cdot \\cos(x) = \\sin(2x)/2$. $\\int_0^{\\pi/2} \\frac{\\sin(2x)}{2} \\, dx = [-\\cos(2x)/4]_0^{\\pi/2} = (1/4) - (-1/4) = 1/2$.',
     hints: ['Nutze $u = \\sin(x)$ oder die Identität $\\sin(x) \\cdot \\cos(x) = \\sin(2x)/2$.', 'Vergiss nicht, bei der Substitution auch die Grenzen umzurechnen.'],
+    wrongAnswerExplanations: {
+      '0': 'Du hast das Integral als $0$ geschätzt, vielleicht wegen Symmetrie — aber auf $[0, \\pi/2]$ ist $\\sin(x)\\cos(x) \\geq 0$, das Integral ist also positiv. Mit $u = \\sin(x)$: $\\int_{0}^{1} u\\,du = \\dfrac{1}{2}$.',
+      '1': 'Du hast wohl die obere Grenze falsch eingesetzt oder die Potenzregel verhauen. Mit $u = \\sin(x)$: bei $x = \\pi/2$ ist $u = 1$, also $\\int_{0}^{1} u\\,du = \\dfrac{u^{2}}{2}\\big|_{0}^{1} = \\dfrac{1}{2}$ (nicht $\\dfrac{1}{4}$).',
+      '3': 'Zu groß: Mit $u = \\sin(x)$, Grenzen $0$ bis $1$: $\\int_{0}^{1} u\\,du = \\dfrac{1}{2}$. Oder über die Identität $\\sin x \\cos x = \\dfrac{\\sin(2x)}{2}$: $\\int_{0}^{\\pi/2} \\dfrac{\\sin(2x)}{2}\\,dx = \\dfrac{1}{2}$.',
+    },
   },
 
   // ── Lektion 4-2: Prüfung Anwendungen ─────────────────────────────────────
@@ -158,6 +193,11 @@ const exercises_int_u4 = {
     correctIndex: 0,
     explanation: 'Scheibenformel: $V = \\pi \\cdot \\int_a^b [f(x)]^2 \\, dx = \\pi \\cdot \\int_0^4 (\\sqrt{x})^2 \\, dx = \\pi \\cdot \\int_0^4 x \\, dx = \\pi \\cdot [x^2/2]_0^4 = \\pi \\cdot 8 = 8\\pi$.',
     hints: ['Rotationsvolumen um $x$-Achse: $V = \\pi \\cdot \\int [f(x)]^2 \\, dx$.', '$(\\sqrt{x})^2 = x$. Dann ist das Integral einfach.'],
+    wrongAnswerExplanations: {
+      '1': 'Du hast $f(x)$ nicht quadriert: Scheibenformel ist $V = \\pi \\int [f(x)]^{2}\\,dx$, nicht $V = \\pi \\int f(x)\\,dx$. Mit $[\\sqrt{x}]^{2} = x$: $V = \\pi \\int_{0}^{4} x\\,dx = 8\\pi$.',
+      '2': 'Du hast $f(x)^{2} = x^{2}$ statt $(\\sqrt{x})^{2} = x$ gerechnet. Die Wurzel wird durch das Quadrat genau entfernt: $(\\sqrt{x})^{2} = x$, also $V = \\pi \\int_{0}^{4} x\\,dx = 8\\pi$.',
+      '3': 'Der Faktor $2\\pi$ gehört zur Zylinderschalenmethode (Rotation um $y$-Achse), nicht zur Scheibenmethode um $x$-Achse. Mit Scheibenformel $V = \\pi \\int_{0}^{4} (\\sqrt{x})^{2}\\,dx = \\pi \\int_{0}^{4} x\\,dx = 8\\pi$.',
+    },
   },
 
   'ex-int-4-2-c': {
@@ -182,6 +222,11 @@ const exercises_int_u4 = {
     correctIndex: 1,
     explanation: 'Der Schwerpunkt (Flächenschwerpunkt) in $x$-Richtung ist: $\\bar{x} = M_x / A = \\frac{\\int_a^b x \\cdot f(x) \\, dx}{\\int_a^b f(x) \\, dx}$. Dabei ist $A$ die Gesamtfläche und $M_x$ das statische Moment. Das entspricht dem gewichteten Mittelwert von $x$, gewichtet mit $f(x)$.',
     hints: ['$\\bar{x} = $ Moment / Fläche.', 'Das statische Moment $M_x = \\int x \\cdot f(x) \\, dx$, die Fläche $A = \\int f(x) \\, dx$.'],
+    wrongAnswerExplanations: {
+      '0': 'Das statische Moment $M_{x}$ allein ist noch nicht der Schwerpunkt — es muss durch die Fläche $A$ geteilt werden (gewichteter Mittelwert). Richtig: $\\bar{x} = \\dfrac{\\int_{a}^{b} x \\cdot f(x)\\,dx}{\\int_{a}^{b} f(x)\\,dx}$.',
+      '2': 'Das ist die Formel für den $y$-Schwerpunkt $\\bar{y}$, nicht für $\\bar{x}$. Der $x$-Schwerpunkt gewichtet die $x$-Positionen mit der Fläche: $\\bar{x} = \\dfrac{\\int x \\cdot f(x)\\,dx}{\\int f(x)\\,dx}$.',
+      '3': 'Die Intervallmitte $(a+b)/2$ gilt nur für symmetrische Rechtecke. Bei allgemeinen Funktionen verschiebt sich $\\bar{x}$ dorthin, wo mehr Fläche ist: $\\bar{x} = \\dfrac{\\int x \\cdot f(x)\\,dx}{\\int f(x)\\,dx}$.',
+    },
   },
 
   'ex-int-4-2-e': {
@@ -204,6 +249,11 @@ const exercises_int_u4 = {
     correctIndex: 0,
     explanation: '$\\int_0^3 2 \\, dx = [2x]_0^3 = 6$. Das Integral einer konstanten Profil-Funktion über die Breite ergibt die Querschnittsfläche $A$. Für $f(x) = 2$ (Höhe 2, Breite 3) erhält man $A = 2 \\cdot 3 = 6\\,m^2$.',
     hints: ['Was bedeutet das Integral geometrisch?', 'Das bestimmte Integral = Fläche unter dem Graphen.'],
+    wrongAnswerExplanations: {
+      '1': 'Das Flächenträgheitsmoment $I$ beinhaltet $y^{2}$ (quadriert) und eine Flächen-Doppelintegration: $I_{x} = \\iint y^{2}\\,dA$. Das einfache Integral $\\int f(x)\\,dx$ misst dagegen nur die Fläche.',
+      '2': 'Der Schwerpunkt $\\bar{x}$ wird als $\\dfrac{\\int x \\cdot f(x)\\,dx}{\\int f(x)\\,dx}$ berechnet — das bloße $\\int f(x)\\,dx$ liefert nur die Fläche (den Nenner), nicht den Schwerpunkt selbst.',
+      '3': 'Ein Volumen erfordert eine dritte Dimension, entweder durch Rotation ($V = \\pi \\int [f(x)]^{2}\\,dx$) oder durch eine weitere Integration. Das einfache $\\int f(x)\\,dx$ ist 2D — eine Fläche, nicht ein Volumen.',
+    },
   },
 
   'ex-int-4-2-g': {
@@ -223,6 +273,11 @@ const exercises_int_u4 = {
     correctIndex: 1,
     explanation: 'Arbeit $= \\int F(x) \\, dx$. $W = \\int_0^2 3x^2 \\, dx = [x^3]_0^2 = 8 - 0 = 8$ J. Allgemein: $W = \\int_a^b F(x) \\, dx$ — das Integral der Kraft über den Weg ergibt die Arbeit.',
     hints: ['Arbeit = Integral der Kraft über den Weg: $W = \\int F(x) \\, dx$.', '$\\int 3x^2 \\, dx = x^3$.'],
+    wrongAnswerExplanations: {
+      '0': 'Du hast vielleicht nur $F$ bei $x = 2$ berechnet ($F(2) = 12$) halbiert oder falsch integriert. Korrekt: $W = \\int_{0}^{2} 3x^{2}\\,dx = [x^{3}]_{0}^{2} = 8\\,\\mathrm{J}$ (der Faktor $3$ kürzt sich mit $\\dfrac{1}{3}$ aus der Potenzregel).',
+      '2': 'Du hast $F$ nicht integriert, sondern $F(2) \\cdot s = 3 \\cdot 4 \\cdot 1 = 12$ oder ähnliches gerechnet. $W = F \\cdot s$ gilt aber nur für konstante Kräfte. Korrekt: $W = \\int_{0}^{2} 3x^{2}\\,dx = 8\\,\\mathrm{J}$.',
+      '3': 'Du hast $F(2) \\cdot s = 12 \\cdot 2 = 24$ gerechnet — aber $W = F \\cdot s$ gilt nur für konstante Kräfte. Hier ist $F(x) = 3x^{2}$ ortsabhängig, also $W = \\int_{0}^{2} 3x^{2}\\,dx = 8\\,\\mathrm{J}$.',
+    },
   },
 
   'ex-int-4-2-i': {
@@ -245,6 +300,11 @@ const exercises_int_u4 = {
     correctIndex: 0,
     explanation: '$f\'(x) = \\frac{3}{2} x^{1/2}$. $[f\'(x)]^2 = \\frac{9}{4} x$. Also $L = \\int_0^4 \\sqrt{1 + \\frac{9}{4}x} \\, dx$. (Das Ergebnis nach Substitution $u = 1 + \\frac{9}{4}x$ ist $L = \\frac{8}{27} \\cdot [(1 + \\frac{9}{4}x)^{3/2}]_0^4 \\approx 9{,}07$.)',
     hints: ['$f\'(x) = \\frac{3}{2} \\sqrt{x}$. Was ist $[f\'(x)]^2$?', '$\\left(\\frac{3}{2}\\right)^2 = \\frac{9}{4}$, also $[f\'(x)]^2 = \\frac{9}{4} x$.'],
+    wrongAnswerExplanations: {
+      '1': 'Du hast $[f\'(x)]^{2} = x$ statt $\\dfrac{9}{4}x$ gerechnet — der Koeffizient $\\dfrac{3}{2}$ muss ebenfalls quadriert werden: $\\left(\\dfrac{3}{2}\\right)^{2} = \\dfrac{9}{4}$. Richtig: $L = \\int_{0}^{4}\\sqrt{1 + \\dfrac{9}{4}x}\\,dx$.',
+      '2': 'Du hast $f\'(x) = \\dfrac{3}{2}\\sqrt{x}$ ohne Wurzel in die Formel eingesetzt und auch das Quadrat und die Wurzel vergessen. Bogenlängenformel: $L = \\int \\sqrt{1 + [f\'(x)]^{2}}\\,dx$, also $L = \\int_{0}^{4}\\sqrt{1 + \\dfrac{9}{4}x}\\,dx$.',
+      '3': 'Du hast innerhalb der Wurzel nicht quadriert: $[f\'(x)]^{2} = \\left(\\dfrac{3}{2}x^{1/2}\\right)^{2} = \\dfrac{9}{4}x$, nicht $\\dfrac{3}{2}x^{1/2}$. Richtig: $L = \\int_{0}^{4}\\sqrt{1 + \\dfrac{9}{4}x}\\,dx$.',
+    },
   },
 
   'ex-int-4-2-mastery': {
@@ -259,6 +319,11 @@ const exercises_int_u4 = {
     correctIndex: 0,
     explanation: '$f(x) = -x^2+4$ hat Nullstellen bei $x=\\pm 2$. Scheibenformel: $V = \\pi \\cdot \\int_{-2}^2 (-x^2+4)^2 \\, dx$. $(-x^2+4)^2 = x^4 - 8x^2 + 16$. $\\int_{-2}^2 (x^4-8x^2+16) \\, dx = 2 \\cdot \\int_0^2 (x^4-8x^2+16) \\, dx$ (Symmetrie) $= 2 \\cdot [x^5/5 - 8x^3/3 + 16x]_0^2 = 2 \\cdot (32/5 - 64/3 + 32) = 2 \\cdot (256/15) = 512/15$. $V = 512\\pi/15$.',
     hints: ['Scheibenformel: $V = \\pi \\cdot \\int [f(x)]^2 \\, dx$. Nullstellen bestimmen die Grenzen.', '$(-x^2+4)^2 = x^4-8x^2+16$. Nutze die Symmetrie um $x=0$.'],
+    wrongAnswerExplanations: {
+      '1': 'Du hast $f(x)$ nicht quadriert — die Scheibenformel verlangt $[f(x)]^{2}$. Außerdem hast du das Vorzeichen falsch: $f(x) = -x^{2}+4$ (nicht $x^{2}-4$). Richtig: $V = \\pi \\int_{-2}^{2}(-x^{2}+4)^{2}\\,dx = \\dfrac{512\\pi}{15}$.',
+      '2': 'Der Faktor $2\\pi$ passt zur Zylinderschalenmethode (Rotation um $y$-Achse), und du hast $f(x)$ nicht quadriert. Scheibenformel um $x$-Achse: $V = \\pi \\int_{-2}^{2}[f(x)]^{2}\\,dx = \\dfrac{512\\pi}{15}$ — nicht $16\\pi$.',
+      '3': 'Du hast die Symmetrie ausgenutzt ($\\int_{0}^{2}$ statt $\\int_{-2}^{2}$), aber vergessen, den Faktor $2$ einzubauen. Richtig: $V = \\pi \\int_{-2}^{2} = 2\\pi \\int_{0}^{2}$, also $2 \\cdot \\dfrac{256\\pi}{15} = \\dfrac{512\\pi}{15}$.',
+    },
   },
 
   // ── Lektion 4-3: Uneigentliche & numerische Integration ────────────────────
@@ -274,6 +339,11 @@ const exercises_int_u4 = {
     correctIndex: 0,
     explanation: 'Uneigentliche Integrale entstehen, wenn der Integrationsbereich unbeschränkt ist ($\\infty$) oder der Integrand bei einer Grenze divergiert. Sie konvergieren, wenn der Grenzwert existiert und endlich ist. Beispiel: $\\int_1^\\infty x^{-2} dx = 1$ konvergiert, $\\int_1^\\infty x^{-1} dx$ divergiert.',
     hints: ['Definition über Grenzwert.', 'Konvergenz hängt vom Abklingverhalten des Integranden ab.'],
+    wrongAnswerExplanations: {
+      '1': 'Das ist falsch — viele uneigentliche Integrale konvergieren zu einem endlichen Wert, z.B. $\\int_{1}^{\\infty} x^{-2}\\,dx = 1$. Definition: konvergent, wenn $\\lim_{b \\to \\infty}\\int_{a}^{b} f(x)\\,dx$ existiert und endlich ist.',
+      '2': 'Unbestimmte Integrale sind Stammfunktionen $F(x) + C$, uneigentliche Integrale sind bestimmte Integrale über unbeschränkte Bereiche oder mit Singularitäten. Ganz unterschiedliche Konzepte — Konvergenz wird über den Grenzwert $\\lim_{b \\to \\infty}\\int_{a}^{b} f(x)\\,dx$ definiert.',
+      '3': 'Symmetrie spielt keine Rolle für die Definition — uneigentliche Integrale sind definiert, wenn der Bereich unbeschränkt ist oder $f$ an einer Grenze divergiert. Beispiel: $\\int_{1}^{\\infty}\\dfrac{dx}{x^{2}}$ ist über $[1, \\infty)$ definiert, nicht symmetrisch.',
+    },
   },
   'ex-int-4-3-b': {
     id: 'ex-int-4-3-b', lessonId: 'int-4-3', type: 'number-input',
@@ -324,6 +394,11 @@ const exercises_int_u4 = {
     correctIndex: 0,
     explanation: '$x = \\sin u$, $dx = \\cos u\\,du$, $\\sqrt{1-x^2} = \\cos u$. Grenzen: $u = 0$ bis $\\pi/2$. Integral: $\\int_0^{\\pi/2} \\cos^2 u\\,du = \\pi/4$. Geometrisch: Viertel des Einheitskreises mit Fläche $\\pi/4$.',
     hints: ['$\\sqrt{1 - x^2}$ schreit nach trigonometrischer Substitution.', 'Geometrische Interpretation: Viertelkreis.'],
+    wrongAnswerExplanations: {
+      '1': 'Partielle Integration funktioniert hier zwar theoretisch (mit $u = \\sqrt{1-x^{2}}$, $v\' = 1$), liefert aber wieder $\\int \\dfrac{x^{2}}{\\sqrt{1-x^{2}}}\\,dx$ und ist deutlich umständlicher. Trigonometrische Substitution $x = \\sin u$ macht $\\sqrt{1-x^{2}} = \\cos u$ direkt auflösbar: $\\pi/4$.',
+      '2': 'Partialbrüche gelten nur für rationale Funktionen $\\dfrac{P(x)}{Q(x)}$ — $\\sqrt{1-x^{2}}$ ist nicht rational. Trigonometrische Substitution $x = \\sin u$ ist die passende Methode (Fläche $= \\pi/4$ als Viertelkreis).',
+      '3': 'Es gibt keine elementare direkte Stammfunktion per Potenzregel — die Potenzregel gilt für $x^{n}$, nicht für $\\sqrt{1-x^{2}}$. Trigonometrische Substitution $x = \\sin u$ liefert das Ergebnis $\\pi/4$.',
+    },
   },
   'ex-int-4-3-g': {
     id: 'ex-int-4-3-g', lessonId: 'int-4-3', type: 'sorting',
@@ -376,6 +451,11 @@ const exercises_int_u4 = {
     correctIndex: 0,
     explanation: 'Stammfunktion: $\\arctan x$. $[\\arctan x]_0^b = \\arctan b - 0$. Grenzwert: $\\arctan(\\infty) = \\pi/2$. Konvergent. Dieses Integral spielt in der Wahrscheinlichkeit (Cauchy-Verteilung) und Signalverarbeitung eine zentrale Rolle.',
     hints: ['Stammfunktion: $\\arctan x$.', '$\\arctan(\\infty) = \\pi/2$.'],
+    wrongAnswerExplanations: {
+      '1': '$\\dfrac{1}{1+x^{2}}$ klingt ab wie $x^{-2}$ für große $x$ (p-Integral mit $p = 2 > 1$), also konvergent. Stammfunktion: $\\arctan(x)$, Wert: $\\arctan(\\infty) - \\arctan(0) = \\pi/2 - 0 = \\pi/2$.',
+      '2': '$\\pi$ ist der Wert des symmetrischen Integrals $\\int_{-\\infty}^{\\infty}\\dfrac{dx}{1+x^{2}} = \\pi$. Hier ist aber nur $[0, \\infty)$ gefragt — halbes Ergebnis: $\\pi/2$.',
+      '3': 'Mit Stammfunktion $\\arctan(x)$: $[\\arctan(x)]_{0}^{\\infty} = \\pi/2 - 0 = \\pi/2$, nicht $1$. Du hast vielleicht die Stammfunktion mit der Exponentialfunktion verwechselt (wo $\\int_{0}^{\\infty}e^{-x}\\,dx = 1$).',
+    },
   },
 }
 

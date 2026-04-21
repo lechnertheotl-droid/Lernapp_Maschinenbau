@@ -24,6 +24,11 @@ export const exercises_int_u2 = {
       'Wir brauchen einen inneren Ausdruck $g(x)$, dessen Ableitung auch im Integral steht.',
       'Das ist Substitution: ersetze $g(x)$ durch ein einziges Symbol $u$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Ableiten hilft nicht beim Integrieren — Substitution ist die Umkehrung der Kettenregel beim Integrieren. Erster Schritt ist die Wahl eines geeigneten inneren Ausdrucks $u = g(x)$, dessen Ableitung $g\'(x)\\,dx = du$ bereits im Integrand auftaucht.',
+      '2': 'Partielle Integration ist eine eigene, andere Technik (Umkehrung der Produktregel). Die Substitutionsmethode beginnt mit der Wahl $u = g(x)$ — typischerweise eines inneren Ausdrucks, dessen Ableitung als Faktor im Integrand vorkommt.',
+      '3': 'Partialbruchzerlegung ist eine dritte, unabhängige Technik (nur für rationale Funktionen). Die Substitutionsmethode beginnt mit $u = g(x)$ und $du = g\'(x)\\,dx$ — Umkehrung der Kettenregel.',
+    },
   },
   'ex-int-2-1-b': {
     id: 'ex-int-2-1-b', lessonId: 'int-2-1', type: 'multiple-choice',
@@ -45,6 +50,11 @@ export const exercises_int_u2 = {
       '$du = 2x\\,dx$ — genau der Faktor vor $e^{x^{2}}$!',
       'Dann wird das Integral $\\int e^{u}\\,du = e^{u} + C$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Du hast die Produktregel rückwärts "erfunden", die es so nicht gibt. Korrekt: Nach der Substitution $u = x^{2}$ wird $2x\\,dx = du$, das Integral reduziert sich zu $\\int e^{u}\\,du = e^{u} + C = e^{x^{2}} + C$. Der Faktor $x^{2}$ taucht im Ergebnis nicht mehr auf.',
+      '2': 'Du hast den Faktor $2$ aus $du = 2x\\,dx$ als zusätzlichen Vorfaktor vor das Ergebnis gezogen — er ist aber bereits aufgebraucht, weil $2x\\,dx$ genau $du$ ersetzt. Richtig: $\\int 2x\\,e^{x^{2}}\\,dx = \\int e^{u}\\,du = e^{x^{2}} + C$ (ohne Faktor $2$).',
+      '3': 'Du hast zusätzlich durch $2$ geteilt — aber $du = 2x\\,dx$ stimmt ohne Umstellen genau mit dem $2x\\,dx$ im Integrand überein. Es gibt keinen Korrekturfaktor: $\\int 2x\\,e^{x^{2}}\\,dx = \\int e^{u}\\,du = e^{x^{2}} + C$.',
+    },
   },
   'ex-int-2-1-c': {
     id: 'ex-int-2-1-c', lessonId: 'int-2-1', type: 'multiple-choice',
@@ -65,6 +75,11 @@ export const exercises_int_u2 = {
       '$du = 3\\,dx \\Rightarrow dx = du/3$.',
       'Vergiss nicht, durch $3$ zu teilen!',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Du hast die Kettenregel-Korrektur $\\dfrac{1}{3}$ vergessen: Ableitung ergibt $(\\sin(3x))\' = 3\\cos(3x)$, nicht $\\cos(3x)$. Mit $u = 3x$ ist $dx = du/3$, also $\\int \\cos(3x)\\,dx = \\dfrac{1}{3}\\sin(3x) + C$.',
+      '2': 'Du hast mit $3$ multipliziert statt durch $3$ zu teilen — Vorzeichen/Richtung vertauscht. Aus $du = 3\\,dx$ folgt $dx = du/3$, also wird ein Faktor $\\dfrac{1}{3}$ vor das Integral gezogen: $\\int \\cos(3x)\\,dx = \\dfrac{\\sin(3x)}{3} + C$.',
+      '3': 'Du hast ein Minuszeichen erfunden, das hier nicht vorkommt. $\\int \\cos\\,du = +\\sin$ (ohne Minus). Mit dem Faktor $\\dfrac{1}{3}$ aus der linearen Substitution: $\\int \\cos(3x)\\,dx = +\\dfrac{\\sin(3x)}{3} + C$.',
+    },
   },
   'ex-int-2-1-d': {
     id: 'ex-int-2-1-d', lessonId: 'int-2-1', type: 'multiple-choice',
@@ -86,6 +101,11 @@ export const exercises_int_u2 = {
       '$du = 2x\\,dx \\Rightarrow x\\,dx = du/2$. Dann hast du $\\dfrac{1}{2}\\int u^{4}\\,du$.',
       'Potenzregel: $\\int u^{4}\\,du = u^{5}/5$, also gesamt $u^{5}/10$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast den Faktor $\\dfrac{1}{2}$ aus $x\\,dx = \\dfrac{du}{2}$ übersehen. Mit $u = x^{2}+1$ wird $du = 2x\\,dx$, also $x\\,dx = du/2$. Die $\\dfrac{1}{2}$ geht vor das Integral und führt zu $\\dfrac{u^{5}}{10}$, nicht $\\dfrac{u^{5}}{5}$.',
+      '2': 'Du hast die Produktregel rückwärts erfunden — Integration eines Produkts ist nicht das Produkt der Integrale. Die Substitution $u = x^{2}+1$ absorbiert den $x$-Faktor: $\\int u^{4} \\cdot \\dfrac{du}{2} = \\dfrac{u^{5}}{10} + C$.',
+      '3': 'Du hast sowohl den Faktor $\\dfrac{1}{2}$ aus $x\\,dx = du/2$ als auch den Teilen-durch-$5$-Schritt aus der Potenzregel vergessen. Korrekt: $\\int u^{4}\\,du = \\dfrac{u^{5}}{5}$, mal $\\dfrac{1}{2}$ ergibt $\\dfrac{u^{5}}{10}$.',
+    },
   },
   'ex-int-2-1-mastery': {
     id: 'ex-int-2-1-mastery', lessonId: 'int-2-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -106,6 +126,11 @@ export const exercises_int_u2 = {
       'Mit $u = \\sin(x)$: $du = \\cos(x)\\,dx$, Integral wird $\\int u\\,du$.',
       'Beide Ergebnisse unterscheiden sich nur um eine Konstante (versteckt im $C$).',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Die Antwort ist rechnerisch richtig ($u = \\sin(x)$-Substitution), aber unvollständig: Auch Option B ($u = \\cos(x)$) ist korrekt. Beide unterscheiden sich nur um $\\dfrac{1}{2}$, was im $C$ aufgeht — deshalb sind sie beide gültig.',
+      '1': 'Die Antwort ist rechnerisch richtig ($u = \\cos(x)$-Substitution, $du = -\\sin(x)\\,dx$), aber unvollständig: Auch Option A ($u = \\sin(x)$) ist korrekt. Wegen $\\sin^{2}(x) = 1 - \\cos^{2}(x)$ unterscheiden sich die Ergebnisse nur um $\\dfrac{1}{2}$ — beide gültig.',
+      '2': 'Du hast den Integrand unverändert stehen gelassen — Integration eines Produkts ist aber nicht das Produkt selbst. Mit $u = \\sin(x)$, $du = \\cos(x)\\,dx$ wird das Integral $\\int u\\,du = \\dfrac{\\sin^{2}(x)}{2} + C$.',
+    },
   },
 
   // ── Lesson 2: Partielle Integration ───────────────────────────────────────
@@ -133,6 +158,11 @@ Umstellen liefert: $\\int u \\cdot v'\\,dx = u \\cdot v - \\int u' \\cdot v\\,dx
       'Produktregel: $(uv)\' = u\'v + uv\'$. Integriere und stelle um.',
       'Minuszeichen beachten!',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast das Vorzeichen falsch: Aus der Produktregel $(uv)\' = u\'v + uv\'$ ergibt sich nach Integration $uv = \\int u\'v\\,dx + \\int uv\'\\,dx$. Umstellen ergibt ein Minus: $\\int u \\cdot v\'\\,dx = u \\cdot v - \\int u\' \\cdot v\\,dx$.',
+      '2': 'Du hast $u$ und $u\'$ im ersten Term vertauscht: Es muss $u \\cdot v$ dort stehen (nicht $u\' \\cdot v$). Richtige Formel: $\\int u \\cdot v\'\\,dx = u \\cdot v - \\int u\' \\cdot v\\,dx$.',
+      '3': 'Das Restintegral fehlt komplett — die partielle Integration löst das ursprüngliche Integral nicht auf, sondern tauscht es gegen ein (hoffentlich einfacheres) neues aus: $\\int u \\cdot v\'\\,dx = u \\cdot v - \\int u\' \\cdot v\\,dx$.',
+    },
   },
   'ex-int-2-2-b': {
     id: 'ex-int-2-2-b', lessonId: 'int-2-2', type: 'multiple-choice',
@@ -154,6 +184,11 @@ Umstellen liefert: $\\int u \\cdot v'\\,dx = u \\cdot v - \\int u' \\cdot v\\,dx
       '$v\' = e^{x} \\Rightarrow v = e^{x}$.',
       'Einsetzen: $u \\cdot v - \\int u\' \\cdot v\\,dx = xe^{x} - \\int e^{x}\\,dx$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast das Minuszeichen aus der Formel $\\int uv\'\\,dx = uv - \\int u\'v\\,dx$ zu einem Plus gemacht. Mit $u=x, v=e^{x}$: $xe^{x} - \\int e^{x}\\,dx = xe^{x} - e^{x} + C$, nicht $+e^{x}$.',
+      '2': 'Du hast die Potenzregel auf $x \\cdot e^{x}$ angewendet — die funktioniert nur für $x^{n}$, nicht für Produkte. Hier braucht es partielle Integration: $\\int xe^{x}\\,dx = xe^{x} - e^{x} + C$.',
+      '3': 'Das Ergebnis $e^{x}(x - 1) + C$ ist mathematisch gleich zu $xe^{x} - e^{x} + C$, aber anders geschrieben. Die direkte Anwendung der Formel $uv - \\int u\'v\\,dx$ ergibt aber genau die Form in Option A: $xe^{x} - e^{x} + C$.',
+    },
   },
   'ex-int-2-2-c': {
     id: 'ex-int-2-2-c', lessonId: 'int-2-2', type: 'multiple-choice',
@@ -175,6 +210,11 @@ Umstellen liefert: $\\int u \\cdot v'\\,dx = u \\cdot v - \\int u' \\cdot v\\,dx
       '$v = \\sin(x)$, $u\' = 1$.',
       '$\\int \\sin(x)\\,dx = -\\cos(x)$, also $- \\int \\sin(x)\\,dx = +\\cos(x)$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast das doppelte Minus verloren: $\\int \\sin(x)\\,dx = -\\cos(x)$, und davor steht noch ein Minus aus der Formel, also $-\\int \\sin(x)\\,dx = +\\cos(x)$. Richtig: $x\\sin(x) + \\cos(x) + C$.',
+      '2': 'Du hast $v$ falsch gesetzt: Aus $v\' = \\cos(x)$ folgt $v = \\sin(x)$ (nicht $\\cos(x)$). Richtig: $\\int x\\cos(x)\\,dx = x\\sin(x) + \\cos(x) + C$.',
+      '3': 'Vorzeichenfehler: Aus $v\' = \\cos(x)$ ergibt sich $v = +\\sin(x)$, nicht $-\\sin(x)$. Richtig: $\\int x\\cos(x)\\,dx = x\\sin(x) - \\int \\sin(x)\\,dx = x\\sin(x) + \\cos(x) + C$.',
+    },
   },
   'ex-int-2-2-d': {
     id: 'ex-int-2-2-d', lessonId: 'int-2-2', type: 'multiple-choice',
@@ -196,6 +236,11 @@ Umstellen liefert: $\\int u \\cdot v'\\,dx = u \\cdot v - \\int u' \\cdot v\\,dx
       '$v\' = 1 \\Rightarrow v = x$. Und $u\' = 1/x$.',
       'Einsetzen: $x \\cdot \\ln(x) - \\int x \\cdot (1/x)\\,dx = x\\ln(x) - \\int 1\\,dx = x\\ln(x) - x + C$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Du hast die Ableitung von $\\ln(x)$ angegeben, nicht die Stammfunktion: $(\\ln(x))\' = 1/x$, aber gefragt ist $\\int \\ln(x)\\,dx$. Richtig per partieller Integration: $x\\ln(x) - x + C$.',
+      '2': 'Du hast den Rest-Term $-\\int x \\cdot (1/x)\\,dx = -\\int 1\\,dx = -x$ vergessen. Richtig: $\\int \\ln(x)\\,dx = x\\ln(x) - x + C$, das $-x$ gehört dazu.',
+      '3': 'Vorzeichenfehler im Restterm: Aus $-\\int x \\cdot (1/x)\\,dx = -\\int 1\\,dx = -x$ (mit Minus), nicht $+x$. Richtig: $\\int \\ln(x)\\,dx = x\\ln(x) - x + C$.',
+    },
   },
   'ex-int-2-2-mastery': {
     id: 'ex-int-2-2-mastery', lessonId: 'int-2-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -217,6 +262,11 @@ Umstellen liefert: $\\int u \\cdot v'\\,dx = u \\cdot v - \\int u' \\cdot v\\,dx
       '$x^{2} \\to x \\to 1$ (konstant) $\\to$ fertig. Also $2$ Schritte.',
       'Immer Produkt $\\text{Polynom} \\cdot e^{x}$ mit $u = $ Polynom.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Einmal reicht nicht: Nach dem ersten Durchlauf mit $u = x^{2}$ bleibt $\\int 2xe^{x}\\,dx$ übrig — das ist immer noch ein Produkt Polynom · $e^{x}$, also braucht es eine zweite partielle Integration. Insgesamt zwei Schritte, bis der Polynomgrad $0$ ist.',
+      '2': 'Dreimal ist einer zu viel: Nach zwei Durchläufen ist der Polynomgrad von $2$ auf $0$ gefallen und es bleibt $\\int 2e^{x}\\,dx$ — ein Grundintegral, keine weitere partielle Integration nötig.',
+      '3': 'Das Integral ist sehr wohl mit partieller Integration lösbar — jeder Durchlauf senkt den Polynomgrad um $1$. Nach $2$ Durchläufen: $\\int x^{2}e^{x}\\,dx = e^{x}(x^{2} - 2x + 2) + C$.',
+    },
   },
 
   // ── Lesson 3: Partialbruchzerlegung ───────────────────────────────────────
@@ -242,6 +292,11 @@ Umstellen liefert: $\\int u \\cdot v'\\,dx = u \\cdot v - \\int u' \\cdot v\\,dx
       'Bei $\\dfrac{1}{(x-1)(x+2)}$ etwa — wie integriert man das?',
       'Zerlegung in einfachere Teilbrüche der Form $\\dfrac{A}{x-a} + \\dfrac{B}{x-b}$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Für trigonometrische Funktionen gibt es eigene Techniken (Grundintegrale, Halbwinkelformeln, Substitution). Partialbruchzerlegung ist dagegen spezifisch für rationale Funktionen $\\dfrac{P(x)}{Q(x)}$ mit $\\deg(P) < \\deg(Q)$.',
+      '2': 'Für $\\int e^{x}\\,dx$ oder $\\int e^{ax}\\,dx$ genügt das Grundintegral bzw. lineare Substitution. Partialbruchzerlegung ist die passende Methode für rationale Funktionen $\\dfrac{P(x)}{Q(x)}$.',
+      '3': 'Nicht immer — sie ist nur sinnvoll, wenn der Integrand eine rationale Funktion $\\dfrac{P(x)}{Q(x)}$ ist. Für andere Formen (Produkte, Trigonometrie, Exponentialfunktionen) gibt es bessere Methoden.',
+    },
   },
   'ex-int-2-3-b': {
     id: 'ex-int-2-3-b', lessonId: 'int-2-3', type: 'multiple-choice',
@@ -270,6 +325,11 @@ Umstellen liefert: $\\int u \\cdot v'\\,dx = u \\cdot v - \\int u' \\cdot v\\,dx
       'Zähler bei Linearfaktor: Konstante (nicht $Ax$).',
       'Ansatz: $\\dfrac{A}{x-1} + \\dfrac{B}{x+1}$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Bei Linearfaktoren im Nenner muss der Zähler eine Konstante sein — nicht $Ax$. Der Ansatz $\\dfrac{Ax}{x-1}$ ist unterbestimmt und ließe sich wieder kürzen. Richtig: $\\dfrac{A}{x-1} + \\dfrac{B}{x+1}$ mit Konstanten $A, B$.',
+      '2': 'Der Ansatz $\\dfrac{Ax+B}{x^{2}-1}$ gilt nur für irreduzible quadratische Faktoren, also $x^{2}+px+q$ ohne reelle Nullstellen. $x^{2}-1 = (x-1)(x+1)$ ist aber zerlegbar — daher zwei einzelne Linearfaktoren.',
+      '3': 'Der Ansatz $\\dfrac{A}{x^{2}-1}$ vereinfacht nichts — es wäre derselbe Nenner wie vorher, nur mit Konstante $A$. Partialbruchzerlegung zerlegt gerade den Nenner in seine Linearfaktoren: $\\dfrac{A}{x-1} + \\dfrac{B}{x+1}$.',
+    },
   },
   'ex-int-2-3-c': {
     id: 'ex-int-2-3-c', lessonId: 'int-2-3', type: 'number-input',
@@ -320,6 +380,11 @@ Umstellen liefert: $\\int u \\cdot v'\\,dx = u \\cdot v - \\int u' \\cdot v\\,dx
       'Einsetzen: $x = 0 \\Rightarrow A = 1$; $x = -1 \\Rightarrow B = -1$.',
       'Integration jedes Teilbruchs ergibt $\\ln$-Funktion.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Vorzeichenfehler: Aus $1 = A(x+1) + Bx$ folgt mit $x = -1$: $1 = -B$, also $B = -1$ (negativ). Damit ist $\\int -\\dfrac{1}{x+1}\\,dx = -\\ln|x+1|$, also insgesamt $\\ln|x| - \\ln|x+1| + C$.',
+      '2': 'Logarithmenregel falsch angewendet: $\\ln|x| - \\ln|x+1| = \\ln\\left|\\dfrac{x}{x+1}\\right|$, nicht $\\ln|x(x+1)|$ (das wäre die Summe $\\ln|x| + \\ln|x+1|$). Richtig: $\\ln|x| - \\ln|x+1| + C$.',
+      '3': 'Du hast die Partialbruchzerlegung nicht integriert, sondern stehen gelassen. Aus $\\int \\dfrac{1}{x}\\,dx = \\ln|x|$ und $\\int \\dfrac{1}{x+1}\\,dx = \\ln|x+1|$ ergibt sich $\\ln|x| - \\ln|x+1| + C$.',
+    },
   },
 
   // ── Lesson 4: Gemischte Übungen ───────────────────────────────────────────
@@ -343,6 +408,11 @@ Umstellen liefert: $\\int u \\cdot v'\\,dx = u \\cdot v - \\int u' \\cdot v\\,dx
       '$v = -\\cos(x)$. Dann: $-x\\cos(x) - \\int (-\\cos(x))\\,dx$.',
       '$- \\int -\\cos(x)\\,dx = +\\int \\cos(x)\\,dx = \\sin(x)$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast bei $v = -\\cos(x)$ das Minus vergessen (erster Term) und im zweiten Term das Vorzeichen falsch. Mit $v\' = \\sin(x) \\Rightarrow v = -\\cos(x)$: $x(-\\cos(x)) - \\int (-\\cos(x))\\,dx = -x\\cos(x) + \\sin(x) + C$.',
+      '2': 'Die Vorzeichenkette stimmt nicht: Aus $-x\\cos(x) - \\int (-\\cos(x))\\,dx = -x\\cos(x) + \\int \\cos(x)\\,dx = -x\\cos(x) + \\sin(x) + C$. Der letzte Term ist $+\\sin$, nicht $-\\sin$.',
+      '3': 'Du hast $v$ falsch gesetzt: $v\' = \\sin(x)$ ergibt $v = -\\cos(x)$, nicht $\\sin(x)$. Richtig: $-x\\cos(x) + \\sin(x) + C$.',
+    },
   },
   'ex-int-2-4-b': {
     id: 'ex-int-2-4-b', lessonId: 'int-2-4', type: 'multiple-choice',
@@ -363,6 +433,11 @@ Umstellen liefert: $\\int u \\cdot v'\\,dx = u \\cdot v - \\int u' \\cdot v\\,dx
       '$du = 2\\,dx \\Rightarrow dx = du/2$. Also Faktor $1/2$.',
       'Grundintegral: $\\int e^{u}\\,du = e^{u}$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Du hast den Faktor $\\dfrac{1}{2}$ aus $dx = du/2$ vergessen. Ableitung als Probe: $(e^{2x})\' = 2e^{2x}$, nicht $e^{2x}$. Mit $u = 2x$: $\\int e^{2x}\\,dx = \\dfrac{1}{2}\\int e^{u}\\,du = \\dfrac{e^{2x}}{2} + C$.',
+      '2': 'Du hast abgeleitet statt integriert: $(e^{2x})\' = 2e^{2x}$, aber wir suchen die Stammfunktion. Mit $u = 2x$, $dx = du/2$: $\\int e^{2x}\\,dx = \\dfrac{e^{2x}}{2} + C$ (durch $2$ teilen, nicht mal $2$).',
+      '3': 'Durch $x$ zu teilen gibt es keine Regel für — das kommt aus einer falsch erinnerten Potenzregel. Korrekt per Substitution $u = 2x$: $\\int e^{2x}\\,dx = \\dfrac{e^{2x}}{2} + C$.',
+    },
   },
   'ex-int-2-4-c': {
     id: 'ex-int-2-4-c', lessonId: 'int-2-4', type: 'number-input',
@@ -410,6 +485,11 @@ Umstellen liefert: $\\int u \\cdot v'\\,dx = u \\cdot v - \\int u' \\cdot v\\,dx
       'Verwende eine Halbwinkel-Identität, um die Potenz loszuwerden.',
       '$\\sin^{2}(x) = (1 - \\cos(2x))/2$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Substitution alleine hilft nicht: Weder $u = \\sin(x)$ noch $u = \\cos(x)$ führen zu einer sauberen Form (kein $\\cos(x)\\,dx$ oder $-\\sin(x)\\,dx$ als Faktor). Besser ist die Halbwinkelformel $\\sin^{2}(x) = \\dfrac{1 - \\cos(2x)}{2}$.',
+      '1': 'Partialbruchzerlegung ist nur für rationale Funktionen $\\dfrac{P(x)}{Q(x)}$ gedacht — $\\sin^{2}(x)$ ist keine rationale Funktion. Stattdessen eignet sich die Halbwinkelformel $\\sin^{2}(x) = \\dfrac{1 - \\cos(2x)}{2}$.',
+      '3': '$\\sin^{2}(x)$ hat kein direktes Grundintegral — die Potenzregel gilt nur für $x^{n}$, nicht für Funktionspotenzen. Man muss die Potenz erst per Halbwinkelformel $\\sin^{2}(x) = \\dfrac{1 - \\cos(2x)}{2}$ auflösen.',
+    },
   },
   'ex-int-2-4-e': {
     id: 'ex-int-2-4-e', lessonId: 'int-2-4', type: 'multiple-choice',
@@ -436,6 +516,11 @@ Umstellen liefert: $\\int u \\cdot v'\\,dx = u \\cdot v - \\int u' \\cdot v\\,dx
       'Das ist genau der Zähler — also Spezialfall $\\int f\'/f\\,dx$.',
       'Regel: $\\int \\dfrac{f\'(x)}{f(x)}\\,dx = \\ln|f(x)| + C$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast mit der Potenzregel multipliziert statt mit $\\ln$-Regel: Aus $\\int \\dfrac{f\'(x)}{f(x)}\\,dx$ wird $\\ln|f(x)| + C$, nicht $f(x)^{2}$. Ableitung von $(x^{2}+3x+1)^{2}$ wäre $2(x^{2}+3x+1)(2x+3)$, nicht das Gesuchte.',
+      '2': 'Du hast die Substitution $u = f(x)$ falsch ausgewertet: $\\int \\dfrac{du}{u} = \\ln|u|$, nicht $\\dfrac{1}{u}$. Richtig: $\\int \\dfrac{f\'(x)}{f(x)}\\,dx = \\ln|f(x)| + C$.',
+      '3': 'Du hast den Zähler direkt integriert, aber die Bruchstruktur ignoriert. Das Integral ist nicht $\\int (2x+3)\\,dx$, sondern $\\int \\dfrac{2x+3}{x^{2}+3x+1}\\,dx = \\ln|x^{2}+3x+1| + C$ (wegen $f\'/f$-Struktur).',
+    },
   },
   'ex-int-2-4-mastery': {
     id: 'ex-int-2-4-mastery', lessonId: 'int-2-4', type: 'number-input', isMasteryCheck: true,

@@ -24,6 +24,11 @@ export const exercises_int_u3 = {
       'Fläche zwischen = Fläche unter der oberen - Fläche unter der unteren.',
       'Integriere die Differenz: $\\int [f(x) - g(x)]\\,dx$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Addieren der Integrale ergibt die Summe der beiden Flächen unter den Kurven, nicht die Fläche dazwischen. Für die Zwischen-Fläche muss abgezogen werden: $A = \\int_{a}^{b} [f(x) - g(x)]\\,dx$.',
+      '2': 'Das Produkt $f(x) \\cdot g(x)$ hat keine geometrische Bedeutung für Flächen zwischen Kurven — das ist eine erfundene Formel. Richtig ist die Differenz: $A = \\int_{a}^{b} [f(x) - g(x)]\\,dx$.',
+      '3': 'Die Beträge machen hier keinen Sinn, wenn $f(x) \\geq g(x)$ schon vorausgesetzt ist — und selbst bei negativen Funktionen wäre das falsch. Richtig: $A = \\int_{a}^{b} [f(x) - g(x)]\\,dx$ (Differenz ohne Beträge).',
+    },
   },
   'ex-int-3-1-b': {
     id: 'ex-int-3-1-b', lessonId: 'int-3-1', type: 'number-input',
@@ -91,6 +96,11 @@ export const exercises_int_u3 = {
       'Für die Fläche muss man die Abschnitte getrennt berechnen und Beträge addieren.',
       'Jeder "Buckel" hat Fläche $2$, zusammen $4$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Das ist das Integral $\\int_{0}^{2\\pi}\\sin(x)\\,dx = 0$ — positive und negative Beiträge heben sich auf. Fläche ist aber immer positiv, also müssen auf jedem Vorzeichenabschnitt die Beträge getrennt addiert werden: $|2| + |-2| = 4$.',
+      '1': 'Du hast nur den positiven Halbbogen $[0, \\pi]$ berechnet: $\\int_{0}^{\\pi}\\sin(x)\\,dx = 2$. Der zweite Bogen auf $[\\pi, 2\\pi]$ liefert noch einmal Fläche $|{-2}| = 2$, zusammen also $4$.',
+      '3': 'Der Wert $\\pi$ passt nicht zur Geometrie — die Fläche unter einer Sinus-Halbwelle ist $2$, nicht $\\pi$. Über $[0, 2\\pi]$ ergibt die Gesamtfläche (mit Beträgen) $2 + 2 = 4$.',
+    },
   },
   'ex-int-3-1-mastery': {
     id: 'ex-int-3-1-mastery', lessonId: 'int-3-1', type: 'number-input', isMasteryCheck: true,
@@ -141,6 +151,11 @@ export const exercises_int_u3 = {
       'Kreisfläche = $\\pi r^{2}$.',
       'Aufsummieren über das Intervall: Integral von $\\pi \\cdot [f(x)]^{2}$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Das wäre die Fläche unter der Kurve (2D), nicht das Volumen (3D). Bei der Rotation werden Kreisscheiben mit Radius $f(x)$ aufgeschichtet, Kreisfläche $\\pi r^{2}$: $V = \\pi \\int_{a}^{b} [f(x)]^{2}\\,dx$.',
+      '2': '$2\\pi$ gehört zur Mantelflächen- oder Zylinderschalenmethode (Rotation um die $y$-Achse), nicht zur Scheibenmethode. Bei Rotation um die $x$-Achse: $V = \\pi \\int_{a}^{b} [f(x)]^{2}\\,dx$ — mit Quadrat.',
+      '3': 'Das Quadrat von $f(x)$ fehlt — die Kreisfläche ist $\\pi r^{2}$, nicht $\\pi r$. Richtig: $V = \\pi \\int_{a}^{b} [f(x)]^{2}\\,dx$. Ohne Quadrat hätte $V$ die falsche Dimension.',
+    },
   },
   'ex-int-3-2-b': {
     id: 'ex-int-3-2-b', lessonId: 'int-3-2', type: 'number-input',
@@ -230,6 +245,11 @@ export const exercises_int_u3 = {
       'Bei veränderlicher Kraft muss "aufaddiert" werden $\\to$ Integral.',
       'Einheit: Arbeit hat die Einheit $\\mathrm{J} = \\mathrm{N} \\cdot \\mathrm{m}$.',
     ],
+    wrongAnswerExplanations: {
+      '0': '$W = F \\cdot s$ gilt nur für konstante Kraft. Wenn $F$ von $x$ abhängt, muss über den Weg integriert werden: $W = \\int_{a}^{b} F(x)\\,dx$. Beispiel Feder: $F(x) = kx$ ergibt $W = \\dfrac{1}{2}kx^{2}$, nicht $F \\cdot s$.',
+      '2': 'Die Formel $F(b) - F(a)$ ist der Hauptsatz angewandt auf die Stammfunktion von $F$ — aber hier wird $F$ als Kraft interpretiert, nicht als Stammfunktion. Richtig: $W = \\int_{a}^{b} F(x)\\,dx$ (Kraft aufsummieren, nicht auswerten).',
+      '3': 'Die Ableitung $\\dfrac{d}{dx}F(x)$ gibt die Steigung der Kraft, nicht die Arbeit. Arbeit ist das aufaddierte Produkt Kraft $\\cdot$ Weg, also Integration: $W = \\int_{a}^{b} F(x)\\,dx$.',
+    },
   },
   'ex-int-3-3-b': {
     id: 'ex-int-3-3-b', lessonId: 'int-3-3', type: 'number-input',
@@ -273,6 +293,11 @@ export const exercises_int_u3 = {
       'Jeder Streifen bei $x$ hat die Fläche $f(x)\\,dx$ als Gewicht.',
       '$\\bar{x} = \\dfrac{\\text{Moment}}{\\text{Fläche}} = \\dfrac{\\int x \\cdot f(x)\\,dx}{\\int f(x)\\,dx}$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Das ist die Gesamtfläche $A$, nicht der Schwerpunkt. Der Schwerpunkt ist der gewichtete Mittelwert: $\\bar{x} = \\dfrac{1}{A}\\int_{a}^{b} x \\cdot f(x)\\,dx$ — also Moment geteilt durch Fläche.',
+      '2': 'Die Intervallmitte $(a+b)/2$ gilt nur für symmetrische Flächen (z.B. Rechtecke). Bei allgemeinen Funktionen $f(x)$ verschiebt sich der Schwerpunkt dorthin, wo mehr Fläche ist: $\\bar{x} = \\dfrac{1}{A}\\int_{a}^{b} x \\cdot f(x)\\,dx$.',
+      '3': 'Der Funktionswert bei der Intervallmitte ist ein $y$-Wert, keine $x$-Koordinate. Der $x$-Schwerpunkt ist eine gewichtete Mittelung der $x$-Positionen: $\\bar{x} = \\dfrac{1}{A}\\int_{a}^{b} x \\cdot f(x)\\,dx$.',
+    },
   },
   'ex-int-3-3-mastery': {
     id: 'ex-int-3-3-mastery', lessonId: 'int-3-3', type: 'number-input', isMasteryCheck: true,

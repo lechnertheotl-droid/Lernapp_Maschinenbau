@@ -13,6 +13,11 @@ export const exercises_la_u1 = {
       'Merke: $m \\times n$ bedeutet "$m$ Zeilen, $n$ Spalten".',
       'Setze $m = 3$ und $n = 2$ ein.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Du hast Zeilen und Spalten vertauscht. $2 \\times 3$ würde 2 Zeilen und 3 Spalten bedeuten. Die Konvention lautet $m \\times n$ mit $m$ = Zeilen zuerst, $n$ = Spalten.',
+      '2': 'Eine $3 \\times 3$-Matrix hätte 3 Zeilen und 3 Spalten (quadratisch). Hier sind aber nur 2 Spalten gegeben. Die korrekte Dimension ist Zeilen $\\times$ Spalten $= 3 \\times 2$.',
+      '3': 'Du hast die Einträge gezählt ($3 \\cdot 2 = 6$) und daraus $6 \\times 1$ gemacht. Die Dimension beschreibt aber die Struktur (Zeilen $\\times$ Spalten), nicht die Gesamtzahl der Elemente.',
+    },
   },
   'ex-la-1-1-b': {
     id: 'ex-la-1-1-b', lessonId: 'la-1-1', type: 'multiple-choice',
@@ -30,6 +35,11 @@ export const exercises_la_u1 = {
       'Es muss gelten: $A \\cdot I = A$ für jede passende Matrix $A$.',
       'Nur die Hauptdiagonale ist mit Einsen besetzt, alle anderen Einträge sind 0.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Die $1$-Matrix (alle Einträge $1$) ist nicht die Einheitsmatrix. Probe: $A \\cdot \\text{(1-Matrix)}$ ergibt nicht $A$, sondern vermischt alle Zeilen. Die Einheitsmatrix hat Einsen nur auf der Hauptdiagonale.',
+      '2': 'Das ist die Nullmatrix $0$ — sie ist das neutrale Element der Addition ($A + 0 = A$), nicht der Multiplikation. Es gilt $A \\cdot 0 = 0$, also bleibt $A$ nicht erhalten.',
+      '3': 'Das ist $3 \\cdot I$, also die Einheitsmatrix skaliert um Faktor 3. Hier gilt $A \\cdot (3I) = 3A \\neq A$. Die Einheitsmatrix muss exakt Einsen (nicht Dreien) auf der Diagonale haben.',
+    },
   },
   'ex-la-1-1-c': {
     id: 'ex-la-1-1-c', lessonId: 'la-1-1', type: 'multiple-choice',
@@ -47,6 +57,11 @@ export const exercises_la_u1 = {
       'Außerhalb der Hauptdiagonale: nur Nullen.',
       'Die Einheitsmatrix ist ein Spezialfall einer Diagonalmatrix.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Eine Matrix mit lauter gleichen Einträgen ist keine Diagonalmatrix — sie hat überall Einträge, nicht nur auf der Diagonale. Definition: Eine Diagonalmatrix hat $a_{ij} = 0$ für $i \\neq j$.',
+      '2': 'Eine Matrix mit nur einer Zeile ist ein Zeilenvektor ($1 \\times n$-Matrix), hat aber nichts mit "Diagonalmatrix" zu tun. Eine Diagonalmatrix ist stets quadratisch.',
+      '3': 'Du hast die Definition umgekehrt: Bei einer Diagonalmatrix sind die Einträge AUSSERHALB der Diagonale gleich $0$, nicht ON der Diagonale. Auf der Hauptdiagonale dürfen beliebige Werte stehen.',
+    },
   },
   'ex-la-1-1-d': {
     id: 'ex-la-1-1-d', lessonId: 'la-1-1', type: 'multiple-choice',
@@ -59,6 +74,11 @@ export const exercises_la_u1 = {
       'Konvention: $a_{ij}$ — erst Zeile $i$, dann Spalte $j$.',
       'Hier: Zeile 1 ist $[2, 5]$. Davon das zweite Element nehmen.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Das ist $a_{11}$ (Zeile 1, Spalte 1), nicht $a_{12}$. Der zweite Index $j = 2$ bedeutet Spalte 2, nicht Spalte 1. In Zeile 1 ist Spalte 2 der Wert $5$.',
+      '2': 'Das ist $a_{21}$ (Zeile 2, Spalte 1). Du hast die Indizes vertauscht: $a_{ij}$ = Zeile $i$, Spalte $j$ — erst Zeile, dann Spalte.',
+      '3': 'Das ist $a_{22}$ (Zeile 2, Spalte 2). Hier gesucht war aber $a_{12}$: erster Index $1$ = Zeile 1, nicht Zeile 2.',
+    },
   },
   'ex-la-1-1-mastery': {
     id: 'ex-la-1-1-mastery', lessonId: 'la-1-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -80,6 +100,11 @@ export const exercises_la_u1 = {
       '$a_{ij}$: erster Index = Zeile, zweiter = Spalte.',
       '$a_{23}$ = Zeile 2, Spalte 3. Zeile 2 ist $[1, 3, 9]$ — das 3. Element ist $9$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast Zeilen und Spalten vertauscht: $A$ hat 2 Zeilen und 3 Spalten, also $2 \\times 3$ (nicht $3 \\times 2$). Die Konvention lautet immer Zeilen zuerst.',
+      '2': 'Dimension stimmt, aber $a_{23} = 3$ ist Spalte 2 (nicht Spalte 3) von Zeile 2. In Zeile 2 $[1, 3, 9]$ ist Spalte 3 der Wert $9$, nicht $3$.',
+      '3': 'Beide Angaben falsch: Dimension $3 \\times 2$ vertauscht Zeilen/Spalten (korrekt: $2 \\times 3$), und $a_{23} = 7$ wäre Zeile 1 Spalte 3, nicht Zeile 2 Spalte 3. Die Indizes $a_{ij}$ bedeuten Zeile $i$, Spalte $j$.',
+    },
   },
 
   // ── Lesson 2: Matrizenrechnung ──────────────────────────────────────────────
@@ -99,6 +124,11 @@ export const exercises_la_u1 = {
       'Regel: $(A+B)_{ij} = a_{ij} + b_{ij}$ — jedes Element einzeln.',
       'Berechne alle vier Einträge separat und vergleiche mit den Optionen.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Das ist elementweise Multiplikation ($1 \\cdot 5, 2 \\cdot 6, 3 \\cdot 7, 4 \\cdot 8$), nicht Addition. Bei $A + B$ addiert man elementweise: $(A+B)_{ij} = a_{ij} + b_{ij}$.',
+      '2': 'Du hast nur die erste Zeile korrekt addiert ($1+5=6$, $2+6=8$), dann aber Zeile 2 von $B$ kopiert statt zu addieren. Auch Zeile 2 muss elementweise addiert werden: $3+7=10$, $4+8=12$.',
+      '3': 'Du hast nur die zweite Zeile addiert und die erste von $A$ kopiert. Matrixaddition muss ALLE Elemente addieren: $(A+B)_{ij} = a_{ij} + b_{ij}$ für alle $i, j$.',
+    },
   },
   'ex-la-1-2-b': {
     id: 'ex-la-1-2-b', lessonId: 'la-1-2', type: 'multiple-choice',
@@ -116,6 +146,11 @@ export const exercises_la_u1 = {
       'Regel: $(c \\cdot A)_{ij} = c \\cdot a_{ij}$ — jedes Element mit dem Skalar.',
       'Multipliziere alle vier Einträge mit $3$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Du hast nur das erste Element mit $3$ multipliziert und die anderen unverändert gelassen. Bei Skalarmultiplikation wird JEDES Element mit dem Skalar multipliziert: $(c \\cdot A)_{ij} = c \\cdot a_{ij}$.',
+      '2': 'Du hast $3$ zu jedem Element ADDIERT ($1+3, 2+3, 3+3, 4+3$) statt zu multiplizieren. $3 \\cdot A$ bedeutet Multiplikation, nicht Addition.',
+      '3': 'Nur das Element $a_{22}$ mit $3$ multipliziert, der Rest unverändert. Bei Skalarmultiplikation muss jeder Eintrag der Matrix mit dem Skalar multipliziert werden.',
+    },
   },
   'ex-la-1-2-c': {
     id: 'ex-la-1-2-c', lessonId: 'la-1-2', type: 'multiple-choice',
@@ -133,6 +168,11 @@ export const exercises_la_u1 = {
       'Sogar bei Drehmatrizen im Raum gilt: erst $A$ dann $B$ ist anders als erst $B$ dann $A$.',
       'Gegenbeispiel reicht: ein einzelnes Paar $(A, B)$ mit $AB \\neq BA$ widerlegt die Kommutativität.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Kommutativ-Trugschluss: Matrizen sind keine gewöhnlichen Zahlen — das Kommutativgesetz $AB = BA$ gilt NICHT allgemein. Ein einfaches Gegenbeispiel mit $2\\times 2$-Matrizen widerlegt das sofort.',
+      '2': 'Auch für quadratische Matrizen gilt $AB \\neq BA$ im Allgemeinen. Quadratische Form bedeutet nur, dass beide Produkte existieren — nicht, dass sie gleich sind. Beispiel: Drehmatrizen im 3D.',
+      '3': 'Matrizen kann man sehr wohl multiplizieren — vorausgesetzt die inneren Dimensionen stimmen ($m \\times n$ mal $n \\times p$ ergibt $m \\times p$). Was nicht gilt, ist die Kommutativität.',
+    },
   },
   'ex-la-1-2-d': {
     id: 'ex-la-1-2-d', lessonId: 'la-1-2', type: 'number-input',
@@ -171,6 +211,11 @@ export const exercises_la_u1 = {
       '$(m \\times n) \\cdot (n \\times p) = (m \\times p)$ — die inneren Dimensionen müssen gleich sein.',
       'Hier: $A = (2 \\times 3)$, $B = (3 \\times 4)$. Innere Dimensionen $3 = 3$ ✓, Ergebnis $(2 \\times 4)$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast die inneren statt der äußeren Dimensionen als Ergebnis genommen. Regel: $(m \\times n) \\cdot (n \\times p) = (m \\times p)$. Die inneren ($n = 3$) müssen nur übereinstimmen; das Ergebnis hat die äußeren Dimensionen $m \\times p = 2 \\times 4$.',
+      '2': 'Das ist die Dimension von $A$ selbst. Die Multiplikation $A \\cdot B$ ergibt eine neue Matrix der Größe $m \\times p$ ($m$ von $A$, $p$ von $B$), nicht einfach die Dimension von $A$.',
+      '3': 'Die Multiplikation ist sehr wohl möglich: die inneren Dimensionen sind $3 = 3$, also passen sie zusammen. Nur wenn die inneren Dimensionen ungleich wären ($m \\times n$ mal $k \\times p$ mit $n \\neq k$), wäre das Produkt undefiniert.',
+    },
   },
 
   // ── Lesson 3: Transponierte und Inverse ─────────────────────────────────────
@@ -190,6 +235,11 @@ export const exercises_la_u1 = {
       'Spiegelung an der Hauptdiagonale — Zeilen werden zu Spalten.',
       'Element-Regel: $(A^T)_{ij} = a_{ji}$ — Indizes vertauschen.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Das ist eine Drehung um 180° (Antidiagonal-Spiegelung), nicht die Transponierte. $A^T$ spiegelt an der HAUPT-Diagonale (oben-links nach unten-rechts), nicht an der Nebendiagonale.',
+      '2': 'Das ist $A$ selbst, unverändert. Das Transponieren tauscht Zeilen und Spalten: $(A^T)_{ij} = a_{ji}$. Nur symmetrische Matrizen ($A = A^T$) würden unverändert bleiben — $A$ hier ist aber nicht symmetrisch.',
+      '3': 'Das ist $-A$ (Vorzeichen aller Einträge umgedreht). Transponieren hat nichts mit Vorzeichen zu tun, sondern tauscht Zeilen und Spalten.',
+    },
   },
   'ex-la-1-3-b': {
     id: 'ex-la-1-3-b', lessonId: 'la-1-3', type: 'multiple-choice',
@@ -207,6 +257,11 @@ export const exercises_la_u1 = {
       'Übertrage das auf Matrizen — was ist die "Eins" der Matrizenmultiplikation?',
       'Die Eins ist die Einheitsmatrix $I$, also $A \\cdot A^{-1} = I$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Das wäre die Definition eines "Nullteilers" — das neutrale Element der Multiplikation ist aber die Einheitsmatrix $I$, nicht die Nullmatrix. Analog zu $5 \\cdot \\frac{1}{5} = 1$ (nicht $= 0$).',
+      '1': 'Die Inverse ist über die Multiplikation definiert, nicht über die Addition. Bei Zahlen ist $\\frac{1}{5}$ nicht $1 - 5 = -4$, sondern das multiplikative Inverse. Richtig: $A \\cdot A^{-1} = I$.',
+      '3': '$-A$ ist das additive Inverse ($A + (-A) = 0$), aber nicht das multiplikative. Die Inverse $A^{-1}$ ist so definiert, dass $A \\cdot A^{-1} = I$ ergibt — das entspricht dem Kehrwert bei Zahlen.',
+    },
   },
   'ex-la-1-3-c': {
     id: 'ex-la-1-3-c', lessonId: 'la-1-3', type: 'number-input',
@@ -237,6 +292,11 @@ export const exercises_la_u1 = {
       'Im Nenner: $A^{-1} = \\frac{1}{\\det(A)} \\cdot (\\ldots)$.',
       'Welcher Wert von $\\det(A)$ macht das undefiniert?',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Die Einheitsmatrix $I$ ist ihre eigene Inverse: $I^{-1} = I$. Es gilt $\\det(I) = 1 \\neq 0$, also ist $I$ invertierbar.',
+      '1': '$\\det(A) = 5 \\neq 0$ bedeutet: Matrix ist invertierbar! Die Formel $A^{-1} = \\frac{1}{\\det A} \\cdot \\text{adj}(A)$ funktioniert, solange $\\det A \\neq 0$.',
+      '3': 'Eine Diagonalmatrix mit Einträgen $2$ und $3$ hat $\\det = 2 \\cdot 3 = 6 \\neq 0$, ist also invertierbar. Die Inverse ist $\\text{diag}(1/2, 1/3)$.',
+    },
   },
   'ex-la-1-3-mastery': {
     id: 'ex-la-1-3-mastery', lessonId: 'la-1-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -254,6 +314,11 @@ export const exercises_la_u1 = {
       'Formel für 2×2-Inverse: $A^{-1} = \\frac{1}{\\det(A)} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}$.',
       'Tausche die Diagonalelemente, kehre die Vorzeichen der Nebendiagonale um, teile durch $\\det$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast die Diagonalelemente $a, d$ NICHT getauscht, nur die Vorzeichen der Nebendiagonale gedreht. Formel: $A^{-1} = \\frac{1}{\\det A} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}$ — erst TAUSCHEN, dann Nebendiagonale negieren.',
+      '2': 'Du hast nur $a$ und $d$ getauscht, aber die Vorzeichen der Nebendiagonale NICHT umgedreht. Die Formel erfordert beides: Diagonale tauschen UND Nebendiagonale negieren.',
+      '3': 'Du hast alle Vorzeichen umgedreht (wie bei $-A$). Die Formel: $A^{-1} = \\frac{1}{\\det A} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}$ — nur $b$ und $c$ bekommen ein Minus, nicht $a$ und $d$.',
+    },
   },
 
   // ── Lesson 4: Determinanten ─────────────────────────────────────────────────
@@ -286,6 +351,11 @@ export const exercises_la_u1 = {
       'Die Determinante = Flächeninhalt des Parallelogramms aus den Spaltenvektoren.',
       'Wann hat ein Parallelogramm Fläche $0$?',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Senkrechte Spalten (orthogonal) ergeben ein maximales Parallelogramm und $\\det \\neq 0$. Beispiel: Einheitsmatrix hat orthogonale Spalten und $\\det = 1$. $\\det = 0$ heißt im Gegenteil, dass die Spalten linear abhängig sind.',
+      '2': '$A = I$ hat $\\det(I) = 1 \\neq 0$, nicht $0$. Die Einheitsmatrix ist invertierbar und bildet das Einheitsquadrat unverändert ab.',
+      '3': 'Das Vorzeichen der Einträge hat nichts mit $\\det = 0$ zu tun. Zum Beispiel hat $\\begin{pmatrix} 1 & 2 \\\\ 2 & 4 \\end{pmatrix}$ nur positive Einträge, aber $\\det = 0$ wegen linearer Abhängigkeit.',
+    },
   },
   'ex-la-1-4-c': {
     id: 'ex-la-1-4-c', lessonId: 'la-1-4', type: 'number-input',
@@ -316,6 +386,11 @@ export const exercises_la_u1 = {
       'Sie ist multiplikativ — was bedeutet das genau?',
       'Bei der Summe gilt KEINE einfache Regel — daher Vorsicht mit Antworten zu $A + B$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Additivität gilt NICHT für die Determinante. Bei einem Produkt $A \\cdot B$ ist die Determinante multiplikativ: $\\det(AB) = \\det A \\cdot \\det B$, nicht $\\det A + \\det B$.',
+      '2': 'Für eine SUMME gibt es keine einfache Regel: $\\det(A + B) \\neq \\det A \\cdot \\det B$ und $\\neq \\det A + \\det B$. Multiplikativität gilt nur für das Produkt $A \\cdot B$.',
+      '3': 'Falsches Vorzeichen: $\\det(A^T) = +\\det(A)$, nicht $-\\det(A)$. Transponieren lässt die Determinante unverändert (das Minus-Zeichen kommt bei Zeilenvertauschung, nicht bei Transposition).',
+    },
   },
   'ex-la-1-4-mastery': {
     id: 'ex-la-1-4-mastery', lessonId: 'la-1-4', type: 'number-input', isMasteryCheck: true,
@@ -348,6 +423,11 @@ export const exercises_la_u1 = {
       'Multiplikation mit einem Skalar $\\lambda$ ändert nur die Länge, nicht die Richtung.',
       'Also bleibt der Vektor in Richtung gleich — und $\\lambda$ ist der Streckfaktor.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Das wäre $A \\vec{x} = \\vec{0}$, also $\\lambda = 0$. Die allgemeine Eigenwertgleichung erlaubt aber beliebige $\\lambda$ (nicht nur $0$). $\\lambda = 0$ ist ein Spezialfall (singuläre Matrix), nicht die allgemeine Bedeutung.',
+      '2': 'Die Gleichung $A\\vec{x} = \\lambda \\vec{x}$ sagt nichts direkt über Invertierbarkeit. $A$ kann durchaus invertierbar sein und trotzdem Eigenvektoren haben — die meisten Matrizen haben beides.',
+      '3': '$\\vec{x} = \\vec{0}$ erfüllt die Gleichung trivial für jedes $\\lambda$ und wird deshalb per Definition AUSGESCHLOSSEN. Eigenvektoren müssen $\\vec{x} \\neq \\vec{0}$ sein — sonst wäre jede Matrix trivial "eigen".',
+    },
   },
   'ex-la-1-5-b': {
     id: 'ex-la-1-5-b', lessonId: 'la-1-5', type: 'multiple-choice',
@@ -365,6 +445,11 @@ export const exercises_la_u1 = {
       'Damit es eine nicht-triviale Lösung $\\vec{x} \\neq \\vec{0}$ gibt, muss $(A - \\lambda I)$ singulär sein.',
       'Singulär $\\Leftrightarrow \\det(A - \\lambda I) = 0$ — das charakteristische Polynom.',
     ],
+    wrongAnswerExplanations: {
+      '0': '$A^{-1}$ allein liefert keine Eigenwerte direkt. Zwar gilt: Wenn $\\lambda$ Eigenwert von $A$ ist, dann $1/\\lambda$ von $A^{-1}$. Aber das Rezept zum Berechnen ist $\\det(A - \\lambda I) = 0$, nicht die Inverse.',
+      '2': 'Transponieren ist nicht die Standardmethode. $A$ und $A^T$ haben zwar dieselben Eigenwerte (weil $\\det A = \\det A^T$), aber gelöst wird die Gleichung $\\det(A - \\lambda I) = 0$.',
+      '3': '$\\det(A) = 0$ sagt nur, ob $0$ ein Eigenwert ist — nicht welche anderen Eigenwerte existieren. Für ALLE Eigenwerte braucht man $\\det(A - \\lambda I) = 0$, das charakteristische Polynom in $\\lambda$.',
+    },
   },
   'ex-la-1-5-c': {
     id: 'ex-la-1-5-c', lessonId: 'la-1-5', type: 'number-input',
@@ -395,6 +480,11 @@ export const exercises_la_u1 = {
       '$A$ ist obere Dreiecksmatrix — was bedeutet das für die Eigenwerte?',
       'Bei Dreiecksmatrizen sind die Diagonalelemente direkt die Eigenwerte (ohne Rechnung).',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast vermutlich den Off-Diagonal-Eintrag $1$ mit den Eigenwerten verwechselt und $2 \\cdot 3 = 6$ als zweiten Eigenwert genommen. Bei Dreiecksmatrizen stehen die Eigenwerte DIREKT auf der Hauptdiagonale: $\\lambda_1 = 2$, $\\lambda_2 = 3$.',
+      '2': 'Summe $0 + 5 = 5$ ist nicht die Spur $2 + 3 = 5$ — aber die einzelnen Eigenwerte sind nicht $0$ und $5$. Bei der oberen Dreiecksmatrix $A$ sind die Eigenwerte gleich den Diagonalelementen.',
+      '3': 'Du hast die Vorzeichen der Eigenwerte umgedreht. $\\det(A - \\lambda I) = 0$ liefert positive Werte $\\lambda = 2, 3$, nicht $-2, -3$. Das Minus kommt nur in der Klammer $(2 - \\lambda)$ vor, nicht im Endergebnis.',
+    },
   },
 }
 
