@@ -128,6 +128,11 @@ export const exercises_vek_u1 = {
       'Ein Vektor braucht zwei Informationen: "wie viel" und "wohin".',
       'Beispiele: Kraft, Geschwindigkeit, Verschiebung sind Vektoren. Masse, Temperatur, Zeit sind Skalare.',
     ],
+    wrongAnswerExplanations: {
+      0: '"Größer" ist kein mathematisches Unterscheidungskriterium — ein Skalar wie $T = 1000\\,°\\text{C}$ kann durchaus betragsmäßig größer sein als ein Vektor wie $\\vec{v} = (3, 4)$. Der echte Unterschied ist die Richtung: Vektoren haben Betrag UND Richtung, Skalare nur Betrag.',
+      2: 'Vektoren können sehr wohl addiert werden — komponentenweise: $\\vec{a} + \\vec{b} = (a_x + b_x,\\, a_y + b_y)$. Die eigentliche Unterscheidung zu Skalaren liegt darin, dass Vektoren zusätzlich eine Richtung tragen.',
+      3: 'Das ist umgekehrt falsch: Sowohl Skalare als auch Vektoren können Einheiten haben (Kraft in N, Masse in kg). Das Unterscheidungsmerkmal ist die Richtung, nicht die Dimensionalität.',
+    },
   },
   'ex-vek-1-1-b': {
     id: 'ex-vek-1-1-b', lessonId: 'vek-1-1', type: 'multiple-choice',
@@ -148,6 +153,11 @@ export const exercises_vek_u1 = {
       'Formel: $|\\vec{a}| = \\sqrt{a_x^{2} + a_y^{2}}$.',
       'Rechne $3^{2} + 4^{2} = 25$, dann Wurzel ziehen.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Du hast die Komponenten einfach addiert: $3 + 4 = 7$. Das ist nicht die Vektorlänge — der Vektor bildet mit seinen Komponenten ein rechtwinkliges Dreieck, also gilt Pythagoras: $|\\vec{a}| = \\sqrt{3^{2} + 4^{2}} = \\sqrt{25} = 5$.',
+      2: 'Du hast $3 + 4 = 7$ gerechnet und dann die Wurzel gezogen. Richtig wird aber erst *quadriert* und *summiert*, dann die Wurzel gezogen: $\\sqrt{3^{2} + 4^{2}} = \\sqrt{9 + 16} = \\sqrt{25} = 5$.',
+      3: 'Das ist $|\\vec{a}|^{2}$, also die Summe $3^{2} + 4^{2} = 25$ — die Wurzel am Ende wurde vergessen. Die Betragsformel lautet $|\\vec{a}| = \\sqrt{a_x^{2} + a_y^{2}} = \\sqrt{25} = 5$.',
+    },
     visualization: {
       id: 'vector-diagram',
       params: { vectors: [{ x: 3, y: 4, color: '#0ea5e9', label: 'a=(3,4), |a|=5' }], showComponents: true },
@@ -174,6 +184,11 @@ export const exercises_vek_u1 = {
       'Formel: $(a_x + b_x,\\; a_y + b_y)$.',
       'Achte auf das Vorzeichen: $3 + (-1) = 2$, nicht $4$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Du hast statt addiert subtrahiert: $2-1 = 1$ und $3-(-1) = 4$. Vektoraddition ist aber komponentenweise *addieren*: $\\vec{a} + \\vec{b} = (a_x + b_x,\\; a_y + b_y) = (2+1,\\; 3+(-1)) = (3, 2)$.',
+      2: 'Das sieht aus wie das komponentenweise Produkt ($2 \\cdot 1,\\; 3 \\cdot (-1)$) — aber Vektoren werden komponentenweise *addiert*, nicht multipliziert: $(2+1,\\; 3+(-1)) = (3, 2)$.',
+      3: 'Du hast das Minuszeichen bei $b_y = -1$ ignoriert und $3 + 1 = 4$ gerechnet. Richtig ist $3 + (-1) = 2$, Ergebnis also $(3, 2)$.',
+    },
     visualization: {
       id: 'vector-diagram',
       params: {
@@ -214,6 +229,11 @@ export const exercises_vek_u1 = {
       'Betrag: $|\\vec{a}| = \\sqrt{a_x^2 + a_y^2}$. Homogenität: $|k\\vec{a}| = |k| |\\vec{a}|$.',
       '$|\\vec{a}| = \\sqrt{9+16} = 5 \\Rightarrow |2\\vec{a}| = 10$. 3-4-5-Tripel!',
     ],
+    wrongAnswerExplanations: {
+      1: 'Das ist $|\\vec{a}| = 5$ selbst — du hast den Faktor $2$ vergessen. Nach der Homogenitätsregel gilt $|k\\vec{a}| = |k| \\cdot |\\vec{a}|$, also $|2\\vec{a}| = 2 \\cdot 5 = 10$.',
+      2: 'Das sieht nach $|2| + |\\vec{a}| = 2 + 5 = 7$ aus — Skalar und Betrag wurden addiert statt multipliziert. Richtig: $|k\\vec{a}| = |k| \\cdot |\\vec{a}| = 2 \\cdot 5 = 10$.',
+      3: 'Du hast $2 \\cdot (3+4) = 14$ gerechnet — Komponenten addiert statt den Betrag via Pythagoras gebildet. Richtig: $2\\vec{a} = (6,8)$, dann $|2\\vec{a}| = \\sqrt{36+64} = \\sqrt{100} = 10$.',
+    },
     visualization: {
       id: 'vector-diagram',
       params: {
@@ -246,6 +266,11 @@ export const exercises_vek_u1 = {
       'Formel: $\\vec{a} \\cdot \\vec{b} = a_x b_x + a_y b_y$ (in 2D).',
       'Achte auf das Vorzeichen bei $b_y = -2$: $3 \\cdot (-2) = -6$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das ist das *komponentenweise Produkt* $(a_x b_x,\\; a_y b_y) = (2, -6)$ — aber das Skalarprodukt summiert danach zu einer Zahl. Formel: $\\vec{a} \\cdot \\vec{b} = a_x b_x + a_y b_y = 2 + (-6) = -4$.',
+      2: 'Du hast das Minuszeichen bei $b_y = -2$ ignoriert und $2 \\cdot 1 + 3 \\cdot 2 = 8$ gerechnet. Richtig ist $3 \\cdot (-2) = -6$, also $\\vec{a} \\cdot \\vec{b} = 2 - 6 = -4$.',
+      3: 'Das sieht nach $2 + 3 = 5$ aus — einfach die Komponenten von $\\vec{a}$ addiert. Das Skalarprodukt lautet aber $a_x b_x + a_y b_y = 2\\cdot 1 + 3\\cdot(-2) = -4$.',
+    },
   },
   'ex-vek-1-2-b': {
     id: 'ex-vek-1-2-b', lessonId: 'vek-1-2', type: 'multiple-choice',
@@ -271,6 +296,11 @@ export const exercises_vek_u1 = {
       'Damit $|\\vec{a}| \\cdot |\\vec{b}| \\cdot \\cos(\\varphi) = 0$ wird, muss $\\cos(\\varphi) = 0$ sein.',
       'Bei welchem Winkel ist $\\cos(\\varphi) = 0$? $\\varphi = 90°$ (senkrecht).',
     ],
+    wrongAnswerExplanations: {
+      0: 'Gleiche Länge $|\\vec{a}| = |\\vec{b}|$ macht das Skalarprodukt nicht null — es hängt vom Winkel ab. Aus $|\\vec{a}||\\vec{b}|\\cos\\varphi = 0$ folgt (bei $|\\vec{a}|, |\\vec{b}| \\neq 0$) zwingend $\\cos\\varphi = 0$, also $\\varphi = 90°$.',
+      2: 'Gleiche Richtung bedeutet $\\varphi = 0°$ und $\\cos(0°) = 1$, also $\\vec{a} \\cdot \\vec{b} = |\\vec{a}||\\vec{b}| > 0$ — maximales Skalarprodukt, nicht null. Null tritt nur bei $\\cos\\varphi = 0$, also $\\varphi = 90°$ auf.',
+      3: 'Bei Parallelität ist $\\varphi = 0°$ oder $180°$, also $\\cos\\varphi = \\pm 1$ und $\\vec{a} \\cdot \\vec{b} = \\pm|\\vec{a}||\\vec{b}| \\neq 0$. Null-Skalarprodukt entspricht exakt dem Gegenteil — Orthogonalität ($\\varphi = 90°$).',
+    },
     visualization: {
       id: 'vector-diagram',
       params: {
@@ -305,6 +335,11 @@ export const exercises_vek_u1 = {
       '$\\vec{a} \\cdot \\vec{b} = 1$, $|\\vec{a}| = 1$, $|\\vec{b}| = \\sqrt{2}$.',
       '$\\cos(\\varphi) = 1/\\sqrt{2}$ — welcher Standardwinkel hat diesen Kosinus?',
     ],
+    wrongAnswerExplanations: {
+      0: '$0°$ würde $\\cos\\varphi = 1$ verlangen, also $\\vec{a} \\parallel \\vec{b}$ (gleiche Richtung). Hier ist $\\cos\\varphi = 1/\\sqrt{2} \\approx 0{,}71$, nicht $1$ — also $\\varphi = 45°$.',
+      1: '$30°$ hat $\\cos(30°) = \\sqrt{3}/2 \\approx 0{,}87$, aber hier kommt $\\cos\\varphi = 1/\\sqrt{2} \\approx 0{,}71$ heraus. Das passt zu $45°$, nicht $30°$.',
+      3: '$90°$ würde $\\vec{a} \\cdot \\vec{b} = 0$ voraussetzen (Orthogonalität). Hier ist $\\vec{a} \\cdot \\vec{b} = 1 \\neq 0$, also kein rechter Winkel. Aus $\\cos\\varphi = 1/\\sqrt{2}$ folgt $\\varphi = 45°$.',
+    },
     visualization: {
       id: 'vector-diagram',
       params: {
@@ -316,6 +351,29 @@ export const exercises_vek_u1 = {
       caption: 'Winkel zwischen $\\vec{a}$ und $\\vec{b}$ $= 45°$',
       alt: 'Zwei Vektoren im 45-Grad-Winkel.',
     },
+  },
+  'ex-vek-1-2-d': {
+    id: 'ex-vek-1-2-d', lessonId: 'vek-1-2', type: 'number-input',
+    question: 'Projektion: Wie lang ist die Projektion des Vektors $\\vec{a} = (3, 4)$ auf den Einheitsvektor $\\hat{e}_x = (1, 0)$?',
+    correctValue: 3,
+    tolerance: 0.01,
+    unit: '',
+    explanation: `**Ansatz:** Die skalare Projektion von $\\vec{a}$ auf den Einheitsvektor $\\hat{e}$ ist das Skalarprodukt $\\vec{a} \\cdot \\hat{e}$. Sie sagt: *Wie viel von $\\vec{a}$ zeigt in Richtung $\\hat{e}$?*
+
+**Rechnung:** $\\vec{a} \\cdot \\hat{e}_x = 3 \\cdot 1 + 4 \\cdot 0 = 3$.
+
+**Probe:** Der Vektor $(3, 4)$ hat x-Komponente $3$ — und genau das ist die Projektion auf die x-Achse. Geometrisch offensichtlich.
+
+**Vektorielle Projektion:** Für die *vektorielle* Projektion multipliziert man die skalare Projektion mit dem Einheitsvektor: $\\vec{a}_{\\parallel} = (\\vec{a} \\cdot \\hat{e}) \\cdot \\hat{e} = 3 \\cdot (1, 0) = (3, 0)$.
+
+**Typischer Fehler:** Betrag von $\\vec{a}$ nehmen ($|\\vec{a}| = 5$) statt der Projektion. Das wäre die Projektion auf $\\vec{a}$ selbst, nicht auf $\\hat{e}_x$.
+
+**Anwendung in der Mechanik:** Kraft entlang einer schiefen Ebene, zurückgelegter Weg in Wegrichtung, Komponente einer Geschwindigkeit.`,
+    hints: [
+      'Skalare Projektion = $\\vec{a} \\cdot \\hat{e}$ (Skalarprodukt mit Einheitsvektor).',
+      '$(3, 4) \\cdot (1, 0) = ?$',
+      'Nur die x-Komponente bleibt stehen.',
+    ],
   },
   'ex-vek-1-2-mastery': {
     id: 'ex-vek-1-2-mastery', lessonId: 'vek-1-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -339,6 +397,11 @@ export const exercises_vek_u1 = {
       'Formel: $W = F_x s_x + F_y s_y$.',
       '$F_y = 0$, also fällt der zweite Summand weg: $W = 10 \\cdot 3 + 0 = 30\\,\\text{J}$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das sieht nach $|\\vec{F}| + |\\vec{s}| \\cdot \\ldots = 10 + 60 = 70$ aus — eine willkürliche Kombination, die keiner Skalarprodukt-Formel entspricht. Richtig: $W = F_x s_x + F_y s_y = 10\\cdot 3 + 0\\cdot 4 = 30\\,\\text{J}$.',
+      1: 'Du hast $|\\vec{F}| \\cdot |\\vec{s}| = 10 \\cdot 5 = 50$ gerechnet — das ist das Skalarprodukt-Maximum bei Parallelität ($\\cos\\varphi = 1$). Der Winkel zwischen $\\vec{F}$ und $\\vec{s}$ ist aber nicht $0$. Richtig: $W = F_x s_x + F_y s_y = 30\\,\\text{J}$.',
+      3: 'Null würde $\\vec{F} \\perp \\vec{s}$ bedeuten — das ist hier nicht der Fall, weil $F_x \\cdot s_x = 10 \\cdot 3 \\neq 0$. Das Skalarprodukt liefert $W = 10 \\cdot 3 + 0 \\cdot 4 = 30\\,\\text{J}$.',
+    },
   },
 
   'ex-vek-1-3-a': {
@@ -365,6 +428,11 @@ export const exercises_vek_u1 = {
       'Steht das Ergebnis parallel zu den Ausgangsvektoren oder senkrecht dazu?',
       'Anwendung: Normalvektor der aufgespannten Ebene.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Eine Zahl liefert das *Skalarprodukt* $\\vec{a} \\cdot \\vec{b}$ — Dimensionsverwechslung. Das Kreuzprodukt liefert dagegen einen Vektor senkrecht zu beiden Ausgangsvektoren.',
+      2: 'Das Kreuzprodukt steht per Konstruktion senkrecht auf beiden Vektoren, also auch senkrecht zu $\\vec{a}$ — nicht parallel. Prüfbar: $(\\vec{a} \\times \\vec{b}) \\cdot \\vec{a} = 0$.',
+      3: '$\\vec{a} \\times \\vec{b} = \\vec{0}$ tritt nur bei *parallelen* Ausgangsvektoren auf (wegen $\\sin\\varphi = 0$). Für beliebige, nicht-parallele $\\vec{a}, \\vec{b}$ liefert das Kreuzprodukt einen nicht-verschwindenden Vektor senkrecht zu beiden.',
+    },
   },
   'ex-vek-1-3-b': {
     id: 'ex-vek-1-3-b', lessonId: 'vek-1-3', type: 'multiple-choice',
@@ -387,6 +455,11 @@ export const exercises_vek_u1 = {
       '$\\sin(0°) = 0$.',
       'Geometrisch: Parallele Vektoren spannen keine Fläche auf.',
     ],
+    wrongAnswerExplanations: {
+      0: '$|\\vec{a}| \\cdot |\\vec{b}|$ ist das *Maximum* von $|\\vec{a} \\times \\vec{b}|$ — erreicht bei $\\sin\\varphi = 1$, also $\\varphi = 90°$ (Orthogonalität). Bei Parallelität ist $\\sin(0°) = 0$, also $|\\vec{a} \\times \\vec{b}| = 0$.',
+      1: '$1$ ist keine plausible Länge — das Ergebnis hängt von den Beträgen ab. Bei $\\vec{a} \\parallel \\vec{b}$ ist $\\sin\\varphi = 0$ und daher $|\\vec{a} \\times \\vec{b}| = |\\vec{a}||\\vec{b}| \\cdot 0 = 0$.',
+      3: '$|\\vec{a}| + |\\vec{b}|$ entspricht keiner Formel der Vektorrechnung. Korrekt: $|\\vec{a} \\times \\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\varphi$, und bei Parallelität ist $\\sin(0°) = 0$, also das Ergebnis $0$.',
+    },
     visualization: {
       id: 'vector-diagram',
       params: {
@@ -422,6 +495,11 @@ $\\hat{e}_1 \\times \\hat{e}_2 = (0 \\cdot 0 - 0 \\cdot 1,\\; 0 \\cdot 0 - 1 \\c
       'Zyklisch: $1 \\to 2 \\to 3 \\to 1$. Passt $\\hat{e}_1 \\times \\hat{e}_2$ zur zyklischen Reihenfolge?',
       'Bei zyklischer Reihenfolge positives Ergebnis: $\\hat{e}_1 \\times \\hat{e}_2 = +\\hat{e}_3$.',
     ],
+    wrongAnswerExplanations: {
+      0: '$\\hat{e}_1$ wäre parallel zu einem der Ausgangsvektoren — das widerspricht der Kreuzprodukt-Eigenschaft, senkrecht zu beiden zu stehen. Zyklische Regel: $\\hat{e}_1 \\times \\hat{e}_2 = \\hat{e}_3$.',
+      1: '$-\\hat{e}_3$ ergibt sich bei *vertauschter* Reihenfolge $\\hat{e}_2 \\times \\hat{e}_1$ — hier aber ist $\\hat{e}_1$ zuerst, also zyklisch und positiv: $\\hat{e}_1 \\times \\hat{e}_2 = +\\hat{e}_3$.',
+      3: 'Der Nullvektor entsteht nur bei parallelen Ausgangsvektoren ($\\sin\\varphi = 0$). Die Einheitsvektoren $\\hat{e}_1$ und $\\hat{e}_2$ stehen senkrecht, also $\\sin(90°) = 1$ und das Kreuzprodukt ist $\\hat{e}_3 \\neq \\vec{0}$.',
+    },
   },
 
   'ex-vek-1-4-a': {
@@ -446,6 +524,11 @@ $\\hat{e}_1 \\times \\hat{e}_2 = (0 \\cdot 0 - 0 \\cdot 1,\\; 0 \\cdot 0 - 1 \\c
       '$R_x = F_{1x} + F_{2x} + F_{3x}$, $R_y = F_{1y} + F_{2y} + F_{3y}$.',
       'Achte auf die Vorzeichen: $10 + 0 + (-3)$ und $0 + 5 + (-2)$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Du hast bei $R_y$ das Minuszeichen von $F_{3y} = -2$ ignoriert: $0 + 5 - (-2) = 7$ statt $0 + 5 + (-2) = 3$. Richtig: $R_y = 3$, also $\\vec{R} = (7, 3)\\,\\text{N}$.',
+      2: 'Du hast die *Beträge* addiert: $10 + 0 + 3 = 13$ und $0 + 5 + 2 = 7$. Das verliert die Richtungsinformation. Bei Vektoraddition werden Komponenten mit Vorzeichen addiert: $10 + 0 + (-3) = 7$ und $0 + 5 + (-2) = 3$.',
+      3: 'Alle Vorzeichen der Resultierenden sind umgekehrt — das wäre $-\\vec{R}$. Richtig ist $R_x = 10 + 0 + (-3) = +7$ und $R_y = 0 + 5 + (-2) = +3$, also $\\vec{R} = (7, 3)\\,\\text{N}$.',
+    },
     visualization: {
       id: 'vector-diagram',
       params: {
@@ -485,6 +568,11 @@ $$-F_1 \\sin 30° + F_2 \\sin 45° = 0 \\;\\Leftrightarrow\\; F_1 \\sin 30° = F
       'Schreibe die Summe auf: $-F_1 \\sin 30° + F_2 \\sin 45° = 0$.',
       'Forme um nach $F_1 \\sin 30° = F_2 \\sin 45°$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Das wäre die $y$-Gleichgewichtsbedingung $\\sum F_y = 0$ (mit den $\\cos$-Anteilen) — sie betrifft Auflage gegen Gewichtskraft, nicht die horizontale Balance. Für $\\sum F_x = 0$ gelten die $\\sin$-Komponenten: $F_1 \\sin 30° = F_2 \\sin 45°$.',
+      2: '$F_1 = F_2$ gilt nur bei symmetrischer Aufhängung (gleiche Winkel). Hier sind die Winkel aber $30°$ und $45°$ — daraus folgt $F_1 \\sin 30° = F_2 \\sin 45°$, und wegen $\\sin 30° < \\sin 45°$ ist $F_1 \\neq F_2$.',
+      3: 'Das Minuszeichen bei $\\vec{F}_1$ (Kraft zeigt nach links) wurde vergessen. Aus $\\sum F_x = -F_1 \\sin 30° + F_2 \\sin 45° = 0$ folgt $F_1 \\sin 30° = F_2 \\sin 45°$, nicht die Summe gleich null.',
+    },
   },
   'ex-vek-1-4-mastery': {
     id: 'ex-vek-1-4-mastery', lessonId: 'vek-1-4', type: 'multiple-choice', isMasteryCheck: true,
@@ -512,6 +600,11 @@ $$-F_1 \\sin 30° + F_2 \\sin 45° = 0 \\;\\Leftrightarrow\\; F_1 \\sin 30° = F
       'Wie macht man aus einem Vektor der Länge $L$ einen Vektor der Länge $1$? Durch $L$ teilen.',
       'Formel: $\\hat{e} = \\vec{a} / |\\vec{a}|$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Der Einheitsvektor hat per Definition Länge $1$, nicht $0$ — ein Vektor mit Länge $0$ wäre der Nullvektor. Außerdem ist $\\vec{a} \\cdot |\\vec{a}|$ keine gültige Operation (Skalar mit Punktprodukt — hier meint man wohl Skalarmultiplikation, aber die *streckt* statt zu normieren).',
+      2: 'Betrag $= 1$ stimmt, aber die Formel ist falsch: $|\\vec{a}| \\cdot \\vec{a}$ *multipliziert* statt *dividiert* — das streckt den Vektor. Richtig: $\\hat{e} = \\vec{a} / |\\vec{a}|$, weil man einen Vektor der Länge $L$ durch $L$ teilt, um Länge $1$ zu bekommen.',
+      3: '"Beliebig" widerspricht der Definition — ein Einheitsvektor hat *genau* Länge $1$. Außerdem ist $\\vec{a} - |\\vec{a}|$ ein Dimensionsfehler: Vektor minus Skalar ist nicht definiert.',
+    },
   },
 }
 
@@ -660,7 +753,8 @@ wobei $\\varphi$ der eingeschlossene Winkel ist ($0° \\leq \\varphi \\leq 180°
       { id: 'vek-1-2-s2', type: 'exercise', title: 'Aufgabe 1 — Skalarprodukt berechnen', exerciseRef: 'ex-vek-1-2-a' },
       { id: 'vek-1-2-s3', type: 'exercise', title: 'Aufgabe 2 — Bedeutung $\\vec{a}\\cdot\\vec{b}=0$', exerciseRef: 'ex-vek-1-2-b' },
       { id: 'vek-1-2-s4', type: 'exercise', title: 'Aufgabe 3 — Winkel berechnen', exerciseRef: 'ex-vek-1-2-c' },
-      { id: 'vek-1-2-s5', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-vek-1-2-mastery' },
+      { id: 'vek-1-2-s5', type: 'exercise', title: 'Aufgabe 4 — Projektion eines Vektors', exerciseRef: 'ex-vek-1-2-d' },
+      { id: 'vek-1-2-s6', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-vek-1-2-mastery' },
     ],
   },
   {

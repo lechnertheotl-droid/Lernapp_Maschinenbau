@@ -38,6 +38,11 @@ const unit1 = makeUnit({
             '$a_n = (2 + 3/n)/(1 + 1/n)$.',
             'Für $n \\to \\infty$: $3/n \\to 0$, $1/n \\to 0$.',
           ],
+          wrongAnswerExplanations: {
+            1: 'Nur der Zählerterm $+3$ betrachtet. Bei rationalen Folgen zählt das Verhältnis der *Leitkoeffizienten* (höchste Potenzen): hier $2/1=2$, nicht $3$. Die konstanten Terme verschwinden im Grenzübergang.',
+            2: 'Das wäre der Grenzwert, wenn der Zählergrad *kleiner* als der Nennergrad wäre (z.B. $\\frac{3}{n+1} \\to 0$). Hier haben Zähler ($2n$) und Nenner ($n$) gleichen Grad, daher geht der Quotient nicht gegen $0$, sondern gegen $2/1=2$.',
+            3: 'Die Folge divergiert *nicht* — der Nenner wächst, aber der Zähler wächst proportional mit. Das Verhältnis stabilisiert sich bei $2$. Nur bei unterschiedlichen Wachstumsraten (z.B. $n^2/n$) kann Divergenz auftreten.',
+          },
         },
         {
           type: 'true-false',
@@ -71,6 +76,11 @@ const unit1 = makeUnit({
             'Konvergenz heißt: nähert sich einem festen Wert an.',
             'Beides zusammen: $(-1)^n$ ist beschränkt, aber schwankt ewig.',
           ],
+          wrongAnswerExplanations: {
+            1: '$1/n$ ist beschränkt *und* konvergent (gegen $0$) — erfüllt also beide Bedingungen. Die Frage sucht eine beschränkte, aber nicht konvergente Folge, also ein Beispiel wie $(-1)^n$.',
+            2: '$n$ ist unbeschränkt (wächst über jede Schranke hinaus) und divergiert gegen $\\infty$. Beschränkt ist hier nicht erfüllt; die Folge erfüllt *beide* Kriterien nicht.',
+            3: '$n^2$ wächst noch schneller als $n$ und ist ebenfalls unbeschränkt. „Beschränkt, aber nicht konvergent" wird nur von oszillierenden beschränkten Folgen erfüllt — z.B. $(-1)^n$ zwischen $-1$ und $+1$.',
+          },
         },
         {
           type: 'number-input',
@@ -136,6 +146,11 @@ const unit1 = makeUnit({
             'Was passiert, wenn du durch $n \\to \\infty$ teilst?',
             'Sandwich: $-1/n \\leq \\sin n/n \\leq 1/n$, beide Schranken $\\to 0$.',
           ],
+          wrongAnswerExplanations: {
+            1: '$\\sin n$ oszilliert allein zwischen $-1$ und $+1$, aber nicht $\\sin n / n$. Der Faktor $1/n$ drückt die Schwingung flach: $|\\sin n /n| \\leq 1/n \\to 0$ (Sandwich-Lemma). Grenzwert existiert und ist $0$.',
+            2: '$\\sin n/n$ wächst *nicht* gegen $\\infty$, weil der Zähler beschränkt bleibt ($|\\sin n| \\leq 1$) und der Nenner wächst. Zähler/Nenner mit wachsendem Nenner und beschränktem Zähler strebt gegen $0$.',
+            3: 'Grenzwert $1$ hat $\\sin(x)/x$ für $x \\to 0$ — das ist ein anderer Grenzwertprozess! Hier geht $n \\to \\infty$, nicht $n \\to 0$. Bei $n \\to \\infty$ ist $\\sin n / n \\to 0$.',
+          },
         },
         {
           type: 'sorting',
@@ -165,6 +180,11 @@ const unit1 = makeUnit({
         'Für beliebig kleines $\\varepsilon>0$ gilt ab einem $N$: $|1/n| < \\varepsilon$.',
         'Der Grenzwert ist $L=0$, weil $1/n$ gegen 0 strebt.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Das wäre der Wert bei $n=1$ ($a_1=1/1=1$), aber der Grenzwert betrifft das Verhalten für $n \\to \\infty$. Die Folge $1/n$ wird immer kleiner und nähert sich $0$, nicht $1$.',
+        2: '$1/n$ wächst *nicht* unbeschränkt — im Gegenteil, sie fällt. Der Wert $\\infty$ wäre der Grenzwert von $n$ selbst, nicht von $1/n$. Nenner und Zähler wurden möglicherweise verwechselt.',
+        3: 'Der Grenzwert *existiert* — die Folge $1/n$ ist monoton fallend und beschränkt (unten durch $0$), also nach dem Monotonie-Kriterium konvergent. Grenzwert: $0$.',
+      },
       masteryVisualization: {
         id: 'number-line',
         params: {
@@ -220,6 +240,11 @@ const unit1 = makeUnit({
             'Für $k=3$: dritte Ableitung an $x_0$, geteilt durch $3!$.',
             '$3! = 6$.',
           ],
+          wrongAnswerExplanations: {
+            1: 'Zwei Fehler: (1) Ableitung muss an $x_0$ ausgewertet sein (nicht an variablem $x$). (2) Nenner muss $k!=6$ sein, nicht $k=3$. Die Fakultät ist entscheidend.',
+            2: 'Das ist der Koeffizient $c_0 = f(x_0)$ (konstanter Term). Für $c_3$ brauchen wir die *dritte* Ableitung geteilt durch $3!$. Je höher der Grad, desto höher die Ableitung.',
+            3: 'Das ist der Koeffizient $c_1 \\cdot 3!$ (oder ähnliches) — falsch zusammengesetzt. Die Taylor-Formel verlangt für Grad $k$: $k$-te Ableitung und Division (nicht Multiplikation) durch $k!$.',
+          },
         },
         {
           type: 'multiple-choice',
@@ -234,6 +259,11 @@ const unit1 = makeUnit({
             'Bei $x_0 = 0$ abwechselnd $0, 1, 0, -1$.',
             'Nur ungerade Potenzen tauchen auf: $x - x^3/3! = x - x^3/6$.',
           ],
+          wrongAnswerExplanations: {
+            1: 'Vorzeichen falsch. $\\sin\'\'\'(0)=-\\cos(0)=-1$, daher Koeffizient $-1/3!=-1/6$, also *minus* $x^3/6$. Plus $x^3/6$ entspräche $\\sin\'\'\'(0)=+1$, was nicht stimmt.',
+            2: 'Das ist $\\cos$-Entwicklung, nicht $\\sin$-Entwicklung. $\\sin(0)=0$ (konstanter Term $0$, nicht $1$), $\\cos(0)=1$ (mit $x^2$-Term). Bei $\\sin$ treten nur *ungerade* Potenzen auf.',
+            3: 'Fakultät vergessen: Koeffizient bei $x^3$ ist $\\sin\'\'\'(0)/3!=-1/6$, nicht einfach $-1$. Ohne die $3!=6$ ist der Koeffizient zu groß — der Approximationsfehler würde riesig.',
+          },
         },
         {
           type: 'number-input',
@@ -315,6 +345,11 @@ const unit1 = makeUnit({
             'Konvergenzradius = Abstand zur nächsten Singularität.',
             '$e^x$ ist glatt überall, $1/(1-x)$ hat Pol bei $x=1$.',
           ],
+          wrongAnswerExplanations: {
+            1: 'Das Konvergenzverhalten folgt strengen Regeln — kein Zufall. Der Konvergenzradius ist eine wohldefinierte Größe $R=\\lim |c_n/c_{n+1}|$ und ergibt sich aus den Eigenschaften der Funktion (Singularitäten).',
+            2: '„Einfacher" ist kein mathematisches Kriterium. Entscheidend ist die Lage der *Singularitäten*: $e^x$ hat keine (ganz $\\mathbb{C}$ analytisch), $1/(1-x)$ hat eine bei $x=1$ — daher unterschiedliche Konvergenzradien.',
+            3: '$\\ln$ taucht in der Frage gar nicht auf — es geht um $e^x$ vs. $1/(1-x)$. Die richtige Begründung bezieht sich auf Singularitäten: $e^x$ analytisch überall, $1/(1-x)$ hat Pol bei $x=1$.',
+          },
         },
         {
           type: 'sorting',
@@ -350,6 +385,11 @@ const unit1 = makeUnit({
         'Bei $x_0 = 0$: alle $f^{(k)}(0) = 1$.',
         'Koeffizienten: $f^{(k)}(0)/k! = 1/k!$, also $T_2 = 1 + x + x^2/2!$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Fakultät $k!$ vergessen. Koeffizient bei $x^2$ ist $f\'\'(0)/2!=1/2$, nicht $1$. Ohne Fakultät wachsen die Terme zu schnell — die Näherung wäre unbrauchbar.',
+        2: 'Falscher Entwicklungspunkt. Bei $x_0=0$ ist $e^{x_0}=e^0=1$, daher Koeffizient $1$, nicht $e$. Mit $x_0=1$ wären die Koeffizienten $e \\cdot 1/k!$.',
+        3: 'Konstanter Term fehlt. $f(0)=e^0=1$ muss als $c_0=1$ dabeistehen. Ohne konstanten Term wäre $T_2(0)=0$, aber $e^0=1$.',
+      },
       masteryVisualization: {
         id: 'function-graph',
         params: {
@@ -456,6 +496,11 @@ const unit2 = makeUnit({
             '$(n+1)!/n! = n+1$.',
             '$10^n/10^{n+1} = 1/10$. Quotient: $(n+1)/10$.',
           ],
+          wrongAnswerExplanations: {
+            1: 'Wurzelkriterium $\\sqrt[n]{|a_n|}=\\sqrt[n]{n!/10^n}=\\sqrt[n]{n!}/10$ — $\\sqrt[n]{n!}$ ist aber per Stirling-Formel schwierig zu berechnen (Ergebnis $\\sim n/e$). Quotientenkriterium ist hier viel direkter wegen einfacher Fakultäten-Arithmetik.',
+            2: 'Majorantenkriterium braucht eine bekannte, dominierende Reihe. Bei $n!/10^n$ ist keine Standard-Reihe als obere Schranke naheliegend. Quotientenkriterium liefert das Ergebnis direkt aus der Rekursion.',
+            3: 'Integraltest benötigt eine stetige, monoton fallende Funktion $f(x)$ mit $f(n)=a_n$. $n!$ lässt sich kaum als glatte Funktion interpretieren (außer über Gamma-Funktion — unnötig kompliziert). Quotientenkriterium ist der Standard bei Fakultäten.',
+          },
         },
         {
           type: 'number-input',
@@ -492,6 +537,11 @@ const unit2 = makeUnit({
             'Welche $1/n^k$ konvergieren? Für $k > 1$.',
             '$\\sum 1/n^2$ ist ein bekanntes Beispiel.',
           ],
+          wrongAnswerExplanations: {
+            1: '$\\sum (-1)^n/n$ konvergiert zwar (Leibniz-Kriterium), aber nur *bedingt*. Die zugehörige absolute Reihe $\\sum 1/n$ ist die harmonische Reihe und *divergiert*. Gegenfrage der absoluten Konvergenz.',
+            2: '$\\sum 1/n$ (harmonische Reihe) divergiert — ein klassisches Resultat. Partialsumme wächst wie $\\ln n$ über jede Schranke.',
+            3: 'Konstante Reihe $\\sum 1$: Partialsumme $n \\to \\infty$, klar divergent. Auch das Trivialkriterium greift: $a_n=1 \\not\\to 0$, also keine Konvergenz möglich.',
+          },
         },
         {
           type: 'matching',
@@ -552,6 +602,11 @@ const unit2 = makeUnit({
         'q = 1/3 einsetzen.',
         '$1/(1-1/3) = 1/(2/3) = 3/2$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Das ist $q$ selbst, nicht der Grenzwert der Reihe. $q=1/3$ ist der Faktor zwischen den Gliedern. Die Summe $\\sum q^n$ ist $1/(1-q)=1/(2/3)=3/2$.',
+        2: 'Bruchrechnung falsch. $1/(1-1/3)=1/(2/3)=3/2$, nicht $2/3$. Der Nenner $1-1/3=2/3$ wird beim Teilen durch den Kehrwert ersetzt: $1 \\cdot 3/2 = 3/2$.',
+        3: 'Für $|q|<1$ konvergiert die geometrische Reihe. Hier $|1/3|<1$, also konvergent (mit Summe $3/2$). Divergent wäre sie nur bei $|q|\\geq 1$.',
+      },
       prerequisites: ['rf-1-2'],
       nextLessonId: 'rf-pruefung-2',
     }),
@@ -594,6 +649,11 @@ const unit2 = makeUnit({
             '$(n+1)! = (n+1) \\cdot n!$, also $n!/(n+1)! = 1/(n+1)$.',
             '$1/(n+1) \\to 0$ für $n \\to \\infty$.',
           ],
+          wrongAnswerExplanations: {
+            1: 'Das wäre der Grenzfall des Quotientenkriteriums — keine Aussage möglich. Der tatsächliche Quotient ist $1/(n+1) \\to 0$, nicht $1$. $q=1$ würde nur gelten, wenn Zähler und Nenner gleich wachsen.',
+            2: 'Das wäre divergent. Hier wächst aber der Nenner $(n+1)!$ viel schneller als der Zähler $n!$, also fällt $1/(n+1) \\to 0$ monoton. $q=\\infty$ entspräche eher $\\sum n!$.',
+            3: 'Der Wert $e$ ist der *Grenzwert* der Reihe $\\sum 1/n!=e$, nicht das $q$ des Quotientenkriteriums. Quotientenkriterium berechnet den Limes der *Quotienten* aufeinanderfolgender Glieder, nicht die Summe.',
+          },
         },
         {
           type: 'number-input',
@@ -631,6 +691,11 @@ const unit2 = makeUnit({
             'Rand-Verhalten getrennt prüfen.',
             '$x = 1$: harmonisch (divergent). $x = -1$: alternierend (konvergent).',
           ],
+          wrongAnswerExplanations: {
+            1: 'Rand wird nicht geprüft. Der Konvergenzradius gibt nur das offene Intervall $(-1,1)$ — aber am Rand kann es noch Konvergenzpunkte geben. Hier: $x=-1$ ist zusätzlich konvergent (Leibniz), $x=1$ divergent (harmonisch).',
+            2: 'Falscher Rand-Check: bei $x=+1$ erhält man $\\sum 1/n$ (harmonisch), das *divergiert*. Also darf $+1$ *nicht* zum Konvergenzbereich gehören. Umgekehrt ist $x=-1$ konvergent.',
+            3: 'Der Konvergenzradius ist endlich ($R=1$). Für $|x|>1$ divergiert die Reihe, weil der Quotient $|a_{n+1}/a_n|=|x|\\cdot n/(n+1) \\to |x| > 1$.',
+          },
         },
         {
           type: 'true-false',
@@ -665,6 +730,11 @@ const unit2 = makeUnit({
             '$\\frac{(n+1)/e^{n+1}}{n/e^n} = \\frac{n+1}{n} \\cdot e^{-1}$.',
             '$\\lim (n+1)/n = 1$, also $q = 1/e$.',
           ],
+          wrongAnswerExplanations: {
+            1: 'Trivialkriterium-Fehlschluss: $n/e^n \\to 0$, weil Exponential schneller wächst als Polynom (L\'Hôpital oder direkt). Die Glieder gehen gegen $0$ — ein *notwendiger* Schritt für Konvergenz. Daher divergiert die Reihe nicht aus diesem Grund.',
+            2: 'Das Vorzeichen ist falsch: $|a_{n+1}/a_n|=(n+1)/(ne) \\to 1/e < 1$, also $q<1$ (konvergent), nicht $q>1$. $1/e \\approx 0{,}37$ liegt weit unter $1$.',
+            3: 'Entscheidbar: Quotientenkriterium liefert $q=1/e<1$ eindeutig, also konvergent. Nur bei $q=1$ oder exotischen Reihen ist Quotientenkriterium nicht anwendbar.',
+          },
         },
         {
           type: 'matching',
@@ -733,6 +803,11 @@ const unit2 = makeUnit({
         '$c_n = 1/n!$, $c_{n+1} = 1/(n+1)!$. Quotient: $c_n/c_{n+1} = (n+1)!/n! = n+1$.',
         '$\\lim_{n\\to\\infty}(n+1) = \\infty$, also $R = \\infty$ — konvergiert überall.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Die Fakultät im Nenner macht die Reihe besonders schnell konvergent. $c_n/c_{n+1}=(n+1) \\to \\infty$, nicht $\\to 1$. Der Wert $R=1$ gilt z.B. bei $\\sum x^n$ oder $\\sum x^n/n$ (ohne Fakultät).',
+        2: '$e$ ist die *Summe* der Reihe bei $x=1$, nicht der Konvergenzradius. $R$ misst, *wo* die Reihe konvergiert, nicht *wohin*. $R=\\infty$ bedeutet: für alle $x$ konvergent; die Summe ist $e^x$.',
+        3: 'Das wäre bei Reihen mit $n!$ im *Zähler* (z.B. $\\sum n! x^n$): dort wachsen die Koeffizienten so schnell, dass die Reihe nur bei $x=0$ konvergiert ($R=0$). Hier ist aber $n!$ im *Nenner*, also sehr starker Zerfall.',
+      },
       masteryVisualization: {
         id: 'function-graph',
         params: {
@@ -810,6 +885,11 @@ const unit2 = makeUnit({
             'Da $\\xi$ nicht bekannt, maximieren wir.',
             '$M$ steht für „Maximum der Ableitung".',
           ],
+          wrongAnswerExplanations: {
+            1: 'Die $n$-te Ableitung am Entwicklungspunkt steckt schon im Taylor-Polynom $T_n$. Das Restglied nutzt die *nächsthöhere* Ableitung ($f^{(n+1)}$) an einer *Zwischenstelle* $\\xi$, die maximiert wird.',
+            2: '$f(x_0)$ ist der Funktionswert am Entwicklungspunkt (Teil von $T_0$). Das Restglied hängt aber von der *Ableitung* ab, nicht vom Funktionswert selbst — konkret von $f^{(n+1)}$.',
+            3: 'Der Konvergenzradius gibt den Bereich an, *wo* die Taylor-Reihe konvergiert, nicht *wie groß* der Fehler bei Abbruch ist. $M_{n+1}$ ist eine Ableitungsschranke, eine ganz andere Größe.',
+          },
         },
         {
           type: 'number-input',
@@ -862,6 +942,11 @@ const unit2 = makeUnit({
             'Für kleines $x$ konvergiert die Taylor-Reihe schnell.',
             'Mehr Glieder → kleinerer Fehler.',
           ],
+          wrongAnswerExplanations: {
+            0: '$T_1(x)=x$ ist die einfachste Näherung — der Fehler ist $\\approx x^3/6$. Mit $T_3(x)=x-x^3/6$ reduziert sich der Fehler auf $\\approx x^5/120$, also um den Faktor $x^2/20$ kleiner. Bei $x=0{,}01$ ist das ein riesiger Unterschied.',
+            2: 'Falsch — höhere Taylor-Grade verbessern die Näherung. $T_3$ hat lokalen Fehler $O(x^5)$, $T_1$ nur $O(x^3)$. Bei $x=0{,}01$ ist $0{,}01^5=10^{-10}$ viel kleiner als $0{,}01^3=10^{-6}$.',
+            3: '$\\sin x \\approx x^3$ ist grundfalsch: bei $x \\to 0$ geht $\\sin x \\to 0$ wie $x$ (nicht wie $x^3$). Der führende Term der Taylor-Entwicklung von $\\sin$ ist $x$, nicht $x^3$.',
+          },
         },
         {
           type: 'matching',
@@ -900,6 +985,11 @@ const unit2 = makeUnit({
             '$e^x$ ist streng monoton wachsend.',
             'Auf $[0, 0{,}5]$: Maximum am rechten Rand.',
           ],
+          wrongAnswerExplanations: {
+            1: '$M_{n+1}=1$ ist der Wert *am linken Rand* ($x_0=0$, $e^0=1$). Für eine *obere* Schranke auf dem Intervall $[0;0{,}5]$ brauchen wir das Maximum — und da $e^x$ monoton wächst, ist das $e^{0{,}5} \\approx 1{,}65 > 1$. $M=1$ wäre zu klein und die Abschätzung falsch.',
+            2: '$e \\approx 2{,}72$ gilt erst bei $x=1$, hier geht das Intervall nur bis $0{,}5$. Die Schranke wäre zwar gültig (weil $e>e^{0{,}5}$), aber unnötig locker — für eine *effiziente* Schätzung nimmt man das konkrete Maximum $e^{0{,}5}$.',
+            3: '$M_{n+1}=n+1$ ist mathematischer Unsinn in diesem Kontext: $M$ soll eine Schranke der *Ableitung* von $e^x$ sein, nicht eine Funktion des Taylor-Grades. Die Ableitungen von $e^x$ sind wieder $e^x$ — davon unabhängig von $n$.',
+          },
         },
         {
           type: 'sorting',
@@ -939,6 +1029,11 @@ const unit2 = makeUnit({
         '$M_2 = \\max|f\'\'(\\xi)| = \\max e^\\xi = e^{0{,}1}$ auf $[0, 0{,}1]$.',
         '$e^{0{,}1}/2 \\cdot (0{,}1)^2 = 1{,}105/2 \\cdot 0{,}01 \\approx 0{,}0055$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: '$|R_1| \\leq 0{,}1$ ist zwar eine gültige (aber viel zu lockere) Schranke. Der tatsächliche Fehler ist $\\approx 0{,}005$, also $20$-mal kleiner. Die Lagrange-Formel liefert eine *viel schärfere* Schranke: $M_2/2! \\cdot x^2$, nicht einfach $x$.',
+        2: '$M_2=1$ statt $e^{0{,}1}$ angesetzt — das wäre nur gültig, wenn $f\'\'(\\xi) \\leq 1$ auf $[0;0{,}1]$. Aber $f\'\'(\\xi)=e^\\xi$ und maximal $e^{0{,}1} \\approx 1{,}105$, also *größer* als $1$. Die Schranke wäre knapp zu klein.',
+        3: 'Taylor-Polynom vom Grad 1 ist *keine exakte* Näherung (außer bei Polynomen Grad $\\leq 1$). $e^x$ ist transzendent, also gibt es einen Restfehler $R_1(x) \\neq 0$ für $x \\neq 0$. Bei $x=0{,}1$: exakt $e^{0{,}1} \\approx 1{,}1052$, Näherung $1+0{,}1=1{,}1$, Fehler $\\approx 0{,}0052 > 0$.',
+      },
       prerequisites: ['rf-pruefung-2'],
       nextLessonId: null,
     }),

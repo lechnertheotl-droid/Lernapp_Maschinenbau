@@ -58,6 +58,11 @@ const unit1 = makeUnit({
             'Nenner der Newton-Iteration?',
             'Was passiert bei Division durch $0$?',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Genau das Gegenteil: bei $f\'(x_n) = 0$ wird der Nenner $0$ — die Iteration bricht zusammen. Schnellere Konvergenz entsteht nicht durch Division durch 0.',
+            '2': 'Der Startwert wird in der Newton-Formel $x_{n+1} = x_n - f/f\'$ nicht verdoppelt. Die Verdopplung hat keine Entsprechung im Algorithmus.',
+            '3': '$x_{n+1} = 0$ folgt nicht aus $f\'(x_n) = 0$. Bei $f\'(x_n) = 0$ ist der Bruch $f(x_n)/f\'(x_n)$ undefiniert, nicht gleich $x_n$.',
+          },
         },
         {
           type: 'multiple-choice',
@@ -78,6 +83,11 @@ const unit1 = makeUnit({
             '$f(0) = 2$, $f\'(0) = -2$ $\\Rightarrow$ $x_1 = 1$.',
             'Berechne jetzt $x_2$ aus $x_1 = 1$ — was fällt auf?',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Newton ist nur lokal konvergent — die Aussage „konvergiert immer schnell" stimmt global nicht. Hier schließt die Iteration $0 \\to 1 \\to 0$ und erreicht keine Nullstelle.',
+            '2': 'Die Werte $x_1 = 1, x_2 = 0, x_3 = 1, \\ldots$ oszillieren beschränkt in $[0, 1]$ — keine Divergenz gegen $+\\infty$. Prüft man die Iteration, bleibt sie endlich.',
+            '3': '$f(0) = 0^3 - 0 + 2 = 2 \\neq 0$, also ist $x_0 = 0$ keine Nullstelle. Die Nullstelle von $f$ liegt bei $x \\approx -1{,}77$.',
+          },
         },
         {
           type: 'true-false',
@@ -109,6 +119,11 @@ const unit1 = makeUnit({
             'Newton ist lokales Verfahren.',
             'Ungünstige Startwerte → Tangente schießt weit daneben.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Die Iteration kann mit Abbruchkriterium gestoppt werden — das Problem ist eher Divergenz oder falsche Nullstelle, nicht endloses Laufen bei gutem Abbruch.',
+            '2': 'Der Startwert ändert die Differenzierbarkeit von $f$ nicht — $f$ ist als Funktion differenzierbar oder nicht, unabhängig vom Startwert. Die Wahl beeinflusst die Konvergenz, nicht die Glattheit.',
+            '3': 'Linear wird die Konvergenz bei **mehrfachen** Nullstellen, nicht wegen eines schlechten Startwerts. Bei schlechtem Startwert divergiert Newton eher, statt langsamer zu werden.',
+          },
         },
         {
           type: 'matching',
@@ -170,6 +185,11 @@ const unit1 = makeUnit({
         'x₁ = x₀ − f(x₀)/f\'(x₀).',
         '$x_1 = 1 - (-1)/2 = 1 + 0{,}5 = 1{,}5$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: '$2$ wäre $x_1 = 1 + 1 = 2$ — hier wurde $f(1) = 1$ gerechnet (ohne $-2$). Richtig: $f(1) = 1 - 2 = -1$, also $x_1 = 1 - (-1)/2 = 1{,}5$.',
+        2: '$1{,}41 \\approx \\sqrt{2}$ ist das Ziel, aber **nicht** $x_1$. Nach **einem** Newton-Schritt ist man erst bei $1{,}5$; $\\sqrt{2}$ wird erst nach mehreren Iterationen erreicht.',
+        3: '$0{,}5$ wäre $x_1 = 1 - 0{,}5$ (Vorzeichen des Korrekturterms falsch). Newton subtrahiert $f/f\' = -1/2 = -0{,}5$ von $x_0 = 1$: $1 - (-0{,}5) = 1{,}5$.',
+      },
       masteryVisualization: {
         id: 'function-graph',
         params: {
@@ -244,6 +264,11 @@ const unit1 = makeUnit({
             'Intervall halbiert sich in jedem Schritt.',
             'Halbierung des Fehlers = lineare Konvergenz.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Quadratisch ist Newton, nicht Bisektion. Quadratische Konvergenz bedeutet $e_{n+1} \\approx C e_n^2$; Bisektion halbiert $e_n$ nur linear.',
+            '2': 'Kubische Konvergenz ($e_{n+1} \\approx C e_n^3$) kommt z.B. bei Halley-Verfahren vor. Bisektion ist deutlich langsamer: nur $e_{n+1} = e_n/2$.',
+            '3': 'Bisektion ist eines der wenigen Verfahren mit **garantierter** Konvergenz — sofern $f$ stetig und $f(a) \\cdot f(b) < 0$. Keine Konvergenz zu garantieren wäre völlig unzutreffend.',
+          },
         },
         {
           type: 'number-input',
@@ -323,6 +348,11 @@ const unit1 = makeUnit({
             'Robust vs. schnell.',
             'Bisektion braucht keinen guten Startwert.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Bisektion benötigt **keine** Ableitung — aber das ist kein Newton-Problem im üblichen Kontext: Newton verlangt differenzierbar, Bisektion nur stetig. Der praktisch häufigere Grund ist dennoch der fehlende Startwert.',
+            '2': 'Bisektion ist **langsamer** als Newton (linear vs. quadratisch). Man nimmt Bisektion genau, wenn Schnelligkeit **nicht** im Vordergrund steht.',
+            '3': 'Bisektion ist robuster, aber nicht „immer besser". Newton schlägt Bisektion bei der Konvergenzgeschwindigkeit deutlich, sobald man nah an der Nullstelle ist.',
+          },
         },
         {
           type: 'sorting',
@@ -355,6 +385,11 @@ const unit1 = makeUnit({
         '$f(0) = 0^2 = 0$, $f(2) = 2^2 = 4$.',
         '$(2-0)/2 \\cdot (0 + 4) = 1 \\cdot 4 = 4$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: '$8/3 \\approx 2{,}67$ ist der **exakte** Integralwert, den die Trapezregel nicht liefert. Trapez überschätzt bei konvexem Integranden und ergibt $4 > 8/3$.',
+        2: '$2$ käme aus $(b-a)/2 \\cdot f(b) = 1\\cdot 4 / 2$ — eine falsche Formel, bei der $f(a)$ vergessen wird. Die Trapezregel summiert **beide** Endwerte.',
+        3: '$6$ wäre $(b-a) \\cdot (f(a) + f(b))$ — Faktor $1/2$ vergessen. Korrekt: $(b-a)/2 \\cdot (0+4) = 4$, nicht $6$.',
+      },
       masteryVisualization: {
         id: 'function-graph',
         params: {
@@ -417,6 +452,11 @@ const unit2 = makeUnit({
             'Newton löst $f(x) = 0$.',
             'Tangente schneidet x-Achse.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Integration löst man mit Quadraturverfahren (Trapez, Simpson), nicht mit Newton. Newton verwendet zwar $f\'$, aber für Nullstellen, nicht Integrale.',
+            '2': 'LGS löst man mit Gauß- oder LU-Verfahren. Newton als Verallgemeinerung auf LGS existiert zwar (mehrdim. Newton), ist aber immer Nullstellen-orientiert.',
+            '3': 'Extrema bestimmt man aus $f\'(x) = 0$ — das ist zwar eine Nullstellensuche, hier jedoch nicht von $f$, sondern von $f\'$. Die Frage bezog sich auf direktes $f(x) = 0$.',
+          },
         },
         {
           type: 'number-input',
@@ -444,6 +484,11 @@ const unit2 = makeUnit({
             'Fehler wird quadriert.',
             'Das ist die typische Newton-Eigenschaft bei sauberen Nullstellen.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Linear konvergiert Bisektion oder Newton bei **mehrfachen** Nullstellen. Für einfache Nullstellen gilt der stärkere Satz: $e_{n+1} \\leq C e_n^2$.',
+            '2': 'Kubische Konvergenz erreichen spezielle Verfahren wie Halley oder modifizierte Newton-Schemata, aber klassisches Newton hat Ordnung genau 2.',
+            '3': 'Die Konvergenz ist bei einfachen Nullstellen und gutem Startwert garantiert mindestens quadratisch — nicht „keine".',
+          },
         },
         {
           type: 'true-false',
@@ -474,6 +519,11 @@ const unit2 = makeUnit({
             'Simpson nutzt drei Stützstellen pro Parabel.',
             'Zwei Intervalle = eine Parabel-Gruppe.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Simpson-Konvergenz hängt nicht von der Parität ab, sondern von der Glattheit. Bei ungeradem $n$ ist Simpson 1/3 nicht direkt anwendbar — der Rest muss mit einer anderen Regel (3/8) gefüllt werden.',
+            '2': 'Der Fehler verschwindet nicht bei ungeradem $n$. Im Gegenteil: Simpson 1/3 lässt sich nicht einheitlich anwenden, und Fehlerabschätzungen gelten nur für passende Gruppierung.',
+            '3': 'Es ist ein mathematischer Grund (Gruppen-Struktur der Parabelapproximation), keine Konvention. Jeweils 3 Stützpunkte spannen eine Parabel — daher brauche ich Gruppen à 2 Intervallen.',
+          },
         },
         {
           type: 'number-input',
@@ -535,6 +585,11 @@ const unit2 = makeUnit({
         'Die Ordnung gibt an, wie der Fehler bei jeder Iteration schrumpft.',
         'Newton: $e_{n+1} \\approx C \\cdot e_n^2$ — Fehler wird quadriert, also Ordnung 2.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Linear konvergiert Bisektion oder Newton bei **mehrfachen** Nullstellen. Bei einfachen Nullstellen mit $f\'(a) \\neq 0$ gilt der stärkere Satz $e_{n+1} \\leq C e_n^2$.',
+        2: 'Kubische Konvergenz erreichen spezielle Verfahren wie Halley, nicht klassisches Newton. Newton hat exakt Ordnung 2.',
+        3: 'Newton konvergiert bei einfachen Nullstellen und gutem Startwert garantiert — sogar besonders schnell. „Gar keine" wäre grob falsch.',
+      },
       prerequisites: ['num-1-2'],
       nextLessonId: 'num-pruefung-2',
     }),
@@ -606,6 +661,11 @@ const unit2 = makeUnit({
             'Fehler $\\propto h^2 \\propto 1/n^2$.',
             'Faktor 4 im Fehler ↔ Faktor 2 in $n$.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Halbierung von $n$ vergrößert den Fehler um Faktor 4, weil Fehler $\\propto 1/n^2$. Gewünscht war Fehlerreduktion, nicht Vergrößerung.',
+            '2': 'Vervierfachung reduziert den Fehler um Faktor $4^2 = 16$ — viel zu stark. Gesucht ist Faktor 4, also nur $n \\to 2n$.',
+            '3': 'Bei unverändertem $n$ bleibt auch der Fehler gleich. Zur Fehlerreduktion muss $n$ wachsen.',
+          },
         },
         {
           type: 'multiple-choice',
@@ -624,6 +684,11 @@ const unit2 = makeUnit({
             'Simpson-Fehler ordnung $h^4$.',
             'Faktor 4 im Fehler ↔ Faktor $4^{1/4} \\approx 1{,}41$ in $n$.',
           ],
+          wrongAnswerExplanations: {
+            '1': '4× so viele gilt für Trapez-Ordnung 2 mit Faktor 16 Fehlerreduktion, nicht für Simpson ($h^4$). Bei Simpson reicht $n \\to 4^{1/4} n \\approx 1{,}41 n$.',
+            '2': '2× so viele ist die Trapez-Regel für Faktor-4-Reduktion. Simpson braucht wegen höherer Ordnung $h^4$ weniger: Faktor $\\approx 1{,}41$.',
+            '3': '16× wäre der Fall, wenn Simpson Ordnung 1 hätte. Tatsächlich hat Simpson Ordnung 4, also nur $4^{1/4} \\approx 1{,}41$-facher $n$.',
+          },
         },
         {
           type: 'true-false',
@@ -703,6 +768,11 @@ const unit2 = makeUnit({
         'Zusammengesetzte Trapezregel: $h/2 \\cdot (f_0 + 2f_1 + f_2)$.',
         '$1/2 \\cdot (0 + 2\\cdot1 + 4) = 1/2 \\cdot 6 = 3$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: '$4$ käme aus einer einfachen Trapezregel $(b-a)/2 \\cdot (f(a)+f(b)) = 1 \\cdot 4$, also $n=1$ statt $n=2$. Bei $n=2$ fällt $f(1) = 1$ als doppelt gewichteter innerer Wert hinzu.',
+        2: '$8/3 \\approx 2{,}67$ ist der **exakte** Integralwert, den Trapez nur als Grenzwert $n \\to \\infty$ erreicht. Bei $n=2$ ergibt Trapez $3$.',
+        3: '$2$ wäre $h/2 \\cdot (f_1 + f_2) = 0{,}5 \\cdot (1+4) = 2{,}5$ — oder noch grober berechnet. Korrekt mit Endpunkten + doppeltem inneren Wert: $0{,}5 \\cdot (0 + 2 + 4) = 3$.',
+      },
       masteryVisualization: {
         id: 'function-graph',
         params: {
@@ -765,6 +835,11 @@ const unit2 = makeUnit({
             'Abbruch bei kleiner Änderung.',
             '$|\\Delta x| < \\varepsilon$.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Monotonie ($x_n > x_{n-1}$) garantiert keine Konvergenz — Newton kann oszillieren oder abwechselnd zu- und abnehmen. Abbruch braucht eine echte Kleinheits-Bedingung.',
+            '2': '$f\'(x_n) = 0$ ist ein **Abbruch wegen Zusammenbruchs** (Division durch 0), kein Konvergenz-Abbruch. Das Verfahren liefert dann keine Lösung.',
+            '3': 'Eine feste Iterationszahl $n > 5$ ist ein Notfall-Abbruch (Sicherheitsnetz), aber kein Konvergenzkriterium — vielleicht ist die Genauigkeit nach 5 Schritten viel zu gering.',
+          },
         },
         {
           type: 'true-false',
@@ -795,6 +870,11 @@ const unit2 = makeUnit({
             'Wo steht $f\'$ in der Newton-Formel?',
             'Division durch kleine Zahlen ist numerisch problematisch.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Stetigkeit allein garantiert keine Konvergenz von Newton, aber ist auch kein Divergenzgrund. Das Problem entsteht erst bei flacher Ableitung oder ungünstigen Startwerten.',
+            '2': 'Rationalität des Startwerts hat keinen Einfluss auf Konvergenz — Newton behandelt reelle Zahlen unabhängig von ihrer Darstellung.',
+            '3': 'Newton konvergiert **nicht** immer — das ist die häufige Fehleinschätzung. Nur bei lokal gutmütigen Bedingungen ist Konvergenz garantiert.',
+          },
         },
         {
           type: 'number-input',
@@ -846,6 +926,11 @@ const unit2 = makeUnit({
             'Simpson höhere Ordnung → weniger Aufrufe für gleiche Genauigkeit.',
             'Newton/Bisektion falsches Problem.',
           ],
+          wrongAnswerExplanations: {
+            '1': 'Trapez ($h^2$) bräuchte bei gleicher Genauigkeit viel mehr Stützstellen als Simpson ($h^4$). Bei 4 Nachkommastellen ist Simpson deutlich effizienter.',
+            '2': 'Bisektion löst Nullstellen-Probleme ($f(x) = 0$), kein Integral. Hier verlangt die Aufgabe einen Integralwert.',
+            '3': 'Newton ist ebenfalls ein Nullstellenverfahren. Für Integrale sind Quadraturverfahren (Trapez/Simpson) die richtige Wahl.',
+          },
         },
         {
           type: 'true-false',
@@ -898,6 +983,11 @@ const unit2 = makeUnit({
         'Bisektion garantiert Konvergenz, wenn $f(a) \\cdot f(b) < 0$.',
         'Newton braucht einen guten Startwert — bei schlechtem Startwert kann er divergieren.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Newton konvergiert schneller, aber **nicht immer** — bei schlechtem Startwert oder kleinen Ableitungen kann es divergieren. Bei Robustheit gewinnt Bisektion.',
+        2: 'Simpson ist ein Integrationsverfahren, kein Nullstellen-Verfahren. Es kann gar nicht zum Finden einer Nullstelle verwendet werden.',
+        3: 'Trapez ist ebenfalls ein Integrationsverfahren, keine Alternative zu Newton für Nullstellen. Hier geht es um Robustheit bei Nullstellen, nicht um Integrale.',
+      },
       prerequisites: ['num-pruefung-2'],
       nextLessonId: null,
     }),

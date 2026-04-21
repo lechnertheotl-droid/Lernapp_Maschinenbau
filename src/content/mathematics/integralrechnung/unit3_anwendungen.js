@@ -24,6 +24,11 @@ export const exercises_int_u3 = {
       'Fläche zwischen = Fläche unter der oberen - Fläche unter der unteren.',
       'Integriere die Differenz: $\\int [f(x) - g(x)]\\,dx$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Addieren der Integrale ergibt die Summe der beiden Flächen unter den Kurven, nicht die Fläche dazwischen. Für die Zwischen-Fläche muss abgezogen werden: $A = \\int_{a}^{b} [f(x) - g(x)]\\,dx$.',
+      '2': 'Das Produkt $f(x) \\cdot g(x)$ hat keine geometrische Bedeutung für Flächen zwischen Kurven — das ist eine erfundene Formel. Richtig ist die Differenz: $A = \\int_{a}^{b} [f(x) - g(x)]\\,dx$.',
+      '3': 'Die Beträge machen hier keinen Sinn, wenn $f(x) \\geq g(x)$ schon vorausgesetzt ist — und selbst bei negativen Funktionen wäre das falsch. Richtig: $A = \\int_{a}^{b} [f(x) - g(x)]\\,dx$ (Differenz ohne Beträge).',
+    },
   },
   'ex-int-3-1-b': {
     id: 'ex-int-3-1-b', lessonId: 'int-3-1', type: 'number-input',
@@ -91,6 +96,11 @@ export const exercises_int_u3 = {
       'Für die Fläche muss man die Abschnitte getrennt berechnen und Beträge addieren.',
       'Jeder "Buckel" hat Fläche $2$, zusammen $4$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Das ist das Integral $\\int_{0}^{2\\pi}\\sin(x)\\,dx = 0$ — positive und negative Beiträge heben sich auf. Fläche ist aber immer positiv, also müssen auf jedem Vorzeichenabschnitt die Beträge getrennt addiert werden: $|2| + |-2| = 4$.',
+      '1': 'Du hast nur den positiven Halbbogen $[0, \\pi]$ berechnet: $\\int_{0}^{\\pi}\\sin(x)\\,dx = 2$. Der zweite Bogen auf $[\\pi, 2\\pi]$ liefert noch einmal Fläche $|{-2}| = 2$, zusammen also $4$.',
+      '3': 'Der Wert $\\pi$ passt nicht zur Geometrie — die Fläche unter einer Sinus-Halbwelle ist $2$, nicht $\\pi$. Über $[0, 2\\pi]$ ergibt die Gesamtfläche (mit Beträgen) $2 + 2 = 4$.',
+    },
   },
   'ex-int-3-1-mastery': {
     id: 'ex-int-3-1-mastery', lessonId: 'int-3-1', type: 'number-input', isMasteryCheck: true,
@@ -141,6 +151,11 @@ export const exercises_int_u3 = {
       'Kreisfläche = $\\pi r^{2}$.',
       'Aufsummieren über das Intervall: Integral von $\\pi \\cdot [f(x)]^{2}$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Das wäre die Fläche unter der Kurve (2D), nicht das Volumen (3D). Bei der Rotation werden Kreisscheiben mit Radius $f(x)$ aufgeschichtet, Kreisfläche $\\pi r^{2}$: $V = \\pi \\int_{a}^{b} [f(x)]^{2}\\,dx$.',
+      '2': '$2\\pi$ gehört zur Mantelflächen- oder Zylinderschalenmethode (Rotation um die $y$-Achse), nicht zur Scheibenmethode. Bei Rotation um die $x$-Achse: $V = \\pi \\int_{a}^{b} [f(x)]^{2}\\,dx$ — mit Quadrat.',
+      '3': 'Das Quadrat von $f(x)$ fehlt — die Kreisfläche ist $\\pi r^{2}$, nicht $\\pi r$. Richtig: $V = \\pi \\int_{a}^{b} [f(x)]^{2}\\,dx$. Ohne Quadrat hätte $V$ die falsche Dimension.',
+    },
   },
   'ex-int-3-2-b': {
     id: 'ex-int-3-2-b', lessonId: 'int-3-2', type: 'number-input',
@@ -230,6 +245,11 @@ export const exercises_int_u3 = {
       'Bei veränderlicher Kraft muss "aufaddiert" werden $\\to$ Integral.',
       'Einheit: Arbeit hat die Einheit $\\mathrm{J} = \\mathrm{N} \\cdot \\mathrm{m}$.',
     ],
+    wrongAnswerExplanations: {
+      '0': '$W = F \\cdot s$ gilt nur für konstante Kraft. Wenn $F$ von $x$ abhängt, muss über den Weg integriert werden: $W = \\int_{a}^{b} F(x)\\,dx$. Beispiel Feder: $F(x) = kx$ ergibt $W = \\dfrac{1}{2}kx^{2}$, nicht $F \\cdot s$.',
+      '2': 'Die Formel $F(b) - F(a)$ ist der Hauptsatz angewandt auf die Stammfunktion von $F$ — aber hier wird $F$ als Kraft interpretiert, nicht als Stammfunktion. Richtig: $W = \\int_{a}^{b} F(x)\\,dx$ (Kraft aufsummieren, nicht auswerten).',
+      '3': 'Die Ableitung $\\dfrac{d}{dx}F(x)$ gibt die Steigung der Kraft, nicht die Arbeit. Arbeit ist das aufaddierte Produkt Kraft $\\cdot$ Weg, also Integration: $W = \\int_{a}^{b} F(x)\\,dx$.',
+    },
   },
   'ex-int-3-3-b': {
     id: 'ex-int-3-3-b', lessonId: 'int-3-3', type: 'number-input',
@@ -272,6 +292,87 @@ export const exercises_int_u3 = {
       'Schwerpunkt = gewichteter Mittelwert der Position.',
       'Jeder Streifen bei $x$ hat die Fläche $f(x)\\,dx$ als Gewicht.',
       '$\\bar{x} = \\dfrac{\\text{Moment}}{\\text{Fläche}} = \\dfrac{\\int x \\cdot f(x)\\,dx}{\\int f(x)\\,dx}$.',
+    ],
+    wrongAnswerExplanations: {
+      '1': 'Das ist die Gesamtfläche $A$, nicht der Schwerpunkt. Der Schwerpunkt ist der gewichtete Mittelwert: $\\bar{x} = \\dfrac{1}{A}\\int_{a}^{b} x \\cdot f(x)\\,dx$ — also Moment geteilt durch Fläche.',
+      '2': 'Die Intervallmitte $(a+b)/2$ gilt nur für symmetrische Flächen (z.B. Rechtecke). Bei allgemeinen Funktionen $f(x)$ verschiebt sich der Schwerpunkt dorthin, wo mehr Fläche ist: $\\bar{x} = \\dfrac{1}{A}\\int_{a}^{b} x \\cdot f(x)\\,dx$.',
+      '3': 'Der Funktionswert bei der Intervallmitte ist ein $y$-Wert, keine $x$-Koordinate. Der $x$-Schwerpunkt ist eine gewichtete Mittelung der $x$-Positionen: $\\bar{x} = \\dfrac{1}{A}\\int_{a}^{b} x \\cdot f(x)\\,dx$.',
+    },
+  },
+  // ───────────── Lektion 3-4: Bogenlänge & Durchschnittswert ─────────────
+  'ex-int-3-4-a': {
+    id: 'ex-int-3-4-a', lessonId: 'int-3-4', type: 'multiple-choice',
+    question: 'Welche Formel beschreibt die **Bogenlänge** einer Funktionskurve $y = f(x)$ auf $[a,b]$?',
+    options: [
+      '$L = \\displaystyle\\int_{a}^{b} \\sqrt{1 + [f\'(x)]^{2}}\\,dx$',
+      '$L = \\displaystyle\\int_{a}^{b} f(x)\\,dx$',
+      '$L = \\displaystyle\\int_{a}^{b} \\sqrt{[f(x)]^{2} + [f\'(x)]^{2}}\\,dx$',
+      '$L = \\displaystyle\\int_{a}^{b} |f\'(x)|\\,dx$',
+    ],
+    correctIndex: 0,
+    explanation: `**Ansatz:** Zerlege die Kurve in infinitesimale Segmente. Jedes kleine Stück hat horizontale Länge $dx$ und vertikale Höhe $dy = f\'(x)\\,dx$. Nach Pythagoras: $ds = \\sqrt{(dx)^{2} + (dy)^{2}} = \\sqrt{1 + [f\'(x)]^{2}}\\,dx$.
+
+**Integration:** $L = \\displaystyle\\int_{a}^{b} \\sqrt{1 + [f\'(x)]^{2}}\\,dx$.
+
+**Probe bei Gerade $f(x) = x$ auf $[0, 3]$:** $f\'(x) = 1$, also $L = \\int_{0}^{3} \\sqrt{2}\\,dx = 3\\sqrt{2} \\approx 4{,}24$. Geometrie-Check: Gerade von $(0,0)$ nach $(3,3)$ hat Länge $\\sqrt{9+9} = 3\\sqrt{2}$ ✓.
+
+**Anwendung im Maschinenbau:** Profilkurven (Zahnrad-Evolvente, Rohrleitungen), Seillängen, Blechzuschnitt.
+
+**Typischer Fehler:** Nur $\\int f\'$ oder $\\int |f\'|$ integrieren — dabei fehlt der Pythagoras-Anteil für die horizontale Richtung.`,
+    wrongAnswerExplanations: {
+      1: 'Das wäre die **Fläche** unter der Kurve, nicht die Bogenlänge. Fläche misst $y \\cdot dx$, Bogenlänge misst $\\sqrt{(dx)^{2} + (dy)^{2}}$.',
+      2: 'Du hast $f(x)$ statt der Konstante $1$ unter die Wurzel gepackt. Die $1$ kommt aus $(dx)^{2}/(dx)^{2} = 1$ — nicht aus $f(x)^{2}$. Formel: $ds = \\sqrt{1 + (f\')^{2}}\\,dx$.',
+      3: 'Das ist die vertikale Gesamt-Auslenkung, nicht die Bogenlänge. Eine horizontale Gerade hätte damit $L = 0$ — offensichtlich falsch. Die korrekte Formel berücksichtigt **beide** Richtungen über Pythagoras.',
+    },
+    hints: [
+      'Zerlege die Kurve in winzige Teilstücke $ds$. Was ist $ds$?',
+      'Pythagoras am differentiellen Dreieck: $ds = \\sqrt{(dx)^{2} + (dy)^{2}}$.',
+      'Mit $dy = f\'(x)\\,dx$: $ds = \\sqrt{1 + (f\')^{2}}\\,dx$.',
+    ],
+  },
+  'ex-int-3-4-b': {
+    id: 'ex-int-3-4-b', lessonId: 'int-3-4', type: 'number-input',
+    question: 'Berechne den **Durchschnittswert** $\\bar{f}$ der Funktion $f(x) = x^{2}$ auf $[0, 3]$.',
+    correctValue: 3,
+    tolerance: 0.01,
+    unit: '',
+    explanation: `**Ansatz:** Durchschnittswert-Formel: $\\bar{f} = \\dfrac{1}{b-a}\\displaystyle\\int_{a}^{b} f(x)\\,dx$ (Mittelwertsatz der Integralrechnung).
+
+**Rechnung:**
+$\\bar{f} = \\dfrac{1}{3-0}\\displaystyle\\int_{0}^{3} x^{2}\\,dx = \\dfrac{1}{3} \\cdot \\left[\\dfrac{x^{3}}{3}\\right]_{0}^{3} = \\dfrac{1}{3} \\cdot 9 = 3$.
+
+**Probe geometrisch:** Die Fläche unter $f(x) = x^{2}$ auf $[0,3]$ ist $9$. Ein Rechteck gleicher Fläche über $[0,3]$ hätte Höhe $9/3 = 3$ — das ist $\\bar{f}$.
+
+**Anwendung:** Durchschnitts-Spannung, -Temperatur, -Geschwindigkeit in Zeit- oder Ortsintervallen.
+
+**Typischer Fehler:** Die Normierung $\\tfrac{1}{b-a}$ vergessen und direkt das Integral $9$ als Antwort hinschreiben. Ohne Normierung bekommst du die *Fläche*, nicht den Mittelwert.`,
+    hints: [
+      'Formel für Mittelwert: Integral geteilt durch Intervall-Länge.',
+      '$\\bar{f} = \\tfrac{1}{b-a} \\int_{a}^{b} f\\,dx$. Hier: $b-a = 3$.',
+      'Integral $\\int_{0}^{3} x^{2}\\,dx = 9$; geteilt durch $3$ → $3$.',
+    ],
+  },
+  'ex-int-3-4-mastery': {
+    id: 'ex-int-3-4-mastery', lessonId: 'int-3-4', type: 'number-input', isMasteryCheck: true,
+    question: '[PRÜFUNG] Bogenlänge der Parabel $f(x) = \\tfrac{2}{3}x^{3/2}$ auf $[0, 3]$. (Ergebnis auf 2 Nachkommastellen)',
+    correctValue: 4.67,
+    tolerance: 0.05,
+    unit: '',
+    explanation: `**Ansatz:** Bogenlängenformel anwenden — aber zuerst $f\'(x)$ berechnen.
+
+**Rechnung:**
+1. $f(x) = \\tfrac{2}{3} x^{3/2} \\Rightarrow f\'(x) = \\tfrac{2}{3} \\cdot \\tfrac{3}{2} x^{1/2} = x^{1/2} = \\sqrt{x}$.
+2. $[f\'(x)]^{2} = x$.
+3. $L = \\displaystyle\\int_{0}^{3} \\sqrt{1 + x}\\,dx$.
+4. Substitution $u = 1 + x$, $du = dx$, Grenzen $1 \\to 4$: $L = \\int_{1}^{4} \\sqrt{u}\\,du = \\left[\\tfrac{2}{3} u^{3/2}\\right]_{1}^{4} = \\tfrac{2}{3}(8 - 1) = \\tfrac{14}{3} \\approx 4{,}67$.
+
+**Probe:** Bei $x = 3$ ist $f(3) = \\tfrac{2}{3} \\cdot 3^{3/2} = 2\\sqrt{3} \\approx 3{,}46$. Der direkte Abstand vom Ursprung wäre $\\sqrt{9 + 12} \\approx 4{,}58$ — die Bogenlänge ist etwas länger ($4{,}67$), da die Kurve nicht gerade ist. ✓
+
+**Typischer Fehler:** $f(x)$ statt $f\'(x)$ ins Integral stecken. Die Bogenlängenformel nutzt die **Ableitung**, nicht die Funktion selbst.`,
+    hints: [
+      'Erst $f\'(x)$ berechnen — Potenzregel für $x^{3/2}$.',
+      '$L = \\int_{0}^{3} \\sqrt{1 + x}\\,dx$ mit Substitution $u = 1+x$.',
+      'Ergebnis: $\\tfrac{14}{3} \\approx 4{,}67$.',
     ],
   },
   'ex-int-3-3-mastery': {
@@ -402,7 +503,7 @@ $$V = \\pi \\int_{0}^{3} x^{2}\\,dx = \\pi \\left[\\frac{x^{3}}{3}\\right]_{0}^{
     order: 3, estimatedMinutes: 16,
     learningGoals: ['Arbeit mit Integralen berechnen', 'Schwerpunkt einer Fläche bestimmen'],
     prerequisites: [],
-    nextLessonId: null,
+    nextLessonId: 'int-3-4',
     steps: [
       {
         id: 'int-3-3-s1', type: 'explanation-formal', title: 'Arbeit und Schwerpunkt',
@@ -440,6 +541,46 @@ wobei $A = \\int_{a}^{b} f(x)\\,dx$ die Gesamtfläche ist.
       { id: 'int-3-3-s3', type: 'exercise', title: 'Aufgabe 2 — Feder', exerciseRef: 'ex-int-3-3-b' },
       { id: 'int-3-3-s4', type: 'exercise', title: 'Aufgabe 3 — Schwerpunkt', exerciseRef: 'ex-int-3-3-c' },
       { id: 'int-3-3-s5', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-int-3-3-mastery' },
+    ],
+  },
+  {
+    id: 'int-3-4', unitId: 'int-unit-3',
+    title: 'Bogenlänge & Durchschnittswert',
+    order: 4, estimatedMinutes: 14,
+    learningGoals: [
+      'Bogenlänge $L = \\int \\sqrt{1 + (f\')^{2}}\\,dx$ kennen und anwenden',
+      'Durchschnittswert $\\bar{f} = \\tfrac{1}{b-a}\\int f\\,dx$ berechnen',
+      'Geometrische Deutung beider Konzepte verstehen',
+    ],
+    prerequisites: ['int-3-1'],
+    nextLessonId: null,
+    steps: [
+      {
+        id: 'int-3-4-s1', type: 'explanation-formal', title: 'Bogenlänge und Mittelwert',
+        content: `Zwei Standard-Anwendungen, die in Maschinenbau ständig auftauchen — und in Prüfungen oft unterschätzt werden.
+
+**Bogenlänge einer Kurve $y = f(x)$:**
+
+Zerlege die Kurve in infinitesimale Segmente. Jedes hat horizontale Breite $dx$ und vertikale Höhe $dy = f\'(x)\\,dx$. Pythagoras am differentiellen Dreieck:
+$$ds = \\sqrt{(dx)^{2} + (dy)^{2}} = \\sqrt{1 + [f\'(x)]^{2}}\\,dx$$
+
+Aufintegriert:
+$$L = \\int_{a}^{b} \\sqrt{1 + [f\'(x)]^{2}}\\,dx$$
+
+**Warum wichtig:** Zahnrad-Evolventen, Rohrleitungen, Seilverläufe, Blechzuschnitte — überall wo Länge entlang einer Kurve gemessen wird.
+
+**Durchschnittswert einer Funktion auf $[a,b]$:**
+
+Idee: Welche konstante Höhe $\\bar{f}$ ergibt die gleiche Fläche $(b-a) \\cdot \\bar{f}$ wie das Integral?
+$$\\bar{f} = \\dfrac{1}{b-a}\\int_{a}^{b} f(x)\\,dx$$
+
+**Warum wichtig:** Durchschnittsspannung in einem Querschnitt, Mitteltemperatur über einen Prozess, Effektivwerte bei Wechselgrößen.
+
+**Merke:** Bogenlänge nutzt $f\'$ (wie steil ist die Kurve?), Durchschnitt nutzt $f$ (wie hoch im Mittel?).`,
+      },
+      { id: 'int-3-4-s2', type: 'exercise', title: 'Aufgabe 1 — Bogenlängen-Formel', exerciseRef: 'ex-int-3-4-a' },
+      { id: 'int-3-4-s3', type: 'exercise', title: 'Aufgabe 2 — Durchschnittswert', exerciseRef: 'ex-int-3-4-b' },
+      { id: 'int-3-4-s4', type: 'mastery-check', title: 'Prüfungsaufgabe — Bogenlänge Parabel', exerciseRef: 'ex-int-3-4-mastery' },
     ],
   },
 ]

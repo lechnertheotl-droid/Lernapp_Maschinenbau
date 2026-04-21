@@ -17,6 +17,11 @@ export const exercises_dgl_u1 = {
       'Es bezieht sich auf die Ableitung (Differentialquotient).',
       'Eine DGL verbindet eine Funktion mit ihren Ableitungen.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Eine Gleichung, die nur Zahlen enthält, ist eine arithmetische Aussage wie $2+3=5$ — dort ist nichts unbekannt. Eine DGL enthält immer eine gesuchte Funktion und deren Ableitungen, z.B. $y\' = 2y$.',
+      2: 'Das beschreibt eine algebraische Gleichung in zwei Variablen (z.B. $x^2+y^2=1$), aber keine Ableitungen. In einer DGL steht mindestens ein $y\'$, $y\'\'$ etc. — das Wort „Differential" verweist genau darauf.',
+      3: 'Das ist eine Integralgleichung (z.B. $\\int_0^x f(t)\\,dt = g(x)$) — das Gegenstück zur DGL. DGL enthält Ableitungen; Integralgleichungen enthalten Integrale. Die beiden hängen zusammen, sind aber verschiedene Objekte.',
+    },
   },
   'ex-dgl-1-1-b': {
     id: 'ex-dgl-1-1-b', lessonId: 'dgl-1-1', type: 'multiple-choice',
@@ -29,6 +34,11 @@ export const exercises_dgl_u1 = {
       'Zähle die Striche: $y\'$ ist 1. Ordnung, $y\'\'$ ist 2. Ordnung.',
       'Die höchste Ableitung in $y\'\' + 3y\' - 2y$ ist $y\'\'$ — also Ordnung 2.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Ordnung 0 gäbe es nur, wenn gar keine Ableitung vorkäme — das wäre dann eine gewöhnliche algebraische Gleichung, keine DGL. Die Ordnung ist definiert als die höchste auftretende Ableitung; $y\'\'$ ist vorhanden, also mindestens Ordnung 2.',
+      1: 'Du hast vermutlich nur den Term $3y\'$ gesehen und den Strich als Maß genommen. Die Ordnung richtet sich aber nach der *höchsten* Ableitung in der gesamten Gleichung: $y\'\'$ kommt vor und liefert Ordnung 2, nicht 1.',
+      3: 'Ordnung 3 würde bedeuten, dass $y\'\'\'$ in der Gleichung steht — das ist hier nicht der Fall. Die höchste sichtbare Ableitung ist $y\'\'$ (zwei Striche), also Ordnung 2.',
+    },
   },
   'ex-dgl-1-1-c': {
     id: 'ex-dgl-1-1-c', lessonId: 'dgl-1-1', type: 'true-false',
@@ -68,6 +78,11 @@ export const exercises_dgl_u1 = {
       'Die allgemeine Lösung von $y\' = ky$ ist $y = C e^{kx}$. Hier $k = 2$.',
       '$y(0) = C \\cdot e^{0} = C$, also muss $C = 3$ sein.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Hier wurde die Anfangsbedingung additiv statt multiplikativ eingebaut: $y(0) = e^0 + 3 = 4 \\neq 3$. Außerdem ist $y\' = 2e^{2x}$, aber $2y = 2e^{2x}+6$ — die DGL ist also auch nicht erfüllt. Richtig: die Konstante gehört als Faktor $C$ vor $e^{kx}$.',
+      2: 'Du hast Vorfaktor und Exponent-Koeffizient vertauscht ($2$ und $3$). Setzt man $y=2e^{3x}$ ein: $y\' = 6e^{3x}$, aber $2y = 4e^{3x}$ — DGL nicht erfüllt. Die Regel lautet: bei $y\'=ky$ steht $k$ im Exponenten, der Vorfaktor wird aus $y(0)$ bestimmt.',
+      3: 'Der Exponent-Koeffizient ist falsch: $y = 3e^{x}$ gibt $y\' = 3e^{x}$, aber die DGL verlangt $y\' = 2y = 6e^{x}$. Anfangsbedingung passt zwar ($y(0)=3$), die DGL aber nicht. Korrekt: der Koeffizient $k=2$ aus $y\'=2y$ erscheint im Exponenten.',
+    },
   },
 
   'ex-dgl-1-2-a': {
@@ -86,6 +101,11 @@ export const exercises_dgl_u1 = {
       'Alle $y$-Terme (inkl. $dy$) auf eine Seite, alle $x$-Terme (inkl. $dx$) auf die andere.',
       'Aus $\\frac{dy}{dx} = g(x) \\cdot h(y)$ folgt nach Umordnen: $\\frac{dy}{h(y)} = g(x)\\,dx$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Hier wurde das Produkt $g(x) \\cdot h(y)$ zu einer Summe $g(x) + h(y)$ umgeformt — das ist algebraisch falsch. Bei Trennung der Variablen *dividiert* man durch $h(y)$, man addiert nichts. Korrekt: $\\frac{dy}{h(y)} = g(x)\\,dx$.',
+      2: 'Du hast $dy$ und $dx$ vertauscht. Damit hättest du $x\'(y)$ statt $y\'(x)$ getrennt — und das Produkt steht weiterhin auf der rechten Seite, also ist gar nichts getrennt. Ziel ist: $y$ allein links, $x$ allein rechts.',
+      3: 'Die Differentiale wurden multipliziert — das ergibt kein Standardintegral, $dy \\cdot dx$ ist als Objekt in der 1D-Analysis undefiniert (kommt erst bei Doppelintegralen vor). Richtig: nach $h(y)$ dividieren, $dx$ auf die andere Seite bringen.',
+    },
   },
   'ex-dgl-1-2-b': {
     id: 'ex-dgl-1-2-b', lessonId: 'dgl-1-2', type: 'multiple-choice',
@@ -103,6 +123,11 @@ export const exercises_dgl_u1 = {
       'Schritt 1: $\\frac{dy}{y} = x\\,dx$.',
       'Schritt 2: Beide Seiten integrieren — links $\\ln|y|$, rechts $x^2/2 + C$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Du hast die rechte Seite $\\int x\\,dx = \\frac{x^2}{2}$ als $\\int 1\\,dx = x$ integriert — also den Faktor $x$ übersehen. Das wäre die Lösung zu $y\'=y$, nicht zu $y\'=xy$. Korrekt: $\\int x\\,dx = \\frac{x^2}{2}$, daher Exponent $x^2/2$.',
+      2: 'Das sieht nach einer Potenzfunktion aus — vermutlich wurde versucht, $y=x^n$ einzusetzen. Test: $y=Cx^2 \\Rightarrow y\'=2Cx$, aber $xy=Cx^3$. Das stimmt nicht. Separable DGL $\\frac{dy}{y}=x\\,dx$ führt über $\\ln|y|$ zwingend auf $e^{x^2/2}$.',
+      3: 'Das Vorzeichen im Exponenten ist falsch. Aus $\\int x\\,dx = +\\frac{x^2}{2}$ folgt $\\ln|y|=+x^2/2$ — es gibt keine Vorzeichenumkehr. $y = Ce^{-x^2/2}$ würde die DGL $y\'=-xy$ lösen, nicht $y\'=xy$.',
+    },
     visualization: {
       id: 'function-graph',
       params: {
@@ -149,6 +174,11 @@ export const exercises_dgl_u1 = {
       'Integrieren ergibt $\\ln|y| = -3x + C_1$, also $y = Ce^{-3x}$.',
       'Aus $y(0) = 5$ folgt $C = 5$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Vorzeichen im Exponenten vergessen: aus $y\'=-3y$ folgt $\\int \\frac{dy}{y}=\\int -3\\,dx$, also $\\ln|y|=-3x+C_1$ mit *negativem* $3$. Der Exponent muss $-3x$ lauten — sonst hättest du $y\'=+3y$ gelöst, nicht $y\'=-3y$.',
+      2: 'Vorfaktor und Exponent-Koeffizient wurden vertauscht ($-3$ und $5$). Der Vorfaktor kommt aus $y(0)=C$, der Koeffizient im Exponenten aus dem Faktor vor $y$ in der DGL. Test: $y=-3e^{5x} \\Rightarrow y\'=-15e^{5x}$, aber $-3y=9e^{5x}$ — passt nicht.',
+      3: 'Das ist eine lineare Funktion (konstante Ableitung $y\'=-3$), aber die DGL verlangt $y\'$ proportional zu $y$, nicht zu einer Konstanten. Aus $\\frac{dy}{y}=-3\\,dx$ folgt zwingend eine e-Funktion, keine Gerade.',
+    },
     visualization: {
       id: 'function-graph',
       params: {
@@ -182,6 +212,11 @@ export const exercises_dgl_u1 = {
       'Standardform: $y\' + p(x) \\cdot y = q(x)$ — höchste Ableitung $y\'$, Koeffizienten von $x$ abhängig.',
       'Falls $q(x) = 0$: homogen; sonst inhomogen.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Diese DGL ist *nichtlinear*, weil $y^2$ auftritt — $y$ und seine Ableitungen dürfen bei einer linearen DGL nur in erster Potenz vorkommen. Richtig: $y\' + p(x)y = q(x)$ (nur $y$, nicht $y^2$).',
+      2: 'Hier steht $y\'\'$ — das ist eine DGL 2. Ordnung, nicht 1. Ordnung. Die Frage verlangt die höchste Ableitung $y\'$. Außerdem fehlt die rechte Seite $q(x)$ für die inhomogene Form.',
+      3: 'Das Produkt $y\' \\cdot y$ ist nichtlinear (Produkt der Unbekannten mit ihrer Ableitung). Eine lineare DGL verknüpft $y$ und $y\'$ nur additiv, nicht multiplikativ: $y\' + p(x)y = q(x)$.',
+    },
   },
   'ex-dgl-1-3-b': {
     id: 'ex-dgl-1-3-b', lessonId: 'dgl-1-3', type: 'multiple-choice',
@@ -199,6 +234,11 @@ export const exercises_dgl_u1 = {
       'Trick: $\\mu \\cdot y\' + \\mu \\cdot p \\cdot y = (\\mu \\cdot y)\'$, wenn $\\mu\' = \\mu \\cdot p$.',
       'Diese DGL für $\\mu$ hat die Lösung $\\mu = e^{\\int p \\, dx}$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Hier wurde $p$ und $q$ vertauscht. Der integrierende Faktor muss die Bedingung $\\mu\'=\\mu \\cdot p$ erfüllen — er hängt vom Koeffizienten $p(x)$ bei $y$ ab, nicht von der Störfunktion $q(x)$. Richtig: $\\mu=e^{\\int p\\,dx}$.',
+      2: 'Ohne Exponentialfunktion erfüllt $\\mu$ nicht die Bedingung $\\mu\'=\\mu \\cdot p$. Beispiel: $p=1$ gäbe $\\mu=\\int 1\\,dx = x$, aber dann ist $\\mu\'=1 \\neq x \\cdot 1 = \\mu p$. Nur $\\mu=e^{\\int p\\,dx}$ erfüllt die Differentialgleichung für $\\mu$.',
+      3: 'Das Integral im Exponenten fehlt. Mit $\\mu=e^{p(x)}$ ergibt sich $\\mu\'=p\'(x) \\cdot e^{p(x)}$, also $\\mu\'=p\' \\cdot \\mu$ — gefordert ist aber $\\mu\'=p \\cdot \\mu$. Der Exponent muss die *Stammfunktion* von $p$ sein, nicht $p$ selbst.',
+    },
   },
   'ex-dgl-1-3-c': {
     id: 'ex-dgl-1-3-c', lessonId: 'dgl-1-3', type: 'multiple-choice',
@@ -216,6 +256,11 @@ export const exercises_dgl_u1 = {
       'Trennung der Variablen: $\\frac{dy}{y} = -2 \\, dx$ → $\\ln|y| = -2x + C_1$.',
       'Auflösen: $y = Ce^{-2x}$. Achte auf das negative Vorzeichen im Exponenten.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Vorzeichen im Exponenten falsch: $y\' + 2y = 0$ heißt $y\' = -2y$, also $\\frac{dy}{y} = -2\\,dx$. Das negative Vorzeichen aus dem „$+2y$" landet im Exponenten. Test: $y=Ce^{2x} \\Rightarrow y\'=2Ce^{2x}=2y \\neq -2y$.',
+      2: 'Das ist eine lineare Funktion (konstante Steigung $y\' = 2$), aber die DGL verlangt $y\' = -2y$ — die Steigung ist proportional zu $y$, nicht konstant. Eine homogene lineare DGL mit konstantem Koeffizienten hat immer eine e-Funktion als Lösung.',
+      3: 'Kosinus taucht als Lösung bei DGL *zweiter* Ordnung ohne erste Ableitung auf (wie $y\'\'+4y=0$). Hier ist die Ordnung aber 1, und die charakteristische Gleichung $\\lambda+2=0$ hat eine reelle Wurzel — also kein Schwingungsverhalten, sondern e-Funktion.',
+    },
   },
   'ex-dgl-1-3-d': {
     id: 'ex-dgl-1-3-d', lessonId: 'dgl-1-3', type: 'number-input',
@@ -246,6 +291,11 @@ export const exercises_dgl_u1 = {
       'Homogen: $y_h\' - 3y_h = 0 \\Rightarrow y_h = Ce^{3x}$.',
       'Partikulär: Ansatz $y_p = \\text{const}$, einsetzen in $y\' - 3y = 6$ ergibt $y_p = -2$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Im homogenen Teil ist das Vorzeichen falsch: $y\' - 3y = 0$ liefert $y\' = 3y$, also $y_h = Ce^{+3x}$. Außerdem ist die Partikulärlösung das Vorzeichen-verkehrt: aus $-3y_p = 6$ folgt $y_p = -2$, nicht $+2$.',
+      2: 'Die Partikulärlösung ist falsch eingesetzt. Ansatz $y_p = \\text{const}$: $y_p\' = 0$, also $0 - 3y_p = 6 \\Rightarrow y_p = -2$ — nicht $+6$. Die rechte Seite $6$ ist die Störfunktion, nicht direkt die Partikulärlösung.',
+      3: 'Hier wurde $y_p = 6x$ angenommen — das wäre nur richtig, wenn die Störfunktion $6x$ wäre und kein konstanter Term in $y_p$ nötig. Da die Störfunktion *konstant* ($=6$) ist, muss auch $y_p$ konstant sein. Einsetzen von $y_p=6x$ ergibt $6 - 18x \\neq 6$.',
+    },
   },
 
   'ex-dgl-1-4-a': {
@@ -264,6 +314,11 @@ export const exercises_dgl_u1 = {
       '$y\' = \\lambda e^{\\lambda x}$, $y\'\' = \\lambda^2 e^{\\lambda x}$ — alles enthält Faktor $e^{\\lambda x}$.',
       'Kürzen mit $e^{\\lambda x} \\neq 0$ liefert die quadratische Gleichung in $\\lambda$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Hier fehlen die $\\lambda$-Potenzen. Beim Ableiten von $e^{\\lambda x}$ fällt jedes Mal ein Faktor $\\lambda$ heraus: $y\'\'=\\lambda^2 e^{\\lambda x}$, $y\'=\\lambda e^{\\lambda x}$. Das ergibt $a\\lambda^2+b\\lambda+c=0$, nicht $a+b+c=0$.',
+      2: 'Das ist nur der Teil erster Ordnung — du hast $y\'\'$ weggelassen. Weil die DGL von Ordnung 2 ist, muss auch der quadratische Term $a\\lambda^2$ in der charakteristischen Gleichung auftauchen. Richtig: $a\\lambda^2+b\\lambda+c=0$.',
+      3: 'Das ist nur ein Spezialfall: richtig wäre es nur, wenn $b=0$. Allgemein entsteht beim Einsetzen aber ein Term $b\\lambda$, der nicht fehlen darf: $a\\lambda^2+b\\lambda+c=0$.',
+    },
   },
   'ex-dgl-1-4-b': {
     id: 'ex-dgl-1-4-b', lessonId: 'dgl-1-4', type: 'multiple-choice',
@@ -281,6 +336,11 @@ export const exercises_dgl_u1 = {
       '$\\alpha$ ist der Realteil — bestimmt die exponentielle Dämpfung ($e^{\\alpha x}$).',
       '$\\beta$ ist der Imaginärteil — bestimmt die Kreisfrequenz von $\\sin$ und $\\cos$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Diese Form gilt für zwei *verschiedene reelle* Wurzeln, nicht für komplexe. Bei komplexen Wurzeln müssen die Lösungen reell formuliert werden — über die Eulerformel $e^{i\\beta x}=\\cos(\\beta x)+i\\sin(\\beta x)$ entstehen sin/cos, nicht zwei getrennte e-Funktionen.',
+      2: 'Das ist die Form für eine *doppelte reelle* Wurzel ($\\lambda_1=\\lambda_2=\\alpha$). Bei komplexen Wurzeln sind die beiden $\\lambda$ aber verschieden ($\\alpha+i\\beta$ und $\\alpha-i\\beta$) — kein linearer Faktor $x$, dafür trigonometrische Funktionen.',
+      3: 'Hier wurden Real- und Imaginärteil gemischt. Korrekt wäre: $\\alpha$ steckt im Vorfaktor $e^{\\alpha x}$ (Dämpfung), $\\beta$ in $\\cos(\\beta x)$ und $\\sin(\\beta x)$ (Frequenz) — nicht $\\alpha$ im $\\cos$ und $\\beta$ im $\\sin$.',
+    },
   },
   'ex-dgl-1-4-c': {
     id: 'ex-dgl-1-4-c', lessonId: 'dgl-1-4', type: 'multiple-choice',
@@ -298,6 +358,11 @@ export const exercises_dgl_u1 = {
       '$\\lambda^2 = -4 \\Rightarrow \\lambda = \\pm 2i$ (rein imaginär, $\\alpha = 0$).',
       'Rein imaginäre Wurzeln → ungedämpfte Schwingung mit Frequenz $\\beta = 2$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das Vorzeichen in $\\lambda^2+4=0$ wurde übersehen: $\\lambda^2=-4$, nicht $+4$. Daher ist $\\lambda=\\pm 2i$ (imaginär), nicht $\\pm 2$ (reell). Reelle $\\lambda$ gäben e-Funktionen, aber hier liegen komplexe Wurzeln vor.',
+      2: 'Das ist die Form für eine *doppelte reelle* Wurzel $\\lambda=2$. Die charakteristische Gleichung $\\lambda^2+4=0$ hat aber zwei *verschiedene* imaginäre Wurzeln $\\pm 2i$, keine Doppelwurzel. Keine $x$-Vorfaktoren, dafür sin/cos.',
+      3: 'Die Frequenz $\\beta$ wurde als $4$ statt $2$ angesetzt. Aus $\\lambda^2=-4$ folgt $\\lambda=\\pm 2i$, also $\\beta=2$. Man nimmt die *Wurzel* von $4$, nicht den Wert selbst. Achtung: Der Zahlenkoeffizient in der charakteristischen Gleichung ist nicht direkt die Frequenz.',
+    },
   },
   'ex-dgl-1-4-mastery': {
     id: 'ex-dgl-1-4-mastery', lessonId: 'dgl-1-4', type: 'multiple-choice', isMasteryCheck: true,
@@ -315,6 +380,11 @@ export const exercises_dgl_u1 = {
       'Faktorisieren: $(\\lambda - 2)(\\lambda - 3) = 0$ (oder pq-Formel) → $\\lambda_1 = 2, \\lambda_2 = 3$.',
       'Zwei verschiedene reelle Wurzeln → $y = C_1 e^{2x} + C_2 e^{3x}$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Vorzeichen der Nullstellen falsch. Aus $(\\lambda-2)(\\lambda-3)=0$ folgt $\\lambda=+2$ und $\\lambda=+3$ (nicht $-2, -3$). Probe: $(-2)\\cdot(-3)=6$ ✓, aber $(-2)+(-3)=-5 \\neq +5$ (denn die Summe der Wurzeln ist $-(-5)=+5$ nach Vieta).',
+      2: 'Das ist die Form für eine *doppelte* Wurzel. Hier haben wir aber zwei *verschiedene* Wurzeln $\\lambda_1=2, \\lambda_2=3$ — also keinen $x$-Vorfaktor. Außerdem $5$ im Exponenten ist falsch: $\\lambda$ ist entweder $2$ oder $3$.',
+      3: 'Das wäre die Form für komplexe Wurzeln. Aber die Diskriminante $D=25-24=1>0$ — also zwei verschiedene reelle Wurzeln, keine komplexen. Keine trigonometrischen Funktionen, sondern zwei e-Funktionen.',
+    },
   },
 }
 

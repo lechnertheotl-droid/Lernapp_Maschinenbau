@@ -23,6 +23,11 @@ export const exercises_vek_u3 = {
       'Formel: $\\vec{a} \\cdot \\vec{b} = a_x b_x + a_y b_y + a_z b_z$.',
       'Rechne: $1 \\cdot 2 + 2 \\cdot 1 + 2 \\cdot 1$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Du hast einen Summanden vergessen: $1\\cdot 2 + 2\\cdot 1 = 4$ berücksichtigt nur die ersten zwei Komponenten. Das Skalarprodukt summiert alle drei: $\\vec{a} \\cdot \\vec{b} = 1\\cdot 2 + 2\\cdot 1 + 2\\cdot 1 = 6$.',
+      2: '$0$ würde bedeuten, dass $\\vec{a} \\perp \\vec{b}$ — hier aber ist $1\\cdot 2 + 2\\cdot 1 + 2\\cdot 1 = 6 \\neq 0$. Die Vektoren sind nicht orthogonal.',
+      3: '$(2, 2, 2)$ ist das *komponentenweise Produkt* $(a_x b_x, a_y b_y, a_z b_z)$ — weder Skalar- noch Kreuzprodukt. Das Skalarprodukt summiert diese drei Werte zu einer Zahl: $2 + 2 + 2 = 6$.',
+    },
   },
   'ex-vek-3-1-b': {
     id: 'ex-vek-3-1-b', lessonId: 'vek-3-1', type: 'number-input',
@@ -70,6 +75,11 @@ export const exercises_vek_u3 = {
       'Komponentenformel oder Rechte-Hand-Regel nutzen.',
       'Ergebnis: Einheitsvektor in z-Richtung.',
     ],
+    wrongAnswerExplanations: {
+      1: '$(0, 0, -1)$ ergibt sich aus $\\hat{e}_2 \\times \\hat{e}_1$ — Reihenfolge vertauscht. Das Kreuzprodukt ist antikommutativ: $\\hat{e}_1 \\times \\hat{e}_2 = -(\\hat{e}_2 \\times \\hat{e}_1)$. Hier zyklisch vorwärts, also $+\\hat{e}_3 = (0,0,1)$.',
+      2: '$(1, 1, 0)$ ist die komponentenweise Summe $\\hat{e}_1 + \\hat{e}_2$ — das hat mit dem Kreuzprodukt nichts zu tun. Die Komponentenformel liefert $(0\\cdot 0 - 0\\cdot 1,\\; 0\\cdot 0 - 1\\cdot 0,\\; 1\\cdot 1 - 0\\cdot 0) = (0, 0, 1)$.',
+      3: '$0$ (als Skalar) ist dimensional falsch — das Kreuzprodukt liefert einen *Vektor*. Außerdem entsteht der Nullvektor nur bei parallelen Ausgangsvektoren; $\\hat{e}_1$ und $\\hat{e}_2$ sind aber senkrecht, also $\\sin(90°) = 1$ und das Ergebnis $\\hat{e}_3 = (0,0,1)$.',
+    },
   },
   'ex-vek-3-1-d': {
     id: 'ex-vek-3-1-d', lessonId: 'vek-3-1', type: 'multiple-choice',
@@ -100,6 +110,11 @@ Das Ergebnis steht senkrecht auf beiden Ausgangsvektoren — wie es sich für da
       'x-Komponente: $1 \\cdot 2 - (-1) \\cdot 3 = 5$.',
       'Vorzeichenkontrolle: $(\\vec{a} \\times \\vec{b}) \\cdot \\vec{a} = 0$ muss gelten.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Vorzeichenfehler bei der $y$-Komponente: du hast das Minus von $a_z = -1$ vergessen. Richtig: $(a\\times b)_y = a_z b_x - a_x b_z = (-1)\\cdot 1 - 2\\cdot 2 = -5$, nicht $+5$.',
+      2: 'Alle Vorzeichen sind umgekehrt — das entspricht $\\vec{b} \\times \\vec{a}$ (Antikommutativität). Gefragt ist $\\vec{a} \\times \\vec{b}$, und dafür ergibt die Komponentenformel $(5, -5, 5)$.',
+      3: 'Vorzeichenfehler in der $z$-Komponente: $(a\\times b)_z = a_x b_y - a_y b_x = 2\\cdot 3 - 1\\cdot 1 = 5$, nicht $-5$. Die $y$-Komponente ist korrekt negativ, aber $z$ bleibt positiv.',
+    },
   },
   'ex-vek-3-1-e': {
     id: 'ex-vek-3-1-e', lessonId: 'vek-3-1', type: 'true-false',
@@ -182,6 +197,11 @@ $$\\cos(\\varphi) = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}| \\cdot |\\vec{b}
       'Formel: $A = |\\vec{a}| \\cdot |\\vec{b}| \\cdot \\sin(\\varphi) = |\\vec{a} \\times \\vec{b}|$.',
       'Für ein Parallelogramm aus $\\vec{a}$ und $\\vec{b}$ brauchst du kein $\\vec{c}$.',
     ],
+    wrongAnswerExplanations: {
+      0: '$|\\vec{a} \\cdot \\vec{b}|$ ist der Betrag des Skalarprodukts — beschreibt Projektionslänge, nicht Fläche. Das Skalarprodukt enthält $\\cos\\varphi$ (maximal bei paralleler Lage), die Fläche braucht aber $\\sin\\varphi$: $A = |\\vec{a} \\times \\vec{b}|$.',
+      2: '$\\vec{a} \\cdot (\\vec{b} \\times \\vec{c})$ ist das Spatprodukt und liefert das *Volumen* eines Parallelepipeds aus drei Vektoren — nicht die Fläche. Hier braucht es nur zwei Vektoren und das Kreuzprodukt $|\\vec{a} \\times \\vec{b}|$.',
+      3: '$|\\vec{a}| + |\\vec{b}|$ ist die Längensumme der Seitenvektoren und entspricht keinem geometrischen Flächenmaß. Die Parallelogrammfläche ist $A = |\\vec{a}||\\vec{b}|\\sin\\varphi = |\\vec{a} \\times \\vec{b}|$.',
+    },
   },
   'ex-vek-3-2-b': {
     id: 'ex-vek-3-2-b', lessonId: 'vek-3-2', type: 'number-input',
@@ -234,6 +254,11 @@ $$\\cos(\\varphi) = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}| \\cdot |\\vec{b}
       'Die Höhe ist die Projektion des dritten Vektors auf den Normalvektor der Grundfläche.',
       'Spatprodukt: $V = |\\vec{a} \\cdot (\\vec{b} \\times \\vec{c})|$.',
     ],
+    wrongAnswerExplanations: {
+      0: '$|\\vec{a} \\times \\vec{b}|$ liefert nur die Parallelogrammfläche (2D-Maß) — für Volumen fehlt die Höhe bzw. der dritte Vektor. Das Spatprodukt kombiniert Grundfläche und Höhe: $V = |\\vec{a} \\cdot (\\vec{b} \\times \\vec{c})|$.',
+      1: '$\\vec{a} \\cdot \\vec{b} \\cdot \\vec{c}$ ist mathematisch nicht definiert — das Skalarprodukt braucht zwei Vektoren und liefert eine Zahl, danach kann man keinen weiteren Vektor multiplizieren. Korrekt: Kreuzprodukt zuerst, dann Skalarprodukt: $\\vec{a} \\cdot (\\vec{b} \\times \\vec{c})$.',
+      3: '$|\\vec{a}| \\cdot |\\vec{b}| \\cdot |\\vec{c}|$ gilt nur, wenn alle drei Vektoren paarweise senkrecht stehen (Quader) — allgemein zu groß, weil Winkel ignoriert werden. Das Spatprodukt enthält implizit den $\\sin \\cdot \\cos$-Term: $V = |\\vec{a} \\cdot (\\vec{b} \\times \\vec{c})|$.',
+    },
   },
   'ex-vek-3-2-mastery': {
     id: 'ex-vek-3-2-mastery', lessonId: 'vek-3-2', type: 'number-input', isMasteryCheck: true,
@@ -297,6 +322,11 @@ $$\\det\\!\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 3 \\end{pmatrix
       'Reihenfolge: Hebelarm zuerst, Kraft zweitens.',
       'Formel: $\\vec{M} = \\vec{r} \\times \\vec{F}$.',
     ],
+    wrongAnswerExplanations: {
+      0: '$\\vec{r} \\cdot \\vec{F}$ ist das Skalarprodukt — liefert eine Zahl, keine Drehachse. Das wäre die Formel für *Arbeit* $W = \\vec{F} \\cdot \\vec{s}$. Drehmoment ist ein Vektor, also Kreuzprodukt: $\\vec{M} = \\vec{r} \\times \\vec{F}$.',
+      2: '$|\\vec{r}| \\cdot |\\vec{F}|$ ist nur der Betrag bei $\\sin\\varphi = 1$ (senkrechter Hebel). Allgemein gilt $|\\vec{M}| = |\\vec{r}||\\vec{F}|\\sin\\varphi$, und zusätzlich fehlt die *Richtung* des Drehmoments. Nur das Kreuzprodukt liefert den vollen Vektor.',
+      3: '$\\vec{F} \\times \\vec{r} = -(\\vec{r} \\times \\vec{F})$ (Antikommutativität) — das ergibt das Drehmoment mit falschem Vorzeichen bzw. in Gegenrichtung. Die physikalische Konvention ist $\\vec{M} = \\vec{r} \\times \\vec{F}$, Hebelarm zuerst.',
+    },
   },
   'ex-vek-3-3-b': {
     id: 'ex-vek-3-3-b', lessonId: 'vek-3-3', type: 'number-input',
@@ -353,6 +383,11 @@ $$|\\vec{M}| = 0{,}5 \\cdot 100 \\cdot 1 = 50\\,\\text{Nm}. \\checkmark$$
       'Hangabtrieb: $F_{\\parallel} = G \\sin(\\alpha)$. Normalkraft: $F_{\\perp} = G \\cos(\\alpha)$.',
       '$\\sin(30°) = 0{,}5 \\Rightarrow F_{\\parallel} = 50\\,\\text{N}$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Du hast $\\sin$ und $\\cos$ vertauscht: $G \\cos(30°) = 86{,}6$ ist die *Normalkraft* (drückt senkrecht auf die Rampe), nicht der Hangabtrieb. Merkhilfe: Bei $\\alpha = 0°$ (flach) muss Hangabtrieb $0$ sein — das liefert $\\sin(0°) = 0$, nicht $\\cos(0°) = 1$.',
+      2: '$G \\tan(\\alpha)$ entspricht keiner physikalischen Kraftkomponente an der Rampe. Die Rampenzerlegung nutzt $\\sin$ für hangparallel und $\\cos$ für hangsenkrecht — $\\tan$ tritt nicht auf.',
+      3: '$100\\,\\text{N}$ wäre die volle Gewichtskraft — nur bei $\\alpha = 90°$ (senkrechte Wand) würde die ganze Gewichtskraft hangabwärts ziehen. Bei $\\alpha = 30°$ wird sie auf $G \\sin 30° = 50\\,\\text{N}$ reduziert.',
+    },
   },
   'ex-vek-3-3-mastery': {
     id: 'ex-vek-3-3-mastery', lessonId: 'vek-3-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -389,6 +424,11 @@ $$|\\vec{M}| = 0{,}5 \\cdot 100 \\cdot 1 = 50\\,\\text{Nm}. \\checkmark$$
       '$M_x = r_y F_z - r_z F_y = 4 \\cdot (-500) - 0 = -2000$.',
       'Plausibilitätscheck: $\\vec{M} \\cdot \\vec{r} = 0$ und $\\vec{M} \\cdot \\vec{F} = 0$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Alle Vorzeichen sind umgekehrt — das entspricht $\\vec{F} \\times \\vec{r}$ (Reihenfolge vertauscht) wegen der Antikommutativität $\\vec{F} \\times \\vec{r} = -(\\vec{r} \\times \\vec{F})$. Gefragt ist $\\vec{r} \\times \\vec{F} = (-2000, 1500, 0)\\,\\text{Nm}$.',
+      2: '$(0, 0, -2500)$ entsteht wohl aus dem Betrag $|\\vec{M}| = 2500$ mit falschem Vorzeichen, in die $z$-Komponente gesetzt. Die korrekte Komponentenformel liefert aber $M_z = r_x F_y - r_y F_x = 3\\cdot 0 - 4\\cdot 0 = 0$, nicht $-2500$.',
+      3: 'Nur den Betrag anzugeben verliert die *Richtung* des Drehmoments — und die Aufgabe fragt explizit nach dem Vektor $\\vec{M} = \\vec{r} \\times \\vec{F}$. Betrag $2500$ stimmt zwar ($\\sqrt{2000^{2} + 1500^{2}} = 2500$), aber der komplette Vektor ist $(-2000, 1500, 0)\\,\\text{Nm}$.',
+    },
   },
 }
 

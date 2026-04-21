@@ -14,6 +14,11 @@ export const exercises_abl_u4 = {
       '$-2x \\cdot \\cos(x^2 + 1)$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Innere Ableitung $(x^2+1)\' = 2x$ vergessen — klassischer Kettenregel-Fehler. Nur die äußere Ableitung $(\\sin u)\' = \\cos u$ angewandt ergibt $\\cos(x^2+1)$, aber der Faktor $2x$ fehlt.',
+      2: 'Falsche äußere Ableitung: $(\\sin u)\' = \\cos u$ (nicht $\\sin u$). Die Ableitung wechselt von Sinus zu Cosinus; hier wurde einfach $\\sin$ beibehalten. Die innere Ableitung $2x$ ist immerhin korrekt enthalten.',
+      3: 'Falsches Vorzeichen: $(\\sin)\' = +\\cos$ (ohne Minus). Das Minus gehört zu $(\\cos)\' = -\\sin$, nicht zur Ableitung von Sinus. Hier liegt Sinus als äußere Funktion vor, also bleibt das Vorzeichen $+$.',
+    },
     explanation: 'Kettenregel: $f(x) = \\sin(u)$ mit $u = x^2 + 1$. Also $f\'(x) = \\cos(u) \\cdot u\' = \\cos(x^2+1) \\cdot 2x$.',
     hints: ['Kettenregel: $(\\sin(u))\' = \\cos(u) \\cdot u\'$', 'Die innere Funktion ist $u = x^2 + 1$, also $u\' = 2x$.'],
   },
@@ -27,6 +32,11 @@ export const exercises_abl_u4 = {
       '$3e^{3x} \\cdot (-\\sin(x))$',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Vorzeichenfehler bei $(\\cos x)\' = -\\sin x$. Das Minus aus der Cosinus-Ableitung wurde verschluckt — damit addiert sich der zweite Summand statt zu subtrahieren. Korrekt: $e^{3x}\\cdot(-\\sin x) = -e^{3x}\\sin x$.',
+      2: 'Produktregel komplett fehlt: Nur der zweite Summand $uv\' = e^{3x}\\cdot(-\\sin x)$ wurde geschrieben. Der erste Summand $u\'v = 3e^{3x}\\cos x$ (Kettenregel-Beitrag) fehlt vollständig.',
+      3: 'Hier wurde $u\'\\cdot v\' = 3e^{3x}\\cdot(-\\sin x)$ statt $u\'v+uv\'$ gerechnet — der klassische Produktregel-Fehler. Beide Summanden müssen berücksichtigt werden: $u\'v$ *und* $uv\'$.',
+    },
     explanation: 'Produktregel: $f\' = (e^{3x})\' \\cdot \\cos(x) + e^{3x} \\cdot (\\cos x)\' = 3e^{3x}\\cos(x) + e^{3x}(-\\sin(x)) = 3e^{3x}\\cos(x) - e^{3x}\\sin(x)$.',
     hints: ['Produktregel: $(u \\cdot v)\' = u\'v + uv\'$', '$(e^{3x})\' = 3e^{3x}$ (Kettenregel!), $(\\cos x)\' = -\\sin x$'],
   },
@@ -40,6 +50,11 @@ export const exercises_abl_u4 = {
       '$\\dfrac{2x(x-1) + (x^2+1)}{(x-1)^2}$',
     ],
     correctIndex: 2,
+    wrongAnswerExplanations: {
+      0: 'Quotientenregel komplett ignoriert: Hier wurde einfach $(x^2+1)\' / (x-1)\' = \\tfrac{2x}{1}$ gerechnet. Das entspricht dem falschen Muster „Zähler und Nenner einzeln ableiten" — die Quotientenregel fordert aber $\\tfrac{f\'g - fg\'}{g^2}$.',
+      1: 'Dies ist das algebraisch *vereinfachte* Ergebnis ($2x^2-2x-x^2-1 = x^2-2x-1$), also äquivalent zu C. Die Frage verlangt aber die *direkte Anwendung* der Quotientenregel — Antwort C ist die unvereinfachte Direktform, Antwort B wäre nach dem Vereinfachen korrekt.',
+      3: 'Vorzeichen im Zähler falsch: Die Quotientenregel hat ein *Minus* ($f\'g - fg\'$), nicht ein Plus. Das $+$ hier würde der Produktregel entsprechen, die hier aber nicht anwendbar ist (Bruch, kein Produkt).',
+    },
     explanation: 'Quotientenregel: $f\' = \\frac{(x^2+1)\' \\cdot (x-1) - (x^2+1) \\cdot (x-1)\'}{(x-1)^2} = \\frac{2x(x-1) - (x^2+1)}{(x-1)^2}$. Vereinfacht: $\\frac{x^2 - 2x - 1}{(x-1)^2}$.',
     hints: ['NAZ: Nenner × Abl. Zähler − Zähler × Abl. Nenner, geteilt durch Nenner$^2$.', '$(x^2+1)\' = 2x$, $(x-1)\' = 1$'],
   },
@@ -71,6 +86,11 @@ export const exercises_abl_u4 = {
     correctIndex: 2,
     explanation: 'Kettenregel: $f\'(x) = 5(x^3-2x)^4 \\cdot (x^3-2x)\' = 5(x^3-2x)^4 \\cdot (3x^2-2)$.',
     hints: ['$(u^n)\' = n \\cdot u^{n-1} \\cdot u\'$ (Kettenregel)', 'Innere Funktion $u = x^3 - 2x$, also $u\' = 3x^2 - 2$.'],
+    wrongAnswerExplanations: {
+      0: 'Innere Ableitung vergessen. Die Kettenregel $(u^n)\' = nu^{n-1}\\cdot u\'$ fordert den Faktor $u\' = (x^3-2x)\' = 3x^2-2$; ohne ihn fehlt ein Schritt.',
+      1: 'Hier wurde die innere Funktion selbst abgeleitet und dann $u^4$-förmig hingeschrieben. Die Kettenregel behält aber $u^{n-1} = (x^3-2x)^4$ und multipliziert *zusätzlich* mit $u\'=3x^2-2$.',
+      3: '$u\'$ ist hier falsch: $(x^3-2x)\' = 3x^2-2$, nicht $x^2$. Außerdem fehlt das Minus $-2$ aus der Ableitung von $-2x$.',
+    },
   },
   'ex-abl-4-1-g': {
     id: 'ex-abl-4-1-g', lessonId: 'abl-4-1', type: 'multiple-choice',
@@ -84,6 +104,11 @@ export const exercises_abl_u4 = {
     correctIndex: 2,
     explanation: 'Produktregel: $f\' = (x^2)\' \\cdot \\ln(x) + x^2 \\cdot (\\ln x)\' = 2x \\cdot \\ln(x) + x^2 \\cdot \\frac{1}{x} = 2x\\ln(x) + x$.',
     hints: ['$(x^2)\' = 2x$, $(\\ln x)\' = 1/x$', 'Produktregel: $u\'v + uv\'$'],
+    wrongAnswerExplanations: {
+      0: 'Hier wurde $u\'\\cdot v\' = 2x\\cdot 1/x = 2$ gerechnet statt der Produktregel $u\'v+uv\'$. Die Produktregel verlangt *zwei* Summanden, keine Multiplikation der Einzelableitungen.',
+      1: 'Die Summanden stehen in der falschen Reihenfolge: $x + 2x\\ln x$ enthält zwar die richtigen Terme, aber der erste Summand der Produktregel muss $u\'v = 2x\\ln x$ sein (nicht nur $x$). Zahlenmäßig identisch, aber die didaktisch saubere Form ist $2x\\ln x + x$.',
+      3: 'Vorzeichenfehler: $(\\ln x)\' = +1/x$, daher $uv\' = +x$, nicht $-x$. Die Produktregel erzeugt keine Subtraktion — nur Plus zwischen den beiden Summanden.',
+    },
   },
   'ex-abl-4-1-h': {
     id: 'ex-abl-4-1-h', lessonId: 'abl-4-1', type: 'matching',
@@ -125,6 +150,11 @@ export const exercises_abl_u4 = {
     correctIndex: 0,
     explanation: 'Quotientenregel: $f\' = \\frac{(e^{2x})\' \\cdot \\cos x - e^{2x} \\cdot (\\cos x)\'}{\\cos^2 x} = \\frac{2e^{2x}\\cos x - e^{2x}(-\\sin x)}{\\cos^2 x} = \\frac{2e^{2x}\\cos x + e^{2x}\\sin x}{\\cos^2 x}$.',
     hints: ['$(e^{2x})\' = 2e^{2x}$, $(\\cos x)\' = -\\sin x$', 'Quotientenregel: Negatives Vorzeichen von $-\\sin x$ wird durch das Minus der Formel wieder positiv.'],
+    wrongAnswerExplanations: {
+      1: 'Das doppelte Minus aus der Quotientenregel wurde übersehen: $-e^{2x}\\cdot(-\\sin x) = +e^{2x}\\sin x$. Mit einem Minus stünde der Zähler widersprüchlich zur Ableitung $(\\cos x)\' = -\\sin x$.',
+      2: 'Hier wurde Zähler und Nenner einzeln abgeleitet ($(\\cos x)\'=-\\sin x$), was nicht der Quotientenregel entspricht. Die Quotientenregel fordert $\\frac{u\'v-uv\'}{v^2}$.',
+      3: 'Vereinfachung ohne Quotientenregel: Dies entspricht $(e^{2x}/\\cos x)\'$ als $2e^{2x}\\cdot\\tan x$, was den Anteil $(\\cos x)\'/\\cos^2 x = \\tan x/\\cos x$ ignoriert. Die korrekte Ableitung hat *zwei* Terme im Zähler.',
+    },
   },
 
   // ── Lektion 4-2: Kurvendiskussion & Anwendungen ───────────────────────────
@@ -140,6 +170,11 @@ export const exercises_abl_u4 = {
     correctIndex: 0,
     explanation: '$f\'(x) = 3x^2 - 6x - 9 = 3(x^2 - 2x - 3) = 3(x-3)(x+1) = 0 \\Rightarrow x = 3$ oder $x = -1$. $f\'\'(x) = 6x - 6$. $f\'\'(-1) = -12 < 0$ → Maximum bei $x = -1$. $f\'\'(3) = 12 > 0$ → Minimum bei $x = 3$.',
     hints: ['$f\'(x) = 0$ und dann $f\'\'$ auswerten.', 'Faktorisiere: $3(x^2-2x-3) = 3(x-3)(x+1)$.'],
+    wrongAnswerExplanations: {
+      1: 'Max/Min vertauscht. Einsetzen in $f\'\'(x) = 6x-6$: $f\'\'(-1) = -12 < 0$ → Maximum (nicht Minimum!), $f\'\'(3) = 12 > 0$ → Minimum. Merkregel: $f\'\' < 0$ = „Hügel" = Max.',
+      2: 'Die zweite kritische Stelle $x = -1$ wird übersehen. $f\'(x) = 3(x-3)(x+1)$ hat *zwei* Nullstellen; beide müssen auf Extremum geprüft werden.',
+      3: 'Das Minimum bei $x = 3$ fehlt. $f\'\'(3) = 12 > 0$ liefert ein klares Minimum — dieses zu ignorieren wäre eine unvollständige Kurvendiskussion.',
+    },
   },
   'ex-abl-4-2-b': {
     id: 'ex-abl-4-2-b', lessonId: 'abl-4-2', type: 'number-input',
@@ -162,6 +197,11 @@ export const exercises_abl_u4 = {
     correctIndex: 1,
     explanation: 'Umfang: $2x + 2y = 20 \\Rightarrow y = 10 - x$. Fläche: $A(x) = x \\cdot y = x(10-x) = 10x - x^2$. $A\'(x) = 10 - 2x = 0 \\Rightarrow x = 5$ cm. $A\'\'(x) = -2 < 0$ → Maximum. Das optimale Rechteck ist ein Quadrat mit Seite 5 cm.',
     hints: ['Nebenbedingung (Umfang) → $y$ durch $x$ ausdrücken.', 'Zielfunktion $A(x)$ ableiten und null setzen.'],
+    wrongAnswerExplanations: {
+      0: '$x = 4$ liefert $y = 6$, Fläche $24$ cm². Das ist weniger als das Maximum $25$ cm² bei $x=5$. Nicht das Optimum — die Ableitung $A\'(x) = 10 - 2x$ verschwindet erst bei $x = 5$.',
+      2: '$x = 10$ ist der Randwert, bei dem $y = 0$ wird — Fläche ist dann null. Das ist das Minimum, nicht das Maximum.',
+      3: '$x = 2{,}5$ ist der halbe Halb-Umfang und ohne mathematische Herleitung. $A\'(2{,}5) = 10 - 5 = 5 \\neq 0$, also keine kritische Stelle.',
+    },
   },
   'ex-abl-4-2-d': {
     id: 'ex-abl-4-2-d', lessonId: 'abl-4-2', type: 'multiple-choice',
@@ -175,6 +215,11 @@ export const exercises_abl_u4 = {
     correctIndex: 2,
     explanation: 'Taylor: $T_2(x) = f(0) + f\'(0) \\cdot x + \\frac{f\'\'(0)}{2!} \\cdot x^2$. Für $e^x$: $f(0) = f\'(0) = f\'\'(0) = 1$. Also: $T_2(x) = 1 + x + \\frac{x^2}{2}$.',
     hints: ['Taylorformel: $T_n = \\sum_{k=0}^{n} \\frac{f^{(k)}(x_0)}{k!}(x - x_0)^k$', 'Alle Ableitungen von $e^x$ sind wieder $e^x$, also alle Werte an $x_0 = 0$ gleich 1.'],
+    wrongAnswerExplanations: {
+      0: 'Das ist nur das Taylor-Polynom 1. Grades ($T_1$). Für $T_2$ muss der quadratische Term $\\frac{f\'\'(0)}{2!}x^2 = \\frac{x^2}{2}$ ergänzt werden.',
+      1: 'Die Fakultät $2!$ im Nenner wurde vergessen. Die Taylor-Formel teilt jeden Term durch $k!$: der quadratische Term ist $\\frac{f\'\'(0)}{2!}x^2 = \\frac{x^2}{2}$, nicht $x^2$.',
+      3: 'Das Taylor-Polynom für $\\sin(x)$ um $x_0=0$ (3. Grad), nicht für $e^x$. Zudem fehlt $f(0) = 1$ — der konstante Term muss immer mit dabei sein.',
+    },
   },
   'ex-abl-4-2-e': {
     id: 'ex-abl-4-2-e', lessonId: 'abl-4-2', type: 'true-false',
@@ -195,6 +240,11 @@ export const exercises_abl_u4 = {
     correctIndex: 1,
     explanation: '$f\'(x) = e^{-x} - xe^{-x} = (1-x)e^{-x} = 0 \\Rightarrow x = 1$. $f\'\'(x) = (x-2)e^{-x}$, $f\'\'(1) = -e^{-1} < 0$ → Maximum. $f(1) = 1 \\cdot e^{-1} = e^{-1} \\approx 0{,}368$.',
     hints: ['Produktregel für $f\'$: $(1-x)e^{-x} = 0$ → $x = 1$.', '$f(1) = 1 \\cdot e^{-1}$'],
+    wrongAnswerExplanations: {
+      0: '$f(0) = 0$ ist der Startwert am linken Rand, nicht das Maximum. Für $x > 0$ wächst $f$ zunächst, also liegt das globale Maximum nicht bei $x=0$.',
+      2: '$f_{\\max} = 1$ wäre der Wert, wenn man $x \\cdot e^{-x}$ mit $e^0 = 1$ beim Rand $x = 0$ fälschlich auswerten würde. Tatsächlich: $f(1) = e^{-1} \\approx 0{,}368$.',
+      3: '$e$ ist der Wert von $e^{1}$, entsteht hier aber nicht. Einsetzen: $f(1) = 1\\cdot e^{-1} = 1/e \\approx 0{,}368$, nicht $e$.',
+    },
   },
   'ex-abl-4-2-g': {
     id: 'ex-abl-4-2-g', lessonId: 'abl-4-2', type: 'matching',
@@ -229,6 +279,11 @@ export const exercises_abl_u4 = {
     correctIndex: 1,
     explanation: '$f\'(x) = 3x^2 - 12 = 3(x^2-4) = 3(x-2)(x+2)$. $f\' > 0$ für $x < -2$ oder $x > 2$ (steigend). $f\' < 0$ für $-2 < x < 2$ (fallend). Also: steigend auf $(-\\infty, -2) \\cup (2, \\infty)$, fallend auf $(-2, 2)$.',
     hints: ['Monotoniebereiche: Vorzeichen von $f\'(x)$ bestimmen.', 'Nullstellen von $f\': x = \\pm 2$. Vorzeichen zwischen und außerhalb prüfen.'],
+    wrongAnswerExplanations: {
+      0: '$f\'(0) = -12 < 0$ zeigt, dass $f$ bei $x=0$ fällt — also nicht monoton steigend auf ganz $\\mathbb{R}$. Monotonie muss im Vorzeichen von $f\'$ geprüft werden.',
+      2: 'Vorzeichen von $f\'$ vertauscht. Teste $f\'(3) = 27-12 = 15 > 0$: $f$ steigt für $x > 2$. Die Monotoniebereiche sind also umgekehrt wie hier behauptet.',
+      3: 'Monotoniebereiche gibt es immer — entweder steigend oder fallend zwischen den Nullstellen von $f\'$. Hier liefern $x=\\pm 2$ die Trennstellen für drei Monotoniebereiche.',
+    },
   },
   'ex-abl-4-2-j': {
     id: 'ex-abl-4-2-j', lessonId: 'abl-4-2', type: 'multiple-choice',
@@ -242,6 +297,11 @@ export const exercises_abl_u4 = {
     correctIndex: 1,
     explanation: 'Ableitungen von $\\sin(x)$ an $x_0 = 0$: $f(0) = 0$, $f\'(0) = \\cos(0) = 1$, $f\'\'(0) = -\\sin(0) = 0$, $f\'\'\'(0) = -\\cos(0) = -1$. $T_3(x) = 0 + 1 \\cdot x + 0 - \\frac{1}{6}x^3 = x - \\frac{x^3}{6}$.',
     hints: ['Ableitungsfolge von $\\sin$: $\\sin, \\cos, -\\sin, -\\cos, \\sin, ...$', '$T_3 = f(0) + f\'(0)x + \\frac{f\'\'(0)}{2}x^2 + \\frac{f\'\'\'(0)}{6}x^3$'],
+    wrongAnswerExplanations: {
+      0: 'Quadratischer Term ist bei $\\sin$ null ($f\'\'(0) = -\\sin 0 = 0$). Zudem fehlt der kubische Term $-x^3/6$ — das wäre der Hauptterm nach dem linearen.',
+      2: 'Das ist das Taylor-Polynom von $\\cos(x)$ (Grad 4), nicht von $\\sin(x)$. Für $\\sin$ fehlt der konstante Term ($\\sin 0 = 0$) und die geraden Potenzen verschwinden.',
+      3: 'Vorzeichenfehler: $f\'\'\'(x) = -\\cos x$, also $f\'\'\'(0) = -1$ (nicht $+1$). Der kubische Term ist $-x^3/6$, nicht $+x^3/6$.',
+    },
   },
   'ex-abl-4-2-mastery': {
     id: 'ex-abl-4-2-mastery', lessonId: 'abl-4-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -255,6 +315,11 @@ export const exercises_abl_u4 = {
     correctIndex: 2,
     explanation: '$f(-x) = f(x)$ → gerade ✓. $f\'(x) = \\frac{2x(x^2+3) - x^2 \\cdot 2x}{(x^2+3)^2} = \\frac{6x}{(x^2+3)^2} = 0 \\Rightarrow x = 0$: Minimum bei $(0, 0)$ ✓. Grenzwert: $\\frac{x^2}{x^2+3} \\to 1$ ✓. Wendepunkte: $f\'\'(x) = 0$ liefert $x = \\pm 1$ → es gibt Wendepunkte! Aussage C ist FALSCH.',
     hints: ['Prüfe jede Aussage einzeln durch Rechnung.', 'Für Wendepunkte: $f\'\'(x) = 0$ ausrechnen — liefert $x = \\pm 1$.'],
+    wrongAnswerExplanations: {
+      0: '$f(-x) = (-x)^2/((-x)^2+3) = x^2/(x^2+3) = f(x)$ ✓ — die Funktion ist tatsächlich gerade. Diese Aussage ist korrekt, also nicht die gesuchte Falsche.',
+      1: '$f\'(0) = 0$ und $f\'\'(0) > 0$ ergeben ein Minimum bei $x=0$ mit Wert $0/3 = 0$. Aussage stimmt.',
+      3: 'Grenzwert: $\\lim_{x\\to\\pm\\infty} x^2/(x^2+3) = \\lim (1/(1+3/x^2)) = 1$ — horizontale Asymptote $y=1$. Aussage stimmt.',
+    },
   },
 
   // ── Lektion 4-3: Technische Optimierung & Newton-Verfahren ─────────────────
@@ -270,6 +335,11 @@ export const exercises_abl_u4 = {
     correctIndex: 0,
     explanation: 'Volumen: $V = \\pi r^2 h$, Oberfläche (mit Boden + Deckel): $A = 2\\pi r^2 + 2\\pi r h$. Mit $h = V/(\\pi r^2)$: $A(r) = 2\\pi r^2 + 2V/r$. $A\'(r) = 4\\pi r - 2V/r^2 = 0 \\Rightarrow r^3 = V/(2\\pi)$. Damit $h = V/(\\pi r^2) = 2r$. Höhe gleich Durchmesser — Konservendosen folgen oft diesem Optimum.',
     hints: ['Zielfunktion = Oberfläche, Nebenbedingung = Volumen.', 'Eine Variable durch die andere ausdrücken, dann ableiten.', 'Auflösen nach $h$ in Abhängigkeit von $r$.'],
+    wrongAnswerExplanations: {
+      1: '$h = r$ klingt symmetrisch, wäre aber suboptimal: Oberfläche ist dann größer als Minimum. Aus $A\'(r)=0$ folgt $h = 2r$, nicht $h=r$.',
+      2: '$h = 4r$ ist eine schlanke hohe Dose — zu viel Mantelfläche. Das Optimum ist $h = 2r$ (Mantelfläche = Boden+Deckel).',
+      3: '$h = r/2$ ist eine flache, breite Dose — zu viel Boden-/Deckelfläche. Das Optimum ist $h = 2r$ (umgekehrtes Verhältnis zur hier angegebenen).',
+    },
   },
   'ex-abl-4-3-b': {
     id: 'ex-abl-4-3-b', lessonId: 'abl-4-3', type: 'number-input',
@@ -320,6 +390,11 @@ export const exercises_abl_u4 = {
     correctIndex: 0,
     explanation: 'Newton: $x_{n+1} = x_n - f(x_n)/f\'(x_n)$. $f(1) = -1$, $f\'(x) = 2x$, $f\'(1) = 2$. $x_1 = 1 - (-1)/2 = 1{,}5$. Konvergenz gegen $\\sqrt{2} \\approx 1{,}414$ — bei $x_1 = 1{,}5$ schon nahe.',
     hints: ['Newton-Formel: $x_{n+1} = x_n - f(x_n)/f\'(x_n)$.', '$f\'(x) = 2x$, $f(1) = -1$.'],
+    wrongAnswerExplanations: {
+      1: '$x_1 = 1{,}0 = x_0$ bedeutet, es wurde nichts korrigiert — die Newton-Iteration muss aber $-f(x_n)/f\'(x_n) = -(-1)/2 = +0{,}5$ addieren. Ergebnis: $1 + 0{,}5 = 1{,}5$.',
+      2: 'Vorzeichen vergessen: $-f(1)/f\'(1) = -(-1)/2 = +0{,}5$ gibt $x_1 = 1{,}5$, nicht $2$. Hier wurde entweder das Minus ignoriert oder $1+1=2$ gerechnet.',
+      3: '$0{,}5$ entsteht nur, wenn man $f(x_n)/f\'(x_n) = -1/2$ *addiert* (falsches Vorzeichen). Die Newton-Formel subtrahiert, also $1 - (-0{,}5) = 1{,}5$.',
+    },
   },
   'ex-abl-4-3-g': {
     id: 'ex-abl-4-3-g', lessonId: 'abl-4-3', type: 'sorting',
@@ -349,6 +424,11 @@ export const exercises_abl_u4 = {
     correctIndex: 0,
     explanation: 'Newton hat lokal quadratische Konvergenz: Anzahl korrekter Stellen verdoppelt sich pro Schritt. Bei schlechten Startwerten oder horizontalen Tangenten ($f\'(x) \\approx 0$) kann das Verfahren wegspringen oder divergieren. Robustere Methoden: Bisektion, Regula falsi.',
     hints: ['Quadratische Konvergenz lokal — global keine Garantie.', 'Vorsicht bei kleinen Ableitungen.'],
+    wrongAnswerExplanations: {
+      1: 'Newton hat *keine* globale Konvergenzgarantie. Bei horizontalen Tangenten ($f\'\\approx 0$) oder schlechten Startwerten kann die Iteration divergieren — dann ist Bisektion sicherer.',
+      2: 'Falsch: Newton konvergiert lokal *quadratisch* (Anzahl korrekter Stellen verdoppelt sich pro Schritt), nicht linear. Lineare Konvergenz hat z.B. Bisektion.',
+      3: 'Newton funktioniert für jede differenzierbare Funktion — nicht nur Polynome 2. Grades. Beispiele: $\\sqrt{a}$ berechnen, $\\sin x = x/2$ lösen, transzendente Gleichungen.',
+    },
   },
   'ex-abl-4-3-i': {
     id: 'ex-abl-4-3-i', lessonId: 'abl-4-3', type: 'true-false',
@@ -378,6 +458,11 @@ export const exercises_abl_u4 = {
     correctIndex: 0,
     explanation: 'Pumpenenergie wächst monoton mit Füllstand. Es gibt kein "internes" Maximum — Maximum am Rand des Definitionsbereichs (vollständige Füllung). Das illustriert, dass nicht jede Optimierungsaufgabe ein inneres Extremum hat. Wenn die Pumpe begrenzt ist, kann ein Tank ggf. nicht voll gefüllt werden — dann liegt das Optimum dort, wo die Pumpenleistungsgrenze erreicht wird.',
     hints: ['Energie wächst monoton mit Füllstand.', 'Maximum nicht innen, sondern am Rand des Definitionsbereichs.'],
+    wrongAnswerExplanations: {
+      1: 'Bei halber Füllung ist der Integrand $\\rho g h A$ noch kleiner als bei voller Füllung — die Energie ist noch nicht maximal. Da der Integrand monoton in $h$ wächst, wird das Maximum am oberen Rand ($h = H$) erreicht.',
+      2: 'Pumpen*leistung* ist per Definition positiv (Energie wird zugeführt). Negative Werte würden bedeuten, dass Wasser Energie an die Pumpe abgibt — physikalisch beim Hochpumpen nicht der Fall.',
+      3: 'Die Energie ist *nicht* konstant: $W(h)$ wächst mit dem Füllstand. Genau deshalb gibt es ein Optimum — am Rand $h = H$. Wenn nichts zu optimieren wäre, ergäbe die Aufgabenstellung keinen Sinn.',
+    },
   },
 }
 

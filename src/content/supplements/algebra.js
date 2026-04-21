@@ -1,5 +1,13 @@
-function mc(question, options, correctIndex, explanation, hints = []) {
-  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints }
+function mc(question, options, correctIndex, explanation, hints = [], wrongAnswerExplanations = undefined) {
+  return {
+    type: 'multiple-choice',
+    question,
+    options,
+    correctIndex,
+    explanation,
+    hints,
+    ...(wrongAnswerExplanations ? { wrongAnswerExplanations } : {}),
+  }
 }
 
 function ni(question, correctValue, tolerance, unit, explanation, hints = []) {
@@ -20,16 +28,16 @@ function sorting(question, items, correctOrder, explanation, hints = []) {
 
 function bank(profile) {
   const sortingSlot = profile.sortingOverride
-    ? mc(profile.sortingOverride.question, profile.sortingOverride.options, profile.sortingOverride.correctIndex, profile.sortingOverride.explanation, profile.sortingOverride.hints)
+    ? mc(profile.sortingOverride.question, profile.sortingOverride.options, profile.sortingOverride.correctIndex, profile.sortingOverride.explanation, profile.sortingOverride.hints, profile.sortingOverride.wrongAnswerExplanations)
     : sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints)
 
   return [
-    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints),
+    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptWrongAnswers),
     ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints),
     tf(profile.trueFalseStatement, profile.trueFalseCorrect, profile.trueFalseExplanation, profile.trueFalseHints),
     matching(profile.matchingQuestion, profile.matchingPairs, profile.matchingExplanation, profile.matchingHints),
     sortingSlot,
-    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints),
+    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints, profile.errorWrongAnswers),
     ni(profile.transferQuestion, profile.transferAnswer, profile.transferTolerance, profile.transferUnit, profile.transferExplanation, profile.transferHints),
   ]
 }
@@ -48,6 +56,11 @@ const profiles = {
     conceptCorrect: 0,
     conceptExplanation: 'Bei gleicher Basis und Multiplikation werden die Exponenten addiert: 5 + (−2) = 3, also x³.',
     conceptHints: ['Die Basis ist in beiden Faktoren x.', 'Multiplikation gleicher Basen bedeutet Exponenten addieren.'],
+    conceptWrongAnswers: {
+      1: 'Exponenten multiplizieren gilt nur bei Potenz einer Potenz $(x^a)^b = x^{ab}$. Hier liegt aber Multiplikation zweier Potenzen mit gleicher Basis vor — also Exponenten addieren: $5+(-2)=3$.',
+      2: 'Basen addieren ist nicht erlaubt — $x^5 \\cdot x^{-2}$ ergibt nicht $2x^3$. Der Faktor bleibt 1, nur die Exponenten werden addiert: $x^3$.',
+      3: 'Subtraktion der Exponenten gilt bei Division $x^a/x^b = x^{a-b}$. Hier wird multipliziert, also addieren: $5+(-2)=3$, nicht $5-(-2)=7$.',
+    },
     calcQuestion: 'Vereinfache (2x³)². Gib den Zahlenfaktor vor x⁶ an.',
     calcAnswer: 4,
     calcTolerance: 0,
@@ -72,6 +85,11 @@ const profiles = {
     errorCorrect: 0,
     errorExplanation: 'x³ · x⁴ = x⁷, weil bei gleicher Basis multipliziert und die Exponenten addiert werden. x¹² gehört zu (x³)⁴.',
     errorHints: ['Vergleiche Multiplikation mit Potenz von Potenz.', 'Bei x³ · x⁴ steht keine äußere Klammerpotenz.'],
+    errorWrongAnswers: {
+      1: '$(x^3)^4 = x^{12}$ ist korrekt — Potenz einer Potenz multipliziert die Exponenten. Keine falsche Umformung.',
+      2: '$x^7/x^2 = x^5$ ist korrekt: bei Division gleicher Basen werden Exponenten subtrahiert ($7-2=5$).',
+      3: '$x^{-2} = 1/x^2$ ist die Definition des negativen Exponenten — völlig korrekt.',
+    },
     transferQuestion: 'Vereinfache (10⁶ · 10⁻³) / 10². Gib den Exponenten von 10 im Ergebnis an.',
     transferAnswer: 1,
     transferTolerance: 0,
@@ -92,6 +110,11 @@ const profiles = {
     conceptCorrect: 0,
     conceptExplanation: '√(a⁵) = (a⁵)^(1/2) = a^(5/2). Für a ≥ 0 ist die Potenzschreibweise eindeutig.',
     conceptHints: ['√x bedeutet x^(1/2).', 'Potenz von Potenz: Exponenten multiplizieren.'],
+    conceptWrongAnswers: {
+      1: 'Zähler und Nenner verdreht. Es gilt $\\sqrt[n]{a^m} = a^{m/n}$ — der Wurzelgrad $n$ steht im Nenner, die innere Potenz $m$ im Zähler. Hier: $\\sqrt{a^5} = a^{5/2}$, nicht $a^{2/5}$.',
+      2: 'Der 5er ist ein Exponent, kein Faktor — $\\sqrt{a^5} \\neq 5a^2$. Wurzel und Potenz kombinieren nach $a^{m/n}$, also $a^{5/2}$.',
+      3: 'Die Schreibweise $a^{5/2}$ als reine Division durch 2 ignoriert den Wurzelbezug. $5/2$ ist der gebrochene Exponent — untrennbar mit der Wurzel verknüpft: $a^{5/2} = \\sqrt{a^5}$.',
+    },
     calcQuestion: 'Vereinfache √75 = k√3. Gib k an.',
     calcAnswer: 5,
     calcTolerance: 0,
@@ -116,6 +139,11 @@ const profiles = {
     errorCorrect: 0,
     errorExplanation: 'Ohne x ≥ 0 gilt √(x²)=|x|. Das ist ein klassischer Vorzeichenfehler.',
     errorHints: ['Die Wurzel ist nichtnegativ.', 'Was passiert bei x = −1?'],
+    errorWrongAnswers: {
+      1: '$\\sqrt{9x^2} = 3|x|$ ist korrekt — die Konstante 9 kommt als 3 heraus, und $\\sqrt{x^2} = |x|$ gilt allgemein.',
+      2: '$x^{1/2} = \\sqrt{x}$ für $x \\geq 0$ ist die Definition der Quadratwurzel als gebrochener Exponent. Korrekt.',
+      3: '$\\sqrt[3]{8} = 2$ stimmt: $2^3 = 8$. Bei ungeraden Wurzeln ist das Vorzeichen unproblematisch.',
+    },
     transferQuestion: 'Berechne 27^(2/3).',
     transferAnswer: 9,
     transferTolerance: 0,
@@ -136,6 +164,11 @@ const profiles = {
     conceptCorrect: 0,
     conceptExplanation: 'Der Logarithmus liefert den Exponenten. log₂(32)=5 bedeutet genau 2⁵=32.',
     conceptHints: ['Logarithmus fragt nach dem Exponenten.', 'Setze das Ergebnis als Hochzahl zur Basis 2.'],
+    conceptWrongAnswers: {
+      1: 'Basis und Exponent vertauscht: $5^2 = 25 \\neq 32$. Beim Logarithmus ist die Basis fest (hier 2) und der Logarithmuswert der gesuchte Exponent: $2^5 = 32$.',
+      2: '$32^2 = 1024$, nicht 5. Der Logarithmus $\\log_2(32)$ sagt: Welche Hochzahl von 2 ergibt 32? Antwort: 5, also $2^5=32$.',
+      3: 'Addition hat mit Logarithmen nichts zu tun — $2+5=7$, nicht 32. $\\log_b(a)$ liefert den Exponenten, nicht die Summe.',
+    },
     calcQuestion: 'Löse ln(x) = 2. Gib x näherungsweise an. Nutze e² ≈ 7,389.',
     calcAnswer: 7.389,
     calcTolerance: 0.01,
@@ -160,6 +193,11 @@ const profiles = {
     errorCorrect: 0,
     errorExplanation: 'Für Summen gibt es kein solches Logarithmusgesetz. Nur Produkte dürfen zu Summen werden.',
     errorHints: ['Vergleiche mit dem Produktgesetz.', 'Teste a=b=1.'],
+    errorWrongAnswers: {
+      1: '$\\ln(a \\cdot b) = \\ln(a) + \\ln(b)$ ist das korrekte Produktgesetz. Gilt für $a,b>0$.',
+      2: '$\\ln(e^3) = 3$ ist korrekt: $\\ln$ und $e^x$ sind Umkehrfunktionen, also $\\ln(e^x) = x$.',
+      3: '$e^{\\ln(5)} = 5$ stimmt ebenfalls, weil $e^x$ und $\\ln$ Umkehrfunktionen sind: $e^{\\ln(a)} = a$ für $a > 0$.',
+    },
     transferQuestion: 'Ein Wert wächst nach N(t)=N₀e^(0,2t). Nach welcher Zeit ist der Faktor e^(0,2t) = 2? Gib t mit ln(2)≈0,693 an.',
     transferAnswer: 3.465,
     transferTolerance: 0.02,
@@ -180,6 +218,11 @@ const profiles = {
     conceptCorrect: 0,
     conceptExplanation: 'Du willst den x-Term isolieren. Dazu addierst du auf beiden Seiten 7: 4x = 20.',
     conceptHints: ['Gleichung wie Waage denken.', 'Die −7 muss weg.'],
+    conceptWrongAnswers: {
+      1: 'Eine einseitige Addition zerstört die Äquivalenz der Gleichung. Man muss immer auf beiden Seiten dieselbe Operation ausführen (Waagemodell), sonst verändert sich die Lösungsmenge.',
+      2: 'Division durch 13 ergibt $4x/13 - 7/13 = 1$ — verkompliziert nur, ohne zu lösen. Gesucht ist die Isolation von $x$, nicht von 13.',
+      3: '$x$ ist die Unbekannte, die du lösen willst — du darfst sie nicht durch 4 ersetzen. Das Ziel ist $x = ?$ am Ende, mit gültigen Äquivalenzumformungen.',
+    },
     calcQuestion: 'Löse 3(2x − 1) = 21. Gib x an.',
     calcAnswer: 4,
     calcTolerance: 0,
@@ -204,6 +247,11 @@ const profiles = {
     errorCorrect: 0,
     errorExplanation: 'Von 2x + 5 = 17 musst du 5 subtrahieren: 2x = 12, also x = 6.',
     errorHints: ['Die +5 soll verschwinden.', 'Welche Gegenoperation braucht +5?'],
+    errorWrongAnswers: {
+      1: 'Doch, man darf durch 2 teilen — das ist eine gültige Äquivalenzumformung. Der Fehler liegt anderswo: bei 17 wurde +5 statt −5 gerechnet.',
+      2: '17 wurde gerade falsch zu 22 — der Schritt hätte 17 − 5 = 12 ergeben müssen. Die +5 muss subtrahiert werden, nicht addiert.',
+      3: 'Die Lösung x = 11 stammt aus dem Fehler (+5 statt −5). Richtig: $x = 6$ (Probe: $2 \\cdot 6 + 5 = 17$ ✓).',
+    },
     transferQuestion: 'Ein Behälter enthält 12 l. Er wird mit 3 l/min gefüllt. Nach wie vielen Minuten sind 30 l erreicht?',
     transferAnswer: 6,
     transferTolerance: 0,
@@ -224,6 +272,11 @@ const profiles = {
     conceptCorrect: 0,
     conceptExplanation: 'x² − 9 = (x−3)(x+3). Daraus folgen x = 3 und x = −3.',
     conceptHints: ['9 ist 3².', 'Nutze a² − b² = (a−b)(a+b).'],
+    conceptWrongAnswers: {
+      1: 'Newton-Verfahren ist ein numerisches Näherungsverfahren — Overkill für eine simple quadratische Gleichung. Hier genügt eine direkte Faktorisierung $x^2 = 9 \\Rightarrow x = \\pm 3$.',
+      2: 'Logarithmen helfen bei Gleichungen mit $x$ im Exponenten ($a^x = c$), nicht bei Polynomen. $x^2 = 9$ löst man durch Wurzelziehen: $x = \\pm 3$.',
+      3: 'Quadrieren beider Seiten erzeugt oft Scheinlösungen und hilft hier nicht — die Gleichung ist bereits quadratisch. Die Differenz zweier Quadrate ist die eleganteste Methode.',
+    },
     calcQuestion: 'Berechne die Diskriminante D von x² − 4x + 5 = 0.',
     calcAnswer: -4,
     calcTolerance: 0,
@@ -248,6 +301,11 @@ const profiles = {
     errorCorrect: 0,
     errorExplanation: 'D = 0 bedeutet genau eine doppelte reelle Lösung, nicht keine Lösung.',
     errorHints: ['√0 ist definiert.', 'Dann fallen + und − in der Formel zusammen.'],
+    errorWrongAnswers: {
+      1: '$D < 0$ bedeutet tatsächlich keine reelle Lösung, weil $\\sqrt{D}$ im Reellen nicht existiert. Aussage korrekt.',
+      2: '$D > 0$ liefert zwei verschiedene reelle Lösungen durch $\\pm\\sqrt{D}$. Aussage korrekt.',
+      3: '$D = 0$ liefert eine doppelte Lösung (Parabel berührt x-Achse) — korrekt. Bei $\\pm\\sqrt{0}$ fallen beide Lösungen zusammen.',
+    },
     transferQuestion: 'Ein Rechteck hat Fläche 24 m² und Länge x, Breite x−2. Löse x(x−2)=24. Gib die positive Länge x an.',
     transferAnswer: 6,
     transferTolerance: 0,
@@ -268,6 +326,11 @@ const profiles = {
     conceptCorrect: 0,
     conceptExplanation: 'Nach dem Faktorsatz gilt: P(3)=0 genau dann, wenn (x−3) ein Faktor von P(x) ist.',
     conceptHints: ['Nullstelle x₀ führt zu Faktor (x−x₀).', 'Setze x=3 in den Faktor ein.'],
+    conceptWrongAnswers: {
+      1: 'Vorzeichenfehler: Nullstelle $x_0$ führt zum Faktor $(x - x_0)$. Bei $x_0 = 3$ ist das $(x - 3)$, nicht $(x + 3)$. $(x+3)$ gehört zur Nullstelle $x_0 = -3$.',
+      2: '$(3x - 1)$ wird null bei $x = 1/3$, nicht bei $x = 3$. Linearfaktoren haben die Standardform $(x - x_0)$ mit Koeffizient 1 vor $x$.',
+      3: '$(x - P)$ ist keine sinnvolle Schreibweise — $P$ ist das Polynom selbst, nicht die Nullstelle. Der Linearfaktor heißt $(x - x_0)$ mit konkretem Zahlenwert für $x_0$.',
+    },
     calcQuestion: 'Berechne P(2) für P(x)=x³−4x.',
     calcAnswer: 0,
     calcTolerance: 0,
@@ -292,6 +355,11 @@ const profiles = {
     errorCorrect: 0,
     errorExplanation: 'Aus x₀ = −5 folgt der Faktor x − (−5) = x + 5.',
     errorHints: ['Achte auf das doppelte Minus.', 'Der Faktor muss bei x = −5 zu 0 werden.'],
+    errorWrongAnswers: {
+      1: 'Aus $x_0 = 5$ folgt korrekt $(x - 5)$: Setze $x=5$ ein, Faktor wird null. Die Aussage ist richtig.',
+      2: '$P(0) = 0$ bedeutet, dass $x = 0$ eine Nullstelle ist, also $(x - 0) = x$ ein Faktor ist. Korrekt.',
+      3: 'Rest 0 bei Polynomdivision durch $(x - x_0)$ bedeutet per Restsatz $P(x_0) = 0$, also Nullstelle. Korrekt.',
+    },
     transferQuestion: 'P(x)=x³−6x²+11x−6 hat die Nullstelle x=1. Nach Division bleibt x²−5x+6. Gib die kleinere weitere Nullstelle an.',
     transferAnswer: 2,
     transferTolerance: 0,
@@ -312,6 +380,11 @@ const profiles = {
     conceptCorrect: 0,
     conceptExplanation: 'Beim Dividieren durch eine negative Zahl dreht sich das Ungleichheitszeichen um: x < −4.',
     conceptHints: ['Negative Zahl beim Teilen.', 'Das Zeichen muss kippen.'],
+    conceptWrongAnswers: {
+      1: 'Beim Dividieren durch eine negative Zahl dreht sich das Zeichen um — nicht wegignorieren. Aus $-2x > 8$ folgt $x < -4$, nicht $x > -4$ (Probe: $x = -5$: $-2 \\cdot (-5) = 10 > 8$ ✓).',
+      2: 'Das Zeichen verschwindet nicht — es bleibt erhalten, aber gedreht. Division durch negative Zahlen erhält die Relation nicht, sie kehrt sich um.',
+      3: 'Ungleichheitszeichen werden nicht zu Gleichheitszeichen bei Äquivalenzumformungen. Division durch −2 lässt $>$ zu $<$ werden, nicht zu $=$.',
+    },
     calcQuestion: 'Löse 5 − 2x ≤ 11. Gib die Grenzzahl an.',
     calcAnswer: -3,
     calcTolerance: 0,
@@ -336,6 +409,11 @@ const profiles = {
     errorCorrect: 0,
     errorExplanation: 'Beim Teilen durch −4 muss das Zeichen drehen: −4x<8 → x>−2.',
     errorHints: ['Negative Division.', 'Das Zeichen muss wechseln.'],
+    errorWrongAnswers: {
+      1: '$-4x < 8 \\Rightarrow x > -2$ ist richtig (Zeichen dreht bei negativer Division). Korrekte Umformung.',
+      2: '$x + 5 \\geq 9 \\Rightarrow x \\geq 4$: beidseitig 5 abziehen, Zeichen bleibt. Korrekt.',
+      3: '$|x| \\leq 2 \\Rightarrow -2 \\leq x \\leq 2$: Betrag kleiner gleich liefert ein Doppelintervall um 0. Korrekt.',
+    },
     transferQuestion: 'Löse |2x| ≤ 10. Gib die obere Grenze der Lösungsmenge an.',
     transferAnswer: 5,
     transferTolerance: 0,
@@ -356,6 +434,11 @@ const profiles = {
     conceptCorrect: 0,
     conceptExplanation: 'Eine Funktion darf jedem Eingang genau einen Ausgang zuordnen. Zwei Ausgänge für denselben Eingang verletzen die Definition.',
     conceptHints: ['Fokus auf denselben x-Wert.', 'Eine Funktion ist eindeutig.'],
+    conceptWrongAnswers: {
+      1: '$x=1 \\to y=2$ ist eine gültige Einzelzuordnung einer Funktion. Funktionen bilden jedes $x$ auf genau ein $y$ ab — diese erfüllt die Definition.',
+      2: '$x=2 \\to y=4$ ist eine ordnungsgemäße Funktionszuordnung: eindeutig und wohldefiniert.',
+      3: 'Diese Beschreibung "jedem x wird genau ein y zugeordnet" ist gerade die Definition einer Funktion — damit ist sie keine Verletzung.',
+    },
     calcQuestion: 'Für f(x)=2x²−1: Berechne f(3).',
     calcAnswer: 17,
     calcTolerance: 0,
@@ -381,12 +464,22 @@ const profiles = {
       correctIndex: 0,
       explanation: 'Die Eindeutigkeit ist das Kernkriterium einer Funktion. Erst wenn jeder Eingang genau einen Ausgang hat, macht es Sinn, Definitions- und Wertebereich zu bestimmen.',
       hints: ['Eine Funktion ist per Definition eindeutig.', 'Ohne Eindeutigkeitsprüfung ist alles Weitere sinnlos.'],
+      wrongAnswerExplanations: {
+        1: 'Der Wertebereich folgt nach der Eindeutigkeitsprüfung — sonst bestimmt man den Wertebereich einer Nicht-Funktion. Eindeutigkeit ist die Voraussetzung für alle weiteren Schritte.',
+        2: 'Den Definitionsbereich kann man erst sinnvoll festlegen, wenn feststeht, dass es überhaupt eine Funktion ist. Zuerst Eindeutigkeit prüfen.',
+        3: 'Graph zeichnen ist eine Visualisierung, kein Formalitätstest. Zudem setzt ein sinnvoller Graph die Funktionseigenschaft (Eindeutigkeit) voraus.',
+      },
     },
     errorQuestion: 'Welche Aussage ist falsch?',
     errorOptions: ['Eine Funktion darf einem x-Wert beliebig viele y-Werte zuordnen', 'Eine Funktion hat einen Definitionsbereich', 'f(2) ist der Funktionswert bei x=2', 'Bijektiv bedeutet injektiv und surjektiv'],
     errorCorrect: 0,
     errorExplanation: 'Eine Funktion ist eindeutig: Jeder x-Wert bekommt genau einen y-Wert.',
     errorHints: ['Das Wort genau ist entscheidend.', 'Viele y für ein x ist verboten.'],
+    errorWrongAnswers: {
+      1: 'Jede Funktion hat einen Definitionsbereich — das ist ein Grundbestandteil der Definition. Aussage korrekt.',
+      2: '$f(2)$ ist per Notation der Funktionswert bei $x = 2$. Standard-Schreibweise, korrekt.',
+      3: 'Bijektiv ist definitionsgemäß "injektiv und surjektiv" — beide Eigenschaften zusammen. Korrekt.',
+    },
     transferQuestion: 'Für f(x)=x² mit Definitionsbereich x≥0: Berechne den x-Wert, der f(x)=25 liefert.',
     transferAnswer: 5,
     transferTolerance: 0,
@@ -407,6 +500,11 @@ const profiles = {
     conceptCorrect: 0,
     conceptExplanation: 'Bei einer Exponentialfunktion steht die Variable im Exponenten. Das ist bei 3·2ˣ der Fall.',
     conceptHints: ['Suche x in der Hochzahl.', 'x² ist eine Potenzfunktion.'],
+    conceptWrongAnswers: {
+      1: '$f(x) = x^2$ ist eine Potenzfunktion — $x$ steht in der Basis, nicht im Exponenten. Bei Exponentialfunktionen wie $2^x$ steht $x$ oben.',
+      2: '$\\ln(x)$ ist die Logarithmusfunktion (Umkehrfunktion von $e^x$), keine Exponentialfunktion. Sie wächst extrem langsam, Exponentialfunktionen extrem schnell.',
+      3: '$f(x) = 2x + 1$ ist eine lineare Funktion — Polynom vom Grad 1. Bei Exponentialfunktionen steht $x$ im Exponenten, nicht als linearer Koeffizient.',
+    },
     calcQuestion: 'Berechne f(0) für f(x)=5eˣ.',
     calcAnswer: 5,
     calcTolerance: 0,
@@ -431,6 +529,11 @@ const profiles = {
     errorCorrect: 0,
     errorExplanation: 'ln(−1) ist im Reellen nicht definiert, weil das Argument negativ ist.',
     errorHints: ['Prüfe das Logarithmusargument.', 'Es muss positiv sein.'],
+    errorWrongAnswers: {
+      1: '$e^x > 0$ für alle $x \\in \\mathbb{R}$ ist korrekt — die Exponentialfunktion ist stets positiv. Selbst $e^{-100}$ ist positiv.',
+      2: '$x^2$ ist tatsächlich eine Potenzfunktion: $x$ steht in der Basis, Exponent fest bei 2. Korrekt klassifiziert.',
+      3: '$2^x$ hat $x$ im Exponenten — klassische Exponentialfunktion mit Basis 2. Korrekt.',
+    },
     transferQuestion: 'Eine Größe verdoppelt sich nach N(t)=3·2ᵗ. Berechne N(4).',
     transferAnswer: 48,
     transferTolerance: 0,
@@ -451,6 +554,11 @@ const profiles = {
     conceptCorrect: 0,
     conceptExplanation: 'x−4 im Argument verschiebt nach rechts um 4. +2 außerhalb verschiebt nach oben um 2.',
     conceptHints: ['Innen ist horizontal und wirkt scheinbar gegen das Vorzeichen.', 'Außen ist vertikal und direkt.'],
+    conceptWrongAnswers: {
+      1: 'Beide Richtungen falsch: $f(x-4)$ verschiebt nach rechts (nicht links), $+2$ außen verschiebt nach oben (nicht unten). Innen wirkt gegenläufig zum Vorzeichen, außen direkt.',
+      2: '$+2$ außerhalb verschiebt nach oben, nicht nach unten. Nach unten wäre $-2$ außen. Horizontale Richtung stimmt hier, vertikale nicht.',
+      3: '$x-4$ verschiebt nach rechts (nicht links) — das Vorzeichen im Argument wirkt gegenläufig. $f(x+4)$ würde nach links verschieben.',
+    },
     calcQuestion: 'Für f(x)=x² und g(x)=3f(x): Berechne g(2).',
     calcAnswer: 12,
     calcTolerance: 0,
@@ -475,6 +583,11 @@ const profiles = {
     errorCorrect: 0,
     errorExplanation: 'f(x−2) verschiebt um 2 nach rechts, nicht nach links.',
     errorHints: ['Innen wirkt scheinbar entgegengesetzt.', 'Teste den Scheitel von x².'],
+    errorWrongAnswers: {
+      1: '$f(x) + 2$ verschiebt den Graphen um 2 nach oben — jeder $y$-Wert wird um 2 größer. Korrekt.',
+      2: '$-f(x)$ spiegelt an der $x$-Achse: $y \\to -y$. Korrekt.',
+      3: '$2f(x)$ streckt vertikal um Faktor 2: $y \\to 2y$. Korrekt.',
+    },
     transferQuestion: 'Der Scheitel von f(x)=x² wird durch g(x)=(x−3)²+4 verschoben. Gib die x-Koordinate des neuen Scheitels an.',
     transferAnswer: 3,
     transferTolerance: 0,
@@ -495,6 +608,11 @@ const profiles = {
     conceptCorrect: 0,
     conceptExplanation: 'Eine Umkehrfunktion ist eindeutig, wenn jeder y-Wert genau zu einem x-Wert gehört. Das ist Bijektivität.',
     conceptHints: ['Umkehrung muss eindeutig zurückgehen.', 'Injektivität ist besonders wichtig.'],
+    conceptWrongAnswers: {
+      1: 'Positive Funktionswerte ($f(x) > 0$) sind nicht notwendig — $f(x) = x$ (auf $\\mathbb{R}$) hat negative Werte und ist trotzdem bijektiv. Die entscheidende Eigenschaft ist Bijektivität.',
+      2: 'Die Funktionsart (quadratisch, linear, exponentiell) spielt keine Rolle — entscheidend ist Bijektivität. Quadratische Funktionen sind auf $\\mathbb{R}$ sogar nicht bijektiv (nicht injektiv).',
+      3: 'Die $y$-Achse schneiden ist harmlos — $f(0)$ existiert bei vielen bijektiven Funktionen. Die eigentliche Bedingung ist, dass jeder $y$-Wert höchstens einmal angenommen wird (Injektivität).',
+    },
     calcQuestion: 'Für f(x)=4x−7: Berechne f⁻¹(5).',
     calcAnswer: 3,
     calcTolerance: 0,
@@ -519,6 +637,11 @@ const profiles = {
     errorCorrect: 0,
     errorExplanation: 'x² ist auf ganz ℝ nicht injektiv, weil x und −x denselben Wert liefern. Erst mit Bereichseinschränkung ist eine Umkehrung eindeutig.',
     errorHints: ['Teste x=2 und x=−2.', 'Beide liefern 4.'],
+    errorWrongAnswers: {
+      1: '$x^3$ ist auf ganz $\\mathbb{R}$ streng monoton steigend (Ableitung $3x^2 \\geq 0$) und damit bijektiv. Umkehrfunktion $\\sqrt[3]{x}$ existiert für alle $x$. Korrekt.',
+      2: '$e^x$ und $\\ln(x)$ sind das klassische Umkehrpaar: $e^{\\ln(x)} = x$, $\\ln(e^x) = x$. Korrekt.',
+      3: 'Bei der Umkehrung werden Definitions- und Wertebereich tatsächlich vertauscht — aus Eingabe wird Ausgabe und umgekehrt. Korrekt.',
+    },
     transferQuestion: 'Für f(x)=√x mit Definitionsbereich x≥0: Berechne f⁻¹(9).',
     transferAnswer: 81,
     transferTolerance: 0,

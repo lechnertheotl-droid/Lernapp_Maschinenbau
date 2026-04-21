@@ -36,6 +36,11 @@ const unit1 = makeUnit({
           correctIndex: 0,
           explanation: '$x^3$ wird als Konstante behandelt. $\\partial/\\partial y (y^2) = 2y$. Ergebnis: $x^3 \\cdot 2y = 2x^3 y$.',
           hints: ['$x$ ist konstant, wenn wir nach $y$ ableiten.', '$(y^2)\' = 2y$.', '$x^3$ bleibt als Faktor stehen.'],
+          wrongAnswerExplanations: {
+            '1': 'Hier wurde nach $x$ statt nach $y$ abgeleitet: $\\partial/\\partial x (x^3 y^2) = 3x^2 y^2$. Die Aufgabe verlangt $\\partial/\\partial y$, also $y$ als Variable und $x^3$ als Konstante.',
+            '2': 'Der Faktor $y^2$ wurde gar nicht abgeleitet, stattdessen nur $x^3$ stehen gelassen. Bei $\\partial/\\partial y$ muss $y^2$ nach der Potenzregel zu $2y$ werden, also $x^3 \\cdot 2y$.',
+            '3': 'Gemischte doppelte Ableitung $\\partial^2/(\\partial x \\partial y) = 6x^2 y$ statt einfacher partieller Ableitung. Gefragt ist nur $\\partial/\\partial y$, nicht $\\partial^2/(\\partial x \\partial y)$.',
+          },
         },
         {
           type: 'number-input',
@@ -53,6 +58,11 @@ const unit1 = makeUnit({
           correctIndex: 0,
           explanation: '$\\nabla f = (2x, 2y)$. An $(1,2)$: $(2, 4)$.',
           hints: ['Gradient = Vektor der partiellen Ableitungen.', '$(2x, 2y)$ einsetzen.', 'Achtung: zuerst $x$, dann $y$.'],
+          wrongAnswerExplanations: {
+            '1': 'Die Ableitung wurde vergessen, stattdessen nur der Punkt $(1,2)$ eingetragen. Gradient ist der Vektor der partiellen Ableitungen $(2x, 2y)$, nicht $(x, y)$.',
+            '2': 'Die $y$-Komponente ist falsch: $\\partial/\\partial y(y^2) = 2y$, an $y=2$ ergibt das $4$, nicht $2$. Typischer Flüchtigkeitsfehler durch Abschreiben vom ersten Eintrag.',
+            '3': 'In der $x$-Komponente wurde die Ableitung vergessen und einfach $x=1$ eingesetzt. Richtig: $2x$ an $x=1$ ergibt $2$, nicht $1$.',
+          },
         },
         {
           type: 'true-false',
@@ -96,6 +106,11 @@ const unit1 = makeUnit({
           correctIndex: 0,
           explanation: 'Der Gradient zeigt zur **stärksten Änderung** — auf einer Höhenlinie ändert sich $f$ nicht, also Richtungsableitung entlang der Linie = 0. Daher $\\nabla f \\perp $ Höhenlinie.',
           hints: ['Auf einer Höhenlinie: $f$ konstant.', 'Richtungsableitung = 0 entlang der Linie.', 'Gradient steht senkrecht.'],
+          wrongAnswerExplanations: {
+            '1': 'Verwechslung mit Tangente: parallel zur Linie bedeutet Richtungsableitung gleich Betrag des Gradienten — aber entlang einer Niveaulinie ist $f$ konstant, also Richtungsableitung = 0. Das geht nur senkrecht.',
+            '2': 'Ein Winkel von 45° ergibt sich aus keiner geometrischen Regel zwischen Gradient und Niveaulinie. Die korrekte Aussage $\\nabla f \\cdot \\vec t = 0$ (mit Tangente $\\vec t$) erzwingt exakt 90°.',
+            '3': 'Falsch — der Zusammenhang ist fundamental: der Gradient ist per Definition der Vektor, der senkrecht auf Niveaumengen steht (Satz über implizite Funktionen).',
+          },
         },
         {
           type: 'sorting',
@@ -121,6 +136,11 @@ const unit1 = makeUnit({
         'Potenzregel auf x² anwenden.',
         '$f(x,y)=x^2+3y$: Ableitung von $x^2$ nach $x$ ist $2x$, Term $3y$ verschwindet.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Hier wurde $3y$ als $3$ interpretiert (also $y$ ignoriert). Bei $\\partial/\\partial x$ verschwindet der Term $3y$ komplett, da $y$ Konstante ist — es entsteht kein Zusatz-$3$. Ergebnis: nur $2x$.',
+        2: 'Das ist die partielle Ableitung nach $y$, nicht nach $x$: $\\partial/\\partial y(3y) = 3$. Gesucht war $\\partial f/\\partial x$, dort wird $3y$ zu null.',
+        3: 'Hier wurde nichts abgeleitet — der Term $x^2$ blieb unverändert. Die Potenzregel liefert $(x^2)\' = 2x$, nicht $x^2$.',
+      },
       masteryVisualization: {
         id: 'function-graph',
         params: {
@@ -174,6 +194,11 @@ const unit1 = makeUnit({
           correctIndex: 0,
           explanation: '$\\nabla f = (2x, -2y) = 0 \\Rightarrow x = 0$ und $y = 0$. Ein einziger kritischer Punkt: $(0,0)$.',
           hints: ['Beide Komponenten müssen null sein.', '$2x = 0$ und $-2y = 0$.', 'Schnittpunkt: $(0,0)$.'],
+          wrongAnswerExplanations: {
+            '1': 'Hier wurden die Komponenten gleichgesetzt ($2x = -2y$), statt beide einzeln null zu setzen. Kritischer Punkt heißt $\\nabla f = \\mathbf{0}$, also jede Komponente für sich null.',
+            '2': 'Testweise eingesetzt ergibt $\\nabla f(1,1) = (2, -2) \\neq \\mathbf{0}$. Die Bedingung $\\nabla f = \\mathbf{0}$ ist nicht erfüllt, also keine kritischen Punkte.',
+            '3': 'Das System $2x = 0, -2y = 0$ hat offensichtlich eine Lösung $(0,0)$. „Keine" entsteht meist aus einem Rechenfehler (z.B. falsche Ableitung).',
+          },
         },
         {
           type: 'multiple-choice',
@@ -182,6 +207,11 @@ const unit1 = makeUnit({
           correctIndex: 0,
           explanation: '$\\det H = 2 \\cdot (-2) - 0 = -4 < 0$ → **Sattelpunkt**. Entlang $x$ Minimum, entlang $y$ Maximum.',
           hints: ['$\\det(H) < 0$ → Sattel.', '$\\det = f_{xx} f_{yy} - f_{xy}^2 = 2 \\cdot (-2) = -4$.'],
+          wrongAnswerExplanations: {
+            '1': 'Hier wurde nur $f_{xx} = 2 > 0$ beachtet und die Determinante übersehen. Richtig: $\\det H = -4 < 0$ schließt jedes Extremum aus — egal welches Vorzeichen $f_{xx}$ hat.',
+            '2': 'Hier wurde $f_{yy} = -2 < 0$ als alleiniges Kriterium gewählt. Die Klassifikation benötigt zuerst $\\det H$; ist $\\det H < 0$, liegt immer ein Sattelpunkt vor.',
+            '3': 'Die Hesse ist eindeutig bestimmt ($\\det H = -4 \\neq 0$), deswegen liefert der Standardtest ein eindeutiges Ergebnis. „Nicht klassifizierbar" gilt nur bei $\\det H = 0$.',
+          },
         },
         {
           type: 'number-input',
@@ -206,6 +236,11 @@ const unit1 = makeUnit({
           correctIndex: 0,
           explanation: '$\\nabla f = (1, 1)$, $\\nabla g = (2x, 2y)$. Lagrange: $(1, 1) = \\lambda (2x, 2y)$ → $1 = 2\\lambda x$, $1 = 2\\lambda y$. Dann $x = y$. Mit $x^2+y^2=2$: $x = y = \\pm 1$.',
           hints: ['Lagrange: $\\nabla f = \\lambda \\nabla g$.', '$\\nabla g = (2x, 2y)$.', 'Komponentenweise Gleichungen aufschreiben.'],
+          wrongAnswerExplanations: {
+            '1': 'Hier wurden die Lagrange-Gleichungen nicht aufgestellt, sondern die Variablen direkt gleichgesetzt. Korrekt: erst $\\nabla f = \\lambda \\nabla g$ komponentenweise, dann $\\lambda$ eliminieren.',
+            '2': 'Das ist die Gleichung $\\nabla f = 0$ (Extremum ohne NB). Da es hier aber eine Nebenbedingung gibt, muss der Lagrange-Ansatz $\\nabla f = \\lambda \\nabla g$ verwendet werden.',
+            '3': 'Nicht $\\lambda$ gleich Konstante setzen — $\\lambda$ ist Unbekannte. Korrekter Ablauf: $\\nabla f = \\lambda \\nabla g$ liefert Gleichungen, aus denen $\\lambda$ eliminiert wird.',
+          },
         },
         {
           type: 'matching',
@@ -226,6 +261,11 @@ const unit1 = makeUnit({
           correctIndex: 0,
           explanation: 'Bei einem lokalen Extremum (Min, Max oder Sattel) gilt $\\nabla f = \\mathbf{0}$ — der Gradient verschwindet. Das ist die notwendige Bedingung erster Ordnung.',
           hints: ['Notwendige Bedingung für Extremum.', '$\\nabla f = 0$.', 'Verschwindender Vektor, keine Richtung.'],
+          wrongAnswerExplanations: {
+            '1': 'Regel aus anderem Kontext (bedingte Extrema, Lagrange) missverstanden. Am freien Extremum ist $\\nabla f$ nicht parallel zu irgendeiner Linie — er ist schlicht der Nullvektor.',
+            '2': 'Gradient $\\perp$ Niveaulinie ist generell richtig, aber am lokalen Extremum verschwindet der Gradient vollständig — Senkrechtheit ist also undefiniert, weil es keine Richtung mehr gibt.',
+            '3': 'Der Winkel von 45° wäre willkürlich und entspricht keiner Extremum-Bedingung. Gefordert ist $\\nabla f = \\mathbf{0}$ — keine Richtung, kein Winkel.',
+          },
         },
         {
           type: 'sorting',
@@ -258,6 +298,11 @@ const unit1 = makeUnit({
         'Positives $\\det(H)$: Vorzeichen von $f_{xx}$ entscheidet zwischen Min und Max.',
         'Hier: $\\det=4>0$ und $f_{xx}=2>0$ → lokales Minimum.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Vorzeichen von $f_{xx}$ falsch bewertet: $f_{xx} = 2 > 0$ (nicht $< 0$). Mit $\\det H > 0$ und $f_{xx} > 0$ liegt ein Minimum, kein Maximum.',
+        2: 'Die Determinante ist positiv ($4$), nicht negativ. Ein Sattelpunkt erfordert $\\det H < 0$; hier schließt $\\det H = 4 > 0$ einen Sattel aus.',
+        3: '$\\det H = 4 \\neq 0$, also eindeutig klassifizierbar. „Nicht klassifizierbar" gilt nur, wenn $\\det H = 0$ — dann braucht es höhere Ableitungen.',
+      },
       masteryVisualization: {
         id: 'function-graph',
         params: {
@@ -314,6 +359,11 @@ const unit2 = makeUnit({
           correctIndex: 0,
           explanation: 'Gradient verschwindet bei jedem lokalen Extremum (und auch am Sattel). Danach entscheidet die Hesse.',
           hints: ['Notwendige vs. hinreichende Bedingung.', 'Gradient = 0 liefert kritische Punkte.'],
+          wrongAnswerExplanations: {
+            '1': 'Positive Hesse-Matrix ist die hinreichende Bedingung für ein Minimum, nicht die notwendige. Notwendig ist nur $\\nabla f = \\mathbf{0}$; Hesse entscheidet danach über den Typ.',
+            '2': '$f = 0$ macht keine Aussage über Extrema — es nennt nur Nullstellen der Funktion. Ein Minimum kann Funktionswert $\\neq 0$ haben (z.B. $f = x^2 + 1$ hat Minimum $1 > 0$).',
+            '3': '$f > 0$ sagt nur, dass die Funktion positiv ist, nicht, wo sie Extremstellen hat. Notwendig für Extremum bleibt $\\nabla f = \\mathbf{0}$.',
+          },
         },
         {
           type: 'number-input',
@@ -336,6 +386,11 @@ const unit2 = makeUnit({
           correctIndex: 0,
           explanation: '$f_{xx} = 2$, $f_{yy} = 2$, $f_{xy} = 1$. Hesse: $\\begin{pmatrix}2 & 1\\\\ 1 & 2\\end{pmatrix}$.',
           hints: ['Zweite Ableitungen.', '$\\partial/\\partial x (2x+y) = 2$, $\\partial/\\partial x (x+2y) = 1$.', 'Matrix symmetrisch füllen.'],
+          wrongAnswerExplanations: {
+            '1': 'Der gemischte Term $xy$ wurde ignoriert, deswegen $f_{xy} = 0$ statt $1$. Korrekt: $\\partial/\\partial y (f_x) = \\partial/\\partial y(2x + y) = 1$, also Nebendiagonale $= 1$.',
+            '2': 'Hier wurden zweite und erste Ableitungen verwechselt: $f_{xx} = 1$ stimmt nicht; richtig ist $\\partial/\\partial x(2x+y) = 2$. Die Matrix der ersten Ableitungen wäre auch keine Hesse.',
+            '3': 'Die Hesse-Matrix ist nicht Null, denn $f$ enthält quadratische Terme $x^2, y^2$, deren zweite Ableitung je $2$ ergibt. Nur bei linearen $f$ wäre die Hesse die Nullmatrix.',
+          },
         },
         {
           type: 'number-input',
@@ -365,6 +420,11 @@ const unit2 = makeUnit({
           correctIndex: 0,
           explanation: 'Klassisches Lagrange-Problem: Fläche maximieren unter Umfang-Nebenbedingung. Ergebnis: $x = y = 2$ (Quadrat).',
           hints: ['Extremum mit Nebenbedingung.', 'Fläche = $xy$, Umfang-Bedingung eingeschlossen.'],
+          wrongAnswerExplanations: {
+            '1': 'Newton-Verfahren löst Nullstellen nichtlinearer Gleichungen, keine Extremalprobleme mit Nebenbedingung. Für „max/min unter $g=0$" ist Lagrange der Standardansatz.',
+            '2': 'Fourier-Analyse zerlegt periodische Signale in Sinus/Kosinus — kein Optimierungswerkzeug. Hier braucht es Differentialrechnung mit Nebenbedingung.',
+            '3': 'Diagonalisierung dient dem Eigenwertproblem in der linearen Algebra, nicht der Optimierung mit Nebenbedingung. Standardmethode hier: Lagrange.',
+          },
         },
         {
           type: 'matching',
@@ -402,6 +462,11 @@ const unit2 = makeUnit({
         'Hesse-Determinante prüfen.',
         '$(0,0)$: $H=\\begin{pmatrix}2&0\\\\0&2\\end{pmatrix}$, $\\det=4>0$, $f_{xx}=2>0$ → Minimum.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Der Punkt $(0,0)$ ist zwar kritischer Punkt, aber kein Sattel: $\\det H = 4 > 0$ schließt Sattelpunkte aus. Mit $f_{xx} = 2 > 0$ liegt ein Minimum vor.',
+        2: 'Kritische Punkte existieren — $\\nabla f = (2x, 2y) = \\mathbf{0}$ hat die eindeutige Lösung $(0,0)$. „Keinen" wäre nur bei einem widersprüchlichen LGS korrekt.',
+        3: 'Testweise eingesetzt ergibt $\\nabla f(1,1) = (2, 2) \\neq \\mathbf{0}$ — kein kritischer Punkt. Korrekt: nur $(0,0)$ ist kritischer Punkt.',
+      },
       prerequisites: ['mdim-1-2'],
       nextLessonId: 'mdim-pruefung-2',
     }),
@@ -438,6 +503,11 @@ const unit2 = makeUnit({
           correctIndex: 0,
           explanation: '$dz = z_x\\,dx + z_y\\,dy = 2x\\,dx + 2y\\,dy$.',
           hints: ['$dz$-Formel: $f_x dx + f_y dy$.', 'Partielle Ableitungen je Variable.'],
+          wrongAnswerExplanations: {
+            '1': 'Hier wurde nur nach $x$ abgeleitet und $y$-Term vergessen. Totales Differential summiert **beide** partielle Ableitungen: $dz = z_x\\,dx + z_y\\,dy$.',
+            '2': 'Die partiellen Ableitungen wurden gar nicht gebildet — einfach $dx + dy$ ohne Gewichtung. Richtig: jede $dx_i$ mit $\\partial f/\\partial x_i$ multiplizieren.',
+            '3': 'Hier wurde $z$ nach $x$ abgeleitet, aber $dy$ vergessen und stattdessen $(x+y)$ als gemeinsamer Faktor verwendet. Totales Differential hat **getrennte** $dx$- und $dy$-Terme.',
+          },
         },
         {
           type: 'number-input',
@@ -455,6 +525,11 @@ const unit2 = makeUnit({
           correctIndex: 0,
           explanation: '$h$ als Konstante. $\\partial V/\\partial r = 2r \\pi h$.',
           hints: ['$h$ wie eine Konstante.', 'Potenzregel: $(r^2)\' = 2r$.', '$\\pi h$ als Faktor.'],
+          wrongAnswerExplanations: {
+            '1': 'Der Faktor $r^2$ wurde nicht abgeleitet und verschwand komplett. Korrekte Potenzregel: $\\partial/\\partial r(r^2) = 2r$, nicht $1$.',
+            '2': 'Hier wurde nach $h$ statt nach $r$ abgeleitet ($\\partial V/\\partial h = r^2\\pi$). Die Aufgabe verlangt $\\partial V/\\partial r$, also $h$ als Konstante behandeln.',
+            '3': 'Produktregel auf $r^2 \\cdot h$ angewandt, obwohl $h$ bei $\\partial/\\partial r$ als Konstante gilt. Produktregel ist unnötig; einfach $h \\cdot \\partial(r^2)/\\partial r = 2rh$, mit $\\pi$ ergibt $2r\\pi h$.',
+          },
         },
         {
           type: 'true-false',
@@ -485,6 +560,11 @@ const unit2 = makeUnit({
           explanation:
             'Für Produkte addieren sich die relativen Fehler (Max-Abschätzung). Herleitung: $\\Delta z = |y|\\Delta x + |x|\\Delta y$, geteilt durch $z = xy$ ergibt Summe der relativen Fehler.',
           hints: ['Bei Produkten gilt eine schöne Regel.', 'Relative Fehler = $\\Delta/\\text{Wert}$.'],
+          wrongAnswerExplanations: {
+            '1': 'Fehler werden nicht multipliziert. Aus $dz = y\\,dx + x\\,dy$ folgt durch Division durch $z = xy$: $dz/z = dx/x + dy/y$ — eine Summe, kein Produkt.',
+            '2': 'Das ist die Formel für den **absoluten** Fehler (totales Differential), nicht den relativen. Die Frage war nach $\\Delta z/z$, nicht $\\Delta z$.',
+            '3': 'Quadrieren ist nur bei Gauß-Abschätzung (unabhängige Fehler) relevant, und auch dann relativ: $(\\Delta z/z)^2 = (\\Delta x/x)^2 + (\\Delta y/y)^2$. Max-Abschätzung summiert linear.',
+          },
         },
         {
           type: 'matching',
@@ -524,6 +604,11 @@ const unit2 = makeUnit({
         'Maximale Fehlerabschätzung: $\\Delta z = |z_x|\\Delta x + |z_y|\\Delta y$.',
         '$|4| \\cdot 0{,}1 + |3| \\cdot 0{,}2 = 0{,}4 + 0{,}6 = 1{,}0$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: 'Hier wurde nur der erste Beitrag $|z_x|\\Delta x = 4 \\cdot 0{,}1 = 0{,}4$ berechnet. Der zweite Term $|z_y|\\Delta y = 3 \\cdot 0{,}2 = 0{,}6$ fehlt — beide Messfehler tragen zum Gesamtfehler bei.',
+        2: 'Das ist nur der zweite Teilbeitrag $|z_y|\\Delta y = 0{,}6$. Der Beitrag $|z_x|\\Delta x = 0{,}4$ aus dem Fehler von $x$ fehlt. Gesamt: $0{,}4 + 0{,}6 = 1{,}0$.',
+        3: 'Hier wurden die Ableitungen vertauscht: $|z_x|\\cdot\\Delta y + |z_y|\\cdot\\Delta x = 4\\cdot 0{,}2 + 3\\cdot 0{,}1 = 0{,}8 + 0{,}3 = 1{,}1$ — dicht an $1{,}4$. Jeder Messfehler $\\Delta x_i$ muss mit *seiner eigenen* partiellen Ableitung multipliziert werden.',
+      },
       prerequisites: ['mdim-pruefung-1'],
       nextLessonId: 'mdim-pruefung-3',
     }),
@@ -560,6 +645,11 @@ const unit2 = makeUnit({
           explanation:
             'Lagrange: $1 = 2\\lambda x$, $2 = 2\\lambda y$. Dann $y = 2x$. In $x^2 + 4x^2 = 5$: $x^2 = 1$, also $x = \\pm 1$, $y = \\pm 2$.',
           hints: ['$\\nabla f = (1, 2)$, $\\nabla g = (2x, 2y)$.', 'Aus Lagrange: $y = 2x$.', 'In NB einsetzen.'],
+          wrongAnswerExplanations: {
+            '1': '$(0,0)$ erfüllt die Nebenbedingung $x^2 + y^2 = 5$ nicht ($0 \\neq 5$). Lagrange-Kandidaten müssen immer auf der Nebenbedingungskurve liegen.',
+            '2': 'Hier wurde nur die Nebenbedingung getestet ($(\\sqrt 5)^2 + 0^2 = 5$ passt), aber die Lagrange-Gleichung $y = 2x$ ignoriert. Beide Bedingungen müssen gleichzeitig gelten.',
+            '3': 'Zwei Lösungen existieren auf jeden Fall: aus $y = 2x$ und $x^2 + y^2 = 5$ folgt $x = \\pm 1$. Das System ist konsistent und hat Extrema.',
+          },
         },
         {
           type: 'number-input',
@@ -584,6 +674,11 @@ const unit2 = makeUnit({
           explanation:
             '$\\nabla f = (2xy, x^2)$, $\\nabla g = (1, 1)$. Lagrange: $2xy = \\lambda \\cdot 1$, $x^2 = \\lambda \\cdot 1$. Dann $2xy = x^2$, also $y = x/2$ (falls $x \\neq 0$).',
           hints: ['$f_x = 2xy$, $f_y = x^2$.', '$g_x = g_y = 1$.', 'Beide gleich $\\lambda$ setzen.'],
+          wrongAnswerExplanations: {
+            '1': 'Hier wurden die partiellen Ableitungen falsch gebildet: $\\partial/\\partial x(x^2 y) = 2xy$, nicht $2x$, und $\\partial/\\partial y(x^2 y) = x^2$, nicht $y$.',
+            '2': 'In der ersten Gleichung $f_x = \\lambda g_x$ steht $2xy$, nicht $y$. Der Faktor $2x$ wurde bei der Ableitung von $x^2$ vergessen.',
+            '3': '$f = 0$ ist keine Lagrange-Bedingung, sondern die Gleichung „$f$ verschwindet". Lagrange verlangt $\\nabla f = \\lambda \\nabla g$, nicht $f = 0$.',
+          },
         },
         {
           type: 'true-false',
@@ -608,6 +703,11 @@ const unit2 = makeUnit({
           explanation:
             'Am Extremum sind Gradienten parallel → die Niveaulinien $f = c$ berühren die Kurve $g = 0$ tangential. Am Berührpunkt: gemeinsame Normalenrichtung.',
           hints: ['Gradient = Normale zu Niveaulinie.', 'Parallele Gradienten → parallele Normalen.', 'Parallele Normalen → Tangentenberührung.'],
+          wrongAnswerExplanations: {
+            '1': 'Die Nebenbedingung bleibt aktiv — sie muss am Kandidatenpunkt gelten: $g(x,y) = 0$. Sie verschwindet nicht, sondern wird im LGS mit aufgenommen.',
+            '2': 'Identität wäre $f = g$ als Funktionen — hat mit der Lagrange-Bedingung nichts zu tun. Die Bedingung betrifft nur die **Gradienten**, nicht die Funktionen selbst.',
+            '3': '$\\lambda = 0$ würde $\\nabla f = \\mathbf{0}$ bedeuten (freies Extremum). Im Allgemeinen Lagrange-Fall ist $\\lambda \\neq 0$ und gibt den „Preis" der Nebenbedingung an.',
+          },
         },
         {
           type: 'number-input',
@@ -660,6 +760,11 @@ const unit2 = makeUnit({
         'Aus $2x = \\lambda$ und $2y = \\lambda$ folgt $x = y$.',
         'Mit $x = y$ in $x + y = 2$ einsetzen: $2x = 2$, also $x = y = 1$.',
       ],
+      masteryWrongAnswerExplanations: {
+        1: '$(2,0)$ erfüllt zwar $x+y=2$, aber $f(2,0) = 4 > 2 = f(1,1)$ — also ist $(2,0)$ nicht das Minimum, sondern weiter vom Ursprung entfernt. Lagrange liefert $x=y=1$.',
+        2: 'Symmetrisch zu Option 1: $f(0,2) = 4 > 2$. Randpunkt auf der Geraden, aber nicht das Minimum. Das Minimum liegt dort, wo die Gerade dem Ursprung am nächsten ist — auf der Mittelpunkts-Loten.',
+        3: '$(0,0)$ liegt nicht auf der Nebenbedingungsgeraden $x+y=2$ (es gilt $0+0=0\\neq 2$). Der Punkt muss immer die NB erfüllen, sonst ist er kein Kandidat.',
+      },
       prerequisites: ['mdim-pruefung-2'],
       nextLessonId: null,
     }),

@@ -1,5 +1,14 @@
-function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined) {
-  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints, ...(visualization ? { visualization } : {}) }
+function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined, wrongAnswerExplanations = undefined) {
+  return {
+    type: 'multiple-choice',
+    question,
+    options,
+    correctIndex,
+    explanation,
+    hints,
+    ...(visualization ? { visualization } : {}),
+    ...(wrongAnswerExplanations ? { wrongAnswerExplanations } : {}),
+  }
 }
 
 function ni(question, correctValue, tolerance, unit, explanation, hints = [], visualization = undefined) {
@@ -31,12 +40,12 @@ function withExamPrefix(exercise, exam) {
 
 function bank(profile) {
   const exercises = [
-    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization),
+    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization, profile.conceptWrongAnswers),
     ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints, profile.calcVisualization),
     tf(profile.trueFalseStatement, profile.trueFalseCorrect, profile.trueFalseExplanation, profile.trueFalseHints),
     matching(profile.matchingQuestion, profile.matchingPairs, profile.matchingExplanation, profile.matchingHints),
     sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints),
-    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints),
+    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints, undefined, profile.errorWrongAnswers),
     ni(profile.transferQuestion, profile.transferAnswer, profile.transferTolerance, profile.transferUnit, profile.transferExplanation, profile.transferHints),
   ]
   return exercises.map((exercise) => withExamPrefix(exercise, profile.exam))
@@ -71,6 +80,11 @@ const profiles = {
       'Soll minus Ist.',
       'Bei $e = 0$ ist das Ziel erreicht.',
     ],
+    conceptWrongAnswers: {
+      1: 'Vorzeichen vertauscht. $e = y - w$ ist die umgekehrte Konvention — mit ihr muss das Reglervorzeichen ebenfalls umgedreht werden, sonst wirkt der Regler destabilisierend. Standard ist $e = w - y$.',
+      2: 'Verwechselt Stellgröße $u$ (Reglerausgang) mit Regelgröße $y$ (Messwert). Die Regelabweichung vergleicht Soll- und Istwert, also $w$ und $y$. $u$ ist, was der Regler aus $e$ berechnet — nicht seine Eingangsgröße.',
+      3: 'Addition ergibt kein Maß für Abweichung. Wenn $w = y$ sollen beide 0 liefern — das geht nur mit Subtraktion. Eine Summe wie $y + w$ wächst immer mit, egal ob Ziel erreicht.',
+    },
 
     calcQuestion: 'Führungsgröße $w = 80$ °C, Regelgröße $y = 72$ °C. Wie groß ist $e$ in °C?',
     calcAnswer: 8,
@@ -131,6 +145,11 @@ const profiles = {
       'Konvention: Soll - Ist.',
       'Vorzeichenkonsistenz mit Regler.',
     ],
+    errorWrongAnswers: {
+      1: 'Die Regelabweichung $e$ ist nicht per Definition null; sie ist nur im stationären Zielzustand null. Während des Einschwingens liegt $e \\neq 0$. Das Problem ist das Vorzeichen der Definition, nicht der Wert von $e$.',
+      2: 'Der Faktor $1/2$ gehört zu kinetischer Energie ($E = \\tfrac{1}{2} m v^2$), nicht zur Regelabweichung. $e = w - y$ ist eine reine Differenz, kein quadratischer Ausdruck.',
+      3: 'Das Ohmsche Gesetz ($U = R I$) gehört zur Elektrotechnik, nicht zur Definition einer Regelabweichung. Hier geht es um die Vorzeichenkonvention in der Regelkreis-Standardform.',
+    },
 
     transferQuestion: 'Eine Füllstandsregelung soll $w = 2{,}0$ m halten. Aktueller Istwert $y = 1{,}75$ m, P-Regler mit $K_P = 4$. Wie groß ist die Stellgröße $u = K_P \\cdot e$ in Einheit des Regelkreises?',
     transferAnswer: 1,
@@ -177,6 +196,11 @@ beschrieben. Die DGL im Zeitbereich wird zur algebraischen Gleichung in $s$.
       'Verhältnis im Bildbereich.',
       '$G(s) = Y(s)/U(s)$.',
     ],
+    conceptWrongAnswers: {
+      1: 'Die Sprungantwort ist die Zeitantwort auf einen Einheitssprung — eine konkrete Kurve im Zeitbereich. Die Übertragungsfunktion $G(s)$ lebt im Laplace-Bildbereich und charakterisiert das System kompakt als Quotient.',
+      2: 'Die Impulsantwort $g(t) = \\mathcal{L}^{-1}\\{G(s)\\}$ ist die inverse Laplace-Transformation der Übertragungsfunktion. Sie ist eine Darstellung im Zeitbereich, nicht die Übertragungsfunktion selbst.',
+      3: 'Der stationäre Endwert $G(0)$ ist nur der Grenzwert $s \\to 0$ — also ein einziger Zahlenwert. Die Übertragungsfunktion enthält die gesamte Dynamik für alle $s$.',
+    },
 
     calcQuestion: 'Für ein PT1-Glied $G(s) = 5/(1 + 2s)$: Wie groß ist $G(0)$ (stationäre Verstärkung)?',
     calcAnswer: 5,
@@ -237,6 +261,11 @@ beschrieben. Die DGL im Zeitbereich wird zur algebraischen Gleichung in $s$.
       'Reihe: Produkt.',
       'Parallel: Summe.',
     ],
+    errorWrongAnswers: {
+      1: 'Addition gilt bei Parallelschaltung, nicht bei Reihenschaltung. In Reihe durchlaufen Signale nacheinander — die Ausgänge multiplizieren sich: $G_{ges} = G_1 \\cdot G_2$.',
+      2: 'Die Einheit von $G_1 = 2$ ist dimensionslos (reine Verstärkung), das passt zu einem P-Glied. Das Problem ist nicht fehlende Einheit, sondern die falsche Verknüpfungsregel.',
+      3: 'PT1 $= 1/(1+s)$ hat implizit die Zeitkonstante $T = 1$ (weil $1 + Ts$ mit $T=1$). Die Zeitkonstante ist da — der Fehler liegt in der Kombinationsregel.',
+    },
 
     transferQuestion: 'Rückkopplung: $G_o(s) = 4/(s+2)$ mit negativer Rückführung ($H = 1$). Wie groß ist die stationäre Verstärkung der Führungsübertragungsfunktion $T(s) = G_o/(1+G_o)$ bei $s = 0$?',
     transferAnswer: 0.6667,
@@ -281,6 +310,11 @@ $$G_R(s) = K_P \left(1 + \frac{1}{T_I s} + T_D s\right)$$
       'I-Anteil integriert Fehler über Zeit.',
       'Pol bei s = 0 im Regler.',
     ],
+    conceptWrongAnswers: {
+      1: 'Der P-Anteil wirkt sofort und proportional auf $e$, aber bei einer Strecke ohne Integration bleibt $e_{stat} = w_0/(1+K_P K_S) \\neq 0$. Egal wie groß $K_P$ gewählt wird, ein Rest-Fehler bleibt — den kann nur der I-Anteil wirklich eliminieren.',
+      2: 'Der D-Anteil reagiert auf $de/dt$. Bei konstantem $e$ ist die Änderung 0 und der D-Beitrag verschwindet. D hilft bei Transienten, nicht bei stationären Fehlern.',
+      3: 'Doch — der I-Anteil eliminiert stationäre Fehler zuverlässig, weil er so lange integriert, bis $e = 0$. Die Systemtyp-Erhöhung um 1 garantiert das theoretisch.',
+    },
 
     calcQuestion: 'PI-Regler mit $K_P = 2$, $T_I = 0{,}5$ s. Bei konstantem $e = 3$ nach $t = 1$ s (Integral von 0 bis 1): Wie groß ist $u(t=1)$?',
     calcAnswer: 18,
@@ -341,6 +375,11 @@ $$G_R(s) = K_P \left(1 + \frac{1}{T_I s} + T_D s\right)$$
       'Integrator kann "aufintegrieren".',
       'Windup-Phänomen.',
     ],
+    errorWrongAnswers: {
+      1: 'Der I-Anteil wirkt auf jedes $e \\neq 0$, nicht nur bei konstantem Eingang. Er integriert kontinuierlich. Die Aussage verwechselt Wirkweise mit einem Spezialfall.',
+      2: 'Ein I-Anteil mit $K_I = 0$ wäre kein I-Anteil mehr — per Definition hat er einen endlichen Koeffizienten. Die Frage zielt auf die Gefahr großer $K_I$, nicht auf $K_I = 0$.',
+      3: 'Die Aussage ist gerade nicht korrekt. Größer ist nicht immer besser: bei Stellbegrenzung entsteht Windup, bei zu hoher I-Wirkung kommt es zu Überschwingen und eventuell Instabilität. Kompromiss nötig.',
+    },
 
     transferQuestion: 'PI-Regler mit $K_P = 3$, $T_I = 2$ s. Regelabweichung steigt linear: $e(t) = 0{,}5 \\cdot t$ (in passender Einheit). Wie groß ist $u(t=4 \\mathrm{s})$?',
     transferAnswer: 12,
@@ -380,6 +419,11 @@ $$G_R(s) = K_P \left(1 + \frac{1}{T_I s} + T_D s\right)$$
       'Pol = Nullstelle des Nenners.',
       'LHP = Stabilität.',
     ],
+    conceptWrongAnswers: {
+      1: 'Pole dürfen auch komplex sein — dann liefern sie gedämpfte Schwingungen (wenn $\\Re < 0$). Der Realteil entscheidet über Stabilität, nicht die Frage reell vs. komplex.',
+      2: 'Nullstellen sind Nullstellen des Zählers und beeinflussen die Form der Antwort, aber nicht die Stabilität. Nur Pole (Nenner-Nullstellen) bestimmen, ob die Antwort wächst oder abklingt.',
+      3: 'Ein Pol mit $\\Re > 0$ bewirkt eine exponentiell wachsende Mode $e^{s_i t}$ — das System divergiert. Stabilität verlangt genau das Gegenteil: alle Pole müssen in der linken Halbebene liegen.',
+    },
 
     calcQuestion: 'System mit $G(s) = 10/(s^2 + 3s + 2)$. Der Realteil beider Pole ist negativ? (Antwort: $-1$ oder $-2$ — gib den kleineren Betrag der negativen Pole als positive Zahl an.)',
     calcAnswer: 1,
@@ -440,6 +484,11 @@ $$G_R(s) = K_P \left(1 + \frac{1}{T_I s} + T_D s\right)$$
       'Pole ≠ Nullstellen.',
       'Nur Nenner für Stabilität.',
     ],
+    errorWrongAnswers: {
+      1: 'Die Nullstelle ist bei $s = -10$ (nicht $+10$), aber das ist nicht das Problem. Nullstellen beeinflussen Stabilität überhaupt nicht — egal ob positiv oder negativ.',
+      2: 'Das Nennerpolynom $s^2 + 4s + 4 = (s+2)^2$ ist korrekt ausgewertet; die Pole sind $-2, -2$. Der Fehler liegt in der falschen Annahme, dass die Nullstelle über Stabilität entscheidet.',
+      3: 'Der Zähler muss nicht null sein. Der Zähler beeinflusst nur die Höhe der Antwort (Verstärkung, Nullstellen der Frequenzantwort), nicht ob das System stabil ist. Stabilität hängt ausschließlich an den Polen.',
+    },
 
     transferQuestion: 'Charakteristische Gleichung $s^2 + a s + 4 = 0$. Welches minimale $a$ macht das System gerade grenzstabil (auf der Grenze zur Instabilität)?',
     transferAnswer: 0,
@@ -486,6 +535,11 @@ $$e_{stat} = \frac{w_0}{1 + K_P K_S}$$
       'Endwertsatz anwenden.',
       'Systemtyp = Pole bei $s=0$.',
     ],
+    conceptWrongAnswers: {
+      1: '$K_P$ ist nur ein Teil der Formel. Der stationäre Fehler hängt von der **gesamten** Kreisverstärkung $G_o(0) = K_P \\cdot K_S$ ab — also auch von der Streckenverstärkung $K_S$ — und vom Systemtyp.',
+      2: 'Die Zeitkonstante $T$ beeinflusst das Einschwingverhalten, verschwindet aber im Grenzwert $s \\to 0$ (Endwertsatz). Sie ist für $e_{stat}$ irrelevant.',
+      3: 'Der D-Anteil wirkt nur auf Änderungen. Bei konstantem $e$ ist $de/dt = 0$ und der D-Anteil trägt nichts zum stationären Wert bei.',
+    },
 
     calcQuestion: 'P-Regler $K_P = 4$, PT1-Strecke $K_S = 2$, $T = 3$ s. Konstanter Sollwert $w_0 = 10$. Wie groß ist $e_{stat}$?',
     calcAnswer: 1.111,
@@ -546,6 +600,11 @@ $$e_{stat} = \frac{w_0}{1 + K_P K_S}$$
       'Realteil entscheidet.',
       'Imaginärteil = Frequenz.',
     ],
+    errorWrongAnswers: {
+      1: 'Der Pol liegt bei $s = -0{,}5 + 3j$, einem endlichen Punkt in der komplexen Ebene — nicht im Unendlichen. „Pol im Unendlichen" würde eine völlig andere Situation beschreiben (z.B. unechte Übertragungsfunktion).',
+      2: 'Komplexe Pole sind nicht zwangsläufig instabil. Ein konjugiert komplexes Polpaar mit $\\Re < 0$ erzeugt gedämpfte Schwingungen — das ist ein völlig normaler stabiler Fall (z.B. ein schwach gedämpfter Schwingkreis).',
+      3: 'Der Imaginärteil bestimmt nur die Schwingungsfrequenz der Mode, nicht die Stabilität. Ein Pol bei $s = 0 + 10j$ (rein imaginär) wäre grenzstabil, ein Pol bei $s = -0{,}5 + 10j$ stabil.',
+    },
 
     transferQuestion: 'Offener Kreis: $G_o(s) = K/(s(s+2))$. Mit $K = 6$: Stabilitätsbedingung via Routh-Hurwitz auf $T(s)$ — das charakteristische Polynom lautet $s^2 + 2s + K$. Für welches maximale $K$ bleibt das System stabil?',
     transferAnswer: 10000,

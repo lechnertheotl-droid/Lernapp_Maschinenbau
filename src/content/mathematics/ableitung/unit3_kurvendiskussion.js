@@ -11,6 +11,11 @@ export const exercises_abl_u3 = {
       '$f$ ist dort konkav',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Das Vorzeichen von $f\'$ sagt nichts über das Vorzeichen von $f$ selbst aus. Beispiel: $f(x)=x^2+10$ hat für $x>0$ die Ableitung $f\'(x)=2x>0$ — dennoch ist $f$ überall positiv ($\\geq 10$). Ableitung und Funktionswert sind zwei getrennte Dinge.',
+      2: 'Genau umgekehrt: Ein Maximum hätte $f\'(x_0)=0$ (waagerechte Tangente) mit Vorzeichenwechsel von $+$ nach $-$. $f\'>0$ auf einem *Intervall* bedeutet, dass die Funktion dort *steigt* — an einem Maximum wäre sie kurzzeitig nicht mehr steigend.',
+      3: '„Konkav" (konkav nach unten, $\\cap$) ist eine Aussage über die *Krümmung* ($f\'\'<0$), nicht über die Steigung ($f\'$). Eine konkave Funktion kann trotzdem steigen (z.B. $\\sqrt{x}$: steigt und ist konkav).',
+    },
     explanation: `**Ansatz:** Die erste Ableitung ist die Steigung der Tangente. Positive Steigung = Funktion wächst.
 
 **Regel:** $f'(x) > 0$ auf $(a,b) \\Rightarrow f$ ist auf $(a,b)$ streng monoton steigend.
@@ -32,6 +37,11 @@ export const exercises_abl_u3 = {
       '$f\'(x_0) > 0$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: '$f(x_0)=0$ ist die Bedingung für eine *Nullstelle* — ein Extremum muss aber nicht bei $y=0$ liegen. Beispiel: $f(x)=x^2+5$ hat ein Minimum bei $x=0$ mit $f(0)=5\\ne 0$. Die Höhe des Extremums ist irrelevant für die Existenz.',
+      2: '$f\'\'(x_0)=0$ ist die Bedingung für *Wendepunkte*, nicht für Extrema. An einem Extremum ist $f\'\'$ typischerweise *ungleich* null (Min: $f\'\'>0$, Max: $f\'\'<0$); $f\'\'=0$ würde den hinreichenden Test sogar scheitern lassen.',
+      3: '$f\'(x_0)>0$ *schließt* ein Extremum aus: Wo die Steigung strikt positiv ist, ist die Funktion streng monoton steigend, also dort *kein* Hoch- oder Tiefpunkt. Genau dort gibt es kein Extremum.',
+    },
     explanation: `**Ansatz:** An Hoch- oder Tiefpunkten ist die Tangente waagerecht — also Steigung Null.
 
 **Regel:** Notwendige Bedingung: $f'(x_0) = 0$.
@@ -53,6 +63,11 @@ export const exercises_abl_u3 = {
       'Sattelpunkt',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Vorzeichen vertauscht: $f\'\'>0$ bedeutet Linkskrümmung (Schüsselform $\\cup$) $\\Rightarrow$ *Minimum*. Maximum hätte $f\'\'(x_0)<0$ (Rechtskrümmung, Hügelform $\\cap$). Merke: „$+ \\Rightarrow$ Min, $- \\Rightarrow$ Max".',
+      2: 'Ein Wendepunkt verlangt $f\'\'(x_0)=0$ mit Vorzeichenwechsel — hier ist aber $f\'\'(x_0)>0$, also *keine* Null, und damit ausgeschlossen. $f\'\'>0$ ist gerade die Aussage „keine Krümmungsänderung hier" im Sinne echter Minimum-Eigenschaft.',
+      3: 'Ein Sattelpunkt hat $f\'(x_0)=0$ *und* $f\'\'(x_0)=0$ (mit bestimmten weiteren Bedingungen). Hier ist $f\'\'(x_0)>0\\ne 0$, also liegt kein Sattelpunkt vor. Typisches Beispiel für einen Sattel: $x^3$ bei $x=0$, dort ist $f\'\'=0$.',
+    },
     explanation: `**Ansatz:** Hinreichende Bedingung mit zweiter Ableitung.
 
 **Regel:**
@@ -113,6 +128,11 @@ $f''(x) = 6x - 12$.
       'Maximum bei $x = 0$, Minimum bei $x = 2$',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Alle Vorzeichen vertauscht: $f\'\'(0)=-16<0 \\Rightarrow$ Max (nicht Min) und $f\'\'(\\pm 2)=+32>0 \\Rightarrow$ Min (nicht Max). Merke: „$f\'\'>0 \\Rightarrow$ Minimum" — nicht umgekehrt. Die Funktion $x^4-8x^2$ sieht wie ein „W" aus: zwei Täler außen, ein Hügel in der Mitte.',
+      2: 'Die Nullstellen $x=\\pm 2$ von $f\'$ werden ignoriert. $f\'(x)=4x(x-2)(x+2)=0$ hat *drei* Lösungen ($x=-2, 0, +2$), nicht nur eine. Vermutlich nur $4x=0$ gelöst und die Faktoren $(x\\pm 2)$ übersehen.',
+      3: 'Unvollständig: Das Minimum bei $x=-2$ fehlt — durch die Achsensymmetrie von $f$ (gerade Funktion) muss aber auch bei $x=-2$ ein Minimum sein. Symmetriecheck hilft, solche Fehler zu vermeiden.',
+    },
     explanation: `**Ansatz:** Drei Kandidaten aus $f'(x)=0$, Typ über $f''$.
 
 **Rechnung:**
@@ -140,6 +160,11 @@ $f''(x) = 12x^2 - 16$:
       'An einem Wendepunkt',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Begriffe verwechselt: „Rechtsgekrümmt (konvex nach unten, $\\cap$)" entspricht $f\'\'<0$, nicht $f\'\'>0$. Die Bezeichnungen *konvex/konkav* werden in verschiedenen Lehrbüchern unterschiedlich verwendet — daher lieber die Krümmungsrichtung visualisieren: $f\'\'>0 \\Leftrightarrow \\cup$ (Schüssel), $f\'\'<0 \\Leftrightarrow \\cap$ (Hügel).',
+      2: '„Fallend" ($f\'<0$) ist eine Aussage über die *Steigung*, nicht über die Krümmung. Krümmung und Monotonie sind unabhängig: Eine linksgekrümmte Kurve ($f\'\'>0$) kann steigen *oder* fallen — das Vorzeichen von $f\'$ entscheidet, das von $f\'\'$ beschreibt nur, wie sich die Steigung ändert.',
+      3: 'Ein Wendepunkt hat $f\'\'(x_0)=0$ (mit Vorzeichenwechsel) — also *genau null*, nicht $>0$. $f\'\'>0$ bedeutet gerade, dass *keine* Krümmungsänderung stattfindet (die Krümmung bleibt positiv).',
+    },
     explanation: `**Ansatz:** Zweite Ableitung beschreibt Krümmung, nicht Steigung.
 
 **Regel:**
@@ -163,6 +188,11 @@ $f''(x) = 12x^2 - 16$:
       '$f\'\'\'(x_0) = 0$',
     ],
     correctIndex: 2,
+    wrongAnswerExplanations: {
+      0: 'Das ist nur die *notwendige* Bedingung, nicht hinreichend. Gegenbeispiel $f(x)=x^4$: $f\'\'(0)=0$, aber *kein* Wendepunkt — die Krümmung bleibt positiv. Man braucht zusätzlich $f\'\'\'(x_0)\\ne 0$ oder einen expliziten Vorzeichenwechsel.',
+      1: '$f\'(x_0)=0$ ist die Bedingung für *Extrema* (oder Sattelpunkte), nicht für Wendepunkte. Ein Wendepunkt kann jede Steigung haben — entscheidend ist der Krümmungswechsel ($f\'\'$), nicht die Steigung ($f\'$).',
+      3: 'Genau umgekehrt: Für einen Wendepunkt ist $f\'\'\'(x_0)\\ne 0$ hinreichend. $f\'\'\'(x_0)=0$ macht den Test *unbrauchbar* — man muss dann auf Vorzeichenwechsel von $f\'\'$ ausweichen.',
+    },
     explanation: `**Ansatz:** Notwendig allein reicht nicht — die Krümmung muss tatsächlich wechseln.
 
 **Regeln:**
@@ -209,6 +239,11 @@ $f''(x) = 12x^2 - 16$:
       'Keine Aussage möglich',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Kein Extremum: Bei einem Extremum muss $f\'$ das Vorzeichen wechseln. Hier wechselt aber $f\'\'$ (wegen $f\'\'\'\\ne 0$), was bedeutet: $f\'$ hat an $x_0$ einen *lokalen Extremum-eigenen-Ableitung* — z.B. Minimum bei $f\'$, also $f\'\\ge 0$ um $x_0$ herum, kein Vorzeichenwechsel von $f\'$, kein Extremum von $f$.',
+      2: 'Eine Polstelle ist eine Stelle, an der die Funktion *nicht definiert* ist (z.B. $\\tfrac{1}{x}$ bei $x=0$) — und dort existieren weder $f\'$ noch $f\'\'$. Die gegebenen Bedingungen setzen aber voraus, dass $f$ und alle drei Ableitungen in $x_0$ definiert sind.',
+      3: 'Doch, eine klare Aussage ist möglich: Alle drei Bedingungen zusammen definieren einen Sattelpunkt (waagerechte Tangente + Wendepunkt). Beispiel $f(x)=x^3$ bei $x=0$: $f\'(0)=0$, $f\'\'(0)=0$, $f\'\'\'(0)=6\\ne 0$ — klassischer Terrassenpunkt.',
+    },
     explanation: `**Sattelpunkt** (auch Terrassenpunkt genannt). Die Tangente ist waagerecht ($f'=0$), und gleichzeitig wechselt die Krümmung ($f''$ wechselt Vorzeichen, garantiert durch $f''' \\neq 0$).
 
 **Klassisches Beispiel:** $f(x) = x^3$ bei $x = 0$: $f'(0) = 0$, $f''(0) = 0$, $f'''(0) = 6 \\neq 0$.
@@ -225,6 +260,11 @@ $f''(x) = 12x^2 - 16$:
     question: '[PRÜFUNG] $f(x) = x^4 - 6x^2 + 1$. Wie viele Wendepunkte hat $f$?',
     options: ['0', '1', '2', '3'],
     correctIndex: 2,
+    wrongAnswerExplanations: {
+      0: 'Doch, es gibt Wendepunkte: $f\'\'(x)=12x^2-12=0$ liefert $x=\\pm 1$ mit $f\'\'\'(\\pm 1)=\\pm 24\\ne 0$. Vermutlich wurde $f\'\'$ falsch berechnet (z.B. Konstante $1$ bei einer Ableitung mitgenommen) oder $x^2=1$ hat keine Lösung angenommen.',
+      1: 'Die Gleichung $12x^2-12=0$ hat *zwei* Lösungen ($x=\\pm 1$), nicht nur eine. Vermutlich wurde nur die positive Lösung $x=+1$ betrachtet — $x^2=1$ liefert aber *beide* Vorzeichen als Kandidaten.',
+      3: 'Zu viele: Die Gleichung $12(x^2-1)=0$ ist ein Polynom zweiten Grades in $x$, hat also höchstens *zwei* Lösungen. Drei Wendepunkte kommen bei einer Polynomfunktion vom Grad 4 höchstens vor, wenn $f\'\'$ vom Grad 3 wäre — hier aber Grad 2, also maximal 2.',
+    },
     explanation: `**Ansatz:** Kandidaten aus $f''=0$, jeden mit $f'''$ verifizieren.
 
 **Rechnung:**
@@ -282,6 +322,11 @@ $f''(x) = 12x^2 - 16$:
       'Punktsymmetrie zu einem anderen Punkt',
     ],
     correctIndex: 2,
+    wrongAnswerExplanations: {
+      0: 'Achsensymmetrie würde $f(-x)=f(x)$ bedeuten. Hier ist $f(-x)=-x^3+3x+2 \\ne x^3-3x+2$. Außerdem: Achsensymmetrische Polynome haben nur gerade Potenzen — $x^3$ (ungerade) schließt Achsensymmetrie aus.',
+      1: 'Punktsymmetrie zum Ursprung würde $f(-x)=-f(x)$ bedeuten. Hier ist $f(-x)=-x^3+3x+2$, aber $-f(x)=-x^3+3x-2$. Die konstanten Glieder ($+2$ vs. $-2$) passen *nicht* — daher keine Punktsymmetrie zum Ursprung.',
+      3: 'Zwar hat jede kubische Funktion eine Punktsymmetrie zu ihrem Wendepunkt (hier bei $x=0$, $y=2$), aber in Kurvendiskussionen wird *Symmetrie* standardmäßig nur bezüglich y-Achse oder Ursprung abgefragt. Die Antwort „keine Symmetrie" (im üblichen Sinn) ist hier die konventionelle.',
+    },
     explanation: `**Ansatz:** Teste $f(-x)$ und vergleiche mit $f(x)$ bzw. $-f(x)$.
 
 **Rechnung:** $f(-x) = -x^3 + 3x + 2$.
@@ -307,6 +352,11 @@ $f''(x) = 12x^2 - 16$:
       '$f(x) \\to 1$',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Falsche Richtung: Der Leitkoeffizient von $2x^3$ ist *positiv*, und die Potenz $3$ ist ungerade — bei $x\\to +\\infty$ läuft das nach $+\\infty$, nicht $-\\infty$. Der $-\\infty$-Limes gilt für $x\\to -\\infty$ (dort ist $x^3$ negativ).',
+      2: 'Polynome streben nie gegen einen endlichen Grenzwert wie $0$ (außer das konstante Null-Polynom). Der führende Term $2x^3$ wächst unbegrenzt, kein Term „konvergiert" — nur Brüche mit höherem Nennergrad oder $e^{-x}$ etc. ergeben endliche Grenzwerte im Unendlichen.',
+      3: 'Die Konstante $+1$ ist der Funktionswert an $x=0$ ($f(0)=1$), nicht der Grenzwert für $x\\to\\infty$. Im Unendlichen dominiert der führende Term $2x^3$ über die Konstante vollständig — der Einfluss von $+1$ wird verschwindend.',
+    },
     explanation: `**Ansatz:** Bei Polynomen bestimmt der Term mit der höchsten Potenz das Verhalten im Unendlichen.
 
 **Rechnung:** Höchster Term ist $2x^3$. Für $x \\to +\\infty$: positiver Koeffizient $\\cdot$ ungerade Potenz $\\to +\\infty$.
@@ -357,6 +407,11 @@ y-Wert: $f(-1) = (-1)^3 - 3(-1) + 2 = -1 + 3 + 2 = 4$.
       'Nur (iii)',
     ],
     correctIndex: 2,
+    wrongAnswerExplanations: {
+      0: 'Der Wendepunkt bei $x=1$ (iii) stimmt ebenfalls: $f\'\'(1)=-6+6=0$ und $f\'\'\'(1)=-6\\ne 0$. Die Antwort schließt eine korrekte Aussage fälschlicherweise aus.',
+      1: 'Das Minimum bei $x=0$ (i) ist korrekt: $f\'(0)=0$ und $f\'\'(0)=6>0$ $\\Rightarrow$ Minimum. Die Antwort lässt dies fälschlich weg. Alle drei Aussagen sind richtig.',
+      3: 'Das Maximum bei $x=2$ und das Minimum bei $x=0$ werden hier fälschlich abgelehnt. Kontrolle: $f\'(x)=-3x(x-2)$, also $f\'(0)=0$ und $f\'(2)=0$ — beide sind Extrema-Kandidaten, und $f\'\'$-Test bestätigt beide Typen.',
+    },
     explanation: `**Ansatz:** Drei Aussagen einzeln nachprüfen.
 
 **Rechnung:**
@@ -386,6 +441,11 @@ Alle drei Aussagen sind korrekt — Antwort C.
       'Nur ein Wendepunkt bei $x = 0$',
     ],
     correctIndex: 2,
+    wrongAnswerExplanations: {
+      0: 'Der Kandidat $x=0$ wird übersehen: $f\'(x)=4x^2(x-3)$ hat eine *doppelte* Nullstelle bei $x=0$ plus einfach bei $x=3$. Auch wenn $x=0$ kein Extremum ist, ist es ein Sattelpunkt und gehört zur Antwort.',
+      1: 'Bei $x=0$ versagt der $f\'\'$-Test ($f\'\'(0)=0$) — wer ihn trotzdem als Maximum deutet, liegt falsch. Der korrekte Weg: Vorzeichenwechsel von $f\'$ prüfen. Um $x=0$ bleibt $f\'<0$ (kein Wechsel) $\\Rightarrow$ Sattel, kein Maximum.',
+      3: 'Hier wird das Minimum bei $x=3$ übersehen: $f\'(3)=0$ und $f\'\'(3)=36>0$ $\\Rightarrow$ klares Minimum. Ein Wendepunkt allein bei $x=0$ ist außerdem ungenau beschrieben — dort ist ein *Sattelpunkt* (Wendepunkt mit waagerechter Tangente).',
+    },
     explanation: `**Ansatz:** Drei Kandidaten ($f' = 0$), aber bei doppelter Nullstelle vorsichtig sein.
 
 **Rechnung:**
@@ -435,6 +495,11 @@ Positive Stelle: $x = 1/\\sqrt{2} \\approx 0{,}707$.
       '$f$ hat ein Maximum bei $x = 1$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Vorzeichenfehler: Bei $x=0$ ist $f(0)=0$ der *kleinste* Wert von $f$, also ein Minimum — kein Maximum. Für große $|x|$ nähert sich $f$ dem Wert $1$ von unten, wächst also *vom Minimum weg*. Ein Maximum hätte $f(x_0) > f$ in der Umgebung, hier ist es umgekehrt.',
+      2: 'Doch, es gibt ein Extremum: $f\'(x)=\\tfrac{2x}{(x^2+1)^2}=0 \\Rightarrow x=0$. Vermutlich Quotientenregel nicht angewandt oder $f\'$ falsch vereinfacht. Test numerisch: $f(0.1)=0{,}0099 > 0 = f(0)$ und $f(-0.1)>0$ auch — klare Minimum-Struktur.',
+      3: 'Bei $x=1$ ist $f\'(1)=\\tfrac{2}{4}=\\tfrac{1}{2}\\ne 0$ — also kein Kandidat für ein Extremum. $f$ ist bei $x=1$ sogar noch *steigend* ($f\'>0$). Das einzige Extremum liegt bei $x=0$ (Minimum).',
+    },
     explanation: `**Ansatz:** Quotientenregel für $f'$, Grenzwert mit Polynomgrad.
 
 **Rechnung:**
@@ -485,6 +550,11 @@ $$\\lim_{x \\to \\pm\\infty} \\frac{x^2}{x^2+1} = \\lim \\frac{1}{1 + 1/x^2} = 1
       '$f$ ist achsensymmetrisch zur y-Achse',
     ],
     correctIndex: 3,
+    wrongAnswerExplanations: {
+      0: 'Diese Aussage ist *korrekt*, die Frage sucht aber die falsche Aussage. Nachrechnung: $f\'(x)=3x^2-12=0 \\Rightarrow x=\\pm 2$, $f\'\'(-2)=-12<0$ $\\Rightarrow$ Max, $f(-2)=-8+24=16$. Also stimmt Aussage A.',
+      1: 'Diese Aussage ist ebenfalls *korrekt*. Nachrechnung: $f\'\'(2)=12>0$ $\\Rightarrow$ Min bei $x=2$, und $f(2)=8-24=-16$. Die Frage fordert aber die *falsche* Aussage — Aussage B ist wahr.',
+      2: 'Auch diese Aussage ist *korrekt*: $f\'\'(x)=6x=0 \\Rightarrow x=0$, $f\'\'\'(0)=6\\ne 0$ $\\Rightarrow$ Wendepunkt; $f(0)=0$, also bei $(0,0)$. Die falsche Aussage ist stattdessen D.',
+    },
     explanation: `**Ansatz:** Symmetrie testen, Extrema und Wendepunkt rechnen.
 
 **Symmetrie:** $f(-x) = -x^3 + 12x = -(x^3 - 12x) = -f(x)$ → **punktsymmetrisch zum Ursprung** (ungerade Funktion), **nicht** achsensymmetrisch. Aussage 4 ist falsch.
@@ -512,6 +582,11 @@ $$\\lim_{x \\to \\pm\\infty} \\frac{x^2}{x^2+1} = \\lim \\frac{1}{1 + 1/x^2} = 1
       '$x = 2$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Bei $x=0$ ist $f(0)=0\\cdot e^0 = 0$ — das ist der *Rand*wert, nicht das Maximum. Zum Maximum hin wächst $f$ erst an: $f(0{,}5)\\approx 0{,}30 > 0$. Das globale Maximum liegt im Inneren des Intervalls.',
+      2: '$x=e\\approx 2{,}72$ ist keine Kandidatenstelle: $f\'(e)=(1-e)e^{-e}<0$, dort fällt $f$ bereits. Vermutlich wurde „$e$" in der Funktion mit der Extremstelle verwechselt — die Eulerzahl $e$ hat hier aber nichts mit der Position zu tun.',
+      3: 'Bei $x=2$ ist $f\'(2)=(1-2)e^{-2}=-e^{-2}<0$ — also fällt $f$ hier schon. Das Maximum ist bei $x=1$ (dort ist $f\'=0$ und $f\'\'<0$); bei $x=2$ liegt sogar der *Wendepunkt* ($f\'\'(2)=0$).',
+    },
     explanation: `**Ansatz:** Produktregel für $f'$, $f''$ für Maximum-Test, Randverhalten für globalen Charakter.
 
 **Rechnung:**

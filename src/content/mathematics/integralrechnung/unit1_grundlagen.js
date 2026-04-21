@@ -24,6 +24,11 @@ export const exercises_int_u1 = {
       'Definition: $F$ heißt Stammfunktion von $f$, wenn $F\'(x) = f(x)$.',
       'Teste: Wenn du $F(x) = x^{2}$ ableitest, was bekommst du?',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast Stammfunktion und Ableitung verwechselt — das ist genau die umgekehrte Richtung. Die Ableitung von $f(x)$ ist $f\'(x)$; die Stammfunktion $F(x)$ erfüllt dagegen $F\'(x) = f(x)$. Beispiel: Für $f(x) = 2x$ ist $f\'(x) = 2$, aber $F(x) = x^{2}$.',
+      '2': 'Der Kehrwert $\\frac{1}{f(x)}$ ist eine rein algebraische Operation, die mit Integration nichts zu tun hat. Die Stammfunktion kommt aus dem Umkehren des Ableitens: $F\'(x) = f(x)$. Beispiel: Kehrwert von $f(x) = 2x$ ist $\\frac{1}{2x}$, aber die Stammfunktion ist $x^{2}$.',
+      '3': 'Die Nullstelle ist ein $x$-Wert, an dem $f(x) = 0$ ist — eine Zahl, keine Funktion. Die Stammfunktion ist dagegen eine ganze Funktion $F(x)$ mit $F\'(x) = f(x)$. Beispiel: $f(x) = 2x$ hat die Nullstelle $x = 0$, aber die Stammfunktion $F(x) = x^{2}$.',
+    },
   },
   'ex-int-1-1-b': {
     id: 'ex-int-1-1-b', lessonId: 'int-1-1', type: 'multiple-choice',
@@ -47,6 +52,11 @@ export const exercises_int_u1 = {
       'Denke an: $(F(x) + 7)\' = F\'(x) + 0 = f(x)$.',
       'Die Stammfunktion ist nicht eindeutig — die Familie $F(x) + C$ hat dieselbe Ableitung.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Das $C$ ist nur ein Buchstabe für eine beliebige reelle Konstante (von engl. "constant"), nicht für "Cosinus". Es steht, weil jede Konstante beim Ableiten verschwindet: $(F(x) + C)\' = F\'(x)$, also sind unendlich viele Stammfunktionen möglich.',
+      '2': '$C$ ist gerade nicht fest auf $0$ gesetzt, sondern steht stellvertretend für jede beliebige reelle Konstante. Würde $C = 0$ gelten, wäre $x^{2}$ die einzige Stammfunktion von $2x$ — aber auch $x^{2} + 5$ oder $x^{2} - 7$ haben die Ableitung $2x$.',
+      '3': 'Ein Anfangswert $F(x_{0}) = y_{0}$ legt $C$ erst bei zusätzlicher Bedingung fest — ohne Randbedingung bleibt $C$ beliebig. Die Grundaussage ist: $(F(x) + C)\' = f(x)$ für jedes $C$, deshalb muss man $C$ mitschreiben.',
+    },
   },
   'ex-int-1-1-c': {
     id: 'ex-int-1-1-c', lessonId: 'int-1-1', type: 'matching',
@@ -101,6 +111,11 @@ Beide $3x^{2}$ und $3x^{2} + 5$ sind Stammfunktionen — sie unterscheiden sich 
       'Vergiss nicht: die Integrationskonstante $C$ kann jeden Wert annehmen.',
       'Hinweis: $3x^{2}$ und $3x^{2} + 5$ sind beide korrekt.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Du hast übersehen, dass die Stammfunktion nie eindeutig ist — jede Konstante fällt beim Ableiten weg, also ist auch $3x^{2} + 5$ eine Stammfunktion. Allgemein: $\\int 6x\\,dx = 3x^{2} + C$ mit beliebigem $C \\in \\mathbb{R}$.',
+      '1': 'Beim Ableiten von $6x^{2}$ erhält man $12x$, nicht $6x$ — der Koeffizient wurde beim Integrieren nicht durch den neuen Exponenten geteilt. Potenzregel: $\\int 6x\\,dx = 6 \\cdot \\frac{x^{2}}{2} = 3x^{2} + C$.',
+      '2': 'Abgeleitet ergibt $x^{3}$ den Wert $3x^{2}$, nicht $6x$ — das wäre eine Stammfunktion von $3x^{2}$, nicht von $6x$. Richtig: Exponent von $6x^{1}$ auf $x^{2}$ erhöhen und durch $2$ teilen, also $3x^{2} + C$.',
+    },
   },
   'ex-int-1-1-mastery': {
     id: 'ex-int-1-1-mastery', lessonId: 'int-1-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -120,6 +135,11 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       'Leite jedes Glied einzeln: $(x^{n})\' = n \\cdot x^{n-1}$.',
       'Konstante $7$ fällt weg, $2x$ wird zu $2$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast $F$ integriert statt abgeleitet — genau die falsche Richtung. Aus einer Stammfunktion $F$ erhält man $f$ durch einmaliges Ableiten: $(x^{4})\' = 4x^{3}$, $(2x)\' = 2$, $(7)\' = 0$, also $f(x) = 4x^{3} + 2$.',
+      '2': 'Bei $(x^{4})\' = 4x^{4}$ hast du den Exponenten nicht um $1$ reduziert. Ableitungs-Potenzregel: $(x^{n})\' = n \\cdot x^{n-1}$, also $(x^{4})\' = 4x^{3}$ (nicht $4x^{4}$). Richtiges Ergebnis: $4x^{3} + 2$.',
+      '3': 'Die Konstante $7$ hast du korrekt weggelassen, aber $(2x)\' = 2$ — nicht $2x$. Merke: $(c \\cdot x)\' = c$, der Faktor bleibt, $x$ verschwindet. Richtig: $4x^{3} + 2$.',
+    },
   },
 
   // ── Lesson 2: Grundintegrale ──────────────────────────────────────────────
@@ -140,6 +160,11 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       'Potenzregel: Exponent um $1$ erhöhen, dann durch den neuen Exponenten teilen.',
       'Formel: $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1} + C$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Du hast zwar den Exponenten korrekt auf $4$ erhöht, aber vergessen, durch den neuen Exponenten zu teilen. Potenzregel: $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1} + C$, also $\\int x^{3}\\,dx = \\dfrac{x^{4}}{4} + C$ (nicht $x^{4} + C$).',
+      '2': 'Du hast abgeleitet statt integriert — $(x^{3})\' = 3x^{2}$. Beim Integrieren wird der Exponent aber um $1$ erhöht, nicht reduziert: $\\int x^{3}\\,dx = \\dfrac{x^{4}}{4} + C$.',
+      '3': 'Du hast durch den alten Exponenten $3$ geteilt statt durch den neuen Exponenten $n+1 = 4$. Regel: $\\int x^{n}\\,dx = \\dfrac{x^{n+1}}{n+1} + C$, also hier $\\dfrac{x^{4}}{4} + C$.',
+    },
   },
   'ex-int-1-2-b': {
     id: 'ex-int-1-2-b', lessonId: 'int-1-2', type: 'multiple-choice',
@@ -158,6 +183,11 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       'Erinnere dich: $(\\sin(x))\' = \\cos(x)$.',
       'Also ist $\\sin(x)$ Stammfunktion von $\\cos(x)$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast das Vorzeichen-Muster mit $\\int \\sin(x)\\,dx = -\\cos(x) + C$ vertauscht. Das Minus bekommt nur $\\int \\sin$, denn $(\\sin)\' = \\cos$ (ohne Vorzeichenwechsel), während $(\\cos)\' = -\\sin$. Richtig: $\\int \\cos(x)\\,dx = +\\sin(x) + C$.',
+      '2': 'Du hast abgeleitet ($(\\sin)\' = \\cos$, dann $(\\cos)\' = -\\sin$) — aber nicht $\\cos$ selbst hat als Stammfunktion $-\\cos$. Beim Integrieren von $\\cos$ gehst du zu der Funktion, deren Ableitung $\\cos$ ist: $(\\sin)\' = \\cos$, also $\\int \\cos(x)\\,dx = \\sin(x) + C$.',
+      '3': '$\\tan(x)$ ist keine Stammfunktion von $\\cos(x)$, sondern von $\\frac{1}{\\cos^{2}(x)}$ (da $(\\tan)\' = \\sec^{2}$). Die Stammfunktion von $\\cos$ findest du über $(\\sin)\' = \\cos$, also $\\int \\cos(x)\\,dx = \\sin(x) + C$.',
+    },
   },
   'ex-int-1-2-c': {
     id: 'ex-int-1-2-c', lessonId: 'int-1-2', type: 'multiple-choice',
@@ -176,6 +206,11 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       'Was ist dann ihre Stammfunktion?',
       'Probe: $(e^{x})\' = e^{x}$ — wende das rückwärts an.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Du hast die Potenzregel auf einen Exponentialausdruck angewendet — die gilt aber nur für $x^{n}$ (fester Exponent, variable Basis), nicht für $e^{x}$ (feste Basis, variabler Exponent). Für $e^{x}$ gilt $(e^{x})\' = e^{x}$, also $\\int e^{x}\\,dx = e^{x} + C$.',
+      '2': 'Durch $x$ dividieren entsteht hier aus falsch angewandter Potenzregel — die gilt aber nicht für $e^{x}$. Die Ableitung bzw. Stammfunktion der Exponentialfunktion ist die Funktion selbst: $\\int e^{x}\\,dx = e^{x} + C$.',
+      '3': 'Du hast den Logarithmus als "Umkehroperation" eingebracht — $\\ln(e^{x}) = x$ ist zwar eine Vereinfachung, hat aber nichts mit Integration zu tun. Richtig: $(e^{x})\' = e^{x}$, also $\\int e^{x}\\,dx = e^{x} + C$.',
+    },
   },
   'ex-int-1-2-d': {
     id: 'ex-int-1-2-d', lessonId: 'int-1-2', type: 'multiple-choice',
@@ -194,6 +229,11 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       'Sonderfall der Potenzregel — $n = -1$ geht nicht über $x^{n+1}/(n+1)$.',
       'Warum braucht man den Betrag? Damit es auch für negative $x$ gilt.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Mit der Potenzregel würde $\\int x^{-1}\\,dx = \\dfrac{x^{0}}{0}$ entstehen — das ist undefiniert, weil man nicht durch $0$ teilen darf. Genau deshalb ist $n = -1$ der Sonderfall, und es gilt $\\int \\frac{1}{x}\\,dx = \\ln|x| + C$.',
+      '1': 'Die Stammfunktion $\\ln(x)$ ist nur für $x > 0$ definiert, aber $\\frac{1}{x}$ existiert auch für $x < 0$. Deshalb braucht man den Betrag: $\\int \\frac{1}{x}\\,dx = \\ln|x| + C$ für alle $x \\neq 0$.',
+      '3': 'Du hast abgeleitet statt integriert: $\\left(\\frac{1}{x}\\right)\' = -\\frac{1}{x^{2}}$. Beim Integrieren brauchst du die Funktion, deren Ableitung $\\frac{1}{x}$ ist — das ist $\\ln|x|$, also $\\int \\frac{1}{x}\\,dx = \\ln|x| + C$.',
+    },
   },
   'ex-int-1-2-e': {
     id: 'ex-int-1-2-e', lessonId: 'int-1-2', type: 'matching',
@@ -236,6 +276,11 @@ $$F'(x) = (x^{4})' + (2x)' + (7)' = 4x^{3} + 2 + 0 = 4x^{3} + 2.$$
       '$(\\cos(x))\' = -\\sin(x)$, also muss ein Minuszeichen her.',
       'Probe: $(-\\cos(x))\' = \\sin(x)$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Du hast das Minuszeichen vergessen: $(\\cos(x))\' = -\\sin(x)$, also ist $\\cos(x)$ eine Stammfunktion von $-\\sin(x)$, nicht von $+\\sin(x)$. Richtig: $\\int \\sin(x)\\,dx = -\\cos(x) + C$.',
+      '2': 'Du hast $\\sin$ mit sich selbst als Stammfunktion genommen — das wäre nur richtig, wenn $(\\sin)\' = \\sin$ wäre, aber tatsächlich ist $(\\sin)\' = \\cos$. Richtig: $\\int \\sin(x)\\,dx = -\\cos(x) + C$.',
+      '3': '$(-\\sin(x))\' = -\\cos(x)$, nicht $\\sin(x)$ — also ist $-\\sin$ keine Stammfunktion von $\\sin$. Man braucht die Funktion, deren Ableitung $\\sin$ ergibt: $(-\\cos)\' = -(-\\sin) = \\sin$, also $\\int \\sin(x)\\,dx = -\\cos(x) + C$.',
+    },
   },
 
   // ── Lesson 3: Summenregel & Faktorregel ───────────────────────────────────
@@ -257,6 +302,11 @@ $$\\int (3x^{2} + 2x)\\,dx = 3 \\cdot \\frac{x^{3}}{3} + 2 \\cdot \\frac{x^{2}}{
       'Faktorregel: $\\int c \\cdot f(x)\\,dx = c \\cdot \\int f(x)\\,dx$.',
       'Danach kürzen: $3 \\cdot x^{3}/3 = x^{3}$, $2 \\cdot x^{2}/2 = x^{2}$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Du hast nur den Exponenten erhöht, aber nicht durch den neuen Exponenten geteilt. Potenzregel: $\\int 3x^{2}\\,dx = 3 \\cdot \\frac{x^{3}}{3} = x^{3}$ (nicht $3x^{3}$) und $\\int 2x\\,dx = 2 \\cdot \\frac{x^{2}}{2} = x^{2}$ (nicht $2x^{2}$).',
+      '2': 'Du hast abgeleitet statt integriert: $(3x^{2})\' = 6x$, $(2x)\' = 2$. Beim Integrieren wird der Exponent aber um $1$ erhöht, nicht reduziert: $\\int (3x^{2} + 2x)\\,dx = x^{3} + x^{2} + C$.',
+      '3': 'Rechnerisch ist $\\dfrac{3x^{3}}{3} + \\dfrac{2x^{2}}{2} = x^{3} + x^{2}$ gleich — aber Ergebnisse müssen vereinfacht werden (in Prüfungen Punktabzug). Kürze die Koeffizienten: $\\dfrac{3}{3} = 1$, $\\dfrac{2}{2} = 1$.',
+    },
   },
   'ex-int-1-3-b': {
     id: 'ex-int-1-3-b', lessonId: 'int-1-3', type: 'multiple-choice',
@@ -275,6 +325,11 @@ $$\\int (3x^{2} + 2x)\\,dx = 3 \\cdot \\frac{x^{3}}{3} + 2 \\cdot \\frac{x^{2}}{
       'Formel: $\\int c \\cdot f(x)\\,dx = c \\cdot \\int f(x)\\,dx$.',
       'Dann: $\\int \\cos(x)\\,dx = \\sin(x) + C$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast das Vorzeichen-Muster von $\\int \\sin(x)\\,dx = -\\cos(x) + C$ auf $\\cos$ übertragen. Aber nur beim Integrieren von $\\sin$ kommt ein Minus hinzu; $\\int \\cos(x)\\,dx = +\\sin(x)$, also $\\int 5\\cos(x)\\,dx = +5\\sin(x) + C$.',
+      '2': 'Du hast $\\cos$ unverändert gelassen — das wäre, als ob Integration nichts an $\\cos$ ändert. Tatsächlich ist $\\int \\cos(x)\\,dx = \\sin(x)$, mit Faktor: $\\int 5\\cos(x)\\,dx = 5\\sin(x) + C$.',
+      '3': 'Du hast den Faktor $5$ ins Argument von $\\sin$ verschoben — aber $5\\cos(x) \\neq \\cos(5x)$. Die $5$ ist konstanter Vorfaktor (Faktorregel): $\\int 5\\cos(x)\\,dx = 5 \\cdot \\int \\cos(x)\\,dx = 5\\sin(x) + C$.',
+    },
   },
   'ex-int-1-3-c': {
     id: 'ex-int-1-3-c', lessonId: 'int-1-3', type: 'number-input',
@@ -323,6 +378,11 @@ Zusammen: $e^{x} + 2\\cos(x) + 3x + C$.
       '$\\int \\sin(x)\\,dx = -\\cos(x)$, also $\\int (-2\\sin(x))\\,dx = +2\\cos(x)$.',
       '$\\int 3\\,dx = 3x$, nicht $3$ alleine.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast das doppelte Minuszeichen übersehen: $\\int \\sin(x)\\,dx = -\\cos(x)$, also $\\int (-2\\sin(x))\\,dx = -2 \\cdot (-\\cos(x)) = +2\\cos(x)$. Das Vorzeichen vor $\\cos$ muss $+$ sein, nicht $-$.',
+      '2': 'Du hast $\\int 3\\,dx$ als $-3x$ gerechnet — aber $\\int 3\\,dx = 3x + C$ (Konstante mal $x$, kein Vorzeichenwechsel). Außerdem scheint das Vorzeichen bei $\\cos$ korrekt zu sein; der Fehler liegt beim letzten Term.',
+      '3': 'Du hast $\\int e^{x}\\,dx = xe^{x}$ verwendet — das ist falsch ($xe^{x}$ ist Ergebnis einer partiellen Integration von $x \\cdot e^{x}$). Für $e^{x}$ selbst gilt $\\int e^{x}\\,dx = e^{x}$, also insgesamt $e^{x} + 2\\cos(x) + 3x + C$.',
+    },
   },
   'ex-int-1-3-mastery': {
     id: 'ex-int-1-3-mastery', lessonId: 'int-1-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -346,6 +406,11 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       'Potenzregel: $\\int x^{n}\\,dx = x^{n+1}/(n+1)$. Für $6x^{2}$: $6/3 = 2$ als neuer Koeffizient.',
       'Für $-4x$: $-4/2 = -2$. Und $\\int e^{x}\\,dx = e^{x}$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Du hast abgeleitet statt integriert: $(6x^{2})\' = 12x$, $(-4x)\' = -4$. Beim Integrieren wird der Exponent aber um $1$ erhöht und durch den neuen Exponenten geteilt, nicht reduziert. Richtig: $2x^{3} - 2x^{2} + e^{x} + C$.',
+      '2': 'Bei $-4x$ hast du nicht korrekt durch den neuen Exponenten $2$ geteilt: $\\int (-4x)\\,dx = -4 \\cdot \\dfrac{x^{2}}{2} = -2x^{2}$ (nicht $-4x^{2}$). Richtig: $2x^{3} - 2x^{2} + e^{x} + C$.',
+      '3': 'Bei $6x^{2}$ hast du nicht durch den neuen Exponenten $3$ geteilt: $\\int 6x^{2}\\,dx = 6 \\cdot \\dfrac{x^{3}}{3} = 2x^{3}$ (nicht $6x^{3}$). Richtig: $2x^{3} - 2x^{2} + e^{x} + C$.',
+    },
   },
 
   // ── Lesson 4: Das bestimmte Integral ──────────────────────────────────────
@@ -415,6 +480,11 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       'Im Grenzwert ergibt die Summe die genaue Fläche.',
       'Integration $\\leftrightarrow$ Fläche (für $f \\geq 0$).',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Du hast Steigung und Fläche verwechselt — Steigung ist die Ableitung $f\'(x)$ (gibt, wie schnell $f$ wächst), Fläche ist das Integral $\\int_{a}^{b} f(x)\\,dx$. Geometrisch misst das Integral die Fläche zwischen Graph und $x$-Achse.',
+      '2': 'Der Mittelwert von $f$ auf $[a,b]$ ist $\\dfrac{1}{b-a}\\int_{a}^{b} f(x)\\,dx$ — das Integral wird also noch durch die Intervalllänge geteilt. Das bloße Integral $\\int_{a}^{b} f(x)\\,dx$ ist die Fläche, nicht der Mittelwert.',
+      '3': 'Die Kurvenlänge hat eine eigene Formel: $L = \\int_{a}^{b}\\sqrt{1 + (f\'(x))^{2}}\\,dx$ (Bogenlängenintegral). Das reine Integral $\\int_{a}^{b} f(x)\\,dx$ misst dagegen die Fläche unter der Kurve.',
+    },
   },
   'ex-int-1-4-d': {
     id: 'ex-int-1-4-d', lessonId: 'int-1-4', type: 'number-input',
@@ -486,6 +556,11 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       'Welche Operationen? Ableiten und Integrieren.',
       'Formel: $\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Das ist keine Aussage des Hauptsatzes, und außerdem nicht allgemein wahr — nur differenzierbare Funktionen haben eine Ableitung. Der Hauptsatz besagt: $\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$ mit Stammfunktion $F$.',
+      '2': 'Das ist falsch — Ableitungen können negativ oder null sein (z.B. bei fallenden Funktionen). Der Hauptsatz trifft eine ganz andere Aussage: $\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$.',
+      '3': 'Nicht jedes Integral ist elementar berechenbar — z.B. $\\int e^{-x^{2}}\\,dx$ hat keine elementare Stammfunktion. Der Hauptsatz besagt lediglich die Formel $\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$, sofern $F$ bekannt ist.',
+    },
   },
   'ex-int-1-5-b': {
     id: 'ex-int-1-5-b', lessonId: 'int-1-5', type: 'multiple-choice',
@@ -504,6 +579,11 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       'Hier ist $f(t) = t^{2}$. Was ist also $F\'(x)$?',
       'Kontrolle: Zuerst integrieren, dann ableiten — beide Operationen heben sich auf.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Das ist $F(x)$ selbst (die Stammfunktion), nicht $F\'(x)$. Teil 1 des Hauptsatzes sagt: Ableitung und Integral heben sich auf, also $F\'(x) = f(x) = x^{2}$. Du hast einen Schritt zu wenig gemacht.',
+      '2': '$2x$ wäre $F\'\'(x)$, also die zweite Ableitung: Aus $F(x) = \\frac{x^{3}}{3}$ ergibt $F\'(x) = x^{2}$ und erst $F\'\'(x) = 2x$. Die Frage ist aber nach $F\'$, also $x^{2}$.',
+      '3': 'Die Ableitung $F\'(x) = 0$ würde bedeuten, dass $F$ konstant ist — aber $F(x) = \\int_{0}^{x} t^{2}\\,dt = \\frac{x^{3}}{3}$ ist nicht konstant. Nach dem Hauptsatz ist $F\'(x) = f(x) = x^{2}$.',
+    },
   },
   'ex-int-1-5-c': {
     id: 'ex-int-1-5-c', lessonId: 'int-1-5', type: 'multiple-choice',
@@ -527,6 +607,11 @@ Zusammen: $2x^{3} - 2x^{2} + e^{x} + C$.
       'Das Ergebnis ist die Ausgangsfunktion — beide Operationen heben sich auf.',
       'Also sind sie Umkehroperationen (invers).',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Das ist gerade das Gegenteil der Aussage des Hauptsatzes: Die beiden Operationen sind eng verknüpft, nicht unabhängig. Es gilt $\\dfrac{d}{dx}\\int_{a}^{x} f(t)\\,dt = f(x)$ — Ableitung und Integration heben sich gegenseitig auf.',
+      '2': 'Nicht jede Funktion ist integrierbar (z.B. nicht-messbare Funktionen sind es nicht), das folgt nicht aus dem Hauptsatz. Der Hauptsatz liefert nur: Für stetige $f$ gilt $\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$, und Integration + Differentiation sind Umkehroperationen.',
+      '3': 'Gerade das Gegenteil ist richtig: Teil 1 des Hauptsatzes garantiert, dass jede stetige Funktion eine Stammfunktion $F(x) = \\int_{a}^{x} f(t)\\,dt$ besitzt. Kernaussage: Integration und Differentiation sind invers zueinander.',
+    },
   },
   'ex-int-1-5-mastery': {
     id: 'ex-int-1-5-mastery', lessonId: 'int-1-5', type: 'number-input', isMasteryCheck: true,

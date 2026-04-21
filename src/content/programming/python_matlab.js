@@ -131,6 +131,11 @@ s = str(3.14)      # float → str
               correctIndex: 1,
               explanation: '`3.0` hat einen Dezimalpunkt, daher ist der Typ `float`.',
               hints: ['Achte auf den Dezimalpunkt.'],
+              wrongAnswerExplanations: {
+                "0": '`int` wäre korrekt bei `x = 3` ohne Dezimalpunkt. Sobald ein Punkt steht (auch `3.0`), erzeugt Python automatisch einen `float`. Regel: Zahlliteral ohne Punkt → `int`, mit Punkt → `float`.',
+                "2": '`str` gilt nur, wenn der Wert in Anführungszeichen steht, z.B. `x = "3.0"`. Ohne Quotes ist es eine Zahl. Der Dezimalpunkt macht es zum `float`, nicht zum Text.',
+                "3": '`double` ist der Matlab-/C-Name für Gleitkommazahlen. Python nennt diesen Typ `float` (intern ebenfalls 64-bit IEEE 754). Verwechslung mit anderen Sprachen: in Python heisst das Typ-Objekt `<class \'float\'>`.',
+              },
             },
             {
               type: 'multiple-choice',
@@ -139,6 +144,11 @@ s = str(3.14)      # float → str
               correctIndex: 1,
               explanation: '`True` und `False` sind vom Typ `bool`.',
               hints: ['True und False sind die beiden Wahrheitswerte in Python.'],
+              wrongAnswerExplanations: {
+                "0": 'Zwar ist `bool` intern eine Unterklasse von `int` (`True == 1`, `False == 0`), aber `type(True)` gibt die konkrete Klasse zurück, nicht die Basisklasse. `type()` liefert immer den genauesten Typ — hier `bool`.',
+                "2": '`str` käme nur bei Anführungszeichen heraus, also `type("True")`. Ohne Quotes ist `True` das Python-Schlüsselwort für den Wahrheitswert, nicht ein Text.',
+                "3": '`logical` ist der Matlab-Typname für Wahrheitswerte. Python nennt diesen Typ `bool` (nach George Boole). Typisch, wenn Matlab-Wissen unreflektiert auf Python uebertragen wird.',
+              },
             },
             {
               type: 'true-false',
@@ -199,6 +209,11 @@ s = str(3.14)      # float → str
               correctIndex: 2,
               explanation: '`2 ** 3 = 8`, dann `8 + 1 = 9`. Potenz wird vor Addition ausgewertet.',
               hints: ['Potenz hat höhere Priorität als Addition.'],
+              wrongAnswerExplanations: {
+                "0": '`7` entsteht durch $2^3 - 1$ — also durch Subtraktion statt Addition. Hier steht aber `+ 1`. Korrekt: $8 + 1 = 9$.',
+                "1": '`8` ist nur $2^3$, die `+ 1` wurde vergessen. Der ganze Ausdruck wird ausgewertet, nicht nur die Potenz. Regel: Zuerst Potenz, dann Addition.',
+                "3": '`16` entsteht, wenn man $2^{(3+1)} = 2^4 = 16$ rechnet. Das waere die Interpretation, wenn `+ 1` im Exponenten stuende. Ohne Klammer bindet `**` aber nur an die Zahl davor: $2^3 + 1$.',
+              },
             },
           ],
         },
@@ -267,6 +282,11 @@ mean(a)    % → 2.5
               correctIndex: 1,
               explanation: '`np.arange(1, 6)` erzeugt `[1, 2, 3, 4, 5]`. Der Endwert ist exklusiv!',
               hints: ['`arange` funktioniert ähnlich wie `range` — der Endwert ist nicht enthalten.'],
+              wrongAnswerExplanations: {
+                "0": '`np.array(1, 5)` gibt einen Fehler: `np.array` erwartet als erstes Argument eine Liste oder ein iterierbares Objekt, nicht zwei Einzelzahlen. Korrekt waere `np.array([1, 2, 3, 4, 5])`.',
+                "2": '`np.range` existiert in NumPy nicht. Die Funktion heisst `np.arange` (angelehnt an Pythons eingebautes `range`, aber fuer Arrays). Tippfehler aus Verwechslung mit Pythons `range`.',
+                "3": '`np.linspace(1, 5)` erzeugt standardmaessig 50 gleichverteilte Floats zwischen 1 und 5 — nicht die ganzen Zahlen 1..5. Fuer ganze Schritte passt `np.arange` besser.',
+              },
             },
           ],
         },
@@ -314,6 +334,11 @@ while n < 100:                  # while n < 100
               correctIndex: 1,
               explanation: '`range(3)` erzeugt 0, 1, 2 — drei Werte, startend bei 0.',
               hints: ['`range(n)` beginnt bei 0 und endet bei n-1.'],
+              wrongAnswerExplanations: {
+                "0": '`1 2 3` ist der Matlab-Denkansatz: dort startet die Indizierung bei 1. Python-`range(n)` startet dagegen bei 0 und liefert $0, 1, \\dots, n-1$. Anzahl Werte stimmt (3), aber der Start ist falsch.',
+                "2": '`0 1 2 3` sind 4 Werte und entspraechen `range(4)`. `range(3)` liefert genau 3 Werte, und der Endwert 3 ist exklusiv — also nicht enthalten.',
+                "3": '`1 2` waere `range(1, 3)` (Start bei 1, Stop exklusiv 3). Hier steht aber nur `range(3)` mit einem Argument: Start ist dann implizit 0.',
+              },
             },
             {
               type: 'true-false',
@@ -329,6 +354,11 @@ while n < 100:                  # while n < 100
               correctIndex: 1,
               explanation: '`range(1, 6)` gibt 1,2,3,4,5. In Matlab: `for i = 1:5` (Endwert inklusive).',
               hints: ['In Matlab ist der Endwert inklusive, in Python exklusiv.'],
+              wrongAnswerExplanations: {
+                "0": '`for i = 1:6` wuerde in Matlab die Werte $1, 2, 3, 4, 5, 6$ liefern — einen zu viel. Der Unterschied: Matlab ist End-inklusiv, Python-`range(1,6)` End-exklusiv, liefert also nur bis 5.',
+                "2": '`for i = 0:5` beginnt in Matlab bei 0 — das widerspricht `range(1, 6)`, das bei 1 startet. Auch passt Matlabs 1-basierte Konvention nicht zu Index 0 als Startwert fuer Arrays.',
+                "3": '`for i in 1:5` ist Python-Syntax (`in`) mit Matlab-Range-Schreibweise vermischt. Matlab nutzt `=` statt `in`. Korrekte Matlab-Schleife: `for i = 1:5`.',
+              },
             },
           ],
         },
@@ -380,6 +410,11 @@ quadrat(5)  % → 25
               correctIndex: 2,
               explanation: '`kraft(5)` nutzt den Standardwert `a=9.81`: 5 × 9.81 = 49.05.',
               hints: ['Wenn `a` nicht angegeben wird, wird der Standardwert verwendet.'],
+              wrongAnswerExplanations: {
+                "0": '`5` ist nur der uebergebene Wert fuer `m`, ohne jede Rechnung. Die Funktion fuehrt aber `return m * a` aus — hier mit Default `a=9.81` also $5 \\cdot 9{,}81$.',
+                "1": '`9.81` ist der Default-Wert von `a` alleine. Die Multiplikation $m \\cdot a$ wird tatsaechlich ausgefuehrt. Ergebnis: $5 \\cdot 9{,}81 = 49{,}05$.',
+                "3": 'Kein Fehler: Default-Parameter erlauben den Aufruf mit weniger Argumenten. `kraft(5)` ist voellig legal, weil `a` einen Standardwert hat. Nur ohne Default waere `kraft(5)` ein `TypeError`.',
+              },
             },
             {
               type: 'multiple-choice',
@@ -388,6 +423,11 @@ quadrat(5)  % → 25
               correctIndex: 0,
               explanation: 'In Matlab: `@(x)` definiert eine anonyme Funktion mit Parameter `x`.',
               hints: ['Matlab nutzt das `@`-Symbol für anonyme Funktionen.'],
+              wrongAnswerExplanations: {
+                "1": '`lambda x: ...` ist Python-Syntax fuer Lambda-Ausdruecke. Matlab kennt kein `lambda`-Keyword; dort uebernimmt `@(x)` diese Rolle.',
+                "2": '`def ... = ...` existiert in keiner der beiden Sprachen. Python nutzt `def f(x): return ...` (mit Body), Matlab nutzt `function` oder `@(x)`. Hier sind zwei Syntaxen vermischt.',
+                "3": '`function f = sin(x)/x` ist keine gueltige Matlab-Funktionsdefinition. Eine richtige Matlab-Funktion braucht Kopfzeile, `end` und einen Dateinamen — oder man nimmt die kompakte anonyme Form `@(x) sin(x)/x`.',
+              },
             },
             {
               type: 'true-false',
@@ -445,6 +485,11 @@ r = np.arange(0, 2*np.pi, 0.01)   # wie range, aber für floats
               correctIndex: 1,
               explanation: '`np.eye(3)` erzeugt die 3×3 Einheitsmatrix (1 auf Diagonale, 0 sonst).',
               hints: ['eye = I = Identitätsmatrix'],
+              wrongAnswerExplanations: {
+                "0": '`np.ones((3,3))` erzeugt eine $3 \\times 3$-Matrix, die ueberall den Wert $1$ hat — nicht nur auf der Diagonale. Die Einheitsmatrix hat dagegen $1$ auf der Hauptdiagonale und $0$ sonst.',
+                "2": '`np.identity(3)` waere zwar korrekt, aber hier steht `np.identity((3,3))` mit einem Tupel. Die Funktion erwartet nur eine Zahl (die Groesse), weil die Einheitsmatrix immer quadratisch ist. Mit Tupel gibt es einen Fehler.',
+                "3": '`np.unit` existiert in NumPy nicht. Der Name der Einheitsmatrix-Funktion ist `np.eye` (englisch "I" fuer Identity) oder `np.identity`. Wahrscheinlich aus der Uebersetzung "Einheit" entstanden.',
+              },
             },
             {
               type: 'true-false',
@@ -460,6 +505,11 @@ r = np.arange(0, 2*np.pi, 0.01)   # wie range, aber für floats
               correctIndex: 1,
               explanation: '`linspace` funktioniert in beiden Sprachen gleich — Startpunkt, Endpunkt, Anzahl Punkte.',
               hints: ['Diese Funktion heißt in beiden Sprachen gleich.'],
+              wrongAnswerExplanations: {
+                "0": 'In Matlab existiert `arange` gar nicht — das ist eine NumPy-spezifische Funktion. Zudem waere bei `arange` das dritte Argument die Schrittweite, nicht die Anzahl Punkte.',
+                "2": '`range` gibt es in Matlab nicht als Vektorerzeuger. Matlab nutzt entweder `linspace(start, stop, n)` oder die Colon-Syntax `start:schritt:stop`.',
+                "3": '`0:0.01:2*pi` erzeugt zwar ebenfalls einen Vektor, aber mit fester Schrittweite $0{,}01$ und resultiert in ca. $629$ Punkten — nicht genau $100$. `linspace` garantiert dagegen exakt $100$ gleichverteilte Werte.',
+              },
             },
           ],
         },
@@ -516,6 +566,11 @@ grid on
               correctIndex: 1,
               explanation: '`plt.legend()` zeigt die Legende an (Labels aus den `label`-Parametern).',
               hints: ['Der Befehl heißt auch in Matlab so.'],
+              wrongAnswerExplanations: {
+                "0": '`plt.label()` existiert so nicht. Es gibt `plt.xlabel()` / `plt.ylabel()` fuer Achsenbeschriftungen, aber nicht `plt.label()`. Legende und Achsenbeschriftung sind unterschiedliche Konzepte.',
+                "2": '`plt.annotate()` setzt einzelne Textmarkierungen mit Pfeil an einen Punkt im Plot — fuer Hinweise auf eine bestimmte Stelle. Die Gesamtliste der Kurven-Labels liefert dagegen `plt.legend()`.',
+                "3": '`plt.describe()` existiert nicht. Verwechslung mit `df.describe()` aus Pandas (Statistik-Zusammenfassung). Fuer die Legende im Plot ist `plt.legend()` zustaendig.',
+              },
             },
             {
               type: 'sorting',
@@ -585,6 +640,11 @@ Matlab: \`fminunc(@(x) (x(1)-1)^2 + (x(2)-2.5)^2, [0, 0])\`
               correctIndex: 1,
               explanation: '`np.linalg.solve(A, b)` löst das System direkt (effizienter als Inverse berechnen).',
               hints: ['Die lineare Algebra-Funktionen sind in `np.linalg`.'],
+              wrongAnswerExplanations: {
+                "0": '`np.solve` existiert nicht direkt im Top-Level-Namensraum von NumPy. Alle linearen-Algebra-Funktionen liegen im Untermodul `np.linalg`. Richtig: `np.linalg.solve(A, b)`.',
+                "2": '`np.inv(A) * b` hat mehrere Probleme: `np.inv` existiert nicht (korrekt waere `np.linalg.inv`), und `*` ist elementweise, nicht Matrix-mal-Vektor (das waere `@`). Ausserdem ist die Inverse zu berechnen numerisch schlechter konditioniert als `solve`.',
+                "3": '`scipy.solve` gibt es so nicht als Top-Level-Funktion. Man muesste `scipy.linalg.solve(A, b)` schreiben. Fuer dichte Systeme reicht aber `np.linalg.solve` voellig.',
+              },
             },
             {
               type: 'multiple-choice',
@@ -593,6 +653,11 @@ Matlab: \`fminunc(@(x) (x(1)-1)^2 + (x(2)-2.5)^2, [0, 0])\`
               correctIndex: 1,
               explanation: 'Der Backslash-Operator `A \\ b` ist Matlabs elegantester Weg für lineare Systeme.',
               hints: ['Matlab hat einen speziellen Operator dafür.'],
+              wrongAnswerExplanations: {
+                "0": '`solve` gibt es in Matlab nur in der Symbolic Toolbox fuer symbolische Gleichungen, nicht fuer numerische Matrizen. Fuer $Ax = b$ numerisch: `A \\ b`.',
+                "2": '`inv(A) * b` rechnet zwar dasselbe Resultat, ist aber numerisch weniger stabil (Inverse wird vollstaendig aufgestellt, mehr Rundungsfehler). Matlab warnt explizit und empfiehlt `A \\ b`.',
+                "3": '`linsolve(A, b)` existiert zwar in Matlab, ist aber eine Low-Level-Variante fuer bestimmte Systeme mit vorausgewaehltem Loesungsverfahren. Der Standard-Weg ist der Backslash-Operator `A \\ b`.',
+              },
             },
             {
               type: 'true-false',
@@ -650,6 +715,11 @@ Matlab: \`[t, y] = ode45(@(t,y) schwinger(t, y, m, d, k), [0 20], [1; 0])\`
               correctIndex: 1,
               explanation: '`quad` berechnet $\\int f(x)\\,dx$ numerisch mit adaptiver Quadratur.',
               hints: ['quad = Quadratur = numerische Integration'],
+              wrongAnswerExplanations: {
+                "0": '`scipy.integrate.solve` existiert nicht. "Solve" klingt nach Gleichungsloeser; fuer die Integration heisst die Funktion `quad` (von "Quadratur"). Verwechslung mit `scipy.linalg.solve`.',
+                "2": '`trapz` (Trapezregel) integriert nur vorgegebene Stuetzstellen $y_i$ — kein kontinuierliches $f(x)$. Das ist ein Spezialfall fuer bereits gesampelte Daten. Fuer eine analytisch definierte Funktion `f(x)` passt `quad` besser (hoehere Ordnung, adaptiv).',
+                "3": '`odeint` loest gewoehnliche Differentialgleichungen (ODE) als Anfangswertproblem, nicht bestimmte Integrale. Auch wenn Integration und ODE verwandt sind: Fuer reines $\\int f(x)\\,dx$ ist `quad` das richtige Werkzeug.',
+              },
             },
             {
               type: 'true-false',
@@ -665,6 +735,11 @@ Matlab: \`[t, y] = ode45(@(t,y) schwinger(t, y, m, d, k), [0 20], [1; 0])\`
               correctIndex: 1,
               explanation: '`ode45` ist der Standard-ODE-Solver in Matlab (Runge-Kutta 4/5).',
               hints: ['Der meistgenutzte ODE-Solver in Matlab.'],
+              wrongAnswerExplanations: {
+                "0": '`ode23` existiert zwar in Matlab (Bogacki–Shampine, niedrigere Ordnung), ist aber nicht der Standard. Man nutzt ihn nur bei sehr groben Toleranzen oder wenn `ode45` scheitert. Standard ist `ode45`.',
+                "2": '`dsolve` loest DGL **symbolisch** (analytisch, wenn moeglich) — Symbolic Toolbox. `solve_ivp` ist jedoch ein **numerischer** Solver. Entsprechend ist `ode45` das richtige numerische Gegenstueck.',
+                "3": '`integrate` gibt es so nicht in Matlab als ODE-Funktion (nur `integral` fuer bestimmte Integrale). Fuer Anfangswertprobleme ist `ode45` der Standardname.',
+              },
             },
           ],
         },
@@ -745,6 +820,11 @@ subplot(1,2,2); plot(x, sigma/1e6); title('Spannung');
               correctIndex: 1,
               explanation: 'Elementweise Operationen erlauben es, ganze Spannungsverteilungen in einer Zeile zu berechnen.',
               hints: ['Was passiert, wenn man ein Array durch eine Zahl teilt?'],
+              wrongAnswerExplanations: {
+                "0": 'Symbolisches Rechnen bietet SymPy, nicht NumPy. NumPy arbeitet rein numerisch auf Gleitkommazahlen. Fuer schnelle Spannungsverteilungen reicht numerisch — daher sind vektorisierte Array-Ops das entscheidende Feature.',
+                "2": 'NumPy hat keine eingebaute Einheitenverwaltung. Einheiten muss man manuell konsistent fuehren (alles in SI) oder Zusatzpakete wie `pint` nutzen. Die Effizienzstaerke liegt in der Vektorisierung.',
+                "3": 'Machine Learning ist Domaene von scikit-learn, PyTorch oder TensorFlow — nicht direkt NumPy. Festigkeitsberechnungen sind deterministische Formeln; der Effizienzhebel hier ist, Arrays statt Schleifen zu verwenden.',
+              },
             },
             {
               type: 'true-false',
@@ -810,6 +890,11 @@ Matlab: \`p = polyfit(zeit, kraft, 2); plot(zeit, polyval(p, zeit))\``,
               correctIndex: 1,
               explanation: 'Pandas bietet DataFrames — ideal für spaltenbasierte Messdaten mit Headern.',
               hints: ['Welche Bibliothek hat DataFrames?'],
+              wrongAnswerExplanations: {
+                "0": 'NumPy ist der Unterbau (homogene numerische Arrays), aber fuer Tabellen mit Spaltennamen, gemischten Datentypen und CSV-Headern ist es zu rudimentaer. Pandas setzt auf NumPy auf und ergaenzt DataFrame-Komfort.',
+                "2": 'SciPy ist ein Sammelpaket fuer wissenschaftliche Algorithmen (Optimierung, Integration, Statistik). Fuer das blosse Einlesen und Verwalten tabellarischer Messdaten ist es nicht das richtige Werkzeug — das macht Pandas.',
+                "3": 'Matplotlib visualisiert nur Daten, es verwaltet sie nicht. Zum Plotten greift man auf DataFrames aus Pandas (oder NumPy-Arrays) zurueck.',
+              },
             },
             {
               type: 'sorting',
@@ -893,6 +978,11 @@ plt.legend(); plt.grid(True); plt.show()
               correctIndex: 2,
               explanation: 'Bei Resonanz überträgt die Anregung maximal Energie → maximale Amplitude.',
               hints: ['Resonanz ist ein kritischer Zustand für Ingenieure.'],
+              wrongAnswerExplanations: {
+                "0": 'Das System steht gerade nicht still — im Gegenteil: Bei Resonanz wird es maximal angeregt. Stillstand kaeme nur bei vollstaendiger Ausloeschung der Anregung heraus (Antiresonanz in gekoppelten Systemen).',
+                "1": 'Minimale Amplitude tritt bei $\\Omega$ weit entfernt von $\\omega_0$ auf (sehr tiefe oder sehr hohe Frequenz). Bei $\\Omega \\approx \\omega_0$ wird durch konstruktive Einkopplung maximal Energie zugefuehrt, Amplitude waechst.',
+                "3": 'Die Anregungsfrequenz bleibt $\\Omega$, nichts verdoppelt sich. Verwechslung evtl. mit Oberwellen in nichtlinearen Systemen. Im linearen Schwinger bestimmt nur die Amplitude das Resonanzverhalten.',
+              },
             },
             {
               type: 'number-input',
@@ -948,6 +1038,11 @@ plt.legend(); plt.grid(True); plt.show()
               correctIndex: 1,
               explanation: '`x^2` versucht Matrixquadrierung. Für elementweise Potenz: `x.^2`.',
               hints: ['Was passiert, wenn man ^ auf einen Vektor anwendet?'],
+              wrongAnswerExplanations: {
+                "0": 'Der `plot`-Befehl ist syntaktisch korrekt (`plot(x, y)`). Problem liegt in der vorherigen Zeile — `y` wird wegen `^` gar nicht richtig berechnet. Der Plotbefehl selbst ist unschuldig.',
+                "2": 'Transponieren hilft hier nicht: Selbst $x^T \\cdot x$ waere ein Skalar, nicht der Vektor $[1, 4, 9, 16, 25]$. Der Fehler ist die Operatorwahl, nicht die Vektororientierung.',
+                "3": 'Das Semikolon unterdrueckt nur die Ausgabe — ohne wuerde Matlab Zwischenwerte anzeigen, aber keinen Rechenfehler erzeugen. Der tatsaechliche Fehler ist `^` statt `.^` (Matrix- vs. elementweise Potenz).',
+              },
             },
             {
               type: 'number-input',
@@ -965,6 +1060,11 @@ plt.legend(); plt.grid(True); plt.show()
               correctIndex: 1,
               explanation: 'Der Backslash-Operator in Matlab löst Ax=b. In NumPy: `np.linalg.solve(A, b)`.',
               hints: ['Was löst A\\b in Matlab?'],
+              wrongAnswerExplanations: {
+                "0": '`A / b` ist in NumPy elementweise Division und entspricht Matlab `A ./ b` oder `A / b` (Rechtsdivision $A \\cdot b^{-1}$). Das ist nicht dasselbe wie das Loesen eines linearen Gleichungssystems.',
+                "2": '`np.divide(A, b)` macht elementweise Division — also dasselbe wie `A / b`. Fuer das Gleichungssystem $A x = b$ braucht es `np.linalg.solve`.',
+                "3": '`A ** (-1) @ b` rechnet erst die Inverse mit `**(-1)` (was bei Matrizen in NumPy gar nicht die Matrixinverse liefert, sondern elementweise `1/A`) und multipliziert dann. Selbst mit korrekter Inversen waere dieser Weg numerisch ungenauer als `solve`.',
+              },
             },
             {
               type: 'number-input',
@@ -998,6 +1098,11 @@ plt.legend(); plt.grid(True); plt.show()
               correctIndex: 1,
               explanation: 'solve_ivp (Initial Value Problem) ist die Standard-Funktion für gewöhnliche DGL in SciPy.',
               hints: ['IVP = Initial Value Problem.'],
+              wrongAnswerExplanations: {
+                "0": '`scipy.optimize.fsolve` findet Nullstellen einer Funktion $f(x) = 0$ — das ist ein algebraisches Problem, keine DGL. Fuer Differentialgleichungen braucht es einen Integrator wie `solve_ivp`.',
+                "2": '`scipy.linalg.solve` loest lineare Gleichungssysteme $Ax = b$ — also ein algebraisches, kein dynamisches Problem. ODEs beschreiben zeitliche Entwicklung und brauchen `solve_ivp`.',
+                "3": '`scipy.signal.ode` existiert nicht. Das Signal-Modul von SciPy enthaelt Filter, Transformationen und Systemanalyse, aber keine ODE-Solver. Letztere liegen im `scipy.integrate`-Modul.',
+              },
             },
             {
               type: 'number-input',
@@ -1015,6 +1120,11 @@ plt.legend(); plt.grid(True); plt.show()
               correctIndex: 2,
               explanation: 'Bei NumPy-Arrays: * multipliziert elementweise, @ führt Matrixmultiplikation durch.',
               hints: ['Denke an A * B vs A @ B für 2D-Arrays.'],
+              wrongAnswerExplanations: {
+                "0": 'Es gibt einen fundamentalen Unterschied: `*` arbeitet Element-fuer-Element, `@` fuehrt das lineare Algebra-Matrixprodukt aus. Bei gleicher Form koennen die Ergebnisse voellig verschieden sein.',
+                "1": 'Genau vertauscht: In NumPy ist `*` elementweise, `@` ist Matrixmultiplikation. Diese Verwechslung kommt haeufig aus Matlab, wo `*` die Matrixmultiplikation ist und `.*` die elementweise Variante.',
+                "3": '`@` funktioniert gerade nicht nur mit Skalaren — es ist fuer Matrixprodukte gedacht. Fuer Skalare gibt es keinen Unterschied zwischen `*` und `@`; relevant wird es erst bei 2D-Arrays.',
+              },
             },
           ],
         },

@@ -1,5 +1,14 @@
-function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined) {
-  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints, ...(visualization ? { visualization } : {}) }
+function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined, wrongAnswerExplanations = undefined) {
+  return {
+    type: 'multiple-choice',
+    question,
+    options,
+    correctIndex,
+    explanation,
+    hints,
+    ...(visualization ? { visualization } : {}),
+    ...(wrongAnswerExplanations ? { wrongAnswerExplanations } : {}),
+  }
 }
 
 function ni(question, correctValue, tolerance, unit, explanation, hints = [], visualization = undefined) {
@@ -31,12 +40,12 @@ function withExamPrefix(exercise, exam) {
 
 function bank(profile) {
   const exercises = [
-    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization),
+    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization, profile.conceptWrongAnswers),
     ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints, profile.calcVisualization),
     tf(profile.trueFalseStatement, profile.trueFalseCorrect, profile.trueFalseExplanation, profile.trueFalseHints),
     matching(profile.matchingQuestion, profile.matchingPairs, profile.matchingExplanation, profile.matchingHints),
     sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints),
-    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints),
+    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints, undefined, profile.errorWrongAnswers),
     ni(profile.transferQuestion, profile.transferAnswer, profile.transferTolerance, profile.transferUnit, profile.transferExplanation, profile.transferHints),
   ]
   return exercises.map((exercise) => withExamPrefix(exercise, profile.exam))
@@ -71,6 +80,11 @@ $$i = \frac{z_2}{z_1} = \frac{n_1}{n_2} = \frac{M_2}{M_1}$$
       'Mehr Zähne am Abtrieb → langsamere Drehzahl.',
       '$n_2 = n_1/i$, $M_2 = M_1 \\cdot i$.',
     ],
+    conceptWrongAnswers: {
+      1: 'Umgekehrt: Mehr Zähne am Abtrieb ($z_2 > z_1$) bedeutet langsamer, nicht schneller. $n_2 = n_1/i$ mit $i = 4 > 1$, also $n_2 < n_1$.',
+      2: 'Drehzahlen wären nur bei $i = 1$ gleich ($z_1 = z_2$). Bei $z_2 = 4 z_1$ gilt $n_2 = n_1/4$, deutlich langsamer.',
+      3: 'Zahnräder haben sehr wohl Drehzahlen — das ist ihr Zweck: Drehzahl übertragen und übersetzen. Ohne Drehzahlkonzept gäbe es keine Zahnradkinematik.',
+    },
 
     calcQuestion: 'Zahnradpaar: $z_1 = 25$ (Antrieb), $z_2 = 75$. Antriebsdrehmoment $M_1 = 10$ Nm. Wie groß ist $M_2$ in Nm (verlustfrei)?',
     calcAnswer: 30,
@@ -131,6 +145,11 @@ $$i = \frac{z_2}{z_1} = \frac{n_1}{n_2} = \frac{M_2}{M_1}$$
       'Untersetzung = Abtrieb langsamer.',
       'Invers proportional: $n_1 \\cdot z_1 = n_2 \\cdot z_2$.',
     ],
+    errorWrongAnswers: {
+      1: 'Die Drehzahl ändert sich bei $i \\neq 1$ zwingend — sonst wäre keine Übersetzung vorhanden. $n_1 = n_2$ gälte nur bei $i = 1$.',
+      2: '$n_1 \\cdot n_2 \\neq $ const. Erhalten ist $n \\cdot z$ (Kontinuität der Verzahnung) bzw. bei Leistungserhaltung $M \\cdot n$. Produkt der Drehzahlen hat keine physikalische Bedeutung.',
+      3: 'Umgekehrt: Das Drehmoment wird bei Untersetzung mit $i$ multipliziert ($M_2 = i \\cdot M_1 = 3 M_1$), nicht geteilt. Das ist der Vorteil der Untersetzung.',
+    },
 
     transferQuestion: 'Antriebsmotor: $P = 5{,}5$ kW bei $n_1 = 1450$ 1/min. Übersetzung $i = 10$. Wie groß ist $M_2$ am Abtrieb in Nm (verlustfrei)?',
     transferAnswer: 362.3,
@@ -184,6 +203,11 @@ $$i = \frac{z_2}{z_1} = \frac{n_1}{n_2} = \frac{M_2}{M_1}$$
       'Antriebswellen tragen Drehmoment und Querkräfte gleichzeitig.',
       'Vergleichsspannung kombiniert Einzelspannungen.',
     ],
+    conceptWrongAnswers: {
+      1: 'Biegung und Torsion sind voneinander unabhängige Beanspruchungen — Torsion entsteht aus Drehmoment, Biegung aus Querkräften. Biegung kann auch ohne Torsion auftreten (z.B. reiner Biegebalken).',
+      2: 'Der kombinierte Nachweis hat physikalisch fundierten Grund: Beide Spannungen wirken gleichzeitig an derselben Faser. Die Von-Mises-Hypothese ist experimentell und theoretisch fundiert.',
+      3: 'Wellen sind primär auf Torsion und Biegung belastet, nicht auf Zug. Zugspannung ist meist untergeordnet oder gar nicht vorhanden. Ignorieren würde zu Versagen führen.',
+    },
 
     calcQuestion: 'Welle ($d = 40$ mm) mit Biegespannung $\\sigma_b = 60$ MPa und Torsionsspannung $\\tau_t = 30$ MPa. Wie groß ist $\\sigma_v$ (Von Mises) in MPa?',
     calcAnswer: 79.4,
@@ -244,6 +268,11 @@ $$i = \frac{z_2}{z_1} = \frac{n_1}{n_2} = \frac{M_2}{M_1}$$
       'Axial $W$ vs. polar $W_p$.',
       '$W_p = 2 \\cdot W$ für Vollkreis.',
     ],
+    errorWrongAnswers: {
+      1: 'Die Formel $W = \\pi d^3/32$ ist für Biegung korrekt (axiales Widerstandsmoment). Der Fehler ist die Anwendung auf Torsion, wo $W_p = \\pi d^3/16$ gilt.',
+      2: 'Das Ergebnis muss geteilt werden, nicht verdoppelt — weil $W_p$ doppelt so groß ist wie $W$, liefert der falsche Ansatz doppelt so große Spannungen. Also halbieren.',
+      3: 'Die Einheit $mm^3$ ist für ein Widerstandsmoment korrekt. Das Problem ist die Verwechslung $W$ vs. $W_p$, nicht die Dimension.',
+    },
 
     transferQuestion: 'Welle ($d = 30$ mm) überträgt $M_t = 150$ Nm. Wie groß ist die Torsionsspannung in MPa?',
     transferAnswer: 28.3,
@@ -282,6 +311,11 @@ mit Reibungsbeiwert-Koeffizient $K \approx 0{,}2$ (geölt: 0,12). $d$ ist der Ne
       'Ohne Vorspannung keine dauerhafte Klemmung.',
       'Setzung und Wechsellasten reduzieren die Vorspannung über die Zeit.',
     ],
+    conceptWrongAnswers: {
+      1: 'Ästhetik spielt bei technischer Funktion keine Rolle. Die Vorspannkraft hat genau definierte mechanische Aufgaben: Klemmkraft erzeugen und Setzverluste kompensieren.',
+      2: 'Wenn der Kopf abreißt, wurde zu VIEL angezogen (über Streckgrenze hinaus). Zu WENIG Vorspannung führt zum Lockern, nicht zum Abreißen.',
+      3: 'Das Anziehdrehmoment ist gerade der zentrale Parameter: Es erzeugt die Vorspannung ($M_A \\approx K \\cdot F_V \\cdot d$). Ohne definiertes Drehmoment keine kontrollierte Vorspannkraft.',
+    },
 
     calcQuestion: 'Eine Schraube M10 ($d = 10$ mm) soll mit $F_V = 20000$ N vorgespannt werden. Reibungsbeiwert $K = 0{,}2$. Wie groß ist das Anziehdrehmoment in Nm?',
     calcAnswer: 40,
@@ -343,6 +377,11 @@ mit Reibungsbeiwert-Koeffizient $K \approx 0{,}2$ (geölt: 0,12). $d$ ist der Ne
       'Gewinde reduziert die tragende Fläche.',
       'Immer $A_s$ aus der Normtabelle.',
     ],
+    errorWrongAnswers: {
+      1: '$F_V = 30000$ N ist für M12 ein typischer Wert (Vorspannung bei Festigkeitsklasse 8.8 bis ca. 40 kN). Der Fehler liegt bei der Fläche, nicht bei der Kraft.',
+      2: 'Die Nennfläche $\\pi d^2/4 \\approx 113$ $mm^2$ ist die Vollquerschnittsfläche ohne Gewinde. Für Schrauben wird aber stets der Spannungsquerschnitt $A_s$ verwendet, der kleiner ist.',
+      3: 'Die Streckgrenze ist gerade das Kriterium für die Festigkeitsklasse. Ohne Bezug zur Streckgrenze ließe sich keine sichere Vorspannung definieren.',
+    },
 
     transferQuestion: 'Eine Schraube M8 ($d = 8$ mm, $A_s = 36{,}6$ $mm^2$, Festigkeitsklasse 8.8 mit $R_e = 640$ MPa) soll mit 70 % Ausnutzung der Streckgrenze vorgespannt werden. Wie groß ist $F_V$ in N?',
     transferAnswer: 16397,
@@ -384,6 +423,11 @@ Bei $n$ Stufen und gleicher Einzelübersetzung $i_\text{Stufe}$: $i_{ges} = i_\t
       'Mehrstufig: multiplikativ, nicht additiv.',
       'Denk physikalisch: Drehzahlen multiplizieren sich invers.',
     ],
+    conceptWrongAnswers: {
+      1: 'Übersetzungen werden multipliziert, nicht addiert. Bei mehrstufigen Getrieben wirkt jede Stufe auf die bereits reduzierte Drehzahl der vorhergehenden: $n_{aus} = n_{ein}/(i_1 \\cdot i_2)$.',
+      2: 'Arithmetisches Mittel hat keine kinematische Bedeutung. Die Gesamtübersetzung ist das Produkt: $i_1 \\cdot i_2 = 4 \\cdot 5 = 20$.',
+      3: 'Geometrisches Mittel kommt im Kontext der Stufenverteilung vor (optimale Einzelübersetzung $\\sqrt[n]{i_{ges}}$), nicht als Gesamtübersetzung. Die Gesamtübersetzung ist das Produkt.',
+    },
 
     calcQuestion: 'Dreistufiges Getriebe mit $i_1 = i_2 = i_3 = 3$. Wie groß ist $i_{ges}$?',
     calcAnswer: 27,
@@ -445,6 +489,11 @@ Bei $n$ Stufen und gleicher Einzelübersetzung $i_\text{Stufe}$: $i_{ges} = i_\t
       'Mehrstufig = Verkettung der Reduzierungen.',
       'Multiplikation, nicht Addition.',
     ],
+    errorWrongAnswers: {
+      1: 'Addition liefert kein gültiges Übersetzungsverhältnis. Kinematisch muss die Drehzahlreduktion multiplikativ sein: $n_{aus} = n_{ein}/(i_1 \\cdot i_2)$.',
+      2: '$i_1$ und $i_2$ können gleich oder verschieden sein — beides ist erlaubt. Die Wahl richtet sich nach Bauraum und Wirkungsgrad, nicht nach einer Gleichheitsvorgabe.',
+      3: 'Zweistufige Getriebe sind Standard im Maschinenbau (z.B. Getriebemotoren). Sehr wohl möglich. Der Fehler ist die falsche Verknüpfung der Einzelübersetzungen.',
+    },
 
     transferQuestion: 'Zweistufiges Getriebe: Eingangsdrehzahl $n_{ein} = 1500$ 1/min, $i_{ges} = 15$. Wie groß ist die Ausgangsdrehzahl in 1/min?',
     transferAnswer: 100,
@@ -488,6 +537,11 @@ Bei $n$ Stufen und gleicher Einzelübersetzung $i_\text{Stufe}$: $i_{ges} = i_\t
       'Drehzahl zuerst in 1/s umrechnen.',
       '$P = M \\cdot 2\\pi n$ mit $n$ in 1/s.',
     ],
+    conceptWrongAnswers: {
+      1: 'Multiplikation statt Division und keine $\\omega$-Beziehung. Aus $P = M \\omega$ folgt $M = P/\\omega$, nicht $M = P \\cdot n$. Der Wert $15950$ Nm wäre astronomisch hoch.',
+      2: 'Fehlender Faktor $2\\pi$ und falsche Einheitenumrechnung. $\\omega = 2\\pi n$ (nicht $n$), daher $M = P/(2\\pi n)$. Zusätzlich muss $n$ in 1/s umgerechnet werden.',
+      3: 'Hier fehlt die Umrechnung von $n$ in 1/s — mit $n$ in 1/min ergibt $2\\pi P/n = 2\\pi \\cdot 11000/1450 \\approx 47{,}7$, aber für Nm braucht man 1/s. Mit $n = 24{,}17$ 1/s ergibt $M \\approx 72{,}5$ Nm.',
+    },
 
     calcQuestion: 'Welle ($d = 35$ mm) überträgt $M_t = 200$ Nm und wird gleichzeitig mit Biegemoment $M_b = 100$ Nm belastet. Wie groß ist $\\sigma_v$ (Von Mises) in MPa?',
     calcAnswer: 43.3,
@@ -551,6 +605,11 @@ Bei $n$ Stufen und gleicher Einzelübersetzung $i_\text{Stufe}$: $i_{ges} = i_\t
       'Leistungsgleichung: $P = M \\cdot \\omega$, nicht $P = M \\cdot n$.',
       '$\\omega$ in rad/s.',
     ],
+    errorWrongAnswers: {
+      1: 'Die Leistung kann in kW oder W angegeben werden — nur konsistent. Mit $P = 5$ kW $= 5000$ W rechnet man weiter. Der eigentliche Fehler ist die fehlende $2\\pi$- und 1/s-Umrechnung.',
+      2: 'Genau umgekehrt: $n$ muss in 1/s umgerechnet werden, um mit Winkelgeschwindigkeit $\\omega = 2\\pi n$ (in rad/s) konsistent zu sein. In 1/min bleibt $\\omega$ falsch dimensioniert.',
+      3: '$1{,}67$ Nm sind für 5 kW unrealistisch klein — ein Einheitencheck (Leistung vs. Drehmoment) entlarvt das. Die korrekte Spannung liegt bei ca. $15{,}9$ Nm.',
+    },
 
     transferQuestion: 'Ein Hebegetriebe muss eine Last $m = 500$ kg mit $v = 0{,}3$ m/s heben. Wie groß ist die erforderliche Antriebsleistung in kW ($g = 9{,}81$ $m/s^2$, $\\eta = 0{,}8$)?',
     transferAnswer: 1.84,

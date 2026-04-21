@@ -27,6 +27,11 @@ export const exercises_vek_u2 = {
       'Eine Gerade braucht einen Punkt (Stützpunkt) und genau eine Richtung.',
       'Unterscheide: 1 Richtung $\\to$ Gerade, 2 Richtungen $\\to$ Ebene.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Das ist die Parameterform einer *Ebene* mit zwei Parametern $s, t$ und zwei Richtungsvektoren — also ein 2D-Objekt. Eine Gerade hat nur einen Freiheitsgrad: $\\vec{r} = \\vec{p} + t\\vec{v}$.',
+      2: 'Das ist die Normalenform einer *Ebene* (Skalarprodukt gleich Konstante) — beschreibt alle Punkte, deren Projektion auf $\\vec{n}$ gleich $d$ ist. Eine Gerade in Parameterform: $\\vec{r} = \\vec{p} + t\\vec{v}$.',
+      3: '$ax + by = c$ ist die Koordinatenform einer Geraden *in 2D*, aber keine allgemeine Parameterform. Im 3D-Raum beschreibt die analoge Gleichung sogar eine Ebene. Gefragt ist die Parameterform: $\\vec{r} = \\vec{p} + t\\vec{v}$.',
+    },
   },
   'ex-vek-2-1-b': {
     id: 'ex-vek-2-1-b', lessonId: 'vek-2-1', type: 'multiple-choice',
@@ -46,6 +51,11 @@ $$\\vec{r} = (1, 2, 3) + 1 \\cdot (2, 0, 1) = (1+2,\\; 2+0,\\; 3+1) = (3, 2, 4).
       'Setze $t = 1$: $(1+2, 2+0, 3+1) = ?$',
       'Richtungsvektor $\\vec{v} = (2,0,1)$ ist *kein* Punkt auf der Geraden.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Das ist der *Richtungsvektor* $\\vec{v} = (2, 0, 1)$ selbst — nicht ein Punkt auf $g$. Für einen Punkt auf $g$ müsste $\\vec{p} + t\\vec{v} = (2,0,1)$ lösbar sein: aus $1 + 2t = 2$ folgt $t = 1/2$, aber dann $2 + 0 = 2 \\neq 0$. Widerspruch.',
+      2: 'Prüfung: $\\vec{p} + t\\vec{v} = (1+2t,\\; 2,\\; 3+t) \\stackrel{!}{=} (1, 2, 1)$. Aus $1+2t = 1$ folgt $t = 0$, aber dann $z = 3 \\neq 1$. Widerspruch — liegt nicht auf $g$.',
+      3: 'Prüfung: $\\vec{p} + t\\vec{v} = (1+2t,\\; 2,\\; 3+t) \\stackrel{!}{=} (3, 4, 5)$. Aus der $y$-Komponente folgt $2 = 4$ — Widerspruch. Der Punkt liegt nicht auf $g$, weil $v_y = 0$ und daher die $y$-Komponente konstant $2$ bleibt.',
+    },
   },
   'ex-vek-2-1-c': {
     id: 'ex-vek-2-1-c', lessonId: 'vek-2-1', type: 'multiple-choice',
@@ -71,6 +81,11 @@ $$\\vec{r} = (1, 2, 3) + 1 \\cdot (2, 0, 1) = (1+2,\\; 2+0,\\; 3+1) = (3, 2, 4).
       'Prüfe: Gibt es $k$ mit $\\vec{v}_2 = k \\cdot \\vec{v}_1$?',
       'Alternativ: $\\vec{v}_1 \\times \\vec{v}_2 = \\vec{0}$ $\\Leftrightarrow$ parallel.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Ein Schnittpunkt erfordert *nicht-parallele* Richtungsvektoren. Hier ist $\\vec{v}_2 = 2\\vec{v}_1$ — die Richtungen sind parallel, also können sich die Geraden nur entweder in *keinem* oder *allen* Punkten (identisch) treffen, aber nicht in genau einem.',
+      1: 'Windschief erfordert ebenfalls *nicht-parallele* Richtungsvektoren. Da hier $\\vec{v}_2 = 2\\vec{v}_1$ gilt, sind die Richtungen parallel — also kann die Lage nur parallel oder identisch sein.',
+      3: 'Senkrecht würde $\\vec{v}_1 \\cdot \\vec{v}_2 = 0$ verlangen. Hier ist $\\vec{v}_1 \\cdot \\vec{v}_2 = 1\\cdot 2 + 2\\cdot 4 + 3\\cdot 6 = 28 \\neq 0$. Die Richtungen sind nicht senkrecht, sondern parallel ($\\vec{v}_2 = 2\\vec{v}_1$).',
+    },
   },
   'ex-vek-2-1-mastery': {
     id: 'ex-vek-2-1-mastery', lessonId: 'vek-2-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -98,6 +113,11 @@ $$\\vec{r} = (1, 2, 3) + 1 \\cdot (2, 0, 1) = (1+2,\\; 2+0,\\; 3+1) = (3, 2, 4).
       'Wie heißt der 3D-Fall, der in 2D unmöglich ist?',
       'Windschief = "schief zueinander, aber nicht parallel" — ein rein räumliches Phänomen.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Identisch bedeutet: dieselbe Gerade — das ist ein Spezialfall von "parallel" (gleiche Richtung) + gemeinsamer Punkt. Hier sind die Geraden aber laut Aufgabe *nicht* parallel, also können sie nicht identisch sein.',
+      1: 'Orthogonal ist ein Spezialfall von *schneidend* (mit rechtem Winkel). Das schließt "weder parallel noch schneidend" aber gerade aus. Richtige Antwort für diesen Fall: windschief.',
+      3: 'Kollinear bedeutet "auf einer gemeinsamen Geraden liegend" — also identisch. Das würde Parallelität voraussetzen. Gefragt ist aber der Fall ohne Parallelität und ohne Schnittpunkt, und der heißt windschief.',
+    },
   },
 
   // ── Lesson 2: Ebenengleichung ──
@@ -122,6 +142,11 @@ Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht pa
       'Gerade $\\to$ 1 Richtung. Fläche $\\to$ wie viele?',
       'Die beiden Richtungen dürfen nicht parallel sein — sonst bleibt es eine Gerade.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Ohne Richtungsvektor ergibt $\\vec{r} = \\vec{p}$ nur einen einzelnen Punkt — keine Ebene. Eine Ebene ist 2-dimensional, braucht also zwei Freiheitsgrade.',
+      1: 'Ein Richtungsvektor liefert nur eine *Gerade*: $\\vec{r} = \\vec{p} + t\\vec{v}$ (1D). Eine Ebene (2D) braucht zwei linear unabhängige Richtungsvektoren.',
+      3: 'Drei Richtungsvektoren sind im 3D-Raum immer linear abhängig — der dritte lässt sich durch die beiden anderen darstellen. Für eine Ebene reichen genau zwei linear unabhängige Richtungen.',
+    },
   },
   'ex-vek-2-2-b': {
     id: 'ex-vek-2-2-b', lessonId: 'vek-2-2', type: 'multiple-choice',
@@ -147,6 +172,11 @@ Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht pa
       'Der Verbindungsvektor $\\vec{r} - \\vec{p}$ muss senkrecht auf $\\vec{n}$ stehen.',
       'Alle solchen Punkte $\\vec{r}$ bilden eine *Ebene* senkrecht zu $\\vec{n}$ durch $\\vec{p}$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Parallel zu $\\vec{n}$ wäre genau das Gegenteil — dann wäre $\\vec{r} - \\vec{p} = \\lambda \\vec{n}$ und $\\vec{n} \\cdot (\\vec{r} - \\vec{p}) = \\lambda |\\vec{n}|^{2} \\neq 0$. Die Gleichung $\\vec{n} \\cdot (\\vec{r} - \\vec{p}) = 0$ bedeutet gerade *senkrecht*, nicht parallel.',
+      2: '$\\vec{p}$ selbst erfüllt zwar die Gleichung (denn $\\vec{n} \\cdot \\vec{0} = 0$), ist aber nicht die einzige Lösung. Alle Punkte, deren Verbindungsvektor senkrecht zu $\\vec{n}$ steht, erfüllen die Gleichung — das ist eine ganze Ebene.',
+      3: 'Eine Gerade in Richtung $\\vec{n}$ wäre $\\vec{r} = \\vec{p} + t\\vec{n}$ — also *parallel* zu $\\vec{n}$. Die Gleichung $\\vec{n} \\cdot (\\vec{r} - \\vec{p}) = 0$ beschreibt dagegen eine Ebene *senkrecht* zu $\\vec{n}$.',
+    },
   },
   'ex-vek-2-2-c': {
     id: 'ex-vek-2-2-c', lessonId: 'vek-2-2', type: 'multiple-choice',
@@ -175,6 +205,11 @@ Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht pa
       'Berechne $d = \\vec{n} \\cdot \\vec{p}$.',
       '$d = 2 \\cdot 1 + (-1) \\cdot 0 + 3 \\cdot 1 = 5$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Die rechte Seite $d = 0$ würde bedeuten, dass die Ebene durch den Ursprung geht — das gilt nur bei $\\vec{n} \\cdot \\vec{p} = 0$. Hier ist $\\vec{n} \\cdot \\vec{p} = 2\\cdot 1 + (-1)\\cdot 0 + 3\\cdot 1 = 5 \\neq 0$.',
+      2: 'Die Koeffizienten vor $x, y, z$ müssen *direkt* der Normalvektor $\\vec{n} = (2, -1, 3)$ sein, nicht $(1, -1, 1)$. Du hast die Zahlen willkürlich auf $1$ reduziert — die Ebene $x - y + z = 5$ hätte einen ganz anderen Normalvektor.',
+      3: 'Vorzeichenfehler bei $b$: $n_y = -1$, also Koeffizient $-1 \\cdot y = -y$, nicht $+y$. Außerdem ist $d = \\vec{n} \\cdot \\vec{p} = 5$. Richtige Koordinatenform: $2x - y + 3z = 5$.',
+    },
   },
   'ex-vek-2-2-d': {
     id: 'ex-vek-2-2-d', lessonId: 'vek-2-2', type: 'true-false',
@@ -216,6 +251,11 @@ Dabei sind $\\vec{u}$ und $\\vec{v}$ zwei **linear unabhängige** (also nicht pa
       'Die Koeffizienten $(a, b, c)$ vor $x, y, z$ bilden den Normalvektor.',
       'Achte auf das Vorzeichen: $-z$ bedeutet Koeffizient $-1$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Du hast die rechte Seite $d = 6$ als $z$-Komponente eingesetzt — das ist aber der Abstandsparameter, nicht eine Koordinate des Normalvektors. Die Koeffizienten vor $x, y, z$ (also $3, 2, -1$) bilden $\\vec{n}$.',
+      2: '$(6, 0, 0)$ ist weder aus den Koeffizienten noch aus der Gleichung ablesbar — das sieht nach der rechten Seite $6$ und zwei Nullen aus. Richtig: Koeffizienten vor $x, y, z$ ablesen, also $\\vec{n} = (3, 2, -1)$.',
+      3: 'Du hast die Koeffizienten willkürlich auf $1$ reduziert. Der Normalvektor steckt *direkt* in den Koeffizienten $(3, 2, -1)$ vor $x, y, z$ — nicht normiert auf $1$.',
+    },
   },
 
   // ── Lesson 3: Abstände und Schnitte ──
@@ -247,6 +287,11 @@ $$d = \\frac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$$
       'Formel: $d = \\dfrac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$.',
       'Kreuzprodukt gehört zu Punkt–Gerade, nicht Punkt–Ebene.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Diese Formel liefert den Abstand Punkt–*Gerade* (Kreuzprodukt gibt Parallelogrammfläche, geteilt durch Grundseite = Höhe). Für Punkt–Ebene ist aber das Skalarprodukt nötig, um auf die Normalenrichtung zu projizieren: $d = \\dfrac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$.',
+      2: '$|\\vec{Q} - \\vec{P}|$ ist einfach der Abstand zwischen $Q$ und dem Stützpunkt $P$ — das ist aber nicht der *senkrechte* Abstand zur Ebene, sondern zu einem einzelnen Punkt. Der kürzeste Abstand ergibt sich über die Projektion auf $\\vec{n}$.',
+      3: '$\\vec{n} \\cdot \\vec{Q}$ hat weder Betrag noch Bezug auf einen Punkt der Ebene — das ist nur eine Zahl, nicht der Abstand. Außerdem fehlt die Normierung durch $|\\vec{n}|$. Richtig: $d = |\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|/|\\vec{n}|$.',
+    },
   },
   'ex-vek-2-3-b': {
     id: 'ex-vek-2-3-b', lessonId: 'vek-2-3', type: 'number-input',
@@ -293,6 +338,11 @@ $$d = \\frac{|\\vec{n} \\cdot (\\vec{Q} - \\vec{P})|}{|\\vec{n}|}$$
       'Aus $\\vec{r} = (t, t, t)$ wird $t + t + t = 6$.',
       '$3t = 6 \\;\\Rightarrow\\; t = 2$.',
     ],
+    wrongAnswerExplanations: {
+      0: '$t = 0$ ergibt $\\vec{r} = (0, 0, 0)$ — setzt man das in die Ebene ein: $0 + 0 + 0 = 0 \\neq 6$. Der Ursprung liegt nicht auf $E$. Richtig: $3t = 6 \\Rightarrow t = 2$.',
+      1: '$t = 1$ ergibt $\\vec{r} = (1, 1, 1)$ — in $E$: $1 + 1 + 1 = 3 \\neq 6$. Zu klein. Die Gleichung $3t = 6$ liefert $t = 2$, nicht $1$.',
+      3: '$t = 3$ würde $t + t + t = 9$ liefern, also $9 \\neq 6$. Du hast $t = d_0 / 2 = 6/2$ gerechnet — aber die Koeffizienten summieren sich zu $3$, nicht $2$. Richtig: $3t = 6 \\Rightarrow t = 2$.',
+    },
   },
   'ex-vek-2-3-d': {
     id: 'ex-vek-2-3-d', lessonId: 'vek-2-3', type: 'number-input',
@@ -372,6 +422,11 @@ Aus (II): $s = t - 1$. In (I): $1 + t = -(t - 1) = -t + 1 \\;\\Rightarrow\\; 2t 
       'Dann Gleichsetzen und Gleichungssystem lösen (3 Gleichungen, 2 Unbekannte).',
       'Wenn das System lösbar ist $\\to$ schneidend. Sonst $\\to$ windschief.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Parallel setzt $\\vec{v}_2 = k\\vec{v}_1$ voraus. Hier: $(-1,1,0) = k \\cdot (1,1,0)$ liefert $k = -1$ aus der $x$-Komponente, aber aus der $y$-Komponente $1 = -1$ — Widerspruch. Richtungsvektoren sind *nicht* parallel.',
+      1: 'Identisch wäre ein Spezialfall von parallel — erfordert aber zuerst parallele Richtungsvektoren. Hier sind $\\vec{v}_1 = (1,1,0)$ und $\\vec{v}_2 = (-1,1,0)$ nicht parallel, also können die Geraden nicht identisch sein.',
+      3: 'Windschief verlangt, dass das Gleichsetzungs-LGS *unlösbar* ist. Hier ergibt das LGS aber eine Lösung $t = 0, s = -1$ mit Schnittpunkt $(1, 0, 2)$. Daher schneidend, nicht windschief.',
+    },
   },
   'ex-vek-2-4-b': {
     id: 'ex-vek-2-4-b', lessonId: 'vek-2-4', type: 'multiple-choice',
@@ -400,6 +455,11 @@ Aus (II): $s = t - 1$. In (I): $1 + t = -(t - 1) = -t + 1 \\;\\Rightarrow\\; 2t 
       'Konstruiere das Lot von $P$ in Richtung $\\vec{n}$ und schneide es mit $E$.',
       'Der Schnittpunkt heißt Lotfußpunkt $F$ und ist der nächste Punkt.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Teste, ob $P = (1,2,3)$ auf $E$ liegt: $2\\cdot 1 - 2 + 2\\cdot 3 = 6 \\neq 10$. $P$ liegt nicht in $E$, kann also nicht gleichzeitig der nächste Ebenenpunkt sein.',
+      1: 'Teste $(3, 0, 5)$: $2\\cdot 3 - 0 + 2\\cdot 5 = 16 \\neq 10$. Liegt nicht auf $E$. Selbst wenn es dort läge — der Lotfußpunkt $F$ ist per Definition der nächste Punkt, und der ist hier $(17/9, 14/9, 35/9)$.',
+      3: '$(2, -1, 2)$ ist gerade der *Normalvektor* $\\vec{n}$, kein Punkt auf der Ebene. Teste: $2\\cdot 2 - (-1) + 2\\cdot 2 = 9 \\neq 10$. Der nächste Punkt ist der Lotfußpunkt, nicht der Normalvektor.',
+    },
   },
   'ex-vek-2-4-c': {
     id: 'ex-vek-2-4-c', lessonId: 'vek-2-4', type: 'multiple-choice',
@@ -427,6 +487,11 @@ Abstand $> 0$ bestätigt: nicht identisch.
       'Identisch: Zusätzlich müssen die Konstanten im gleichen Verhältnis stehen.',
       'Hier: $\\vec{n}_2 = 2 \\vec{n}_1$, aber $d_2 = 5 \\neq 2 \\cdot 1$ $\\Rightarrow$ parallel, nicht identisch.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Identisch setzt voraus, dass beide Gleichungen dieselbe Ebene beschreiben. Dividiert man $E_2$ durch 2, entsteht $x + y + z = 5/2 \\neq 1 = d_1$. Die rechten Seiten unterscheiden sich, also parallel und *verschieden*, nicht identisch.',
+      2: 'Schneidende Ebenen setzen *nicht-parallele* Normalvektoren voraus. Hier ist $\\vec{n}_2 = 2\\vec{n}_1$, also parallel — die Ebenen können sich gar nicht schneiden.',
+      3: 'Senkrecht würde $\\vec{n}_1 \\cdot \\vec{n}_2 = 0$ verlangen. Hier: $\\vec{n}_1 \\cdot \\vec{n}_2 = 1\\cdot 2 + 1\\cdot 2 + 1\\cdot 2 = 6 \\neq 0$. Die Normalvektoren sind sogar parallel, also stehen die Ebenen eben *nicht* senkrecht zueinander.',
+    },
   },
   'ex-vek-2-4-d': {
     id: 'ex-vek-2-4-d', lessonId: 'vek-2-4', type: 'number-input',
@@ -476,6 +541,11 @@ $$d = \\frac{|d_2 - d_1|}{|\\vec{n}|}.$$
       'Eine Gerade senkrecht zur Ebene zeigt in dieselbe Richtung wie $\\vec{n}$.',
       'Dieselbe Richtung $\\Rightarrow$ parallel: $\\vec{v} = k \\cdot \\vec{n}$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Das ist der klassische Denkfehler: $\\vec{v} \\cdot \\vec{n} = 0$ bedeutet $\\vec{v} \\perp \\vec{n}$ — dann läge die Gerade *in* der Ebene (parallel zur Ebene), nicht senkrecht auf ihr. Für Gerade $\\perp$ Ebene muss $\\vec{v} \\parallel \\vec{n}$ gelten.',
+      2: '$\\vec{v} \\cdot \\vec{n} = 1$ hat keine geometrische Bedeutung für Senkrechtstehen. Die senkrechte Lage einer Geraden zur Ebene fordert $\\vec{v} = k\\vec{n}$ (parallel zur Normalen), dann ist $\\vec{v} \\cdot \\vec{n} = k|\\vec{n}|^{2}$ — abhängig von $k$.',
+      3: 'Gleiche Beträge $|\\vec{v}| = |\\vec{n}|$ sagen nichts über die *Richtung* aus. Für "senkrecht zur Ebene" ist die Richtung entscheidend: $\\vec{v}$ muss parallel zu $\\vec{n}$ sein, also $\\vec{v} = k\\vec{n}$.',
+    },
   },
   'ex-vek-2-4-mastery': {
     id: 'ex-vek-2-4-mastery', lessonId: 'vek-2-4', type: 'multiple-choice', isMasteryCheck: true,
@@ -499,6 +569,11 @@ $$\\vec{v} = \\vec{n}_1 \\times \\vec{n}_2 = \\begin{pmatrix} 1 \\cdot 1 - 0 \\c
       'Welche Operation liefert einen Vektor senkrecht zu zwei anderen? Kreuzprodukt.',
       '$\\vec{v} = \\vec{n}_1 \\times \\vec{n}_2 = (1,1,0) \\times (0,1,1)$.',
     ],
+    wrongAnswerExplanations: {
+      1: '$(1, 1, 1) = \\vec{n}_1 + \\vec{n}_2$ ist die *Summe* der Normalvektoren — keine geometrische Bedeutung für die Schnittgerade. Prüfe: $(1,1,1) \\cdot \\vec{n}_1 = 2 \\neq 0$, also nicht senkrecht zu $\\vec{n}_1$ und daher nicht in $E_1$.',
+      2: '$(0, 1, 0) = \\hat{e}_2$ liegt zwar in der $y$-Richtung, aber $(0,1,0) \\cdot \\vec{n}_1 = 1 \\neq 0$ — also nicht senkrecht zu $\\vec{n}_1$ und daher nicht in $E_1$. Der Richtungsvektor der Schnittgeraden muss *beide* Orthogonalitätsbedingungen erfüllen, was nur das Kreuzprodukt leistet.',
+      3: 'Vorzeichenfehler im Kreuzprodukt — wahrscheinlich wurde die Reihenfolge der Komponenten oder ein Minuszeichen falsch gesetzt. Richtig: $\\vec{n}_1 \\times \\vec{n}_2 = (1\\cdot 1 - 0\\cdot 1,\\; 0\\cdot 0 - 1\\cdot 1,\\; 1\\cdot 1 - 1\\cdot 0) = (1, -1, 1)$.',
+    },
   },
 }
 

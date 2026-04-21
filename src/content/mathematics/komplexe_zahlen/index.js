@@ -42,6 +42,11 @@ const unit1Lessons = [
           'Quadrierst du $i$, was kommt heraus?',
           'Die Definition lautet $i^2 = -1$.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Hier wurden $i^2$ und $i^3$ verwechselt. $i^3 = i \\cdot i^2 = i \\cdot (-1) = -i$ — das ist die Formel mit $-i$. $i^2$ selbst ist aber $-1$ (reelle Zahl, kein $i$).',
+          2: 'Vorzeichen vergessen. $i^3 = i^2 \\cdot i = -1 \\cdot i = -i$, nicht $+1$. Der Zyklus ist $i, -1, -i, 1, i, \\ldots$ — $i^4=1$, aber $i^3=-i$.',
+          3: 'Konfusion zwischen Definition und Rechenregel: die Schreibweise $i=\\sqrt{-1}$ wird manchmal informell benutzt, aber $i^2$ *ist* $-1$ (reelle Zahl), nicht $\\sqrt{-1}$. Quadrieren eliminiert die Wurzel.',
+        },
       },
       {
         type: 'multiple-choice',
@@ -56,6 +61,11 @@ const unit1Lessons = [
           'Welcher der beiden Summanden steht ohne $i$?',
           'Vergiss das Vorzeichen nicht.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Vorzeichen vergessen. Der Realteil ist $a$ aus $z=a+bi$, *inklusive* Vorzeichen. Hier: $a = -5$, nicht $+5$. Der Betrag von $a$ ist zwar $5$, aber $\\operatorname{Re}(z)$ ist die *signierte* reelle Zahl.',
+          2: 'Real- und Imaginärteil verwechselt. $\\operatorname{Re}(z)$ ist der Summand *ohne* $i$ ($-5$), $\\operatorname{Im}(z)$ ist der Koeffizient *vor* $i$ ($+7$). Hier wurde der Imaginärteil statt des Realteils genommen.',
+          3: 'Das ist die komplette komplexe Zahl $z$ selbst, nicht der Realteil. $\\operatorname{Re}(z)$ extrahiert nur den reellen Summanden; $z$ dagegen hat sowohl Real- als auch Imaginärteil.',
+        },
       },
       {
         type: 'true-false',
@@ -114,6 +124,11 @@ const unit1Lessons = [
           'Imaginäre Achse = y-Achse. Welche Koordinate muss 0 sein?',
           '$\\operatorname{Re}(z) = 0$ bedeutet $z = b\\,i$ (rein imaginär).',
         ],
+        wrongAnswerExplanations: {
+          1: 'Achsen verwechselt: $-3$ hat $\\operatorname{Re}=-3$, $\\operatorname{Im}=0$ — das liegt auf der *reellen* Achse (x-Achse), nicht auf der imaginären. Auf der imaginären Achse muss $\\operatorname{Re}=0$ sein.',
+          2: '$-3+i$ hat $\\operatorname{Re}=-3 \\neq 0$ und $\\operatorname{Im}=1 \\neq 0$ — das liegt im zweiten Quadranten (Inneres der Ebene), nicht auf der Achse. Nur Zahlen mit Realteil $0$ liegen auf der imaginären Achse.',
+          3: '$3-3i$ hat $\\operatorname{Re}=3$ und $\\operatorname{Im}=-3$, liegt also im vierten Quadranten. Für einen Punkt auf der imaginären Achse muss der Realteil exakt $0$ sein — hier ist er $3$.',
+        },
       },
       {
         type: 'multiple-choice',
@@ -128,6 +143,11 @@ const unit1Lessons = [
           'Realteil bleibt unverändert.',
           'Nur das Vorzeichen vor $i$ kippen.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Hier wurden *beide* Vorzeichen gekippt — das wäre $-z$, nicht $\\bar z$. Konjugation spiegelt nur an der reellen Achse: *nur* der Imaginärteil wechselt das Vorzeichen, der Realteil bleibt.',
+          2: 'Das ist $z$ selbst, unverändert. Konjugation muss das Vorzeichen vor $i$ kippen: aus $+5i$ wird $-5i$. $\\bar z = z$ gilt nur für reelle Zahlen.',
+          3: 'Hier wurde nur der Realteil negiert, aber der Imaginärteil beibehalten — das ist $-\\bar z$ (oder die Konjugation plus Negation). Konjugation betrifft *ausschließlich* den Imaginärteil.',
+        },
       },
       {
         type: 'sorting',
@@ -159,6 +179,11 @@ const unit1Lessons = [
       'Achte auf das Vorzeichen vor dem i-Term.',
       '$z = 3 - 2i$: Vergleiche mit $a + bi$, also $a=3$, $b=-2$.',
     ],
+    masteryWrongAnswerExplanations: {
+      1: 'Vorzeichen vergessen. $z=3-2i$ heißt $b=-2$, also $\\operatorname{Im}(z)=-2$, nicht $+2$. Das Vorzeichen vor dem $i$-Term gehört mit zum Imaginärteil.',
+      2: 'Real- und Imaginärteil verwechselt. $\\operatorname{Re}(z)=3$ ist der Summand ohne $i$, $\\operatorname{Im}(z)=-2$ der Koeffizient vor $i$. Hier wurde der Realteil statt des Imaginärteils genommen.',
+      3: 'Das $i$ gehört *nicht* zum Imaginärteil. $\\operatorname{Im}(z)$ ist definitorisch die *reelle* Zahl $b$ aus $z=a+bi$. Also $\\operatorname{Im}(3-2i)=-2$ (ohne $i$), nicht $-2i$.',
+    },
     masteryVisualization: {
       id: 'complex-plane',
       params: { initialZ1: { a: 3, b: -2 }, range: 4 },
@@ -204,6 +229,11 @@ const unit1Lessons = [
           'Realteile zusammen: $2 + 4$. Imaginärteile zusammen: $3 + (-1)$.',
           'Achtung auf Vorzeichen bei $-i$.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Vorzeichenfehler bei $-i$: der Imaginärteil von $4-i$ ist $-1$, nicht $+1$. Korrekt: $3 + (-1) = 2$, nicht $3 + 1 = 4$.',
+          2: 'Subtraktion statt Addition beim Realteil: $2-4=-2$ ergäbe den Realteil, gefragt ist aber die Addition $2+4=6$. Bei $+$ addiert man beide Komponenten; das $-$ vor $i$ gehört nur zum Imaginärteil von $z_2$.',
+          3: 'Fehler bei beiden Komponenten: $2+4 \\neq 8$ (das wäre $4+4$) und der Imaginärteil $-3$ statt $+2$ entsteht, wenn man $3$ und $-1$ multipliziert statt addiert. Addition heißt komponentenweise Summe.',
+        },
       },
       {
         type: 'number-input',
@@ -232,6 +262,11 @@ const unit1Lessons = [
           'Sammle Terme: reelle Teile separat, $i$-Teile separat.',
           'Wichtig: $i^2 = -1$, also $-2i^2 = +2$.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Hier wurden die Komponenten nur paarweise multipliziert ($1 \\cdot 3 = 3$, $2i \\cdot (-i) = -2i^2 = 2$?) — komplexe Multiplikation ist aber *kein* komponentenweises Produkt. Man muss *alle vier* Produkte ausmultiplizieren: $(1+2i)(3-i) = 3 - i + 6i + 2 = 5 + 5i$.',
+          2: 'Die Gemischtterme $1 \\cdot (-i)$ und $2i \\cdot 3$ wurden vergessen. Volles Ausmultiplizieren: $3 + (-i) + 6i + (-2i^2) = 3 + 5i + 2 = 5 + 5i$, nicht $1 + 6i$.',
+          3: '$i^2$ wurde nicht durch $-1$ ersetzt. Beim Ausmultiplizieren kommt $2i \\cdot (-i) = -2i^2 = +2$ (nicht $0$). Der Realteil ist also $3+2=5$, nicht $3$. Der Imaginärteil $-1+6=5$ (nicht $7$).',
+        },
       },
       {
         type: 'true-false',
@@ -258,6 +293,11 @@ const unit1Lessons = [
           'Dritte binomische Formel: $(a+b)(a-b) = a^2 - b^2$.',
           '$(2)^2 - (3i)^2 = 4 - 9i^2 = 4 + 9 = 13$.',
         ],
+        wrongAnswerExplanations: {
+          1: '$i^2=-1$ wurde ignoriert. $(3i)^2 = 9i^2 = -9$, daher ist $2^2 - (3i)^2 = 4 - (-9) = 4+9 = 13$, nicht $4-9=-5$. Das Minuszeichen von $i^2$ verwandelt die Subtraktion in eine Addition.',
+          2: '$(3i)^2$ wurde als $9$ berechnet, aber $(3i)^2 = 9i^2 = -9$. Also $4-(-9)=13$, nicht $4-9=-5$. Der Wert $4-9$ ist der Zwischenschritt *ohne* Berücksichtigung von $i^2=-1$.',
+          3: 'Ein Nenner, der nach Erweiterung mit der Konjugierten *nicht* reell ist, zeigt einen Fehler an: gerade der Sinn der Erweiterung ist, dass das $i$ verschwindet. $(2+3i)(2-3i)$ ist via dritter binomischer Formel $2^2-(3i)^2=13$ — rein reell.',
+        },
       },
       {
         type: 'number-input',
@@ -310,6 +350,11 @@ const unit1Lessons = [
           'Welches Produkt ergibt $|w|^2$?',
           '$w \\cdot \\bar w = |w|^2$ — reell und nicht-negativ.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Mit $w$ erweitert wird der Nenner $w^2$ — immer noch komplex ($w^2$ hat im Allgemeinen einen Imaginärteil). Nur das Produkt $w \\cdot \\bar w = |w|^2$ ist reell. Also muss mit $\\bar w$ erweitert werden, nicht mit $w$.',
+          2: '$z/|w|$ liefert nicht $z/w$: $|w|$ ist eine reelle Zahl, aber $w$ im Nenner ist komplex. Nur das *Erweitern mit $\\bar w$* schafft den reellen Nenner $|w|^2$, der dann skalare Division erlaubt.',
+          3: 'Beide zu konjugieren ändert den Quotienten: $\\bar z / \\bar w = \\overline{z/w}$, nicht $z/w$. Gefordert ist *Erweitern* (Multiplizieren von Zähler und Nenner mit derselben Zahl $\\bar w$), nicht Umformung beider Zahlen.',
+        },
       },
     ],
     masteryQuestion: 'Berechne $(2+i)(1-3i)$.',
@@ -323,6 +368,11 @@ const unit1Lessons = [
       'Am Ende alle $i^2$ durch $-1$ ersetzen.',
       '$2\\cdot1 - 6i + i + 3 = 5 - 5i$ — Real- und Imaginärteil zusammenfassen.',
     ],
+    masteryWrongAnswerExplanations: {
+      1: 'Gemischtterme vergessen. Nur $2 \\cdot 1 = 2$ und $i \\cdot (-3i) = -3i^2 = 3$ genommen, aber $2 \\cdot (-3i) = -6i$ und $i \\cdot 1 = i$ übersehen. Vollständig: $2 + 3 + (-6+1)i = 5-5i$, nicht $2-3i$.',
+      2: 'Vorzeichen des Imaginärteils falsch. $2 \\cdot (-3i) = -6i$ und $i \\cdot 1 = +i$, Summe $-5i$. Mit $+5i$ hätte man das Vorzeichen von $-3i$ übersehen oder $(-6)+1=-5$ als $+5$ gerechnet.',
+      3: '$i^2$ nicht durch $-1$ ersetzt, und ein Vorzeichenfehler. Realteil: $2 + \\underbrace{i \\cdot (-3i)}_{=3} = 5$, nicht $-1$. Wichtig: $-3i^2 = +3$, also kommt $+3$ zum Realteil hinzu.',
+    },
     prerequisites: ['komz-1-1'],
     nextLessonId: 'komz-2-1',
   }),
@@ -389,6 +439,11 @@ const unit2Lessons = [
           'Realteil = x-Koordinate, Imaginärteil = y-Koordinate.',
           'Re < 0, Im > 0 → links oben.',
         ],
+        wrongAnswerExplanations: {
+          1: '1. Quadrant bedeutet $\\operatorname{Re}>0$ und $\\operatorname{Im}>0$ (rechts oben). Hier ist $\\operatorname{Re}=-3<0$, also *links*. Wer nur den Betrag $|{-3}|=3$ betrachtet, übersieht das Vorzeichen.',
+          2: '3. Quadrant bedeutet $\\operatorname{Re}<0$ und $\\operatorname{Im}<0$ (links unten). Hier ist $\\operatorname{Im}=+2>0$, also *oben*. Vermutlich wurde das Vorzeichen von $b$ übersehen.',
+          3: '4. Quadrant bedeutet $\\operatorname{Re}>0$ und $\\operatorname{Im}<0$ (rechts unten). Hier sind aber beide Vorzeichen vertauscht: $\\operatorname{Re}=-3<0$, $\\operatorname{Im}=+2>0$, also 2. Quadrant.',
+        },
       },
       {
         type: 'true-false',
@@ -447,6 +502,11 @@ const unit2Lessons = [
           '$\\cos(60°) = 1/2$, $\\sin(60°) = \\sqrt{3}/2$.',
           '$r = 2$: $a = 1$, $b = \\sqrt{3}$.',
         ],
+        wrongAnswerExplanations: {
+          1: '$\\cos(\\pi/3)$ und $\\sin(\\pi/3)$ wurden vertauscht: $\\cos(\\pi/3)=1/2$ (nicht $\\sqrt{3}/2$), $\\sin(\\pi/3)=\\sqrt{3}/2$ (nicht $1/2$). Merke: der Kosinus von $60°$ ist der kleinere Wert $1/2$.',
+          2: 'Werte falsch: $\\cos(\\pi/3) \\neq 1$ und $\\sin(\\pi/3) \\neq 1$. Das wäre $\\cos(0)=1$ und $\\sin(\\pi/2)=1$. Bei $\\pi/3=60°$ sind die Werte $1/2$ und $\\sqrt{3}/2$.',
+          3: 'Faktor $r=2$ wurde vergessen. Die Formel lautet $a=r\\cos\\varphi$, $b=r\\sin\\varphi$. Mit $r=2$: $a = 2 \\cdot 1/2 = 1$, $b = 2 \\cdot \\sqrt{3}/2 = \\sqrt{3}$ — nicht die halbierten Werte.',
+        },
       },
       {
         type: 'multiple-choice',
@@ -466,6 +526,11 @@ const unit2Lessons = [
           'Kann arctan unterscheiden, ob wir im 1. oder 3. Quadranten sind?',
           'atan2 braucht beide Komponenten, nicht nur den Quotienten.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Falsch — atan ist für alle reellen Argumente (inkl. negative) definiert und liefert Werte in $(-\\pi/2, \\pi/2)$. Das eigentliche Problem ist nicht die Definiertheit, sondern dass $b/a$ (z.B. $2/(-3)$ und $-2/3$) dasselbe Ergebnis liefern — und damit keine Quadranten-Unterscheidung.',
+          2: 'Falsch — atan liefert auch negative Werte (im 4. Quadranten, wenn $b/a<0$). Der Wertebereich ist $(-\\pi/2, \\pi/2)$, symmetrisch um $0$. Das Kernproblem bleibt die fehlende Quadranten-Information.',
+          3: 'atan ist für alle reellen Zahlen definiert (ganz, rational, irrational). Das ist keine Einschränkung. Problem: $\\operatorname{atan}(b/a)$ verliert Information, weil der Quotient die Vorzeichen von $a$ und $b$ mischt.',
+        },
       },
       {
         type: 'sorting',
@@ -495,6 +560,11 @@ const unit2Lessons = [
       'Einsetzen: $\\sqrt{3^2 + 4^2} = \\sqrt{9 + 16}$.',
       '$\\sqrt{25} = 5$ — ein pythagoreisches Tripel (3-4-5).',
     ],
+    masteryWrongAnswerExplanations: {
+      1: 'Hier wurden die Komponenten einfach addiert: $3+4=7$. Korrekt wäre aber Pythagoras: $\\sqrt{a^2+b^2}$, also $\\sqrt{9+16}=\\sqrt{25}=5$. Der Betrag ist kein lineares Maß, sondern der euklidische Abstand.',
+      2: '$a+b$ unter der Wurzel gerechnet: $\\sqrt{3+4}=\\sqrt{7}$. Die Formel verlangt aber *Quadrate* unter der Wurzel: $\\sqrt{a^2+b^2}=\\sqrt{9+16}=\\sqrt{25}=5$.',
+      3: 'Die Wurzel vergessen: $a^2+b^2=9+16=25$ ist nur der Radikand, nicht der Betrag. $|z|=\\sqrt{25}=5$.',
+    },
     masteryVisualization: {
       id: 'complex-plane',
       params: { initialZ1: { a: 3, b: 4 }, range: 5 },
@@ -547,6 +617,11 @@ const unit2Lessons = [
           '$\\cos\\pi = -1$, $\\sin\\pi = 0$.',
           'Also $e^{i\\pi} = -1$.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Das ist $e^{i \\cdot 0}=\\cos 0+i\\sin 0=1$ oder $e^{i \\cdot 2\\pi}$. Bei $\\varphi=\\pi$ (180°) ist $\\cos\\pi=-1$, nicht $+1$. Kontrolliere die Kosinuswerte bei ganzzahligen Vielfachen von $\\pi$: $\\cos 0=1$, $\\cos\\pi=-1$, $\\cos 2\\pi=1$.',
+          2: 'Das wäre $e^{i\\pi/2} = \\cos(\\pi/2)+i\\sin(\\pi/2)=0+i=i$. Bei $\\varphi=\\pi$ ist das *doppelte* dieses Winkels, also eine halbe volle Umdrehung weiter: Punkt $-1$, nicht $i$.',
+          3: 'Das wäre $e^{-i\\pi/2}=e^{i \\cdot 3\\pi/2}=\\cos(3\\pi/2)+i\\sin(3\\pi/2)=0-i=-i$. Bei $\\varphi=\\pi$ (nicht $3\\pi/2$) landen wir aber auf der negativen reellen Achse: $-1$, nicht $-i$.',
+        },
       },
       {
         type: 'true-false',
@@ -593,6 +668,11 @@ const unit2Lessons = [
           'Dann Argument: $\\arg = \\operatorname{atan2}(1, 1)$.',
           '1. Quadrant mit $a = b$ → Winkel $\\pi/4$.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Betrag falsch: $|1+i|=\\sqrt{1^2+1^2}=\\sqrt{2}$, nicht $2$. $2$ wäre $1+1$ ohne Wurzel — aber der Betrag verlangt *Wurzel aus Summe der Quadrate*.',
+          2: 'Argument falsch: $\\arg(1+i)=\\pi/4$ (45°), nicht $\\pi/2$ (90°). Bei $\\pi/2$ läge $z$ auf der positiven imaginären Achse ($z=i$), aber $1+i$ liegt auf der Winkelhalbierenden des 1. Quadranten.',
+          3: 'Betrag vergessen. Ein Vorfaktor fehlt: $e^{i\\pi/4}$ hat Betrag $1$, aber $|1+i|=\\sqrt{2} \\neq 1$. Die Exponentialform lautet $r \\cdot e^{i\\varphi}$ mit $r=\\sqrt{2}$.',
+        },
       },
       {
         type: 'multiple-choice',
@@ -607,6 +687,11 @@ const unit2Lessons = [
           'Rechne $\\pi/3 + \\pi/6$ auf gemeinsamen Nenner $6$.',
           '$e^{i\\pi/2} = i$ per Euler.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Multipliziert statt addiert. Bei gleicher Basis $e$ werden die Exponenten *addiert*, nicht multipliziert: $\\frac{\\pi}{3} \\cdot \\frac{\\pi}{6} = \\frac{\\pi^2}{18}$ wäre nicht einmal von der Einheit her sinnvoll. Korrekt: $\\frac{\\pi}{3}+\\frac{\\pi}{6}=\\frac{\\pi}{2}$.',
+          2: 'Rechenfehler bei der Bruchaddition: $\\frac{\\pi}{3}+\\frac{\\pi}{6}=\\frac{2\\pi+\\pi}{6}=\\frac{3\\pi}{6}=\\frac{\\pi}{2}$, nicht $\\frac{\\pi}{9}$. Gemeinsamer Nenner ist $6$, nicht das Produkt der Nenner.',
+          3: 'Vorfaktor $2$ ist überflüssig. Beide Faktoren haben Betrag $1$, das Produkt also auch: $1 \\cdot 1 = 1$, kein $2$. Der korrekte Exponent $\\pi/2$ stimmt, aber der Vorfaktor sollte weggelassen werden.',
+        },
       },
       {
         type: 'matching',
@@ -660,6 +745,11 @@ const unit2Lessons = [
           'Potenzgesetz: gleiche Basis → Exponenten addieren.',
           'Geometrisch: Drehstreckung (drehen + skalieren).',
         ],
+        wrongAnswerExplanations: {
+          1: 'Falsch: Die Exponentialform liefert im Allgemeinen keine reellen Zahlen — $r \\cdot e^{i\\varphi}$ ist genau dann reell, wenn $\\varphi$ ein Vielfaches von $\\pi$ ist. Der Vorteil liegt in der einfachen Multiplikationsregel, nicht in Realität.',
+          2: 'Die Exponentialform hat eine *andere* Struktur als die kartesische ($a+bi$ vs. $r \\cdot e^{i\\varphi}$). Gerade die andere Form ist der Vorteil: Multiplikation wird einfacher, weil Exponenten addiert werden.',
+          3: 'Das ist kein Vorteil für die Multiplikation — $\\varphi$ kann bei Multiplikation sogar aus dem Hauptwert herausfallen (z.B. $\\pi/2+\\pi/2=\\pi$, bei weiterer Multiplikation $>\\pi$). Man muss ggf. am Ende zurück in den Hauptwert $(-\\pi,\\pi]$.',
+        },
       },
     ],
     masteryQuestion: 'Welchen Wert hat $e^{i\\pi/2}$?',
@@ -672,6 +762,11 @@ const unit2Lessons = [
       'Einsetzen: $\\cos(\\pi/2) = 0$, $\\sin(\\pi/2) = 1$.',
       '$0 + i \\cdot 1 = i$ — eine Drehung um 90° auf dem Einheitskreis.',
     ],
+    masteryWrongAnswerExplanations: {
+      1: 'Das wäre $e^{i \\cdot 0}=1$ oder $e^{i \\cdot 2\\pi}=1$. Bei $\\varphi=\\pi/2$ (90°) drehen wir um eine Vierteldrehung vom Punkt $1$ aus gegen den Uhrzeigersinn — und landen bei $i$, nicht bei $1$.',
+      2: 'Das wäre $e^{i\\pi}=-1$ (180°-Drehung). Bei $\\varphi=\\pi/2$ drehen wir nur die Hälfte davon, also 90°, und landen beim Punkt $i$.',
+      3: 'Richtung verwechselt: $-i$ entspricht $e^{-i\\pi/2}$ oder $e^{i \\cdot 3\\pi/2}$ (270°). Bei $+\\pi/2$ drehen wir gegen den Uhrzeigersinn und landen bei $+i$, nicht $-i$.',
+    },
     masteryVisualization: {
       id: 'complex-plane',
       params: { initialZ1: { a: 0, b: 1 }, range: 2 },
@@ -729,6 +824,11 @@ const unit3Lessons = [
           'Betrag: $2^2 = 4$.',
           'Argument: $2 \\cdot \\pi/4 = \\pi/2$.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Argument dividiert statt multipliziert. Moivre: $z^n=|z|^n e^{in\\varphi}$, also bei $n=2$ Argument *verdoppeln*: $2 \\cdot \\pi/4 = \\pi/2$. Geteilt durch $2$ gäbe $\\pi/8$.',
+          2: 'Betrag nicht quadriert. $|z^n|=|z|^n$, also $|z^2|=2^2=4$, nicht $2$. Der Exponent $2$ wirkt sowohl auf Betrag *als auch* auf das Argument.',
+          3: 'Das ist $z$ selbst, nicht $z^2$. Beim Quadrieren werden beide Komponenten (Betrag und Argument) verändert: Betrag quadriert, Argument verdoppelt. Ohne Veränderung kann nichts entstehen.',
+        },
       },
       {
         type: 'number-input',
@@ -770,6 +870,11 @@ const unit3Lessons = [
           '$10 \\bmod 4 = ?$',
           'Zyklus: $i, -1, -i, 1$. Nach Rest 2 landest du bei $-1$.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Das wäre $i^{4k}$ (z.B. $i^4, i^8, i^{12}$). $10 \\bmod 4 = 2$, nicht $0$ — daher ergibt sich $i^2=-1$, nicht $i^4=1$. Kontrolliere Rest mod 4.',
+          2: 'Das wäre $i^{4k+1}$ (z.B. $i^1, i^5, i^9$). $10 \\bmod 4 = 2$, nicht $1$, also $i^{10}=i^2=-1$, nicht $i$.',
+          3: 'Das wäre $i^{4k+3}$ (z.B. $i^3, i^7, i^{11}$). $10 \\bmod 4 = 2$, nicht $3$, also $i^{10}=i^2=-1$, nicht $-i$.',
+        },
       },
       {
         type: 'multiple-choice',
@@ -789,6 +894,11 @@ const unit3Lessons = [
           'Moivre sagt: Argument wird ver-$n$-facht.',
           '$n = 2$: Winkel verdoppeln.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Das würde nur passieren, wenn $|z|<1$ — für Zahlen *im Inneren* des Einheitskreises schrumpft der Betrag beim Potenzieren. Auf dem Einheitskreis ($|z|=1$) bleibt $|z^2|=1^2=1$, der Punkt verlässt den Kreis nicht.',
+          2: 'Spiegelung an der reellen Achse entspricht der *Konjugation* $z \\mapsto \\bar z$ (Vorzeichen von $\\operatorname{Im}$ kippen), nicht dem Quadrieren. $z \\mapsto z^2$ verdoppelt das Argument, was nur im speziellen Fall $\\varphi=\\pi$ auf Spiegelung hinausläuft.',
+          3: 'Nur $z=1$ und $z=0$ sind Fixpunkte von $z \\mapsto z^2$. Für alle anderen Punkte auf dem Einheitskreis (z.B. $z=i$) ändert sich das Argument: $i^2=-1$, also wandert der Punkt tatsächlich.',
+        },
       },
       {
         type: 'matching',
@@ -853,6 +963,11 @@ const unit3Lessons = [
       'Moivre: $z^4 = (\\sqrt{2})^4 \\cdot e^{i \\cdot 4 \\cdot \\pi/4} = 4 \\cdot e^{i\\pi}$.',
       '$e^{i\\pi} = -1$, also $z^4 = 4 \\cdot (-1) = -4$.',
     ],
+    masteryWrongAnswerExplanations: {
+      1: 'Vorzeichen vergessen. Der Betrag $(\\sqrt{2})^4=4$ stimmt, aber das neue Argument ist $4 \\cdot \\pi/4=\\pi$ — das entspricht $e^{i\\pi}=-1$, nicht $+1$. Ergebnis: $4 \\cdot (-1)=-4$.',
+      2: 'Das wäre $z^2=(1+i)^2=2i$ (Argument $\\pi/2$, Betrag $2$). Für $z^4$ wird das Argument *vier*fach, also $4 \\cdot \\pi/4=\\pi$ (negative reelle Achse), nicht $\\pi/2$.',
+      3: 'Das wäre $z^6$ oder $z^{-2}$: $6 \\cdot \\pi/4 = 3\\pi/2$, $e^{i \\cdot 3\\pi/2}=-i$. Bei $z^4$ landet man aber bei $4 \\cdot \\pi/4=\\pi$, nicht $3\\pi/2$. Also $-4$, nicht $-4i$.',
+    },
     prerequisites: ['komz-2-2'],
     nextLessonId: 'komz-3-2',
   }),
@@ -901,6 +1016,11 @@ const unit3Lessons = [
           '$16^{1/4}$ = vierte Wurzel aus $16$.',
           '$2^4 = 16$, also $16^{1/4} = 2$.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Das wäre die *Quadratwurzel* $16^{1/2}=4$, nicht die *vierte* Wurzel. Vierte Wurzel bedeutet Exponent $1/4$: $16^{1/4}=2$, weil $2^4=16$.',
+          2: 'Das ist $|w|=16$ selbst, nicht die vierte Wurzel daraus. Die $n$-ten Wurzeln liegen auf einem Kreis mit Radius $|w|^{1/n}$, nicht $|w|$.',
+          3: '$\\sqrt{2}$ wäre $16^{1/8}$ oder $2^{1/2}$ — zu kleine Exponenten. Richtig: $16^{1/4}=2$, denn $2^4=2 \\cdot 2 \\cdot 2 \\cdot 2=16$.',
+        },
       },
       {
         type: 'true-false',
@@ -933,6 +1053,11 @@ const unit3Lessons = [
           '$n = 3$: Winkel $0, 2\\pi/3, 4\\pi/3$.',
           'Also $e^{i \\cdot 0}, e^{i 2\\pi/3}, e^{i 4\\pi/3}$.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Test: $(-1)^3=-1 \\neq 1$, also ist $-1$ keine dritte Einheitswurzel. Ebenso $i^3=-i \\neq 1$. Die Winkelabstände müssen $2\\pi/3=120°$ sein, nicht beliebig.',
+          2: 'Winkelabstände ungleich: $\\pi/3, \\pi/3, \\pi/3$ ergeben keine *gleichmäßige* Verteilung auf dem Einheitskreis. Dritte Einheitswurzeln haben Winkel $0, 2\\pi/3, 4\\pi/3$ — Abstand $2\\pi/3$, nicht $\\pi/3$.',
+          3: 'Das sind die vierten Einheitswurzeln (Lösungen von $z^4=1$): vier Punkte mit Abstand $\\pi/2=90°$. Für $z^3=1$ brauchen wir drei Punkte mit Abstand $2\\pi/3=120°$.',
+        },
       },
       {
         type: 'number-input',
@@ -983,6 +1108,11 @@ const unit3Lessons = [
           'Kann $0$ eine Lösung sein?',
           '$0^n = 0$, aber wir brauchen $1$.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Diese Aussage ist *richtig* (und damit keine falsche Antwort). Einheitswurzeln erfüllen $z^n=1$, also $|z|^n=1$, d.h. $|z|=1$. Gefragt ist aber die *falsche* Aussage — das ist „Eine Wurzel ist $0$".',
+          2: 'Diese Aussage ist *richtig* — die Summe aller $n$-ten Einheitswurzeln ist für $n \\geq 2$ tatsächlich $0$ (Folge der Vieta-Formeln angewendet auf $z^n-1=0$). Gefragt ist die *falsche* Aussage.',
+          3: 'Diese Aussage ist *richtig* — die $n$ Einheitswurzeln bilden genau die Ecken eines regelmäßigen $n$-Ecks auf dem Einheitskreis, mit Winkelabstand $2\\pi/n$. Gefragt ist die *falsche* Aussage.',
+        },
       },
       {
         type: 'sorting',
@@ -1013,6 +1143,11 @@ const unit3Lessons = [
       'Formel: $z_k = |w|^{1/n} e^{i(\\varphi + 2\\pi k)/n}$, $k = 0, 1, \\ldots, n-1$.',
       '$8 = 8 e^{i \\cdot 0}$: drei Wurzeln mit $k=0,1,2$, gleichverteilt auf dem Kreis $|z|=2$.',
     ],
+    masteryWrongAnswerExplanations: {
+      1: 'Nur im Reellen hat $z^3=8$ eine Lösung ($z=2$). Im Komplexen liefert der Fundamentalsatz der Algebra *genau* $3$ Lösungen — die reelle $2$ plus zwei komplex-konjugierte Wurzeln $2e^{\\pm 2\\pi i/3}$.',
+      2: 'Das wäre bei $z^2=w$. Bei dritten Wurzeln ($n=3$) gibt es *drei* Lösungen, nicht zwei. Die Anzahl der Wurzeln entspricht immer dem Exponenten $n$.',
+      3: 'Endlich viele! Eine Polynomgleichung $z^n-w=0$ vom Grad $n$ hat in $\\mathbb{C}$ *höchstens* $n$ Lösungen (Fundamentalsatz). Für $w \\neq 0$ sind es genau $n$, hier also $3$.',
+    },
     prerequisites: ['komz-3-1'],
     nextLessonId: 'komz-pruefung-1',
     isExam: false,
@@ -1105,6 +1240,11 @@ const unit4Lessons = [
           'Zähler = Imaginärteil (40), Nenner = Realteil (30).',
           '$\\arctan(4/3) \\approx 53{,}1°$.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Zähler und Nenner vertauscht: Phasenwinkel ist $\\arctan(\\operatorname{Im}/\\operatorname{Re})=\\arctan(40/30)$, nicht $\\arctan(30/40)$. Der Imaginärteil steht oben, der Realteil unten.',
+          2: '$90°$ entspräche einer reinen Induktivität ($R=0$). Hier ist $R=30 \\neq 0$, also liegt der Phasenwinkel zwischen $0°$ (rein ohmisch) und $90°$ (rein induktiv). Konkret $\\arctan(40/30) \\approx 53{,}1°$.',
+          3: '$0°$ entspräche einem rein ohmschen Widerstand ($\\omega L=0$). Hier ist aber $\\omega L=40 \\neq 0$, also gibt es eine Phasenverschiebung. Konkret $\\arctan(40/30) \\approx 53{,}1°$.',
+        },
       },
       {
         type: 'multiple-choice',
@@ -1121,6 +1261,11 @@ const unit4Lessons = [
           '$\\max |\\cos(\\cdot)| = 1$.',
           'Amplitude = $|U_0| = 10$, unabhängig von der Phase.',
         ],
+        wrongAnswerExplanations: {
+          1: '$10\\cos(\\pi/3)=5$ ist der Wert bei $t=0$, *nicht* das Maximum. Das Maximum von $10\\cos(\\omega t+\\pi/3)$ über alle $t$ ist $10$ (wenn $\\omega t + \\pi/3 = 0$ modulo $2\\pi$). Die Phase verschiebt nur, sie reduziert die Amplitude nicht.',
+          2: 'Der Betrag wurde nicht quadriert/korrekt berechnet. $|U_0|=|10 \\cdot e^{i\\pi/3}|=10 \\cdot |e^{i\\pi/3}|=10 \\cdot 1=10$, nicht $\\sqrt{10}$. Die Exponentialfunktion hat Betrag $1$.',
+          3: 'Das ist ein imaginärer Wert — aber $\\hat u(t)$ ist per Definition als $\\operatorname{Re}(\\cdot)$ *reell*. Die Amplitude einer reellen Schwingung ist eine reelle Zahl, nicht $10i$.',
+        },
       },
       {
         type: 'true-false',
@@ -1167,6 +1312,11 @@ const unit4Lessons = [
           '$(2+2i)(2-2i) = 2^2 - (2i)^2 = 4 + 4 = 8$.',
           'Nenner: $2+2i + 2-2i = 4$.',
         ],
+        wrongAnswerExplanations: {
+          1: '$(2i)^2$ wurde als $+4$ gerechnet (Vorzeichen vergessen). Richtig: $(2i)^2=4i^2=-4$, also $(2+2i)(2-2i)=4-(-4)=8$. Dann $Z_{ges}=8/4=2\\,\\Omega$, nicht $4\\,\\Omega$.',
+          2: '$\\sqrt{2}\\,\\Omega$ wäre der Wurzelwert einer anderen Rechnung. Die Parallelschaltung von $Z_1$ und $Z_2$ ist direkt $Z_1 Z_2/(Z_1+Z_2)=8/4=2\\,\\Omega$ — keine Wurzel nötig.',
+          3: 'Nenner wurde als $0$ gerechnet. $Z_1+Z_2=(2+2i)+(2-2i)=4$ (nicht $0$). Imaginärteile heben sich weg, aber $4+0i=4$, nicht $0$. Teilen durch $0$ wäre hier auch nicht sinnvoll.',
+        },
       },
       {
         type: 'sorting',
@@ -1200,6 +1350,11 @@ const unit4Lessons = [
       'Bei Impedanzen ist $|Z|$ der Scheinwiderstand in Ohm.',
       '$\\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$.',
     ],
+    masteryWrongAnswerExplanations: {
+      1: 'Komponenten addiert statt Pythagoras. $3+4=7$ ist linear, aber der Betrag ist der euklidische Abstand: $\\sqrt{9+16}=\\sqrt{25}=5$.',
+      2: 'Wurzel über die Summe ohne Quadrierung: $\\sqrt{3+4}=\\sqrt{7}$. Korrekt ist aber $\\sqrt{a^2+b^2}=\\sqrt{9+16}=\\sqrt{25}=5$ — die Komponenten müssen *zuerst* quadriert werden.',
+      3: 'Das ist $a^2+b^2=9+16=25$ ohne Wurzel. $|Z|$ ist die *Wurzel* aus der Summe der Quadrate: $\\sqrt{25}=5$, nicht $25$.',
+    },
     prerequisites: ['komz-3-2'],
     nextLessonId: 'komz-pruefung-2',
   }),
@@ -1248,6 +1403,11 @@ const unit4Lessons = [
           'Hauptwert: $\\varphi \\in (-\\pi, \\pi]$.',
           'Negative imaginäre Achse → Winkel $-\\pi/2$.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Vorzeichen des Arguments falsch: $-i$ liegt auf der *negativen* imaginären Achse (unterhalb der reellen Achse), also $\\varphi=-\\pi/2$, nicht $+\\pi/2$. $e^{+i\\pi/2}=+i$ wäre oben.',
+          2: 'Betrag $-1$ ist unmöglich — ein Betrag ist per Definition nichtnegativ. $|-i|=|{-i}|=\\sqrt{0^2+(-1)^2}=+1$, also Vorfaktor $+1$, nicht $-1$.',
+          3: '$e^{i\\pi}=-1$, liegt auf der *negativen reellen* Achse. $-i$ liegt aber auf der *negativen imaginären* Achse mit Winkel $-\\pi/2$, nicht $\\pi$.',
+        },
       },
       {
         type: 'number-input',
@@ -1286,6 +1446,11 @@ const unit4Lessons = [
           '$5\\pi/6 - \\pi/3$ auf gemeinsamen Nenner (6).',
           '$5\\pi/6 - 2\\pi/6 = 3\\pi/6 = \\pi/2$.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Addition statt Subtraktion der Argumente. Bei Division werden die Argumente *subtrahiert*: $5\\pi/6 - \\pi/3 = \\pi/2$, nicht addiert ($5\\pi/6 + \\pi/3 = 7\\pi/6$).',
+          2: 'Argumente dividiert statt subtrahiert: $(5\\pi/6)/( \\pi/3)= 5/2$ oder ähnlich ergäbe nie $5\\pi/18$. Bei Division *mit gleicher Basis e* werden *Exponenten subtrahiert*: $5\\pi/6-\\pi/3=\\pi/2$.',
+          3: 'Beträge addiert statt dividiert: $12/3=4$, nicht $12 \\cdot 3/?=9$. Der Betrag ist Quotient $r_1/r_2=4$. Argument stimmt, aber Vorfaktor falsch.',
+        },
       },
       {
         type: 'true-false',
@@ -1355,6 +1520,11 @@ const unit4Lessons = [
           'Im 3. Quadrant muss das Argument im Hauptwert zwischen $-\\pi$ und $-\\pi/2$ liegen.',
           'Korrektur: $\\arctan(b/a) \\pm \\pi$ je nach Quadrant.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Falsch — arctan ist für alle reellen Argumente (inkl. negative) definiert, liefert aber Werte in $(-\\pi/2,\\pi/2)$. Das Kernproblem ist die eingeschränkte Bildmenge, nicht die Definiertheit.',
+          2: 'Betrag und Argument sind unabhängige Größen. $\\arg z$ hängt nur vom Verhältnis der Komponenten und deren Vorzeichen ab, nicht vom Betrag. Der Fehler liegt bei der Quadranten-Behandlung von arctan.',
+          3: 'Die Lösung ist falsch: $z=-1-i$ liegt im 3. Quadrant, Winkel muss also $\\in (-\\pi,-\\pi/2)$ liegen. Der Wert $\\pi/4$ läge im 1. Quadrant. Richtig: $\\arg(-1-i) = -3\\pi/4$.',
+        },
       },
       {
         type: 'sorting',
@@ -1393,6 +1563,11 @@ const unit4Lessons = [
       'Argumente: $\\pi/3 + \\pi/6$ — auf gleichen Nenner bringen.',
       '$\\pi/3 = 2\\pi/6$, also $2\\pi/6 + \\pi/6 = 3\\pi/6 = \\pi/2$.',
     ],
+    masteryWrongAnswerExplanations: {
+      1: 'Argumente falsch addiert. $\\pi/3+\\pi/6$ auf gemeinsamen Nenner 6: $2\\pi/6+\\pi/6=3\\pi/6=\\pi/2$, nicht $\\pi/4$. $\\pi/4$ wäre der Durchschnitt, aber bei Multiplikation werden Argumente *addiert*.',
+      2: 'Beträge addiert statt multipliziert: $2+3=5$. Bei Multiplikation komplexer Zahlen werden die Beträge *multipliziert*: $2 \\cdot 3=6$, nicht $5$.',
+      3: 'Argumente multipliziert statt addiert: $(\\pi/3) \\cdot (\\pi/6)=\\pi^2/18$. Bei gleicher Basis $e$ werden *Exponenten addiert*: $\\pi/3+\\pi/6=\\pi/2$.',
+    },
     masteryVisualization: {
       id: 'complex-plane',
       params: { initialZ1: { a: 1, b: Math.sqrt(3) }, range: 7 },
@@ -1468,6 +1643,11 @@ const unit4Lessons = [
           'Das sind $1, i, -1, -i$.',
           'Die Zahl $e^{i\\pi/4}$ liegt **zwischen** zwei vierten Einheitswurzeln.',
         ],
+        wrongAnswerExplanations: {
+          1: '$1^4=1$ ✓ — also *ist* $1$ eine Lösung. Die Frage verlangt eine Zahl, die *nicht* Lösung ist. $1$ ist die erste Einheitswurzel ($k=0$).',
+          2: '$(-1)^4=1$ ✓ — also *ist* $-1$ eine Lösung (vierte Einheitswurzel mit $\\varphi=\\pi$). Die Frage verlangt eine Zahl, die *nicht* Lösung ist.',
+          3: '$i^4=1$ ✓ — also *ist* $i$ eine Lösung (vierte Einheitswurzel mit $\\varphi=\\pi/2$). Die Frage verlangt eine Zahl, die *nicht* Lösung ist.',
+        },
       },
       {
         type: 'multiple-choice',
@@ -1484,6 +1664,11 @@ const unit4Lessons = [
           'Er hat nur eine reelle Lösung — die anderen sind komplex.',
           'Drei Wurzeln gleichmäßig auf dem Kreis $|z| = 2$ verteilt.',
         ],
+        wrongAnswerExplanations: {
+          1: 'Der Student denkt, er hat alle Lösungen — aber er hat nur eine. Der Fundamentalsatz liefert drei: zwei davon sind komplex-konjugiert und fehlen bei naiver reeller Wurzelziehung.',
+          2: 'Nur eine Lösung fehlt? Nein — der Student hat eine reelle Lösung ($-2$), aber es fehlen *beide* komplexen Wurzeln $1 \\pm i\\sqrt{3}$. Das sind zwei fehlende Lösungen.',
+          3: 'Drei Lösungen fehlen wäre der Fall, wenn der Student *keine* Lösung gefunden hätte. Er hat $-2$ korrekt identifiziert — es fehlen nur die zwei komplexen Partner. Insgesamt drei Lösungen, davon hat er eine.',
+        },
       },
       {
         type: 'true-false',
@@ -1572,6 +1757,11 @@ const unit4Lessons = [
       'Wurzelformel: $z_k = 1^{1/2} \\cdot e^{i(\\pi/2 + 2\\pi k)/2}$, $k=0,1$.',
       '$k=0$: Exponent $\\pi/4$. $k=1$: Exponent $(\\pi/2+2\\pi)/2 = 5\\pi/4$.',
     ],
+    masteryWrongAnswerExplanations: {
+      1: 'Das wären $z^1=i$ und $z^2=-1$, nicht die beiden Quadratwurzeln. Bei Wurzeln *halbiert* sich das Argument: $z_0^2=e^{i\\pi/2}=i$ verlangt $z_0=e^{i\\pi/4}$.',
+      2: 'Winkelabstand falsch. Zwei Quadratwurzeln müssen Winkelabstand $2\\pi/2=\\pi$ haben (gegenüberliegende Punkte auf dem Kreis). $\\pi/4$ und $3\\pi/4$ haben nur Abstand $\\pi/2$ — das wären vierte Wurzeln.',
+      3: 'Wegen des Fundamentalsatzes hat $z^n=w$ *genau* $n$ Lösungen — hier also $2$. Die zweite Wurzel ist $-e^{i\\pi/4}=e^{i(\\pi/4+\\pi)}=e^{i5\\pi/4}$.',
+    },
     prerequisites: ['komz-pruefung-2'],
     nextLessonId: null,
   }),

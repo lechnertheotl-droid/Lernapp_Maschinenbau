@@ -12,6 +12,11 @@ export const exercises_abl_u1 = {
       'Den Scheitelpunkt der Kurve',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Die Fläche unter der Kurve ist das *Integral* $\\int f(x)\\,dx$, nicht die Ableitung. Ableiten und Integrieren sind zueinander inverse Operationen — die Ableitung misst die Steigung, nicht die Fläche.',
+      2: 'Der $y$-Achsenabschnitt ist einfach $f(0)$ — ein einzelner Funktionswert, keine Steigung. Die Ableitung $f\'(x)$ ist hingegen die Steigung der Tangente in $x$ und ändert sich im Allgemeinen mit $x$.',
+      3: 'Der Scheitelpunkt ist ein spezieller Punkt (z.B. Extremum einer Parabel), aber kein Konzept der Ableitung allgemein. $f\'(x)$ beschreibt an *jeder* Stelle $x$ die Tangentensteigung — am Scheitelpunkt ist diese zufällig $0$, aber das ist nur ein Einzelfall.',
+    },
     explanation: `**Ansatz:** Die Ableitung misst die *momentane Änderungsrate* — geometrisch ist das die Steigung der Tangente.
 
 **Rechnung:** $f'(x_0)$ liefert die Steigung der Geraden, die die Kurve $y = f(x)$ im Punkt $(x_0, f(x_0))$ berührt (Tangente). Sie wird über den Grenzwert des Differenzenquotienten definiert: $f'(x_0) = \\lim_{h \\to 0} \\frac{f(x_0+h) - f(x_0)}{h}$.
@@ -35,6 +40,11 @@ export const exercises_abl_u1 = {
       'Die Fläche unter $f$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Die mittlere Steigung auf $[x, x+h]$ ist der Differenzenquotient *ohne* Grenzübergang — also für endliches $h$. Der entscheidende Zusatz „für $h \\to 0$" macht aus der Sekantensteigung (mittlere Steigung) die Tangentensteigung (momentane Steigung).',
+      2: 'Der Funktionswert $f(x)$ taucht zwar im Zähler auf, wird aber mit $f(x+h)$ verrechnet und durch $h$ geteilt. Der Differenzenquotient misst eine Steigung (Veränderung pro Einheit $x$), nicht den Funktionswert selbst.',
+      3: 'Die Fläche unter $f$ ist das Integral $\\int f(x)\\,dx$ und entsteht aus einem Grenzwert von Riemann-*Summen*, nicht aus einem Differenzenquotienten. Differenzen im Zähler $\\Rightarrow$ Steigung, Summen $\\Rightarrow$ Fläche.',
+    },
     explanation: `**Ansatz:** Für endliches $h$ ist der Differenzenquotient die *mittlere* Steigung (Sekante). Für $h \\to 0$ werden die beiden Punkte identisch — Sekante wird Tangente.
 
 **Rechnung:** $f'(x) = \\lim_{h \\to 0} \\dfrac{f(x+h) - f(x)}{h}$ (Differentialquotient).
@@ -58,6 +68,11 @@ export const exercises_abl_u1 = {
       'An Sprungstellen von $f$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Hier werden Nullstellen ($f(x)=0$) mit Extremstellen ($f\'(x)=0$) verwechselt — zwei verschiedene Bedingungen an zwei verschiedenen Funktionen. Beispiel: $f(x)=x^2-4$ hat Nullstellen bei $x=\\pm 2$ (dort ist $f=0$, aber $f\'=\\pm 4\\ne 0$), und ein Minimum bei $x=0$ (dort ist $f\'=0$, aber $f=-4\\ne 0$).',
+      2: 'Dort wo $f$ wächst, ist $f\'(x) > 0$ (positive Steigung), nicht $f\'(x)=0$. Die Ableitung ist nur an den „Umkehrpunkten" $0$ — dort wo Wachstum in Fallen umschlägt oder umgekehrt, also an Extrema.',
+      3: 'An Sprungstellen ist $f$ gar nicht differenzierbar — die Ableitung $f\'(x)$ existiert dort nicht, ist also weder $0$ noch sonst eine Zahl. Die Bedingung $f\'(x)=0$ setzt voraus, dass $f\'$ an dieser Stelle überhaupt definiert ist.',
+    },
     explanation: `**Ansatz:** An einem lokalen Hoch- oder Tiefpunkt verläuft die Tangente horizontal — also Steigung $0$.
 
 **Rechnung:** $f'(x_0) = 0$ ist die *notwendige* Bedingung für ein lokales Extremum (Satz von Fermat). Umgekehrt gilt nicht jede Stelle mit $f'(x_0)=0$ als Extremum (Sattelpunkte wie bei $f(x) = x^{3}$).
@@ -81,6 +96,11 @@ export const exercises_abl_u1 = {
       'Weil Extrema nur am Rand vorkommen',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: '$f(x_0)=0$ ist die Bedingung für eine *Nullstelle*, nicht für ein Extremum. Eine Funktion kann an einer beliebigen Höhe ein Extremum haben — z.B. hat $f(x)=x^2+5$ ein Minimum bei $x=0$ mit Wert $5$, also $f(0)=5\\ne 0$.',
+      2: 'Die zweite Ableitung muss keineswegs „immer negativ" sein. $f\'\'<0$ bedeutet nur Maximum, $f\'\'>0$ Minimum — beide kommen als Extrema vor. Außerdem geht es bei der Frage um die Unterscheidung *notwendig/hinreichend*, nicht um die Art des Extremums.',
+      3: 'Extrema können sowohl im Inneren des Definitionsbereichs (dort gilt $f\'(x_0)=0$) als auch am Rand vorkommen — und *innere* Extrema sind der Standardfall. Die Aussage ignoriert den Satz von Fermat, um den es hier geht.',
+    },
     explanation: `**Ansatz:** Eine notwendige Bedingung muss erfüllt sein, schließt aber andere Fälle nicht aus. Geometrisch bedeutet $f'(x_0)=0$ nur "waagerechte Tangente" — das kann auch ein Sattelpunkt sein.
 
 **Rechnung:** Gegenbeispiel $f(x) = x^{3}$: $f'(x) = 3x^{2}$, $f'(0) = 0$, aber $f$ wächst streng monoton — also *kein* Extremum. Der Sattelpunkt erfüllt die notwendige Bedingung, ist aber weder Maximum noch Minimum.
@@ -106,6 +126,11 @@ export const exercises_abl_u1 = {
       'Aus diesen Daten folgt nichts',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Vorzeichen verwechselt: $f\'\'(x_0)>0$ heißt Linkskrümmung („Kurve lächelt") $\\Rightarrow$ **Minimum**. Ein Maximum hätte $f\'\'(x_0)<0$ (Rechtskrümmung, „Kurve traurig").',
+      2: 'Für einen Wendepunkt wäre $f\'\'(x_0)=0$ mit Vorzeichenwechsel nötig — hier ist aber $f\'\'(2)>0$ gegeben, also liegt *keine* verschwindende zweite Ableitung vor. Die Bedingungen $f\'=0$ und $f\'\'>0$ sind die klassische Min-Diagnose.',
+      3: 'Doch, das reicht! Der hinreichende $f\'\'$-Test besagt: $f\'(x_0)=0$ und $f\'\'(x_0)>0$ $\\Rightarrow$ lokales Minimum. Beispiel $f(x)=(x-2)^2$: $f\'(2)=0$, $f\'\'(2)=2>0$, und das Minimum ist eindeutig bei $x=2$.',
+    },
     explanation: `**Ansatz:** Zusammenspiel von $f'$ (notwendige Bedingung) und $f''$ (hinreichende Bedingung) für Extrema.
 
 **Regel:**
@@ -132,6 +157,11 @@ export const exercises_abl_u1 = {
     question: 'Was ist $(x^{n})\'$?',
     options: ['$x^{n-1}$', '$n \\cdot x^{n-1}$', '$(n+1) \\cdot x^{n}$', '$n \\cdot x^{n}$'],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Der Exponent wurde zwar korrekt um $1$ reduziert, aber der Vorfaktor $n$ fehlt. Die Potenzregel ist „Exponent nach vorn *und* um $1$ reduzieren" — beides gleichzeitig. Test: $(x^3)\' = 3x^2$, nicht $x^2$.',
+      2: 'Hier wurde der Exponent nicht reduziert, sondern *erhöht* ($n+1$), und der Vorfaktor stimmt ebenfalls nicht. Das entspricht eher dem Muster einer *Stammfunktion* $\\int x^n\\,dx = \\tfrac{1}{n+1}x^{n+1}$ — also dem Gegenteil der Ableitung.',
+      3: 'Klassischer Fehler: Vorfaktor korrekt ($n$), aber der Exponent wurde nicht um $1$ reduziert. Test bei $f(x)=x^3$: richtig ist $3x^2$, nicht $3x^3$ — sonst wäre die Ableitung schneller gewachsen als die Funktion selbst.',
+    },
     explanation: `**Ansatz:** Die Potenzregel ist *die* Grundformel der Differentialrechnung für Monome.
 
 **Rechnung:** $(x^{n})' = n \\cdot x^{n-1}$ — der Exponent "wandert nach vorn" (wird zum Vorfaktor), und der neue Exponent ist um $1$ kleiner.
@@ -150,6 +180,11 @@ export const exercises_abl_u1 = {
     question: '$f(x) = 3x^{2} + 5x - 2$. Was ist $f\'(x)$?',
     options: ['$6x + 5$', '$3x + 5$', '$6x^{2} + 5$', '$6x - 2$'],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Bei $(3x^2)\'$ wurde der Exponent nicht durch den Vorfaktor multipliziert: Die Potenzregel liefert $3\\cdot 2x = 6x$, nicht $3x$. Vermutlich wurde nur der Exponent nach unten „geschoben" ohne den $2$ als Faktor einzubeziehen.',
+      2: 'Hier wurde der Exponent *nicht reduziert*: $(3x^2)\' = 6x$ (Exponent um $1$ verringert), nicht $6x^2$. Typischer Flüchtigkeitsfehler — Vorfaktor korrekt berechnet, aber das $x^2$ stehen gelassen.',
+      3: 'Die Konstante $-2$ wurde nicht abgeleitet — sie muss zu $0$ werden ($(c)\'=0$). Außerdem fehlt der Beitrag $(5x)\'=5$. Richtig: Konstante verschwindet, linearer Term gibt den Vorfaktor $5$, quadratischer Term gibt $6x$.',
+    },
     explanation: `**Ansatz:** Summenregel + Faktorregel + Potenzregel: Jeder Summand wird einzeln abgeleitet, konstante Faktoren bleiben, Konstanten fallen weg.
 
 **Rechnung:**
@@ -172,6 +207,11 @@ export const exercises_abl_u1 = {
     question: '$f(x) = \\sqrt{x} = x^{1/2}$. Was ist $f\'(x)$?',
     options: ['$\\dfrac{1}{2\\sqrt{x}}$', '$2\\sqrt{x}$', '$\\dfrac{\\sqrt{x}}{2}$', '$\\dfrac{1}{\\sqrt{x}}$'],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Das ist die doppelte *Funktion selbst*, nicht die Ableitung. Vermutlich wurde $\\tfrac{1}{2}$ als Vorfaktor übernommen, aber beim Exponenten $\\tfrac{1}{2}-1=-\\tfrac{1}{2}$ falsch gerechnet und $x^{1/2}$ wieder erhalten — statt eines Kehrwerts.',
+      2: 'Hier wurde die Wurzel beibehalten statt den Exponenten um $1$ zu reduzieren. Richtig ist $\\tfrac{1}{2}\\cdot x^{1/2-1} = \\tfrac{1}{2}x^{-1/2} = \\tfrac{1}{2\\sqrt{x}}$ — das $x^{-1/2}$ bedeutet $\\sqrt{x}$ muss *in den Nenner* wandern.',
+      3: 'Der Vorfaktor $\\tfrac{1}{2}$ aus der Potenzregel wurde vergessen. $(x^{1/2})\' = \\tfrac{1}{2}\\cdot x^{-1/2}$ — der halbe Exponent bleibt als Vorfaktor erhalten. Test bei $x=4$: richtig $\\tfrac{1}{4}$, falsch $\\tfrac{1}{2}$.',
+    },
     explanation: `**Ansatz:** Wurzel als Potenz mit gebrochenem Exponenten schreiben, dann Potenzregel.
 
 **Rechnung:** $f(x) = x^{1/2}$. Potenzregel mit $n = \\tfrac{1}{2}$:
@@ -191,6 +231,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
     question: 'Was ist $\\left(\\dfrac{1}{x}\\right)\' = (x^{-1})\'$?',
     options: ['$-\\dfrac{1}{x}$', '$\\dfrac{1}{x^{2}}$', '$-\\dfrac{1}{x^{2}}$', '$\\ln(x)$'],
     correctIndex: 2,
+    wrongAnswerExplanations: {
+      0: 'Der Exponent wurde nicht reduziert: $(x^{-1})\' = -1\\cdot x^{-1-1} = -x^{-2}$, nicht $-x^{-1}$. Hier wurde zwar das Vorzeichen korrekt erkannt, aber $x^{-1}$ einfach stehen gelassen — Exponent muss von $-1$ auf $-2$.',
+      1: 'Das Minuszeichen fehlt! Der Vorfaktor aus der Potenzregel ist $n=-1$, also negativ. Richtig ist $-\\tfrac{1}{x^2}$ — anschaulich: $\\tfrac{1}{x}$ fällt für $x>0$, die Ableitung muss also negativ sein.',
+      3: 'Hier liegt eine Verwechslung mit der Integration vor: $\\int \\tfrac{1}{x}\\,dx = \\ln|x|$ (Stammfunktion), nicht Ableitung. In die andere Richtung gilt $(\\ln x)\' = \\tfrac{1}{x}$ — das ist die *umgekehrte* Zuordnung.',
+    },
     explanation: `**Ansatz:** $\\tfrac{1}{x}$ als Potenz schreiben: $x^{-1}$. Dann Potenzregel mit $n = -1$.
 
 **Rechnung:** $(x^{-1})' = -1 \\cdot x^{-1-1} = -x^{-2} = -\\dfrac{1}{x^{2}}$.
@@ -214,6 +259,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
       'Weil Wurzelfunktionen gar keine Ableitung haben',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Zu restriktiv: Die Regel gilt für *alle* reellen Exponenten, nicht nur natürliche Zahlen. Die Herleitung über den Differenzenquotienten nutzt den binomischen Lehrsatz (bzw. bei allgemeinem $\\alpha$ die Taylor-Entwicklung), und funktioniert genauso für $n=\\tfrac{1}{2}$ oder $n=-3$.',
+      2: 'Das stimmt grenzwerttechnisch ($x^n\\to 0$ für $n<0$ und $x\\to\\infty$), aber mit der *Gültigkeit* der Ableitungsregel hat das nichts zu tun. Die Regel $(x^n)\'=nx^{n-1}$ liefert auch für negative Exponenten konkrete, endliche Ableitungen — z.B. $(x^{-2})\'=-2x^{-3}$.',
+      3: 'Falsch: Wurzelfunktionen sind auf ihrem Definitionsbereich ($x>0$) differenzierbar. Beispielsweise ist $(\\sqrt{x})\' = \\tfrac{1}{2\\sqrt{x}}$ wohldefiniert für jedes $x>0$. Nur am Randpunkt $x=0$ wird die Ableitung unendlich (senkrechte Tangente).',
+    },
     explanation: `**Ansatz:** Die Potenzregel gilt allgemein für $n \\in \\mathbb{R}$. Wurzel ($n = 1/2$) und Kehrwert ($n = -1$) sind Spezialfälle.
 
 **Rechnung:** Für $f(x) = x^{\\alpha}$ mit beliebigem $\\alpha \\in \\mathbb{R}$ gilt $f'(x) = \\alpha \\cdot x^{\\alpha - 1}$ (auf dem gültigen Definitionsbereich $x > 0$). Beispiele:
@@ -237,6 +287,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
     question: '$f(x) = 2x^{4} - 3x^{2} + 7$. Berechne $f\'(2)$.',
     options: ['$52$', '$20$', '$40$', '$25$'],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Vermutlich wurde $f\'(x)=8x^2-6x$ statt $8x^3-6x$ gebildet (Exponent bei $(2x^4)\'$ nicht korrekt auf $3$ reduziert). Dann $f\'(2)=8\\cdot 4 - 12 = 32-12=20$. Richtig: $(2x^4)\' = 8x^3$, also $f\'(2)=64-12=52$.',
+      2: 'Hier wurde vermutlich $f\'(x)=8x^3-6x^2$ gebildet ($(-3x^2)\'$ falsch als $-6x^2$ statt $-6x$): Dann $f\'(2)=64-24=40$. Beide Potenzregel-Schritte müssen den Exponenten um genau $1$ reduzieren.',
+      3: 'Vermutlich wurde die Konstante $7$ fälschlich mit abgeleitet zu $7$ oder ähnlich, oder $f\'(2)=64-12-27$ grob gerechnet. Die Konstante $7$ hat Ableitung $0$, und der korrekte Wert ist $f\'(2)=8\\cdot 2^3 - 6\\cdot 2 = 52$.',
+    },
     explanation: `**Ansatz:** Summen-/Faktor-/Potenzregel auf jeden Summanden, dann $x=2$ einsetzen.
 
 **Rechnung:**
@@ -262,6 +317,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
     question: 'Was ist $(\\sin x)\'$?',
     options: ['$-\\sin x$', '$\\cos x$', '$-\\cos x$', '$\\tan x$'],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Das ist $(\\cos x)\'\'$, also die *zweite* Ableitung von $\\sin$ bzw. die Ableitung von $(-\\sin x)$ — nicht die erste Ableitung von $\\sin$. Im Ableitungszyklus $\\sin\\to\\cos\\to-\\sin\\to-\\cos$ steht $-\\sin$ erst an dritter Position.',
+      2: 'Vorzeichen falsch und Funktion vertauscht: Das ist eher $(\\sin x)\'\'\'$ (dritte Ableitung). Die *erste* Ableitung von $\\sin x$ ist $\\cos x$ (ohne Minus) — bei $x=0$ hat $\\sin$ die positive Steigung $+1$, nicht $-1$.',
+      3: '$\\tan x$ hat mit der Ableitung von $\\sin$ nichts zu tun. $\\tan x = \\tfrac{\\sin x}{\\cos x}$ ist eine *andere* Funktion und entsteht z.B. aus der Quotientenregel — nicht einfach durch Ableiten von $\\sin$.',
+    },
     explanation: `**Ansatz:** Eine der Grundableitungen, die du auswendig können musst.
 
 **Rechnung:** $(\\sin x)' = \\cos x$.
@@ -280,6 +340,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
     question: 'Was ist $(\\cos x)\'$?',
     options: ['$\\sin x$', '$\\tan x$', '$-\\sin x$', '$-\\cos x$'],
     correctIndex: 2,
+    wrongAnswerExplanations: {
+      0: 'Das Minuszeichen fehlt — der klassische Cosinus-Fehler. Bei $x=\\pi/2$ fällt $\\cos$ von $1$ auf $0$ (Steigung negativ), also muss $(\\cos x)\'$ dort *negativ* sein. $\\sin(\\pi/2)=1$ kommt mit dem richtigen Vorzeichen $-1$ heraus.',
+      1: '$\\tan x$ taucht beim Ableiten von $\\cos$ nicht auf. Vermutlich Verwechslung mit $\\tan x = \\tfrac{\\sin x}{\\cos x}$, aber das ist eine *Definition*, keine Ableitung. Die Ableitung von $\\cos$ bleibt im sin/cos-Zyklus.',
+      3: 'Falsche Funktion im Zyklus: $(\\cos x)\' = -\\sin x$, nicht $-\\cos x$. Der Zyklus lautet $\\cos\\to-\\sin\\to-\\cos\\to\\sin\\to\\cos$ — nach $\\cos$ kommt $-\\sin$. $-\\cos$ würde erst nach *zwei* Ableitungen entstehen.',
+    },
     explanation: `**Ansatz:** Zweite Grundableitung aus dem trigonometrischen Zyklus.
 
 **Rechnung:** $(\\cos x)' = -\\sin x$. Das Minuszeichen ist entscheidend!
@@ -298,6 +363,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
     question: 'Was ist $(e^{x})\'$?',
     options: ['$x \\cdot e^{x-1}$', '$e^{x}$', '$e \\cdot x$', '$\\dfrac{1}{e^{x}}$'],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Hier wurde die Potenzregel fälschlich auf eine Exponentialfunktion angewandt: $(x^n)\'=nx^{n-1}$ gilt nur, wenn $x$ die *Basis* ist — bei $e^x$ ist $x$ aber der *Exponent*. Die Regeln für $x^n$ und $a^x$ sind verschieden!',
+      2: 'Das entspricht $(ex)\' = e$ für die lineare Funktion $e\\cdot x$, nicht für $e^x$. Verwechslung: $e\\cdot x$ (Produkt) vs. $e^x$ (Exponentialfunktion). Die Exponentialfunktion wächst exponentiell, nicht linear.',
+      3: '$\\tfrac{1}{e^x} = e^{-x}$ ist eine *andere* Funktion. Ihre Ableitung wäre $-e^{-x}$ (mit Kettenregel). Die Ableitung von $e^x$ selbst ist $e^x$ — die Funktion ist ihre eigene Ableitung, das ist die definierende Eigenschaft von $e$.',
+    },
     explanation: `**Ansatz:** Die Exponentialfunktion $e^{x}$ ist die *einzige* Funktion, die mit ihrer Ableitung übereinstimmt — das macht $e$ zur "natürlichen" Basis.
 
 **Rechnung:** $(e^{x})' = e^{x}$.
@@ -316,6 +386,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
     question: 'Was ist $(\\ln x)\'$?',
     options: ['$e^{x}$', '$\\dfrac{1}{x}$', '$x \\cdot \\ln x$', '$-\\dfrac{1}{x}$'],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Verwechslung: $e^x$ ist die *Umkehrfunktion* von $\\ln x$, nicht ihre Ableitung. Umkehrfunktionen sind ein geometrisches Konzept (Spiegelung an der Diagonalen); die Ableitung misst hingegen die Tangentensteigung.',
+      2: '$x\\cdot\\ln x$ sieht nach einer Produktregel aus, aber beim Ableiten von $\\ln x$ selbst gibt es kein Produkt. $(x\\cdot\\ln x)\'$ wäre $\\ln x + 1$ — eine ganz andere Funktion. $(\\ln x)\'$ ist einfach $\\tfrac{1}{x}$.',
+      3: 'Das Vorzeichen ist falsch: $\\ln x$ *steigt* monoton (für $x>0$), also muss die Ableitung *positiv* sein. Anschaulich: $\\ln 1 = 0$, $\\ln 2\\approx 0{,}69$, $\\ln 3\\approx 1{,}10$ — Werte nehmen zu, Steigung also $>0$, nämlich $+\\tfrac{1}{x}$.',
+    },
     explanation: `**Ansatz:** Der natürliche Logarithmus ist die Umkehrfunktion von $e^{x}$. Die Ableitung folgt aus der Umkehrfunktionsregel.
 
 **Rechnung:** $(\\ln x)' = \\dfrac{1}{x}$ für $x > 0$.
@@ -339,6 +414,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
       'Keine Einschränkung — die Formel gilt immer',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Zu restriktiv: $\\ln x$ (und damit $\\tfrac{1}{x}$) ist für *alle* reellen $x>0$ definiert, nicht nur ganze Zahlen. $\\ln(1{,}5)$, $\\ln(\\pi)$ oder $\\ln(\\sqrt{2})$ sind wohldefiniert — die Einschränkung auf ganze Zahlen gibt es nicht.',
+      2: 'Genau das Gegenteil ist der Fall: $\\ln x$ ist für $x<0$ (reell) *nicht* definiert, weil kein reeller Exponent $e^y$ eine negative Zahl liefert. Also kann auch die Ableitung $\\tfrac{1}{x}$ dort nicht aus $\\ln$ stammen (nur über $\\ln|x|$ erweitert).',
+      3: 'Doch, eine Einschränkung gibt es: Bei $x=0$ ist sowohl $\\ln x$ als auch $\\tfrac{1}{x}$ nicht definiert (Divergenz), und für $x<0$ existiert $\\ln x$ reell gar nicht. Die Formel braucht den Definitionsbereich $x>0$.',
+    },
     explanation: `**Ansatz:** Die Ableitungsformel ist nur dort gültig, wo die Funktion selbst definiert und differenzierbar ist.
 
 **Rechnung:** $\\ln x$ ist (reell) nur für $x > 0$ definiert. Also ist $(\\ln x)' = \\dfrac{1}{x}$ nur für $x > 0$ sinnvoll. Bei $x = 0$ divergiert sowohl $\\ln x \\to -\\infty$ als auch $1/x \\to \\infty$ — kein Grenzwert.
@@ -364,6 +444,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
       '$\\cos(x) - e^{x} - 6x$',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Der letzte Summand ist falsch abgeleitet: $(-3x^2)\' = -6x$ (Potenzregel — Exponent reduziert), nicht $-3$ (das wäre der konstante Faktor). Vermutlich wurde $(-3x^2)$ mit $(-3x)$ verwechselt.',
+      2: 'Vorzeichenfehler bei $(\\sin x)\'$: Richtig ist $(\\sin x)\' = +\\cos x$ (steigend bei $x=0$), nicht $-\\cos x$. Das Minus gehört zu $(\\cos x)\' = -\\sin x$, nicht umgekehrt.',
+      3: 'Vorzeichenfehler bei $(e^x)\'$: Die Exponentialfunktion ist ihre *eigene* Ableitung, also $(e^x)\' = +e^x$, nicht $-e^x$. $e^x$ ist monoton wachsend, die Ableitung muss positiv sein.',
+    },
     explanation: `**Ansatz:** Summenregel — jeden Summanden einzeln mit der jeweiligen Grundableitung.
 
 **Rechnung:**
@@ -393,6 +478,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
       '$f\'(g(x)) + g\'(x)$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Hier wird die *innere Funktion* beim Auswerten der äußeren Ableitung weggelassen. Bei $\\sin(3x)$ hieße das $\\cos x \\cdot 3$ statt $\\cos(3x)\\cdot 3$ — also die Steigung an der *falschen* Stelle ausgewertet. $f\'$ muss bei $g(x)$ ausgewertet werden, nicht bei $x$.',
+      2: 'Das wäre „innere Ableitung in die äußere Funktion einsetzen" — aber die Kettenregel ist ein *Produkt*, nicht ein Einsetzen. Man leitet die äußere Funktion mit der inneren als Argument ab *und* multipliziert mit der inneren Ableitung.',
+      3: 'Addition statt Multiplikation: Die Kettenregel ist $f\'(g(x)) \\cdot g\'(x)$, kein Summe. Die Addition wäre die Summenregel $(f+g)\'=f\'+g\'$ — aber hier liegt keine Summe vor, sondern eine Verkettung.',
+    },
     explanation: `**Ansatz:** Bei verketteten Funktionen (Funktion in Funktion) gilt die Kettenregel.
 
 **Rechnung:** $[f(g(x))]' = f'(g(x)) \\cdot g'(x)$ — äußere Ableitung (mit innerer eingesetzt) mal innere Ableitung.
@@ -411,6 +501,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
     question: '$f(x) = \\sin(3x)$. Was ist $f\'(x)$?',
     options: ['$\\cos(3x)$', '$3 \\cdot \\cos(3x)$', '$3 \\cdot \\cos(x)$', '$-3 \\cdot \\cos(3x)$'],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Klassischer Kettenregel-Fehler: Die innere Ableitung $(3x)\'=3$ wurde vergessen. Nur äußere Ableitung genommen: $\\cos(3x)$. Die Kettenregel verlangt aber das *Produkt* mit der inneren Ableitung — also $\\cos(3x)\\cdot 3$.',
+      2: 'Beim Auswerten der äußeren Ableitung wurde die innere Funktion weggelassen: $(\\sin u)\' = \\cos u$ mit $u=3x$ ergibt $\\cos(3x)$, nicht $\\cos(x)$. Das $3x$ muss im Argument des Cosinus stehen bleiben.',
+      3: 'Falsches Vorzeichen: $(\\sin)\' = +\\cos$ (ohne Minus). Das Minus gehört zu $(\\cos)\' = -\\sin$ — hier liegt aber $\\sin$ als äußere Funktion vor, also bleibt das Ergebnis positiv: $+3\\cos(3x)$.',
+    },
     explanation: `**Ansatz:** Verkettung: außen $\\sin$, innen $3x$. Kettenregel anwenden.
 
 **Rechnung:**
@@ -432,6 +527,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
     question: '$f(x) = e^{x^{2}}$. Was ist $f\'(x)$?',
     options: ['$e^{x^{2}}$', '$2x \\cdot e^{x^{2}}$', '$x^{2} \\cdot e^{x}$', '$2 \\cdot e^{x^{2}}$'],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Innere Ableitung $(x^2)\'=2x$ vergessen. Die Kettenregel liefert $e^{x^2}\\cdot 2x$, nicht nur $e^{x^2}$. Faustregel: Wenn man $e^{\\text{irgendwas}}$ ableitet, bleibt $e^{\\text{irgendwas}}$ stehen *und* wird mit der Ableitung des Exponenten multipliziert.',
+      2: 'Hier wurden $x^2$ und $e^x$ einfach ausgetauscht, als ob Potenz- und Exponentialbasis dasselbe wären. $e^{x^2}$ ist aber *keine* Potenz in $x$ — der Exponent $x^2$ ist variabel, die Basis $e$ ist konstant. Kettenregel, keine Potenzregel.',
+      3: 'Statt $(x^2)\'=2x$ wurde $(x^2)\'=2$ gerechnet (Exponent als Vorfaktor, aber $x$ weggelassen). Die Potenzregel reduziert $x^2$ zu $2x$ (nicht $2$): Exponent nach vorn *und* Exponent um $1$ verringern ergibt $2x^1=2x$.',
+    },
     explanation: `**Ansatz:** Verkettung: außen $e^{u}$, innen $x^{2}$. Kettenregel.
 
 **Rechnung:**
@@ -458,6 +558,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
       '$10 \\cdot (2x+1)^{5}$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Innere Ableitung $(2x+1)\'=2$ vergessen. Nur die äußere Potenzregel angewandt: $5(2x+1)^4$. Richtig muss man noch mit $2$ multiplizieren, ergibt $10(2x+1)^4$.',
+      2: 'Der Exponent wurde nicht reduziert: $(u^5)\' = 5u^4$, nicht $5u^5$. Richtig $5(2x+1)^4$ (Exponent um $1$ kleiner), dann mal innere Ableitung $2$ ergibt $10(2x+1)^4$.',
+      3: 'Hier sind gleich *beide* Fehler: Exponent nicht reduziert ($u^5$ statt $u^4$) *und* zusätzlich noch mit innerer Ableitung $2$ multipliziert. Richtig ist eines von beiden (Exponent reduzieren) und dann $\\cdot 2$: $5u^4\\cdot 2 = 10(2x+1)^4$.',
+    },
     explanation: `**Ansatz:** Verkettung: außen $u^{5}$, innen $2x+1$. Kettenregel.
 
 **Rechnung:**
@@ -484,6 +589,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
       'Die Ableitung wird doppelt so groß',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Genau das stimmt *nicht* — sonst wäre die Kettenregel überflüssig. Bei $x=0$ liefert $3\\cos(0)=3$, aber ohne innere Ableitung nur $\\cos(0)=1$. Numerisch ergibt sich tatsächlich $\\tfrac{\\sin(3\\cdot 0{,}001)}{0{,}001}\\approx 3$, also ist der Faktor $3$ essenziell.',
+      2: 'Das Weglassen der inneren Ableitung ist ein *Rechenfehler*, keine Definitionsproblem — die Funktion $\\sin(3x)$ ist überall definiert und überall differenzierbar. Der Fehler betrifft den falschen Zahlenwert, nicht die Existenz der Ableitung.',
+      3: 'Genau umgekehrt: *Ohne* die innere Ableitung fehlt der Faktor $3$, die Ableitung ist also um Faktor $3$ zu *klein* (nicht doppelt so groß). Nur ein richtig angewandter Faktor macht sie $3$-fach korrekt.',
+    },
     explanation: `**Ansatz:** Die innere Ableitung stellt sicher, dass die "Geschwindigkeit der inneren Veränderung" korrekt einfließt. Ohne sie skaliert das Ergebnis falsch.
 
 **Rechnung:** Korrekt ist $(\\sin(3x))' = 3\\cos(3x)$. Ohne innere Ableitung bekommt man fälschlich $\\cos(3x)$ — das ist um Faktor $1/3$ zu klein.
@@ -509,6 +619,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
       '$-2x \\cdot \\cos(x^{2}+1)$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Innere Ableitung $(x^2+1)\'=2x$ vergessen. Das Vorzeichen und die Cosinus→Sinus-Umwandlung sind korrekt, aber ohne $2x$ fehlt ein entscheidender Faktor. Bei $x=1$ ergäbe sich $-\\sin(2)$ statt $-2\\sin(2)$.',
+      2: 'Vorzeichenfehler *und* falsche Funktion: $(\\cos u)\' = -\\sin u$ (nicht $+\\cos u$). Zum einen wird Cosinus zu $-\\sin$, zum anderen bleibt die Funktion nicht Cosinus. Klassischer trigonometrischer Ableitungsfehler.',
+      3: 'Die Funktion wurde nicht gewechselt: Die Ableitung von $\\cos$ muss $\\sin$ liefern (nicht $\\cos$). $(\\cos u)\' = -\\sin u$ — sowohl Vorzeichenwechsel als auch Funktionswechsel gehören dazu.',
+    },
     explanation: `**Ansatz:** Verkettung: außen $\\cos u$, innen $x^{2}+1$. Kettenregel.
 
 **Rechnung:**
@@ -537,6 +652,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
       '$f\'(x_{0}) \\neq 0$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: '$f\'\'(x_0)=0$ ist die notwendige Bedingung für *Wendepunkte*, nicht für Extrema. An Extrema kann $f\'\'$ ungleich null sein ($>0$: Min, $<0$: Max) — die Information $f\'\'(x_0)=0$ wäre sogar *schädlich* für den Extrema-Test (Versagen des hinreichenden Kriteriums).',
+      2: '$f(x_0)=0$ ist die Bedingung für *Nullstellen*, nicht für Extrema. Eine Funktion kann bei beliebiger Höhe ein Extremum haben — z.B. hat $f(x)=x^2+100$ ein Minimum bei $x=0$ mit Wert $100$, also $f(0)=100\\ne 0$.',
+      3: 'Genau umgekehrt: $f\'(x_0)\\ne 0$ *schließt* ein Extremum aus — an einem Extremum muss die Tangente waagerecht sein, also Steigung null. Wo $f\'\\ne 0$, ist die Funktion streng monoton lokal, also dort kein Extremum.',
+    },
     explanation: `**Ansatz:** Ein Extremum hat eine waagerechte Tangente — Steigung gleich null.
 
 **Rechnung:** Notwendige Bedingung: $f'(x_{0}) = 0$. Hinreichende Bedingungen: $f''(x_{0}) < 0 \\Rightarrow$ Maximum; $f''(x_{0}) > 0 \\Rightarrow$ Minimum.
@@ -555,6 +675,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
     question: '$f(x) = x^{2} - 4x + 3$. Wo liegt das Minimum?',
     options: ['$x = 1$', '$x = 2$', '$x = 3$', '$x = 4$'],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: '$x=1$ ist eine *Nullstelle* von $f$ ($f(1)=1-4+3=0$), aber kein Extremum. Der Fehler entsteht, wenn man $f(x)=0$ statt $f\'(x)=0$ löst. Das sind zwei verschiedene Bedingungen an zwei verschiedenen Funktionen.',
+      2: '$x=3$ ist die zweite *Nullstelle* von $f$ ($f(3)=9-12+3=0$), aber ebenfalls kein Extremum. Wieder die Verwechslung $f=0$ vs. $f\'=0$. Zwischen den beiden Nullstellen $x=1$ und $x=3$ liegt das Minimum — genau in der Mitte bei $x=2$.',
+      3: 'Vermutlich $f\'(x) = 2x - 4 = 0$ falsch umgeformt: $2x = 4 \\Rightarrow x=2$ (nicht $x=4$). Wahrscheinlich wurde $4$ statt $x=\\tfrac{4}{2}$ notiert — Division durch $2$ vergessen.',
+    },
     explanation: `**Ansatz:** Notwendige Bedingung $f'(x) = 0$, dann hinreichende Bedingung $f''$.
 
 **Rechnung:**
@@ -581,6 +706,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
       '$f\'\'\'(x_{0}) = 0$',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: '$f\'(x_0)=0$ ist die Bedingung für ein *Extremum* (waagerechte Tangente), nicht für einen Wendepunkt. Ein Wendepunkt kann jede Steigung haben — entscheidend ist der Krümmungswechsel, also $f\'\'$, nicht $f\'$.',
+      2: '$f(x_0)=0$ ist eine *Nullstelle* von $f$, aber mit dem Wendepunkt-Begriff nicht verwandt. Eine Funktion kann Wendepunkte bei beliebigen Funktionswerten haben — z.B. hat $f(x)=x^3+5$ einen Wendepunkt bei $x=0$ mit $f(0)=5$.',
+      3: '$f\'\'\'(x_0)=0$ ist gerade *hinderlich* — für einen Wendepunkt ist $f\'\'\'(x_0)\\ne 0$ (als Alternative zum Vorzeichenwechsel) ausreichend. $f\'\'\'(x_0)=0$ macht den Test hingegen *unbrauchbar*, weil das hinreichende Kriterium versagt.',
+    },
     explanation: `**Ansatz:** Ein Wendepunkt ist der Punkt, in dem die Krümmungsrichtung wechselt — mathematisch: Vorzeichenwechsel der zweiten Ableitung.
 
 **Rechnung:** Notwendig: $f''(x_{0}) = 0$. Hinreichend: Vorzeichenwechsel von $f''$ in $x_{0}$ (oder $f'''(x_{0}) \\neq 0$).
@@ -604,6 +734,11 @@ $$f'(x) = \\tfrac{1}{2} \\cdot x^{1/2 - 1} = \\tfrac{1}{2} \\cdot x^{-1/2} = \\d
       'Weil das Vorzeichen von $f$ entscheidet',
     ],
     correctIndex: 1,
+    wrongAnswerExplanations: {
+      0: 'Es gibt keinen Rechenfehler — das Problem ist ein *prinzipielles*. Selbst bei perfekt berechnetem $f\'\'(x_0)=0$ liefert der Test keine Information. Beispiele $x^4$ (Min), $-x^4$ (Max) und $x^3$ (Sattel) zeigen alle drei möglichen Fälle.',
+      2: 'Die Funktion ist bei $f\'\'(x_0)=0$ sehr wohl differenzierbar — z.B. ist $f(x)=x^4$ überall beliebig oft differenzierbar, und dort ist $f\'\'(0)=0$ ganz regulär. Das Problem liegt nur am *Testverfahren*, nicht an der Differenzierbarkeit.',
+      3: 'Das Vorzeichen von $f(x_0)$ (der Funktionswert selbst) ist für die Extremum-Art irrelevant. Entscheidend sind Steigung ($f\'=0$) und Krümmung ($f\'\'$ — oder höhere Ableitungen, wenn $f\'\'=0$). Nur der *Wert* von $f$ sagt über Extrema nichts aus.',
+    },
     explanation: `**Ansatz:** Der $f''$-Test basiert auf der Krümmungsrichtung. Wenn $f''(x_0) = 0$, gibt es keine Krümmungsinformation — weitere Tests nötig.
 
 **Rechnung:** Beispiele für $f'(x_0) = 0$ und $f''(x_0) = 0$:
@@ -634,6 +769,11 @@ Alle drei Funktionen erfüllen $f'(0) = 0$ und $f''(0) = 0$ — der $f''$-Test v
       'Keine Extrema',
     ],
     correctIndex: 0,
+    wrongAnswerExplanations: {
+      1: 'Zuordnung vertauscht: $f\'\'(-1) = -6 < 0$ bedeutet Rechtskrümmung $\\Rightarrow$ Maximum (nicht Minimum). Und $f\'\'(1) = +6 > 0$ bedeutet Linkskrümmung $\\Rightarrow$ Minimum. Merke: „$f\'\'>0 \\Rightarrow$ Minimum (Tal)", „$f\'\'<0 \\Rightarrow$ Maximum (Hügel)".',
+      2: 'Bei $x=0$ ist $f\'(0)=-3\\ne 0$ — also gar kein Kandidat für ein Extremum. Die Nullstellen von $f\'(x)=3x^2-3$ sind $x=\\pm 1$, nicht $x=0$. Bei $x=0$ ist sogar der Wendepunkt ($f\'\'(0)=0$).',
+      3: 'Falsch: $f\'(x) = 3x^2-3 = 3(x^2-1)$ hat Nullstellen bei $x=\\pm 1$, also existieren Extrema. Vielleicht wurde $f\'(x)=3x^2-3$ mit $3x^2=-3$ falsch umgeformt (keine reelle Lösung), aber korrekt ist $3x^2=3 \\Rightarrow x=\\pm 1$.',
+    },
     explanation: `**Ansatz:** Vollständiges Extremwertschema: $f'=0$ lösen, dann $f''$ prüfen.
 
 **Rechnung:**

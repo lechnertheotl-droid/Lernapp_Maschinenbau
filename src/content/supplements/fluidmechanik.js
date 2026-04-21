@@ -1,5 +1,14 @@
-function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined) {
-  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints, ...(visualization ? { visualization } : {}) }
+function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined, wrongAnswerExplanations = undefined) {
+  return {
+    type: 'multiple-choice',
+    question,
+    options,
+    correctIndex,
+    explanation,
+    hints,
+    ...(visualization ? { visualization } : {}),
+    ...(wrongAnswerExplanations ? { wrongAnswerExplanations } : {}),
+  }
 }
 
 function ni(question, correctValue, tolerance, unit, explanation, hints = [], visualization = undefined) {
@@ -31,12 +40,12 @@ function withExamPrefix(exercise, exam) {
 
 function bank(profile) {
   const exercises = [
-    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization),
+    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization, profile.conceptWrongAnswers),
     ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints, profile.calcVisualization),
     tf(profile.trueFalseStatement, profile.trueFalseCorrect, profile.trueFalseExplanation, profile.trueFalseHints),
     matching(profile.matchingQuestion, profile.matchingPairs, profile.matchingExplanation, profile.matchingHints),
     sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints),
-    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints),
+    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints, undefined, profile.errorWrongAnswers),
     ni(profile.transferQuestion, profile.transferAnswer, profile.transferTolerance, profile.transferUnit, profile.transferExplanation, profile.transferHints),
   ]
   return exercises.map((exercise) => withExamPrefix(exercise, profile.exam))
@@ -72,6 +81,11 @@ $$p(h) = p_0 + \rho \cdot g \cdot h$$
       'Die Formel $p = \\rho g h$ enthält keine Formgröße.',
       'Druck ist Kraft pro Fläche — die gesamte Gewichtslast wird über die Flächen verteilt.',
     ],
+    conceptWrongAnswers: {
+      1: 'Inkompressibilität erklärt, warum $\\rho = $ const angenommen wird, aber nicht die Formunabhängigkeit des Drucks. Auch kompressible Gase haben — pro Höhe — formunabhängigen hydrostatischen Druck.',
+      2: 'Der Luftdruck wirkt überall gleich und kürzt sich bei Überdruckbetrachtungen weg. Er ist nicht der Grund für das hydrostatische Paradoxon — das liegt an $p = \\rho g h$ ohne Formabhängigkeit.',
+      3: 'Die feste Dichte von Wasser ($1000$ kg/m³) erklärt nicht die Formunabhängigkeit — auch andere Flüssigkeiten (Öl, Quecksilber) zeigen dasselbe Verhalten. Entscheidend ist die Formel ohne Flächenterm.',
+    },
     calcVisualization: {
       id: 'function-graph',
       params: {
@@ -146,6 +160,11 @@ $$p(h) = p_0 + \rho \cdot g \cdot h$$
       'Merkregel: 10 m Wasser ≈ 1 bar.',
       'Überdruck und Absolutdruck unterscheiden.',
     ],
+    errorWrongAnswers: {
+      1: '3 bar sind in 30 m Tiefe normal — Taucher in $>30$ m Tiefe erleben genau diesen Überdruck. Kein zu hoher Wert, sondern Standardhydrostatik.',
+      2: 'Die Dichte von Wasser ist $1000$ kg/m³ im SI-System, nicht 1. Der Wert 1 gilt nur in CGS-Einheiten (g/cm³). In SI ergibt sich $p = 1000 \\cdot 9{,}81 \\cdot 30 \\approx 294$ kPa.',
+      3: 'Tauchtiefen von 30–40 m sind bei Sporttauchern üblich, tiefer mit Mischgas. Der Druck ist real und entspricht 3 bar Überdruck. Die 10-m-Grenze ist willkürlich.',
+    },
 
     transferQuestion: 'In einer Zisterne steht Öl ($\\rho_{Öl} = 800$ $kg/m^3$) 4 m hoch, darunter 2 m Wasser. Wie groß ist der Überdruck am Boden in kPa?',
     transferAnswer: 51.0,
@@ -186,6 +205,11 @@ $$F_A = \rho_f \cdot V_v \cdot g$$
       'Im Gleichgewicht heben sich Auftrieb und Gewicht auf.',
       'Dichteverhältnis = Eintauchverhältnis.',
     ],
+    conceptWrongAnswers: {
+      1: 'Holz schwimmt teilweise unter Wasser — der getauchte Volumenanteil entspricht dem Dichteverhältnis $\\rho_H/\\rho_W$. Nur bei Dichte 0 schwimmt ein Körper ganz oben.',
+      2: 'Jedes Objekt mit Masse hat Gewicht. Holz (auch Balsa) hat eine Dichte > 0, also auch Gewicht. Ohne Gewicht wäre das Gleichgewicht trivial und kein Eintauchen.',
+      3: 'Die Dichte ist gerade die Schlüsselgröße: $V_v/V = \\rho_H/\\rho_W$. Ohne Dichten kann man den Eintauchanteil nicht bestimmen.',
+    },
 
     calcQuestion: 'Ein Würfel ($V = 0{,}001$ $m^3$, Masse $m = 0{,}6$ kg) wird in Wasser ($\\rho_W = 1000$ $kg/m^3$) getaucht. Wie groß ist die Auftriebskraft, wenn er voll getaucht ist, in N?',
     calcAnswer: 9.81,
@@ -246,6 +270,11 @@ $$F_A = \rho_f \cdot V_v \cdot g$$
       'Das "verdrängte Wasser" = Flüssigkeit, nicht Körper.',
       '$F_A$ hängt nur von Flüssigkeitseigenschaften und verdrängtem Volumen ab.',
     ],
+    errorWrongAnswers: {
+      1: 'Die Formel ist falsch — sie hängt von $\\rho_{Körper}$ ab statt von $\\rho_f$. Richtig: $F_A = \\rho_f V_v g$, unabhängig von der Körpermaterie.',
+      2: 'Das Volumen (der verdrängten Flüssigkeit) ist prinzipiell richtig als $V_v$, aber die Dichte ist falsch zugeordnet. Es müsste Flüssigkeitsdichte sein, nicht Körperdichte.',
+      3: 'Die Auftriebsformel ist geometrieunabhängig — sie gilt für Würfel, Zylinder, Schiffe und beliebige Formen. Entscheidend ist nur das verdrängte Volumen.',
+    },
 
     transferQuestion: 'Ein Holzbalken ($\\rho_H = 600$ $kg/m^3$, Volumen $V = 0{,}02$ $m^3$) schwimmt in Wasser ($\\rho_W = 1000$ $kg/m^3$). Welcher Anteil des Volumens ist getaucht, in Prozent?',
     transferAnswer: 60,
@@ -288,6 +317,11 @@ $$\dot{V} = A_1 \cdot v_1 = A_2 \cdot v_2 = \text{const}$$
       'Kontinuitätsgleichung: $A v = $ const.',
       'Geschwindigkeit ist invers proportional zur Querschnittsfläche.',
     ],
+    conceptWrongAnswers: {
+      1: 'Umgekehrter Effekt: bei Verengung steigt die Geschwindigkeit, nicht sie sinkt. Aus $A_1 v_1 = A_2 v_2$ folgt $v_2 = v_1 \\cdot A_1/A_2 > v_1$ wenn $A_2 < A_1$.',
+      2: 'Die Geschwindigkeit ändert sich sehr wohl — sonst hätte man einen Widerspruch zur Massenerhaltung. Gleiche Wassermenge durch kleineren Querschnitt erfordert höhere Geschwindigkeit.',
+      3: 'Vervierfachen wäre der Fall bei Viertelflächenfaktor ($A_2 = A_1/4$). Bei Halbierung ($A_2 = A_1/2$) verdoppelt sich die Geschwindigkeit: $v_2 = 2 v_1$.',
+    },
 
     calcQuestion: 'In einem Rohr ($A_1 = 0{,}01$ $m^2$) fließt Wasser mit $v_1 = 2$ m/s. An einer Verengung ist $A_2 = 0{,}004$ $m^2$. Wie groß ist $v_2$ in m/s?',
     calcAnswer: 5,
@@ -348,6 +382,11 @@ $$\dot{V} = A_1 \cdot v_1 = A_2 \cdot v_2 = \text{const}$$
       'Kreisformel: $A = \\pi r^2 = \\pi d^2/4$.',
       'Immer mit $r$, nicht $d$ rechnen — oder Faktor 1/4 nicht vergessen.',
     ],
+    errorWrongAnswers: {
+      1: 'Kreisflächen enthalten $\\pi$ per Definition ($A = \\pi r^2$). Der Fehler ist der fehlende Faktor $1/4$ beim Wechsel von $r$ zu $d$: $A = \\pi r^2 = \\pi (d/2)^2 = \\pi d^2/4$.',
+      2: 'Die Formel gilt für den Kreis — nicht fürs Quadrat. Quadratfläche: $A = a^2$. Der Fehler ist die falsche Quadratur beim Durchmesser.',
+      3: 'Der Durchmesser ist irrelevant für die Art des Fehlers. Egal ob $d = 20$ mm oder $d = 200$ mm: ohne Faktor $1/4$ ist die Fläche um Faktor 4 zu groß.',
+    },
 
     transferQuestion: 'Wasser strömt durch Rohr mit $d_1 = 100$ mm und $v_1 = 1$ m/s in eine Verengung $d_2 = 50$ mm. Wie groß ist $v_2$ in m/s?',
     transferAnswer: 4,
@@ -390,6 +429,11 @@ Die drei Terme:
       'Energiebilanz der Strömung.',
       'Eine Komponente wächst, eine andere schrumpft.',
     ],
+    conceptWrongAnswers: {
+      1: 'Widerspricht Bernoulli: $p + \\tfrac{1}{2}\\rho v^2$ = const. Wenn beide gleichzeitig stiegen, wäre die Summe nicht konstant. Gerade der Austausch zwischen beiden Größen macht Bernoulli aus.',
+      2: 'Wenn $v$ steigt und $p$ konstant bliebe, stiege die Summe — Verletzung von Bernoulli. Der statische Druck MUSS fallen, damit die Energiebilanz stimmt.',
+      3: 'Null ist nur ein Grenzfall (z.B. Vakuum im Inneren einer schnellen Düse). Meistens sinkt $p$ deutlich, aber nicht bis auf null — hängt vom Verengungsverhältnis ab.',
+    },
 
     calcQuestion: 'Aus einem Tank mit Füllhöhe $h = 2$ m strömt Wasser am Boden aus. Welche Ausflussgeschwindigkeit in m/s ergibt sich nach Torricelli?',
     calcAnswer: 6.264,
@@ -450,6 +494,11 @@ Die drei Terme:
       'Rohrreibung erzeugt Druckverlust.',
       'Der erweiterte Bernoulli enthält einen Verlustterm.',
     ],
+    errorWrongAnswers: {
+      1: 'Bernoulli gilt grundsätzlich auch in Rohren — nur die Reibung muss zusätzlich bilanziert werden. Die klassische Bernoulli-Gleichung setzt reibungsfrei voraus.',
+      2: 'Reibung behindert die Strömung — sie führt zu Energieverlust, nicht zur Unterstützung. Höhere Pumpleistung ist nötig, um diesen Verlust auszugleichen.',
+      3: 'Die Höhen kürzen sich bei horizontalen Rohren zwar — aber die Reibungsverluste verschwinden dadurch nicht. Der Druckverlust bleibt bestehen.',
+    },
 
     transferQuestion: 'Aus einem Wassertank (Füllhöhe $h = 10$ m) strömt Wasser durch eine Öffnung ins Freie. Welche Ausflussgeschwindigkeit in m/s ergibt sich nach Torricelli?',
     transferAnswer: 14.01,
@@ -493,6 +542,11 @@ Die drei Terme:
       'Kontinuität: Große Fläche → kleine Geschwindigkeit.',
       'Die Spiegelhöhe sinkt langsam — daher $v_{Tank} \\approx 0$.',
     ],
+    conceptWrongAnswers: {
+      1: 'Tanks fließen durchaus — der Spiegel sinkt, wenn Wasser abfließt. Die Näherung $v_1 \\approx 0$ heißt nicht "fließt gar nicht", sondern "fließt vernachlässigbar langsam gegenüber $v_2$".',
+      2: '$h$ ist per Aufgabe endlich (Füllhöhe). Die Vereinfachung kommt aus der Kontinuität, nicht aus einer idealisierten unendlichen Höhe.',
+      3: 'Reibung dominiert in langen Rohren, nicht in einem Tank. Im Tank selbst ist die Strömung laminar und langsam. Kontinuität liefert die Näherung.',
+    },
 
     calcQuestion: 'Durch eine Venturi-Düse ($A_1 = 0{,}01$ $m^2$, $A_2 = 0{,}002$ $m^2$) strömt Wasser. Druckdifferenz $\\Delta p = p_1 - p_2 = 4800$ Pa. Wie groß ist $v_2$ in m/s ($\\rho = 1000$ $kg/m^3$)?',
     calcAnswer: 3.162,
@@ -554,6 +608,11 @@ Die drei Terme:
       'Einheitencheck: $m^2/s^2$ ≠ m/s.',
       'Torricelli enthält $\\sqrt{\\cdot}$ und Faktor 2.',
     ],
+    errorWrongAnswers: {
+      1: '3 m ist eine typische Tankhöhe und liefert bei korrekter Rechnung ca. 7,67 m/s — ein realistischer Wert. Der Fehler liegt bei der Formel, nicht bei der Höhe.',
+      2: 'Torricelli gilt für jede inkompressible Flüssigkeit (Wasser, Öl, etc.) und setzt Bernoulli voraus. Kein auf Luft beschränkter Sonderfall.',
+      3: 'Wasser fließt sehr wohl aus offenen Tanks (Gravitation + Druckdifferenz). Die Formel $v = \\sqrt{2gh}$ beschreibt genau diesen Vorgang — inklusive dem Faktor 2 und der Wurzel.',
+    },
 
     transferQuestion: 'In einem horizontalen Rohr ($\\rho = 1000$ $kg/m^3$) misst man $p_1 = 200$ kPa bei $v_1 = 2$ m/s und $p_2 = ?$ bei $v_2 = 5$ m/s. Wie groß ist $p_2$ in kPa?',
     transferAnswer: 189.5,

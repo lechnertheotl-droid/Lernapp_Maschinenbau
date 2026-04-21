@@ -15,6 +15,11 @@ $$3x + 7 = 22 \\quad | -7 \\\\ 3x = 15 \\quad | :3 \\\\ x = 5$$
 **Probe:** $3 \\cdot 5 + 7 = 15 + 7 = 22$. ✓
 
 **Typischer Fehler:** $x = 7$ entsteht, wenn man vergisst durch $3$ zu teilen. $x = 10$ kommt, wenn man $22$ statt $15$ durch $3$ teilt — achte auf die Reihenfolge!`,
+    wrongAnswerExplanations: {
+      1: 'Du hast die $7$ korrekt subtrahiert und $3x = 15$ erhalten, aber dann vergessen, durch den Koeffizienten $3$ zu teilen, und direkt $x = 15 - 8$ oder eine ähnliche Abkürzung gemacht. Letzter Schritt bei $a \\cdot x = b$ ist immer $x = b / a$, hier also $x = 15 / 3 = 5$.',
+      2: 'Du hast vermutlich $22 / 7 \\approx 3$ gerechnet — also Konstante durch Koeffizient, ohne die $+7$ vorher auf die andere Seite zu bringen. Richtige Reihenfolge: erst $-7$ auf beiden Seiten ($3x = 15$), dann $: 3$ ($x = 5$). Vergiss nie das Waagenprinzip: isoliere $x$ Schritt für Schritt.',
+      3: 'Du hast $22 : 3 \\approx 7{,}33$ gerechnet und auf $10$ aufgerundet, oder direkt $22 - 7 - 5 = 10$ — in beiden Fällen wurde der Schritt $: 3$ auf die falsche Zahl angewandt. Nur die Seite ohne $x$ muss am Ende durch $3$ geteilt werden, und zwar nachdem $7$ abgezogen wurde: $(22-7):3 = 15:3 = 5$.',
+    },
     hints: [
       'Bringe zuerst die Konstante auf die andere Seite. Welche Rechenoperation hebt $+7$ auf?',
       'Regel: Was du links machst, musst du auch rechts machen (Waagenprinzip).',
@@ -58,6 +63,11 @@ Also: Breite $= 5$ cm, Länge $= 10$ cm.
 **Probe:** $U = 2(10 + 5) = 2 \\cdot 15 = 30$ cm. ✓
 
 **Typischer Fehler:** $10$ cm ist die Länge, nicht die Breite — genau lesen, wonach gefragt wird. $7{,}5$ cm entsteht, wenn man $U = l + b$ (Halbumfang) statt $U = 2(l+b)$ verwendet.`,
+    wrongAnswerExplanations: {
+      1: '$10$ cm ist die Länge, nicht die Breite — du hast die richtige Gleichung gelöst, aber die falsche Variable zurückgegeben. Mit $b$ = Breite und $l = 2b$ liefert $U = 2(l+b) = 6b = 30$ den Wert $b = 5$ cm; die Länge ist dann $l = 2 \\cdot 5 = 10$ cm. Lies die Frage genau: gesucht ist die Breite.',
+      2: 'Du hast mit der Halbumfangsformel $U = l + b$ gerechnet statt mit $U = 2(l + b)$. Damit wird $30 = 3b$ und $b = 10$, was falsch ist. Beim Rechteck-Umfang zählst du alle vier Seiten: zwei Längen plus zwei Breiten, also $U = 2l + 2b = 2(l+b)$.',
+      3: '$15$ cm ist der Halbumfang $l + b$ — du hast $30 / 2 = 15$ gerechnet und diesen Wert direkt als Breite genommen. Setze stattdessen $l = 2b$ in $U = 2(l+b)$ ein: $30 = 2 \\cdot 3b = 6b$, also $b = 5$ cm.',
+    },
     hints: [
       'Definiere eine Variable: Sei $b$ die Breite. Wie schreibst du dann die Länge?',
       'Umfangsformel: $U = 2(l + b)$. Setze $l = 2b$ ein.',
@@ -81,6 +91,11 @@ Alternative: Aufholgeschwindigkeit $= v_{2} - v_{1} = 40$ km/h. Zeit $= 160 \\te
 **Probe:** Nach $4$ h hat Zug 2: $120 \\cdot 4 = 480$ km. Zug 1 fährt da schon $6$ h: $80 \\cdot 6 = 480$ km. ✓
 
 **Typischer Fehler:** $2$ h (nur der Vorsprung) oder $6$ h (Gesamtzeit ab Start Zug 1) — lies genau, ab wann gezählt wird.`,
+    wrongAnswerExplanations: {
+      0: '$2$ h ist nur die Vorsprungszeit von Zug 1, nicht die Einholzeit. Der Vorsprung beträgt $s_{0} = 80 \\cdot 2 = 160$ km, und Zug 2 holt mit Differenzgeschwindigkeit $v_{2} - v_{1} = 40$ km/h auf. Einholzeit $= 160 / 40 = 4$ h.',
+      1: 'Du hast vermutlich $120 / 40 = 3$ gerechnet — also die Geschwindigkeit von Zug 2 durch die Aufholgeschwindigkeit, was keine sinnvolle Größe ergibt. Richtig ist: Vorsprung $160$ km dividiert durch Aufholgeschwindigkeit $40$ km/h ergibt $t = 4$ h. Formel: $t = (v_{1} \\cdot 2) / (v_{2} - v_{1})$.',
+      3: '$6$ h ist die Gesamtzeit ab dem Start von Zug 1 ($2$ h Vorsprung $+ 4$ h Einholphase). Gefragt war aber die Zeit ab dem Start von Zug 2 — lies die Angabe genau: „Nach wie vielen Stunden (ab Start des 2. Zuges)". Ab diesem Zeitpunkt braucht Zug 2 noch $4$ h, um den Vorsprung von $160$ km bei $40$ km/h Aufholgeschwindigkeit einzuholen.',
+    },
     hints: [
       'Wie groß ist der Vorsprung des 1. Zuges, bevor der 2. losfährt?',
       'Pro Stunde holt Zug 2 um $v_{2} - v_{1} = 40$ km auf. Wie lange braucht er für $160$ km Vorsprung?',
@@ -126,6 +141,11 @@ Also $x_{1} = 3$, $x_{2} = 2$.
 **Probe:** $3^{2} - 5 \\cdot 3 + 6 = 9 - 15 + 6 = 0$. ✓ $\\quad 2^{2} - 5 \\cdot 2 + 6 = 4 - 10 + 6 = 0$. ✓
 
 **Typischer Fehler:** Vorzeichen bei $-\\frac{p}{2}$ übersehen. Hier ist $p = -5$, also $-\\frac{p}{2} = +2{,}5$ (nicht $-2{,}5$). Deshalb *keine* negativen Lösungen.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast das Vorzeichen bei $-\\dfrac{p}{2}$ falsch gesetzt: mit $p = -5$ ist $-\\dfrac{p}{2} = +2{,}5$ (nicht $-2{,}5$). Wer fälschlich $-2{,}5 \\pm 0{,}5$ rechnet, erhält die Lösungen $-2$ und $-3$. Merke: In der pq-Formel ist das Vorzeichen von $p$ entscheidend — ein Minus wird zum Plus.',
+      2: 'Du hast Vieta angewendet, aber mit Produkt $6 = 1 \\cdot 6$ statt $2 \\cdot 3$. Beide Paare erfüllen $x_{1} \\cdot x_{2} = 6$, aber nur $2$ und $3$ haben die nötige Summe $5 = -p$. Bei Vieta immer beide Bedingungen prüfen: $x_{1} + x_{2} = -p$ und $x_{1} \\cdot x_{2} = q$.',
+      3: 'Du hast die Vorzeichen kombiniert vertauscht und so das Paar $-1, -6$ erhalten, das weder Summe $5$ noch Produkt $6$ liefert (Produkt $+6$ stimmt zwar, aber Summe $-7$ nicht). Richtig ist: zwei positive Zahlen mit Summe $5$ und Produkt $6$, das sind $2$ und $3$.',
+    },
     hints: [
       'Bringe die Gleichung in Normalform $x^{2} + px + q = 0$. Hier: $p = -5$, $q = 6$.',
       'Formel: $x_{1,2} = -\\dfrac{p}{2} \\pm \\sqrt{\\left(\\dfrac{p}{2}\\right)^{2} - q}$. Alternativ Vieta: zwei Zahlen mit Summe $5$ und Produkt $6$?',
@@ -149,6 +169,11 @@ Also $x_{1} = 3$, $x_{2} = 2$.
 - $D < 0$: keine reelle Lösung (in $\\mathbb{C}$ gäbe es zwei komplex-konjugierte Lösungen)
 
 **Typischer Fehler:** "Unendlich viele Lösungen" gilt bei der Nullgleichung $0 = 0$ — das hat mit der Diskriminante nichts zu tun.`,
+    wrongAnswerExplanations: {
+      0: 'Zwei verschiedene reelle Lösungen erhältst du nur bei $D > 0$, nicht bei $D < 0$. Hier wäre der Ausdruck unter der Wurzel positiv, und $x_{1,2} = \\dfrac{-b \\pm \\sqrt{D}}{2a}$ hätte zwei verschiedene Werte. Bei $D < 0$ dagegen ist $\\sqrt{D}$ keine reelle Zahl — es gibt keinen reellen Schnittpunkt der Parabel mit der $x$-Achse.',
+      1: 'Genau eine reelle Lösung (Doppelwurzel) tritt nur bei $D = 0$ auf, nicht bei $D < 0$. Geometrisch: Die Parabel berührt die $x$-Achse in genau einem Punkt. Bei $D < 0$ gibt es gar keinen Schnittpunkt — die Parabel liegt komplett über oder unter der $x$-Achse.',
+      3: 'Unendlich viele Lösungen gibt es nur bei trivialen Identitäten wie $0 = 0$ (jede Zahl erfüllt sie). Eine quadratische Gleichung $ax^{2} + bx + c = 0$ mit $a \\neq 0$ hat immer höchstens zwei Lösungen — bei $D < 0$ hat sie in $\\mathbb{R}$ gar keine, in $\\mathbb{C}$ genau zwei komplex-konjugierte.',
+    },
     hints: [
       'In der abc-Formel: Was steht unter der Wurzel?',
       'Regel: $\\sqrt{\\text{negative Zahl}}$ ist nicht reell.',
@@ -199,6 +224,11 @@ $$x_{1} + x_{2} = -(-7) = 7, \\qquad x_{1} \\cdot x_{2} = 12$$
 **Probe durch Raten:** Welche zwei Zahlen addieren sich zu $7$ und multiplizieren sich zu $12$? Antwort: $3$ und $4$. Damit sind $x_{1} = 3$, $x_{2} = 4$ die Lösungen.
 
 **Typischer Fehler:** Das Vorzeichen bei $-p$ vergessen — Antwort B ($x_{1}+x_{2} = -7$) stammt aus diesem Denkfehler. Antwort D verwechselt Summe und Produkt.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast das Minuszeichen bei $-p$ nicht berücksichtigt und $p = -7$ direkt als Summe geschrieben. Vieta sagt aber $x_{1} + x_{2} = -p = -(-7) = +7$. Merke: Der Koeffizient vor $x$ in der Normalform taucht in Vieta mit umgekehrtem Vorzeichen auf.',
+      2: 'Du hast das Vorzeichen bei $q$ falsch gesetzt und aus $+12$ ein $-12$ gemacht. Vieta für Normalform $x^{2} + px + q = 0$ lautet: $x_{1} \\cdot x_{2} = q$ — direkt der Wert von $q$, ohne Vorzeichenwechsel. Hier: $q = +12$, also $x_{1} \\cdot x_{2} = 12$.',
+      3: 'Du hast Summe und Produkt vertauscht: die $12$ ist das Produkt, die $7$ (mit umgedrehtem Vorzeichen aus $p = -7$) ist die Summe. Merkregel: Das konstante Glied $q$ ist das Produkt der Nullstellen; der mittlere Koeffizient (mit Vorzeichen gedreht) ist ihre Summe.',
+    },
     hints: [
       'Satz von Vieta: $x_{1} + x_{2} = -p$ (Minuszeichen beachten!), $x_{1} \\cdot x_{2} = q$.',
       'Hier liest du $p$ und $q$ aus $x^{2} + px + q$ ab: $p = -7$, $q = 12$.',
@@ -222,6 +252,11 @@ Da $D = -31 < 0$, existiert **keine reelle Lösung**.
 **Geometrisch:** Die Parabel $y = 2x^{2} + 3x + 5$ ist nach oben geöffnet ($a = 2 > 0$) und hat ihren Scheitel bei $y > 0$ — sie liegt komplett über der $x$-Achse.
 
 **Typischer Fehler:** Eine negative Zahl unter der Wurzel als "Null" interpretieren oder einfach $\\sqrt{-31}$ reell ziehen wollen. In $\\mathbb{R}$ gibt es diese Lösung nicht.`,
+    wrongAnswerExplanations: {
+      0: 'Zwei reelle Lösungen gäbe es nur bei $D > 0$. Du hast entweder das Vorzeichen beim Rechnen gedreht ($9 + 40 = 49$ statt $9 - 40 = -31$) oder nicht geprüft, ob $D$ positiv oder negativ ist. Richtig: $D = 9 - 40 = -31 < 0$, also keine reelle Lösung.',
+      1: 'Eine Doppelwurzel (eine reelle Lösung) tritt nur bei exakt $D = 0$ auf. Hier ist $D = 9 - 40 = -31$, weit entfernt von null. Bei $D < 0$ berührt die Parabel die $x$-Achse nicht einmal — es existiert kein reeller Schnittpunkt.',
+      3: 'Unendlich viele Lösungen gibt es nur bei trivialen Identitäten wie $0 = 0$. Die Gleichung $2x^{2} + 3x + 5 = 0$ ist eine echte quadratische Gleichung und hat höchstens zwei Lösungen — hier mit $D = -31 < 0$ sogar gar keine reelle.',
+    },
     hints: [
       'Nutze die Diskriminante: $D = b^{2} - 4ac$.',
       'Hier: $a = 2$, $b = 3$, $c = 5$. Rechne $D = 3^{2} - 4 \\cdot 2 \\cdot 5$.',
@@ -274,6 +309,11 @@ Also ist $x = 1$ eine Nullstelle von $P$.
 **Warum $x = \\pm 1, \\pm 2, \\pm 3, \\pm 6$ probieren?** Rationale Nullstellen eines ganzzahligen Polynoms sind Teiler des absoluten Glieds — hier $-6$. Das spart viel Zeit beim Raten.
 
 **Typischer Fehler:** Antwort D ($P(1) = 6$) entsteht, wenn man das Minus vor der $6$ übersieht oder nur $-(-6) = 6$ betrachtet statt den Ausdruck vollständig auszuwerten.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast beim Einsetzen das konstante Glied $-6$ weggelassen oder $1 - 6 + 11 - 6$ als $1 + (-6+11-6) = 1$ falsch gedacht. Richtig summiert: $1 - 6 + 11 - 6 = 0$ (nicht $1$). Rechne Schritt für Schritt: $1 - 6 = -5$, $-5 + 11 = 6$, $6 - 6 = 0$.',
+      2: 'Du hast vermutlich $1 - 6 + 11 - 6 = -1$ gerechnet, z.B. durch Vertauschen der letzten beiden Summanden ($+11 - 6 - 6 = -1$) oder einen Vorzeichenfehler. Korrekt: Reihenfolge beibehalten und Schritt für Schritt: $1 - 6 = -5$, $-5 + 11 = 6$, $6 - 6 = 0$.',
+      3: 'Du hast nur das letzte Glied betrachtet und $-(-6) = 6$ gerechnet, statt das gesamte Polynom auszuwerten. Alle vier Terme müssen aufsummiert werden: $1 - 6 + 11 - 6 = 0$. Zwar schlussfolgerst du richtig „Nullstelle", aber mit falscher Begründung — der Wert $P(1)$ ist $0$, nicht $6$.',
+    },
     hints: [
       'Setze $x = 1$ in $P(x)$ ein und rechne aus.',
       'Teilergebnisse: $1^{3} = 1$, $6 \\cdot 1^{2} = 6$, $11 \\cdot 1 = 11$.',
@@ -297,6 +337,11 @@ Der Quotient ist $x^{2} - 5x + 6$, Rest $0$ — das bestätigt, dass $x=1$ Nulls
 **Alternative Horner-Schema** für $P(x)$ an $x_{0} = 1$: Koeffizienten $1, -6, 11, -6$ und Einträge $1, -5, 6, 0$. Die ersten drei bilden den Quotienten $x^{2} - 5x + 6$, die letzte ist der Rest.
 
 **Typischer Fehler:** Vorzeichenfehler beim Subtrahieren — besonders beim mittleren Schritt $-(-5x^{2} + 5x)$. Immer das *ganze* abgezogene Polynom in Klammern setzen.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast die Polynomdivision gar nicht durchgeführt, sondern einfach den Grad um $1$ reduziert und die Koeffizienten unverändert gelassen ($-6x^{2}$, $+11x$). Das liefert aber nicht $P(x)/(x-1)$. Tatsächlich entstehen beim Dividieren neue Koeffizienten: $x^{3}:x = x^{2}$, dann $x^{2}(x-1) = x^{3} - x^{2}$ abziehen ergibt $-5x^{2}$, usw. Quotient: $x^{2} - 5x + 6$.',
+      2: 'Du hast beim konstanten Glied das Vorzeichen falsch übernommen ($-6$ statt $+6$). Im letzten Schritt der Polynomdivision bleibt $6x - 6$, geteilt durch $(x-1)$ ergibt $+6$ (nicht $-6$). Probe mit $(x-1)(x^{2} - 5x - 6) = x^{3} - 5x^{2} - 6x - x^{2} + 5x + 6 = x^{3} - 6x^{2} - x + 6 \\neq P(x)$.',
+      3: 'Du hast beim mittleren Term das Vorzeichen vertauscht ($+5x$ statt $-5x$). Das passiert typischerweise, wenn man das Subtraktionszeichen beim Abziehen vergisst. Richtig: $-5x^{2}:x = -5x$ (nicht $+5x$). Probe zeigt: $(x-1)(x^{2} + 5x + 6) = x^{3} + 4x^{2} + x - 6 \\neq P(x)$.',
+    },
     hints: [
       'Beginne mit dem Quotienten des führenden Terms: $x^{3} : x = x^{2}$.',
       'Multipliziere $x^{2} \\cdot (x-1) = x^{3} - x^{2}$ und ziehe das vom Dividenden ab.',
@@ -327,10 +372,50 @@ Letzte Zahl in der Summenzeile ist $P(-1) = 0$. ✓
 **Folgerung:** $x = -1$ ist eine Nullstelle; $(x+1)$ teilt $P(x)$. Die übrigen Einträge $2, 1, -1$ ergeben den Quotienten $2x^{2} + x - 1$.
 
 **Typischer Fehler:** Vorzeichen bei $(-1)^{3}$ falsch — das ist $-1$, nicht $+1$. Wer $P(-1) = 2 + 3 - 1 = 4$ rechnet (Antwort D), hat das Minus übersehen.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast vermutlich $2 \\cdot (-1)^{3} = -2$ korrekt, dann aber $3 \\cdot (-1)^{2} + (-1) = 3 - 1 = 2$ ohne die konstante $-1$ am Ende. Vollständige Rechnung: $-2 + 3 - 1 = 0$, nicht $2$. Achte darauf, jeden Term des Polynoms einzeln auszuwerten und korrekt zu summieren.',
+      2: 'Du hast $(-1)^{3} = -1$ vergessen und fälschlich $2 \\cdot (-1)^{3}$ als $+2$ genommen, aber dann das $+3$ zu $-3$ gemacht: $+2 - 3 + (-1) = -2$. Richtig: $(-1)^{3} = -1$ (ungerader Exponent, Vorzeichen bleibt negativ), also $2 \\cdot (-1) = -2$; dann $-2 + 3 - 1 = 0$.',
+      3: 'Du hast das Vorzeichen bei $(-1)^{3}$ falsch gesetzt: $(-1)^{3} = -1$, nicht $+1$. Mit $+1$ würdest du $2 \\cdot 1 + 3 \\cdot 1 - 1 = 4$ erhalten. Merke: Bei ungeraden Exponenten einer negativen Basis bleibt das Vorzeichen negativ; bei geraden Exponenten wird es positiv.',
+    },
     hints: [
       'Denke an Vorzeichen: $(-1)^{3} = -1$, $(-1)^{2} = +1$.',
       'Setze ein: $P(-1) = 2 \\cdot (-1) + 3 \\cdot 1 - 1$.',
       'Addiere die Terme: $-2 + 3 - 1 = ?$',
+    ],
+  },
+  'ex-alg-2-3-d': {
+    id: 'ex-alg-2-3-d', lessonId: 'alg-2-3', type: 'multiple-choice',
+    question: 'Polynomdivision mit Rest: $(x^{2} + 3x + 5) : (x + 2) = ?$',
+    options: [
+      '$x + 1 \\; \\text{Rest} \\; 3$',
+      '$x + 1 \\; \\text{Rest} \\; 7$',
+      '$x + 5 \\; \\text{Rest} \\; 0$',
+      '$x + 3 \\; \\text{Rest} \\; 5$',
+    ],
+    correctIndex: 0,
+    explanation: `**Ansatz:** Polynomdivision Schritt für Schritt. Anders als bei den vorigen Aufgaben ist $x = -2$ hier **keine** Nullstelle — es bleibt ein Rest.
+
+**Rechnung:**
+1. $x^{2} : x = x$. Quotient bisher: $x$.
+2. $x \\cdot (x + 2) = x^{2} + 2x$. Subtrahieren: $(x^{2} + 3x + 5) - (x^{2} + 2x) = x + 5$.
+3. $x : x = 1$. Quotient: $x + 1$.
+4. $1 \\cdot (x + 2) = x + 2$. Subtrahieren: $(x + 5) - (x + 2) = 3$.
+5. Grad des Rests ($0$) ist kleiner als Grad des Divisors ($1$) → fertig.
+
+Also $(x^{2} + 3x + 5) = (x + 1)(x + 2) + 3$.
+
+**Probe:** Einsetzen von $x = -2$ in das Originalpolynom: $4 - 6 + 5 = 3$. Genau der Rest! Das ist kein Zufall — es folgt aus dem **Restsatz**: Rest von $P(x) : (x - a)$ ist $P(a)$.
+
+**Typischer Fehler:** Den Rest unterschlagen („Rest $0$") und einen glatten Quotienten angeben, obwohl $P(-2) \\neq 0$. Immer mit $P(a)$ prüfen, ob Division aufgeht.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast den Quotienten korrekt $x + 1$ bestimmt, aber den Rest falsch berechnet. Im letzten Schritt gilt $(x + 5) - (x + 2) = 3$, nicht $7$. Vermutlich hast du $5 + 2 = 7$ statt $5 - 2 = 3$ gerechnet.',
+      2: 'Du hast $-2$ als Nullstelle angenommen und direkt faktorisiert. Aber Probe: $(-2)^{2} + 3\\cdot(-2) + 5 = 4 - 6 + 5 = 3 \\neq 0$. Da $P(-2) \\neq 0$ ist $(x + 2)$ kein exakter Teiler — es muss ein Rest bleiben, nämlich $3$.',
+      3: 'Du hast die Koeffizienten des Polynoms einfach als Quotient und Rest angeschrieben ohne zu dividieren. Polynomdivision liefert hier $x + 1$ mit Rest $3$, nicht $x + 3$ mit Rest $5$. Prüfe immer durch Rückmultiplikation: $(x + 3)(x + 2) + 5 = x^{2} + 5x + 11 \\neq x^{2} + 3x + 5$.',
+    },
+    hints: [
+      'Dividiere wie bei Zahlen schriftlich — höchster Term zuerst.',
+      'Der Restsatz: Der Rest von $P(x) : (x - a)$ ist immer $P(a)$. Hier: $a = -2$, also $P(-2) = ?$',
+      'Quotient $x + 1$; Probe $P(-2) = 3$ sollte als Rest auftauchen.',
     ],
   },
   'ex-alg-2-3-mastery': {
@@ -359,6 +444,11 @@ Also $x_{2} = 2$, $x_{3} = 1$.
 **Probe:** $P(0) = 0$ ✓, $P(1) = 1 - 3 + 2 = 0$ ✓, $P(2) = 8 - 12 + 4 = 0$ ✓.
 
 **Typischer Fehler:** Das Ausklammern von $x$ vergessen und direkt mit Polynomdivision starten — geht auch, ist aber umständlicher. Antwort D ($x = 0, 1, -2$) entsteht, wenn man Vieta falsch anwendet ("Summe $= p$" statt $-p$).`,
+    wrongAnswerExplanations: {
+      1: 'Du hast alle Vorzeichen gedreht — vermutlich $p = -3$ als $p = +3$ gelesen und damit $x_{2,3} = -1{,}5 \\pm 0{,}5$ gerechnet. In Normalform ist aber $p = -3$ (das Vorzeichen gehört zum Koeffizienten). Korrekt: $-\\dfrac{p}{2} = +1{,}5$, daraus $x_{2} = 2$, $x_{3} = 1$.',
+      2: 'Du hast Nullstellen $1, 2, 3$ genommen (wie beim Beispiel $x^{3} - 6x^{2} + 11x - 6$) und das Ausklammern von $x$ übersehen. Ohne konstantes Glied ist $x = 0$ immer eine Nullstelle: $P(0) = 0$. Die anderen zwei kommen aus $x^{2} - 3x + 2 = 0$: $x = 1$ und $x = 2$.',
+      3: 'Du hast bei Vieta das Vorzeichen vertauscht: für $x^{2} - 3x + 2 = 0$ gilt $x_{1} + x_{2} = +3$ und $x_{1} \\cdot x_{2} = +2$, also $(1, 2)$ — nicht $(1, -2)$. Die Zahlen $1$ und $-2$ haben Produkt $-2$, nicht $+2$, also passen sie nicht.',
+    },
     hints: [
       'Kein konstantes Glied ($+c$) → was kannst du ausklammern?',
       'Nach $P(x) = x (x^{2} - 3x + 2)$: Eine Nullstelle ist sofort ablesbar, die anderen kommen aus der Klammer.',
@@ -382,6 +472,11 @@ $$2x - 3 > 7 \\quad | +3 \\\\ 2x > 10 \\quad | :2 \\; (\\text{positiv, Zeichen b
 **Lösungsmenge:** $\\mathbb{L} = (5, \\infty)$ — offenes Intervall, $5$ nicht eingeschlossen (strenge Ungleichung).
 
 **Typischer Fehler:** "$x > 10$" (Antwort D) entsteht, wenn man vergisst durch $2$ zu teilen. "$x < 5$" kommt, wenn man irrtümlich das Zeichen dreht — das geschieht nur bei *negativem* Divisor.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast $7 - 3 = 4$ statt $7 + 3 = 10$ gerechnet und anschließend durch $2$ geteilt: $x > 2$. Richtig: $-3$ auf die andere Seite bringen heißt $+3$ addieren, nicht subtrahieren. Damit $2x > 10$, also $x > 5$.',
+      2: 'Du hast die Rechnung korrekt gelöst, aber das Ungleichheitszeichen irrtümlich umgedreht. Das Umdrehen ist aber nur bei Multiplikation/Division mit einer *negativen* Zahl nötig — hier teilst du durch $+2$, das Zeichen bleibt. Richtig: $x > 5$, nicht $x < 5$.',
+      3: 'Du hast die $3$ gar nicht verschoben und direkt $7 + 3 = 10$ als Ergebnis genommen, ohne durch $2$ zu teilen. Vollständig: $2x - 3 > 7 \\Rightarrow 2x > 10 \\Rightarrow x > 5$. Der letzte Schritt — Teilen durch den Koeffizienten — darf nie vergessen werden.',
+    },
     hints: [
       'Bringe zuerst die Konstante auf die andere Seite: $2x > 10$.',
       'Teile jetzt durch $2$. Der Divisor ist positiv — das Zeichen bleibt also.',
@@ -405,6 +500,11 @@ $$-3x < 12 \\quad | : (-3) \\; (\\text{negativ! Zeichen dreht}) \\\\ x > -4$$
 **Lösungsmenge:** $\\mathbb{L} = (-4, \\infty)$.
 
 **Typischer Fehler:** Das Umdrehen vergessen — Antwort A ($x < -4$) ist genau der klassische Flüchtigkeitsfehler. Alternativ: Bringe $-3x$ erst auf die andere Seite ($12 + 3x > 0$), dann bist du immer nur mit positiven Zahlen unterwegs.`,
+    wrongAnswerExplanations: {
+      0: 'Du hast beim Teilen durch $-3$ das Ungleichheitszeichen nicht umgedreht und direkt $x < -4$ geschrieben. Das ist der klassische Flüchtigkeitsfehler bei Ungleichungen. Regel: Bei Multiplikation oder Division mit einer negativen Zahl dreht sich "$<$" zu "$>$" um. Probe: $x = 0$ liegt nicht in $x < -4$, aber $-3 \\cdot 0 = 0 < 12$ — also muss $x = 0$ doch zur Lösung gehören.',
+      2: 'Du hast das Vorzeichen beim Teilen ignoriert: $12 : (-3) = -4$, nicht $+4$. Außerdem hast du das Ungleichheitszeichen nicht umgedreht. Richtig ist $x > -4$ (negative Grenze, Zeichen gedreht). Probe mit $x = 0$: $-3 \\cdot 0 = 0 < 12$ ✓; $x = 0$ muss also in der Lösung sein — das passt zu $x > -4$, nicht zu $x < 4$.',
+      3: 'Du hast das Vorzeichen beim Teilen ignoriert ($-4$ → $+4$), aber immerhin das Ungleichheitszeichen korrekt gedreht. Beides zusammen ergibt aber ein falsches Ergebnis: $12 : (-3) = -4$, nicht $+4$. Korrekt: $x > -4$.',
+    },
     hints: [
       'Du musst durch einen negativen Koeffizienten teilen ($-3$). Was passiert mit dem Ungleichheitszeichen?',
       'Regel: Multiplikation/Division mit negativer Zahl dreht "$<$" zu "$>$" (und umgekehrt).',
@@ -426,6 +526,11 @@ $$|x - 3| < 5 \\; \\Leftrightarrow \\; -5 < x - 3 < 5 \\quad | +3 \\; (\\text{in
 **Probe:** $x = 0$: $|0 - 3| = 3 < 5$ ✓. $\\quad x = 8$: $|8 - 3| = 5$, *nicht* $< 5$. Korrekt: $8$ ist nicht in der Lösung.
 
 **Typischer Fehler:** Antwort A ($x < 8$) übersieht die untere Grenze. Antwort D ($-5 < x < 5$) addiert die $+3$ nicht korrekt. Merke: immer beide Ränder mitverschieben.`,
+    wrongAnswerExplanations: {
+      0: 'Du hast nur die obere Grenze betrachtet und die untere vergessen. Betragsungleichungen $|A| < B$ zerfallen immer in *zwei* Bedingungen: $A < B$ *und* $A > -B$. Hier also $x - 3 < 5$ (→ $x < 8$) und $x - 3 > -5$ (→ $x > -2$). Zusammen: $-2 < x < 8$.',
+      2: 'Du hast nur die untere Grenze aus $x - 3 > -5$ behalten ($x > -2$) und die obere vergessen. Der Betrag begrenzt die Lösung auf beiden Seiten: auch $x - 3 < 5$ muss erfüllt sein, also $x < 8$. Vollständig: $-2 < x < 8$.',
+      3: 'Du hast die $+3$ beim Umformen „vergessen mitzunehmen" und direkt $-5 < x < 5$ geschrieben. Tatsächlich musst du $+3$ zu allen drei Teilen addieren: $-5 + 3 < x - 3 + 3 < 5 + 3$, also $-2 < x < 8$. Geometrisch: $|x - 3| < 5$ ist der Abstand vom Zentrum $3$, nicht von $0$.',
+    },
     hints: [
       'Regel: $|A| < B \\Leftrightarrow -B < A < B$. Hier ist $A = x - 3$, $B = 5$.',
       'Setze ein und löse die Doppelungleichung: $-5 < x - 3 < 5$.',
@@ -461,6 +566,11 @@ Gesucht ist "Produkt $> 0$" — das trifft in $x < -2$ und $x > 2$ zu.
 **Probe:** $x = 3$: $9 - 4 = 5 > 0$ ✓. $x = 0$: $0 - 4 = -4$, nicht $> 0$. ✓
 
 **Typischer Fehler:** Antwort C ($-2 < x < 2$) löst $x^{2} - 4 < 0$ (umgekehrtes Zeichen). Antwort A vergisst den negativen Ast. Bei quadratischen Ungleichungen immer *beide* Seiten prüfen!`,
+    wrongAnswerExplanations: {
+      0: 'Du hast nur $x^{2} > 4 \\Rightarrow x > 2$ aufgelöst und den negativen Ast vergessen. Aus $x^{2} > 4$ folgt $|x| > 2$, also $x > 2$ *oder* $x < -2$. Probe mit $x = -3$: $9 - 4 = 5 > 0$ ✓ — also gehört $-3$ zur Lösung, was in „$x > 2$" aber nicht enthalten wäre.',
+      2: 'Du hast die Ungleichung umgekehrt gelöst: $-2 < x < 2$ ist die Lösung von $x^{2} - 4 < 0$, nicht von $x^{2} - 4 > 0$. Die Parabel $y = x^{2} - 4$ liegt *zwischen* den Nullstellen unter der $x$-Achse und *außerhalb* darüber. Gesucht ist „größer als $0$" — also außerhalb: $x < -2$ oder $x > 2$.',
+      3: 'Du hast $x^{2} > 4$ zu $x > 4$ vereinfacht und dabei die Wurzel nicht korrekt gezogen. Aus $x^{2} > 4$ folgt $|x| > 2$ (nicht $x > 4$), also $x > 2$ oder $x < -2$. Probe: $x = 3$ liefert $9 - 4 = 5 > 0$ ✓, liegt aber nicht in „$x > 4$".',
+    },
     hints: [
       'Faktorisiere mit der dritten binomischen Formel: $x^{2} - 4 = (x-2)(x+2)$.',
       'Nullstellen sind $x = -2$ und $x = 2$. Zwischen und außerhalb gelten unterschiedliche Vorzeichen.',
@@ -484,6 +594,11 @@ $$|2x + 1| \\leq 7 \\; \\Leftrightarrow \\; -7 \\leq 2x + 1 \\leq 7 \\quad | -1 
 **Geometrisch:** Die Lösung beschreibt alle $x$, deren "verschobenes Doppeltes" $2x+1$ im Intervall $[-7, 7]$ liegt. Zentrum der Lösungsmenge ist dort, wo $2x+1 = 0$, also $x = -0{,}5$; mit Abstand $3{,}5$ nach links und rechts kommen wir auf $[-4, 3]$.
 
 **Typischer Fehler:** Antwort D ($-4 \\leq x \\leq 4$) vergisst die Verschiebung durch $+1$ — nur das $2x$ wird durch $2$ geteilt. Antwort C ($x \\leq 3$) vergisst die untere Grenze.`,
+    wrongAnswerExplanations: {
+      1: 'Du hast die Vorzeichen der Grenzen vertauscht: $-3$ und $+4$ statt $-4$ und $+3$. Vermutlich kam das durch Verwechslung der Schritte $-1$ und $:2$. Richtig: $-7 \\leq 2x + 1 \\leq 7 \\Rightarrow -8 \\leq 2x \\leq 6 \\Rightarrow -4 \\leq x \\leq 3$. Die untere Grenze ist immer kleiner als die obere.',
+      2: 'Du hast nur die obere Grenze behalten ($x \\leq 3$) und die untere vergessen. Betragsungleichungen $|A| \\leq B$ liefern immer beidseitige Schranken: hier zusätzlich $x \\geq -4$. Vollständige Lösung: $-4 \\leq x \\leq 3$.',
+      3: 'Du hast die Verschiebung durch $+1$ übersehen und nur $|2x| \\leq 7 \\Rightarrow |x| \\leq 3{,}5$ behandelt (oder gerundet auf $4$). Tatsächlich musst du zuerst $-1$ abziehen: $-7 \\leq 2x+1 \\leq 7 \\Rightarrow -8 \\leq 2x \\leq 6$, und erst dann durch $2$ teilen: $-4 \\leq x \\leq 3$.',
+    },
     hints: [
       'Regel: $|A| \\leq B \\Leftrightarrow -B \\leq A \\leq B$. Mit $A = 2x + 1$ wird daraus $-7 \\leq 2x + 1 \\leq 7$.',
       'Subtrahiere in allen drei Teilen $1$: $-8 \\leq 2x \\leq 6$.',
@@ -622,7 +737,8 @@ Nützlich zum schnellen Raten ganzzahliger Lösungen oder zur Probe!`,
       { id: 'alg-2-3-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-alg-2-3-a' },
       { id: 'alg-2-3-s3', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-alg-2-3-b' },
       { id: 'alg-2-3-s4', type: 'exercise', title: 'Aufgabe 3', exerciseRef: 'ex-alg-2-3-c' },
-      { id: 'alg-2-3-s5', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-alg-2-3-mastery' },
+      { id: 'alg-2-3-s5', type: 'exercise', title: 'Aufgabe 4 — Division mit Rest', exerciseRef: 'ex-alg-2-3-d' },
+      { id: 'alg-2-3-s6', type: 'mastery-check', title: 'Prüfungsaufgabe', exerciseRef: 'ex-alg-2-3-mastery' },
     ],
   },
   {

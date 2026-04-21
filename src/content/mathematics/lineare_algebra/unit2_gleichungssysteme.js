@@ -18,6 +18,11 @@ export const exercises_la_u2 = {
       'Jede Zeile = eine Gleichung; Spalten = Reihenfolge der Variablen ($x$, $y$).',
       'Schreibe für Zeile 1 die Koeffizienten von $x$ und $y$ aus $2x + 3y = 7$.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Das ist die TRANSPONIERTE Matrix $A^T$. Du hast Zeilen und Spalten vertauscht. Konvention: Eine Zeile = eine Gleichung; die Spalten entsprechen den Variablen $x, y$ in fester Reihenfolge.',
+      '2': 'Du hast die rechte Seite ($\\vec{b} = (7, 1)^T$) in die Koeffizientenmatrix eingebaut. Die Koeffizientenmatrix $A$ enthält NUR die Koeffizienten vor $x, y$, nicht die rechten Seiten.',
+      '3': 'Platzhalter $x, y$ gehören nicht in die Matrix, sondern in den Vektor $\\vec{x} = (x, y)^T$. In $A$ stehen nur die Koeffizienten (die Zahlen) der Gleichungen.',
+    },
   },
   'ex-la-2-1-b': {
     id: 'ex-la-2-1-b', lessonId: 'la-2-1', type: 'multiple-choice',
@@ -35,6 +40,11 @@ export const exercises_la_u2 = {
       'Erweitert = Koeffizientenmatrix + rechte Seite, getrennt durch einen vertikalen Strich.',
       'Anhängen, nicht ersetzen — die ursprünglichen Spalten bleiben unverändert.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Das ist nur $A$ ohne $\\vec{b}$. "Erweitert" heißt: die rechte Seite $\\vec{b}$ wird als zusätzliche Spalte angehängt, getrennt durch den Strich $|$.',
+      '2': 'Du hast die Einträge durcheinander geschrieben: Die erste Spalte sollte die Koeffizienten von $x$ enthalten ($2$ und $1$), nicht $7$ und $3$. Erweiterte Matrix: links $A$ unverändert, dann $|$, dann $\\vec{b}$.',
+      '3': 'Der zweite Eintrag von $\\vec{b}$ ist $1$ (aus $x - y = 1$), nicht $0$. Die erweiterte Matrix muss die rechten Seiten exakt übernehmen; außerdem fehlt der Trennstrich $|$.',
+    },
   },
   'ex-la-2-1-c': {
     id: 'ex-la-2-1-c', lessonId: 'la-2-1', type: 'multiple-choice',
@@ -52,6 +62,11 @@ export const exercises_la_u2 = {
       'Denke an FEM: 10 000 Gleichungen — Hand-Lösen unmöglich.',
       'Mit Matrizen werden systematische Algorithmen wie Gauss möglich.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Die Matrixform bringt sehr wohl Vorteile: systematische Algorithmen, Rang-Analyse, Lösbarkeitskriterien (Kronecker-Capelli). FEM und Computer-Programme funktionieren nur mit Matrixform.',
+      '2': 'Die Matrixschreibweise funktioniert für beliebig viele Gleichungen und Unbekannte. Für $n$ Gleichungen: $A$ ist eine $m \\times n$-Matrix. Keine Beschränkung auf $n = 2$.',
+      '3': 'Die Formel $\\vec{x} = A \\cdot \\vec{b}$ ist FALSCH. Richtig wäre $\\vec{x} = A^{-1} \\cdot \\vec{b}$ (falls $A$ invertierbar ist). Die normale Multiplikation liefert keine Lösung — man braucht die Inverse.',
+    },
   },
   'ex-la-2-1-mastery': {
     id: 'ex-la-2-1-mastery', lessonId: 'la-2-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -69,6 +84,11 @@ export const exercises_la_u2 = {
       'Spaltenreihenfolge: $x$, $y$, $z$, dann Strich, dann $b$.',
       'Achtung: Antwort B ist die transponierte (verwechselt Zeilen/Spalten).',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Das ist die transponierte Matrix: Du hast Zeilen und Spalten vertauscht. Konvention ist: eine Zeile = eine Gleichung, eine Spalte = eine Variable (in Reihenfolge $x, y, z$).',
+      '2': 'Du hast die rechten Seiten ($5, 3, 8$) in die erste Spalte geschrieben. Der Vektor $\\vec{b}$ gehört RECHTS vom Trennstrich, nicht als erste Spalte der Koeffizientenmatrix.',
+      '3': 'Die rechte Seite darf nicht durch Null ersetzt werden. Die $b$-Einträge sind $5, 3, 8$ (wie im Gleichungssystem gegeben), nicht $0$. $\\vec{b} = \\vec{0}$ würde ein homogenes System ergeben.',
+    },
   },
 
   // ── Lesson 2: Gauss-Algorithmus ─────────────────────────────────────────────
@@ -88,6 +108,11 @@ export const exercises_la_u2 = {
       'Spalten = Variablen ($x$, $y$, $z$). Tauschen = Variablen verwechseln.',
       'Erlaubt sind nur Operationen, die die Lösungsmenge nicht verändern.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Zeilen vertauschen IST erlaubt — nur die Reihenfolge der Gleichungen ändert sich, die Lösungsmenge bleibt gleich. Das ist eine der drei zulässigen Zeilenoperationen.',
+      '1': 'Eine Zeile mit einer Zahl $\\neq 0$ multiplizieren IST erlaubt. Die Lösung ändert sich nicht, da man beide Seiten einer Gleichung mit derselben Zahl multipliziert. Wichtig: nicht mit $0$!',
+      '3': 'Ein Vielfaches einer Zeile zu einer anderen addieren IST die Kern-Operation des Gauss-Algorithmus. Sie entspricht der "Addition zweier Gleichungen" und ändert die Lösungsmenge nicht.',
+    },
   },
   'ex-la-2-2-b': {
     id: 'ex-la-2-2-b', lessonId: 'la-2-2', type: 'multiple-choice',
@@ -105,6 +130,11 @@ export const exercises_la_u2 = {
       'Pivotelement in Zeile 1: $1$. Faktor: $3 / 1 = 3$.',
       'Operation: Zeile 2 $-$ (Faktor) $\\cdot$ Zeile 1 $=$ Zeile 2 $-$ 3 $\\cdot$ Zeile 1.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Mit $+$ statt $-$ bekommst du $3 + 3 \\cdot 1 = 6$ in Position (2,1), nicht $0$. Zum ELIMINIEREN muss man SUBTRAHIEREN (Vorzeichen umgekehrt zum Eliminationsziel).',
+      '2': 'Dividieren durch $3$ ergibt in Zeile 2: $[1, 4/3, 11/3]$. Die erste Position ist dann $1$, nicht $0$ — die $3$ ist also nicht eliminiert. Man braucht Subtraktion von $3 \\cdot$ Zeile 1.',
+      '3': 'Damit würdest du das Pivot in Zeile 1 zerstören und Zeile 2 nicht verändern. Eliminationsrichtung: die $3$ in Zeile 2 soll verschwinden, daher Operation auf Zeile 2 (unten) mit Hilfe von Zeile 1 (oben) — nicht umgekehrt.',
+    },
   },
   'ex-la-2-2-c': {
     id: 'ex-la-2-2-c', lessonId: 'la-2-2', type: 'number-input',
@@ -148,6 +178,11 @@ export const exercises_la_u2 = {
       'Ein Trapez/Dreieck mit Nullen unter den Pivots.',
       'Diese Form heißt "Zeilenstufenform" — daraus rücksubstituieren.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Die echte Diagonalform (nur Diagonalelemente $\\neq 0$) ist erst bei Gauss-JORDAN das Ziel, nicht beim normalen Gauss. Der klassische Gauss-Algorithmus stoppt bei der (oberen) Stufenform.',
+      '2': 'Die Determinante ist ein NEBENEFFEKT (sie lässt sich aus der Stufenform ablesen als Produkt der Diagonalelemente), aber nicht das eigentliche Ziel. Ziel ist das Lösen des LGS über die Stufenform.',
+      '3': 'Eigenwerte findet man mit $\\det(A - \\lambda I) = 0$ — das ist ein ganz anderes Verfahren. Der Gauss-Algorithmus löst $A\\vec{x} = \\vec{b}$ und hat mit Eigenwerten nichts zu tun.',
+    },
   },
 
   // ── Lesson 3: Lösbarkeit ───────────────────────────────────────────────────
@@ -167,6 +202,11 @@ export const exercises_la_u2 = {
       'Eine Gleichung wie "Null gleich Fünf" hat keine erfüllende Belegung.',
       'Das nennt man "inkonsistent" oder "widersprüchlich".',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Unendlich viele Lösungen entstehen bei einer Nullzeile $0 = 0$ (wahre Aussage, keine neue Info). $0 = 5$ hingegen ist FALSCH — hier gibt es keine Lösung, nicht unendlich viele.',
+      '1': 'Genau eine Lösung erkennt man an einer Stufenform, in der die Anzahl der Nicht-Null-Zeilen gleich der Anzahl der Unbekannten ist. $0 = 5$ ist ein Widerspruch — die Lösungsmenge ist leer.',
+      '3': 'Keine weiteren Umformungen helfen: $0 = 5$ ist unabänderlich falsch. Der Widerspruch ist endgültig — das System ist nachweislich unlösbar.',
+    },
   },
   'ex-la-2-3-b': {
     id: 'ex-la-2-3-b', lessonId: 'la-2-3', type: 'multiple-choice',
@@ -184,6 +224,11 @@ export const exercises_la_u2 = {
       'Bringe die Matrix in Stufenform und zähle die Pivot-Zeilen.',
       'Nullzeilen tragen nichts bei — sie zählen nicht zum Rang.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Einfach die Anzahl aller Zeilen zu nehmen ignoriert lineare Abhängigkeit. Der Rang zählt nur UNABHÄNGIGE Zeilen; Nullzeilen in der Stufenform (abhängige Zeilen) werden nicht mitgezählt.',
+      '2': 'Die Determinante ist eine Zahl (kann positiv, negativ oder Null sein), der Rang ist ein Ganzzahl zwischen $0$ und $\\min(m, n)$. Zusammenhang: $\\det A \\neq 0 \\Leftrightarrow \\text{rang}(A) = n$ (für quadratische Matrizen) — aber keine Gleichsetzung.',
+      '3': 'Die Spaltenanzahl ist nur eine OBERE Schranke: $\\text{rang}(A) \\leq \\min(m, n)$. Der tatsächliche Rang kann kleiner sein, wenn Spalten linear abhängig sind.',
+    },
   },
   'ex-la-2-3-c': {
     id: 'ex-la-2-3-c', lessonId: 'la-2-3', type: 'multiple-choice',
@@ -201,6 +246,11 @@ export const exercises_la_u2 = {
       'Kronecker-Capelli: Lösbar wenn $\\text{rang}(A) = \\text{rang}(A|b)$.',
       'Eindeutig wenn dieser Rang zusätzlich gleich $n$ (Anzahl Unbekannte) ist.',
     ],
+    wrongAnswerExplanations: {
+      '0': '$\\det(A) = 0$ bedeutet das GEGENTEIL: die Matrix ist singulär, es gibt entweder keine oder unendlich viele Lösungen. Eindeutigkeit braucht $\\det(A) \\neq 0$ (bei quadratischen Systemen).',
+      '1': '$\\text{rang}(A) < n$ bedeutet: Es gibt freie Parameter. Wenn das System überhaupt lösbar ist, hat es dann UNENDLICH VIELE Lösungen, nicht genau eine.',
+      '3': 'Wenn $\\text{rang}(A) \\neq \\text{rang}(A|b)$, widersprechen sich die Gleichungen: KEINE Lösung (nicht genau eine). Für Eindeutigkeit müssen die Ränge gleich $n$ sein.',
+    },
   },
   'ex-la-2-3-mastery': {
     id: 'ex-la-2-3-mastery', lessonId: 'la-2-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -218,6 +268,11 @@ export const exercises_la_u2 = {
       'Dann Eindeutigkeit: ist Rang gleich der Anzahl Unbekannten?',
       'Anzahl freier Parameter $= n - \\text{rang}(A)$. Hier: $3 - 2 = 1$.',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Keine Lösung würde $\\text{rang}(A) < \\text{rang}(A|b)$ verlangen. Hier sind die Ränge aber GLEICH ($=2$), das System ist also lösbar.',
+      '1': 'Genau eine Lösung braucht $\\text{rang} = n = 3$. Hier ist $\\text{rang} = 2 < 3$, also gibt es freie Parameter und damit mehr als eine Lösung.',
+      '3': 'Die Anzahl freier Parameter ist $n - \\text{rang}(A) = 3 - 2 = 1$, nicht $2$. Zwei freie Parameter hätte man bei $\\text{rang} = 1$.',
+    },
   },
 
   // ── Lesson 4: Cramersche Regel & Anwendungen ───────────────────────────────
@@ -237,6 +292,11 @@ export const exercises_la_u2 = {
       'Formel: $x_i = \\det(A_i) / \\det(A)$ — Determinante steht im Nenner.',
       'Was darf nie im Nenner stehen?',
     ],
+    wrongAnswerExplanations: {
+      '0': 'Cramer benötigt $\\det(A) \\neq 0$ und eine quadratische Matrix. Bei $\\det(A) = 0$ oder bei nicht-quadratischen Systemen versagt die Regel, weil im Nenner durch $0$ geteilt würde.',
+      '2': 'Cramer funktioniert für jedes $n \\times n$-System mit $\\det(A) \\neq 0$, nicht nur $2 \\times 2$. Für größere Systeme wird der Rechenaufwand aber sehr groß — dann ist Gauss meist effizienter.',
+      '3': '$\\det(A) = 0$ würde eine Division durch $0$ in der Formel $x_i = \\det(A_i)/\\det(A)$ bedeuten. Cramer setzt daher explizit $\\det(A) \\neq 0$ voraus.',
+    },
   },
   'ex-la-2-4-b': {
     id: 'ex-la-2-4-b', lessonId: 'la-2-4', type: 'number-input',
@@ -280,6 +340,11 @@ export const exercises_la_u2 = {
       'Die Gleichungen müssen linear unabhängig sein — keine darf aus den anderen folgen.',
       'Mathematisch: $\\det(A) \\neq 0$. Sonst: statisch unbestimmt → zusätzliche Bedingungen nötig.',
     ],
+    wrongAnswerExplanations: {
+      '1': 'Das Vorzeichen der Kräfte ist Ergebnis der Rechnung, nicht Voraussetzung. Druck-/Zugkräfte können durchaus negativ herauskommen und das System ist trotzdem eindeutig lösbar, solange $\\det(A) \\neq 0$.',
+      '2': 'Symmetrie ($A = A^T$) ist für die Eindeutigkeit NICHT erforderlich. Entscheidend ist die lineare Unabhängigkeit der Gleichungen, also $\\det(A) \\neq 0$.',
+      '3': 'Mehr Gleichungen als Unbekannte führt zu einem überbestimmten System, das meistens KEINE Lösung hat. Für Eindeutigkeit braucht man genauso viele unabhängige Gleichungen wie Unbekannte.',
+    },
   },
 }
 

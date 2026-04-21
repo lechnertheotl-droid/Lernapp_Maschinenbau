@@ -17,6 +17,11 @@ export const exercises_dgl_u2 = {
       'Die Konstante $C$ wird "variiert" — sie wird zur Funktion $C(x)$.',
       'Dann bestimmt man $C(x)$ aus der inhomogenen DGL.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Nur die Konstante umzubenennen ($C \\to D$) ändert nichts an der Lösung — sie bleibt ein Vielfaches der homogenen Lösung und erfüllt die *inhomogene* DGL nicht. Die Idee der Methode ist gerade, $C$ von einer Konstanten zu einer *Funktion* $C(x)$ zu machen.',
+      2: 'Mit $C=0$ verschwindet die homogene Lösung komplett — dann hast du $y\\equiv 0$, und das löst nur den homogenen Fall, nicht $y\'+py=q$. Der Name „Variation" kommt von „variieren", nicht „streichen".',
+      3: 'Die Störfunktion $q(x)$ steht auf der rechten Seite der DGL — sie ist *Input*, keine Lösung. $q(x)$ als Ansatz statt $C(x) \\cdot e^{-P(x)}$ erfüllt die DGL im Allgemeinen nicht. Richtig: $C$ wird zu einer unbekannten Funktion $C(x)$, die man anschließend bestimmt.',
+    },
   },
   'ex-dgl-2-1-b': {
     id: 'ex-dgl-2-1-b', lessonId: 'dgl-2-1', type: 'multiple-choice',
@@ -34,6 +39,11 @@ export const exercises_dgl_u2 = {
       'Produktregel: $y\' = C\'(x) e^{-P(x)} - C(x) p(x) e^{-P(x)}$.',
       'Nach Einsetzen heben sich die Terme mit $C(x)$ weg, übrig bleibt $C\'(x) e^{-P(x)} = q(x)$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Vorzeichenfehler im Exponenten: aus $C\'(x) \\cdot e^{-P(x)} = q(x)$ folgt durch Umstellen $C\'(x) = q(x) \\cdot e^{+P(x)}$ — du musst mit $e^{+P(x)}$ *multiplizieren*, um $e^{-P(x)}$ zu eliminieren. Nicht $e^{-P(x)}$.',
+      2: 'Der Koeffizient $p(x)$ taucht nicht direkt als Faktor auf — er versteckt sich bereits im Exponenten $P(x)=\\int p\\,dx$. Das Produkt $p \\cdot q$ ist algebraisch unmotiviert; korrekt ist $C\' = q \\cdot e^{+P}$.',
+      3: 'Das überspringt einen Schritt: $C(x) = \\int q(x)\\,dx$ vergisst den Faktor $e^{P(x)}$. Die richtige Integration lautet $C(x) = \\int q(x) \\cdot e^{P(x)}\\,dx$ — ohne den integrierenden Faktor $e^{P(x)}$ erfüllt $y$ die DGL nicht.',
+    },
   },
   'ex-dgl-2-1-c': {
     id: 'ex-dgl-2-1-c', lessonId: 'dgl-2-1', type: 'multiple-choice',
@@ -51,6 +61,11 @@ export const exercises_dgl_u2 = {
       'Ansatz $y = C(x) e^x$, einsetzen: $C\'(x) e^x = e^{2x}$, also $C\'(x) = e^x$.',
       'Integrieren: $C(x) = e^x + \\tilde C$, also $y = e^{2x} + \\tilde C \\, e^x$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Beim Ansatz $y_p = A e^{2x}$: $y_p\' - y_p = 2Ae^{2x} - Ae^{2x} = Ae^{2x} = e^{2x} \\Rightarrow A=1$, nicht $\\frac{1}{2}$. Der Faktor $\\frac{1}{2}$ stammt vermutlich aus einer Verwechslung mit $y\'+y=e^{2x}$ (dort wäre $A=\\frac{1}{3}$) oder $y\'-y=e^{-x}$.',
+      2: 'Vorzeichen in der homogenen Lösung: $y\'-y=0$ bedeutet $y\'=+y$, also $y_h=Ce^{+x}$ (nicht $e^{-x}$). Test: $y=e^{-x} \\Rightarrow y\'=-e^{-x}$, aber die DGL verlangt $y\'-y=-2e^{-x} \\neq 0$.',
+      3: 'Der Vorfaktor bei der Partikulärlösung stimmt nicht. Einsetzen $y_p = 2e^{2x}$: $y_p\' - y_p = 4e^{2x} - 2e^{2x} = 2e^{2x} \\neq e^{2x}$. Der richtige Vorfaktor ist $1$ (aus $A(\\lambda - 1) = 1$ mit $\\lambda=2$: $A=1$).',
+    },
   },
   'ex-dgl-2-1-mastery': {
     id: 'ex-dgl-2-1-mastery', lessonId: 'dgl-2-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -68,6 +83,11 @@ export const exercises_dgl_u2 = {
       'Einsetzen in $y\' + y = \\sin x$ liefert $A \\cos x - B \\sin x + A \\sin x + B \\cos x = \\sin x$.',
       'Koeffizientenvergleich: $A - B = 0$ (für $\\sin$) und $A + B = 1$ (für $\\cos$? — sortiert nach $\\sin$/$\\cos$): $A = 1/2$, $B = -1/2$.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Vorfaktor $\\tfrac{1}{2}$ vergessen. Ansatz $y_p = A\\sin x + B\\cos x$: $y_p\' + y_p = (A+B)\\cos x + (A-B)\\sin x = \\sin x$. Also $A+B=0$, $A-B=1$: $A=\\tfrac{1}{2}$, $B=-\\tfrac{1}{2}$. Ohne Faktor $\\tfrac{1}{2}$ gäbe das $2\\sin x$, nicht $\\sin x$.',
+      2: 'Hier fehlt der $\\sin x$-Anteil. Der Ansatz braucht *beide* trigonometrischen Funktionen, weil $y\'$ aus $\\cos x$ ein $\\sin x$ erzeugt und umgekehrt. Einsetzen von $y_p=-\\cos x$: $y_p\'+y_p = \\sin x - \\cos x \\neq \\sin x$.',
+      3: 'Das Vorzeichen bei $\\cos x$ ist falsch. Aus $A+B=0$ folgt $B=-A$, nicht $B=+A$. Einsetzen von $\\tfrac{1}{2}(\\sin x + \\cos x)$: $y_p\' + y_p = \\tfrac{1}{2}(\\cos x - \\sin x) + \\tfrac{1}{2}(\\sin x + \\cos x) = \\cos x \\neq \\sin x$.',
+    },
   },
 
   'ex-dgl-2-2-a': {
@@ -86,6 +106,11 @@ export const exercises_dgl_u2 = {
       '$\\vec y$ und $\\vec y\'$ sind Vektoren. Für $A \\vec y$ muss $A$ eine Matrix sein.',
       'Konkret: bei $n$ Komponenten ist $A$ eine $n \\times n$-Matrix.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Ein Skalar würde $\\vec y$ nur gleichmäßig skalieren — dann sind die Komponenten von $\\vec y$ entkoppelt, und das wäre gar kein echtes System. Um *mehrere* DGL miteinander zu verknüpfen, muss $A$ einen Vektor auf einen Vektor abbilden: das leistet nur eine Matrix.',
+      1: 'Ein Produkt $\\vec a \\cdot \\vec y$ wäre ein Skalar (Skalarprodukt) — die rechte Seite hätte dann nicht dieselbe Form wie $\\vec y\'$ (ein Vektor). Damit Links- und Rechtsseite kompatibel sind, muss $A$ Vektor $\\to$ Vektor abbilden, also eine Matrix sein.',
+      3: 'Die Matrix $A$ *definiert* das System, sie ist nicht selbst eine DGL. Sie enthält die Koeffizienten, mit denen die Komponenten $y_1, y_2, \\ldots$ miteinander verknüpft sind — die DGL ist das Gesamtkonstrukt $\\vec y\' = A \\vec y$.',
+    },
   },
   'ex-dgl-2-2-b': {
     id: 'ex-dgl-2-2-b', lessonId: 'dgl-2-2', type: 'true-false',
@@ -114,6 +139,11 @@ export const exercises_dgl_u2 = {
       '$y\'\' = -5y\' - 6y$. Ersetze nun $y \\to y_1$ und $y\' \\to y_2$.',
       'Da $y_2\' = y\'\'$, folgt $y_2\' = -5 y_2 - 6 y_1$, also $y_2\' = -6 y_1 - 5 y_2$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Koeffizienten vertauscht: $5$ gehört zu $y\' = y_2$, $6$ zu $y=y_1$. Aus $y\'\'=-5y\'-6y$ wird durch Einsetzen $y_2\' = -5 y_2 - 6 y_1$, also Koeffizient $-6$ vor $y_1$, nicht $-5$.',
+      2: 'Vorzeichen falsch. $y\'\'+5y\'+6y=0$ umgestellt ergibt $y\'\'=-5y\'-6y$ — die Vorzeichen wechseln beim Umstellen. $+5y\'+6y$ statt $-5y\'-6y$ würde die DGL $y\'\'-5y\'-6y=0$ lösen.',
+      3: 'Hier wurden die DGL-Koeffizienten ignoriert und einfach Einsen eingesetzt. Aus $y\'\'+5y\'+6y=0$ folgt $y\'\'=-5y\'-6y$, also $y_2\'=-6y_1-5y_2$ mit konkreten Koeffizienten, keine $+1$.',
+    },
   },
 
   'ex-dgl-2-3-a': {
@@ -132,6 +162,11 @@ export const exercises_dgl_u2 = {
       'Federkraft $\\sim x$ (Hooke), Dämpfungskraft $\\sim \\dot x$ (proportional zur Geschwindigkeit).',
       'Newton: $m \\ddot x = -k x - c \\dot x + F(t)$, also $m \\ddot x + c \\dot x + k x = F(t)$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Hier fehlt die Beschleunigung $x\'\'$ — Newtons zweites Gesetz verlangt $F = m \\cdot a = m \\ddot x$, nicht $m\\dot x$. Zudem darf $k$ nicht als konstanter Term isoliert stehen; die Federkraft ist $k \\cdot x$ (proportional zur Auslenkung).',
+      2: 'Ohne Feder- und Dämpfungsterm ist das nur die Bewegungsgleichung einer freien Masse unter äußerer Kraft. Ein Feder-Masse-Dämpfer-System braucht *alle drei* Kraftanteile: Trägheit ($m\\ddot x$), Dämpfung ($c\\dot x$) und Federkraft ($kx$).',
+      3: 'Hier stehen zwei Terme mit $\\dot x$ und kein $\\ddot x$ oder $x$. Trägheitskraft ist aber $m\\ddot x$ (zweite Ableitung), Federkraft $kx$ (keine Ableitung). Zwei Terme mit derselben Ableitungsordnung lassen sich sowieso zusammenfassen.',
+    },
   },
   'ex-dgl-2-3-b': {
     id: 'ex-dgl-2-3-b', lessonId: 'dgl-2-3', type: 'matching',
@@ -165,6 +200,11 @@ export const exercises_dgl_u2 = {
       'Kirchhoff: $u_R + u_C = U_0$. Strom $i = C \\cdot \\dot u_C$ (Kondensator-Gleichung).',
       'Einsetzen: $R \\cdot C \\cdot \\dot u_C + u_C = U_0$ — das ist die DGL des RC-Glieds.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Ein RC-Glied hat *keine* Spule — nur Widerstand und Kondensator. $u_C\'\'$ (zweite Ableitung) tritt erst bei RLC-Gliedern auf. Hier gilt Kirchhoff mit $i=C \\dot u_C$, was eine DGL *erster* Ordnung liefert: $RC \\dot u_C + u_C = U_0$.',
+      2: 'Einheitenanalyse entlarvt den Fehler: $R$ und $C$ dürfen nicht getrennt als Koeffizienten von $\\dot u_C$ und $u_C$ stehen — $R \\cdot C$ hat die Einheit Zeit (Sekunden, die Zeitkonstante $\\tau$), während $R$ allein Ohm und $C$ allein Farad hat. Aus $Ri + u_C = U_0$ mit $i = C\\dot u_C$ folgt $RC \\dot u_C + u_C = U_0$.',
+      3: 'Die Form ist grob falsch — $u_C\'$ müsste proportional zu $U_0 - u_C$ sein, nicht proportional zu $RC \\cdot U_0$ konstant. Die DGL muss $u_C$ auf *beiden* Seiten enthalten (implizit über $u_C\'$ und explizit als $u_C$), sonst wird $u_C$ gar nicht durch die Gleichung festgelegt.',
+    },
   },
   'ex-dgl-2-3-mastery': {
     id: 'ex-dgl-2-3-mastery', lessonId: 'dgl-2-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -182,6 +222,11 @@ export const exercises_dgl_u2 = {
       '$\\omega_0 = \\sqrt{k / m}$ — kommt aus dem charakteristischen Polynom.',
       'Hier $k = 8$ N/m, $m = 2$ kg → $\\omega_0 = \\sqrt{4} = 2$ rad/s.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Vermutlich wurde $k/m$ mit $k \\cdot m / (\\text{etwas})$ verwechselt oder ohne Wurzel gerechnet und noch halbiert. $\\omega_0 = \\sqrt{8/2} = \\sqrt{4} = 2$, nicht $4$. Die Eigenkreisfrequenz hat immer eine Wurzel — aus dem charakteristischen Polynom $m\\lambda^2 + k = 0 \\Rightarrow \\lambda^2 = -k/m$.',
+      2: '$k \\cdot m$ statt $k / m$ berechnet: $\\sqrt{8 \\cdot 2} = \\sqrt{16}$ ... nein, $\\sqrt{2}$ entspricht $\\sqrt{k-m}=\\sqrt{8-2}$ oder $\\sqrt{m}$. Die richtige Formel ist $\\omega_0=\\sqrt{k/m}=\\sqrt{4}=2$, nicht $\\sqrt 2$.',
+      3: 'Hier fehlt die Wurzel: $k/m = 4$, aber $\\omega_0$ ist die *Wurzel* daraus, also $2$ (nicht $16$). Der Wert $16$ entspräche $(k/m)^2$. Die Formel $\\omega_0=\\sqrt{k/m}$ ergibt sich aus dem Ansatz $x=e^{i\\omega t}$ in $m\\ddot x+kx=0$: $-m\\omega^2+k=0 \\Rightarrow \\omega=\\sqrt{k/m}$.',
+    },
   },
 }
 

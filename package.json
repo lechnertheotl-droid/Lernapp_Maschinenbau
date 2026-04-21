@@ -12,6 +12,7 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "validate:content": "vite-node scripts/validate-content.js",
+    "content-overview": "vite-node scripts/generate-content-overview.js",
     "prebuild": "npm run validate:content"
   },
   "dependencies": {

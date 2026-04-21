@@ -1,5 +1,13 @@
-function mc(question, options, correctIndex, explanation, hints = []) {
-  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints }
+function mc(question, options, correctIndex, explanation, hints = [], wrongAnswerExplanations = undefined) {
+  return {
+    type: 'multiple-choice',
+    question,
+    options,
+    correctIndex,
+    explanation,
+    hints,
+    ...(wrongAnswerExplanations ? { wrongAnswerExplanations } : {}),
+  }
 }
 
 function ni(question, correctValue, tolerance, unit, explanation, hints = []) {
@@ -31,12 +39,12 @@ function withExamPrefix(exercise, exam) {
 
 function bank(profile) {
   const exercises = [
-    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints),
+    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptWrongAnswers),
     ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints),
     tf(profile.trueFalseStatement, profile.trueFalseCorrect, profile.trueFalseExplanation, profile.trueFalseHints),
     matching(profile.matchingQuestion, profile.matchingPairs, profile.matchingExplanation, profile.matchingHints),
     sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints),
-    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints),
+    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints, profile.errorWrongAnswers),
     ni(profile.transferQuestion, profile.transferAnswer, profile.transferTolerance, profile.transferUnit, profile.transferExplanation, profile.transferHints),
   ]
   return exercises.map((exercise) => withExamPrefix(exercise, profile.exam))
@@ -65,6 +73,11 @@ const profiles = {
       'Denke daran, welche Verschiebungen jedes Lager verhindert — für jede gesperrte Richtung gibt es eine Kraft.',
       'Festlager = Gelenk (2 Kräfte), Loslager = Rolle (1 Kraft), Einspannung = fest eingebettet (2 Kräfte + 1 Moment).',
     ],
+    conceptWrongAnswers: {
+      1: 'Das Festlager überträgt zwei Komponenten ($A_x$, $A_y$), nicht nur eine. Nur das Loslager ist auf eine einzige Kraft senkrecht zur Rollbahn beschränkt. Insgesamt 3 Unbekannte.',
+      2: 'Vier Unbekannte wären der Fall, wenn beide Lager Festlager wären ($2+2=4$). Dann wäre das System einfach statisch unbestimmt. Bei Fest+Los gilt $2+1 = 3$.',
+      3: 'Sechs Unbekannte hätte man bei zwei Einspannungen ($2+1+2+1=6$), also dreifach überbestimmt. Fest- und Loslager übertragen aber keine Momente — also keine $M$-Reaktionen.',
+    },
 
     calcQuestion: 'Ein Seil zieht unter 30° zur Horizontalen mit der Zugkraft $F = 200$ N an einer Kiste. Wie groß ist die horizontale Komponente $F_x$ in N?',
     calcAnswer: 173.2,
@@ -126,6 +139,11 @@ const profiles = {
       'Überlege, was die Gleichgewichtsbilanz tatsächlich verletzt.',
       'Koordinatenwahl und Bezugspunkt sind freie Entscheidungen — sie beeinflussen nur die Form der Gleichungen, nicht die Gültigkeit.',
     ],
+    errorWrongAnswers: {
+      1: 'Ein schräges Koordinatensystem ist nicht nur erlaubt, sondern bei geneigten Flächen oft die beste Wahl — es vereinfacht die Kräftezerlegung. Kein Fehler.',
+      2: 'Die Schraffur markiert nur die Wand/den Festkörper im Skizzenstil — eine reine Zeichenkonvention ohne Einfluss auf die Gleichgewichtsrechnung. Kein Fehler.',
+      3: 'Mehrere Bezugspunkte für Momentengleichgewichte sind explizit erlaubt — sie geben abhängige, aber gültige Gleichungen und können strategisch zur Eliminierung Unbekannter eingesetzt werden.',
+    },
 
     transferQuestion: 'Eine Kiste wird mit $F = 500$ N unter 60° zur Horizontalen gezogen. Wie groß ist die vertikale Komponente $F_y$ in N?',
     transferAnswer: 433,
@@ -160,6 +178,11 @@ const profiles = {
       'Was ist der Hebelarm einer Kraft, die genau durch den Bezugspunkt wirkt?',
       'Eine kluge Wahl reduziert die Anzahl Unbekannten in einer einzelnen Gleichung.',
     ],
+    conceptWrongAnswers: {
+      1: 'Bezug $B$ eliminiert nur $B_y$, nicht $A_x$ und $A_y$. Letztere bleiben als Unbekannte in der Momentgleichung. Ziel war die gleichzeitige Eliminierung von $A_x$ und $A_y$ — nur $A$ schafft das.',
+      2: 'Der Mittelpunkt eliminiert gar keine Lagerreaktion — weder $A$ noch $B$ liegen dort. Alle Unbekannten bleiben in der Momentgleichung, ineffizient.',
+      3: 'Ein externer Punkt ist zwar für die Momentgleichung legal, eliminiert aber keine Unbekannte. Die Strategie "Bezug durch das Lager legen" zielt gerade auf Effizienz.',
+    },
 
     calcQuestion: 'Balken der Länge $L = 6$ m, Festlager bei $A$ (links), Loslager bei $B$ (rechts). In der Mitte wirkt senkrecht nach unten $F = 900$ N. Wie groß ist die Lagerkraft $B_y$ in N?',
     calcAnswer: 450,
@@ -221,6 +244,11 @@ const profiles = {
       'Einspannungen haben drei Reaktionsgrößen: zwei Kräfte + ein Moment.',
       'Frage dich: welcher Freiheitsgrad wird zusätzlich gesperrt im Vergleich zum Festlager?',
     ],
+    errorWrongAnswers: {
+      1: '$A_y = F$ ist aus $\\sum F_y = 0$ korrekt — es gibt nur eine Last $F$ am Ende. $A_y = 2F$ wäre bilanzwidrig. Der Fehler liegt nicht hier, sondern im fehlenden Einspannmoment.',
+      2: 'Einspannungen übertragen sehr wohl Vertikalkräfte. Sie übertragen zusätzlich ein Moment, das Loslager/Festlager nicht können. Das ist gerade ihr definierendes Merkmal.',
+      3: 'Das Freiende ist per Definition frei (keine Lagerreaktion dort). Ein Gelenk am freien Ende würde die Aufgabe strukturell verändern — ist aber nicht das Thema hier.',
+    },
 
     transferQuestion: 'Ein 3 m langer Balken hängt waagrecht an zwei Seilen (Abstand 3 m). Mittig hängt eine Masse $m = 60$ kg. Wie groß ist die Zugkraft pro Seil in N ($g = 9{,}81$ $m/s^2$)?',
     transferAnswer: 294.3,
@@ -259,6 +287,11 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
       'Beschleunigung ist die Änderungsrate der Geschwindigkeit.',
       'Einheitencheck: (m/s) / s = $m/s^2$ — das ist die Probe für deine Formel.',
     ],
+    conceptWrongAnswers: {
+      1: 'Die Anfangsgeschwindigkeit wurde ignoriert. Beschleunigung ist die *Änderung* der Geschwindigkeit pro Zeit, also $\\Delta v / \\Delta t = (v - v_0)/t$, nicht $v/t$.',
+      2: '$v_0/t$ hat mit Beschleunigung nichts zu tun — es wäre fiktiv die "Startgeschwindigkeit pro verstrichene Zeit". Richtig: $a = (v - v_0)/t$.',
+      3: 'Hier fehlt die Division durch $t$ komplett — Einheit wäre m/s statt $m/s^2$. Einheitencheck hätte den Fehler sofort enttarnt.',
+    },
 
     calcQuestion: 'Ein Auto beschleunigt aus dem Stand mit $a = 2{,}5$ $m/s^2$ über $t = 8$ s. Welche Geschwindigkeit in m/s erreicht es?',
     calcAnswer: 20,
@@ -319,6 +352,11 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
       'Einheitencheck vor Zahlenwerten!',
       'Freier Fall ist gleichmäßig beschleunigt mit $a = g$ — dann gilt $v^2 = v_0^2 + 2gh$.',
     ],
+    errorWrongAnswers: {
+      1: 'Der Faktor 2 allein reicht nicht. Selbst $v = 2gh$ hätte Einheit $m^2/s^2$. Erst die Wurzel repariert die Einheit: $v = \\sqrt{2gh}$.',
+      2: '$g = 9{,}81$ $m/s^2$ ist der Standardwert. $g = 10$ ist nur eine Schulnäherung. Am Einheitenproblem ändert das gar nichts.',
+      3: 'Freier Fall IST gleichmäßig beschleunigt ($a = g = \\text{const}$) — Luftwiderstand weggelassen. Die Formeln der konstanten Beschleunigung gelten direkt.',
+    },
 
     transferQuestion: 'Ein Stein wird aus $h = 20$ m Höhe fallengelassen ($g = 9{,}81$ $m/s^2$). Mit welcher Geschwindigkeit in m/s trifft er auf?',
     transferAnswer: 19.81,
@@ -357,6 +395,11 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
       '$F = m \\cdot a$ — nach $a$ auflösen.',
       'Einheitencheck: $1$ N $= 1$ $kg \\cdot m/s^2$.',
     ],
+    conceptWrongAnswers: {
+      1: 'Multiplikation statt Division. Aus $F = m \\cdot a$ folgt $a = F/m$, nicht $F \\cdot m$. Einheitencheck: $N \\cdot kg$ ergäbe $kg^2 \\cdot m/s^2$ — unsinnig für Beschleunigung.',
+      2: 'Zähler und Nenner vertauscht. $a = m/F = 0{,}25$ kg/N ist keine Beschleunigung, sondern eher ein Kehrwert. Korrekt: $a = F/m$.',
+      3: 'Subtraktion ist physikalisch und dimensionell sinnlos: $F - m$ hätte die Einheit "$N - kg$", was nicht definiert ist. $a = F/m$ ist die einzige konsistente Form.',
+    },
 
     calcQuestion: 'Auf eine Kiste ($m = 20$ kg) wirkt horizontal $F = 100$ N. Gleitreibungskoeffizient $\\mu = 0{,}2$. Wie groß ist die Beschleunigung in $m/s^2$ ($g = 9{,}81$ $m/s^2$)?',
     calcAnswer: 3.038,
@@ -418,6 +461,11 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
       'Auf geneigten Flächen muss die Gewichtskraft in zwei Komponenten zerlegt werden.',
       'Zeichne die Rampe und markiere den Winkel $\\alpha$ — dann wird $\\cos$ vs. $\\sin$ klar.',
     ],
+    errorWrongAnswers: {
+      1: 'Die Gewichtskraft ist auf jeder geneigten Ebene weiterhin $mg$, nur ihre Komponenten-Aufteilung ändert sich. Sie wird nicht null.',
+      2: 'Die Normalkraft ändert ihre Größe, nicht nur die Richtung. Nur der zur Fläche senkrechte Anteil von $\\vec{G}$ wird von ihr balanciert: $F_N = mg\\cos(\\alpha) < mg$.',
+      3: 'Die Normalkraft ist eine reine Zwangskraft senkrecht zur Fläche — sie hängt nicht vom Reibungskoeffizienten ab. Reibung ist $F_R = \\mu F_N$, aber $F_N$ wird davor bestimmt.',
+    },
 
     transferQuestion: 'Auf einer Rampe mit $\\alpha = 20°$ rutscht ein Körper $m = 4$ kg reibungsfrei ab. Wie groß ist die Hangabtriebskraft in N ($g = 9{,}81$ $m/s^2$)?',
     transferAnswer: 13.42,
@@ -461,6 +509,11 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
       'Einspannung hat drei Reaktionsgrößen: $A_x$, $A_y$, $M_A$.',
       'Momentgleichgewicht um $A$: Last wirkt am Hebelarm $L = 2$ m.',
     ],
+    conceptWrongAnswers: {
+      1: 'Vertikale Last $F = 500$ N vertikal angesetzt — Gleichgewicht: $A_y = 500$ N, nicht $A_x$. $A_x$ hat keine horizontale Gegenkraft, also $A_x = 0$. Und ein Einspannmoment entsteht sehr wohl.',
+      2: 'Das Einspannmoment fehlt. Eine Einspannung überträgt immer ein Moment, solange die Last einen Hebelarm hat. Bei $F = 500$ N an $L = 2$ m: $M_A = 1000$ Nm.',
+      3: 'Vertikale Lagerlast halbiert — das wäre bei zwei Lagern der Fall. Bei nur einer Einspannung muss $A_y$ die ganze Last tragen: $A_y = 500$ N.',
+    },
 
     calcQuestion: 'Balken $L = 4$ m, Festlager A links, Loslager B rechts. Streckenlast $q = 300$ N/m über die volle Länge. Wie groß ist $B_y$ in N?',
     calcAnswer: 600,
@@ -522,6 +575,11 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
       'Überprüfe die trigonometrischen Werte: $\\sin(30°) = 0{,}5$, $\\cos(30°) \\approx 0{,}866$.',
       'Normalkraft auf Rampe ist $mg\\cos\\alpha$, nicht $mg$.',
     ],
+    errorWrongAnswers: {
+      1: '$\\mu_H = 0{,}4$ ist ein plausibler Wert (Stahl auf Stahl trocken). Der Fehler liegt bei den falschen trigonometrischen Werten, nicht beim Reibungskoeffizienten.',
+      2: 'Die Rampe selbst braucht keine Einspannung — sie ist Teil der Umgebung. Der Fehler betrifft die Berechnung für die Kiste auf der Rampe, nicht die Rampenstatik.',
+      3: 'Genau umgekehrt: Haftreibung wirkt stets entgegen der drohenden Bewegungsrichtung, also hangaufwärts. Sie unterstützt nie die rutschende Bewegung.',
+    },
 
     transferQuestion: 'Ein Balken (4 m) mit Festlager links, Loslager rechts. Einzelkraft $F_1 = 800$ N wirkt bei $x = 1$ m, $F_2 = 400$ N bei $x = 3$ m. Wie groß ist $A_y$ in N?',
     transferAnswer: 700,
@@ -567,6 +625,11 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
       'Impulserhaltung gilt bei jedem Stoß.',
       'Plastischer Stoß: beide Körper bewegen sich nach dem Stoß gemeinsam.',
     ],
+    conceptWrongAnswers: {
+      1: 'Wagen 2 muss mitbewegt werden (zusätzliche Trägheit) — die gemeinsame Geschwindigkeit ist kleiner als $v_1$. Impulserhaltung: $m_1 v_1 = (m_1+m_2) v$ liefert $v = 2$ m/s.',
+      2: 'Halbe Geschwindigkeit wäre bei gleichen Massen der Fall. Hier ist $m_1 = 2m_2$, daher ist das Verhältnis $m_1/(m_1+m_2) = 2/3$, also $v = 2/3 \\cdot 3 = 2$ m/s.',
+      3: 'Plastischer Stoß heißt nicht "alles steht" — nur "beide bewegen sich gemeinsam". Der Gesamtimpuls $p_1 = 6$ kg·m/s bleibt erhalten, nur auf drei Kilogramm verteilt.',
+    },
 
     calcQuestion: 'Ein Körper ($m = 5$ kg) rutscht reibungsfrei eine Rampe von $h = 2$ m Höhe herunter. Wie groß ist seine Geschwindigkeit unten in m/s ($g = 9{,}81$ $m/s^2$)?',
     calcAnswer: 6.264,
@@ -626,6 +689,11 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
       'Reibungsarbeit ist ein Energieverlust — nicht vergessen.',
       '$W_R = F_R \\cdot s$, wobei $s$ die entlang der Rampe zurückgelegte Strecke ist.',
     ],
+    errorWrongAnswers: {
+      1: 'Reibung spielt auch bei kurzen Rampen eine Rolle — immer $W_R = F_R \\cdot s > 0$. Die Länge bestimmt nur die Größe des Verlusts, nicht seine Existenz.',
+      2: 'Energieerhaltung gilt durchaus für reibungsfreie Rampen. Nur bei Reibung muss die Reibungsarbeit bilanziert werden. Grundsätzlich verwerfen ist zu weit.',
+      3: 'Der Faktor 2 in $\\sqrt{2gh}$ ist korrekt und folgt direkt aus $\\tfrac{1}{2}mv^2 = mgh$. Der Fehler ist, dass bei Reibung die Energiebilanz nicht vollständig ist.',
+    },
 
     transferQuestion: 'Ein Auto ($m = 1000$ kg) fährt mit $v_0 = 20$ m/s und bremst mit konstanter Verzögerung auf $v = 5$ m/s in $t = 3$ s ab. Welche mittlere Bremskraft wirkt in N?',
     transferAnswer: 5000,

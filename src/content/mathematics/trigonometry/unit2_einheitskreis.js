@@ -21,6 +21,11 @@ export const exercises_u2 = {
       'In der Mathematik ist "Einheit" gleich $1$.',
       'Kreisgleichung: $x^{2} + y^{2} = r^{2}$. Welches $r$?',
     ],
+    wrongAnswerExplanations: {
+      0: 'Du hast $\\pi$ mit dem Radius verwechselt. $\\pi \\approx 3{,}14$ ist zwar eine Kreiszahl, beschreibt aber das Verhältnis von Umfang zu Durchmesser — nicht den Radius. Der Einheitskreis hat nach Definition Radius $r = 1$, Kreisgleichung $x^{2} + y^{2} = 1$.',
+      1: 'Das ist der Durchmesser, nicht der Radius. Verwechsle beide nicht: Der Radius geht vom Mittelpunkt zum Rand, der Durchmesser geht komplett durch. Beim Einheitskreis gilt $r = 1$, also $d = 2r = 2$.',
+      3: 'Du hast den Gradwert des vollen Kreises ($360°$) mit dem Radius verwechselt. $360°$ beschreibt den Winkelumfang, nicht die Länge. Der Radius des Einheitskreises ist dimensionslos und beträgt $r = 1$.',
+    },
   },
   'ex-trig-2-1-b': {
     id: 'ex-trig-2-1-b', lessonId: 'trig-2-1', type: 'multiple-choice',
@@ -41,6 +46,11 @@ export const exercises_u2 = {
       'Formel: $P = (\\cos\\alpha, \\sin\\alpha)$. Was sind $\\cos(0°)$ und $\\sin(0°)$?',
       'Der Punkt liegt *auf* dem Kreis mit Radius $1$, also $\\neq (0,0)$.',
     ],
+    wrongAnswerExplanations: {
+      0: '$(0, 0)$ ist der Ursprung (Mittelpunkt des Kreises), nicht ein Punkt auf dem Kreis. Für jeden Punkt auf dem Einheitskreis muss $x^{2} + y^{2} = 1$ gelten — für $(0,0)$ ergibt das aber $0 \\neq 1$.',
+      1: 'Du hast $\\sin$ und $\\cos$ verwechselt. $(0, 1)$ ist der Punkt bei $\\alpha = 90°$, denn dort gilt $\\cos(90°) = 0$ und $\\sin(90°) = 1$. Bei $\\alpha = 0°$ ist es umgekehrt: $\\cos(0°) = 1$, $\\sin(0°) = 0$, also $P = (1, 0)$.',
+      3: '$(1, 1)$ liegt außerhalb des Einheitskreises, denn $1^{2} + 1^{2} = 2 \\neq 1$. Die Koordinaten eines Punktes auf dem Einheitskreis sind immer $(\\cos\\alpha, \\sin\\alpha)$ — bei $\\alpha = 0°$ ist $\\sin(0°) = 0$, nicht $1$.',
+    },
   },
   'ex-trig-2-1-mastery': {
     id: 'ex-trig-2-1-mastery', lessonId: 'trig-2-1', type: 'multiple-choice', isMasteryCheck: true,
@@ -61,6 +71,11 @@ export const exercises_u2 = {
       'Formel: $P = (\\cos(90°), \\sin(90°))$.',
       'Am Einheitskreis heißt das: x-Koordinate $= \\cos$, y-Koordinate $= \\sin$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das ist der Punkt bei $\\alpha = 0°$, nicht bei $90°$. Du hast möglicherweise $\\cos$ und $\\sin$ vertauscht: Bei $90°$ gilt $\\cos(90°) = 0$ und $\\sin(90°) = 1$, also $P = (0, 1)$. Merke: erste Koordinate ist $\\cos$, zweite ist $\\sin$.',
+      2: 'Das ist der Punkt bei $\\alpha = 180°$ (halbe Umdrehung). Du hast den Winkel verdoppelt oder im falschen Quadranten gelandet. Bei $90°$ zeigt der Strahl nach oben auf $(0, 1)$, nicht nach links.',
+      3: 'Das ist der Punkt bei $\\alpha = 270°$ (bzw. $-90°$). Du hast das Vorzeichen der y-Koordinate falsch gesetzt. Bei $90°$ ist $\\sin(90°) = +1$ (nicht $-1$), denn im 1./2. Quadrant ist $\\sin > 0$.',
+    },
   },
 
   // ───────────── Lektion 2-2: sin und cos als Koordinaten ─────────────
@@ -83,6 +98,11 @@ export const exercises_u2 = {
       'Der erste Koordinatenwert (x) entspricht welcher Funktion?',
       'Skizze: Lot vom Punkt auf die x-Achse hat Länge $|\\cos\\alpha|$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das ist $\\sin(\\alpha)$, nicht $\\cos(\\alpha)$. Du hast sin/cos vertauscht. Am Einheitskreis gilt $P = (\\cos\\alpha, \\sin\\alpha)$: die *erste* Koordinate (x) ist $\\cos$, die *zweite* (y) ist $\\sin$. Eselsbrücke: "cos horizontal, sin vertikal".',
+      2: 'Der Radius ist am Einheitskreis immer $1$ — eine Konstante, keine Funktion von $\\alpha$. $\\cos(\\alpha)$ ändert sich jedoch mit $\\alpha$ (z.B. $\\cos(0°) = 1$, $\\cos(90°) = 0$). Also kann $\\cos$ nicht der Radius sein.',
+      3: 'Der Winkel $\\alpha$ ist der Eingabewert der Funktion, nicht der Ausgabewert. $\\cos(\\alpha)$ ist eine Koordinate, und zwar die x-Koordinate (eine Zahl zwischen $-1$ und $1$).',
+    },
   },
   'ex-trig-2-2-b': {
     id: 'ex-trig-2-2-b', lessonId: 'trig-2-2', type: 'multiple-choice',
@@ -103,6 +123,11 @@ export const exercises_u2 = {
       'Formel: $P = (\\cos(180°), \\sin(180°))$.',
       'Am Einheitskreis heißt das: ganz links, x-Koordinate ist negativ.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das ist der Startpunkt bei $\\alpha = 0°$, nicht bei $180°$. Bei einer halben Umdrehung landet der Punkt gegenüber vom Start, bei $(-1, 0)$. Vergiss das Minuszeichen nicht: $\\cos(180°) = -1$.',
+      1: 'Das ist der Punkt bei $\\alpha = 90°$, nicht bei $180°$. Bei $90°$ hast du erst ein Viertel der Umdrehung geschafft (oben). Bei $180°$ ist eine halbe Umdrehung vollständig, der Punkt liegt links auf $(-1, 0)$.',
+      3: 'Das ist der Punkt bei $\\alpha = 270°$ (drei Viertel der Umdrehung). Du hast die Koordinaten vertauscht oder bist zu weit gedreht. Bei $180°$: halbe Umdrehung, Punkt ganz links, $P = (-1, 0)$.',
+    },
   },
   'ex-trig-2-2-mastery': {
     id: 'ex-trig-2-2-mastery', lessonId: 'trig-2-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -127,6 +152,11 @@ export const exercises_u2 = {
       '$|x| = |y| = \\dfrac{\\sqrt{2}}{2}$ → Referenzwinkel $45°$.',
       'Im 2. Quadrant: $\\alpha = 180° - 45°$. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Du hast das Vorzeichen von $x$ ignoriert. $45°$ liegt im 1. Quadrant mit $\\cos(45°) = +\\dfrac{\\sqrt{2}}{2} > 0$. Hier ist aber $x < 0$, also 2. Quadrant. Immer zuerst die Vorzeichen prüfen, nicht nur die Beträge.',
+      2: 'Das wäre der 3. Quadrant (beide Koordinaten negativ: $\\cos(225°) = \\sin(225°) = -\\dfrac{\\sqrt{2}}{2}$). Hier ist aber $y > 0$, also liegt der Punkt oberhalb der x-Achse — 2. Quadrant.',
+      3: 'Das wäre der 4. Quadrant mit $x > 0$, $y < 0$ ($\\cos(315°) = +\\dfrac{\\sqrt{2}}{2}$, $\\sin(315°) = -\\dfrac{\\sqrt{2}}{2}$). Hier sind beide Vorzeichen genau umgekehrt. Im 2. Quadrant: $x < 0$, $y > 0$ → $\\alpha = 135°$.',
+    },
   },
 
   // ───────────── Lektion 2-3: Symmetrien und Periodizität ─────────────
@@ -151,6 +181,11 @@ export const exercises_u2 = {
       'Periodizität: $\\sin(\\alpha + 360°) = \\sin(\\alpha)$.',
       'Am Einheitskreis heißt das: nach $2\\pi$ ist der Punkt wieder an derselben Stelle.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Linearitäts-Irrtum. $\\sin$ ist *nicht* additiv: $\\sin(\\alpha + 360°) \\neq \\sin(\\alpha) + \\sin(360°)$. Da $\\sin(360°) = 0$ wäre die "$+1$" ohnehin falsch. Richtig: Nach einer vollen Umdrehung ist der Punkt exakt wieder an der Startposition.',
+      1: 'Das gilt für eine Spiegelung (z.B. $\\sin(180° + \\alpha) = -\\sin(\\alpha)$), nicht für eine volle Umdrehung. Nach $360°$ liegt der Punkt am selben Ort, also $\\sin(\\alpha + 360°) = +\\sin(\\alpha)$ ohne Vorzeichenwechsel.',
+      3: 'Das gilt nur, wenn $\\sin(\\alpha) = 0$ war — also z.B. bei $\\alpha = 0°, 180°, \\ldots$. Im Allgemeinen bleibt $\\sin$ nach einer vollen Umdrehung unverändert ($= \\sin(\\alpha)$), nicht pauschal $0$.',
+    },
   },
   'ex-trig-2-3-b': {
     id: 'ex-trig-2-3-b', lessonId: 'trig-2-3', type: 'multiple-choice',
@@ -171,6 +206,11 @@ export const exercises_u2 = {
       '$\\sin$ ist eine ungerade Funktion.',
       'Am Einheitskreis heißt das: y-Koordinate kippt das Vorzeichen.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das ist die Regel für $\\cos$ (gerade Funktion: $\\cos(-\\alpha) = \\cos(\\alpha)$), nicht für $\\sin$. $\\sin$ ist *ungerade*: Spiegelung an der x-Achse kippt die y-Koordinate, also das Vorzeichen. Richtig: $\\sin(-\\alpha) = -\\sin(\\alpha)$.',
+      2: '$\\sin$ und $\\cos$ gehen nicht ohne Zusatzwinkel ineinander über. Der Zusammenhang ist $\\sin(90° - \\alpha) = \\cos(\\alpha)$ (Komplementärformel), nicht $\\sin(-\\alpha) = \\cos(\\alpha)$. Bei $\\sin(-\\alpha)$ ändert sich *nur das Vorzeichen*.',
+      3: 'Doppelter Fehler: falsche Funktion UND falsches Vorzeichen. Beim negativen Winkel wechselt $\\sin$ das Vorzeichen und bleibt $\\sin$. Die richtige Regel ist $\\sin(-\\alpha) = -\\sin(\\alpha)$, nicht $-\\cos(\\alpha)$.',
+    },
   },
   'ex-trig-2-3-mastery': {
     id: 'ex-trig-2-3-mastery', lessonId: 'trig-2-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -196,6 +236,11 @@ export const exercises_u2 = {
       '$\\cos$ ist eine gerade Funktion.',
       'Am Einheitskreis heißt das: x-Koordinate bleibt bei Spiegelung gleich.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das ist die Formel für $\\cos(180° - \\alpha)$ (Spiegelung an der y-Achse), nicht für $\\cos(-\\alpha)$ (Spiegelung an der x-Achse). Bei der Spiegelung an der x-Achse bleibt die x-Koordinate (= $\\cos$) unverändert, ohne Vorzeichenwechsel.',
+      2: '$\\cos$ und $\\sin$ gehen nicht ohne Zusatzwinkel ineinander über. Der Zusammenhang ist $\\cos(90° - \\alpha) = \\sin(\\alpha)$ (Komplementärformel), nicht $\\cos(-\\alpha) = \\sin(\\alpha)$. $\\cos$ ist *gerade*, der negative Winkel ändert nichts.',
+      3: 'Das ist die Formel für $\\sin(-\\alpha)$, nicht für $\\cos(-\\alpha)$. Du hast zwei Fehler kombiniert: falsche Funktion UND falsches Vorzeichen. Richtig: $\\cos(-\\alpha) = \\cos(\\alpha)$ (gerade Funktion).',
+    },
   },
 
   // ───────────── Lektion 2-4: Tangens im Einheitskreis ─────────────
@@ -218,6 +263,11 @@ export const exercises_u2 = {
       '$\\tan = \\sin/\\cos$ — und $\\sin$, $\\cos$ sind welche Koordinaten?',
       'Am Einheitskreis heißt das: Steigung der Geraden vom Ursprung zum Punkt.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Der Radius am Einheitskreis ist konstant $1$, $\\tan$ dagegen variiert mit $\\alpha$ und wird sogar unendlich bei $\\alpha = 90°$. Der Radius kann $\\tan$ nicht beschreiben. Richtig: $\\tan(\\alpha) = y/x = \\sin/\\cos$.',
+      1: 'Die x-Koordinate ist $\\cos(\\alpha)$, nicht $\\tan(\\alpha)$. Du hast $\\cos$ und $\\tan$ verwechselt. $\\tan$ ist der *Quotient* $y/x$ (= Steigung), nicht eine einzelne Koordinate.',
+      3: 'Die Bogenlänge ist $s = r \\cdot \\alpha_{\\text{rad}}$, also ein Längenmaß abhängig vom Winkel. $\\tan(\\alpha)$ ist hingegen ein dimensionsloses Verhältnis $y/x$ und hat nichts mit einer Länge auf dem Kreis zu tun.',
+    },
   },
   'ex-trig-2-4-b': {
     id: 'ex-trig-2-4-b', lessonId: 'trig-2-4', type: 'multiple-choice',
@@ -238,6 +288,11 @@ export const exercises_u2 = {
       'Division durch $0$ ist nicht definiert — welcher Wert ist $0$?',
       'Am Einheitskreis heißt das: Gerade zum Punkt $(0,1)$ ist senkrecht, Steigung undefiniert.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Das ist falsch — $\\sin(90°) = 1$, nicht $0$. Du hast $\\sin$ und $\\cos$ bei $90°$ verwechselt. Das Problem bei $\\tan(90°)$ liegt am Nenner: $\\cos(90°) = 0$ macht den Quotienten undefiniert.',
+      2: '"Zu groß" ist kein mathematisches Argument. $\\tan$ ist für alle reellen Winkel definiert, *außer* an den Polstellen, wo $\\cos = 0$ ist (also bei $90°, 270°, \\ldots$). Bei z.B. $180°$ ist $\\tan$ sehr wohl definiert und gleich $0$.',
+      3: 'Das ist falsch. $\\tan$ ist für die meisten Winkel definiert, auch weit über $45°$ hinaus (z.B. $\\tan(60°) = \\sqrt{3}$, $\\tan(100°) \\approx -5{,}67$). Nur bei $\\cos(\\alpha) = 0$ entsteht eine Polstelle.',
+    },
   },
   'ex-trig-2-4-mastery': {
     id: 'ex-trig-2-4-mastery', lessonId: 'trig-2-4', type: 'multiple-choice', isMasteryCheck: true,
@@ -264,6 +319,11 @@ export const exercises_u2 = {
       'Zwei Fälle: beide Zahlen positiv ODER beide negativ.',
       'Am Einheitskreis heißt das: 1. und 3. Quadrant. ASTC: "T" im 3. Quadrant.',
     ],
+    wrongAnswerExplanations: {
+      1: 'Du vergisst den 3. Quadrant. Dort sind zwar $\\sin < 0$ UND $\\cos < 0$, aber der Quotient $\\dfrac{-}{-} = +$. $\\tan$ hat Periode $180°$ (nicht $360°$), also ist $\\tan$ in 1. UND 3. Quadrant positiv (ASTC: "T").',
+      2: 'Das ist der 2. Quadrant. Dort gilt $\\tan = \\dfrac{+}{-} = -$, also ist $\\tan$ dort *negativ*, nicht positiv. Im 2. Q ist nur $\\sin$ positiv (ASTC: "S").',
+      3: '$\\tan$ ist nicht immer positiv — z.B. im 2. und 4. Quadrant ist $\\tan < 0$, und an den Polstellen ($90°, 270°$) gar nicht definiert. Die Vorzeichen folgen der Quadranten-Regel.',
+    },
   },
 
   // ───────────── Lektion 2-5: Alle vier Quadranten ─────────────
@@ -292,6 +352,11 @@ export const exercises_u2 = {
       '3. Quadrant: $180°$ bis $270°$.',
       'Am Einheitskreis heißt das: Punkt links-unten, $x < 0$, $y < 0$.',
     ],
+    wrongAnswerExplanations: {
+      0: 'Der 1. Quadrant reicht nur von $0°$ bis $90°$. $200°$ liegt weit darüber. Prüfe die Grenzen: $0° \\leq \\alpha < 90°$ für den 1. Q.',
+      1: 'Der 2. Quadrant reicht von $90°$ bis $180°$. $200°$ liegt schon darüber, weil $200° > 180°$. Der Punkt hat bereits die negative x-Achse überschritten.',
+      3: 'Der 4. Quadrant beginnt erst ab $270°$. $200°$ ist aber noch unter $270°$, also noch im 3. Quadrant. Merke die Grenzen: 3. Q: $180°$–$270°$, 4. Q: $270°$–$360°$.',
+    },
   },
   'ex-trig-2-5-b': {
     id: 'ex-trig-2-5-b', lessonId: 'trig-2-5', type: 'multiple-choice',
@@ -318,6 +383,11 @@ export const exercises_u2 = {
       'Referenzwinkel: $210° - 180° = 30°$. Grundwert $\\sin(30°) = ?$',
       'Im 3. Quadrant ist $\\sin < 0$ (ASTC). Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Vorzeichen vergessen. Der Betrag ist zwar $\\dfrac{1}{2}$, aber $210°$ liegt im 3. Quadrant, wo $\\sin < 0$ ist (ASTC: nur "T"angens positiv). Richtig: $\\sin(210°) = -\\dfrac{1}{2}$.',
+      1: 'Doppelter Fehler: falscher Betrag UND falsches Vorzeichen. Der Referenzwinkel zu $210°$ ist $30°$ (nicht $60°$). $\\sin(30°) = \\dfrac{1}{2}$, nicht $\\dfrac{\\sqrt{3}}{2}$. Außerdem ist $\\sin$ im 3. Quadrant negativ.',
+      3: 'Der Betrag ist falsch. Du hast vermutlich $\\sin$ und $\\cos$ verwechselt: $|\\cos(210°)| = \\dfrac{\\sqrt{3}}{2}$, aber $|\\sin(210°)| = \\dfrac{1}{2}$. Das Vorzeichen ist korrekt negativ.',
+    },
   },
   'ex-trig-2-5-mastery': {
     id: 'ex-trig-2-5-mastery', lessonId: 'trig-2-5', type: 'multiple-choice', isMasteryCheck: true,
@@ -344,6 +414,11 @@ export const exercises_u2 = {
       'Referenzwinkel: $360° - 315° = 45°$. Grundwert $\\cos(45°) = \\dfrac{\\sqrt{2}}{2}$.',
       'Im 4. Quadrant ist $\\cos > 0$ (ASTC). Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Falsches Vorzeichen. $315°$ liegt im 4. Quadrant, wo $\\cos > 0$ ist (ASTC: nur "C"osinus positiv). Der Punkt liegt rechts-unten, x-Koordinate ist positiv. Richtig: $\\cos(315°) = +\\dfrac{\\sqrt{2}}{2}$.',
+      2: 'Doppelter Fehler: falscher Betrag UND falsches Vorzeichen. Der Referenzwinkel ist $45°$ (nicht $60°$), also $\\cos(45°) = \\dfrac{\\sqrt{2}}{2}$, nicht $\\dfrac{1}{2}$. Und das Vorzeichen ist im 4. Quadrant positiv.',
+      3: 'Der Betrag ist falsch. Du hast vermutlich $\\cos$ und $\\sin$ verwechselt: $|\\sin(315°)| = \\dfrac{\\sqrt{2}}{2}$ (ja), aber der Referenzwinkel $45°$ liefert $\\cos(45°) = \\dfrac{\\sqrt{2}}{2}$, nicht $\\dfrac{1}{2}$.',
+    },
   },
 }
 
