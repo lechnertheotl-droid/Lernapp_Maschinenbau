@@ -1,0 +1,113 @@
+import type { PracticeExercise } from '@/types/practice'
+
+export const statistikPractice: PracticeExercise[] = [
+  {
+    id: 'pr-stat-1',
+    topicId: 'statistik',
+    title: 'Normalverteilung und z-Transformation',
+    difficulty: 'klausur',
+    points: 10,
+    estimatedMinutes: 10,
+    context: `Die Bruchlast $X$ von gefrästen Stäben ist normalverteilt mit
+$$\\mu = 1200~\\text{N}, \\quad \\sigma = 80~\\text{N}.$$`,
+    subtasks: [
+      {
+        id: 'a',
+        prompt: 'a) Welche Wahrscheinlichkeit (in %) hat $P(X > 1280)$? ($z$-Tabelle: $\\Phi(1) \\approx 0{,}8413$.)',
+        answer: 15.87,
+        unit: '%',
+        tolerance: 0.2,
+        points: 3,
+        explanation: `$z = (1280-1200)/80 = 1$. $P(X>1280) = 1 - \\Phi(1) = 0{,}1587 = 15{,}87~\\%$.`,
+      },
+      {
+        id: 'b',
+        prompt: 'b) $P(X < 1100)$ in %? ($\\Phi(-1{,}25) = 1 - \\Phi(1{,}25) \\approx 0{,}1056$.)',
+        answer: 10.56,
+        unit: '%',
+        tolerance: 0.3,
+        points: 3,
+        explanation: `$z = (1100-1200)/80 = -1{,}25$, also $P(X<1100) \\approx 10{,}56\\,\\%$.`,
+      },
+      {
+        id: 'c',
+        prompt: 'c) Welche Schranke $x_{0{,}95}$ wird nur mit 5 % überschritten? (In N, $z_{0{,}95} \\approx 1{,}645$.)',
+        answer: 1331.6,
+        unit: 'N',
+        tolerance: 1,
+        points: 2,
+        explanation: `$x = \\mu + z\\cdot\\sigma = 1200 + 1{,}645\\cdot 80 = 1200 + 131{,}6 \\approx 1331{,}6~\\text{N}$.`,
+      },
+      {
+        id: 'd',
+        prompt: 'd) In einer Charge von 500 Stäben — Erwartungswert der Anzahl mit $X < 1100$?',
+        answer: 52.8,
+        unit: '',
+        tolerance: 1,
+        points: 2,
+        explanation: `$500\\cdot 0{,}1056 \\approx 52{,}8$, also rund 53 Stäbe.`,
+      },
+    ],
+    hints: [
+      'Standardisierung: $z = (x-\\mu)/\\sigma$.',
+      'Symmetrie der Normalverteilung: $\\Phi(-z) = 1 - \\Phi(z)$.',
+    ],
+    tags: ['normalverteilung', 'z-transformation', 'quantil'],
+  },
+  {
+    id: 'pr-stat-2',
+    topicId: 'statistik',
+    title: 'Erwartungswert und Varianz einer diskreten Verteilung',
+    difficulty: 'klausur-einstieg',
+    points: 8,
+    estimatedMinutes: 8,
+    context: `Die Anzahl Fehlstellen $K$ an einem Werkstück folgt der Verteilung:
+
+| $k$ | 0 | 1 | 2 | 3 |
+|----|---|---|---|---|
+| $P(K=k)$ | 0,40 | 0,35 | 0,20 | 0,05 |`,
+    subtasks: [
+      {
+        id: 'a',
+        prompt: 'a) Prüfsumme der Wahrscheinlichkeiten?',
+        answer: 1,
+        unit: '',
+        tolerance: 1e-3,
+        points: 1,
+        explanation: `$0{,}4 + 0{,}35 + 0{,}2 + 0{,}05 = 1{,}0$. Verteilung ist korrekt normiert.`,
+      },
+      {
+        id: 'b',
+        prompt: 'b) Erwartungswert $E[K]$?',
+        answer: 0.9,
+        unit: '',
+        tolerance: 0.01,
+        points: 3,
+        explanation: `$E[K] = 0\\cdot 0{,}4 + 1\\cdot 0{,}35 + 2\\cdot 0{,}2 + 3\\cdot 0{,}05 = 0{,}35 + 0{,}4 + 0{,}15 = 0{,}9$.`,
+      },
+      {
+        id: 'c',
+        prompt: 'c) $E[K^2]$?',
+        answer: 1.6,
+        unit: '',
+        tolerance: 0.01,
+        points: 2,
+        explanation: `$E[K^2] = 0 + 1\\cdot 0{,}35 + 4\\cdot 0{,}2 + 9\\cdot 0{,}05 = 0{,}35 + 0{,}8 + 0{,}45 = 1{,}60$.`,
+      },
+      {
+        id: 'd',
+        prompt: 'd) Varianz $\\operatorname{Var}(K) = E[K^2] - (E[K])^2$?',
+        answer: 0.79,
+        unit: '',
+        tolerance: 0.02,
+        points: 2,
+        explanation: `$\\operatorname{Var}(K) = 1{,}60 - 0{,}81 = 0{,}79$.`,
+      },
+    ],
+    hints: [
+      'Erwartungswert: $\\sum k\\cdot P(K=k)$.',
+      'Varianz nach Verschiebungssatz: $E[K^2] - (E[K])^2$.',
+    ],
+    tags: ['erwartungswert', 'varianz', 'diskret'],
+  },
+]

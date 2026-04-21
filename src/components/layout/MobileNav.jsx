@@ -1,11 +1,9 @@
 import { Link, useLocation } from 'react-router-dom'
 import { cn } from '@/utils/cn'
-import { useAppState } from '@/context/AppContext'
-import { getDueItems } from '@/utils/reviewScheduler'
 
 const tabs = [
   { to: '/',        icon: '⌂', label: 'Start'   },
-  { to: '/review',  icon: '↻', label: 'Üben'    },
+  { to: '/üben',    icon: '↻', label: 'Üben'    },
   { to: '/erfolge', icon: '★', label: 'Erfolge' },
   { to: '/mehr',    icon: '≡', label: 'Mehr'    },
 ]
@@ -20,8 +18,6 @@ function isTabActive(pathname, tabTo) {
 
 export function MobileNav() {
   const { pathname } = useLocation()
-  const state        = useAppState()
-  const dueCount     = getDueItems(state.review.queue, Date.now()).length
 
   return (
     <nav
@@ -29,8 +25,7 @@ export function MobileNav() {
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
     >
       {tabs.map(({ to, icon, label }) => {
-        const isActive  = isTabActive(pathname, to)
-        const showBadge = to === '/review' && dueCount > 0
+        const isActive = isTabActive(pathname, to)
 
         return (
           <Link
@@ -48,11 +43,6 @@ export function MobileNav() {
             )}
             <span className="relative text-xl leading-none font-mono font-bold">
               {icon}
-              {showBadge && (
-                <span className="absolute -top-1 -right-2 min-w-[16px] h-4 flex items-center justify-center bg-red-500 text-white text-[9px] font-bold rounded-full px-1 border border-ink">
-                  {dueCount}
-                </span>
-              )}
             </span>
             <span className={cn(
               'font-mono text-[10px] font-bold uppercase tracking-wider',

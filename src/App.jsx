@@ -13,7 +13,7 @@ import { NotFound } from '@/components/NotFound'
 const lazyNamed = (loader, name) => lazy(() => loader().then((m) => ({ default: m[name] })))
 
 const Onboarding     = lazyNamed(() => import('@/pages/Onboarding'),     'Onboarding')
-const ReviewArea     = lazyNamed(() => import('@/pages/ReviewArea'),     'ReviewArea')
+const PracticePage   = lazyNamed(() => import('@/pages/PracticePage'),   'PracticePage')
 const Skilltree      = lazyNamed(() => import('@/pages/Skilltree'),      'Skilltree')
 const TopicEntryQuiz = lazyNamed(() => import('@/pages/TopicEntryQuiz'), 'TopicEntryQuiz')
 const Formelsammlung = lazyNamed(() => import('@/pages/Formelsammlung'), 'Formelsammlung')
@@ -76,7 +76,8 @@ export default function App() {
           <Route path="topics/:topicId/einstiegstest" element={<TopicEntryQuiz />} />
           <Route path="topics/:topicId/:lessonId" element={<LessonView />} />
           <Route path="topics/:topicId/:lessonId/zusammenfassung" element={<LessonSummary />} />
-          <Route path="review" element={<ReviewArea />} />
+          <Route path="üben" element={<PracticePage />} />
+          <Route path="review" element={<Navigate to="/üben" replace />} />
           <Route path="settings" element={<Settings />} />
           <Route path="*" element={<NotFound />} />
         </Route>

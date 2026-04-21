@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAppState } from '@/context/AppContext'
 import { getAllTopics, getAllLessons } from '@/content/index'
-import { getDueItems } from '@/utils/reviewScheduler'
 import { computeTopicProgress } from '@/utils/progressLogic'
 import { TopicIcon } from '@/components/ui/TopicIcon'
 import { StreakBadge } from '@/components/ui/StreakBadge'
@@ -28,7 +27,6 @@ export function Dashboard() {
   const state    = useAppState()
   const navigate = useNavigate()
   const topics   = getAllTopics()
-  const due      = getDueItems(state.review.queue, Date.now())
 
   const [query, setQuery]   = useState('')
   const [filter, setFilter] = useState('grundlagen') // 'grundlagen' | 'all'
@@ -110,24 +108,20 @@ export function Dashboard() {
         </div>
       </div>
 
-      {/* ── Review CTA ───────────────────────────────────────────── */}
-      {due.length > 0 && (
-        <button
-          type="button"
-          onClick={() => navigate('/review')}
-          aria-label={`${due.length} Wiederholungen jetzt üben`}
-          className="w-full text-left bg-lemon border-2 border-lemon-dark rounded-retro shadow-hard-lemon p-4 flex items-center gap-3 retro-press tap-highlight-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-1"
-        >
-          <span className="text-2xl flex-shrink-0 font-mono font-black text-ink" aria-hidden>↻</span>
-          <div className="flex-1 min-w-0">
-            <p className="font-black text-ink text-sm">
-              {due.length} Wiederholung{due.length > 1 ? 'en' : ''} fällig
-            </p>
-            <p className="text-ink/70 text-xs font-mono mt-0.5">Jetzt Wissen festigen →</p>
-          </div>
-          <span className="font-mono font-black text-ink text-lg" aria-hidden>›</span>
-        </button>
-      )}
+      {/* ── Practice CTA ─────────────────────────────────────────── */}
+      <button
+        type="button"
+        onClick={() => navigate('/üben')}
+        aria-label="Prüfungsaufgaben üben"
+        className="w-full text-left bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard p-4 flex items-center gap-3 retro-press tap-highlight-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-1"
+      >
+        <span className="text-2xl flex-shrink-0 font-mono font-black text-ink dark:text-paper" aria-hidden>↻</span>
+        <div className="flex-1 min-w-0">
+          <p className="font-black text-ink dark:text-paper text-sm">Üben — Prüfungsniveau</p>
+          <p className="text-ink-soft dark:text-surface-200 text-xs font-mono mt-0.5">Mehrstufige Klausuraufgaben im TU-Wien-Stil →</p>
+        </div>
+        <span className="font-mono font-black text-ink dark:text-paper text-lg" aria-hidden>›</span>
+      </button>
 
       {/* ── Continue card ────────────────────────────────────────── */}
       {lastActive && (() => {
@@ -161,7 +155,7 @@ export function Dashboard() {
       })()}
 
       {/* ── Welcome-Hint für komplett neue Nutzer ─────────────────── */}
-      {!lastActive && totalCompleted === 0 && due.length === 0 && (
+      {!lastActive && totalCompleted === 0 && (
         <div className="bg-lemon-light border-2 border-ink rounded-retro shadow-hard-sm p-4 flex items-start gap-3 animate-fade-in">
           <span className="text-xl flex-shrink-0 font-mono font-black">👋</span>
           <div className="flex-1 min-w-0">
