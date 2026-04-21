@@ -613,6 +613,12 @@ const lessons_alg_u2 = [
     title: 'Lineare Gleichungen',
     order: 1, estimatedMinutes: 12,
     learningGoals: ['Lineare Gleichungen lösen', 'Textaufgaben in Gleichungen übersetzen'],
+    subGoals: [
+      { label: 'Äquivalenzumformungen: gleiche Operation auf beiden Seiten — Gleichung bleibt erhalten', examRelevance: 'hoch' },
+      { label: 'Standardvorgehen: Klammern auflösen $\\to$ Variable auf eine Seite $\\to$ durch Koeffizient teilen', examRelevance: 'hoch' },
+      { label: 'Textaufgaben: Variable definieren, Gleichung aufstellen, lösen, zurück in den Kontext interpretieren', examRelevance: 'mittel' },
+      { label: 'Probe durch Einsetzen in Original-Gleichung schützt vor Vorzeichen- und Umformungsfehlern', examRelevance: 'hoch' },
+    ],
     prerequisites: [],
     nextLessonId: 'alg-2-2',
     steps: [
@@ -652,6 +658,12 @@ const lessons_alg_u2 = [
     title: 'Quadratische Gleichungen',
     order: 2, estimatedMinutes: 20,
     learningGoals: ['pq-Formel und abc-Formel anwenden', 'Diskriminante interpretieren', 'Satz von Vieta nutzen'],
+    subGoals: [
+      { label: 'Mitternachtsformel $x = (-b \\pm \\sqrt{b^2 - 4ac})/(2a)$ für $ax^2 + bx + c = 0$', examRelevance: 'hoch' },
+      { label: 'Diskriminante $D = b^2 - 4ac$: $D>0$ zwei reelle Lösungen, $D=0$ eine doppelte, $D<0$ keine reelle', examRelevance: 'hoch' },
+      { label: 'Satz von Vieta: $x_1 + x_2 = -b/a$, $x_1 \\cdot x_2 = c/a$ — zum schnellen Raten/Prüfen', examRelevance: 'mittel' },
+      { label: 'Faktorisierte Form $(x - x_1)(x - x_2) = 0$ macht Nullstellen direkt sichtbar', examRelevance: 'hoch' },
+    ],
     prerequisites: [],
     nextLessonId: 'alg-2-3',
     steps: [
@@ -789,6 +801,12 @@ export const alg_unit2 = {
   title: 'Gleichungen & Ungleichungen',
   order: 2,
   description: 'Lineare und quadratische Gleichungen, Polynomdivision, Ungleichungen',
+  unitGoals: [
+    'Lineare Gleichungen durch Äquivalenzumformungen auflösen und jede Umformung per Probe verifizieren',
+    'Quadratische Gleichungen mit Mitternachts-/pq-Formel und Diskriminante lösen, Lösungsanzahl bestimmen',
+    'Polynomdivision durchführen und Polynome mittels Nullstellen in Linearfaktoren zerlegen',
+    'Lineare Ungleichungen mit Vorzeichenregeln auflösen (Multiplikation mit negativer Zahl → Umkehrung)',
+  ],
   lessons: lessons_alg_u2,
   exercises: exercises_alg_u2,
 }

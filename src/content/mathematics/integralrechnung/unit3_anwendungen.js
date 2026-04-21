@@ -590,6 +590,12 @@ export const int_unit3 = {
   title: 'Anwendungen',
   order: 3,
   description: 'Flächenberechnung, Rotationskörper und technische Anwendungen (Arbeit, Schwerpunkt)',
+  unitGoals: [
+    'Fläche zwischen zwei Kurven als $\\int_a^b (f(x) - g(x)) dx$ mit sauberer Vorzeichenführung',
+    'Rotationskörper-Volumen um x-Achse: $V = \\pi \\int_a^b f(x)^2 dx$',
+    'Bogenlänge und Mantelfläche über passende Integralformeln berechnen',
+    'Technische Anwendungen: Arbeit $W = \\int F(s) ds$, Schwerpunkt, Trägheitsmoment',
+  ],
   lessons: lessons_int_u3,
   exercises: exercises_int_u3,
 }

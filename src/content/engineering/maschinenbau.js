@@ -380,6 +380,12 @@ Alle anderen Einheiten lassen sich daraus ableiten.
               'Plausibilität eines Rechenergebnisses über Einheiten kontrollieren',
               'Formeln aus Dimensions-Überlegungen aufstellen',
             ],
+            subGoals: [
+              { label: 'Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen', examRelevance: 'hoch' },
+              { label: 'Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut', examRelevance: 'hoch' },
+              { label: 'Einheit Pascal: $1\\,\\text{Pa} = 1\\,\\text{N/m}^2 = 1\\,\\text{kg}/(\\text{m}\\cdot\\text{s}^2)$', examRelevance: 'mittel' },
+              { label: 'Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen', examRelevance: 'hoch' },
+            ],
             content: String.raw`**Warum Dimensionsanalyse?** Jede gültige physikalische Formel muss dimensional konsistent sein: Links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen. Das ist das **stärkste Prüfverfahren**, um Formelfehler zu erkennen.
 
 **Anwendung:**
@@ -497,6 +503,12 @@ Alle anderen Einheiten lassen sich daraus ableiten.
             id: 'mech-1-1',
             title: 'Kräfte und Freikörperbild',
             learningGoals: ['Kräfte als Vektoren darstellen', 'Freikörperbilder systematisch aufbauen'],
+            subGoals: [
+              { label: 'Freikörperbild: Körper isolieren, alle äußeren Kräfte (inkl. Gewicht, Lagerreaktionen) eintragen', examRelevance: 'hoch' },
+              { label: 'Kraft = Vektor: Betrag + Richtung — Pfeile in positives Koordinatensystem, Vorzeichen ergibt sich aus Rechnung', examRelevance: 'hoch' },
+              { label: 'Standard-Lagersymbole: Festlager (2 Reaktionen), Loslager (1 Reaktion), Einspannung (2 Kräfte + 1 Moment)', examRelevance: 'hoch' },
+              { label: 'Gleichgewicht in 2D: $\\sum F_x = 0$, $\\sum F_y = 0$, $\\sum M = 0$ → max. 3 Unbekannte statisch bestimmbar', examRelevance: 'hoch' },
+            ],
             content: String.raw`Ein **Freikörperbild** isoliert ein Bauteil und ersetzt alle Kontakte durch Kräfte und Momente.
 
 **Vorgehen:**
@@ -577,6 +589,12 @@ Alle anderen Einheiten lassen sich daraus ableiten.
             id: 'mech-1-2',
             title: 'Momente und Hebelarm',
             learningGoals: ['Moment als Kraft mal Hebelarm berechnen', 'Drehsinn korrekt berücksichtigen'],
+            subGoals: [
+              { label: 'Moment $M = F \\cdot l_\\perp$ — $l_\\perp$ ist der SENKRECHTE Abstand vom Bezugspunkt zur Wirkungslinie', examRelevance: 'hoch' },
+              { label: 'Drehsinn-Konvention: gegen Uhrzeiger positiv (rechte Hand / Rechte-Hand-Regel in 3D)', examRelevance: 'hoch' },
+              { label: 'Bezugspunkt frei wählbar — klug wählen: Punkt mit vielen unbekannten Kräften eliminiert diese', examRelevance: 'hoch' },
+              { label: 'Kreuzprodukt-Variante: $\\vec M = \\vec r \\times \\vec F$ in 3D oder bei schiefen Kräften', examRelevance: 'mittel' },
+            ],
             content: String.raw`Das **Moment** beschreibt die Drehwirkung einer Kraft.
 
 $$M = F \cdot l_\perp$$
@@ -1002,6 +1020,16 @@ $$\omega_0 = \sqrt{c/m}, \qquad T = 2\pi/\omega_0, \qquad f_0 = \omega_0/(2\pi)$
       difficulty: 4,
       level: 'vertiefung',
       prerequisites: ['technische-mechanik'],
+      phase: 'semester-2',
+      examRelevance: 'pflicht',
+      topicGoals: [
+        'Normal- und Schubspannung $\\sigma = F/A$, $\\tau = F/A$ aus Schnittkräften korrekt ableiten',
+        'Hooke-Gesetz $\\sigma = E\\,\\varepsilon$ samt Querkontraktion und thermischer Dehnung anwenden',
+        'Schnittgrößenverläufe $N(x)$, $Q(x)$, $M(x)$ für Balken mit Einzel- und Streckenlasten zeichnen',
+        'Biegespannung $\\sigma_b = M_b / W$ an Querschnitten bestimmen und kritische Fasern erkennen',
+        'Zulässige Spannung via Sicherheitsbeiwert $\\nu = R_e / \\sigma_{\\text{zul}}$ nachweisen',
+        'Spannungsspitzen an Kerben, Bohrungen und Absätzen über Kerbfaktor $\\alpha_k$ qualitativ einordnen',
+      ],
     },
     units: [
       {
@@ -1013,6 +1041,12 @@ $$\omega_0 = \sqrt{c/m}, \qquad T = 2\pi/\omega_0, \qquad f_0 = \omega_0/(2\pi)$
             id: 'fest-1-1',
             title: 'Normalspannung',
             learningGoals: ['Spannung als Kraft pro Fläche verstehen', 'Einheiten korrekt umrechnen'],
+            subGoals: [
+              { label: '$\\sigma = F/A$ — Kraft normal zur Fläche, Einheit $\\mathrm{N/mm^2 = MPa}$', examRelevance: 'hoch' },
+              { label: '1 MPa = 1 N/mm² = $10^6$ Pa: Einheiten-Umrechnung ohne Rechenfehler', examRelevance: 'hoch' },
+              { label: 'Zug vs. Druck: Vorzeichenkonvention (+Zug, −Druck) klar halten', examRelevance: 'mittel' },
+              { label: 'Querschnittsfläche: bei Kreis $A = \\pi d^2/4$, nicht $\\pi d^2$', examRelevance: 'hoch' },
+            ],
             content: String.raw`Die **Normalspannung** ist Kraft pro Querschnittsfläche:
 
 $$\sigma = \frac{F}{A}$$
@@ -1031,6 +1065,12 @@ $$\sigma = \frac{F}{A}$$
             id: 'fest-1-2',
             title: 'Hookesches Gesetz',
             learningGoals: ['Linearen elastischen Bereich erkennen', 'E-Modul interpretieren'],
+            subGoals: [
+              { label: '$\\sigma = E\\,\\varepsilon$ im linear-elastischen Bereich — nur hier gilt Hooke', examRelevance: 'hoch' },
+              { label: 'Dehnung $\\varepsilon = \\Delta l / l_0$ dimensionslos; oft in ‰ oder %', examRelevance: 'hoch' },
+              { label: 'E-Modul ist **Material-Konstante**, unabhängig von Geometrie (Stahl $\\approx 210\\,\\mathrm{GPa}$)', examRelevance: 'hoch' },
+              { label: 'Querkontraktion $\\varepsilon_q = -\\nu\\,\\varepsilon$ mit Poisson-Zahl $\\nu \\approx 0{,}3$ (Stahl)', examRelevance: 'mittel' },
+            ],
             content: String.raw`Im linear-elastischen Bereich gilt:
 
 $$\sigma = E \cdot \varepsilon$$
@@ -1485,6 +1525,16 @@ Auch die **Oberflächengüte** beeinflusst die Dauerfestigkeit stark: geschliffe
       difficulty: 4,
       level: 'vertiefung',
       prerequisites: ['algebra'],
+      phase: 'semester-2',
+      examRelevance: 'pflicht',
+      topicGoals: [
+        'Zustandsgrößen $p$, $V$, $T$, $m$ klar von Prozessgrößen $Q$, $W$ unterscheiden — Einheiten konsistent halten',
+        'Ideale Gasgleichung $p\\,V = m\\,R_s\\,T$ sicher nach jeder Größe auflösen; $R_s$ aus molarer Masse bestimmen',
+        'Isochor, isobar, isotherm und adiabat per pV- und Ts-Diagramm qualitativ skizzieren und rechnerisch behandeln',
+        '1. Hauptsatz $dU = \\delta Q - \\delta W$ in passender Vorzeichenkonvention (System-/Umgebungssicht) schreiben',
+        '2. Hauptsatz: Carnot-Wirkungsgrad $\\eta_C = 1 - T_\\text{k}/T_\\text{w}$ als obere Schranke aller Wärmekraftmaschinen begreifen',
+        'Einfache Kreisprozesse (Otto, Diesel, Carnot) im pV-Diagramm durchrechnen und Wirkungsgrad interpretieren',
+      ],
     },
     units: [
       {
@@ -1496,6 +1546,12 @@ Auch die **Oberflächengüte** beeinflusst die Dauerfestigkeit stark: geschliffe
             id: 'thermo-1-1',
             title: 'Ideales Gas',
             learningGoals: ['pV = nRT anwenden', 'Temperatur in Kelvin verwenden'],
+            subGoals: [
+              { label: '$pV = nRT$ mit $R = 8{,}314\\,\\mathrm{J/(mol\\,K)}$; alternativ $p V = m R_s T$ mit spez. Gaskonstante', examRelevance: 'hoch' },
+              { label: 'Temperatur **immer** in Kelvin: $T[K] = T[°C] + 273{,}15$', examRelevance: 'hoch' },
+              { label: 'Einheiten: $p$ in Pa, $V$ in m³, $n$ in mol — keine Liter/bar in die Grundformel', examRelevance: 'hoch' },
+              { label: '$R_s = R/M$ aus molarer Masse $M$ des Gases (Luft: $M \\approx 28{,}96\\,\\mathrm{g/mol}$)', examRelevance: 'mittel' },
+            ],
             content: String.raw`Für ideale Gase gilt:
 
 $$pV = nRT$$
@@ -1514,6 +1570,12 @@ Wichtig: Temperatur immer in Kelvin einsetzen. $T_K = T_{°C} + 273{,}15$.`,
             id: 'thermo-1-2',
             title: 'Druck und Arbeit',
             learningGoals: ['Volumenänderungsarbeit interpretieren', 'p-V-Diagramme lesen'],
+            subGoals: [
+              { label: 'Volumenarbeit $W = \\int p\\,dV$ = Fläche unter der Kurve im pV-Diagramm', examRelevance: 'hoch' },
+              { label: 'Isobar ($p$ const): $W = p \\cdot \\Delta V$ — direktes Rechteck', examRelevance: 'hoch' },
+              { label: 'Isotherm ($T$ const): $W = nRT \\ln(V_2/V_1)$ — Vorzeichen beachten', examRelevance: 'hoch' },
+              { label: 'Vorzeichenkonvention: $W > 0$ = vom System **abgegeben**; umgekehrt in mancher Literatur', examRelevance: 'mittel' },
+            ],
             content: String.raw`Volumenänderungsarbeit ist die Fläche im p-V-Diagramm:
 
 $$W = \int p\,dV$$
@@ -1761,6 +1823,16 @@ $$\frac{1}{k} = \frac{1}{\alpha_1} + \frac{d}{\lambda} + \frac{1}{\alpha_2}$$
       difficulty: 3,
       level: 'vertiefung',
       prerequisites: ['technische-mechanik'],
+      phase: 'vertiefung',
+      examRelevance: 'pflicht',
+      topicGoals: [
+        'Hydrostatischen Druck $p = \\rho\\,g\\,h$ in offenen Behältern und U-Rohr-Manometern auswerten',
+        'Kontinuitätsgleichung $A_1 v_1 = A_2 v_2$ (inkompressibel) als Volumenerhaltung nutzen',
+        'Bernoulli-Gleichung $p + \\tfrac12 \\rho v^2 + \\rho g h = \\text{konst}$ entlang einer Stromlinie korrekt anwenden',
+        'Reynolds-Zahl $\\mathrm{Re} = \\rho\\,v\\,d/\\eta$ berechnen und laminar ($\\lesssim 2300$) gegen turbulent unterscheiden',
+        'Rohrreibungsverluste aus Darcy-Weisbach $\\Delta p = \\lambda\\,\\tfrac{L}{d}\\,\\tfrac12\\rho v^2$ samt $\\lambda$ abschätzen',
+        'Auftriebskraft $F_A = \\rho\\,g\\,V_\\text{verdr}$ und Stabilität schwimmender Körper beurteilen',
+      ],
     },
     units: [
       {
@@ -1772,6 +1844,12 @@ $$\frac{1}{k} = \frac{1}{\alpha_1} + \frac{d}{\lambda} + \frac{1}{\alpha_2}$$
             id: 'fluid-1-1',
             title: 'Hydrostatischer Druck',
             learningGoals: ['p = ρgh anwenden', 'Druck mit Tiefe erklären'],
+            subGoals: [
+              { label: '$p = \\rho g h$ — linearer Zusammenhang nur bei konstanter Dichte (Flüssigkeiten)', examRelevance: 'hoch' },
+              { label: 'Überdruck vs. absoluter Druck: $p_\\text{abs} = p_\\text{atm} + p_\\text{hydro}$', examRelevance: 'hoch' },
+              { label: 'Druck in Flüssigkeit hängt nur von der Höhe ab, **nicht** von der Behälterform (hydrostat. Paradoxon)', examRelevance: 'hoch' },
+              { label: 'Einheiten: 1 bar ≈ 10 m Wassersäule; 1 mbar ≈ 1 cm H₂O', examRelevance: 'mittel' },
+            ],
             content: String.raw`In einem ruhenden Fluid steigt der Druck mit der Tiefe:
 
 $$p = \rho g h$$
@@ -1787,6 +1865,12 @@ Dazu kommt je nach Bezug noch der Umgebungsdruck.`,
             id: 'fluid-1-2',
             title: 'Auftrieb',
             learningGoals: ['Archimedisches Prinzip verwenden', 'Verdrängtes Volumen erkennen'],
+            subGoals: [
+              { label: '$F_A = \\rho_\\text{Fluid}\\,g\\,V_\\text{verdrängt}$ — Dichte des **Fluids**, nicht des Körpers', examRelevance: 'hoch' },
+              { label: 'Schwimmen: $F_A = F_G$ → $V_\\text{verdrängt} = m_\\text{Körper}/\\rho_\\text{Fluid}$', examRelevance: 'hoch' },
+              { label: 'Vollständig getaucht: $V_\\text{verdrängt} = V_\\text{Körper}$', examRelevance: 'mittel' },
+              { label: 'Dichte-Vergleich: Körper schwimmt, wenn $\\rho_\\text{Körper} < \\rho_\\text{Fluid}$', examRelevance: 'hoch' },
+            ],
             content: String.raw`Die Auftriebskraft entspricht dem Gewicht der verdrängten Flüssigkeit:
 
 $$F_A = \rho_\text{Fluid} \cdot g \cdot V_\text{verdrängt}$$`,
@@ -2135,6 +2219,16 @@ $$p_1 + \frac{1}{2}\rho v_1^2 + \rho g z_1 = p_2 + \frac{1}{2}\rho v_2^2 + \rho 
       difficulty: 3,
       level: 'vertiefung',
       prerequisites: ['festigkeitslehre'],
+      phase: 'semester-2',
+      examRelevance: 'pflicht',
+      topicGoals: [
+        'Schraubenverbindungen auf Zug-, Scher- und Flächenpressungslast auslegen (Vorspannkraft, Betriebskraft)',
+        'Welle-Nabe-Verbindungen (Passfeder, Keilwelle, Presssitz) anhand Momenten- und Flächenpressungs-Kriterium auswählen',
+        'Wellen auf Biegung, Torsion und kombinierte Belastung mit Vergleichsspannung nach GEH auslegen',
+        'Wälz- und Gleitlager nach Tragzahl $C$ und modifizierter Lebensdauer $L_{10} = (C/P)^p \\cdot 10^6$ dimensionieren',
+        'Stirnrad-Getriebe mit Übersetzung $i = z_2/z_1$ und Modul $m = d/z$ rechnen; Verluste pro Stufe einschätzen',
+        'Passungen (Spiel, Übergang, Übermaß) nach ISO-Tabellensystem lesen und konstruktiv begründen',
+      ],
     },
     units: [
       {
@@ -2146,6 +2240,12 @@ $$p_1 + \frac{1}{2}\rho v_1^2 + \rho g z_1 = p_2 + \frac{1}{2}\rho v_2^2 + \rho 
             id: 'melem-1-1',
             title: 'Schraubenverbindungen',
             learningGoals: ['Kraftfluss in Schraubenverbindungen verstehen', 'Vorspannung einordnen'],
+            subGoals: [
+              { label: 'Vorspannkraft $F_V$ erzeugt Klemmkraft in der Fuge — verhindert Fugenöffnen', examRelevance: 'hoch' },
+              { label: 'Kraftverteilung: nur ein Bruchteil der Betriebskraft fließt durch die Schraube ($\\phi$-Faktor)', examRelevance: 'hoch' },
+              { label: 'Festigkeitsklassen 8.8, 10.9, 12.9: erste Zahl ≈ $R_m/100$ MPa, zweite ≈ $R_e/R_m$', examRelevance: 'mittel' },
+              { label: 'Anziehdrehmoment $M_A$ aus Hersteller-Tabelle — nie größer als Streckgrenze der Schraube', examRelevance: 'mittel' },
+            ],
             content: String.raw`Schraubenverbindungen nutzen **Vorspannung**, um Bauteile zu klemmen.
 
 Bei Betriebslast darf die Klemmkraft nicht vollständig abgebaut werden, sonst können Fugen öffnen und Schrauben zyklisch überlastet werden.`,
@@ -2159,6 +2259,12 @@ Bei Betriebslast darf die Klemmkraft nicht vollständig abgebaut werden, sonst k
             id: 'melem-1-2',
             title: 'Passfedern und formschlüssige Verbindungen',
             learningGoals: ['Formschluss von Kraftschluss unterscheiden', 'Drehmomentübertragung beschreiben'],
+            subGoals: [
+              { label: 'Formschluss: Geometrie überträgt Kraft (Passfeder, Zahn); Kraftschluss: Reibung überträgt Kraft (Presssitz, Kupplung)', examRelevance: 'hoch' },
+              { label: 'Drehmoment aus Umfangskraft: $M_t = F_u \\cdot r$; Umfangskraft $F_u = 2 M_t / d$ an der Welle mit Durchmesser $d$', examRelevance: 'hoch' },
+              { label: 'Flächenpressung an der Passfeder: $p = F_u / (l \\cdot h/2) \\le p_{zul}$ — bestimmt die Passfeder-Länge $l$', examRelevance: 'hoch' },
+              { label: 'Passfedern sind Normteile nach DIN 6885 — Form A (rund), Form B (gerade); Bezeichnung $b \\times h \\times l$', examRelevance: 'mittel' },
+            ],
             content: String.raw`Eine Passfeder überträgt Drehmoment über **Formschluss** zwischen Welle und Nabe.
 
 Formschluss bedeutet: Geometrie verhindert Relativbewegung. Kraftschluss bedeutet: Reibung verhindert Relativbewegung.`,
@@ -2399,6 +2505,16 @@ $$P = M \cdot \omega, \qquad \omega = \frac{2\pi n}{60}$$`,
       difficulty: 3,
       level: 'grundlagen',
       prerequisites: ['algebra'],
+      phase: 'semester-1',
+      examRelevance: 'pflicht',
+      topicGoals: [
+        'Ohm-Gesetz $U = R\\,I$ und Leistung $P = U\\,I = I^2 R = U^2/R$ sicher ineinander umformen',
+        'Kirchhoffsche Knoten- und Maschenregel strukturiert auf Netzwerke mit mehreren Schleifen anwenden',
+        'Reihen- und Parallelschaltung von Widerständen zu Ersatzwiderständen zusammenfassen',
+        'Effektivwert $U_\\text{eff} = \\hat U/\\sqrt 2$, Scheitelwert, Frequenz und Kreisfrequenz $\\omega = 2\\pi f$ in Wechselstromaufgaben identifizieren',
+        'Impedanzen $Z_R = R$, $Z_L = j\\omega L$, $Z_C = 1/(j\\omega C)$ komplex addieren und als Zeiger darstellen',
+        'Wirk-, Blind- und Scheinleistung sowie Leistungsfaktor $\\cos\\varphi$ interpretieren und berechnen',
+      ],
     },
     units: [
       {
@@ -2414,6 +2530,13 @@ $$P = M \cdot \omega, \qquad \omega = \frac{2\pi n}{60}$$`,
             learningGoals: [
               'Das Ohmsche Gesetz $U = R \\cdot I$ anwenden',
               'Reihen- und Parallelschaltungen berechnen',
+            ],
+            subGoals: [
+              { label: 'Ohmsches Gesetz $U = R \\cdot I$ — Dreieck-Merkhilfe: eine Größe abdecken, die anderen beiden ergeben sie', examRelevance: 'hoch' },
+              { label: 'Einheiten-Konsistenz: V, A, $\\Omega$ — mA und k$\\Omega$ immer vor der Rechnung umrechnen', examRelevance: 'hoch' },
+              { label: 'Reihenschaltung: Widerstände addieren sich, Strom ist überall gleich', examRelevance: 'hoch' },
+              { label: 'Parallelschaltung: Kehrwerte addieren ($1/R_{ges} = \\sum 1/R_i$), Spannung überall gleich', examRelevance: 'hoch' },
+              { label: 'Spezialfall zwei Parallelwiderstände: $R_{ges} = R_1 R_2 / (R_1 + R_2)$ (Produkt-durch-Summe)', examRelevance: 'mittel' },
             ],
             content: String.raw`## Ohmsches Gesetz und Grundbegriffe
 
@@ -2485,6 +2608,12 @@ Für zwei Widerstände gilt: $R_\text{ges} = \frac{R_1 \cdot R_2}{R_1 + R_2}$
             learningGoals: [
               'Den Knotensatz (KCL) anwenden: $\\sum I = 0$',
               'Den Maschensatz (KVL) anwenden: $\\sum U = 0$',
+            ],
+            subGoals: [
+              { label: 'Knotensatz (KCL): An jedem Knoten ist die Summe zu- und abfließender Ströme null — Folge der Ladungserhaltung', examRelevance: 'hoch' },
+              { label: 'Maschensatz (KVL): In jeder geschlossenen Masche ist die Summe aller Spannungsabfälle null — Folge der Energieerhaltung', examRelevance: 'hoch' },
+              { label: 'Vorzeichenkonvention: Umlaufrichtung festlegen; in Umlaufrichtung Spannungsquelle positiv, Widerstand-Abfall negativ (oder konsistent umgekehrt)', examRelevance: 'hoch' },
+              { label: 'Spannungsteiler: $U_2 = U \\cdot R_2 / (R_1 + R_2)$ — direkter Spezialfall des Maschensatzes bei Reihenschaltung', examRelevance: 'mittel' },
             ],
             content: String.raw`## Kirchhoffsche Gesetze
 
@@ -3072,6 +3201,16 @@ mit Reaktanz $X = \omega L - \frac{1}{\omega C}$
       difficulty: 4,
       level: 'vertiefung',
       prerequisites: ['differentialgleichungen', 'elektrotechnik'],
+      phase: 'vertiefung',
+      examRelevance: 'pflicht',
+      topicGoals: [
+        'Regelkreis (Sollwert, Regelgröße, Stellgröße, Störgröße) als Blockschaltbild korrekt aufstellen',
+        'Übertragungsfunktion $G(s) = Y(s)/U(s)$ per Laplace-Transformation aus einer linearen DGL ableiten',
+        'P-, I-, D-, PI- und PID-Regler nach ihrem Zeit- und Frequenzverhalten unterscheiden und einsetzen',
+        'Stabilität anhand der Pollage $\\Re(s_i) < 0$ und mit Routh-Hurwitz-Kriterium beurteilen',
+        'Bode-Diagramm (Amplituden- und Phasengang) lesen, Eckfrequenzen und Phasenreserve ablesen',
+        'Stellgrößenbeschränkung, Totzeit und Wind-Up als typische Praxis-Störungen qualitativ einordnen',
+      ],
     },
     units: [
       {
@@ -3088,6 +3227,12 @@ mit Reaktanz $X = \omega L - \frac{1}{\omega C}$
               'Komponenten eines Regelkreises benennen',
               'Regelabweichung $e = w - y$ erklären',
               'Steuerung und Regelung unterscheiden',
+            ],
+            subGoals: [
+              { label: 'Signale: Führungsgröße $w$, Regelgröße $y$, Stellgröße $u$, Regelabweichung $e = w - y$, Störgröße $z$', examRelevance: 'hoch' },
+              { label: 'Regelung (geschlossener Kreis) vs. Steuerung (offener Wirkungsablauf) — nur Regelung reagiert auf Störungen', examRelevance: 'hoch' },
+              { label: 'Blockschaltbild: Regler $\\to$ Stellglied $\\to$ Regelstrecke $\\to$ Messglied $\\to$ Vergleichsstelle (Rückführung)', examRelevance: 'hoch' },
+              { label: 'Ziel jeder Regelung: $e \\to 0$ trotz Störungen $z$ und Parameter-Schwankungen der Strecke', examRelevance: 'mittel' },
             ],
             content: String.raw`## Regelkreis — Grundbegriffe
 
@@ -3179,6 +3324,13 @@ mit Reaktanz $X = \omega L - \frac{1}{\omega C}$
               'Übertragungsfunktion $G(s) = Y(s)/U(s)$ im Laplace-Bereich definieren',
               'PT1-Glied und Verstärkung bei $s = 0$ bestimmen',
               'Führungsübertragungsfunktion $T = G_0/(1+G_0)$ berechnen',
+            ],
+            subGoals: [
+              { label: 'Übertragungsfunktion $G(s) = Y(s)/U(s)$ nur für LTI-Systeme bei verschwindenden Anfangsbedingungen definiert', examRelevance: 'hoch' },
+              { label: 'PT1-Glied: $G(s) = K/(1 + Ts)$ — Verstärkung $K$ und Zeitkonstante $T$; Sprungantwort $y(t) = K(1 - e^{-t/T})$', examRelevance: 'hoch' },
+              { label: 'Statische Verstärkung = $G(0)$ — erhält man durch Einsetzen von $s = 0$ (Endwertsatz für Sprunganregung)', examRelevance: 'hoch' },
+              { label: 'Serienschaltung: Übertragungsfunktionen werden multipliziert; Parallelschaltung: addiert; Rückführung: $T = G/(1+G H)$', examRelevance: 'hoch' },
+              { label: 'Pole von $G(s)$ (Nullstellen des Nenners) bestimmen Stabilität: Realteil $< 0$ = stabil', examRelevance: 'mittel' },
             ],
             content: String.raw`## Übertragungsfunktion
 

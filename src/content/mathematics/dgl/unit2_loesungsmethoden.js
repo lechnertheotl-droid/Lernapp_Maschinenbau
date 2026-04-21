@@ -415,6 +415,12 @@ export const dgl_unit2 = {
   title: 'Fortgeschrittene Methoden',
   order: 2,
   description: 'Variation der Konstanten, DGL-Systeme, technische Anwendungen (Schwingungen, RC-Glied)',
+  unitGoals: [
+    'Variation der Konstanten: inhomogene lineare DGL $y\' + p(x)y = q(x)$ aus homogener Lösung aufbauen',
+    'Charakteristisches Polynom lösen und je nach Diskriminanten-Fall (reell/doppelt/komplex) Lösungstypen wählen',
+    'Erzwungene Schwingung mit Ansatz-Methode (Inhomogenität vom Typ Polynom, Exponential, Sinus/Kosinus)',
+    'Technische Anwendungen: RC-/RL-Glied, Masse-Feder-Dämpfer, exponentielles Wachstum/Zerfall',
+  ],
   lessons: lessons_dgl_u2,
   exercises: exercises_dgl_u2,
 }

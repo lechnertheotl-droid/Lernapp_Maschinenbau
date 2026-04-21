@@ -596,6 +596,11 @@ export const unit4 = {
   title: 'Prüfungsaufgaben',
   order: 4,
   description: 'Aufgaben auf TU Wien Prüfungsniveau — Identitäten, Anwendungen, Gleichungen',
+  unitGoals: [
+    'Trigonometrische Gleichungen im angegebenen Intervall vollständig (inkl. aller Perioden-Lösungen) angeben',
+    'Mehrstufige Anwendungsaufgaben (Geometrie, Technik, Vektorgeometrie) lösen',
+    'Identitäten zur Vereinfachung komplexer Ausdrücke gezielt einsetzen',
+  ],
   lessons: lessons_u4,
   exercises: exercises_u4,
 }

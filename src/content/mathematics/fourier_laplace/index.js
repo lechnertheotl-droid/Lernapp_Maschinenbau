@@ -10,6 +10,13 @@ const unit1Lessons = [
       'Periodische Funktionen als Überlagerung von Sinus/Kosinus erkennen',
       'Fourier-Koeffizienten berechnen',
     ],
+    subGoals: [
+      { label: '$T$-Periode und Grundfrequenz $\\omega_0 = 2\\pi/T$ korrekt identifizieren', examRelevance: 'hoch' },
+      { label: 'Formel: $a_0 = \\tfrac{1}{T}\\int_0^T f\\,dt$ (DC-Anteil), $a_n$, $b_n$ mit Faktor $\\tfrac{2}{T}$', examRelevance: 'hoch' },
+      { label: 'Gerade $f$ ($f(-t) = f(t)$) → nur $a_n$; ungerade → nur $b_n$ — halbiert den Aufwand', examRelevance: 'hoch' },
+      { label: 'Reihenansatz: $f(t) = a_0/2 + \\sum_n (a_n\\cos + b_n\\sin)$ — Faktor $1/2$ vor $a_0$ nicht vergessen', examRelevance: 'hoch' },
+      { label: 'Integration über eine volle Periode — Start- und Endpunkt frei wählbar (z. B. $-T/2$ bis $T/2$)', examRelevance: 'mittel' },
+    ],
     createdAt: '2026-04-16',
     intuitionTitle: 'Klang als Summe von Obertönen',
     intuitionContent:
@@ -155,6 +162,12 @@ const unit1Lessons = [
     learningGoals: [
       'Fourier-Koeffizienten eines Rechtecksignals berechnen',
       'Gibbs-Phänomen kennen',
+    ],
+    subGoals: [
+      { label: 'Ungerades Rechteck → nur $b_n$; nur **ungerade** $n$ liefern Beitrag ($b_n \\propto 1/n$)', examRelevance: 'hoch' },
+      { label: 'Gibbs-Überschwinger ca. 9 % an Sprungstellen — wird mit mehr Termen nicht kleiner, nur schmaler', examRelevance: 'mittel' },
+      { label: 'Konvergenz in der Mitte der Sprungstelle zum Mittelwert der beiden Seiten', examRelevance: 'niedrig' },
+      { label: 'Amplitudenspektrum: $1/n$-Abfall → „langsame" Abnahme hoher Frequenzen', examRelevance: 'mittel' },
     ],
     createdAt: '2026-04-16',
     intuitionTitle: 'Warum braucht ein Rechteck hohe Frequenzen?',
@@ -443,6 +456,13 @@ const unit1 = makeUnit({
   id: 'fl-unit-1',
   title: 'Fourier-Reihen',
   order: 1,
+  unitGoals: [
+    'Periodische Funktion in Fourier-Reihe $a_0/2 + \\sum (a_n \\cos(n\\omega t) + b_n \\sin(n\\omega t))$ entwickeln',
+    'Koeffizienten $a_n, b_n$ über Integrale über eine Periode berechnen',
+    'Symmetrien ausnutzen: gerade Funktionen $\\Rightarrow b_n = 0$, ungerade $\\Rightarrow a_n = 0$',
+    'Komplexe Fourier-Reihe $\\sum c_n e^{in\\omega t}$ und Zusammenhang $c_n = (a_n - ib_n)/2$',
+    'Fourier-Transformation als Verallgemeinerung auf nichtperiodische Signale einführen',
+  ],
   lessons: unit1Lessons,
 })
 
@@ -742,6 +762,13 @@ const unit2 = makeUnit({
   id: 'fl-unit-2',
   title: 'Laplace-Transformation',
   order: 2,
+  unitGoals: [
+    'Laplace-Transformation $F(s) = \\int_0^\\infty f(t) e^{-st} dt$ als Werkzeug zur DGL-Lösung einsetzen',
+    'Korrespondenztabelle nutzen: $e^{at} \\leftrightarrow 1/(s-a)$, $\\sin(\\omega t) \\leftrightarrow \\omega/(s^2+\\omega^2)$, etc.',
+    'Ableitungsregel $\\mathcal{L}\\{f\'\\} = sF(s) - f(0)$ und Integrationsregel anwenden',
+    'Rücktransformation mit Partialbruchzerlegung und Tabellenwerten durchführen',
+    'Endwertsatz und Anfangswertsatz zur schnellen Überprüfung der Lösung nutzen',
+  ],
   lessons: unit2Lessons,
 })
 
@@ -1020,6 +1047,11 @@ const unit3 = makeUnit({
   id: 'fl-unit-3',
   title: 'Prüfungsaufgaben',
   order: 3,
+  unitGoals: [
+    'Mehrstufige Prüfungsaufgaben mit Kombination aus Fourier-Zerlegung, Laplace und Rücktransformation',
+    'Stabilität von LTI-Systemen über die Lage der Pole in der komplexen Ebene entscheiden',
+    'Übertragungsfunktion $G(s)$ bilden, Antwort auf Sprung/Impuls berechnen und interpretieren',
+  ],
   lessons: unit3Lessons,
 })
 
@@ -1033,6 +1065,16 @@ export const fourierLaplaceTopic = {
   estimatedHours: 5,
   difficulty: 5,
   level: 'vertiefung',
+  phase: 'vertiefung',
+  examRelevance: 'pflicht',
+  topicGoals: [
+    'Periodische Signale als Fourier-Reihe $a_0/2 + \\sum (a_n\\cos + b_n\\sin)$ darstellen und Koeffizienten per Integral bestimmen',
+    'Symmetrie erkennen: gerade Funktion → nur Cosinus-Anteile, ungerade → nur Sinus — spart das halbe Rechenwerk',
+    'Die komplexe Fourier-Form $\\sum c_n e^{in\\omega_0 t}$ aufstellen und Amplituden-/Phasenspektrum daraus ableiten',
+    'Von der Fourier-Reihe zur Fourier-Transformation übergehen und Zeit-/Frequenzbereich deuten',
+    'Laplace-Transformation $\\mathcal{L}\\{f(t)\\} = F(s)$ aus Tabelle und Regeln (Linearität, Verschiebung, Ableitung) aufstellen',
+    'Lineare DGL mit konstanten Koeffizienten per Laplace auf eine algebraische Gleichung in $s$ reduzieren und rücktransformieren',
+  ],
   units: [unit1, unit2, unit3],
   prerequisites: ['differentialgleichungen', 'komplexe-zahlen'],
 }

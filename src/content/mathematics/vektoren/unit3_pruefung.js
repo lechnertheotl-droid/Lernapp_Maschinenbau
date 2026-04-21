@@ -566,6 +566,11 @@ export const vek_unit3 = {
   title: 'Prüfungsvorbereitung Vektoren',
   order: 3,
   description: 'Gemischte Aufgaben, Flächen- und Volumenberechnung, technische Anwendungen',
+  unitGoals: [
+    'Flächen von Dreiecken/Parallelogrammen über $|\\vec{a} \\times \\vec{b}|$ berechnen',
+    'Volumen von Spaten über Spatprodukt $\\det(\\vec{a}, \\vec{b}, \\vec{c})$ bestimmen',
+    'Mehrschritt-Prüfungsaufgaben mit Mix aus Geraden, Ebenen, Winkeln und Abständen lösen',
+  ],
   lessons: lessons_vek_u3,
   exercises: exercises_vek_u3,
 }

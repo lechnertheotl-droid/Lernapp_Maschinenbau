@@ -963,6 +963,12 @@ $$c' = 0$$
       'Ableitungstabelle auswendig kennen',
       'Definitionsbereiche beachten',
     ],
+    subGoals: [
+      { label: '$(\\sin x)\' = \\cos x$, $(\\cos x)\' = -\\sin x$ — Vorzeichen bei Kosinus nicht vergessen', examRelevance: 'hoch' },
+      { label: '$(e^x)\' = e^x$ (einzige Funktion mit $f\' = f$) und $(\\ln x)\' = 1/x$', examRelevance: 'hoch' },
+      { label: 'Allgemeine Exponential-/Logarithmusfunktion: $(a^x)\' = a^x \\ln a$, $(\\log_a x)\' = 1/(x \\ln a)$', examRelevance: 'mittel' },
+      { label: 'Definitionsbereich beachten: $\\ln x$ nur für $x>0$, $\\sqrt x$ für $x \\ge 0$', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'abl-1-4',
     steps: [
@@ -1017,6 +1023,12 @@ $$c' = 0$$
       'Kettenregel verstehen und anwenden',
       'Verkettete Funktionen ableiten',
       'Rolle der inneren Ableitung verinnerlichen',
+    ],
+    subGoals: [
+      { label: 'Kettenregel: $(f(g(x)))\' = f\'(g(x)) \\cdot g\'(x)$ — „äußere mal innere Ableitung"', examRelevance: 'hoch' },
+      { label: 'Äußere Funktion identifizieren (die, die man zuletzt ausführt) und separat ableiten', examRelevance: 'hoch' },
+      { label: 'Standardfälle: $(e^{u(x)})\' = e^{u(x)} \\cdot u\'(x)$, $(\\sin u)\' = \\cos u \\cdot u\'$, $(\\ln u)\' = u\'/u$', examRelevance: 'hoch' },
+      { label: 'Bei mehrfach verketteten Funktionen hierarchisch: erst äußerste Schale, dann nächst innere, etc.', examRelevance: 'mittel' },
     ],
     prerequisites: [],
     nextLessonId: 'abl-1-5',
@@ -1104,6 +1116,12 @@ export const abl_unit1 = {
   title: 'Grundlagen der Differentialrechnung',
   order: 1,
   description: 'Ableitungsbegriff, Potenzregel, elementare Ableitungen, Kettenregel',
+  unitGoals: [
+    'Ableitung als Grenzwert des Differenzenquotienten $\\lim_{h\\to 0} (f(x+h)-f(x))/h$ verstehen',
+    'Geometrische Deutung: $f\'(x_0)$ als Steigung der Tangente im Punkt $x_0$',
+    'Potenzregel $\\frac{d}{dx} x^n = n x^{n-1}$ sowie Ableitungen von $e^x$, $\\ln x$, $\\sin x$, $\\cos x$ auswendig',
+    'Summen-, Faktor-, Produkt-, Quotienten- und Kettenregel sicher auf Kombinationen anwenden',
+  ],
   lessons: lessons_abl_u1,
   exercises: exercises_abl_u1,
 }

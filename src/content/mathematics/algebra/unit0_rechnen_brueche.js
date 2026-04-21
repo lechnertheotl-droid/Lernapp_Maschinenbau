@@ -705,6 +705,12 @@ export const alg_unit0 = {
   title: 'Rechnen & Brüche (Vorkurs-Einstieg)',
   order: 0,
   description: 'Grundrechnen, Klammern, Brüche, Prozent, Termumformung — die Basis für alles Weitere.',
+  unitGoals: [
+    'Punkt-vor-Strich und Klammer-Vorrang sicher in komplexen Termen anwenden',
+    'Brüche erweitern, kürzen und auf gemeinsamen Nenner bringen',
+    'Prozentrechnung mit Grundwert/Prozentwert/Prozentsatz in Anwendungsaufgaben lösen',
+    'Terme durch Ausmultiplizieren, Ausklammern und Zusammenfassen vereinfachen',
+  ],
   lessons: lessons_alg_u0,
   exercises: exercises_alg_u0,
 }

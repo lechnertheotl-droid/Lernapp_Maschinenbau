@@ -1245,6 +1245,11 @@ export const alg_unit4 = {
   title: 'Prüfungsaufgaben',
   order: 4,
   description: 'Aufgaben auf TU Wien Prüfungsniveau — Potenzen, Logarithmen, Gleichungen, Funktionsanalyse',
+  unitGoals: [
+    'Mehrschrittige Prüfungsaufgaben aus Algebra, Potenzen, Gleichungen, Funktionen zielsicher lösen',
+    'Zeitdruck-tauglich: häufige Tricks und Standardmuster in TU-Wien-Prüfungen erkennen',
+    'Eigene Lösungswege durch Probe und Plausibilitätsabschätzung kontrollieren',
+  ],
   lessons: lessons_alg_u4,
   exercises: exercises_alg_u4,
 }

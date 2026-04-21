@@ -10,9 +10,9 @@ Die Datei bündelt alle Lernziele der App nach Studienphase. Jedes Topic, jede U
 | Metrik | Wert |
 |---|---|
 | Topics | 22 |
-| Topics mit expliziten `topicGoals` | 6 / 22 (27%) |
+| Topics mit expliziten `topicGoals` | 22 / 22 (100%) |
 | Lessons insgesamt | 226 |
-| Lessons mit `subGoals` | 12 / 226 (5%) |
+| Lessons mit `subGoals` | 60 / 226 (27%) |
 | Aufgaben (manuell/gesamt) | 1174 / 2275 (52% manuell) |
 | Aufgaben mit 4-Block-Erklärung | 364 / 2275 (16%) |
 
@@ -26,22 +26,22 @@ Die Datei bündelt alle Lernziele der App nach Studienphase. Jedes Topic, jede U
 | Phase 1 | [Differentialrechnung](#ableitung) | 5 | 18 | 113/183 | 57/183 (31%) | **Pflicht** |
 | Phase 1 | [Integralrechnung](#integralrechnung) | 4 | 16 | 94/163 | 51/163 (31%) | **Pflicht** |
 | Phase 1 | [Technische Mechanik](#technische-mechanik) | 4 | 16 | 59/160 | 38/160 (24%) | **Pflicht** |
-| Phase 1 | [Werkstoffkunde](#werkstoffkunde) | 3 | 6 | 8/60 | 28/60 (47%) | — |
-| Phase 1 | [Elektrotechnik](#elektrotechnik) | 3 | 8 | 25/80 | 6/80 (8%) | — |
-| Phase 1 | [Python & Matlab](#python-matlab) | 4 | 13 | 46/130 | 0/130 (0%) | — |
-| Phase 2 | [Lineare Algebra](#lineare-algebra) | 3 | 12 | 75/123 | 0/123 (0%) | — |
-| Phase 2 | [Differentialgleichungen](#differentialgleichungen) | 3 | 10 | 61/103 | 0/103 (0%) | — |
-| Phase 2 | [Komplexe Zahlen](#komplexe-zahlen) | 4 | 9 | 81/90 | 9/90 (10%) | — |
-| Phase 2 | [Reihen & Folgen](#reihen-folgen) | 2 | 5 | 45/50 | 5/50 (10%) | — |
-| Phase 2 | [Festigkeitslehre](#festigkeitslehre) | 3 | 11 | 35/110 | 20/110 (18%) | — |
-| Phase 2 | [Thermodynamik](#thermodynamik) | 3 | 8 | 26/80 | 8/80 (10%) | — |
-| Phase 2 | [Maschinenelemente](#maschinenelemente) | 3 | 8 | 26/80 | 8/80 (10%) | — |
-| Phase 3 | [Mehrdim. Analysis](#mehrdim-analysis) | 2 | 5 | 45/50 | 5/50 (10%) | — |
-| Phase 3 | [Numerische Mathematik](#numerik) | 2 | 5 | 45/50 | 5/50 (10%) | — |
-| Phase 3 | [Statistik & Wahrscheinlichkeit](#statistik) | 2 | 6 | 54/60 | 6/60 (10%) | — |
-| Phase 3 | [Fourier & Laplace](#fourier-laplace) | 3 | 7 | 56/70 | 0/70 (0%) | — |
-| Phase 3 | [Fluidmechanik](#fluidmechanik) | 3 | 9 | 29/90 | 14/90 (16%) | — |
-| Phase 3 | [Regelungstechnik](#regelungstechnik) | 3 | 6 | 19/60 | 6/60 (10%) | — |
+| Phase 1 | [Werkstoffkunde](#werkstoffkunde) | 3 | 6 | 8/60 | 28/60 (47%) | **Pflicht** |
+| Phase 1 | [Elektrotechnik](#elektrotechnik) | 3 | 8 | 25/80 | 6/80 (8%) | **Pflicht** |
+| Phase 1 | [Python & Matlab](#python-matlab) | 4 | 13 | 46/130 | 0/130 (0%) | **Pflicht** |
+| Phase 2 | [Lineare Algebra](#lineare-algebra) | 3 | 12 | 75/123 | 0/123 (0%) | **Pflicht** |
+| Phase 2 | [Differentialgleichungen](#differentialgleichungen) | 3 | 10 | 61/103 | 0/103 (0%) | **Pflicht** |
+| Phase 2 | [Komplexe Zahlen](#komplexe-zahlen) | 4 | 9 | 81/90 | 9/90 (10%) | **Pflicht** |
+| Phase 2 | [Reihen & Folgen](#reihen-folgen) | 2 | 5 | 45/50 | 5/50 (10%) | **Pflicht** |
+| Phase 2 | [Festigkeitslehre](#festigkeitslehre) | 3 | 11 | 35/110 | 20/110 (18%) | **Pflicht** |
+| Phase 2 | [Thermodynamik](#thermodynamik) | 3 | 8 | 26/80 | 8/80 (10%) | **Pflicht** |
+| Phase 2 | [Maschinenelemente](#maschinenelemente) | 3 | 8 | 26/80 | 8/80 (10%) | **Pflicht** |
+| Phase 3 | [Mehrdim. Analysis](#mehrdim-analysis) | 2 | 5 | 45/50 | 5/50 (10%) | **Pflicht** |
+| Phase 3 | [Numerische Mathematik](#numerik) | 2 | 5 | 45/50 | 5/50 (10%) | Wahl |
+| Phase 3 | [Statistik & Wahrscheinlichkeit](#statistik) | 2 | 6 | 54/60 | 6/60 (10%) | Wahl |
+| Phase 3 | [Fourier & Laplace](#fourier-laplace) | 3 | 7 | 56/70 | 0/70 (0%) | **Pflicht** |
+| Phase 3 | [Fluidmechanik](#fluidmechanik) | 3 | 9 | 29/90 | 14/90 (16%) | **Pflicht** |
+| Phase 3 | [Regelungstechnik](#regelungstechnik) | 3 | 6 | 19/60 | 6/60 (10%) | **Pflicht** |
 
 ## Lehrplan-Alignment
 
@@ -65,6 +65,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Äquivalenzumformungen bewusst einsetzen und jede Umformung per Probe kontrollieren
 
 #### Rechnen & Brüche (Vorkurs-Einstieg)
+
+**Unit-Lernziele:**
+- Punkt-vor-Strich und Klammer-Vorrang sicher in komplexen Termen anwenden
+- Brüche erweitern, kürzen und auf gemeinsamen Nenner bringen
+- Prozentrechnung mit Grundwert/Prozentwert/Prozentsatz in Anwendungsaufgaben lösen
+- Terme durch Ausmultiplizieren, Ausklammern und Zusammenfassen vereinfachen
 
 ##### Grundrechnen, Klammern & Vorrang `alg-0-1` · 12 min
 
@@ -116,12 +122,24 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 
 #### Potenzen, Wurzeln & Logarithmen
 
+**Unit-Lernziele:**
+- Potenzgesetze $a^m \cdot a^n = a^{m+n}$, $(a^m)^n = a^{m \cdot n}$, $a^{-n} = 1/a^n$ sicher anwenden
+- Wurzeln als Bruchpotenzen lesen: $\sqrt[n]{a} = a^{1/n}$ und mit Potenzgesetzen rechnen
+- Logarithmengesetze nutzen, um Produkte/Potenzen in Summen/Vielfache zu zerlegen
+- Exponentialgleichungen durch Logarithmieren und Logarithmusgleichungen durch Potenzieren lösen
+
 ##### Potenzgesetze `alg-1-1` · 15 min
 
 **Nach dieser Lesson kannst du:**
 - Alle Potenzregeln kennen und sicher anwenden
 - Terme mit gleichen Basen vereinfachen
 - Typische Fehler (Multiplikation vs. Potenz) vermeiden
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Gleiche Basis: $x^a \cdot x^b = x^{a+b}$ und $x^a/x^b = x^{a-b}$
+- [HOCH] Potenz einer Potenz: $(x^a)^b = x^{a \cdot b}$ — niemals mit Multiplikation verwechseln
+- [HOCH] Negativer Exponent $x^{-n} = 1/x^n$ und nullter Exponent $x^0 = 1$ (für $x \neq 0$)
+- [MITTEL] Produkt/Quotient in Klammer: $(xy)^n = x^n y^n$, $(x/y)^n = x^n/y^n$
 
 *Aufgaben-Coverage:* 10 gesamt · 6 manuell / 4 auto-supp · 3 mit 4-Block-Erklärung
 
@@ -131,6 +149,11 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Wurzeln als gebrochene Potenzen verstehen
 - Wurzelterme vereinfachen
 - Typische Fehler (Wurzel von Summe) vermeiden
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Wurzel als Bruchpotenz: $\sqrt[n]{x} = x^{1/n}$, dadurch gelten alle Potenzgesetze
+- [HOCH] Wurzel des Produkts: $\sqrt{ab} = \sqrt a \cdot \sqrt b$ — aber $\sqrt{a+b} \neq \sqrt a + \sqrt b$
+- [MITTEL] Nenner rational machen: Erweitern mit passender Wurzel löst Wurzeln aus dem Nenner
 
 *Aufgaben-Coverage:* 10 gesamt · 5 manuell / 5 auto-supp · 1 mit 4-Block-Erklärung
 
@@ -145,11 +168,23 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 
 #### Gleichungen & Ungleichungen
 
+**Unit-Lernziele:**
+- Lineare Gleichungen durch Äquivalenzumformungen auflösen und jede Umformung per Probe verifizieren
+- Quadratische Gleichungen mit Mitternachts-/pq-Formel und Diskriminante lösen, Lösungsanzahl bestimmen
+- Polynomdivision durchführen und Polynome mittels Nullstellen in Linearfaktoren zerlegen
+- Lineare Ungleichungen mit Vorzeichenregeln auflösen (Multiplikation mit negativer Zahl → Umkehrung)
+
 ##### Lineare Gleichungen `alg-2-1` · 12 min
 
 **Nach dieser Lesson kannst du:**
 - Lineare Gleichungen lösen
 - Textaufgaben in Gleichungen übersetzen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Äquivalenzumformungen: gleiche Operation auf beiden Seiten — Gleichung bleibt erhalten
+- [HOCH] Standardvorgehen: Klammern auflösen $\to$ Variable auf eine Seite $\to$ durch Koeffizient teilen
+- [MITTEL] Textaufgaben: Variable definieren, Gleichung aufstellen, lösen, zurück in den Kontext interpretieren
+- [HOCH] Probe durch Einsetzen in Original-Gleichung schützt vor Vorzeichen- und Umformungsfehlern
 
 *Aufgaben-Coverage:* 10 gesamt · 5 manuell / 5 auto-supp · 5 mit 4-Block-Erklärung
 
@@ -159,6 +194,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - pq-Formel und abc-Formel anwenden
 - Diskriminante interpretieren
 - Satz von Vieta nutzen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Mitternachtsformel $x = (-b \pm \sqrt{b^2 - 4ac})/(2a)$ für $ax^2 + bx + c = 0$
+- [HOCH] Diskriminante $D = b^2 - 4ac$: $D>0$ zwei reelle Lösungen, $D=0$ eine doppelte, $D<0$ keine reelle
+- [MITTEL] Satz von Vieta: $x_1 + x_2 = -b/a$, $x_1 \cdot x_2 = c/a$ — zum schnellen Raten/Prüfen
+- [HOCH] Faktorisierte Form $(x - x_1)(x - x_2) = 0$ macht Nullstellen direkt sichtbar
 
 *Aufgaben-Coverage:* 10 gesamt · 6 manuell / 4 auto-supp · 2 mit 4-Block-Erklärung
 
@@ -182,12 +223,23 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 
 #### Funktionen
 
+**Unit-Lernziele:**
+- Funktionsbegriff, Definitions-/Wertebereich und Funktionsgraph klar unterscheiden
+- Elementare Funktionen (linear, quadratisch, Potenz, exponentiell, logarithmisch) am Graphen erkennen
+- Verschiebung, Streckung und Spiegelung von Graphen aus der Funktionsgleichung ablesen
+- Umkehrfunktion bestimmen und grafisch durch Spiegelung an $y = x$ visualisieren
+
 ##### Funktionsbegriff `alg-3-1` · 12 min
 
 **Nach dieser Lesson kannst du:**
 - Definition einer Funktion kennen
 - Definitions- und Wertebereich bestimmen
 - Injektiv, surjektiv, bijektiv unterscheiden
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Funktion: jedem $x$ aus Definitionsbereich wird *genau ein* $y$ zugeordnet
+- [HOCH] Definitionsbereich $D$: alle zulässigen $x$ (Division durch 0 ausschließen, Radikand $\ge 0$, Logarithmus $>0$)
+- [MITTEL] Injektiv = verschiedene $x$ $\to$ verschiedene $y$; surjektiv = jedes $y$ im Bild wird getroffen; bijektiv = beides
 
 *Aufgaben-Coverage:* 10 gesamt · 4 manuell / 6 auto-supp · 0 mit 4-Block-Erklärung
 
@@ -218,6 +270,11 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 *Aufgaben-Coverage:* 10 gesamt · 4 manuell / 6 auto-supp · 1 mit 4-Block-Erklärung
 
 #### 🏁 Prüfungsaufgaben
+
+**Unit-Lernziele:**
+- Mehrschrittige Prüfungsaufgaben aus Algebra, Potenzen, Gleichungen, Funktionen zielsicher lösen
+- Zeitdruck-tauglich: häufige Tricks und Standardmuster in TU-Wien-Prüfungen erkennen
+- Eigene Lösungswege durch Probe und Plausibilitätsabschätzung kontrollieren
 
 ##### Prüfung: Algebra-Grundlagen `alg-4-1` · 25 min
 
@@ -266,12 +323,23 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 
 #### Grundlagen der Trigonometrie
 
+**Unit-Lernziele:**
+- Grad- und Bogenmaß fehlerfrei umrechnen: $\alpha_\text{rad} = \alpha_\text{deg} \cdot \pi / 180$
+- Sinus, Kosinus, Tangens am rechtwinkligen Dreieck als Seitenverhältnisse verstehen und anwenden
+- Grundwerte für $0°, 30°, 45°, 60°, 90°$ auswendig kennen und ableiten können
+- Taschenrechner DEG/RAD-Modus bewusst wählen — Fehlerquelle Nr. 1 in Prüfungen
+
 ##### Winkel-Intuition (Einstieg) `trig-1-0` · 8 min
 
 **Nach dieser Lesson kannst du:**
 - Spitzen, rechten, stumpfen, gestreckten Winkel visuell erkennen
 - Winkelsumme im Dreieck ($180°$) anwenden
 - Anschauung für $45°$, $90°$, $180°$, $360°$ entwickeln
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Winkeltypen: spitz $<90°$, recht $=90°$, stumpf $90°–180°$, gestreckt $=180°$, voll $=360°$
+- [HOCH] Innenwinkelsumme im Dreieck ist immer $180°$ — daraus 3. Winkel berechnen
+- [MITTEL] Scheitel-/Nebenwinkel an sich schneidenden Geraden: Scheitelwinkel gleich, Nebenwinkel ergänzen auf $180°$
 
 *Aufgaben-Coverage:* 10 gesamt · 5 manuell / 5 auto-supp · 7 mit 4-Block-Erklärung
 
@@ -311,6 +379,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Muster in den Grundwerten erkennen
 - Grundwerte am Einheitskreis ablesen
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Auswendig: $\sin 0° = 0$, $\sin 30° = 1/2$, $\sin 45° = \sqrt2/2$, $\sin 60° = \sqrt3/2$, $\sin 90° = 1$
+- [HOCH] Merkregel: $\sin$-Werte folgen dem Muster $\sqrt n / 2$ für $n = 0, 1, 2, 3, 4$
+- [HOCH] Kosinus ist Sinus rückwärts: $\cos 0° = 1, \cos 90° = 0$, dazwischen symmetrisch
+- [MITTEL] Komplementärwinkel: $\cos\alpha = \sin(90° - \alpha)$ und umgekehrt
+
 *Aufgaben-Coverage:* 10 gesamt · 5 manuell / 5 auto-supp · 2 mit 4-Block-Erklärung
 
 ##### Vorzeichen und Quadranten `trig-1-4` · 12 min
@@ -320,9 +394,20 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Winkel > 90° berechnen
 - Reduktionsformeln am Einheitskreis herleiten
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Quadranten I–IV durchnummerieren und Vorzeichen von $\sin$ (y-Koordinate) und $\cos$ (x-Koordinate) bestimmen
+- [HOCH] Symmetrien: $\sin(180° - \alpha) = \sin\alpha$, $\cos(180° - \alpha) = -\cos\alpha$
+- [MITTEL] Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen
+
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 0 mit 4-Block-Erklärung
 
 #### Einheitskreis und Winkelfunktionen
+
+**Unit-Lernziele:**
+- Sinus/Kosinus am Einheitskreis als $y$- bzw. $x$-Koordinate eines Punktes verstehen
+- Symmetrien ($\sin(-\alpha) = -\sin\alpha$, $\cos(-\alpha) = \cos\alpha$) und Periodizität ($2\pi$) anwenden
+- Werte in allen vier Quadranten durch Vorzeichen und Achsensymmetrie bestimmen
+- Zusammenhang $\sin^2\alpha + \cos^2\alpha = 1$ als Pythagoras am Einheitskreis erkennen
 
 ##### Der Einheitskreis `trig-2-1` · 12 min
 
@@ -369,6 +454,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 
 #### Anwendungen und Identitäten
 
+**Unit-Lernziele:**
+- Additionstheoreme und Doppelwinkelformeln zur Termvereinfachung einsetzen
+- Sinus-/Kosinus-Satz für allgemeine Dreiecke (ohne rechten Winkel) anwenden
+- Umkehrfunktionen arcsin/arccos/arctan mit Haupt-Wertebereichen sauber benutzen
+- Technische Anwendungen: Schwingungen, Phasenwinkel und Projektionen trigonometrisch beschreiben
+
 ##### Additionstheoreme `trig-3-1` · 15 min
 
 **Nach dieser Lesson kannst du:**
@@ -412,6 +503,11 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 
 #### 🏁 Prüfungsaufgaben
 
+**Unit-Lernziele:**
+- Trigonometrische Gleichungen im angegebenen Intervall vollständig (inkl. aller Perioden-Lösungen) angeben
+- Mehrstufige Anwendungsaufgaben (Geometrie, Technik, Vektorgeometrie) lösen
+- Identitäten zur Vereinfachung komplexer Ausdrücke gezielt einsetzen
+
 ##### Prüfung: Identitäten & Gleichungen `trig-4-1` · 20 min
 
 **Nach dieser Lesson kannst du:**
@@ -450,12 +546,23 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 
 #### Vektorrechnung
 
+**Unit-Lernziele:**
+- Vektoren komponentenweise addieren, subtrahieren und mit Skalaren multiplizieren
+- Betrag $|\vec{v}|$ und Einheitsvektor $\vec{e} = \vec{v}/|\vec{v}|$ sicher berechnen
+- Skalarprodukt zur Winkel- und Orthogonalitätsprüfung sowie Projektion nutzen
+- Kreuzprodukt für Flächeninhalte, Normalenvektoren und Drehmoment $\vec{M} = \vec{r} \times \vec{F}$ anwenden
+
 ##### Koordinaten, Punkte & Pfeile (Einstieg) `vek-1-0` · 10 min
 
 **Nach dieser Lesson kannst du:**
 - Koordinaten $(x, y)$ in 2D lesen und zeichnen
 - Unterschied zwischen Punkt und Vektor verstehen
 - Vektor aus zwei Punkten bestimmen ($B - A$)
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Punkt = Ort mit Koordinaten; Vektor = Verschiebung mit Richtung und Länge
+- [HOCH] Vektor von $A$ nach $B$: $\vec{AB} = B - A$ (komponentenweise Subtraktion)
+- [MITTEL] Freier Vektor: gleicher Richtung und Länge → gleicher Vektor, egal wo eingezeichnet
 
 *Aufgaben-Coverage:* 10 gesamt · 5 manuell / 5 auto-supp · 7 mit 4-Block-Erklärung
 
@@ -496,6 +603,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Normalvektor einer Ebene bestimmen
 - Skalar- und Kreuzprodukt sicher unterscheiden
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Kreuzprodukt liefert *Vektor* senkrecht auf $\vec a$ und $\vec b$ — nicht Skalar wie das Skalarprodukt
+- [HOCH] Betrag $|\vec a \times \vec b| = |\vec a| |\vec b| \sin\varphi$ = Flächeninhalt des Parallelogramms
+- [HOCH] Richtung per Rechte-Hand-Regel; $\vec a \times \vec b = -\vec b \times \vec a$ (antikommutativ)
+- [MITTEL] Nur in 3D definiert; Komponentenformel oder Sarrus-Merkschema mit Einheitsvektoren
+
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 0 mit 4-Block-Erklärung
 
 ##### Kräfte als Vektoren (Prüfung) `vek-1-4` · 18 min
@@ -508,6 +621,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 1 mit 4-Block-Erklärung
 
 #### Geraden und Ebenen im Raum
+
+**Unit-Lernziele:**
+- Geraden in Parameter- und Punkt-Richtungs-Form angeben und zwischen den Darstellungen wechseln
+- Ebenen in Parameter-, Normal- und Koordinatenform umwandeln
+- Abstände Punkt–Gerade, Punkt–Ebene und windschiefer Geraden mit Projektionsformeln berechnen
+- Schnittgeraden und Schnittpunkte durch Lösen linearer Gleichungssysteme ermitteln
 
 ##### Geradengleichung `vek-2-1` · 15 min
 
@@ -546,6 +665,11 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 *Aufgaben-Coverage:* 10 gesamt · 6 manuell / 4 auto-supp · 0 mit 4-Block-Erklärung
 
 #### 🏁 Prüfungsvorbereitung Vektoren
+
+**Unit-Lernziele:**
+- Flächen von Dreiecken/Parallelogrammen über $|\vec{a} \times \vec{b}|$ berechnen
+- Volumen von Spaten über Spatprodukt $\det(\vec{a}, \vec{b}, \vec{c})$ bestimmen
+- Mehrschritt-Prüfungsaufgaben mit Mix aus Geraden, Ebenen, Winkeln und Abständen lösen
 
 ##### Gemischte Aufgaben Skalar- und Kreuzprodukt `vek-3-1` · 20 min
 
@@ -589,6 +713,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 
 #### Grundlagen der Differentialrechnung
 
+**Unit-Lernziele:**
+- Ableitung als Grenzwert des Differenzenquotienten $\lim_{h\to 0} (f(x+h)-f(x))/h$ verstehen
+- Geometrische Deutung: $f'(x_0)$ als Steigung der Tangente im Punkt $x_0$
+- Potenzregel $\frac{d}{dx} x^n = n x^{n-1}$ sowie Ableitungen von $e^x$, $\ln x$, $\sin x$, $\cos x$ auswendig
+- Summen-, Faktor-, Produkt-, Quotienten- und Kettenregel sicher auf Kombinationen anwenden
+
 ##### Was ist eine Ableitung? `abl-1-1` · 12 min
 
 **Nach dieser Lesson kannst du:**
@@ -626,6 +756,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Ableitungstabelle auswendig kennen
 - Definitionsbereiche beachten
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] $(\sin x)' = \cos x$, $(\cos x)' = -\sin x$ — Vorzeichen bei Kosinus nicht vergessen
+- [HOCH] $(e^x)' = e^x$ (einzige Funktion mit $f' = f$) und $(\ln x)' = 1/x$
+- [MITTEL] Allgemeine Exponential-/Logarithmusfunktion: $(a^x)' = a^x \ln a$, $(\log_a x)' = 1/(x \ln a)$
+- [MITTEL] Definitionsbereich beachten: $\ln x$ nur für $x>0$, $\sqrt x$ für $x \ge 0$
+
 *Aufgaben-Coverage:* 10 gesamt · 6 manuell / 4 auto-supp · 5 mit 4-Block-Erklärung
 
 ##### Kettenregel `abl-1-4` · 15 min
@@ -634,6 +770,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Kettenregel verstehen und anwenden
 - Verkettete Funktionen ableiten
 - Rolle der inneren Ableitung verinnerlichen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Kettenregel: $(f(g(x)))' = f'(g(x)) \cdot g'(x)$ — „äußere mal innere Ableitung"
+- [HOCH] Äußere Funktion identifizieren (die, die man zuletzt ausführt) und separat ableiten
+- [HOCH] Standardfälle: $(e^{u(x)})' = e^{u(x)} \cdot u'(x)$, $(\sin u)' = \cos u \cdot u'$, $(\ln u)' = u'/u$
+- [MITTEL] Bei mehrfach verketteten Funktionen hierarchisch: erst äußerste Schale, dann nächst innere, etc.
 
 *Aufgaben-Coverage:* 10 gesamt · 6 manuell / 4 auto-supp · 5 mit 4-Block-Erklärung
 
@@ -648,6 +790,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 *Aufgaben-Coverage:* 10 gesamt · 5 manuell / 5 auto-supp · 5 mit 4-Block-Erklärung
 
 #### Ableitungsregeln im Detail
+
+**Unit-Lernziele:**
+- Produktregel $(fg)' = f' g + f g'$ auch bei geschachtelten Produkten korrekt anwenden
+- Quotientenregel $(f/g)' = (f' g - f g')/g^2$ — Minuszeichen und Reihenfolge niemals verwechseln
+- Kettenregel „äußere mal innere Ableitung" bei mehrfach geschachtelten Funktionen systematisch durchführen
+- Bei Mischungen aus Produkt, Quotient und Kette zuerst die äußerste Struktur identifizieren, dann hierarchisch ableiten
 
 ##### Produktregel `abl-2-1` · 15 min
 
@@ -687,6 +835,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 
 #### Kurvendiskussion
 
+**Unit-Lernziele:**
+- Monotonie über Vorzeichen der ersten Ableitung $f'(x)$ intervallweise bestimmen
+- Kandidaten für Extrema aus $f'(x) = 0$ ermitteln und mit $f''(x)$ als Max/Min klassifizieren
+- Wendepunkte über $f''(x) = 0$ mit Vorzeichenwechsel von $f''$ finden
+- Vollständige Kurvendiskussion: Definitionsbereich, Symmetrie, Nullstellen, Asymptoten, Extrema, Wendepunkte — in korrekter Reihenfolge
+
 ##### Monotonie und Extremwerte `abl-3-1` · 18 min
 
 **Nach dieser Lesson kannst du:**
@@ -721,6 +875,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 
 #### Grenzwerte und Stetigkeit
 
+**Unit-Lernziele:**
+- Grenzwerte rechnerisch durch Umformen, Faktorisieren und Kürzen ermitteln
+- L'Hôpital bei unbestimmten Ausdrücken $0/0$ und $\infty/\infty$ anwenden
+- Stetigkeit an einer Stelle prüfen: links-, rechts- und Funktionswert müssen übereinstimmen
+- Unstetigkeitsstellen klassifizieren (hebbar / Sprung / Pol)
+
 ##### Grenzwerte von Funktionen `abl-5-1` · 14 min
 
 **Nach dieser Lesson kannst du:**
@@ -741,6 +901,11 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 *Aufgaben-Coverage:* 10 gesamt · 1 manuell / 9 auto-supp · 4 mit 4-Block-Erklärung
 
 #### 🏁 Prüfungsaufgaben
+
+**Unit-Lernziele:**
+- Extremwertaufgaben mit Nebenbedingung: Hauptbedingung aufstellen, Nebenbedingung einsetzen, ableiten und lösen
+- Taylorpolynom bis zur benötigten Ordnung bilden und Restglied abschätzen
+- Regel von de l'Hospital bei Grenzwerten der Form 0/0 oder ∞/∞ korrekt anwenden
 
 ##### Prüfung: Ableitungsregeln `abl-4-1` · 25 min
 
@@ -786,6 +951,13 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 
 #### Stammfunktionen & Grundintegrale
 
+**Unit-Lernziele:**
+- Stammfunktion als Umkehrung der Ableitung verstehen: $F'(x) = f(x)$
+- Grundintegrale (Potenz, $e^x$, $1/x$, $\sin x$, $\cos x$) sicher aus dem Kopf abrufen
+- Linearitäts- und Faktorregel des Integrals sinnvoll einsetzen
+- Hauptsatz der Differential- und Integralrechnung $\int_a^b f(x)dx = F(b) - F(a)$ korrekt anwenden
+- Integrationskonstante $C$ bei unbestimmten Integralen niemals vergessen
+
 ##### Stammfunktion — das Umkehren der Ableitung `int-1-1` · 15 min
 
 **Nach dieser Lesson kannst du:**
@@ -819,6 +991,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Summenregel für Integration anwenden
 - Konstantenfaktor vor das Integral ziehen
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Summenregel: $\int (f + g) dx = \int f\,dx + \int g\,dx$ — gliedweise integrieren
+- [HOCH] Faktorregel: $\int c f(x) dx = c \int f(x) dx$ — Konstante vors Integral ziehen
+- [HOCH] Für Produkt $f(x) \cdot g(x)$ gilt KEIN analoges Produktrecht — dort partielle Integration nötig
+- [MITTEL] Integrationskonstante $C$ bei unbestimmten Integralen konsequent mitschreiben
+
 *Aufgaben-Coverage:* 10 gesamt · 5 manuell / 5 auto-supp · 5 mit 4-Block-Erklärung
 
 ##### Das bestimmte Integral `int-1-4` · 18 min
@@ -826,6 +1004,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 **Nach dieser Lesson kannst du:**
 - Bestimmtes Integral berechnen
 - Geometrische Deutung als Fläche verstehen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Hauptsatz: $\int_a^b f(x) dx = F(b) - F(a)$ mit beliebiger Stammfunktion $F$
+- [HOCH] Geometrisch: Fläche *zwischen* Kurve und x-Achse — unterhalb wird NEGATIV gezählt
+- [MITTEL] Vertauschen der Grenzen dreht das Vorzeichen: $\int_a^b = -\int_b^a$
+- [MITTEL] Bei bestimmtem Integral fällt die Integrationskonstante $C$ weg (kürzt sich raus)
 
 *Aufgaben-Coverage:* 10 gesamt · 5 manuell / 5 auto-supp · 3 mit 4-Block-Erklärung
 
@@ -838,6 +1022,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 *Aufgaben-Coverage:* 10 gesamt · 4 manuell / 6 auto-supp · 3 mit 4-Block-Erklärung
 
 #### Integrationstechniken
+
+**Unit-Lernziele:**
+- Substitutionsregel — innere Funktion $u = g(x)$ identifizieren und $du = g'(x) dx$ ersetzen
+- Partielle Integration $\int u'v = uv - \int u v'$ — strategisch $u'$ und $v$ wählen (Merkhilfe: LIATE)
+- Partialbruchzerlegung bei rationalen Funktionen: echte Brüche auftrennen, einfache Stammfunktionen integrieren
+- Bei geschachtelten Integralen die passende Technik in 1–2 Sekunden erkennen
 
 ##### Substitution `int-2-1` · 18 min
 
@@ -873,6 +1063,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 
 #### Anwendungen
 
+**Unit-Lernziele:**
+- Fläche zwischen zwei Kurven als $\int_a^b (f(x) - g(x)) dx$ mit sauberer Vorzeichenführung
+- Rotationskörper-Volumen um x-Achse: $V = \pi \int_a^b f(x)^2 dx$
+- Bogenlänge und Mantelfläche über passende Integralformeln berechnen
+- Technische Anwendungen: Arbeit $W = \int F(s) ds$, Schwerpunkt, Trägheitsmoment
+
 ##### Flächenberechnung `int-3-1` · 18 min
 
 **Nach dieser Lesson kannst du:**
@@ -907,6 +1103,11 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 4 mit 4-Block-Erklärung
 
 #### 🏁 Prüfungsaufgaben
+
+**Unit-Lernziele:**
+- Uneigentliche Integrale (unendliche Grenze oder Pol) als Grenzwert sauber berechnen
+- Kombination aus Substitution und partieller Integration bei komplexen Aufgaben wählen
+- Technische Prüfungsaufgaben (Arbeit, Volumen, Schwerpunkt) mit vollständigem Lösungsweg
 
 ##### Prüfung: Integrationstechniken `int-4-1` · 25 min
 
@@ -987,6 +1188,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Plausibilität eines Rechenergebnisses über Einheiten kontrollieren
 - Formeln aus Dimensions-Überlegungen aufstellen
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen
+- [HOCH] Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut
+- [MITTEL] Einheit Pascal: $1\,\text{Pa} = 1\,\text{N/m}^2 = 1\,\text{kg}/(\text{m}\cdot\text{s}^2)$
+- [HOCH] Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen
+
 *Aufgaben-Coverage:* 10 gesamt · 4 manuell / 6 auto-supp · 6 mit 4-Block-Erklärung
 
 #### Statik
@@ -997,6 +1204,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Kräfte als Vektoren darstellen
 - Freikörperbilder systematisch aufbauen
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Freikörperbild: Körper isolieren, alle äußeren Kräfte (inkl. Gewicht, Lagerreaktionen) eintragen
+- [HOCH] Kraft = Vektor: Betrag + Richtung — Pfeile in positives Koordinatensystem, Vorzeichen ergibt sich aus Rechnung
+- [HOCH] Standard-Lagersymbole: Festlager (2 Reaktionen), Loslager (1 Reaktion), Einspannung (2 Kräfte + 1 Moment)
+- [HOCH] Gleichgewicht in 2D: $\sum F_x = 0$, $\sum F_y = 0$, $\sum M = 0$ → max. 3 Unbekannte statisch bestimmbar
+
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 0 mit 4-Block-Erklärung
 
 ##### Momente und Hebelarm `mech-1-2` · 12 min
@@ -1004,6 +1217,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 **Nach dieser Lesson kannst du:**
 - Moment als Kraft mal Hebelarm berechnen
 - Drehsinn korrekt berücksichtigen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Moment $M = F \cdot l_\perp$ — $l_\perp$ ist der SENKRECHTE Abstand vom Bezugspunkt zur Wirkungslinie
+- [HOCH] Drehsinn-Konvention: gegen Uhrzeiger positiv (rechte Hand / Rechte-Hand-Regel in 3D)
+- [HOCH] Bezugspunkt frei wählbar — klug wählen: Punkt mit vielen unbekannten Kräften eliminiert diese
+- [MITTEL] Kreuzprodukt-Variante: $\vec M = \vec r \times \vec F$ in 3D oder bei schiefen Kräften
 
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 0 mit 4-Block-Erklärung
 
@@ -1103,10 +1322,16 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 <a id="werkstoffkunde"></a>
 ### Werkstoffkunde `werkstoffkunde`
 
-**Prüfungsrelevanz:** —  
+**Prüfungsrelevanz:** **Pflicht**  
 **Aufgaben:** 60 gesamt · 8 manuell · 52 auto-supplemental · 28 mit 4-Block-Erklärung (47%)
 
-> ⚠ **`topicGoals` fehlen** — aggregiert aus Lesson-Zielen unten; bitte für dieses Topic nachtragen.
+**Topic-Lernziele (nach Abschluss):**
+- Spannungs-Dehnungs-Diagramm aus dem Zugversuch lesen und $R_e$, $R_m$, $E$, Bruchdehnung $A$ sauber benennen
+- Elastischen, plastischen und Einschnürbereich unterscheiden — inkl. Unterschied Streckgrenze $R_e$ vs. 0,2-%-Dehngrenze $R_{p0,2}$
+- Härteprüfung (Brinell, Vickers, Rockwell) nach Indenter, Einheit und Anwendungsfeld auseinanderhalten
+- Kerbschlagzähigkeit und Übergangstemperatur von zäh auf spröde in Tieftemperatur-Kurven deuten
+- Werkstoffgruppen (Eisen-/Nichteisenmetalle, Kunststoffe, Keramik, Verbunde) nach $E$, $\rho$, Temperatur- und Korrosionsverhalten vergleichen
+- Spezifische Kennwerte $E/\rho$ und $R_m/\rho$ für Leichtbau-Auswahlentscheidungen interpretieren
 
 #### Werkstoffkennwerte
 
@@ -1117,6 +1342,13 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Elastisch vs. plastisch unterscheiden
 - Elastizitätsmodul $E$ als Steigung im Hookeschen Bereich erkennen
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] $R_e$ = Streckgrenze (Ende elastisch); $R_m$ = Zugfestigkeit (Maximum); nicht verwechseln
+- [HOCH] $R_{p0,2}$ = 0,2-%-Dehngrenze bei Werkstoffen ohne ausgeprägte Streckgrenze (z. B. Aluminium)
+- [HOCH] E-Modul = Steigung im linearen (Hookeschen) Bereich: $E = \sigma/\varepsilon$
+- [MITTEL] Bruchdehnung $A$ in %: $(l_u - l_0)/l_0 \cdot 100$ — zäh vs. spröde
+- [MITTEL] Sicherheit $S = R_m/\sigma_\text{zul}$ bzw. $R_e/\sigma_\text{zul}$ — wo welcher Kennwert?
+
 *Aufgaben-Coverage:* 10 gesamt · 1 manuell / 9 auto-supp · 4 mit 4-Block-Erklärung
 
 ##### Werkstoffgruppen `werk-1-2` · 14 min
@@ -1124,6 +1356,13 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 **Nach dieser Lesson kannst du:**
 - Stahl, Aluminium, Kunststoff und Keramik qualitativ vergleichen
 - Anwendungsgebiete aus Werkstoffeigenschaften ableiten
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Metalle: zäh, gut umformbar, gut wärmeleitend — tragende Konstruktionen
+- [HOCH] Keramik: hart, hitzebeständig, spröde — **nicht auf Zug** belasten
+- [MITTEL] Kunststoffe: leicht, korrosionsfest, niedriger E-Modul — Gehäuse, Gleitlager
+- [MITTEL] Verbunde (CFK, GFK): hohe spezifische Steifigkeit $E/\rho$ — Leichtbau
+- [MITTEL] Spezifische Steifigkeit $E/\rho$ als Leichtbau-Kennzahl (Titan, CFK, Alu > Stahl)
 
 *Aufgaben-Coverage:* 10 gesamt · 1 manuell / 9 auto-supp · 4 mit 4-Block-Erklärung
 
@@ -1135,6 +1374,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Prinzip der Härteprüfung verstehen
 - Vickers, Brinell, Rockwell unterscheiden
 - Härte mit Festigkeit korrelieren
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Vickers (HV): Diamantpyramide, universell für hart und dünn; Brinell (HB): Kugel, für weichere Werkstoffe
+- [HOCH] Rockwell (HRC): direkt ablesbar am Messgerät — schnellste Prüfmethode in der Fertigung
+- [MITTEL] Faustformel Stahl: $R_m \approx 3{,}5 \cdot HV$ in MPa — Härte korreliert mit Zugfestigkeit
+- [MITTEL] Prüfkraft und Probendicke müssen zusammen passen, sonst verfälscht Untergrund das Ergebnis
 
 *Aufgaben-Coverage:* 10 gesamt · 1 manuell / 9 auto-supp · 5 mit 4-Block-Erklärung
 
@@ -1170,10 +1415,16 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 <a id="elektrotechnik"></a>
 ### Elektrotechnik `elektrotechnik`
 
-**Prüfungsrelevanz:** —  
+**Prüfungsrelevanz:** **Pflicht**  
 **Aufgaben:** 80 gesamt · 25 manuell · 55 auto-supplemental · 6 mit 4-Block-Erklärung (8%)
 
-> ⚠ **`topicGoals` fehlen** — aggregiert aus Lesson-Zielen unten; bitte für dieses Topic nachtragen.
+**Topic-Lernziele (nach Abschluss):**
+- Ohm-Gesetz $U = R\,I$ und Leistung $P = U\,I = I^2 R = U^2/R$ sicher ineinander umformen
+- Kirchhoffsche Knoten- und Maschenregel strukturiert auf Netzwerke mit mehreren Schleifen anwenden
+- Reihen- und Parallelschaltung von Widerständen zu Ersatzwiderständen zusammenfassen
+- Effektivwert $U_\text{eff} = \hat U/\sqrt 2$, Scheitelwert, Frequenz und Kreisfrequenz $\omega = 2\pi f$ in Wechselstromaufgaben identifizieren
+- Impedanzen $Z_R = R$, $Z_L = j\omega L$, $Z_C = 1/(j\omega C)$ komplex addieren und als Zeiger darstellen
+- Wirk-, Blind- und Scheinleistung sowie Leistungsfaktor $\cos\varphi$ interpretieren und berechnen
 
 #### Gleichstromkreise
 
@@ -1183,6 +1434,13 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Das Ohmsche Gesetz $U = R \cdot I$ anwenden
 - Reihen- und Parallelschaltungen berechnen
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Ohmsches Gesetz $U = R \cdot I$ — Dreieck-Merkhilfe: eine Größe abdecken, die anderen beiden ergeben sie
+- [HOCH] Einheiten-Konsistenz: V, A, $\Omega$ — mA und k$\Omega$ immer vor der Rechnung umrechnen
+- [HOCH] Reihenschaltung: Widerstände addieren sich, Strom ist überall gleich
+- [HOCH] Parallelschaltung: Kehrwerte addieren ($1/R_{ges} = \sum 1/R_i$), Spannung überall gleich
+- [MITTEL] Spezialfall zwei Parallelwiderstände: $R_{ges} = R_1 R_2 / (R_1 + R_2)$ (Produkt-durch-Summe)
+
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 0 mit 4-Block-Erklärung
 
 ##### Kirchhoffsche Gesetze `et-1-2` · 13 min
@@ -1190,6 +1448,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 **Nach dieser Lesson kannst du:**
 - Den Knotensatz (KCL) anwenden: $\sum I = 0$
 - Den Maschensatz (KVL) anwenden: $\sum U = 0$
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Knotensatz (KCL): An jedem Knoten ist die Summe zu- und abfließender Ströme null — Folge der Ladungserhaltung
+- [HOCH] Maschensatz (KVL): In jeder geschlossenen Masche ist die Summe aller Spannungsabfälle null — Folge der Energieerhaltung
+- [HOCH] Vorzeichenkonvention: Umlaufrichtung festlegen; in Umlaufrichtung Spannungsquelle positiv, Widerstand-Abfall negativ (oder konsistent umgekehrt)
+- [MITTEL] Spannungsteiler: $U_2 = U \cdot R_2 / (R_1 + R_2)$ — direkter Spezialfall des Maschensatzes bei Reihenschaltung
 
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 0 mit 4-Block-Erklärung
 
@@ -1252,10 +1516,17 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 <a id="python-matlab"></a>
 ### Python & Matlab `python-matlab`
 
-**Prüfungsrelevanz:** —  
+**Prüfungsrelevanz:** **Pflicht**  
 **Aufgaben:** 130 gesamt · 46 manuell · 84 auto-supplemental · 0 mit 4-Block-Erklärung (0%)
 
-> ⚠ **`topicGoals` fehlen** — aggregiert aus Lesson-Zielen unten; bitte für dieses Topic nachtragen.
+**Topic-Lernziele (nach Abschluss):**
+- Python- und Matlab-Syntax parallel lesen (Indentation vs. end-Blöcke, 0- vs. 1-basiertes Indexing)
+- Variablen, Listen/Arrays und Dicts/Structs situationsgerecht einsetzen und Elementzugriff korrekt schreiben
+- Kontrollstrukturen (if/else, for, while) und Funktionen/Unterprogramme in beiden Sprachen formulieren
+- NumPy- bzw. Matlab-Vektor-/Matrix-Operationen anstelle expliziter Schleifen verwenden (Vektorisierung)
+- Lineare Gleichungssysteme $A x = b$ mit `numpy.linalg.solve` bzw. `A\\b` lösen und Dimensionen prüfen
+- Plots (matplotlib.pyplot bzw. plot) mit Achsenbeschriftung, Legende und mehreren Kurven erstellen
+- Typische Fehler (Indexing-off-by-one, Broadcasting, Float-Vergleich mit `==`) erkennen und vermeiden
 
 #### Python Grundlagen
 
@@ -1389,12 +1660,24 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 <a id="lineare-algebra"></a>
 ### Lineare Algebra `lineare-algebra`
 
-**Prüfungsrelevanz:** —  
+**Prüfungsrelevanz:** **Pflicht**  
 **Aufgaben:** 123 gesamt · 75 manuell · 48 auto-supplemental · 0 mit 4-Block-Erklärung (0%)
 
-> ⚠ **`topicGoals` fehlen** — aggregiert aus Lesson-Zielen unten; bitte für dieses Topic nachtragen.
+**Topic-Lernziele (nach Abschluss):**
+- Matrizen addieren, multiplizieren und transponieren, ohne Dimensionsregeln zu vergessen
+- Determinanten bis 3×3 per Sarrus, höher per Laplace-Entwicklung oder Zeilenumformung berechnen
+- Lineare Gleichungssysteme mit Gauß-Jordan in Normalform bringen und Lösungstyp (eindeutig/frei/keine) erkennen
+- Invertierbarkeit prüfen und $A^{-1}$ über das erweiterte Schema $[A\,|\,I] \to [I\,|\,A^{-1}]$ bestimmen
+- Eigenwerte und Eigenvektoren aus $\det(A - \lambda I) = 0$ ableiten und geometrisch als Streckachsen deuten
+- Rang einer Matrix bestimmen und daraus die Dimension von Kern und Bild folgern
 
 #### Matrizen & Determinanten
+
+**Unit-Lernziele:**
+- Matrizen addieren, mit Skalaren multiplizieren und Produkt $A \cdot B$ bilden (Dimensions-Check $m \times n$ mal $n \times p$)
+- Transponierte $A^T$ und (falls existent) Inverse $A^{-1}$ für $2 \times 2$-Matrizen direkt berechnen
+- Determinanten mit Sarrus-Regel (3×3) und Entwicklungssatz nach Zeile/Spalte bestimmen
+- Eigenwerte aus $\det(A - \lambda I) = 0$ und zugehörige Eigenvektoren aus $(A - \lambda I)\vec{v} = 0$ finden
 
 ##### Was ist eine Matrix? `la-1-1` · 15 min
 
@@ -1402,6 +1685,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Matrizen als Zahlentabellen verstehen
 - Dimension und Notation kennen
 - Spezialmatrizen erkennen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Dimension $m \times n$ als „Zeilen $\times$ Spalten" lesen (Reihenfolge nicht tauschen)
+- [HOCH] Element $a_{ij}$: erster Index = Zeile, zweiter = Spalte
+- [MITTEL] Einheitsmatrix, Nullmatrix, Diagonalmatrix, quadratische Matrix auf einen Blick unterscheiden
+- [MITTEL] Transponierte $A^T$: Zeilen werden Spalten — praktisch für Dimensionscheck
 
 *Aufgaben-Coverage:* 10 gesamt · 5 manuell / 5 auto-supp · 0 mit 4-Block-Erklärung
 
@@ -1411,6 +1700,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Matrizen addieren und skalar multiplizieren
 - Matrizenmultiplikation beherrschen
 - Nicht-Kommutativität verstehen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Addition nur bei identischer Dimension — elementweise
+- [HOCH] Matrizenmultiplikation: „Zeile mal Spalte" — Innen-Dimensionen müssen passen ($m\!\times\!k$ · $k\!\times\!n$)
+- [HOCH] $A\,B \neq B\,A$ im Allgemeinen — Reihenfolge wichtig
+- [MITTEL] Rechenregeln: $(A\,B)^T = B^T A^T$ (Reihenfolge dreht sich um)
 
 *Aufgaben-Coverage:* 10 gesamt · 6 manuell / 4 auto-supp · 0 mit 4-Block-Erklärung
 
@@ -1442,6 +1737,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 *Aufgaben-Coverage:* 10 gesamt · 4 manuell / 6 auto-supp · 0 mit 4-Block-Erklärung
 
 #### Lineare Gleichungssysteme
+
+**Unit-Lernziele:**
+- LGS als erweiterte Matrix $(A | \vec{b})$ darstellen und mit Gauß-Eliminination in Stufenform bringen
+- Lösbarkeit am Rang entscheiden: $\text{rg}(A) = \text{rg}(A|\vec{b})$ = # Unbekannte $\Rightarrow$ eindeutig
+- Unterbestimmte Systeme parametrisieren und Lösungsraum als Vektoren angeben
+- Cramersche Regel $x_i = \det(A_i)/\det(A)$ bei kleinen quadratischen Systemen anwenden
 
 ##### LGS in Matrixform `la-2-1` · 12 min
 
@@ -1479,6 +1780,11 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 
 #### 🏁 Prüfungsaufgaben
 
+**Unit-Lernziele:**
+- Gemischte Prüfungsaufgaben mit Matrixoperationen, Determinanten und Eigenwertproblemen lösen
+- Lineare Abbildungen: Matrix aus Bildvektoren der Basis aufstellen und Kern/Bild bestimmen
+- Lösbarkeits-Diskussionen mit Parameter in Koeffizienten oder rechter Seite durchführen
+
 ##### Prüfung: Matrizen & Determinanten `la-3-1` · 25 min
 
 **Nach dieser Lesson kannst du:**
@@ -1512,12 +1818,24 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 <a id="differentialgleichungen"></a>
 ### Differentialgleichungen `differentialgleichungen`
 
-**Prüfungsrelevanz:** —  
+**Prüfungsrelevanz:** **Pflicht**  
 **Aufgaben:** 103 gesamt · 61 manuell · 42 auto-supplemental · 0 mit 4-Block-Erklärung (0%)
 
-> ⚠ **`topicGoals` fehlen** — aggregiert aus Lesson-Zielen unten; bitte für dieses Topic nachtragen.
+**Topic-Lernziele (nach Abschluss):**
+- Ordnung, Linearität und Homogenität einer DGL auf einen Blick klassifizieren
+- DGL vom Typ separierbarer Variablen sauber trennen, integrieren und Anfangswerte einsetzen
+- Lineare DGL 1. Ordnung $y' + p(x)\,y = q(x)$ per Variation der Konstanten oder integrierendem Faktor lösen
+- Homogene lineare DGL 2. Ordnung mit konstanten Koeffizienten über die charakteristische Gleichung lösen (3 Fälle)
+- Inhomogene lineare DGL 2. Ordnung per Ansatzmethode (Exponential-, Polynom-, Resonanzansatz) behandeln
+- Schwingungs-DGL $m\,\ddot x + d\,\dot x + c\,x = F(t)$ physikalisch in Eigenfrequenz, Dämpfung und Resonanz einordnen
 
 #### Grundbegriffe & einfache DGL
+
+**Unit-Lernziele:**
+- Ordnung und Typ einer DGL (explizit, implizit, linear/nichtlinear, homogen/inhomogen) bestimmen
+- Trennung der Variablen bei DGL der Form $y' = f(x) g(y)$ korrekt anwenden
+- Allgemeine und spezielle Lösung unterscheiden — Anfangswertproblem mit $y(x_0) = y_0$ fixiert die Konstante
+- Richtungsfeld als visuelle Vorschau der Lösungsscharen interpretieren
 
 ##### Was ist eine Differentialgleichung? `dgl-1-1` · 15 min
 
@@ -1525,6 +1843,13 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - DGL als Gleichung mit Funktion und Ableitungen verstehen
 - Ordnung und Linearität bestimmen
 - Anfangswertproblem verstehen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Ordnung = höchste vorkommende Ableitung ($y$, $y'$, $y''$ … )
+- [HOCH] Linear ⇔ $y$ und alle Ableitungen nur in 1. Potenz, keine Produkte $y \cdot y'$
+- [HOCH] Homogen ⇔ rechte Seite = 0; sonst inhomogen (wichtig für Ansatzwahl)
+- [MITTEL] Anfangswertproblem = DGL + Anfangsbedingung → eindeutige Lösung
+- [NIEDRIG] Gewöhnlich (ODE) vs. partiell (PDE): genau eine unabhängige Variable
 
 *Aufgaben-Coverage:* 10 gesamt · 4 manuell / 6 auto-supp · 0 mit 4-Block-Erklärung
 
@@ -1534,6 +1859,13 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Methode der Variablentrennung anwenden
 - Einfache DGL 1. Ordnung lösen
 - Anfangswerte einsetzen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Anwendbarkeit erkennen: $y' = f(x)\,g(y)$ — Produkt aus $x$- und $y$-Anteil
+- [HOCH] $dy/dx$-Schreibweise: $\tfrac{dy}{g(y)} = f(x)\,dx$ sauber trennen
+- [HOCH] Beide Seiten integrieren, Integrationskonstante $C$ nur einmal ansetzen
+- [HOCH] Anfangsbedingung $y(x_0) = y_0$ zum Bestimmen von $C$ einsetzen — vor dem Umformen nach $y$
+- [MITTEL] Betragsstriche bei $\int 1/y\,dy = \ln|y|$ nicht vergessen und Fallunterscheidung prüfen
 
 *Aufgaben-Coverage:* 10 gesamt · 4 manuell / 6 auto-supp · 0 mit 4-Block-Erklärung
 
@@ -1556,6 +1888,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 *Aufgaben-Coverage:* 10 gesamt · 4 manuell / 6 auto-supp · 0 mit 4-Block-Erklärung
 
 #### Fortgeschrittene Methoden
+
+**Unit-Lernziele:**
+- Variation der Konstanten: inhomogene lineare DGL $y' + p(x)y = q(x)$ aus homogener Lösung aufbauen
+- Charakteristisches Polynom lösen und je nach Diskriminanten-Fall (reell/doppelt/komplex) Lösungstypen wählen
+- Erzwungene Schwingung mit Ansatz-Methode (Inhomogenität vom Typ Polynom, Exponential, Sinus/Kosinus)
+- Technische Anwendungen: RC-/RL-Glied, Masse-Feder-Dämpfer, exponentielles Wachstum/Zerfall
 
 ##### Variation der Konstanten `dgl-2-1` · 18 min
 
@@ -1583,6 +1921,11 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 *Aufgaben-Coverage:* 10 gesamt · 4 manuell / 6 auto-supp · 0 mit 4-Block-Erklärung
 
 #### 🏁 Prüfungsaufgaben
+
+**Unit-Lernziele:**
+- Gemischte Prüfungsaufgaben mit Anfangswertbedingungen und physikalischer Interpretation
+- Resonanzfall und Schwebung bei harmonischen Schwingungen sauber erkennen und lösen
+- Systeme linearer DGL mit Matrix-Exponential oder Eigenwert-Methode lösen
 
 ##### Prüfung: DGL 1. Ordnung `dgl-3-1` · 25 min
 
@@ -1617,12 +1960,24 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 <a id="komplexe-zahlen"></a>
 ### Komplexe Zahlen `komplexe-zahlen`
 
-**Prüfungsrelevanz:** —  
+**Prüfungsrelevanz:** **Pflicht**  
 **Aufgaben:** 90 gesamt · 81 manuell · 9 auto-supplemental · 9 mit 4-Block-Erklärung (10%)
 
-> ⚠ **`topicGoals` fehlen** — aggregiert aus Lesson-Zielen unten; bitte für dieses Topic nachtragen.
+**Topic-Lernziele (nach Abschluss):**
+- Realteil, Imaginärteil, Betrag und Konjugierte einer komplexen Zahl zuverlässig bestimmen
+- Komplexe Zahlen in der Gaußschen Ebene zeichnen und zwischen kartesischer, Polar- und Exponentialform umrechnen
+- Multiplikation und Division in Polarform per Beträgen und Argumenten durchführen — nicht per Komponenten
+- Mit der Euler-Formel $e^{i\varphi} = \cos\varphi + i\sin\varphi$ sicher Potenzen und Wurzeln per Moivre ziehen
+- Komplexe Wurzeln als gleichmäßig verteilte Punkte auf dem Kreis $r^{1/n}$ interpretieren (n Lösungen je Gleichung)
+- Komplexe Zahlen als Werkzeug für Schwingungs-DGL, Zeigerdarstellung im Wechselstrom und Resonanzphänomene einsetzen
 
 #### Kartesische Form
+
+**Unit-Lernziele:**
+- Komplexe Zahl $z = a + bi$ mit $i^2 = -1$ in Real- und Imaginärteil zerlegen
+- Addition, Subtraktion, Multiplikation und Division komplexer Zahlen in kartesischer Form beherrschen
+- Konjugiert Komplexes $\bar z = a - bi$ für Division durch Erweiterung mit $\bar z$ einsetzen
+- Betrag $|z| = \sqrt{a^2 + b^2}$ als Abstand vom Ursprung in der Gauß-Ebene interpretieren
 
 ##### Imaginäre Einheit & Gaußsche Zahlenebene `komz-1-1` · 14 min
 
@@ -1630,6 +1985,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - i² = −1 als definierende Eigenschaft verstehen
 - Komplexe Zahlen als Punkte in der Gaußschen Ebene darstellen
 - Real- und Imaginärteil ablesen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] $i^2 = -1$ als Definition — $i$ ist keine Variable, sondern fixes Symbol
+- [HOCH] $\operatorname{Re}(z)$ und $\operatorname{Im}(z)$: beide reell (der Imaginärteil ist **nicht** $bi$, sondern $b$)
+- [HOCH] Konjugierte $\bar z = a - bi$: Spiegelung an reeller Achse
+- [MITTEL] Reelle Zahl ⇔ $\operatorname{Im}(z) = 0$; rein imaginär ⇔ $\operatorname{Re}(z) = 0$
 
 *Aufgaben-Coverage:* 10 gesamt · 9 manuell / 1 auto-supp · 1 mit 4-Block-Erklärung
 
@@ -1640,9 +2001,21 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Multiplikation mit i² = −1 anwenden
 - Division via Erweitern mit dem konjugierten Nenner
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Addition/Subtraktion komponentenweise — wie Vektoren
+- [HOCH] Multiplikation: $(a+bi)(c+di)$ ausmultiplizieren und $i^2 = -1$ einsetzen
+- [HOCH] Division: Zähler **und** Nenner mit $\bar{c+di} = c-di$ erweitern → Nenner reell $c^2 + d^2$
+- [MITTEL] $z \cdot \bar z = |z|^2 = a^2 + b^2$ — immer reell und nicht-negativ
+
 *Aufgaben-Coverage:* 10 gesamt · 9 manuell / 1 auto-supp · 1 mit 4-Block-Erklärung
 
 #### Polarform, Euler & Rechnen
+
+**Unit-Lernziele:**
+- Polarform $z = r(\cos\varphi + i\sin\varphi)$ aus kartesischer Form bestimmen — $r = |z|$, $\varphi = \arg z$
+- Euler-Formel $e^{i\varphi} = \cos\varphi + i\sin\varphi$ und Exponentialform $z = r e^{i\varphi}$ verwenden
+- Multiplikation in Polarform: Beträge multiplizieren, Winkel addieren — Division: dividieren/subtrahieren
+- Quadranten-abhängige Argument-Bestimmung (arctan allein reicht nicht!) sicher durchführen
 
 ##### Betrag, Argument, Polarform `komz-2-1` · 18 min
 
@@ -1664,6 +2037,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 
 #### Potenzen & Wurzeln
 
+**Unit-Lernziele:**
+- Satz von Moivre: $z^n = r^n(\cos(n\varphi) + i\sin(n\varphi))$ für ganzzahlige Potenzen anwenden
+- Alle $n$ komplexen $n$-ten Wurzeln einer komplexen Zahl berechnen ($n$ Lösungen auf einem Kreis)
+- Einheitswurzeln $z_k = e^{i \cdot 2\pi k / n}$ als regelmäßiges $n$-Eck auf dem Einheitskreis erkennen
+- Polynome mit komplexen Koeffizienten mittels Fundamentalsatz der Algebra vollständig in Linearfaktoren zerlegen
+
 ##### Potenzen — Formel von de Moivre `komz-3-1` · 18 min
 
 **Nach dieser Lesson kannst du:**
@@ -1681,6 +2060,11 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 *Aufgaben-Coverage:* 10 gesamt · 9 manuell / 1 auto-supp · 1 mit 4-Block-Erklärung
 
 #### 🏁 Prüfung
+
+**Unit-Lernziele:**
+- Gemischte Prüfungsaufgaben mit Konvertierungen zwischen kartesisch/polar/exponentiell
+- Komplexe Schwingungsbeschreibung und Anwendung in E-Technik (Zeigerdiagramme, Impedanz)
+- Gleichungen der Form $z^n = w$ systematisch lösen und Lösungen in der Gauß-Ebene einzeichnen
 
 ##### Prüfung: Anwendungen & Gesamtaufgaben `komz-pruefung-1` · 25 min
 
@@ -1712,12 +2096,25 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 <a id="reihen-folgen"></a>
 ### Reihen & Folgen `reihen-folgen`
 
-**Prüfungsrelevanz:** —  
+**Prüfungsrelevanz:** **Pflicht**  
 **Aufgaben:** 50 gesamt · 45 manuell · 5 auto-supplemental · 5 mit 4-Block-Erklärung (10%)
 
-> ⚠ **`topicGoals` fehlen** — aggregiert aus Lesson-Zielen unten; bitte für dieses Topic nachtragen.
+**Topic-Lernziele (nach Abschluss):**
+- Folgen auf Konvergenz prüfen und den Grenzwert per Grenzwertsätzen oder Einschnürung bestimmen
+- Geometrische und harmonische Reihe als Referenzfälle auswendig kennen und vergleichend einsetzen
+- Konvergenzkriterien (Quotienten-, Wurzel-, Leibniz-, Majoranten-/Minoranten-Kriterium) situationsgerecht auswählen
+- Potenzreihen $\sum a_n (x-x_0)^n$ aufstellen und den Konvergenzradius $R = 1/\limsup\sqrt[n]{|a_n|}$ bestimmen
+- Taylor- und Maclaurin-Reihen elementarer Funktionen ($e^x$, $\sin$, $\cos$, $\ln(1+x)$) hinschreiben und zum Approximieren verwenden
+- Restglieder nach Lagrange abschätzen und die Approximationsqualität für Ingenieuranwendungen bewerten
 
 #### Folgen, Reihen & Konvergenz
+
+**Unit-Lernziele:**
+- Folgen als Abbildungen $\mathbb{N} \to \mathbb{R}$ verstehen und ihren Grenzwert bestimmen
+- Konvergenz/Divergenz einer Reihe $\sum a_n$ prüfen — notwendiges Kriterium: $a_n \to 0$
+- Geometrische Reihe $\sum q^n = 1/(1-q)$ für $|q|<1$ als Referenzfall sicher beherrschen
+- Quotienten-, Wurzel-, Leibniz- und Majoranten-Kriterium gezielt auswählen
+- Taylor-Polynome bis gewünschter Ordnung bilden und Restglied qualitativ abschätzen
 
 ##### Folgen und Grenzwerte `rf-1-1` · 12 min
 
@@ -1725,6 +2122,13 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Folgen als Funktionen $\mathbb{N} \to \mathbb{R}$ verstehen
 - Konvergenz und Grenzwert definieren
 - Monotonie und Beschränktheit prüfen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Grenzwert $\lim_{n\to\infty} a_n$ anschaulich als „bleibt schließlich in jedem $\varepsilon$-Schlauch" begreifen
+- [HOCH] Rationale Folgen: Grad-Vergleich (Zähler/Nenner) entscheidet über $0$, endlicher Grenzwert oder $\pm\infty$
+- [HOCH] Grenzwertsätze: Summe, Produkt, Quotient (sofern Nennergrenzwert $\neq 0$)
+- [MITTEL] Monoton + beschränkt $\Rightarrow$ konvergent (ohne Grenzwert ausrechnen zu müssen)
+- [HOCH] Nullfolgen: $1/n$, $1/n^k$, $q^n$ mit $|q|<1$ — als Bausteine auswendig
 
 *Aufgaben-Coverage:* 10 gesamt · 9 manuell / 1 auto-supp · 1 mit 4-Block-Erklärung
 
@@ -1735,9 +2139,20 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Taylorentwicklung für $e^x$, $\sin x$, $\cos x$ kennen
 - Restglied nach Lagrange abschätzen
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Taylor-Formel $T_n(x) = \sum_{k=0}^n f^{(k)}(x_0)/k! \cdot (x-x_0)^k$
+- [HOCH] Maclaurin-Reihen auswendig: $e^x$, $\sin x$, $\cos x$, $\ln(1+x)$, $1/(1-x)$
+- [MITTEL] Lagrange-Restglied $R_n = f^{(n+1)}(\xi)/(n+1)! \cdot (x-x_0)^{n+1}$ zum Fehler abschätzen
+- [MITTEL] Gerade Funktionen (cos) haben nur gerade Potenzen; ungerade (sin) nur ungerade
+
 *Aufgaben-Coverage:* 10 gesamt · 9 manuell / 1 auto-supp · 1 mit 4-Block-Erklärung
 
 #### 🏁 Prüfung
+
+**Unit-Lernziele:**
+- Konvergenzradius von Potenzreihen $\sum a_n (x-x_0)^n$ mit Cauchy-Hadamard oder Quotientenkriterium bestimmen
+- Taylor-Restglied mit Lagrange-Formel abschätzen, um numerische Näherungen zu rechtfertigen
+- Potenzreihen gliedweise ableiten/integrieren und den Konvergenzradius kontrollieren
 
 ##### Prüfung: Taylor, Konvergenz, Restglied `rf-pruefung-1` · 20 min
 
@@ -1769,10 +2184,16 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 <a id="festigkeitslehre"></a>
 ### Festigkeitslehre `festigkeitslehre`
 
-**Prüfungsrelevanz:** —  
+**Prüfungsrelevanz:** **Pflicht**  
 **Aufgaben:** 110 gesamt · 35 manuell · 75 auto-supplemental · 20 mit 4-Block-Erklärung (18%)
 
-> ⚠ **`topicGoals` fehlen** — aggregiert aus Lesson-Zielen unten; bitte für dieses Topic nachtragen.
+**Topic-Lernziele (nach Abschluss):**
+- Normal- und Schubspannung $\sigma = F/A$, $\tau = F/A$ aus Schnittkräften korrekt ableiten
+- Hooke-Gesetz $\sigma = E\,\varepsilon$ samt Querkontraktion und thermischer Dehnung anwenden
+- Schnittgrößenverläufe $N(x)$, $Q(x)$, $M(x)$ für Balken mit Einzel- und Streckenlasten zeichnen
+- Biegespannung $\sigma_b = M_b / W$ an Querschnitten bestimmen und kritische Fasern erkennen
+- Zulässige Spannung via Sicherheitsbeiwert $\nu = R_e / \sigma_{\text{zul}}$ nachweisen
+- Spannungsspitzen an Kerben, Bohrungen und Absätzen über Kerbfaktor $\alpha_k$ qualitativ einordnen
 
 #### Spannung und Dehnung
 
@@ -1782,6 +2203,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Spannung als Kraft pro Fläche verstehen
 - Einheiten korrekt umrechnen
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] $\sigma = F/A$ — Kraft normal zur Fläche, Einheit $\mathrm{N/mm^2 = MPa}$
+- [HOCH] 1 MPa = 1 N/mm² = $10^6$ Pa: Einheiten-Umrechnung ohne Rechenfehler
+- [MITTEL] Zug vs. Druck: Vorzeichenkonvention (+Zug, −Druck) klar halten
+- [HOCH] Querschnittsfläche: bei Kreis $A = \pi d^2/4$, nicht $\pi d^2$
+
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 0 mit 4-Block-Erklärung
 
 ##### Hookesches Gesetz `fest-1-2` · 12 min
@@ -1789,6 +2216,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 **Nach dieser Lesson kannst du:**
 - Linearen elastischen Bereich erkennen
 - E-Modul interpretieren
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] $\sigma = E\,\varepsilon$ im linear-elastischen Bereich — nur hier gilt Hooke
+- [HOCH] Dehnung $\varepsilon = \Delta l / l_0$ dimensionslos; oft in ‰ oder %
+- [HOCH] E-Modul ist **Material-Konstante**, unabhängig von Geometrie (Stahl $\approx 210\,\mathrm{GPa}$)
+- [MITTEL] Querkontraktion $\varepsilon_q = -\nu\,\varepsilon$ mit Poisson-Zahl $\nu \approx 0{,}3$ (Stahl)
 
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 0 mit 4-Block-Erklärung
 
@@ -1872,10 +2305,16 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 <a id="thermodynamik"></a>
 ### Thermodynamik `thermodynamik`
 
-**Prüfungsrelevanz:** —  
+**Prüfungsrelevanz:** **Pflicht**  
 **Aufgaben:** 80 gesamt · 26 manuell · 54 auto-supplemental · 8 mit 4-Block-Erklärung (10%)
 
-> ⚠ **`topicGoals` fehlen** — aggregiert aus Lesson-Zielen unten; bitte für dieses Topic nachtragen.
+**Topic-Lernziele (nach Abschluss):**
+- Zustandsgrößen $p$, $V$, $T$, $m$ klar von Prozessgrößen $Q$, $W$ unterscheiden — Einheiten konsistent halten
+- Ideale Gasgleichung $p\,V = m\,R_s\,T$ sicher nach jeder Größe auflösen; $R_s$ aus molarer Masse bestimmen
+- Isochor, isobar, isotherm und adiabat per pV- und Ts-Diagramm qualitativ skizzieren und rechnerisch behandeln
+- 1. Hauptsatz $dU = \delta Q - \delta W$ in passender Vorzeichenkonvention (System-/Umgebungssicht) schreiben
+- 2. Hauptsatz: Carnot-Wirkungsgrad $\eta_C = 1 - T_\text{k}/T_\text{w}$ als obere Schranke aller Wärmekraftmaschinen begreifen
+- Einfache Kreisprozesse (Otto, Diesel, Carnot) im pV-Diagramm durchrechnen und Wirkungsgrad interpretieren
 
 #### Zustandsgrößen
 
@@ -1885,6 +2324,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - pV = nRT anwenden
 - Temperatur in Kelvin verwenden
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] $pV = nRT$ mit $R = 8{,}314\,\mathrm{J/(mol\,K)}$; alternativ $p V = m R_s T$ mit spez. Gaskonstante
+- [HOCH] Temperatur **immer** in Kelvin: $T[K] = T[°C] + 273{,}15$
+- [HOCH] Einheiten: $p$ in Pa, $V$ in m³, $n$ in mol — keine Liter/bar in die Grundformel
+- [MITTEL] $R_s = R/M$ aus molarer Masse $M$ des Gases (Luft: $M \approx 28{,}96\,\mathrm{g/mol}$)
+
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 0 mit 4-Block-Erklärung
 
 ##### Druck und Arbeit `thermo-1-2` · 12 min
@@ -1892,6 +2337,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 **Nach dieser Lesson kannst du:**
 - Volumenänderungsarbeit interpretieren
 - p-V-Diagramme lesen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Volumenarbeit $W = \int p\,dV$ = Fläche unter der Kurve im pV-Diagramm
+- [HOCH] Isobar ($p$ const): $W = p \cdot \Delta V$ — direktes Rechteck
+- [HOCH] Isotherm ($T$ const): $W = nRT \ln(V_2/V_1)$ — Vorzeichen beachten
+- [MITTEL] Vorzeichenkonvention: $W > 0$ = vom System **abgegeben**; umgekehrt in mancher Literatur
 
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 0 mit 4-Block-Erklärung
 
@@ -1953,10 +2404,16 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 <a id="maschinenelemente"></a>
 ### Maschinenelemente `maschinenelemente`
 
-**Prüfungsrelevanz:** —  
+**Prüfungsrelevanz:** **Pflicht**  
 **Aufgaben:** 80 gesamt · 26 manuell · 54 auto-supplemental · 8 mit 4-Block-Erklärung (10%)
 
-> ⚠ **`topicGoals` fehlen** — aggregiert aus Lesson-Zielen unten; bitte für dieses Topic nachtragen.
+**Topic-Lernziele (nach Abschluss):**
+- Schraubenverbindungen auf Zug-, Scher- und Flächenpressungslast auslegen (Vorspannkraft, Betriebskraft)
+- Welle-Nabe-Verbindungen (Passfeder, Keilwelle, Presssitz) anhand Momenten- und Flächenpressungs-Kriterium auswählen
+- Wellen auf Biegung, Torsion und kombinierte Belastung mit Vergleichsspannung nach GEH auslegen
+- Wälz- und Gleitlager nach Tragzahl $C$ und modifizierter Lebensdauer $L_{10} = (C/P)^p \cdot 10^6$ dimensionieren
+- Stirnrad-Getriebe mit Übersetzung $i = z_2/z_1$ und Modul $m = d/z$ rechnen; Verluste pro Stufe einschätzen
+- Passungen (Spiel, Übergang, Übermaß) nach ISO-Tabellensystem lesen und konstruktiv begründen
 
 #### Verbindungen
 
@@ -1966,6 +2423,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Kraftfluss in Schraubenverbindungen verstehen
 - Vorspannung einordnen
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Vorspannkraft $F_V$ erzeugt Klemmkraft in der Fuge — verhindert Fugenöffnen
+- [HOCH] Kraftverteilung: nur ein Bruchteil der Betriebskraft fließt durch die Schraube ($\phi$-Faktor)
+- [MITTEL] Festigkeitsklassen 8.8, 10.9, 12.9: erste Zahl ≈ $R_m/100$ MPa, zweite ≈ $R_e/R_m$
+- [MITTEL] Anziehdrehmoment $M_A$ aus Hersteller-Tabelle — nie größer als Streckgrenze der Schraube
+
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 0 mit 4-Block-Erklärung
 
 ##### Passfedern und formschlüssige Verbindungen `melem-1-2` · 12 min
@@ -1973,6 +2436,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 **Nach dieser Lesson kannst du:**
 - Formschluss von Kraftschluss unterscheiden
 - Drehmomentübertragung beschreiben
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Formschluss: Geometrie überträgt Kraft (Passfeder, Zahn); Kraftschluss: Reibung überträgt Kraft (Presssitz, Kupplung)
+- [HOCH] Drehmoment aus Umfangskraft: $M_t = F_u \cdot r$; Umfangskraft $F_u = 2 M_t / d$ an der Welle mit Durchmesser $d$
+- [HOCH] Flächenpressung an der Passfeder: $p = F_u / (l \cdot h/2) \le p_{zul}$ — bestimmt die Passfeder-Länge $l$
+- [MITTEL] Passfedern sind Normteile nach DIN 6885 — Form A (rund), Form B (gerade); Bezeichnung $b \times h \times l$
 
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 0 mit 4-Block-Erklärung
 
@@ -2035,12 +2504,25 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 <a id="mehrdim-analysis"></a>
 ### Mehrdim. Analysis `mehrdim-analysis`
 
-**Prüfungsrelevanz:** —  
+**Prüfungsrelevanz:** **Pflicht**  
 **Aufgaben:** 50 gesamt · 45 manuell · 5 auto-supplemental · 5 mit 4-Block-Erklärung (10%)
 
-> ⚠ **`topicGoals` fehlen** — aggregiert aus Lesson-Zielen unten; bitte für dieses Topic nachtragen.
+**Topic-Lernziele (nach Abschluss):**
+- Partielle Ableitungen $f_x$, $f_y$ fehlerfrei nach jeder Variable bilden, die anderen als Konstante behandeln
+- Den Gradienten $\nabla f$ als Vektor des steilsten Anstiegs geometrisch und als Normale von Höhenlinien lesen
+- Totale Ableitung und Tangentialebene $z = f(x_0, y_0) + \nabla f \cdot (x-x_0, y-y_0)^T$ formulieren
+- Lokale Extrema über $\nabla f = 0$ und die Hesse-Matrix (Definitheit) klassifizieren — inkl. Sattelpunkt
+- Extrema unter Nebenbedingungen mit Lagrange-Multiplikatoren ($\nabla f = \lambda\,\nabla g$) lösen
+- Doppel- und Dreifachintegrale über rechteckige, polare und zylindrische Bereiche aufstellen und in Iterationen zerlegen
 
 #### Partielle Ableitungen & Gradient
+
+**Unit-Lernziele:**
+- Partielle Ableitung $\partial f / \partial x$ als „andere Variablen konstant halten" mechanisch durchführen
+- Gradient $\nabla f = (f_x, f_y, \ldots)^T$ als Richtung des stärksten Anstiegs interpretieren
+- Richtungsableitung über $\nabla f \cdot \vec{e}$ (mit Einheitsvektor $\vec{e}$) berechnen
+- Hesse-Matrix aufstellen und mit Definitheitskriterium Max/Min/Sattel klassifizieren
+- Totales Differential $df = f_x dx + f_y dy$ für Fehlerfortpflanzung anwenden
 
 ##### Partielle Ableitung verstehen `mdim-1-1` · 14 min
 
@@ -2048,6 +2530,13 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Funktionen mehrerer Variablen verstehen
 - Partielle Ableitung ∂f/∂x, ∂f/∂y berechnen
 - Gradient als Vektor interpretieren
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Beim Ableiten nach einer Variable: alle anderen sind **Konstanten**
+- [MITTEL] Schreibweisen $f_x$, $\partial f/\partial x$, $D_x f$ gleichwertig erkennen
+- [HOCH] Gradient $\nabla f = (f_x, f_y)^T$ zeigt Richtung des steilsten Anstiegs
+- [HOCH] Gradient $\perp$ Höhenlinie — Normale an Niveaumengen
+- [MITTEL] Satz von Schwarz: $f_{xy} = f_{yx}$ (bei stetigen zweiten Ableitungen)
 
 *Aufgaben-Coverage:* 10 gesamt · 9 manuell / 1 auto-supp · 1 mit 4-Block-Erklärung
 
@@ -2058,9 +2547,21 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Lagrange-Multiplikatoren bei einer Nebenbedingung anwenden
 - Sattel- von Extrempunkten unterscheiden
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Notwendige Bedingung für Extremum: $\nabla f = 0$ (kritischer Punkt)
+- [HOCH] Hesse-Matrix $H = \begin{pmatrix} f_{xx} & f_{xy} \\ f_{yx} & f_{yy} \end{pmatrix}$ — Symmetrie nutzen
+- [HOCH] $\det H > 0 \wedge f_{xx} > 0$ → Minimum, $< 0 \wedge f_{xx} < 0$ → Maximum, $\det H < 0$ → Sattel
+- [HOCH] Lagrange: $\nabla f = \lambda\,\nabla g$ bei Nebenbedingung $g(x,y) = 0$
+- [MITTEL] Lagrange-System: $\nabla f - \lambda \nabla g = 0$ **und** $g = 0$ gemeinsam lösen
+
 *Aufgaben-Coverage:* 10 gesamt · 9 manuell / 1 auto-supp · 1 mit 4-Block-Erklärung
 
 #### 🏁 Prüfung
+
+**Unit-Lernziele:**
+- Extrema unter Nebenbedingungen mit Lagrange-Multiplikator $\nabla f = \lambda \nabla g$ lösen
+- Gauß'sche Fehlerfortpflanzung für unabhängige Messgrößen anwenden
+- Prüfungsaufgaben mit Kombination aus partiellen Ableitungen, Gradient und Hesse-Matrix
 
 ##### Prüfung: Extrema, Fehlerfortpflanzung `mdim-pruefung-1` · 25 min
 
@@ -2092,18 +2593,37 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 <a id="numerik"></a>
 ### Numerische Mathematik `numerik`
 
-**Prüfungsrelevanz:** —  
+**Prüfungsrelevanz:** Wahl  
 **Aufgaben:** 50 gesamt · 45 manuell · 5 auto-supplemental · 5 mit 4-Block-Erklärung (10%)
 
-> ⚠ **`topicGoals` fehlen** — aggregiert aus Lesson-Zielen unten; bitte für dieses Topic nachtragen.
+**Topic-Lernziele (nach Abschluss):**
+- Nullstellen nichtlinearer Gleichungen per Bisektion robust eingrenzen und Iterationszahl abschätzen
+- Newton-Verfahren mit $x_{n+1} = x_n - f(x_n)/f'(x_n)$ anwenden und Konvergenz (quadratisch, divergent) diagnostizieren
+- Fixpunktiteration aufstellen und $|\varphi'(x^*)| < 1$ als Konvergenzbedingung prüfen
+- Bestimmte Integrale über Trapezregel und Simpson-Regel approximieren und den Fehler $O(h^2)$ bzw. $O(h^4)$ einordnen
+- Lineare Gleichungssysteme mit LR-Zerlegung und Pivotisierung stabil lösen
+- Iterative Lösung von LGS (Jacobi, Gauß-Seidel) auf Konvergenzkriterien (diagonaldominant) prüfen
 
 #### Nullstellen & Integration
+
+**Unit-Lernziele:**
+- Newton-Verfahren $x_{n+1} = x_n - f(x_n)/f'(x_n)$ per Hand für 2–3 Iterationen durchführen
+- Bisektion mit Zwischenwertsatz als garantiert konvergentes, aber langsames Verfahren nutzen
+- Numerische Integration mit Trapez- und Simpson-Regel auf gegebenen Stützstellen berechnen
+- Fehlerordnung der Verfahren kennen: Trapez $O(h^2)$, Simpson $O(h^4)$
+- Abbruchkriterien (Residuum, Schrittweite, max. Iterationen) korrekt wählen
 
 ##### Newton-Verfahren `num-1-1` · 14 min
 
 **Nach dieser Lesson kannst du:**
 - Newton-Iteration verstehen und anwenden
 - Startwert und Konvergenz einschätzen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Iterationsvorschrift $x_{n+1} = x_n - f(x_n)/f'(x_n)$ korrekt aufbauen
+- [HOCH] Abbruchkriterium: $|x_{n+1} - x_n| < \varepsilon$ **oder** $|f(x_n)| < \delta$
+- [MITTEL] Quadratische Konvergenz: Anzahl korrekter Stellen verdoppelt sich pro Schritt (bei guten Startwerten)
+- [HOCH] Stolperfallen: $f'(x_n) = 0$ (Tangente horizontal), schlechter Startwert → Divergenz
 
 *Aufgaben-Coverage:* 10 gesamt · 9 manuell / 1 auto-supp · 1 mit 4-Block-Erklärung
 
@@ -2114,9 +2634,21 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Trapezregel und Simpson-Regel für bestimmte Integrale anwenden
 - Fehlerordnung der Verfahren einordnen
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Bisektion benötigt Vorzeichenwechsel: $f(a)\cdot f(b) < 0$
+- [HOCH] Fehler der Bisektion nach $n$ Schritten: $(b-a)/2^n$ → Schrittzahl auflösen
+- [HOCH] Trapezregel: $\tfrac{h}{2}(f_0 + 2f_1 + \ldots + 2f_{n-1} + f_n)$; Fehler $O(h^2)$
+- [HOCH] Simpson: nur bei **gerader** Teilintervallanzahl anwendbar; Fehler $O(h^4)$
+- [MITTEL] Simpson ist exakt für Polynome bis Grad 3
+
 *Aufgaben-Coverage:* 10 gesamt · 9 manuell / 1 auto-supp · 1 mit 4-Block-Erklärung
 
 #### 🏁 Prüfung
+
+**Unit-Lernziele:**
+- Gemischte Aufgaben mit Kombination aus Nullstellen- und Integrationsverfahren bearbeiten
+- Konvergenzordnung rechnerisch verifizieren (Fehlerhalbierung bei Schrittweitenhalbierung)
+- Abbruchkriterien auf gegebene Toleranzen anwenden und Iterationen abzählen
 
 ##### Prüfung: Numerische Methoden kombiniert `num-pruefung-1` · 25 min
 
@@ -2147,18 +2679,37 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 <a id="statistik"></a>
 ### Statistik & Wahrscheinlichkeit `statistik`
 
-**Prüfungsrelevanz:** —  
+**Prüfungsrelevanz:** Wahl  
 **Aufgaben:** 60 gesamt · 54 manuell · 6 auto-supplemental · 6 mit 4-Block-Erklärung (10%)
 
-> ⚠ **`topicGoals` fehlen** — aggregiert aus Lesson-Zielen unten; bitte für dieses Topic nachtragen.
+**Topic-Lernziele (nach Abschluss):**
+- Kombinatorische Grundformeln (Permutation, Kombination mit/ohne Wiederholung) zielgerichtet auswählen
+- Laplace-Wahrscheinlichkeit, bedingte Wahrscheinlichkeit und Bayes-Formel in Textaufgaben sauber anwenden
+- Erwartungswert $E[X]$ und Varianz $\operatorname{Var}(X)$ diskreter und stetiger Zufallsvariablen berechnen
+- Binomialverteilung, Poisson-Verteilung und Normalverteilung situationsgerecht unterscheiden und Parameter interpretieren
+- Die Standardnormalverteilung $\Phi(z)$ zum Bestimmen von Wahrscheinlichkeiten und Quantilen nutzen (z-Transformation)
+- Stichprobenmittel, Stichprobenvarianz und Konfidenzintervalle bauen; einfachen Hypothesentest (z- oder t-Test) durchführen
 
 #### Zufallsvariablen & Verteilungen
+
+**Unit-Lernziele:**
+- Diskrete und stetige Zufallsvariablen über Wahrscheinlichkeits- bzw. Dichtefunktion beschreiben
+- Erwartungswert $E[X]$, Varianz $\text{Var}(X)$ und Standardabweichung $\sigma$ für Standardverteilungen berechnen
+- Normalverteilung $N(\mu, \sigma^2)$ mit $z = (x-\mu)/\sigma$ standardisieren und Tabellenwerte ablesen
+- Konfidenzintervall um $\bar x$ mit $\pm z_{\alpha/2} \cdot \sigma/\sqrt{n}$ konstruieren
+- Hypothesentest mit $H_0$, $H_1$, Teststatistik, p-Wert/Signifikanzniveau $\alpha$ durchführen
 
 ##### Erwartungswert und Varianz `stat-1-1` · 14 min
 
 **Nach dieser Lesson kannst du:**
 - Erwartungswert und Varianz einer diskreten Zufallsvariablen berechnen
 - Unterschied zwischen $\sigma^2$ und $\sigma$ kennen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Erwartungswert $E(X) = \sum_i x_i\,p_i$ bei diskreter $X$
+- [HOCH] Verschiebungssatz: $\operatorname{Var}(X) = E(X^2) - E(X)^2$ (rechnerisch meist einfacher)
+- [MITTEL] Einheiten: $E(X)$ wie $X$, $\operatorname{Var}(X)$ wie $X^2$, $\sigma$ wie $X$
+- [HOCH] Linearität: $E(aX + b) = a\,E(X) + b$, $\operatorname{Var}(aX + b) = a^2\,\operatorname{Var}(X)$ (Konstante fällt weg)
 
 *Aufgaben-Coverage:* 10 gesamt · 9 manuell / 1 auto-supp · 1 mit 4-Block-Erklärung
 
@@ -2168,6 +2719,13 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Normalverteilung $N(\mu, \sigma^2)$ parametrieren und interpretieren
 - 68-95-99{,}7%-Regel anwenden
 - Standardisierung $Z = (X-\mu)/\sigma$ durchführen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Parameter: $\mu$ verschiebt, $\sigma$ streckt die Glockenkurve
+- [HOCH] z-Transformation $Z = (X-\mu)/\sigma$: jede Normalverteilung auf $N(0,1)$ zurückführen
+- [HOCH] 68/95/99{,}7-Regel: $\pm1\sigma$, $\pm2\sigma$, $\pm3\sigma$-Intervalle als Schätzung auswendig
+- [HOCH] $\Phi(z) = P(Z \le z)$: Tabelle nur für $z \ge 0$, für $z < 0$ Symmetrie $\Phi(-z) = 1 - \Phi(z)$ nutzen
+- [HOCH] $P(a \le X \le b) = \Phi(\tfrac{b-\mu}{\sigma}) - \Phi(\tfrac{a-\mu}{\sigma})$
 
 *Aufgaben-Coverage:* 10 gesamt · 9 manuell / 1 auto-supp · 1 mit 4-Block-Erklärung
 
@@ -2181,6 +2739,11 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 *Aufgaben-Coverage:* 10 gesamt · 9 manuell / 1 auto-supp · 1 mit 4-Block-Erklärung
 
 #### 🏁 Prüfung
+
+**Unit-Lernziele:**
+- Gemischte Prüfungsaufgaben mit Schätzung, Konfidenzintervall und Hypothesentest
+- Normalverteilungs-Berechnungen mit Tabelle $\Phi(z)$ sicher durchführen
+- Interpretation von p-Wert, Annahme-/Ablehnungsbereich und Fehlerarten 1./2. Art
 
 ##### Prüfung: Schätzung & Hypothesentest `stat-pruefung-1` · 25 min
 
@@ -2212,18 +2775,38 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 <a id="fourier-laplace"></a>
 ### Fourier & Laplace `fourier-laplace`
 
-**Prüfungsrelevanz:** —  
+**Prüfungsrelevanz:** **Pflicht**  
 **Aufgaben:** 70 gesamt · 56 manuell · 14 auto-supplemental · 0 mit 4-Block-Erklärung (0%)
 
-> ⚠ **`topicGoals` fehlen** — aggregiert aus Lesson-Zielen unten; bitte für dieses Topic nachtragen.
+**Topic-Lernziele (nach Abschluss):**
+- Periodische Signale als Fourier-Reihe $a_0/2 + \sum (a_n\cos + b_n\sin)$ darstellen und Koeffizienten per Integral bestimmen
+- Symmetrie erkennen: gerade Funktion → nur Cosinus-Anteile, ungerade → nur Sinus — spart das halbe Rechenwerk
+- Die komplexe Fourier-Form $\sum c_n e^{in\omega_0 t}$ aufstellen und Amplituden-/Phasenspektrum daraus ableiten
+- Von der Fourier-Reihe zur Fourier-Transformation übergehen und Zeit-/Frequenzbereich deuten
+- Laplace-Transformation $\mathcal{L}\{f(t)\} = F(s)$ aus Tabelle und Regeln (Linearität, Verschiebung, Ableitung) aufstellen
+- Lineare DGL mit konstanten Koeffizienten per Laplace auf eine algebraische Gleichung in $s$ reduzieren und rücktransformieren
 
 #### Fourier-Reihen
+
+**Unit-Lernziele:**
+- Periodische Funktion in Fourier-Reihe $a_0/2 + \sum (a_n \cos(n\omega t) + b_n \sin(n\omega t))$ entwickeln
+- Koeffizienten $a_n, b_n$ über Integrale über eine Periode berechnen
+- Symmetrien ausnutzen: gerade Funktionen $\Rightarrow b_n = 0$, ungerade $\Rightarrow a_n = 0$
+- Komplexe Fourier-Reihe $\sum c_n e^{in\omega t}$ und Zusammenhang $c_n = (a_n - ib_n)/2$
+- Fourier-Transformation als Verallgemeinerung auf nichtperiodische Signale einführen
 
 ##### Fourier-Reihen — Grundbegriffe `fl-1-1` · 15 min
 
 **Nach dieser Lesson kannst du:**
 - Periodische Funktionen als Überlagerung von Sinus/Kosinus erkennen
 - Fourier-Koeffizienten berechnen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] $T$-Periode und Grundfrequenz $\omega_0 = 2\pi/T$ korrekt identifizieren
+- [HOCH] Formel: $a_0 = \tfrac{1}{T}\int_0^T f\,dt$ (DC-Anteil), $a_n$, $b_n$ mit Faktor $\tfrac{2}{T}$
+- [HOCH] Gerade $f$ ($f(-t) = f(t)$) → nur $a_n$; ungerade → nur $b_n$ — halbiert den Aufwand
+- [HOCH] Reihenansatz: $f(t) = a_0/2 + \sum_n (a_n\cos + b_n\sin)$ — Faktor $1/2$ vor $a_0$ nicht vergessen
+- [MITTEL] Integration über eine volle Periode — Start- und Endpunkt frei wählbar (z. B. $-T/2$ bis $T/2$)
 
 *Aufgaben-Coverage:* 10 gesamt · 8 manuell / 2 auto-supp · 0 mit 4-Block-Erklärung
 
@@ -2232,6 +2815,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 **Nach dieser Lesson kannst du:**
 - Fourier-Koeffizienten eines Rechtecksignals berechnen
 - Gibbs-Phänomen kennen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Ungerades Rechteck → nur $b_n$; nur **ungerade** $n$ liefern Beitrag ($b_n \propto 1/n$)
+- [MITTEL] Gibbs-Überschwinger ca. 9 % an Sprungstellen — wird mit mehr Termen nicht kleiner, nur schmaler
+- [NIEDRIG] Konvergenz in der Mitte der Sprungstelle zum Mittelwert der beiden Seiten
+- [MITTEL] Amplitudenspektrum: $1/n$-Abfall → „langsame" Abnahme hoher Frequenzen
 
 *Aufgaben-Coverage:* 10 gesamt · 8 manuell / 2 auto-supp · 0 mit 4-Block-Erklärung
 
@@ -2244,6 +2833,13 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 *Aufgaben-Coverage:* 10 gesamt · 8 manuell / 2 auto-supp · 0 mit 4-Block-Erklärung
 
 #### Laplace-Transformation
+
+**Unit-Lernziele:**
+- Laplace-Transformation $F(s) = \int_0^\infty f(t) e^{-st} dt$ als Werkzeug zur DGL-Lösung einsetzen
+- Korrespondenztabelle nutzen: $e^{at} \leftrightarrow 1/(s-a)$, $\sin(\omega t) \leftrightarrow \omega/(s^2+\omega^2)$, etc.
+- Ableitungsregel $\mathcal{L}\{f'\} = sF(s) - f(0)$ und Integrationsregel anwenden
+- Rücktransformation mit Partialbruchzerlegung und Tabellenwerten durchführen
+- Endwertsatz und Anfangswertsatz zur schnellen Überprüfung der Lösung nutzen
 
 ##### Laplace-Grundlagen `fl-2-1` · 15 min
 
@@ -2262,6 +2858,11 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 *Aufgaben-Coverage:* 10 gesamt · 8 manuell / 2 auto-supp · 0 mit 4-Block-Erklärung
 
 #### 🏁 Prüfungsaufgaben
+
+**Unit-Lernziele:**
+- Mehrstufige Prüfungsaufgaben mit Kombination aus Fourier-Zerlegung, Laplace und Rücktransformation
+- Stabilität von LTI-Systemen über die Lage der Pole in der komplexen Ebene entscheiden
+- Übertragungsfunktion $G(s)$ bilden, Antwort auf Sprung/Impuls berechnen und interpretieren
 
 ##### Fourier Prüfungsaufgaben `fl-3-1` · 22 min
 
@@ -2282,10 +2883,16 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 <a id="fluidmechanik"></a>
 ### Fluidmechanik `fluidmechanik`
 
-**Prüfungsrelevanz:** —  
+**Prüfungsrelevanz:** **Pflicht**  
 **Aufgaben:** 90 gesamt · 29 manuell · 61 auto-supplemental · 14 mit 4-Block-Erklärung (16%)
 
-> ⚠ **`topicGoals` fehlen** — aggregiert aus Lesson-Zielen unten; bitte für dieses Topic nachtragen.
+**Topic-Lernziele (nach Abschluss):**
+- Hydrostatischen Druck $p = \rho\,g\,h$ in offenen Behältern und U-Rohr-Manometern auswerten
+- Kontinuitätsgleichung $A_1 v_1 = A_2 v_2$ (inkompressibel) als Volumenerhaltung nutzen
+- Bernoulli-Gleichung $p + \tfrac12 \rho v^2 + \rho g h = \text{konst}$ entlang einer Stromlinie korrekt anwenden
+- Reynolds-Zahl $\mathrm{Re} = \rho\,v\,d/\eta$ berechnen und laminar ($\lesssim 2300$) gegen turbulent unterscheiden
+- Rohrreibungsverluste aus Darcy-Weisbach $\Delta p = \lambda\,\tfrac{L}{d}\,\tfrac12\rho v^2$ samt $\lambda$ abschätzen
+- Auftriebskraft $F_A = \rho\,g\,V_\text{verdr}$ und Stabilität schwimmender Körper beurteilen
 
 #### Hydrostatik
 
@@ -2295,6 +2902,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - p = ρgh anwenden
 - Druck mit Tiefe erklären
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] $p = \rho g h$ — linearer Zusammenhang nur bei konstanter Dichte (Flüssigkeiten)
+- [HOCH] Überdruck vs. absoluter Druck: $p_\text{abs} = p_\text{atm} + p_\text{hydro}$
+- [HOCH] Druck in Flüssigkeit hängt nur von der Höhe ab, **nicht** von der Behälterform (hydrostat. Paradoxon)
+- [MITTEL] Einheiten: 1 bar ≈ 10 m Wassersäule; 1 mbar ≈ 1 cm H₂O
+
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 0 mit 4-Block-Erklärung
 
 ##### Auftrieb `fluid-1-2` · 12 min
@@ -2302,6 +2915,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 **Nach dieser Lesson kannst du:**
 - Archimedisches Prinzip verwenden
 - Verdrängtes Volumen erkennen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] $F_A = \rho_\text{Fluid}\,g\,V_\text{verdrängt}$ — Dichte des **Fluids**, nicht des Körpers
+- [HOCH] Schwimmen: $F_A = F_G$ → $V_\text{verdrängt} = m_\text{Körper}/\rho_\text{Fluid}$
+- [MITTEL] Vollständig getaucht: $V_\text{verdrängt} = V_\text{Körper}$
+- [HOCH] Dichte-Vergleich: Körper schwimmt, wenn $\rho_\text{Körper} < \rho_\text{Fluid}$
 
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 0 mit 4-Block-Erklärung
 
@@ -2372,10 +2991,16 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 <a id="regelungstechnik"></a>
 ### Regelungstechnik `regelungstechnik`
 
-**Prüfungsrelevanz:** —  
+**Prüfungsrelevanz:** **Pflicht**  
 **Aufgaben:** 60 gesamt · 19 manuell · 41 auto-supplemental · 6 mit 4-Block-Erklärung (10%)
 
-> ⚠ **`topicGoals` fehlen** — aggregiert aus Lesson-Zielen unten; bitte für dieses Topic nachtragen.
+**Topic-Lernziele (nach Abschluss):**
+- Regelkreis (Sollwert, Regelgröße, Stellgröße, Störgröße) als Blockschaltbild korrekt aufstellen
+- Übertragungsfunktion $G(s) = Y(s)/U(s)$ per Laplace-Transformation aus einer linearen DGL ableiten
+- P-, I-, D-, PI- und PID-Regler nach ihrem Zeit- und Frequenzverhalten unterscheiden und einsetzen
+- Stabilität anhand der Pollage $\Re(s_i) < 0$ und mit Routh-Hurwitz-Kriterium beurteilen
+- Bode-Diagramm (Amplituden- und Phasengang) lesen, Eckfrequenzen und Phasenreserve ablesen
+- Stellgrößenbeschränkung, Totzeit und Wind-Up als typische Praxis-Störungen qualitativ einordnen
 
 #### Grundlagen des Regelkreises
 
@@ -2386,6 +3011,12 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Regelabweichung $e = w - y$ erklären
 - Steuerung und Regelung unterscheiden
 
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Signale: Führungsgröße $w$, Regelgröße $y$, Stellgröße $u$, Regelabweichung $e = w - y$, Störgröße $z$
+- [HOCH] Regelung (geschlossener Kreis) vs. Steuerung (offener Wirkungsablauf) — nur Regelung reagiert auf Störungen
+- [HOCH] Blockschaltbild: Regler $\to$ Stellglied $\to$ Regelstrecke $\to$ Messglied $\to$ Vergleichsstelle (Rückführung)
+- [MITTEL] Ziel jeder Regelung: $e \to 0$ trotz Störungen $z$ und Parameter-Schwankungen der Strecke
+
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 0 mit 4-Block-Erklärung
 
 ##### Übertragungsfunktion `rt-1-2` · 15 min
@@ -2394,6 +3025,13 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - Übertragungsfunktion $G(s) = Y(s)/U(s)$ im Laplace-Bereich definieren
 - PT1-Glied und Verstärkung bei $s = 0$ bestimmen
 - Führungsübertragungsfunktion $T = G_0/(1+G_0)$ berechnen
+
+**Kleine Themen (Sub-Goals):**
+- [HOCH] Übertragungsfunktion $G(s) = Y(s)/U(s)$ nur für LTI-Systeme bei verschwindenden Anfangsbedingungen definiert
+- [HOCH] PT1-Glied: $G(s) = K/(1 + Ts)$ — Verstärkung $K$ und Zeitkonstante $T$; Sprungantwort $y(t) = K(1 - e^{-t/T})$
+- [HOCH] Statische Verstärkung = $G(0)$ — erhält man durch Einsetzen von $s = 0$ (Endwertsatz für Sprunganregung)
+- [HOCH] Serienschaltung: Übertragungsfunktionen werden multipliziert; Parallelschaltung: addiert; Rückführung: $T = G/(1+G H)$
+- [MITTEL] Pole von $G(s)$ (Nullstellen des Nenners) bestimmen Stabilität: Realteil $< 0$ = stabil
 
 *Aufgaben-Coverage:* 10 gesamt · 3 manuell / 7 auto-supp · 0 mit 4-Block-Erklärung
 
@@ -2439,31 +3077,13 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 
 ## Coverage-Report (Backlog)
 
-### Topics ohne `topicGoals` (16)
-- `lineare-algebra` — Lineare Algebra
-- `differentialgleichungen` — Differentialgleichungen
-- `komplexe-zahlen` — Komplexe Zahlen
-- `reihen-folgen` — Reihen & Folgen
-- `mehrdim-analysis` — Mehrdim. Analysis
-- `numerik` — Numerische Mathematik
-- `statistik` — Statistik & Wahrscheinlichkeit
-- `fourier-laplace` — Fourier & Laplace
-- `festigkeitslehre` — Festigkeitslehre
-- `thermodynamik` — Thermodynamik
-- `fluidmechanik` — Fluidmechanik
-- `maschinenelemente` — Maschinenelemente
-- `elektrotechnik` — Elektrotechnik
-- `regelungstechnik` — Regelungstechnik
-- `werkstoffkunde` — Werkstoffkunde
-- `python-matlab` — Python & Matlab
+### Topics ohne `topicGoals` (0)
+*Alle Topics haben Topic-Lernziele. 🎉*
 
-### Lessons ohne `subGoals` (214 / 226)
+### Lessons ohne `subGoals` (166 / 226)
 
 Gekürzt auf die ersten 20 — die Gesamtliste erscheint erst, wenn < 50 % der Lessons offen sind:
 
-- `trigonometry` / `trig-1-0` — Winkel-Intuition (Einstieg)
-- `trigonometry` / `trig-1-3` — Die Grundwerte
-- `trigonometry` / `trig-1-4` — Vorzeichen und Quadranten
 - `trigonometry` / `trig-2-1` — Der Einheitskreis
 - `trigonometry` / `trig-2-2` — sin und cos als Koordinaten
 - `trigonometry` / `trig-2-3` — Symmetrien und Periodizität
@@ -2477,11 +3097,14 @@ Gekürzt auf die ersten 20 — die Gesamtliste erscheint erst, wenn < 50 % der L
 - `trigonometry` / `trig-4-1` — Prüfung: Identitäten & Gleichungen
 - `trigonometry` / `trig-4-2` — Prüfung: Technische Anwendungen
 - `trigonometry` / `trig-4-3` — Prüfung: Einheitskreis & Gleichungssysteme
-- `ableitung` / `abl-1-3` — Ableitungen elementarer Funktionen
-- `ableitung` / `abl-1-4` — Kettenregel
 - `ableitung` / `abl-1-5` — Extremwerte und Kurvendiskussion
 - `ableitung` / `abl-2-1` — Produktregel
-- … +194 weitere
+- `ableitung` / `abl-2-2` — Quotientenregel
+- `ableitung` / `abl-2-3` — Kettenregel — Schritt für Schritt
+- `ableitung` / `abl-2-4` — Gemischte Regeln
+- `ableitung` / `abl-3-1` — Monotonie und Extremwerte
+- `ableitung` / `abl-3-2` — Krümmung und Wendepunkte
+- … +146 weitere
 
 ### Niedrigster 4-Block-Anteil (Top-10)
 

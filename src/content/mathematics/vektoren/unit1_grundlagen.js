@@ -618,6 +618,11 @@ const lessons_vek_u1 = [
       'Unterschied zwischen Punkt und Vektor verstehen',
       'Vektor aus zwei Punkten bestimmen ($B - A$)',
     ],
+    subGoals: [
+      { label: 'Punkt = Ort mit Koordinaten; Vektor = Verschiebung mit Richtung und Länge', examRelevance: 'hoch' },
+      { label: 'Vektor von $A$ nach $B$: $\\vec{AB} = B - A$ (komponentenweise Subtraktion)', examRelevance: 'hoch' },
+      { label: 'Freier Vektor: gleicher Richtung und Länge → gleicher Vektor, egal wo eingezeichnet', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'vek-1-1',
     steps: [
@@ -774,6 +779,12 @@ wobei $\\varphi$ der eingeschlossene Winkel ist ($0° \\leq \\varphi \\leq 180°
     title: 'Kreuzprodukt',
     order: 3, estimatedMinutes: 12,
     learningGoals: ['Kreuzprodukt mit der Komponentenformel berechnen', 'Normalvektor einer Ebene bestimmen', 'Skalar- und Kreuzprodukt sicher unterscheiden'],
+    subGoals: [
+      { label: 'Kreuzprodukt liefert *Vektor* senkrecht auf $\\vec a$ und $\\vec b$ — nicht Skalar wie das Skalarprodukt', examRelevance: 'hoch' },
+      { label: 'Betrag $|\\vec a \\times \\vec b| = |\\vec a| |\\vec b| \\sin\\varphi$ = Flächeninhalt des Parallelogramms', examRelevance: 'hoch' },
+      { label: 'Richtung per Rechte-Hand-Regel; $\\vec a \\times \\vec b = -\\vec b \\times \\vec a$ (antikommutativ)', examRelevance: 'hoch' },
+      { label: 'Nur in 3D definiert; Komponentenformel oder Sarrus-Merkschema mit Einheitsvektoren', examRelevance: 'mittel' },
+    ],
     prerequisites: ['vek-1-2'],
     nextLessonId: 'vek-1-4',
     steps: [
@@ -881,6 +892,12 @@ export const vek_unit1 = {
   title: 'Vektorrechnung',
   order: 1,
   description: 'Grundlagen, Skalarprodukt, Kreuzprodukt und Kräfte als Vektoren',
+  unitGoals: [
+    'Vektoren komponentenweise addieren, subtrahieren und mit Skalaren multiplizieren',
+    'Betrag $|\\vec{v}|$ und Einheitsvektor $\\vec{e} = \\vec{v}/|\\vec{v}|$ sicher berechnen',
+    'Skalarprodukt zur Winkel- und Orthogonalitätsprüfung sowie Projektion nutzen',
+    'Kreuzprodukt für Flächeninhalte, Normalenvektoren und Drehmoment $\\vec{M} = \\vec{r} \\times \\vec{F}$ anwenden',
+  ],
   lessons: lessons_vek_u1,
   exercises: exercises_vek_u1,
 }

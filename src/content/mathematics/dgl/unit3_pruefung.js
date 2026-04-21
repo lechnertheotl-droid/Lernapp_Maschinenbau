@@ -623,6 +623,11 @@ export const dgl_unit3 = {
   title: 'Prüfungsaufgaben',
   order: 3,
   description: 'Aufgaben auf TU Wien Prüfungsniveau — DGL 1. Ordnung, DGL 2. Ordnung, Schwingungen',
+  unitGoals: [
+    'Gemischte Prüfungsaufgaben mit Anfangswertbedingungen und physikalischer Interpretation',
+    'Resonanzfall und Schwebung bei harmonischen Schwingungen sauber erkennen und lösen',
+    'Systeme linearer DGL mit Matrix-Exponential oder Eigenwert-Methode lösen',
+  ],
   lessons: lessons_dgl_u3,
   exercises: exercises_dgl_u3,
 }

@@ -14,6 +14,13 @@ const unit1 = makeUnit({
         'Elastisch vs. plastisch unterscheiden',
         'Elastizitätsmodul $E$ als Steigung im Hookeschen Bereich erkennen',
       ],
+      subGoals: [
+        { label: '$R_e$ = Streckgrenze (Ende elastisch); $R_m$ = Zugfestigkeit (Maximum); nicht verwechseln', examRelevance: 'hoch' },
+        { label: '$R_{p0,2}$ = 0,2-%-Dehngrenze bei Werkstoffen ohne ausgeprägte Streckgrenze (z. B. Aluminium)', examRelevance: 'hoch' },
+        { label: 'E-Modul = Steigung im linearen (Hookeschen) Bereich: $E = \\sigma/\\varepsilon$', examRelevance: 'hoch' },
+        { label: 'Bruchdehnung $A$ in %: $(l_u - l_0)/l_0 \\cdot 100$ — zäh vs. spröde', examRelevance: 'mittel' },
+        { label: 'Sicherheit $S = R_m/\\sigma_\\text{zul}$ bzw. $R_e/\\sigma_\\text{zul}$ — wo welcher Kennwert?', examRelevance: 'mittel' },
+      ],
       createdAt: '2026-04-14',
       intuitionTitle: 'Der Fingerabdruck eines Werkstoffs',
       intuitionContent:
@@ -55,6 +62,13 @@ const unit1 = makeUnit({
       learningGoals: [
         'Stahl, Aluminium, Kunststoff und Keramik qualitativ vergleichen',
         'Anwendungsgebiete aus Werkstoffeigenschaften ableiten',
+      ],
+      subGoals: [
+        { label: 'Metalle: zäh, gut umformbar, gut wärmeleitend — tragende Konstruktionen', examRelevance: 'hoch' },
+        { label: 'Keramik: hart, hitzebeständig, spröde — **nicht auf Zug** belasten', examRelevance: 'hoch' },
+        { label: 'Kunststoffe: leicht, korrosionsfest, niedriger E-Modul — Gehäuse, Gleitlager', examRelevance: 'mittel' },
+        { label: 'Verbunde (CFK, GFK): hohe spezifische Steifigkeit $E/\\rho$ — Leichtbau', examRelevance: 'mittel' },
+        { label: 'Spezifische Steifigkeit $E/\\rho$ als Leichtbau-Kennzahl (Titan, CFK, Alu > Stahl)', examRelevance: 'mittel' },
       ],
       createdAt: '2026-04-16',
       intuitionTitle: 'Welcher Werkstoff für welchen Job?',
@@ -106,6 +120,12 @@ const unit2 = makeUnit({
         'Prinzip der Härteprüfung verstehen',
         'Vickers, Brinell, Rockwell unterscheiden',
         'Härte mit Festigkeit korrelieren',
+      ],
+      subGoals: [
+        { label: 'Vickers (HV): Diamantpyramide, universell für hart und dünn; Brinell (HB): Kugel, für weichere Werkstoffe', examRelevance: 'hoch' },
+        { label: 'Rockwell (HRC): direkt ablesbar am Messgerät — schnellste Prüfmethode in der Fertigung', examRelevance: 'hoch' },
+        { label: 'Faustformel Stahl: $R_m \\approx 3{,}5 \\cdot HV$ in MPa — Härte korreliert mit Zugfestigkeit', examRelevance: 'mittel' },
+        { label: 'Prüfkraft und Probendicke müssen zusammen passen, sonst verfälscht Untergrund das Ergebnis', examRelevance: 'mittel' },
       ],
       createdAt: '2026-04-20',
       intuitionTitle: 'Wie hart ist „hart"?',
@@ -369,6 +389,16 @@ export const werkstoffkundeTopic = {
   estimatedHours: 4,
   difficulty: 2,
   level: 'grundlagen',
+  phase: 'semester-1',
+  examRelevance: 'pflicht',
+  topicGoals: [
+    'Spannungs-Dehnungs-Diagramm aus dem Zugversuch lesen und $R_e$, $R_m$, $E$, Bruchdehnung $A$ sauber benennen',
+    'Elastischen, plastischen und Einschnürbereich unterscheiden — inkl. Unterschied Streckgrenze $R_e$ vs. 0,2-%-Dehngrenze $R_{p0,2}$',
+    'Härteprüfung (Brinell, Vickers, Rockwell) nach Indenter, Einheit und Anwendungsfeld auseinanderhalten',
+    'Kerbschlagzähigkeit und Übergangstemperatur von zäh auf spröde in Tieftemperatur-Kurven deuten',
+    'Werkstoffgruppen (Eisen-/Nichteisenmetalle, Kunststoffe, Keramik, Verbunde) nach $E$, $\\rho$, Temperatur- und Korrosionsverhalten vergleichen',
+    'Spezifische Kennwerte $E/\\rho$ und $R_m/\\rho$ für Leichtbau-Auswahlentscheidungen interpretieren',
+  ],
   units: [unit1, unit2, unit3],
   prerequisites: ['algebra'],
 }

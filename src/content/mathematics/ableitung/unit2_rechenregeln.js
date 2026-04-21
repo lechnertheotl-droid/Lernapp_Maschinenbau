@@ -995,6 +995,12 @@ export const abl_unit2 = {
   title: 'Ableitungsregeln im Detail',
   order: 2,
   description: 'Produktregel, Quotientenregel, Kettenregel vertieft, gemischte Aufgaben',
+  unitGoals: [
+    'Produktregel $(fg)\' = f\' g + f g\'$ auch bei geschachtelten Produkten korrekt anwenden',
+    'Quotientenregel $(f/g)\' = (f\' g - f g\')/g^2$ — Minuszeichen und Reihenfolge niemals verwechseln',
+    'Kettenregel „äußere mal innere Ableitung" bei mehrfach geschachtelten Funktionen systematisch durchführen',
+    'Bei Mischungen aus Produkt, Quotient und Kette zuerst die äußerste Struktur identifizieren, dann hierarchisch ableiten',
+  ],
   lessons: lessons_abl_u2,
   exercises: exercises_abl_u2,
 }

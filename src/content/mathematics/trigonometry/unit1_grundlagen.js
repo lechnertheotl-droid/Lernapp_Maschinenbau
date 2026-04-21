@@ -546,6 +546,11 @@ const lessons_u1 = [
       'Winkelsumme im Dreieck ($180°$) anwenden',
       'Anschauung für $45°$, $90°$, $180°$, $360°$ entwickeln',
     ],
+    subGoals: [
+      { label: 'Winkeltypen: spitz $<90°$, recht $=90°$, stumpf $90°–180°$, gestreckt $=180°$, voll $=360°$', examRelevance: 'hoch' },
+      { label: 'Innenwinkelsumme im Dreieck ist immer $180°$ — daraus 3. Winkel berechnen', examRelevance: 'hoch' },
+      { label: 'Scheitel-/Nebenwinkel an sich schneidenden Geraden: Scheitelwinkel gleich, Nebenwinkel ergänzen auf $180°$', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'trig-1-1',
     steps: [
@@ -727,6 +732,12 @@ $$\\tan(\\alpha) = \\dfrac{G}{A} = \\dfrac{\\text{Gegenkathete}}{\\text{Ankathet
     title: 'Die Grundwerte',
     order: 3, estimatedMinutes: 15,
     learningGoals: ['Werte für 0°, 30°, 45°, 60°, 90° auswendig kennen', 'Muster in den Grundwerten erkennen', 'Grundwerte am Einheitskreis ablesen'],
+    subGoals: [
+      { label: 'Auswendig: $\\sin 0° = 0$, $\\sin 30° = 1/2$, $\\sin 45° = \\sqrt2/2$, $\\sin 60° = \\sqrt3/2$, $\\sin 90° = 1$', examRelevance: 'hoch' },
+      { label: 'Merkregel: $\\sin$-Werte folgen dem Muster $\\sqrt n / 2$ für $n = 0, 1, 2, 3, 4$', examRelevance: 'hoch' },
+      { label: 'Kosinus ist Sinus rückwärts: $\\cos 0° = 1, \\cos 90° = 0$, dazwischen symmetrisch', examRelevance: 'hoch' },
+      { label: 'Komplementärwinkel: $\\cos\\alpha = \\sin(90° - \\alpha)$ und umgekehrt', examRelevance: 'mittel' },
+    ],
     prerequisites: ['trig-1-2'],
     nextLessonId: 'trig-1-4',
     steps: [
@@ -771,6 +782,11 @@ Der Grund: Diese Winkel kommen in regelmäßigen Geometrien vor (gleichseitiges 
     title: 'Vorzeichen und Quadranten',
     order: 4, estimatedMinutes: 12,
     learningGoals: ['Vorzeichen von sin/cos/tan in allen vier Quadranten bestimmen', 'Winkel > 90° berechnen', 'Reduktionsformeln am Einheitskreis herleiten'],
+    subGoals: [
+      { label: 'Quadranten I–IV durchnummerieren und Vorzeichen von $\\sin$ (y-Koordinate) und $\\cos$ (x-Koordinate) bestimmen', examRelevance: 'hoch' },
+      { label: 'Symmetrien: $\\sin(180° - \\alpha) = \\sin\\alpha$, $\\cos(180° - \\alpha) = -\\cos\\alpha$', examRelevance: 'hoch' },
+      { label: 'Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen', examRelevance: 'mittel' },
+    ],
     prerequisites: ['trig-1-3'],
     nextLessonId: 'trig-2-1',
     steps: [
@@ -814,6 +830,12 @@ export const unit1 = {
   title: 'Grundlagen der Trigonometrie',
   order: 1,
   description: 'Winkelmaße, rechtwinkliges Dreieck und erste Grundwerte',
+  unitGoals: [
+    'Grad- und Bogenmaß fehlerfrei umrechnen: $\\alpha_\\text{rad} = \\alpha_\\text{deg} \\cdot \\pi / 180$',
+    'Sinus, Kosinus, Tangens am rechtwinkligen Dreieck als Seitenverhältnisse verstehen und anwenden',
+    'Grundwerte für $0°, 30°, 45°, 60°, 90°$ auswendig kennen und ableiten können',
+    'Taschenrechner DEG/RAD-Modus bewusst wählen — Fehlerquelle Nr. 1 in Prüfungen',
+  ],
   lessons: lessons_u1,
   exercises: exercises_u1,
 }
