@@ -1,5 +1,14 @@
-function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined) {
-  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints, ...(visualization ? { visualization } : {}) }
+function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined, wrongAnswerExplanations = undefined) {
+  return {
+    type: 'multiple-choice',
+    question,
+    options,
+    correctIndex,
+    explanation,
+    hints,
+    ...(visualization ? { visualization } : {}),
+    ...(wrongAnswerExplanations ? { wrongAnswerExplanations } : {}),
+  }
 }
 
 function ni(question, correctValue, tolerance, unit, explanation, hints = [], visualization = undefined) {
@@ -31,12 +40,12 @@ function withExamPrefix(exercise, exam) {
 
 function bank(profile) {
   const exercises = [
-    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization),
+    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization, profile.conceptWrongAnswers),
     ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints, profile.calcVisualization),
     tf(profile.trueFalseStatement, profile.trueFalseCorrect, profile.trueFalseExplanation, profile.trueFalseHints),
     matching(profile.matchingQuestion, profile.matchingPairs, profile.matchingExplanation, profile.matchingHints),
     sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints),
-    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints),
+    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints, undefined, profile.errorWrongAnswers),
     ni(profile.transferQuestion, profile.transferAnswer, profile.transferTolerance, profile.transferUnit, profile.transferExplanation, profile.transferHints),
   ]
   return exercises.map((exercise) => withExamPrefix(exercise, profile.exam))
@@ -73,6 +82,11 @@ $$p \cdot V = n \cdot R \cdot T$$
       'Denk an die molekulare Interpretation: Temperatur ∝ mittlere kinetische Energie.',
       'Celsius hat einen willkürlichen Nullpunkt (Eispunkt).',
     ],
+    conceptWrongAnswers: {
+      1: 'Auch Kelvin kann negative Differenzen haben (bei Abkühlung). Der Unterschied ist der Nullpunkt: Kelvin startet am absoluten Nullpunkt, Celsius am Eispunkt. Die Gasgleichung braucht den absoluten Bezug.',
+      2: 'Kelvin misst Temperatur, keine Kraft. Temperatureinheiten sind anderer Natur als Krafteinheiten (N). Der Grund für Kelvin liegt im absoluten Nullpunkt-Bezug.',
+      3: 'Nicht historisch, sondern physikalisch zwingend: Die ideale Gasgleichung $pV = nRT$ wurde direkt aus der absoluten Temperatur abgeleitet. Mit Celsius entstehen physikalisch unsinnige Ergebnisse.',
+    },
     conceptVisualization: {
       id: 'pv-diagram',
       params: { mode: 'static' },
@@ -141,6 +155,11 @@ $$p \cdot V = n \cdot R \cdot T$$
       'Gasgleichungen brauchen absolute Temperaturen.',
       'Plausibilitätscheck: Ist der Effekt bei 20 °C → 40 °C wirklich eine Verdopplung?',
     ],
+    errorWrongAnswers: {
+      1: 'Isobar ist per Aufgabenstellung vorausgesetzt — der Druck ändert sich nicht. Der Fehler liegt bei der Temperatureinheit, nicht bei einer Druckänderung.',
+      2: 'Die Formel $V/T = $ const gilt gerade bei konstantem Druck (isobar) — nicht bei konstantem Volumen. Bei konstantem Volumen gilt $p/T = $ const.',
+      3: 'Bei 20 °C ist Luft definitiv gasförmig — erst bei $-196$ °C wird sie flüssig. Der Fehler liegt bei Celsius statt Kelvin in der Gasgleichung.',
+    },
 
     transferQuestion: 'Ein Gasbehälter (starr, $V = $ const) wird von $t_1 = 27$ °C auf $t_2 = 127$ °C erwärmt. Anfangsdruck $p_1 = 1$ bar. Wie groß ist $p_2$ in bar?',
     transferAnswer: 1.333,
@@ -186,6 +205,11 @@ mit Adiabatenexponent $\kappa = c_p/c_v$ (Luft: $\kappa \approx 1{,}4$).
       '"Adiabat" = griechisch: "nicht hindurchgehend" — für Wärme.',
       'Schnelle Prozesse ≈ adiabat, langsame ≈ isotherm.',
     ],
+    conceptWrongAnswers: {
+      1: 'Isotherm bedeutet konstante Temperatur ($T = $ const), nicht kein Wärmeaustausch. Tatsächlich muss hier sogar viel Wärme ausgetauscht werden, damit $T$ konstant bleibt.',
+      2: 'Isobar bedeutet konstanter Druck ($p = $ const), nicht kein Wärmeaustausch. Isobare Prozesse haben sehr wohl Wärmeaustausch (z.B. Kochen auf offenem Topf).',
+      3: 'Isochor bedeutet konstantes Volumen ($V = $ const). Auch hier findet Wärmeaustausch statt, die Arbeit ist nur null. Adiabat = $Q = 0$, nicht $W = 0$.',
+    },
 
     calcQuestion: 'Ein Gas ($n = 2$ mol) wird isotherm bei $T = 300$ K von $V_1 = 1$ $m^3$ auf $V_2 = 2$ $m^3$ expandiert. Wie viel Arbeit leistet es in kJ (Gaskonstante $R = 8{,}314$ J/(mol·K))?',
     calcAnswer: 3.457,
@@ -247,6 +271,11 @@ mit Adiabatenexponent $\kappa = c_p/c_v$ (Luft: $\kappa \approx 1{,}4$).
       '$pV = $ const ist Boyle-Mariotte — isotherm.',
       'Adiabat: $pV^\\kappa = $ const mit $\\kappa > 1$.',
     ],
+    errorWrongAnswers: {
+      1: 'Die ideale Gasgleichung $pV = nRT$ ist generell gültig für ideale Gase in jedem Zustand. Der Fehler liegt bei der Prozessgleichung: $pV = $ const gilt nur isotherm.',
+      2: 'Adiabat bedeutet $Q = 0$, nicht $V = $ const. Letzteres wäre isochor. Bei adiabatischer Kompression ändert sich $V$ sehr wohl — sonst wäre keine Arbeit möglich.',
+      3: 'Nicht der Druck ist das Problem, sondern der fehlende Adiabatenexponent. Die Gleichung müsste $pV^\\kappa = $ const lauten, mit $\\kappa > 1$.',
+    },
 
     transferQuestion: 'Luft ($\\kappa = 1{,}4$) wird adiabat von $p_1 = 1$ bar, $V_1 = 1$ L auf $V_2 = 0{,}5$ L komprimiert. Wie groß ist $p_2$ in bar?',
     transferAnswer: 2.639,
@@ -293,6 +322,11 @@ $$\Delta U = Q - W$$
       'Bei idealem Gas: $U$ hängt nur von $T$ ab.',
       'Isotherm $\\Rightarrow \\Delta U = 0$.',
     ],
+    conceptWrongAnswers: {
+      1: '$W = 0$ gilt isochor (bei $V = $ const), nicht isotherm. Bei isothermer Kompression ändert sich $V$ sehr wohl, also $W \\neq 0$. Die Beziehung $\\Delta U = Q$ ist das Isochoren-Prinzip.',
+      2: '$Q = 0$ wäre adiabat. Bei isothermer Kompression wird sogar Wärme abgegeben — das ist der definierende Unterschied zwischen isotherm und adiabat.',
+      3: '$\\Delta U = W$ (ohne Minus) widerspricht dem 1. Hauptsatz $\\Delta U = Q - W$. Zudem ist $\\Delta U = 0$ isotherm, nicht gleich $W$.',
+    },
 
     calcQuestion: 'Einem Gas wird $Q = 500$ J Wärme zugeführt, während es $W = 200$ J Arbeit leistet. Wie groß ist $\\Delta U$ in J?',
     calcAnswer: 300,
@@ -353,6 +387,11 @@ $$\Delta U = Q - W$$
       '"Iso-chor" = gleiches Volumen.',
       '$W = p \\Delta V$ ist isobar, nicht isochor.',
     ],
+    errorWrongAnswers: {
+      1: 'Nicht der Druck ist das Problem, sondern dass $\\Delta V = 0$ bei isochorer Erwärmung. Dadurch $W = p \\cdot 0 = 0$, unabhängig vom Druckwert.',
+      2: 'Umgekehrt: bei Isochoren gilt $\\Delta U = Q$ (nicht $\\Delta U = 0$). Nur isotherm (ideales Gas) gilt $\\Delta U = 0$.',
+      3: 'Die Formel $W = p \\Delta V$ existiert sehr wohl — sie gilt bei isobarer Zustandsänderung. Der Fehler ist nur die Anwendung im falschen Prozesstyp.',
+    },
 
     transferQuestion: 'Ein Gas ($c_v = 717$ J/(kg·K), $m = 2$ kg) wird isochor von $T_1 = 300$ K auf $T_2 = 400$ K erwärmt. Wie viel Wärme $Q$ muss zugeführt werden in kJ?',
     transferAnswer: 143.4,
@@ -397,6 +436,11 @@ mit absoluten Temperaturen in Kelvin. Kein realer Prozess erreicht $\eta_C$ — 
       'Carnot-Formel mit Kelvin-Temperaturen.',
       'Der Kehrwert steht im Bruch.',
     ],
+    conceptWrongAnswers: {
+      1: '100 % Wirkungsgrad ist ein Verstoß gegen den 2. Hauptsatz — eine Maschine kann nie die gesamte Wärme in Arbeit umwandeln. Maximal möglich: $\\eta_C = 1 - T_{kalt}/T_{warm} = 50\\%$.',
+      2: '200 % Wirkungsgrad würde Energie erzeugen — ein Perpetuum mobile. Verstößt gegen den 1. und 2. Hauptsatz. Wirkungsgrade sind stets $\\leq 1$.',
+      3: 'Wirkungsgrad 0 % würde heißen: gar keine Arbeit aus Wärme. Die Carnot-Grenze liegt bei 50 % — ein realer Wert, der theoretisch erreichbar ist.',
+    },
 
     calcQuestion: 'Kraftwerk: $T_{warm} = 800$ K, $T_{kalt} = 320$ K. Wie groß ist $\\eta_C$ in Prozent?',
     calcAnswer: 60,
@@ -457,6 +501,11 @@ mit absoluten Temperaturen in Kelvin. Kein realer Prozess erreicht $\eta_C$ — 
       'Carnot-Formel mit Kelvin-Temperaturen.',
       'Celsius hat willkürlichen Nullpunkt — führt zu Unsinn bei Quotienten.',
     ],
+    errorWrongAnswers: {
+      1: '$T_{warm}$ und $T_{kalt}$ sind korrekt zugeordnet (200 < 500). Der eigentliche Fehler ist Celsius statt Kelvin. Vertauschte Temperaturen würden einen negativen Wert liefern.',
+      2: 'Wirkungsgrad ist dimensionslos (Prozent oder als Dezimalzahl). Watt ist eine Leistungseinheit und hat hier nichts zu suchen. Der echte Fehler ist Celsius statt Kelvin.',
+      3: 'Der Carnot-Wirkungsgrad ist nie 100 % (außer bei $T_{kalt} = 0$ K, was unerreichbar ist). Das wäre Verstoß gegen den 2. Hauptsatz. Der Fehler ist die Verwendung von Celsius.',
+    },
 
     transferQuestion: 'Wärmepumpe arbeitet zwischen $T_{kalt} = 0$ °C und $T_{warm} = 40$ °C. Wie groß ist der maximal mögliche COP?',
     transferAnswer: 7.83,
@@ -502,6 +551,11 @@ mit Verdichtungsverhältnis $\epsilon = V_1/V_2$.
       'Benzinmotor zündet bei nahezu konstantem Volumen (OT).',
       'Carnot ist $2 \\times$ isotherm $+ 2 \\times$ adiabat.',
     ],
+    conceptWrongAnswers: {
+      1: 'Das ist gerade die Carnot-Kennlinie — zwei Isothermen und zwei Adiabaten. Otto-Motoren verwenden stattdessen Isochoren (für Zündung/Auslass) kombiniert mit Adiabaten.',
+      2: 'Zwei Isobaren wären typisch für einen Joule-Prozess (Gasturbine), nicht Otto. Otto hat zwei Adiabaten und zwei Isochoren.',
+      3: 'Vier Adiabaten schließen keinen Kreisprozess — es braucht Zustandsänderungen mit Wärmeaustausch (für $Q_{zu}$ und $Q_{ab}$). Otto verwendet Isochoren dafür.',
+    },
 
     calcQuestion: 'Otto-Prozess mit Verdichtung $\\epsilon = 10$ und $\\kappa = 1{,}4$. Wie groß ist der theoretische Wirkungsgrad $\\eta$ in Prozent?',
     calcAnswer: 60.2,
@@ -563,6 +617,11 @@ mit Verdichtungsverhältnis $\epsilon = V_1/V_2$.
       'Carnot ist die Obergrenze.',
       'Otto-Wirkungsgrad ist immer kleiner als Carnot zwischen denselben Extrema.',
     ],
+    errorWrongAnswers: {
+      1: 'Das Verhältnis ist nicht vertauschbar: Otto < Carnot ist thermodynamisch zwingend. Bei Otto > Carnot wäre der 2. Hauptsatz verletzt.',
+      2: 'Carnot gilt für alle Wärmekraftmaschinen (und als inverse Form auch für Wärmepumpen/Kältemaschinen). Nicht auf eine Maschinenart beschränkt.',
+      3: '100 % Wirkungsgrad verletzt den 2. Hauptsatz — gilt für keinen realen Prozess, einschließlich Otto. Otto bleibt stets unter $\\eta_C$.',
+    },
 
     transferQuestion: 'Ein Dieselmotor hat Verdichtung $\\epsilon = 16$ und Einspritzverhältnis $\\varphi = 2$. Mit $\\kappa = 1{,}4$ ergibt die Formel $\\eta_{Diesel} = 1 - \\frac{1}{\\epsilon^{\\kappa-1}} \\cdot \\frac{\\varphi^\\kappa - 1}{\\kappa(\\varphi - 1)}$. Berechne $\\eta$ in Prozent.',
     transferAnswer: 61.4,

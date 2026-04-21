@@ -1,5 +1,14 @@
-function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined) {
-  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints, ...(visualization ? { visualization } : {}) }
+function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined, wrongAnswerExplanations = undefined) {
+  return {
+    type: 'multiple-choice',
+    question,
+    options,
+    correctIndex,
+    explanation,
+    hints,
+    ...(visualization ? { visualization } : {}),
+    ...(wrongAnswerExplanations ? { wrongAnswerExplanations } : {}),
+  }
 }
 
 function ni(question, correctValue, tolerance, unit, explanation, hints = [], visualization = undefined) {
@@ -31,12 +40,12 @@ function withExamPrefix(exercise, exam) {
 
 function bank(profile) {
   const exercises = [
-    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization),
+    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization, profile.conceptWrongAnswers),
     ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints, profile.calcVisualization),
     tf(profile.trueFalseStatement, profile.trueFalseCorrect, profile.trueFalseExplanation, profile.trueFalseHints),
     matching(profile.matchingQuestion, profile.matchingPairs, profile.matchingExplanation, profile.matchingHints),
     sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints),
-    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints),
+    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints, undefined, profile.errorWrongAnswers),
     ni(profile.transferQuestion, profile.transferAnswer, profile.transferTolerance, profile.transferUnit, profile.transferExplanation, profile.transferHints),
   ]
   return exercises.map((exercise) => withExamPrefix(exercise, profile.exam))
@@ -71,6 +80,11 @@ $$\varepsilon = \frac{\Delta l}{l_0} \qquad [\varepsilon] = \text{dimensionslos}
       'Denk an Druck in einer Spritze: gleiche Kraft, kleinere Fläche → mehr Druck.',
       'Spannung ist Kraft pro Fläche, nicht Kraft mal Fläche.',
     ],
+    conceptWrongAnswers: {
+      1: 'Die Spannung hängt sehr wohl vom Querschnitt ab — sonst könnte man Lasten nicht durch Dickerdimensionieren reduzieren. Die Formel $\\sigma = F/A$ enthält $A$ explizit; bei halbiertem Querschnitt verdoppelt sich $\\sigma$.',
+      2: 'Verwechslung von Spannung und Kraft. Spannung hat Einheit $N/mm^2$ bzw. MPa (Kraft pro Fläche), nicht N. Eine Kraft von 1000 N auf $10$ $mm^2$ erzeugt $100$ MPa, nicht $1000$ N Spannung.',
+      3: 'Die Operation ist Division, nicht Multiplikation: $\\sigma = F/A$. $F \\cdot A$ hätte Einheit $N \\cdot mm^2$ — physikalisch sinnlos. Größere Fläche verteilt die Kraft, sie konzentriert sie nicht.',
+    },
     conceptVisualization: {
       id: 'stress-strain',
       params: { mode: 'static', highlightRegion: 'elastic' },
@@ -137,6 +151,11 @@ $$\varepsilon = \frac{\Delta l}{l_0} \qquad [\varepsilon] = \text{dimensionslos}
       '$N/m^2$ = Pa, nicht MPa.',
       '$1$ MPa $= 10^6$ Pa.',
     ],
+    errorWrongAnswers: {
+      1: 'Die Kraft $10000$ N ist für einen typischen Zugstab vollkommen realistisch — entspricht ca. 1 t Last. Der Fehler liegt in der Einheit: N/m² = Pa, nicht MPa. Richtig: $10^6$ Pa $= 1$ MPa.',
+      2: 'cm² ist keine Voraussetzung — jede konsistente Flächeneinheit funktioniert. Der eigentliche Fehler ist die Einheitenzuordnung am Ende: N/m² ist Pa. Mit $mm^2$ statt $m^2$ käme direkt MPa heraus.',
+      3: '$\\sigma$ ist vorzeichenbehaftet (Zug positiv, Druck negativ), nicht generell negativ. Bei Zuglast ist $\\sigma > 0$. Der tatsächliche Fehler ist die fehlende Umrechnung Pa $\\to$ MPa.',
+    },
 
     transferQuestion: 'Ein Stab ($l_0 = 500$ mm) dehnt sich unter Zuglast um $\\Delta l = 0{,}5$ mm. Wie groß ist die Dehnung $\\varepsilon$ in ‰ (Promille)?',
     transferAnswer: 1,
@@ -180,6 +199,11 @@ $$\Delta l = \frac{F \cdot l_0}{E \cdot A}$$
       'Im elastischen Bereich: Spannung ∝ Dehnung.',
       'Der Proportionalitätsfaktor ist der E-Modul $E$.',
     ],
+    conceptWrongAnswers: {
+      1: 'Newtons $F = m \\cdot a$ beschreibt Dynamik (Kraft — Beschleunigung), nicht Spannungs-Dehnungs-Verhalten eines elastischen Stabs. Der gefragte Zusammenhang ist Hooke: $\\sigma = E \\varepsilon$.',
+      2: 'Coulombs Reibungsgesetz ($F_R = \\mu N$) beschreibt Reibungskräfte an Kontaktflächen — nicht elastische Materialverformung. Für elastisches Dehnen gilt Hooke.',
+      3: 'Archimedes (Auftrieb $F_A = \\rho g V$) gehört zur Fluidmechanik (Verdrängung). Hat nichts mit elastischer Verformung zu tun. Lineare Stabdehnung beschreibt Hooke.',
+    },
     conceptVisualization: {
       id: 'stress-strain',
       params: { mode: 'static' },
@@ -247,6 +271,11 @@ $$\Delta l = \frac{F \cdot l_0}{E \cdot A}$$
       'Immer ein einheitliches Einheitensystem wählen.',
       'Technisch: N, mm, MPa. SI: N, m, Pa.',
     ],
+    errorWrongAnswers: {
+      1: 'Die Formel $\\Delta l = F l_0 / (E A)$ ist korrekt — sie folgt direkt aus $\\sigma = E \\varepsilon$ und $\\sigma = F/A$, $\\varepsilon = \\Delta l / l_0$. Der Fehler liegt in den inkonsistenten Einheiten, nicht in der Formel.',
+      2: 'Stahl-E-Modul $E = 210$ GPa ist der Literaturwert und korrekt. Der Fehler ist das Mischen von m (in $l_0$) mit $mm^2$ (in $A$) und GPa (in $E$). Einheiten konsistent in N/mm/MPa oder N/m/Pa halten.',
+      3: 'Ein zusätzlicher Faktor 2 existiert nicht. $\\Delta l = F l_0 / (E A)$ kommt direkt aus $\\sigma = E \\varepsilon$. Der Fehler ist rein in den Einheiten: m und mm wurden gemischt.',
+    },
 
     transferQuestion: 'Ein Aluminiumstab ($E = 70$ GPa, $A = 200$ $mm^2$, $l_0 = 1{,}5$ m) wird mit $\\sigma = 140$ MPa belastet. Wie groß ist $\\Delta l$ in mm?',
     transferAnswer: 3,
@@ -288,6 +317,11 @@ wobei $W$ das **Widerstandsmoment** des Querschnitts ist. Typische Werte:
       'Denk an $W$ als Maß für Biegesteifigkeit bei gleicher Masse.',
       'Material weit von der neutralen Achse entfernt = großes $I$.',
     ],
+    conceptWrongAnswers: {
+      1: 'Doppel-T-Träger sind klassisch aus Stahl (IPE, HEA, etc.) — das Material ist nicht entscheidend. Die Effizienz kommt aus der Geometrie: Flanschen weit oben und unten maximieren $I = \\int y^2 \\, dA$.',
+      2: 'Das Widerstandsmoment $W$ ist eine rein geometrische Größe — die Dichte spielt hier keine Rolle. Gleiche Masse heißt gleiche Querschnittsfläche bei gleichem Material; die Formverteilung macht den Unterschied.',
+      3: 'Die Länge geht ins Biegemoment $M$ ein, aber nicht ins Widerstandsmoment $W$ des Querschnitts. $W$ ist eine Querschnittsgröße: $W = I/e$ mit $I \\propto$ $Abstand^2$ zum Schwerpunkt.',
+    },
 
     calcQuestion: 'Ein rechteckiger Balken ($b = 20$ mm, $h = 60$ mm) wird mit Biegemoment $M = 1200$ Nm belastet. Wie groß ist die Randfaserspannung $\\sigma_b$ in MPa?',
     calcAnswer: 100,
@@ -349,6 +383,11 @@ wobei $W$ das **Widerstandsmoment** des Querschnitts ist. Typische Werte:
       'Einheitencheck: $W$ hat $mm^3$, $I$ hat $mm^4$.',
       '$W = I/e$, mit $e$ = Randfaserabstand.',
     ],
+    errorWrongAnswers: {
+      1: 'Der Faktor ist nicht 16 für axiales $W$ — $\\pi d^3/16$ ist das polare $W_p$ (für Torsion). Axial gilt $W = \\pi d^3/32$. Der eigentliche Fehler: $d^4$ statt $d^3$ im Zähler.',
+      2: '$W = \\pi d^3/32$ gilt für den Vollkreis ebenso wie die abgeleitete Rohrformel für Rohre. Die Formel ist nicht rohrspezifisch. Der Fehler ist die Potenz: $d^4$ gehört zu $I$, $d^3$ zu $W$.',
+      3: 'Jeder Querschnitt hat ein Widerstandsmoment — das ist Definition. Der Fehler ist nicht, dass $W$ existiert, sondern dass die falsche Formel ($d^4$ statt $d^3$) verwendet wurde.',
+    },
 
     transferQuestion: 'Welle (Kreisquerschnitt, $d = 40$ mm) wird mit Biegemoment $M = 502$ Nm belastet. Wie groß ist $\\sigma_b$ in MPa?',
     transferAnswer: 80,
@@ -398,6 +437,11 @@ $$\sigma_v = \sqrt{\sigma_x^2 - \sigma_x \sigma_y + \sigma_y^2 + 3 \tau_{xy}^2}$
       'Zäher Werkstoff = Fließen, bevor er bricht.',
       'Von Mises ist im Maschinenbau Standard.',
     ],
+    conceptWrongAnswers: {
+      1: 'Tresca ist nicht veraltet, sondern bewusst konservativer und deshalb bei kritischen Bauteilen oder sprödem Material weiter im Einsatz. Die Wahl hängt vom Werkstoffverhalten ab, nicht vom Alter der Theorie.',
+      2: 'Bei einachsiger Belastung liefern Von Mises und Tresca ohnehin denselben Wert $|\\sigma|$ — ein Vergleich ist dort überflüssig. Der Unterschied beider Hypothesen tritt erst bei mehrachsigen Spannungszuständen auf.',
+      3: 'Bei sprödem Material (Gusseisen) wird eher Tresca oder die Normalspannungshypothese bevorzugt, nicht Von Mises. Von Mises ist für zähes Fließverhalten (Stahl) konzipiert.',
+    },
 
     calcQuestion: 'Ein Stab wird gleichzeitig mit $\\sigma = 120$ MPa (Zug) und $\\tau = 50$ MPa (Torsion) belastet. Wie groß ist die Von-Mises-Vergleichsspannung $\\sigma_v$ in MPa?',
     calcAnswer: 148.3,
@@ -459,6 +503,11 @@ $$\sigma_v = \sqrt{\sigma_x^2 - \sigma_x \sigma_y + \sigma_y^2 + 3 \tau_{xy}^2}$
       'Spannungen haben Richtungen und Tensorstruktur.',
       'Die Hypothese gibt die richtige Kombinationsregel.',
     ],
+    errorWrongAnswers: {
+      1: '$\\sigma = 150$ MPa und $\\tau = 80$ MPa sind typische Werte für Maschinenbauteile (Streckgrenzen $\\geq 235$ MPa). Der Fehler ist nicht die Größe, sondern die lineare Addition statt der quadratischen Kombination.',
+      2: 'Schub wird weder addiert noch subtrahiert zu Zug — sie sind orthogonale Tensorkomponenten. Richtig: $\\sigma_v = \\sqrt{\\sigma^2 + 3\\tau^2}$, nicht $\\sigma - \\tau$.',
+      3: '$\\sigma_v$ ist gerade für mehrachsige Spannungszustände definiert — bei reiner Normalspannung wäre die Vergleichsspannung trivial. Der eigentliche Fehler ist die lineare Addition $\\sigma + \\tau$ statt Quadrierung.',
+    },
 
     transferQuestion: 'Ein Stab wird mit $\\sigma = 100$ MPa und $\\tau = 60$ MPa belastet. Streckgrenze $R_e = 240$ MPa. Wie groß ist die Sicherheitszahl $S = R_e / \\sigma_v$ (Von Mises)?',
     transferAnswer: 1.6,
@@ -505,6 +554,11 @@ $$\sigma_v = \sqrt{\sigma_x^2 - \sigma_x \sigma_y + \sigma_y^2 + 3 \tau_{xy}^2}$
       'Torsion nutzt das polare Widerstandsmoment $W_p$.',
       'Für Kreisquerschnitt: $W_p = \\pi d^3/16$.',
     ],
+    conceptWrongAnswers: {
+      1: 'Die Operation muss Division sein: $\\tau = M_t / W_p$. Bei Multiplikation hätte $\\tau$ die falsche Einheit ($Nmm \\cdot mm^3 = Nmm^4$) statt MPa. Analog zu $\\sigma = M/W$.',
+      2: 'Fläche $A$ gilt nur bei Abscherung (reiner Querschub), nicht bei Torsion um die Stabachse. Torsion nutzt $W_p = \\pi d^3/16$ — es berücksichtigt den Hebelarm zum Rand.',
+      3: '$I$ (bzw. $I_p$) ist das Flächenträgheitsmoment ($mm^4$), nicht das Widerstandsmoment ($mm^3$). Für die Randspannung gilt $\\tau_{max} = M_t/W_p$ mit $W_p = I_p/r$.',
+    },
 
     calcQuestion: 'Welle (Kreis, $d = 50$ mm) wird mit $M_t = 1000$ Nm belastet. Wie groß ist die maximale Schubspannung $\\tau_{max}$ in MPa?',
     calcAnswer: 40.74,
@@ -566,6 +620,11 @@ $$\sigma_v = \sqrt{\sigma_x^2 - \sigma_x \sigma_y + \sigma_y^2 + 3 \tau_{xy}^2}$
       'Axiales $W$ ≠ polares $W_p$.',
       '$W_p$ ist doppelt so groß wie $W$ bei Kreisquerschnitt.',
     ],
+    errorWrongAnswers: {
+      1: 'Die Einheiten im Rechnungsausdruck sind formal konsistent (Nmm / $mm^3$ = MPa). Der Fehler liegt tiefer: falsches Widerstandsmoment verwendet — $W$ statt $W_p$.',
+      2: 'Genau umgekehrt: $M_t$ muss in Nmm umgerechnet werden, wenn $W$ in $mm^3$ und $\\tau$ in MPa gewünscht ist. Nm würde zu 1000-fach falschem Ergebnis führen. Der eigentliche Fehler ist aber $W$ vs. $W_p$.',
+      3: 'Torsion erzeugt tatsächlich Schubspannungen ($\\tau$), nicht Normalspannungen — das hatte der Student korrekt. Der Fehler ist die Verwendung des axialen Widerstandsmoments statt des polaren.',
+    },
 
     transferQuestion: 'Welle ($d = 60$ mm) wird mit $\\sigma = 40$ MPa (Biegung) und $\\tau = 30$ MPa (Torsion) belastet. Streckgrenze $R_e = 300$ MPa. Sicherheitszahl $S$ (Von Mises)?',
     transferAnswer: 4.4,

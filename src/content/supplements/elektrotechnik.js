@@ -1,5 +1,14 @@
-function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined) {
-  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints, ...(visualization ? { visualization } : {}) }
+function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined, wrongAnswerExplanations = undefined) {
+  return {
+    type: 'multiple-choice',
+    question,
+    options,
+    correctIndex,
+    explanation,
+    hints,
+    ...(visualization ? { visualization } : {}),
+    ...(wrongAnswerExplanations ? { wrongAnswerExplanations } : {}),
+  }
 }
 
 function ni(question, correctValue, tolerance, unit, explanation, hints = [], visualization = undefined) {
@@ -31,12 +40,12 @@ function withExamPrefix(exercise, exam) {
 
 function bank(profile) {
   const exercises = [
-    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization),
+    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization, profile.conceptWrongAnswers),
     ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints, profile.calcVisualization),
     tf(profile.trueFalseStatement, profile.trueFalseCorrect, profile.trueFalseExplanation, profile.trueFalseHints),
     matching(profile.matchingQuestion, profile.matchingPairs, profile.matchingExplanation, profile.matchingHints),
     sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints),
-    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints),
+    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints, undefined, profile.errorWrongAnswers),
     ni(profile.transferQuestion, profile.transferAnswer, profile.transferTolerance, profile.transferUnit, profile.transferExplanation, profile.transferHints),
   ]
   return exercises.map((exercise) => withExamPrefix(exercise, profile.exam))
@@ -71,6 +80,11 @@ $$U = R \cdot I$$
       'Ohmsches Gesetz ist streng linear.',
       'Es gilt nur für ideale Widerstände im Gleichstrom.',
     ],
+    conceptWrongAnswers: {
+      1: 'Die Leistung ist $P = U I$ (universell) — das Ohmsche Gesetz ist spezieller und beschreibt nur $U = R I$. Beide Gesetze getrennt halten.',
+      2: 'Die Frequenzabhängigkeit des Kondensators beschreibt der kapazitive Blindwiderstand $X_C = 1/(\\omega C)$, nicht das Ohmsche Gesetz.',
+      3: 'Induktivität $L$ ist eine Bauteilgröße, die im Wechselstrom zur Impedanz $X_L = \\omega L$ führt — nicht vom Ohmschen Gesetz beschrieben.',
+    },
 
     calcQuestion: 'Ein Widerstand $R = 50$ $\\Omega$ liegt an $U = 100$ V. Wie groß ist der Strom $I$ in A?',
     calcAnswer: 2,
@@ -131,6 +145,11 @@ $$U = R \cdot I$$
       'k = 1000.',
       'Immer auf Grundeinheiten umrechnen.',
     ],
+    errorWrongAnswers: {
+      1: '$U = 12$ V ist konsistent und muss nicht in mV umgerechnet werden. Der Fehler liegt beim Widerstand: 4,7 k$\\Omega$ = 4700 $\\Omega$, nicht 4,7.',
+      2: 'Das Ohmsche Gesetz gilt bei konstantem ohmschen Widerstand uneingeschränkt. Das ist hier gegeben. Der Fehler ist die Einheitenumrechnung.',
+      3: 'Strom wird nicht generell in kA angegeben — mA, A oder mA, je nach Größenordnung. Hier korrekt: 2,55 mA. Der Fehler ist die unterschlagene k-Vorsilbe beim Widerstand.',
+    },
 
     transferQuestion: 'Drei Widerstände $R_1 = 10$ $\\Omega$, $R_2 = 20$ $\\Omega$, $R_3 = 30$ $\\Omega$ sind parallel geschaltet. Wie groß ist $R_{ges}$ in $\\Omega$?',
     transferAnswer: 5.4545,

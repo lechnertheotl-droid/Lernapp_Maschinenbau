@@ -1,5 +1,13 @@
-function mc(question, options, correctIndex, explanation, hints = []) {
-  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints }
+function mc(question, options, correctIndex, explanation, hints = [], wrongAnswerExplanations = undefined) {
+  return {
+    type: 'multiple-choice',
+    question,
+    options,
+    correctIndex,
+    explanation,
+    hints,
+    ...(wrongAnswerExplanations ? { wrongAnswerExplanations } : {}),
+  }
 }
 
 function ni(question, correctValue, tolerance, unit, explanation, hints = []) {
@@ -31,16 +39,16 @@ function withExamPrefix(exercise, exam) {
 
 function bank(profile) {
   const sortingSlot = profile.sortingOverride
-    ? mc(profile.sortingOverride.question, profile.sortingOverride.options, profile.sortingOverride.correctIndex, profile.sortingOverride.explanation, profile.sortingOverride.hints)
+    ? mc(profile.sortingOverride.question, profile.sortingOverride.options, profile.sortingOverride.correctIndex, profile.sortingOverride.explanation, profile.sortingOverride.hints, profile.sortingOverride.wrongAnswerExplanations)
     : sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints)
 
   const exercises = [
-    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints),
+    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptWrongAnswers),
     ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints),
     tf(profile.trueFalseStatement, profile.trueFalseCorrect, profile.trueFalseExplanation, profile.trueFalseHints),
     matching(profile.matchingQuestion, profile.matchingPairs, profile.matchingExplanation, profile.matchingHints),
     sortingSlot,
-    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints),
+    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints, profile.errorWrongAnswers),
     ni(profile.transferQuestion, profile.transferAnswer, profile.transferTolerance, profile.transferUnit, profile.transferExplanation, profile.transferHints),
   ]
   return exercises.map((exercise) => withExamPrefix(exercise, profile.exam))

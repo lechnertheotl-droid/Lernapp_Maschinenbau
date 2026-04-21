@@ -131,6 +131,11 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
       'Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\dfrac{\\pi}{180}$. Der Vollkreis hat $2\\pi$.',
       'Teile $2\\pi$ durch $4$ für ein Viertel. Taschenrechner im richtigen Modus (DEG oder RAD)!',
     ],
+    wrongAnswerExplanations: {
+      0: 'Du hast nur ein Achtel statt ein Viertel des Vollkreises genommen. $\\pi/4$ rad entspricht $45°$, nicht $90°$ (denn $2\\pi/8 = \\pi/4$).',
+      2: '$\\pi$ rad entspricht $180°$, nicht $90°$. Das ist der halbe Vollkreis; $90°$ ist nur der Viertelumlauf, also $\\pi/2$.',
+      3: '$2\\pi$ rad ist der ganze Vollkreis ($360°$). $90°$ ist nur ein Viertel davon, also $\\pi/2$.',
+    },
   },
   'ex-trig-1-1-b': {
     id: 'ex-trig-1-1-b', lessonId: 'trig-1-1', type: 'multiple-choice',

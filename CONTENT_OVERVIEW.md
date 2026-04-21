@@ -18,7 +18,7 @@
 | &nbsp;&nbsp;· ✅ true-false | 336 |
 | &nbsp;&nbsp;· 🔗 matching | 224 |
 | &nbsp;&nbsp;· 📋 sorting | 193 |
-| MC mit vollständigen `wrongAnswerExplanations` | 703 / 972 (72%) |
+| MC mit vollständigen `wrongAnswerExplanations` | 764 / 972 (79%) |
 | Erklärungen im 4-Block-Schema (Ansatz/Rechnung/Probe/Fehler) | 334 / 2225 (15%) |
 
 ## Topic-Überblick
@@ -161,7 +161,7 @@
 | 3 | 🔘 multiple-choice | Schreibe ohne negativen Exponenten: $x^{-3}$ | 4B |
 | 4 | 🔘 multiple-choice | Vereinfache: $(2x^{2}y)^{3}$ |  |
 | 5 | 🔢 number-input | Berechne: $dfrac{2^{10}}{2^{7}}$ |  |
-| 6 | 🔘 multiple-choice | Welche Regel passt zu x⁵ · x⁻²? | ➕ |
+| 6 | 🔘 multiple-choice | Welche Regel passt zu x⁵ · x⁻²? | ➕ wAE |
 | 7 | 🔢 number-input | Vereinfache (2x³)². Gib den Zahlenfaktor vor x⁶ an. | ➕ |
 | 8 | ✅ true-false | x⁴ + x⁴ lässt sich zu x⁸ vereinfachen. | ➕ |
 | 9 | 🔗 matching | Ordne die Potenzregel dem richtigen Ergebnis zu. | ➕ |
@@ -180,7 +180,7 @@
 | 2 | 🔢 number-input | Berechne: $sqrt[3]{8}$ |  |
 | 3 | 🔘 multiple-choice | Vereinfache: $sqrt{12}$ | 4B |
 | 4 | ✅ true-false | Für alle reellen Zahlen $a, b geq 0$ gilt: $sqrt{a+b} = sqrt{a} + sqrt{b}$. |  |
-| 5 | 🔘 multiple-choice | Welche Schreibweise ist äquivalent zu √(a⁵) für a ≥ 0? | ➕ |
+| 5 | 🔘 multiple-choice | Welche Schreibweise ist äquivalent zu √(a⁵) für a ≥ 0? | ➕ wAE |
 | 6 | 🔢 number-input | Vereinfache √75 = k√3. Gib k an. | ➕ |
 | 7 | ✅ true-false | Für alle reellen x gilt √(x²) = x. | ➕ |
 | 8 | 🔗 matching | Ordne Wurzelschreibweise und Potenzschreibweise zu. | ➕ |
@@ -200,7 +200,7 @@
 | 2 | 🔢 number-input | Berechne: $ln(e^{3})$ |  |
 | 3 | 🔘 multiple-choice | Was ist $ln(a cdot b)$ laut Logarithmusgesetz? |  |
 | 4 | 🔘 multiple-choice | Vereinfache: $ln(a^{5})$ |  |
-| 5 | 🔘 multiple-choice | Was bedeutet log₂(32) = 5? | ➕ |
+| 5 | 🔘 multiple-choice | Was bedeutet log₂(32) = 5? | ➕ wAE |
 | 6 | 🔢 number-input | Löse ln(x) = 2. Gib x näherungsweise an. Nutze e² ≈ 7,389. | ➕ |
 | 7 | ✅ true-false | ln(a · b) = ln(a) + ln(b) für a > 0 und b > 0. | ➕ |
 | 8 | 🔗 matching | Ordne die Logarithmusregeln zu. | ➕ |
@@ -224,7 +224,7 @@
 | 2 | 🔢 number-input | Löse: $5x - 3 = 2x + 9$ | 4B |
 | 3 | 🔘 multiple-choice | Ein Rechteck hat Umfang $U = 30$ cm. Die Länge ist doppelt so groß wie die Breite. Wie breit ist das Rechteck? | wAE 4B |
 | 4 | 🔘 multiple-choice | Textaufgabe: Ein Zug fährt mit $v_{1} = 80$ km/h los. $2$ Stunden später startet ein zweiter Zug mit $v_{2} = 120$ km/h  | wAE 4B |
-| 5 | 🔘 multiple-choice | Welche Operation ist bei 4x − 7 = 13 der erste sinnvolle Schritt? | ➕ |
+| 5 | 🔘 multiple-choice | Welche Operation ist bei 4x − 7 = 13 der erste sinnvolle Schritt? | ➕ wAE |
 | 6 | 🔢 number-input | Löse 3(2x − 1) = 21. Gib x an. | ➕ |
 | 7 | ✅ true-false | Bei einer linearen Gleichung darf man dieselbe Zahl auf beiden Seiten addieren, ohne die Lösungsmenge zu ändern. | ➕ |
 | 8 | 🔗 matching | Ordne die Textgrößen einer Weg-Zeit-Aufgabe zu. | ➕ |
@@ -245,7 +245,7 @@
 | 3 | 🔢 number-input | Löse mit der pq-Formel: $x^{2} + 4x - 5 = 0$. Gib die POSITIVE Lösung an. | 4B |
 | 4 | 🔘 multiple-choice | Nach Vieta: $x^{2} - 7x + 12 = 0$. Was gilt für die Lösungen $x_{1}$ und $x_{2}$? | wAE |
 | 5 | 🔘 multiple-choice | Wie viele Lösungen hat $2x^{2} + 3x + 5 = 0$? | wAE |
-| 6 | 🔘 multiple-choice | Welche Methode ist für x² − 9 = 0 am schnellsten? | ➕ |
+| 6 | 🔘 multiple-choice | Welche Methode ist für x² − 9 = 0 am schnellsten? | ➕ wAE |
 | 7 | 🔢 number-input | Berechne die Diskriminante D von x² − 4x + 5 = 0. | ➕ |
 | 8 | ✅ true-false | Wenn die Diskriminante einer quadratischen Gleichung negativ ist, gibt es keine reellen Lösungen. | ➕ |
 | 9 | 🔗 matching | Ordne die Diskriminante der Anzahl reeller Lösungen zu. | ➕ |
@@ -264,7 +264,7 @@
 | 2 | 🔘 multiple-choice | $(x^{3} - 6x^{2} + 11x - 6) div (x - 1)$ ergibt: | wAE |
 | 3 | 🔘 multiple-choice | Für $P(x) = 2x^{3} + 3x^{2} - 1$ an der Stelle $x_{0} = -1$: Was ist $P(-1)$? | wAE |
 | 4 | 🔘 multiple-choice | Polynomdivision mit Rest: $(x^{2} + 3x + 5) : (x + 2) = ?$ | wAE 4B |
-| 5 | 🔘 multiple-choice | Wenn P(3) = 0 gilt, welcher Faktor gehört zu P(x)? | ➕ |
+| 5 | 🔘 multiple-choice | Wenn P(3) = 0 gilt, welcher Faktor gehört zu P(x)? | ➕ wAE |
 | 6 | 🔢 number-input | Berechne P(2) für P(x)=x³−4x. | ➕ |
 | 7 | ✅ true-false | Wenn bei der Polynomdivision durch (x−1) ein Rest ungleich 0 bleibt, ist x=1 keine Nullstelle. | ➕ |
 | 8 | 🔗 matching | Ordne Nullstelle und Linearfaktor zu. | ➕ |
@@ -284,7 +284,7 @@
 | 2 | 🔘 multiple-choice | Löse: $-3x < 12$ | wAE 4B |
 | 3 | 🔘 multiple-choice | Löse: $\|x - 3\| < 5$ | wAE 4B |
 | 4 | 🔘 multiple-choice | Löse: $x^{2} - 4 > 0$ | wAE |
-| 5 | 🔘 multiple-choice | Was passiert mit dem Zeichen, wenn du −2x > 8 durch −2 teilst? | ➕ |
+| 5 | 🔘 multiple-choice | Was passiert mit dem Zeichen, wenn du −2x > 8 durch −2 teilst? | ➕ wAE |
 | 6 | 🔢 number-input | Löse 5 − 2x ≤ 11. Gib die Grenzzahl an. | ➕ |
 | 7 | ✅ true-false | \|x − 4\| < 2 bedeutet 2 < x < 6. | ➕ |
 | 8 | 🔗 matching | Ordne Ungleichung und Lösungsmenge zu. | ➕ |
@@ -308,12 +308,12 @@
 | 1 | 🔘 multiple-choice | Was ist eine Funktion $f: A to B$? | wAE |
 | 2 | 🔘 multiple-choice | $f(x) = x^{2}$. Was ist der Definitionsbereich $D$ und der Wertebereich $W$? | wAE |
 | 3 | ✅ true-false | $f(x) = x^{2}$ (mit $D = mathbb{R}$) ist injektiv (verschiedene $x$-Werte haben verschiedene $y$-Werte). |  |
-| 4 | 🔘 multiple-choice | Welche Zuordnung ist keine Funktion? | ➕ |
+| 4 | 🔘 multiple-choice | Welche Zuordnung ist keine Funktion? | ➕ wAE |
 | 5 | 🔢 number-input | Für f(x)=2x²−1: Berechne f(3). | ➕ |
 | 6 | ✅ true-false | f(x)=x² ist auf ℝ nicht injektiv. | ➕ |
 | 7 | 🔗 matching | Ordne die Funktionsbegriffe zu. | ➕ |
-| 8 | 🔘 multiple-choice | Welcher Schritt muss bei der Funktionsprüfung einer Zuordnung zwingend als erstes erfolgen? | ➕ |
-| 9 | 🔘 multiple-choice | Welche Aussage ist falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Welcher Schritt muss bei der Funktionsprüfung einer Zuordnung zwingend als erstes erfolgen? | ➕ wAE |
+| 9 | 🔘 multiple-choice | Welche Aussage ist falsch? | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Welche Eigenschaft muss eine Funktion haben, damit ihre Umkehrfunktion (auf dem gesamten Wertebereich) existie | 🎯 wAE |
 
 #### Elementare Funktionen  `alg-3-2` · 15 min
@@ -330,7 +330,7 @@
 | 3 | 🔘 multiple-choice | Was ist der Definitionsbereich von $f(x) = ln(x)$? | wAE |
 | 4 | 🔘 multiple-choice | Welche Funktion wächst für große $x$ am schnellsten? | wAE |
 | 5 | 🔘 multiple-choice | Vereinfache: $ln(e^{2x})$ | wAE |
-| 6 | 🔘 multiple-choice | Welche Funktion ist eine Exponentialfunktion? | ➕ |
+| 6 | 🔘 multiple-choice | Welche Funktion ist eine Exponentialfunktion? | ➕ wAE |
 | 7 | 🔢 number-input | Berechne f(0) für f(x)=5eˣ. | ➕ |
 | 8 | ✅ true-false | ln(x) hat im Reellen den Definitionsbereich x > 0. | ➕ |
 | 9 | 🔗 matching | Ordne Funktion und Typ zu. | ➕ |
@@ -347,12 +347,12 @@
 | 1 | 🔘 multiple-choice | Der Graph von $f(x) = x^{2}$ wird um $3$ nach rechts und $2$ nach oben verschoben. Wie lautet die neue Funktion? | wAE 4B |
 | 2 | 🔘 multiple-choice | $f(x) = sin(x)$ wird an der $x$-Achse gespiegelt. Wie lautet die neue Funktion? | wAE 4B |
 | 3 | 🔘 multiple-choice | $f(x) = x^{2}$ wird vertikal um Faktor $3$ gestreckt. Wie lautet $g(x)$? | wAE |
-| 4 | 🔘 multiple-choice | Was macht g(x)=f(x−4)+2 mit dem Graphen von f? | ➕ |
+| 4 | 🔘 multiple-choice | Was macht g(x)=f(x−4)+2 mit dem Graphen von f? | ➕ wAE |
 | 5 | 🔢 number-input | Für f(x)=x² und g(x)=3f(x): Berechne g(2). | ➕ |
 | 6 | ✅ true-false | g(x)=f(x)+5 verschiebt den Graphen von f um 5 nach oben. | ➕ |
 | 7 | 🔗 matching | Ordne Transformation und Wirkung zu. | ➕ |
 | 8 | 📋 sorting | Bringe das Aufstellen von g(x) aus f(x)=x² bei Verschiebung 2 nach rechts und 1 nach unten in die richtige Reihenfolge. | ➕ |
-| 9 | 🔘 multiple-choice | Welche Interpretation ist falsch? | ➕ |
+| 9 | 🔘 multiple-choice | Welche Interpretation ist falsch? | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] $f(x) = e^{x}$. Welche Transformation ergibt $g(x) = e^{x-2} + 1$? | 🎯 wAE |
 
 #### Umkehrfunktionen  `alg-3-4` · 12 min
@@ -367,12 +367,12 @@
 | 1 | 🔘 multiple-choice | Was ist die Umkehrfunktion von $f(x) = 2x + 3$? | wAE |
 | 2 | 🔘 multiple-choice | Die Umkehrfunktion von $f(x) = e^{x}$ ist: | wAE |
 | 3 | ✅ true-false | Der Graph einer Umkehrfunktion $f^{-1}$ entsteht durch Spiegelung des Graphen von $f$ an der Geraden $y = x$. |  |
-| 4 | 🔘 multiple-choice | Welche Bedingung ist für eine eindeutige Umkehrfunktion nötig? | ➕ |
+| 4 | 🔘 multiple-choice | Welche Bedingung ist für eine eindeutige Umkehrfunktion nötig? | ➕ wAE |
 | 5 | 🔢 number-input | Für f(x)=4x−7: Berechne f⁻¹(5). | ➕ |
 | 6 | ✅ true-false | Der Graph von f⁻¹ entsteht durch Spiegelung des Graphen von f an der Geraden y=x. | ➕ |
 | 7 | 🔗 matching | Ordne Funktion und Umkehrfunktion zu. | ➕ |
 | 8 | 📋 sorting | Bringe die Bestimmung von f⁻¹ für f(x)=2x+6 in die richtige Reihenfolge. | ➕ |
-| 9 | 🔘 multiple-choice | Welche Aussage ist falsch? | ➕ |
+| 9 | 🔘 multiple-choice | Welche Aussage ist falsch? | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] $f(x) = x^{2}$ (für $x geq 0$). Was ist $f^{-1}(x)$? | 🎯 wAE 4B |
 
 ### 🏁 Prüfungsaufgaben (Unit 4)
@@ -3251,12 +3251,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Was gehört in ein Freikörperbild? | wAE |
 | 2 | 🔢 number-input | Zwei rechtwinklige Kräfte 3 N und 4 N wirken am Punkt. Betrag der Resultierenden? |  |
-| 3 | 🔘 multiple-choice | Ein Balken liegt auf einem Festlager (A) und einem Loslager (B). Wie viele unbekannte Lagerreaktionen hat das System? | ➕ |
+| 3 | 🔘 multiple-choice | Ein Balken liegt auf einem Festlager (A) und einem Loslager (B). Wie viele unbekannte Lagerreaktionen hat das System? | ➕ wAE |
 | 4 | 🔢 number-input | Ein Seil zieht unter 30° zur Horizontalen mit der Zugkraft $F = 200$ N an einer Kiste. Wie groß ist die horizontale Komp | ➕ |
 | 5 | ✅ true-false | Ein Freikörperbild enthält alle äußeren Kräfte inklusive Lagerreaktionen, Gewichtskraft und eingeprägten Lasten — aber k | ➕ |
 | 6 | 🔗 matching | Ordne jedem Lagertyp die übertragbaren Reaktionen zu. | ➕ |
 | 7 | 📋 sorting | Bringe die Arbeitsschritte für ein Freikörperbild in die richtige Reihenfolge. | ➕ |
-| 8 | 🔘 multiple-choice | Welcher Fehler macht ein Freikörperbild ungültig? | ➕ |
+| 8 | 🔘 multiple-choice | Welcher Fehler macht ein Freikörperbild ungültig? | ➕ wAE |
 | 9 | 🔢 number-input | Eine Kiste wird mit $F = 500$ N unter 60° zur Horizontalen gezogen. Wie groß ist die vertikale Komponente $F_y$ in N? | ➕ |
 | 10 | ✅ true-false | Im statischen Gleichgewicht muss die Summe aller Kräfte null sein. | 🎯 |
 
@@ -3270,12 +3270,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Eine Kraft F = 20 N greift mit senkrechtem Hebelarm l = 0,5 m an. Berechne das Moment. |  |
 | 2 | 🔘 multiple-choice | Der wirksame Hebelarm ist ... | wAE |
-| 3 | 🔘 multiple-choice | Ein Balken der Länge $L = 4$ m ist bei $A$ (links) fest und bei $B$ (rechts) als Loslager gelagert. Eine Einzelkraft $F  | ➕ |
+| 3 | 🔘 multiple-choice | Ein Balken der Länge $L = 4$ m ist bei $A$ (links) fest und bei $B$ (rechts) als Loslager gelagert. Eine Einzelkraft $F  | ➕ wAE |
 | 4 | 🔢 number-input | Balken der Länge $L = 6$ m, Festlager bei $A$ (links), Loslager bei $B$ (rechts). In der Mitte wirkt senkrecht nach unte | ➕ |
 | 5 | ✅ true-false | Das Momentengleichgewicht $sum M = 0$ muss für jeden beliebigen Bezugspunkt gelten — nicht nur für einen ausgewählten. | ➕ |
 | 6 | 🔗 matching | Ordne die Fälle der Anzahl statisch unabhängiger Gleichgewichtsbedingungen zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Arbeitsschritte zur Berechnung von Lagerreaktionen an einem Balken. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student berechnet für einen eingespannten Balken (Einspannung links, freies Ende rechts) mit Endlast $F$: $A_y = F$, | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student berechnet für einen eingespannten Balken (Einspannung links, freies Ende rechts) mit Endlast $F$: $A_y = F$, | ➕ wAE |
 | 9 | 🔢 number-input | Ein 3 m langer Balken hängt waagrecht an zwei Seilen (Abstand 3 m). Mittig hängt eine Masse $m = 60$ kg. Wie groß ist di | ➕ |
 | 10 | ✅ true-false | Wenn die Wirkungslinie durch den Drehpunkt geht, ist das Moment null. | 🎯 |
 
@@ -3352,12 +3352,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Welche Kraft beschleunigt 4 kg mit $3,m/s^2$? |  |
 | 2 | 🔘 multiple-choice | Gewichtskraft wird berechnet mit: | wAE |
-| 3 | 🔘 multiple-choice | Ein Fahrzeug beschleunigt gleichmäßig von $v_0 = 10$ m/s auf $v = 30$ m/s in $t = 5$ s. Welche Aussage zur Beschleunigun | ➕ |
+| 3 | 🔘 multiple-choice | Ein Fahrzeug beschleunigt gleichmäßig von $v_0 = 10$ m/s auf $v = 30$ m/s in $t = 5$ s. Welche Aussage zur Beschleunigun | ➕ wAE |
 | 4 | 🔢 number-input | Ein Auto beschleunigt aus dem Stand mit $a = 2{,}5$ $m/s^2$ über $t = 8$ s. Welche Geschwindigkeit in m/s erreicht es? | ➕ |
 | 5 | ✅ true-false | Wenn ein Körper seine Richtung ändert, aber den Geschwindigkeitsbetrag konstant behält, ist seine Beschleunigung null. | ➕ |
 | 6 | 🔗 matching | Ordne den Bewegungstypen die charakteristische Eigenschaft zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Berechnung des Bremsweges bei konstanter Verzögerung $a < 0$. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student schreibt: "Für freien Fall aus Höhe $h$: $v = g cdot h$". Was stimmt nicht? | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student schreibt: "Für freien Fall aus Höhe $h$: $v = g cdot h$". Was stimmt nicht? | ➕ wAE |
 | 9 | 🔢 number-input | Ein Stein wird aus $h = 20$ m Höhe fallengelassen ($g = 9{,}81$ $m/s^2$). Mit welcher Geschwindigkeit in m/s trifft er a | ➕ |
 | 10 | ✅ true-false | Bei doppelter Masse und gleicher Beschleunigung ist die nötige Kraft doppelt so groß. | 🎯 |
 
@@ -3371,12 +3371,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Eine Kraft von 50 N wirkt 3 m in Wegrichtung. Arbeit? |  |
 | 2 | 🔘 multiple-choice | Wenn Kraft senkrecht zum Weg steht, ist die Arbeit: | wAE |
-| 3 | 🔘 multiple-choice | Eine Masse $m = 5$ kg liegt reibungsfrei auf dem Boden. Eine horizontale Kraft $F = 20$ N zieht an ihr. Wie groß ist die | ➕ |
+| 3 | 🔘 multiple-choice | Eine Masse $m = 5$ kg liegt reibungsfrei auf dem Boden. Eine horizontale Kraft $F = 20$ N zieht an ihr. Wie groß ist die | ➕ wAE |
 | 4 | 🔢 number-input | Auf eine Kiste ($m = 20$ kg) wirkt horizontal $F = 100$ N. Gleitreibungskoeffizient $mu = 0{,}2$. Wie groß ist die Besch | ➕ |
 | 5 | ✅ true-false | In einem abgeschlossenen System bleibt der Gesamtimpuls erhalten — unabhängig davon, ob der Stoß elastisch oder plastisc | ➕ |
 | 6 | 🔗 matching | Ordne den Stoßtypen die erhaltenen Größen zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Arbeitsschritte für eine Dynamikaufgabe mit Reibung. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student rechnet für eine Rampe mit Neigung $alpha$: $F_N = m g$. Warum ist das falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student rechnet für eine Rampe mit Neigung $alpha$: $F_N = m g$. Warum ist das falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Auf einer Rampe mit $alpha = 20°$ rutscht ein Körper $m = 4$ kg reibungsfrei ab. Wie groß ist die Hangabtriebskraft in N | ➕ |
 | 10 | ✅ true-false | Potentielle Energie im Schwerefeld ist E = m·g·h. | 🎯 |
 
@@ -3453,12 +3453,12 @@
 | 1 | 🔢 number-input | [PRÜFUNG] Balken (4 m), Festlager links, Loslager rechts. Einzellast F = 600 N bei x = 1 m vom linken Lager. Berechne R_ |  |
 | 2 | 🔢 number-input | [PRÜFUNG] Zwei Kräfte $F_1$ = 5 kN (30° zur Horizontalen) und $F_2$ = 3 kN (vertikal). Betrag der Resultierenden? Runde  |  |
 | 3 | 🔘 multiple-choice | [PRÜFUNG] Ein Loslager kann aufnehmen: | wAE |
-| 4 | 🔘 multiple-choice | [PRÜFUNG] Ein Balken (2 m) ist links fest eingespannt und trägt am rechten Ende eine Last $F = 500$ N. Welche Reaktionsg | ➕ |
+| 4 | 🔘 multiple-choice | [PRÜFUNG] Ein Balken (2 m) ist links fest eingespannt und trägt am rechten Ende eine Last $F = 500$ N. Welche Reaktionsg | ➕ wAE |
 | 5 | 🔢 number-input | [PRÜFUNG] Balken $L = 4$ m, Festlager A links, Loslager B rechts. Streckenlast $q = 300$ N/m über die volle Länge. Wie g | ➕ |
 | 6 | ✅ true-false | [PRÜFUNG] Haftreibung kann beliebig groß werden — sie erreicht immer genau den Wert, der Gleichgewicht herstellt, bis zu | ➕ |
 | 7 | 🔗 matching | [PRÜFUNG] Ordne die Begriffe ihren Definitionen zu. | ➕ |
 | 8 | 📋 sorting | [PRÜFUNG] Ordne die Lösungsschritte einer kombinierten Statik-Prüfungsaufgabe. | ➕ |
-| 9 | 🔘 multiple-choice | [PRÜFUNG] Ein Student berechnet für eine Rampe ($alpha = 30°$), ob eine Kiste ($m = 10$ kg, $mu_H = 0{,}4$) rutscht. Er  | ➕ |
+| 9 | 🔘 multiple-choice | [PRÜFUNG] Ein Student berechnet für eine Rampe ($alpha = 30°$), ob eine Kiste ($m = 10$ kg, $mu_H = 0{,}4$) rutscht. Er  | ➕ wAE |
 | 10 | 🔢 number-input | [PRÜFUNG] Kragbalken (Einspannung links), Länge 2 m, Einzellast F = 500 N am freien Ende. Einspannmoment? | 🎯 |
 
 #### Dynamik: Prüfungsaufgaben  `mech-3-2` · 12 min
@@ -3471,12 +3471,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | [PRÜFUNG] Ein 2 kg Block rutscht reibungsfrei eine 3 m hohe Rampe hinunter. Geschwindigkeit unten? (g = 9,81) |  |
 | 2 | 🔢 number-input | [PRÜFUNG] Ein 5 kg Block wird mit μ = 0,3 auf ebenem Boden mit F = 40 N horizontal gezogen. Beschleunigung? |  |
-| 3 | 🔘 multiple-choice | [PRÜFUNG] Zwei Wagen ($m_1 = 2$ kg mit $v_1 = 3$ m/s und $m_2 = 1$ kg in Ruhe) stoßen plastisch zusammen. Welche Endgesc | ➕ |
+| 3 | 🔘 multiple-choice | [PRÜFUNG] Zwei Wagen ($m_1 = 2$ kg mit $v_1 = 3$ m/s und $m_2 = 1$ kg in Ruhe) stoßen plastisch zusammen. Welche Endgesc | ➕ wAE |
 | 4 | 🔢 number-input | [PRÜFUNG] Ein Körper ($m = 5$ kg) rutscht reibungsfrei eine Rampe von $h = 2$ m Höhe herunter. Wie groß ist seine Geschw | ➕ |
 | 5 | ✅ true-false | [PRÜFUNG] Energieerhaltung gilt auch bei Reibung — die Reibungskraft ist eine innere Kraft und ändert die Gesamtenergie  | ➕ |
 | 6 | 🔗 matching | [PRÜFUNG] Ordne die Größen ihren Einheiten zu. | ➕ |
 | 7 | 📋 sorting | [PRÜFUNG] Ordne die Schritte für eine kombinierte Dynamikaufgabe (Rampe + Stoß). | ➕ |
-| 8 | 🔘 multiple-choice | [PRÜFUNG] Ein Student berechnet die Endgeschwindigkeit nach einer Rampe mit Reibung rein über Energieerhaltung ($v = sqr | ➕ |
+| 8 | 🔘 multiple-choice | [PRÜFUNG] Ein Student berechnet die Endgeschwindigkeit nach einer Rampe mit Reibung rein über Energieerhaltung ($v = sqr | ➕ wAE |
 | 9 | 🔢 number-input | [PRÜFUNG] Ein Auto ($m = 1000$ kg) fährt mit $v_0 = 20$ m/s und bremst mit konstanter Verzögerung auf $v = 5$ m/s in $t  | ➕ |
 | 10 | 🔢 number-input | [PRÜFUNG] Elastischer Stoß: Ball 1 (m=2kg, v=3m/s) trifft ruhenden Ball 2 (m=2kg). Geschwindigkeit von Ball 1 nach Stoß? | 🎯 |
 
@@ -3686,12 +3686,12 @@
 | 1 | 🔢 number-input | [PRÜFUNG] Rundstab d = 20 mm, Zugkraft F = 15 kN. Normalspannung σ in MPa? |  |
 | 2 | 🔢 number-input | [PRÜFUNG] Rechteckbalken b = 40 mm, h = 80 mm. Biegemoment M = 800 Nm. Maximale Biegespannung? |  |
 | 3 | 🔢 number-input | [PRÜFUNG] σ = 120 MPa und τ = 60 MPa wirken gleichzeitig. Berechne die Von-Mises-Vergleichsspannung auf eine Dezimalstel |  |
-| 4 | 🔘 multiple-choice | [PRÜFUNG] Eine Welle wird durch ein Torsionsmoment $M_t$ belastet. Welche Formel liefert die maximale Schubspannung? | ➕ |
+| 4 | 🔘 multiple-choice | [PRÜFUNG] Eine Welle wird durch ein Torsionsmoment $M_t$ belastet. Welche Formel liefert die maximale Schubspannung? | ➕ wAE |
 | 5 | 🔢 number-input | [PRÜFUNG] Welle (Kreis, $d = 50$ mm) wird mit $M_t = 1000$ Nm belastet. Wie groß ist die maximale Schubspannung $tau_{ma | ➕ |
 | 6 | ✅ true-false | [PRÜFUNG] Die Sicherheitszahl $S$ muss für einen sicheren Nachweis größer als 1 sein, typisch 1,5 bis 3 bei statischen L | ➕ |
 | 7 | 🔗 matching | [PRÜFUNG] Ordne die Formeln ihren Belastungsarten zu. | ➕ |
 | 8 | 📋 sorting | [PRÜFUNG] Ordne die Schritte eines kompletten Festigkeitsnachweises. | ➕ |
-| 9 | 🔘 multiple-choice | [PRÜFUNG] Ein Student rechnet: "Welle mit $M_t = 500$ Nm, $d = 30$ mm. $W = pi d^3/32 = 2650$ $mm^3$. $tau = M_t/W = 189 | ➕ |
+| 9 | 🔘 multiple-choice | [PRÜFUNG] Ein Student rechnet: "Welle mit $M_t = 500$ Nm, $d = 30$ mm. $W = pi d^3/32 = 2650$ $mm^3$. $tau = M_t/W = 189 | ➕ wAE |
 | 10 | ✅ true-false | [PRÜFUNG] Die Streckgrenze Re von S235 beträgt mindestens 235 MPa. | 🎯 |
 
 #### Torsion, Knicken & Wechselfestigkeit  `fest-3-2` · 12 min
@@ -3737,12 +3737,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | 20 °C entsprechen gerundet wie viel Kelvin? |  |
 | 2 | 🔘 multiple-choice | Welche Größe ist absolute Temperatur? | wAE |
-| 3 | 🔘 multiple-choice | Warum muss in der Gasgleichung $pV = nRT$ zwingend Kelvin verwendet werden? | ➕ |
+| 3 | 🔘 multiple-choice | Warum muss in der Gasgleichung $pV = nRT$ zwingend Kelvin verwendet werden? | ➕ wAE |
 | 4 | 🔢 number-input | Ein Gas wird von $t_1 = 20$ °C auf $t_2 = 100$ °C bei konstantem Druck erwärmt. Das Anfangsvolumen ist $V_1 = 1$ $m^3$.  | ➕ |
 | 5 | ✅ true-false | Der Absolute Nullpunkt liegt bei $-273{,}15$ °C und entspricht $0$ K. | ➕ |
 | 6 | 🔗 matching | Ordne die Zustandsgrößen ihren SI-Einheiten zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte für eine Gasgleichungsaufgabe. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student rechnet: "Gas bei $p_1 = 1$ bar, $T_1 = 20$ °C wird isobar auf $T_2 = 40$ °C erwärmt. $V_2/V_1 = T_2/T_1 = 4 | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student rechnet: "Gas bei $p_1 = 1$ bar, $T_1 = 20$ °C wird isobar auf $T_2 = 40$ °C erwärmt. $V_2/V_1 = T_2/T_1 = 4 | ➕ wAE |
 | 9 | 🔢 number-input | Ein Gasbehälter (starr, $V = $ const) wird von $t_1 = 27$ °C auf $t_2 = 127$ °C erwärmt. Anfangsdruck $p_1 = 1$ bar. Wie | ➕ |
 | 10 | ✅ true-false | Bei konstantem Volumen steigt der Druck eines idealen Gases mit der Temperatur. | 🎯 |
 
@@ -3756,12 +3756,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Bei konstantem Druck p = 200 kPa vergrößert sich das Volumen um ΔV = 0,01 $m^3$. Berechne die Volumenänderungsarbeit. |  |
 | 2 | 🔘 multiple-choice | Im p-V-Diagramm entspricht Arbeit ... | wAE |
-| 3 | 🔘 multiple-choice | Welche Zustandsänderung läuft so schnell ab, dass kein Wärmeaustausch mit der Umgebung stattfindet? | ➕ |
+| 3 | 🔘 multiple-choice | Welche Zustandsänderung läuft so schnell ab, dass kein Wärmeaustausch mit der Umgebung stattfindet? | ➕ wAE |
 | 4 | 🔢 number-input | Ein Gas ($n = 2$ mol) wird isotherm bei $T = 300$ K von $V_1 = 1$ $m^3$ auf $V_2 = 2$ $m^3$ expandiert. Wie viel Arbeit  | ➕ |
 | 5 | ✅ true-false | Bei einer adiabaten Kompression eines idealen Gases bleibt die Temperatur konstant. | ➕ |
 | 6 | 🔗 matching | Ordne jedem Prozesstyp die charakteristische Beziehung zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Arbeitsberechnung bei einer isobaren Expansion. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student rechnet für eine adiabate Zustandsänderung: "$p_1 V_1 = p_2 V_2$". Was ist der Fehler? | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student rechnet für eine adiabate Zustandsänderung: "$p_1 V_1 = p_2 V_2$". Was ist der Fehler? | ➕ wAE |
 | 9 | 🔢 number-input | Luft ($kappa = 1{,}4$) wird adiabat von $p_1 = 1$ bar, $V_1 = 1$ L auf $V_2 = 0{,}5$ L komprimiert. Wie groß ist $p_2$ i | ➕ |
 | 10 | ✅ true-false | Bei ΔV = 0 ist die Volumenänderungsarbeit null. | 🎯 |
 
@@ -3780,12 +3780,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Ein System erhält Q = 500 J Wärme und gibt W = 200 J Arbeit ab. Berechne ΔU nach dem ersten Hauptsatz. |  |
 | 2 | 🔘 multiple-choice | Der erste Hauptsatz beschreibt: | wAE |
-| 3 | 🔘 multiple-choice | Ein ideales Gas wird isotherm komprimiert. Welche Beziehung gilt? | ➕ |
+| 3 | 🔘 multiple-choice | Ein ideales Gas wird isotherm komprimiert. Welche Beziehung gilt? | ➕ wAE |
 | 4 | 🔢 number-input | Einem Gas wird $Q = 500$ J Wärme zugeführt, während es $W = 200$ J Arbeit leistet. Wie groß ist $Delta U$ in J? | ➕ |
 | 5 | ✅ true-false | Bei einem adiabaten Prozess ($Q = 0$) wird die am Gas verrichtete Arbeit vollständig in innere Energie umgewandelt. | ➕ |
 | 6 | 🔗 matching | Ordne jedem Prozesstyp die Spezialform des 1. Hauptsatzes zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Anwendung des 1. Hauptsatzes. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student rechnet: "Isochore Erwärmung: $W = p Delta V$, also $W > 0$." Was ist der Fehler? | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student rechnet: "Isochore Erwärmung: $W = p Delta V$, also $W > 0$." Was ist der Fehler? | ➕ wAE |
 | 9 | 🔢 number-input | Ein Gas ($c_v = 717$ J/(kg·K), $m = 2$ kg) wird isochor von $T_1 = 300$ K auf $T_2 = 400$ K erwärmt. Wie viel Wärme $Q$  | ➕ |
 | 10 | ✅ true-false | Wenn ein System Arbeit abgibt und keine Wärme erhält, sinkt seine innere Energie. | 🎯 |
 
@@ -3799,12 +3799,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Eine Maschine liefert 80 J Nutzenergie bei 100 J zugeführter Energie. Berechne den Wirkungsgrad η. |  |
 | 2 | 🔘 multiple-choice | η = 0,35 bedeutet: | wAE |
-| 3 | 🔘 multiple-choice | Eine Wärmekraftmaschine arbeitet zwischen $T_{warm} = 600$ K und $T_{kalt} = 300$ K. Welcher Wirkungsgrad ist theoretisc | ➕ |
+| 3 | 🔘 multiple-choice | Eine Wärmekraftmaschine arbeitet zwischen $T_{warm} = 600$ K und $T_{kalt} = 300$ K. Welcher Wirkungsgrad ist theoretisc | ➕ wAE |
 | 4 | 🔢 number-input | Kraftwerk: $T_{warm} = 800$ K, $T_{kalt} = 320$ K. Wie groß ist $eta_C$ in Prozent? | ➕ |
 | 5 | ✅ true-false | Der Wirkungsgrad einer realen Wärmekraftmaschine ist immer kleiner als der Carnot-Wirkungsgrad zwischen denselben Temper | ➕ |
 | 6 | 🔗 matching | Ordne die Maschinen-Kennwerte ihren Definitionen zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Berechnung des Carnot-Wirkungsgrades. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student rechnet für Carnot: $eta_C = 1 - (200 text{ °C})/(500 text{ °C}) = 0{,}6 = 60 %$. Was ist der Fehler? | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student rechnet für Carnot: $eta_C = 1 - (200 text{ °C})/(500 text{ °C}) = 0{,}6 = 60 %$. Was ist der Fehler? | ➕ wAE |
 | 9 | 🔢 number-input | Wärmepumpe arbeitet zwischen $T_{kalt} = 0$ °C und $T_{warm} = 40$ °C. Wie groß ist der maximal mögliche COP? | ➕ |
 | 10 | ✅ true-false | Ein realer Wärmekraftprozess hat η = 1. | 🎯 |
 
@@ -3864,12 +3864,12 @@
 | 1 | 🔢 number-input | [PRÜFUNG] Carnot-Maschine: T_warm = 600 K, T_kalt = 300 K. Maximaler Wirkungsgrad? |  |
 | 2 | 🔢 number-input | [PRÜFUNG] Isotherme Expansion: 1 mol ideales Gas bei T = 300 K expandiert von 10 L auf 20 L. Arbeit W? (R = 8,314) |  |
 | 3 | 🔢 number-input | [PRÜFUNG] Adiabatische Kompression: $p_1$ = 100 kPa, $V_1 = 0{,}01,m^3$, $V_2 = 0{,}005,m^3$, $gamma = 1{,}4$. Berechne  |  |
-| 4 | 🔘 multiple-choice | [PRÜFUNG] Welche Zustandsänderungen bilden den idealisierten Otto-Kreisprozess? | ➕ |
+| 4 | 🔘 multiple-choice | [PRÜFUNG] Welche Zustandsänderungen bilden den idealisierten Otto-Kreisprozess? | ➕ wAE |
 | 5 | 🔢 number-input | [PRÜFUNG] Otto-Prozess mit Verdichtung $epsilon = 10$ und $kappa = 1{,}4$. Wie groß ist der theoretische Wirkungsgrad $e | ➕ |
 | 6 | ✅ true-false | [PRÜFUNG] In einem geschlossenen Kreisprozess ist die Summe aller inneren Energieänderungen null. | ➕ |
 | 7 | 🔗 matching | [PRÜFUNG] Ordne die Kreisprozesse ihren charakteristischen Kennlinien zu. | ➕ |
 | 8 | 📋 sorting | [PRÜFUNG] Ordne die Schritte zur Berechnung des Otto-Wirkungsgrades. | ➕ |
-| 9 | 🔘 multiple-choice | [PRÜFUNG] Ein Student berechnet Carnot-Wirkungsgrad für einen Ottomotor ($T_{min} = 300$ K, $T_{max} = 2000$ K) als $eta | ➕ |
+| 9 | 🔘 multiple-choice | [PRÜFUNG] Ein Student berechnet Carnot-Wirkungsgrad für einen Ottomotor ($T_{min} = 300$ K, $T_{max} = 2000$ K) als $eta | ➕ wAE |
 | 10 | ✅ true-false | [PRÜFUNG] Bei einer isochoren Zustandsänderung wird keine Volumenänderungsarbeit verrichtet. | 🎯 |
 
 #### Kreisprozesse & Wärmeübertragung  `thermo-3-2` · 22 min
@@ -3916,12 +3916,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Wasser: ρ = 1000 $kg/m^3$, g = 9,81 $m/s^2$, h = 2 m. p gerundet? |  |
 | 2 | 🔘 multiple-choice | Hydrostatischer Druck hängt direkt ab von: | wAE |
-| 3 | 🔘 multiple-choice | Warum hängt der hydrostatische Druck nicht von der Form des Behälters ab? | ➕ |
+| 3 | 🔘 multiple-choice | Warum hängt der hydrostatische Druck nicht von der Form des Behälters ab? | ➕ wAE |
 | 4 | 🔢 number-input | In einem Wasserbecken ($rho = 1000$ $kg/m^3$) in Tiefe $h = 5$ m. Wie groß ist der hydrostatische Druck $rho g h$ (ohne  | ➕ |
 | 5 | ✅ true-false | Der Luftdruck $p_{atm}$ an der Wasseroberfläche muss zum hydrostatischen Druck addiert werden, wenn der absolute Druck g | ➕ |
 | 6 | 🔗 matching | Ordne die Dichten ihren Materialien zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Berechnung des Drucks auf einen Tauchkörper in Tiefe $h$. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student rechnet: "Tauchtiefe 30 m, $p = rho g h = 1000 cdot 9{,}81 cdot 30 = 294{,}3$ kPa $approx 3$ bar." Was ist r | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student rechnet: "Tauchtiefe 30 m, $p = rho g h = 1000 cdot 9{,}81 cdot 30 = 294{,}3$ kPa $approx 3$ bar." Was ist r | ➕ wAE |
 | 9 | 🔢 number-input | In einer Zisterne steht Öl ($rho_{Öl} = 800$ $kg/m^3$) 4 m hoch, darunter 2 m Wasser. Wie groß ist der Überdruck am Bode | ➕ |
 | 10 | ✅ true-false | In doppelter Tiefe ist der hydrostatische Druck doppelt so groß. | 🎯 |
 
@@ -3935,12 +3935,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Ein Körper verdrängt 0,01 $m^3$ Wasser. Berechne die Auftriebskraft in Wasser gerundet. |  |
 | 2 | 🔘 multiple-choice | Auftrieb hängt ab vom ... | wAE |
-| 3 | 🔘 multiple-choice | Ein Holzblock schwimmt in Wasser. Wodurch ist das Gleichgewicht bestimmt? | ➕ |
+| 3 | 🔘 multiple-choice | Ein Holzblock schwimmt in Wasser. Wodurch ist das Gleichgewicht bestimmt? | ➕ wAE |
 | 4 | 🔢 number-input | Ein Würfel ($V = 0{,}001$ $m^3$, Masse $m = 0{,}6$ kg) wird in Wasser ($rho_W = 1000$ $kg/m^3$) getaucht. Wie groß ist d | ➕ |
 | 5 | ✅ true-false | Ein schwimmender Körper verdrängt genau sein eigenes Gewicht an Flüssigkeit. | ➕ |
 | 6 | 🔗 matching | Ordne Zustand und Dichteverhältnis. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Berechnung der Eintauchtiefe eines schwimmenden Körpers. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student rechnet $F_A = rho_{Körper} V g$ für einen in Wasser getauchten Körper. Was ist der Fehler? | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student rechnet $F_A = rho_{Körper} V g$ für einen in Wasser getauchten Körper. Was ist der Fehler? | ➕ wAE |
 | 9 | 🔢 number-input | Ein Holzbalken ($rho_H = 600$ $kg/m^3$, Volumen $V = 0{,}02$ $m^3$) schwimmt in Wasser ($rho_W = 1000$ $kg/m^3$). Welche | ➕ |
 | 10 | ✅ true-false | Ein Körper schwimmt, wenn Auftrieb und Gewichtskraft im Gleichgewicht sind. | 🎯 |
 
@@ -3959,12 +3959,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Für eine inkompressible Strömung gilt A1 = 4 $cm^2$, v1 = 2 m/s und A2 = 2 $cm^2$. Berechne v2. |  |
 | 2 | 🔘 multiple-choice | Volumenstrom wird berechnet mit: | wAE |
-| 3 | 🔘 multiple-choice | Wasser strömt durch ein Rohr. Bei Verengung von $A_1$ auf $A_2 = A_1/2$ verhält sich die Geschwindigkeit wie? | ➕ |
+| 3 | 🔘 multiple-choice | Wasser strömt durch ein Rohr. Bei Verengung von $A_1$ auf $A_2 = A_1/2$ verhält sich die Geschwindigkeit wie? | ➕ wAE |
 | 4 | 🔢 number-input | In einem Rohr ($A_1 = 0{,}01$ $m^2$) fließt Wasser mit $v_1 = 2$ m/s. An einer Verengung ist $A_2 = 0{,}004$ $m^2$. Wie  | ➕ |
 | 5 | ✅ true-false | Die Kontinuitätsgleichung $A_1 v_1 = A_2 v_2$ gilt auch für kompressible Gase. | ➕ |
 | 6 | 🔗 matching | Ordne die Größen ihren Einheiten zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Berechnung der Geschwindigkeit in einer Verengung. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student berechnet Kreisfläche bei $d = 20$ mm als $A = pi cdot 20^2 = 1257$ $mm^2$. Was ist falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student berechnet Kreisfläche bei $d = 20$ mm als $A = pi cdot 20^2 = 1257$ $mm^2$. Was ist falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Wasser strömt durch Rohr mit $d_1 = 100$ mm und $v_1 = 1$ m/s in eine Verengung $d_2 = 50$ mm. Wie groß ist $v_2$ in m/s | ➕ |
 | 10 | ✅ true-false | Bei kleinerem Querschnitt und gleichem Volumenstrom wird v größer. | 🎯 |
 
@@ -3978,12 +3978,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Der Term $frac{1}{2} rho v^2$ beschreibt: | wAE |
 | 2 | ✅ true-false | Bernoulli berücksichtigt im Grundmodell keine Reibungsverluste. |  |
-| 3 | 🔘 multiple-choice | In einer Rohrverengung steigt die Strömungsgeschwindigkeit. Was passiert mit dem statischen Druck nach Bernoulli? | ➕ |
+| 3 | 🔘 multiple-choice | In einer Rohrverengung steigt die Strömungsgeschwindigkeit. Was passiert mit dem statischen Druck nach Bernoulli? | ➕ wAE |
 | 4 | 🔢 number-input | Aus einem Tank mit Füllhöhe $h = 2$ m strömt Wasser am Boden aus. Welche Ausflussgeschwindigkeit in m/s ergibt sich nach | ➕ |
 | 5 | ✅ true-false | Die Bernoulli-Gleichung gilt auch bei Reibung. | ➕ |
 | 6 | 🔗 matching | Ordne die Terme ihrer Bedeutung zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Anwendung der Bernoulli-Gleichung. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student rechnet mit Bernoulli bei langem Rohr mit Reibung und wundert sich, dass Ein- und Ausgangsdruck gleich sind. | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student rechnet mit Bernoulli bei langem Rohr mit Reibung und wundert sich, dass Ein- und Ausgangsdruck gleich sind. | ➕ wAE |
 | 9 | 🔢 number-input | Aus einem Wassertank (Füllhöhe $h = 10$ m) strömt Wasser durch eine Öffnung ins Freie. Welche Ausflussgeschwindigkeit in | ➕ |
 | 10 | 🔢 number-input | ρ = 1000 $kg/m^3$, v = 2 m/s. Dynamischer Druck? | 🎯 |
 
@@ -4043,12 +4043,12 @@
 | 1 | 🔢 number-input | [PRÜFUNG] Wasser (ρ = 1000) fließt durch ein Rohr: $v_1$ = 2 m/s, $d_1$ = 100 mm, $d_2$ = 50 mm. Berechne $v_2$. |  |
 | 2 | 🔢 number-input | [PRÜFUNG] Ein Tank steht offen ($p_1$ = 101325 Pa). Ausflusshöhe h = 5 m über dem Auslass. Ausflussgeschwindigkeit? (ρ = |  |
 | 3 | 🔢 number-input | [PRÜFUNG] Wasser fließt mit v = 1 m/s durch ein Rohr d = 50 mm. Dynamische Viskosität μ = 0,001 Pa·s. Reynolds-Zahl? |  |
-| 4 | 🔘 multiple-choice | [PRÜFUNG] Bei einem großen Tank mit kleinem Auslauf wird $v_1 approx 0$ gesetzt. Warum? | ➕ |
+| 4 | 🔘 multiple-choice | [PRÜFUNG] Bei einem großen Tank mit kleinem Auslauf wird $v_1 approx 0$ gesetzt. Warum? | ➕ wAE |
 | 5 | 🔢 number-input | [PRÜFUNG] Durch eine Venturi-Düse ($A_1 = 0{,}01$ $m^2$, $A_2 = 0{,}002$ $m^2$) strömt Wasser. Druckdifferenz $Delta p = | ➕ |
 | 6 | ✅ true-false | [PRÜFUNG] Für die praktische Rohrströmung in Maschinenbau-Aufgaben kann Bernoulli oft nur bis zum nächsten Rohrbogen ode | ➕ |
 | 7 | 🔗 matching | [PRÜFUNG] Ordne die Strömungskonzepte ihren Formeln zu. | ➕ |
 | 8 | 📋 sorting | [PRÜFUNG] Ordne die Schritte einer kompletten Strömungsaufgabe mit Venturi. | ➕ |
-| 9 | 🔘 multiple-choice | [PRÜFUNG] Ein Student rechnet für einen Wassertank mit Auslauf 3 m unter dem Spiegel: "$v = g h = 29{,}4$ $m^2/s^2$". Wa | ➕ |
+| 9 | 🔘 multiple-choice | [PRÜFUNG] Ein Student rechnet für einen Wassertank mit Auslauf 3 m unter dem Spiegel: "$v = g h = 29{,}4$ $m^2/s^2$". Wa | ➕ wAE |
 | 10 | 🔘 multiple-choice | [PRÜFUNG] Bei Re = 50000 ist die Strömung: | 🎯 wAE |
 
 #### Druckverlust, Pumpen & Ähnlichkeit  `fluid-3-2` · 22 min
@@ -4215,12 +4215,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Wozu dient Schraubenvorspannung hauptsächlich? | wAE |
 | 2 | ✅ true-false | Eine korrekt vorgespannte Schraube kann Betriebslasten günstiger aufnehmen. |  |
-| 3 | 🔘 multiple-choice | Ein Zahnradpaar hat $z_1 = 20$, $z_2 = 80$. Wie ändert sich die Drehzahl vom Antrieb zum Abtrieb? | ➕ |
+| 3 | 🔘 multiple-choice | Ein Zahnradpaar hat $z_1 = 20$, $z_2 = 80$. Wie ändert sich die Drehzahl vom Antrieb zum Abtrieb? | ➕ wAE |
 | 4 | 🔢 number-input | Zahnradpaar: $z_1 = 25$ (Antrieb), $z_2 = 75$. Antriebsdrehmoment $M_1 = 10$ Nm. Wie groß ist $M_2$ in Nm (verlustfrei)? | ➕ |
 | 5 | ✅ true-false | Bei einem Untersetzungsgetriebe ($i > 1$) steigt das Drehmoment am Abtrieb um den Faktor $i$. | ➕ |
 | 6 | 🔗 matching | Ordne die Getriebe-Begriffe ihren Bedeutungen zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Auslegung eines einfachen Zahnradpaares. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student rechnet: "Bei $i = 3$ Untersetzung wird aus $n_1 = 1500$ 1/min also $n_2 = 4500$ 1/min." Was ist falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student rechnet: "Bei $i = 3$ Untersetzung wird aus $n_1 = 1500$ 1/min also $n_2 = 4500$ 1/min." Was ist falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Antriebsmotor: $P = 5{,}5$ kW bei $n_1 = 1450$ 1/min. Übersetzung $i = 10$. Wie groß ist $M_2$ am Abtrieb in Nm (verlust | ➕ |
 | 10 | 🔢 number-input | Eine Schraube trägt 12 kN von insgesamt 48 kN. Berechne den Lastanteil als Dezimalzahl. | 🎯 |
 
@@ -4234,12 +4234,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Eine Passfeder ist primär eine ... | wAE |
 | 2 | ✅ true-false | Kraftschluss beruht im Kern auf Reibung. |  |
-| 3 | 🔘 multiple-choice | Warum werden Wellen oft gegen Biegung und Torsion *zusammen* nachgewiesen? | ➕ |
+| 3 | 🔘 multiple-choice | Warum werden Wellen oft gegen Biegung und Torsion *zusammen* nachgewiesen? | ➕ wAE |
 | 4 | 🔢 number-input | Welle ($d = 40$ mm) mit Biegespannung $sigma_b = 60$ MPa und Torsionsspannung $tau_t = 30$ MPa. Wie groß ist $sigma_v$ ( | ➕ |
 | 5 | ✅ true-false | Ein Festlager muss sowohl axiale als auch radiale Kräfte aufnehmen können. | ➕ |
 | 6 | 🔗 matching | Ordne die Lagertypen ihren Einsatzbereichen zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Wellenauslegung. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student rechnet Torsionsspannung mit $W = pi d^3 / 32$. Was ist falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student rechnet Torsionsspannung mit $W = pi d^3 / 32$. Was ist falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Welle ($d = 30$ mm) überträgt $M_t = 150$ Nm. Wie groß ist die Torsionsspannung in MPa? | ➕ |
 | 10 | 🔘 multiple-choice | Drehmoment wird bei Welle-Nabe-Verbindungen übertragen, um ... | 🎯 wAE |
 
@@ -4277,12 +4277,12 @@
 |---|---|---|---|
 | 1 | 🔘 multiple-choice | Eine Radiallast wirkt ... | wAE |
 | 2 | ✅ true-false | Lager sollen Bewegung führen und Kräfte aufnehmen. |  |
-| 3 | 🔘 multiple-choice | Warum muss eine Schraubenverbindung mit ausreichender Vorspannkraft angezogen werden? | ➕ |
+| 3 | 🔘 multiple-choice | Warum muss eine Schraubenverbindung mit ausreichender Vorspannkraft angezogen werden? | ➕ wAE |
 | 4 | 🔢 number-input | Eine Schraube M10 ($d = 10$ mm) soll mit $F_V = 20000$ N vorgespannt werden. Reibungsbeiwert $K = 0{,}2$. Wie groß ist d | ➕ |
 | 5 | ✅ true-false | Die Spannung in einer vorgespannten Schraube wird mit dem Nenndurchmesser berechnet: $sigma = F_V/(pi d^2/4)$. | ➕ |
 | 6 | 🔗 matching | Ordne die Schraubenkennwerte ihren Bedeutungen zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Schraubenauswahl und Anzugsberechnung. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student rechnet für M12 ($d = 12$ mm, $A_s = 84{,}3$ $mm^2$) Spannung bei $F_V = 30000$ N als $sigma = 30000/(pi cdo | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student rechnet für M12 ($d = 12$ mm, $A_s = 84{,}3$ $mm^2$) Spannung bei $F_V = 30000$ N als $sigma = 30000/(pi cdo | ➕ wAE |
 | 9 | 🔢 number-input | Eine Schraube M8 ($d = 8$ mm, $A_s = 36{,}6$ $mm^2$, Festigkeitsklasse 8.8 mit $R_e = 640$ MPa) soll mit 70 % Ausnutzung | ➕ |
 | 10 | 🔘 multiple-choice | Eine Welle dient hauptsächlich der Übertragung von: | 🎯 wAE |
 
@@ -4296,12 +4296,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Ein Zahnradpaar hat z1 = 20 und z2 = 60 Zähne. Berechne die Übersetzung i = z2/z1. |  |
 | 2 | 🔘 multiple-choice | Bei i = 3 ist n2 gegenüber n1 ... | wAE |
-| 3 | 🔘 multiple-choice | Ein zweistufiges Getriebe hat $i_1 = 4$ und $i_2 = 5$. Wie groß ist die Gesamtübersetzung? | ➕ |
+| 3 | 🔘 multiple-choice | Ein zweistufiges Getriebe hat $i_1 = 4$ und $i_2 = 5$. Wie groß ist die Gesamtübersetzung? | ➕ wAE |
 | 4 | 🔢 number-input | Dreistufiges Getriebe mit $i_1 = i_2 = i_3 = 3$. Wie groß ist $i_{ges}$? | ➕ |
 | 5 | ✅ true-false | Bei mehrstufigen Getrieben sinkt der Wirkungsgrad multiplikativ: $eta_{ges} = eta_1 cdot eta_2 cdot eta_3$. | ➕ |
 | 6 | 🔗 matching | Ordne die Getriebetypen ihren Eigenschaften zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Auslegung eines mehrstufigen Getriebes. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student rechnet zweistufig: "$i_1 = 2$, $i_2 = 3$, also $i_{ges} = 5$". Was stimmt nicht? | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student rechnet zweistufig: "$i_1 = 2$, $i_2 = 3$, also $i_{ges} = 5$". Was stimmt nicht? | ➕ wAE |
 | 9 | 🔢 number-input | Zweistufiges Getriebe: Eingangsdrehzahl $n_{ein} = 1500$ 1/min, $i_{ges} = 15$. Wie groß ist die Ausgangsdrehzahl in 1/m | ➕ |
 | 10 | ✅ true-false | Mehr Zähne am Abtriebsrad senken typischerweise die Abtriebsdrehzahl. | 🎯 |
 
@@ -4340,12 +4340,12 @@
 | 1 | 🔢 number-input | [PRÜFUNG] Motor: P = 5 kW bei n = 1500 1/min. Drehmoment M? |  |
 | 2 | 🔢 number-input | [PRÜFUNG] Zahnrad d = 100 mm, Drehmoment M = 50 Nm. Umfangskraft F_t? |  |
 | 3 | 🔢 number-input | [PRÜFUNG] Zweistufiges Getriebe: $i_1$ = 3, $i_2$ = 4. Gesamtübersetzung? |  |
-| 4 | 🔘 multiple-choice | [PRÜFUNG] Ein Elektromotor hat $P = 11$ kW bei $n = 1450$ 1/min. Welches Drehmoment $M$ liefert er? | ➕ |
+| 4 | 🔘 multiple-choice | [PRÜFUNG] Ein Elektromotor hat $P = 11$ kW bei $n = 1450$ 1/min. Welches Drehmoment $M$ liefert er? | ➕ wAE |
 | 5 | 🔢 number-input | [PRÜFUNG] Welle ($d = 35$ mm) überträgt $M_t = 200$ Nm und wird gleichzeitig mit Biegemoment $M_b = 100$ Nm belastet. Wi | ➕ |
 | 6 | ✅ true-false | [PRÜFUNG] In einer vollständigen Welle-Lager-Schraube-Auslegung müssen alle drei Komponenten unabhängig voneinander nach | ➕ |
 | 7 | 🔗 matching | [PRÜFUNG] Ordne die Nachweisarten ihren Komponenten zu. | ➕ |
 | 8 | 📋 sorting | [PRÜFUNG] Ordne die Schritte einer kompletten Dimensionierungsaufgabe. | ➕ |
-| 9 | 🔘 multiple-choice | [PRÜFUNG] Ein Student rechnet für $P = 5$ kW und $n = 3000$ 1/min: "$M = P/n = 5000/3000 approx 1{,}67$ Nm". Was ist fal | ➕ |
+| 9 | 🔘 multiple-choice | [PRÜFUNG] Ein Student rechnet für $P = 5$ kW und $n = 3000$ 1/min: "$M = P/n = 5000/3000 approx 1{,}67$ Nm". Was ist fal | ➕ wAE |
 | 10 | 🔢 number-input | [PRÜFUNG] Antrieb $n_1$ = 3000 1/min, i_ges = 12. Abtriebsdrehzahl? | 🎯 |
 
 #### Schweißnähte, Lager & Lebensdauer  `melem-3-2` · 22 min
@@ -4391,12 +4391,12 @@
 |---|---|---|---|
 | 1 | 🔢 number-input | Ein Widerstand $R = 470,Omega$ wird von einem Strom $I = 20,text{mA}$ durchflossen. Welche Spannung $U$ liegt an? |  |
 | 2 | ✅ true-false | Zwei gleiche Widerstände $R$ in Parallelschaltung ergeben einen Gesamtwiderstand von $R/2$. |  |
-| 3 | 🔘 multiple-choice | Was beschreibt das Ohmsche Gesetz? | ➕ |
+| 3 | 🔘 multiple-choice | Was beschreibt das Ohmsche Gesetz? | ➕ wAE |
 | 4 | 🔢 number-input | Ein Widerstand $R = 50$ $Omega$ liegt an $U = 100$ V. Wie groß ist der Strom $I$ in A? | ➕ |
 | 5 | ✅ true-false | Der Gesamtwiderstand einer Parallelschaltung ist immer kleiner als der kleinste Einzelwiderstand. | ➕ |
 | 6 | 🔗 matching | Ordne die elektrischen Größen ihren SI-Einheiten zu. | ➕ |
 | 7 | 📋 sorting | Ordne die Schritte zur Analyse eines einfachen Gleichstromkreises. | ➕ |
-| 8 | 🔘 multiple-choice | Ein Student rechnet: "$R = 4{,}7$ k$Omega$, $U = 12$ V, also $I = 12/4{,}7 approx 2{,}55$ A." Was ist falsch? | ➕ |
+| 8 | 🔘 multiple-choice | Ein Student rechnet: "$R = 4{,}7$ k$Omega$, $U = 12$ V, also $I = 12/4{,}7 approx 2{,}55$ A." Was ist falsch? | ➕ wAE |
 | 9 | 🔢 number-input | Drei Widerstände $R_1 = 10$ $Omega$, $R_2 = 20$ $Omega$, $R_3 = 30$ $Omega$ sind parallel geschaltet. Wie groß ist $R_{g | ➕ |
 | 10 | 🔢 number-input | [PRÜFUNG] Reihenschaltung $R_1 = 100,Omega$ und $R_2 = 150,Omega$ an $U = 12,text{V}$. Wie groß ist der Strom $I$ in Amp | 🎯 |
 

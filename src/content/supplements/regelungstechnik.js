@@ -1,5 +1,14 @@
-function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined) {
-  return { type: 'multiple-choice', question, options, correctIndex, explanation, hints, ...(visualization ? { visualization } : {}) }
+function mc(question, options, correctIndex, explanation, hints = [], visualization = undefined, wrongAnswerExplanations = undefined) {
+  return {
+    type: 'multiple-choice',
+    question,
+    options,
+    correctIndex,
+    explanation,
+    hints,
+    ...(visualization ? { visualization } : {}),
+    ...(wrongAnswerExplanations ? { wrongAnswerExplanations } : {}),
+  }
 }
 
 function ni(question, correctValue, tolerance, unit, explanation, hints = [], visualization = undefined) {
@@ -31,12 +40,12 @@ function withExamPrefix(exercise, exam) {
 
 function bank(profile) {
   const exercises = [
-    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization),
+    mc(profile.conceptQuestion, profile.conceptOptions, profile.conceptCorrect, profile.conceptExplanation, profile.conceptHints, profile.conceptVisualization, profile.conceptWrongAnswers),
     ni(profile.calcQuestion, profile.calcAnswer, profile.calcTolerance, profile.calcUnit, profile.calcExplanation, profile.calcHints, profile.calcVisualization),
     tf(profile.trueFalseStatement, profile.trueFalseCorrect, profile.trueFalseExplanation, profile.trueFalseHints),
     matching(profile.matchingQuestion, profile.matchingPairs, profile.matchingExplanation, profile.matchingHints),
     sorting(profile.sortingQuestion, profile.sortingItems, profile.sortingOrder, profile.sortingExplanation, profile.sortingHints),
-    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints),
+    mc(profile.errorQuestion, profile.errorOptions, profile.errorCorrect, profile.errorExplanation, profile.errorHints, undefined, profile.errorWrongAnswers),
     ni(profile.transferQuestion, profile.transferAnswer, profile.transferTolerance, profile.transferUnit, profile.transferExplanation, profile.transferHints),
   ]
   return exercises.map((exercise) => withExamPrefix(exercise, profile.exam))
