@@ -15,7 +15,7 @@ export const exercises_u4 = {
 $$\\cot(\\alpha) = \\dfrac{\\cos(\\alpha)}{\\sin(\\alpha)} \\Rightarrow \\cot^{2}(\\alpha) = \\dfrac{\\cos^{2}(\\alpha)}{\\sin^{2}(\\alpha)}$$
 $$\\sin^{2}(\\alpha) \\cdot \\left(1 + \\dfrac{\\cos^{2}(\\alpha)}{\\sin^{2}(\\alpha)}\\right) = \\sin^{2}(\\alpha) + \\cos^{2}(\\alpha) = 1.$$
 
-**Probe (Taschenrechner, DEG-Modus):** $\\alpha = 30°$: $\\sin^{2}(30°) \\cdot (1 + \\cot^{2}(30°)) = 0{,}25 \\cdot (1 + 3) = 1$ ✓.
+**Probe:** (Taschenrechner, DEG-Modus) $\\alpha = 30°$: $\\sin^{2}(30°) \\cdot (1 + \\cot^{2}(30°)) = 0{,}25 \\cdot (1 + 3) = 1$ ✓.
 
 **Am Einheitskreis heißt das:** Die Pythagoreische Identität $\\sin^{2}+\\cos^{2}=1$ ist der Schlüssel — jede trigonometrische Vereinfachung reduziert sich am Ende auf sie.
 
@@ -38,11 +38,7 @@ $$\\sin^{2}(\\alpha) \\cdot \\left(1 + \\dfrac{\\cos^{2}(\\alpha)}{\\sin^{2}(\\a
     correctIndex: 1,
     explanation: `**Ansatz:** Doppelwinkelformel erkennen.
 
-**Schritt 1:** $2\\sin(\\alpha)\\cos(\\alpha) = \\sin(2\\alpha)$.
-
-**Schritt 2:** $\\sin(2\\alpha) = 1 \\Rightarrow 2\\alpha = 90° + k \\cdot 360°$.
-
-**Schritt 3:** $\\alpha = 45° + k \\cdot 180°$. Im Intervall $[0°, 360°)$: $k = 0 \\Rightarrow \\alpha = 45°$; $k = 1 \\Rightarrow \\alpha = 225°$.
+**Rechnung:** Schritt 1: $2\\sin(\\alpha)\\cos(\\alpha) = \\sin(2\\alpha)$. Schritt 2: $\\sin(2\\alpha) = 1 \\Rightarrow 2\\alpha = 90° + k \\cdot 360°$. Schritt 3: $\\alpha = 45° + k \\cdot 180°$. Im Intervall $[0°, 360°)$: $k = 0 \\Rightarrow \\alpha = 45°$; $k = 1 \\Rightarrow \\alpha = 225°$.
 
 **Probe:** $\\alpha = 45°$: $2 \\cdot \\dfrac{\\sqrt{2}}{2} \\cdot \\dfrac{\\sqrt{2}}{2} = 1$ ✓. $\\alpha = 225°$: $2 \\cdot \\left(-\\dfrac{\\sqrt{2}}{2}\\right) \\cdot \\left(-\\dfrac{\\sqrt{2}}{2}\\right) = 1$ ✓.
 
@@ -72,13 +68,13 @@ $$\\sin^{2}(\\alpha) \\cdot \\left(1 + \\dfrac{\\cos^{2}(\\alpha)}{\\sin^{2}(\\a
     correctIndex: 3,
     explanation: `**Ansatz:** Jede Formel gegen die Standardidentitäten prüfen.
 
-**Prüfung:**
+**Rechnung:**
 - A: $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$ — Doppelwinkelformel ✓
 - B: $\\cos(2\\alpha) = 1 - 2\\sin^{2}\\alpha$ — Alternativform ✓
 - C: $\\tan = \\dfrac{\\sin}{\\cos}$ — Definition ✓
 - D: $\\sin(\\alpha+\\beta) = \\sin\\alpha + \\sin\\beta$ — **FALSCH**. Richtig: $\\sin(\\alpha+\\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$.
 
-**Gegenbeispiel für D:** $\\sin(60° + 30°) = \\sin(90°) = 1$, aber $\\sin(60°) + \\sin(30°) = \\dfrac{\\sqrt{3}}{2} + \\dfrac{1}{2} \\approx 1{,}37 \\neq 1$.
+**Probe:** Gegenbeispiel für D: $\\sin(60° + 30°) = \\sin(90°) = 1$, aber $\\sin(60°) + \\sin(30°) = \\dfrac{\\sqrt{3}}{2} + \\dfrac{1}{2} \\approx 1{,}37 \\neq 1$.
 
 **Am Einheitskreis heißt das:** Drehungen addieren sich nicht linear. Sinus misst eine Projektion — und Projektionen zweier getrennter Drehungen lassen sich nicht einfach summieren.
 
@@ -101,11 +97,9 @@ $$\\sin^{2}(\\alpha) \\cdot \\left(1 + \\dfrac{\\cos^{2}(\\alpha)}{\\sin^{2}(\\a
     correctIndex: 1,
     explanation: `**Ansatz:** Ausdrucksmuster als Additionstheorem erkennen.
 
-**Schritt 1:** $\\cos(\\alpha)\\cos(\\beta) + \\sin(\\alpha)\\sin(\\beta) = \\cos(\\alpha - \\beta)$ (Additionstheorem für $\\cos(\\alpha - \\beta)$).
+**Rechnung:** Schritt 1: $\\cos(\\alpha)\\cos(\\beta) + \\sin(\\alpha)\\sin(\\beta) = \\cos(\\alpha - \\beta)$ (Additionstheorem für $\\cos(\\alpha - \\beta)$). Schritt 2: $\\cos(75° - 30°) = \\cos(45°) = \\dfrac{\\sqrt{2}}{2}$.
 
-**Schritt 2:** $\\cos(75° - 30°) = \\cos(45°) = \\dfrac{\\sqrt{2}}{2}$.
-
-**Probe (Taschenrechner, DEG-Modus):**
+**Probe:** (Taschenrechner, DEG-Modus)
 $\\cos(75°)\\cos(30°) + \\sin(75°)\\sin(30°) \\approx 0{,}2588 \\cdot 0{,}8660 + 0{,}9659 \\cdot 0{,}5 \\approx 0{,}2241 + 0{,}4830 = 0{,}7071 \\approx \\dfrac{\\sqrt{2}}{2}$ ✓.
 
 **Am Einheitskreis heißt das:** Der Ausdruck ist das Skalarprodukt zweier Einheitsvektoren unter den Winkeln $\\alpha$ und $\\beta$. Er misst den Kosinus des eingeschlossenen Winkels $\\alpha - \\beta$.
@@ -129,12 +123,7 @@ $\\cos(75°)\\cos(30°) + \\sin(75°)\\sin(30°) \\approx 0{,}2588 \\cdot 0{,}86
     correctIndex: 1,
     explanation: `**Ansatz:** Gleichung in eine einzige trigonometrische Funktion umformen.
 
-**Schritt 1:** $\\sin(\\alpha) = \\cos(\\alpha)$. Dividiere beide Seiten durch $\\cos(\\alpha)$ (erlaubt, wenn $\\cos\\alpha \\neq 0$):
-$$\\tan(\\alpha) = 1.$$
-
-**Schritt 2:** Hauptwert: $\\alpha_{0} = \\arctan(1) = 45°$. Periode von $\\tan$ ist $180°$, also alle Lösungen: $\\alpha = 45° + k \\cdot 180°$.
-
-**Schritt 3:** Im Intervall $[0°, 360°)$: $k = 0 \\Rightarrow 45°$; $k = 1 \\Rightarrow 225°$.
+**Rechnung:** Schritt 1: $\\sin(\\alpha) = \\cos(\\alpha)$. Dividiere beide Seiten durch $\\cos(\\alpha)$ (erlaubt, wenn $\\cos\\alpha \\neq 0$): $\\tan(\\alpha) = 1$. Schritt 2: Hauptwert $\\alpha_{0} = \\arctan(1) = 45°$. Periode von $\\tan$ ist $180°$, also alle Lösungen $\\alpha = 45° + k \\cdot 180°$. Schritt 3: Im Intervall $[0°, 360°)$: $k = 0 \\Rightarrow 45°$; $k = 1 \\Rightarrow 225°$.
 
 **Probe:** $\\alpha = 45°$: $\\sin(45°) = \\cos(45°) = \\dfrac{\\sqrt{2}}{2}$ ✓. $\\alpha = 225°$: $\\sin(225°) = \\cos(225°) = -\\dfrac{\\sqrt{2}}{2}$ ✓.
 
@@ -161,11 +150,7 @@ $$\\tan(\\alpha) = 1.$$
     correctIndex: 1,
     explanation: `**Ansatz:** Rechtwinkliges Dreieck mit Mast (vertikal) und Schatten (horizontal) skizzieren. Der Sonnenstrahl bildet die Hypotenuse.
 
-**Schritt 1 — Zuordnung:** Der Winkel $\\alpha$ zwischen Sonnenstrahl und Boden liegt am Schattenende. Vom $\\alpha$ aus gesehen ist der Mast die *Gegenkathete* ($G = 20$ m), der Schatten die *Ankathete* ($A = 15$ m).
-
-**Schritt 2 — Formel:** $\\tan(\\alpha) = \\dfrac{G}{A} = \\dfrac{20}{15} = \\dfrac{4}{3}$.
-
-**Schritt 3 — Umkehrfunktion:** $\\alpha = \\arctan(4/3) \\approx 53{,}13°$.
+**Rechnung:** Zuordnung — der Winkel $\\alpha$ zwischen Sonnenstrahl und Boden liegt am Schattenende. Vom $\\alpha$ aus gesehen: Mast = Gegenkathete ($G = 20$ m), Schatten = Ankathete ($A = 15$ m). Formel: $\\tan(\\alpha) = \\dfrac{G}{A} = \\dfrac{20}{15} = \\dfrac{4}{3}$. Umkehrfunktion: $\\alpha = \\arctan(4/3) \\approx 53{,}13°$.
 
 **Probe:** $\\tan(53{,}13°) \\approx 1{,}333 = 4/3$ ✓ (Taschenrechner, DEG-Modus).
 
@@ -190,13 +175,9 @@ $$\\tan(\\alpha) = 1.$$
     correctIndex: 0,
     explanation: `**Ansatz:** Kräftezerlegung, horizontale Komponente mit Kosinus, vertikale mit Sinus.
 
-**Schritt 1 — Formeln:** $F_{x} = F\\cos(\\alpha)$, $F_{y} = F\\sin(\\alpha)$.
+**Rechnung:** Formeln: $F_{x} = F\\cos(\\alpha)$, $F_{y} = F\\sin(\\alpha)$. Werte: $F_{x} = 500 \\cdot \\cos(37°) \\approx 500 \\cdot 0{,}8 = 400$ N. $F_{y} = 500 \\cdot \\sin(37°) \\approx 500 \\cdot 0{,}6 = 300$ N.
 
-**Schritt 2 — Rechnung:**
-- $F_{x} = 500 \\cdot \\cos(37°) \\approx 500 \\cdot 0{,}8 = 400$ N.
-- $F_{y} = 500 \\cdot \\sin(37°) \\approx 500 \\cdot 0{,}6 = 300$ N.
-
-**Probe mit Pythagoras:** $\\sqrt{400^{2} + 300^{2}} = \\sqrt{250000} = 500$ N ✓ — das bekannte $3{-}4{-}5$-Dreieck, skaliert mit $100$.
+**Probe:** Pythagoras $\\sqrt{400^{2} + 300^{2}} = \\sqrt{250000} = 500$ N ✓ — das bekannte $3{-}4{-}5$-Dreieck, skaliert mit $100$.
 
 **Am Einheitskreis heißt das:** Der Einheitsvektor bei $37°$ ist $(0{,}8,\\ 0{,}6)$. Der Kraftvektor ist $500 \\cdot (0{,}8,\\ 0{,}6) = (400,\\ 300)$ N.
 
@@ -221,18 +202,11 @@ $$\\tan(\\alpha) = 1.$$
     correctIndex: 0,
     explanation: `**Ansatz:** Standardform $x(t) = A \\sin(\\omega t + \\varphi)$ mit der gegebenen Gleichung vergleichen.
 
-**Identifikation:**
-- $A = 3$ (Vorfaktor vor dem Sinus)
-- $\\omega = 2$ (Koeffizient von $t$ im Argument)
-- $\\varphi = \\pi/4$ (Konstante im Argument)
+**Rechnung:** Aus $3 \\sin(2t + \\pi/4)$ ablesen: $A = 3$ (Vorfaktor vor dem Sinus), $\\omega = 2$ (Koeffizient von $t$ im Argument), $\\varphi = \\pi/4$ (Phasen-Konstante). Abgeleitete Größen: Periode $T = 2\\pi/\\omega = \\pi$ s; Frequenz $f = 1/T = 1/\\pi$ Hz.
 
-**Am Einheitskreis heißt das:** Die Schwingung ist die y-Koordinate eines Punkts, der auf einem Kreis mit Radius $3$ mit Winkelgeschwindigkeit $\\omega = 2$ rad/s rotiert, wobei er bei $t = 0$ schon um $\\pi/4$ vorangekommen ist.
+**Probe:** Am Einheitskreis: Schwingung ist die y-Koordinate eines Punkts, der mit Winkelgeschwindigkeit $\\omega = 2$ rad/s rotiert. Bei $t = 0$ startet er bei Phasenwinkel $\\pi/4$; $x(0) = 3\\sin(\\pi/4) = 3 \\cdot \\tfrac{\\sqrt{2}}{2} \\approx 2{,}12$ — passt zu Amplitude $A = 3$.
 
-**Abgeleitete Größen:**
-- Periode: $T = \\dfrac{2\\pi}{\\omega} = \\pi$ s
-- Frequenz: $f = \\dfrac{1}{T} = \\dfrac{1}{\\pi}$ Hz
-
-**Typischer Fehler:** $\\omega = \\pi/4$ wählen — das ist der Phasenwinkel $\\varphi$, nicht die Kreisfrequenz. Oder $\\omega = 2t$ — $\\omega$ ist eine *Konstante*, nicht eine Funktion von $t$.`,
+**Typischer Fehler:** $\\omega = \\pi/4$ wählen — das ist der Phasenwinkel $\\varphi$, nicht die Kreisfrequenz. Oder $\\omega = 2t$ — $\\omega$ ist eine **Konstante**, nicht eine Funktion von $t$.`,
     hints: [
       'Standardform: $x(t) = A \\cdot \\sin(\\omega t + \\varphi)$.',
       '$A$ ist der Vorfaktor vor $\\sin$, $\\omega$ der Faktor vor $t$ im Argument.',
@@ -280,10 +254,9 @@ $$a = \\sqrt{25} = 5.$$
     correctIndex: 1,
     explanation: `**Ansatz:** Sinus hat Periode $2\\pi$ im Argument. Die Periode der Schwingung ist die Zeit, bis das Argument um $2\\pi$ gewachsen ist.
 
-**Herleitung:** Nach einer Periode $T$ muss gelten:
-$$\\omega \\cdot (t + T) = \\omega t + 2\\pi \\Rightarrow \\omega T = 2\\pi \\Rightarrow T = \\dfrac{2\\pi}{\\omega}.$$
+**Rechnung:** Nach einer Periode $T$ muss gelten: $\\omega \\cdot (t + T) = \\omega t + 2\\pi \\Rightarrow \\omega T = 2\\pi \\Rightarrow T = \\dfrac{2\\pi}{\\omega}$.
 
-**Einheitencheck:** $[\\omega] = $ rad/s. $[T] = \\dfrac{\\text{rad}}{\\text{rad/s}} = $ s ✓.
+**Probe:** Einheitencheck: $[\\omega] = $ rad/s, $[T] = \\dfrac{\\text{rad}}{\\text{rad/s}} = $ s ✓.
 
 **Am Einheitskreis heißt das:** Der Punkt mit Winkelgeschwindigkeit $\\omega$ braucht Zeit $T = \\dfrac{2\\pi}{\\omega}$, um einmal rund zu laufen. Das ist exakt die Schwingungsperiode.
 
@@ -310,11 +283,9 @@ $$\\omega \\cdot (t + T) = \\omega t + 2\\pi \\Rightarrow \\omega T = 2\\pi \\Ri
     correctIndex: 2,
     explanation: `**Ansatz:** $\\sin$ ist periodisch mit Periode $2\\pi$ und nimmt jeden Wert $|y| < 1$ **zweimal** pro Periode an.
 
-**Schritt 1 — Hauptwerte in $[0, 2\\pi]$:** $\\sin(x) = 0{,}5 \\Rightarrow x_{1} = \\dfrac{\\pi}{6}$ und $x_{2} = \\pi - \\dfrac{\\pi}{6} = \\dfrac{5\\pi}{6}$ (Supplementärwinkel im 2. Quadrant).
+**Rechnung:** Hauptwerte in $[0, 2\\pi]$: $\\sin(x) = 0{,}5 \\Rightarrow x_{1} = \\tfrac{\\pi}{6}$ und $x_{2} = \\pi - \\tfrac{\\pi}{6} = \\tfrac{5\\pi}{6}$ (Supplementärwinkel im 2. Q). Weitere Periode $[2\\pi, 4\\pi]$: $x_{3} = \\tfrac{13\\pi}{6}$, $x_{4} = \\tfrac{17\\pi}{6}$. Gesamt: $4$ Lösungen.
 
-**Schritt 2 — Weitere Periode $[2\\pi, 4\\pi]$:** Addiere $2\\pi$ zu jeder Lösung: $x_{3} = \\dfrac{13\\pi}{6}$, $x_{4} = \\dfrac{17\\pi}{6}$.
-
-**Schritt 3 — Summe:** $4$ Lösungen im Intervall $[0, 4\\pi]$.
+**Probe:** In $[0, 4\\pi] = $ zwei volle Perioden, $\\sin$ erreicht $0{,}5$ genau zweimal pro Periode, also 4-mal ✓.
 
 **Am Einheitskreis heißt das:** In jeder vollen Umdrehung ($2\\pi$) schneidet die waagerechte Linie $y = 0{,}5$ den Einheitskreis zweimal (einmal im 1., einmal im 2. Quadrant). In zwei Umdrehungen sind das $4$ Schnittpunkte.
 
@@ -337,17 +308,11 @@ $$\\omega \\cdot (t + T) = \\omega t + 2\\pi \\Rightarrow \\omega T = 2\\pi \\Ri
     correctIndex: 2,
     explanation: `**Ansatz:** Symmetrie $\\sin(-\\alpha) = -\\sin(\\alpha)$ und Reduktionsformel anwenden.
 
-**Schritt 1:** $\\sin(-210°) = -\\sin(210°)$ ($\\sin$ ist ungerade).
-
-**Schritt 2:** $210° = 180° + 30°$. Im 3. Quadrant: $\\sin(210°) = -\\sin(30°) = -\\dfrac{1}{2}$.
-
-**Schritt 3:** $\\sin(-210°) = -(-\\dfrac{1}{2}) = \\dfrac{1}{2}$.
-
-**Alternativer Weg:** $-210° = -210° + 360° = 150°$. Also $\\sin(-210°) = \\sin(150°) = \\sin(30°) = \\dfrac{1}{2}$.
+**Rechnung:** Schritt 1: $\\sin(-210°) = -\\sin(210°)$ ($\\sin$ ungerade). Schritt 2: $210° = 180° + 30°$, im 3. Q: $\\sin(210°) = -\\sin(30°) = -\\tfrac{1}{2}$. Schritt 3: $\\sin(-210°) = -(-\\tfrac{1}{2}) = \\tfrac{1}{2}$. Alternativer Weg: $-210° + 360° = 150°$; $\\sin(150°) = \\sin(30°) = \\tfrac{1}{2}$.
 
 **Am Einheitskreis heißt das:** $-210°$ (im Uhrzeigersinn) und $150°$ (gegen den Uhrzeigersinn) landen am *selben Punkt* im 2. Quadrant: $\\left(-\\dfrac{\\sqrt{3}}{2}, \\dfrac{1}{2}\\right)$. Die y-Koordinate ist $\\dfrac{1}{2}$.
 
-**Probe (Taschenrechner, DEG-Modus):** $\\sin(-210°) = 0{,}5$ ✓.
+**Probe:** (Taschenrechner, DEG-Modus) $\\sin(-210°) = 0{,}5$ ✓.
 
 **Typischer Fehler:** Nur eine der zwei Regeln anwenden (z.B. ungerade Funktion vergessen) und $-\\dfrac{1}{2}$ angeben.`,
     hints: [
@@ -372,7 +337,7 @@ $$\\omega \\cdot (t + T) = \\omega t + 2\\pi \\Rightarrow \\omega T = 2\\pi \\Ri
 
 **Am Einheitskreis heißt das:** $\\arctan$ "scannt" nur die rechte Halbkreisseite (ohne Pole). Der Winkel $-45°$ entspricht der Richtung in den 4. Quadrant.
 
-**Probe (Taschenrechner, DEG-Modus):** $\\tan(-45°) = -1$ ✓.
+**Probe:** (Taschenrechner, DEG-Modus) $\\tan(-45°) = -1$ ✓.
 
 **Achtung bei Anwendungen:** In Gleichungen wie $\\tan(x) = -1$ gibt es zusätzliche Lösungen: $x = -45° + k \\cdot 180°$, also auch $x = 135°, 315°, \\ldots$. Aber $\\arctan$ liefert *nur* den Hauptwert $-45°$.
 
@@ -428,7 +393,7 @@ $$= (\\sin^{2}\\alpha + \\cos^{2}\\alpha) + 2\\sin\\alpha\\cos\\alpha = 1 + 2\\s
 $$\\cos(75°) = \\cos(45° + 30°) = \\cos(45°)\\cos(30°) - \\sin(45°)\\sin(30°)$$
 $$= \\dfrac{\\sqrt{2}}{2} \\cdot \\dfrac{\\sqrt{3}}{2} - \\dfrac{\\sqrt{2}}{2} \\cdot \\dfrac{1}{2} = \\dfrac{\\sqrt{6}}{4} - \\dfrac{\\sqrt{2}}{4} = \\dfrac{\\sqrt{6} - \\sqrt{2}}{4}.$$
 
-**Probe (Taschenrechner, DEG-Modus):** $\\cos(75°) \\approx 0{,}2588$. Und $\\dfrac{\\sqrt{6} - \\sqrt{2}}{4} \\approx \\dfrac{2{,}449 - 1{,}414}{4} \\approx 0{,}2588$ ✓.
+**Probe:** (Taschenrechner, DEG-Modus) $\\cos(75°) \\approx 0{,}2588$. Und $\\dfrac{\\sqrt{6} - \\sqrt{2}}{4} \\approx \\dfrac{2{,}449 - 1{,}414}{4} \\approx 0{,}2588$ ✓.
 
 **Am Einheitskreis heißt das:** Bei $75°$ liegt der Punkt fast oben auf dem Kreis — die x-Koordinate ($\\cos$) ist klein und positiv.
 
@@ -490,6 +455,11 @@ const lessons_u4 = [
 - DEG/RAD-Verwechslung ($\\sin(30)$ vs. $\\sin(30°)$).
 - Linearitäts-Irrtum: $\\sin(\\alpha+\\beta) \\neq \\sin\\alpha + \\sin\\beta$.
 - Nur Hauptwert angeben und weitere Lösungen vergessen.`,
+      },
+      {
+        id: 'trig-4-1-s1b', type: 'visualization', title: 'Einheitskreis — sin/cos ablesen',
+        visualizationId: 'unit-circle',
+        params: { showSine: true, showCosine: true, interactive: true, showQuadrants: true, showLabels: true, initialAngle: 45 },
       },
       { id: 'trig-4-1-s2', type: 'exercise', title: 'Aufgabe 1 — Pythagoras-Vereinfachung', exerciseRef: 'ex-trig-4-1-a' },
       { id: 'trig-4-1-s3', type: 'exercise', title: 'Aufgabe 2 — Doppelwinkelgleichung', exerciseRef: 'ex-trig-4-1-b' },

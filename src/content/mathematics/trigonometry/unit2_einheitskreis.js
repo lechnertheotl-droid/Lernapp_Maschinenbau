@@ -9,11 +9,9 @@ export const exercises_u2 = {
     correctIndex: 2,
     explanation: `**Ansatz:** Namensdefinition. "Einheit" bedeutet in der Mathematik $1$.
 
-**Regel:** Der Einheitskreis ist der Kreis um den Ursprung mit Radius $r = 1$ in der $xy$-Ebene. Gleichung: $x^{2} + y^{2} = 1$.
+**Rechnung:** Der Einheitskreis ist der Kreis um den Ursprung mit Radius $r = 1$ in der $xy$-Ebene. Gleichung: $x^{2} + y^{2} = 1$. Mit $r = 1$ lassen sich $\\sin$ und $\\cos$ direkt als Koordinaten eines Punkts auf dem Kreis definieren — ohne Division durch den Radius.
 
-**Warum so?** Mit $r = 1$ lassen sich $\\sin$ und $\\cos$ direkt als Koordinaten eines Punkts auf dem Kreis definieren — ohne Division durch den Radius. Das vereinfacht alle Formeln.
-
-**Am Einheitskreis heißt das:** Jeder Punkt auf dem Kreis hat die Form $(\\cos\\alpha, \\sin\\alpha)$, und seine Distanz zum Ursprung ist immer $1$.
+**Probe:** Jeder Punkt auf dem Kreis hat die Form $(\\cos\\alpha, \\sin\\alpha)$, Distanz zum Ursprung $\\sqrt{\\cos^{2}\\alpha + \\sin^{2}\\alpha} = 1$ ✓.
 
 **Typischer Fehler:** $2$ wählen, wenn man den Durchmesser statt des Radius meint.`,
     hints: [
@@ -86,9 +84,7 @@ export const exercises_u2 = {
     correctIndex: 1,
     explanation: `**Ansatz:** Definition am Einheitskreis.
 
-**Regel:** $P = (\\cos\\alpha, \\sin\\alpha)$, also ist die **x-Koordinate** gleich $\\cos(\\alpha)$, die **y-Koordinate** gleich $\\sin(\\alpha)$.
-
-**Am Einheitskreis heißt das:** Projektionslinie vom Punkt auf die x-Achse liefert den Kosinuswert, Projektion auf die y-Achse liefert den Sinuswert.
+**Rechnung:** $P = (\\cos\\alpha, \\sin\\alpha)$, also ist die **x-Koordinate** gleich $\\cos(\\alpha)$, die **y-Koordinate** gleich $\\sin(\\alpha)$. Projektionslinie vom Punkt auf die x-Achse liefert den Kosinuswert.
 
 **Probe:** Bei $\\alpha = 0°$: $P = (1, 0)$ und $\\cos(0°) = 1$ ✓. Bei $\\alpha = 90°$: $P = (0, 1)$ und $\\cos(90°) = 0$ ✓.
 
