@@ -108,4 +108,62 @@ $\\vec r = (0{,}3;\\,0{,}1;\\,0)~\\text{m}$ gemessen vom Drehpunkt.`,
     ],
     tags: ['kreuzprodukt', 'drehmoment', 'fläche'],
   },
+  {
+    id: 'pr-vek-3',
+    topicId: 'vektoren',
+    title: 'Gerade und Ebene — Schnittpunkt, Winkel, Abstand',
+    difficulty: 'klausur-plus',
+    points: 12,
+    estimatedMinutes: 14,
+    context: `Gegeben sind die Gerade
+$$g:\\;\\vec x = \\begin{pmatrix}1\\\\0\\\\2\\end{pmatrix} + t\\begin{pmatrix}2\\\\1\\\\-1\\end{pmatrix}$$
+und die Ebene
+$$E:\\;x + 2y + z = 5.$$
+Untersuchen Sie Lage und Abstand.`,
+    subtasks: [
+      {
+        id: 'a',
+        prompt: 'a) Berechnen Sie den Parameter $t$ des Schnittpunkts $S = g \\cap E$ (auf 3 Nachkommastellen).',
+        answer: 0.667,
+        unit: '',
+        tolerance: 0.005,
+        points: 3,
+        explanation: `Geraden­punkte in $E$ einsetzen: $(1+2t) + 2\\,t + (2-t) = 5 \\Rightarrow 3 + 3t = 5 \\Rightarrow t = \\tfrac{2}{3} \\approx 0{,}667$.`,
+      },
+      {
+        id: 'b',
+        prompt: 'b) Bestimmen Sie die $x$-Koordinate des Schnittpunkts $S$ (auf 3 Nachkommastellen).',
+        answer: 2.333,
+        unit: '',
+        tolerance: 0.01,
+        points: 2,
+        explanation: `$S_x = 1 + 2\\cdot\\tfrac{2}{3} = \\tfrac{7}{3} \\approx 2{,}333$. (Entsprechend $S_y=\\tfrac23$, $S_z=\\tfrac43$.)`,
+      },
+      {
+        id: 'c',
+        prompt: 'c) Welchen Winkel $\\alpha$ (in °) schließt die Gerade $g$ mit der Ebene $E$ ein?',
+        answer: 30,
+        unit: '°',
+        tolerance: 0.5,
+        points: 4,
+        explanation: `Formel: $\\sin\\alpha = |\\vec v\\cdot\\vec n|/(|\\vec v|\\cdot|\\vec n|)$. $\\vec v=(2;1;-1)$, $\\vec n=(1;2;1)$, $\\vec v\\cdot\\vec n = 2+2-1 = 3$, $|\\vec v|=|\\vec n|=\\sqrt{6}$. $\\sin\\alpha = 3/6 = 0{,}5 \\Rightarrow \\alpha = 30°$.`,
+      },
+      {
+        id: 'd',
+        prompt: 'd) Wie weit ist der Punkt $P=(1;1;1)$ von der Ebene $E$ entfernt (Hessesche Normalform, auf 3 Nachkommastellen)?',
+        answer: 0.408,
+        unit: '',
+        tolerance: 0.005,
+        points: 3,
+        explanation: `$d = |x_P + 2y_P + z_P - 5|/|\\vec n| = |1 + 2 + 1 - 5|/\\sqrt{6} = 1/\\sqrt{6} \\approx 0{,}408$.`,
+      },
+    ],
+    hints: [
+      'Schnittpunkt: Gerade komponentenweise in die Ebenen­gleichung einsetzen und nach $t$ auflösen.',
+      'Winkel Gerade–Ebene: es wird $\\sin\\alpha$ verwendet (Projektion auf die Normale), nicht $\\cos\\alpha$.',
+      'Abstand Punkt–Ebene: $d = |ax_0+by_0+cz_0-d_0|/\\sqrt{a^2+b^2+c^2}$; Vorzeichen entscheidet nur über die Seite.',
+    ],
+    wrapUp: `Plausibilität: $\\vec v$ und $\\vec n$ sind nicht parallel, also trifft $g$ die Ebene schräg (hier $30°$). $P$ liegt nur $1/\\sqrt{6}\\approx 0{,}41$ von $E$ entfernt — ein Klausur-typischer kleiner Abstand.`,
+    tags: ['gerade', 'ebene', 'abstand', 'hessesche-normalform'],
+  },
 ]

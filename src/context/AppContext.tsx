@@ -1,9 +1,10 @@
 import {
-  createContext, useContext, useReducer, useEffect,
+  createContext, useContext, useReducer, useEffect, useRef,
   type Dispatch, type ReactNode,
 } from 'react'
 import { appReducer, INITIAL_STATE, type AppState, type Action } from './appReducer'
 import { loadState, saveState } from '@/utils/storage'
+import { useToast } from '@/components/ui/Toast'
 
 const AppStateContext = createContext<AppState | null>(null)
 const AppDispatchContext = createContext<Dispatch<Action> | null>(null)
@@ -18,15 +19,30 @@ function init(): AppState {
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(appReducer, undefined, init)
+  const showToast = useToast() as (opts: { message: string; tone: string }) => void
+  const hasWarnedRef = useRef(false)
 
   // Debounced persistence: flush ≤ 250ms after last dispatch.
-  // Also flushes synchronously on pagehide/visibilitychange so progress is
-  // never lost when the tab is backgrounded or swiped away.
+  // On pagehide/visibilitychange-hidden we flush synchronously so Tab-Switch
+  // oder Swipe-away keine Writes verschluckt. Quota-/andere Fehler werden
+  // sichtbar gemacht (einmaliger Toast), sonst verliert der User stillschweigend
+  // seinen Lernfortschritt.
   useEffect(() => {
-    const handle = setTimeout(() => saveState(state), 250)
+    const persist = () => {
+      const status = saveState(state)
+      if (status === 'ok' || hasWarnedRef.current) return
+      hasWarnedRef.current = true
+      showToast({
+        message: status === 'quota'
+          ? 'Lokaler Speicher voll – Fortschritt konnte nicht gesichert werden.'
+          : 'Fortschritt konnte nicht lokal gesichert werden.',
+        tone: 'corrective',
+      })
+    }
+    const handle = setTimeout(persist, 250)
     const flush = () => {
       clearTimeout(handle)
-      saveState(state)
+      persist()
     }
     const onVisibility = () => { if (document.visibilityState === 'hidden') flush() }
     window.addEventListener('pagehide', flush)
@@ -36,7 +52,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       window.removeEventListener('pagehide', flush)
       document.removeEventListener('visibilitychange', onVisibility)
     }
-  }, [state])
+  }, [state, showToast])
 
   return (
     <AppStateContext.Provider value={state}>

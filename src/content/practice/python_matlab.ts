@@ -107,4 +107,57 @@ soll numerisch gelöst werden.`,
     ],
     tags: ['lgs', 'numpy', 'matlab'],
   },
+  {
+    id: 'pr-py-3',
+    topicId: 'python-matlab',
+    title: 'Trapezregel numerisch in Python',
+    difficulty: 'klausur-einstieg',
+    points: 8,
+    estimatedMinutes: 7,
+    context: `Approximieren Sie $\\int_0^1 e^x\\,dx$ per Trapezregel mit $n=4$ Teilintervallen.
+In Python:
+\`\`\`python
+import numpy as np
+x = np.linspace(0, 1, 5)
+y = np.exp(x)
+I = np.trapz(y, x)
+\`\`\`
+(MATLAB-Analog: \`trapz(x, y)\`.)`,
+    subtasks: [
+      {
+        id: 'a',
+        prompt: 'a) Schrittweite $h$ (als Zahl)?',
+        answer: 0.25,
+        unit: '',
+        tolerance: 1e-3,
+        points: 2,
+        explanation: `$h = (1-0)/4 = 0{,}25$. Mit $n=4$ Teilintervallen entstehen $n+1=5$ Stützstellen $x_0,\\ldots,x_4$.`,
+      },
+      {
+        id: 'b',
+        prompt: 'b) Approximierter Integralwert (auf 4 Nachkommastellen).',
+        answer: 1.7272,
+        unit: '',
+        tolerance: 0.001,
+        points: 4,
+        explanation: `$I \\approx h\\,[\\tfrac12(e^0+e^1) + e^{0{,}25}+e^{0{,}5}+e^{0{,}75}] = 0{,}25\\,[0{,}5(1+2{,}71828) + 1{,}2840+1{,}6487+2{,}1170] = 0{,}25\\cdot 6{,}9089 \\approx 1{,}7272$.`,
+      },
+      {
+        id: 'c',
+        prompt: 'c) Exakter Wert ist $e - 1\\approx 1{,}7183$. Absoluter Fehler der Trapezregel auf 4 Nachkommastellen?',
+        answer: 0.0089,
+        unit: '',
+        tolerance: 0.0005,
+        points: 2,
+        explanation: `$|1{,}7272 - 1{,}7183| = 0{,}0089$. Der Fehler fällt mit $h^2$ — verdoppelt man $n$, wird er ca. um Faktor 4 kleiner.`,
+      },
+    ],
+    hints: [
+      'Stützstellen mit `np.linspace(a, b, n+1)` — so viele Punkte wie Intervalle plus 1.',
+      'Trapezregel: $I\\approx h\\,[\\tfrac12(y_0+y_n) + y_1+\\ldots+y_{n-1}]$.',
+      'Fehlerordnung $O(h^2)$: bei halbiertem $h$ viertelt sich der Fehler (ungefähr).',
+    ],
+    wrapUp: `Simpson-Regel hätte bei gleichem $n$ Fehler $O(h^4)$ — siehe numerik-Practice. Trapezregel ist dafür robust gegen nicht-äquidistante Gitter und \`np.trapz\` funktioniert auch mit unregelmäßigem $x$-Array.`,
+    tags: ['trapezregel', 'numpy', 'integration'],
+  },
 ]

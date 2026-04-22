@@ -23,6 +23,10 @@ export const ableitungTopic = {
     'Kurvendiskussion durchführen: Monotonie, Extremstellen, Wendepunkte, Krümmung',
     'Grenzwerte und Stetigkeit sauber prüfen und l’Hospital korrekt einsetzen',
   ],
+  // Pädagogische Reihenfolge: Grundlagen → Regeln → Kurvendiskussion → Grenzwerte
+  // → Prüfung. Die IDs 'abl-unit-4' (Prüfung) und 'abl-unit-5' (Grenzwerte) sind
+  // historisch gewachsen und stimmen nicht mit der Array-Position überein;
+  // IDs bleiben stabil, damit User-Progress (localStorage) nicht invalide wird.
   units: [abl_unit1, abl_unit2, abl_unit3, abl_unit5, abl_unit4],
   prerequisites: ['algebra'],
 }
