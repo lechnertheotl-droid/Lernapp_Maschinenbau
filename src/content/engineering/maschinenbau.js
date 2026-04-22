@@ -428,6 +428,7 @@ Alle anderen Einheiten lassen sich daraus ableiten.
                 hints: [
                   'Spannung hat Einheit Pa = N/m².',
                   'Welche Operation zwischen $F$ und Fläche liefert N/m²?',
+                  'Division: N geteilt durch m² ⇒ N/m² = Pa.',
                 ],
                 wrongAnswerExplanations: {
                   1: '$F \\cdot A$ hat Einheit $\\text{N} \\cdot \\text{m}^{2}$ — das ist keine Druck- oder Spannungseinheit.',
@@ -449,6 +450,7 @@ Alle anderen Einheiten lassen sich daraus ableiten.
                 hints: [
                   'Einheiten links und rechts notieren.',
                   'Ist m/s · s² dasselbe wie m?',
+                  'Nein — m/s·s² = m·s, nicht m.',
                 ],
               },
               {
@@ -469,7 +471,11 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 **Probe:** Wenn Schritt 4 nicht passt, **rechne nicht weiter**, sondern finde den Fehler.
 
 **Typischer Fehler:** Erst rechnen, dann prüfen — und Fehler später schwer finden.`,
-                hints: ['Immer von der Zieleinheit aus zurück denken.'],
+                hints: [
+                  'Immer von der Zieleinheit aus zurück denken.',
+                  'Rechte Seite aus bekannten Einheiten aufbauen.',
+                  'Vergleich erst am Ende — bei Nichtübereinstimmung: Formel falsch.',
+                ],
               },
               {
                 type: 'number-input',
@@ -488,6 +494,7 @@ Alle anderen Einheiten lassen sich daraus ableiten.
                 hints: [
                   '$E_\\text{kin} = \\tfrac{1}{2} m v^{2}$.',
                   'Einheit von $v^{2}$ ist $(\\text{m/s})^{2} = \\text{m}^{2}/\\text{s}^{2}$.',
+                  'Also $a = 2, b = 2 \\Rightarrow a+b = 4$.',
                 ],
               },
             ],
