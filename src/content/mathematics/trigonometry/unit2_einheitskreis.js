@@ -84,9 +84,7 @@ export const exercises_u2 = {
     correctIndex: 1,
     explanation: `**Ansatz:** Definition am Einheitskreis.
 
-**Regel:** $P = (\\cos\\alpha, \\sin\\alpha)$, also ist die **x-Koordinate** gleich $\\cos(\\alpha)$, die **y-Koordinate** gleich $\\sin(\\alpha)$.
-
-**Am Einheitskreis heißt das:** Projektionslinie vom Punkt auf die x-Achse liefert den Kosinuswert, Projektion auf die y-Achse liefert den Sinuswert.
+**Rechnung:** $P = (\\cos\\alpha, \\sin\\alpha)$, also ist die **x-Koordinate** gleich $\\cos(\\alpha)$, die **y-Koordinate** gleich $\\sin(\\alpha)$. Projektionslinie vom Punkt auf die x-Achse liefert den Kosinuswert.
 
 **Probe:** Bei $\\alpha = 0°$: $P = (1, 0)$ und $\\cos(0°) = 1$ ✓. Bei $\\alpha = 90°$: $P = (0, 1)$ und $\\cos(90°) = 0$ ✓.
 
