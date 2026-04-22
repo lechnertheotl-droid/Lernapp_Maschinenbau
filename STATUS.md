@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2228 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 264 (12 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 929 / 929 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 14 / 1134 (1 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2253 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 291 (13 %) | 100 % der Aufgaben | 🔴 |
+| MC mit wrongAnswerExplanations | 934 / 934 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 19 / 1134 (2 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -403,10 +403,10 @@ _Ohne Ableitung keine Extremwert-, Geschwindigkeits- oder Optimierungsaufgabe. I
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **178** (manuell: 94 · supplemental: 84)
-- 4-Block: 48/178 (27 %) 🔴
-- MC-wAE: 80/80 (100 %) ✅
-- Sub-Goals: 0/79 Goal-Tasks verknüpft 🔴
+- Aufgaben: **203** (manuell: 94 · supplemental: 109)
+- 4-Block: 75/203 (37 %) 🔴
+- MC-wAE: 85/85 (100 %) ✅
+- Sub-Goals: 5/79 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Integral als Stammfunktion und Fläche unter der Kurve; Techniken (Substitution, Partielle Integration); Anwendungen.**
@@ -459,7 +459,7 @@ _Wegstrecke aus Geschwindigkeit, Arbeit aus Kraft, Volumen aus Dichte — all da
 | `int-3-1` Flächenberechnung | 6 | 0/6 | 12 | 4/5/1/1/1 | 4/12 | 4/4 | ✅ | +6 Goal, +8 4B |
 | `int-3-2` Rotationskörper | 5 | 0/5 | 11 | 3/5/1/1/1 | 2/11 | 3/3 | ✅ | +5 Goal, +9 4B |
 | `int-3-3` Technische Anwendungen | 5 | 0/5 | 11 | 4/4/1/1/1 | 3/11 | 4/4 | ✅ | +5 Goal, +8 4B |
-| `int-3-4` Bogenlänge & Durchschnittswert | 5 | 0/5 | 3 | 1/2/0/0/0 | 1/3 | 1/1 | ✅ | +5 Goal, +2 4B |
+| `int-3-4` Bogenlänge & Durchschnittswert | 5 | 5/5 | 28 | 6/11/5/4/2 | 28/28 | 6/6 | ✅ | — |
 | `int-4-1` Prüfung: Integrationstechniken | 5 | 0/5 | 11 | 7/2/2/0/0 | 0/11 | 7/7 | ✅ | +5 Goal, +11 4B |
 | `int-4-2` Prüfung: Anwendungen der Integralrechnung | 5 | 0/5 | 11 | 6/3/2/0/0 | 0/11 | 6/6 | ✅ | +5 Goal, +11 4B |
 | `int-4-3` Prüfung: Uneigentliche & numerische Integrale | 6 | 0/6 | 11 | 3/4/2/1/1 | 0/11 | 3/3 | ✅ | +6 Goal, +11 4B |
@@ -1485,30 +1485,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 74 Lessons
-
-#### `int-3-4` · Bogenlänge & Durchschnittswert
-
-- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Anwendungen
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×1, number-input ×2
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Bogenlänge: $L = \int_a^b \sqrt{1 + [f'(x)]^2} dx$ (Pythagoras am Differentialdreieck)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Durchschnittswert: $\bar{f} = \frac{1}{b-a} \int_a^b f(x) dx$
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Parametrisierte Kurve $(x(t), y(t))$: $L = \int_{t_1}^{t_2} \sqrt{x'^2 + y'^2} dt$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Mittelwertsatz der Integralrechnung: $\exists \xi \in [a,b]$ mit $f(\xi) = \bar{f}$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Anwendung Maschinenbau: Zahnrad-Evolventen, Rohrleitungen, Seilverläufe
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
-- **4-Block-Erklärung fehlt bei:** `ex-int-3-4-a`, `ex-int-3-4-b`
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 73 Lessons
 
 #### `mech-1-4` · Reibung
 

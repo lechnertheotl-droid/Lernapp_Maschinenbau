@@ -312,11 +312,9 @@ export const exercises_int_u3 = {
     correctIndex: 0,
     explanation: `**Ansatz:** Zerlege die Kurve in infinitesimale Segmente. Jedes kleine Stück hat horizontale Länge $dx$ und vertikale Höhe $dy = f\'(x)\\,dx$. Nach Pythagoras: $ds = \\sqrt{(dx)^{2} + (dy)^{2}} = \\sqrt{1 + [f\'(x)]^{2}}\\,dx$.
 
-**Integration:** $L = \\displaystyle\\int_{a}^{b} \\sqrt{1 + [f\'(x)]^{2}}\\,dx$.
+**Rechnung:** Integration liefert $L = \\displaystyle\\int_{a}^{b} \\sqrt{1 + [f\'(x)]^{2}}\\,dx$. Anwendung im Maschinenbau: Profilkurven (Zahnrad-Evolvente, Rohrleitungen), Seillängen, Blechzuschnitt.
 
-**Probe bei Gerade $f(x) = x$ auf $[0, 3]$:** $f\'(x) = 1$, also $L = \\int_{0}^{3} \\sqrt{2}\\,dx = 3\\sqrt{2} \\approx 4{,}24$. Geometrie-Check: Gerade von $(0,0)$ nach $(3,3)$ hat Länge $\\sqrt{9+9} = 3\\sqrt{2}$ ✓.
-
-**Anwendung im Maschinenbau:** Profilkurven (Zahnrad-Evolvente, Rohrleitungen), Seillängen, Blechzuschnitt.
+**Probe:** Gerade $f(x) = x$ auf $[0, 3]$: $f\'(x) = 1$, also $L = \\int_{0}^{3} \\sqrt{2}\\,dx = 3\\sqrt{2} \\approx 4{,}24$. Geometrie-Check: Gerade von $(0,0)$ nach $(3,3)$ hat Länge $\\sqrt{9+9} = 3\\sqrt{2}$ ✓.
 
 **Typischer Fehler:** Nur $\\int f\'$ oder $\\int |f\'|$ integrieren — dabei fehlt der Pythagoras-Anteil für die horizontale Richtung.`,
     wrongAnswerExplanations: {
@@ -341,9 +339,7 @@ export const exercises_int_u3 = {
 **Rechnung:**
 $\\bar{f} = \\dfrac{1}{3-0}\\displaystyle\\int_{0}^{3} x^{2}\\,dx = \\dfrac{1}{3} \\cdot \\left[\\dfrac{x^{3}}{3}\\right]_{0}^{3} = \\dfrac{1}{3} \\cdot 9 = 3$.
 
-**Probe geometrisch:** Die Fläche unter $f(x) = x^{2}$ auf $[0,3]$ ist $9$. Ein Rechteck gleicher Fläche über $[0,3]$ hätte Höhe $9/3 = 3$ — das ist $\\bar{f}$.
-
-**Anwendung:** Durchschnitts-Spannung, -Temperatur, -Geschwindigkeit in Zeit- oder Ortsintervallen.
+**Probe:** Die Fläche unter $f(x) = x^{2}$ auf $[0,3]$ ist $9$. Ein Rechteck gleicher Fläche über $[0,3]$ hätte Höhe $9/3 = 3$ — das ist $\\bar{f}$. Anwendung: Durchschnitts-Spannung, -Temperatur, -Geschwindigkeit in Zeit- oder Ortsintervallen.
 
 **Typischer Fehler:** Die Normierung $\\tfrac{1}{b-a}$ vergessen und direkt das Integral $9$ als Antwort hinschreiben. Ohne Normierung bekommst du die *Fläche*, nicht den Mittelwert.`,
     hints: [
