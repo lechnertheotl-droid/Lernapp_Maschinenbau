@@ -1,11 +1,19 @@
 import { useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { MarkdownContent } from '@/components/lesson/MarkdownContent'
 import { ProgressBar } from '@/components/ui/ProgressBar'
 import { useAppState } from '@/context/AppContext'
-import { getAllTopics, getAllLessons } from '@/content/index'
+import { getAllTopics, getAllLessons, getTopic } from '@/content/index'
 import { getTopicMeta } from '@/utils/topicGraph'
-import lehrplanMd from '@/content/lehrplan/tu-wien-maschinenbau.md?raw'
+import {
+  CURRICULUM_INTRO,
+  CURRICULUM_PHASES,
+  CURRICULUM_TIPS,
+  TOPIC_GUIDES,
+  PLANNED_TOPICS,
+  MIN_EXERCISES_PER_LESSON,
+} from '@/content/curriculum'
 
 // Phasen-Zuordnung (aus topicGraph.studienbeginPriority abgeleitet).
 // `null` = Vertiefung (Phase 3).
@@ -16,7 +24,7 @@ function phaseOf(topicId) {
   return 3
 }
 
-const PHASE_META = {
+const PHASE_CARD_META = {
   1: { label: '1. Semester', tone: 'primary' },
   2: { label: '2. Semester', tone: 'lemon' },
   3: { label: 'Vertiefung',  tone: 'green' },
@@ -46,8 +54,6 @@ export function Lehrplan() {
   }, [topics, progress])
 
   // Pro Phase: aggregierte Lernziele aus den topicGoals der Topics dieser Phase.
-  // Topics ohne topicGoals werden übersprungen — ihre Ziele erscheinen nicht,
-  // bis die Felder gepflegt sind (siehe LERNZIELE.md Backlog).
   const phaseGoals = useMemo(() => {
     const goals = { 1: [], 2: [], 3: [] }
     for (const topic of topics) {
@@ -73,14 +79,13 @@ export function Lehrplan() {
           Lehrplan — TU Wien Maschinenbau
         </h1>
         <p className="text-ink-soft dark:text-surface-300 text-sm mt-1">
-          Empfohlene Reihenfolge vom Studienbeginn bis zur Vertiefung. Alles optional —
-          die App blockiert keine Inhalte.
+          {CURRICULUM_INTRO}
         </p>
       </header>
 
       <section className="grid grid-cols-1 xs:grid-cols-3 gap-3">
         {[1, 2, 3].map((phase) => {
-          const { label, tone } = PHASE_META[phase]
+          const { label, tone } = PHASE_CARD_META[phase]
           const { done, total } = phaseStats[phase]
           const pct = total > 0 ? Math.round((done / total) * 100) : 0
           return (
@@ -113,7 +118,7 @@ export function Lehrplan() {
             if (goals.length === 0) return null
             const visible = goals.slice(0, PHASE_GOAL_LIMIT)
             const hidden = goals.length - visible.length
-            const { label } = PHASE_META[phase]
+            const { label } = PHASE_CARD_META[phase]
             return (
               <div
                 key={phase}
@@ -139,9 +144,200 @@ export function Lehrplan() {
         </section>
       )}
 
-      <article className="bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard p-5">
-        <MarkdownContent className="text-ink dark:text-paper">{lehrplanMd}</MarkdownContent>
-      </article>
+      <section className="flex flex-col gap-4">
+        <h2 className="font-mono text-[10px] font-black text-ink dark:text-paper uppercase tracking-widest">
+          // Phasen &amp; Fächer
+        </h2>
+        {CURRICULUM_PHASES.map((phase) => (
+          <article
+            key={phase.id}
+            className="bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard p-4 flex flex-col gap-3"
+          >
+            <header>
+              <p className="font-black text-ink dark:text-paper text-base leading-tight">{phase.label}</p>
+              <p className="text-ink-soft dark:text-surface-300 text-xs mt-0.5">{phase.subtitle}</p>
+              <p className="text-ink dark:text-paper text-sm mt-2">{phase.description}</p>
+            </header>
+            <ul className="flex flex-col gap-2">
+              {phase.subjects.map((s, i) => (
+                <li key={i} className="border-l-4 border-primary-600 pl-3 py-1">
+                  <p className="font-black text-ink dark:text-paper text-sm">{s.subject}</p>
+                  <div className="flex flex-wrap gap-1.5 mt-1">
+                    {s.topicIds.map((tid) => {
+                      const t = getTopic(tid)
+                      if (!t) {
+                        return (
+                          <span key={tid} className="text-ink-soft text-xs font-mono">
+                            {tid} (fehlt)
+                          </span>
+                        )
+                      }
+                      return (
+                        <Link
+                          key={tid}
+                          to={`/topics/${tid}`}
+                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded border-2 border-ink bg-lemon text-ink text-xs font-black font-mono shadow-hard-sm retro-press tap-highlight-none"
+                        >
+                          {t.title}
+                        </Link>
+                      )
+                    })}
+                  </div>
+                  {s.hint && (
+                    <p className="text-ink-soft dark:text-surface-300 text-xs mt-1 italic">{s.hint}</p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </section>
+
+      <section className="flex flex-col gap-3">
+        <h2 className="font-mono text-[10px] font-black text-ink dark:text-paper uppercase tracking-widest">
+          // Pro Thema: Lernpfad
+        </h2>
+        <p className="text-ink-soft dark:text-surface-300 text-xs">
+          Detaillierte Reihenfolge, Pflichtkompetenzen, häufige Fehler und Prüfungsfokus —
+          Qualitätsziel: ≥ {MIN_EXERCISES_PER_LESSON} Aufgaben pro Lesson (mehr ist besser).
+        </p>
+        {Object.entries(TOPIC_GUIDES).map(([tid, guide]) => {
+          const topic = getTopic(tid)
+          if (!topic) return null
+          return (
+            <details
+              key={tid}
+              className="bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard p-3 group"
+            >
+              <summary className="cursor-pointer list-none flex items-center justify-between gap-3">
+                <div className="flex flex-col gap-0.5">
+                  <p className="font-black text-ink dark:text-paper text-sm">{topic.title}</p>
+                  <p className="text-ink-soft dark:text-surface-300 text-xs">{guide.summary}</p>
+                </div>
+                <span className="font-mono text-xs text-ink-soft group-open:rotate-90 transition-transform">▸</span>
+              </summary>
+              <div className="mt-3 flex flex-col gap-3 text-sm text-ink dark:text-paper">
+                {guide.whyItMatters && (
+                  <p className="italic text-ink-soft dark:text-surface-300">{guide.whyItMatters}</p>
+                )}
+                {guide.roadmap && (
+                  <div>
+                    <p className="font-black text-xs uppercase tracking-wider mb-1.5">Empfohlene Reihenfolge</p>
+                    <ol className="flex flex-col gap-1.5 list-decimal list-inside">
+                      {guide.roadmap.map((r, i) => {
+                        const unit = (topic.units ?? []).find((u) => u.id === r.unitId)
+                        return (
+                          <li key={i} className="text-sm">
+                            <span className="font-bold">{unit?.title ?? r.unitId}:</span>{' '}
+                            <span className="text-ink-soft dark:text-surface-300">{r.focus}</span>
+                          </li>
+                        )
+                      })}
+                    </ol>
+                  </div>
+                )}
+                {guide.mustKnow && (
+                  <div>
+                    <p className="font-black text-xs uppercase tracking-wider mb-1.5">Das musst du können</p>
+                    <ul className="flex flex-col gap-1 list-disc list-inside">
+                      {guide.mustKnow.map((m, i) => (
+                        <li key={i} className="text-sm">{m}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {guide.commonMistakes && (
+                  <div>
+                    <p className="font-black text-xs uppercase tracking-wider mb-1.5 text-red-700 dark:text-red-300">Typische Fehler</p>
+                    <ul className="flex flex-col gap-1 list-disc list-inside">
+                      {guide.commonMistakes.map((m, i) => (
+                        <li key={i} className="text-sm">{m}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {guide.examFocus && (
+                  <div>
+                    <p className="font-black text-xs uppercase tracking-wider mb-1.5 text-primary-700 dark:text-primary-300">Klausur-Fokus</p>
+                    <ul className="flex flex-col gap-1 list-disc list-inside">
+                      {guide.examFocus.map((m, i) => (
+                        <li key={i} className="text-sm">{m}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {guide.studyTips && (
+                  <div>
+                    <p className="font-black text-xs uppercase tracking-wider mb-1.5 text-green-700 dark:text-green-300">Lern-Tipps</p>
+                    <ul className="flex flex-col gap-1 list-disc list-inside">
+                      {guide.studyTips.map((m, i) => (
+                        <li key={i} className="text-sm">{m}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                <Link
+                  to={`/topics/${tid}`}
+                  className="inline-flex self-start items-center gap-1 px-3 py-1 rounded border-2 border-ink bg-primary-600 text-white text-xs font-black font-mono shadow-hard-sm retro-press tap-highlight-none"
+                >
+                  → Zum Thema
+                </Link>
+              </div>
+            </details>
+          )
+        })}
+      </section>
+
+      {PLANNED_TOPICS.length > 0 && (
+        <section className="flex flex-col gap-3">
+          <h2 className="font-mono text-[10px] font-black text-ink dark:text-paper uppercase tracking-widest">
+            // Geplante Themen
+          </h2>
+          <p className="text-ink-soft dark:text-surface-300 text-xs">
+            Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen würden.
+            Noch nicht in der App enthalten.
+          </p>
+          {PLANNED_TOPICS.map((p) => (
+            <article
+              key={p.id}
+              className="bg-surface-100 dark:bg-surface-800 border-2 border-dashed border-ink rounded-retro p-3"
+            >
+              <div className="flex items-center justify-between">
+                <p className="font-black text-ink dark:text-paper text-sm">{p.title}</p>
+                <span className="font-mono text-[10px] font-black text-ink-soft uppercase">
+                  Phase {p.phase}
+                </span>
+              </div>
+              <p className="text-ink-soft dark:text-surface-300 text-xs mt-1">{p.reason}</p>
+              <p className="text-ink dark:text-paper text-xs mt-1.5 font-mono">
+                Geplant: {p.plannedUnits.join(' · ')}
+              </p>
+            </article>
+          ))}
+        </section>
+      )}
+
+      <section className="flex flex-col gap-3">
+        <h2 className="font-mono text-[10px] font-black text-ink dark:text-paper uppercase tracking-widest">
+          // Lern- &amp; Prüfungstechnik
+        </h2>
+        {CURRICULUM_TIPS.map((group) => (
+          <article
+            key={group.title}
+            className="bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard-sm p-3.5"
+          >
+            <p className="font-black text-ink dark:text-paper text-sm mb-2">{group.title}</p>
+            <ul className="flex flex-col gap-1.5">
+              {group.items.map((item, i) => (
+                <li key={i} className="text-ink dark:text-paper text-sm flex items-start gap-2">
+                  <span className="text-primary-700 dark:text-primary-300 flex-shrink-0 mt-0.5 font-mono font-black">→</span>
+                  <MarkdownContent className="flex-1 prose-p:my-0">{item}</MarkdownContent>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </section>
     </div>
   )
 }

@@ -17,13 +17,24 @@ export function loadState<T = unknown>(): T | null {
   }
 }
 
-export function saveState(state: unknown): void {
+export type SaveStatus = 'ok' | 'quota' | 'error'
+
+/**
+ * Persistiert den App-State in localStorage.
+ * Rückgabe:
+ *   'ok'    – erfolgreich geschrieben.
+ *   'quota' – QuotaExceededError (Speicher voll, Private-Mode-Limit erreicht).
+ *   'error' – sonstiger Fehler (Serialisierung, DOM-Ausnahme).
+ * Fehler werden NICHT mehr geworfen — der Aufrufer entscheidet über UI-Feedback.
+ */
+export function saveState(state: unknown): SaveStatus {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
+    return 'ok'
   } catch (e) {
-    // QuotaExceededError — silently ignore
-    if (e instanceof DOMException && e.name === 'QuotaExceededError') return
-    throw e
+    if (e instanceof DOMException && e.name === 'QuotaExceededError') return 'quota'
+    if (import.meta.env.DEV) console.error('[storage] saveState failed:', e)
+    return 'error'
   }
 }
 

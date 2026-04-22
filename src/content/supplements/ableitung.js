@@ -962,6 +962,169 @@ const profiles = {
     transferExplanation: 'Produktregel + Kettenregel: f\'(x) = e^(−x²) + x·(−2x)·e^(−x²) = e^(−x²)(1−2x²). f\'(0) = e⁰·(1−0) = 1.',
     transferHints: ['Produktregel: u=x, v=e^(−x²). v\'=−2x·e^(−x²) (Kettenregel).', 'f\'(0) = e⁰·(1−0) = 1.'],
   },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // Unit 5 — Grenzwerte & Stetigkeit
+  // ───────────────────────────────────────────────────────────────────────
+
+  'abl-5-1': {
+    explanation: `**Grenzwerte von Funktionen — was passiert "an einer Stelle", wenn die Funktion dort vielleicht gar nicht definiert ist?**
+
+Schreibweise: $\\lim_{x\\to a} f(x) = L$. Der Grenzwert existiert genau dann, wenn der links- und rechtsseitige Grenzwert übereinstimmen.
+
+**Typische Fälle:**
+- Polynom: Einsetzen reicht.
+- $0/0$: Term vereinfachen (kürzen, Faktorisierung) oder l'Hospital.
+- $\\infty/\\infty$: durch höchste Potenz kürzen oder l'Hospital.
+- Sprünge an Definitionslücken: links- und rechtsseitig getrennt prüfen.
+
+**l'Hospital:** Nur bei $0/0$ oder $\\infty/\\infty$. Regel: Zähler und Nenner GETRENNT ableiten, dann erneut Grenzwert.`,
+    conceptQuestion: 'Wann darf die Regel von l\'Hospital angewendet werden?',
+    conceptOptions: [
+      'Nur wenn Zähler und Nenner beide gegen 0 oder beide gegen $\\pm\\infty$ streben',
+      'Immer — sie funktioniert für jeden Grenzwert',
+      'Nur bei Polynomen',
+      'Nur für $x\\to 0$',
+    ],
+    conceptCorrect: 0,
+    conceptExplanation: 'l\'Hospital ist für "unbestimmte Ausdrücke" der Form $0/0$ oder $\\infty/\\infty$. Bei anderen Formen (z. B. $0\\cdot\\infty$, $\\infty-\\infty$) muss man zuerst in eine dieser Standardformen umformen.',
+    conceptHints: ['Unbestimmte Ausdrücke: $0/0$, $\\infty/\\infty$.'],
+    conceptWrongAnswers: {
+      1: 'Nein. Bei $\\lim_{x\\to 0}\\sin(x)/x^2$ wäre Zähler $0$, Nenner $0$ — hier darf man anwenden. Aber $\\lim_{x\\to 2} (x+1)/(x+1)$ ist $1$, kein unbestimmter Ausdruck — l\'Hospital würde falsche Ergebnisse liefern, wenn man es blind anwendet.',
+      2: 'Polynome sind durch einfaches Einsetzen berechenbar, l\'Hospital wäre hier übertrieben.',
+      3: 'Kein Zusammenhang zur Stelle $x\\to 0$ — die Regel gilt für jede Stelle, an der $0/0$ oder $\\infty/\\infty$ auftritt.',
+    },
+    calcQuestion: 'Berechne $\\lim_{x\\to 0}\\dfrac{\\sin(3x)}{x}$.',
+    calcAnswer: 3,
+    calcTolerance: 0.001,
+    calcUnit: '',
+    calcExplanation: '$0/0$. l\'Hospital: $\\lim_{x\\to 0}\\dfrac{3\\cos(3x)}{1} = 3\\cdot 1 = 3$. Alternativ: Faktor $3$ herausziehen, Standardgrenzwert $\\sin u/u\\to 1$.',
+    calcHints: ['$\\sin(0)=0$ und Nenner ist 0 → $0/0$.', 'l\'Hospital: Zähler und Nenner getrennt ableiten.'],
+    trueFalseStatement: 'Eine Funktion kann an einer Stelle einen Grenzwert besitzen, ohne dort definiert zu sein.',
+    trueFalseCorrect: true,
+    trueFalseExplanation: 'Richtig. Beispiel: $f(x)=(x^2-1)/(x-1)$ ist bei $x=1$ nicht definiert, hat aber $\\lim_{x\\to 1}=2$ (Vereinfachung: $(x+1)$ für $x\\ne 1$).',
+    trueFalseHints: ['Hebbare Definitionslücke.'],
+    matchingQuestion: 'Ordne jedem Grenzwerttyp die passende Methode zu.',
+    matchingPairs: [
+      { left: '$0/0$', right: 'Faktorisieren + kürzen oder l\'Hospital' },
+      { left: '$\\infty/\\infty$', right: 'durch höchste $x$-Potenz kürzen oder l\'Hospital' },
+      { left: '$0\\cdot\\infty$', right: 'als Bruch umschreiben, dann l\'Hospital' },
+      { left: 'Stetige Funktion in $a$ definiert', right: 'Direkteinsetzen' },
+    ],
+    matchingExplanation: 'Vier Standardfälle — wer den Typ erkennt, löst fast jeden Grenzwert klausurfähig.',
+    matchingHints: ['Zuerst Typ identifizieren, dann Methode wählen.'],
+    sortingQuestion: 'Bringe die Schritte bei $\\lim_{x\\to 1}\\dfrac{x^2-1}{x-1}$ in die richtige Reihenfolge.',
+    sortingItems: [
+      'Einsetzen: $0/0$ → unbestimmter Ausdruck',
+      'Faktorisieren: $x^2-1=(x-1)(x+1)$',
+      'Kürzen: $(x-1)$ weg, es bleibt $x+1$',
+      'Grenzwert erneut einsetzen: $\\lim (x+1)=2$',
+    ],
+    sortingOrder: [0, 1, 2, 3],
+    sortingExplanation: 'Klassischer Algorithmus für $0/0$ mit Polynom: erkennen, faktorisieren, kürzen, einsetzen.',
+    sortingHints: ['Erst prüfen, ob Einsetzen funktioniert.'],
+    errorQuestion: 'Jemand rechnet $\\lim_{x\\to 0}\\dfrac{e^x-1}{x}$ als "$0/0$" und bricht ab. Welcher Fehler liegt vor?',
+    errorOptions: [
+      '$0/0$ ist ein unbestimmter Ausdruck, KEIN Endergebnis — man muss mit l\'Hospital oder Taylor weiterrechnen',
+      'Der Grenzwert ist tatsächlich 0',
+      'Die Funktion ist gar nicht stetig',
+      'Der Grenzwert existiert nicht',
+    ],
+    errorCorrect: 0,
+    errorExplanation: 'l\'Hospital: $\\lim_{x\\to 0}\\dfrac{e^x}{1}=1$. "$0/0$" bedeutet nur, dass Einsetzen nicht reicht — nicht, dass es keinen Grenzwert gibt.',
+    errorHints: ['Unbestimmter Ausdruck = Rechnung weiterführen.'],
+    errorWrongAnswers: {
+      1: 'Der Grenzwert ist $1$, nicht $0$.',
+      2: 'Die Funktion hat eine hebbare Lücke bei $x=0$; nach Grenzwertbetrachtung ist sie dort fortsetzbar — Stetigkeit ist möglich.',
+      3: 'Der Grenzwert existiert ($=1$) und ist sogar eine Standardgrenze, die in der Definition von $e$ auftaucht.',
+    },
+    transferQuestion: 'Berechne $\\lim_{x\\to\\infty}\\dfrac{3x^2+2x}{2x^2-5}$.',
+    transferAnswer: 1.5,
+    transferTolerance: 0.001,
+    transferUnit: '',
+    transferExplanation: 'Durch $x^2$ kürzen: $\\dfrac{3+2/x}{2-5/x^2}\\to \\dfrac{3}{2}=1{,}5$.',
+    transferHints: ['$\\infty/\\infty$ → durch höchste Potenz kürzen.'],
+  },
+
+  'abl-5-2': {
+    explanation: `**Stetigkeit — keine "Sprünge", "Lücken" oder "Pole" im Graphen.**
+
+Formal: $f$ ist stetig bei $a$, wenn $\\lim_{x\\to a}f(x)=f(a)$. Voraussetzungen:
+1. $f(a)$ existiert.
+2. $\\lim_{x\\to a}f(x)$ existiert (beidseitiger Grenzwert).
+3. Beide Werte stimmen überein.
+
+**Typische Unstetigkeitsarten:**
+- **Hebbar:** Lücke, die durch Setzen von $f(a)=\\lim$ "geflickt" werden kann.
+- **Sprung:** Links- und rechtsseitiger Grenzwert existieren, sind aber verschieden.
+- **Pol:** $\\lim\\to\\pm\\infty$.
+
+**Wichtig für die Praxis:** Stetigkeit ist Voraussetzung für den Zwischenwertsatz (Nullstellensuche), den Satz vom Extremum auf abgeschlossenen Intervallen und die Differentiation.`,
+    conceptQuestion: 'Welche Bedingungen müssen alle erfüllt sein, damit $f$ bei $a$ stetig ist?',
+    conceptOptions: [
+      '$f(a)$ existiert, $\\lim_{x\\to a}f(x)$ existiert, und beide sind gleich',
+      'Nur dass $f(a)$ existiert',
+      'Nur dass $\\lim_{x\\to a}f(x)$ existiert',
+      'Nur dass $f$ differenzierbar ist',
+    ],
+    conceptCorrect: 0,
+    conceptExplanation: 'Alle drei Bedingungen zusammen definieren Stetigkeit bei $a$. Differentiation impliziert Stetigkeit (aber nicht umgekehrt — $|x|$ ist stetig, aber bei $0$ nicht differenzierbar).',
+    conceptHints: ['Drei Bedingungen: $f(a)$ existiert, Grenzwert existiert, beide gleich.'],
+    conceptWrongAnswers: {
+      1: 'Zu wenig — $f(a)$ allein gibt keinen Grenzwert. Eine Sprungfunktion ist z. B. definiert, aber unstetig.',
+      2: 'Grenzwert allein reicht nicht, wenn $f(a)$ nicht existiert oder einen anderen Wert annimmt.',
+      3: 'Differenzierbarkeit ist STÄRKER als Stetigkeit, aber nicht Voraussetzung für Stetigkeit selbst.',
+    },
+    calcQuestion: 'Für welches $c$ ist $f(x)=\\begin{cases} x^2+1 & x<2 \\\\ 2x+c & x\\geq 2 \\end{cases}$ stetig bei $x=2$?',
+    calcAnswer: 1,
+    calcTolerance: 1e-6,
+    calcUnit: '',
+    calcExplanation: 'Linksseitiger Grenzwert: $\\lim_{x\\to 2^-}x^2+1=5$. Rechtsseitiger Wert: $2\\cdot 2+c=4+c$. Stetigkeit: $4+c=5 \\Rightarrow c=1$.',
+    calcHints: ['An der Stelle 2 müssen beide Teile denselben Wert ergeben.'],
+    trueFalseStatement: 'Die Funktion $f(x)=1/x$ ist auf ihrem gesamten Definitionsbereich $\\mathbb{R}\\setminus\\{0\\}$ stetig.',
+    trueFalseCorrect: true,
+    trueFalseExplanation: 'Richtig. Die Stelle $0$ gehört nicht zum Definitionsbereich. An jeder anderen Stelle existiert der Grenzwert und stimmt mit dem Funktionswert überein.',
+    trueFalseHints: ['Stetigkeit nur an Stellen des Definitionsbereichs prüfen.'],
+    matchingQuestion: 'Ordne Unstetigkeitsart und Beispiel richtig zu.',
+    matchingPairs: [
+      { left: 'Hebbare Unstetigkeit', right: '$f(x)=\\sin(x)/x$ bei $x=0$ (Grenzwert = 1)' },
+      { left: 'Sprungstelle', right: 'Vorzeichenfunktion $\\operatorname{sgn}(x)$ bei $x=0$' },
+      { left: 'Polstelle', right: '$f(x)=1/x^2$ bei $x=0$ (strebt gegen $+\\infty$)' },
+    ],
+    matchingExplanation: 'Die drei kanonischen Unstetigkeitsarten — jede mit typischem Lehrbuch-Beispiel.',
+    matchingHints: ['Hebbar: Grenzwert existiert; Sprung: verschiedene Seitengrenzwerte; Pol: $\\pm\\infty$.'],
+    sortingQuestion: 'Bringe die Schritte des Stetigkeitschecks für $f(x)$ bei $a$ in die richtige Reihenfolge.',
+    sortingItems: [
+      'Prüfen, ob $a\\in D_f$ (also $f(a)$ existiert)',
+      'Links- und rechtsseitigen Grenzwert $\\lim_{x\\to a^\\pm} f(x)$ bestimmen',
+      'Prüfen, ob beide Grenzwerte übereinstimmen (Grenzwert existiert)',
+      'Vergleich: Grenzwert = $f(a)$? → ja: stetig, nein: unstetig',
+    ],
+    sortingOrder: [0, 1, 2, 3],
+    sortingExplanation: 'Strukturierter Algorithmus — zuerst Definiertheit, dann Grenzwertverhalten, dann Vergleich.',
+    sortingHints: ['In jeder Prüfung: dieselbe Reihenfolge.'],
+    errorQuestion: 'Jemand sagt: "$f(x)=|x|$ ist bei $x=0$ unstetig, weil die Ableitung dort nicht existiert." Welcher Fehler liegt vor?',
+    errorOptions: [
+      'Nicht-Differenzierbarkeit bedeutet nicht Unstetigkeit — $|x|$ ist bei $0$ stetig (Grenzwert = 0 = $f(0)$)',
+      '$|x|$ ist tatsächlich unstetig',
+      '$|x|$ ist nur für $x>0$ definiert',
+      'Ableitung existiert auch bei $x=0$',
+    ],
+    errorCorrect: 0,
+    errorExplanation: 'Stetigkeit und Differenzierbarkeit sind verschiedene Stärken. $|x|$ ist stetig bei 0, aber hat dort eine Knickstelle — nicht differenzierbar. Jede differenzierbare Funktion ist stetig, umgekehrt NICHT.',
+    errorHints: ['Stetig ⇐ differenzierbar, nicht umgekehrt.'],
+    errorWrongAnswers: {
+      1: '$|x|$ hat bei 0 den Wert 0 und Grenzwerte von beiden Seiten gleich 0 — stetig.',
+      2: '$|x|$ ist für alle reellen $x$ definiert.',
+      3: 'Links $-1$, rechts $+1$ — die Ableitung existiert nicht bei 0.',
+    },
+    transferQuestion: 'Wie lautet der Grenzwert $\\lim_{x\\to 0}\\dfrac{1-\\cos x}{x^2}$ (Standardgrenzwert)?',
+    transferAnswer: 0.5,
+    transferTolerance: 0.001,
+    transferUnit: '',
+    transferExplanation: '$0/0$, zweimal l\'Hospital: $\\lim\\dfrac{\\sin x}{2x}\\to\\lim\\dfrac{\\cos x}{2}=\\tfrac{1}{2}$. Alternativ Taylor: $1-\\cos x \\approx x^2/2$.',
+    transferHints: ['l\'Hospital zweimal anwenden oder Taylor-Reihe von $\\cos$ einsetzen.'],
+  },
 }
 
 export const ableitungSupplements = Object.fromEntries(

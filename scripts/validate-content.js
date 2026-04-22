@@ -128,6 +128,29 @@ for (const topic of topics) {
           }
         }
       }
+
+      // Exercise-Level-Checks (zusätzlich zu den Runtime-Checks in
+      // src/content/index.js getContentQualityIssues()). Hier prüfen wir
+      // Felder, die dort noch nicht geprüft werden, um den Build früh zu
+      // brechen statt erst beim Laden der App.
+      const allExercises = [
+        ...Object.values(unit.exercises ?? {}),
+        ...Object.values(lesson.exercises ?? {}),
+      ]
+      for (const ex of allExercises) {
+        if (ex.lessonId && ex.lessonId !== lesson.id) continue
+        const ep = `${lp}/exercise[${ex.id ?? '?'}]`
+        if (Array.isArray(ex.hints) && ex.hints.length < 3) {
+          warnings.push(`${ep}: nur ${ex.hints.length} Hint(s), empfohlen ≥ 3`)
+        }
+        if (typeof ex.subGoalIndex === 'number') {
+          const sgLen = Array.isArray(lesson.subGoals) ? lesson.subGoals.length : 0
+          check(
+            ex.subGoalIndex >= 0 && ex.subGoalIndex < sgLen,
+            `${ep}: subGoalIndex ${ex.subGoalIndex} außerhalb [0, ${sgLen - 1}]`
+          )
+        }
+      }
     }
   }
 }

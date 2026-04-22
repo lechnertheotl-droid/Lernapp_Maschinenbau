@@ -17,14 +17,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ThemeProvider>
-        <AppProvider>
-          <FormulaPopoverProvider>
-            <ToastProvider>
+        <ToastProvider>
+          <AppProvider>
+            <FormulaPopoverProvider>
               <App />
               <FormulaPopoverRoot />
-            </ToastProvider>
-          </FormulaPopoverProvider>
-        </AppProvider>
+            </FormulaPopoverProvider>
+          </AppProvider>
+        </ToastProvider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>

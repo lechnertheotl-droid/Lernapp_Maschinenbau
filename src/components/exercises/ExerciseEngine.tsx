@@ -81,7 +81,20 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
     return <div className="text-ink-soft text-sm font-mono">Aufgabe nicht gefunden: {exerciseId}</div>
   }
 
-  const entry = EXERCISE_COMPONENTS[exercise.type] ?? EXERCISE_COMPONENTS['multiple-choice']
+  const entry = EXERCISE_COMPONENTS[exercise.type]
+  if (!entry) {
+    if (import.meta.env.DEV) {
+      console.error(
+        `[ExerciseEngine] Unbekannter Aufgabentyp "${exercise.type}" bei Aufgabe ${exerciseId}. `
+          + `Erlaubt: ${Object.keys(EXERCISE_COMPONENTS).join(', ')}.`,
+      )
+    }
+    return (
+      <div className="text-red-700 dark:text-red-300 text-sm font-mono">
+        Unbekannter Aufgabentyp „{exercise.type}" bei Aufgabe {exerciseId}.
+      </div>
+    )
+  }
   const { Component, validate } = entry
 
   const handleSubmit = (answer: unknown) => {

@@ -97,4 +97,51 @@ export const trigonometryPractice: PracticeExercise[] = [
     ],
     tags: ['sinussatz', 'kosinussatz', 'dreieck'],
   },
+  {
+    id: 'pr-trig-3',
+    topicId: 'trigonometry',
+    title: 'Additionstheoreme und trigonometrische Gleichung',
+    difficulty: 'klausur-einstieg',
+    points: 8,
+    estimatedMinutes: 8,
+    context: `Gegeben ist die Gleichung
+$$\\sin(2x) = \\cos(x), \\qquad x \\in [0;\\,2\\pi).$$
+Lösen Sie strukturiert unter Verwendung von Additionstheoremen.`,
+    subtasks: [
+      {
+        id: 'a',
+        prompt: 'a) Drücken Sie $\\sin(2x)$ durch $\\sin x$ und $\\cos x$ aus. Geben Sie $\\sin(2x)/\\cos x$ für $\\cos x\\ne 0$ an (als Vielfaches von $\\sin x$).',
+        answer: 2,
+        unit: '',
+        tolerance: 1e-6,
+        points: 2,
+        explanation: `Additionstheorem: $\\sin(2x)=2\\sin x\\cos x$. Also $\\sin(2x)/\\cos x = 2\\sin x$.`,
+      },
+      {
+        id: 'b',
+        prompt: 'b) Die kleinste Lösung $x_1\\in[0;\\,2\\pi)$ aus $\\cos x=0$ (alle Lösungen in diesem Intervall, kleinstes $x$)? Antwort in Radiant.',
+        answer: 1.5708,
+        unit: '',
+        tolerance: 0.01,
+        points: 2,
+        explanation: `$\\cos x=0 \\Rightarrow x=\\tfrac{\\pi}{2},\\;\\tfrac{3\\pi}{2}$. Kleinste Lösung: $\\tfrac{\\pi}{2}\\approx 1{,}5708$.`,
+      },
+      {
+        id: 'c',
+        prompt: 'c) Die kleinste Lösung $x_2\\in[0;\\,2\\pi)$ aus $2\\sin x=1$ (Antwort in Radiant).',
+        answer: 0.5236,
+        unit: '',
+        tolerance: 0.01,
+        points: 4,
+        explanation: `$2\\sin x=1 \\Rightarrow \\sin x=\\tfrac12 \\Rightarrow x=\\tfrac{\\pi}{6}$ oder $x=\\tfrac{5\\pi}{6}$. Kleinste Lösung: $\\tfrac{\\pi}{6}\\approx 0{,}5236$.`,
+      },
+    ],
+    hints: [
+      'Faktorisieren statt Beide-Seiten-Dividieren; dividieren würde Nullstellen übersehen.',
+      'Gleichung $\\sin(2x)=\\cos x$ umstellen: $\\cos x\\,(2\\sin x - 1)=0$.',
+      'Im Intervall $[0;2\\pi)$ gibt $\\sin x = 1/2$ zwei Werte ($\\pi/6$ und $5\\pi/6$), $\\cos x = 0$ ebenfalls zwei.',
+    ],
+    wrapUp: `Insgesamt hat die Gleichung vier Lösungen: $\\pi/6,\\;\\pi/2,\\;5\\pi/6,\\;3\\pi/2$. Wer $\\cos x$ ohne Faktorisierung wegkürzt, verliert $\\pi/2$ und $3\\pi/2$.`,
+    tags: ['additionstheorem', 'gleichung', 'doppelwinkel'],
+  },
 ]

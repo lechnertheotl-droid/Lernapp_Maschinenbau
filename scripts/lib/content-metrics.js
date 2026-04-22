@@ -1,7 +1,7 @@
 /**
- * Geteilte Content-Metriken für scripts/generate-content-overview.js und
- * scripts/generate-lernziele.js. Alle Funktionen sind pure und arbeiten
- * ausschließlich auf den Runtime-Content-Objekten aus src/content/index.js.
+ * Geteilte Content-Metriken für scripts/generate-status.js.
+ * Alle Funktionen sind pure und arbeiten ausschließlich auf den
+ * Runtime-Content-Objekten aus src/content/index.js.
  */
 
 const FOUR_BLOCK_PATTERNS = [
