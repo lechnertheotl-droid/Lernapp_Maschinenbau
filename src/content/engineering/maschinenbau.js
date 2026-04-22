@@ -1021,9 +1021,9 @@ $J$ ist das **Massenträgheitsmoment** (Einheit: kg·m²), $\alpha = \dot\omega$
 
 **Steinerscher Anteil:** $J_A = J_S + m \cdot d^2$ (Parallelverschiebung der Achse um Abstand $d$).`,
             exercises: [
-              { type: 'number-input', question: 'Vollzylinder: m = 2 kg, R = 0,1 m. Massenträgheitsmoment J?', correctValue: 0.01, tolerance: 0.001, unit: 'kg·m²', explanation: 'J = ½·m·R² = ½·2·0,1² = ½·2·0,01 = 0,01 kg·m².', hints: ['J_Vollzylinder = ½·m·R²', 'R² = 0,1² = 0,01 m²', '½·2·0,01 = 0,01 kg·m²'] },
-              { type: 'number-input', question: 'Ein Motor erzeugt M = 50 Nm. Trägheitsmoment J = 0,5 kg·m². Winkelbeschleunigung α?', correctValue: 100, tolerance: 0.1, unit: 'rad/s²', explanation: 'α = M/J = 50/0,5 = 100 rad/s².', hints: ['Drallsatz: M = J·α → α = M/J', 'J = 0,5 kg·m², M = 50 Nm', '50/0,5 = 100 rad/s²'] },
-              { type: 'number-input', question: '[PRÜFUNG] Stab (m = 6 kg, L = 1 m). J um Schwerpunkt = mL²/12. Jetzt Achse am Ende: J_Ende per Steiner? (J_Ende = J_S + m·d²)', correctValue: 2, tolerance: 0.01, unit: 'kg·m²', explanation: 'J_S = 6·1²/12 = 0,5 kg·m². d = L/2 = 0,5 m. J_Ende = 0,5 + 6·0,5² = 0,5 + 1,5 = 2 kg·m².', hints: ['J_S = mL²/12', 'Steiner: J_Ende = J_S + m·d²', 'd = L/2 (Abstand Schwerpunkt-Achse)'] },
+              { type: 'number-input', question: 'Vollzylinder: m = 2 kg, R = 0,1 m. Massenträgheitsmoment J?', correctValue: 0.01, tolerance: 0.001, unit: 'kg·m²', explanation: '**Ansatz:** Vollzylinder um die Längsachse: $J = \\tfrac{1}{2}mR^2$.\n\n**Rechnung:** $R^2 = 0{,}1^2 = 0{,}01\\,\\text{m}^2$. $J = \\tfrac{1}{2}\\cdot 2\\cdot 0{,}01 = 0{,}01\\,\\text{kg}\\cdot\\text{m}^2$.\n\n**Probe:** Einheiten: $\\text{kg}\\cdot\\text{m}^2$. ✓ Größenordnung für einen kleinen Zylinder (Masse $2\\,\\text{kg}$, Radius $10\\,\\text{cm}$) plausibel.\n\n**Typischer Fehler:** $R$ statt $R^2$ einsetzen ($\\tfrac{1}{2}\\cdot 2\\cdot 0{,}1 = 0{,}1$) oder Faktor $\\tfrac{1}{2}$ vergessen und Hohlzylinderformel $mR^2 = 0{,}02$ rechnen.', hints: ['$J_\\text{Vollzylinder} = \\tfrac{1}{2}\\cdot m\\cdot R^2$', '$R^2 = 0{,}1^2 = 0{,}01\\,\\text{m}^2$', '$\\tfrac{1}{2}\\cdot 2\\cdot 0{,}01 = 0{,}01\\,\\text{kg}\\cdot\\text{m}^2$'] },
+              { type: 'number-input', question: 'Ein Motor erzeugt M = 50 Nm. Trägheitsmoment J = 0,5 kg·m². Winkelbeschleunigung α?', correctValue: 100, tolerance: 0.1, unit: 'rad/s²', explanation: '**Ansatz:** Drallsatz (Rotationsanalog zu $F = ma$): $M = J\\alpha$, also $\\alpha = M/J$.\n\n**Rechnung:** $\\alpha = 50/0{,}5 = 100\\,\\text{rad/s}^2$.\n\n**Probe:** Einheiten: $\\text{Nm}/(\\text{kg}\\cdot\\text{m}^2) = 1/\\text{s}^2 = \\text{rad/s}^2$. ✓ Bei konstantem Moment dauert das Erreichen von $\\omega = 100\\,\\text{rad/s}$ genau eine Sekunde.\n\n**Typischer Fehler:** $\\alpha = M\\cdot J = 25$ rechnen (Multiplikation statt Division) — Analogie zu $a = F/m$ vergessen.', hints: ['Drallsatz: $M = J\\alpha \\Rightarrow \\alpha = M/J$', '$J = 0{,}5\\,\\text{kg}\\cdot\\text{m}^2$, $M = 50\\,\\text{Nm}$', '$50/0{,}5 = 100\\,\\text{rad/s}^2$'] },
+              { type: 'number-input', question: '[PRÜFUNG] Stab (m = 6 kg, L = 1 m). J um Schwerpunkt = mL²/12. Jetzt Achse am Ende: J_Ende per Steiner? (J_Ende = J_S + m·d²)', correctValue: 2, tolerance: 0.01, unit: 'kg·m²', explanation: '**Ansatz:** Parallelachsenverschiebung (Steiner): $J_A = J_S + m d^2$. Schwerpunkt liegt in der Stabmitte, Abstand zur Endachse $d = L/2$.\n\n**Rechnung:** $J_S = 6\\cdot 1^2/12 = 0{,}5\\,\\text{kg}\\cdot\\text{m}^2$. $d = 0{,}5\\,\\text{m}$, $d^2 = 0{,}25\\,\\text{m}^2$. Steineranteil: $6\\cdot 0{,}25 = 1{,}5\\,\\text{kg}\\cdot\\text{m}^2$. $J_\\text{Ende} = 0{,}5 + 1{,}5 = 2\\,\\text{kg}\\cdot\\text{m}^2$.\n\n**Probe:** Direkt aus Formelsammlung: Stab am Ende $= \\tfrac{1}{3}mL^2 = 6/3 = 2\\,\\text{kg}\\cdot\\text{m}^2$. ✓ Übereinstimmung — Steiner liefert genau den bekannten Faktor $\\tfrac{1}{3}$.\n\n**Typischer Fehler:** $d = L = 1\\,\\text{m}$ einsetzen (ganze Stablänge statt Abstand zum Schwerpunkt). Das gäbe $J = 0{,}5 + 6 = 6{,}5$ — dreimal zu groß.', hints: ['$J_S = \\tfrac{1}{12}mL^2$', 'Steiner: $J_\\text{Ende} = J_S + m\\cdot d^2$', '$d = L/2$ (Abstand Schwerpunkt ↔ Endachse)'] },
             ],
           },
         ],
@@ -1228,6 +1228,11 @@ $$\varphi = \frac{M_T \cdot L}{G \cdot I_p}, \qquad I_p = \frac{\pi d^4}{32}$$
 $G$ ist der **Schubmodul** (Stahl: $G \approx 80000$ MPa). Bei reiner Schubspannung (z.B. Niet, Bolzen):
 
 $$\tau = \frac{F}{A}$$`,
+            visualization: {
+              title: 'Mohr\'scher Kreis: Schubspannungszustand visualisieren',
+              visualizationId: 'mohr-circle',
+              params: {},
+            },
             exercises: [
               {
                 type: 'number-input',
@@ -1235,8 +1240,8 @@ $$\tau = \frac{F}{A}$$`,
                 correctValue: 12566,
                 tolerance: 100,
                 unit: 'mm³',
-                explanation: '$W_p = \\pi \\cdot d^3 / 16 = \\pi \\cdot 40^3 / 16 = \\pi \\cdot 64000 / 16 \\approx 12566$ mm³.',
-                hints: ['$W_p = \\pi \\cdot d^3 / 16$', '$d^3 = 40^3 = 64000$', '$W_p = \\pi \\cdot 64000 / 16 \\approx 12566$'],
+                explanation: '**Ansatz:** Vollkreis-Welle: $W_p = \\pi d^3/16$.\n\n**Rechnung:** $d^3 = 40^3 = 64\\,000\\,\\text{mm}^3$. $W_p = \\pi\\cdot 64\\,000/16 = \\pi\\cdot 4\\,000 \\approx 12\\,566\\,\\text{mm}^3$.\n\n**Probe:** Faktor $\\pi/16 \\approx 0{,}1963$, also $W_p \\approx 0{,}1963\\cdot 64\\,000 \\approx 12\\,566$. ✓ Einheit $\\text{mm}^3$ passt zum Widerstandsmoment.\n\n**Typischer Fehler:** Formel mit $/32$ verwechseln (das ist das **Flächenträgheits**moment $I_p = \\pi d^4/32$, nicht $W_p$) oder $d^2$ statt $d^3$ einsetzen.',
+                hints: ['$W_p = \\pi\\cdot d^3/16$ (Widerstandsmoment, nicht Trägheitsmoment)', '$d^3 = 40^3 = 64\\,000\\,\\text{mm}^3$', '$\\pi\\cdot 64\\,000/16 \\approx 12\\,566\\,\\text{mm}^3$'],
               },
               {
                 type: 'number-input',
@@ -1244,20 +1249,20 @@ $$\tau = \frac{F}{A}$$`,
                 correctValue: 15.9,
                 tolerance: 0.5,
                 unit: 'N/mm²',
-                explanation: '$W_p \\approx 12566$ mm³. $\\tau = M_T / W_p = 200000 / 12566 \\approx 15{,}9$ N/mm².',
-                hints: ['$\\tau = M_T / W_p$', '$M_T$ in Nmm: $200 \\cdot 1000 = 200000$ Nmm', '$W_p \\approx 12566$ mm³'],
+                explanation: '**Ansatz:** $\\tau_\\text{max} = M_T/W_p$. Einheiten konsistent: $M_T$ in Nmm, $W_p$ in mm³ ⇒ $\\tau$ in N/mm².\n\n**Rechnung:** $M_T = 200\\,\\text{Nm} = 200\\,000\\,\\text{Nmm}$. $W_p = \\pi\\cdot 40^3/16 \\approx 12\\,566\\,\\text{mm}^3$. $\\tau_\\text{max} = 200\\,000/12\\,566 \\approx 15{,}9\\,\\text{N/mm}^2$.\n\n**Probe:** Einheit $\\text{Nmm}/\\text{mm}^3 = \\text{N/mm}^2 = \\text{MPa}$. ✓ Weit unter $\\tau_\\text{zul}$ von Baustahl ($\\approx 85\\,\\text{MPa}$) ⇒ hohe Sicherheit.\n\n**Typischer Fehler:** $M_T$ in Nm belassen — Ergebnis um Faktor $1000$ zu klein ($0{,}016\\,\\text{N/mm}^2$). Oder $I_p$ statt $W_p$ in den Nenner setzen ⇒ Spannung halb so groß.',
+                hints: ['$\\tau_\\text{max} = M_T/W_p$', '$M_T$ in Nmm: $200 \\cdot 1000 = 200\\,000\\,\\text{Nmm}$', '$W_p \\approx 12\\,566\\,\\text{mm}^3$'],
               },
               {
                 type: 'multiple-choice',
                 question: '[PRÜFUNG] Eine Welle mit $d = 30$ mm wird mit $M_T = 100$ Nm belastet. Welcher Wert für $\\tau_{\\max}$ ist am nächsten?',
                 options: ['12 N/mm²', '19 N/mm²', '30 N/mm²', '50 N/mm²'],
                 correctIndex: 1,
-                explanation: '$W_p = \\pi \\cdot 30^3 / 16 \\approx 5301$ mm³. $\\tau = 100000 / 5301 \\approx 18{,}9$ N/mm² ≈ 19 N/mm².',
-                hints: ['$W_p = \\pi \\cdot d^3 / 16$', '$M_T$ in Nmm umrechnen: ×1000', '$\\tau = M_T / W_p$'],
+                explanation: '**Ansatz:** Zuerst $W_p = \\pi d^3/16$, dann $\\tau_\\text{max} = M_T/W_p$. Einheitenumrechnung Nm → Nmm nicht vergessen.\n\n**Rechnung:** $W_p = \\pi\\cdot 27\\,000/16 \\approx 5\\,301\\,\\text{mm}^3$. $M_T = 100\\,000\\,\\text{Nmm}$. $\\tau_\\text{max} = 100\\,000/5\\,301 \\approx 18{,}9\\,\\text{N/mm}^2 \\approx 19\\,\\text{N/mm}^2$.\n\n**Probe:** Überschlag ohne Taschenrechner: $\\pi/16 \\approx 0{,}2$, $W_p \\approx 0{,}2\\cdot 27\\,000 = 5\\,400$. $\\tau \\approx 100\\,000/5\\,400 \\approx 18{,}5 \\approx 19$. ✓\n\n**Typischer Fehler:** $W_p$ mit Flächenträgheitsmoment verwechseln oder $M_T$ nicht in Nmm konvertieren — beide Fehler führen zu einer um Faktor 2 bzw. 1000 daneben liegenden Zahl.',
+                hints: ['$W_p = \\pi\\cdot d^3/16$', '$M_T$ in Nmm umrechnen: $\\cdot 1000$', '$\\tau = M_T/W_p$'],
                 wrongAnswerExplanations: {
-                  0: 'Vermutlich $W_p = \\pi \\cdot d^3/8$ statt $/16$ verwendet ($\\approx 10600$ mm³) — das ergäbe $\\tau \\approx 9{,}4$ N/mm². Korrekt: Polares Widerstandsmoment ist $W_p = \\pi d^3/16$.',
-                  2: '$M_T$ nicht in Nmm umgerechnet (100 Nm $\\cdot$ 1000 = 100000 Nmm) oder Durchmesser statt Radius verwendet. Korrekte Einsetzung: $\\tau = 100000/5301 \\approx 19$ N/mm².',
-                  3: 'Das wäre bei $d \\approx 20$ mm statt 30 mm ($W_p \\approx 1571$ mm³, $\\tau \\approx 64$). Einheiten-/Dimensionsfehler. Mit $d = 30$ ist $\\tau_{max} \\approx 19$ N/mm².',
+                  0: 'Vermutlich $W_p = \\pi\\cdot d^3/8$ statt $/16$ verwendet ($\\approx 10\\,600\\,\\text{mm}^3$) — das ergäbe $\\tau \\approx 9{,}4\\,\\text{N/mm}^2$. Korrekt: $W_p = \\pi d^3/16$.',
+                  2: '$M_T$ nicht in Nmm umgerechnet oder Durchmesser mit Radius verwechselt. Korrekt: $\\tau = 100\\,000/5\\,301 \\approx 19\\,\\text{N/mm}^2$.',
+                  3: 'Das wäre bei $d \\approx 20\\,\\text{mm}$ statt $30\\,\\text{mm}$ ($W_p \\approx 1\\,571$, $\\tau \\approx 64$). Mit $d = 30$ liegt $\\tau_\\text{max}$ bei rund $19\\,\\text{N/mm}^2$.',
                 },
               },
             ],
@@ -1292,14 +1297,26 @@ Das **Flächenträgheitsmoment** $I$ bestimmt die Knicklast maßgeblich (schwäc
                 correctValue: 20708,
                 tolerance: 200,
                 unit: 'N',
-                explanation: '$F_{ki} = \\pi^2 \\cdot 210000 \\cdot 10000 / (1 \\cdot 1000)^2 = \\pi^2 \\cdot 2100 \\approx 20708$ N.',
+                explanation: `**Ansatz:** Euler-Knicklast $F_{ki} = \\pi^2 E I / (\\beta L)^2$. Beidseitig gelenkig → $\\beta = 1$, Ersatzlänge $\\beta L = L = 1000$ mm.
+
+**Rechnung:** $F_{ki} = \\pi^2 \\cdot 210\\,000 \\cdot 10\\,000 / (1 \\cdot 1\\,000)^2 = \\pi^2 \\cdot 2{,}1 \\cdot 10^9 / 10^6 = \\pi^2 \\cdot 2\\,100 \\approx 9{,}87 \\cdot 2\\,100 \\approx 20\\,708$ N.
+
+**Probe:** Einheiten: $\\text{MPa} \\cdot \\text{mm}^4 / \\text{mm}^2 = \\text{N/mm}^2 \\cdot \\text{mm}^2 = \\text{N}$ ✓. Etwa 20 kN klingt plausibel für einen 1 m langen dünnen Stahlstab.
+
+**Typischer Fehler:** $\\beta L$ nicht quadrieren, dann kommt ein viel zu großer Wert heraus. Oder $L$ in Meter einsetzen und Einheiten-Chaos produzieren.`,
                 hints: ['$F_{ki} = \\pi^2 \\cdot E \\cdot I / (\\beta L)^2$', '$\\beta = 1$ für beidseitig gelenkig', '$\\pi^2 \\approx 9{,}87$'],
               },
               {
                 type: 'true-false',
                 statement: 'Bei einseitig eingespanntem, freiem Ende ist die Knicklast am kleinsten (β = 2).',
                 correct: true,
-                explanation: 'Großes β bedeutet kleine Knicklast: $F_{ki} \\propto 1/(\\beta L)^2$. β = 2 liefert die kleinste Last.',
+                explanation: `**Ansatz:** $F_{ki} \\propto 1/(\\beta L)^2$ — großes $\\beta$ bedeutet kleines $F_{ki}$.
+
+**Rechnung:** Standardfälle im Vergleich: $\\beta = 0{,}5$ (beidseitig eingespannt), $\\beta = 1$ (gelenkig), $\\beta \\approx 0{,}7$ (eingespannt/gelenkig), $\\beta = 2$ (Kragstab). Maximum bei Kragstab → kleinste Knicklast.
+
+**Probe:** Kragstab hat Ersatzlänge $2L$ — das Quadrat gibt Faktor 4 weniger als der gelenkige Fall und Faktor 16 weniger als beidseitig eingespannt.
+
+**Typischer Fehler:** Intuitiv "Einspannung = Stabil" gleichsetzen und daraus schließen, dass $\\beta = 2$ besonders stabil wäre. $\\beta$ ist aber der **Ersatzlängenfaktor** — je größer, desto weicher.`,
                 hints: ['Je größer β, desto kleiner $F_{ki}$', 'β = 2 → $(\\beta L)^2 = 4L^2$', 'Vergleiche mit β = 1: gleicher Nenner, 4-facher Unterschied'],
               },
               {
@@ -1308,7 +1325,13 @@ Das **Flächenträgheitsmoment** $I$ bestimmt die Knicklast maßgeblich (schwäc
                 correctValue: 5177,
                 tolerance: 100,
                 unit: 'N',
-                explanation: '$F_{ki} = \\pi^2 \\cdot 210000 \\cdot 10000 / (2 \\cdot 1000)^2 = \\pi^2 \\cdot 525 \\approx 5177$ N.',
+                explanation: `**Ansatz:** Gleicher Stab, nur $\\beta = 2$ statt 1. Ersatzlänge vervierfacht ($\\beta L = 2 \\cdot 1\\,000$), damit $(\\beta L)^2$ vierfach.
+
+**Rechnung:** $F_{ki} = \\pi^2 \\cdot 210\\,000 \\cdot 10\\,000 / (2 \\cdot 1\\,000)^2 = \\pi^2 \\cdot 2{,}1 \\cdot 10^9 / 4 \\cdot 10^6 = \\pi^2 \\cdot 525 \\approx 5\\,177$ N.
+
+**Probe:** Exakt ein Viertel des gelenkigen Falls (20\\,708/4 = 5\\,177) ✓. Das ist die typische Faustzahl: Kragstab hat nur ein Viertel der Knicklast des beidseitig gelenkigen Stabs.
+
+**Typischer Fehler:** $\\beta = 2$ in den Zähler setzen (dann wäre $F_{ki}$ vier**fach** statt einviertel). Oder $\\beta$ vergessen und wieder 20\\,708 N ausgeben.`,
                 hints: ['Euler: $F_{ki} = \\pi^2 \\cdot E \\cdot I / (\\beta L)^2$', '$\\beta = 2 \\Rightarrow (\\beta L)^2 = (2 \\cdot 1000)^2 = 4 \\cdot 10^6$', '$\\pi^2 \\cdot 210000 \\cdot 10000 / 4 \\cdot 10^6$'],
               },
             ],
