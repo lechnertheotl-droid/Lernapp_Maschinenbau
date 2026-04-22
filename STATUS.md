@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2426 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 481 (20 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 974 / 974 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 49 / 1134 (4 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2476 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 534 (22 %) | 100 % der Aufgaben | 🔴 |
+| MC mit wrongAnswerExplanations | 984 / 984 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 59 / 1134 (5 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -919,10 +919,10 @@ _Signalverarbeitung, Regelungstechnik, Elektrotechnik. Laplace vereinfacht DGL z
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **224** (manuell: 59 · supplemental: 165)
-- 4-Block: 148/224 (66 %) 🟡
-- MC-wAE: 52/52 (100 %) ✅
-- Sub-Goals: 20/76 Goal-Tasks verknüpft 🔴
+- Aufgaben: **244** (manuell: 59 · supplemental: 185)
+- 4-Block: 168/244 (69 %) 🟡
+- MC-wAE: 56/56 (100 %) ✅
+- Sub-Goals: 24/76 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Statik (Kräftegleichgewicht) und Dynamik (Newtonsche Gesetze, Energie) — die klassischen Grundlagen des Maschinenbaus.**
@@ -965,7 +965,7 @@ _Mechanik ist das Herzfach im Maschinenbau-Bachelor und Basis für Festigkeitsle
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `mech-0-1` SI-Basiseinheiten & Präfixe | 3 | 0/3 | 5 | 1/2/1/1/0 | 5/5 | 1/1 | ✅ | +3 Goal |
 | `mech-0-2` Abgeleitete Einheiten (N, J, Pa, W) | 4 | 0/4 | 5 | 1/2/1/1/0 | 5/5 | 1/1 | ✅ | +4 Goal |
-| `mech-0-3` Dimensionsanalyse — Einheitencheck | 4 | 0/4 | 4 | 1/1/1/0/1 | 4/4 | 1/1 | ✅ | +4 Goal |
+| `mech-0-3` Dimensionsanalyse — Einheitencheck | 4 | 4/4 | 24 | 5/7/5/3/4 | 24/24 | 5/5 | ✅ | — |
 | `mech-1-1` Kräfte und Freikörperbild | 4 | 0/4 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +4 Goal, +10 4B |
 | `mech-1-2` Momente und Hebelarm | 4 | 0/4 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +4 Goal, +10 4B |
 | `mech-1-3` Schnittkräfte N(x), Q(x), M(x) | 5 | 0/5 | 5 | 2/2/1/0/0 | 0/5 | 2/2 | ✅ | +5 Goal, +5 4B |
@@ -987,10 +987,10 @@ _Mechanik ist das Herzfach im Maschinenbau-Bachelor und Basis für Festigkeitsle
 - Phase: **2. Sem** · Level: vertiefung · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 11
-- Aufgaben: **120** (manuell: 35 · supplemental: 85)
-- 4-Block: 59/120 (49 %) 🔴
-- MC-wAE: 30/30 (100 %) ✅
-- Sub-Goals: 10/54 Goal-Tasks verknüpft 🔴
+- Aufgaben: **150** (manuell: 35 · supplemental: 115)
+- 4-Block: 92/150 (61 %) 🟡
+- MC-wAE: 36/36 (100 %) ✅
+- Sub-Goals: 16/54 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Spannung und Dehnung in Bauteilen: Zug/Druck, Biegung, Torsion. Hooke’sches Gesetz.**
@@ -1036,7 +1036,7 @@ _Jedes Bauteil muss Kräfte aufnehmen ohne zu versagen. Festigkeitslehre sagt, w
 | `fest-1-4` Knicken | 5 | 5/5 | 28 | 7/10/6/3/2 | 28/28 | 7/7 | ✅ | — |
 | `fest-2-1` Biegespannung | 5 | 0/5 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +5 Goal, +10 4B |
 | `fest-2-2` Sicherheitszahl | 5 | 0/5 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +5 Goal, +10 4B |
-| `fest-2-3` Mohr'scher Spannungskreis | 6 | 0/6 | 3 | 1/2/0/0/0 | 0/3 | 1/1 | ✅ | +6 Goal, +3 4B |
+| `fest-2-3` Mohr'scher Spannungskreis | 6 | 6/6 | 33 | 7/15/5/3/3 | 33/33 | 7/7 | ✅ | — |
 | `fest-2-4` Wechselfestigkeit und Betriebsfestigkeit | 5 | 0/5 | 3 | 0/2/1/0/0 | 0/3 | — | ✅ | +5 Goal, +3 4B |
 | `fest-2-5` Kerbspannungen & Formzahl | 5 | 0/5 | 3 | 2/1/0/0/0 | 3/3 | 2/2 | ✅ | +5 Goal |
 | `fest-3-1` Festigkeit: Prüfungsaufgaben | 5 | 0/5 | 11 | 2/5/2/1/1 | 0/11 | 2/2 | ✅ | +5 Goal, +11 4B |
@@ -1485,32 +1485,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 67 Lessons
-
-#### `fest-2-3` · Mohr'scher Spannungskreis
-
-- **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Biegung und Torsion
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×1, number-input ×2
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Mittelpunkt: $\sigma_M = (\sigma_x + \sigma_y)/2$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Radius: $R = \sqrt{((\sigma_x - \sigma_y)/2)^2 + \tau_{xy}^2}$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Hauptspannungen: $\sigma_{1,2} = \sigma_M \pm R$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Max. Schubspannung: $\tau_\text{max} = R$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Hauptachsenwinkel: $\tan(2\varphi) = 2\tau_{xy}/(\sigma_x - \sigma_y)$
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Anwendung: Hauptspannungshypothese (spröde Werkstoffe), GEH (zähe)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/festigkeitslehre.js`
-- **4-Block-Erklärung fehlt bei:** `ex-fest-2-3-a`, `ex-fest-2-3-b`, `ex-fest-2-3-c`
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
-  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
-  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 65 Lessons
 
 #### `fest-2-4` · Wechselfestigkeit und Betriebsfestigkeit
 
@@ -1771,28 +1746,6 @@ npm run build              # abschließender End-zu-End-Check
   - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
   - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
   - _Klausur-Fokus:_ Stabilität mit Hurwitz prüfen und Grenzverstärkung finden. · Stationäre Regelabweichung P-Regler an PT1. · Sprungantwort eines PT1-Glieds skizzieren.
-
-#### `mech-0-3` · Dimensionsanalyse — Einheitencheck
-
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Einheiten & Dimensionsanalyse (Einstieg)
-- **Aufgaben aktuell:** 4 · **mindestens:** 20 · **fehlen bis Minimum:** 16 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×1, number-input ×1, true-false ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, multiple-choice, number-input, true-false, sorting
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Einheit Pascal: $1\,\text{Pa} = 1\,\text{N/m}^2 = 1\,\text{kg}/(\text{m}\cdot\text{s}^2)$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 16 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/technische_mechanik.js`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `mech-3-3` · Reibung, Kinematik & Schwingungen
 
@@ -6713,7 +6666,24 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
   - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 6 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 7 Lessons
+
+#### `mech-0-3` · Dimensionsanalyse — Einheitencheck
+
+- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Einheiten & Dimensionsanalyse (Einstieg)
+- **Aufgaben aktuell:** 24 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
+- **Typen vorhanden:** multiple-choice ×5, number-input ×7, true-false ×5, matching ×3, sorting ×4
+- **Typen einsetzen (Rotation):** matching, sorting, multiple-choice
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
+  - ✅ [0] (hoch) **5/5+** Aufgaben — Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen
+  - ✅ [1] (hoch) **5/5+** Aufgaben — Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut
+  - ✅ [2] (mittel) **5/5+** Aufgaben — Einheit Pascal: $1\,\text{Pa} = 1\,\text{N/m}^2 = 1\,\text{kg}/(\text{m}\cdot\text{s}^2)$
+  - ✅ [3] (hoch) **5/5+** Aufgaben — Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `int-3-4` · Bogenlänge & Durchschnittswert
 

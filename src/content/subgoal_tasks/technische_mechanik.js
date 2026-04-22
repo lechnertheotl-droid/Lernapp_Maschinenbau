@@ -17,6 +17,430 @@ import { mc, ni, tf, matching, sorting } from './_helpers'
 export const technischeMechanikSubGoalTasks = {
 
   // ────────────────────────────────────────────────────────────────────────
+  // mech-0-3 — Dimensionsanalyse / Einheitencheck  (4 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-0-3': {
+
+    // ── [0] Dimensionskonsistenz ─────────────────────────────────────────
+    0: [
+      ni(
+        'Sub-Goal "Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen": Welche ganze Zahl $n$ muss in der Formel $E_\\text{kin} = \\tfrac{1}{2}\\,m\\,v^n$ stehen, damit die Gleichung auf kinetische Energie in Joule führt?',
+        2, 0, '',
+        `**Ansatz:** Zieleinheit links: $[E] = \\text{J} = \\text{kg}\\cdot\\text{m}^2/\\text{s}^2$. Einheit rechts ohne Vorfaktor: $[m]\\cdot[v]^n = \\text{kg}\\cdot(\\text{m}/\\text{s})^n$. Die beiden müssen gleich sein.
+
+**Rechnung:** $\\text{kg}\\cdot \\text{m}^n / \\text{s}^n \\stackrel{!}{=} \\text{kg}\\cdot\\text{m}^2/\\text{s}^2$ ⇒ $n = 2$.
+
+**Probe:** $E_\\text{kin} = \\tfrac{1}{2}mv^2$ ist die bekannte Formel; für $m = 2\\,\\text{kg}, v = 3\\,\\text{m/s}$ ⇒ $E = 9\\,\\text{J}$, Einheit stimmt.
+
+**Typischer Fehler:** $n = 1$ wählen ("Masse mal Geschwindigkeit = Energie") — das ist **Impuls** $p = mv$, Einheit $\\text{kg}\\cdot\\text{m/s}$, **nicht** Energie.`,
+        [
+          'Zieleinheit: J = kg·m²/s².',
+          'Rechte Seite: kg·(m/s)^n.',
+          'Exponentenvergleich an m und s.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen": Welche dieser Formeln ist **dimensional korrekt** für die Leistung $P$?',
+        [
+          '$P = F \\cdot v$',
+          '$P = F \\cdot s$',
+          '$P = F / v$',
+          '$P = m \\cdot g \\cdot h$',
+        ],
+        0,
+        `**Ansatz:** Leistung hat Einheit $\\text{W} = \\text{J/s} = \\text{N}\\cdot\\text{m/s}$. Rechte Seite muss dieselbe Einheit liefern.
+
+**Rechnung:** $F \\cdot v = \\text{N}\\cdot\\text{m/s} = \\text{W}$ ✓.
+
+**Probe:** Anschaulich: Arbeit pro Zeit, oder Kraft mal Geschwindigkeit — genau dieselbe Größe.
+
+**Typischer Fehler:** $P = F \\cdot s$ (das ist Arbeit / Energie, nicht Leistung) oder $P = F/v$ (Einheit $\\text{N}\\cdot\\text{s/m} = \\text{kg/s}$, sinnlos für Leistung).`,
+        [
+          'W = J/s = N·m/s.',
+          'Welche Operation liefert N·m/s aus N und m/s?',
+          'Multiplikation.',
+        ],
+        {
+          1: '$F \\cdot s$ hat Einheit $\\text{N}\\cdot\\text{m} = \\text{J}$ — das ist **Arbeit/Energie**, nicht Leistung (es fehlt die Zeit im Nenner).',
+          2: '$F/v$ hat Einheit $\\text{N}/(\\text{m/s}) = \\text{N}\\cdot\\text{s/m} = \\text{kg/s}$ — das ist keine Leistungseinheit.',
+          3: '$m\\cdot g\\cdot h$ hat Einheit $\\text{kg}\\cdot(\\text{m/s}^2)\\cdot\\text{m} = \\text{J}$ — das ist potentielle **Energie**, nicht Leistung.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen": Die Formel $a = v \\cdot t$ für die Beschleunigung ist dimensional konsistent.',
+        false,
+        `**Ansatz:** Links $[a] = \\text{m/s}^2$. Rechts $[v]\\cdot[t] = (\\text{m/s})\\cdot\\text{s} = \\text{m}$. Einheiten stimmen nicht überein.
+
+**Rechnung:** $\\text{m/s}^2 \\neq \\text{m}$ ⇒ Formel ist **dimensional falsch**.
+
+**Probe:** Richtige Formel: $a = v/t$ bzw. $a = \\Delta v/\\Delta t$. Einheitencheck: $(\\text{m/s})/\\text{s} = \\text{m/s}^2$ ✓.
+
+**Typischer Fehler:** Multiplikation und Division der Zeit vertauschen — Dimensionsanalyse fängt das sofort ab, ohne das Ergebnis überhaupt auszurechnen.`,
+        [
+          'Links: m/s².',
+          'Rechts: (m/s)·s = m.',
+          'Sind m und m/s² gleich?',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen": Welche Einheit hat die **rechte Seite** jeweils?',
+        [
+          { left: '$F\\cdot v$ (mit $[F]=\\text{N}$, $[v]=\\text{m/s}$)', right: 'W (Leistung)' },
+          { left: '$m\\cdot v$ (mit $[m]=\\text{kg}$, $[v]=\\text{m/s}$)', right: 'kg·m/s (Impuls)' },
+          { left: '$\\tfrac{1}{2}m v^2$ (kg, m/s)', right: 'J (Energie)' },
+          { left: '$F/A$ (mit $[F]=\\text{N}$, $[A]=\\text{m}^2$)', right: 'Pa (Druck/Spannung)' },
+        ],
+        `**Ansatz:** Jede Zeile: Einheiten der Faktoren einsetzen, mit den Rechenoperationen verknüpfen.
+
+**Rechnung:** (1) N·m/s = W. (2) kg·m/s (Impuls — hat eigene Einheit, kein eigener Name). (3) kg·(m/s)² = kg·m²/s² = J. (4) N/m² = Pa.
+
+**Probe:** Passen die Größen inhaltlich? Kraft×Geschwindigkeit=Leistung ✓, Kraft/Fläche=Druck ✓.
+
+**Typischer Fehler:** $m\\cdot v$ mit kinetischer Energie verwechseln. Impuls = Masse × Geschwindigkeit; Energie = Masse × Geschwindigkeit² /2 — die Quadratur macht aus Impuls Energie.`,
+        [
+          'Je Zeile Einheiten der Faktoren multiplizieren.',
+          'v² ≠ v — ein Faktor m/s mehr.',
+          'N = kg·m/s² in Basiseinheiten.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen": Ordne die Schritte einer Dimensionsprüfung.',
+        [
+          'Zieleinheit der linken Seite festhalten (z. B. N, J, Pa)',
+          'Für jede Größe auf der rechten Seite die Einheit notieren',
+          'Einheiten gemäß den Rechenoperationen verknüpfen (× / Potenzen)',
+          'Einheiten auf Basis-SI reduzieren, damit sie vergleichbar sind',
+          'Mit der Zieleinheit vergleichen — stimmt sie, ist die Formel dimensional OK',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Systematisch: Ziel festlegen, dann rechte Seite aufbauen, dann vergleichen.
+
+**Rechnung:** Schritt 4 ist oft der entscheidende — zwei Einheiten können verschieden aussehen, aber dieselbe sein (N/m² vs. kg/(m·s²)).
+
+**Probe:** Wer Schritt 4 auslässt, übersieht z. B. dass $\\text{J/m}^3 = \\text{Pa}$.
+
+**Typischer Fehler:** Mit der Rechnung loslegen, ohne vorher die Zieleinheit festzulegen — dann weiß man am Ende gar nicht, wohin der Vergleich laufen soll.`,
+        [
+          'Ziel zuerst.',
+          'Rechte Seite danach.',
+          'Basiseinheiten-Reduktion vor dem Vergleich.',
+        ],
+      ),
+    ],
+
+    // ── [1] Basis-SI-Einheiten ───────────────────────────────────────────
+    1: [
+      mc(
+        'Sub-Goal "Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut": Welche der folgenden Einheiten ist **keine** SI-Basiseinheit?',
+        [
+          'Meter (m)',
+          'Kilogramm (kg)',
+          'Newton (N)',
+          'Sekunde (s)',
+        ],
+        2,
+        `**Ansatz:** Die 7 SI-Basiseinheiten sind: **m, kg, s, A, K, mol, cd**. Alles andere ist abgeleitet.
+
+**Rechnung:** Newton ist eine **abgeleitete** Einheit: $1\\,\\text{N} = 1\\,\\text{kg}\\cdot\\text{m/s}^2$. Sie wird aus drei Basiseinheiten aufgebaut.
+
+**Probe:** Weitere abgeleitete Einheiten (aus den 7 Basiseinheiten): J, W, Pa, V, Ω, Hz, F (Farad), T (Tesla) …
+
+**Typischer Fehler:** Alles mit eigenem Namen (N, J, Pa) als Basiseinheit ansehen. Der eigene Name ist eine Abkürzung — die Einheit ist trotzdem "abgeleitet".`,
+        [
+          'Es gibt genau 7 SI-Basiseinheiten.',
+          'Zu ihnen gehört alles, was Länge, Masse, Zeit, Strom, Temperatur, Stoffmenge, Lichtstärke direkt misst.',
+          'Kraft ist keine eigene Grundgröße — sie folgt aus Masse × Beschleunigung.',
+        ],
+        {
+          0: 'Meter ist die Basiseinheit der Länge — einer der 7 Grundbausteine.',
+          1: 'Kilogramm ist die Basiseinheit der Masse — ebenfalls in der Liste der 7.',
+          3: 'Sekunde ist die Basiseinheit der Zeit — ebenfalls Basis-SI.',
+        },
+      ),
+      matching(
+        'Sub-Goal "Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut": Ordne jeder physikalischen Grundgröße ihre SI-Basiseinheit zu.',
+        [
+          { left: 'Länge', right: 'm (Meter)' },
+          { left: 'Masse', right: 'kg (Kilogramm)' },
+          { left: 'Zeit', right: 's (Sekunde)' },
+          { left: 'Stromstärke', right: 'A (Ampere)' },
+          { left: 'Thermodynamische Temperatur', right: 'K (Kelvin)' },
+        ],
+        `**Ansatz:** Sieben SI-Basiseinheiten. Hier die fünf wichtigsten für den Maschinenbau.
+
+**Rechnung:** Darüber hinaus: mol (Stoffmenge) und cd (Lichtstärke) — im Maschinenbau seltener.
+
+**Probe:** Alle anderen Einheiten (N, J, W, Pa, V, Ω …) sind Produkte/Quotienten dieser sieben.
+
+**Typischer Fehler:** Celsius als Basiseinheit annehmen. Basis-SI für Temperatur ist **Kelvin**. $T[\\text{K}] = \\vartheta[°\\text{C}] + 273{,}15$. Temperaturdifferenzen sind numerisch gleich, Absolutwerte nicht.`,
+        [
+          'Basis-Einheit = unabhängig definiert, nicht abgeleitet.',
+          'Temperatur: Kelvin, nicht Celsius.',
+          'Strom: Ampere.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut": Das SI-System hat genau **sieben** Basiseinheiten, aus denen alle anderen Einheiten zusammengesetzt werden.',
+        true,
+        `**Ansatz:** SI-Basiseinheiten: m, kg, s, A, K, mol, cd — das sind 7.
+
+**Rechnung:** Zählen: Länge, Masse, Zeit, Strom, Temperatur, Stoffmenge, Lichtstärke = 7 Grundgrößen.
+
+**Probe:** Alle anderen Einheiten wie N = kg·m/s², J = N·m, W = J/s, Pa = N/m² werden aus Produkten/Potenzen der Basiseinheiten gebildet.
+
+**Typischer Fehler:** Glauben, jede Einheit mit eigenem Namen (N, J, V, Ω, Pa …) sei "Basis". Eigener Name ≠ Basis — es gibt genau 7 Basiseinheiten.`,
+        [
+          'Zählen: m, kg, s, A, K, mol, cd.',
+          'Das sind sieben Einheiten.',
+          'Alles andere ist abgeleitet.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut": Drücke die Einheit **Newton** ausschließlich in SI-Basiseinheiten aus: $1\\,\\text{N} = 1\\,\\text{kg}^a \\cdot \\text{m}^b \\cdot \\text{s}^c$. Gib $a + b + |c|$ an.',
+        4, 0, '',
+        `**Ansatz:** $F = m\\cdot a$ ⇒ $[F] = [m]\\cdot[a] = \\text{kg}\\cdot\\text{m/s}^2 = \\text{kg}^1\\cdot\\text{m}^1\\cdot\\text{s}^{-2}$.
+
+**Rechnung:** $a = 1$, $b = 1$, $c = -2$. Also $a + b + |c| = 1 + 1 + 2 = 4$.
+
+**Probe:** Umgekehrte Richtung: Kraft auf 1 kg, die 1 m/s² Beschleunigung erzeugt — genau die SI-Definition des Newton.
+
+**Typischer Fehler:** $c = +2$ ansetzen (Zeit im Zähler). Beschleunigung hat $\\text{s}$ im Nenner quadriert — also negativer Exponent.`,
+        [
+          '$F = m\\cdot a$.',
+          '$[a] = \\text{m/s}^2$.',
+          'Zeit-Exponent ist −2.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut": Ordne die Einheiten von "direkte Basiseinheit" zu "drei Schritte abgeleitet".',
+        [
+          'Meter (m) — Basiseinheit Länge',
+          'Newton (N) — kg·m/s² (1 Schritt: aus F = m·a)',
+          'Joule (J) — N·m = kg·m²/s² (2 Schritte: Kraft × Weg)',
+          'Watt (W) — J/s = kg·m²/s³ (3 Schritte: Energie pro Zeit)',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Jede abgeleitete Einheit baut auf einer einfacheren auf. Hierarchie: Länge → Kraft → Energie → Leistung.
+
+**Rechnung:** m ist Basis. N = kg·m/s² braucht schon m, kg, s. J = N·m setzt N voraus. W = J/s setzt J voraus.
+
+**Probe:** In Basis-SI: Pa = kg/(m·s²), V = kg·m²/(A·s³) — je komplexer, desto mehr Basis-Potenzen.
+
+**Typischer Fehler:** Joule mit Watt verwechseln — beide haben eigene Namen, aber Joule = Energie (kg·m²/s²), Watt = Leistung (kg·m²/s³) — Unterschied: ein Faktor 1/s.`,
+        [
+          'Basis = direkt definiert.',
+          'Jede Ableitungsstufe fügt Multiplikation/Division hinzu.',
+          'Watt enthält Joule enthält Newton enthält Meter.',
+        ],
+      ),
+    ],
+
+    // ── [2] Pascal-Einheit ───────────────────────────────────────────────
+    2: [
+      ni(
+        'Sub-Goal "Einheit Pascal: $1\\,\\text{Pa} = 1\\,\\text{N/m}^2 = 1\\,\\text{kg}/(\\text{m}\\cdot\\text{s}^2)$": Wie viele Pascal sind $1\\,\\text{MPa}$?',
+        1000000, 1, 'Pa',
+        `**Ansatz:** $1\\,\\text{M} = 10^6$. Präfix "Mega" multipliziert mit Faktor eine Million.
+
+**Rechnung:** $1\\,\\text{MPa} = 10^6\\,\\text{Pa} = 1\\,000\\,000\\,\\text{Pa}$.
+
+**Probe:** Äquivalent: $1\\,\\text{MPa} = 1\\,\\text{N/mm}^2$. Beides sind die üblichen Festigkeits-Einheiten im Maschinenbau — derselbe Zahlenwert, andere Schreibweise.
+
+**Typischer Fehler:** $1\\,\\text{MPa} = 10^3\\,\\text{Pa}$ setzen (das wäre kPa) oder mit $10^9$ (das wäre GPa). Die Präfixe auswendig: k = $10^3$, M = $10^6$, G = $10^9$.`,
+        [
+          'Präfix Mega = 10^6.',
+          '1 MPa = 10^6 Pa.',
+          'Als Zahl: 1 000 000.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Einheit Pascal: $1\\,\\text{Pa} = 1\\,\\text{N/m}^2 = 1\\,\\text{kg}/(\\text{m}\\cdot\\text{s}^2)$": Welche Einheit ist **nicht** äquivalent zu Pascal?',
+        [
+          'N/m²',
+          'kg/(m·s²)',
+          'J/m³',
+          'N·m',
+        ],
+        3,
+        `**Ansatz:** Pascal ist Druck/Spannung. Zieleinheit: $\\text{kg}/(\\text{m}\\cdot\\text{s}^2)$.
+
+**Rechnung:** (1) N/m² = Pa per Definition. (2) kg/(m·s²) = (kg·m/s²)/m² = N/m² = Pa. (3) J/m³ = (N·m)/m³ = N/m² = Pa (Energiedichte hat dieselbe Einheit wie Druck!). (4) N·m = J — das ist **Energie**, nicht Druck.
+
+**Probe:** Energiedichte = Druck ist ein wichtiger Zusammenhang (z. B. kinetische Energiedichte in Strömungen = dynamischer Druck).
+
+**Typischer Fehler:** N·m mit N/m² verwechseln — Multiplikation/Division vertauscht. N·m = Arbeit, N/m² = Druck.`,
+        [
+          'Pa = N/m² per Definition.',
+          'J/m³ auflösen: N·m/m³ = N/m².',
+          'N·m ist das Produkt, nicht der Quotient.',
+        ],
+        {
+          0: 'Das ist die Standarddefinition: $1\\,\\text{Pa} = 1\\,\\text{N/m}^2$.',
+          1: '$\\text{kg}/(\\text{m}\\cdot\\text{s}^2) = (\\text{kg}\\cdot\\text{m/s}^2)/\\text{m}^2 = \\text{N/m}^2 = \\text{Pa}$ — genau die Basis-SI-Darstellung von Pascal.',
+          2: '$\\text{J/m}^3 = (\\text{N}\\cdot\\text{m})/\\text{m}^3 = \\text{N/m}^2 = \\text{Pa}$. Energiedichte und Druck haben dieselbe Einheit.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Einheit Pascal: $1\\,\\text{Pa} = 1\\,\\text{N/m}^2 = 1\\,\\text{kg}/(\\text{m}\\cdot\\text{s}^2)$": Der Wert $1\\,\\text{N/mm}^2$ entspricht exakt $1\\,\\text{MPa}$.',
+        true,
+        `**Ansatz:** Umrechnen auf Pascal: $1\\,\\text{N/mm}^2 = 1\\,\\text{N}/(10^{-3}\\,\\text{m})^2 = 1\\,\\text{N}/10^{-6}\\,\\text{m}^2 = 10^6\\,\\text{N/m}^2 = 10^6\\,\\text{Pa} = 1\\,\\text{MPa}$.
+
+**Rechnung:** $10^6\\,\\text{Pa} = 1\\,\\text{MPa}$ ✓.
+
+**Probe:** Deshalb wechseln Werkstoffkennwerte je nach Quelle zwischen MPa und N/mm² — es sind genau dieselben Zahlen. $E_\\text{Stahl} = 210\\,000\\,\\text{N/mm}^2 = 210\\,000\\,\\text{MPa} = 210\\,\\text{GPa}$.
+
+**Typischer Fehler:** Einen Faktor $10^3$ erwarten, weil "mm hat nur $10^{-3}$". Der Faktor wird **quadriert**, weil die Fläche mm² hat.`,
+        [
+          '1 mm = 10⁻³ m.',
+          '1 mm² = 10⁻⁶ m².',
+          '1/10⁻⁶ = 10⁶.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Einheit Pascal: $1\\,\\text{Pa} = 1\\,\\text{N/m}^2 = 1\\,\\text{kg}/(\\text{m}\\cdot\\text{s}^2)$": Ein Überdruck von $2{,}5\\,\\text{bar}$ entspricht wie vielen Kilopascal?',
+        250, 0.5, 'kPa',
+        `**Ansatz:** $1\\,\\text{bar} = 10^5\\,\\text{Pa} = 100\\,\\text{kPa}$.
+
+**Rechnung:** $2{,}5\\,\\text{bar} \\cdot 100\\,\\text{kPa/bar} = 250\\,\\text{kPa}$.
+
+**Probe:** $250\\,\\text{kPa} = 250\\,000\\,\\text{Pa} = 2{,}5\\cdot 10^5\\,\\text{Pa}$ ✓. Das entspricht etwa dem Reifendruck eines Pkw (ca. $2{,}0$–$2{,}5\\,\\text{bar}$ Überdruck).
+
+**Typischer Fehler:** $1\\,\\text{bar} = 1\\,\\text{kPa}$ setzen (Faktor $100$ fehlt) oder mit $10^6$ (das wäre MPa — also in MPa wären es $0{,}25$, nicht $250$).`,
+        [
+          '1 bar = 100 kPa.',
+          '2,5 × 100 = 250.',
+          'bar ≈ Atmosphäre ≈ 100 kPa.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Einheit Pascal: $1\\,\\text{Pa} = 1\\,\\text{N/m}^2 = 1\\,\\text{kg}/(\\text{m}\\cdot\\text{s}^2)$": Ordne jede Druckangabe ihrem Wert in Pa zu.',
+        [
+          { left: '1 hPa', right: '$10^2\\,\\text{Pa} = 100\\,\\text{Pa}$' },
+          { left: '1 kPa', right: '$10^3\\,\\text{Pa} = 1000\\,\\text{Pa}$' },
+          { left: '1 bar', right: '$10^5\\,\\text{Pa} = 100\\,000\\,\\text{Pa}$' },
+          { left: '1 MPa', right: '$10^6\\,\\text{Pa} = 1\\,000\\,000\\,\\text{Pa}$' },
+          { left: '1 N/mm²', right: '$10^6\\,\\text{Pa} = 1\\,000\\,000\\,\\text{Pa}$' },
+        ],
+        `**Ansatz:** Präfixe und Flächenbezug konsequent anwenden.
+
+**Rechnung:** h = $10^2$, k = $10^3$, M = $10^6$. bar ist eine "alte" Einheit = $10^5\\,\\text{Pa}$. N/mm² = $10^6\\,\\text{Pa}$ wegen quadrierter mm.
+
+**Probe:** MPa und N/mm² sind **identisch** ($10^6\\,\\text{Pa}$) — darum nutzt man sie synonym in Festigkeitsangaben.
+
+**Typischer Fehler:** bar und Pa gleichsetzen ("bar ist die SI-Druckeinheit") — nein, bar ist kein SI, sondern eine abgeleitete Nicht-SI-Einheit gleich $10^5\\,\\text{Pa}$.`,
+        [
+          'SI-Präfixe auswendig (h, k, M).',
+          'bar = 10⁵ Pa.',
+          '1 N/mm² = 1 MPa.',
+        ],
+      ),
+    ],
+
+    // ── [3] Umrechnungen vor dem Einsetzen ──────────────────────────────
+    3: [
+      ni(
+        'Sub-Goal "Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen": Eine Querschnittsfläche beträgt $A = 250\\,\\text{mm}^2$. Wie viele m² sind das? (wissenschaftliche Schreibweise erlaubt)',
+        0.00025, 0.0000001, 'm²',
+        `**Ansatz:** $1\\,\\text{mm} = 10^{-3}\\,\\text{m}$ ⇒ $1\\,\\text{mm}^2 = (10^{-3})^2\\,\\text{m}^2 = 10^{-6}\\,\\text{m}^2$.
+
+**Rechnung:** $A = 250\\,\\text{mm}^2 \\cdot 10^{-6}\\,\\text{m}^2/\\text{mm}^2 = 250\\cdot 10^{-6}\\,\\text{m}^2 = 2{,}5\\cdot 10^{-4}\\,\\text{m}^2 = 0{,}00025\\,\\text{m}^2$.
+
+**Probe:** Gegencheck: $250\\,\\text{mm}^2$ entspricht einem Quadrat mit Kantenlänge $\\sqrt{250}\\approx 15{,}8\\,\\text{mm}\\approx 0{,}0158\\,\\text{m}$. Fläche: $0{,}0158^2 \\approx 2{,}5\\cdot 10^{-4}\\,\\text{m}^2$ ✓.
+
+**Typischer Fehler:** Nur den **linearen** Faktor $10^{-3}$ verwenden ⇒ $0{,}25\\,\\text{m}^2$ (um Faktor $10^3$ zu groß). Bei Flächen wird der Faktor **quadriert**.`,
+        [
+          '1 mm = 10⁻³ m.',
+          'Bei Fläche Faktor quadrieren.',
+          '250 × 10⁻⁶ = 2,5·10⁻⁴.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen": Eine Stange hat $A = 100\\,\\text{mm}^2$ und trägt $F = 50\\,\\text{kN}$. Normalspannung $\\sigma = F/A$ in **MPa**?',
+        500, 1, 'MPa',
+        `**Ansatz:** Praktiker-Trick: in MPa landet man direkt, wenn $F$ in **N** und $A$ in **mm²** eingesetzt wird — $1\\,\\text{N/mm}^2 = 1\\,\\text{MPa}$.
+
+**Rechnung:** $F = 50\\,\\text{kN} = 50\\,000\\,\\text{N}$. $\\sigma = 50\\,000\\,\\text{N}/100\\,\\text{mm}^2 = 500\\,\\text{N/mm}^2 = 500\\,\\text{MPa}$.
+
+**Probe:** Alternative in SI: $F = 50\\,000\\,\\text{N}$, $A = 100\\cdot 10^{-6}\\,\\text{m}^2 = 10^{-4}\\,\\text{m}^2$. $\\sigma = 50\\,000/10^{-4} = 5\\cdot 10^{8}\\,\\text{Pa} = 500\\,\\text{MPa}$ ✓.
+
+**Typischer Fehler:** $F$ in kN, $A$ in mm² lassen ⇒ "$50/100 = 0{,}5$ kN/mm²" — als $0{,}5\\,\\text{MPa}$ interpretieren. Tatsächlich ist $1\\,\\text{kN/mm}^2 = 1000\\,\\text{MPa}$, also $0{,}5\\,\\text{kN/mm}^2 = 500\\,\\text{MPa}$.`,
+        [
+          'kN → N: ×1000.',
+          'N und mm² passen direkt: N/mm² = MPa.',
+          '50000/100 = 500.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen": Welche Umrechnung ist **falsch**?',
+        [
+          '$150\\,\\text{kN} = 150\\,000\\,\\text{N}$',
+          '$250\\,\\text{MPa} = 2{,}5\\cdot 10^8\\,\\text{Pa}$',
+          '$1\\,\\text{kN/mm}^2 = 1\\,\\text{MPa}$',
+          '$100\\,\\text{mm}^2 = 10^{-4}\\,\\text{m}^2$',
+        ],
+        2,
+        `**Ansatz:** Jede Umrechnung einzeln prüfen.
+
+**Rechnung:** (a) k = $10^3$, also $150\\cdot 10^3 = 150\\,000$ ✓. (b) M = $10^6$, also $250\\cdot 10^6 = 2{,}5\\cdot 10^8$ ✓. (c) $1\\,\\text{kN/mm}^2 = 10^3\\,\\text{N}/10^{-6}\\,\\text{m}^2 = 10^9\\,\\text{Pa} = 1\\,\\text{GPa} = 1000\\,\\text{MPa}$ — **nicht** 1 MPa. (d) $100\\cdot 10^{-6} = 10^{-4}$ ✓.
+
+**Probe:** Merkregel: $1\\,\\text{N/mm}^2 = 1\\,\\text{MPa}$, aber $1\\,\\text{kN/mm}^2 = 1\\,\\text{GPa}$ — Faktor 1000 mehr.
+
+**Typischer Fehler:** kN/mm² und N/mm² gleichsetzen. Das ist **der** klassische Umrechnungsfehler in Festigkeitsrechnungen — kostet Faktor 1000.`,
+        [
+          'Präfixe einzeln: k, M, G.',
+          'Flächen: Faktor quadrieren.',
+          'kN/mm² ist GPa, nicht MPa.',
+        ],
+        {
+          0: 'kN → N: Faktor $10^3$. $150\\cdot 1000 = 150\\,000$ — korrekt.',
+          1: 'MPa → Pa: Faktor $10^6$. $250\\cdot 10^6 = 2{,}5\\cdot 10^8$ — korrekt.',
+          3: 'mm² → m²: Faktor $10^{-6}$. $100\\cdot 10^{-6} = 10^{-4}$ — korrekt.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen": Die Einheiten "N/mm²" und "MPa" haben denselben Zahlenwert — ein Stab mit $\\sigma = 350\\,\\text{MPa}$ trägt also $350\\,\\text{N/mm}^2$.',
+        true,
+        `**Ansatz:** $1\\,\\text{N/mm}^2 = 1\\,\\text{N}/(10^{-3}\\,\\text{m})^2 = 10^6\\,\\text{N/m}^2 = 10^6\\,\\text{Pa} = 1\\,\\text{MPa}$.
+
+**Rechnung:** Beide Einheiten entsprechen exakt $10^6\\,\\text{Pa}$ ⇒ Zahlenwerte identisch.
+
+**Probe:** $350\\,\\text{MPa} = 350\\cdot 10^6\\,\\text{Pa} = 3{,}5\\cdot 10^8\\,\\text{Pa}$ und gleichzeitig $350\\,\\text{N/mm}^2$. Beide Schreibweisen tauchen in Datenblättern gleichermaßen auf.
+
+**Typischer Fehler:** Die beiden Einheiten als verschieden wahrnehmen (Panikmoment in der Klausur!). Sie sind identisch — nur zwei Namen für dieselbe Größe.`,
+        [
+          'Ein mm² ist 10⁻⁶ m².',
+          'N/mm² = 10⁶ N/m² = 10⁶ Pa.',
+          '10⁶ Pa = 1 MPa.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen": Bringe die Arbeitsschritte einer sauberen Rechnung in die Reihenfolge, die Fehler vermeidet.',
+        [
+          'Einheitensystem wählen (z. B. alles in SI-Basis, oder alles in N/mm²-Praxis)',
+          'Jede Eingabegröße explizit in dieses System umrechnen',
+          'Formel mit den umgerechneten Zahlen einsetzen',
+          'Einheiten am Ergebnis dimensional prüfen',
+          'Plausibilitätscheck mit erwarteter Größenordnung',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Erst konsistentes Einheitensystem, dann erst rechnen. Wer zwischendurch Einheiten mischt, baut die Fehlerquelle aktiv ein.
+
+**Rechnung:** Schritt 1 ist die strategische Entscheidung. Im Maschinenbau oft: N, mm, MPa (direkt kompatibel für Festigkeit). In Physik: kg, m, s, Pa.
+
+**Probe:** Die Dimensionsprüfung (Schritt 4) fängt Faktor-1000-Fehler zuverlässig ab. Nie auslassen.
+
+**Typischer Fehler:** Direkt aus dem Aufgabenzettel in den Taschenrechner tippen — mit Einheitenmix (MPa, kN, mm²). Liefert zahlenmäßig fast immer etwas, das "irgendwie plausibel aussieht", ist aber falsch.`,
+        [
+          'Zuerst System festlegen.',
+          'Dann umrechnen.',
+          'Dimensionsprüfung am Ende, nicht am Anfang.',
+        ],
+      ),
+    ],
+
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // mech-1-4 — Reibung  (5 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'mech-1-4': {
