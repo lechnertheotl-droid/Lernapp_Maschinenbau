@@ -71,6 +71,7 @@ export function PracticePage() {
 
         <PracticeRunner
           exercise={current}
+          topicId={topicId}
           onFinished={() => {}}
           onNext={() => {
             if (hasNext) setExerciseId(list[index + 1].id)

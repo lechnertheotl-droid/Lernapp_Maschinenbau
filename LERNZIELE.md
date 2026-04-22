@@ -14,13 +14,13 @@ Die Datei bündelt alle Lernziele der App nach Studienphase. Jedes Topic, jede U
 | Lessons insgesamt | 226 |
 | Lessons mit `subGoals` | 226 / 226 (100%) |
 | Aufgaben (manuell/gesamt) | 1174 / 2275 (52% manuell) |
-| Aufgaben mit 4-Block-Erklärung | 364 / 2275 (16%) |
+| Aufgaben mit 4-Block-Erklärung | 367 / 2275 (16%) |
 
 ## Übersicht nach Studienphase
 
 | Phase | Topic | Units | Lessons | Aufg. manuell/gesamt | 4-Block | Prüfung |
 |---|---|---|---|---|---|---|
-| Phase 0 | [Algebra & Funktionen](#algebra) | 5 | 18 | 112/183 | 51/183 (28%) | Grundlage |
+| Phase 0 | [Algebra & Funktionen](#algebra) | 5 | 18 | 112/183 | 54/183 (30%) | Grundlage |
 | Phase 1 | [Trigonometrie](#trigonometry) | 4 | 18 | 66/180 | 27/180 (15%) | **Pflicht** |
 | Phase 1 | [Vektoren & Analytische Geometrie](#vektoren) | 3 | 12 | 54/120 | 20/120 (17%) | **Pflicht** |
 | Phase 1 | [Differentialrechnung](#ableitung) | 5 | 18 | 113/183 | 57/183 (31%) | **Pflicht** |
@@ -55,7 +55,7 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 ### Algebra & Funktionen `algebra`
 
 **Prüfungsrelevanz:** Grundlage  
-**Aufgaben:** 183 gesamt · 112 manuell · 71 auto-supplemental · 51 mit 4-Block-Erklärung (28%)
+**Aufgaben:** 183 gesamt · 112 manuell · 71 auto-supplemental · 54 mit 4-Block-Erklärung (30%)
 
 **Topic-Lernziele (nach Abschluss):**
 - Brüche, Klammern, Potenzen und Logarithmen fehlerfrei umformen
@@ -85,7 +85,7 @@ Quelle: `src/content/lehrplan/tu-wien-maschinenbau.md`. Jede Phase unten entspri
 - [MITTEL] Doppel-Minus aufgelöst: $(-a)(-b)=+ab$
 - [MITTEL] Klammerschachtelung von innen nach außen abarbeiten
 
-*Aufgaben-Coverage:* 10 gesamt · 6 manuell / 4 auto-supp · 7 mit 4-Block-Erklärung
+*Aufgaben-Coverage:* 10 gesamt · 6 manuell / 4 auto-supp · 10 mit 4-Block-Erklärung
 
 ##### Bruchrechnen sicher `alg-0-2` · 15 min
 

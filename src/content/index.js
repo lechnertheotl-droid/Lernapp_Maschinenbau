@@ -30,6 +30,7 @@ import { maschinenelementeSupplements } from './supplements/maschinenelemente'
 import { elektrotechnikSupplements } from './supplements/elektrotechnik'
 import { regelungstechnikSupplements } from './supplements/regelungstechnik'
 import { fourierLaplaceSupplements } from './supplements/fourier_laplace'
+import { algebraSubGoalTasks } from './subgoal_tasks/algebra'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
 const MIN_EXERCISES_PER_LESSON = 10
@@ -50,6 +51,13 @@ const MANUAL_SUPPLEMENTS = {
   ...elektrotechnikSupplements,
   ...regelungstechnikSupplements,
   ...fourierLaplaceSupplements,
+}
+
+// Sub-Goal-Zielaufgaben: pro Lesson ein Array, Index = Position im `subGoals`-Array
+// der Lesson. Pipeline prüft in `goalTaskExercises`, dass die Länge exakt matcht.
+const SUBGOAL_EXERCISES = {
+  ...algebraSubGoalTasks,
+  // trigonometry, vektoren, ableitung, … folgen in Folge-Sessions
 }
 
 function countExerciseSteps(lesson) {
@@ -561,14 +569,54 @@ function supplementalExercise(lesson, index, unit, topic) {
   return templates[index % templates.length]
 }
 
+// Zielaufgaben pro Sub-Goal — eine Aufgabe pro Eintrag in `lesson.subGoals`.
+// Der Content liegt manuell in `src/content/subgoal_tasks/<topic>.js` und
+// landet per Registry (SUBGOAL_EXERCISES) hier.
+function goalTaskExercises(lesson, unit) {
+  const raw = SUBGOAL_EXERCISES[lesson.id]
+  if (!raw) return []
+  const subGoals = lesson.subGoals ?? []
+  if (raw.length !== subGoals.length) {
+    throw new Error(
+      `goalTaskExercises: Drift in Lesson "${lesson.id}" — subGoals=${subGoals.length}, Zielaufgaben=${raw.length}. ` +
+      `Pro Sub-Goal muss genau eine Zielaufgabe existieren (gleicher Index).`,
+    )
+  }
+  return raw.map((ex, i) => ({
+    ...ex,
+    id: `ex-${lesson.id}-goal-${i + 1}`,
+    lessonId: lesson.id,
+    isSupplemental: true,
+    isGoalTask: true,
+    subGoalIndex: i,
+    subGoalLabel: subGoals[i].label,
+    subGoalWeight: subGoals[i].examRelevance,
+  }))
+}
+
 function withMinimumExercises(topic) {
   return {
     ...topic,
     units: topic.units.map((unit) => {
       const exercises = { ...(unit.exercises ?? {}) }
       const lessons = unit.lessons.map((lesson) => {
-        const missing = Math.max(0, MIN_EXERCISES_PER_LESSON - countExerciseSteps(lesson))
-        if (missing === 0) return lesson
+        // 1) Zielaufgaben einziehen (pro Sub-Goal eine Aufgabe).
+        const goalTasks = goalTaskExercises(lesson, unit)
+        const goalSteps = goalTasks.map((exercise, index) => {
+          exercises[exercise.id] = exercise
+          return {
+            id: `${lesson.id}-goal-s${index + 1}`,
+            type: 'exercise',
+            title: `Zielaufgabe — ${exercise.subGoalLabel}`,
+            exerciseRef: exercise.id,
+          }
+        })
+
+        // 2) Auto-Supplementals NUR, wenn inkl. Goal-Tasks noch nicht genug Übungsschritte da sind.
+        const haveCount = countExerciseSteps(lesson) + goalTasks.length
+        const missing = Math.max(0, MIN_EXERCISES_PER_LESSON - haveCount)
+
+        if (goalTasks.length === 0 && missing === 0) return lesson
 
         const supplemental = Array.from({ length: missing }, (_, index) => supplementalExercise(lesson, index, unit, topic))
         const supplementalSteps = supplemental.map((exercise, index) => {
@@ -582,11 +630,13 @@ function withMinimumExercises(topic) {
         })
 
         const currentSteps = lesson.steps ?? []
-        const explanationStep = supplementalExplanation(lesson, unit, topic)
+        // Einfügereihenfolge: bestehende Steps → Zielaufgaben → (falls nötig) Erklärungs-Step + Zusatzaufgaben → mastery-check.
+        const explanationStep = (missing > 0) ? supplementalExplanation(lesson, unit, topic) : null
+        const supplementBlock = explanationStep ? [explanationStep, ...supplementalSteps] : []
         const masteryIndex = currentSteps.findIndex((step) => step.type === 'mastery-check')
         const steps = masteryIndex >= 0
-          ? [...currentSteps.slice(0, masteryIndex), explanationStep, ...supplementalSteps, ...currentSteps.slice(masteryIndex)]
-          : [...currentSteps, explanationStep, ...supplementalSteps]
+          ? [...currentSteps.slice(0, masteryIndex), ...goalSteps, ...supplementBlock, ...currentSteps.slice(masteryIndex)]
+          : [...currentSteps, ...goalSteps, ...supplementBlock]
 
         return { ...lesson, steps }
       })
