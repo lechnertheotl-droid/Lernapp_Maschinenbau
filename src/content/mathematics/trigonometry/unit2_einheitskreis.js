@@ -428,6 +428,12 @@ const lessons_u2 = [
     title: 'Der Einheitskreis',
     order: 1, estimatedMinutes: 12,
     learningGoals: ['Den Einheitskreis als Grundlage verstehen', 'Punkte auf dem Einheitskreis einordnen'],
+    subGoals: [
+      { label: 'Einheitskreis = Kreis um Ursprung mit $r = 1$, Gleichung $x^2 + y^2 = 1$', examRelevance: 'hoch' },
+      { label: 'Punkt auf Kreis $P = (\\cos\\alpha, \\sin\\alpha)$ — Winkel von positiver $x$-Achse gegen Uhrzeigersinn', examRelevance: 'hoch' },
+      { label: 'Quadrantenpunkte: $0° \\to (1,0)$, $90° \\to (0,1)$, $180° \\to (-1,0)$, $270° \\to (0,-1)$', examRelevance: 'hoch' },
+      { label: 'Durchmesser $d = 2$ nicht mit Radius $r = 1$ verwechseln', examRelevance: 'niedrig' },
+    ],
     prerequisites: ['trig-1-3'],
     nextLessonId: 'trig-2-2',
     steps: [
@@ -456,6 +462,13 @@ Die Koordinaten von $P$ sind dann genau **$(\\cos(\\alpha), \\sin(\\alpha))$** �
     title: 'sin und cos als Koordinaten',
     order: 2, estimatedMinutes: 10,
     learningGoals: ['sin und cos als x/y-Koordinaten am Einheitskreis verstehen', 'Punkte ↔ Winkel umsetzen'],
+    subGoals: [
+      { label: '$\\cos\\alpha$ = $x$-Koordinate (horizontal), $\\sin\\alpha$ = $y$-Koordinate (vertikal)', examRelevance: 'hoch' },
+      { label: 'Definition gilt für **alle** reellen Winkel, nicht nur $0°$–$90°$', examRelevance: 'hoch' },
+      { label: 'Aus Koordinaten $(x,y)$ auf Kreis den Winkel über Vorzeichen + Referenzwinkel ermitteln', examRelevance: 'hoch' },
+      { label: 'Eselsbrücke: **c**osinus → **x**-Achse, **s**inus → $y$-Achse (vertikal)', examRelevance: 'niedrig' },
+      { label: 'Werte liegen stets im Intervall $[-1, +1]$, weil $r = 1$', examRelevance: 'mittel' },
+    ],
     prerequisites: ['trig-2-1'],
     nextLessonId: 'trig-2-3',
     steps: [
@@ -488,6 +501,14 @@ Diese Definition gilt für **alle reellen Winkel** — nicht nur $0°$–$90°$.
     title: 'Symmetrien und Periodizität',
     order: 3, estimatedMinutes: 12,
     learningGoals: ['Periodizität von sin und cos verstehen', 'Symmetrieeigenschaften anwenden', 'Reduktionsformeln aus dem Einheitskreis herleiten'],
+    subGoals: [
+      { label: 'Periodizität: $\\sin(\\alpha + 360°) = \\sin\\alpha$, $\\cos(\\alpha + 360°) = \\cos\\alpha$ (Periode $2\\pi$)', examRelevance: 'hoch' },
+      { label: '$\\sin$ ungerade: $\\sin(-\\alpha) = -\\sin\\alpha$ — Spiegelung an $x$-Achse kippt $y$', examRelevance: 'hoch' },
+      { label: '$\\cos$ gerade: $\\cos(-\\alpha) = \\cos\\alpha$ — $x$-Koordinate unverändert', examRelevance: 'hoch' },
+      { label: 'Supplementformel: $\\sin(180°-\\alpha) = \\sin\\alpha$, $\\cos(180°-\\alpha) = -\\cos\\alpha$', examRelevance: 'mittel' },
+      { label: 'Komplementformel: $\\sin(90°-\\alpha) = \\cos\\alpha$, $\\cos(90°-\\alpha) = \\sin\\alpha$', examRelevance: 'mittel' },
+      { label: 'Punktspiegelung: $\\sin(180°+\\alpha) = -\\sin\\alpha$, $\\cos(180°+\\alpha) = -\\cos\\alpha$', examRelevance: 'mittel' },
+    ],
     prerequisites: ['trig-2-2'],
     nextLessonId: 'trig-2-4',
     steps: [
@@ -529,6 +550,14 @@ $$\\sin(90° - \\alpha) = \\cos(\\alpha), \\quad \\cos(90° - \\alpha) = \\sin(\
     title: 'Tangens im Einheitskreis',
     order: 4, estimatedMinutes: 10,
     learningGoals: ['Tangens als sin/cos verstehen', 'Polstellen von tan erkennen', 'Vorzeichen von tan in Quadranten bestimmen'],
+    subGoals: [
+      { label: 'Definition: $\\tan\\alpha = \\sin\\alpha/\\cos\\alpha = y/x$ — Steigung der Ursprungsgerade', examRelevance: 'hoch' },
+      { label: 'Polstellen bei $\\alpha = 90° + k\\cdot 180°$ (überall dort $\\cos\\alpha = 0$)', examRelevance: 'hoch' },
+      { label: 'Periode von $\\tan$ ist $180°$, nicht $360°$ (Steigung wiederholt sich nach halber Drehung)', examRelevance: 'hoch' },
+      { label: 'ASTC-Vorzeichen: $\\tan > 0$ in 1. und 3. Quadrant, $\\tan < 0$ in 2. und 4.', examRelevance: 'hoch' },
+      { label: '$\\tan$ ist ungerade: $\\tan(-\\alpha) = -\\tan\\alpha$', examRelevance: 'mittel' },
+      { label: 'Wertebereich: $(-\\infty, +\\infty)$, keine Beschränkung wie bei $\\sin$/$\\cos$', examRelevance: 'mittel' },
+    ],
     prerequisites: ['trig-2-2'],
     nextLessonId: 'trig-2-5',
     steps: [
@@ -552,6 +581,14 @@ $$\\sin(90° - \\alpha) = \\cos(\\alpha), \\quad \\cos(90° - \\alpha) = \\sin(\
     title: 'Alle vier Quadranten',
     order: 5, estimatedMinutes: 15,
     learningGoals: ['Winkel in allen Quadranten berechnen', 'Reduktionsformeln anwenden', 'Referenzwinkel bilden'],
+    subGoals: [
+      { label: 'Quadrantengrenzen: Q1 $0°$–$90°$, Q2 $90°$–$180°$, Q3 $180°$–$270°$, Q4 $270°$–$360°$', examRelevance: 'hoch' },
+      { label: 'ASTC-Regel: **A**lle (Q1), **S**inus (Q2), **T**angens (Q3), **C**osinus (Q4) positiv', examRelevance: 'hoch' },
+      { label: 'Referenzwinkel = Abstand zur nächsten $x$-Achsen-Hälfte ($0°$ oder $180°$)', examRelevance: 'hoch' },
+      { label: '4-Schritt-Verfahren: Quadrant → Referenzwinkel → Grundwert (Q1) → Vorzeichen aus ASTC', examRelevance: 'hoch' },
+      { label: 'Standardwerte $\\sin$/$\\cos$ für $0°/30°/45°/60°/90°$ auswendig, Rest per Reduktion', examRelevance: 'hoch' },
+      { label: 'Winkel $> 360°$ oder $< 0°$ per $\\alpha \\bmod 360°$ in Hauptbereich bringen', examRelevance: 'mittel' },
+    ],
     prerequisites: ['trig-2-3', 'trig-2-4'],
     nextLessonId: 'trig-3-1',
     steps: [

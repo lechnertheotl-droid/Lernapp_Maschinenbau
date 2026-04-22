@@ -649,6 +649,13 @@ Dabei ist $l_\perp$ der senkrechte Abstand zwischen Drehpunkt und Wirkungslinie 
               'Querkraft- und Biegemomentverlauf skizzieren',
               'Die gefährliche Stelle (max. Biegemoment) identifizieren',
             ],
+            subGoals: [
+              { label: 'Drei Schnittgrößen: Normalkraft $N(x)$, Querkraft $Q(x)$, Biegemoment $M(x)$', examRelevance: 'hoch' },
+              { label: 'Zusammenhang: $Q(x) = dM/dx$, $q(x) = -dQ/dx$', examRelevance: 'hoch' },
+              { label: 'Sprung in $Q$ bei Einzellast $F$, Knick in $M$ bei Einzellast', examRelevance: 'hoch' },
+              { label: '$M_{\\max}$ an Stelle mit $Q = 0$ (gefährliche Stelle)', examRelevance: 'hoch' },
+              { label: 'An gelenkigen Auflagern ist $M = 0$ (Randbedingung)', examRelevance: 'hoch' },
+            ],
             content: String.raw`**Schnittprinzip:** Zerschneidet man einen Balken gedanklich an der Stelle $x$, müssen am Schnittufer **Schnittgrößen** angreifen, damit jede Hälfte für sich im Gleichgewicht steht.
 
 Drei Schnittgrößen:
@@ -731,6 +738,13 @@ $$M_\text{max} = R_A \cdot a = F \cdot \frac{a(L-a)}{L}$$
             title: 'Reibung',
             estimatedMinutes: 14,
             learningGoals: ['Haft- und Gleitreibung unterscheiden', 'Reibkraft mit Coulombschem Gesetz berechnen'],
+            subGoals: [
+              { label: 'Coulombsches Reibgesetz: $F_R = \\mu F_N$', examRelevance: 'hoch' },
+              { label: 'Haftreibwert $\\mu_0$ > Gleitreibwert $\\mu$ (Losreißen braucht mehr Kraft)', examRelevance: 'hoch' },
+              { label: 'Auf geneigter Ebene: $F_N = mg\\cos\\alpha$, $F_H = mg\\sin\\alpha$', examRelevance: 'hoch' },
+              { label: 'Selbsthemmung: Körper gleitet nicht, solange $\\tan\\alpha \\leq \\mu_0$', examRelevance: 'hoch' },
+              { label: 'Reibwinkel $\\rho = \\arctan\\mu$: Neigung, bei der Körper gerade zu gleiten beginnt', examRelevance: 'mittel' },
+            ],
             content: String.raw`**Coulombsches Reibgesetz:**
 
 $$F_R = \mu \cdot F_N$$
@@ -751,6 +765,13 @@ $\mu$ ist der Reibwert (dimensionslos), $F_N$ die Normalkraft. Man unterscheidet
             title: 'Schwerpunkt',
             estimatedMinutes: 14,
             learningGoals: ['Schwerpunkt zusammengesetzter Flächen berechnen', 'Flächenschwerpunkt als Summenregel anwenden'],
+            subGoals: [
+              { label: 'Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$', examRelevance: 'hoch' },
+              { label: 'Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$', examRelevance: 'hoch' },
+              { label: 'Loch als negative Fläche subtrahieren', examRelevance: 'hoch' },
+              { label: 'Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse', examRelevance: 'mittel' },
+              { label: 'Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\\pi)$', examRelevance: 'mittel' },
+            ],
             content: String.raw`Der **Schwerpunkt** (Massenmittelpunkt) eines Systems diskreter Massen liegt bei:
 
 $$x_S = \frac{\sum m_i \cdot x_i}{\sum m_i}, \qquad y_S = \frac{\sum m_i \cdot y_i}{\sum m_i}$$
@@ -777,6 +798,13 @@ $$x_S = \frac{\sum A_i \cdot x_{S,i}}{\sum A_i}$$
             id: 'mech-2-1',
             title: 'Newtonsche Gesetze',
             learningGoals: ['F = m·a anwenden', 'Masse und Gewichtskraft unterscheiden'],
+            subGoals: [
+              { label: '2. Newton: $\\sum \\vec F = m \\vec a$ (Grundgleichung der Dynamik)', examRelevance: 'hoch' },
+              { label: '1. Newton: ohne Kraft → gleichförmige Bewegung (Trägheitsprinzip)', examRelevance: 'hoch' },
+              { label: '3. Newton: actio = reactio, $\\vec F_{AB} = -\\vec F_{BA}$', examRelevance: 'hoch' },
+              { label: 'Gewichtskraft: $F_G = m \\cdot g$ mit $g \\approx 9{,}81$ m/s²', examRelevance: 'hoch' },
+              { label: 'Masse (kg) ist Eigenschaft des Körpers, Gewichtskraft (N) Kraft im Schwerefeld', examRelevance: 'hoch' },
+            ],
             content: String.raw`Die Grundgleichung der Dynamik lautet:
 
 $$\sum F = m \cdot a$$
@@ -795,6 +823,14 @@ Masse ist eine Eigenschaft des Körpers. Gewichtskraft ist die Kraft im Schweref
             id: 'mech-2-2',
             title: 'Arbeit und Energie',
             learningGoals: ['Mechanische Arbeit berechnen', 'Energieerhaltung erkennen'],
+            subGoals: [
+              { label: 'Arbeit: $W = F \\cdot s \\cdot \\cos\\alpha$ (Skalarprodukt), Einheit Joule', examRelevance: 'hoch' },
+              { label: 'Senkrechte Kraft leistet keine Arbeit ($\\cos 90° = 0$)', examRelevance: 'hoch' },
+              { label: 'Kinetische Energie: $E_{\\text{kin}} = \\tfrac{1}{2} m v^2$', examRelevance: 'hoch' },
+              { label: 'Potentielle Energie: $E_{\\text{pot}} = m g h$ (nahe Erdoberfläche)', examRelevance: 'hoch' },
+              { label: 'Federenergie: $E_{\\text{Feder}} = \\tfrac{1}{2} c x^2$', examRelevance: 'hoch' },
+              { label: 'Energieerhaltung: $E_{\\text{kin}} + E_{\\text{pot}} = $ const (konservatives System)', examRelevance: 'hoch' },
+            ],
             content: String.raw`Mechanische Arbeit bei konstanter Kraft:
 
 $$W = F \cdot s \cdot \cos(\alpha)$$
@@ -811,6 +847,14 @@ Ist Kraft und Weg gleichgerichtet, gilt $W = F \cdot s$.`,
             title: 'Kinematik',
             estimatedMinutes: 14,
             learningGoals: ['Geradlinige Bewegung mit Formeln beschreiben', 'Zusammenhang zwischen s, v, a und t herstellen'],
+            subGoals: [
+              { label: 'Gleichförmig beschleunigt: $v = v_0 + at$, $s = s_0 + v_0 t + \\tfrac{1}{2}at^2$', examRelevance: 'hoch' },
+              { label: 'Energiegleichung: $v^2 = v_0^2 + 2a\\Delta s$ (ohne Zeit)', examRelevance: 'hoch' },
+              { label: 'Freier Fall: $a = g$, $v = gt$, $h = \\tfrac{1}{2}gt^2$', examRelevance: 'hoch' },
+              { label: 'Schräger Wurf: $v_x = v_0 \\cos\\alpha$, $v_y = v_0 \\sin\\alpha$, Wurfweite $= v_0^2 \\sin 2\\alpha/g$', examRelevance: 'hoch' },
+              { label: 'Kreisbewegung: $\\omega = 2\\pi/T = 2\\pi n$, $v = r\\omega$, $a_z = v^2/r = r\\omega^2$', examRelevance: 'hoch' },
+              { label: 'Impulserhaltung: $\\sum m_i v_i = $ const (auch bei unelastischem Stoß)', examRelevance: 'hoch' },
+            ],
             content: String.raw`**Geradlinige gleichmäßig beschleunigte Bewegung:**
 
 $$v(t) = v_0 + a \cdot t$$
@@ -878,6 +922,13 @@ $a_z$ ist die **Zentripetalbeschleunigung** — sie zeigt immer zur Kreismitte.`
             title: 'Schwingungen',
             estimatedMinutes: 16,
             learningGoals: ['Eigenfrequenz eines Feder-Masse-Systems berechnen', 'Resonanzbedingung erkennen'],
+            subGoals: [
+              { label: 'Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$', examRelevance: 'hoch' },
+              { label: 'Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$', examRelevance: 'hoch' },
+              { label: 'Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)', examRelevance: 'hoch' },
+              { label: 'Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$', examRelevance: 'hoch' },
+              { label: 'Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)', examRelevance: 'mittel' },
+            ],
             content: String.raw`**Ungedämpfte freie Schwingung** des Feder-Masse-Systems ($m$, Federsteifigkeit $c$):
 
 $$\ddot{x} + \omega_0^2 x = 0, \qquad \omega_0 = \sqrt{\frac{c}{m}}$$
@@ -902,6 +953,13 @@ $$T = \frac{2\pi}{\omega_0}, \qquad f_0 = \frac{1}{T}$$
             title: 'Dynamik starrer Körper',
             estimatedMinutes: 16,
             learningGoals: ['Massenträgheitsmoment interpretieren', 'Drallsatz M = J·α anwenden'],
+            subGoals: [
+              { label: 'Drallsatz: $M = J \\cdot \\alpha$ (Rotationsanalog zu $F = ma$)', examRelevance: 'hoch' },
+              { label: 'Standardträgheitsmomente: Vollzylinder $\\tfrac{1}{2}mR^2$, Stab $\\tfrac{1}{12}mL^2$', examRelevance: 'hoch' },
+              { label: 'Steinerscher Anteil: $J_A = J_S + m d^2$ (Parallelachsenverschiebung)', examRelevance: 'hoch' },
+              { label: 'Rotationsenergie: $E_{\\text{rot}} = \\tfrac{1}{2} J \\omega^2$', examRelevance: 'hoch' },
+              { label: 'Drehimpuls: $L = J \\omega$, Erhaltung bei $M_{\\text{ext}} = 0$', examRelevance: 'hoch' },
+            ],
             content: String.raw`Für **Rotation** eines starren Körpers gilt das Analogon zu $F = m \cdot a$:
 
 $$M = J \cdot \alpha$$
@@ -935,6 +993,13 @@ $J$ ist das **Massenträgheitsmoment** (Einheit: kg·m²), $\alpha = \dot\omega$
             title: 'Statik: Prüfungsaufgaben',
             type: 'explanation-intuitive',
             learningGoals: ['Komplexe Gleichgewichtsaufgaben lösen', 'Mehrere Kräfte und Momente kombinieren'],
+            subGoals: [
+              { label: 'Freikörperbild: alle äußeren Kräfte und Momente einzeichnen', examRelevance: 'hoch' },
+              { label: 'Drei Gleichgewichtsbedingungen in 2D: $\\sum F_x = 0$, $\\sum F_y = 0$, $\\sum M_P = 0$', examRelevance: 'hoch' },
+              { label: 'Lagertypen: Loslager (1 Reaktion), Festlager (2), Einspannung (3)', examRelevance: 'hoch' },
+              { label: 'Momentensumme um geschickten Punkt (oft Auflager) eliminiert Unbekannte', examRelevance: 'hoch' },
+              { label: 'Statisch bestimmt: Anzahl Gleichungen = Anzahl Reaktionen', examRelevance: 'hoch' },
+            ],
             content: String.raw`**[PRÜFUNG] Statik-Aufgaben auf Klausurniveau**
 
 **Typisches Vorgehen:**
@@ -962,6 +1027,13 @@ $J$ ist das **Massenträgheitsmoment** (Einheit: kg·m²), $\alpha = \dot\omega$
             title: 'Dynamik: Prüfungsaufgaben',
             type: 'explanation-intuitive',
             learningGoals: ['Newton-Aufgaben mit Reibung lösen', 'Energieerhaltung anwenden'],
+            subGoals: [
+              { label: 'Energieerhaltung mit Reibung: $E_1 = E_2 + W_R$ mit $W_R = F_R \\cdot s$', examRelevance: 'hoch' },
+              { label: 'Elastischer Stoß gleicher Massen: Geschwindigkeiten tauschen', examRelevance: 'hoch' },
+              { label: 'Arbeitssatz: $\\sum W_i = \\Delta E_{\\text{kin}}$ (Gesamtarbeit = Änderung kin. Energie)', examRelevance: 'hoch' },
+              { label: 'Bei freiem Fall aus Höhe $h$: $v = \\sqrt{2gh}$', examRelevance: 'hoch' },
+              { label: 'Reibungskraft am Boden: $F_R = \\mu m g$, Nettokraft $F - F_R$', examRelevance: 'hoch' },
+            ],
             content: String.raw`**[PRÜFUNG] Dynamik-Aufgaben**
 
 **Energieerhaltung:** $E_{kin,1} + E_{pot,1} = E_{kin,2} + E_{pot,2} + W_{Reibung}$
@@ -984,6 +1056,13 @@ $J$ ist das **Massenträgheitsmoment** (Einheit: kg·m²), $\alpha = \dot\omega$
             type: 'explanation-intuitive',
             estimatedMinutes: 22,
             learningGoals: ['Reibungs- und Kinematikaufgaben kombinieren', 'Schwingungsparameter aus Systemdaten ableiten'],
+            subGoals: [
+              { label: 'Geneigte Ebene: gleiten wenn $F_H > F_{R,\\max}$, d.h. $\\tan\\alpha > \\mu_0$', examRelevance: 'hoch' },
+              { label: 'Bremsweg-Formel: $s = v_0^2/(2a)$ bei Bremsbeschleunigung $a$', examRelevance: 'hoch' },
+              { label: 'Eigenfrequenz Feder-Masse: $\\omega_0 = \\sqrt{c/m}$', examRelevance: 'hoch' },
+              { label: 'Bei Parallelschaltung Federn: $c_\\text{ges} = c_1 + c_2$; Serie: $1/c_\\text{ges} = 1/c_1 + 1/c_2$', examRelevance: 'mittel' },
+              { label: 'Rollen ohne Rutschen: $v = r\\omega$, kinetische Energie $= \\tfrac{1}{2}m v^2 + \\tfrac{1}{2}J\\omega^2$', examRelevance: 'hoch' },
+            ],
             content: String.raw`**[PRÜFUNG] Reibung, Kinematik & Schwingungen**
 
 **Reibung auf geneigter Ebene:**
@@ -1087,6 +1166,13 @@ Der E-Modul beschreibt die Steifigkeit des Materials. Stahl hat ungefähr $E = 2
             id: 'fest-1-3',
             title: 'Schubspannung und Torsion',
             learningGoals: ['Torsionswiderstandsmoment berechnen', 'Maximale Schubspannung einer Welle bestimmen'],
+            subGoals: [
+              { label: 'Torsionsspannung: $\\tau_\\text{max} = M_T/W_p$', examRelevance: 'hoch' },
+              { label: 'Polares Widerstandsmoment Kreisquerschnitt: $W_p = \\pi d^3/16$', examRelevance: 'hoch' },
+              { label: 'Verdrehwinkel: $\\varphi = M_T L/(G I_p)$ mit $I_p = \\pi d^4/32$', examRelevance: 'hoch' },
+              { label: 'Schubmodul Stahl: $G \\approx 80\\,000$ MPa (ca. $E/(2(1+\\nu))$)', examRelevance: 'mittel' },
+              { label: 'Reiner Schub (Niet, Bolzen): $\\tau = F/A$', examRelevance: 'hoch' },
+            ],
             content: String.raw`**Torsion** eines Kreisquerschnitt-Stabes (Durchmesser $d$, Länge $L$):
 
 $$\tau_{\max} = \frac{M_T}{W_p}, \qquad W_p = \frac{\pi d^3}{16}$$
@@ -1134,6 +1220,13 @@ $$\tau = \frac{F}{A}$$`,
             id: 'fest-1-4',
             title: 'Knicken',
             learningGoals: ['Eulersche Knicklast berechnen', 'Einspannbeiwert β anwenden'],
+            subGoals: [
+              { label: 'Euler-Knicklast: $F_{ki} = \\pi^2 E I/(\\beta L)^2$', examRelevance: 'hoch' },
+              { label: 'Einspannbeiwerte: $\\beta = 1$ gelenkig/gelenkig, $\\beta = 2$ eingespannt/frei, $\\beta = 0{,}5$ beidseitig eingespannt', examRelevance: 'hoch' },
+              { label: 'Flächenträgheitsmoment $I$: schwächste Achse zählt (kleinstes $I$)', examRelevance: 'hoch' },
+              { label: 'Schlankheitsgrad $\\lambda = \\beta L/i$ mit Trägheitsradius $i = \\sqrt{I/A}$', examRelevance: 'mittel' },
+              { label: 'Euler nur für elastisches Knicken ($\\sigma_{ki} < R_p$); bei kurzen Stäben Tetmajer/Johnson', examRelevance: 'mittel' },
+            ],
             content: String.raw`**Eulersches Knicken** — kritische Last für einen Druckstab:
 
 $$F_{ki} = \frac{\pi^2 \cdot E \cdot I}{(\beta L)^2}$$
@@ -1185,6 +1278,13 @@ Das **Flächenträgheitsmoment** $I$ bestimmt die Knicklast maßgeblich (schwäc
             id: 'fest-2-1',
             title: 'Biegespannung',
             learningGoals: ['Biegemoment und Widerstandsmoment verbinden', 'Kritische Randfaser erkennen'],
+            subGoals: [
+              { label: 'Biegespannung: $\\sigma_b = M_b/W_b$', examRelevance: 'hoch' },
+              { label: 'Axiales Widerstandsmoment Rechteck: $W_b = bh^2/6$', examRelevance: 'hoch' },
+              { label: 'Kreisquerschnitt: $W_b = \\pi d^3/32$', examRelevance: 'hoch' },
+              { label: 'Spannungsverteilung linear im Querschnitt: Null in neutraler Faser, max. am Rand', examRelevance: 'hoch' },
+              { label: '$\\sigma_b = M_b y/I$ für beliebige Stelle $y$ von neutraler Faser', examRelevance: 'mittel' },
+            ],
             content: String.raw`Bei reiner Biegung wird die maximale Normalspannung abgeschätzt mit:
 
 $$\sigma_b = \frac{M_b}{W_b}$$
@@ -1200,6 +1300,13 @@ Das Widerstandsmoment $W_b$ hängt stark von der Querschnittsform ab.`,
             id: 'fest-2-2',
             title: 'Sicherheitszahl',
             learningGoals: ['Zulässige Spannung berechnen', 'Nachweis gegen Versagen formulieren'],
+            subGoals: [
+              { label: 'Zulässige Spannung: $\\sigma_\\text{zul} = R/S$', examRelevance: 'hoch' },
+              { label: 'Festigkeitsnachweis: $\\sigma_\\text{vorh} \\leq \\sigma_\\text{zul}$', examRelevance: 'hoch' },
+              { label: 'Typische Sicherheitszahlen: $S = 1{,}5$ (zäh, statisch) bis $S = 4$ (dynamisch, spröde)', examRelevance: 'mittel' },
+              { label: 'Referenz-Kennwerte: $R_e$ (Streckgrenze, zäh), $R_m$ (Zugfestigkeit, spröde)', examRelevance: 'hoch' },
+              { label: 'Größeres $S$ → kleineres $\\sigma_\\text{zul}$ (mehr Sicherheit = weniger Auslastung erlaubt)', examRelevance: 'hoch' },
+            ],
             content: String.raw`Ein einfacher Festigkeitsnachweis lautet:
 
 $$\sigma_\text{vorh} \le \sigma_\text{zul} = \frac{R}{S}$$
@@ -1215,6 +1322,14 @@ $R$ ist eine Materialkennzahl, $S$ die Sicherheitszahl.`,
             id: 'fest-2-3',
             title: "Mohr'scher Spannungskreis",
             learningGoals: ['Mittelpunkt und Radius des Mohr-Kreises berechnen', 'Hauptspannungen aus dem Mohr-Kreis ablesen'],
+            subGoals: [
+              { label: 'Mittelpunkt: $\\sigma_M = (\\sigma_x + \\sigma_y)/2$', examRelevance: 'hoch' },
+              { label: 'Radius: $R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$', examRelevance: 'hoch' },
+              { label: 'Hauptspannungen: $\\sigma_{1,2} = \\sigma_M \\pm R$', examRelevance: 'hoch' },
+              { label: 'Max. Schubspannung: $\\tau_\\text{max} = R$', examRelevance: 'hoch' },
+              { label: 'Hauptachsenwinkel: $\\tan(2\\varphi) = 2\\tau_{xy}/(\\sigma_x - \\sigma_y)$', examRelevance: 'mittel' },
+              { label: 'Anwendung: Hauptspannungshypothese (spröde Werkstoffe), GEH (zähe)', examRelevance: 'mittel' },
+            ],
             content: String.raw`Der **Mohr'sche Spannungskreis** visualisiert Spannungszustände bei Schnittwinkel-Variation.
 
 Gegeben: Normalspannungen $\sigma_x$, $\sigma_y$ und Schubspannung $\tau_{xy}$. Der Kreis hat:
@@ -1265,6 +1380,13 @@ $$\sigma_{1/2} = \sigma_M \pm R$$
             id: 'fest-2-4',
             title: 'Wechselfestigkeit und Betriebsfestigkeit',
             learningGoals: ['Mittel- und Ausschlagspannung berechnen', 'Goodman-Nachweis anwenden'],
+            subGoals: [
+              { label: 'Mittelspannung: $\\sigma_m = (\\sigma_\\text{max} + \\sigma_\\text{min})/2$', examRelevance: 'hoch' },
+              { label: 'Ausschlagspannung: $\\sigma_a = (\\sigma_\\text{max} - \\sigma_\\text{min})/2$', examRelevance: 'hoch' },
+              { label: 'Goodman-Kriterium: $\\sigma_a/\\sigma_W + \\sigma_m/R_m \\leq 1$', examRelevance: 'hoch' },
+              { label: 'Wechselfestigkeit $\\sigma_W$: Amplitudengrenze bei $\\sigma_m = 0$', examRelevance: 'hoch' },
+              { label: 'Schwingfestigkeit: Dauerfestigkeit, Zeitfestigkeit, Wöhlerlinie (N > 10⁶)', examRelevance: 'mittel' },
+            ],
             content: String.raw`**Wechselfestigkeit** beschreibt die ertragbare Spannung bei schwingender Beanspruchung.
 
 **Mittelspannung:** $\sigma_m = (\sigma_{\max} + \sigma_{\min})/2$
@@ -1313,6 +1435,13 @@ $\sigma_W$ = Wechselfestigkeit, $R_m$ = Zugfestigkeit. Sicherheit $S > 1$ erford
               'Formzahl $\\alpha_K$ als Verhältnis $\\sigma_\\text{max}/\\sigma_\\text{nenn}$ verstehen',
               'Typische Kerben (Bohrung, Absatz, Gewindegrund) einordnen',
               'Einfluss von Kerbwirkung auf die Dauerfestigkeit einschätzen',
+            ],
+            subGoals: [
+              { label: 'Formzahl: $\\alpha_K = \\sigma_\\text{max}/\\sigma_\\text{nenn}$ (rein geometrisch)', examRelevance: 'hoch' },
+              { label: 'Kerbwirkungszahl $\\beta_K \\leq \\alpha_K$ (werkstoffabhängig, bei zähen kleiner)', examRelevance: 'hoch' },
+              { label: 'Typische Werte: Welleabsatz scharf $\\alpha_K = 2$–3, Gewindegrund $\\alpha_K = 3$–5', examRelevance: 'mittel' },
+              { label: 'Maßnahmen: Verrundung ($r \\uparrow$), Oberflächengüte, Druckeigenspannungen', examRelevance: 'hoch' },
+              { label: 'Dauerfestigkeit mit Kerbe: $\\sigma_{W,K} = \\sigma_W/\\beta_K$', examRelevance: 'hoch' },
             ],
             content: String.raw`**Kerbspannung** — wenn die Geometrie einer Welle, Platte oder eines Bauteils **springt** (Bohrung, Absatz, Gewindegrund), konzentrieren sich die Spannungen lokal. Das Verhältnis der maximalen zur nominellen Spannung heißt **Formzahl** $\alpha_K$:
 
@@ -1432,6 +1561,13 @@ Auch die **Oberflächengüte** beeinflusst die Dauerfestigkeit stark: geschliffe
             title: 'Festigkeit: Prüfungsaufgaben',
             type: 'explanation-intuitive',
             learningGoals: ['Kombinierte Beanspruchung berechnen', 'Sicherheitsnachweis durchführen'],
+            subGoals: [
+              { label: 'Kombinierte Beanspruchung: Vergleichsspannung nach GEH (Mises) oder NH', examRelevance: 'hoch' },
+              { label: 'Mises: $\\sigma_v = \\sqrt{\\sigma^2 + 3\\tau^2}$ für Zug+Torsion', examRelevance: 'hoch' },
+              { label: 'Nachweis: $\\sigma_v \\leq R_e/S$ bzw. $R_m/S$', examRelevance: 'hoch' },
+              { label: 'Querschnitts-Design: Welle dimensionieren aus gegebenen $M_b$, $M_T$', examRelevance: 'hoch' },
+              { label: 'Sicherheit $S = R/\\sigma_v \\geq S_\\text{soll}$ als Ergebnis angeben', examRelevance: 'hoch' },
+            ],
             content: String.raw`**[PRÜFUNG] Typische Festigkeits-Klausuraufgaben**
 
 **Schritt 1:** Schnittgrößen bestimmen (aus Statik: N, Q, M)
@@ -1460,6 +1596,13 @@ Auch die **Oberflächengüte** beeinflusst die Dauerfestigkeit stark: geschliffe
             title: 'Torsion, Knicken & Wechselfestigkeit',
             type: 'explanation-intuitive',
             learningGoals: ['Torsions- und Knickberechnung kombinieren', 'Goodman-Nachweis mit Sicherheit durchführen'],
+            subGoals: [
+              { label: 'Torsionsspannung in Welle: $\\tau = M_T/W_p$, $W_p = \\pi d^3/16$', examRelevance: 'hoch' },
+              { label: 'Knickung: Euler $F_{ki} = \\pi^2 EI/(\\beta L)^2$, $\\beta$ aus Lagerung', examRelevance: 'hoch' },
+              { label: 'Goodman: $\\sigma_a/\\sigma_W + \\sigma_m/R_m \\leq 1/S$', examRelevance: 'hoch' },
+              { label: 'Werkstoff S235: Mindeststreckgrenze $R_e = 235$ MPa', examRelevance: 'hoch' },
+              { label: 'Schlankheitsgrad prüfen vor Euler: $\\lambda > \\lambda_0$ sonst Tetmajer/Johnson', examRelevance: 'mittel' },
+            ],
             content: String.raw`**[PRÜFUNG] Torsion, Knicken & Wechselfestigkeit**
 
 **Torsion:**
@@ -1598,6 +1741,13 @@ Bei konstantem Druck vereinfacht sich das zu $W = p \cdot \Delta V$.`,
             id: 'thermo-2-1',
             title: 'Erster Hauptsatz',
             learningGoals: ['Energiebilanz aufstellen', 'Wärme und Arbeit vorzeichenbewusst verwenden'],
+            subGoals: [
+              { label: '1. Hauptsatz geschlossen: $\\Delta U = Q - W$ (Q zugeführt, W abgegeben)', examRelevance: 'hoch' },
+              { label: '1. Hauptsatz offen (stationär): $\\dot Q + \\dot W_t = \\dot m (h_2 - h_1)$', examRelevance: 'hoch' },
+              { label: 'Vorzeichenkonvention: Q, W zugeführt > 0', examRelevance: 'hoch' },
+              { label: 'Innere Energie $U$ Zustandsgröße, Q und W Prozessgrößen', examRelevance: 'hoch' },
+              { label: 'Technische Arbeit $W_t = -\\int V dp$ vs. Volumenarbeit $W = \\int p dV$', examRelevance: 'mittel' },
+            ],
             content: String.raw`Der erste Hauptsatz ist Energieerhaltung für thermodynamische Systeme:
 
 $$\Delta U = Q - W$$
@@ -1613,6 +1763,13 @@ $Q$ ist zugeführte Wärme, $W$ ist vom System abgegebene Arbeit.`,
             id: 'thermo-2-2',
             title: 'Wirkungsgrad',
             learningGoals: ['Wirkungsgrad berechnen', 'Verluste interpretieren'],
+            subGoals: [
+              { label: 'Wirkungsgrad: $\\eta = E_\\text{nutz}/E_\\text{zu} \\leq 1$', examRelevance: 'hoch' },
+              { label: '2. Hauptsatz: $\\eta < 1$ für Wärmekraftmaschine (Entropieargument)', examRelevance: 'hoch' },
+              { label: 'Carnot-Grenze: $\\eta \\leq \\eta_C = 1 - T_\\text{kalt}/T_\\text{warm}$ (K!)', examRelevance: 'hoch' },
+              { label: 'Kälteleistungszahl: $\\varepsilon_K = Q_\\text{kalt}/W$ (kann > 1 sein!)', examRelevance: 'mittel' },
+              { label: 'Wärmepumpe: $\\varepsilon_{WP} = Q_\\text{warm}/W = \\varepsilon_K + 1$', examRelevance: 'mittel' },
+            ],
             content: String.raw`Der Wirkungsgrad misst den nutzbaren Anteil der zugeführten Energie:
 
 $$\eta = \frac{E_\text{nutz}}{E_\text{zu}}$$
@@ -1629,6 +1786,13 @@ Er liegt bei realen Maschinen kleiner als 1.`,
             title: 'Kreisprozesse',
             estimatedMinutes: 15,
             learningGoals: ['Carnot-Wirkungsgrad berechnen', 'Otto-Wirkungsgrad aus Verdichtungsverhältnis bestimmen', 'Kreisprozesse als thermodynamische Grundlage verstehen'],
+            subGoals: [
+              { label: 'Carnot: $\\eta_C = 1 - T_\\text{kalt}/T_\\text{warm}$ (in Kelvin!)', examRelevance: 'hoch' },
+              { label: 'Otto-Prozess: $\\eta_O = 1 - \\varepsilon^{1-\\gamma}$ mit Verdichtung $\\varepsilon = V_1/V_2$', examRelevance: 'hoch' },
+              { label: 'Diesel-Prozess: etwas anderer Wirkungsgrad (Einspritzverhältnis)', examRelevance: 'mittel' },
+              { label: 'Rankine/Clausius-Rankine: Dampfkraftwerk, Enthalpiewerte aus h-s-Diagramm', examRelevance: 'mittel' },
+              { label: 'Im pV-Diagramm: Fläche = Nutzarbeit pro Umlauf', examRelevance: 'hoch' },
+            ],
             content: String.raw`**Kreisprozesse** wandeln Wärme in Arbeit um. Jeder Kreisprozess kehrt nach einem Umlauf in den Ausgangszustand zurück.
 
 **Carnot-Prozess** (idealer Vergleichsprozess):
@@ -1679,6 +1843,13 @@ $$\eta_{\text{Otto}} = 1 - \varepsilon^{1-\gamma}$$
             title: 'Wärmeübertragung',
             estimatedMinutes: 15,
             learningGoals: ['Wärmeleitung nach Fourier berechnen', 'k-Wert einer mehrlagigen Wand bestimmen', 'Wärmeübergang und Wärmedurchgang unterscheiden'],
+            subGoals: [
+              { label: 'Fourier-Wärmeleitung: $\\dot Q = \\lambda A \\Delta T/d$', examRelevance: 'hoch' },
+              { label: 'Wärmeübergang (Newton): $\\dot Q = \\alpha A \\Delta T$', examRelevance: 'hoch' },
+              { label: 'k-Wert (mehrlagige Wand): $1/k = 1/\\alpha_1 + \\sum d_i/\\lambda_i + 1/\\alpha_2$', examRelevance: 'hoch' },
+              { label: 'Strahlung: $\\dot Q = \\varepsilon \\sigma A (T_1^4 - T_2^4)$ (Stefan-Boltzmann)', examRelevance: 'mittel' },
+              { label: 'Kleiner $k$-Wert = gute Dämmung', examRelevance: 'hoch' },
+            ],
             content: String.raw`**Wärmeleitung** (Fourier):
 $$\dot Q = \lambda \cdot A \cdot \frac{\Delta T}{d}$$
 $\lambda$ = Wärmeleitfähigkeit (W/(m·K)), $d$ = Wanddicke, $A$ = Fläche.
@@ -1732,6 +1903,13 @@ $$\frac{1}{k} = \frac{1}{\alpha_1} + \frac{d}{\lambda} + \frac{1}{\alpha_2}$$
             title: 'Thermo: Prüfungsaufgaben',
             type: 'explanation-intuitive',
             learningGoals: ['Zustandsänderungen berechnen', 'Kreisprozesse analysieren'],
+            subGoals: [
+              { label: 'Isotherme Expansion: $W = nRT \\ln(V_2/V_1)$', examRelevance: 'hoch' },
+              { label: 'Isobar: $W = p \\Delta V$, $Q = n c_p \\Delta T$', examRelevance: 'hoch' },
+              { label: 'Isochor: $W = 0$, $Q = n c_v \\Delta T$', examRelevance: 'hoch' },
+              { label: 'Adiabatisch: $pV^\\gamma = $ const, $TV^{\\gamma-1} = $ const', examRelevance: 'hoch' },
+              { label: 'Zustandsgleichung ideales Gas: $pV = nRT$ (oder $p = \\rho R_s T$)', examRelevance: 'hoch' },
+            ],
             content: String.raw`**[PRÜFUNG] Thermodynamik-Klausuraufgaben**
 
 **Zustandsänderungen idealer Gase:**
@@ -1759,6 +1937,13 @@ $$\frac{1}{k} = \frac{1}{\alpha_1} + \frac{d}{\lambda} + \frac{1}{\alpha_2}$$
             type: 'explanation-intuitive',
             estimatedMinutes: 22,
             learningGoals: ['Carnot- und Otto-Wirkungsgrad berechnen', 'Wärmebilanz eines Kraftwerks aufstellen', 'Wärmeleitung und k-Wert kombiniert anwenden'],
+            subGoals: [
+              { label: 'Leistung aus Wärmestrom: $P_\\text{nutz} = \\dot Q_\\text{zu} \\cdot \\eta$', examRelevance: 'hoch' },
+              { label: 'Wärmebilanz Kraftwerk: $\\dot Q_\\text{ab} = \\dot Q_\\text{zu} - P_\\text{nutz}$', examRelevance: 'hoch' },
+              { label: 'Otto-Wirkungsgrad: $\\eta_O = 1 - \\varepsilon^{1-\\gamma}$, $\\gamma \\approx 1{,}4$ für Luft', examRelevance: 'hoch' },
+              { label: 'Wärmestrom durch Wand: $\\dot Q = k A \\Delta T$', examRelevance: 'hoch' },
+              { label: 'Carnot als theoretische Obergrenze: reale Wirkungsgrade sind kleiner', examRelevance: 'hoch' },
+            ],
             content: String.raw`**[PRÜFUNG] Kreisprozesse & Wärmeübertragung**
 
 **Carnot:** $\eta_C = 1 - T_{\text{kalt}}/T_{\text{warm}}$ (K!)
@@ -1891,6 +2076,13 @@ $$F_A = \rho_\text{Fluid} \cdot g \cdot V_\text{verdrängt}$$`,
             id: 'fluid-2-1',
             title: 'Kontinuitätsgleichung',
             learningGoals: ['Volumenstrom berechnen', 'Geschwindigkeit bei Querschnittsänderung bestimmen'],
+            subGoals: [
+              { label: 'Kontinuität (inkompressibel): $A_1 v_1 = A_2 v_2 = \\dot V$', examRelevance: 'hoch' },
+              { label: 'Volumenstrom: $\\dot V = A \\cdot v$, Einheit m³/s', examRelevance: 'hoch' },
+              { label: 'Massenstrom (kompressibel): $\\dot m = \\rho A v$', examRelevance: 'hoch' },
+              { label: 'Querschnitt kleiner → Geschwindigkeit größer ($v \\propto 1/A$)', examRelevance: 'hoch' },
+              { label: 'Umrechnung: Kreisquerschnitt $A = \\pi d^2/4$', examRelevance: 'hoch' },
+            ],
             content: String.raw`Für inkompressible stationäre Strömung gilt:
 
 $$A_1 v_1 = A_2 v_2 = \dot V$$
@@ -1906,6 +2098,13 @@ Wird der Querschnitt kleiner, steigt die Strömungsgeschwindigkeit.`,
             id: 'fluid-2-2',
             title: 'Bernoulli-Gleichung',
             learningGoals: ['Energieformen in Strömungen unterscheiden', 'Druck- und Geschwindigkeitsanteile deuten'],
+            subGoals: [
+              { label: 'Bernoulli: $p + \\tfrac{1}{2}\\rho v^2 + \\rho g z = $ const (entlang Stromlinie)', examRelevance: 'hoch' },
+              { label: 'Drei Druckarten: statisch $p$, dynamisch $\\tfrac{1}{2}\\rho v^2$, geodätisch $\\rho g z$', examRelevance: 'hoch' },
+              { label: 'Voraussetzungen: inkompressibel, stationär, reibungsfrei', examRelevance: 'hoch' },
+              { label: 'Torricelli: $v = \\sqrt{2gh}$ (Ausflussgeschwindigkeit aus Behälter)', examRelevance: 'hoch' },
+              { label: 'Mit Verlusten: $+ \\Delta p_V$ auf rechter Seite', examRelevance: 'mittel' },
+            ],
             content: String.raw`Für reibungsarme stationäre Strömung entlang einer Stromlinie:
 
 $$p + \frac{1}{2}\rho v^2 + \rho g z = \text{konstant}$$
@@ -1922,6 +2121,13 @@ Das ist Energieerhaltung pro Volumen.`,
             title: 'Rohrströmung und Druckverlust',
             estimatedMinutes: 16,
             learningGoals: ['Druckverlust nach Hagen-Poiseuille berechnen', 'Darcy-Weisbach-Gleichung anwenden', 'Strömungsregime mit Reynolds-Zahl beurteilen'],
+            subGoals: [
+              { label: 'Darcy-Weisbach: $\\Delta p = \\lambda (L/d)(\\rho v^2/2)$', examRelevance: 'hoch' },
+              { label: 'Reynolds-Zahl: $Re = \\rho v d/\\mu$; laminar $<2300$, turbulent $>4000$', examRelevance: 'hoch' },
+              { label: 'Hagen-Poiseuille (laminar): $\\Delta p = 128 \\mu L \\dot V/(\\pi d^4)$', examRelevance: 'hoch' },
+              { label: 'Laminares Profil parabolisch, turbulent näherungsweise Blockprofil mit Randschicht', examRelevance: 'mittel' },
+              { label: 'Hydraulischer Durchmesser $d_h = 4A/U$ für Nicht-Kreisquerschnitte', examRelevance: 'mittel' },
+            ],
             content: String.raw`**Hagen-Poiseuille** (laminare Rohrströmung):
 $$\Delta p = \frac{128 \mu L \dot V}{\pi d^4}$$
 
@@ -1972,6 +2178,13 @@ $\lambda$ ist der **Rohrreibungsbeiwert** (aus Moody-Diagramm oder Formeln).
             title: 'Ähnlichkeitsgesetze und Pumpen',
             estimatedMinutes: 16,
             learningGoals: ['Dimensionslose Kennzahlen einordnen', 'Pumpengesetze auf geänderte Drehzahl anwenden', 'Leistungsabhängigkeit von der Drehzahl erkennen'],
+            subGoals: [
+              { label: 'Pumpengesetze: $\\dot V \\propto n$, $H \\propto n^2$, $P \\propto n^3$', examRelevance: 'hoch' },
+              { label: 'Reynolds für Ähnlichkeit: Modell- und Prototyp-Re gleich halten', examRelevance: 'hoch' },
+              { label: 'Froude-Zahl: $Fr = v/\\sqrt{gL}$ (Schwerewellen, offene Gerinne)', examRelevance: 'mittel' },
+              { label: 'Euler-Zahl: $Eu = \\Delta p/(\\rho v^2)$ (Druckabfall)', examRelevance: 'mittel' },
+              { label: 'Leistung verdoppeln bedeutet Drehzahl $\\sqrt[3]{2} \\approx 1{,}26$-fach', examRelevance: 'mittel' },
+            ],
             content: String.raw`**Dimensionslose Kennzahlen** der Strömungsmechanik:
 
 | Kennzahl | Formel | Bedeutung |
@@ -2022,6 +2235,13 @@ Verdoppelung der Drehzahl → 8-fache Leistungsaufnahme!`,
               'Rohrreibungszahl $\\lambda$ in Abhängigkeit von $\\text{Re}$ und $\\varepsilon/d$ bestimmen',
               'Laminar-Formel $\\lambda = 64/\\text{Re}$ und Blasius-Formel sicher anwenden',
               'Druckverlust aus $\\lambda$, $L$, $d$, $v$, $\\rho$ berechnen',
+            ],
+            subGoals: [
+              { label: 'Laminar: $\\lambda = 64/Re$ (unabhängig von Rauhigkeit)', examRelevance: 'hoch' },
+              { label: 'Turbulent glatt (Blasius, $Re < 10^5$): $\\lambda = 0{,}316/Re^{0{,}25}$', examRelevance: 'hoch' },
+              { label: 'Turbulent rau: Moody-Diagramm oder Colebrook-Gleichung', examRelevance: 'mittel' },
+              { label: 'Relative Rauhigkeit $\\varepsilon/d$: Materialkennwert aus Tabelle ablesen', examRelevance: 'mittel' },
+              { label: 'Bei voll-turbulenter Strömung: $\\lambda$ Re-unabhängig (nur $\\varepsilon/d$)', examRelevance: 'mittel' },
             ],
             content: String.raw`Die Rohrreibungszahl $\lambda$ (auch Darcy-Friktionsfaktor) ist der Schlüssel zum Druckverlust in Rohren:
 
@@ -2129,6 +2349,13 @@ Bei stark rauen Rohren und hohen $\text{Re}$ wird $\lambda$ praktisch **unabhän
             title: 'Fluid: Prüfungsaufgaben',
             type: 'explanation-intuitive',
             learningGoals: ['Bernoulli-Aufgaben lösen', 'Hydrostatik und Auftrieb kombinieren'],
+            subGoals: [
+              { label: 'Bernoulli vollständig: $p_1 + \\tfrac{1}{2}\\rho v_1^2 + \\rho g z_1 = p_2 + \\ldots$', examRelevance: 'hoch' },
+              { label: 'Staudruck/Pitot: $v = \\sqrt{2\\Delta p/\\rho}$', examRelevance: 'hoch' },
+              { label: 'Kontinuität + Bernoulli kombiniert für Düsen/Verengungen', examRelevance: 'hoch' },
+              { label: 'Torricelli-Ausfluss: $v = \\sqrt{2gh}$ (freies Ausströmen unter Wasserhöhe)', examRelevance: 'hoch' },
+              { label: 'Reynolds-Zahl entscheidet Strömungsregime; laminar/turbulent bestimmt $\\lambda$', examRelevance: 'hoch' },
+            ],
             content: String.raw`**[PRÜFUNG] Fluidmechanik-Klausuraufgaben**
 
 **Bernoulli vollständig:**
@@ -2150,6 +2377,13 @@ $$p_1 + \frac{1}{2}\rho v_1^2 + \rho g z_1 = p_2 + \frac{1}{2}\rho v_2^2 + \rho 
             type: 'explanation-intuitive',
             estimatedMinutes: 22,
             learningGoals: ['Darcy-Weisbach für Rohrdruckverlust anwenden', 'Pumpengesetze bei Drehzahländerung nutzen', 'Bernoulli mit Verlusten kombinieren'],
+            subGoals: [
+              { label: 'Erweiterte Bernoulli mit Verlust: $+ \\Delta p_V$ auf Senkeseite', examRelevance: 'hoch' },
+              { label: 'Pumpenleistung: $P = \\rho g \\dot V H / \\eta_P$', examRelevance: 'hoch' },
+              { label: 'Reihenschaltung Rohre: $\\Delta p_\\text{ges} = \\sum \\Delta p_i$', examRelevance: 'mittel' },
+              { label: 'Einzelverluste: $\\Delta p = \\zeta (\\rho v^2/2)$ ($\\zeta$ aus Tabelle für Krümmer, Ventile, \\ldots)', examRelevance: 'mittel' },
+              { label: 'Pumpenkennlinie × Anlagenkennlinie = Betriebspunkt', examRelevance: 'mittel' },
+            ],
             content: String.raw`**[PRÜFUNG] Druckverlust, Pumpen & Ähnlichkeit**
 
 **Druckverlust (Darcy-Weisbach):** $\Delta p = \lambda \cdot (L/d) \cdot (\rho v^2/2)$
@@ -2279,6 +2513,13 @@ Formschluss bedeutet: Geometrie verhindert Relativbewegung. Kraftschluss bedeute
             title: 'Schweißverbindungen',
             estimatedMinutes: 12,
             learningGoals: ['Schubspannung in Kehlnähten berechnen', 'Verbindungsarten vergleichen'],
+            subGoals: [
+              { label: 'Kehlnaht-Spannung: $\\tau = F/(a \\cdot l_w)$', examRelevance: 'hoch' },
+              { label: 'Nahtdicke Kehlnaht: $a \\approx 0{,}7 \\cdot h$ (Schenkellänge $h$)', examRelevance: 'hoch' },
+              { label: 'Verbindungsarten: Schweißen (stoffschlüssig, dauerhaft), Schrauben (lösbar)', examRelevance: 'mittel' },
+              { label: 'Tragende Nahtlänge $l_w$ = geometrische Länge minus Endkrater (≈ $l - 2a$)', examRelevance: 'mittel' },
+              { label: 'Zulässige Schweißnahtspannung = Grundwerkstoff $\\times$ Schweißfaktor (z.B. 0{,}8)', examRelevance: 'mittel' },
+            ],
             content: String.raw`**Kehlnaht** (häufigste Schweißnahtform):
 
 $$\tau = \frac{F}{a \cdot l_w}$$
@@ -2334,6 +2575,13 @@ $a$ = Nahtdicke (= $0{,}7 \cdot h$ für Kehlnaht mit Schenkellänge $h$), $l_w$ 
             id: 'melem-2-1',
             title: 'Wellen und Lager',
             learningGoals: ['Aufgaben von Wellen und Lagern unterscheiden', 'Radial- und Axiallasten erkennen'],
+            subGoals: [
+              { label: 'Welle überträgt Drehmoment und Rotation', examRelevance: 'hoch' },
+              { label: 'Radiallast: quer zur Wellenachse; Axiallast: entlang Wellenachse', examRelevance: 'hoch' },
+              { label: 'Lagerfunktionen: Führung (radial/axial) + Stützung (Kraftaufnahme)', examRelevance: 'hoch' },
+              { label: 'Fest-Los-Lagerung: ein Lager fixiert axial, anderes erlaubt Längsdehnung', examRelevance: 'mittel' },
+              { label: 'Lagerarten: Rillenkugel-, Schrägkugel-, Kegelrollen-, Pendelrollenlager', examRelevance: 'mittel' },
+            ],
             content: String.raw`Eine **Welle** überträgt Drehmoment und Rotation. Ein **Lager** stützt die Welle und erlaubt definierte Bewegung.
 
 Radiallast wirkt quer zur Wellenachse, Axiallast entlang der Wellenachse.`,
@@ -2347,6 +2595,13 @@ Radiallast wirkt quer zur Wellenachse, Axiallast entlang der Wellenachse.`,
             id: 'melem-2-2',
             title: 'Zahnräder und Übersetzung',
             learningGoals: ['Übersetzungsverhältnis bestimmen', 'Drehzahländerung qualitativ deuten'],
+            subGoals: [
+              { label: 'Übersetzung: $i = z_2/z_1 = n_1/n_2 = d_2/d_1$', examRelevance: 'hoch' },
+              { label: 'Mehrstufiges Getriebe: $i_\\text{ges} = i_1 \\cdot i_2 \\cdots$', examRelevance: 'hoch' },
+              { label: 'Drehmoment-Wandlung: $M_2 = i \\cdot M_1 \\cdot \\eta$ (Untersetzung steigert Moment)', examRelevance: 'hoch' },
+              { label: 'Umfangskraft $F_t = 2M/d$', examRelevance: 'hoch' },
+              { label: 'Modul $m = d/z$ — Standardgröße für Zahnrad-Geometrie', examRelevance: 'mittel' },
+            ],
             content: String.raw`Für ein einfaches Zahnradpaar gilt näherungsweise:
 
 $$i = \frac{z_2}{z_1} = \frac{n_1}{n_2}$$
@@ -2363,6 +2618,13 @@ Mehr Zähne am Abtriebsrad bedeuten geringere Abtriebsdrehzahl und höheres Dreh
             title: 'Lagerlebensdauer',
             estimatedMinutes: 14,
             learningGoals: ['L10-Lebensdauer berechnen', 'Dynamische Tragzahl C interpretieren'],
+            subGoals: [
+              { label: 'L10-Lebensdauer: $L_{10} = (C/P)^p$ Mio. Umdrehungen', examRelevance: 'hoch' },
+              { label: 'Exponent: $p = 3$ Kugellager, $p = 10/3$ Rollenlager', examRelevance: 'hoch' },
+              { label: 'In Stunden: $L_{10h} = L_{10} \\cdot 10^6/(60 \\cdot n)$', examRelevance: 'hoch' },
+              { label: 'C = dyn. Tragzahl (Katalog), P = äquivalente dyn. Last ($P = X F_r + Y F_a$)', examRelevance: 'hoch' },
+              { label: 'L10 = 10 % Ausfallwahrscheinlichkeit (90 % der Lager halten länger)', examRelevance: 'mittel' },
+            ],
             content: String.raw`Die **nominelle Lebensdauer** $L_{10}$ gibt an, nach wie vielen Millionen Umdrehungen 10 % der Lager ausfallen:
 
 $$L_{10} = \left(\frac{C}{P}\right)^p \quad [\text{Mio. Umdrehungen}]$$
@@ -2416,6 +2678,13 @@ $$L_{10h} = \frac{L_{10} \cdot 10^6}{60 \cdot n}$$`,
             title: 'ME: Prüfungsaufgaben',
             type: 'explanation-intuitive',
             learningGoals: ['Zahnradberechnungen durchführen', 'Wellenauslegung verstehen'],
+            subGoals: [
+              { label: 'Leistung: $P = M \\omega = M (2\\pi n/60)$', examRelevance: 'hoch' },
+              { label: 'Umfangskraft am Zahnrad: $F_t = 2M/d$', examRelevance: 'hoch' },
+              { label: 'Mehrstufige Übersetzung: $i_\\text{ges} = \\prod i_i$', examRelevance: 'hoch' },
+              { label: 'Abtriebsdrehzahl: $n_2 = n_1/i_\\text{ges}$', examRelevance: 'hoch' },
+              { label: 'Drehmoment steigt bei Untersetzung: $M_2 = i M_1 \\eta$', examRelevance: 'hoch' },
+            ],
             content: String.raw`**[PRÜFUNG] Maschinenelemente-Klausuraufgaben**
 
 **Leistung und Drehmoment:**
@@ -2439,6 +2708,13 @@ $$P = M \cdot \omega = M \cdot \frac{2\pi n}{60}$$
             type: 'explanation-intuitive',
             estimatedMinutes: 22,
             learningGoals: ['Schweißnahtspannungen berechnen', 'Lagerlebensdauer bestimmen'],
+            subGoals: [
+              { label: 'Kehlnaht: $\\tau = F/(a l_w)$, $a = 0{,}7 h$', examRelevance: 'hoch' },
+              { label: 'Lagerlebensdauer: $L_{10} = (C/P)^p$, $p = 3$ (Kugel) / $p = 10/3$ (Rolle)', examRelevance: 'hoch' },
+              { label: 'Einheiten-Check: L10 in Mio. U, L10h in Stunden nach $\\times 10^6/(60n)$', examRelevance: 'hoch' },
+              { label: 'Leistungs-Drehmoment-Umrechnung $\\omega = 2\\pi n/60$', examRelevance: 'hoch' },
+              { label: 'Plausibilitäts-Check: typische Lagerlebensdauer 5000–50000 h', examRelevance: 'mittel' },
+            ],
             content: String.raw`**[PRÜFUNG] Schweißnähte, Lager & Lebensdauer**
 
 **Kehlnaht:**
@@ -2695,6 +2971,13 @@ Beispiel: $U_q - U_{R1} - U_{R2} = 0 \Rightarrow U_q = U_{R1} + U_{R2}$
               'Elektrische Leistung mit $P = U \\cdot I$ berechnen',
               'Wirkungsgrad $\\eta = P_\\text{ab}/P_\\text{zu}$ anwenden',
             ],
+            subGoals: [
+              { label: 'Leistung: $P = U \\cdot I = U^2/R = I^2 R$ (drei äquivalente Formen)', examRelevance: 'hoch' },
+              { label: 'Energie: $W = P \\cdot t$ (Einheit Joule oder Wattstunden)', examRelevance: 'hoch' },
+              { label: 'Wirkungsgrad: $\\eta = P_\\text{ab}/P_\\text{zu}$, immer $\\leq 1$', examRelevance: 'hoch' },
+              { label: 'Wärmeverlust im Widerstand: $P_R = I^2 R$ (Stromwärmegesetz)', examRelevance: 'hoch' },
+              { label: 'Nennspannungen Haushalt: 230 V (einphasig), 400 V (Drehstrom)', examRelevance: 'mittel' },
+            ],
             content: String.raw`## Elektrische Leistung und Wirkungsgrad
 
 ### Leistungsformeln
@@ -2773,6 +3056,13 @@ $$P_R = I^2 \cdot R$$
               'Wechselspannung und Kreisfrequenz $\\omega = 2\\pi f$ verstehen',
               'Impedanzen $Z_R$, $Z_C$, $Z_L$ berechnen',
             ],
+            subGoals: [
+              { label: 'Wechselspannung: $u(t) = \\hat u \\sin(\\omega t + \\varphi)$ mit $\\omega = 2\\pi f$', examRelevance: 'hoch' },
+              { label: 'Effektivwert: $U = \\hat u/\\sqrt 2$ (Sinussignal)', examRelevance: 'hoch' },
+              { label: 'Impedanzen: $Z_R = R$, $Z_L = j\\omega L$, $Z_C = 1/(j\\omega C)$', examRelevance: 'hoch' },
+              { label: '|Z_L| = ωL steigt mit Frequenz, |Z_C| = 1/(ωC) fällt mit Frequenz', examRelevance: 'hoch' },
+              { label: 'Phasenverschiebung: Spule $+90°$ (Strom eilt nach), Kondensator $-90°$ (Strom eilt voraus)', examRelevance: 'hoch' },
+            ],
             content: String.raw`## Wechselstromgrundlagen und Impedanz
 
 ### Wechselspannung
@@ -2850,6 +3140,13 @@ Der **Betrag** der Impedanz gibt das Verhältnis $|Z| = U/I$ an.
               'Impedanz einer RL-Schaltung bestimmen',
               'Leistungsfaktor $\\cos\\varphi$ verstehen',
             ],
+            subGoals: [
+              { label: 'RC-Grenzfrequenz: $f_g = 1/(2\\pi RC)$', examRelevance: 'hoch' },
+              { label: 'Zeitkonstanten: RC $\\tau = RC$, RL $\\tau = L/R$', examRelevance: 'hoch' },
+              { label: 'RL-Impedanz-Betrag: $|Z| = \\sqrt{R^2 + (\\omega L)^2}$', examRelevance: 'hoch' },
+              { label: 'Leistungsfaktor: $\\cos\\varphi = R/|Z|$, $P = S \\cos\\varphi$', examRelevance: 'hoch' },
+              { label: 'Bei $f_g$: Betrag auf $1/\\sqrt 2 \\approx 0{,}707$ abgefallen (−3 dB)', examRelevance: 'hoch' },
+            ],
             content: String.raw`## RC- und RL-Schaltungen
 
 ### RC-Tiefpass
@@ -2919,6 +3216,13 @@ $\cos\varphi = 1$: rein ohmsche Last, keine Blindleistung.
               'Stern- (Y) und Dreieckschaltung ($\\Delta$) unterscheiden',
               'Verkettete Spannung $U_{LL} = \\sqrt{3} \\cdot U_{LN}$ anwenden',
               'Wirkleistung im Drehstromsystem berechnen',
+            ],
+            subGoals: [
+              { label: 'Stern: $U_{LL} = \\sqrt 3 U_{LN}$, $I_L = I_\\text{Strang}$', examRelevance: 'hoch' },
+              { label: 'Dreieck: $U_{LL} = U_\\text{Strang}$, $I_L = \\sqrt 3 I_\\text{Strang}$', examRelevance: 'hoch' },
+              { label: 'Drehstrom-Leistung: $P = \\sqrt 3 U_{LL} I_L \\cos\\varphi$', examRelevance: 'hoch' },
+              { label: 'Haushaltsnetz: $U_{LN} = 230$ V, $U_{LL} = 400$ V', examRelevance: 'hoch' },
+              { label: 'Y/$\\Delta$-Anlauf: in Stern nur 1/3 Leistung → kleinerer Anlaufstrom', examRelevance: 'mittel' },
             ],
             content: String.raw`## Drehstrom (Dreiphasensystem)
 
@@ -3045,6 +3349,13 @@ Drehstrom-Asynchronmotoren werden beim Anlauf in Y betrieben (niedrigerer Strang
               'Spannungsteiler und Stromteiler berechnen',
               'Elektrische Energie und Leistung klausurfertig lösen',
             ],
+            subGoals: [
+              { label: 'Reihe: $R_\\text{ges} = \\sum R_i$; Parallel: $1/R_\\text{ges} = \\sum 1/R_i$', examRelevance: 'hoch' },
+              { label: 'Spannungsteiler: $U_1 = U \\cdot R_1/(R_1 + R_2)$', examRelevance: 'hoch' },
+              { label: 'Stromteiler: $I_k = I_\\text{ges} \\cdot R_\\text{par}/R_k$ (umgekehrt proportional)', examRelevance: 'hoch' },
+              { label: 'Energie: $W = P \\cdot t$; 1 kWh = 3{,}6 MJ', examRelevance: 'hoch' },
+              { label: 'Kirchhoff-Methode: Maschen + Knoten → LGS für mehrere unbekannte Ströme', examRelevance: 'hoch' },
+            ],
             content: String.raw`## [PRÜFUNG] Gleichstromkreise — Klausuraufgaben
 
 ### Wichtige Formeln
@@ -3126,6 +3437,13 @@ $$U_1 = U \cdot \frac{R_1}{R_1 + R_2}$$
               'Resonanzfrequenz eines RLC-Kreises berechnen',
               'Leistungsfaktor und Wirkleistung bestimmen',
               'Tiefpass-Übertragungsverhalten klausurfertig beherrschen',
+            ],
+            subGoals: [
+              { label: 'RLC-Reihe Impedanz: $Z = R + j(\\omega L - 1/(\\omega C))$', examRelevance: 'hoch' },
+              { label: 'Resonanzfrequenz: $\\omega_0 = 1/\\sqrt{LC}$, $f_0 = 1/(2\\pi\\sqrt{LC})$', examRelevance: 'hoch' },
+              { label: 'Güte $Q = \\omega_0 L/R = 1/(\\omega_0 RC)$', examRelevance: 'mittel' },
+              { label: 'Wirk-/Blind-/Scheinleistung: $P = S\\cos\\varphi$, $Q = S\\sin\\varphi$, $S = UI$', examRelevance: 'hoch' },
+              { label: 'Tiefpass $-20$ dB/Dekade oberhalb $f_g$, Hochpass umgekehrt', examRelevance: 'mittel' },
             ],
             content: String.raw`## [PRÜFUNG] Wechselstromkreise — Klausuraufgaben
 
@@ -3414,6 +3732,13 @@ Für $s \to 0$: $G(0) = K$ (statisches Verhalten)
               'Wirkung der drei Anteile im Zeitbereich verstehen',
               'PID im Laplace-Bereich formulieren',
             ],
+            subGoals: [
+              { label: 'PID-Formel: $u(t) = K_P(e + \\frac{1}{T_I}\\int e dt + T_D \\dot e)$', examRelevance: 'hoch' },
+              { label: 'P: schnell, bleibender Regelfehler; I: beseitigt Dauerfehler; D: antizipiert', examRelevance: 'hoch' },
+              { label: 'PID-Laplace: $G_R(s) = K_P(1 + 1/(T_I s) + T_D s)$', examRelevance: 'hoch' },
+              { label: 'I-Anteil dominiert bei niedrigen Frequenzen, D-Anteil bei hohen', examRelevance: 'hoch' },
+              { label: 'D rauschempfindlich → in Praxis mit Filterung: $T_D s/(1 + \\alpha T_D s)$', examRelevance: 'mittel' },
+            ],
             content: String.raw`## PID-Regler
 
 Der PID-Regler kombiniert drei Anteile:
@@ -3500,6 +3825,13 @@ $$G_R(s) = K_P\!\left(1 + \frac{1}{T_I s} + T_D s\right)$$
               'Stabilitätsbedingung (Pole in linker Halbebene) formulieren',
               'Hurwitz-Kriterium erklären',
               'Phasenrand und Amplitudenrand im Bodediagramm interpretieren',
+            ],
+            subGoals: [
+              { label: 'Stabilitätsbedingung: alle Pole in linker s-Halbebene ($\\text{Re}(s_i) < 0$)', examRelevance: 'hoch' },
+              { label: 'Hurwitz notwendig: alle Koeffizienten $>0$ (kein Vorzeichenwechsel)', examRelevance: 'hoch' },
+              { label: 'Hurwitz hinreichend ab $n \\geq 3$: Hurwitz-Determinanten $> 0$ prüfen', examRelevance: 'hoch' },
+              { label: 'Phasenrand $\\varphi_R \\geq 30°$, Amplitudenrand $A_R \\geq 6$ dB (Praxisrichtwerte)', examRelevance: 'hoch' },
+              { label: 'Pole auf $j\\omega$-Achse: grenzstabil (ungedämpfte Schwingung)', examRelevance: 'mittel' },
             ],
             content: String.raw`## Stabilität von Regelkreisen
 
@@ -3591,6 +3923,13 @@ Zu kleiner Phasenrand → starkes Überschwingen oder Instabilität.
               'Amplituden- und Phasengang typischer Übertragungsglieder kennen (P, I, D, PT1)',
               'Grenzfrequenz und $-3\\,\\text{dB}$-Punkt interpretieren',
               'Phasenreserve als Stabilitätsmaß lesen',
+            ],
+            subGoals: [
+              { label: 'Amplitudengang in dB: $A_\\text{dB} = 20 \\log_{10}|G|$', examRelevance: 'hoch' },
+              { label: 'Grundbausteine: P $0°$; I $-90°$, $-20$ dB/Dek; D $+90°$, $+20$ dB/Dek', examRelevance: 'hoch' },
+              { label: 'PT1 Grenzfrequenz $\\omega_g = 1/T$, dort $|G| = -3$ dB', examRelevance: 'hoch' },
+              { label: 'Phasenreserve: $\\varphi_R = 180° + \\varphi(\\omega_D)$ bei $|G_0| = 0$ dB', examRelevance: 'hoch' },
+              { label: 'Stabilitätsreserven: $\\varphi_R > 30°$ akzeptabel, $> 60°$ sehr gut', examRelevance: 'hoch' },
             ],
             content: String.raw`## Bodediagramm
 
@@ -3717,6 +4056,13 @@ $$\varphi_R = 180° + \varphi(\omega_D)$$
               'Stationäre Regelabweichung beim P-Regler berechnen',
               'Führungsübertragungsfunktion klausurfertig anwenden',
               'Systemtyp und Rampenfolge einordnen',
+            ],
+            subGoals: [
+              { label: 'Führungs-Übertragungsfunktion: $T(s) = G_0/(1+G_0)$ mit $G_0 = G_R G_S$', examRelevance: 'hoch' },
+              { label: 'Stationärer Regelfehler P-Regler: $e_\\text{stat} = 1/(1+K_0)$', examRelevance: 'hoch' },
+              { label: 'I-Anteil erzwingt $e_\\text{stat} = 0$ bei konstantem Sollwert', examRelevance: 'hoch' },
+              { label: 'Typ $k$ eines Systems: Anzahl der Integratoren in $G_0$; bestimmt Folgevermögen', examRelevance: 'mittel' },
+              { label: 'Rampenfolge: Typ 0 dauerhafter Fehler, Typ 1 Ausgleich, Typ 2 Beschleunigungsfolge', examRelevance: 'mittel' },
             ],
             content: String.raw`## [PRÜFUNG] Regelungstechnik — Klausuraufgaben
 

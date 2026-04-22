@@ -517,6 +517,14 @@ $$y(0) = Ce^0 = C = 5$$
     title: 'Lineare DGL 1. Ordnung',
     order: 3, estimatedMinutes: 20,
     learningGoals: ['Lineare DGL 1. Ordnung in Standardform bringen', 'Integrierenden Faktor berechnen', 'Homogene + partikuläre Lösung bestimmen'],
+    subGoals: [
+      { label: 'Standardform: $y\' + p(x) y = q(x)$', examRelevance: 'hoch' },
+      { label: 'Integrierender Faktor: $\\mu(x) = e^{\\int p(x) dx}$', examRelevance: 'hoch' },
+      { label: 'Lösungsformel: $y = (1/\\mu) [\\int \\mu \\cdot q \\, dx + C]$', examRelevance: 'hoch' },
+      { label: 'Alternative: Variation der Konstanten (homogene + partikuläre Lösung)', examRelevance: 'hoch' },
+      { label: 'Homogene Lösung $y_h = C e^{-\\int p dx}$ einzeln bestimmbar', examRelevance: 'hoch' },
+      { label: 'Typisches Anwendungsproblem: RC-Stromkreis $\\dot U + U/RC = U_0/RC$', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'dgl-1-4',
     steps: [
@@ -575,6 +583,14 @@ Dabei ist $Ce^{-2x}$ die **homogene Lösung** und $\\frac{1}{3}e^x$ die **partik
     title: 'DGL 2. Ordnung mit konstanten Koeffizienten',
     order: 4, estimatedMinutes: 22,
     learningGoals: ['Charakteristische Gleichung aufstellen und lösen', 'Drei Fälle unterscheiden: reelle, doppelte, komplexe Wurzeln', 'Schwingungsverhalten aus der Lösung ablesen'],
+    subGoals: [
+      { label: 'Ansatz $y = e^{\\lambda x}$ führt zu char. Gleichung $a\\lambda^2 + b\\lambda + c = 0$', examRelevance: 'hoch' },
+      { label: 'D > 0 (zwei reelle): $y = C_1 e^{\\lambda_1 x} + C_2 e^{\\lambda_2 x}$', examRelevance: 'hoch' },
+      { label: 'D = 0 (doppelte): $y = (C_1 + C_2 x) e^{\\lambda x}$', examRelevance: 'hoch' },
+      { label: 'D < 0 (komplex $\\alpha \\pm i\\beta$): $y = e^{\\alpha x}(C_1 \\cos\\beta x + C_2 \\sin\\beta x)$ — Schwingung!', examRelevance: 'hoch' },
+      { label: 'Dämpfung: $\\alpha < 0$ abklingend, $\\alpha = 0$ ungedämpft, $\\alpha > 0$ instabil', examRelevance: 'hoch' },
+      { label: 'Feder-Masse: $m\\ddot x + d\\dot x + kx = 0$ — Eigenfrequenz $\\omega_0 = \\sqrt{k/m}$', examRelevance: 'hoch' },
+    ],
     prerequisites: [],
     nextLessonId: null,
     steps: [

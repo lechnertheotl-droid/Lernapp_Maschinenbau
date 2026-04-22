@@ -403,6 +403,14 @@ const lessons_int_u3 = [
     title: 'Flächenberechnung',
     order: 1, estimatedMinutes: 18,
     learningGoals: ['Fläche unter einer Kurve berechnen', 'Fläche zwischen zwei Kurven berechnen'],
+    subGoals: [
+      { label: 'Fläche unter $f(x) \\geq 0$ auf $[a,b]$: $A = \\int_a^b f(x) dx$', examRelevance: 'hoch' },
+      { label: 'Vorzeichenproblem: Bei $f < 0$ liefert Integral negativen Wert — Fläche = Betrag', examRelevance: 'hoch' },
+      { label: 'Fläche zwischen Kurven: $A = \\int_a^b (f_{\\text{oben}} - f_{\\text{unten}}) dx$', examRelevance: 'hoch' },
+      { label: 'Schnittpunkte als Integrationsgrenzen: $f(x) = g(x)$ lösen', examRelevance: 'hoch' },
+      { label: 'Bei Vorzeichenwechsel Nullstellen finden und in Teilintervalle splitten', examRelevance: 'hoch' },
+      { label: 'Fläche zwischen $y = $ const und Kurve: Horizontalstreifen oder Transformation', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'int-3-2',
     steps: [
@@ -461,6 +469,13 @@ $$A = \\int_{0}^{1} (x - x^{2})\\,dx = \\left[\\frac{x^{2}}{2} - \\frac{x^{3}}{3
     title: 'Rotationskörper',
     order: 2, estimatedMinutes: 16,
     learningGoals: ['Volumen von Rotationskörpern berechnen', 'Scheibenmethode anwenden'],
+    subGoals: [
+      { label: 'Scheibenmethode ($x$-Achse): $V = \\pi \\int_a^b [f(x)]^2 dx$', examRelevance: 'hoch' },
+      { label: 'Rotation um $y$-Achse: $V = \\pi \\int_c^d [g(y)]^2 dy$ mit Umkehrfunktion', examRelevance: 'hoch' },
+      { label: 'Schalenmethode: $V = 2\\pi \\int_a^b x \\cdot f(x) dx$ (Rotation um $y$-Achse)', examRelevance: 'mittel' },
+      { label: 'Mantelfläche: $M = 2\\pi \\int_a^b f(x) \\sqrt{1 + [f\'(x)]^2} dx$', examRelevance: 'mittel' },
+      { label: 'Standardvolumina: Kegel $\\pi r^2 h/3$, Kugel $4\\pi r^3/3$, Zylinder $\\pi r^2 h$ aus Integralen', examRelevance: 'hoch' },
+    ],
     prerequisites: [],
     nextLessonId: 'int-3-3',
     steps: [
@@ -502,6 +517,13 @@ $$V = \\pi \\int_{0}^{3} x^{2}\\,dx = \\pi \\left[\\frac{x^{3}}{3}\\right]_{0}^{
     title: 'Technische Anwendungen',
     order: 3, estimatedMinutes: 16,
     learningGoals: ['Arbeit mit Integralen berechnen', 'Schwerpunkt einer Fläche bestimmen'],
+    subGoals: [
+      { label: 'Arbeit $W = \\int_a^b F(x) dx$ bei ortsabhängiger Kraft', examRelevance: 'hoch' },
+      { label: 'Federenergie aus Hookeschem Gesetz $F = kx$: $W = \\frac{1}{2} k s^2$', examRelevance: 'hoch' },
+      { label: 'Flächenschwerpunkt: $\\bar{x} = (1/A) \\int x f(x) dx$, $\\bar{y} = (1/(2A)) \\int f(x)^2 dx$', examRelevance: 'hoch' },
+      { label: 'Trägheitsmoment $I = \\int r^2 dm$ für kontinuierliche Massenverteilung', examRelevance: 'hoch' },
+      { label: 'Effektivwert (RMS): $f_{\\text{eff}} = \\sqrt{(1/T) \\int_0^T f(t)^2 dt}$ (Wechselstromtechnik)', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'int-3-4',
     steps: [
@@ -551,6 +573,13 @@ wobei $A = \\int_{a}^{b} f(x)\\,dx$ die Gesamtfläche ist.
       'Bogenlänge $L = \\int \\sqrt{1 + (f\')^{2}}\\,dx$ kennen und anwenden',
       'Durchschnittswert $\\bar{f} = \\tfrac{1}{b-a}\\int f\\,dx$ berechnen',
       'Geometrische Deutung beider Konzepte verstehen',
+    ],
+    subGoals: [
+      { label: 'Bogenlänge: $L = \\int_a^b \\sqrt{1 + [f\'(x)]^2} dx$ (Pythagoras am Differentialdreieck)', examRelevance: 'hoch' },
+      { label: 'Durchschnittswert: $\\bar{f} = \\frac{1}{b-a} \\int_a^b f(x) dx$', examRelevance: 'hoch' },
+      { label: 'Parametrisierte Kurve $(x(t), y(t))$: $L = \\int_{t_1}^{t_2} \\sqrt{x\'^2 + y\'^2} dt$', examRelevance: 'mittel' },
+      { label: 'Mittelwertsatz der Integralrechnung: $\\exists \\xi \\in [a,b]$ mit $f(\\xi) = \\bar{f}$', examRelevance: 'mittel' },
+      { label: 'Anwendung Maschinenbau: Zahnrad-Evolventen, Rohrleitungen, Seilverläufe', examRelevance: 'mittel' },
     ],
     prerequisites: ['int-3-1'],
     nextLessonId: null,

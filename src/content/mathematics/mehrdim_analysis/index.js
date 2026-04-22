@@ -364,6 +364,14 @@ const unit2 = makeUnit({
         'Fehlerfortpflanzung mit totalem Differential rechnen',
         'Lagrange-Multiplikatoren bei Nebenbedingungen einsetzen',
       ],
+      subGoals: [
+        { label: 'Kritische Stellen: $\\nabla f = \\vec 0$ (alle partiellen Ableitungen null)', examRelevance: 'hoch' },
+        { label: 'Hesse-Matrix $H$: $\\det H > 0$ und $f_{xx} > 0$ → Min; $\\det H > 0, f_{xx} < 0$ → Max', examRelevance: 'hoch' },
+        { label: 'Sattelpunkt: $\\det H < 0$ (Hesse indefinit)', examRelevance: 'hoch' },
+        { label: 'Fehlerfortpflanzung (linear): $\\Delta f \\approx |\\partial f/\\partial x_1| \\Delta x_1 + \\ldots$', examRelevance: 'hoch' },
+        { label: 'Gauß\'sche Fehlerfortpflanzung (statistisch): $\\sigma_f^2 = \\sum (\\partial f/\\partial x_i)^2 \\sigma_i^2$', examRelevance: 'hoch' },
+        { label: 'Lagrange: $\\nabla f = \\lambda \\nabla g$ bei Nebenbedingung $g = 0$', examRelevance: 'hoch' },
+      ],
       createdAt: '2026-04-14',
       intuitionTitle: 'Prüfungs-Strategie',
       intuitionContent:
@@ -506,6 +514,13 @@ const unit2 = makeUnit({
         '[PRÜFUNG] Maximale Fehlerabschätzung mit Teilfehlern',
         '[PRÜFUNG] Gauß\'sche Fehlerfortpflanzung anwenden',
       ],
+      subGoals: [
+        { label: 'Totales Differential: $df = f_x dx + f_y dy + \\ldots$', examRelevance: 'hoch' },
+        { label: 'Maximaler Fehler (linear): $|\\Delta f| \\leq \\sum |f_{x_i}| |\\Delta x_i|$ (obere Schranke)', examRelevance: 'hoch' },
+        { label: 'Gauß\'sche (statistisch): $\\sigma_f = \\sqrt{\\sum (f_{x_i})^2 \\sigma_{x_i}^2}$', examRelevance: 'hoch' },
+        { label: 'Relativer Fehler: $|\\Delta f/f| \\leq \\sum |\\Delta x_i/x_i|$ bei Produkten', examRelevance: 'hoch' },
+        { label: 'Fehlerquelle mit dem größten $f_{x_i} \\Delta x_i$ dominiert — dort zuerst verbessern', examRelevance: 'mittel' },
+      ],
       createdAt: '2026-04-16',
       intuitionTitle: 'Wie pflanzen sich Messfehler fort?',
       intuitionContent:
@@ -647,6 +662,14 @@ const unit2 = makeUnit({
         '[PRÜFUNG] Lagrange-Multiplikatoren vollständig durchrechnen',
         '[PRÜFUNG] Typ des Extremums mit Hesse-Matrix bestimmen',
         '[PRÜFUNG] Gemischte Aufgaben aus partieller Ableitung, Extrema, Fehler',
+      ],
+      subGoals: [
+        { label: 'Lagrange-LGS: $f_x = \\lambda g_x$, $f_y = \\lambda g_y$, $g = 0$ (3 Gl. für 3 Unb.)', examRelevance: 'hoch' },
+        { label: 'Hesse-Test: $D = f_{xx}f_{yy} - f_{xy}^2$; $D>0, f_{xx}>0$ Min; $D>0, f_{xx}<0$ Max; $D<0$ Sattel', examRelevance: 'hoch' },
+        { label: 'Bei $D = 0$: keine Entscheidung via Hesse, höhere Ordnungen nötig', examRelevance: 'mittel' },
+        { label: 'Mehrere NB: $\\nabla f = \\sum \\lambda_i \\nabla g_i$', examRelevance: 'mittel' },
+        { label: 'Richtungsableitung: $D_{\\vec u} f = \\nabla f \\cdot \\vec u / |\\vec u|$', examRelevance: 'hoch' },
+        { label: 'Gradient zeigt in Richtung stärksten Anstiegs, Betrag = maximale Steigung', examRelevance: 'hoch' },
       ],
       createdAt: '2026-04-16',
       intuitionTitle: 'Gesamtstrategie für Prüfungsaufgaben',

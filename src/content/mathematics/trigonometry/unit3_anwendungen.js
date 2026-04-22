@@ -429,6 +429,13 @@ const lessons_u3 = [
     title: 'Additionstheoreme',
     order: 1, estimatedMinutes: 15,
     learningGoals: ['Additionstheoreme für sin und cos kennen', 'Anwenden bei konkreten Winkeln'],
+    subGoals: [
+      { label: '$\\sin(\\alpha \\pm \\beta) = \\sin\\alpha\\cos\\beta \\pm \\cos\\alpha\\sin\\beta$ (Kreuzform, Vorzeichen folgt Winkel)', examRelevance: 'hoch' },
+      { label: '$\\cos(\\alpha \\pm \\beta) = \\cos\\alpha\\cos\\beta \\mp \\sin\\alpha\\sin\\beta$ (umgekehrtes Vorzeichen!)', examRelevance: 'hoch' },
+      { label: '$\\tan(\\alpha \\pm \\beta) = (\\tan\\alpha \\pm \\tan\\beta)/(1 \\mp \\tan\\alpha\\tan\\beta)$', examRelevance: 'mittel' },
+      { label: 'Linearitäts-Falle: $\\sin(\\alpha+\\beta) \\neq \\sin\\alpha + \\sin\\beta$ (nie addieren!)', examRelevance: 'hoch' },
+      { label: 'Anwendung: exakte Werte wie $\\sin 15°$, $\\cos 75°$ aus Summen/Differenzen bekannter Grundwinkel', examRelevance: 'hoch' },
+    ],
     prerequisites: ['trig-2-5'],
     nextLessonId: 'trig-3-2',
     steps: [
@@ -461,6 +468,13 @@ $$\\tan(\\alpha \\pm \\beta) = \\dfrac{\\tan(\\alpha) \\pm \\tan(\\beta)}{1 \\mp
     title: 'Doppelwinkelformeln und Pythagoreischer Satz',
     order: 2, estimatedMinutes: 12,
     learningGoals: ['Doppelwinkelformeln anwenden', 'sin²+cos²=1 verstehen und nutzen'],
+    subGoals: [
+      { label: '$\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$ (aus Additionstheorem mit $\\beta = \\alpha$)', examRelevance: 'hoch' },
+      { label: '$\\cos(2\\alpha) = \\cos^2\\alpha - \\sin^2\\alpha = 2\\cos^2\\alpha - 1 = 1 - 2\\sin^2\\alpha$ (drei Formen)', examRelevance: 'hoch' },
+      { label: 'Pythagoras-Identität $\\sin^2\\alpha + \\cos^2\\alpha = 1$ als Kreisgleichung am Einheitskreis', examRelevance: 'hoch' },
+      { label: 'Folgerungen: $\\sin^2\\alpha = 1 - \\cos^2\\alpha$, $\\cos^2\\alpha = 1 - \\sin^2\\alpha$ (zum Umwandeln)', examRelevance: 'hoch' },
+      { label: 'Halbwinkel-Formeln: $\\sin^2(\\alpha/2) = (1-\\cos\\alpha)/2$, $\\cos^2(\\alpha/2) = (1+\\cos\\alpha)/2$', examRelevance: 'mittel' },
+    ],
     prerequisites: ['trig-3-1'],
     nextLessonId: 'trig-3-3',
     steps: [
@@ -490,6 +504,13 @@ Diese Formel ist extrem nützlich zum Vereinfachen und Umformen — insbesondere
     title: 'Technische Anwendungen',
     order: 3, estimatedMinutes: 15,
     learningGoals: ['Kräfte in Komponenten zerlegen', 'Schwingungen verstehen'],
+    subGoals: [
+      { label: 'Kraftzerlegung: $F_x = F\\cos\\alpha$, $F_y = F\\sin\\alpha$ (Winkel zur $x$-Achse)', examRelevance: 'hoch' },
+      { label: 'Schwingung $x(t) = A\\sin(\\omega t + \\varphi)$: $A$ Amplitude, $\\omega$ Kreisfrequenz, $\\varphi$ Phasenwinkel', examRelevance: 'hoch' },
+      { label: 'Zusammenhang $\\omega = 2\\pi f = 2\\pi/T$ (Kreisfrequenz, Frequenz, Periode)', examRelevance: 'hoch' },
+      { label: 'Pythagoras-Check: $F_x^2 + F_y^2 = F^2$ (Komponenten müssen zur Gesamtkraft passen)', examRelevance: 'mittel' },
+      { label: 'Schiefe Ebene: Hangabtriebskraft $F_H = m g \\sin\\alpha$, Normalkraft $F_N = m g \\cos\\alpha$', examRelevance: 'hoch' },
+    ],
     prerequisites: ['trig-2-5'],
     nextLessonId: 'trig-3-4',
     steps: [
@@ -522,6 +543,14 @@ mit Amplitude $A$, Kreisfrequenz $\\omega$ und Phasenwinkel $\\varphi$.
     title: 'Inverse Funktionen',
     order: 4, estimatedMinutes: 12,
     learningGoals: ['arcsin, arccos, arctan kennen und anwenden', 'Definitionsbereiche verstehen'],
+    subGoals: [
+      { label: '$\\arcsin: [-1,1] \\to [-90°, 90°]$ (rechte Hälfte, monoton wachsend)', examRelevance: 'hoch' },
+      { label: '$\\arccos: [-1,1] \\to [0°, 180°]$ (obere Hälfte, monoton fallend)', examRelevance: 'hoch' },
+      { label: '$\\arctan: \\mathbb{R} \\to (-90°, 90°)$ (Pole ausgeschlossen)', examRelevance: 'hoch' },
+      { label: 'Umkehrfunktion liefert nur Hauptwert — weitere Lösungen via Periodizität/Symmetrie ergänzen', examRelevance: 'hoch' },
+      { label: 'Taschenrechner-Modus DEG/RAD unbedingt beachten (häufigste Fehlerquelle)', examRelevance: 'hoch' },
+      { label: 'Notation $\\sin^{-1}$ für $\\arcsin$ nicht mit $1/\\sin$ verwechseln', examRelevance: 'mittel' },
+    ],
     prerequisites: ['trig-2-5'],
     nextLessonId: 'trig-3-5',
     steps: [
@@ -552,6 +581,14 @@ mit Amplitude $A$, Kreisfrequenz $\\omega$ und Phasenwinkel $\\varphi$.
       'Sinussatz und Cosinussatz als Verallgemeinerung von SOH-CAH-TOA verstehen',
       'WWS/SSW-Konfigurationen mit Sinussatz lösen',
       'SWS/SSS-Konfigurationen mit Cosinussatz lösen',
+    ],
+    subGoals: [
+      { label: 'Sinussatz: $a/\\sin\\alpha = b/\\sin\\beta = c/\\sin\\gamma = 2R$ (Umkreisradius)', examRelevance: 'hoch' },
+      { label: 'Cosinussatz: $a^2 = b^2 + c^2 - 2bc\\cos\\alpha$ (verallgemeinerter Pythagoras)', examRelevance: 'hoch' },
+      { label: 'Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz', examRelevance: 'hoch' },
+      { label: 'Pythagoras als Spezialfall: $\\alpha = 90° \\Rightarrow \\cos\\alpha = 0 \\Rightarrow a^2 = b^2 + c^2$', examRelevance: 'mittel' },
+      { label: 'Seite und Gegenwinkel gehören zusammen ($a \\leftrightarrow \\alpha$ usw.)', examRelevance: 'hoch' },
+      { label: 'SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\\sin\\beta$ spitz, Höhenvergleich erforderlich', examRelevance: 'mittel' },
     ],
     prerequisites: ['trig-3-4'],
     nextLessonId: null,

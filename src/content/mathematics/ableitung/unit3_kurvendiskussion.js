@@ -616,6 +616,13 @@ const lessons_abl_u3 = [
     title: 'Monotonie und Extremwerte',
     order: 1, estimatedMinutes: 18,
     learningGoals: ['Monotonie mit f\' bestimmen', 'Lokale Extrema mit f\' und f\'\' bestimmen'],
+    subGoals: [
+      { label: 'Monotonie-Kriterium: $f\'(x) > 0$ → streng wachsend, $f\'(x) < 0$ → streng fallend', examRelevance: 'hoch' },
+      { label: 'Notwendige Bedingung für lokales Extremum: $f\'(x_0) = 0$', examRelevance: 'hoch' },
+      { label: 'Hinreichend via $f\'\'$: $f\'\'(x_0) > 0$ → Min, $f\'\'(x_0) < 0$ → Max', examRelevance: 'hoch' },
+      { label: 'Hinreichend via Vorzeichenwechsel: $f\'$ wechselt $+ \\to -$ → Max, $- \\to +$ → Min', examRelevance: 'hoch' },
+      { label: 'Kein Vorzeichenwechsel von $f\'$ bei $f\'(x_0) = 0$ → Sattelpunkt (z.B. $f(x) = x^3$ bei $0$)', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'abl-3-2',
     steps: [
@@ -675,6 +682,13 @@ Aber **Achtung:** $f'(x_0) = 0$ allein reicht nicht! Du musst prüfen, ob es sic
     title: 'Krümmung und Wendepunkte',
     order: 2, estimatedMinutes: 15,
     learningGoals: ['Krümmungsverhalten mit f\'\' analysieren', 'Wendepunkte berechnen'],
+    subGoals: [
+      { label: 'Krümmung via $f\'\'$: $f\'\' > 0$ → linksgekrümmt ($\\cup$), $f\'\' < 0$ → rechtsgekrümmt ($\\cap$)', examRelevance: 'hoch' },
+      { label: 'Notwendige Bedingung für Wendepunkt: $f\'\'(x_0) = 0$', examRelevance: 'hoch' },
+      { label: 'Hinreichend: $f\'\'\'(x_0) \\neq 0$ ODER $f\'\'$ wechselt bei $x_0$ das Vorzeichen', examRelevance: 'hoch' },
+      { label: 'Sattelpunkt = Wendepunkt mit $f\'(x_0) = 0$ (waagrechte Tangente), z.B. $f(x) = x^3$', examRelevance: 'mittel' },
+      { label: 'Wendepunkt-Koordinaten: $(x_0, f(x_0))$ — y-Wert nicht vergessen', examRelevance: 'hoch' },
+    ],
     prerequisites: [],
     nextLessonId: 'abl-3-3',
     steps: [
@@ -726,6 +740,13 @@ Bei $f(x) = x^3$: $f'(0) = 0$, $f''(0) = 0$, $f'''(0) = 6 \\neq 0$.
     title: 'Vollständige Kurvendiskussion',
     order: 3, estimatedMinutes: 22,
     learningGoals: ['Alle Schritte der Kurvendiskussion durchführen', 'Systematisch vorgehen'],
+    subGoals: [
+      { label: 'Reihenfolge: $D_f$ → Symmetrie → Nullstellen → $f\', f\'\'$ → Extrema → WP → $x \\to \\pm\\infty$ → Graph', examRelevance: 'hoch' },
+      { label: 'Symmetrie: $f(-x) = f(x)$ gerade (y-Achse), $f(-x) = -f(x)$ ungerade (Ursprung)', examRelevance: 'mittel' },
+      { label: 'Verhalten im Unendlichen: bei Polynom führender Term, bei Bruch Grad-Vergleich', examRelevance: 'hoch' },
+      { label: 'Polstellen & Asymptoten bei gebrochen-rationalen Funktionen separat untersuchen', examRelevance: 'hoch' },
+      { label: 'Abschluss-Skizze: Extrema, WP, Achsenschnittpunkte mit Koordinaten beschriften', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'abl-3-4',
     steps: [
@@ -793,6 +814,13 @@ Wo ist $f$ definiert? (Nenner $\\neq 0$, Radikand $\\geq 0$, Logarithmus-Argumen
     title: 'Prüfungsaufgaben Kurvendiskussion',
     order: 4, estimatedMinutes: 25,
     learningGoals: ['Prüfungsniveau-Aufgaben lösen', 'Alle Methoden sicher kombinieren'],
+    subGoals: [
+      { label: 'Typische Klausurfunktionen: Polynom, Bruch $p(x)/q(x)$, $x \\cdot e^{-x}$, $e^{-x^2}$', examRelevance: 'hoch' },
+      { label: 'Plausibilitätsprüfung: Polynom Grad $n$ hat höchstens $n-1$ Extrema', examRelevance: 'mittel' },
+      { label: 'Globale Extrema auf Intervall $[a,b]$: innere Kandidaten + Randpunkte $f(a), f(b)$ vergleichen', examRelevance: 'hoch' },
+      { label: 'Anwendungsaufgabe (Optimierung): Zielfunktion aufstellen, Nebenbedingung einsetzen, dann ableiten', examRelevance: 'hoch' },
+      { label: 'Taylorpolynom $T_n(x)$ als schnelle lokale Kurvendiskussion 2. Ordnung', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: null,
     steps: [

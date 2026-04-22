@@ -454,6 +454,13 @@ const lessons_u4 = [
     title: 'Prüfung: Identitäten & Gleichungen',
     order: 1, estimatedMinutes: 20,
     learningGoals: ['Trigonometrische Identitäten umformen', 'Gleichungen auf Prüfungsniveau lösen'],
+    subGoals: [
+      { label: 'Pythagoras $\\sin^2+\\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen', examRelevance: 'hoch' },
+      { label: 'Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben', examRelevance: 'hoch' },
+      { label: 'Substitution $u = \\sin x$ oder $u = \\cos x$ bei quadratischen Gleichungen', examRelevance: 'hoch' },
+      { label: 'Faktorisieren statt durch $\\cos x$ teilen (Nullstellen nicht verlieren)', examRelevance: 'mittel' },
+      { label: 'Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'trig-4-2',
     steps: [
@@ -496,6 +503,13 @@ const lessons_u4 = [
     title: 'Prüfung: Technische Anwendungen',
     order: 2, estimatedMinutes: 20,
     learningGoals: ['Prüfungsaufgaben zu Kräften und Schwingungen lösen'],
+    subGoals: [
+      { label: 'Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\\sin$/$\\cos$ richtig zuordnen', examRelevance: 'hoch' },
+      { label: 'Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe', examRelevance: 'hoch' },
+      { label: 'Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus gegebenem $x(t)$ ablesen und umrechnen', examRelevance: 'hoch' },
+      { label: 'Einheitenkonsistenz: $\\omega t$ in Radiant, Phasenwinkel $\\varphi$ ebenfalls Radiant', examRelevance: 'hoch' },
+      { label: 'Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'trig-4-3',
     steps: [
@@ -545,6 +559,14 @@ $$\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta} = \\dfrac{c}{\\sin\\gamma} 
     title: 'Prüfung: Einheitskreis & Gleichungssysteme',
     order: 3, estimatedMinutes: 20,
     learningGoals: ['Lösungsmengen bestimmen', 'Komplexe Umformungen durchführen'],
+    subGoals: [
+      { label: '$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$', examRelevance: 'hoch' },
+      { label: '$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$', examRelevance: 'hoch' },
+      { label: '$\\tan x = a$ hat Periode $\\pi$: $x_k = \\arctan a + k\\pi$, $k \\in \\mathbb{Z}$', examRelevance: 'hoch' },
+      { label: 'Gesamte Lösungsmenge: Hauptwerte + $2\\pi k$ (bzw. $\\pi k$ bei $\\tan$), Intervall berücksichtigen', examRelevance: 'hoch' },
+      { label: 'Beim Dividieren durch $\\cos x$: Fall $\\cos x = 0$ separat prüfen, sonst Lösungen verloren', examRelevance: 'hoch' },
+      { label: 'Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: null,
     steps: [

@@ -583,6 +583,14 @@ const lessons_vek_u2 = [
     title: 'Geradengleichung',
     order: 1, estimatedMinutes: 15,
     learningGoals: ['Parameterform einer Geraden aufstellen', 'Punkte auf einer Geraden testen', 'Lage zweier Geraden sicher klassifizieren'],
+    subGoals: [
+      { label: 'Parameterform: $\\vec r = \\vec p + t \\vec v$ mit Stützpunkt $\\vec p$ und Richtung $\\vec v$', examRelevance: 'hoch' },
+      { label: 'Punkt-Test: $(x,y,z) = \\vec p + t \\vec v$ auf **dasselbe** $t$ in allen drei Komponenten prüfen', examRelevance: 'hoch' },
+      { label: 'Lagetest zweier Geraden: parallel? identisch? schneidend? windschief?', examRelevance: 'hoch' },
+      { label: 'Parallel-Test: $\\vec v_1 \\times \\vec v_2 = \\vec 0$ oder $\\vec v_2 = k \\vec v_1$', examRelevance: 'hoch' },
+      { label: 'Schnittpunkt via Gleichsetzen: $\\vec p_1 + t \\vec v_1 = \\vec p_2 + s \\vec v_2$ (LGS 3 Gl., 2 Unbek.)', examRelevance: 'hoch' },
+      { label: 'Windschief gibt es nur in 3D — in 2D sind nicht-parallele Geraden immer schneidend', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'vek-2-2',
     steps: [
@@ -641,6 +649,14 @@ $$\\vec{r} = \\vec{p} + t \\cdot \\vec{v}$$
     title: 'Ebenengleichung',
     order: 2, estimatedMinutes: 18,
     learningGoals: ['Parameter-, Normal- und Koordinatenform einer Ebene aufstellen', 'Zwischen den Darstellungsformen umrechnen', 'Normalvektor aus zwei Richtungsvektoren bestimmen'],
+    subGoals: [
+      { label: 'Parameterform: $\\vec r = \\vec p + s \\vec u + t \\vec v$ (Stützpunkt + zwei Richtungen)', examRelevance: 'hoch' },
+      { label: 'Normalenform: $\\vec n \\cdot (\\vec r - \\vec p) = 0$ mit Normalvektor $\\vec n \\perp$ Ebene', examRelevance: 'hoch' },
+      { label: 'Koordinatenform: $a x + b y + c z = d_0$ mit $\\vec n = (a, b, c)$ und $d_0 = \\vec n \\cdot \\vec p$', examRelevance: 'hoch' },
+      { label: 'Normalvektor aus Parameterform: $\\vec n = \\vec u \\times \\vec v$', examRelevance: 'hoch' },
+      { label: 'Ebene aus drei Punkten: $\\vec u = P_2 - P_1$, $\\vec v = P_3 - P_1$, dann $\\vec n$ kreuzen', examRelevance: 'hoch' },
+      { label: 'Hessesche Normalform: $\\vec n_0 \\cdot (\\vec r - \\vec p) = 0$ mit normiertem $\\vec n_0$ (Länge 1)', examRelevance: 'mittel' },
+    ],
     prerequisites: ['vek-2-1'],
     nextLessonId: 'vek-2-3',
     steps: [
@@ -698,6 +714,14 @@ Das heißt: Jeder Punkt $\\vec{r}$ auf der Ebene hat einen Verbindungsvektor $\\
     title: 'Abstände und Schnitte',
     order: 3, estimatedMinutes: 20,
     learningGoals: ['Abstand Punkt–Ebene berechnen', 'Abstand Punkt–Gerade berechnen', 'Schnittpunkt Gerade–Ebene bestimmen'],
+    subGoals: [
+      { label: 'Abstand Punkt–Ebene: $d = |a q_x + b q_y + c q_z - d_0|/\\sqrt{a^2+b^2+c^2}$', examRelevance: 'hoch' },
+      { label: 'Abstand Punkt–Gerade: $d = |\\vec v \\times (\\vec Q - \\vec p)|/|\\vec v|$', examRelevance: 'hoch' },
+      { label: 'Abstand windschiefer Geraden: $d = |(\\vec p_2 - \\vec p_1) \\cdot (\\vec v_1 \\times \\vec v_2)|/|\\vec v_1 \\times \\vec v_2|$', examRelevance: 'hoch' },
+      { label: 'Schnitt Gerade–Ebene: $\\vec r(t)$ in Ebenengleichung einsetzen, $t$ auflösen', examRelevance: 'hoch' },
+      { label: 'Schnittfälle: eindeutig (1 Punkt), $0 = 0$ (Gerade in Ebene), Widerspruch (parallel)', examRelevance: 'hoch' },
+      { label: 'Merkhilfe: Ebene → Skalarprodukt mit $\\vec n$; Gerade → Kreuzprodukt mit $\\vec v$', examRelevance: 'mittel' },
+    ],
     prerequisites: ['vek-2-2'],
     nextLessonId: 'vek-2-4',
     steps: [
@@ -742,6 +766,14 @@ Idee: Das Kreuzprodukt-Betrag ist die Fläche des Parallelogramms $\\vec{v}$–$
     title: 'Prüfungsaufgaben Analytische Geometrie',
     order: 4, estimatedMinutes: 25,
     learningGoals: ['Lagebeziehungen sicher bestimmen', 'Abstands- und Schnittaufgaben lösen', 'Prüfungsniveau erreichen'],
+    subGoals: [
+      { label: 'Lotfußpunkt auf Ebene: Hilfsgerade durch $P$ in Richtung $\\vec n$, Schnitt mit Ebene', examRelevance: 'hoch' },
+      { label: 'Schnittgerade zweier Ebenen: Richtung $\\vec v = \\vec n_1 \\times \\vec n_2$, Punkt durch LGS-Lösung', examRelevance: 'hoch' },
+      { label: 'Gerade ⊥ Ebene $\\iff \\vec v_g \\parallel \\vec n_E$; Gerade $\\parallel$ Ebene $\\iff \\vec v_g \\perp \\vec n_E$', examRelevance: 'hoch' },
+      { label: 'Abstand paralleler Ebenen: $d = |d_1 - d_2|/|\\vec n|$ bei **gleichem** $\\vec n$', examRelevance: 'hoch' },
+      { label: 'Spiegelpunkt $P\'$ an Ebene: $P\' = 2F - P$ mit Lotfußpunkt $F$', examRelevance: 'mittel' },
+      { label: 'Winkel zwischen Gerade und Ebene: $\\sin\\alpha = |\\vec v \\cdot \\vec n|/(|\\vec v||\\vec n|)$', examRelevance: 'mittel' },
+    ],
     prerequisites: ['vek-2-3'],
     nextLessonId: null,
     steps: [

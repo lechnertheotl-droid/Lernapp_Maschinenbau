@@ -355,6 +355,13 @@ const lessons_la_u2 = [
     title: 'LGS in Matrixform',
     order: 1, estimatedMinutes: 12,
     learningGoals: ['LGS in Matrixform $A\\vec{x} = \\vec{b}$ schreiben', 'Erweiterte Koeffizientenmatrix aufstellen'],
+    subGoals: [
+      { label: 'Matrixform: $A\\vec x = \\vec b$ (Koeffizienten $A$, Unbekannte $\\vec x$, rechte Seite $\\vec b$)', examRelevance: 'hoch' },
+      { label: 'Erweiterte Koeffizientenmatrix $[A|\\vec b]$ mit Trennstrich', examRelevance: 'hoch' },
+      { label: 'Variablen in jeder Gleichung in gleicher Reihenfolge (sonst Koeffizienten falsch!)', examRelevance: 'hoch' },
+      { label: 'Dimensionen: $A$ ist $m \\times n$, $\\vec x \\in \\mathbb{R}^n$, $\\vec b \\in \\mathbb{R}^m$', examRelevance: 'mittel' },
+      { label: 'Homogenes LGS: $\\vec b = \\vec 0$, triviale Lösung $\\vec x = \\vec 0$ existiert immer', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'la-2-2',
     steps: [
@@ -404,6 +411,14 @@ $$\\left(\\begin{array}{cccc|c} a_{11} & a_{12} & \\cdots & a_{1n} & b_1 \\\\ a_
     title: 'Gauss-Algorithmus',
     order: 2, estimatedMinutes: 25,
     learningGoals: ['Die drei erlaubten Zeilenumformungen kennen', 'Ein LGS in Stufenform bringen', 'Rücksubstitution durchführen'],
+    subGoals: [
+      { label: 'Drei erlaubte Zeilenumformungen: Vertauschen, Skalieren (≠0), Addieren eines Vielfachen', examRelevance: 'hoch' },
+      { label: 'Ziel: Obere Dreiecksform / Stufenform (alle Einträge unter Pivot = 0)', examRelevance: 'hoch' },
+      { label: 'Rücksubstitution: von unten nach oben, Variable nach Variable auflösen', examRelevance: 'hoch' },
+      { label: 'Pivotierung: bei $a_{ii} = 0$ Zeile tauschen, sonst Division durch 0', examRelevance: 'hoch' },
+      { label: 'Gauss-Jordan: zusätzlich auch über Pivots nullen → reduzierte Stufenform', examRelevance: 'mittel' },
+      { label: 'Matrix-Inversion mit Gauss: $[A | I] \\to [I | A^{-1}]$', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'la-2-3',
     steps: [
@@ -457,6 +472,14 @@ Das ist die **Stufenform**! Unter der Diagonale stehen nur Nullen.
     title: 'Lösbarkeit von LGS',
     order: 3, estimatedMinutes: 18,
     learningGoals: ['Die drei Fälle der Lösbarkeit unterscheiden', 'Rang einer Matrix bestimmen', 'Kronecker-Capelli-Theorem anwenden'],
+    subGoals: [
+      { label: 'Drei Fälle: eindeutig / unendlich / keine Lösung (Widerspruch)', examRelevance: 'hoch' },
+      { label: 'Rang = Anzahl Pivots in Stufenform', examRelevance: 'hoch' },
+      { label: 'Kronecker-Capelli: $\\text{rg}(A) \\neq \\text{rg}([A|b])$ → keine Lösung', examRelevance: 'hoch' },
+      { label: 'Eindeutig: $\\text{rg}(A) = \\text{rg}([A|b]) = n$ (Anzahl Unbekannte)', examRelevance: 'hoch' },
+      { label: 'Unendlich: $\\text{rg}(A) = \\text{rg}([A|b]) < n$, freie Parameter = $n - \\text{rg}(A)$', examRelevance: 'hoch' },
+      { label: 'Geometrisch (2D): Geraden schneidend / identisch / parallel', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'la-2-4',
     steps: [
@@ -513,6 +536,13 @@ Dabei ist $n$ die Anzahl der Unbekannten.
     title: 'Cramersche Regel & Anwendungen',
     order: 4, estimatedMinutes: 18,
     learningGoals: ['Cramersche Regel für 2x2- und 3x3-Systeme anwenden', 'Technische Probleme als LGS formulieren'],
+    subGoals: [
+      { label: 'Cramer: $x_i = \\det(A_i)/\\det(A)$, wobei $A_i$ = $A$ mit $i$-ter Spalte durch $\\vec b$ ersetzt', examRelevance: 'hoch' },
+      { label: 'Voraussetzung: $\\det(A) \\neq 0$ (nicht anwendbar bei singulärer Matrix)', examRelevance: 'hoch' },
+      { label: 'Nur für **quadratische** Systeme mit eindeutiger Lösung sinnvoll', examRelevance: 'hoch' },
+      { label: 'Ab $n > 4$ ist Gauss effizienter (Cramer = $O(n!)$ mit Sarrus, $n!$ Determinanten)', examRelevance: 'mittel' },
+      { label: 'Technik-Anwendung: Kräftegleichgewicht, Knotenspannungsanalyse (Kirchhoff)', examRelevance: 'hoch' },
+    ],
     prerequisites: [],
     nextLessonId: null,
     steps: [
