@@ -108,7 +108,7 @@ export function MarkdownContent({ children, className }: MarkdownContentProps) {
       className={cn('markdown-content text-sm leading-relaxed text-surface-700 dark:text-surface-200', className)}
     >
       <ReactMarkdown
-        remarkPlugins={[remarkGfm, remarkMath]}
+        remarkPlugins={[remarkGfm, [remarkMath, { singleDollarTextMath: true }]]}
         rehypePlugins={[rehypeKatex]}
         components={markdownComponents}
       >
