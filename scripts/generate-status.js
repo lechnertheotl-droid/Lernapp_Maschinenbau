@@ -389,6 +389,8 @@ const agentTasks = getAgentTasks()
 if (agentTasks.length > 0) {
   out.push(`## Auftragsliste für Claude Code`)
   out.push(``)
+  out.push(`> 📘 **Vor dem Anfangen:** [CLAUDE.md](./CLAUDE.md) lesen (Qualitätskontrakt, Dateistruktur, Workflow, was NICHT zu tun ist).`)
+  out.push(``)
   out.push(`**Ziel:** Handgeschriebene Aufgaben in Menge ergänzen. Keine Template-Generatoren, keine Slop-Aufgaben.`)
   out.push(``)
   out.push(`**Mengen-Regel:** ${MIN_EXERCISES_PER_LESSON} Aufgaben pro Lesson sind das **Minimum** — keine Obergrenze. Viele Aufgaben = bessere Routine. Wenn eine Lesson 7 Grund-Aufgaben hat, sind weitere 7–10 Supplements kein "zu viel", sondern gut.`)
@@ -471,6 +473,22 @@ if (agentTasks.length > 0) {
       }
       if (t.mcMissingWae.length > 0) {
         out.push(`- **MC-wAE fehlt bei:** ${t.mcMissingWae.slice(0, 8).map((id) => `\`${id}\``).join(', ')}${t.mcMissingWae.length > 8 ? ` … (+${t.mcMissingWae.length - 8} weitere)` : ''}`)
+      }
+
+      // Topic-Guide-Kontext: damit der Agent weiß, welche Lehrplan-Inhalte die
+      // Aufgaben dieser Lesson bedienen müssen.
+      const guideForTask = TOPIC_GUIDES[t.topicId]
+      if (guideForTask) {
+        out.push(`- **Lehrplan-Kontext für \`${t.topicId}\`** (aus \`src/content/curriculum.js\`):`)
+        if (guideForTask.mustKnow?.length > 0) {
+          out.push(`  - _Must-Know:_ ${guideForTask.mustKnow.slice(0, 3).join(' · ')}${guideForTask.mustKnow.length > 3 ? ` · …` : ''}`)
+        }
+        if (guideForTask.commonMistakes?.length > 0) {
+          out.push(`  - _Typische Fehler (gute Distraktoren):_ ${guideForTask.commonMistakes.slice(0, 3).join(' · ')}${guideForTask.commonMistakes.length > 3 ? ` · …` : ''}`)
+        }
+        if (guideForTask.examFocus?.length > 0) {
+          out.push(`  - _Klausur-Fokus:_ ${guideForTask.examFocus.join(' · ')}`)
+        }
       }
       out.push(``)
     }
