@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2198 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 233 (11 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 920 / 920 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 8 / 1134 (1 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2278 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 318 (14 %) | 100 % der Aufgaben | 🔴 |
+| MC mit wrongAnswerExplanations | 940 / 940 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 24 / 1134 (2 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -199,10 +199,10 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **178** (manuell: 66 · supplemental: 112)
-- 4-Block: 22/178 (12 %) 🔴
-- MC-wAE: 97/97 (100 %) ✅
-- Sub-Goals: 0/87 Goal-Tasks verknüpft 🔴
+- Aufgaben: **208** (manuell: 66 · supplemental: 142)
+- 4-Block: 53/208 (25 %) 🔴
+- MC-wAE: 106/106 (100 %) ✅
+- Sub-Goals: 6/87 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Winkel, Sinus/Kosinus/Tangens und Einheitskreis — die Sprache, in der Geometrie und Schwingungen beschrieben werden.**
@@ -258,7 +258,7 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 | `trig-3-2` Doppelwinkelformeln und Pythagoreischer Satz | 5 | 0/5 | 10 | 6/2/1/1/0 | 0/10 | 6/6 | ✅ | +5 Goal, +10 4B |
 | `trig-3-3` Technische Anwendungen | 5 | 0/5 | 10 | 5/2/1/1/1 | 2/10 | 5/5 | ✅ | +5 Goal, +8 4B |
 | `trig-3-4` Inverse Funktionen | 6 | 0/6 | 10 | 5/2/1/1/1 | 2/10 | 5/5 | ✅ | +6 Goal, +8 4B |
-| `trig-3-5` Sinussatz & Cosinussatz | 6 | 0/6 | 3 | 2/1/0/0/0 | 2/3 | 2/2 | ✅ | +6 Goal, +1 4B |
+| `trig-3-5` Sinussatz & Cosinussatz | 6 | 6/6 | 33 | 11/9/7/4/2 | 33/33 | 11/11 | ✅ | — |
 | `trig-4-1` Prüfung: Identitäten & Gleichungen | 5 | 0/5 | 12 | 8/2/1/1/0 | 0/12 | 8/8 | ✅ | +5 Goal, +12 4B |
 | `trig-4-2` Prüfung: Technische Anwendungen | 5 | 0/5 | 12 | 7/2/1/1/1 | 1/12 | 7/7 | ✅ | +5 Goal, +11 4B |
 | `trig-4-3` Prüfung: Einheitskreis & Gleichungssysteme | 6 | 0/6 | 12 | 7/2/1/1/1 | 1/12 | 7/7 | ✅ | +6 Goal, +11 4B |
@@ -403,10 +403,10 @@ _Ohne Ableitung keine Extremwert-, Geschwindigkeits- oder Optimierungsaufgabe. I
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **178** (manuell: 94 · supplemental: 84)
-- 4-Block: 48/178 (27 %) 🔴
-- MC-wAE: 80/80 (100 %) ✅
-- Sub-Goals: 0/79 Goal-Tasks verknüpft 🔴
+- Aufgaben: **203** (manuell: 94 · supplemental: 109)
+- 4-Block: 75/203 (37 %) 🔴
+- MC-wAE: 85/85 (100 %) ✅
+- Sub-Goals: 5/79 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Integral als Stammfunktion und Fläche unter der Kurve; Techniken (Substitution, Partielle Integration); Anwendungen.**
@@ -459,7 +459,7 @@ _Wegstrecke aus Geschwindigkeit, Arbeit aus Kraft, Volumen aus Dichte — all da
 | `int-3-1` Flächenberechnung | 6 | 0/6 | 12 | 4/5/1/1/1 | 4/12 | 4/4 | ✅ | +6 Goal, +8 4B |
 | `int-3-2` Rotationskörper | 5 | 0/5 | 11 | 3/5/1/1/1 | 2/11 | 3/3 | ✅ | +5 Goal, +9 4B |
 | `int-3-3` Technische Anwendungen | 5 | 0/5 | 11 | 4/4/1/1/1 | 3/11 | 4/4 | ✅ | +5 Goal, +8 4B |
-| `int-3-4` Bogenlänge & Durchschnittswert | 5 | 0/5 | 3 | 1/2/0/0/0 | 1/3 | 1/1 | ✅ | +5 Goal, +2 4B |
+| `int-3-4` Bogenlänge & Durchschnittswert | 5 | 5/5 | 28 | 6/11/5/4/2 | 28/28 | 6/6 | ✅ | — |
 | `int-4-1` Prüfung: Integrationstechniken | 5 | 0/5 | 11 | 7/2/2/0/0 | 0/11 | 7/7 | ✅ | +5 Goal, +11 4B |
 | `int-4-2` Prüfung: Anwendungen der Integralrechnung | 5 | 0/5 | 11 | 6/3/2/0/0 | 0/11 | 6/6 | ✅ | +5 Goal, +11 4B |
 | `int-4-3` Prüfung: Uneigentliche & numerische Integrale | 6 | 0/6 | 11 | 3/4/2/1/1 | 0/11 | 3/3 | ✅ | +6 Goal, +11 4B |
@@ -919,10 +919,10 @@ _Signalverarbeitung, Regelungstechnik, Elektrotechnik. Laplace vereinfacht DGL z
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **101** (manuell: 59 · supplemental: 42)
-- 4-Block: 14/101 (14 %) 🔴
-- MC-wAE: 24/24 (100 %) ✅
-- Sub-Goals: 0/76 Goal-Tasks verknüpft 🔴
+- Aufgaben: **126** (manuell: 59 · supplemental: 67)
+- 4-Block: 41/126 (33 %) 🔴
+- MC-wAE: 30/30 (100 %) ✅
+- Sub-Goals: 5/76 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Statik (Kräftegleichgewicht) und Dynamik (Newtonsche Gesetze, Energie) — die klassischen Grundlagen des Maschinenbaus.**
@@ -969,7 +969,7 @@ _Mechanik ist das Herzfach im Maschinenbau-Bachelor und Basis für Festigkeitsle
 | `mech-1-1` Kräfte und Freikörperbild | 4 | 0/4 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +4 Goal, +10 4B |
 | `mech-1-2` Momente und Hebelarm | 4 | 0/4 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +4 Goal, +10 4B |
 | `mech-1-3` Schnittkräfte N(x), Q(x), M(x) | 5 | 0/5 | 5 | 2/2/1/0/0 | 0/5 | 2/2 | ✅ | +5 Goal, +5 4B |
-| `mech-1-4` Reibung | 5 | 0/5 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +5 Goal, +3 4B |
+| `mech-1-4` Reibung | 5 | 5/5 | 28 | 7/9/6/3/3 | 27/28 | 7/7 | ✅ | +1 4B |
 | `mech-1-5` Schwerpunkt | 5 | 0/5 | 3 | 0/2/1/0/0 | 0/3 | — | ✅ | +5 Goal, +3 4B |
 | `mech-2-1` Newtonsche Gesetze | 5 | 0/5 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +5 Goal, +10 4B |
 | `mech-2-2` Arbeit und Energie | 6 | 0/6 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +6 Goal, +10 4B |
@@ -1485,80 +1485,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 75 Lessons
-
-#### `trig-3-5` · Sinussatz & Cosinussatz
-
-- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×2, number-input ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Sinussatz: $a/\sin\alpha = b/\sin\beta = c/\sin\gamma = 2R$ (Umkreisradius)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Cosinussatz: $a^2 = b^2 + c^2 - 2bc\cos\alpha$ (verallgemeinerter Pythagoras)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Pythagoras als Spezialfall: $\alpha = 90° \Rightarrow \cos\alpha = 0 \Rightarrow a^2 = b^2 + c^2$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Seite und Gegenwinkel gehören zusammen ($a \leftrightarrow \alpha$ usw.)
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\sin\beta$ spitz, Höhenvergleich erforderlich
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/trigonometry.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/trigonometry.js`
-- **4-Block-Erklärung fehlt bei:** `ex-trig-3-5-a`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `unit-circle`, `trig-explorer`, `sin-wave-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
-  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
-  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
-
-#### `int-3-4` · Bogenlänge & Durchschnittswert
-
-- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Anwendungen
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×1, number-input ×2
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Bogenlänge: $L = \int_a^b \sqrt{1 + [f'(x)]^2} dx$ (Pythagoras am Differentialdreieck)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Durchschnittswert: $\bar{f} = \frac{1}{b-a} \int_a^b f(x) dx$
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Parametrisierte Kurve $(x(t), y(t))$: $L = \int_{t_1}^{t_2} \sqrt{x'^2 + y'^2} dt$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Mittelwertsatz der Integralrechnung: $\exists \xi \in [a,b]$ mit $f(\xi) = \bar{f}$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Anwendung Maschinenbau: Zahnrad-Evolventen, Rohrleitungen, Seilverläufe
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
-- **4-Block-Erklärung fehlt bei:** `ex-int-3-4-a`, `ex-int-3-4-b`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
-
-#### `mech-1-4` · Reibung
-
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×1, number-input ×1, true-false ×1
-- **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, number-input, true-false
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Coulombsches Reibgesetz: $F_R = \mu F_N$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Haftreibwert $\mu_0$ > Gleitreibwert $\mu$ (Losreißen braucht mehr Kraft)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Auf geneigter Ebene: $F_N = mg\cos\alpha$, $F_H = mg\sin\alpha$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Selbsthemmung: Körper gleitet nicht, solange $\tan\alpha \leq \mu_0$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Reibwinkel $\rho = \arctan\mu$: Neigung, bei der Körper gerade zu gleiten beginnt
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/technische_mechanik.js`
-- **4-Block-Erklärung fehlt bei:** `ex-mech-1-4-a`, `ex-mech-1-4-b`, `ex-mech-1-4-c`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 72 Lessons
 
 #### `mech-1-5` · Schwerpunkt
 
@@ -6905,3 +6832,61 @@ npm run build              # abschließender End-zu-End-Check
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
   - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 3 Lessons
+
+#### `int-3-4` · Bogenlänge & Durchschnittswert
+
+- **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Anwendungen
+- **Aufgaben aktuell:** 28 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
+- **Typen vorhanden:** multiple-choice ×6, number-input ×11, true-false ×5, matching ×4, sorting ×2
+- **Typen einsetzen (Rotation):** sorting, matching, true-false
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
+  - ✅ [0] (hoch) **5/5+** Aufgaben — Bogenlänge: $L = \int_a^b \sqrt{1 + [f'(x)]^2} dx$ (Pythagoras am Differentialdreieck)
+  - ✅ [1] (hoch) **5/5+** Aufgaben — Durchschnittswert: $\bar{f} = \frac{1}{b-a} \int_a^b f(x) dx$
+  - ✅ [2] (mittel) **5/5+** Aufgaben — Parametrisierte Kurve $(x(t), y(t))$: $L = \int_{t_1}^{t_2} \sqrt{x'^2 + y'^2} dt$
+  - ✅ [3] (mittel) **5/5+** Aufgaben — Mittelwertsatz der Integralrechnung: $\exists \xi \in [a,b]$ mit $f(\xi) = \bar{f}$
+  - ✅ [4] (mittel) **5/5+** Aufgaben — Anwendung Maschinenbau: Zahnrad-Evolventen, Rohrleitungen, Seilverläufe
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+
+#### `mech-1-4` · Reibung
+
+- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
+- **Aufgaben aktuell:** 28 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
+- **Typen vorhanden:** multiple-choice ×7, number-input ×9, true-false ×6, matching ×3, sorting ×3
+- **Typen einsetzen (Rotation):** matching, sorting, true-false
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
+  - ✅ [0] (hoch) **5/5+** Aufgaben — Coulombsches Reibgesetz: $F_R = \mu F_N$
+  - ✅ [1] (hoch) **5/5+** Aufgaben — Haftreibwert $\mu_0$ > Gleitreibwert $\mu$ (Losreißen braucht mehr Kraft)
+  - ✅ [2] (hoch) **5/5+** Aufgaben — Auf geneigter Ebene: $F_N = mg\cos\alpha$, $F_H = mg\sin\alpha$
+  - ✅ [3] (hoch) **5/5+** Aufgaben — Selbsthemmung: Körper gleitet nicht, solange $\tan\alpha \leq \mu_0$
+  - ✅ [4] (mittel) **5/5+** Aufgaben — Reibwinkel $\rho = \arctan\mu$: Neigung, bei der Körper gerade zu gleiten beginnt
+- **4-Block-Erklärung fehlt bei:** `ex-mech-1-4-goal-sg0-4`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+
+#### `trig-3-5` · Sinussatz & Cosinussatz
+
+- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
+- **Aufgaben aktuell:** 33 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
+- **Typen vorhanden:** multiple-choice ×11, number-input ×9, true-false ×7, matching ×4, sorting ×2
+- **Typen einsetzen (Rotation):** sorting, matching, true-false
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
+  - ✅ [0] (hoch) **5/5+** Aufgaben — Sinussatz: $a/\sin\alpha = b/\sin\beta = c/\sin\gamma = 2R$ (Umkreisradius)
+  - ✅ [1] (hoch) **5/5+** Aufgaben — Cosinussatz: $a^2 = b^2 + c^2 - 2bc\cos\alpha$ (verallgemeinerter Pythagoras)
+  - ✅ [2] (hoch) **5/5+** Aufgaben — Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz
+  - ✅ [3] (mittel) **5/5+** Aufgaben — Pythagoras als Spezialfall: $\alpha = 90° \Rightarrow \cos\alpha = 0 \Rightarrow a^2 = b^2 + c^2$
+  - ✅ [4] (hoch) **5/5+** Aufgaben — Seite und Gegenwinkel gehören zusammen ($a \leftrightarrow \alpha$ usw.)
+  - ✅ [5] (mittel) **5/5+** Aufgaben — SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\sin\beta$ spitz, Höhenvergleich erforderlich
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `unit-circle`, `trig-explorer`, `sin-wave-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
