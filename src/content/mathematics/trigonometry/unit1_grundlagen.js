@@ -582,6 +582,11 @@ $$\\alpha + \\beta + \\gamma = 180°$$
 
 **Warum das wichtig ist:** Wenn du zwei Winkel kennst, kannst du den dritten direkt ausrechnen.`,
       },
+      {
+        id: 'trig-1-0-s2b', type: 'visualization', title: 'Einheitskreis — Winkel visuell erfassen',
+        visualizationId: 'unit-circle',
+        params: { showSine: false, showCosine: false, interactive: true, showQuadrants: true, showLabels: true, initialAngle: 45 },
+      },
       { id: 'trig-1-0-s3', type: 'exercise', title: 'Aufgabe 1 — Rechter Winkel', exerciseRef: 'ex-trig-1-0-a' },
       { id: 'trig-1-0-s4', type: 'exercise', title: 'Aufgabe 2 — Halber rechter Winkel', exerciseRef: 'ex-trig-1-0-b' },
       { id: 'trig-1-0-s5', type: 'exercise', title: 'Aufgabe 3 — Winkelklassen', exerciseRef: 'ex-trig-1-0-c' },
