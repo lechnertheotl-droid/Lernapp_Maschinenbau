@@ -27,6 +27,57 @@ const VALID_PHASES = new Set(['vorkurs', 'semester-1', 'semester-2', 'vertiefung
 const VALID_EXAM_RELEVANCE = new Set(['pflicht', 'wahl', 'grundlage'])
 const VALID_SUB_GOAL_WEIGHTS = new Set(['niedrig', 'mittel', 'hoch'])
 
+// Unbalancierte $-Delimiter in Content-Strings führen dazu, dass KaTeX nicht
+// greift und das $-Zeichen literal in der UI erscheint. Ein Match zählt alle
+// $, die NICHT durch einen Backslash escaped wurden (Laufzeit-String: \$).
+const UNESCAPED_DOLLAR_RE = /(?<!\\)\$/g
+function hasUnbalancedDollars(s) {
+  if (typeof s !== 'string' || !s) return false
+  const matches = s.match(UNESCAPED_DOLLAR_RE)
+  return matches ? matches.length % 2 !== 0 : false
+}
+function snippet(s) {
+  const one = s.replace(/\s+/g, ' ').trim()
+  return one.length > 80 ? one.slice(0, 77) + '…' : one
+}
+function checkDollars(text, label, ep, bucket) {
+  if (hasUnbalancedDollars(text)) {
+    bucket.push(`${ep}: unbalanciertes $ in ${label} — "${snippet(text)}"`)
+  }
+}
+function checkExerciseDollars(ex, ep, bucket) {
+  checkDollars(ex.question, 'question', ep, bucket)
+  checkDollars(ex.statement, 'statement', ep, bucket)
+  checkDollars(ex.explanation, 'explanation', ep, bucket)
+  checkDollars(ex.template, 'template', ep, bucket)
+  if (Array.isArray(ex.hints)) {
+    ex.hints.forEach((h, i) => checkDollars(h, `hints[${i}]`, ep, bucket))
+  }
+  if (Array.isArray(ex.options)) {
+    ex.options.forEach((opt, i) => {
+      const text = typeof opt === 'string' ? opt : opt?.text
+      checkDollars(text, `options[${i}]`, ep, bucket)
+    })
+  }
+  if (ex.wrongAnswerExplanations && typeof ex.wrongAnswerExplanations === 'object') {
+    for (const [k, v] of Object.entries(ex.wrongAnswerExplanations)) {
+      checkDollars(v, `wrongAnswerExplanations[${k}]`, ep, bucket)
+    }
+  }
+  if (Array.isArray(ex.pairs)) {
+    ex.pairs.forEach((p, i) => {
+      checkDollars(p?.left, `pairs[${i}].left`, ep, bucket)
+      checkDollars(p?.right, `pairs[${i}].right`, ep, bucket)
+    })
+  }
+  if (Array.isArray(ex.items)) {
+    ex.items.forEach((it, i) => {
+      const text = typeof it === 'string' ? it : it?.text
+      checkDollars(text, `items[${i}]`, ep, bucket)
+    })
+  }
+}
+
 for (const topic of topics) {
   const tp = `topic[${topic.id ?? '?'}]`
   check(!!topic.id, `${tp}: fehlt id`)
@@ -150,6 +201,7 @@ for (const topic of topics) {
             `${ep}: subGoalIndex ${ex.subGoalIndex} außerhalb [0, ${sgLen - 1}]`
           )
         }
+        checkExerciseDollars(ex, ep, errors)
       }
     }
   }

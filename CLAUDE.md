@@ -52,6 +52,7 @@ Keine Aufgabe wird akzeptiert, die nicht **alle** Punkte erfüllt:
 - **Number-Input:** `correctValue`, `tolerance`, `unit` (letzteres leer nur bei einheitenlosen Größen).
 - **True-False:** Feld `correct: boolean` (nicht `isTrue`).
 - **Matching / Sorting:** ≥ 2 Paare bzw. Items, Rich-Text mit KaTeX-Mathematik erlaubt.
+- **Math-Delimiter:** LaTeX-Formeln immer in paarigen `$...$` (inline) oder `$$...$$` (display). Unbalancierte `$` werden vom Content-Validator geblockt — keine einzelnen `$` in Fließtext.
 - **Prüfungs-Units:** Frage/Statement beginnt mit `[PRÜFUNG] `.
 - **Goal-Tasks** (in `subgoal_tasks/<topic>.js`): Sub-Goal-Label **wörtlich** in der Frage zitiert, z. B. `Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": …`.
 - **Typen-Rotation pro Lesson:** Mischung aus mc/ni/tf/matching/sorting — nicht 5× MC in Folge.
