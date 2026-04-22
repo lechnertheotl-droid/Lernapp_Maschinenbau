@@ -1506,6 +1506,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-5-a`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `unit-circle`, `trig-explorer`, `sin-wave-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -1529,6 +1530,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-4-a`, `ex-int-3-4-b`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
@@ -1552,6 +1554,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-4-a`, `ex-mech-1-4-b`, `ex-mech-1-4-c`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
@@ -1575,6 +1578,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-5-a`, `ex-mech-1-5-b`, `ex-mech-1-5-c`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
@@ -1598,6 +1602,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-4-a`, `ex-mech-2-4-b`, `ex-mech-2-4-c`
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
@@ -1621,6 +1626,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-5-a`, `ex-mech-2-5-b`, `ex-mech-2-5-c`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
@@ -1644,6 +1650,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-1-3-a`, `ex-fest-1-3-b`, `ex-fest-1-3-c`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
   - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
@@ -1667,6 +1674,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-1-4-a`, `ex-fest-1-4-b`, `ex-fest-1-4-c`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
   - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
@@ -1691,6 +1699,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-2-3-a`, `ex-fest-2-3-b`, `ex-fest-2-3-c`
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
   - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
@@ -1714,6 +1723,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-2-4-a`, `ex-fest-2-4-b`, `ex-fest-2-4-c`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
   - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
@@ -1736,6 +1746,7 @@ npm run build              # abschließender End-zu-End-Check
   - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
   - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
@@ -1759,6 +1770,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-2-3-a`, `ex-thermo-2-3-b`, `ex-thermo-2-3-c`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `pv-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
   - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
@@ -1782,6 +1794,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-2-4-a`, `ex-thermo-2-4-b`, `ex-thermo-2-4-c`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `pv-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
   - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
@@ -1805,6 +1818,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-2-3-a`, `ex-fluid-2-3-b`, `ex-fluid-2-3-c`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
   - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
@@ -1828,6 +1842,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-2-4-a`, `ex-fluid-2-4-b`, `ex-fluid-2-4-c`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
   - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
@@ -1850,6 +1865,7 @@ npm run build              # abschließender End-zu-End-Check
   - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
   - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
@@ -1873,6 +1889,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-1-3-a`, `ex-melem-1-3-b`, `ex-melem-1-3-c`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `lager-illustration`, `free-body-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
   - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
@@ -1896,6 +1913,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-2-3-a`, `ex-melem-2-3-b`, `ex-melem-2-3-c`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `lager-illustration`, `free-body-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
   - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
@@ -1918,6 +1936,7 @@ npm run build              # abschließender End-zu-End-Check
   - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/elektrotechnik.js`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
   - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
@@ -1940,6 +1959,7 @@ npm run build              # abschließender End-zu-End-Check
   - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/regelungstechnik.js`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `complex-plane`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
   - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
@@ -1961,6 +1981,7 @@ npm run build              # abschließender End-zu-End-Check
   - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 16 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
@@ -1984,6 +2005,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 16 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-3-3-a`, `ex-mech-3-3-b`, `ex-mech-3-3-c`, `ex-mech-3-3-d`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
@@ -2007,6 +2029,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 16 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-3-2-a`, `ex-fest-3-2-b`, `ex-fest-3-2-c`, `ex-fest-3-2-d`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
   - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
@@ -2030,6 +2053,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 16 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-3-2-a`, `ex-thermo-3-2-b`, `ex-thermo-3-2-c`, `ex-thermo-3-2-d`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `pv-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
   - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
@@ -2053,6 +2077,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 16 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-3-2-a`, `ex-fluid-3-2-b`, `ex-fluid-3-2-c`, `ex-fluid-3-2-d`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
   - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
@@ -2076,6 +2101,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 16 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-3-2-a`, `ex-melem-3-2-b`, `ex-melem-3-2-c`, `ex-melem-3-2-d`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `lager-illustration`, `free-body-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
   - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
@@ -2099,6 +2125,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 12 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-pruefung-1-manual-1`, `ex-werk-pruefung-1-manual-2`, `ex-werk-pruefung-1-manual-3`, `ex-werk-pruefung-1-manual-4`, `ex-werk-pruefung-1-manual-5`, `ex-werk-pruefung-1-manual-6`, `ex-werk-pruefung-1-manual-7`, `ex-werk-pruefung-1-mastery`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
   - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
@@ -2123,6 +2150,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-pruefung-1-1`, `ex-komz-pruefung-1-2`, `ex-komz-pruefung-1-3`, `ex-komz-pruefung-1-4`, `ex-komz-pruefung-1-5`, `ex-komz-pruefung-1-6`, `ex-komz-pruefung-1-7`, `ex-komz-pruefung-1-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
   - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
@@ -2146,6 +2174,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-pruefung-2-1`, `ex-komz-pruefung-2-2`, `ex-komz-pruefung-2-3`, `ex-komz-pruefung-2-4`, `ex-komz-pruefung-2-5`, `ex-komz-pruefung-2-6`, `ex-komz-pruefung-2-7`, `ex-komz-pruefung-2-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
   - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
@@ -2170,6 +2199,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-pruefung-3-1`, `ex-komz-pruefung-3-2`, `ex-komz-pruefung-3-3`, `ex-komz-pruefung-3-4`, `ex-komz-pruefung-3-5`, `ex-komz-pruefung-3-6`, `ex-komz-pruefung-3-7`, `ex-komz-pruefung-3-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
   - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
@@ -2194,6 +2224,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-pruefung-1-1`, `ex-rf-pruefung-1-2`, `ex-rf-pruefung-1-3`, `ex-rf-pruefung-1-4`, `ex-rf-pruefung-1-5`, `ex-rf-pruefung-1-6`, `ex-rf-pruefung-1-7`, `ex-rf-pruefung-1-8` … (+1 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `taylor-approx`, `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `reihen-folgen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Geometrische Reihe: $\sum q^n=1/(1-q)$ für $|q|<1$. · Harmonische Reihe divergiert, p-Reihen konvergieren für $p>1$. · Quotientenkriterium $\lim|a_{n+1}/a_n|<1 \Rightarrow$ Konvergenz. · …
   - _Typische Fehler (gute Distraktoren):_ Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
@@ -2218,6 +2249,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-pruefung-2-1`, `ex-rf-pruefung-2-2`, `ex-rf-pruefung-2-3`, `ex-rf-pruefung-2-4`, `ex-rf-pruefung-2-5`, `ex-rf-pruefung-2-6`, `ex-rf-pruefung-2-7`, `ex-rf-pruefung-2-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `taylor-approx`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `reihen-folgen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Geometrische Reihe: $\sum q^n=1/(1-q)$ für $|q|<1$. · Harmonische Reihe divergiert, p-Reihen konvergieren für $p>1$. · Quotientenkriterium $\lim|a_{n+1}/a_n|<1 \Rightarrow$ Konvergenz. · …
   - _Typische Fehler (gute Distraktoren):_ Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
@@ -2241,6 +2273,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-pruefung-3-1`, `ex-rf-pruefung-3-2`, `ex-rf-pruefung-3-3`, `ex-rf-pruefung-3-4`, `ex-rf-pruefung-3-5`, `ex-rf-pruefung-3-6`, `ex-rf-pruefung-3-7`, `ex-rf-pruefung-3-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `taylor-approx`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `reihen-folgen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Geometrische Reihe: $\sum q^n=1/(1-q)$ für $|q|<1$. · Harmonische Reihe divergiert, p-Reihen konvergieren für $p>1$. · Quotientenkriterium $\lim|a_{n+1}/a_n|<1 \Rightarrow$ Konvergenz. · …
   - _Typische Fehler (gute Distraktoren):_ Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
@@ -2265,6 +2298,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-pruefung-1-1`, `ex-mdim-pruefung-1-2`, `ex-mdim-pruefung-1-3`, `ex-mdim-pruefung-1-4`, `ex-mdim-pruefung-1-5`, `ex-mdim-pruefung-1-6`, `ex-mdim-pruefung-1-7`, `ex-mdim-pruefung-1-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-3d`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `mehrdim-analysis`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Partielle Ableitung: alle anderen Variablen als Konstante behandeln. · Gradient $\nabla f$ zeigt in Richtung des steilsten Anstiegs. · Extrema: $\nabla f=\vec 0$ (notwendig) + Definitheit der Hesse-Matrix (hinreichend). · …
   - _Typische Fehler (gute Distraktoren):_ Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
@@ -2288,6 +2322,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-pruefung-2-1`, `ex-mdim-pruefung-2-2`, `ex-mdim-pruefung-2-3`, `ex-mdim-pruefung-2-4`, `ex-mdim-pruefung-2-5`, `ex-mdim-pruefung-2-6`, `ex-mdim-pruefung-2-7`, `ex-mdim-pruefung-2-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-3d`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `mehrdim-analysis`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Partielle Ableitung: alle anderen Variablen als Konstante behandeln. · Gradient $\nabla f$ zeigt in Richtung des steilsten Anstiegs. · Extrema: $\nabla f=\vec 0$ (notwendig) + Definitheit der Hesse-Matrix (hinreichend). · …
   - _Typische Fehler (gute Distraktoren):_ Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
@@ -2312,6 +2347,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-pruefung-3-1`, `ex-mdim-pruefung-3-2`, `ex-mdim-pruefung-3-3`, `ex-mdim-pruefung-3-4`, `ex-mdim-pruefung-3-5`, `ex-mdim-pruefung-3-6`, `ex-mdim-pruefung-3-7`, `ex-mdim-pruefung-3-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-3d`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `mehrdim-analysis`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Partielle Ableitung: alle anderen Variablen als Konstante behandeln. · Gradient $\nabla f$ zeigt in Richtung des steilsten Anstiegs. · Extrema: $\nabla f=\vec 0$ (notwendig) + Definitheit der Hesse-Matrix (hinreichend). · …
   - _Typische Fehler (gute Distraktoren):_ Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
@@ -2336,6 +2372,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-pruefung-1-1`, `ex-num-pruefung-1-2`, `ex-num-pruefung-1-3`, `ex-num-pruefung-1-4`, `ex-num-pruefung-1-5`, `ex-num-pruefung-1-6`, `ex-num-pruefung-1-7`, `ex-num-pruefung-1-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `numerik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Newton: $x_{n+1}=x_n-f(x_n)/f'(x_n)$, quadratisch konvergent. · Bisektion: sicher aber linear, braucht Vorzeichenwechsel. · Trapezregel: $I\approx h[y_0/2+y_1+\ldots+y_{n-1}+y_n/2]$, Fehler $O(h^2)$. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
@@ -2360,6 +2397,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-pruefung-2-1`, `ex-num-pruefung-2-2`, `ex-num-pruefung-2-3`, `ex-num-pruefung-2-4`, `ex-num-pruefung-2-5`, `ex-num-pruefung-2-6`, `ex-num-pruefung-2-7`, `ex-num-pruefung-2-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `numerik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Newton: $x_{n+1}=x_n-f(x_n)/f'(x_n)$, quadratisch konvergent. · Bisektion: sicher aber linear, braucht Vorzeichenwechsel. · Trapezregel: $I\approx h[y_0/2+y_1+\ldots+y_{n-1}+y_n/2]$, Fehler $O(h^2)$. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
@@ -2383,6 +2421,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-pruefung-3-1`, `ex-num-pruefung-3-2`, `ex-num-pruefung-3-3`, `ex-num-pruefung-3-4`, `ex-num-pruefung-3-5`, `ex-num-pruefung-3-6`, `ex-num-pruefung-3-7`, `ex-num-pruefung-3-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `numerik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Newton: $x_{n+1}=x_n-f(x_n)/f'(x_n)$, quadratisch konvergent. · Bisektion: sicher aber linear, braucht Vorzeichenwechsel. · Trapezregel: $I\approx h[y_0/2+y_1+\ldots+y_{n-1}+y_n/2]$, Fehler $O(h^2)$. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
@@ -2406,6 +2445,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-pruefung-1-1`, `ex-stat-pruefung-1-2`, `ex-stat-pruefung-1-3`, `ex-stat-pruefung-1-4`, `ex-stat-pruefung-1-5`, `ex-stat-pruefung-1-6`, `ex-stat-pruefung-1-7`, `ex-stat-pruefung-1-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
   - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
@@ -2429,6 +2469,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-pruefung-2-1`, `ex-stat-pruefung-2-2`, `ex-stat-pruefung-2-3`, `ex-stat-pruefung-2-4`, `ex-stat-pruefung-2-5`, `ex-stat-pruefung-2-6`, `ex-stat-pruefung-2-7`, `ex-stat-pruefung-2-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
   - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
@@ -2452,6 +2493,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-pruefung-3-1`, `ex-stat-pruefung-3-2`, `ex-stat-pruefung-3-3`, `ex-stat-pruefung-3-4`, `ex-stat-pruefung-3-5`, `ex-stat-pruefung-3-6`, `ex-stat-pruefung-3-7`, `ex-stat-pruefung-3-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
   - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
@@ -2475,6 +2517,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-3-2-a`, `ex-mech-3-2-b`, `ex-mech-3-2-manual-1`, `ex-mech-3-2-manual-2`, `ex-mech-3-2-manual-3`, `ex-mech-3-2-manual-4`, `ex-mech-3-2-manual-5`, `ex-mech-3-2-manual-6` … (+2 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
@@ -2498,6 +2541,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-3-2-a`, `ex-et-3-2-b`, `ex-et-3-2-manual-1`, `ex-et-3-2-manual-2`, `ex-et-3-2-manual-3`, `ex-et-3-2-manual-4`, `ex-et-3-2-manual-5`, `ex-et-3-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
   - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
@@ -2521,6 +2565,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-4-1-a`, `ex-py-4-1-b`, `ex-py-4-1-c`, `ex-py-4-1-d`, `ex-py-4-1-e`, `ex-py-4-1-f`, `ex-py-4-1-g`, `ex-py-4-1-h` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
   - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
@@ -2544,6 +2589,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-4-1-a`, `ex-abl-4-1-b`, `ex-abl-4-1-c`, `ex-abl-4-1-d`, `ex-abl-4-1-e`, `ex-abl-4-1-f`, `ex-abl-4-1-g`, `ex-abl-4-1-h` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -2567,6 +2613,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-4-2-a`, `ex-abl-4-2-b`, `ex-abl-4-2-c`, `ex-abl-4-2-d`, `ex-abl-4-2-e`, `ex-abl-4-2-f`, `ex-abl-4-2-g`, `ex-abl-4-2-h` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -2591,6 +2638,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-4-3-a`, `ex-abl-4-3-b`, `ex-abl-4-3-c`, `ex-abl-4-3-d`, `ex-abl-4-3-e`, `ex-abl-4-3-f`, `ex-abl-4-3-g`, `ex-abl-4-3-h` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -2615,6 +2663,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-3-2-a`, `ex-vek-3-2-b`, `ex-vek-3-2-c`, `ex-vek-3-2-manual-1`, `ex-vek-3-2-manual-2`, `ex-vek-3-2-manual-3`, `ex-vek-3-2-manual-4`, `ex-vek-3-2-manual-5` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-diagram`, `vector-3d`, `force-parallelogram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
@@ -2638,6 +2687,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-3-3-a`, `ex-vek-3-3-b`, `ex-vek-3-3-c`, `ex-vek-3-3-manual-1`, `ex-vek-3-3-manual-2`, `ex-vek-3-3-manual-3`, `ex-vek-3-3-manual-4`, `ex-vek-3-3-manual-5` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-diagram`, `vector-3d`, `force-parallelogram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
@@ -2661,6 +2711,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-4-1-a`, `ex-alg-4-1-b`, `ex-alg-4-1-d`, `ex-alg-4-1-e`, `ex-alg-4-1-f`, `ex-alg-4-1-g`, `ex-alg-4-1-h`, `ex-alg-4-1-i` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -2685,6 +2736,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-4-2-a`, `ex-alg-4-2-b`, `ex-alg-4-2-c`, `ex-alg-4-2-e`, `ex-alg-4-2-f`, `ex-alg-4-2-g`, `ex-alg-4-2-h`, `ex-alg-4-2-j` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -2709,6 +2761,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-4-3-a`, `ex-alg-4-3-b`, `ex-alg-4-3-c`, `ex-alg-4-3-d`, `ex-alg-4-3-e`, `ex-alg-4-3-f`, `ex-alg-4-3-g`, `ex-alg-4-3-h` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -2733,6 +2786,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-3-1-a`, `ex-la-3-1-b`, `ex-la-3-1-c`, `ex-la-3-1-d`, `ex-la-3-1-e`, `ex-la-3-1-f`, `ex-la-3-1-g`, `ex-la-3-1-h` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
   - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
@@ -2757,6 +2811,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-3-2-a`, `ex-la-3-2-b`, `ex-la-3-2-c`, `ex-la-3-2-d`, `ex-la-3-2-e`, `ex-la-3-2-f`, `ex-la-3-2-g`, `ex-la-3-2-h` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
   - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
@@ -2781,6 +2836,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-3-3-a`, `ex-la-3-3-b`, `ex-la-3-3-c`, `ex-la-3-3-d`, `ex-la-3-3-e`, `ex-la-3-3-f`, `ex-la-3-3-g`, `ex-la-3-3-h` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
   - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
@@ -2804,6 +2860,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-4-1-a`, `ex-int-4-1-b`, `ex-int-4-1-c`, `ex-int-4-1-d`, `ex-int-4-1-e`, `ex-int-4-1-f`, `ex-int-4-1-g`, `ex-int-4-1-h` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
@@ -2827,6 +2884,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-4-2-a`, `ex-int-4-2-b`, `ex-int-4-2-c`, `ex-int-4-2-d`, `ex-int-4-2-e`, `ex-int-4-2-f`, `ex-int-4-2-g`, `ex-int-4-2-h` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
@@ -2851,6 +2909,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-4-3-a`, `ex-int-4-3-b`, `ex-int-4-3-c`, `ex-int-4-3-d`, `ex-int-4-3-e`, `ex-int-4-3-f`, `ex-int-4-3-g`, `ex-int-4-3-h` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
@@ -2875,6 +2934,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-3-1-a`, `ex-dgl-3-1-b`, `ex-dgl-3-1-c`, `ex-dgl-3-1-d`, `ex-dgl-3-1-e`, `ex-dgl-3-1-f`, `ex-dgl-3-1-g`, `ex-dgl-3-1-h` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
   - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
@@ -2899,6 +2959,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-3-2-a`, `ex-dgl-3-2-b`, `ex-dgl-3-2-c`, `ex-dgl-3-2-d`, `ex-dgl-3-2-e`, `ex-dgl-3-2-f`, `ex-dgl-3-2-g`, `ex-dgl-3-2-h` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
   - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
@@ -2923,6 +2984,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-3-3-a`, `ex-dgl-3-3-b`, `ex-dgl-3-3-c`, `ex-dgl-3-3-d`, `ex-dgl-3-3-e`, `ex-dgl-3-3-f`, `ex-dgl-3-3-g`, `ex-dgl-3-3-h` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
   - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
@@ -2946,6 +3008,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-3-1-a`, `ex-mech-3-1-b`, `ex-mech-3-1-c`, `ex-mech-3-1-manual-1`, `ex-mech-3-1-manual-2`, `ex-mech-3-1-manual-3`, `ex-mech-3-1-manual-4`, `ex-mech-3-1-manual-5` … (+3 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
@@ -2969,6 +3032,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-3-1-a`, `ex-fest-3-1-b`, `ex-fest-3-1-c`, `ex-fest-3-1-manual-1`, `ex-fest-3-1-manual-2`, `ex-fest-3-1-manual-3`, `ex-fest-3-1-manual-4`, `ex-fest-3-1-manual-5` … (+3 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
   - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
@@ -2992,6 +3056,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-3-1-a`, `ex-thermo-3-1-b`, `ex-thermo-3-1-c`, `ex-thermo-3-1-manual-1`, `ex-thermo-3-1-manual-2`, `ex-thermo-3-1-manual-3`, `ex-thermo-3-1-manual-4`, `ex-thermo-3-1-manual-5` … (+3 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `pv-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
   - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
@@ -3015,6 +3080,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-3-1-a`, `ex-fluid-3-1-b`, `ex-fluid-3-1-c`, `ex-fluid-3-1-manual-1`, `ex-fluid-3-1-manual-2`, `ex-fluid-3-1-manual-3`, `ex-fluid-3-1-manual-4`, `ex-fluid-3-1-manual-5` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
   - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
@@ -3038,6 +3104,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-3-1-a`, `ex-melem-3-1-b`, `ex-melem-3-1-c`, `ex-melem-3-1-manual-1`, `ex-melem-3-1-manual-2`, `ex-melem-3-1-manual-3`, `ex-melem-3-1-manual-4`, `ex-melem-3-1-manual-5` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `lager-illustration`, `free-body-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
   - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
@@ -3061,6 +3128,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-3-1-a`, `ex-et-3-1-b`, `ex-et-3-1-c`, `ex-et-3-1-manual-1`, `ex-et-3-1-manual-2`, `ex-et-3-1-manual-3`, `ex-et-3-1-manual-4`, `ex-et-3-1-manual-5` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
   - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
@@ -3084,6 +3152,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/regelungstechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rt-3-1-a`, `ex-rt-3-1-b`, `ex-rt-3-1-c`, `ex-rt-3-1-manual-1`, `ex-rt-3-1-manual-2`, `ex-rt-3-1-manual-3`, `ex-rt-3-1-manual-4`, `ex-rt-3-1-manual-5` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `complex-plane`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
   - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
@@ -3107,6 +3176,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-4-1-a`, `ex-trig-4-1-b`, `ex-trig-4-1-c`, `ex-trig-4-1-d`, `ex-trig-4-1-manual-1`, `ex-trig-4-1-manual-2`, `ex-trig-4-1-manual-3`, `ex-trig-4-1-manual-4` … (+4 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `unit-circle`, `trig-explorer`, `sin-wave-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -3130,6 +3200,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-4-2-a`, `ex-trig-4-2-b`, `ex-trig-4-2-c`, `ex-trig-4-2-manual-1`, `ex-trig-4-2-manual-2`, `ex-trig-4-2-manual-3`, `ex-trig-4-2-manual-4`, `ex-trig-4-2-manual-5` … (+3 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `unit-circle`, `trig-explorer`, `sin-wave-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -3154,6 +3225,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-4-3-a`, `ex-trig-4-3-b`, `ex-trig-4-3-c`, `ex-trig-4-3-manual-1`, `ex-trig-4-3-manual-2`, `ex-trig-4-3-manual-3`, `ex-trig-4-3-manual-4`, `ex-trig-4-3-manual-5` … (+3 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `unit-circle`, `trig-explorer`, `sin-wave-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -3178,6 +3250,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-3-1-a`, `ex-vek-3-1-d`, `ex-vek-3-1-e`, `ex-vek-3-1-manual-1`, `ex-vek-3-1-manual-2`, `ex-vek-3-1-manual-3`, `ex-vek-3-1-manual-4`, `ex-vek-3-1-manual-5` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-diagram`, `vector-3d`, `force-parallelogram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
@@ -3202,6 +3275,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-3-1-1`, `ex-fl-3-1-2`, `ex-fl-3-1-3`, `ex-fl-3-1-4`, `ex-fl-3-1-5`, `ex-fl-3-1-6`, `ex-fl-3-1-7`, `ex-fl-3-1-manual-1` … (+7 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
   - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
@@ -3226,6 +3300,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-3-2-1`, `ex-fl-3-2-2`, `ex-fl-3-2-3`, `ex-fl-3-2-4`, `ex-fl-3-2-5`, `ex-fl-3-2-6`, `ex-fl-3-2-7`, `ex-fl-3-2-manual-1` … (+7 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
   - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
@@ -3248,6 +3323,7 @@ npm run build              # abschließender End-zu-End-Check
   - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 15 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `unit-circle`, `trig-explorer`, `sin-wave-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -3268,6 +3344,7 @@ npm run build              # abschließender End-zu-End-Check
   - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 15 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/vektoren.js`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-diagram`, `vector-3d`, `force-parallelogram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
@@ -3288,6 +3365,7 @@ npm run build              # abschließender End-zu-End-Check
   - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 15 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
@@ -3309,6 +3387,7 @@ npm run build              # abschließender End-zu-End-Check
   - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 15 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
@@ -3332,6 +3411,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 15 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-3-a`, `ex-mech-1-3-b`, `ex-mech-1-3-c`, `ex-mech-1-3-d`, `ex-mech-1-3-e`
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
@@ -3356,6 +3436,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 15 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-3-a`, `ex-mech-2-3-b`, `ex-mech-2-3-c`, `ex-mech-2-3-d`, `ex-mech-2-3-e`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
@@ -3378,6 +3459,7 @@ npm run build              # abschließender End-zu-End-Check
   - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 14 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -3400,6 +3482,7 @@ npm run build              # abschließender End-zu-End-Check
   - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 14 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -3426,6 +3509,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 12 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-5-2-manual-1`, `ex-abl-5-2-manual-2`, `ex-abl-5-2-manual-3`, `ex-abl-5-2-manual-4`, `ex-abl-5-2-manual-5`, `ex-abl-5-2-manual-6`, `ex-abl-5-2-manual-7`, `ex-abl-5-2-mastery`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -3449,6 +3533,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 12 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-1-1-manual-1`, `ex-werk-1-1-manual-2`, `ex-werk-1-1-manual-3`, `ex-werk-1-1-manual-4`, `ex-werk-1-1-manual-5`, `ex-werk-1-1-manual-6`, `ex-werk-1-1-manual-7`, `ex-werk-1-1-mastery`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
   - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
@@ -3472,6 +3557,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 12 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-1-2-manual-1`, `ex-werk-1-2-manual-2`, `ex-werk-1-2-manual-3`, `ex-werk-1-2-manual-4`, `ex-werk-1-2-manual-5`, `ex-werk-1-2-manual-6`, `ex-werk-1-2-manual-7`, `ex-werk-1-2-mastery`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
   - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
@@ -3494,6 +3580,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 12 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-2-1-manual-1`, `ex-werk-2-1-manual-2`, `ex-werk-2-1-manual-3`, `ex-werk-2-1-manual-4`, `ex-werk-2-1-manual-5`, `ex-werk-2-1-manual-6`, `ex-werk-2-1-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
   - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
@@ -3517,6 +3604,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 12 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-2-2-manual-1`, `ex-werk-2-2-manual-2`, `ex-werk-2-2-manual-3`, `ex-werk-2-2-manual-4`, `ex-werk-2-2-manual-5`, `ex-werk-2-2-manual-6`, `ex-werk-2-2-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
   - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
@@ -3539,6 +3627,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-1-1-1`, `ex-komz-1-1-2`, `ex-komz-1-1-3`, `ex-komz-1-1-4`, `ex-komz-1-1-5`, `ex-komz-1-1-6`, `ex-komz-1-1-7`, `ex-komz-1-1-8` … (+1 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `complex-plane` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
   - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
@@ -3561,6 +3650,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-1-2-1`, `ex-komz-1-2-2`, `ex-komz-1-2-3`, `ex-komz-1-2-4`, `ex-komz-1-2-5`, `ex-komz-1-2-6`, `ex-komz-1-2-7`, `ex-komz-1-2-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
   - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
@@ -3585,6 +3675,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-2-1-1`, `ex-komz-2-1-2`, `ex-komz-2-1-3`, `ex-komz-2-1-4`, `ex-komz-2-1-5`, `ex-komz-2-1-6`, `ex-komz-2-1-7`, `ex-komz-2-1-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
   - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
@@ -3609,6 +3700,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-2-2-1`, `ex-komz-2-2-2`, `ex-komz-2-2-3`, `ex-komz-2-2-4`, `ex-komz-2-2-5`, `ex-komz-2-2-6`, `ex-komz-2-2-7`, `ex-komz-2-2-8` … (+1 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `complex-plane` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
   - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
@@ -3632,6 +3724,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-3-1-1`, `ex-komz-3-1-2`, `ex-komz-3-1-3`, `ex-komz-3-1-4`, `ex-komz-3-1-5`, `ex-komz-3-1-6`, `ex-komz-3-1-7`, `ex-komz-3-1-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
   - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
@@ -3656,6 +3749,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-3-2-1`, `ex-komz-3-2-2`, `ex-komz-3-2-3`, `ex-komz-3-2-4`, `ex-komz-3-2-5`, `ex-komz-3-2-6`, `ex-komz-3-2-7`, `ex-komz-3-2-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
   - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
@@ -3679,6 +3773,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-1-1-1`, `ex-rf-1-1-2`, `ex-rf-1-1-3`, `ex-rf-1-1-4`, `ex-rf-1-1-5`, `ex-rf-1-1-6`, `ex-rf-1-1-7`, `ex-rf-1-1-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `taylor-approx`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `reihen-folgen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Geometrische Reihe: $\sum q^n=1/(1-q)$ für $|q|<1$. · Harmonische Reihe divergiert, p-Reihen konvergieren für $p>1$. · Quotientenkriterium $\lim|a_{n+1}/a_n|<1 \Rightarrow$ Konvergenz. · …
   - _Typische Fehler (gute Distraktoren):_ Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
@@ -3701,6 +3796,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-1-2-1`, `ex-rf-1-2-2`, `ex-rf-1-2-3`, `ex-rf-1-2-4`, `ex-rf-1-2-5`, `ex-rf-1-2-6`, `ex-rf-1-2-7`, `ex-rf-1-2-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `taylor-approx`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `reihen-folgen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Geometrische Reihe: $\sum q^n=1/(1-q)$ für $|q|<1$. · Harmonische Reihe divergiert, p-Reihen konvergieren für $p>1$. · Quotientenkriterium $\lim|a_{n+1}/a_n|<1 \Rightarrow$ Konvergenz. · …
   - _Typische Fehler (gute Distraktoren):_ Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
@@ -3724,6 +3820,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-1-1-1`, `ex-mdim-1-1-2`, `ex-mdim-1-1-3`, `ex-mdim-1-1-4`, `ex-mdim-1-1-5`, `ex-mdim-1-1-6`, `ex-mdim-1-1-7`, `ex-mdim-1-1-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-3d`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `mehrdim-analysis`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Partielle Ableitung: alle anderen Variablen als Konstante behandeln. · Gradient $\nabla f$ zeigt in Richtung des steilsten Anstiegs. · Extrema: $\nabla f=\vec 0$ (notwendig) + Definitheit der Hesse-Matrix (hinreichend). · …
   - _Typische Fehler (gute Distraktoren):_ Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
@@ -3747,6 +3844,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-1-2-1`, `ex-mdim-1-2-2`, `ex-mdim-1-2-3`, `ex-mdim-1-2-4`, `ex-mdim-1-2-5`, `ex-mdim-1-2-6`, `ex-mdim-1-2-7`, `ex-mdim-1-2-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-3d`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `mehrdim-analysis`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Partielle Ableitung: alle anderen Variablen als Konstante behandeln. · Gradient $\nabla f$ zeigt in Richtung des steilsten Anstiegs. · Extrema: $\nabla f=\vec 0$ (notwendig) + Definitheit der Hesse-Matrix (hinreichend). · …
   - _Typische Fehler (gute Distraktoren):_ Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
@@ -3769,6 +3867,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-1-1-1`, `ex-num-1-1-2`, `ex-num-1-1-3`, `ex-num-1-1-4`, `ex-num-1-1-5`, `ex-num-1-1-6`, `ex-num-1-1-7`, `ex-num-1-1-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `numerik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Newton: $x_{n+1}=x_n-f(x_n)/f'(x_n)$, quadratisch konvergent. · Bisektion: sicher aber linear, braucht Vorzeichenwechsel. · Trapezregel: $I\approx h[y_0/2+y_1+\ldots+y_{n-1}+y_n/2]$, Fehler $O(h^2)$. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
@@ -3792,6 +3891,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-1-2-1`, `ex-num-1-2-2`, `ex-num-1-2-3`, `ex-num-1-2-4`, `ex-num-1-2-5`, `ex-num-1-2-6`, `ex-num-1-2-7`, `ex-num-1-2-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `numerik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Newton: $x_{n+1}=x_n-f(x_n)/f'(x_n)$, quadratisch konvergent. · Bisektion: sicher aber linear, braucht Vorzeichenwechsel. · Trapezregel: $I\approx h[y_0/2+y_1+\ldots+y_{n-1}+y_n/2]$, Fehler $O(h^2)$. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
@@ -3814,6 +3914,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-1-1-1`, `ex-stat-1-1-2`, `ex-stat-1-1-3`, `ex-stat-1-1-4`, `ex-stat-1-1-5`, `ex-stat-1-1-6`, `ex-stat-1-1-7`, `ex-stat-1-1-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
   - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
@@ -3837,6 +3938,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-1-2-1`, `ex-stat-1-2-2`, `ex-stat-1-2-3`, `ex-stat-1-2-4`, `ex-stat-1-2-5`, `ex-stat-1-2-6`, `ex-stat-1-2-7`, `ex-stat-1-2-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
   - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
@@ -3860,6 +3962,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-1-3-1`, `ex-stat-1-3-2`, `ex-stat-1-3-3`, `ex-stat-1-3-4`, `ex-stat-1-3-5`, `ex-stat-1-3-6`, `ex-stat-1-3-7`, `ex-stat-1-3-8` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
   - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
@@ -3881,6 +3984,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-1-4-a`, `ex-trig-1-4-b`, `ex-trig-1-4-manual-1`, `ex-trig-1-4-manual-2`, `ex-trig-1-4-manual-3`, `ex-trig-1-4-manual-4`, `ex-trig-1-4-manual-5`, `ex-trig-1-4-manual-6` … (+2 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `unit-circle`, `trig-explorer`, `sin-wave-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -3903,6 +4007,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-1-a`, `ex-trig-2-1-manual-1`, `ex-trig-2-1-manual-2`, `ex-trig-2-1-manual-3`, `ex-trig-2-1-manual-4`, `ex-trig-2-1-manual-5`, `ex-trig-2-1-manual-6`, `ex-trig-2-1-manual-7`
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `unit-circle`, `trig-explorer`, `sin-wave-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -3926,6 +4031,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-2-a`, `ex-trig-2-2-manual-1`, `ex-trig-2-2-manual-2`, `ex-trig-2-2-manual-3`, `ex-trig-2-2-manual-4`, `ex-trig-2-2-manual-5`, `ex-trig-2-2-manual-6`, `ex-trig-2-2-manual-7` … (+1 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `unit-circle`, `trig-explorer`, `sin-wave-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -3950,6 +4056,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-3-b`, `ex-trig-2-3-manual-1`, `ex-trig-2-3-manual-2`, `ex-trig-2-3-manual-3`, `ex-trig-2-3-manual-4`, `ex-trig-2-3-manual-5`, `ex-trig-2-3-manual-6`, `ex-trig-2-3-manual-7` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `unit-circle`, `trig-explorer`, `sin-wave-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -3974,6 +4081,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-4-a`, `ex-trig-2-4-b`, `ex-trig-2-4-manual-1`, `ex-trig-2-4-manual-2`, `ex-trig-2-4-manual-3`, `ex-trig-2-4-manual-4`, `ex-trig-2-4-manual-5`, `ex-trig-2-4-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `unit-circle`, `trig-explorer`, `sin-wave-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -3998,6 +4106,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-5-b`, `ex-trig-2-5-manual-1`, `ex-trig-2-5-manual-2`, `ex-trig-2-5-manual-3`, `ex-trig-2-5-manual-4`, `ex-trig-2-5-manual-5`, `ex-trig-2-5-manual-6`, `ex-trig-2-5-manual-7` … (+1 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `unit-circle`, `trig-explorer`, `sin-wave-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -4021,6 +4130,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-1-a`, `ex-trig-3-1-b`, `ex-trig-3-1-manual-1`, `ex-trig-3-1-manual-2`, `ex-trig-3-1-manual-3`, `ex-trig-3-1-manual-4`, `ex-trig-3-1-manual-5`, `ex-trig-3-1-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `unit-circle`, `trig-explorer`, `sin-wave-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -4044,6 +4154,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-2-a`, `ex-trig-3-2-b`, `ex-trig-3-2-manual-1`, `ex-trig-3-2-manual-2`, `ex-trig-3-2-manual-3`, `ex-trig-3-2-manual-4`, `ex-trig-3-2-manual-5`, `ex-trig-3-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `unit-circle`, `trig-explorer`, `sin-wave-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -4067,6 +4178,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-3-a`, `ex-trig-3-3-manual-1`, `ex-trig-3-3-manual-2`, `ex-trig-3-3-manual-3`, `ex-trig-3-3-manual-4`, `ex-trig-3-3-manual-5`, `ex-trig-3-3-manual-6`, `ex-trig-3-3-manual-7`
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `unit-circle`, `trig-explorer`, `sin-wave-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -4091,6 +4203,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-4-b`, `ex-trig-3-4-manual-1`, `ex-trig-3-4-manual-2`, `ex-trig-3-4-manual-3`, `ex-trig-3-4-manual-4`, `ex-trig-3-4-manual-5`, `ex-trig-3-4-manual-6`, `ex-trig-3-4-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `unit-circle`, `trig-explorer`, `sin-wave-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -4113,6 +4226,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-1-3-a`, `ex-vek-1-3-b`, `ex-vek-1-3-manual-1`, `ex-vek-1-3-manual-2`, `ex-vek-1-3-manual-3`, `ex-vek-1-3-manual-4`, `ex-vek-1-3-manual-5`, `ex-vek-1-3-manual-6` … (+2 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `vector-diagram`, `vector-3d`, `force-parallelogram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
@@ -4137,6 +4251,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-1-4-b`, `ex-vek-1-4-manual-1`, `ex-vek-1-4-manual-2`, `ex-vek-1-4-manual-3`, `ex-vek-1-4-manual-4`, `ex-vek-1-4-manual-5`, `ex-vek-1-4-manual-6`, `ex-vek-1-4-manual-7` … (+1 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `vector-diagram`, `vector-3d`, `force-parallelogram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
@@ -4158,6 +4273,7 @@ npm run build              # abschließender End-zu-End-Check
   - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -4182,6 +4298,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-2-2-a`, `ex-dgl-2-2-b`, `ex-dgl-2-2-manual-1`, `ex-dgl-2-2-manual-2`, `ex-dgl-2-2-manual-3`, `ex-dgl-2-2-manual-4`, `ex-dgl-2-2-manual-5`, `ex-dgl-2-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
   - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
@@ -4204,6 +4321,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-1-a`, `ex-mech-1-1-b`, `ex-mech-1-1-manual-1`, `ex-mech-1-1-manual-2`, `ex-mech-1-1-manual-3`, `ex-mech-1-1-manual-4`, `ex-mech-1-1-manual-5`, `ex-mech-1-1-manual-6` … (+2 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
@@ -4226,6 +4344,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-2-a`, `ex-mech-1-2-b`, `ex-mech-1-2-manual-1`, `ex-mech-1-2-manual-2`, `ex-mech-1-2-manual-3`, `ex-mech-1-2-manual-4`, `ex-mech-1-2-manual-5`, `ex-mech-1-2-manual-6` … (+2 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
@@ -4249,6 +4368,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-1-a`, `ex-mech-2-1-b`, `ex-mech-2-1-manual-1`, `ex-mech-2-1-manual-2`, `ex-mech-2-1-manual-3`, `ex-mech-2-1-manual-4`, `ex-mech-2-1-manual-5`, `ex-mech-2-1-manual-6` … (+2 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
@@ -4273,6 +4393,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-2-a`, `ex-mech-2-2-b`, `ex-mech-2-2-manual-1`, `ex-mech-2-2-manual-2`, `ex-mech-2-2-manual-3`, `ex-mech-2-2-manual-4`, `ex-mech-2-2-manual-5`, `ex-mech-2-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
@@ -4295,6 +4416,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-1-1-a`, `ex-fest-1-1-b`, `ex-fest-1-1-manual-1`, `ex-fest-1-1-manual-2`, `ex-fest-1-1-manual-3`, `ex-fest-1-1-manual-4`, `ex-fest-1-1-manual-5`, `ex-fest-1-1-manual-6` … (+2 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
   - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
@@ -4317,6 +4439,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-1-2-a`, `ex-fest-1-2-b`, `ex-fest-1-2-manual-1`, `ex-fest-1-2-manual-2`, `ex-fest-1-2-manual-3`, `ex-fest-1-2-manual-4`, `ex-fest-1-2-manual-5`, `ex-fest-1-2-manual-6` … (+2 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
   - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
@@ -4340,6 +4463,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-2-1-a`, `ex-fest-2-1-b`, `ex-fest-2-1-manual-1`, `ex-fest-2-1-manual-2`, `ex-fest-2-1-manual-3`, `ex-fest-2-1-manual-4`, `ex-fest-2-1-manual-5`, `ex-fest-2-1-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
   - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
@@ -4363,6 +4487,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-2-2-a`, `ex-fest-2-2-b`, `ex-fest-2-2-manual-1`, `ex-fest-2-2-manual-2`, `ex-fest-2-2-manual-3`, `ex-fest-2-2-manual-4`, `ex-fest-2-2-manual-5`, `ex-fest-2-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
   - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
@@ -4385,6 +4510,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-1-1-a`, `ex-thermo-1-1-b`, `ex-thermo-1-1-manual-1`, `ex-thermo-1-1-manual-2`, `ex-thermo-1-1-manual-3`, `ex-thermo-1-1-manual-4`, `ex-thermo-1-1-manual-5`, `ex-thermo-1-1-manual-6` … (+2 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `pv-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
   - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
@@ -4407,6 +4533,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-1-2-a`, `ex-thermo-1-2-b`, `ex-thermo-1-2-manual-1`, `ex-thermo-1-2-manual-2`, `ex-thermo-1-2-manual-3`, `ex-thermo-1-2-manual-4`, `ex-thermo-1-2-manual-5`, `ex-thermo-1-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `pv-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
   - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
@@ -4430,6 +4557,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-2-1-a`, `ex-thermo-2-1-b`, `ex-thermo-2-1-manual-1`, `ex-thermo-2-1-manual-2`, `ex-thermo-2-1-manual-3`, `ex-thermo-2-1-manual-4`, `ex-thermo-2-1-manual-5`, `ex-thermo-2-1-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `pv-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
   - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
@@ -4453,6 +4581,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-2-2-a`, `ex-thermo-2-2-b`, `ex-thermo-2-2-manual-1`, `ex-thermo-2-2-manual-2`, `ex-thermo-2-2-manual-3`, `ex-thermo-2-2-manual-4`, `ex-thermo-2-2-manual-5`, `ex-thermo-2-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `pv-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
   - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
@@ -4475,6 +4604,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-1-1-a`, `ex-fluid-1-1-b`, `ex-fluid-1-1-manual-1`, `ex-fluid-1-1-manual-2`, `ex-fluid-1-1-manual-3`, `ex-fluid-1-1-manual-4`, `ex-fluid-1-1-manual-5`, `ex-fluid-1-1-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
   - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
@@ -4497,6 +4627,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-1-2-a`, `ex-fluid-1-2-b`, `ex-fluid-1-2-manual-1`, `ex-fluid-1-2-manual-2`, `ex-fluid-1-2-manual-3`, `ex-fluid-1-2-manual-4`, `ex-fluid-1-2-manual-5`, `ex-fluid-1-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
   - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
@@ -4520,6 +4651,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-2-1-a`, `ex-fluid-2-1-b`, `ex-fluid-2-1-manual-1`, `ex-fluid-2-1-manual-2`, `ex-fluid-2-1-manual-3`, `ex-fluid-2-1-manual-4`, `ex-fluid-2-1-manual-5`, `ex-fluid-2-1-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
   - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
@@ -4543,6 +4675,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-2-2-a`, `ex-fluid-2-2-b`, `ex-fluid-2-2-manual-1`, `ex-fluid-2-2-manual-2`, `ex-fluid-2-2-manual-3`, `ex-fluid-2-2-manual-4`, `ex-fluid-2-2-manual-5`, `ex-fluid-2-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
   - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
@@ -4565,6 +4698,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-1-1-a`, `ex-melem-1-1-b`, `ex-melem-1-1-manual-1`, `ex-melem-1-1-manual-2`, `ex-melem-1-1-manual-3`, `ex-melem-1-1-manual-4`, `ex-melem-1-1-manual-5`, `ex-melem-1-1-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `lager-illustration`, `free-body-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
   - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
@@ -4587,6 +4721,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-1-2-a`, `ex-melem-1-2-b`, `ex-melem-1-2-manual-1`, `ex-melem-1-2-manual-2`, `ex-melem-1-2-manual-3`, `ex-melem-1-2-manual-4`, `ex-melem-1-2-manual-5`, `ex-melem-1-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `lager-illustration`, `free-body-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
   - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
@@ -4610,6 +4745,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-2-1-a`, `ex-melem-2-1-b`, `ex-melem-2-1-manual-1`, `ex-melem-2-1-manual-2`, `ex-melem-2-1-manual-3`, `ex-melem-2-1-manual-4`, `ex-melem-2-1-manual-5`, `ex-melem-2-1-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `lager-illustration`, `free-body-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
   - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
@@ -4633,6 +4769,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-2-2-a`, `ex-melem-2-2-b`, `ex-melem-2-2-manual-1`, `ex-melem-2-2-manual-2`, `ex-melem-2-2-manual-3`, `ex-melem-2-2-manual-4`, `ex-melem-2-2-manual-5`, `ex-melem-2-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `lager-illustration`, `free-body-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
   - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
@@ -4656,6 +4793,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-1-1-a`, `ex-et-1-1-b`, `ex-et-1-1-manual-1`, `ex-et-1-1-manual-2`, `ex-et-1-1-manual-3`, `ex-et-1-1-manual-4`, `ex-et-1-1-manual-5`, `ex-et-1-1-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
   - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
@@ -4678,6 +4816,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-1-2-a`, `ex-et-1-2-b`, `ex-et-1-2-manual-1`, `ex-et-1-2-manual-2`, `ex-et-1-2-manual-3`, `ex-et-1-2-manual-4`, `ex-et-1-2-manual-5`, `ex-et-1-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
   - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
@@ -4701,6 +4840,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-1-3-a`, `ex-et-1-3-b`, `ex-et-1-3-manual-1`, `ex-et-1-3-manual-2`, `ex-et-1-3-manual-3`, `ex-et-1-3-manual-4`, `ex-et-1-3-manual-5`, `ex-et-1-3-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
   - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
@@ -4724,6 +4864,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-2-1-a`, `ex-et-2-1-b`, `ex-et-2-1-manual-1`, `ex-et-2-1-manual-2`, `ex-et-2-1-manual-3`, `ex-et-2-1-manual-4`, `ex-et-2-1-manual-5`, `ex-et-2-1-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
   - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
@@ -4747,6 +4888,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-2-2-a`, `ex-et-2-2-b`, `ex-et-2-2-manual-1`, `ex-et-2-2-manual-2`, `ex-et-2-2-manual-3`, `ex-et-2-2-manual-4`, `ex-et-2-2-manual-5`, `ex-et-2-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
   - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
@@ -4769,6 +4911,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/regelungstechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rt-1-1-a`, `ex-rt-1-1-b`, `ex-rt-1-1-manual-1`, `ex-rt-1-1-manual-2`, `ex-rt-1-1-manual-3`, `ex-rt-1-1-manual-4`, `ex-rt-1-1-manual-5`, `ex-rt-1-1-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `complex-plane`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
   - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
@@ -4792,6 +4935,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/regelungstechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rt-1-2-a`, `ex-rt-1-2-b`, `ex-rt-1-2-manual-1`, `ex-rt-1-2-manual-2`, `ex-rt-1-2-manual-3`, `ex-rt-1-2-manual-4`, `ex-rt-1-2-manual-5`, `ex-rt-1-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `complex-plane`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
   - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
@@ -4815,6 +4959,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/regelungstechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rt-2-1-a`, `ex-rt-2-1-b`, `ex-rt-2-1-manual-1`, `ex-rt-2-1-manual-2`, `ex-rt-2-1-manual-3`, `ex-rt-2-1-manual-4`, `ex-rt-2-1-manual-5`, `ex-rt-2-1-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `complex-plane`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
   - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
@@ -4838,6 +4983,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/regelungstechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rt-2-2-a`, `ex-rt-2-2-b`, `ex-rt-2-2-manual-1`, `ex-rt-2-2-manual-2`, `ex-rt-2-2-manual-3`, `ex-rt-2-2-manual-4`, `ex-rt-2-2-manual-5`, `ex-rt-2-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `complex-plane`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
   - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
@@ -4862,6 +5008,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-2-3-manual-1`, `ex-werk-2-3-manual-2`, `ex-werk-2-3-manual-3`, `ex-werk-2-3-manual-4`, `ex-werk-2-3-manual-5`, `ex-werk-2-3-manual-6`, `ex-werk-2-3-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
   - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
@@ -4884,6 +5031,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-1-a`, `ex-py-1-1-b`, `ex-py-1-1-manual-1`, `ex-py-1-1-manual-2`, `ex-py-1-1-manual-3`, `ex-py-1-1-manual-4`, `ex-py-1-1-manual-5`, `ex-py-1-1-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
   - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
@@ -4907,6 +5055,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-2-a`, `ex-py-1-2-b`, `ex-py-1-2-manual-1`, `ex-py-1-2-manual-2`, `ex-py-1-2-manual-3`, `ex-py-1-2-manual-4`, `ex-py-1-2-manual-5`, `ex-py-1-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
   - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
@@ -4929,6 +5078,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-3-a`, `ex-py-1-3-b`, `ex-py-1-3-manual-1`, `ex-py-1-3-manual-2`, `ex-py-1-3-manual-3`, `ex-py-1-3-manual-4`, `ex-py-1-3-manual-5`, `ex-py-1-3-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
   - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
@@ -4951,6 +5101,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-4-a`, `ex-py-1-4-b`, `ex-py-1-4-manual-1`, `ex-py-1-4-manual-2`, `ex-py-1-4-manual-3`, `ex-py-1-4-manual-4`, `ex-py-1-4-manual-5`, `ex-py-1-4-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
   - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
@@ -4974,6 +5125,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-5-a`, `ex-py-1-5-b`, `ex-py-1-5-manual-1`, `ex-py-1-5-manual-2`, `ex-py-1-5-manual-3`, `ex-py-1-5-manual-4`, `ex-py-1-5-manual-5`, `ex-py-1-5-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
   - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
@@ -4997,6 +5149,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-2-1-a`, `ex-py-2-1-b`, `ex-py-2-1-manual-1`, `ex-py-2-1-manual-2`, `ex-py-2-1-manual-3`, `ex-py-2-1-manual-4`, `ex-py-2-1-manual-5`, `ex-py-2-1-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
   - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
@@ -5020,6 +5173,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-2-2-a`, `ex-py-2-2-b`, `ex-py-2-2-manual-1`, `ex-py-2-2-manual-2`, `ex-py-2-2-manual-3`, `ex-py-2-2-manual-4`, `ex-py-2-2-manual-5`, `ex-py-2-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
   - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
@@ -5043,6 +5197,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-2-3-a`, `ex-py-2-3-b`, `ex-py-2-3-manual-1`, `ex-py-2-3-manual-2`, `ex-py-2-3-manual-3`, `ex-py-2-3-manual-4`, `ex-py-2-3-manual-5`, `ex-py-2-3-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
   - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
@@ -5066,6 +5221,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-2-4-a`, `ex-py-2-4-b`, `ex-py-2-4-manual-1`, `ex-py-2-4-manual-2`, `ex-py-2-4-manual-3`, `ex-py-2-4-manual-4`, `ex-py-2-4-manual-5`, `ex-py-2-4-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
   - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
@@ -5089,6 +5245,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-3-1-a`, `ex-py-3-1-b`, `ex-py-3-1-manual-1`, `ex-py-3-1-manual-2`, `ex-py-3-1-manual-3`, `ex-py-3-1-manual-4`, `ex-py-3-1-manual-5`, `ex-py-3-1-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
   - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
@@ -5112,6 +5269,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-3-2-a`, `ex-py-3-2-b`, `ex-py-3-2-manual-1`, `ex-py-3-2-manual-2`, `ex-py-3-2-manual-3`, `ex-py-3-2-manual-4`, `ex-py-3-2-manual-5`, `ex-py-3-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
   - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
@@ -5135,6 +5293,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-3-3-a`, `ex-py-3-3-b`, `ex-py-3-3-manual-1`, `ex-py-3-3-manual-2`, `ex-py-3-3-manual-3`, `ex-py-3-3-manual-4`, `ex-py-3-3-manual-5`, `ex-py-3-3-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
   - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
@@ -5157,6 +5316,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-1-1-c`, `ex-trig-1-1-manual-1`, `ex-trig-1-1-manual-2`, `ex-trig-1-1-manual-3`, `ex-trig-1-1-manual-4`, `ex-trig-1-1-manual-5`, `ex-trig-1-1-manual-6`, `ex-trig-1-1-manual-7` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `unit-circle`, `trig-explorer`, `sin-wave-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -5178,6 +5338,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-1-2-a`, `ex-trig-1-2-b`, `ex-trig-1-2-c`, `ex-trig-1-2-manual-1`, `ex-trig-1-2-manual-2`, `ex-trig-1-2-manual-3`, `ex-trig-1-2-manual-4`, `ex-trig-1-2-manual-5` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `unit-circle`, `trig-explorer`, `sin-wave-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -5202,6 +5363,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-5-1-b`, `ex-abl-5-1-manual-1`, `ex-abl-5-1-manual-2`, `ex-abl-5-1-manual-3`, `ex-abl-5-1-manual-4`, `ex-abl-5-1-manual-5`, `ex-abl-5-1-manual-6`, `ex-abl-5-1-manual-7` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -5224,6 +5386,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-1-1-a`, `ex-vek-1-1-c`, `ex-vek-1-1-manual-1`, `ex-vek-1-1-manual-2`, `ex-vek-1-1-manual-3`, `ex-vek-1-1-manual-4`, `ex-vek-1-1-manual-5`, `ex-vek-1-1-manual-6` … (+2 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `vector-diagram`, `vector-3d`, `force-parallelogram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
@@ -5248,6 +5411,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-2-1-a`, `ex-vek-2-1-b`, `ex-vek-2-1-c`, `ex-vek-2-1-manual-1`, `ex-vek-2-1-manual-2`, `ex-vek-2-1-manual-3`, `ex-vek-2-1-manual-4`, `ex-vek-2-1-manual-5` … (+3 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `vector-diagram`, `vector-3d`, `force-parallelogram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
@@ -5269,6 +5433,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-1-a`, `ex-alg-3-1-b`, `ex-alg-3-1-c`, `ex-alg-3-1-manual-1`, `ex-alg-3-1-manual-2`, `ex-alg-3-1-manual-3`, `ex-alg-3-1-manual-4`, `ex-alg-3-1-manual-5` … (+3 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -5293,6 +5458,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-3-c`, `ex-alg-3-3-manual-1`, `ex-alg-3-3-manual-2`, `ex-alg-3-3-manual-3`, `ex-alg-3-3-manual-4`, `ex-alg-3-3-manual-5`, `ex-alg-3-3-manual-6`, `ex-alg-3-3-manual-7` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -5317,6 +5483,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-4-a`, `ex-alg-3-4-b`, `ex-alg-3-4-c`, `ex-alg-3-4-manual-1`, `ex-alg-3-4-manual-2`, `ex-alg-3-4-manual-3`, `ex-alg-3-4-manual-4`, `ex-alg-3-4-manual-5` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -5341,6 +5508,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-5-a`, `ex-la-1-5-b`, `ex-la-1-5-c`, `ex-la-1-5-manual-1`, `ex-la-1-5-manual-2`, `ex-la-1-5-manual-3`, `ex-la-1-5-manual-4`, `ex-la-1-5-manual-5` … (+3 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `eigenvector-viz`, `vector-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
   - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
@@ -5364,6 +5532,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-1-a`, `ex-la-2-1-b`, `ex-la-2-1-c`, `ex-la-2-1-manual-1`, `ex-la-2-1-manual-2`, `ex-la-2-1-manual-3`, `ex-la-2-1-manual-4`, `ex-la-2-1-manual-5` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
   - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
@@ -5388,6 +5557,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-3-a`, `ex-la-2-3-b`, `ex-la-2-3-c`, `ex-la-2-3-manual-1`, `ex-la-2-3-manual-2`, `ex-la-2-3-manual-3`, `ex-la-2-3-manual-4`, `ex-la-2-3-manual-5` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
   - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
@@ -5411,6 +5581,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-4-a`, `ex-la-2-4-b`, `ex-la-2-4-c`, `ex-la-2-4-manual-1`, `ex-la-2-4-manual-2`, `ex-la-2-4-manual-3`, `ex-la-2-4-manual-4`, `ex-la-2-4-manual-5` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
   - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
@@ -5434,6 +5605,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-5-b`, `ex-int-1-5-manual-1`, `ex-int-1-5-manual-2`, `ex-int-1-5-manual-3`, `ex-int-1-5-manual-4`, `ex-int-1-5-manual-5`, `ex-int-1-5-manual-6`, `ex-int-1-5-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
@@ -5458,6 +5630,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-2-3-manual-1`, `ex-int-2-3-manual-2`, `ex-int-2-3-manual-3`, `ex-int-2-3-manual-4`, `ex-int-2-3-manual-5`, `ex-int-2-3-manual-6`, `ex-int-2-3-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
@@ -5481,6 +5654,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-2-b`, `ex-int-3-2-c`, `ex-int-3-2-manual-1`, `ex-int-3-2-manual-2`, `ex-int-3-2-manual-3`, `ex-int-3-2-manual-4`, `ex-int-3-2-manual-5`, `ex-int-3-2-manual-6` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
@@ -5504,6 +5678,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-3-b`, `ex-int-3-3-manual-1`, `ex-int-3-3-manual-2`, `ex-int-3-3-manual-3`, `ex-int-3-3-manual-4`, `ex-int-3-3-manual-5`, `ex-int-3-3-manual-6`, `ex-int-3-3-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
@@ -5527,6 +5702,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-1-1-a`, `ex-dgl-1-1-b`, `ex-dgl-1-1-c`, `ex-dgl-1-1-manual-1`, `ex-dgl-1-1-manual-2`, `ex-dgl-1-1-manual-3`, `ex-dgl-1-1-manual-4`, `ex-dgl-1-1-manual-5` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
   - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
@@ -5550,6 +5726,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-1-2-a`, `ex-dgl-1-2-b`, `ex-dgl-1-2-c`, `ex-dgl-1-2-manual-1`, `ex-dgl-1-2-manual-2`, `ex-dgl-1-2-manual-3`, `ex-dgl-1-2-manual-4`, `ex-dgl-1-2-manual-5` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
   - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
@@ -5574,6 +5751,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-1-4-a`, `ex-dgl-1-4-b`, `ex-dgl-1-4-c`, `ex-dgl-1-4-manual-1`, `ex-dgl-1-4-manual-2`, `ex-dgl-1-4-manual-3`, `ex-dgl-1-4-manual-4`, `ex-dgl-1-4-manual-5` … (+3 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `spring-mass-damper`, `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
   - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
@@ -5597,6 +5775,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-2-1-a`, `ex-dgl-2-1-b`, `ex-dgl-2-1-c`, `ex-dgl-2-1-manual-1`, `ex-dgl-2-1-manual-2`, `ex-dgl-2-1-manual-3`, `ex-dgl-2-1-manual-4`, `ex-dgl-2-1-manual-5` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
   - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
@@ -5621,6 +5800,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-2-3-a`, `ex-dgl-2-3-b`, `ex-dgl-2-3-c`, `ex-dgl-2-3-manual-1`, `ex-dgl-2-3-manual-2`, `ex-dgl-2-3-manual-3`, `ex-dgl-2-3-manual-4`, `ex-dgl-2-3-manual-5` … (+3 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `spring-mass-damper`, `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
   - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
@@ -5643,6 +5823,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-1-3-b`, `ex-trig-1-3-c`, `ex-trig-1-3-manual-1`, `ex-trig-1-3-manual-2`, `ex-trig-1-3-manual-3`, `ex-trig-1-3-manual-4`, `ex-trig-1-3-manual-5`, `ex-trig-1-3-manual-6` … (+2 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `unit-circle`, `trig-explorer`, `sin-wave-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
@@ -5665,6 +5846,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-1-manual-1`, `ex-abl-1-1-manual-2`, `ex-abl-1-1-manual-3`, `ex-abl-1-1-manual-4`, `ex-abl-1-1-manual-5`, `ex-abl-1-1-manual-6`, `ex-abl-1-1-manual-7`, `ex-abl-1-1-mastery`
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `derivative-graph`, `function-graph`, `limit-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -5689,6 +5871,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-5-manual-1`, `ex-abl-1-5-manual-2`, `ex-abl-1-5-manual-3`, `ex-abl-1-5-manual-4`, `ex-abl-1-5-manual-5`, `ex-abl-1-5-manual-6`, `ex-abl-1-5-manual-7`
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `derivative-graph`, `function-graph`, `limit-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -5712,6 +5895,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-2-a`, `ex-abl-3-2-b`, `ex-abl-3-2-c`, `ex-abl-3-2-transfer`, `ex-abl-3-2-manual-1`, `ex-abl-3-2-manual-2`, `ex-abl-3-2-manual-3`, `ex-abl-3-2-manual-4` … (+4 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -5735,6 +5919,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-3-a`, `ex-abl-3-3-b`, `ex-abl-3-3-c`, `ex-abl-3-3-d`, `ex-abl-3-3-manual-1`, `ex-abl-3-3-manual-2`, `ex-abl-3-3-manual-3`, `ex-abl-3-3-manual-4` … (+4 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -5757,6 +5942,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-1-2-manual-1`, `ex-vek-1-2-manual-2`, `ex-vek-1-2-manual-3`, `ex-vek-1-2-manual-4`, `ex-vek-1-2-manual-5`, `ex-vek-1-2-manual-6`, `ex-vek-1-2-manual-7`, `ex-vek-1-2-mastery`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-diagram`, `vector-3d`, `force-parallelogram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
@@ -5781,6 +5967,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-2-2-a`, `ex-vek-2-2-b`, `ex-vek-2-2-d`, `ex-vek-2-2-manual-1`, `ex-vek-2-2-manual-2`, `ex-vek-2-2-manual-3`, `ex-vek-2-2-manual-4`, `ex-vek-2-2-manual-5` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-diagram`, `vector-3d`, `force-parallelogram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
@@ -5805,6 +5992,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-2-3-a`, `ex-vek-2-3-manual-1`, `ex-vek-2-3-manual-2`, `ex-vek-2-3-manual-3`, `ex-vek-2-3-manual-4`, `ex-vek-2-3-manual-5`, `ex-vek-2-3-manual-6`, `ex-vek-2-3-manual-7` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-diagram`, `vector-3d`, `force-parallelogram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
@@ -5826,6 +6014,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-1-2-a`, `ex-alg-1-2-b`, `ex-alg-1-2-d`, `ex-alg-1-2-manual-1`, `ex-alg-1-2-manual-2`, `ex-alg-1-2-manual-3`, `ex-alg-1-2-manual-4`, `ex-alg-1-2-manual-5` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -5851,6 +6040,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-1-3-a`, `ex-alg-1-3-b`, `ex-alg-1-3-c`, `ex-alg-1-3-d`, `ex-alg-1-3-manual-1`, `ex-alg-1-3-manual-2`, `ex-alg-1-3-manual-3`, `ex-alg-1-3-manual-4` … (+4 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -5873,6 +6063,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-1-manual-1`, `ex-alg-2-1-manual-2`, `ex-alg-2-1-manual-3`, `ex-alg-2-1-manual-4`, `ex-alg-2-1-manual-5`, `ex-alg-2-1-manual-6`, `ex-alg-2-1-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -5897,6 +6088,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-3-a`, `ex-alg-2-3-b`, `ex-alg-2-3-c`, `ex-alg-2-3-manual-1`, `ex-alg-2-3-manual-2`, `ex-alg-2-3-manual-3`, `ex-alg-2-3-manual-4`, `ex-alg-2-3-manual-5` … (+3 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -5921,6 +6113,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-4-d`, `ex-alg-2-4-manual-1`, `ex-alg-2-4-manual-2`, `ex-alg-2-4-manual-3`, `ex-alg-2-4-manual-4`, `ex-alg-2-4-manual-5`, `ex-alg-2-4-manual-6`, `ex-alg-2-4-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -5943,6 +6136,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-1-a`, `ex-la-1-1-b`, `ex-la-1-1-c`, `ex-la-1-1-d`, `ex-la-1-1-manual-1`, `ex-la-1-1-manual-2`, `ex-la-1-1-manual-3`, `ex-la-1-1-manual-4` … (+4 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
   - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
@@ -5967,6 +6161,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-3-a`, `ex-la-1-3-b`, `ex-la-1-3-c`, `ex-la-1-3-d`, `ex-la-1-3-manual-1`, `ex-la-1-3-manual-2`, `ex-la-1-3-manual-3`, `ex-la-1-3-manual-4` … (+4 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
   - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
@@ -5991,6 +6186,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-4-a`, `ex-la-1-4-b`, `ex-la-1-4-c`, `ex-la-1-4-d`, `ex-la-1-4-manual-1`, `ex-la-1-4-manual-2`, `ex-la-1-4-manual-3`, `ex-la-1-4-manual-4` … (+4 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
   - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
@@ -6015,6 +6211,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-2-a`, `ex-la-2-2-b`, `ex-la-2-2-c`, `ex-la-2-2-d`, `ex-la-2-2-manual-1`, `ex-la-2-2-manual-2`, `ex-la-2-2-manual-3`, `ex-la-2-2-manual-4` … (+4 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
   - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
@@ -6036,6 +6233,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-1-manual-1`, `ex-int-1-1-manual-2`, `ex-int-1-1-manual-3`, `ex-int-1-1-manual-4`, `ex-int-1-1-manual-5`, `ex-int-1-1-manual-6`, `ex-int-1-1-manual-7`
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `integral-area`, `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
@@ -6058,6 +6256,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-3-manual-1`, `ex-int-1-3-manual-2`, `ex-int-1-3-manual-3`, `ex-int-1-3-manual-4`, `ex-int-1-3-manual-5`, `ex-int-1-3-manual-6`, `ex-int-1-3-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
@@ -6080,6 +6279,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-4-a`, `ex-int-1-4-d`, `ex-int-1-4-manual-1`, `ex-int-1-4-manual-2`, `ex-int-1-4-manual-3`, `ex-int-1-4-manual-4`, `ex-int-1-4-manual-5`, `ex-int-1-4-manual-6` … (+1 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `integral-area`, `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
@@ -6104,6 +6304,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-2-1-manual-1`, `ex-int-2-1-manual-2`, `ex-int-2-1-manual-3`, `ex-int-2-1-manual-4`, `ex-int-2-1-manual-5`, `ex-int-2-1-manual-6`, `ex-int-2-1-manual-7`, `ex-int-2-1-mastery`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
@@ -6127,6 +6328,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-2-2-b`, `ex-int-2-2-manual-1`, `ex-int-2-2-manual-2`, `ex-int-2-2-manual-3`, `ex-int-2-2-manual-4`, `ex-int-2-2-manual-5`, `ex-int-2-2-manual-6`, `ex-int-2-2-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
@@ -6151,6 +6353,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-1-manual-1`, `ex-int-3-1-manual-2`, `ex-int-3-1-manual-3`, `ex-int-3-1-manual-4`, `ex-int-3-1-manual-5`, `ex-int-3-1-manual-6`, `ex-int-3-1-manual-7`, `ex-int-3-1-mastery`
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `integral-area`, `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
@@ -6175,6 +6378,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-1-3-a`, `ex-dgl-1-3-b`, `ex-dgl-1-3-c`, `ex-dgl-1-3-d`, `ex-dgl-1-3-manual-1`, `ex-dgl-1-3-manual-2`, `ex-dgl-1-3-manual-3`, `ex-dgl-1-3-manual-4` … (+4 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
   - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
@@ -6197,6 +6401,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-2-manual-1`, `ex-abl-1-2-manual-2`, `ex-abl-1-2-manual-3`, `ex-abl-1-2-manual-4`, `ex-abl-1-2-manual-5`, `ex-abl-1-2-manual-6`, `ex-abl-1-2-manual-7`
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `derivative-graph`, `function-graph`, `limit-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -6219,6 +6424,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-3-a`, `ex-abl-1-3-manual-1`, `ex-abl-1-3-manual-2`, `ex-abl-1-3-manual-3`, `ex-abl-1-3-manual-4`, `ex-abl-1-3-manual-5`, `ex-abl-1-3-manual-6`, `ex-abl-1-3-manual-7`
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `derivative-graph`, `function-graph`, `limit-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -6241,6 +6447,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-4-a`, `ex-abl-1-4-manual-1`, `ex-abl-1-4-manual-2`, `ex-abl-1-4-manual-3`, `ex-abl-1-4-manual-4`, `ex-abl-1-4-manual-5`, `ex-abl-1-4-manual-6`, `ex-abl-1-4-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -6264,6 +6471,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-2-1-manual-1`, `ex-abl-2-1-manual-2`, `ex-abl-2-1-manual-3`, `ex-abl-2-1-manual-4`, `ex-abl-2-1-manual-5`, `ex-abl-2-1-manual-6`, `ex-abl-2-1-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -6287,6 +6495,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-2-2-a`, `ex-abl-2-2-manual-1`, `ex-abl-2-2-manual-2`, `ex-abl-2-2-manual-3`, `ex-abl-2-2-manual-4`, `ex-abl-2-2-manual-5`, `ex-abl-2-2-manual-6`, `ex-abl-2-2-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -6310,6 +6519,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-2-4-manual-1`, `ex-abl-2-4-manual-2`, `ex-abl-2-4-manual-3`, `ex-abl-2-4-manual-4`, `ex-abl-2-4-manual-5`, `ex-abl-2-4-manual-6`, `ex-abl-2-4-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -6333,6 +6543,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-1-a`, `ex-abl-3-1-b`, `ex-abl-3-1-c`, `ex-abl-3-1-d`, `ex-abl-3-1-transfer`, `ex-abl-3-1-manual-1`, `ex-abl-3-1-manual-2`, `ex-abl-3-1-manual-3` … (+5 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `derivative-graph`, `function-graph`, `limit-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -6356,6 +6567,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-4-a`, `ex-abl-3-4-b`, `ex-abl-3-4-c`, `ex-abl-3-4-d`, `ex-abl-3-4-e`, `ex-abl-3-4-manual-1`, `ex-abl-3-4-manual-2`, `ex-abl-3-4-manual-3` … (+5 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -6380,6 +6592,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-2-4-a`, `ex-vek-2-4-b`, `ex-vek-2-4-c`, `ex-vek-2-4-d`, `ex-vek-2-4-e`, `ex-vek-2-4-manual-1`, `ex-vek-2-4-manual-2`, `ex-vek-2-4-manual-3` … (+5 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-diagram`, `vector-3d`, `force-parallelogram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
@@ -6402,6 +6615,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-1-1-b`, `ex-alg-1-1-d`, `ex-alg-1-1-e`, `ex-alg-1-1-manual-1`, `ex-alg-1-1-manual-2`, `ex-alg-1-1-manual-3`, `ex-alg-1-1-manual-4`, `ex-alg-1-1-manual-5` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -6424,6 +6638,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-2-a`, `ex-alg-2-2-b`, `ex-alg-2-2-d`, `ex-alg-2-2-e`, `ex-alg-2-2-manual-1`, `ex-alg-2-2-manual-2`, `ex-alg-2-2-manual-3`, `ex-alg-2-2-manual-4` … (+3 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -6448,6 +6663,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-2-a`, `ex-alg-3-2-b`, `ex-alg-3-2-c`, `ex-alg-3-2-d`, `ex-alg-3-2-e`, `ex-alg-3-2-manual-1`, `ex-alg-3-2-manual-2`, `ex-alg-3-2-manual-3` … (+4 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
@@ -6470,6 +6686,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-2-a`, `ex-la-1-2-b`, `ex-la-1-2-c`, `ex-la-1-2-d`, `ex-la-1-2-e`, `ex-la-1-2-manual-1`, `ex-la-1-2-manual-2`, `ex-la-1-2-manual-3` … (+5 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
   - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
@@ -6492,6 +6709,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-2-c`, `ex-int-1-2-e`, `ex-int-1-2-manual-1`, `ex-int-1-2-manual-2`, `ex-int-1-2-manual-3`, `ex-int-1-2-manual-4`, `ex-int-1-2-manual-5`, `ex-int-1-2-manual-6` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
@@ -6515,6 +6733,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-2-4-manual-1`, `ex-int-2-4-manual-2`, `ex-int-2-4-manual-3`, `ex-int-2-4-manual-4`, `ex-int-2-4-manual-5`, `ex-int-2-4-manual-6`, `ex-int-2-4-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
@@ -6538,6 +6757,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 6 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-2-3-manual-1`, `ex-abl-2-3-manual-2`, `ex-abl-2-3-manual-3`, `ex-abl-2-3-manual-4`, `ex-abl-2-3-manual-5`, `ex-abl-2-3-manual-6`, `ex-abl-2-3-manual-7`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
   - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
@@ -6561,6 +6781,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-1-1-1`, `ex-fl-1-1-2`, `ex-fl-1-1-3`, `ex-fl-1-1-4`, `ex-fl-1-1-5`, `ex-fl-1-1-6`, `ex-fl-1-1-7`, `ex-fl-1-1-manual-1` … (+7 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
   - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
@@ -6583,6 +6804,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-1-2-1`, `ex-fl-1-2-2`, `ex-fl-1-2-3`, `ex-fl-1-2-4`, `ex-fl-1-2-5`, `ex-fl-1-2-6`, `ex-fl-1-2-7`, `ex-fl-1-2-manual-1` … (+7 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
   - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
@@ -6607,6 +6829,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-1-3-1`, `ex-fl-1-3-2`, `ex-fl-1-3-3`, `ex-fl-1-3-4`, `ex-fl-1-3-5`, `ex-fl-1-3-6`, `ex-fl-1-3-7`, `ex-fl-1-3-manual-1` … (+7 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
   - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
@@ -6630,6 +6853,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-2-1-1`, `ex-fl-2-1-2`, `ex-fl-2-1-3`, `ex-fl-2-1-4`, `ex-fl-2-1-5`, `ex-fl-2-1-6`, `ex-fl-2-1-7`, `ex-fl-2-1-manual-1` … (+7 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
   - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
@@ -6654,6 +6878,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-2-2-1`, `ex-fl-2-2-2`, `ex-fl-2-2-3`, `ex-fl-2-2-4`, `ex-fl-2-2-5`, `ex-fl-2-2-6`, `ex-fl-2-2-7`, `ex-fl-2-2-manual-1` … (+7 weitere)
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
   - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
@@ -6675,6 +6900,7 @@ npm run build              # abschließender End-zu-End-Check
   - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 2 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
