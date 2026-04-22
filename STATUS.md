@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2198 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 233 (11 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 920 / 920 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 8 / 1134 (1 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2228 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 264 (12 %) | 100 % der Aufgaben | 🔴 |
+| MC mit wrongAnswerExplanations | 929 / 929 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 14 / 1134 (1 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -199,10 +199,10 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **178** (manuell: 66 · supplemental: 112)
-- 4-Block: 22/178 (12 %) 🔴
-- MC-wAE: 97/97 (100 %) ✅
-- Sub-Goals: 0/87 Goal-Tasks verknüpft 🔴
+- Aufgaben: **208** (manuell: 66 · supplemental: 142)
+- 4-Block: 53/208 (25 %) 🔴
+- MC-wAE: 106/106 (100 %) ✅
+- Sub-Goals: 6/87 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Winkel, Sinus/Kosinus/Tangens und Einheitskreis — die Sprache, in der Geometrie und Schwingungen beschrieben werden.**
@@ -258,7 +258,7 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 | `trig-3-2` Doppelwinkelformeln und Pythagoreischer Satz | 5 | 0/5 | 10 | 6/2/1/1/0 | 0/10 | 6/6 | ✅ | +5 Goal, +10 4B |
 | `trig-3-3` Technische Anwendungen | 5 | 0/5 | 10 | 5/2/1/1/1 | 2/10 | 5/5 | ✅ | +5 Goal, +8 4B |
 | `trig-3-4` Inverse Funktionen | 6 | 0/6 | 10 | 5/2/1/1/1 | 2/10 | 5/5 | ✅ | +6 Goal, +8 4B |
-| `trig-3-5` Sinussatz & Cosinussatz | 6 | 0/6 | 3 | 2/1/0/0/0 | 2/3 | 2/2 | ✅ | +6 Goal, +1 4B |
+| `trig-3-5` Sinussatz & Cosinussatz | 6 | 6/6 | 33 | 11/9/7/4/2 | 33/33 | 11/11 | ✅ | — |
 | `trig-4-1` Prüfung: Identitäten & Gleichungen | 5 | 0/5 | 12 | 8/2/1/1/0 | 0/12 | 8/8 | ✅ | +5 Goal, +12 4B |
 | `trig-4-2` Prüfung: Technische Anwendungen | 5 | 0/5 | 12 | 7/2/1/1/1 | 1/12 | 7/7 | ✅ | +5 Goal, +11 4B |
 | `trig-4-3` Prüfung: Einheitskreis & Gleichungssysteme | 6 | 0/6 | 12 | 7/2/1/1/1 | 1/12 | 7/7 | ✅ | +6 Goal, +11 4B |
@@ -1485,31 +1485,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 75 Lessons
-
-#### `trig-3-5` · Sinussatz & Cosinussatz
-
-- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×2, number-input ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Sinussatz: $a/\sin\alpha = b/\sin\beta = c/\sin\gamma = 2R$ (Umkreisradius)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Cosinussatz: $a^2 = b^2 + c^2 - 2bc\cos\alpha$ (verallgemeinerter Pythagoras)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Pythagoras als Spezialfall: $\alpha = 90° \Rightarrow \cos\alpha = 0 \Rightarrow a^2 = b^2 + c^2$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Seite und Gegenwinkel gehören zusammen ($a \leftrightarrow \alpha$ usw.)
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\sin\beta$ spitz, Höhenvergleich erforderlich
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/trigonometry.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/trigonometry.js`
-- **4-Block-Erklärung fehlt bei:** `ex-trig-3-5-a`
-- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
-  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
-  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 74 Lessons
 
 #### `int-3-4` · Bogenlänge & Durchschnittswert
 
