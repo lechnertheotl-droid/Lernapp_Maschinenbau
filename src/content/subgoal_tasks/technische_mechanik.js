@@ -1744,4 +1744,517 @@ export const technischeMechanikSubGoalTasks = {
 
   },
 
+  // ────────────────────────────────────────────────────────────────────────
+  // mech-2-5 — Dynamik starrer Körper  (5 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-2-5': {
+
+    // ── [0] Drallsatz: M = J·α (Rotationsanalog zu F = ma) ─────────────
+    0: [
+      ni(
+        'Sub-Goal "Drallsatz: $M = J \\cdot \\alpha$ (Rotationsanalog zu $F = ma$)": Ein Elektromotor übt an seiner Welle ein Drehmoment $M = 40\\,\\text{Nm}$ aus. Die Welle hat $J = 0{,}8\\,\\text{kg}\\cdot\\text{m}^2$. Wie groß ist die Winkelbeschleunigung $\\alpha$?',
+        50, 0.1, 'rad/s²',
+        `**Ansatz:** Drallsatz — das Rotationsanalog zu $F = ma$ — lautet $M = J\\alpha$. Umgestellt: $\\alpha = M/J$.
+
+**Rechnung:** $\\alpha = 40/0{,}8 = 50\\,\\text{rad/s}^2$.
+
+**Probe:** Einheiten: $\\text{Nm}/(\\text{kg}\\cdot\\text{m}^2) = (\\text{kg}\\cdot\\text{m}^2/\\text{s}^2)/(\\text{kg}\\cdot\\text{m}^2) = \\text{s}^{-2} = \\text{rad/s}^2$. ✓ Plausibel: Motorwellen beschleunigen typisch mit $10$–$1000\\,\\text{rad/s}^2$.
+
+**Typischer Fehler:** $\\alpha = M \\cdot J$ rechnen (Produktzustand) — liefert $32$ und die falsche Dimension. Merksatz: $J$ steht **im Nenner**, ganz analog zur Masse bei $a = F/m$.`,
+        [
+          'Rotationsanalog: $M$ ↔ $F$, $J$ ↔ $m$, $\\alpha$ ↔ $a$.',
+          'Drallsatz nach $\\alpha$ umstellen.',
+          '$\\alpha = M/J$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Drallsatz: $M = J \\cdot \\alpha$ (Rotationsanalog zu $F = ma$)": Bei gleichbleibendem Trägheitsmoment wird das angreifende Moment **verdreifacht**. Wie ändert sich die Winkelbeschleunigung?',
+        [
+          '$\\alpha$ bleibt gleich',
+          '$\\alpha$ wird dreimal so groß',
+          '$\\alpha$ wird neunmal so groß',
+          '$\\alpha$ wird um den Faktor $\\sqrt{3}$ größer',
+        ],
+        1,
+        `**Ansatz:** $\\alpha = M/J$ ist **linear** im Moment: $M \\to 3M$ ⇒ $\\alpha \\to 3\\alpha$.
+
+**Rechnung:** $\\alpha_\\text{neu}/\\alpha_\\text{alt} = (3M)/J \\cdot J/M = 3$.
+
+**Probe:** Der Drallsatz ist eine lineare Beziehung zwischen $M$ und $\\alpha$ (genau wie $F = ma$). Keine Potenz, keine Wurzel.
+
+**Typischer Fehler:** Quadratischen Zusammenhang annehmen (wie bei Rotationsenergie $E \\propto \\omega^2$) und mit $9$ oder $\\sqrt{3}$ rechnen. Drallsatz ≠ Energiesatz.`,
+        [
+          'Drallsatz: $\\alpha = M/J$ — wie verhält sich $\\alpha$ zu $M$?',
+          'Linear oder quadratisch?',
+          'Verdoppelt $M$ ⇒ verdoppelt $\\alpha$.',
+        ],
+        {
+          0: 'Das Moment ist die **Ursache** der Winkelbeschleunigung. Mehr $M$ ⇒ größeres $\\alpha$. „Bleibt gleich" widerspricht direkt dem Drallsatz.',
+          2: 'Faktor $9$ entspräche einem quadratischen Gesetz ($\\alpha \\propto M^2$). Der Drallsatz ist jedoch linear.',
+          3: '$\\sqrt{3}$ taucht bei Wurzel-Zusammenhängen auf (z. B. $\\omega_0 \\propto \\sqrt{c/m}$). Für $\\alpha(M)$ ist die Abhängigkeit linear.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Drallsatz: $M = J \\cdot \\alpha$ (Rotationsanalog zu $F = ma$)": Eine Schwungscheibe ($J = 2{,}5\\,\\text{kg}\\cdot\\text{m}^2$) wird aus der Ruhe in $t = 4\\,\\text{s}$ auf $n = 600\\,\\text{U/min}$ gebracht. Welches konstante Drehmoment ist dafür nötig? (auf ganze Nm)',
+        39, 1, 'Nm',
+        `**Ansatz:** Konstantes Moment ⇒ konstante Winkelbeschleunigung. Erst $\\omega_\\text{end}$ in rad/s umrechnen, dann $\\alpha = \\Delta\\omega/\\Delta t$, dann $M = J\\alpha$.
+
+**Rechnung:** $\\omega = 2\\pi n/60 = 2\\pi\\cdot 600/60 = 20\\pi \\approx 62{,}83\\,\\text{rad/s}$. $\\alpha = 62{,}83/4 \\approx 15{,}71\\,\\text{rad/s}^2$. $M = 2{,}5 \\cdot 15{,}71 \\approx 39{,}27\\,\\text{Nm} \\approx 39\\,\\text{Nm}$.
+
+**Probe:** Umgekehrt: Bei $M = 39{,}27$ Nm ist $\\alpha = 39{,}27/2{,}5 = 15{,}71\\,\\text{rad/s}^2$ und nach 4 s ist $\\omega = 4\\cdot 15{,}71 = 62{,}83\\,\\text{rad/s}$ = 600 U/min. ✓
+
+**Typischer Fehler:** $n$ in U/min direkt in den Drallsatz einsetzen — Faktor $2\\pi/60$ zur Umrechnung in rad/s vergessen. Dann wäre $M$ um Faktor $\\approx 9{,}55$ zu klein.`,
+        [
+          'Drehzahl in rad/s: $\\omega = 2\\pi n/60$.',
+          'Gleichförmige Winkelbeschleunigung: $\\alpha = \\Delta\\omega/\\Delta t$.',
+          'Drallsatz: $M = J\\alpha$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Drallsatz: $M = J \\cdot \\alpha$ (Rotationsanalog zu $F = ma$)": Im Drallsatz $M = J\\alpha$ entspricht das Trägheitsmoment $J$ dem Rotationsanalog zur **Masse** $m$ aus $F = ma$.',
+        true,
+        `**Ansatz:** Die Gegenüberstellung Translation ↔ Rotation: $F \\leftrightarrow M$, $m \\leftrightarrow J$, $a \\leftrightarrow \\alpha$, $v \\leftrightarrow \\omega$, $p = mv \\leftrightarrow L = J\\omega$.
+
+**Rechnung:** Die Masse misst Translationsträgheit (Widerstand gegen lineare Beschleunigung), das Trägheitsmoment misst Rotationsträgheit (Widerstand gegen Winkelbeschleunigung). Beide stehen an derselben Stelle in ihren Bewegungsgesetzen.
+
+**Probe:** Beispiel: Zwei Scheiben gleicher Masse, eine mit konzentrierter Masse (klein $J$), eine mit Masse am Rand (groß $J$). Bei gleichem Moment wird die mit großem $J$ langsamer beschleunigt — wie die schwerere Masse bei $F = ma$.
+
+**Typischer Fehler:** $J$ mit der Masse gleichsetzen — ist nicht dasselbe. $J$ hängt zusätzlich von der Massenverteilung (Abstand zur Drehachse) ab: $J = \\sum m_i r_i^2$.`,
+        [
+          'Schreibe beide Gesetze untereinander: $F = ma$ und $M = J\\alpha$.',
+          'Welche Größen stehen an den gleichen Plätzen?',
+          '$F$↔$M$, $m$↔$J$, $a$↔$\\alpha$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Drallsatz: $M = J \\cdot \\alpha$ (Rotationsanalog zu $F = ma$)": Ordne jeder Translationsgröße das passende Rotationsanalog zu.',
+        [
+          { left: 'Masse $m$', right: 'Trägheitsmoment $J$' },
+          { left: 'Kraft $F$', right: 'Drehmoment $M$' },
+          { left: 'Beschleunigung $a$', right: 'Winkelbeschleunigung $\\alpha$' },
+          { left: 'Impuls $p = mv$', right: 'Drehimpuls $L = J\\omega$' },
+          { left: 'kinetische Energie $\\tfrac{1}{2}mv^2$', right: 'Rotationsenergie $\\tfrac{1}{2}J\\omega^2$' },
+        ],
+        `**Ansatz:** Die Translations-/Rotations-Analogie ist direkt und systematisch: alles mit Masse wird zu Trägheitsmoment, alles mit Geschwindigkeit zu Winkelgeschwindigkeit, Kraft zu Moment.
+
+**Rechnung:** $F = ma \\leftrightarrow M = J\\alpha$. $p = mv \\leftrightarrow L = J\\omega$. $E_\\text{kin} = \\tfrac{1}{2}mv^2 \\leftrightarrow E_\\text{rot} = \\tfrac{1}{2}J\\omega^2$. $W = Fs \\leftrightarrow W = M\\varphi$.
+
+**Probe:** Jede Gleichung auf der rechten Seite lässt sich durch Einsetzen der linken Analoga wiederherstellen — die Struktur ist identisch.
+
+**Typischer Fehler:** $L = m\\omega$ (Masse statt Trägheitsmoment) oder $E_\\text{rot} = \\tfrac{1}{2}J\\alpha^2$ (Winkelbeschleunigung statt -geschwindigkeit). Die Analogie $a \\leftrightarrow \\alpha$ ist nur für die Bewegungsgleichung, **nicht** für Energie oder Impuls.`,
+        [
+          'Translation hat: $m$, $v$, $a$, $F$, $p = mv$.',
+          'Rotation hat die gleichen Rollen mit: $J$, $\\omega$, $\\alpha$, $M$, $L$.',
+          'Bei Energie/Impuls steht die **Geschwindigkeit** drin, nicht die Beschleunigung.',
+        ],
+      ),
+    ],
+
+    // ── [1] Standardträgheitsmomente: Vollzylinder ½mR², Stab mL²/12 ──
+    1: [
+      ni(
+        'Sub-Goal "Standardträgheitsmomente: Vollzylinder $\\tfrac{1}{2}mR^2$, Stab $\\tfrac{1}{12}mL^2$": Vollzylinder, $m = 4\\,\\text{kg}$, $R = 0{,}2\\,\\text{m}$. Bestimme das Massenträgheitsmoment um die Längsachse.',
+        0.08, 0.001, 'kg·m²',
+        `**Ansatz:** Vollzylinder um die eigene Längsachse (Symmetrieachse): $J = \\tfrac{1}{2}mR^2$.
+
+**Rechnung:** $R^2 = 0{,}04\\,\\text{m}^2$. $J = \\tfrac{1}{2}\\cdot 4 \\cdot 0{,}04 = 2 \\cdot 0{,}04 = 0{,}08\\,\\text{kg}\\cdot\\text{m}^2$.
+
+**Probe:** Einheiten: $\\text{kg} \\cdot \\text{m}^2$. ✓ Größenordnung plausibel (kleine Rolle mit 4 kg und 20 cm Radius).
+
+**Typischer Fehler:** $R$ statt $R^2$ einsetzen: $\\tfrac{1}{2}\\cdot 4\\cdot 0{,}2 = 0{,}4$ — Faktor $5$ zu groß, Einheit fehlerhaft. Oder Faktor $\\tfrac{1}{2}$ vergessen (Hohlzylinder-Formel $mR^2$ angewandt).`,
+        [
+          'Vollzylinder: $J = \\tfrac{1}{2}mR^2$.',
+          'Quadriere zuerst den Radius.',
+          '$\\tfrac{1}{2}\\cdot 4 \\cdot 0{,}04$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Standardträgheitsmomente: Vollzylinder $\\tfrac{1}{2}mR^2$, Stab $\\tfrac{1}{12}mL^2$": Ein Vollzylinder wird bei gleicher Masse mit **doppeltem** Radius gefertigt. Um welchen Faktor ändert sich $J$?',
+        [
+          'Faktor $2$',
+          'Faktor $4$',
+          'Faktor $\\sqrt{2}$',
+          'Faktor $8$',
+        ],
+        1,
+        `**Ansatz:** $J = \\tfrac{1}{2}mR^2$ hängt **quadratisch** von $R$ ab (bei festem $m$).
+
+**Rechnung:** $R \\to 2R$ ⇒ $R^2 \\to 4R^2$ ⇒ $J \\to 4J$.
+
+**Probe:** Anschaulich: Die Masse liegt im Mittel weiter außen — jedes Teilchen trägt mit $r^2$ zur Trägheit bei, also dominiert der quadratische Effekt des Radius.
+
+**Typischer Fehler:** Linear rechnen (Faktor 2) oder mit Volumen argumentieren ($V \\propto R^2$, aber hier ist $m$ fest, also greift die Volumenänderung nicht).`,
+        [
+          '$J = \\tfrac{1}{2}mR^2$ — welche Potenz steht bei $R$?',
+          'Quadratische Abhängigkeit.',
+          '$R \\to 2R$ ⇒ $R^2 \\to 4R^2$.',
+        ],
+        {
+          0: 'Linear wäre es, wenn $J \\propto R$. Die Formel enthält aber $R^2$ — die Abhängigkeit ist quadratisch.',
+          2: '$\\sqrt{2}$ erscheint bei Wurzelzusammenhängen (etwa bei $\\omega_0 \\propto \\sqrt{1/m}$). Hier ist $J$ eine Potenz, keine Wurzel.',
+          3: 'Faktor $8$ entspricht $R^3$ (Volumen bei festem Material). $J$ skaliert nur mit $R^2$, weil $m$ laut Aufgabe konstant ist.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Standardträgheitsmomente: Vollzylinder $\\tfrac{1}{2}mR^2$, Stab $\\tfrac{1}{12}mL^2$": Dünner Stab, $m = 6\\,\\text{kg}$, $L = 2\\,\\text{m}$. Trägheitsmoment **um die Schwerpunktachse** senkrecht zum Stab?',
+        2, 0.01, 'kg·m²',
+        `**Ansatz:** Stab um Schwerpunkt-Querachse: $J_S = \\tfrac{1}{12}mL^2$. Der Faktor $\\tfrac{1}{12}$ unterscheidet sich vom Stab-am-Ende-Wert $\\tfrac{1}{3}mL^2$.
+
+**Rechnung:** $L^2 = 4\\,\\text{m}^2$. $J_S = \\tfrac{1}{12}\\cdot 6 \\cdot 4 = 24/12 = 2\\,\\text{kg}\\cdot\\text{m}^2$.
+
+**Probe:** Stab am Ende wäre $J_E = \\tfrac{1}{3}mL^2 = 8\\,\\text{kg}\\cdot\\text{m}^2$ — also $4\\times$ größer. Konsistent mit Steiner: $J_E = J_S + m(L/2)^2 = 2 + 6 = 8$. ✓
+
+**Typischer Fehler:** Formel für Stab-am-Ende ($\\tfrac{1}{3}mL^2$) benutzen statt Schwerpunktformel ($\\tfrac{1}{12}mL^2$). Ergebnis wäre um Faktor $4$ zu groß.`,
+        [
+          'Stab um Schwerpunkt: Faktor $\\tfrac{1}{12}$.',
+          'Stab am Ende: Faktor $\\tfrac{1}{3}$ — hier nicht gefragt.',
+          '$\\tfrac{1}{12}\\cdot 6 \\cdot 4$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Standardträgheitsmomente: Vollzylinder $\\tfrac{1}{2}mR^2$, Stab $\\tfrac{1}{12}mL^2$": Bei **gleicher** Masse und gleichem Außenradius hat ein **Hohlzylinder** (dünne Schale) das gleiche Trägheitsmoment um die Längsachse wie ein **Vollzylinder**.',
+        false,
+        `**Ansatz:** Vollzylinder: $J = \\tfrac{1}{2}mR^2$. Dünner Hohlzylinder (Masse am Radius $R$): $J = mR^2$. Verhältnis $2:1$.
+
+**Rechnung:** Bei gleicher Masse trägt im Vollzylinder ein Teil der Masse bei kleinem $r$ (geringer Beitrag $r^2$), im Hohlzylinder liegt die gesamte Masse bei $r = R$ (maximaler Beitrag).
+
+**Probe:** $J_\\text{Voll}/J_\\text{Hohl} = \\tfrac{1}{2}$ — Vollzylinder hat halb so großes $J$ wie die dünne Hohlzylinderschale.
+
+**Typischer Fehler:** Den Faktor $\\tfrac{1}{2}$ pauschal auf "zylindrische Körper" übertragen. Der Faktor kommt aus der Integration über die radiale Massenverteilung und gilt nur für den Vollzylinder.`,
+        [
+          'Vollzylinder: $\\tfrac{1}{2}mR^2$. Dünner Hohlzylinder: $mR^2$.',
+          'Masse nahe Achse trägt weniger zu $J$ bei.',
+          'Hohlzylinder hat Masse am Rand — maximaler Hebel.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Standardträgheitsmomente: Vollzylinder $\\tfrac{1}{2}mR^2$, Stab $\\tfrac{1}{12}mL^2$": Ordne jedem Körper die richtige Formel für das Massenträgheitsmoment um die angegebene Achse zu.',
+        [
+          { left: 'Vollzylinder, Längsachse', right: '$\\tfrac{1}{2}mR^2$' },
+          { left: 'Dünner Hohlzylinder (Schale), Längsachse', right: '$mR^2$' },
+          { left: 'Stab, Querachse durch Schwerpunkt', right: '$\\tfrac{1}{12}mL^2$' },
+          { left: 'Stab, Querachse am Ende', right: '$\\tfrac{1}{3}mL^2$' },
+          { left: 'Vollkugel, Achse durch Schwerpunkt', right: '$\\tfrac{2}{5}mR^2$' },
+        ],
+        `**Ansatz:** Standardträgheitsmomente aus der Formelsammlung abrufen. Die Vorfaktoren sind verteilungsabhängig (wie liegt die Masse relativ zur Achse).
+
+**Rechnung:** Herleitung per Integration $J = \\int r^2\\,dm$. Vollzylinder hat Faktor $\\tfrac{1}{2}$, dünner Hohlzylinder $1$ (ganze Masse auf $r = R$), Stab am Schwerpunkt $\\tfrac{1}{12}$, am Ende $\\tfrac{1}{3}$ (Steiner-Differenz $m(L/2)^2 = \\tfrac{1}{4}mL^2$), Vollkugel $\\tfrac{2}{5}$.
+
+**Probe:** Je weiter die Masse im Mittel von der Achse entfernt liegt, desto größer der Vorfaktor. Vollkugel $\\tfrac{2}{5} = 0{,}4$, Vollzylinder $0{,}5$, Hohlzylinder $1$. ✓
+
+**Typischer Fehler:** Stab-Formel verwechseln ($\\tfrac{1}{12}$ vs. $\\tfrac{1}{3}$) oder den Faktor bei der Kugel mit dem Zylinderfaktor verwechseln. Immer fragen: **welche Achse?**`,
+        [
+          'Jede Formel hat einen geometrischen Vorfaktor.',
+          'Stab am Schwerpunkt vs. am Ende unterscheiden.',
+          'Vollkugel $\\tfrac{2}{5}$ — kleinster Vorfaktor.',
+        ],
+      ),
+    ],
+
+    // ── [2] Steiner: J_A = J_S + m·d² ──────────────────────────────────
+    2: [
+      ni(
+        'Sub-Goal "Steinerscher Anteil: $J_A = J_S + m d^2$ (Parallelachsenverschiebung)": Ein dünner Stab ($m = 4\\,\\text{kg}$, $L = 1\\,\\text{m}$) rotiert um eine Querachse am **Stabende**. Wie groß ist das Trägheitsmoment? (auf 3 Nachkommastellen)',
+        1.333, 0.005, 'kg·m²',
+        `**Ansatz:** Schwerpunktträgheitsmoment + Steinerscher Anteil. $J_S = \\tfrac{1}{12}mL^2$, Abstand Schwerpunkt–Endachse: $d = L/2$.
+
+**Rechnung:** $J_S = \\tfrac{1}{12}\\cdot 4 \\cdot 1 = 0{,}333\\,\\text{kg}\\cdot\\text{m}^2$. $d^2 = 0{,}25\\,\\text{m}^2$. Steineranteil $m d^2 = 4 \\cdot 0{,}25 = 1{,}0\\,\\text{kg}\\cdot\\text{m}^2$. $J_E = 0{,}333 + 1{,}0 = 1{,}333\\,\\text{kg}\\cdot\\text{m}^2$.
+
+**Probe:** Die Standardformel für Stab am Ende ist $J_E = \\tfrac{1}{3}mL^2 = 4/3 \\approx 1{,}333\\,\\text{kg}\\cdot\\text{m}^2$. ✓ Identisch — Steiner liefert die Formel automatisch.
+
+**Typischer Fehler:** $d = L$ statt $d = L/2$ einsetzen — der Abstand läuft vom **Schwerpunkt** zur Parallelachse, nicht von Ende zu Ende.`,
+        [
+          'Schwerpunkt liegt in der Stabmitte: $d = L/2$.',
+          'Steiner: $J_A = J_S + m d^2$.',
+          'Zur Kontrolle: Stab am Ende $= \\tfrac{1}{3}mL^2$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Steinerscher Anteil: $J_A = J_S + m d^2$ (Parallelachsenverschiebung)": Welche Voraussetzung muss erfüllt sein, damit man den Satz von Steiner $J_A = J_S + m d^2$ anwenden darf?',
+        [
+          'Die Drehachse $A$ muss durch den Schwerpunkt verlaufen.',
+          'Die Drehachse $A$ muss **parallel** zur Schwerpunktachse sein.',
+          'Der Körper muss rotationssymmetrisch sein.',
+          'Die Achse $A$ muss senkrecht zur Schwerpunktachse stehen.',
+        ],
+        1,
+        `**Ansatz:** Steiner verschiebt das Trägheitsmoment von einer Achse durch den Schwerpunkt zu einer **parallelen** Achse im Abstand $d$. Die Parallelität ist die zentrale Bedingung.
+
+**Rechnung:** Herleitung aus $J_A = \\int r_A^2\\,dm$ mit $\\vec{r}_A = \\vec{r}_S + \\vec{d}$ und $\\vec{d}$ konstant (Parallelverschiebung). Nur dann zerfällt der Integrand in $r_S^2 + 2\\vec{r}_S\\cdot\\vec{d} + d^2$, wobei das Mischglied wegen $\\int \\vec{r}_S\\,dm = 0$ (Schwerpunktdefinition) verschwindet.
+
+**Probe:** Für nicht-parallele Achsen gilt der Satz nicht — dort müsste man über den Trägheitstensor und Drehung gehen.
+
+**Typischer Fehler:** Denken, Steiner helfe bei **jeder** Achsverschiebung. Er verschiebt nur parallel — eine Drehung der Achse erfordert den Trägheitstensor.`,
+        [
+          'In $J_A = J_S + md^2$ taucht nur ein Abstand auf, keine Winkel.',
+          'Parallel vs. senkrecht — welche Geometrie?',
+          'Steiner wird oft als "Parallelachsensatz" bezeichnet.',
+        ],
+        {
+          0: 'Dann wären $A$ und die Schwerpunktachse identisch, $d = 0$ und $J_A = J_S$ — es gäbe nichts zu verschieben. Steiner ist für **andere** parallele Achsen gedacht.',
+          2: 'Rotationssymmetrie ist für Standardformeln ($\\tfrac{1}{2}mR^2$ etc.) praktisch, aber keine Voraussetzung für Steiner. Steiner gilt für beliebige starre Körper, sofern die Achsen parallel sind.',
+          3: 'Bei senkrechten Achsen liefert Steiner keine korrekte Aussage — man bräuchte eine vollständige Trägheitstensor-Transformation.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Steinerscher Anteil: $J_A = J_S + m d^2$ (Parallelachsenverschiebung)": Ein Vollzylinder ($m = 3\\,\\text{kg}$, $R = 0{,}1\\,\\text{m}$) rotiert um eine Achse, die **parallel** zur Zylinderlängsachse verläuft und im Abstand $d = 0{,}1\\,\\text{m}$ zu dieser liegt. Wie groß ist $J_A$? (auf 4 Nachkommastellen)',
+        0.045, 0.001, 'kg·m²',
+        `**Ansatz:** $J_S$ = Zylinder um Längsachse = $\\tfrac{1}{2}mR^2$. Dann Steiner: $J_A = J_S + m d^2$.
+
+**Rechnung:** $J_S = \\tfrac{1}{2}\\cdot 3 \\cdot 0{,}01 = 0{,}015\\,\\text{kg}\\cdot\\text{m}^2$. Steineranteil: $m d^2 = 3 \\cdot 0{,}01 = 0{,}03\\,\\text{kg}\\cdot\\text{m}^2$. $J_A = 0{,}015 + 0{,}03 = 0{,}045\\,\\text{kg}\\cdot\\text{m}^2$.
+
+**Probe:** Hier ist $d = R$ (Achse tangential am Mantel). Der Steineranteil $mR^2$ ist doppelt so groß wie $J_S = \\tfrac{1}{2}mR^2$. Gesamt: $J_A = \\tfrac{3}{2}mR^2 = 0{,}045$. ✓
+
+**Typischer Fehler:** $d^2$ mit $R^2$ vergessen zu addieren ($J_A = J_S$ → $0{,}015$, Steineranteil ignoriert). Oder $d$ linear statt quadratisch eingehen lassen.`,
+        [
+          'Erst $J_S$ (Vollzylinder): $\\tfrac{1}{2}mR^2$.',
+          'Steiner: $+ m d^2$.',
+          '$0{,}015 + 0{,}03$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Steinerscher Anteil: $J_A = J_S + m d^2$ (Parallelachsenverschiebung)": Das Trägheitsmoment um eine beliebige Achse parallel zur Schwerpunktachse ist **immer mindestens so groß** wie das Trägheitsmoment um die Schwerpunktachse selbst.',
+        true,
+        `**Ansatz:** $J_A = J_S + m d^2$. Da $m > 0$ und $d^2 \\geq 0$ gilt $m d^2 \\geq 0$. Also $J_A \\geq J_S$, mit Gleichheit nur bei $d = 0$.
+
+**Rechnung:** $J_A - J_S = m d^2 \\geq 0$. Strikte Ungleichheit, sobald die Achse nicht durch den Schwerpunkt geht.
+
+**Probe:** Anschaulich: Je weiter die Drehachse vom Schwerpunkt weg liegt, desto mehr Masse "weit draußen" und umso träger die Rotation. Schwerpunktachse ist das **Minimum** aller parallelen Trägheitsmomente.
+
+**Typischer Fehler:** Denken, eine andere Achse könne die Rotation "leichter" machen. Nein — die Schwerpunktachse ist unter allen Parallelachsen die günstigste.`,
+        [
+          'Steiner addiert $m d^2 \\geq 0$.',
+          'Also $J_A \\geq J_S$.',
+          'Gleichheit nur bei $d = 0$ (Achse durch Schwerpunkt).',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Steinerscher Anteil: $J_A = J_S + m d^2$ (Parallelachsenverschiebung)": Bringe die Rechenschritte zur Berechnung des Trägheitsmoments um eine Parallelachse in die richtige Reihenfolge.',
+        [
+          'Massenträgheitsmoment um Schwerpunktachse $J_S$ aus der Formelsammlung nachschlagen',
+          'Prüfen: Ist die gesuchte Achse parallel zur Schwerpunktachse?',
+          'Abstand $d$ zwischen beiden Achsen bestimmen',
+          'Steineranteil $m d^2$ berechnen',
+          'Trägheitsmoment addieren: $J_A = J_S + m d^2$',
+        ],
+        [1, 0, 2, 3, 4],
+        `**Ansatz:** Reihenfolge: **erst** Parallelität prüfen (Voraussetzung), **dann** $J_S$ und Geometrie, **dann** Rechnung.
+
+**Rechnung:** (1) Parallelitätscheck — sonst gilt Steiner nicht. (2) $J_S$ nachschlagen. (3) Abstand $d$ zwischen den Achsen. (4) Produkt $m d^2$. (5) Summe.
+
+**Probe:** Wenn Schritt 1 fehlschlägt (Achsen nicht parallel), darf man den Satz nicht anwenden und müsste den Trägheitstensor bemühen. Deshalb steht er ganz vorn.
+
+**Typischer Fehler:** Direkt ohne Prüfung rechnen und $J_A$ auch für schräge Achsen mit Steiner berechnen.`,
+        [
+          'Voraussetzungen kommen vor der Rechnung.',
+          'Formelsammlung und Geometrie sind separate Schritte.',
+          'Ganz am Ende: addieren.',
+        ],
+      ),
+    ],
+
+    // ── [3] Rotationsenergie E_rot = ½ J ω² ────────────────────────────
+    3: [
+      ni(
+        'Sub-Goal "Rotationsenergie: $E_{\\text{rot}} = \\tfrac{1}{2} J \\omega^2$": Ein Rotor mit $J = 0{,}5\\,\\text{kg}\\cdot\\text{m}^2$ dreht sich mit $\\omega = 10\\,\\text{rad/s}$. Wie groß ist die Rotationsenergie?',
+        25, 0.1, 'J',
+        `**Ansatz:** $E_\\text{rot} = \\tfrac{1}{2} J \\omega^2$ — formal identisch zu $E_\\text{kin} = \\tfrac{1}{2} m v^2$.
+
+**Rechnung:** $\\omega^2 = 100\\,\\text{rad}^2/\\text{s}^2$. $E = 0{,}5 \\cdot 0{,}5 \\cdot 100 = 25\\,\\text{J}$.
+
+**Probe:** Einheiten: $\\text{kg}\\cdot\\text{m}^2 \\cdot (1/\\text{s})^2 = \\text{kg}\\cdot\\text{m}^2/\\text{s}^2 = \\text{J}$. ✓
+
+**Typischer Fehler:** $\\omega$ linear einsetzen ($E = \\tfrac{1}{2}J\\omega = 2{,}5$) — Quadratvergessen. Oder Faktor $\\tfrac{1}{2}$ vergessen.`,
+        [
+          'Rotationsenergie: $\\tfrac{1}{2}J\\omega^2$.',
+          'Zuerst $\\omega$ quadrieren.',
+          '$0{,}5 \\cdot 0{,}5 \\cdot 100 = 25$ J.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Rotationsenergie: $E_{\\text{rot}} = \\tfrac{1}{2} J \\omega^2$": Die Winkelgeschwindigkeit eines Schwungrads wird **verdoppelt**. Wie ändert sich seine Rotationsenergie?',
+        [
+          'verdoppelt sich',
+          'vervierfacht sich',
+          'bleibt gleich',
+          'wird um $\\sqrt{2}$ größer',
+        ],
+        1,
+        `**Ansatz:** $E_\\text{rot} = \\tfrac{1}{2}J\\omega^2$ — Energie hängt **quadratisch** von $\\omega$ ab.
+
+**Rechnung:** $\\omega \\to 2\\omega$ ⇒ $\\omega^2 \\to 4\\omega^2$ ⇒ $E \\to 4E$.
+
+**Probe:** Anschaulich — gleicher Effekt wie beim Auto: doppelte Geschwindigkeit → vierfache kinetische Energie → vierfacher Bremsweg.
+
+**Typischer Fehler:** Linear rechnen (Faktor 2) oder mit Drehimpuls verwechseln — $L = J\\omega$ skaliert tatsächlich linear.`,
+        [
+          'In $\\tfrac{1}{2}J\\omega^2$ steht $\\omega$ in welcher Potenz?',
+          'Quadratisch!',
+          '$(2\\omega)^2 = 4\\omega^2$.',
+        ],
+        {
+          0: 'Linear wäre es bei $L = J\\omega$ (Drehimpuls). Bei Energie steckt $\\omega$ im Quadrat.',
+          2: 'Die Aufgabe ändert aktiv $\\omega$ — die Energie ändert sich entsprechend quadratisch. „Bleibt gleich" würde $\\omega$-Unabhängigkeit voraussetzen.',
+          3: '$\\sqrt{2}$ wäre der Effekt bei $\\omega \\to \\sqrt{2}\\omega$. Die Aufgabe verdoppelt $\\omega$ direkt.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Rotationsenergie: $E_{\\text{rot}} = \\tfrac{1}{2} J \\omega^2$": Ein Schwungrad (Vollzylinder, $m = 10\\,\\text{kg}$, $R = 0{,}3\\,\\text{m}$) rotiert mit $n = 3000\\,\\text{U/min}$. Wieviel Energie ist gespeichert? (auf ganze J)',
+        22207, 50, 'J',
+        `**Ansatz:** Erst $J = \\tfrac{1}{2}mR^2$, dann $\\omega = 2\\pi n/60$, dann $E = \\tfrac{1}{2}J\\omega^2$.
+
+**Rechnung:** $J = \\tfrac{1}{2}\\cdot 10 \\cdot 0{,}09 = 0{,}45\\,\\text{kg}\\cdot\\text{m}^2$. $\\omega = 2\\pi\\cdot 3000/60 = 100\\pi \\approx 314{,}159\\,\\text{rad/s}$. $\\omega^2 \\approx 98\\,696$. $E = \\tfrac{1}{2}\\cdot 0{,}45 \\cdot 98\\,696 \\approx 22\\,207\\,\\text{J}$.
+
+**Probe:** Überschlag: $\\omega \\approx 300\\,\\text{rad/s}$, $\\omega^2 \\approx 9\\cdot 10^4$, $E \\approx 0{,}5 \\cdot 0{,}45 \\cdot 9\\cdot 10^4 \\approx 2{,}0\\cdot 10^4\\,\\text{J}$. ✓ Energie reicht für starken elektrischen Impuls.
+
+**Typischer Fehler:** Drehzahl $n$ direkt statt $\\omega$ einsetzen — Ergebnis wäre Faktor $(2\\pi/60)^2 \\approx 0{,}011$ zu klein. Oder den Faktor $\\tfrac{1}{2}$ zweimal ($J$ und $E$) zusammenziehen und durcheinanderbringen.`,
+        [
+          'Vollzylinder: $J = \\tfrac{1}{2}mR^2$.',
+          '$\\omega = 2\\pi n/60$ (Umrechnung U/min → rad/s).',
+          '$E = \\tfrac{1}{2}J\\omega^2$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Rotationsenergie: $E_{\\text{rot}} = \\tfrac{1}{2} J \\omega^2$": Bei einem reinen Rollvorgang (Zylinder rollt schlupffrei eine Ebene hinunter) wandelt sich die potenzielle Energie **ausschließlich** in translatorische kinetische Energie $\\tfrac{1}{2}mv^2$ um.',
+        false,
+        `**Ansatz:** Ein rollender Körper besitzt sowohl Translations- als auch Rotationsenergie: $E_\\text{kin,ges} = \\tfrac{1}{2}mv^2 + \\tfrac{1}{2}J\\omega^2$. Beim schlupffreien Rollen ist $v = R\\omega$.
+
+**Rechnung:** Für den Vollzylinder ($J = \\tfrac{1}{2}mR^2$): $E_\\text{rot} = \\tfrac{1}{2}\\cdot\\tfrac{1}{2}mR^2\\cdot(v/R)^2 = \\tfrac{1}{4}mv^2$. Gesamt $\\tfrac{3}{4}mv^2$, davon ein Drittel Rotationsenergie — **nicht** vernachlässigbar.
+
+**Probe:** Rollt ein Zylinder aus Höhe $h$: $mgh = \\tfrac{3}{4}mv^2$ ⇒ $v = \\sqrt{4gh/3}$ — langsamer als der freie Fall $\\sqrt{2gh}$. Die Differenz steckt in der Rotation.
+
+**Typischer Fehler:** Ausschließlich $mgh = \\tfrac{1}{2}mv^2$ ansetzen und Rotation ignorieren — liefert eine zu hohe Endgeschwindigkeit.`,
+        [
+          'Ein rollender Körper hat zwei kinetische Energien.',
+          'Koppelung: $v = R\\omega$.',
+          'Energieerhaltung: $mgh = \\tfrac{1}{2}mv^2 + \\tfrac{1}{2}J\\omega^2$.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Rotationsenergie: $E_{\\text{rot}} = \\tfrac{1}{2} J \\omega^2$": Bringe die Schritte zur Berechnung der Rotationsenergie eines Schwungrads (gegeben: $m$, $R$, $n$) in die richtige Reihenfolge.',
+        [
+          'Trägheitsmoment berechnen: $J = \\tfrac{1}{2}mR^2$ (Vollzylinder)',
+          'Drehzahl $n$ in rad/s umrechnen: $\\omega = 2\\pi n/60$',
+          '$\\omega$ quadrieren',
+          'Rotationsenergie: $E = \\tfrac{1}{2} J \\omega^2$',
+          'Einheiten prüfen: Ergebnis in Joule',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Aufbau von innen nach außen. Zuerst die physikalischen Größen, dann der Ausdruck, zuletzt die Prüfung.
+
+**Rechnung:** (1) $J$ aus Geometrie/Masse. (2) $\\omega$ aus Drehzahl. (3) $\\omega^2$ als Zwischenergebnis — oft Quelle von Fehlern, daher eigener Schritt. (4) Einsetzen. (5) Einheiten-Check.
+
+**Probe:** Jeder Zwischenschritt ist numerisch prüfbar: $J$ in $\\text{kg}\\cdot\\text{m}^2$, $\\omega$ in rad/s, $\\omega^2$ in $\\text{rad}^2/\\text{s}^2$, $E$ in $\\text{J} = \\text{kg}\\cdot\\text{m}^2/\\text{s}^2$. ✓
+
+**Typischer Fehler:** Einheiten-Check vergessen oder direkt mit U/min arbeiten.`,
+        [
+          'Physikalische Größen (J und ω) zuerst.',
+          'Einheitenumrechnung vor der Endrechnung.',
+          'Prüfung am Schluss.',
+        ],
+      ),
+    ],
+
+    // ── [4] Drehimpuls L = J ω, Erhaltung bei M_ext = 0 ────────────────
+    4: [
+      ni(
+        'Sub-Goal "Drehimpuls: $L = J \\omega$, Erhaltung bei $M_{\\text{ext}} = 0$": Eine Schwungscheibe hat $J = 2\\,\\text{kg}\\cdot\\text{m}^2$ und dreht sich mit $\\omega = 15\\,\\text{rad/s}$. Wie groß ist der Drehimpuls?',
+        30, 0.1, 'kg·m²/s',
+        `**Ansatz:** Drehimpuls: $L = J\\omega$ (Rotationsanalog zu $p = mv$).
+
+**Rechnung:** $L = 2 \\cdot 15 = 30\\,\\text{kg}\\cdot\\text{m}^2/\\text{s}$.
+
+**Probe:** Einheiten: $\\text{kg}\\cdot\\text{m}^2 \\cdot \\text{s}^{-1} = \\text{kg}\\cdot\\text{m}^2/\\text{s}$ = $\\text{N}\\cdot\\text{m}\\cdot\\text{s}$. ✓
+
+**Typischer Fehler:** Rotationsenergie $\\tfrac{1}{2}J\\omega^2 = 225\\,\\text{J}$ statt Drehimpuls ausrechnen. $L$ ist **linear** in $\\omega$, $E_\\text{rot}$ ist **quadratisch**.`,
+        [
+          '$L = J\\omega$.',
+          'Direkte Multiplikation, kein Quadrat.',
+          '$2 \\cdot 15 = 30$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Drehimpuls: $L = J \\omega$, Erhaltung bei $M_{\\text{ext}} = 0$": Eine Eiskunstläuferin dreht mit $\\omega_1 = 2\\,\\text{rad/s}$ und $J_1 = 6\\,\\text{kg}\\cdot\\text{m}^2$ (ausgestreckte Arme). Sie zieht die Arme an, neues $J_2 = 2\\,\\text{kg}\\cdot\\text{m}^2$. Mit welcher Winkelgeschwindigkeit dreht sie dann?',
+        [
+          '$2\\,\\text{rad/s}$',
+          '$6\\,\\text{rad/s}$',
+          '$12\\,\\text{rad/s}$',
+          '$\\tfrac{2}{3}\\,\\text{rad/s}$',
+        ],
+        1,
+        `**Ansatz:** Ohne äußeres Moment (Reibung auf dem Eis gering) bleibt der Drehimpuls erhalten: $J_1\\omega_1 = J_2\\omega_2$.
+
+**Rechnung:** $\\omega_2 = J_1\\omega_1/J_2 = 6\\cdot 2/2 = 6\\,\\text{rad/s}$.
+
+**Probe:** Drehimpuls vorher: $L_1 = 12$. Drehimpuls nachher: $L_2 = 2 \\cdot 6 = 12$. ✓ Energie dagegen steigt: $E_1 = \\tfrac{1}{2}\\cdot 6\\cdot 4 = 12\\,\\text{J}$, $E_2 = \\tfrac{1}{2}\\cdot 2\\cdot 36 = 36\\,\\text{J}$ — die zusätzliche Energie kommt aus der Muskelarbeit beim Arme-Anziehen.
+
+**Typischer Fehler:** $\\omega_2 = \\omega_1$ (Denken, dass Winkelgeschwindigkeit konstant bleibt) oder $\\omega_2 = J_2\\omega_1/J_1$ (Verhältnis umgedreht). Merksatz: **kleineres** $J$ ⇒ **größeres** $\\omega$.`,
+        [
+          'Bei $M_\\text{ext} = 0$ gilt $L = \\text{const}$.',
+          '$J_1\\omega_1 = J_2\\omega_2$.',
+          'Verhältnis $J_1/J_2 = 3$ ⇒ $\\omega$ wird $3\\times$ größer.',
+        ],
+        {
+          0: 'Wenn sich $J$ ändert, ändert sich auch $\\omega$ — sonst wäre der Drehimpuls nicht erhalten.',
+          2: 'Faktor $6$ wäre richtig, wenn $J_1 \\cdot \\omega_1 = 12$ und $J_2 = 1$. Hier ist $J_2 = 2$, also $\\omega_2 = 12/2 = 6$, nicht $12$.',
+          3: 'Das Verhältnis ist vertauscht — man hat $J_2/J_1$ statt $J_1/J_2$ gerechnet. Kleineres $J$ muss größeres $\\omega$ erzeugen.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Drehimpuls: $L = J \\omega$, Erhaltung bei $M_{\\text{ext}} = 0$": Wenn die Summe aller äußeren Drehmomente null ist, bleibt der Drehimpuls eines Systems **betrags- und richtungsmäßig** konstant.',
+        true,
+        `**Ansatz:** Drallsatz in Vektorform: $\\vec{M}_\\text{ext} = d\\vec{L}/dt$. Aus $\\vec{M}_\\text{ext} = \\vec{0}$ folgt $d\\vec{L}/dt = \\vec{0}$, also $\\vec{L} = \\text{const}$.
+
+**Rechnung:** Beides, Betrag $|L|$ und Richtung $\\vec{L}/|L|$, bleiben erhalten — deshalb taumelt ein freier Kreisel stabil um seine Drehachse.
+
+**Probe:** Anwendungsbeispiele: Eiskunstläuferin (Betragserhalt bei wechselndem $J$), Kreiselkompass (Richtungserhalt), Planetenbahnen (Flächensatz folgt aus $L$-Erhaltung).
+
+**Typischer Fehler:** Nur den **Betrag** als erhalten ansehen. Drehimpuls ist ein Vektor — die Richtung ist ebenfalls fixiert (bei $M_\\text{ext} = 0$).`,
+        [
+          'Drehimpuls ist eine **vektorielle** Erhaltungsgröße.',
+          'Drallsatz: $d\\vec{L}/dt = \\vec{M}_\\text{ext}$.',
+          'Null Moment ⇒ $\\vec{L}$ konstant (Betrag und Richtung).',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Drehimpuls: $L = J \\omega$, Erhaltung bei $M_{\\text{ext}} = 0$": Zwei Drehplattformen: Plattform 1 ($J_1 = 4\\,\\text{kg}\\cdot\\text{m}^2$, $\\omega_1 = 5\\,\\text{rad/s}$) wird auf Plattform 2 ($J_2 = 1\\,\\text{kg}\\cdot\\text{m}^2$, anfangs in Ruhe) abgesetzt und koppelt reibungsschlüssig. Welche gemeinsame Winkelgeschwindigkeit stellt sich ein?',
+        4, 0.01, 'rad/s',
+        `**Ansatz:** Inelastischer „Rotationsstoß" — Drehimpuls ist erhalten ($M_\\text{ext} = 0$, reine innere Reibung): $J_1\\omega_1 + J_2\\cdot 0 = (J_1 + J_2)\\omega$.
+
+**Rechnung:** $L_\\text{vor} = 4 \\cdot 5 = 20\\,\\text{kg}\\cdot\\text{m}^2/\\text{s}$. Gesamttrageisheit: $J_\\text{ges} = 5\\,\\text{kg}\\cdot\\text{m}^2$. $\\omega = 20/5 = 4\\,\\text{rad/s}$.
+
+**Probe:** $L_\\text{nach} = 5 \\cdot 4 = 20$. ✓ Die Rotationsenergie sinkt dagegen: $E_\\text{vor} = \\tfrac{1}{2}\\cdot 4\\cdot 25 = 50\\,\\text{J}$, $E_\\text{nach} = \\tfrac{1}{2}\\cdot 5\\cdot 16 = 40\\,\\text{J}$. Die $10\\,\\text{J}$ Energieverlust stecken in der Reibungswärme beim Koppeln.
+
+**Typischer Fehler:** Energieerhaltung ansetzen statt Drehimpulserhaltung — liefert eine falsche gemeinsame $\\omega$, weil Energie bei inelastischer Kopplung **nicht** erhalten ist.`,
+        [
+          'Inelastischer Rotationsstoß: $L$ erhalten, $E$ nicht.',
+          '$J_1\\omega_1 = (J_1 + J_2)\\omega$.',
+          '$\\omega = L_\\text{vor}/J_\\text{ges}$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Drehimpuls: $L = J \\omega$, Erhaltung bei $M_{\\text{ext}} = 0$": Ordne jedem Translationsbegriff sein Rotationsanalog zu.',
+        [
+          { left: 'Impuls $p = m v$', right: 'Drehimpuls $L = J \\omega$' },
+          { left: 'Impulserhaltung bei $\\vec{F}_\\text{ext} = 0$', right: 'Drehimpulserhaltung bei $\\vec{M}_\\text{ext} = 0$' },
+          { left: 'Kraft $\\vec{F} = d\\vec{p}/dt$', right: 'Drehmoment $\\vec{M} = d\\vec{L}/dt$' },
+          { left: 'Inelastischer Stoß: gemeinsame Geschwindigkeit', right: 'Rotationskopplung: gemeinsame Winkelgeschwindigkeit' },
+        ],
+        `**Ansatz:** Für jede translatorische Impulsaussage gibt es das Drehimpulspendant — mit $m \\to J$, $\\vec{v} \\to \\vec{\\omega}$, $\\vec{F} \\to \\vec{M}$.
+
+**Rechnung:** (1) $p = mv \\leftrightarrow L = J\\omega$. (2) $\\sum\\vec{F}_\\text{ext} = 0 \\Rightarrow \\vec{p} = \\text{const}$ analog zu $\\sum\\vec{M}_\\text{ext} = 0 \\Rightarrow \\vec{L} = \\text{const}$. (3) Dynamische Grundgleichung $\\vec{F} = d\\vec{p}/dt \\leftrightarrow \\vec{M} = d\\vec{L}/dt$. (4) Inelastischer Stoß $m_1 v_1 + m_2 v_2 = (m_1 + m_2) v_\\text{end}$ analog zu $J_1\\omega_1 + J_2\\omega_2 = (J_1 + J_2)\\omega_\\text{end}$.
+
+**Probe:** Alle Rotationsformeln entstehen durch systematisches Ersetzen — man muss sie nicht separat lernen, nur die Translation sicher beherrschen.
+
+**Typischer Fehler:** Bei $L = J\\omega$ die Masse stehen lassen und $L = m\\omega$ schreiben. Oder im inelastischen Rotationsfall die Energieerhaltung anwenden (bei inelastischem Translationsstoß ginge man ja auch über Impuls).`,
+        [
+          'Alles mit $m$ wird zu etwas mit $J$.',
+          'Alles mit $\\vec{v}$ wird zu etwas mit $\\vec{\\omega}$.',
+          'Erhaltungssätze haben dieselbe Struktur.',
+        ],
+      ),
+    ],
+
+  },
+
 }
