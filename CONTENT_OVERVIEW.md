@@ -14,12 +14,12 @@
 | Lektionen | **226** |
 | Aufgaben gesamt | **2275** |
 | &nbsp;&nbsp;· 🔘 multiple-choice | 996 |
-| &nbsp;&nbsp;· 🔢 number-input | 506 |
+| &nbsp;&nbsp;· 🔢 number-input | 507 |
 | &nbsp;&nbsp;· ✅ true-false | 346 |
 | &nbsp;&nbsp;· 🔗 matching | 229 |
-| &nbsp;&nbsp;· 📋 sorting | 198 |
+| &nbsp;&nbsp;· 📋 sorting | 197 |
 | MC mit vollständigen `wrongAnswerExplanations` | 996 / 996 (100%) |
-| Erklärungen im 4-Block-Schema (Ansatz/Rechnung/Probe/Fehler) | 364 / 2275 (16%) |
+| Erklärungen im 4-Block-Schema (Ansatz/Rechnung/Probe/Fehler) | 367 / 2275 (16%) |
 
 ## Topic-Überblick
 
@@ -53,7 +53,7 @@
 
 **Level:** Grundlagen · **Phase:** 1. Sem · **Category:** math  
 **Prerequisites:** —  
-**5 Units** · **18 Lektionen** · **183 Aufgaben** (🔘 86 · 🔢 34 · ✅ 28 · 🔗 20 · 📋 15)
+**5 Units** · **18 Lektionen** · **183 Aufgaben** (🔘 86 · 🔢 35 · ✅ 28 · 🔗 20 · 📋 14)
 
 *Rechnen, Brüche, Potenzen, Gleichungen, Funktionen — ground-up Grundlagen für alle technischen Fächer*
 
@@ -76,10 +76,10 @@
 | 3 | 🔘 multiple-choice | Berechne: $-(3 - 5)$ | wAE 4B |
 | 4 | ✅ true-false | Der Ausdruck $3 + 4 cdot 2$ ergibt $14$. | 4B |
 | 5 | 🔗 matching | Ordne jedem Ausdruck den korrekten Wert zu. | 4B |
-| 6 | 🔘 multiple-choice | Aufwärmaufgabe zu "Grundrechnen, Klammern & Vorrang": Was ist bei Gleichungen die wichtigste Regel? | ➕ wAE 4B |
-| 7 | ✅ true-false | Bei "Grundrechnen, Klammern & Vorrang" ist ein Einheiten-, Definitions- oder Annahmencheck vor dem Einsetzen in Formeln  | ➕ |
-| 8 | 🔗 matching | Ordne die Lernbausteine für "Grundrechnen, Klammern & Vorrang" richtig zu. | ➕ |
-| 9 | 📋 sorting | Bringe die Prüfungsstrategie für "Grundrechnen, Klammern & Vorrang" in die richtige Reihenfolge. | ➕ |
+| 6 | 🔘 multiple-choice | Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Berechne $5 - 2 cdot 3 + 4$. | ➕ wAE 4B |
+| 7 | 🔢 number-input | Sub-Goal "Minuszeichen vor Klammer auf alle Summanden anwenden": Berechne $7 - (4 - 9)$. | ➕ 4B |
+| 8 | ✅ true-false | Sub-Goal "Doppel-Minus aufgelöst: $(-a)(-b) = +ab$": Der Ausdruck $-(-3) cdot (-4)$ ist gleich $+12$. | ➕ 4B |
+| 9 | 🔗 matching | Sub-Goal "Klammerschachtelung von innen nach außen abarbeiten": Ordne jedem geschachtelten Ausdruck sein Ergebnis zu. | ➕ 4B |
 | 10 | 🔢 number-input | Berechne: $-2 cdot (3 - 5) + 4$ | 🎯 4B |
 
 #### Bruchrechnen sicher  `alg-0-2` · 15 min
