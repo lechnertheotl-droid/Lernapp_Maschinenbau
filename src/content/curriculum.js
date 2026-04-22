@@ -112,6 +112,24 @@ export const CURRICULUM_PHASES = [
 export const MIN_EXERCISES_PER_LESSON = 10
 
 /**
+ * QUALITÄTSZIEL pro Sub-Goal: **Mindestanzahl** eigener Aufgaben (Goal-Tasks),
+ * damit jede Teilkompetenz der Lesson mit echter Routine sitzt. Eine einzelne
+ * Aufgabe reicht nicht — Lerner:innen brauchen mehrere Variationen, die
+ * dieselbe Kompetenz aus verschiedenen Winkeln abfragen (andere Zahlen, andere
+ * Kontexte, andere Aufgabentypen, andere Fehlerquellen im Distraktor-Design).
+ *
+ * **Dies ist ausdrücklich nur die Untergrenze, kein Zielwert und kein Cap.**
+ * Wenn ein Sub-Goal besonders prüfungsrelevant oder fehleranfällig ist, sind
+ * 6, 8 oder 10 Aufgaben besser. Claude Code soll pro Sub-Goal so viele
+ * Aufgaben schreiben, wie inhaltlich noch etwas Neues beitragen — lieber eine
+ * mehr als eine zu wenig.
+ *
+ * Typen sollten sich pro Sub-Goal unterscheiden (nicht mehrmals MC für dasselbe
+ * Sub-Goal, solange andere Typen noch offen sind).
+ */
+export const MIN_TASKS_PER_SUB_GOAL = 3
+
+/**
  * TOPIC_GUIDES — pro Topic der konkrete Lernpfad.
  *
  * Felder:

@@ -100,9 +100,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2190 | — | — |
-| Aufgaben mit 4-Block | 225 (10 %) | 2190 (100 %) | 🔴 |
-| MC mit wrongAnswerExplanations | 918 / 918 (100 %) | 100 % | ✅ |
+| Aufgaben (gesamt) | 2198 | — | — |
+| Aufgaben mit 4-Block | 233 (11 %) | 2198 (100 %) | 🔴 |
+| MC mit wrongAnswerExplanations | 920 / 920 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 8 / 1134 (1 %) | 100 % | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -124,9 +124,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **197** (manuell: 112 · supplemental: 85)
-- 4-Block: 55/197 (28 %) 🔴
-- MC-wAE: 92/92 (100 %) ✅
+- Aufgaben: **205** (manuell: 112 · supplemental: 93)
+- 4-Block: 63/205 (31 %) 🔴
+- MC-wAE: 94/94 (100 %) ✅
 - Sub-Goals: 8/90 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
@@ -171,7 +171,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
-| `alg-0-1` Grundrechnen, Klammern & Vorrang | 4 | 4/4 | 10 | 3/3/2/2/0 | 10/10 | 3/3 | ✅ | — |
+| `alg-0-1` Grundrechnen, Klammern & Vorrang | 4 | 4/4 | 18 | 5/6/4/2/1 | 18/18 | 5/5 | ✅ | — |
 | `alg-0-2` Bruchrechnen sicher | 4 | 4/4 | 10 | 4/2/2/1/1 | 10/10 | 4/4 | ✅ | — |
 | `alg-0-3` Prozent & Dreisatz | 5 | 0/5 | 6 | 1/3/1/1/0 | 6/6 | 1/1 | ✅ | +5 Goal |
 | `alg-0-4` Termumformung & Gleichungen | 5 | 0/5 | 6 | 2/2/1/0/1 | 6/6 | 2/2 | ✅ | +5 Goal |
@@ -1449,7 +1449,12 @@ _Numerische Tools sind in jedem modernen Labor und in der Industrie Standard. We
 
 **Ziel:** Handgeschriebene Aufgaben in Menge ergänzen. Keine Template-Generatoren, keine Slop-Aufgaben.
 
-**Mengen-Regel:** 10 Aufgaben pro Lesson sind das **Minimum** — keine Obergrenze. Viele Aufgaben = bessere Routine. Wenn eine Lesson 7 Grund-Aufgaben hat, sind weitere 7–10 Supplements kein "zu viel", sondern gut.
+**Mengen-Regel:**
+
+- **Pro Lesson** ≥ 10 Aufgaben (Minimum, **kein Cap**).
+- **Pro Sub-Goal** ≥ 3 Aufgaben (Minimum, **kein Cap**).
+
+Der Gedanke: Wer den Stoff wirklich kann, braucht mehrere Aufgaben pro Teilkompetenz — andere Zahlen, andere Formulierung, andere Typen. Wenn ein Sub-Goal besonders prüfungsrelevant oder fehleranfällig ist, sind 5, 8 oder 10 Aufgaben besser als 3. Schreib so viele, wie inhaltlich noch etwas Neues beitragen. Lieber eine mehr als eine zu wenig.
 
 ### Qualitätsvorgaben pro Aufgabe
 
@@ -1486,15 +1491,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×2, number-input ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Sinussatz: $a/\sin\alpha = b/\sin\beta = c/\sin\gamma = 2R$ (Umkreisradius)
-  - [ ] [1] (hoch) Cosinussatz: $a^2 = b^2 + c^2 - 2bc\cos\alpha$ (verallgemeinerter Pythagoras)
-  - [ ] [2] (hoch) Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz
-  - [ ] [3] (mittel) Pythagoras als Spezialfall: $\alpha = 90° \Rightarrow \cos\alpha = 0 \Rightarrow a^2 = b^2 + c^2$
-  - [ ] [4] (hoch) Seite und Gegenwinkel gehören zusammen ($a \leftrightarrow \alpha$ usw.)
-  - [ ] [5] (mittel) SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\sin\beta$ spitz, Höhenvergleich erforderlich
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Sinussatz: $a/\sin\alpha = b/\sin\beta = c/\sin\gamma = 2R$ (Umkreisradius)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Cosinussatz: $a^2 = b^2 + c^2 - 2bc\cos\alpha$ (verallgemeinerter Pythagoras)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Pythagoras als Spezialfall: $\alpha = 90° \Rightarrow \cos\alpha = 0 \Rightarrow a^2 = b^2 + c^2$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Seite und Gegenwinkel gehören zusammen ($a \leftrightarrow \alpha$ usw.)
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\sin\beta$ spitz, Höhenvergleich erforderlich
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-5-a`
@@ -1509,14 +1515,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Bogenlänge: $L = \int_a^b \sqrt{1 + [f'(x)]^2} dx$ (Pythagoras am Differentialdreieck)
-  - [ ] [1] (hoch) Durchschnittswert: $\bar{f} = \frac{1}{b-a} \int_a^b f(x) dx$
-  - [ ] [2] (mittel) Parametrisierte Kurve $(x(t), y(t))$: $L = \int_{t_1}^{t_2} \sqrt{x'^2 + y'^2} dt$
-  - [ ] [3] (mittel) Mittelwertsatz der Integralrechnung: $\exists \xi \in [a,b]$ mit $f(\xi) = \bar{f}$
-  - [ ] [4] (mittel) Anwendung Maschinenbau: Zahnrad-Evolventen, Rohrleitungen, Seilverläufe
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Bogenlänge: $L = \int_a^b \sqrt{1 + [f'(x)]^2} dx$ (Pythagoras am Differentialdreieck)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Durchschnittswert: $\bar{f} = \frac{1}{b-a} \int_a^b f(x) dx$
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Parametrisierte Kurve $(x(t), y(t))$: $L = \int_{t_1}^{t_2} \sqrt{x'^2 + y'^2} dt$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Mittelwertsatz der Integralrechnung: $\exists \xi \in [a,b]$ mit $f(\xi) = \bar{f}$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Anwendung Maschinenbau: Zahnrad-Evolventen, Rohrleitungen, Seilverläufe
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-4-a`, `ex-int-3-4-b`
@@ -1531,14 +1538,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×1, number-input ×1, true-false ×1
 - **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, number-input, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Coulombsches Reibgesetz: $F_R = \mu F_N$
-  - [ ] [1] (hoch) Haftreibwert $\mu_0$ > Gleitreibwert $\mu$ (Losreißen braucht mehr Kraft)
-  - [ ] [2] (hoch) Auf geneigter Ebene: $F_N = mg\cos\alpha$, $F_H = mg\sin\alpha$
-  - [ ] [3] (hoch) Selbsthemmung: Körper gleitet nicht, solange $\tan\alpha \leq \mu_0$
-  - [ ] [4] (mittel) Reibwinkel $\rho = \arctan\mu$: Neigung, bei der Körper gerade zu gleiten beginnt
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Coulombsches Reibgesetz: $F_R = \mu F_N$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Haftreibwert $\mu_0$ > Gleitreibwert $\mu$ (Losreißen braucht mehr Kraft)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Auf geneigter Ebene: $F_N = mg\cos\alpha$, $F_H = mg\sin\alpha$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Selbsthemmung: Körper gleitet nicht, solange $\tan\alpha \leq \mu_0$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Reibwinkel $\rho = \arctan\mu$: Neigung, bei der Körper gerade zu gleiten beginnt
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-4-a`, `ex-mech-1-4-b`, `ex-mech-1-4-c`
@@ -1553,14 +1561,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** number-input ×2, true-false ×1
 - **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Diskrete Massen: $x_S = \sum m_i x_i / \sum m_i$
-  - [ ] [1] (hoch) Zusammengesetzte Flächen: $x_S = \sum A_i x_{S,i} / \sum A_i$
-  - [ ] [2] (hoch) Loch als negative Fläche subtrahieren
-  - [ ] [3] (mittel) Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse
-  - [ ] [4] (mittel) Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\pi)$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Diskrete Massen: $x_S = \sum m_i x_i / \sum m_i$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Zusammengesetzte Flächen: $x_S = \sum A_i x_{S,i} / \sum A_i$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Loch als negative Fläche subtrahieren
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\pi)$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-5-a`, `ex-mech-1-5-b`, `ex-mech-1-5-c`
@@ -1575,14 +1584,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Eigenkreisfrequenz: $\omega_0 = \sqrt{c/m}$, Periode $T = 2\pi/\omega_0$
-  - [ ] [1] (hoch) Harmonische Schwingung: $x(t) = A \sin(\omega_0 t + \varphi)$
-  - [ ] [2] (hoch) Resonanz bei $\Omega = \omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)
-  - [ ] [3] (hoch) Dämpfungsgrad (Lehrsches Maß) $D = d/(2\sqrt{cm})$
-  - [ ] [4] (mittel) Mathematisches Pendel: $\omega_0 = \sqrt{g/l}$ (kleine Auslenkungen)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Eigenkreisfrequenz: $\omega_0 = \sqrt{c/m}$, Periode $T = 2\pi/\omega_0$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Harmonische Schwingung: $x(t) = A \sin(\omega_0 t + \varphi)$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Resonanz bei $\Omega = \omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Dämpfungsgrad (Lehrsches Maß) $D = d/(2\sqrt{cm})$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Mathematisches Pendel: $\omega_0 = \sqrt{g/l}$ (kleine Auslenkungen)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-4-a`, `ex-mech-2-4-b`, `ex-mech-2-4-c`
@@ -1597,14 +1607,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** number-input ×3
 - **Typen einsetzen (Rotation):** multiple-choice, true-false, matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Drallsatz: $M = J \cdot \alpha$ (Rotationsanalog zu $F = ma$)
-  - [ ] [1] (hoch) Standardträgheitsmomente: Vollzylinder $\tfrac{1}{2}mR^2$, Stab $\tfrac{1}{12}mL^2$
-  - [ ] [2] (hoch) Steinerscher Anteil: $J_A = J_S + m d^2$ (Parallelachsenverschiebung)
-  - [ ] [3] (hoch) Rotationsenergie: $E_{\text{rot}} = \tfrac{1}{2} J \omega^2$
-  - [ ] [4] (hoch) Drehimpuls: $L = J \omega$, Erhaltung bei $M_{\text{ext}} = 0$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Drallsatz: $M = J \cdot \alpha$ (Rotationsanalog zu $F = ma$)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Standardträgheitsmomente: Vollzylinder $\tfrac{1}{2}mR^2$, Stab $\tfrac{1}{12}mL^2$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Steinerscher Anteil: $J_A = J_S + m d^2$ (Parallelachsenverschiebung)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Rotationsenergie: $E_{\text{rot}} = \tfrac{1}{2} J \omega^2$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Drehimpuls: $L = J \omega$, Erhaltung bei $M_{\text{ext}} = 0$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-5-a`, `ex-mech-2-5-b`, `ex-mech-2-5-c`
@@ -1619,14 +1630,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Torsionsspannung: $\tau_\text{max} = M_T/W_p$
-  - [ ] [1] (hoch) Polares Widerstandsmoment Kreisquerschnitt: $W_p = \pi d^3/16$
-  - [ ] [2] (hoch) Verdrehwinkel: $\varphi = M_T L/(G I_p)$ mit $I_p = \pi d^4/32$
-  - [ ] [3] (mittel) Schubmodul Stahl: $G \approx 80\,000$ MPa (ca. $E/(2(1+\nu))$)
-  - [ ] [4] (hoch) Reiner Schub (Niet, Bolzen): $\tau = F/A$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Torsionsspannung: $\tau_\text{max} = M_T/W_p$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Polares Widerstandsmoment Kreisquerschnitt: $W_p = \pi d^3/16$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Verdrehwinkel: $\varphi = M_T L/(G I_p)$ mit $I_p = \pi d^4/32$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Schubmodul Stahl: $G \approx 80\,000$ MPa (ca. $E/(2(1+\nu))$)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Reiner Schub (Niet, Bolzen): $\tau = F/A$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-1-3-a`, `ex-fest-1-3-b`, `ex-fest-1-3-c`
@@ -1641,14 +1653,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** number-input ×2, true-false ×1
 - **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Euler-Knicklast: $F_{ki} = \pi^2 E I/(\beta L)^2$
-  - [ ] [1] (hoch) Einspannbeiwerte: $\beta = 1$ gelenkig/gelenkig, $\beta = 2$ eingespannt/frei, $\beta = 0{,}5$ beidseitig eingespannt
-  - [ ] [2] (hoch) Flächenträgheitsmoment $I$: schwächste Achse zählt (kleinstes $I$)
-  - [ ] [3] (mittel) Schlankheitsgrad $\lambda = \beta L/i$ mit Trägheitsradius $i = \sqrt{I/A}$
-  - [ ] [4] (mittel) Euler nur für elastisches Knicken ($\sigma_{ki} < R_p$); bei kurzen Stäben Tetmajer/Johnson
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Euler-Knicklast: $F_{ki} = \pi^2 E I/(\beta L)^2$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Einspannbeiwerte: $\beta = 1$ gelenkig/gelenkig, $\beta = 2$ eingespannt/frei, $\beta = 0{,}5$ beidseitig eingespannt
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Flächenträgheitsmoment $I$: schwächste Achse zählt (kleinstes $I$)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Schlankheitsgrad $\lambda = \beta L/i$ mit Trägheitsradius $i = \sqrt{I/A}$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Euler nur für elastisches Knicken ($\sigma_{ki} < R_p$); bei kurzen Stäben Tetmajer/Johnson
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-1-4-a`, `ex-fest-1-4-b`, `ex-fest-1-4-c`
@@ -1663,15 +1676,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Mittelpunkt: $\sigma_M = (\sigma_x + \sigma_y)/2$
-  - [ ] [1] (hoch) Radius: $R = \sqrt{((\sigma_x - \sigma_y)/2)^2 + \tau_{xy}^2}$
-  - [ ] [2] (hoch) Hauptspannungen: $\sigma_{1,2} = \sigma_M \pm R$
-  - [ ] [3] (hoch) Max. Schubspannung: $\tau_\text{max} = R$
-  - [ ] [4] (mittel) Hauptachsenwinkel: $\tan(2\varphi) = 2\tau_{xy}/(\sigma_x - \sigma_y)$
-  - [ ] [5] (mittel) Anwendung: Hauptspannungshypothese (spröde Werkstoffe), GEH (zähe)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Mittelpunkt: $\sigma_M = (\sigma_x + \sigma_y)/2$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Radius: $R = \sqrt{((\sigma_x - \sigma_y)/2)^2 + \tau_{xy}^2}$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Hauptspannungen: $\sigma_{1,2} = \sigma_M \pm R$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Max. Schubspannung: $\tau_\text{max} = R$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Hauptachsenwinkel: $\tan(2\varphi) = 2\tau_{xy}/(\sigma_x - \sigma_y)$
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Anwendung: Hauptspannungshypothese (spröde Werkstoffe), GEH (zähe)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-2-3-a`, `ex-fest-2-3-b`, `ex-fest-2-3-c`
@@ -1686,14 +1700,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** number-input ×2, true-false ×1
 - **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Mittelspannung: $\sigma_m = (\sigma_\text{max} + \sigma_\text{min})/2$
-  - [ ] [1] (hoch) Ausschlagspannung: $\sigma_a = (\sigma_\text{max} - \sigma_\text{min})/2$
-  - [ ] [2] (hoch) Goodman-Kriterium: $\sigma_a/\sigma_W + \sigma_m/R_m \leq 1$
-  - [ ] [3] (hoch) Wechselfestigkeit $\sigma_W$: Amplitudengrenze bei $\sigma_m = 0$
-  - [ ] [4] (mittel) Schwingfestigkeit: Dauerfestigkeit, Zeitfestigkeit, Wöhlerlinie (N > 10⁶)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Mittelspannung: $\sigma_m = (\sigma_\text{max} + \sigma_\text{min})/2$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Ausschlagspannung: $\sigma_a = (\sigma_\text{max} - \sigma_\text{min})/2$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Goodman-Kriterium: $\sigma_a/\sigma_W + \sigma_m/R_m \leq 1$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Wechselfestigkeit $\sigma_W$: Amplitudengrenze bei $\sigma_m = 0$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Schwingfestigkeit: Dauerfestigkeit, Zeitfestigkeit, Wöhlerlinie (N > 10⁶)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-2-4-a`, `ex-fest-2-4-b`, `ex-fest-2-4-c`
@@ -1708,14 +1723,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×2, number-input ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Formzahl: $\alpha_K = \sigma_\text{max}/\sigma_\text{nenn}$ (rein geometrisch)
-  - [ ] [1] (hoch) Kerbwirkungszahl $\beta_K \leq \alpha_K$ (werkstoffabhängig, bei zähen kleiner)
-  - [ ] [2] (mittel) Typische Werte: Welleabsatz scharf $\alpha_K = 2$–3, Gewindegrund $\alpha_K = 3$–5
-  - [ ] [3] (hoch) Maßnahmen: Verrundung ($r \uparrow$), Oberflächengüte, Druckeigenspannungen
-  - [ ] [4] (hoch) Dauerfestigkeit mit Kerbe: $\sigma_{W,K} = \sigma_W/\beta_K$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Formzahl: $\alpha_K = \sigma_\text{max}/\sigma_\text{nenn}$ (rein geometrisch)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Kerbwirkungszahl $\beta_K \leq \alpha_K$ (werkstoffabhängig, bei zähen kleiner)
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Typische Werte: Welleabsatz scharf $\alpha_K = 2$–3, Gewindegrund $\alpha_K = 3$–5
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Maßnahmen: Verrundung ($r \uparrow$), Oberflächengüte, Druckeigenspannungen
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Dauerfestigkeit mit Kerbe: $\sigma_{W,K} = \sigma_W/\beta_K$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
@@ -1729,14 +1745,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Carnot: $\eta_C = 1 - T_\text{kalt}/T_\text{warm}$ (in Kelvin!)
-  - [ ] [1] (hoch) Otto-Prozess: $\eta_O = 1 - \varepsilon^{1-\gamma}$ mit Verdichtung $\varepsilon = V_1/V_2$
-  - [ ] [2] (mittel) Diesel-Prozess: etwas anderer Wirkungsgrad (Einspritzverhältnis)
-  - [ ] [3] (mittel) Rankine/Clausius-Rankine: Dampfkraftwerk, Enthalpiewerte aus h-s-Diagramm
-  - [ ] [4] (hoch) Im pV-Diagramm: Fläche = Nutzarbeit pro Umlauf
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Carnot: $\eta_C = 1 - T_\text{kalt}/T_\text{warm}$ (in Kelvin!)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Otto-Prozess: $\eta_O = 1 - \varepsilon^{1-\gamma}$ mit Verdichtung $\varepsilon = V_1/V_2$
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Diesel-Prozess: etwas anderer Wirkungsgrad (Einspritzverhältnis)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Rankine/Clausius-Rankine: Dampfkraftwerk, Enthalpiewerte aus h-s-Diagramm
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Im pV-Diagramm: Fläche = Nutzarbeit pro Umlauf
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-2-3-a`, `ex-thermo-2-3-b`, `ex-thermo-2-3-c`
@@ -1751,14 +1768,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** number-input ×2, true-false ×1
 - **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Fourier-Wärmeleitung: $\dot Q = \lambda A \Delta T/d$
-  - [ ] [1] (hoch) Wärmeübergang (Newton): $\dot Q = \alpha A \Delta T$
-  - [ ] [2] (hoch) k-Wert (mehrlagige Wand): $1/k = 1/\alpha_1 + \sum d_i/\lambda_i + 1/\alpha_2$
-  - [ ] [3] (mittel) Strahlung: $\dot Q = \varepsilon \sigma A (T_1^4 - T_2^4)$ (Stefan-Boltzmann)
-  - [ ] [4] (hoch) Kleiner $k$-Wert = gute Dämmung
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Fourier-Wärmeleitung: $\dot Q = \lambda A \Delta T/d$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Wärmeübergang (Newton): $\dot Q = \alpha A \Delta T$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — k-Wert (mehrlagige Wand): $1/k = 1/\alpha_1 + \sum d_i/\lambda_i + 1/\alpha_2$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Strahlung: $\dot Q = \varepsilon \sigma A (T_1^4 - T_2^4)$ (Stefan-Boltzmann)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Kleiner $k$-Wert = gute Dämmung
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-2-4-a`, `ex-thermo-2-4-b`, `ex-thermo-2-4-c`
@@ -1773,14 +1791,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Darcy-Weisbach: $\Delta p = \lambda (L/d)(\rho v^2/2)$
-  - [ ] [1] (hoch) Reynolds-Zahl: $Re = \rho v d/\mu$; laminar $<2300$, turbulent $>4000$
-  - [ ] [2] (hoch) Hagen-Poiseuille (laminar): $\Delta p = 128 \mu L \dot V/(\pi d^4)$
-  - [ ] [3] (mittel) Laminares Profil parabolisch, turbulent näherungsweise Blockprofil mit Randschicht
-  - [ ] [4] (mittel) Hydraulischer Durchmesser $d_h = 4A/U$ für Nicht-Kreisquerschnitte
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Darcy-Weisbach: $\Delta p = \lambda (L/d)(\rho v^2/2)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Reynolds-Zahl: $Re = \rho v d/\mu$; laminar $<2300$, turbulent $>4000$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Hagen-Poiseuille (laminar): $\Delta p = 128 \mu L \dot V/(\pi d^4)$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Laminares Profil parabolisch, turbulent näherungsweise Blockprofil mit Randschicht
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Hydraulischer Durchmesser $d_h = 4A/U$ für Nicht-Kreisquerschnitte
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-2-3-a`, `ex-fluid-2-3-b`, `ex-fluid-2-3-c`
@@ -1795,14 +1814,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** number-input ×3
 - **Typen einsetzen (Rotation):** multiple-choice, true-false, matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Pumpengesetze: $\dot V \propto n$, $H \propto n^2$, $P \propto n^3$
-  - [ ] [1] (hoch) Reynolds für Ähnlichkeit: Modell- und Prototyp-Re gleich halten
-  - [ ] [2] (mittel) Froude-Zahl: $Fr = v/\sqrt{gL}$ (Schwerewellen, offene Gerinne)
-  - [ ] [3] (mittel) Euler-Zahl: $Eu = \Delta p/(\rho v^2)$ (Druckabfall)
-  - [ ] [4] (mittel) Leistung verdoppeln bedeutet Drehzahl $\sqrt[3]{2} \approx 1{,}26$-fach
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Pumpengesetze: $\dot V \propto n$, $H \propto n^2$, $P \propto n^3$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Reynolds für Ähnlichkeit: Modell- und Prototyp-Re gleich halten
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Froude-Zahl: $Fr = v/\sqrt{gL}$ (Schwerewellen, offene Gerinne)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Euler-Zahl: $Eu = \Delta p/(\rho v^2)$ (Druckabfall)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Leistung verdoppeln bedeutet Drehzahl $\sqrt[3]{2} \approx 1{,}26$-fach
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-2-4-a`, `ex-fluid-2-4-b`, `ex-fluid-2-4-c`
@@ -1817,14 +1837,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Laminar: $\lambda = 64/Re$ (unabhängig von Rauhigkeit)
-  - [ ] [1] (hoch) Turbulent glatt (Blasius, $Re < 10^5$): $\lambda = 0{,}316/Re^{0{,}25}$
-  - [ ] [2] (mittel) Turbulent rau: Moody-Diagramm oder Colebrook-Gleichung
-  - [ ] [3] (mittel) Relative Rauhigkeit $\varepsilon/d$: Materialkennwert aus Tabelle ablesen
-  - [ ] [4] (mittel) Bei voll-turbulenter Strömung: $\lambda$ Re-unabhängig (nur $\varepsilon/d$)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Laminar: $\lambda = 64/Re$ (unabhängig von Rauhigkeit)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Turbulent glatt (Blasius, $Re < 10^5$): $\lambda = 0{,}316/Re^{0{,}25}$
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Turbulent rau: Moody-Diagramm oder Colebrook-Gleichung
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Relative Rauhigkeit $\varepsilon/d$: Materialkennwert aus Tabelle ablesen
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Bei voll-turbulenter Strömung: $\lambda$ Re-unabhängig (nur $\varepsilon/d$)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
 - **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
@@ -1838,14 +1859,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×1, number-input ×1, true-false ×1
 - **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, number-input, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Kehlnaht-Spannung: $\tau = F/(a \cdot l_w)$
-  - [ ] [1] (hoch) Nahtdicke Kehlnaht: $a \approx 0{,}7 \cdot h$ (Schenkellänge $h$)
-  - [ ] [2] (mittel) Verbindungsarten: Schweißen (stoffschlüssig, dauerhaft), Schrauben (lösbar)
-  - [ ] [3] (mittel) Tragende Nahtlänge $l_w$ = geometrische Länge minus Endkrater (≈ $l - 2a$)
-  - [ ] [4] (mittel) Zulässige Schweißnahtspannung = Grundwerkstoff $\times$ Schweißfaktor (z.B. 0{,}8)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Kehlnaht-Spannung: $\tau = F/(a \cdot l_w)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Nahtdicke Kehlnaht: $a \approx 0{,}7 \cdot h$ (Schenkellänge $h$)
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Verbindungsarten: Schweißen (stoffschlüssig, dauerhaft), Schrauben (lösbar)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Tragende Nahtlänge $l_w$ = geometrische Länge minus Endkrater (≈ $l - 2a$)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Zulässige Schweißnahtspannung = Grundwerkstoff $\times$ Schweißfaktor (z.B. 0{,}8)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-1-3-a`, `ex-melem-1-3-b`, `ex-melem-1-3-c`
@@ -1860,14 +1882,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** number-input ×3
 - **Typen einsetzen (Rotation):** multiple-choice, true-false, matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) L10-Lebensdauer: $L_{10} = (C/P)^p$ Mio. Umdrehungen
-  - [ ] [1] (hoch) Exponent: $p = 3$ Kugellager, $p = 10/3$ Rollenlager
-  - [ ] [2] (hoch) In Stunden: $L_{10h} = L_{10} \cdot 10^6/(60 \cdot n)$
-  - [ ] [3] (hoch) C = dyn. Tragzahl (Katalog), P = äquivalente dyn. Last ($P = X F_r + Y F_a$)
-  - [ ] [4] (mittel) L10 = 10 % Ausfallwahrscheinlichkeit (90 % der Lager halten länger)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — L10-Lebensdauer: $L_{10} = (C/P)^p$ Mio. Umdrehungen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Exponent: $p = 3$ Kugellager, $p = 10/3$ Rollenlager
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — In Stunden: $L_{10h} = L_{10} \cdot 10^6/(60 \cdot n)$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — C = dyn. Tragzahl (Katalog), P = äquivalente dyn. Last ($P = X F_r + Y F_a$)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — L10 = 10 % Ausfallwahrscheinlichkeit (90 % der Lager halten länger)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-2-3-a`, `ex-melem-2-3-b`, `ex-melem-2-3-c`
@@ -1882,14 +1905,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×2, number-input ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Stern: $U_{LL} = \sqrt 3 U_{LN}$, $I_L = I_\text{Strang}$
-  - [ ] [1] (hoch) Dreieck: $U_{LL} = U_\text{Strang}$, $I_L = \sqrt 3 I_\text{Strang}$
-  - [ ] [2] (hoch) Drehstrom-Leistung: $P = \sqrt 3 U_{LL} I_L \cos\varphi$
-  - [ ] [3] (hoch) Haushaltsnetz: $U_{LN} = 230$ V, $U_{LL} = 400$ V
-  - [ ] [4] (mittel) Y/$\Delta$-Anlauf: in Stern nur 1/3 Leistung → kleinerer Anlaufstrom
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Stern: $U_{LL} = \sqrt 3 U_{LN}$, $I_L = I_\text{Strang}$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Dreieck: $U_{LL} = U_\text{Strang}$, $I_L = \sqrt 3 I_\text{Strang}$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Drehstrom-Leistung: $P = \sqrt 3 U_{LL} I_L \cos\varphi$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Haushaltsnetz: $U_{LN} = 230$ V, $U_{LL} = 400$ V
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Y/$\Delta$-Anlauf: in Stern nur 1/3 Leistung → kleinerer Anlaufstrom
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/elektrotechnik.js`
 - **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
@@ -1903,14 +1927,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 3 (Minimum: 10) · **fehlen mindestens:** 7 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×2, number-input ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Amplitudengang in dB: $A_\text{dB} = 20 \log_{10}|G|$
-  - [ ] [1] (hoch) Grundbausteine: P $0°$; I $-90°$, $-20$ dB/Dek; D $+90°$, $+20$ dB/Dek
-  - [ ] [2] (hoch) PT1 Grenzfrequenz $\omega_g = 1/T$, dort $|G| = -3$ dB
-  - [ ] [3] (hoch) Phasenreserve: $\varphi_R = 180° + \varphi(\omega_D)$ bei $|G_0| = 0$ dB
-  - [ ] [4] (hoch) Stabilitätsreserven: $\varphi_R > 30°$ akzeptabel, $> 60°$ sehr gut
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Amplitudengang in dB: $A_\text{dB} = 20 \log_{10}|G|$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Grundbausteine: P $0°$; I $-90°$, $-20$ dB/Dek; D $+90°$, $+20$ dB/Dek
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — PT1 Grenzfrequenz $\omega_g = 1/T$, dort $|G| = -3$ dB
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Phasenreserve: $\varphi_R = 180° + \varphi(\omega_D)$ bei $|G_0| = 0$ dB
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Stabilitätsreserven: $\varphi_R > 30°$ akzeptabel, $> 60°$ sehr gut
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/regelungstechnik.js`
 - **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
@@ -1924,13 +1949,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 4 (Minimum: 10) · **fehlen mindestens:** 6 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×1, number-input ×1, true-false ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, multiple-choice, number-input, true-false, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen
-  - [ ] [1] (hoch) Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut
-  - [ ] [2] (mittel) Einheit Pascal: $1\,\text{Pa} = 1\,\text{N/m}^2 = 1\,\text{kg}/(\text{m}\cdot\text{s}^2)$
-  - [ ] [3] (hoch) Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Einheit Pascal: $1\,\text{Pa} = 1\,\text{N/m}^2 = 1\,\text{kg}/(\text{m}\cdot\text{s}^2)$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 6 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
@@ -1944,14 +1970,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 4 (Minimum: 10) · **fehlen mindestens:** 6 — mehr ist besser
 - **Typen vorhanden:** number-input ×4
 - **Typen einsetzen (Rotation):** multiple-choice, true-false, matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Geneigte Ebene: gleiten wenn $F_H > F_{R,\max}$, d.h. $\tan\alpha > \mu_0$
-  - [ ] [1] (hoch) Bremsweg-Formel: $s = v_0^2/(2a)$ bei Bremsbeschleunigung $a$
-  - [ ] [2] (hoch) Eigenfrequenz Feder-Masse: $\omega_0 = \sqrt{c/m}$
-  - [ ] [3] (mittel) Bei Parallelschaltung Federn: $c_\text{ges} = c_1 + c_2$; Serie: $1/c_\text{ges} = 1/c_1 + 1/c_2$
-  - [ ] [4] (hoch) Rollen ohne Rutschen: $v = r\omega$, kinetische Energie $= \tfrac{1}{2}m v^2 + \tfrac{1}{2}J\omega^2$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Geneigte Ebene: gleiten wenn $F_H > F_{R,\max}$, d.h. $\tan\alpha > \mu_0$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Bremsweg-Formel: $s = v_0^2/(2a)$ bei Bremsbeschleunigung $a$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Eigenfrequenz Feder-Masse: $\omega_0 = \sqrt{c/m}$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Bei Parallelschaltung Federn: $c_\text{ges} = c_1 + c_2$; Serie: $1/c_\text{ges} = 1/c_1 + 1/c_2$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Rollen ohne Rutschen: $v = r\omega$, kinetische Energie $= \tfrac{1}{2}m v^2 + \tfrac{1}{2}J\omega^2$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 6 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-3-3-a`, `ex-mech-3-3-b`, `ex-mech-3-3-c`, `ex-mech-3-3-d`
@@ -1966,14 +1993,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 4 (Minimum: 10) · **fehlen mindestens:** 6 — mehr ist besser
 - **Typen vorhanden:** number-input ×3, true-false ×1
 - **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Torsionsspannung in Welle: $\tau = M_T/W_p$, $W_p = \pi d^3/16$
-  - [ ] [1] (hoch) Knickung: Euler $F_{ki} = \pi^2 EI/(\beta L)^2$, $\beta$ aus Lagerung
-  - [ ] [2] (hoch) Goodman: $\sigma_a/\sigma_W + \sigma_m/R_m \leq 1/S$
-  - [ ] [3] (hoch) Werkstoff S235: Mindeststreckgrenze $R_e = 235$ MPa
-  - [ ] [4] (mittel) Schlankheitsgrad prüfen vor Euler: $\lambda > \lambda_0$ sonst Tetmajer/Johnson
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Torsionsspannung in Welle: $\tau = M_T/W_p$, $W_p = \pi d^3/16$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Knickung: Euler $F_{ki} = \pi^2 EI/(\beta L)^2$, $\beta$ aus Lagerung
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Goodman: $\sigma_a/\sigma_W + \sigma_m/R_m \leq 1/S$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Werkstoff S235: Mindeststreckgrenze $R_e = 235$ MPa
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Schlankheitsgrad prüfen vor Euler: $\lambda > \lambda_0$ sonst Tetmajer/Johnson
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 6 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-3-2-a`, `ex-fest-3-2-b`, `ex-fest-3-2-c`, `ex-fest-3-2-d`
@@ -1988,14 +2016,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 4 (Minimum: 10) · **fehlen mindestens:** 6 — mehr ist besser
 - **Typen vorhanden:** number-input ×3, true-false ×1
 - **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Leistung aus Wärmestrom: $P_\text{nutz} = \dot Q_\text{zu} \cdot \eta$
-  - [ ] [1] (hoch) Wärmebilanz Kraftwerk: $\dot Q_\text{ab} = \dot Q_\text{zu} - P_\text{nutz}$
-  - [ ] [2] (hoch) Otto-Wirkungsgrad: $\eta_O = 1 - \varepsilon^{1-\gamma}$, $\gamma \approx 1{,}4$ für Luft
-  - [ ] [3] (hoch) Wärmestrom durch Wand: $\dot Q = k A \Delta T$
-  - [ ] [4] (hoch) Carnot als theoretische Obergrenze: reale Wirkungsgrade sind kleiner
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Leistung aus Wärmestrom: $P_\text{nutz} = \dot Q_\text{zu} \cdot \eta$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Wärmebilanz Kraftwerk: $\dot Q_\text{ab} = \dot Q_\text{zu} - P_\text{nutz}$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Otto-Wirkungsgrad: $\eta_O = 1 - \varepsilon^{1-\gamma}$, $\gamma \approx 1{,}4$ für Luft
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Wärmestrom durch Wand: $\dot Q = k A \Delta T$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Carnot als theoretische Obergrenze: reale Wirkungsgrade sind kleiner
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 6 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-3-2-a`, `ex-thermo-3-2-b`, `ex-thermo-3-2-c`, `ex-thermo-3-2-d`
@@ -2010,14 +2039,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 4 (Minimum: 10) · **fehlen mindestens:** 6 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×1, number-input ×3
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Erweiterte Bernoulli mit Verlust: $+ \Delta p_V$ auf Senkeseite
-  - [ ] [1] (hoch) Pumpenleistung: $P = \rho g \dot V H / \eta_P$
-  - [ ] [2] (mittel) Reihenschaltung Rohre: $\Delta p_\text{ges} = \sum \Delta p_i$
-  - [ ] [3] (mittel) Einzelverluste: $\Delta p = \zeta (\rho v^2/2)$ ($\zeta$ aus Tabelle für Krümmer, Ventile, \ldots)
-  - [ ] [4] (mittel) Pumpenkennlinie × Anlagenkennlinie = Betriebspunkt
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Erweiterte Bernoulli mit Verlust: $+ \Delta p_V$ auf Senkeseite
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Pumpenleistung: $P = \rho g \dot V H / \eta_P$
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Reihenschaltung Rohre: $\Delta p_\text{ges} = \sum \Delta p_i$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Einzelverluste: $\Delta p = \zeta (\rho v^2/2)$ ($\zeta$ aus Tabelle für Krümmer, Ventile, \ldots)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Pumpenkennlinie × Anlagenkennlinie = Betriebspunkt
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 6 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-3-2-a`, `ex-fluid-3-2-b`, `ex-fluid-3-2-c`, `ex-fluid-3-2-d`
@@ -2032,14 +2062,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 4 (Minimum: 10) · **fehlen mindestens:** 6 — mehr ist besser
 - **Typen vorhanden:** number-input ×3, true-false ×1
 - **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Kehlnaht: $\tau = F/(a l_w)$, $a = 0{,}7 h$
-  - [ ] [1] (hoch) Lagerlebensdauer: $L_{10} = (C/P)^p$, $p = 3$ (Kugel) / $p = 10/3$ (Rolle)
-  - [ ] [2] (hoch) Einheiten-Check: L10 in Mio. U, L10h in Stunden nach $\times 10^6/(60n)$
-  - [ ] [3] (hoch) Leistungs-Drehmoment-Umrechnung $\omega = 2\pi n/60$
-  - [ ] [4] (mittel) Plausibilitäts-Check: typische Lagerlebensdauer 5000–50000 h
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Kehlnaht: $\tau = F/(a l_w)$, $a = 0{,}7 h$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Lagerlebensdauer: $L_{10} = (C/P)^p$, $p = 3$ (Kugel) / $p = 10/3$ (Rolle)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Einheiten-Check: L10 in Mio. U, L10h in Stunden nach $\times 10^6/(60n)$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Leistungs-Drehmoment-Umrechnung $\omega = 2\pi n/60$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Plausibilitäts-Check: typische Lagerlebensdauer 5000–50000 h
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 6 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-3-2-a`, `ex-melem-3-2-b`, `ex-melem-3-2-c`, `ex-melem-3-2-d`
@@ -2054,14 +2085,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 8 (Minimum: 10) · **fehlen mindestens:** 2 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Zulässige Spannung: $\sigma_\text{zul} = R_m/S$ oder $R_e/S$
-  - [ ] [1] (hoch) Typische S-Werte: statisch $S = 1{,}5$, schwingend $S = 2$–$3$
-  - [ ] [2] (hoch) Kennwertwahl: zähe Stähle → $R_e$; spröde Werkstoffe → $R_m$
-  - [ ] [3] (hoch) Einheit MPa = N/mm² = $10^6$ Pa
-  - [ ] [4] (mittel) Werkstoffgruppen: Stahl (hohe Festigkeit), Alu (leicht), Kunststoff (korrosionsfrei), Keramik (hart)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Zulässige Spannung: $\sigma_\text{zul} = R_m/S$ oder $R_e/S$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Typische S-Werte: statisch $S = 1{,}5$, schwingend $S = 2$–$3$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Kennwertwahl: zähe Stähle → $R_e$; spröde Werkstoffe → $R_m$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Einheit MPa = N/mm² = $10^6$ Pa
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Werkstoffgruppen: Stahl (hohe Festigkeit), Alu (leicht), Kunststoff (korrosionsfrei), Keramik (hart)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/werkstoffkunde.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 2 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-pruefung-1-manual-1`, `ex-werk-pruefung-1-manual-2`, `ex-werk-pruefung-1-manual-3`, `ex-werk-pruefung-1-manual-4`, `ex-werk-pruefung-1-manual-5`, `ex-werk-pruefung-1-manual-6`, `ex-werk-pruefung-1-manual-7`, `ex-werk-pruefung-1-mastery`
@@ -2076,15 +2108,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×3, true-false ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, true-false, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Formwahl: $+/-$ → kartesisch, $\cdot/\div$ und Potenzen/Wurzeln → polar/exponential
-  - [ ] [1] (hoch) Impedanz ET: $Z_R = R$, $Z_L = i\omega L$, $Z_C = 1/(i\omega C)$
-  - [ ] [2] (hoch) Komplexer Zeiger für Schwingung $x(t) = \text{Re}(A e^{i\omega t})$
-  - [ ] [3] (hoch) Quadratische Gleichung in $\mathbb{C}$: Diskriminante $<0$ liefert komplexes konj. Paar
-  - [ ] [4] (hoch) $z \cdot \bar z = |z|^2$ (Betrag-Quadrat aus Multiplikation mit Konjugiertem)
-  - [ ] [5] (mittel) Argumente beim Dividieren: $\arg(z_1/z_2) = \arg(z_1) - \arg(z_2)$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Formwahl: $+/-$ → kartesisch, $\cdot/\div$ und Potenzen/Wurzeln → polar/exponential
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Impedanz ET: $Z_R = R$, $Z_L = i\omega L$, $Z_C = 1/(i\omega C)$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Komplexer Zeiger für Schwingung $x(t) = \text{Re}(A e^{i\omega t})$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Quadratische Gleichung in $\mathbb{C}$: Diskriminante $<0$ liefert komplexes konj. Paar
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — $z \cdot \bar z = |z|^2$ (Betrag-Quadrat aus Multiplikation mit Konjugiertem)
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Argumente beim Dividieren: $\arg(z_1/z_2) = \arg(z_1) - \arg(z_2)$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-pruefung-1-1`, `ex-komz-pruefung-1-2`, `ex-komz-pruefung-1-3`, `ex-komz-pruefung-1-4`, `ex-komz-pruefung-1-5`, `ex-komz-pruefung-1-6`, `ex-komz-pruefung-1-7`, `ex-komz-pruefung-1-8` … (+1 weitere)
@@ -2099,14 +2132,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Kartesisch → Polar: $r = \sqrt{a^2+b^2}$, $\varphi = \text{atan2}(b,a) \in (-\pi, \pi]$
-  - [ ] [1] (hoch) Multiplikation: Beträge mal, Argumente plus (mod $2\pi$)
-  - [ ] [2] (hoch) Division: Beträge durch, Argumente minus
-  - [ ] [3] (hoch) Quadrantenmerker: $-i$ hat $\varphi = -\pi/2$, $-1$ hat $\varphi = \pi$
-  - [ ] [4] (mittel) Argument-Hauptwert wählen (sonst Punkte-Abzug bei nicht-eindeutiger Antwort)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Kartesisch → Polar: $r = \sqrt{a^2+b^2}$, $\varphi = \text{atan2}(b,a) \in (-\pi, \pi]$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Multiplikation: Beträge mal, Argumente plus (mod $2\pi$)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Division: Beträge durch, Argumente minus
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Quadrantenmerker: $-i$ hat $\varphi = -\pi/2$, $-1$ hat $\varphi = \pi$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Argument-Hauptwert wählen (sonst Punkte-Abzug bei nicht-eindeutiger Antwort)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-pruefung-2-1`, `ex-komz-pruefung-2-2`, `ex-komz-pruefung-2-3`, `ex-komz-pruefung-2-4`, `ex-komz-pruefung-2-5`, `ex-komz-pruefung-2-6`, `ex-komz-pruefung-2-7`, `ex-komz-pruefung-2-8` … (+1 weitere)
@@ -2121,15 +2155,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Gleichung $z^n = w$: **alle $n$** Wurzeln angeben (Fundamentalsatz)
-  - [ ] [1] (hoch) Wurzelformel in Polarform $w = r e^{i\varphi}$: $z_k = r^{1/n} e^{i(\varphi + 2\pi k)/n}$
-  - [ ] [2] (hoch) Impedanz-Gesamt bei Reihe: $Z = R + i\omega L - i/(\omega C)$
-  - [ ] [3] (hoch) Scheinwiderstand $|Z| = \sqrt{R^2 + X^2}$ mit Reaktanz $X = \omega L - 1/(\omega C)$
-  - [ ] [4] (hoch) Resonanz: $\omega_0 = 1/\sqrt{LC}$ (Imaginärteil der Impedanz = 0)
-  - [ ] [5] (mittel) Phasenwinkel $\arg(Z) = \arctan(X/R)$: Spannungs- vs. Stromphasenlage
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Gleichung $z^n = w$: **alle $n$** Wurzeln angeben (Fundamentalsatz)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Wurzelformel in Polarform $w = r e^{i\varphi}$: $z_k = r^{1/n} e^{i(\varphi + 2\pi k)/n}$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Impedanz-Gesamt bei Reihe: $Z = R + i\omega L - i/(\omega C)$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Scheinwiderstand $|Z| = \sqrt{R^2 + X^2}$ mit Reaktanz $X = \omega L - 1/(\omega C)$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Resonanz: $\omega_0 = 1/\sqrt{LC}$ (Imaginärteil der Impedanz = 0)
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Phasenwinkel $\arg(Z) = \arctan(X/R)$: Spannungs- vs. Stromphasenlage
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-pruefung-3-1`, `ex-komz-pruefung-3-2`, `ex-komz-pruefung-3-3`, `ex-komz-pruefung-3-4`, `ex-komz-pruefung-3-5`, `ex-komz-pruefung-3-6`, `ex-komz-pruefung-3-7`, `ex-komz-pruefung-3-8` … (+1 weitere)
@@ -2144,15 +2179,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Taylor: $f(x) = \sum f^{(n)}(x_0)(x-x_0)^n/n!$
-  - [ ] [1] (hoch) Standardreihen: $e^x, \sin x, \cos x, \ln(1+x), 1/(1-x)$ auswendig
-  - [ ] [2] (hoch) Geometrische Reihe: $\sum q^n = 1/(1-q)$ für $|q| < 1$
-  - [ ] [3] (hoch) Restglied Lagrange: $R_n = f^{(n+1)}(\xi)(x-x_0)^{n+1}/(n+1)!$
-  - [ ] [4] (hoch) Konvergenzradius $R$: via Quotienten- oder Wurzelkriterium bestimmen
-  - [ ] [5] (mittel) Anwendung: Approximation, Grenzwerte mit Taylor (Alternative zu L'Hôpital)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Taylor: $f(x) = \sum f^{(n)}(x_0)(x-x_0)^n/n!$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Standardreihen: $e^x, \sin x, \cos x, \ln(1+x), 1/(1-x)$ auswendig
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Geometrische Reihe: $\sum q^n = 1/(1-q)$ für $|q| < 1$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Restglied Lagrange: $R_n = f^{(n+1)}(\xi)(x-x_0)^{n+1}/(n+1)!$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Konvergenzradius $R$: via Quotienten- oder Wurzelkriterium bestimmen
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Anwendung: Approximation, Grenzwerte mit Taylor (Alternative zu L'Hôpital)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/reihen_folgen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-pruefung-1-1`, `ex-rf-pruefung-1-2`, `ex-rf-pruefung-1-3`, `ex-rf-pruefung-1-4`, `ex-rf-pruefung-1-5`, `ex-rf-pruefung-1-6`, `ex-rf-pruefung-1-7`, `ex-rf-pruefung-1-8` … (+1 weitere)
@@ -2167,15 +2203,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Quotientenkriterium: $L = \lim |a_{n+1}/a_n|$ — $L < 1$ konv., $L > 1$ div., $L = 1$ unentsch.
-  - [ ] [1] (hoch) Wurzelkriterium: $L = \lim \sqrt[n]{|a_n|}$ — gleiche Regel
-  - [ ] [2] (hoch) Majorantenkriterium: $|a_n| \leq b_n$, $\sum b_n$ konv. → $\sum a_n$ abs. konv.
-  - [ ] [3] (hoch) Konvergenzradius: $R = 1/\limsup \sqrt[n]{|a_n|}$ (Cauchy-Hadamard)
-  - [ ] [4] (hoch) Leibniz-Kriterium für alternierende Reihe: $a_n \searrow 0 \Rightarrow$ konv.
-  - [ ] [5] (mittel) Absolut vs. bedingt konvergent: $\sum |a_n|$ konv. (absolut) stärker als $\sum a_n$ konv.
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Quotientenkriterium: $L = \lim |a_{n+1}/a_n|$ — $L < 1$ konv., $L > 1$ div., $L = 1$ unentsch.
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Wurzelkriterium: $L = \lim \sqrt[n]{|a_n|}$ — gleiche Regel
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Majorantenkriterium: $|a_n| \leq b_n$, $\sum b_n$ konv. → $\sum a_n$ abs. konv.
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Konvergenzradius: $R = 1/\limsup \sqrt[n]{|a_n|}$ (Cauchy-Hadamard)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Leibniz-Kriterium für alternierende Reihe: $a_n \searrow 0 \Rightarrow$ konv.
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Absolut vs. bedingt konvergent: $\sum |a_n|$ konv. (absolut) stärker als $\sum a_n$ konv.
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/reihen_folgen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-pruefung-2-1`, `ex-rf-pruefung-2-2`, `ex-rf-pruefung-2-3`, `ex-rf-pruefung-2-4`, `ex-rf-pruefung-2-5`, `ex-rf-pruefung-2-6`, `ex-rf-pruefung-2-7`, `ex-rf-pruefung-2-8` … (+1 weitere)
@@ -2190,14 +2227,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Lagrange-Restglied: $|R_n(x)| \leq M \cdot |x-x_0|^{n+1}/(n+1)!$ mit $M = \max |f^{(n+1)}|$
-  - [ ] [1] (hoch) Taylor-Fehler sinkt mit $1/(n+1)!$ — exponentiell bessere Näherung
-  - [ ] [2] (hoch) Linearisierung (n=1): $f(x) \approx f(x_0) + f'(x_0)(x-x_0)$
-  - [ ] [3] (hoch) Fehlerschätzung Sinus/Cosinus: nächster Term liefert obere Schranke
-  - [ ] [4] (mittel) Taylor-Polynom-Grad via geforderter Genauigkeit $|R_n| < \epsilon$ bestimmen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Lagrange-Restglied: $|R_n(x)| \leq M \cdot |x-x_0|^{n+1}/(n+1)!$ mit $M = \max |f^{(n+1)}|$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Taylor-Fehler sinkt mit $1/(n+1)!$ — exponentiell bessere Näherung
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Linearisierung (n=1): $f(x) \approx f(x_0) + f'(x_0)(x-x_0)$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Fehlerschätzung Sinus/Cosinus: nächster Term liefert obere Schranke
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Taylor-Polynom-Grad via geforderter Genauigkeit $|R_n| < \epsilon$ bestimmen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/reihen_folgen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-pruefung-3-1`, `ex-rf-pruefung-3-2`, `ex-rf-pruefung-3-3`, `ex-rf-pruefung-3-4`, `ex-rf-pruefung-3-5`, `ex-rf-pruefung-3-6`, `ex-rf-pruefung-3-7`, `ex-rf-pruefung-3-8` … (+1 weitere)
@@ -2212,15 +2250,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Kritische Stellen: $\nabla f = \vec 0$ (alle partiellen Ableitungen null)
-  - [ ] [1] (hoch) Hesse-Matrix $H$: $\det H > 0$ und $f_{xx} > 0$ → Min; $\det H > 0, f_{xx} < 0$ → Max
-  - [ ] [2] (hoch) Sattelpunkt: $\det H < 0$ (Hesse indefinit)
-  - [ ] [3] (hoch) Fehlerfortpflanzung (linear): $\Delta f \approx |\partial f/\partial x_1| \Delta x_1 + \ldots$
-  - [ ] [4] (hoch) Gauß'sche Fehlerfortpflanzung (statistisch): $\sigma_f^2 = \sum (\partial f/\partial x_i)^2 \sigma_i^2$
-  - [ ] [5] (hoch) Lagrange: $\nabla f = \lambda \nabla g$ bei Nebenbedingung $g = 0$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Kritische Stellen: $\nabla f = \vec 0$ (alle partiellen Ableitungen null)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Hesse-Matrix $H$: $\det H > 0$ und $f_{xx} > 0$ → Min; $\det H > 0, f_{xx} < 0$ → Max
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Sattelpunkt: $\det H < 0$ (Hesse indefinit)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Fehlerfortpflanzung (linear): $\Delta f \approx |\partial f/\partial x_1| \Delta x_1 + \ldots$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Gauß'sche Fehlerfortpflanzung (statistisch): $\sigma_f^2 = \sum (\partial f/\partial x_i)^2 \sigma_i^2$
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — Lagrange: $\nabla f = \lambda \nabla g$ bei Nebenbedingung $g = 0$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/mehrdim_analysis.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-pruefung-1-1`, `ex-mdim-pruefung-1-2`, `ex-mdim-pruefung-1-3`, `ex-mdim-pruefung-1-4`, `ex-mdim-pruefung-1-5`, `ex-mdim-pruefung-1-6`, `ex-mdim-pruefung-1-7`, `ex-mdim-pruefung-1-8` … (+1 weitere)
@@ -2235,14 +2274,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Totales Differential: $df = f_x dx + f_y dy + \ldots$
-  - [ ] [1] (hoch) Maximaler Fehler (linear): $|\Delta f| \leq \sum |f_{x_i}| |\Delta x_i|$ (obere Schranke)
-  - [ ] [2] (hoch) Gauß'sche (statistisch): $\sigma_f = \sqrt{\sum (f_{x_i})^2 \sigma_{x_i}^2}$
-  - [ ] [3] (hoch) Relativer Fehler: $|\Delta f/f| \leq \sum |\Delta x_i/x_i|$ bei Produkten
-  - [ ] [4] (mittel) Fehlerquelle mit dem größten $f_{x_i} \Delta x_i$ dominiert — dort zuerst verbessern
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Totales Differential: $df = f_x dx + f_y dy + \ldots$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Maximaler Fehler (linear): $|\Delta f| \leq \sum |f_{x_i}| |\Delta x_i|$ (obere Schranke)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Gauß'sche (statistisch): $\sigma_f = \sqrt{\sum (f_{x_i})^2 \sigma_{x_i}^2}$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Relativer Fehler: $|\Delta f/f| \leq \sum |\Delta x_i/x_i|$ bei Produkten
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Fehlerquelle mit dem größten $f_{x_i} \Delta x_i$ dominiert — dort zuerst verbessern
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/mehrdim_analysis.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-pruefung-2-1`, `ex-mdim-pruefung-2-2`, `ex-mdim-pruefung-2-3`, `ex-mdim-pruefung-2-4`, `ex-mdim-pruefung-2-5`, `ex-mdim-pruefung-2-6`, `ex-mdim-pruefung-2-7`, `ex-mdim-pruefung-2-8` … (+1 weitere)
@@ -2257,15 +2297,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Lagrange-LGS: $f_x = \lambda g_x$, $f_y = \lambda g_y$, $g = 0$ (3 Gl. für 3 Unb.)
-  - [ ] [1] (hoch) Hesse-Test: $D = f_{xx}f_{yy} - f_{xy}^2$; $D>0, f_{xx}>0$ Min; $D>0, f_{xx}<0$ Max; $D<0$ Sattel
-  - [ ] [2] (mittel) Bei $D = 0$: keine Entscheidung via Hesse, höhere Ordnungen nötig
-  - [ ] [3] (mittel) Mehrere NB: $\nabla f = \sum \lambda_i \nabla g_i$
-  - [ ] [4] (hoch) Richtungsableitung: $D_{\vec u} f = \nabla f \cdot \vec u / |\vec u|$
-  - [ ] [5] (hoch) Gradient zeigt in Richtung stärksten Anstiegs, Betrag = maximale Steigung
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Lagrange-LGS: $f_x = \lambda g_x$, $f_y = \lambda g_y$, $g = 0$ (3 Gl. für 3 Unb.)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Hesse-Test: $D = f_{xx}f_{yy} - f_{xy}^2$; $D>0, f_{xx}>0$ Min; $D>0, f_{xx}<0$ Max; $D<0$ Sattel
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Bei $D = 0$: keine Entscheidung via Hesse, höhere Ordnungen nötig
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Mehrere NB: $\nabla f = \sum \lambda_i \nabla g_i$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Richtungsableitung: $D_{\vec u} f = \nabla f \cdot \vec u / |\vec u|$
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — Gradient zeigt in Richtung stärksten Anstiegs, Betrag = maximale Steigung
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/mehrdim_analysis.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-pruefung-3-1`, `ex-mdim-pruefung-3-2`, `ex-mdim-pruefung-3-3`, `ex-mdim-pruefung-3-4`, `ex-mdim-pruefung-3-5`, `ex-mdim-pruefung-3-6`, `ex-mdim-pruefung-3-7`, `ex-mdim-pruefung-3-8` … (+1 weitere)
@@ -2280,15 +2321,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Bisektion: linear, halbiert Intervall, garantiert konvergent bei Vorzeichenwechsel
-  - [ ] [1] (hoch) Newton: quadratisch konvergent, $x_{n+1} = x_n - f(x_n)/f'(x_n)$
-  - [ ] [2] (hoch) Trapezregel: Fehler $O(h^2)$; Simpson: Fehler $O(h^4)$
-  - [ ] [3] (mittel) Konditionszahl $\kappa(A) = \|A\| \|A^{-1}\|$ — Stabilitätsindikator bei LGS
-  - [ ] [4] (mittel) Maschinengenauigkeit $\epsilon \approx 2{,}22 \cdot 10^{-16}$ (double), Rundungsfehler ansammeln
-  - [ ] [5] (hoch) Abbruchkriterium: $|x_{n+1} - x_n| < \epsilon$ oder max. Iterationen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Bisektion: linear, halbiert Intervall, garantiert konvergent bei Vorzeichenwechsel
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Newton: quadratisch konvergent, $x_{n+1} = x_n - f(x_n)/f'(x_n)$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Trapezregel: Fehler $O(h^2)$; Simpson: Fehler $O(h^4)$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Konditionszahl $\kappa(A) = \|A\| \|A^{-1}\|$ — Stabilitätsindikator bei LGS
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Maschinengenauigkeit $\epsilon \approx 2{,}22 \cdot 10^{-16}$ (double), Rundungsfehler ansammeln
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — Abbruchkriterium: $|x_{n+1} - x_n| < \epsilon$ oder max. Iterationen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/numerik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-pruefung-1-1`, `ex-num-pruefung-1-2`, `ex-num-pruefung-1-3`, `ex-num-pruefung-1-4`, `ex-num-pruefung-1-5`, `ex-num-pruefung-1-6`, `ex-num-pruefung-1-7`, `ex-num-pruefung-1-8` … (+1 weitere)
@@ -2303,15 +2345,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Trapez: $T(h) = h[(f_0+f_n)/2 + \sum_{i=1}^{n-1} f_i]$
-  - [ ] [1] (hoch) Simpson: $S(h) = (h/3)[f_0 + 4\sum_{\text{ung.}} f_i + 2\sum_{\text{ger.}} f_i + f_n]$, $n$ gerade
-  - [ ] [2] (hoch) Fehler Trapez: $|E| \leq (b-a) h^2 \max|f''|/12$
-  - [ ] [3] (hoch) Fehler Simpson: $|E| \leq (b-a) h^4 \max|f^{(4)}|/180$
-  - [ ] [4] (hoch) Anzahl $n$ für Toleranz: Fehlerformel nach $h$ bzw. $n$ auflösen
-  - [ ] [5] (mittel) Simpson exakt für Polynome bis Grad 3 (trotz Ordnung 4)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Trapez: $T(h) = h[(f_0+f_n)/2 + \sum_{i=1}^{n-1} f_i]$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Simpson: $S(h) = (h/3)[f_0 + 4\sum_{\text{ung.}} f_i + 2\sum_{\text{ger.}} f_i + f_n]$, $n$ gerade
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Fehler Trapez: $|E| \leq (b-a) h^2 \max|f''|/12$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Fehler Simpson: $|E| \leq (b-a) h^4 \max|f^{(4)}|/180$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Anzahl $n$ für Toleranz: Fehlerformel nach $h$ bzw. $n$ auflösen
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Simpson exakt für Polynome bis Grad 3 (trotz Ordnung 4)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/numerik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-pruefung-2-1`, `ex-num-pruefung-2-2`, `ex-num-pruefung-2-3`, `ex-num-pruefung-2-4`, `ex-num-pruefung-2-5`, `ex-num-pruefung-2-6`, `ex-num-pruefung-2-7`, `ex-num-pruefung-2-8` … (+1 weitere)
@@ -2326,14 +2369,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×1, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** number-input, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Methodenwahl-Matrix: Nullstelle → Newton/Bisekt.; Integral → Simpson; LGS → Gauß/LU
-  - [ ] [1] (hoch) Newton schlägt fehl bei $f' \approx 0$ → Bisektion als Fallback robust
-  - [ ] [2] (hoch) Abbruchkriterium: absolut $|x_{n+1} - x_n| < \epsilon_{\text{abs}}$ oder relativ
-  - [ ] [3] (mittel) Euler-Verfahren für DGL: explizit instabil bei steifen Systemen; implizit stabil
-  - [ ] [4] (mittel) Runge-Kutta 4 (RK4): Fehler $O(h^4)$, Standard für DGL-Anfangswertprobleme
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Methodenwahl-Matrix: Nullstelle → Newton/Bisekt.; Integral → Simpson; LGS → Gauß/LU
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Newton schlägt fehl bei $f' \approx 0$ → Bisektion als Fallback robust
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Abbruchkriterium: absolut $|x_{n+1} - x_n| < \epsilon_{\text{abs}}$ oder relativ
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Euler-Verfahren für DGL: explizit instabil bei steifen Systemen; implizit stabil
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Runge-Kutta 4 (RK4): Fehler $O(h^4)$, Standard für DGL-Anfangswertprobleme
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/numerik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-pruefung-3-1`, `ex-num-pruefung-3-2`, `ex-num-pruefung-3-3`, `ex-num-pruefung-3-4`, `ex-num-pruefung-3-5`, `ex-num-pruefung-3-6`, `ex-num-pruefung-3-7`, `ex-num-pruefung-3-8` … (+1 weitere)
@@ -2348,14 +2392,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) t-Test: Mittelwertvergleich, Verteilung bei unbekannter Varianz
-  - [ ] [1] (hoch) $\chi^2$-Test: Anpassung an Verteilung oder Unabhängigkeitsprüfung
-  - [ ] [2] (hoch) Testentscheidung: Prüfgröße mit Quantil vergleichen oder p-Wert mit $\alpha$
-  - [ ] [3] (mittel) Freiheitsgrade bei t-Test $df = n - 1$, bei $\chi^2$-Anpassung $df = k - 1 - r$
-  - [ ] [4] (mittel) Konfidenzintervall-Breite $\propto 1/\sqrt n$ — Halbierung braucht 4× Stichprobe
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — t-Test: Mittelwertvergleich, Verteilung bei unbekannter Varianz
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — $\chi^2$-Test: Anpassung an Verteilung oder Unabhängigkeitsprüfung
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Testentscheidung: Prüfgröße mit Quantil vergleichen oder p-Wert mit $\alpha$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Freiheitsgrade bei t-Test $df = n - 1$, bei $\chi^2$-Anpassung $df = k - 1 - r$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Konfidenzintervall-Breite $\propto 1/\sqrt n$ — Halbierung braucht 4× Stichprobe
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/statistik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-pruefung-1-1`, `ex-stat-pruefung-1-2`, `ex-stat-pruefung-1-3`, `ex-stat-pruefung-1-4`, `ex-stat-pruefung-1-5`, `ex-stat-pruefung-1-6`, `ex-stat-pruefung-1-7`, `ex-stat-pruefung-1-8` … (+1 weitere)
@@ -2370,14 +2415,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Standardisierung: $Z = (X - \mu)/\sigma \sim N(0,1)$
-  - [ ] [1] (hoch) $\Phi(-z) = 1 - \Phi(z)$ (Symmetrie)
-  - [ ] [2] (hoch) 68-95-99,7-Regel: $\pm 1\sigma \to 68\%$, $\pm 2\sigma \to 95\%$, $\pm 3\sigma \to 99{,}7\%$
-  - [ ] [3] (hoch) Zentrale Quantile: $z_{0{,}025} = 1{,}96$, $z_{0{,}05} = 1{,}645$, $z_{0{,}01} = 2{,}576$
-  - [ ] [4] (hoch) Rechts-, links-, beidseitiger Bereich: $P(X > a), P(X < a), P(a < X < b)$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Standardisierung: $Z = (X - \mu)/\sigma \sim N(0,1)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — $\Phi(-z) = 1 - \Phi(z)$ (Symmetrie)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — 68-95-99,7-Regel: $\pm 1\sigma \to 68\%$, $\pm 2\sigma \to 95\%$, $\pm 3\sigma \to 99{,}7\%$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Zentrale Quantile: $z_{0{,}025} = 1{,}96$, $z_{0{,}05} = 1{,}645$, $z_{0{,}01} = 2{,}576$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Rechts-, links-, beidseitiger Bereich: $P(X > a), P(X < a), P(a < X < b)$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/statistik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-pruefung-2-1`, `ex-stat-pruefung-2-2`, `ex-stat-pruefung-2-3`, `ex-stat-pruefung-2-4`, `ex-stat-pruefung-2-5`, `ex-stat-pruefung-2-6`, `ex-stat-pruefung-2-7`, `ex-stat-pruefung-2-8` … (+1 weitere)
@@ -2392,14 +2438,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Stichprobenmittel $\bar x = (1/n) \sum x_i$, Stichproben-SD $s = \sqrt{\sum(x_i - \bar x)^2 /(n-1)}$
-  - [ ] [1] (hoch) 95%-KI: $\bar x \pm z_{0{,}025} \cdot \sigma/\sqrt n$ (Normalverteilung, $\sigma$ bekannt)
-  - [ ] [2] (hoch) t-KI bei $\sigma$ unbekannt: $\bar x \pm t_{n-1; 0{,}025} \cdot s/\sqrt n$
-  - [ ] [3] (hoch) Stichprobenumfang: $n \geq (z_{\alpha/2} \sigma/\Delta)^2$ für Halbbreite $\Delta$
-  - [ ] [4] (mittel) Teiler $n-1$ bei Stichproben-Varianz (Bessel-Korrektur, erwartungstreu)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Stichprobenmittel $\bar x = (1/n) \sum x_i$, Stichproben-SD $s = \sqrt{\sum(x_i - \bar x)^2 /(n-1)}$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — 95%-KI: $\bar x \pm z_{0{,}025} \cdot \sigma/\sqrt n$ (Normalverteilung, $\sigma$ bekannt)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — t-KI bei $\sigma$ unbekannt: $\bar x \pm t_{n-1; 0{,}025} \cdot s/\sqrt n$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Stichprobenumfang: $n \geq (z_{\alpha/2} \sigma/\Delta)^2$ für Halbbreite $\Delta$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Teiler $n-1$ bei Stichproben-Varianz (Bessel-Korrektur, erwartungstreu)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/statistik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-pruefung-3-1`, `ex-stat-pruefung-3-2`, `ex-stat-pruefung-3-3`, `ex-stat-pruefung-3-4`, `ex-stat-pruefung-3-5`, `ex-stat-pruefung-3-6`, `ex-stat-pruefung-3-7`, `ex-stat-pruefung-3-8` … (+1 weitere)
@@ -2416,12 +2463,13 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 5 (Minimum: 10) · **fehlen mindestens:** 5 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×2, number-input ×1, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, number-input, true-false, matching, multiple-choice
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Winkeltypen: spitz $<90°$, recht $=90°$, stumpf $90°–180°$, gestreckt $=180°$, voll $=360°$
-  - [ ] [1] (hoch) Innenwinkelsumme im Dreieck ist immer $180°$ — daraus 3. Winkel berechnen
-  - [ ] [2] (mittel) Scheitel-/Nebenwinkel an sich schneidenden Geraden: Scheitelwinkel gleich, Nebenwinkel ergänzen auf $180°$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Winkeltypen: spitz $<90°$, recht $=90°$, stumpf $90°–180°$, gestreckt $=180°$, voll $=360°$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Innenwinkelsumme im Dreieck ist immer $180°$ — daraus 3. Winkel berechnen
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Scheitel-/Nebenwinkel an sich schneidenden Geraden: Scheitelwinkel gleich, Nebenwinkel ergänzen auf $180°$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
@@ -2435,12 +2483,13 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 5 (Minimum: 10) · **fehlen mindestens:** 5 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** number-input, sorting, true-false, matching, multiple-choice
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Punkt = Ort mit Koordinaten; Vektor = Verschiebung mit Richtung und Länge
-  - [ ] [1] (hoch) Vektor von $A$ nach $B$: $\vec{AB} = B - A$ (komponentenweise Subtraktion)
-  - [ ] [2] (mittel) Freier Vektor: gleicher Richtung und Länge → gleicher Vektor, egal wo eingezeichnet
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Punkt = Ort mit Koordinaten; Vektor = Verschiebung mit Richtung und Länge
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Vektor von $A$ nach $B$: $\vec{AB} = B - A$ (komponentenweise Subtraktion)
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Freier Vektor: gleicher Richtung und Länge → gleicher Vektor, egal wo eingezeichnet
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/vektoren.js`
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
@@ -2454,12 +2503,13 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 5 (Minimum: 10) · **fehlen mindestens:** 5 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, multiple-choice, true-false, matching, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) SI-Präfixe giga, mega, kilo, milli, mikro, nano zuordnen
-  - [ ] [1] (mittel) Kilogramm als einzige SI-Basiseinheit mit Präfix
-  - [ ] [2] (hoch) Wissenschaftliche Notation $a \cdot 10^n$ sicher schreiben
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — SI-Präfixe giga, mega, kilo, milli, mikro, nano zuordnen
+  - 🔴 [1] (mittel) **0/3+** Aufgaben — Kilogramm als einzige SI-Basiseinheit mit Präfix
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Wissenschaftliche Notation $a \cdot 10^n$ sicher schreiben
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
@@ -2473,13 +2523,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 5 (Minimum: 10) · **fehlen mindestens:** 5 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, multiple-choice, true-false, matching, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Newton $1\,\text{N} = 1\,\text{kg}\cdot\text{m}/\text{s}^2$ zerlegen
-  - [ ] [1] (hoch) $1\,\text{MPa} = 1\,\text{N}/\text{mm}^2$ (Ingenieur-Konvention)
-  - [ ] [2] (mittel) bar $\leftrightarrow$ Pa: $1\,\text{bar}=10^5\,\text{Pa}$
-  - [ ] [3] (hoch) Dimensionsanalyse als Kontrollschritt
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Newton $1\,\text{N} = 1\,\text{kg}\cdot\text{m}/\text{s}^2$ zerlegen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — $1\,\text{MPa} = 1\,\text{N}/\text{mm}^2$ (Ingenieur-Konvention)
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — bar $\leftrightarrow$ Pa: $1\,\text{bar}=10^5\,\text{Pa}$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Dimensionsanalyse als Kontrollschritt
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
@@ -2493,14 +2544,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 5 (Minimum: 10) · **fehlen mindestens:** 5 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×2, number-input ×2, true-false ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Drei Schnittgrößen: Normalkraft $N(x)$, Querkraft $Q(x)$, Biegemoment $M(x)$
-  - [ ] [1] (hoch) Zusammenhang: $Q(x) = dM/dx$, $q(x) = -dQ/dx$
-  - [ ] [2] (hoch) Sprung in $Q$ bei Einzellast $F$, Knick in $M$ bei Einzellast
-  - [ ] [3] (hoch) $M_{\max}$ an Stelle mit $Q = 0$ (gefährliche Stelle)
-  - [ ] [4] (hoch) An gelenkigen Auflagern ist $M = 0$ (Randbedingung)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Drei Schnittgrößen: Normalkraft $N(x)$, Querkraft $Q(x)$, Biegemoment $M(x)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Zusammenhang: $Q(x) = dM/dx$, $q(x) = -dQ/dx$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Sprung in $Q$ bei Einzellast $F$, Knick in $M$ bei Einzellast
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — $M_{\max}$ an Stelle mit $Q = 0$ (gefährliche Stelle)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — An gelenkigen Auflagern ist $M = 0$ (Randbedingung)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-3-a`, `ex-mech-1-3-b`, `ex-mech-1-3-c`, `ex-mech-1-3-d`, `ex-mech-1-3-e`
@@ -2515,15 +2567,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 5 (Minimum: 10) · **fehlen mindestens:** 5 — mehr ist besser
 - **Typen vorhanden:** number-input ×5
 - **Typen einsetzen (Rotation):** multiple-choice, true-false, matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Gleichförmig beschleunigt: $v = v_0 + at$, $s = s_0 + v_0 t + \tfrac{1}{2}at^2$
-  - [ ] [1] (hoch) Energiegleichung: $v^2 = v_0^2 + 2a\Delta s$ (ohne Zeit)
-  - [ ] [2] (hoch) Freier Fall: $a = g$, $v = gt$, $h = \tfrac{1}{2}gt^2$
-  - [ ] [3] (hoch) Schräger Wurf: $v_x = v_0 \cos\alpha$, $v_y = v_0 \sin\alpha$, Wurfweite $= v_0^2 \sin 2\alpha/g$
-  - [ ] [4] (hoch) Kreisbewegung: $\omega = 2\pi/T = 2\pi n$, $v = r\omega$, $a_z = v^2/r = r\omega^2$
-  - [ ] [5] (hoch) Impulserhaltung: $\sum m_i v_i = $ const (auch bei unelastischem Stoß)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Gleichförmig beschleunigt: $v = v_0 + at$, $s = s_0 + v_0 t + \tfrac{1}{2}at^2$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Energiegleichung: $v^2 = v_0^2 + 2a\Delta s$ (ohne Zeit)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Freier Fall: $a = g$, $v = gt$, $h = \tfrac{1}{2}gt^2$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Schräger Wurf: $v_x = v_0 \cos\alpha$, $v_y = v_0 \sin\alpha$, Wurfweite $= v_0^2 \sin 2\alpha/g$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Kreisbewegung: $\omega = 2\pi/T = 2\pi n$, $v = r\omega$, $a_z = v^2/r = r\omega^2$
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — Impulserhaltung: $\sum m_i v_i = $ const (auch bei unelastischem Stoß)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-3-a`, `ex-mech-2-3-b`, `ex-mech-2-3-c`, `ex-mech-2-3-d`, `ex-mech-2-3-e`
@@ -2538,14 +2591,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 6 (Minimum: 10) · **fehlen mindestens:** 4 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×1, number-input ×3, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, multiple-choice, true-false, matching
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Grundformel: $W = G \cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$
-  - [ ] [1] (hoch) Wachstumsfaktor: $+p\% \to \times(1 + p/100)$, $-p\% \to \times(1 - p/100)$
-  - [ ] [2] (hoch) Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\%$ dann $-10\% \neq 0$)
-  - [ ] [3] (hoch) Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$
-  - [ ] [4] (mittel) Prozentpunkt vs. Prozent: $15\%$ auf $10\%$ erhöht ist $11{,}5\%$, nicht $25\%$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Grundformel: $W = G \cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Wachstumsfaktor: $+p\% \to \times(1 + p/100)$, $-p\% \to \times(1 - p/100)$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\%$ dann $-10\% \neq 0$)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Prozentpunkt vs. Prozent: $15\%$ auf $10\%$ erhöht ist $11{,}5\%$, nicht $25\%$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 4 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
@@ -2559,14 +2613,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 6 (Minimum: 10) · **fehlen mindestens:** 4 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×2, number-input ×2, true-false ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, true-false, sorting, multiple-choice
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren
-  - [ ] [1] (hoch) Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)
-  - [ ] [2] (hoch) Binomische Formeln: $(a\pm b)^2 = a^2 \pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$
-  - [ ] [3] (hoch) Äquivalenzumformungen: auf beiden Seiten dasselbe tun, nicht durch Null teilen
-  - [ ] [4] (mittel) Beim Quadrieren Probe nötig (Scheinlösungen möglich)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Binomische Formeln: $(a\pm b)^2 = a^2 \pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Äquivalenzumformungen: auf beiden Seiten dasselbe tun, nicht durch Null teilen
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Beim Quadrieren Probe nötig (Scheinlösungen möglich)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 4 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
@@ -2574,7 +2629,7 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
   - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
-### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 174 Lessons
+### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 175 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -2582,15 +2637,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 8 (Minimum: 10) · **fehlen mindestens:** 2 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Stetigkeit in $a$: $\lim_{x \to a} f(x) = f(a)$ (beide Seiten gleich UND gleich Funktionswert)
-  - [ ] [1] (hoch) Hebbare Unstetigkeit: Grenzwert existiert, aber $f(a)$ fehlt oder weicht ab
-  - [ ] [2] (hoch) Sprungstelle: links- und rechtsseitiger Grenzwert existieren, sind aber verschieden
-  - [ ] [3] (hoch) Polstelle: $|f(x)| \to \infty$ für $x \to a$ (kein endlicher Grenzwert)
-  - [ ] [4] (hoch) Zwischenwertsatz: $f$ stetig auf $[a,b]$ nimmt jeden Wert zwischen $f(a)$ und $f(b)$ an
-  - [ ] [5] (mittel) Differenzierbar $\Rightarrow$ stetig, aber Umkehrung falsch (z.B. $|x|$ bei $0$)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Stetigkeit in $a$: $\lim_{x \to a} f(x) = f(a)$ (beide Seiten gleich UND gleich Funktionswert)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Hebbare Unstetigkeit: Grenzwert existiert, aber $f(a)$ fehlt oder weicht ab
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Sprungstelle: links- und rechtsseitiger Grenzwert existieren, sind aber verschieden
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Polstelle: $|f(x)| \to \infty$ für $x \to a$ (kein endlicher Grenzwert)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Zwischenwertsatz: $f$ stetig auf $[a,b]$ nimmt jeden Wert zwischen $f(a)$ und $f(b)$ an
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Differenzierbar $\Rightarrow$ stetig, aber Umkehrung falsch (z.B. $|x|$ bei $0$)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 2 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-5-2-manual-1`, `ex-abl-5-2-manual-2`, `ex-abl-5-2-manual-3`, `ex-abl-5-2-manual-4`, `ex-abl-5-2-manual-5`, `ex-abl-5-2-manual-6`, `ex-abl-5-2-manual-7`, `ex-abl-5-2-mastery`
@@ -2605,14 +2661,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 8 (Minimum: 10) · **fehlen mindestens:** 2 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) $R_e$ = Streckgrenze (Ende elastisch); $R_m$ = Zugfestigkeit (Maximum); nicht verwechseln
-  - [ ] [1] (hoch) $R_{p0,2}$ = 0,2-%-Dehngrenze bei Werkstoffen ohne ausgeprägte Streckgrenze (z. B. Aluminium)
-  - [ ] [2] (hoch) E-Modul = Steigung im linearen (Hookeschen) Bereich: $E = \sigma/\varepsilon$
-  - [ ] [3] (mittel) Bruchdehnung $A$ in %: $(l_u - l_0)/l_0 \cdot 100$ — zäh vs. spröde
-  - [ ] [4] (mittel) Sicherheit $S = R_m/\sigma_\text{zul}$ bzw. $R_e/\sigma_\text{zul}$ — wo welcher Kennwert?
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — $R_e$ = Streckgrenze (Ende elastisch); $R_m$ = Zugfestigkeit (Maximum); nicht verwechseln
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — $R_{p0,2}$ = 0,2-%-Dehngrenze bei Werkstoffen ohne ausgeprägte Streckgrenze (z. B. Aluminium)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — E-Modul = Steigung im linearen (Hookeschen) Bereich: $E = \sigma/\varepsilon$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Bruchdehnung $A$ in %: $(l_u - l_0)/l_0 \cdot 100$ — zäh vs. spröde
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Sicherheit $S = R_m/\sigma_\text{zul}$ bzw. $R_e/\sigma_\text{zul}$ — wo welcher Kennwert?
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/werkstoffkunde.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 2 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-1-1-manual-1`, `ex-werk-1-1-manual-2`, `ex-werk-1-1-manual-3`, `ex-werk-1-1-manual-4`, `ex-werk-1-1-manual-5`, `ex-werk-1-1-manual-6`, `ex-werk-1-1-manual-7`, `ex-werk-1-1-mastery`
@@ -2627,14 +2684,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 8 (Minimum: 10) · **fehlen mindestens:** 2 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Metalle: zäh, gut umformbar, gut wärmeleitend — tragende Konstruktionen
-  - [ ] [1] (hoch) Keramik: hart, hitzebeständig, spröde — **nicht auf Zug** belasten
-  - [ ] [2] (mittel) Kunststoffe: leicht, korrosionsfest, niedriger E-Modul — Gehäuse, Gleitlager
-  - [ ] [3] (mittel) Verbunde (CFK, GFK): hohe spezifische Steifigkeit $E/\rho$ — Leichtbau
-  - [ ] [4] (mittel) Spezifische Steifigkeit $E/\rho$ als Leichtbau-Kennzahl (Titan, CFK, Alu > Stahl)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Metalle: zäh, gut umformbar, gut wärmeleitend — tragende Konstruktionen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Keramik: hart, hitzebeständig, spröde — **nicht auf Zug** belasten
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Kunststoffe: leicht, korrosionsfest, niedriger E-Modul — Gehäuse, Gleitlager
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Verbunde (CFK, GFK): hohe spezifische Steifigkeit $E/\rho$ — Leichtbau
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Spezifische Steifigkeit $E/\rho$ als Leichtbau-Kennzahl (Titan, CFK, Alu > Stahl)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/werkstoffkunde.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 2 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-1-2-manual-1`, `ex-werk-1-2-manual-2`, `ex-werk-1-2-manual-3`, `ex-werk-1-2-manual-4`, `ex-werk-1-2-manual-5`, `ex-werk-1-2-manual-6`, `ex-werk-1-2-manual-7`, `ex-werk-1-2-mastery`
@@ -2649,13 +2707,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 8 (Minimum: 10) · **fehlen mindestens:** 2 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Vickers (HV): Diamantpyramide, universell für hart und dünn; Brinell (HB): Kugel, für weichere Werkstoffe
-  - [ ] [1] (hoch) Rockwell (HRC): direkt ablesbar am Messgerät — schnellste Prüfmethode in der Fertigung
-  - [ ] [2] (mittel) Faustformel Stahl: $R_m \approx 3{,}5 \cdot HV$ in MPa — Härte korreliert mit Zugfestigkeit
-  - [ ] [3] (mittel) Prüfkraft und Probendicke müssen zusammen passen, sonst verfälscht Untergrund das Ergebnis
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Vickers (HV): Diamantpyramide, universell für hart und dünn; Brinell (HB): Kugel, für weichere Werkstoffe
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Rockwell (HRC): direkt ablesbar am Messgerät — schnellste Prüfmethode in der Fertigung
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Faustformel Stahl: $R_m \approx 3{,}5 \cdot HV$ in MPa — Härte korreliert mit Zugfestigkeit
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Prüfkraft und Probendicke müssen zusammen passen, sonst verfälscht Untergrund das Ergebnis
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/werkstoffkunde.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 2 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-2-1-manual-1`, `ex-werk-2-1-manual-2`, `ex-werk-2-1-manual-3`, `ex-werk-2-1-manual-4`, `ex-werk-2-1-manual-5`, `ex-werk-2-1-manual-6`, `ex-werk-2-1-manual-7`
@@ -2670,14 +2729,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 8 (Minimum: 10) · **fehlen mindestens:** 2 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Charpy-Versuch: Pendel bricht gekerbte Probe, $KV = mg(h_0 - h_1)$ in Joule
-  - [ ] [1] (hoch) Hohe $KV$ → zäh, niedrige $KV$ → spröde
-  - [ ] [2] (hoch) Kritischer Grenzwert Stahlbau: $KV \geq 27$ J bei Einsatztemperatur
-  - [ ] [3] (hoch) Übergangstemperatur $T_\ddot{U}$: Abfall von $KV$ unterhalb → Sprödbruchgefahr bei Kälte
-  - [ ] [4] (mittel) Stahlbezeichnungen: J0 bei 0°C, J2 bei −20°C, K2 bei −40°C geprüft
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Charpy-Versuch: Pendel bricht gekerbte Probe, $KV = mg(h_0 - h_1)$ in Joule
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Hohe $KV$ → zäh, niedrige $KV$ → spröde
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Kritischer Grenzwert Stahlbau: $KV \geq 27$ J bei Einsatztemperatur
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Übergangstemperatur $T_\ddot{U}$: Abfall von $KV$ unterhalb → Sprödbruchgefahr bei Kälte
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Stahlbezeichnungen: J0 bei 0°C, J2 bei −20°C, K2 bei −40°C geprüft
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/werkstoffkunde.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 2 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-2-2-manual-1`, `ex-werk-2-2-manual-2`, `ex-werk-2-2-manual-3`, `ex-werk-2-2-manual-4`, `ex-werk-2-2-manual-5`, `ex-werk-2-2-manual-6`, `ex-werk-2-2-manual-7`
@@ -2692,13 +2752,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×1, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** number-input, true-false, matching
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) $i^2 = -1$ als Definition — $i$ ist keine Variable, sondern fixes Symbol
-  - [ ] [1] (hoch) $\operatorname{Re}(z)$ und $\operatorname{Im}(z)$: beide reell (der Imaginärteil ist **nicht** $bi$, sondern $b$)
-  - [ ] [2] (hoch) Konjugierte $\bar z = a - bi$: Spiegelung an reeller Achse
-  - [ ] [3] (mittel) Reelle Zahl ⇔ $\operatorname{Im}(z) = 0$; rein imaginär ⇔ $\operatorname{Re}(z) = 0$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — $i^2 = -1$ als Definition — $i$ ist keine Variable, sondern fixes Symbol
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — $\operatorname{Re}(z)$ und $\operatorname{Im}(z)$: beide reell (der Imaginärteil ist **nicht** $bi$, sondern $b$)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Konjugierte $\bar z = a - bi$: Spiegelung an reeller Achse
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Reelle Zahl ⇔ $\operatorname{Im}(z) = 0$; rein imaginär ⇔ $\operatorname{Re}(z) = 0$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-1-1-1`, `ex-komz-1-1-2`, `ex-komz-1-1-3`, `ex-komz-1-1-4`, `ex-komz-1-1-5`, `ex-komz-1-1-6`, `ex-komz-1-1-7`, `ex-komz-1-1-8` … (+1 weitere)
@@ -2713,13 +2774,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, true-false, matching
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Addition/Subtraktion komponentenweise — wie Vektoren
-  - [ ] [1] (hoch) Multiplikation: $(a+bi)(c+di)$ ausmultiplizieren und $i^2 = -1$ einsetzen
-  - [ ] [2] (hoch) Division: Zähler **und** Nenner mit $\bar{c+di} = c-di$ erweitern → Nenner reell $c^2 + d^2$
-  - [ ] [3] (mittel) $z \cdot \bar z = |z|^2 = a^2 + b^2$ — immer reell und nicht-negativ
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Addition/Subtraktion komponentenweise — wie Vektoren
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Multiplikation: $(a+bi)(c+di)$ ausmultiplizieren und $i^2 = -1$ einsetzen
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Division: Zähler **und** Nenner mit $\bar{c+di} = c-di$ erweitern → Nenner reell $c^2 + d^2$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — $z \cdot \bar z = |z|^2 = a^2 + b^2$ — immer reell und nicht-negativ
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-1-2-1`, `ex-komz-1-2-2`, `ex-komz-1-2-3`, `ex-komz-1-2-4`, `ex-komz-1-2-5`, `ex-komz-1-2-6`, `ex-komz-1-2-7`, `ex-komz-1-2-8` … (+1 weitere)
@@ -2734,15 +2796,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Betrag: $|z| = \sqrt{a^2 + b^2}$ (Pythagoras)
-  - [ ] [1] (hoch) Argument: $\varphi = \arg(z)$ mit $\text{atan2}(b,a)$ (Quadrant beachten!)
-  - [ ] [2] (hoch) Polarform: $z = |z|(\cos\varphi + i\sin\varphi) = |z| e^{i\varphi}$
-  - [ ] [3] (hoch) Rücktransformation: $a = |z|\cos\varphi$, $b = |z|\sin\varphi$
-  - [ ] [4] (mittel) Hauptwert des Arguments: $\varphi \in (-\pi, \pi]$ (Konvention)
-  - [ ] [5] (hoch) Typische Falle: einfacher $\arctan(b/a)$ gibt falschen Quadranten
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Betrag: $|z| = \sqrt{a^2 + b^2}$ (Pythagoras)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Argument: $\varphi = \arg(z)$ mit $\text{atan2}(b,a)$ (Quadrant beachten!)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Polarform: $z = |z|(\cos\varphi + i\sin\varphi) = |z| e^{i\varphi}$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Rücktransformation: $a = |z|\cos\varphi$, $b = |z|\sin\varphi$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Hauptwert des Arguments: $\varphi \in (-\pi, \pi]$ (Konvention)
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — Typische Falle: einfacher $\arctan(b/a)$ gibt falschen Quadranten
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-2-1-1`, `ex-komz-2-1-2`, `ex-komz-2-1-3`, `ex-komz-2-1-4`, `ex-komz-2-1-5`, `ex-komz-2-1-6`, `ex-komz-2-1-7`, `ex-komz-2-1-8` … (+1 weitere)
@@ -2757,15 +2820,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, true-false, matching
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Euler-Formel: $e^{i\varphi} = \cos\varphi + i\sin\varphi$
-  - [ ] [1] (mittel) Euler'sche Identität: $e^{i\pi} + 1 = 0$ (fünf Konstanten in einer Gleichung)
-  - [ ] [2] (hoch) Multiplikation: $z_1 z_2 = r_1 r_2 e^{i(\varphi_1 + \varphi_2)}$ (Beträge mal, Argumente plus)
-  - [ ] [3] (hoch) Division: $z_1/z_2 = (r_1/r_2) e^{i(\varphi_1 - \varphi_2)}$
-  - [ ] [4] (hoch) Konjugiert-komplex in Polarform: $\bar z = r e^{-i\varphi}$
-  - [ ] [5] (mittel) Sinus/Cosinus aus Euler: $\cos\varphi = (e^{i\varphi} + e^{-i\varphi})/2$, $\sin\varphi = (e^{i\varphi} - e^{-i\varphi})/(2i)$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Euler-Formel: $e^{i\varphi} = \cos\varphi + i\sin\varphi$
+  - 🔴 [1] (mittel) **0/3+** Aufgaben — Euler'sche Identität: $e^{i\pi} + 1 = 0$ (fünf Konstanten in einer Gleichung)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Multiplikation: $z_1 z_2 = r_1 r_2 e^{i(\varphi_1 + \varphi_2)}$ (Beträge mal, Argumente plus)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Division: $z_1/z_2 = (r_1/r_2) e^{i(\varphi_1 - \varphi_2)}$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Konjugiert-komplex in Polarform: $\bar z = r e^{-i\varphi}$
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Sinus/Cosinus aus Euler: $\cos\varphi = (e^{i\varphi} + e^{-i\varphi})/2$, $\sin\varphi = (e^{i\varphi} - e^{-i\varphi})/(2i)$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-2-2-1`, `ex-komz-2-2-2`, `ex-komz-2-2-3`, `ex-komz-2-2-4`, `ex-komz-2-2-5`, `ex-komz-2-2-6`, `ex-komz-2-2-7`, `ex-komz-2-2-8` … (+1 weitere)
@@ -2780,14 +2844,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Moivre: $z^n = |z|^n e^{in\varphi} = |z|^n (\cos n\varphi + i \sin n\varphi)$
-  - [ ] [1] (hoch) Betrag hoch $n$, Argument mal $n$
-  - [ ] [2] (mittel) Anwendung: Mehrfach-Winkel-Formeln ($\cos 2\varphi, \sin 3\varphi, \ldots$) herleitbar
-  - [ ] [3] (hoch) Geometrisch: Streckung + Drehung — wiederholte Rotation um $\varphi$
-  - [ ] [4] (mittel) Negative Potenzen: $z^{-1} = (1/|z|) e^{-i\varphi}$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Moivre: $z^n = |z|^n e^{in\varphi} = |z|^n (\cos n\varphi + i \sin n\varphi)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Betrag hoch $n$, Argument mal $n$
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Anwendung: Mehrfach-Winkel-Formeln ($\cos 2\varphi, \sin 3\varphi, \ldots$) herleitbar
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Geometrisch: Streckung + Drehung — wiederholte Rotation um $\varphi$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Negative Potenzen: $z^{-1} = (1/|z|) e^{-i\varphi}$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-3-1-1`, `ex-komz-3-1-2`, `ex-komz-3-1-3`, `ex-komz-3-1-4`, `ex-komz-3-1-5`, `ex-komz-3-1-6`, `ex-komz-3-1-7`, `ex-komz-3-1-8` … (+1 weitere)
@@ -2802,15 +2867,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Wurzelformel: $z_k = |w|^{1/n} e^{i(\varphi + 2\pi k)/n}$ für $k = 0, 1, \ldots, n-1$
-  - [ ] [1] (hoch) Anzahl: genau $n$ verschiedene $n$-te Wurzeln (Fundamentalsatz der Algebra)
-  - [ ] [2] (hoch) Geometrisch: regelmäßiges $n$-Eck auf Kreis mit Radius $|w|^{1/n}$
-  - [ ] [3] (hoch) Winkelabstand zwischen Wurzeln: $2\pi/n$
-  - [ ] [4] (hoch) Einheitswurzeln ($w=1$): $z_k = e^{i 2\pi k/n}$ — Ecken eines regelmäßigen $n$-Ecks
-  - [ ] [5] (mittel) Hauptwurzel $k=0$: die mit kleinstem positivem Argument
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Wurzelformel: $z_k = |w|^{1/n} e^{i(\varphi + 2\pi k)/n}$ für $k = 0, 1, \ldots, n-1$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Anzahl: genau $n$ verschiedene $n$-te Wurzeln (Fundamentalsatz der Algebra)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Geometrisch: regelmäßiges $n$-Eck auf Kreis mit Radius $|w|^{1/n}$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Winkelabstand zwischen Wurzeln: $2\pi/n$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Einheitswurzeln ($w=1$): $z_k = e^{i 2\pi k/n}$ — Ecken eines regelmäßigen $n$-Ecks
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Hauptwurzel $k=0$: die mit kleinstem positivem Argument
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-3-2-1`, `ex-komz-3-2-2`, `ex-komz-3-2-3`, `ex-komz-3-2-4`, `ex-komz-3-2-5`, `ex-komz-3-2-6`, `ex-komz-3-2-7`, `ex-komz-3-2-8` … (+1 weitere)
@@ -2825,14 +2891,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×1, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** number-input, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Grenzwert $\lim_{n\to\infty} a_n$ anschaulich als „bleibt schließlich in jedem $\varepsilon$-Schlauch" begreifen
-  - [ ] [1] (hoch) Rationale Folgen: Grad-Vergleich (Zähler/Nenner) entscheidet über $0$, endlicher Grenzwert oder $\pm\infty$
-  - [ ] [2] (hoch) Grenzwertsätze: Summe, Produkt, Quotient (sofern Nennergrenzwert $\neq 0$)
-  - [ ] [3] (mittel) Monoton + beschränkt $\Rightarrow$ konvergent (ohne Grenzwert ausrechnen zu müssen)
-  - [ ] [4] (hoch) Nullfolgen: $1/n$, $1/n^k$, $q^n$ mit $|q|<1$ — als Bausteine auswendig
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Grenzwert $\lim_{n\to\infty} a_n$ anschaulich als „bleibt schließlich in jedem $\varepsilon$-Schlauch" begreifen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Rationale Folgen: Grad-Vergleich (Zähler/Nenner) entscheidet über $0$, endlicher Grenzwert oder $\pm\infty$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Grenzwertsätze: Summe, Produkt, Quotient (sofern Nennergrenzwert $\neq 0$)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Monoton + beschränkt $\Rightarrow$ konvergent (ohne Grenzwert ausrechnen zu müssen)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Nullfolgen: $1/n$, $1/n^k$, $q^n$ mit $|q|<1$ — als Bausteine auswendig
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/reihen_folgen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-1-1-1`, `ex-rf-1-1-2`, `ex-rf-1-1-3`, `ex-rf-1-1-4`, `ex-rf-1-1-5`, `ex-rf-1-1-6`, `ex-rf-1-1-7`, `ex-rf-1-1-8` … (+1 weitere)
@@ -2847,13 +2914,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Taylor-Formel $T_n(x) = \sum_{k=0}^n f^{(k)}(x_0)/k! \cdot (x-x_0)^k$
-  - [ ] [1] (hoch) Maclaurin-Reihen auswendig: $e^x$, $\sin x$, $\cos x$, $\ln(1+x)$, $1/(1-x)$
-  - [ ] [2] (mittel) Lagrange-Restglied $R_n = f^{(n+1)}(\xi)/(n+1)! \cdot (x-x_0)^{n+1}$ zum Fehler abschätzen
-  - [ ] [3] (mittel) Gerade Funktionen (cos) haben nur gerade Potenzen; ungerade (sin) nur ungerade
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Taylor-Formel $T_n(x) = \sum_{k=0}^n f^{(k)}(x_0)/k! \cdot (x-x_0)^k$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Maclaurin-Reihen auswendig: $e^x$, $\sin x$, $\cos x$, $\ln(1+x)$, $1/(1-x)$
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Lagrange-Restglied $R_n = f^{(n+1)}(\xi)/(n+1)! \cdot (x-x_0)^{n+1}$ zum Fehler abschätzen
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Gerade Funktionen (cos) haben nur gerade Potenzen; ungerade (sin) nur ungerade
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/reihen_folgen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-1-2-1`, `ex-rf-1-2-2`, `ex-rf-1-2-3`, `ex-rf-1-2-4`, `ex-rf-1-2-5`, `ex-rf-1-2-6`, `ex-rf-1-2-7`, `ex-rf-1-2-8` … (+1 weitere)
@@ -2868,14 +2936,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Beim Ableiten nach einer Variable: alle anderen sind **Konstanten**
-  - [ ] [1] (mittel) Schreibweisen $f_x$, $\partial f/\partial x$, $D_x f$ gleichwertig erkennen
-  - [ ] [2] (hoch) Gradient $\nabla f = (f_x, f_y)^T$ zeigt Richtung des steilsten Anstiegs
-  - [ ] [3] (hoch) Gradient $\perp$ Höhenlinie — Normale an Niveaumengen
-  - [ ] [4] (mittel) Satz von Schwarz: $f_{xy} = f_{yx}$ (bei stetigen zweiten Ableitungen)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Beim Ableiten nach einer Variable: alle anderen sind **Konstanten**
+  - 🔴 [1] (mittel) **0/3+** Aufgaben — Schreibweisen $f_x$, $\partial f/\partial x$, $D_x f$ gleichwertig erkennen
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Gradient $\nabla f = (f_x, f_y)^T$ zeigt Richtung des steilsten Anstiegs
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Gradient $\perp$ Höhenlinie — Normale an Niveaumengen
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Satz von Schwarz: $f_{xy} = f_{yx}$ (bei stetigen zweiten Ableitungen)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/mehrdim_analysis.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-1-1-1`, `ex-mdim-1-1-2`, `ex-mdim-1-1-3`, `ex-mdim-1-1-4`, `ex-mdim-1-1-5`, `ex-mdim-1-1-6`, `ex-mdim-1-1-7`, `ex-mdim-1-1-8` … (+1 weitere)
@@ -2890,14 +2959,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×1, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** number-input, true-false, matching
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Notwendige Bedingung für Extremum: $\nabla f = 0$ (kritischer Punkt)
-  - [ ] [1] (hoch) Hesse-Matrix $H = \begin{pmatrix} f_{xx} & f_{xy} \\ f_{yx} & f_{yy} \end{pmatrix}$ — Symmetrie nutzen
-  - [ ] [2] (hoch) $\det H > 0 \wedge f_{xx} > 0$ → Minimum, $< 0 \wedge f_{xx} < 0$ → Maximum, $\det H < 0$ → Sattel
-  - [ ] [3] (hoch) Lagrange: $\nabla f = \lambda\,\nabla g$ bei Nebenbedingung $g(x,y) = 0$
-  - [ ] [4] (mittel) Lagrange-System: $\nabla f - \lambda \nabla g = 0$ **und** $g = 0$ gemeinsam lösen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Notwendige Bedingung für Extremum: $\nabla f = 0$ (kritischer Punkt)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Hesse-Matrix $H = \begin{pmatrix} f_{xx} & f_{xy} \\ f_{yx} & f_{yy} \end{pmatrix}$ — Symmetrie nutzen
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — $\det H > 0 \wedge f_{xx} > 0$ → Minimum, $< 0 \wedge f_{xx} < 0$ → Maximum, $\det H < 0$ → Sattel
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Lagrange: $\nabla f = \lambda\,\nabla g$ bei Nebenbedingung $g(x,y) = 0$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Lagrange-System: $\nabla f - \lambda \nabla g = 0$ **und** $g = 0$ gemeinsam lösen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/mehrdim_analysis.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-1-2-1`, `ex-mdim-1-2-2`, `ex-mdim-1-2-3`, `ex-mdim-1-2-4`, `ex-mdim-1-2-5`, `ex-mdim-1-2-6`, `ex-mdim-1-2-7`, `ex-mdim-1-2-8` … (+1 weitere)
@@ -2912,13 +2982,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Iterationsvorschrift $x_{n+1} = x_n - f(x_n)/f'(x_n)$ korrekt aufbauen
-  - [ ] [1] (hoch) Abbruchkriterium: $|x_{n+1} - x_n| < \varepsilon$ **oder** $|f(x_n)| < \delta$
-  - [ ] [2] (mittel) Quadratische Konvergenz: Anzahl korrekter Stellen verdoppelt sich pro Schritt (bei guten Startwerten)
-  - [ ] [3] (hoch) Stolperfallen: $f'(x_n) = 0$ (Tangente horizontal), schlechter Startwert → Divergenz
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Iterationsvorschrift $x_{n+1} = x_n - f(x_n)/f'(x_n)$ korrekt aufbauen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Abbruchkriterium: $|x_{n+1} - x_n| < \varepsilon$ **oder** $|f(x_n)| < \delta$
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Quadratische Konvergenz: Anzahl korrekter Stellen verdoppelt sich pro Schritt (bei guten Startwerten)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Stolperfallen: $f'(x_n) = 0$ (Tangente horizontal), schlechter Startwert → Divergenz
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/numerik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-1-1-1`, `ex-num-1-1-2`, `ex-num-1-1-3`, `ex-num-1-1-4`, `ex-num-1-1-5`, `ex-num-1-1-6`, `ex-num-1-1-7`, `ex-num-1-1-8` … (+1 weitere)
@@ -2933,14 +3004,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Bisektion benötigt Vorzeichenwechsel: $f(a)\cdot f(b) < 0$
-  - [ ] [1] (hoch) Fehler der Bisektion nach $n$ Schritten: $(b-a)/2^n$ → Schrittzahl auflösen
-  - [ ] [2] (hoch) Trapezregel: $\tfrac{h}{2}(f_0 + 2f_1 + \ldots + 2f_{n-1} + f_n)$; Fehler $O(h^2)$
-  - [ ] [3] (hoch) Simpson: nur bei **gerader** Teilintervallanzahl anwendbar; Fehler $O(h^4)$
-  - [ ] [4] (mittel) Simpson ist exakt für Polynome bis Grad 3
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Bisektion benötigt Vorzeichenwechsel: $f(a)\cdot f(b) < 0$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Fehler der Bisektion nach $n$ Schritten: $(b-a)/2^n$ → Schrittzahl auflösen
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Trapezregel: $\tfrac{h}{2}(f_0 + 2f_1 + \ldots + 2f_{n-1} + f_n)$; Fehler $O(h^2)$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Simpson: nur bei **gerader** Teilintervallanzahl anwendbar; Fehler $O(h^4)$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Simpson ist exakt für Polynome bis Grad 3
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/numerik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-1-2-1`, `ex-num-1-2-2`, `ex-num-1-2-3`, `ex-num-1-2-4`, `ex-num-1-2-5`, `ex-num-1-2-6`, `ex-num-1-2-7`, `ex-num-1-2-8` … (+1 weitere)
@@ -2955,13 +3027,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Erwartungswert $E(X) = \sum_i x_i\,p_i$ bei diskreter $X$
-  - [ ] [1] (hoch) Verschiebungssatz: $\operatorname{Var}(X) = E(X^2) - E(X)^2$ (rechnerisch meist einfacher)
-  - [ ] [2] (mittel) Einheiten: $E(X)$ wie $X$, $\operatorname{Var}(X)$ wie $X^2$, $\sigma$ wie $X$
-  - [ ] [3] (hoch) Linearität: $E(aX + b) = a\,E(X) + b$, $\operatorname{Var}(aX + b) = a^2\,\operatorname{Var}(X)$ (Konstante fällt weg)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Erwartungswert $E(X) = \sum_i x_i\,p_i$ bei diskreter $X$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Verschiebungssatz: $\operatorname{Var}(X) = E(X^2) - E(X)^2$ (rechnerisch meist einfacher)
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Einheiten: $E(X)$ wie $X$, $\operatorname{Var}(X)$ wie $X^2$, $\sigma$ wie $X$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Linearität: $E(aX + b) = a\,E(X) + b$, $\operatorname{Var}(aX + b) = a^2\,\operatorname{Var}(X)$ (Konstante fällt weg)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/statistik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-1-1-1`, `ex-stat-1-1-2`, `ex-stat-1-1-3`, `ex-stat-1-1-4`, `ex-stat-1-1-5`, `ex-stat-1-1-6`, `ex-stat-1-1-7`, `ex-stat-1-1-8` … (+1 weitere)
@@ -2976,14 +3049,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Parameter: $\mu$ verschiebt, $\sigma$ streckt die Glockenkurve
-  - [ ] [1] (hoch) z-Transformation $Z = (X-\mu)/\sigma$: jede Normalverteilung auf $N(0,1)$ zurückführen
-  - [ ] [2] (hoch) 68/95/99{,}7-Regel: $\pm1\sigma$, $\pm2\sigma$, $\pm3\sigma$-Intervalle als Schätzung auswendig
-  - [ ] [3] (hoch) $\Phi(z) = P(Z \le z)$: Tabelle nur für $z \ge 0$, für $z < 0$ Symmetrie $\Phi(-z) = 1 - \Phi(z)$ nutzen
-  - [ ] [4] (hoch) $P(a \le X \le b) = \Phi(\tfrac{b-\mu}{\sigma}) - \Phi(\tfrac{a-\mu}{\sigma})$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Parameter: $\mu$ verschiebt, $\sigma$ streckt die Glockenkurve
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — z-Transformation $Z = (X-\mu)/\sigma$: jede Normalverteilung auf $N(0,1)$ zurückführen
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — 68/95/99{,}7-Regel: $\pm1\sigma$, $\pm2\sigma$, $\pm3\sigma$-Intervalle als Schätzung auswendig
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — $\Phi(z) = P(Z \le z)$: Tabelle nur für $z \ge 0$, für $z < 0$ Symmetrie $\Phi(-z) = 1 - \Phi(z)$ nutzen
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — $P(a \le X \le b) = \Phi(\tfrac{b-\mu}{\sigma}) - \Phi(\tfrac{a-\mu}{\sigma})$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/statistik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-1-2-1`, `ex-stat-1-2-2`, `ex-stat-1-2-3`, `ex-stat-1-2-4`, `ex-stat-1-2-5`, `ex-stat-1-2-6`, `ex-stat-1-2-7`, `ex-stat-1-2-8` … (+1 weitere)
@@ -2998,14 +3072,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 9 (Minimum: 10) · **fehlen mindestens:** 1 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) p-Wert < $\alpha$ → $H_0$ verwerfen (signifikantes Ergebnis)
-  - [ ] [1] (hoch) 95%-Konfidenzintervall Mittelwert: $\bar x \pm 1{,}96 \cdot \sigma/\sqrt n$ (normalverteilt)
-  - [ ] [2] (hoch) Fehler 1. Art ($\alpha$): $H_0$ verworfen obwohl wahr; 2. Art ($\beta$): $H_0$ behalten obwohl falsch
-  - [ ] [3] (mittel) t-Test bei unbekannter Varianz: $t = (\bar x - \mu_0)/(s/\sqrt n)$
-  - [ ] [4] (mittel) Einseitig vs. zweiseitig: einseitiger Test nutzt $z_\alpha$, zweiseitig $z_{\alpha/2}$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — p-Wert < $\alpha$ → $H_0$ verwerfen (signifikantes Ergebnis)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — 95%-Konfidenzintervall Mittelwert: $\bar x \pm 1{,}96 \cdot \sigma/\sqrt n$ (normalverteilt)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Fehler 1. Art ($\alpha$): $H_0$ verworfen obwohl wahr; 2. Art ($\beta$): $H_0$ behalten obwohl falsch
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — t-Test bei unbekannter Varianz: $t = (\bar x - \mu_0)/(s/\sqrt n)$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Einseitig vs. zweiseitig: einseitiger Test nutzt $z_\alpha$, zweiseitig $z_{\alpha/2}$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/statistik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-1-3-1`, `ex-stat-1-3-2`, `ex-stat-1-3-3`, `ex-stat-1-3-4`, `ex-stat-1-3-5`, `ex-stat-1-3-6`, `ex-stat-1-3-7`, `ex-stat-1-3-8` … (+1 weitere)
@@ -3020,12 +3095,13 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Quadranten I–IV durchnummerieren und Vorzeichen von $\sin$ (y-Koordinate) und $\cos$ (x-Koordinate) bestimmen
-  - [ ] [1] (hoch) Symmetrien: $\sin(180° - \alpha) = \sin\alpha$, $\cos(180° - \alpha) = -\cos\alpha$
-  - [ ] [2] (mittel) Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Quadranten I–IV durchnummerieren und Vorzeichen von $\sin$ (y-Koordinate) und $\cos$ (x-Koordinate) bestimmen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Symmetrien: $\sin(180° - \alpha) = \sin\alpha$, $\cos(180° - \alpha) = -\cos\alpha$
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-trig-1-4-a`, `ex-trig-1-4-b`, `ex-trig-1-4-manual-1`, `ex-trig-1-4-manual-2`, `ex-trig-1-4-manual-3`, `ex-trig-1-4-manual-4`, `ex-trig-1-4-manual-5`, `ex-trig-1-4-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
@@ -3038,13 +3114,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Einheitskreis = Kreis um Ursprung mit $r = 1$, Gleichung $x^2 + y^2 = 1$
-  - [ ] [1] (hoch) Punkt auf Kreis $P = (\cos\alpha, \sin\alpha)$ — Winkel von positiver $x$-Achse gegen Uhrzeigersinn
-  - [ ] [2] (hoch) Quadrantenpunkte: $0° \to (1,0)$, $90° \to (0,1)$, $180° \to (-1,0)$, $270° \to (0,-1)$
-  - [ ] [3] (niedrig) Durchmesser $d = 2$ nicht mit Radius $r = 1$ verwechseln
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Einheitskreis = Kreis um Ursprung mit $r = 1$, Gleichung $x^2 + y^2 = 1$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Punkt auf Kreis $P = (\cos\alpha, \sin\alpha)$ — Winkel von positiver $x$-Achse gegen Uhrzeigersinn
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Quadrantenpunkte: $0° \to (1,0)$, $90° \to (0,1)$, $180° \to (-1,0)$, $270° \to (0,-1)$
+  - 🔴 [3] (niedrig) **0/3+** Aufgaben — Durchmesser $d = 2$ nicht mit Radius $r = 1$ verwechseln
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-1-a`, `ex-trig-2-1-manual-1`, `ex-trig-2-1-manual-2`, `ex-trig-2-1-manual-3`, `ex-trig-2-1-manual-4`, `ex-trig-2-1-manual-5`, `ex-trig-2-1-manual-6`, `ex-trig-2-1-manual-7`
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
@@ -3057,14 +3134,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) $\cos\alpha$ = $x$-Koordinate (horizontal), $\sin\alpha$ = $y$-Koordinate (vertikal)
-  - [ ] [1] (hoch) Definition gilt für **alle** reellen Winkel, nicht nur $0°$–$90°$
-  - [ ] [2] (hoch) Aus Koordinaten $(x,y)$ auf Kreis den Winkel über Vorzeichen + Referenzwinkel ermitteln
-  - [ ] [3] (niedrig) Eselsbrücke: **c**osinus → **x**-Achse, **s**inus → $y$-Achse (vertikal)
-  - [ ] [4] (mittel) Werte liegen stets im Intervall $[-1, +1]$, weil $r = 1$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — $\cos\alpha$ = $x$-Koordinate (horizontal), $\sin\alpha$ = $y$-Koordinate (vertikal)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Definition gilt für **alle** reellen Winkel, nicht nur $0°$–$90°$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Aus Koordinaten $(x,y)$ auf Kreis den Winkel über Vorzeichen + Referenzwinkel ermitteln
+  - 🔴 [3] (niedrig) **0/3+** Aufgaben — Eselsbrücke: **c**osinus → **x**-Achse, **s**inus → $y$-Achse (vertikal)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Werte liegen stets im Intervall $[-1, +1]$, weil $r = 1$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-2-a`, `ex-trig-2-2-manual-1`, `ex-trig-2-2-manual-2`, `ex-trig-2-2-manual-3`, `ex-trig-2-2-manual-4`, `ex-trig-2-2-manual-5`, `ex-trig-2-2-manual-6`, `ex-trig-2-2-manual-7` … (+1 weitere)
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
@@ -3077,15 +3155,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Periodizität: $\sin(\alpha + 360°) = \sin\alpha$, $\cos(\alpha + 360°) = \cos\alpha$ (Periode $2\pi$)
-  - [ ] [1] (hoch) $\sin$ ungerade: $\sin(-\alpha) = -\sin\alpha$ — Spiegelung an $x$-Achse kippt $y$
-  - [ ] [2] (hoch) $\cos$ gerade: $\cos(-\alpha) = \cos\alpha$ — $x$-Koordinate unverändert
-  - [ ] [3] (mittel) Supplementformel: $\sin(180°-\alpha) = \sin\alpha$, $\cos(180°-\alpha) = -\cos\alpha$
-  - [ ] [4] (mittel) Komplementformel: $\sin(90°-\alpha) = \cos\alpha$, $\cos(90°-\alpha) = \sin\alpha$
-  - [ ] [5] (mittel) Punktspiegelung: $\sin(180°+\alpha) = -\sin\alpha$, $\cos(180°+\alpha) = -\cos\alpha$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Periodizität: $\sin(\alpha + 360°) = \sin\alpha$, $\cos(\alpha + 360°) = \cos\alpha$ (Periode $2\pi$)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — $\sin$ ungerade: $\sin(-\alpha) = -\sin\alpha$ — Spiegelung an $x$-Achse kippt $y$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — $\cos$ gerade: $\cos(-\alpha) = \cos\alpha$ — $x$-Koordinate unverändert
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Supplementformel: $\sin(180°-\alpha) = \sin\alpha$, $\cos(180°-\alpha) = -\cos\alpha$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Komplementformel: $\sin(90°-\alpha) = \cos\alpha$, $\cos(90°-\alpha) = \sin\alpha$
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Punktspiegelung: $\sin(180°+\alpha) = -\sin\alpha$, $\cos(180°+\alpha) = -\cos\alpha$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-3-b`, `ex-trig-2-3-manual-1`, `ex-trig-2-3-manual-2`, `ex-trig-2-3-manual-3`, `ex-trig-2-3-manual-4`, `ex-trig-2-3-manual-5`, `ex-trig-2-3-manual-6`, `ex-trig-2-3-manual-7` … (+1 weitere)
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
@@ -3098,15 +3177,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Definition: $\tan\alpha = \sin\alpha/\cos\alpha = y/x$ — Steigung der Ursprungsgerade
-  - [ ] [1] (hoch) Polstellen bei $\alpha = 90° + k\cdot 180°$ (überall dort $\cos\alpha = 0$)
-  - [ ] [2] (hoch) Periode von $\tan$ ist $180°$, nicht $360°$ (Steigung wiederholt sich nach halber Drehung)
-  - [ ] [3] (hoch) ASTC-Vorzeichen: $\tan > 0$ in 1. und 3. Quadrant, $\tan < 0$ in 2. und 4.
-  - [ ] [4] (mittel) $\tan$ ist ungerade: $\tan(-\alpha) = -\tan\alpha$
-  - [ ] [5] (mittel) Wertebereich: $(-\infty, +\infty)$, keine Beschränkung wie bei $\sin$/$\cos$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Definition: $\tan\alpha = \sin\alpha/\cos\alpha = y/x$ — Steigung der Ursprungsgerade
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Polstellen bei $\alpha = 90° + k\cdot 180°$ (überall dort $\cos\alpha = 0$)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Periode von $\tan$ ist $180°$, nicht $360°$ (Steigung wiederholt sich nach halber Drehung)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — ASTC-Vorzeichen: $\tan > 0$ in 1. und 3. Quadrant, $\tan < 0$ in 2. und 4.
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — $\tan$ ist ungerade: $\tan(-\alpha) = -\tan\alpha$
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Wertebereich: $(-\infty, +\infty)$, keine Beschränkung wie bei $\sin$/$\cos$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-4-a`, `ex-trig-2-4-b`, `ex-trig-2-4-manual-1`, `ex-trig-2-4-manual-2`, `ex-trig-2-4-manual-3`, `ex-trig-2-4-manual-4`, `ex-trig-2-4-manual-5`, `ex-trig-2-4-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
@@ -3119,15 +3199,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Quadrantengrenzen: Q1 $0°$–$90°$, Q2 $90°$–$180°$, Q3 $180°$–$270°$, Q4 $270°$–$360°$
-  - [ ] [1] (hoch) ASTC-Regel: **A**lle (Q1), **S**inus (Q2), **T**angens (Q3), **C**osinus (Q4) positiv
-  - [ ] [2] (hoch) Referenzwinkel = Abstand zur nächsten $x$-Achsen-Hälfte ($0°$ oder $180°$)
-  - [ ] [3] (hoch) 4-Schritt-Verfahren: Quadrant → Referenzwinkel → Grundwert (Q1) → Vorzeichen aus ASTC
-  - [ ] [4] (hoch) Standardwerte $\sin$/$\cos$ für $0°/30°/45°/60°/90°$ auswendig, Rest per Reduktion
-  - [ ] [5] (mittel) Winkel $> 360°$ oder $< 0°$ per $\alpha \bmod 360°$ in Hauptbereich bringen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Quadrantengrenzen: Q1 $0°$–$90°$, Q2 $90°$–$180°$, Q3 $180°$–$270°$, Q4 $270°$–$360°$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — ASTC-Regel: **A**lle (Q1), **S**inus (Q2), **T**angens (Q3), **C**osinus (Q4) positiv
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Referenzwinkel = Abstand zur nächsten $x$-Achsen-Hälfte ($0°$ oder $180°$)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — 4-Schritt-Verfahren: Quadrant → Referenzwinkel → Grundwert (Q1) → Vorzeichen aus ASTC
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Standardwerte $\sin$/$\cos$ für $0°/30°/45°/60°/90°$ auswendig, Rest per Reduktion
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Winkel $> 360°$ oder $< 0°$ per $\alpha \bmod 360°$ in Hauptbereich bringen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-5-b`, `ex-trig-2-5-manual-1`, `ex-trig-2-5-manual-2`, `ex-trig-2-5-manual-3`, `ex-trig-2-5-manual-4`, `ex-trig-2-5-manual-5`, `ex-trig-2-5-manual-6`, `ex-trig-2-5-manual-7` … (+1 weitere)
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
@@ -3140,14 +3221,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, true-false, matching
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) $\sin(\alpha \pm \beta) = \sin\alpha\cos\beta \pm \cos\alpha\sin\beta$ (Kreuzform, Vorzeichen folgt Winkel)
-  - [ ] [1] (hoch) $\cos(\alpha \pm \beta) = \cos\alpha\cos\beta \mp \sin\alpha\sin\beta$ (umgekehrtes Vorzeichen!)
-  - [ ] [2] (mittel) $\tan(\alpha \pm \beta) = (\tan\alpha \pm \tan\beta)/(1 \mp \tan\alpha\tan\beta)$
-  - [ ] [3] (hoch) Linearitäts-Falle: $\sin(\alpha+\beta) \neq \sin\alpha + \sin\beta$ (nie addieren!)
-  - [ ] [4] (hoch) Anwendung: exakte Werte wie $\sin 15°$, $\cos 75°$ aus Summen/Differenzen bekannter Grundwinkel
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — $\sin(\alpha \pm \beta) = \sin\alpha\cos\beta \pm \cos\alpha\sin\beta$ (Kreuzform, Vorzeichen folgt Winkel)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — $\cos(\alpha \pm \beta) = \cos\alpha\cos\beta \mp \sin\alpha\sin\beta$ (umgekehrtes Vorzeichen!)
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — $\tan(\alpha \pm \beta) = (\tan\alpha \pm \tan\beta)/(1 \mp \tan\alpha\tan\beta)$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Linearitäts-Falle: $\sin(\alpha+\beta) \neq \sin\alpha + \sin\beta$ (nie addieren!)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Anwendung: exakte Werte wie $\sin 15°$, $\cos 75°$ aus Summen/Differenzen bekannter Grundwinkel
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-1-a`, `ex-trig-3-1-b`, `ex-trig-3-1-manual-1`, `ex-trig-3-1-manual-2`, `ex-trig-3-1-manual-3`, `ex-trig-3-1-manual-4`, `ex-trig-3-1-manual-5`, `ex-trig-3-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
@@ -3160,14 +3242,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, true-false, matching
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) $\sin(2\alpha) = 2\sin\alpha\cos\alpha$ (aus Additionstheorem mit $\beta = \alpha$)
-  - [ ] [1] (hoch) $\cos(2\alpha) = \cos^2\alpha - \sin^2\alpha = 2\cos^2\alpha - 1 = 1 - 2\sin^2\alpha$ (drei Formen)
-  - [ ] [2] (hoch) Pythagoras-Identität $\sin^2\alpha + \cos^2\alpha = 1$ als Kreisgleichung am Einheitskreis
-  - [ ] [3] (hoch) Folgerungen: $\sin^2\alpha = 1 - \cos^2\alpha$, $\cos^2\alpha = 1 - \sin^2\alpha$ (zum Umwandeln)
-  - [ ] [4] (mittel) Halbwinkel-Formeln: $\sin^2(\alpha/2) = (1-\cos\alpha)/2$, $\cos^2(\alpha/2) = (1+\cos\alpha)/2$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — $\sin(2\alpha) = 2\sin\alpha\cos\alpha$ (aus Additionstheorem mit $\beta = \alpha$)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — $\cos(2\alpha) = \cos^2\alpha - \sin^2\alpha = 2\cos^2\alpha - 1 = 1 - 2\sin^2\alpha$ (drei Formen)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Pythagoras-Identität $\sin^2\alpha + \cos^2\alpha = 1$ als Kreisgleichung am Einheitskreis
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Folgerungen: $\sin^2\alpha = 1 - \cos^2\alpha$, $\cos^2\alpha = 1 - \sin^2\alpha$ (zum Umwandeln)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Halbwinkel-Formeln: $\sin^2(\alpha/2) = (1-\cos\alpha)/2$, $\cos^2(\alpha/2) = (1+\cos\alpha)/2$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-2-a`, `ex-trig-3-2-b`, `ex-trig-3-2-manual-1`, `ex-trig-3-2-manual-2`, `ex-trig-3-2-manual-3`, `ex-trig-3-2-manual-4`, `ex-trig-3-2-manual-5`, `ex-trig-3-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
@@ -3180,14 +3263,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Kraftzerlegung: $F_x = F\cos\alpha$, $F_y = F\sin\alpha$ (Winkel zur $x$-Achse)
-  - [ ] [1] (hoch) Schwingung $x(t) = A\sin(\omega t + \varphi)$: $A$ Amplitude, $\omega$ Kreisfrequenz, $\varphi$ Phasenwinkel
-  - [ ] [2] (hoch) Zusammenhang $\omega = 2\pi f = 2\pi/T$ (Kreisfrequenz, Frequenz, Periode)
-  - [ ] [3] (mittel) Pythagoras-Check: $F_x^2 + F_y^2 = F^2$ (Komponenten müssen zur Gesamtkraft passen)
-  - [ ] [4] (hoch) Schiefe Ebene: Hangabtriebskraft $F_H = m g \sin\alpha$, Normalkraft $F_N = m g \cos\alpha$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Kraftzerlegung: $F_x = F\cos\alpha$, $F_y = F\sin\alpha$ (Winkel zur $x$-Achse)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Schwingung $x(t) = A\sin(\omega t + \varphi)$: $A$ Amplitude, $\omega$ Kreisfrequenz, $\varphi$ Phasenwinkel
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Zusammenhang $\omega = 2\pi f = 2\pi/T$ (Kreisfrequenz, Frequenz, Periode)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Pythagoras-Check: $F_x^2 + F_y^2 = F^2$ (Komponenten müssen zur Gesamtkraft passen)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Schiefe Ebene: Hangabtriebskraft $F_H = m g \sin\alpha$, Normalkraft $F_N = m g \cos\alpha$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-3-a`, `ex-trig-3-3-manual-1`, `ex-trig-3-3-manual-2`, `ex-trig-3-3-manual-3`, `ex-trig-3-3-manual-4`, `ex-trig-3-3-manual-5`, `ex-trig-3-3-manual-6`, `ex-trig-3-3-manual-7`
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
@@ -3200,15 +3284,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) $\arcsin: [-1,1] \to [-90°, 90°]$ (rechte Hälfte, monoton wachsend)
-  - [ ] [1] (hoch) $\arccos: [-1,1] \to [0°, 180°]$ (obere Hälfte, monoton fallend)
-  - [ ] [2] (hoch) $\arctan: \mathbb{R} \to (-90°, 90°)$ (Pole ausgeschlossen)
-  - [ ] [3] (hoch) Umkehrfunktion liefert nur Hauptwert — weitere Lösungen via Periodizität/Symmetrie ergänzen
-  - [ ] [4] (hoch) Taschenrechner-Modus DEG/RAD unbedingt beachten (häufigste Fehlerquelle)
-  - [ ] [5] (mittel) Notation $\sin^{-1}$ für $\arcsin$ nicht mit $1/\sin$ verwechseln
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — $\arcsin: [-1,1] \to [-90°, 90°]$ (rechte Hälfte, monoton wachsend)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — $\arccos: [-1,1] \to [0°, 180°]$ (obere Hälfte, monoton fallend)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — $\arctan: \mathbb{R} \to (-90°, 90°)$ (Pole ausgeschlossen)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Umkehrfunktion liefert nur Hauptwert — weitere Lösungen via Periodizität/Symmetrie ergänzen
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Taschenrechner-Modus DEG/RAD unbedingt beachten (häufigste Fehlerquelle)
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Notation $\sin^{-1}$ für $\arcsin$ nicht mit $1/\sin$ verwechseln
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-4-b`, `ex-trig-3-4-manual-1`, `ex-trig-3-4-manual-2`, `ex-trig-3-4-manual-3`, `ex-trig-3-4-manual-4`, `ex-trig-3-4-manual-5`, `ex-trig-3-4-manual-6`, `ex-trig-3-4-manual-7`
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
@@ -3221,13 +3306,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Kreuzprodukt liefert *Vektor* senkrecht auf $\vec a$ und $\vec b$ — nicht Skalar wie das Skalarprodukt
-  - [ ] [1] (hoch) Betrag $|\vec a \times \vec b| = |\vec a| |\vec b| \sin\varphi$ = Flächeninhalt des Parallelogramms
-  - [ ] [2] (hoch) Richtung per Rechte-Hand-Regel; $\vec a \times \vec b = -\vec b \times \vec a$ (antikommutativ)
-  - [ ] [3] (mittel) Nur in 3D definiert; Komponentenformel oder Sarrus-Merkschema mit Einheitsvektoren
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Kreuzprodukt liefert *Vektor* senkrecht auf $\vec a$ und $\vec b$ — nicht Skalar wie das Skalarprodukt
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Betrag $|\vec a \times \vec b| = |\vec a| |\vec b| \sin\varphi$ = Flächeninhalt des Parallelogramms
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Richtung per Rechte-Hand-Regel; $\vec a \times \vec b = -\vec b \times \vec a$ (antikommutativ)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Nur in 3D definiert; Komponentenformel oder Sarrus-Merkschema mit Einheitsvektoren
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-vek-1-3-a`, `ex-vek-1-3-b`, `ex-vek-1-3-manual-1`, `ex-vek-1-3-manual-2`, `ex-vek-1-3-manual-3`, `ex-vek-1-3-manual-4`, `ex-vek-1-3-manual-5`, `ex-vek-1-3-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
@@ -3240,20 +3326,40 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Kraftkomponenten: $F_x = F \cos\alpha$, $F_y = F \sin\alpha$ (Winkel zur $x$-Achse)
-  - [ ] [1] (hoch) Resultierende: $\vec R = \sum \vec F_i$ komponentenweise addieren
-  - [ ] [2] (hoch) Gleichgewicht: $\sum F_x = 0$ UND $\sum F_y = 0$ UND $\sum F_z = 0$
-  - [ ] [3] (hoch) Einheitsvektor: $\hat e = \vec a / |\vec a|$ (dimensionslos, Länge 1)
-  - [ ] [4] (hoch) Betrag und Richtung: $|\vec R| = \sqrt{R_x^2 + R_y^2}$, $\tan\alpha = R_y/R_x$
-  - [ ] [5] (mittel) Plausibilitätscheck: Vorzeichen der Komponenten passt zur Skizze?
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Kraftkomponenten: $F_x = F \cos\alpha$, $F_y = F \sin\alpha$ (Winkel zur $x$-Achse)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Resultierende: $\vec R = \sum \vec F_i$ komponentenweise addieren
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Gleichgewicht: $\sum F_x = 0$ UND $\sum F_y = 0$ UND $\sum F_z = 0$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Einheitsvektor: $\hat e = \vec a / |\vec a|$ (dimensionslos, Länge 1)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Betrag und Richtung: $|\vec R| = \sqrt{R_x^2 + R_y^2}$, $\tan\alpha = R_y/R_x$
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Plausibilitätscheck: Vorzeichen der Komponenten passt zur Skizze?
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-vek-1-4-b`, `ex-vek-1-4-manual-1`, `ex-vek-1-4-manual-2`, `ex-vek-1-4-manual-3`, `ex-vek-1-4-manual-4`, `ex-vek-1-4-manual-5`, `ex-vek-1-4-manual-6`, `ex-vek-1-4-manual-7` … (+1 weitere)
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
   - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
+
+#### `alg-0-2` · Bruchrechnen sicher
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
+- **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
+- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
+- **Typen einsetzen (Rotation):** matching, sorting, number-input
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🟡 [0] (hoch) **1/3+** Aufgaben — Hauptnenner bei ungleichnamigen Brüchen finden (kgV)
+  - 🟡 [1] (hoch) **1/3+** Aufgaben — Division durch Bruch als Multiplikation mit Kehrwert
+  - 🟡 [2] (mittel) **1/3+** Aufgaben — Doppelbrüche auflösen
+  - 🟡 [3] (mittel) **1/3+** Aufgaben — Bruch vollständig kürzen per ggT
+- **Goal-Tasks fehlen (mindestens):** SG 0: +2, SG 1: +2, SG 2: +2, SG 3: +2 — gerne mehr, keine Obergrenze
+  - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 #### `dgl-2-2` · DGL-Systeme
 
@@ -3261,15 +3367,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Matrixform: $\vec y' = A \vec y$ mit Vektor $\vec y$ und Koeffizientenmatrix $A$
-  - [ ] [1] (hoch) Reduktion höherer Ordnung: $y_1 = y, y_2 = y', \ldots, y_n = y^{(n-1)}$
-  - [ ] [2] (hoch) Eigenwertansatz: $\vec y = \vec v e^{\lambda t}$ → $A \vec v = \lambda \vec v$
-  - [ ] [3] (hoch) Allgemeine Lösung: $\vec y = \sum C_i \vec v_i e^{\lambda_i t}$
-  - [ ] [4] (hoch) Stabilität: alle $\text{Re}(\lambda_i) < 0$ → asymptotisch stabil
-  - [ ] [5] (mittel) Komplexe EW: Paare $\alpha \pm i\beta$ → Real-/Imaginärteil nehmen für reelle Lösung
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Matrixform: $\vec y' = A \vec y$ mit Vektor $\vec y$ und Koeffizientenmatrix $A$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Reduktion höherer Ordnung: $y_1 = y, y_2 = y', \ldots, y_n = y^{(n-1)}$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Eigenwertansatz: $\vec y = \vec v e^{\lambda t}$ → $A \vec v = \lambda \vec v$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Allgemeine Lösung: $\vec y = \sum C_i \vec v_i e^{\lambda_i t}$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Stabilität: alle $\text{Re}(\lambda_i) < 0$ → asymptotisch stabil
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Komplexe EW: Paare $\alpha \pm i\beta$ → Real-/Imaginärteil nehmen für reelle Lösung
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-2-2-a`, `ex-dgl-2-2-b`, `ex-dgl-2-2-manual-1`, `ex-dgl-2-2-manual-2`, `ex-dgl-2-2-manual-3`, `ex-dgl-2-2-manual-4`, `ex-dgl-2-2-manual-5`, `ex-dgl-2-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
@@ -3282,13 +3389,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Freikörperbild: Körper isolieren, alle äußeren Kräfte (inkl. Gewicht, Lagerreaktionen) eintragen
-  - [ ] [1] (hoch) Kraft = Vektor: Betrag + Richtung — Pfeile in positives Koordinatensystem, Vorzeichen ergibt sich aus Rechnung
-  - [ ] [2] (hoch) Standard-Lagersymbole: Festlager (2 Reaktionen), Loslager (1 Reaktion), Einspannung (2 Kräfte + 1 Moment)
-  - [ ] [3] (hoch) Gleichgewicht in 2D: $\sum F_x = 0$, $\sum F_y = 0$, $\sum M = 0$ → max. 3 Unbekannte statisch bestimmbar
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Freikörperbild: Körper isolieren, alle äußeren Kräfte (inkl. Gewicht, Lagerreaktionen) eintragen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Kraft = Vektor: Betrag + Richtung — Pfeile in positives Koordinatensystem, Vorzeichen ergibt sich aus Rechnung
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Standard-Lagersymbole: Festlager (2 Reaktionen), Loslager (1 Reaktion), Einspannung (2 Kräfte + 1 Moment)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Gleichgewicht in 2D: $\sum F_x = 0$, $\sum F_y = 0$, $\sum M = 0$ → max. 3 Unbekannte statisch bestimmbar
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-1-a`, `ex-mech-1-1-b`, `ex-mech-1-1-manual-1`, `ex-mech-1-1-manual-2`, `ex-mech-1-1-manual-3`, `ex-mech-1-1-manual-4`, `ex-mech-1-1-manual-5`, `ex-mech-1-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
@@ -3301,13 +3409,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Moment $M = F \cdot l_\perp$ — $l_\perp$ ist der SENKRECHTE Abstand vom Bezugspunkt zur Wirkungslinie
-  - [ ] [1] (hoch) Drehsinn-Konvention: gegen Uhrzeiger positiv (rechte Hand / Rechte-Hand-Regel in 3D)
-  - [ ] [2] (hoch) Bezugspunkt frei wählbar — klug wählen: Punkt mit vielen unbekannten Kräften eliminiert diese
-  - [ ] [3] (mittel) Kreuzprodukt-Variante: $\vec M = \vec r \times \vec F$ in 3D oder bei schiefen Kräften
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Moment $M = F \cdot l_\perp$ — $l_\perp$ ist der SENKRECHTE Abstand vom Bezugspunkt zur Wirkungslinie
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Drehsinn-Konvention: gegen Uhrzeiger positiv (rechte Hand / Rechte-Hand-Regel in 3D)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Bezugspunkt frei wählbar — klug wählen: Punkt mit vielen unbekannten Kräften eliminiert diese
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Kreuzprodukt-Variante: $\vec M = \vec r \times \vec F$ in 3D oder bei schiefen Kräften
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-2-a`, `ex-mech-1-2-b`, `ex-mech-1-2-manual-1`, `ex-mech-1-2-manual-2`, `ex-mech-1-2-manual-3`, `ex-mech-1-2-manual-4`, `ex-mech-1-2-manual-5`, `ex-mech-1-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
@@ -3320,14 +3429,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) 2. Newton: $\sum \vec F = m \vec a$ (Grundgleichung der Dynamik)
-  - [ ] [1] (hoch) 1. Newton: ohne Kraft → gleichförmige Bewegung (Trägheitsprinzip)
-  - [ ] [2] (hoch) 3. Newton: actio = reactio, $\vec F_{AB} = -\vec F_{BA}$
-  - [ ] [3] (hoch) Gewichtskraft: $F_G = m \cdot g$ mit $g \approx 9{,}81$ m/s²
-  - [ ] [4] (hoch) Masse (kg) ist Eigenschaft des Körpers, Gewichtskraft (N) Kraft im Schwerefeld
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — 2. Newton: $\sum \vec F = m \vec a$ (Grundgleichung der Dynamik)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — 1. Newton: ohne Kraft → gleichförmige Bewegung (Trägheitsprinzip)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — 3. Newton: actio = reactio, $\vec F_{AB} = -\vec F_{BA}$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Gewichtskraft: $F_G = m \cdot g$ mit $g \approx 9{,}81$ m/s²
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Masse (kg) ist Eigenschaft des Körpers, Gewichtskraft (N) Kraft im Schwerefeld
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-1-a`, `ex-mech-2-1-b`, `ex-mech-2-1-manual-1`, `ex-mech-2-1-manual-2`, `ex-mech-2-1-manual-3`, `ex-mech-2-1-manual-4`, `ex-mech-2-1-manual-5`, `ex-mech-2-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
@@ -3340,15 +3450,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Arbeit: $W = F \cdot s \cdot \cos\alpha$ (Skalarprodukt), Einheit Joule
-  - [ ] [1] (hoch) Senkrechte Kraft leistet keine Arbeit ($\cos 90° = 0$)
-  - [ ] [2] (hoch) Kinetische Energie: $E_{\text{kin}} = \tfrac{1}{2} m v^2$
-  - [ ] [3] (hoch) Potentielle Energie: $E_{\text{pot}} = m g h$ (nahe Erdoberfläche)
-  - [ ] [4] (hoch) Federenergie: $E_{\text{Feder}} = \tfrac{1}{2} c x^2$
-  - [ ] [5] (hoch) Energieerhaltung: $E_{\text{kin}} + E_{\text{pot}} = $ const (konservatives System)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Arbeit: $W = F \cdot s \cdot \cos\alpha$ (Skalarprodukt), Einheit Joule
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Senkrechte Kraft leistet keine Arbeit ($\cos 90° = 0$)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Kinetische Energie: $E_{\text{kin}} = \tfrac{1}{2} m v^2$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Potentielle Energie: $E_{\text{pot}} = m g h$ (nahe Erdoberfläche)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Federenergie: $E_{\text{Feder}} = \tfrac{1}{2} c x^2$
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — Energieerhaltung: $E_{\text{kin}} + E_{\text{pot}} = $ const (konservatives System)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-2-a`, `ex-mech-2-2-b`, `ex-mech-2-2-manual-1`, `ex-mech-2-2-manual-2`, `ex-mech-2-2-manual-3`, `ex-mech-2-2-manual-4`, `ex-mech-2-2-manual-5`, `ex-mech-2-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
@@ -3361,14 +3472,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×2, number-input ×5, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Energieerhaltung mit Reibung: $E_1 = E_2 + W_R$ mit $W_R = F_R \cdot s$
-  - [ ] [1] (hoch) Elastischer Stoß gleicher Massen: Geschwindigkeiten tauschen
-  - [ ] [2] (hoch) Arbeitssatz: $\sum W_i = \Delta E_{\text{kin}}$ (Gesamtarbeit = Änderung kin. Energie)
-  - [ ] [3] (hoch) Bei freiem Fall aus Höhe $h$: $v = \sqrt{2gh}$
-  - [ ] [4] (hoch) Reibungskraft am Boden: $F_R = \mu m g$, Nettokraft $F - F_R$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Energieerhaltung mit Reibung: $E_1 = E_2 + W_R$ mit $W_R = F_R \cdot s$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Elastischer Stoß gleicher Massen: Geschwindigkeiten tauschen
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Arbeitssatz: $\sum W_i = \Delta E_{\text{kin}}$ (Gesamtarbeit = Änderung kin. Energie)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Bei freiem Fall aus Höhe $h$: $v = \sqrt{2gh}$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Reibungskraft am Boden: $F_R = \mu m g$, Nettokraft $F - F_R$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-mech-3-2-a`, `ex-mech-3-2-b`, `ex-mech-3-2-manual-1`, `ex-mech-3-2-manual-2`, `ex-mech-3-2-manual-3`, `ex-mech-3-2-manual-4`, `ex-mech-3-2-manual-5`, `ex-mech-3-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
@@ -3381,13 +3493,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) $\sigma = F/A$ — Kraft normal zur Fläche, Einheit $\mathrm{N/mm^2 = MPa}$
-  - [ ] [1] (hoch) 1 MPa = 1 N/mm² = $10^6$ Pa: Einheiten-Umrechnung ohne Rechenfehler
-  - [ ] [2] (mittel) Zug vs. Druck: Vorzeichenkonvention (+Zug, −Druck) klar halten
-  - [ ] [3] (hoch) Querschnittsfläche: bei Kreis $A = \pi d^2/4$, nicht $\pi d^2$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — $\sigma = F/A$ — Kraft normal zur Fläche, Einheit $\mathrm{N/mm^2 = MPa}$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — 1 MPa = 1 N/mm² = $10^6$ Pa: Einheiten-Umrechnung ohne Rechenfehler
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Zug vs. Druck: Vorzeichenkonvention (+Zug, −Druck) klar halten
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Querschnittsfläche: bei Kreis $A = \pi d^2/4$, nicht $\pi d^2$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fest-1-1-a`, `ex-fest-1-1-b`, `ex-fest-1-1-manual-1`, `ex-fest-1-1-manual-2`, `ex-fest-1-1-manual-3`, `ex-fest-1-1-manual-4`, `ex-fest-1-1-manual-5`, `ex-fest-1-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
@@ -3400,13 +3513,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) $\sigma = E\,\varepsilon$ im linear-elastischen Bereich — nur hier gilt Hooke
-  - [ ] [1] (hoch) Dehnung $\varepsilon = \Delta l / l_0$ dimensionslos; oft in ‰ oder %
-  - [ ] [2] (hoch) E-Modul ist **Material-Konstante**, unabhängig von Geometrie (Stahl $\approx 210\,\mathrm{GPa}$)
-  - [ ] [3] (mittel) Querkontraktion $\varepsilon_q = -\nu\,\varepsilon$ mit Poisson-Zahl $\nu \approx 0{,}3$ (Stahl)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — $\sigma = E\,\varepsilon$ im linear-elastischen Bereich — nur hier gilt Hooke
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Dehnung $\varepsilon = \Delta l / l_0$ dimensionslos; oft in ‰ oder %
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — E-Modul ist **Material-Konstante**, unabhängig von Geometrie (Stahl $\approx 210\,\mathrm{GPa}$)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Querkontraktion $\varepsilon_q = -\nu\,\varepsilon$ mit Poisson-Zahl $\nu \approx 0{,}3$ (Stahl)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fest-1-2-a`, `ex-fest-1-2-b`, `ex-fest-1-2-manual-1`, `ex-fest-1-2-manual-2`, `ex-fest-1-2-manual-3`, `ex-fest-1-2-manual-4`, `ex-fest-1-2-manual-5`, `ex-fest-1-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
@@ -3419,14 +3533,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Biegespannung: $\sigma_b = M_b/W_b$
-  - [ ] [1] (hoch) Axiales Widerstandsmoment Rechteck: $W_b = bh^2/6$
-  - [ ] [2] (hoch) Kreisquerschnitt: $W_b = \pi d^3/32$
-  - [ ] [3] (hoch) Spannungsverteilung linear im Querschnitt: Null in neutraler Faser, max. am Rand
-  - [ ] [4] (mittel) $\sigma_b = M_b y/I$ für beliebige Stelle $y$ von neutraler Faser
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Biegespannung: $\sigma_b = M_b/W_b$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Axiales Widerstandsmoment Rechteck: $W_b = bh^2/6$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Kreisquerschnitt: $W_b = \pi d^3/32$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Spannungsverteilung linear im Querschnitt: Null in neutraler Faser, max. am Rand
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — $\sigma_b = M_b y/I$ für beliebige Stelle $y$ von neutraler Faser
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fest-2-1-a`, `ex-fest-2-1-b`, `ex-fest-2-1-manual-1`, `ex-fest-2-1-manual-2`, `ex-fest-2-1-manual-3`, `ex-fest-2-1-manual-4`, `ex-fest-2-1-manual-5`, `ex-fest-2-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
@@ -3439,14 +3554,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Zulässige Spannung: $\sigma_\text{zul} = R/S$
-  - [ ] [1] (hoch) Festigkeitsnachweis: $\sigma_\text{vorh} \leq \sigma_\text{zul}$
-  - [ ] [2] (mittel) Typische Sicherheitszahlen: $S = 1{,}5$ (zäh, statisch) bis $S = 4$ (dynamisch, spröde)
-  - [ ] [3] (hoch) Referenz-Kennwerte: $R_e$ (Streckgrenze, zäh), $R_m$ (Zugfestigkeit, spröde)
-  - [ ] [4] (hoch) Größeres $S$ → kleineres $\sigma_\text{zul}$ (mehr Sicherheit = weniger Auslastung erlaubt)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Zulässige Spannung: $\sigma_\text{zul} = R/S$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Festigkeitsnachweis: $\sigma_\text{vorh} \leq \sigma_\text{zul}$
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Typische Sicherheitszahlen: $S = 1{,}5$ (zäh, statisch) bis $S = 4$ (dynamisch, spröde)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Referenz-Kennwerte: $R_e$ (Streckgrenze, zäh), $R_m$ (Zugfestigkeit, spröde)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Größeres $S$ → kleineres $\sigma_\text{zul}$ (mehr Sicherheit = weniger Auslastung erlaubt)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fest-2-2-a`, `ex-fest-2-2-b`, `ex-fest-2-2-manual-1`, `ex-fest-2-2-manual-2`, `ex-fest-2-2-manual-3`, `ex-fest-2-2-manual-4`, `ex-fest-2-2-manual-5`, `ex-fest-2-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
@@ -3459,13 +3575,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) $pV = nRT$ mit $R = 8{,}314\,\mathrm{J/(mol\,K)}$; alternativ $p V = m R_s T$ mit spez. Gaskonstante
-  - [ ] [1] (hoch) Temperatur **immer** in Kelvin: $T[K] = T[°C] + 273{,}15$
-  - [ ] [2] (hoch) Einheiten: $p$ in Pa, $V$ in m³, $n$ in mol — keine Liter/bar in die Grundformel
-  - [ ] [3] (mittel) $R_s = R/M$ aus molarer Masse $M$ des Gases (Luft: $M \approx 28{,}96\,\mathrm{g/mol}$)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — $pV = nRT$ mit $R = 8{,}314\,\mathrm{J/(mol\,K)}$; alternativ $p V = m R_s T$ mit spez. Gaskonstante
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Temperatur **immer** in Kelvin: $T[K] = T[°C] + 273{,}15$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Einheiten: $p$ in Pa, $V$ in m³, $n$ in mol — keine Liter/bar in die Grundformel
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — $R_s = R/M$ aus molarer Masse $M$ des Gases (Luft: $M \approx 28{,}96\,\mathrm{g/mol}$)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-1-1-a`, `ex-thermo-1-1-b`, `ex-thermo-1-1-manual-1`, `ex-thermo-1-1-manual-2`, `ex-thermo-1-1-manual-3`, `ex-thermo-1-1-manual-4`, `ex-thermo-1-1-manual-5`, `ex-thermo-1-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
@@ -3478,13 +3595,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Volumenarbeit $W = \int p\,dV$ = Fläche unter der Kurve im pV-Diagramm
-  - [ ] [1] (hoch) Isobar ($p$ const): $W = p \cdot \Delta V$ — direktes Rechteck
-  - [ ] [2] (hoch) Isotherm ($T$ const): $W = nRT \ln(V_2/V_1)$ — Vorzeichen beachten
-  - [ ] [3] (mittel) Vorzeichenkonvention: $W > 0$ = vom System **abgegeben**; umgekehrt in mancher Literatur
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Volumenarbeit $W = \int p\,dV$ = Fläche unter der Kurve im pV-Diagramm
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Isobar ($p$ const): $W = p \cdot \Delta V$ — direktes Rechteck
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Isotherm ($T$ const): $W = nRT \ln(V_2/V_1)$ — Vorzeichen beachten
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Vorzeichenkonvention: $W > 0$ = vom System **abgegeben**; umgekehrt in mancher Literatur
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-1-2-a`, `ex-thermo-1-2-b`, `ex-thermo-1-2-manual-1`, `ex-thermo-1-2-manual-2`, `ex-thermo-1-2-manual-3`, `ex-thermo-1-2-manual-4`, `ex-thermo-1-2-manual-5`, `ex-thermo-1-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
@@ -3497,14 +3615,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) 1. Hauptsatz geschlossen: $\Delta U = Q - W$ (Q zugeführt, W abgegeben)
-  - [ ] [1] (hoch) 1. Hauptsatz offen (stationär): $\dot Q + \dot W_t = \dot m (h_2 - h_1)$
-  - [ ] [2] (hoch) Vorzeichenkonvention: Q, W zugeführt > 0
-  - [ ] [3] (hoch) Innere Energie $U$ Zustandsgröße, Q und W Prozessgrößen
-  - [ ] [4] (mittel) Technische Arbeit $W_t = -\int V dp$ vs. Volumenarbeit $W = \int p dV$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — 1. Hauptsatz geschlossen: $\Delta U = Q - W$ (Q zugeführt, W abgegeben)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — 1. Hauptsatz offen (stationär): $\dot Q + \dot W_t = \dot m (h_2 - h_1)$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Vorzeichenkonvention: Q, W zugeführt > 0
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Innere Energie $U$ Zustandsgröße, Q und W Prozessgrößen
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Technische Arbeit $W_t = -\int V dp$ vs. Volumenarbeit $W = \int p dV$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-2-1-a`, `ex-thermo-2-1-b`, `ex-thermo-2-1-manual-1`, `ex-thermo-2-1-manual-2`, `ex-thermo-2-1-manual-3`, `ex-thermo-2-1-manual-4`, `ex-thermo-2-1-manual-5`, `ex-thermo-2-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
@@ -3517,14 +3636,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Wirkungsgrad: $\eta = E_\text{nutz}/E_\text{zu} \leq 1$
-  - [ ] [1] (hoch) 2. Hauptsatz: $\eta < 1$ für Wärmekraftmaschine (Entropieargument)
-  - [ ] [2] (hoch) Carnot-Grenze: $\eta \leq \eta_C = 1 - T_\text{kalt}/T_\text{warm}$ (K!)
-  - [ ] [3] (mittel) Kälteleistungszahl: $\varepsilon_K = Q_\text{kalt}/W$ (kann > 1 sein!)
-  - [ ] [4] (mittel) Wärmepumpe: $\varepsilon_{WP} = Q_\text{warm}/W = \varepsilon_K + 1$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Wirkungsgrad: $\eta = E_\text{nutz}/E_\text{zu} \leq 1$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — 2. Hauptsatz: $\eta < 1$ für Wärmekraftmaschine (Entropieargument)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Carnot-Grenze: $\eta \leq \eta_C = 1 - T_\text{kalt}/T_\text{warm}$ (K!)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Kälteleistungszahl: $\varepsilon_K = Q_\text{kalt}/W$ (kann > 1 sein!)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Wärmepumpe: $\varepsilon_{WP} = Q_\text{warm}/W = \varepsilon_K + 1$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-2-2-a`, `ex-thermo-2-2-b`, `ex-thermo-2-2-manual-1`, `ex-thermo-2-2-manual-2`, `ex-thermo-2-2-manual-3`, `ex-thermo-2-2-manual-4`, `ex-thermo-2-2-manual-5`, `ex-thermo-2-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
@@ -3537,13 +3657,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) $p = \rho g h$ — linearer Zusammenhang nur bei konstanter Dichte (Flüssigkeiten)
-  - [ ] [1] (hoch) Überdruck vs. absoluter Druck: $p_\text{abs} = p_\text{atm} + p_\text{hydro}$
-  - [ ] [2] (hoch) Druck in Flüssigkeit hängt nur von der Höhe ab, **nicht** von der Behälterform (hydrostat. Paradoxon)
-  - [ ] [3] (mittel) Einheiten: 1 bar ≈ 10 m Wassersäule; 1 mbar ≈ 1 cm H₂O
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — $p = \rho g h$ — linearer Zusammenhang nur bei konstanter Dichte (Flüssigkeiten)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Überdruck vs. absoluter Druck: $p_\text{abs} = p_\text{atm} + p_\text{hydro}$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Druck in Flüssigkeit hängt nur von der Höhe ab, **nicht** von der Behälterform (hydrostat. Paradoxon)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Einheiten: 1 bar ≈ 10 m Wassersäule; 1 mbar ≈ 1 cm H₂O
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-1-1-a`, `ex-fluid-1-1-b`, `ex-fluid-1-1-manual-1`, `ex-fluid-1-1-manual-2`, `ex-fluid-1-1-manual-3`, `ex-fluid-1-1-manual-4`, `ex-fluid-1-1-manual-5`, `ex-fluid-1-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
@@ -3556,13 +3677,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) $F_A = \rho_\text{Fluid}\,g\,V_\text{verdrängt}$ — Dichte des **Fluids**, nicht des Körpers
-  - [ ] [1] (hoch) Schwimmen: $F_A = F_G$ → $V_\text{verdrängt} = m_\text{Körper}/\rho_\text{Fluid}$
-  - [ ] [2] (mittel) Vollständig getaucht: $V_\text{verdrängt} = V_\text{Körper}$
-  - [ ] [3] (hoch) Dichte-Vergleich: Körper schwimmt, wenn $\rho_\text{Körper} < \rho_\text{Fluid}$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — $F_A = \rho_\text{Fluid}\,g\,V_\text{verdrängt}$ — Dichte des **Fluids**, nicht des Körpers
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Schwimmen: $F_A = F_G$ → $V_\text{verdrängt} = m_\text{Körper}/\rho_\text{Fluid}$
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Vollständig getaucht: $V_\text{verdrängt} = V_\text{Körper}$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Dichte-Vergleich: Körper schwimmt, wenn $\rho_\text{Körper} < \rho_\text{Fluid}$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-1-2-a`, `ex-fluid-1-2-b`, `ex-fluid-1-2-manual-1`, `ex-fluid-1-2-manual-2`, `ex-fluid-1-2-manual-3`, `ex-fluid-1-2-manual-4`, `ex-fluid-1-2-manual-5`, `ex-fluid-1-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
@@ -3575,14 +3697,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Kontinuität (inkompressibel): $A_1 v_1 = A_2 v_2 = \dot V$
-  - [ ] [1] (hoch) Volumenstrom: $\dot V = A \cdot v$, Einheit m³/s
-  - [ ] [2] (hoch) Massenstrom (kompressibel): $\dot m = \rho A v$
-  - [ ] [3] (hoch) Querschnitt kleiner → Geschwindigkeit größer ($v \propto 1/A$)
-  - [ ] [4] (hoch) Umrechnung: Kreisquerschnitt $A = \pi d^2/4$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Kontinuität (inkompressibel): $A_1 v_1 = A_2 v_2 = \dot V$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Volumenstrom: $\dot V = A \cdot v$, Einheit m³/s
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Massenstrom (kompressibel): $\dot m = \rho A v$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Querschnitt kleiner → Geschwindigkeit größer ($v \propto 1/A$)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Umrechnung: Kreisquerschnitt $A = \pi d^2/4$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-2-1-a`, `ex-fluid-2-1-b`, `ex-fluid-2-1-manual-1`, `ex-fluid-2-1-manual-2`, `ex-fluid-2-1-manual-3`, `ex-fluid-2-1-manual-4`, `ex-fluid-2-1-manual-5`, `ex-fluid-2-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
@@ -3595,14 +3718,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Bernoulli: $p + \tfrac{1}{2}\rho v^2 + \rho g z = $ const (entlang Stromlinie)
-  - [ ] [1] (hoch) Drei Druckarten: statisch $p$, dynamisch $\tfrac{1}{2}\rho v^2$, geodätisch $\rho g z$
-  - [ ] [2] (hoch) Voraussetzungen: inkompressibel, stationär, reibungsfrei
-  - [ ] [3] (hoch) Torricelli: $v = \sqrt{2gh}$ (Ausflussgeschwindigkeit aus Behälter)
-  - [ ] [4] (mittel) Mit Verlusten: $+ \Delta p_V$ auf rechter Seite
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Bernoulli: $p + \tfrac{1}{2}\rho v^2 + \rho g z = $ const (entlang Stromlinie)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Drei Druckarten: statisch $p$, dynamisch $\tfrac{1}{2}\rho v^2$, geodätisch $\rho g z$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Voraussetzungen: inkompressibel, stationär, reibungsfrei
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Torricelli: $v = \sqrt{2gh}$ (Ausflussgeschwindigkeit aus Behälter)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Mit Verlusten: $+ \Delta p_V$ auf rechter Seite
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-2-2-a`, `ex-fluid-2-2-b`, `ex-fluid-2-2-manual-1`, `ex-fluid-2-2-manual-2`, `ex-fluid-2-2-manual-3`, `ex-fluid-2-2-manual-4`, `ex-fluid-2-2-manual-5`, `ex-fluid-2-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
@@ -3615,13 +3739,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Vorspannkraft $F_V$ erzeugt Klemmkraft in der Fuge — verhindert Fugenöffnen
-  - [ ] [1] (hoch) Kraftverteilung: nur ein Bruchteil der Betriebskraft fließt durch die Schraube ($\phi$-Faktor)
-  - [ ] [2] (mittel) Festigkeitsklassen 8.8, 10.9, 12.9: erste Zahl ≈ $R_m/100$ MPa, zweite ≈ $R_e/R_m$
-  - [ ] [3] (mittel) Anziehdrehmoment $M_A$ aus Hersteller-Tabelle — nie größer als Streckgrenze der Schraube
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Vorspannkraft $F_V$ erzeugt Klemmkraft in der Fuge — verhindert Fugenöffnen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Kraftverteilung: nur ein Bruchteil der Betriebskraft fließt durch die Schraube ($\phi$-Faktor)
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Festigkeitsklassen 8.8, 10.9, 12.9: erste Zahl ≈ $R_m/100$ MPa, zweite ≈ $R_e/R_m$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Anziehdrehmoment $M_A$ aus Hersteller-Tabelle — nie größer als Streckgrenze der Schraube
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-melem-1-1-a`, `ex-melem-1-1-b`, `ex-melem-1-1-manual-1`, `ex-melem-1-1-manual-2`, `ex-melem-1-1-manual-3`, `ex-melem-1-1-manual-4`, `ex-melem-1-1-manual-5`, `ex-melem-1-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
@@ -3634,13 +3759,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Formschluss: Geometrie überträgt Kraft (Passfeder, Zahn); Kraftschluss: Reibung überträgt Kraft (Presssitz, Kupplung)
-  - [ ] [1] (hoch) Drehmoment aus Umfangskraft: $M_t = F_u \cdot r$; Umfangskraft $F_u = 2 M_t / d$ an der Welle mit Durchmesser $d$
-  - [ ] [2] (hoch) Flächenpressung an der Passfeder: $p = F_u / (l \cdot h/2) \le p_{zul}$ — bestimmt die Passfeder-Länge $l$
-  - [ ] [3] (mittel) Passfedern sind Normteile nach DIN 6885 — Form A (rund), Form B (gerade); Bezeichnung $b \times h \times l$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Formschluss: Geometrie überträgt Kraft (Passfeder, Zahn); Kraftschluss: Reibung überträgt Kraft (Presssitz, Kupplung)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Drehmoment aus Umfangskraft: $M_t = F_u \cdot r$; Umfangskraft $F_u = 2 M_t / d$ an der Welle mit Durchmesser $d$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Flächenpressung an der Passfeder: $p = F_u / (l \cdot h/2) \le p_{zul}$ — bestimmt die Passfeder-Länge $l$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Passfedern sind Normteile nach DIN 6885 — Form A (rund), Form B (gerade); Bezeichnung $b \times h \times l$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-melem-1-2-a`, `ex-melem-1-2-b`, `ex-melem-1-2-manual-1`, `ex-melem-1-2-manual-2`, `ex-melem-1-2-manual-3`, `ex-melem-1-2-manual-4`, `ex-melem-1-2-manual-5`, `ex-melem-1-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
@@ -3653,14 +3779,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Welle überträgt Drehmoment und Rotation
-  - [ ] [1] (hoch) Radiallast: quer zur Wellenachse; Axiallast: entlang Wellenachse
-  - [ ] [2] (hoch) Lagerfunktionen: Führung (radial/axial) + Stützung (Kraftaufnahme)
-  - [ ] [3] (mittel) Fest-Los-Lagerung: ein Lager fixiert axial, anderes erlaubt Längsdehnung
-  - [ ] [4] (mittel) Lagerarten: Rillenkugel-, Schrägkugel-, Kegelrollen-, Pendelrollenlager
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Welle überträgt Drehmoment und Rotation
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Radiallast: quer zur Wellenachse; Axiallast: entlang Wellenachse
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Lagerfunktionen: Führung (radial/axial) + Stützung (Kraftaufnahme)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Fest-Los-Lagerung: ein Lager fixiert axial, anderes erlaubt Längsdehnung
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Lagerarten: Rillenkugel-, Schrägkugel-, Kegelrollen-, Pendelrollenlager
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-melem-2-1-a`, `ex-melem-2-1-b`, `ex-melem-2-1-manual-1`, `ex-melem-2-1-manual-2`, `ex-melem-2-1-manual-3`, `ex-melem-2-1-manual-4`, `ex-melem-2-1-manual-5`, `ex-melem-2-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
@@ -3673,14 +3800,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Übersetzung: $i = z_2/z_1 = n_1/n_2 = d_2/d_1$
-  - [ ] [1] (hoch) Mehrstufiges Getriebe: $i_\text{ges} = i_1 \cdot i_2 \cdots$
-  - [ ] [2] (hoch) Drehmoment-Wandlung: $M_2 = i \cdot M_1 \cdot \eta$ (Untersetzung steigert Moment)
-  - [ ] [3] (hoch) Umfangskraft $F_t = 2M/d$
-  - [ ] [4] (mittel) Modul $m = d/z$ — Standardgröße für Zahnrad-Geometrie
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Übersetzung: $i = z_2/z_1 = n_1/n_2 = d_2/d_1$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Mehrstufiges Getriebe: $i_\text{ges} = i_1 \cdot i_2 \cdots$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Drehmoment-Wandlung: $M_2 = i \cdot M_1 \cdot \eta$ (Untersetzung steigert Moment)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Umfangskraft $F_t = 2M/d$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Modul $m = d/z$ — Standardgröße für Zahnrad-Geometrie
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-melem-2-2-a`, `ex-melem-2-2-b`, `ex-melem-2-2-manual-1`, `ex-melem-2-2-manual-2`, `ex-melem-2-2-manual-3`, `ex-melem-2-2-manual-4`, `ex-melem-2-2-manual-5`, `ex-melem-2-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
@@ -3693,14 +3821,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×2, number-input ×4, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, multiple-choice
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Ohmsches Gesetz $U = R \cdot I$ — Dreieck-Merkhilfe: eine Größe abdecken, die anderen beiden ergeben sie
-  - [ ] [1] (hoch) Einheiten-Konsistenz: V, A, $\Omega$ — mA und k$\Omega$ immer vor der Rechnung umrechnen
-  - [ ] [2] (hoch) Reihenschaltung: Widerstände addieren sich, Strom ist überall gleich
-  - [ ] [3] (hoch) Parallelschaltung: Kehrwerte addieren ($1/R_{ges} = \sum 1/R_i$), Spannung überall gleich
-  - [ ] [4] (mittel) Spezialfall zwei Parallelwiderstände: $R_{ges} = R_1 R_2 / (R_1 + R_2)$ (Produkt-durch-Summe)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Ohmsches Gesetz $U = R \cdot I$ — Dreieck-Merkhilfe: eine Größe abdecken, die anderen beiden ergeben sie
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Einheiten-Konsistenz: V, A, $\Omega$ — mA und k$\Omega$ immer vor der Rechnung umrechnen
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Reihenschaltung: Widerstände addieren sich, Strom ist überall gleich
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Parallelschaltung: Kehrwerte addieren ($1/R_{ges} = \sum 1/R_i$), Spannung überall gleich
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Spezialfall zwei Parallelwiderstände: $R_{ges} = R_1 R_2 / (R_1 + R_2)$ (Produkt-durch-Summe)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-et-1-1-a`, `ex-et-1-1-b`, `ex-et-1-1-manual-1`, `ex-et-1-1-manual-2`, `ex-et-1-1-manual-3`, `ex-et-1-1-manual-4`, `ex-et-1-1-manual-5`, `ex-et-1-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
@@ -3713,13 +3842,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Knotensatz (KCL): An jedem Knoten ist die Summe zu- und abfließender Ströme null — Folge der Ladungserhaltung
-  - [ ] [1] (hoch) Maschensatz (KVL): In jeder geschlossenen Masche ist die Summe aller Spannungsabfälle null — Folge der Energieerhaltung
-  - [ ] [2] (hoch) Vorzeichenkonvention: Umlaufrichtung festlegen; in Umlaufrichtung Spannungsquelle positiv, Widerstand-Abfall negativ (oder konsistent umgekehrt)
-  - [ ] [3] (mittel) Spannungsteiler: $U_2 = U \cdot R_2 / (R_1 + R_2)$ — direkter Spezialfall des Maschensatzes bei Reihenschaltung
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Knotensatz (KCL): An jedem Knoten ist die Summe zu- und abfließender Ströme null — Folge der Ladungserhaltung
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Maschensatz (KVL): In jeder geschlossenen Masche ist die Summe aller Spannungsabfälle null — Folge der Energieerhaltung
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Vorzeichenkonvention: Umlaufrichtung festlegen; in Umlaufrichtung Spannungsquelle positiv, Widerstand-Abfall negativ (oder konsistent umgekehrt)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Spannungsteiler: $U_2 = U \cdot R_2 / (R_1 + R_2)$ — direkter Spezialfall des Maschensatzes bei Reihenschaltung
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-et-1-2-a`, `ex-et-1-2-b`, `ex-et-1-2-manual-1`, `ex-et-1-2-manual-2`, `ex-et-1-2-manual-3`, `ex-et-1-2-manual-4`, `ex-et-1-2-manual-5`, `ex-et-1-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
@@ -3732,14 +3862,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Leistung: $P = U \cdot I = U^2/R = I^2 R$ (drei äquivalente Formen)
-  - [ ] [1] (hoch) Energie: $W = P \cdot t$ (Einheit Joule oder Wattstunden)
-  - [ ] [2] (hoch) Wirkungsgrad: $\eta = P_\text{ab}/P_\text{zu}$, immer $\leq 1$
-  - [ ] [3] (hoch) Wärmeverlust im Widerstand: $P_R = I^2 R$ (Stromwärmegesetz)
-  - [ ] [4] (mittel) Nennspannungen Haushalt: 230 V (einphasig), 400 V (Drehstrom)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Leistung: $P = U \cdot I = U^2/R = I^2 R$ (drei äquivalente Formen)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Energie: $W = P \cdot t$ (Einheit Joule oder Wattstunden)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Wirkungsgrad: $\eta = P_\text{ab}/P_\text{zu}$, immer $\leq 1$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Wärmeverlust im Widerstand: $P_R = I^2 R$ (Stromwärmegesetz)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Nennspannungen Haushalt: 230 V (einphasig), 400 V (Drehstrom)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-et-1-3-a`, `ex-et-1-3-b`, `ex-et-1-3-manual-1`, `ex-et-1-3-manual-2`, `ex-et-1-3-manual-3`, `ex-et-1-3-manual-4`, `ex-et-1-3-manual-5`, `ex-et-1-3-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
@@ -3752,14 +3883,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Wechselspannung: $u(t) = \hat u \sin(\omega t + \varphi)$ mit $\omega = 2\pi f$
-  - [ ] [1] (hoch) Effektivwert: $U = \hat u/\sqrt 2$ (Sinussignal)
-  - [ ] [2] (hoch) Impedanzen: $Z_R = R$, $Z_L = j\omega L$, $Z_C = 1/(j\omega C)$
-  - [ ] [3] (hoch) |Z_L| = ωL steigt mit Frequenz, |Z_C| = 1/(ωC) fällt mit Frequenz
-  - [ ] [4] (hoch) Phasenverschiebung: Spule $+90°$ (Strom eilt nach), Kondensator $-90°$ (Strom eilt voraus)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Wechselspannung: $u(t) = \hat u \sin(\omega t + \varphi)$ mit $\omega = 2\pi f$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Effektivwert: $U = \hat u/\sqrt 2$ (Sinussignal)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Impedanzen: $Z_R = R$, $Z_L = j\omega L$, $Z_C = 1/(j\omega C)$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — |Z_L| = ωL steigt mit Frequenz, |Z_C| = 1/(ωC) fällt mit Frequenz
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Phasenverschiebung: Spule $+90°$ (Strom eilt nach), Kondensator $-90°$ (Strom eilt voraus)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-et-2-1-a`, `ex-et-2-1-b`, `ex-et-2-1-manual-1`, `ex-et-2-1-manual-2`, `ex-et-2-1-manual-3`, `ex-et-2-1-manual-4`, `ex-et-2-1-manual-5`, `ex-et-2-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
@@ -3772,14 +3904,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×2, number-input ×4, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, multiple-choice
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) RC-Grenzfrequenz: $f_g = 1/(2\pi RC)$
-  - [ ] [1] (hoch) Zeitkonstanten: RC $\tau = RC$, RL $\tau = L/R$
-  - [ ] [2] (hoch) RL-Impedanz-Betrag: $|Z| = \sqrt{R^2 + (\omega L)^2}$
-  - [ ] [3] (hoch) Leistungsfaktor: $\cos\varphi = R/|Z|$, $P = S \cos\varphi$
-  - [ ] [4] (hoch) Bei $f_g$: Betrag auf $1/\sqrt 2 \approx 0{,}707$ abgefallen (−3 dB)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — RC-Grenzfrequenz: $f_g = 1/(2\pi RC)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Zeitkonstanten: RC $\tau = RC$, RL $\tau = L/R$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — RL-Impedanz-Betrag: $|Z| = \sqrt{R^2 + (\omega L)^2}$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Leistungsfaktor: $\cos\varphi = R/|Z|$, $P = S \cos\varphi$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Bei $f_g$: Betrag auf $1/\sqrt 2 \approx 0{,}707$ abgefallen (−3 dB)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-et-2-2-a`, `ex-et-2-2-b`, `ex-et-2-2-manual-1`, `ex-et-2-2-manual-2`, `ex-et-2-2-manual-3`, `ex-et-2-2-manual-4`, `ex-et-2-2-manual-5`, `ex-et-2-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
@@ -3792,14 +3925,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×2, number-input ×5, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) RLC-Reihe Impedanz: $Z = R + j(\omega L - 1/(\omega C))$
-  - [ ] [1] (hoch) Resonanzfrequenz: $\omega_0 = 1/\sqrt{LC}$, $f_0 = 1/(2\pi\sqrt{LC})$
-  - [ ] [2] (mittel) Güte $Q = \omega_0 L/R = 1/(\omega_0 RC)$
-  - [ ] [3] (hoch) Wirk-/Blind-/Scheinleistung: $P = S\cos\varphi$, $Q = S\sin\varphi$, $S = UI$
-  - [ ] [4] (mittel) Tiefpass $-20$ dB/Dekade oberhalb $f_g$, Hochpass umgekehrt
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — RLC-Reihe Impedanz: $Z = R + j(\omega L - 1/(\omega C))$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Resonanzfrequenz: $\omega_0 = 1/\sqrt{LC}$, $f_0 = 1/(2\pi\sqrt{LC})$
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Güte $Q = \omega_0 L/R = 1/(\omega_0 RC)$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Wirk-/Blind-/Scheinleistung: $P = S\cos\varphi$, $Q = S\sin\varphi$, $S = UI$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Tiefpass $-20$ dB/Dekade oberhalb $f_g$, Hochpass umgekehrt
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-et-3-2-a`, `ex-et-3-2-b`, `ex-et-3-2-manual-1`, `ex-et-3-2-manual-2`, `ex-et-3-2-manual-3`, `ex-et-3-2-manual-4`, `ex-et-3-2-manual-5`, `ex-et-3-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
@@ -3812,13 +3946,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Signale: Führungsgröße $w$, Regelgröße $y$, Stellgröße $u$, Regelabweichung $e = w - y$, Störgröße $z$
-  - [ ] [1] (hoch) Regelung (geschlossener Kreis) vs. Steuerung (offener Wirkungsablauf) — nur Regelung reagiert auf Störungen
-  - [ ] [2] (hoch) Blockschaltbild: Regler $\to$ Stellglied $\to$ Regelstrecke $\to$ Messglied $\to$ Vergleichsstelle (Rückführung)
-  - [ ] [3] (mittel) Ziel jeder Regelung: $e \to 0$ trotz Störungen $z$ und Parameter-Schwankungen der Strecke
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Signale: Führungsgröße $w$, Regelgröße $y$, Stellgröße $u$, Regelabweichung $e = w - y$, Störgröße $z$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Regelung (geschlossener Kreis) vs. Steuerung (offener Wirkungsablauf) — nur Regelung reagiert auf Störungen
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Blockschaltbild: Regler $\to$ Stellglied $\to$ Regelstrecke $\to$ Messglied $\to$ Vergleichsstelle (Rückführung)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Ziel jeder Regelung: $e \to 0$ trotz Störungen $z$ und Parameter-Schwankungen der Strecke
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-rt-1-1-a`, `ex-rt-1-1-b`, `ex-rt-1-1-manual-1`, `ex-rt-1-1-manual-2`, `ex-rt-1-1-manual-3`, `ex-rt-1-1-manual-4`, `ex-rt-1-1-manual-5`, `ex-rt-1-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
@@ -3831,14 +3966,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×2, number-input ×4, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, multiple-choice
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Übertragungsfunktion $G(s) = Y(s)/U(s)$ nur für LTI-Systeme bei verschwindenden Anfangsbedingungen definiert
-  - [ ] [1] (hoch) PT1-Glied: $G(s) = K/(1 + Ts)$ — Verstärkung $K$ und Zeitkonstante $T$; Sprungantwort $y(t) = K(1 - e^{-t/T})$
-  - [ ] [2] (hoch) Statische Verstärkung = $G(0)$ — erhält man durch Einsetzen von $s = 0$ (Endwertsatz für Sprunganregung)
-  - [ ] [3] (hoch) Serienschaltung: Übertragungsfunktionen werden multipliziert; Parallelschaltung: addiert; Rückführung: $T = G/(1+G H)$
-  - [ ] [4] (mittel) Pole von $G(s)$ (Nullstellen des Nenners) bestimmen Stabilität: Realteil $< 0$ = stabil
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Übertragungsfunktion $G(s) = Y(s)/U(s)$ nur für LTI-Systeme bei verschwindenden Anfangsbedingungen definiert
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — PT1-Glied: $G(s) = K/(1 + Ts)$ — Verstärkung $K$ und Zeitkonstante $T$; Sprungantwort $y(t) = K(1 - e^{-t/T})$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Statische Verstärkung = $G(0)$ — erhält man durch Einsetzen von $s = 0$ (Endwertsatz für Sprunganregung)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Serienschaltung: Übertragungsfunktionen werden multipliziert; Parallelschaltung: addiert; Rückführung: $T = G/(1+G H)$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Pole von $G(s)$ (Nullstellen des Nenners) bestimmen Stabilität: Realteil $< 0$ = stabil
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-rt-1-2-a`, `ex-rt-1-2-b`, `ex-rt-1-2-manual-1`, `ex-rt-1-2-manual-2`, `ex-rt-1-2-manual-3`, `ex-rt-1-2-manual-4`, `ex-rt-1-2-manual-5`, `ex-rt-1-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
@@ -3851,14 +3987,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) PID-Formel: $u(t) = K_P(e + \frac{1}{T_I}\int e dt + T_D \dot e)$
-  - [ ] [1] (hoch) P: schnell, bleibender Regelfehler; I: beseitigt Dauerfehler; D: antizipiert
-  - [ ] [2] (hoch) PID-Laplace: $G_R(s) = K_P(1 + 1/(T_I s) + T_D s)$
-  - [ ] [3] (hoch) I-Anteil dominiert bei niedrigen Frequenzen, D-Anteil bei hohen
-  - [ ] [4] (mittel) D rauschempfindlich → in Praxis mit Filterung: $T_D s/(1 + \alpha T_D s)$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — PID-Formel: $u(t) = K_P(e + \frac{1}{T_I}\int e dt + T_D \dot e)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — P: schnell, bleibender Regelfehler; I: beseitigt Dauerfehler; D: antizipiert
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — PID-Laplace: $G_R(s) = K_P(1 + 1/(T_I s) + T_D s)$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — I-Anteil dominiert bei niedrigen Frequenzen, D-Anteil bei hohen
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — D rauschempfindlich → in Praxis mit Filterung: $T_D s/(1 + \alpha T_D s)$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-rt-2-1-a`, `ex-rt-2-1-b`, `ex-rt-2-1-manual-1`, `ex-rt-2-1-manual-2`, `ex-rt-2-1-manual-3`, `ex-rt-2-1-manual-4`, `ex-rt-2-1-manual-5`, `ex-rt-2-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
@@ -3871,14 +4008,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Stabilitätsbedingung: alle Pole in linker s-Halbebene ($\text{Re}(s_i) < 0$)
-  - [ ] [1] (hoch) Hurwitz notwendig: alle Koeffizienten $>0$ (kein Vorzeichenwechsel)
-  - [ ] [2] (hoch) Hurwitz hinreichend ab $n \geq 3$: Hurwitz-Determinanten $> 0$ prüfen
-  - [ ] [3] (hoch) Phasenrand $\varphi_R \geq 30°$, Amplitudenrand $A_R \geq 6$ dB (Praxisrichtwerte)
-  - [ ] [4] (mittel) Pole auf $j\omega$-Achse: grenzstabil (ungedämpfte Schwingung)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Stabilitätsbedingung: alle Pole in linker s-Halbebene ($\text{Re}(s_i) < 0$)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Hurwitz notwendig: alle Koeffizienten $>0$ (kein Vorzeichenwechsel)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Hurwitz hinreichend ab $n \geq 3$: Hurwitz-Determinanten $> 0$ prüfen
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Phasenrand $\varphi_R \geq 30°$, Amplitudenrand $A_R \geq 6$ dB (Praxisrichtwerte)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Pole auf $j\omega$-Achse: grenzstabil (ungedämpfte Schwingung)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-rt-2-2-a`, `ex-rt-2-2-b`, `ex-rt-2-2-manual-1`, `ex-rt-2-2-manual-2`, `ex-rt-2-2-manual-3`, `ex-rt-2-2-manual-4`, `ex-rt-2-2-manual-5`, `ex-rt-2-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
@@ -3891,15 +4029,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Ferrit (α, krz): weich/zäh; Austenit (γ, kfz): nur bei hoher T; Perlit (lamellar); Martensit (Nadeln, hart)
-  - [ ] [1] (hoch) Eutektoider Punkt: $0{,}83\%$ C bei $723°$C — Austenit → Perlit
-  - [ ] [2] (hoch) Härtbarkeit: $0{,}3$–$0{,}8\%$ C nötig (zu wenig = kein Martensit, zu viel = spröde)
-  - [ ] [3] (hoch) Wärmebehandlungen: Glühen (Gefüge-Gleichgewicht), Härten (abschrecken), Vergüten (Härten + Anlassen)
-  - [ ] [4] (hoch) Vergüten: hohe Festigkeit + Zähigkeit durch angelassenen Martensit (z.B. 42CrMo4)
-  - [ ] [5] (mittel) Langsames Abkühlen → Diffusion → Perlit; Schnelles Abschrecken → diffusionslos → Martensit
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Ferrit (α, krz): weich/zäh; Austenit (γ, kfz): nur bei hoher T; Perlit (lamellar); Martensit (Nadeln, hart)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Eutektoider Punkt: $0{,}83\%$ C bei $723°$C — Austenit → Perlit
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Härtbarkeit: $0{,}3$–$0{,}8\%$ C nötig (zu wenig = kein Martensit, zu viel = spröde)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Wärmebehandlungen: Glühen (Gefüge-Gleichgewicht), Härten (abschrecken), Vergüten (Härten + Anlassen)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Vergüten: hohe Festigkeit + Zähigkeit durch angelassenen Martensit (z.B. 42CrMo4)
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Langsames Abkühlen → Diffusion → Perlit; Schnelles Abschrecken → diffusionslos → Martensit
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/werkstoffkunde.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-werk-2-3-manual-1`, `ex-werk-2-3-manual-2`, `ex-werk-2-3-manual-3`, `ex-werk-2-3-manual-4`, `ex-werk-2-3-manual-5`, `ex-werk-2-3-manual-6`, `ex-werk-2-3-manual-7`
 - **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
@@ -3912,13 +4051,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Dynamische Typisierung: keine Typangabe nötig, aber Typ ändert sich mit dem Wert
-  - [ ] [1] (mittel) int/float/str/bool mit `type(x)` prüfen
-  - [ ] [2] (hoch) Explizite Konvertierung `int("42")`, `float(3)`, `str(3.14)` — `int("3.14")` wirft `ValueError`
-  - [ ] [3] (niedrig) `snake_case` für Variablen in Python; Matlab nutzt `camelCase` oder Unterstrich-frei
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Dynamische Typisierung: keine Typangabe nötig, aber Typ ändert sich mit dem Wert
+  - 🔴 [1] (mittel) **0/3+** Aufgaben — int/float/str/bool mit `type(x)` prüfen
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Explizite Konvertierung `int("42")`, `float(3)`, `str(3.14)` — `int("3.14")` wirft `ValueError`
+  - 🔴 [3] (niedrig) **0/3+** Aufgaben — `snake_case` für Variablen in Python; Matlab nutzt `camelCase` oder Unterstrich-frei
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-1-a`, `ex-py-1-1-b`, `ex-py-1-1-manual-1`, `ex-py-1-1-manual-2`, `ex-py-1-1-manual-3`, `ex-py-1-1-manual-4`, `ex-py-1-1-manual-5`, `ex-py-1-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
@@ -3931,14 +4071,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) `/` = Gleitkomma-Division, `//` = Ganzzahl-Division, `%` = Modulo
-  - [ ] [1] (hoch) Python: `**` für Potenz; Matlab: `^` (bei Arrays: `.^` elementweise)
-  - [ ] [2] (hoch) Logische Operatoren: Python `and/or/not`, Matlab `&&/||/~` (skalar) bzw. `&/|/~` (elementweise)
-  - [ ] [3] (hoch) Float-Vergleich mit `==` unzuverlässig — stattdessen `abs(a - b) < 1e-9`
-  - [ ] [4] (niedrig) `0 == False` und `1 == True` in Python — bool ist Subtyp von int
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — `/` = Gleitkomma-Division, `//` = Ganzzahl-Division, `%` = Modulo
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Python: `**` für Potenz; Matlab: `^` (bei Arrays: `.^` elementweise)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Logische Operatoren: Python `and/or/not`, Matlab `&&/||/~` (skalar) bzw. `&/|/~` (elementweise)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Float-Vergleich mit `==` unzuverlässig — stattdessen `abs(a - b) < 1e-9`
+  - 🔴 [4] (niedrig) **0/3+** Aufgaben — `0 == False` und `1 == True` in Python — bool ist Subtyp von int
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-2-a`, `ex-py-1-2-b`, `ex-py-1-2-manual-1`, `ex-py-1-2-manual-2`, `ex-py-1-2-manual-3`, `ex-py-1-2-manual-4`, `ex-py-1-2-manual-5`, `ex-py-1-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
@@ -3951,13 +4092,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Python indiziert ab 0, Matlab ab 1 — Off-by-one-Fehler ist Quelle Nr. 1
-  - [ ] [1] (hoch) Slicing `liste[a:b]` liefert Elemente $a$ bis $b-1$ (rechte Grenze exklusiv)
-  - [ ] [2] (hoch) NumPy-Arrays: vektorisiert (elementweise `+ - * /`), viel schneller als reine Python-Listen
-  - [ ] [3] (mittel) Python-Listen können gemischte Typen; NumPy-Arrays nur einen Datentyp (dtype)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Python indiziert ab 0, Matlab ab 1 — Off-by-one-Fehler ist Quelle Nr. 1
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Slicing `liste[a:b]` liefert Elemente $a$ bis $b-1$ (rechte Grenze exklusiv)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — NumPy-Arrays: vektorisiert (elementweise `+ - * /`), viel schneller als reine Python-Listen
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Python-Listen können gemischte Typen; NumPy-Arrays nur einen Datentyp (dtype)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-3-a`, `ex-py-1-3-b`, `ex-py-1-3-manual-1`, `ex-py-1-3-manual-2`, `ex-py-1-3-manual-3`, `ex-py-1-3-manual-4`, `ex-py-1-3-manual-5`, `ex-py-1-3-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
@@ -3970,13 +4112,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Python: Einrückung (4 Spaces) definiert Block — kein `end`; Matlab: immer `end`
-  - [ ] [1] (hoch) Vergleiche: `==` prüft Gleichheit, `=` weist zu — Verwechslung erzeugt stummen Bug
-  - [ ] [2] (hoch) For-Schleife: `for i in range(n)` (0..n-1) in Python, `for i = 1:n` (1..n) in Matlab
-  - [ ] [3] (mittel) While-Schleife braucht zwingend einen Abbruch-Mechanismus (Zähler, Bedingung) um Endlos-Loops zu verhindern
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Python: Einrückung (4 Spaces) definiert Block — kein `end`; Matlab: immer `end`
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Vergleiche: `==` prüft Gleichheit, `=` weist zu — Verwechslung erzeugt stummen Bug
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — For-Schleife: `for i in range(n)` (0..n-1) in Python, `for i = 1:n` (1..n) in Matlab
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — While-Schleife braucht zwingend einen Abbruch-Mechanismus (Zähler, Bedingung) um Endlos-Loops zu verhindern
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-4-a`, `ex-py-1-4-b`, `ex-py-1-4-manual-1`, `ex-py-1-4-manual-2`, `ex-py-1-4-manual-3`, `ex-py-1-4-manual-4`, `ex-py-1-4-manual-5`, `ex-py-1-4-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
@@ -3989,14 +4132,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Python: `def name(param):`, Matlab: `function y = name(x)` ... `end`
-  - [ ] [1] (hoch) Rückgabe: Python `return`, Matlab über Zuweisung an Ausgabevariable
-  - [ ] [2] (hoch) Default-Parameter: `def f(x, y=0):` — bei Aufruf nicht zwingend angeben
-  - [ ] [3] (mittel) Lambda: `sqr = lambda x: x**2` für kurze Inline-Funktionen
-  - [ ] [4] (mittel) Docstring (Python) oder Kommentare nach Function-Header (Matlab) dokumentieren
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Python: `def name(param):`, Matlab: `function y = name(x)` ... `end`
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Rückgabe: Python `return`, Matlab über Zuweisung an Ausgabevariable
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Default-Parameter: `def f(x, y=0):` — bei Aufruf nicht zwingend angeben
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Lambda: `sqr = lambda x: x**2` für kurze Inline-Funktionen
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Docstring (Python) oder Kommentare nach Function-Header (Matlab) dokumentieren
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-5-a`, `ex-py-1-5-b`, `ex-py-1-5-manual-1`, `ex-py-1-5-manual-2`, `ex-py-1-5-manual-3`, `ex-py-1-5-manual-4`, `ex-py-1-5-manual-5`, `ex-py-1-5-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
@@ -4009,14 +4153,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Array erzeugen: `np.array([...])`, `np.zeros`, `np.ones`, `np.eye`, `np.linspace`
-  - [ ] [1] (hoch) Elementweise: `*` in NumPy, `.*` in Matlab; Matrixmultiplikation: `@` bzw. `*`
-  - [ ] [2] (hoch) Formen: `a.shape` (NumPy), `size(a)` (Matlab)
-  - [ ] [3] (hoch) Vektorisierung statt Schleifen: $10$–$100\times$ schneller
-  - [ ] [4] (mittel) Broadcasting: $(n, 1) + (1, m) \to (n, m)$ automatisch
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Array erzeugen: `np.array([...])`, `np.zeros`, `np.ones`, `np.eye`, `np.linspace`
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Elementweise: `*` in NumPy, `.*` in Matlab; Matrixmultiplikation: `@` bzw. `*`
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Formen: `a.shape` (NumPy), `size(a)` (Matlab)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Vektorisierung statt Schleifen: $10$–$100\times$ schneller
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Broadcasting: $(n, 1) + (1, m) \to (n, m)$ automatisch
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-py-2-1-a`, `ex-py-2-1-b`, `ex-py-2-1-manual-1`, `ex-py-2-1-manual-2`, `ex-py-2-1-manual-3`, `ex-py-2-1-manual-4`, `ex-py-2-1-manual-5`, `ex-py-2-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
@@ -4029,14 +4174,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×2, matching ×1, sorting ×2
 - **Typen einsetzen (Rotation):** matching, number-input, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Basis-Plot: `plt.plot(x, y)`, Titel, `xlabel`, `ylabel`, `legend`, `grid`
-  - [ ] [1] (mittel) Farbe/Linienstil: `'b-'` blau, `'r--'` rot gestrichelt, `'g:'` grün gepunktet
-  - [ ] [2] (hoch) Mehrere Kurven: mehrere `plt.plot()`-Aufrufe nacheinander
-  - [ ] [3] (mittel) Speichern: `plt.savefig('name.png', dpi=150)` **vor** `plt.show()`
-  - [ ] [4] (hoch) Plots ohne Achsen-/Einheiten-Beschriftung verlieren in Berichten Punkte
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Basis-Plot: `plt.plot(x, y)`, Titel, `xlabel`, `ylabel`, `legend`, `grid`
+  - 🔴 [1] (mittel) **0/3+** Aufgaben — Farbe/Linienstil: `'b-'` blau, `'r--'` rot gestrichelt, `'g:'` grün gepunktet
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Mehrere Kurven: mehrere `plt.plot()`-Aufrufe nacheinander
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Speichern: `plt.savefig('name.png', dpi=150)` **vor** `plt.show()`
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Plots ohne Achsen-/Einheiten-Beschriftung verlieren in Berichten Punkte
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-py-2-2-a`, `ex-py-2-2-b`, `ex-py-2-2-manual-1`, `ex-py-2-2-manual-2`, `ex-py-2-2-manual-3`, `ex-py-2-2-manual-4`, `ex-py-2-2-manual-5`, `ex-py-2-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
@@ -4049,14 +4195,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Nullstelle: `scipy.optimize.fsolve(f, x0)` — Startwert sollte nah an Lösung
-  - [ ] [1] (hoch) LGS: `np.linalg.solve(A, b)` statt `np.linalg.inv(A) @ b` (schneller, stabiler)
-  - [ ] [2] (hoch) Matlab-Pendant: Backslash-Operator `A \ b`
-  - [ ] [3] (hoch) Optimierung: `scipy.optimize.minimize(f, x0)` für Minima (Maxima: `-f`)
-  - [ ] [4] (mittel) Dimensionen prüfen vor Solve: `A.shape == (n, n)`, `b.shape == (n,)`
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Nullstelle: `scipy.optimize.fsolve(f, x0)` — Startwert sollte nah an Lösung
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — LGS: `np.linalg.solve(A, b)` statt `np.linalg.inv(A) @ b` (schneller, stabiler)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Matlab-Pendant: Backslash-Operator `A \ b`
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Optimierung: `scipy.optimize.minimize(f, x0)` für Minima (Maxima: `-f`)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Dimensionen prüfen vor Solve: `A.shape == (n, n)`, `b.shape == (n,)`
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-py-2-3-a`, `ex-py-2-3-b`, `ex-py-2-3-manual-1`, `ex-py-2-3-manual-2`, `ex-py-2-3-manual-3`, `ex-py-2-3-manual-4`, `ex-py-2-3-manual-5`, `ex-py-2-3-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
@@ -4069,14 +4216,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Bestimmtes Integral: `scipy.integrate.quad(f, a, b)` (adaptive Quadratur)
-  - [ ] [1] (mittel) Matlab-Pendant: `integral(@(x) f(x), a, b)`
-  - [ ] [2] (hoch) DGL 2. Ordnung → System 1. Ordnung umschreiben, dann `solve_ivp` / `ode45`
-  - [ ] [3] (hoch) ODE-Aufruf: `solve_ivp(f, [t0, t1], y0)`; `t_eval=...` für feste Ausgabezeitpunkte
-  - [ ] [4] (mittel) Standard-Solver: `RK45` (Python), `ode45` (Matlab) — adaptive Schrittweite, $O(h^5)$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Bestimmtes Integral: `scipy.integrate.quad(f, a, b)` (adaptive Quadratur)
+  - 🔴 [1] (mittel) **0/3+** Aufgaben — Matlab-Pendant: `integral(@(x) f(x), a, b)`
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — DGL 2. Ordnung → System 1. Ordnung umschreiben, dann `solve_ivp` / `ode45`
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — ODE-Aufruf: `solve_ivp(f, [t0, t1], y0)`; `t_eval=...` für feste Ausgabezeitpunkte
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Standard-Solver: `RK45` (Python), `ode45` (Matlab) — adaptive Schrittweite, $O(h^5)$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-py-2-4-a`, `ex-py-2-4-b`, `ex-py-2-4-manual-1`, `ex-py-2-4-manual-2`, `ex-py-2-4-manual-3`, `ex-py-2-4-manual-4`, `ex-py-2-4-manual-5`, `ex-py-2-4-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
@@ -4089,14 +4237,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Rechteck: $I = bh^3/12$, $W = bh^2/6$ als Funktion
-  - [ ] [1] (hoch) Biegespannung $\sigma_b = M_b/W$ entlang Balken berechnen (Vektor-Operation)
-  - [ ] [2] (hoch) Kritische Stelle: $M_\text{max}$ via `np.max(np.abs(M))`
-  - [ ] [3] (mittel) Verschiedene Querschnitte als Funktionen kapseln (DRY-Prinzip)
-  - [ ] [4] (mittel) Ergebnis-Plot: Spannungsverlauf über $x$ mit Skalierung & Einheit
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Rechteck: $I = bh^3/12$, $W = bh^2/6$ als Funktion
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Biegespannung $\sigma_b = M_b/W$ entlang Balken berechnen (Vektor-Operation)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Kritische Stelle: $M_\text{max}$ via `np.max(np.abs(M))`
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Verschiedene Querschnitte als Funktionen kapseln (DRY-Prinzip)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Ergebnis-Plot: Spannungsverlauf über $x$ mit Skalierung & Einheit
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-py-3-1-a`, `ex-py-3-1-b`, `ex-py-3-1-manual-1`, `ex-py-3-1-manual-2`, `ex-py-3-1-manual-3`, `ex-py-3-1-manual-4`, `ex-py-3-1-manual-5`, `ex-py-3-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
@@ -4109,14 +4258,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×2, matching ×1, sorting ×2
 - **Typen einsetzen (Rotation):** matching, number-input, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) CSV lesen: `np.loadtxt` (einfach), `pd.read_csv` (mit Headern und Typen)
-  - [ ] [1] (hoch) Statistik: `np.mean`, `np.std`, `np.median`, `np.max`, `np.min`
-  - [ ] [2] (hoch) Polynom-Fit: `np.polyfit(x, y, n)` → Koeffizienten
-  - [ ] [3] (mittel) Pandas DataFrames: `df['Spalte']`, `df.describe()` für Überblick
-  - [ ] [4] (mittel) Scatter + Fit-Kurve zusammen plotten (Mess vs. Modell)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — CSV lesen: `np.loadtxt` (einfach), `pd.read_csv` (mit Headern und Typen)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Statistik: `np.mean`, `np.std`, `np.median`, `np.max`, `np.min`
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Polynom-Fit: `np.polyfit(x, y, n)` → Koeffizienten
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Pandas DataFrames: `df['Spalte']`, `df.describe()` für Überblick
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Scatter + Fit-Kurve zusammen plotten (Mess vs. Modell)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-py-3-2-a`, `ex-py-3-2-b`, `ex-py-3-2-manual-1`, `ex-py-3-2-manual-2`, `ex-py-3-2-manual-3`, `ex-py-3-2-manual-4`, `ex-py-3-2-manual-5`, `ex-py-3-2-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
@@ -4129,14 +4279,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Bewegungsgleichung $m\ddot x + d\dot x + kx = F(t)$ als System 1. Ordnung
-  - [ ] [1] (hoch) Eigenkreisfrequenz $\omega_0 = \sqrt{k/m}$, Dämpfungsgrad $D = d/(2\sqrt{km})$
-  - [ ] [2] (hoch) Frequenzgang: Amplitude über $\Omega$ plotten, Resonanzspitze bei $\Omega \approx \omega_0$
-  - [ ] [3] (mittel) Parameter-Loop: Schleife über $\Omega$, pro Wert ODE lösen
-  - [ ] [4] (mittel) Einschwingvorgang ignorieren: nur zweite Hälfte der Zeitreihe auswerten
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Bewegungsgleichung $m\ddot x + d\dot x + kx = F(t)$ als System 1. Ordnung
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Eigenkreisfrequenz $\omega_0 = \sqrt{k/m}$, Dämpfungsgrad $D = d/(2\sqrt{km})$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Frequenzgang: Amplitude über $\Omega$ plotten, Resonanzspitze bei $\Omega \approx \omega_0$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Parameter-Loop: Schleife über $\Omega$, pro Wert ODE lösen
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Einschwingvorgang ignorieren: nur zweite Hälfte der Zeitreihe auswerten
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-py-3-3-a`, `ex-py-3-3-b`, `ex-py-3-3-manual-1`, `ex-py-3-3-manual-2`, `ex-py-3-3-manual-3`, `ex-py-3-3-manual-4`, `ex-py-3-3-manual-5`, `ex-py-3-3-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
@@ -4149,14 +4300,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 10 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×5, true-false ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Indizierung: Python 0-basiert, Matlab 1-basiert (Off-by-one-Fehler!)
-  - [ ] [1] (hoch) Operatoren: `*` vs `@`, `^` vs `.^` — elementweise vs. Matrix
-  - [ ] [2] (hoch) Python `range(a, b)`: $a, a+1, \ldots, b-1$; Matlab `a:b`: $a, a+1, \ldots, b$
-  - [ ] [3] (hoch) Code Zeile-für-Zeile verfolgen, Variablenwerte neben Code notieren
-  - [ ] [4] (hoch) Typische Fehler: `=` vs `==`, fehlendes `:` in Python, Semikolon-Ausgabe in Matlab
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Indizierung: Python 0-basiert, Matlab 1-basiert (Off-by-one-Fehler!)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Operatoren: `*` vs `@`, `^` vs `.^` — elementweise vs. Matrix
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Python `range(a, b)`: $a, a+1, \ldots, b-1$; Matlab `a:b`: $a, a+1, \ldots, b$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Code Zeile-für-Zeile verfolgen, Variablenwerte neben Code notieren
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Typische Fehler: `=` vs `==`, fehlendes `:` in Python, Semikolon-Ausgabe in Matlab
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-py-4-1-a`, `ex-py-4-1-b`, `ex-py-4-1-c`, `ex-py-4-1-d`, `ex-py-4-1-e`, `ex-py-4-1-f`, `ex-py-4-1-g`, `ex-py-4-1-h` … (+2 weitere)
 - **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
@@ -4169,13 +4321,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) DEG/RAD-Umschaltung am Taschenrechner
-  - [ ] [1] (hoch) π-Vielfache (π/6, π/4, π/3, π/2) als Grad erkennen
-  - [ ] [2] (hoch) Umrechnungsformel $\alpha_{rad}=\alpha_{deg}\cdot\pi/180$
-  - [ ] [3] (mittel) Bogenlänge am Einheitskreis als Winkelmaß
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — DEG/RAD-Umschaltung am Taschenrechner
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — π-Vielfache (π/6, π/4, π/3, π/2) als Grad erkennen
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Umrechnungsformel $\alpha_{rad}=\alpha_{deg}\cdot\pi/180$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Bogenlänge am Einheitskreis als Winkelmaß
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-trig-1-1-c`, `ex-trig-1-1-manual-1`, `ex-trig-1-1-manual-2`, `ex-trig-1-1-manual-3`, `ex-trig-1-1-manual-4`, `ex-trig-1-1-manual-5`, `ex-trig-1-1-manual-6`, `ex-trig-1-1-manual-7` … (+1 weitere)
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
@@ -4188,12 +4341,13 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) SOH-CAH-TOA als Merkregel für Seitenverhältnisse
-  - [ ] [1] (hoch) Gegenkathete vs. Ankathete in beliebiger Dreiecksorientierung identifizieren
-  - [ ] [2] (mittel) Umkehrfunktionen arcsin/arccos/arctan sinnvoll einsetzen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — SOH-CAH-TOA als Merkregel für Seitenverhältnisse
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Gegenkathete vs. Ankathete in beliebiger Dreiecksorientierung identifizieren
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Umkehrfunktionen arcsin/arccos/arctan sinnvoll einsetzen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-trig-1-2-a`, `ex-trig-1-2-b`, `ex-trig-1-2-c`, `ex-trig-1-2-manual-1`, `ex-trig-1-2-manual-2`, `ex-trig-1-2-manual-3`, `ex-trig-1-2-manual-4`, `ex-trig-1-2-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
@@ -4206,15 +4360,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Standardgrenzwerte: $\lim_{x \to 0} \sin x/x = 1$, $\lim_{x \to 0} (e^x-1)/x = 1$
-  - [ ] [1] (hoch) Eulerzahl: $\lim_{x \to \infty} (1 + 1/x)^x = e$
-  - [ ] [2] (hoch) L'Hôpital nur bei unbestimmten Formen $0/0$ oder $\infty/\infty$ anwenden
-  - [ ] [3] (hoch) L'Hôpital ggf. mehrfach anwenden, bis ein bestimmter Wert herauskommt
-  - [ ] [4] (mittel) Andere unbestimmte Formen: $0 \cdot \infty \to 0/0$, $\infty - \infty \to$ Hauptnenner, $0^0/\infty^0/1^\infty \to$ $\ln$ nehmen
-  - [ ] [5] (hoch) Wachstumshierarchie: $\ln x \ll x^n \ll e^x$ für $x \to \infty$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Standardgrenzwerte: $\lim_{x \to 0} \sin x/x = 1$, $\lim_{x \to 0} (e^x-1)/x = 1$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Eulerzahl: $\lim_{x \to \infty} (1 + 1/x)^x = e$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — L'Hôpital nur bei unbestimmten Formen $0/0$ oder $\infty/\infty$ anwenden
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — L'Hôpital ggf. mehrfach anwenden, bis ein bestimmter Wert herauskommt
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Andere unbestimmte Formen: $0 \cdot \infty \to 0/0$, $\infty - \infty \to$ Hauptnenner, $0^0/\infty^0/1^\infty \to$ $\ln$ nehmen
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — Wachstumshierarchie: $\ln x \ll x^n \ll e^x$ für $x \to \infty$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-5-1-b`, `ex-abl-5-1-manual-1`, `ex-abl-5-1-manual-2`, `ex-abl-5-1-manual-3`, `ex-abl-5-1-manual-4`, `ex-abl-5-1-manual-5`, `ex-abl-5-1-manual-6`, `ex-abl-5-1-manual-7` … (+1 weitere)
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -4227,14 +4382,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×2, matching ×1
 - **Typen einsetzen (Rotation):** sorting, matching, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Grundableitungen: $(x^n)' = n x^{n-1}$, $(e^x)' = e^x$, $(\ln x)' = 1/x$, $(\sin x)' = \cos x$
-  - [ ] [1] (hoch) $(\cos x)' = -\sin x$ und $(\tan x)' = 1/\cos^2 x = 1 + \tan^2 x$
-  - [ ] [2] (mittel) $(a^x)' = a^x \ln a$ und $(\log_a x)' = 1/(x \ln a)$
-  - [ ] [3] (mittel) Ableitung der Umkehrfunktion: $(f^{-1})'(y) = 1/f'(x)$ mit $y = f(x)$
-  - [ ] [4] (hoch) Kombinierte Regeln: Produkt mit Kette, Quotient mit Kette — Teilschritte dokumentieren (Punkte!)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Grundableitungen: $(x^n)' = n x^{n-1}$, $(e^x)' = e^x$, $(\ln x)' = 1/x$, $(\sin x)' = \cos x$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — $(\cos x)' = -\sin x$ und $(\tan x)' = 1/\cos^2 x = 1 + \tan^2 x$
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — $(a^x)' = a^x \ln a$ und $(\log_a x)' = 1/(x \ln a)$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Ableitung der Umkehrfunktion: $(f^{-1})'(y) = 1/f'(x)$ mit $y = f(x)$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Kombinierte Regeln: Produkt mit Kette, Quotient mit Kette — Teilschritte dokumentieren (Punkte!)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-4-1-a`, `ex-abl-4-1-b`, `ex-abl-4-1-c`, `ex-abl-4-1-d`, `ex-abl-4-1-e`, `ex-abl-4-1-f`, `ex-abl-4-1-g`, `ex-abl-4-1-h` … (+3 weitere)
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -4247,14 +4403,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, true-false, matching
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Optimierung: Zielfunktion aufstellen, Nebenbedingung einsetzen, auf eine Variable reduzieren
-  - [ ] [1] (hoch) Taylorreihe: $T_n(x) = \sum_{k=0}^n f^{(k)}(x_0)(x-x_0)^k/k!$
-  - [ ] [2] (hoch) Näherungen bei $x_0 = 0$: $\sin x \approx x$, $\cos x \approx 1 - x^2/2$, $e^x \approx 1 + x + x^2/2$
-  - [ ] [3] (mittel) Restglied (Lagrange): $R_n(x) = f^{(n+1)}(\xi)(x-x_0)^{n+1}/(n+1)!$ für ein $\xi$ dazwischen
-  - [ ] [4] (hoch) Monotoniebereiche aus $f'$-Vorzeichen, Wendebereiche aus $f''$-Vorzeichen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Optimierung: Zielfunktion aufstellen, Nebenbedingung einsetzen, auf eine Variable reduzieren
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Taylorreihe: $T_n(x) = \sum_{k=0}^n f^{(k)}(x_0)(x-x_0)^k/k!$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Näherungen bei $x_0 = 0$: $\sin x \approx x$, $\cos x \approx 1 - x^2/2$, $e^x \approx 1 + x + x^2/2$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Restglied (Lagrange): $R_n(x) = f^{(n+1)}(\xi)(x-x_0)^{n+1}/(n+1)!$ für ein $\xi$ dazwischen
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Monotoniebereiche aus $f'$-Vorzeichen, Wendebereiche aus $f''$-Vorzeichen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-4-2-a`, `ex-abl-4-2-b`, `ex-abl-4-2-c`, `ex-abl-4-2-d`, `ex-abl-4-2-e`, `ex-abl-4-2-f`, `ex-abl-4-2-g`, `ex-abl-4-2-h` … (+3 weitere)
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -4267,15 +4424,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Newton-Iteration: $x_{n+1} = x_n - f(x_n)/f'(x_n)$ — lokal quadratische Konvergenz
-  - [ ] [1] (hoch) Newton-Voraussetzungen: $f'(x_n) \neq 0$, guter Startwert nahe der Nullstelle
-  - [ ] [2] (mittel) Klassische Geometrie-Optima: Dose mit Deckel $h = 2r$, Rechteck $U$ const → Quadrat
-  - [ ] [3] (mittel) Max-Power-Theorem (ET): $R_L = R_i$ für maximale Leistung (Wirkungsgrad nur 50 %)
-  - [ ] [4] (hoch) Globales Optimum: innere Kandidaten + Randwerte + Verhalten am Definitionsrand vergleichen
-  - [ ] [5] (mittel) Optimierung unter Nebenbedingung auch via Lagrange-Multiplikator $\nabla f = \lambda \nabla g$ (Vertiefung)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Newton-Iteration: $x_{n+1} = x_n - f(x_n)/f'(x_n)$ — lokal quadratische Konvergenz
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Newton-Voraussetzungen: $f'(x_n) \neq 0$, guter Startwert nahe der Nullstelle
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Klassische Geometrie-Optima: Dose mit Deckel $h = 2r$, Rechteck $U$ const → Quadrat
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Max-Power-Theorem (ET): $R_L = R_i$ für maximale Leistung (Wirkungsgrad nur 50 %)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Globales Optimum: innere Kandidaten + Randwerte + Verhalten am Definitionsrand vergleichen
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Optimierung unter Nebenbedingung auch via Lagrange-Multiplikator $\nabla f = \lambda \nabla g$ (Vertiefung)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-4-3-a`, `ex-abl-4-3-b`, `ex-abl-4-3-c`, `ex-abl-4-3-d`, `ex-abl-4-3-e`, `ex-abl-4-3-f`, `ex-abl-4-3-g`, `ex-abl-4-3-h` … (+3 weitere)
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -4288,13 +4446,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Betrag $|\vec{v}|=\sqrt{v_x^2+v_y^2+v_z^2}$
-  - [ ] [1] (hoch) Vektoraddition komponentenweise
-  - [ ] [2] (mittel) Einheitsvektor $\vec{e}=\vec{v}/|\vec{v}|$ bilden
-  - [ ] [3] (niedrig) Vektor vs. Skalar in technischen Größen erkennen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Betrag $|\vec{v}|=\sqrt{v_x^2+v_y^2+v_z^2}$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Vektoraddition komponentenweise
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Einheitsvektor $\vec{e}=\vec{v}/|\vec{v}|$ bilden
+  - 🔴 [3] (niedrig) **0/3+** Aufgaben — Vektor vs. Skalar in technischen Größen erkennen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-vek-1-1-a`, `ex-vek-1-1-c`, `ex-vek-1-1-manual-1`, `ex-vek-1-1-manual-2`, `ex-vek-1-1-manual-3`, `ex-vek-1-1-manual-4`, `ex-vek-1-1-manual-5`, `ex-vek-1-1-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
@@ -4307,15 +4466,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Parameterform: $\vec r = \vec p + t \vec v$ mit Stützpunkt $\vec p$ und Richtung $\vec v$
-  - [ ] [1] (hoch) Punkt-Test: $(x,y,z) = \vec p + t \vec v$ auf **dasselbe** $t$ in allen drei Komponenten prüfen
-  - [ ] [2] (hoch) Lagetest zweier Geraden: parallel? identisch? schneidend? windschief?
-  - [ ] [3] (hoch) Parallel-Test: $\vec v_1 \times \vec v_2 = \vec 0$ oder $\vec v_2 = k \vec v_1$
-  - [ ] [4] (hoch) Schnittpunkt via Gleichsetzen: $\vec p_1 + t \vec v_1 = \vec p_2 + s \vec v_2$ (LGS 3 Gl., 2 Unbek.)
-  - [ ] [5] (mittel) Windschief gibt es nur in 3D — in 2D sind nicht-parallele Geraden immer schneidend
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Parameterform: $\vec r = \vec p + t \vec v$ mit Stützpunkt $\vec p$ und Richtung $\vec v$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Punkt-Test: $(x,y,z) = \vec p + t \vec v$ auf **dasselbe** $t$ in allen drei Komponenten prüfen
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Lagetest zweier Geraden: parallel? identisch? schneidend? windschief?
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Parallel-Test: $\vec v_1 \times \vec v_2 = \vec 0$ oder $\vec v_2 = k \vec v_1$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Schnittpunkt via Gleichsetzen: $\vec p_1 + t \vec v_1 = \vec p_2 + s \vec v_2$ (LGS 3 Gl., 2 Unbek.)
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Windschief gibt es nur in 3D — in 2D sind nicht-parallele Geraden immer schneidend
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-vek-2-1-a`, `ex-vek-2-1-b`, `ex-vek-2-1-c`, `ex-vek-2-1-manual-1`, `ex-vek-2-1-manual-2`, `ex-vek-2-1-manual-3`, `ex-vek-2-1-manual-4`, `ex-vek-2-1-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
@@ -4328,15 +4488,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Parallelogrammfläche: $A = |\vec a \times \vec b|$
-  - [ ] [1] (hoch) Dreiecksfläche: $A = \tfrac{1}{2} |\vec a \times \vec b|$
-  - [ ] [2] (hoch) Spatvolumen: $V = |\vec a \cdot (\vec b \times \vec c)|$ (Spatprodukt)
-  - [ ] [3] (hoch) Tetraedervolumen: $V = \tfrac{1}{6} |\vec a \cdot (\vec b \times \vec c)|$
-  - [ ] [4] (hoch) Spatprodukt $= 0 \iff$ Vektoren komplanar (kein Volumen)
-  - [ ] [5] (mittel) Vorzeichen ohne Betrag: $>0$ Rechtssystem, $<0$ Linkssystem
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Parallelogrammfläche: $A = |\vec a \times \vec b|$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Dreiecksfläche: $A = \tfrac{1}{2} |\vec a \times \vec b|$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Spatvolumen: $V = |\vec a \cdot (\vec b \times \vec c)|$ (Spatprodukt)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Tetraedervolumen: $V = \tfrac{1}{6} |\vec a \cdot (\vec b \times \vec c)|$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Spatprodukt $= 0 \iff$ Vektoren komplanar (kein Volumen)
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Vorzeichen ohne Betrag: $>0$ Rechtssystem, $<0$ Linkssystem
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-vek-3-2-a`, `ex-vek-3-2-b`, `ex-vek-3-2-c`, `ex-vek-3-2-manual-1`, `ex-vek-3-2-manual-2`, `ex-vek-3-2-manual-3`, `ex-vek-3-2-manual-4`, `ex-vek-3-2-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
@@ -4349,14 +4510,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Schiefe Ebene: Hangabtrieb $F_H = G \sin\alpha$, Normalkraft $F_N = G \cos\alpha$
-  - [ ] [1] (hoch) Drehmoment $\vec M = \vec r \times \vec F$: Betrag $|M| = r F \sin\alpha$, max bei $\alpha = 90°$
-  - [ ] [2] (hoch) Drehmoment-Richtung via Rechte-Hand-Regel (Daumen = $\vec r$, Zeige = $\vec F$, Mittel = $\vec M$)
-  - [ ] [3] (hoch) Einheiten: Kraft N, Hebel m, Moment Nm, Arbeit Nm = J
-  - [ ] [4] (hoch) Gleichgewicht: $\sum \vec F = 0$ UND $\sum \vec M = 0$ (alle Momentensummen um beliebigen Punkt)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Schiefe Ebene: Hangabtrieb $F_H = G \sin\alpha$, Normalkraft $F_N = G \cos\alpha$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Drehmoment $\vec M = \vec r \times \vec F$: Betrag $|M| = r F \sin\alpha$, max bei $\alpha = 90°$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Drehmoment-Richtung via Rechte-Hand-Regel (Daumen = $\vec r$, Zeige = $\vec F$, Mittel = $\vec M$)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Einheiten: Kraft N, Hebel m, Moment Nm, Arbeit Nm = J
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Gleichgewicht: $\sum \vec F = 0$ UND $\sum \vec M = 0$ (alle Momentensummen um beliebigen Punkt)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-vek-3-3-a`, `ex-vek-3-3-b`, `ex-vek-3-3-c`, `ex-vek-3-3-manual-1`, `ex-vek-3-3-manual-2`, `ex-vek-3-3-manual-3`, `ex-vek-3-3-manual-4`, `ex-vek-3-3-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
@@ -4369,12 +4531,13 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×2, matching ×1
 - **Typen einsetzen (Rotation):** sorting, matching, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Funktion: jedem $x$ aus Definitionsbereich wird *genau ein* $y$ zugeordnet
-  - [ ] [1] (hoch) Definitionsbereich $D$: alle zulässigen $x$ (Division durch 0 ausschließen, Radikand $\ge 0$, Logarithmus $>0$)
-  - [ ] [2] (mittel) Injektiv = verschiedene $x$ $\to$ verschiedene $y$; surjektiv = jedes $y$ im Bild wird getroffen; bijektiv = beides
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Funktion: jedem $x$ aus Definitionsbereich wird *genau ein* $y$ zugeordnet
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Definitionsbereich $D$: alle zulässigen $x$ (Division durch 0 ausschließen, Radikand $\ge 0$, Logarithmus $>0$)
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Injektiv = verschiedene $x$ $\to$ verschiedene $y$; surjektiv = jedes $y$ im Bild wird getroffen; bijektiv = beides
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-1-a`, `ex-alg-3-1-b`, `ex-alg-3-1-c`, `ex-alg-3-1-manual-1`, `ex-alg-3-1-manual-2`, `ex-alg-3-1-manual-3`, `ex-alg-3-1-manual-4`, `ex-alg-3-1-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
@@ -4387,15 +4550,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Horizontale Verschiebung: $f(x - a)$ = $a$ nach rechts (Vorzeichen kontraintuitiv!)
-  - [ ] [1] (hoch) Vertikale Verschiebung: $f(x) + b$ = $b$ nach oben
-  - [ ] [2] (hoch) Streckung vertikal: $c \cdot f(x)$ (für $c > 1$), horizontal: $f(x/c)$
-  - [ ] [3] (hoch) Spiegelung an $x$-Achse: $-f(x)$, an $y$-Achse: $f(-x)$
-  - [ ] [4] (mittel) Merkregel: Änderungen im Argument wirken horizontal und **umgekehrt**
-  - [ ] [5] (mittel) Funktionskomposition: $(f \circ g)(x) = f(g(x))$ (Reihenfolge beachten)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Horizontale Verschiebung: $f(x - a)$ = $a$ nach rechts (Vorzeichen kontraintuitiv!)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Vertikale Verschiebung: $f(x) + b$ = $b$ nach oben
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Streckung vertikal: $c \cdot f(x)$ (für $c > 1$), horizontal: $f(x/c)$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Spiegelung an $x$-Achse: $-f(x)$, an $y$-Achse: $f(-x)$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Merkregel: Änderungen im Argument wirken horizontal und **umgekehrt**
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Funktionskomposition: $(f \circ g)(x) = f(g(x))$ (Reihenfolge beachten)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-3-c`, `ex-alg-3-3-manual-1`, `ex-alg-3-3-manual-2`, `ex-alg-3-3-manual-3`, `ex-alg-3-3-manual-4`, `ex-alg-3-3-manual-5`, `ex-alg-3-3-manual-6`, `ex-alg-3-3-manual-7` … (+1 weitere)
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
@@ -4408,15 +4572,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Existenz: $f$ muss **bijektiv** sein (injektiv UND surjektiv)
-  - [ ] [1] (hoch) Berechnung: $y = f(x)$ nach $x$ auflösen, dann $x \leftrightarrow y$ tauschen
-  - [ ] [2] (hoch) Graphisch: Spiegelung an der Winkelhalbierenden $y = x$
-  - [ ] [3] (hoch) Def.bereich von $f^{-1}$ = Wertebereich von $f$ (und umgekehrt)
-  - [ ] [4] (mittel) Eigenschaft: $f^{-1}(f(x)) = x$ und $f(f^{-1}(y)) = y$
-  - [ ] [5] (mittel) Für nicht-injektives $f$ (z.B. $x^2$) Def.bereich einschränken: $[0,\infty)$ macht Umkehrung möglich
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Existenz: $f$ muss **bijektiv** sein (injektiv UND surjektiv)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Berechnung: $y = f(x)$ nach $x$ auflösen, dann $x \leftrightarrow y$ tauschen
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Graphisch: Spiegelung an der Winkelhalbierenden $y = x$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Def.bereich von $f^{-1}$ = Wertebereich von $f$ (und umgekehrt)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Eigenschaft: $f^{-1}(f(x)) = x$ und $f(f^{-1}(y)) = y$
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Für nicht-injektives $f$ (z.B. $x^2$) Def.bereich einschränken: $[0,\infty)$ macht Umkehrung möglich
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-4-a`, `ex-alg-3-4-b`, `ex-alg-3-4-c`, `ex-alg-3-4-manual-1`, `ex-alg-3-4-manual-2`, `ex-alg-3-4-manual-3`, `ex-alg-3-4-manual-4`, `ex-alg-3-4-manual-5` … (+2 weitere)
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
@@ -4429,14 +4594,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×2, matching ×1
 - **Typen einsetzen (Rotation):** sorting, matching, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Diskriminante: $D > 0$ zwei, $D = 0$ eine, $D < 0$ keine reelle Lösung
-  - [ ] [1] (hoch) Exponentialgleichung $a^x = b$: durch Logarithmieren $x = \log_a b = \ln b / \ln a$
-  - [ ] [2] (hoch) Wurzelgleichung: beide Seiten quadrieren + Probe (Scheinlösungen möglich)
-  - [ ] [3] (hoch) Argumente von $\ln$, $\log$, $e^{(\cdot)}$ müssen dimensionslos sein
-  - [ ] [4] (mittel) Bei Prüfungsaufgaben Rechenweg sichtbar: jede Umformung nummerieren/benennen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Diskriminante: $D > 0$ zwei, $D = 0$ eine, $D < 0$ keine reelle Lösung
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Exponentialgleichung $a^x = b$: durch Logarithmieren $x = \log_a b = \ln b / \ln a$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Wurzelgleichung: beide Seiten quadrieren + Probe (Scheinlösungen möglich)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Argumente von $\ln$, $\log$, $e^{(\cdot)}$ müssen dimensionslos sein
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Bei Prüfungsaufgaben Rechenweg sichtbar: jede Umformung nummerieren/benennen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-alg-4-1-a`, `ex-alg-4-1-b`, `ex-alg-4-1-d`, `ex-alg-4-1-e`, `ex-alg-4-1-f`, `ex-alg-4-1-g`, `ex-alg-4-1-h`, `ex-alg-4-1-i` … (+2 weitere)
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
@@ -4449,15 +4615,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×1, true-false ×2, sorting ×1
 - **Typen einsetzen (Rotation):** matching, number-input, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Scheitelpunkt Parabel $ax^2+bx+c$: $x_S = -b/(2a)$, $y_S = f(x_S)$
-  - [ ] [1] (hoch) Scheitelform: $f(x) = a(x - x_S)^2 + y_S$ (quadratische Ergänzung)
-  - [ ] [2] (hoch) Umkehrfunktion: $y = f(x)$ → nach $x$ auflösen → $x \leftrightarrow y$ tauschen
-  - [ ] [3] (mittel) Anwendung Wärmeausdehnung: $l(T) = l_0(1 + \alpha T)$
-  - [ ] [4] (hoch) Anwendung Abklingen: $p(t) = p_0 e^{-kt}$, Halbwertszeit $t_{1/2} = \ln 2/k$
-  - [ ] [5] (mittel) Anwendung Umsatz: $U(x) = x \cdot p(x)$, Maximum bei $U'(x) = 0$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Scheitelpunkt Parabel $ax^2+bx+c$: $x_S = -b/(2a)$, $y_S = f(x_S)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Scheitelform: $f(x) = a(x - x_S)^2 + y_S$ (quadratische Ergänzung)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Umkehrfunktion: $y = f(x)$ → nach $x$ auflösen → $x \leftrightarrow y$ tauschen
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Anwendung Wärmeausdehnung: $l(T) = l_0(1 + \alpha T)$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Anwendung Abklingen: $p(t) = p_0 e^{-kt}$, Halbwertszeit $t_{1/2} = \ln 2/k$
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Anwendung Umsatz: $U(x) = x \cdot p(x)$, Maximum bei $U'(x) = 0$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-alg-4-2-a`, `ex-alg-4-2-b`, `ex-alg-4-2-c`, `ex-alg-4-2-e`, `ex-alg-4-2-f`, `ex-alg-4-2-g`, `ex-alg-4-2-h`, `ex-alg-4-2-j` … (+1 weitere)
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
@@ -4470,15 +4637,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) $2\times 2$-LGS: Einsetzungs-, Additions-, Gleichsetzungsmethode — alle äquivalent
-  - [ ] [1] (hoch) Betrag auflösen: Fallunterscheidung $|x| = x$ für $x \geq 0$, $|x| = -x$ für $x < 0$
-  - [ ] [2] (hoch) pH-Wert: $\text{pH} = -\log_{10}[H^+]$ (logarithmische Skala der H⁺-Konzentration)
-  - [ ] [3] (hoch) dB-Skala: $L = 10 \log_{10}(P/P_0)$ (Leistung) bzw. $= 20 \log_{10}(U/U_0)$ (Amplitude)
-  - [ ] [4] (hoch) LGS-Lösungsfälle: eindeutig (det $\neq 0$), keine Lösung (Widerspruch), unendlich (parallel)
-  - [ ] [5] (mittel) Technik-Anwendungen: Kirchhoffsche Maschenregeln, Biegespannung, Mischrechnung
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — $2\times 2$-LGS: Einsetzungs-, Additions-, Gleichsetzungsmethode — alle äquivalent
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Betrag auflösen: Fallunterscheidung $|x| = x$ für $x \geq 0$, $|x| = -x$ für $x < 0$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — pH-Wert: $\text{pH} = -\log_{10}[H^+]$ (logarithmische Skala der H⁺-Konzentration)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — dB-Skala: $L = 10 \log_{10}(P/P_0)$ (Leistung) bzw. $= 20 \log_{10}(U/U_0)$ (Amplitude)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — LGS-Lösungsfälle: eindeutig (det $\neq 0$), keine Lösung (Widerspruch), unendlich (parallel)
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Technik-Anwendungen: Kirchhoffsche Maschenregeln, Biegespannung, Mischrechnung
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-alg-4-3-a`, `ex-alg-4-3-b`, `ex-alg-4-3-c`, `ex-alg-4-3-d`, `ex-alg-4-3-e`, `ex-alg-4-3-f`, `ex-alg-4-3-g`, `ex-alg-4-3-h` … (+3 weitere)
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
@@ -4491,15 +4659,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Eigenwertgleichung: $A \vec v = \lambda \vec v$ (Vektor bleibt in Richtung, nur gestreckt)
-  - [ ] [1] (hoch) Charakteristisches Polynom: $\det(A - \lambda I) = 0$ → Eigenwerte $\lambda_i$
-  - [ ] [2] (hoch) Eigenvektor zu $\lambda_i$: $(A - \lambda_i I)\vec v = 0$ lösen (Kern)
-  - [ ] [3] (mittel) Spur und Determinante: $\text{tr}(A) = \sum \lambda_i$, $\det A = \prod \lambda_i$
-  - [ ] [4] (mittel) Symmetrische Matrix: Eigenwerte reell, Eigenvektoren orthogonal (Hauptachsentransformation)
-  - [ ] [5] (hoch) Technik-Anwendung: Eigenfrequenzen (Schwingungen), Hauptspannungen (Festigkeit)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Eigenwertgleichung: $A \vec v = \lambda \vec v$ (Vektor bleibt in Richtung, nur gestreckt)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Charakteristisches Polynom: $\det(A - \lambda I) = 0$ → Eigenwerte $\lambda_i$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Eigenvektor zu $\lambda_i$: $(A - \lambda_i I)\vec v = 0$ lösen (Kern)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Spur und Determinante: $\text{tr}(A) = \sum \lambda_i$, $\det A = \prod \lambda_i$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Symmetrische Matrix: Eigenwerte reell, Eigenvektoren orthogonal (Hauptachsentransformation)
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — Technik-Anwendung: Eigenfrequenzen (Schwingungen), Hauptspannungen (Festigkeit)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-5-a`, `ex-la-1-5-b`, `ex-la-1-5-c`, `ex-la-1-5-manual-1`, `ex-la-1-5-manual-2`, `ex-la-1-5-manual-3`, `ex-la-1-5-manual-4`, `ex-la-1-5-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
@@ -4512,14 +4681,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Matrixform: $A\vec x = \vec b$ (Koeffizienten $A$, Unbekannte $\vec x$, rechte Seite $\vec b$)
-  - [ ] [1] (hoch) Erweiterte Koeffizientenmatrix $[A|\vec b]$ mit Trennstrich
-  - [ ] [2] (hoch) Variablen in jeder Gleichung in gleicher Reihenfolge (sonst Koeffizienten falsch!)
-  - [ ] [3] (mittel) Dimensionen: $A$ ist $m \times n$, $\vec x \in \mathbb{R}^n$, $\vec b \in \mathbb{R}^m$
-  - [ ] [4] (mittel) Homogenes LGS: $\vec b = \vec 0$, triviale Lösung $\vec x = \vec 0$ existiert immer
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Matrixform: $A\vec x = \vec b$ (Koeffizienten $A$, Unbekannte $\vec x$, rechte Seite $\vec b$)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Erweiterte Koeffizientenmatrix $[A|\vec b]$ mit Trennstrich
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Variablen in jeder Gleichung in gleicher Reihenfolge (sonst Koeffizienten falsch!)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Dimensionen: $A$ ist $m \times n$, $\vec x \in \mathbb{R}^n$, $\vec b \in \mathbb{R}^m$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Homogenes LGS: $\vec b = \vec 0$, triviale Lösung $\vec x = \vec 0$ existiert immer
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-1-a`, `ex-la-2-1-b`, `ex-la-2-1-c`, `ex-la-2-1-manual-1`, `ex-la-2-1-manual-2`, `ex-la-2-1-manual-3`, `ex-la-2-1-manual-4`, `ex-la-2-1-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
@@ -4532,15 +4702,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Drei Fälle: eindeutig / unendlich / keine Lösung (Widerspruch)
-  - [ ] [1] (hoch) Rang = Anzahl Pivots in Stufenform
-  - [ ] [2] (hoch) Kronecker-Capelli: $\text{rg}(A) \neq \text{rg}([A|b])$ → keine Lösung
-  - [ ] [3] (hoch) Eindeutig: $\text{rg}(A) = \text{rg}([A|b]) = n$ (Anzahl Unbekannte)
-  - [ ] [4] (hoch) Unendlich: $\text{rg}(A) = \text{rg}([A|b]) < n$, freie Parameter = $n - \text{rg}(A)$
-  - [ ] [5] (mittel) Geometrisch (2D): Geraden schneidend / identisch / parallel
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Drei Fälle: eindeutig / unendlich / keine Lösung (Widerspruch)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Rang = Anzahl Pivots in Stufenform
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Kronecker-Capelli: $\text{rg}(A) \neq \text{rg}([A|b])$ → keine Lösung
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Eindeutig: $\text{rg}(A) = \text{rg}([A|b]) = n$ (Anzahl Unbekannte)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Unendlich: $\text{rg}(A) = \text{rg}([A|b]) < n$, freie Parameter = $n - \text{rg}(A)$
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Geometrisch (2D): Geraden schneidend / identisch / parallel
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-3-a`, `ex-la-2-3-b`, `ex-la-2-3-c`, `ex-la-2-3-manual-1`, `ex-la-2-3-manual-2`, `ex-la-2-3-manual-3`, `ex-la-2-3-manual-4`, `ex-la-2-3-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
@@ -4553,14 +4724,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Cramer: $x_i = \det(A_i)/\det(A)$, wobei $A_i$ = $A$ mit $i$-ter Spalte durch $\vec b$ ersetzt
-  - [ ] [1] (hoch) Voraussetzung: $\det(A) \neq 0$ (nicht anwendbar bei singulärer Matrix)
-  - [ ] [2] (hoch) Nur für **quadratische** Systeme mit eindeutiger Lösung sinnvoll
-  - [ ] [3] (mittel) Ab $n > 4$ ist Gauss effizienter (Cramer = $O(n!)$ mit Sarrus, $n!$ Determinanten)
-  - [ ] [4] (hoch) Technik-Anwendung: Kräftegleichgewicht, Knotenspannungsanalyse (Kirchhoff)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Cramer: $x_i = \det(A_i)/\det(A)$, wobei $A_i$ = $A$ mit $i$-ter Spalte durch $\vec b$ ersetzt
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Voraussetzung: $\det(A) \neq 0$ (nicht anwendbar bei singulärer Matrix)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Nur für **quadratische** Systeme mit eindeutiger Lösung sinnvoll
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Ab $n > 4$ ist Gauss effizienter (Cramer = $O(n!)$ mit Sarrus, $n!$ Determinanten)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Technik-Anwendung: Kräftegleichgewicht, Knotenspannungsanalyse (Kirchhoff)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-4-a`, `ex-la-2-4-b`, `ex-la-2-4-c`, `ex-la-2-4-manual-1`, `ex-la-2-4-manual-2`, `ex-la-2-4-manual-3`, `ex-la-2-4-manual-4`, `ex-la-2-4-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
@@ -4573,15 +4745,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×2
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Matrixmultiplikation Zeile × Spalte — $AB \neq BA$ im Allgemeinen
-  - [ ] [1] (hoch) Laplace-Entwicklung: $\det A = \sum_j (-1)^{i+j} a_{ij} M_{ij}$ (beliebige Zeile/Spalte)
-  - [ ] [2] (hoch) Inverse-Test: $A^{-1}$ existiert $\iff \det A \neq 0 \iff \text{rg}(A) = n$
-  - [ ] [3] (hoch) Rang via Gauss: Zeilenstufenform → Anzahl Nicht-Null-Zeilen
-  - [ ] [4] (hoch) Äquivalenzkette: $A$ invertierbar $\iff \det \neq 0 \iff \text{rg} = n \iff A\vec x = \vec b$ eindeutig
-  - [ ] [5] (mittel) Parameteraufgabe: $A(\lambda)$, Werte für $\lambda$ finden, bei denen $\det = 0$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Matrixmultiplikation Zeile × Spalte — $AB \neq BA$ im Allgemeinen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Laplace-Entwicklung: $\det A = \sum_j (-1)^{i+j} a_{ij} M_{ij}$ (beliebige Zeile/Spalte)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Inverse-Test: $A^{-1}$ existiert $\iff \det A \neq 0 \iff \text{rg}(A) = n$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Rang via Gauss: Zeilenstufenform → Anzahl Nicht-Null-Zeilen
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Äquivalenzkette: $A$ invertierbar $\iff \det \neq 0 \iff \text{rg} = n \iff A\vec x = \vec b$ eindeutig
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Parameteraufgabe: $A(\lambda)$, Werte für $\lambda$ finden, bei denen $\det = 0$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-la-3-1-a`, `ex-la-3-1-b`, `ex-la-3-1-c`, `ex-la-3-1-d`, `ex-la-3-1-e`, `ex-la-3-1-f`, `ex-la-3-1-g`, `ex-la-3-1-h` … (+3 weitere)
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
@@ -4594,15 +4767,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×8, number-input ×1, true-false ×2
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Rouché-Capelli-Kriterium: $\text{rg}(A) = \text{rg}([A|b])$ für Lösbarkeit
-  - [ ] [1] (hoch) Freie Variablen = $n - \text{rg}(A)$ (Parametrisierung der Lösungsmenge)
-  - [ ] [2] (hoch) Eigenwerte via $\det(A - \lambda I) = 0$
-  - [ ] [3] (hoch) Eigenvektor: Kern von $(A - \lambda I)$, normieren falls gefordert
-  - [ ] [4] (hoch) Spur = $\sum \lambda_i$, Determinante = $\prod \lambda_i$ (Quercheck!)
-  - [ ] [5] (mittel) Defekt: algebraische Vielfachheit > geometrische → nicht diagonalisierbar
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Rouché-Capelli-Kriterium: $\text{rg}(A) = \text{rg}([A|b])$ für Lösbarkeit
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Freie Variablen = $n - \text{rg}(A)$ (Parametrisierung der Lösungsmenge)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Eigenwerte via $\det(A - \lambda I) = 0$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Eigenvektor: Kern von $(A - \lambda I)$, normieren falls gefordert
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Spur = $\sum \lambda_i$, Determinante = $\prod \lambda_i$ (Quercheck!)
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Defekt: algebraische Vielfachheit > geometrische → nicht diagonalisierbar
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-la-3-2-a`, `ex-la-3-2-b`, `ex-la-3-2-c`, `ex-la-3-2-d`, `ex-la-3-2-e`, `ex-la-3-2-f`, `ex-la-3-2-g`, `ex-la-3-2-h` … (+3 weitere)
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
@@ -4615,15 +4789,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Diagonalisierung: $A = PDP^{-1}$ mit $P = $ EV-Matrix, $D = \text{diag}(\lambda_i)$
-  - [ ] [1] (hoch) Bedingung: $n$ linear unabhängige Eigenvektoren (algebr. = geom. Vielfachheit)
-  - [ ] [2] (hoch) Matrixpotenzen via $A^k = P D^k P^{-1}$ (nur Diagonale potenzieren!)
-  - [ ] [3] (hoch) Spektralsatz (symm. Matrix): reelle EW, orthogonale EV, $A = Q D Q^T$ mit $Q$ orthogonal
-  - [ ] [4] (hoch) Technik: Hauptträgheitsachsen, Hauptspannungen, Eigenfrequenzen, Stabilität ($|\lambda| < 1$)
-  - [ ] [5] (mittel) Defekte Matrix: nicht diagonalisierbar → Jordan-Normalform (Vertiefung)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Diagonalisierung: $A = PDP^{-1}$ mit $P = $ EV-Matrix, $D = \text{diag}(\lambda_i)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Bedingung: $n$ linear unabhängige Eigenvektoren (algebr. = geom. Vielfachheit)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Matrixpotenzen via $A^k = P D^k P^{-1}$ (nur Diagonale potenzieren!)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Spektralsatz (symm. Matrix): reelle EW, orthogonale EV, $A = Q D Q^T$ mit $Q$ orthogonal
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Technik: Hauptträgheitsachsen, Hauptspannungen, Eigenfrequenzen, Stabilität ($|\lambda| < 1$)
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Defekte Matrix: nicht diagonalisierbar → Jordan-Normalform (Vertiefung)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-la-3-3-a`, `ex-la-3-3-b`, `ex-la-3-3-c`, `ex-la-3-3-d`, `ex-la-3-3-e`, `ex-la-3-3-f`, `ex-la-3-3-g`, `ex-la-3-3-h` … (+3 weitere)
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
@@ -4636,14 +4811,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Teil 1: $F(x) = \int_a^x f(t) dt$ ist differenzierbar mit $F'(x) = f(x)$
-  - [ ] [1] (hoch) Teil 2: $\int_a^b f(x) dx = F(b) - F(a)$ für jede Stammfunktion $F$
-  - [ ] [2] (hoch) Voraussetzung: $f$ stetig auf $[a,b]$
-  - [ ] [3] (mittel) Leibniz-Regel für variable Grenzen: $\frac{d}{dx} \int_{a(x)}^{b(x)} f(t) dt = f(b) b' - f(a) a'$
-  - [ ] [4] (hoch) Folgerung: Integration und Differentiation sind Umkehroperationen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Teil 1: $F(x) = \int_a^x f(t) dt$ ist differenzierbar mit $F'(x) = f(x)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Teil 2: $\int_a^b f(x) dx = F(b) - F(a)$ für jede Stammfunktion $F$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Voraussetzung: $f$ stetig auf $[a,b]$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Leibniz-Regel für variable Grenzen: $\frac{d}{dx} \int_{a(x)}^{b(x)} f(t) dt = f(b) b' - f(a) a'$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Folgerung: Integration und Differentiation sind Umkehroperationen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-5-b`, `ex-int-1-5-manual-1`, `ex-int-1-5-manual-2`, `ex-int-1-5-manual-3`, `ex-int-1-5-manual-4`, `ex-int-1-5-manual-5`, `ex-int-1-5-manual-6`, `ex-int-1-5-manual-7`
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
@@ -4656,15 +4832,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Voraussetzung: $\deg(\text{Zähler}) < \deg(\text{Nenner})$ (sonst Polynomdivision zuerst)
-  - [ ] [1] (hoch) Einfacher Linearfaktor $(x-a)$: Ansatz $A/(x-a)$
-  - [ ] [2] (hoch) Doppelter Linearfaktor $(x-a)^2$: Ansatz $A/(x-a) + B/(x-a)^2$
-  - [ ] [3] (hoch) Irreduzibler quadr. Faktor $x^2+px+q$: Ansatz $(Ax+B)/(x^2+px+q)$
-  - [ ] [4] (hoch) Koeffizienten via Einsetzmethode (Nullstellen) oder Koeffizientenvergleich
-  - [ ] [5] (hoch) Integration: $\int dx/(x-a) = \ln|x-a|$, $\int dx/(x-a)^n = -1/((n-1)(x-a)^{n-1})$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Voraussetzung: $\deg(\text{Zähler}) < \deg(\text{Nenner})$ (sonst Polynomdivision zuerst)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Einfacher Linearfaktor $(x-a)$: Ansatz $A/(x-a)$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Doppelter Linearfaktor $(x-a)^2$: Ansatz $A/(x-a) + B/(x-a)^2$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Irreduzibler quadr. Faktor $x^2+px+q$: Ansatz $(Ax+B)/(x^2+px+q)$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Koeffizienten via Einsetzmethode (Nullstellen) oder Koeffizientenvergleich
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — Integration: $\int dx/(x-a) = \ln|x-a|$, $\int dx/(x-a)^n = -1/((n-1)(x-a)^{n-1})$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-int-2-3-manual-1`, `ex-int-2-3-manual-2`, `ex-int-2-3-manual-3`, `ex-int-2-3-manual-4`, `ex-int-2-3-manual-5`, `ex-int-2-3-manual-6`, `ex-int-2-3-manual-7`
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
@@ -4677,14 +4854,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×5, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Scheibenmethode ($x$-Achse): $V = \pi \int_a^b [f(x)]^2 dx$
-  - [ ] [1] (hoch) Rotation um $y$-Achse: $V = \pi \int_c^d [g(y)]^2 dy$ mit Umkehrfunktion
-  - [ ] [2] (mittel) Schalenmethode: $V = 2\pi \int_a^b x \cdot f(x) dx$ (Rotation um $y$-Achse)
-  - [ ] [3] (mittel) Mantelfläche: $M = 2\pi \int_a^b f(x) \sqrt{1 + [f'(x)]^2} dx$
-  - [ ] [4] (hoch) Standardvolumina: Kegel $\pi r^2 h/3$, Kugel $4\pi r^3/3$, Zylinder $\pi r^2 h$ aus Integralen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Scheibenmethode ($x$-Achse): $V = \pi \int_a^b [f(x)]^2 dx$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Rotation um $y$-Achse: $V = \pi \int_c^d [g(y)]^2 dy$ mit Umkehrfunktion
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Schalenmethode: $V = 2\pi \int_a^b x \cdot f(x) dx$ (Rotation um $y$-Achse)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Mantelfläche: $M = 2\pi \int_a^b f(x) \sqrt{1 + [f'(x)]^2} dx$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Standardvolumina: Kegel $\pi r^2 h/3$, Kugel $4\pi r^3/3$, Zylinder $\pi r^2 h$ aus Integralen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-2-b`, `ex-int-3-2-c`, `ex-int-3-2-manual-1`, `ex-int-3-2-manual-2`, `ex-int-3-2-manual-3`, `ex-int-3-2-manual-4`, `ex-int-3-2-manual-5`, `ex-int-3-2-manual-6` … (+1 weitere)
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
@@ -4697,14 +4875,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Arbeit $W = \int_a^b F(x) dx$ bei ortsabhängiger Kraft
-  - [ ] [1] (hoch) Federenergie aus Hookeschem Gesetz $F = kx$: $W = \frac{1}{2} k s^2$
-  - [ ] [2] (hoch) Flächenschwerpunkt: $\bar{x} = (1/A) \int x f(x) dx$, $\bar{y} = (1/(2A)) \int f(x)^2 dx$
-  - [ ] [3] (hoch) Trägheitsmoment $I = \int r^2 dm$ für kontinuierliche Massenverteilung
-  - [ ] [4] (mittel) Effektivwert (RMS): $f_{\text{eff}} = \sqrt{(1/T) \int_0^T f(t)^2 dt}$ (Wechselstromtechnik)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Arbeit $W = \int_a^b F(x) dx$ bei ortsabhängiger Kraft
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Federenergie aus Hookeschem Gesetz $F = kx$: $W = \frac{1}{2} k s^2$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Flächenschwerpunkt: $\bar{x} = (1/A) \int x f(x) dx$, $\bar{y} = (1/(2A)) \int f(x)^2 dx$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Trägheitsmoment $I = \int r^2 dm$ für kontinuierliche Massenverteilung
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Effektivwert (RMS): $f_{\text{eff}} = \sqrt{(1/T) \int_0^T f(t)^2 dt}$ (Wechselstromtechnik)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-3-b`, `ex-int-3-3-manual-1`, `ex-int-3-3-manual-2`, `ex-int-3-3-manual-3`, `ex-int-3-3-manual-4`, `ex-int-3-3-manual-5`, `ex-int-3-3-manual-6`, `ex-int-3-3-manual-7`
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
@@ -4717,14 +4896,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×2
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Methodenwahl in Sekundenschnelle: innere Ableitung? → Subst., Produkt? → Part.Int., Bruch? → PBZ
-  - [ ] [1] (hoch) Bestimmtes Integral: Grenzen bei Substitution mit umrechnen, nicht rücksubstituieren
-  - [ ] [2] (mittel) Symmetrie nutzen: $\int_{-a}^a f(x) dx = 0$ bei ungerade, $= 2\int_0^a$ bei gerade
-  - [ ] [3] (mittel) Trigonometrische Substitution $x = a \sin u$ für $\sqrt{a^2 - x^2}$, $x = a \tan u$ für $a^2 + x^2$
-  - [ ] [4] (mittel) Zweifache partielle Integration + Rückführung auf Ausgangsintegral (Kreistrick)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Methodenwahl in Sekundenschnelle: innere Ableitung? → Subst., Produkt? → Part.Int., Bruch? → PBZ
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Bestimmtes Integral: Grenzen bei Substitution mit umrechnen, nicht rücksubstituieren
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Symmetrie nutzen: $\int_{-a}^a f(x) dx = 0$ bei ungerade, $= 2\int_0^a$ bei gerade
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Trigonometrische Substitution $x = a \sin u$ für $\sqrt{a^2 - x^2}$, $x = a \tan u$ für $a^2 + x^2$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Zweifache partielle Integration + Rückführung auf Ausgangsintegral (Kreistrick)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-int-4-1-a`, `ex-int-4-1-b`, `ex-int-4-1-c`, `ex-int-4-1-d`, `ex-int-4-1-e`, `ex-int-4-1-f`, `ex-int-4-1-g`, `ex-int-4-1-h` … (+3 weitere)
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
@@ -4737,14 +4917,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Flächenträgheitsmoment Rechteck: $I_x = bh^3/12$ um Schwerachse, $= bh^3/3$ um Rand
-  - [ ] [1] (hoch) Steiner'scher Satz: $I_a = I_s + A \cdot d^2$ (Abstand $d$ zwischen Achsen)
-  - [ ] [2] (hoch) Schwerpunkt zusammengesetzter Flächen: $\bar{x} = \sum A_i \bar{x}_i / \sum A_i$
-  - [ ] [3] (hoch) Rotationsvolumen mit Subtraktion: $V = \pi \int (f^2 - g^2) dx$ (Hohlkörper)
-  - [ ] [4] (mittel) Wurfparabel / Strom-Zeit-Integrale als technische Flächenrechnung
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Flächenträgheitsmoment Rechteck: $I_x = bh^3/12$ um Schwerachse, $= bh^3/3$ um Rand
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Steiner'scher Satz: $I_a = I_s + A \cdot d^2$ (Abstand $d$ zwischen Achsen)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Schwerpunkt zusammengesetzter Flächen: $\bar{x} = \sum A_i \bar{x}_i / \sum A_i$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Rotationsvolumen mit Subtraktion: $V = \pi \int (f^2 - g^2) dx$ (Hohlkörper)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Wurfparabel / Strom-Zeit-Integrale als technische Flächenrechnung
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-int-4-2-a`, `ex-int-4-2-b`, `ex-int-4-2-c`, `ex-int-4-2-d`, `ex-int-4-2-e`, `ex-int-4-2-f`, `ex-int-4-2-g`, `ex-int-4-2-h` … (+3 weitere)
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
@@ -4757,15 +4938,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Uneigentliches Integral: $\int_a^\infty f dx = \lim_{b\to\infty} \int_a^b f dx$
-  - [ ] [1] (hoch) p-Integral $\int_1^\infty x^{-p} dx$: konvergent für $p > 1$, divergent sonst
-  - [ ] [2] (hoch) p-Integral $\int_0^1 x^{-p} dx$: konvergent für $p < 1$, divergent sonst
-  - [ ] [3] (hoch) Trapezregel: $T = h[(f_0+f_n)/2 + \sum f_i]$, Fehler $O(h^2)$
-  - [ ] [4] (hoch) Simpson-Regel: $S = (h/3)[f_0 + 4 \sum_{\text{ung.}} + 2 \sum_{\text{ger.}} + f_n]$, Fehler $O(h^4)$, $n$ gerade!
-  - [ ] [5] (mittel) Vergleichs-/Majorantenkriterium: $0 \leq f \leq g$, $\int g$ konv. $\Rightarrow \int f$ konv.
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Uneigentliches Integral: $\int_a^\infty f dx = \lim_{b\to\infty} \int_a^b f dx$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — p-Integral $\int_1^\infty x^{-p} dx$: konvergent für $p > 1$, divergent sonst
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — p-Integral $\int_0^1 x^{-p} dx$: konvergent für $p < 1$, divergent sonst
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Trapezregel: $T = h[(f_0+f_n)/2 + \sum f_i]$, Fehler $O(h^2)$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Simpson-Regel: $S = (h/3)[f_0 + 4 \sum_{\text{ung.}} + 2 \sum_{\text{ger.}} + f_n]$, Fehler $O(h^4)$, $n$ gerade!
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Vergleichs-/Majorantenkriterium: $0 \leq f \leq g$, $\int g$ konv. $\Rightarrow \int f$ konv.
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-int-4-3-a`, `ex-int-4-3-b`, `ex-int-4-3-c`, `ex-int-4-3-d`, `ex-int-4-3-e`, `ex-int-4-3-f`, `ex-int-4-3-g`, `ex-int-4-3-h` … (+3 weitere)
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
@@ -4778,14 +4960,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Ordnung = höchste vorkommende Ableitung ($y$, $y'$, $y''$ … )
-  - [ ] [1] (hoch) Linear ⇔ $y$ und alle Ableitungen nur in 1. Potenz, keine Produkte $y \cdot y'$
-  - [ ] [2] (hoch) Homogen ⇔ rechte Seite = 0; sonst inhomogen (wichtig für Ansatzwahl)
-  - [ ] [3] (mittel) Anfangswertproblem = DGL + Anfangsbedingung → eindeutige Lösung
-  - [ ] [4] (niedrig) Gewöhnlich (ODE) vs. partiell (PDE): genau eine unabhängige Variable
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Ordnung = höchste vorkommende Ableitung ($y$, $y'$, $y''$ … )
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Linear ⇔ $y$ und alle Ableitungen nur in 1. Potenz, keine Produkte $y \cdot y'$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Homogen ⇔ rechte Seite = 0; sonst inhomogen (wichtig für Ansatzwahl)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Anfangswertproblem = DGL + Anfangsbedingung → eindeutige Lösung
+  - 🔴 [4] (niedrig) **0/3+** Aufgaben — Gewöhnlich (ODE) vs. partiell (PDE): genau eine unabhängige Variable
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-1-1-a`, `ex-dgl-1-1-b`, `ex-dgl-1-1-c`, `ex-dgl-1-1-manual-1`, `ex-dgl-1-1-manual-2`, `ex-dgl-1-1-manual-3`, `ex-dgl-1-1-manual-4`, `ex-dgl-1-1-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
@@ -4798,14 +4981,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Anwendbarkeit erkennen: $y' = f(x)\,g(y)$ — Produkt aus $x$- und $y$-Anteil
-  - [ ] [1] (hoch) $dy/dx$-Schreibweise: $\tfrac{dy}{g(y)} = f(x)\,dx$ sauber trennen
-  - [ ] [2] (hoch) Beide Seiten integrieren, Integrationskonstante $C$ nur einmal ansetzen
-  - [ ] [3] (hoch) Anfangsbedingung $y(x_0) = y_0$ zum Bestimmen von $C$ einsetzen — vor dem Umformen nach $y$
-  - [ ] [4] (mittel) Betragsstriche bei $\int 1/y\,dy = \ln|y|$ nicht vergessen und Fallunterscheidung prüfen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Anwendbarkeit erkennen: $y' = f(x)\,g(y)$ — Produkt aus $x$- und $y$-Anteil
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — $dy/dx$-Schreibweise: $\tfrac{dy}{g(y)} = f(x)\,dx$ sauber trennen
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Beide Seiten integrieren, Integrationskonstante $C$ nur einmal ansetzen
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Anfangsbedingung $y(x_0) = y_0$ zum Bestimmen von $C$ einsetzen — vor dem Umformen nach $y$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Betragsstriche bei $\int 1/y\,dy = \ln|y|$ nicht vergessen und Fallunterscheidung prüfen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-1-2-a`, `ex-dgl-1-2-b`, `ex-dgl-1-2-c`, `ex-dgl-1-2-manual-1`, `ex-dgl-1-2-manual-2`, `ex-dgl-1-2-manual-3`, `ex-dgl-1-2-manual-4`, `ex-dgl-1-2-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
@@ -4818,15 +5002,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Ansatz $y = e^{\lambda x}$ führt zu char. Gleichung $a\lambda^2 + b\lambda + c = 0$
-  - [ ] [1] (hoch) D > 0 (zwei reelle): $y = C_1 e^{\lambda_1 x} + C_2 e^{\lambda_2 x}$
-  - [ ] [2] (hoch) D = 0 (doppelte): $y = (C_1 + C_2 x) e^{\lambda x}$
-  - [ ] [3] (hoch) D < 0 (komplex $\alpha \pm i\beta$): $y = e^{\alpha x}(C_1 \cos\beta x + C_2 \sin\beta x)$ — Schwingung!
-  - [ ] [4] (hoch) Dämpfung: $\alpha < 0$ abklingend, $\alpha = 0$ ungedämpft, $\alpha > 0$ instabil
-  - [ ] [5] (hoch) Feder-Masse: $m\ddot x + d\dot x + kx = 0$ — Eigenfrequenz $\omega_0 = \sqrt{k/m}$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Ansatz $y = e^{\lambda x}$ führt zu char. Gleichung $a\lambda^2 + b\lambda + c = 0$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — D > 0 (zwei reelle): $y = C_1 e^{\lambda_1 x} + C_2 e^{\lambda_2 x}$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — D = 0 (doppelte): $y = (C_1 + C_2 x) e^{\lambda x}$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — D < 0 (komplex $\alpha \pm i\beta$): $y = e^{\alpha x}(C_1 \cos\beta x + C_2 \sin\beta x)$ — Schwingung!
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Dämpfung: $\alpha < 0$ abklingend, $\alpha = 0$ ungedämpft, $\alpha > 0$ instabil
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — Feder-Masse: $m\ddot x + d\dot x + kx = 0$ — Eigenfrequenz $\omega_0 = \sqrt{k/m}$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-1-4-a`, `ex-dgl-1-4-b`, `ex-dgl-1-4-c`, `ex-dgl-1-4-manual-1`, `ex-dgl-1-4-manual-2`, `ex-dgl-1-4-manual-3`, `ex-dgl-1-4-manual-4`, `ex-dgl-1-4-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
@@ -4839,14 +5024,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Ansatz: homogene Lösung $y_h = C e^{-P(x)}$, dann $C$ durch $C(x)$ ersetzen
-  - [ ] [1] (hoch) Einsetzen liefert $C'(x) = q(x) e^{P(x)}$ (nur eine Integration)
-  - [ ] [2] (hoch) Allgemeine Lösung = homogener + partikulärer Anteil
-  - [ ] [3] (hoch) Partikulärer Ansatz (Störansatz): bei Polynom/Exp/Trig-Störung direkte Vermutung
-  - [ ] [4] (mittel) Resonanz-Fall: wenn Störung Lösung der homogenen DGL ist → Ansatz $\times x$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Ansatz: homogene Lösung $y_h = C e^{-P(x)}$, dann $C$ durch $C(x)$ ersetzen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Einsetzen liefert $C'(x) = q(x) e^{P(x)}$ (nur eine Integration)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Allgemeine Lösung = homogener + partikulärer Anteil
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Partikulärer Ansatz (Störansatz): bei Polynom/Exp/Trig-Störung direkte Vermutung
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Resonanz-Fall: wenn Störung Lösung der homogenen DGL ist → Ansatz $\times x$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-2-1-a`, `ex-dgl-2-1-b`, `ex-dgl-2-1-c`, `ex-dgl-2-1-manual-1`, `ex-dgl-2-1-manual-2`, `ex-dgl-2-1-manual-3`, `ex-dgl-2-1-manual-4`, `ex-dgl-2-1-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
@@ -4859,15 +5045,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×2, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Feder-Masse-Dämpfer: $m\ddot x + c\dot x + kx = F(t)$
-  - [ ] [1] (hoch) Eigenkreisfrequenz $\omega_0 = \sqrt{k/m}$, Dämpfungsgrad $D = c/(2\sqrt{km})$
-  - [ ] [2] (hoch) Schwingfall $D<1$: gedämpfte Schwingung mit $\omega_d = \omega_0 \sqrt{1-D^2}$
-  - [ ] [3] (hoch) Aperiodischer Grenzfall $D=1$: schnellstes Abklingen ohne Schwingung
-  - [ ] [4] (hoch) RC-Glied: $RC \dot u + u = U_0$, Zeitkonstante $\tau = RC$, $u(t) = U_0(1-e^{-t/\tau})$
-  - [ ] [5] (mittel) Resonanz bei erzwungener Schwingung: max. Amplitude bei $\omega \approx \omega_0$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Feder-Masse-Dämpfer: $m\ddot x + c\dot x + kx = F(t)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Eigenkreisfrequenz $\omega_0 = \sqrt{k/m}$, Dämpfungsgrad $D = c/(2\sqrt{km})$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Schwingfall $D<1$: gedämpfte Schwingung mit $\omega_d = \omega_0 \sqrt{1-D^2}$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Aperiodischer Grenzfall $D=1$: schnellstes Abklingen ohne Schwingung
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — RC-Glied: $RC \dot u + u = U_0$, Zeitkonstante $\tau = RC$, $u(t) = U_0(1-e^{-t/\tau})$
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Resonanz bei erzwungener Schwingung: max. Amplitude bei $\omega \approx \omega_0$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-2-3-a`, `ex-dgl-2-3-b`, `ex-dgl-2-3-c`, `ex-dgl-2-3-manual-1`, `ex-dgl-2-3-manual-2`, `ex-dgl-2-3-manual-3`, `ex-dgl-2-3-manual-4`, `ex-dgl-2-3-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
@@ -4880,15 +5067,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×1, true-false ×2, matching ×1
 - **Typen einsetzen (Rotation):** sorting, number-input, matching
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?
-  - [ ] [1] (hoch) Trennbar: $\int dy/g(y) = \int f(x) dx + C$
-  - [ ] [2] (hoch) Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$
-  - [ ] [3] (hoch) AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen
-  - [ ] [4] (mittel) Bernoulli $y' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert
-  - [ ] [5] (mittel) Integrierender Faktor bei nicht-exakter DGL: $\mu(x)$ oder $\mu(y)$ finden
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Trennbar: $\int dy/g(y) = \int f(x) dx + C$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Bernoulli $y' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Integrierender Faktor bei nicht-exakter DGL: $\mu(x)$ oder $\mu(y)$ finden
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-3-1-a`, `ex-dgl-3-1-b`, `ex-dgl-3-1-c`, `ex-dgl-3-1-d`, `ex-dgl-3-1-e`, `ex-dgl-3-1-f`, `ex-dgl-3-1-g`, `ex-dgl-3-1-h` … (+3 weitere)
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
@@ -4901,15 +5089,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×2, matching ×1
 - **Typen einsetzen (Rotation):** sorting, matching, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Störansatz Polynom: $y_p = $ Polynom gleichen Grades
-  - [ ] [1] (hoch) Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)
-  - [ ] [2] (hoch) Störansatz Trig: $y_p = A \cos\omega x + B \sin\omega x$
-  - [ ] [3] (hoch) Resonanzfall: Wenn Störung homogene Lösung ist → $\times x$ (oder $\times x^2$ bei Doppelwurzel)
-  - [ ] [4] (hoch) Allgemeine Lösung: $y = y_h + y_p$
-  - [ ] [5] (hoch) AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y'(x_0)$ → zwei Konstanten
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Störansatz Polynom: $y_p = $ Polynom gleichen Grades
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Störansatz Trig: $y_p = A \cos\omega x + B \sin\omega x$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Resonanzfall: Wenn Störung homogene Lösung ist → $\times x$ (oder $\times x^2$ bei Doppelwurzel)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Allgemeine Lösung: $y = y_h + y_p$
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y'(x_0)$ → zwei Konstanten
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-3-2-a`, `ex-dgl-3-2-b`, `ex-dgl-3-2-c`, `ex-dgl-3-2-d`, `ex-dgl-3-2-e`, `ex-dgl-3-2-f`, `ex-dgl-3-2-g`, `ex-dgl-3-2-h` … (+3 weitere)
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
@@ -4922,15 +5111,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Euler explizit: $y_{n+1} = y_n + h \cdot f(x_n, y_n)$, Fehler $O(h)$
-  - [ ] [1] (hoch) Stabilität via Eigenwerte: alle $\text{Re}(\lambda_i) < 0$ → asymptotisch stabil
-  - [ ] [2] (hoch) Bilanzgleichungen: Massenbilanz, Energiebilanz, Kräftebilanz, Ladungsbilanz
-  - [ ] [3] (hoch) Mechanik-Elektrik-Analogie: $m \leftrightarrow L$, $d \leftrightarrow R$, $1/k \leftrightarrow C$, $F \leftrightarrow U$
-  - [ ] [4] (hoch) Stationäre Lösung: $\dot y = 0$ → algebraisches System (Gleichgewicht)
-  - [ ] [5] (mittel) Newton'sches Abkühlungsgesetz: $\dot T = -k(T - T_U)$, Lösung $T(t) = T_U + (T_0 - T_U)e^{-kt}$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Euler explizit: $y_{n+1} = y_n + h \cdot f(x_n, y_n)$, Fehler $O(h)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Stabilität via Eigenwerte: alle $\text{Re}(\lambda_i) < 0$ → asymptotisch stabil
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Bilanzgleichungen: Massenbilanz, Energiebilanz, Kräftebilanz, Ladungsbilanz
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Mechanik-Elektrik-Analogie: $m \leftrightarrow L$, $d \leftrightarrow R$, $1/k \leftrightarrow C$, $F \leftrightarrow U$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Stationäre Lösung: $\dot y = 0$ → algebraisches System (Gleichgewicht)
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Newton'sches Abkühlungsgesetz: $\dot T = -k(T - T_U)$, Lösung $T(t) = T_U + (T_0 - T_U)e^{-kt}$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-3-3-a`, `ex-dgl-3-3-b`, `ex-dgl-3-3-c`, `ex-dgl-3-3-d`, `ex-dgl-3-3-e`, `ex-dgl-3-3-f`, `ex-dgl-3-3-g`, `ex-dgl-3-3-h` … (+3 weitere)
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
@@ -4943,14 +5133,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×5, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Freikörperbild: alle äußeren Kräfte und Momente einzeichnen
-  - [ ] [1] (hoch) Drei Gleichgewichtsbedingungen in 2D: $\sum F_x = 0$, $\sum F_y = 0$, $\sum M_P = 0$
-  - [ ] [2] (hoch) Lagertypen: Loslager (1 Reaktion), Festlager (2), Einspannung (3)
-  - [ ] [3] (hoch) Momentensumme um geschickten Punkt (oft Auflager) eliminiert Unbekannte
-  - [ ] [4] (hoch) Statisch bestimmt: Anzahl Gleichungen = Anzahl Reaktionen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Freikörperbild: alle äußeren Kräfte und Momente einzeichnen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Drei Gleichgewichtsbedingungen in 2D: $\sum F_x = 0$, $\sum F_y = 0$, $\sum M_P = 0$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Lagertypen: Loslager (1 Reaktion), Festlager (2), Einspannung (3)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Momentensumme um geschickten Punkt (oft Auflager) eliminiert Unbekannte
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Statisch bestimmt: Anzahl Gleichungen = Anzahl Reaktionen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-mech-3-1-a`, `ex-mech-3-1-b`, `ex-mech-3-1-c`, `ex-mech-3-1-manual-1`, `ex-mech-3-1-manual-2`, `ex-mech-3-1-manual-3`, `ex-mech-3-1-manual-4`, `ex-mech-3-1-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
@@ -4963,14 +5154,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×2, number-input ×5, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, multiple-choice
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Kombinierte Beanspruchung: Vergleichsspannung nach GEH (Mises) oder NH
-  - [ ] [1] (hoch) Mises: $\sigma_v = \sqrt{\sigma^2 + 3\tau^2}$ für Zug+Torsion
-  - [ ] [2] (hoch) Nachweis: $\sigma_v \leq R_e/S$ bzw. $R_m/S$
-  - [ ] [3] (hoch) Querschnitts-Design: Welle dimensionieren aus gegebenen $M_b$, $M_T$
-  - [ ] [4] (hoch) Sicherheit $S = R/\sigma_v \geq S_\text{soll}$ als Ergebnis angeben
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Kombinierte Beanspruchung: Vergleichsspannung nach GEH (Mises) oder NH
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Mises: $\sigma_v = \sqrt{\sigma^2 + 3\tau^2}$ für Zug+Torsion
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Nachweis: $\sigma_v \leq R_e/S$ bzw. $R_m/S$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Querschnitts-Design: Welle dimensionieren aus gegebenen $M_b$, $M_T$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Sicherheit $S = R/\sigma_v \geq S_\text{soll}$ als Ergebnis angeben
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fest-3-1-a`, `ex-fest-3-1-b`, `ex-fest-3-1-c`, `ex-fest-3-1-manual-1`, `ex-fest-3-1-manual-2`, `ex-fest-3-1-manual-3`, `ex-fest-3-1-manual-4`, `ex-fest-3-1-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
@@ -4983,14 +5175,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×2, number-input ×5, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, multiple-choice
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Isotherme Expansion: $W = nRT \ln(V_2/V_1)$
-  - [ ] [1] (hoch) Isobar: $W = p \Delta V$, $Q = n c_p \Delta T$
-  - [ ] [2] (hoch) Isochor: $W = 0$, $Q = n c_v \Delta T$
-  - [ ] [3] (hoch) Adiabatisch: $pV^\gamma = $ const, $TV^{\gamma-1} = $ const
-  - [ ] [4] (hoch) Zustandsgleichung ideales Gas: $pV = nRT$ (oder $p = \rho R_s T$)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Isotherme Expansion: $W = nRT \ln(V_2/V_1)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Isobar: $W = p \Delta V$, $Q = n c_p \Delta T$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Isochor: $W = 0$, $Q = n c_v \Delta T$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Adiabatisch: $pV^\gamma = $ const, $TV^{\gamma-1} = $ const
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Zustandsgleichung ideales Gas: $pV = nRT$ (oder $p = \rho R_s T$)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-3-1-a`, `ex-thermo-3-1-b`, `ex-thermo-3-1-c`, `ex-thermo-3-1-manual-1`, `ex-thermo-3-1-manual-2`, `ex-thermo-3-1-manual-3`, `ex-thermo-3-1-manual-4`, `ex-thermo-3-1-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
@@ -5003,14 +5196,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×5, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Bernoulli vollständig: $p_1 + \tfrac{1}{2}\rho v_1^2 + \rho g z_1 = p_2 + \ldots$
-  - [ ] [1] (hoch) Staudruck/Pitot: $v = \sqrt{2\Delta p/\rho}$
-  - [ ] [2] (hoch) Kontinuität + Bernoulli kombiniert für Düsen/Verengungen
-  - [ ] [3] (hoch) Torricelli-Ausfluss: $v = \sqrt{2gh}$ (freies Ausströmen unter Wasserhöhe)
-  - [ ] [4] (hoch) Reynolds-Zahl entscheidet Strömungsregime; laminar/turbulent bestimmt $\lambda$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Bernoulli vollständig: $p_1 + \tfrac{1}{2}\rho v_1^2 + \rho g z_1 = p_2 + \ldots$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Staudruck/Pitot: $v = \sqrt{2\Delta p/\rho}$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Kontinuität + Bernoulli kombiniert für Düsen/Verengungen
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Torricelli-Ausfluss: $v = \sqrt{2gh}$ (freies Ausströmen unter Wasserhöhe)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Reynolds-Zahl entscheidet Strömungsregime; laminar/turbulent bestimmt $\lambda$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-3-1-a`, `ex-fluid-3-1-b`, `ex-fluid-3-1-c`, `ex-fluid-3-1-manual-1`, `ex-fluid-3-1-manual-2`, `ex-fluid-3-1-manual-3`, `ex-fluid-3-1-manual-4`, `ex-fluid-3-1-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
@@ -5023,14 +5217,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×2, number-input ×6, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Leistung: $P = M \omega = M (2\pi n/60)$
-  - [ ] [1] (hoch) Umfangskraft am Zahnrad: $F_t = 2M/d$
-  - [ ] [2] (hoch) Mehrstufige Übersetzung: $i_\text{ges} = \prod i_i$
-  - [ ] [3] (hoch) Abtriebsdrehzahl: $n_2 = n_1/i_\text{ges}$
-  - [ ] [4] (hoch) Drehmoment steigt bei Untersetzung: $M_2 = i M_1 \eta$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Leistung: $P = M \omega = M (2\pi n/60)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Umfangskraft am Zahnrad: $F_t = 2M/d$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Mehrstufige Übersetzung: $i_\text{ges} = \prod i_i$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Abtriebsdrehzahl: $n_2 = n_1/i_\text{ges}$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Drehmoment steigt bei Untersetzung: $M_2 = i M_1 \eta$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-melem-3-1-a`, `ex-melem-3-1-b`, `ex-melem-3-1-c`, `ex-melem-3-1-manual-1`, `ex-melem-3-1-manual-2`, `ex-melem-3-1-manual-3`, `ex-melem-3-1-manual-4`, `ex-melem-3-1-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
@@ -5043,14 +5238,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×2, number-input ×5, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, multiple-choice
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Reihe: $R_\text{ges} = \sum R_i$; Parallel: $1/R_\text{ges} = \sum 1/R_i$
-  - [ ] [1] (hoch) Spannungsteiler: $U_1 = U \cdot R_1/(R_1 + R_2)$
-  - [ ] [2] (hoch) Stromteiler: $I_k = I_\text{ges} \cdot R_\text{par}/R_k$ (umgekehrt proportional)
-  - [ ] [3] (hoch) Energie: $W = P \cdot t$; 1 kWh = 3{,}6 MJ
-  - [ ] [4] (hoch) Kirchhoff-Methode: Maschen + Knoten → LGS für mehrere unbekannte Ströme
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Reihe: $R_\text{ges} = \sum R_i$; Parallel: $1/R_\text{ges} = \sum 1/R_i$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Spannungsteiler: $U_1 = U \cdot R_1/(R_1 + R_2)$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Stromteiler: $I_k = I_\text{ges} \cdot R_\text{par}/R_k$ (umgekehrt proportional)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Energie: $W = P \cdot t$; 1 kWh = 3{,}6 MJ
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Kirchhoff-Methode: Maschen + Knoten → LGS für mehrere unbekannte Ströme
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-et-3-1-a`, `ex-et-3-1-b`, `ex-et-3-1-c`, `ex-et-3-1-manual-1`, `ex-et-3-1-manual-2`, `ex-et-3-1-manual-3`, `ex-et-3-1-manual-4`, `ex-et-3-1-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
@@ -5063,14 +5259,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 11 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Führungs-Übertragungsfunktion: $T(s) = G_0/(1+G_0)$ mit $G_0 = G_R G_S$
-  - [ ] [1] (hoch) Stationärer Regelfehler P-Regler: $e_\text{stat} = 1/(1+K_0)$
-  - [ ] [2] (hoch) I-Anteil erzwingt $e_\text{stat} = 0$ bei konstantem Sollwert
-  - [ ] [3] (mittel) Typ $k$ eines Systems: Anzahl der Integratoren in $G_0$; bestimmt Folgevermögen
-  - [ ] [4] (mittel) Rampenfolge: Typ 0 dauerhafter Fehler, Typ 1 Ausgleich, Typ 2 Beschleunigungsfolge
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Führungs-Übertragungsfunktion: $T(s) = G_0/(1+G_0)$ mit $G_0 = G_R G_S$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Stationärer Regelfehler P-Regler: $e_\text{stat} = 1/(1+K_0)$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — I-Anteil erzwingt $e_\text{stat} = 0$ bei konstantem Sollwert
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Typ $k$ eines Systems: Anzahl der Integratoren in $G_0$; bestimmt Folgevermögen
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Rampenfolge: Typ 0 dauerhafter Fehler, Typ 1 Ausgleich, Typ 2 Beschleunigungsfolge
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-rt-3-1-a`, `ex-rt-3-1-b`, `ex-rt-3-1-c`, `ex-rt-3-1-manual-1`, `ex-rt-3-1-manual-2`, `ex-rt-3-1-manual-3`, `ex-rt-3-1-manual-4`, `ex-rt-3-1-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
@@ -5083,13 +5280,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×8, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, true-false, matching
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Auswendig: $\sin 0° = 0$, $\sin 30° = 1/2$, $\sin 45° = \sqrt2/2$, $\sin 60° = \sqrt3/2$, $\sin 90° = 1$
-  - [ ] [1] (hoch) Merkregel: $\sin$-Werte folgen dem Muster $\sqrt n / 2$ für $n = 0, 1, 2, 3, 4$
-  - [ ] [2] (hoch) Kosinus ist Sinus rückwärts: $\cos 0° = 1, \cos 90° = 0$, dazwischen symmetrisch
-  - [ ] [3] (mittel) Komplementärwinkel: $\cos\alpha = \sin(90° - \alpha)$ und umgekehrt
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Auswendig: $\sin 0° = 0$, $\sin 30° = 1/2$, $\sin 45° = \sqrt2/2$, $\sin 60° = \sqrt3/2$, $\sin 90° = 1$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Merkregel: $\sin$-Werte folgen dem Muster $\sqrt n / 2$ für $n = 0, 1, 2, 3, 4$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Kosinus ist Sinus rückwärts: $\cos 0° = 1, \cos 90° = 0$, dazwischen symmetrisch
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Komplementärwinkel: $\cos\alpha = \sin(90° - \alpha)$ und umgekehrt
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-trig-1-3-b`, `ex-trig-1-3-c`, `ex-trig-1-3-manual-1`, `ex-trig-1-3-manual-2`, `ex-trig-1-3-manual-3`, `ex-trig-1-3-manual-4`, `ex-trig-1-3-manual-5`, `ex-trig-1-3-manual-6` … (+2 weitere)
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
@@ -5102,14 +5300,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×8, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, true-false, matching
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Pythagoras $\sin^2+\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen
-  - [ ] [1] (hoch) Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben
-  - [ ] [2] (hoch) Substitution $u = \sin x$ oder $u = \cos x$ bei quadratischen Gleichungen
-  - [ ] [3] (mittel) Faktorisieren statt durch $\cos x$ teilen (Nullstellen nicht verlieren)
-  - [ ] [4] (mittel) Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Pythagoras $\sin^2+\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Substitution $u = \sin x$ oder $u = \cos x$ bei quadratischen Gleichungen
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Faktorisieren statt durch $\cos x$ teilen (Nullstellen nicht verlieren)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-trig-4-1-a`, `ex-trig-4-1-b`, `ex-trig-4-1-c`, `ex-trig-4-1-d`, `ex-trig-4-1-manual-1`, `ex-trig-4-1-manual-2`, `ex-trig-4-1-manual-3`, `ex-trig-4-1-manual-4` … (+4 weitere)
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
@@ -5122,14 +5321,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\sin$/$\cos$ richtig zuordnen
-  - [ ] [1] (hoch) Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe
-  - [ ] [2] (hoch) Schwingungsgrößen $A, \omega, T, f, \varphi$ aus gegebenem $x(t)$ ablesen und umrechnen
-  - [ ] [3] (hoch) Einheitenkonsistenz: $\omega t$ in Radiant, Phasenwinkel $\varphi$ ebenfalls Radiant
-  - [ ] [4] (mittel) Plausibilitätscheck: Komponenten $|F_x|, |F_y| \leq |F|$, Winkelbereich passt zum Quadranten
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\sin$/$\cos$ richtig zuordnen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Schwingungsgrößen $A, \omega, T, f, \varphi$ aus gegebenem $x(t)$ ablesen und umrechnen
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Einheitenkonsistenz: $\omega t$ in Radiant, Phasenwinkel $\varphi$ ebenfalls Radiant
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Plausibilitätscheck: Komponenten $|F_x|, |F_y| \leq |F|$, Winkelbereich passt zum Quadranten
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-trig-4-2-a`, `ex-trig-4-2-b`, `ex-trig-4-2-c`, `ex-trig-4-2-manual-1`, `ex-trig-4-2-manual-2`, `ex-trig-4-2-manual-3`, `ex-trig-4-2-manual-4`, `ex-trig-4-2-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
@@ -5142,15 +5342,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) $\sin x = a$ hat in $[0, 2\pi)$ zwei Lösungen: $\arcsin a$ und $\pi - \arcsin a$
-  - [ ] [1] (hoch) $\cos x = a$ hat in $[0, 2\pi)$ zwei Lösungen: $\arccos a$ und $2\pi - \arccos a$
-  - [ ] [2] (hoch) $\tan x = a$ hat Periode $\pi$: $x_k = \arctan a + k\pi$, $k \in \mathbb{Z}$
-  - [ ] [3] (hoch) Gesamte Lösungsmenge: Hauptwerte + $2\pi k$ (bzw. $\pi k$ bei $\tan$), Intervall berücksichtigen
-  - [ ] [4] (hoch) Beim Dividieren durch $\cos x$: Fall $\cos x = 0$ separat prüfen, sonst Lösungen verloren
-  - [ ] [5] (mittel) Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — $\sin x = a$ hat in $[0, 2\pi)$ zwei Lösungen: $\arcsin a$ und $\pi - \arcsin a$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — $\cos x = a$ hat in $[0, 2\pi)$ zwei Lösungen: $\arccos a$ und $2\pi - \arccos a$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — $\tan x = a$ hat Periode $\pi$: $x_k = \arctan a + k\pi$, $k \in \mathbb{Z}$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Gesamte Lösungsmenge: Hauptwerte + $2\pi k$ (bzw. $\pi k$ bei $\tan$), Intervall berücksichtigen
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Beim Dividieren durch $\cos x$: Fall $\cos x = 0$ separat prüfen, sonst Lösungen verloren
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-trig-4-3-a`, `ex-trig-4-3-b`, `ex-trig-4-3-c`, `ex-trig-4-3-manual-1`, `ex-trig-4-3-manual-2`, `ex-trig-4-3-manual-3`, `ex-trig-4-3-manual-4`, `ex-trig-4-3-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
@@ -5163,13 +5364,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Differenzenquotient → Differentialquotient als Grenzübergang
-  - [ ] [1] (hoch) Tangentensteigung aus $f'(x_0)$ ablesen
-  - [ ] [2] (hoch) Notwendige Extremum-Bedingung $f'(x_0)=0$
-  - [ ] [3] (mittel) Ableitung als Momentan-Änderungsrate physikalisch deuten
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Differenzenquotient → Differentialquotient als Grenzübergang
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Tangentensteigung aus $f'(x_0)$ ablesen
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Notwendige Extremum-Bedingung $f'(x_0)=0$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Ableitung als Momentan-Änderungsrate physikalisch deuten
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-1-manual-1`, `ex-abl-1-1-manual-2`, `ex-abl-1-1-manual-3`, `ex-abl-1-1-manual-4`, `ex-abl-1-1-manual-5`, `ex-abl-1-1-manual-6`, `ex-abl-1-1-manual-7`, `ex-abl-1-1-mastery`
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -5182,15 +5384,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Notwendige Bedingung für Extremum: $f'(x_0) = 0$ (waagrechte Tangente)
-  - [ ] [1] (hoch) Hinreichend: $f''(x_0) > 0 \Rightarrow$ Min, $f''(x_0) < 0 \Rightarrow$ Max
-  - [ ] [2] (hoch) Bei $f''(x_0) = 0$: Vorzeichenwechsel von $f'$ prüfen oder höhere Ableitungen
-  - [ ] [3] (hoch) Wendepunkt: $f''(x_0) = 0$ mit Vorzeichenwechsel (oder $f'''(x_0) \neq 0$)
-  - [ ] [4] (mittel) Randextrema bei beschränktem Intervall $[a, b]$ nicht vergessen
-  - [ ] [5] (mittel) Sattelpunkt = Wendepunkt mit waagrechter Tangente ($f' = 0$ UND $f'' = 0$)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Notwendige Bedingung für Extremum: $f'(x_0) = 0$ (waagrechte Tangente)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Hinreichend: $f''(x_0) > 0 \Rightarrow$ Min, $f''(x_0) < 0 \Rightarrow$ Max
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Bei $f''(x_0) = 0$: Vorzeichenwechsel von $f'$ prüfen oder höhere Ableitungen
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Wendepunkt: $f''(x_0) = 0$ mit Vorzeichenwechsel (oder $f'''(x_0) \neq 0$)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Randextrema bei beschränktem Intervall $[a, b]$ nicht vergessen
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Sattelpunkt = Wendepunkt mit waagrechter Tangente ($f' = 0$ UND $f'' = 0$)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-5-manual-1`, `ex-abl-1-5-manual-2`, `ex-abl-1-5-manual-3`, `ex-abl-1-5-manual-4`, `ex-abl-1-5-manual-5`, `ex-abl-1-5-manual-6`, `ex-abl-1-5-manual-7`
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -5203,14 +5406,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Krümmung via $f''$: $f'' > 0$ → linksgekrümmt ($\cup$), $f'' < 0$ → rechtsgekrümmt ($\cap$)
-  - [ ] [1] (hoch) Notwendige Bedingung für Wendepunkt: $f''(x_0) = 0$
-  - [ ] [2] (hoch) Hinreichend: $f'''(x_0) \neq 0$ ODER $f''$ wechselt bei $x_0$ das Vorzeichen
-  - [ ] [3] (mittel) Sattelpunkt = Wendepunkt mit $f'(x_0) = 0$ (waagrechte Tangente), z.B. $f(x) = x^3$
-  - [ ] [4] (hoch) Wendepunkt-Koordinaten: $(x_0, f(x_0))$ — y-Wert nicht vergessen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Krümmung via $f''$: $f'' > 0$ → linksgekrümmt ($\cup$), $f'' < 0$ → rechtsgekrümmt ($\cap$)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Notwendige Bedingung für Wendepunkt: $f''(x_0) = 0$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Hinreichend: $f'''(x_0) \neq 0$ ODER $f''$ wechselt bei $x_0$ das Vorzeichen
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Sattelpunkt = Wendepunkt mit $f'(x_0) = 0$ (waagrechte Tangente), z.B. $f(x) = x^3$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Wendepunkt-Koordinaten: $(x_0, f(x_0))$ — y-Wert nicht vergessen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-2-a`, `ex-abl-3-2-b`, `ex-abl-3-2-c`, `ex-abl-3-2-transfer`, `ex-abl-3-2-manual-1`, `ex-abl-3-2-manual-2`, `ex-abl-3-2-manual-3`, `ex-abl-3-2-manual-4` … (+4 weitere)
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -5223,14 +5427,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Reihenfolge: $D_f$ → Symmetrie → Nullstellen → $f', f''$ → Extrema → WP → $x \to \pm\infty$ → Graph
-  - [ ] [1] (mittel) Symmetrie: $f(-x) = f(x)$ gerade (y-Achse), $f(-x) = -f(x)$ ungerade (Ursprung)
-  - [ ] [2] (hoch) Verhalten im Unendlichen: bei Polynom führender Term, bei Bruch Grad-Vergleich
-  - [ ] [3] (hoch) Polstellen & Asymptoten bei gebrochen-rationalen Funktionen separat untersuchen
-  - [ ] [4] (mittel) Abschluss-Skizze: Extrema, WP, Achsenschnittpunkte mit Koordinaten beschriften
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Reihenfolge: $D_f$ → Symmetrie → Nullstellen → $f', f''$ → Extrema → WP → $x \to \pm\infty$ → Graph
+  - 🔴 [1] (mittel) **0/3+** Aufgaben — Symmetrie: $f(-x) = f(x)$ gerade (y-Achse), $f(-x) = -f(x)$ ungerade (Ursprung)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Verhalten im Unendlichen: bei Polynom führender Term, bei Bruch Grad-Vergleich
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Polstellen & Asymptoten bei gebrochen-rationalen Funktionen separat untersuchen
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Abschluss-Skizze: Extrema, WP, Achsenschnittpunkte mit Koordinaten beschriften
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-3-a`, `ex-abl-3-3-b`, `ex-abl-3-3-c`, `ex-abl-3-3-d`, `ex-abl-3-3-manual-1`, `ex-abl-3-3-manual-2`, `ex-abl-3-3-manual-3`, `ex-abl-3-3-manual-4` … (+4 weitere)
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -5243,13 +5448,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Komponentenform $\vec{a}\cdot\vec{b}=\sum a_i b_i$
-  - [ ] [1] (hoch) Winkelform $\vec{a}\cdot\vec{b}=|\vec{a}||\vec{b}|\cos\alpha$
-  - [ ] [2] (hoch) Orthogonalitäts-Test über $\vec{a}\cdot\vec{b}=0$
-  - [ ] [3] (mittel) Projektion eines Vektors auf einen anderen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Komponentenform $\vec{a}\cdot\vec{b}=\sum a_i b_i$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Winkelform $\vec{a}\cdot\vec{b}=|\vec{a}||\vec{b}|\cos\alpha$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Orthogonalitäts-Test über $\vec{a}\cdot\vec{b}=0$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Projektion eines Vektors auf einen anderen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-vek-1-2-manual-1`, `ex-vek-1-2-manual-2`, `ex-vek-1-2-manual-3`, `ex-vek-1-2-manual-4`, `ex-vek-1-2-manual-5`, `ex-vek-1-2-manual-6`, `ex-vek-1-2-manual-7`, `ex-vek-1-2-mastery`
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
@@ -5262,15 +5468,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Parameterform: $\vec r = \vec p + s \vec u + t \vec v$ (Stützpunkt + zwei Richtungen)
-  - [ ] [1] (hoch) Normalenform: $\vec n \cdot (\vec r - \vec p) = 0$ mit Normalvektor $\vec n \perp$ Ebene
-  - [ ] [2] (hoch) Koordinatenform: $a x + b y + c z = d_0$ mit $\vec n = (a, b, c)$ und $d_0 = \vec n \cdot \vec p$
-  - [ ] [3] (hoch) Normalvektor aus Parameterform: $\vec n = \vec u \times \vec v$
-  - [ ] [4] (hoch) Ebene aus drei Punkten: $\vec u = P_2 - P_1$, $\vec v = P_3 - P_1$, dann $\vec n$ kreuzen
-  - [ ] [5] (mittel) Hessesche Normalform: $\vec n_0 \cdot (\vec r - \vec p) = 0$ mit normiertem $\vec n_0$ (Länge 1)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Parameterform: $\vec r = \vec p + s \vec u + t \vec v$ (Stützpunkt + zwei Richtungen)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Normalenform: $\vec n \cdot (\vec r - \vec p) = 0$ mit Normalvektor $\vec n \perp$ Ebene
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Koordinatenform: $a x + b y + c z = d_0$ mit $\vec n = (a, b, c)$ und $d_0 = \vec n \cdot \vec p$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Normalvektor aus Parameterform: $\vec n = \vec u \times \vec v$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Ebene aus drei Punkten: $\vec u = P_2 - P_1$, $\vec v = P_3 - P_1$, dann $\vec n$ kreuzen
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Hessesche Normalform: $\vec n_0 \cdot (\vec r - \vec p) = 0$ mit normiertem $\vec n_0$ (Länge 1)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-vek-2-2-a`, `ex-vek-2-2-b`, `ex-vek-2-2-d`, `ex-vek-2-2-manual-1`, `ex-vek-2-2-manual-2`, `ex-vek-2-2-manual-3`, `ex-vek-2-2-manual-4`, `ex-vek-2-2-manual-5` … (+2 weitere)
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
@@ -5283,15 +5490,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×5, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Abstand Punkt–Ebene: $d = |a q_x + b q_y + c q_z - d_0|/\sqrt{a^2+b^2+c^2}$
-  - [ ] [1] (hoch) Abstand Punkt–Gerade: $d = |\vec v \times (\vec Q - \vec p)|/|\vec v|$
-  - [ ] [2] (hoch) Abstand windschiefer Geraden: $d = |(\vec p_2 - \vec p_1) \cdot (\vec v_1 \times \vec v_2)|/|\vec v_1 \times \vec v_2|$
-  - [ ] [3] (hoch) Schnitt Gerade–Ebene: $\vec r(t)$ in Ebenengleichung einsetzen, $t$ auflösen
-  - [ ] [4] (hoch) Schnittfälle: eindeutig (1 Punkt), $0 = 0$ (Gerade in Ebene), Widerspruch (parallel)
-  - [ ] [5] (mittel) Merkhilfe: Ebene → Skalarprodukt mit $\vec n$; Gerade → Kreuzprodukt mit $\vec v$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Abstand Punkt–Ebene: $d = |a q_x + b q_y + c q_z - d_0|/\sqrt{a^2+b^2+c^2}$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Abstand Punkt–Gerade: $d = |\vec v \times (\vec Q - \vec p)|/|\vec v|$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Abstand windschiefer Geraden: $d = |(\vec p_2 - \vec p_1) \cdot (\vec v_1 \times \vec v_2)|/|\vec v_1 \times \vec v_2|$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Schnitt Gerade–Ebene: $\vec r(t)$ in Ebenengleichung einsetzen, $t$ auflösen
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Schnittfälle: eindeutig (1 Punkt), $0 = 0$ (Gerade in Ebene), Widerspruch (parallel)
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Merkhilfe: Ebene → Skalarprodukt mit $\vec n$; Gerade → Kreuzprodukt mit $\vec v$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-vek-2-3-a`, `ex-vek-2-3-manual-1`, `ex-vek-2-3-manual-2`, `ex-vek-2-3-manual-3`, `ex-vek-2-3-manual-4`, `ex-vek-2-3-manual-5`, `ex-vek-2-3-manual-6`, `ex-vek-2-3-manual-7` … (+1 weitere)
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
@@ -5304,12 +5512,13 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Wurzel als Bruchpotenz: $\sqrt[n]{x} = x^{1/n}$, dadurch gelten alle Potenzgesetze
-  - [ ] [1] (hoch) Wurzel des Produkts: $\sqrt{ab} = \sqrt a \cdot \sqrt b$ — aber $\sqrt{a+b} \neq \sqrt a + \sqrt b$
-  - [ ] [2] (mittel) Nenner rational machen: Erweitern mit passender Wurzel löst Wurzeln aus dem Nenner
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Wurzel als Bruchpotenz: $\sqrt[n]{x} = x^{1/n}$, dadurch gelten alle Potenzgesetze
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Wurzel des Produkts: $\sqrt{ab} = \sqrt a \cdot \sqrt b$ — aber $\sqrt{a+b} \neq \sqrt a + \sqrt b$
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Nenner rational machen: Erweitern mit passender Wurzel löst Wurzeln aus dem Nenner
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-alg-1-2-a`, `ex-alg-1-2-b`, `ex-alg-1-2-d`, `ex-alg-1-2-manual-1`, `ex-alg-1-2-manual-2`, `ex-alg-1-2-manual-3`, `ex-alg-1-2-manual-4`, `ex-alg-1-2-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
@@ -5322,16 +5531,17 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Definition: $\log_b x = y \iff b^y = x$ (für $b>0, b\neq 1, x>0$)
-  - [ ] [1] (hoch) Produktregel: $\ln(ab) = \ln a + \ln b$
-  - [ ] [2] (hoch) Quotientenregel: $\ln(a/b) = \ln a - \ln b$
-  - [ ] [3] (hoch) Potenzregel: $\ln(a^n) = n \ln a$
-  - [ ] [4] (hoch) Basiswechsel: $\log_b x = \ln x / \ln b$
-  - [ ] [5] (hoch) Typische Falle: $\ln(a+b) \neq \ln a + \ln b$ (kein Logarithmusgesetz für Summen)
-  - [ ] [6] (hoch) Exp-Log-Umkehrung: $e^{\ln x} = x$ (für $x > 0$), $\ln(e^x) = x$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5, 6
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Definition: $\log_b x = y \iff b^y = x$ (für $b>0, b\neq 1, x>0$)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Produktregel: $\ln(ab) = \ln a + \ln b$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Quotientenregel: $\ln(a/b) = \ln a - \ln b$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Potenzregel: $\ln(a^n) = n \ln a$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Basiswechsel: $\log_b x = \ln x / \ln b$
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — Typische Falle: $\ln(a+b) \neq \ln a + \ln b$ (kein Logarithmusgesetz für Summen)
+  - 🔴 [6] (hoch) **0/3+** Aufgaben — Exp-Log-Umkehrung: $e^{\ln x} = x$ (für $x > 0$), $\ln(e^x) = x$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3, SG 6: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-alg-1-3-a`, `ex-alg-1-3-b`, `ex-alg-1-3-c`, `ex-alg-1-3-d`, `ex-alg-1-3-manual-1`, `ex-alg-1-3-manual-2`, `ex-alg-1-3-manual-3`, `ex-alg-1-3-manual-4` … (+4 weitere)
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
@@ -5344,13 +5554,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Äquivalenzumformungen: gleiche Operation auf beiden Seiten — Gleichung bleibt erhalten
-  - [ ] [1] (hoch) Standardvorgehen: Klammern auflösen $\to$ Variable auf eine Seite $\to$ durch Koeffizient teilen
-  - [ ] [2] (mittel) Textaufgaben: Variable definieren, Gleichung aufstellen, lösen, zurück in den Kontext interpretieren
-  - [ ] [3] (hoch) Probe durch Einsetzen in Original-Gleichung schützt vor Vorzeichen- und Umformungsfehlern
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Äquivalenzumformungen: gleiche Operation auf beiden Seiten — Gleichung bleibt erhalten
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Standardvorgehen: Klammern auflösen $\to$ Variable auf eine Seite $\to$ durch Koeffizient teilen
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Textaufgaben: Variable definieren, Gleichung aufstellen, lösen, zurück in den Kontext interpretieren
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Probe durch Einsetzen in Original-Gleichung schützt vor Vorzeichen- und Umformungsfehlern
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-1-manual-1`, `ex-alg-2-1-manual-2`, `ex-alg-2-1-manual-3`, `ex-alg-2-1-manual-4`, `ex-alg-2-1-manual-5`, `ex-alg-2-1-manual-6`, `ex-alg-2-1-manual-7`
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
@@ -5363,15 +5574,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Nullstellenraten: Teiler des absoluten Glieds testen ($\pm 1, \pm 2, \ldots$)
-  - [ ] [1] (hoch) Polynomdivision: Nach Nullstelle $x_0$ durch $(x - x_0)$ teilen, Grad sinkt um 1
-  - [ ] [2] (hoch) Rest der Polynomdivision bei Nullstelle muss 0 sein (Probe!)
-  - [ ] [3] (mittel) Horner-Schema: kompakte Tabelle, doppelt nutzbar (Polynomwert + Division)
-  - [ ] [4] (hoch) Linearfaktor-Zerlegung $P(x) = (x-x_1)(x-x_2)\cdots(x-x_n)$ falls vollständig reell zerlegbar
-  - [ ] [5] (niedrig) Bei $x^3 + ax + b$ ohne rationale Nullstelle: Cardano oder numerisch
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Nullstellenraten: Teiler des absoluten Glieds testen ($\pm 1, \pm 2, \ldots$)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Polynomdivision: Nach Nullstelle $x_0$ durch $(x - x_0)$ teilen, Grad sinkt um 1
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Rest der Polynomdivision bei Nullstelle muss 0 sein (Probe!)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Horner-Schema: kompakte Tabelle, doppelt nutzbar (Polynomwert + Division)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Linearfaktor-Zerlegung $P(x) = (x-x_1)(x-x_2)\cdots(x-x_n)$ falls vollständig reell zerlegbar
+  - 🔴 [5] (niedrig) **0/3+** Aufgaben — Bei $x^3 + ax + b$ ohne rationale Nullstelle: Cardano oder numerisch
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-3-a`, `ex-alg-2-3-b`, `ex-alg-2-3-c`, `ex-alg-2-3-manual-1`, `ex-alg-2-3-manual-2`, `ex-alg-2-3-manual-3`, `ex-alg-2-3-manual-4`, `ex-alg-2-3-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
@@ -5384,15 +5596,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Multiplikation/Division mit negativer Zahl: Ungleichheitszeichen umdrehen!
-  - [ ] [1] (hoch) Betragsungleichung $|x - a| < b$: $a - b < x < a + b$
-  - [ ] [2] (hoch) Betragsungleichung $|x - a| > b$: $x < a - b$ ODER $x > a + b$
-  - [ ] [3] (hoch) Quadratische Ungleichung: Nullstellen finden, Vorzeichentabelle aufstellen, Bereiche ablesen
-  - [ ] [4] (mittel) Lösungsmenge im Intervall-Notation: $(-\infty, a) \cup (b, \infty)$ statt $x < a$ oder $x > b$
-  - [ ] [5] (mittel) Bruchungleichungen: Polstellen des Nenners separat betrachten, nicht quer-multiplizieren
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Multiplikation/Division mit negativer Zahl: Ungleichheitszeichen umdrehen!
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Betragsungleichung $|x - a| < b$: $a - b < x < a + b$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Betragsungleichung $|x - a| > b$: $x < a - b$ ODER $x > a + b$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Quadratische Ungleichung: Nullstellen finden, Vorzeichentabelle aufstellen, Bereiche ablesen
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Lösungsmenge im Intervall-Notation: $(-\infty, a) \cup (b, \infty)$ statt $x < a$ oder $x > b$
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Bruchungleichungen: Polstellen des Nenners separat betrachten, nicht quer-multiplizieren
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-4-d`, `ex-alg-2-4-manual-1`, `ex-alg-2-4-manual-2`, `ex-alg-2-4-manual-3`, `ex-alg-2-4-manual-4`, `ex-alg-2-4-manual-5`, `ex-alg-2-4-manual-6`, `ex-alg-2-4-manual-7`
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
@@ -5405,13 +5618,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Dimension $m \times n$ als „Zeilen $\times$ Spalten" lesen (Reihenfolge nicht tauschen)
-  - [ ] [1] (hoch) Element $a_{ij}$: erster Index = Zeile, zweiter = Spalte
-  - [ ] [2] (mittel) Einheitsmatrix, Nullmatrix, Diagonalmatrix, quadratische Matrix auf einen Blick unterscheiden
-  - [ ] [3] (mittel) Transponierte $A^T$: Zeilen werden Spalten — praktisch für Dimensionscheck
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Dimension $m \times n$ als „Zeilen $\times$ Spalten" lesen (Reihenfolge nicht tauschen)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Element $a_{ij}$: erster Index = Zeile, zweiter = Spalte
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Einheitsmatrix, Nullmatrix, Diagonalmatrix, quadratische Matrix auf einen Blick unterscheiden
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Transponierte $A^T$: Zeilen werden Spalten — praktisch für Dimensionscheck
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-1-a`, `ex-la-1-1-b`, `ex-la-1-1-c`, `ex-la-1-1-d`, `ex-la-1-1-manual-1`, `ex-la-1-1-manual-2`, `ex-la-1-1-manual-3`, `ex-la-1-1-manual-4` … (+4 weitere)
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
@@ -5424,15 +5638,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Transponierte: $(A^T)_{ij} = A_{ji}$ (Zeilen/Spalten tauschen), Dimensionen $m \times n \to n \times m$
-  - [ ] [1] (hoch) Transponierten-Regeln: $(A+B)^T = A^T + B^T$, $(AB)^T = B^T A^T$ (Reihenfolge dreht!)
-  - [ ] [2] (hoch) 2x2-Inverse: $A^{-1} = \frac{1}{\det A}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$
-  - [ ] [3] (hoch) Invertierbarkeit: $A^{-1}$ existiert $\iff \det A \neq 0$
-  - [ ] [4] (hoch) Eigenschaft: $AA^{-1} = A^{-1}A = I$ (Einheitsmatrix)
-  - [ ] [5] (mittel) Symmetrische Matrix: $A^T = A$; orthogonale Matrix: $A^T = A^{-1}$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Transponierte: $(A^T)_{ij} = A_{ji}$ (Zeilen/Spalten tauschen), Dimensionen $m \times n \to n \times m$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Transponierten-Regeln: $(A+B)^T = A^T + B^T$, $(AB)^T = B^T A^T$ (Reihenfolge dreht!)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — 2x2-Inverse: $A^{-1} = \frac{1}{\det A}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Invertierbarkeit: $A^{-1}$ existiert $\iff \det A \neq 0$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Eigenschaft: $AA^{-1} = A^{-1}A = I$ (Einheitsmatrix)
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Symmetrische Matrix: $A^T = A$; orthogonale Matrix: $A^T = A^{-1}$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-3-a`, `ex-la-1-3-b`, `ex-la-1-3-c`, `ex-la-1-3-d`, `ex-la-1-3-manual-1`, `ex-la-1-3-manual-2`, `ex-la-1-3-manual-3`, `ex-la-1-3-manual-4` … (+4 weitere)
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
@@ -5445,15 +5660,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×5, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) 2x2: $\det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc$
-  - [ ] [1] (hoch) 3x3 Regel von Sarrus: Haupt- minus Nebendiagonalen (nur 3x3!)
-  - [ ] [2] (hoch) Laplace-Entwicklung: nach einer Zeile/Spalte, Vorzeichen-Schachbrett $(-1)^{i+j}$
-  - [ ] [3] (hoch) Determinanten-Regeln: $\det(AB) = \det A \cdot \det B$, $\det A^T = \det A$
-  - [ ] [4] (hoch) Geometrisch: $|\det A|$ = Flächen-/Volumen-Skalierungsfaktor
-  - [ ] [5] (hoch) $\det A = 0 \iff$ Spalten linear abhängig, $A$ singulär, kein $A^{-1}$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — 2x2: $\det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — 3x3 Regel von Sarrus: Haupt- minus Nebendiagonalen (nur 3x3!)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Laplace-Entwicklung: nach einer Zeile/Spalte, Vorzeichen-Schachbrett $(-1)^{i+j}$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Determinanten-Regeln: $\det(AB) = \det A \cdot \det B$, $\det A^T = \det A$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Geometrisch: $|\det A|$ = Flächen-/Volumen-Skalierungsfaktor
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — $\det A = 0 \iff$ Spalten linear abhängig, $A$ singulär, kein $A^{-1}$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-4-a`, `ex-la-1-4-b`, `ex-la-1-4-c`, `ex-la-1-4-d`, `ex-la-1-4-manual-1`, `ex-la-1-4-manual-2`, `ex-la-1-4-manual-3`, `ex-la-1-4-manual-4` … (+4 weitere)
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
@@ -5466,15 +5682,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Drei erlaubte Zeilenumformungen: Vertauschen, Skalieren (≠0), Addieren eines Vielfachen
-  - [ ] [1] (hoch) Ziel: Obere Dreiecksform / Stufenform (alle Einträge unter Pivot = 0)
-  - [ ] [2] (hoch) Rücksubstitution: von unten nach oben, Variable nach Variable auflösen
-  - [ ] [3] (hoch) Pivotierung: bei $a_{ii} = 0$ Zeile tauschen, sonst Division durch 0
-  - [ ] [4] (mittel) Gauss-Jordan: zusätzlich auch über Pivots nullen → reduzierte Stufenform
-  - [ ] [5] (mittel) Matrix-Inversion mit Gauss: $[A | I] \to [I | A^{-1}]$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Drei erlaubte Zeilenumformungen: Vertauschen, Skalieren (≠0), Addieren eines Vielfachen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Ziel: Obere Dreiecksform / Stufenform (alle Einträge unter Pivot = 0)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Rücksubstitution: von unten nach oben, Variable nach Variable auflösen
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Pivotierung: bei $a_{ii} = 0$ Zeile tauschen, sonst Division durch 0
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Gauss-Jordan: zusätzlich auch über Pivots nullen → reduzierte Stufenform
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Matrix-Inversion mit Gauss: $[A | I] \to [I | A^{-1}]$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-2-a`, `ex-la-2-2-b`, `ex-la-2-2-c`, `ex-la-2-2-d`, `ex-la-2-2-manual-1`, `ex-la-2-2-manual-2`, `ex-la-2-2-manual-3`, `ex-la-2-2-manual-4` … (+4 weitere)
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
@@ -5487,12 +5704,13 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×2, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Stammfunktion durch „Rückwärts-Ableiten" erkennen
-  - [ ] [1] (hoch) Integrationskonstante $+C$ nicht vergessen
-  - [ ] [2] (mittel) Probe durch Ableiten der gefundenen Stammfunktion
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Stammfunktion durch „Rückwärts-Ableiten" erkennen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Integrationskonstante $+C$ nicht vergessen
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Probe durch Ableiten der gefundenen Stammfunktion
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-1-manual-1`, `ex-int-1-1-manual-2`, `ex-int-1-1-manual-3`, `ex-int-1-1-manual-4`, `ex-int-1-1-manual-5`, `ex-int-1-1-manual-6`, `ex-int-1-1-manual-7`
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
@@ -5505,13 +5723,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Summenregel: $\int (f + g) dx = \int f\,dx + \int g\,dx$ — gliedweise integrieren
-  - [ ] [1] (hoch) Faktorregel: $\int c f(x) dx = c \int f(x) dx$ — Konstante vors Integral ziehen
-  - [ ] [2] (hoch) Für Produkt $f(x) \cdot g(x)$ gilt KEIN analoges Produktrecht — dort partielle Integration nötig
-  - [ ] [3] (mittel) Integrationskonstante $C$ bei unbestimmten Integralen konsequent mitschreiben
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Summenregel: $\int (f + g) dx = \int f\,dx + \int g\,dx$ — gliedweise integrieren
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Faktorregel: $\int c f(x) dx = c \int f(x) dx$ — Konstante vors Integral ziehen
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Für Produkt $f(x) \cdot g(x)$ gilt KEIN analoges Produktrecht — dort partielle Integration nötig
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Integrationskonstante $C$ bei unbestimmten Integralen konsequent mitschreiben
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-3-manual-1`, `ex-int-1-3-manual-2`, `ex-int-1-3-manual-3`, `ex-int-1-3-manual-4`, `ex-int-1-3-manual-5`, `ex-int-1-3-manual-6`, `ex-int-1-3-manual-7`
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
@@ -5524,13 +5743,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×3, number-input ×6, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Hauptsatz: $\int_a^b f(x) dx = F(b) - F(a)$ mit beliebiger Stammfunktion $F$
-  - [ ] [1] (hoch) Geometrisch: Fläche *zwischen* Kurve und x-Achse — unterhalb wird NEGATIV gezählt
-  - [ ] [2] (mittel) Vertauschen der Grenzen dreht das Vorzeichen: $\int_a^b = -\int_b^a$
-  - [ ] [3] (mittel) Bei bestimmtem Integral fällt die Integrationskonstante $C$ weg (kürzt sich raus)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Hauptsatz: $\int_a^b f(x) dx = F(b) - F(a)$ mit beliebiger Stammfunktion $F$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Geometrisch: Fläche *zwischen* Kurve und x-Achse — unterhalb wird NEGATIV gezählt
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Vertauschen der Grenzen dreht das Vorzeichen: $\int_a^b = -\int_b^a$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Bei bestimmtem Integral fällt die Integrationskonstante $C$ weg (kürzt sich raus)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-4-a`, `ex-int-1-4-d`, `ex-int-1-4-manual-1`, `ex-int-1-4-manual-2`, `ex-int-1-4-manual-3`, `ex-int-1-4-manual-4`, `ex-int-1-4-manual-5`, `ex-int-1-4-manual-6` … (+1 weitere)
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
@@ -5543,15 +5763,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Formel: $\int f(g(x)) g'(x) dx = \int f(u) du$ mit $u = g(x)$
-  - [ ] [1] (hoch) Substitution wählen, wenn Ableitung $g'(x)$ (bis auf Konstante) als Faktor im Integrand vorkommt
-  - [ ] [2] (hoch) Bei bestimmtem Integral Grenzen mit substituieren: $x = a \to u = g(a)$, analog $b$
-  - [ ] [3] (hoch) Lineare Substitution $u = ax + b$: $du = a\, dx$, sehr häufig in Prüfungen
-  - [ ] [4] (mittel) Trigonometrische Substitution $x = \sin u$ für $\sqrt{1-x^2}$, $x = \tan u$ für $1+x^2$
-  - [ ] [5] (hoch) Standardformen: $\int f'(x)/f(x) dx = \ln|f(x)| + C$ (logarithmische Ableitung)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Formel: $\int f(g(x)) g'(x) dx = \int f(u) du$ mit $u = g(x)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Substitution wählen, wenn Ableitung $g'(x)$ (bis auf Konstante) als Faktor im Integrand vorkommt
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Bei bestimmtem Integral Grenzen mit substituieren: $x = a \to u = g(a)$, analog $b$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Lineare Substitution $u = ax + b$: $du = a\, dx$, sehr häufig in Prüfungen
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Trigonometrische Substitution $x = \sin u$ für $\sqrt{1-x^2}$, $x = \tan u$ für $1+x^2$
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — Standardformen: $\int f'(x)/f(x) dx = \ln|f(x)| + C$ (logarithmische Ableitung)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-int-2-1-manual-1`, `ex-int-2-1-manual-2`, `ex-int-2-1-manual-3`, `ex-int-2-1-manual-4`, `ex-int-2-1-manual-5`, `ex-int-2-1-manual-6`, `ex-int-2-1-manual-7`, `ex-int-2-1-mastery`
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
@@ -5564,14 +5785,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Formel: $\int u v' dx = uv - \int u' v dx$ (aus Produktregel hergeleitet)
-  - [ ] [1] (hoch) LIATE-Regel: **L**og, **I**nv.Trig, **A**lgebr., **T**rig, **E**xp — davor stehende wird $u$
-  - [ ] [2] (hoch) Spezialtrick $\int \ln x\, dx$: setze $u = \ln x$, $v' = 1$
-  - [ ] [3] (mittel) Mehrfache Anwendung bei $\int x^n e^x dx$ (Grad halbieren pro Schritt)
-  - [ ] [4] (mittel) Kreisintegrale $\int e^x \sin x\, dx$: nach 2 Anwendungen nach Originalintegral auflösen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Formel: $\int u v' dx = uv - \int u' v dx$ (aus Produktregel hergeleitet)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — LIATE-Regel: **L**og, **I**nv.Trig, **A**lgebr., **T**rig, **E**xp — davor stehende wird $u$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Spezialtrick $\int \ln x\, dx$: setze $u = \ln x$, $v' = 1$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Mehrfache Anwendung bei $\int x^n e^x dx$ (Grad halbieren pro Schritt)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Kreisintegrale $\int e^x \sin x\, dx$: nach 2 Anwendungen nach Originalintegral auflösen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-int-2-2-b`, `ex-int-2-2-manual-1`, `ex-int-2-2-manual-2`, `ex-int-2-2-manual-3`, `ex-int-2-2-manual-4`, `ex-int-2-2-manual-5`, `ex-int-2-2-manual-6`, `ex-int-2-2-manual-7`
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
@@ -5584,15 +5806,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×4, number-input ×5, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Fläche unter $f(x) \geq 0$ auf $[a,b]$: $A = \int_a^b f(x) dx$
-  - [ ] [1] (hoch) Vorzeichenproblem: Bei $f < 0$ liefert Integral negativen Wert — Fläche = Betrag
-  - [ ] [2] (hoch) Fläche zwischen Kurven: $A = \int_a^b (f_{\text{oben}} - f_{\text{unten}}) dx$
-  - [ ] [3] (hoch) Schnittpunkte als Integrationsgrenzen: $f(x) = g(x)$ lösen
-  - [ ] [4] (hoch) Bei Vorzeichenwechsel Nullstellen finden und in Teilintervalle splitten
-  - [ ] [5] (mittel) Fläche zwischen $y = $ const und Kurve: Horizontalstreifen oder Transformation
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Fläche unter $f(x) \geq 0$ auf $[a,b]$: $A = \int_a^b f(x) dx$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Vorzeichenproblem: Bei $f < 0$ liefert Integral negativen Wert — Fläche = Betrag
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Fläche zwischen Kurven: $A = \int_a^b (f_{\text{oben}} - f_{\text{unten}}) dx$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Schnittpunkte als Integrationsgrenzen: $f(x) = g(x)$ lösen
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Bei Vorzeichenwechsel Nullstellen finden und in Teilintervalle splitten
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Fläche zwischen $y = $ const und Kurve: Horizontalstreifen oder Transformation
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-1-manual-1`, `ex-int-3-1-manual-2`, `ex-int-3-1-manual-3`, `ex-int-3-1-manual-4`, `ex-int-3-1-manual-5`, `ex-int-3-1-manual-6`, `ex-int-3-1-manual-7`, `ex-int-3-1-mastery`
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
@@ -5605,15 +5828,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 12 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Standardform: $y' + p(x) y = q(x)$
-  - [ ] [1] (hoch) Integrierender Faktor: $\mu(x) = e^{\int p(x) dx}$
-  - [ ] [2] (hoch) Lösungsformel: $y = (1/\mu) [\int \mu \cdot q \, dx + C]$
-  - [ ] [3] (hoch) Alternative: Variation der Konstanten (homogene + partikuläre Lösung)
-  - [ ] [4] (hoch) Homogene Lösung $y_h = C e^{-\int p dx}$ einzeln bestimmbar
-  - [ ] [5] (mittel) Typisches Anwendungsproblem: RC-Stromkreis $\dot U + U/RC = U_0/RC$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Standardform: $y' + p(x) y = q(x)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Integrierender Faktor: $\mu(x) = e^{\int p(x) dx}$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Lösungsformel: $y = (1/\mu) [\int \mu \cdot q \, dx + C]$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Alternative: Variation der Konstanten (homogene + partikuläre Lösung)
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Homogene Lösung $y_h = C e^{-\int p dx}$ einzeln bestimmbar
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Typisches Anwendungsproblem: RC-Stromkreis $\dot U + U/RC = U_0/RC$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-1-3-a`, `ex-dgl-1-3-b`, `ex-dgl-1-3-c`, `ex-dgl-1-3-d`, `ex-dgl-1-3-manual-1`, `ex-dgl-1-3-manual-2`, `ex-dgl-1-3-manual-3`, `ex-dgl-1-3-manual-4` … (+4 weitere)
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
@@ -5626,13 +5850,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 13 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×8, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Potenzregel $(x^n)'=nx^{n-1}$
-  - [ ] [1] (hoch) Summenregel $(f+g)'=f'+g'$
-  - [ ] [2] (hoch) Wurzeln und Kehrwerte als Potenzen $x^{1/2}, x^{-1}$ ableiten
-  - [ ] [3] (mittel) Konstanten und Konstante Faktoren richtig behandeln
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Potenzregel $(x^n)'=nx^{n-1}$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Summenregel $(f+g)'=f'+g'$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Wurzeln und Kehrwerte als Potenzen $x^{1/2}, x^{-1}$ ableiten
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Konstanten und Konstante Faktoren richtig behandeln
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-2-manual-1`, `ex-abl-1-2-manual-2`, `ex-abl-1-2-manual-3`, `ex-abl-1-2-manual-4`, `ex-abl-1-2-manual-5`, `ex-abl-1-2-manual-6`, `ex-abl-1-2-manual-7`
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -5645,13 +5870,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 13 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×8, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) $(\sin x)' = \cos x$, $(\cos x)' = -\sin x$ — Vorzeichen bei Kosinus nicht vergessen
-  - [ ] [1] (hoch) $(e^x)' = e^x$ (einzige Funktion mit $f' = f$) und $(\ln x)' = 1/x$
-  - [ ] [2] (mittel) Allgemeine Exponential-/Logarithmusfunktion: $(a^x)' = a^x \ln a$, $(\log_a x)' = 1/(x \ln a)$
-  - [ ] [3] (mittel) Definitionsbereich beachten: $\ln x$ nur für $x>0$, $\sqrt x$ für $x \ge 0$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — $(\sin x)' = \cos x$, $(\cos x)' = -\sin x$ — Vorzeichen bei Kosinus nicht vergessen
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — $(e^x)' = e^x$ (einzige Funktion mit $f' = f$) und $(\ln x)' = 1/x$
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Allgemeine Exponential-/Logarithmusfunktion: $(a^x)' = a^x \ln a$, $(\log_a x)' = 1/(x \ln a)$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Definitionsbereich beachten: $\ln x$ nur für $x>0$, $\sqrt x$ für $x \ge 0$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-3-a`, `ex-abl-1-3-manual-1`, `ex-abl-1-3-manual-2`, `ex-abl-1-3-manual-3`, `ex-abl-1-3-manual-4`, `ex-abl-1-3-manual-5`, `ex-abl-1-3-manual-6`, `ex-abl-1-3-manual-7`
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -5664,13 +5890,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 13 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×8, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Kettenregel: $(f(g(x)))' = f'(g(x)) \cdot g'(x)$ — „äußere mal innere Ableitung"
-  - [ ] [1] (hoch) Äußere Funktion identifizieren (die, die man zuletzt ausführt) und separat ableiten
-  - [ ] [2] (hoch) Standardfälle: $(e^{u(x)})' = e^{u(x)} \cdot u'(x)$, $(\sin u)' = \cos u \cdot u'$, $(\ln u)' = u'/u$
-  - [ ] [3] (mittel) Bei mehrfach verketteten Funktionen hierarchisch: erst äußerste Schale, dann nächst innere, etc.
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Kettenregel: $(f(g(x)))' = f'(g(x)) \cdot g'(x)$ — „äußere mal innere Ableitung"
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Äußere Funktion identifizieren (die, die man zuletzt ausführt) und separat ableiten
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Standardfälle: $(e^{u(x)})' = e^{u(x)} \cdot u'(x)$, $(\sin u)' = \cos u \cdot u'$, $(\ln u)' = u'/u$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Bei mehrfach verketteten Funktionen hierarchisch: erst äußerste Schale, dann nächst innere, etc.
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-4-a`, `ex-abl-1-4-manual-1`, `ex-abl-1-4-manual-2`, `ex-abl-1-4-manual-3`, `ex-abl-1-4-manual-4`, `ex-abl-1-4-manual-5`, `ex-abl-1-4-manual-6`, `ex-abl-1-4-manual-7`
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -5683,14 +5910,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 13 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Formel: $(f \cdot g)' = f' g + f g'$ (zwei Summanden, kreuzweise)
-  - [ ] [1] (hoch) Klassischer Fehler: $(fg)' \neq f' g'$ (nicht faktorweise ableiten!)
-  - [ ] [2] (niedrig) Geometrische Motivation: Flächenänderung eines Rechtecks mit variablen Seiten
-  - [ ] [3] (mittel) Dreifaches Produkt: $(fgh)' = f'gh + fg'h + fgh'$ (analog, drei Summanden)
-  - [ ] [4] (mittel) Nach dem Ableiten ausklammern und vereinfachen — Prüfer erwartet gekürzte Form
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Formel: $(f \cdot g)' = f' g + f g'$ (zwei Summanden, kreuzweise)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Klassischer Fehler: $(fg)' \neq f' g'$ (nicht faktorweise ableiten!)
+  - 🔴 [2] (niedrig) **0/3+** Aufgaben — Geometrische Motivation: Flächenänderung eines Rechtecks mit variablen Seiten
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Dreifaches Produkt: $(fgh)' = f'gh + fg'h + fgh'$ (analog, drei Summanden)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Nach dem Ableiten ausklammern und vereinfachen — Prüfer erwartet gekürzte Form
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-2-1-manual-1`, `ex-abl-2-1-manual-2`, `ex-abl-2-1-manual-3`, `ex-abl-2-1-manual-4`, `ex-abl-2-1-manual-5`, `ex-abl-2-1-manual-6`, `ex-abl-2-1-manual-7`
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -5703,14 +5931,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 13 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×8, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Formel: $(f/g)' = (f' g - f g')/g^2$ — Minuszeichen, Reihenfolge $f' g$ zuerst
-  - [ ] [1] (mittel) NAZ-Eselsbrücke: "**N**enner·**A**bl. **Z**ähler minus **Z**ähler·**A**bl. **N**enner, durch $N^2$"
-  - [ ] [2] (hoch) Nenner niemals ableiten ohne Vorzeichen: $f' g - f g'$ (NICHT $f g' - f' g$)
-  - [ ] [3] (mittel) Alternative: $f/g = f \cdot g^{-1}$ mit Produkt- und Kettenregel ableiten
-  - [ ] [4] (mittel) Definitionsbereich: $g(x) \neq 0$ (Polstellen gesondert betrachten)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Formel: $(f/g)' = (f' g - f g')/g^2$ — Minuszeichen, Reihenfolge $f' g$ zuerst
+  - 🔴 [1] (mittel) **0/3+** Aufgaben — NAZ-Eselsbrücke: "**N**enner·**A**bl. **Z**ähler minus **Z**ähler·**A**bl. **N**enner, durch $N^2$"
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Nenner niemals ableiten ohne Vorzeichen: $f' g - f g'$ (NICHT $f g' - f' g$)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Alternative: $f/g = f \cdot g^{-1}$ mit Produkt- und Kettenregel ableiten
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Definitionsbereich: $g(x) \neq 0$ (Polstellen gesondert betrachten)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-2-2-a`, `ex-abl-2-2-manual-1`, `ex-abl-2-2-manual-2`, `ex-abl-2-2-manual-3`, `ex-abl-2-2-manual-4`, `ex-abl-2-2-manual-5`, `ex-abl-2-2-manual-6`, `ex-abl-2-2-manual-7`
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -5723,14 +5952,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 13 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Äußerste Struktur identifizieren: Produkt, Quotient oder Verkettung?
-  - [ ] [1] (hoch) Hierarchisch ableiten: erst äußerste Regel, dann innere Teile mit passender Regel
-  - [ ] [2] (mittel) Logarithmisches Ableiten bei $f(x)^{g(x)}$: $\ln y = g \ln f$, dann implizit differenzieren
-  - [ ] [3] (hoch) Umformen vor dem Ableiten: $\sqrt[n]{x}$ → $x^{1/n}$, $1/x^n$ → $x^{-n}$
-  - [ ] [4] (mittel) Ergebnisse faktorisieren — Prüfer erwarten vereinfachte Antwort
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Äußerste Struktur identifizieren: Produkt, Quotient oder Verkettung?
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Hierarchisch ableiten: erst äußerste Regel, dann innere Teile mit passender Regel
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Logarithmisches Ableiten bei $f(x)^{g(x)}$: $\ln y = g \ln f$, dann implizit differenzieren
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Umformen vor dem Ableiten: $\sqrt[n]{x}$ → $x^{1/n}$, $1/x^n$ → $x^{-n}$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Ergebnisse faktorisieren — Prüfer erwarten vereinfachte Antwort
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-2-4-manual-1`, `ex-abl-2-4-manual-2`, `ex-abl-2-4-manual-3`, `ex-abl-2-4-manual-4`, `ex-abl-2-4-manual-5`, `ex-abl-2-4-manual-6`, `ex-abl-2-4-manual-7`
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -5743,14 +5973,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 13 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Monotonie-Kriterium: $f'(x) > 0$ → streng wachsend, $f'(x) < 0$ → streng fallend
-  - [ ] [1] (hoch) Notwendige Bedingung für lokales Extremum: $f'(x_0) = 0$
-  - [ ] [2] (hoch) Hinreichend via $f''$: $f''(x_0) > 0$ → Min, $f''(x_0) < 0$ → Max
-  - [ ] [3] (hoch) Hinreichend via Vorzeichenwechsel: $f'$ wechselt $+ \to -$ → Max, $- \to +$ → Min
-  - [ ] [4] (mittel) Kein Vorzeichenwechsel von $f'$ bei $f'(x_0) = 0$ → Sattelpunkt (z.B. $f(x) = x^3$ bei $0$)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Monotonie-Kriterium: $f'(x) > 0$ → streng wachsend, $f'(x) < 0$ → streng fallend
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Notwendige Bedingung für lokales Extremum: $f'(x_0) = 0$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Hinreichend via $f''$: $f''(x_0) > 0$ → Min, $f''(x_0) < 0$ → Max
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Hinreichend via Vorzeichenwechsel: $f'$ wechselt $+ \to -$ → Max, $- \to +$ → Min
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Kein Vorzeichenwechsel von $f'$ bei $f'(x_0) = 0$ → Sattelpunkt (z.B. $f(x) = x^3$ bei $0$)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-1-a`, `ex-abl-3-1-b`, `ex-abl-3-1-c`, `ex-abl-3-1-d`, `ex-abl-3-1-transfer`, `ex-abl-3-1-manual-1`, `ex-abl-3-1-manual-2`, `ex-abl-3-1-manual-3` … (+5 weitere)
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -5763,14 +5994,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 13 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×1, matching ×2, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, sorting, matching
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Typische Klausurfunktionen: Polynom, Bruch $p(x)/q(x)$, $x \cdot e^{-x}$, $e^{-x^2}$
-  - [ ] [1] (mittel) Plausibilitätsprüfung: Polynom Grad $n$ hat höchstens $n-1$ Extrema
-  - [ ] [2] (hoch) Globale Extrema auf Intervall $[a,b]$: innere Kandidaten + Randpunkte $f(a), f(b)$ vergleichen
-  - [ ] [3] (hoch) Anwendungsaufgabe (Optimierung): Zielfunktion aufstellen, Nebenbedingung einsetzen, dann ableiten
-  - [ ] [4] (mittel) Taylorpolynom $T_n(x)$ als schnelle lokale Kurvendiskussion 2. Ordnung
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Typische Klausurfunktionen: Polynom, Bruch $p(x)/q(x)$, $x \cdot e^{-x}$, $e^{-x^2}$
+  - 🔴 [1] (mittel) **0/3+** Aufgaben — Plausibilitätsprüfung: Polynom Grad $n$ hat höchstens $n-1$ Extrema
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Globale Extrema auf Intervall $[a,b]$: innere Kandidaten + Randpunkte $f(a), f(b)$ vergleichen
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Anwendungsaufgabe (Optimierung): Zielfunktion aufstellen, Nebenbedingung einsetzen, dann ableiten
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Taylorpolynom $T_n(x)$ als schnelle lokale Kurvendiskussion 2. Ordnung
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-4-a`, `ex-abl-3-4-b`, `ex-abl-3-4-c`, `ex-abl-3-4-d`, `ex-abl-3-4-e`, `ex-abl-3-4-manual-1`, `ex-abl-3-4-manual-2`, `ex-abl-3-4-manual-3` … (+5 weitere)
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -5783,15 +6015,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 13 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Lotfußpunkt auf Ebene: Hilfsgerade durch $P$ in Richtung $\vec n$, Schnitt mit Ebene
-  - [ ] [1] (hoch) Schnittgerade zweier Ebenen: Richtung $\vec v = \vec n_1 \times \vec n_2$, Punkt durch LGS-Lösung
-  - [ ] [2] (hoch) Gerade ⊥ Ebene $\iff \vec v_g \parallel \vec n_E$; Gerade $\parallel$ Ebene $\iff \vec v_g \perp \vec n_E$
-  - [ ] [3] (hoch) Abstand paralleler Ebenen: $d = |d_1 - d_2|/|\vec n|$ bei **gleichem** $\vec n$
-  - [ ] [4] (mittel) Spiegelpunkt $P'$ an Ebene: $P' = 2F - P$ mit Lotfußpunkt $F$
-  - [ ] [5] (mittel) Winkel zwischen Gerade und Ebene: $\sin\alpha = |\vec v \cdot \vec n|/(|\vec v||\vec n|)$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Lotfußpunkt auf Ebene: Hilfsgerade durch $P$ in Richtung $\vec n$, Schnitt mit Ebene
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Schnittgerade zweier Ebenen: Richtung $\vec v = \vec n_1 \times \vec n_2$, Punkt durch LGS-Lösung
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Gerade ⊥ Ebene $\iff \vec v_g \parallel \vec n_E$; Gerade $\parallel$ Ebene $\iff \vec v_g \perp \vec n_E$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Abstand paralleler Ebenen: $d = |d_1 - d_2|/|\vec n|$ bei **gleichem** $\vec n$
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Spiegelpunkt $P'$ an Ebene: $P' = 2F - P$ mit Lotfußpunkt $F$
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Winkel zwischen Gerade und Ebene: $\sin\alpha = |\vec v \cdot \vec n|/(|\vec v||\vec n|)$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-vek-2-4-a`, `ex-vek-2-4-b`, `ex-vek-2-4-c`, `ex-vek-2-4-d`, `ex-vek-2-4-e`, `ex-vek-2-4-manual-1`, `ex-vek-2-4-manual-2`, `ex-vek-2-4-manual-3` … (+5 weitere)
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
@@ -5804,15 +6037,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 13 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×4, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Skalarprodukt liefert **Zahl**, Kreuzprodukt liefert **Vektor** (nur in 3D)
-  - [ ] [1] (hoch) Winkel: $\cos\varphi = (\vec a \cdot \vec b)/(|\vec a||\vec b|)$
-  - [ ] [2] (hoch) Orthogonalitätstest: $\vec a \cdot \vec b = 0$; Parallelitätstest: $\vec a \times \vec b = \vec 0$
-  - [ ] [3] (hoch) Skalarprodukt kommutativ: $\vec a \cdot \vec b = \vec b \cdot \vec a$
-  - [ ] [4] (hoch) Kreuzprodukt **anti**kommutativ: $\vec a \times \vec b = -(\vec b \times \vec a)$
-  - [ ] [5] (hoch) Arbeit $W = \vec F \cdot \vec s$ (Skalar), Drehmoment $\vec M = \vec r \times \vec F$ (Vektor)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Skalarprodukt liefert **Zahl**, Kreuzprodukt liefert **Vektor** (nur in 3D)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Winkel: $\cos\varphi = (\vec a \cdot \vec b)/(|\vec a||\vec b|)$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Orthogonalitätstest: $\vec a \cdot \vec b = 0$; Parallelitätstest: $\vec a \times \vec b = \vec 0$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Skalarprodukt kommutativ: $\vec a \cdot \vec b = \vec b \cdot \vec a$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Kreuzprodukt **anti**kommutativ: $\vec a \times \vec b = -(\vec b \times \vec a)$
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — Arbeit $W = \vec F \cdot \vec s$ (Skalar), Drehmoment $\vec M = \vec r \times \vec F$ (Vektor)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-vek-3-1-a`, `ex-vek-3-1-d`, `ex-vek-3-1-e`, `ex-vek-3-1-manual-1`, `ex-vek-3-1-manual-2`, `ex-vek-3-1-manual-3`, `ex-vek-3-1-manual-4`, `ex-vek-3-1-manual-5` … (+3 weitere)
 - **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
@@ -5825,13 +6059,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 13 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Gleiche Basis: $x^a \cdot x^b = x^{a+b}$ und $x^a/x^b = x^{a-b}$
-  - [ ] [1] (hoch) Potenz einer Potenz: $(x^a)^b = x^{a \cdot b}$ — niemals mit Multiplikation verwechseln
-  - [ ] [2] (hoch) Negativer Exponent $x^{-n} = 1/x^n$ und nullter Exponent $x^0 = 1$ (für $x \neq 0$)
-  - [ ] [3] (mittel) Produkt/Quotient in Klammer: $(xy)^n = x^n y^n$, $(x/y)^n = x^n/y^n$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Gleiche Basis: $x^a \cdot x^b = x^{a+b}$ und $x^a/x^b = x^{a-b}$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Potenz einer Potenz: $(x^a)^b = x^{a \cdot b}$ — niemals mit Multiplikation verwechseln
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Negativer Exponent $x^{-n} = 1/x^n$ und nullter Exponent $x^0 = 1$ (für $x \neq 0$)
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Produkt/Quotient in Klammer: $(xy)^n = x^n y^n$, $(x/y)^n = x^n/y^n$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-alg-1-1-b`, `ex-alg-1-1-d`, `ex-alg-1-1-e`, `ex-alg-1-1-manual-1`, `ex-alg-1-1-manual-2`, `ex-alg-1-1-manual-3`, `ex-alg-1-1-manual-4`, `ex-alg-1-1-manual-5` … (+2 weitere)
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
@@ -5844,13 +6079,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 13 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Mitternachtsformel $x = (-b \pm \sqrt{b^2 - 4ac})/(2a)$ für $ax^2 + bx + c = 0$
-  - [ ] [1] (hoch) Diskriminante $D = b^2 - 4ac$: $D>0$ zwei reelle Lösungen, $D=0$ eine doppelte, $D<0$ keine reelle
-  - [ ] [2] (mittel) Satz von Vieta: $x_1 + x_2 = -b/a$, $x_1 \cdot x_2 = c/a$ — zum schnellen Raten/Prüfen
-  - [ ] [3] (hoch) Faktorisierte Form $(x - x_1)(x - x_2) = 0$ macht Nullstellen direkt sichtbar
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Mitternachtsformel $x = (-b \pm \sqrt{b^2 - 4ac})/(2a)$ für $ax^2 + bx + c = 0$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Diskriminante $D = b^2 - 4ac$: $D>0$ zwei reelle Lösungen, $D=0$ eine doppelte, $D<0$ keine reelle
+  - 🔴 [2] (mittel) **0/3+** Aufgaben — Satz von Vieta: $x_1 + x_2 = -b/a$, $x_1 \cdot x_2 = c/a$ — zum schnellen Raten/Prüfen
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Faktorisierte Form $(x - x_1)(x - x_2) = 0$ macht Nullstellen direkt sichtbar
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-2-a`, `ex-alg-2-2-b`, `ex-alg-2-2-d`, `ex-alg-2-2-e`, `ex-alg-2-2-manual-1`, `ex-alg-2-2-manual-2`, `ex-alg-2-2-manual-3`, `ex-alg-2-2-manual-4` … (+3 weitere)
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
@@ -5863,15 +6099,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 13 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×2, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Potenzfunktion $x^n$: gerade $n$ → Parabel, ungerade $n$ → S-Form; Def.bereich $\mathbb{R}$
-  - [ ] [1] (hoch) Exponentialfunktion $a^x$ ($a>0, a\neq 1$): Wertebereich $(0,\infty)$, streng monoton
-  - [ ] [2] (hoch) Logarithmusfunktion $\log_a x$: Def.bereich $(0,\infty)$, Umkehrung von $a^x$
-  - [ ] [3] (hoch) Wachstumshierarchie: $\ln x \ll x^n \ll a^x$ für $x \to \infty$ (mit $a > 1$)
-  - [ ] [4] (mittel) Eulersche Zahl $e \approx 2{,}718$: Basis des natürlichen Logarithmus
-  - [ ] [5] (mittel) Wurzelfunktion $\sqrt{x} = x^{1/2}$: Def.bereich $[0,\infty)$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Potenzfunktion $x^n$: gerade $n$ → Parabel, ungerade $n$ → S-Form; Def.bereich $\mathbb{R}$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Exponentialfunktion $a^x$ ($a>0, a\neq 1$): Wertebereich $(0,\infty)$, streng monoton
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Logarithmusfunktion $\log_a x$: Def.bereich $(0,\infty)$, Umkehrung von $a^x$
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Wachstumshierarchie: $\ln x \ll x^n \ll a^x$ für $x \to \infty$ (mit $a > 1$)
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Eulersche Zahl $e \approx 2{,}718$: Basis des natürlichen Logarithmus
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Wurzelfunktion $\sqrt{x} = x^{1/2}$: Def.bereich $[0,\infty)$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-2-a`, `ex-alg-3-2-b`, `ex-alg-3-2-c`, `ex-alg-3-2-d`, `ex-alg-3-2-e`, `ex-alg-3-2-manual-1`, `ex-alg-3-2-manual-2`, `ex-alg-3-2-manual-3` … (+4 weitere)
 - **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
@@ -5884,13 +6121,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 13 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Addition nur bei identischer Dimension — elementweise
-  - [ ] [1] (hoch) Matrizenmultiplikation: „Zeile mal Spalte" — Innen-Dimensionen müssen passen ($m\!\times\!k$ · $k\!\times\!n$)
-  - [ ] [2] (hoch) $A\,B \neq B\,A$ im Allgemeinen — Reihenfolge wichtig
-  - [ ] [3] (mittel) Rechenregeln: $(A\,B)^T = B^T A^T$ (Reihenfolge dreht sich um)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Addition nur bei identischer Dimension — elementweise
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Matrizenmultiplikation: „Zeile mal Spalte" — Innen-Dimensionen müssen passen ($m\!\times\!k$ · $k\!\times\!n$)
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — $A\,B \neq B\,A$ im Allgemeinen — Reihenfolge wichtig
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Rechenregeln: $(A\,B)^T = B^T A^T$ (Reihenfolge dreht sich um)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-2-a`, `ex-la-1-2-b`, `ex-la-1-2-c`, `ex-la-1-2-d`, `ex-la-1-2-e`, `ex-la-1-2-manual-1`, `ex-la-1-2-manual-2`, `ex-la-1-2-manual-3` … (+5 weitere)
 - **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
@@ -5903,13 +6141,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 13 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×2, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, sorting, number-input
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Potenzregel $\int x^n dx = x^{n+1}/(n+1)+C$ für $n\neq-1$
-  - [ ] [1] (hoch) Sonderfall $\int \frac{1}{x}dx = \ln|x|+C$
-  - [ ] [2] (hoch) Stammfunktionen von $e^x$, $\sin x$, $\cos x$ auswendig
-  - [ ] [3] (mittel) Summen- und Faktorregel beim Integrieren
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Potenzregel $\int x^n dx = x^{n+1}/(n+1)+C$ für $n\neq-1$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Sonderfall $\int \frac{1}{x}dx = \ln|x|+C$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Stammfunktionen von $e^x$, $\sin x$, $\cos x$ auswendig
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Summen- und Faktorregel beim Integrieren
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-2-c`, `ex-int-1-2-e`, `ex-int-1-2-manual-1`, `ex-int-1-2-manual-2`, `ex-int-1-2-manual-3`, `ex-int-1-2-manual-4`, `ex-int-1-2-manual-5`, `ex-int-1-2-manual-6` … (+1 weitere)
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
@@ -5922,14 +6161,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 13 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Zähler = Ableitung des Nenners → direkte Stammfunktion $\ln|f|$ (ohne Substitution)
-  - [ ] [1] (hoch) Halbwinkelformeln für $\sin^2 x = (1 - \cos 2x)/2$, $\cos^2 x = (1 + \cos 2x)/2$
-  - [ ] [2] (niedrig) Substitutionen $t = \tan(x/2)$ (Weierstraß) für rationale trigonometrische Ausdrücke
-  - [ ] [3] (mittel) Fourier-Orthogonalität: $\int_0^{2\pi} \sin(nx) \cos(mx) dx = 0$, nützliche Muster
-  - [ ] [4] (hoch) Integrationsstrategie wählen **vor** dem Rechnen — 10 s nachdenken spart 10 Minuten
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Zähler = Ableitung des Nenners → direkte Stammfunktion $\ln|f|$ (ohne Substitution)
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Halbwinkelformeln für $\sin^2 x = (1 - \cos 2x)/2$, $\cos^2 x = (1 + \cos 2x)/2$
+  - 🔴 [2] (niedrig) **0/3+** Aufgaben — Substitutionen $t = \tan(x/2)$ (Weierstraß) für rationale trigonometrische Ausdrücke
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Fourier-Orthogonalität: $\int_0^{2\pi} \sin(nx) \cos(mx) dx = 0$, nützliche Muster
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Integrationsstrategie wählen **vor** dem Rechnen — 10 s nachdenken spart 10 Minuten
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-int-2-4-manual-1`, `ex-int-2-4-manual-2`, `ex-int-2-4-manual-3`, `ex-int-2-4-manual-4`, `ex-int-2-4-manual-5`, `ex-int-2-4-manual-6`, `ex-int-2-4-manual-7`
 - **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
@@ -5942,14 +6182,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 14 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×8, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Formel: $[f(g(x))]' = f'(g(x)) \cdot g'(x)$ — äußere mal innere Ableitung
-  - [ ] [1] (hoch) Innere Funktion in äußerer Ableitung unverändert eingesetzt lassen
-  - [ ] [2] (hoch) Mehrfachverkettung: Ableitungen von außen nach innen multiplizieren
-  - [ ] [3] (hoch) Häufigste Anwendung: $(ax+b)^n$, $e^{ax}$, $\sin(ax)$ — innere Ableitung $= a$
-  - [ ] [4] (hoch) Häufiger Fehler: innere Ableitung vergessen (z.B. $(\sin 2x)' = 2\cos 2x$, nicht $\cos 2x$)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Formel: $[f(g(x))]' = f'(g(x)) \cdot g'(x)$ — äußere mal innere Ableitung
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Innere Funktion in äußerer Ableitung unverändert eingesetzt lassen
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Mehrfachverkettung: Ableitungen von außen nach innen multiplizieren
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Häufigste Anwendung: $(ax+b)^n$, $e^{ax}$, $\sin(ax)$ — innere Ableitung $= a$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Häufiger Fehler: innere Ableitung vergessen (z.B. $(\sin 2x)' = 2\cos 2x$, nicht $\cos 2x$)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-abl-2-3-manual-1`, `ex-abl-2-3-manual-2`, `ex-abl-2-3-manual-3`, `ex-abl-2-3-manual-4`, `ex-abl-2-3-manual-5`, `ex-abl-2-3-manual-6`, `ex-abl-2-3-manual-7`
 - **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
@@ -5962,14 +6203,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 15 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) $T$-Periode und Grundfrequenz $\omega_0 = 2\pi/T$ korrekt identifizieren
-  - [ ] [1] (hoch) Formel: $a_0 = \tfrac{1}{T}\int_0^T f\,dt$ (DC-Anteil), $a_n$, $b_n$ mit Faktor $\tfrac{2}{T}$
-  - [ ] [2] (hoch) Gerade $f$ ($f(-t) = f(t)$) → nur $a_n$; ungerade → nur $b_n$ — halbiert den Aufwand
-  - [ ] [3] (hoch) Reihenansatz: $f(t) = a_0/2 + \sum_n (a_n\cos + b_n\sin)$ — Faktor $1/2$ vor $a_0$ nicht vergessen
-  - [ ] [4] (mittel) Integration über eine volle Periode — Start- und Endpunkt frei wählbar (z. B. $-T/2$ bis $T/2$)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — $T$-Periode und Grundfrequenz $\omega_0 = 2\pi/T$ korrekt identifizieren
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Formel: $a_0 = \tfrac{1}{T}\int_0^T f\,dt$ (DC-Anteil), $a_n$, $b_n$ mit Faktor $\tfrac{2}{T}$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Gerade $f$ ($f(-t) = f(t)$) → nur $a_n$; ungerade → nur $b_n$ — halbiert den Aufwand
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Reihenansatz: $f(t) = a_0/2 + \sum_n (a_n\cos + b_n\sin)$ — Faktor $1/2$ vor $a_0$ nicht vergessen
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Integration über eine volle Periode — Start- und Endpunkt frei wählbar (z. B. $-T/2$ bis $T/2$)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fl-1-1-1`, `ex-fl-1-1-2`, `ex-fl-1-1-3`, `ex-fl-1-1-4`, `ex-fl-1-1-5`, `ex-fl-1-1-6`, `ex-fl-1-1-7`, `ex-fl-1-1-manual-1` … (+7 weitere)
 - **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
@@ -5982,13 +6224,14 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 15 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Ungerades Rechteck → nur $b_n$; nur **ungerade** $n$ liefern Beitrag ($b_n \propto 1/n$)
-  - [ ] [1] (mittel) Gibbs-Überschwinger ca. 9 % an Sprungstellen — wird mit mehr Termen nicht kleiner, nur schmaler
-  - [ ] [2] (niedrig) Konvergenz in der Mitte der Sprungstelle zum Mittelwert der beiden Seiten
-  - [ ] [3] (mittel) Amplitudenspektrum: $1/n$-Abfall → „langsame" Abnahme hoher Frequenzen
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Ungerades Rechteck → nur $b_n$; nur **ungerade** $n$ liefern Beitrag ($b_n \propto 1/n$)
+  - 🔴 [1] (mittel) **0/3+** Aufgaben — Gibbs-Überschwinger ca. 9 % an Sprungstellen — wird mit mehr Termen nicht kleiner, nur schmaler
+  - 🔴 [2] (niedrig) **0/3+** Aufgaben — Konvergenz in der Mitte der Sprungstelle zum Mittelwert der beiden Seiten
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Amplitudenspektrum: $1/n$-Abfall → „langsame" Abnahme hoher Frequenzen
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fl-1-2-1`, `ex-fl-1-2-2`, `ex-fl-1-2-3`, `ex-fl-1-2-4`, `ex-fl-1-2-5`, `ex-fl-1-2-6`, `ex-fl-1-2-7`, `ex-fl-1-2-manual-1` … (+7 weitere)
 - **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
@@ -6001,15 +6244,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 15 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) FT-Definition: $F(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt$
-  - [ ] [1] (hoch) Rücktransformation: $f(t) = (1/2\pi) \int F(\omega) e^{i\omega t} d\omega$
-  - [ ] [2] (hoch) Wichtige Paare: Rechteckpuls ↔ Sinc, Gauß ↔ Gauß, $\delta(t)$ ↔ 1
-  - [ ] [3] (hoch) Linearität: $\alpha f + \beta g \leftrightarrow \alpha F + \beta G$
-  - [ ] [4] (hoch) Verschiebungssatz: $f(t-t_0) \leftrightarrow F(\omega) e^{-i\omega t_0}$
-  - [ ] [5] (hoch) Ableitungsregel: $f'(t) \leftrightarrow i\omega F(\omega)$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — FT-Definition: $F(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Rücktransformation: $f(t) = (1/2\pi) \int F(\omega) e^{i\omega t} d\omega$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Wichtige Paare: Rechteckpuls ↔ Sinc, Gauß ↔ Gauß, $\delta(t)$ ↔ 1
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Linearität: $\alpha f + \beta g \leftrightarrow \alpha F + \beta G$
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Verschiebungssatz: $f(t-t_0) \leftrightarrow F(\omega) e^{-i\omega t_0}$
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — Ableitungsregel: $f'(t) \leftrightarrow i\omega F(\omega)$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fl-1-3-1`, `ex-fl-1-3-2`, `ex-fl-1-3-3`, `ex-fl-1-3-4`, `ex-fl-1-3-5`, `ex-fl-1-3-6`, `ex-fl-1-3-7`, `ex-fl-1-3-manual-1` … (+7 weitere)
 - **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
@@ -6022,14 +6266,15 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 15 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Definition: $\mathcal L\{f\}(s) = \int_0^\infty f(t) e^{-st} dt$
-  - [ ] [1] (hoch) Wichtige Paare: $1 \leftrightarrow 1/s$, $t \leftrightarrow 1/s^2$, $e^{at} \leftrightarrow 1/(s-a)$
-  - [ ] [2] (hoch) $\sin(\omega t) \leftrightarrow \omega/(s^2 + \omega^2)$, $\cos(\omega t) \leftrightarrow s/(s^2 + \omega^2)$
-  - [ ] [3] (mittel) Konvergenzbereich (ROC): $\text{Re}(s) > \sigma_0$ — hängt vom Signal ab
-  - [ ] [4] (hoch) Linearität: $\mathcal L\{\alpha f + \beta g\} = \alpha F + \beta G$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Definition: $\mathcal L\{f\}(s) = \int_0^\infty f(t) e^{-st} dt$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Wichtige Paare: $1 \leftrightarrow 1/s$, $t \leftrightarrow 1/s^2$, $e^{at} \leftrightarrow 1/(s-a)$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — $\sin(\omega t) \leftrightarrow \omega/(s^2 + \omega^2)$, $\cos(\omega t) \leftrightarrow s/(s^2 + \omega^2)$
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Konvergenzbereich (ROC): $\text{Re}(s) > \sigma_0$ — hängt vom Signal ab
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Linearität: $\mathcal L\{\alpha f + \beta g\} = \alpha F + \beta G$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fl-2-1-1`, `ex-fl-2-1-2`, `ex-fl-2-1-3`, `ex-fl-2-1-4`, `ex-fl-2-1-5`, `ex-fl-2-1-6`, `ex-fl-2-1-7`, `ex-fl-2-1-manual-1` … (+7 weitere)
 - **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
@@ -6042,15 +6287,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 15 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Ableitungsregel: $\mathcal L\{y'\} = sY - y(0)$, $\mathcal L\{y''\} = s^2 Y - s y(0) - y'(0)$
-  - [ ] [1] (hoch) DGL-Lösung: transformieren → algebraische Gl. in $Y(s)$ → PBZ → rücktransformieren
-  - [ ] [2] (hoch) Übertragungsfunktion $G(s) = Y(s)/U(s)$ bei verschwindenden AB
-  - [ ] [3] (hoch) Partialbruchzerlegung nötig für Rücktransformation komplexer Ausdrücke
-  - [ ] [4] (hoch) Stabilität aus Polstellen von $G(s)$: alle $\text{Re}(p_i) < 0$ → BIBO-stabil
-  - [ ] [5] (mittel) Endwertsatz: $\lim_{t\to\infty} y(t) = \lim_{s\to 0} s Y(s)$ (falls Limes existiert)
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Ableitungsregel: $\mathcal L\{y'\} = sY - y(0)$, $\mathcal L\{y''\} = s^2 Y - s y(0) - y'(0)$
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — DGL-Lösung: transformieren → algebraische Gl. in $Y(s)$ → PBZ → rücktransformieren
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Übertragungsfunktion $G(s) = Y(s)/U(s)$ bei verschwindenden AB
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Partialbruchzerlegung nötig für Rücktransformation komplexer Ausdrücke
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — Stabilität aus Polstellen von $G(s)$: alle $\text{Re}(p_i) < 0$ → BIBO-stabil
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — Endwertsatz: $\lim_{t\to\infty} y(t) = \lim_{s\to 0} s Y(s)$ (falls Limes existiert)
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fl-2-2-1`, `ex-fl-2-2-2`, `ex-fl-2-2-3`, `ex-fl-2-2-4`, `ex-fl-2-2-5`, `ex-fl-2-2-6`, `ex-fl-2-2-7`, `ex-fl-2-2-manual-1` … (+7 weitere)
 - **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
@@ -6063,15 +6309,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 15 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×5, number-input ×4, true-false ×2, matching ×2, sorting ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Symmetrie nutzen: gerade Funktion → nur Kosinusreihe, ungerade → nur Sinusreihe
-  - [ ] [1] (hoch) Koeffizienten $a_n = (2/T)\int_0^T f(t)\cos(n\omega t)dt$, analog $b_n$
-  - [ ] [2] (hoch) Konstantes Glied $a_0/2$ = Mittelwert der Funktion über eine Periode
-  - [ ] [3] (mittel) Parseval: Energie im Zeit- und Frequenzbereich gleich
-  - [ ] [4] (mittel) Konvergenz: punktweise bei Mittelwert-Sprung, gleichmäßig bei stetiger Fortsetzung
-  - [ ] [5] (hoch) Spektrum periodisch: diskrete Linien bei $n\omega_0$; aperiodisch: kontinuierlich $F(\omega)$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Symmetrie nutzen: gerade Funktion → nur Kosinusreihe, ungerade → nur Sinusreihe
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Koeffizienten $a_n = (2/T)\int_0^T f(t)\cos(n\omega t)dt$, analog $b_n$
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Konstantes Glied $a_0/2$ = Mittelwert der Funktion über eine Periode
+  - 🔴 [3] (mittel) **0/3+** Aufgaben — Parseval: Energie im Zeit- und Frequenzbereich gleich
+  - 🔴 [4] (mittel) **0/3+** Aufgaben — Konvergenz: punktweise bei Mittelwert-Sprung, gleichmäßig bei stetiger Fortsetzung
+  - 🔴 [5] (hoch) **0/3+** Aufgaben — Spektrum periodisch: diskrete Linien bei $n\omega_0$; aperiodisch: kontinuierlich $F(\omega)$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fl-3-1-1`, `ex-fl-3-1-2`, `ex-fl-3-1-3`, `ex-fl-3-1-4`, `ex-fl-3-1-5`, `ex-fl-3-1-6`, `ex-fl-3-1-7`, `ex-fl-3-1-manual-1` … (+7 weitere)
 - **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
@@ -6084,15 +6331,16 @@ npm run build              # abschließender End-zu-End-Check
 - **Aufgaben aktuell:** 15 (Minimum: 10) · **fehlen mindestens:** 0 — mehr ist besser
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson:**
-  - [ ] [0] (hoch) Sprungantwort: $Y(s) = G(s)/s$, Partialbruch + Rücktransformation
-  - [ ] [1] (hoch) Impulsantwort: $Y(s) = G(s)$ → direkt rücktransformieren
-  - [ ] [2] (hoch) Stabilität: alle Pole in linker s-Halbebene ($\text{Re}(p_i) < 0$)
-  - [ ] [3] (hoch) Pol bei $s = -a$ → $e^{-at}$ in Zeitdomäne, konjugiert komplex → gedämpfte Schwingung
-  - [ ] [4] (hoch) PT1: $G(s) = K/(1 + Ts)$, Zeitkonstante $T$, Verstärkung $K$
-  - [ ] [5] (mittel) PT2: $G(s) = K\omega_0^2/(s^2 + 2D\omega_0 s + \omega_0^2)$, Dämpfungsgrad $D$
-- **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
+- **Sub-Goals dieser Lesson** (Ziel: ≥ 3 Aufgaben pro Sub-Goal, nach oben kein Limit):
+  - 🔴 [0] (hoch) **0/3+** Aufgaben — Sprungantwort: $Y(s) = G(s)/s$, Partialbruch + Rücktransformation
+  - 🔴 [1] (hoch) **0/3+** Aufgaben — Impulsantwort: $Y(s) = G(s)$ → direkt rücktransformieren
+  - 🔴 [2] (hoch) **0/3+** Aufgaben — Stabilität: alle Pole in linker s-Halbebene ($\text{Re}(p_i) < 0$)
+  - 🔴 [3] (hoch) **0/3+** Aufgaben — Pol bei $s = -a$ → $e^{-at}$ in Zeitdomäne, konjugiert komplex → gedämpfte Schwingung
+  - 🔴 [4] (hoch) **0/3+** Aufgaben — PT1: $G(s) = K/(1 + Ts)$, Zeitkonstante $T$, Verstärkung $K$
+  - 🔴 [5] (mittel) **0/3+** Aufgaben — PT2: $G(s) = K\omega_0^2/(s^2 + 2D\omega_0 s + \omega_0^2)$, Dämpfungsgrad $D$
+- **Goal-Tasks fehlen (mindestens):** SG 0: +3, SG 1: +3, SG 2: +3, SG 3: +3, SG 4: +3, SG 5: +3 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
+  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **4-Block-Erklärung fehlt bei:** `ex-fl-3-2-1`, `ex-fl-3-2-2`, `ex-fl-3-2-3`, `ex-fl-3-2-4`, `ex-fl-3-2-5`, `ex-fl-3-2-6`, `ex-fl-3-2-7`, `ex-fl-3-2-manual-1` … (+7 weitere)
 - **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …

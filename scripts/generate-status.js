@@ -34,6 +34,7 @@ import {
   TOPIC_GUIDES,
   PLANNED_TOPICS,
   MIN_EXERCISES_PER_LESSON,
+  MIN_TASKS_PER_SUB_GOAL,
 } from '../src/content/curriculum.js'
 import {
   hasFourBlockExplanation,
@@ -393,7 +394,12 @@ if (agentTasks.length > 0) {
   out.push(``)
   out.push(`**Ziel:** Handgeschriebene Aufgaben in Menge ergänzen. Keine Template-Generatoren, keine Slop-Aufgaben.`)
   out.push(``)
-  out.push(`**Mengen-Regel:** ${MIN_EXERCISES_PER_LESSON} Aufgaben pro Lesson sind das **Minimum** — keine Obergrenze. Viele Aufgaben = bessere Routine. Wenn eine Lesson 7 Grund-Aufgaben hat, sind weitere 7–10 Supplements kein "zu viel", sondern gut.`)
+  out.push(`**Mengen-Regel:**`)
+  out.push(``)
+  out.push(`- **Pro Lesson** ≥ ${MIN_EXERCISES_PER_LESSON} Aufgaben (Minimum, **kein Cap**).`)
+  out.push(`- **Pro Sub-Goal** ≥ ${MIN_TASKS_PER_SUB_GOAL} Aufgaben (Minimum, **kein Cap**).`)
+  out.push(``)
+  out.push(`Der Gedanke: Wer den Stoff wirklich kann, braucht mehrere Aufgaben pro Teilkompetenz — andere Zahlen, andere Formulierung, andere Typen. Wenn ein Sub-Goal besonders prüfungsrelevant oder fehleranfällig ist, sind 5, 8 oder 10 Aufgaben besser als 3. Schreib so viele, wie inhaltlich noch etwas Neues beitragen. Lieber eine mehr als eine zu wenig.`)
   out.push(``)
   out.push(`### Qualitätsvorgaben pro Aufgabe`)
   out.push(``)
@@ -451,18 +457,19 @@ if (agentTasks.length > 0) {
       out.push(`- **Typen vorhanden:** ${histParts.length > 0 ? histParts.join(', ') : '— (leer)'}`)
       out.push(`- **Typen einsetzen (Rotation):** ${t.suggestedTypes.join(', ')}`)
 
-      if (t.subGoals.length > 0) {
-        out.push(`- **Sub-Goals dieser Lesson:**`)
-        for (let i = 0; i < t.subGoals.length; i++) {
-          const sg = t.subGoals[i]
-          const covered = !t.subGoalsMissingTasks.some((m) => m.index === i)
-          out.push(`  - [${covered ? 'x' : ' '}] [${i}] (${sg.examRelevance}) ${sg.label}`)
+      if (t.subGoalsCoverage && t.subGoalsCoverage.length > 0) {
+        out.push(`- **Sub-Goals dieser Lesson** (Ziel: ≥ ${MIN_TASKS_PER_SUB_GOAL} Aufgaben pro Sub-Goal, nach oben kein Limit):`)
+        for (const sg of t.subGoalsCoverage) {
+          const status = sg.have >= sg.target ? '✅' : sg.have > 0 ? '🟡' : '🔴'
+          out.push(`  - ${status} [${sg.index}] (${sg.examRelevance}) **${sg.have}/${sg.target}+** Aufgaben — ${sg.label}`)
         }
       }
 
       if (t.subGoalsMissingTasks.length > 0) {
-        out.push(`- **Goal-Tasks fehlen für Sub-Goal-Indizes:** ${t.subGoalsMissingTasks.map((m) => m.index).join(', ')}`)
+        const deltas = t.subGoalsMissingTasks.map((m) => `SG ${m.index}: +${m.target - m.have}`).join(', ')
+        out.push(`- **Goal-Tasks fehlen (mindestens):** ${deltas} — gerne mehr, keine Obergrenze`)
         out.push(`  - Ablage: \`${t.targetFile.goalTasks}\``)
+        out.push(`  - Format: \`{ [subGoalIndex]: Exercise[] }\` — Array pro Sub-Goal, beliebig viele Einträge.`)
       }
       if (t.missing > 0) {
         out.push(`- **Zusatz-Aufgaben fehlen (mindestens):** ${t.missing} — gerne mehr, keine Obergrenze`)
