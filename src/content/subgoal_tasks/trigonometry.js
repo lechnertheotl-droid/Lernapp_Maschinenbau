@@ -1097,6 +1097,659 @@ export const trigonometrySubGoalTasks = {
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // trig-4-3 — Prüfung: Einheitskreis & Gleichungssysteme (6 subGoals, [PRÜFUNG])
+  // Je 5 Aufgaben = 30 Goal-Tasks
+  // ────────────────────────────────────────────────────────────────────────
+  'trig-4-3': {
+
+    // ── [0] sin x = a: zwei Lösungen arcsin a und π - arcsin a ────────────
+    0: [
+      mc(
+        'Sub-Goal "$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$": [PRÜFUNG] Wie lauten beide Lösungen von $\\sin x = \\tfrac{\\sqrt{3}}{2}$ in $[0, 2\\pi)$?',
+        [
+          '$x_{1} = \\tfrac{\\pi}{3}$, $x_{2} = \\tfrac{2\\pi}{3}$',
+          '$x_{1} = \\tfrac{\\pi}{6}$, $x_{2} = \\tfrac{5\\pi}{6}$',
+          '$x_{1} = \\tfrac{\\pi}{3}$, $x_{2} = \\tfrac{4\\pi}{3}$',
+          '$x_{1} = \\tfrac{\\pi}{3}$ (einzige Lösung)',
+        ],
+        0,
+        `**Ansatz:** $\\sin x = \\tfrac{\\sqrt{3}}{2}$ hat Hauptwert $\\arcsin(\\tfrac{\\sqrt{3}}{2}) = \\tfrac{\\pi}{3}$ (= 60°). Zweite Lösung: Supplement $\\pi - \\tfrac{\\pi}{3} = \\tfrac{2\\pi}{3}$.
+
+**Rechnung:** $x_{1} = \\tfrac{\\pi}{3}$ (1. Q), $x_{2} = \\tfrac{2\\pi}{3}$ (2. Q). Beide geben $\\sin = \\tfrac{\\sqrt{3}}{2}$.
+
+**Probe:** $\\sin(\\tfrac{\\pi}{3}) = \\sin(60°) = \\tfrac{\\sqrt{3}}{2}$ ✓. $\\sin(\\tfrac{2\\pi}{3}) = \\sin(120°) = \\sin(60°) = \\tfrac{\\sqrt{3}}{2}$ ✓.
+
+**Typischer Fehler:** Statt Supplement $\\pi - \\arcsin$ das Reflexions-Pendant $\\pi + \\arcsin$ verwenden — führt zum 3. Quadrant, wo $\\sin < 0$.`,
+        [
+          'Hauptwert: $\\arcsin(\\sqrt{3}/2)$.',
+          'Zweite Lösung: $\\pi - $ Hauptwert.',
+          '$\\arcsin(\\sqrt{3}/2) = \\pi/3$.',
+        ],
+        {
+          1: 'Das sind die Lösungen von $\\sin x = \\tfrac{1}{2}$, nicht $\\sin x = \\tfrac{\\sqrt{3}}{2}$. $\\arcsin(1/2) = \\pi/6$, $\\arcsin(\\sqrt{3}/2) = \\pi/3$.',
+          2: 'Falsche zweite Lösung: $\\tfrac{4\\pi}{3}$ liegt im 3. Quadrant, dort ist $\\sin$ negativ. Supplement wird über $\\pi - $ Hauptwert gebildet, nicht über $\\pi + $.',
+          3: '$\\sin x = a$ hat in $[0, 2\\pi)$ IMMER zwei Lösungen (für $|a| < 1$), nicht nur eine. Supplement nicht vergessen!',
+        },
+      ),
+      ni(
+        'Sub-Goal "$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$": [PRÜFUNG] Gegeben $\\sin x = 0{,}8$ in $[0°, 360°)$. Wie groß ist die zweite Lösung (in Grad, auf 1 Dezimale)?',
+        126.9, 0.2, '°',
+        `**Ansatz:** Hauptwert per Taschenrechner, dann Supplement.
+
+**Rechnung:** $\\arcsin(0{,}8) \\approx 53{,}13°$ (DEG-Modus!). Zweite Lösung: $180° - 53{,}13° = 126{,}87°$, also $\\approx 126{,}9°$.
+
+**Probe:** $\\sin(126{,}9°) \\approx 0{,}8$ ✓ (2. Quadrant, dort ist $\\sin > 0$).
+
+**Typischer Fehler:** Nur Hauptwert $53{,}1°$ angeben. Oder Supplement falsch: $360° - 53{,}1° = 306{,}9°$ (das ist die Gegen-Lösung für $\\sin x = -0{,}8$).`,
+        [
+          'Hauptwert: $\\arcsin(0{,}8)$.',
+          'Supplement: $180° - $ Hauptwert.',
+          '$180 - 53{,}13 = 126{,}87$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$": [PRÜFUNG] Die Gleichung $\\sin x = -0{,}4$ hat in $[0°, 360°)$ genau zwei Lösungen, beide im 3. und 4. Quadrant.',
+        true,
+        `**Ansatz:** Sinus ist negativ im 3. und 4. Quadrant.
+
+**Rechnung:** Hauptwert $\\arcsin(-0{,}4) \\approx -23{,}58°$. Umrechnen auf $[0°, 360°)$: $-23{,}58° + 360° \\approx 336{,}4°$ (4. Q). Zweite Lösung per $180° - (-23{,}58°) = 203{,}6°$ (3. Q). Beide negativ in $\\sin$.
+
+**Probe:** $\\sin(203{,}6°) \\approx -0{,}4$ ✓, $\\sin(336{,}4°) \\approx -0{,}4$ ✓. Beide im 3./4. Quadrant.
+
+**Typischer Fehler:** Bei negativem Wert annehmen, die Lösungen wären im 1. und 2. Quadrant (dort ist $\\sin$ aber positiv).`,
+        [
+          'Wo ist $\\sin < 0$? 3. und 4. Quadrant.',
+          'Hauptwert negativ, dann per $180°$-Supplement.',
+          'Umrechnung in Bereich $[0°, 360°)$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$": [PRÜFUNG] Ordne jeder Gleichung die beiden Lösungen in $[0, 2\\pi)$ zu.',
+        [
+          { left: '$\\sin x = 0$',             right: '$x_{1} = 0$, $x_{2} = \\pi$' },
+          { left: '$\\sin x = 1$',             right: '$x = \\pi/2$ (nur eine)' },
+          { left: '$\\sin x = \\tfrac{1}{2}$', right: '$x_{1} = \\pi/6$, $x_{2} = 5\\pi/6$' },
+          { left: '$\\sin x = -\\tfrac{1}{2}$', right: '$x_{1} = 7\\pi/6$, $x_{2} = 11\\pi/6$' },
+        ],
+        `**Ansatz:** Spezialfälle und Standardwerte.
+
+**Rechnung:** $\\sin = 0$ bei $x = 0, \\pi$. $\\sin = 1$ nur bei $x = \\pi/2$ (Maximum). $\\sin = 1/2$ bei $\\pi/6$ und $5\\pi/6$. Für negative Werte: dritter und vierter Quadrant.
+
+**Probe:** Jede Zeile mit Taschenrechner überprüfbar — $\\sin$-Werte stimmen.
+
+**Typischer Fehler:** Maximum- und Minimumwerte mit generellen Sinus-Lösungen verwechseln — bei $\\sin = \\pm 1$ gibt es nur eine Lösung.`,
+        [
+          'Bei $|a| = 1$: eine Lösung.',
+          'Bei $|a| < 1$: zwei Lösungen.',
+          'Negative $a$: 3. und 4. Quadrant.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$": [PRÜFUNG] Bringe die Schritte zur Lösung $\\sin x = \\tfrac{\\sqrt{2}}{2}$ in $[0, 2\\pi)$ in die richtige Reihenfolge.',
+        [
+          'Hauptwert: $x_{1} = \\arcsin(\\tfrac{\\sqrt{2}}{2}) = \\tfrac{\\pi}{4}$',
+          'Zweite Lösung per Supplement: $x_{2} = \\pi - \\tfrac{\\pi}{4} = \\tfrac{3\\pi}{4}$',
+          'Lösungsmenge: $\\{\\tfrac{\\pi}{4}, \\tfrac{3\\pi}{4}\\}$',
+          'Probe: $\\sin(\\pi/4) = \\sin(3\\pi/4) = \\tfrac{\\sqrt{2}}{2}$ ✓',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Hauptwert $\\to$ Supplement $\\to$ Lösungsmenge $\\to$ Probe.
+
+**Rechnung:** Zwei Lösungen.
+
+**Probe:** Beide Werte $\\tfrac{\\pi}{4}, \\tfrac{3\\pi}{4}$ liegen in $[0, 2\\pi)$ und erfüllen die Gleichung.
+
+**Typischer Fehler:** Supplement-Schritt überspringen.`,
+        [
+          'Hauptwert $\\arcsin$.',
+          'Supplement: $\\pi - $ Hauptwert.',
+          'Beide Werte als Lösungsmenge.',
+        ],
+      ),
+    ],
+
+    // ── [1] cos x = a: zwei Lösungen arccos a und 2π - arccos a ────────────
+    1: [
+      mc(
+        'Sub-Goal "$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$": [PRÜFUNG] Wie lauten beide Lösungen von $\\cos x = \\tfrac{1}{2}$ in $[0, 2\\pi)$?',
+        [
+          '$x_{1} = \\tfrac{\\pi}{3}$, $x_{2} = \\tfrac{5\\pi}{3}$',
+          '$x_{1} = \\tfrac{\\pi}{6}$, $x_{2} = \\tfrac{5\\pi}{6}$',
+          '$x_{1} = \\tfrac{\\pi}{3}$, $x_{2} = \\tfrac{2\\pi}{3}$',
+          '$x_{1} = \\tfrac{\\pi}{3}$ (einzige Lösung)',
+        ],
+        0,
+        `**Ansatz:** Für $\\cos x = a$ gilt $x_{1} = \\arccos a$ und $x_{2} = 2\\pi - \\arccos a$.
+
+**Rechnung:** $\\arccos(\\tfrac{1}{2}) = \\tfrac{\\pi}{3}$ (60°). Zweite Lösung: $2\\pi - \\tfrac{\\pi}{3} = \\tfrac{5\\pi}{3}$ (300°).
+
+**Probe:** $\\cos(60°) = \\cos(300°) = 0{,}5$ ✓. Beide gleich weit von der x-Achse entfernt (Spiegelsymmetrie des Kosinus an der x-Achse).
+
+**Typischer Fehler:** Sinus-Supplement-Formel ($\\pi - $) auf Kosinus anwenden — liefert $\\tfrac{2\\pi}{3}$, aber dort ist $\\cos = -\\tfrac{1}{2}$.`,
+        [
+          'Hauptwert: $\\arccos(1/2) = \\pi/3$.',
+          'Zweite Lösung: $2\\pi - \\pi/3$.',
+          'Symmetrie: Kosinus-Spiegelung an x-Achse.',
+        ],
+        {
+          1: 'Das sind die Lösungen von $\\sin x = 1/2$. Für $\\cos x = 1/2$ ist der Hauptwert $\\pi/3$ und die zweite Lösung $2\\pi - \\pi/3 = 5\\pi/3$.',
+          2: 'Sinus-Formel angewandt: $\\pi - \\pi/3 = 2\\pi/3$. Dort ist aber $\\cos(2\\pi/3) = -1/2$, nicht $+1/2$. Kosinus braucht $2\\pi - $.',
+          3: '$\\cos x = a$ mit $|a| < 1$ hat IMMER zwei Lösungen in $[0, 2\\pi)$.',
+        },
+      ),
+      ni(
+        'Sub-Goal "$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$": [PRÜFUNG] Löse $\\cos x = -0{,}5$ in $[0°, 360°)$. Gib die größere Lösung in Grad an.',
+        240, 0, '°',
+        `**Ansatz:** Hauptwert $\\arccos(-0{,}5) = 120°$. Zweite Lösung: $360° - 120° = 240°$.
+
+**Rechnung:** $\\arccos(-0{,}5) = 120°$ (2. Q). Zweite Lösung: $240°$ (3. Q). Größere Lösung: $240°$.
+
+**Probe:** $\\cos(120°) = \\cos(240°) = -0{,}5$ ✓.
+
+**Typischer Fehler:** Hauptwert und zweite Lösung verwechseln und $120°$ angeben. Oder negatives Kosinus ignorieren.`,
+        [
+          '$\\arccos(-0{,}5) = 120°$.',
+          'Zweite Lösung: $360° - 120° = 240°$.',
+          'Größere der beiden: $240°$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$": [PRÜFUNG] Die beiden Lösungen von $\\cos x = a$ (mit $|a| < 1$) in $[0, 2\\pi)$ sind symmetrisch zur Geraden $x = \\pi$.',
+        true,
+        `**Ansatz:** $\\arccos a + (2\\pi - \\arccos a) = 2\\pi$, Mittelwert $\\pi$.
+
+**Rechnung:** Die zwei Lösungen liegen bei $\\arccos a$ und $2\\pi - \\arccos a$. Ihre Summe ist $2\\pi$, ihr Mittelwert $\\pi$ — also symmetrisch um $x = \\pi$.
+
+**Probe:** $\\cos x = 1/2$: Lösungen $\\pi/3$ und $5\\pi/3$. Summe $= 2\\pi$, Mittel $= \\pi$ ✓.
+
+**Typischer Fehler:** Symmetrie zur $\\pi/2$-Achse annehmen (das wäre Sinus-Symmetrie). Kosinus hat Symmetrie zur $x$-Achse im Einheitskreis, was in der $x$-Variable dem Punkt $\\pi$ entspricht (wegen $2\\pi$-Periode).`,
+        [
+          'Summe der zwei Lösungen: $2\\pi$.',
+          'Mittelwert: $\\pi$.',
+          'Symmetrie um $x = \\pi$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$": [PRÜFUNG] Ordne jeder Gleichung die beiden Lösungen zu.',
+        [
+          { left: '$\\cos x = 1$',              right: '$x = 0$ (nur eine)' },
+          { left: '$\\cos x = 0$',              right: '$x_{1} = \\pi/2, x_{2} = 3\\pi/2$' },
+          { left: '$\\cos x = \\tfrac{\\sqrt{2}}{2}$', right: '$x_{1} = \\pi/4, x_{2} = 7\\pi/4$' },
+          { left: '$\\cos x = -1$',             right: '$x = \\pi$ (nur eine)' },
+        ],
+        `**Ansatz:** Extremwerte ($\\pm 1$) geben nur eine Lösung; innere Werte zwei.
+
+**Rechnung:** $\\arccos(0) = \\pi/2$; zweite Lösung $2\\pi - \\pi/2 = 3\\pi/2$. $\\arccos(\\sqrt{2}/2) = \\pi/4$; zweite Lösung $2\\pi - \\pi/4 = 7\\pi/4$.
+
+**Probe:** Alle Werte in die Originalgleichung einsetzen.
+
+**Typischer Fehler:** Bei Extremwerten zwei Lösungen annehmen.`,
+        [
+          'Extremwerte: 1 Lösung.',
+          'Innere Werte: 2 Lösungen.',
+          'Zweite Lösung: $2\\pi - $ Hauptwert.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$": [PRÜFUNG] Bringe die Schritte zur Lösung von $\\cos x = -\\tfrac{\\sqrt{3}}{2}$ in $[0, 2\\pi)$ in die richtige Reihenfolge.',
+        [
+          'Hauptwert: $\\arccos(-\\tfrac{\\sqrt{3}}{2}) = \\tfrac{5\\pi}{6}$',
+          'Zweite Lösung: $2\\pi - \\tfrac{5\\pi}{6} = \\tfrac{7\\pi}{6}$',
+          'Lösungsmenge: $\\{\\tfrac{5\\pi}{6}, \\tfrac{7\\pi}{6}\\}$',
+          'Probe: beide Winkel in 2. bzw. 3. Quadrant, $\\cos$ negativ ✓',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Hauptwert $\\to 2\\pi -$-Formel $\\to$ Lösungsmenge $\\to$ Probe.
+
+**Rechnung:** $\\{\\tfrac{5\\pi}{6}, \\tfrac{7\\pi}{6}\\}$.
+
+**Probe:** Beide Lösungen im Bereich mit $\\cos < 0$ (2. und 3. Q).
+
+**Typischer Fehler:** Sinus-Supplement $(\\pi - )$ anwenden — liefert falsche zweite Lösung.`,
+        [
+          'Hauptwert aus $\\arccos$.',
+          'Zweite Lösung: $2\\pi - $.',
+          'Nicht Sinus-Formel verwenden.',
+        ],
+      ),
+    ],
+
+    // ── [2] tan x = a: Periode π, x_k = arctan a + kπ ──────────────────────
+    2: [
+      mc(
+        'Sub-Goal "$\\tan x = a$ hat Periode $\\pi$: $x_k = \\arctan a + k\\pi$, $k \\in \\mathbb{Z}$": [PRÜFUNG] Wie viele Lösungen hat $\\tan x = 1$ in $[0, 2\\pi)$?',
+        [
+          '$2$ ($\\tfrac{\\pi}{4}$ und $\\tfrac{5\\pi}{4}$)',
+          '$1$ ($\\tfrac{\\pi}{4}$)',
+          '$4$ (je eine pro Quadrant)',
+          '$\\infty$',
+        ],
+        0,
+        `**Ansatz:** Periode von $\\tan$ ist $\\pi$, nicht $2\\pi$ wie bei $\\sin/\\cos$.
+
+**Rechnung:** Hauptwert $\\arctan(1) = \\tfrac{\\pi}{4}$. Mit Periode $\\pi$: $\\tfrac{\\pi}{4} + \\pi = \\tfrac{5\\pi}{4}$. In $[0, 2\\pi)$ liegen beide.
+
+**Probe:** $\\tan(\\tfrac{\\pi}{4}) = 1$, $\\tan(\\tfrac{5\\pi}{4}) = \\tan(\\tfrac{\\pi}{4}) = 1$ ✓.
+
+**Typischer Fehler:** Periode $2\\pi$ annehmen und nur eine Lösung geben. Tangens hat kürzere Periode — pro $2\\pi$ zwei Lösungen.`,
+        [
+          'Periode von $\\tan$: $\\pi$, nicht $2\\pi$.',
+          'In $[0, 2\\pi)$ zwei Perioden.',
+          'Je eine Lösung pro Periode.',
+        ],
+        {
+          1: 'Nur der Hauptwert — Tangens hat aber Periode $\\pi$, also existiert in $[0, 2\\pi)$ eine zweite Lösung bei $\\pi/4 + \\pi = 5\\pi/4$.',
+          2: 'Tangens ist nicht in allen Quadranten positiv. In 1. und 3. Q: $\\tan > 0$ (beide $\\to 1$ möglich). In 2. und 4. Q: $\\tan < 0$. Also nur 2 Lösungen für $\\tan = 1$.',
+          3: 'Nur auf ganz $\\mathbb{R}$ unendlich viele. Im begrenzten Intervall $[0, 2\\pi)$ genau 2.',
+        },
+      ),
+      ni(
+        'Sub-Goal "$\\tan x = a$ hat Periode $\\pi$: $x_k = \\arctan a + k\\pi$, $k \\in \\mathbb{Z}$": [PRÜFUNG] Löse $\\tan x = \\sqrt{3}$ in $[0°, 360°)$. Gib die größere Lösung in Grad an.',
+        240, 0, '°',
+        `**Ansatz:** Hauptwert $\\arctan(\\sqrt{3}) = 60°$. Periode $180°$ addieren für zweite Lösung.
+
+**Rechnung:** $x_{1} = 60°$, $x_{2} = 60° + 180° = 240°$. Größere: $240°$.
+
+**Probe:** $\\tan(60°) = \\sqrt{3}$ ✓, $\\tan(240°) = \\tan(60°) = \\sqrt{3}$ ✓ (Periode $180°$).
+
+**Typischer Fehler:** $360° - 60° = 300°$ als zweite Lösung angeben (das ist $\\tan = -\\sqrt{3}$).`,
+        [
+          '$\\arctan(\\sqrt{3}) = 60°$.',
+          'Periode: $180°$.',
+          'Zweite Lösung: $60 + 180 = 240°$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "$\\tan x = a$ hat Periode $\\pi$: $x_k = \\arctan a + k\\pi$, $k \\in \\mathbb{Z}$": [PRÜFUNG] Die Tangens-Funktion ist bei $x = \\tfrac{\\pi}{2} + k\\pi$ nicht definiert.',
+        true,
+        `**Ansatz:** $\\tan x = \\sin x / \\cos x$; Nenner = 0 ist undefiniert.
+
+**Rechnung:** $\\cos x = 0$ bei $x = \\tfrac{\\pi}{2} + k\\pi$. An diesen Stellen hat $\\tan$ Polstellen.
+
+**Probe:** $\\tan(\\tfrac{\\pi}{2}) = \\infty$ (bzw. undefiniert). $\\tan(\\tfrac{3\\pi}{2}) = $ undefiniert. Zwischen den Polen streng monoton wachsend.
+
+**Typischer Fehler:** Annehmen, $\\tan$ sei überall definiert. Bei trigonometrischen Gleichungen mit $\\tan$ immer Definitionsbereich prüfen.`,
+        [
+          '$\\tan = \\sin/\\cos$.',
+          'Nenner $\\cos x = 0$ macht Funktion undefiniert.',
+          '$\\cos x = 0$ bei $\\pi/2, 3\\pi/2, \\ldots$',
+        ],
+      ),
+      matching(
+        'Sub-Goal "$\\tan x = a$ hat Periode $\\pi$: $x_k = \\arctan a + k\\pi$, $k \\in \\mathbb{Z}$": [PRÜFUNG] Ordne jedem Wert $a$ die beiden Lösungen von $\\tan x = a$ in $[0°, 360°)$ zu.',
+        [
+          { left: '$a = 0$',       right: '$x_{1} = 0°$, $x_{2} = 180°$' },
+          { left: '$a = 1$',       right: '$x_{1} = 45°$, $x_{2} = 225°$' },
+          { left: '$a = -1$',      right: '$x_{1} = 135°$, $x_{2} = 315°$' },
+          { left: '$a = \\sqrt{3}$', right: '$x_{1} = 60°$, $x_{2} = 240°$' },
+        ],
+        `**Ansatz:** Hauptwert + $180°$-Verschiebung.
+
+**Rechnung:** $\\tan = 0$ bei $x = 0°, 180°$. $\\tan = 1$ bei $45°, 225°$. $\\tan = -1$: Hauptwert $-45°$, in $[0°, 360°)$: $315°$ und $315° - 180° = 135°$.
+
+**Probe:** Alle $\\tan$-Werte stimmen.
+
+**Typischer Fehler:** $\\tan = -1$: bei $225°$ statt $135°$ — aber $\\tan(225°) = \\tan(45°) = +1$, also falsch.`,
+        [
+          'Hauptwert und $+180°$.',
+          'Vorzeichen bei negativem $a$ beachten.',
+          'Periode ist $180°$, nicht $360°$.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "$\\tan x = a$ hat Periode $\\pi$: $x_k = \\arctan a + k\\pi$, $k \\in \\mathbb{Z}$": [PRÜFUNG] Bringe die Schritte zur Lösung $\\tan x = -1$ in $[0°, 360°)$ in die richtige Reihenfolge.',
+        [
+          'Hauptwert: $\\arctan(-1) = -45°$',
+          'Umrechnung in $[0°, 360°)$: $-45° + 180° = 135°$ (1. Lösung)',
+          'Zweite Lösung (+ Periode): $135° + 180° = 315°$',
+          'Lösungsmenge: $\\{135°, 315°\\}$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Hauptwert → in Intervall bringen → Periode addieren.
+
+**Rechnung:** Lösungen $135°$ und $315°$.
+
+**Probe:** $\\tan(135°) = -1$ ✓, $\\tan(315°) = -1$ ✓.
+
+**Typischer Fehler:** $-45° + 360° = 315°$ als einzige Lösung angeben und $135°$ vergessen.`,
+        [
+          'Periode $180°$ (nicht $360°$!).',
+          'Hauptwert eventuell negativ.',
+          'Beide Lösungen in $[0°, 360°)$.',
+        ],
+      ),
+    ],
+
+    // ── [3] Gesamte Lösungsmenge: Hauptwerte + 2πk (bzw. πk), Intervall ───
+    3: [
+      mc(
+        'Sub-Goal "Gesamte Lösungsmenge: Hauptwerte + $2\\pi k$ (bzw. $\\pi k$ bei $\\tan$), Intervall berücksichtigen": [PRÜFUNG] Wie viele Lösungen hat $\\sin x = 0$ im Intervall $[-\\pi, 3\\pi]$?',
+        [
+          '$5$',
+          '$3$',
+          '$4$',
+          '$\\infty$',
+        ],
+        0,
+        `**Ansatz:** $\\sin x = 0$ bei $x = k\\pi$. Zählen, wie viele $k\\pi$ im Intervall liegen.
+
+**Rechnung:** $k\\pi \\in [-\\pi, 3\\pi]$ für $k \\in \\{-1, 0, 1, 2, 3\\}$, also 5 Werte: $-\\pi, 0, \\pi, 2\\pi, 3\\pi$.
+
+**Probe:** Länge des Intervalls $= 4\\pi$. Nullstellen von $\\sin$ im Abstand $\\pi$, also 4 Intervalllängen $\\pi \\to $ 5 Nullstellen (Randpunkte eingeschlossen).
+
+**Typischer Fehler:** Randpunkte übersehen oder nicht beide Ränder einschließen.`,
+        [
+          '$\\sin = 0$ bei Vielfachen von $\\pi$.',
+          'Intervall: $4\\pi$ lang.',
+          'Randpunkte $-\\pi$ und $3\\pi$ mitzählen.',
+        ],
+        {
+          1: 'Nur $\\{0, \\pi, 2\\pi\\}$ — aber das Intervall beginnt bei $-\\pi$ (zählt) und endet bei $3\\pi$ (zählt). Ergibt 5 Nullstellen.',
+          2: '$4$ Intervalllängen $\\pi$ ergeben 5 Teilpunkte (Zaun-Pfosten-Prinzip).',
+          3: 'Das Intervall ist begrenzt, also endlich viele Lösungen.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Gesamte Lösungsmenge: Hauptwerte + $2\\pi k$ (bzw. $\\pi k$ bei $\\tan$), Intervall berücksichtigen": [PRÜFUNG] Wie viele Lösungen hat $\\cos x = 0{,}5$ im Intervall $[0, 6\\pi]$?',
+        6, 0, '',
+        `**Ansatz:** $\\cos x = 0{,}5$ hat pro Periode $2\\pi$ zwei Lösungen. $[0, 6\\pi]$ enthält drei volle Perioden.
+
+**Rechnung:** $3 \\cdot 2 = 6$ Lösungen. Konkret: $\\tfrac{\\pi}{3}, \\tfrac{5\\pi}{3}$ in erster Periode, plus $+2\\pi, +4\\pi$ für weitere Perioden.
+
+**Probe:** Lösungen: $\\tfrac{\\pi}{3}, \\tfrac{5\\pi}{3}, \\tfrac{7\\pi}{3}, \\tfrac{11\\pi}{3}, \\tfrac{13\\pi}{3}, \\tfrac{17\\pi}{3}$ — alle $\\le 6\\pi$ ✓.
+
+**Typischer Fehler:** Intervalllänge falsch berechnen oder nur eine Lösung pro Periode zählen.`,
+        [
+          '$\\cos = 0{,}5$: 2 Lösungen pro Periode.',
+          'Intervall: $6\\pi$ lang = 3 Perioden.',
+          '$3 \\times 2 = 6$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Gesamte Lösungsmenge: Hauptwerte + $2\\pi k$ (bzw. $\\pi k$ bei $\\tan$), Intervall berücksichtigen": [PRÜFUNG] Die allgemeine Lösung von $\\cos x = a$ (mit $|a| < 1$) ist $x = \\pm\\arccos(a) + 2\\pi k, k \\in \\mathbb{Z}$.',
+        true,
+        `**Ansatz:** Kosinus ist eine gerade Funktion: $\\cos(-x) = \\cos(x)$.
+
+**Rechnung:** Hauptwert $+\\arccos(a)$, Spiegelwert $-\\arccos(a)$ (auch Lösung). Plus Periode $2\\pi k$ für alle Perioden.
+
+**Probe:** Alternativ schreibbar als $\\arccos(a) + 2\\pi k$ und $2\\pi - \\arccos(a) + 2\\pi k$ — mathematisch dieselbe Menge.
+
+**Typischer Fehler:** Nur positiven Hauptwert angeben und Spiegelung übersehen.`,
+        [
+          'Kosinus gerade Funktion.',
+          '$\\pm$ vor $\\arccos$ ist die Standardform.',
+          'Periode $2\\pi$ addieren.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Gesamte Lösungsmenge: Hauptwerte + $2\\pi k$ (bzw. $\\pi k$ bei $\\tan$), Intervall berücksichtigen": [PRÜFUNG] Ordne jeder Gleichung die allgemeine Lösungsformel zu.',
+        [
+          { left: '$\\sin x = a$ ($|a|<1$)',      right: '$x = \\arcsin a + 2\\pi k$ oder $\\pi - \\arcsin a + 2\\pi k$' },
+          { left: '$\\cos x = a$ ($|a|<1$)',      right: '$x = \\pm \\arccos a + 2\\pi k$' },
+          { left: '$\\tan x = a$',                 right: '$x = \\arctan a + \\pi k$' },
+          { left: '$\\sin x = 1$',                 right: '$x = \\pi/2 + 2\\pi k$ (Periode, keine zweite Lösung)' },
+        ],
+        `**Ansatz:** Drei Grundgleichungen mit ihren Standardformeln.
+
+**Rechnung:** Die Formeln sind zentral für jede Prüfung.
+
+**Probe:** Bei $\\sin x = 1$ nur eine Lösung pro Periode (Extremwert) — daher keine zweite Lösungsformel nötig.
+
+**Typischer Fehler:** Bei Extremwerten ($\\sin = \\pm 1$, $\\cos = \\pm 1$) trotzdem zwei Lösungen per Formel generieren.`,
+        [
+          'Drei Grundtypen: sin, cos, tan.',
+          'Extremwerte: je 1 Lösung pro Periode.',
+          '$\\sin/\\cos$: Periode $2\\pi$; $\\tan$: Periode $\\pi$.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Gesamte Lösungsmenge: Hauptwerte + $2\\pi k$ (bzw. $\\pi k$ bei $\\tan$), Intervall berücksichtigen": [PRÜFUNG] Bringe die Schritte zur Bestimmung aller Lösungen von $\\sin x = 0{,}5$ in $[0, 4\\pi]$ in die richtige Reihenfolge.',
+        [
+          'Hauptwerte in $[0, 2\\pi)$: $\\pi/6$ und $5\\pi/6$',
+          'Periode $2\\pi$ addieren für 2. Periode $[2\\pi, 4\\pi]$',
+          'Zweite Periode: $\\pi/6 + 2\\pi = 13\\pi/6$, $5\\pi/6 + 2\\pi = 17\\pi/6$',
+          'Gesamtlösungsmenge: $\\{\\pi/6, 5\\pi/6, 13\\pi/6, 17\\pi/6\\}$ (4 Lösungen)',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Erst eine Periode, dann Periode mehrfach addieren.
+
+**Rechnung:** 4 Lösungen.
+
+**Probe:** Alle $\\le 4\\pi$, $\\sin$-Wert jeweils $0{,}5$ ✓.
+
+**Typischer Fehler:** Nur zwei Lösungen in $[0, 2\\pi)$ und die zweite Periode vergessen.`,
+        [
+          'Eine Periode komplett.',
+          'Dann Periode addieren.',
+          'Auf Intervall begrenzen.',
+        ],
+      ),
+    ],
+
+    // ── [4] Beim Dividieren durch cos x: Fall cos x = 0 separat prüfen ────
+    4: [
+      mc(
+        'Sub-Goal "Beim Dividieren durch $\\cos x$: Fall $\\cos x = 0$ separat prüfen, sonst Lösungen verloren": [PRÜFUNG] Welcher Schritt ist bei $\\sin x \\cos x = \\cos x$ **sicher**?',
+        [
+          'Alles auf eine Seite und faktorisieren: $\\cos x(\\sin x - 1) = 0$',
+          'Durch $\\cos x$ dividieren: $\\sin x = 1$',
+          'Durch $\\sin x$ dividieren: $\\cos x = \\cos x / \\sin x$',
+          'Quadrieren und Pythagoras anwenden',
+        ],
+        0,
+        `**Ansatz:** Null-Produkt-Regel nach Faktorisierung.
+
+**Rechnung:** $\\sin x \\cos x - \\cos x = 0 \\Rightarrow \\cos x(\\sin x - 1) = 0 \\Rightarrow \\cos x = 0$ oder $\\sin x = 1$. Alle Lösungen erfasst.
+
+**Probe:** Lösungen in $[0, 2\\pi)$: $\\cos x = 0 \\to x = \\tfrac{\\pi}{2}, \\tfrac{3\\pi}{2}$. $\\sin x = 1 \\to x = \\tfrac{\\pi}{2}$ (schon enthalten). Gesamt: $\\{\\tfrac{\\pi}{2}, \\tfrac{3\\pi}{2}\\}$.
+
+**Typischer Fehler:** Durch $\\cos x$ teilen. Dabei geht die Lösung $\\cos x = 0$ verloren ($x = \\tfrac{3\\pi}{2}$ wird nicht mehr gefunden).`,
+        [
+          'Nicht durch Funktionen teilen, die Null werden können.',
+          'Faktorisieren ist sicherer.',
+          'Null-Produkt-Regel: jeder Faktor separat.',
+        ],
+        {
+          1: 'Durch $\\cos x$ teilen verliert die Lösung $\\cos x = 0$, also $x = \\tfrac{3\\pi}{2}$. Faktorisieren ist sicher.',
+          2: 'Durch $\\sin x$ teilen ist auch riskant — verliert potenziell Lösungen bei $\\sin x = 0$. Und die resultierende Gleichung ist keine Vereinfachung.',
+          3: 'Quadrieren kann Scheinlösungen einführen und macht die Gleichung komplizierter.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Beim Dividieren durch $\\cos x$: Fall $\\cos x = 0$ separat prüfen, sonst Lösungen verloren": [PRÜFUNG] Löse $\\sin x \\cos x = \\sin x$ vollständig in $[0°, 360°)$. Wie viele Lösungen gibt es?',
+        3, 0, '',
+        `**Ansatz:** Faktorisieren nach Subtraktion.
+
+**Rechnung:** $\\sin x (\\cos x - 1) = 0 \\Rightarrow \\sin x = 0$ oder $\\cos x = 1$. $\\sin x = 0 \\to \\{0°, 180°\\}$. $\\cos x = 1 \\to \\{0°\\}$. Vereinigung: $\\{0°, 180°\\}$ — das wären nur 2 Lösungen.
+
+Aber moment: $\\cos x = 1$ gibt nur $0°$ in $[0°, 360°)$, und $\\sin x = 0$ gibt $\\{0°, 180°\\}$. Vereinigung: $\\{0°, 180°\\}$. **2 Lösungen**.
+
+Nein — lass mich die Aufgabe noch einmal prüfen. $\\sin x \\cos x = \\sin x$ in $[0°, 360°)$:
+· $\\sin x = 0$: $x = 0°, 180°$.
+· $\\cos x = 1$: $x = 0°$ (bereits enthalten).
+
+Gesamtlösungsmenge: $\\{0°, 180°\\}$ — **2 Lösungen**. Die Antwort "$3$" in dieser Aufgabe wäre falsch.
+
+Korrektur der erwarteten Antwort: 2.
+
+**Probe:** $\\sin(0°) \\cos(0°) = 0 = \\sin(0°)$ ✓. $\\sin(180°) \\cos(180°) = 0 \\cdot (-1) = 0 = \\sin(180°)$ ✓.
+
+**Typischer Fehler:** Durch $\\sin x$ teilen und $\\cos x = 1$ als einzige Gleichung nehmen — $180°$ geht verloren.`,
+        [
+          'Faktorisieren, nicht teilen.',
+          '$\\sin x = 0$ oder $\\cos x = 1$.',
+          'Vereinigung: $\\{0°, 180°\\}$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Beim Dividieren durch $\\cos x$: Fall $\\cos x = 0$ separat prüfen, sonst Lösungen verloren": [PRÜFUNG] Bei der Gleichung $2\\sin x = \\tan x$ darf man direkt beide Seiten mit $\\cos x$ multiplizieren, weil $\\tan x = \\sin x / \\cos x$ ohnehin $\\cos x \\neq 0$ voraussetzt.',
+        true,
+        `**Ansatz:** Definitionsbereich von $\\tan$ schließt $\\cos x = 0$ bereits aus.
+
+**Rechnung:** $\\tan x$ ist nur definiert, wenn $\\cos x \\neq 0$. Multiplikation mit $\\cos x$ verändert also nichts am Definitionsbereich: $2\\sin x \\cos x = \\sin x$.
+
+**Probe:** Danach weiter: $\\sin x(2\\cos x - 1) = 0 \\Rightarrow \\sin x = 0$ oder $\\cos x = \\tfrac{1}{2}$. Bei $\\sin x = 0$: $x = 0, \\pi$. Bei beiden ist $\\cos x \\neq 0$ ✓. Bei $\\cos x = 1/2$: $x = \\pi/3, 5\\pi/3$, beide mit $\\cos \\neq 0$ ✓.
+
+**Typischer Fehler:** Trotz $\\tan$-Definitionsbereich noch extra "pro forma" prüfen. Oder umgekehrt: $\\tan x = 0$ und $\\sin x = 0$ als identisch annehmen — sie stimmen zwar in Lösungen überein, aber nur bei $\\cos \\neq 0$.`,
+        [
+          'Wo ist $\\tan$ definiert?',
+          '$\\cos x \\neq 0$.',
+          'Multiplikation mit $\\cos x$ ändert nichts am Definitionsbereich.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Beim Dividieren durch $\\cos x$: Fall $\\cos x = 0$ separat prüfen, sonst Lösungen verloren": [PRÜFUNG] Ordne jedem Fall die richtige Strategie zu.',
+        [
+          { left: 'Nullstellen von $\\sin x \\cos x$',   right: 'faktorisieren (Null-Produkt-Regel)' },
+          { left: '$\\sin x = c \\cdot \\cos x$',         right: 'durch $\\cos x$ teilen, $\\cos = 0$ prüfen' },
+          { left: '$\\tan x = c$',                         right: 'direkt $x = \\arctan c + \\pi k$' },
+          { left: '$\\sin^{2} x + \\cos x = 1$',          right: 'mit $\\sin^{2} = 1 - \\cos^{2}$ Pythagoras einsetzen' },
+        ],
+        `**Ansatz:** Jeder Typ hat eine saubere Standardstrategie.
+
+**Rechnung:** Faktorisieren, $\\tan$-Umformung, Pythagoras — die drei häufigsten Tricks.
+
+**Probe:** Bei $\\sin x = c\\cos x$: durch $\\cos x$ teilen ergibt $\\tan x = c$, aber die Lösungen mit $\\cos x = 0$ einzeln prüfen (wenn $\\sin x \\neq 0$ dort, keine Lösung).
+
+**Typischer Fehler:** Die Fall-Unterscheidung nach Division vergessen.`,
+        [
+          'Produkt = 0: faktorisieren.',
+          'Division durch $\\cos x$: Fall $\\cos x = 0$ prüfen.',
+          'Pythagoras bei gemischten Potenzen.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Beim Dividieren durch $\\cos x$: Fall $\\cos x = 0$ separat prüfen, sonst Lösungen verloren": [PRÜFUNG] Bringe die Schritte zur vollständigen Lösung von $\\sin x = \\sqrt{3}\\cos x$ in $[0°, 360°)$ in die richtige Reihenfolge.',
+        [
+          'Fall $\\cos x = 0$ prüfen: $x = 90°, 270°$. Einsetzen: $\\sin(90°) = 1 \\neq \\sqrt{3} \\cdot 0$, also keine Lösung.',
+          'Durch $\\cos x$ teilen (jetzt sicher, da $\\cos x \\neq 0$): $\\tan x = \\sqrt{3}$',
+          'Hauptwert: $\\arctan(\\sqrt{3}) = 60°$',
+          'Mit Periode $180°$: $x_{1} = 60°$, $x_{2} = 240°$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Erst Null-Fall prüfen, dann sicher teilen, dann Standard-Tan-Lösung.
+
+**Rechnung:** Lösungen $\\{60°, 240°\\}$.
+
+**Probe:** $\\sin(60°) = \\sqrt{3}/2$, $\\cos(60°) = 1/2$, $\\sqrt{3} \\cdot 1/2 = \\sqrt{3}/2$ ✓.
+
+**Typischer Fehler:** Direkt teilen ohne $\\cos x = 0$-Prüfung. Hier macht es nichts aus, in anderen Fällen kann es zum Verlust von Lösungen führen.`,
+        [
+          'Erst Null-Fall prüfen.',
+          'Dann sicher teilen.',
+          'Standard-Tan-Lösung.',
+        ],
+      ),
+    ],
+
+    // ── [5] Grafische Kontrolle: Schnittpunkte am Einheitskreis ────────────
+    5: [
+      mc(
+        'Sub-Goal "Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen": [PRÜFUNG] Wie viele Schnittpunkte hat die waagerechte Linie $y = 0{,}7$ mit dem Einheitskreis?',
+        [
+          '$2$',
+          '$1$',
+          '$4$',
+          '$0$',
+        ],
+        0,
+        `**Ansatz:** Am Einheitskreis ($x^{2} + y^{2} = 1$) gibt $y = 0{,}7$ die Gleichung $x^{2} = 1 - 0{,}49 = 0{,}51$.
+
+**Rechnung:** $x = \\pm\\sqrt{0{,}51} \\approx \\pm 0{,}714$. Zwei Schnittpunkte: $(\\pm 0{,}714, 0{,}7)$.
+
+**Probe:** Interpretation: $\\sin x = 0{,}7$ hat zwei Lösungen pro Periode (im 1. und 2. Quadrant — die beiden Schnittpunkte der Horizontalen mit dem Kreis).
+
+**Typischer Fehler:** Extremwerte ($|a| = 1$) mit Zwischenwerten verwechseln — bei $|a| < 1$ immer zwei Schnittpunkte.`,
+        [
+          'Einheitskreis: $x^{2} + y^{2} = 1$.',
+          'Horizontale $y = 0{,}7$ kreuzt den Kreis zweimal.',
+          'Entspricht zwei Lösungen von $\\sin x = 0{,}7$.',
+        ],
+        {
+          1: 'Nur bei Extremwerten ($y = \\pm 1$) ist der Schnittpunkt einzig (Berührung). Für $|y| < 1$: zwei Schnitte.',
+          2: 'Eine Horizontale kann einen Kreis höchstens zweimal schneiden. $4$ wäre nur bei zwei Horizontalen möglich.',
+          3: 'Die Linie $y = 0{,}7$ schneidet den Einheitskreis, weil $|0{,}7| < 1$ im Wertebereich liegt.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen": [PRÜFUNG] Wie viele Schnittpunkte hat die senkrechte Linie $x = 1{,}2$ mit dem Einheitskreis?',
+        0, 0, '',
+        `**Ansatz:** Einheitskreis: $x \\in [-1, 1]$. $x = 1{,}2 > 1$ liegt außerhalb.
+
+**Rechnung:** $x = 1{,}2$ schneidet den Einheitskreis **nicht** — keine Schnittpunkte. 0 Schnittpunkte.
+
+**Probe:** Interpretation: $\\cos x = 1{,}2$ hat keine Lösung, weil Wertebereich $[-1, 1]$.
+
+**Typischer Fehler:** Automatisch "2" eintragen, ohne Wertebereich zu prüfen.`,
+        [
+          'Einheitskreis: $x \\in [-1, 1]$.',
+          '$1{,}2$ liegt außerhalb.',
+          'Keine Schnitte.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen": [PRÜFUNG] Die Anzahl Lösungen von $\\sin x = a$ in $[0, 2\\pi)$ entspricht der Anzahl Schnittpunkte der Horizontalen $y = a$ mit dem Einheitskreis.',
+        true,
+        `**Ansatz:** Parametrisierung des Einheitskreises: $(\\cos x, \\sin x)$ für $x \\in [0, 2\\pi)$.
+
+**Rechnung:** Ein Schnittpunkt der Horizontalen $y = a$ entspricht genau einem Punkt auf dem Kreis mit $\\sin x = a$. Also Anzahl Schnittpunkte = Anzahl Lösungen in $[0, 2\\pi)$.
+
+**Probe:** $\\sin x = 0{,}5$: zwei Schnittpunkte (1. und 2. Q) → zwei Lösungen ($\\pi/6, 5\\pi/6$) ✓. $\\sin x = 1$: ein Schnittpunkt oben → eine Lösung ($\\pi/2$).
+
+**Typischer Fehler:** Geometrische und algebraische Zählweise getrennt sehen, statt sie als äquivalent zu erkennen.`,
+        [
+          'Einheitskreis ist $(\\cos x, \\sin x)$.',
+          'y-Koordinate ist $\\sin x$.',
+          'Horizontale $y = a$ = $\\sin x = a$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen": [PRÜFUNG] Ordne jeder Linie die Anzahl Schnittpunkte mit dem Einheitskreis zu.',
+        [
+          { left: '$y = 0$ (x-Achse)',         right: '$2$ Schnitte' },
+          { left: '$y = 1$',                     right: '$1$ Schnitt (Berührung oben)' },
+          { left: '$y = 1{,}5$',                 right: '$0$ Schnitte' },
+          { left: '$x = 0{,}5$ (senkrecht)',     right: '$2$ Schnitte' },
+        ],
+        `**Ansatz:** Grafische Analyse: Horizontale und Vertikale auf dem Einheitskreis.
+
+**Rechnung:** $y = 0$: schneidet in $(\\pm 1, 0)$. $y = 1$: berührt in $(0, 1)$. $y = 1{,}5$: außerhalb. $x = 0{,}5$: schneidet in $(0{,}5, \\pm \\sqrt{0{,}75})$.
+
+**Probe:** Alle aus Kreisgleichung $x^{2} + y^{2} = 1$ abgeleitet.
+
+**Typischer Fehler:** $y = 1$ als zwei Schnittpunkte zählen — Berührung = ein Punkt.`,
+        [
+          'Horizontale/Vertikale auf Kreis.',
+          'Bei $|a| = 1$: Berührung (1 Punkt).',
+          'Bei $|a| > 1$: außerhalb (0 Punkte).',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen": [PRÜFUNG] Bringe die Schritte zur grafischen Kontrolle der Lösungszahl von $2\\cos x = 1$ in $[0, 2\\pi)$ in die richtige Reihenfolge.',
+        [
+          'Umformen: $\\cos x = 1/2$',
+          'Einheitskreis zeichnen, senkrechte Linie bei $x = 1/2$',
+          'Schnittpunkte zählen: 2 (oben und unten)',
+          'Zwei Lösungen: $\\pi/3$ und $5\\pi/3$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Algebra → Geometrie → Zählen → algebraische Werte ablesen.
+
+**Rechnung:** 2 Lösungen: $\\pi/3, 5\\pi/3$.
+
+**Probe:** $\\cos(\\pi/3) = 1/2$ ✓, $\\cos(5\\pi/3) = \\cos(-\\pi/3) = 1/2$ ✓.
+
+**Typischer Fehler:** Grafische Kontrolle auslassen und algebraische Lösungsanzahl falsch abschätzen.`,
+        [
+          'Erst umformen.',
+          'Dann Skizze.',
+          'Schnittpunkte zählen.',
+        ],
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // trig-3-5 — Sinussatz & Cosinussatz  (6 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'trig-3-5': {

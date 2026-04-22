@@ -283,11 +283,9 @@ $$a = \\sqrt{25} = 5.$$
     correctIndex: 2,
     explanation: `**Ansatz:** $\\sin$ ist periodisch mit Periode $2\\pi$ und nimmt jeden Wert $|y| < 1$ **zweimal** pro Periode an.
 
-**Schritt 1 — Hauptwerte in $[0, 2\\pi]$:** $\\sin(x) = 0{,}5 \\Rightarrow x_{1} = \\dfrac{\\pi}{6}$ und $x_{2} = \\pi - \\dfrac{\\pi}{6} = \\dfrac{5\\pi}{6}$ (Supplementärwinkel im 2. Quadrant).
+**Rechnung:** Hauptwerte in $[0, 2\\pi]$: $\\sin(x) = 0{,}5 \\Rightarrow x_{1} = \\tfrac{\\pi}{6}$ und $x_{2} = \\pi - \\tfrac{\\pi}{6} = \\tfrac{5\\pi}{6}$ (Supplementärwinkel im 2. Q). Weitere Periode $[2\\pi, 4\\pi]$: $x_{3} = \\tfrac{13\\pi}{6}$, $x_{4} = \\tfrac{17\\pi}{6}$. Gesamt: $4$ Lösungen.
 
-**Schritt 2 — Weitere Periode $[2\\pi, 4\\pi]$:** Addiere $2\\pi$ zu jeder Lösung: $x_{3} = \\dfrac{13\\pi}{6}$, $x_{4} = \\dfrac{17\\pi}{6}$.
-
-**Schritt 3 — Summe:** $4$ Lösungen im Intervall $[0, 4\\pi]$.
+**Probe:** In $[0, 4\\pi] = $ zwei volle Perioden, $\\sin$ erreicht $0{,}5$ genau zweimal pro Periode, also 4-mal ✓.
 
 **Am Einheitskreis heißt das:** In jeder vollen Umdrehung ($2\\pi$) schneidet die waagerechte Linie $y = 0{,}5$ den Einheitskreis zweimal (einmal im 1., einmal im 2. Quadrant). In zwei Umdrehungen sind das $4$ Schnittpunkte.
 
@@ -310,13 +308,7 @@ $$a = \\sqrt{25} = 5.$$
     correctIndex: 2,
     explanation: `**Ansatz:** Symmetrie $\\sin(-\\alpha) = -\\sin(\\alpha)$ und Reduktionsformel anwenden.
 
-**Schritt 1:** $\\sin(-210°) = -\\sin(210°)$ ($\\sin$ ist ungerade).
-
-**Schritt 2:** $210° = 180° + 30°$. Im 3. Quadrant: $\\sin(210°) = -\\sin(30°) = -\\dfrac{1}{2}$.
-
-**Schritt 3:** $\\sin(-210°) = -(-\\dfrac{1}{2}) = \\dfrac{1}{2}$.
-
-**Alternativer Weg:** $-210° = -210° + 360° = 150°$. Also $\\sin(-210°) = \\sin(150°) = \\sin(30°) = \\dfrac{1}{2}$.
+**Rechnung:** Schritt 1: $\\sin(-210°) = -\\sin(210°)$ ($\\sin$ ungerade). Schritt 2: $210° = 180° + 30°$, im 3. Q: $\\sin(210°) = -\\sin(30°) = -\\tfrac{1}{2}$. Schritt 3: $\\sin(-210°) = -(-\\tfrac{1}{2}) = \\tfrac{1}{2}$. Alternativer Weg: $-210° + 360° = 150°$; $\\sin(150°) = \\sin(30°) = \\tfrac{1}{2}$.
 
 **Am Einheitskreis heißt das:** $-210°$ (im Uhrzeigersinn) und $150°$ (gegen den Uhrzeigersinn) landen am *selben Punkt* im 2. Quadrant: $\\left(-\\dfrac{\\sqrt{3}}{2}, \\dfrac{1}{2}\\right)$. Die y-Koordinate ist $\\dfrac{1}{2}$.
 
