@@ -65,6 +65,12 @@ interface ExerciseBase {
   tags?: string[]
   wrongAnswerExplanations?: Record<string, string>
   relatedFormulaId?: string
+  // Zielaufgaben-Metadaten (gesetzt vom subgoal_tasks-Pipeline-Step).
+  // Verknüpfen die Aufgabe mit dem konkreten Sub-Goal der Lesson.
+  isGoalTask?: boolean
+  subGoalIndex?: number
+  subGoalLabel?: string
+  subGoalWeight?: SubGoalWeight
 }
 
 export interface MultipleChoiceExercise extends ExerciseBase {

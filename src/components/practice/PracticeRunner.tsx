@@ -1,14 +1,24 @@
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import { MultiStepExercise } from '@/components/exercises/MultiStepExercise'
 import { MarkdownContent } from '@/components/lesson/MarkdownContent'
 import { HintSystem } from '@/components/lesson/HintSystem'
 import { Button } from '@/components/ui/Button'
+import { ToolButton } from '@/components/ui/ToolButton'
+import { hasFormulas } from '@/components/ui/formulaTopics'
 import { useAppDispatch } from '@/context/AppContext'
 import { ACTIONS } from '@/context/appReducer'
 import type { PracticeExercise, PracticeSubTask } from '@/types/practice'
 
+// Tool-Modals sind auch beim Üben nutzbar — identische Lazy-Strategie wie in
+// der Lektions-Ansicht, damit Calculator/FormulaSheet/VariableGlossary nicht
+// im Initial-Bundle der Übenfunktion landen.
+const Calculator       = lazy(() => import('@/components/ui/Calculator')       .then((m) => ({ default: m.Calculator })))
+const FormulaSheet     = lazy(() => import('@/components/ui/FormulaSheet')     .then((m) => ({ default: m.FormulaSheet })))
+const VariableGlossary = lazy(() => import('@/components/ui/VariableGlossary') .then((m) => ({ default: m.VariableGlossary })))
+
 interface Props {
   exercise: PracticeExercise
+  topicId?: string
   onFinished: (result: { correct: boolean; pointsScored: number }) => void
   onNext: () => void
   onChooseOther: () => void
@@ -38,9 +48,13 @@ function pointsFor(subtasks: PracticeSubTask[], answers: string[]): number {
   }, 0)
 }
 
-export function PracticeRunner({ exercise, onFinished, onNext, onChooseOther, hasNext }: Props) {
+export function PracticeRunner({ exercise, topicId, onFinished, onNext, onChooseOther, hasNext }: Props) {
   const dispatch = useAppDispatch()
   const [finished, setFinished] = useState<{ correct: boolean } | null>(null)
+  const [showCalculator, setShowCalculator]   = useState(false)
+  const [showFormulaSheet, setShowFormulaSheet] = useState(false)
+  const [showVariables, setShowVariables]     = useState(false)
+  const canShowFormulas = topicId ? hasFormulas(topicId) : false
 
   const handleSubmit = (answer: { stepAnswers: string[]; allCorrect: boolean }) => {
     const pointsScored = answer.allCorrect
@@ -58,6 +72,21 @@ export function PracticeRunner({ exercise, onFinished, onNext, onChooseOther, ha
 
   return (
     <div className="flex flex-col gap-5">
+      {/* Tools-Leiste — gleicher Funktionsumfang wie in der Lektionsansicht */}
+      <div className="flex items-center justify-end gap-1.5">
+        <ToolButton onClick={() => setShowVariables(true)} label="Variablen-Glossar öffnen" className="text-[11px]">
+          x,y
+        </ToolButton>
+        {canShowFormulas && (
+          <ToolButton onClick={() => setShowFormulaSheet(true)} label="Formelsammlung öffnen" variant="lemon">
+            f
+          </ToolButton>
+        )}
+        <ToolButton onClick={() => setShowCalculator(true)} label="Taschenrechner öffnen">
+          =
+        </ToolButton>
+      </div>
+
       {/* Header / Angabe */}
       <div className="bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard p-5 flex flex-col gap-4">
         <div className="flex items-start justify-between gap-3">
@@ -150,6 +179,15 @@ export function PracticeRunner({ exercise, onFinished, onNext, onChooseOther, ha
           </div>
         </div>
       )}
+
+      {/* Tool-Modals — lazy, wie in LessonView */}
+      <Suspense fallback={null}>
+        {showCalculator && <Calculator isOpen onClose={() => setShowCalculator(false)} />}
+        {showFormulaSheet && (
+          <FormulaSheet isOpen onClose={() => setShowFormulaSheet(false)} topicId={topicId} />
+        )}
+        {showVariables && <VariableGlossary isOpen onClose={() => setShowVariables(false)} />}
+      </Suspense>
     </div>
   )
 }
