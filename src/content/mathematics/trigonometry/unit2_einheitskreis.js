@@ -9,11 +9,9 @@ export const exercises_u2 = {
     correctIndex: 2,
     explanation: `**Ansatz:** Namensdefinition. "Einheit" bedeutet in der Mathematik $1$.
 
-**Regel:** Der Einheitskreis ist der Kreis um den Ursprung mit Radius $r = 1$ in der $xy$-Ebene. Gleichung: $x^{2} + y^{2} = 1$.
+**Rechnung:** Der Einheitskreis ist der Kreis um den Ursprung mit Radius $r = 1$ in der $xy$-Ebene. Gleichung: $x^{2} + y^{2} = 1$. Mit $r = 1$ lassen sich $\\sin$ und $\\cos$ direkt als Koordinaten eines Punkts auf dem Kreis definieren — ohne Division durch den Radius.
 
-**Warum so?** Mit $r = 1$ lassen sich $\\sin$ und $\\cos$ direkt als Koordinaten eines Punkts auf dem Kreis definieren — ohne Division durch den Radius. Das vereinfacht alle Formeln.
-
-**Am Einheitskreis heißt das:** Jeder Punkt auf dem Kreis hat die Form $(\\cos\\alpha, \\sin\\alpha)$, und seine Distanz zum Ursprung ist immer $1$.
+**Probe:** Jeder Punkt auf dem Kreis hat die Form $(\\cos\\alpha, \\sin\\alpha)$, Distanz zum Ursprung $\\sqrt{\\cos^{2}\\alpha + \\sin^{2}\\alpha} = 1$ ✓.
 
 **Typischer Fehler:** $2$ wählen, wenn man den Durchmesser statt des Radius meint.`,
     hints: [

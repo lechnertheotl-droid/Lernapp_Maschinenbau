@@ -684,6 +684,441 @@ Alle anderen Vorzeichen sind negativ.
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // trig-2-1 — Der Einheitskreis  (4 subGoals)
+  // Je 5 Aufgaben = 20 Goal-Tasks
+  // ────────────────────────────────────────────────────────────────────────
+  'trig-2-1': {
+
+    // ── [0] Einheitskreis: r=1, x² + y² = 1 ──────────────────────────────
+    0: [
+      mc(
+        'Sub-Goal "Einheitskreis = Kreis um Ursprung mit $r = 1$, Gleichung $x^2 + y^2 = 1$": Welche Gleichung beschreibt den Einheitskreis?',
+        [
+          '$x^{2} + y^{2} = 1$',
+          '$x + y = 1$',
+          '$x^{2} + y^{2} = 2$',
+          '$x^{2} - y^{2} = 1$',
+        ],
+        0,
+        `**Ansatz:** Kreisgleichung mit Radius $r$: $x^{2} + y^{2} = r^{2}$. Beim Einheitskreis $r = 1$.
+
+**Rechnung:** $x^{2} + y^{2} = 1^{2} = 1$.
+
+**Probe:** Punkt $(1, 0)$: $1 + 0 = 1$ ✓. Punkt $(0, 1)$: $0 + 1 = 1$ ✓. Punkt $(\\tfrac{\\sqrt{2}}{2}, \\tfrac{\\sqrt{2}}{2})$: $\\tfrac{1}{2} + \\tfrac{1}{2} = 1$ ✓.
+
+**Typischer Fehler:** Linearer Term $x + y = 1$ statt quadratischer Pythagoras — das wäre eine Gerade, kein Kreis.`,
+        [
+          'Kreisgleichung: $x^{2} + y^{2} = r^{2}$.',
+          'Radius des Einheitskreises.',
+          '$r = 1 \\to r^{2} = 1$.',
+        ],
+        {
+          1: '$x + y = 1$ ist eine Gerade, kein Kreis. Kreis braucht quadratische Terme.',
+          2: '$x^{2} + y^{2} = 2$ ist Kreis um den Ursprung mit $r = \\sqrt{2}$, nicht Einheitskreis.',
+          3: '$x^{2} - y^{2} = 1$ ist eine Hyperbel, kein Kreis. Kreis verlangt Summe, nicht Differenz der Quadrate.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Einheitskreis = Kreis um Ursprung mit $r = 1$, Gleichung $x^2 + y^2 = 1$": Liegt der Punkt $P = (0{,}6, 0{,}8)$ auf dem Einheitskreis? Antwort: $0{,}6^{2} + 0{,}8^{2} = ?$',
+        1, 0.001, '',
+        `**Ansatz:** Einheitskreis-Kriterium: $x^{2} + y^{2} = 1$.
+
+**Rechnung:** $0{,}36 + 0{,}64 = 1$ → liegt **auf** dem Einheitskreis.
+
+**Probe:** 3-4-5 Dreieck skaliert auf Hypotenuse 1: $(3/5, 4/5) = (0{,}6, 0{,}8)$.
+
+**Typischer Fehler:** $x + y$ statt $x^{2} + y^{2}$ berechnen und $1{,}4$ als Antwort geben.`,
+        [
+          'Kriterium: $x^{2} + y^{2} = 1$.',
+          '$0{,}6^{2} + 0{,}8^{2}$.',
+          '$0{,}36 + 0{,}64 = ?$',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Einheitskreis = Kreis um Ursprung mit $r = 1$, Gleichung $x^2 + y^2 = 1$": Der Punkt $(1, 1)$ liegt auf dem Einheitskreis.',
+        false,
+        `**Ansatz:** Einheitskreis-Test.
+
+**Rechnung:** $1^{2} + 1^{2} = 2 \\neq 1$. Punkt liegt **nicht** auf dem Einheitskreis, sondern außerhalb (Distanz $\\sqrt{2}$).
+
+**Probe:** Distanz zum Ursprung $= \\sqrt{2} \\approx 1{,}41 > 1$.
+
+**Typischer Fehler:** "Beide Koordinaten $\\le 1$, also auf dem Kreis" — das ist nicht das Kriterium. Es muss $x^{2} + y^{2} = 1$ exakt gelten.`,
+        [
+          'Kriterium: $x^{2} + y^{2} = 1$.',
+          'Teste $(1, 1)$.',
+          'Summe der Quadrate $= ?$',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Einheitskreis = Kreis um Ursprung mit $r = 1$, Gleichung $x^2 + y^2 = 1$": Ordne jedem Punkt die Lage bezüglich des Einheitskreises zu.',
+        [
+          { left: '$(1, 0)$',           right: 'auf dem Einheitskreis' },
+          { left: '$(0{,}5, 0{,}5)$',   right: 'innerhalb (Abstand $< 1$)' },
+          { left: '$(2, 0)$',           right: 'außerhalb (Abstand $> 1$)' },
+          { left: '$(-0{,}6, 0{,}8)$',  right: 'auf dem Einheitskreis' },
+        ],
+        `**Ansatz:** Kriterium $x^{2} + y^{2} \\stackrel{?}{=} 1$.
+
+**Rechnung:** $(1,0)$: $1 = 1$ auf Kreis. $(0{,}5, 0{,}5)$: $0{,}5 < 1$ innerhalb. $(2,0)$: $4 > 1$ außerhalb. $(-0{,}6, 0{,}8)$: $0{,}36 + 0{,}64 = 1$ auf Kreis.
+
+**Probe:** Geometrisch: Einheitskreis hat Radius $1$. Innere Punkte haben Abstand $<1$, äußere $>1$.
+
+**Typischer Fehler:** Vorzeichen spielen keine Rolle beim Abstand (wegen Quadrierung).`,
+        [
+          'Abstand zum Ursprung $= \\sqrt{x^{2}+y^{2}}$.',
+          'Auf Kreis: Abstand $= 1$.',
+          'Vorzeichen egal (quadriert).',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Einheitskreis = Kreis um Ursprung mit $r = 1$, Gleichung $x^2 + y^2 = 1$": Bringe die Schritte zur Prüfung, ob $(-0{,}8, 0{,}6)$ auf dem Einheitskreis liegt, in die richtige Reihenfolge.',
+        [
+          'Kriterium notieren: $x^{2} + y^{2} = 1$',
+          'Werte einsetzen: $(-0{,}8)^{2} + 0{,}6^{2}$',
+          'Quadrate ausrechnen: $0{,}64 + 0{,}36$',
+          'Summe: $1{,}00$ → auf dem Einheitskreis',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Vier saubere Schritte für Einheitskreis-Test.
+
+**Rechnung:** Punkt liegt auf Einheitskreis.
+
+**Probe:** Entspricht Winkel $\\alpha \\approx 143{,}13°$ (2. Quadrant).
+
+**Typischer Fehler:** Vorzeichen vor Quadrierung erhalten — $-0{,}8^{2} = -0{,}64$ statt $+0{,}64$. Quadrieren macht Vorzeichen immer positiv.`,
+        [
+          'Kriterium als Gleichung.',
+          'Quadrate einzeln.',
+          'Summe bilden.',
+        ],
+      ),
+    ],
+
+    // ── [1] Punkt auf Kreis P = (cos α, sin α) ────────────────────────────
+    1: [
+      mc(
+        'Sub-Goal "Punkt auf Kreis $P = (\\cos\\alpha, \\sin\\alpha)$ — Winkel von positiver $x$-Achse gegen Uhrzeigersinn": Wie lauten die Koordinaten des Punkts auf dem Einheitskreis beim Winkel $\\alpha = 60°$?',
+        [
+          '$(\\tfrac{1}{2}, \\tfrac{\\sqrt{3}}{2})$',
+          '$(\\tfrac{\\sqrt{3}}{2}, \\tfrac{1}{2})$',
+          '$(\\tfrac{\\sqrt{2}}{2}, \\tfrac{\\sqrt{2}}{2})$',
+          '$(60°, 60°)$',
+        ],
+        0,
+        `**Ansatz:** $P = (\\cos\\alpha, \\sin\\alpha)$ mit $\\alpha = 60°$.
+
+**Rechnung:** $\\cos(60°) = \\tfrac{1}{2}$, $\\sin(60°) = \\tfrac{\\sqrt{3}}{2}$. Punkt: $(\\tfrac{1}{2}, \\tfrac{\\sqrt{3}}{2})$.
+
+**Probe:** $(\\tfrac{1}{2})^{2} + (\\tfrac{\\sqrt{3}}{2})^{2} = \\tfrac{1}{4} + \\tfrac{3}{4} = 1$ ✓ (auf Einheitskreis).
+
+**Typischer Fehler:** $\\sin$ und $\\cos$ vertauschen. Im 1. Quadrant (60°) ist $\\cos < \\sin$, weil der Winkel $> 45°$.`,
+        [
+          'Standardform: $P = (\\cos\\alpha, \\sin\\alpha)$.',
+          'Grundwerte bei $60°$ auswendig.',
+          'x-Koordinate ist $\\cos$, y ist $\\sin$.',
+        ],
+        {
+          1: '$\\sin$ und $\\cos$ vertauscht — das wäre $\\alpha = 30°$, nicht $60°$.',
+          2: 'Das wären die Koordinaten bei $\\alpha = 45°$ (gleichwertige $\\sin = \\cos$).',
+          3: 'Koordinaten sind nicht Winkel-Zahlen, sondern $\\sin/\\cos$-Werte.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Punkt auf Kreis $P = (\\cos\\alpha, \\sin\\alpha)$ — Winkel von positiver $x$-Achse gegen Uhrzeigersinn": Berechne die y-Koordinate des Punkts auf dem Einheitskreis bei $\\alpha = 150°$. (Auf 3 Dezimalstellen.)',
+        0.5, 0.01, '',
+        `**Ansatz:** y-Koordinate = $\\sin\\alpha$.
+
+**Rechnung:** $\\sin(150°) = \\sin(180° - 30°) = \\sin(30°) = 0{,}5$.
+
+**Probe:** $150°$ im 2. Quadrant, $\\sin > 0$ ✓.
+
+**Typischer Fehler:** x-Koordinate berechnen (= $\\cos(150°) \\approx -0{,}866$) statt y.`,
+        [
+          'y-Koordinate = $\\sin\\alpha$.',
+          '$\\sin(150°) = \\sin(30°)$ (Supplement).',
+          '$\\sin(30°) = 0{,}5$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Punkt auf Kreis $P = (\\cos\\alpha, \\sin\\alpha)$ — Winkel von positiver $x$-Achse gegen Uhrzeigersinn": Der Winkel $\\alpha$ wird vom positiven Teil der x-Achse gegen den Uhrzeigersinn gemessen.',
+        true,
+        `**Ansatz:** Mathematische Konvention zur Winkelmessung.
+
+**Rechnung:** Ausgangslage: positive x-Achse = $\\alpha = 0°$. Gegen Uhrzeigersinn wächst $\\alpha$. Punkt landet im 1. Q (0-90°), dann 2. Q (90-180°), usw.
+
+**Probe:** Bei $90°$ zeigt der Punkt nach oben = $(0, 1)$ ✓ (positive y-Achse).
+
+**Typischer Fehler:** Mit dem Uhrzeigersinn messen (negative Winkel) oder von der y-Achse statt der x-Achse starten.`,
+        [
+          'Standard: x-Achse, gegen Uhrzeigersinn.',
+          '$0°$ zeigt nach rechts.',
+          '$90°$ zeigt nach oben.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Punkt auf Kreis $P = (\\cos\\alpha, \\sin\\alpha)$ — Winkel von positiver $x$-Achse gegen Uhrzeigersinn": Ordne jedem Winkel die Koordinaten auf dem Einheitskreis zu.',
+        [
+          { left: '$\\alpha = 0°$',      right: '$(1, 0)$' },
+          { left: '$\\alpha = 45°$',     right: '$(\\tfrac{\\sqrt{2}}{2}, \\tfrac{\\sqrt{2}}{2})$' },
+          { left: '$\\alpha = 90°$',     right: '$(0, 1)$' },
+          { left: '$\\alpha = 180°$',    right: '$(-1, 0)$' },
+        ],
+        `**Ansatz:** Grundwerte auswendig.
+
+**Rechnung:** Standardpositionen:
+· $0°$: rechts, $(1, 0)$.
+· $45°$: diagonal, beide $\\tfrac{\\sqrt{2}}{2}$.
+· $90°$: oben, $(0, 1)$.
+· $180°$: links, $(-1, 0)$.
+
+**Probe:** Alle vier Punkte liegen auf Einheitskreis: $x^{2} + y^{2} = 1$ ✓.
+
+**Typischer Fehler:** Bei $45°$ die Werte in Fraktionen vergessen — $(0{,}707, 0{,}707)$ ist äquivalent.`,
+        [
+          'Grundpunkte am Einheitskreis.',
+          '$0°, 90°, 180°, 270°$: Achsenpunkte.',
+          '$45°$: Diagonale, $\\sqrt{2}/2$ beidseitig.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Punkt auf Kreis $P = (\\cos\\alpha, \\sin\\alpha)$ — Winkel von positiver $x$-Achse gegen Uhrzeigersinn": Bringe die Schritte zur Bestimmung des Punkts bei $\\alpha = 135°$ in die richtige Reihenfolge.',
+        [
+          'Formel: $P = (\\cos\\alpha, \\sin\\alpha)$',
+          '$\\cos(135°) = \\cos(180° - 45°) = -\\cos(45°) = -\\tfrac{\\sqrt{2}}{2}$',
+          '$\\sin(135°) = \\sin(45°) = \\tfrac{\\sqrt{2}}{2}$',
+          'Punkt: $(-\\tfrac{\\sqrt{2}}{2}, \\tfrac{\\sqrt{2}}{2})$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Formel → $\\cos$ mit Supplement → $\\sin$ mit Supplement → Paar.
+
+**Rechnung:** $(-\\tfrac{\\sqrt{2}}{2}, \\tfrac{\\sqrt{2}}{2})$ — 2. Quadrant.
+
+**Probe:** $x^{2} + y^{2} = \\tfrac{1}{2} + \\tfrac{1}{2} = 1$ ✓.
+
+**Typischer Fehler:** Minuszeichen bei $\\sin$ statt $\\cos$ einfügen.`,
+        [
+          'Formel zuerst.',
+          'Supplement für $\\cos$ und $\\sin$.',
+          'x, y zusammen als Punkt.',
+        ],
+      ),
+    ],
+
+    // ── [2] Quadrantenpunkte: (1,0), (0,1), (-1,0), (0,-1) ────────────────
+    2: [
+      mc(
+        'Sub-Goal "Quadrantenpunkte: $0° \\to (1,0)$, $90° \\to (0,1)$, $180° \\to (-1,0)$, $270° \\to (0,-1)$": Welche Koordinaten hat der Punkt bei $\\alpha = 270°$?',
+        [
+          '$(0, -1)$',
+          '$(-1, 0)$',
+          '$(0, 1)$',
+          '$(1, 0)$',
+        ],
+        0,
+        `**Ansatz:** $P = (\\cos\\alpha, \\sin\\alpha)$. $\\cos(270°) = 0$, $\\sin(270°) = -1$.
+
+**Rechnung:** Punkt $(0, -1)$ — der "unterste" Punkt des Einheitskreises.
+
+**Probe:** $270°$ = drei Viertel-Drehungen gegen Uhrzeigersinn = zeigt nach unten.
+
+**Typischer Fehler:** $(0, 1)$ wählen — das ist $90°$, nicht $270°$.`,
+        [
+          '$270°$ zeigt wo hin?',
+          '$\\cos(270°) = 0$, $\\sin(270°) = -1$.',
+          'Unterer Achsenpunkt.',
+        ],
+        {
+          1: '$(-1, 0)$ ist $180°$, nicht $270°$.',
+          2: '$(0, 1)$ ist $90°$, liegt oben. $270°$ ist unten.',
+          3: '$(1, 0)$ ist $0°$ (oder $360°$), Ausgangspunkt.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Quadrantenpunkte: $0° \\to (1,0)$, $90° \\to (0,1)$, $180° \\to (-1,0)$, $270° \\to (0,-1)$": Welche x-Koordinate hat der Punkt bei $\\alpha = 180°$?',
+        -1, 0, '',
+        `**Ansatz:** $x = \\cos(180°) = -1$.
+
+**Rechnung:** Bei $180°$ zeigt der Punkt auf die negative x-Achse = $(-1, 0)$.
+
+**Probe:** Distanz zum Ursprung: $\\sqrt{1 + 0} = 1$ ✓.
+
+**Typischer Fehler:** $+1$ angeben (das wäre $0°$).`,
+        [
+          '$\\cos(180°) = ?$',
+          '$180°$ liegt auf negativer x-Achse.',
+          'x-Koordinate ist $-1$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Quadrantenpunkte: $0° \\to (1,0)$, $90° \\to (0,1)$, $180° \\to (-1,0)$, $270° \\to (0,-1)$": Bei $\\alpha = 360°$ liegt der Punkt am gleichen Ort wie bei $\\alpha = 0°$.',
+        true,
+        `**Ansatz:** $360°$ ist eine volle Drehung zurück zum Ausgangspunkt.
+
+**Rechnung:** $\\cos(360°) = \\cos(0°) = 1$; $\\sin(360°) = \\sin(0°) = 0$. Beide Punkte sind $(1, 0)$.
+
+**Probe:** Sinus/Kosinus haben Periode $360°$, also wiederholen sich Funktionswerte nach jedem Vollkreis.
+
+**Typischer Fehler:** Annehmen, $360°$ sei ein anderer Punkt — tatsächlich identisch mit $0°$.`,
+        [
+          'Volle Drehung = $360°$.',
+          'Periode von sin/cos ist $360°$.',
+          'Landet wieder bei $(1, 0)$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Quadrantenpunkte: $0° \\to (1,0)$, $90° \\to (0,1)$, $180° \\to (-1,0)$, $270° \\to (0,-1)$": Ordne jedem Quadranten-Hauptpunkt den Winkel zu.',
+        [
+          { left: '$(1, 0)$',    right: '$0°$ (oder $360°$)' },
+          { left: '$(0, 1)$',    right: '$90°$' },
+          { left: '$(-1, 0)$',   right: '$180°$' },
+          { left: '$(0, -1)$',   right: '$270°$' },
+        ],
+        `**Ansatz:** Vier Hauptpunkte am Einheitskreis auswendig.
+
+**Rechnung:** Start bei $(1,0)$, Viertel-Drehung führt zu $(0,1)$, dann $(-1,0)$, dann $(0,-1)$.
+
+**Probe:** Jede Koordinate entspricht $\\cos/\\sin$ des genannten Winkels.
+
+**Typischer Fehler:** Reihenfolge vertauschen — besonders $(0, -1)$ und $(0, 1)$ verwechseln.`,
+        [
+          'Gegen Uhrzeigersinn: rechts, oben, links, unten.',
+          'Bei jedem Viertelkreis je $90°$.',
+          'x-Achse: $y = 0$; y-Achse: $x = 0$.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Quadrantenpunkte: $0° \\to (1,0)$, $90° \\to (0,1)$, $180° \\to (-1,0)$, $270° \\to (0,-1)$": Sortiere die vier Quadrantenpunkte in aufsteigender Winkelreihenfolge.',
+        [
+          '$0°: (1, 0)$',
+          '$90°: (0, 1)$',
+          '$180°: (-1, 0)$',
+          '$270°: (0, -1)$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Start bei $0°$, Viertel-Drehung je $90°$.
+
+**Rechnung:** $(1,0) \\to (0,1) \\to (-1,0) \\to (0,-1)$.
+
+**Probe:** Gegen Uhrzeigersinn, entspricht Zeiger-Bewegung bei $+$-Drehsinn.
+
+**Typischer Fehler:** Uhrzeigersinn verwenden → umgekehrte Reihenfolge.`,
+        [
+          'Gegen Uhrzeigersinn positiv.',
+          'Alle $90°$ einen Quadrantenpunkt.',
+          'Startet auf der positiven x-Achse.',
+        ],
+      ),
+    ],
+
+    // ── [3] Durchmesser d=2 vs. Radius r=1 nicht verwechseln ──────────────
+    3: [
+      mc(
+        'Sub-Goal "Durchmesser $d = 2$ nicht mit Radius $r = 1$ verwechseln": Wie groß ist der Durchmesser des Einheitskreises?',
+        [
+          '$2$',
+          '$1$',
+          '$\\pi$',
+          '$2\\pi$',
+        ],
+        0,
+        `**Ansatz:** $d = 2r$. Beim Einheitskreis $r = 1$, also $d = 2$.
+
+**Rechnung:** $d = 2 \\cdot 1 = 2$.
+
+**Probe:** Der Durchmesser geht komplett durch den Kreis von einem Rand zum anderen, vom Punkt $(-1, 0)$ zu $(1, 0)$ — Entfernung $= 2$.
+
+**Typischer Fehler:** $1$ angeben (das ist der Radius) oder $2\\pi$ (das ist der Umfang).`,
+        [
+          '$d = 2r$.',
+          '$r = 1$.',
+          '$2 \\cdot 1 = ?$',
+        ],
+        {
+          1: '$1$ ist der **Radius**, nicht der Durchmesser. Durchmesser = $2r$.',
+          2: '$\\pi$ ist weder Radius noch Durchmesser — Kreiszahl, Verhältnis Umfang/Durchmesser.',
+          3: '$2\\pi$ ist der **Umfang** des Einheitskreises ($U = 2\\pi r = 2\\pi$), nicht der Durchmesser.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Durchmesser $d = 2$ nicht mit Radius $r = 1$ verwechseln": Wie groß ist der Umfang des Einheitskreises?',
+        6.2832, 0.01, '',
+        `**Ansatz:** Kreisumfang $U = 2\\pi r$.
+
+**Rechnung:** $U = 2\\pi \\cdot 1 = 2\\pi \\approx 6{,}2832$.
+
+**Probe:** $\\pi \\approx 3{,}14$; $2\\pi \\approx 6{,}28$ ✓.
+
+**Typischer Fehler:** $\\pi$ als Umfang angeben (das wäre der Halbkreis).`,
+        [
+          'Umfang = $2\\pi r$.',
+          '$r = 1$.',
+          '$2\\pi \\approx 6{,}28$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Durchmesser $d = 2$ nicht mit Radius $r = 1$ verwechseln": Der Durchmesser des Einheitskreises ist doppelt so groß wie der Radius.',
+        true,
+        `**Ansatz:** Definitionsgemäß gilt für jeden Kreis $d = 2r$.
+
+**Rechnung:** Beim Einheitskreis $r = 1 \\to d = 2$. Faktor $2$.
+
+**Probe:** Geometrie: Durchmesser = Linie durch Mittelpunkt von Rand zu Rand. Radius = halber Durchmesser.
+
+**Typischer Fehler:** Annehmen, beide seien gleich — Verwechslung bei schnellem Lesen.`,
+        [
+          'Kreisdefinitionen.',
+          '$d = 2r$.',
+          'Immer Faktor 2.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Durchmesser $d = 2$ nicht mit Radius $r = 1$ verwechseln": Ordne jeder Kreisgröße ihren Wert beim Einheitskreis zu.',
+        [
+          { left: 'Radius $r$',         right: '$1$' },
+          { left: 'Durchmesser $d$',    right: '$2$' },
+          { left: 'Umfang $U$',         right: '$2\\pi$' },
+          { left: 'Fläche $A$',         right: '$\\pi$' },
+        ],
+        `**Ansatz:** Standardformeln mit $r = 1$.
+
+**Rechnung:** $r = 1$, $d = 2r = 2$, $U = 2\\pi r = 2\\pi$, $A = \\pi r^{2} = \\pi$.
+
+**Probe:** Faktoren $1, 2, 2\\pi, \\pi$ entsprechen Radius, Durchmesser, Umfang, Fläche.
+
+**Typischer Fehler:** $U$ und $A$ verwechseln — $U$ hat linear $r$, $A$ hat $r^{2}$.`,
+        [
+          '$d = 2r$, $U = 2\\pi r$, $A = \\pi r^{2}$.',
+          'Bei $r=1$ alle direkt ablesbar.',
+          'Fläche $= \\pi \\approx 3{,}14$.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Durchmesser $d = 2$ nicht mit Radius $r = 1$ verwechseln": Sortiere die vier Kreisgrößen des Einheitskreises nach aufsteigendem Zahlenwert.',
+        [
+          'Radius = $1$',
+          'Durchmesser = $2$',
+          'Fläche = $\\pi \\approx 3{,}14$',
+          'Umfang = $2\\pi \\approx 6{,}28$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Werte vergleichen.
+
+**Rechnung:** $1 < 2 < 3{,}14 < 6{,}28$.
+
+**Probe:** Radius < Durchmesser trivial. Fläche $< $ Umfang bei $r = 1$, weil $\\pi < 2\\pi$.
+
+**Typischer Fehler:** Umfang und Fläche vertauschen.`,
+        [
+          'Zahlenvergleich.',
+          '$1 < 2 < \\pi < 2\\pi$.',
+          '$\\pi \\approx 3{,}14$.',
+        ],
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // trig-4-1 — Prüfung: Identitäten & Gleichungen  (5 subGoals, [PRÜFUNG])
   // Je 5 Aufgaben = 25 Goal-Tasks
   // ────────────────────────────────────────────────────────────────────────
