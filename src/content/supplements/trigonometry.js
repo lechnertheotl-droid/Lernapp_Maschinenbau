@@ -269,6 +269,145 @@ Object.assign(profiles, {
   'trig-3-4': { ...profiles['trig-1-4'], explanation: String.raw`**Vertiefung inverse Funktionen:** arcsin, arccos und arctan liefern Hauptwerte. Für vollständige Lösungsmengen musst du zusätzlich Quadranten und Periodizität prüfen.`, conceptQuestion: 'Warum liefert arcsin(1/2) nicht automatisch alle Lösungen von sin(x)=1/2?', conceptOptions: ['Weil arcsin nur den Hauptwert liefert', 'Weil sin keine Umkehrung hat', 'Weil 1/2 außerhalb des Definitionsbereichs liegt', 'Weil arcsin immer 90° liefert'], conceptCorrect: 0, conceptWrongAnswers: { 1: 'Sinus hat auf dem eingeschränkten Intervall $[-90°,90°]$ sehr wohl eine Umkehrung — genau das ist $\\arcsin$. Problem ist nur die Einschränkung auf den Hauptwert.', 2: '$1/2$ liegt im Wertebereich $[-1,1]$ des Sinus, also auch im Definitionsbereich $[-1,1]$ von $\\arcsin$. Die Eingabe ist völlig korrekt.', 3: '$\\arcsin(1/2)=30°$, nicht $90°$. $\\arcsin$ liefert $90°$ nur für den Eingabewert $1$. Der eigentliche Punkt ist: es wird nur der Hauptwert geliefert.' }, calcQuestion: 'Berechne arctan(1) in Grad.', calcAnswer: 45, calcTolerance: 0, calcUnit: '°', calcExplanation: 'tan45°=1, also arctan(1)=45°.', transferQuestion: 'Berechne arccos(-1) in Grad.', transferAnswer: 180, transferTolerance: 0, transferUnit: '°', transferExplanation: 'cos180°=-1 und arccos hat Wertebereich [0°,180°].' },
 })
 Object.assign(profiles, {
+  'trig-3-5': {
+    explanation: String.raw`**Vertiefung Sinussatz & Cosinussatz:** Im allgemeinen Dreieck ersetzen Sinus- und Cosinussatz den Pythagoras. Merke dir die Methodenwahl als Reflex: **SWS/SSS → Cosinussatz**, **WWS/SWW/SSW → Sinussatz**. Im rechtwinkligen Spezialfall ($\alpha=90°$) geht der Cosinussatz in Pythagoras über. Achte bei SSW auf die Mehrdeutigkeit — Sinus ist im 1. und 2. Quadranten positiv, also kann es zwei Dreiecke geben.`,
+    conceptQuestion: 'Welche Konfiguration führt **immer** eindeutig auf den Cosinussatz (keine Fallunterscheidung)?',
+    conceptOptions: [
+      'SWS — zwei Seiten und der **eingeschlossene** Winkel',
+      'SSW — zwei Seiten und ein **nicht** eingeschlossener Winkel',
+      'WWS — zwei Winkel und eine Seite',
+      'SSS — aber nur, wenn das Dreieck rechtwinklig ist',
+    ],
+    conceptCorrect: 0,
+    conceptExplanation: `**Ansatz:** Methodenwahl nach gegebenen Stücken. Entscheidend ist, ob ein **Seite-Winkel-Paar** (Seite und ihr Gegenwinkel) bekannt ist oder nicht.
+
+**Rechnung:** SWS liefert sofort die Cosinussatz-Formel $a^{2} = b^{2} + c^{2} - 2bc\\cos\\alpha$ mit allen rechten Seiten als Zahlen — Auflösen nach $a$ ist eine reine Rechnung ohne Fallunterscheidung. SSS ist auch Cosinussatz, aber wurde hier mit falschem Zusatz formuliert.
+
+**Probe:** Setze $\\alpha = 90°$: der Term $-2bc\\cos 90° = 0$ verschwindet und Pythagoras $a^{2} = b^{2} + c^{2}$ bleibt übrig — konsistent. ✓
+
+**Typischer Fehler:** SSW für eindeutig halten: dort liefert Sinussatz zwei Kandidaten $\\beta_1$ und $\\beta_2 = 180°-\\beta_1$. Je nach Seitenlängen sind beide, einer oder keiner gültig — das ist **die** Mehrdeutigkeit des Sinussatzes.`,
+    conceptHints: [
+      'Welche Sätze brauchen ein bekanntes Seite-Winkel-Paar?',
+      'SWS hat den Winkel **zwischen** den zwei Seiten — SSW nicht.',
+      'Cosinussatz ist immer rechenbar; Sinussatz kann zwei Lösungen haben.',
+    ],
+    conceptWrongAnswers: {
+      1: 'SSW ist genau die Konfiguration mit der SSW-Mehrdeutigkeit — Sinussatz liefert $\\sin\\beta$ und damit bis zu **zwei** Winkel. Cosinussatz passt dort nicht direkt, weil der gegebene Winkel nicht eingeschlossen ist.',
+      2: 'WWS hat kein Cosinussatz-Muster: zwei Winkel geben den dritten automatisch ($180°$-Summe), dann Sinussatz mit bekanntem Paar $(Seite, Gegenwinkel)$. Cosinussatz ist unnötig kompliziert.',
+      3: 'SSS führt **immer** direkt auf den Cosinussatz — nach $\\cos\\alpha$ auflösen: $\\cos\\alpha = (b^{2}+c^{2}-a^{2})/(2bc)$. Der Zusatz „nur rechtwinklig" ist falsch; auch schiefwinklige SSS werden so gelöst.',
+    },
+    calcQuestion: 'In einem Dreieck gilt $a=9$, $b=7$, $\\alpha=70°$. Berechne $\\beta$ in Grad (gib die kleinere Lösung an). $\\sin 70° \\approx 0{,}9397$.',
+    calcAnswer: 46.99,
+    calcTolerance: 0.1,
+    calcUnit: '°',
+    calcExplanation: `**Ansatz:** SSW-Konfiguration → Sinussatz: $\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta}$, nach $\\sin\\beta$ auflösen.
+
+**Rechnung:** $\\sin\\beta = \\dfrac{b \\sin\\alpha}{a} = \\dfrac{7 \\cdot 0{,}9397}{9} \\approx 0{,}7309$. $\\beta_1 = \\arcsin(0{,}7309) \\approx 46{,}99°$. Zweiter Kandidat $\\beta_2 = 180° - 46{,}99° = 133{,}01°$.
+
+**Probe:** $a = 9 > b = 7$, also muss $\\alpha > \\beta$ gelten. $\\alpha = 70°$, damit scheidet $\\beta_2 = 133° > 70°$ aus. Einzige Lösung: $\\beta \\approx 47{,}0°$. Dritter Winkel $\\gamma \\approx 180° - 70° - 47° = 63°$. ✓
+
+**Typischer Fehler:** Seite und Gegenwinkel vertauschen: $\\sin\\beta = a \\sin\\alpha/b \\approx 1{,}208$ — **unmöglich**, weil $\\sin$ nie größer $1$ wird. Warnsignal, dass die Paare falsch zugeordnet sind.`,
+    calcHints: [
+      'Welche Konfiguration (SSW/SWS/WWS)? Welcher Satz?',
+      '$\\sin\\beta = b\\sin\\alpha/a$ — Seite und Gegenwinkel paarweise.',
+      'Prüfe: Ergebnis muss $\\sin\\beta \\le 1$ und $\\beta < \\alpha$ sein (weil $b < a$).',
+    ],
+    trueFalseStatement: 'Aus $b^{2} = a^{2} + c^{2} - 2ac\\cos\\beta$ folgt bei $\\beta = 120°$ direkt $b^{2} = a^{2} + c^{2} + ac$.',
+    trueFalseCorrect: true,
+    trueFalseExplanation: `**Ansatz:** Cosinussatz mit Winkel $\\beta$ als zwischen-$a$-und-$c$-liegend. Bei stumpfem Winkel kehrt sich das Vorzeichen des Korrekturterms um, weil $\\cos\\beta < 0$.
+
+**Rechnung:** $\\cos 120° = -\\tfrac{1}{2}$. Einsetzen: $-2ac\\cos 120° = -2ac \\cdot (-1/2) = +ac$. Also $b^{2} = a^{2} + c^{2} + ac$. ✓
+
+**Probe:** Die Seite $b$ (gegenüber dem stumpfen Winkel) wird länger als bei Pythagoras erwartet — das Dreieck "öffnet" sich an $\\beta$. Stimmt mit der Anschauung überein. ✓
+
+**Typischer Fehler:** Nur das Minus-Zeichen vor $2ac$ sehen und Plus-Zeichen vergessen, das durch das negative $\\cos 120°$ entsteht. Ergebnis ist dann zu klein.`,
+    trueFalseHints: [
+      'Welcher Wert hat $\\cos 120°$?',
+      'Vorzeichen sorgfältig: Minus mal Minus ergibt Plus.',
+      '$-2ac\\cos 120° = -2ac\\cdot(-1/2) = +ac$.',
+    ],
+    matchingQuestion: 'Ordne jeder Gegebenheit die richtige Methode zu.',
+    matchingPairs: [
+      { left: 'Gegeben: $b$, $c$, $\\alpha$ (zwischen $b$ und $c$)', right: 'Cosinussatz: $a^{2} = b^{2} + c^{2} - 2bc\\cos\\alpha$' },
+      { left: 'Gegeben: $a$, $b$, $c$ — alle Seiten', right: 'Cosinussatz nach $\\cos\\alpha$ aufgelöst: $\\cos\\alpha = (b^{2}+c^{2}-a^{2})/(2bc)$' },
+      { left: 'Gegeben: $\\alpha$, $\\beta$, $c$', right: 'Sinussatz + Winkelsumme: $\\gamma = 180° - \\alpha - \\beta$' },
+      { left: 'Gegeben: $a$, $b$, $\\alpha$ (nicht eingeschlossen)', right: 'Sinussatz mit Fallunterscheidung (SSW-Mehrdeutigkeit)' },
+    ],
+    matchingExplanation: `**Ansatz:** Die Zuordnung funktioniert, wenn man in jeder Gegebenheit sucht: „Ist ein Seite-Winkel-Paar bekannt?"
+
+**Rechnung:** SWS → direkt Cosinussatz (eine Gleichung, eine Unbekannte). SSS → Cosinussatz nach $\\cos$ aufgelöst. WWS → dritter Winkel aus Winkelsumme, dann Sinussatz. SSW → Sinussatz liefert zwei Kandidaten, Seitenvergleich entscheidet.
+
+**Probe:** Jeder Fall wird in der Lesson mit Beispiel durchgerechnet; die vier Muster decken alle Dreieck-Aufgaben der Trigonometrie ab. ✓
+
+**Typischer Fehler:** SSW wie SWS behandeln und den zweiten Kandidaten nicht prüfen — in der Prüfung fehlen dann die zweite Lösung oder es wird ein unmögliches Dreieck akzeptiert.`,
+    matchingHints: [
+      'Gibt es ein vollständiges Paar $(\\text{Seite}, \\text{Gegenwinkel})$? Wenn ja: Sinussatz.',
+      'Liegt der Winkel zwischen zwei bekannten Seiten? Wenn ja: Cosinussatz (SWS).',
+      'Alle drei Seiten gegeben? Cosinussatz nach $\\cos\\alpha$ auflösen.',
+    ],
+    sortingQuestion: 'Bringe die Schritte zur Berechnung der Diagonalen $d$ eines Parallelogramms mit Seiten $p = 6$, $q = 8$ und Zwischenwinkel $\\varphi = 110°$ in die richtige Reihenfolge.',
+    sortingItems: [
+      'Konfiguration erkennen: SWS (zwei Seiten $p, q$ und eingeschlossener Winkel $\\varphi$)',
+      'Cosinussatz: $d^{2} = p^{2} + q^{2} - 2pq\\cos\\varphi$',
+      'Werte einsetzen: $d^{2} = 36 + 64 - 96\\cos 110° = 100 - 96 \\cdot (-0{,}342) \\approx 100 + 32{,}8$',
+      '$d = \\sqrt{132{,}8} \\approx 11{,}52$',
+      'Plausibilitätscheck: $d > $ längere Seite $q = 8$, weil $\\varphi$ stumpf ist ✓',
+    ],
+    sortingOrder: [0, 1, 2, 3, 4],
+    sortingExplanation: `**Ansatz:** Diagonalen in Parallelogrammen sind Standard-Cosinussatz-Aufgaben. Die gesuchte Diagonale liegt dem bekannten Zwischenwinkel gegenüber — SWS.
+
+**Rechnung:** Siehe Schritte oben. $\\cos 110° \\approx -0{,}342$, also $-96 \\cdot (-0{,}342) \\approx +32{,}8$ — der Stumpfwinkel verlängert die Diagonale über Pythagoras ($d_\\text{Pythag} = 10$) hinaus.
+
+**Probe:** Zweite Diagonale $d'$ (mit Winkel $180° - 110° = 70°$): $d'^{2} = 100 - 96\\cos 70° \\approx 100 - 32{,}8 = 67{,}2$, $d' \\approx 8{,}20$. Parallelogramm-Identität: $d^{2} + d'^{2} = 2(p^{2} + q^{2}) = 200$. Check: $132{,}8 + 67{,}2 = 200$. ✓
+
+**Typischer Fehler:** Bei stumpfem $\\varphi$ das Minus vor $2pq$ ignorieren und deshalb kürzere Diagonale herausbekommen — obwohl sie bei stumpfem Zwischenwinkel **länger** als $\\sqrt{p^{2}+q^{2}}$ sein muss.`,
+    sortingHints: [
+      'Welche Konfiguration liegt an der Ecke vor?',
+      'Cosinussatz mit eingeschlossenem Winkel.',
+      '$\\cos 110° < 0$, also wird der Minus-Term positiv.',
+    ],
+    errorQuestion: 'Ein Student rechnet SSW mit $a = 6$, $b = 10$, $\\alpha = 50°$ und erhält $\\sin\\beta \\approx 1{,}277$. Welche Schlussfolgerung ist korrekt?',
+    errorOptions: [
+      'Es existiert **kein** Dreieck mit diesen Gegebenheiten, weil $\\sin\\beta > 1$ unmöglich ist.',
+      'Der Taschenrechner muss auf RAD umgestellt werden.',
+      'Runden auf $\\sin\\beta = 1$ und weiterrechnen mit $\\beta = 90°$.',
+      'Sinus und Cosinus vertauschen und $\\cos\\beta$ nehmen.',
+    ],
+    errorCorrect: 0,
+    errorExplanation: `**Ansatz:** $\\sin\\beta \\le 1$ ist eine mathematische Schranke — jede Überschreitung zeigt, dass die Eingaben kein gültiges Dreieck beschreiben.
+
+**Rechnung:** $\\sin\\beta = b\\sin\\alpha/a = 10 \\cdot \\sin 50° / 6 \\approx 10 \\cdot 0{,}766 / 6 \\approx 1{,}277$. Geometrische Interpretation: Um Seite $b = 10$ von Punkt $A$ aus an die Gegenseite $a = 6$ anzulegen, müsste $b\\sin\\alpha = 7{,}66$ die kürzeste Verbindung (Höhe) sein — aber $a = 6 < 7{,}66$ reicht nicht heraus. Kein Dreieck existiert.
+
+**Probe:** SSW-Fallunterscheidung: Zwei Lösungen, falls $b\\sin\\alpha < a < b$; eine Lösung, falls $a \\ge b$; keine Lösung, falls $a < b\\sin\\alpha$. Hier $a = 6 < 7{,}66$, also kein Dreieck. ✓
+
+**Typischer Fehler:** Weiterrechnen, als wäre $\\sin\\beta = 1{,}277$ nur eine Rundungsfrage. Das liefert einen sinnlosen Winkel und verdeckt den eigentlichen Befund: die Aufgabe ist geometrisch unlösbar — ein echter Informationswert!`,
+    errorHints: [
+      'Welche Werte kann $\\sin$ annehmen?',
+      'Geometrisch: Reicht die Seite $a$, um die Gegenseite zu erreichen?',
+      '$a < b\\sin\\alpha$ bedeutet: Dreieck existiert nicht.',
+    ],
+    errorWrongAnswers: {
+      1: 'DEG/RAD-Verwechslung ändert $\\sin 50°$ (DEG $\\approx 0{,}766$) zu $\\sin 50$ rad $\\approx -0{,}262$ und erzeugt einen anderen Fehler — aber der Wert $1{,}277$ entsteht mit DEG korrekt. Die Einheit ist nicht das Problem, die **Geometrie** ist unlösbar.',
+      2: 'Runden auf $\\sin\\beta = 1$ ist unzulässig: der wahre Wert ist nicht „fast $1$", sondern **überschreitet** $1$ um $27{,}7\\%$. Das zeigt den fundamentalen Existenzmangel, kein Rundungsproblem.',
+      3: 'Sinus durch Cosinus zu ersetzen ist willkürlich und widerspricht dem Sinussatz. Die Gleichung $\\sin\\beta = b\\sin\\alpha/a$ ist korrekt aufgestellt — nur ihr Ergebnis zeigt, dass die Gegebenheiten kein Dreieck formen.',
+    },
+    transferQuestion: 'In einem allgemeinen Dreieck sind $a = 12$, $b = 15$, $c = 20$ gegeben. Berechne den Winkel $\\gamma$ in Grad (gegenüber der längsten Seite).',
+    transferAnswer: 92.87,
+    transferTolerance: 0.2,
+    transferUnit: '°',
+    transferExplanation: `**Ansatz:** SSS-Konfiguration → Cosinussatz nach $\\cos\\gamma$ auflösen. $\\gamma$ liegt der längsten Seite $c = 20$ gegenüber und sollte entsprechend der größte Winkel sein.
+
+**Rechnung:** $\\cos\\gamma = \\dfrac{a^{2} + b^{2} - c^{2}}{2ab} = \\dfrac{144 + 225 - 400}{2 \\cdot 12 \\cdot 15} = \\dfrac{-31}{360} \\approx -0{,}0861$. Also $\\gamma = \\arccos(-0{,}0861) \\approx 92{,}87°$.
+
+**Probe:** Vorzeichen: $c^{2} = 400 > a^{2} + b^{2} = 369$. Nach dem erweiterten Pythagoras bedeutet das $\\gamma > 90°$ (stumpfer Winkel). Ergebnis $92{,}87°$ passt. Die anderen Winkel mit Sinussatz: $\\alpha \\approx \\arcsin(12 \\sin 92{,}87°/20) \\approx 37{,}0°$, $\\beta \\approx 50{,}1°$; Summe $\\approx 180°$. ✓
+
+**Typischer Fehler:** $c^{2}$ und $a^{2}+b^{2}$ vertauschen: $\\cos\\gamma = (c^{2} - a^{2} - b^{2})/(2ab) \\approx +0{,}0861$ gäbe $\\gamma \\approx 87{,}1°$ — spitz statt stumpf. Immer merken: In $\\cos\\gamma = (\\text{andere}^{2} - \\text{Gegenseite}^{2})/\\cdots$ steht die **Gegenseite** mit **minus**.`,
+    transferHints: [
+      'Alle drei Seiten bekannt → Cosinussatz nach $\\cos$ umstellen.',
+      '$\\cos\\gamma = (a^{2}+b^{2}-c^{2})/(2ab)$ — $\\gamma$ liegt $c$ gegenüber.',
+      'Wenn $c$ die längste Seite ist: $\\cos\\gamma$ ist am kleinsten → $\\gamma$ ist der größte Winkel.',
+    ],
+  },
   'trig-4-1': { ...profiles['trig-3-2'], exam: true, explanation: String.raw`**Prüfungsvertiefung Identitäten:** Suche zuerst bekannte Muster wie $\sin^2+\cos^2=1$, $2\sin\alpha\cos\alpha=\sin2\alpha$ und Additionstheoreme. Danach erst lösen.`, conceptQuestion: 'Welches Muster steckt in 2sin(α)cos(α)=1?', conceptOptions: ['sin(2α)=1', 'cos(2α)=1', 'tan(2α)=1', 'sin²α+cos²α=1'], conceptCorrect: 0, conceptWrongAnswers: { 1: '$\\cos(2\\alpha)=\\cos^2\\alpha-\\sin^2\\alpha$, also Differenz der Quadrate, nicht $2\\sin\\alpha\\cos\\alpha$. Das genannte Muster ist die Sinus-Doppelwinkelformel $\\sin(2\\alpha)$.', 2: '$\\tan(2\\alpha)$ hat die Form $2\\tan\\alpha/(1-\\tan^2\\alpha)$ — ein Bruch, nicht das Produkt $2\\sin\\alpha\\cos\\alpha$. Das gegebene Muster passt nur zu $\\sin(2\\alpha)$.', 3: '$\\sin^2\\alpha+\\cos^2\\alpha=1$ gilt für jedes $\\alpha$ und ergibt keine lösbare Gleichung. Der Ausdruck $2\\sin\\alpha\\cos\\alpha$ ist hingegen gerade $\\sin(2\\alpha)$.' }, calcQuestion: 'Löse sin(2α)=1 für α im Intervall [0°,180°]. Gib die kleinere Lösung an.', calcAnswer: 45, calcTolerance: 0, calcUnit: '°', calcExplanation: 'sin(2α)=1 -> 2α=90° -> α=45°. Im Intervall folgt zusätzlich α=225° außerhalb von [0°,180°] nicht.', transferQuestion: 'Berechne (sin30°+cos30°)²-1 näherungsweise.', transferAnswer: 0.866, transferTolerance: 0.01, transferUnit: '', transferExplanation: '(sin+cos)²-1=2sin30°cos30°=2·0,5·0,866=0,866.' },
   'trig-4-2': { ...profiles['trig-3-3'], exam: true, explanation: String.raw`**Prüfungsvertiefung Anwendungen:** Zeichne ein kleines rechtwinkliges Dreieck. Entscheide, ob die gesuchte Größe horizontal, vertikal, Höhe, Schatten oder Schwingungsparameter ist.`, conceptQuestion: 'Welche Gleichung passt für die horizontale Kraftkomponente bei Winkel α zur Horizontalen?', conceptOptions: ['Fx=Fcosα', 'Fx=Fsinα', 'Fx=Ftanα', 'Fx=F/α'], conceptCorrect: 0, conceptWrongAnswers: { 1: '$F_x=F\\sin\\alpha$ wäre die vertikale Komponente (Gegenkathete zu $\\alpha$). Horizontal ist die Ankathete, also $F_x=F\\cos\\alpha$.', 2: '$\\tan\\alpha=\\sin\\alpha/\\cos\\alpha$ ist ein Verhältnis ohne Hypotenuse — es kann keine Komponente einer Kraft sein. Richtig: $F_x=F\\cos\\alpha$.', 3: '$F/\\alpha$ teilt eine Kraft (Einheit $\\mathrm{N}$) durch einen Winkel und hat keine physikalische Bedeutung. Die Zerlegung erfolgt immer mit Winkelfunktionen.' }, calcQuestion: 'F=500 N, cos37°≈0,8. Berechne Fx.', calcAnswer: 400, calcTolerance: 1, calcUnit: 'N', calcExplanation: 'Fx=Fcos37°=500·0,8=400 N.', transferQuestion: 'Für x(t)=3sin(2t): Berechne die Periode T=2π/ω als Faktor vor π.', transferAnswer: 1, transferTolerance: 0.001, transferUnit: 'π', transferExplanation: 'ω=2, also T=2π/2=π. Faktor vor π ist 1.' },
   'trig-4-3': { ...profiles['trig-3-4'], exam: true, explanation: String.raw`**Prüfungsvertiefung Gleichungen:** Bei trigonometrischen Gleichungen zählt die komplette Lösungsmenge. Bestimme erst den Hauptwinkel, dann alle Quadranten und Perioden im Intervall.`, conceptQuestion: 'Wie viele Lösungen hat sin(x)=1/2 in [0,2π]?', conceptOptions: ['2', '1', '0', 'unendlich viele'], conceptCorrect: 0, conceptWrongAnswers: { 1: 'Nur $1$ Lösung würde nur den Hauptwert $\\arcsin(1/2)=\\pi/6$ zählen. Sinus ist im 1. und 2. Quadranten positiv, also gibt es eine zweite Lösung: $\\pi-\\pi/6=5\\pi/6$.', 2: '$0$ Lösungen wäre falsch: $1/2$ liegt im Wertebereich $[-1,1]$ des Sinus, und innerhalb einer Periode $[0,2\\pi]$ gibt es daher immer $2$ Lösungen.', 3: 'Unendlich viele Lösungen hätte $\\sin x=1/2$ erst auf $\\mathbb{R}$ (wegen Periode $2\\pi$). Auf dem beschränkten Intervall $[0,2\\pi]$ sind es genau $2$.' }, calcQuestion: 'sin(x)=1/2. Gib die kleinere Lösung in Grad im Intervall [0°,360°] an.', calcAnswer: 30, calcTolerance: 0, calcUnit: '°', calcExplanation: 'Die Hauptlösung ist 30°. Die zweite Lösung ist 150°.', transferQuestion: 'Gib die zweite Lösung von sin(x)=1/2 in [0°,360°] an.', transferAnswer: 150, transferTolerance: 0, transferUnit: '°', transferExplanation: 'Sinus ist im 1. und 2. Quadranten positiv: 30° und 180°-30°=150°.' },

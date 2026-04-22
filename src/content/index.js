@@ -32,6 +32,7 @@ import { regelungstechnikSupplements } from './supplements/regelungstechnik'
 import { fourierLaplaceSupplements } from './supplements/fourier_laplace'
 import { werkstoffkundeSupplements } from './supplements/werkstoffkunde'
 import { algebraSubGoalTasks } from './subgoal_tasks/algebra'
+import { trigonometrySubGoalTasks } from './subgoal_tasks/trigonometry'
 import { MIN_EXERCISES_PER_LESSON } from './curriculum'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
@@ -59,7 +60,8 @@ const MANUAL_SUPPLEMENTS = {
 // der Lesson. Pipeline prüft in `goalTaskExercises`, dass die Länge exakt matcht.
 const SUBGOAL_EXERCISES = {
   ...algebraSubGoalTasks,
-  // trigonometry, vektoren, ableitung, … folgen in Folge-Sessions
+  ...trigonometrySubGoalTasks,
+  // vektoren, ableitung, … folgen in Folge-Sessions
 }
 
 function countExerciseSteps(lesson) {

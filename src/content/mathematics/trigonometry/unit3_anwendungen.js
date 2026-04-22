@@ -355,11 +355,9 @@ $$\\cos(2\\alpha) = 2\\cos^{2}(\\alpha) - 1 = 1 - 2\\sin^{2}(\\alpha).$$
       '$\\sin^{2}\\alpha + \\cos^{2}\\alpha = 1$',
     ],
     correctIndex: 0,
-    explanation: `**Ansatz:** Im **allgemeinen Dreieck** (nicht nur rechtwinklig) gilt: Das Verhältnis Seite zu Sinus des gegenüberliegenden Winkels ist konstant.
+    explanation: `**Ansatz:** Im **allgemeinen Dreieck** (nicht nur rechtwinklig) gilt: Das Verhältnis Seite zu Sinus des gegenüberliegenden Winkels ist konstant. Gegenüberliegende Paare $(a,\\alpha), (b,\\beta), (c,\\gamma)$ bilden alle denselben Quotienten.
 
-**Sinussatz:** $\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta} = \\dfrac{c}{\\sin\\gamma} = 2R$ (wobei $R$ der Umkreisradius ist).
-
-**Wann anwenden?** Wenn du **zwei Winkel und eine Seite** kennst (WWS/SWW), oder **zwei Seiten und einen nicht-eingeschlossenen Winkel** (SSW).
+**Rechnung:** Der Sinussatz lautet $\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta} = \\dfrac{c}{\\sin\\gamma} = 2R$ (mit Umkreisradius $R$). Anwenden, wenn **zwei Winkel und eine Seite** (WWS/SWW) oder **zwei Seiten mit nicht-eingeschlossenem Winkel** (SSW) gegeben sind — dann zwei der drei Brüche gleichsetzen und nach der gesuchten Größe auflösen.
 
 **Probe:** Im rechtwinkligen Dreieck mit $\\gamma = 90°$ liefert $\\dfrac{c}{\\sin 90°} = \\dfrac{c}{1} = c$ — und $\\dfrac{a}{\\sin\\alpha} = \\dfrac{\\text{Gegenkathete}}{\\sin\\alpha} = c$ (Hypotenuse). Konsistent mit SOH-CAH-TOA. ✓
 
