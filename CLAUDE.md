@@ -6,7 +6,14 @@ Dieses Dokument ist die zentrale Anlaufstelle, wenn Claude (oder ein anderer Cod
 
 ## Mission in einem Satz
 
-**Den Lehrplan vollständig mit handgeschriebenen, qualitativ hochwertigen Aufgaben füllen — mindestens 10 pro Lesson, mehr ist besser. Kein Slop, keine Template-Generatoren.**
+**Den Lehrplan vollständig mit handgeschriebenen, qualitativ hochwertigen Aufgaben füllen — Minima sind Untergrenzen, kein Cap. Kein Slop, keine Template-Generatoren.**
+
+### Mengen-Regel (gilt IMMER, bei jeder Session)
+
+- **Pro Lesson:** **≥ 10 Aufgaben** (Minimum).
+- **Pro Sub-Goal:** **≥ 3 Aufgaben** (Minimum).
+- **Nach oben kein Limit.** Schreib so viele Aufgaben pro Sub-Goal wie du inhaltlich sinnvoll variieren kannst — andere Zahlen, andere Kontexte, andere Typen, andere Fehlerquellen in Distraktoren. Bei prüfungsrelevanten oder fehleranfälligen Sub-Goals sind 5, 8 oder mehr Aufgaben besser als 3. **Lieber eine mehr als eine zu wenig.**
+- Wenn ein User "eine Lesson" oder "ein Topic" in Auftrag gibt: **alle Sub-Goals** dieser Lesson(s) so weit ausbauen, bis man die Kompetenz wirklich sicher kann — nicht nur, bis die Minima formal erreicht sind.
 
 ---
 
@@ -113,29 +120,36 @@ const profiles = {
 
 Neue `supplements/<topic>.js`-Datei muss in `src/content/index.js` importiert und in `MANUAL_SUPPLEMENTS` gespreadet werden.
 
-### Variante B: Goal-Tasks (pro Sub-Goal)
+### Variante B: Goal-Tasks (pro Sub-Goal mehrere Aufgaben!)
 
-Datei `src/content/subgoal_tasks/<topic>.js`. Array-Länge pro Lesson-Eintrag muss exakt `lesson.subGoals.length` entsprechen.
+Datei `src/content/subgoal_tasks/<topic>.js`. **Empfohlenes Format** — Objekt mit Sub-Goal-Index als Key, ARRAY von Aufgaben als Value. Pro Sub-Goal MEHRERE Aufgaben mit Typen-Variation:
 
 ```js
 import { mc, ni, tf, matching, sorting } from './_helpers'
 
 export const topicSubGoalTasks = {
-  'alg-0-2': [
-    ni(
-      'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Was ist der Hauptnenner von 5/12 und 7/18?',
-      36, 0, '',
-      `**Ansatz:** …\n\n**Rechnung:** …\n\n**Probe:** …\n\n**Typischer Fehler:** …`,
-      ['Zerlege in Primfaktoren.', '…', '…'],
-    ),
-    mc(/* Sub-Goal [1] */),
-    tf(/* Sub-Goal [2] */),
-    matching(/* Sub-Goal [3] */),
-  ],
+  'alg-0-2': {
+    // Sub-Goal 0 — mindestens 3 Aufgaben, gerne mehr. Typen durchmischen.
+    0: [
+      ni('Sub-Goal "Hauptnenner bei …": Was ist der Hauptnenner von 5/12 und 7/18?', 36, 0, '', …),
+      mc('Sub-Goal "Hauptnenner bei …": Welche Primfaktorzerlegung …', […], …),
+      tf('Sub-Goal "Hauptnenner bei …": Das kgV zweier Zahlen ist immer ihr Produkt.', false, …),
+      // und gerne noch mehr — 4, 5, 6 Aufgaben sind willkommen
+    ],
+    // Sub-Goal 1 — dto.
+    1: [ … ],
+    2: [ … ],
+    3: [ … ],
+  },
 }
 ```
 
-Registrierung in `src/content/index.js` unter `SUBGOAL_EXERCISES`.
+Legacy-Format (ein Array mit genau `subGoals.length` Einträgen) wird noch unterstützt, aber bei neuen Lessons bitte das Objekt-Format nutzen. Registrierung in `src/content/index.js` unter `SUBGOAL_EXERCISES`.
+
+**Wichtig für jede Sub-Goal-Gruppe:**
+- Sub-Goal-Label in **jeder** Aufgabe wörtlich zitieren (`Sub-Goal "…": …`).
+- Typen innerhalb einer Sub-Goal-Gruppe variieren (nicht 3× MC hintereinander).
+- Andere Zahlen / Kontexte / Fehler-Blickwinkel pro Aufgabe.
 
 ### Variante C: Direkte Unit-Aufgaben
 

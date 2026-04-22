@@ -32,7 +32,7 @@ import { regelungstechnikSupplements } from './supplements/regelungstechnik'
 import { fourierLaplaceSupplements } from './supplements/fourier_laplace'
 import { werkstoffkundeSupplements } from './supplements/werkstoffkunde'
 import { algebraSubGoalTasks } from './subgoal_tasks/algebra'
-import { MIN_EXERCISES_PER_LESSON } from './curriculum'
+import { MIN_EXERCISES_PER_LESSON, MIN_TASKS_PER_SUB_GOAL } from './curriculum'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
 const MANUAL_SUPPLEMENTS = {
@@ -107,26 +107,78 @@ function supplementalExercise(lesson, index) {
 // Zielaufgaben pro Sub-Goal — eine Aufgabe pro Eintrag in `lesson.subGoals`.
 // Der Content liegt manuell in `src/content/subgoal_tasks/<topic>.js` und
 // landet per Registry (SUBGOAL_EXERCISES) hier.
-function goalTaskExercises(lesson, unit) {
+/**
+ * Akzeptiert zwei Formate für Goal-Tasks pro Lesson:
+ *
+ * A) Objekt-Format (empfohlen — mehrere Aufgaben pro Sub-Goal möglich):
+ *    'lessonId': { 0: [mc(...), ni(...), tf(...)], 1: [ni(...), matching(...)], ... }
+ *
+ * B) Array-Format (Legacy — genau eine Aufgabe pro Sub-Goal, Index=Position):
+ *    'lessonId': [mc(...), ni(...), tf(...), matching(...)]
+ *    → wird intern zu { 0: [mc], 1: [ni], 2: [tf], 3: [matching] } aufgelöst.
+ *
+ * Ausgabe: flache Liste von Exercises mit korrekter subGoalIndex-Zuweisung.
+ * Empfohlen werden ≥ MIN_TASKS_PER_SUB_GOAL Aufgaben pro Sub-Goal (siehe
+ * curriculum.js) — kein harter Fehler, aber in STATUS.md als Lücke sichtbar.
+ */
+function goalTaskExercises(lesson) {
   const raw = SUBGOAL_EXERCISES[lesson.id]
   if (!raw) return []
   const subGoals = lesson.subGoals ?? []
-  if (raw.length !== subGoals.length) {
-    throw new Error(
-      `goalTaskExercises: Drift in Lesson "${lesson.id}" — subGoals=${subGoals.length}, Zielaufgaben=${raw.length}. ` +
-      `Pro Sub-Goal muss genau eine Zielaufgabe existieren (gleicher Index).`,
-    )
+
+  // Normalisieren auf Map<subGoalIndex, Exercise[]>
+  let bucketsByIndex
+  if (Array.isArray(raw)) {
+    if (raw.length !== subGoals.length) {
+      throw new Error(
+        `goalTaskExercises: Drift in Lesson "${lesson.id}" — subGoals=${subGoals.length}, Array-Länge=${raw.length}. ` +
+        `Array-Format erwartet genau eine Aufgabe pro Sub-Goal (Index=Position). ` +
+        `Nutze stattdessen das Objekt-Format \`{ 0: [ex, ex], 1: [ex], ... }\`, ` +
+        `um mehrere Aufgaben pro Sub-Goal zu ermöglichen.`,
+      )
+    }
+    bucketsByIndex = new Map(raw.map((ex, i) => [i, [ex]]))
+  } else if (raw && typeof raw === 'object') {
+    bucketsByIndex = new Map()
+    for (const [key, value] of Object.entries(raw)) {
+      const idx = Number(key)
+      if (!Number.isInteger(idx) || idx < 0 || idx >= subGoals.length) {
+        throw new Error(
+          `goalTaskExercises: ungültiger Sub-Goal-Index "${key}" in Lesson "${lesson.id}" ` +
+          `(gültig: 0..${subGoals.length - 1}).`,
+        )
+      }
+      if (!Array.isArray(value) || value.length === 0) {
+        throw new Error(
+          `goalTaskExercises: Sub-Goal-Index ${idx} in Lesson "${lesson.id}" braucht ein nicht-leeres Array.`,
+        )
+      }
+      bucketsByIndex.set(idx, value)
+    }
+  } else {
+    throw new Error(`goalTaskExercises: unbekanntes Format für Lesson "${lesson.id}".`)
   }
-  return raw.map((ex, i) => ({
-    ...ex,
-    id: `ex-${lesson.id}-goal-${i + 1}`,
-    lessonId: lesson.id,
-    isSupplemental: true,
-    isGoalTask: true,
-    subGoalIndex: i,
-    subGoalLabel: subGoals[i].label,
-    subGoalWeight: subGoals[i].examRelevance,
-  }))
+
+  // In deterministische, flache Liste serialisieren: zuerst nach Sub-Goal-Index,
+  // dann nach Position im Array innerhalb desselben Sub-Goals.
+  const out = []
+  const sortedIndices = [...bucketsByIndex.keys()].sort((a, b) => a - b)
+  for (const idx of sortedIndices) {
+    const list = bucketsByIndex.get(idx)
+    list.forEach((ex, localIdx) => {
+      out.push({
+        ...ex,
+        id: `ex-${lesson.id}-goal-sg${idx}-${localIdx + 1}`,
+        lessonId: lesson.id,
+        isSupplemental: true,
+        isGoalTask: true,
+        subGoalIndex: idx,
+        subGoalLabel: subGoals[idx].label,
+        subGoalWeight: subGoals[idx].examRelevance,
+      })
+    })
+  }
+  return out
 }
 
 function withMinimumExercises(topic) {
@@ -136,7 +188,7 @@ function withMinimumExercises(topic) {
       const exercises = { ...(unit.exercises ?? {}) }
       const lessons = unit.lessons.map((lesson) => {
         // 1) Zielaufgaben einziehen (pro Sub-Goal eine Aufgabe).
-        const goalTasks = goalTaskExercises(lesson, unit)
+        const goalTasks = goalTaskExercises(lesson)
         const goalSteps = goalTasks.map((exercise, index) => {
           exercises[exercise.id] = exercise
           return {
@@ -361,14 +413,22 @@ export function getAgentTasks() {
         const typesRanked = ALL_TYPES.map((t) => [t, typeHistogram[t]]).sort((a, b) => a[1] - b[1])
         const suggestedTypes = typesRanked.slice(0, Math.max(missing, 3)).map(([t]) => t)
 
-        // Sub-Goal-Deckung
+        // Sub-Goal-Deckung: wie viele Goal-Tasks existieren pro Sub-Goal?
+        // Ziel ist mindestens MIN_TASKS_PER_SUB_GOAL (kein Cap nach oben).
         const subGoals = Array.isArray(lesson.subGoals) ? lesson.subGoals : []
-        const coveredIndices = new Set(
-          exercises.filter((e) => e.isGoalTask && typeof e.subGoalIndex === 'number').map((e) => e.subGoalIndex),
-        )
-        const subGoalsMissingTasks = subGoals
-          .map((sg, i) => ({ index: i, label: sg.label, examRelevance: sg.examRelevance }))
-          .filter(({ index }) => !coveredIndices.has(index))
+        const tasksPerSubGoal = new Map()
+        for (const e of exercises) {
+          if (!e.isGoalTask || typeof e.subGoalIndex !== 'number') continue
+          tasksPerSubGoal.set(e.subGoalIndex, (tasksPerSubGoal.get(e.subGoalIndex) ?? 0) + 1)
+        }
+        const subGoalsCoverage = subGoals.map((sg, i) => ({
+          index: i,
+          label: sg.label,
+          examRelevance: sg.examRelevance,
+          have: tasksPerSubGoal.get(i) ?? 0,
+          target: MIN_TASKS_PER_SUB_GOAL,
+        }))
+        const subGoalsMissingTasks = subGoalsCoverage.filter((sg) => sg.have < sg.target)
 
         // 4-Block-Lücken
         const FOUR_BLOCK = [/\*\*Ansatz\s*:\*\*/i, /\*\*Rechnung\s*:\*\*/i, /\*\*Probe\s*:\*\*/i, /\*\*Typischer Fehler\s*:\*\*/i]
@@ -422,7 +482,7 @@ export function getAgentTasks() {
           missing,
           typeHistogram,
           suggestedTypes,
-          subGoals: subGoals.map((sg) => ({ label: sg.label, examRelevance: sg.examRelevance })),
+          subGoalsCoverage,
           subGoalsMissingTasks,
           fourBlockMissing,
           mcMissingWae,
