@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2376 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 425 (18 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 962 / 962 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 39 / 1134 (3 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2401 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 453 (19 %) | 100 % der Aufgaben | 🔴 |
+| MC mit wrongAnswerExplanations | 967 / 967 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 44 / 1134 (4 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -987,10 +987,10 @@ _Mechanik ist das Herzfach im Maschinenbau-Bachelor und Basis für Festigkeitsle
 - Phase: **2. Sem** · Level: vertiefung · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 11
-- Aufgaben: **70** (manuell: 35 · supplemental: 35)
-- 4-Block: 3/70 (4 %) 🔴
-- MC-wAE: 18/18 (100 %) ✅
-- Sub-Goals: 0/54 Goal-Tasks verknüpft 🔴
+- Aufgaben: **95** (manuell: 35 · supplemental: 60)
+- 4-Block: 31/95 (33 %) 🔴
+- MC-wAE: 23/23 (100 %) ✅
+- Sub-Goals: 5/54 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Spannung und Dehnung in Bauteilen: Zug/Druck, Biegung, Torsion. Hooke’sches Gesetz.**
@@ -1032,7 +1032,7 @@ _Jedes Bauteil muss Kräfte aufnehmen ohne zu versagen. Festigkeitslehre sagt, w
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `fest-1-1` Normalspannung | 4 | 0/4 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +4 Goal, +10 4B |
 | `fest-1-2` Hookesches Gesetz | 4 | 0/4 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +4 Goal, +10 4B |
-| `fest-1-3` Schubspannung und Torsion | 5 | 0/5 | 3 | 1/2/0/0/0 | 0/3 | 1/1 | ✅ | +5 Goal, +3 4B |
+| `fest-1-3` Schubspannung und Torsion | 5 | 5/5 | 28 | 6/12/5/2/3 | 28/28 | 6/6 | ✅ | — |
 | `fest-1-4` Knicken | 5 | 0/5 | 3 | 0/2/1/0/0 | 0/3 | — | ✅ | +5 Goal, +3 4B |
 | `fest-2-1` Biegespannung | 5 | 0/5 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +5 Goal, +10 4B |
 | `fest-2-2` Sicherheitszahl | 5 | 0/5 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +5 Goal, +10 4B |
@@ -1485,31 +1485,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 69 Lessons
-
-#### `fest-1-3` · Schubspannung und Torsion
-
-- **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Spannung und Dehnung
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×1, number-input ×2
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Torsionsspannung: $\tau_\text{max} = M_T/W_p$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Polares Widerstandsmoment Kreisquerschnitt: $W_p = \pi d^3/16$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Verdrehwinkel: $\varphi = M_T L/(G I_p)$ mit $I_p = \pi d^4/32$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Schubmodul Stahl: $G \approx 80\,000$ MPa (ca. $E/(2(1+\nu))$)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Reiner Schub (Niet, Bolzen): $\tau = F/A$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/festigkeitslehre.js`
-- **4-Block-Erklärung fehlt bei:** `ex-fest-1-3-a`, `ex-fest-1-3-b`, `ex-fest-1-3-c`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
-  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
-  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 68 Lessons
 
 #### `fest-1-4` · Knicken
 

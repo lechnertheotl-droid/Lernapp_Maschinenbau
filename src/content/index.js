@@ -35,6 +35,7 @@ import { algebraSubGoalTasks } from './subgoal_tasks/algebra'
 import { trigonometrySubGoalTasks } from './subgoal_tasks/trigonometry'
 import { integralrechnungSubGoalTasks } from './subgoal_tasks/integralrechnung'
 import { technischeMechanikSubGoalTasks } from './subgoal_tasks/technische_mechanik'
+import { festigkeitslehreSubGoalTasks } from './subgoal_tasks/festigkeitslehre'
 import { MIN_EXERCISES_PER_LESSON, MIN_TASKS_PER_SUB_GOAL, TOPIC_GUIDES } from './curriculum'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
@@ -65,6 +66,7 @@ const SUBGOAL_EXERCISES = {
   ...trigonometrySubGoalTasks,
   ...integralrechnungSubGoalTasks,
   ...technischeMechanikSubGoalTasks,
+  ...festigkeitslehreSubGoalTasks,
   // vektoren, ableitung, … folgen in Folge-Sessions
 }
 
