@@ -150,11 +150,7 @@ $\\cos(75°)\\cos(30°) + \\sin(75°)\\sin(30°) \\approx 0{,}2588 \\cdot 0{,}86
     correctIndex: 1,
     explanation: `**Ansatz:** Rechtwinkliges Dreieck mit Mast (vertikal) und Schatten (horizontal) skizzieren. Der Sonnenstrahl bildet die Hypotenuse.
 
-**Schritt 1 — Zuordnung:** Der Winkel $\\alpha$ zwischen Sonnenstrahl und Boden liegt am Schattenende. Vom $\\alpha$ aus gesehen ist der Mast die *Gegenkathete* ($G = 20$ m), der Schatten die *Ankathete* ($A = 15$ m).
-
-**Schritt 2 — Formel:** $\\tan(\\alpha) = \\dfrac{G}{A} = \\dfrac{20}{15} = \\dfrac{4}{3}$.
-
-**Schritt 3 — Umkehrfunktion:** $\\alpha = \\arctan(4/3) \\approx 53{,}13°$.
+**Rechnung:** Zuordnung — der Winkel $\\alpha$ zwischen Sonnenstrahl und Boden liegt am Schattenende. Vom $\\alpha$ aus gesehen: Mast = Gegenkathete ($G = 20$ m), Schatten = Ankathete ($A = 15$ m). Formel: $\\tan(\\alpha) = \\dfrac{G}{A} = \\dfrac{20}{15} = \\dfrac{4}{3}$. Umkehrfunktion: $\\alpha = \\arctan(4/3) \\approx 53{,}13°$.
 
 **Probe:** $\\tan(53{,}13°) \\approx 1{,}333 = 4/3$ ✓ (Taschenrechner, DEG-Modus).
 
@@ -179,13 +175,9 @@ $\\cos(75°)\\cos(30°) + \\sin(75°)\\sin(30°) \\approx 0{,}2588 \\cdot 0{,}86
     correctIndex: 0,
     explanation: `**Ansatz:** Kräftezerlegung, horizontale Komponente mit Kosinus, vertikale mit Sinus.
 
-**Schritt 1 — Formeln:** $F_{x} = F\\cos(\\alpha)$, $F_{y} = F\\sin(\\alpha)$.
+**Rechnung:** Formeln: $F_{x} = F\\cos(\\alpha)$, $F_{y} = F\\sin(\\alpha)$. Werte: $F_{x} = 500 \\cdot \\cos(37°) \\approx 500 \\cdot 0{,}8 = 400$ N. $F_{y} = 500 \\cdot \\sin(37°) \\approx 500 \\cdot 0{,}6 = 300$ N.
 
-**Schritt 2 — Rechnung:**
-- $F_{x} = 500 \\cdot \\cos(37°) \\approx 500 \\cdot 0{,}8 = 400$ N.
-- $F_{y} = 500 \\cdot \\sin(37°) \\approx 500 \\cdot 0{,}6 = 300$ N.
-
-**Probe mit Pythagoras:** $\\sqrt{400^{2} + 300^{2}} = \\sqrt{250000} = 500$ N ✓ — das bekannte $3{-}4{-}5$-Dreieck, skaliert mit $100$.
+**Probe:** Pythagoras $\\sqrt{400^{2} + 300^{2}} = \\sqrt{250000} = 500$ N ✓ — das bekannte $3{-}4{-}5$-Dreieck, skaliert mit $100$.
 
 **Am Einheitskreis heißt das:** Der Einheitsvektor bei $37°$ ist $(0{,}8,\\ 0{,}6)$. Der Kraftvektor ist $500 \\cdot (0{,}8,\\ 0{,}6) = (400,\\ 300)$ N.
 
@@ -210,18 +202,11 @@ $\\cos(75°)\\cos(30°) + \\sin(75°)\\sin(30°) \\approx 0{,}2588 \\cdot 0{,}86
     correctIndex: 0,
     explanation: `**Ansatz:** Standardform $x(t) = A \\sin(\\omega t + \\varphi)$ mit der gegebenen Gleichung vergleichen.
 
-**Identifikation:**
-- $A = 3$ (Vorfaktor vor dem Sinus)
-- $\\omega = 2$ (Koeffizient von $t$ im Argument)
-- $\\varphi = \\pi/4$ (Konstante im Argument)
+**Rechnung:** Aus $3 \\sin(2t + \\pi/4)$ ablesen: $A = 3$ (Vorfaktor vor dem Sinus), $\\omega = 2$ (Koeffizient von $t$ im Argument), $\\varphi = \\pi/4$ (Phasen-Konstante). Abgeleitete Größen: Periode $T = 2\\pi/\\omega = \\pi$ s; Frequenz $f = 1/T = 1/\\pi$ Hz.
 
-**Am Einheitskreis heißt das:** Die Schwingung ist die y-Koordinate eines Punkts, der auf einem Kreis mit Radius $3$ mit Winkelgeschwindigkeit $\\omega = 2$ rad/s rotiert, wobei er bei $t = 0$ schon um $\\pi/4$ vorangekommen ist.
+**Probe:** Am Einheitskreis: Schwingung ist die y-Koordinate eines Punkts, der mit Winkelgeschwindigkeit $\\omega = 2$ rad/s rotiert. Bei $t = 0$ startet er bei Phasenwinkel $\\pi/4$; $x(0) = 3\\sin(\\pi/4) = 3 \\cdot \\tfrac{\\sqrt{2}}{2} \\approx 2{,}12$ — passt zu Amplitude $A = 3$.
 
-**Abgeleitete Größen:**
-- Periode: $T = \\dfrac{2\\pi}{\\omega} = \\pi$ s
-- Frequenz: $f = \\dfrac{1}{T} = \\dfrac{1}{\\pi}$ Hz
-
-**Typischer Fehler:** $\\omega = \\pi/4$ wählen — das ist der Phasenwinkel $\\varphi$, nicht die Kreisfrequenz. Oder $\\omega = 2t$ — $\\omega$ ist eine *Konstante*, nicht eine Funktion von $t$.`,
+**Typischer Fehler:** $\\omega = \\pi/4$ wählen — das ist der Phasenwinkel $\\varphi$, nicht die Kreisfrequenz. Oder $\\omega = 2t$ — $\\omega$ ist eine **Konstante**, nicht eine Funktion von $t$.`,
     hints: [
       'Standardform: $x(t) = A \\cdot \\sin(\\omega t + \\varphi)$.',
       '$A$ ist der Vorfaktor vor $\\sin$, $\\omega$ der Faktor vor $t$ im Argument.',
@@ -269,10 +254,9 @@ $$a = \\sqrt{25} = 5.$$
     correctIndex: 1,
     explanation: `**Ansatz:** Sinus hat Periode $2\\pi$ im Argument. Die Periode der Schwingung ist die Zeit, bis das Argument um $2\\pi$ gewachsen ist.
 
-**Herleitung:** Nach einer Periode $T$ muss gelten:
-$$\\omega \\cdot (t + T) = \\omega t + 2\\pi \\Rightarrow \\omega T = 2\\pi \\Rightarrow T = \\dfrac{2\\pi}{\\omega}.$$
+**Rechnung:** Nach einer Periode $T$ muss gelten: $\\omega \\cdot (t + T) = \\omega t + 2\\pi \\Rightarrow \\omega T = 2\\pi \\Rightarrow T = \\dfrac{2\\pi}{\\omega}$.
 
-**Einheitencheck:** $[\\omega] = $ rad/s. $[T] = \\dfrac{\\text{rad}}{\\text{rad/s}} = $ s ✓.
+**Probe:** Einheitencheck: $[\\omega] = $ rad/s, $[T] = \\dfrac{\\text{rad}}{\\text{rad/s}} = $ s ✓.
 
 **Am Einheitskreis heißt das:** Der Punkt mit Winkelgeschwindigkeit $\\omega$ braucht Zeit $T = \\dfrac{2\\pi}{\\omega}$, um einmal rund zu laufen. Das ist exakt die Schwingungsperiode.
 

@@ -554,6 +554,549 @@ export const trigonometrySubGoalTasks = {
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // trig-4-2 — Prüfung: Technische Anwendungen  (5 subGoals, [PRÜFUNG])
+  // Je 5 Aufgaben = 25 Goal-Tasks
+  // ────────────────────────────────────────────────────────────────────────
+  'trig-4-2': {
+
+    // ── [0] Kräftezerlegung: Skizze, Winkelbezug, sin/cos zuordnen ────────
+    0: [
+      mc(
+        'Sub-Goal "Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\\sin$/$\\cos$ richtig zuordnen": [PRÜFUNG] Eine Kraft $F$ wirkt unter dem Winkel $\\alpha$ **zur Horizontalen**. Wie lauten die Komponenten?',
+        [
+          '$F_{x} = F\\cos\\alpha$, $F_{y} = F\\sin\\alpha$',
+          '$F_{x} = F\\sin\\alpha$, $F_{y} = F\\cos\\alpha$',
+          '$F_{x} = F\\tan\\alpha$, $F_{y} = F$',
+          '$F_{x} = F$, $F_{y} = F\\alpha$',
+        ],
+        0,
+        `**Ansatz:** Kraft als Vektor mit Länge $F$ und Richtung $\\alpha$. Horizontale und vertikale Komponente per Einheitsvektor.
+
+**Rechnung:** Der Einheitsvektor in Richtung $\\alpha$ ist $(\\cos\\alpha, \\sin\\alpha)$. Multiplikation mit $F$: $F_{x} = F\\cos\\alpha$, $F_{y} = F\\sin\\alpha$. Die Ankathete zum Horizontalbezugswinkel ist die horizontale Komponente $\\to \\cos$.
+
+**Probe:** $\\alpha = 0°$: $F_{x} = F$, $F_{y} = 0$ (rein horizontale Kraft) ✓. $\\alpha = 90°$: $F_{x} = 0$, $F_{y} = F$ (rein vertikal) ✓.
+
+**Typischer Fehler:** $\\sin$ und $\\cos$ vertauschen, besonders wenn der Winkel *zur Vertikalen* gemessen wird. Immer erst skizzieren und Ankathete/Gegenkathete klar benennen.`,
+        [
+          'Winkel zur Horizontalen $\\to$ horizontale Komponente ist Ankathete.',
+          'Ankathete $\\to \\cos$, Gegenkathete $\\to \\sin$.',
+          'Kontrolle mit $\\alpha = 0°$ und $\\alpha = 90°$.',
+        ],
+        {
+          1: '$\\sin$ und $\\cos$ vertauscht. Bei Winkel **zur Horizontalen** ist die horizontale Komponente die Ankathete $\\to \\cos$.',
+          2: 'Falsche Struktur: $\\tan\\alpha = \\sin/\\cos$ ist ein Verhältnis, keine Kraftkomponente. Komponenten sind immer $F\\cos\\alpha$ und $F\\sin\\alpha$.',
+          3: '$F \\cdot \\alpha$ multipliziert Kraft mit Winkel (unphysikalisch). Kräftezerlegung läuft über $\\sin/\\cos$, nie direkt mit dem Winkelwert.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\\sin$/$\\cos$ richtig zuordnen": [PRÜFUNG] Eine Seilkraft $F = 200\\,\\text{N}$ wirkt unter $60°$ zur Horizontalen. Berechne die vertikale Komponente in Newton.',
+        173.2, 0.5, 'N',
+        `**Ansatz:** Vertikale Komponente ist Gegenkathete zum Winkel zur Horizontalen $\\to \\sin$.
+
+**Rechnung:** $F_{y} = F\\sin(60°) = 200 \\cdot \\tfrac{\\sqrt{3}}{2} \\approx 200 \\cdot 0{,}866 = 173{,}2\\,\\text{N}$.
+
+**Probe:** Horizontale Komponente $F_{x} = 200\\cos(60°) = 100\\,\\text{N}$. Pythagoras: $\\sqrt{100^{2} + 173{,}2^{2}} = \\sqrt{10000 + 30000} = \\sqrt{40000} = 200\\,\\text{N}$ ✓.
+
+**Typischer Fehler:** $\\cos(60°) = 0{,}5$ statt $\\sin(60°) \\approx 0{,}866$ verwenden — liefert $100\\,\\text{N}$ (das ist die *horizontale* Komponente).`,
+        [
+          'Vertikale Komponente bei Winkel zur Horizontalen $\\to \\sin$.',
+          '$\\sin(60°) = \\sqrt{3}/2 \\approx 0{,}866$.',
+          '$200 \\cdot 0{,}866 = ?$',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\\sin$/$\\cos$ richtig zuordnen": [PRÜFUNG] Wird der Winkel **zur Vertikalen** (statt Horizontalen) gemessen, gilt $F_{x} = F\\sin\\alpha$, $F_{y} = F\\cos\\alpha$.',
+        true,
+        `**Ansatz:** Ankathete und Gegenkathete hängen vom Bezugswinkel ab.
+
+**Rechnung:** Bei Winkel zur Vertikalen ist die vertikale Achse die Bezugslinie: Vertikalkomponente = Ankathete $\\to \\cos$. Horizontalkomponente = Gegenkathete $\\to \\sin$. Also $F_{x} = F\\sin\\alpha$, $F_{y} = F\\cos\\alpha$.
+
+**Probe:** $\\alpha = 0°$ (vertikale Kraft): $F_{x} = 0$, $F_{y} = F$ ✓. $\\alpha = 90°$ (horizontale Kraft): $F_{x} = F$, $F_{y} = 0$ ✓.
+
+**Typischer Fehler:** Formel $F_{x} = F\\cos\\alpha$ als universell merken — sie gilt nur bei Winkel zur Horizontalen.`,
+        [
+          'Winkelbezug (horizontal oder vertikal?) entscheidet.',
+          'Ankathete des Bezugswinkels $\\to \\cos$.',
+          'Gegenkathete $\\to \\sin$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\\sin$/$\\cos$ richtig zuordnen": [PRÜFUNG] Ordne jeder Kraft-Situation die korrekte Komponentenformel zu.',
+        [
+          { left: '$\\alpha$ zur Horizontalen, $F_{x}$ gesucht',   right: '$F\\cos\\alpha$' },
+          { left: '$\\alpha$ zur Horizontalen, $F_{y}$ gesucht',   right: '$F\\sin\\alpha$' },
+          { left: '$\\alpha$ zur Vertikalen, $F_{x}$ gesucht',      right: '$F\\sin\\alpha$' },
+          { left: '$\\alpha$ zur Vertikalen, $F_{y}$ gesucht',      right: '$F\\cos\\alpha$' },
+        ],
+        `**Ansatz:** Regel: Ankathete zum Bezugswinkel $\\to \\cos$, Gegenkathete $\\to \\sin$.
+
+**Rechnung:** Bei Bezug zur Horizontalen: $F_{x}$ ist Ankathete $\\to \\cos$. Bei Bezug zur Vertikalen: $F_{y}$ ist Ankathete $\\to \\cos$, $F_{x}$ ist Gegenkathete $\\to \\sin$. Die Zuordnung vertauscht sich genau.
+
+**Probe:** Rechter-Hand-Check: bei $\\alpha = 30°$ zur Horizontalen: $F_{x} > F_{y}$ (Kraft "näher an horizontal"). Bei $\\alpha = 30°$ zur Vertikalen: $F_{y} > F_{x}$ (Kraft "näher an vertikal"). Die Formeln liefern das korrekt.
+
+**Typischer Fehler:** Generisch $F_{x} = F\\cos\\alpha$ schreiben, ohne den Bezug zu prüfen. Klausuraufgaben mischen häufig beide Bezüge.`,
+        [
+          'Bezugswinkel klären!',
+          'Ankathete zum Bezug = $\\cos$.',
+          'Gegenkathete = $\\sin$.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\\sin$/$\\cos$ richtig zuordnen": [PRÜFUNG] Bringe die Schritte zur Kräftezerlegung von $F = 100\\,\\text{N}$ bei $30°$ zur Horizontalen in die richtige Reihenfolge.',
+        [
+          'Skizze: Kraftvektor unter $30°$ über der Horizontalen',
+          'Bezugswinkel identifizieren: zur Horizontalen → $F_{x}$ Ankathete, $F_{y}$ Gegenkathete',
+          'Formeln wählen: $F_{x} = F\\cos\\alpha$, $F_{y} = F\\sin\\alpha$',
+          'Werte einsetzen: $F_{x} = 100 \\cdot 0{,}866 \\approx 86{,}6\\,\\text{N}$, $F_{y} = 100 \\cdot 0{,}5 = 50\\,\\text{N}$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Disziplinierter Prüfungs-Workflow: Skizze → Bezugsklärung → Formel → Einsetzen.
+
+**Rechnung:** $F_{x} \\approx 86{,}6\\,\\text{N}$, $F_{y} = 50\\,\\text{N}$.
+
+**Probe:** $\\sqrt{86{,}6^{2} + 50^{2}} = \\sqrt{7500 + 2500} = \\sqrt{10000} = 100\\,\\text{N}$ ✓.
+
+**Typischer Fehler:** Ohne Skizze direkt Formeln hinschreiben — dann $\\sin$/$\\cos$ verwechseln.`,
+        [
+          'Skizze macht Ankathete/Gegenkathete sichtbar.',
+          'Erst Formeln, dann Zahlen.',
+          'Pythagoras als Kontrolle.',
+        ],
+      ),
+    ],
+
+    // ── [1] Cosinussatz bei SWS — Standard-Maschinenbauaufgabe ────────────
+    1: [
+      mc(
+        'Sub-Goal "Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe": [PRÜFUNG] Welche Gleichung ist der Cosinussatz für die Seite $a$ gegenüber dem Winkel $\\alpha$?',
+        [
+          '$a^{2} = b^{2} + c^{2} - 2bc\\cos\\alpha$',
+          '$a^{2} = b^{2} + c^{2} + 2bc\\cos\\alpha$',
+          '$a = b + c - \\cos\\alpha$',
+          '$a^{2} = b\\cos\\beta + c\\cos\\gamma$',
+        ],
+        0,
+        `**Ansatz:** Cosinussatz als Verallgemeinerung des Pythagoras. Bei $\\alpha = 90°$ muss Pythagoras herauskommen.
+
+**Rechnung:** $a^{2} = b^{2} + c^{2} - 2bc\\cos\\alpha$. Bei $\\alpha = 90°$: $\\cos 90° = 0$, Korrekturterm $= 0$, Formel reduziert sich auf $a^{2} = b^{2} + c^{2}$ (Pythagoras) ✓.
+
+**Probe:** $\\alpha$ ist **gegenüber** der Seite $a$. Die Formel benutzt die beiden anliegenden Seiten ($b$ und $c$) und den eingeschlossenen Winkel ($\\alpha$).
+
+**Typischer Fehler:** Vorzeichen verwechseln (+ statt $-$). Der Minusterm sorgt für das richtige Vorzeichenverhalten: bei stumpfem Winkel ($\\alpha > 90°$) ist $\\cos\\alpha < 0$, also wird $a$ größer.`,
+        [
+          'Erinnerungsregel: Pythagoras plus Korrekturterm.',
+          'Bei $\\alpha = 90°$ muss sich Pythagoras ergeben.',
+          '$a$ gegenüber $\\alpha$; $b, c$ sind die anliegenden Seiten.',
+        ],
+        {
+          1: 'Vorzeichen $+$ statt $-$. Bei $\\alpha = 90°$ gäbe das $a^{2} = b^{2} + c^{2}$ (Pythagoras) — nur zufällig richtig, aber bei $\\alpha = 60°$ kommt $a^{2}$ zu groß heraus.',
+          2: 'Das wäre ein Satz ohne Quadrate — physikalisch sinnlos. Cosinussatz hat zwingend Quadrate ($a^{2}, b^{2}, c^{2}$).',
+          3: 'Diese Form ist der **Projektionssatz**, nicht der Cosinussatz. Der Cosinussatz hat ein eigenes Format.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe": [PRÜFUNG] Berechne die Seite $a$ in einem Dreieck mit $b = 4$, $c = 6$, $\\alpha = 60°$. (Auf 2 Nachkommastellen genau.)',
+        5.29, 0.02, '',
+        `**Ansatz:** Cosinussatz mit $\\cos(60°) = 0{,}5$.
+
+**Rechnung:** $a^{2} = 16 + 36 - 2 \\cdot 4 \\cdot 6 \\cdot 0{,}5 = 52 - 24 = 28 \\Rightarrow a = \\sqrt{28} \\approx 5{,}29$.
+
+**Probe:** Plausibilität: $a$ sollte zwischen $|b - c| = 2$ und $b + c = 10$ liegen ($5{,}29$ passt). Bei $\\alpha = 60°$ (zwischen $0°$ und $180°$) ist Dreieck wohldefiniert.
+
+**Typischer Fehler:** $\\cos(60°) = \\sqrt{3}/2$ (das ist $\\sin 60°$) verwenden — liefert falsches $a$. Oder Faktor $2bc$ vergessen und nur $b^{2} + c^{2} - \\cos\\alpha = 51{,}5$ rechnen.`,
+        [
+          'Cosinussatz einsetzen.',
+          '$\\cos(60°) = 1/2$.',
+          '$\\sqrt{28}$ berechnen.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe": [PRÜFUNG] Der Cosinussatz ist eine Verallgemeinerung des Satzes von Pythagoras: bei $\\alpha = 90°$ reduziert er sich auf $a^{2} = b^{2} + c^{2}$.',
+        true,
+        `**Ansatz:** Einsetzen von $\\alpha = 90°$ in den Cosinussatz.
+
+**Rechnung:** $\\cos(90°) = 0$, also $a^{2} = b^{2} + c^{2} - 2bc \\cdot 0 = b^{2} + c^{2}$ — exakt Pythagoras.
+
+**Probe:** Cosinussatz funktioniert für **alle** Winkel $\\alpha \\in (0°, 180°)$, nicht nur bei rechten Dreiecken. Pythagoras ist der Spezialfall.
+
+**Typischer Fehler:** Annehmen, Cosinussatz gelte nur für rechtwinklige Dreiecke. Im Gegenteil — Pythagoras gilt nur für rechtwinklige, der Cosinussatz für alle.`,
+        [
+          'Einsetzen $\\alpha = 90°$.',
+          '$\\cos(90°) = 0$.',
+          'Korrekturterm verschwindet.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe": [PRÜFUNG] Ordne jedem Dreieck die dritte Seite $a$ zu (SWS-Konfiguration).',
+        [
+          { left: '$b = 3, c = 4, \\alpha = 90°$',              right: '$a = 5$' },
+          { left: '$b = 5, c = 5, \\alpha = 60°$',              right: '$a = 5$' },
+          { left: '$b = 4, c = 4, \\alpha = 90°$',              right: '$a = 4\\sqrt{2} \\approx 5{,}66$' },
+          { left: '$b = 10, c = 10, \\alpha = 120°$',           right: '$a = 10\\sqrt{3} \\approx 17{,}32$' },
+        ],
+        `**Ansatz:** Cosinussatz mit bekannten $\\cos$-Werten.
+
+**Rechnung:** $3$-$4$-$5$: Pythagoras. $5$-$5$-$60°$: gleichseitig, $a = 5$. $4$-$4$-$90°$: $a^{2} = 32$, $a = 4\\sqrt{2}$. $10$-$10$-$120°$: $\\cos 120° = -\\tfrac{1}{2}$, $a^{2} = 100 + 100 - 2\\cdot 100\\cdot(-\\tfrac{1}{2}) = 300$, $a = 10\\sqrt{3}$.
+
+**Probe:** Plausibilitätscheck: bei stumpfem Winkel ist $a$ größer als $b$ und $c$. Bei $\\alpha = 120°$ und $b = c = 10$ ergibt $a \\approx 17{,}3 > 10$ ✓.
+
+**Typischer Fehler:** Vorzeichen von $\\cos\\alpha$ bei stumpfen Winkeln vergessen — dann kommen unsinnige (zu kleine) Ergebnisse heraus.`,
+        [
+          'Bei gleichseitigen Dreiecken: $a = b = c$.',
+          'Bei rechtem Winkel: Pythagoras.',
+          'Bei $120°$: $\\cos$ negativ, $a$ größer.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe": [PRÜFUNG] Bringe die Schritte zur Berechnung von $a$ bei $b = 8$, $c = 6$, $\\alpha = 60°$ in die richtige Reihenfolge.',
+        [
+          'Formel aufschreiben: $a^{2} = b^{2} + c^{2} - 2bc\\cos\\alpha$',
+          'Werte einsetzen: $a^{2} = 64 + 36 - 2\\cdot 8\\cdot 6 \\cdot 0{,}5$',
+          'Ausrechnen: $a^{2} = 100 - 48 = 52$',
+          'Wurzel ziehen: $a = \\sqrt{52} \\approx 7{,}21$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Cosinussatz-Workflow: Formel → Werte → Termrechnen → Wurzel.
+
+**Rechnung:** $a \\approx 7{,}21$.
+
+**Probe:** $a$ zwischen $|8-6| = 2$ und $8+6 = 14$ ✓.
+
+**Typischer Fehler:** Wurzel nicht ziehen und $52$ als Antwort abgeben. Oder $\\cos(60°) \\neq 0{,}5$ verwenden.`,
+        [
+          'Formel vor Zahlen.',
+          'Zwischenergebnisse einzeln aufschreiben.',
+          'Wurzel am Schluss, nicht vergessen.',
+        ],
+      ),
+    ],
+
+    // ── [2] Schwingungsgrößen A, ω, T, f, φ ablesen ──────────────────────
+    2: [
+      mc(
+        'Sub-Goal "Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus gegebenem $x(t)$ ablesen und umrechnen": [PRÜFUNG] Welche Amplitude und Kreisfrequenz hat $x(t) = 5\\cos(3t + \\pi/6)$?',
+        [
+          '$A = 5$, $\\omega = 3$',
+          '$A = 3$, $\\omega = 5$',
+          '$A = 5$, $\\omega = \\pi/6$',
+          '$A = 5$, $\\omega = 3t + \\pi/6$',
+        ],
+        0,
+        `**Ansatz:** Standardform $x(t) = A\\cos(\\omega t + \\varphi)$.
+
+**Rechnung:** Ablesen: $A = 5$ (Vorfaktor), $\\omega = 3$ (Koeffizient von $t$), $\\varphi = \\pi/6$ (Phasenverschiebung).
+
+**Probe:** $x(0) = 5\\cos(\\pi/6) = 5 \\cdot \\tfrac{\\sqrt{3}}{2} \\approx 4{,}33$ — passt zu Amplitude $5$ und Phase $\\pi/6$.
+
+**Typischer Fehler:** $A$ und $\\omega$ vertauschen oder $\\omega$ mit $\\varphi$ verwechseln. Die Reihenfolge in der Formel ist fix: **Amplitude** $\\cdot \\cos($ **Kreisfrequenz** $\\cdot t + $ **Phase** $)$.`,
+        [
+          'Standardform: $A\\cos(\\omega t + \\varphi)$.',
+          '$A$ ist der Vorfaktor vor $\\cos$.',
+          '$\\omega$ ist der Faktor vor $t$ **innen**.',
+        ],
+        {
+          1: '$A$ und $\\omega$ vertauscht. $A = 5$ (außen vor $\\cos$), $\\omega = 3$ (innen vor $t$).',
+          2: '$\\pi/6$ ist die Phase $\\varphi$, nicht die Kreisfrequenz. $\\omega$ steht als Faktor vor $t$.',
+          3: '$\\omega$ ist eine Konstante. Der ganze Ausdruck $3t + \\pi/6$ ist das Argument, nicht $\\omega$ selbst.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus gegebenem $x(t)$ ablesen und umrechnen": [PRÜFUNG] Gegeben $x(t) = 2\\sin(4\\pi t)$. Berechne die Periode $T$ in Sekunden.',
+        0.5, 0.01, 's',
+        `**Ansatz:** $T = 2\\pi/\\omega$.
+
+**Rechnung:** $\\omega = 4\\pi$, also $T = \\dfrac{2\\pi}{4\\pi} = \\dfrac{1}{2} = 0{,}5\\,\\text{s}$.
+
+**Probe:** Frequenz $f = 1/T = 2\\,\\text{Hz}$ — zwei Schwingungen pro Sekunde. Stimmt mit $\\omega = 4\\pi = 2\\pi \\cdot 2$ überein.
+
+**Typischer Fehler:** Direkt $T = \\omega$ setzen (in diesem Fall $T = 4\\pi$, also ca. $12{,}57\\,\\text{s}$ — viel zu lang). Immer $2\\pi$ durch $\\omega$ teilen.`,
+        [
+          '$T = 2\\pi / \\omega$.',
+          '$\\omega = 4\\pi$.',
+          '$2\\pi / 4\\pi = 1/2$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus gegebenem $x(t)$ ablesen und umrechnen": [PRÜFUNG] Für die Netzfrequenz $f = 50\\,\\text{Hz}$ gilt Kreisfrequenz $\\omega = 100\\pi\\,\\text{rad/s}$.',
+        true,
+        `**Ansatz:** $\\omega = 2\\pi f$.
+
+**Rechnung:** $\\omega = 2\\pi \\cdot 50 = 100\\pi \\approx 314{,}16\\,\\text{rad/s}$.
+
+**Probe:** Umgekehrt: $f = \\omega / (2\\pi) = 100\\pi/(2\\pi) = 50\\,\\text{Hz}$ ✓.
+
+**Typischer Fehler:** Faktor $2\\pi$ weglassen und $\\omega = f = 50$ setzen — das ist gleichbedeutend mit "Umdrehung/s" statt "rad/s".`,
+        [
+          '$\\omega = 2\\pi f$.',
+          'Netzfrequenz: $50\\,\\text{Hz}$.',
+          '$2\\pi \\cdot 50 = 100\\pi$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus gegebenem $x(t)$ ablesen und umrechnen": [PRÜFUNG] Ordne jeder Schwingung ihre Kreisfrequenz $\\omega$ zu.',
+        [
+          { left: '$x(t) = \\sin(t)$',          right: '$\\omega = 1\\,\\text{rad/s}$' },
+          { left: '$x(t) = \\cos(2\\pi t)$',    right: '$\\omega = 2\\pi\\,\\text{rad/s}$' },
+          { left: '$x(t) = 3\\sin(5t + 1)$',    right: '$\\omega = 5\\,\\text{rad/s}$' },
+          { left: '$x(t) = \\cos(\\omega_{0} t)$', right: '$\\omega = \\omega_{0}$' },
+        ],
+        `**Ansatz:** $\\omega$ ist der Koeffizient von $t$ im Argument der Sinus/Kosinus-Funktion.
+
+**Rechnung:** Unabhängig von Amplitude und Phase — nur das Argument $\\omega t + \\varphi$ zählt.
+
+**Probe:** Periodencheck für Zeile 2: $T = 2\\pi/\\omega = 2\\pi/(2\\pi) = 1\\,\\text{s}$ — passt zu $f = 1\\,\\text{Hz}$.
+
+**Typischer Fehler:** Bei $\\cos(2\\pi t)$ $\\omega = 2\\pi t$ schreiben — aber $\\omega$ ist der konstante Faktor **vor** $t$, nicht das ganze Argument.`,
+        [
+          'Koeffizient von $t$ = $\\omega$.',
+          'Phase und Amplitude irrelevant.',
+          'Bei symbolischem $\\omega_{0}$: direkt ablesen.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus gegebenem $x(t)$ ablesen und umrechnen": [PRÜFUNG] Bringe die Schritte zur Bestimmung aller Schwingungsgrößen für $x(t) = 4\\sin(10t + \\pi/3)$ in die richtige Reihenfolge.',
+        [
+          'Standardform $A\\sin(\\omega t + \\varphi)$ identifizieren',
+          'Ablesen: $A = 4$, $\\omega = 10$, $\\varphi = \\pi/3$',
+          'Periode berechnen: $T = 2\\pi/\\omega = 2\\pi/10 = \\pi/5 \\approx 0{,}628\\,\\text{s}$',
+          'Frequenz: $f = 1/T = 10/(2\\pi) \\approx 1{,}59\\,\\text{Hz}$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Systematisch: Form-Check → Ablesen → Periode → Frequenz.
+
+**Rechnung:** Amplitude $4$, Kreisfrequenz $10\\,\\text{rad/s}$, Periode $\\approx 0{,}63\\,\\text{s}$, Frequenz $\\approx 1{,}59\\,\\text{Hz}$.
+
+**Probe:** $\\omega = 2\\pi f = 2\\pi \\cdot 1{,}59 \\approx 10$ ✓.
+
+**Typischer Fehler:** $f$ und $\\omega$ verwechseln (Faktor $2\\pi$). $\\omega$ in rad/s, $f$ in Hz.`,
+        [
+          'Standardform zuerst.',
+          'Alles Ablesbare ablesen.',
+          'Abgeleitete Größen ($T, f$) daraus.',
+        ],
+      ),
+    ],
+
+    // ── [3] Einheitenkonsistenz: ωt und φ in Radiant ──────────────────────
+    3: [
+      mc(
+        'Sub-Goal "Einheitenkonsistenz: $\\omega t$ in Radiant, Phasenwinkel $\\varphi$ ebenfalls Radiant": [PRÜFUNG] Warum muss das Argument $\\omega t + \\varphi$ dimensional in Radiant vorliegen?',
+        [
+          'Weil $\\sin$ und $\\cos$ als Funktionen nur Radiant-Argumente standardmäßig verarbeiten',
+          'Weil $\\omega$ dimensionslos ist',
+          'Weil $t$ in Sekunden sein muss',
+          'Weil Winkel immer in Grad gemessen werden',
+        ],
+        0,
+        `**Ansatz:** Definition und Konvention mathematischer Winkelfunktionen.
+
+**Rechnung:** In der Mathematik/Physik sind $\\sin, \\cos$ analytisch über die Taylor-Reihe definiert: $\\sin x = x - x^{3}/6 + \\ldots$ Dies konvergiert nur, wenn $x$ in **Radiant** ist. Kreisfrequenz $\\omega$ hat daher Einheit rad/s, sodass $\\omega t$ in rad ist. Phase $\\varphi$ muss gleichartig sein.
+
+**Probe:** Einheitencheck: $[\\omega \\cdot t] = \\tfrac{\\text{rad}}{\\text{s}}\\cdot \\text{s} = \\text{rad}$ ✓. Wenn man $\\omega$ in 1/s und $t$ in s nimmt, bekommt man rad — perfekt.
+
+**Typischer Fehler:** $\\omega t$ als "Grad" lesen — Taschenrechner muss im RAD-Modus sein, sonst falsche Werte.`,
+        [
+          'Definition von $\\sin/\\cos$ über Taylor-Reihe setzt Radiant voraus.',
+          '$\\omega$ hat Einheit rad/s.',
+          'Phase $\\varphi$ muss gleiche Einheit wie $\\omega t$ haben.',
+        ],
+        {
+          1: '$\\omega$ hat Einheit rad/s, also **nicht** dimensionslos. Rad gilt als dimensionslose Pseudo-Einheit, Sekunden aber nicht.',
+          2: 'Zeit kann in beliebigen Zeit-Einheiten sein, nur muss $\\omega$ passen. Die Kernaussage ist der Radiant-Winkel im Sinus-Argument.',
+          3: 'In Schwingungsrechnung verwendet man durchgängig Radiant — Grad sind in der Ingenieurrechnung die Ausnahme.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Einheitenkonsistenz: $\\omega t$ in Radiant, Phasenwinkel $\\varphi$ ebenfalls Radiant": [PRÜFUNG] Rechne $\\varphi = 60°$ in Radiant um (als Bruchteil $\\pi$, d.h. Antwort ist Faktor vor $\\pi$).',
+        0.3333, 0.001, '',
+        `**Ansatz:** $1° = \\pi/180\\,\\text{rad}$.
+
+**Rechnung:** $60° = 60 \\cdot \\tfrac{\\pi}{180} = \\tfrac{\\pi}{3}$. Faktor vor $\\pi$: $1/3 \\approx 0{,}333$.
+
+**Probe:** Umgekehrt: $\\tfrac{\\pi}{3}\\,\\text{rad} = \\tfrac{\\pi}{3} \\cdot \\tfrac{180}{\\pi} = 60°$ ✓.
+
+**Typischer Fehler:** Faktor $180/\\pi$ statt $\\pi/180$ verwenden — liefert ein Ergebnis um den Faktor $\\pi^2/180$ daneben.`,
+        [
+          '$1° = \\pi/180$ rad.',
+          '$60/180 = 1/3$.',
+          'Antwort ist $1/3$ (Faktor vor $\\pi$).',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Einheitenkonsistenz: $\\omega t$ in Radiant, Phasenwinkel $\\varphi$ ebenfalls Radiant": [PRÜFUNG] In $x(t) = A\\sin(\\omega t + \\varphi)$ dürfen $\\omega t$ und $\\varphi$ auch in unterschiedlichen Einheiten sein, solange die Summe korrekt ist.',
+        false,
+        `**Ansatz:** Dimensionskonsistenz in Summanden.
+
+**Rechnung:** $\\omega t + \\varphi$ ist eine **Summe**. Summen sind nur dimensional konsistent, wenn **alle Summanden dieselbe Einheit haben**. Also müssen $\\omega t$ und $\\varphi$ beide in Radiant (oder beide in Grad) vorliegen.
+
+**Probe:** Wenn $\\omega t = 2\\pi$ (Radiant) und $\\varphi = 60°$ (Grad), wäre $2\\pi + 60°$ ein unsinniger Ausdruck — wie "$3\\,\\text{m} + 4\\,\\text{kg}$".
+
+**Typischer Fehler:** Klausuraufgaben mit gemischten Einheiten — immer erst alle Winkelgrößen auf Radiant umrechnen!`,
+        [
+          'Summanden müssen gleiche Einheit haben.',
+          '$\\omega t$ ist immer rad (bei $\\omega$ in rad/s).',
+          '$\\varphi$ muss also auch rad sein.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Einheitenkonsistenz: $\\omega t$ in Radiant, Phasenwinkel $\\varphi$ ebenfalls Radiant": [PRÜFUNG] Ordne jedem Gradwert den entsprechenden Radiantwert zu.',
+        [
+          { left: '$30°$',    right: '$\\pi/6\\,\\text{rad}$' },
+          { left: '$45°$',    right: '$\\pi/4\\,\\text{rad}$' },
+          { left: '$60°$',    right: '$\\pi/3\\,\\text{rad}$' },
+          { left: '$180°$',   right: '$\\pi\\,\\text{rad}$' },
+        ],
+        `**Ansatz:** Standardwinkel auswendig. $180° = \\pi$, alle anderen als Bruchteile.
+
+**Rechnung:**
+· $30° = \\pi/6$
+· $45° = \\pi/4$
+· $60° = \\pi/3$
+· $90° = \\pi/2$
+· $180° = \\pi$
+· $360° = 2\\pi$
+
+**Probe:** Alle haben $30° \\cdot k \\to \\pi/6 \\cdot k$ als Muster.
+
+**Typischer Fehler:** $30°$ mit $\\pi/3$ verwechseln — das gilt für $60°$. Kleinere Grad = kleinerer Bruchteil = größerer Nenner.`,
+        [
+          '$180° = \\pi$.',
+          '$30° = \\pi/6$, $45° = \\pi/4$, $60° = \\pi/3$.',
+          '$90° = \\pi/2$ (Viertelkreis).',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Einheitenkonsistenz: $\\omega t$ in Radiant, Phasenwinkel $\\varphi$ ebenfalls Radiant": [PRÜFUNG] Bringe die Schritte für eine Schwingung mit $\\omega = 100\\,\\text{rad/s}$, $\\varphi = 90°$, $t = 0{,}01\\,\\text{s}$ in die richtige Reihenfolge (Argument in rad berechnen).',
+        [
+          'Phase $\\varphi$ in Radiant: $90° = \\pi/2\\,\\text{rad} \\approx 1{,}571\\,\\text{rad}$',
+          '$\\omega t$ berechnen: $100 \\cdot 0{,}01 = 1\\,\\text{rad}$',
+          'Summieren: $\\omega t + \\varphi = 1 + 1{,}571 = 2{,}571\\,\\text{rad}$',
+          'Taschenrechner-Modus: RAD. Sinus-Wert: $\\sin(2{,}571) \\approx 0{,}540$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Erst Einheiten konsistent machen, dann rechnen.
+
+**Rechnung:** Argument $\\approx 2{,}571$ rad, $\\sin \\approx 0{,}54$.
+
+**Probe:** Einheitencheck: $\\omega t$ in rad, $\\varphi$ in rad, Summe in rad ✓.
+
+**Typischer Fehler:** $90°$ nicht umrechnen und Taschenrechner auf DEG lassen: $\\sin(1 + 90) = \\sin(91°) \\approx 1$, völlig anderes Ergebnis.`,
+        [
+          'Immer zuerst alle Winkel auf Radiant.',
+          'Taschenrechner-Modus prüfen.',
+          'Dann Summe bilden und $\\sin$ anwenden.',
+        ],
+      ),
+    ],
+
+    // ── [4] Plausibilitätscheck: Komponenten und Winkelbereiche ───────────
+    4: [
+      mc(
+        'Sub-Goal "Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten": [PRÜFUNG] Ein Student berechnet $F_{x} = 700\\,\\text{N}$ und $F_{y} = 400\\,\\text{N}$ für eine Kraft $F = 500\\,\\text{N}$. Was ist falsch?',
+        [
+          'Komponenten dürfen niemals größer als der Betrag der Gesamtkraft sein',
+          'Die Komponenten sind in Ordnung, nur die Reihenfolge ist falsch',
+          'Das Vorzeichen stimmt nicht',
+          'Der Betrag $F$ sollte $\\sqrt{700^{2}+400^{2}} = 806\\,\\text{N}$ sein',
+        ],
+        0,
+        `**Ansatz:** Plausibilitätscheck: $|F_{x}|, |F_{y}| \\le |F|$, weil $|\\sin|, |\\cos| \\le 1$.
+
+**Rechnung:** $F_{x} = 700 > 500 = |F|$ — widerspricht $F_{x} = F\\cos\\alpha \\le F$. Also Rechenfehler.
+
+**Probe:** Pythagoras-Check: $\\sqrt{F_{x}^{2} + F_{y}^{2}}$ muss $= |F|$ ergeben. Hier $\\sqrt{700^{2} + 400^{2}} \\approx 806 \\ne 500$ — bestätigt Fehler.
+
+**Typischer Fehler:** Ergebnisse abschreiben, ohne Plausibilität zu prüfen. Die Ungleichung $|F_{x}|, |F_{y}| \\le |F|$ ist eine **schnelle** Kontrolle, die viele Klausur-Punkte rettet.`,
+        [
+          'Was ist die geometrische Bedeutung von Komponenten?',
+          'Projektionen auf x- und y-Achse.',
+          'Projektion $\\le$ Originallänge.',
+        ],
+        {
+          1: 'Die Reihenfolge der Komponenten ist beliebig — der Fehler liegt darin, dass beide zu groß sind.',
+          2: 'Vorzeichen betreffen die Richtung, nicht die Größe. Hier sind die **Beträge** zu groß.',
+          3: 'Das wäre die richtige Rechnung, wenn $F$ gesucht wäre. Aber $F = 500$ ist **gegeben** — die Komponenten sind also falsch.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten": [PRÜFUNG] Eine Kraft $F = 1000\\,\\text{N}$ zeigt in Richtung $\\alpha = 150°$ gegen die Horizontale. In welchem Quadranten liegt der Kraftvektor (1, 2, 3 oder 4)?',
+        2, 0, '',
+        `**Ansatz:** Quadrantenbestimmung über den Winkel gegen die Horizontale.
+
+**Rechnung:** $150°$ liegt zwischen $90°$ und $180°$ → **2. Quadrant** ($x < 0$, $y > 0$).
+
+**Probe:** $\\cos(150°) = -\\tfrac{\\sqrt{3}}{2} < 0$ → $F_{x} < 0$ ✓. $\\sin(150°) = +\\tfrac{1}{2} > 0$ → $F_{y} > 0$ ✓. Passt zu 2. Quadrant.
+
+**Typischer Fehler:** Bei Winkeln $> 90°$ reflexartig "1. Quadrant" eintragen. Immer Quadrantengrenzen prüfen: 1.Q $[0°, 90°]$, 2.Q $[90°, 180°]$, 3.Q $[180°, 270°]$, 4.Q $[270°, 360°]$.`,
+        [
+          'Quadrantengrenzen: je $90°$.',
+          '$150°$ liegt zwischen $90°$ und $180°$.',
+          '2. Quadrant.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten": [PRÜFUNG] Die Gleichung $F_{x}^{2} + F_{y}^{2} = F^{2}$ (Pythagoras) kann immer zum Plausibilitätscheck nach einer Kräftezerlegung genutzt werden.',
+        true,
+        `**Ansatz:** Kraft als Vektor mit Betrag $F$. Komponenten sind Projektionen auf x- und y-Achse.
+
+**Rechnung:** $F_{x} = F\\cos\\alpha$, $F_{y} = F\\sin\\alpha$. Dann $F_{x}^{2} + F_{y}^{2} = F^{2}(\\cos^{2} + \\sin^{2}) = F^{2}$. Immer erfüllt.
+
+**Probe:** Beispiel $F = 100, \\alpha = 30°$: $F_{x} \\approx 86{,}6$, $F_{y} = 50$. $86{,}6^{2} + 50^{2} = 7500 + 2500 = 10000 = 100^{2}$ ✓.
+
+**Typischer Fehler:** Nach der Zerlegung nicht kontrollieren — klassischer Punkt-Verlust in Klausuren.`,
+        [
+          'Pythagoras am Einheitskreis ist immer wahr.',
+          'Komponenten-Quadrate aufaddieren.',
+          'Muss $F^{2}$ ergeben.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten": [PRÜFUNG] Ordne jedem Winkel (zur positiven x-Achse) den Quadranten und die Vorzeichen von $F_x, F_y$ zu.',
+        [
+          { left: '$\\alpha = 30°$',     right: '1. Q: $F_x > 0, F_y > 0$' },
+          { left: '$\\alpha = 120°$',    right: '2. Q: $F_x < 0, F_y > 0$' },
+          { left: '$\\alpha = 210°$',    right: '3. Q: $F_x < 0, F_y < 0$' },
+          { left: '$\\alpha = 300°$',    right: '4. Q: $F_x > 0, F_y < 0$' },
+        ],
+        `**Ansatz:** CAS-Regel (alternativ ASTC): 1. Q alle positiv, 2. Q nur Sinus positiv, 3. Q Tangens positiv, 4. Q nur Cosinus positiv.
+
+**Rechnung:** $\\cos\\alpha = F_x/F$, $\\sin\\alpha = F_y/F$. Vorzeichen direkt aus den Vorzeichen von $\\sin, \\cos$.
+
+**Probe:** $\\alpha = 210°$: $\\cos(210°) = -\\tfrac{\\sqrt{3}}{2} < 0$, $\\sin(210°) = -\\tfrac{1}{2} < 0$ → beide negativ → 3. Q ✓.
+
+**Typischer Fehler:** Vorzeichen falsch zuordnen — Einheitskreis-Skizze verhindert das.`,
+        [
+          'Quadrantengrenzen 0°/90°/180°/270°/360°.',
+          'ASTC-Regel: All, Sin, Tan, Cos positiv in 1./2./3./4. Q.',
+          'Vorzeichen von $\\sin, \\cos$ → Vorzeichen der Komponenten.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten": [PRÜFUNG] Bringe die Plausibilitätsschritte nach einer Kräftezerlegung in die richtige Reihenfolge.',
+        [
+          'Komponenten-Beträge prüfen: $|F_x|, |F_y| \\le |F|$?',
+          'Pythagoras-Check: $\\sqrt{F_x^{2} + F_y^{2}} \\stackrel{?}{=} |F|$',
+          'Vorzeichen-Check: passen zur Winkellage (Quadrant)?',
+          'Bei Widerspruch: Rechnung prüfen (meist $\\sin/\\cos$-Verwechslung)',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Standard-Plausibilitätsroutine nach jeder Komponentenrechnung.
+
+**Rechnung:** Alle drei Kontrollen in 30 Sekunden durchführbar — lohnt sich immer.
+
+**Probe:** Beispiel $F = 500, \\alpha = 60°$: $F_x = 250, F_y \\approx 433$. Beide $< 500$ ✓. $\\sqrt{250^{2} + 433^{2}} = 500$ ✓. 1. Q → beide positiv ✓.
+
+**Typischer Fehler:** Plausibilitätschecks überspringen und Fehler zu spät bemerken. In Prüfungen: immer drei Sekunden für den Pythagoras-Check investieren.`,
+        [
+          'Beträge zuerst.',
+          'Pythagoras als harter Test.',
+          'Vorzeichen zum Quadranten.',
+        ],
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // trig-3-5 — Sinussatz & Cosinussatz  (6 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'trig-3-5': {
