@@ -1418,7 +1418,13 @@ $$\sigma_{1/2} = \sigma_M \pm R$$
                 correctValue: 86.1,
                 tolerance: 0.5,
                 unit: 'MPa',
-                explanation: '$\\sigma_M = (70+30)/2 = 50$ MPa. $R = \\sqrt{20^2 + 30^2} = \\sqrt{1300} \\approx 36{,}1$ MPa. $\\sigma_1 = 50 + 36{,}1 \\approx 86{,}1$ MPa.',
+                explanation: `**Ansatz:** Hauptspannungen über den Mohr-Kreis: Erst Mittelpunkt $\\sigma_M = (\\sigma_x+\\sigma_y)/2$, dann Radius $R = \\sqrt{((\\sigma_x-\\sigma_y)/2)^2 + \\tau_{xy}^2}$, dann $\\sigma_1 = \\sigma_M + R$.
+
+**Rechnung:** $\\sigma_M = (70+30)/2 = 50$ MPa. $R = \\sqrt{20^2 + 30^2} = \\sqrt{1300} \\approx 36{,}06$ MPa. $\\sigma_1 = 50 + 36{,}06 \\approx 86{,}1$ MPa.
+
+**Probe:** Invariantencheck: $\\sigma_1 + \\sigma_2 = 86{,}1 + 13{,}9 = 100 = \\sigma_x + \\sigma_y$ ✓.
+
+**Typischer Fehler:** $(\\sigma_x - \\sigma_y)$ direkt ohne Halbierung quadrieren ($40^2 = 1600$ statt $20^2 = 400$) — ergibt viel zu großen Radius.`,
                 hints: ['$\\sigma_M = (\\sigma_x + \\sigma_y)/2 = 50$', '$R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2} = \\sqrt{400+900}$', '$\\sigma_1 = \\sigma_M + R$'],
               },
               {
@@ -1427,7 +1433,13 @@ $$\sigma_{1/2} = \sigma_M \pm R$$
                 correctValue: 36.1,
                 tolerance: 0.5,
                 unit: 'MPa',
-                explanation: '$\\tau_{\\max}$ entspricht dem Radius des Mohr-Kreises: $R = \\sqrt{20^2 + 30^2} = \\sqrt{1300} \\approx 36{,}1$ MPa.',
+                explanation: `**Ansatz:** Die maximale Schubspannung im Bauteil entspricht dem **Radius** des Mohr-Kreises: $\\tau_\\text{max} = R$.
+
+**Rechnung:** $R = \\sqrt{((70-30)/2)^2 + 30^2} = \\sqrt{400 + 900} = \\sqrt{1300} \\approx 36{,}1$ MPa.
+
+**Probe:** Alternativ aus Hauptspannungen: $\\tau_\\text{max} = (\\sigma_1 - \\sigma_2)/2 = (86{,}1 - 13{,}9)/2 = 36{,}1$ ✓. $\\tau_\\text{max}$ tritt unter $45°$ zu den Hauptachsen auf.
+
+**Typischer Fehler:** $\\tau_\\text{max} = \\tau_{xy} = 30$ setzen (das ist nur der Schub in der $x,y$-Ebene, nicht das Maximum über alle Schnitte).`,
                 hints: ['$\\tau_{\\max}$ = Radius des Mohr-Kreises', '$R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$', '$\\sqrt{1300} \\approx 36{,}1$'],
               },
               {
@@ -1435,7 +1447,13 @@ $$\sigma_{1/2} = \sigma_M \pm R$$
                 question: '[PRÜFUNG] $\\sigma_x = 100$ MPa, $\\sigma_y = 0$ MPa, $\\tau_{xy} = 0$ MPa. Was ist die kleinere Hauptspannung $\\sigma_2$?',
                 options: ['0 MPa', '50 MPa', '100 MPa', '−50 MPa'],
                 correctIndex: 0,
-                explanation: '$\\sigma_M = 50$ MPa, $R = 50$ MPa (da $\\tau = 0$). $\\sigma_2 = 50 - 50 = 0$ MPa.',
+                explanation: `**Ansatz:** Bei $\\tau_{xy} = 0$ sind $x, y$ bereits Hauptachsen — $\\sigma_1, \\sigma_2 \\in \\{\\sigma_x, \\sigma_y\\}$. Formal über Mohr: $\\sigma_{1,2} = \\sigma_M \\pm R$.
+
+**Rechnung:** $\\sigma_M = (100 + 0)/2 = 50$ MPa. $R = \\sqrt{50^2 + 0^2} = 50$ MPa. $\\sigma_2 = 50 - 50 = 0$ MPa, $\\sigma_1 = 50 + 50 = 100$ MPa.
+
+**Probe:** Erwartungsgemäß $\\sigma_1 = \\sigma_x = 100$ und $\\sigma_2 = \\sigma_y = 0$ — bei $\\tau = 0$ sind die Achsenwerte direkt die Hauptwerte.
+
+**Typischer Fehler:** Den Mittelpunkt $\\sigma_M = 50$ als Hauptspannung interpretieren (Option 50 MPa). $\\sigma_M$ ist die Lage des Kreismittelpunkts, nicht ein Wert **auf** dem Kreis.`,
                 hints: ['$\\sigma_M = (\\sigma_x + \\sigma_y)/2$', '$R = (\\sigma_x - \\sigma_y)/2$ bei $\\tau = 0$', '$\\sigma_2 = \\sigma_M - R$'],
                 wrongAnswerExplanations: {
                   1: '50 MPa ist der Mittelpunkt $\\sigma_M = (100+0)/2$ — noch nicht die Hauptspannung. $\\sigma_2 = \\sigma_M - R = 50 - 50 = 0$ MPa.',

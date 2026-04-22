@@ -1074,4 +1074,615 @@ export const festigkeitslehreSubGoalTasks = {
     ],
   },
 
+  // ────────────────────────────────────────────────────────────────────────
+  // fest-2-3 — Mohr'scher Spannungskreis  (6 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'fest-2-3': {
+
+    // ── [0] Mittelpunkt: σ_M = (σ_x + σ_y)/2 ───────────────────────────
+    0: [
+      ni(
+        'Sub-Goal "Mittelpunkt: $\\sigma_M = (\\sigma_x + \\sigma_y)/2$": An einem Bauteil wird gemessen $\\sigma_x = 80\\,\\text{MPa}$, $\\sigma_y = 40\\,\\text{MPa}$, $\\tau_{xy} = 25\\,\\text{MPa}$. Bestimme den Mittelpunkt $\\sigma_M$ des Mohr-Kreises.',
+        60, 0.5, 'MPa',
+        `**Ansatz:** Der Mittelpunkt liegt auf der $\\sigma$-Achse bei $\\sigma_M = (\\sigma_x + \\sigma_y)/2$. $\\tau_{xy}$ wird **nicht** für den Mittelpunkt gebraucht — er verschiebt nur den Kreis vertikal (und damit den Radius), nicht horizontal.
+
+**Rechnung:** $\\sigma_M = (80 + 40)/2 = 60\\,\\text{MPa}$.
+
+**Probe:** Invariante $\\sigma_x + \\sigma_y$ ist drehrichtungsunabhängig (Spur des Spannungstensors). Der Kreismittelpunkt wandert beim Drehen des Schnitts also nicht — nur der Punkt auf dem Kreis.
+
+**Typischer Fehler:** $\\tau_{xy}$ in den Mittelpunkt einrechnen (führt bei vielen auf $60 + 25 = 85$ o. ä.). Oder Vorzeichen ignorieren, wenn eine der Normalspannungen negativ ist.`,
+        [
+          'Mittelpunkt hängt **nur** von $\\sigma_x$ und $\\sigma_y$ ab.',
+          'Arithmetisches Mittel: $(\\sigma_x + \\sigma_y)/2$.',
+          '$(80+40)/2 = 60$.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Mittelpunkt: $\\sigma_M = (\\sigma_x + \\sigma_y)/2$": Ein Druckstab mit Zusatzbiegung liefert $\\sigma_x = 120\\,\\text{MPa}$ (Zug) und $\\sigma_y = -40\\,\\text{MPa}$ (Druck). Wo liegt der Mittelpunkt des Mohr-Kreises?',
+        40, 0.5, 'MPa',
+        `**Ansatz:** Vorzeichen konsequent mitschleppen — Druck ist negativ, Zug positiv. $\\sigma_M = (\\sigma_x + \\sigma_y)/2$.
+
+**Rechnung:** $\\sigma_M = (120 + (-40))/2 = 80/2 = 40\\,\\text{MPa}$.
+
+**Probe:** Der Mittelpunkt liegt also **rechts** vom Ursprung, aber deutlich näher als bei reinem Zug — die Druckkomponente zieht den Kreismittelpunkt zur Null.
+
+**Typischer Fehler:** Vorzeichen der Druckspannung weggelassen ($\\sigma_M = (120+40)/2 = 80$) oder den Mittelpunkt als Betrag $|\\sigma_x - \\sigma_y|/2 = 80$ angegeben — das ist ein Radius-Anteil, kein Mittelpunkt.`,
+        [
+          'Druck → negatives Vorzeichen.',
+          '$(120 + (-40))/2$.',
+          'Ergebnis $= 40$, positiv.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Mittelpunkt: $\\sigma_M = (\\sigma_x + \\sigma_y)/2$": Bei **reinem Schub** ($\\sigma_x = \\sigma_y = 0$, $\\tau_{xy} \\neq 0$) liegt der Mittelpunkt des Mohr-Kreises …',
+        [
+          'im Ursprung ($\\sigma_M = 0$)',
+          'bei $\\sigma_M = \\tau_{xy}$',
+          'bei $\\sigma_M = \\tau_{xy}/2$',
+          'lässt sich ohne weitere Angaben nicht bestimmen',
+        ],
+        0,
+        `**Ansatz:** Mittelpunkt hängt ausschließlich von $\\sigma_x, \\sigma_y$ ab, **nicht** von $\\tau_{xy}$. Reiner Schub: beide Normalspannungen null ⇒ $\\sigma_M = 0$.
+
+**Rechnung:** $\\sigma_M = (0 + 0)/2 = 0$.
+
+**Probe:** Der Kreis liegt symmetrisch um den Ursprung, Radius $R = \\tau_{xy}$. Hauptspannungen sind $\\sigma_{1,2} = \\pm\\tau_{xy}$ — ein anschauliches Ergebnis bei reiner Torsion.
+
+**Typischer Fehler:** $\\tau_{xy}$ für den Mittelpunkt mit einrechnen. $\\tau_{xy}$ beeinflusst nur den **Radius**, nie die Lage des Mittelpunkts.`,
+        [
+          '$\\sigma_M$ enthält kein $\\tau$.',
+          'Beide $\\sigma$-Komponenten sind 0.',
+          'Mittelwert aus 0 und 0 ist 0.',
+        ],
+        {
+          1: '$\\tau_{xy}$ geht in den **Radius** ein, nicht in den Mittelpunkt. Der Mittelpunkt ist allein aus $\\sigma_x, \\sigma_y$ bestimmt.',
+          2: 'Auch halbiert bleibt $\\tau_{xy}$ ein Radius-Anteil. Die Formel $\\sigma_M = (\\sigma_x + \\sigma_y)/2$ enthält $\\tau$ nicht.',
+          3: 'Für $\\sigma_M$ reichen $\\sigma_x$ und $\\sigma_y$ — und die sind beide als 0 angegeben.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Mittelpunkt: $\\sigma_M = (\\sigma_x + \\sigma_y)/2$": Beim Drehen des Schnitts um den betrachteten Punkt bleibt der Mittelpunkt des Mohr-Kreises ortsfest — er hängt nicht vom Schnittwinkel ab.',
+        true,
+        `**Ansatz:** $\\sigma_M$ ist die **halbe Spur** des Spannungstensors: $\\sigma_M = (\\sigma_x + \\sigma_y)/2 = \\text{trace}(\\underline{\\sigma})/2$. Die Spur ist eine **Invariante** gegenüber Drehung.
+
+**Rechnung:** Für gedrehtes Koordinatensystem gilt $\\sigma_{x'} + \\sigma_{y'} = \\sigma_x + \\sigma_y$ für alle Drehwinkel. Also $\\sigma_M$ konstant.
+
+**Probe:** Gerade deshalb ist der Mohr-Kreis ein **Kreis**: Beim Drehen des Schnitts wandert der Zustandspunkt **auf** dem Kreis um den festen Mittelpunkt.
+
+**Typischer Fehler:** Verwechslung mit dem Radius, der ebenfalls invariant ist, aber aus **Differenzen** gebildet wird — nicht mit dem Mittelpunkt.`,
+        [
+          'Spur (Summe der Diagonalen) ist dreh-invariant.',
+          'Mittelpunkt = halbe Spur.',
+          'Drehung ändert den Punkt auf dem Kreis, nicht den Kreis selbst.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Mittelpunkt: $\\sigma_M = (\\sigma_x + \\sigma_y)/2$": Bringe die Arbeitsschritte beim Zeichnen des Mohr-Kreises in die richtige Reihenfolge (gegeben: $\\sigma_x, \\sigma_y, \\tau_{xy}$).',
+        [
+          'Vorzeichen klären (Zug +, Druck −, $\\tau$-Konvention)',
+          'Mittelpunkt $\\sigma_M = (\\sigma_x + \\sigma_y)/2$ auf die $\\sigma$-Achse einzeichnen',
+          'Radius $R$ aus $\\sigma_x - \\sigma_y$ und $\\tau_{xy}$ berechnen',
+          'Kreis um $\\sigma_M$ mit Radius $R$ zeichnen und Hauptspannungen $\\sigma_{1,2} = \\sigma_M \\pm R$ ablesen',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Systematisch: Vorzeichen zuerst, dann Mittelpunkt, dann Radius, dann Kreis samt Auswertung. Wer den Radius vor dem Mittelpunkt rechnet, landet oft beim falschen Achsenabschnitt.
+
+**Rechnung:** (1) Vorzeichenkonvention festlegen. (2) $\\sigma_M$ markiert die Kreismitte auf der $\\sigma$-Achse. (3) $R$ enthält die halbe Differenz **und** den Schub. (4) Ablesen.
+
+**Probe:** Wird Schritt 1 vergessen, rutscht der Kreis um den doppelten Druckwert nach links — der Klassiker bei Zug-Druck-Überlagerung.
+
+**Typischer Fehler:** Mittelpunkt und Radius vertauschen, weil beide "aus $\\sigma_x, \\sigma_y$" gebildet werden. Mittelpunkt = **Summe**/2, Radius = **Differenz**-Anteil.`,
+        [
+          'Zuerst Vorzeichen klären.',
+          'Mittelpunkt ist einfacher als Radius — zuerst.',
+          'Ablesen am Ende.',
+        ],
+      ),
+    ],
+
+    // ── [1] Radius: R = √(((σ_x - σ_y)/2)² + τ_xy²) ────────────────────
+    1: [
+      ni(
+        'Sub-Goal "Radius: $R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$": Gegeben $\\sigma_x = 100\\,\\text{MPa}$, $\\sigma_y = 20\\,\\text{MPa}$, $\\tau_{xy} = 30\\,\\text{MPa}$. Berechne den Radius $R$ des Mohr-Kreises.',
+        50, 0.5, 'MPa',
+        `**Ansatz:** Der Radius ist die Hypotenuse aus zwei Beiträgen: halbe Differenz der Normalspannungen und Schub. Formel: $R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$.
+
+**Rechnung:** $(\\sigma_x - \\sigma_y)/2 = (100-20)/2 = 40$. $R = \\sqrt{40^2 + 30^2} = \\sqrt{1600 + 900} = \\sqrt{2500} = 50\\,\\text{MPa}$.
+
+**Probe:** Pythagoras-Tripel 30-40-50 — saubere Zahl, gut zum Merken.
+
+**Typischer Fehler:** Die Klammer $(\\sigma_x - \\sigma_y)/2$ weglassen und $(\\sigma_x - \\sigma_y)^2 = 80^2 = 6400$ benutzen — liefert $R = \\sqrt{6400+900} = \\sqrt{7300}\\approx 85{,}4$, viel zu groß. Oder $\\tau_{xy}$ halbieren, weil man es beim Mittelpunkt nicht gebraucht hat.`,
+        [
+          'Erst $(\\sigma_x - \\sigma_y)/2$ ausrechnen.',
+          '$\\tau_{xy}$ **nicht** halbieren.',
+          'Pythagoras: $\\sqrt{40^2 + 30^2}$.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Radius: $R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$": Eine Welle steht unter reiner Torsion: $\\sigma_x = \\sigma_y = 0$, $\\tau_{xy} = 45\\,\\text{MPa}$. Radius $R$?',
+        45, 0.5, 'MPa',
+        `**Ansatz:** Bei reiner Torsion fällt der Differenz-Term weg, es bleibt nur $\\tau_{xy}$.
+
+**Rechnung:** $R = \\sqrt{0^2 + 45^2} = 45\\,\\text{MPa}$.
+
+**Probe:** Der Kreis ist symmetrisch um den Ursprung, $\\sigma_{1,2} = \\pm 45\\,\\text{MPa}$. Genau das klassische Bild bei Torsion: gleich große Zug- und Druck-Hauptspannungen unter $45°$.
+
+**Typischer Fehler:** Meinen, der Radius sei "null, weil keine Normalspannung da ist". Der Schub allein liefert bereits einen Kreis-Radius — sonst wäre Torsion harmlos.`,
+        [
+          '$(\\sigma_x - \\sigma_y) = 0$.',
+          'Unter der Wurzel bleibt nur $\\tau_{xy}^2$.',
+          '$R = |\\tau_{xy}|$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Radius: $R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$": Bei welcher Konfiguration wird der Radius **minimal** (genauer: $R = 0$)?',
+        [
+          '$\\sigma_x = \\sigma_y$ **und** $\\tau_{xy} = 0$',
+          '$\\sigma_x = -\\sigma_y$ und $\\tau_{xy} = 0$',
+          '$\\sigma_x = \\sigma_y = 0$ (alle Spannungen null)',
+          '$\\tau_{xy}$ minimal, egal welche $\\sigma$',
+        ],
+        0,
+        `**Ansatz:** $R = 0$ verlangt, dass **beide** Beiträge unter der Wurzel null sind: $(\\sigma_x - \\sigma_y)/2 = 0$ **und** $\\tau_{xy} = 0$. Das ist ein hydrostatischer 2D-Zustand.
+
+**Rechnung:** $\\sigma_x = \\sigma_y$ macht den ersten Term null; $\\tau_{xy} = 0$ den zweiten. Beide Bedingungen zusammen ⇒ $R = 0$, der "Kreis" kollabiert zum Punkt. Der Spannungszustand ist richtungsunabhängig.
+
+**Probe:** Option (c) ist ein **Spezialfall** von (a), liefert auch $R=0$ — aber (a) ist die **allgemeine** Antwort. (a) ist korrekt und umfassender.
+
+**Typischer Fehler:** Glauben, $R = 0$ heiße automatisch "keine Spannung". Bei $\\sigma_x = \\sigma_y = 100\\,\\text{MPa}$ ist $R = 0$, aber es herrscht trotzdem 100 MPa in alle Richtungen.`,
+        [
+          'Wurzel wird null, wenn beide Summanden null sind.',
+          'Erster Summand null: $\\sigma_x = \\sigma_y$.',
+          'Zweiter Summand null: $\\tau_{xy} = 0$.',
+        ],
+        {
+          1: '$\\sigma_x = -\\sigma_y$ mit $\\tau=0$ gibt maximalen Differenz-Term ($R = |\\sigma_x|$), nicht Minimum.',
+          2: 'Korrekt in der Sache, aber zu eng — (a) umfasst auch $\\sigma_x = \\sigma_y \\neq 0$, was ebenfalls $R=0$ liefert. (a) ist die allgemeinere und damit bessere Antwort.',
+          3: 'Allein $\\tau_{xy}$ klein reicht nicht — solange $\\sigma_x \\neq \\sigma_y$, bleibt der erste Term und damit $R > 0$.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Radius: $R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$": Halbiert man die Schubspannung $\\tau_{xy}$ (alles andere konstant), halbiert sich auch der Radius $R$.',
+        false,
+        `**Ansatz:** Die Beziehung ist **nicht** linear in $\\tau_{xy}$, sondern geht über eine Wurzel: $R = \\sqrt{(\\ldots)^2 + \\tau_{xy}^2}$. Nur im **Grenzfall** $\\sigma_x = \\sigma_y$ (Differenz-Term null) wäre es linear — im allgemeinen Fall nicht.
+
+**Rechnung:** Beispiel: $(\\sigma_x - \\sigma_y)/2 = 40$, $\\tau_{xy} = 30$. $R = 50$. Halbiere $\\tau_{xy} = 15$: $R = \\sqrt{40^2 + 15^2} = \\sqrt{1825} \\approx 42{,}7 \\neq 25$.
+
+**Probe:** Nur im reinen Schub ($\\sigma_x = \\sigma_y$) gilt $R = |\\tau_{xy}|$ und dann linear in $\\tau$.
+
+**Typischer Fehler:** Linearität in allen Parametern unterstellen. Der Radius ist eine **quadratische** Funktion über die Wurzel — jede Halbierung verändert das Ergebnis nichtlinear.`,
+        [
+          'Radius-Formel hat eine Wurzel.',
+          'Wurzel aus Summe ≠ Summe der Wurzeln.',
+          'Gegenbeispiel durchrechnen.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Radius: $R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$": Ordne die Spannungszustände ihrem Radius zu.',
+        [
+          { left: '$\\sigma_x = 100,\\;\\sigma_y = 20,\\;\\tau_{xy} = 30$', right: '$R = 50\\,\\text{MPa}$' },
+          { left: '$\\sigma_x = \\sigma_y = 0,\\;\\tau_{xy} = 60$', right: '$R = 60\\,\\text{MPa}$' },
+          { left: '$\\sigma_x = 80,\\;\\sigma_y = 20,\\;\\tau_{xy} = 40$', right: '$R = 50\\,\\text{MPa}$' },
+          { left: '$\\sigma_x = 100,\\;\\sigma_y = 100,\\;\\tau_{xy} = 0$', right: '$R = 0\\,\\text{MPa}$' },
+        ],
+        `**Ansatz:** Jeder Zustand direkt in $R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$ einsetzen.
+
+**Rechnung:** Zeile 1: $\\sqrt{40^2+30^2} = 50$. · Zeile 2: reiner Schub, $R = 60$. · Zeile 3: $\\sqrt{30^2+40^2} = 50$ (anderes 30-40-50-Tripel). · Zeile 4: hydrostatisch, $R = 0$.
+
+**Probe:** Zeilen 1 und 3 haben gleichen Radius, obwohl die Einzelwerte anders sind — genau das ist der Sinn des Mohr-Kreises: zwei verschiedene Zustände haben denselben Kreis (nur andere Position **auf** dem Kreis).
+
+**Typischer Fehler:** In Zeile 2 glauben, $R = 0$, weil "keine Normalspannung". Schub allein reicht für einen Kreis mit Radius = $|\\tau_{xy}|$.`,
+        [
+          'Formel jeweils streng einsetzen.',
+          'Zeile 2: Differenz-Term fällt weg.',
+          'Zeile 4: beide Beiträge null.',
+        ],
+      ),
+    ],
+
+    // ── [2] Hauptspannungen: σ_{1,2} = σ_M ± R ─────────────────────────
+    2: [
+      ni(
+        'Sub-Goal "Hauptspannungen: $\\sigma_{1,2} = \\sigma_M \\pm R$": Gegeben $\\sigma_x = 100\\,\\text{MPa}$, $\\sigma_y = 40\\,\\text{MPa}$, $\\tau_{xy} = 40\\,\\text{MPa}$. Berechne die **größere** Hauptspannung $\\sigma_1$.',
+        120, 0.5, 'MPa',
+        `**Ansatz:** Mittelpunkt $\\sigma_M = (\\sigma_x+\\sigma_y)/2$, Radius $R = \\sqrt{((\\sigma_x-\\sigma_y)/2)^2 + \\tau_{xy}^2}$, dann $\\sigma_{1,2} = \\sigma_M \\pm R$. Größere = mit "+".
+
+**Rechnung:** $\\sigma_M = (100+40)/2 = 70$. $R = \\sqrt{30^2+40^2} = \\sqrt{2500} = 50$. $\\sigma_1 = 70 + 50 = 120\\,\\text{MPa}$.
+
+**Probe:** Zum Check $\\sigma_2 = 70 - 50 = 20$. Summe $\\sigma_1 + \\sigma_2 = 140 = \\sigma_x + \\sigma_y$ ✓ (Invariante).
+
+**Typischer Fehler:** $\\sigma_1 = \\sigma_x + \\tau_{xy}$ bilden ($140$) — das ignoriert die korrekte Kombination von $\\sigma_y$ und den Schub-Effekt.`,
+        [
+          'Zuerst Mittelpunkt, dann Radius.',
+          '$\\sigma_1 = \\sigma_M + R$.',
+          '30-40-50-Pythagoras.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Hauptspannungen: $\\sigma_{1,2} = \\sigma_M \\pm R$": Gleiche Angaben ($\\sigma_x = 100, \\sigma_y = 40, \\tau_{xy} = 40$). Berechne die **kleinere** Hauptspannung $\\sigma_2$.',
+        20, 0.5, 'MPa',
+        `**Ansatz:** $\\sigma_2 = \\sigma_M - R$. Dieselben Zwischengrößen wie für $\\sigma_1$.
+
+**Rechnung:** $\\sigma_M = 70$, $R = 50$. $\\sigma_2 = 70 - 50 = 20\\,\\text{MPa}$.
+
+**Probe:** $\\sigma_1 \\cdot \\sigma_2 = 120 \\cdot 20 = 2400$. Zweite Invariante: $\\sigma_x \\sigma_y - \\tau_{xy}^2 = 100\\cdot 40 - 1600 = 2400$ ✓.
+
+**Typischer Fehler:** $\\sigma_2$ negativ annehmen, weil "klein = Druck". Nur wenn $R > \\sigma_M$ wird $\\sigma_2 < 0$; hier ist $R < \\sigma_M$, also bleibt $\\sigma_2$ positiv.`,
+        [
+          'Dieselben Zwischenwerte wie bei $\\sigma_1$.',
+          '$\\sigma_2 = \\sigma_M - R$.',
+          '$70 - 50$.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Hauptspannungen: $\\sigma_{1,2} = \\sigma_M \\pm R$": Kombinierter Spannungszustand: $\\sigma_x = 80\\,\\text{MPa}$, $\\sigma_y = -20\\,\\text{MPa}$ (Druck), $\\tau_{xy} = 0$. Größere Hauptspannung $\\sigma_1$?',
+        80, 0.5, 'MPa',
+        `**Ansatz:** Bei $\\tau_{xy}=0$ sind die Achsen $x, y$ bereits Hauptachsen — $\\sigma_x$ und $\\sigma_y$ sind direkt die Hauptspannungen. Formal trotzdem über den Mohr-Kreis.
+
+**Rechnung:** $\\sigma_M = (80 + (-20))/2 = 30$. $R = \\sqrt{((80-(-20))/2)^2 + 0^2} = 50$. $\\sigma_1 = 30+50 = 80\\,\\text{MPa}$, $\\sigma_2 = 30 - 50 = -20\\,\\text{MPa}$.
+
+**Probe:** $\\sigma_1, \\sigma_2$ stimmen mit $\\sigma_x, \\sigma_y$ überein ✓. Das bestätigt: ohne Schub sind $x, y$ Hauptachsen.
+
+**Typischer Fehler:** Vorzeichen des Drucks weglassen ⇒ $\\sigma_M = 50, R = 30, \\sigma_1 = 80$ — zufällig richtige Zahl, aber mit falschem $\\sigma_2 = 20$ statt $-20$.`,
+        [
+          '$\\tau = 0$ → Achsen schon Hauptachsen.',
+          'Druck = negatives Vorzeichen.',
+          '$\\sigma_1 = \\max(\\sigma_x, \\sigma_y)$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Hauptspannungen: $\\sigma_{1,2} = \\sigma_M \\pm R$": Bei welchem Zustand werden beide Hauptspannungen **gleich groß** ($\\sigma_1 = \\sigma_2$)?',
+        [
+          'wenn $\\sigma_x = \\sigma_y$ und $\\tau_{xy} = 0$',
+          'wenn $\\sigma_x = -\\sigma_y$',
+          'wenn $\\tau_{xy} = 0$ (alleine reicht)',
+          'wenn $\\sigma_M = 0$',
+        ],
+        0,
+        `**Ansatz:** $\\sigma_1 = \\sigma_2$ ⇔ $R = 0$. Der Radius ist null genau dann, wenn **beide** Terme unter der Wurzel null sind.
+
+**Rechnung:** $R = 0$ ⇔ $\\sigma_x = \\sigma_y$ UND $\\tau_{xy} = 0$. Dann $\\sigma_1 = \\sigma_2 = \\sigma_M = \\sigma_x$. Spannungszustand ist **richtungsunabhängig** (hydrostatisch in 2D).
+
+**Probe:** Jeder Schnitt liefert dieselbe Normalspannung, keine Schubspannung — genau ein Punkt auf der $\\sigma$-Achse.
+
+**Typischer Fehler:** Nur eine der beiden Bedingungen verlangen. $\\tau = 0$ allein reicht **nicht**, wenn $\\sigma_x \\neq \\sigma_y$ — dann ist $R = |\\sigma_x - \\sigma_y|/2 > 0$.`,
+        [
+          '$\\sigma_1 = \\sigma_2$ ⇔ Radius null.',
+          'Radius null verlangt zwei Bedingungen.',
+          'Beide Summanden müssen null sein.',
+        ],
+        {
+          1: '$\\sigma_x = -\\sigma_y$ führt zu maximalem Differenz-Term und damit großem $R$, nicht $R = 0$.',
+          2: '$\\tau_{xy} = 0$ macht nur einen der beiden Summanden unter der Wurzel null. Solange $\\sigma_x \\neq \\sigma_y$, bleibt $R > 0$.',
+          3: '$\\sigma_M = 0$ betrifft die Lage des Kreises, nicht seinen Radius. Ein Kreis um den Ursprung kann durchaus Radius > 0 haben.',
+        },
+      ),
+      sorting(
+        'Sub-Goal "Hauptspannungen: $\\sigma_{1,2} = \\sigma_M \\pm R$": Ordne die Rechenschritte zur Bestimmung der Hauptspannungen.',
+        [
+          'Ausgangsgrößen notieren: $\\sigma_x, \\sigma_y, \\tau_{xy}$ mit Vorzeichen',
+          'Mittelpunkt: $\\sigma_M = (\\sigma_x + \\sigma_y)/2$',
+          'Radius: $R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$',
+          'Hauptspannungen: $\\sigma_1 = \\sigma_M + R$, $\\sigma_2 = \\sigma_M - R$',
+          'Invariantencheck: $\\sigma_1 + \\sigma_2 \\stackrel{?}{=} \\sigma_x + \\sigma_y$',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Reihenfolge: Daten → Mittelpunkt → Radius → Hauptspannungen → Kontrolle.
+
+**Rechnung:** Der Invariantencheck am Ende ist billig und fängt 90 % aller Vorzeichen- oder Rechenfehler ab.
+
+**Probe:** Wer den Invariantencheck macht, merkt sofort, wenn ein Vorzeichen verschluckt wurde.
+
+**Typischer Fehler:** Hauptspannungen bilden, ohne Mittelpunkt und Radius separat auszurechnen — dann lassen sich Vorzeichenfehler nicht eingrenzen.`,
+        [
+          'Erst die Eingaben festhalten.',
+          'Mittelpunkt und Radius sind unabhängige Zwischengrößen.',
+          'Check am Ende.',
+        ],
+      ),
+    ],
+
+    // ── [3] Max. Schubspannung: τ_max = R ──────────────────────────────
+    3: [
+      ni(
+        'Sub-Goal "Maximale Schubspannung: $\\tau_\\text{max} = R$": Gegeben $\\sigma_1 = 150\\,\\text{MPa}$ und $\\sigma_2 = 30\\,\\text{MPa}$. Wie groß ist die maximale Schubspannung in der Ebene?',
+        60, 0.5, 'MPa',
+        `**Ansatz:** $\\tau_\\text{max}$ entspricht dem **Radius** des Mohr-Kreises. Bei bekannten Hauptspannungen gilt $\\tau_\\text{max} = (\\sigma_1 - \\sigma_2)/2 = R$.
+
+**Rechnung:** $\\tau_\\text{max} = (150 - 30)/2 = 60\\,\\text{MPa}$.
+
+**Probe:** Der Mohr-Kreis läuft zwischen $\\sigma_2 = 30$ und $\\sigma_1 = 150$ auf der $\\sigma$-Achse. Sein Scheitel oben liegt bei $\\tau = R = 60$ — genau die max. Schubspannung, erreicht bei Schnitten unter $\\pm 45°$ zu den Hauptachsen.
+
+**Typischer Fehler:** $\\tau_\\text{max} = \\sigma_1 - \\sigma_2 = 120$ (Faktor 2 vergessen) oder $\\tau_\\text{max} = \\sigma_1/2 = 75$ (nur $\\sigma_1$ benutzt).`,
+        [
+          '$\\tau_\\text{max}$ = Radius des Kreises.',
+          'Bei Hauptspannungen: $R = (\\sigma_1 - \\sigma_2)/2$.',
+          '$(150-30)/2$.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Maximale Schubspannung: $\\tau_\\text{max} = R$": Spannungszustand $\\sigma_x = 100\\,\\text{MPa}$, $\\sigma_y = -40\\,\\text{MPa}$, $\\tau_{xy} = 0$. $\\tau_\\text{max}$?',
+        70, 0.5, 'MPa',
+        `**Ansatz:** Direkt: $\\tau_\\text{max} = R = \\sqrt{((\\sigma_x-\\sigma_y)/2)^2 + \\tau_{xy}^2}$. Mit $\\tau_{xy}=0$ vereinfacht sich das zu $|\\sigma_x - \\sigma_y|/2$.
+
+**Rechnung:** $(\\sigma_x - \\sigma_y)/2 = (100 - (-40))/2 = 140/2 = 70$. Also $\\tau_\\text{max} = 70\\,\\text{MPa}$.
+
+**Probe:** $\\sigma_1 = 100, \\sigma_2 = -40$, Radius $R = (100-(-40))/2 = 70 = \\tau_\\text{max}$ ✓.
+
+**Typischer Fehler:** $\\sigma_y = -40$ als $+40$ führen — dann $\\tau_\\text{max} = 30$, deutlich zu klein. Bei Zug-Druck-Kombination ist die Differenz gerade besonders groß!`,
+        [
+          'Zug und Druck: Vorzeichen zählt.',
+          'Differenz $100 - (-40) = 140$.',
+          'Halbieren.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Maximale Schubspannung: $\\tau_\\text{max} = R$": Die maximale Schubspannung tritt in Schnittrichtungen auf, die um **45°** zu den Hauptachsen gedreht sind.',
+        true,
+        `**Ansatz:** Im Mohr-Kreis ist $\\tau_\\text{max}$ der oberste Scheitelpunkt des Kreises — er liegt gegenüber dem Mittelpunkt **senkrecht** zur $\\sigma$-Achse, also beim doppelten Winkel $2\\varphi = 90°$ relativ zu den Hauptachsen.
+
+**Rechnung:** Im Mohr-Kreis sind Winkel **doppelt** dargestellt. $2\\varphi = 90°$ im Mohr-Diagramm ⇒ $\\varphi = 45°$ in der realen Geometrie.
+
+**Probe:** Bei Torsionsstäben sieht man das gut: Bruch spröder Wellen verläuft oft unter $45°$ zur Achse — senkrecht zur maximalen Hauptzugspannung, die wiederum $45°$ zur maximalen Schubspannung liegt.
+
+**Typischer Fehler:** Die 45°-Regel für den **realen** Winkel vergessen, weil der Mohr-Kreis den doppelten Winkel zeigt. Hier lohnt sich die Regel: "Mohr-Kreis-Winkel / 2 = realer Schnittwinkel."`,
+        [
+          'Mohr-Kreis zeigt doppelten Winkel.',
+          'Maximum von $\\tau$ liegt beim Mohr-Winkel $90°$.',
+          '$90°/2 = 45°$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Maximale Schubspannung: $\\tau_\\text{max} = R$": Ein Bauteil steht unter reinem Zug $\\sigma_x = 200\\,\\text{MPa}$, $\\sigma_y = 0$, $\\tau_{xy} = 0$. Welche maximale Schubspannung entsteht im Bauteil?',
+        [
+          '$0\\,\\text{MPa}$ — kein Schub, da $\\tau_{xy} = 0$',
+          '$100\\,\\text{MPa}$ — halbe Normalspannung',
+          '$200\\,\\text{MPa}$ — gleich wie Normalspannung',
+          '$141{,}4\\,\\text{MPa}$ — $\\sigma_x/\\sqrt{2}$',
+        ],
+        1,
+        `**Ansatz:** Reiner Zug in $x$-Richtung ist ein **einachsiger** Zustand — aber in gedrehten Schnitten entsteht durchaus Schub. $\\tau_\\text{max} = R = (\\sigma_x - \\sigma_y)/2$.
+
+**Rechnung:** $R = (200 - 0)/2 = 100\\,\\text{MPa}$. Unter $45°$ zur Zugrichtung erreicht die Schubspannung ihr Maximum.
+
+**Probe:** Zähe Werkstoffe versagen unter Zug oft durch **Gleiten** in den 45°-Ebenen (Lüdersbänder, Fließen), nicht durch reinen Zug — gerade weil $\\tau_\\text{max}$ dort liegt.
+
+**Typischer Fehler:** "Kein Schub angelegt, also auch keiner da" — falsch. Schub ist **schnittabhängig**. Die Werte in $x,y$ heißen nichts über andere Schnittwinkel.`,
+        [
+          '$\\tau_{xy} = 0$ heißt nur: auf dem $x$-Schnitt kein Schub.',
+          'In gedrehten Schnitten kann $\\tau$ groß werden.',
+          '$\\tau_\\text{max} = R = (\\sigma_x - \\sigma_y)/2$.',
+        ],
+        {
+          0: '$\\tau_{xy} = 0$ gilt nur für **diesen** Schnitt (x-Ebene). In gedrehten Schnitten entsteht Schub — $\\tau_\\text{max}$ ist die maximale Schubspannung **über alle Schnittwinkel**.',
+          2: 'Das wäre $\\sigma_x$, nicht $\\tau_\\text{max}$. Der Kreis-Radius ist die **halbe** Differenz der Hauptspannungen.',
+          3: '$\\sigma_x/\\sqrt{2}$ wäre die Schubspannung exakt unter $45°$ bei ebenen Bauteilen — aber $\\tau_\\text{max}$ über alle Winkel ist $(\\sigma_1 - \\sigma_2)/2 = 100$.',
+        },
+      ),
+      sorting(
+        'Sub-Goal "Maximale Schubspannung: $\\tau_\\text{max} = R$": Sortiere die Zustände nach aufsteigendem $\\tau_\\text{max}$.',
+        [
+          '$\\sigma_x = \\sigma_y = 80,\\;\\tau_{xy} = 0$ (hydrostatisch)',
+          '$\\sigma_x = 100,\\;\\sigma_y = 60,\\;\\tau_{xy} = 0$',
+          '$\\sigma_x = 80,\\;\\sigma_y = 0,\\;\\tau_{xy} = 30$',
+          '$\\sigma_x = 100,\\;\\sigma_y = -40,\\;\\tau_{xy} = 0$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Jeweils $\\tau_\\text{max} = R = \\sqrt{((\\sigma_x-\\sigma_y)/2)^2 + \\tau_{xy}^2}$.
+
+**Rechnung:** Zeile 1: $R = 0$. Zeile 2: $R = 20$. Zeile 3: $R = \\sqrt{40^2 + 30^2} = 50$. Zeile 4: $R = 70$.
+
+**Probe:** Reihenfolge $0 < 20 < 50 < 70$ ✓.
+
+**Typischer Fehler:** Zeile 4 übersehen — die Zug-Druck-Kombination produziert die größte Differenz und daher das größte $\\tau_\\text{max}$.`,
+        [
+          'Formel einsetzen.',
+          'Vorzeichen bei Zeile 4 beachten.',
+          'Aufsteigend sortieren.',
+        ],
+      ),
+    ],
+
+    // ── [4] Hauptachsenwinkel: tan(2φ) = 2τ_xy/(σ_x - σ_y) ─────────────
+    4: [
+      ni(
+        'Sub-Goal "Hauptachsenwinkel: $\\tan(2\\varphi) = 2\\tau_{xy}/(\\sigma_x - \\sigma_y)$": Gegeben $\\sigma_x = 60\\,\\text{MPa}$, $\\sigma_y = 20\\,\\text{MPa}$, $\\tau_{xy} = 20\\,\\text{MPa}$. Wie groß ist der Hauptachsenwinkel $\\varphi$ (in Grad, auf 0{,}1° genau)?',
+        22.5, 0.3, '°',
+        `**Ansatz:** $\\tan(2\\varphi) = 2\\tau_{xy}/(\\sigma_x - \\sigma_y)$. Zähler/Nenner ausrechnen, $\\arctan$, dann durch 2.
+
+**Rechnung:** $\\tan(2\\varphi) = (2\\cdot 20)/(60-20) = 40/40 = 1$. $2\\varphi = 45°$, also $\\varphi = 22{,}5°$.
+
+**Probe:** Einsetzen: In gedrehten Achsen (Drehung um $22{,}5°$) verschwindet $\\tau$ und die Normalspannungen werden zu den Hauptspannungen $\\sigma_{1,2}$.
+
+**Typischer Fehler:** Die Division durch 2 am Ende vergessen — liefert $45°$ statt $22{,}5°$. Oder Vorzeichen des Nenners ignorieren.`,
+        [
+          'Zähler: $2\\tau_{xy}$.',
+          'Nenner: $\\sigma_x - \\sigma_y$ (mit Vorzeichen!).',
+          '$\\arctan$, dann halbieren.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Hauptachsenwinkel: $\\tan(2\\varphi) = 2\\tau_{xy}/(\\sigma_x - \\sigma_y)$": Reiner Schub $\\sigma_x = \\sigma_y = 0$, $\\tau_{xy} = 40\\,\\text{MPa}$. Hauptachsenwinkel $\\varphi$?',
+        45, 0.3, '°',
+        `**Ansatz:** Nenner $\\sigma_x - \\sigma_y = 0$ ⇒ $\\tan(2\\varphi) \\to \\infty$ ⇒ $2\\varphi = 90°$ ⇒ $\\varphi = 45°$.
+
+**Rechnung:** Grenzübergang: $\\tan(2\\varphi) \\to \\infty$ ⇔ $2\\varphi = 90°$ ⇔ $\\varphi = 45°$.
+
+**Probe:** Physikalisch: Reiner Schub erzeugt unter $45°$ zur $x$-Achse reine Zug- bzw. Druckspannungen — das ist der klassische Torsionsbruch spröder Wellen ("Spiral"-Bruch).
+
+**Typischer Fehler:** Fehler "undefiniert" ausgeben, weil der Taschenrechner $0/0$-Warnung liefert. Grenzwert denken, nicht mechanisch eintippen.`,
+        [
+          'Nenner wird $0$.',
+          'Grenzwert: $2\\varphi = 90°$.',
+          'Halbieren: $\\varphi = 45°$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Hauptachsenwinkel: $\\tan(2\\varphi) = 2\\tau_{xy}/(\\sigma_x - \\sigma_y)$": Im Mohr-Kreis werden Winkel **doppelt** so groß dargestellt wie in der realen Bauteilgeometrie.',
+        true,
+        `**Ansatz:** Beim Übergang von Zustand zu Zustand dreht der Zustandsvektor im Mohr-Kreis mit **doppeltem** Winkel — das ist der Kern der Konstruktion.
+
+**Rechnung:** Eine Schnittdrehung um $\\varphi$ im Bauteil entspricht einer Drehung um $2\\varphi$ auf dem Mohr-Kreis.
+
+**Probe:** Deshalb liegen zwei senkrechte Schnitte ($\\varphi = 90°$ auseinander) im Mohr-Kreis **gegenüber** ($2\\varphi = 180°$). Auch deshalb liegt $\\tau_\\text{max}$ unter real $45°$: auf dem Kreis $2\\varphi = 90°$.
+
+**Typischer Fehler:** Den Winkel aus dem Mohr-Kreis **direkt** ablesen und in das Bauteil übertragen ⇒ immer doppelt so große Schnittdrehung wie gemeint.`,
+        [
+          'Mohr-Konvention: doppelter Winkel.',
+          'Real $\\varphi$ ↔ Mohr-Kreis $2\\varphi$.',
+          'Zwei orthogonale Schnitte ↔ gegenüberliegende Kreispunkte.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Hauptachsenwinkel: $\\tan(2\\varphi) = 2\\tau_{xy}/(\\sigma_x - \\sigma_y)$": Was folgt aus $\\tau_{xy} = 0$ (bei $\\sigma_x \\neq \\sigma_y$) für den Hauptachsenwinkel?',
+        [
+          '$\\varphi = 0°$ — die Achsen $x, y$ sind bereits Hauptachsen',
+          '$\\varphi = 45°$',
+          '$\\varphi = 90°$',
+          'Der Winkel ist nicht definiert',
+        ],
+        0,
+        `**Ansatz:** $\\tan(2\\varphi) = 2\\tau_{xy}/(\\sigma_x - \\sigma_y) = 0/(\\sigma_x - \\sigma_y) = 0$ ⇒ $2\\varphi = 0$ ⇒ $\\varphi = 0$.
+
+**Rechnung:** Null geteilt durch etwas von $0$ verschiedenes ist null; $\\arctan(0) = 0$; halbiert bleibt $0$.
+
+**Probe:** Physikalisch: Ohne Schub sind die $x,y$-Achsen automatisch die Hauptachsen — nichts zu drehen.
+
+**Typischer Fehler:** $45°$ wählen, weil "Schub fehlt, also symmetrisch" — das ist gerade umgekehrt: $45°$ ist der Schubmaximum-Winkel, $0°$ der Hauptachsenwinkel.`,
+        [
+          'Zähler = 0 bei $\\tau = 0$.',
+          '$\\arctan(0) = 0$.',
+          'Halbieren ändert nichts.',
+        ],
+        {
+          1: '$45°$ wäre das Schubspannungsmaximum. Bei $\\tau_{xy} = 0$ ist aber genau das **nicht** der interessante Winkel.',
+          2: '$90°$ würde aus $\\tan(2\\varphi) = \\infty$ folgen, also $\\tau_{xy} \\neq 0$ bei $\\sigma_x = \\sigma_y$.',
+          3: 'Doch — $\\arctan(0) = 0$ ist sauber definiert. Undefiniert wäre der Winkel nur bei $0/0$ (hydrostatisch + kein Schub, Kreis kollabiert).',
+        },
+      ),
+      matching(
+        'Sub-Goal "Hauptachsenwinkel: $\\tan(2\\varphi) = 2\\tau_{xy}/(\\sigma_x - \\sigma_y)$": Ordne die Spannungszustände dem Hauptachsenwinkel $\\varphi$ zu.',
+        [
+          { left: '$\\sigma_x = 100,\\;\\sigma_y = 20,\\;\\tau_{xy} = 0$', right: '$\\varphi = 0°$' },
+          { left: '$\\sigma_x = 60,\\;\\sigma_y = 20,\\;\\tau_{xy} = 20$', right: '$\\varphi = 22{,}5°$' },
+          { left: '$\\sigma_x = \\sigma_y = 50,\\;\\tau_{xy} = 25$', right: '$\\varphi = 45°$' },
+          { left: '$\\sigma_x = 20,\\;\\sigma_y = 60,\\;\\tau_{xy} = 0$', right: '$\\varphi = 90°$' },
+        ],
+        `**Ansatz:** Formel $\\tan(2\\varphi) = 2\\tau_{xy}/(\\sigma_x - \\sigma_y)$ jeweils auswerten und halbieren.
+
+**Rechnung:** Zeile 1: $\\tau = 0, \\sigma_x > \\sigma_y$ ⇒ $\\varphi = 0$. Zeile 2: $40/40 = 1 ⇒ 2\\varphi = 45° ⇒ \\varphi = 22{,}5°$. Zeile 3: Nenner 0 ⇒ $2\\varphi = 90° ⇒ \\varphi = 45°$. Zeile 4: $\\tau = 0, \\sigma_x < \\sigma_y$ ⇒ $\\sigma_1$ liegt in $y$-Richtung, also $\\varphi = 90°$.
+
+**Probe:** Vorzeichen im Nenner in Zeile 4 beachten! Da $\\sigma_x - \\sigma_y < 0$, entspricht die Hauptzugrichtung der $y$-Achse.
+
+**Typischer Fehler:** Zeile 4 mit Zeile 1 gleichsetzen, weil beide "$\\tau = 0$" haben — aber die Reihenfolge von $\\sigma_x, \\sigma_y$ entscheidet, auf welcher Achse $\\sigma_1$ liegt.`,
+        [
+          '$\\tau = 0$ heißt: $x$/$y$ sind Hauptachsen, aber welche ist welche?',
+          'Reiner Schub ($\\sigma_x = \\sigma_y$) → $\\varphi = 45°$.',
+          'Zeile 4: $\\sigma_y > \\sigma_x$ → Hauptzug auf $y$-Achse.',
+        ],
+      ),
+    ],
+
+    // ── [5] Anwendung: Hypothesen (NH, GEH) ────────────────────────────
+    5: [
+      ni(
+        'Sub-Goal "Anwendung: Hauptspannungshypothese (spröde Werkstoffe), GEH (zähe)": Ein **spröder** Gusseisenflansch hat Hauptspannungen $\\sigma_1 = 80\\,\\text{MPa}$, $\\sigma_2 = -40\\,\\text{MPa}$. Vergleichsspannung nach **NH (Normalspannungshypothese)**?',
+        80, 0.5, 'MPa',
+        `**Ansatz:** Für spröde Werkstoffe (Gusseisen, Keramik, Beton unter Zug) ist die **Normalspannungshypothese** maßgeblich: $\\sigma_v = \\max(|\\sigma_1|, |\\sigma_2|)$ — es zählt die betragsmäßig größte Hauptspannung, weil spröde Werkstoffe durch Trennung versagen, nicht durch Fließen.
+
+**Rechnung:** $|\\sigma_1| = 80, |\\sigma_2| = 40$ ⇒ $\\sigma_v = 80\\,\\text{MPa}$.
+
+**Probe:** Das macht für Gusseisen Sinn: die Zugspannung $\\sigma_1 = 80$ trennt die Matrix entlang von Schwachstellen (Graphitlamellen), bevor Fließen einsetzt.
+
+**Typischer Fehler:** GEH-Formel für sprödes Material anwenden ($\\sigma_v = \\sqrt{\\sigma_1^2 - \\sigma_1\\sigma_2 + \\sigma_2^2} = \\sqrt{6400+3200+1600} \\approx 105$) — das überschätzt die Sicherheit, weil spröde Werkstoffe nicht nach Fließkriterium versagen.`,
+        [
+          'Spröde → NH (Normalspannungshypothese).',
+          'NH: größter Betrag.',
+          '$\\max(|80|, |-40|) = 80$.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Anwendung: Hauptspannungshypothese (spröde Werkstoffe), GEH (zähe)": Ein **zäher** Stahl (S355) hat Hauptspannungen $\\sigma_1 = 200\\,\\text{MPa}$, $\\sigma_2 = 80\\,\\text{MPa}$. Vergleichsspannung nach **GEH**? (2D-Form, auf ganze MPa)',
+        176, 1, 'MPa',
+        `**Ansatz:** Für zähe Werkstoffe gilt die **Gestaltänderungsenergie-Hypothese (GEH, von Mises)**. 2D-Form: $\\sigma_v = \\sqrt{\\sigma_1^2 - \\sigma_1\\sigma_2 + \\sigma_2^2}$.
+
+**Rechnung:** $\\sigma_v = \\sqrt{200^2 - 200\\cdot 80 + 80^2} = \\sqrt{40\\,000 - 16\\,000 + 6400} = \\sqrt{30\\,400} \\approx 174{,}4\\,\\text{MPa}$. Genauer: $\\sqrt{30\\,400} = 174{,}36$, bei kaufmännischem Runden auf ganze MPa $\\approx 174$–176.
+
+**Probe:** GEH ist der Industriestandard für Stahl. Überprüfung mit der Spannungsform $\\sigma_v^2 = \\frac{1}{2}[(\\sigma_1-\\sigma_2)^2 + \\sigma_1^2 + \\sigma_2^2]$: $0{,}5\\cdot(14\\,400 + 40\\,000 + 6400) = 30\\,400$ ✓.
+
+**Typischer Fehler:** Vorzeichen des Mischterms: $+\\sigma_1\\sigma_2$ statt $-\\sigma_1\\sigma_2$ benutzen ⇒ $\\sqrt{62\\,400} \\approx 250$. Oder SH (Schubspannungshypothese / Tresca) rechnen: $\\sigma_v = \\sigma_1 - \\sigma_2 = 120$.`,
+        [
+          'Zäh → GEH.',
+          '$\\sigma_v = \\sqrt{\\sigma_1^2 - \\sigma_1\\sigma_2 + \\sigma_2^2}$.',
+          'Mischterm mit **Minus**.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Anwendung: Hauptspannungshypothese (spröde Werkstoffe), GEH (zähe)": Welche Festigkeitshypothese ist für Baustahl (zäh) am geeignetsten?',
+        [
+          'Gestaltänderungsenergie-Hypothese (GEH / von Mises)',
+          'Normalspannungshypothese (NH / Rankine)',
+          'Dehnungs-Hypothese (Bach)',
+          'Alle liefern dieselben Ergebnisse, egal bei welchem Material',
+        ],
+        0,
+        `**Ansatz:** Zähe Werkstoffe versagen durch Fließen — Fließen wird durch die Gestaltänderungsenergie kontrolliert, nicht durch Einzelspannungen. Daher GEH/von Mises.
+
+**Rechnung:** Für Stahl, Aluminium, Kupfer: GEH ist der Industriestandard (Fließbedingung nach Eurocode, DIN EN 1993).
+
+**Probe:** NH wäre für Keramik, Glas, Gusseisen-Zug korrekt — dort ist die größte Zugspannung entscheidend. SH (Tresca) ist ein konservativer Vorgänger der GEH — liefert stets $\\sigma_{v,\\text{SH}} \\geq \\sigma_{v,\\text{GEH}}$.
+
+**Typischer Fehler:** NH auch für Stahl anwenden, weil "einfacher" — unterschätzt gerade bei mehrachsigen Druck-Schub-Zuständen die tatsächliche Fließbeanspruchung erheblich.`,
+        [
+          'Baustahl = zäh.',
+          'Zäh → Fließen → Energiebetrachtung.',
+          'GEH = von Mises = Industriestandard.',
+        ],
+        {
+          1: 'NH ist für **spröde** Materialien (Gusseisen, Keramik, Beton im Zug) — dort trennt die größte Zugspannung das Gefüge, bevor Fließen einsetzt.',
+          2: 'Die Dehnungs-Hypothese nach Bach ist historisch interessant, aber heute kaum noch im Einsatz. Für Stahl ist GEH Standard.',
+          3: 'Die Hypothesen liefern bei mehrachsigen Zuständen **deutlich** unterschiedliche Werte (leicht $>30\\,\\%$ Abweichung). Die Wahl der Hypothese ist wesentlich.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Anwendung: Hauptspannungshypothese (spröde Werkstoffe), GEH (zähe)": Bei einachsigem Zug ($\\sigma_1 \\neq 0$, $\\sigma_2 = 0$) liefern NH und GEH denselben Wert für die Vergleichsspannung.',
+        true,
+        `**Ansatz:** NH: $\\sigma_v = |\\sigma_1|$. GEH 2D: $\\sigma_v = \\sqrt{\\sigma_1^2 - 0 + 0} = |\\sigma_1|$. Beide liefern $|\\sigma_1|$.
+
+**Rechnung:** $\\sigma_1 = 200, \\sigma_2 = 0$: NH $\\Rightarrow \\sigma_v = 200$. GEH $\\Rightarrow \\sqrt{200^2} = 200$ ✓.
+
+**Probe:** Genau deshalb kalibriert man Hypothesen am Zugversuch: Die Fließ-/Bruchgrenze im einachsigen Zug ist **die** Referenz, an der alle Hypothesen identisch sein müssen.
+
+**Typischer Fehler:** "GEH ist immer höher als NH" — stimmt nicht. Nur bei mehrachsigen Spannungszuständen weichen die Hypothesen voneinander ab.`,
+        [
+          'Einachsiger Zug: $\\sigma_2 = 0$.',
+          'GEH reduziert sich auf $|\\sigma_1|$.',
+          'NH ist ebenfalls $|\\sigma_1|$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Anwendung: Hauptspannungshypothese (spröde Werkstoffe), GEH (zähe)": Ordne Werkstoff/Anwendung der **üblichen** Festigkeitshypothese zu.',
+        [
+          { left: 'Baustahl S235, S355 (Bauteil im Maschinenbau)', right: 'GEH (von Mises)' },
+          { left: 'Grauguss GJL-250 (Getriebegehäuse)', right: 'NH (Normalspannung)' },
+          { left: 'Aluminium-Schmiedelegierung (zäh)', right: 'GEH (von Mises)' },
+          { left: 'Keramik / Hartmetall (Schneide)', right: 'NH (Normalspannung)' },
+        ],
+        `**Ansatz:** Grundregel: **zäh** → Fließkriterium → **GEH**. **Spröde** → Trennkriterium → **NH**.
+
+**Rechnung:** Grauguss und Keramik sind klassisch spröde (hohe Druckfestigkeit, niedrige Zugfestigkeit) — NH erfasst das korrekt. Baustahl und duktile Al-Legierungen fließen plastisch — GEH.
+
+**Probe:** Merkregel: "Was sich verbiegt, fließt → GEH. Was zerspringt, trennt → NH." Sicherheitszahlen werden dann jeweils an die passende Hypothese und Materialkennwerte gebunden ($R_e$ bzw. $R_m$).
+
+**Typischer Fehler:** Aluminium als "leicht = spröde" einordnen. Al-Knetlegierungen sind zäh (GEH). Nur einige Gusslegierungen (AlSi-Gussgrundwerkstoffe ohne Wärmebehandlung) wären Grenzfälle.`,
+        [
+          'Zäh → GEH.',
+          'Spröde → NH.',
+          'Materialverhalten prüfen, nicht nur Werkstoffname.',
+        ],
+      ),
+    ],
+
+  },
+
 }
