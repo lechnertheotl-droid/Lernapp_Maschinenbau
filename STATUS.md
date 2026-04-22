@@ -1445,6 +1445,8 @@ _Numerische Tools sind in jedem modernen Labor und in der Industrie Standard. We
 
 ## Auftragsliste für Claude Code
 
+> 📘 **Vor dem Anfangen:** [CLAUDE.md](./CLAUDE.md) lesen (Qualitätskontrakt, Dateistruktur, Workflow, was NICHT zu tun ist).
+
 **Ziel:** Handgeschriebene Aufgaben in Menge ergänzen. Keine Template-Generatoren, keine Slop-Aufgaben.
 
 **Mengen-Regel:** 10 Aufgaben pro Lesson sind das **Minimum** — keine Obergrenze. Viele Aufgaben = bessere Routine. Wenn eine Lesson 7 Grund-Aufgaben hat, sind weitere 7–10 Supplements kein "zu viel", sondern gut.
@@ -1496,6 +1498,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-5-a`
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `int-3-4` · Bogenlänge & Durchschnittswert
 
@@ -1514,6 +1520,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-4-a`, `ex-int-3-4-b`
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
 #### `mech-1-4` · Reibung
 
@@ -1532,6 +1542,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-4-a`, `ex-mech-1-4-b`, `ex-mech-1-4-c`
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `mech-1-5` · Schwerpunkt
 
@@ -1550,6 +1564,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-5-a`, `ex-mech-1-5-b`, `ex-mech-1-5-c`
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `mech-2-4` · Schwingungen
 
@@ -1568,6 +1586,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-4-a`, `ex-mech-2-4-b`, `ex-mech-2-4-c`
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `mech-2-5` · Dynamik starrer Körper
 
@@ -1586,6 +1608,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-5-a`, `ex-mech-2-5-b`, `ex-mech-2-5-c`
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `fest-1-3` · Schubspannung und Torsion
 
@@ -1604,6 +1630,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-1-3-a`, `ex-fest-1-3-b`, `ex-fest-1-3-c`
+- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
+  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
 
 #### `fest-1-4` · Knicken
 
@@ -1622,6 +1652,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-1-4-a`, `ex-fest-1-4-b`, `ex-fest-1-4-c`
+- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
+  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
 
 #### `fest-2-3` · Mohr'scher Spannungskreis
 
@@ -1641,6 +1675,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-2-3-a`, `ex-fest-2-3-b`, `ex-fest-2-3-c`
+- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
+  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
 
 #### `fest-2-4` · Wechselfestigkeit und Betriebsfestigkeit
 
@@ -1659,6 +1697,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-2-4-a`, `ex-fest-2-4-b`, `ex-fest-2-4-c`
+- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
+  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
 
 #### `fest-2-5` · Kerbspannungen & Formzahl
 
@@ -1676,6 +1718,10 @@ npm run build              # abschließender End-zu-End-Check
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
+- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
+  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
 
 #### `thermo-2-3` · Kreisprozesse
 
@@ -1694,6 +1740,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-2-3-a`, `ex-thermo-2-3-b`, `ex-thermo-2-3-c`
+- **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
+  - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
+  - _Klausur-Fokus:_ Carnot-Wirkungsgrad einer Maschine. · Zustandsänderung: Isotherm, isobar, adiabat durchrechnen. · Entropieänderung bei idealem Gas.
 
 #### `thermo-2-4` · Wärmeübertragung
 
@@ -1712,6 +1762,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-2-4-a`, `ex-thermo-2-4-b`, `ex-thermo-2-4-c`
+- **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
+  - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
+  - _Klausur-Fokus:_ Carnot-Wirkungsgrad einer Maschine. · Zustandsänderung: Isotherm, isobar, adiabat durchrechnen. · Entropieänderung bei idealem Gas.
 
 #### `fluid-2-3` · Rohrströmung und Druckverlust
 
@@ -1730,6 +1784,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-2-3-a`, `ex-fluid-2-3-b`, `ex-fluid-2-3-c`
+- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
+  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
+  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
 
 #### `fluid-2-4` · Ähnlichkeitsgesetze und Pumpen
 
@@ -1748,6 +1806,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-2-4-a`, `ex-fluid-2-4-b`, `ex-fluid-2-4-c`
+- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
+  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
+  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
 
 #### `fluid-2-5` · Moody-Diagramm & Rohrreibung praktisch
 
@@ -1765,6 +1827,10 @@ npm run build              # abschließender End-zu-End-Check
   - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
+- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
+  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
+  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
 
 #### `melem-1-3` · Schweißverbindungen
 
@@ -1783,6 +1849,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-1-3-a`, `ex-melem-1-3-b`, `ex-melem-1-3-c`
+- **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
+  - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
+  - _Klausur-Fokus:_ Schraubenberechnung (Vorspannkraft, Betriebskraft). · Zahnradstufe: Drehzahl/Drehmoment am Ausgang. · Wälzlagerlebensdauer.
 
 #### `melem-2-3` · Lagerlebensdauer
 
@@ -1801,6 +1871,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-2-3-a`, `ex-melem-2-3-b`, `ex-melem-2-3-c`
+- **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
+  - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
+  - _Klausur-Fokus:_ Schraubenberechnung (Vorspannkraft, Betriebskraft). · Zahnradstufe: Drehzahl/Drehmoment am Ausgang. · Wälzlagerlebensdauer.
 
 #### `et-2-3` · Drehstrom & 3-Phasensystem
 
@@ -1818,6 +1892,10 @@ npm run build              # abschließender End-zu-End-Check
   - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/elektrotechnik.js`
+- **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
+  - _Klausur-Fokus:_ Netzwerkanalyse mit Kirchhoff. · Komplexe Impedanz eines RLC-Gliedes. · Wechselstrom-Leistung (Wirk-, Blind-, Scheinleistung).
 
 #### `rt-2-3` · Bodediagramm & Phasengang
 
@@ -1835,6 +1913,10 @@ npm run build              # abschließender End-zu-End-Check
   - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
 - **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/regelungstechnik.js`
+- **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
+  - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
+  - _Klausur-Fokus:_ Stabilität mit Hurwitz prüfen und Grenzverstärkung finden. · Stationäre Regelabweichung P-Regler an PT1. · Sprungantwort eines PT1-Glieds skizzieren.
 
 #### `mech-0-3` · Dimensionsanalyse — Einheitencheck
 
@@ -1851,6 +1933,10 @@ npm run build              # abschließender End-zu-End-Check
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
 - **Zusatz-Aufgaben fehlen (mindestens):** 6 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `mech-3-3` · Reibung, Kinematik & Schwingungen
 
@@ -1869,6 +1955,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 6 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-3-3-a`, `ex-mech-3-3-b`, `ex-mech-3-3-c`, `ex-mech-3-3-d`
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `fest-3-2` · Torsion, Knicken & Wechselfestigkeit
 
@@ -1887,6 +1977,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 6 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-3-2-a`, `ex-fest-3-2-b`, `ex-fest-3-2-c`, `ex-fest-3-2-d`
+- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
+  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
 
 #### `thermo-3-2` · Kreisprozesse & Wärmeübertragung
 
@@ -1905,6 +1999,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 6 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-3-2-a`, `ex-thermo-3-2-b`, `ex-thermo-3-2-c`, `ex-thermo-3-2-d`
+- **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
+  - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
+  - _Klausur-Fokus:_ Carnot-Wirkungsgrad einer Maschine. · Zustandsänderung: Isotherm, isobar, adiabat durchrechnen. · Entropieänderung bei idealem Gas.
 
 #### `fluid-3-2` · Druckverlust, Pumpen & Ähnlichkeit
 
@@ -1923,6 +2021,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 6 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-3-2-a`, `ex-fluid-3-2-b`, `ex-fluid-3-2-c`, `ex-fluid-3-2-d`
+- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
+  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
+  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
 
 #### `melem-3-2` · Schweißnähte, Lager & Lebensdauer
 
@@ -1941,6 +2043,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 6 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-3-2-a`, `ex-melem-3-2-b`, `ex-melem-3-2-c`, `ex-melem-3-2-d`
+- **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
+  - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
+  - _Klausur-Fokus:_ Schraubenberechnung (Vorspannkraft, Betriebskraft). · Zahnradstufe: Drehzahl/Drehmoment am Ausgang. · Wälzlagerlebensdauer.
 
 #### `werk-pruefung-1` · Prüfung: Werkstoffwahl & Kennwerte
 
@@ -1959,6 +2065,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 2 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-pruefung-1-manual-1`, `ex-werk-pruefung-1-manual-2`, `ex-werk-pruefung-1-manual-3`, `ex-werk-pruefung-1-manual-4`, `ex-werk-pruefung-1-manual-5`, `ex-werk-pruefung-1-manual-6`, `ex-werk-pruefung-1-manual-7`, `ex-werk-pruefung-1-mastery`
+- **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
+  - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
+  - _Klausur-Fokus:_ Zugversuch vollständig interpretieren. · Zulässige Spannung mit Sicherheitszahl berechnen. · Prüfverfahren einem Anwendungsfall zuordnen.
 
 #### `komz-pruefung-1` · Prüfung: Anwendungen & Gesamtaufgaben
 
@@ -1978,6 +2088,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-pruefung-1-1`, `ex-komz-pruefung-1-2`, `ex-komz-pruefung-1-3`, `ex-komz-pruefung-1-4`, `ex-komz-pruefung-1-5`, `ex-komz-pruefung-1-6`, `ex-komz-pruefung-1-7`, `ex-komz-pruefung-1-8` … (+1 weitere)
+- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
+  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
+  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
 
 #### `komz-pruefung-2` · Prüfung: Polarform & Multiplikation
 
@@ -1996,6 +2110,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-pruefung-2-1`, `ex-komz-pruefung-2-2`, `ex-komz-pruefung-2-3`, `ex-komz-pruefung-2-4`, `ex-komz-pruefung-2-5`, `ex-komz-pruefung-2-6`, `ex-komz-pruefung-2-7`, `ex-komz-pruefung-2-8` … (+1 weitere)
+- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
+  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
+  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
 
 #### `komz-pruefung-3` · Prüfung: Wurzeln & Gleichungen
 
@@ -2015,6 +2133,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-pruefung-3-1`, `ex-komz-pruefung-3-2`, `ex-komz-pruefung-3-3`, `ex-komz-pruefung-3-4`, `ex-komz-pruefung-3-5`, `ex-komz-pruefung-3-6`, `ex-komz-pruefung-3-7`, `ex-komz-pruefung-3-8` … (+1 weitere)
+- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
+  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
+  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
 
 #### `rf-pruefung-1` · Prüfung: Taylor, Konvergenz, Restglied
 
@@ -2034,6 +2156,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-pruefung-1-1`, `ex-rf-pruefung-1-2`, `ex-rf-pruefung-1-3`, `ex-rf-pruefung-1-4`, `ex-rf-pruefung-1-5`, `ex-rf-pruefung-1-6`, `ex-rf-pruefung-1-7`, `ex-rf-pruefung-1-8` … (+1 weitere)
+- **Lehrplan-Kontext für `reihen-folgen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Geometrische Reihe: $\sum q^n=1/(1-q)$ für $|q|<1$. · Harmonische Reihe divergiert, p-Reihen konvergieren für $p>1$. · Quotientenkriterium $\lim|a_{n+1}/a_n|<1 \Rightarrow$ Konvergenz. · …
+  - _Typische Fehler (gute Distraktoren):_ Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
+  - _Klausur-Fokus:_ Konvergenz einer Reihe per Quotientenkriterium. · Taylor-Polynom 3. Grades an gegebener Stelle.
 
 #### `rf-pruefung-2` · Prüfung: Konvergenzkriterien & Potenzreihen
 
@@ -2053,6 +2179,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-pruefung-2-1`, `ex-rf-pruefung-2-2`, `ex-rf-pruefung-2-3`, `ex-rf-pruefung-2-4`, `ex-rf-pruefung-2-5`, `ex-rf-pruefung-2-6`, `ex-rf-pruefung-2-7`, `ex-rf-pruefung-2-8` … (+1 weitere)
+- **Lehrplan-Kontext für `reihen-folgen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Geometrische Reihe: $\sum q^n=1/(1-q)$ für $|q|<1$. · Harmonische Reihe divergiert, p-Reihen konvergieren für $p>1$. · Quotientenkriterium $\lim|a_{n+1}/a_n|<1 \Rightarrow$ Konvergenz. · …
+  - _Typische Fehler (gute Distraktoren):_ Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
+  - _Klausur-Fokus:_ Konvergenz einer Reihe per Quotientenkriterium. · Taylor-Polynom 3. Grades an gegebener Stelle.
 
 #### `rf-pruefung-3` · Prüfung: Taylor-Restglied & Näherungen
 
@@ -2071,6 +2201,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-pruefung-3-1`, `ex-rf-pruefung-3-2`, `ex-rf-pruefung-3-3`, `ex-rf-pruefung-3-4`, `ex-rf-pruefung-3-5`, `ex-rf-pruefung-3-6`, `ex-rf-pruefung-3-7`, `ex-rf-pruefung-3-8` … (+1 weitere)
+- **Lehrplan-Kontext für `reihen-folgen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Geometrische Reihe: $\sum q^n=1/(1-q)$ für $|q|<1$. · Harmonische Reihe divergiert, p-Reihen konvergieren für $p>1$. · Quotientenkriterium $\lim|a_{n+1}/a_n|<1 \Rightarrow$ Konvergenz. · …
+  - _Typische Fehler (gute Distraktoren):_ Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
+  - _Klausur-Fokus:_ Konvergenz einer Reihe per Quotientenkriterium. · Taylor-Polynom 3. Grades an gegebener Stelle.
 
 #### `mdim-pruefung-1` · Prüfung: Extrema, Fehlerfortpflanzung
 
@@ -2090,6 +2224,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-pruefung-1-1`, `ex-mdim-pruefung-1-2`, `ex-mdim-pruefung-1-3`, `ex-mdim-pruefung-1-4`, `ex-mdim-pruefung-1-5`, `ex-mdim-pruefung-1-6`, `ex-mdim-pruefung-1-7`, `ex-mdim-pruefung-1-8` … (+1 weitere)
+- **Lehrplan-Kontext für `mehrdim-analysis`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Partielle Ableitung: alle anderen Variablen als Konstante behandeln. · Gradient $\nabla f$ zeigt in Richtung des steilsten Anstiegs. · Extrema: $\nabla f=\vec 0$ (notwendig) + Definitheit der Hesse-Matrix (hinreichend). · …
+  - _Typische Fehler (gute Distraktoren):_ Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
+  - _Klausur-Fokus:_ Extrema einer Funktion $f(x,y)$. · Lagrange-Multiplikatoren bei Nebenbedingung. · Tangentialebene in einem Punkt aufstellen.
 
 #### `mdim-pruefung-2` · Prüfung: Fehlerfortpflanzung & totales Differential
 
@@ -2108,6 +2246,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-pruefung-2-1`, `ex-mdim-pruefung-2-2`, `ex-mdim-pruefung-2-3`, `ex-mdim-pruefung-2-4`, `ex-mdim-pruefung-2-5`, `ex-mdim-pruefung-2-6`, `ex-mdim-pruefung-2-7`, `ex-mdim-pruefung-2-8` … (+1 weitere)
+- **Lehrplan-Kontext für `mehrdim-analysis`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Partielle Ableitung: alle anderen Variablen als Konstante behandeln. · Gradient $\nabla f$ zeigt in Richtung des steilsten Anstiegs. · Extrema: $\nabla f=\vec 0$ (notwendig) + Definitheit der Hesse-Matrix (hinreichend). · …
+  - _Typische Fehler (gute Distraktoren):_ Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
+  - _Klausur-Fokus:_ Extrema einer Funktion $f(x,y)$. · Lagrange-Multiplikatoren bei Nebenbedingung. · Tangentialebene in einem Punkt aufstellen.
 
 #### `mdim-pruefung-3` · Prüfung: Lagrange & Gesamtaufgaben
 
@@ -2127,6 +2269,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-pruefung-3-1`, `ex-mdim-pruefung-3-2`, `ex-mdim-pruefung-3-3`, `ex-mdim-pruefung-3-4`, `ex-mdim-pruefung-3-5`, `ex-mdim-pruefung-3-6`, `ex-mdim-pruefung-3-7`, `ex-mdim-pruefung-3-8` … (+1 weitere)
+- **Lehrplan-Kontext für `mehrdim-analysis`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Partielle Ableitung: alle anderen Variablen als Konstante behandeln. · Gradient $\nabla f$ zeigt in Richtung des steilsten Anstiegs. · Extrema: $\nabla f=\vec 0$ (notwendig) + Definitheit der Hesse-Matrix (hinreichend). · …
+  - _Typische Fehler (gute Distraktoren):_ Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
+  - _Klausur-Fokus:_ Extrema einer Funktion $f(x,y)$. · Lagrange-Multiplikatoren bei Nebenbedingung. · Tangentialebene in einem Punkt aufstellen.
 
 #### `num-pruefung-1` · Prüfung: Numerische Methoden kombiniert
 
@@ -2146,6 +2292,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-pruefung-1-1`, `ex-num-pruefung-1-2`, `ex-num-pruefung-1-3`, `ex-num-pruefung-1-4`, `ex-num-pruefung-1-5`, `ex-num-pruefung-1-6`, `ex-num-pruefung-1-7`, `ex-num-pruefung-1-8` … (+1 weitere)
+- **Lehrplan-Kontext für `numerik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Newton: $x_{n+1}=x_n-f(x_n)/f'(x_n)$, quadratisch konvergent. · Bisektion: sicher aber linear, braucht Vorzeichenwechsel. · Trapezregel: $I\approx h[y_0/2+y_1+\ldots+y_{n-1}+y_n/2]$, Fehler $O(h^2)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
+  - _Klausur-Fokus:_ Newton-Iteration für zwei Schritte mit Startwert. · Simpson-Regel mit $n=2$ oder $n=4$. · Fehlerordnung begründen.
 
 #### `num-pruefung-2` · Prüfung: Trapez, Simpson & Fehlerordnung
 
@@ -2165,6 +2315,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-pruefung-2-1`, `ex-num-pruefung-2-2`, `ex-num-pruefung-2-3`, `ex-num-pruefung-2-4`, `ex-num-pruefung-2-5`, `ex-num-pruefung-2-6`, `ex-num-pruefung-2-7`, `ex-num-pruefung-2-8` … (+1 weitere)
+- **Lehrplan-Kontext für `numerik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Newton: $x_{n+1}=x_n-f(x_n)/f'(x_n)$, quadratisch konvergent. · Bisektion: sicher aber linear, braucht Vorzeichenwechsel. · Trapezregel: $I\approx h[y_0/2+y_1+\ldots+y_{n-1}+y_n/2]$, Fehler $O(h^2)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
+  - _Klausur-Fokus:_ Newton-Iteration für zwei Schritte mit Startwert. · Simpson-Regel mit $n=2$ oder $n=4$. · Fehlerordnung begründen.
 
 #### `num-pruefung-3` · Prüfung: Kombinierte Aufgaben & Abbruchkriterien
 
@@ -2183,6 +2337,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-pruefung-3-1`, `ex-num-pruefung-3-2`, `ex-num-pruefung-3-3`, `ex-num-pruefung-3-4`, `ex-num-pruefung-3-5`, `ex-num-pruefung-3-6`, `ex-num-pruefung-3-7`, `ex-num-pruefung-3-8` … (+1 weitere)
+- **Lehrplan-Kontext für `numerik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Newton: $x_{n+1}=x_n-f(x_n)/f'(x_n)$, quadratisch konvergent. · Bisektion: sicher aber linear, braucht Vorzeichenwechsel. · Trapezregel: $I\approx h[y_0/2+y_1+\ldots+y_{n-1}+y_n/2]$, Fehler $O(h^2)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
+  - _Klausur-Fokus:_ Newton-Iteration für zwei Schritte mit Startwert. · Simpson-Regel mit $n=2$ oder $n=4$. · Fehlerordnung begründen.
 
 #### `stat-pruefung-1` · Prüfung: Schätzung & Hypothesentest
 
@@ -2201,6 +2359,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-pruefung-1-1`, `ex-stat-pruefung-1-2`, `ex-stat-pruefung-1-3`, `ex-stat-pruefung-1-4`, `ex-stat-pruefung-1-5`, `ex-stat-pruefung-1-6`, `ex-stat-pruefung-1-7`, `ex-stat-pruefung-1-8` … (+1 weitere)
+- **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
+  - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
+  - _Klausur-Fokus:_ Wahrscheinlichkeit bei Normalverteilung mit Standardisierung. · Erwartungswert und Varianz einer diskreten Verteilung. · 95%-Konfidenzintervall für Mittelwert.
 
 #### `stat-pruefung-2` · Prüfung: Normalverteilung & Standardisierung
 
@@ -2219,6 +2381,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-pruefung-2-1`, `ex-stat-pruefung-2-2`, `ex-stat-pruefung-2-3`, `ex-stat-pruefung-2-4`, `ex-stat-pruefung-2-5`, `ex-stat-pruefung-2-6`, `ex-stat-pruefung-2-7`, `ex-stat-pruefung-2-8` … (+1 weitere)
+- **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
+  - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
+  - _Klausur-Fokus:_ Wahrscheinlichkeit bei Normalverteilung mit Standardisierung. · Erwartungswert und Varianz einer diskreten Verteilung. · 95%-Konfidenzintervall für Mittelwert.
 
 #### `stat-pruefung-3` · Prüfung: Konfidenzintervall & Gesamtaufgaben
 
@@ -2237,6 +2403,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-pruefung-3-1`, `ex-stat-pruefung-3-2`, `ex-stat-pruefung-3-3`, `ex-stat-pruefung-3-4`, `ex-stat-pruefung-3-5`, `ex-stat-pruefung-3-6`, `ex-stat-pruefung-3-7`, `ex-stat-pruefung-3-8` … (+1 weitere)
+- **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
+  - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
+  - _Klausur-Fokus:_ Wahrscheinlichkeit bei Normalverteilung mit Standardisierung. · Erwartungswert und Varianz einer diskreten Verteilung. · 95%-Konfidenzintervall für Mittelwert.
 
 ### 🟠 Hoch (< 8 Aufgaben) — 8 Lessons
 
@@ -2254,6 +2424,10 @@ npm run build              # abschließender End-zu-End-Check
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/trigonometry.js`
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `vek-1-0` · Koordinaten, Punkte & Pfeile (Einstieg)
 
@@ -2269,6 +2443,10 @@ npm run build              # abschließender End-zu-End-Check
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/vektoren.js`
+- **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
+  - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
 
 #### `mech-0-1` · SI-Basiseinheiten & Präfixe
 
@@ -2284,6 +2462,10 @@ npm run build              # abschließender End-zu-End-Check
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `mech-0-2` · Abgeleitete Einheiten (N, J, Pa, W)
 
@@ -2300,6 +2482,10 @@ npm run build              # abschließender End-zu-End-Check
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `mech-1-3` · Schnittkräfte N(x), Q(x), M(x)
 
@@ -2318,6 +2504,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-3-a`, `ex-mech-1-3-b`, `ex-mech-1-3-c`, `ex-mech-1-3-d`, `ex-mech-1-3-e`
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `mech-2-3` · Kinematik
 
@@ -2337,6 +2527,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-3-a`, `ex-mech-2-3-b`, `ex-mech-2-3-c`, `ex-mech-2-3-d`, `ex-mech-2-3-e`
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `alg-0-3` · Prozent & Dreisatz
 
@@ -2354,6 +2548,10 @@ npm run build              # abschließender End-zu-End-Check
   - Ablage: `src/content/subgoal_tasks/algebra.js`
 - **Zusatz-Aufgaben fehlen (mindestens):** 4 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 #### `alg-0-4` · Termumformung & Gleichungen
 
@@ -2371,6 +2569,10 @@ npm run build              # abschließender End-zu-End-Check
   - Ablage: `src/content/subgoal_tasks/algebra.js`
 - **Zusatz-Aufgaben fehlen (mindestens):** 4 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/algebra.js`
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 ### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 174 Lessons
 
@@ -2392,6 +2594,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 2 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-5-2-manual-1`, `ex-abl-5-2-manual-2`, `ex-abl-5-2-manual-3`, `ex-abl-5-2-manual-4`, `ex-abl-5-2-manual-5`, `ex-abl-5-2-manual-6`, `ex-abl-5-2-manual-7`, `ex-abl-5-2-mastery`
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `werk-1-1` · Spannungs-Dehnungs-Diagramm
 
@@ -2410,6 +2616,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 2 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-1-1-manual-1`, `ex-werk-1-1-manual-2`, `ex-werk-1-1-manual-3`, `ex-werk-1-1-manual-4`, `ex-werk-1-1-manual-5`, `ex-werk-1-1-manual-6`, `ex-werk-1-1-manual-7`, `ex-werk-1-1-mastery`
+- **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
+  - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
+  - _Klausur-Fokus:_ Zugversuch vollständig interpretieren. · Zulässige Spannung mit Sicherheitszahl berechnen. · Prüfverfahren einem Anwendungsfall zuordnen.
 
 #### `werk-1-2` · Werkstoffgruppen
 
@@ -2428,6 +2638,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 2 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-1-2-manual-1`, `ex-werk-1-2-manual-2`, `ex-werk-1-2-manual-3`, `ex-werk-1-2-manual-4`, `ex-werk-1-2-manual-5`, `ex-werk-1-2-manual-6`, `ex-werk-1-2-manual-7`, `ex-werk-1-2-mastery`
+- **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
+  - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
+  - _Klausur-Fokus:_ Zugversuch vollständig interpretieren. · Zulässige Spannung mit Sicherheitszahl berechnen. · Prüfverfahren einem Anwendungsfall zuordnen.
 
 #### `werk-2-1` · Härteprüfung (HV, HB, HRC)
 
@@ -2445,6 +2659,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 2 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-2-1-manual-1`, `ex-werk-2-1-manual-2`, `ex-werk-2-1-manual-3`, `ex-werk-2-1-manual-4`, `ex-werk-2-1-manual-5`, `ex-werk-2-1-manual-6`, `ex-werk-2-1-manual-7`
+- **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
+  - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
+  - _Klausur-Fokus:_ Zugversuch vollständig interpretieren. · Zulässige Spannung mit Sicherheitszahl berechnen. · Prüfverfahren einem Anwendungsfall zuordnen.
 
 #### `werk-2-2` · Kerbschlagbiegeversuch
 
@@ -2463,6 +2681,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 2 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-2-2-manual-1`, `ex-werk-2-2-manual-2`, `ex-werk-2-2-manual-3`, `ex-werk-2-2-manual-4`, `ex-werk-2-2-manual-5`, `ex-werk-2-2-manual-6`, `ex-werk-2-2-manual-7`
+- **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
+  - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
+  - _Klausur-Fokus:_ Zugversuch vollständig interpretieren. · Zulässige Spannung mit Sicherheitszahl berechnen. · Prüfverfahren einem Anwendungsfall zuordnen.
 
 #### `komz-1-1` · Imaginäre Einheit & Gaußsche Zahlenebene
 
@@ -2480,6 +2702,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-1-1-1`, `ex-komz-1-1-2`, `ex-komz-1-1-3`, `ex-komz-1-1-4`, `ex-komz-1-1-5`, `ex-komz-1-1-6`, `ex-komz-1-1-7`, `ex-komz-1-1-8` … (+1 weitere)
+- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
+  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
+  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
 
 #### `komz-1-2` · Rechnen in kartesischer Form (+, −, ·, :)
 
@@ -2497,6 +2723,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-1-2-1`, `ex-komz-1-2-2`, `ex-komz-1-2-3`, `ex-komz-1-2-4`, `ex-komz-1-2-5`, `ex-komz-1-2-6`, `ex-komz-1-2-7`, `ex-komz-1-2-8` … (+1 weitere)
+- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
+  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
+  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
 
 #### `komz-2-1` · Betrag, Argument, Polarform
 
@@ -2516,6 +2746,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-2-1-1`, `ex-komz-2-1-2`, `ex-komz-2-1-3`, `ex-komz-2-1-4`, `ex-komz-2-1-5`, `ex-komz-2-1-6`, `ex-komz-2-1-7`, `ex-komz-2-1-8` … (+1 weitere)
+- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
+  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
+  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
 
 #### `komz-2-2` · Euler-Formel & Exponentialdarstellung
 
@@ -2535,6 +2769,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-2-2-1`, `ex-komz-2-2-2`, `ex-komz-2-2-3`, `ex-komz-2-2-4`, `ex-komz-2-2-5`, `ex-komz-2-2-6`, `ex-komz-2-2-7`, `ex-komz-2-2-8` … (+1 weitere)
+- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
+  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
+  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
 
 #### `komz-3-1` · Potenzen — Formel von de Moivre
 
@@ -2553,6 +2791,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-3-1-1`, `ex-komz-3-1-2`, `ex-komz-3-1-3`, `ex-komz-3-1-4`, `ex-komz-3-1-5`, `ex-komz-3-1-6`, `ex-komz-3-1-7`, `ex-komz-3-1-8` … (+1 weitere)
+- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
+  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
+  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
 
 #### `komz-3-2` · Wurzeln — alle n-ten Wurzeln finden
 
@@ -2572,6 +2814,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-3-2-1`, `ex-komz-3-2-2`, `ex-komz-3-2-3`, `ex-komz-3-2-4`, `ex-komz-3-2-5`, `ex-komz-3-2-6`, `ex-komz-3-2-7`, `ex-komz-3-2-8` … (+1 weitere)
+- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
+  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
+  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
 
 #### `rf-1-1` · Folgen und Grenzwerte
 
@@ -2590,6 +2836,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-1-1-1`, `ex-rf-1-1-2`, `ex-rf-1-1-3`, `ex-rf-1-1-4`, `ex-rf-1-1-5`, `ex-rf-1-1-6`, `ex-rf-1-1-7`, `ex-rf-1-1-8` … (+1 weitere)
+- **Lehrplan-Kontext für `reihen-folgen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Geometrische Reihe: $\sum q^n=1/(1-q)$ für $|q|<1$. · Harmonische Reihe divergiert, p-Reihen konvergieren für $p>1$. · Quotientenkriterium $\lim|a_{n+1}/a_n|<1 \Rightarrow$ Konvergenz. · …
+  - _Typische Fehler (gute Distraktoren):_ Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
+  - _Klausur-Fokus:_ Konvergenz einer Reihe per Quotientenkriterium. · Taylor-Polynom 3. Grades an gegebener Stelle.
 
 #### `rf-1-2` · Taylor-Polynome
 
@@ -2607,6 +2857,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-1-2-1`, `ex-rf-1-2-2`, `ex-rf-1-2-3`, `ex-rf-1-2-4`, `ex-rf-1-2-5`, `ex-rf-1-2-6`, `ex-rf-1-2-7`, `ex-rf-1-2-8` … (+1 weitere)
+- **Lehrplan-Kontext für `reihen-folgen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Geometrische Reihe: $\sum q^n=1/(1-q)$ für $|q|<1$. · Harmonische Reihe divergiert, p-Reihen konvergieren für $p>1$. · Quotientenkriterium $\lim|a_{n+1}/a_n|<1 \Rightarrow$ Konvergenz. · …
+  - _Typische Fehler (gute Distraktoren):_ Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
+  - _Klausur-Fokus:_ Konvergenz einer Reihe per Quotientenkriterium. · Taylor-Polynom 3. Grades an gegebener Stelle.
 
 #### `mdim-1-1` · Partielle Ableitung verstehen
 
@@ -2625,6 +2879,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-1-1-1`, `ex-mdim-1-1-2`, `ex-mdim-1-1-3`, `ex-mdim-1-1-4`, `ex-mdim-1-1-5`, `ex-mdim-1-1-6`, `ex-mdim-1-1-7`, `ex-mdim-1-1-8` … (+1 weitere)
+- **Lehrplan-Kontext für `mehrdim-analysis`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Partielle Ableitung: alle anderen Variablen als Konstante behandeln. · Gradient $\nabla f$ zeigt in Richtung des steilsten Anstiegs. · Extrema: $\nabla f=\vec 0$ (notwendig) + Definitheit der Hesse-Matrix (hinreichend). · …
+  - _Typische Fehler (gute Distraktoren):_ Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
+  - _Klausur-Fokus:_ Extrema einer Funktion $f(x,y)$. · Lagrange-Multiplikatoren bei Nebenbedingung. · Tangentialebene in einem Punkt aufstellen.
 
 #### `mdim-1-2` · Hesse-Matrix und Lagrange-Multiplikatoren
 
@@ -2643,6 +2901,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-1-2-1`, `ex-mdim-1-2-2`, `ex-mdim-1-2-3`, `ex-mdim-1-2-4`, `ex-mdim-1-2-5`, `ex-mdim-1-2-6`, `ex-mdim-1-2-7`, `ex-mdim-1-2-8` … (+1 weitere)
+- **Lehrplan-Kontext für `mehrdim-analysis`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Partielle Ableitung: alle anderen Variablen als Konstante behandeln. · Gradient $\nabla f$ zeigt in Richtung des steilsten Anstiegs. · Extrema: $\nabla f=\vec 0$ (notwendig) + Definitheit der Hesse-Matrix (hinreichend). · …
+  - _Typische Fehler (gute Distraktoren):_ Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
+  - _Klausur-Fokus:_ Extrema einer Funktion $f(x,y)$. · Lagrange-Multiplikatoren bei Nebenbedingung. · Tangentialebene in einem Punkt aufstellen.
 
 #### `num-1-1` · Newton-Verfahren
 
@@ -2660,6 +2922,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-1-1-1`, `ex-num-1-1-2`, `ex-num-1-1-3`, `ex-num-1-1-4`, `ex-num-1-1-5`, `ex-num-1-1-6`, `ex-num-1-1-7`, `ex-num-1-1-8` … (+1 weitere)
+- **Lehrplan-Kontext für `numerik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Newton: $x_{n+1}=x_n-f(x_n)/f'(x_n)$, quadratisch konvergent. · Bisektion: sicher aber linear, braucht Vorzeichenwechsel. · Trapezregel: $I\approx h[y_0/2+y_1+\ldots+y_{n-1}+y_n/2]$, Fehler $O(h^2)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
+  - _Klausur-Fokus:_ Newton-Iteration für zwei Schritte mit Startwert. · Simpson-Regel mit $n=2$ oder $n=4$. · Fehlerordnung begründen.
 
 #### `num-1-2` · Bisektion und numerische Integration
 
@@ -2678,6 +2944,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-1-2-1`, `ex-num-1-2-2`, `ex-num-1-2-3`, `ex-num-1-2-4`, `ex-num-1-2-5`, `ex-num-1-2-6`, `ex-num-1-2-7`, `ex-num-1-2-8` … (+1 weitere)
+- **Lehrplan-Kontext für `numerik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Newton: $x_{n+1}=x_n-f(x_n)/f'(x_n)$, quadratisch konvergent. · Bisektion: sicher aber linear, braucht Vorzeichenwechsel. · Trapezregel: $I\approx h[y_0/2+y_1+\ldots+y_{n-1}+y_n/2]$, Fehler $O(h^2)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
+  - _Klausur-Fokus:_ Newton-Iteration für zwei Schritte mit Startwert. · Simpson-Regel mit $n=2$ oder $n=4$. · Fehlerordnung begründen.
 
 #### `stat-1-1` · Erwartungswert und Varianz
 
@@ -2695,6 +2965,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-1-1-1`, `ex-stat-1-1-2`, `ex-stat-1-1-3`, `ex-stat-1-1-4`, `ex-stat-1-1-5`, `ex-stat-1-1-6`, `ex-stat-1-1-7`, `ex-stat-1-1-8` … (+1 weitere)
+- **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
+  - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
+  - _Klausur-Fokus:_ Wahrscheinlichkeit bei Normalverteilung mit Standardisierung. · Erwartungswert und Varianz einer diskreten Verteilung. · 95%-Konfidenzintervall für Mittelwert.
 
 #### `stat-1-2` · Normalverteilung
 
@@ -2713,6 +2987,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-1-2-1`, `ex-stat-1-2-2`, `ex-stat-1-2-3`, `ex-stat-1-2-4`, `ex-stat-1-2-5`, `ex-stat-1-2-6`, `ex-stat-1-2-7`, `ex-stat-1-2-8` … (+1 weitere)
+- **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
+  - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
+  - _Klausur-Fokus:_ Wahrscheinlichkeit bei Normalverteilung mit Standardisierung. · Erwartungswert und Varianz einer diskreten Verteilung. · 95%-Konfidenzintervall für Mittelwert.
 
 #### `stat-1-3` · Hypothesentest und Konfidenzintervall
 
@@ -2731,6 +3009,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Zusatz-Aufgaben fehlen (mindestens):** 1 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-1-3-1`, `ex-stat-1-3-2`, `ex-stat-1-3-3`, `ex-stat-1-3-4`, `ex-stat-1-3-5`, `ex-stat-1-3-6`, `ex-stat-1-3-7`, `ex-stat-1-3-8` … (+1 weitere)
+- **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
+  - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
+  - _Klausur-Fokus:_ Wahrscheinlichkeit bei Normalverteilung mit Standardisierung. · Erwartungswert und Varianz einer diskreten Verteilung. · 95%-Konfidenzintervall für Mittelwert.
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -2745,6 +3027,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-1-4-a`, `ex-trig-1-4-b`, `ex-trig-1-4-manual-1`, `ex-trig-1-4-manual-2`, `ex-trig-1-4-manual-3`, `ex-trig-1-4-manual-4`, `ex-trig-1-4-manual-5`, `ex-trig-1-4-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `trig-2-1` · Der Einheitskreis
 
@@ -2760,6 +3046,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-1-a`, `ex-trig-2-1-manual-1`, `ex-trig-2-1-manual-2`, `ex-trig-2-1-manual-3`, `ex-trig-2-1-manual-4`, `ex-trig-2-1-manual-5`, `ex-trig-2-1-manual-6`, `ex-trig-2-1-manual-7`
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `trig-2-2` · sin und cos als Koordinaten
 
@@ -2776,6 +3066,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-2-a`, `ex-trig-2-2-manual-1`, `ex-trig-2-2-manual-2`, `ex-trig-2-2-manual-3`, `ex-trig-2-2-manual-4`, `ex-trig-2-2-manual-5`, `ex-trig-2-2-manual-6`, `ex-trig-2-2-manual-7` … (+1 weitere)
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `trig-2-3` · Symmetrien und Periodizität
 
@@ -2793,6 +3087,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-3-b`, `ex-trig-2-3-manual-1`, `ex-trig-2-3-manual-2`, `ex-trig-2-3-manual-3`, `ex-trig-2-3-manual-4`, `ex-trig-2-3-manual-5`, `ex-trig-2-3-manual-6`, `ex-trig-2-3-manual-7` … (+1 weitere)
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `trig-2-4` · Tangens im Einheitskreis
 
@@ -2810,6 +3108,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-4-a`, `ex-trig-2-4-b`, `ex-trig-2-4-manual-1`, `ex-trig-2-4-manual-2`, `ex-trig-2-4-manual-3`, `ex-trig-2-4-manual-4`, `ex-trig-2-4-manual-5`, `ex-trig-2-4-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `trig-2-5` · Alle vier Quadranten
 
@@ -2827,6 +3129,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-5-b`, `ex-trig-2-5-manual-1`, `ex-trig-2-5-manual-2`, `ex-trig-2-5-manual-3`, `ex-trig-2-5-manual-4`, `ex-trig-2-5-manual-5`, `ex-trig-2-5-manual-6`, `ex-trig-2-5-manual-7` … (+1 weitere)
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `trig-3-1` · Additionstheoreme
 
@@ -2843,6 +3149,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-1-a`, `ex-trig-3-1-b`, `ex-trig-3-1-manual-1`, `ex-trig-3-1-manual-2`, `ex-trig-3-1-manual-3`, `ex-trig-3-1-manual-4`, `ex-trig-3-1-manual-5`, `ex-trig-3-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `trig-3-2` · Doppelwinkelformeln und Pythagoreischer Satz
 
@@ -2859,6 +3169,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-2-a`, `ex-trig-3-2-b`, `ex-trig-3-2-manual-1`, `ex-trig-3-2-manual-2`, `ex-trig-3-2-manual-3`, `ex-trig-3-2-manual-4`, `ex-trig-3-2-manual-5`, `ex-trig-3-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `trig-3-3` · Technische Anwendungen
 
@@ -2875,6 +3189,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-3-a`, `ex-trig-3-3-manual-1`, `ex-trig-3-3-manual-2`, `ex-trig-3-3-manual-3`, `ex-trig-3-3-manual-4`, `ex-trig-3-3-manual-5`, `ex-trig-3-3-manual-6`, `ex-trig-3-3-manual-7`
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `trig-3-4` · Inverse Funktionen
 
@@ -2892,6 +3210,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-3-4-b`, `ex-trig-3-4-manual-1`, `ex-trig-3-4-manual-2`, `ex-trig-3-4-manual-3`, `ex-trig-3-4-manual-4`, `ex-trig-3-4-manual-5`, `ex-trig-3-4-manual-6`, `ex-trig-3-4-manual-7`
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `vek-1-3` · Kreuzprodukt
 
@@ -2907,6 +3229,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-1-3-a`, `ex-vek-1-3-b`, `ex-vek-1-3-manual-1`, `ex-vek-1-3-manual-2`, `ex-vek-1-3-manual-3`, `ex-vek-1-3-manual-4`, `ex-vek-1-3-manual-5`, `ex-vek-1-3-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
+  - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
 
 #### `vek-1-4` · Kräfte als Vektoren (Prüfung)
 
@@ -2924,6 +3250,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-1-4-b`, `ex-vek-1-4-manual-1`, `ex-vek-1-4-manual-2`, `ex-vek-1-4-manual-3`, `ex-vek-1-4-manual-4`, `ex-vek-1-4-manual-5`, `ex-vek-1-4-manual-6`, `ex-vek-1-4-manual-7` … (+1 weitere)
+- **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
+  - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
 
 #### `dgl-2-2` · DGL-Systeme
 
@@ -2941,6 +3271,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-2-2-a`, `ex-dgl-2-2-b`, `ex-dgl-2-2-manual-1`, `ex-dgl-2-2-manual-2`, `ex-dgl-2-2-manual-3`, `ex-dgl-2-2-manual-4`, `ex-dgl-2-2-manual-5`, `ex-dgl-2-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
+  - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+  - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
 
 #### `mech-1-1` · Kräfte und Freikörperbild
 
@@ -2956,6 +3290,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-1-a`, `ex-mech-1-1-b`, `ex-mech-1-1-manual-1`, `ex-mech-1-1-manual-2`, `ex-mech-1-1-manual-3`, `ex-mech-1-1-manual-4`, `ex-mech-1-1-manual-5`, `ex-mech-1-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `mech-1-2` · Momente und Hebelarm
 
@@ -2971,6 +3309,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-2-a`, `ex-mech-1-2-b`, `ex-mech-1-2-manual-1`, `ex-mech-1-2-manual-2`, `ex-mech-1-2-manual-3`, `ex-mech-1-2-manual-4`, `ex-mech-1-2-manual-5`, `ex-mech-1-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `mech-2-1` · Newtonsche Gesetze
 
@@ -2987,6 +3329,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-1-a`, `ex-mech-2-1-b`, `ex-mech-2-1-manual-1`, `ex-mech-2-1-manual-2`, `ex-mech-2-1-manual-3`, `ex-mech-2-1-manual-4`, `ex-mech-2-1-manual-5`, `ex-mech-2-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `mech-2-2` · Arbeit und Energie
 
@@ -3004,6 +3350,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-2-a`, `ex-mech-2-2-b`, `ex-mech-2-2-manual-1`, `ex-mech-2-2-manual-2`, `ex-mech-2-2-manual-3`, `ex-mech-2-2-manual-4`, `ex-mech-2-2-manual-5`, `ex-mech-2-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `mech-3-2` · Dynamik: Prüfungsaufgaben
 
@@ -3020,6 +3370,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-3-2-a`, `ex-mech-3-2-b`, `ex-mech-3-2-manual-1`, `ex-mech-3-2-manual-2`, `ex-mech-3-2-manual-3`, `ex-mech-3-2-manual-4`, `ex-mech-3-2-manual-5`, `ex-mech-3-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `fest-1-1` · Normalspannung
 
@@ -3035,6 +3389,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-1-1-a`, `ex-fest-1-1-b`, `ex-fest-1-1-manual-1`, `ex-fest-1-1-manual-2`, `ex-fest-1-1-manual-3`, `ex-fest-1-1-manual-4`, `ex-fest-1-1-manual-5`, `ex-fest-1-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
+  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
 
 #### `fest-1-2` · Hookesches Gesetz
 
@@ -3050,6 +3408,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-1-2-a`, `ex-fest-1-2-b`, `ex-fest-1-2-manual-1`, `ex-fest-1-2-manual-2`, `ex-fest-1-2-manual-3`, `ex-fest-1-2-manual-4`, `ex-fest-1-2-manual-5`, `ex-fest-1-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
+  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
 
 #### `fest-2-1` · Biegespannung
 
@@ -3066,6 +3428,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-2-1-a`, `ex-fest-2-1-b`, `ex-fest-2-1-manual-1`, `ex-fest-2-1-manual-2`, `ex-fest-2-1-manual-3`, `ex-fest-2-1-manual-4`, `ex-fest-2-1-manual-5`, `ex-fest-2-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
+  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
 
 #### `fest-2-2` · Sicherheitszahl
 
@@ -3082,6 +3448,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-2-2-a`, `ex-fest-2-2-b`, `ex-fest-2-2-manual-1`, `ex-fest-2-2-manual-2`, `ex-fest-2-2-manual-3`, `ex-fest-2-2-manual-4`, `ex-fest-2-2-manual-5`, `ex-fest-2-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
+  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
 
 #### `thermo-1-1` · Ideales Gas
 
@@ -3097,6 +3467,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-1-1-a`, `ex-thermo-1-1-b`, `ex-thermo-1-1-manual-1`, `ex-thermo-1-1-manual-2`, `ex-thermo-1-1-manual-3`, `ex-thermo-1-1-manual-4`, `ex-thermo-1-1-manual-5`, `ex-thermo-1-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
+  - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
+  - _Klausur-Fokus:_ Carnot-Wirkungsgrad einer Maschine. · Zustandsänderung: Isotherm, isobar, adiabat durchrechnen. · Entropieänderung bei idealem Gas.
 
 #### `thermo-1-2` · Druck und Arbeit
 
@@ -3112,6 +3486,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-1-2-a`, `ex-thermo-1-2-b`, `ex-thermo-1-2-manual-1`, `ex-thermo-1-2-manual-2`, `ex-thermo-1-2-manual-3`, `ex-thermo-1-2-manual-4`, `ex-thermo-1-2-manual-5`, `ex-thermo-1-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
+  - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
+  - _Klausur-Fokus:_ Carnot-Wirkungsgrad einer Maschine. · Zustandsänderung: Isotherm, isobar, adiabat durchrechnen. · Entropieänderung bei idealem Gas.
 
 #### `thermo-2-1` · Erster Hauptsatz
 
@@ -3128,6 +3506,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-2-1-a`, `ex-thermo-2-1-b`, `ex-thermo-2-1-manual-1`, `ex-thermo-2-1-manual-2`, `ex-thermo-2-1-manual-3`, `ex-thermo-2-1-manual-4`, `ex-thermo-2-1-manual-5`, `ex-thermo-2-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
+  - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
+  - _Klausur-Fokus:_ Carnot-Wirkungsgrad einer Maschine. · Zustandsänderung: Isotherm, isobar, adiabat durchrechnen. · Entropieänderung bei idealem Gas.
 
 #### `thermo-2-2` · Wirkungsgrad
 
@@ -3144,6 +3526,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-2-2-a`, `ex-thermo-2-2-b`, `ex-thermo-2-2-manual-1`, `ex-thermo-2-2-manual-2`, `ex-thermo-2-2-manual-3`, `ex-thermo-2-2-manual-4`, `ex-thermo-2-2-manual-5`, `ex-thermo-2-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
+  - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
+  - _Klausur-Fokus:_ Carnot-Wirkungsgrad einer Maschine. · Zustandsänderung: Isotherm, isobar, adiabat durchrechnen. · Entropieänderung bei idealem Gas.
 
 #### `fluid-1-1` · Hydrostatischer Druck
 
@@ -3159,6 +3545,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-1-1-a`, `ex-fluid-1-1-b`, `ex-fluid-1-1-manual-1`, `ex-fluid-1-1-manual-2`, `ex-fluid-1-1-manual-3`, `ex-fluid-1-1-manual-4`, `ex-fluid-1-1-manual-5`, `ex-fluid-1-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
+  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
+  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
 
 #### `fluid-1-2` · Auftrieb
 
@@ -3174,6 +3564,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-1-2-a`, `ex-fluid-1-2-b`, `ex-fluid-1-2-manual-1`, `ex-fluid-1-2-manual-2`, `ex-fluid-1-2-manual-3`, `ex-fluid-1-2-manual-4`, `ex-fluid-1-2-manual-5`, `ex-fluid-1-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
+  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
+  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
 
 #### `fluid-2-1` · Kontinuitätsgleichung
 
@@ -3190,6 +3584,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-2-1-a`, `ex-fluid-2-1-b`, `ex-fluid-2-1-manual-1`, `ex-fluid-2-1-manual-2`, `ex-fluid-2-1-manual-3`, `ex-fluid-2-1-manual-4`, `ex-fluid-2-1-manual-5`, `ex-fluid-2-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
+  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
+  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
 
 #### `fluid-2-2` · Bernoulli-Gleichung
 
@@ -3206,6 +3604,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-2-2-a`, `ex-fluid-2-2-b`, `ex-fluid-2-2-manual-1`, `ex-fluid-2-2-manual-2`, `ex-fluid-2-2-manual-3`, `ex-fluid-2-2-manual-4`, `ex-fluid-2-2-manual-5`, `ex-fluid-2-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
+  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
+  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
 
 #### `melem-1-1` · Schraubenverbindungen
 
@@ -3221,6 +3623,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-1-1-a`, `ex-melem-1-1-b`, `ex-melem-1-1-manual-1`, `ex-melem-1-1-manual-2`, `ex-melem-1-1-manual-3`, `ex-melem-1-1-manual-4`, `ex-melem-1-1-manual-5`, `ex-melem-1-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
+  - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
+  - _Klausur-Fokus:_ Schraubenberechnung (Vorspannkraft, Betriebskraft). · Zahnradstufe: Drehzahl/Drehmoment am Ausgang. · Wälzlagerlebensdauer.
 
 #### `melem-1-2` · Passfedern und formschlüssige Verbindungen
 
@@ -3236,6 +3642,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-1-2-a`, `ex-melem-1-2-b`, `ex-melem-1-2-manual-1`, `ex-melem-1-2-manual-2`, `ex-melem-1-2-manual-3`, `ex-melem-1-2-manual-4`, `ex-melem-1-2-manual-5`, `ex-melem-1-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
+  - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
+  - _Klausur-Fokus:_ Schraubenberechnung (Vorspannkraft, Betriebskraft). · Zahnradstufe: Drehzahl/Drehmoment am Ausgang. · Wälzlagerlebensdauer.
 
 #### `melem-2-1` · Wellen und Lager
 
@@ -3252,6 +3662,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-2-1-a`, `ex-melem-2-1-b`, `ex-melem-2-1-manual-1`, `ex-melem-2-1-manual-2`, `ex-melem-2-1-manual-3`, `ex-melem-2-1-manual-4`, `ex-melem-2-1-manual-5`, `ex-melem-2-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
+  - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
+  - _Klausur-Fokus:_ Schraubenberechnung (Vorspannkraft, Betriebskraft). · Zahnradstufe: Drehzahl/Drehmoment am Ausgang. · Wälzlagerlebensdauer.
 
 #### `melem-2-2` · Zahnräder und Übersetzung
 
@@ -3268,6 +3682,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-2-2-a`, `ex-melem-2-2-b`, `ex-melem-2-2-manual-1`, `ex-melem-2-2-manual-2`, `ex-melem-2-2-manual-3`, `ex-melem-2-2-manual-4`, `ex-melem-2-2-manual-5`, `ex-melem-2-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
+  - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
+  - _Klausur-Fokus:_ Schraubenberechnung (Vorspannkraft, Betriebskraft). · Zahnradstufe: Drehzahl/Drehmoment am Ausgang. · Wälzlagerlebensdauer.
 
 #### `et-1-1` · Ohmsches Gesetz und Grundbegriffe
 
@@ -3284,6 +3702,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-1-1-a`, `ex-et-1-1-b`, `ex-et-1-1-manual-1`, `ex-et-1-1-manual-2`, `ex-et-1-1-manual-3`, `ex-et-1-1-manual-4`, `ex-et-1-1-manual-5`, `ex-et-1-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
+  - _Klausur-Fokus:_ Netzwerkanalyse mit Kirchhoff. · Komplexe Impedanz eines RLC-Gliedes. · Wechselstrom-Leistung (Wirk-, Blind-, Scheinleistung).
 
 #### `et-1-2` · Kirchhoffsche Gesetze
 
@@ -3299,6 +3721,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-1-2-a`, `ex-et-1-2-b`, `ex-et-1-2-manual-1`, `ex-et-1-2-manual-2`, `ex-et-1-2-manual-3`, `ex-et-1-2-manual-4`, `ex-et-1-2-manual-5`, `ex-et-1-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
+  - _Klausur-Fokus:_ Netzwerkanalyse mit Kirchhoff. · Komplexe Impedanz eines RLC-Gliedes. · Wechselstrom-Leistung (Wirk-, Blind-, Scheinleistung).
 
 #### `et-1-3` · Elektrische Leistung und Wirkungsgrad
 
@@ -3315,6 +3741,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-1-3-a`, `ex-et-1-3-b`, `ex-et-1-3-manual-1`, `ex-et-1-3-manual-2`, `ex-et-1-3-manual-3`, `ex-et-1-3-manual-4`, `ex-et-1-3-manual-5`, `ex-et-1-3-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
+  - _Klausur-Fokus:_ Netzwerkanalyse mit Kirchhoff. · Komplexe Impedanz eines RLC-Gliedes. · Wechselstrom-Leistung (Wirk-, Blind-, Scheinleistung).
 
 #### `et-2-1` · Wechselstromgrundlagen und Impedanz
 
@@ -3331,6 +3761,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-2-1-a`, `ex-et-2-1-b`, `ex-et-2-1-manual-1`, `ex-et-2-1-manual-2`, `ex-et-2-1-manual-3`, `ex-et-2-1-manual-4`, `ex-et-2-1-manual-5`, `ex-et-2-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
+  - _Klausur-Fokus:_ Netzwerkanalyse mit Kirchhoff. · Komplexe Impedanz eines RLC-Gliedes. · Wechselstrom-Leistung (Wirk-, Blind-, Scheinleistung).
 
 #### `et-2-2` · RC- und RL-Schaltungen
 
@@ -3347,6 +3781,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-2-2-a`, `ex-et-2-2-b`, `ex-et-2-2-manual-1`, `ex-et-2-2-manual-2`, `ex-et-2-2-manual-3`, `ex-et-2-2-manual-4`, `ex-et-2-2-manual-5`, `ex-et-2-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
+  - _Klausur-Fokus:_ Netzwerkanalyse mit Kirchhoff. · Komplexe Impedanz eines RLC-Gliedes. · Wechselstrom-Leistung (Wirk-, Blind-, Scheinleistung).
 
 #### `et-3-2` · Wechselstrom Prüfungsaufgaben
 
@@ -3363,6 +3801,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-3-2-a`, `ex-et-3-2-b`, `ex-et-3-2-manual-1`, `ex-et-3-2-manual-2`, `ex-et-3-2-manual-3`, `ex-et-3-2-manual-4`, `ex-et-3-2-manual-5`, `ex-et-3-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
+  - _Klausur-Fokus:_ Netzwerkanalyse mit Kirchhoff. · Komplexe Impedanz eines RLC-Gliedes. · Wechselstrom-Leistung (Wirk-, Blind-, Scheinleistung).
 
 #### `rt-1-1` · Regelkreis Grundbegriffe
 
@@ -3378,6 +3820,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rt-1-1-a`, `ex-rt-1-1-b`, `ex-rt-1-1-manual-1`, `ex-rt-1-1-manual-2`, `ex-rt-1-1-manual-3`, `ex-rt-1-1-manual-4`, `ex-rt-1-1-manual-5`, `ex-rt-1-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
+  - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
+  - _Klausur-Fokus:_ Stabilität mit Hurwitz prüfen und Grenzverstärkung finden. · Stationäre Regelabweichung P-Regler an PT1. · Sprungantwort eines PT1-Glieds skizzieren.
 
 #### `rt-1-2` · Übertragungsfunktion
 
@@ -3394,6 +3840,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rt-1-2-a`, `ex-rt-1-2-b`, `ex-rt-1-2-manual-1`, `ex-rt-1-2-manual-2`, `ex-rt-1-2-manual-3`, `ex-rt-1-2-manual-4`, `ex-rt-1-2-manual-5`, `ex-rt-1-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
+  - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
+  - _Klausur-Fokus:_ Stabilität mit Hurwitz prüfen und Grenzverstärkung finden. · Stationäre Regelabweichung P-Regler an PT1. · Sprungantwort eines PT1-Glieds skizzieren.
 
 #### `rt-2-1` · PID-Regler
 
@@ -3410,6 +3860,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rt-2-1-a`, `ex-rt-2-1-b`, `ex-rt-2-1-manual-1`, `ex-rt-2-1-manual-2`, `ex-rt-2-1-manual-3`, `ex-rt-2-1-manual-4`, `ex-rt-2-1-manual-5`, `ex-rt-2-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
+  - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
+  - _Klausur-Fokus:_ Stabilität mit Hurwitz prüfen und Grenzverstärkung finden. · Stationäre Regelabweichung P-Regler an PT1. · Sprungantwort eines PT1-Glieds skizzieren.
 
 #### `rt-2-2` · Stabilität
 
@@ -3426,6 +3880,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rt-2-2-a`, `ex-rt-2-2-b`, `ex-rt-2-2-manual-1`, `ex-rt-2-2-manual-2`, `ex-rt-2-2-manual-3`, `ex-rt-2-2-manual-4`, `ex-rt-2-2-manual-5`, `ex-rt-2-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
+  - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
+  - _Klausur-Fokus:_ Stabilität mit Hurwitz prüfen und Grenzverstärkung finden. · Stationäre Regelabweichung P-Regler an PT1. · Sprungantwort eines PT1-Glieds skizzieren.
 
 #### `werk-2-3` · Fe-C-Diagramm & Wärmebehandlung
 
@@ -3443,6 +3901,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-2-3-manual-1`, `ex-werk-2-3-manual-2`, `ex-werk-2-3-manual-3`, `ex-werk-2-3-manual-4`, `ex-werk-2-3-manual-5`, `ex-werk-2-3-manual-6`, `ex-werk-2-3-manual-7`
+- **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
+  - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
+  - _Klausur-Fokus:_ Zugversuch vollständig interpretieren. · Zulässige Spannung mit Sicherheitszahl berechnen. · Prüfverfahren einem Anwendungsfall zuordnen.
 
 #### `py-1-1` · Variablen & Datentypen
 
@@ -3458,6 +3920,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-1-a`, `ex-py-1-1-b`, `ex-py-1-1-manual-1`, `ex-py-1-1-manual-2`, `ex-py-1-1-manual-3`, `ex-py-1-1-manual-4`, `ex-py-1-1-manual-5`, `ex-py-1-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
+  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
 
 #### `py-1-2` · Operatoren & Ausdrücke
 
@@ -3474,6 +3940,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-2-a`, `ex-py-1-2-b`, `ex-py-1-2-manual-1`, `ex-py-1-2-manual-2`, `ex-py-1-2-manual-3`, `ex-py-1-2-manual-4`, `ex-py-1-2-manual-5`, `ex-py-1-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
+  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
 
 #### `py-1-3` · Listen & Arrays
 
@@ -3489,6 +3959,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-3-a`, `ex-py-1-3-b`, `ex-py-1-3-manual-1`, `ex-py-1-3-manual-2`, `ex-py-1-3-manual-3`, `ex-py-1-3-manual-4`, `ex-py-1-3-manual-5`, `ex-py-1-3-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
+  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
 
 #### `py-1-4` · Kontrollstrukturen
 
@@ -3504,6 +3978,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-4-a`, `ex-py-1-4-b`, `ex-py-1-4-manual-1`, `ex-py-1-4-manual-2`, `ex-py-1-4-manual-3`, `ex-py-1-4-manual-4`, `ex-py-1-4-manual-5`, `ex-py-1-4-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
+  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
 
 #### `py-1-5` · Funktionen definieren
 
@@ -3520,6 +3998,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-5-a`, `ex-py-1-5-b`, `ex-py-1-5-manual-1`, `ex-py-1-5-manual-2`, `ex-py-1-5-manual-3`, `ex-py-1-5-manual-4`, `ex-py-1-5-manual-5`, `ex-py-1-5-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
+  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
 
 #### `py-2-1` · NumPy Grundlagen
 
@@ -3536,6 +4018,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-2-1-a`, `ex-py-2-1-b`, `ex-py-2-1-manual-1`, `ex-py-2-1-manual-2`, `ex-py-2-1-manual-3`, `ex-py-2-1-manual-4`, `ex-py-2-1-manual-5`, `ex-py-2-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
+  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
 
 #### `py-2-2` · Matplotlib — Daten visualisieren
 
@@ -3552,6 +4038,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-2-2-a`, `ex-py-2-2-b`, `ex-py-2-2-manual-1`, `ex-py-2-2-manual-2`, `ex-py-2-2-manual-3`, `ex-py-2-2-manual-4`, `ex-py-2-2-manual-5`, `ex-py-2-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
+  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
 
 #### `py-2-3` · Gleichungen lösen & Optimierung
 
@@ -3568,6 +4058,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-2-3-a`, `ex-py-2-3-b`, `ex-py-2-3-manual-1`, `ex-py-2-3-manual-2`, `ex-py-2-3-manual-3`, `ex-py-2-3-manual-4`, `ex-py-2-3-manual-5`, `ex-py-2-3-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
+  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
 
 #### `py-2-4` · Numerische Integration & DGL
 
@@ -3584,6 +4078,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-2-4-a`, `ex-py-2-4-b`, `ex-py-2-4-manual-1`, `ex-py-2-4-manual-2`, `ex-py-2-4-manual-3`, `ex-py-2-4-manual-4`, `ex-py-2-4-manual-5`, `ex-py-2-4-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
+  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
 
 #### `py-3-1` · Festigkeitsberechnung
 
@@ -3600,6 +4098,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-3-1-a`, `ex-py-3-1-b`, `ex-py-3-1-manual-1`, `ex-py-3-1-manual-2`, `ex-py-3-1-manual-3`, `ex-py-3-1-manual-4`, `ex-py-3-1-manual-5`, `ex-py-3-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
+  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
 
 #### `py-3-2` · Datenauswertung & Messdaten
 
@@ -3616,6 +4118,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-3-2-a`, `ex-py-3-2-b`, `ex-py-3-2-manual-1`, `ex-py-3-2-manual-2`, `ex-py-3-2-manual-3`, `ex-py-3-2-manual-4`, `ex-py-3-2-manual-5`, `ex-py-3-2-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
+  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
 
 #### `py-3-3` · Simulation: Feder-Masse-Dämpfer
 
@@ -3632,6 +4138,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-3-3-a`, `ex-py-3-3-b`, `ex-py-3-3-manual-1`, `ex-py-3-3-manual-2`, `ex-py-3-3-manual-3`, `ex-py-3-3-manual-4`, `ex-py-3-3-manual-5`, `ex-py-3-3-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
+  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
 
 #### `py-4-1` · Prüfung: Code-Verständnis & Fehlersuche
 
@@ -3648,6 +4158,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-4-1-a`, `ex-py-4-1-b`, `ex-py-4-1-c`, `ex-py-4-1-d`, `ex-py-4-1-e`, `ex-py-4-1-f`, `ex-py-4-1-g`, `ex-py-4-1-h` … (+2 weitere)
+- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
+  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
+  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
 
 #### `trig-1-1` · Winkel und ihre Maße
 
@@ -3663,6 +4177,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-1-1-c`, `ex-trig-1-1-manual-1`, `ex-trig-1-1-manual-2`, `ex-trig-1-1-manual-3`, `ex-trig-1-1-manual-4`, `ex-trig-1-1-manual-5`, `ex-trig-1-1-manual-6`, `ex-trig-1-1-manual-7` … (+1 weitere)
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `trig-1-2` · Rechtwinkliges Dreieck
 
@@ -3677,6 +4195,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-1-2-a`, `ex-trig-1-2-b`, `ex-trig-1-2-c`, `ex-trig-1-2-manual-1`, `ex-trig-1-2-manual-2`, `ex-trig-1-2-manual-3`, `ex-trig-1-2-manual-4`, `ex-trig-1-2-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `abl-5-1` · Grenzwerte von Funktionen
 
@@ -3694,6 +4216,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-5-1-b`, `ex-abl-5-1-manual-1`, `ex-abl-5-1-manual-2`, `ex-abl-5-1-manual-3`, `ex-abl-5-1-manual-4`, `ex-abl-5-1-manual-5`, `ex-abl-5-1-manual-6`, `ex-abl-5-1-manual-7` … (+1 weitere)
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `abl-4-1` · Prüfung: Ableitungsregeln
 
@@ -3710,6 +4236,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-4-1-a`, `ex-abl-4-1-b`, `ex-abl-4-1-c`, `ex-abl-4-1-d`, `ex-abl-4-1-e`, `ex-abl-4-1-f`, `ex-abl-4-1-g`, `ex-abl-4-1-h` … (+3 weitere)
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `abl-4-2` · Prüfung: Kurvendiskussion & Anwendungen
 
@@ -3726,6 +4256,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-4-2-a`, `ex-abl-4-2-b`, `ex-abl-4-2-c`, `ex-abl-4-2-d`, `ex-abl-4-2-e`, `ex-abl-4-2-f`, `ex-abl-4-2-g`, `ex-abl-4-2-h` … (+3 weitere)
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `abl-4-3` · Prüfung: Technische Optimierung & Newton-Verfahren
 
@@ -3743,6 +4277,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-4-3-a`, `ex-abl-4-3-b`, `ex-abl-4-3-c`, `ex-abl-4-3-d`, `ex-abl-4-3-e`, `ex-abl-4-3-f`, `ex-abl-4-3-g`, `ex-abl-4-3-h` … (+3 weitere)
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `vek-1-1` · Vektoren — Grundbegriffe
 
@@ -3758,6 +4296,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-1-1-a`, `ex-vek-1-1-c`, `ex-vek-1-1-manual-1`, `ex-vek-1-1-manual-2`, `ex-vek-1-1-manual-3`, `ex-vek-1-1-manual-4`, `ex-vek-1-1-manual-5`, `ex-vek-1-1-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
+  - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
 
 #### `vek-2-1` · Geradengleichung
 
@@ -3775,6 +4317,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-2-1-a`, `ex-vek-2-1-b`, `ex-vek-2-1-c`, `ex-vek-2-1-manual-1`, `ex-vek-2-1-manual-2`, `ex-vek-2-1-manual-3`, `ex-vek-2-1-manual-4`, `ex-vek-2-1-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
+  - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
 
 #### `vek-3-2` · Flächen- und Volumenberechnung
 
@@ -3792,6 +4338,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-3-2-a`, `ex-vek-3-2-b`, `ex-vek-3-2-c`, `ex-vek-3-2-manual-1`, `ex-vek-3-2-manual-2`, `ex-vek-3-2-manual-3`, `ex-vek-3-2-manual-4`, `ex-vek-3-2-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
+  - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
 
 #### `vek-3-3` · Technische Anwendungen
 
@@ -3808,6 +4358,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-3-3-a`, `ex-vek-3-3-b`, `ex-vek-3-3-c`, `ex-vek-3-3-manual-1`, `ex-vek-3-3-manual-2`, `ex-vek-3-3-manual-3`, `ex-vek-3-3-manual-4`, `ex-vek-3-3-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
+  - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
 
 #### `alg-3-1` · Funktionsbegriff
 
@@ -3822,6 +4376,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2
   - Ablage: `src/content/subgoal_tasks/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-1-a`, `ex-alg-3-1-b`, `ex-alg-3-1-c`, `ex-alg-3-1-manual-1`, `ex-alg-3-1-manual-2`, `ex-alg-3-1-manual-3`, `ex-alg-3-1-manual-4`, `ex-alg-3-1-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 #### `alg-3-3` · Funktionsoperationen
 
@@ -3839,6 +4397,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-3-c`, `ex-alg-3-3-manual-1`, `ex-alg-3-3-manual-2`, `ex-alg-3-3-manual-3`, `ex-alg-3-3-manual-4`, `ex-alg-3-3-manual-5`, `ex-alg-3-3-manual-6`, `ex-alg-3-3-manual-7` … (+1 weitere)
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 #### `alg-3-4` · Umkehrfunktionen
 
@@ -3856,6 +4418,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-4-a`, `ex-alg-3-4-b`, `ex-alg-3-4-c`, `ex-alg-3-4-manual-1`, `ex-alg-3-4-manual-2`, `ex-alg-3-4-manual-3`, `ex-alg-3-4-manual-4`, `ex-alg-3-4-manual-5` … (+2 weitere)
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 #### `alg-4-1` · Prüfung: Algebra-Grundlagen
 
@@ -3872,6 +4438,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-4-1-a`, `ex-alg-4-1-b`, `ex-alg-4-1-d`, `ex-alg-4-1-e`, `ex-alg-4-1-f`, `ex-alg-4-1-g`, `ex-alg-4-1-h`, `ex-alg-4-1-i` … (+2 weitere)
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 #### `alg-4-2` · Prüfung: Funktionen & Anwendungen
 
@@ -3889,6 +4459,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-4-2-a`, `ex-alg-4-2-b`, `ex-alg-4-2-c`, `ex-alg-4-2-e`, `ex-alg-4-2-f`, `ex-alg-4-2-g`, `ex-alg-4-2-h`, `ex-alg-4-2-j` … (+1 weitere)
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 #### `alg-4-3` · Prüfung: Gleichungs­systeme & technische Anwendungen
 
@@ -3906,6 +4480,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-4-3-a`, `ex-alg-4-3-b`, `ex-alg-4-3-c`, `ex-alg-4-3-d`, `ex-alg-4-3-e`, `ex-alg-4-3-f`, `ex-alg-4-3-g`, `ex-alg-4-3-h` … (+3 weitere)
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 #### `la-1-5` · Eigenwerte und Eigenvektoren
 
@@ -3923,6 +4501,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-5-a`, `ex-la-1-5-b`, `ex-la-1-5-c`, `ex-la-1-5-manual-1`, `ex-la-1-5-manual-2`, `ex-la-1-5-manual-3`, `ex-la-1-5-manual-4`, `ex-la-1-5-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
+  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
+  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
 
 #### `la-2-1` · LGS in Matrixform
 
@@ -3939,6 +4521,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-1-a`, `ex-la-2-1-b`, `ex-la-2-1-c`, `ex-la-2-1-manual-1`, `ex-la-2-1-manual-2`, `ex-la-2-1-manual-3`, `ex-la-2-1-manual-4`, `ex-la-2-1-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
+  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
+  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
 
 #### `la-2-3` · Lösbarkeit von LGS
 
@@ -3956,6 +4542,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-3-a`, `ex-la-2-3-b`, `ex-la-2-3-c`, `ex-la-2-3-manual-1`, `ex-la-2-3-manual-2`, `ex-la-2-3-manual-3`, `ex-la-2-3-manual-4`, `ex-la-2-3-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
+  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
+  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
 
 #### `la-2-4` · Cramersche Regel & Anwendungen
 
@@ -3972,6 +4562,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-4-a`, `ex-la-2-4-b`, `ex-la-2-4-c`, `ex-la-2-4-manual-1`, `ex-la-2-4-manual-2`, `ex-la-2-4-manual-3`, `ex-la-2-4-manual-4`, `ex-la-2-4-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
+  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
+  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
 
 #### `la-3-1` · Prüfung: Matrizen & Determinanten
 
@@ -3989,6 +4583,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-3-1-a`, `ex-la-3-1-b`, `ex-la-3-1-c`, `ex-la-3-1-d`, `ex-la-3-1-e`, `ex-la-3-1-f`, `ex-la-3-1-g`, `ex-la-3-1-h` … (+3 weitere)
+- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
+  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
+  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
 
 #### `la-3-2` · Prüfung: LGS & Eigenwerte
 
@@ -4006,6 +4604,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-3-2-a`, `ex-la-3-2-b`, `ex-la-3-2-c`, `ex-la-3-2-d`, `ex-la-3-2-e`, `ex-la-3-2-f`, `ex-la-3-2-g`, `ex-la-3-2-h` … (+3 weitere)
+- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
+  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
+  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
 
 #### `la-3-3` · Prüfung: Diagonalisierung & technische Anwendungen
 
@@ -4023,6 +4625,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-3-3-a`, `ex-la-3-3-b`, `ex-la-3-3-c`, `ex-la-3-3-d`, `ex-la-3-3-e`, `ex-la-3-3-f`, `ex-la-3-3-g`, `ex-la-3-3-h` … (+3 weitere)
+- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
+  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
+  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
 
 #### `int-1-5` · Hauptsatz der Differential- und Integralrechnung
 
@@ -4039,6 +4645,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-5-b`, `ex-int-1-5-manual-1`, `ex-int-1-5-manual-2`, `ex-int-1-5-manual-3`, `ex-int-1-5-manual-4`, `ex-int-1-5-manual-5`, `ex-int-1-5-manual-6`, `ex-int-1-5-manual-7`
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
 #### `int-2-3` · Partialbruchzerlegung
 
@@ -4056,6 +4666,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-2-3-manual-1`, `ex-int-2-3-manual-2`, `ex-int-2-3-manual-3`, `ex-int-2-3-manual-4`, `ex-int-2-3-manual-5`, `ex-int-2-3-manual-6`, `ex-int-2-3-manual-7`
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
 #### `int-3-2` · Rotationskörper
 
@@ -4072,6 +4686,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-2-b`, `ex-int-3-2-c`, `ex-int-3-2-manual-1`, `ex-int-3-2-manual-2`, `ex-int-3-2-manual-3`, `ex-int-3-2-manual-4`, `ex-int-3-2-manual-5`, `ex-int-3-2-manual-6` … (+1 weitere)
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
 #### `int-3-3` · Technische Anwendungen
 
@@ -4088,6 +4706,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-3-b`, `ex-int-3-3-manual-1`, `ex-int-3-3-manual-2`, `ex-int-3-3-manual-3`, `ex-int-3-3-manual-4`, `ex-int-3-3-manual-5`, `ex-int-3-3-manual-6`, `ex-int-3-3-manual-7`
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
 #### `int-4-1` · Prüfung: Integrationstechniken
 
@@ -4104,6 +4726,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-4-1-a`, `ex-int-4-1-b`, `ex-int-4-1-c`, `ex-int-4-1-d`, `ex-int-4-1-e`, `ex-int-4-1-f`, `ex-int-4-1-g`, `ex-int-4-1-h` … (+3 weitere)
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
 #### `int-4-2` · Prüfung: Anwendungen der Integralrechnung
 
@@ -4120,6 +4746,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-4-2-a`, `ex-int-4-2-b`, `ex-int-4-2-c`, `ex-int-4-2-d`, `ex-int-4-2-e`, `ex-int-4-2-f`, `ex-int-4-2-g`, `ex-int-4-2-h` … (+3 weitere)
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
 #### `int-4-3` · Prüfung: Uneigentliche & numerische Integrale
 
@@ -4137,6 +4767,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-4-3-a`, `ex-int-4-3-b`, `ex-int-4-3-c`, `ex-int-4-3-d`, `ex-int-4-3-e`, `ex-int-4-3-f`, `ex-int-4-3-g`, `ex-int-4-3-h` … (+3 weitere)
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
 #### `dgl-1-1` · Was ist eine Differentialgleichung?
 
@@ -4153,6 +4787,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-1-1-a`, `ex-dgl-1-1-b`, `ex-dgl-1-1-c`, `ex-dgl-1-1-manual-1`, `ex-dgl-1-1-manual-2`, `ex-dgl-1-1-manual-3`, `ex-dgl-1-1-manual-4`, `ex-dgl-1-1-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
+  - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+  - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
 
 #### `dgl-1-2` · Trennung der Variablen
 
@@ -4169,6 +4807,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-1-2-a`, `ex-dgl-1-2-b`, `ex-dgl-1-2-c`, `ex-dgl-1-2-manual-1`, `ex-dgl-1-2-manual-2`, `ex-dgl-1-2-manual-3`, `ex-dgl-1-2-manual-4`, `ex-dgl-1-2-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
+  - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+  - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
 
 #### `dgl-1-4` · DGL 2. Ordnung mit konstanten Koeffizienten
 
@@ -4186,6 +4828,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-1-4-a`, `ex-dgl-1-4-b`, `ex-dgl-1-4-c`, `ex-dgl-1-4-manual-1`, `ex-dgl-1-4-manual-2`, `ex-dgl-1-4-manual-3`, `ex-dgl-1-4-manual-4`, `ex-dgl-1-4-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
+  - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+  - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
 
 #### `dgl-2-1` · Variation der Konstanten
 
@@ -4202,6 +4848,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-2-1-a`, `ex-dgl-2-1-b`, `ex-dgl-2-1-c`, `ex-dgl-2-1-manual-1`, `ex-dgl-2-1-manual-2`, `ex-dgl-2-1-manual-3`, `ex-dgl-2-1-manual-4`, `ex-dgl-2-1-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
+  - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+  - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
 
 #### `dgl-2-3` · Technische Anwendungen
 
@@ -4219,6 +4869,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-2-3-a`, `ex-dgl-2-3-b`, `ex-dgl-2-3-c`, `ex-dgl-2-3-manual-1`, `ex-dgl-2-3-manual-2`, `ex-dgl-2-3-manual-3`, `ex-dgl-2-3-manual-4`, `ex-dgl-2-3-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
+  - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+  - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
 
 #### `dgl-3-1` · Prüfung: DGL 1. Ordnung
 
@@ -4236,6 +4890,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-3-1-a`, `ex-dgl-3-1-b`, `ex-dgl-3-1-c`, `ex-dgl-3-1-d`, `ex-dgl-3-1-e`, `ex-dgl-3-1-f`, `ex-dgl-3-1-g`, `ex-dgl-3-1-h` … (+3 weitere)
+- **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
+  - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+  - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
 
 #### `dgl-3-2` · Prüfung: DGL 2. Ordnung & Anwendungen
 
@@ -4253,6 +4911,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-3-2-a`, `ex-dgl-3-2-b`, `ex-dgl-3-2-c`, `ex-dgl-3-2-d`, `ex-dgl-3-2-e`, `ex-dgl-3-2-f`, `ex-dgl-3-2-g`, `ex-dgl-3-2-h` … (+3 weitere)
+- **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
+  - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+  - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
 
 #### `dgl-3-3` · Prüfung: Systeme & technische Modellbildung
 
@@ -4270,6 +4932,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-3-3-a`, `ex-dgl-3-3-b`, `ex-dgl-3-3-c`, `ex-dgl-3-3-d`, `ex-dgl-3-3-e`, `ex-dgl-3-3-f`, `ex-dgl-3-3-g`, `ex-dgl-3-3-h` … (+3 weitere)
+- **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
+  - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+  - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
 
 #### `mech-3-1` · Statik: Prüfungsaufgaben
 
@@ -4286,6 +4952,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-3-1-a`, `ex-mech-3-1-b`, `ex-mech-3-1-c`, `ex-mech-3-1-manual-1`, `ex-mech-3-1-manual-2`, `ex-mech-3-1-manual-3`, `ex-mech-3-1-manual-4`, `ex-mech-3-1-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
 #### `fest-3-1` · Festigkeit: Prüfungsaufgaben
 
@@ -4302,6 +4972,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-3-1-a`, `ex-fest-3-1-b`, `ex-fest-3-1-c`, `ex-fest-3-1-manual-1`, `ex-fest-3-1-manual-2`, `ex-fest-3-1-manual-3`, `ex-fest-3-1-manual-4`, `ex-fest-3-1-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
+  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
 
 #### `thermo-3-1` · Thermo: Prüfungsaufgaben
 
@@ -4318,6 +4992,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-3-1-a`, `ex-thermo-3-1-b`, `ex-thermo-3-1-c`, `ex-thermo-3-1-manual-1`, `ex-thermo-3-1-manual-2`, `ex-thermo-3-1-manual-3`, `ex-thermo-3-1-manual-4`, `ex-thermo-3-1-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
+  - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
+  - _Klausur-Fokus:_ Carnot-Wirkungsgrad einer Maschine. · Zustandsänderung: Isotherm, isobar, adiabat durchrechnen. · Entropieänderung bei idealem Gas.
 
 #### `fluid-3-1` · Fluid: Prüfungsaufgaben
 
@@ -4334,6 +5012,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-3-1-a`, `ex-fluid-3-1-b`, `ex-fluid-3-1-c`, `ex-fluid-3-1-manual-1`, `ex-fluid-3-1-manual-2`, `ex-fluid-3-1-manual-3`, `ex-fluid-3-1-manual-4`, `ex-fluid-3-1-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
+  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
+  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
 
 #### `melem-3-1` · ME: Prüfungsaufgaben
 
@@ -4350,6 +5032,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-3-1-a`, `ex-melem-3-1-b`, `ex-melem-3-1-c`, `ex-melem-3-1-manual-1`, `ex-melem-3-1-manual-2`, `ex-melem-3-1-manual-3`, `ex-melem-3-1-manual-4`, `ex-melem-3-1-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
+  - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
+  - _Klausur-Fokus:_ Schraubenberechnung (Vorspannkraft, Betriebskraft). · Zahnradstufe: Drehzahl/Drehmoment am Ausgang. · Wälzlagerlebensdauer.
 
 #### `et-3-1` · Gleichstrom Prüfungsaufgaben
 
@@ -4366,6 +5052,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-3-1-a`, `ex-et-3-1-b`, `ex-et-3-1-c`, `ex-et-3-1-manual-1`, `ex-et-3-1-manual-2`, `ex-et-3-1-manual-3`, `ex-et-3-1-manual-4`, `ex-et-3-1-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
+  - _Klausur-Fokus:_ Netzwerkanalyse mit Kirchhoff. · Komplexe Impedanz eines RLC-Gliedes. · Wechselstrom-Leistung (Wirk-, Blind-, Scheinleistung).
 
 #### `rt-3-1` · Regelkreis & PID Prüfungsaufgaben
 
@@ -4382,6 +5072,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rt-3-1-a`, `ex-rt-3-1-b`, `ex-rt-3-1-c`, `ex-rt-3-1-manual-1`, `ex-rt-3-1-manual-2`, `ex-rt-3-1-manual-3`, `ex-rt-3-1-manual-4`, `ex-rt-3-1-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
+  - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
+  - _Klausur-Fokus:_ Stabilität mit Hurwitz prüfen und Grenzverstärkung finden. · Stationäre Regelabweichung P-Regler an PT1. · Sprungantwort eines PT1-Glieds skizzieren.
 
 #### `trig-1-3` · Die Grundwerte
 
@@ -4397,6 +5091,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-1-3-b`, `ex-trig-1-3-c`, `ex-trig-1-3-manual-1`, `ex-trig-1-3-manual-2`, `ex-trig-1-3-manual-3`, `ex-trig-1-3-manual-4`, `ex-trig-1-3-manual-5`, `ex-trig-1-3-manual-6` … (+2 weitere)
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `trig-4-1` · Prüfung: Identitäten & Gleichungen
 
@@ -4413,6 +5111,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-4-1-a`, `ex-trig-4-1-b`, `ex-trig-4-1-c`, `ex-trig-4-1-d`, `ex-trig-4-1-manual-1`, `ex-trig-4-1-manual-2`, `ex-trig-4-1-manual-3`, `ex-trig-4-1-manual-4` … (+4 weitere)
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `trig-4-2` · Prüfung: Technische Anwendungen
 
@@ -4429,6 +5131,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-4-2-a`, `ex-trig-4-2-b`, `ex-trig-4-2-c`, `ex-trig-4-2-manual-1`, `ex-trig-4-2-manual-2`, `ex-trig-4-2-manual-3`, `ex-trig-4-2-manual-4`, `ex-trig-4-2-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `trig-4-3` · Prüfung: Einheitskreis & Gleichungssysteme
 
@@ -4446,6 +5152,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-4-3-a`, `ex-trig-4-3-b`, `ex-trig-4-3-c`, `ex-trig-4-3-manual-1`, `ex-trig-4-3-manual-2`, `ex-trig-4-3-manual-3`, `ex-trig-4-3-manual-4`, `ex-trig-4-3-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
+  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -4461,6 +5171,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-1-manual-1`, `ex-abl-1-1-manual-2`, `ex-abl-1-1-manual-3`, `ex-abl-1-1-manual-4`, `ex-abl-1-1-manual-5`, `ex-abl-1-1-manual-6`, `ex-abl-1-1-manual-7`, `ex-abl-1-1-mastery`
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `abl-1-5` · Extremwerte und Kurvendiskussion
 
@@ -4478,6 +5192,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-5-manual-1`, `ex-abl-1-5-manual-2`, `ex-abl-1-5-manual-3`, `ex-abl-1-5-manual-4`, `ex-abl-1-5-manual-5`, `ex-abl-1-5-manual-6`, `ex-abl-1-5-manual-7`
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `abl-3-2` · Krümmung und Wendepunkte
 
@@ -4494,6 +5212,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-2-a`, `ex-abl-3-2-b`, `ex-abl-3-2-c`, `ex-abl-3-2-transfer`, `ex-abl-3-2-manual-1`, `ex-abl-3-2-manual-2`, `ex-abl-3-2-manual-3`, `ex-abl-3-2-manual-4` … (+4 weitere)
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `abl-3-3` · Vollständige Kurvendiskussion
 
@@ -4510,6 +5232,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-3-a`, `ex-abl-3-3-b`, `ex-abl-3-3-c`, `ex-abl-3-3-d`, `ex-abl-3-3-manual-1`, `ex-abl-3-3-manual-2`, `ex-abl-3-3-manual-3`, `ex-abl-3-3-manual-4` … (+4 weitere)
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `vek-1-2` · Skalarprodukt
 
@@ -4525,6 +5251,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-1-2-manual-1`, `ex-vek-1-2-manual-2`, `ex-vek-1-2-manual-3`, `ex-vek-1-2-manual-4`, `ex-vek-1-2-manual-5`, `ex-vek-1-2-manual-6`, `ex-vek-1-2-manual-7`, `ex-vek-1-2-mastery`
+- **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
+  - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
 
 #### `vek-2-2` · Ebenengleichung
 
@@ -4542,6 +5272,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-2-2-a`, `ex-vek-2-2-b`, `ex-vek-2-2-d`, `ex-vek-2-2-manual-1`, `ex-vek-2-2-manual-2`, `ex-vek-2-2-manual-3`, `ex-vek-2-2-manual-4`, `ex-vek-2-2-manual-5` … (+2 weitere)
+- **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
+  - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
 
 #### `vek-2-3` · Abstände und Schnitte
 
@@ -4559,6 +5293,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-2-3-a`, `ex-vek-2-3-manual-1`, `ex-vek-2-3-manual-2`, `ex-vek-2-3-manual-3`, `ex-vek-2-3-manual-4`, `ex-vek-2-3-manual-5`, `ex-vek-2-3-manual-6`, `ex-vek-2-3-manual-7` … (+1 weitere)
+- **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
+  - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
 
 #### `alg-1-2` · Wurzeln und gebrochene Exponenten
 
@@ -4573,6 +5311,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2
   - Ablage: `src/content/subgoal_tasks/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-1-2-a`, `ex-alg-1-2-b`, `ex-alg-1-2-d`, `ex-alg-1-2-manual-1`, `ex-alg-1-2-manual-2`, `ex-alg-1-2-manual-3`, `ex-alg-1-2-manual-4`, `ex-alg-1-2-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 #### `alg-1-3` · Logarithmen
 
@@ -4591,6 +5333,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5, 6
   - Ablage: `src/content/subgoal_tasks/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-1-3-a`, `ex-alg-1-3-b`, `ex-alg-1-3-c`, `ex-alg-1-3-d`, `ex-alg-1-3-manual-1`, `ex-alg-1-3-manual-2`, `ex-alg-1-3-manual-3`, `ex-alg-1-3-manual-4` … (+4 weitere)
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 #### `alg-2-1` · Lineare Gleichungen
 
@@ -4606,6 +5352,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-1-manual-1`, `ex-alg-2-1-manual-2`, `ex-alg-2-1-manual-3`, `ex-alg-2-1-manual-4`, `ex-alg-2-1-manual-5`, `ex-alg-2-1-manual-6`, `ex-alg-2-1-manual-7`
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 #### `alg-2-3` · Polynomgleichungen & Polynomdivision
 
@@ -4623,6 +5373,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-3-a`, `ex-alg-2-3-b`, `ex-alg-2-3-c`, `ex-alg-2-3-manual-1`, `ex-alg-2-3-manual-2`, `ex-alg-2-3-manual-3`, `ex-alg-2-3-manual-4`, `ex-alg-2-3-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 #### `alg-2-4` · Ungleichungen
 
@@ -4640,6 +5394,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-4-d`, `ex-alg-2-4-manual-1`, `ex-alg-2-4-manual-2`, `ex-alg-2-4-manual-3`, `ex-alg-2-4-manual-4`, `ex-alg-2-4-manual-5`, `ex-alg-2-4-manual-6`, `ex-alg-2-4-manual-7`
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 #### `la-1-1` · Was ist eine Matrix?
 
@@ -4655,6 +5413,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-1-a`, `ex-la-1-1-b`, `ex-la-1-1-c`, `ex-la-1-1-d`, `ex-la-1-1-manual-1`, `ex-la-1-1-manual-2`, `ex-la-1-1-manual-3`, `ex-la-1-1-manual-4` … (+4 weitere)
+- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
+  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
+  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
 
 #### `la-1-3` · Transponierte und Inverse
 
@@ -4672,6 +5434,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-3-a`, `ex-la-1-3-b`, `ex-la-1-3-c`, `ex-la-1-3-d`, `ex-la-1-3-manual-1`, `ex-la-1-3-manual-2`, `ex-la-1-3-manual-3`, `ex-la-1-3-manual-4` … (+4 weitere)
+- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
+  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
+  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
 
 #### `la-1-4` · Determinanten
 
@@ -4689,6 +5455,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-4-a`, `ex-la-1-4-b`, `ex-la-1-4-c`, `ex-la-1-4-d`, `ex-la-1-4-manual-1`, `ex-la-1-4-manual-2`, `ex-la-1-4-manual-3`, `ex-la-1-4-manual-4` … (+4 weitere)
+- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
+  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
+  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
 
 #### `la-2-2` · Gauss-Algorithmus
 
@@ -4706,6 +5476,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-2-a`, `ex-la-2-2-b`, `ex-la-2-2-c`, `ex-la-2-2-d`, `ex-la-2-2-manual-1`, `ex-la-2-2-manual-2`, `ex-la-2-2-manual-3`, `ex-la-2-2-manual-4` … (+4 weitere)
+- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
+  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
+  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
 
 #### `int-1-1` · Stammfunktion — das Umkehren der Ableitung
 
@@ -4720,6 +5494,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-1-manual-1`, `ex-int-1-1-manual-2`, `ex-int-1-1-manual-3`, `ex-int-1-1-manual-4`, `ex-int-1-1-manual-5`, `ex-int-1-1-manual-6`, `ex-int-1-1-manual-7`
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
 #### `int-1-3` · Summenregel & Faktorregel
 
@@ -4735,6 +5513,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-3-manual-1`, `ex-int-1-3-manual-2`, `ex-int-1-3-manual-3`, `ex-int-1-3-manual-4`, `ex-int-1-3-manual-5`, `ex-int-1-3-manual-6`, `ex-int-1-3-manual-7`
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
 #### `int-1-4` · Das bestimmte Integral
 
@@ -4750,6 +5532,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-4-a`, `ex-int-1-4-d`, `ex-int-1-4-manual-1`, `ex-int-1-4-manual-2`, `ex-int-1-4-manual-3`, `ex-int-1-4-manual-4`, `ex-int-1-4-manual-5`, `ex-int-1-4-manual-6` … (+1 weitere)
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
 #### `int-2-1` · Substitution
 
@@ -4767,6 +5553,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-2-1-manual-1`, `ex-int-2-1-manual-2`, `ex-int-2-1-manual-3`, `ex-int-2-1-manual-4`, `ex-int-2-1-manual-5`, `ex-int-2-1-manual-6`, `ex-int-2-1-manual-7`, `ex-int-2-1-mastery`
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
 #### `int-2-2` · Partielle Integration
 
@@ -4783,6 +5573,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-2-2-b`, `ex-int-2-2-manual-1`, `ex-int-2-2-manual-2`, `ex-int-2-2-manual-3`, `ex-int-2-2-manual-4`, `ex-int-2-2-manual-5`, `ex-int-2-2-manual-6`, `ex-int-2-2-manual-7`
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
 #### `int-3-1` · Flächenberechnung
 
@@ -4800,6 +5594,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-1-manual-1`, `ex-int-3-1-manual-2`, `ex-int-3-1-manual-3`, `ex-int-3-1-manual-4`, `ex-int-3-1-manual-5`, `ex-int-3-1-manual-6`, `ex-int-3-1-manual-7`, `ex-int-3-1-mastery`
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
 #### `dgl-1-3` · Lineare DGL 1. Ordnung
 
@@ -4817,6 +5615,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-1-3-a`, `ex-dgl-1-3-b`, `ex-dgl-1-3-c`, `ex-dgl-1-3-d`, `ex-dgl-1-3-manual-1`, `ex-dgl-1-3-manual-2`, `ex-dgl-1-3-manual-3`, `ex-dgl-1-3-manual-4` … (+4 weitere)
+- **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
+  - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+  - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
 
 #### `abl-1-2` · Potenzregel und Summenregel
 
@@ -4832,6 +5634,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-2-manual-1`, `ex-abl-1-2-manual-2`, `ex-abl-1-2-manual-3`, `ex-abl-1-2-manual-4`, `ex-abl-1-2-manual-5`, `ex-abl-1-2-manual-6`, `ex-abl-1-2-manual-7`
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `abl-1-3` · Ableitungen elementarer Funktionen
 
@@ -4847,6 +5653,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-3-a`, `ex-abl-1-3-manual-1`, `ex-abl-1-3-manual-2`, `ex-abl-1-3-manual-3`, `ex-abl-1-3-manual-4`, `ex-abl-1-3-manual-5`, `ex-abl-1-3-manual-6`, `ex-abl-1-3-manual-7`
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `abl-1-4` · Kettenregel
 
@@ -4862,6 +5672,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-4-a`, `ex-abl-1-4-manual-1`, `ex-abl-1-4-manual-2`, `ex-abl-1-4-manual-3`, `ex-abl-1-4-manual-4`, `ex-abl-1-4-manual-5`, `ex-abl-1-4-manual-6`, `ex-abl-1-4-manual-7`
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `abl-2-1` · Produktregel
 
@@ -4878,6 +5692,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-2-1-manual-1`, `ex-abl-2-1-manual-2`, `ex-abl-2-1-manual-3`, `ex-abl-2-1-manual-4`, `ex-abl-2-1-manual-5`, `ex-abl-2-1-manual-6`, `ex-abl-2-1-manual-7`
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `abl-2-2` · Quotientenregel
 
@@ -4894,6 +5712,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-2-2-a`, `ex-abl-2-2-manual-1`, `ex-abl-2-2-manual-2`, `ex-abl-2-2-manual-3`, `ex-abl-2-2-manual-4`, `ex-abl-2-2-manual-5`, `ex-abl-2-2-manual-6`, `ex-abl-2-2-manual-7`
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `abl-2-4` · Gemischte Regeln
 
@@ -4910,6 +5732,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-2-4-manual-1`, `ex-abl-2-4-manual-2`, `ex-abl-2-4-manual-3`, `ex-abl-2-4-manual-4`, `ex-abl-2-4-manual-5`, `ex-abl-2-4-manual-6`, `ex-abl-2-4-manual-7`
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `abl-3-1` · Monotonie und Extremwerte
 
@@ -4926,6 +5752,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-1-a`, `ex-abl-3-1-b`, `ex-abl-3-1-c`, `ex-abl-3-1-d`, `ex-abl-3-1-transfer`, `ex-abl-3-1-manual-1`, `ex-abl-3-1-manual-2`, `ex-abl-3-1-manual-3` … (+5 weitere)
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `abl-3-4` · Prüfungsaufgaben Kurvendiskussion
 
@@ -4942,6 +5772,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-4-a`, `ex-abl-3-4-b`, `ex-abl-3-4-c`, `ex-abl-3-4-d`, `ex-abl-3-4-e`, `ex-abl-3-4-manual-1`, `ex-abl-3-4-manual-2`, `ex-abl-3-4-manual-3` … (+5 weitere)
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `vek-2-4` · Prüfungsaufgaben Analytische Geometrie
 
@@ -4959,6 +5793,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-2-4-a`, `ex-vek-2-4-b`, `ex-vek-2-4-c`, `ex-vek-2-4-d`, `ex-vek-2-4-e`, `ex-vek-2-4-manual-1`, `ex-vek-2-4-manual-2`, `ex-vek-2-4-manual-3` … (+5 weitere)
+- **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
+  - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
 
 #### `vek-3-1` · Gemischte Aufgaben Skalar- und Kreuzprodukt
 
@@ -4976,6 +5814,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/vektoren.js`
 - **4-Block-Erklärung fehlt bei:** `ex-vek-3-1-a`, `ex-vek-3-1-d`, `ex-vek-3-1-e`, `ex-vek-3-1-manual-1`, `ex-vek-3-1-manual-2`, `ex-vek-3-1-manual-3`, `ex-vek-3-1-manual-4`, `ex-vek-3-1-manual-5` … (+3 weitere)
+- **Lehrplan-Kontext für `vektoren`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
+  - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
+  - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
 
 #### `alg-1-1` · Potenzgesetze
 
@@ -4991,6 +5833,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-1-1-b`, `ex-alg-1-1-d`, `ex-alg-1-1-e`, `ex-alg-1-1-manual-1`, `ex-alg-1-1-manual-2`, `ex-alg-1-1-manual-3`, `ex-alg-1-1-manual-4`, `ex-alg-1-1-manual-5` … (+2 weitere)
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 #### `alg-2-2` · Quadratische Gleichungen
 
@@ -5006,6 +5852,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-2-a`, `ex-alg-2-2-b`, `ex-alg-2-2-d`, `ex-alg-2-2-e`, `ex-alg-2-2-manual-1`, `ex-alg-2-2-manual-2`, `ex-alg-2-2-manual-3`, `ex-alg-2-2-manual-4` … (+3 weitere)
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 #### `alg-3-2` · Elementare Funktionen
 
@@ -5023,6 +5873,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-2-a`, `ex-alg-3-2-b`, `ex-alg-3-2-c`, `ex-alg-3-2-d`, `ex-alg-3-2-e`, `ex-alg-3-2-manual-1`, `ex-alg-3-2-manual-2`, `ex-alg-3-2-manual-3` … (+4 weitere)
+- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
+  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
 #### `la-1-2` · Matrizenrechnung
 
@@ -5038,6 +5892,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-2-a`, `ex-la-1-2-b`, `ex-la-1-2-c`, `ex-la-1-2-d`, `ex-la-1-2-e`, `ex-la-1-2-manual-1`, `ex-la-1-2-manual-2`, `ex-la-1-2-manual-3` … (+5 weitere)
+- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
+  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
+  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
 
 #### `int-1-2` · Grundintegrale
 
@@ -5053,6 +5911,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-2-c`, `ex-int-1-2-e`, `ex-int-1-2-manual-1`, `ex-int-1-2-manual-2`, `ex-int-1-2-manual-3`, `ex-int-1-2-manual-4`, `ex-int-1-2-manual-5`, `ex-int-1-2-manual-6` … (+1 weitere)
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
 #### `int-2-4` · Gemischte Übungen
 
@@ -5069,6 +5931,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-2-4-manual-1`, `ex-int-2-4-manual-2`, `ex-int-2-4-manual-3`, `ex-int-2-4-manual-4`, `ex-int-2-4-manual-5`, `ex-int-2-4-manual-6`, `ex-int-2-4-manual-7`
+- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
+  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
+  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
 #### `abl-2-3` · Kettenregel — Schritt für Schritt
 
@@ -5085,6 +5951,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-2-3-manual-1`, `ex-abl-2-3-manual-2`, `ex-abl-2-3-manual-3`, `ex-abl-2-3-manual-4`, `ex-abl-2-3-manual-5`, `ex-abl-2-3-manual-6`, `ex-abl-2-3-manual-7`
+- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
+  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
+  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
 
 #### `fl-1-1` · Fourier-Reihen — Grundbegriffe
 
@@ -5101,6 +5971,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-1-1-1`, `ex-fl-1-1-2`, `ex-fl-1-1-3`, `ex-fl-1-1-4`, `ex-fl-1-1-5`, `ex-fl-1-1-6`, `ex-fl-1-1-7`, `ex-fl-1-1-manual-1` … (+7 weitere)
+- **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
+  - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
 
 #### `fl-1-2` · Fourier-Reihe Rechteckimpuls
 
@@ -5116,6 +5990,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3
   - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-1-2-1`, `ex-fl-1-2-2`, `ex-fl-1-2-3`, `ex-fl-1-2-4`, `ex-fl-1-2-5`, `ex-fl-1-2-6`, `ex-fl-1-2-7`, `ex-fl-1-2-manual-1` … (+7 weitere)
+- **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
+  - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
 
 #### `fl-1-3` · Fourier-Transformation
 
@@ -5133,6 +6011,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-1-3-1`, `ex-fl-1-3-2`, `ex-fl-1-3-3`, `ex-fl-1-3-4`, `ex-fl-1-3-5`, `ex-fl-1-3-6`, `ex-fl-1-3-7`, `ex-fl-1-3-manual-1` … (+7 weitere)
+- **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
+  - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
 
 #### `fl-2-1` · Laplace-Grundlagen
 
@@ -5149,6 +6031,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4
   - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-2-1-1`, `ex-fl-2-1-2`, `ex-fl-2-1-3`, `ex-fl-2-1-4`, `ex-fl-2-1-5`, `ex-fl-2-1-6`, `ex-fl-2-1-7`, `ex-fl-2-1-manual-1` … (+7 weitere)
+- **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
+  - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
 
 #### `fl-2-2` · Laplace zur DGL-Lösung
 
@@ -5166,6 +6052,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-2-2-1`, `ex-fl-2-2-2`, `ex-fl-2-2-3`, `ex-fl-2-2-4`, `ex-fl-2-2-5`, `ex-fl-2-2-6`, `ex-fl-2-2-7`, `ex-fl-2-2-manual-1` … (+7 weitere)
+- **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
+  - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
 
 #### `fl-3-1` · Fourier Prüfungsaufgaben
 
@@ -5183,6 +6073,10 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-3-1-1`, `ex-fl-3-1-2`, `ex-fl-3-1-3`, `ex-fl-3-1-4`, `ex-fl-3-1-5`, `ex-fl-3-1-6`, `ex-fl-3-1-7`, `ex-fl-3-1-manual-1` … (+7 weitere)
+- **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
+  - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
 
 #### `fl-3-2` · Laplace Prüfungsaufgaben
 
@@ -5200,3 +6094,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Goal-Tasks fehlen für Sub-Goal-Indizes:** 0, 1, 2, 3, 4, 5
   - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-3-2-1`, `ex-fl-3-2-2`, `ex-fl-3-2-3`, `ex-fl-3-2-4`, `ex-fl-3-2-5`, `ex-fl-3-2-6`, `ex-fl-3-2-7`, `ex-fl-3-2-manual-1` … (+7 weitere)
+- **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
+  - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
+  - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
