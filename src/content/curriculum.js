@@ -109,7 +109,7 @@ export const CURRICULUM_PHASES = [
  * kommt durch Menge. Ziel ist eine Typen-Mischung (MC, NI, TF, Matching,
  * Sorting) plus mindestens ein Mastery-Check am Ende.
  */
-export const MIN_EXERCISES_PER_LESSON = 10
+export const MIN_EXERCISES_PER_LESSON = 20
 
 /**
  * QUALITÄTSZIEL pro Sub-Goal: **Mindestanzahl** eigener Aufgaben (Goal-Tasks),
@@ -127,7 +127,7 @@ export const MIN_EXERCISES_PER_LESSON = 10
  * Typen sollten sich pro Sub-Goal unterscheiden (nicht mehrmals MC für dasselbe
  * Sub-Goal, solange andere Typen noch offen sind).
  */
-export const MIN_TASKS_PER_SUB_GOAL = 3
+export const MIN_TASKS_PER_SUB_GOAL = 5
 
 /**
  * TOPIC_GUIDES — pro Topic der konkrete Lernpfad.

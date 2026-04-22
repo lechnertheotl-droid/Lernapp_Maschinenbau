@@ -10,9 +10,9 @@ Dieses Dokument ist die zentrale Anlaufstelle, wenn Claude (oder ein anderer Cod
 
 ### Mengen-Regel (gilt IMMER, bei jeder Session)
 
-- **Pro Lesson:** **≥ 10 Aufgaben** (Minimum).
-- **Pro Sub-Goal:** **≥ 3 Aufgaben** (Minimum).
-- **Nach oben kein Limit.** Schreib so viele Aufgaben pro Sub-Goal wie du inhaltlich sinnvoll variieren kannst — andere Zahlen, andere Kontexte, andere Typen, andere Fehlerquellen in Distraktoren. Bei prüfungsrelevanten oder fehleranfälligen Sub-Goals sind 5, 8 oder mehr Aufgaben besser als 3. **Lieber eine mehr als eine zu wenig.**
+- **Pro Lesson:** **≥ 20 Aufgaben** (Minimum).
+- **Pro Sub-Goal:** **≥ 5 Aufgaben** (Minimum).
+- **Nach oben kein Limit.** Schreib so viele Aufgaben pro Sub-Goal wie du inhaltlich sinnvoll variieren kannst — andere Zahlen, andere Kontexte, andere Typen, andere Fehlerquellen in Distraktoren. Bei prüfungsrelevanten oder fehleranfälligen Sub-Goals sind 8, 10 oder mehr Aufgaben besser als 5. **Lieber eine mehr als eine zu wenig.**
 - Wenn ein User "eine Lesson" oder "ein Topic" in Auftrag gibt: **alle Sub-Goals** dieser Lesson(s) so weit ausbauen, bis man die Kompetenz wirklich sicher kann — nicht nur, bis die Minima formal erreicht sind.
 
 ---
