@@ -34,6 +34,7 @@ import { werkstoffkundeSupplements } from './supplements/werkstoffkunde'
 import { algebraSubGoalTasks } from './subgoal_tasks/algebra'
 import { trigonometrySubGoalTasks } from './subgoal_tasks/trigonometry'
 import { integralrechnungSubGoalTasks } from './subgoal_tasks/integralrechnung'
+import { technischeMechanikSubGoalTasks } from './subgoal_tasks/technische_mechanik'
 import { MIN_EXERCISES_PER_LESSON, MIN_TASKS_PER_SUB_GOAL } from './curriculum'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
@@ -63,6 +64,7 @@ const SUBGOAL_EXERCISES = {
   ...algebraSubGoalTasks,
   ...trigonometrySubGoalTasks,
   ...integralrechnungSubGoalTasks,
+  ...technischeMechanikSubGoalTasks,
   // vektoren, ableitung, … folgen in Folge-Sessions
 }
 

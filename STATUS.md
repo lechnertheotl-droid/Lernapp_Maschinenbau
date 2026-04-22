@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2253 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 291 (13 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 934 / 934 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 19 / 1134 (2 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2278 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 318 (14 %) | 100 % der Aufgaben | 🔴 |
+| MC mit wrongAnswerExplanations | 940 / 940 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 24 / 1134 (2 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -919,10 +919,10 @@ _Signalverarbeitung, Regelungstechnik, Elektrotechnik. Laplace vereinfacht DGL z
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **101** (manuell: 59 · supplemental: 42)
-- 4-Block: 14/101 (14 %) 🔴
-- MC-wAE: 24/24 (100 %) ✅
-- Sub-Goals: 0/76 Goal-Tasks verknüpft 🔴
+- Aufgaben: **126** (manuell: 59 · supplemental: 67)
+- 4-Block: 41/126 (33 %) 🔴
+- MC-wAE: 30/30 (100 %) ✅
+- Sub-Goals: 5/76 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Statik (Kräftegleichgewicht) und Dynamik (Newtonsche Gesetze, Energie) — die klassischen Grundlagen des Maschinenbaus.**
@@ -969,7 +969,7 @@ _Mechanik ist das Herzfach im Maschinenbau-Bachelor und Basis für Festigkeitsle
 | `mech-1-1` Kräfte und Freikörperbild | 4 | 0/4 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +4 Goal, +10 4B |
 | `mech-1-2` Momente und Hebelarm | 4 | 0/4 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +4 Goal, +10 4B |
 | `mech-1-3` Schnittkräfte N(x), Q(x), M(x) | 5 | 0/5 | 5 | 2/2/1/0/0 | 0/5 | 2/2 | ✅ | +5 Goal, +5 4B |
-| `mech-1-4` Reibung | 5 | 0/5 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +5 Goal, +3 4B |
+| `mech-1-4` Reibung | 5 | 5/5 | 28 | 7/9/6/3/3 | 27/28 | 7/7 | ✅ | +1 4B |
 | `mech-1-5` Schwerpunkt | 5 | 0/5 | 3 | 0/2/1/0/0 | 0/3 | — | ✅ | +5 Goal, +3 4B |
 | `mech-2-1` Newtonsche Gesetze | 5 | 0/5 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +5 Goal, +10 4B |
 | `mech-2-2` Arbeit und Energie | 6 | 0/6 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +6 Goal, +10 4B |
@@ -1485,30 +1485,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 73 Lessons
-
-#### `mech-1-4` · Reibung
-
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×1, number-input ×1, true-false ×1
-- **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, number-input, true-false
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Coulombsches Reibgesetz: $F_R = \mu F_N$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Haftreibwert $\mu_0$ > Gleitreibwert $\mu$ (Losreißen braucht mehr Kraft)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Auf geneigter Ebene: $F_N = mg\cos\alpha$, $F_H = mg\sin\alpha$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Selbsthemmung: Körper gleitet nicht, solange $\tan\alpha \leq \mu_0$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Reibwinkel $\rho = \arctan\mu$: Neigung, bei der Körper gerade zu gleiten beginnt
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/technische_mechanik.js`
-- **4-Block-Erklärung fehlt bei:** `ex-mech-1-4-a`, `ex-mech-1-4-b`, `ex-mech-1-4-c`
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 72 Lessons
 
 #### `mech-1-5` · Schwerpunkt
 
@@ -6632,3 +6609,23 @@ npm run build              # abschließender End-zu-End-Check
   - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
   - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 1 Lessons
+
+#### `mech-1-4` · Reibung
+
+- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
+- **Aufgaben aktuell:** 28 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
+- **Typen vorhanden:** multiple-choice ×7, number-input ×9, true-false ×6, matching ×3, sorting ×3
+- **Typen einsetzen (Rotation):** matching, sorting, true-false
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
+  - ✅ [0] (hoch) **5/5+** Aufgaben — Coulombsches Reibgesetz: $F_R = \mu F_N$
+  - ✅ [1] (hoch) **5/5+** Aufgaben — Haftreibwert $\mu_0$ > Gleitreibwert $\mu$ (Losreißen braucht mehr Kraft)
+  - ✅ [2] (hoch) **5/5+** Aufgaben — Auf geneigter Ebene: $F_N = mg\cos\alpha$, $F_H = mg\sin\alpha$
+  - ✅ [3] (hoch) **5/5+** Aufgaben — Selbsthemmung: Körper gleitet nicht, solange $\tan\alpha \leq \mu_0$
+  - ✅ [4] (mittel) **5/5+** Aufgaben — Reibwinkel $\rho = \arctan\mu$: Neigung, bei der Körper gerade zu gleiten beginnt
+- **4-Block-Erklärung fehlt bei:** `ex-mech-1-4-goal-sg0-4`
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
