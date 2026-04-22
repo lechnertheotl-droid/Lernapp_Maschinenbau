@@ -532,4 +532,581 @@ export const technischeMechanikSubGoalTasks = {
 
   },
 
+  // ────────────────────────────────────────────────────────────────────────
+  // mech-1-5 — Schwerpunkt  (5 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-1-5': {
+
+    // ── [0] Diskrete Massen: $x_S = \sum m_i x_i / \sum m_i$ ────────────
+    0: [
+      ni(
+        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Drei Massen liegen auf einer Stange: $m_1 = 2\\,\\text{kg}$ bei $x_1 = 0\\,\\text{m}$, $m_2 = 3\\,\\text{kg}$ bei $x_2 = 1\\,\\text{m}$, $m_3 = 5\\,\\text{kg}$ bei $x_3 = 4\\,\\text{m}$. Wo liegt der Schwerpunkt? (auf 2 Nachkommastellen)',
+        2.3, 0.01, 'm',
+        `**Ansatz:** Massengewichtetes Mittel: $x_S = \\sum m_i x_i / \\sum m_i$.
+
+**Rechnung:** Zähler: $2 \\cdot 0 + 3 \\cdot 1 + 5 \\cdot 4 = 0 + 3 + 20 = 23\\,\\text{kg·m}$. Nenner: $2 + 3 + 5 = 10\\,\\text{kg}$. $x_S = 23/10 = 2{,}30\\,\\text{m}$.
+
+**Probe:** Ergebnis liegt zwischen $x_1 = 0$ und $x_3 = 4$. ✓ Näher an $x_3 = 4$, weil dort die größte Masse sitzt. ✓ Hebelcheck: $2 \\cdot 2{,}3 + 3 \\cdot 1{,}3 = 4{,}6 + 3{,}9 = 8{,}5$ (links von $x_S$); $5 \\cdot 1{,}7 = 8{,}5$ (rechts von $x_S$). Momentengleichgewicht erfüllt. ✓
+
+**Typischer Fehler:** Arithmetisches Mittel der Positionen rechnen: $(0+1+4)/3 \\approx 1{,}67\\,\\text{m}$ — ignoriert die Massen. Die Schwerpunkt-Formel gewichtet jeden Beitrag mit **seiner** Masse.`,
+        [
+          'Schreibe die Formel hin: $x_S = \\sum m_i x_i / \\sum m_i$.',
+          'Zähler: jedes $m_i \\cdot x_i$ aufsummieren.',
+          'Ergebnis liegt immer zwischen den äußeren Positionen, näher an der größten Masse.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Zwei Massen auf einer Stange: $m_1 = 4\\,\\text{kg}$ bei $x_1 = 1\\,\\text{m}$ und $m_2 = 1\\,\\text{kg}$ bei $x_2 = 6\\,\\text{m}$. Wo liegt $x_S$?',
+        ['$x_S = 2\\,\\text{m}$', '$x_S = 3{,}5\\,\\text{m}$', '$x_S = 5\\,\\text{m}$', '$x_S = 1{,}4\\,\\text{m}$'],
+        0,
+        `**Ansatz:** $x_S = (m_1 x_1 + m_2 x_2)/(m_1 + m_2)$.
+
+**Rechnung:** $x_S = (4 \\cdot 1 + 1 \\cdot 6)/(4+1) = (4+6)/5 = 10/5 = 2\\,\\text{m}$.
+
+**Probe:** Schwerpunkt näher an $m_1$ (größere Masse bei $x_1 = 1$). Abstand zu $m_1$: $1\\,\\text{m}$. Abstand zu $m_2$: $4\\,\\text{m}$. Hebelgesetz: $m_1 \\cdot 1 = m_2 \\cdot 4$, also $4 = 4$. ✓
+
+**Typischer Fehler:** Arithmetisches Mittel $(1+6)/2 = 3{,}5\\,\\text{m}$ — ignoriert den Massenunterschied $4:1$.`,
+        [
+          'Massengewichtetes Mittel, nicht arithmetisches.',
+          'Hebelgesetz: Schwerpunkt teilt die Strecke im **umgekehrten** Massenverhältnis.',
+          'Bei $4:1$ Masse liegt $x_S$ nahe an $m_1$.',
+        ],
+        {
+          1: '$3{,}5\\,\\text{m}$ ist das arithmetische Mittel der Positionen. Bei ungleichen Massen gewichtet man mit der Masse, nicht mit $1$.',
+          2: '$5\\,\\text{m}$ wäre der Schwerpunkt, wenn $m_2$ viermal so schwer wie $m_1$ wäre — Verhältnis umgekehrt.',
+          3: '$1{,}4\\,\\text{m}$ stammt aus falscher Zähler-Division: vermutlich $(4 \\cdot 1 + 1 \\cdot 6)/(1 + 6) \\approx 1{,}43$, wobei der Nenner die **Positionen** statt der **Massen** addiert.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Vier gleich schwere Kugeln ($m = 2\\,\\text{kg}$ jede) liegen bei $x = 0, 2, 5, 9\\,\\text{m}$. Wo ist $x_S$?',
+        4, 0.01, 'm',
+        `**Ansatz:** Bei gleichen Massen reduziert sich die Formel auf das arithmetische Mittel der Positionen: $x_S = (x_1 + x_2 + \\dots + x_n)/n$.
+
+**Rechnung:** Gesamtmasse $4 \\cdot 2 = 8\\,\\text{kg}$. Zähler: $2(0 + 2 + 5 + 9) = 2 \\cdot 16 = 32\\,\\text{kg·m}$. $x_S = 32/8 = 4\\,\\text{m}$. Schneller: $(0+2+5+9)/4 = 16/4 = 4\\,\\text{m}$.
+
+**Probe:** Ergebnis liegt zwischen $x_{\\min} = 0$ und $x_{\\max} = 9$. ✓ Zwischen den beiden mittleren Positionen $2$ und $5$ liegt $x_S = 4$ — plausibel.
+
+**Typischer Fehler:** Gewichtete Formel benutzen und die gemeinsame Masse $m$ im Zähler **und** Nenner vergessen zu kürzen → unnötig komplizierte Rechnung. Bei gleichen Massen einfach Mittelwert der Positionen.`,
+        [
+          'Was passiert, wenn alle $m_i$ gleich sind?',
+          '$m$ kürzt sich im Zähler und Nenner.',
+          'Übrig: arithmetisches Mittel der $x_i$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Die Schwerpunktformel liefert auch für dreidimensionale Massensysteme komponentenweise die Schwerpunktkoordinaten: $x_S, y_S, z_S$ werden mit derselben Formel unabhängig voneinander berechnet.',
+        true,
+        `**Ansatz:** Vektorwertig: $\\vec r_S = \\sum m_i \\vec r_i / \\sum m_i$. Komponentenweise: $x_S = \\sum m_i x_i / M$, analog $y_S, z_S$. Die drei Gleichungen sind entkoppelt.
+
+**Rechnung:** Bei einem System aus drei Massen im Raum rechnet man drei separate Summen — eine pro Achse. Die Massen bleiben dieselben, nur die Koordinate wechselt.
+
+**Probe:** Beispiel: $m_1 = m_2 = m_3 = 1\\,\\text{kg}$ bei $(0,0,0)$, $(3,0,0)$, $(0,6,9)$. Dann $x_S = (0+3+0)/3 = 1$, $y_S = (0+0+6)/3 = 2$, $z_S = (0+0+9)/3 = 3$. Schwerpunkt: $(1, 2, 3)$.
+
+**Typischer Fehler:** Koordinaten mischen (z.B. $m_i \\cdot y_i$ in der $x_S$-Summe). Die drei Gleichungen sind streng unabhängig.`,
+        [
+          'Wie sieht die Schwerpunktformel in Vektorform aus?',
+          'Komponentenweise lesen: $x_S$ nutzt nur $x_i$.',
+          'Drei unabhängige Gleichungen für 3D.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Ordne jeder Situation die korrekte Schwerpunkt-Aussage zu.',
+        [
+          { left: 'Zwei gleiche Massen bei $x_1$ und $x_2$', right: '$x_S = (x_1 + x_2)/2$ (arithm. Mittel)' },
+          { left: 'Massen $m$ und $3m$ bei $x=0$ und $x=4$', right: '$x_S = 3$ (näher an der größeren Masse)' },
+          { left: 'Eine einzige Masse $m$ bei $x_0$', right: '$x_S = x_0$ (trivial)' },
+          { left: 'Zwei Massen, Summe verdoppelt', right: '$x_S$ bleibt gleich (Massen kürzen sich)' },
+        ],
+        `**Ansatz:** Die Schwerpunktformel ist linear in allen $m_i$ — eine gemeinsame Skalierung aller Massen ändert das Ergebnis nicht. Das Schwerpunkt-Teilverhältnis $(x_S - x_1)/(x_2 - x_S) = m_2/m_1$ ist das umgekehrte Hebelverhältnis.
+
+**Rechnung:** Für Masse $m$ bei $0$ und $3m$ bei $4$: $x_S = (m \\cdot 0 + 3m \\cdot 4)/(m + 3m) = 12m/(4m) = 3$. Schwerpunkt teilt die Strecke im Verhältnis $3:1$ (näher zur $3m$-Masse).
+
+**Probe:** Einzelne Masse: $x_S = m \\cdot x_0 / m = x_0$ — trivial. Gleiche Massen: $x_S = m(x_1+x_2)/(2m) = (x_1+x_2)/2$. Die Skalierung $m \\to 2m$ bei **allen** Massen kürzt sich in Zähler und Nenner.
+
+**Typischer Fehler:** Annehmen, dass der Schwerpunkt immer **in der Mitte** liegt. Der liegt genau im Mittelpunkt nur bei gleichen Massen — bei unterschiedlichen Massen teilt er die Strecke im umgekehrten Massenverhältnis.`,
+        [
+          'Gleiche Massen: arithmetisches Mittel.',
+          'Hebelverhältnis umgekehrt zum Massenverhältnis.',
+          'Gemeinsame Skalierung aller Massen ändert $x_S$ nicht.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Fünf Kugeln: $m_1 = 1\\,\\text{kg}$ bei $x=0$, $m_2 = 2\\,\\text{kg}$ bei $x=1$, $m_3 = 3\\,\\text{kg}$ bei $x=2$, $m_4 = 2\\,\\text{kg}$ bei $x=3$, $m_5 = 1\\,\\text{kg}$ bei $x=4$. Wo liegt der Schwerpunkt? (auf 1 Nachkommastelle)',
+        2, 0.05, 'm',
+        `**Ansatz:** Die Massenverteilung ist symmetrisch um $x = 2$ (gleiche Massen im gleichen Abstand). Daher muss $x_S$ genau auf der Symmetrieachse liegen.
+
+**Rechnung:** Zähler: $1 \\cdot 0 + 2 \\cdot 1 + 3 \\cdot 2 + 2 \\cdot 3 + 1 \\cdot 4 = 0 + 2 + 6 + 6 + 4 = 18$. Nenner: $1+2+3+2+1 = 9$. $x_S = 18/9 = 2{,}0\\,\\text{m}$.
+
+**Probe:** Durch direkte Ausrechnung und durch Symmetrie bestätigt. Paare $(m_1, m_5)$ und $(m_2, m_4)$ heben sich um $x = 2$ auf; die mittlere Masse $m_3$ sitzt direkt auf der Achse.
+
+**Typischer Fehler:** Symmetrie nicht erkennen und unnötig lange Summen aufsetzen — oder Rechnerfehler beim Summieren. Vor dem Rechnen: auf Symmetrie prüfen.`,
+        [
+          'Sind die Massen um einen Punkt symmetrisch verteilt?',
+          'Symmetrie ⇒ Schwerpunkt liegt auf der Achse.',
+          'Auch rechnerisch durchführen: $\\sum m_i x_i / \\sum m_i$.',
+        ],
+      ),
+    ],
+
+    // ── [1] Zusammengesetzte Flächen: Summenregel ───────────────────────
+    1: [
+      ni(
+        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Ein T-Profil besteht aus einem horizontalen Rechteck $R_1$ ($100 \\times 20\\,\\text{mm}$, $x_{S1} = 50\\,\\text{mm}$, $y_{S1} = 90\\,\\text{mm}$) und einem vertikalen Rechteck $R_2$ ($20 \\times 80\\,\\text{mm}$, $x_{S2} = 50\\,\\text{mm}$, $y_{S2} = 40\\,\\text{mm}$). Berechne $y_S$ des gesamten T-Profils. (auf 1 Nachkommastelle)',
+        67.8, 0.2, 'mm',
+        `**Ansatz:** Flächengewichtetes Mittel in $y$: $y_S = (A_1 y_{S1} + A_2 y_{S2})/(A_1 + A_2)$. Bei homogenem Material ersetzt $A_i$ die Masse.
+
+**Rechnung:** $A_1 = 100 \\cdot 20 = 2000\\,\\text{mm}^2$, $A_2 = 20 \\cdot 80 = 1600\\,\\text{mm}^2$. $y_S = (2000 \\cdot 90 + 1600 \\cdot 40)/(2000 + 1600) = (180\\,000 + 64\\,000)/3600 = 244\\,000/3600 \\approx 67{,}78\\,\\text{mm}$.
+
+**Probe:** Ergebnis liegt zwischen $y_{S2} = 40$ und $y_{S1} = 90$ — OK. Näher an $y_{S1}$, weil $A_1 > A_2$.
+
+**Typischer Fehler:** Beide Teilschwerpunkte einfach mitteln: $(90+40)/2 = 65\\,\\text{mm}$. Ignoriert den Flächenunterschied.`,
+        [
+          'Teilflächen berechnen: $A_i = b_i \\cdot h_i$.',
+          'Teilschwerpunkte kennst du aus der Aufgabe.',
+          'Flächengewichtetes Mittel: $y_S = \\sum A_i y_{S,i} / \\sum A_i$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Bei einem Profil aus zwei Rechtecken (gleiche Fläche $A$, Schwerpunkte $x_{S1}$ und $x_{S2}$) — wo liegt der Gesamtschwerpunkt?',
+        [
+          'In der Mitte zwischen $x_{S1}$ und $x_{S2}$: $x_S = (x_{S1}+x_{S2})/2$',
+          'Beim größeren Teilschwerpunkt',
+          'Bei $x_{S1}$ (erstes Teil dominiert)',
+          'Immer am linken Rand des Profils',
+        ],
+        0,
+        `**Ansatz:** Gleiche Flächen → Gewichtung gleich → arithmetisches Mittel.
+
+**Rechnung:** $x_S = (A \\cdot x_{S1} + A \\cdot x_{S2})/(A + A) = A(x_{S1}+x_{S2})/(2A) = (x_{S1}+x_{S2})/2$.
+
+**Probe:** Sonderfall der allgemeinen Formel $x_S = \\sum A_i x_{S,i}/\\sum A_i$ bei $A_1 = A_2$. Analog zu zwei gleichen Massen.
+
+**Typischer Fehler:** Die Regel "immer in der Mitte" auf ungleiche Flächen übertragen. Nur bei **gleicher Fläche** ist das Mittel das arithmetische Mittel.`,
+        [
+          'Setze $A_1 = A_2 = A$ in die Formel ein.',
+          'Was passiert mit $A$ in Zähler und Nenner?',
+          'Bleibt arithmetisches Mittel übrig.',
+        ],
+        {
+          1: 'Die Formel liefert das gewogene Mittel. "Größerer Teilschwerpunkt" ist keine sinnvolle Größe — $x_{S1}$ und $x_{S2}$ sind Positionen, nicht Größen.',
+          2: 'Das zweite Teil hat denselben Flächenanteil, dominiert nicht.',
+          3: 'Der linke Rand hängt vom konkreten Aufbau ab — hat nichts mit der Schwerpunktformel zu tun.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Ein Profil besteht aus einem Quadrat ($100 \\times 100\\,\\text{mm}$, $x_{S1} = 50\\,\\text{mm}$) und einem angesetzten Rechteck ($200 \\times 50\\,\\text{mm}$, Schwerpunkt $x_{S2} = 200\\,\\text{mm}$ rechts vom Quadrat, bezogen auf denselben Ursprung). Wo liegt $x_S$?',
+        125, 0.5, 'mm',
+        `**Ansatz:** $x_S = (A_1 x_{S1} + A_2 x_{S2})/(A_1 + A_2)$.
+
+**Rechnung:** $A_1 = 100 \\cdot 100 = 10\\,000\\,\\text{mm}^2$. $A_2 = 200 \\cdot 50 = 10\\,000\\,\\text{mm}^2$. Beide gleich → arithmetisches Mittel. $x_S = (50 + 200)/2 = 125\\,\\text{mm}$.
+
+**Probe:** Ergebnis liegt zwischen $50$ und $200$ — OK. Da $A_1 = A_2$, genau in der Mitte.
+
+**Typischer Fehler:** Unterschiedliche Flächen annehmen, ohne die Zahlenwerte zu berechnen. Erst nach Durchrechnen fällt auf, dass $100 \\cdot 100 = 200 \\cdot 50$.`,
+        [
+          'Flächen $A_i = b_i h_i$ berechnen.',
+          'Wenn $A_1 = A_2$, wird die Formel zum arithmetischen Mittel.',
+          'Sonst: gewogenes Mittel.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Für homogene Platten (konstante Dicke und Dichte) liefert die Flächen-Schwerpunktformel dasselbe Ergebnis wie die Massen-Schwerpunktformel.',
+        true,
+        `**Ansatz:** Bei homogenem Material gilt $m_i = \\rho \\cdot t \\cdot A_i$ (Dichte $\\rho$, Dicke $t$, Fläche $A_i$). In der Schwerpunktformel kürzen sich $\\rho$ und $t$.
+
+**Rechnung:** $x_S = \\sum m_i x_i / \\sum m_i = \\sum (\\rho t A_i) x_i / \\sum (\\rho t A_i) = \\rho t \\sum A_i x_i / (\\rho t \\sum A_i) = \\sum A_i x_i / \\sum A_i$.
+
+**Probe:** Für ein L-Profil aus Stahl ergibt sich derselbe Schwerpunkt wie aus Aluminium — solange Dicke und Dichte überall gleich sind.
+
+**Typischer Fehler:** Die Regel auch bei inhomogenen Körpern anwenden (verschiedene Materialien, variable Dicke). Dort muss mit der tatsächlichen Masse gewichtet werden — Fläche allein reicht nicht.`,
+        [
+          'Masse als $m = \\rho \\cdot V = \\rho \\cdot t \\cdot A$ schreiben.',
+          'Was kürzt sich in Zähler und Nenner?',
+          'Vorsicht bei inhomogenen Körpern.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Bringe die Schritte zur Berechnung des Flächenschwerpunkts eines zusammengesetzten Profils in die richtige Reihenfolge.',
+        [
+          'Koordinatensystem wählen (Ursprung an markanter Ecke)',
+          'Profil in Teilflächen zerlegen (Rechtecke, Dreiecke, Kreissegmente)',
+          'Für jede Teilfläche $A_i$ und Teilschwerpunkt ($x_{S,i}$, $y_{S,i}$) bestimmen',
+          'Flächengewichtete Summen $\\sum A_i x_{S,i}$ und $\\sum A_i y_{S,i}$ bilden',
+          'Durch Gesamtfläche $\\sum A_i$ teilen, um $x_S$ und $y_S$ zu erhalten',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Strukturiertes Vorgehen verhindert Fehler: erst die Geometrie klären (Koordinaten, Zerlegung), dann die Zahlen (Flächen, Teilschwerpunkte), zuletzt die Formel anwenden.
+
+**Rechnung:** Das Koordinatensystem muss **vor** der Zerlegung stehen, damit die Teilschwerpunkte eindeutige Werte haben. Erst Flächen, Teilschwerpunkte — dann Summen, dann Division.
+
+**Probe:** Bei einem L-Profil: (1) Ursprung in der Ecke, (2) Zerlegung in zwei Rechtecke, (3) Flächen und Teilschwerpunkte, (4) Summen, (5) Division. Ergebnis: Gesamtschwerpunkt.
+
+**Typischer Fehler:** Ohne Koordinatensystem starten — dann stehen die $x_{S,i}$ relativ zu verschiedenen Bezugspunkten und werden zu einer sinnlosen Summe addiert.`,
+        [
+          'Zuerst Geometrie, dann Zahlen.',
+          'Koordinatensystem vor der Zerlegung.',
+          'Formel am Ende.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Ein I-Profil (Doppel-T) besteht aus drei Rechtecken: Obergurt ($120 \\times 15\\,\\text{mm}$, $y_S = 142{,}5\\,\\text{mm}$), Steg ($15 \\times 120\\,\\text{mm}$, $y_S = 75\\,\\text{mm}$), Untergurt ($120 \\times 15\\,\\text{mm}$, $y_S = 7{,}5\\,\\text{mm}$). Wo liegt der Schwerpunkt $y_S$? (auf 1 Nachkommastelle)',
+        75, 0.5, 'mm',
+        `**Ansatz:** Das I-Profil ist **symmetrisch** um die Mittelebene. Der Schwerpunkt muss dort liegen — hier $y_S = 75\\,\\text{mm}$.
+
+**Rechnung:** $A_1 = A_3 = 120 \\cdot 15 = 1800\\,\\text{mm}^2$, $A_2 = 15 \\cdot 120 = 1800\\,\\text{mm}^2$. Zur Bestätigung: $y_S = (1800 \\cdot 142{,}5 + 1800 \\cdot 75 + 1800 \\cdot 7{,}5)/(1800 \\cdot 3) = (142{,}5 + 75 + 7{,}5)/3 = 225/3 = 75\\,\\text{mm}$. ✓
+
+**Probe:** Aufgrund der Symmetrie von Obergurt und Untergurt um die Mittelebene heben sich ihre Abweichungen von $75$ exakt auf. Der Steg sitzt ohnehin in der Mitte.
+
+**Typischer Fehler:** Aufwendig durchrechnen, ohne die Symmetrie zu sehen. Bei jeder zusammengesetzten Fläche zuerst auf Symmetrie prüfen — spart oft die gesamte Rechnung.`,
+        [
+          'Liegt eine Symmetrieachse vor?',
+          'Obergurt und Untergurt: gleiche Fläche, gleicher Abstand zur Mitte.',
+          'Symmetrie ⇒ $y_S$ auf der Mittelebene.',
+        ],
+      ),
+    ],
+
+    // ── [2] Loch als negative Fläche ────────────────────────────────────
+    2: [
+      ni(
+        'Sub-Goal "Loch als negative Fläche subtrahieren": Eine quadratische Platte ($200 \\times 200\\,\\text{mm}$) hat ein kreisrundes Loch (Radius $r = 30\\,\\text{mm}$) mit Mittelpunkt bei $x = 60\\,\\text{mm}$, $y = 100\\,\\text{mm}$. Wo liegt $x_S$ der gelochten Platte? (Ursprung in der linken unteren Ecke, auf 2 Nachkommastellen)',
+        103.04, 0.2, 'mm',
+        `**Ansatz:** Loch behandeln wie negative Fläche: $x_S = (A_\\text{Voll} \\cdot x_\\text{S,Voll} - A_\\text{Loch} \\cdot x_\\text{S,Loch})/(A_\\text{Voll} - A_\\text{Loch})$.
+
+**Rechnung:** $A_\\text{Voll} = 200^2 = 40\\,000\\,\\text{mm}^2$, $x_\\text{S,Voll} = 100\\,\\text{mm}$. $A_\\text{Loch} = \\pi \\cdot 30^2 = 900\\pi \\approx 2827{,}4\\,\\text{mm}^2$, $x_\\text{S,Loch} = 60\\,\\text{mm}$. $x_S = (40\\,000 \\cdot 100 - 2827{,}4 \\cdot 60)/(40\\,000 - 2827{,}4) = (4\\,000\\,000 - 169\\,646)/37\\,172{,}6 \\approx 103{,}04\\,\\text{mm}$.
+
+**Probe:** Das Loch liegt links der Mitte ($x = 60 < 100$). Entfernen verschiebt den Schwerpunkt **nach rechts** (weg vom Loch). Ergebnis $x_S > 100$ ✓.
+
+**Typischer Fehler:** Das Loch **addieren** statt subtrahieren. Oder die Fläche des Kreises vergessen: $\\pi r^2$, nicht $2\\pi r$ oder $\\pi r$.`,
+        [
+          'Loch = negative Teilfläche.',
+          'Formel: $x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$.',
+          'Qualitativ: Schwerpunkt wandert weg vom Loch.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Loch als negative Fläche subtrahieren": Eine symmetrische Scheibe hat ein rundes Loch **oberhalb** der Mitte gebohrt. In welche Richtung verschiebt sich der Schwerpunkt gegenüber der unversehrten Scheibe?',
+        [
+          'Nach unten (weg vom Loch)',
+          'Nach oben (zum Loch hin)',
+          'Er bleibt gleich, weil das Loch klein ist',
+          'Horizontal nach links',
+        ],
+        0,
+        `**Ansatz:** Das Loch entspricht negativer Fläche. Subtrahieren negativer $y_L > y_\\text{Voll}$-Terme verschiebt $y_S$ nach **unten**.
+
+**Rechnung:** $y_S = (A_V y_V - A_L y_L)/(A_V - A_L)$. Wenn $y_L > y_V$, ist der Zähler kleiner als $y_V \\cdot (A_V - A_L)$, also $y_S < y_V$. Schwerpunkt sinkt.
+
+**Probe:** Anschaulich: Material oberhalb der Mitte wurde entfernt — die verbleibende Masse ist im Durchschnitt weiter unten. Schwerpunkt folgt der verbleibenden Masse.
+
+**Typischer Fehler:** Intuition "Schwerpunkt wandert zum Loch" — falsch. Er wandert **weg** vom Loch, weil das Loch eine Fehl-Fläche ist, nicht eine Zusatz-Fläche.`,
+        [
+          'Loch = fehlende Masse.',
+          'Schwerpunkt folgt der verbleibenden Masse.',
+          'Weg vom Loch, nicht zum Loch.',
+        ],
+        {
+          1: 'Das Loch zieht **nichts** an — im Gegenteil, dort fehlt Material. Der Schwerpunkt wandert weg.',
+          2: 'Kleine Löcher haben kleinen Effekt, aber nicht null. Jede entfernte Fläche verschiebt den Schwerpunkt.',
+          3: 'Das Loch liegt vertikal oberhalb der Mitte — die Verschiebung ist vertikal, nicht horizontal.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Loch als negative Fläche subtrahieren": Eine rechteckige Platte ($60 \\times 40\\,\\text{mm}$) hat ein quadratisches Loch ($20 \\times 20\\,\\text{mm}$) mit Mittelpunkt bei $x = 15\\,\\text{mm}$, $y = 20\\,\\text{mm}$ gebohrt (Ursprung in der linken unteren Ecke). Wo liegt $x_S$ der gelochten Platte? (auf 2 Nachkommastellen)',
+        33, 0.05, 'mm',
+        `**Ansatz:** Negative Fläche: $x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$.
+
+**Rechnung:** $A_V = 60 \\cdot 40 = 2400\\,\\text{mm}^2$, $x_V = 30\\,\\text{mm}$. $A_L = 20 \\cdot 20 = 400\\,\\text{mm}^2$, $x_L = 15\\,\\text{mm}$. $x_S = (2400 \\cdot 30 - 400 \\cdot 15)/(2400 - 400) = (72\\,000 - 6000)/2000 = 66\\,000/2000 = 33\\,\\text{mm}$.
+
+**Probe:** Loch links der Mitte ($x_L = 15 < 30$) → Schwerpunkt wandert nach rechts ($x_S = 33 > 30$). ✓ Verschiebung: $3\\,\\text{mm}$ — vernünftig für ein Loch mit $400/2400 \\approx 17\\,\\%$ der Fläche.
+
+**Typischer Fehler:** $x_L$ in die Vollplatte-Formel einsetzen ohne Vorzeichenwechsel: das Loch wird dann fälschlich als Zusatzfläche gerechnet.`,
+        [
+          'Minus statt Plus für das Loch.',
+          'Formel: $(A_V x_V - A_L x_L)/(A_V - A_L)$.',
+          'Plausibilitätscheck: Schwerpunkt weg vom Loch.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Loch als negative Fläche subtrahieren": Ordne jedem Szenario die richtige Formel zu.',
+        [
+          { left: 'Platte mit einem Loch', right: '$x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$' },
+          { left: 'Zwei angesetzte Flächen', right: '$x_S = (A_1 x_1 + A_2 x_2)/(A_1 + A_2)$' },
+          { left: 'Platte mit zwei Löchern', right: '$x_S = (A_V x_V - A_{L1} x_{L1} - A_{L2} x_{L2})/(A_V - A_{L1} - A_{L2})$' },
+          { left: 'Platte mit angesetzter Fläche und einem Loch', right: '$x_S = (A_V x_V + A_A x_A - A_L x_L)/(A_V + A_A - A_L)$' },
+        ],
+        `**Ansatz:** Zusammengesetzte Flächen lassen sich beliebig mischen: addierte Flächen mit Plus, entfernte (Löcher) mit Minus.
+
+**Rechnung:** Jede Teilfläche liefert einen Term $A_i x_{S,i}$ im Zähler und $A_i$ im Nenner — mit passendem Vorzeichen. Zähler und Nenner müssen konsequent mitgezogen werden.
+
+**Probe:** Die Struktur ist additiv-linear. Ein Loch tragt negativ zu **beidem** bei: zum Moment ($A_L x_L$) und zur Gesamtfläche ($A_L$).
+
+**Typischer Fehler:** Nur im Zähler das Minus, im Nenner aber alle Flächen positiv addieren — oder umgekehrt. Das Vorzeichen muss konsistent sein.`,
+        [
+          'Additiv mit Vorzeichen: Plus für angesetzte, Minus für entfernte Flächen.',
+          'Vorzeichen im Zähler und Nenner gleich.',
+          'Formel bleibt linear.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Loch als negative Fläche subtrahieren": Wenn ein Loch **im Schwerpunkt** des Vollkörpers liegt, ändert sich die Schwerpunktposition durch das Loch nicht.',
+        true,
+        `**Ansatz:** $x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$. Falls $x_L = x_V$: $x_S = (A_V x_V - A_L x_V)/(A_V - A_L) = x_V (A_V - A_L)/(A_V - A_L) = x_V$.
+
+**Rechnung:** Das Loch zieht zwar Fläche ab, aber auch Moment — und beides im gleichen Verhältnis zu $x_V$. Der Quotient bleibt $x_V$.
+
+**Probe:** Anschaulich: Das entfernte Material hatte selbst $x_\\text{Loch-S} = x_V$. Das verschiebt den Restschwerpunkt nicht.
+
+**Typischer Fehler:** Annehmen, "jedes Loch verändert den Schwerpunkt". Nur Löcher **außerhalb** des ursprünglichen Schwerpunkts verschieben ihn.`,
+        [
+          'Setze $x_L = x_V$ in die Formel ein.',
+          'Was passiert, wenn Zähler und Nenner denselben Faktor haben?',
+          'Anschaulich: was hat das entfernte Material zum Schwerpunkt beigetragen?',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Loch als negative Fläche subtrahieren": Bringe die Schritte zur Berechnung des Schwerpunkts einer gelochten Platte in die richtige Reihenfolge.',
+        [
+          'Vollkörper und Loch getrennt definieren (Geometrie, Lage)',
+          'Fläche und Schwerpunkt des Vollkörpers bestimmen: $A_V$, $x_V$',
+          'Fläche und Schwerpunkt des Lochs bestimmen: $A_L$, $x_L$',
+          'Momentensumme mit Vorzeichen: $A_V x_V - A_L x_L$',
+          'Durch Restfläche teilen: $x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Das Verfahren entkoppelt Vollkörper und Loch — beide werden separat charakterisiert, dann mit Vorzeichen kombiniert.
+
+**Rechnung:** Im Zähler und Nenner das Minus für das Loch nicht vergessen. In der Formel steht das Loch wie eine "negative Masse".
+
+**Probe:** Plausibilitätscheck: $A_V - A_L$ muss positiv sein (sonst existiert kein Restkörper). Und $x_S$ muss innerhalb des Restkörpers liegen.
+
+**Typischer Fehler:** Den letzten Schritt vergessen und nur den Zähler ausrechnen.`,
+        [
+          'Erst Geometrie, dann Zahlen.',
+          'Loch separat wie ein eigenes Teilkörper behandeln.',
+          'Vorzeichen konsistent in Zähler und Nenner.',
+        ],
+      ),
+    ],
+
+    // ── [3] Symmetrie ausnutzen ─────────────────────────────────────────
+    3: [
+      tf(
+        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Bei einer homogenen Fläche mit zwei zueinander senkrechten Symmetrieachsen liegt der Schwerpunkt exakt im Schnittpunkt beider Achsen.',
+        true,
+        `**Ansatz:** Jede Symmetrieachse zwingt den Schwerpunkt auf sich. Zwei Achsen → Schnittpunkt ist der einzige Punkt auf beiden.
+
+**Rechnung:** Beispiel Rechteck: horizontale Mittellinie (Symmetrie) zwingt $y_S = h/2$, vertikale Mittellinie zwingt $x_S = b/2$. Schwerpunkt: $(b/2, h/2)$ — Schnittpunkt beider Mittellinien.
+
+**Probe:** Rechteck, Quadrat, Ellipse, Kreis, reguläres Polygon (gerade Eckenzahl) — alle haben mehrere Symmetrieachsen, und der Schwerpunkt ist der Schnittpunkt.
+
+**Typischer Fehler:** Bei einem nicht-homogenen Körper (verschiedene Materialien, Bohrungen) gilt das nicht mehr. Symmetrie der **Form** reicht nicht — es muss Symmetrie der **Massenverteilung** sein.`,
+        [
+          'Jede Symmetrieachse fixiert eine Koordinate des Schwerpunkts.',
+          'Zwei Achsen → beide Koordinaten fixiert.',
+          'Vorsicht bei inhomogenen Körpern.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Ein gleichseitiges Dreieck (Seitenlänge $a$) ist homogen. Wo liegt der Schwerpunkt?',
+        [
+          'Im Schnittpunkt der drei Seitenhalbierenden (Schwerpunkt, 1/3 von der Basis)',
+          'In der Mitte des Dreiecks (Höhe/2)',
+          'Genau in einer der Ecken',
+          'Außerhalb des Dreiecks, weil unsymmetrisch',
+        ],
+        0,
+        `**Ansatz:** Ein gleichseitiges Dreieck hat drei Symmetrieachsen — jede Seitenhalbierende. Der Schwerpunkt muss auf **jeder** liegen → Schnittpunkt aller drei.
+
+**Rechnung:** Die Seitenhalbierenden schneiden sich im **Schwerpunkt** (mathematisch bewiesen: Teilungsverhältnis $2:1$ von der Ecke her). Abstand von der Basis: $h/3$ mit $h = a\\sqrt{3}/2$.
+
+**Probe:** Bei symmetrischer Masseverteilung rund um den Schnittpunkt heben sich alle Beiträge paarweise auf.
+
+**Typischer Fehler:** "Mitte des Dreiecks" als Höhe/2 interpretieren — falsch. Der Schwerpunkt liegt bei $h/3$ von der Basis aus, nicht bei $h/2$.`,
+        [
+          'Wie viele Symmetrieachsen hat ein gleichseitiges Dreieck?',
+          'Schwerpunkt muss auf jeder liegen.',
+          'Schnittpunkt aller Seitenhalbierenden.',
+        ],
+        {
+          1: '"Mitte" bei $h/2$ wäre beim Rechteck korrekt. Beim Dreieck liegt der Schwerpunkt aber bei $h/3$ von der Basis aus.',
+          2: 'Ecken sind Rand- und nicht Schwerpunkte — die Masse verteilt sich ja auf die ganze Fläche.',
+          3: 'Bei konvexen Flächen (Dreieck, Rechteck, Kreis) liegt der Schwerpunkt **immer innerhalb**. Nur bei Ringen oder L-Formen kann er außerhalb liegen.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Ein Kreisring hat Außenradius $R = 50\\,\\text{mm}$ und Innenradius $r = 20\\,\\text{mm}$. Wie weit liegt der Schwerpunkt vom Mittelpunkt entfernt?',
+        0, 0.01, 'mm',
+        `**Ansatz:** Ein Kreisring ist **zentralsymmetrisch** (unendlich viele Symmetrieachsen durch den Mittelpunkt). Der Schwerpunkt muss auf allen liegen — nur der Mittelpunkt selbst erfüllt das.
+
+**Rechnung:** Keine Rechnung nötig — die Symmetrie liefert die Antwort direkt. Abstand zum Mittelpunkt: $0$.
+
+**Probe:** Auch für einen Halbkreisring bleibt die Symmetrieachse durch den Mittelpunkt und den höchsten Punkt — dort liegt der Schwerpunkt auf dieser Achse, aber **nicht** im Mittelpunkt ($4r/(3\\pi)$-Regel).
+
+**Typischer Fehler:** Die Flächenformel $A_\\text{Ring} = \\pi(R^2 - r^2)$ für nicht-existente Schwerpunktberechnung benutzen. Bei voller Rotationssymmetrie ist der Schwerpunkt immer im Zentrum.`,
+        [
+          'Wie viele Symmetrieachsen hat ein Kreisring?',
+          'Jede Achse enthält den Schwerpunkt.',
+          'Zentralsymmetrie ⇒ Schwerpunkt im Zentrum.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Ordne jedem Körper die Lage seines Schwerpunkts zu.',
+        [
+          { left: 'Homogene Kugel', right: 'Kugelmittelpunkt (Zentralsymmetrie)' },
+          { left: 'Homogener Zylinder', right: 'Auf der Zylinderachse, auf halber Höhe' },
+          { left: 'Gleichschenkliges Dreieck', right: 'Auf der Symmetrieachse (Mittelsenkrechte auf Basis)' },
+          { left: 'I-Profil (Doppel-T)', right: 'Auf der Mittelebene (horizontal-vertikale Symmetrie)' },
+        ],
+        `**Ansatz:** In jedem Fall erzwingt die Symmetrie die Lage des Schwerpunkts. Höhere Symmetrie → mehr Bedingungen → engere Lokalisierung.
+
+**Rechnung:** Kugel: vollständige Symmetrie → Punktfixierung. Zylinder: Rotationssymmetrie + Spiegelsymmetrie → Linie und Ebene → Punkt auf Achse auf halber Höhe. Dreieck (gleichschenklig): **eine** Symmetrieachse → Schwerpunkt auf dieser Achse (aber nicht in der Mitte!). I-Profil: zwei Achsen → Schnittpunkt.
+
+**Probe:** Zeichne die Körper und markiere alle Symmetrieachsen. Der Schwerpunkt muss der gemeinsame Punkt sein.
+
+**Typischer Fehler:** Symmetrieachsen im 3D-Körper nur auf eine Schnittebene projizieren. Bei Kugel und Zylinder muss man auch die anderen Achsen beachten.`,
+        [
+          'Symmetrieachsen zählen.',
+          'Schwerpunkt auf jeder Achse.',
+          'Schnittpunkt aller Achsen.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Bringe die Checkliste "Symmetrie vor Rechnung" in die richtige Reihenfolge.',
+        [
+          'Körper skizzieren und Geometrie klären',
+          'Alle Symmetrieachsen / Symmetrieebenen eintragen',
+          'Schnittpunkt / Schnittgerade der Achsen identifizieren',
+          'Falls eindeutige Lage: Ergebnis direkt angeben (keine Rechnung nötig)',
+          'Falls noch mehrdeutig: gewichtete Schwerpunktformel nur für die verbleibende Koordinate anwenden',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Die beste Schwerpunktrechnung ist oft keine — jede Symmetrieachse spart eine Koordinate.
+
+**Rechnung:** Beispiel gleichschenkliges Dreieck: Symmetrieachse liefert $x_S = 0$ sofort. Nur $y_S$ muss gerechnet werden. Aufwand halbiert.
+
+**Probe:** Bei I-Profil: zwei Symmetrieachsen → Ergebnis ohne jede Rechnung. Nur asymmetrische Profile (L, Z) brauchen die volle Formel.
+
+**Typischer Fehler:** Blind die Formel ansetzen, ohne auf Symmetrie zu achten. Ergebnis stimmt, aber der Weg ist unnötig aufwendig und fehleranfällig.`,
+        [
+          'Symmetrie ist der schnellste Weg zum Schwerpunkt.',
+          'Achsen einzeichnen **vor** der Rechnung.',
+          'Nur die nicht durch Symmetrie fixierten Koordinaten rechnen.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Ein symmetrisches T-Profil (Obergurt $100 \\times 10\\,\\text{mm}$ zentriert über Steg $10 \\times 80\\,\\text{mm}$) wird vertikal durch seine Symmetrieachse (Mitte des Stegs) betrachtet. Wie groß ist $x_S$ gemessen vom linken Rand des Obergurts? (auf 1 Nachkommastelle)',
+        50, 0.1, 'mm',
+        `**Ansatz:** Das T-Profil hat eine **vertikale** Symmetrieachse (Mitte von Obergurt und Steg). Der Schwerpunkt liegt auf dieser Achse.
+
+**Rechnung:** Der Obergurt hat Breite $100\\,\\text{mm}$ → Mitte bei $50\\,\\text{mm}$ vom linken Rand. Die Symmetrieachse des Profils fällt mit $x = 50$ zusammen. Daher $x_S = 50\\,\\text{mm}$.
+
+**Probe:** Alternative Rechnung über die Formel: Obergurt $A_1 = 1000$, $x_{S1} = 50$; Steg $A_2 = 800$, $x_{S2} = 50$ (auch in der Mitte). $x_S = (1000 \\cdot 50 + 800 \\cdot 50)/1800 = 50 \\cdot (1000+800)/1800 = 50$. ✓
+
+**Typischer Fehler:** Über die gewichtete Summe rechnen, obwohl die Symmetrie die Antwort sofort liefert.`,
+        [
+          'Gibt es eine vertikale Symmetrieachse?',
+          'Wo liegt sie relativ zum linken Rand?',
+          'Symmetrieachse = $x_S$-Linie.',
+        ],
+      ),
+    ],
+
+    // ── [4] Standardflächen auswendig ───────────────────────────────────
+    4: [
+      matching(
+        'Sub-Goal "Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\\pi)$": Ordne jeder Standardfläche ihre Schwerpunkt-Position zu (gemessen entlang der Symmetrieachse von der Basis bzw. vom Mittelpunkt aus).',
+        [
+          { left: 'Rechteck (Basis $b$, Höhe $h$)', right: 'Schwerpunkt in der Mitte: $h/2$ über der Basis' },
+          { left: 'Dreieck (Basis $b$, Höhe $h$)', right: 'Schwerpunkt bei $h/3$ über der Basis (nahe der Basis)' },
+          { left: 'Halbkreis (Radius $r$)', right: 'Schwerpunkt bei $4r/(3\\pi) \\approx 0{,}424\\,r$ vom Durchmesser' },
+          { left: 'Viertelkreis (Radius $r$)', right: 'Schwerpunkt bei $4r/(3\\pi)$ von jedem der beiden Radien' },
+        ],
+        `**Ansatz:** Diese Werte sind auswendig zu lernen — sie tauchen in jeder Profil- oder Querschnittsaufgabe auf. Herleitung über Integralrechnung, aber im Maschinenbau-Alltag direkt verwendet.
+
+**Rechnung:** Rechteck: $h/2$ (Symmetrie). Dreieck: $h/3$ über der Basis (oder $2h/3$ von der Spitze). Halbkreis: $4r/(3\\pi) \\approx 0{,}424\\,r$ vom Durchmesser weg. Viertelkreis: $4r/(3\\pi)$ von beiden Radien, gemessen entlang der Symmetriediagonale.
+
+**Probe:** Einheiten: alle Werte sind Längen ($\\propto r$ oder $h$). Der Halbkreis-Schwerpunkt liegt **innerhalb** des Halbkreises ($0{,}424 < 1$), was auch anschaulich stimmt.
+
+**Typischer Fehler:** Dreiecksschwerpunkt bei $h/2$ (falsch, das wäre Rechteck). Oder Halbkreis-Schwerpunkt bei $r/2$ (falsch — richtig ist $4r/(3\\pi) \\approx 0{,}424\\,r$, also etwas näher am Durchmesser als $r/2$). Außerdem: Dreiecksschwerpunkt vom falschen Ende (Spitze statt Basis).`,
+        [
+          'Rechteck: Mitte.',
+          'Dreieck: näher an der Basis als an der Spitze.',
+          'Halbkreis: knapp unter halbem Radius.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\\pi)$": Wo liegt der Schwerpunkt eines Halbkreises mit Radius $r = 30\\,\\text{mm}$, gemessen vom Durchmesser? (auf 2 Nachkommastellen)',
+        12.73, 0.05, 'mm',
+        `**Ansatz:** Standardformel: Schwerpunktabstand Halbkreis vom Durchmesser ist $y_S = 4r/(3\\pi)$.
+
+**Rechnung:** $y_S = 4 \\cdot 30/(3 \\pi) = 120/(3\\pi) = 40/\\pi \\approx 12{,}732\\,\\text{mm}$.
+
+**Probe:** Qualitativ: $4/(3\\pi) \\approx 0{,}424$. Schwerpunkt liegt bei $\\approx 42{,}4\\,\\%$ des Radius vom Durchmesser entfernt — etwas weniger als die Hälfte, was zur Masseverteilung (mehr Fläche nahe Durchmesser) passt.
+
+**Typischer Fehler:** $y_S = r/2 = 15\\,\\text{mm}$ annehmen. Das wäre die Mitte eines Rechtecks, kein Halbkreis. Oder $y_S = 2r/(3\\pi)$ (Faktor $2$ vergessen): $\\approx 6{,}37\\,\\text{mm}$.`,
+        [
+          'Formel auswendig: $y_S = 4r/(3\\pi)$.',
+          'Einsetzen: $r = 30$.',
+          'Ergebnis: $\\approx 0{,}424\\,r$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\\pi)$": Ein Dreieck hat Höhe $h = 90\\,\\text{mm}$. Wo liegt der Schwerpunkt gemessen **von der Spitze** aus?',
+        ['$y_S = 60\\,\\text{mm}$ (bei $2h/3$ von der Spitze)', '$y_S = 30\\,\\text{mm}$ (bei $h/3$ von der Spitze)', '$y_S = 45\\,\\text{mm}$ (bei $h/2$)', '$y_S = 90\\,\\text{mm}$ (an der Basis)'],
+        0,
+        `**Ansatz:** Dreiecksschwerpunkt liegt bei $h/3$ **von der Basis** aus — das entspricht $2h/3$ von der Spitze.
+
+**Rechnung:** $h/3 = 30\\,\\text{mm}$ von der Basis. Spitze ist $h = 90\\,\\text{mm}$ entfernt. Vom Spitzen-Ende: $90 - 30 = 60\\,\\text{mm}$, also $2h/3$.
+
+**Probe:** Das Dreieck hat mehr Fläche an der **Basis** (breit) als an der **Spitze** (schmal). Schwerpunkt wandert zur massereicheren Seite — Richtung Basis → $2h/3$ von der Spitze.
+
+**Typischer Fehler:** Die Angabe "$h/3$" unkritisch als Abstand von der Spitze interpretieren. Die Konvention ist: $h/3$ **von der Basis**. Immer Bezugspunkt klären.`,
+        [
+          'Schwerpunkt ist näher an der breiteren Seite (Basis).',
+          'Abstand zur Basis: $h/3$.',
+          'Abstand zur Spitze: $h - h/3 = 2h/3$.',
+        ],
+        {
+          1: 'Das ist $h/3 = 30\\,\\text{mm}$ als Abstand **zur Basis** — korrekt, aber die Frage fragt nach dem Abstand **zur Spitze**.',
+          2: '$h/2 = 45\\,\\text{mm}$ wäre der Rechteck-Schwerpunkt, nicht Dreieck.',
+          3: 'Der Schwerpunkt liegt **nicht an der Basis**, sondern ein Drittel innerhalb des Dreiecks von der Basis aus.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\\pi)$": Der Schwerpunkt eines Halbkreises liegt genau in der Mitte seines Radius, also bei $r/2$ vom Durchmesser aus.',
+        false,
+        `**Ansatz:** Der Halbkreis-Schwerpunkt liegt bei $4r/(3\\pi) \\approx 0{,}4244\\,r$, **nicht** bei $r/2 = 0{,}5\\,r$.
+
+**Rechnung:** $4/(3\\pi) = 4/9{,}4248 \\approx 0{,}4244$. Der wahre Wert ist **kleiner** als $r/2$ — weil der Halbkreis zum Durchmesser hin breiter wird und dort mehr Fläche hat.
+
+**Probe:** Qualitatives Argument: Die Fläche bei kleinen $y$ (nahe Durchmesser) ist breiter als bei großen $y$ (nahe Kreisrand). Mehr Fläche zieht den Schwerpunkt zum Durchmesser → $y_S < r/2$. ✓
+
+**Typischer Fehler:** "Halbkreis-Mitte" intuitiv bei $r/2$ ansetzen. Diese Intuition stimmt nur für Rechtecke. Bei Flächen mit nicht-konstanter Breite kommt der Schwerpunkt aus einem Integral — hier $4r/(3\\pi)$.`,
+        [
+          'Vergleiche $4/(3\\pi)$ mit $1/2$.',
+          '$3\\pi \\approx 9{,}42$, also $4/9{,}42 \\approx 0{,}42 < 0{,}5$.',
+          'Der Halbkreis ist am Durchmesser breiter.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\\pi)$": Ein Profil besteht aus einem Rechteck ($60 \\times 40\\,\\text{mm}$) mit einem aufgesetzten Dreieck (Basis $60\\,\\text{mm}$ auf der Oberkante des Rechtecks, Höhe $30\\,\\text{mm}$ nach oben). Wo liegt $y_S$ des Gesamtprofils? (Ursprung in der linken unteren Ecke des Rechtecks, auf 1 Nachkommastelle)',
+        28.2, 0.2, 'mm',
+        `**Ansatz:** Rechteck-Schwerpunkt $y_{S1} = 20\\,\\text{mm}$ (Mitte). Dreieck-Schwerpunkt $y_{S2} = 40 + h/3 = 40 + 10 = 50\\,\\text{mm}$ (Basis auf Oberkante, $h/3$ darüber). Flächengewichtetes Mittel.
+
+**Rechnung:** $A_1 = 60 \\cdot 40 = 2400\\,\\text{mm}^2$, $y_{S1} = 20\\,\\text{mm}$. $A_2 = \\tfrac{1}{2} \\cdot 60 \\cdot 30 = 900\\,\\text{mm}^2$, $y_{S2} = 50\\,\\text{mm}$. $y_S = (2400 \\cdot 20 + 900 \\cdot 50)/(2400 + 900) = (48\\,000 + 45\\,000)/3300 = 93\\,000/3300 \\approx 28{,}18\\,\\text{mm}$.
+
+**Probe:** Ergebnis $\\approx 28\\,\\text{mm}$ liegt zwischen $20$ und $50$. ✓ Näher an $20$, weil $A_1 > A_2$.
+
+**Typischer Fehler:** Dreieck-Schwerpunkt bei $y = 40 + 15 = 55\\,\\text{mm}$ (mit $h/2$ statt $h/3$). Oder Dreiecksfläche als $b \\cdot h$ statt $\\tfrac{1}{2} b h$.`,
+        [
+          'Rechteck-Schwerpunkt: Mitte der Höhe.',
+          'Dreieck-Schwerpunkt: $h/3$ über der Basis.',
+          'Dreiecksfläche: $\\tfrac{1}{2} b h$ — Faktor 1/2 nicht vergessen.',
+        ],
+      ),
+    ],
+
+  },
+
 }
