@@ -17,6 +17,543 @@ import { mc, ni, tf, matching, sorting } from './_helpers'
 export const trigonometrySubGoalTasks = {
 
   // ────────────────────────────────────────────────────────────────────────
+  // trig-4-1 — Prüfung: Identitäten & Gleichungen  (5 subGoals, [PRÜFUNG])
+  // Je 5 Aufgaben = 25 Goal-Tasks
+  // ────────────────────────────────────────────────────────────────────────
+  'trig-4-1': {
+
+    // ── [0] Pythagoras + Doppelwinkel zur Termvereinfachung ──────────────
+    0: [
+      mc(
+        'Sub-Goal "Pythagoras $\\sin^2+\\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen": [PRÜFUNG] Vereinfache $\\cos^{2}(\\alpha) - \\sin^{2}(\\alpha)$.',
+        [
+          '$\\cos(2\\alpha)$',
+          '$\\sin(2\\alpha)$',
+          '$1$',
+          '$-1$',
+        ],
+        0,
+        `**Ansatz:** Doppelwinkelformel für $\\cos(2\\alpha)$ erkennen.
+
+**Rechnung:** Eine der Doppelwinkel-Alternativen ist $\\cos(2\\alpha) = \\cos^{2}\\alpha - \\sin^{2}\\alpha$. Der Ausdruck **ist** bereits $\\cos(2\\alpha)$.
+
+**Probe:** $\\alpha = 30°$: $\\cos^{2}(30°) - \\sin^{2}(30°) = 0{,}75 - 0{,}25 = 0{,}5 = \\cos(60°) = \\cos(2 \\cdot 30°)$ ✓.
+
+**Typischer Fehler:** $\\cos^{2} - \\sin^{2}$ mit $\\sin^{2} + \\cos^{2}$ verwechseln — Plus gibt $1$, Minus gibt $\\cos(2\\alpha)$.`,
+        [
+          'Welche Doppelwinkelformel hat diese Struktur?',
+          '$\\cos(2\\alpha) = \\cos^{2}\\alpha - \\sin^{2}\\alpha$.',
+          'Testen mit $\\alpha = 30°$ zur Kontrolle.',
+        ],
+        {
+          1: '$\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$ — ein **Produkt**, keine Differenz von Quadraten.',
+          2: 'Das wäre $\\sin^{2}\\alpha + \\cos^{2}\\alpha = 1$ (Pythagoras). Minus statt Plus liefert ein ganz anderes Ergebnis.',
+          3: '$-1$ wäre nur bei $\\alpha = 90°$ der Wert — für allgemeines $\\alpha$ gilt das nicht.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Pythagoras $\\sin^2+\\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen": [PRÜFUNG] Gegeben $\\sin\\alpha = 0{,}6$ und $\\alpha$ im 1. Quadranten. Berechne $\\sin(2\\alpha)$.',
+        0.96, 0.01, '',
+        `**Ansatz:** Erst $\\cos\\alpha$ per Pythagoras, dann Doppelwinkel.
+
+**Rechnung:** $\\cos\\alpha = \\sqrt{1 - 0{,}36} = \\sqrt{0{,}64} = 0{,}8$ (positiv im 1. Q). $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot 0{,}6 \\cdot 0{,}8 = 0{,}96$.
+
+**Probe:** Das berühmte 3-4-5-Dreieck: $\\alpha \\approx 36{,}87°$, $2\\alpha \\approx 73{,}74°$, $\\sin(73{,}74°) \\approx 0{,}96$ ✓.
+
+**Typischer Fehler:** $\\cos\\alpha$ weglassen und $\\sin(2\\alpha) = 2\\sin\\alpha = 1{,}2$ rechnen. Das wäre $> 1$ und somit garantiert falsch.`,
+        [
+          'Erst $\\cos\\alpha$ per Pythagoras berechnen.',
+          '$\\cos^{2}\\alpha = 1 - \\sin^{2}\\alpha$.',
+          'Doppelwinkel: $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Pythagoras $\\sin^2+\\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen": [PRÜFUNG] Der Ausdruck $1 - 2\\sin^{2}(\\alpha)$ ist gleich $\\cos(2\\alpha)$.',
+        true,
+        `**Ansatz:** Alternativform der Kosinus-Doppelwinkelformel prüfen.
+
+**Rechnung:** Aus $\\cos(2\\alpha) = \\cos^{2}\\alpha - \\sin^{2}\\alpha$ mit $\\cos^{2}\\alpha = 1 - \\sin^{2}\\alpha$: $\\cos(2\\alpha) = (1 - \\sin^{2}\\alpha) - \\sin^{2}\\alpha = 1 - 2\\sin^{2}\\alpha$ ✓.
+
+**Probe:** $\\alpha = 30°$: $1 - 2\\cdot 0{,}25 = 0{,}5 = \\cos(60°)$ ✓.
+
+**Typischer Fehler:** $1 - \\sin^{2}\\alpha = \\cos^{2}\\alpha$ (nur Pythagoras) mit der Doppelwinkelformel verwechseln — der Faktor $2$ macht den Unterschied.`,
+        [
+          'Doppelwinkelformel von $\\cos(2\\alpha)$ hat drei Schreibweisen.',
+          '$\\cos(2\\alpha) = 1 - 2\\sin^{2}\\alpha = 2\\cos^{2}\\alpha - 1$.',
+          'Zahlentest $\\alpha = 30°$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Pythagoras $\\sin^2+\\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen": [PRÜFUNG] Ordne jedem Ausdruck seine vereinfachte Form zu.',
+        [
+          { left: '$\\sin^{2}\\alpha + \\cos^{2}\\alpha$',      right: '$1$' },
+          { left: '$2\\sin\\alpha\\cos\\alpha$',                right: '$\\sin(2\\alpha)$' },
+          { left: '$\\cos^{2}\\alpha - \\sin^{2}\\alpha$',      right: '$\\cos(2\\alpha)$' },
+          { left: '$1 - \\cos^{2}\\alpha$',                      right: '$\\sin^{2}\\alpha$' },
+        ],
+        `**Ansatz:** Pythagoras und Doppelwinkel-Formeln präsent haben.
+
+**Rechnung:** Pythagoras: $\\sin^{2}+\\cos^{2} = 1$. Sinus-Doppelwinkel: $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$. Kosinus-Doppelwinkel: $\\cos(2\\alpha) = \\cos^{2}\\alpha - \\sin^{2}\\alpha$. Umstellen von Pythagoras: $\\sin^{2}\\alpha = 1 - \\cos^{2}\\alpha$.
+
+**Probe:** Alle Identitäten sind in der Formelsammlung enthalten und müssen in der Prüfung auf einen Blick erkennbar sein.
+
+**Typischer Fehler:** Plus und Minus in $\\cos^{2} \\pm \\sin^{2}$ verwechseln — Plus gibt $1$, Minus gibt $\\cos(2\\alpha)$.`,
+        [
+          'Drei Grundformeln: Pythagoras, $\\sin(2\\alpha)$, $\\cos(2\\alpha)$.',
+          'Vorzeichen entscheidet.',
+          'Gute Prüfungsvorbereitung: diese Vier auswendig.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Pythagoras $\\sin^2+\\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen": [PRÜFUNG] Bringe die Schritte zur Vereinfachung von $\\sin^{2}\\alpha(1 + \\cot^{2}\\alpha)$ in die richtige Reihenfolge.',
+        [
+          '$\\cot\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha}$ einsetzen',
+          'Klammer erweitern: $\\sin^{2}\\alpha \\cdot \\left(1 + \\dfrac{\\cos^{2}\\alpha}{\\sin^{2}\\alpha}\\right)$',
+          'Ausmultiplizieren: $\\sin^{2}\\alpha + \\cos^{2}\\alpha$',
+          'Pythagoras anwenden: Ergebnis $= 1$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Cotangens ausdrücken, dann ausmultiplizieren, dann Pythagoras.
+
+**Rechnung:** Endergebnis $= 1$ — unabhängig von $\\alpha$.
+
+**Probe:** $\\alpha = 30°$: $0{,}25\\cdot(1 + 3) = 1$ ✓.
+
+**Typischer Fehler:** Die Klammer erst zusammenfassen wollen, ohne $\\cot$ zu ersetzen — der Bruchanteil ist nötig, damit sich später $\\sin^{2}$ mit $1/\\sin^{2}$ kürzt.`,
+        [
+          '$\\cot = \\cos/\\sin$.',
+          'Ausmultiplizieren; $\\sin^{2}$ kürzt sich.',
+          'Pythagoras am Schluss.',
+        ],
+      ),
+    ],
+
+    // ── [1] Trig-Gleichung: Grundfunktion + Lösungsmenge ──────────────────
+    1: [
+      mc(
+        'Sub-Goal "Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben": [PRÜFUNG] Wie viele Lösungen hat $\\sin x = \\tfrac{1}{2}$ im Intervall $[0°, 360°)$?',
+        [
+          '$2$ ($30°$ und $150°$)',
+          '$1$ ($30°$)',
+          '$4$ (mit Supplement und Gegenwinkel)',
+          '$0$ (keine Lösung)',
+        ],
+        0,
+        `**Ansatz:** $\\sin x = a$ mit $|a| < 1$ hat in einer vollen Periode $[0°, 360°)$ genau zwei Lösungen.
+
+**Rechnung:** Hauptwert $x_{1} = \\arcsin(0{,}5) = 30°$. Zweite Lösung per Supplement: $x_{2} = 180° - 30° = 150°$.
+
+**Probe:** $\\sin(30°) = \\sin(150°) = 0{,}5$ ✓. Beide im Intervall $[0°, 360°)$.
+
+**Typischer Fehler:** Nur Hauptwert angeben ($30°$). Oder zu viele Lösungen: $210°$ und $330°$ kommen aus Fehlinterpretation, $\\sin$ ist dort aber negativ.`,
+        [
+          'Sinus ist in welchen Quadranten positiv?',
+          '1. und 2. Quadrant: Hauptwert + Supplement.',
+          '$\\arcsin(0{,}5) = 30°$, zweite Lösung $180° - 30° = 150°$.',
+        ],
+        {
+          1: 'Hauptwert allein reicht nicht. $\\sin$ hat Periode $360°$ und in $[0°, 360°)$ zwei Lösungen.',
+          2: 'In $[0°, 360°)$ gibt es genau **zwei** Lösungen für $\\sin x = a$ mit $|a| < 1$. Vier Lösungen wären nur bei Intervall $[0°, 720°)$.',
+          3: '$0{,}5$ liegt im Wertebereich $[-1, 1]$ von Sinus, also existieren Lösungen. Keine Lösung gäbe es nur bei $|a| > 1$.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben": [PRÜFUNG] Löse $\\cos x = -\\tfrac{1}{2}$ in $[0°, 360°)$. Gib die kleinere Lösung in Grad an.',
+        120, 0, '°',
+        `**Ansatz:** Für $\\cos x = a$ mit $-1 < a < 1$ gibt es in $[0°, 360°)$ zwei Lösungen: $\\arccos a$ und $360° - \\arccos a$.
+
+**Rechnung:** $\\arccos(-0{,}5) = 120°$ (Hauptwert). Zweite Lösung: $360° - 120° = 240°$. Kleinere Lösung: $120°$.
+
+**Probe:** $\\cos(120°) = -0{,}5$ ✓ (2. Q); $\\cos(240°) = -0{,}5$ ✓ (3. Q).
+
+**Typischer Fehler:** Nur einen Winkel angeben oder das Vorzeichen ignorieren und $\\arccos(0{,}5) = 60°$ rechnen.`,
+        [
+          'Negatives Kosinus: 2. oder 3. Quadrant.',
+          '$\\arccos(-0{,}5)$ direkt eingeben.',
+          'Zweite Lösung: $360° - 120°$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben": [PRÜFUNG] Die Gleichung $\\sin x = 1{,}5$ hat in $\\mathbb{R}$ unendlich viele Lösungen.',
+        false,
+        `**Ansatz:** Wertebereich von Sinus prüfen.
+
+**Rechnung:** $\\sin: \\mathbb{R} \\to [-1, 1]$. Der Wert $1{,}5 > 1$ liegt außerhalb des Wertebereichs. Also gibt es **keine** reelle Lösung — nicht "unendlich viele".
+
+**Probe:** $\\sin$ oszilliert zwischen $-1$ und $+1$. Niemals $1{,}5$.
+
+**Typischer Fehler:** Voreiligen Schluss "Sinus ist periodisch, also immer unendlich viele Lösungen" — das gilt nur, solange $|a| \\le 1$.`,
+        [
+          'Wertebereich von $\\sin$.',
+          '$|\\sin x| \\le 1$.',
+          '$1{,}5$ liegt außerhalb.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben": [PRÜFUNG] Ordne jeder Gleichung die Anzahl Lösungen in $[0°, 360°)$ zu.',
+        [
+          { left: '$\\sin x = 1$',         right: '$1$ Lösung ($90°$)' },
+          { left: '$\\sin x = 0$',         right: '$2$ Lösungen ($0°, 180°$)' },
+          { left: '$\\cos x = 0$',         right: '$2$ Lösungen ($90°, 270°$)' },
+          { left: '$\\tan x = 1$',         right: '$2$ Lösungen ($45°, 225°$)' },
+        ],
+        `**Ansatz:** Sin und Cos haben meist 2 Lösungen pro $360°$, an Extremwerten ($\\pm 1$) nur 1. Tan hat Periode $180°$, also 2 Lösungen pro $360°$.
+
+**Rechnung:** $\\sin x = 1$ nur bei $x = 90°$ (Maximum) — **eine** Lösung. $\\sin x = 0$ bei $x = 0°$ und $180°$ — zwei Lösungen. $\\cos x = 0$ bei $x = 90°$ und $270°$. $\\tan x = 1$ bei $x = 45°$ und $45° + 180° = 225°$.
+
+**Probe:** Alle Werte einsetzen.
+
+**Typischer Fehler:** Bei Extremwerten ($\\sin = \\pm 1, \\cos = \\pm 1$) zwei Lösungen vermuten — dort gibt es aber nur eine (Berührungspunkt der Horizontalen mit dem Einheitskreis).`,
+        [
+          'Extremwerte: 1 Lösung.',
+          'Sonst: 2 Lösungen pro $360°$.',
+          'Tan-Periode $180°$.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben": [PRÜFUNG] Bringe die Schritte zur Lösung von $\\sin x = -\\tfrac{\\sqrt{2}}{2}$ in $[0°, 360°)$ in die richtige Reihenfolge.',
+        [
+          'Hauptwert: $\\arcsin(-\\tfrac{\\sqrt{2}}{2}) = -45°$',
+          'In $[0°, 360°)$ umrechnen: $-45° + 360° = 315°$',
+          'Zweite Lösung (Sinus negativ → 3. und 4. Q, Supplement bezüglich $180°$): $180° - (-45°) = 225°$',
+          'Lösungsmenge: $\\{225°, 315°\\}$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Hauptwert $\\to$ Intervalltransformation $\\to$ zweite Lösung $\\to$ Gesamtmenge.
+
+**Rechnung:** $x_{1} = 225°$, $x_{2} = 315°$.
+
+**Probe:** $\\sin(225°) = -\\sin(45°) = -\\tfrac{\\sqrt{2}}{2}$ ✓; $\\sin(315°) = -\\sin(45°) = -\\tfrac{\\sqrt{2}}{2}$ ✓.
+
+**Typischer Fehler:** Supplement bei negativem Sinus falsch bilden; Lösungen $45°$ und $135°$ angeben — dort ist $\\sin$ aber positiv.`,
+        [
+          'Hauptwert per Taschenrechner.',
+          'In Intervall transformieren.',
+          'Zweite Lösung anhand der Quadranten des Vorzeichens.',
+        ],
+      ),
+    ],
+
+    // ── [2] Substitution u = sin x / cos x bei quadratischen Gleichungen ──
+    2: [
+      mc(
+        'Sub-Goal "Substitution $u = \\sin x$ oder $u = \\cos x$ bei quadratischen Gleichungen": [PRÜFUNG] Welche Substitution führt $2\\sin^{2} x - \\sin x - 1 = 0$ direkt auf eine quadratische Gleichung in $u$?',
+        [
+          '$u = \\sin x \\Rightarrow 2u^{2} - u - 1 = 0$',
+          '$u = \\sin(2x) \\Rightarrow u^{2} - u - 1 = 0$',
+          '$u = \\cos x \\Rightarrow 2(1-u^{2}) - u - 1 = 0$',
+          '$u = x \\Rightarrow 2u^{2} - u - 1 = 0$',
+        ],
+        0,
+        `**Ansatz:** Die einfachste Substitution ist die, bei der jedes $\\sin x$ durch $u$ ersetzt wird.
+
+**Rechnung:** Mit $u = \\sin x$ wird $\\sin^{2} x = u^{2}$ und die Gleichung $2u^{2} - u - 1 = 0$. Lösungen: $u = 1$ oder $u = -\\tfrac{1}{2}$, also $\\sin x = 1$ oder $\\sin x = -\\tfrac{1}{2}$.
+
+**Probe:** Rücksetzen in die Originalgleichung: bei $\\sin x = 1$: $2 - 1 - 1 = 0$ ✓; bei $\\sin x = -0{,}5$: $0{,}5 + 0{,}5 - 1 = 0$ ✓.
+
+**Typischer Fehler:** $u = \\cos x$ wählen und dann über Pythagoras umformen — möglich, aber unnötig kompliziert, wenn in der Gleichung nur $\\sin$ vorkommt.`,
+        [
+          'Welche trigonometrische Funktion kommt in der Gleichung vor?',
+          'Direkt $u = \\sin x$ setzen.',
+          'Quadratische Gleichung in $u$ lösen.',
+        ],
+        {
+          1: '$u = \\sin(2x)$ hilft nicht direkt, weil $\\sin^{2} x$ und $\\sin(2x)$ unterschiedliche Strukturen haben.',
+          2: 'Über Pythagoras-Umformung möglich, aber der direkte Weg $u = \\sin x$ ist einfacher.',
+          3: '$u = x$ bringt nichts — dann hast du immer noch $\\sin u$ statt eine Polynomform.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Substitution $u = \\sin x$ oder $u = \\cos x$ bei quadratischen Gleichungen": [PRÜFUNG] Löse $\\cos^{2} x - \\cos x = 0$ in $[0°, 360°)$. Wie viele Lösungen gibt es?',
+        3, 0, '',
+        `**Ansatz:** Substitution $u = \\cos x$ führt auf $u^{2} - u = u(u-1) = 0$.
+
+**Rechnung:** $u = 0$ oder $u = 1$. $\\cos x = 0 \\Rightarrow x = 90°, 270°$. $\\cos x = 1 \\Rightarrow x = 0°$. Total: **3 Lösungen** ($0°, 90°, 270°$).
+
+**Probe:** Einsetzen: $x=0°$: $1 - 1 = 0$ ✓; $x=90°$: $0 - 0 = 0$ ✓; $x=270°$: $0 - 0 = 0$ ✓.
+
+**Typischer Fehler:** Direkt durch $\\cos x$ teilen: $\\cos x - 1 = 0 \\to \\cos x = 1 \\to x = 0°$ — dabei gehen die Lösungen $\\cos x = 0$ verloren! Immer faktorisieren, nicht dividieren.`,
+        [
+          'Substitution $u = \\cos x$.',
+          'Faktorisieren: $u(u-1)=0$.',
+          'Beide Fälle lösen — nicht vorzeitig durch $\\cos x$ teilen!',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Substitution $u = \\sin x$ oder $u = \\cos x$ bei quadratischen Gleichungen": [PRÜFUNG] Die Gleichung $4\\sin^{2} x - 3 = 0$ hat in $[0°, 360°)$ vier Lösungen.',
+        true,
+        `**Ansatz:** Substitution $u = \\sin x$: $4u^{2} = 3 \\Rightarrow u = \\pm\\tfrac{\\sqrt{3}}{2}$.
+
+**Rechnung:** $\\sin x = \\tfrac{\\sqrt{3}}{2}$: zwei Lösungen ($60°$ und $120°$). $\\sin x = -\\tfrac{\\sqrt{3}}{2}$: zwei Lösungen ($240°$ und $300°$). Gesamt: **4** Lösungen.
+
+**Probe:** Alle vier Winkel einsetzen und Gleichung $4\\cdot 0{,}75 - 3 = 0$ bestätigen.
+
+**Typischer Fehler:** Nur positive Wurzel aus $u^{2} = 0{,}75$ ziehen und damit nur 2 Lösungen finden. $u^{2} = c$ hat immer zwei Lösungen: $u = \\pm\\sqrt{c}$.`,
+        [
+          'Quadratisches Polynom in $\\sin x$.',
+          '$u = \\pm\\sqrt{3}/2$ — beide Vorzeichen.',
+          'Je 2 Lösungen pro Vorzeichen.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Substitution $u = \\sin x$ oder $u = \\cos x$ bei quadratischen Gleichungen": [PRÜFUNG] Ordne jeder quadratischen Gleichung in $u$ die Anzahl Lösungen in $[0°, 360°)$ zu (nach Substitution und Rücksubstitution).',
+        [
+          { left: '$u^{2} = 1$ (mit $u = \\sin x$)',          right: '$2$ Lösungen ($90°, 270°$)' },
+          { left: '$u^{2} = \\tfrac{1}{4}$ (mit $u = \\sin x$)', right: '$4$ Lösungen' },
+          { left: '$u^{2} - u = 0$ (mit $u = \\cos x$)',       right: '$3$ Lösungen ($0°, 90°, 270°$)' },
+          { left: '$u^{2} = -1$ (mit $u = \\sin x$)',          right: '$0$ Lösungen' },
+        ],
+        `**Ansatz:** Nach Rücksubstitution die Lösungsanzahl pro $\\sin$-/$\\cos$-Wert bestimmen.
+
+**Rechnung:** $\\sin^{2} x = 1 \\to \\sin x = \\pm 1 \\to x = 90°, 270°$. $\\sin^{2} x = 1/4 \\to \\sin x = \\pm 1/2 \\to 4$ Werte. $\\cos x(\\cos x - 1) = 0 \\to \\cos x = 0$ oder $\\cos x = 1 \\to 3$ Werte. $\\sin^{2} x = -1$ unlösbar in $\\mathbb{R}$.
+
+**Probe:** Alle Lösungswinkel auf Original-Gleichung zurückverifizieren.
+
+**Typischer Fehler:** Beim Wurzelziehen nur eine Vorzeichen-Variante betrachten. Oder Extremwerte ($\\pm 1$) mit doppelter Lösungsanzahl verwechseln.`,
+        [
+          'Wurzelziehen liefert immer beide Vorzeichen.',
+          'Extremwerte geben je 1 Lösung pro Vorzeichen.',
+          '$u^{2} = -1$ hat in $\\mathbb{R}$ keine Lösung.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Substitution $u = \\sin x$ oder $u = \\cos x$ bei quadratischen Gleichungen": [PRÜFUNG] Bringe die Schritte zur Lösung von $2\\cos^{2} x + \\cos x - 1 = 0$ in die richtige Reihenfolge.',
+        [
+          'Substitution: $u = \\cos x \\Rightarrow 2u^{2} + u - 1 = 0$',
+          'Quadratische Lösungsformel: $u = \\tfrac{-1 \\pm 3}{4}$, also $u = \\tfrac{1}{2}$ oder $u = -1$',
+          'Rücksubstitution: $\\cos x = \\tfrac{1}{2}$ oder $\\cos x = -1$',
+          'Lösungen in $[0°, 360°)$: $\\{60°, 300°, 180°\\}$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Substitution $\\to$ quadratische Lösung $\\to$ Rücksubstitution $\\to$ Winkel.
+
+**Rechnung:** $\\cos x = 1/2: 60°, 300°$; $\\cos x = -1: 180°$. Drei Lösungen.
+
+**Probe:** In Originalgleichung einsetzen: $\\cos(60°) = 0{,}5 \\to 2\\cdot 0{,}25 + 0{,}5 - 1 = 0$ ✓ usw.
+
+**Typischer Fehler:** Zwischen quadratischer und trigonometrischer Stufe springen ohne klare Substitution.`,
+        [
+          'Immer zuerst substituieren.',
+          'Quadratische Formel auf $u$ anwenden.',
+          'Erst am Schluss auf Winkel zurückgehen.',
+        ],
+      ),
+    ],
+
+    // ── [3] Faktorisieren statt durch cos x teilen ────────────────────────
+    3: [
+      mc(
+        'Sub-Goal "Faktorisieren statt durch $\\cos x$ teilen (Nullstellen nicht verlieren)": [PRÜFUNG] Welcher Weg löst $\\sin x \\cos x = 0$ in $[0°, 360°)$ vollständig?',
+        [
+          'Faktorisieren: $\\sin x = 0$ oder $\\cos x = 0 \\to \\{0°, 90°, 180°, 270°\\}$',
+          'Durch $\\cos x$ teilen: $\\sin x = 0 \\to \\{0°, 180°\\}$',
+          'Doppelwinkel: $\\sin(2x) = 0 \\to \\{0°, 90°, 180°\\}$',
+          'Quadrieren: $\\sin^{2} x \\cos^{2} x = 0$',
+        ],
+        0,
+        `**Ansatz:** Produkt $= 0 \\Leftrightarrow$ ein Faktor $= 0$. Jeder Faktor muss separat betrachtet werden.
+
+**Rechnung:** $\\sin x = 0 \\to x = 0°, 180°$. $\\cos x = 0 \\to x = 90°, 270°$. Vereinigung: 4 Lösungen.
+
+**Probe:** In jedem Punkt wird einer der Faktoren Null, Produkt Null. ✓
+
+**Typischer Fehler:** Durch $\\cos x$ teilen verliert die Lösungen, in denen $\\cos x = 0$ — genau zwei von vier Lösungen fallen weg. Doppelwinkel-Ansatz $\\sin(2x)/2 = 0$ liefert $2x \\in \\{0°, 180°, 360°, 540°\\}$, also $x \\in \\{0°, 90°, 180°, 270°\\}$ — gleiches Ergebnis, aber hier gefragt ist der elementare Weg.`,
+        [
+          'Null-Produkt-Regel: Produkt = 0 gdw. ein Faktor = 0.',
+          'Nie durch eine Funktion teilen, die Null werden kann.',
+          'Beide Faktoren getrennt lösen.',
+        ],
+        {
+          1: 'Durch $\\cos x$ teilen verliert die Lösungen $90°$ und $270°$ — dort ist $\\cos x = 0$. Faktorisieren ist sicherer.',
+          2: '$\\sin(2x) = 2\\sin x\\cos x$, also $\\sin x\\cos x = \\tfrac{1}{2}\\sin(2x)$. Die Gleichung wird $\\sin(2x) = 0$ mit Lösungen $2x = k\\cdot 180°$, also $x = 0°, 90°, 180°, 270°$ — **vier** Lösungen, die Antwort hier ist unvollständig.',
+          3: 'Quadrieren ändert die Lösungsmenge nur auf Scheinlösungen-Art — hier unnötig.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Faktorisieren statt durch $\\cos x$ teilen (Nullstellen nicht verlieren)": [PRÜFUNG] Löse $\\sin x \\cdot (2\\sin x - 1) = 0$ in $[0°, 360°)$ und zähle alle Lösungen.',
+        4, 0, '',
+        `**Ansatz:** Produkt-Null-Regel anwenden.
+
+**Rechnung:** $\\sin x = 0 \\to x \\in \\{0°, 180°\\}$. $2\\sin x - 1 = 0 \\to \\sin x = \\tfrac{1}{2} \\to x \\in \\{30°, 150°\\}$. Gesamt: **4** Lösungen.
+
+**Probe:** Alle einsetzen: bei $x=0°$: $0\\cdot(-1) = 0$ ✓; bei $x=30°$: $0{,}5\\cdot 0 = 0$ ✓ usw.
+
+**Typischer Fehler:** Durch $\\sin x$ teilen (bei Annahme $\\sin x \\ne 0$) — dabei gehen $x = 0°$ und $x = 180°$ verloren.`,
+        [
+          'Null-Produkt: jeder Faktor einzeln.',
+          '$\\sin x = 0$ liefert 2 Werte im Intervall.',
+          '$\\sin x = 1/2$ liefert weitere 2 Werte.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Faktorisieren statt durch $\\cos x$ teilen (Nullstellen nicht verlieren)": [PRÜFUNG] Bei der Gleichung $\\tan x \\cdot \\cos x = 1$ darf man beide Seiten durch $\\cos x$ teilen, ohne Lösungen zu verlieren, weil man nachher die Definitionsmenge von $\\tan x$ berücksichtigen muss.',
+        false,
+        `**Ansatz:** $\\tan x \\cdot \\cos x = \\sin x$ (Vereinfachung). Die Gleichung wird $\\sin x = 1$.
+
+**Rechnung:** $\\sin x = 1 \\to x = 90°$. Aber: Bei $x = 90°$ ist $\\tan x$ **nicht definiert**! Also ist $x = 90°$ keine zulässige Lösung der **Originalgleichung** — die Originalgleichung hat **keine** Lösung.
+
+**Probe:** Einsetzen $x = 90°$ in $\\tan x \\cdot \\cos x$: $\\tan(90°)$ existiert nicht.
+
+**Typischer Fehler:** Nach Vereinfachung nicht prüfen, ob die gefundene Lösung in der Definitionsmenge der ursprünglichen Gleichung liegt. Vereinfachung kann Scheinlösungen erzeugen.`,
+        [
+          'Zuerst Definitionsbereich prüfen.',
+          'Bei $x = 90°$: $\\tan$ nicht definiert.',
+          'Vereinfachung kann Scheinlösungen erzeugen.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Faktorisieren statt durch $\\cos x$ teilen (Nullstellen nicht verlieren)": [PRÜFUNG] Ordne jeder Gleichung die korrekte Strategie zu.',
+        [
+          { left: '$\\sin x \\cos x = 0$',                       right: 'faktorisieren (jeden Faktor $= 0$ setzen)' },
+          { left: '$\\sin^{2} x = \\sin x$',                     right: 'auf $= 0$ bringen, dann faktorisieren' },
+          { left: '$\\sin x = \\tan x$',                         right: 'auf gemeinsamen Nenner, $\\cos x \\ne 0$ prüfen' },
+          { left: '$\\sin^{2} x + \\cos^{2} x = 1$',             right: 'Identität — immer wahr, keine Bedingung' },
+        ],
+        `**Ansatz:** Jede Gleichung hat eine "saubere" Standard-Strategie.
+
+**Rechnung:** Produkt = 0: Null-Produkt-Regel. Quadratisch in $\\sin x$: alles auf eine Seite, faktorisieren. Zwei Terme gleichsetzen: zusammenfassen statt zu teilen. Pythagoras: Tautologie, unendlich viele Lösungen.
+
+**Probe:** Für jede Strategie führt die Lösung ohne Verlust auf die Gesamtlösungsmenge.
+
+**Typischer Fehler:** Bei "Lösungsstrategie wählen" reflexartig dividieren — und dabei Lösungen verlieren.`,
+        [
+          'Produkt = 0: Faktoren einzeln.',
+          'Quadratisch: alles auf eine Seite + faktorisieren.',
+          'Bruch: Nenner prüfen.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Faktorisieren statt durch $\\cos x$ teilen (Nullstellen nicht verlieren)": [PRÜFUNG] Bringe die Schritte zur vollständigen Lösung von $\\sin x = \\sin x \\cos x$ in $[0°, 360°)$ in die richtige Reihenfolge.',
+        [
+          'Alles auf eine Seite: $\\sin x - \\sin x \\cos x = 0$',
+          'Faktorisieren: $\\sin x(1 - \\cos x) = 0$',
+          'Beide Faktoren betrachten: $\\sin x = 0$ oder $\\cos x = 1$',
+          'Lösungen: $\\{0°, 180°\\} \\cup \\{0°\\} = \\{0°, 180°\\}$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Nicht durch $\\sin x$ teilen, sondern faktorisieren.
+
+**Rechnung:** Lösungsmenge $\\{0°, 180°\\}$ — 2 Lösungen.
+
+**Probe:** $\\sin(0) = 0 = \\sin(0)\\cdot\\cos(0)$ ✓; $\\sin(180°) = 0 = \\sin(180°)\\cdot\\cos(180°)$ ✓.
+
+**Typischer Fehler:** Durch $\\sin x$ teilen: $1 = \\cos x \\to x = 0°$ — $180°$ geht verloren.`,
+        [
+          'Subtrahieren, dann faktorisieren.',
+          'Jeden Faktor einzeln auf Null setzen.',
+          'Vereinigung der Einzellösungen.',
+        ],
+      ),
+    ],
+
+    // ── [4] Identitätsnachweis: nur eine Seite umformen ──────────────────
+    4: [
+      mc(
+        'Sub-Goal "Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)": [PRÜFUNG] Welche Vorgehensweise ist für einen korrekten Identitätsnachweis zulässig?',
+        [
+          'Nur eine Seite umformen, bis die andere Seite Zeichen für Zeichen entsteht',
+          'Beide Seiten mit demselben Ausdruck multiplizieren und dann vereinfachen',
+          'Die Gleichheit voraussetzen und nach Umformung sehen, ob $0=0$ entsteht',
+          'Beide Seiten umformen, bis beide auf eine gemeinsame Form kommen',
+        ],
+        0,
+        `**Ansatz:** Ein sauberer Identitätsnachweis formt **eine** Seite um, **ohne** die Gleichheit vorauszusetzen.
+
+**Rechnung:** Formell: $\\text{LS} = \\ldots = \\ldots = \\text{RS}$ — jede Umformung ist algebraisch begründet.
+
+**Probe:** Die Methode "beide Seiten umformen, bis gleiche Form" kann auch korrekt sein, wenn jede Stufe ein "gdw." ist — in der Praxis aber fehleranfällig. Sicherste Methode: nur eine Seite.
+
+**Typischer Fehler:** "Gleichheit voraussetzen und sehen, dass $0 = 0$ entsteht" — das ist kein Beweis, weil man voraussetzt, was zu zeigen ist.`,
+        [
+          'Was ist logisch korrekt, was ist Zirkelschluss?',
+          'Nicht voraussetzen, was zu zeigen ist.',
+          'Eine Seite isoliert umformen.',
+        ],
+        {
+          1: '"Beide Seiten mit etwas multiplizieren" setzt die Gleichheit bereits voraus — logischer Fehler.',
+          2: 'Zirkelschluss: Man setzt die Gleichheit voraus und zeigt dann, dass sie gleich ist. Das beweist nichts.',
+          3: 'In Ausnahmefällen erlaubt (wenn jede Stufe äquivalent ist), aber sehr fehleranfällig. Standard: nur eine Seite umformen.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)": [PRÜFUNG] Zeige $\\tfrac{\\sin x}{1 + \\cos x} = \\tfrac{1 - \\cos x}{\\sin x}$ durch Termumformung. Mit wie vielen Rechenschritten (Erweitern + Pythagoras + Kürzen) führt der Standardweg zum Ziel?',
+        3, 0, '',
+        `**Ansatz:** Links mit $(1 - \\cos x)$ erweitern, dann Pythagoras, dann kürzen.
+
+**Rechnung:** Schritt 1: Erweitern: $\\tfrac{\\sin x(1-\\cos x)}{(1+\\cos x)(1-\\cos x)} = \\tfrac{\\sin x(1-\\cos x)}{1-\\cos^{2}x}$. Schritt 2: Pythagoras im Nenner: $1-\\cos^{2}x = \\sin^{2}x$. Schritt 3: Kürzen von $\\sin x$: $\\tfrac{\\sin x(1-\\cos x)}{\\sin^{2}x} = \\tfrac{1-\\cos x}{\\sin x}$. **3 Schritte.**
+
+**Probe:** Nur die linke Seite wurde manipuliert; das Endergebnis ist exakt die rechte Seite.
+
+**Typischer Fehler:** Beide Seiten kreuzmultiplizieren — das ist logisch eine Äquivalenzumformung, zählt aber nicht als "Identitätsnachweis", weil man die Gleichheit voraussetzt.`,
+        [
+          'Mit $(1 - \\cos x)$ erweitern.',
+          'Pythagoras im Nenner.',
+          'Gegen $\\sin x$ kürzen.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)": [PRÜFUNG] Bei einem Identitätsnachweis darf man nur auf einer Seite der Gleichung Umformungen vornehmen, weil die Gleichheit erst bewiesen werden soll.',
+        true,
+        `**Ansatz:** Logik der Beweisführung.
+
+**Rechnung:** Eine Identität "LS = RS" ist erst bewiesen, wenn man von einer Seite durch **logisch einseitige** Umformungen zur anderen kommt. Wer beidseitig umformt, setzt die Gleichheit voraus — das ist Zirkelschluss.
+
+**Probe:** Standardform im Lehrbuch: $\\text{LS} = \\ldots = \\ldots = \\text{RS}$. Gegenbeispiel für Zirkelschluss: $\\sqrt{-1} = \\sqrt{-1}$; quadriere beide Seiten: $-1 = -1$ — "bewiesen", obwohl $\\sqrt{-1}$ gar nicht reell existiert.
+
+**Typischer Fehler:** Beide Seiten mit demselben Ausdruck multiplizieren und so "beweisen" — methodisch falsch.`,
+        [
+          'Was ist das Ziel: Gleichheit zeigen, nicht voraussetzen.',
+          'Nur eine Seite darf umgeformt werden.',
+          'Sonst Zirkelschluss.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)": [PRÜFUNG] Ordne jeder Identität den zentralen "Trick" beim Nachweis zu.',
+        [
+          { left: '$\\tfrac{1 - \\cos^{2}x}{\\sin x} = \\sin x$',              right: 'Pythagoras im Zähler' },
+          { left: '$\\tan x + \\cot x = \\tfrac{1}{\\sin x\\cos x}$',           right: 'gemeinsamer Nenner $\\sin x\\cos x$' },
+          { left: '$2\\sin x\\cos x = \\sin(2x)$',                               right: 'Sinus-Doppelwinkelformel' },
+          { left: '$\\cos^{2}x - \\sin^{2}x = 2\\cos^{2}x - 1$',                right: 'Pythagoras für $\\sin^{2}$' },
+        ],
+        `**Ansatz:** Vier Standard-Tricks, die jede Prüfung verlangt.
+
+**Rechnung:** In jedem Fall wird der "Trick" genau einmal angewandt, danach stehen beide Seiten identisch.
+
+**Probe:** Einzeln durchrechnen: $1-\\cos^{2} = \\sin^{2}$; kürzen gegen $\\sin x$: bleibt $\\sin x$ ✓. $\\tan + \\cot = \\tfrac{\\sin}{\\cos} + \\tfrac{\\cos}{\\sin} = \\tfrac{\\sin^{2}+\\cos^{2}}{\\sin\\cos} = \\tfrac{1}{\\sin\\cos}$ ✓.
+
+**Typischer Fehler:** Den richtigen Trick nicht erkennen und versuchen, die Identität "roh" zu verifizieren.`,
+        [
+          'Pythagoras ist fast immer der Schlüssel.',
+          'Bei Tan+Cot: gemeinsamer Nenner.',
+          'Doppelwinkel: Produktformeln zur Hand haben.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)": [PRÜFUNG] Bringe die Schritte zum Nachweis $\\tan x + \\cot x = \\tfrac{1}{\\sin x\\cos x}$ in die richtige Reihenfolge (nur LS umformen).',
+        [
+          '$\\tan x = \\tfrac{\\sin x}{\\cos x}$ und $\\cot x = \\tfrac{\\cos x}{\\sin x}$ einsetzen',
+          'Gemeinsamen Nenner $\\sin x\\cos x$ bilden: $\\tfrac{\\sin^{2} x + \\cos^{2}x}{\\sin x\\cos x}$',
+          'Pythagoras im Zähler: $\\tfrac{1}{\\sin x\\cos x}$',
+          'Vergleich mit RS: identisch — Identität bewiesen',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Nur LS umformen, vier saubere Schritte.
+
+**Rechnung:** LS $= \\tfrac{\\sin}{\\cos} + \\tfrac{\\cos}{\\sin} = \\tfrac{\\sin^{2}+\\cos^{2}}{\\sin\\cos} = \\tfrac{1}{\\sin\\cos} = $ RS.
+
+**Probe:** Keine rechten Seiten manipuliert — strenge Beweisführung.
+
+**Typischer Fehler:** Pythagoras-Schritt vor der Vereinigung des Nenners — logisch möglich, aber umständlicher.`,
+        [
+          '$\\tan$ und $\\cot$ in $\\sin/\\cos$ ausdrücken.',
+          'Hauptnenner.',
+          'Pythagoras im Zähler.',
+        ],
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // trig-3-5 — Sinussatz & Cosinussatz  (6 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'trig-3-5': {

@@ -15,7 +15,7 @@ export const exercises_u4 = {
 $$\\cot(\\alpha) = \\dfrac{\\cos(\\alpha)}{\\sin(\\alpha)} \\Rightarrow \\cot^{2}(\\alpha) = \\dfrac{\\cos^{2}(\\alpha)}{\\sin^{2}(\\alpha)}$$
 $$\\sin^{2}(\\alpha) \\cdot \\left(1 + \\dfrac{\\cos^{2}(\\alpha)}{\\sin^{2}(\\alpha)}\\right) = \\sin^{2}(\\alpha) + \\cos^{2}(\\alpha) = 1.$$
 
-**Probe (Taschenrechner, DEG-Modus):** $\\alpha = 30°$: $\\sin^{2}(30°) \\cdot (1 + \\cot^{2}(30°)) = 0{,}25 \\cdot (1 + 3) = 1$ ✓.
+**Probe:** (Taschenrechner, DEG-Modus) $\\alpha = 30°$: $\\sin^{2}(30°) \\cdot (1 + \\cot^{2}(30°)) = 0{,}25 \\cdot (1 + 3) = 1$ ✓.
 
 **Am Einheitskreis heißt das:** Die Pythagoreische Identität $\\sin^{2}+\\cos^{2}=1$ ist der Schlüssel — jede trigonometrische Vereinfachung reduziert sich am Ende auf sie.
 
@@ -38,11 +38,7 @@ $$\\sin^{2}(\\alpha) \\cdot \\left(1 + \\dfrac{\\cos^{2}(\\alpha)}{\\sin^{2}(\\a
     correctIndex: 1,
     explanation: `**Ansatz:** Doppelwinkelformel erkennen.
 
-**Schritt 1:** $2\\sin(\\alpha)\\cos(\\alpha) = \\sin(2\\alpha)$.
-
-**Schritt 2:** $\\sin(2\\alpha) = 1 \\Rightarrow 2\\alpha = 90° + k \\cdot 360°$.
-
-**Schritt 3:** $\\alpha = 45° + k \\cdot 180°$. Im Intervall $[0°, 360°)$: $k = 0 \\Rightarrow \\alpha = 45°$; $k = 1 \\Rightarrow \\alpha = 225°$.
+**Rechnung:** Schritt 1: $2\\sin(\\alpha)\\cos(\\alpha) = \\sin(2\\alpha)$. Schritt 2: $\\sin(2\\alpha) = 1 \\Rightarrow 2\\alpha = 90° + k \\cdot 360°$. Schritt 3: $\\alpha = 45° + k \\cdot 180°$. Im Intervall $[0°, 360°)$: $k = 0 \\Rightarrow \\alpha = 45°$; $k = 1 \\Rightarrow \\alpha = 225°$.
 
 **Probe:** $\\alpha = 45°$: $2 \\cdot \\dfrac{\\sqrt{2}}{2} \\cdot \\dfrac{\\sqrt{2}}{2} = 1$ ✓. $\\alpha = 225°$: $2 \\cdot \\left(-\\dfrac{\\sqrt{2}}{2}\\right) \\cdot \\left(-\\dfrac{\\sqrt{2}}{2}\\right) = 1$ ✓.
 
@@ -72,13 +68,13 @@ $$\\sin^{2}(\\alpha) \\cdot \\left(1 + \\dfrac{\\cos^{2}(\\alpha)}{\\sin^{2}(\\a
     correctIndex: 3,
     explanation: `**Ansatz:** Jede Formel gegen die Standardidentitäten prüfen.
 
-**Prüfung:**
+**Rechnung:**
 - A: $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$ — Doppelwinkelformel ✓
 - B: $\\cos(2\\alpha) = 1 - 2\\sin^{2}\\alpha$ — Alternativform ✓
 - C: $\\tan = \\dfrac{\\sin}{\\cos}$ — Definition ✓
 - D: $\\sin(\\alpha+\\beta) = \\sin\\alpha + \\sin\\beta$ — **FALSCH**. Richtig: $\\sin(\\alpha+\\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$.
 
-**Gegenbeispiel für D:** $\\sin(60° + 30°) = \\sin(90°) = 1$, aber $\\sin(60°) + \\sin(30°) = \\dfrac{\\sqrt{3}}{2} + \\dfrac{1}{2} \\approx 1{,}37 \\neq 1$.
+**Probe:** Gegenbeispiel für D: $\\sin(60° + 30°) = \\sin(90°) = 1$, aber $\\sin(60°) + \\sin(30°) = \\dfrac{\\sqrt{3}}{2} + \\dfrac{1}{2} \\approx 1{,}37 \\neq 1$.
 
 **Am Einheitskreis heißt das:** Drehungen addieren sich nicht linear. Sinus misst eine Projektion — und Projektionen zweier getrennter Drehungen lassen sich nicht einfach summieren.
 
@@ -101,11 +97,9 @@ $$\\sin^{2}(\\alpha) \\cdot \\left(1 + \\dfrac{\\cos^{2}(\\alpha)}{\\sin^{2}(\\a
     correctIndex: 1,
     explanation: `**Ansatz:** Ausdrucksmuster als Additionstheorem erkennen.
 
-**Schritt 1:** $\\cos(\\alpha)\\cos(\\beta) + \\sin(\\alpha)\\sin(\\beta) = \\cos(\\alpha - \\beta)$ (Additionstheorem für $\\cos(\\alpha - \\beta)$).
+**Rechnung:** Schritt 1: $\\cos(\\alpha)\\cos(\\beta) + \\sin(\\alpha)\\sin(\\beta) = \\cos(\\alpha - \\beta)$ (Additionstheorem für $\\cos(\\alpha - \\beta)$). Schritt 2: $\\cos(75° - 30°) = \\cos(45°) = \\dfrac{\\sqrt{2}}{2}$.
 
-**Schritt 2:** $\\cos(75° - 30°) = \\cos(45°) = \\dfrac{\\sqrt{2}}{2}$.
-
-**Probe (Taschenrechner, DEG-Modus):**
+**Probe:** (Taschenrechner, DEG-Modus)
 $\\cos(75°)\\cos(30°) + \\sin(75°)\\sin(30°) \\approx 0{,}2588 \\cdot 0{,}8660 + 0{,}9659 \\cdot 0{,}5 \\approx 0{,}2241 + 0{,}4830 = 0{,}7071 \\approx \\dfrac{\\sqrt{2}}{2}$ ✓.
 
 **Am Einheitskreis heißt das:** Der Ausdruck ist das Skalarprodukt zweier Einheitsvektoren unter den Winkeln $\\alpha$ und $\\beta$. Er misst den Kosinus des eingeschlossenen Winkels $\\alpha - \\beta$.
@@ -129,12 +123,7 @@ $\\cos(75°)\\cos(30°) + \\sin(75°)\\sin(30°) \\approx 0{,}2588 \\cdot 0{,}86
     correctIndex: 1,
     explanation: `**Ansatz:** Gleichung in eine einzige trigonometrische Funktion umformen.
 
-**Schritt 1:** $\\sin(\\alpha) = \\cos(\\alpha)$. Dividiere beide Seiten durch $\\cos(\\alpha)$ (erlaubt, wenn $\\cos\\alpha \\neq 0$):
-$$\\tan(\\alpha) = 1.$$
-
-**Schritt 2:** Hauptwert: $\\alpha_{0} = \\arctan(1) = 45°$. Periode von $\\tan$ ist $180°$, also alle Lösungen: $\\alpha = 45° + k \\cdot 180°$.
-
-**Schritt 3:** Im Intervall $[0°, 360°)$: $k = 0 \\Rightarrow 45°$; $k = 1 \\Rightarrow 225°$.
+**Rechnung:** Schritt 1: $\\sin(\\alpha) = \\cos(\\alpha)$. Dividiere beide Seiten durch $\\cos(\\alpha)$ (erlaubt, wenn $\\cos\\alpha \\neq 0$): $\\tan(\\alpha) = 1$. Schritt 2: Hauptwert $\\alpha_{0} = \\arctan(1) = 45°$. Periode von $\\tan$ ist $180°$, also alle Lösungen $\\alpha = 45° + k \\cdot 180°$. Schritt 3: Im Intervall $[0°, 360°)$: $k = 0 \\Rightarrow 45°$; $k = 1 \\Rightarrow 225°$.
 
 **Probe:** $\\alpha = 45°$: $\\sin(45°) = \\cos(45°) = \\dfrac{\\sqrt{2}}{2}$ ✓. $\\alpha = 225°$: $\\sin(225°) = \\cos(225°) = -\\dfrac{\\sqrt{2}}{2}$ ✓.
 
@@ -347,7 +336,7 @@ $$\\omega \\cdot (t + T) = \\omega t + 2\\pi \\Rightarrow \\omega T = 2\\pi \\Ri
 
 **Am Einheitskreis heißt das:** $-210°$ (im Uhrzeigersinn) und $150°$ (gegen den Uhrzeigersinn) landen am *selben Punkt* im 2. Quadrant: $\\left(-\\dfrac{\\sqrt{3}}{2}, \\dfrac{1}{2}\\right)$. Die y-Koordinate ist $\\dfrac{1}{2}$.
 
-**Probe (Taschenrechner, DEG-Modus):** $\\sin(-210°) = 0{,}5$ ✓.
+**Probe:** (Taschenrechner, DEG-Modus) $\\sin(-210°) = 0{,}5$ ✓.
 
 **Typischer Fehler:** Nur eine der zwei Regeln anwenden (z.B. ungerade Funktion vergessen) und $-\\dfrac{1}{2}$ angeben.`,
     hints: [
@@ -372,7 +361,7 @@ $$\\omega \\cdot (t + T) = \\omega t + 2\\pi \\Rightarrow \\omega T = 2\\pi \\Ri
 
 **Am Einheitskreis heißt das:** $\\arctan$ "scannt" nur die rechte Halbkreisseite (ohne Pole). Der Winkel $-45°$ entspricht der Richtung in den 4. Quadrant.
 
-**Probe (Taschenrechner, DEG-Modus):** $\\tan(-45°) = -1$ ✓.
+**Probe:** (Taschenrechner, DEG-Modus) $\\tan(-45°) = -1$ ✓.
 
 **Achtung bei Anwendungen:** In Gleichungen wie $\\tan(x) = -1$ gibt es zusätzliche Lösungen: $x = -45° + k \\cdot 180°$, also auch $x = 135°, 315°, \\ldots$. Aber $\\arctan$ liefert *nur* den Hauptwert $-45°$.
 
@@ -428,7 +417,7 @@ $$= (\\sin^{2}\\alpha + \\cos^{2}\\alpha) + 2\\sin\\alpha\\cos\\alpha = 1 + 2\\s
 $$\\cos(75°) = \\cos(45° + 30°) = \\cos(45°)\\cos(30°) - \\sin(45°)\\sin(30°)$$
 $$= \\dfrac{\\sqrt{2}}{2} \\cdot \\dfrac{\\sqrt{3}}{2} - \\dfrac{\\sqrt{2}}{2} \\cdot \\dfrac{1}{2} = \\dfrac{\\sqrt{6}}{4} - \\dfrac{\\sqrt{2}}{4} = \\dfrac{\\sqrt{6} - \\sqrt{2}}{4}.$$
 
-**Probe (Taschenrechner, DEG-Modus):** $\\cos(75°) \\approx 0{,}2588$. Und $\\dfrac{\\sqrt{6} - \\sqrt{2}}{4} \\approx \\dfrac{2{,}449 - 1{,}414}{4} \\approx 0{,}2588$ ✓.
+**Probe:** (Taschenrechner, DEG-Modus) $\\cos(75°) \\approx 0{,}2588$. Und $\\dfrac{\\sqrt{6} - \\sqrt{2}}{4} \\approx \\dfrac{2{,}449 - 1{,}414}{4} \\approx 0{,}2588$ ✓.
 
 **Am Einheitskreis heißt das:** Bei $75°$ liegt der Punkt fast oben auf dem Kreis — die x-Koordinate ($\\cos$) ist klein und positiv.
 
@@ -490,6 +479,11 @@ const lessons_u4 = [
 - DEG/RAD-Verwechslung ($\\sin(30)$ vs. $\\sin(30°)$).
 - Linearitäts-Irrtum: $\\sin(\\alpha+\\beta) \\neq \\sin\\alpha + \\sin\\beta$.
 - Nur Hauptwert angeben und weitere Lösungen vergessen.`,
+      },
+      {
+        id: 'trig-4-1-s1b', type: 'visualization', title: 'Einheitskreis — sin/cos ablesen',
+        visualizationId: 'unit-circle',
+        params: { showSine: true, showCosine: true, interactive: true, showQuadrants: true, showLabels: true, initialAngle: 45 },
       },
       { id: 'trig-4-1-s2', type: 'exercise', title: 'Aufgabe 1 — Pythagoras-Vereinfachung', exerciseRef: 'ex-trig-4-1-a' },
       { id: 'trig-4-1-s3', type: 'exercise', title: 'Aufgabe 2 — Doppelwinkelgleichung', exerciseRef: 'ex-trig-4-1-b' },
