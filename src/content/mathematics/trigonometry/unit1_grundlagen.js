@@ -458,19 +458,11 @@ $$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2} \\cdot G} = \\dfrac{1}{\\sq
     correctIndex: 1,
     explanation: `**Ansatz:** ASTC-Regel oder Koordinaten am Einheitskreis prüfen.
 
-**Am Einheitskreis:** Im 2. Quadrant liegt der Punkt links-oben: $x < 0$, $y > 0$.
-- $\\cos(\\alpha) = x < 0$ (negativ)
-- $\\sin(\\alpha) = y > 0$ (positiv)
+**Rechnung:** Am Einheitskreis liegt ein Punkt im 2. Quadrant links-oben: $x < 0$, $y > 0$. Also $\\cos(\\alpha) = x < 0$ (negativ) und $\\sin(\\alpha) = y > 0$ (positiv). ASTC-Eselsbrücke ("All Students Take Calculus"): 1. Q alle positiv, 2. Q nur Sinus positiv, 3. Q nur Tangens positiv, 4. Q nur Cosinus positiv.
 
-**Eselsbrücke ASTC** ("All Students Take Calculus"):
-- 1. Q: Alle positiv
-- 2. Q: nur Sinus positiv
-- 3. Q: nur Tangens positiv
-- 4. Q: nur Cosinus positiv
+**Probe:** $\\sin(120°) = \\tfrac{\\sqrt{3}}{2} > 0$, $\\cos(120°) = -\\tfrac{1}{2} < 0$ ✓ — passt zur 2.-Quadrant-Regel.
 
-**Beispiel:** $\\sin(120°) = \\dfrac{\\sqrt{3}}{2} > 0$, $\\cos(120°) = -\\dfrac{1}{2} < 0$. ✓
-
-**Typischer Fehler:** ASTC in falsche Reihenfolge setzen. Merke: Die Buchstaben laufen *gegen den Uhrzeigersinn* durch die Quadranten, startend bei 1.`,
+**Typischer Fehler:** ASTC in falsche Reihenfolge setzen. Merke: Die Buchstaben laufen gegen den Uhrzeigersinn durch die Quadranten, startend bei 1.`,
     hints: [
       'Skizze: Zeichne den 2. Quadrant ein und markiere einen Punkt darin.',
       'Am Einheitskreis: $\\cos = x$-Koordinate, $\\sin = y$-Koordinate. Welches Vorzeichen?',
@@ -493,7 +485,7 @@ $$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2} \\cdot G} = \\dfrac{1}{\\sq
 
 **Am Einheitskreis:** $150°$ liegt im 2. Quadrant. Der Referenzwinkel zur x-Achse ist $180° - 150° = 30°$. Im 2. Quadrant bleibt $\\sin$ positiv (ASTC: "Students"), also $\\sin(150°) = +\\sin(30°) = \\dfrac{1}{2}$.
 
-**Probe (Taschenrechner, DEG-Modus):** $\\sin(150°) = 0{,}5$ ✓.
+**Probe:** (Taschenrechner, DEG-Modus) $\\sin(150°) = 0{,}5$ ✓.
 
 **Typischer Fehler:** Vorzeichen im 2. Quadrant vergessen und $-\\dfrac{1}{2}$ angeben — das wäre nur richtig, wenn der Winkel im 3. oder 4. Quadrant läge.`,
     hints: [
@@ -520,7 +512,7 @@ $$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2} \\cdot G} = \\dfrac{1}{\\sq
 
 **Koordinaten:** Bei $120°$: Punkt $\\left(-\\dfrac{1}{2}, \\dfrac{\\sqrt{3}}{2}\\right)$. x-Koordinate $= -\\dfrac{1}{2} = \\cos(120°)$. ✓
 
-**Probe (Taschenrechner, DEG-Modus):** $\\cos(120°) = -0{,}5$ ✓.
+**Probe:** (Taschenrechner, DEG-Modus) $\\cos(120°) = -0{,}5$ ✓.
 
 **Typischer Fehler:** Vorzeichen vergessen und $+\\dfrac{1}{2}$ angeben.`,
     hints: [

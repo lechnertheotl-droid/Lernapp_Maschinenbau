@@ -346,6 +346,344 @@ export const trigonometrySubGoalTasks = {
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // trig-1-4 — Vorzeichen und Quadranten  (3 subGoals)
+  // Je 5 Aufgaben = 15 Goal-Tasks
+  // ────────────────────────────────────────────────────────────────────────
+  'trig-1-4': {
+
+    // ── [0] Quadranten I-IV, Vorzeichen von sin (y) und cos (x) ───────────
+    0: [
+      mc(
+        'Sub-Goal "Quadranten I–IV durchnummerieren und Vorzeichen von $\\sin$ (y-Koordinate) und $\\cos$ (x-Koordinate) bestimmen": In welchem Quadranten gilt $\\sin\\alpha < 0$ UND $\\cos\\alpha > 0$?',
+        [
+          '4. Quadrant ($270°$–$360°$)',
+          '1. Quadrant ($0°$–$90°$)',
+          '2. Quadrant ($90°$–$180°$)',
+          '3. Quadrant ($180°$–$270°$)',
+        ],
+        0,
+        `**Ansatz:** Punktlage am Einheitskreis nach Vorzeichen bestimmen.
+
+**Rechnung:** $\\sin < 0$ heißt $y < 0$ (unterhalb x-Achse); $\\cos > 0$ heißt $x > 0$ (rechts der y-Achse). Beide Bedingungen zusammen: rechts-unten = 4. Quadrant.
+
+**Probe:** $\\alpha = 300°$ (4. Q): $\\sin(300°) = -\\tfrac{\\sqrt{3}}{2} < 0$ ✓; $\\cos(300°) = \\tfrac{1}{2} > 0$ ✓.
+
+**Typischer Fehler:** Die ASTC-Regel falsch interpretieren — im 4. Quadrant ist **nur** $\\cos$ positiv, $\\sin$ und $\\tan$ sind negativ.`,
+        [
+          '$\\sin = y$-Koordinate; $\\cos = x$-Koordinate.',
+          '$y < 0$ (unten), $x > 0$ (rechts): welcher Quadrant?',
+          'ASTC: nur Cos positiv = 4. Quadrant.',
+        ],
+        {
+          1: '1. Q: beide positiv (ASTC: All). Hier aber $\\sin < 0$ verlangt.',
+          2: '2. Q: nur Sinus positiv. Hier müsste $\\cos > 0$ sein, was im 2. Q aber nicht gilt.',
+          3: '3. Q: beide negativ (nur Tangens positiv). Hier ist $\\cos < 0$, nicht $> 0$.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Quadranten I–IV durchnummerieren und Vorzeichen von $\\sin$ (y-Koordinate) und $\\cos$ (x-Koordinate) bestimmen": In welchem Quadranten liegt der Winkel $\\alpha = 250°$? (Antwort als Zahl 1, 2, 3 oder 4.)',
+        3, 0, '',
+        `**Ansatz:** Quadrantengrenzen $0°$–$90°$–$180°$–$270°$–$360°$.
+
+**Rechnung:** $180° < 250° < 270°$ → 3. Quadrant.
+
+**Probe:** $\\sin(250°) \\approx -0{,}94 < 0$; $\\cos(250°) \\approx -0{,}34 < 0$. Beide negativ → 3. Q ✓.
+
+**Typischer Fehler:** Zwischen 2. und 3. Q vertauschen — 2. Q endet bei $180°$, 3. Q beginnt ab $180°$.`,
+        [
+          '$90°, 180°, 270°, 360°$: Quadrantengrenzen.',
+          '$250°$ liegt zwischen $180°$ und $270°$.',
+          '3. Quadrant.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Quadranten I–IV durchnummerieren und Vorzeichen von $\\sin$ (y-Koordinate) und $\\cos$ (x-Koordinate) bestimmen": Im 3. Quadrant ist der Tangens positiv.',
+        true,
+        `**Ansatz:** ASTC-Regel: im 3. Quadrant ist nur **Tangens** positiv.
+
+**Rechnung:** $\\tan = \\sin/\\cos$. Im 3. Q: $\\sin < 0$ und $\\cos < 0$. Ein Bruch aus zwei negativen Zahlen ist **positiv**. Also $\\tan > 0$.
+
+**Probe:** $\\tan(225°) = \\sin(225°)/\\cos(225°) = (-\\tfrac{\\sqrt{2}}{2}) / (-\\tfrac{\\sqrt{2}}{2}) = +1$ ✓.
+
+**Typischer Fehler:** Annehmen, alle Funktionen im 3. Q seien negativ — $\\sin$ und $\\cos$ ja, aber $\\tan$ positiv.`,
+        [
+          'ASTC: nur T positiv im 3. Q.',
+          '$\\tan = \\sin / \\cos$.',
+          'Minus durch Minus ist Plus.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Quadranten I–IV durchnummerieren und Vorzeichen von $\\sin$ (y-Koordinate) und $\\cos$ (x-Koordinate) bestimmen": Ordne jeden Quadrant dem Vorzeichenmuster von ($\\sin, \\cos, \\tan$) zu.',
+        [
+          { left: '1. Quadrant',     right: '$(+, +, +)$' },
+          { left: '2. Quadrant',     right: '$(+, -, -)$' },
+          { left: '3. Quadrant',     right: '$(-, -, +)$' },
+          { left: '4. Quadrant',     right: '$(-, +, -)$' },
+        ],
+        `**Ansatz:** ASTC-Regel: All, Sin, Tan, Cos positiv.
+
+**Rechnung:** Pro Quadrant welche Funktion(en) positiv:
+· 1. Q: alle drei.
+· 2. Q: nur Sin.
+· 3. Q: nur Tan.
+· 4. Q: nur Cos.
+
+Alle anderen Vorzeichen sind negativ.
+
+**Probe:** $\\tan$-Vorzeichen = $\\sin \\cdot \\cos$-Vorzeichenprodukt.
+
+**Typischer Fehler:** Reihenfolge der ASTC-Regel verwechseln.`,
+        [
+          'ASTC-Merkspruch gegen Uhrzeigersinn.',
+          'In jedem Q ist nur die genannte Funktion positiv.',
+          'Tan = Sin / Cos.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Quadranten I–IV durchnummerieren und Vorzeichen von $\\sin$ (y-Koordinate) und $\\cos$ (x-Koordinate) bestimmen": Bringe die Schritte zur Bestimmung der Vorzeichen von $\\sin(200°)$ und $\\cos(200°)$ in die richtige Reihenfolge.',
+        [
+          'Quadrant identifizieren: $180° < 200° < 270°$ → 3. Quadrant',
+          'ASTC-Regel: im 3. Q ist nur Tangens positiv',
+          '$\\sin(200°) < 0$ und $\\cos(200°) < 0$',
+          'Kontrolle: $200° = 180° + 20°$; $\\sin(200°) = -\\sin(20°) < 0$ ✓',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Quadrant → ASTC → Vorzeichen → Kontrolle über Reduktionsformel.
+
+**Rechnung:** Beide negativ.
+
+**Probe:** $\\sin(200°) \\approx -0{,}342$, $\\cos(200°) \\approx -0{,}940$ ✓.
+
+**Typischer Fehler:** ASTC-Regel ohne Quadrantenbestimmung anwenden.`,
+        [
+          'Quadrant zuerst.',
+          'Dann ASTC.',
+          'Dann Vorzeichen.',
+        ],
+      ),
+    ],
+
+    // ── [1] Symmetrien: sin(180°-α) = sin α, cos(180°-α) = -cos α ─────────
+    1: [
+      mc(
+        'Sub-Goal "Symmetrien: $\\sin(180° - \\alpha) = \\sin\\alpha$, $\\cos(180° - \\alpha) = -\\cos\\alpha$": Welche Identität gilt für jeden Winkel $\\alpha$?',
+        [
+          '$\\sin(180° - \\alpha) = \\sin\\alpha$',
+          '$\\sin(180° - \\alpha) = -\\sin\\alpha$',
+          '$\\cos(180° - \\alpha) = \\cos\\alpha$',
+          '$\\sin(180° - \\alpha) = \\cos\\alpha$',
+        ],
+        0,
+        `**Ansatz:** Symmetrie des Einheitskreises an der y-Achse.
+
+**Rechnung:** Bei Spiegelung an der y-Achse bleibt die y-Koordinate ($\\sin$) gleich, die x-Koordinate ($\\cos$) wechselt Vorzeichen. Also $\\sin(180° - \\alpha) = \\sin\\alpha$ (positiv bleibt) und $\\cos(180° - \\alpha) = -\\cos\\alpha$ (Vorzeichenwechsel).
+
+**Probe:** $\\sin(180° - 30°) = \\sin(150°) = 0{,}5 = \\sin(30°)$ ✓. $\\cos(150°) = -\\cos(30°) \\approx -0{,}866$ ✓.
+
+**Typischer Fehler:** Supplementsymmetrie bei Kosinus unverändert lassen — das Minuszeichen ist entscheidend.`,
+        [
+          'Spiegelung an der y-Achse.',
+          '$\\sin$ (y-Koordinate) bleibt.',
+          '$\\cos$ (x-Koordinate) wechselt Vorzeichen.',
+        ],
+        {
+          1: '$\\sin$ bleibt unverändert bei Spiegelung an y-Achse, keine Vorzeichenwechsel.',
+          2: '$\\cos$ wechselt Vorzeichen: $\\cos(180° - \\alpha) = -\\cos\\alpha$, nicht $+\\cos\\alpha$.',
+          3: '$\\sin$ und $\\cos$ werden durch Supplementwinkel nicht ineinander überführt — das ist die Kofunktionsregel ($\\sin(90° - \\alpha) = \\cos\\alpha$).',
+        },
+      ),
+      ni(
+        'Sub-Goal "Symmetrien: $\\sin(180° - \\alpha) = \\sin\\alpha$, $\\cos(180° - \\alpha) = -\\cos\\alpha$": Berechne $\\sin(170°)$ ohne Taschenrechner, indem du die Symmetrie ausnutzt. (Ergebnis auf 4 Nachkommastellen — verwende $\\sin(10°) \\approx 0{,}1736$.)',
+        0.1736, 0.001, '',
+        `**Ansatz:** Supplementsymmetrie: $\\sin(180° - \\alpha) = \\sin\\alpha$ mit $\\alpha = 10°$.
+
+**Rechnung:** $\\sin(170°) = \\sin(180° - 10°) = \\sin(10°) \\approx 0{,}1736$.
+
+**Probe:** Taschenrechner: $\\sin(170°) \\approx 0{,}1736$ ✓.
+
+**Typischer Fehler:** Minuszeichen wie bei $\\cos$ einfügen — bei $\\sin$ bleibt das Vorzeichen.`,
+        [
+          'Schreibe $170° = 180° - 10°$.',
+          'Formel: $\\sin(180° - \\alpha) = \\sin\\alpha$.',
+          'Kein Vorzeichenwechsel bei Sinus.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Symmetrien: $\\sin(180° - \\alpha) = \\sin\\alpha$, $\\cos(180° - \\alpha) = -\\cos\\alpha$": Für alle Winkel $\\alpha$ gilt $\\cos(180° - \\alpha) = -\\cos\\alpha$.',
+        true,
+        `**Ansatz:** Spiegelung des Einheitskreispunkts an der y-Achse.
+
+**Rechnung:** Punkt bei $\\alpha$: $(x, y) = (\\cos\\alpha, \\sin\\alpha)$. Punkt bei $180° - \\alpha$: $(-x, y)$ (y-Achsen-Spiegelung). Also $\\cos(180° - \\alpha) = -x = -\\cos\\alpha$.
+
+**Probe:** $\\cos(120°) = -\\cos(60°) = -0{,}5$ ✓.
+
+**Typischer Fehler:** Minuszeichen bei $\\sin$ statt bei $\\cos$ einfügen.`,
+        [
+          'Spiegelung an y-Achse.',
+          'x-Koordinate wechselt Vorzeichen.',
+          '$\\cos$ ist x-Koordinate.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Symmetrien: $\\sin(180° - \\alpha) = \\sin\\alpha$, $\\cos(180° - \\alpha) = -\\cos\\alpha$": Ordne jeder Symmetrie den passenden Ausdruck zu.',
+        [
+          { left: '$\\sin(-\\alpha)$',          right: '$-\\sin\\alpha$ (Punktsymmetrie zu O)' },
+          { left: '$\\cos(-\\alpha)$',          right: '$\\cos\\alpha$ (Achsensymmetrie zu x-Achse)' },
+          { left: '$\\sin(180° - \\alpha)$',    right: '$\\sin\\alpha$ (Achsensymmetrie zu y-Achse)' },
+          { left: '$\\cos(180° - \\alpha)$',    right: '$-\\cos\\alpha$ (Achsensymmetrie zu y-Achse)' },
+        ],
+        `**Ansatz:** Vier Grund-Symmetrien am Einheitskreis.
+
+**Rechnung:** Jede Symmetrie ist über die Koordinatentransformation erklärbar.
+
+**Probe:** Zahlentest mit $\\alpha = 30°$ für jede Zeile.
+
+**Typischer Fehler:** $\\sin$ und $\\cos$ verwechseln — $\\sin$ ist ungerade (Vorzeichenwechsel bei $-\\alpha$), $\\cos$ ist gerade.`,
+        [
+          'Negation $-\\alpha$: $\\sin$ ungerade, $\\cos$ gerade.',
+          'Supplement $180° - \\alpha$: $\\sin$ bleibt, $\\cos$ kippt.',
+          'Spiegelachse ändert jeweils eine Koordinate.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Symmetrien: $\\sin(180° - \\alpha) = \\sin\\alpha$, $\\cos(180° - \\alpha) = -\\cos\\alpha$": Bringe die Schritte zur Berechnung von $\\cos(150°)$ über Symmetrie in die richtige Reihenfolge.',
+        [
+          'Schreibe $150° = 180° - 30°$',
+          'Formel: $\\cos(180° - \\alpha) = -\\cos\\alpha$',
+          'Einsetzen: $\\cos(150°) = -\\cos(30°)$',
+          'Grundwert: $\\cos(30°) = \\tfrac{\\sqrt{3}}{2}$, also $\\cos(150°) = -\\tfrac{\\sqrt{3}}{2}$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Symmetrie-Formel → Einsetzen → Grundwert.
+
+**Rechnung:** $\\cos(150°) = -\\tfrac{\\sqrt{3}}{2}$.
+
+**Probe:** Taschenrechner: $\\cos(150°) \\approx -0{,}866$ ✓.
+
+**Typischer Fehler:** Vorzeichenwechsel vergessen oder bei $\\sin$ einfügen.`,
+        [
+          'Supplementdarstellung.',
+          'Formel mit Vorzeichenwechsel für $\\cos$.',
+          'Grundwert einsetzen.',
+        ],
+      ),
+    ],
+
+    // ── [2] Reduktionsformel: jeden Winkel auf Referenzwinkel 0°-90° ──────
+    2: [
+      mc(
+        'Sub-Goal "Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen": Was ist der Referenzwinkel von $225°$?',
+        [
+          '$45°$',
+          '$135°$',
+          '$225°$',
+          '$315°$',
+        ],
+        0,
+        `**Ansatz:** Referenzwinkel ist der Abstand zur **nächsten** x-Achse (bei $0°$ oder $180°$).
+
+**Rechnung:** $225°$ liegt im 3. Quadrant. Abstand zur $180°$-Achse: $225° - 180° = 45°$.
+
+**Probe:** $|\\sin(225°)| = \\sin(45°) = \\tfrac{\\sqrt{2}}{2}$ ✓. $|\\cos(225°)| = \\cos(45°)$ ✓.
+
+**Typischer Fehler:** Abstand zur y-Achse nehmen oder die ganze Zahl als Referenz nehmen.`,
+        [
+          'Abstand zur nächsten x-Achse.',
+          'Im 3. Q: Abstand zu $180°$.',
+          '$225° - 180° = ?$',
+        ],
+        {
+          1: '$135°$ wäre der Winkel zu y-Achse (270°); falsche Achsenwahl.',
+          2: '$225°$ ist der Original-Winkel, nicht der Referenzwinkel.',
+          3: '$315°$ wäre der Winkel zur $360°$-Vollumdrehung, nicht zur x-Achse.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen": Berechne $\\sin(330°)$ mit der Reduktionsformel. Gib das Ergebnis als Dezimalzahl an.',
+        -0.5, 0.01, '',
+        `**Ansatz:** $330°$ im 4. Q; Referenzwinkel $360° - 330° = 30°$. Im 4. Q: $\\sin < 0$.
+
+**Rechnung:** $\\sin(330°) = -\\sin(30°) = -0{,}5$.
+
+**Probe:** Taschenrechner: $\\sin(330°) = -0{,}5$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen — im 4. Q ist $\\sin$ negativ (ASTC).`,
+        [
+          'Referenzwinkel: $360° - 330° = 30°$.',
+          '4. Q: Vorzeichen von $\\sin$ negativ.',
+          '$-\\sin(30°) = ?$',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen": Der Referenzwinkel ist immer positiv und liegt zwischen $0°$ und $90°$.',
+        true,
+        `**Ansatz:** Definition des Referenzwinkels.
+
+**Rechnung:** Per Konvention ist der Referenzwinkel der **spitzwinklige** Winkel zwischen Schenkel und x-Achse, daher immer $0° \\le \\theta_{\\text{ref}} \\le 90°$.
+
+**Probe:** Egal in welchem Quadrant: $\\theta_{\\text{ref}} \\in [0°, 90°]$ per Konstruktion.
+
+**Typischer Fehler:** Negative oder Winkel $>90°$ als Referenz angeben.`,
+        [
+          'Referenzwinkel: immer spitz.',
+          'Abstand zur nächsten x-Achse.',
+          'Zwischen 0° und 90°.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen": Ordne jedem Winkel seinen Referenzwinkel zu.',
+        [
+          { left: '$130°$',    right: '$50°$' },
+          { left: '$200°$',    right: '$20°$' },
+          { left: '$290°$',    right: '$70°$' },
+          { left: '$95°$',     right: '$85°$' },
+        ],
+        `**Ansatz:** Je nach Quadrant: Abstand zur nächsten x-Achse.
+
+**Rechnung:**
+· 2. Q: $180° - $ Winkel.
+· 3. Q: Winkel $- 180°$.
+· 4. Q: $360° - $ Winkel.
+· $130°$: $180 - 130 = 50$.
+· $200°$: $200 - 180 = 20$.
+· $290°$: $360 - 290 = 70$.
+· $95°$: $180 - 95 = 85$.
+
+**Probe:** Alle Referenzwinkel zwischen $0°$ und $90°$.
+
+**Typischer Fehler:** Formel pro Quadrant nicht auseinanderhalten.`,
+        [
+          'Quadrant identifizieren.',
+          'Abstand zur nächsten x-Achse.',
+          'Bei 2./3. Q: $180°$ als Bezug; bei 4. Q: $360°$.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen": Bringe die Schritte zur Berechnung von $\\cos(210°)$ in die richtige Reihenfolge.',
+        [
+          'Quadrant: $180° < 210° < 270°$ → 3. Quadrant',
+          'Referenzwinkel: $210° - 180° = 30°$',
+          'Vorzeichen im 3. Q: $\\cos < 0$',
+          'Ergebnis: $\\cos(210°) = -\\cos(30°) = -\\tfrac{\\sqrt{3}}{2}$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Quadrant → Referenzwinkel → Vorzeichen → Grundwert.
+
+**Rechnung:** $\\cos(210°) = -\\tfrac{\\sqrt{3}}{2} \\approx -0{,}866$.
+
+**Probe:** Taschenrechner bestätigt.
+
+**Typischer Fehler:** Vorzeichenschritt überspringen.`,
+        [
+          'Quadrant zuerst.',
+          'Referenzwinkel aus Abstand zur x-Achse.',
+          'Vorzeichen per ASTC.',
+        ],
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // trig-4-1 — Prüfung: Identitäten & Gleichungen  (5 subGoals, [PRÜFUNG])
   // Je 5 Aufgaben = 25 Goal-Tasks
   // ────────────────────────────────────────────────────────────────────────
