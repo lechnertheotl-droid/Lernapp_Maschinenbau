@@ -530,4 +530,548 @@ export const festigkeitslehreSubGoalTasks = {
 
   },
 
+  'fest-1-4': {
+    // Sub-Goal 0: Euler-Knicklast F_ki = π² E I/(βL)²
+    0: [
+      ni(
+        'Sub-Goal "Euler-Knicklast: $F_{ki} = \\pi^2 E I/(\\beta L)^2$": Stahlstab beidseitig gelenkig gelagert. $E = 210\\,000$ MPa, $I = 8\\,000$ mm⁴, $L = 2\\,000$ mm. Wie groß ist die Euler-Knicklast $F_{ki}$ in N?',
+        4145,
+        50,
+        'N',
+        `**Ansatz:** $F_{ki} = \\pi^2 E I / (\\beta L)^2$. Beidseitig gelenkig → $\\beta = 1$, also $\\beta L = L = 2000$ mm.
+
+**Rechnung:** $F_{ki} = \\pi^2 \\cdot 210\\,000 \\cdot 8\\,000 / (2\\,000)^2 = \\pi^2 \\cdot 1{,}68 \\cdot 10^9 / 4 \\cdot 10^6 = \\pi^2 \\cdot 420 \\approx 9{,}87 \\cdot 420 \\approx 4\\,145$ N.
+
+**Probe:** Einheiten: $\\text{N/mm}^2 \\cdot \\text{mm}^4 / \\text{mm}^2 = \\text{N}$ ✓. Gut, dass $F_{ki}$ klein ist — ein dünner Stab von 2 m knickt schon bei etwa 4 kN, man kann es sich merken.
+
+**Typischer Fehler:** $(\\beta L)^2$ vergessen zu quadrieren oder $L$ in m statt mm eingesetzt. Immer konsequent in N, mm, MPa rechnen.`,
+        [
+          'Formel: $F_{ki} = \\pi^2 E I / (\\beta L)^2$.',
+          '$\\beta = 1$ für "beidseitig gelenkig".',
+          '$\\pi^2 \\approx 9{,}87$. Erst Zähler, dann durch $(\\beta L)^2 = 4 \\cdot 10^6$ mm² teilen.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Euler-Knicklast: $F_{ki} = \\pi^2 E I/(\\beta L)^2$": Ein Stab (β = 1) hat eine Knicklast von 10 kN. Wie ändert sich $F_{ki}$, wenn die Länge $L$ verdoppelt wird?',
+        [
+          '$F_{ki}$ viertelt sich auf 2{,}5 kN.',
+          '$F_{ki}$ halbiert sich auf 5 kN.',
+          '$F_{ki}$ bleibt gleich, weil $L$ nicht in die Formel geht.',
+          '$F_{ki}$ verdoppelt sich auf 20 kN.',
+        ],
+        0,
+        `**Ansatz:** $F_{ki} \\propto 1/(\\beta L)^2$ — die Länge steht im Quadrat im Nenner.
+
+**Rechnung:** $L \\to 2L$ bedeutet $(\\beta L)^2 \\to (2\\beta L)^2 = 4 (\\beta L)^2$. Damit wird $F_{ki}$ durch 4 geteilt: $10 / 4 = 2{,}5$ kN.
+
+**Probe:** Kontrollzahl mit $E = 210\\,000$, $I = 10^4$, $L = 1\\,000$ → ca. 20{,}7 kN; bei $L = 2\\,000$ → ca. 5{,}2 kN. Faktor 4 ✓.
+
+**Typischer Fehler:** Linear halbieren statt quartetieren. Denk immer daran: Länge steht im Quadrat.`,
+        [
+          '$L$ erscheint im Nenner der Formel.',
+          'Steht $L$ dort linear oder quadratisch?',
+          '$1/(2L)^2 = 1/(4 L^2)$ — Faktor 1/4.',
+        ],
+        {
+          1: 'Das wäre so, wenn $L$ nur linear einginge. $L$ steht aber im Quadrat.',
+          2: '$L$ steht sehr wohl in der Formel — sogar im Quadrat im Nenner.',
+          3: 'Vorzeichen falsch: mit $L$ steigt der Nenner, also sinkt $F_{ki}$.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Euler-Knicklast: $F_{ki} = \\pi^2 E I/(\\beta L)^2$": Die Euler-Knicklast $F_{ki}$ ist linear proportional zum E-Modul $E$ des Werkstoffs.',
+        true,
+        `**Ansatz:** $F_{ki} = \\pi^2 \\cdot E \\cdot I / (\\beta L)^2$ — $E$ steht linear im Zähler.
+
+**Rechnung:** $E \\to 2E$ liefert $F_{ki} \\to 2 F_{ki}$. Beispiel: Stahl ($E = 210\\,000$) hat dreimal so hohe Knicklast wie Aluminium ($E = 70\\,000$) bei gleicher Geometrie.
+
+**Probe:** Alu gleiche Geometrie wie oben: $F_{ki} = \\pi^2 \\cdot 70\\,000 \\cdot 8\\,000 / 4 \\cdot 10^6 \\approx 1\\,382$ N — genau ein Drittel von 4\\,145 N ✓.
+
+**Typischer Fehler:** $E$ mit $R_p$ (Streckgrenze) verwechseln. $E$ bestimmt die Knicksteifigkeit, $R_p$ erst die Gültigkeitsgrenze (Euler vs. Tetmajer).`,
+        [
+          'Schau dir die Formel an: Wo steht $E$?',
+          'Linearer Faktor im Zähler → linearer Einfluss.',
+          'Werkstoff mit doppeltem $E$ → doppelte Knicklast.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Euler-Knicklast: $F_{ki} = \\pi^2 E I/(\\beta L)^2$": Gleicher Stab wie oben ($I = 8\\,000$ mm⁴, $L = 2\\,000$ mm, $\\beta = 1$), aber aus Aluminium ($E = 70\\,000$ MPa). Welche Knicklast?',
+        1382,
+        30,
+        'N',
+        `**Ansatz:** Gleiche Formel, nur $E$ gedrittelt (Alu statt Stahl).
+
+**Rechnung:** $F_{ki} = \\pi^2 \\cdot 70\\,000 \\cdot 8\\,000 / (2\\,000)^2 = \\pi^2 \\cdot 140 \\approx 1\\,382$ N.
+
+**Probe:** 70\\,000/210\\,000 = 1/3, damit $F_{ki,\\text{Alu}} = 4\\,145/3 \\approx 1\\,382$ N ✓.
+
+**Typischer Fehler:** Alu "fühlt sich genauso an wie Stahl, nur leichter". Nein — Alu hat nur ein Drittel des E-Moduls und knickt viel früher.`,
+        [
+          '$F_{ki} \\propto E$.',
+          '$E_\\text{Alu}/E_\\text{Stahl} = 1/3$.',
+          'Nimm den Stahlwert und teile durch 3.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Euler-Knicklast: $F_{ki} = \\pi^2 E I/(\\beta L)^2$": Bringe die Schritte zur Berechnung einer Euler-Knicklast in die richtige Reihenfolge.',
+        [
+          'Lagerungsart ablesen und $\\beta$ bestimmen.',
+          'Flächenträgheitsmoment $I$ (schwächste Achse) ermitteln.',
+          'Ersatzlänge $\\beta L$ bilden und quadrieren.',
+          '$F_{ki} = \\pi^2 E I / (\\beta L)^2$ einsetzen und ausrechnen.',
+          'Prüfen, ob $\\sigma_{ki} = F_{ki}/A < R_p$ (Euler gilt nur im elastischen Bereich).',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Erst alle Geometrie- und Lagerungsgrößen bestimmen, dann einsetzen, zuletzt die Gültigkeit prüfen.
+
+**Rechnung:** 1) $\\beta$, 2) $I_\\text{min}$, 3) $(\\beta L)^2$, 4) Zahl ausspucken, 5) Gültigkeits-Check.
+
+**Probe:** Wer Schritt 5 vergisst, rechnet für kurze Stäbe Unsinn: Euler liefert dort $\\sigma_{ki} > R_p$, was physikalisch nicht möglich ist — der Stab fließt vorher.
+
+**Typischer Fehler:** Schritt 5 weglassen und für einen kurzen Stab fröhlich Euler rechnen. Immer den Schlankheitsgrad prüfen.`,
+        [
+          'Lagerung zuerst, damit $\\beta$ steht.',
+          '$I$ kommt aus der Querschnittsform.',
+          'Ganz zum Schluss: Gültigkeitsbereich.',
+        ],
+      ),
+    ],
+
+    // Sub-Goal 1: Einspannbeiwerte β
+    1: [
+      matching(
+        'Sub-Goal "Einspannbeiwerte: $\\beta = 1$ gelenkig/gelenkig, $\\beta = 2$ eingespannt/frei, $\\beta = 0{,}5$ beidseitig eingespannt": Ordne Lagerungsfall und Einspannbeiwert $\\beta$ zu.',
+        [
+          { left: 'Beidseitig gelenkig gelagert', right: '$\\beta = 1$' },
+          { left: 'Beidseitig eingespannt', right: '$\\beta = 0{,}5$' },
+          { left: 'Einseitig eingespannt, freies Ende (Kragstab)', right: '$\\beta = 2$' },
+          { left: 'Einseitig eingespannt, anderes Ende gelenkig geführt', right: '$\\beta \\approx 0{,}7$' },
+        ],
+        `**Ansatz:** $\\beta$ ist das Verhältnis der **Ersatzknicklänge** $\\beta L$ zur tatsächlichen Stablänge. Je stärker die Einspannung, desto kürzer die effektive Knicklänge.
+
+**Rechnung:** Kragstab hat die größte Ersatzlänge ($2L$) → kleinste Knicklast. Beidseitig eingespannt die kürzeste ($0{,}5 L$) → höchste Knicklast.
+
+**Probe:** Merke die Reihenfolge aufsteigender Knicklast: Kragstab ($\\beta=2$) < gelenkig/gelenkig ($\\beta=1$) < eingespannt/gelenkig ($\\beta\\approx 0{,}7$) < beidseitig eingespannt ($\\beta=0{,}5$).
+
+**Typischer Fehler:** $\\beta = 2$ für "doppelt eingespannt" vermuten (also sehr stabil). Genau umgekehrt: $\\beta = 2$ ist der Kragstab — die schwächste Lagerung.`,
+        [
+          'Je besser die Einspannung, desto kleiner $\\beta$.',
+          'Kragstab = worst case = größtes $\\beta$.',
+          'Beidseitig gelenkig ist der Standardfall mit $\\beta = 1$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Einspannbeiwerte: $\\beta = 1$ gelenkig/gelenkig, $\\beta = 2$ eingespannt/frei, $\\beta = 0{,}5$ beidseitig eingespannt": Welche Lagerung liefert bei gleichem Stab die **höchste** Euler-Knicklast?',
+        [
+          'Beidseitig eingespannt (β = 0{,}5).',
+          'Beidseitig gelenkig (β = 1).',
+          'Einseitig eingespannt, freies Ende (β = 2).',
+          'Alle liefern dieselbe Knicklast, weil der Stab ja derselbe ist.',
+        ],
+        0,
+        `**Ansatz:** $F_{ki} \\propto 1/\\beta^2$ — kleinstes $\\beta$ gibt höchstes $F_{ki}$.
+
+**Rechnung:** $\\beta = 0{,}5$ → $\\beta^2 = 0{,}25$, also $F_{ki}$ viermal so hoch wie bei $\\beta = 1$ und 16-mal so hoch wie bei $\\beta = 2$.
+
+**Probe:** Stahlstab 2 m, $I = 8\\,000$: $\\beta=1$ → 4{,}15 kN, $\\beta=0{,}5$ → 16{,}6 kN, $\\beta=2$ → 1{,}04 kN. Ordnung passt.
+
+**Typischer Fehler:** Intuitiv "großes β = stark eingespannt" annehmen. Es ist genau umgekehrt: $\\beta$ ist der **Ersatzlängen-Faktor**, nicht die Einspannung selbst.`,
+        [
+          'Kleines $\\beta$ = kurze Ersatzlänge = hohe Knicklast.',
+          '$\\beta = 0{,}5$ ist das Minimum der Standardfälle.',
+          'Faktor 16 Unterschied zwischen $\\beta=0{,}5$ und $\\beta=2$.',
+        ],
+        {
+          1: 'Das ist der Standardfall (β = 1) — dazwischen, nicht am Maximum.',
+          2: 'β = 2 ist die schwächste Lagerung, liefert die **kleinste** Knicklast.',
+          3: 'Falsch — die Lagerung ändert die Ersatzlänge massiv, Faktor 16 zwischen β=0{,}5 und β=2.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Einspannbeiwerte: $\\beta = 1$ gelenkig/gelenkig, $\\beta = 2$ eingespannt/frei, $\\beta = 0{,}5$ beidseitig eingespannt": Stab mit $E = 210\\,000$ MPa, $I = 8\\,000$ mm⁴, $L = 2\\,000$ mm, **beidseitig eingespannt** ($\\beta = 0{,}5$). Knicklast $F_{ki}$ in N?',
+        16580,
+        200,
+        'N',
+        `**Ansatz:** Euler-Formel, nur $\\beta = 0{,}5$ einsetzen.
+
+**Rechnung:** $\\beta L = 0{,}5 \\cdot 2\\,000 = 1\\,000$ mm, $(\\beta L)^2 = 10^6$. $F_{ki} = \\pi^2 \\cdot 210\\,000 \\cdot 8\\,000 / 10^6 = \\pi^2 \\cdot 1\\,680 \\approx 16\\,580$ N.
+
+**Probe:** Gegenüber dem gelenkigen Fall (4\\,145 N) genau Faktor 4 mehr — passt zu $(\\beta_1/\\beta_2)^2 = (1/0{,}5)^2 = 4$.
+
+**Typischer Fehler:** $\\beta = 0{,}5$ in den Zähler statt in die Ersatzlänge im Nenner schreiben — gibt dann $\\beta^2 = 0{,}25$ als Faktor am Zähler und das Ergebnis wäre 1/4 statt 4-fach.`,
+        [
+          '$(\\beta L)^2 = (0{,}5 \\cdot 2000)^2 = 10^6$ mm².',
+          'Zähler: $\\pi^2 \\cdot 210\\,000 \\cdot 8\\,000$.',
+          'Ergebnis: viermal so hoch wie beim gelenkigen Stab.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Einspannbeiwerte: $\\beta = 1$ gelenkig/gelenkig, $\\beta = 2$ eingespannt/frei, $\\beta = 0{,}5$ beidseitig eingespannt": Die **Ersatzknicklänge** ist definiert als $L_\\text{eff} = \\beta \\cdot L$ und entspricht der Länge eines gedachten, beidseitig gelenkig gelagerten Stabs gleicher Knicklast.',
+        true,
+        `**Ansatz:** Genau das ist die Idee hinter $\\beta$: jede reale Lagerung wird auf den Standardfall "gelenkig/gelenkig" zurückgeführt.
+
+**Rechnung:** Kragstab, $L = 1$ m, $\\beta = 2$ → $L_\\text{eff} = 2$ m. Ein gelenkiger Stab mit 2 m Länge und gleichem $EI$ hat dieselbe Knicklast.
+
+**Probe:** In die Euler-Formel für gelenkig/gelenkig ($\\beta=1$) mit Länge $L_\\text{eff}$ einsetzen — identisches Ergebnis wie mit $\\beta$ und $L$.
+
+**Typischer Fehler:** $L_\\text{eff}$ für die tatsächliche geometrische Länge halten. Nein — das ist eine **gedachte** Länge, die den Einspannfall auf den Standardfall abbildet.`,
+        [
+          '$\\beta$ ist der Faktor, der $L$ zur Ersatzlänge streckt.',
+          'Ersatzlänge = Länge eines gelenkig/gelenkig-Stabs mit selber Knicklast.',
+          'Nützliches Werkzeug: jede Lagerung → Standardfall umrechnen.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Einspannbeiwerte: $\\beta = 1$ gelenkig/gelenkig, $\\beta = 2$ eingespannt/frei, $\\beta = 0{,}5$ beidseitig eingespannt": Eine Fahnenstange ist am Boden einbetoniert und oben frei. Welcher Lagerungsfall und welches $\\beta$ liegen vor?',
+        [
+          'Einseitig eingespannt, freies Ende; $\\beta = 2$.',
+          'Beidseitig gelenkig; $\\beta = 1$.',
+          'Beidseitig eingespannt; $\\beta = 0{,}5$.',
+          'Einseitig gelenkig, freies Ende; $\\beta = 0{,}7$.',
+        ],
+        0,
+        `**Ansatz:** "Am Boden einbetoniert" = eingespannt (keine Verdrehung, keine Verschiebung). "Oben frei" = keinerlei Lagerung.
+
+**Rechnung:** Einspannung + freies Ende ist exakt der klassische Kragstab mit $\\beta = 2$ — die Knickfigur ist eine Viertelsinuskurve, deshalb Ersatzlänge $2L$.
+
+**Probe:** Typische Klausurbilder: Fahne, Mast, Kragkran — alles Kragstäbe mit $\\beta = 2$.
+
+**Typischer Fehler:** "Einbetoniert = sehr stabil" gleichsetzen mit "beidseitig eingespannt". Aber das **andere** Ende ist frei, nicht eingespannt.`,
+        [
+          'Am Boden: keine Bewegung, keine Drehung → Einspannung.',
+          'Oben: nichts → frei.',
+          'Klassischer Kragstab.',
+        ],
+        {
+          1: '"Gelenkig" heißt: Stab kann sich drehen. Einbetoniert kann er das nicht.',
+          2: 'Das obere Ende ist **frei**, nicht eingespannt. Nur ein Einspannung.',
+          3: 'Unten ist nicht gelenkig, sondern fest eingespannt.',
+        },
+      ),
+    ],
+
+    // Sub-Goal 2: Flächenträgheitsmoment I — schwächste Achse zählt
+    2: [
+      ni(
+        'Sub-Goal "Flächenträgheitsmoment $I$: schwächste Achse zählt (kleinstes $I$)": Rechteckquerschnitt $b \\times h = 20 \\times 40$ mm (b = 20, h = 40). Der Stab kann um jede Achse knicken. Welches $I_\\text{min}$ in mm⁴ ist für die Knicklast maßgebend?',
+        26667,
+        50,
+        'mm⁴',
+        `**Ansatz:** Zwei Hauptträgheitsmomente: $I_x = b h^3/12$ (Biegung um x-Achse) und $I_y = h b^3/12$ (Biegung um y-Achse). Für Knicken zählt das **kleinere** — in die Richtung knickt der Stab zuerst weg.
+
+**Rechnung:** $I_x = 20 \\cdot 40^3/12 = 20 \\cdot 64\\,000/12 = 106\\,667$ mm⁴. $I_y = 40 \\cdot 20^3/12 = 40 \\cdot 8\\,000/12 = 26\\,667$ mm⁴. Minimum: $I_y = 26\\,667$ mm⁴.
+
+**Probe:** Der Stab knickt wie ein Lineal hochkant gehalten und seitlich weggedrückt — die lange Kante (40 mm) bringt nichts, die kurze (20 mm) bestimmt die Knickrichtung.
+
+**Typischer Fehler:** $I_x$ nehmen, "weil es größer ist und die Aufgabe nach dem Trägheitsmoment fragt". Für Knicken ist **immer** die schwächste Achse maßgebend.`,
+        [
+          '$I_x = b h^3/12$, $I_y = h b^3/12$.',
+          'Für Knicken: kleinstes $I$.',
+          'Kurze Seite ins hoch-gehoch gesetzte $b$ → $hb^3/12$ wird klein.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Flächenträgheitsmoment $I$: schwächste Achse zählt (kleinstes $I$)": Warum wird für die Knicklast $I_\\text{min}$ (und nicht $I_\\text{max}$) eingesetzt?',
+        [
+          'Der Stab knickt immer um die Achse mit dem kleinsten $I$ — das ist die "weichste" Richtung.',
+          'Mit $I_\\text{min}$ wird die Rechnung konservativ — man rechnet nur zur Sicherheit das Minimum.',
+          '$I_\\text{max}$ gilt für Biegung, $I_\\text{min}$ für Knicken — das ist reine Konvention.',
+          'Der Ausdruck $I_\\text{min}$ ist nur eine Bezeichnung; rechnerisch ist es egal, welches man nimmt.',
+        ],
+        0,
+        `**Ansatz:** Knicken passiert dort, wo der Widerstand am kleinsten ist — automatisch, nicht aus Konvention.
+
+**Rechnung:** $F_{ki} \\propto I$. Kleinstes $I$ gibt kleinste Knicklast. Sobald diese erreicht ist, knickt der Stab in diese Richtung. $I_\\text{max}$ wird nie relevant, weil der Stab vorher schon nachgegeben hat.
+
+**Probe:** Rechteck 20×40 knickt um die y-Achse (parallel zur 40er-Seite), nicht um die x-Achse. Demonstriert mit Lineal: um die flache Seite ist der Widerstand groß, um die Kante klein.
+
+**Typischer Fehler:** $I_\\text{min}$ als reine Sicherheitsreserve sehen. Nein — es ist die **physikalisch** maßgebende Größe, nicht Willkür.`,
+        [
+          'Was heißt "knicken"? Stab weicht in die Richtung des geringsten Widerstands aus.',
+          'Geringster Widerstand = kleinstes $I$.',
+          'Ist Physik, keine Konvention.',
+        ],
+        {
+          1: 'Klingt richtig, ist aber keine Konvention — es ist physikalisch notwendig.',
+          2: 'Biegung und Knicken nutzen dasselbe $I$ — bei Knicken ohne Vorgabe der Ebene immer das kleinste.',
+          3: 'Doch, es ist sehr relevant: $I_\\text{max}$ und $I_\\text{min}$ können um Faktor 4 auseinanderliegen.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Flächenträgheitsmoment $I$: schwächste Achse zählt (kleinstes $I$)": Für einen quadratischen Querschnitt ($b = h = a$) gilt $I_x = I_y = a^4/12$, daher ist jede Achse gleich stark und es gibt kein eindeutiges $I_\\text{min}$.',
+        true,
+        `**Ansatz:** Quadrat ist symmetrisch in x- und y-Richtung, also $I_x = I_y$.
+
+**Rechnung:** $I_x = a \\cdot a^3/12 = a^4/12 = I_y$. Egal in welche Richtung gedacht — gleiche Steifigkeit. (Streng genommen gilt das sogar für jede Achse durch den Flächenschwerpunkt: Mohr-Kreis der Trägheitsmomente entartet zum Punkt.)
+
+**Probe:** Deshalb sind Quadrat- und Kreisprofile in der Knickpraxis beliebt — keine "Schwachrichtung".
+
+**Typischer Fehler:** "Quadrat ist zwar symmetrisch, aber die Diagonale ist doch anders." Falsch — für Flächenträgheitsmomente ist sogar jede durch den Schwerpunkt laufende Achse gleich.`,
+        [
+          'Quadrat: $b = h$.',
+          'Setze in $bh^3/12$ und $hb^3/12$ ein.',
+          'Beide Ergebnisse identisch.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Flächenträgheitsmoment $I$: schwächste Achse zählt (kleinstes $I$)": Ordne dem Querschnitt sein Flächenträgheitsmoment (schwächste Achse) zu.',
+        [
+          { left: 'Kreis, Durchmesser $d$', right: '$I = \\pi d^4 / 64$' },
+          { left: 'Quadrat, Seite $a$', right: '$I = a^4 / 12$' },
+          { left: 'Rechteck $b \\times h$ ($b < h$), schwache Achse', right: '$I_y = h b^3 / 12$' },
+          { left: 'Kreisringrohr, Außen-$D$, Innen-$d$', right: '$I = \\pi (D^4 - d^4)/64$' },
+        ],
+        `**Ansatz:** Bei symmetrischen Querschnitten (Kreis, Quadrat) ist $I_\\text{min} = I_\\text{max}$. Beim Rechteck entscheidet die **kleinere** Kantenlänge hoch 3.
+
+**Rechnung:** Rechteck 30×10: $I_x = 30 \\cdot 10^3/12 = 2\\,500$, $I_y = 10 \\cdot 30^3/12 = 22\\,500$. $I_\\text{min} = 2\\,500$ — die 10-mm-Seite ist die schwache.
+
+**Probe:** Rohre dünner Wandstärke: $I = \\pi (D^4 - d^4)/64$. Beim dünnen Rohr ist $I \\approx \\pi D^3 t/8$ (Näherung).
+
+**Typischer Fehler:** $b h^3/12$ unabhängig von der Orientierung nehmen. Aufpassen: "b" ist die Breite **quer** zur Biegeachse, "h" die Höhe **entlang** der Biegeachse.`,
+        [
+          'Kreis symmetrisch: $\\pi d^4/64$.',
+          'Rechteck: kleinere Seite in die Potenz 3.',
+          'Rohr: Außen minus innen, beide hoch 4.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Flächenträgheitsmoment $I$: schwächste Achse zählt (kleinstes $I$)": Kreisquerschnitt mit Durchmesser $d = 20$ mm. Wie groß ist $I$ in mm⁴ (gerundet auf ganze Zahl)?',
+        7854,
+        20,
+        'mm⁴',
+        `**Ansatz:** $I = \\pi d^4 / 64$ (für Kreis, alle Achsen gleich).
+
+**Rechnung:** $d^4 = 20^4 = 160\\,000$. $I = \\pi \\cdot 160\\,000 / 64 = \\pi \\cdot 2\\,500 \\approx 7\\,854$ mm⁴.
+
+**Probe:** Vergleich Quadrat $a = 20$: $I = 20^4/12 = 13\\,333$ — Kreis etwas steifer als Quadrat? Nein, Quadrat ist steifer, aber der Kreis hat dafür weniger Querschnittsfläche. Pro Masse ist der Kreis oft effizient.
+
+**Typischer Fehler:** $\\pi d^2/4$ (Flächeninhalt) statt $\\pi d^4/64$ einsetzen. Beide Formeln enthalten $\\pi$ — aber die Potenz von $d$ unterscheidet sich!`,
+        [
+          'Kreisformel: $\\pi d^4/64$.',
+          '$20^4 = 160\\,000$.',
+          '$160\\,000 / 64 = 2\\,500$, dann mal $\\pi$.',
+        ],
+      ),
+    ],
+
+    // Sub-Goal 3: Schlankheitsgrad λ = βL/i, i = √(I/A)
+    3: [
+      ni(
+        'Sub-Goal "Schlankheitsgrad $\\lambda = \\beta L/i$ mit Trägheitsradius $i = \\sqrt{I/A}$": Quadratischer Stab $a = 30$ mm, Länge $L = 2\\,000$ mm, beidseitig gelenkig ($\\beta = 1$). Schlankheitsgrad $\\lambda$?',
+        231,
+        3,
+        '',
+        `**Ansatz:** Zuerst $I$ und $A$, dann $i = \\sqrt{I/A}$, dann $\\lambda = \\beta L / i$.
+
+**Rechnung:** $I = a^4/12 = 30^4/12 = 810\\,000/12 = 67\\,500$ mm⁴. $A = a^2 = 900$ mm². $i = \\sqrt{67\\,500/900} = \\sqrt{75} \\approx 8{,}66$ mm. $\\lambda = 1 \\cdot 2\\,000 / 8{,}66 \\approx 231$.
+
+**Probe:** Für Quadrat gibt es die Kurzformel $i = a/\\sqrt{12} = 30/3{,}464 \\approx 8{,}66$ mm ✓. Alternativ $\\lambda = \\beta L \\sqrt{12}/a = 2000 \\cdot 3{,}464 / 30 = 231$.
+
+**Typischer Fehler:** $i$ mit $I$ verwechseln — $i$ ist der Trägheits**radius** (Wurzel aus $I/A$, Einheit mm), nicht das Flächenträgheitsmoment (Einheit mm⁴).`,
+        [
+          '$I = a^4/12$ für Quadrat.',
+          '$i = \\sqrt{I/A}$, Einheit mm.',
+          '$\\lambda$ ist dimensionslos.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Schlankheitsgrad $\\lambda = \\beta L/i$ mit Trägheitsradius $i = \\sqrt{I/A}$": Wie ist der Trägheitsradius $i$ definiert?',
+        [
+          '$i = \\sqrt{I/A}$ — Wurzel aus Flächenträgheitsmoment geteilt durch Querschnittsfläche.',
+          '$i = I/A$ — Flächenträgheitsmoment geteilt durch Fläche.',
+          '$i = \\sqrt{A/I}$ — Kehrwert der obigen Definition.',
+          '$i = I \\cdot A$ — Produkt aus beiden.',
+        ],
+        0,
+        `**Ansatz:** $i$ ist ein charakteristischer Radius mit der Einheit einer Länge (mm). Damit das aufgeht, muss man $I$/$A$ (mm⁴/mm²) erst bilden und dann die Wurzel ziehen.
+
+**Rechnung:** $[I]/[A] = \\text{mm}^4/\\text{mm}^2 = \\text{mm}^2$. Wurzel → mm. Passt.
+
+**Probe:** Für Kreis $d$: $I = \\pi d^4/64$, $A = \\pi d^2/4$, $i = \\sqrt{d^2/16} = d/4$. Und tatsächlich: der Kreis-Trägheitsradius ist ein Viertel des Durchmessers.
+
+**Typischer Fehler:** Wurzel vergessen und die Einheit verlieren. Kontrolliere **immer** die Einheit: $i$ muss in mm rauskommen.`,
+        [
+          '$i$ hat Einheit einer Länge.',
+          '$I$ ist mm⁴, $A$ ist mm², Quotient mm².',
+          'Wurzel → mm.',
+        ],
+        {
+          1: 'Ohne Wurzel hätte $i$ die Einheit mm², also keine Länge. Deshalb nicht.',
+          2: 'Das wäre die Einheit $1/\\text{mm}$ — falsche Dimension.',
+          3: 'Das hätte die Einheit mm⁶ — physikalisch sinnlos.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Schlankheitsgrad $\\lambda = \\beta L/i$ mit Trägheitsradius $i = \\sqrt{I/A}$": Der Schlankheitsgrad $\\lambda$ ist eine dimensionslose Zahl, die unabhängig von der Querschnittsgröße angibt, wie "knickgefährdet" ein Stab ist.',
+        true,
+        `**Ansatz:** $\\lambda = \\beta L / i$. Beide Größen haben Einheit Länge → Quotient ist dimensionslos.
+
+**Rechnung:** $\\lambda$ vergleicht Länge mit Querschnittsausdehnung. Ein langes, dünnes Stäbchen hat hohes $\\lambda$ (→ Euler), ein kurzer, dicker Klotz niedriges $\\lambda$ (→ Plastisches Stauchen).
+
+**Probe:** Typische Bereiche für Stahl: $\\lambda > 100$ → Euler, $60 < \\lambda < 100$ → Tetmajer, $\\lambda < 60$ → plastisch.
+
+**Typischer Fehler:** $\\lambda$ in mm angeben. Nein — rein dimensionslos, einfach nur eine Zahl.`,
+        [
+          '$\\lambda = \\beta L / i$.',
+          'Beide Größen in mm.',
+          'mm/mm = 1 → dimensionslos.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Schlankheitsgrad $\\lambda = \\beta L/i$ mit Trägheitsradius $i = \\sqrt{I/A}$": Rechteckstab $b \\times h = 20 \\times 40$ mm, $L = 1\\,000$ mm, $\\beta = 1$. Schlankheitsgrad $\\lambda$?',
+        173,
+        3,
+        '',
+        `**Ansatz:** Kleinstes $i$ verwenden — der Stab knickt um die schwache Achse.
+
+**Rechnung:** $I_\\text{min} = h b^3/12 = 40 \\cdot 20^3/12 = 40 \\cdot 8\\,000/12 \\approx 26\\,667$ mm⁴. $A = 800$ mm². $i_\\text{min} = \\sqrt{26\\,667/800} = \\sqrt{33{,}33} \\approx 5{,}77$ mm. $\\lambda = 1 \\cdot 1\\,000 / 5{,}77 \\approx 173$.
+
+**Probe:** Für Rechteck gilt $i = b/\\sqrt{12}$ (schwache Achse), also $i = 20/3{,}464 \\approx 5{,}77$ ✓.
+
+**Typischer Fehler:** $I_\\text{max}$ und damit $i_\\text{max}$ nehmen — Ergebnis wäre $\\lambda \\approx 87$, der Stab würde als "mittelschlank" eingestuft und das Knicken fälschlich mit Tetmajer gerechnet.`,
+        [
+          'Schwache Achse: $I_\\text{min} = h b^3/12$.',
+          '$A = b \\cdot h$.',
+          'Kurzformel: $i_\\text{min} = b/\\sqrt{12}$ für Rechteck.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Schlankheitsgrad $\\lambda = \\beta L/i$ mit Trägheitsradius $i = \\sqrt{I/A}$": Bringe die Schritte zur Berechnung des Schlankheitsgrads in die richtige Reihenfolge.',
+        [
+          'Querschnittsfläche $A$ bestimmen.',
+          'Kleinstes Flächenträgheitsmoment $I_\\text{min}$ bestimmen.',
+          'Trägheitsradius $i = \\sqrt{I_\\text{min}/A}$ berechnen.',
+          'Lagerung anschauen, $\\beta$ ablesen, Ersatzlänge $\\beta L$ bilden.',
+          '$\\lambda = \\beta L / i$ ausrechnen und in Knickbereich einordnen.',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Querschnittsgrößen zuerst, dann Lagerung, dann Zusammenrechnen.
+
+**Rechnung:** 1) $A$, 2) $I_\\text{min}$ (schwache Achse!), 3) $i$, 4) $\\beta$, 5) $\\lambda$.
+
+**Probe:** Erst mit $\\lambda$ kann man entscheiden: Euler (hoch), Tetmajer (mittel) oder Fließen (niedrig).
+
+**Typischer Fehler:** Mit $\\beta$ und $L$ ohne $i$ arbeiten — dann fehlt die dimensionslose Normierung und man vergleicht Äpfel mit Birnen.`,
+        [
+          'Geometrie (A, I, i) vor Lagerung.',
+          'Ersatzlänge nach Lagerungs-Check.',
+          '$\\lambda$ ganz am Ende.',
+        ],
+      ),
+    ],
+
+    // Sub-Goal 4: Euler vs. Tetmajer/Johnson — Gültigkeitsbereiche
+    4: [
+      mc(
+        'Sub-Goal "Euler nur für elastisches Knicken ($\\sigma_{ki} < R_p$); bei kurzen Stäben Tetmajer/Johnson": In welchem Bereich des Schlankheitsgrads $\\lambda$ ist die **Euler-Formel** für Baustahl (S235) gültig?',
+        [
+          '$\\lambda \\gtrsim 100$ (schlanker Bereich).',
+          '$\\lambda < 20$ (sehr kurz).',
+          '$60 \\lesssim \\lambda \\lesssim 100$ (mittlerer Bereich).',
+          'Für jeden Wert von $\\lambda$.',
+        ],
+        0,
+        `**Ansatz:** Euler setzt voraus, dass der Werkstoff beim Knicken noch im **elastischen** Bereich ist, also $\\sigma_{ki} = \\pi^2 E/\\lambda^2 < R_p$.
+
+**Rechnung:** Grenze bei Stahl: $\\lambda_\\text{Euler} = \\pi \\sqrt{E/R_p} = \\pi \\sqrt{210\\,000/235} \\approx \\pi \\cdot 29{,}9 \\approx 94$. Daraus die gerundete Faustzahl $\\lambda \\gtrsim 100$.
+
+**Probe:** Bei $\\lambda = 100$: $\\sigma_{ki} = \\pi^2 \\cdot 210\\,000 / 10\\,000 \\approx 207$ MPa — knapp unter $R_p = 235$ MPa. Euler wird also genau bei diesem $\\lambda$ grenzwertig.
+
+**Typischer Fehler:** Euler blind für jeden Stab rechnen. Für gedrungene Stäbe liefert Euler unrealistisch hohe Knicklasten — in Wahrheit fließt der Werkstoff vorher.`,
+        [
+          '$\\sigma_{ki}$ muss unter $R_p$ bleiben.',
+          '$\\sigma_{ki} = \\pi^2 E/\\lambda^2$.',
+          'Für $\\lambda \\to \\infty$ geht $\\sigma_{ki} \\to 0$ — also hohes $\\lambda$ = sicher im elastischen Bereich.',
+        ],
+        {
+          1: 'Viel zu kurz — da fließt der Stab rein plastisch, Euler ist völlig ungültig.',
+          2: 'Tetmajer-Bereich, nicht Euler. Da ist $\\sigma_{ki}$ bereits nahe $R_p$.',
+          3: 'Euler ist eine elastische Theorie — sie scheitert im plastischen Bereich.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Euler nur für elastisches Knicken ($\\sigma_{ki} < R_p$); bei kurzen Stäben Tetmajer/Johnson": Bei einem gedrungenen, kurzen Druckstab ($\\lambda \\approx 20$) versagt der Stab durch plastisches Fließen und nicht durch klassisches Euler-Knicken.',
+        true,
+        `**Ansatz:** Kurze Stäbe haben sehr geringe Knickneigung. Stattdessen erreicht die Druckspannung $F/A$ die Streckgrenze und der Werkstoff fließt.
+
+**Rechnung:** Bei $\\lambda = 20$ wäre nach Euler $\\sigma_{ki} = \\pi^2 \\cdot 210\\,000 / 400 \\approx 5\\,180$ MPa — physikalisch unmöglich, lange vorher wäre $R_p$ überschritten.
+
+**Probe:** Praktisch: Druckstab aus Stahl mit $\\lambda < 60$ → Auslegung mit $\\sigma_\\text{zul} = R_p/S$, nicht mit Euler.
+
+**Typischer Fehler:** Euler für einen Klotz rechnen und ein astronomisches $F_{ki}$ bekommen. Immer $\\sigma_{ki}$ prüfen — wenn größer als $R_p$, ist Euler ungültig.`,
+        [
+          'Gedrungener Stab: kleines $\\lambda$.',
+          'Euler würde unrealistisch hohe $\\sigma_{ki}$ liefern.',
+          'Realität: Werkstoff fließt vorher.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Euler nur für elastisches Knicken ($\\sigma_{ki} < R_p$); bei kurzen Stäben Tetmajer/Johnson": Stahlstab (S235, $R_p = 235$ MPa, $E = 210\\,000$ MPa) mit $\\lambda = 150$. Berechne die kritische Euler-Knickspannung $\\sigma_{ki}$ in MPa und entscheide intuitiv: Euler gültig?',
+        92,
+        2,
+        'MPa',
+        `**Ansatz:** $\\sigma_{ki} = F_{ki}/A = \\pi^2 E / \\lambda^2$.
+
+**Rechnung:** $\\sigma_{ki} = \\pi^2 \\cdot 210\\,000 / 150^2 = \\pi^2 \\cdot 210\\,000 / 22\\,500 \\approx 9{,}87 \\cdot 9{,}33 \\approx 92$ MPa.
+
+**Probe:** 92 MPa < 235 MPa ($R_p$) → Euler **gültig**. Bestätigt die Faustregel $\\lambda > \\lambda_\\text{Euler} \\approx 94$.
+
+**Typischer Fehler:** Nur $F_{ki}$ ausrechnen und den Gültigkeitscheck vergessen. Am Ende **immer** $\\sigma_{ki}$ mit $R_p$ vergleichen.`,
+        [
+          'Kurzformel: $\\sigma_{ki} = \\pi^2 E / \\lambda^2$.',
+          '$\\lambda^2 = 22\\,500$.',
+          '$\\pi^2 \\approx 9{,}87$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Euler nur für elastisches Knicken ($\\sigma_{ki} < R_p$); bei kurzen Stäben Tetmajer/Johnson": Ordne Schlankheitsbereich (Stahl S235) und zugehöriges Knick-Auslegungsverfahren zu.',
+        [
+          { left: '$\\lambda \\gtrsim 100$ (schlank)', right: 'Euler-Formel (elastisches Knicken)' },
+          { left: '$60 \\lesssim \\lambda \\lesssim 100$ (mittelschlank)', right: 'Tetmajer-Gerade (teilplastisch)' },
+          { left: '$\\lambda \\lesssim 60$ (gedrungen)', right: 'Reine Druckspannung: $\\sigma = F/A \\leq R_p/S$' },
+          { left: 'Stab mit Exzentrizität', right: 'Zusätzlich Biegemoment berücksichtigen (keine reine Knicktheorie)' },
+        ],
+        `**Ansatz:** Drei Bereiche + Sonderfälle. Euler nur für elastisches Knicken, Tetmajer für den Übergang, reine Druckfestigkeit für kurze Stäbe.
+
+**Rechnung:** Die Grenzen 60/100 sind Faustzahlen für Stahl S235. Für andere Werkstoffe andere Grenzen ($\\lambda_\\text{Euler} = \\pi\\sqrt{E/R_p}$).
+
+**Probe:** Diagramm $\\sigma_{ki}$ gegen $\\lambda$: Hyperbel (Euler) geht in eine Gerade (Tetmajer) über und wird für kleines $\\lambda$ durch $R_p$ horizontal gedeckelt.
+
+**Typischer Fehler:** Einen Wert dazwischen wählen und trotzdem Euler rechnen. Besser konservativ: Tetmajer oder reine Druckfestigkeit, wenn $\\lambda$ im Zweifelsbereich.`,
+        [
+          'Hoch $\\lambda$ → elastisch → Euler.',
+          'Mittel → Tetmajer.',
+          'Klein → Druckfestigkeit.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Euler nur für elastisches Knicken ($\\sigma_{ki} < R_p$); bei kurzen Stäben Tetmajer/Johnson": Ein Stahlstab (S235) hat $\\lambda = 70$. Welches Auslegungsverfahren ist das passende?',
+        [
+          'Tetmajer-Gerade (teilplastisches Knicken im Übergangsbereich).',
+          'Euler-Formel — $\\lambda$ ist groß genug.',
+          'Reine Druckfestigkeit $\\sigma = F/A \\leq R_p/S$.',
+          'Es gibt hier kein etabliertes Verfahren, nur experimentelle Daten.',
+        ],
+        0,
+        `**Ansatz:** $\\lambda = 70$ fällt in den Übergangsbereich zwischen reinem Fließen und elastischem Knicken.
+
+**Rechnung:** Tetmajer für Stahl: $\\sigma_{ki} = 310 - 1{,}14 \\cdot \\lambda$ MPa → $\\sigma_{ki} \\approx 310 - 80 = 230$ MPa. Das ist knapp unter $R_p = 235$, passt zum Übergang.
+
+**Probe:** Euler würde $\\sigma_{ki} = \\pi^2 \\cdot 210\\,000/4\\,900 \\approx 423$ MPa ergeben — unphysikalisch, da > $R_p$.
+
+**Typischer Fehler:** Im Zweifel Euler rechnen und "hoffen, dass es passt". Gerade im mittleren Bereich liefert Euler zu hohe Werte; besser Tetmajer oder konservativ $R_p/S$.`,
+        [
+          '$\\lambda = 70$ liegt zwischen 60 und 100.',
+          'Euler greift erst ab ca. 100.',
+          'Unter 60 ist reine Druckfestigkeit.',
+        ],
+        {
+          1: 'Euler wäre ungültig — $\\sigma_{ki}$ nach Euler würde $R_p$ überschreiten.',
+          2: 'Das gilt erst bei $\\lambda < 60$. Bei 70 knickt der Stab (teilplastisch).',
+          3: 'Doch — die Tetmajer-Gerade ist der Standard für Stahl im Übergangsbereich.',
+        },
+      ),
+    ],
+  },
+
 }

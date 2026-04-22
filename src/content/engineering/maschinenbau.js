@@ -1297,14 +1297,26 @@ Das **Flächenträgheitsmoment** $I$ bestimmt die Knicklast maßgeblich (schwäc
                 correctValue: 20708,
                 tolerance: 200,
                 unit: 'N',
-                explanation: '$F_{ki} = \\pi^2 \\cdot 210000 \\cdot 10000 / (1 \\cdot 1000)^2 = \\pi^2 \\cdot 2100 \\approx 20708$ N.',
+                explanation: `**Ansatz:** Euler-Knicklast $F_{ki} = \\pi^2 E I / (\\beta L)^2$. Beidseitig gelenkig → $\\beta = 1$, Ersatzlänge $\\beta L = L = 1000$ mm.
+
+**Rechnung:** $F_{ki} = \\pi^2 \\cdot 210\\,000 \\cdot 10\\,000 / (1 \\cdot 1\\,000)^2 = \\pi^2 \\cdot 2{,}1 \\cdot 10^9 / 10^6 = \\pi^2 \\cdot 2\\,100 \\approx 9{,}87 \\cdot 2\\,100 \\approx 20\\,708$ N.
+
+**Probe:** Einheiten: $\\text{MPa} \\cdot \\text{mm}^4 / \\text{mm}^2 = \\text{N/mm}^2 \\cdot \\text{mm}^2 = \\text{N}$ ✓. Etwa 20 kN klingt plausibel für einen 1 m langen dünnen Stahlstab.
+
+**Typischer Fehler:** $\\beta L$ nicht quadrieren, dann kommt ein viel zu großer Wert heraus. Oder $L$ in Meter einsetzen und Einheiten-Chaos produzieren.`,
                 hints: ['$F_{ki} = \\pi^2 \\cdot E \\cdot I / (\\beta L)^2$', '$\\beta = 1$ für beidseitig gelenkig', '$\\pi^2 \\approx 9{,}87$'],
               },
               {
                 type: 'true-false',
                 statement: 'Bei einseitig eingespanntem, freiem Ende ist die Knicklast am kleinsten (β = 2).',
                 correct: true,
-                explanation: 'Großes β bedeutet kleine Knicklast: $F_{ki} \\propto 1/(\\beta L)^2$. β = 2 liefert die kleinste Last.',
+                explanation: `**Ansatz:** $F_{ki} \\propto 1/(\\beta L)^2$ — großes $\\beta$ bedeutet kleines $F_{ki}$.
+
+**Rechnung:** Standardfälle im Vergleich: $\\beta = 0{,}5$ (beidseitig eingespannt), $\\beta = 1$ (gelenkig), $\\beta \\approx 0{,}7$ (eingespannt/gelenkig), $\\beta = 2$ (Kragstab). Maximum bei Kragstab → kleinste Knicklast.
+
+**Probe:** Kragstab hat Ersatzlänge $2L$ — das Quadrat gibt Faktor 4 weniger als der gelenkige Fall und Faktor 16 weniger als beidseitig eingespannt.
+
+**Typischer Fehler:** Intuitiv "Einspannung = Stabil" gleichsetzen und daraus schließen, dass $\\beta = 2$ besonders stabil wäre. $\\beta$ ist aber der **Ersatzlängenfaktor** — je größer, desto weicher.`,
                 hints: ['Je größer β, desto kleiner $F_{ki}$', 'β = 2 → $(\\beta L)^2 = 4L^2$', 'Vergleiche mit β = 1: gleicher Nenner, 4-facher Unterschied'],
               },
               {
@@ -1313,7 +1325,13 @@ Das **Flächenträgheitsmoment** $I$ bestimmt die Knicklast maßgeblich (schwäc
                 correctValue: 5177,
                 tolerance: 100,
                 unit: 'N',
-                explanation: '$F_{ki} = \\pi^2 \\cdot 210000 \\cdot 10000 / (2 \\cdot 1000)^2 = \\pi^2 \\cdot 525 \\approx 5177$ N.',
+                explanation: `**Ansatz:** Gleicher Stab, nur $\\beta = 2$ statt 1. Ersatzlänge vervierfacht ($\\beta L = 2 \\cdot 1\\,000$), damit $(\\beta L)^2$ vierfach.
+
+**Rechnung:** $F_{ki} = \\pi^2 \\cdot 210\\,000 \\cdot 10\\,000 / (2 \\cdot 1\\,000)^2 = \\pi^2 \\cdot 2{,}1 \\cdot 10^9 / 4 \\cdot 10^6 = \\pi^2 \\cdot 525 \\approx 5\\,177$ N.
+
+**Probe:** Exakt ein Viertel des gelenkigen Falls (20\\,708/4 = 5\\,177) ✓. Das ist die typische Faustzahl: Kragstab hat nur ein Viertel der Knicklast des beidseitig gelenkigen Stabs.
+
+**Typischer Fehler:** $\\beta = 2$ in den Zähler setzen (dann wäre $F_{ki}$ vier**fach** statt einviertel). Oder $\\beta$ vergessen und wieder 20\\,708 N ausgeben.`,
                 hints: ['Euler: $F_{ki} = \\pi^2 \\cdot E \\cdot I / (\\beta L)^2$', '$\\beta = 2 \\Rightarrow (\\beta L)^2 = (2 \\cdot 1000)^2 = 4 \\cdot 10^6$', '$\\pi^2 \\cdot 210000 \\cdot 10000 / 4 \\cdot 10^6$'],
               },
             ],
