@@ -56,6 +56,37 @@ Keine Aufgabe wird akzeptiert, die nicht **alle** Punkte erfüllt:
 - **Goal-Tasks** (in `subgoal_tasks/<topic>.js`): Sub-Goal-Label **wörtlich** in der Frage zitiert, z. B. `Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": …`.
 - **Typen-Rotation pro Lesson:** Mischung aus mc/ni/tf/matching/sorting — nicht 5× MC in Folge.
 - **100 % manuell, fachlich korrekt, konkret** — keine Platzhalter, keine generischen Templates.
+- **Visualisierungen einbauen, wenn sie dem Stoff helfen** (siehe nächster Abschnitt).
+
+---
+
+## Visualisierungen (wenn von Vorteil)
+
+**Regel:** Für jede Lesson prüfen, ob eine interaktive Visualisierung das Konzept klarer macht. Besonders bei abstrakten Begriffen (Grenzwert, Ableitung, Vektor, Schwingung, Spannungs-Dehnungs-Kurve, Fläche unter Graph, komplexe Ebene). Bei rein numerischen Themen (Prozentrechnung, Bruchrechnen) nur dann, wenn wirklich sinnvoll.
+
+**Einbindung** als Lesson-Step in `lesson.steps`:
+
+```js
+{
+  id: 'lesson-id-s2',
+  type: 'visualization',
+  title: 'Interaktiver Funktionsgraph',
+  visualizationId: 'function-graph',
+  params: {
+    functions: [{ fn: (x) => x * x, color: '#3b82f6', label: 'x²' }],
+    xRange: [-3, 3],
+    yRange: [-1, 9],
+    showGrid: true,
+  },
+}
+```
+
+**Verfügbare Viz** (21 Stück, siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`):
+`unit-circle`, `trig-explorer`, `sin-wave-explorer`, `function-graph`, `derivative-graph`, `limit-explorer`, `integral-area`, `taylor-approx`, `vector-diagram`, `vector-3d`, `complex-plane`, `eigenvector-viz`, `force-parallelogram`, `free-body-diagram`, `beam-reactions`, `interactive-beam`, `stress-strain`, `mohr-circle`, `spring-mass-damper`, `pv-diagram`, `lager-illustration`.
+
+**Pro Topic** sind die passenden Viz-IDs unter `TOPIC_GUIDES[id].recommendedVisualizations` hinterlegt — STATUS.md listet sie in jeder Task-Card direkt mit.
+
+Wenn keine der bestehenden Viz zum Stoff passt, **KEINE neue erfinden** — lieber ohne Viz arbeiten oder in einem separaten Commit eine neue Komponente unter `src/components/visualizations/` anlegen und in `VisualizationEngine.jsx` registrieren.
 
 Vor dem Commit prüft `scripts/validate-content.js`, dass Pflichtfelder sitzen. Aufgaben ohne 4-Block oder ohne Hints erscheinen als Warning im Content-Audit; MC-Aufgaben ohne vollständige `wrongAnswerExplanations` als harter Fehler beim Runtime-Import.
 
