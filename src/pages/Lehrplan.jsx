@@ -199,7 +199,7 @@ export function Lehrplan() {
         </h2>
         <p className="text-ink-soft dark:text-surface-300 text-xs">
           Detaillierte Reihenfolge, Pflichtkompetenzen, häufige Fehler und Prüfungsfokus —
-          Qualitätsziel: ≥ {MIN_EXERCISES_PER_LESSON} Aufgaben pro Lesson (mehr ist besser).
+          mindestens {MIN_EXERCISES_PER_LESSON} Aufgaben pro Lesson (nach oben kein Limit, mehr ist besser).
         </p>
         {Object.entries(TOPIC_GUIDES).map(([tid, guide]) => {
           const topic = getTopic(tid)

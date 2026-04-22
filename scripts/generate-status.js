@@ -264,15 +264,17 @@ for (const group of CURRICULUM_TIPS) {
 // Gesamt-Kennzahlen
 out.push(`## Gesamt-Kennzahlen`)
 out.push(``)
-out.push(`| Metrik | Wert | Ziel | Status |`)
+out.push(`> **Alle Zahlen sind Mindestwerte — nach oben kein Limit. Mehr Aufgaben = bessere Routine.**`)
+out.push(``)
+out.push(`| Metrik | Wert | Mindestens | Status |`)
 out.push(`| --- | ---: | ---: | :---: |`)
 out.push(`| Topics | ${topics.length} | ${topics.length} | ✅ |`)
 out.push(`| Units | ${gUnits} | — | — |`)
 out.push(`| Lessons | ${gLessons} | — | — |`)
-out.push(`| Aufgaben (gesamt) | ${gTotal} | — | — |`)
-out.push(`| Aufgaben mit 4-Block | ${gFourBlock} (${percent(gFourBlock, gTotal)} %) | ${gTotal} (100 %) | ${statusIcon(gFourBlock, gTotal)} |`)
+out.push(`| Aufgaben (gesamt) | ${gTotal} | ${gLessons * MIN_EXERCISES_PER_LESSON}+ (≥ ${MIN_EXERCISES_PER_LESSON}/Lesson) | ${statusIcon(gTotal, gLessons * MIN_EXERCISES_PER_LESSON)} |`)
+out.push(`| Aufgaben mit 4-Block | ${gFourBlock} (${percent(gFourBlock, gTotal)} %) | 100 % der Aufgaben | ${statusIcon(gFourBlock, gTotal)} |`)
 out.push(`| MC mit wrongAnswerExplanations | ${gMcWae} / ${gMcTotal} (${percent(gMcWae, gMcTotal)} %) | 100 % | ${statusIcon(gMcWae, gMcTotal)} |`)
-out.push(`| Sub-Goal-Tasks verknüpft | ${gSubGoalsCovered} / ${gSubGoals} (${percent(gSubGoalsCovered, gSubGoals)} %) | 100 % | ${statusIcon(gSubGoalsCovered, gSubGoals)} |`)
+out.push(`| Sub-Goal-Tasks verknüpft | ${gSubGoalsCovered} / ${gSubGoals} (${percent(gSubGoalsCovered, gSubGoals)} %) | 100 % (≥ ${MIN_TASKS_PER_SUB_GOAL} pro SG) | ${statusIcon(gSubGoalsCovered, gSubGoals)} |`)
 out.push(`| Practice-Topics ≥ ${PRACTICE_BASELINE} Exercises | ${gPracticeOk} / ${topics.length} | ${topics.length} / ${topics.length} | ${statusIcon(gPracticeOk, topics.length)} |`)
 out.push(``)
 
@@ -392,7 +394,7 @@ if (agentTasks.length > 0) {
   out.push(``)
   out.push(`> 📘 **Vor dem Anfangen:** [CLAUDE.md](./CLAUDE.md) lesen (Qualitätskontrakt, Dateistruktur, Workflow, was NICHT zu tun ist).`)
   out.push(``)
-  out.push(`**Ziel:** Handgeschriebene Aufgaben in Menge ergänzen. Keine Template-Generatoren, keine Slop-Aufgaben.`)
+  out.push(`**Zweck:** Handgeschriebene Aufgaben in Menge ergänzen. Alle Zahlen sind **Mindestwerte**, keine Zielwerte — nach oben kein Cap. Keine Template-Generatoren, keine Slop-Aufgaben.`)
   out.push(``)
   out.push(`**Mengen-Regel:**`)
   out.push(``)
@@ -450,7 +452,7 @@ if (agentTasks.length > 0) {
       out.push(`#### \`${t.lessonId}\` · ${t.lessonTitle}`)
       out.push(``)
       out.push(`- **Topic:** \`${t.topicId}\` (${t.topicTitle}) · **Unit:** ${t.unitTitle}${t.isExamUnit ? ' · **[PRÜFUNG]**' : ''}`)
-      out.push(`- **Aufgaben aktuell:** ${t.have} (Minimum: ${t.target}) · **fehlen mindestens:** ${t.missing} — mehr ist besser`)
+      out.push(`- **Aufgaben aktuell:** ${t.have} · **mindestens:** ${t.target} · **fehlen bis Minimum:** ${t.missing} (mehr ist besser, kein Cap)`)
       const histParts = Object.entries(t.typeHistogram)
         .filter(([, n]) => n > 0)
         .map(([type, n]) => `${type} ×${n}`)
@@ -458,7 +460,7 @@ if (agentTasks.length > 0) {
       out.push(`- **Typen einsetzen (Rotation):** ${t.suggestedTypes.join(', ')}`)
 
       if (t.subGoalsCoverage && t.subGoalsCoverage.length > 0) {
-        out.push(`- **Sub-Goals dieser Lesson** (Ziel: ≥ ${MIN_TASKS_PER_SUB_GOAL} Aufgaben pro Sub-Goal, nach oben kein Limit):`)
+        out.push(`- **Sub-Goals dieser Lesson** (mindestens ${MIN_TASKS_PER_SUB_GOAL} Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):`)
         for (const sg of t.subGoalsCoverage) {
           const status = sg.have >= sg.target ? '✅' : sg.have > 0 ? '🟡' : '🔴'
           out.push(`  - ${status} [${sg.index}] (${sg.examRelevance}) **${sg.have}/${sg.target}+** Aufgaben — ${sg.label}`)
@@ -503,7 +505,7 @@ if (agentTasks.length > 0) {
 }
 
 if (gaps.length === 0 && agentTasks.length === 0) {
-  out.push(`✅ Alle Ziele erreicht.`)
+  out.push(`✅ Alle Mindestwerte erreicht (Weiterarbeit jederzeit möglich — kein Cap).`)
   out.push(``)
 }
 

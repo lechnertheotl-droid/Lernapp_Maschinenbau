@@ -95,15 +95,17 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 
 ## Gesamt-Kennzahlen
 
-| Metrik | Wert | Ziel | Status |
+> **Alle Zahlen sind Mindestwerte — nach oben kein Limit. Mehr Aufgaben = bessere Routine.**
+
+| Metrik | Wert | Mindestens | Status |
 | --- | ---: | ---: | :---: |
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2198 | — | — |
-| Aufgaben mit 4-Block | 233 (11 %) | 2198 (100 %) | 🔴 |
+| Aufgaben (gesamt) | 2198 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 233 (11 %) | 100 % der Aufgaben | 🔴 |
 | MC mit wrongAnswerExplanations | 920 / 920 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 8 / 1134 (1 %) | 100 % | 🔴 |
+| Sub-Goal-Tasks verknüpft | 8 / 1134 (1 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -1447,7 +1449,7 @@ _Numerische Tools sind in jedem modernen Labor und in der Industrie Standard. We
 
 > 📘 **Vor dem Anfangen:** [CLAUDE.md](./CLAUDE.md) lesen (Qualitätskontrakt, Dateistruktur, Workflow, was NICHT zu tun ist).
 
-**Ziel:** Handgeschriebene Aufgaben in Menge ergänzen. Keine Template-Generatoren, keine Slop-Aufgaben.
+**Zweck:** Handgeschriebene Aufgaben in Menge ergänzen. Alle Zahlen sind **Mindestwerte**, keine Zielwerte — nach oben kein Cap. Keine Template-Generatoren, keine Slop-Aufgaben.
 
 **Mengen-Regel:**
 
@@ -1488,10 +1490,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-3-5` · Sinussatz & Cosinussatz
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×2, number-input ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Sinussatz: $a/\sin\alpha = b/\sin\beta = c/\sin\gamma = 2R$ (Umkreisradius)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Cosinussatz: $a^2 = b^2 + c^2 - 2bc\cos\alpha$ (verallgemeinerter Pythagoras)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz
@@ -1512,10 +1514,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-3-4` · Bogenlänge & Durchschnittswert
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Anwendungen
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Bogenlänge: $L = \int_a^b \sqrt{1 + [f'(x)]^2} dx$ (Pythagoras am Differentialdreieck)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Durchschnittswert: $\bar{f} = \frac{1}{b-a} \int_a^b f(x) dx$
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Parametrisierte Kurve $(x(t), y(t))$: $L = \int_{t_1}^{t_2} \sqrt{x'^2 + y'^2} dt$
@@ -1535,10 +1537,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-1-4` · Reibung
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×1, number-input ×1, true-false ×1
 - **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, number-input, true-false
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Coulombsches Reibgesetz: $F_R = \mu F_N$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Haftreibwert $\mu_0$ > Gleitreibwert $\mu$ (Losreißen braucht mehr Kraft)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Auf geneigter Ebene: $F_N = mg\cos\alpha$, $F_H = mg\sin\alpha$
@@ -1558,10 +1560,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-1-5` · Schwerpunkt
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** number-input ×2, true-false ×1
 - **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Diskrete Massen: $x_S = \sum m_i x_i / \sum m_i$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Zusammengesetzte Flächen: $x_S = \sum A_i x_{S,i} / \sum A_i$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Loch als negative Fläche subtrahieren
@@ -1581,10 +1583,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-2-4` · Schwingungen
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Dynamik
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Eigenkreisfrequenz: $\omega_0 = \sqrt{c/m}$, Periode $T = 2\pi/\omega_0$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Harmonische Schwingung: $x(t) = A \sin(\omega_0 t + \varphi)$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Resonanz bei $\Omega = \omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)
@@ -1604,10 +1606,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-2-5` · Dynamik starrer Körper
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Dynamik
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** number-input ×3
 - **Typen einsetzen (Rotation):** multiple-choice, true-false, matching, sorting, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Drallsatz: $M = J \cdot \alpha$ (Rotationsanalog zu $F = ma$)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Standardträgheitsmomente: Vollzylinder $\tfrac{1}{2}mR^2$, Stab $\tfrac{1}{12}mL^2$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Steinerscher Anteil: $J_A = J_S + m d^2$ (Parallelachsenverschiebung)
@@ -1627,10 +1629,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fest-1-3` · Schubspannung und Torsion
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Spannung und Dehnung
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Torsionsspannung: $\tau_\text{max} = M_T/W_p$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Polares Widerstandsmoment Kreisquerschnitt: $W_p = \pi d^3/16$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Verdrehwinkel: $\varphi = M_T L/(G I_p)$ mit $I_p = \pi d^4/32$
@@ -1650,10 +1652,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fest-1-4` · Knicken
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Spannung und Dehnung
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** number-input ×2, true-false ×1
 - **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Euler-Knicklast: $F_{ki} = \pi^2 E I/(\beta L)^2$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Einspannbeiwerte: $\beta = 1$ gelenkig/gelenkig, $\beta = 2$ eingespannt/frei, $\beta = 0{,}5$ beidseitig eingespannt
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Flächenträgheitsmoment $I$: schwächste Achse zählt (kleinstes $I$)
@@ -1673,10 +1675,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fest-2-3` · Mohr'scher Spannungskreis
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Biegung und Torsion
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Mittelpunkt: $\sigma_M = (\sigma_x + \sigma_y)/2$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Radius: $R = \sqrt{((\sigma_x - \sigma_y)/2)^2 + \tau_{xy}^2}$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Hauptspannungen: $\sigma_{1,2} = \sigma_M \pm R$
@@ -1697,10 +1699,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fest-2-4` · Wechselfestigkeit und Betriebsfestigkeit
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Biegung und Torsion
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** number-input ×2, true-false ×1
 - **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Mittelspannung: $\sigma_m = (\sigma_\text{max} + \sigma_\text{min})/2$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Ausschlagspannung: $\sigma_a = (\sigma_\text{max} - \sigma_\text{min})/2$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Goodman-Kriterium: $\sigma_a/\sigma_W + \sigma_m/R_m \leq 1$
@@ -1720,10 +1722,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fest-2-5` · Kerbspannungen & Formzahl
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Biegung und Torsion
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×2, number-input ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Formzahl: $\alpha_K = \sigma_\text{max}/\sigma_\text{nenn}$ (rein geometrisch)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Kerbwirkungszahl $\beta_K \leq \alpha_K$ (werkstoffabhängig, bei zähen kleiner)
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Typische Werte: Welleabsatz scharf $\alpha_K = 2$–3, Gewindegrund $\alpha_K = 3$–5
@@ -1742,10 +1744,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `thermo-2-3` · Kreisprozesse
 
 - **Topic:** `thermodynamik` (Thermodynamik) · **Unit:** Hauptsätze
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Carnot: $\eta_C = 1 - T_\text{kalt}/T_\text{warm}$ (in Kelvin!)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Otto-Prozess: $\eta_O = 1 - \varepsilon^{1-\gamma}$ mit Verdichtung $\varepsilon = V_1/V_2$
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Diesel-Prozess: etwas anderer Wirkungsgrad (Einspritzverhältnis)
@@ -1765,10 +1767,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `thermo-2-4` · Wärmeübertragung
 
 - **Topic:** `thermodynamik` (Thermodynamik) · **Unit:** Hauptsätze
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** number-input ×2, true-false ×1
 - **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Fourier-Wärmeleitung: $\dot Q = \lambda A \Delta T/d$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Wärmeübergang (Newton): $\dot Q = \alpha A \Delta T$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — k-Wert (mehrlagige Wand): $1/k = 1/\alpha_1 + \sum d_i/\lambda_i + 1/\alpha_2$
@@ -1788,10 +1790,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fluid-2-3` · Rohrströmung und Druckverlust
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Strömung
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Darcy-Weisbach: $\Delta p = \lambda (L/d)(\rho v^2/2)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Reynolds-Zahl: $Re = \rho v d/\mu$; laminar $<2300$, turbulent $>4000$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Hagen-Poiseuille (laminar): $\Delta p = 128 \mu L \dot V/(\pi d^4)$
@@ -1811,10 +1813,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fluid-2-4` · Ähnlichkeitsgesetze und Pumpen
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Strömung
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** number-input ×3
 - **Typen einsetzen (Rotation):** multiple-choice, true-false, matching, sorting, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Pumpengesetze: $\dot V \propto n$, $H \propto n^2$, $P \propto n^3$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Reynolds für Ähnlichkeit: Modell- und Prototyp-Re gleich halten
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Froude-Zahl: $Fr = v/\sqrt{gL}$ (Schwerewellen, offene Gerinne)
@@ -1834,10 +1836,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fluid-2-5` · Moody-Diagramm & Rohrreibung praktisch
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Strömung
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Laminar: $\lambda = 64/Re$ (unabhängig von Rauhigkeit)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Turbulent glatt (Blasius, $Re < 10^5$): $\lambda = 0{,}316/Re^{0{,}25}$
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Turbulent rau: Moody-Diagramm oder Colebrook-Gleichung
@@ -1856,10 +1858,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `melem-1-3` · Schweißverbindungen
 
 - **Topic:** `maschinenelemente` (Maschinenelemente) · **Unit:** Verbindungen
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×1, number-input ×1, true-false ×1
 - **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, number-input, true-false
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Kehlnaht-Spannung: $\tau = F/(a \cdot l_w)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Nahtdicke Kehlnaht: $a \approx 0{,}7 \cdot h$ (Schenkellänge $h$)
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Verbindungsarten: Schweißen (stoffschlüssig, dauerhaft), Schrauben (lösbar)
@@ -1879,10 +1881,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `melem-2-3` · Lagerlebensdauer
 
 - **Topic:** `maschinenelemente` (Maschinenelemente) · **Unit:** Wellen, Lager, Zahnräder
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** number-input ×3
 - **Typen einsetzen (Rotation):** multiple-choice, true-false, matching, sorting, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — L10-Lebensdauer: $L_{10} = (C/P)^p$ Mio. Umdrehungen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Exponent: $p = 3$ Kugellager, $p = 10/3$ Rollenlager
   - 🔴 [2] (hoch) **0/5+** Aufgaben — In Stunden: $L_{10h} = L_{10} \cdot 10^6/(60 \cdot n)$
@@ -1902,10 +1904,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `et-2-3` · Drehstrom & 3-Phasensystem
 
 - **Topic:** `elektrotechnik` (Elektrotechnik) · **Unit:** Wechselstrom
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×2, number-input ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Stern: $U_{LL} = \sqrt 3 U_{LN}$, $I_L = I_\text{Strang}$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Dreieck: $U_{LL} = U_\text{Strang}$, $I_L = \sqrt 3 I_\text{Strang}$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Drehstrom-Leistung: $P = \sqrt 3 U_{LL} I_L \cos\varphi$
@@ -1924,10 +1926,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `rt-2-3` · Bodediagramm & Phasengang
 
 - **Topic:** `regelungstechnik` (Regelungstechnik) · **Unit:** Regler und Stabilität
-- **Aufgaben aktuell:** 3 (Minimum: 20) · **fehlen mindestens:** 17 — mehr ist besser
+- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×2, number-input ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Amplitudengang in dB: $A_\text{dB} = 20 \log_{10}|G|$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Grundbausteine: P $0°$; I $-90°$, $-20$ dB/Dek; D $+90°$, $+20$ dB/Dek
   - 🔴 [2] (hoch) **0/5+** Aufgaben — PT1 Grenzfrequenz $\omega_g = 1/T$, dort $|G| = -3$ dB
@@ -1946,10 +1948,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-0-3` · Dimensionsanalyse — Einheitencheck
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Einheiten & Dimensionsanalyse (Einstieg)
-- **Aufgaben aktuell:** 4 (Minimum: 20) · **fehlen mindestens:** 16 — mehr ist besser
+- **Aufgaben aktuell:** 4 · **mindestens:** 20 · **fehlen bis Minimum:** 16 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×1, number-input ×1, true-false ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, multiple-choice, number-input, true-false, sorting
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Einheit Pascal: $1\,\text{Pa} = 1\,\text{N/m}^2 = 1\,\text{kg}/(\text{m}\cdot\text{s}^2)$
@@ -1967,10 +1969,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-3-3` · Reibung, Kinematik & Schwingungen
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 4 (Minimum: 20) · **fehlen mindestens:** 16 — mehr ist besser
+- **Aufgaben aktuell:** 4 · **mindestens:** 20 · **fehlen bis Minimum:** 16 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** number-input ×4
 - **Typen einsetzen (Rotation):** multiple-choice, true-false, matching, sorting, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Geneigte Ebene: gleiten wenn $F_H > F_{R,\max}$, d.h. $\tan\alpha > \mu_0$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Bremsweg-Formel: $s = v_0^2/(2a)$ bei Bremsbeschleunigung $a$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Eigenfrequenz Feder-Masse: $\omega_0 = \sqrt{c/m}$
@@ -1990,10 +1992,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fest-3-2` · Torsion, Knicken & Wechselfestigkeit
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 4 (Minimum: 20) · **fehlen mindestens:** 16 — mehr ist besser
+- **Aufgaben aktuell:** 4 · **mindestens:** 20 · **fehlen bis Minimum:** 16 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** number-input ×3, true-false ×1
 - **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Torsionsspannung in Welle: $\tau = M_T/W_p$, $W_p = \pi d^3/16$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Knickung: Euler $F_{ki} = \pi^2 EI/(\beta L)^2$, $\beta$ aus Lagerung
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Goodman: $\sigma_a/\sigma_W + \sigma_m/R_m \leq 1/S$
@@ -2013,10 +2015,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `thermo-3-2` · Kreisprozesse & Wärmeübertragung
 
 - **Topic:** `thermodynamik` (Thermodynamik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 4 (Minimum: 20) · **fehlen mindestens:** 16 — mehr ist besser
+- **Aufgaben aktuell:** 4 · **mindestens:** 20 · **fehlen bis Minimum:** 16 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** number-input ×3, true-false ×1
 - **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Leistung aus Wärmestrom: $P_\text{nutz} = \dot Q_\text{zu} \cdot \eta$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Wärmebilanz Kraftwerk: $\dot Q_\text{ab} = \dot Q_\text{zu} - P_\text{nutz}$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Otto-Wirkungsgrad: $\eta_O = 1 - \varepsilon^{1-\gamma}$, $\gamma \approx 1{,}4$ für Luft
@@ -2036,10 +2038,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fluid-3-2` · Druckverlust, Pumpen & Ähnlichkeit
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 4 (Minimum: 20) · **fehlen mindestens:** 16 — mehr ist besser
+- **Aufgaben aktuell:** 4 · **mindestens:** 20 · **fehlen bis Minimum:** 16 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×1, number-input ×3
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Erweiterte Bernoulli mit Verlust: $+ \Delta p_V$ auf Senkeseite
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Pumpenleistung: $P = \rho g \dot V H / \eta_P$
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Reihenschaltung Rohre: $\Delta p_\text{ges} = \sum \Delta p_i$
@@ -2059,10 +2061,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `melem-3-2` · Schweißnähte, Lager & Lebensdauer
 
 - **Topic:** `maschinenelemente` (Maschinenelemente) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 4 (Minimum: 20) · **fehlen mindestens:** 16 — mehr ist besser
+- **Aufgaben aktuell:** 4 · **mindestens:** 20 · **fehlen bis Minimum:** 16 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** number-input ×3, true-false ×1
 - **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Kehlnaht: $\tau = F/(a l_w)$, $a = 0{,}7 h$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Lagerlebensdauer: $L_{10} = (C/P)^p$, $p = 3$ (Kugel) / $p = 10/3$ (Rolle)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Einheiten-Check: L10 in Mio. U, L10h in Stunden nach $\times 10^6/(60n)$
@@ -2082,10 +2084,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `werk-pruefung-1` · Prüfung: Werkstoffwahl & Kennwerte
 
 - **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 8 (Minimum: 20) · **fehlen mindestens:** 12 — mehr ist besser
+- **Aufgaben aktuell:** 8 · **mindestens:** 20 · **fehlen bis Minimum:** 12 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Zulässige Spannung: $\sigma_\text{zul} = R_m/S$ oder $R_e/S$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Typische S-Werte: statisch $S = 1{,}5$, schwingend $S = 2$–$3$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Kennwertwahl: zähe Stähle → $R_e$; spröde Werkstoffe → $R_m$
@@ -2105,10 +2107,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `komz-pruefung-1` · Prüfung: Anwendungen & Gesamtaufgaben
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×3, true-false ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, true-false, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Formwahl: $+/-$ → kartesisch, $\cdot/\div$ und Potenzen/Wurzeln → polar/exponential
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Impedanz ET: $Z_R = R$, $Z_L = i\omega L$, $Z_C = 1/(i\omega C)$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Komplexer Zeiger für Schwingung $x(t) = \text{Re}(A e^{i\omega t})$
@@ -2129,10 +2131,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `komz-pruefung-2` · Prüfung: Polarform & Multiplikation
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Kartesisch → Polar: $r = \sqrt{a^2+b^2}$, $\varphi = \text{atan2}(b,a) \in (-\pi, \pi]$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Multiplikation: Beträge mal, Argumente plus (mod $2\pi$)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Division: Beträge durch, Argumente minus
@@ -2152,10 +2154,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `komz-pruefung-3` · Prüfung: Wurzeln & Gleichungen
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Gleichung $z^n = w$: **alle $n$** Wurzeln angeben (Fundamentalsatz)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Wurzelformel in Polarform $w = r e^{i\varphi}$: $z_k = r^{1/n} e^{i(\varphi + 2\pi k)/n}$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Impedanz-Gesamt bei Reihe: $Z = R + i\omega L - i/(\omega C)$
@@ -2176,10 +2178,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `rf-pruefung-1` · Prüfung: Taylor, Konvergenz, Restglied
 
 - **Topic:** `reihen-folgen` (Reihen & Folgen) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Taylor: $f(x) = \sum f^{(n)}(x_0)(x-x_0)^n/n!$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Standardreihen: $e^x, \sin x, \cos x, \ln(1+x), 1/(1-x)$ auswendig
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Geometrische Reihe: $\sum q^n = 1/(1-q)$ für $|q| < 1$
@@ -2200,10 +2202,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `rf-pruefung-2` · Prüfung: Konvergenzkriterien & Potenzreihen
 
 - **Topic:** `reihen-folgen` (Reihen & Folgen) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Quotientenkriterium: $L = \lim |a_{n+1}/a_n|$ — $L < 1$ konv., $L > 1$ div., $L = 1$ unentsch.
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Wurzelkriterium: $L = \lim \sqrt[n]{|a_n|}$ — gleiche Regel
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Majorantenkriterium: $|a_n| \leq b_n$, $\sum b_n$ konv. → $\sum a_n$ abs. konv.
@@ -2224,10 +2226,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `rf-pruefung-3` · Prüfung: Taylor-Restglied & Näherungen
 
 - **Topic:** `reihen-folgen` (Reihen & Folgen) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Lagrange-Restglied: $|R_n(x)| \leq M \cdot |x-x_0|^{n+1}/(n+1)!$ mit $M = \max |f^{(n+1)}|$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Taylor-Fehler sinkt mit $1/(n+1)!$ — exponentiell bessere Näherung
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Linearisierung (n=1): $f(x) \approx f(x_0) + f'(x_0)(x-x_0)$
@@ -2247,10 +2249,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mdim-pruefung-1` · Prüfung: Extrema, Fehlerfortpflanzung
 
 - **Topic:** `mehrdim-analysis` (Mehrdim. Analysis) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Kritische Stellen: $\nabla f = \vec 0$ (alle partiellen Ableitungen null)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Hesse-Matrix $H$: $\det H > 0$ und $f_{xx} > 0$ → Min; $\det H > 0, f_{xx} < 0$ → Max
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Sattelpunkt: $\det H < 0$ (Hesse indefinit)
@@ -2271,10 +2273,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mdim-pruefung-2` · Prüfung: Fehlerfortpflanzung & totales Differential
 
 - **Topic:** `mehrdim-analysis` (Mehrdim. Analysis) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Totales Differential: $df = f_x dx + f_y dy + \ldots$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Maximaler Fehler (linear): $|\Delta f| \leq \sum |f_{x_i}| |\Delta x_i|$ (obere Schranke)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Gauß'sche (statistisch): $\sigma_f = \sqrt{\sum (f_{x_i})^2 \sigma_{x_i}^2}$
@@ -2294,10 +2296,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mdim-pruefung-3` · Prüfung: Lagrange & Gesamtaufgaben
 
 - **Topic:** `mehrdim-analysis` (Mehrdim. Analysis) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Lagrange-LGS: $f_x = \lambda g_x$, $f_y = \lambda g_y$, $g = 0$ (3 Gl. für 3 Unb.)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Hesse-Test: $D = f_{xx}f_{yy} - f_{xy}^2$; $D>0, f_{xx}>0$ Min; $D>0, f_{xx}<0$ Max; $D<0$ Sattel
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Bei $D = 0$: keine Entscheidung via Hesse, höhere Ordnungen nötig
@@ -2318,10 +2320,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `num-pruefung-1` · Prüfung: Numerische Methoden kombiniert
 
 - **Topic:** `numerik` (Numerische Mathematik) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Bisektion: linear, halbiert Intervall, garantiert konvergent bei Vorzeichenwechsel
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Newton: quadratisch konvergent, $x_{n+1} = x_n - f(x_n)/f'(x_n)$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Trapezregel: Fehler $O(h^2)$; Simpson: Fehler $O(h^4)$
@@ -2342,10 +2344,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `num-pruefung-2` · Prüfung: Trapez, Simpson & Fehlerordnung
 
 - **Topic:** `numerik` (Numerische Mathematik) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Trapez: $T(h) = h[(f_0+f_n)/2 + \sum_{i=1}^{n-1} f_i]$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Simpson: $S(h) = (h/3)[f_0 + 4\sum_{\text{ung.}} f_i + 2\sum_{\text{ger.}} f_i + f_n]$, $n$ gerade
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Fehler Trapez: $|E| \leq (b-a) h^2 \max|f''|/12$
@@ -2366,10 +2368,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `num-pruefung-3` · Prüfung: Kombinierte Aufgaben & Abbruchkriterien
 
 - **Topic:** `numerik` (Numerische Mathematik) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×1, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** number-input, matching, sorting, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Methodenwahl-Matrix: Nullstelle → Newton/Bisekt.; Integral → Simpson; LGS → Gauß/LU
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Newton schlägt fehl bei $f' \approx 0$ → Bisektion als Fallback robust
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Abbruchkriterium: absolut $|x_{n+1} - x_n| < \epsilon_{\text{abs}}$ oder relativ
@@ -2389,10 +2391,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `stat-pruefung-1` · Prüfung: Schätzung & Hypothesentest
 
 - **Topic:** `statistik` (Statistik & Wahrscheinlichkeit) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — t-Test: Mittelwertvergleich, Verteilung bei unbekannter Varianz
   - 🔴 [1] (hoch) **0/5+** Aufgaben — $\chi^2$-Test: Anpassung an Verteilung oder Unabhängigkeitsprüfung
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Testentscheidung: Prüfgröße mit Quantil vergleichen oder p-Wert mit $\alpha$
@@ -2412,10 +2414,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `stat-pruefung-2` · Prüfung: Normalverteilung & Standardisierung
 
 - **Topic:** `statistik` (Statistik & Wahrscheinlichkeit) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Standardisierung: $Z = (X - \mu)/\sigma \sim N(0,1)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — $\Phi(-z) = 1 - \Phi(z)$ (Symmetrie)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — 68-95-99,7-Regel: $\pm 1\sigma \to 68\%$, $\pm 2\sigma \to 95\%$, $\pm 3\sigma \to 99{,}7\%$
@@ -2435,10 +2437,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `stat-pruefung-3` · Prüfung: Konfidenzintervall & Gesamtaufgaben
 
 - **Topic:** `statistik` (Statistik & Wahrscheinlichkeit) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Stichprobenmittel $\bar x = (1/n) \sum x_i$, Stichproben-SD $s = \sqrt{\sum(x_i - \bar x)^2 /(n-1)}$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — 95%-KI: $\bar x \pm z_{0{,}025} \cdot \sigma/\sqrt n$ (Normalverteilung, $\sigma$ bekannt)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — t-KI bei $\sigma$ unbekannt: $\bar x \pm t_{n-1; 0{,}025} \cdot s/\sqrt n$
@@ -2458,10 +2460,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-3-2` · Dynamik: Prüfungsaufgaben
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×2, number-input ×5, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Energieerhaltung mit Reibung: $E_1 = E_2 + W_R$ mit $W_R = F_R \cdot s$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Elastischer Stoß gleicher Massen: Geschwindigkeiten tauschen
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Arbeitssatz: $\sum W_i = \Delta E_{\text{kin}}$ (Gesamtarbeit = Änderung kin. Energie)
@@ -2481,10 +2483,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `et-3-2` · Wechselstrom Prüfungsaufgaben
 
 - **Topic:** `elektrotechnik` (Elektrotechnik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×2, number-input ×5, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — RLC-Reihe Impedanz: $Z = R + j(\omega L - 1/(\omega C))$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Resonanzfrequenz: $\omega_0 = 1/\sqrt{LC}$, $f_0 = 1/(2\pi\sqrt{LC})$
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Güte $Q = \omega_0 L/R = 1/(\omega_0 RC)$
@@ -2504,10 +2506,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `py-4-1` · Prüfung: Code-Verständnis & Fehlersuche
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×5, true-false ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Indizierung: Python 0-basiert, Matlab 1-basiert (Off-by-one-Fehler!)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Operatoren: `*` vs `@`, `^` vs `.^` — elementweise vs. Matrix
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Python `range(a, b)`: $a, a+1, \ldots, b-1$; Matlab `a:b`: $a, a+1, \ldots, b$
@@ -2527,10 +2529,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-4-1` · Prüfung: Ableitungsregeln
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×2, matching ×1
 - **Typen einsetzen (Rotation):** sorting, matching, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Grundableitungen: $(x^n)' = n x^{n-1}$, $(e^x)' = e^x$, $(\ln x)' = 1/x$, $(\sin x)' = \cos x$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — $(\cos x)' = -\sin x$ und $(\tan x)' = 1/\cos^2 x = 1 + \tan^2 x$
   - 🔴 [2] (mittel) **0/5+** Aufgaben — $(a^x)' = a^x \ln a$ und $(\log_a x)' = 1/(x \ln a)$
@@ -2550,10 +2552,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-4-2` · Prüfung: Kurvendiskussion & Anwendungen
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, true-false, matching, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Optimierung: Zielfunktion aufstellen, Nebenbedingung einsetzen, auf eine Variable reduzieren
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Taylorreihe: $T_n(x) = \sum_{k=0}^n f^{(k)}(x_0)(x-x_0)^k/k!$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Näherungen bei $x_0 = 0$: $\sin x \approx x$, $\cos x \approx 1 - x^2/2$, $e^x \approx 1 + x + x^2/2$
@@ -2573,10 +2575,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-4-3` · Prüfung: Technische Optimierung & Newton-Verfahren
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Newton-Iteration: $x_{n+1} = x_n - f(x_n)/f'(x_n)$ — lokal quadratische Konvergenz
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Newton-Voraussetzungen: $f'(x_n) \neq 0$, guter Startwert nahe der Nullstelle
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Klassische Geometrie-Optima: Dose mit Deckel $h = 2r$, Rechteck $U$ const → Quadrat
@@ -2597,10 +2599,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `vek-3-2` · Flächen- und Volumenberechnung
 
 - **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Prüfungsvorbereitung Vektoren · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Parallelogrammfläche: $A = |\vec a \times \vec b|$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Dreiecksfläche: $A = \tfrac{1}{2} |\vec a \times \vec b|$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Spatvolumen: $V = |\vec a \cdot (\vec b \times \vec c)|$ (Spatprodukt)
@@ -2621,10 +2623,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `vek-3-3` · Technische Anwendungen
 
 - **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Prüfungsvorbereitung Vektoren · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Schiefe Ebene: Hangabtrieb $F_H = G \sin\alpha$, Normalkraft $F_N = G \cos\alpha$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Drehmoment $\vec M = \vec r \times \vec F$: Betrag $|M| = r F \sin\alpha$, max bei $\alpha = 90°$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Drehmoment-Richtung via Rechte-Hand-Regel (Daumen = $\vec r$, Zeige = $\vec F$, Mittel = $\vec M$)
@@ -2644,10 +2646,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-4-1` · Prüfung: Algebra-Grundlagen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×2, matching ×1
 - **Typen einsetzen (Rotation):** sorting, matching, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Diskriminante: $D > 0$ zwei, $D = 0$ eine, $D < 0$ keine reelle Lösung
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Exponentialgleichung $a^x = b$: durch Logarithmieren $x = \log_a b = \ln b / \ln a$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Wurzelgleichung: beide Seiten quadrieren + Probe (Scheinlösungen möglich)
@@ -2667,10 +2669,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-4-2` · Prüfung: Funktionen & Anwendungen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×1, true-false ×2, sorting ×1
 - **Typen einsetzen (Rotation):** matching, number-input, sorting, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Scheitelpunkt Parabel $ax^2+bx+c$: $x_S = -b/(2a)$, $y_S = f(x_S)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Scheitelform: $f(x) = a(x - x_S)^2 + y_S$ (quadratische Ergänzung)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Umkehrfunktion: $y = f(x)$ → nach $x$ auflösen → $x \leftrightarrow y$ tauschen
@@ -2691,10 +2693,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-4-3` · Prüfung: Gleichungs­systeme & technische Anwendungen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — $2\times 2$-LGS: Einsetzungs-, Additions-, Gleichsetzungsmethode — alle äquivalent
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Betrag auflösen: Fallunterscheidung $|x| = x$ für $x \geq 0$, $|x| = -x$ für $x < 0$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — pH-Wert: $\text{pH} = -\log_{10}[H^+]$ (logarithmische Skala der H⁺-Konzentration)
@@ -2715,10 +2717,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `la-3-1` · Prüfung: Matrizen & Determinanten
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×2
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Matrixmultiplikation Zeile × Spalte — $AB \neq BA$ im Allgemeinen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Laplace-Entwicklung: $\det A = \sum_j (-1)^{i+j} a_{ij} M_{ij}$ (beliebige Zeile/Spalte)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Inverse-Test: $A^{-1}$ existiert $\iff \det A \neq 0 \iff \text{rg}(A) = n$
@@ -2739,10 +2741,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `la-3-2` · Prüfung: LGS & Eigenwerte
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×8, number-input ×1, true-false ×2
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Rouché-Capelli-Kriterium: $\text{rg}(A) = \text{rg}([A|b])$ für Lösbarkeit
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Freie Variablen = $n - \text{rg}(A)$ (Parametrisierung der Lösungsmenge)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Eigenwerte via $\det(A - \lambda I) = 0$
@@ -2763,10 +2765,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `la-3-3` · Prüfung: Diagonalisierung & technische Anwendungen
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Diagonalisierung: $A = PDP^{-1}$ mit $P = $ EV-Matrix, $D = \text{diag}(\lambda_i)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Bedingung: $n$ linear unabhängige Eigenvektoren (algebr. = geom. Vielfachheit)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Matrixpotenzen via $A^k = P D^k P^{-1}$ (nur Diagonale potenzieren!)
@@ -2787,10 +2789,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-4-1` · Prüfung: Integrationstechniken
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×2
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Methodenwahl in Sekundenschnelle: innere Ableitung? → Subst., Produkt? → Part.Int., Bruch? → PBZ
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Bestimmtes Integral: Grenzen bei Substitution mit umrechnen, nicht rücksubstituieren
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Symmetrie nutzen: $\int_{-a}^a f(x) dx = 0$ bei ungerade, $= 2\int_0^a$ bei gerade
@@ -2810,10 +2812,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-4-2` · Prüfung: Anwendungen der Integralrechnung
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Flächenträgheitsmoment Rechteck: $I_x = bh^3/12$ um Schwerachse, $= bh^3/3$ um Rand
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Steiner'scher Satz: $I_a = I_s + A \cdot d^2$ (Abstand $d$ zwischen Achsen)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Schwerpunkt zusammengesetzter Flächen: $\bar{x} = \sum A_i \bar{x}_i / \sum A_i$
@@ -2833,10 +2835,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-4-3` · Prüfung: Uneigentliche & numerische Integrale
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Uneigentliches Integral: $\int_a^\infty f dx = \lim_{b\to\infty} \int_a^b f dx$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — p-Integral $\int_1^\infty x^{-p} dx$: konvergent für $p > 1$, divergent sonst
   - 🔴 [2] (hoch) **0/5+** Aufgaben — p-Integral $\int_0^1 x^{-p} dx$: konvergent für $p < 1$, divergent sonst
@@ -2857,10 +2859,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `dgl-3-1` · Prüfung: DGL 1. Ordnung
 
 - **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×1, true-false ×2, matching ×1
 - **Typen einsetzen (Rotation):** sorting, number-input, matching, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Trennbar: $\int dy/g(y) = \int f(x) dx + C$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$
@@ -2881,10 +2883,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `dgl-3-2` · Prüfung: DGL 2. Ordnung & Anwendungen
 
 - **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×2, matching ×1
 - **Typen einsetzen (Rotation):** sorting, matching, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Störansatz Polynom: $y_p = $ Polynom gleichen Grades
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Störansatz Trig: $y_p = A \cos\omega x + B \sin\omega x$
@@ -2905,10 +2907,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `dgl-3-3` · Prüfung: Systeme & technische Modellbildung
 
 - **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Euler explizit: $y_{n+1} = y_n + h \cdot f(x_n, y_n)$, Fehler $O(h)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Stabilität via Eigenwerte: alle $\text{Re}(\lambda_i) < 0$ → asymptotisch stabil
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Bilanzgleichungen: Massenbilanz, Energiebilanz, Kräftebilanz, Ladungsbilanz
@@ -2929,10 +2931,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-3-1` · Statik: Prüfungsaufgaben
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×5, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Freikörperbild: alle äußeren Kräfte und Momente einzeichnen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Drei Gleichgewichtsbedingungen in 2D: $\sum F_x = 0$, $\sum F_y = 0$, $\sum M_P = 0$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Lagertypen: Loslager (1 Reaktion), Festlager (2), Einspannung (3)
@@ -2952,10 +2954,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fest-3-1` · Festigkeit: Prüfungsaufgaben
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×2, number-input ×5, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, true-false, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Kombinierte Beanspruchung: Vergleichsspannung nach GEH (Mises) oder NH
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Mises: $\sigma_v = \sqrt{\sigma^2 + 3\tau^2}$ für Zug+Torsion
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Nachweis: $\sigma_v \leq R_e/S$ bzw. $R_m/S$
@@ -2975,10 +2977,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `thermo-3-1` · Thermo: Prüfungsaufgaben
 
 - **Topic:** `thermodynamik` (Thermodynamik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×2, number-input ×5, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, true-false, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Isotherme Expansion: $W = nRT \ln(V_2/V_1)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Isobar: $W = p \Delta V$, $Q = n c_p \Delta T$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Isochor: $W = 0$, $Q = n c_v \Delta T$
@@ -2998,10 +3000,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fluid-3-1` · Fluid: Prüfungsaufgaben
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×5, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Bernoulli vollständig: $p_1 + \tfrac{1}{2}\rho v_1^2 + \rho g z_1 = p_2 + \ldots$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Staudruck/Pitot: $v = \sqrt{2\Delta p/\rho}$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Kontinuität + Bernoulli kombiniert für Düsen/Verengungen
@@ -3021,10 +3023,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `melem-3-1` · ME: Prüfungsaufgaben
 
 - **Topic:** `maschinenelemente` (Maschinenelemente) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×2, number-input ×6, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Leistung: $P = M \omega = M (2\pi n/60)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Umfangskraft am Zahnrad: $F_t = 2M/d$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Mehrstufige Übersetzung: $i_\text{ges} = \prod i_i$
@@ -3044,10 +3046,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `et-3-1` · Gleichstrom Prüfungsaufgaben
 
 - **Topic:** `elektrotechnik` (Elektrotechnik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×2, number-input ×5, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, true-false, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Reihe: $R_\text{ges} = \sum R_i$; Parallel: $1/R_\text{ges} = \sum 1/R_i$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Spannungsteiler: $U_1 = U \cdot R_1/(R_1 + R_2)$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Stromteiler: $I_k = I_\text{ges} \cdot R_\text{par}/R_k$ (umgekehrt proportional)
@@ -3067,10 +3069,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `rt-3-1` · Regelkreis & PID Prüfungsaufgaben
 
 - **Topic:** `regelungstechnik` (Regelungstechnik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Führungs-Übertragungsfunktion: $T(s) = G_0/(1+G_0)$ mit $G_0 = G_R G_S$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Stationärer Regelfehler P-Regler: $e_\text{stat} = 1/(1+K_0)$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — I-Anteil erzwingt $e_\text{stat} = 0$ bei konstantem Sollwert
@@ -3090,10 +3092,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-4-1` · Prüfung: Identitäten & Gleichungen
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×8, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, true-false, matching, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Pythagoras $\sin^2+\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Substitution $u = \sin x$ oder $u = \cos x$ bei quadratischen Gleichungen
@@ -3113,10 +3115,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-4-2` · Prüfung: Technische Anwendungen
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\sin$/$\cos$ richtig zuordnen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Schwingungsgrößen $A, \omega, T, f, \varphi$ aus gegebenem $x(t)$ ablesen und umrechnen
@@ -3136,10 +3138,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-4-3` · Prüfung: Einheitskreis & Gleichungssysteme
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — $\sin x = a$ hat in $[0, 2\pi)$ zwei Lösungen: $\arcsin a$ und $\pi - \arcsin a$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — $\cos x = a$ hat in $[0, 2\pi)$ zwei Lösungen: $\arccos a$ und $2\pi - \arccos a$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — $\tan x = a$ hat Periode $\pi$: $x_k = \arctan a + k\pi$, $k \in \mathbb{Z}$
@@ -3160,10 +3162,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `vek-3-1` · Gemischte Aufgaben Skalar- und Kreuzprodukt
 
 - **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Prüfungsvorbereitung Vektoren · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 13 (Minimum: 20) · **fehlen mindestens:** 7 — mehr ist besser
+- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×4, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Skalarprodukt liefert **Zahl**, Kreuzprodukt liefert **Vektor** (nur in 3D)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Winkel: $\cos\varphi = (\vec a \cdot \vec b)/(|\vec a||\vec b|)$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Orthogonalitätstest: $\vec a \cdot \vec b = 0$; Parallelitätstest: $\vec a \times \vec b = \vec 0$
@@ -3184,10 +3186,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fl-3-1` · Fourier Prüfungsaufgaben
 
 - **Topic:** `fourier-laplace` (Fourier & Laplace) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 15 (Minimum: 20) · **fehlen mindestens:** 5 — mehr ist besser
+- **Aufgaben aktuell:** 15 · **mindestens:** 20 · **fehlen bis Minimum:** 5 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×4, true-false ×2, matching ×2, sorting ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Symmetrie nutzen: gerade Funktion → nur Kosinusreihe, ungerade → nur Sinusreihe
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Koeffizienten $a_n = (2/T)\int_0^T f(t)\cos(n\omega t)dt$, analog $b_n$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Konstantes Glied $a_0/2$ = Mittelwert der Funktion über eine Periode
@@ -3208,10 +3210,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fl-3-2` · Laplace Prüfungsaufgaben
 
 - **Topic:** `fourier-laplace` (Fourier & Laplace) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 15 (Minimum: 20) · **fehlen mindestens:** 5 — mehr ist besser
+- **Aufgaben aktuell:** 15 · **mindestens:** 20 · **fehlen bis Minimum:** 5 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Sprungantwort: $Y(s) = G(s)/s$, Partialbruch + Rücktransformation
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Impulsantwort: $Y(s) = G(s)$ → direkt rücktransformieren
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Stabilität: alle Pole in linker s-Halbebene ($\text{Re}(p_i) < 0$)
@@ -3234,10 +3236,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-1-0` · Winkel-Intuition (Einstieg)
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Grundlagen der Trigonometrie
-- **Aufgaben aktuell:** 5 (Minimum: 20) · **fehlen mindestens:** 15 — mehr ist besser
+- **Aufgaben aktuell:** 5 · **mindestens:** 20 · **fehlen bis Minimum:** 15 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×2, number-input ×1, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, number-input, true-false, matching, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Winkeltypen: spitz $<90°$, recht $=90°$, stumpf $90°–180°$, gestreckt $=180°$, voll $=360°$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Innenwinkelsumme im Dreieck ist immer $180°$ — daraus 3. Winkel berechnen
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Scheitel-/Nebenwinkel an sich schneidenden Geraden: Scheitelwinkel gleich, Nebenwinkel ergänzen auf $180°$
@@ -3254,10 +3256,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `vek-1-0` · Koordinaten, Punkte & Pfeile (Einstieg)
 
 - **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
-- **Aufgaben aktuell:** 5 (Minimum: 20) · **fehlen mindestens:** 15 — mehr ist besser
+- **Aufgaben aktuell:** 5 · **mindestens:** 20 · **fehlen bis Minimum:** 15 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** number-input, sorting, true-false, matching, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Punkt = Ort mit Koordinaten; Vektor = Verschiebung mit Richtung und Länge
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Vektor von $A$ nach $B$: $\vec{AB} = B - A$ (komponentenweise Subtraktion)
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Freier Vektor: gleicher Richtung und Länge → gleicher Vektor, egal wo eingezeichnet
@@ -3274,10 +3276,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-0-1` · SI-Basiseinheiten & Präfixe
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Einheiten & Dimensionsanalyse (Einstieg)
-- **Aufgaben aktuell:** 5 (Minimum: 20) · **fehlen mindestens:** 15 — mehr ist besser
+- **Aufgaben aktuell:** 5 · **mindestens:** 20 · **fehlen bis Minimum:** 15 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, multiple-choice, true-false, matching, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — SI-Präfixe giga, mega, kilo, milli, mikro, nano zuordnen
   - 🔴 [1] (mittel) **0/5+** Aufgaben — Kilogramm als einzige SI-Basiseinheit mit Präfix
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Wissenschaftliche Notation $a \cdot 10^n$ sicher schreiben
@@ -3294,10 +3296,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-0-2` · Abgeleitete Einheiten (N, J, Pa, W)
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Einheiten & Dimensionsanalyse (Einstieg)
-- **Aufgaben aktuell:** 5 (Minimum: 20) · **fehlen mindestens:** 15 — mehr ist besser
+- **Aufgaben aktuell:** 5 · **mindestens:** 20 · **fehlen bis Minimum:** 15 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×1, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, multiple-choice, true-false, matching, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Newton $1\,\text{N} = 1\,\text{kg}\cdot\text{m}/\text{s}^2$ zerlegen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — $1\,\text{MPa} = 1\,\text{N}/\text{mm}^2$ (Ingenieur-Konvention)
   - 🔴 [2] (mittel) **0/5+** Aufgaben — bar $\leftrightarrow$ Pa: $1\,\text{bar}=10^5\,\text{Pa}$
@@ -3315,10 +3317,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-1-3` · Schnittkräfte N(x), Q(x), M(x)
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Aufgaben aktuell:** 5 (Minimum: 20) · **fehlen mindestens:** 15 — mehr ist besser
+- **Aufgaben aktuell:** 5 · **mindestens:** 20 · **fehlen bis Minimum:** 15 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×2, number-input ×2, true-false ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Drei Schnittgrößen: Normalkraft $N(x)$, Querkraft $Q(x)$, Biegemoment $M(x)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Zusammenhang: $Q(x) = dM/dx$, $q(x) = -dQ/dx$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Sprung in $Q$ bei Einzellast $F$, Knick in $M$ bei Einzellast
@@ -3338,10 +3340,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-2-3` · Kinematik
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Dynamik
-- **Aufgaben aktuell:** 5 (Minimum: 20) · **fehlen mindestens:** 15 — mehr ist besser
+- **Aufgaben aktuell:** 5 · **mindestens:** 20 · **fehlen bis Minimum:** 15 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** number-input ×5
 - **Typen einsetzen (Rotation):** multiple-choice, true-false, matching, sorting, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Gleichförmig beschleunigt: $v = v_0 + at$, $s = s_0 + v_0 t + \tfrac{1}{2}at^2$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Energiegleichung: $v^2 = v_0^2 + 2a\Delta s$ (ohne Zeit)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Freier Fall: $a = g$, $v = gt$, $h = \tfrac{1}{2}gt^2$
@@ -3362,10 +3364,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-0-3` · Prozent & Dreisatz
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Aufgaben aktuell:** 6 (Minimum: 20) · **fehlen mindestens:** 14 — mehr ist besser
+- **Aufgaben aktuell:** 6 · **mindestens:** 20 · **fehlen bis Minimum:** 14 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×1, number-input ×3, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, multiple-choice, true-false, matching, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Grundformel: $W = G \cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Wachstumsfaktor: $+p\% \to \times(1 + p/100)$, $-p\% \to \times(1 - p/100)$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\%$ dann $-10\% \neq 0$)
@@ -3384,10 +3386,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-0-4` · Termumformung & Gleichungen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Aufgaben aktuell:** 6 (Minimum: 20) · **fehlen mindestens:** 14 — mehr ist besser
+- **Aufgaben aktuell:** 6 · **mindestens:** 20 · **fehlen bis Minimum:** 14 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×2, number-input ×2, true-false ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, true-false, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Binomische Formeln: $(a\pm b)^2 = a^2 \pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$
@@ -3408,10 +3410,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-5-2` · Stetigkeit von Funktionen
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grenzwerte und Stetigkeit
-- **Aufgaben aktuell:** 8 (Minimum: 20) · **fehlen mindestens:** 12 — mehr ist besser
+- **Aufgaben aktuell:** 8 · **mindestens:** 20 · **fehlen bis Minimum:** 12 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Stetigkeit in $a$: $\lim_{x \to a} f(x) = f(a)$ (beide Seiten gleich UND gleich Funktionswert)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Hebbare Unstetigkeit: Grenzwert existiert, aber $f(a)$ fehlt oder weicht ab
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Sprungstelle: links- und rechtsseitiger Grenzwert existieren, sind aber verschieden
@@ -3432,10 +3434,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `werk-1-1` · Spannungs-Dehnungs-Diagramm
 
 - **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Werkstoffkennwerte
-- **Aufgaben aktuell:** 8 (Minimum: 20) · **fehlen mindestens:** 12 — mehr ist besser
+- **Aufgaben aktuell:** 8 · **mindestens:** 20 · **fehlen bis Minimum:** 12 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — $R_e$ = Streckgrenze (Ende elastisch); $R_m$ = Zugfestigkeit (Maximum); nicht verwechseln
   - 🔴 [1] (hoch) **0/5+** Aufgaben — $R_{p0,2}$ = 0,2-%-Dehngrenze bei Werkstoffen ohne ausgeprägte Streckgrenze (z. B. Aluminium)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — E-Modul = Steigung im linearen (Hookeschen) Bereich: $E = \sigma/\varepsilon$
@@ -3455,10 +3457,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `werk-1-2` · Werkstoffgruppen
 
 - **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Werkstoffkennwerte
-- **Aufgaben aktuell:** 8 (Minimum: 20) · **fehlen mindestens:** 12 — mehr ist besser
+- **Aufgaben aktuell:** 8 · **mindestens:** 20 · **fehlen bis Minimum:** 12 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Metalle: zäh, gut umformbar, gut wärmeleitend — tragende Konstruktionen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Keramik: hart, hitzebeständig, spröde — **nicht auf Zug** belasten
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Kunststoffe: leicht, korrosionsfest, niedriger E-Modul — Gehäuse, Gleitlager
@@ -3478,10 +3480,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `werk-2-1` · Härteprüfung (HV, HB, HRC)
 
 - **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Prüfverfahren
-- **Aufgaben aktuell:** 8 (Minimum: 20) · **fehlen mindestens:** 12 — mehr ist besser
+- **Aufgaben aktuell:** 8 · **mindestens:** 20 · **fehlen bis Minimum:** 12 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Vickers (HV): Diamantpyramide, universell für hart und dünn; Brinell (HB): Kugel, für weichere Werkstoffe
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Rockwell (HRC): direkt ablesbar am Messgerät — schnellste Prüfmethode in der Fertigung
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Faustformel Stahl: $R_m \approx 3{,}5 \cdot HV$ in MPa — Härte korreliert mit Zugfestigkeit
@@ -3500,10 +3502,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `werk-2-2` · Kerbschlagbiegeversuch
 
 - **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Prüfverfahren
-- **Aufgaben aktuell:** 8 (Minimum: 20) · **fehlen mindestens:** 12 — mehr ist besser
+- **Aufgaben aktuell:** 8 · **mindestens:** 20 · **fehlen bis Minimum:** 12 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Charpy-Versuch: Pendel bricht gekerbte Probe, $KV = mg(h_0 - h_1)$ in Joule
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Hohe $KV$ → zäh, niedrige $KV$ → spröde
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Kritischer Grenzwert Stahlbau: $KV \geq 27$ J bei Einsatztemperatur
@@ -3523,10 +3525,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `komz-1-1` · Imaginäre Einheit & Gaußsche Zahlenebene
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Kartesische Form
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×1, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** number-input, true-false, matching, sorting, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — $i^2 = -1$ als Definition — $i$ ist keine Variable, sondern fixes Symbol
   - 🔴 [1] (hoch) **0/5+** Aufgaben — $\operatorname{Re}(z)$ und $\operatorname{Im}(z)$: beide reell (der Imaginärteil ist **nicht** $bi$, sondern $b$)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Konjugierte $\bar z = a - bi$: Spiegelung an reeller Achse
@@ -3545,10 +3547,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `komz-1-2` · Rechnen in kartesischer Form (+, −, ·, :)
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Kartesische Form
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, true-false, matching, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Addition/Subtraktion komponentenweise — wie Vektoren
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Multiplikation: $(a+bi)(c+di)$ ausmultiplizieren und $i^2 = -1$ einsetzen
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Division: Zähler **und** Nenner mit $\bar{c+di} = c-di$ erweitern → Nenner reell $c^2 + d^2$
@@ -3567,10 +3569,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `komz-2-1` · Betrag, Argument, Polarform
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Polarform, Euler & Rechnen
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Betrag: $|z| = \sqrt{a^2 + b^2}$ (Pythagoras)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Argument: $\varphi = \arg(z)$ mit $\text{atan2}(b,a)$ (Quadrant beachten!)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Polarform: $z = |z|(\cos\varphi + i\sin\varphi) = |z| e^{i\varphi}$
@@ -3591,10 +3593,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `komz-2-2` · Euler-Formel & Exponentialdarstellung
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Polarform, Euler & Rechnen
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, true-false, matching, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Euler-Formel: $e^{i\varphi} = \cos\varphi + i\sin\varphi$
   - 🔴 [1] (mittel) **0/5+** Aufgaben — Euler'sche Identität: $e^{i\pi} + 1 = 0$ (fünf Konstanten in einer Gleichung)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Multiplikation: $z_1 z_2 = r_1 r_2 e^{i(\varphi_1 + \varphi_2)}$ (Beträge mal, Argumente plus)
@@ -3615,10 +3617,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `komz-3-1` · Potenzen — Formel von de Moivre
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Potenzen & Wurzeln
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Moivre: $z^n = |z|^n e^{in\varphi} = |z|^n (\cos n\varphi + i \sin n\varphi)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Betrag hoch $n$, Argument mal $n$
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Anwendung: Mehrfach-Winkel-Formeln ($\cos 2\varphi, \sin 3\varphi, \ldots$) herleitbar
@@ -3638,10 +3640,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `komz-3-2` · Wurzeln — alle n-ten Wurzeln finden
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Potenzen & Wurzeln
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Wurzelformel: $z_k = |w|^{1/n} e^{i(\varphi + 2\pi k)/n}$ für $k = 0, 1, \ldots, n-1$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Anzahl: genau $n$ verschiedene $n$-te Wurzeln (Fundamentalsatz der Algebra)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Geometrisch: regelmäßiges $n$-Eck auf Kreis mit Radius $|w|^{1/n}$
@@ -3662,10 +3664,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `rf-1-1` · Folgen und Grenzwerte
 
 - **Topic:** `reihen-folgen` (Reihen & Folgen) · **Unit:** Folgen, Reihen & Konvergenz
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×1, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** number-input, matching, sorting, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Grenzwert $\lim_{n\to\infty} a_n$ anschaulich als „bleibt schließlich in jedem $\varepsilon$-Schlauch" begreifen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Rationale Folgen: Grad-Vergleich (Zähler/Nenner) entscheidet über $0$, endlicher Grenzwert oder $\pm\infty$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Grenzwertsätze: Summe, Produkt, Quotient (sofern Nennergrenzwert $\neq 0$)
@@ -3685,10 +3687,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `rf-1-2` · Taylor-Polynome
 
 - **Topic:** `reihen-folgen` (Reihen & Folgen) · **Unit:** Folgen, Reihen & Konvergenz
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Taylor-Formel $T_n(x) = \sum_{k=0}^n f^{(k)}(x_0)/k! \cdot (x-x_0)^k$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Maclaurin-Reihen auswendig: $e^x$, $\sin x$, $\cos x$, $\ln(1+x)$, $1/(1-x)$
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Lagrange-Restglied $R_n = f^{(n+1)}(\xi)/(n+1)! \cdot (x-x_0)^{n+1}$ zum Fehler abschätzen
@@ -3707,10 +3709,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mdim-1-1` · Partielle Ableitung verstehen
 
 - **Topic:** `mehrdim-analysis` (Mehrdim. Analysis) · **Unit:** Partielle Ableitungen & Gradient
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Beim Ableiten nach einer Variable: alle anderen sind **Konstanten**
   - 🔴 [1] (mittel) **0/5+** Aufgaben — Schreibweisen $f_x$, $\partial f/\partial x$, $D_x f$ gleichwertig erkennen
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Gradient $\nabla f = (f_x, f_y)^T$ zeigt Richtung des steilsten Anstiegs
@@ -3730,10 +3732,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mdim-1-2` · Hesse-Matrix und Lagrange-Multiplikatoren
 
 - **Topic:** `mehrdim-analysis` (Mehrdim. Analysis) · **Unit:** Partielle Ableitungen & Gradient
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×1, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** number-input, true-false, matching, sorting, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Notwendige Bedingung für Extremum: $\nabla f = 0$ (kritischer Punkt)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Hesse-Matrix $H = \begin{pmatrix} f_{xx} & f_{xy} \\ f_{yx} & f_{yy} \end{pmatrix}$ — Symmetrie nutzen
   - 🔴 [2] (hoch) **0/5+** Aufgaben — $\det H > 0 \wedge f_{xx} > 0$ → Minimum, $< 0 \wedge f_{xx} < 0$ → Maximum, $\det H < 0$ → Sattel
@@ -3753,10 +3755,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `num-1-1` · Newton-Verfahren
 
 - **Topic:** `numerik` (Numerische Mathematik) · **Unit:** Nullstellen & Integration
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Iterationsvorschrift $x_{n+1} = x_n - f(x_n)/f'(x_n)$ korrekt aufbauen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Abbruchkriterium: $|x_{n+1} - x_n| < \varepsilon$ **oder** $|f(x_n)| < \delta$
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Quadratische Konvergenz: Anzahl korrekter Stellen verdoppelt sich pro Schritt (bei guten Startwerten)
@@ -3775,10 +3777,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `num-1-2` · Bisektion und numerische Integration
 
 - **Topic:** `numerik` (Numerische Mathematik) · **Unit:** Nullstellen & Integration
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Bisektion benötigt Vorzeichenwechsel: $f(a)\cdot f(b) < 0$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Fehler der Bisektion nach $n$ Schritten: $(b-a)/2^n$ → Schrittzahl auflösen
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Trapezregel: $\tfrac{h}{2}(f_0 + 2f_1 + \ldots + 2f_{n-1} + f_n)$; Fehler $O(h^2)$
@@ -3798,10 +3800,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `stat-1-1` · Erwartungswert und Varianz
 
 - **Topic:** `statistik` (Statistik & Wahrscheinlichkeit) · **Unit:** Zufallsvariablen & Verteilungen
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Erwartungswert $E(X) = \sum_i x_i\,p_i$ bei diskreter $X$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Verschiebungssatz: $\operatorname{Var}(X) = E(X^2) - E(X)^2$ (rechnerisch meist einfacher)
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Einheiten: $E(X)$ wie $X$, $\operatorname{Var}(X)$ wie $X^2$, $\sigma$ wie $X$
@@ -3820,10 +3822,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `stat-1-2` · Normalverteilung
 
 - **Topic:** `statistik` (Statistik & Wahrscheinlichkeit) · **Unit:** Zufallsvariablen & Verteilungen
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Parameter: $\mu$ verschiebt, $\sigma$ streckt die Glockenkurve
   - 🔴 [1] (hoch) **0/5+** Aufgaben — z-Transformation $Z = (X-\mu)/\sigma$: jede Normalverteilung auf $N(0,1)$ zurückführen
   - 🔴 [2] (hoch) **0/5+** Aufgaben — 68/95/99{,}7-Regel: $\pm1\sigma$, $\pm2\sigma$, $\pm3\sigma$-Intervalle als Schätzung auswendig
@@ -3843,10 +3845,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `stat-1-3` · Hypothesentest und Konfidenzintervall
 
 - **Topic:** `statistik` (Statistik & Wahrscheinlichkeit) · **Unit:** Zufallsvariablen & Verteilungen
-- **Aufgaben aktuell:** 9 (Minimum: 20) · **fehlen mindestens:** 11 — mehr ist besser
+- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — p-Wert < $\alpha$ → $H_0$ verwerfen (signifikantes Ergebnis)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — 95%-Konfidenzintervall Mittelwert: $\bar x \pm 1{,}96 \cdot \sigma/\sqrt n$ (normalverteilt)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Fehler 1. Art ($\alpha$): $H_0$ verworfen obwohl wahr; 2. Art ($\beta$): $H_0$ behalten obwohl falsch
@@ -3866,10 +3868,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-1-4` · Vorzeichen und Quadranten
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Grundlagen der Trigonometrie
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Quadranten I–IV durchnummerieren und Vorzeichen von $\sin$ (y-Koordinate) und $\cos$ (x-Koordinate) bestimmen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Symmetrien: $\sin(180° - \alpha) = \sin\alpha$, $\cos(180° - \alpha) = -\cos\alpha$
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen
@@ -3887,10 +3889,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-2-1` · Der Einheitskreis
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Einheitskreis und Winkelfunktionen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Einheitskreis = Kreis um Ursprung mit $r = 1$, Gleichung $x^2 + y^2 = 1$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Punkt auf Kreis $P = (\cos\alpha, \sin\alpha)$ — Winkel von positiver $x$-Achse gegen Uhrzeigersinn
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Quadrantenpunkte: $0° \to (1,0)$, $90° \to (0,1)$, $180° \to (-1,0)$, $270° \to (0,-1)$
@@ -3909,10 +3911,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-2-2` · sin und cos als Koordinaten
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Einheitskreis und Winkelfunktionen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — $\cos\alpha$ = $x$-Koordinate (horizontal), $\sin\alpha$ = $y$-Koordinate (vertikal)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Definition gilt für **alle** reellen Winkel, nicht nur $0°$–$90°$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Aus Koordinaten $(x,y)$ auf Kreis den Winkel über Vorzeichen + Referenzwinkel ermitteln
@@ -3932,10 +3934,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-2-3` · Symmetrien und Periodizität
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Einheitskreis und Winkelfunktionen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Periodizität: $\sin(\alpha + 360°) = \sin\alpha$, $\cos(\alpha + 360°) = \cos\alpha$ (Periode $2\pi$)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — $\sin$ ungerade: $\sin(-\alpha) = -\sin\alpha$ — Spiegelung an $x$-Achse kippt $y$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — $\cos$ gerade: $\cos(-\alpha) = \cos\alpha$ — $x$-Koordinate unverändert
@@ -3956,10 +3958,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-2-4` · Tangens im Einheitskreis
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Einheitskreis und Winkelfunktionen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Definition: $\tan\alpha = \sin\alpha/\cos\alpha = y/x$ — Steigung der Ursprungsgerade
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Polstellen bei $\alpha = 90° + k\cdot 180°$ (überall dort $\cos\alpha = 0$)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Periode von $\tan$ ist $180°$, nicht $360°$ (Steigung wiederholt sich nach halber Drehung)
@@ -3980,10 +3982,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-2-5` · Alle vier Quadranten
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Einheitskreis und Winkelfunktionen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Quadrantengrenzen: Q1 $0°$–$90°$, Q2 $90°$–$180°$, Q3 $180°$–$270°$, Q4 $270°$–$360°$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — ASTC-Regel: **A**lle (Q1), **S**inus (Q2), **T**angens (Q3), **C**osinus (Q4) positiv
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Referenzwinkel = Abstand zur nächsten $x$-Achsen-Hälfte ($0°$ oder $180°$)
@@ -4004,10 +4006,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-3-1` · Additionstheoreme
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, true-false, matching, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — $\sin(\alpha \pm \beta) = \sin\alpha\cos\beta \pm \cos\alpha\sin\beta$ (Kreuzform, Vorzeichen folgt Winkel)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — $\cos(\alpha \pm \beta) = \cos\alpha\cos\beta \mp \sin\alpha\sin\beta$ (umgekehrtes Vorzeichen!)
   - 🔴 [2] (mittel) **0/5+** Aufgaben — $\tan(\alpha \pm \beta) = (\tan\alpha \pm \tan\beta)/(1 \mp \tan\alpha\tan\beta)$
@@ -4027,10 +4029,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-3-2` · Doppelwinkelformeln und Pythagoreischer Satz
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, true-false, matching, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — $\sin(2\alpha) = 2\sin\alpha\cos\alpha$ (aus Additionstheorem mit $\beta = \alpha$)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — $\cos(2\alpha) = \cos^2\alpha - \sin^2\alpha = 2\cos^2\alpha - 1 = 1 - 2\sin^2\alpha$ (drei Formen)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Pythagoras-Identität $\sin^2\alpha + \cos^2\alpha = 1$ als Kreisgleichung am Einheitskreis
@@ -4050,10 +4052,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-3-3` · Technische Anwendungen
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Kraftzerlegung: $F_x = F\cos\alpha$, $F_y = F\sin\alpha$ (Winkel zur $x$-Achse)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Schwingung $x(t) = A\sin(\omega t + \varphi)$: $A$ Amplitude, $\omega$ Kreisfrequenz, $\varphi$ Phasenwinkel
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Zusammenhang $\omega = 2\pi f = 2\pi/T$ (Kreisfrequenz, Frequenz, Periode)
@@ -4073,10 +4075,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-3-4` · Inverse Funktionen
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — $\arcsin: [-1,1] \to [-90°, 90°]$ (rechte Hälfte, monoton wachsend)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — $\arccos: [-1,1] \to [0°, 180°]$ (obere Hälfte, monoton fallend)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — $\arctan: \mathbb{R} \to (-90°, 90°)$ (Pole ausgeschlossen)
@@ -4097,10 +4099,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `vek-1-3` · Kreuzprodukt
 
 - **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Kreuzprodukt liefert *Vektor* senkrecht auf $\vec a$ und $\vec b$ — nicht Skalar wie das Skalarprodukt
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Betrag $|\vec a \times \vec b| = |\vec a| |\vec b| \sin\varphi$ = Flächeninhalt des Parallelogramms
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Richtung per Rechte-Hand-Regel; $\vec a \times \vec b = -\vec b \times \vec a$ (antikommutativ)
@@ -4119,10 +4121,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `vek-1-4` · Kräfte als Vektoren (Prüfung)
 
 - **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Kraftkomponenten: $F_x = F \cos\alpha$, $F_y = F \sin\alpha$ (Winkel zur $x$-Achse)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Resultierende: $\vec R = \sum \vec F_i$ komponentenweise addieren
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Gleichgewicht: $\sum F_x = 0$ UND $\sum F_y = 0$ UND $\sum F_z = 0$
@@ -4143,10 +4145,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-0-2` · Bruchrechnen sicher
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🟡 [0] (hoch) **1/5+** Aufgaben — Hauptnenner bei ungleichnamigen Brüchen finden (kgV)
   - 🟡 [1] (hoch) **1/5+** Aufgaben — Division durch Bruch als Multiplikation mit Kehrwert
   - 🟡 [2] (mittel) **1/5+** Aufgaben — Doppelbrüche auflösen
@@ -4164,10 +4166,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `dgl-2-2` · DGL-Systeme
 
 - **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Fortgeschrittene Methoden
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Matrixform: $\vec y' = A \vec y$ mit Vektor $\vec y$ und Koeffizientenmatrix $A$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Reduktion höherer Ordnung: $y_1 = y, y_2 = y', \ldots, y_n = y^{(n-1)}$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Eigenwertansatz: $\vec y = \vec v e^{\lambda t}$ → $A \vec v = \lambda \vec v$
@@ -4188,10 +4190,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-1-1` · Kräfte und Freikörperbild
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Freikörperbild: Körper isolieren, alle äußeren Kräfte (inkl. Gewicht, Lagerreaktionen) eintragen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Kraft = Vektor: Betrag + Richtung — Pfeile in positives Koordinatensystem, Vorzeichen ergibt sich aus Rechnung
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Standard-Lagersymbole: Festlager (2 Reaktionen), Loslager (1 Reaktion), Einspannung (2 Kräfte + 1 Moment)
@@ -4210,10 +4212,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-1-2` · Momente und Hebelarm
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Moment $M = F \cdot l_\perp$ — $l_\perp$ ist der SENKRECHTE Abstand vom Bezugspunkt zur Wirkungslinie
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Drehsinn-Konvention: gegen Uhrzeiger positiv (rechte Hand / Rechte-Hand-Regel in 3D)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Bezugspunkt frei wählbar — klug wählen: Punkt mit vielen unbekannten Kräften eliminiert diese
@@ -4232,10 +4234,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-2-1` · Newtonsche Gesetze
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Dynamik
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — 2. Newton: $\sum \vec F = m \vec a$ (Grundgleichung der Dynamik)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — 1. Newton: ohne Kraft → gleichförmige Bewegung (Trägheitsprinzip)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — 3. Newton: actio = reactio, $\vec F_{AB} = -\vec F_{BA}$
@@ -4255,10 +4257,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-2-2` · Arbeit und Energie
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Dynamik
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Arbeit: $W = F \cdot s \cdot \cos\alpha$ (Skalarprodukt), Einheit Joule
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Senkrechte Kraft leistet keine Arbeit ($\cos 90° = 0$)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Kinetische Energie: $E_{\text{kin}} = \tfrac{1}{2} m v^2$
@@ -4279,10 +4281,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fest-1-1` · Normalspannung
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Spannung und Dehnung
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — $\sigma = F/A$ — Kraft normal zur Fläche, Einheit $\mathrm{N/mm^2 = MPa}$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — 1 MPa = 1 N/mm² = $10^6$ Pa: Einheiten-Umrechnung ohne Rechenfehler
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Zug vs. Druck: Vorzeichenkonvention (+Zug, −Druck) klar halten
@@ -4301,10 +4303,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fest-1-2` · Hookesches Gesetz
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Spannung und Dehnung
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — $\sigma = E\,\varepsilon$ im linear-elastischen Bereich — nur hier gilt Hooke
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Dehnung $\varepsilon = \Delta l / l_0$ dimensionslos; oft in ‰ oder %
   - 🔴 [2] (hoch) **0/5+** Aufgaben — E-Modul ist **Material-Konstante**, unabhängig von Geometrie (Stahl $\approx 210\,\mathrm{GPa}$)
@@ -4323,10 +4325,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fest-2-1` · Biegespannung
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Biegung und Torsion
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Biegespannung: $\sigma_b = M_b/W_b$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Axiales Widerstandsmoment Rechteck: $W_b = bh^2/6$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Kreisquerschnitt: $W_b = \pi d^3/32$
@@ -4346,10 +4348,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fest-2-2` · Sicherheitszahl
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Biegung und Torsion
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Zulässige Spannung: $\sigma_\text{zul} = R/S$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Festigkeitsnachweis: $\sigma_\text{vorh} \leq \sigma_\text{zul}$
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Typische Sicherheitszahlen: $S = 1{,}5$ (zäh, statisch) bis $S = 4$ (dynamisch, spröde)
@@ -4369,10 +4371,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `thermo-1-1` · Ideales Gas
 
 - **Topic:** `thermodynamik` (Thermodynamik) · **Unit:** Zustandsgrößen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — $pV = nRT$ mit $R = 8{,}314\,\mathrm{J/(mol\,K)}$; alternativ $p V = m R_s T$ mit spez. Gaskonstante
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Temperatur **immer** in Kelvin: $T[K] = T[°C] + 273{,}15$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Einheiten: $p$ in Pa, $V$ in m³, $n$ in mol — keine Liter/bar in die Grundformel
@@ -4391,10 +4393,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `thermo-1-2` · Druck und Arbeit
 
 - **Topic:** `thermodynamik` (Thermodynamik) · **Unit:** Zustandsgrößen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Volumenarbeit $W = \int p\,dV$ = Fläche unter der Kurve im pV-Diagramm
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Isobar ($p$ const): $W = p \cdot \Delta V$ — direktes Rechteck
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Isotherm ($T$ const): $W = nRT \ln(V_2/V_1)$ — Vorzeichen beachten
@@ -4413,10 +4415,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `thermo-2-1` · Erster Hauptsatz
 
 - **Topic:** `thermodynamik` (Thermodynamik) · **Unit:** Hauptsätze
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — 1. Hauptsatz geschlossen: $\Delta U = Q - W$ (Q zugeführt, W abgegeben)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — 1. Hauptsatz offen (stationär): $\dot Q + \dot W_t = \dot m (h_2 - h_1)$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Vorzeichenkonvention: Q, W zugeführt > 0
@@ -4436,10 +4438,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `thermo-2-2` · Wirkungsgrad
 
 - **Topic:** `thermodynamik` (Thermodynamik) · **Unit:** Hauptsätze
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Wirkungsgrad: $\eta = E_\text{nutz}/E_\text{zu} \leq 1$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — 2. Hauptsatz: $\eta < 1$ für Wärmekraftmaschine (Entropieargument)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Carnot-Grenze: $\eta \leq \eta_C = 1 - T_\text{kalt}/T_\text{warm}$ (K!)
@@ -4459,10 +4461,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fluid-1-1` · Hydrostatischer Druck
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Hydrostatik
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — $p = \rho g h$ — linearer Zusammenhang nur bei konstanter Dichte (Flüssigkeiten)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Überdruck vs. absoluter Druck: $p_\text{abs} = p_\text{atm} + p_\text{hydro}$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Druck in Flüssigkeit hängt nur von der Höhe ab, **nicht** von der Behälterform (hydrostat. Paradoxon)
@@ -4481,10 +4483,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fluid-1-2` · Auftrieb
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Hydrostatik
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — $F_A = \rho_\text{Fluid}\,g\,V_\text{verdrängt}$ — Dichte des **Fluids**, nicht des Körpers
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Schwimmen: $F_A = F_G$ → $V_\text{verdrängt} = m_\text{Körper}/\rho_\text{Fluid}$
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Vollständig getaucht: $V_\text{verdrängt} = V_\text{Körper}$
@@ -4503,10 +4505,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fluid-2-1` · Kontinuitätsgleichung
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Strömung
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Kontinuität (inkompressibel): $A_1 v_1 = A_2 v_2 = \dot V$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Volumenstrom: $\dot V = A \cdot v$, Einheit m³/s
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Massenstrom (kompressibel): $\dot m = \rho A v$
@@ -4526,10 +4528,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fluid-2-2` · Bernoulli-Gleichung
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Strömung
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Bernoulli: $p + \tfrac{1}{2}\rho v^2 + \rho g z = $ const (entlang Stromlinie)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Drei Druckarten: statisch $p$, dynamisch $\tfrac{1}{2}\rho v^2$, geodätisch $\rho g z$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Voraussetzungen: inkompressibel, stationär, reibungsfrei
@@ -4549,10 +4551,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `melem-1-1` · Schraubenverbindungen
 
 - **Topic:** `maschinenelemente` (Maschinenelemente) · **Unit:** Verbindungen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Vorspannkraft $F_V$ erzeugt Klemmkraft in der Fuge — verhindert Fugenöffnen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Kraftverteilung: nur ein Bruchteil der Betriebskraft fließt durch die Schraube ($\phi$-Faktor)
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Festigkeitsklassen 8.8, 10.9, 12.9: erste Zahl ≈ $R_m/100$ MPa, zweite ≈ $R_e/R_m$
@@ -4571,10 +4573,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `melem-1-2` · Passfedern und formschlüssige Verbindungen
 
 - **Topic:** `maschinenelemente` (Maschinenelemente) · **Unit:** Verbindungen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Formschluss: Geometrie überträgt Kraft (Passfeder, Zahn); Kraftschluss: Reibung überträgt Kraft (Presssitz, Kupplung)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Drehmoment aus Umfangskraft: $M_t = F_u \cdot r$; Umfangskraft $F_u = 2 M_t / d$ an der Welle mit Durchmesser $d$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Flächenpressung an der Passfeder: $p = F_u / (l \cdot h/2) \le p_{zul}$ — bestimmt die Passfeder-Länge $l$
@@ -4593,10 +4595,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `melem-2-1` · Wellen und Lager
 
 - **Topic:** `maschinenelemente` (Maschinenelemente) · **Unit:** Wellen, Lager, Zahnräder
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Welle überträgt Drehmoment und Rotation
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Radiallast: quer zur Wellenachse; Axiallast: entlang Wellenachse
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Lagerfunktionen: Führung (radial/axial) + Stützung (Kraftaufnahme)
@@ -4616,10 +4618,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `melem-2-2` · Zahnräder und Übersetzung
 
 - **Topic:** `maschinenelemente` (Maschinenelemente) · **Unit:** Wellen, Lager, Zahnräder
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Übersetzung: $i = z_2/z_1 = n_1/n_2 = d_2/d_1$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Mehrstufiges Getriebe: $i_\text{ges} = i_1 \cdot i_2 \cdots$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Drehmoment-Wandlung: $M_2 = i \cdot M_1 \cdot \eta$ (Untersetzung steigert Moment)
@@ -4639,10 +4641,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `et-1-1` · Ohmsches Gesetz und Grundbegriffe
 
 - **Topic:** `elektrotechnik` (Elektrotechnik) · **Unit:** Gleichstromkreise
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×2, number-input ×4, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, true-false, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Ohmsches Gesetz $U = R \cdot I$ — Dreieck-Merkhilfe: eine Größe abdecken, die anderen beiden ergeben sie
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Einheiten-Konsistenz: V, A, $\Omega$ — mA und k$\Omega$ immer vor der Rechnung umrechnen
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Reihenschaltung: Widerstände addieren sich, Strom ist überall gleich
@@ -4662,10 +4664,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `et-1-2` · Kirchhoffsche Gesetze
 
 - **Topic:** `elektrotechnik` (Elektrotechnik) · **Unit:** Gleichstromkreise
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Knotensatz (KCL): An jedem Knoten ist die Summe zu- und abfließender Ströme null — Folge der Ladungserhaltung
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Maschensatz (KVL): In jeder geschlossenen Masche ist die Summe aller Spannungsabfälle null — Folge der Energieerhaltung
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Vorzeichenkonvention: Umlaufrichtung festlegen; in Umlaufrichtung Spannungsquelle positiv, Widerstand-Abfall negativ (oder konsistent umgekehrt)
@@ -4684,10 +4686,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `et-1-3` · Elektrische Leistung und Wirkungsgrad
 
 - **Topic:** `elektrotechnik` (Elektrotechnik) · **Unit:** Gleichstromkreise
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Leistung: $P = U \cdot I = U^2/R = I^2 R$ (drei äquivalente Formen)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Energie: $W = P \cdot t$ (Einheit Joule oder Wattstunden)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Wirkungsgrad: $\eta = P_\text{ab}/P_\text{zu}$, immer $\leq 1$
@@ -4707,10 +4709,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `et-2-1` · Wechselstromgrundlagen und Impedanz
 
 - **Topic:** `elektrotechnik` (Elektrotechnik) · **Unit:** Wechselstrom
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Wechselspannung: $u(t) = \hat u \sin(\omega t + \varphi)$ mit $\omega = 2\pi f$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Effektivwert: $U = \hat u/\sqrt 2$ (Sinussignal)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Impedanzen: $Z_R = R$, $Z_L = j\omega L$, $Z_C = 1/(j\omega C)$
@@ -4730,10 +4732,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `et-2-2` · RC- und RL-Schaltungen
 
 - **Topic:** `elektrotechnik` (Elektrotechnik) · **Unit:** Wechselstrom
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×2, number-input ×4, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, true-false, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — RC-Grenzfrequenz: $f_g = 1/(2\pi RC)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Zeitkonstanten: RC $\tau = RC$, RL $\tau = L/R$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — RL-Impedanz-Betrag: $|Z| = \sqrt{R^2 + (\omega L)^2}$
@@ -4753,10 +4755,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `rt-1-1` · Regelkreis Grundbegriffe
 
 - **Topic:** `regelungstechnik` (Regelungstechnik) · **Unit:** Grundlagen des Regelkreises
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Signale: Führungsgröße $w$, Regelgröße $y$, Stellgröße $u$, Regelabweichung $e = w - y$, Störgröße $z$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Regelung (geschlossener Kreis) vs. Steuerung (offener Wirkungsablauf) — nur Regelung reagiert auf Störungen
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Blockschaltbild: Regler $\to$ Stellglied $\to$ Regelstrecke $\to$ Messglied $\to$ Vergleichsstelle (Rückführung)
@@ -4775,10 +4777,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `rt-1-2` · Übertragungsfunktion
 
 - **Topic:** `regelungstechnik` (Regelungstechnik) · **Unit:** Grundlagen des Regelkreises
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×2, number-input ×4, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, true-false, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Übertragungsfunktion $G(s) = Y(s)/U(s)$ nur für LTI-Systeme bei verschwindenden Anfangsbedingungen definiert
   - 🔴 [1] (hoch) **0/5+** Aufgaben — PT1-Glied: $G(s) = K/(1 + Ts)$ — Verstärkung $K$ und Zeitkonstante $T$; Sprungantwort $y(t) = K(1 - e^{-t/T})$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Statische Verstärkung = $G(0)$ — erhält man durch Einsetzen von $s = 0$ (Endwertsatz für Sprunganregung)
@@ -4798,10 +4800,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `rt-2-1` · PID-Regler
 
 - **Topic:** `regelungstechnik` (Regelungstechnik) · **Unit:** Regler und Stabilität
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — PID-Formel: $u(t) = K_P(e + \frac{1}{T_I}\int e dt + T_D \dot e)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — P: schnell, bleibender Regelfehler; I: beseitigt Dauerfehler; D: antizipiert
   - 🔴 [2] (hoch) **0/5+** Aufgaben — PID-Laplace: $G_R(s) = K_P(1 + 1/(T_I s) + T_D s)$
@@ -4821,10 +4823,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `rt-2-2` · Stabilität
 
 - **Topic:** `regelungstechnik` (Regelungstechnik) · **Unit:** Regler und Stabilität
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Stabilitätsbedingung: alle Pole in linker s-Halbebene ($\text{Re}(s_i) < 0$)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Hurwitz notwendig: alle Koeffizienten $>0$ (kein Vorzeichenwechsel)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Hurwitz hinreichend ab $n \geq 3$: Hurwitz-Determinanten $> 0$ prüfen
@@ -4844,10 +4846,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `werk-2-3` · Fe-C-Diagramm & Wärmebehandlung
 
 - **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Prüfverfahren
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Ferrit (α, krz): weich/zäh; Austenit (γ, kfz): nur bei hoher T; Perlit (lamellar); Martensit (Nadeln, hart)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Eutektoider Punkt: $0{,}83\%$ C bei $723°$C — Austenit → Perlit
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Härtbarkeit: $0{,}3$–$0{,}8\%$ C nötig (zu wenig = kein Martensit, zu viel = spröde)
@@ -4868,10 +4870,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `py-1-1` · Variablen & Datentypen
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Dynamische Typisierung: keine Typangabe nötig, aber Typ ändert sich mit dem Wert
   - 🔴 [1] (mittel) **0/5+** Aufgaben — int/float/str/bool mit `type(x)` prüfen
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Explizite Konvertierung `int("42")`, `float(3)`, `str(3.14)` — `int("3.14")` wirft `ValueError`
@@ -4890,10 +4892,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `py-1-2` · Operatoren & Ausdrücke
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — `/` = Gleitkomma-Division, `//` = Ganzzahl-Division, `%` = Modulo
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Python: `**` für Potenz; Matlab: `^` (bei Arrays: `.^` elementweise)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Logische Operatoren: Python `and/or/not`, Matlab `&&/||/~` (skalar) bzw. `&/|/~` (elementweise)
@@ -4913,10 +4915,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `py-1-3` · Listen & Arrays
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Python indiziert ab 0, Matlab ab 1 — Off-by-one-Fehler ist Quelle Nr. 1
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Slicing `liste[a:b]` liefert Elemente $a$ bis $b-1$ (rechte Grenze exklusiv)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — NumPy-Arrays: vektorisiert (elementweise `+ - * /`), viel schneller als reine Python-Listen
@@ -4935,10 +4937,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `py-1-4` · Kontrollstrukturen
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Python: Einrückung (4 Spaces) definiert Block — kein `end`; Matlab: immer `end`
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Vergleiche: `==` prüft Gleichheit, `=` weist zu — Verwechslung erzeugt stummen Bug
   - 🔴 [2] (hoch) **0/5+** Aufgaben — For-Schleife: `for i in range(n)` (0..n-1) in Python, `for i = 1:n` (1..n) in Matlab
@@ -4957,10 +4959,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `py-1-5` · Funktionen definieren
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Python: `def name(param):`, Matlab: `function y = name(x)` ... `end`
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Rückgabe: Python `return`, Matlab über Zuweisung an Ausgabevariable
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Default-Parameter: `def f(x, y=0):` — bei Aufruf nicht zwingend angeben
@@ -4980,10 +4982,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `py-2-1` · NumPy Grundlagen
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Numerisches Rechnen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Array erzeugen: `np.array([...])`, `np.zeros`, `np.ones`, `np.eye`, `np.linspace`
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Elementweise: `*` in NumPy, `.*` in Matlab; Matrixmultiplikation: `@` bzw. `*`
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Formen: `a.shape` (NumPy), `size(a)` (Matlab)
@@ -5003,10 +5005,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `py-2-2` · Matplotlib — Daten visualisieren
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Numerisches Rechnen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×2, matching ×1, sorting ×2
 - **Typen einsetzen (Rotation):** matching, number-input, true-false, sorting, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Basis-Plot: `plt.plot(x, y)`, Titel, `xlabel`, `ylabel`, `legend`, `grid`
   - 🔴 [1] (mittel) **0/5+** Aufgaben — Farbe/Linienstil: `'b-'` blau, `'r--'` rot gestrichelt, `'g:'` grün gepunktet
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Mehrere Kurven: mehrere `plt.plot()`-Aufrufe nacheinander
@@ -5026,10 +5028,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `py-2-3` · Gleichungen lösen & Optimierung
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Numerisches Rechnen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Nullstelle: `scipy.optimize.fsolve(f, x0)` — Startwert sollte nah an Lösung
   - 🔴 [1] (hoch) **0/5+** Aufgaben — LGS: `np.linalg.solve(A, b)` statt `np.linalg.inv(A) @ b` (schneller, stabiler)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Matlab-Pendant: Backslash-Operator `A \ b`
@@ -5049,10 +5051,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `py-2-4` · Numerische Integration & DGL
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Numerisches Rechnen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Bestimmtes Integral: `scipy.integrate.quad(f, a, b)` (adaptive Quadratur)
   - 🔴 [1] (mittel) **0/5+** Aufgaben — Matlab-Pendant: `integral(@(x) f(x), a, b)`
   - 🔴 [2] (hoch) **0/5+** Aufgaben — DGL 2. Ordnung → System 1. Ordnung umschreiben, dann `solve_ivp` / `ode45`
@@ -5072,10 +5074,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `py-3-1` · Festigkeitsberechnung
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** MB-Anwendungen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Rechteck: $I = bh^3/12$, $W = bh^2/6$ als Funktion
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Biegespannung $\sigma_b = M_b/W$ entlang Balken berechnen (Vektor-Operation)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Kritische Stelle: $M_\text{max}$ via `np.max(np.abs(M))`
@@ -5095,10 +5097,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `py-3-2` · Datenauswertung & Messdaten
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** MB-Anwendungen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×2, matching ×1, sorting ×2
 - **Typen einsetzen (Rotation):** matching, number-input, true-false, sorting, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — CSV lesen: `np.loadtxt` (einfach), `pd.read_csv` (mit Headern und Typen)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Statistik: `np.mean`, `np.std`, `np.median`, `np.max`, `np.min`
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Polynom-Fit: `np.polyfit(x, y, n)` → Koeffizienten
@@ -5118,10 +5120,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `py-3-3` · Simulation: Feder-Masse-Dämpfer
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** MB-Anwendungen
-- **Aufgaben aktuell:** 10 (Minimum: 20) · **fehlen mindestens:** 10 — mehr ist besser
+- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Bewegungsgleichung $m\ddot x + d\dot x + kx = F(t)$ als System 1. Ordnung
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Eigenkreisfrequenz $\omega_0 = \sqrt{k/m}$, Dämpfungsgrad $D = d/(2\sqrt{km})$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Frequenzgang: Amplitude über $\Omega$ plotten, Resonanzspitze bei $\Omega \approx \omega_0$
@@ -5141,10 +5143,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-1-1` · Winkel und ihre Maße
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Grundlagen der Trigonometrie
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — DEG/RAD-Umschaltung am Taschenrechner
   - 🔴 [1] (hoch) **0/5+** Aufgaben — π-Vielfache (π/6, π/4, π/3, π/2) als Grad erkennen
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Umrechnungsformel $\alpha_{rad}=\alpha_{deg}\cdot\pi/180$
@@ -5163,10 +5165,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-1-2` · Rechtwinkliges Dreieck
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Grundlagen der Trigonometrie
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — SOH-CAH-TOA als Merkregel für Seitenverhältnisse
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Gegenkathete vs. Ankathete in beliebiger Dreiecksorientierung identifizieren
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Umkehrfunktionen arcsin/arccos/arctan sinnvoll einsetzen
@@ -5184,10 +5186,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-5-1` · Grenzwerte von Funktionen
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grenzwerte und Stetigkeit
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Standardgrenzwerte: $\lim_{x \to 0} \sin x/x = 1$, $\lim_{x \to 0} (e^x-1)/x = 1$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Eulerzahl: $\lim_{x \to \infty} (1 + 1/x)^x = e$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — L'Hôpital nur bei unbestimmten Formen $0/0$ oder $\infty/\infty$ anwenden
@@ -5208,10 +5210,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `vek-1-1` · Vektoren — Grundbegriffe
 
 - **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Betrag $|\vec{v}|=\sqrt{v_x^2+v_y^2+v_z^2}$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Vektoraddition komponentenweise
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Einheitsvektor $\vec{e}=\vec{v}/|\vec{v}|$ bilden
@@ -5230,10 +5232,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `vek-2-1` · Geradengleichung
 
 - **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Geraden und Ebenen im Raum
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Parameterform: $\vec r = \vec p + t \vec v$ mit Stützpunkt $\vec p$ und Richtung $\vec v$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Punkt-Test: $(x,y,z) = \vec p + t \vec v$ auf **dasselbe** $t$ in allen drei Komponenten prüfen
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Lagetest zweier Geraden: parallel? identisch? schneidend? windschief?
@@ -5254,10 +5256,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-3-1` · Funktionsbegriff
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×2, matching ×1
 - **Typen einsetzen (Rotation):** sorting, matching, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Funktion: jedem $x$ aus Definitionsbereich wird *genau ein* $y$ zugeordnet
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Definitionsbereich $D$: alle zulässigen $x$ (Division durch 0 ausschließen, Radikand $\ge 0$, Logarithmus $>0$)
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Injektiv = verschiedene $x$ $\to$ verschiedene $y$; surjektiv = jedes $y$ im Bild wird getroffen; bijektiv = beides
@@ -5275,10 +5277,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-3-3` · Funktionsoperationen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Horizontale Verschiebung: $f(x - a)$ = $a$ nach rechts (Vorzeichen kontraintuitiv!)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Vertikale Verschiebung: $f(x) + b$ = $b$ nach oben
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Streckung vertikal: $c \cdot f(x)$ (für $c > 1$), horizontal: $f(x/c)$
@@ -5299,10 +5301,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-3-4` · Umkehrfunktionen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Existenz: $f$ muss **bijektiv** sein (injektiv UND surjektiv)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Berechnung: $y = f(x)$ nach $x$ auflösen, dann $x \leftrightarrow y$ tauschen
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Graphisch: Spiegelung an der Winkelhalbierenden $y = x$
@@ -5323,10 +5325,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `la-1-5` · Eigenwerte und Eigenvektoren
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Matrizen & Determinanten
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Eigenwertgleichung: $A \vec v = \lambda \vec v$ (Vektor bleibt in Richtung, nur gestreckt)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Charakteristisches Polynom: $\det(A - \lambda I) = 0$ → Eigenwerte $\lambda_i$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Eigenvektor zu $\lambda_i$: $(A - \lambda_i I)\vec v = 0$ lösen (Kern)
@@ -5347,10 +5349,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `la-2-1` · LGS in Matrixform
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Lineare Gleichungssysteme
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Matrixform: $A\vec x = \vec b$ (Koeffizienten $A$, Unbekannte $\vec x$, rechte Seite $\vec b$)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Erweiterte Koeffizientenmatrix $[A|\vec b]$ mit Trennstrich
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Variablen in jeder Gleichung in gleicher Reihenfolge (sonst Koeffizienten falsch!)
@@ -5370,10 +5372,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `la-2-3` · Lösbarkeit von LGS
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Lineare Gleichungssysteme
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Drei Fälle: eindeutig / unendlich / keine Lösung (Widerspruch)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Rang = Anzahl Pivots in Stufenform
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Kronecker-Capelli: $\text{rg}(A) \neq \text{rg}([A|b])$ → keine Lösung
@@ -5394,10 +5396,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `la-2-4` · Cramersche Regel & Anwendungen
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Lineare Gleichungssysteme
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Cramer: $x_i = \det(A_i)/\det(A)$, wobei $A_i$ = $A$ mit $i$-ter Spalte durch $\vec b$ ersetzt
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Voraussetzung: $\det(A) \neq 0$ (nicht anwendbar bei singulärer Matrix)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Nur für **quadratische** Systeme mit eindeutiger Lösung sinnvoll
@@ -5417,10 +5419,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-1-5` · Hauptsatz der Differential- und Integralrechnung
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Teil 1: $F(x) = \int_a^x f(t) dt$ ist differenzierbar mit $F'(x) = f(x)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Teil 2: $\int_a^b f(x) dx = F(b) - F(a)$ für jede Stammfunktion $F$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Voraussetzung: $f$ stetig auf $[a,b]$
@@ -5440,10 +5442,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-2-3` · Partialbruchzerlegung
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Integrationstechniken
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Voraussetzung: $\deg(\text{Zähler}) < \deg(\text{Nenner})$ (sonst Polynomdivision zuerst)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Einfacher Linearfaktor $(x-a)$: Ansatz $A/(x-a)$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Doppelter Linearfaktor $(x-a)^2$: Ansatz $A/(x-a) + B/(x-a)^2$
@@ -5464,10 +5466,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-3-2` · Rotationskörper
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Anwendungen
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×5, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Scheibenmethode ($x$-Achse): $V = \pi \int_a^b [f(x)]^2 dx$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Rotation um $y$-Achse: $V = \pi \int_c^d [g(y)]^2 dy$ mit Umkehrfunktion
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Schalenmethode: $V = 2\pi \int_a^b x \cdot f(x) dx$ (Rotation um $y$-Achse)
@@ -5487,10 +5489,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-3-3` · Technische Anwendungen
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Anwendungen
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Arbeit $W = \int_a^b F(x) dx$ bei ortsabhängiger Kraft
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Federenergie aus Hookeschem Gesetz $F = kx$: $W = \frac{1}{2} k s^2$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Flächenschwerpunkt: $\bar{x} = (1/A) \int x f(x) dx$, $\bar{y} = (1/(2A)) \int f(x)^2 dx$
@@ -5510,10 +5512,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `dgl-1-1` · Was ist eine Differentialgleichung?
 
 - **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Grundbegriffe & einfache DGL
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Ordnung = höchste vorkommende Ableitung ($y$, $y'$, $y''$ … )
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Linear ⇔ $y$ und alle Ableitungen nur in 1. Potenz, keine Produkte $y \cdot y'$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Homogen ⇔ rechte Seite = 0; sonst inhomogen (wichtig für Ansatzwahl)
@@ -5533,10 +5535,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `dgl-1-2` · Trennung der Variablen
 
 - **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Grundbegriffe & einfache DGL
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Anwendbarkeit erkennen: $y' = f(x)\,g(y)$ — Produkt aus $x$- und $y$-Anteil
   - 🔴 [1] (hoch) **0/5+** Aufgaben — $dy/dx$-Schreibweise: $\tfrac{dy}{g(y)} = f(x)\,dx$ sauber trennen
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Beide Seiten integrieren, Integrationskonstante $C$ nur einmal ansetzen
@@ -5556,10 +5558,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `dgl-1-4` · DGL 2. Ordnung mit konstanten Koeffizienten
 
 - **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Grundbegriffe & einfache DGL
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Ansatz $y = e^{\lambda x}$ führt zu char. Gleichung $a\lambda^2 + b\lambda + c = 0$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — D > 0 (zwei reelle): $y = C_1 e^{\lambda_1 x} + C_2 e^{\lambda_2 x}$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — D = 0 (doppelte): $y = (C_1 + C_2 x) e^{\lambda x}$
@@ -5580,10 +5582,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `dgl-2-1` · Variation der Konstanten
 
 - **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Fortgeschrittene Methoden
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Ansatz: homogene Lösung $y_h = C e^{-P(x)}$, dann $C$ durch $C(x)$ ersetzen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Einsetzen liefert $C'(x) = q(x) e^{P(x)}$ (nur eine Integration)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Allgemeine Lösung = homogener + partikulärer Anteil
@@ -5603,10 +5605,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `dgl-2-3` · Technische Anwendungen
 
 - **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Fortgeschrittene Methoden
-- **Aufgaben aktuell:** 11 (Minimum: 20) · **fehlen mindestens:** 9 — mehr ist besser
+- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×2, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, sorting, number-input, matching, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Feder-Masse-Dämpfer: $m\ddot x + c\dot x + kx = F(t)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Eigenkreisfrequenz $\omega_0 = \sqrt{k/m}$, Dämpfungsgrad $D = c/(2\sqrt{km})$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Schwingfall $D<1$: gedämpfte Schwingung mit $\omega_d = \omega_0 \sqrt{1-D^2}$
@@ -5627,10 +5629,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-1-3` · Die Grundwerte
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Grundlagen der Trigonometrie
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×8, number-input ×2, true-false ×1, matching ×1
 - **Typen einsetzen (Rotation):** sorting, true-false, matching, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Auswendig: $\sin 0° = 0$, $\sin 30° = 1/2$, $\sin 45° = \sqrt2/2$, $\sin 60° = \sqrt3/2$, $\sin 90° = 1$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Merkregel: $\sin$-Werte folgen dem Muster $\sqrt n / 2$ für $n = 0, 1, 2, 3, 4$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Kosinus ist Sinus rückwärts: $\cos 0° = 1, \cos 90° = 0$, dazwischen symmetrisch
@@ -5649,10 +5651,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-1-1` · Was ist eine Ableitung?
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grundlagen der Differentialrechnung
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Differenzenquotient → Differentialquotient als Grenzübergang
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Tangentensteigung aus $f'(x_0)$ ablesen
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Notwendige Extremum-Bedingung $f'(x_0)=0$
@@ -5671,10 +5673,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-1-5` · Extremwerte und Kurvendiskussion
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grundlagen der Differentialrechnung
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Notwendige Bedingung für Extremum: $f'(x_0) = 0$ (waagrechte Tangente)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Hinreichend: $f''(x_0) > 0 \Rightarrow$ Min, $f''(x_0) < 0 \Rightarrow$ Max
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Bei $f''(x_0) = 0$: Vorzeichenwechsel von $f'$ prüfen oder höhere Ableitungen
@@ -5695,10 +5697,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-3-2` · Krümmung und Wendepunkte
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Kurvendiskussion
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Krümmung via $f''$: $f'' > 0$ → linksgekrümmt ($\cup$), $f'' < 0$ → rechtsgekrümmt ($\cap$)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Notwendige Bedingung für Wendepunkt: $f''(x_0) = 0$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Hinreichend: $f'''(x_0) \neq 0$ ODER $f''$ wechselt bei $x_0$ das Vorzeichen
@@ -5718,10 +5720,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-3-3` · Vollständige Kurvendiskussion
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Kurvendiskussion
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Reihenfolge: $D_f$ → Symmetrie → Nullstellen → $f', f''$ → Extrema → WP → $x \to \pm\infty$ → Graph
   - 🔴 [1] (mittel) **0/5+** Aufgaben — Symmetrie: $f(-x) = f(x)$ gerade (y-Achse), $f(-x) = -f(x)$ ungerade (Ursprung)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Verhalten im Unendlichen: bei Polynom führender Term, bei Bruch Grad-Vergleich
@@ -5741,10 +5743,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `vek-1-2` · Skalarprodukt
 
 - **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Vektorrechnung
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Komponentenform $\vec{a}\cdot\vec{b}=\sum a_i b_i$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Winkelform $\vec{a}\cdot\vec{b}=|\vec{a}||\vec{b}|\cos\alpha$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Orthogonalitäts-Test über $\vec{a}\cdot\vec{b}=0$
@@ -5763,10 +5765,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `vek-2-2` · Ebenengleichung
 
 - **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Geraden und Ebenen im Raum
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Parameterform: $\vec r = \vec p + s \vec u + t \vec v$ (Stützpunkt + zwei Richtungen)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Normalenform: $\vec n \cdot (\vec r - \vec p) = 0$ mit Normalvektor $\vec n \perp$ Ebene
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Koordinatenform: $a x + b y + c z = d_0$ mit $\vec n = (a, b, c)$ und $d_0 = \vec n \cdot \vec p$
@@ -5787,10 +5789,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `vek-2-3` · Abstände und Schnitte
 
 - **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Geraden und Ebenen im Raum
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×5, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Abstand Punkt–Ebene: $d = |a q_x + b q_y + c q_z - d_0|/\sqrt{a^2+b^2+c^2}$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Abstand Punkt–Gerade: $d = |\vec v \times (\vec Q - \vec p)|/|\vec v|$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Abstand windschiefer Geraden: $d = |(\vec p_2 - \vec p_1) \cdot (\vec v_1 \times \vec v_2)|/|\vec v_1 \times \vec v_2|$
@@ -5811,10 +5813,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-1-2` · Wurzeln und gebrochene Exponenten
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Wurzel als Bruchpotenz: $\sqrt[n]{x} = x^{1/n}$, dadurch gelten alle Potenzgesetze
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Wurzel des Produkts: $\sqrt{ab} = \sqrt a \cdot \sqrt b$ — aber $\sqrt{a+b} \neq \sqrt a + \sqrt b$
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Nenner rational machen: Erweitern mit passender Wurzel löst Wurzeln aus dem Nenner
@@ -5832,10 +5834,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-1-3` · Logarithmen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Definition: $\log_b x = y \iff b^y = x$ (für $b>0, b\neq 1, x>0$)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Produktregel: $\ln(ab) = \ln a + \ln b$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Quotientenregel: $\ln(a/b) = \ln a - \ln b$
@@ -5857,10 +5859,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-2-1` · Lineare Gleichungen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Äquivalenzumformungen: gleiche Operation auf beiden Seiten — Gleichung bleibt erhalten
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Standardvorgehen: Klammern auflösen $\to$ Variable auf eine Seite $\to$ durch Koeffizient teilen
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Textaufgaben: Variable definieren, Gleichung aufstellen, lösen, zurück in den Kontext interpretieren
@@ -5879,10 +5881,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-2-3` · Polynomgleichungen & Polynomdivision
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Nullstellenraten: Teiler des absoluten Glieds testen ($\pm 1, \pm 2, \ldots$)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Polynomdivision: Nach Nullstelle $x_0$ durch $(x - x_0)$ teilen, Grad sinkt um 1
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Rest der Polynomdivision bei Nullstelle muss 0 sein (Probe!)
@@ -5903,10 +5905,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-2-4` · Ungleichungen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Multiplikation/Division mit negativer Zahl: Ungleichheitszeichen umdrehen!
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Betragsungleichung $|x - a| < b$: $a - b < x < a + b$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Betragsungleichung $|x - a| > b$: $x < a - b$ ODER $x > a + b$
@@ -5927,10 +5929,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `la-1-1` · Was ist eine Matrix?
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Matrizen & Determinanten
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Dimension $m \times n$ als „Zeilen $\times$ Spalten" lesen (Reihenfolge nicht tauschen)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Element $a_{ij}$: erster Index = Zeile, zweiter = Spalte
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Einheitsmatrix, Nullmatrix, Diagonalmatrix, quadratische Matrix auf einen Blick unterscheiden
@@ -5949,10 +5951,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `la-1-3` · Transponierte und Inverse
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Matrizen & Determinanten
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Transponierte: $(A^T)_{ij} = A_{ji}$ (Zeilen/Spalten tauschen), Dimensionen $m \times n \to n \times m$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Transponierten-Regeln: $(A+B)^T = A^T + B^T$, $(AB)^T = B^T A^T$ (Reihenfolge dreht!)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — 2x2-Inverse: $A^{-1} = \frac{1}{\det A}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$
@@ -5973,10 +5975,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `la-1-4` · Determinanten
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Matrizen & Determinanten
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×5, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — 2x2: $\det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — 3x3 Regel von Sarrus: Haupt- minus Nebendiagonalen (nur 3x3!)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Laplace-Entwicklung: nach einer Zeile/Spalte, Vorzeichen-Schachbrett $(-1)^{i+j}$
@@ -5997,10 +5999,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `la-2-2` · Gauss-Algorithmus
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Lineare Gleichungssysteme
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Drei erlaubte Zeilenumformungen: Vertauschen, Skalieren (≠0), Addieren eines Vielfachen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Ziel: Obere Dreiecksform / Stufenform (alle Einträge unter Pivot = 0)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Rücksubstitution: von unten nach oben, Variable nach Variable auflösen
@@ -6021,10 +6023,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-1-1` · Stammfunktion — das Umkehren der Ableitung
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×2, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, sorting, number-input, matching, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Stammfunktion durch „Rückwärts-Ableiten" erkennen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Integrationskonstante $+C$ nicht vergessen
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Probe durch Ableiten der gefundenen Stammfunktion
@@ -6042,10 +6044,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-1-3` · Summenregel & Faktorregel
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Summenregel: $\int (f + g) dx = \int f\,dx + \int g\,dx$ — gliedweise integrieren
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Faktorregel: $\int c f(x) dx = c \int f(x) dx$ — Konstante vors Integral ziehen
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Für Produkt $f(x) \cdot g(x)$ gilt KEIN analoges Produktrecht — dort partielle Integration nötig
@@ -6064,10 +6066,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-1-4` · Das bestimmte Integral
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×3, number-input ×6, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Hauptsatz: $\int_a^b f(x) dx = F(b) - F(a)$ mit beliebiger Stammfunktion $F$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Geometrisch: Fläche *zwischen* Kurve und x-Achse — unterhalb wird NEGATIV gezählt
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Vertauschen der Grenzen dreht das Vorzeichen: $\int_a^b = -\int_b^a$
@@ -6086,10 +6088,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-2-1` · Substitution
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Integrationstechniken
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Formel: $\int f(g(x)) g'(x) dx = \int f(u) du$ mit $u = g(x)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Substitution wählen, wenn Ableitung $g'(x)$ (bis auf Konstante) als Faktor im Integrand vorkommt
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Bei bestimmtem Integral Grenzen mit substituieren: $x = a \to u = g(a)$, analog $b$
@@ -6110,10 +6112,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-2-2` · Partielle Integration
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Integrationstechniken
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Formel: $\int u v' dx = uv - \int u' v dx$ (aus Produktregel hergeleitet)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — LIATE-Regel: **L**og, **I**nv.Trig, **A**lgebr., **T**rig, **E**xp — davor stehende wird $u$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Spezialtrick $\int \ln x\, dx$: setze $u = \ln x$, $v' = 1$
@@ -6133,10 +6135,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-3-1` · Flächenberechnung
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Anwendungen
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×4, number-input ×5, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Fläche unter $f(x) \geq 0$ auf $[a,b]$: $A = \int_a^b f(x) dx$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Vorzeichenproblem: Bei $f < 0$ liefert Integral negativen Wert — Fläche = Betrag
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Fläche zwischen Kurven: $A = \int_a^b (f_{\text{oben}} - f_{\text{unten}}) dx$
@@ -6157,10 +6159,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `dgl-1-3` · Lineare DGL 1. Ordnung
 
 - **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Grundbegriffe & einfache DGL
-- **Aufgaben aktuell:** 12 (Minimum: 20) · **fehlen mindestens:** 8 — mehr ist besser
+- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Standardform: $y' + p(x) y = q(x)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Integrierender Faktor: $\mu(x) = e^{\int p(x) dx}$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Lösungsformel: $y = (1/\mu) [\int \mu \cdot q \, dx + C]$
@@ -6181,10 +6183,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-1-2` · Potenzregel und Summenregel
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grundlagen der Differentialrechnung
-- **Aufgaben aktuell:** 13 (Minimum: 20) · **fehlen mindestens:** 7 — mehr ist besser
+- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×8, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Potenzregel $(x^n)'=nx^{n-1}$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Summenregel $(f+g)'=f'+g'$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Wurzeln und Kehrwerte als Potenzen $x^{1/2}, x^{-1}$ ableiten
@@ -6203,10 +6205,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-1-3` · Ableitungen elementarer Funktionen
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grundlagen der Differentialrechnung
-- **Aufgaben aktuell:** 13 (Minimum: 20) · **fehlen mindestens:** 7 — mehr ist besser
+- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×8, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — $(\sin x)' = \cos x$, $(\cos x)' = -\sin x$ — Vorzeichen bei Kosinus nicht vergessen
   - 🔴 [1] (hoch) **0/5+** Aufgaben — $(e^x)' = e^x$ (einzige Funktion mit $f' = f$) und $(\ln x)' = 1/x$
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Allgemeine Exponential-/Logarithmusfunktion: $(a^x)' = a^x \ln a$, $(\log_a x)' = 1/(x \ln a)$
@@ -6225,10 +6227,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-1-4` · Kettenregel
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grundlagen der Differentialrechnung
-- **Aufgaben aktuell:** 13 (Minimum: 20) · **fehlen mindestens:** 7 — mehr ist besser
+- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×8, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Kettenregel: $(f(g(x)))' = f'(g(x)) \cdot g'(x)$ — „äußere mal innere Ableitung"
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Äußere Funktion identifizieren (die, die man zuletzt ausführt) und separat ableiten
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Standardfälle: $(e^{u(x)})' = e^{u(x)} \cdot u'(x)$, $(\sin u)' = \cos u \cdot u'$, $(\ln u)' = u'/u$
@@ -6247,10 +6249,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-2-1` · Produktregel
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Ableitungsregeln im Detail
-- **Aufgaben aktuell:** 13 (Minimum: 20) · **fehlen mindestens:** 7 — mehr ist besser
+- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Formel: $(f \cdot g)' = f' g + f g'$ (zwei Summanden, kreuzweise)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Klassischer Fehler: $(fg)' \neq f' g'$ (nicht faktorweise ableiten!)
   - 🔴 [2] (niedrig) **0/5+** Aufgaben — Geometrische Motivation: Flächenänderung eines Rechtecks mit variablen Seiten
@@ -6270,10 +6272,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-2-2` · Quotientenregel
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Ableitungsregeln im Detail
-- **Aufgaben aktuell:** 13 (Minimum: 20) · **fehlen mindestens:** 7 — mehr ist besser
+- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×8, number-input ×2, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Formel: $(f/g)' = (f' g - f g')/g^2$ — Minuszeichen, Reihenfolge $f' g$ zuerst
   - 🔴 [1] (mittel) **0/5+** Aufgaben — NAZ-Eselsbrücke: "**N**enner·**A**bl. **Z**ähler minus **Z**ähler·**A**bl. **N**enner, durch $N^2$"
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Nenner niemals ableiten ohne Vorzeichen: $f' g - f g'$ (NICHT $f g' - f' g$)
@@ -6293,10 +6295,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-2-4` · Gemischte Regeln
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Ableitungsregeln im Detail
-- **Aufgaben aktuell:** 13 (Minimum: 20) · **fehlen mindestens:** 7 — mehr ist besser
+- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Äußerste Struktur identifizieren: Produkt, Quotient oder Verkettung?
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Hierarchisch ableiten: erst äußerste Regel, dann innere Teile mit passender Regel
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Logarithmisches Ableiten bei $f(x)^{g(x)}$: $\ln y = g \ln f$, dann implizit differenzieren
@@ -6316,10 +6318,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-3-1` · Monotonie und Extremwerte
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Kurvendiskussion
-- **Aufgaben aktuell:** 13 (Minimum: 20) · **fehlen mindestens:** 7 — mehr ist besser
+- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** matching, sorting, true-false, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Monotonie-Kriterium: $f'(x) > 0$ → streng wachsend, $f'(x) < 0$ → streng fallend
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Notwendige Bedingung für lokales Extremum: $f'(x_0) = 0$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Hinreichend via $f''$: $f''(x_0) > 0$ → Min, $f''(x_0) < 0$ → Max
@@ -6339,10 +6341,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-3-4` · Prüfungsaufgaben Kurvendiskussion
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Kurvendiskussion
-- **Aufgaben aktuell:** 13 (Minimum: 20) · **fehlen mindestens:** 7 — mehr ist besser
+- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×1, matching ×2, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, sorting, matching, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Typische Klausurfunktionen: Polynom, Bruch $p(x)/q(x)$, $x \cdot e^{-x}$, $e^{-x^2}$
   - 🔴 [1] (mittel) **0/5+** Aufgaben — Plausibilitätsprüfung: Polynom Grad $n$ hat höchstens $n-1$ Extrema
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Globale Extrema auf Intervall $[a,b]$: innere Kandidaten + Randpunkte $f(a), f(b)$ vergleichen
@@ -6362,10 +6364,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `vek-2-4` · Prüfungsaufgaben Analytische Geometrie
 
 - **Topic:** `vektoren` (Vektoren & Analytische Geometrie) · **Unit:** Geraden und Ebenen im Raum
-- **Aufgaben aktuell:** 13 (Minimum: 20) · **fehlen mindestens:** 7 — mehr ist besser
+- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Lotfußpunkt auf Ebene: Hilfsgerade durch $P$ in Richtung $\vec n$, Schnitt mit Ebene
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Schnittgerade zweier Ebenen: Richtung $\vec v = \vec n_1 \times \vec n_2$, Punkt durch LGS-Lösung
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Gerade ⊥ Ebene $\iff \vec v_g \parallel \vec n_E$; Gerade $\parallel$ Ebene $\iff \vec v_g \perp \vec n_E$
@@ -6386,10 +6388,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-1-1` · Potenzgesetze
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
-- **Aufgaben aktuell:** 13 (Minimum: 20) · **fehlen mindestens:** 7 — mehr ist besser
+- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Gleiche Basis: $x^a \cdot x^b = x^{a+b}$ und $x^a/x^b = x^{a-b}$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Potenz einer Potenz: $(x^a)^b = x^{a \cdot b}$ — niemals mit Multiplikation verwechseln
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Negativer Exponent $x^{-n} = 1/x^n$ und nullter Exponent $x^0 = 1$ (für $x \neq 0$)
@@ -6408,10 +6410,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-2-2` · Quadratische Gleichungen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
-- **Aufgaben aktuell:** 13 (Minimum: 20) · **fehlen mindestens:** 7 — mehr ist besser
+- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Mitternachtsformel $x = (-b \pm \sqrt{b^2 - 4ac})/(2a)$ für $ax^2 + bx + c = 0$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Diskriminante $D = b^2 - 4ac$: $D>0$ zwei reelle Lösungen, $D=0$ eine doppelte, $D<0$ keine reelle
   - 🔴 [2] (mittel) **0/5+** Aufgaben — Satz von Vieta: $x_1 + x_2 = -b/a$, $x_1 \cdot x_2 = c/a$ — zum schnellen Raten/Prüfen
@@ -6430,10 +6432,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-3-2` · Elementare Funktionen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
-- **Aufgaben aktuell:** 13 (Minimum: 20) · **fehlen mindestens:** 7 — mehr ist besser
+- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×2, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, sorting, number-input, matching, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Potenzfunktion $x^n$: gerade $n$ → Parabel, ungerade $n$ → S-Form; Def.bereich $\mathbb{R}$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Exponentialfunktion $a^x$ ($a>0, a\neq 1$): Wertebereich $(0,\infty)$, streng monoton
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Logarithmusfunktion $\log_a x$: Def.bereich $(0,\infty)$, Umkehrung von $a^x$
@@ -6454,10 +6456,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `la-1-2` · Matrizenrechnung
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Matrizen & Determinanten
-- **Aufgaben aktuell:** 13 (Minimum: 20) · **fehlen mindestens:** 7 — mehr ist besser
+- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Addition nur bei identischer Dimension — elementweise
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Matrizenmultiplikation: „Zeile mal Spalte" — Innen-Dimensionen müssen passen ($m\!\times\!k$ · $k\!\times\!n$)
   - 🔴 [2] (hoch) **0/5+** Aufgaben — $A\,B \neq B\,A$ im Allgemeinen — Reihenfolge wichtig
@@ -6476,10 +6478,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-1-2` · Grundintegrale
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Aufgaben aktuell:** 13 (Minimum: 20) · **fehlen mindestens:** 7 — mehr ist besser
+- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×2, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, sorting, number-input, matching, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Potenzregel $\int x^n dx = x^{n+1}/(n+1)+C$ für $n\neq-1$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Sonderfall $\int \frac{1}{x}dx = \ln|x|+C$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Stammfunktionen von $e^x$, $\sin x$, $\cos x$ auswendig
@@ -6498,10 +6500,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-2-4` · Gemischte Übungen
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Integrationstechniken
-- **Aufgaben aktuell:** 13 (Minimum: 20) · **fehlen mindestens:** 7 — mehr ist besser
+- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×4, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Zähler = Ableitung des Nenners → direkte Stammfunktion $\ln|f|$ (ohne Substitution)
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Halbwinkelformeln für $\sin^2 x = (1 - \cos 2x)/2$, $\cos^2 x = (1 + \cos 2x)/2$
   - 🔴 [2] (niedrig) **0/5+** Aufgaben — Substitutionen $t = \tan(x/2)$ (Weierstraß) für rationale trigonometrische Ausdrücke
@@ -6521,10 +6523,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-2-3` · Kettenregel — Schritt für Schritt
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Ableitungsregeln im Detail
-- **Aufgaben aktuell:** 14 (Minimum: 20) · **fehlen mindestens:** 6 — mehr ist besser
+- **Aufgaben aktuell:** 14 · **mindestens:** 20 · **fehlen bis Minimum:** 6 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×8, number-input ×3, true-false ×1, matching ×1, sorting ×1
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Formel: $[f(g(x))]' = f'(g(x)) \cdot g'(x)$ — äußere mal innere Ableitung
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Innere Funktion in äußerer Ableitung unverändert eingesetzt lassen
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Mehrfachverkettung: Ableitungen von außen nach innen multiplizieren
@@ -6544,10 +6546,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fl-1-1` · Fourier-Reihen — Grundbegriffe
 
 - **Topic:** `fourier-laplace` (Fourier & Laplace) · **Unit:** Fourier-Reihen
-- **Aufgaben aktuell:** 15 (Minimum: 20) · **fehlen mindestens:** 5 — mehr ist besser
+- **Aufgaben aktuell:** 15 · **mindestens:** 20 · **fehlen bis Minimum:** 5 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — $T$-Periode und Grundfrequenz $\omega_0 = 2\pi/T$ korrekt identifizieren
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Formel: $a_0 = \tfrac{1}{T}\int_0^T f\,dt$ (DC-Anteil), $a_n$, $b_n$ mit Faktor $\tfrac{2}{T}$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Gerade $f$ ($f(-t) = f(t)$) → nur $a_n$; ungerade → nur $b_n$ — halbiert den Aufwand
@@ -6567,10 +6569,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fl-1-2` · Fourier-Reihe Rechteckimpuls
 
 - **Topic:** `fourier-laplace` (Fourier & Laplace) · **Unit:** Fourier-Reihen
-- **Aufgaben aktuell:** 15 (Minimum: 20) · **fehlen mindestens:** 5 — mehr ist besser
+- **Aufgaben aktuell:** 15 · **mindestens:** 20 · **fehlen bis Minimum:** 5 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Ungerades Rechteck → nur $b_n$; nur **ungerade** $n$ liefern Beitrag ($b_n \propto 1/n$)
   - 🔴 [1] (mittel) **0/5+** Aufgaben — Gibbs-Überschwinger ca. 9 % an Sprungstellen — wird mit mehr Termen nicht kleiner, nur schmaler
   - 🔴 [2] (niedrig) **0/5+** Aufgaben — Konvergenz in der Mitte der Sprungstelle zum Mittelwert der beiden Seiten
@@ -6589,10 +6591,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fl-1-3` · Fourier-Transformation
 
 - **Topic:** `fourier-laplace` (Fourier & Laplace) · **Unit:** Fourier-Reihen
-- **Aufgaben aktuell:** 15 (Minimum: 20) · **fehlen mindestens:** 5 — mehr ist besser
+- **Aufgaben aktuell:** 15 · **mindestens:** 20 · **fehlen bis Minimum:** 5 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — FT-Definition: $F(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Rücktransformation: $f(t) = (1/2\pi) \int F(\omega) e^{i\omega t} d\omega$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Wichtige Paare: Rechteckpuls ↔ Sinc, Gauß ↔ Gauß, $\delta(t)$ ↔ 1
@@ -6613,10 +6615,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fl-2-1` · Laplace-Grundlagen
 
 - **Topic:** `fourier-laplace` (Fourier & Laplace) · **Unit:** Laplace-Transformation
-- **Aufgaben aktuell:** 15 (Minimum: 20) · **fehlen mindestens:** 5 — mehr ist besser
+- **Aufgaben aktuell:** 15 · **mindestens:** 20 · **fehlen bis Minimum:** 5 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Definition: $\mathcal L\{f\}(s) = \int_0^\infty f(t) e^{-st} dt$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — Wichtige Paare: $1 \leftrightarrow 1/s$, $t \leftrightarrow 1/s^2$, $e^{at} \leftrightarrow 1/(s-a)$
   - 🔴 [2] (hoch) **0/5+** Aufgaben — $\sin(\omega t) \leftrightarrow \omega/(s^2 + \omega^2)$, $\cos(\omega t) \leftrightarrow s/(s^2 + \omega^2)$
@@ -6636,10 +6638,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `fl-2-2` · Laplace zur DGL-Lösung
 
 - **Topic:** `fourier-laplace` (Fourier & Laplace) · **Unit:** Laplace-Transformation
-- **Aufgaben aktuell:** 15 (Minimum: 20) · **fehlen mindestens:** 5 — mehr ist besser
+- **Aufgaben aktuell:** 15 · **mindestens:** 20 · **fehlen bis Minimum:** 5 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
 - **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🔴 [0] (hoch) **0/5+** Aufgaben — Ableitungsregel: $\mathcal L\{y'\} = sY - y(0)$, $\mathcal L\{y''\} = s^2 Y - s y(0) - y'(0)$
   - 🔴 [1] (hoch) **0/5+** Aufgaben — DGL-Lösung: transformieren → algebraische Gl. in $Y(s)$ → PBZ → rücktransformieren
   - 🔴 [2] (hoch) **0/5+** Aufgaben — Übertragungsfunktion $G(s) = Y(s)/U(s)$ bei verschwindenden AB
@@ -6660,10 +6662,10 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-0-1` · Grundrechnen, Klammern & Vorrang
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Aufgaben aktuell:** 18 (Minimum: 20) · **fehlen mindestens:** 2 — mehr ist besser
+- **Aufgaben aktuell:** 18 · **mindestens:** 20 · **fehlen bis Minimum:** 2 (mehr ist besser, kein Cap)
 - **Typen vorhanden:** multiple-choice ×5, number-input ×6, true-false ×4, matching ×2, sorting ×1
 - **Typen einsetzen (Rotation):** sorting, matching, true-false
-- **Sub-Goals dieser Lesson** (Ziel: ≥ 5 Aufgaben pro Sub-Goal, nach oben kein Limit):
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
   - 🟡 [0] (hoch) **3/5+** Aufgaben — Vorrangregel Punkt-vor-Strich bei gemischten Termen
   - 🟡 [1] (hoch) **3/5+** Aufgaben — Minuszeichen vor Klammer auf alle Summanden anwenden
   - 🟡 [2] (mittel) **3/5+** Aufgaben — Doppel-Minus aufgelöst: $(-a)(-b)=+ab$
