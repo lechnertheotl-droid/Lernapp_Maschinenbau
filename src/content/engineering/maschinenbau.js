@@ -943,9 +943,55 @@ $$T = \frac{2\pi}{\omega_0}, \qquad f_0 = \frac{1}{T}$$
               title: 'Feder-Masse-Dämpfer System', visualizationId: 'spring-mass-damper', params: {},
             },
             exercises: [
-              { type: 'number-input', question: 'Feder-Masse-System: c = 400 N/m, m = 1 kg. Eigenkreisfrequenz ω₀?', correctValue: 20, tolerance: 0.01, unit: 'rad/s', explanation: 'ω₀ = √(c/m) = √(400/1) = √400 = 20 rad/s.', hints: ['ω₀ = √(c/m)', 'c/m = 400/1 = 400', '√400 = 20 rad/s'] },
-              { type: 'number-input', question: 'Masse m = 4 kg, Federsteifigkeit c = 100 N/m. Schwingungsdauer T?', correctValue: 1.257, tolerance: 0.01, unit: 's', explanation: 'ω₀ = √(100/4) = 5 rad/s. T = 2π/ω₀ = 2π/5 ≈ 1,257 s.', hints: ['ω₀ = √(c/m) = 5 rad/s', 'T = 2π/ω₀', '2π/5 ≈ 1,257'] },
-              { type: 'multiple-choice', question: '[PRÜFUNG] Resonanz tritt auf, wenn die Erregerfrequenz Ω ...', options: ['gleich der Eigenfrequenz ω₀ ist', 'doppelt so groß wie ω₀ ist', 'null ist', 'größer als 100 rad/s ist'], correctIndex: 0, explanation: 'Resonanz tritt bei Ω = ω₀ auf. Bei ungedämpften Systemen wächst die Amplitude dabei theoretisch unbegrenzt an.', hints: ['Resonanz tritt auf wenn Erregerfrequenz Ω = Eigenfrequenz ω₀.', 'ω₀ = √(c/m) ist die Eigenkreisfrequenz.', 'Bei ungedämpftem System → Amplitude → ∞'], wrongAnswerExplanations: { 1: '$\\Omega = 2\\omega_0$ kann bei nichtlinearen Systemen zu subharmonischer Resonanz führen, aber die klassische (Haupt-)Resonanz ist bei $\\Omega = \\omega_0$.', 2: '$\\Omega = 0$ entspricht einer statischen Kraft — keine Schwingung, keine Resonanz. Bei $\\Omega \\to 0$ geht die Amplitude gegen den statischen Wert $F_0/c$.', 3: 'Ein absoluter Zahlenwert in rad/s ist bedeutungslos ohne Vergleich zur Eigenfrequenz. Entscheidend ist das Verhältnis $\\Omega/\\omega_0$, nicht der Absolutwert.' } },
+              {
+                type: 'number-input',
+                question: 'Feder-Masse-System: c = 400 N/m, m = 1 kg. Eigenkreisfrequenz ω₀?',
+                correctValue: 20,
+                tolerance: 0.01,
+                unit: 'rad/s',
+                explanation: `**Ansatz:** Eigenkreisfrequenz des ungedämpften Feder-Masse-Systems: $\\omega_0 = \\sqrt{c/m}$.
+
+**Rechnung:** $\\omega_0 = \\sqrt{400\\,\\text{N/m} \\;/\\; 1\\,\\text{kg}} = \\sqrt{400\\,\\text{s}^{-2}} = 20\\,\\text{rad/s}$.
+
+**Probe:** Einheiten: $\\sqrt{(\\text{N/m})/\\text{kg}} = \\sqrt{(\\text{kg·m/s}^2)/(\\text{m·kg})} = \\sqrt{1/\\text{s}^2} = 1/\\text{s}$ — stimmt mit rad/s überein. Zahlenwert plausibel für Laborfeder.
+
+**Typischer Fehler:** $\\omega_0 = c/m = 400$ ohne Wurzel rechnen — liefert Zahlenwert mit falscher Dimension ($\\text{s}^{-2}$). Die Eigenkreisfrequenz ist stets die **Wurzel** aus dem Verhältnis.`,
+                hints: ['$\\omega_0 = \\sqrt{c/m}$ — Formel hinschreiben.', 'Quotient zuerst: $c/m = 400/1 = 400$.', 'Wurzel ziehen: $\\sqrt{400} = 20\\,\\text{rad/s}$.'],
+              },
+              {
+                type: 'number-input',
+                question: 'Masse m = 4 kg, Federsteifigkeit c = 100 N/m. Schwingungsdauer T?',
+                correctValue: 1.257,
+                tolerance: 0.01,
+                unit: 's',
+                explanation: `**Ansatz:** Erst Eigenfrequenz $\\omega_0 = \\sqrt{c/m}$, dann Periode $T = 2\\pi/\\omega_0$.
+
+**Rechnung:** $\\omega_0 = \\sqrt{100/4} = \\sqrt{25} = 5\\,\\text{rad/s}$. $T = 2\\pi/5 = 1{,}2566\\,\\text{s} \\approx 1{,}257\\,\\text{s}$.
+
+**Probe:** Direktformel $T = 2\\pi\\sqrt{m/c} = 2\\pi \\cdot \\sqrt{0{,}04} = 2\\pi \\cdot 0{,}2 = 1{,}257\\,\\text{s}$. ✓ Plausibel: eine vollständige Schwingung pro gut einer Sekunde.
+
+**Typischer Fehler:** $T = 2\\pi \\cdot \\omega_0 = 10\\pi \\approx 31{,}4\\,\\text{s}$ (Division mit Multiplikation verwechselt). Oder $T = 1/\\omega_0 = 0{,}2\\,\\text{s}$ (Faktor $2\\pi$ vergessen — das wäre die Periode in $\\text{rad}^{-1}$, keine Zeit).`,
+                hints: ['$\\omega_0 = \\sqrt{c/m} = 5\\,\\text{rad/s}$.', 'Periode: $T = 2\\pi/\\omega_0$ — Division, nicht Multiplikation.', '$2\\pi/5 \\approx 1{,}257\\,\\text{s}$.'],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] Resonanz tritt auf, wenn die Erregerfrequenz Ω ...',
+                options: ['gleich der Eigenfrequenz ω₀ ist', 'doppelt so groß wie ω₀ ist', 'null ist', 'größer als 100 rad/s ist'],
+                correctIndex: 0,
+                explanation: `**Ansatz:** Resonanz entsteht, wenn die äußere Erregerfrequenz $\\Omega$ mit der Eigenfrequenz $\\omega_0$ übereinstimmt — Energie wird in jeder Periode phasenrichtig eingekoppelt.
+
+**Rechnung:** In der Bewegungsgleichung $\\ddot{x} + \\omega_0^2 x = (F_0/m)\\sin(\\Omega t)$ divergiert für $\\Omega = \\omega_0$ der Partikuläranteil linear in $t$ (ungedämpfter Fall, $x_p \\sim t \\cos(\\omega_0 t)$).
+
+**Probe:** Alltag — Schaukel exakt im Eigenrhythmus anschubsen: Amplitude wächst. Falscher Takt: Energie verpufft, Amplitude bleibt beschränkt.
+
+**Typischer Fehler:** Glauben, Resonanz hänge vom Absolutwert von $\\Omega$ ab. Entscheidend ist nur das **Verhältnis** $\\Omega/\\omega_0$ — ob $\\omega_0 = 2\\,\\text{rad/s}$ oder $2000\\,\\text{rad/s}$, die Resonanzbedingung lautet immer $\\Omega = \\omega_0$.`,
+                hints: ['Resonanz = Erregerfrequenz trifft Eigenfrequenz.', '$\\omega_0 = \\sqrt{c/m}$ ist die Eigenkreisfrequenz.', 'Bei ungedämpftem System wächst die Amplitude unbegrenzt an.'],
+                wrongAnswerExplanations: {
+                  1: '$\\Omega = 2\\omega_0$ kann bei nichtlinearen Systemen zu subharmonischer Resonanz führen, aber die klassische (Haupt-)Resonanz ist bei $\\Omega = \\omega_0$.',
+                  2: '$\\Omega = 0$ entspricht einer statischen Kraft — keine Schwingung, keine Resonanz. Bei $\\Omega \\to 0$ geht die Amplitude gegen den statischen Wert $F_0/c$.',
+                  3: 'Ein absoluter Zahlenwert in rad/s ist bedeutungslos ohne Vergleich zur Eigenfrequenz. Entscheidend ist das Verhältnis $\\Omega/\\omega_0$, nicht der Absolutwert.',
+                },
+              },
             ],
           },
           {

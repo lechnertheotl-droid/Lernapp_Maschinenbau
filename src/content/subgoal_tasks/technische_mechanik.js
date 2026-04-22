@@ -1109,4 +1109,639 @@ export const technischeMechanikSubGoalTasks = {
 
   },
 
+  // ────────────────────────────────────────────────────────────────────────
+  // mech-2-4 — Schwingungen  (5 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-2-4': {
+
+    // ── [0] Eigenkreisfrequenz $\omega_0 = \sqrt{c/m}$, Periode $T = 2\pi/\omega_0$ ─
+    0: [
+      ni(
+        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": Ein Feder-Masse-System hat $c = 800\\,\\text{N/m}$ und $m = 2\\,\\text{kg}$. Wie groß ist $\\omega_0$?',
+        20, 0.05, 'rad/s',
+        `**Ansatz:** Eigenkreisfrequenz des ungedämpften Feder-Masse-Systems: $\\omega_0 = \\sqrt{c/m}$.
+
+**Rechnung:** $c/m = 800/2 = 400\\,\\text{s}^{-2}$. $\\omega_0 = \\sqrt{400} = 20\\,\\text{rad/s}$.
+
+**Probe:** Einheiten: $\\sqrt{(\\text{N/m})/\\text{kg}} = \\sqrt{1/\\text{s}^2} = \\text{rad/s}$. ✓ Zahlenwert plausibel (typische Werte liegen zwischen $1$ und $100\\,\\text{rad/s}$ für mechanische Systeme).
+
+**Typischer Fehler:** Quotient $c/m = 400$ direkt als $\\omega_0$ angeben — Wurzel vergessen. Dimension wäre $\\text{s}^{-2}$ statt $\\text{rad/s}$.`,
+        [
+          'Formel: $\\omega_0 = \\sqrt{c/m}$.',
+          'Erst $c/m$ bilden, dann Wurzel.',
+          'Einheit Endergebnis: rad/s.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": Wie ändert sich $\\omega_0$, wenn die Masse bei gleicher Feder **verdoppelt** wird?',
+        [
+          '$\\omega_0$ wird um den Faktor $1/\\sqrt{2}$ kleiner',
+          '$\\omega_0$ wird halbiert',
+          '$\\omega_0$ bleibt gleich',
+          '$\\omega_0$ wird um den Faktor $\\sqrt{2}$ größer',
+        ],
+        0,
+        `**Ansatz:** Aus $\\omega_0 = \\sqrt{c/m}$ folgt: wenn $m \\to 2m$, dann $\\omega_{0,\\text{neu}} = \\sqrt{c/(2m)} = \\omega_0/\\sqrt{2}$.
+
+**Rechnung:** Verhältnis $\\omega_{0,\\text{neu}}/\\omega_0 = \\sqrt{1/2} = 1/\\sqrt{2} \\approx 0{,}707$. Also: $\\omega_0$ wird um Faktor $0{,}707$ kleiner.
+
+**Probe:** Anschaulich: schwerere Masse → träger → langsamere Schwingung → kleinere Kreisfrequenz und längere Periode. Periode $T = 2\\pi/\\omega_0$ wächst entsprechend um $\\sqrt{2}$.
+
+**Typischer Fehler:** Die Wurzel vergessen und linear rechnen ($\\omega_0$ halbieren). Oder Richtung umdrehen ($\\omega_0$ größer machen).`,
+        [
+          '$m$ erscheint **unter** der Wurzel im Nenner.',
+          '$\\sqrt{1/2} = 1/\\sqrt{2}$.',
+          'Mehr Masse = träger = langsamer.',
+        ],
+        {
+          1: 'Halbieren würde $\\omega_{0,\\text{neu}} = \\omega_0/2$ bedeuten — das ignoriert die Wurzel. Die Abhängigkeit ist quadratwurzelförmig, nicht linear.',
+          2: 'Die Eigenfrequenz hängt von der Masse ab — größere Masse verschiebt $\\omega_0$ nach unten. "Bleibt gleich" gilt nur beim mathematischen Pendel.',
+          3: 'Die Richtung ist falsch. Größere Masse erhöht die Trägheit, die Frequenz sinkt (nicht steigt).',
+        },
+      ),
+      ni(
+        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": $c = 500\\,\\text{N/m}$, $m = 5\\,\\text{kg}$. Berechne die Schwingungsdauer $T$. (auf 2 Nachkommastellen)',
+        0.63, 0.01, 's',
+        `**Ansatz:** Erst $\\omega_0 = \\sqrt{c/m}$, dann $T = 2\\pi/\\omega_0$.
+
+**Rechnung:** $\\omega_0 = \\sqrt{500/5} = \\sqrt{100} = 10\\,\\text{rad/s}$. $T = 2\\pi/10 \\approx 0{,}6283\\,\\text{s} \\approx 0{,}63\\,\\text{s}$.
+
+**Probe:** Alternative Formel $T = 2\\pi\\sqrt{m/c} = 2\\pi \\sqrt{0{,}01} = 2\\pi \\cdot 0{,}1 = 0{,}628\\,\\text{s}$. ✓ Einheit: rad/s → $1/\\text{rad/s} \\cdot \\text{rad} = \\text{s}$. ✓
+
+**Typischer Fehler:** $T = 2\\pi \\cdot \\omega_0$ rechnen — liefert $62{,}8\\,\\text{s}$, absurd groß. Oder $T = 1/\\omega_0 = 0{,}1\\,\\text{s}$ (Faktor $2\\pi$ unterschlagen).`,
+        [
+          '$\\omega_0 = \\sqrt{500/5} = 10\\,\\text{rad/s}$.',
+          'Periode: $T = 2\\pi/\\omega_0$ (Division!).',
+          '$2\\pi/10 \\approx 0{,}628\\,\\text{s}$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": Wird die Federsteifigkeit $c$ verdoppelt (Masse gleich), verdoppelt sich auch die Eigenkreisfrequenz $\\omega_0$.',
+        false,
+        `**Ansatz:** $\\omega_0 = \\sqrt{c/m}$ — Abhängigkeit ist $\\sqrt{c}$, nicht linear in $c$.
+
+**Rechnung:** Bei $c \\to 2c$ ergibt sich $\\omega_{0,\\text{neu}} = \\sqrt{2c/m} = \\sqrt{2} \\cdot \\omega_0$. Also Faktor $\\sqrt{2} \\approx 1{,}414$, nicht $2$.
+
+**Probe:** Konkret: $c = 400$, $m = 1$ → $\\omega_0 = 20\\,\\text{rad/s}$. Verdopple $c$ auf $800$: $\\omega_0 = \\sqrt{800} \\approx 28{,}28\\,\\text{rad/s} = \\sqrt{2} \\cdot 20$. ✓
+
+**Typischer Fehler:** Die Wurzel gedanklich weglassen und linear rechnen. Um $\\omega_0$ zu verdoppeln, müsste $c$ **vervierfacht** werden.`,
+        [
+          '$\\omega_0 = \\sqrt{c/m}$ — Wurzel beachten.',
+          '$\\sqrt{2c} = \\sqrt{2}\\sqrt{c}$.',
+          '$\\omega_0$ hängt **sub**linear von $c$ ab.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": Ordne jeder Änderung am Feder-Masse-System die resultierende Änderung von $\\omega_0$ zu.',
+        [
+          { left: 'Masse $m$ verdoppeln', right: '$\\omega_0$ um Faktor $1/\\sqrt{2}$ kleiner' },
+          { left: 'Masse $m$ halbieren', right: '$\\omega_0$ um Faktor $\\sqrt{2}$ größer' },
+          { left: 'Federsteifigkeit $c$ verdoppeln', right: '$\\omega_0$ um Faktor $\\sqrt{2}$ größer' },
+          { left: 'Federsteifigkeit $c$ vervierfachen', right: '$\\omega_0$ verdoppelt sich' },
+        ],
+        `**Ansatz:** Aus $\\omega_0 = \\sqrt{c/m}$ liest man die Skalierungen direkt ab: jede Änderung im Radikanden um Faktor $k$ wirkt als $\\sqrt{k}$ auf $\\omega_0$.
+
+**Rechnung:** $m \\to 2m \\Rightarrow \\omega_0/\\sqrt{2}$. $m \\to m/2 \\Rightarrow \\sqrt{2}\\omega_0$. $c \\to 2c \\Rightarrow \\sqrt{2}\\omega_0$. $c \\to 4c \\Rightarrow 2\\omega_0$.
+
+**Probe:** Merkregel — um $\\omega_0$ zu verdoppeln, reicht entweder $c \\times 4$ oder $m \\div 4$. Diese Asymmetrie zwischen $c$ und $m$ (beide wirken unter der Wurzel) ist prüfungsrelevant.
+
+**Typischer Fehler:** Linear statt $\\sqrt{\\cdot}$ skalieren und z. B. denken, Feder verdoppeln verdopple $\\omega_0$.`,
+        [
+          '$\\omega_0 = \\sqrt{c/m}$ — Faktor unter der Wurzel wirkt als $\\sqrt{\\cdot}$.',
+          '$\\sqrt{2} \\approx 1{,}414$, $1/\\sqrt{2} \\approx 0{,}707$.',
+          '$\\sqrt{4} = 2$ — darum braucht es Faktor $4$ in $c$, um $\\omega_0$ zu verdoppeln.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": Bringe die Schritte zur Berechnung der Schwingungsdauer $T$ aus $c$ und $m$ in die richtige Reihenfolge.',
+        [
+          '$T$ aus $2\\pi/\\omega_0$ ausrechnen und Einheit (Sekunde) prüfen',
+          'Formel notieren: $\\omega_0 = \\sqrt{c/m}$',
+          'Quotient $c/m$ mit konsistenten Einheiten (N/m und kg) bilden',
+          'Wurzel ziehen: $\\omega_0$ in rad/s',
+          'Periodenformel $T = 2\\pi/\\omega_0$ aufschreiben',
+        ],
+        [1, 2, 3, 4, 0],
+        `**Ansatz:** Erst Formel, dann Einsetzen, dann Wurzel, dann Periode — sonst schleichen sich Einheitenfehler ein.
+
+**Rechnung:** Logische Reihenfolge: (1) Formel $\\omega_0 = \\sqrt{c/m}$ hinschreiben, (2) $c/m$ einsetzen, (3) Wurzel ziehen, (4) Periodenformel $T = 2\\pi/\\omega_0$ notieren, (5) $T$ ausrechnen und Einheit prüfen.
+
+**Probe:** Ohne Schritt (2) landet man schnell in einem Einheitensalat ($c$ in N/mm statt N/m ist ein Klassiker). Schritt (5) (Einheitencheck) ist die letzte Versicherung gegen grobe Fehler.
+
+**Typischer Fehler:** Direkt zur Periodenformel $T = 2\\pi\\sqrt{m/c}$ springen und die Einheitenprüfung auslassen — wenn $c$ versehentlich in N/mm angegeben wurde, ist $T$ um Faktor $\\sqrt{1000} \\approx 31{,}6$ falsch.`,
+        [
+          'Formel zuerst, Zahlen danach.',
+          'Einheiten vor dem Wurzelziehen prüfen.',
+          'Faktor $2\\pi$ erst am Ende.',
+        ],
+      ),
+    ],
+
+    // ── [1] Harmonische Schwingung: $x(t) = A \sin(\omega_0 t + \varphi)$ ──
+    1: [
+      mc(
+        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Was bezeichnet der Parameter $A$ in der Schwingungsgleichung?',
+        [
+          'Die maximale Auslenkung aus der Ruhelage (Amplitude)',
+          'Die Kreisfrequenz in rad/s',
+          'Die Periodendauer in Sekunden',
+          'Den Phasenwinkel zum Zeitpunkt $t = 0$',
+        ],
+        0,
+        `**Ansatz:** In $x(t) = A \\sin(\\omega_0 t + \\varphi)$ hat der Sinus den Wertebereich $[-1, +1]$. $A$ ist der **Vorfaktor**, also der Maximalwert von $|x(t)|$.
+
+**Rechnung:** $x_\\max = A \\cdot 1 = A$, $x_\\min = -A$. $A$ trägt dieselbe Einheit wie $x$ (meist Meter).
+
+**Probe:** Beispiel $A = 0{,}03\\,\\text{m}$: Masse pendelt zwischen $-30\\,\\text{mm}$ und $+30\\,\\text{mm}$ um die Ruhelage.
+
+**Typischer Fehler:** $A$ mit der Kreisfrequenz $\\omega_0$ oder dem Phasenwinkel $\\varphi$ verwechseln. Merkregel: $A$ steht **vor** dem Sinus, $\\omega_0$ und $\\varphi$ stehen **im** Sinus.`,
+        [
+          'Im Sinus: $\\omega_0$ und $\\varphi$. Vor dem Sinus: $A$.',
+          'Sinus hat Wertebereich $[-1, +1]$.',
+          'Einheit von $A$ = Einheit von $x$.',
+        ],
+        {
+          1: 'Die Kreisfrequenz ist $\\omega_0$ — sie steht **im** Sinus-Argument, nicht davor.',
+          2: 'Die Periodendauer ergibt sich aus $T = 2\\pi/\\omega_0$. Sie ist kein direkter Parameter in der Schwingungsgleichung.',
+          3: 'Der Phasenwinkel ist $\\varphi$ — er steht im Argument neben $\\omega_0 t$.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Gegeben $x(t) = 0{,}05 \\sin(10t + \\pi/6)\\,\\text{m}$. Welche Auslenkung $x(0)$ liegt bei $t = 0$ vor? (auf 3 Nachkommastellen in Meter)',
+        0.025, 0.001, 'm',
+        `**Ansatz:** $t = 0$ einsetzen: $x(0) = A \\sin(\\varphi)$.
+
+**Rechnung:** $x(0) = 0{,}05 \\cdot \\sin(\\pi/6) = 0{,}05 \\cdot 0{,}5 = 0{,}025\\,\\text{m}$.
+
+**Probe:** $x(0)$ muss im Intervall $[-A, +A] = [-0{,}05; 0{,}05]\\,\\text{m}$ liegen. $0{,}025$ liegt dort. ✓ Außerdem: $\\sin(\\pi/6) = 0{,}5$ ist eine Standardwert-Sicherheit (Prüfungs-Memory).
+
+**Typischer Fehler:** $\\sin(\\pi/6)$ als $\\sqrt{3}/2 \\approx 0{,}866$ (das wäre $\\sin(\\pi/3)$) oder als $\\sqrt{2}/2 \\approx 0{,}707$ (das wäre $\\sin(\\pi/4)$) einsetzen. Oder Winkel im Gradmaß interpretieren statt im Bogenmaß.`,
+        [
+          '$t = 0$ einsetzen: nur der Phasenterm bleibt.',
+          '$\\sin(\\pi/6) = 0{,}5$ (Standardwert!).',
+          'Das Argument ist in rad, nicht in Grad.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Der Phasenwinkel $\\varphi$ verschiebt die Schwingung entlang der Zeitachse, ohne Amplitude oder Frequenz zu verändern.',
+        true,
+        `**Ansatz:** Mit $\\sin(\\omega_0 t + \\varphi) = \\sin(\\omega_0 (t + \\varphi/\\omega_0))$ ist $\\varphi$ äquivalent zu einer Zeitverschiebung um $\\Delta t = \\varphi/\\omega_0$.
+
+**Rechnung:** Amplitude $A$ steht **vor** dem Sinus — bleibt unverändert. Frequenz $\\omega_0$ multipliziert mit $t$ — bleibt unverändert. Nur die Nulldurchgänge verschieben sich.
+
+**Probe:** Beispiel: $\\varphi = \\pi/2$ macht aus $\\sin$ einen $\\cos$ — dieselbe Kurve, nur um $T/4$ früher.
+
+**Typischer Fehler:** Glauben, $\\varphi$ ändere die Amplitude (nein — $A$ ist unabhängig) oder die Periode (nein — $T = 2\\pi/\\omega_0$ unabhängig von $\\varphi$).`,
+        [
+          '$\\varphi$ ist additiv im Sinus-Argument.',
+          '$\\sin(\\omega_0 t + \\varphi)$ kann als $\\sin(\\omega_0 (t - t_0))$ geschrieben werden.',
+          'Amplitude und Frequenz sind vom Phasenwinkel entkoppelt.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Amplitude $A = 0{,}02\\,\\text{m}$, $\\omega_0 = 50\\,\\text{rad/s}$. Wie groß ist die maximale Geschwindigkeit $v_\\max$?',
+        1, 0.01, 'm/s',
+        `**Ansatz:** $v(t) = \\dot{x}(t) = A \\omega_0 \\cos(\\omega_0 t + \\varphi)$. Maximum bei $\\cos = 1$: $v_\\max = A \\omega_0$.
+
+**Rechnung:** $v_\\max = 0{,}02 \\cdot 50 = 1{,}0\\,\\text{m/s}$.
+
+**Probe:** Einheiten: $\\text{m} \\cdot \\text{rad/s} = \\text{m/s}$ (rad einheitenlos). ✓ Plausibilität: Schwingung mit $2\\,\\text{cm}$ Amplitude und Periode $T = 2\\pi/50 \\approx 0{,}126\\,\\text{s}$ — schnelle Bewegung, $1\\,\\text{m/s}$ ist realistisch.
+
+**Typischer Fehler:** $v_\\max = A$ (ohne $\\omega_0$) rechnen. Oder die maximale Beschleunigung $a_\\max = A\\omega_0^2$ mit der Geschwindigkeit verwechseln.`,
+        [
+          'Ableitung des Sinus ergibt Kosinus, plus Kettenregel-Faktor $\\omega_0$.',
+          'Maximum des Kosinus ist $1$.',
+          '$v_\\max = A \\omega_0$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Ordne jedem Parameter die richtige physikalische Bedeutung zu.',
+        [
+          { left: '$A$', right: 'Amplitude — maximale Auslenkung aus der Ruhelage' },
+          { left: '$\\omega_0$', right: 'Eigenkreisfrequenz in rad/s' },
+          { left: '$\\varphi$', right: 'Phasenwinkel — Anfangszustand zum Zeitpunkt $t = 0$' },
+          { left: '$T = 2\\pi/\\omega_0$', right: 'Periodendauer — Zeit für einen vollen Zyklus' },
+        ],
+        `**Ansatz:** Jeder Parameter in $x(t) = A\\sin(\\omega_0 t + \\varphi)$ hat genau eine Bedeutung — Standardvokabular der Schwingungslehre.
+
+**Rechnung:** $A$ (Meter) skaliert die Auslenkung. $\\omega_0$ (rad/s) bestimmt, wie schnell die Schwingung "tickt". $\\varphi$ (rad) verschiebt die Nullphase. $T$ ergibt sich abgeleitet aus $\\omega_0$.
+
+**Probe:** Merke: "Amplitude vor dem Sinus, Winkel drinnen" — $A$ außen, $\\omega_0$ und $\\varphi$ innen. Die Periode $T$ ist **kein** Parameter der Gleichung, sondern folgt aus $\\omega_0$.
+
+**Typischer Fehler:** $\\omega_0$ und die technische Frequenz $f_0 = \\omega_0/(2\\pi)$ gleichsetzen. Beide sind "Frequenzen", aber verschiedene Einheiten: rad/s vs. Hz.`,
+        [
+          'Vor dem Sinus: Amplitude.',
+          'Im Sinus-Argument: $\\omega_0 t + \\varphi$ — Frequenz × Zeit plus Phase.',
+          'Periode und Kreisfrequenz stehen über $T = 2\\pi/\\omega_0$ in Verbindung.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Welche Funktion beschreibt die Beschleunigung $a(t) = \\ddot{x}(t)$?',
+        [
+          '$a(t) = -A \\omega_0^2 \\sin(\\omega_0 t + \\varphi) = -\\omega_0^2 \\, x(t)$',
+          '$a(t) = A \\omega_0 \\cos(\\omega_0 t + \\varphi)$',
+          '$a(t) = A \\omega_0^2 \\sin(\\omega_0 t + \\varphi)$',
+          '$a(t) = -A \\omega_0 \\sin(\\omega_0 t + \\varphi)$',
+        ],
+        0,
+        `**Ansatz:** Zweimal nach $t$ ableiten. $\\dot{x} = A\\omega_0\\cos(\\omega_0 t + \\varphi)$, $\\ddot{x} = -A\\omega_0^2\\sin(\\omega_0 t + \\varphi)$.
+
+**Rechnung:** Jede Ableitung zieht einen Faktor $\\omega_0$ (Kettenregel) und dreht $\\sin \\to \\cos \\to -\\sin$. Nach zweimaliger Ableitung: Vorzeichen negativ, Faktor $\\omega_0^2$.
+
+**Probe:** Setze ein in die DGL: $\\ddot{x} + \\omega_0^2 x = -\\omega_0^2 x + \\omega_0^2 x = 0$ ✓. Das ist genau die ungedämpfte Schwingungsgleichung. $a(t) = -\\omega_0^2 x(t)$ ist eine kompakte Merkregel.
+
+**Typischer Fehler:** Das Vorzeichen vergessen oder nur einen Faktor $\\omega_0$ statt $\\omega_0^2$ herausziehen. Oder die Geschwindigkeit mit der Beschleunigung verwechseln.`,
+        [
+          'Ableiten: Sinus → Kosinus, Faktor $\\omega_0$ aus Kettenregel.',
+          'Zweite Ableitung: Kosinus → –Sinus, weiterer Faktor $\\omega_0$.',
+          'Endergebnis enthält $\\omega_0^2$ und Vorzeichenwechsel.',
+        ],
+        {
+          1: 'Das ist die **Geschwindigkeit** $v(t) = \\dot{x}(t)$. Beschleunigung braucht zweite Ableitung.',
+          2: 'Der Betrag stimmt, aber das Vorzeichen ist falsch. Zweimal Sinus ableiten ergibt $-\\sin$, nicht $+\\sin$.',
+          3: 'Nur ein Faktor $\\omega_0$ — das ist die Geschwindigkeit (mit falschem Vorzeichen). Zweimal ableiten gibt $\\omega_0^2$.',
+        },
+      ),
+    ],
+
+    // ── [2] Resonanz bei $\Omega = \omega_0$ ─────────────────────────────
+    2: [
+      mc(
+        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Wann tritt Resonanz bei einem schwingungsfähigen System auf?',
+        [
+          'Wenn die Erregerfrequenz $\\Omega$ mit der Eigenfrequenz $\\omega_0$ übereinstimmt',
+          'Wenn die Erregerfrequenz $\\Omega$ viel größer als $\\omega_0$ ist',
+          'Wenn die Erregerfrequenz $\\Omega$ null ist',
+          'Wenn die Masse gegen null geht',
+        ],
+        0,
+        `**Ansatz:** Resonanz ist der Fall, in dem die äußere Anregung phasenrichtig in jeder Periode Energie einspeist — nur möglich, wenn beide Frequenzen übereinstimmen.
+
+**Rechnung:** In der Bewegungsgleichung $\\ddot{x} + \\omega_0^2 x = (F_0/m)\\sin(\\Omega t)$ enthält die partikuläre Lösung einen Faktor $1/(\\omega_0^2 - \\Omega^2)$. Dieser Term divergiert bei $\\Omega \\to \\omega_0$.
+
+**Probe:** Alltag: eine Schaukel im richtigen Takt anschubsen — Amplitude wächst. Zu schnell oder zu langsam: Energie verpufft.
+
+**Typischer Fehler:** Glauben, "hohe Frequenz = Resonanz". Resonanz hängt vom Verhältnis $\\Omega/\\omega_0$ ab, nicht vom Absolutwert.`,
+        [
+          'Resonanzbedingung: $\\Omega = \\omega_0$.',
+          'Schaukel-Analogie: Takt treffen.',
+          'Nicht die Absolutfrequenz, sondern das Verhältnis zählt.',
+        ],
+        {
+          1: 'Bei $\\Omega \\gg \\omega_0$ wird die Amplitude sogar **klein**, da die Masse der schnellen Anregung nicht mehr folgen kann.',
+          2: '$\\Omega = 0$ entspricht einer statischen Kraft — keine periodische Anregung, keine Resonanz.',
+          3: 'Masse nahe null würde $\\omega_0 \\to \\infty$ bedeuten — keine Resonanzbedingung, sondern ein Grenzfall des Systems selbst.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Bei einem vollständig ungedämpften System wächst die Amplitude im Resonanzfall rechnerisch unbegrenzt an.',
+        true,
+        `**Ansatz:** Im ungedämpften Resonanzfall $\\Omega = \\omega_0$ versagt der Ansatz mit einfacher sinusförmiger partikulärer Lösung — es entsteht ein Term $\\propto t \\cdot \\cos(\\omega_0 t)$, der mit der Zeit linear wächst.
+
+**Rechnung:** Die Lösung ist $x_p(t) = -(F_0/(2 m \\omega_0)) \\cdot t \\cdot \\cos(\\omega_0 t)$ — Amplitude steigt linear mit $t$ an.
+
+**Probe:** In der Realität verhindern Dämpfung, Nichtlinearitäten oder Bauteilbruch das unbegrenzte Anwachsen (Tacoma-Narrows-Brücke, Weinglas zerspringen lassen).
+
+**Typischer Fehler:** Die Linearität in $t$ übersehen und einen stationären Zustand mit großer, aber endlicher Amplitude annehmen. Ohne Dämpfung gibt es diesen stationären Zustand nicht.`,
+        [
+          'Ungedämpft heißt: keine Energiedissipation.',
+          'Die partikuläre Lösung bekommt einen $t$-Faktor.',
+          'In der Praxis bremsen Dämpfung, Bruch oder Nichtlinearität.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Ein Motor hat die Eigenkreisfrequenz $\\omega_0 = 50\\,\\text{rad/s}$. Bei welcher Drehzahl $n$ (in U/min) tritt Resonanz auf? (auf 1 Nachkommastelle)',
+        477.5, 1, 'U/min',
+        `**Ansatz:** Drehzahl und Kreisfrequenz verknüpft über $\\omega = 2\\pi n/60$. Resonanz bei $\\omega = \\omega_0$.
+
+**Rechnung:** $n = 60 \\omega_0/(2\\pi) = 60 \\cdot 50/(2\\pi) = 3000/(2\\pi) \\approx 477{,}46\\,\\text{U/min}$.
+
+**Probe:** Frequenz $f_0 = \\omega_0/(2\\pi) = 50/(6{,}2832) \\approx 7{,}958\\,\\text{Hz}$. In U/min: $f_0 \\cdot 60 \\approx 477{,}5$. ✓
+
+**Typischer Fehler:** $n = \\omega_0 \\cdot 60 = 3000\\,\\text{U/min}$ rechnen (Faktor $2\\pi$ vergessen). Oder $\\omega_0$ direkt als Drehzahl $n$ ansetzen — unterschiedliche Einheiten (rad/s vs. U/min).`,
+        [
+          'Einheit: $n$ in U/min, $\\omega_0$ in rad/s.',
+          '$\\omega_0 = 2\\pi \\cdot n/60$.',
+          '$n = 60 \\omega_0/(2\\pi)$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Welche Maßnahme wirkt am **direktesten** gegen Resonanzschäden in einem Maschinengestell?',
+        [
+          'Betriebsdrehzahl (Erregerfrequenz $\\Omega$) deutlich weg von $\\omega_0$ verlegen',
+          'Betriebsdrehzahl exakt auf $\\omega_0$ einstellen',
+          'Federsteifigkeit auf null reduzieren',
+          'Die Masse des Systems vollständig entfernen',
+        ],
+        0,
+        `**Ansatz:** Resonanz ist an die Koinzidenz $\\Omega = \\omega_0$ gebunden. Die einfachste Gegenmaßnahme: Abstand zur Resonanzfrequenz schaffen.
+
+**Rechnung:** Typische Regel im Maschinenbau: Betriebsfrequenz mindestens $20$–$30\\,\\%$ oberhalb oder unterhalb von $\\omega_0$ wählen. Alternativ: Dämpfer einbauen, um die Resonanzamplitude zu begrenzen — aber die Frequenzlage ist die erste Wahl.
+
+**Probe:** Beispiel: Eine Waschmaschine durchfährt beim Schleudern die Resonanzfrequenz schnell, um sie gar nicht erst stationär anregen zu können.
+
+**Typischer Fehler:** Die Masse "einfach weglassen" — ohne Masse kein System. Oder die Federsteifigkeit reduzieren, was $\\omega_0$ **noch tiefer** legt und oft neue Resonanzen eröffnet.`,
+        [
+          'Resonanz = $\\Omega \\approx \\omega_0$.',
+          'Abstand zur Eigenfrequenz schaffen.',
+          'Zweitbeste Option: Dämpfung erhöhen.',
+        ],
+        {
+          1: 'Das **verursacht** die Resonanz — genau das Gegenteil von dem, was gewünscht ist.',
+          2: '$c = 0$ bedeutet: keine Rückstellkraft, also kein schwingungsfähiges System mehr — aber auch keine tragfähige Konstruktion.',
+          3: '"Masse entfernen" ist im Maschinenbau selten machbar. Abstimmung auf $\\omega_0 \\neq \\Omega$ ist der pragmatische Weg.',
+        },
+      ),
+      sorting(
+        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Bringe die physikalischen Phasen beim Aufbau einer Resonanz in die richtige Reihenfolge.',
+        [
+          'Erregerfrequenz $\\Omega$ nähert sich der Eigenfrequenz $\\omega_0$ an',
+          'Externe Kraft speist pro Periode phasenrichtig Energie in das System ein',
+          'Amplitude wächst mit der Zeit (bei ungedämpftem System linear in $t$)',
+          'Ohne Dämpfung: Bauteilversagen durch Überdehnung, Bruch oder Kontaktverlust',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Resonanz ist ein Prozess über die Zeit, keine Momentaufnahme.
+
+**Rechnung:** Kausalkette: (1) Frequenzanpassung, (2) Phasenrichtige Energiezufuhr, (3) Amplitudenwachstum, (4) im schlimmsten Fall Versagen. Jeder Schritt ist Bedingung für den nächsten.
+
+**Probe:** Tacoma Narrows Bridge (1940): Wind erzeugte aeroelastische Schwingung mit Frequenz nahe Eigenmode → Energieeinkopplung → Amplitudenwachstum → Einsturz. Klassisches Lehrbuchbeispiel.
+
+**Typischer Fehler:** Resonanz als "Moment" betrachten — dabei ist gerade das **zeitliche Aufschwingen** das Wesensmerkmal.`,
+        [
+          'Resonanz baut sich über Zeit auf.',
+          'Zuerst Frequenz, dann Energie, dann Amplitude.',
+          'Versagen ist die (mögliche) Konsequenz.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Ein System hat $\\omega_0 = 40\\,\\text{rad/s}$. Zur sicheren Resonanzvermeidung soll die Erregerfrequenz mindestens $30\\,\\%$ oberhalb von $\\omega_0$ liegen. Welche Mindestfrequenz $\\Omega_\\min$ (in rad/s)?',
+        52, 0.1, 'rad/s',
+        `**Ansatz:** $30\\,\\%$ Abstand nach oben: $\\Omega_\\min = 1{,}3 \\cdot \\omega_0$.
+
+**Rechnung:** $\\Omega_\\min = 1{,}3 \\cdot 40 = 52\\,\\text{rad/s}$.
+
+**Probe:** Verhältnis $\\Omega/\\omega_0 = 52/40 = 1{,}3$. ✓ Bei schwacher Dämpfung gelten $20$–$30\\,\\%$ Abstand als Daumenregel — darunter wächst der Vergrößerungsfaktor $V = 1/\\sqrt{(1-\\eta^2)^2 + (2D\\eta)^2}$ stark an, wobei $\\eta = \\Omega/\\omega_0$.
+
+**Typischer Fehler:** $30\\,\\%$ **addieren** statt **multiplizieren**: $\\omega_0 + 30 = 70\\,\\text{rad/s}$. Prozent heißt "von welcher Basis" — $30\\,\\%$ von $\\omega_0$ ist $12\\,\\text{rad/s}$.`,
+        [
+          '$30\\,\\% = 0{,}3$, der Gesamtfaktor ist $1{,}3$.',
+          '$\\Omega_\\min = 1{,}3 \\cdot \\omega_0$.',
+          'Prozent ist relativ zur Basis, nicht absolut.',
+        ],
+      ),
+    ],
+
+    // ── [3] Dämpfungsgrad $D = d/(2\sqrt{cm})$ ──────────────────────────
+    3: [
+      ni(
+        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": System mit $c = 1000\\,\\text{N/m}$, $m = 10\\,\\text{kg}$, $d = 40\\,\\text{Ns/m}$. Berechne $D$. (dimensionslos)',
+        0.2, 0.005, '',
+        `**Ansatz:** Lehrsches Dämpfungsmaß: $D = d/(2\\sqrt{cm})$.
+
+**Rechnung:** $c \\cdot m = 1000 \\cdot 10 = 10\\,000$. $\\sqrt{10\\,000} = 100$. $D = 40/(2 \\cdot 100) = 40/200 = 0{,}2$.
+
+**Probe:** Einheitencheck: Zähler $\\text{Ns/m} = \\text{kg/s}$. Nenner $\\sqrt{(\\text{N/m})(\\text{kg})} = \\sqrt{(\\text{kg/s}^2)(\\text{kg})} = \\text{kg/s}$. Quotient: dimensionslos. ✓ $D = 0{,}2 < 1$ → schwach gedämpft, System schwingt weiter.
+
+**Typischer Fehler:** Den Faktor $2$ im Nenner vergessen ($D = 40/100 = 0{,}4$). Oder $\\sqrt{c + m}$ statt $\\sqrt{cm}$ (Summe statt Produkt).`,
+        [
+          'Formel: $D = d/(2\\sqrt{cm})$.',
+          '$c \\cdot m$ bilden, dann Wurzel.',
+          'Faktor $2$ im Nenner nicht vergessen.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": Für $D < 1$ ist das System schwach (unterkritisch) gedämpft und schwingt mit abnehmender Amplitude weiter.',
+        true,
+        `**Ansatz:** Lösungsstruktur der gedämpften DGL $m\\ddot{x} + d\\dot{x} + cx = 0$ hängt vom Verhältnis $D$ ab.
+
+**Rechnung:** Charakteristische Gleichung $m\\lambda^2 + d\\lambda + c = 0$. Diskriminante: $d^2 - 4cm = 4cm(D^2 - 1)$. Für $D < 1$ ist die Diskriminante negativ → komplexe Wurzeln → gedämpfte Schwingung $x(t) = A e^{-\\delta t} \\cos(\\omega_d t + \\varphi)$ mit $\\delta = D\\omega_0$, $\\omega_d = \\omega_0\\sqrt{1 - D^2}$.
+
+**Probe:** Im Grenzfall $D = 0$ (keine Dämpfung): ungedämpfte Sinus-Schwingung. Mit wachsendem $D < 1$: Einhüllende $e^{-\\delta t}$ klingt immer schneller ab, aber das System oszilliert noch.
+
+**Typischer Fehler:** $D < 1$ mit aperiodischem Verhalten verwechseln. Aperiodisch beginnt erst bei $D \\geq 1$.`,
+        [
+          '$D < 1$: komplexe Eigenwerte → Schwingung.',
+          '$D = 1$: aperiodischer Grenzfall.',
+          '$D > 1$: überkritisch, kriechend.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": Was bedeutet $D = 1$ physikalisch?',
+        [
+          'Aperiodischer Grenzfall — schnellste Rückkehr zur Ruhelage ohne Überschwingen',
+          'Resonanz mit unbegrenzt wachsender Amplitude',
+          'Keine Dämpfung — dauerhafte Schwingung mit konstanter Amplitude',
+          'Starke Anregung — Amplitude verdoppelt sich pro Periode',
+        ],
+        0,
+        `**Ansatz:** $D = 1$ ist die Grenze zwischen oszillatorisch ($D < 1$) und kriechend ($D > 1$).
+
+**Rechnung:** Charakteristische Gleichung hat bei $D = 1$ eine **doppelte reelle** Wurzel $\\lambda = -\\omega_0$. Lösung: $x(t) = (A + Bt)e^{-\\omega_0 t}$ — keine Schwingung, aber die schnellste Rückkehr zur Nulllage.
+
+**Probe:** Industrieanwendung: präzise Mess- und Waagensysteme werden auf $D \\approx 0{,}7$–$1{,}0$ ausgelegt — kurz genug für Lesbarkeit, ohne Überschwingen.
+
+**Typischer Fehler:** $D = 1$ mit Resonanz verwechseln (Resonanz ist $\\Omega = \\omega_0$ — eine **Frequenz**bedingung, nicht eine **Dämpfungs**bedingung).`,
+        [
+          '$D = 1$ ist die Grenze zwischen Schwingen und Kriechen.',
+          'Aperiodischer Grenzfall: schnellste Beruhigung.',
+          'Resonanz ist etwas anderes — hat mit $\\Omega$, nicht mit $D$ zu tun.',
+        ],
+        {
+          1: 'Resonanz betrifft die **Erreger**frequenz $\\Omega$ relativ zu $\\omega_0$, nicht den Dämpfungsgrad. $D = 1$ ist ein rein dämpfungsbezogenes Phänomen.',
+          2: 'Keine Dämpfung entspricht $D = 0$, nicht $D = 1$.',
+          3: 'Amplitudenwachstum wäre das Gegenteil einer Dämpfung — $D$ beschreibt die Energiedissipation.',
+        },
+      ),
+      matching(
+        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": Ordne jedem Bereich von $D$ das richtige Systemverhalten zu.',
+        [
+          { left: '$D = 0$', right: 'Ungedämpft — Amplitude bleibt ewig konstant' },
+          { left: '$0 < D < 1$', right: 'Unterkritisch gedämpft — Schwingung klingt exponentiell ab' },
+          { left: '$D = 1$', right: 'Aperiodischer Grenzfall — schnellste Rückkehr ohne Schwingen' },
+          { left: '$D > 1$', right: 'Überkritisch gedämpft — kriecht langsam zur Ruhelage' },
+        ],
+        `**Ansatz:** Das Verhalten der Lösung $x(t)$ hängt qualitativ vom Dämpfungsgrad ab — vier klar abgegrenzte Regime.
+
+**Rechnung:** $D = 0$: reine Oszillation. $D < 1$: exponentiell gedämpfte Oszillation mit $\\omega_d = \\omega_0\\sqrt{1 - D^2}$. $D = 1$: Doppelwurzel, keine Oszillation, schnellste Rückkehr. $D > 1$: zwei reelle negative Wurzeln, reines Kriechen.
+
+**Probe:** Praxis-Design: Stoßdämpfer $D \\approx 0{,}2$–$0{,}4$ (Federeigenschaft bleibt spürbar), Messgeräte $D \\approx 0{,}7$ (kein Überschwingen), Türschließer $D \\geq 1$ (sicher geschlossen ohne Zuschlagen).
+
+**Typischer Fehler:** Alle $D > 0$-Werte als "gut gedämpft" zusammenfassen. Die Grenze bei $D = 1$ ist fundamental — sie trennt schwingende von kriechenden Lösungen.`,
+        [
+          'Grenzen: $0$, $1$ sind die Schlüsselwerte.',
+          'Unter $1$: Schwingung noch vorhanden.',
+          'Ab $1$: Rückkehr ohne Oszillation.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": Geforderter Dämpfungsgrad $D = 0{,}05$ bei $c = 400\\,\\text{N/m}$ und $m = 1\\,\\text{kg}$. Welchen Dämpfungskoeffizienten $d$ muss der Dämpfer bringen?',
+        2, 0.05, 'Ns/m',
+        `**Ansatz:** Formel umstellen: $d = 2 D \\sqrt{cm}$.
+
+**Rechnung:** $\\sqrt{cm} = \\sqrt{400 \\cdot 1} = 20$. $d = 2 \\cdot 0{,}05 \\cdot 20 = 2\\,\\text{Ns/m}$.
+
+**Probe:** Einsetzen: $D = 2/(2 \\cdot 20) = 2/40 = 0{,}05$ ✓. Einheit Ns/m = kg/s (aus $F = d\\dot{x}$). $D = 0{,}05$ ist sehr leicht gedämpft — passt zu dieser kleinen $d$-Zahl.
+
+**Typischer Fehler:** Faktor $2$ unterschlagen und $d = D\\sqrt{cm} = 1$ rechnen. Oder $\\sqrt{cm}$ als $\\sqrt{c + m}$ lesen.`,
+        [
+          'Nach $d$ umstellen: $d = 2D\\sqrt{cm}$.',
+          '$\\sqrt{cm} = 20$.',
+          'Faktor 2 nicht vergessen.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": Welcher Dämpfungsgrad $D$ ist beim Auto-Stoßdämpfer typischerweise gewünscht?',
+        [
+          '$D \\approx 0{,}3$–$0{,}4$ — Federverhalten spürbar, aber Schwingungen klingen schnell ab',
+          '$D = 0$ — Insassen sollen frei mitschwingen',
+          '$D = 2$ — möglichst starre Rückkopplung für sicheres Fahrwerk',
+          '$D \\approx 1{,}5$ — sehr langsames Abklingen gewünscht',
+        ],
+        0,
+        `**Ansatz:** Stoßdämpfer-Auslegung balanciert Komfort (Federweg bleibt nutzbar) und Sicherheit (Schwingung klingt ab, bevor die nächste Fahrbahnunebenheit trifft).
+
+**Rechnung:** Typische PKW-Auslegung: $D \\approx 0{,}2$–$0{,}4$. Mehr Dämpfung macht das Fahrwerk "bretthart" (unkomfortabel), weniger lässt das Auto nach Bodenwellen nachschwingen.
+
+**Probe:** Messgeräte werden auf $D \\approx 0{,}7$ getrimmt (kein Überschwingen der Anzeige). Tür-Schließer auf $D \\geq 1$ (aperiodisch, sicher geschlossen). Autos bleiben bei $0{,}2$–$0{,}4$.
+
+**Typischer Fehler:** $D = 1$ als "perfekt" annehmen — das ist der aperiodische Grenzfall, aber im Fahrwerk unerwünscht (kein Federverhalten mehr spürbar).`,
+        [
+          'Komfort vs. Sicherheit.',
+          'PKW-Design: $D \\in [0{,}2; 0{,}4]$.',
+          'Messgeräte: $D \\approx 0{,}7$.',
+        ],
+        {
+          1: 'Ohne Dämpfung schwingt das Auto nach jeder Unebenheit lange nach — im Extremfall Kontrollverlust.',
+          2: '$D = 2$ macht das Fahrwerk so hart, dass kaum noch Federwirkung bleibt. Unbequem und für die Fahrdynamik schädlich.',
+          3: '$D > 1$ bedeutet langsames Kriechen zur Ruhelage — im Fahrwerk unerwünscht, typisch für Türschließer.',
+        },
+      ),
+    ],
+
+    // ── [4] Mathematisches Pendel $\omega_0 = \sqrt{g/l}$ ────────────────
+    4: [
+      ni(
+        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Ein mathematisches Pendel hat die Länge $l = 1\\,\\text{m}$ ($g = 9{,}81\\,\\text{m/s}^2$). Berechne die Periodendauer $T$. (auf 2 Nachkommastellen)',
+        2.01, 0.02, 's',
+        `**Ansatz:** $\\omega_0 = \\sqrt{g/l}$, dann $T = 2\\pi/\\omega_0 = 2\\pi\\sqrt{l/g}$.
+
+**Rechnung:** $\\omega_0 = \\sqrt{9{,}81/1} = \\sqrt{9{,}81} \\approx 3{,}132\\,\\text{rad/s}$. $T = 2\\pi/3{,}132 \\approx 2{,}006\\,\\text{s} \\approx 2{,}01\\,\\text{s}$.
+
+**Probe:** Direkt: $T = 2\\pi\\sqrt{1/9{,}81} = 2\\pi \\cdot 0{,}3193 \\approx 2{,}006\\,\\text{s}$. ✓ Merke: Pendel mit $l \\approx 1\\,\\text{m}$ hat $T \\approx 2\\,\\text{s}$ — Sekundenpendel!
+
+**Typischer Fehler:** $T = 2\\pi\\sqrt{g/l}$ rechnen (Bruch falsch herum). Oder Wurzel vergessen. Oder mit Gradmaß statt Bogenmaß arbeiten.`,
+        [
+          '$\\omega_0 = \\sqrt{g/l}$ (Pendel: $g$ oben, $l$ unten).',
+          '$T = 2\\pi\\sqrt{l/g}$.',
+          'Merke: $l \\approx 1\\,\\text{m}$ → $T \\approx 2\\,\\text{s}$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Dasselbe Pendel wird auf den Mond ($g_\\text{Mond} \\approx 1{,}62\\,\\text{m/s}^2$) gebracht. Wie ändert sich die Periodendauer $T$?',
+        [
+          '$T$ wird länger (Faktor $\\sqrt{g_\\text{Erde}/g_\\text{Mond}} \\approx 2{,}46$)',
+          '$T$ wird kürzer (Faktor ~1/6)',
+          '$T$ bleibt gleich — Pendelperiode ist ortsunabhängig',
+          'Das Pendel schwingt nicht mehr, weil $g$ zu klein ist',
+        ],
+        0,
+        `**Ansatz:** $T = 2\\pi\\sqrt{l/g}$ — $g$ steht **im Nenner** unter der Wurzel. Kleinere Gravitation → längere Periode.
+
+**Rechnung:** $T_\\text{Mond}/T_\\text{Erde} = \\sqrt{g_\\text{Erde}/g_\\text{Mond}} = \\sqrt{9{,}81/1{,}62} \\approx \\sqrt{6{,}056} \\approx 2{,}46$. Also: Pendel schwingt auf dem Mond ca. $2{,}46$-mal langsamer.
+
+**Probe:** Konkret bei $l = 1\\,\\text{m}$: $T_\\text{Mond} = 2\\pi\\sqrt{1/1{,}62} \\approx 4{,}93\\,\\text{s}$ vs. $T_\\text{Erde} \\approx 2{,}01\\,\\text{s}$. Verhältnis: $4{,}93/2{,}01 \\approx 2{,}45$. ✓
+
+**Typischer Fehler:** Richtung verwechseln ("weniger Gravitation → schnellere Schwingung"). Gravitation ist die rücktreibende Kraft — weniger davon macht die Bewegung **träger**.`,
+        [
+          '$T \\propto 1/\\sqrt{g}$.',
+          'Weniger $g$ → größeres $T$.',
+          'Wurzelmäßig, nicht linear.',
+        ],
+        {
+          1: 'Die Richtung ist falsch. Kleinere Gravitation verlangsamt die Schwingung (schwächere Rückstellung → träger).',
+          2: 'Das Pendel schwingt durchaus, nur langsamer. Auf Apollo-Missionen wurden Pendelversuche tatsächlich durchgeführt.',
+          3: 'Eine genügend kleine Auslenkung genügt immer für eine Schwingung, solange $g > 0$. Auch Astronauten-Videos zeigen das.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Die Periodendauer eines mathematischen Pendels hängt bei kleinen Auslenkungen von der Pendelmasse ab.',
+        false,
+        `**Ansatz:** In $\\omega_0 = \\sqrt{g/l}$ kommt **keine Masse** vor.
+
+**Rechnung:** Die Masse kürzt sich in der Bewegungsgleichung heraus: $m l \\ddot{\\varphi} = -m g \\sin\\varphi \\approx -m g \\varphi$ liefert $\\ddot{\\varphi} + (g/l)\\varphi = 0$. $m$ steht auf beiden Seiten und verschwindet.
+
+**Probe:** Berühmtes Galilei-Experiment: zwei verschieden schwere Pendel gleicher Länge schwingen synchron. Nur die Länge und die lokale Schwerebeschleunigung zählen.
+
+**Typischer Fehler:** Intuition "schwer = langsam" übertragen. Das gilt beim Feder-Masse-System ($\\omega_0 = \\sqrt{c/m}$), **nicht** beim mathematischen Pendel.`,
+        [
+          'Bewegungsgleichung aufstellen und Masse kürzen.',
+          'Nur $g$ und $l$ bleiben übrig.',
+          'Galilei: gleiche Länge → gleiche Periode.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Ein Pendel soll eine Periodendauer von exakt $T = 1{,}0\\,\\text{s}$ haben ($g = 9{,}81\\,\\text{m/s}^2$). Welche Länge $l$ ist nötig? (auf 3 Nachkommastellen in Meter)',
+        0.248, 0.003, 'm',
+        `**Ansatz:** $T = 2\\pi\\sqrt{l/g}$ → nach $l$ umstellen: $l = g T^2/(4\\pi^2)$.
+
+**Rechnung:** $l = 9{,}81 \\cdot 1^2/(4\\pi^2) = 9{,}81/39{,}478 \\approx 0{,}2485\\,\\text{m}$.
+
+**Probe:** Einsetzen: $T = 2\\pi\\sqrt{0{,}2485/9{,}81} = 2\\pi\\sqrt{0{,}02534} = 2\\pi \\cdot 0{,}1592 \\approx 1{,}000\\,\\text{s}$. ✓
+
+**Typischer Fehler:** Quadrat vergessen: $l = gT/(4\\pi^2)$ ist dimensional falsch. Oder Faktor $4$ unterschlagen: $l = gT^2/\\pi^2 \\approx 0{,}994\\,\\text{m}$ wäre viermal zu groß.`,
+        [
+          '$T = 2\\pi\\sqrt{l/g}$.',
+          'Nach $l$ auflösen: $l = g T^2/(4\\pi^2)$.',
+          '$4\\pi^2 \\approx 39{,}48$.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Bringe die Herleitungsschritte für $\\omega_0 = \\sqrt{g/l}$ in die richtige Reihenfolge.',
+        [
+          'Kleinwinkelnäherung $\\sin\\varphi \\approx \\varphi$ für kleine Auslenkungen',
+          'Rücktreibende Kraft: $F_r = -m g \\sin\\varphi$ (Tangentialkomponente der Gewichtskraft)',
+          'Bogenlänge und Winkelbeschleunigung: $\\ddot{s} = l\\ddot{\\varphi}$',
+          'Newton: $m l \\ddot{\\varphi} = -m g \\sin\\varphi$, $m$ kürzen',
+          'Vereinfachte DGL: $\\ddot{\\varphi} + (g/l)\\varphi = 0$ → $\\omega_0^2 = g/l$',
+        ],
+        [1, 2, 3, 0, 4],
+        `**Ansatz:** Physik des Pendels Schritt für Schritt: Kraft, Bewegung, Kürzen, Linearisieren, DGL lesen.
+
+**Rechnung:** (1) Tangentialkomponente der Gewichtskraft liefert die rücktreibende Kraft. (2) Bahnbewegung auf Kreisbogen: $\\ddot{s} = l\\ddot{\\varphi}$. (3) Newton einsetzen und $m$ kürzen. (4) Kleinwinkelnäherung anwenden. (5) Standardform $\\ddot{\\varphi} + \\omega_0^2\\varphi = 0$ ablesen.
+
+**Probe:** Nur die Standardform erlaubt den direkten Vergleich mit $\\ddot{x} + \\omega_0^2 x = 0$ — daraus folgt $\\omega_0 = \\sqrt{g/l}$ ohne weitere Rechnung.
+
+**Typischer Fehler:** Kleinwinkelnäherung **vor** dem Aufstellen der Bewegungsgleichung machen — Risiko, den nichtlinearen Charakter des echten Pendels unbemerkt zu verlieren. Oder $m$ nicht kürzen und dann glauben, die Masse stecke noch im Ergebnis.`,
+        [
+          'Erst Kraft, dann Kinematik, dann Newton.',
+          'Linearisierung ist ein **Näherungsschritt** — erst wenn die Form steht.',
+          'Standardform der DGL offenbart $\\omega_0^2$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Ordne jeder Pendellänge die zugehörige Periodendauer zu ($g = 9{,}81\\,\\text{m/s}^2$).',
+        [
+          { left: '$l = 0{,}10\\,\\text{m}$', right: '$T \\approx 0{,}63\\,\\text{s}$' },
+          { left: '$l = 0{,}25\\,\\text{m}$', right: '$T \\approx 1{,}00\\,\\text{s}$' },
+          { left: '$l = 1{,}00\\,\\text{m}$', right: '$T \\approx 2{,}01\\,\\text{s}$' },
+          { left: '$l = 4{,}00\\,\\text{m}$', right: '$T \\approx 4{,}01\\,\\text{s}$' },
+        ],
+        `**Ansatz:** $T = 2\\pi\\sqrt{l/g}$ — Periode skaliert mit $\\sqrt{l}$.
+
+**Rechnung:** $l = 0{,}1$: $T = 2\\pi\\sqrt{0{,}0102} \\approx 0{,}634\\,\\text{s}$. $l = 0{,}25$: $T = 2\\pi\\sqrt{0{,}0255} \\approx 1{,}003\\,\\text{s}$. $l = 1$: $T \\approx 2{,}006\\,\\text{s}$. $l = 4$: $T = 2\\pi\\sqrt{0{,}408} \\approx 4{,}012\\,\\text{s}$.
+
+**Probe:** $l$ um Faktor $4$ erhöhen verdoppelt $T$ (wegen Wurzel). Check: $l$ von $0{,}25 \\to 1\\,\\text{m}$ ist Faktor $4$, $T$ wächst von $1{,}00$ auf $2{,}01\\,\\text{s}$. ✓
+
+**Typischer Fehler:** Lineare Skalierung annehmen: $l$ verzehnfachen würde $T$ verzehnfachen. Tatsächlich: $T$ wächst nur um $\\sqrt{10} \\approx 3{,}16$-fach.`,
+        [
+          'Wurzel-Skalierung: $T \\propto \\sqrt{l}$.',
+          '$l = 0{,}25\\,\\text{m}$ liefert fast genau $T = 1\\,\\text{s}$.',
+          'Länge $\\times 4$ → Periode $\\times 2$.',
+        ],
+      ),
+    ],
+
+  },
+
 }

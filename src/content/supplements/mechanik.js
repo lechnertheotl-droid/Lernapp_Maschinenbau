@@ -641,6 +641,171 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
     ],
   },
 
+  'mech-2-4': {
+    explanation: String.raw`**Vertiefung Schwingungen:** Ein Feder-Masse-Dämpfer-System ist das Urmodell jeder mechanischen Schwingungslehre. Bewegungsgleichung:
+
+$$m\ddot{x} + d\dot{x} + c x = F(t)$$
+
+**Freie, ungedämpfte Schwingung** ($d = 0$, $F = 0$):
+
+$$\omega_0 = \sqrt{c/m}, \qquad T = 2\pi/\omega_0, \qquad x(t) = A\sin(\omega_0 t + \varphi)$$
+
+**Gedämpfte Schwingung** — charakterisiert durch das **Lehrsche Dämpfungsmaß**:
+
+$$D = \frac{d}{2\sqrt{cm}}$$
+
+Drei Regime: $D < 1$ (unterkritisch, schwingt), $D = 1$ (aperiodischer Grenzfall), $D > 1$ (überkritisch, kriechend).
+
+**Erzwungene Schwingung** — Resonanz bei $\Omega = \omega_0$: im ungedämpften Fall wächst die Amplitude linear mit $t$, im gedämpften Fall bleibt sie endlich aber sehr groß.
+
+**Mathematisches Pendel** als Sonderfall: $\omega_0 = \sqrt{g/l}$ (unabhängig von $m$).
+
+**Typische Fehler:** Wurzel vergessen ($\omega_0 = c/m$ statt $\sqrt{c/m}$). Faktor $2\pi$ zwischen $\omega_0$ und $T$ unterschlagen. Bei der Dämpfung den Faktor $2$ im Nenner vergessen. Masse beim mathematischen Pendel einbauen — sie kürzt sich heraus. Einheiten von $c$ (N/m vs. N/mm) vertauschen — macht $\omega_0$ um Faktor $\sqrt{1000} \approx 31{,}6$ falsch.`,
+
+    conceptQuestion: 'Welche Aussage über die Eigenkreisfrequenz $\\omega_0$ eines ungedämpften Feder-Masse-Systems ist korrekt?',
+    conceptOptions: [
+      '$\\omega_0 = \\sqrt{c/m}$ — steigt mit steiferer Feder, sinkt mit größerer Masse',
+      '$\\omega_0 = \\sqrt{m/c}$ — steigt mit größerer Masse',
+      '$\\omega_0 = c/m$ — linear in beiden Größen',
+      '$\\omega_0 = c \\cdot m$ — Produkt aus Federsteifigkeit und Masse',
+    ],
+    conceptCorrect: 0,
+    conceptExplanation: `**Ansatz:** Bewegungsgleichung $m\\ddot{x} + cx = 0$ umgeformt: $\\ddot{x} + (c/m) x = 0$. Vergleich mit Standardform $\\ddot{x} + \\omega_0^2 x = 0$.
+
+**Rechnung:** $\\omega_0^2 = c/m$, also $\\omega_0 = \\sqrt{c/m}$. $c$ zieht zurück (höhere Steifigkeit → höhere Frequenz), $m$ widersteht (größere Masse → niedrigere Frequenz).
+
+**Probe:** Einheiten: $\\sqrt{(\\text{N/m})/\\text{kg}} = \\sqrt{1/\\text{s}^2} = \\text{rad/s}$. ✓ Grenzfall $c \\to 0$: $\\omega_0 \\to 0$ (keine Rückstellung, keine Schwingung). Grenzfall $m \\to 0$: $\\omega_0 \\to \\infty$ (sehr schnelle Schwingung).
+
+**Typischer Fehler:** Variante $\\sqrt{m/c}$: das wäre die Quadratwurzel der Periode²$/(4\\pi^2)$, hat falsche Dimension. Lineare Varianten ($c/m$, $c\\cdot m$): Wurzel fehlt oder ganz falsche Beziehung.`,
+    conceptHints: [
+      'Bewegungsgleichung: $m\\ddot{x} + c x = 0$.',
+      'Standardform $\\ddot{x} + \\omega_0^2 x = 0$ liefert $\\omega_0^2 = c/m$.',
+      'Steifere Feder = schnellere Schwingung. Mehr Masse = langsamere Schwingung.',
+    ],
+    conceptWrongAnswers: {
+      1: 'Bruch falsch herum. Die Dimension stimmt ($\\sqrt{\\text{kg/(N/m)}} = \\text{s}$), aber das ist die Periode geteilt durch $2\\pi$, nicht die Kreisfrequenz.',
+      2: 'Wurzel fehlt — die Dimension wäre $1/\\text{s}^2$, keine Frequenz.',
+      3: 'Produkt von Federsteifigkeit und Masse ergibt Einheit $\\text{N} = \\text{kg m/s}^2$, kein Frequenzzusammenhang.',
+    },
+
+    calcQuestion: 'Ein Körper $m = 0{,}5\\,\\text{kg}$ hängt an einer Feder mit $c = 200\\,\\text{N/m}$ und wird zu einer harmonischen Schwingung mit Amplitude $A = 30\\,\\text{mm}$ angeregt. Wie groß ist die maximale Geschwindigkeit $v_\\max$?',
+    calcAnswer: 0.6,
+    calcTolerance: 0.01,
+    calcUnit: 'm/s',
+    calcExplanation: `**Ansatz:** Bei harmonischer Schwingung $x(t) = A\\sin(\\omega_0 t + \\varphi)$ gilt $v(t) = A\\omega_0\\cos(\\omega_0 t + \\varphi)$ und somit $v_\\max = A\\omega_0$.
+
+**Rechnung:** $\\omega_0 = \\sqrt{c/m} = \\sqrt{200/0{,}5} = \\sqrt{400} = 20\\,\\text{rad/s}$. $v_\\max = 0{,}030 \\cdot 20 = 0{,}6\\,\\text{m/s}$.
+
+**Probe:** Energieerhaltung: $\\tfrac{1}{2}m v_\\max^2 = \\tfrac{1}{2} c A^2$. Links: $0{,}5 \\cdot 0{,}5 \\cdot 0{,}36 = 0{,}09\\,\\text{J}$. Rechts: $0{,}5 \\cdot 200 \\cdot 0{,}0009 = 0{,}09\\,\\text{J}$. ✓
+
+**Typischer Fehler:** Amplitude in mm vergessen umzurechnen: $30 \\cdot 20 = 600\\,\\text{m/s}$ wäre Überschallgeschwindigkeit — physikalisch absurd. Oder $v_\\max = A/\\omega_0$ rechnen (Bruch falsch herum).`,
+    calcHints: [
+      'Erst $\\omega_0 = \\sqrt{c/m}$ berechnen.',
+      '$v_\\max = A \\cdot \\omega_0$.',
+      'Amplitude **vor** der Rechnung in Meter umrechnen.',
+    ],
+
+    trueFalseStatement: 'Bei einem schwach gedämpften System mit $D = 0{,}1$ ist die gedämpfte Periode $T_d = T/\\sqrt{1 - D^2}$ nur etwa $0{,}5\\,\\%$ länger als beim ungedämpften System.',
+    trueFalseCorrect: true,
+    trueFalseExplanation: `**Ansatz:** Die gedämpfte Eigenkreisfrequenz ist $\\omega_d = \\omega_0\\sqrt{1 - D^2}$; die zugehörige Periode $T_d = 2\\pi/\\omega_d = T/\\sqrt{1 - D^2}$.
+
+**Rechnung:** Für $D = 0{,}1$: $\\sqrt{1 - 0{,}01} = \\sqrt{0{,}99} \\approx 0{,}9950$. $T_d/T = 1/0{,}9950 \\approx 1{,}00504$. Also etwa $0{,}5\\,\\%$ länger.
+
+**Probe:** Für $D = 0{,}05$: $T_d/T \\approx 1{,}00125$ (nur $0{,}13\\,\\%$). Für $D = 0{,}3$: $T_d/T \\approx 1{,}048$ ($4{,}8\\,\\%$). Die quadratische Abhängigkeit macht schwache Dämpfung praktisch vernachlässigbar für die **Frequenz**, obwohl die **Amplitude** exponentiell abklingt.
+
+**Typischer Fehler:** Annehmen, dass Dämpfung die Frequenz stark verschiebt — das tut sie nicht bei schwacher Dämpfung. Der Hauptunterschied liegt im **Amplitudenabfall** $e^{-D\\omega_0 t}$, nicht in der Frequenzlage.`,
+    trueFalseHints: [
+      '$T_d = T/\\sqrt{1 - D^2}$.',
+      '$\\sqrt{0{,}99} \\approx 0{,}995$.',
+      'Bei schwacher Dämpfung ändert sich die Periode kaum, die Amplitude sehr wohl.',
+    ],
+
+    matchingQuestion: 'Ordne jeder Größe die passende Einheit zu.',
+    matchingPairs: [
+      { left: 'Federsteifigkeit $c$', right: 'N/m' },
+      { left: 'Dämpfungskoeffizient $d$', right: 'Ns/m $=$ kg/s' },
+      { left: 'Eigenkreisfrequenz $\\omega_0$', right: 'rad/s' },
+      { left: 'Dämpfungsgrad $D$', right: 'dimensionslos' },
+    ],
+    matchingExplanation: `**Ansatz:** Konsistente Einheiten sind Voraussetzung für jede Schwingungsrechnung. Fehler kommen fast immer aus Einheitenverwechslungen.
+
+**Rechnung:** $c$ kommt aus $F = c \\cdot x$ → Kraft pro Weg → N/m. $d$ aus $F_d = d \\cdot \\dot{x}$ → Kraft pro Geschwindigkeit → N/(m/s) = Ns/m. $\\omega_0$ ist eine Winkelgeschwindigkeit → rad/s. $D$ ist ein Quotient mit denselben Einheiten im Zähler und Nenner → dimensionslos.
+
+**Probe:** $D = d/(2\\sqrt{cm})$: Zähler Ns/m $=$ kg/s. Nenner $\\sqrt{(\\text{N/m}) \\cdot \\text{kg}} = \\sqrt{\\text{kg}^2/\\text{s}^2} = \\text{kg/s}$. Quotient dimensionslos. ✓
+
+**Typischer Fehler:** $c$ in N/mm ablesen und als N/m einsetzen — Frequenz um Faktor $\\sqrt{1000} \\approx 31{,}6$ falsch.`,
+    matchingHints: [
+      'Immer aus der definierenden Gleichung ableiten.',
+      '$F = c x$ → $c$ in N/m.',
+      '$F_d = d \\dot{x}$ → $d$ in Ns/m.',
+    ],
+
+    sortingQuestion: 'Bringe die Auslegungsschritte eines Schwingungsdämpfers in sinnvolle Reihenfolge.',
+    sortingItems: [
+      'Eigenfrequenz $\\omega_0 = \\sqrt{c/m}$ des ungedämpften Systems bestimmen',
+      'Gewünschtes Abklingverhalten definieren (z. B. $D \\approx 0{,}7$ für Messgeräte)',
+      'Erforderlichen Dämpfungskoeffizienten aus $d = 2 D \\sqrt{cm}$ berechnen',
+      'Passenden Dämpfer im Katalog auswählen und einbauen',
+      'System testen und $D$ gegebenenfalls nachjustieren',
+    ],
+    sortingOrder: [0, 1, 2, 3, 4],
+    sortingExplanation: `**Ansatz:** Von den Systemparametern zum Bauteil: erst analysieren, dann spezifizieren, dann auswählen, dann verifizieren.
+
+**Rechnung:** Schritt (1) liefert $\\omega_0$. Schritt (2) legt das Ziel fest ($D \\approx 0{,}7$ ist ein Klassiker — schnelles Abklingen ohne Überschwingen). Schritt (3) rechnet $d$ aus. Schritte (4)–(5) sind die Realisierung.
+
+**Probe:** Vorgehen spiegelt den Maschinenbau-Workflow: Analyse → Spezifikation → Beschaffung → Verifikation. Auslassen eines Schrittes ist eine klassische Prüfungsfalle ("Man hat den Dämpfer gekauft, aber $\\omega_0$ nie berechnet").
+
+**Typischer Fehler:** Erst Dämpfer kaufen, dann die Frequenz berechnen — führt oft zu über- oder unterdämpften Systemen. Oder Ziel-$D$ gar nicht spezifizieren und blind $D = 1$ wählen.`,
+    sortingHints: [
+      'Erst analysieren, dann spezifizieren.',
+      '$\\omega_0$ vor $D$ — ohne $\\omega_0$ kein $d$.',
+      'Verifizieren nicht vergessen.',
+    ],
+
+    errorQuestion: 'Welcher Fehler führt bei Schwingungsaufgaben am häufigsten zu grob falschen Ergebnissen?',
+    errorOptions: [
+      'Federsteifigkeit $c$ in N/mm angegeben, aber als N/m eingesetzt — $\\omega_0$ um Faktor $\\sqrt{1000} \\approx 31{,}6$ falsch',
+      'Masse in kg statt Gramm eingesetzt',
+      'Winkelangabe im Bogenmaß statt Gradmaß',
+      'Faktor $\\pi$ statt $2\\pi$ in der Periodenformel',
+    ],
+    errorCorrect: 0,
+    errorExplanation: `**Ansatz:** Einheitenkonsistenz ist bei $\\omega_0 = \\sqrt{c/m}$ besonders heikel, weil ein Faktor $1000$ innerhalb der Wurzel als $\\sqrt{1000} \\approx 31{,}6$ erscheint — leicht zu übersehen.
+
+**Rechnung:** Beispiel: $c = 200\\,\\text{N/mm}$ (d. h. $200\\,000\\,\\text{N/m}$), $m = 2\\,\\text{kg}$. Korrekt: $\\omega_0 = \\sqrt{100\\,000} \\approx 316\\,\\text{rad/s}$. Mit $c$ fälschlich als $200\\,\\text{N/m}$: $\\omega_0 = \\sqrt{100} = 10\\,\\text{rad/s}$ — Faktor $31{,}6$ daneben.
+
+**Probe:** Gegenprüfung immer über die Periode: $T \\approx 2\\,\\text{s}$ wäre für einen $2\\,\\text{kg}$-Körper an einer $200\\,\\text{N/mm}$-Feder absurd — so eine steife Feder schwingt in Millisekunden.
+
+**Typischer Fehler:** Blind in den Taschenrechner tippen ohne Einheitencheck. Prüfungssichere Gegenmaßnahme: **jede** Größe mit SI-Einheit (N, m, kg, s) notieren, bevor Zahlen eingesetzt werden.`,
+    errorHints: [
+      'N/mm vs. N/m unterscheidet sich um Faktor $1000$.',
+      'Unter der Wurzel wird daraus Faktor $\\approx 31{,}6$.',
+      'Immer SI-Einheiten vor der Rechnung.',
+    ],
+    errorWrongAnswers: {
+      1: 'Kann passieren, aber die Unterscheidung kg/g (Faktor $1000$) ist selten ein Schwingungsproblem — meistens wird Masse direkt in kg angegeben.',
+      2: 'Betrifft Winkel in der Anfangsbedingung, nicht die Eigenfrequenz $\\omega_0$ selbst. Im Kontext Schwingungen meist kein Hauptfehler.',
+      3: 'Kann natürlich passieren, ist aber weniger klassisch als das Einheiten-Problem mit $c$.',
+    },
+
+    transferQuestion: '[PRÜFUNG] Feder-Masse-Dämpfer: $m = 0{,}8\\,\\text{kg}$, $c = 200\\,\\text{N/m}$, $d = 6\\,\\text{Ns/m}$. Berechne den Dämpfungsgrad $D$. (auf 4 Nachkommastellen, dimensionslos)',
+    transferAnswer: 0.2372,
+    transferTolerance: 0.002,
+    transferUnit: '',
+    transferExplanation: `**Ansatz:** Lehrsches Dämpfungsmaß: $D = d/(2\\sqrt{cm})$.
+
+**Rechnung:** $c \\cdot m = 200 \\cdot 0{,}8 = 160$. $\\sqrt{160} \\approx 12{,}649$. $D = 6/(2 \\cdot 12{,}649) = 6/25{,}298 \\approx 0{,}2372$.
+
+**Probe:** $D < 1$ → schwach gedämpft, System schwingt. Plausibel: moderater Dämpfer, kein überkritisches Kriechen. $\\omega_0 = \\sqrt{c/m} = \\sqrt{250} \\approx 15{,}81\\,\\text{rad/s}$. Gedämpfte Eigenfrequenz: $\\omega_d = \\omega_0\\sqrt{1 - 0{,}2372^2} \\approx \\omega_0 \\cdot 0{,}9715 \\approx 15{,}36\\,\\text{rad/s}$ — nur $2{,}8\\,\\%$ unter der ungedämpften.
+
+**Typischer Fehler:** Faktor $2$ im Nenner vergessen: $D = 6/12{,}649 \\approx 0{,}474$. Oder $\\sqrt{c+m}$ statt $\\sqrt{cm}$ rechnen.`,
+    transferHints: [
+      '$D = d/(2\\sqrt{cm})$.',
+      '$cm = 160$, $\\sqrt{cm} \\approx 12{,}65$.',
+      'Faktor $2$ im Nenner nicht vergessen.',
+    ],
+  },
+
   'mech-3-1': {
     exam: true,
     explanation: String.raw`**Prüfungsstrategie Statik:** Klausuraufgaben kombinieren typischerweise Kräftegleichgewicht, Momentengleichgewicht und Reibung. Leitfaden:
