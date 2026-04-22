@@ -615,6 +615,14 @@ $$C = \\begin{pmatrix} 19 & 22 \\\\ 43 & 50 \\end{pmatrix}$$
     title: 'Transponierte und Inverse',
     order: 3, estimatedMinutes: 18,
     learningGoals: ['Transponierte einer Matrix berechnen', 'Inverse einer 2x2-Matrix berechnen', 'Zusammenhang zwischen Invertierbarkeit und Determinante verstehen'],
+    subGoals: [
+      { label: 'Transponierte: $(A^T)_{ij} = A_{ji}$ (Zeilen/Spalten tauschen), Dimensionen $m \\times n \\to n \\times m$', examRelevance: 'hoch' },
+      { label: 'Transponierten-Regeln: $(A+B)^T = A^T + B^T$, $(AB)^T = B^T A^T$ (Reihenfolge dreht!)', examRelevance: 'hoch' },
+      { label: '2x2-Inverse: $A^{-1} = \\frac{1}{\\det A}\\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}$', examRelevance: 'hoch' },
+      { label: 'Invertierbarkeit: $A^{-1}$ existiert $\\iff \\det A \\neq 0$', examRelevance: 'hoch' },
+      { label: 'Eigenschaft: $AA^{-1} = A^{-1}A = I$ (Einheitsmatrix)', examRelevance: 'hoch' },
+      { label: 'Symmetrische Matrix: $A^T = A$; orthogonale Matrix: $A^T = A^{-1}$', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'la-1-4',
     steps: [
@@ -676,6 +684,14 @@ $A^{-1} = \\frac{1}{10} \\begin{pmatrix} 6 & -7 \\\\ -2 & 4 \\end{pmatrix} = \\b
     title: 'Determinanten',
     order: 4, estimatedMinutes: 20,
     learningGoals: ['2x2- und 3x3-Determinanten berechnen', 'Regel von Sarrus anwenden', 'Geometrische Bedeutung der Determinante verstehen'],
+    subGoals: [
+      { label: '2x2: $\\det \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} = ad - bc$', examRelevance: 'hoch' },
+      { label: '3x3 Regel von Sarrus: Haupt- minus Nebendiagonalen (nur 3x3!)', examRelevance: 'hoch' },
+      { label: 'Laplace-Entwicklung: nach einer Zeile/Spalte, Vorzeichen-Schachbrett $(-1)^{i+j}$', examRelevance: 'hoch' },
+      { label: 'Determinanten-Regeln: $\\det(AB) = \\det A \\cdot \\det B$, $\\det A^T = \\det A$', examRelevance: 'hoch' },
+      { label: 'Geometrisch: $|\\det A|$ = Flächen-/Volumen-Skalierungsfaktor', examRelevance: 'hoch' },
+      { label: '$\\det A = 0 \\iff$ Spalten linear abhängig, $A$ singulär, kein $A^{-1}$', examRelevance: 'hoch' },
+    ],
     prerequisites: [],
     nextLessonId: 'la-1-5',
     steps: [
@@ -732,6 +748,14 @@ $- a_3 b_2 c_1 - a_2 b_1 c_3 - a_1 b_3 c_2$
     title: 'Eigenwerte und Eigenvektoren',
     order: 5, estimatedMinutes: 20,
     learningGoals: ['Eigenwertgleichung verstehen', 'Charakteristisches Polynom aufstellen', 'Eigenwerte für 2x2-Matrizen berechnen'],
+    subGoals: [
+      { label: 'Eigenwertgleichung: $A \\vec v = \\lambda \\vec v$ (Vektor bleibt in Richtung, nur gestreckt)', examRelevance: 'hoch' },
+      { label: 'Charakteristisches Polynom: $\\det(A - \\lambda I) = 0$ → Eigenwerte $\\lambda_i$', examRelevance: 'hoch' },
+      { label: 'Eigenvektor zu $\\lambda_i$: $(A - \\lambda_i I)\\vec v = 0$ lösen (Kern)', examRelevance: 'hoch' },
+      { label: 'Spur und Determinante: $\\text{tr}(A) = \\sum \\lambda_i$, $\\det A = \\prod \\lambda_i$', examRelevance: 'mittel' },
+      { label: 'Symmetrische Matrix: Eigenwerte reell, Eigenvektoren orthogonal (Hauptachsentransformation)', examRelevance: 'mittel' },
+      { label: 'Technik-Anwendung: Eigenfrequenzen (Schwingungen), Hauptspannungen (Festigkeit)', examRelevance: 'hoch' },
+    ],
     prerequisites: [],
     nextLessonId: 'la-2-1',
     steps: [

@@ -49,6 +49,7 @@ function buildTopic(def) {
         order: lessonIndex + 1,
         estimatedMinutes: lesson.estimatedMinutes ?? 10,
         learningGoals: lesson.learningGoals,
+        ...(lesson.subGoals ? { subGoals: lesson.subGoals } : {}),
         prerequisites: lesson.prerequisites ?? [],
         nextLessonId: nextById[lesson.id],
         steps: [
@@ -402,6 +403,13 @@ while n < 100:                  # while n < 100
           id: 'py-1-5',
           title: 'Funktionen definieren',
           learningGoals: ['Eigene Funktionen schreiben', 'Parameter und Rückgabewerte verstehen', 'Lambda-Ausdrücke kennen'],
+          subGoals: [
+            { label: 'Python: `def name(param):`, Matlab: `function y = name(x)` ... `end`', examRelevance: 'hoch' },
+            { label: 'Rückgabe: Python `return`, Matlab über Zuweisung an Ausgabevariable', examRelevance: 'hoch' },
+            { label: 'Default-Parameter: `def f(x, y=0):` — bei Aufruf nicht zwingend angeben', examRelevance: 'hoch' },
+            { label: 'Lambda: `sqr = lambda x: x**2` für kurze Inline-Funktionen', examRelevance: 'mittel' },
+            { label: 'Docstring (Python) oder Kommentare nach Function-Header (Matlab) dokumentieren', examRelevance: 'mittel' },
+          ],
           content: String.raw`**Python-Funktion:**
 \`\`\`python
 def kraft(masse, beschleunigung=9.81):
@@ -487,6 +495,13 @@ quadrat(5)  % → 25
           id: 'py-2-1',
           title: 'NumPy Grundlagen',
           learningGoals: ['NumPy importieren und Arrays erzeugen', 'Elementweise Operationen durchführen', 'Matrizen erstellen und multiplizieren'],
+          subGoals: [
+            { label: 'Array erzeugen: `np.array([...])`, `np.zeros`, `np.ones`, `np.eye`, `np.linspace`', examRelevance: 'hoch' },
+            { label: 'Elementweise: `*` in NumPy, `.*` in Matlab; Matrixmultiplikation: `@` bzw. `*`', examRelevance: 'hoch' },
+            { label: 'Formen: `a.shape` (NumPy), `size(a)` (Matlab)', examRelevance: 'hoch' },
+            { label: 'Vektorisierung statt Schleifen: $10$–$100\\times$ schneller', examRelevance: 'hoch' },
+            { label: 'Broadcasting: $(n, 1) + (1, m) \\to (n, m)$ automatisch', examRelevance: 'mittel' },
+          ],
           content: String.raw`**NumPy** ist die Grundlage für numerisches Rechnen in Python — das Äquivalent zur Matlab-Grundumgebung.
 
 **Arrays erzeugen:**
@@ -553,6 +568,13 @@ r = np.arange(0, 2*np.pi, 0.01)   # wie range, aber für floats
           id: 'py-2-2',
           title: 'Matplotlib — Daten visualisieren',
           learningGoals: ['Linien- und Scatterplots erstellen', 'Achsen beschriften und formatieren', 'Mehrere Kurven in einem Plot darstellen'],
+          subGoals: [
+            { label: 'Basis-Plot: `plt.plot(x, y)`, Titel, `xlabel`, `ylabel`, `legend`, `grid`', examRelevance: 'hoch' },
+            { label: 'Farbe/Linienstil: `\'b-\'` blau, `\'r--\'` rot gestrichelt, `\'g:\'` grün gepunktet', examRelevance: 'mittel' },
+            { label: 'Mehrere Kurven: mehrere `plt.plot()`-Aufrufe nacheinander', examRelevance: 'hoch' },
+            { label: 'Speichern: `plt.savefig(\'name.png\', dpi=150)` **vor** `plt.show()`', examRelevance: 'mittel' },
+            { label: 'Plots ohne Achsen-/Einheiten-Beschriftung verlieren in Berichten Punkte', examRelevance: 'hoch' },
+          ],
           content: String.raw`**Matplotlib** ist die Standard-Plotbibliothek — funktioniert sehr ähnlich wie Matlab:
 
 \`\`\`python
@@ -629,6 +651,13 @@ grid on
           id: 'py-2-3',
           title: 'Gleichungen lösen & Optimierung',
           learningGoals: ['Nullstellen mit fsolve finden', 'Lineare Gleichungssysteme lösen', 'Minima/Maxima numerisch finden'],
+          subGoals: [
+            { label: 'Nullstelle: `scipy.optimize.fsolve(f, x0)` — Startwert sollte nah an Lösung', examRelevance: 'hoch' },
+            { label: 'LGS: `np.linalg.solve(A, b)` statt `np.linalg.inv(A) @ b` (schneller, stabiler)', examRelevance: 'hoch' },
+            { label: 'Matlab-Pendant: Backslash-Operator `A \\ b`', examRelevance: 'hoch' },
+            { label: 'Optimierung: `scipy.optimize.minimize(f, x0)` für Minima (Maxima: `-f`)', examRelevance: 'hoch' },
+            { label: 'Dimensionen prüfen vor Solve: `A.shape == (n, n)`, `b.shape == (n,)`', examRelevance: 'mittel' },
+          ],
           content: String.raw`**SciPy** erweitert NumPy um wissenschaftliche Algorithmen — das Matlab-Äquivalent für Solver.
 
 **Nullstellensuche:**
@@ -708,6 +737,13 @@ Matlab: \`fminunc(@(x) (x(1)-1)^2 + (x(2)-2.5)^2, [0, 0])\`
           id: 'py-2-4',
           title: 'Numerische Integration & DGL',
           learningGoals: ['Integrale numerisch berechnen', 'Gewöhnliche DGL mit solve_ivp lösen', 'Ergebnisse plotten und interpretieren'],
+          subGoals: [
+            { label: 'Bestimmtes Integral: `scipy.integrate.quad(f, a, b)` (adaptive Quadratur)', examRelevance: 'hoch' },
+            { label: 'Matlab-Pendant: `integral(@(x) f(x), a, b)`', examRelevance: 'mittel' },
+            { label: 'DGL 2. Ordnung → System 1. Ordnung umschreiben, dann `solve_ivp` / `ode45`', examRelevance: 'hoch' },
+            { label: 'ODE-Aufruf: `solve_ivp(f, [t0, t1], y0)`; `t_eval=...` für feste Ausgabezeitpunkte', examRelevance: 'hoch' },
+            { label: 'Standard-Solver: `RK45` (Python), `ode45` (Matlab) — adaptive Schrittweite, $O(h^5)$', examRelevance: 'mittel' },
+          ],
           content: String.raw`**Numerische Integration:**
 \`\`\`python
 from scipy.integrate import quad
@@ -792,6 +828,13 @@ Matlab: \`[t, y] = ode45(@(t,y) schwinger(t, y, m, d, k), [0 20], [1; 0])\`
           id: 'py-3-1',
           title: 'Festigkeitsberechnung',
           learningGoals: ['Spannungsberechnung programmieren', 'Querschnittswerte automatisiert berechnen', 'Ergebnisse grafisch darstellen'],
+          subGoals: [
+            { label: 'Rechteck: $I = bh^3/12$, $W = bh^2/6$ als Funktion', examRelevance: 'hoch' },
+            { label: 'Biegespannung $\\sigma_b = M_b/W$ entlang Balken berechnen (Vektor-Operation)', examRelevance: 'hoch' },
+            { label: 'Kritische Stelle: $M_\\text{max}$ via `np.max(np.abs(M))`', examRelevance: 'hoch' },
+            { label: 'Verschiedene Querschnitte als Funktionen kapseln (DRY-Prinzip)', examRelevance: 'mittel' },
+            { label: 'Ergebnis-Plot: Spannungsverlauf über $x$ mit Skalierung & Einheit', examRelevance: 'mittel' },
+          ],
           content: String.raw`**Beispiel: Biegebalken — Spannungsverteilung**
 
 Ein Balken mit Rechteckquerschnitt (b × h) wird durch ein Biegemoment $M_b$ belastet.
@@ -875,6 +918,13 @@ subplot(1,2,2); plot(x, sigma/1e6); title('Spannung');
           id: 'py-3-2',
           title: 'Datenauswertung & Messdaten',
           learningGoals: ['CSV-Dateien einlesen', 'Statistische Auswertung durchführen', 'Messdaten fitten und interpolieren'],
+          subGoals: [
+            { label: 'CSV lesen: `np.loadtxt` (einfach), `pd.read_csv` (mit Headern und Typen)', examRelevance: 'hoch' },
+            { label: 'Statistik: `np.mean`, `np.std`, `np.median`, `np.max`, `np.min`', examRelevance: 'hoch' },
+            { label: 'Polynom-Fit: `np.polyfit(x, y, n)` → Koeffizienten', examRelevance: 'hoch' },
+            { label: 'Pandas DataFrames: `df[\'Spalte\']`, `df.describe()` für Überblick', examRelevance: 'mittel' },
+            { label: 'Scatter + Fit-Kurve zusammen plotten (Mess vs. Modell)', examRelevance: 'mittel' },
+          ],
           content: String.raw`Im MB-Studium wertet man häufig Messdaten aus Laboren aus.
 
 **CSV-Datei einlesen:**
@@ -953,6 +1003,13 @@ Matlab: \`p = polyfit(zeit, kraft, 2); plot(zeit, polyval(p, zeit))\``,
           id: 'py-3-3',
           title: 'Simulation: Feder-Masse-Dämpfer',
           learningGoals: ['Schwingungssystem modellieren', 'Parametervariation durchführen', 'Resonanz erkennen und visualisieren'],
+          subGoals: [
+            { label: 'Bewegungsgleichung $m\\ddot x + d\\dot x + kx = F(t)$ als System 1. Ordnung', examRelevance: 'hoch' },
+            { label: 'Eigenkreisfrequenz $\\omega_0 = \\sqrt{k/m}$, Dämpfungsgrad $D = d/(2\\sqrt{km})$', examRelevance: 'hoch' },
+            { label: 'Frequenzgang: Amplitude über $\\Omega$ plotten, Resonanzspitze bei $\\Omega \\approx \\omega_0$', examRelevance: 'hoch' },
+            { label: 'Parameter-Loop: Schleife über $\\Omega$, pro Wert ODE lösen', examRelevance: 'mittel' },
+            { label: 'Einschwingvorgang ignorieren: nur zweite Hälfte der Zeitreihe auswerten', examRelevance: 'mittel' },
+          ],
           content: String.raw`Das **Feder-Masse-Dämpfer-System** ist ein Kernmodell der technischen Mechanik.
 
 **Bewegungsgleichung:** $m\ddot{x} + d\dot{x} + kx = F_0 \cos(\Omega t)$
@@ -1044,6 +1101,13 @@ plt.legend(); plt.grid(True); plt.show()
           id: 'py-4-1',
           title: 'Prüfung: Code-Verständnis & Fehlersuche',
           learningGoals: ['Typische Prüfungsfragen zur Programmierung lösen', 'Code lesen und Ausgaben vorhersagen', 'Fehler in Code finden'],
+          subGoals: [
+            { label: 'Indizierung: Python 0-basiert, Matlab 1-basiert (Off-by-one-Fehler!)', examRelevance: 'hoch' },
+            { label: 'Operatoren: `*` vs `@`, `^` vs `.^` — elementweise vs. Matrix', examRelevance: 'hoch' },
+            { label: 'Python `range(a, b)`: $a, a+1, \\ldots, b-1$; Matlab `a:b`: $a, a+1, \\ldots, b$', examRelevance: 'hoch' },
+            { label: 'Code Zeile-für-Zeile verfolgen, Variablenwerte neben Code notieren', examRelevance: 'hoch' },
+            { label: 'Typische Fehler: `=` vs `==`, fehlendes `:` in Python, Semikolon-Ausgabe in Matlab', examRelevance: 'hoch' },
+          ],
           type: 'explanation-intuitive',
           content: String.raw`**[PRÜFUNG] — Typische Aufgabenformate:**
 

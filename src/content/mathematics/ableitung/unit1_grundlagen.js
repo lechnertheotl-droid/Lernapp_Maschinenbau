@@ -1068,6 +1068,14 @@ $$[f(g(x))]' = f'(g(x)) \\cdot g'(x)$$
       'Kurvendiskussion durchführen',
       'Notwendige und hinreichende Bedingungen unterscheiden',
     ],
+    subGoals: [
+      { label: 'Notwendige Bedingung für Extremum: $f\'(x_0) = 0$ (waagrechte Tangente)', examRelevance: 'hoch' },
+      { label: 'Hinreichend: $f\'\'(x_0) > 0 \\Rightarrow$ Min, $f\'\'(x_0) < 0 \\Rightarrow$ Max', examRelevance: 'hoch' },
+      { label: 'Bei $f\'\'(x_0) = 0$: Vorzeichenwechsel von $f\'$ prüfen oder höhere Ableitungen', examRelevance: 'hoch' },
+      { label: 'Wendepunkt: $f\'\'(x_0) = 0$ mit Vorzeichenwechsel (oder $f\'\'\'(x_0) \\neq 0$)', examRelevance: 'hoch' },
+      { label: 'Randextrema bei beschränktem Intervall $[a, b]$ nicht vergessen', examRelevance: 'mittel' },
+      { label: 'Sattelpunkt = Wendepunkt mit waagrechter Tangente ($f\' = 0$ UND $f\'\' = 0$)', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: null,
     steps: [

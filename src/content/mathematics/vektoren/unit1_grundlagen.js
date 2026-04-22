@@ -843,6 +843,14 @@ $$|\\vec{a} \\times \\vec{b}| = |\\vec{a}| \\cdot |\\vec{b}| \\cdot \\sin(\\varp
     title: 'Kräfte als Vektoren (Prüfung)',
     order: 4, estimatedMinutes: 18,
     learningGoals: ['Kräfte vektoriell addieren', 'Gleichgewichtsbedingungen aufstellen', 'Einheitsvektoren berechnen'],
+    subGoals: [
+      { label: 'Kraftkomponenten: $F_x = F \\cos\\alpha$, $F_y = F \\sin\\alpha$ (Winkel zur $x$-Achse)', examRelevance: 'hoch' },
+      { label: 'Resultierende: $\\vec R = \\sum \\vec F_i$ komponentenweise addieren', examRelevance: 'hoch' },
+      { label: 'Gleichgewicht: $\\sum F_x = 0$ UND $\\sum F_y = 0$ UND $\\sum F_z = 0$', examRelevance: 'hoch' },
+      { label: 'Einheitsvektor: $\\hat e = \\vec a / |\\vec a|$ (dimensionslos, Länge 1)', examRelevance: 'hoch' },
+      { label: 'Betrag und Richtung: $|\\vec R| = \\sqrt{R_x^2 + R_y^2}$, $\\tan\\alpha = R_y/R_x$', examRelevance: 'hoch' },
+      { label: 'Plausibilitätscheck: Vorzeichen der Komponenten passt zur Skizze?', examRelevance: 'mittel' },
+    ],
     prerequisites: ['vek-1-3'],
     nextLessonId: null,
     steps: [

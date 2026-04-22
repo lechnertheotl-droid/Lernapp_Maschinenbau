@@ -438,6 +438,14 @@ const lessons_vek_u3 = [
     title: 'Gemischte Aufgaben Skalar- und Kreuzprodukt',
     order: 1, estimatedMinutes: 20,
     learningGoals: ['Skalar- und Kreuzprodukt sicher unterscheiden', 'Winkel zwischen Vektoren bestimmen', 'Rechenregeln (Kommutativität, Antikommutativität) sicher anwenden'],
+    subGoals: [
+      { label: 'Skalarprodukt liefert **Zahl**, Kreuzprodukt liefert **Vektor** (nur in 3D)', examRelevance: 'hoch' },
+      { label: 'Winkel: $\\cos\\varphi = (\\vec a \\cdot \\vec b)/(|\\vec a||\\vec b|)$', examRelevance: 'hoch' },
+      { label: 'Orthogonalitätstest: $\\vec a \\cdot \\vec b = 0$; Parallelitätstest: $\\vec a \\times \\vec b = \\vec 0$', examRelevance: 'hoch' },
+      { label: 'Skalarprodukt kommutativ: $\\vec a \\cdot \\vec b = \\vec b \\cdot \\vec a$', examRelevance: 'hoch' },
+      { label: 'Kreuzprodukt **anti**kommutativ: $\\vec a \\times \\vec b = -(\\vec b \\times \\vec a)$', examRelevance: 'hoch' },
+      { label: 'Arbeit $W = \\vec F \\cdot \\vec s$ (Skalar), Drehmoment $\\vec M = \\vec r \\times \\vec F$ (Vektor)', examRelevance: 'hoch' },
+    ],
     prerequisites: ['vek-1-4'],
     nextLessonId: 'vek-3-2',
     steps: [
@@ -480,6 +488,14 @@ const lessons_vek_u3 = [
     title: 'Flächen- und Volumenberechnung',
     order: 2, estimatedMinutes: 15,
     learningGoals: ['Parallelogrammfläche mit Kreuzprodukt berechnen', 'Dreiecksfläche als halbes Kreuzprodukt', 'Spatprodukt für Volumen anwenden'],
+    subGoals: [
+      { label: 'Parallelogrammfläche: $A = |\\vec a \\times \\vec b|$', examRelevance: 'hoch' },
+      { label: 'Dreiecksfläche: $A = \\tfrac{1}{2} |\\vec a \\times \\vec b|$', examRelevance: 'hoch' },
+      { label: 'Spatvolumen: $V = |\\vec a \\cdot (\\vec b \\times \\vec c)|$ (Spatprodukt)', examRelevance: 'hoch' },
+      { label: 'Tetraedervolumen: $V = \\tfrac{1}{6} |\\vec a \\cdot (\\vec b \\times \\vec c)|$', examRelevance: 'hoch' },
+      { label: 'Spatprodukt $= 0 \\iff$ Vektoren komplanar (kein Volumen)', examRelevance: 'hoch' },
+      { label: 'Vorzeichen ohne Betrag: $>0$ Rechtssystem, $<0$ Linkssystem', examRelevance: 'mittel' },
+    ],
     prerequisites: ['vek-3-1'],
     nextLessonId: 'vek-3-3',
     steps: [
@@ -519,6 +535,13 @@ $$V_{\\text{Tetraeder}} = \\tfrac{1}{6} \\left|\\vec{a} \\cdot (\\vec{b} \\times
     title: 'Technische Anwendungen',
     order: 3, estimatedMinutes: 18,
     learningGoals: ['Drehmoment als Kreuzprodukt berechnen', 'Kräftezerlegung an der schiefen Ebene', 'Vektoren in technischen Aufgaben anwenden'],
+    subGoals: [
+      { label: 'Schiefe Ebene: Hangabtrieb $F_H = G \\sin\\alpha$, Normalkraft $F_N = G \\cos\\alpha$', examRelevance: 'hoch' },
+      { label: 'Drehmoment $\\vec M = \\vec r \\times \\vec F$: Betrag $|M| = r F \\sin\\alpha$, max bei $\\alpha = 90°$', examRelevance: 'hoch' },
+      { label: 'Drehmoment-Richtung via Rechte-Hand-Regel (Daumen = $\\vec r$, Zeige = $\\vec F$, Mittel = $\\vec M$)', examRelevance: 'hoch' },
+      { label: 'Einheiten: Kraft N, Hebel m, Moment Nm, Arbeit Nm = J', examRelevance: 'hoch' },
+      { label: 'Gleichgewicht: $\\sum \\vec F = 0$ UND $\\sum \\vec M = 0$ (alle Momentensummen um beliebigen Punkt)', examRelevance: 'hoch' },
+    ],
     prerequisites: ['vek-3-2'],
     nextLessonId: null,
     steps: [

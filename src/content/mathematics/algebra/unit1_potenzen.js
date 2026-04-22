@@ -467,6 +467,15 @@ $$\\sqrt{50} = \\sqrt{25 \\cdot 2} = 5\\sqrt{2}$$
     title: 'Logarithmen',
     order: 3, estimatedMinutes: 18,
     learningGoals: ['Logarithmus als Umkehrfunktion der Exponentialfunktion verstehen', 'Logarithmusgesetze anwenden', 'Gleichungen mit $e^{x}$ und $\\ln$ lösen'],
+    subGoals: [
+      { label: 'Definition: $\\log_b x = y \\iff b^y = x$ (für $b>0, b\\neq 1, x>0$)', examRelevance: 'hoch' },
+      { label: 'Produktregel: $\\ln(ab) = \\ln a + \\ln b$', examRelevance: 'hoch' },
+      { label: 'Quotientenregel: $\\ln(a/b) = \\ln a - \\ln b$', examRelevance: 'hoch' },
+      { label: 'Potenzregel: $\\ln(a^n) = n \\ln a$', examRelevance: 'hoch' },
+      { label: 'Basiswechsel: $\\log_b x = \\ln x / \\ln b$', examRelevance: 'hoch' },
+      { label: 'Typische Falle: $\\ln(a+b) \\neq \\ln a + \\ln b$ (kein Logarithmusgesetz für Summen)', examRelevance: 'hoch' },
+      { label: 'Exp-Log-Umkehrung: $e^{\\ln x} = x$ (für $x > 0$), $\\ln(e^x) = x$', examRelevance: 'hoch' },
+    ],
     prerequisites: ['alg-1-1', 'alg-1-2'],
     nextLessonId: null,
     steps: [

@@ -314,6 +314,14 @@ const unit1Lessons = [
       'Von Fourier-Reihen zur Fourier-Transformation übergehen',
       'Spektrum nicht-periodischer Signale verstehen',
     ],
+    subGoals: [
+      { label: 'FT-Definition: $F(\\omega) = \\int_{-\\infty}^{\\infty} f(t) e^{-i\\omega t} dt$', examRelevance: 'hoch' },
+      { label: 'Rücktransformation: $f(t) = (1/2\\pi) \\int F(\\omega) e^{i\\omega t} d\\omega$', examRelevance: 'hoch' },
+      { label: 'Wichtige Paare: Rechteckpuls ↔ Sinc, Gauß ↔ Gauß, $\\delta(t)$ ↔ 1', examRelevance: 'hoch' },
+      { label: 'Linearität: $\\alpha f + \\beta g \\leftrightarrow \\alpha F + \\beta G$', examRelevance: 'hoch' },
+      { label: 'Verschiebungssatz: $f(t-t_0) \\leftrightarrow F(\\omega) e^{-i\\omega t_0}$', examRelevance: 'hoch' },
+      { label: 'Ableitungsregel: $f\'(t) \\leftrightarrow i\\omega F(\\omega)$', examRelevance: 'hoch' },
+    ],
     createdAt: '2026-04-16',
     intuitionTitle: 'Vom diskreten zum kontinuierlichen Spektrum',
     intuitionContent:
@@ -476,6 +484,13 @@ const unit2Lessons = [
       'Laplace-Transformation definieren',
       'Einfache Transformationen aus der Tabelle ablesen',
     ],
+    subGoals: [
+      { label: 'Definition: $\\mathcal L\\{f\\}(s) = \\int_0^\\infty f(t) e^{-st} dt$', examRelevance: 'hoch' },
+      { label: 'Wichtige Paare: $1 \\leftrightarrow 1/s$, $t \\leftrightarrow 1/s^2$, $e^{at} \\leftrightarrow 1/(s-a)$', examRelevance: 'hoch' },
+      { label: '$\\sin(\\omega t) \\leftrightarrow \\omega/(s^2 + \\omega^2)$, $\\cos(\\omega t) \\leftrightarrow s/(s^2 + \\omega^2)$', examRelevance: 'hoch' },
+      { label: 'Konvergenzbereich (ROC): $\\text{Re}(s) > \\sigma_0$ — hängt vom Signal ab', examRelevance: 'mittel' },
+      { label: 'Linearität: $\\mathcal L\\{\\alpha f + \\beta g\\} = \\alpha F + \\beta G$', examRelevance: 'hoch' },
+    ],
     createdAt: '2026-04-16',
     intuitionTitle: 'DGLs werden zu algebraischen Gleichungen',
     intuitionContent:
@@ -616,6 +631,14 @@ const unit2Lessons = [
     learningGoals: [
       'DGL mit Laplace lösen (Transformieren, algebraisch umformen, rücktransformieren)',
       'Übertragungsfunktion $G(s)$ verstehen',
+    ],
+    subGoals: [
+      { label: 'Ableitungsregel: $\\mathcal L\\{y\'\\} = sY - y(0)$, $\\mathcal L\\{y\'\'\\} = s^2 Y - s y(0) - y\'(0)$', examRelevance: 'hoch' },
+      { label: 'DGL-Lösung: transformieren → algebraische Gl. in $Y(s)$ → PBZ → rücktransformieren', examRelevance: 'hoch' },
+      { label: 'Übertragungsfunktion $G(s) = Y(s)/U(s)$ bei verschwindenden AB', examRelevance: 'hoch' },
+      { label: 'Partialbruchzerlegung nötig für Rücktransformation komplexer Ausdrücke', examRelevance: 'hoch' },
+      { label: 'Stabilität aus Polstellen von $G(s)$: alle $\\text{Re}(p_i) < 0$ → BIBO-stabil', examRelevance: 'hoch' },
+      { label: 'Endwertsatz: $\\lim_{t\\to\\infty} y(t) = \\lim_{s\\to 0} s Y(s)$ (falls Limes existiert)', examRelevance: 'mittel' },
     ],
     createdAt: '2026-04-16',
     intuitionTitle: 'Vier Schritte zur DGL-Lösung',
@@ -782,6 +805,14 @@ const unit3Lessons = [
     learningGoals: [
       'Fourier-Reihen und Spektrum in Prüfungsaufgaben anwenden',
     ],
+    subGoals: [
+      { label: 'Symmetrie nutzen: gerade Funktion → nur Kosinusreihe, ungerade → nur Sinusreihe', examRelevance: 'hoch' },
+      { label: 'Koeffizienten $a_n = (2/T)\\int_0^T f(t)\\cos(n\\omega t)dt$, analog $b_n$', examRelevance: 'hoch' },
+      { label: 'Konstantes Glied $a_0/2$ = Mittelwert der Funktion über eine Periode', examRelevance: 'hoch' },
+      { label: 'Parseval: Energie im Zeit- und Frequenzbereich gleich', examRelevance: 'mittel' },
+      { label: 'Konvergenz: punktweise bei Mittelwert-Sprung, gleichmäßig bei stetiger Fortsetzung', examRelevance: 'mittel' },
+      { label: 'Spektrum periodisch: diskrete Linien bei $n\\omega_0$; aperiodisch: kontinuierlich $F(\\omega)$', examRelevance: 'hoch' },
+    ],
     createdAt: '2026-04-16',
     intuitionTitle: 'Prüfungsstrategie Fourier',
     intuitionContent:
@@ -907,6 +938,14 @@ const unit3Lessons = [
       'Übertragungsfunktionen berechnen',
       'DGL per Laplace lösen',
       'Pol-Nullstellen-Stabilität beurteilen',
+    ],
+    subGoals: [
+      { label: 'Sprungantwort: $Y(s) = G(s)/s$, Partialbruch + Rücktransformation', examRelevance: 'hoch' },
+      { label: 'Impulsantwort: $Y(s) = G(s)$ → direkt rücktransformieren', examRelevance: 'hoch' },
+      { label: 'Stabilität: alle Pole in linker s-Halbebene ($\\text{Re}(p_i) < 0$)', examRelevance: 'hoch' },
+      { label: 'Pol bei $s = -a$ → $e^{-at}$ in Zeitdomäne, konjugiert komplex → gedämpfte Schwingung', examRelevance: 'hoch' },
+      { label: 'PT1: $G(s) = K/(1 + Ts)$, Zeitkonstante $T$, Verstärkung $K$', examRelevance: 'hoch' },
+      { label: 'PT2: $G(s) = K\\omega_0^2/(s^2 + 2D\\omega_0 s + \\omega_0^2)$, Dämpfungsgrad $D$', examRelevance: 'mittel' },
     ],
     createdAt: '2026-04-16',
     intuitionTitle: 'Prüfungsstrategie Laplace',

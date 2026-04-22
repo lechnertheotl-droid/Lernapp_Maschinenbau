@@ -878,6 +878,13 @@ $$\\int_{1}^{3} x^{2}\\,dx$$
     title: 'Hauptsatz der Differential- und Integralrechnung',
     order: 5, estimatedMinutes: 14,
     learningGoals: ['Hauptsatz der Analysis formulieren können', 'Zusammenhang Ableitung ↔ Integral verstehen'],
+    subGoals: [
+      { label: 'Teil 1: $F(x) = \\int_a^x f(t) dt$ ist differenzierbar mit $F\'(x) = f(x)$', examRelevance: 'hoch' },
+      { label: 'Teil 2: $\\int_a^b f(x) dx = F(b) - F(a)$ für jede Stammfunktion $F$', examRelevance: 'hoch' },
+      { label: 'Voraussetzung: $f$ stetig auf $[a,b]$', examRelevance: 'hoch' },
+      { label: 'Leibniz-Regel für variable Grenzen: $\\frac{d}{dx} \\int_{a(x)}^{b(x)} f(t) dt = f(b) b\' - f(a) a\'$', examRelevance: 'mittel' },
+      { label: 'Folgerung: Integration und Differentiation sind Umkehroperationen', examRelevance: 'hoch' },
+    ],
     prerequisites: [],
     nextLessonId: 'int-2-1',
     steps: [

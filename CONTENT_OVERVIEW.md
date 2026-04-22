@@ -1,6 +1,6 @@
 # Content-Übersicht — Lernapp Maschinenbau
 
-> **Automatisch generiert** am 2026-04-21 via `npm run content-overview`.
+> **Automatisch generiert** am 2026-04-22 via `npm run content-overview`.
 > Nicht manuell bearbeiten — bei Content-Änderungen neu generieren.
 
 **Legende:** 🎯 Mastery-Check · ➕ Auto-Supplemental · **wAE** hat Distraktor-Erklärungen · **4B** Explanation im Ansatz/Rechnung/Probe/Fehler-Schema · 🔘 MC · 🔢 Number · ✅ True/False · 🔗 Matching · 📋 Sorting · ✏️ Fill-Blank
@@ -5042,4 +5042,4 @@
 
 ---
 
-*Generiert mit `scripts/generate-content-overview.js` am 2026-04-21. Für Fragen zum Inhalt: siehe Guidelines in `~/.claude/projects/.../memory/guidelines_exercises.md`.*
+*Generiert mit `scripts/generate-content-overview.js` am 2026-04-22. Für Fragen zum Inhalt: siehe Guidelines in `~/.claude/projects/.../memory/guidelines_exercises.md`.*

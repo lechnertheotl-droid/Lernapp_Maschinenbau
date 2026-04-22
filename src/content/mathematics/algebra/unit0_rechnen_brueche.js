@@ -606,6 +606,13 @@ Nur bei **gleichem Nenner** werden Zähler addiert.
       'Direkte vs. indirekte Proportionalität erkennen',
       'Dreisatz auf Alltagsprobleme anwenden',
     ],
+    subGoals: [
+      { label: 'Grundformel: $W = G \\cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$', examRelevance: 'hoch' },
+      { label: 'Wachstumsfaktor: $+p\\% \\to \\times(1 + p/100)$, $-p\\% \\to \\times(1 - p/100)$', examRelevance: 'hoch' },
+      { label: 'Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\\%$ dann $-10\\% \\neq 0$)', examRelevance: 'hoch' },
+      { label: 'Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$', examRelevance: 'hoch' },
+      { label: 'Prozentpunkt vs. Prozent: $15\\%$ auf $10\\%$ erhöht ist $11{,}5\\%$, nicht $25\\%$', examRelevance: 'mittel' },
+    ],
     prerequisites: ['alg-0-2'],
     nextLessonId: 'alg-0-4',
     steps: [
@@ -651,6 +658,13 @@ Nur bei **gleichem Nenner** werden Zähler addiert.
       'Gleichartige Terme zusammenfassen',
       'Äquivalenzumformungen sicher anwenden',
       'Formeln nach einer Variable umstellen',
+    ],
+    subGoals: [
+      { label: 'Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren', examRelevance: 'hoch' },
+      { label: 'Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)', examRelevance: 'hoch' },
+      { label: 'Binomische Formeln: $(a\\pm b)^2 = a^2 \\pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$', examRelevance: 'hoch' },
+      { label: 'Äquivalenzumformungen: auf beiden Seiten dasselbe tun, nicht durch Null teilen', examRelevance: 'hoch' },
+      { label: 'Beim Quadrieren Probe nötig (Scheinlösungen möglich)', examRelevance: 'mittel' },
     ],
     prerequisites: ['alg-0-2'],
     nextLessonId: null,

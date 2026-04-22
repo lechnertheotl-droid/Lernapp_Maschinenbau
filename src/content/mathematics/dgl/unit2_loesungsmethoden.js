@@ -236,6 +236,13 @@ const lessons_dgl_u2 = [
     title: 'Variation der Konstanten',
     order: 1, estimatedMinutes: 18,
     learningGoals: ['Methode der Variation der Konstanten verstehen', 'Partikuläre Lösung für inhomogene DGL bestimmen'],
+    subGoals: [
+      { label: 'Ansatz: homogene Lösung $y_h = C e^{-P(x)}$, dann $C$ durch $C(x)$ ersetzen', examRelevance: 'hoch' },
+      { label: 'Einsetzen liefert $C\'(x) = q(x) e^{P(x)}$ (nur eine Integration)', examRelevance: 'hoch' },
+      { label: 'Allgemeine Lösung = homogener + partikulärer Anteil', examRelevance: 'hoch' },
+      { label: 'Partikulärer Ansatz (Störansatz): bei Polynom/Exp/Trig-Störung direkte Vermutung', examRelevance: 'hoch' },
+      { label: 'Resonanz-Fall: wenn Störung Lösung der homogenen DGL ist → Ansatz $\\times x$', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'dgl-2-2',
     steps: [
@@ -285,6 +292,14 @@ Das liefert die **allgemeine Lösung** (homogener + partikulärer Anteil).
     title: 'DGL-Systeme',
     order: 2, estimatedMinutes: 15,
     learningGoals: ['DGL-Systeme in Matrixform schreiben', 'DGL höherer Ordnung als System umschreiben'],
+    subGoals: [
+      { label: 'Matrixform: $\\vec y\' = A \\vec y$ mit Vektor $\\vec y$ und Koeffizientenmatrix $A$', examRelevance: 'hoch' },
+      { label: 'Reduktion höherer Ordnung: $y_1 = y, y_2 = y\', \\ldots, y_n = y^{(n-1)}$', examRelevance: 'hoch' },
+      { label: 'Eigenwertansatz: $\\vec y = \\vec v e^{\\lambda t}$ → $A \\vec v = \\lambda \\vec v$', examRelevance: 'hoch' },
+      { label: 'Allgemeine Lösung: $\\vec y = \\sum C_i \\vec v_i e^{\\lambda_i t}$', examRelevance: 'hoch' },
+      { label: 'Stabilität: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil', examRelevance: 'hoch' },
+      { label: 'Komplexe EW: Paare $\\alpha \\pm i\\beta$ → Real-/Imaginärteil nehmen für reelle Lösung', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'dgl-2-3',
     steps: [
@@ -337,6 +352,14 @@ $\\lambda_1 = -1$, $\\lambda_2 = -2$ — beide negativ, also stabiles System (al
     title: 'Technische Anwendungen',
     order: 3, estimatedMinutes: 20,
     learningGoals: ['Feder-Masse-Dämpfer-System modellieren', 'RC-Glied als DGL beschreiben', 'Eigenfrequenz berechnen'],
+    subGoals: [
+      { label: 'Feder-Masse-Dämpfer: $m\\ddot x + c\\dot x + kx = F(t)$', examRelevance: 'hoch' },
+      { label: 'Eigenkreisfrequenz $\\omega_0 = \\sqrt{k/m}$, Dämpfungsgrad $D = c/(2\\sqrt{km})$', examRelevance: 'hoch' },
+      { label: 'Schwingfall $D<1$: gedämpfte Schwingung mit $\\omega_d = \\omega_0 \\sqrt{1-D^2}$', examRelevance: 'hoch' },
+      { label: 'Aperiodischer Grenzfall $D=1$: schnellstes Abklingen ohne Schwingung', examRelevance: 'hoch' },
+      { label: 'RC-Glied: $RC \\dot u + u = U_0$, Zeitkonstante $\\tau = RC$, $u(t) = U_0(1-e^{-t/\\tau})$', examRelevance: 'hoch' },
+      { label: 'Resonanz bei erzwungener Schwingung: max. Amplitude bei $\\omega \\approx \\omega_0$', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: null,
     steps: [

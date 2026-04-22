@@ -607,6 +607,14 @@ Beispiel: $f(x) = 2x + 1$ ist bijektiv (als $\\mathbb{R} \\to \\mathbb{R}$).
     title: 'Elementare Funktionen',
     order: 2, estimatedMinutes: 15,
     learningGoals: ['Potenz-, Exponential- und Logarithmusfunktionen unterscheiden', 'Wachstumsverhalten vergleichen', 'Definitionsbereiche kennen'],
+    subGoals: [
+      { label: 'Potenzfunktion $x^n$: gerade $n$ → Parabel, ungerade $n$ → S-Form; Def.bereich $\\mathbb{R}$', examRelevance: 'hoch' },
+      { label: 'Exponentialfunktion $a^x$ ($a>0, a\\neq 1$): Wertebereich $(0,\\infty)$, streng monoton', examRelevance: 'hoch' },
+      { label: 'Logarithmusfunktion $\\log_a x$: Def.bereich $(0,\\infty)$, Umkehrung von $a^x$', examRelevance: 'hoch' },
+      { label: 'Wachstumshierarchie: $\\ln x \\ll x^n \\ll a^x$ für $x \\to \\infty$ (mit $a > 1$)', examRelevance: 'hoch' },
+      { label: 'Eulersche Zahl $e \\approx 2{,}718$: Basis des natürlichen Logarithmus', examRelevance: 'mittel' },
+      { label: 'Wurzelfunktion $\\sqrt{x} = x^{1/2}$: Def.bereich $[0,\\infty)$', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'alg-3-3',
     steps: [
@@ -663,6 +671,14 @@ Beispiel: $f(x) = 2x + 1$ ist bijektiv (als $\\mathbb{R} \\to \\mathbb{R}$).
     title: 'Funktionsoperationen',
     order: 3, estimatedMinutes: 12,
     learningGoals: ['Verschiebung, Streckung, Spiegelung anwenden', 'Transformationsregeln sicher beherrschen'],
+    subGoals: [
+      { label: 'Horizontale Verschiebung: $f(x - a)$ = $a$ nach rechts (Vorzeichen kontraintuitiv!)', examRelevance: 'hoch' },
+      { label: 'Vertikale Verschiebung: $f(x) + b$ = $b$ nach oben', examRelevance: 'hoch' },
+      { label: 'Streckung vertikal: $c \\cdot f(x)$ (für $c > 1$), horizontal: $f(x/c)$', examRelevance: 'hoch' },
+      { label: 'Spiegelung an $x$-Achse: $-f(x)$, an $y$-Achse: $f(-x)$', examRelevance: 'hoch' },
+      { label: 'Merkregel: Änderungen im Argument wirken horizontal und **umgekehrt**', examRelevance: 'mittel' },
+      { label: 'Funktionskomposition: $(f \\circ g)(x) = f(g(x))$ (Reihenfolge beachten)', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'alg-3-4',
     steps: [
@@ -698,6 +714,14 @@ Beispiel: $f(x) = 2x + 1$ ist bijektiv (als $\\mathbb{R} \\to \\mathbb{R}$).
     title: 'Umkehrfunktionen',
     order: 4, estimatedMinutes: 12,
     learningGoals: ['Umkehrfunktion berechnen', 'Bedingung für Existenz kennen', 'Graphische Interpretation verstehen'],
+    subGoals: [
+      { label: 'Existenz: $f$ muss **bijektiv** sein (injektiv UND surjektiv)', examRelevance: 'hoch' },
+      { label: 'Berechnung: $y = f(x)$ nach $x$ auflösen, dann $x \\leftrightarrow y$ tauschen', examRelevance: 'hoch' },
+      { label: 'Graphisch: Spiegelung an der Winkelhalbierenden $y = x$', examRelevance: 'hoch' },
+      { label: 'Def.bereich von $f^{-1}$ = Wertebereich von $f$ (und umgekehrt)', examRelevance: 'hoch' },
+      { label: 'Eigenschaft: $f^{-1}(f(x)) = x$ und $f(f^{-1}(y)) = y$', examRelevance: 'mittel' },
+      { label: 'Für nicht-injektives $f$ (z.B. $x^2$) Def.bereich einschränken: $[0,\\infty)$ macht Umkehrung möglich', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: null,
     steps: [

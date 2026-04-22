@@ -555,6 +555,14 @@ const lessons_int_u2 = [
     title: 'Substitution',
     order: 1, estimatedMinutes: 18,
     learningGoals: ['Substitutionsmethode verstehen und anwenden', 'Geeignete Substitution wählen'],
+    subGoals: [
+      { label: 'Formel: $\\int f(g(x)) g\'(x) dx = \\int f(u) du$ mit $u = g(x)$', examRelevance: 'hoch' },
+      { label: 'Substitution wählen, wenn Ableitung $g\'(x)$ (bis auf Konstante) als Faktor im Integrand vorkommt', examRelevance: 'hoch' },
+      { label: 'Bei bestimmtem Integral Grenzen mit substituieren: $x = a \\to u = g(a)$, analog $b$', examRelevance: 'hoch' },
+      { label: 'Lineare Substitution $u = ax + b$: $du = a\\, dx$, sehr häufig in Prüfungen', examRelevance: 'hoch' },
+      { label: 'Trigonometrische Substitution $x = \\sin u$ für $\\sqrt{1-x^2}$, $x = \\tan u$ für $1+x^2$', examRelevance: 'mittel' },
+      { label: 'Standardformen: $\\int f\'(x)/f(x) dx = \\ln|f(x)| + C$ (logarithmische Ableitung)', examRelevance: 'hoch' },
+    ],
     prerequisites: [],
     nextLessonId: 'int-2-2',
     steps: [
@@ -606,6 +614,13 @@ $$\\int f(g(x)) \\cdot g'(x)\\,dx \\;\\overset{u=g(x)}{=}\\; \\int f(u)\\,du$$
     title: 'Partielle Integration',
     order: 2, estimatedMinutes: 18,
     learningGoals: ['Partielle Integration anwenden', 'LIATE-Regel für die Wahl von u kennen'],
+    subGoals: [
+      { label: 'Formel: $\\int u v\' dx = uv - \\int u\' v dx$ (aus Produktregel hergeleitet)', examRelevance: 'hoch' },
+      { label: 'LIATE-Regel: **L**og, **I**nv.Trig, **A**lgebr., **T**rig, **E**xp — davor stehende wird $u$', examRelevance: 'hoch' },
+      { label: 'Spezialtrick $\\int \\ln x\\, dx$: setze $u = \\ln x$, $v\' = 1$', examRelevance: 'hoch' },
+      { label: 'Mehrfache Anwendung bei $\\int x^n e^x dx$ (Grad halbieren pro Schritt)', examRelevance: 'mittel' },
+      { label: 'Kreisintegrale $\\int e^x \\sin x\\, dx$: nach 2 Anwendungen nach Originalintegral auflösen', examRelevance: 'mittel' },
+    ],
     prerequisites: [],
     nextLessonId: 'int-2-3',
     steps: [
@@ -664,6 +679,14 @@ Wähle als $u$ die Funktion, die in der folgenden Liste **zuerst** vorkommt:
     title: 'Partialbruchzerlegung',
     order: 3, estimatedMinutes: 16,
     learningGoals: ['Gebrochen-rationale Funktionen integrieren', 'Partialbruchzerlegung aufstellen'],
+    subGoals: [
+      { label: 'Voraussetzung: $\\deg(\\text{Zähler}) < \\deg(\\text{Nenner})$ (sonst Polynomdivision zuerst)', examRelevance: 'hoch' },
+      { label: 'Einfacher Linearfaktor $(x-a)$: Ansatz $A/(x-a)$', examRelevance: 'hoch' },
+      { label: 'Doppelter Linearfaktor $(x-a)^2$: Ansatz $A/(x-a) + B/(x-a)^2$', examRelevance: 'hoch' },
+      { label: 'Irreduzibler quadr. Faktor $x^2+px+q$: Ansatz $(Ax+B)/(x^2+px+q)$', examRelevance: 'hoch' },
+      { label: 'Koeffizienten via Einsetzmethode (Nullstellen) oder Koeffizientenvergleich', examRelevance: 'hoch' },
+      { label: 'Integration: $\\int dx/(x-a) = \\ln|x-a|$, $\\int dx/(x-a)^n = -1/((n-1)(x-a)^{n-1})$', examRelevance: 'hoch' },
+    ],
     prerequisites: [],
     nextLessonId: 'int-2-4',
     steps: [
@@ -708,6 +731,13 @@ $$\\int \\frac{dx}{x^{2}-1} = \\frac{1}{2}\\int \\frac{dx}{x-1} - \\frac{1}{2}\\
     title: 'Gemischte Übungen',
     order: 4, estimatedMinutes: 20,
     learningGoals: ['Integrationstechnik selbständig erkennen und anwenden', 'Prüfungsaufgaben lösen'],
+    subGoals: [
+      { label: 'Zähler = Ableitung des Nenners → direkte Stammfunktion $\\ln|f|$ (ohne Substitution)', examRelevance: 'hoch' },
+      { label: 'Halbwinkelformeln für $\\sin^2 x = (1 - \\cos 2x)/2$, $\\cos^2 x = (1 + \\cos 2x)/2$', examRelevance: 'hoch' },
+      { label: 'Substitutionen $t = \\tan(x/2)$ (Weierstraß) für rationale trigonometrische Ausdrücke', examRelevance: 'niedrig' },
+      { label: 'Fourier-Orthogonalität: $\\int_0^{2\\pi} \\sin(nx) \\cos(mx) dx = 0$, nützliche Muster', examRelevance: 'mittel' },
+      { label: 'Integrationsstrategie wählen **vor** dem Rechnen — 10 s nachdenken spart 10 Minuten', examRelevance: 'hoch' },
+    ],
     prerequisites: [],
     nextLessonId: 'int-3-1',
     steps: [
