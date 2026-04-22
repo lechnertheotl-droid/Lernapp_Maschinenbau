@@ -262,6 +262,168 @@ const profiles = {
     ],
   },
 
+  'mech-1-5': {
+    explanation: String.raw`**Vertiefung Schwerpunkt:** Der Schwerpunkt (auch Massenmittelpunkt oder Zentroid bei Flächen) ist der Angriffspunkt der resultierenden Gewichtskraft. Für beliebige zusammengesetzte Körper gilt das massengewichtete Mittel:
+
+$$x_S = \frac{\sum m_i \cdot x_i}{\sum m_i}, \qquad y_S = \frac{\sum m_i \cdot y_i}{\sum m_i}$$
+
+**Für homogene Flächen** (konstante Dichte und Dicke) lässt sich die Masse durch die Fläche ersetzen:
+
+$$x_S = \frac{\sum A_i \cdot x_{S,i}}{\sum A_i}$$
+
+**Strategie in Prüfungen:**
+1. **Symmetrie zuerst prüfen** — jede Symmetrieachse liefert eine Koordinate umsonst.
+2. **Koordinatensystem** an markanter Ecke platzieren; dadurch werden Teilschwerpunkte einfach ablesbar.
+3. **Zerlegung** in Standardflächen: Rechteck (Mitte), Dreieck ($h/3$ von der Basis), Halbkreis ($4r/(3\pi)$ vom Durchmesser), Viertelkreis.
+4. **Löcher** als negative Teilflächen subtrahieren — Vorzeichen konsistent in Zähler und Nenner.
+5. **Plausibilitätscheck:** Schwerpunkt muss innerhalb des konvexen Hülle-Bereichs liegen und zur massereicheren Seite tendieren.
+
+**Typische Fehler:** Dreiecksschwerpunkt bei $h/2$ statt $h/3$ einsetzen. Löcher additiv statt subtraktiv behandeln. Symmetrie übersehen und unnötig aufwendig rechnen. Teilschwerpunkte relativ zu verschiedenen Ursprüngen angeben und dann als Summe addieren.`,
+
+    conceptQuestion: 'Ein L-Profil besteht aus zwei Rechtecken $R_1$ ($A_1 = 400\\,\\text{mm}^2$, $x_{S1} = 5\\,\\text{mm}$) und $R_2$ ($A_2 = 200\\,\\text{mm}^2$, $x_{S2} = 20\\,\\text{mm}$). Wo liegt $x_S$ des Gesamtprofils?',
+    conceptOptions: [
+      '$x_S = 10\\,\\text{mm}$',
+      '$x_S = 12{,}5\\,\\text{mm}$',
+      '$x_S = 15\\,\\text{mm}$',
+      '$x_S = 25\\,\\text{mm}$',
+    ],
+    conceptCorrect: 0,
+    conceptExplanation: `**Ansatz:** Flächengewichtetes Mittel: $x_S = (A_1 x_{S1} + A_2 x_{S2})/(A_1 + A_2)$.
+
+**Rechnung:** $x_S = (400 \\cdot 5 + 200 \\cdot 20)/(400 + 200) = (2000 + 4000)/600 = 6000/600 = 10\\,\\text{mm}$.
+
+**Probe:** Ergebnis zwischen $x_{S1} = 5$ und $x_{S2} = 20$. ✓ Näher an $x_{S1}$, weil $A_1 = 400 > 200 = A_2$ (Verhältnis $2:1$). Abstände: $(10-5):(20-10) = 5:10 = 1:2 = A_2:A_1$. ✓ (Hebelgesetz)
+
+**Typischer Fehler:** Arithmetisches Mittel $(5 + 20)/2 = 12{,}5\\,\\text{mm}$ rechnen. Das ignoriert die unterschiedlichen Flächen.`,
+    conceptHints: [
+      'Formel: $x_S = \\sum A_i x_{S,i} / \\sum A_i$.',
+      'Jedes Teilschwerpunkt mit seiner Fläche gewichten.',
+      'Ergebnis liegt näher an der größeren Teilfläche.',
+    ],
+    conceptWrongAnswers: {
+      1: 'Das ist das arithmetische Mittel $(5+20)/2$. Bei ungleichen Teilflächen muss mit der Fläche gewichtet werden.',
+      2: 'Weder Mittelwert noch flächengewichtetes Ergebnis. Vermutlich falsche Gewichtung: $x_S = (A_2 x_{S1} + A_1 x_{S2})/(A_1 + A_2)$ mit vertauschten Gewichten wäre auch nicht $15$ — eher ein Rechenfehler.',
+      3: 'Das wäre das Ergebnis, wenn $A_2$ dominant wäre — ist aber kleiner. Schwerpunkt liegt näher an $x_{S1}$.',
+    },
+
+    calcQuestion: 'Eine rechteckige Blechplatte ($240 \\times 120\\,\\text{mm}$) hat ein rundes Loch (Radius $r = 40\\,\\text{mm}$) im Mittelpunkt $x_L = 60\\,\\text{mm}$, $y_L = 60\\,\\text{mm}$ (Ursprung in der linken unteren Ecke). Wo liegt $x_S$ der gelochten Platte in mm?',
+    calcAnswer: 132.7,
+    calcTolerance: 0.3,
+    calcUnit: 'mm',
+    calcExplanation: `**Ansatz:** Loch als negative Fläche: $x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$.
+
+**Rechnung:** $A_V = 240 \\cdot 120 = 28\\,800\\,\\text{mm}^2$, $x_V = 120\\,\\text{mm}$. $A_L = \\pi \\cdot 40^2 \\approx 5026{,}5\\,\\text{mm}^2$, $x_L = 60\\,\\text{mm}$. $x_S = (28\\,800 \\cdot 120 - 5026{,}5 \\cdot 60)/(28\\,800 - 5026{,}5) = (3\\,456\\,000 - 301\\,593)/23\\,773{,}5 \\approx 132{,}7\\,\\text{mm}$.
+
+**Probe:** Loch liegt links der Mitte ($x_L = 60 < 120$) → Schwerpunkt wandert nach rechts. Ergebnis $x_S \\approx 132{,}7 > 120$. ✓ Verschiebung um $\\approx 13\\,\\text{mm}$ passt zum Flächenverhältnis Loch/Platte $\\approx 17{,}5\\,\\%$.
+
+**Typischer Fehler:** Die Lochfläche addieren statt subtrahieren; dann wandert der Schwerpunkt fälschlich **zum** Loch hin.`,
+    calcHints: [
+      'Loch wird wie negative Fläche behandelt.',
+      'Formel: $(A_V x_V - A_L x_L)/(A_V - A_L)$.',
+      'Kreisfläche: $A = \\pi r^2$.',
+    ],
+
+    trueFalseStatement: 'Bei einer homogenen Platte mit einer Bohrung **im Schwerpunkt** des ursprünglichen Vollkörpers bleibt die Schwerpunktposition nach dem Bohren unverändert.',
+    trueFalseCorrect: true,
+    trueFalseExplanation: `**Ansatz:** Nach der Subtraktionsformel gilt $x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$. Ist $x_L = x_V$, wird der Zähler zu $x_V (A_V - A_L)$, und $x_S = x_V$.
+
+**Rechnung:** Das entfernte Material hatte genau den Schwerpunktabstand $x_V$ — seine Entfernung verschiebt das Verhältnis nicht.
+
+**Probe:** Anschaulich: Wenn ich eine Scheibe mit einem Loch genau durch ihren Schwerpunkt bohre, bleibt die verbleibende Masse symmetrisch um diesen Punkt verteilt.
+
+**Typischer Fehler:** Annehmen, dass **jedes** Loch den Schwerpunkt verschiebt. Nur wenn $x_L \\neq x_V$, wandert der Schwerpunkt — und zwar weg vom Loch.`,
+    trueFalseHints: [
+      'Setze $x_L = x_V$ in die Formel ein und vereinfache.',
+      'Was bleibt übrig, wenn $x_V$ sowohl im Zähler als auch im Nenner steht?',
+      'Anschaulich: was war der Beitrag der entfernten Fläche zur Schwerpunktlage?',
+    ],
+
+    matchingQuestion: 'Ordne jeder Standardfläche den korrekten Schwerpunkt entlang der Symmetrieachse zu.',
+    matchingPairs: [
+      { left: 'Rechteck (Breite $b$, Höhe $h$)', right: 'Schwerpunkt in der Mitte: $(b/2, h/2)$' },
+      { left: 'Dreieck mit Basis $b$ und Höhe $h$', right: 'Schwerpunkt bei $h/3$ über der Basis' },
+      { left: 'Halbkreis mit Radius $r$', right: 'Schwerpunkt bei $4r/(3\\pi) \\approx 0{,}424\\,r$ vom Durchmesser' },
+      { left: 'Viertelkreis mit Radius $r$', right: 'Schwerpunkt bei $4r/(3\\pi)$ von jedem der beiden Radien' },
+    ],
+    matchingExplanation: `**Ansatz:** Diese Werte gehören zum Grundrepertoire jedes Maschinenbauers — sie tauchen in jeder Profilrechnung auf. Herleitung per Integration, Anwendung aber rein auswendig.
+
+**Rechnung:** Rechteck und symmetrische Formen: Mitte. Dreieck: $h/3$ von der Basis (näher zur breiten Seite). Halbkreis und Viertelkreis: $4r/(3\\pi)$ — die einzige Formel mit $\\pi$ im Nenner.
+
+**Probe:** Alle Werte liegen **innerhalb** der jeweiligen Fläche, und für den Halbkreis gilt $0{,}424\\,r < 0{,}5\\,r$ (näher am Durchmesser als an der Wölbung — dort ist die Fläche breiter).
+
+**Typischer Fehler:** Dreiecksschwerpunkt bei $h/2$ (verwechselt mit Rechteck) oder Halbkreis-Schwerpunkt bei $r/2$ (Intuition trügt — der wahre Wert ist $\\approx 0{,}424\\,r$).`,
+    matchingHints: [
+      'Symmetrische Formen: Mitte.',
+      'Dreieck: $h/3$ von der breiten Seite.',
+      'Halbkreis: $4r/(3\\pi)$ vom Durchmesser.',
+    ],
+
+    sortingQuestion: 'Bringe die Schritte zur Schwerpunktberechnung eines zusammengesetzten Profils in die richtige Reihenfolge.',
+    sortingItems: [
+      'Symmetrien prüfen — welche Koordinate ist bereits festgelegt?',
+      'Koordinatensystem wählen und Ursprung fixieren',
+      'Profil in Standardflächen zerlegen (Rechtecke, Dreiecke, Kreissegmente)',
+      'Für jede Teilfläche $A_i$ und Teilschwerpunkt ($x_{S,i}$, $y_{S,i}$) bestimmen',
+      'Flächengewichtetes Mittel bilden: $x_S = \\sum A_i x_{S,i} / \\sum A_i$ (und $y_S$ analog)',
+    ],
+    sortingOrder: [0, 1, 2, 3, 4],
+    sortingExplanation: `**Ansatz:** Effizientes Vorgehen: zuerst Symmetrie (spart Arbeit), dann Geometrie (Koordinaten, Zerlegung), zuletzt Zahlen.
+
+**Rechnung:** Schritt 1 ist oft der wichtigste — jede Symmetrieachse spart eine Koordinate. Bei Doppelsymmetrie ist der Schwerpunkt direkt bekannt, ohne jede Rechnung.
+
+**Probe:** Beispiel I-Profil: Symmetrie in beide Richtungen → Schwerpunkt im Mittelpunkt, keine Rechnung nötig. Ohne Symmetriecheck würde man trotzdem drei Rechtecke summieren und nur durch Glück das richtige Ergebnis erhalten.
+
+**Typischer Fehler:** Direkt in die Formel einsteigen, ohne Symmetrie und Koordinatensystem zu klären. Führt oft zu inkonsistenten Teilschwerpunkten relativ zu wechselnden Ursprüngen.`,
+    sortingHints: [
+      'Symmetrie zuerst.',
+      'Koordinatensystem vor der Rechnung.',
+      'Formel am Ende.',
+    ],
+
+    errorQuestion: 'Welcher Fehler macht eine Schwerpunktberechnung für ein L-Profil unbrauchbar?',
+    errorOptions: [
+      'Die beiden Teilrechtecke haben Schwerpunkte in unterschiedlichen Koordinatensystemen (jeweils am eigenen Rand)',
+      'Der Ursprung liegt nicht im Schwerpunkt des Gesamtprofils',
+      'Das Profil ist nicht symmetrisch',
+      'Die Fläche wird in zwei Rechtecke zerlegt statt in eines',
+    ],
+    errorCorrect: 0,
+    errorExplanation: `**Ansatz:** Alle Teilschwerpunkte müssen in **einem gemeinsamen** Koordinatensystem gemessen werden. Mischt man Bezugspunkte, werden $x_{S,i}$-Werte nicht mehr addierbar.
+
+**Rechnung:** Beispiel: Wenn $x_{S1}$ vom linken Rand des ersten Rechtecks gemessen wird und $x_{S2}$ vom linken Rand des zweiten, sind die Werte nicht kombinierbar — die Summe $A_1 x_{S1} + A_2 x_{S2}$ ist sinnlos.
+
+**Probe:** Korrektes Vorgehen: einen Ursprung fixieren (z.B. linke untere Ecke des Gesamtprofils), alle Teilschwerpunkte **relativ zu diesem Ursprung** angeben. Dann liefert die Formel das korrekte Ergebnis.
+
+**Typischer Fehler:** Zeichnungen kopieren, in denen Teilschwerpunkte jeweils lokal angegeben sind, ohne sie in ein gemeinsames System zu übertragen.`,
+    errorHints: [
+      'Was passiert, wenn verschiedene Teile unterschiedliche Ursprünge haben?',
+      'Die Summen nur sinnvoll, wenn alle Abstände vom **gleichen** Punkt gemessen sind.',
+      'Erst Koordinatensystem fixieren, dann Teilschwerpunkte eintragen.',
+    ],
+    errorWrongAnswers: {
+      1: 'Der Ursprung darf frei gewählt werden. Das Gesamtergebnis ist unabhängig vom gewählten Ursprung (verschiebt sich nur linear). Kein Fehler.',
+      2: 'Nicht-symmetrische Profile haben eben keinen trivialen Schwerpunkt — aber die Formel funktioniert trotzdem. Kein Fehler.',
+      3: 'Zerlegung in Teilflächen ist gerade die Methode. Auch in drei oder vier Teile wäre erlaubt.',
+    },
+
+    transferQuestion: '[PRÜFUNG] Eine halbkreisförmige Platte mit Radius $r = 60\\,\\text{mm}$ hat ihre gerade Kante auf der $x$-Achse (Mittelpunkt im Ursprung). Wo liegt der Schwerpunkt $y_S$ in mm?',
+    transferAnswer: 25.46,
+    transferTolerance: 0.1,
+    transferUnit: 'mm',
+    transferExplanation: `**Ansatz:** Standardformel für Halbkreis-Schwerpunkt: $y_S = 4r/(3\\pi)$ senkrecht zum Durchmesser, also entlang der $y$-Achse.
+
+**Rechnung:** $y_S = 4 \\cdot 60/(3\\pi) = 240/(3\\pi) = 80/\\pi \\approx 25{,}465\\,\\text{mm}$.
+
+**Probe:** Qualitativ: $y_S \\approx 0{,}424 \\cdot r = 0{,}424 \\cdot 60 = 25{,}46\\,\\text{mm}$. ✓ Wert liegt innerhalb des Halbkreises ($y_S < r = 60$). ✓
+
+**Typischer Fehler:** $y_S = r/2 = 30\\,\\text{mm}$ annehmen (falsche Intuition — Halbkreis ist keine Rechteck-Form). Oder den Faktor $4$ vergessen und $y_S = r/(3\\pi) \\approx 6{,}37\\,\\text{mm}$ rechnen.`,
+    transferHints: [
+      'Standardformel: $y_S = 4r/(3\\pi)$.',
+      'Einsetzen: $r = 60$.',
+      'Etwa $0{,}42\\,r$ vom Durchmesser.',
+    ],
+  },
+
   'mech-2-1': {
     explanation: String.raw`**Vertiefung Kinematik:** Kinematik beschreibt Bewegungen rein geometrisch — ohne die Kräfte, die sie auslösen. Zentrale Zusammenhänge:
 
@@ -476,6 +638,171 @@ $$v(t) = v_0 + a \cdot t, \qquad s(t) = s_0 + v_0 \cdot t + \tfrac{1}{2} a \cdot
       'Hangabtriebskraft = Gewichtskraftanteil parallel zur Rampe.',
       '$F_{an} = m g \\sin(\\alpha)$ — $\\sin$, nicht $\\cos$, da die Komponente entlang der Rampe gesucht ist.',
       '$\\sin(20°) \\approx 0{,}342$.',
+    ],
+  },
+
+  'mech-2-4': {
+    explanation: String.raw`**Vertiefung Schwingungen:** Ein Feder-Masse-Dämpfer-System ist das Urmodell jeder mechanischen Schwingungslehre. Bewegungsgleichung:
+
+$$m\ddot{x} + d\dot{x} + c x = F(t)$$
+
+**Freie, ungedämpfte Schwingung** ($d = 0$, $F = 0$):
+
+$$\omega_0 = \sqrt{c/m}, \qquad T = 2\pi/\omega_0, \qquad x(t) = A\sin(\omega_0 t + \varphi)$$
+
+**Gedämpfte Schwingung** — charakterisiert durch das **Lehrsche Dämpfungsmaß**:
+
+$$D = \frac{d}{2\sqrt{cm}}$$
+
+Drei Regime: $D < 1$ (unterkritisch, schwingt), $D = 1$ (aperiodischer Grenzfall), $D > 1$ (überkritisch, kriechend).
+
+**Erzwungene Schwingung** — Resonanz bei $\Omega = \omega_0$: im ungedämpften Fall wächst die Amplitude linear mit $t$, im gedämpften Fall bleibt sie endlich aber sehr groß.
+
+**Mathematisches Pendel** als Sonderfall: $\omega_0 = \sqrt{g/l}$ (unabhängig von $m$).
+
+**Typische Fehler:** Wurzel vergessen ($\omega_0 = c/m$ statt $\sqrt{c/m}$). Faktor $2\pi$ zwischen $\omega_0$ und $T$ unterschlagen. Bei der Dämpfung den Faktor $2$ im Nenner vergessen. Masse beim mathematischen Pendel einbauen — sie kürzt sich heraus. Einheiten von $c$ (N/m vs. N/mm) vertauschen — macht $\omega_0$ um Faktor $\sqrt{1000} \approx 31{,}6$ falsch.`,
+
+    conceptQuestion: 'Welche Aussage über die Eigenkreisfrequenz $\\omega_0$ eines ungedämpften Feder-Masse-Systems ist korrekt?',
+    conceptOptions: [
+      '$\\omega_0 = \\sqrt{c/m}$ — steigt mit steiferer Feder, sinkt mit größerer Masse',
+      '$\\omega_0 = \\sqrt{m/c}$ — steigt mit größerer Masse',
+      '$\\omega_0 = c/m$ — linear in beiden Größen',
+      '$\\omega_0 = c \\cdot m$ — Produkt aus Federsteifigkeit und Masse',
+    ],
+    conceptCorrect: 0,
+    conceptExplanation: `**Ansatz:** Bewegungsgleichung $m\\ddot{x} + cx = 0$ umgeformt: $\\ddot{x} + (c/m) x = 0$. Vergleich mit Standardform $\\ddot{x} + \\omega_0^2 x = 0$.
+
+**Rechnung:** $\\omega_0^2 = c/m$, also $\\omega_0 = \\sqrt{c/m}$. $c$ zieht zurück (höhere Steifigkeit → höhere Frequenz), $m$ widersteht (größere Masse → niedrigere Frequenz).
+
+**Probe:** Einheiten: $\\sqrt{(\\text{N/m})/\\text{kg}} = \\sqrt{1/\\text{s}^2} = \\text{rad/s}$. ✓ Grenzfall $c \\to 0$: $\\omega_0 \\to 0$ (keine Rückstellung, keine Schwingung). Grenzfall $m \\to 0$: $\\omega_0 \\to \\infty$ (sehr schnelle Schwingung).
+
+**Typischer Fehler:** Variante $\\sqrt{m/c}$: das wäre die Quadratwurzel der Periode²$/(4\\pi^2)$, hat falsche Dimension. Lineare Varianten ($c/m$, $c\\cdot m$): Wurzel fehlt oder ganz falsche Beziehung.`,
+    conceptHints: [
+      'Bewegungsgleichung: $m\\ddot{x} + c x = 0$.',
+      'Standardform $\\ddot{x} + \\omega_0^2 x = 0$ liefert $\\omega_0^2 = c/m$.',
+      'Steifere Feder = schnellere Schwingung. Mehr Masse = langsamere Schwingung.',
+    ],
+    conceptWrongAnswers: {
+      1: 'Bruch falsch herum. Die Dimension stimmt ($\\sqrt{\\text{kg/(N/m)}} = \\text{s}$), aber das ist die Periode geteilt durch $2\\pi$, nicht die Kreisfrequenz.',
+      2: 'Wurzel fehlt — die Dimension wäre $1/\\text{s}^2$, keine Frequenz.',
+      3: 'Produkt von Federsteifigkeit und Masse ergibt Einheit $\\text{N} = \\text{kg m/s}^2$, kein Frequenzzusammenhang.',
+    },
+
+    calcQuestion: 'Ein Körper $m = 0{,}5\\,\\text{kg}$ hängt an einer Feder mit $c = 200\\,\\text{N/m}$ und wird zu einer harmonischen Schwingung mit Amplitude $A = 30\\,\\text{mm}$ angeregt. Wie groß ist die maximale Geschwindigkeit $v_\\max$?',
+    calcAnswer: 0.6,
+    calcTolerance: 0.01,
+    calcUnit: 'm/s',
+    calcExplanation: `**Ansatz:** Bei harmonischer Schwingung $x(t) = A\\sin(\\omega_0 t + \\varphi)$ gilt $v(t) = A\\omega_0\\cos(\\omega_0 t + \\varphi)$ und somit $v_\\max = A\\omega_0$.
+
+**Rechnung:** $\\omega_0 = \\sqrt{c/m} = \\sqrt{200/0{,}5} = \\sqrt{400} = 20\\,\\text{rad/s}$. $v_\\max = 0{,}030 \\cdot 20 = 0{,}6\\,\\text{m/s}$.
+
+**Probe:** Energieerhaltung: $\\tfrac{1}{2}m v_\\max^2 = \\tfrac{1}{2} c A^2$. Links: $0{,}5 \\cdot 0{,}5 \\cdot 0{,}36 = 0{,}09\\,\\text{J}$. Rechts: $0{,}5 \\cdot 200 \\cdot 0{,}0009 = 0{,}09\\,\\text{J}$. ✓
+
+**Typischer Fehler:** Amplitude in mm vergessen umzurechnen: $30 \\cdot 20 = 600\\,\\text{m/s}$ wäre Überschallgeschwindigkeit — physikalisch absurd. Oder $v_\\max = A/\\omega_0$ rechnen (Bruch falsch herum).`,
+    calcHints: [
+      'Erst $\\omega_0 = \\sqrt{c/m}$ berechnen.',
+      '$v_\\max = A \\cdot \\omega_0$.',
+      'Amplitude **vor** der Rechnung in Meter umrechnen.',
+    ],
+
+    trueFalseStatement: 'Bei einem schwach gedämpften System mit $D = 0{,}1$ ist die gedämpfte Periode $T_d = T/\\sqrt{1 - D^2}$ nur etwa $0{,}5\\,\\%$ länger als beim ungedämpften System.',
+    trueFalseCorrect: true,
+    trueFalseExplanation: `**Ansatz:** Die gedämpfte Eigenkreisfrequenz ist $\\omega_d = \\omega_0\\sqrt{1 - D^2}$; die zugehörige Periode $T_d = 2\\pi/\\omega_d = T/\\sqrt{1 - D^2}$.
+
+**Rechnung:** Für $D = 0{,}1$: $\\sqrt{1 - 0{,}01} = \\sqrt{0{,}99} \\approx 0{,}9950$. $T_d/T = 1/0{,}9950 \\approx 1{,}00504$. Also etwa $0{,}5\\,\\%$ länger.
+
+**Probe:** Für $D = 0{,}05$: $T_d/T \\approx 1{,}00125$ (nur $0{,}13\\,\\%$). Für $D = 0{,}3$: $T_d/T \\approx 1{,}048$ ($4{,}8\\,\\%$). Die quadratische Abhängigkeit macht schwache Dämpfung praktisch vernachlässigbar für die **Frequenz**, obwohl die **Amplitude** exponentiell abklingt.
+
+**Typischer Fehler:** Annehmen, dass Dämpfung die Frequenz stark verschiebt — das tut sie nicht bei schwacher Dämpfung. Der Hauptunterschied liegt im **Amplitudenabfall** $e^{-D\\omega_0 t}$, nicht in der Frequenzlage.`,
+    trueFalseHints: [
+      '$T_d = T/\\sqrt{1 - D^2}$.',
+      '$\\sqrt{0{,}99} \\approx 0{,}995$.',
+      'Bei schwacher Dämpfung ändert sich die Periode kaum, die Amplitude sehr wohl.',
+    ],
+
+    matchingQuestion: 'Ordne jeder Größe die passende Einheit zu.',
+    matchingPairs: [
+      { left: 'Federsteifigkeit $c$', right: 'N/m' },
+      { left: 'Dämpfungskoeffizient $d$', right: 'Ns/m $=$ kg/s' },
+      { left: 'Eigenkreisfrequenz $\\omega_0$', right: 'rad/s' },
+      { left: 'Dämpfungsgrad $D$', right: 'dimensionslos' },
+    ],
+    matchingExplanation: `**Ansatz:** Konsistente Einheiten sind Voraussetzung für jede Schwingungsrechnung. Fehler kommen fast immer aus Einheitenverwechslungen.
+
+**Rechnung:** $c$ kommt aus $F = c \\cdot x$ → Kraft pro Weg → N/m. $d$ aus $F_d = d \\cdot \\dot{x}$ → Kraft pro Geschwindigkeit → N/(m/s) = Ns/m. $\\omega_0$ ist eine Winkelgeschwindigkeit → rad/s. $D$ ist ein Quotient mit denselben Einheiten im Zähler und Nenner → dimensionslos.
+
+**Probe:** $D = d/(2\\sqrt{cm})$: Zähler Ns/m $=$ kg/s. Nenner $\\sqrt{(\\text{N/m}) \\cdot \\text{kg}} = \\sqrt{\\text{kg}^2/\\text{s}^2} = \\text{kg/s}$. Quotient dimensionslos. ✓
+
+**Typischer Fehler:** $c$ in N/mm ablesen und als N/m einsetzen — Frequenz um Faktor $\\sqrt{1000} \\approx 31{,}6$ falsch.`,
+    matchingHints: [
+      'Immer aus der definierenden Gleichung ableiten.',
+      '$F = c x$ → $c$ in N/m.',
+      '$F_d = d \\dot{x}$ → $d$ in Ns/m.',
+    ],
+
+    sortingQuestion: 'Bringe die Auslegungsschritte eines Schwingungsdämpfers in sinnvolle Reihenfolge.',
+    sortingItems: [
+      'Eigenfrequenz $\\omega_0 = \\sqrt{c/m}$ des ungedämpften Systems bestimmen',
+      'Gewünschtes Abklingverhalten definieren (z. B. $D \\approx 0{,}7$ für Messgeräte)',
+      'Erforderlichen Dämpfungskoeffizienten aus $d = 2 D \\sqrt{cm}$ berechnen',
+      'Passenden Dämpfer im Katalog auswählen und einbauen',
+      'System testen und $D$ gegebenenfalls nachjustieren',
+    ],
+    sortingOrder: [0, 1, 2, 3, 4],
+    sortingExplanation: `**Ansatz:** Von den Systemparametern zum Bauteil: erst analysieren, dann spezifizieren, dann auswählen, dann verifizieren.
+
+**Rechnung:** Schritt (1) liefert $\\omega_0$. Schritt (2) legt das Ziel fest ($D \\approx 0{,}7$ ist ein Klassiker — schnelles Abklingen ohne Überschwingen). Schritt (3) rechnet $d$ aus. Schritte (4)–(5) sind die Realisierung.
+
+**Probe:** Vorgehen spiegelt den Maschinenbau-Workflow: Analyse → Spezifikation → Beschaffung → Verifikation. Auslassen eines Schrittes ist eine klassische Prüfungsfalle ("Man hat den Dämpfer gekauft, aber $\\omega_0$ nie berechnet").
+
+**Typischer Fehler:** Erst Dämpfer kaufen, dann die Frequenz berechnen — führt oft zu über- oder unterdämpften Systemen. Oder Ziel-$D$ gar nicht spezifizieren und blind $D = 1$ wählen.`,
+    sortingHints: [
+      'Erst analysieren, dann spezifizieren.',
+      '$\\omega_0$ vor $D$ — ohne $\\omega_0$ kein $d$.',
+      'Verifizieren nicht vergessen.',
+    ],
+
+    errorQuestion: 'Welcher Fehler führt bei Schwingungsaufgaben am häufigsten zu grob falschen Ergebnissen?',
+    errorOptions: [
+      'Federsteifigkeit $c$ in N/mm angegeben, aber als N/m eingesetzt — $\\omega_0$ um Faktor $\\sqrt{1000} \\approx 31{,}6$ falsch',
+      'Masse in kg statt Gramm eingesetzt',
+      'Winkelangabe im Bogenmaß statt Gradmaß',
+      'Faktor $\\pi$ statt $2\\pi$ in der Periodenformel',
+    ],
+    errorCorrect: 0,
+    errorExplanation: `**Ansatz:** Einheitenkonsistenz ist bei $\\omega_0 = \\sqrt{c/m}$ besonders heikel, weil ein Faktor $1000$ innerhalb der Wurzel als $\\sqrt{1000} \\approx 31{,}6$ erscheint — leicht zu übersehen.
+
+**Rechnung:** Beispiel: $c = 200\\,\\text{N/mm}$ (d. h. $200\\,000\\,\\text{N/m}$), $m = 2\\,\\text{kg}$. Korrekt: $\\omega_0 = \\sqrt{100\\,000} \\approx 316\\,\\text{rad/s}$. Mit $c$ fälschlich als $200\\,\\text{N/m}$: $\\omega_0 = \\sqrt{100} = 10\\,\\text{rad/s}$ — Faktor $31{,}6$ daneben.
+
+**Probe:** Gegenprüfung immer über die Periode: $T \\approx 2\\,\\text{s}$ wäre für einen $2\\,\\text{kg}$-Körper an einer $200\\,\\text{N/mm}$-Feder absurd — so eine steife Feder schwingt in Millisekunden.
+
+**Typischer Fehler:** Blind in den Taschenrechner tippen ohne Einheitencheck. Prüfungssichere Gegenmaßnahme: **jede** Größe mit SI-Einheit (N, m, kg, s) notieren, bevor Zahlen eingesetzt werden.`,
+    errorHints: [
+      'N/mm vs. N/m unterscheidet sich um Faktor $1000$.',
+      'Unter der Wurzel wird daraus Faktor $\\approx 31{,}6$.',
+      'Immer SI-Einheiten vor der Rechnung.',
+    ],
+    errorWrongAnswers: {
+      1: 'Kann passieren, aber die Unterscheidung kg/g (Faktor $1000$) ist selten ein Schwingungsproblem — meistens wird Masse direkt in kg angegeben.',
+      2: 'Betrifft Winkel in der Anfangsbedingung, nicht die Eigenfrequenz $\\omega_0$ selbst. Im Kontext Schwingungen meist kein Hauptfehler.',
+      3: 'Kann natürlich passieren, ist aber weniger klassisch als das Einheiten-Problem mit $c$.',
+    },
+
+    transferQuestion: '[PRÜFUNG] Feder-Masse-Dämpfer: $m = 0{,}8\\,\\text{kg}$, $c = 200\\,\\text{N/m}$, $d = 6\\,\\text{Ns/m}$. Berechne den Dämpfungsgrad $D$. (auf 4 Nachkommastellen, dimensionslos)',
+    transferAnswer: 0.2372,
+    transferTolerance: 0.002,
+    transferUnit: '',
+    transferExplanation: `**Ansatz:** Lehrsches Dämpfungsmaß: $D = d/(2\\sqrt{cm})$.
+
+**Rechnung:** $c \\cdot m = 200 \\cdot 0{,}8 = 160$. $\\sqrt{160} \\approx 12{,}649$. $D = 6/(2 \\cdot 12{,}649) = 6/25{,}298 \\approx 0{,}2372$.
+
+**Probe:** $D < 1$ → schwach gedämpft, System schwingt. Plausibel: moderater Dämpfer, kein überkritisches Kriechen. $\\omega_0 = \\sqrt{c/m} = \\sqrt{250} \\approx 15{,}81\\,\\text{rad/s}$. Gedämpfte Eigenfrequenz: $\\omega_d = \\omega_0\\sqrt{1 - 0{,}2372^2} \\approx \\omega_0 \\cdot 0{,}9715 \\approx 15{,}36\\,\\text{rad/s}$ — nur $2{,}8\\,\\%$ unter der ungedämpften.
+
+**Typischer Fehler:** Faktor $2$ im Nenner vergessen: $D = 6/12{,}649 \\approx 0{,}474$. Oder $\\sqrt{c+m}$ statt $\\sqrt{cm}$ rechnen.`,
+    transferHints: [
+      '$D = d/(2\\sqrt{cm})$.',
+      '$cm = 160$, $\\sqrt{cm} \\approx 12{,}65$.',
+      'Faktor $2$ im Nenner nicht vergessen.',
     ],
   },
 

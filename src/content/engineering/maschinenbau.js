@@ -782,9 +782,9 @@ $$x_S = \frac{\sum A_i \cdot x_{S,i}}{\sum A_i}$$
 
 **Loch = negative Fläche:** Ein Ausschnitt wird als negatives Teilgebiet subtrahiert.`,
             exercises: [
-              { type: 'number-input', question: 'Zwei Massen: m1 = 3 kg bei x1 = 2 m, m2 = 1 kg bei x2 = 6 m. Schwerpunkt x_S?', correctValue: 3, tolerance: 0.01, unit: 'm', explanation: 'x_S = (3·2 + 1·6)/(3+1) = (6+6)/4 = 12/4 = 3 m.', hints: ['x_S = Σ(m·x)/Σm', 'Zähler: 3·2+1·6=12', 'Nenner: 4'] },
-              { type: 'true-false', statement: 'Ein symmetrischer Körper hat seinen Schwerpunkt auf der Symmetrieachse.', correct: true, explanation: 'Symmetrie bedeutet, dass sich die Beiträge beider Hälften aufheben.', hints: ['Symmetrie bedeutet: Massenverteilung auf beiden Seiten ist gleich.', 'Beiträge links und rechts heben sich in der Schwerpunktformel auf.', 'Gleichmäßige Massenverteilung auf beiden Seiten.'] },
-              { type: 'number-input', question: '[PRÜFUNG] L-Profil aus zwei Rechtecken: R1 (20×80 mm, x_{S1}=10 mm) und R2 (60×20 mm, x_{S2}=50 mm). Schwerpunkt x_S des L-Profils?', correctValue: 27.1, tolerance: 0.5, unit: 'mm', explanation: 'A1 = 20·80 = 1600 mm², A2 = 60·20 = 1200 mm². x_S = (A1·x1 + A2·x2)/(A1+A2) = (1600·10 + 1200·50)/2800 = 76000/2800 ≈ 27,1 mm.', hints: ['x_S = Σ(A_i·x_{S,i})/ΣA_i', 'Flächen berechnen: A = b·h', 'Schwerpunkte der Teilrechtecke einsetzen'] },
+              { type: 'number-input', question: 'Zwei Massen: $m_1 = 3$ kg bei $x_1 = 2$ m, $m_2 = 1$ kg bei $x_2 = 6$ m. Schwerpunkt $x_S$?', correctValue: 3, tolerance: 0.01, unit: 'm', explanation: '**Ansatz:** Schwerpunkt-Formel für diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$.\n\n**Rechnung:** Zähler $3 \\cdot 2 + 1 \\cdot 6 = 6 + 6 = 12\\,\\text{kg·m}$. Nenner $3 + 1 = 4\\,\\text{kg}$. $x_S = 12/4 = 3\\,\\text{m}$.\n\n**Probe:** Ergebnis liegt zwischen $x_1 = 2$ und $x_2 = 6$ — Schwerpunkt muss innerhalb der Massenpunkte liegen. ✓ Näher an $m_1$ (größere Masse) als an $m_2$: Abstand zu $m_1$ ist $1$ m, zu $m_2$ ist $3$ m — Verhältnis $3:1$ entspricht dem Massenverhältnis $m_2:m_1 = 1:3$. ✓\n\n**Typischer Fehler:** Arithmetisches Mittel $(2 + 6)/2 = 4$ m rechnen — ignoriert die unterschiedlichen Massen. Schwerpunkt ist **massengewichtetes** Mittel, nicht einfaches Mittel.', hints: ['Formel: $x_S = \\sum(m_i \\cdot x_i)/\\sum m_i$.', 'Zähler = $m_1 x_1 + m_2 x_2$, Nenner = Gesamtmasse.', 'Ergebnis muss zwischen $x_1$ und $x_2$ liegen, näher an der größeren Masse.'] },
+              { type: 'true-false', statement: 'Ein symmetrischer Körper hat seinen Schwerpunkt auf der Symmetrieachse.', correct: true, explanation: '**Ansatz:** Symmetrie bedeutet: zu jedem Massenelement bei $+x$ gibt es ein gleich großes Element bei $-x$ (bezogen auf die Symmetrieachse). In der Schwerpunktsumme heben sich die Beiträge paarweise auf.\n\n**Rechnung:** Für jedes Paar $(m, +x)$ und $(m, -x)$ gilt $m(+x) + m(-x) = 0$. Die Summe $\\sum m_i x_i$ verschwindet relativ zur Achse → $x_S = 0$ (Schwerpunkt liegt auf der Achse).\n\n**Probe:** Gilt für homogene Kugel, Zylinder, Quader, Kreisring usw. Bei einem symmetrischen Körper mit zwei Symmetrieachsen (z.B. Rechteck) liegt der Schwerpunkt im Schnittpunkt beider Achsen.\n\n**Typischer Fehler:** Symmetrie der **Form** mit Symmetrie der **Massenverteilung** verwechseln. Die Aussage gilt nur bei homogenem Material — ein asymmetrisch gebohrtes Rechteck hat den Schwerpunkt nicht mehr zentral.', hints: ['Überlege, was Symmetrie für die Verteilung der Massenelemente bedeutet.', 'Zu jedem $(m, +x)$ existiert ein $(m, -x)$ — wie verhält sich die Summe?', 'Gilt nur bei homogenem Material (konstante Dichte).'] },
+              { type: 'number-input', question: '[PRÜFUNG] L-Profil aus zwei Rechtecken: $R_1$ (20×80 mm, $x_{S1}=10$ mm) und $R_2$ (60×20 mm, $x_{S2}=50$ mm). Schwerpunkt $x_S$ des L-Profils?', correctValue: 27.1, tolerance: 0.5, unit: 'mm', explanation: '**Ansatz:** Zusammengesetzte Fläche: $x_S = \\sum A_i x_{S,i} / \\sum A_i$. Beide Teilrechtecke liefern Fläche × Teilschwerpunkt-Abstand.\n\n**Rechnung:** $A_1 = 20 \\cdot 80 = 1600\\,\\text{mm}^2$, $A_2 = 60 \\cdot 20 = 1200\\,\\text{mm}^2$. $x_S = (1600 \\cdot 10 + 1200 \\cdot 50)/(1600 + 1200) = (16\\,000 + 60\\,000)/2800 = 76\\,000/2800 \\approx 27{,}1\\,\\text{mm}$.\n\n**Probe:** Ergebnis liegt zwischen $x_{S1} = 10$ und $x_{S2} = 50$ — OK. Näher an $x_{S1}$, weil $A_1 > A_2$. Verhältnis der Abstände: $(27{,}1 - 10) : (50 - 27{,}1) = 17{,}1 : 22{,}9 \\approx 1200 : 1600 = A_2 : A_1$. ✓ (Hebelgesetz)\n\n**Typischer Fehler:** Flächen vergessen zu gewichten und nur die Teilschwerpunkte mitteln: $(10 + 50)/2 = 30\\,\\text{mm}$ — falsch, weil $A_1 \\neq A_2$. Jede Teilfläche wird mit ihrer **Größe** gewichtet, nicht mit $1$.', hints: ['Teilschwerpunkte gewichten mit den jeweiligen Flächen.', '$A_i = b_i \\cdot h_i$ für jedes Rechteck berechnen.', 'Ergebnis muss zwischen $x_{S1}$ und $x_{S2}$ liegen, näher an der größeren Fläche.'] },
             ],
           },
         ],
@@ -943,9 +943,55 @@ $$T = \frac{2\pi}{\omega_0}, \qquad f_0 = \frac{1}{T}$$
               title: 'Feder-Masse-Dämpfer System', visualizationId: 'spring-mass-damper', params: {},
             },
             exercises: [
-              { type: 'number-input', question: 'Feder-Masse-System: c = 400 N/m, m = 1 kg. Eigenkreisfrequenz ω₀?', correctValue: 20, tolerance: 0.01, unit: 'rad/s', explanation: 'ω₀ = √(c/m) = √(400/1) = √400 = 20 rad/s.', hints: ['ω₀ = √(c/m)', 'c/m = 400/1 = 400', '√400 = 20 rad/s'] },
-              { type: 'number-input', question: 'Masse m = 4 kg, Federsteifigkeit c = 100 N/m. Schwingungsdauer T?', correctValue: 1.257, tolerance: 0.01, unit: 's', explanation: 'ω₀ = √(100/4) = 5 rad/s. T = 2π/ω₀ = 2π/5 ≈ 1,257 s.', hints: ['ω₀ = √(c/m) = 5 rad/s', 'T = 2π/ω₀', '2π/5 ≈ 1,257'] },
-              { type: 'multiple-choice', question: '[PRÜFUNG] Resonanz tritt auf, wenn die Erregerfrequenz Ω ...', options: ['gleich der Eigenfrequenz ω₀ ist', 'doppelt so groß wie ω₀ ist', 'null ist', 'größer als 100 rad/s ist'], correctIndex: 0, explanation: 'Resonanz tritt bei Ω = ω₀ auf. Bei ungedämpften Systemen wächst die Amplitude dabei theoretisch unbegrenzt an.', hints: ['Resonanz tritt auf wenn Erregerfrequenz Ω = Eigenfrequenz ω₀.', 'ω₀ = √(c/m) ist die Eigenkreisfrequenz.', 'Bei ungedämpftem System → Amplitude → ∞'], wrongAnswerExplanations: { 1: '$\\Omega = 2\\omega_0$ kann bei nichtlinearen Systemen zu subharmonischer Resonanz führen, aber die klassische (Haupt-)Resonanz ist bei $\\Omega = \\omega_0$.', 2: '$\\Omega = 0$ entspricht einer statischen Kraft — keine Schwingung, keine Resonanz. Bei $\\Omega \\to 0$ geht die Amplitude gegen den statischen Wert $F_0/c$.', 3: 'Ein absoluter Zahlenwert in rad/s ist bedeutungslos ohne Vergleich zur Eigenfrequenz. Entscheidend ist das Verhältnis $\\Omega/\\omega_0$, nicht der Absolutwert.' } },
+              {
+                type: 'number-input',
+                question: 'Feder-Masse-System: c = 400 N/m, m = 1 kg. Eigenkreisfrequenz ω₀?',
+                correctValue: 20,
+                tolerance: 0.01,
+                unit: 'rad/s',
+                explanation: `**Ansatz:** Eigenkreisfrequenz des ungedämpften Feder-Masse-Systems: $\\omega_0 = \\sqrt{c/m}$.
+
+**Rechnung:** $\\omega_0 = \\sqrt{400\\,\\text{N/m} \\;/\\; 1\\,\\text{kg}} = \\sqrt{400\\,\\text{s}^{-2}} = 20\\,\\text{rad/s}$.
+
+**Probe:** Einheiten: $\\sqrt{(\\text{N/m})/\\text{kg}} = \\sqrt{(\\text{kg·m/s}^2)/(\\text{m·kg})} = \\sqrt{1/\\text{s}^2} = 1/\\text{s}$ — stimmt mit rad/s überein. Zahlenwert plausibel für Laborfeder.
+
+**Typischer Fehler:** $\\omega_0 = c/m = 400$ ohne Wurzel rechnen — liefert Zahlenwert mit falscher Dimension ($\\text{s}^{-2}$). Die Eigenkreisfrequenz ist stets die **Wurzel** aus dem Verhältnis.`,
+                hints: ['$\\omega_0 = \\sqrt{c/m}$ — Formel hinschreiben.', 'Quotient zuerst: $c/m = 400/1 = 400$.', 'Wurzel ziehen: $\\sqrt{400} = 20\\,\\text{rad/s}$.'],
+              },
+              {
+                type: 'number-input',
+                question: 'Masse m = 4 kg, Federsteifigkeit c = 100 N/m. Schwingungsdauer T?',
+                correctValue: 1.257,
+                tolerance: 0.01,
+                unit: 's',
+                explanation: `**Ansatz:** Erst Eigenfrequenz $\\omega_0 = \\sqrt{c/m}$, dann Periode $T = 2\\pi/\\omega_0$.
+
+**Rechnung:** $\\omega_0 = \\sqrt{100/4} = \\sqrt{25} = 5\\,\\text{rad/s}$. $T = 2\\pi/5 = 1{,}2566\\,\\text{s} \\approx 1{,}257\\,\\text{s}$.
+
+**Probe:** Direktformel $T = 2\\pi\\sqrt{m/c} = 2\\pi \\cdot \\sqrt{0{,}04} = 2\\pi \\cdot 0{,}2 = 1{,}257\\,\\text{s}$. ✓ Plausibel: eine vollständige Schwingung pro gut einer Sekunde.
+
+**Typischer Fehler:** $T = 2\\pi \\cdot \\omega_0 = 10\\pi \\approx 31{,}4\\,\\text{s}$ (Division mit Multiplikation verwechselt). Oder $T = 1/\\omega_0 = 0{,}2\\,\\text{s}$ (Faktor $2\\pi$ vergessen — das wäre die Periode in $\\text{rad}^{-1}$, keine Zeit).`,
+                hints: ['$\\omega_0 = \\sqrt{c/m} = 5\\,\\text{rad/s}$.', 'Periode: $T = 2\\pi/\\omega_0$ — Division, nicht Multiplikation.', '$2\\pi/5 \\approx 1{,}257\\,\\text{s}$.'],
+              },
+              {
+                type: 'multiple-choice',
+                question: '[PRÜFUNG] Resonanz tritt auf, wenn die Erregerfrequenz Ω ...',
+                options: ['gleich der Eigenfrequenz ω₀ ist', 'doppelt so groß wie ω₀ ist', 'null ist', 'größer als 100 rad/s ist'],
+                correctIndex: 0,
+                explanation: `**Ansatz:** Resonanz entsteht, wenn die äußere Erregerfrequenz $\\Omega$ mit der Eigenfrequenz $\\omega_0$ übereinstimmt — Energie wird in jeder Periode phasenrichtig eingekoppelt.
+
+**Rechnung:** In der Bewegungsgleichung $\\ddot{x} + \\omega_0^2 x = (F_0/m)\\sin(\\Omega t)$ divergiert für $\\Omega = \\omega_0$ der Partikuläranteil linear in $t$ (ungedämpfter Fall, $x_p \\sim t \\cos(\\omega_0 t)$).
+
+**Probe:** Alltag — Schaukel exakt im Eigenrhythmus anschubsen: Amplitude wächst. Falscher Takt: Energie verpufft, Amplitude bleibt beschränkt.
+
+**Typischer Fehler:** Glauben, Resonanz hänge vom Absolutwert von $\\Omega$ ab. Entscheidend ist nur das **Verhältnis** $\\Omega/\\omega_0$ — ob $\\omega_0 = 2\\,\\text{rad/s}$ oder $2000\\,\\text{rad/s}$, die Resonanzbedingung lautet immer $\\Omega = \\omega_0$.`,
+                hints: ['Resonanz = Erregerfrequenz trifft Eigenfrequenz.', '$\\omega_0 = \\sqrt{c/m}$ ist die Eigenkreisfrequenz.', 'Bei ungedämpftem System wächst die Amplitude unbegrenzt an.'],
+                wrongAnswerExplanations: {
+                  1: '$\\Omega = 2\\omega_0$ kann bei nichtlinearen Systemen zu subharmonischer Resonanz führen, aber die klassische (Haupt-)Resonanz ist bei $\\Omega = \\omega_0$.',
+                  2: '$\\Omega = 0$ entspricht einer statischen Kraft — keine Schwingung, keine Resonanz. Bei $\\Omega \\to 0$ geht die Amplitude gegen den statischen Wert $F_0/c$.',
+                  3: 'Ein absoluter Zahlenwert in rad/s ist bedeutungslos ohne Vergleich zur Eigenfrequenz. Entscheidend ist das Verhältnis $\\Omega/\\omega_0$, nicht der Absolutwert.',
+                },
+              },
             ],
           },
           {

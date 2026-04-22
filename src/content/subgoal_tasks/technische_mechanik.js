@@ -532,4 +532,1216 @@ export const technischeMechanikSubGoalTasks = {
 
   },
 
+  // ────────────────────────────────────────────────────────────────────────
+  // mech-1-5 — Schwerpunkt  (5 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-1-5': {
+
+    // ── [0] Diskrete Massen: $x_S = \sum m_i x_i / \sum m_i$ ────────────
+    0: [
+      ni(
+        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Drei Massen liegen auf einer Stange: $m_1 = 2\\,\\text{kg}$ bei $x_1 = 0\\,\\text{m}$, $m_2 = 3\\,\\text{kg}$ bei $x_2 = 1\\,\\text{m}$, $m_3 = 5\\,\\text{kg}$ bei $x_3 = 4\\,\\text{m}$. Wo liegt der Schwerpunkt? (auf 2 Nachkommastellen)',
+        2.3, 0.01, 'm',
+        `**Ansatz:** Massengewichtetes Mittel: $x_S = \\sum m_i x_i / \\sum m_i$.
+
+**Rechnung:** Zähler: $2 \\cdot 0 + 3 \\cdot 1 + 5 \\cdot 4 = 0 + 3 + 20 = 23\\,\\text{kg·m}$. Nenner: $2 + 3 + 5 = 10\\,\\text{kg}$. $x_S = 23/10 = 2{,}30\\,\\text{m}$.
+
+**Probe:** Ergebnis liegt zwischen $x_1 = 0$ und $x_3 = 4$. ✓ Näher an $x_3 = 4$, weil dort die größte Masse sitzt. ✓ Hebelcheck: $2 \\cdot 2{,}3 + 3 \\cdot 1{,}3 = 4{,}6 + 3{,}9 = 8{,}5$ (links von $x_S$); $5 \\cdot 1{,}7 = 8{,}5$ (rechts von $x_S$). Momentengleichgewicht erfüllt. ✓
+
+**Typischer Fehler:** Arithmetisches Mittel der Positionen rechnen: $(0+1+4)/3 \\approx 1{,}67\\,\\text{m}$ — ignoriert die Massen. Die Schwerpunkt-Formel gewichtet jeden Beitrag mit **seiner** Masse.`,
+        [
+          'Schreibe die Formel hin: $x_S = \\sum m_i x_i / \\sum m_i$.',
+          'Zähler: jedes $m_i \\cdot x_i$ aufsummieren.',
+          'Ergebnis liegt immer zwischen den äußeren Positionen, näher an der größten Masse.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Zwei Massen auf einer Stange: $m_1 = 4\\,\\text{kg}$ bei $x_1 = 1\\,\\text{m}$ und $m_2 = 1\\,\\text{kg}$ bei $x_2 = 6\\,\\text{m}$. Wo liegt $x_S$?',
+        ['$x_S = 2\\,\\text{m}$', '$x_S = 3{,}5\\,\\text{m}$', '$x_S = 5\\,\\text{m}$', '$x_S = 1{,}4\\,\\text{m}$'],
+        0,
+        `**Ansatz:** $x_S = (m_1 x_1 + m_2 x_2)/(m_1 + m_2)$.
+
+**Rechnung:** $x_S = (4 \\cdot 1 + 1 \\cdot 6)/(4+1) = (4+6)/5 = 10/5 = 2\\,\\text{m}$.
+
+**Probe:** Schwerpunkt näher an $m_1$ (größere Masse bei $x_1 = 1$). Abstand zu $m_1$: $1\\,\\text{m}$. Abstand zu $m_2$: $4\\,\\text{m}$. Hebelgesetz: $m_1 \\cdot 1 = m_2 \\cdot 4$, also $4 = 4$. ✓
+
+**Typischer Fehler:** Arithmetisches Mittel $(1+6)/2 = 3{,}5\\,\\text{m}$ — ignoriert den Massenunterschied $4:1$.`,
+        [
+          'Massengewichtetes Mittel, nicht arithmetisches.',
+          'Hebelgesetz: Schwerpunkt teilt die Strecke im **umgekehrten** Massenverhältnis.',
+          'Bei $4:1$ Masse liegt $x_S$ nahe an $m_1$.',
+        ],
+        {
+          1: '$3{,}5\\,\\text{m}$ ist das arithmetische Mittel der Positionen. Bei ungleichen Massen gewichtet man mit der Masse, nicht mit $1$.',
+          2: '$5\\,\\text{m}$ wäre der Schwerpunkt, wenn $m_2$ viermal so schwer wie $m_1$ wäre — Verhältnis umgekehrt.',
+          3: '$1{,}4\\,\\text{m}$ stammt aus falscher Zähler-Division: vermutlich $(4 \\cdot 1 + 1 \\cdot 6)/(1 + 6) \\approx 1{,}43$, wobei der Nenner die **Positionen** statt der **Massen** addiert.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Vier gleich schwere Kugeln ($m = 2\\,\\text{kg}$ jede) liegen bei $x = 0, 2, 5, 9\\,\\text{m}$. Wo ist $x_S$?',
+        4, 0.01, 'm',
+        `**Ansatz:** Bei gleichen Massen reduziert sich die Formel auf das arithmetische Mittel der Positionen: $x_S = (x_1 + x_2 + \\dots + x_n)/n$.
+
+**Rechnung:** Gesamtmasse $4 \\cdot 2 = 8\\,\\text{kg}$. Zähler: $2(0 + 2 + 5 + 9) = 2 \\cdot 16 = 32\\,\\text{kg·m}$. $x_S = 32/8 = 4\\,\\text{m}$. Schneller: $(0+2+5+9)/4 = 16/4 = 4\\,\\text{m}$.
+
+**Probe:** Ergebnis liegt zwischen $x_{\\min} = 0$ und $x_{\\max} = 9$. ✓ Zwischen den beiden mittleren Positionen $2$ und $5$ liegt $x_S = 4$ — plausibel.
+
+**Typischer Fehler:** Gewichtete Formel benutzen und die gemeinsame Masse $m$ im Zähler **und** Nenner vergessen zu kürzen → unnötig komplizierte Rechnung. Bei gleichen Massen einfach Mittelwert der Positionen.`,
+        [
+          'Was passiert, wenn alle $m_i$ gleich sind?',
+          '$m$ kürzt sich im Zähler und Nenner.',
+          'Übrig: arithmetisches Mittel der $x_i$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Die Schwerpunktformel liefert auch für dreidimensionale Massensysteme komponentenweise die Schwerpunktkoordinaten: $x_S, y_S, z_S$ werden mit derselben Formel unabhängig voneinander berechnet.',
+        true,
+        `**Ansatz:** Vektorwertig: $\\vec r_S = \\sum m_i \\vec r_i / \\sum m_i$. Komponentenweise: $x_S = \\sum m_i x_i / M$, analog $y_S, z_S$. Die drei Gleichungen sind entkoppelt.
+
+**Rechnung:** Bei einem System aus drei Massen im Raum rechnet man drei separate Summen — eine pro Achse. Die Massen bleiben dieselben, nur die Koordinate wechselt.
+
+**Probe:** Beispiel: $m_1 = m_2 = m_3 = 1\\,\\text{kg}$ bei $(0,0,0)$, $(3,0,0)$, $(0,6,9)$. Dann $x_S = (0+3+0)/3 = 1$, $y_S = (0+0+6)/3 = 2$, $z_S = (0+0+9)/3 = 3$. Schwerpunkt: $(1, 2, 3)$.
+
+**Typischer Fehler:** Koordinaten mischen (z.B. $m_i \\cdot y_i$ in der $x_S$-Summe). Die drei Gleichungen sind streng unabhängig.`,
+        [
+          'Wie sieht die Schwerpunktformel in Vektorform aus?',
+          'Komponentenweise lesen: $x_S$ nutzt nur $x_i$.',
+          'Drei unabhängige Gleichungen für 3D.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Ordne jeder Situation die korrekte Schwerpunkt-Aussage zu.',
+        [
+          { left: 'Zwei gleiche Massen bei $x_1$ und $x_2$', right: '$x_S = (x_1 + x_2)/2$ (arithm. Mittel)' },
+          { left: 'Massen $m$ und $3m$ bei $x=0$ und $x=4$', right: '$x_S = 3$ (näher an der größeren Masse)' },
+          { left: 'Eine einzige Masse $m$ bei $x_0$', right: '$x_S = x_0$ (trivial)' },
+          { left: 'Zwei Massen, Summe verdoppelt', right: '$x_S$ bleibt gleich (Massen kürzen sich)' },
+        ],
+        `**Ansatz:** Die Schwerpunktformel ist linear in allen $m_i$ — eine gemeinsame Skalierung aller Massen ändert das Ergebnis nicht. Das Schwerpunkt-Teilverhältnis $(x_S - x_1)/(x_2 - x_S) = m_2/m_1$ ist das umgekehrte Hebelverhältnis.
+
+**Rechnung:** Für Masse $m$ bei $0$ und $3m$ bei $4$: $x_S = (m \\cdot 0 + 3m \\cdot 4)/(m + 3m) = 12m/(4m) = 3$. Schwerpunkt teilt die Strecke im Verhältnis $3:1$ (näher zur $3m$-Masse).
+
+**Probe:** Einzelne Masse: $x_S = m \\cdot x_0 / m = x_0$ — trivial. Gleiche Massen: $x_S = m(x_1+x_2)/(2m) = (x_1+x_2)/2$. Die Skalierung $m \\to 2m$ bei **allen** Massen kürzt sich in Zähler und Nenner.
+
+**Typischer Fehler:** Annehmen, dass der Schwerpunkt immer **in der Mitte** liegt. Der liegt genau im Mittelpunkt nur bei gleichen Massen — bei unterschiedlichen Massen teilt er die Strecke im umgekehrten Massenverhältnis.`,
+        [
+          'Gleiche Massen: arithmetisches Mittel.',
+          'Hebelverhältnis umgekehrt zum Massenverhältnis.',
+          'Gemeinsame Skalierung aller Massen ändert $x_S$ nicht.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Fünf Kugeln: $m_1 = 1\\,\\text{kg}$ bei $x=0$, $m_2 = 2\\,\\text{kg}$ bei $x=1$, $m_3 = 3\\,\\text{kg}$ bei $x=2$, $m_4 = 2\\,\\text{kg}$ bei $x=3$, $m_5 = 1\\,\\text{kg}$ bei $x=4$. Wo liegt der Schwerpunkt? (auf 1 Nachkommastelle)',
+        2, 0.05, 'm',
+        `**Ansatz:** Die Massenverteilung ist symmetrisch um $x = 2$ (gleiche Massen im gleichen Abstand). Daher muss $x_S$ genau auf der Symmetrieachse liegen.
+
+**Rechnung:** Zähler: $1 \\cdot 0 + 2 \\cdot 1 + 3 \\cdot 2 + 2 \\cdot 3 + 1 \\cdot 4 = 0 + 2 + 6 + 6 + 4 = 18$. Nenner: $1+2+3+2+1 = 9$. $x_S = 18/9 = 2{,}0\\,\\text{m}$.
+
+**Probe:** Durch direkte Ausrechnung und durch Symmetrie bestätigt. Paare $(m_1, m_5)$ und $(m_2, m_4)$ heben sich um $x = 2$ auf; die mittlere Masse $m_3$ sitzt direkt auf der Achse.
+
+**Typischer Fehler:** Symmetrie nicht erkennen und unnötig lange Summen aufsetzen — oder Rechnerfehler beim Summieren. Vor dem Rechnen: auf Symmetrie prüfen.`,
+        [
+          'Sind die Massen um einen Punkt symmetrisch verteilt?',
+          'Symmetrie ⇒ Schwerpunkt liegt auf der Achse.',
+          'Auch rechnerisch durchführen: $\\sum m_i x_i / \\sum m_i$.',
+        ],
+      ),
+    ],
+
+    // ── [1] Zusammengesetzte Flächen: Summenregel ───────────────────────
+    1: [
+      ni(
+        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Ein T-Profil besteht aus einem horizontalen Rechteck $R_1$ ($100 \\times 20\\,\\text{mm}$, $x_{S1} = 50\\,\\text{mm}$, $y_{S1} = 90\\,\\text{mm}$) und einem vertikalen Rechteck $R_2$ ($20 \\times 80\\,\\text{mm}$, $x_{S2} = 50\\,\\text{mm}$, $y_{S2} = 40\\,\\text{mm}$). Berechne $y_S$ des gesamten T-Profils. (auf 1 Nachkommastelle)',
+        67.8, 0.2, 'mm',
+        `**Ansatz:** Flächengewichtetes Mittel in $y$: $y_S = (A_1 y_{S1} + A_2 y_{S2})/(A_1 + A_2)$. Bei homogenem Material ersetzt $A_i$ die Masse.
+
+**Rechnung:** $A_1 = 100 \\cdot 20 = 2000\\,\\text{mm}^2$, $A_2 = 20 \\cdot 80 = 1600\\,\\text{mm}^2$. $y_S = (2000 \\cdot 90 + 1600 \\cdot 40)/(2000 + 1600) = (180\\,000 + 64\\,000)/3600 = 244\\,000/3600 \\approx 67{,}78\\,\\text{mm}$.
+
+**Probe:** Ergebnis liegt zwischen $y_{S2} = 40$ und $y_{S1} = 90$ — OK. Näher an $y_{S1}$, weil $A_1 > A_2$.
+
+**Typischer Fehler:** Beide Teilschwerpunkte einfach mitteln: $(90+40)/2 = 65\\,\\text{mm}$. Ignoriert den Flächenunterschied.`,
+        [
+          'Teilflächen berechnen: $A_i = b_i \\cdot h_i$.',
+          'Teilschwerpunkte kennst du aus der Aufgabe.',
+          'Flächengewichtetes Mittel: $y_S = \\sum A_i y_{S,i} / \\sum A_i$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Bei einem Profil aus zwei Rechtecken (gleiche Fläche $A$, Schwerpunkte $x_{S1}$ und $x_{S2}$) — wo liegt der Gesamtschwerpunkt?',
+        [
+          'In der Mitte zwischen $x_{S1}$ und $x_{S2}$: $x_S = (x_{S1}+x_{S2})/2$',
+          'Beim größeren Teilschwerpunkt',
+          'Bei $x_{S1}$ (erstes Teil dominiert)',
+          'Immer am linken Rand des Profils',
+        ],
+        0,
+        `**Ansatz:** Gleiche Flächen → Gewichtung gleich → arithmetisches Mittel.
+
+**Rechnung:** $x_S = (A \\cdot x_{S1} + A \\cdot x_{S2})/(A + A) = A(x_{S1}+x_{S2})/(2A) = (x_{S1}+x_{S2})/2$.
+
+**Probe:** Sonderfall der allgemeinen Formel $x_S = \\sum A_i x_{S,i}/\\sum A_i$ bei $A_1 = A_2$. Analog zu zwei gleichen Massen.
+
+**Typischer Fehler:** Die Regel "immer in der Mitte" auf ungleiche Flächen übertragen. Nur bei **gleicher Fläche** ist das Mittel das arithmetische Mittel.`,
+        [
+          'Setze $A_1 = A_2 = A$ in die Formel ein.',
+          'Was passiert mit $A$ in Zähler und Nenner?',
+          'Bleibt arithmetisches Mittel übrig.',
+        ],
+        {
+          1: 'Die Formel liefert das gewogene Mittel. "Größerer Teilschwerpunkt" ist keine sinnvolle Größe — $x_{S1}$ und $x_{S2}$ sind Positionen, nicht Größen.',
+          2: 'Das zweite Teil hat denselben Flächenanteil, dominiert nicht.',
+          3: 'Der linke Rand hängt vom konkreten Aufbau ab — hat nichts mit der Schwerpunktformel zu tun.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Ein Profil besteht aus einem Quadrat ($100 \\times 100\\,\\text{mm}$, $x_{S1} = 50\\,\\text{mm}$) und einem angesetzten Rechteck ($200 \\times 50\\,\\text{mm}$, Schwerpunkt $x_{S2} = 200\\,\\text{mm}$ rechts vom Quadrat, bezogen auf denselben Ursprung). Wo liegt $x_S$?',
+        125, 0.5, 'mm',
+        `**Ansatz:** $x_S = (A_1 x_{S1} + A_2 x_{S2})/(A_1 + A_2)$.
+
+**Rechnung:** $A_1 = 100 \\cdot 100 = 10\\,000\\,\\text{mm}^2$. $A_2 = 200 \\cdot 50 = 10\\,000\\,\\text{mm}^2$. Beide gleich → arithmetisches Mittel. $x_S = (50 + 200)/2 = 125\\,\\text{mm}$.
+
+**Probe:** Ergebnis liegt zwischen $50$ und $200$ — OK. Da $A_1 = A_2$, genau in der Mitte.
+
+**Typischer Fehler:** Unterschiedliche Flächen annehmen, ohne die Zahlenwerte zu berechnen. Erst nach Durchrechnen fällt auf, dass $100 \\cdot 100 = 200 \\cdot 50$.`,
+        [
+          'Flächen $A_i = b_i h_i$ berechnen.',
+          'Wenn $A_1 = A_2$, wird die Formel zum arithmetischen Mittel.',
+          'Sonst: gewogenes Mittel.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Für homogene Platten (konstante Dicke und Dichte) liefert die Flächen-Schwerpunktformel dasselbe Ergebnis wie die Massen-Schwerpunktformel.',
+        true,
+        `**Ansatz:** Bei homogenem Material gilt $m_i = \\rho \\cdot t \\cdot A_i$ (Dichte $\\rho$, Dicke $t$, Fläche $A_i$). In der Schwerpunktformel kürzen sich $\\rho$ und $t$.
+
+**Rechnung:** $x_S = \\sum m_i x_i / \\sum m_i = \\sum (\\rho t A_i) x_i / \\sum (\\rho t A_i) = \\rho t \\sum A_i x_i / (\\rho t \\sum A_i) = \\sum A_i x_i / \\sum A_i$.
+
+**Probe:** Für ein L-Profil aus Stahl ergibt sich derselbe Schwerpunkt wie aus Aluminium — solange Dicke und Dichte überall gleich sind.
+
+**Typischer Fehler:** Die Regel auch bei inhomogenen Körpern anwenden (verschiedene Materialien, variable Dicke). Dort muss mit der tatsächlichen Masse gewichtet werden — Fläche allein reicht nicht.`,
+        [
+          'Masse als $m = \\rho \\cdot V = \\rho \\cdot t \\cdot A$ schreiben.',
+          'Was kürzt sich in Zähler und Nenner?',
+          'Vorsicht bei inhomogenen Körpern.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Bringe die Schritte zur Berechnung des Flächenschwerpunkts eines zusammengesetzten Profils in die richtige Reihenfolge.',
+        [
+          'Koordinatensystem wählen (Ursprung an markanter Ecke)',
+          'Profil in Teilflächen zerlegen (Rechtecke, Dreiecke, Kreissegmente)',
+          'Für jede Teilfläche $A_i$ und Teilschwerpunkt ($x_{S,i}$, $y_{S,i}$) bestimmen',
+          'Flächengewichtete Summen $\\sum A_i x_{S,i}$ und $\\sum A_i y_{S,i}$ bilden',
+          'Durch Gesamtfläche $\\sum A_i$ teilen, um $x_S$ und $y_S$ zu erhalten',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Strukturiertes Vorgehen verhindert Fehler: erst die Geometrie klären (Koordinaten, Zerlegung), dann die Zahlen (Flächen, Teilschwerpunkte), zuletzt die Formel anwenden.
+
+**Rechnung:** Das Koordinatensystem muss **vor** der Zerlegung stehen, damit die Teilschwerpunkte eindeutige Werte haben. Erst Flächen, Teilschwerpunkte — dann Summen, dann Division.
+
+**Probe:** Bei einem L-Profil: (1) Ursprung in der Ecke, (2) Zerlegung in zwei Rechtecke, (3) Flächen und Teilschwerpunkte, (4) Summen, (5) Division. Ergebnis: Gesamtschwerpunkt.
+
+**Typischer Fehler:** Ohne Koordinatensystem starten — dann stehen die $x_{S,i}$ relativ zu verschiedenen Bezugspunkten und werden zu einer sinnlosen Summe addiert.`,
+        [
+          'Zuerst Geometrie, dann Zahlen.',
+          'Koordinatensystem vor der Zerlegung.',
+          'Formel am Ende.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Ein I-Profil (Doppel-T) besteht aus drei Rechtecken: Obergurt ($120 \\times 15\\,\\text{mm}$, $y_S = 142{,}5\\,\\text{mm}$), Steg ($15 \\times 120\\,\\text{mm}$, $y_S = 75\\,\\text{mm}$), Untergurt ($120 \\times 15\\,\\text{mm}$, $y_S = 7{,}5\\,\\text{mm}$). Wo liegt der Schwerpunkt $y_S$? (auf 1 Nachkommastelle)',
+        75, 0.5, 'mm',
+        `**Ansatz:** Das I-Profil ist **symmetrisch** um die Mittelebene. Der Schwerpunkt muss dort liegen — hier $y_S = 75\\,\\text{mm}$.
+
+**Rechnung:** $A_1 = A_3 = 120 \\cdot 15 = 1800\\,\\text{mm}^2$, $A_2 = 15 \\cdot 120 = 1800\\,\\text{mm}^2$. Zur Bestätigung: $y_S = (1800 \\cdot 142{,}5 + 1800 \\cdot 75 + 1800 \\cdot 7{,}5)/(1800 \\cdot 3) = (142{,}5 + 75 + 7{,}5)/3 = 225/3 = 75\\,\\text{mm}$. ✓
+
+**Probe:** Aufgrund der Symmetrie von Obergurt und Untergurt um die Mittelebene heben sich ihre Abweichungen von $75$ exakt auf. Der Steg sitzt ohnehin in der Mitte.
+
+**Typischer Fehler:** Aufwendig durchrechnen, ohne die Symmetrie zu sehen. Bei jeder zusammengesetzten Fläche zuerst auf Symmetrie prüfen — spart oft die gesamte Rechnung.`,
+        [
+          'Liegt eine Symmetrieachse vor?',
+          'Obergurt und Untergurt: gleiche Fläche, gleicher Abstand zur Mitte.',
+          'Symmetrie ⇒ $y_S$ auf der Mittelebene.',
+        ],
+      ),
+    ],
+
+    // ── [2] Loch als negative Fläche ────────────────────────────────────
+    2: [
+      ni(
+        'Sub-Goal "Loch als negative Fläche subtrahieren": Eine quadratische Platte ($200 \\times 200\\,\\text{mm}$) hat ein kreisrundes Loch (Radius $r = 30\\,\\text{mm}$) mit Mittelpunkt bei $x = 60\\,\\text{mm}$, $y = 100\\,\\text{mm}$. Wo liegt $x_S$ der gelochten Platte? (Ursprung in der linken unteren Ecke, auf 2 Nachkommastellen)',
+        103.04, 0.2, 'mm',
+        `**Ansatz:** Loch behandeln wie negative Fläche: $x_S = (A_\\text{Voll} \\cdot x_\\text{S,Voll} - A_\\text{Loch} \\cdot x_\\text{S,Loch})/(A_\\text{Voll} - A_\\text{Loch})$.
+
+**Rechnung:** $A_\\text{Voll} = 200^2 = 40\\,000\\,\\text{mm}^2$, $x_\\text{S,Voll} = 100\\,\\text{mm}$. $A_\\text{Loch} = \\pi \\cdot 30^2 = 900\\pi \\approx 2827{,}4\\,\\text{mm}^2$, $x_\\text{S,Loch} = 60\\,\\text{mm}$. $x_S = (40\\,000 \\cdot 100 - 2827{,}4 \\cdot 60)/(40\\,000 - 2827{,}4) = (4\\,000\\,000 - 169\\,646)/37\\,172{,}6 \\approx 103{,}04\\,\\text{mm}$.
+
+**Probe:** Das Loch liegt links der Mitte ($x = 60 < 100$). Entfernen verschiebt den Schwerpunkt **nach rechts** (weg vom Loch). Ergebnis $x_S > 100$ ✓.
+
+**Typischer Fehler:** Das Loch **addieren** statt subtrahieren. Oder die Fläche des Kreises vergessen: $\\pi r^2$, nicht $2\\pi r$ oder $\\pi r$.`,
+        [
+          'Loch = negative Teilfläche.',
+          'Formel: $x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$.',
+          'Qualitativ: Schwerpunkt wandert weg vom Loch.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Loch als negative Fläche subtrahieren": Eine symmetrische Scheibe hat ein rundes Loch **oberhalb** der Mitte gebohrt. In welche Richtung verschiebt sich der Schwerpunkt gegenüber der unversehrten Scheibe?',
+        [
+          'Nach unten (weg vom Loch)',
+          'Nach oben (zum Loch hin)',
+          'Er bleibt gleich, weil das Loch klein ist',
+          'Horizontal nach links',
+        ],
+        0,
+        `**Ansatz:** Das Loch entspricht negativer Fläche. Subtrahieren negativer $y_L > y_\\text{Voll}$-Terme verschiebt $y_S$ nach **unten**.
+
+**Rechnung:** $y_S = (A_V y_V - A_L y_L)/(A_V - A_L)$. Wenn $y_L > y_V$, ist der Zähler kleiner als $y_V \\cdot (A_V - A_L)$, also $y_S < y_V$. Schwerpunkt sinkt.
+
+**Probe:** Anschaulich: Material oberhalb der Mitte wurde entfernt — die verbleibende Masse ist im Durchschnitt weiter unten. Schwerpunkt folgt der verbleibenden Masse.
+
+**Typischer Fehler:** Intuition "Schwerpunkt wandert zum Loch" — falsch. Er wandert **weg** vom Loch, weil das Loch eine Fehl-Fläche ist, nicht eine Zusatz-Fläche.`,
+        [
+          'Loch = fehlende Masse.',
+          'Schwerpunkt folgt der verbleibenden Masse.',
+          'Weg vom Loch, nicht zum Loch.',
+        ],
+        {
+          1: 'Das Loch zieht **nichts** an — im Gegenteil, dort fehlt Material. Der Schwerpunkt wandert weg.',
+          2: 'Kleine Löcher haben kleinen Effekt, aber nicht null. Jede entfernte Fläche verschiebt den Schwerpunkt.',
+          3: 'Das Loch liegt vertikal oberhalb der Mitte — die Verschiebung ist vertikal, nicht horizontal.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Loch als negative Fläche subtrahieren": Eine rechteckige Platte ($60 \\times 40\\,\\text{mm}$) hat ein quadratisches Loch ($20 \\times 20\\,\\text{mm}$) mit Mittelpunkt bei $x = 15\\,\\text{mm}$, $y = 20\\,\\text{mm}$ gebohrt (Ursprung in der linken unteren Ecke). Wo liegt $x_S$ der gelochten Platte? (auf 2 Nachkommastellen)',
+        33, 0.05, 'mm',
+        `**Ansatz:** Negative Fläche: $x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$.
+
+**Rechnung:** $A_V = 60 \\cdot 40 = 2400\\,\\text{mm}^2$, $x_V = 30\\,\\text{mm}$. $A_L = 20 \\cdot 20 = 400\\,\\text{mm}^2$, $x_L = 15\\,\\text{mm}$. $x_S = (2400 \\cdot 30 - 400 \\cdot 15)/(2400 - 400) = (72\\,000 - 6000)/2000 = 66\\,000/2000 = 33\\,\\text{mm}$.
+
+**Probe:** Loch links der Mitte ($x_L = 15 < 30$) → Schwerpunkt wandert nach rechts ($x_S = 33 > 30$). ✓ Verschiebung: $3\\,\\text{mm}$ — vernünftig für ein Loch mit $400/2400 \\approx 17\\,\\%$ der Fläche.
+
+**Typischer Fehler:** $x_L$ in die Vollplatte-Formel einsetzen ohne Vorzeichenwechsel: das Loch wird dann fälschlich als Zusatzfläche gerechnet.`,
+        [
+          'Minus statt Plus für das Loch.',
+          'Formel: $(A_V x_V - A_L x_L)/(A_V - A_L)$.',
+          'Plausibilitätscheck: Schwerpunkt weg vom Loch.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Loch als negative Fläche subtrahieren": Ordne jedem Szenario die richtige Formel zu.',
+        [
+          { left: 'Platte mit einem Loch', right: '$x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$' },
+          { left: 'Zwei angesetzte Flächen', right: '$x_S = (A_1 x_1 + A_2 x_2)/(A_1 + A_2)$' },
+          { left: 'Platte mit zwei Löchern', right: '$x_S = (A_V x_V - A_{L1} x_{L1} - A_{L2} x_{L2})/(A_V - A_{L1} - A_{L2})$' },
+          { left: 'Platte mit angesetzter Fläche und einem Loch', right: '$x_S = (A_V x_V + A_A x_A - A_L x_L)/(A_V + A_A - A_L)$' },
+        ],
+        `**Ansatz:** Zusammengesetzte Flächen lassen sich beliebig mischen: addierte Flächen mit Plus, entfernte (Löcher) mit Minus.
+
+**Rechnung:** Jede Teilfläche liefert einen Term $A_i x_{S,i}$ im Zähler und $A_i$ im Nenner — mit passendem Vorzeichen. Zähler und Nenner müssen konsequent mitgezogen werden.
+
+**Probe:** Die Struktur ist additiv-linear. Ein Loch tragt negativ zu **beidem** bei: zum Moment ($A_L x_L$) und zur Gesamtfläche ($A_L$).
+
+**Typischer Fehler:** Nur im Zähler das Minus, im Nenner aber alle Flächen positiv addieren — oder umgekehrt. Das Vorzeichen muss konsistent sein.`,
+        [
+          'Additiv mit Vorzeichen: Plus für angesetzte, Minus für entfernte Flächen.',
+          'Vorzeichen im Zähler und Nenner gleich.',
+          'Formel bleibt linear.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Loch als negative Fläche subtrahieren": Wenn ein Loch **im Schwerpunkt** des Vollkörpers liegt, ändert sich die Schwerpunktposition durch das Loch nicht.',
+        true,
+        `**Ansatz:** $x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$. Falls $x_L = x_V$: $x_S = (A_V x_V - A_L x_V)/(A_V - A_L) = x_V (A_V - A_L)/(A_V - A_L) = x_V$.
+
+**Rechnung:** Das Loch zieht zwar Fläche ab, aber auch Moment — und beides im gleichen Verhältnis zu $x_V$. Der Quotient bleibt $x_V$.
+
+**Probe:** Anschaulich: Das entfernte Material hatte selbst $x_\\text{Loch-S} = x_V$. Das verschiebt den Restschwerpunkt nicht.
+
+**Typischer Fehler:** Annehmen, "jedes Loch verändert den Schwerpunkt". Nur Löcher **außerhalb** des ursprünglichen Schwerpunkts verschieben ihn.`,
+        [
+          'Setze $x_L = x_V$ in die Formel ein.',
+          'Was passiert, wenn Zähler und Nenner denselben Faktor haben?',
+          'Anschaulich: was hat das entfernte Material zum Schwerpunkt beigetragen?',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Loch als negative Fläche subtrahieren": Bringe die Schritte zur Berechnung des Schwerpunkts einer gelochten Platte in die richtige Reihenfolge.',
+        [
+          'Vollkörper und Loch getrennt definieren (Geometrie, Lage)',
+          'Fläche und Schwerpunkt des Vollkörpers bestimmen: $A_V$, $x_V$',
+          'Fläche und Schwerpunkt des Lochs bestimmen: $A_L$, $x_L$',
+          'Momentensumme mit Vorzeichen: $A_V x_V - A_L x_L$',
+          'Durch Restfläche teilen: $x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Das Verfahren entkoppelt Vollkörper und Loch — beide werden separat charakterisiert, dann mit Vorzeichen kombiniert.
+
+**Rechnung:** Im Zähler und Nenner das Minus für das Loch nicht vergessen. In der Formel steht das Loch wie eine "negative Masse".
+
+**Probe:** Plausibilitätscheck: $A_V - A_L$ muss positiv sein (sonst existiert kein Restkörper). Und $x_S$ muss innerhalb des Restkörpers liegen.
+
+**Typischer Fehler:** Den letzten Schritt vergessen und nur den Zähler ausrechnen.`,
+        [
+          'Erst Geometrie, dann Zahlen.',
+          'Loch separat wie ein eigenes Teilkörper behandeln.',
+          'Vorzeichen konsistent in Zähler und Nenner.',
+        ],
+      ),
+    ],
+
+    // ── [3] Symmetrie ausnutzen ─────────────────────────────────────────
+    3: [
+      tf(
+        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Bei einer homogenen Fläche mit zwei zueinander senkrechten Symmetrieachsen liegt der Schwerpunkt exakt im Schnittpunkt beider Achsen.',
+        true,
+        `**Ansatz:** Jede Symmetrieachse zwingt den Schwerpunkt auf sich. Zwei Achsen → Schnittpunkt ist der einzige Punkt auf beiden.
+
+**Rechnung:** Beispiel Rechteck: horizontale Mittellinie (Symmetrie) zwingt $y_S = h/2$, vertikale Mittellinie zwingt $x_S = b/2$. Schwerpunkt: $(b/2, h/2)$ — Schnittpunkt beider Mittellinien.
+
+**Probe:** Rechteck, Quadrat, Ellipse, Kreis, reguläres Polygon (gerade Eckenzahl) — alle haben mehrere Symmetrieachsen, und der Schwerpunkt ist der Schnittpunkt.
+
+**Typischer Fehler:** Bei einem nicht-homogenen Körper (verschiedene Materialien, Bohrungen) gilt das nicht mehr. Symmetrie der **Form** reicht nicht — es muss Symmetrie der **Massenverteilung** sein.`,
+        [
+          'Jede Symmetrieachse fixiert eine Koordinate des Schwerpunkts.',
+          'Zwei Achsen → beide Koordinaten fixiert.',
+          'Vorsicht bei inhomogenen Körpern.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Ein gleichseitiges Dreieck (Seitenlänge $a$) ist homogen. Wo liegt der Schwerpunkt?',
+        [
+          'Im Schnittpunkt der drei Seitenhalbierenden (Schwerpunkt, 1/3 von der Basis)',
+          'In der Mitte des Dreiecks (Höhe/2)',
+          'Genau in einer der Ecken',
+          'Außerhalb des Dreiecks, weil unsymmetrisch',
+        ],
+        0,
+        `**Ansatz:** Ein gleichseitiges Dreieck hat drei Symmetrieachsen — jede Seitenhalbierende. Der Schwerpunkt muss auf **jeder** liegen → Schnittpunkt aller drei.
+
+**Rechnung:** Die Seitenhalbierenden schneiden sich im **Schwerpunkt** (mathematisch bewiesen: Teilungsverhältnis $2:1$ von der Ecke her). Abstand von der Basis: $h/3$ mit $h = a\\sqrt{3}/2$.
+
+**Probe:** Bei symmetrischer Masseverteilung rund um den Schnittpunkt heben sich alle Beiträge paarweise auf.
+
+**Typischer Fehler:** "Mitte des Dreiecks" als Höhe/2 interpretieren — falsch. Der Schwerpunkt liegt bei $h/3$ von der Basis aus, nicht bei $h/2$.`,
+        [
+          'Wie viele Symmetrieachsen hat ein gleichseitiges Dreieck?',
+          'Schwerpunkt muss auf jeder liegen.',
+          'Schnittpunkt aller Seitenhalbierenden.',
+        ],
+        {
+          1: '"Mitte" bei $h/2$ wäre beim Rechteck korrekt. Beim Dreieck liegt der Schwerpunkt aber bei $h/3$ von der Basis aus.',
+          2: 'Ecken sind Rand- und nicht Schwerpunkte — die Masse verteilt sich ja auf die ganze Fläche.',
+          3: 'Bei konvexen Flächen (Dreieck, Rechteck, Kreis) liegt der Schwerpunkt **immer innerhalb**. Nur bei Ringen oder L-Formen kann er außerhalb liegen.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Ein Kreisring hat Außenradius $R = 50\\,\\text{mm}$ und Innenradius $r = 20\\,\\text{mm}$. Wie weit liegt der Schwerpunkt vom Mittelpunkt entfernt?',
+        0, 0.01, 'mm',
+        `**Ansatz:** Ein Kreisring ist **zentralsymmetrisch** (unendlich viele Symmetrieachsen durch den Mittelpunkt). Der Schwerpunkt muss auf allen liegen — nur der Mittelpunkt selbst erfüllt das.
+
+**Rechnung:** Keine Rechnung nötig — die Symmetrie liefert die Antwort direkt. Abstand zum Mittelpunkt: $0$.
+
+**Probe:** Auch für einen Halbkreisring bleibt die Symmetrieachse durch den Mittelpunkt und den höchsten Punkt — dort liegt der Schwerpunkt auf dieser Achse, aber **nicht** im Mittelpunkt ($4r/(3\\pi)$-Regel).
+
+**Typischer Fehler:** Die Flächenformel $A_\\text{Ring} = \\pi(R^2 - r^2)$ für nicht-existente Schwerpunktberechnung benutzen. Bei voller Rotationssymmetrie ist der Schwerpunkt immer im Zentrum.`,
+        [
+          'Wie viele Symmetrieachsen hat ein Kreisring?',
+          'Jede Achse enthält den Schwerpunkt.',
+          'Zentralsymmetrie ⇒ Schwerpunkt im Zentrum.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Ordne jedem Körper die Lage seines Schwerpunkts zu.',
+        [
+          { left: 'Homogene Kugel', right: 'Kugelmittelpunkt (Zentralsymmetrie)' },
+          { left: 'Homogener Zylinder', right: 'Auf der Zylinderachse, auf halber Höhe' },
+          { left: 'Gleichschenkliges Dreieck', right: 'Auf der Symmetrieachse (Mittelsenkrechte auf Basis)' },
+          { left: 'I-Profil (Doppel-T)', right: 'Auf der Mittelebene (horizontal-vertikale Symmetrie)' },
+        ],
+        `**Ansatz:** In jedem Fall erzwingt die Symmetrie die Lage des Schwerpunkts. Höhere Symmetrie → mehr Bedingungen → engere Lokalisierung.
+
+**Rechnung:** Kugel: vollständige Symmetrie → Punktfixierung. Zylinder: Rotationssymmetrie + Spiegelsymmetrie → Linie und Ebene → Punkt auf Achse auf halber Höhe. Dreieck (gleichschenklig): **eine** Symmetrieachse → Schwerpunkt auf dieser Achse (aber nicht in der Mitte!). I-Profil: zwei Achsen → Schnittpunkt.
+
+**Probe:** Zeichne die Körper und markiere alle Symmetrieachsen. Der Schwerpunkt muss der gemeinsame Punkt sein.
+
+**Typischer Fehler:** Symmetrieachsen im 3D-Körper nur auf eine Schnittebene projizieren. Bei Kugel und Zylinder muss man auch die anderen Achsen beachten.`,
+        [
+          'Symmetrieachsen zählen.',
+          'Schwerpunkt auf jeder Achse.',
+          'Schnittpunkt aller Achsen.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Bringe die Checkliste "Symmetrie vor Rechnung" in die richtige Reihenfolge.',
+        [
+          'Körper skizzieren und Geometrie klären',
+          'Alle Symmetrieachsen / Symmetrieebenen eintragen',
+          'Schnittpunkt / Schnittgerade der Achsen identifizieren',
+          'Falls eindeutige Lage: Ergebnis direkt angeben (keine Rechnung nötig)',
+          'Falls noch mehrdeutig: gewichtete Schwerpunktformel nur für die verbleibende Koordinate anwenden',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Die beste Schwerpunktrechnung ist oft keine — jede Symmetrieachse spart eine Koordinate.
+
+**Rechnung:** Beispiel gleichschenkliges Dreieck: Symmetrieachse liefert $x_S = 0$ sofort. Nur $y_S$ muss gerechnet werden. Aufwand halbiert.
+
+**Probe:** Bei I-Profil: zwei Symmetrieachsen → Ergebnis ohne jede Rechnung. Nur asymmetrische Profile (L, Z) brauchen die volle Formel.
+
+**Typischer Fehler:** Blind die Formel ansetzen, ohne auf Symmetrie zu achten. Ergebnis stimmt, aber der Weg ist unnötig aufwendig und fehleranfällig.`,
+        [
+          'Symmetrie ist der schnellste Weg zum Schwerpunkt.',
+          'Achsen einzeichnen **vor** der Rechnung.',
+          'Nur die nicht durch Symmetrie fixierten Koordinaten rechnen.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Ein symmetrisches T-Profil (Obergurt $100 \\times 10\\,\\text{mm}$ zentriert über Steg $10 \\times 80\\,\\text{mm}$) wird vertikal durch seine Symmetrieachse (Mitte des Stegs) betrachtet. Wie groß ist $x_S$ gemessen vom linken Rand des Obergurts? (auf 1 Nachkommastelle)',
+        50, 0.1, 'mm',
+        `**Ansatz:** Das T-Profil hat eine **vertikale** Symmetrieachse (Mitte von Obergurt und Steg). Der Schwerpunkt liegt auf dieser Achse.
+
+**Rechnung:** Der Obergurt hat Breite $100\\,\\text{mm}$ → Mitte bei $50\\,\\text{mm}$ vom linken Rand. Die Symmetrieachse des Profils fällt mit $x = 50$ zusammen. Daher $x_S = 50\\,\\text{mm}$.
+
+**Probe:** Alternative Rechnung über die Formel: Obergurt $A_1 = 1000$, $x_{S1} = 50$; Steg $A_2 = 800$, $x_{S2} = 50$ (auch in der Mitte). $x_S = (1000 \\cdot 50 + 800 \\cdot 50)/1800 = 50 \\cdot (1000+800)/1800 = 50$. ✓
+
+**Typischer Fehler:** Über die gewichtete Summe rechnen, obwohl die Symmetrie die Antwort sofort liefert.`,
+        [
+          'Gibt es eine vertikale Symmetrieachse?',
+          'Wo liegt sie relativ zum linken Rand?',
+          'Symmetrieachse = $x_S$-Linie.',
+        ],
+      ),
+    ],
+
+    // ── [4] Standardflächen auswendig ───────────────────────────────────
+    4: [
+      matching(
+        'Sub-Goal "Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\\pi)$": Ordne jeder Standardfläche ihre Schwerpunkt-Position zu (gemessen entlang der Symmetrieachse von der Basis bzw. vom Mittelpunkt aus).',
+        [
+          { left: 'Rechteck (Basis $b$, Höhe $h$)', right: 'Schwerpunkt in der Mitte: $h/2$ über der Basis' },
+          { left: 'Dreieck (Basis $b$, Höhe $h$)', right: 'Schwerpunkt bei $h/3$ über der Basis (nahe der Basis)' },
+          { left: 'Halbkreis (Radius $r$)', right: 'Schwerpunkt bei $4r/(3\\pi) \\approx 0{,}424\\,r$ vom Durchmesser' },
+          { left: 'Viertelkreis (Radius $r$)', right: 'Schwerpunkt bei $4r/(3\\pi)$ von jedem der beiden Radien' },
+        ],
+        `**Ansatz:** Diese Werte sind auswendig zu lernen — sie tauchen in jeder Profil- oder Querschnittsaufgabe auf. Herleitung über Integralrechnung, aber im Maschinenbau-Alltag direkt verwendet.
+
+**Rechnung:** Rechteck: $h/2$ (Symmetrie). Dreieck: $h/3$ über der Basis (oder $2h/3$ von der Spitze). Halbkreis: $4r/(3\\pi) \\approx 0{,}424\\,r$ vom Durchmesser weg. Viertelkreis: $4r/(3\\pi)$ von beiden Radien, gemessen entlang der Symmetriediagonale.
+
+**Probe:** Einheiten: alle Werte sind Längen ($\\propto r$ oder $h$). Der Halbkreis-Schwerpunkt liegt **innerhalb** des Halbkreises ($0{,}424 < 1$), was auch anschaulich stimmt.
+
+**Typischer Fehler:** Dreiecksschwerpunkt bei $h/2$ (falsch, das wäre Rechteck). Oder Halbkreis-Schwerpunkt bei $r/2$ (falsch — richtig ist $4r/(3\\pi) \\approx 0{,}424\\,r$, also etwas näher am Durchmesser als $r/2$). Außerdem: Dreiecksschwerpunkt vom falschen Ende (Spitze statt Basis).`,
+        [
+          'Rechteck: Mitte.',
+          'Dreieck: näher an der Basis als an der Spitze.',
+          'Halbkreis: knapp unter halbem Radius.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\\pi)$": Wo liegt der Schwerpunkt eines Halbkreises mit Radius $r = 30\\,\\text{mm}$, gemessen vom Durchmesser? (auf 2 Nachkommastellen)',
+        12.73, 0.05, 'mm',
+        `**Ansatz:** Standardformel: Schwerpunktabstand Halbkreis vom Durchmesser ist $y_S = 4r/(3\\pi)$.
+
+**Rechnung:** $y_S = 4 \\cdot 30/(3 \\pi) = 120/(3\\pi) = 40/\\pi \\approx 12{,}732\\,\\text{mm}$.
+
+**Probe:** Qualitativ: $4/(3\\pi) \\approx 0{,}424$. Schwerpunkt liegt bei $\\approx 42{,}4\\,\\%$ des Radius vom Durchmesser entfernt — etwas weniger als die Hälfte, was zur Masseverteilung (mehr Fläche nahe Durchmesser) passt.
+
+**Typischer Fehler:** $y_S = r/2 = 15\\,\\text{mm}$ annehmen. Das wäre die Mitte eines Rechtecks, kein Halbkreis. Oder $y_S = 2r/(3\\pi)$ (Faktor $2$ vergessen): $\\approx 6{,}37\\,\\text{mm}$.`,
+        [
+          'Formel auswendig: $y_S = 4r/(3\\pi)$.',
+          'Einsetzen: $r = 30$.',
+          'Ergebnis: $\\approx 0{,}424\\,r$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\\pi)$": Ein Dreieck hat Höhe $h = 90\\,\\text{mm}$. Wo liegt der Schwerpunkt gemessen **von der Spitze** aus?',
+        ['$y_S = 60\\,\\text{mm}$ (bei $2h/3$ von der Spitze)', '$y_S = 30\\,\\text{mm}$ (bei $h/3$ von der Spitze)', '$y_S = 45\\,\\text{mm}$ (bei $h/2$)', '$y_S = 90\\,\\text{mm}$ (an der Basis)'],
+        0,
+        `**Ansatz:** Dreiecksschwerpunkt liegt bei $h/3$ **von der Basis** aus — das entspricht $2h/3$ von der Spitze.
+
+**Rechnung:** $h/3 = 30\\,\\text{mm}$ von der Basis. Spitze ist $h = 90\\,\\text{mm}$ entfernt. Vom Spitzen-Ende: $90 - 30 = 60\\,\\text{mm}$, also $2h/3$.
+
+**Probe:** Das Dreieck hat mehr Fläche an der **Basis** (breit) als an der **Spitze** (schmal). Schwerpunkt wandert zur massereicheren Seite — Richtung Basis → $2h/3$ von der Spitze.
+
+**Typischer Fehler:** Die Angabe "$h/3$" unkritisch als Abstand von der Spitze interpretieren. Die Konvention ist: $h/3$ **von der Basis**. Immer Bezugspunkt klären.`,
+        [
+          'Schwerpunkt ist näher an der breiteren Seite (Basis).',
+          'Abstand zur Basis: $h/3$.',
+          'Abstand zur Spitze: $h - h/3 = 2h/3$.',
+        ],
+        {
+          1: 'Das ist $h/3 = 30\\,\\text{mm}$ als Abstand **zur Basis** — korrekt, aber die Frage fragt nach dem Abstand **zur Spitze**.',
+          2: '$h/2 = 45\\,\\text{mm}$ wäre der Rechteck-Schwerpunkt, nicht Dreieck.',
+          3: 'Der Schwerpunkt liegt **nicht an der Basis**, sondern ein Drittel innerhalb des Dreiecks von der Basis aus.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\\pi)$": Der Schwerpunkt eines Halbkreises liegt genau in der Mitte seines Radius, also bei $r/2$ vom Durchmesser aus.',
+        false,
+        `**Ansatz:** Der Halbkreis-Schwerpunkt liegt bei $4r/(3\\pi) \\approx 0{,}4244\\,r$, **nicht** bei $r/2 = 0{,}5\\,r$.
+
+**Rechnung:** $4/(3\\pi) = 4/9{,}4248 \\approx 0{,}4244$. Der wahre Wert ist **kleiner** als $r/2$ — weil der Halbkreis zum Durchmesser hin breiter wird und dort mehr Fläche hat.
+
+**Probe:** Qualitatives Argument: Die Fläche bei kleinen $y$ (nahe Durchmesser) ist breiter als bei großen $y$ (nahe Kreisrand). Mehr Fläche zieht den Schwerpunkt zum Durchmesser → $y_S < r/2$. ✓
+
+**Typischer Fehler:** "Halbkreis-Mitte" intuitiv bei $r/2$ ansetzen. Diese Intuition stimmt nur für Rechtecke. Bei Flächen mit nicht-konstanter Breite kommt der Schwerpunkt aus einem Integral — hier $4r/(3\\pi)$.`,
+        [
+          'Vergleiche $4/(3\\pi)$ mit $1/2$.',
+          '$3\\pi \\approx 9{,}42$, also $4/9{,}42 \\approx 0{,}42 < 0{,}5$.',
+          'Der Halbkreis ist am Durchmesser breiter.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\\pi)$": Ein Profil besteht aus einem Rechteck ($60 \\times 40\\,\\text{mm}$) mit einem aufgesetzten Dreieck (Basis $60\\,\\text{mm}$ auf der Oberkante des Rechtecks, Höhe $30\\,\\text{mm}$ nach oben). Wo liegt $y_S$ des Gesamtprofils? (Ursprung in der linken unteren Ecke des Rechtecks, auf 1 Nachkommastelle)',
+        28.2, 0.2, 'mm',
+        `**Ansatz:** Rechteck-Schwerpunkt $y_{S1} = 20\\,\\text{mm}$ (Mitte). Dreieck-Schwerpunkt $y_{S2} = 40 + h/3 = 40 + 10 = 50\\,\\text{mm}$ (Basis auf Oberkante, $h/3$ darüber). Flächengewichtetes Mittel.
+
+**Rechnung:** $A_1 = 60 \\cdot 40 = 2400\\,\\text{mm}^2$, $y_{S1} = 20\\,\\text{mm}$. $A_2 = \\tfrac{1}{2} \\cdot 60 \\cdot 30 = 900\\,\\text{mm}^2$, $y_{S2} = 50\\,\\text{mm}$. $y_S = (2400 \\cdot 20 + 900 \\cdot 50)/(2400 + 900) = (48\\,000 + 45\\,000)/3300 = 93\\,000/3300 \\approx 28{,}18\\,\\text{mm}$.
+
+**Probe:** Ergebnis $\\approx 28\\,\\text{mm}$ liegt zwischen $20$ und $50$. ✓ Näher an $20$, weil $A_1 > A_2$.
+
+**Typischer Fehler:** Dreieck-Schwerpunkt bei $y = 40 + 15 = 55\\,\\text{mm}$ (mit $h/2$ statt $h/3$). Oder Dreiecksfläche als $b \\cdot h$ statt $\\tfrac{1}{2} b h$.`,
+        [
+          'Rechteck-Schwerpunkt: Mitte der Höhe.',
+          'Dreieck-Schwerpunkt: $h/3$ über der Basis.',
+          'Dreiecksfläche: $\\tfrac{1}{2} b h$ — Faktor 1/2 nicht vergessen.',
+        ],
+      ),
+    ],
+
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // mech-2-4 — Schwingungen  (5 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-2-4': {
+
+    // ── [0] Eigenkreisfrequenz $\omega_0 = \sqrt{c/m}$, Periode $T = 2\pi/\omega_0$ ─
+    0: [
+      ni(
+        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": Ein Feder-Masse-System hat $c = 800\\,\\text{N/m}$ und $m = 2\\,\\text{kg}$. Wie groß ist $\\omega_0$?',
+        20, 0.05, 'rad/s',
+        `**Ansatz:** Eigenkreisfrequenz des ungedämpften Feder-Masse-Systems: $\\omega_0 = \\sqrt{c/m}$.
+
+**Rechnung:** $c/m = 800/2 = 400\\,\\text{s}^{-2}$. $\\omega_0 = \\sqrt{400} = 20\\,\\text{rad/s}$.
+
+**Probe:** Einheiten: $\\sqrt{(\\text{N/m})/\\text{kg}} = \\sqrt{1/\\text{s}^2} = \\text{rad/s}$. ✓ Zahlenwert plausibel (typische Werte liegen zwischen $1$ und $100\\,\\text{rad/s}$ für mechanische Systeme).
+
+**Typischer Fehler:** Quotient $c/m = 400$ direkt als $\\omega_0$ angeben — Wurzel vergessen. Dimension wäre $\\text{s}^{-2}$ statt $\\text{rad/s}$.`,
+        [
+          'Formel: $\\omega_0 = \\sqrt{c/m}$.',
+          'Erst $c/m$ bilden, dann Wurzel.',
+          'Einheit Endergebnis: rad/s.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": Wie ändert sich $\\omega_0$, wenn die Masse bei gleicher Feder **verdoppelt** wird?',
+        [
+          '$\\omega_0$ wird um den Faktor $1/\\sqrt{2}$ kleiner',
+          '$\\omega_0$ wird halbiert',
+          '$\\omega_0$ bleibt gleich',
+          '$\\omega_0$ wird um den Faktor $\\sqrt{2}$ größer',
+        ],
+        0,
+        `**Ansatz:** Aus $\\omega_0 = \\sqrt{c/m}$ folgt: wenn $m \\to 2m$, dann $\\omega_{0,\\text{neu}} = \\sqrt{c/(2m)} = \\omega_0/\\sqrt{2}$.
+
+**Rechnung:** Verhältnis $\\omega_{0,\\text{neu}}/\\omega_0 = \\sqrt{1/2} = 1/\\sqrt{2} \\approx 0{,}707$. Also: $\\omega_0$ wird um Faktor $0{,}707$ kleiner.
+
+**Probe:** Anschaulich: schwerere Masse → träger → langsamere Schwingung → kleinere Kreisfrequenz und längere Periode. Periode $T = 2\\pi/\\omega_0$ wächst entsprechend um $\\sqrt{2}$.
+
+**Typischer Fehler:** Die Wurzel vergessen und linear rechnen ($\\omega_0$ halbieren). Oder Richtung umdrehen ($\\omega_0$ größer machen).`,
+        [
+          '$m$ erscheint **unter** der Wurzel im Nenner.',
+          '$\\sqrt{1/2} = 1/\\sqrt{2}$.',
+          'Mehr Masse = träger = langsamer.',
+        ],
+        {
+          1: 'Halbieren würde $\\omega_{0,\\text{neu}} = \\omega_0/2$ bedeuten — das ignoriert die Wurzel. Die Abhängigkeit ist quadratwurzelförmig, nicht linear.',
+          2: 'Die Eigenfrequenz hängt von der Masse ab — größere Masse verschiebt $\\omega_0$ nach unten. "Bleibt gleich" gilt nur beim mathematischen Pendel.',
+          3: 'Die Richtung ist falsch. Größere Masse erhöht die Trägheit, die Frequenz sinkt (nicht steigt).',
+        },
+      ),
+      ni(
+        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": $c = 500\\,\\text{N/m}$, $m = 5\\,\\text{kg}$. Berechne die Schwingungsdauer $T$. (auf 2 Nachkommastellen)',
+        0.63, 0.01, 's',
+        `**Ansatz:** Erst $\\omega_0 = \\sqrt{c/m}$, dann $T = 2\\pi/\\omega_0$.
+
+**Rechnung:** $\\omega_0 = \\sqrt{500/5} = \\sqrt{100} = 10\\,\\text{rad/s}$. $T = 2\\pi/10 \\approx 0{,}6283\\,\\text{s} \\approx 0{,}63\\,\\text{s}$.
+
+**Probe:** Alternative Formel $T = 2\\pi\\sqrt{m/c} = 2\\pi \\sqrt{0{,}01} = 2\\pi \\cdot 0{,}1 = 0{,}628\\,\\text{s}$. ✓ Einheit: rad/s → $1/\\text{rad/s} \\cdot \\text{rad} = \\text{s}$. ✓
+
+**Typischer Fehler:** $T = 2\\pi \\cdot \\omega_0$ rechnen — liefert $62{,}8\\,\\text{s}$, absurd groß. Oder $T = 1/\\omega_0 = 0{,}1\\,\\text{s}$ (Faktor $2\\pi$ unterschlagen).`,
+        [
+          '$\\omega_0 = \\sqrt{500/5} = 10\\,\\text{rad/s}$.',
+          'Periode: $T = 2\\pi/\\omega_0$ (Division!).',
+          '$2\\pi/10 \\approx 0{,}628\\,\\text{s}$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": Wird die Federsteifigkeit $c$ verdoppelt (Masse gleich), verdoppelt sich auch die Eigenkreisfrequenz $\\omega_0$.',
+        false,
+        `**Ansatz:** $\\omega_0 = \\sqrt{c/m}$ — Abhängigkeit ist $\\sqrt{c}$, nicht linear in $c$.
+
+**Rechnung:** Bei $c \\to 2c$ ergibt sich $\\omega_{0,\\text{neu}} = \\sqrt{2c/m} = \\sqrt{2} \\cdot \\omega_0$. Also Faktor $\\sqrt{2} \\approx 1{,}414$, nicht $2$.
+
+**Probe:** Konkret: $c = 400$, $m = 1$ → $\\omega_0 = 20\\,\\text{rad/s}$. Verdopple $c$ auf $800$: $\\omega_0 = \\sqrt{800} \\approx 28{,}28\\,\\text{rad/s} = \\sqrt{2} \\cdot 20$. ✓
+
+**Typischer Fehler:** Die Wurzel gedanklich weglassen und linear rechnen. Um $\\omega_0$ zu verdoppeln, müsste $c$ **vervierfacht** werden.`,
+        [
+          '$\\omega_0 = \\sqrt{c/m}$ — Wurzel beachten.',
+          '$\\sqrt{2c} = \\sqrt{2}\\sqrt{c}$.',
+          '$\\omega_0$ hängt **sub**linear von $c$ ab.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": Ordne jeder Änderung am Feder-Masse-System die resultierende Änderung von $\\omega_0$ zu.',
+        [
+          { left: 'Masse $m$ verdoppeln', right: '$\\omega_0$ um Faktor $1/\\sqrt{2}$ kleiner' },
+          { left: 'Masse $m$ halbieren', right: '$\\omega_0$ um Faktor $\\sqrt{2}$ größer' },
+          { left: 'Federsteifigkeit $c$ verdoppeln', right: '$\\omega_0$ um Faktor $\\sqrt{2}$ größer' },
+          { left: 'Federsteifigkeit $c$ vervierfachen', right: '$\\omega_0$ verdoppelt sich' },
+        ],
+        `**Ansatz:** Aus $\\omega_0 = \\sqrt{c/m}$ liest man die Skalierungen direkt ab: jede Änderung im Radikanden um Faktor $k$ wirkt als $\\sqrt{k}$ auf $\\omega_0$.
+
+**Rechnung:** $m \\to 2m \\Rightarrow \\omega_0/\\sqrt{2}$. $m \\to m/2 \\Rightarrow \\sqrt{2}\\omega_0$. $c \\to 2c \\Rightarrow \\sqrt{2}\\omega_0$. $c \\to 4c \\Rightarrow 2\\omega_0$.
+
+**Probe:** Merkregel — um $\\omega_0$ zu verdoppeln, reicht entweder $c \\times 4$ oder $m \\div 4$. Diese Asymmetrie zwischen $c$ und $m$ (beide wirken unter der Wurzel) ist prüfungsrelevant.
+
+**Typischer Fehler:** Linear statt $\\sqrt{\\cdot}$ skalieren und z. B. denken, Feder verdoppeln verdopple $\\omega_0$.`,
+        [
+          '$\\omega_0 = \\sqrt{c/m}$ — Faktor unter der Wurzel wirkt als $\\sqrt{\\cdot}$.',
+          '$\\sqrt{2} \\approx 1{,}414$, $1/\\sqrt{2} \\approx 0{,}707$.',
+          '$\\sqrt{4} = 2$ — darum braucht es Faktor $4$ in $c$, um $\\omega_0$ zu verdoppeln.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": Bringe die Schritte zur Berechnung der Schwingungsdauer $T$ aus $c$ und $m$ in die richtige Reihenfolge.',
+        [
+          '$T$ aus $2\\pi/\\omega_0$ ausrechnen und Einheit (Sekunde) prüfen',
+          'Formel notieren: $\\omega_0 = \\sqrt{c/m}$',
+          'Quotient $c/m$ mit konsistenten Einheiten (N/m und kg) bilden',
+          'Wurzel ziehen: $\\omega_0$ in rad/s',
+          'Periodenformel $T = 2\\pi/\\omega_0$ aufschreiben',
+        ],
+        [1, 2, 3, 4, 0],
+        `**Ansatz:** Erst Formel, dann Einsetzen, dann Wurzel, dann Periode — sonst schleichen sich Einheitenfehler ein.
+
+**Rechnung:** Logische Reihenfolge: (1) Formel $\\omega_0 = \\sqrt{c/m}$ hinschreiben, (2) $c/m$ einsetzen, (3) Wurzel ziehen, (4) Periodenformel $T = 2\\pi/\\omega_0$ notieren, (5) $T$ ausrechnen und Einheit prüfen.
+
+**Probe:** Ohne Schritt (2) landet man schnell in einem Einheitensalat ($c$ in N/mm statt N/m ist ein Klassiker). Schritt (5) (Einheitencheck) ist die letzte Versicherung gegen grobe Fehler.
+
+**Typischer Fehler:** Direkt zur Periodenformel $T = 2\\pi\\sqrt{m/c}$ springen und die Einheitenprüfung auslassen — wenn $c$ versehentlich in N/mm angegeben wurde, ist $T$ um Faktor $\\sqrt{1000} \\approx 31{,}6$ falsch.`,
+        [
+          'Formel zuerst, Zahlen danach.',
+          'Einheiten vor dem Wurzelziehen prüfen.',
+          'Faktor $2\\pi$ erst am Ende.',
+        ],
+      ),
+    ],
+
+    // ── [1] Harmonische Schwingung: $x(t) = A \sin(\omega_0 t + \varphi)$ ──
+    1: [
+      mc(
+        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Was bezeichnet der Parameter $A$ in der Schwingungsgleichung?',
+        [
+          'Die maximale Auslenkung aus der Ruhelage (Amplitude)',
+          'Die Kreisfrequenz in rad/s',
+          'Die Periodendauer in Sekunden',
+          'Den Phasenwinkel zum Zeitpunkt $t = 0$',
+        ],
+        0,
+        `**Ansatz:** In $x(t) = A \\sin(\\omega_0 t + \\varphi)$ hat der Sinus den Wertebereich $[-1, +1]$. $A$ ist der **Vorfaktor**, also der Maximalwert von $|x(t)|$.
+
+**Rechnung:** $x_\\max = A \\cdot 1 = A$, $x_\\min = -A$. $A$ trägt dieselbe Einheit wie $x$ (meist Meter).
+
+**Probe:** Beispiel $A = 0{,}03\\,\\text{m}$: Masse pendelt zwischen $-30\\,\\text{mm}$ und $+30\\,\\text{mm}$ um die Ruhelage.
+
+**Typischer Fehler:** $A$ mit der Kreisfrequenz $\\omega_0$ oder dem Phasenwinkel $\\varphi$ verwechseln. Merkregel: $A$ steht **vor** dem Sinus, $\\omega_0$ und $\\varphi$ stehen **im** Sinus.`,
+        [
+          'Im Sinus: $\\omega_0$ und $\\varphi$. Vor dem Sinus: $A$.',
+          'Sinus hat Wertebereich $[-1, +1]$.',
+          'Einheit von $A$ = Einheit von $x$.',
+        ],
+        {
+          1: 'Die Kreisfrequenz ist $\\omega_0$ — sie steht **im** Sinus-Argument, nicht davor.',
+          2: 'Die Periodendauer ergibt sich aus $T = 2\\pi/\\omega_0$. Sie ist kein direkter Parameter in der Schwingungsgleichung.',
+          3: 'Der Phasenwinkel ist $\\varphi$ — er steht im Argument neben $\\omega_0 t$.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Gegeben $x(t) = 0{,}05 \\sin(10t + \\pi/6)\\,\\text{m}$. Welche Auslenkung $x(0)$ liegt bei $t = 0$ vor? (auf 3 Nachkommastellen in Meter)',
+        0.025, 0.001, 'm',
+        `**Ansatz:** $t = 0$ einsetzen: $x(0) = A \\sin(\\varphi)$.
+
+**Rechnung:** $x(0) = 0{,}05 \\cdot \\sin(\\pi/6) = 0{,}05 \\cdot 0{,}5 = 0{,}025\\,\\text{m}$.
+
+**Probe:** $x(0)$ muss im Intervall $[-A, +A] = [-0{,}05; 0{,}05]\\,\\text{m}$ liegen. $0{,}025$ liegt dort. ✓ Außerdem: $\\sin(\\pi/6) = 0{,}5$ ist eine Standardwert-Sicherheit (Prüfungs-Memory).
+
+**Typischer Fehler:** $\\sin(\\pi/6)$ als $\\sqrt{3}/2 \\approx 0{,}866$ (das wäre $\\sin(\\pi/3)$) oder als $\\sqrt{2}/2 \\approx 0{,}707$ (das wäre $\\sin(\\pi/4)$) einsetzen. Oder Winkel im Gradmaß interpretieren statt im Bogenmaß.`,
+        [
+          '$t = 0$ einsetzen: nur der Phasenterm bleibt.',
+          '$\\sin(\\pi/6) = 0{,}5$ (Standardwert!).',
+          'Das Argument ist in rad, nicht in Grad.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Der Phasenwinkel $\\varphi$ verschiebt die Schwingung entlang der Zeitachse, ohne Amplitude oder Frequenz zu verändern.',
+        true,
+        `**Ansatz:** Mit $\\sin(\\omega_0 t + \\varphi) = \\sin(\\omega_0 (t + \\varphi/\\omega_0))$ ist $\\varphi$ äquivalent zu einer Zeitverschiebung um $\\Delta t = \\varphi/\\omega_0$.
+
+**Rechnung:** Amplitude $A$ steht **vor** dem Sinus — bleibt unverändert. Frequenz $\\omega_0$ multipliziert mit $t$ — bleibt unverändert. Nur die Nulldurchgänge verschieben sich.
+
+**Probe:** Beispiel: $\\varphi = \\pi/2$ macht aus $\\sin$ einen $\\cos$ — dieselbe Kurve, nur um $T/4$ früher.
+
+**Typischer Fehler:** Glauben, $\\varphi$ ändere die Amplitude (nein — $A$ ist unabhängig) oder die Periode (nein — $T = 2\\pi/\\omega_0$ unabhängig von $\\varphi$).`,
+        [
+          '$\\varphi$ ist additiv im Sinus-Argument.',
+          '$\\sin(\\omega_0 t + \\varphi)$ kann als $\\sin(\\omega_0 (t - t_0))$ geschrieben werden.',
+          'Amplitude und Frequenz sind vom Phasenwinkel entkoppelt.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Amplitude $A = 0{,}02\\,\\text{m}$, $\\omega_0 = 50\\,\\text{rad/s}$. Wie groß ist die maximale Geschwindigkeit $v_\\max$?',
+        1, 0.01, 'm/s',
+        `**Ansatz:** $v(t) = \\dot{x}(t) = A \\omega_0 \\cos(\\omega_0 t + \\varphi)$. Maximum bei $\\cos = 1$: $v_\\max = A \\omega_0$.
+
+**Rechnung:** $v_\\max = 0{,}02 \\cdot 50 = 1{,}0\\,\\text{m/s}$.
+
+**Probe:** Einheiten: $\\text{m} \\cdot \\text{rad/s} = \\text{m/s}$ (rad einheitenlos). ✓ Plausibilität: Schwingung mit $2\\,\\text{cm}$ Amplitude und Periode $T = 2\\pi/50 \\approx 0{,}126\\,\\text{s}$ — schnelle Bewegung, $1\\,\\text{m/s}$ ist realistisch.
+
+**Typischer Fehler:** $v_\\max = A$ (ohne $\\omega_0$) rechnen. Oder die maximale Beschleunigung $a_\\max = A\\omega_0^2$ mit der Geschwindigkeit verwechseln.`,
+        [
+          'Ableitung des Sinus ergibt Kosinus, plus Kettenregel-Faktor $\\omega_0$.',
+          'Maximum des Kosinus ist $1$.',
+          '$v_\\max = A \\omega_0$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Ordne jedem Parameter die richtige physikalische Bedeutung zu.',
+        [
+          { left: '$A$', right: 'Amplitude — maximale Auslenkung aus der Ruhelage' },
+          { left: '$\\omega_0$', right: 'Eigenkreisfrequenz in rad/s' },
+          { left: '$\\varphi$', right: 'Phasenwinkel — Anfangszustand zum Zeitpunkt $t = 0$' },
+          { left: '$T = 2\\pi/\\omega_0$', right: 'Periodendauer — Zeit für einen vollen Zyklus' },
+        ],
+        `**Ansatz:** Jeder Parameter in $x(t) = A\\sin(\\omega_0 t + \\varphi)$ hat genau eine Bedeutung — Standardvokabular der Schwingungslehre.
+
+**Rechnung:** $A$ (Meter) skaliert die Auslenkung. $\\omega_0$ (rad/s) bestimmt, wie schnell die Schwingung "tickt". $\\varphi$ (rad) verschiebt die Nullphase. $T$ ergibt sich abgeleitet aus $\\omega_0$.
+
+**Probe:** Merke: "Amplitude vor dem Sinus, Winkel drinnen" — $A$ außen, $\\omega_0$ und $\\varphi$ innen. Die Periode $T$ ist **kein** Parameter der Gleichung, sondern folgt aus $\\omega_0$.
+
+**Typischer Fehler:** $\\omega_0$ und die technische Frequenz $f_0 = \\omega_0/(2\\pi)$ gleichsetzen. Beide sind "Frequenzen", aber verschiedene Einheiten: rad/s vs. Hz.`,
+        [
+          'Vor dem Sinus: Amplitude.',
+          'Im Sinus-Argument: $\\omega_0 t + \\varphi$ — Frequenz × Zeit plus Phase.',
+          'Periode und Kreisfrequenz stehen über $T = 2\\pi/\\omega_0$ in Verbindung.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Welche Funktion beschreibt die Beschleunigung $a(t) = \\ddot{x}(t)$?',
+        [
+          '$a(t) = -A \\omega_0^2 \\sin(\\omega_0 t + \\varphi) = -\\omega_0^2 \\, x(t)$',
+          '$a(t) = A \\omega_0 \\cos(\\omega_0 t + \\varphi)$',
+          '$a(t) = A \\omega_0^2 \\sin(\\omega_0 t + \\varphi)$',
+          '$a(t) = -A \\omega_0 \\sin(\\omega_0 t + \\varphi)$',
+        ],
+        0,
+        `**Ansatz:** Zweimal nach $t$ ableiten. $\\dot{x} = A\\omega_0\\cos(\\omega_0 t + \\varphi)$, $\\ddot{x} = -A\\omega_0^2\\sin(\\omega_0 t + \\varphi)$.
+
+**Rechnung:** Jede Ableitung zieht einen Faktor $\\omega_0$ (Kettenregel) und dreht $\\sin \\to \\cos \\to -\\sin$. Nach zweimaliger Ableitung: Vorzeichen negativ, Faktor $\\omega_0^2$.
+
+**Probe:** Setze ein in die DGL: $\\ddot{x} + \\omega_0^2 x = -\\omega_0^2 x + \\omega_0^2 x = 0$ ✓. Das ist genau die ungedämpfte Schwingungsgleichung. $a(t) = -\\omega_0^2 x(t)$ ist eine kompakte Merkregel.
+
+**Typischer Fehler:** Das Vorzeichen vergessen oder nur einen Faktor $\\omega_0$ statt $\\omega_0^2$ herausziehen. Oder die Geschwindigkeit mit der Beschleunigung verwechseln.`,
+        [
+          'Ableiten: Sinus → Kosinus, Faktor $\\omega_0$ aus Kettenregel.',
+          'Zweite Ableitung: Kosinus → –Sinus, weiterer Faktor $\\omega_0$.',
+          'Endergebnis enthält $\\omega_0^2$ und Vorzeichenwechsel.',
+        ],
+        {
+          1: 'Das ist die **Geschwindigkeit** $v(t) = \\dot{x}(t)$. Beschleunigung braucht zweite Ableitung.',
+          2: 'Der Betrag stimmt, aber das Vorzeichen ist falsch. Zweimal Sinus ableiten ergibt $-\\sin$, nicht $+\\sin$.',
+          3: 'Nur ein Faktor $\\omega_0$ — das ist die Geschwindigkeit (mit falschem Vorzeichen). Zweimal ableiten gibt $\\omega_0^2$.',
+        },
+      ),
+    ],
+
+    // ── [2] Resonanz bei $\Omega = \omega_0$ ─────────────────────────────
+    2: [
+      mc(
+        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Wann tritt Resonanz bei einem schwingungsfähigen System auf?',
+        [
+          'Wenn die Erregerfrequenz $\\Omega$ mit der Eigenfrequenz $\\omega_0$ übereinstimmt',
+          'Wenn die Erregerfrequenz $\\Omega$ viel größer als $\\omega_0$ ist',
+          'Wenn die Erregerfrequenz $\\Omega$ null ist',
+          'Wenn die Masse gegen null geht',
+        ],
+        0,
+        `**Ansatz:** Resonanz ist der Fall, in dem die äußere Anregung phasenrichtig in jeder Periode Energie einspeist — nur möglich, wenn beide Frequenzen übereinstimmen.
+
+**Rechnung:** In der Bewegungsgleichung $\\ddot{x} + \\omega_0^2 x = (F_0/m)\\sin(\\Omega t)$ enthält die partikuläre Lösung einen Faktor $1/(\\omega_0^2 - \\Omega^2)$. Dieser Term divergiert bei $\\Omega \\to \\omega_0$.
+
+**Probe:** Alltag: eine Schaukel im richtigen Takt anschubsen — Amplitude wächst. Zu schnell oder zu langsam: Energie verpufft.
+
+**Typischer Fehler:** Glauben, "hohe Frequenz = Resonanz". Resonanz hängt vom Verhältnis $\\Omega/\\omega_0$ ab, nicht vom Absolutwert.`,
+        [
+          'Resonanzbedingung: $\\Omega = \\omega_0$.',
+          'Schaukel-Analogie: Takt treffen.',
+          'Nicht die Absolutfrequenz, sondern das Verhältnis zählt.',
+        ],
+        {
+          1: 'Bei $\\Omega \\gg \\omega_0$ wird die Amplitude sogar **klein**, da die Masse der schnellen Anregung nicht mehr folgen kann.',
+          2: '$\\Omega = 0$ entspricht einer statischen Kraft — keine periodische Anregung, keine Resonanz.',
+          3: 'Masse nahe null würde $\\omega_0 \\to \\infty$ bedeuten — keine Resonanzbedingung, sondern ein Grenzfall des Systems selbst.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Bei einem vollständig ungedämpften System wächst die Amplitude im Resonanzfall rechnerisch unbegrenzt an.',
+        true,
+        `**Ansatz:** Im ungedämpften Resonanzfall $\\Omega = \\omega_0$ versagt der Ansatz mit einfacher sinusförmiger partikulärer Lösung — es entsteht ein Term $\\propto t \\cdot \\cos(\\omega_0 t)$, der mit der Zeit linear wächst.
+
+**Rechnung:** Die Lösung ist $x_p(t) = -(F_0/(2 m \\omega_0)) \\cdot t \\cdot \\cos(\\omega_0 t)$ — Amplitude steigt linear mit $t$ an.
+
+**Probe:** In der Realität verhindern Dämpfung, Nichtlinearitäten oder Bauteilbruch das unbegrenzte Anwachsen (Tacoma-Narrows-Brücke, Weinglas zerspringen lassen).
+
+**Typischer Fehler:** Die Linearität in $t$ übersehen und einen stationären Zustand mit großer, aber endlicher Amplitude annehmen. Ohne Dämpfung gibt es diesen stationären Zustand nicht.`,
+        [
+          'Ungedämpft heißt: keine Energiedissipation.',
+          'Die partikuläre Lösung bekommt einen $t$-Faktor.',
+          'In der Praxis bremsen Dämpfung, Bruch oder Nichtlinearität.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Ein Motor hat die Eigenkreisfrequenz $\\omega_0 = 50\\,\\text{rad/s}$. Bei welcher Drehzahl $n$ (in U/min) tritt Resonanz auf? (auf 1 Nachkommastelle)',
+        477.5, 1, 'U/min',
+        `**Ansatz:** Drehzahl und Kreisfrequenz verknüpft über $\\omega = 2\\pi n/60$. Resonanz bei $\\omega = \\omega_0$.
+
+**Rechnung:** $n = 60 \\omega_0/(2\\pi) = 60 \\cdot 50/(2\\pi) = 3000/(2\\pi) \\approx 477{,}46\\,\\text{U/min}$.
+
+**Probe:** Frequenz $f_0 = \\omega_0/(2\\pi) = 50/(6{,}2832) \\approx 7{,}958\\,\\text{Hz}$. In U/min: $f_0 \\cdot 60 \\approx 477{,}5$. ✓
+
+**Typischer Fehler:** $n = \\omega_0 \\cdot 60 = 3000\\,\\text{U/min}$ rechnen (Faktor $2\\pi$ vergessen). Oder $\\omega_0$ direkt als Drehzahl $n$ ansetzen — unterschiedliche Einheiten (rad/s vs. U/min).`,
+        [
+          'Einheit: $n$ in U/min, $\\omega_0$ in rad/s.',
+          '$\\omega_0 = 2\\pi \\cdot n/60$.',
+          '$n = 60 \\omega_0/(2\\pi)$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Welche Maßnahme wirkt am **direktesten** gegen Resonanzschäden in einem Maschinengestell?',
+        [
+          'Betriebsdrehzahl (Erregerfrequenz $\\Omega$) deutlich weg von $\\omega_0$ verlegen',
+          'Betriebsdrehzahl exakt auf $\\omega_0$ einstellen',
+          'Federsteifigkeit auf null reduzieren',
+          'Die Masse des Systems vollständig entfernen',
+        ],
+        0,
+        `**Ansatz:** Resonanz ist an die Koinzidenz $\\Omega = \\omega_0$ gebunden. Die einfachste Gegenmaßnahme: Abstand zur Resonanzfrequenz schaffen.
+
+**Rechnung:** Typische Regel im Maschinenbau: Betriebsfrequenz mindestens $20$–$30\\,\\%$ oberhalb oder unterhalb von $\\omega_0$ wählen. Alternativ: Dämpfer einbauen, um die Resonanzamplitude zu begrenzen — aber die Frequenzlage ist die erste Wahl.
+
+**Probe:** Beispiel: Eine Waschmaschine durchfährt beim Schleudern die Resonanzfrequenz schnell, um sie gar nicht erst stationär anregen zu können.
+
+**Typischer Fehler:** Die Masse "einfach weglassen" — ohne Masse kein System. Oder die Federsteifigkeit reduzieren, was $\\omega_0$ **noch tiefer** legt und oft neue Resonanzen eröffnet.`,
+        [
+          'Resonanz = $\\Omega \\approx \\omega_0$.',
+          'Abstand zur Eigenfrequenz schaffen.',
+          'Zweitbeste Option: Dämpfung erhöhen.',
+        ],
+        {
+          1: 'Das **verursacht** die Resonanz — genau das Gegenteil von dem, was gewünscht ist.',
+          2: '$c = 0$ bedeutet: keine Rückstellkraft, also kein schwingungsfähiges System mehr — aber auch keine tragfähige Konstruktion.',
+          3: '"Masse entfernen" ist im Maschinenbau selten machbar. Abstimmung auf $\\omega_0 \\neq \\Omega$ ist der pragmatische Weg.',
+        },
+      ),
+      sorting(
+        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Bringe die physikalischen Phasen beim Aufbau einer Resonanz in die richtige Reihenfolge.',
+        [
+          'Erregerfrequenz $\\Omega$ nähert sich der Eigenfrequenz $\\omega_0$ an',
+          'Externe Kraft speist pro Periode phasenrichtig Energie in das System ein',
+          'Amplitude wächst mit der Zeit (bei ungedämpftem System linear in $t$)',
+          'Ohne Dämpfung: Bauteilversagen durch Überdehnung, Bruch oder Kontaktverlust',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Resonanz ist ein Prozess über die Zeit, keine Momentaufnahme.
+
+**Rechnung:** Kausalkette: (1) Frequenzanpassung, (2) Phasenrichtige Energiezufuhr, (3) Amplitudenwachstum, (4) im schlimmsten Fall Versagen. Jeder Schritt ist Bedingung für den nächsten.
+
+**Probe:** Tacoma Narrows Bridge (1940): Wind erzeugte aeroelastische Schwingung mit Frequenz nahe Eigenmode → Energieeinkopplung → Amplitudenwachstum → Einsturz. Klassisches Lehrbuchbeispiel.
+
+**Typischer Fehler:** Resonanz als "Moment" betrachten — dabei ist gerade das **zeitliche Aufschwingen** das Wesensmerkmal.`,
+        [
+          'Resonanz baut sich über Zeit auf.',
+          'Zuerst Frequenz, dann Energie, dann Amplitude.',
+          'Versagen ist die (mögliche) Konsequenz.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Ein System hat $\\omega_0 = 40\\,\\text{rad/s}$. Zur sicheren Resonanzvermeidung soll die Erregerfrequenz mindestens $30\\,\\%$ oberhalb von $\\omega_0$ liegen. Welche Mindestfrequenz $\\Omega_\\min$ (in rad/s)?',
+        52, 0.1, 'rad/s',
+        `**Ansatz:** $30\\,\\%$ Abstand nach oben: $\\Omega_\\min = 1{,}3 \\cdot \\omega_0$.
+
+**Rechnung:** $\\Omega_\\min = 1{,}3 \\cdot 40 = 52\\,\\text{rad/s}$.
+
+**Probe:** Verhältnis $\\Omega/\\omega_0 = 52/40 = 1{,}3$. ✓ Bei schwacher Dämpfung gelten $20$–$30\\,\\%$ Abstand als Daumenregel — darunter wächst der Vergrößerungsfaktor $V = 1/\\sqrt{(1-\\eta^2)^2 + (2D\\eta)^2}$ stark an, wobei $\\eta = \\Omega/\\omega_0$.
+
+**Typischer Fehler:** $30\\,\\%$ **addieren** statt **multiplizieren**: $\\omega_0 + 30 = 70\\,\\text{rad/s}$. Prozent heißt "von welcher Basis" — $30\\,\\%$ von $\\omega_0$ ist $12\\,\\text{rad/s}$.`,
+        [
+          '$30\\,\\% = 0{,}3$, der Gesamtfaktor ist $1{,}3$.',
+          '$\\Omega_\\min = 1{,}3 \\cdot \\omega_0$.',
+          'Prozent ist relativ zur Basis, nicht absolut.',
+        ],
+      ),
+    ],
+
+    // ── [3] Dämpfungsgrad $D = d/(2\sqrt{cm})$ ──────────────────────────
+    3: [
+      ni(
+        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": System mit $c = 1000\\,\\text{N/m}$, $m = 10\\,\\text{kg}$, $d = 40\\,\\text{Ns/m}$. Berechne $D$. (dimensionslos)',
+        0.2, 0.005, '',
+        `**Ansatz:** Lehrsches Dämpfungsmaß: $D = d/(2\\sqrt{cm})$.
+
+**Rechnung:** $c \\cdot m = 1000 \\cdot 10 = 10\\,000$. $\\sqrt{10\\,000} = 100$. $D = 40/(2 \\cdot 100) = 40/200 = 0{,}2$.
+
+**Probe:** Einheitencheck: Zähler $\\text{Ns/m} = \\text{kg/s}$. Nenner $\\sqrt{(\\text{N/m})(\\text{kg})} = \\sqrt{(\\text{kg/s}^2)(\\text{kg})} = \\text{kg/s}$. Quotient: dimensionslos. ✓ $D = 0{,}2 < 1$ → schwach gedämpft, System schwingt weiter.
+
+**Typischer Fehler:** Den Faktor $2$ im Nenner vergessen ($D = 40/100 = 0{,}4$). Oder $\\sqrt{c + m}$ statt $\\sqrt{cm}$ (Summe statt Produkt).`,
+        [
+          'Formel: $D = d/(2\\sqrt{cm})$.',
+          '$c \\cdot m$ bilden, dann Wurzel.',
+          'Faktor $2$ im Nenner nicht vergessen.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": Für $D < 1$ ist das System schwach (unterkritisch) gedämpft und schwingt mit abnehmender Amplitude weiter.',
+        true,
+        `**Ansatz:** Lösungsstruktur der gedämpften DGL $m\\ddot{x} + d\\dot{x} + cx = 0$ hängt vom Verhältnis $D$ ab.
+
+**Rechnung:** Charakteristische Gleichung $m\\lambda^2 + d\\lambda + c = 0$. Diskriminante: $d^2 - 4cm = 4cm(D^2 - 1)$. Für $D < 1$ ist die Diskriminante negativ → komplexe Wurzeln → gedämpfte Schwingung $x(t) = A e^{-\\delta t} \\cos(\\omega_d t + \\varphi)$ mit $\\delta = D\\omega_0$, $\\omega_d = \\omega_0\\sqrt{1 - D^2}$.
+
+**Probe:** Im Grenzfall $D = 0$ (keine Dämpfung): ungedämpfte Sinus-Schwingung. Mit wachsendem $D < 1$: Einhüllende $e^{-\\delta t}$ klingt immer schneller ab, aber das System oszilliert noch.
+
+**Typischer Fehler:** $D < 1$ mit aperiodischem Verhalten verwechseln. Aperiodisch beginnt erst bei $D \\geq 1$.`,
+        [
+          '$D < 1$: komplexe Eigenwerte → Schwingung.',
+          '$D = 1$: aperiodischer Grenzfall.',
+          '$D > 1$: überkritisch, kriechend.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": Was bedeutet $D = 1$ physikalisch?',
+        [
+          'Aperiodischer Grenzfall — schnellste Rückkehr zur Ruhelage ohne Überschwingen',
+          'Resonanz mit unbegrenzt wachsender Amplitude',
+          'Keine Dämpfung — dauerhafte Schwingung mit konstanter Amplitude',
+          'Starke Anregung — Amplitude verdoppelt sich pro Periode',
+        ],
+        0,
+        `**Ansatz:** $D = 1$ ist die Grenze zwischen oszillatorisch ($D < 1$) und kriechend ($D > 1$).
+
+**Rechnung:** Charakteristische Gleichung hat bei $D = 1$ eine **doppelte reelle** Wurzel $\\lambda = -\\omega_0$. Lösung: $x(t) = (A + Bt)e^{-\\omega_0 t}$ — keine Schwingung, aber die schnellste Rückkehr zur Nulllage.
+
+**Probe:** Industrieanwendung: präzise Mess- und Waagensysteme werden auf $D \\approx 0{,}7$–$1{,}0$ ausgelegt — kurz genug für Lesbarkeit, ohne Überschwingen.
+
+**Typischer Fehler:** $D = 1$ mit Resonanz verwechseln (Resonanz ist $\\Omega = \\omega_0$ — eine **Frequenz**bedingung, nicht eine **Dämpfungs**bedingung).`,
+        [
+          '$D = 1$ ist die Grenze zwischen Schwingen und Kriechen.',
+          'Aperiodischer Grenzfall: schnellste Beruhigung.',
+          'Resonanz ist etwas anderes — hat mit $\\Omega$, nicht mit $D$ zu tun.',
+        ],
+        {
+          1: 'Resonanz betrifft die **Erreger**frequenz $\\Omega$ relativ zu $\\omega_0$, nicht den Dämpfungsgrad. $D = 1$ ist ein rein dämpfungsbezogenes Phänomen.',
+          2: 'Keine Dämpfung entspricht $D = 0$, nicht $D = 1$.',
+          3: 'Amplitudenwachstum wäre das Gegenteil einer Dämpfung — $D$ beschreibt die Energiedissipation.',
+        },
+      ),
+      matching(
+        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": Ordne jedem Bereich von $D$ das richtige Systemverhalten zu.',
+        [
+          { left: '$D = 0$', right: 'Ungedämpft — Amplitude bleibt ewig konstant' },
+          { left: '$0 < D < 1$', right: 'Unterkritisch gedämpft — Schwingung klingt exponentiell ab' },
+          { left: '$D = 1$', right: 'Aperiodischer Grenzfall — schnellste Rückkehr ohne Schwingen' },
+          { left: '$D > 1$', right: 'Überkritisch gedämpft — kriecht langsam zur Ruhelage' },
+        ],
+        `**Ansatz:** Das Verhalten der Lösung $x(t)$ hängt qualitativ vom Dämpfungsgrad ab — vier klar abgegrenzte Regime.
+
+**Rechnung:** $D = 0$: reine Oszillation. $D < 1$: exponentiell gedämpfte Oszillation mit $\\omega_d = \\omega_0\\sqrt{1 - D^2}$. $D = 1$: Doppelwurzel, keine Oszillation, schnellste Rückkehr. $D > 1$: zwei reelle negative Wurzeln, reines Kriechen.
+
+**Probe:** Praxis-Design: Stoßdämpfer $D \\approx 0{,}2$–$0{,}4$ (Federeigenschaft bleibt spürbar), Messgeräte $D \\approx 0{,}7$ (kein Überschwingen), Türschließer $D \\geq 1$ (sicher geschlossen ohne Zuschlagen).
+
+**Typischer Fehler:** Alle $D > 0$-Werte als "gut gedämpft" zusammenfassen. Die Grenze bei $D = 1$ ist fundamental — sie trennt schwingende von kriechenden Lösungen.`,
+        [
+          'Grenzen: $0$, $1$ sind die Schlüsselwerte.',
+          'Unter $1$: Schwingung noch vorhanden.',
+          'Ab $1$: Rückkehr ohne Oszillation.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": Geforderter Dämpfungsgrad $D = 0{,}05$ bei $c = 400\\,\\text{N/m}$ und $m = 1\\,\\text{kg}$. Welchen Dämpfungskoeffizienten $d$ muss der Dämpfer bringen?',
+        2, 0.05, 'Ns/m',
+        `**Ansatz:** Formel umstellen: $d = 2 D \\sqrt{cm}$.
+
+**Rechnung:** $\\sqrt{cm} = \\sqrt{400 \\cdot 1} = 20$. $d = 2 \\cdot 0{,}05 \\cdot 20 = 2\\,\\text{Ns/m}$.
+
+**Probe:** Einsetzen: $D = 2/(2 \\cdot 20) = 2/40 = 0{,}05$ ✓. Einheit Ns/m = kg/s (aus $F = d\\dot{x}$). $D = 0{,}05$ ist sehr leicht gedämpft — passt zu dieser kleinen $d$-Zahl.
+
+**Typischer Fehler:** Faktor $2$ unterschlagen und $d = D\\sqrt{cm} = 1$ rechnen. Oder $\\sqrt{cm}$ als $\\sqrt{c + m}$ lesen.`,
+        [
+          'Nach $d$ umstellen: $d = 2D\\sqrt{cm}$.',
+          '$\\sqrt{cm} = 20$.',
+          'Faktor 2 nicht vergessen.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": Welcher Dämpfungsgrad $D$ ist beim Auto-Stoßdämpfer typischerweise gewünscht?',
+        [
+          '$D \\approx 0{,}3$–$0{,}4$ — Federverhalten spürbar, aber Schwingungen klingen schnell ab',
+          '$D = 0$ — Insassen sollen frei mitschwingen',
+          '$D = 2$ — möglichst starre Rückkopplung für sicheres Fahrwerk',
+          '$D \\approx 1{,}5$ — sehr langsames Abklingen gewünscht',
+        ],
+        0,
+        `**Ansatz:** Stoßdämpfer-Auslegung balanciert Komfort (Federweg bleibt nutzbar) und Sicherheit (Schwingung klingt ab, bevor die nächste Fahrbahnunebenheit trifft).
+
+**Rechnung:** Typische PKW-Auslegung: $D \\approx 0{,}2$–$0{,}4$. Mehr Dämpfung macht das Fahrwerk "bretthart" (unkomfortabel), weniger lässt das Auto nach Bodenwellen nachschwingen.
+
+**Probe:** Messgeräte werden auf $D \\approx 0{,}7$ getrimmt (kein Überschwingen der Anzeige). Tür-Schließer auf $D \\geq 1$ (aperiodisch, sicher geschlossen). Autos bleiben bei $0{,}2$–$0{,}4$.
+
+**Typischer Fehler:** $D = 1$ als "perfekt" annehmen — das ist der aperiodische Grenzfall, aber im Fahrwerk unerwünscht (kein Federverhalten mehr spürbar).`,
+        [
+          'Komfort vs. Sicherheit.',
+          'PKW-Design: $D \\in [0{,}2; 0{,}4]$.',
+          'Messgeräte: $D \\approx 0{,}7$.',
+        ],
+        {
+          1: 'Ohne Dämpfung schwingt das Auto nach jeder Unebenheit lange nach — im Extremfall Kontrollverlust.',
+          2: '$D = 2$ macht das Fahrwerk so hart, dass kaum noch Federwirkung bleibt. Unbequem und für die Fahrdynamik schädlich.',
+          3: '$D > 1$ bedeutet langsames Kriechen zur Ruhelage — im Fahrwerk unerwünscht, typisch für Türschließer.',
+        },
+      ),
+    ],
+
+    // ── [4] Mathematisches Pendel $\omega_0 = \sqrt{g/l}$ ────────────────
+    4: [
+      ni(
+        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Ein mathematisches Pendel hat die Länge $l = 1\\,\\text{m}$ ($g = 9{,}81\\,\\text{m/s}^2$). Berechne die Periodendauer $T$. (auf 2 Nachkommastellen)',
+        2.01, 0.02, 's',
+        `**Ansatz:** $\\omega_0 = \\sqrt{g/l}$, dann $T = 2\\pi/\\omega_0 = 2\\pi\\sqrt{l/g}$.
+
+**Rechnung:** $\\omega_0 = \\sqrt{9{,}81/1} = \\sqrt{9{,}81} \\approx 3{,}132\\,\\text{rad/s}$. $T = 2\\pi/3{,}132 \\approx 2{,}006\\,\\text{s} \\approx 2{,}01\\,\\text{s}$.
+
+**Probe:** Direkt: $T = 2\\pi\\sqrt{1/9{,}81} = 2\\pi \\cdot 0{,}3193 \\approx 2{,}006\\,\\text{s}$. ✓ Merke: Pendel mit $l \\approx 1\\,\\text{m}$ hat $T \\approx 2\\,\\text{s}$ — Sekundenpendel!
+
+**Typischer Fehler:** $T = 2\\pi\\sqrt{g/l}$ rechnen (Bruch falsch herum). Oder Wurzel vergessen. Oder mit Gradmaß statt Bogenmaß arbeiten.`,
+        [
+          '$\\omega_0 = \\sqrt{g/l}$ (Pendel: $g$ oben, $l$ unten).',
+          '$T = 2\\pi\\sqrt{l/g}$.',
+          'Merke: $l \\approx 1\\,\\text{m}$ → $T \\approx 2\\,\\text{s}$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Dasselbe Pendel wird auf den Mond ($g_\\text{Mond} \\approx 1{,}62\\,\\text{m/s}^2$) gebracht. Wie ändert sich die Periodendauer $T$?',
+        [
+          '$T$ wird länger (Faktor $\\sqrt{g_\\text{Erde}/g_\\text{Mond}} \\approx 2{,}46$)',
+          '$T$ wird kürzer (Faktor ~1/6)',
+          '$T$ bleibt gleich — Pendelperiode ist ortsunabhängig',
+          'Das Pendel schwingt nicht mehr, weil $g$ zu klein ist',
+        ],
+        0,
+        `**Ansatz:** $T = 2\\pi\\sqrt{l/g}$ — $g$ steht **im Nenner** unter der Wurzel. Kleinere Gravitation → längere Periode.
+
+**Rechnung:** $T_\\text{Mond}/T_\\text{Erde} = \\sqrt{g_\\text{Erde}/g_\\text{Mond}} = \\sqrt{9{,}81/1{,}62} \\approx \\sqrt{6{,}056} \\approx 2{,}46$. Also: Pendel schwingt auf dem Mond ca. $2{,}46$-mal langsamer.
+
+**Probe:** Konkret bei $l = 1\\,\\text{m}$: $T_\\text{Mond} = 2\\pi\\sqrt{1/1{,}62} \\approx 4{,}93\\,\\text{s}$ vs. $T_\\text{Erde} \\approx 2{,}01\\,\\text{s}$. Verhältnis: $4{,}93/2{,}01 \\approx 2{,}45$. ✓
+
+**Typischer Fehler:** Richtung verwechseln ("weniger Gravitation → schnellere Schwingung"). Gravitation ist die rücktreibende Kraft — weniger davon macht die Bewegung **träger**.`,
+        [
+          '$T \\propto 1/\\sqrt{g}$.',
+          'Weniger $g$ → größeres $T$.',
+          'Wurzelmäßig, nicht linear.',
+        ],
+        {
+          1: 'Die Richtung ist falsch. Kleinere Gravitation verlangsamt die Schwingung (schwächere Rückstellung → träger).',
+          2: 'Das Pendel schwingt durchaus, nur langsamer. Auf Apollo-Missionen wurden Pendelversuche tatsächlich durchgeführt.',
+          3: 'Eine genügend kleine Auslenkung genügt immer für eine Schwingung, solange $g > 0$. Auch Astronauten-Videos zeigen das.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Die Periodendauer eines mathematischen Pendels hängt bei kleinen Auslenkungen von der Pendelmasse ab.',
+        false,
+        `**Ansatz:** In $\\omega_0 = \\sqrt{g/l}$ kommt **keine Masse** vor.
+
+**Rechnung:** Die Masse kürzt sich in der Bewegungsgleichung heraus: $m l \\ddot{\\varphi} = -m g \\sin\\varphi \\approx -m g \\varphi$ liefert $\\ddot{\\varphi} + (g/l)\\varphi = 0$. $m$ steht auf beiden Seiten und verschwindet.
+
+**Probe:** Berühmtes Galilei-Experiment: zwei verschieden schwere Pendel gleicher Länge schwingen synchron. Nur die Länge und die lokale Schwerebeschleunigung zählen.
+
+**Typischer Fehler:** Intuition "schwer = langsam" übertragen. Das gilt beim Feder-Masse-System ($\\omega_0 = \\sqrt{c/m}$), **nicht** beim mathematischen Pendel.`,
+        [
+          'Bewegungsgleichung aufstellen und Masse kürzen.',
+          'Nur $g$ und $l$ bleiben übrig.',
+          'Galilei: gleiche Länge → gleiche Periode.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Ein Pendel soll eine Periodendauer von exakt $T = 1{,}0\\,\\text{s}$ haben ($g = 9{,}81\\,\\text{m/s}^2$). Welche Länge $l$ ist nötig? (auf 3 Nachkommastellen in Meter)',
+        0.248, 0.003, 'm',
+        `**Ansatz:** $T = 2\\pi\\sqrt{l/g}$ → nach $l$ umstellen: $l = g T^2/(4\\pi^2)$.
+
+**Rechnung:** $l = 9{,}81 \\cdot 1^2/(4\\pi^2) = 9{,}81/39{,}478 \\approx 0{,}2485\\,\\text{m}$.
+
+**Probe:** Einsetzen: $T = 2\\pi\\sqrt{0{,}2485/9{,}81} = 2\\pi\\sqrt{0{,}02534} = 2\\pi \\cdot 0{,}1592 \\approx 1{,}000\\,\\text{s}$. ✓
+
+**Typischer Fehler:** Quadrat vergessen: $l = gT/(4\\pi^2)$ ist dimensional falsch. Oder Faktor $4$ unterschlagen: $l = gT^2/\\pi^2 \\approx 0{,}994\\,\\text{m}$ wäre viermal zu groß.`,
+        [
+          '$T = 2\\pi\\sqrt{l/g}$.',
+          'Nach $l$ auflösen: $l = g T^2/(4\\pi^2)$.',
+          '$4\\pi^2 \\approx 39{,}48$.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Bringe die Herleitungsschritte für $\\omega_0 = \\sqrt{g/l}$ in die richtige Reihenfolge.',
+        [
+          'Kleinwinkelnäherung $\\sin\\varphi \\approx \\varphi$ für kleine Auslenkungen',
+          'Rücktreibende Kraft: $F_r = -m g \\sin\\varphi$ (Tangentialkomponente der Gewichtskraft)',
+          'Bogenlänge und Winkelbeschleunigung: $\\ddot{s} = l\\ddot{\\varphi}$',
+          'Newton: $m l \\ddot{\\varphi} = -m g \\sin\\varphi$, $m$ kürzen',
+          'Vereinfachte DGL: $\\ddot{\\varphi} + (g/l)\\varphi = 0$ → $\\omega_0^2 = g/l$',
+        ],
+        [1, 2, 3, 0, 4],
+        `**Ansatz:** Physik des Pendels Schritt für Schritt: Kraft, Bewegung, Kürzen, Linearisieren, DGL lesen.
+
+**Rechnung:** (1) Tangentialkomponente der Gewichtskraft liefert die rücktreibende Kraft. (2) Bahnbewegung auf Kreisbogen: $\\ddot{s} = l\\ddot{\\varphi}$. (3) Newton einsetzen und $m$ kürzen. (4) Kleinwinkelnäherung anwenden. (5) Standardform $\\ddot{\\varphi} + \\omega_0^2\\varphi = 0$ ablesen.
+
+**Probe:** Nur die Standardform erlaubt den direkten Vergleich mit $\\ddot{x} + \\omega_0^2 x = 0$ — daraus folgt $\\omega_0 = \\sqrt{g/l}$ ohne weitere Rechnung.
+
+**Typischer Fehler:** Kleinwinkelnäherung **vor** dem Aufstellen der Bewegungsgleichung machen — Risiko, den nichtlinearen Charakter des echten Pendels unbemerkt zu verlieren. Oder $m$ nicht kürzen und dann glauben, die Masse stecke noch im Ergebnis.`,
+        [
+          'Erst Kraft, dann Kinematik, dann Newton.',
+          'Linearisierung ist ein **Näherungsschritt** — erst wenn die Form steht.',
+          'Standardform der DGL offenbart $\\omega_0^2$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Ordne jeder Pendellänge die zugehörige Periodendauer zu ($g = 9{,}81\\,\\text{m/s}^2$).',
+        [
+          { left: '$l = 0{,}10\\,\\text{m}$', right: '$T \\approx 0{,}63\\,\\text{s}$' },
+          { left: '$l = 0{,}25\\,\\text{m}$', right: '$T \\approx 1{,}00\\,\\text{s}$' },
+          { left: '$l = 1{,}00\\,\\text{m}$', right: '$T \\approx 2{,}01\\,\\text{s}$' },
+          { left: '$l = 4{,}00\\,\\text{m}$', right: '$T \\approx 4{,}01\\,\\text{s}$' },
+        ],
+        `**Ansatz:** $T = 2\\pi\\sqrt{l/g}$ — Periode skaliert mit $\\sqrt{l}$.
+
+**Rechnung:** $l = 0{,}1$: $T = 2\\pi\\sqrt{0{,}0102} \\approx 0{,}634\\,\\text{s}$. $l = 0{,}25$: $T = 2\\pi\\sqrt{0{,}0255} \\approx 1{,}003\\,\\text{s}$. $l = 1$: $T \\approx 2{,}006\\,\\text{s}$. $l = 4$: $T = 2\\pi\\sqrt{0{,}408} \\approx 4{,}012\\,\\text{s}$.
+
+**Probe:** $l$ um Faktor $4$ erhöhen verdoppelt $T$ (wegen Wurzel). Check: $l$ von $0{,}25 \\to 1\\,\\text{m}$ ist Faktor $4$, $T$ wächst von $1{,}00$ auf $2{,}01\\,\\text{s}$. ✓
+
+**Typischer Fehler:** Lineare Skalierung annehmen: $l$ verzehnfachen würde $T$ verzehnfachen. Tatsächlich: $T$ wächst nur um $\\sqrt{10} \\approx 3{,}16$-fach.`,
+        [
+          'Wurzel-Skalierung: $T \\propto \\sqrt{l}$.',
+          '$l = 0{,}25\\,\\text{m}$ liefert fast genau $T = 1\\,\\text{s}$.',
+          'Länge $\\times 4$ → Periode $\\times 2$.',
+        ],
+      ),
+    ],
+
+  },
+
 }

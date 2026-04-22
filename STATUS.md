@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2278 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 318 (14 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 940 / 940 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 24 / 1134 (2 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2351 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 397 (17 %) | 100 % der Aufgaben | 🔴 |
+| MC mit wrongAnswerExplanations | 957 / 957 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 34 / 1134 (3 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -919,10 +919,10 @@ _Signalverarbeitung, Regelungstechnik, Elektrotechnik. Laplace vereinfacht DGL z
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **126** (manuell: 59 · supplemental: 67)
-- 4-Block: 41/126 (33 %) 🔴
-- MC-wAE: 30/30 (100 %) ✅
-- Sub-Goals: 5/76 Goal-Tasks verknüpft 🔴
+- Aufgaben: **199** (manuell: 59 · supplemental: 140)
+- 4-Block: 120/199 (60 %) 🟡
+- MC-wAE: 47/47 (100 %) ✅
+- Sub-Goals: 15/76 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Statik (Kräftegleichgewicht) und Dynamik (Newtonsche Gesetze, Energie) — die klassischen Grundlagen des Maschinenbaus.**
@@ -970,11 +970,11 @@ _Mechanik ist das Herzfach im Maschinenbau-Bachelor und Basis für Festigkeitsle
 | `mech-1-2` Momente und Hebelarm | 4 | 0/4 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +4 Goal, +10 4B |
 | `mech-1-3` Schnittkräfte N(x), Q(x), M(x) | 5 | 0/5 | 5 | 2/2/1/0/0 | 0/5 | 2/2 | ✅ | +5 Goal, +5 4B |
 | `mech-1-4` Reibung | 5 | 5/5 | 28 | 7/9/6/3/3 | 27/28 | 7/7 | ✅ | +1 4B |
-| `mech-1-5` Schwerpunkt | 5 | 0/5 | 3 | 0/2/1/0/0 | 0/3 | — | ✅ | +5 Goal, +3 4B |
+| `mech-1-5` Schwerpunkt | 5 | 5/5 | 39 | 7/16/7/5/4 | 39/39 | 7/7 | ✅ | — |
 | `mech-2-1` Newtonsche Gesetze | 5 | 0/5 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +5 Goal, +10 4B |
 | `mech-2-2` Arbeit und Energie | 6 | 0/6 | 10 | 3/3/2/1/1 | 0/10 | 3/3 | ✅ | +6 Goal, +10 4B |
 | `mech-2-3` Kinematik | 6 | 0/6 | 5 | 0/5/0/0/0 | 0/5 | — | ✅ | +6 Goal, +5 4B |
-| `mech-2-4` Schwingungen | 5 | 0/5 | 3 | 1/2/0/0/0 | 0/3 | 1/1 | ✅ | +5 Goal, +3 4B |
+| `mech-2-4` Schwingungen | 5 | 5/5 | 40 | 11/14/6/5/4 | 40/40 | 11/11 | ✅ | — |
 | `mech-2-5` Dynamik starrer Körper | 5 | 0/5 | 3 | 0/3/0/0/0 | 0/3 | — | ✅ | +5 Goal, +3 4B |
 | `mech-3-1` Statik: Prüfungsaufgaben | 5 | 0/5 | 11 | 3/5/1/1/1 | 0/11 | 3/3 | ✅ | +5 Goal, +11 4B |
 | `mech-3-2` Dynamik: Prüfungsaufgaben | 5 | 0/5 | 10 | 2/5/1/1/1 | 0/10 | 2/2 | ✅ | +5 Goal, +10 4B |
@@ -1485,55 +1485,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 72 Lessons
-
-#### `mech-1-5` · Schwerpunkt
-
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** number-input ×2, true-false ×1
-- **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Diskrete Massen: $x_S = \sum m_i x_i / \sum m_i$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Zusammengesetzte Flächen: $x_S = \sum A_i x_{S,i} / \sum A_i$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Loch als negative Fläche subtrahieren
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\pi)$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/technische_mechanik.js`
-- **4-Block-Erklärung fehlt bei:** `ex-mech-1-5-a`, `ex-mech-1-5-b`, `ex-mech-1-5-c`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
-
-#### `mech-2-4` · Schwingungen
-
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Dynamik
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×1, number-input ×2
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Eigenkreisfrequenz: $\omega_0 = \sqrt{c/m}$, Periode $T = 2\pi/\omega_0$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Harmonische Schwingung: $x(t) = A \sin(\omega_0 t + \varphi)$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Resonanz bei $\Omega = \omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Dämpfungsgrad (Lehrsches Maß) $D = d/(2\sqrt{cm})$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Mathematisches Pendel: $\omega_0 = \sqrt{g/l}$ (kleine Auslenkungen)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/technische_mechanik.js`
-- **4-Block-Erklärung fehlt bei:** `ex-mech-2-4-a`, `ex-mech-2-4-b`, `ex-mech-2-4-c`
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 70 Lessons
 
 #### `mech-2-5` · Dynamik starrer Körper
 
@@ -6833,7 +6785,7 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
   - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 3 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 4 Lessons
 
 #### `int-3-4` · Bogenlänge & Durchschnittswert
 
@@ -6890,3 +6842,21 @@ npm run build              # abschließender End-zu-End-Check
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
   - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
+
+#### `mech-1-5` · Schwerpunkt
+
+- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
+- **Aufgaben aktuell:** 39 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
+- **Typen vorhanden:** multiple-choice ×7, number-input ×16, true-false ×7, matching ×5, sorting ×4
+- **Typen einsetzen (Rotation):** sorting, matching, multiple-choice
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
+  - ✅ [0] (hoch) **6/5+** Aufgaben — Diskrete Massen: $x_S = \sum m_i x_i / \sum m_i$
+  - ✅ [1] (hoch) **6/5+** Aufgaben — Zusammengesetzte Flächen: $x_S = \sum A_i x_{S,i} / \sum A_i$
+  - ✅ [2] (hoch) **6/5+** Aufgaben — Loch als negative Fläche subtrahieren
+  - ✅ [3] (mittel) **6/5+** Aufgaben — Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse
+  - ✅ [4] (mittel) **5/5+** Aufgaben — Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\pi)$
+- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
+- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
+  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
