@@ -32,7 +32,7 @@ import { regelungstechnikSupplements } from './supplements/regelungstechnik'
 import { fourierLaplaceSupplements } from './supplements/fourier_laplace'
 import { werkstoffkundeSupplements } from './supplements/werkstoffkunde'
 import { algebraSubGoalTasks } from './subgoal_tasks/algebra'
-import { MIN_EXERCISES_PER_LESSON, MIN_TASKS_PER_SUB_GOAL } from './curriculum'
+import { MIN_EXERCISES_PER_LESSON, MIN_TASKS_PER_SUB_GOAL, TOPIC_GUIDES } from './curriculum'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
 const MANUAL_SUPPLEMENTS = {
@@ -448,11 +448,16 @@ export function getAgentTasks() {
           })
           .map((e) => e.id)
 
+        // Visualisierungs-Status: gibt es mindestens einen 'visualization'-Step?
+        const hasVisualization = (lesson.steps ?? []).some((s) => s.type === 'visualization')
+        const recommendedVisualizations = TOPIC_GUIDES[topic.id]?.recommendedVisualizations ?? []
+
         const needsAny =
           missing > 0 ||
           subGoalsMissingTasks.length > 0 ||
           fourBlockMissing.length > 0 ||
-          mcMissingWae.length > 0
+          mcMissingWae.length > 0 ||
+          (!hasVisualization && recommendedVisualizations.length > 0)
         if (!needsAny) continue
 
         // Ziel-Datei: supplements/<topic>.js (Standard) oder subgoal_tasks/<topic>.js (Goal-Tasks)
@@ -486,6 +491,8 @@ export function getAgentTasks() {
           subGoalsMissingTasks,
           fourBlockMissing,
           mcMissingWae,
+          hasVisualization,
+          recommendedVisualizations,
           targetFile,
           priority,
         })

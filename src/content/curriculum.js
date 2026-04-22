@@ -130,6 +130,42 @@ export const MIN_EXERCISES_PER_LESSON = 20
 export const MIN_TASKS_PER_SUB_GOAL = 5
 
 /**
+ * Alle verfügbaren Visualisierungs-Komponenten (aus
+ * src/components/visualizations/VisualizationEngine.jsx) mit kurzer
+ * Beschreibung. Claude Code soll beim Schreiben einer Lesson prüfen, ob eine
+ * Visualisierung den Stoff klarer macht, und sie dann als Lesson-Step
+ * einbauen: `{ type: 'visualization', visualizationId: '...', params: { ... } }`.
+ *
+ * Grundregel: Wenn sich ein Konzept geometrisch, grafisch oder dynamisch
+ * darstellen lässt — Visualisierung einsetzen. Besonders bei abstrakten
+ * Begriffen (Grenzwert, Ableitung, Vektor, Schwingung, Feld). Bei rein
+ * numerischen Lessons (z. B. Prozentrechnung) nur, wenn sinnvoll.
+ */
+export const AVAILABLE_VISUALIZATIONS = {
+  'unit-circle':         'Einheitskreis mit interaktivem Winkelzeiger (sin/cos-Ablesung)',
+  'trig-explorer':       'sin/cos/tan-Graph mit verstellbarem Winkel und Quadrantenanzeige',
+  'sin-wave-explorer':   'Sinuswelle mit Amplitude, Frequenz, Phase als Slider',
+  'function-graph':      'Beliebige Funktionsgraphen mit Gitter, Bereich, mehreren Kurven',
+  'derivative-graph':    'f(x) und f\'(x) nebeneinander, Tangente am Punkt einstellbar',
+  'limit-explorer':      'Grenzwert-Annäherung mit Sekanten, h→0 visualisieren',
+  'integral-area':       'Fläche unter Kurve, Riemann-Summen, Ober-/Untersumme',
+  'taylor-approx':       'Taylor-Polynom-Approximation mit verstellbarem Grad',
+  'vector-diagram':      '2D-Vektoren mit Addition, Subtraktion, Skalarprodukt',
+  'vector-3d':           '3D-Vektordarstellung mit Rotation und Kreuzprodukt',
+  'complex-plane':       'Gaußsche Zahlenebene, Polarform, Multiplikation als Rotation',
+  'eigenvector-viz':     'Matrix-Transformation mit Eigenvektoren als Fixrichtungen',
+  'force-parallelogram': 'Kräfteparallelogramm, Zerlegung und Resultierende',
+  'free-body-diagram':   'Freikörperbild-Editor (Lagerreaktionen, Schnittgrößen)',
+  'beam-reactions':      'Balken mit Lagerreaktionen (A- und B-Auflager)',
+  'interactive-beam':    'Balken mit Einzel- und Streckenlasten, Schnittgrößenverlauf',
+  'stress-strain':       'Spannungs-Dehnungs-Diagramm mit $R_e$, $R_m$, E-Modul ablesbar',
+  'mohr-circle':         'Mohrscher Spannungskreis, Hauptspannungen und Hauptrichtungen',
+  'spring-mass-damper':  'Feder-Masse-Dämpfer-Simulation (Schwingung, Einschwingverhalten)',
+  'pv-diagram':          'p-V-Diagramm für thermodynamische Zustandsänderungen',
+  'lager-illustration':  'Wälzlager-Querschnitt (Innenring, Wälzkörper, Käfig, Außenring)',
+}
+
+/**
  * TOPIC_GUIDES — pro Topic der konkrete Lernpfad.
  *
  * Felder:
@@ -149,6 +185,7 @@ export const TOPIC_GUIDES = {
   algebra: {
     summary: 'Algebraische Umformungen, Gleichungen und Funktionen — das rechnerische Fundament für alles danach.',
     whyItMatters: 'Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sicher ist, verliert in Mechanik- und Analysis-Prüfungen trotz richtigem Ansatz Punkte bei der Ausführung.',
+    recommendedVisualizations: ['function-graph'],
     roadmap: [
       { unitId: 'alg-unit-0', focus: 'Schulwissen auffrischen: Brüche, Klammern, Prozent, Termumformung. NICHT überspringen — hier entstehen die meisten Folgefehler.' },
       { unitId: 'alg-unit-1', focus: 'Potenzgesetze, Wurzeln, Logarithmen. Wichtig für Exponentialprozesse (Auf-/Entladung, Wachstum) in Regelungstechnik und DGL.' },
@@ -184,6 +221,7 @@ export const TOPIC_GUIDES = {
   trigonometry: {
     summary: 'Winkel, Sinus/Kosinus/Tangens und Einheitskreis — die Sprache, in der Geometrie und Schwingungen beschrieben werden.',
     whyItMatters: 'Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Ohne Trig-Sicherheit wird Statik und Elektrotechnik zur Raterei.',
+    recommendedVisualizations: ['unit-circle', 'trig-explorer', 'sin-wave-explorer'],
     roadmap: [
       { unitId: 'trig-unit-1', focus: 'Winkelmaße, rechtwinkliges Dreieck, sin/cos/tan-Grundwerte. Winkel ↔ Radiant sicher umrechnen.' },
       { unitId: 'trig-unit-2', focus: 'Einheitskreis-Definition, Periodizität, Quadranten und Vorzeichen. DAS Fundament für alle späteren Schwingungsaufgaben.' },
@@ -217,6 +255,7 @@ export const TOPIC_GUIDES = {
   vektoren: {
     summary: 'Vektoren als Größen mit Betrag und Richtung; Skalar-/Kreuzprodukt; Geraden und Ebenen im Raum.',
     whyItMatters: 'Kräfte, Geschwindigkeiten, Magnetfelder — alles Vektoren. Mechanik und Strömungslehre setzen voraus, dass Komponenten, Projektionen und Kreuzprodukt sitzen.',
+    recommendedVisualizations: ['vector-diagram', 'vector-3d', 'force-parallelogram'],
     roadmap: [
       { unitId: 'vek-unit-1', focus: 'Vektor-Grundrechnung, Betrag, Skalarprodukt (Winkel!), Kreuzprodukt (Flächen/Normalen).' },
       { unitId: 'vek-unit-2', focus: 'Parameterdarstellung von Geraden und Ebenen, Schnittpunkte, Abstände, Winkel Gerade–Ebene.' },
@@ -247,6 +286,7 @@ export const TOPIC_GUIDES = {
   ableitung: {
     summary: 'Ableitung als lokale Änderungsrate und Tangentensteigung; Regeln, Kurvendiskussion, Grenzwerte.',
     whyItMatters: 'Ohne Ableitung keine Extremwert-, Geschwindigkeits- oder Optimierungsaufgabe. Ingenieursmathe beginnt hier.',
+    recommendedVisualizations: ['derivative-graph', 'function-graph', 'limit-explorer'],
     roadmap: [
       { unitId: 'abl-unit-1', focus: 'Ableitungsbegriff, geometrische Bedeutung (Tangente), Potenz-, Summenregel.' },
       { unitId: 'abl-unit-2', focus: 'Produkt-, Quotienten-, Kettenregel — DAS Fundament. Viel üben!' },
@@ -280,6 +320,7 @@ export const TOPIC_GUIDES = {
   integralrechnung: {
     summary: 'Integral als Stammfunktion und Fläche unter der Kurve; Techniken (Substitution, Partielle Integration); Anwendungen.',
     whyItMatters: 'Wegstrecke aus Geschwindigkeit, Arbeit aus Kraft, Volumen aus Dichte — all das sind Integrale. Ohne Integralrechnung keine Physik-basierten Probleme.',
+    recommendedVisualizations: ['integral-area', 'function-graph'],
     roadmap: [
       { unitId: 'int-unit-1', focus: 'Stammfunktion, Grundintegrale, bestimmtes vs. unbestimmtes Integral.' },
       { unitId: 'int-unit-2', focus: 'Substitution, Partielle Integration, Partialbruchzerlegung — die drei Klausur-Techniken.' },
@@ -312,6 +353,7 @@ export const TOPIC_GUIDES = {
   'technische-mechanik': {
     summary: 'Statik (Kräftegleichgewicht) und Dynamik (Newtonsche Gesetze, Energie) — die klassischen Grundlagen des Maschinenbaus.',
     whyItMatters: 'Mechanik ist das Herzfach im Maschinenbau-Bachelor und Basis für Festigkeitslehre, Maschinenelemente und Dynamik.',
+    recommendedVisualizations: ['free-body-diagram', 'force-parallelogram', 'beam-reactions', 'interactive-beam', 'vector-diagram'],
     roadmap: [
       { unitId: 'mech-unit-0', focus: 'SI-Einheiten, Dimensionsanalyse. Sauberes Einheiten-Arbeiten verhindert 80 % aller Klausurfehler.' },
       { unitId: 'mech-unit-1', focus: 'Statik: Kräftegleichgewicht, Freikörperbild, Lagerreaktionen, Fachwerke, Schnittgrößen.' },
@@ -344,6 +386,7 @@ export const TOPIC_GUIDES = {
   werkstoffkunde: {
     summary: 'Werkstoffeigenschaften, Prüfverfahren und Kennwerte für Stahl, NE-Metalle, Polymere, Keramik.',
     whyItMatters: 'Kein Bauteil ohne Werkstoffauswahl. Zugversuch, Härte und Kerbschlag sind Klausur-Dauerbrenner.',
+    recommendedVisualizations: ['stress-strain'],
     roadmap: [
       { unitId: 'werk-unit-1', focus: 'Kennwerte: Streckgrenze, Zugfestigkeit, E-Modul, Bruchdehnung.' },
       { unitId: 'werk-unit-2', focus: 'Prüfverfahren: Zugversuch, Härteprüfung (HB, HV, HRC), Kerbschlag.' },
@@ -373,6 +416,7 @@ export const TOPIC_GUIDES = {
   elektrotechnik: {
     summary: 'Gleich- und Wechselstromkreise, Ohmsches Gesetz, Kirchhoff, komplexe Impedanz.',
     whyItMatters: 'Jede Maschine hat Elektrik. Sensoren, Motoren, Steuerungen — ohne Grundverständnis geht nichts.',
+    recommendedVisualizations: ['sin-wave-explorer', 'complex-plane'],
     roadmap: [
       { unitId: 'et-unit-1', focus: 'Gleichstrom: Ohm, Kirchhoff, Serien-/Parallelschaltung, Leistung.' },
       { unitId: 'et-unit-2', focus: 'Wechselstrom: Effektivwerte, Impedanz, RLC-Glieder, komplexe Rechnung.' },
@@ -402,6 +446,7 @@ export const TOPIC_GUIDES = {
   'python-matlab': {
     summary: 'Python und Matlab für ingenieurmäßiges Rechnen: Arrays, Schleifen, Plot, LGS, numerische Integration.',
     whyItMatters: 'Numerische Tools sind in jedem modernen Labor und in der Industrie Standard. Wer nur mit der Hand rechnet, ist bei realen Problemen chancenlos.',
+    recommendedVisualizations: ['function-graph', 'integral-area'],
     roadmap: [
       { unitId: 'py-unit-1', focus: 'Python-Grundlagen: Variablen, Listen, Schleifen, Funktionen.' },
       { unitId: 'py-unit-2', focus: 'Numerisches Rechnen: NumPy-Arrays, Lineare Algebra, Plots.' },
@@ -436,6 +481,7 @@ export const TOPIC_GUIDES = {
   'komplexe-zahlen': {
     summary: 'Zahlen der Form $z=a+bi$; Kartesische und Polar-/Euler-Form; Rechnen in beiden Darstellungen.',
     whyItMatters: 'Grundlage für Wechselstromtechnik, Schwingungen, Fourier, Laplace. Ohne komplexe Zahlen keine saubere Schwingungs- und Regelungstechnik.',
+    recommendedVisualizations: ['complex-plane'],
     roadmap: [
       { unitId: 'komz-unit-1', focus: 'Kartesische Form $a+bi$: Addition, Subtraktion, Multiplikation, Konjugation.' },
       { unitId: 'komz-unit-2', focus: 'Polarform $re^{i\\varphi}$ und Euler-Formel: Multiplikation/Division elegant.' },
@@ -466,6 +512,7 @@ export const TOPIC_GUIDES = {
   'reihen-folgen': {
     summary: 'Folgen, Reihen, Konvergenzkriterien und Taylor-Entwicklung.',
     whyItMatters: 'Approximation komplizierter Funktionen durch Polynome (Taylor) ist die Basis numerischer Verfahren und ingenieursmäßiger Abschätzungen.',
+    recommendedVisualizations: ['taylor-approx', 'function-graph'],
     roadmap: [
       { unitId: 'rf-unit-1', focus: 'Folgengrenzwert, Monotonie, Reihenkonvergenz, Standardreihen (geometrisch, harmonisch).' },
       { unitId: 'rf-unit-2', focus: 'Prüfung: Konvergenzkriterien anwenden und Standard-Taylor-Reihen aufstellen.' },
@@ -493,6 +540,7 @@ export const TOPIC_GUIDES = {
   differentialgleichungen: {
     summary: 'Gewöhnliche DGL: Trennbare, lineare erster Ordnung, lineare zweiter Ordnung mit konstanten Koeffizienten.',
     whyItMatters: 'Physik spricht DGL: Schwingungen, Abkühlung, Population, RC-Glieder. DGL-Sicherheit ist Voraussetzung für Regelungstechnik und Schwingungslehre.',
+    recommendedVisualizations: ['spring-mass-damper', 'function-graph'],
     roadmap: [
       { unitId: 'dgl-unit-1', focus: 'Grundbegriffe (Ordnung, AWP), trennbare und lineare DGL 1. Ordnung.' },
       { unitId: 'dgl-unit-2', focus: 'Lineare DGL 2. Ordnung mit konstanten Koeffizienten (homogen + partikulär).' },
@@ -523,6 +571,7 @@ export const TOPIC_GUIDES = {
   'lineare-algebra': {
     summary: 'Matrizen, Determinanten, lineare Gleichungssysteme, Eigenwerte.',
     whyItMatters: 'LGS stecken in jeder FEM-Simulation, Ausgleichsrechnung, Signalverarbeitung. Eigenwerte sind DIE Kern-Idee für Modalanalyse und Stabilität.',
+    recommendedVisualizations: ['eigenvector-viz', 'vector-diagram'],
     roadmap: [
       { unitId: 'la-unit-1', focus: 'Matrizen-Rechnung, Determinante, Inverse, Rang.' },
       { unitId: 'la-unit-2', focus: 'LGS mit Gauß-Verfahren, Lösbarkeitsbedingung, Eigenwertproblem $\\det(A-\\lambda I)=0$.' },
@@ -552,6 +601,7 @@ export const TOPIC_GUIDES = {
   festigkeitslehre: {
     summary: 'Spannung und Dehnung in Bauteilen: Zug/Druck, Biegung, Torsion. Hooke’sches Gesetz.',
     whyItMatters: 'Jedes Bauteil muss Kräfte aufnehmen ohne zu versagen. Festigkeitslehre sagt, wie dick/dünn es sein darf.',
+    recommendedVisualizations: ['stress-strain', 'mohr-circle', 'interactive-beam', 'beam-reactions'],
     roadmap: [
       { unitId: 'fest-unit-1', focus: 'Normal- und Schubspannung, Dehnung, Hooke, Querkontraktion.' },
       { unitId: 'fest-unit-2', focus: 'Biegung: Flächenträgheitsmoment, $\\sigma = M/W$; Torsion: $\\tau=T/W_t$.' },
@@ -583,6 +633,7 @@ export const TOPIC_GUIDES = {
   thermodynamik: {
     summary: 'Energie, Wärme, Arbeit; Zustandsgrößen, Hauptsätze, ideales Gas, Wirkungsgrad.',
     whyItMatters: 'Motoren, Wärmepumpen, Kraftwerke — alles Thermodynamik. Wirkungsgrad-Abschätzungen sind Ingenieurs-Alltag.',
+    recommendedVisualizations: ['pv-diagram'],
     roadmap: [
       { unitId: 'thermo-unit-1', focus: 'Zustandsgrößen (p, V, T), ideales Gas, Prozessarten.' },
       { unitId: 'thermo-unit-2', focus: '1. und 2. Hauptsatz, Entropie, Carnot-Wirkungsgrad.' },
@@ -613,6 +664,7 @@ export const TOPIC_GUIDES = {
   maschinenelemente: {
     summary: 'Schrauben, Wellen, Lager, Zahnräder — die Standardkomponenten jeder Maschine und ihre Auslegung.',
     whyItMatters: 'Maschinen bestehen aus Maschinenelementen. Wer die nicht auslegen kann, baut keine funktionierende Maschine.',
+    recommendedVisualizations: ['lager-illustration', 'free-body-diagram'],
     roadmap: [
       { unitId: 'melem-unit-1', focus: 'Schraubenverbindungen, Klemmkraft, Vorspannung, ISO-Gewinde.' },
       { unitId: 'melem-unit-2', focus: 'Wellen, Lager, Zahnräder: Übersetzung, Drehmoment, Lagerlebensdauer.' },
@@ -646,6 +698,7 @@ export const TOPIC_GUIDES = {
   'mehrdim-analysis': {
     summary: 'Funktionen mehrerer Variablen: Partielle Ableitungen, Gradient, Hesse-Matrix, Extrema.',
     whyItMatters: 'FEM, CFD, Optimierung: alle mehrdimensional. Gradient und Hesse entscheiden, ob ein Punkt Minimum, Maximum oder Sattel ist.',
+    recommendedVisualizations: ['vector-3d', 'function-graph'],
     roadmap: [
       { unitId: 'mdim-unit-1', focus: 'Partielle Ableitungen, Gradient, Hesse-Matrix, Extrema, Richtungsableitung.' },
       { unitId: 'mdim-unit-2', focus: 'Prüfung: Extremwert-Aufgaben mit und ohne Nebenbedingung.' },
@@ -674,6 +727,7 @@ export const TOPIC_GUIDES = {
   numerik: {
     summary: 'Numerische Verfahren: Nullstellensuche (Newton, Bisektion), Integration (Trapez, Simpson), Fehler.',
     whyItMatters: 'Die meisten ingenieursmäßigen Probleme sind analytisch nicht lösbar. Numerik liefert approximative Lösungen mit kontrollierbarem Fehler.',
+    recommendedVisualizations: ['function-graph', 'integral-area', 'limit-explorer'],
     roadmap: [
       { unitId: 'num-unit-1', focus: 'Newton-Verfahren, Bisektion, Trapez-, Simpson-Regel, Fehlerabschätzung.' },
       { unitId: 'num-unit-2', focus: 'Prüfung: Verfahren anwenden und Konvergenzrate kennen.' },
@@ -702,6 +756,7 @@ export const TOPIC_GUIDES = {
   statistik: {
     summary: 'Zufallsvariablen, Verteilungen, Erwartungswert, Varianz, Konfidenzintervall, Hypothesentests.',
     whyItMatters: 'Qualitätskontrolle, Messunsicherheit, Signifikanz — überall Statistik. Ohne Stochastik kein seriöser Ingenieur.',
+    recommendedVisualizations: ['function-graph'],
     roadmap: [
       { unitId: 'stat-unit-1', focus: 'Diskrete/stetige Zufallsvariablen, Erwartungswert, Varianz, Normalverteilung.' },
       { unitId: 'stat-unit-2', focus: 'Prüfung: Konfidenzintervall, Standardwerte der Normalverteilung.' },
@@ -730,6 +785,7 @@ export const TOPIC_GUIDES = {
   'fourier-laplace': {
     summary: 'Fourier-Reihen (periodische Signale in Harmonische zerlegen) und Laplace (Zeit- ↔ Bildbereich).',
     whyItMatters: 'Signalverarbeitung, Regelungstechnik, Elektrotechnik. Laplace vereinfacht DGL zu Algebra, Fourier zeigt Frequenz-Inhalt.',
+    recommendedVisualizations: ['sin-wave-explorer', 'spring-mass-damper', 'complex-plane'],
     roadmap: [
       { unitId: 'fl-unit-1', focus: 'Fourier-Reihen: $a_n$, $b_n$ berechnen, gerade/ungerade Funktionen, Symmetrien.' },
       { unitId: 'fl-unit-2', focus: 'Laplace: Korrespondenzen, Sprung-/Impulsantworten, inverse Transformation.' },
@@ -759,6 +815,7 @@ export const TOPIC_GUIDES = {
   fluidmechanik: {
     summary: 'Hydrostatik (ruhende Flüssigkeiten) und Strömung (Kontinuität, Bernoulli, Reynolds).',
     whyItMatters: 'Pumpen, Rohrleitungen, Tragflächen, Hydraulik — überall strömende Fluide. Ohne Fluidmechanik keine Auslegung.',
+    recommendedVisualizations: ['free-body-diagram', 'function-graph'],
     roadmap: [
       { unitId: 'fluid-unit-1', focus: 'Hydrostatischer Druck $p=\\rho g h$, Auftrieb.' },
       { unitId: 'fluid-unit-2', focus: 'Kontinuitätsgleichung, Bernoulli, laminare/turbulente Strömung, Reynolds.' },
@@ -788,6 +845,7 @@ export const TOPIC_GUIDES = {
   regelungstechnik: {
     summary: 'Regelkreise, P/I/D-Regler, Stabilität (Hurwitz), Sprungantwort.',
     whyItMatters: 'Automatisierung, Robotik, Prozesstechnik leben von sauberer Regelung. Stabilitätsanalyse ist Pflicht.',
+    recommendedVisualizations: ['spring-mass-damper', 'complex-plane', 'function-graph'],
     roadmap: [
       { unitId: 'rt-unit-1', focus: 'Grundlagen Regelkreis, Übertragungsfunktion, Stellglied.' },
       { unitId: 'rt-unit-2', focus: 'P, I, D-Anteile, PT1/PT2-Glieder, Hurwitz-Stabilitätskriterium.' },

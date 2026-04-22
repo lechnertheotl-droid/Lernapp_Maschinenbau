@@ -484,6 +484,15 @@ if (agentTasks.length > 0) {
         out.push(`- **MC-wAE fehlt bei:** ${t.mcMissingWae.slice(0, 8).map((id) => `\`${id}\``).join(', ')}${t.mcMissingWae.length > 8 ? ` … (+${t.mcMissingWae.length - 8} weitere)` : ''}`)
       }
 
+      // Visualisierung — in dieser Lesson vorhanden, oder zu ergänzen?
+      if (t.recommendedVisualizations && t.recommendedVisualizations.length > 0) {
+        if (t.hasVisualization) {
+          out.push(`- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): ${t.recommendedVisualizations.map((v) => `\`${v}\``).join(', ')} — bei passenden Lesson-Themen als weiteren \`type: 'visualization'\`-Step einbauen.`)
+        } else {
+          out.push(`- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen \`type: 'visualization'\`-Step in \`lesson.steps\` einbauen. Passende Viz-IDs für dieses Topic: ${t.recommendedVisualizations.map((v) => `\`${v}\``).join(', ')}. Alle 21 verfügbaren Viz siehe \`AVAILABLE_VISUALIZATIONS\` in \`src/content/curriculum.js\`.`)
+        }
+      }
+
       // Topic-Guide-Kontext: damit der Agent weiß, welche Lehrplan-Inhalte die
       // Aufgaben dieser Lesson bedienen müssen.
       const guideForTask = TOPIC_GUIDES[t.topicId]
