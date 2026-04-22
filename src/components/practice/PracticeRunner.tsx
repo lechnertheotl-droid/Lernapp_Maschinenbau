@@ -78,11 +78,11 @@ export function PracticeRunner({ exercise, topicId, onFinished, onNext, onChoose
           x,y
         </ToolButton>
         {canShowFormulas && (
-          <ToolButton onClick={() => setShowFormulaSheet(true)} label="Formelsammlung öffnen" variant="lemon">
+          <ToolButton onClick={() => setShowFormulaSheet(true)} label="Formelsammlung öffnen" variant="lemon" className="">
             f
           </ToolButton>
         )}
-        <ToolButton onClick={() => setShowCalculator(true)} label="Taschenrechner öffnen">
+        <ToolButton onClick={() => setShowCalculator(true)} label="Taschenrechner öffnen" className="">
           =
         </ToolButton>
       </div>
