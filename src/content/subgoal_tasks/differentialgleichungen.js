@@ -146,7 +146,7 @@ export const differentialgleichungenSubGoalTasks = {
         0,
         `**Ansatz:** Standard-Substitution: $y_1 = y$, $y_2 = y\'$. Dann $y_1\' = y_2$ und $y_2\' = y\'\' = -4y\' - 3y = -3y_1 - 4y_2$.
 
-**Rechnung:** Zeile 1: $(0, 1)$ (aus $y_1\' = 0\\cdot y_1 + 1\\cdot y_2$). Zeile 2: $(-3, -4)$ (aus $y_2\' = -3y_1 - 4y_2$). Companion-Matrix: unteres Dreieck mit Koeffizienten umgekehrt im Vorzeichen.
+**Rechnung:** Zeile 1: $(0, 1)$ (aus $y_1\' = 0\\cdot y_1 + 1\\cdot y_2$). Zeile 2: $(-3, -4)$ (aus $y_2\' = -3y_1 - 4y_2$). Companion-Matrix: 1er auf der Superdiagonale und die negierten DGL-Koeffizienten in der letzten Zeile.
 
 **Probe:** Ansatz $y=e^{\\lambda t}$ in $y\'\'+4y\'+3y=0$ → $\\lambda^2+4\\lambda+3=(\\lambda+1)(\\lambda+3)=0$. Charakteristisches Polynom von $A$: $\\det(A-\\lambda I) = \\lambda(\\lambda+4)+3 = \\lambda^2+4\\lambda+3$ ✓.
 
@@ -313,7 +313,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
         {
           1: 'Das ist falsch dimensioniert: $\\det(A)$ ist eine Zahl, $\\lambda$ auch — aber die Gleichung $\\det(A) = \\lambda$ würde nur einen Wert liefern, nicht die $n$ Eigenwerte.',
-          2: 'Der Rang sagt aus, wie viele linear unabhängige Eigenvektoren zum Eigenwert $0$ existieren (Dimension des Kerns), gibt aber die Eigenwerte selbst nicht an.',
+          2: 'Der Rang liefert die Dimension des Bildes (nicht des Kerns). Die geometrische Vielfachheit des Eigenwerts $0$ ist die Nullität $n - \\text{rank}(A) = \\dim(\\ker A)$, aber auch die gibt nur den Eigenraum zu $\\lambda=0$ — nicht die Eigenwerte selbst.',
           3: 'Das sucht nur Eigenvektoren zum Eigenwert $\\lambda = 0$. Alle anderen Eigenwerte gehen verloren.',
         },
       ),
