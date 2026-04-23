@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3110 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 1210 (39 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 1212 / 1212 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 179 / 1134 (16 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3195 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 1295 (41 %) | 100 % der Aufgaben | 🔴 |
+| MC mit wrongAnswerExplanations | 1248 / 1248 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 196 / 1134 (17 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -126,10 +126,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **564** (manuell: 112 · supplemental: 452)
-- 4-Block: 421/564 (75 %) 🟡
-- MC-wAE: 252/252 (100 %) ✅
-- Sub-Goals: 73/90 Goal-Tasks verknüpft 🟡
+- Aufgaben: **649** (manuell: 112 · supplemental: 537)
+- 4-Block: 506/649 (78 %) 🟡
+- MC-wAE: 288/288 (100 %) ✅
+- Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
 
 **Algebraische Umformungen, Gleichungen und Funktionen — das rechnerische Fundament für alles danach.**
@@ -188,9 +188,9 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | `alg-3-2` Elementare Funktionen | 6 | 6/6 | 43 | 20/6/6/9/2 | 31/43 | 20/20 | ✅ | +12 4B |
 | `alg-3-3` Funktionsoperationen | 6 | 6/6 | 41 | 22/4/6/7/2 | 32/41 | 22/22 | ✅ | +9 4B |
 | `alg-3-4` Umkehrfunktionen | 6 | 6/6 | 42 | 21/7/8/4/2 | 32/42 | 21/21 | ✅ | +10 4B |
-| `alg-4-1` Prüfung: Algebra-Grundlagen | 5 | 0/5 | 11 | 6/2/2/1/0 | 1/11 | 6/6 | ✅ | +5 Goal, +10 4B |
-| `alg-4-2` Prüfung: Funktionen & Anwendungen | 6 | 0/6 | 11 | 7/1/2/0/1 | 2/11 | 7/7 | ✅ | +6 Goal, +9 4B |
-| `alg-4-3` Prüfung: Gleichungs­systeme & technische Anwendungen | 6 | 0/6 | 11 | 3/4/2/1/1 | 0/11 | 3/3 | ✅ | +6 Goal, +11 4B |
+| `alg-4-1` Prüfung: Algebra-Grundlagen | 5 | 5/5 | 36 | 17/5/7/3/4 | 26/36 | 17/17 | ✅ | +10 4B |
+| `alg-4-2` Prüfung: Funktionen & Anwendungen | 6 | 6/6 | 41 | 19/10/8/1/3 | 32/41 | 19/19 | ✅ | +9 4B |
+| `alg-4-3` Prüfung: Gleichungs­systeme & technische Anwendungen | 6 | 6/6 | 41 | 16/12/5/5/3 | 30/41 | 16/16 | ✅ | +11 4B |
 
 <a id="trigonometry"></a>
 
@@ -1485,7 +1485,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 59 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 56 Lessons
 
 #### `fest-2-4` · Wechselfestigkeit und Betriebsfestigkeit
 
@@ -2452,191 +2452,6 @@ npm run build              # abschließender End-zu-End-Check
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
   - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
-
-#### `alg-4-1` · Prüfung: Algebra-Grundlagen
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-1-1` → `pot-mult`, `pot-potenz`, `pot-negativ`
-  - `alg-1-3` → `log-produkt`, `log-potenz`, `log-basiswechsel`, `log-umkehr`
-  - `alg-2-2` → `abc-formel`, `diskriminante`
-  - `alg-0-4` → `quadrieren-probe`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `pr-diskriminante` — Fallunterscheidung $D>0,=0,<0$ im Prüfungskontext (SG 0)
-  2. `pr-exp-gleichung` — Exponentialgleichung $a^x=b$ durch Logarithmieren lösen (SG 1)
-  3. `pr-wurzel-gleichung` — Wurzelgleichung: quadrieren + Probe gegen Scheinlösungen (SG 2)
-  4. `pr-dimensionslos` — Argumente von $\ln,\log,e^\cdot$ sind dimensionslos (SG 3)
-  5. `pr-rechenweg` — Prüfungsrechnung: jede Umformung benennen (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `pr-diskriminante` · **0/5+** — Diskriminante: $D > 0$ zwei, $D = 0$ eine, $D < 0$ keine reelle Lösung
-  - 🔴 [1] _hoch_ · Konzepte: `pr-exp-gleichung` · **0/5+** — Exponentialgleichung $a^x = b$: durch Logarithmieren $x = \log_a b = \ln b / \ln a$
-  - 🔴 [2] _hoch_ · Konzepte: `pr-wurzel-gleichung` · **0/5+** — Wurzelgleichung: beide Seiten quadrieren + Probe (Scheinlösungen möglich)
-  - 🔴 [3] _hoch_ · Konzepte: `pr-dimensionslos` · **0/5+** — Argumente von $\ln$, $\log$, $e^{(\cdot)}$ müssen dimensionslos sein
-  - 🔴 [4] _mittel_ · Konzepte: `pr-rechenweg` · **0/5+** — Bei Prüfungsaufgaben Rechenweg sichtbar: jede Umformung nummerieren/benennen
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `pr-diskriminante` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `pr-diskriminante` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `pr-diskriminante` | 1 | 0 | 🔴 | [PRÜFUNG] |
-|  4 | 0 | error-analysis     | multiple-choice  | `pr-diskriminante` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | matching         | `pr-diskriminante` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `pr-exp-gleichung` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `pr-exp-gleichung` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `pr-exp-gleichung` | 1 | 0 | 🔴 | [PRÜFUNG] |
-|  9 | 1 | error-analysis     | multiple-choice  | `pr-exp-gleichung` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | sorting          | `pr-exp-gleichung` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `pr-wurzel-gleichung` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `pr-wurzel-gleichung` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `pr-wurzel-gleichung` | 1 | 0 | 🔴 | [PRÜFUNG] |
-| 14 | 2 | error-analysis     | multiple-choice  | `pr-wurzel-gleichung` | 1 | 0 | 🔴 | Distraktor: Probe vergessen |
-| 15 | 2 | transfer           | sorting          | `pr-wurzel-gleichung` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `pr-dimensionslos` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `pr-dimensionslos` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `pr-dimensionslos` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `pr-dimensionslos` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | matching         | `pr-dimensionslos` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `pr-rechenweg` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `pr-rechenweg` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | sorting          | `pr-rechenweg` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `pr-rechenweg` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | sorting          | `pr-rechenweg` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:**
-  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-4-1': { 0: [...], 1: [...], ... }`
-  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-4-1-a`, `ex-alg-4-1-b`, `ex-alg-4-1-d`, `ex-alg-4-1-e`, `ex-alg-4-1-f`, `ex-alg-4-1-g`, `ex-alg-4-1-h`, `ex-alg-4-1-i` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
-#### `alg-4-2` · Prüfung: Funktionen & Anwendungen
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-2-2` → `abc-formel`, `faktor-form`
-  - `alg-3-4` → `umkehr-verfahren`, `umkehr-bereiche`
-  - `alg-3-2` → `exp-fkt`, `log-fkt`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `pr-scheitel-formel` — Scheitelpunkt Parabel: $x_S=-b/(2a)$, $y_S=f(x_S)$ (SG 0)
-  2. `pr-scheitel-form` — Scheitelform $f(x)=a(x-x_S)^2 + y_S$ via quadratischer Ergänzung ⇐ `pr-scheitel-formel` (SG 1)
-  3. `pr-umkehr-prakt` — Umkehrfunktion praktisch berechnen (SG 2)
-  4. `pr-waermeausdehnung` — Wärmeausdehnung $l(T) = l_0(1+\alpha T)$ (SG 3)
-  5. `pr-abklingen` — Abklingen $p(t)=p_0 e^{-kt}$, $t_{1/2}=\ln 2/k$ (SG 4)
-  6. `pr-umsatz` — Umsatz $U(x)=x\cdot p(x)$, Maximum bei $U'(x)=0$ (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `pr-scheitel-formel` · **0/5+** — Scheitelpunkt Parabel $ax^2+bx+c$: $x_S = -b/(2a)$, $y_S = f(x_S)$
-  - 🔴 [1] _hoch_ · Konzepte: `pr-scheitel-form` · **0/5+** — Scheitelform: $f(x) = a(x - x_S)^2 + y_S$ (quadratische Ergänzung)
-  - 🔴 [2] _hoch_ · Konzepte: `pr-umkehr-prakt` · **0/5+** — Umkehrfunktion: $y = f(x)$ → nach $x$ auflösen → $x \leftrightarrow y$ tauschen
-  - 🔴 [3] _mittel_ · Konzepte: `pr-waermeausdehnung` · **0/5+** — Anwendung Wärmeausdehnung: $l(T) = l_0(1 + \alpha T)$
-  - 🔴 [4] _hoch_ · Konzepte: `pr-abklingen` · **0/5+** — Anwendung Abklingen: $p(t) = p_0 e^{-kt}$, Halbwertszeit $t_{1/2} = \ln 2/k$
-  - 🔴 [5] _mittel_ · Konzepte: `pr-umsatz` · **0/5+** — Anwendung Umsatz: $U(x) = x \cdot p(x)$, Maximum bei $U'(x) = 0$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `pr-scheitel-formel` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `pr-scheitel-formel` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `pr-scheitel-formel` | 1 | 0 | 🔴 | [PRÜFUNG] |
-|  4 | 0 | error-analysis     | multiple-choice  | `pr-scheitel-formel` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | matching         | `pr-scheitel-formel` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `pr-scheitel-form` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `pr-scheitel-form` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `pr-scheitel-form` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `pr-scheitel-form` | 1 | 0 | 🔴 | Vorzeichen von $h$ in $(x-h)^2$ |
-| 10 | 1 | transfer           | sorting          | `pr-scheitel-form`, `pr-scheitel-formel` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `pr-umkehr-prakt` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `pr-umkehr-prakt` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `pr-umkehr-prakt` | 1 | 0 | 🔴 | [PRÜFUNG] |
-| 14 | 2 | error-analysis     | multiple-choice  | `pr-umkehr-prakt` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | sorting          | `pr-umkehr-prakt` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `pr-waermeausdehnung` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `pr-waermeausdehnung` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `pr-waermeausdehnung` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `pr-waermeausdehnung` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `pr-waermeausdehnung` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `pr-abklingen` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `pr-abklingen` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `pr-abklingen` | 1 | 0 | 🔴 | Halbwertszeit |
-| 24 | 4 | error-analysis     | multiple-choice  | `pr-abklingen` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | number-input     | `pr-abklingen` | 1 | 0 | 🔴 |  |
-| 26 | 5 | recognize          | true-false       | `pr-umsatz` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `pr-umsatz` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | number-input     | `pr-umsatz` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `pr-umsatz` | 1 | 0 | 🔴 |  |
-| 30 | 5 | transfer           | number-input     | `pr-umsatz` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:**
-  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-4-2': { 0: [...], 1: [...], ... }`
-  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-4-2-a`, `ex-alg-4-2-b`, `ex-alg-4-2-c`, `ex-alg-4-2-e`, `ex-alg-4-2-f`, `ex-alg-4-2-g`, `ex-alg-4-2-h`, `ex-alg-4-2-j` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
-#### `alg-4-3` · Prüfung: Gleichungs­systeme & technische Anwendungen
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-2-1` → `iso-variable`, `koeff-dividieren`, `probe-einsetzen`
-  - `alg-1-3` → `log-def`, `log-basiswechsel`, `log-potenz`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `pr-lgs-methoden` — $2\times2$-LGS: Einsetzungs-, Additions-, Gleichsetzungsmethode (SG 0)
-  2. `pr-betrag-fall` — Betrag auflösen: Fallunterscheidung $|x|=\pm x$ (SG 1)
-  3. `pr-pH` — pH-Wert $\text{pH}=-\log_{10}[\text H^+]$ (SG 2)
-  4. `pr-dB` — Dezibel-Skala $L=10\log_{10}(P/P_0)$ bzw. $=20\log_{10}(U/U_0)$ (SG 3)
-  5. `pr-lgs-faelle` — LGS-Lösungsfälle: eindeutig/keine/unendlich viele ⇐ `pr-lgs-methoden` (SG 4)
-  6. `pr-technik-lgs` — Technik-LGS: Maschenregel, Biegespannung, Mischrechnung ⇐ `pr-lgs-methoden` (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `pr-lgs-methoden` · **0/5+** — $2\times 2$-LGS: Einsetzungs-, Additions-, Gleichsetzungsmethode — alle äquivalent
-  - 🔴 [1] _hoch_ · Konzepte: `pr-betrag-fall` · **0/5+** — Betrag auflösen: Fallunterscheidung $|x| = x$ für $x \geq 0$, $|x| = -x$ für $x < 0$
-  - 🔴 [2] _hoch_ · Konzepte: `pr-pH` · **0/5+** — pH-Wert: $\text{pH} = -\log_{10}[H^+]$ (logarithmische Skala der H⁺-Konzentration)
-  - 🔴 [3] _hoch_ · Konzepte: `pr-dB` · **0/5+** — dB-Skala: $L = 10 \log_{10}(P/P_0)$ (Leistung) bzw. $= 20 \log_{10}(U/U_0)$ (Amplitude)
-  - 🔴 [4] _hoch_ · Konzepte: `pr-lgs-faelle` · **0/5+** — LGS-Lösungsfälle: eindeutig (det $\neq 0$), keine Lösung (Widerspruch), unendlich (parallel)
-  - 🔴 [5] _mittel_ · Konzepte: `pr-technik-lgs` · **0/5+** — Technik-Anwendungen: Kirchhoffsche Maschenregeln, Biegespannung, Mischrechnung
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | matching         | `pr-lgs-methoden` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `pr-lgs-methoden` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `pr-lgs-methoden` | 1 | 0 | 🔴 | [PRÜFUNG] |
-|  4 | 0 | error-analysis     | multiple-choice  | `pr-lgs-methoden` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | sorting          | `pr-lgs-methoden` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `pr-betrag-fall` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `pr-betrag-fall` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `pr-betrag-fall` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `pr-betrag-fall` | 1 | 0 | 🔴 | Distraktor: nur positiven Fall |
-| 10 | 1 | transfer           | sorting          | `pr-betrag-fall` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `pr-pH` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `pr-pH` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `pr-pH` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `pr-pH` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `pr-pH` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `pr-dB` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `pr-dB` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `pr-dB` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `pr-dB` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `pr-dB` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | matching         | `pr-lgs-faelle` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `pr-lgs-faelle` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `pr-lgs-faelle` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `pr-lgs-faelle` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | matching         | `pr-lgs-faelle` | 1 | 0 | 🔴 |  |
-| 26 | 5 | recognize          | matching         | `pr-technik-lgs` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `pr-technik-lgs` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | number-input     | `pr-technik-lgs` | 1 | 0 | 🔴 | [PRÜFUNG] technisch |
-| 29 | 5 | error-analysis     | multiple-choice  | `pr-technik-lgs` | 1 | 0 | 🔴 |  |
-| 30 | 5 | transfer           | number-input     | `pr-technik-lgs` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:**
-  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-4-3': { 0: [...], 1: [...], ... }`
-  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-4-3-a`, `ex-alg-4-3-b`, `ex-alg-4-3-c`, `ex-alg-4-3-d`, `ex-alg-4-3-e`, `ex-alg-4-3-f`, `ex-alg-4-3-g`, `ex-alg-4-3-h` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `la-3-1` · Prüfung: Matrizen & Determinanten
 
@@ -6160,7 +5975,7 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
   - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 30 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 33 Lessons
 
 #### `mech-0-3` · Dimensionsanalyse — Einheitencheck
 
@@ -6776,6 +6591,63 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
   - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
+#### `alg-4-1` · Prüfung: Algebra-Grundlagen
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-1-1` → `pot-mult`, `pot-potenz`, `pot-negativ`
+  - `alg-1-3` → `log-produkt`, `log-potenz`, `log-basiswechsel`, `log-umkehr`
+  - `alg-2-2` → `abc-formel`, `diskriminante`
+  - `alg-0-4` → `quadrieren-probe`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `pr-diskriminante` — Fallunterscheidung $D>0,=0,<0$ im Prüfungskontext (SG 0)
+  2. `pr-exp-gleichung` — Exponentialgleichung $a^x=b$ durch Logarithmieren lösen (SG 1)
+  3. `pr-wurzel-gleichung` — Wurzelgleichung: quadrieren + Probe gegen Scheinlösungen (SG 2)
+  4. `pr-dimensionslos` — Argumente von $\ln,\log,e^\cdot$ sind dimensionslos (SG 3)
+  5. `pr-rechenweg` — Prüfungsrechnung: jede Umformung benennen (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `pr-diskriminante` · **5/5+** — Diskriminante: $D > 0$ zwei, $D = 0$ eine, $D < 0$ keine reelle Lösung
+  - ✅ [1] _hoch_ · Konzepte: `pr-exp-gleichung` · **5/5+** — Exponentialgleichung $a^x = b$: durch Logarithmieren $x = \log_a b = \ln b / \ln a$
+  - ✅ [2] _hoch_ · Konzepte: `pr-wurzel-gleichung` · **5/5+** — Wurzelgleichung: beide Seiten quadrieren + Probe (Scheinlösungen möglich)
+  - ✅ [3] _hoch_ · Konzepte: `pr-dimensionslos` · **5/5+** — Argumente von $\ln$, $\log$, $e^{(\cdot)}$ müssen dimensionslos sein
+  - ✅ [4] _mittel_ · Konzepte: `pr-rechenweg` · **5/5+** — Bei Prüfungsaufgaben Rechenweg sichtbar: jede Umformung nummerieren/benennen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `pr-diskriminante` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pr-diskriminante` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `pr-diskriminante` | 1 | 1 | ✅ | [PRÜFUNG] |
+|  4 | 0 | error-analysis     | multiple-choice  | `pr-diskriminante` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | matching         | `pr-diskriminante` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `pr-exp-gleichung` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pr-exp-gleichung` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `pr-exp-gleichung` | 1 | 1 | ✅ | [PRÜFUNG] |
+|  9 | 1 | error-analysis     | multiple-choice  | `pr-exp-gleichung` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | sorting          | `pr-exp-gleichung` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `pr-wurzel-gleichung` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pr-wurzel-gleichung` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `pr-wurzel-gleichung` | 1 | 1 | ✅ | [PRÜFUNG] |
+| 14 | 2 | error-analysis     | multiple-choice  | `pr-wurzel-gleichung` | 1 | 1 | ✅ | Distraktor: Probe vergessen |
+| 15 | 2 | transfer           | sorting          | `pr-wurzel-gleichung` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `pr-dimensionslos` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pr-dimensionslos` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `pr-dimensionslos` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pr-dimensionslos` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | matching         | `pr-dimensionslos` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `pr-rechenweg` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `pr-rechenweg` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | sorting          | `pr-rechenweg` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `pr-rechenweg` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | sorting          | `pr-rechenweg` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-4-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
+- **4-Block-Erklärung fehlt bei:** `ex-alg-4-1-a`, `ex-alg-4-1-b`, `ex-alg-4-1-d`, `ex-alg-4-1-e`, `ex-alg-4-1-f`, `ex-alg-4-1-g`, `ex-alg-4-1-h`, `ex-alg-4-1-i` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
 #### `trig-4-1` · Prüfung: Identitäten & Gleichungen
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
@@ -6912,6 +6784,131 @@ npm run build              # abschließender End-zu-End-Check
   - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-3-3': { 0: [...], 1: [...], ... }`
   - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-3-c`, `ex-alg-3-3-manual-1`, `ex-alg-3-3-manual-2`, `ex-alg-3-3-manual-3`, `ex-alg-3-3-manual-4`, `ex-alg-3-3-manual-5`, `ex-alg-3-3-manual-6`, `ex-alg-3-3-manual-7` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
+#### `alg-4-2` · Prüfung: Funktionen & Anwendungen
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-2-2` → `abc-formel`, `faktor-form`
+  - `alg-3-4` → `umkehr-verfahren`, `umkehr-bereiche`
+  - `alg-3-2` → `exp-fkt`, `log-fkt`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `pr-scheitel-formel` — Scheitelpunkt Parabel: $x_S=-b/(2a)$, $y_S=f(x_S)$ (SG 0)
+  2. `pr-scheitel-form` — Scheitelform $f(x)=a(x-x_S)^2 + y_S$ via quadratischer Ergänzung ⇐ `pr-scheitel-formel` (SG 1)
+  3. `pr-umkehr-prakt` — Umkehrfunktion praktisch berechnen (SG 2)
+  4. `pr-waermeausdehnung` — Wärmeausdehnung $l(T) = l_0(1+\alpha T)$ (SG 3)
+  5. `pr-abklingen` — Abklingen $p(t)=p_0 e^{-kt}$, $t_{1/2}=\ln 2/k$ (SG 4)
+  6. `pr-umsatz` — Umsatz $U(x)=x\cdot p(x)$, Maximum bei $U'(x)=0$ (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `pr-scheitel-formel` · **5/5+** — Scheitelpunkt Parabel $ax^2+bx+c$: $x_S = -b/(2a)$, $y_S = f(x_S)$
+  - ✅ [1] _hoch_ · Konzepte: `pr-scheitel-form` · **5/5+** — Scheitelform: $f(x) = a(x - x_S)^2 + y_S$ (quadratische Ergänzung)
+  - ✅ [2] _hoch_ · Konzepte: `pr-umkehr-prakt` · **5/5+** — Umkehrfunktion: $y = f(x)$ → nach $x$ auflösen → $x \leftrightarrow y$ tauschen
+  - ✅ [3] _mittel_ · Konzepte: `pr-waermeausdehnung` · **5/5+** — Anwendung Wärmeausdehnung: $l(T) = l_0(1 + \alpha T)$
+  - ✅ [4] _hoch_ · Konzepte: `pr-abklingen` · **5/5+** — Anwendung Abklingen: $p(t) = p_0 e^{-kt}$, Halbwertszeit $t_{1/2} = \ln 2/k$
+  - ✅ [5] _mittel_ · Konzepte: `pr-umsatz` · **5/5+** — Anwendung Umsatz: $U(x) = x \cdot p(x)$, Maximum bei $U'(x) = 0$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `pr-scheitel-formel` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pr-scheitel-formel` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `pr-scheitel-formel` | 1 | 1 | ✅ | [PRÜFUNG] |
+|  4 | 0 | error-analysis     | multiple-choice  | `pr-scheitel-formel` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | matching         | `pr-scheitel-formel` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `pr-scheitel-form` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pr-scheitel-form` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `pr-scheitel-form` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pr-scheitel-form` | 1 | 1 | ✅ | Vorzeichen von $h$ in $(x-h)^2$ |
+| 10 | 1 | transfer           | sorting          | `pr-scheitel-form`, `pr-scheitel-formel` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `pr-umkehr-prakt` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pr-umkehr-prakt` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `pr-umkehr-prakt` | 1 | 1 | ✅ | [PRÜFUNG] |
+| 14 | 2 | error-analysis     | multiple-choice  | `pr-umkehr-prakt` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | sorting          | `pr-umkehr-prakt` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `pr-waermeausdehnung` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pr-waermeausdehnung` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `pr-waermeausdehnung` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pr-waermeausdehnung` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | number-input     | `pr-waermeausdehnung` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `pr-abklingen` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `pr-abklingen` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `pr-abklingen` | 1 | 1 | ✅ | Halbwertszeit |
+| 24 | 4 | error-analysis     | multiple-choice  | `pr-abklingen` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | number-input     | `pr-abklingen` | 1 | 1 | ✅ |  |
+| 26 | 5 | recognize          | true-false       | `pr-umsatz` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `pr-umsatz` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | number-input     | `pr-umsatz` | 1 | 1 | ✅ |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `pr-umsatz` | 1 | 1 | ✅ |  |
+| 30 | 5 | transfer           | number-input     | `pr-umsatz` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-4-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
+- **4-Block-Erklärung fehlt bei:** `ex-alg-4-2-a`, `ex-alg-4-2-b`, `ex-alg-4-2-c`, `ex-alg-4-2-e`, `ex-alg-4-2-f`, `ex-alg-4-2-g`, `ex-alg-4-2-h`, `ex-alg-4-2-j` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
+#### `alg-4-3` · Prüfung: Gleichungs­systeme & technische Anwendungen
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-2-1` → `iso-variable`, `koeff-dividieren`, `probe-einsetzen`
+  - `alg-1-3` → `log-def`, `log-basiswechsel`, `log-potenz`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `pr-lgs-methoden` — $2\times2$-LGS: Einsetzungs-, Additions-, Gleichsetzungsmethode (SG 0)
+  2. `pr-betrag-fall` — Betrag auflösen: Fallunterscheidung $|x|=\pm x$ (SG 1)
+  3. `pr-pH` — pH-Wert $\text{pH}=-\log_{10}[\text H^+]$ (SG 2)
+  4. `pr-dB` — Dezibel-Skala $L=10\log_{10}(P/P_0)$ bzw. $=20\log_{10}(U/U_0)$ (SG 3)
+  5. `pr-lgs-faelle` — LGS-Lösungsfälle: eindeutig/keine/unendlich viele ⇐ `pr-lgs-methoden` (SG 4)
+  6. `pr-technik-lgs` — Technik-LGS: Maschenregel, Biegespannung, Mischrechnung ⇐ `pr-lgs-methoden` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `pr-lgs-methoden` · **5/5+** — $2\times 2$-LGS: Einsetzungs-, Additions-, Gleichsetzungsmethode — alle äquivalent
+  - ✅ [1] _hoch_ · Konzepte: `pr-betrag-fall` · **5/5+** — Betrag auflösen: Fallunterscheidung $|x| = x$ für $x \geq 0$, $|x| = -x$ für $x < 0$
+  - ✅ [2] _hoch_ · Konzepte: `pr-pH` · **5/5+** — pH-Wert: $\text{pH} = -\log_{10}[H^+]$ (logarithmische Skala der H⁺-Konzentration)
+  - ✅ [3] _hoch_ · Konzepte: `pr-dB` · **5/5+** — dB-Skala: $L = 10 \log_{10}(P/P_0)$ (Leistung) bzw. $= 20 \log_{10}(U/U_0)$ (Amplitude)
+  - ✅ [4] _hoch_ · Konzepte: `pr-lgs-faelle` · **5/5+** — LGS-Lösungsfälle: eindeutig (det $\neq 0$), keine Lösung (Widerspruch), unendlich (parallel)
+  - ✅ [5] _mittel_ · Konzepte: `pr-technik-lgs` · **5/5+** — Technik-Anwendungen: Kirchhoffsche Maschenregeln, Biegespannung, Mischrechnung
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | matching         | `pr-lgs-methoden` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pr-lgs-methoden` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `pr-lgs-methoden` | 1 | 1 | ✅ | [PRÜFUNG] |
+|  4 | 0 | error-analysis     | multiple-choice  | `pr-lgs-methoden` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | sorting          | `pr-lgs-methoden` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `pr-betrag-fall` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pr-betrag-fall` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `pr-betrag-fall` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pr-betrag-fall` | 1 | 1 | ✅ | Distraktor: nur positiven Fall |
+| 10 | 1 | transfer           | sorting          | `pr-betrag-fall` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `pr-pH` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pr-pH` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `pr-pH` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `pr-pH` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `pr-pH` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `pr-dB` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pr-dB` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `pr-dB` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pr-dB` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | number-input     | `pr-dB` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | matching         | `pr-lgs-faelle` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `pr-lgs-faelle` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `pr-lgs-faelle` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `pr-lgs-faelle` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | matching         | `pr-lgs-faelle` | 1 | 1 | ✅ |  |
+| 26 | 5 | recognize          | matching         | `pr-technik-lgs` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `pr-technik-lgs` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | number-input     | `pr-technik-lgs` | 1 | 1 | ✅ | [PRÜFUNG] technisch |
+| 29 | 5 | error-analysis     | multiple-choice  | `pr-technik-lgs` | 1 | 1 | ✅ |  |
+| 30 | 5 | transfer           | number-input     | `pr-technik-lgs` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-4-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
+- **4-Block-Erklärung fehlt bei:** `ex-alg-4-3-a`, `ex-alg-4-3-b`, `ex-alg-4-3-c`, `ex-alg-4-3-d`, `ex-alg-4-3-e`, `ex-alg-4-3-f`, `ex-alg-4-3-g`, `ex-alg-4-3-h` … (+3 weitere)
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
