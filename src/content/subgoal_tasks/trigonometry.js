@@ -18,35 +18,47 @@ export const trigonometrySubGoalTasks = {
 
   // ────────────────────────────────────────────────────────────────────────
   // trig-1-0 — Winkel-Intuition (Einstieg)  (3 subGoals)
-  // Je 5 Aufgaben = 15 Goal-Tasks
+  // 15 Matrix-Aufgaben: 3 SGs × 5 Stufen (recognize/apply-guided/
+  // apply-independent/error-analysis/transfer). Jede mit pedagogy-Tag.
   // ────────────────────────────────────────────────────────────────────────
   'trig-1-0': {
-
     // ── [0] Winkeltypen: spitz/recht/stumpf/gestreckt/voll ────────────────
     0: [
+      tf(
+        'Ein Winkel von $90°$ ist stumpf.',
+        false,
+        `**Ansatz:** Grenzwerte auswendig: spitz $<90°$, recht $=90°$, stumpf $90°<\\alpha<180°$, gestreckt $=180°$.
+
+**Rechnung:** $90°$ ist **exakt** der rechte Winkel — nicht stumpf, nicht spitz.
+
+**Probe:** Stumpf beginnt erst oberhalb von $90°$ (z. B. $91°$). Die Grenze $90°$ gehört allein zum rechten Winkel.
+
+**Typischer Fehler:** Die Grenze $90°$ sowohl als "recht" als auch als "stumpf" zählen. Jeder Winkel hat genau eine Klasse.`,
+        [
+          'Welcher Wert markiert den rechten Winkel?',
+          'Stumpf ist STRIKT größer als $90°$.',
+          'Exakt $90°$ = recht.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['winkel-typen'] },
+      ),
       mc(
         'Welche Klasse hat der Winkel $135°$?',
-        [
-          'stumpf',
-          'spitz',
-          'recht',
-          'gestreckt',
-        ],
+        ['stumpf', 'spitz', 'recht', 'gestreckt'],
         0,
-        `**Ansatz:** Winkelklassen nach Grenzen: spitz $<90°$, recht $=90°$, stumpf $90°–180°$ (exklusive Randpunkte), gestreckt $=180°$.
+        `**Ansatz:** Einordnen in die Klasse nach Grenzen.
 
-**Rechnung:** $135°$ liegt echt zwischen $90°$ und $180°$ → **stumpf**.
+**Rechnung:** $90° < 135° < 180°$ → **stumpf**.
 
-**Probe:** Am Einheitskreis: $135°$ zeigt in den 2. Quadrant (oben links), zwischen "gerade hoch" ($90°$) und "gerade links" ($180°$).
+**Probe:** Am Einheitskreis liegt $135°$ im zweiten Quadranten (oben links, zwischen "gerade hoch" und "gerade links").
 
-**Typischer Fehler:** "Stumpf = jeder Winkel größer $90°$" — das stimmt nur bis $180°$. $200°$ wäre bereits *überstumpf* (Vollwinkel-Bereich).`,
+**Typischer Fehler:** "Größer als $90°$ = stumpf" gilt NUR bis $180°$. Über $180°$ sind Winkel bereits überstumpf / Vollwinkel.`,
         [
-          'Grenzen der Winkelklassen auswendig.',
+          'Zwischen welchen Grenzen liegt $135°$?',
           'Spitz $<90°$, stumpf zwischen $90°$ und $180°$.',
-          '$135°$ liegt zwischen welchen Werten?',
+          '$135°$ liegt im zweiten Quadranten.',
         ],
         {
-          1: 'Spitz wäre $<90°$. $135°$ ist deutlich größer als $90°$.',
+          1: 'Spitz wäre $<90°$. $135°$ ist deutlich größer.',
           2: 'Rechter Winkel ist exakt $90°$. $135°$ ist $45°$ mehr.',
           3: 'Gestreckter Winkel ist exakt $180°$. $135°$ ist $45°$ weniger.',
         },
@@ -55,173 +67,158 @@ export const trigonometrySubGoalTasks = {
       ni(
         'Wie viele Grad hat ein rechter Winkel?',
         90, 0, '°',
-        `**Ansatz:** Ein rechter Winkel = Viertel einer vollen Drehung.
+        `**Ansatz:** Rechter Winkel = Viertel einer vollen Drehung.
 
 **Rechnung:** $360° / 4 = 90°$.
 
-**Probe:** Fensterecke, Buchecke, L-Form — alles rechte Winkel, also $90°$.
+**Probe:** Buchecke, Fensterecke, L-Form — alle rechte Winkel, also $90°$.
 
-**Typischer Fehler:** $45°$ (das ist der halbe rechte Winkel) oder $180°$ (gestreckter Winkel) angeben.`,
+**Typischer Fehler:** $45°$ angeben (halber rechter Winkel) oder $180°$ (gestreckter Winkel).`,
         [
           'Viertel vom Vollkreis.',
           '$360° / 4 = ?$',
-          'Ein rechter Winkel ist am Buchstabe "L" zu sehen.',
+          'L-Form: zwei Linien stehen senkrecht aufeinander.',
         ],
         { stage: 'apply-independent', subGoal: 0, uses: ['winkel-typen'] },
       ),
-      tf(
-        'Ein Winkel von $89°$ ist stumpf.',
-        false,
-        `**Ansatz:** Grenze zwischen spitz und stumpf liegt bei $90°$.
-
-**Rechnung:** $89° < 90°$ → **spitz**, nicht stumpf.
-
-**Probe:** Stumpf ist erst $>90°$. Auch $89{,}9°$ ist noch spitz.
-
-**Typischer Fehler:** "Fast rechter Winkel" als stumpf einordnen. Die Grenze ist scharf: $89°$ spitz, $90°$ recht, $91°$ stumpf.`,
+      mc(
+        'Ein Schüler sagt: „Jeder Winkel größer als $90°$ ist stumpf." Wo liegt der Fehler?',
         [
-          'Grenze ist exakt $90°$.',
-          'Alles $<90°$ ist spitz.',
-          'Alles $>90°$ (bis $180°$) ist stumpf.',
+          'Die Aussage ignoriert die Obergrenze $180°$ — oberhalb davon ist der Winkel bereits überstumpf (Vollwinkel-Bereich).',
+          'Die Aussage stimmt vollständig.',
+          'Stumpf sind nur Winkel größer $180°$.',
+          'Stumpf ist nur exakt $135°$, nichts dazwischen.',
         ],
-        { stage: 'recognize', subGoal: 0, uses: ['winkel-typen'] },
+        0,
+        `**Ansatz:** Die Klasse "stumpf" hat eine Obergrenze, die der Schüler übersieht.
+
+**Rechnung:** Stumpf gilt für $90° < \\alpha < 180°$. Bei $180°$ wird der Winkel gestreckt, bei $>180°$ überstumpf.
+
+**Probe:** $200°$ ist nicht stumpf, sondern überstumpf. Die Aussage des Schülers würde das fälschlich als stumpf klassifizieren.
+
+**Typischer Fehler:** Genau dieser — "$>90°$" als einzige Bedingung ohne Obergrenze. Jede Klasse hat zwei Grenzen.`,
+        [
+          'Stumpf hat eine Unter- UND eine Obergrenze.',
+          'Was passiert bei $180°$, bei $270°$?',
+          'Jede Klasse: zwei Grenzen.',
+        ],
+        {
+          1: 'Die Aussage stimmt eben nicht — bei $200°$ wäre der Winkel nicht mehr stumpf.',
+          2: 'Stumpf beginnt bei $>90°$, nicht bei $>180°$. Das wäre überstumpf.',
+          3: 'Stumpf ist ein ganzer Bereich, nicht ein einzelner Wert. $100°$, $135°$, $170°$ sind alle stumpf.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['winkel-typen'] },
       ),
       matching(
-        'Ordne jeden Winkel seiner Klasse zu.',
+        'Ordne jedem Winkel seine Klasse zu.',
         [
-          { left: '$30°$',    right: 'spitz' },
-          { left: '$90°$',    right: 'recht' },
-          { left: '$120°$',   right: 'stumpf' },
-          { left: '$180°$',   right: 'gestreckt' },
+          { left: '$30°$',   right: 'spitz' },
+          { left: '$90°$',   right: 'recht' },
+          { left: '$120°$',  right: 'stumpf' },
+          { left: '$180°$',  right: 'gestreckt' },
         ],
-        `**Ansatz:** Standardklassifizierung nach Grenzwerten.
+        `**Ansatz:** Standardklassifizierung durch Grenzwert-Vergleich.
 
-**Rechnung:** $30° < 90°$ spitz. $90° = $ recht. $90° < 120° < 180°$ stumpf. $180° = $ gestreckt.
+**Rechnung:** $30°<90°$ spitz; $90°$ exakt recht; $90°<120°<180°$ stumpf; $180°$ exakt gestreckt.
 
-**Probe:** Von klein nach groß: spitz $\\to$ recht $\\to$ stumpf $\\to$ gestreckt $\\to$ überstumpf $\\to$ voll.
+**Probe:** Von klein nach groß: spitz → recht → stumpf → gestreckt. Jede Grenze gehört zur festen Klasse.
 
-**Typischer Fehler:** Grenzwerte doppelt zählen — $90°$ ist nur recht, nicht spitz und nicht stumpf.`,
+**Typischer Fehler:** Grenzwerte doppelt einordnen ($90°$ sowohl recht als auch spitz) — jeder Winkel hat eindeutig eine Klasse.`,
         [
-          'Vier Hauptklassen: spitz, recht, stumpf, gestreckt.',
-          'Grenzen sind exakt: $90°$ und $180°$.',
-          '$0°$ ist Sonderfall (kein Winkel).',
-        ],
-        { stage: 'transfer', subGoal: 0, uses: ['winkel-typen'] },
-      ),
-      sorting(
-        'Sortiere die Winkelklassen nach aufsteigender Größe.',
-        [
-          'spitz ($<90°$)',
-          'recht ($=90°$)',
-          'stumpf ($90°<x<180°$)',
-          'gestreckt ($=180°$)',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Klassifikation nach Winkelgröße.
-
-**Rechnung:** $0° \\to 90°$ spitz, $90°$ recht, $90° \\to 180°$ stumpf, $180°$ gestreckt.
-
-**Probe:** Jede Klasse hat einen klaren Bereich und die Reihenfolge folgt dem Winkelwert.
-
-**Typischer Fehler:** "Voll" oder "überstumpf" dazwischen einsortieren — sie kommen erst nach $180°$.`,
-        [
-          'Aufsteigend nach Winkelwert.',
-          'Spitz, recht, stumpf, gestreckt.',
-          'Dann käme noch überstumpf ($180°$–$360°$) und voll ($360°$).',
+          'Vier Klassen: spitz, recht, stumpf, gestreckt.',
+          'Grenzen $90°$ und $180°$ gehören zur rechten bzw. gestreckten Klasse.',
+          'Bei Zweifel: Grenze links oder rechts?',
         ],
         { stage: 'transfer', subGoal: 0, uses: ['winkel-typen'] },
       ),
     ],
 
-    // ── [1] Innenwinkelsumme im Dreieck = 180° ────────────────────────────
+    // ── [1] Innenwinkelsumme im Dreieck = 180° ─────────────────────────────
     1: [
+      tf(
+        'Die Innenwinkelsumme eines Dreiecks ist immer $180°$, unabhängig von der Dreiecksform.',
+        true,
+        `**Ansatz:** Fundamentaler Satz der euklidischen Geometrie.
+
+**Rechnung:** Für jedes Dreieck gilt $\\alpha + \\beta + \\gamma = 180°$.
+
+**Probe:** Gleichseitig: $60°+60°+60°=180°$. Rechtwinklig-gleichschenklig: $90°+45°+45°=180°$. Beliebig: $30°+70°+80°=180°$.
+
+**Typischer Fehler:** Annehmen, dass dies nur für "normale" Dreiecke gilt. Die Regel gilt für ALLE ebenen Dreiecke.`,
+        [
+          'Fundamental-Satz der Dreieckslehre.',
+          'Unabhängig von Seitenlängen oder Form.',
+          'Summe der drei Innenwinkel.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['winkelsumme-180'] },
+      ),
+      mc(
+        'In einem rechtwinkligen Dreieck ist ein nicht-rechter Winkel $35°$. Wie groß ist der andere nicht-rechte Winkel?',
+        ['$55°$', '$145°$', '$65°$', '$35°$'],
+        0,
+        `**Ansatz:** Rechter Winkel $= 90°$. Die anderen beiden ergänzen sich zu $90°$.
+
+**Rechnung:** $90° - 35° = 55°$.
+
+**Probe:** $90° + 35° + 55° = 180°$ ✓.
+
+**Typischer Fehler:** $180° - 35° = 145°$ rechnen und den rechten Winkel vergessen. Das würde $90° + 35° + 145° = 270°$ ergeben — unmöglich.`,
+        [
+          'Rechter Winkel hat wie viel Grad?',
+          'Rest zu $180°$ für beide nicht-rechten Winkel: $90°$.',
+          '$90° - 35° = ?$',
+        ],
+        {
+          1: '$145°$ wäre schon allein stumpf — zusammen mit dem rechten Winkel über $180°$.',
+          2: '$65°$ ergibt $90°+35°+65° = 190°$, zu viel um $10°$.',
+          3: '$35°$ doppelt ergäbe nur $160°$ — fehlen $20°$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['winkelsumme-180'] },
+      ),
       ni(
         'In einem Dreieck ist $\\alpha = 60°$ und $\\beta = 75°$. Wie groß ist $\\gamma$ (in Grad)?',
         45, 0, '°',
-        `**Ansatz:** Winkelsumme $\\alpha + \\beta + \\gamma = 180°$.
+        `**Ansatz:** $\\alpha + \\beta + \\gamma = 180°$, also $\\gamma = 180° - \\alpha - \\beta$.
 
 **Rechnung:** $\\gamma = 180° - 60° - 75° = 45°$.
 
-**Probe:** Einsetzen: $60° + 75° + 45° = 180°$ ✓.
+**Probe:** $60° + 75° + 45° = 180°$ ✓.
 
-**Typischer Fehler:** Falsche Summe ($90°$ statt $180°$) oder Vorzeichenfehler beim Subtrahieren.`,
+**Typischer Fehler:** Fälschlich $\\alpha + \\beta = \\gamma$ rechnen ($135°$) — oder $90° - \\alpha - \\beta$ für rechtwinklige Dreiecke, obwohl hier kein rechter Winkel vorgegeben ist.`,
         [
-          '$\\alpha + \\beta + \\gamma = 180°$.',
+          'Winkelsumme-Formel nach $\\gamma$ umstellen.',
           '$\\gamma = 180° - \\alpha - \\beta$.',
           '$180 - 60 - 75 = ?$',
         ],
         { stage: 'apply-independent', subGoal: 1, uses: ['winkelsumme-180'] },
       ),
       mc(
-        'In einem rechtwinkligen Dreieck ist ein nicht-rechter Winkel $35°$. Wie groß ist der andere nicht-rechte Winkel?',
+        'Ein Schüler behauptet: „Ein Dreieck mit $\\alpha = 100°$ und $\\beta = 90°$ existiert, der dritte Winkel wäre dann $-10°$." Was ist falsch?',
         [
-          '$55°$',
-          '$145°$',
-          '$65°$',
-          '$35°$',
+          'Ein Dreieck mit zwei Winkeln, die zusammen bereits $\\geq 180°$ sind, kann nicht existieren — negative Innenwinkel gibt es in euklidischen Dreiecken nicht.',
+          'Der dritte Winkel wäre $+10°$, nicht $-10°$.',
+          'Der rechte Winkel muss in einem Dreieck mit stumpfem Winkel sein.',
+          'Die Rechnung ist richtig — das Dreieck hat eben einen negativen Winkel.',
         ],
         0,
-        `**Ansatz:** Rechtwinkliges Dreieck hat einen $90°$-Winkel. Die anderen zwei summieren sich zu $90°$.
+        `**Ansatz:** Die Winkelsumme $180°$ ist eine Grenze, nicht nur eine Regel. Zwei Winkel, die zusammen $\\geq 180°$ sind, lassen keinen Platz für einen dritten.
 
-**Rechnung:** $90° - 35° = 55°$.
+**Rechnung:** $100° + 90° = 190° > 180°$. Kein dritter Winkel möglich — das Dreieck existiert nicht.
 
-**Probe:** $90° + 35° + 55° = 180°$ ✓.
+**Probe:** In einem echten Dreieck ist JEDER Innenwinkel strikt zwischen $0°$ und $180°$. Negative Winkel sind Rechen-Artefakte, keine Geometrie.
 
-**Typischer Fehler:** $180° - 35° = 145°$ rechnen und den rechten Winkel vergessen — das gäbe eine Innenwinkelsumme von $180° + 90° = 270°$, unmöglich.`,
+**Typischer Fehler:** Der Schüler schließt mechanisch aus $180° - 100° - 90° = -10°$, ohne die Plausibilität zu prüfen. Negative Zwischenergebnisse sind immer ein Signal: Annahmen falsch.`,
         [
-          'Rechter Winkel = $90°$.',
-          'Rest zu $180°$: $90°$.',
-          '$90° - 35° = ?$',
+          'Kann ein Innenwinkel negativ sein?',
+          'Summe von zwei Winkeln: wie groß darf sie höchstens sein?',
+          '$100° + 90° = ?$ — passt das noch unter $180°$?',
         ],
         {
-          1: '$145°$ allein wäre schon stumpf und zusammen mit dem rechten Winkel über $180°$ — unmöglich im Dreieck.',
-          2: '$65°$ würde $90° + 35° + 65° = 190°$ ergeben, zu viel.',
-          3: '$35°$ zweimal würde $160°$ ergeben — fehlen $20°$ zur Winkelsumme.',
+          1: 'Beide Rechnungen liefern dasselbe Ergebnis: die Annahmen sind bereits widersprüchlich.',
+          2: 'Rechter Winkel und stumpfer Winkel in einem Dreieck sind möglich — solange beide zusammen unter $180°$ bleiben. Hier nicht der Fall.',
+          3: 'Die Rechnung stimmt formal, aber das Ergebnis ist unmöglich. Das entlarvt die Annahme.',
         },
-        { stage: 'apply-guided', subGoal: 1, uses: ['winkelsumme-180'] },
-      ),
-      tf(
-        'Ein Dreieck kann zwei stumpfe Winkel haben.',
-        false,
-        `**Ansatz:** Zwei stumpfe Winkel wären jeweils $>90°$, in Summe $>180°$.
-
-**Rechnung:** Innenwinkelsumme im Dreieck ist $180°$. Schon zwei $91°$-Winkel ergeben $182° > 180°$.
-
-**Probe:** Maximal ein Winkel kann stumpf sein (dann ist das Dreieck stumpfwinklig). Die anderen zwei müssen spitz sein.
-
-**Typischer Fehler:** Annehmen, stumpfe Winkel könnten mehrfach auftreten — die Winkelsumme setzt eine harte Grenze.`,
-        [
-          'Winkelsumme: $180°$.',
-          'Stumpf: $>90°$.',
-          '$2 \\cdot $ stumpf $> 180°$ unmöglich.',
-        ],
-        { stage: 'recognize', subGoal: 1, uses: ['winkelsumme-180'] },
-      ),
-      matching(
-        'Ordne jedem Dreieck den fehlenden Winkel $\\gamma$ zu.',
-        [
-          { left: '$\\alpha = 30°, \\beta = 60°$',    right: '$\\gamma = 90°$' },
-          { left: '$\\alpha = 60°, \\beta = 60°$',    right: '$\\gamma = 60°$ (gleichseitig)' },
-          { left: '$\\alpha = 90°, \\beta = 45°$',    right: '$\\gamma = 45°$' },
-          { left: '$\\alpha = 100°, \\beta = 50°$',   right: '$\\gamma = 30°$' },
-        ],
-        `**Ansatz:** $\\gamma = 180° - \\alpha - \\beta$.
-
-**Rechnung:**
-· $180 - 30 - 60 = 90$
-· $180 - 60 - 60 = 60$
-· $180 - 90 - 45 = 45$
-· $180 - 100 - 50 = 30$
-
-**Probe:** Alle drei Winkel eines Dreiecks summieren sich zu $180°$ ✓.
-
-**Typischer Fehler:** Rechenfehler beim Subtrahieren. Zählen hilft: von $180$ beide bekannten Winkel abziehen.`,
-        [
-          'Formel: $\\gamma = 180° - \\alpha - \\beta$.',
-          'Summe der drei Winkel $= 180°$.',
-          'Bei gleichen Winkeln: gleichschenkliges Dreieck.',
-        ],
-        { stage: 'transfer', subGoal: 1, uses: ['winkelsumme-180'] },
+        { stage: 'error-analysis', subGoal: 1, uses: ['winkelsumme-180'] },
       ),
       sorting(
         'Bringe die Schritte zur Bestimmung des dritten Winkels in $\\alpha = 45°, \\beta = 55°$ in die richtige Reihenfolge.',
@@ -232,128 +229,130 @@ export const trigonometrySubGoalTasks = {
           'Ausrechnen: $\\gamma = 80°$',
         ],
         [0, 1, 2, 3],
-        `**Ansatz:** Erst Formel, dann Umstellung, dann einsetzen, dann rechnen.
+        `**Ansatz:** Saubere Schritte: Formel → Umstellen → Einsetzen → Rechnen.
 
 **Rechnung:** $\\gamma = 80°$.
 
 **Probe:** $45° + 55° + 80° = 180°$ ✓.
 
-**Typischer Fehler:** Direkt Zahlen rechnen ohne Formel — fehleranfällig.`,
+**Typischer Fehler:** Direkt Zahlen rechnen ohne die Formel zuerst hinzuschreiben — fehleranfällig, weil Umstellen vergessen werden kann.`,
         [
           'Formel zuerst.',
-          'Umstellen auf gesuchte Größe.',
-          'Dann Zahlen einsetzen.',
+          'Dann umstellen auf die gesuchte Größe.',
+          'Zahlen erst am Ende.',
         ],
         { stage: 'transfer', subGoal: 1, uses: ['winkelsumme-180'] },
       ),
     ],
 
-    // ── [2] Scheitel-/Nebenwinkel ─────────────────────────────────────────
+    // ── [2] Scheitel- / Nebenwinkel ────────────────────────────────────────
     2: [
-      mc(
-        'Zwei Geraden schneiden sich; einer der vier Winkel ist $70°$. Wie groß ist der gegenüberliegende (Scheitel-)Winkel?',
+      tf(
+        'Scheitelwinkel an einem Geradenkreuz sind immer gleich groß.',
+        true,
+        `**Ansatz:** Geometrische Symmetrie am Schnittpunkt zweier Geraden.
+
+**Rechnung:** Die gegenüberliegenden Winkel bilden ein Paar. Beide sind Nebenwinkel zum gleichen "mittleren" Winkel: $180° - \\alpha$ auf beiden Seiten, gespiegelt am Ursprung wieder $\\alpha$.
+
+**Probe:** Skizze zweier sich schneidender Geraden: vier Winkel, paarweise gleich, zwei Paare unterschiedlicher Größe, Summe $360°$.
+
+**Typischer Fehler:** Scheitel- mit Nebenwinkel verwechseln. Scheitel = gegenüber (gleich), Neben = direkt daneben (ergänzen zu $180°$).`,
         [
-          '$70°$',
-          '$110°$',
-          '$20°$',
-          '$180°$',
+          'Scheitel = gegenüber am Schnittpunkt.',
+          'Durch die Symmetrie am Schnittpunkt.',
+          'Unterscheide von Nebenwinkeln (daneben, nicht gegenüber).',
         ],
+        { stage: 'recognize', subGoal: 2, uses: ['scheitel-nebenwinkel'] },
+      ),
+      mc(
+        'Zwei Geraden schneiden sich; einer der vier Winkel ist $70°$. Wie groß ist der Scheitelwinkel (gegenüber)?',
+        ['$70°$', '$110°$', '$20°$', '$180°$'],
         0,
-        `**Ansatz:** **Scheitelwinkel** (gegenüberliegende Winkel an einem Schnittpunkt) sind immer gleich groß.
+        `**Ansatz:** Scheitelwinkel sind gleich groß.
 
-**Rechnung:** Der gegenüberliegende Winkel zu $70°$ ist ebenfalls $70°$.
+**Rechnung:** Gegenüberliegender Winkel zu $70°$ ist ebenfalls $70°$.
 
-**Probe:** Skizze: zwei Geraden bilden vier Winkel, die paarweise gleich sind (zwei zu $70°$, zwei zu $110°$). Summe aller vier = $360°$.
+**Probe:** Vier Winkel am Kreuz: zwei zu $70°$ (gegenüber), zwei zu $110°$ (nebeneinander). Summe $360°$.
 
-**Typischer Fehler:** Scheitel- und Nebenwinkel verwechseln: Scheitel = gegenüber, Nebenwinkel = direkt daneben.`,
+**Typischer Fehler:** Den Nebenwinkel ($110°$) als Scheitelwinkel angeben.`,
         [
-          'Scheitelwinkel = gegenüberliegende Winkel.',
-          'Immer gleich groß.',
-          'Nebenwinkel ergänzen auf $180°$.',
+          'Scheitel = gegenüber = gleich.',
+          'Neben = daneben = ergänzen auf $180°$.',
+          'Welche Beziehung liegt hier vor?',
         ],
         {
-          1: '$110°$ ist der **Nebenwinkel** zu $70°$, direkt daneben. Gegenüber liegt ein weiterer Winkel gleicher Größe wie $70°$.',
-          2: '$20°$ ist die Komplementärwinkel-Rechnung ($90° - 70°$), hat nichts mit Scheitelwinkeln zu tun.',
-          3: '$180°$ wäre nur die Summe von $70°$ und dem Nebenwinkel. Einzelwinkel ist nicht $180°$.',
+          1: '$110°$ ist der **Nebenwinkel** zu $70°$ (direkt daneben), nicht der Scheitelwinkel (gegenüber).',
+          2: '$20°$ ist $90°-70°$ — das ist der Komplementärwinkel, hat mit Scheitelwinkeln nichts zu tun.',
+          3: '$180°$ ist die Summe von Winkel + Nebenwinkel, kein einzelner Winkel.',
         },
         { stage: 'apply-guided', subGoal: 2, uses: ['scheitel-nebenwinkel'] },
       ),
       ni(
         'Zwei Geraden schneiden sich. Ein Winkel ist $55°$. Wie groß ist der Nebenwinkel (in Grad)?',
         125, 0, '°',
-        `**Ansatz:** Nebenwinkel ergänzen sich auf $180°$ (liegen auf einer geraden Linie).
+        `**Ansatz:** Nebenwinkel liegen auf einer geraden Linie, ergänzen sich daher zu $180°$.
 
 **Rechnung:** $180° - 55° = 125°$.
 
-**Probe:** Nachbarn auf einer Geraden: $55° + 125° = 180°$ ✓.
+**Probe:** $55° + 125° = 180°$ ✓ (zwei Winkel auf einer Geraden bilden einen gestreckten Winkel).
 
-**Typischer Fehler:** $90° - 55° = 35°$ rechnen (Komplementärwinkel-Regel, nicht Nebenwinkel).`,
+**Typischer Fehler:** $90° - 55° = 35°$ rechnen — das wäre der Komplementärwinkel (nur bei rechtwinkligen Konfigurationen).`,
         [
-          'Nebenwinkel = $180° - $ Originalwinkel.',
+          'Nebenwinkel ergänzen auf $180°$.',
           '$180 - 55 = ?$',
-          'Zwei Winkel auf einer Geraden ergeben $180°$.',
+          'Zwei Winkel auf einer Geraden: Summe $180°$.',
         ],
         { stage: 'apply-independent', subGoal: 2, uses: ['scheitel-nebenwinkel'] },
       ),
-      tf(
-        'Zwei Scheitelwinkel an einem Geradenkreuz sind immer gleich groß.',
-        true,
-        `**Ansatz:** Geometrische Eigenschaft des Geradenkreuzes.
-
-**Rechnung:** Beide Winkelpaare (Scheitel) sind kongruent, weil sie jeweils den Nebenwinkel zum gleichen "mittleren" Winkel sind: $180° - \\alpha$ auf beiden Seiten.
-
-**Probe:** Skizze: einer der vier Winkel ist $\\alpha$, seine Nachbarn sind $180° - \\alpha$, der gegenüberliegende ist wieder $\\alpha$. Symmetrie am Schnittpunkt.
-
-**Typischer Fehler:** Scheitelwinkel mit Nebenwinkel verwechseln — nur Scheitelwinkel sind gleich, Nebenwinkel ergänzen auf $180°$.`,
+      mc(
+        'Ein Schüler sagt: „Der Nebenwinkel zu $55°$ ist $35°$, weil $90° - 55° = 35°$." Welcher Fehler liegt vor?',
         [
-          'Scheitelwinkel liegen gegenüber.',
-          'Gemeinsamer Scheitelpunkt.',
-          'Winkel sind gleich groß (Kongruenz).',
+          'Er hat die Komplementärwinkel-Regel ($90° - \\alpha$) mit der Nebenwinkel-Regel ($180° - \\alpha$) verwechselt.',
+          'Die Rechnung stimmt — der Nebenwinkel ist wirklich $35°$.',
+          'Er hat $90°$ statt $100°$ verwendet.',
+          'Nebenwinkel gibt es nur im Dreieck, nicht am Geradenkreuz.',
         ],
-        { stage: 'recognize', subGoal: 2, uses: ['scheitel-nebenwinkel'] },
-      ),
-      matching(
-        'Ordne jedem Paar die Beziehung zu.',
+        0,
+        `**Ansatz:** Zwei verschiedene Winkelpaare: Komplementärwinkel (ergänzen zu $90°$, bei rechten Winkeln) vs. Nebenwinkel (ergänzen zu $180°$, auf einer Geraden).
+
+**Rechnung:** Korrekt: $180° - 55° = 125°$. Der Schüler-Wert $35°$ entspricht dem Komplementärwinkel, nicht dem Nebenwinkel.
+
+**Probe:** Skizze: Zwei Winkel auf einer geraden Linie summieren immer zu $180°$, nie zu $90°$.
+
+**Typischer Fehler:** Begriffe Komplementär- und Nebenwinkel vermischen. Merkhilfe: **Neben** = auf einer geraden **Linie** ($180°$); **Komplementär** = ergänzen zum rechten Winkel ($90°$).`,
         [
-          { left: 'zwei gegenüberliegende Winkel',       right: 'Scheitelwinkel — gleich groß' },
-          { left: 'zwei benachbarte Winkel auf Gerade',  right: 'Nebenwinkel — Summe $180°$' },
-          { left: 'zwei Winkel im rechtwinkligen Dreieck (nicht rechter W.)', right: 'Summe $90°$ (komplementär)' },
-          { left: 'zwei Winkel einer Geraden',           right: 'ergänzen auf $180°$' },
+          'Zu wem ergänzt der Nebenwinkel?',
+          'Auf einer geraden Linie: Summe $= 180°$.',
+          '$90° - \\alpha$ = Komplementär, $180° - \\alpha$ = Neben.',
         ],
-        `**Ansatz:** Geometrische Beziehungen an Geradenkreuzen und in Dreiecken.
-
-**Rechnung:** Scheitel = gleich, Neben = $180°$, im rechtwinkligen Dreieck = $90°$ für die anderen zwei.
-
-**Probe:** Skizzen erleichtern die Zuordnung.
-
-**Typischer Fehler:** Scheitel- und Nebenwinkel verwechseln — visuell klarer Unterschied: gegenüber vs. nebeneinander.`,
-        [
-          'Gegenüber = Scheitel (gleich).',
-          'Daneben = Neben ($180°$).',
-          'Im 90°-Dreieck: Rest = $90°$ insgesamt.',
-        ],
-        { stage: 'transfer', subGoal: 2, uses: ['scheitel-nebenwinkel'] },
+        {
+          1: 'Die Rechnung stimmt nicht. $35°$ ist der Komplementärwinkel, nicht der Nebenwinkel.',
+          2: 'Die $90°$ sind nicht das Problem der Zahlenwerte, sondern die falsche Regel.',
+          3: 'Nebenwinkel gibt es auch am Geradenkreuz — sie sind grundlegende Geometrie.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['scheitel-nebenwinkel'] },
       ),
       sorting(
         'Bringe die Schritte zur Bestimmung aller vier Winkel an einem Geradenkreuz mit gegebenem $\\alpha = 40°$ in die richtige Reihenfolge.',
         [
           'Gegebener Winkel: $\\alpha = 40°$',
-          'Scheitelwinkel (gegenüber) ist auch $40°$',
+          'Scheitelwinkel (gegenüber) ist ebenfalls $40°$',
           'Nebenwinkel: $180° - 40° = 140°$ (auf beiden Seiten)',
-          'Prüfen: Summe aller vier = $40 + 40 + 140 + 140 = 360°$ ✓',
+          'Kontrolle: Summe aller vier $= 40° + 40° + 140° + 140° = 360°$ ✓',
         ],
         [0, 1, 2, 3],
-        `**Ansatz:** Am Geradenkreuz gibt es zwei Paare gleich großer Winkel.
+        `**Ansatz:** Am Geradenkreuz: zwei Paare gleich großer Winkel. Schrittweise von gegeben → Scheitel → Neben → Probe.
 
 **Rechnung:** Zwei $40°$ und zwei $140°$.
 
-**Probe:** Alle vier summieren sich zu $360°$ (voller Winkel um den Schnittpunkt).
+**Probe:** Summe aller vier Winkel um den Schnittpunkt $= 360°$.
 
-**Typischer Fehler:** Nur zwei der vier Winkel angeben oder Scheitel- und Nebenwinkel vertauschen.`,
+**Typischer Fehler:** Nur zwei der vier Winkel angeben oder Scheitel- und Nebenwinkel vertauschen. Systematisch: erst Scheitel (gleich), dann Neben (Ergänzung).`,
         [
-          'Gegenüber = gleich.',
-          'Daneben = Ergänzung zu $180°$.',
-          'Vier Winkel summieren zu $360°$.',
+          'Erst den gegebenen Winkel notieren.',
+          'Dann: gegenüber = gleich.',
+          'Dann: daneben = Ergänzung zu $180°$.',
+          'Zum Schluss: Summe $= 360°$ als Probe.',
         ],
         { stage: 'transfer', subGoal: 2, uses: ['scheitel-nebenwinkel'] },
       ),
