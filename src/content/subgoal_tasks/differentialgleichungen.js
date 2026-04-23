@@ -1328,4 +1328,651 @@ export const differentialgleichungenSubGoalTasks = {
       ),
     ],
   },
+
+
+  // ──────────────────────────────────────────────────────────────────────
+  // dgl-3-3 — Prüfung: Systeme & technische Modellbildung  (6 subGoals × 5)
+  // ──────────────────────────────────────────────────────────────────────
+  'dgl-3-3': {
+
+    // ── [0] Euler explizit: y_{n+1} = y_n + h·f(x_n, y_n), Fehler O(h) ──
+    0: [
+      ni(
+        'Sub-Goal "Euler explizit: $y_{n+1} = y_n + h \\cdot f(x_n, y_n)$, Fehler $O(h)$": [PRÜFUNG] Für $\\dot y = y$, $y(0) = 1$, $h = 0{,}5$ — welchen Wert liefert ein Euler-Schritt für $y_1$?',
+        1.5, 0.001, '',
+        `**Ansatz:** Euler-Formel einmal anwenden: $y_1 = y_0 + h \\cdot f(x_0, y_0)$ mit $f(x,y) = y$.
+
+**Rechnung:** $y_1 = 1 + 0{,}5 \\cdot 1 = 1{,}5$.
+
+**Probe:** Exakte Lösung $y(t) = e^t$, also $y(0{,}5) = e^{0{,}5} \\approx 1{,}649$ — Euler unterschätzt, was bei $\\dot y = +y$ und einem Einzelschritt typisch ist.
+
+**Typischer Fehler:** Schrittweite $h$ mit der Variablen $y_0$ zu multiplizieren statt mit $f(x_0,y_0)$ — bei $f(x,y)=y$ fällt der Unterschied hier nicht auf, rächt sich aber bei $f(x,y)=-2y$.`,
+        [
+          'Euler-Schritt ist eine Tangentenfortsetzung vom aktuellen Punkt aus.',
+          'Setze $y_0=1$, $h=0{,}5$ und $f(x_0,y_0)=y_0$ in die Formel ein.',
+          '$y_1 = 1 + 0{,}5 \\cdot 1 = ?$',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Euler explizit: $y_{n+1} = y_n + h \\cdot f(x_n, y_n)$, Fehler $O(h)$": [PRÜFUNG] Was bedeutet „globaler Fehler $O(h)$" bei Euler?',
+        [
+          'Halbieren von $h$ halbiert (ungefähr) den Gesamtfehler am Endzeitpunkt.',
+          'Der Fehler pro Schritt halbiert sich nur, der Gesamtfehler bleibt gleich.',
+          'Der Fehler wächst quadratisch mit $h$.',
+          'Der Fehler verschwindet für beliebiges $h$ nach endlich vielen Schritten.',
+        ],
+        0,
+        `**Ansatz:** „Globaler Fehler $O(h)$" heißt: die maximale Abweichung von der exakten Lösung auf $[0,T]$ skaliert linear mit $h$.
+
+**Rechnung:** Lokal ist der Fehler pro Schritt $O(h^2)$. Es gibt $N = T/h$ Schritte, also summiert sich der Fehler zu $N \\cdot O(h^2) = T/h \\cdot O(h^2) = O(h)$.
+
+**Probe:** Test: $\\dot y = -y$ mit $h=0{,}1$ gibt bei $t=1$ ca. 5% Fehler, mit $h=0{,}05$ ca. 2{,}5% — halbiert sich wie vorhergesagt.
+
+**Typischer Fehler:** Lokalen und globalen Fehler verwechseln — lokaler Fehler ist $O(h^2)$, das ist *nicht* die Aussage des Konvergenzordnung-Begriffs.`,
+        [
+          'Fehlerordnung beschreibt, wie der Fehler mit $h$ skaliert.',
+          'Ordnung 1 heißt: Fehler proportional zu $h$.',
+          'Test: Wenn $h$ halbiert wird, was passiert mit dem Gesamtfehler?',
+        ],
+        {
+          1: 'Das widerspricht der Konvergenzordnung — mehr Schritte mit kleinerem $h$ verbessern den globalen Fehler. Sonst wäre numerische Integration sinnlos.',
+          2: 'Quadratisch $(O(h^2))$ wäre Konvergenzordnung 2 — das leisten Verfahren wie Heun oder RK2, nicht der explizite Euler.',
+          3: 'Nein, bei positivem $h$ bleibt ein endlicher Fehler. Nur im Grenzwert $h\\to 0$ konvergiert Euler gegen die exakte Lösung.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Euler explizit: $y_{n+1} = y_n + h \\cdot f(x_n, y_n)$, Fehler $O(h)$": [PRÜFUNG] Der explizite Euler ist ein *einschrittiges* Verfahren — zur Berechnung von $y_{n+1}$ genügt ausschließlich die Kenntnis von $y_n$.',
+        true,
+        `**Ansatz:** „Einschrittig" heißt: pro Update-Formel wird nur der letzte Zustand benötigt, keine älteren Werte $y_{n-1}, y_{n-2}, \\dots$.
+
+**Rechnung:** $y_{n+1} = y_n + h\\cdot f(x_n,y_n)$ — rechts steht nur $y_n$ (und $x_n = x_0 + nh$, aber das ist ein Zeitstempel, kein Lösungswert).
+
+**Probe:** Zum Start braucht man nur die Anfangsbedingung $y_0$. Bei Mehrschrittverfahren wie Adams-Bashforth bräuchte man dagegen $y_0, y_1, \\dots$ für den Start.
+
+**Typischer Fehler:** Einschritt-Verfahren mit niedriger Ordnung verwechseln — „einschrittig" bezieht sich auf die Anzahl verwendeter Vorgänger, nicht auf die Genauigkeit.`,
+        [
+          'Einschritt vs. Mehrschritt: wie viele vergangene Werte fließen pro Update ein?',
+          'Schau auf die rechte Seite der Euler-Formel.',
+          'Im Startup braucht Euler nur $y_0$, Mehrschritt-Methoden mehrere Startwerte.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Euler explizit: $y_{n+1} = y_n + h \\cdot f(x_n, y_n)$, Fehler $O(h)$": [PRÜFUNG] Ein Kühlturm wird mit $\\dot T = -0{,}4(T-20)$, $T(0)=80$ °C simuliert. Berechne mit Euler und $h=1$ min den Wert $T_1$ (in °C).',
+        56, 0.1, '°C',
+        `**Ansatz:** Einmal Euler-Schritt auf $f(t,T) = -0{,}4(T-20)$ anwenden.
+
+**Rechnung:** $T_1 = T_0 + h\\cdot f(0,T_0) = 80 + 1\\cdot(-0{,}4\\cdot(80-20)) = 80 - 24 = 56$ °C.
+
+**Probe:** Exakt: $T(1) = 20 + 60\\cdot e^{-0{,}4} \\approx 20 + 60 \\cdot 0{,}670 \\approx 60{,}2$ °C. Euler unterschätzt um ~4 K — akzeptabel, aber bei $h=1$ schon spürbar.
+
+**Typischer Fehler:** $(T-20)$ weglassen und $\\dot T = -0{,}4\\,T$ rechnen: $T_1 = 80 + 1\\cdot(-0{,}4\\cdot 80) = 48$ °C — Newton-Abkühlung bezieht sich aber auf die Differenz zur Umgebung, nicht auf $T$ allein.`,
+        [
+          'Zuerst $f(t,T)$ am Startpunkt auswerten.',
+          'Hier: $f(0,80) = -0{,}4 \\cdot (80-20) = -24$.',
+          'Dann $T_1 = T_0 + h\\cdot f$.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Euler explizit: $y_{n+1} = y_n + h \\cdot f(x_n, y_n)$, Fehler $O(h)$": [PRÜFUNG] Bringe die Teilschritte eines einzelnen Euler-Updates in die richtige Reihenfolge.',
+        [
+          'Aktuellen Zustand $y_n$ und Zeit $x_n$ bereitstellen',
+          'Steigung $f(x_n, y_n)$ an dieser Stelle auswerten',
+          'Schrittgröße $h$ mit der Steigung multiplizieren',
+          'Zum aktuellen $y_n$ addieren: $y_{n+1} = y_n + h\\cdot f$',
+          'Zeit fortschreiben: $x_{n+1} = x_n + h$',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Euler folgt dem Prinzip „aktueller Punkt → Tangente → Fortschritt entlang der Tangente → neuer Punkt".
+
+**Rechnung:** Reihenfolge: (1) Ausgangslage $y_n,x_n$ haben, (2) $f$ auswerten = Steigung bestimmen, (3) Steigung mit $h$ skalieren = Zuwachs, (4) Zuwachs addieren = $y_{n+1}$, (5) Zeit weiterzählen.
+
+**Probe:** An $\\dot y = y$, $y_0=1$, $h=0{,}5$: Schritt 1: $y_0=1, x_0=0$. Schritt 2: $f=1$. Schritt 3: $0{,}5\\cdot 1=0{,}5$. Schritt 4: $y_1=1{,}5$. Schritt 5: $x_1=0{,}5$. ✓
+
+**Typischer Fehler:** Zeit *vor* der Zustandsberechnung fortschreiben und dann $f$ an der neuen Zeit auswerten — das ist schon ein Mittelpunkt-Schritt (RK2), nicht mehr Euler.`,
+        [
+          'Wo braucht man die Steigung, wo den Zuwachs?',
+          'Zuerst Steigung, dann Zuwachs, dann Update.',
+          'Zeit wird am Ende fortgeschrieben.',
+        ],
+      ),
+    ],
+
+    // ── [1] Stabilität via Eigenwerte: alle Re(λ_i)<0 → asymptotisch stabil ──
+    1: [
+      mc(
+        'Sub-Goal "Stabilität via Eigenwerte: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": [PRÜFUNG] System $\\dot{\\vec x} = A\\vec x$ mit $A = \\begin{pmatrix} -1 & 2 \\\\ 0 & -3 \\end{pmatrix}$. Ist das System asymptotisch stabil?',
+        [
+          'Ja — beide Eigenwerte sind reell und negativ.',
+          'Nein — einer der Einträge in $A$ ist positiv.',
+          'Nein — obere Dreiecksmatrizen sind nie stabil.',
+          'Nur grenzstabil, da $A$ nicht symmetrisch ist.',
+        ],
+        0,
+        `**Ansatz:** Bei oberer/unterer Dreiecksmatrix stehen die Eigenwerte direkt auf der Diagonalen.
+
+**Rechnung:** $\\lambda_1 = -1$, $\\lambda_2 = -3$, beide reell mit $\\text{Re}(\\lambda_i) < 0$. Damit ist das System asymptotisch stabil.
+
+**Probe:** Lösung: $x_2(t) = c_2 e^{-3t}$, einsetzen in $\\dot x_1 = -x_1 + 2x_2$ gibt beschränkte, abklingende Dynamik in beiden Komponenten.
+
+**Typischer Fehler:** Einzelne Matrix-Einträge (z.B. die $+2$) mit Stabilität verwechseln — entscheidend sind die Eigenwerte, nicht die Koeffizienten direkt.`,
+        [
+          'Dreiecksmatrix → Eigenwerte auf der Diagonalen.',
+          'Stabilitätskriterium: alle $\\text{Re}(\\lambda_i) < 0$.',
+          'Einzelne positive Einträge dürfen sein, solange die Eigenwerte negativ sind.',
+        ],
+        {
+          1: 'Positive Einträge in $A$ sind OK — das Spektrum ist entscheidend, nicht die einzelnen Einträge. Hier sind beide Eigenwerte ($-1$ und $-3$) negativ.',
+          2: 'Falsch — Dreiecksmatrizen können stabil oder instabil sein. Die Aussage wäre richtig, wenn mindestens ein Diagonalelement $\\geq 0$ wäre.',
+          3: 'Symmetrie ist für Stabilität nicht nötig. Nur die Vorzeichen der Realteile der Eigenwerte zählen.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Stabilität via Eigenwerte: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": [PRÜFUNG] System $\\dot{\\vec x} = \\begin{pmatrix} 0 & 1 \\\\ -4 & -2 \\end{pmatrix}\\vec x$ (gedämpfter Oszillator). Berechne den Realteil der Eigenwerte.',
+        -1, 0.001, '',
+        `**Ansatz:** Eigenwerte einer $2\\times 2$-Matrix aus $\\lambda^2 - \\text{tr}(A)\\lambda + \\det(A) = 0$.
+
+**Rechnung:** $\\text{tr}(A) = 0 + (-2) = -2$, $\\det(A) = 0\\cdot(-2) - 1\\cdot(-4) = 4$. Charakteristisches Polynom: $\\lambda^2 + 2\\lambda + 4 = 0 \\Rightarrow \\lambda = -1 \\pm \\sqrt{1-4} = -1 \\pm i\\sqrt 3$. Realteil: $-1$.
+
+**Probe:** Diskriminante $<0$ → komplexe Eigenwerte → Schwingung. $\\text{Re}=-1<0$ → gedämpft (asymptotisch stabil). Passt zum physikalischen Bild eines gedämpften Oszillators $\\ddot x + 2\\dot x + 4x = 0$.
+
+**Typischer Fehler:** Nur $\\lambda^2 = -4$ lesen und $\\pm 2i$ annehmen — der Term $+2\\lambda$ wurde vergessen, der genau den Dämpfungsterm codiert.`,
+        [
+          '$2\\times 2$: $\\lambda^2 - \\text{tr}(A)\\lambda + \\det(A) = 0$.',
+          'Diskriminante $< 0$ → komplexe Eigenwerte $\\alpha \\pm i\\beta$.',
+          'Realteil ist $\\alpha = \\text{tr}(A)/2$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Stabilität via Eigenwerte: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": [PRÜFUNG] Ein System mit rein imaginären Eigenwerten $\\lambda = \\pm i\\omega$ ist asymptotisch stabil, weil die Lösungen beschränkt bleiben.',
+        false,
+        `**Ansatz:** Asymptotische Stabilität verlangt $\\text{Re}(\\lambda_i) < 0$ — also *strenge* Negativität, nicht bloß beschränkte Lösungen.
+
+**Rechnung:** $\\text{Re}(\\pm i\\omega) = 0$. Lösung: $x(t) = A\\cos(\\omega t) + B\\sin(\\omega t)$ — oszilliert dauerhaft mit konstanter Amplitude, klingt *nicht* ab. Das nennt man *grenzstabil* oder *marginal stabil*.
+
+**Probe:** Ungedämpfter Feder-Masse-Schwinger $\\ddot x + \\omega^2 x = 0$ hat Eigenwerte $\\pm i\\omega$ und schwingt ewig — Asymptote existiert nicht.
+
+**Typischer Fehler:** „Beschränkt = stabil" — im strengeren Sinn (Lyapunov) ist Beschränktheit tatsächlich Stabilität, aber *asymptotisch* stabil verlangt zusätzlich Abklingen gegen 0.`,
+        [
+          'Asymptotisch stabil = Lösung konvergiert gegen 0.',
+          'Rein imaginäre Eigenwerte → ungedämpfte Schwingung.',
+          'Das ist „grenzstabil", nicht „asymptotisch stabil".',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Stabilität via Eigenwerte: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": [PRÜFUNG] Ordne Eigenwert-Konfigurationen ihren Stabilitätseigenschaften zu.',
+        [
+          { left: '$\\lambda_1 = -2$, $\\lambda_2 = -5$', right: 'asymptotisch stabil (rein abklingend)' },
+          { left: '$\\lambda_{1,2} = -1 \\pm 3i$', right: 'asymptotisch stabil (gedämpfte Schwingung)' },
+          { left: '$\\lambda_{1,2} = \\pm 2i$', right: 'grenzstabil (ungedämpfte Schwingung)' },
+          { left: '$\\lambda_1 = 1$, $\\lambda_2 = -3$', right: 'instabil (Sattelpunkt)' },
+        ],
+        `**Ansatz:** Klassifikation nach Vorzeichen des Realteils und Existenz von Imaginärteil.
+
+**Rechnung:** Reell negativ → reines Abklingen. Komplex mit negativem Realteil → gedämpfte Schwingung. Rein imaginär → ungedämpfte Schwingung (grenzstabil). Mindestens ein Realteil positiv → instabil.
+
+**Probe:** Sattelpunkt: eine Richtung zieht zum Ursprung ($\\lambda_2=-3$), die andere stößt ab ($\\lambda_1=+1$). Trajektorien entweichen fast immer ins Unendliche.
+
+**Typischer Fehler:** „Wenn *einer* negativ ist, ist alles stabil" — bei Instabilität reicht *ein* Eigenwert mit $\\text{Re}>0$, um das System zu zerstören.`,
+        [
+          'Reell vs. komplex: bestimmt Schwingungsverhalten.',
+          'Realteil-Vorzeichen: bestimmt Abklingen/Wachsen.',
+          'Instabil genügt: ein Eigenwert mit $\\text{Re}>0$.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Stabilität via Eigenwerte: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": [PRÜFUNG] Bringe die Schritte der Stabilitätsanalyse eines linearen DGL-Systems in die richtige Reihenfolge.',
+        [
+          'Systemmatrix $A$ aus den Koeffizienten der DGL extrahieren',
+          'Charakteristisches Polynom $\\det(A - \\lambda I) = 0$ aufstellen',
+          'Nullstellen (Eigenwerte $\\lambda_i$) berechnen',
+          'Realteile $\\text{Re}(\\lambda_i)$ bestimmen',
+          'Prüfen: sind alle Realteile $< 0$?',
+          'Schlussfolgerung ziehen (asymptotisch stabil, grenzstabil oder instabil)',
+        ],
+        [0, 1, 2, 3, 4, 5],
+        `**Ansatz:** Stabilitätsanalyse folgt dem Rezept „System → Matrix → Polynom → Eigenwerte → Vorzeichen → Urteil".
+
+**Rechnung:** Ohne $A$ gibt es kein Polynom; ohne Eigenwerte keine Realteile; ohne Realteile kein Urteil. Die Ordnung ist strikt.
+
+**Probe:** Am Kühlturm-System $\\dot T = -0{,}4(T-20)$ ist $A = (-0{,}4)$, Polynom $\\lambda + 0{,}4 = 0$, $\\lambda = -0{,}4$, $\\text{Re}(\\lambda)=-0{,}4 < 0$ → asymptotisch stabil ✓.
+
+**Typischer Fehler:** Diagonalelemente direkt als Eigenwerte nehmen — das klappt nur bei (oberer/unterer) Dreiecksmatrix, sonst muss man wirklich das Polynom lösen.`,
+        [
+          'Ohne Matrix kein Polynom, ohne Polynom keine Eigenwerte.',
+          'Eigenwerte → Realteile → Stabilitäts-Urteil.',
+          'Dreiecksmatrizen sind Ausnahme: Eigenwerte stehen direkt auf der Diagonalen.',
+        ],
+      ),
+    ],
+
+    // ── [2] Bilanzgleichungen: Masse, Energie, Kraft, Ladung ──────────────
+    2: [
+      matching(
+        'Sub-Goal "Bilanzgleichungen: Massenbilanz, Energiebilanz, Kräftebilanz, Ladungsbilanz": [PRÜFUNG] Ordne jeder Bilanzart das zugehörige Beispiel und die Leitformel zu.',
+        [
+          { left: 'Massenbilanz', right: 'Tank: $\\dot V = q_{ein} - q_{aus}$' },
+          { left: 'Energiebilanz', right: 'Kühlkörper: $C_W \\dot T = \\dot Q_{ein} - \\alpha(T-T_U)$' },
+          { left: 'Kräftebilanz', right: 'Feder-Masse: $m\\ddot x = -kx - d\\dot x + F$' },
+          { left: 'Ladungsbilanz', right: 'RLC-Kreis: $L\\ddot q + R\\dot q + q/C = u(t)$' },
+        ],
+        `**Ansatz:** Jede Bilanz beschreibt: „Änderungsrate einer Erhaltungsgröße = Zuflüsse − Abflüsse" in einer spezifischen Domäne.
+
+**Rechnung:** Massenbilanz: kg/s. Energiebilanz: J/s = W. Kräftebilanz: Impuls pro Zeit = N (Newton II). Ladungsbilanz: C/s = A.
+
+**Probe:** Stationär setzt jeweils die linke Seite auf 0: Tank → $V_\\infty$; Kühlkörper → $T_\\infty$; Feder-Masse → $x_{eq}=F/k$; RLC → stationärer DC-Zustand.
+
+**Typischer Fehler:** Kräftebilanz mit Energiebilanz verwechseln — beide sehen nach „Arbeits-Rechnung" aus, aber Kräftebilanz ist Newton II (Zeitableitung des Impulses), nicht Leistungsbilanz.`,
+        [
+          'Jede Bilanz gehört zu einer Erhaltungsgröße (Masse, Energie, Impuls, Ladung).',
+          'Suche die Variable, die abgeleitet wird — die gibt die Bilanzart vor.',
+          'Einheiten der linken Seite identifizieren die Domäne.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Bilanzgleichungen: Massenbilanz, Energiebilanz, Kräftebilanz, Ladungsbilanz": [PRÜFUNG] Ein Kondensator wird über einen Widerstand geladen: Strom $I$, Ladung $q$, Quelle $U_0$. Welche Bilanzgleichung ergibt $\\dot q$?',
+        [
+          '$R\\dot q + q/C = U_0$',
+          '$\\dot q = U_0 - R \\cdot q$',
+          '$\\dot q + q = U_0/C$',
+          '$U_0 = R\\ddot q + \\dot q / C$',
+        ],
+        0,
+        `**Ansatz:** Ladungsbilanz (Kirchhoff-Spannungsregel) über RC-Serienschaltung: $U_0 = U_R + U_C$. Mit $U_R = R I = R\\dot q$ und $U_C = q/C$.
+
+**Rechnung:** $U_0 = R\\dot q + q/C$. Umgestellt: $R\\dot q + q/C = U_0$. Das ist eine lineare DGL 1. Ordnung in $q$.
+
+**Probe:** Stationär $\\dot q = 0 \\Rightarrow q_\\infty = C\\cdot U_0$ — Kondensator lädt auf $U_0$ auf ✓. Zeitkonstante $\\tau = RC$.
+
+**Typischer Fehler:** Kondensator-Spannung als $C\\cdot q$ statt $q/C$ schreiben — die Kapazität steht im Nenner, weil $U = q/C$.`,
+        [
+          'Kirchhoff: Summe der Spannungen im Masche = 0 bzw. = Quelle.',
+          '$U_R = R I$, $I = \\dot q$, $U_C = q/C$.',
+          'Aus $U_0 = U_R + U_C$ folgt direkt die DGL für $q$.',
+        ],
+        {
+          1: 'Hier wurde $q/C$ durch $R\\cdot q$ ersetzt — das mischt Widerstand und Kapazität. $R$ steht zu $\\dot q$ (Strom), $1/C$ zu $q$ (Ladung auf dem Kondensator).',
+          2: 'Fehlt der Faktor $R$: Widerstandsspannung ist $R\\dot q$, nicht einfach $\\dot q$. Zudem ist der Kapazitätsterm falsch dimensioniert.',
+          3: 'Das wäre eine DGL 2. Ordnung mit $\\ddot q$ — passt zu einem RLC-Kreis mit Spule, nicht zum reinen RC-Kreis.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Bilanzgleichungen: Massenbilanz, Energiebilanz, Kräftebilanz, Ladungsbilanz": [PRÜFUNG] Wärmetauscher: Zufuhr $\\dot Q_{ein} = 500$ W, Verlust $\\alpha(T-T_U) = 25$ W/K · $(T-T_U)$, $T_U = 20$ °C. Berechne die stationäre Endtemperatur $T_\\infty$ in °C.',
+        40, 0.1, '°C',
+        `**Ansatz:** Energiebilanz am Wärmetauscher: $C_W \\dot T = \\dot Q_{ein} - \\alpha(T-T_U)$. Stationär setze $\\dot T = 0$.
+
+**Rechnung:** $0 = 500 - 25\\cdot(T_\\infty - 20) \\Rightarrow T_\\infty - 20 = 500/25 = 20 \\Rightarrow T_\\infty = 40$ °C.
+
+**Probe:** Verlust bei $T_\\infty$: $25\\cdot(40-20) = 500$ W = Zufuhr ✓. Einheiten: W = (W/K)·K ✓.
+
+**Typischer Fehler:** $T_\\infty = \\dot Q_{ein}/\\alpha = 20$ °C — Bezugspunkt $T_U$ vergessen. Die Temperaturdifferenz zur Umgebung ist 20 K, die absolute Temperatur ergibt sich durch Addition von $T_U$.`,
+        [
+          'Stationär: $\\dot T = 0$ gibt algebraische Gleichung.',
+          'Aus $\\dot Q_{ein} = \\alpha(T_\\infty - T_U)$ folgt $T_\\infty$.',
+          'Vergiss nicht, $T_U$ hinzuzuaddieren — Newton-Abkühlung arbeitet mit Differenzen.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Bilanzgleichungen: Massenbilanz, Energiebilanz, Kräftebilanz, Ladungsbilanz": [PRÜFUNG] Bei der Kräftebilanz eines Feder-Masse-Dämpfer-Systems $m\\ddot x = -kx - d\\dot x + F(t)$ ist das Vorzeichen von $-kx$ rückstellend, weil die Feder der Auslenkung entgegenwirkt.',
+        true,
+        `**Ansatz:** Federkraft nach Hooke: $F_{Feder} = -kx$, d.h. bei positiver Auslenkung zieht die Feder zurück in Richtung Ursprung.
+
+**Rechnung:** Bei $x>0$ ist $-kx<0$ (Kraft in $-x$-Richtung). Bei $x<0$ ist $-kx>0$ (Kraft in $+x$-Richtung). Immer gegen die Auslenkung.
+
+**Probe:** Ohne Dämpfung und Antrieb: $m\\ddot x = -kx \\Rightarrow \\ddot x = -(k/m) x$ — Schwingungs-DGL mit Eigenkreisfrequenz $\\omega_0 = \\sqrt{k/m}$ ✓.
+
+**Typischer Fehler:** Vorzeichen $+kx$ schreiben und dann wundern, warum „Auslenkung explodiert" — mathematisch gäbe das $\\ddot x = +(k/m)x$ mit Lösungen $e^{\\pm\\omega_0 t}$ (instabil, Sattelpunkt statt Schwingung).`,
+        [
+          'Hooke: Kraft ist der Auslenkung *entgegengerichtet*.',
+          'Das liefert das Minuszeichen vor $kx$.',
+          'Bei falschem Vorzeichen hätte das System Lösungen, die exponentiell wachsen.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Bilanzgleichungen: Massenbilanz, Energiebilanz, Kräftebilanz, Ladungsbilanz": [PRÜFUNG] Bringe die Schritte „Bilanzgleichung aufstellen" in die richtige Reihenfolge.',
+        [
+          'Kontrollvolumen / Bilanzraum festlegen',
+          'Erhaltungsgröße wählen (Masse, Energie, Impuls, Ladung)',
+          'Zuflüsse und Abflüsse durch die Systemgrenze auflisten',
+          'Quellen/Senken innerhalb des Kontrollvolumens identifizieren',
+          'Änderungsrate = Zufluss − Abfluss + Quellen − Senken ansetzen',
+          'Konstitutive Gesetze einsetzen (Hooke, Fourier, Ohm, …)',
+        ],
+        [0, 1, 2, 3, 4, 5],
+        `**Ansatz:** Bilanzen brauchen Raum, Größe, Flüsse, Quellen und Gesetze — in dieser Reihenfolge.
+
+**Rechnung:** Ohne Kontrollvolumen ist keine Bilanzgrenze da; ohne Erhaltungsgröße ist nicht klar, was bilanziert wird; ohne Flüsse/Quellen keine Terme; ohne konstitutive Gesetze (die materialspezifisch sind) lassen sich die Terme nicht konkretisieren.
+
+**Probe:** Feder-Masse: (1) Masse als Bilanzraum, (2) Impuls, (3) keine Ein-/Ausflüsse, (4) Federkraft und Dämpfung als Quellen/Senken, (5) $m\\ddot x = \\sum F$, (6) Hooke $F_{Feder}=-kx$, Dämpferkraft $-d\\dot x$.
+
+**Typischer Fehler:** Konstitutive Gesetze vorab einsetzen, bevor die Bilanz vollständig steht — führt oft zu doppelt gezählten Termen.`,
+        [
+          'Zuerst „wo" und „was" klären, dann „wie rein/raus".',
+          'Konstitutive Gesetze kommen zum Schluss.',
+          'Hooke, Fourier, Ohm sind materialspezifische Relationen, keine Bilanzen.',
+        ],
+      ),
+    ],
+
+    // ── [3] Mechanik-Elektrik-Analogie ────────────────────────────────────
+    3: [
+      matching(
+        'Sub-Goal "Mechanik-Elektrik-Analogie: $m \\leftrightarrow L$, $d \\leftrightarrow R$, $1/k \\leftrightarrow C$, $F \\leftrightarrow U$": [PRÜFUNG] Ordne die mechanischen Größen ihren elektrischen Analoga zu.',
+        [
+          { left: 'Masse $m$', right: 'Induktivität $L$' },
+          { left: 'Dämpfung $d$', right: 'Widerstand $R$' },
+          { left: 'Federnachgiebigkeit $1/k$', right: 'Kapazität $C$' },
+          { left: 'Kraft $F$', right: 'Spannung $U$' },
+        ],
+        `**Ansatz:** Vergleich der DGL $m\\ddot x + d\\dot x + kx = F$ und $L\\ddot q + R\\dot q + q/C = U$ — gleiche Struktur, andere Variablen.
+
+**Rechnung:** $m\\leftrightarrow L$ (Trägheit / elektrische Trägheit), $d\\leftrightarrow R$ (Dissipation), $k\\leftrightarrow 1/C$, also $1/k \\leftrightarrow C$ (Nachgiebigkeit / Speicherfähigkeit), $F\\leftrightarrow U$ (Antrieb).
+
+**Probe:** Energiespeicher analog: kinetische Energie $\\tfrac12 m\\dot x^2$ ↔ magnetische $\\tfrac12 L\\dot q^2 = \\tfrac12 L I^2$. Federenergie $\\tfrac12 kx^2$ ↔ Kondensatorenergie $\\tfrac12 q^2/C$.
+
+**Typischer Fehler:** $k \\leftrightarrow C$ annehmen (statt $1/k \\leftrightarrow C$) — ist die häufigste Verwechslung, weil die Federsteifigkeit „hart" und die Kapazität „speichernd" wirkt, aber die Position im Koeffizienten-Vergleich ist $k \\leftrightarrow 1/C$.`,
+        [
+          'Stelle beide DGL nebeneinander.',
+          'Welcher Term wirkt wie welcher?',
+          'Achtung: $k\\leftrightarrow 1/C$, nicht $k\\leftrightarrow C$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Mechanik-Elektrik-Analogie: $m \\leftrightarrow L$, $d \\leftrightarrow R$, $1/k \\leftrightarrow C$, $F \\leftrightarrow U$": [PRÜFUNG] Ein Feder-Masse-System hat $m=2$ kg, $k=200$ N/m, $d=4$ Ns/m. Welche RLC-Schaltung hat genau dieselbe DGL-Struktur (Eigenfrequenz und Dämpfung)?',
+        [
+          '$L=2$ H, $R=4$ Ω, $C=1/200$ F',
+          '$L=2$ H, $R=4$ Ω, $C=200$ F',
+          '$L=1/2$ H, $R=1/4$ Ω, $C=200$ F',
+          '$L=200$ H, $R=4$ Ω, $C=2$ F',
+        ],
+        0,
+        `**Ansatz:** Analogie: $m\\leftrightarrow L$, $d\\leftrightarrow R$, $k\\leftrightarrow 1/C$.
+
+**Rechnung:** $L = 2$ H, $R = 4$ Ω, und aus $k = 1/C$: $C = 1/k = 1/200$ F. Eigenfrequenz: $\\omega_0^{mech} = \\sqrt{k/m} = \\sqrt{100} = 10$ rad/s; elektrisch $\\omega_0^{el} = 1/\\sqrt{LC} = 1/\\sqrt{2\\cdot 1/200} = 1/\\sqrt{0{,}01} = 10$ rad/s ✓.
+
+**Probe:** Dämpfungsmaß mechanisch $D = d/(2\\sqrt{mk}) = 4/(2\\sqrt{400}) = 0{,}1$; elektrisch $D_{el} = (R/2)\\sqrt{C/L} = 2\\cdot\\sqrt{(1/200)/2} = 2\\cdot\\sqrt{1/400} = 2\\cdot 0{,}05 = 0{,}1$ ✓ — identisches Dämpfungsmaß.
+
+**Typischer Fehler:** $C = k$ ansetzen — häufigste Verwechslung, Ergebnis $\\omega_0 = 1/\\sqrt{2\\cdot 200} = 1/20$ ist dann um Faktor 200 zu klein.`,
+        [
+          'Analogie-Tabelle durchgehen: welche Größen tauschen?',
+          '$k \\leftrightarrow 1/C$, also $C = 1/k$.',
+          'Plausibilisiere am Ende mit $\\omega_0$ und Dämpfungsmaß.',
+        ],
+        {
+          1: '$C = 200$ F wäre $C = k$ — die Analogie ist aber $C = 1/k = 0{,}005$ F. Mit $200$ F wäre $\\omega_0 = 1/\\sqrt{2\\cdot 200} = 1/20$ rad/s, also völlig anderes System.',
+          2: '$L = 1/m$ und $R = 1/d$ wären Antreiber, nicht Analoga. Die Analogie geht zu den *linearen Koeffizienten direkt*: $L=m$, $R=d$.',
+          3: '$L=200$ und $C=2$ wäre fast wie „Masse und Feder tauschen" — das System hätte eine ganz andere Eigenfrequenz $\\omega_0 = 1/\\sqrt{400} = 0{,}05$ rad/s.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Mechanik-Elektrik-Analogie: $m \\leftrightarrow L$, $d \\leftrightarrow R$, $1/k \\leftrightarrow C$, $F \\leftrightarrow U$": [PRÜFUNG] Ein RLC-Kreis mit $L=0{,}5$ H, $R=2$ Ω, $C=0{,}002$ F wird als mechanisches System interpretiert. Welche Federkonstante $k$ (in N/m) entspricht der Kapazität?',
+        500, 1, 'N/m',
+        `**Ansatz:** $k \\leftrightarrow 1/C$, also $k = 1/C$ (sofern Einheiten nur Proportionalitäten widerspiegeln).
+
+**Rechnung:** $k = 1/C = 1/0{,}002 = 500$ N/m.
+
+**Probe:** $\\omega_0^{el} = 1/\\sqrt{LC} = 1/\\sqrt{0{,}001} \\approx 31{,}6$ rad/s. Mit $m \\leftrightarrow L = 0{,}5$ kg: $\\omega_0^{mech} = \\sqrt{k/m} = \\sqrt{500/0{,}5} = \\sqrt{1000} \\approx 31{,}6$ rad/s ✓.
+
+**Typischer Fehler:** Direkt $k = C$ setzen — das ergibt $k = 0{,}002$ N/m (weiche Feder) und eine völlig andere Eigenfrequenz.`,
+        [
+          'Analogie: $k \\leftrightarrow 1/C$.',
+          'Einfach reziprok nehmen.',
+          'Plausibilisiere mit $\\omega_0$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Mechanik-Elektrik-Analogie: $m \\leftrightarrow L$, $d \\leftrightarrow R$, $1/k \\leftrightarrow C$, $F \\leftrightarrow U$": [PRÜFUNG] In der Mechanik-Elektrik-Analogie entspricht der Dämpfung $d$ eines mechanischen Systems der Induktivität $L$ einer Schaltung.',
+        false,
+        `**Ansatz:** Prüfe die Analogie-Zuordnung: $m \\leftrightarrow L$, $d \\leftrightarrow R$, $k \\leftrightarrow 1/C$.
+
+**Rechnung:** Dämpfung $d$ entspricht dem *Widerstand* $R$, weil beide Energie dissipieren (Reibungswärme ↔ Joulesche Wärme) und in der DGL vor der ersten Ableitung stehen ($d\\dot x$ ↔ $R\\dot q = RI$).
+
+**Probe:** Einheitenvergleich: $[d] = $ Ns/m = kg/s (mechanische Dissipation); $[R] = $ V/A = Ω = kg·m²/(A²·s³). Beide sind Dissipationsparameter in ihren Domänen.
+
+**Typischer Fehler:** „$L$ ist ein Spule, Spulen bremsen Strom" — stimmt nicht: Spulen speichern magnetische Energie (wie Massen kinetische), sie dissipieren nicht. Dissipation passiert ausschließlich im Widerstand.`,
+        [
+          'Welche Rolle spielt $L$ in der DGL — vor welcher Ableitung?',
+          'Welche Rolle spielt $d$ — vor welcher Ableitung?',
+          'Beide müssen an derselben Stelle der DGL stehen, um Analoga zu sein.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Mechanik-Elektrik-Analogie: $m \\leftrightarrow L$, $d \\leftrightarrow R$, $1/k \\leftrightarrow C$, $F \\leftrightarrow U$": [PRÜFUNG] Bringe die Übertragung „mechanisches Modell → elektrisches Analogon" in die richtige Reihenfolge.',
+        [
+          'Mechanische DGL $m\\ddot x + d\\dot x + kx = F$ aufschreiben',
+          'Koeffizienten identifizieren: $m, d, k, F$',
+          'Analogie-Tabelle anwenden: $m\\to L$, $d\\to R$, $k\\to 1/C$, $F\\to U$',
+          'Elektrische DGL $L\\ddot q + R\\dot q + q/C = U$ aufschreiben',
+          'Überprüfen: Eigenfrequenz und Dämpfung beider Systeme identisch?',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Erst die mechanische DGL sauber aufschreiben, dann Koeffizient für Koeffizient übersetzen.
+
+**Rechnung:** Die Analogie ist eine *strukturelle Übertragung*: gleiche DGL-Form, nur mit Elektrik-Symbolen. Plausibilitätscheck über $\\omega_0$ und Dämpfungsmaß.
+
+**Probe:** Am Ende müssen $\\omega_0^{mech} = \\sqrt{k/m}$ und $\\omega_0^{el} = 1/\\sqrt{LC}$ denselben Zahlenwert liefern, sonst wurde die Analogie falsch angewandt.
+
+**Typischer Fehler:** Schritt 3 und 4 vertauschen — „ich schreib schon die elektrische DGL auf und passe später die Koeffizienten an" — führt oft zu vergessenen Termen.`,
+        [
+          'Strukturelle Übertragung: Form bleibt gleich, Symbole ändern sich.',
+          'Analogie-Tabelle als Nachschlagewerk.',
+          'Am Ende immer mit $\\omega_0$ und Dämpfung plausibilisieren.',
+        ],
+      ),
+    ],
+
+    // ── [4] Stationäre Lösung: ẏ = 0 → algebraisches System ───────────────
+    4: [
+      ni(
+        'Sub-Goal "Stationäre Lösung: $\\dot y = 0$ → algebraisches System (Gleichgewicht)": [PRÜFUNG] Wärmeleitung in einem Rohr: $C_W \\dot T = \\dot Q_{ein} - kA(T-T_U)$ mit $\\dot Q_{ein} = 800$ W, $kA = 20$ W/K, $T_U = 15$ °C. Welche Endtemperatur (in °C) stellt sich stationär ein?',
+        55, 0.1, '°C',
+        `**Ansatz:** Stationär $\\dot T = 0 \\Rightarrow$ algebraische Gleichung nach $T_\\infty$.
+
+**Rechnung:** $0 = 800 - 20\\cdot(T_\\infty - 15) \\Rightarrow T_\\infty - 15 = 40 \\Rightarrow T_\\infty = 55$ °C.
+
+**Probe:** Leistungsbilanz bei $T_\\infty$: Verlust $= 20\\cdot 40 = 800$ W $=$ Zufuhr ✓. Das Verhältnis $\\dot Q_{ein}/(kA) = 40$ K ist genau die Übertemperatur.
+
+**Typischer Fehler:** $T_\\infty = 800/20 = 40$ °C — Bezugspunkt $T_U = 15$ °C vergessen. Der Quotient $\\dot Q_{ein}/(kA)$ gibt die *Differenz* zur Umgebung, nicht die Absoluttemperatur.`,
+        [
+          'Stationär: zeitliche Ableitung auf null setzen.',
+          'Übriggebliebene Gleichung algebraisch nach $T_\\infty$ auflösen.',
+          'Umgebungstemperatur hinzuaddieren.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Stationäre Lösung: $\\dot y = 0$ → algebraisches System (Gleichgewicht)": [PRÜFUNG] Welche Aussage zur stationären Lösung eines autonomen Systems $\\dot y = f(y)$ ist richtig?',
+        [
+          'Stationäre Lösungen sind genau die Nullstellen von $f$: $f(y^*) = 0$.',
+          'Stationäre Lösungen sind die Nullstellen von $f$ und zusätzlich alle Wendepunkte von $y(t)$.',
+          'Stationäre Lösungen sind die Punkte, in denen $y$ Null ist.',
+          'Es gibt immer genau eine stationäre Lösung pro DGL.',
+        ],
+        0,
+        `**Ansatz:** „Stationär" heißt $\\dot y = 0$, das heißt bei autonomen Systemen $f(y) = 0$. Das ist die *Definition*.
+
+**Rechnung:** Aus $\\dot y = f(y) = 0$ folgt, dass $y(t) = y^*$ konstant bleibt. Jede Nullstelle von $f$ ist ein solches Gleichgewicht.
+
+**Probe:** Beispiel Logistik $\\dot y = y(1-y)$: Nullstellen $y=0$ und $y=1$ — das sind genau die beiden Gleichgewichte.
+
+**Typischer Fehler:** „Stationär" mit „$y=0$" verwechseln — stationär bedeutet konstant, nicht null. $y^*$ kann jeden Wert haben, solange $f(y^*)=0$.`,
+        [
+          'Stationär $\\Leftrightarrow$ keine Änderung.',
+          'Bei autonomen DGL $\\dot y = f(y)$ heißt das $f(y)=0$.',
+          'Mehrere Nullstellen = mehrere Gleichgewichte.',
+        ],
+        {
+          1: 'Wendepunkte sind Nullstellen der *zweiten* Ableitung von $y(t)$, nicht stationäre Punkte. Für stationär reicht $\\dot y = 0$.',
+          2: 'Nein — stationär bedeutet $\\dot y = 0$, nicht $y = 0$. Beispiel: Tank füllt sich stationär auf $V_\\infty = 50$ L, das ist nicht 0.',
+          3: 'Nichtlineare DGL haben oft mehrere Gleichgewichte (z.B. Logistik: $y^*=0$ und $y^*=1$). Lineare homogene haben meist nur $y^*=0$.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Stationäre Lösung: $\\dot y = 0$ → algebraisches System (Gleichgewicht)": [PRÜFUNG] Für ein lineares System $\\dot{\\vec x} = A\\vec x + \\vec b$ mit invertierbarer Matrix $A$ ist die stationäre Lösung eindeutig durch $\\vec x^* = -A^{-1}\\vec b$ gegeben.',
+        true,
+        `**Ansatz:** Stationär $\\dot{\\vec x} = 0$ → $A\\vec x^* + \\vec b = 0$ → lineares Gleichungssystem.
+
+**Rechnung:** $A\\vec x^* = -\\vec b \\Rightarrow \\vec x^* = -A^{-1}\\vec b$, sofern $A$ invertierbar ist (also $\\det(A)\\neq 0$).
+
+**Probe:** Falls $A$ singulär ist, hat das System entweder keine Lösung (inkonsistent) oder einen ganzen Unterraum stationärer Lösungen.
+
+**Typischer Fehler:** $\\vec x^* = A^{-1}\\vec b$ ohne Minuszeichen — das passiert, wenn man $A\\vec x^* = \\vec b$ statt $A\\vec x^* = -\\vec b$ aufschreibt.`,
+        [
+          '$\\dot{\\vec x} = 0$ gibt die algebraische Bedingung.',
+          'Lineares Gleichungssystem nach $\\vec x^*$ auflösen.',
+          'Minuszeichen nicht vergessen: $A\\vec x^* = -\\vec b$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Stationäre Lösung: $\\dot y = 0$ → algebraisches System (Gleichgewicht)": [PRÜFUNG] Ordne Systemen ihre stationären Lösungen zu.',
+        [
+          { left: '$\\dot V = 10 - 0{,}2 V$ (Tank)', right: '$V^* = 50$' },
+          { left: '$\\dot T = -k(T - 25)$, $k>0$', right: '$T^* = 25$' },
+          { left: '$\\dot y = y(y-3)$ (logistisch)', right: '$y^* \\in \\{0,\\,3\\}$' },
+          { left: '$\\dot x = -x + 4\\sin t$ (nicht autonom)', right: 'kein konstantes $x^*$ — Zwangsschwingung' },
+        ],
+        `**Ansatz:** Für autonome DGL stationäre Punkte aus $f(y)=0$. Bei nicht-autonomen Systemen (Zeit explizit) gibt es meist kein konstantes Gleichgewicht, sondern ein *eingeschwungenes* Zeitsignal.
+
+**Rechnung:** (1) $0 = 10 - 0{,}2 V^* \\Rightarrow V^* = 50$. (2) $0 = -k(T^* - 25) \\Rightarrow T^* = 25$. (3) $0 = y(y-3) \\Rightarrow y^* \\in\\{0,3\\}$. (4) Rechte Seite hängt explizit von $t$ ab → keine Konstante kann alle Zeitpunkte erfüllen.
+
+**Probe:** Bei (4) existiert stattdessen eine *partikuläre Lösung* $x_p(t) = A\\sin(t-\\varphi)$ — eingeschwungener Zustand.
+
+**Typischer Fehler:** Bei Zwangsschwingung einen „stationären Wert" suchen — stattdessen nach dem Zeitverlauf der partikulären Lösung fragen.`,
+        [
+          'Autonom: $f(y)=0$ direkt lösen.',
+          'Nicht-autonom: kein konstantes Gleichgewicht möglich.',
+          'Nichtlinear oft: mehrere Gleichgewichte.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Stationäre Lösung: $\\dot y = 0$ → algebraisches System (Gleichgewicht)": [PRÜFUNG] Ordne die Schritte „stationäre Lösung bestimmen und interpretieren" in die richtige Reihenfolge.',
+        [
+          'DGL aufstellen: $\\dot y = f(y, u)$',
+          'Ableitungsterm auf null setzen: $\\dot y = 0$',
+          'Algebraisches System $f(y^*, u)=0$ nach $y^*$ auflösen',
+          'Eindeutigkeit prüfen (eine oder mehrere Lösungen?)',
+          'Stabilität des Gleichgewichts analysieren (Linearisierung)',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Stationäre Analyse: DGL → Nullsetzen → Auflösen → Eindeutigkeit → Stabilität.
+
+**Rechnung:** Erst bei bekanntem $y^*$ macht Stabilität Sinn (linearisieren um $y^*$). Mehrfach-Gleichgewichte erfordern individuelle Stabilitätsanalyse pro Punkt.
+
+**Probe:** Am logistischen System $\\dot y = y(1-y)$: (1) DGL klar, (2) Nullsetzen, (3) $y^*\\in\\{0,1\\}$, (4) zwei Punkte, (5) $y^*=0$ instabil (kleine $y$ wachsen), $y^*=1$ stabil (kleine Abweichungen klingen ab).
+
+**Typischer Fehler:** Stabilitätsanalyse überspringen — stationäre Lösung ohne Stabilitätsurteil ist oft praktisch nutzlos (ein instabiler Gleichgewichtspunkt wird nie beobachtet).`,
+        [
+          'Zuerst Lösung finden, dann Eigenschaften untersuchen.',
+          'Stabilität folgt aus Linearisierung um $y^*$.',
+          'Bei mehreren Gleichgewichten jedes einzeln prüfen.',
+        ],
+      ),
+    ],
+
+    // ── [5] Newton'sches Abkühlungsgesetz ─────────────────────────────────
+    5: [
+      ni(
+        'Sub-Goal "Newton\'sches Abkühlungsgesetz: $\\dot T = -k(T - T_U)$, Lösung $T(t) = T_U + (T_0 - T_U)e^{-kt}$": [PRÜFUNG] Ein Kaffee hat $T_0 = 90$ °C und kühlt in $T_U = 20$ °C ab. Nach 5 min misst man $T = 55$ °C. Wie viele Minuten braucht er, um auf $T = 28{,}75$ °C zu fallen?',
+        15, 0.1, 'min',
+        `**Ansatz:** Newton-Abkühlung $T(t) = T_U + (T_0 - T_U)e^{-kt}$. Erst $k$ aus der Messung bestimmen, dann nach $t$ auflösen.
+
+**Rechnung:** $(T-T_U)/(T_0-T_U) = e^{-kt}$. Bei $t=5$: $(55-20)/70 = 0{,}5 = e^{-5k} \\Rightarrow k = \\ln 2/5 \\approx 0{,}1386$ 1/min. Ziel $T=28{,}75$ °C: $\\Delta T = 8{,}75$ K, also $8{,}75/70 = 1/8 = e^{-kt} \\Rightarrow kt = 3\\ln 2 \\Rightarrow t = 3\\cdot 5 = 15$ min.
+
+**Probe:** Jede Halbierung der Temperaturdifferenz braucht $t_{1/2}=5$ min. $\\Delta T$: $70\\to 35\\to 17{,}5\\to 8{,}75$ K nach $5,10,15$ min, also $T = 20 + 8{,}75 = 28{,}75$ °C ✓.
+
+**Typischer Fehler:** Mit $T$ statt $(T-T_U)$ rechnen: $28{,}75/90 \\approx 0{,}32$ gibt völlig andere Zeit, weil die Asymptote bei $T_U\\neq 0$ ignoriert wird.`,
+        [
+          'Immer mit der Temperaturdifferenz $\\Delta T = T - T_U$ arbeiten.',
+          'Aus der ersten Messung $k = \\ln 2 / 5$ bestimmen.',
+          'Ziel-$\\Delta T = 8{,}75$ K ist $1/8$ des Anfangswerts → drei Halbwertszeiten.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Newton\'sches Abkühlungsgesetz: $\\dot T = -k(T - T_U)$, Lösung $T(t) = T_U + (T_0 - T_U)e^{-kt}$": [PRÜFUNG] Welche Eigenschaft hat die Lösung $T(t) = T_U + (T_0-T_U)e^{-kt}$?',
+        [
+          'Exponentieller Zerfall der Temperaturdifferenz, Asymptote $T_U$.',
+          'Linearer Zerfall, $T$ trifft $T_U$ nach endlicher Zeit.',
+          'Exponentielles Wachstum, $T$ steigt über alle Grenzen.',
+          'Periodische Oszillation um $T_U$.',
+        ],
+        0,
+        `**Ansatz:** Untersuche das qualitative Verhalten der Lösungsformel für $t\\to\\infty$ und $t=0$.
+
+**Rechnung:** Bei $t=0$: $T(0) = T_U + (T_0-T_U) = T_0$ ✓. Bei $t\\to\\infty$: $e^{-kt}\\to 0$ (da $k>0$), also $T(t)\\to T_U$ — exponentielle Annäherung. Differenz $T-T_U = (T_0-T_U)e^{-kt}$ zerfällt exponentiell.
+
+**Probe:** Halbwertszeit der Temperaturdifferenz: $t_{1/2} = \\ln 2 / k$, unabhängig vom Anfangswert — klassisches Merkmal exponentiellen Zerfalls.
+
+**Typischer Fehler:** „$T$ erreicht $T_U$ nach endlicher Zeit" — exponentiell bleibt immer *über* $T_U$ (asymptotisch). In der Praxis ist die Differenz nach $5\\cdot t_{1/2}$ nur noch ~3% — vernachlässigbar, aber nicht exakt null.`,
+        [
+          'Verhalten bei $t=0$ und $t\\to\\infty$ beurteilen.',
+          '$e^{-kt}$ ist monotone fallende Exponentialfunktion.',
+          'Asymptote der Lösung suchen.',
+        ],
+        {
+          1: 'Linearer Zerfall hätte die Form $T = T_0 - m\\cdot t$ — dort würde $T$ tatsächlich negative Werte erreichen. Newton liefert aber Exponentialform und Asymptote.',
+          2: 'Wachstum würde aus positiven Exponenten $e^{+kt}$ kommen — dann wäre die DGL $\\dot T = +k(T-T_U)$, nicht die Newton-Abkühlung.',
+          3: 'Oszillation bräuchte komplexe Eigenwerte $\\pm i\\omega$ — Newton hat einen reellen Eigenwert $-k<0$, also kein Schwingen.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Newton\'sches Abkühlungsgesetz: $\\dot T = -k(T - T_U)$, Lösung $T(t) = T_U + (T_0 - T_U)e^{-kt}$": [PRÜFUNG] Die Zeit, in der sich die Temperaturdifferenz $\\Delta T = T - T_U$ halbiert, hängt bei der Newton-Abkühlung nicht vom Anfangswert $T_0$ ab.',
+        true,
+        `**Ansatz:** Halbierungsbedingung: $\\Delta T(t_{1/2}) = \\tfrac12 \\Delta T(0)$.
+
+**Rechnung:** $(T_0-T_U)e^{-k t_{1/2}} = \\tfrac12 (T_0-T_U) \\Rightarrow e^{-k t_{1/2}} = \\tfrac12 \\Rightarrow t_{1/2} = \\ln 2 / k$. Keine Abhängigkeit von $T_0$.
+
+**Probe:** Egal ob $T_0=100$ °C oder $T_0=40$ °C: die *Differenz* halbiert sich in derselben Zeit, weil der Zerfallsfaktor $k$ Materialeigenschaft ist.
+
+**Typischer Fehler:** „Heißere Objekte kühlen schneller ab" — stimmt nur absolut (mehr K/min), aber *relativ* (halbe Differenz) ist die Zeitskala dieselbe.`,
+        [
+          '$\\Delta T = (T_0-T_U)e^{-kt}$.',
+          'Halbierung: $e^{-kt_{1/2}} = 1/2$.',
+          'Löse nach $t_{1/2}$ und prüfe, ob $T_0$ vorkommt.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Newton\'sches Abkühlungsgesetz: $\\dot T = -k(T - T_U)$, Lösung $T(t) = T_U + (T_0 - T_U)e^{-kt}$": [PRÜFUNG] Ordne Situation und Konsequenz für die Newton-Abkühlung zu.',
+        [
+          { left: '$k$ wird größer (bessere Isolierung umgekehrt, schlechte Isolierung)', right: 'Abkühlung läuft schneller, kürzere Halbwertszeit' },
+          { left: '$T_U$ wird höher', right: 'Endtemperatur $T_\\infty$ höher, Zeitverlauf verschoben' },
+          { left: '$T_0 = T_U$', right: 'Lösung ist konstant $T(t) = T_U$, kein Temperaturausgleich nötig' },
+          { left: '$T_0 < T_U$ (Objekt kälter als Umgebung)', right: 'Objekt erwärmt sich exponentiell auf $T_U$' },
+        ],
+        `**Ansatz:** Parameter-Einfluss auf die Lösung systematisch: $k$ steuert Zeitskala, $T_U$ steuert Asymptote, $T_0$ steuert Amplitude und Vorzeichen der Differenz.
+
+**Rechnung:** (1) $t_{1/2}=\\ln 2/k$: $k\\uparrow\\Rightarrow t_{1/2}\\downarrow$. (2) $T_\\infty = T_U$. (3) $T_0 = T_U \\Rightarrow \\Delta T = 0 \\Rightarrow T(t) = T_U$. (4) $T_0-T_U < 0 \\Rightarrow$ Differenz negativ, wächst gegen 0 → Objekt nähert sich $T_U$ von unten (Aufwärmen).
+
+**Probe:** Wärmetauscher-Anwendung: Durch Erhöhen von $k$ (größerer Wärmeübertragungskoeffizient) verkürzt sich die Anpassungszeit — deshalb Rippen an Kühlkörpern.
+
+**Typischer Fehler:** „Newton gilt nur für Abkühlung" — gilt genauso für Erwärmung. Das Vorzeichen von $(T_0-T_U)$ bestimmt die Richtung, die Mathematik ist identisch.`,
+        [
+          'Parameter einzeln variieren, Rest konstant lassen.',
+          '$k$ verändert Geschwindigkeit, $T_U$ die Asymptote.',
+          'Newton gilt bidirektional: Abkühlen und Erwärmen.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Newton\'sches Abkühlungsgesetz: $\\dot T = -k(T - T_U)$, Lösung $T(t) = T_U + (T_0 - T_U)e^{-kt}$": [PRÜFUNG] Bringe die Lösungsschritte für ein Newton-Abkühlungs-Anfangswertproblem in die richtige Reihenfolge.',
+        [
+          'DGL identifizieren: $\\dot T = -k(T - T_U)$',
+          'Substitution $\\Delta T = T - T_U$ → $\\dot{\\Delta T} = -k \\Delta T$',
+          'Lösung der homogenen DGL: $\\Delta T(t) = C \\cdot e^{-kt}$',
+          'Anfangsbedingung $\\Delta T(0) = T_0 - T_U$ einsetzen → $C = T_0 - T_U$',
+          'Rücksubstitution: $T(t) = T_U + (T_0 - T_U) e^{-kt}$',
+          'Plausibilitätscheck: $T(0) = T_0$ ✓, $T(\\infty) = T_U$ ✓',
+        ],
+        [0, 1, 2, 3, 4, 5],
+        `**Ansatz:** Struktur „DGL → Substitution → Homogene Lösung → Konstante → Rück → Check".
+
+**Rechnung:** Die Substitution $\\Delta T = T - T_U$ macht die DGL homogen (keine $T_U$-Verschiebung mehr). Dann ist es nur noch die Standard-DGL $\\dot u = -ku$ mit Lösung $u = C e^{-kt}$.
+
+**Probe:** Werkstück $T_0=200$ °C, $T_U=20$ °C, $k=0{,}0693$: $T(t) = 20 + 180 e^{-0{,}0693 t}$. $T(0)=200$ ✓, $T(\\infty)=20$ ✓.
+
+**Typischer Fehler:** Ohne Substitution direkt lösen: $T(t) = Ce^{-kt}$ ansetzen (Asymptote wäre $0$, nicht $T_U$) — Verschiebung ignoriert.`,
+        [
+          'Substitution macht die DGL homogen.',
+          'Dann Standard-Exponential-Lösung.',
+          'Am Ende Rücksubstitution und Plausibilitätscheck.',
+        ],
+      ),
+    ],
+  },
 }

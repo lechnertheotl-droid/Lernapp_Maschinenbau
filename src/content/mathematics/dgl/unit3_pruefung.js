@@ -326,8 +326,8 @@ export const exercises_dgl_u3 = {
       '$u(t)$ (Spannung, wirkt wie Federkonstante)',
     ],
     correctIndex: 1,
-    explanation: 'Vergleich Mechanik ($m\\ddot x + d\\dot x + kx = F$) ↔ Elektrotechnik ($L\\ddot q + R\\dot q + q/C = u$): $m \\leftrightarrow L$, $d \\leftrightarrow R$ (Dämpfung/Widerstand), $k \\leftrightarrow 1/C$ (Steifigkeit/inverse Kapazität), $F \\leftrightarrow u$ (Antrieb). Diese Analogie erlaubt, dieselbe DGL-Mathematik in beiden Domänen zu nutzen.',
-    hints: ['Schau auf den Term, der die Auslenkung selbst ($q$ oder $x$) ohne Ableitung enthält.', 'Im mechanischen System steht dort $k \\cdot x$.'],
+    explanation: '**Ansatz:** Vergleiche Mechanik $m\\ddot x + d\\dot x + kx = F$ mit Elektrotechnik $L\\ddot q + R\\dot q + q/C = u$ Term für Term.\n\n**Rechnung:** Masse $m \\leftrightarrow L$ (vor $\\ddot{}$), Dämpfung $d \\leftrightarrow R$ (vor $\\dot{}$), Federkonstante $k \\leftrightarrow 1/C$ (vor der Variablen), Kraft $F \\leftrightarrow u$ (rechte Seite). Federkonstante entspricht also $1/C$.\n\n**Probe:** Einheiten-Check: $[k]=$ N/m $=$ kg/s$^2$. Federenergie $\\tfrac12 kx^2$ ↔ Kondensatorenergie $\\tfrac12 q^2/C$ — auch hier taucht $1/C$ als Steifigkeit auf.\n\n**Typischer Fehler:** $C$ selbst wird als Analogon zu $k$ gewählt — falsch, weil Kapazität im Kondensator *Ladung speichert* (wie Masse Impuls speichert), während $1/C$ die *Rückstellwirkung* bestimmt.',
+    hints: ['Schau auf den Term, der die Auslenkung selbst ($q$ oder $x$) ohne Ableitung enthält.', 'Im mechanischen System steht dort $k \\cdot x$.', 'Stelle die beiden DGL übereinander und vergleiche Koeffizient für Koeffizient.'],
     wrongAnswerExplanations: {
       0: '$L$ ist tatsächlich das Analogon zur Masse (nicht zur Federkonstante). Die Masse steht vor $\\ddot x$ (zweite Ableitung), genauso wie $L$ vor $\\ddot q$ steht. Federkonstante entspricht dem Term *ohne* Ableitung, also $1/C$.',
       2: '$R$ steht vor $\\dot q$ (erste Ableitung) — das ist das Analogon zur *Dämpfung* $d$ bei $\\dot x$, nicht zur Federkonstante. Die Federkraft ist proportional zur Auslenkung (keine Ableitung), und das leistet im RLC $1/C \\cdot q$.',
@@ -340,15 +340,15 @@ export const exercises_dgl_u3 = {
     correctValue: 3,
     tolerance: 0.01,
     unit: '',
-    explanation: 'Systemmatrix $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$. Char. Polynom: $(2-\\lambda)^2 - 1 = 0 \\Rightarrow 2-\\lambda = \\pm 1 \\Rightarrow \\lambda = 1$ oder $3$. Größter Eigenwert: $\\lambda_{\\max} = 3 > 0$ → System ist instabil (wächst exponentiell).',
-    hints: ['DGL-System linear: $\\dot{\\vec x} = A\\vec x$. Systemmatrix aus den Koeffizienten ablesen.', 'Eigenwerte aus $\\det(A - \\lambda I) = 0$.', 'Stabilität: alle $\\text{Re}(\\lambda) < 0$.'],
+    explanation: '**Ansatz:** System als $\\dot{\\vec x} = A\\vec x$ mit Systemmatrix aus den Koeffizienten ablesen, dann $\\det(A-\\lambda I)=0$.\n\n**Rechnung:** $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$. $(2-\\lambda)^2 - 1 = 0 \\Rightarrow 2-\\lambda = \\pm 1 \\Rightarrow \\lambda_1 = 1$, $\\lambda_2 = 3$. Größter Eigenwert: $\\lambda_{\\max} = 3$.\n\n**Probe:** Spur $\\text{tr}(A) = 2+2 = 4 = \\lambda_1+\\lambda_2$ ✓. Determinante $\\det(A) = 3 = \\lambda_1 \\cdot \\lambda_2$ ✓.\n\n**Typischer Fehler:** Diagonalelemente von $A$ direkt als Eigenwerte ablesen (das stimmt nur, wenn $A$ diagonal ist). Hier liefert das fälschlich $\\lambda=2$.',
+    hints: ['DGL-System linear: $\\dot{\\vec x} = A\\vec x$. Systemmatrix aus den Koeffizienten ablesen.', 'Eigenwerte aus $\\det(A - \\lambda I) = 0$.', 'Bei $2\\times 2$-Matrix: $\\lambda^2 - \\text{tr}(A)\\lambda + \\det(A) = 0$.'],
   },
   'ex-dgl-3-3-c': {
     id: 'ex-dgl-3-3-c', lessonId: 'dgl-3-3', type: 'true-false',
     statement: '[PRÜFUNG] Ein lineares DGL-System $\\dot{\\vec x} = A\\vec x$ ist asymptotisch stabil genau dann, wenn alle Eigenwerte von $A$ negativen Realteil haben.',
     correct: true,
-    explanation: 'Asymptotische Stabilität: Lösungen klingen für $t \\to \\infty$ ab. Allgemeine Lösung enthält Terme $e^{\\lambda_i t}$ — diese gehen gegen 0 genau dann, wenn alle $\\text{Re}(\\lambda_i) < 0$. Bei $\\text{Re}(\\lambda) = 0$ entstehen ungedämpfte Schwingungen (Grenzstabilität); $\\text{Re}(\\lambda) > 0$ bedeutet instabil.',
-    hints: ['Lösungen sind Linearkombinationen von $e^{\\lambda_i t} \\vec v_i$.', '$e^{\\lambda t} \\to 0$ genau bei $\\text{Re}(\\lambda) < 0$.'],
+    explanation: '**Ansatz:** Lösungen eines linearen homogenen Systems sind Linearkombinationen von $e^{\\lambda_i t}\\vec v_i$. Abklingen verlangt $|e^{\\lambda_i t}| \\to 0$.\n\n**Rechnung:** $|e^{\\lambda t}| = e^{\\text{Re}(\\lambda)\\cdot t}$. Das geht für $t\\to\\infty$ genau dann gegen 0, wenn $\\text{Re}(\\lambda)<0$. Bedingung für jede Mode einzeln: alle $\\text{Re}(\\lambda_i) < 0$.\n\n**Probe:** Komplexer Eigenwert $\\lambda = \\alpha + i\\beta$: $e^{\\lambda t} = e^{\\alpha t}(\\cos\\beta t + i\\sin\\beta t)$. Der Imaginärteil erzeugt nur Oszillation, der Realteil $\\alpha$ entscheidet über Abklingen/Anwachsen.\n\n**Typischer Fehler:** Prüfen von $\\lambda_i < 0$ direkt — scheitert bei komplexen Eigenwerten (die sind nicht ordenbar). Immer $\\text{Re}(\\lambda_i)$ prüfen.',
+    hints: ['Lösungen sind Linearkombinationen von $e^{\\lambda_i t} \\vec v_i$.', '$|e^{\\lambda t}| = e^{\\text{Re}(\\lambda) t}$.', 'Komplexe Eigenwerte: Imaginärteil erzeugt Schwingung, Realteil das Abklingen.'],
   },
   'ex-dgl-3-3-d': {
     id: 'ex-dgl-3-3-d', lessonId: 'dgl-3-3', type: 'matching',
@@ -359,8 +359,8 @@ export const exercises_dgl_u3 = {
       { left: 'RLC-Kreis mit Spannung $u(t)$', right: 'Inhomogene lineare DGL 2. Ordnung' },
       { left: 'Zwei gekoppelte Pendel', right: 'System linearer DGL 2. Ordnung' },
     ],
-    explanation: 'Diese vier Modelle decken den Großteil aller technischen Anwendungen ab. Erkenne: Wie viele Variablen? Wie hoch die Ableitungs-Ordnung? Mit oder ohne Antrieb? Daraus folgt der Lösungsweg.',
-    hints: ['Wie viele Bewegungsvariablen — eine oder mehrere?', 'Höchste Ableitung bestimmt die Ordnung.'],
+    explanation: '**Ansatz:** Für jedes Modell klassifiziere drei Merkmale: Anzahl Variablen (skalar vs. System), höchste Ableitung (Ordnung), Existenz einer Störfunktion (homogen vs. inhomogen).\n\n**Rechnung:** Newton-Abkühlung hat nur $T$ und $\\dot T$ → 1. Ordnung. Feder-Masse hat $\\ddot x$ ohne äußeren Antrieb → homogen 2. Ordnung. RLC mit $u(t)\\neq 0$ → inhomogen 2. Ordnung. Zwei gekoppelte Pendel haben zwei Auslenkungen $\\varphi_1,\\varphi_2$ mit jeweils $\\ddot\\varphi_i$ → System 2. Ordnung.\n\n**Probe:** Anzahl der Integrationskonstanten: 1 (Newton), 2 (Feder-Masse und RLC), 4 (gekoppelte Pendel). Passt zu "Ordnung × Anzahl der Variablen".\n\n**Typischer Fehler:** "Gekoppelte Pendel = zwei unabhängige DGL 2. Ordnung" — falsch, die Kopplung macht sie zu einem System, das nur gemeinsam lösbar ist (Eigenwerte der Systemmatrix).',
+    hints: ['Wie viele Bewegungsvariablen — eine oder mehrere?', 'Höchste Ableitung bestimmt die Ordnung.', 'Gibt es eine rechte Seite $\\neq 0$ — dann inhomogen.'],
   },
   'ex-dgl-3-3-e': {
     id: 'ex-dgl-3-3-e', lessonId: 'dgl-3-3', type: 'number-input',
@@ -368,8 +368,8 @@ export const exercises_dgl_u3 = {
     correctValue: 0.0693,
     tolerance: 0.001,
     unit: '1/min',
-    explanation: 'Lösung: $T(t) = T_U + (T_0 - T_U) e^{-kt} = 20 + 180 e^{-kt}$. Bei $t = 10$: $110 = 20 + 180 e^{-10k} \\Rightarrow e^{-10k} = 90/180 = 0{,}5 \\Rightarrow -10k = \\ln(0{,}5) \\Rightarrow k = \\ln(2)/10 \\approx 0{,}0693$ 1/min.',
-    hints: ['Newton-Abkühlung hat Lösung der Form $T = T_U + (T_0 - T_U) e^{-kt}$.', 'Setze $T(10)$ ein und löse nach $k$ auf.', '$\\ln(2) \\approx 0{,}693$.'],
+    explanation: '**Ansatz:** Analytische Lösung von $\\dot T = -k(T-T_U)$ mit $T(0)=T_0$ ist $T(t)=T_U+(T_0-T_U)e^{-kt}$. Setze den Messwert ein und löse nach $k$.\n\n**Rechnung:** $T(t) = 20 + 180 e^{-kt}$. Bei $t=10$: $110 = 20 + 180 e^{-10k} \\Rightarrow e^{-10k} = 90/180 = 0{,}5 \\Rightarrow -10k = \\ln(0{,}5) \\Rightarrow k = \\ln 2 / 10 \\approx 0{,}0693$ 1/min.\n\n**Probe:** Halbierungszeit der Differenz $(T-T_U)$: $t_{1/2} = \\ln 2 / k \\approx 10$ min ✓ — genau der gemessene Zeitraum, in dem 180 K auf 90 K gesunken sind.\n\n**Typischer Fehler:** Mit $T$-Werten statt $\\Delta T = T-T_U$ rechnen: $110/200 = 0{,}55$ liefert $k \\approx 0{,}06$ — daneben, weil $T_U\\neq 0$ den Bezugspunkt verschiebt.',
+    hints: ['Newton-Abkühlung hat Lösung der Form $T = T_U + (T_0 - T_U) e^{-kt}$.', 'Setze $T(10)$ ein und löse nach $k$ auf.', 'Halbierungszeit der Differenz: $t_{1/2}=\\ln 2 / k$.'],
   },
   'ex-dgl-3-3-f': {
     id: 'ex-dgl-3-3-f', lessonId: 'dgl-3-3', type: 'multiple-choice',
@@ -381,8 +381,8 @@ export const exercises_dgl_u3 = {
       '$\\dot V = -5 + 0{,}1 V$',
     ],
     correctIndex: 0,
-    explanation: 'Massenbilanz: Änderungsrate = Zufluss − Abfluss. $\\dot V = q_{ein} - q_{aus} = 5 - 0{,}1 V$. Stationärer Zustand $\\dot V = 0$ liefert $V_\\infty = 50$ L. Lineare DGL 1. Ordnung — analytisch lösbar.',
-    hints: ['Bilanz: Was kommt rein minus was geht raus.', 'Abfluss ist proportional zum Inhalt: $q_{aus} = k V$.'],
+    explanation: '**Ansatz:** Massenbilanz im Tank: Änderungsrate des Inhalts = Zufluss − Abfluss.\n\n**Rechnung:** $\\dot V = q_{ein} - q_{aus} = 5 - 0{,}1\\cdot V$. Das ist eine lineare DGL 1. Ordnung mit konstantem Zufluss und linearem Verlust.\n\n**Probe:** Stationär $\\dot V = 0 \\Rightarrow V_\\infty = 5/0{,}1 = 50$ L. Einheiten: $[\\dot V]$ = L/min, $[q_{ein}]$ = L/min, $[0{,}1\\cdot V]$ = (1/min)·L = L/min ✓.\n\n**Typischer Fehler:** Vorzeichen verwechseln — Zufluss wird als $-5$ eingetragen oder Abfluss als $+0{,}1V$. Dadurch wächst das Volumen ohne obere Grenze oder wird negativ.',
+    hints: ['Bilanz: Was kommt rein minus was geht raus.', 'Abfluss ist proportional zum Inhalt: $q_{aus} = k V$.', 'Stationärer Zustand: $\\dot V = 0$ als Plausibilitätscheck.'],
     wrongAnswerExplanations: {
       1: 'Zufluss und Abfluss sind verrechnet. Die Bilanz ist eine *Differenz*: $\\dot V = q_{ein} - q_{aus}$, nicht ein Produkt. Wenn du $5 \\cdot 0{,}1 V = 0{,}5 V$ schreibst, wird Zufluss an Volumen gekoppelt — Zufluss ist aber konstant 5 L/min.',
       2: 'Hier wurde die Proportionalität des Abflusses vergessen. Aus „$q_{aus} = 0{,}1 \\cdot V$" folgt $\\dot V = 5 - 0{,}1 V$, nicht $5 + V$. Der Abfluss reduziert das Volumen (Minuszeichen), und der Koeffizient ist $0{,}1$, nicht $1$.',
@@ -402,8 +402,8 @@ export const exercises_dgl_u3 = {
       'Lösung interpretieren und mit Realität vergleichen',
     ],
     correctOrder: [0, 1, 2, 3, 4, 5, 6],
-    explanation: 'Modellbildung folgt einer klaren Hierarchie: erst System, dann Variablen, dann Bilanzen, dann DGL, dann Lösung, dann Validierung. Der letzte Schritt ist oft der wichtigste — er prüft, ob das Modell zur Realität passt.',
-    hints: ['Erst System verstehen, dann modellieren.', 'Bilanzgleichungen sind das physikalische Fundament.'],
+    explanation: '**Ansatz:** Jeder Modellierschritt liefert Input für den nächsten: Systemgrenzen definieren die Variablen, Variablen bestimmen die Bilanz, aus der Bilanz folgt die DGL, die man löst und zum Schluss gegen Messdaten prüft.\n\n**Rechnung:** Reihenfolge: System → Variablen → Bilanzen → DGL → AB → Lösung → Interpretation. Jede Umordnung bricht die Kausalkette — z.B. DGL lösen, bevor die Bilanz steht, führt zu willkürlichen Gleichungen.\n\n**Probe:** Beispiel Tankmodell: (1) Tank mit Zu-/Ablauf abgegrenzt, (2) Variable $V(t)$, (3) Massenbilanz, (4) $\\dot V = q_{ein}-q_{aus}$, (5) $V(0)=V_0$, (6) Lösung $V(t)$, (7) Grenzfall $V_\\infty$.\n\n**Typischer Fehler:** Mit der DGL beginnen („ich weiß, das wird exponentiell") und die physikalische Bilanz erst hinterher rechtfertigen — führt zu falschen Vorzeichen und vergessenen Termen.',
+    hints: ['Erst System verstehen, dann modellieren.', 'Bilanzgleichungen sind das physikalische Fundament.', 'Lösung am Ende immer gegen Grenzfälle und Einheiten prüfen.'],
   },
   'ex-dgl-3-3-h': {
     id: 'ex-dgl-3-3-h', lessonId: 'dgl-3-3', type: 'multiple-choice',
@@ -415,8 +415,8 @@ export const exercises_dgl_u3 = {
       'Es eignet sich für DGL der Form $\\dot y = f(t, y)$',
     ],
     correctIndex: 2,
-    explanation: 'Euler ist NICHT immer stabil — bei zu großem $h$ entstehen numerische Instabilitäten, besonders bei "steifen" DGL. Stabilitätsbedingung etwa $|1 + h\\lambda| \\leq 1$ für lineare Systeme. Die anderen Aussagen stimmen: explizit, Ordnung 1, lokal $O(h^2)$, global $O(h)$.',
-    hints: ['Numerische Stabilität hängt von Schrittweite und DGL-Eigenschaften ab.', 'Steife Systeme erfordern implizite Verfahren oder kleines $h$.'],
+    explanation: '**Ansatz:** Prüfe jede der vier Aussagen einzeln gegen die Theorie des expliziten Euler-Verfahrens und suche die falsche.\n\n**Rechnung:** (0) explizit, einschrittig, Ordnung 1 — richtig. (1) lokal $O(h^2)$, global $O(h)$ — richtig. (2) „immer stabil" — FALSCH, Stabilitätsbedingung am Testproblem $\\dot y = \\lambda y$ ist $|1+h\\lambda| \\leq 1$. (3) passt auf $\\dot y=f(t,y)$ — richtig.\n\n**Probe:** Gegenbeispiel für (2): $\\dot y = -100 y$, $y(0)=1$, $h=0{,}1$: $y_{n+1} = y_n + 0{,}1\\cdot(-100 y_n) = -9 y_n$. Lösung oszilliert mit Faktor $(-9)^n$ → explodiert, obwohl exakte Lösung $y(t)=e^{-100t}$ abklingt.\n\n**Typischer Fehler:** „Kleines $h$ garantiert korrekte Lösung" — in Wahrheit muss $h$ relativ zum betragsmäßig größten Eigenwert klein sein ($|h\\lambda| \\lesssim 2$).',
+    hints: ['Numerische Stabilität hängt von Schrittweite und DGL-Eigenschaften ab.', 'Steife Systeme erfordern implizite Verfahren oder kleines $h$.', 'Teste die Aussagen einzeln am Modellproblem $\\dot y=\\lambda y$.'],
     wrongAnswerExplanations: {
       0: 'Diese Aussage ist *richtig* und damit keine falsche Antwort. Euler ist tatsächlich explizit (neuer Wert direkt berechenbar), Einschrittverfahren (nur $y_n$ nötig) und Ordnung 1 (globaler Fehler $O(h)$). Die Frage sucht die *falsche* Aussage.',
       1: 'Diese Aussage ist *richtig* — Standardresultat für das Euler-Verfahren: lokaler Fehler $O(h^2)$, globaler Fehler $O(h)$ (eine Größenordnung weniger wegen $N=T/h$ Schritten). Die Frage sucht die *falsche* Aussage.',
@@ -427,8 +427,8 @@ export const exercises_dgl_u3 = {
     id: 'ex-dgl-3-3-i', lessonId: 'dgl-3-3', type: 'true-false',
     statement: '[PRÜFUNG] Ein homogenes DGL-System $\\dot{\\vec x} = A\\vec x$ wird durch Diagonalisierung von $A$ in entkoppelte skalare DGL $\\dot u_i = \\lambda_i u_i$ überführt.',
     correct: true,
-    explanation: 'Mit der Substitution $\\vec x = P \\vec u$ (Spalten von $P$ = Eigenvektoren) wird $\\dot{\\vec u} = P^{-1} A P \\vec u = D \\vec u$. Da $D$ diagonal, zerfällt das System in unabhängige skalare DGL $\\dot u_i = \\lambda_i u_i$, jede mit Lösung $u_i(t) = u_i(0) e^{\\lambda_i t}$. Rücktransformation: $\\vec x(t) = P \\vec u(t)$.',
-    hints: ['Diagonalisierung entkoppelt den Zustand in Eigenrichtungen.', 'In jeder Eigenrichtung ist die DGL skalar und trivial lösbar.'],
+    explanation: '**Ansatz:** Diagonalisierbare Matrix $A$ lässt sich als $A = P D P^{-1}$ schreiben mit $D = \\text{diag}(\\lambda_1,\\dots,\\lambda_n)$ und Eigenvektoren in den Spalten von $P$.\n\n**Rechnung:** Substituiere $\\vec x = P\\vec u$, also $P\\dot{\\vec u} = A P\\vec u$ und nach Multiplikation mit $P^{-1}$ von links: $\\dot{\\vec u} = P^{-1} A P \\vec u = D\\vec u$. Komponentenweise: $\\dot u_i = \\lambda_i u_i$, entkoppelt.\n\n**Probe:** Rücktransformation $\\vec x(t) = P\\vec u(t) = \\sum_i c_i e^{\\lambda_i t}\\vec v_i$ — genau die bekannte allgemeine Lösung linearer Systeme.\n\n**Typischer Fehler:** Das Verfahren auf nicht-diagonalisierbare Matrizen (defekte Eigenwerte) anwenden — dort braucht man die Jordan-Normalform mit zusätzlichen $t\\cdot e^{\\lambda t}$-Termen.',
+    hints: ['Diagonalisierung entkoppelt den Zustand in Eigenrichtungen.', 'In jeder Eigenrichtung ist die DGL skalar und trivial lösbar.', 'Rücktransformation $\\vec x = P\\vec u$ liefert die übliche Lösungsformel.'],
   },
   'ex-dgl-3-3-j': {
     id: 'ex-dgl-3-3-j', lessonId: 'dgl-3-3', type: 'number-input',
@@ -436,7 +436,7 @@ export const exercises_dgl_u3 = {
     correctValue: 0.64,
     tolerance: 0.005,
     unit: '',
-    explanation: 'Schritt 1: $y_1 = y_0 + h \\cdot f(x_0, y_0) = 1 + 0{,}1 \\cdot (-2 \\cdot 1) = 1 - 0{,}2 = 0{,}8$. Schritt 2: $y_2 = y_1 + h \\cdot f(x_1, y_1) = 0{,}8 + 0{,}1 \\cdot (-2 \\cdot 0{,}8) = 0{,}8 - 0{,}16 = 0{,}64$. Exakte Lösung: $y(0{,}2) = e^{-0{,}4} \\approx 0{,}670$ — Euler unterschätzt etwas.',
+    explanation: '**Ansatz:** Expliziter Euler mit $f(x,y)=-2y$: $y_{n+1} = y_n + h\\cdot(-2 y_n) = (1-2h)\\cdot y_n$. Zwei Schritte hintereinander.\n\n**Rechnung:** $y_1 = 1 + 0{,}1\\cdot(-2) = 0{,}8$. $y_2 = 0{,}8 + 0{,}1\\cdot(-2\\cdot 0{,}8) = 0{,}8 - 0{,}16 = 0{,}64$.\n\n**Probe:** Kompakt: $y_2 = (1-2h)^2 = 0{,}8^2 = 0{,}64$ ✓. Exakt: $y(0{,}2) = e^{-0{,}4} \\approx 0{,}670$ — Euler unterschätzt um etwa 4% (typisch für Ordnung 1).\n\n**Typischer Fehler:** Beim zweiten Schritt wieder $y_0$ statt $y_1$ in $f$ einsetzen: $y_2 = 0{,}8 + 0{,}1\\cdot(-2\\cdot 1) = 0{,}6$ — falsch, Euler aktualisiert immer vom zuletzt berechneten Wert aus.',
     hints: ['Iteration: $y_{n+1} = y_n + h \\cdot f(x_n, y_n)$.', 'Hier $f(x, y) = -2y$.', 'Nach 2 Schritten: $y_2 = y_0 \\cdot (1 - 2h)^2$ direkt.'],
   },
   'ex-dgl-3-3-mastery': {
@@ -449,8 +449,8 @@ export const exercises_dgl_u3 = {
       '$T_\\infty = 0$ °C',
     ],
     correctIndex: 0,
-    explanation: 'DGL: $C_W \\dot T = \\dot Q_{ein} - \\alpha(T - T_U) = 2000 - 100 T$ (in W mit $T_U = 0$). Stationär: $\\dot T = 0 \\Rightarrow 2000 = 100 \\cdot T_\\infty \\Rightarrow T_\\infty = 20$ K = 20 °C über Umgebungstemperatur. Da $T_U = 0$ °C, ist $T_\\infty = 20$ °C.',
-    hints: ['Bilanz: $C_W \\dot T = $ Zufluss − Abfluss.', 'Stationär: $\\dot T = 0$.', 'Auflösen nach $T_\\infty$.'],
+    explanation: '**Ansatz:** Energiebilanz am Raum: $C_W \\dot T = \\dot Q_{ein} - \\dot Q_{aus}$. Stationär heißt $\\dot T = 0$.\n\n**Rechnung:** Mit kW $\\to$ W umrechnen: $\\dot Q_{ein} = 2000$ W. Gleichgewicht: $2000 - 100(T_\\infty - 0) = 0 \\Rightarrow T_\\infty = 20$ K über $T_U = 0$ °C, also $T_\\infty = 20$ °C.\n\n**Probe:** Bei $T=20$ °C: Wärmeverlust $=100\\cdot 20 = 2000$ W $=$ Heizleistung ✓. Wärmekapazität $C_W$ beeinflusst nur die Zeit bis zum Gleichgewicht, nicht den Endwert.\n\n**Typischer Fehler:** Einheiten nicht konsistent: $2$ kW / $100$ W·K$^{-1}$ $= 0{,}02$ K — Faktor 1000 fehlt. Immer in SI-Basiseinheiten rechnen oder Einheiten mitschleppen.',
+    hints: ['Bilanz: $C_W \\dot T = $ Zufluss − Abfluss.', 'Stationär: $\\dot T = 0$.', 'Einheiten konsistent: kW $\\to$ W bevor durch W/K geteilt wird.'],
     wrongAnswerExplanations: {
       1: 'Einheitenfehler: kW wurde nicht in W umgerechnet. $\\dot Q_{ein}=2$ kW $=2000$ W. Aus $2000 = 100 \\cdot T_\\infty$ folgt $T_\\infty=20$ K. Mit fehlender Umrechnung ($2000 \\cdot 100$ oder $200000/100=2000$ K) käme ein Wert weit über Raumtemperatur.',
       2: 'Falsches Verhältnis: $T_\\infty = \\dot Q_{ein}/\\alpha = 2000\\,\\text{W}/100\\,\\text{W/K} = 20$ K, nicht $\\dot Q_{ein}\\,[\\text{kW}] / \\alpha\\,[\\text{kW/K}] = 2/100$ oder ähnlich. Einheiten sauber führen: W und W/K passen zusammen.',
@@ -646,6 +646,19 @@ Einfaches explizites Verfahren erster Ordnung. Globaler Fehler $O(h)$. Achtung: 
 - Bilanzgleichung mit falschem Vorzeichen
 - Stabilitätskriterium auf Realteil prüfen, nicht auf Vorzeichen von $\\lambda$ direkt
 - Euler-Schrittweite zu groß → numerische Instabilität`,
+      },
+      {
+        id: 'dgl-3-3-s1b', type: 'visualization', title: 'Newton-Abkühlung visualisiert',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (t) => 20 + 60 * Math.exp(-0.5 * t), color: '#ef4444', label: 'T(t) = 20 + 60·e^(-0.5t)' },
+            { fn: () => 20, color: '#3b82f6', label: 'T_U = 20 °C' },
+          ],
+          xRange: [0, 10],
+          yRange: [0, 100],
+          showGrid: true,
+        },
       },
       { id: 'dgl-3-3-s2', type: 'exercise', title: 'Aufgabe 1: Mechanik-Elektrik-Analogie', exerciseRef: 'ex-dgl-3-3-a' },
       { id: 'dgl-3-3-s3', type: 'exercise', title: 'Aufgabe 2: System-Eigenwerte', exerciseRef: 'ex-dgl-3-3-b' },

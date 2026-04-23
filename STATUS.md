@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2735 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 811 (30 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 1038 / 1038 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 106 / 1134 (9 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2765 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 852 (31 %) | 100 % der Aufgaben | 🔴 |
+| MC mit wrongAnswerExplanations | 1044 / 1044 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 112 / 1134 (10 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -532,10 +532,10 @@ _LGS stecken in jeder FEM-Simulation, Ausgleichsrechnung, Signalverarbeitung. Ei
 - Phase: **2. Sem** · Level: vertiefung · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 10
-- Aufgaben: **140** (manuell: 61 · supplemental: 79)
-- 4-Block: 30/140 (21 %) 🔴
-- MC-wAE: 63/63 (100 %) ✅
-- Sub-Goals: 6/57 Goal-Tasks verknüpft 🔴
+- Aufgaben: **170** (manuell: 61 · supplemental: 109)
+- 4-Block: 71/170 (42 %) 🔴
+- MC-wAE: 69/69 (100 %) ✅
+- Sub-Goals: 12/57 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Gewöhnliche DGL: Trennbare, lineare erster Ordnung, lineare zweiter Ordnung mit konstanten Koeffizienten.**
@@ -583,7 +583,7 @@ _Physik spricht DGL: Schwingungen, Abkühlung, Population, RC-Glieder. DGL-Siche
 | `dgl-2-3` Technische Anwendungen | 6 | 0/6 | 11 | 5/2/1/2/1 | 0/11 | 5/5 | ✅ | +6 Goal, +11 4B |
 | `dgl-3-1` Prüfung: DGL 1. Ordnung | 6 | 0/6 | 11 | 7/1/2/1/0 | 0/11 | 7/7 | ✅ | +6 Goal, +11 4B |
 | `dgl-3-2` Prüfung: DGL 2. Ordnung & Anwendungen | 6 | 6/6 | 41 | 15/10/8/4/4 | 30/41 | 15/15 | ✅ | +11 4B |
-| `dgl-3-3` Prüfung: Systeme & technische Modellbildung | 6 | 0/6 | 11 | 4/3/2/1/1 | 0/11 | 4/4 | ✅ | +6 Goal, +11 4B |
+| `dgl-3-3` Prüfung: Systeme & technische Modellbildung | 6 | 6/6 | 41 | 10/10/8/6/7 | 41/41 | 10/10 | ✅ | — |
 
 <a id="komplexe-zahlen"></a>
 
@@ -1485,7 +1485,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 61 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 60 Lessons
 
 #### `fest-2-4` · Wechselfestigkeit und Betriebsfestigkeit
 
@@ -2695,31 +2695,6 @@ npm run build              # abschließender End-zu-End-Check
   - Ablage: `src/content/supplements/differentialgleichungen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-3-1-a`, `ex-dgl-3-1-b`, `ex-dgl-3-1-c`, `ex-dgl-3-1-d`, `ex-dgl-3-1-e`, `ex-dgl-3-1-f`, `ex-dgl-3-1-g`, `ex-dgl-3-1-h` … (+3 weitere)
 - **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `spring-mass-damper`, `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
-  - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
-  - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
-
-#### `dgl-3-3` · Prüfung: Systeme & technische Modellbildung
-
-- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Euler explizit: $y_{n+1} = y_n + h \cdot f(x_n, y_n)$, Fehler $O(h)$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Stabilität via Eigenwerte: alle $\text{Re}(\lambda_i) < 0$ → asymptotisch stabil
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Bilanzgleichungen: Massenbilanz, Energiebilanz, Kräftebilanz, Ladungsbilanz
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Mechanik-Elektrik-Analogie: $m \leftrightarrow L$, $d \leftrightarrow R$, $1/k \leftrightarrow C$, $F \leftrightarrow U$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Stationäre Lösung: $\dot y = 0$ → algebraisches System (Gleichgewicht)
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Newton'sches Abkühlungsgesetz: $\dot T = -k(T - T_U)$, Lösung $T(t) = T_U + (T_0 - T_U)e^{-kt}$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/differentialgleichungen.js`
-- **4-Block-Erklärung fehlt bei:** `ex-dgl-3-3-a`, `ex-dgl-3-3-b`, `ex-dgl-3-3-c`, `ex-dgl-3-3-d`, `ex-dgl-3-3-e`, `ex-dgl-3-3-f`, `ex-dgl-3-3-g`, `ex-dgl-3-3-h` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
   - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
