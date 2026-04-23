@@ -17,671 +17,1315 @@ import { mc, ni, tf, matching, sorting } from './_helpers'
 export const differentialgleichungenSubGoalTasks = {
 
   // ────────────────────────────────────────────────────────────────────────
-  // dgl-3-1 — Prüfung: DGL 1. Ordnung  (6 subGoals, je ≥ 5 Aufgaben)
+  // dgl-3-2 — Prüfung: DGL 2. Ordnung & Anwendungen  (6 subGoals)
+  // Je 5 Aufgaben = 30 Goal-Tasks
   // ────────────────────────────────────────────────────────────────────────
-  'dgl-3-1': {
+  'dgl-3-2': {
 
-    // ── [0] Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati? ────
+    // ── [0] Störansatz Polynom ────────────────────────────────────────────
     0: [
       mc(
-        'Sub-Goal "Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?": [PRÜFUNG] Welchen Typ hat die DGL $y\' = \\frac{x^2}{y^3}$?',
+        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Welcher Ansatz für $y_p$ ist bei $y\'\' - y\' + y = x^2 + 3$ richtig?',
         [
-          'trennbar',
-          'linear',
-          'exakt',
-          'Bernoulli',
+          '$y_p = Ax^2 + Bx + C$',
+          '$y_p = Ax^2$',
+          '$y_p = Ax^2 + Bx$',
+          '$y_p = A\\cdot(x^2+3)$',
         ],
         0,
-        `**Ansatz:** Kann man die rechte Seite als Produkt $f(x)\\cdot g(y)$ schreiben? Dann trennbar.
+        `**Ansatz:** Ist die Störfunktion ein Polynom $P_n(x)$ vom Grad $n$ und $\\lambda=0$ keine Wurzel der char. Gleichung, wählt man als Partikulärlösung ein vollständiges Polynom $Q_n(x)$ gleichen Grades mit allen Koeffizienten $A,B,C,\\dots$.
 
-**Rechnung:** $\\frac{x^2}{y^3} = x^2 \\cdot \\frac{1}{y^3} = f(x) g(y)$ mit $f(x)=x^2$, $g(y)=y^{-3}$. Also trennbar.
+**Rechnung:** Hier $n=2$, char. Gleichung $\\lambda^2-\\lambda+1=0$ hat $\\lambda=\\tfrac{1\\pm i\\sqrt{3}}{2}\\neq 0$, kein Resonanzfall. Also $y_p=Ax^2+Bx+C$. Einsetzen ergibt $2A-(2Ax+B)+Ax^2+Bx+C=x^2+3$, Koeffizientenvergleich: $A=1$, $-2A+B=0\\Rightarrow B=2$, $2A-B+C=3\\Rightarrow C=3$.
 
-**Probe:** $y^3\\,dy = x^2\\,dx$ lässt sich direkt integrieren: $\\frac{y^4}{4} = \\frac{x^3}{3} + C$.
+**Probe:** Mit $y_p=x^2+2x+3$: $y_p'=2x+2$, $y_p''=2$. $y_p''-y_p'+y_p=2-(2x+2)+x^2+2x+3=x^2+3$ ✓.
 
-**Typischer Fehler:** Wegen $y^3$ sofort auf "Bernoulli" tippen. Bernoulli verlangt aber die Form $y\' + p(x)y = q(x) y^n$ mit linearem $y$-Teil auf der linken Seite.`,
+**Typischer Fehler:** Nur das Monom höchsten Grades ansetzen (z. B. $Ax^2$). Dann bleibt beim Einsetzen $3$ auf der rechten Seite übrig und es findet sich kein passender Koeffizient — der Koeffizientenvergleich scheitert.`,
         [
-          'Versuche die rechte Seite als $f(x)\\cdot g(y)$ zu faktorisieren.',
-          'Steht links nur $y\'$ und rechts ein Produkt aus einer $x$-Funktion und einer $y$-Funktion?',
-          '$\\frac{x^2}{y^3}$ ist $x^2 \\cdot y^{-3}$.',
+          'Welchen Grad hat die Störfunktion?',
+          'Faustregel: Polynom-Ansatz = vollständiges Polynom gleichen Grades.',
+          'Koeffizientenvergleich braucht ALLE Monome ($x^2, x^1, x^0$).',
         ],
         {
-          1: 'Linear wäre $y\' + p(x)y = q(x)$ — also $y$ und $y\'$ nur in 1. Potenz und additiv. Hier steht $y^3$ im Nenner, das ist nichtlinear in $y$.',
-          2: 'Exakt braucht die Form $M(x,y)\\,dx + N(x,y)\\,dy = 0$ mit $M_y=N_x$. Hier ist die DGL erst in Differentialform zu bringen, aber das Haupt-Kriterium ist die saubere Trennbarkeit.',
-          3: 'Bernoulli hat die Form $y\' + p(x)y = q(x)y^n$ — links muss $y\'$ plus linearer $y$-Term stehen. Hier fehlt der lineare $y$-Term komplett.',
+          1: 'Ein Ansatz mit nur $Ax^2$ lässt die Terme $Bx$ und $C$ fehlen. Beim Einsetzen tauchen jedoch $x^1$- und $x^0$-Beiträge auf — ohne die restlichen Koeffizienten kannst du das System $Ax^2+3$ nicht erfüllen.',
+          2: "Fehlt der konstante Term $C$. Bei $y_p=Ax^2+Bx$ liefert $y_p''-y_p'$ einen konstanten Beitrag $2A-B$, aber es gibt keinen freien Parameter, um die $+3$ auf der rechten Seite zu matchen.",
+          3: 'Das ist kein allgemeiner Polynom-Ansatz, sondern nur eine Skalierung der rechten Seite. Bei linearen DGL mit konstanten Koeffizienten muss man unabhängige Koeffizienten für jede Potenz einführen — sonst zu wenige Freiheitsgrade.',
         },
       ),
-      tf(
-        'Sub-Goal "Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?": [PRÜFUNG] Die DGL $y\' + x\\, y = x\\, y^2$ ist eine Bernoulli-DGL.',
-        true,
-        `**Ansatz:** Bernoulli-Form: $y\' + p(x)y = q(x) y^n$ mit $n \\neq 0, 1$.
+      ni(
+        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Gegeben $y\'\' + 4y = 8x + 12$. Bestimme im Polynom-Ansatz $y_p = Ax + B$ den Koeffizienten $A$.',
+        2, 0.001, '',
+        `**Ansatz:** Störfunktion ist linear (Grad 1), char. Gl. $\\lambda^2+4=0$ hat $\\lambda=\\pm 2i\\neq 0$ — kein Resonanzfall. Ansatz $y_p=Ax+B$.
 
-**Rechnung:** Hier $p(x)=x$, $q(x)=x$, $n=2$. Form passt exakt.
+**Rechnung:** $y_p'=A$, $y_p''=0$. Einsetzen: $0+4(Ax+B)=8x+12$, also $4Ax+4B=8x+12$. Koeffizientenvergleich: $4A=8\\Rightarrow A=2$, $4B=12\\Rightarrow B=3$.
 
-**Probe:** Substitution $u = y^{1-n} = y^{-1}$ würde die DGL in lineare DGL für $u$ überführen: $u\' - x u = -x$.
+**Probe:** $y_p=2x+3$: $y_p''+4y_p=0+4(2x+3)=8x+12$ ✓.
 
-**Typischer Fehler:** Wegen der $y^2$-Potenz denken, es sei eine nichtlineare Gleichung ohne Standardmethode. Bernoulli ist gerade der Fall, den man mit Standardsubstitution löst.`,
+**Typischer Fehler:** $y_p'$ oder $y_p''$ falsch gebildet — bei linearem Ansatz ist $y_p''=0$ und nicht etwa $A$. Dann würde $A$ zusätzlich auf der linken Seite auftauchen und das Ergebnis verfälschen.`,
         [
-          'Bernoulli-Form: $y\' + p(x)y = q(x)y^n$.',
-          'Identifiziere $p$, $q$ und $n$.',
-          'Bei $n=2$ wird die Substitution $u=y^{-1}$ verwendet.',
+          "Ansatz $y_p=Ax+B$, dann $y_p'$ und $y_p''$ bilden.",
+          'In DGL einsetzen und nach Potenzen von $x$ sortieren.',
+          'Koeffizient vor $x$ vergleichen: $4A=8$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Bei $y\'\' + 3y\' + 2y = 5x^3$ ist der passende Partikulär-Ansatz $y_p = Ax^3 + Bx^2 + Cx + D$.',
+        true,
+        `**Ansatz:** Polynom-Störfunktion vom Grad $n$ → Ansatz ist vollständiges Polynom gleichen Grades, sofern $\\lambda=0$ keine Wurzel der char. Gleichung ist.
+
+**Rechnung:** $\\lambda^2+3\\lambda+2=(\\lambda+1)(\\lambda+2)=0$ liefert $\\lambda=-1,-2$. $\\lambda=0$ ist keine Wurzel. Daher kein Resonanzfall, und der vollständige Polynom-Ansatz $y_p=Ax^3+Bx^2+Cx+D$ ist korrekt.
+
+**Probe:** Einsetzen erzeugt beim Differenzieren Terme bis Grad 3 ($y_p''$: Grad 1, $y_p'$: Grad 2, $y_p$: Grad 3). Der Koeffizientenvergleich liefert 4 Gleichungen für 4 Unbekannte — das System ist eindeutig lösbar.
+
+**Typischer Fehler:** Nur $y_p=Ax^3$ ansetzen und dann das Koeffizientensystem nicht schließen können. Beim Ableiten von $Ax^3$ entstehen auch $x^2$- und $x^1$-Terme — diese brauchen eigene Koeffizienten.`,
+        [
+          'Stell fest, ob $\\lambda=0$ Wurzel der char. Gl. ist.',
+          'Faktorisiere $\\lambda^2+3\\lambda+2$.',
+          'Kein Resonanzfall → vollständiges Polynom gleichen Grades.',
         ],
       ),
       matching(
-        'Sub-Goal "Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?": [PRÜFUNG] Ordne jede DGL ihrem Typ zu.',
+        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Ordne jeder Störfunktion den passenden Polynom-Ansatz zu (ohne Resonanz).',
         [
-          { left: '$y\' = \\sin(x) \\cos(y)$', right: 'trennbar' },
-          { left: '$y\' + 2y = e^{3x}$', right: 'linear' },
-          { left: '$y\' + \\frac{1}{x}y = x^2 y^3$', right: 'Bernoulli' },
-          { left: '$(2x + y)\\,dx + (x + 2y)\\,dy = 0$', right: 'exakt' },
-          { left: '$y\' = x^2 + y^2$', right: 'Riccati' },
+          { left: '$q(x)=7$ (Konstante)', right: '$y_p = A$' },
+          { left: '$q(x)=3x-2$', right: '$y_p = Ax + B$' },
+          { left: '$q(x)=x^2$', right: '$y_p = Ax^2 + Bx + C$' },
+          { left: '$q(x)=5x^3 - x + 4$', right: '$y_p = Ax^3 + Bx^2 + Cx + D$' },
         ],
-        `**Ansatz:** Strukturmerkmale durchgehen.
+        `**Ansatz:** Der Grad des Ansatzes richtet sich nach dem **höchsten** Grad in $q(x)$. Unabhängig von der konkreten Form (fehlende Zwischenglieder wie bei $5x^3-x+4$ ohne $x^2$) wird immer das **vollständige** Polynom dieses Grades angesetzt.
 
-**Rechnung:** (1) $\\sin x \\cos y = f(x)g(y)$ → trennbar. (2) $y\' + py = q$ mit $p=2$, $q=e^{3x}$ → linear. (3) $y\' + py = qy^n$ mit $n=3$ → Bernoulli. (4) $M_y=1=N_x$ → exakt. (5) $y\' = a(x) + b(x)y + c(x)y^2$ → Riccati.
+**Rechnung:** Ableitungen mischen die Potenzen — alle Koeffizienten werden benötigt. Der Koeffizientenvergleich löst dann ein $(n+1)\\times(n+1)$-System.
 
-**Probe:** Die Typen schließen sich teilweise aus (linear ist Sonderfall von Bernoulli mit $n=0,1$, aber Bernoulli-Begriff wird für $n\\neq 0,1$ reserviert).
+**Probe:** Jede Wahl muss beim Einsetzen Koeffizientenvergleich erlauben. Fehlende Grade im Ansatz blockieren einzelne Gleichungen.
 
-**Typischer Fehler:** Riccati mit Bernoulli verwechseln: Bernoulli hat $q\\cdot y^n$, Riccati zusätzlich einen additiven $y^2$-Term *und* einen freien $a(x)$-Term.`,
+**Typischer Fehler:** Bei $q(x)=5x^3-x+4$ nur $Ax^3+Cx+D$ ansetzen (weil $x^2$ fehlt). Falsch — die Ableitungen erzeugen $x^2$-Terme, die sonst nicht gematcht werden können.`,
         [
-          'Prüfe auf Produktform $f(x)g(y)$.',
-          'Achte auf lineare Struktur $y\' + p(x)y = q(x)$ (evtl. mit $y^n$ rechts).',
-          'Riccati: $y\' = a + by + c y^2$.',
+          'Höchster Grad von $q(x)$ bestimmt Grad des Ansatzes.',
+          'Immer vollständiges Polynom — auch wenn Zwischenglieder in $q$ fehlen.',
+          'Konstante Störfunktion → konstanter Ansatz.',
         ],
       ),
       mc(
-        'Sub-Goal "Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?": [PRÜFUNG] Welche DGL ist *keine* lineare DGL 1. Ordnung?',
+        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Für $y\'\' - y\' = 2x + 1$ ist der Standard-Ansatz $y_p = Ax + B$ falsch — warum?',
         [
-          '$y\' + y^2 = x$',
-          '$y\' + 2xy = \\sin x$',
-          '$y\' - \\frac{y}{x} = x^3$',
-          '$y\' = e^x - 3y$',
+          '$\\lambda=0$ ist Wurzel der char. Gleichung — Resonanz, Ansatz muss $\\cdot x$ werden',
+          'Der Ansatz ist korrekt — das System ist einfach lösbar',
+          'Der Ansatz hat zu viele Parameter',
+          'Polynom-Störfunktionen erlauben keine Konstante im Ansatz',
         ],
         0,
-        `**Ansatz:** Linear heißt: $y$ und $y\'$ kommen nur in der 1. Potenz und nicht als Produkt vor.
+        `**Ansatz:** Bei Polynom-Störansatz muss man prüfen, ob $\\lambda=0$ Wurzel der charakteristischen Gleichung ist. Ist ja — weil Konstanten bereits zur homogenen Lösung gehören — so tritt Resonanz auf und der Ansatz wird mit $x$ multipliziert.
 
-**Rechnung:** $y\' + y^2 = x$ enthält $y^2$ → nichtlinear. Die anderen haben $y$ nur linear.
+**Rechnung:** Char. Gleichung: $\\lambda^2-\\lambda=\\lambda(\\lambda-1)=0$ → $\\lambda=0,1$. Da $\\lambda=0$ Wurzel ist, steckt in $y_h=C_1+C_2 e^x$ bereits die Konstante $C_1$. Der Ansatz $Ax+B$ enthält $B$ (Konstante) — das ist die homogene Lösung und bringt nichts. Korrektur: $y_p=x(Ax+B)=Ax^2+Bx$.
 
-**Probe:** Setze $y_1, y_2$ ein; bei linearen DGL ist $y_1+y_2$ nicht automatisch Lösung der inhomogenen Gleichung, aber die Homogene $y\'+py=0$ ist linear (Superposition funktioniert).
+**Probe:** Mit $y_p=Ax^2+Bx$: $y_p'=2Ax+B$, $y_p''=2A$. $y_p''-y_p'=2A-2Ax-B=-2Ax+(2A-B)=2x+1$ → $-2A=2\\Rightarrow A=-1$, $2A-B=1\\Rightarrow B=-3$. Also $y_p=-x^2-3x$.
 
-**Typischer Fehler:** Den Koeffizienten $2x$ oder $-1/x$ als "nichtlinear" deuten — linear bezieht sich nur auf $y$, nicht auf $x$.`,
+**Typischer Fehler:** Resonanzprüfung vergessen. Das passiert besonders bei Polynom-Störungen, weil Konstanten nicht als "Exponential mit $\\lambda=0$" gesehen werden. Faustregel: fehlt der Term $y$ (also $q=0$) in der DGL, ist $\\lambda=0$ immer Wurzel.`,
         [
-          'Linear: $y\' + p(x)y = q(x)$ — $y$ nur 1. Potenz.',
-          'Such nach $y^2$, $y \\cdot y\'$ oder $\\sin y$.',
-          'Koeffizienten in $x$ dürfen beliebig sein.',
+          'Char. Gleichung $\\lambda^2-\\lambda=0$ faktorisieren.',
+          'Welche Wurzeln? Ist $\\lambda=0$ darunter?',
+          'Wenn ja: Resonanz — Polynom-Ansatz $\\cdot x$.',
         ],
         {
-          1: '$y\' + 2xy = \\sin x$ ist linear: $p(x)=2x$, $q(x)=\\sin x$. $y$ kommt nur in 1. Potenz vor.',
-          2: '$y\' - y/x = x^3$ ist linear mit $p(x)=-1/x$, $q(x)=x^3$. Singulär bei $x=0$, aber formal linear.',
-          3: '$y\' = e^x - 3y$ lässt sich als $y\' + 3y = e^x$ schreiben — klassische lineare DGL.',
+          1: 'Der Ansatz $Ax+B$ enthält $B$ als Konstante — das ist aber bereits Teil der homogenen Lösung ($y_h=C_1+C_2e^x$). Resonanz muss berücksichtigt werden, sonst scheitert der Koeffizientenvergleich.',
+          2: 'Die Anzahl der Parameter passt zum Grad der Störfunktion. Das Problem ist nicht Überparametrisierung, sondern dass ein Teil des Ansatzes bereits die homogene DGL löst (→ Resonanz).',
+          3: 'Polynom-Ansätze dürfen konstante Terme enthalten (sonst könnte man $q(x)=7$ nie treffen). Das Problem ist hier speziell, dass in dieser DGL der Term $y$ fehlt — dadurch wird $\\lambda=0$ zur Wurzel.',
         },
-      ),
-      sorting(
-        'Sub-Goal "Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?": [PRÜFUNG] Bringe die Schritte der Typ-Klassifikation einer DGL 1. Ordnung in sinnvolle Reihenfolge.',
-        [
-          'DGL in Standardform bringen (nach $y\'$ auflösen oder Differentialform)',
-          'Ist rechte Seite ein Produkt $f(x) g(y)$? → trennbar',
-          'Sonst: Ist die Form $y\' + p(x)y = q(x) y^n$? → linear ($n=0,1$) oder Bernoulli',
-          'Sonst: $M\\,dx + N\\,dy = 0$, prüfe $M_y = N_x$ → exakt oder integrierender Faktor',
-          'Sonst: Riccati $y\' = a + by + c y^2$ oder Spezialfall',
-        ],
-        [0, 1, 2, 3, 4],
-        `**Ansatz:** Klassifikation folgt von einfach zu komplex.
-
-**Rechnung:** Zuerst trennbar (einfachste Methode), dann linear/Bernoulli (Standard-Integrierender-Faktor), dann exakte DGL, zuletzt Spezialtypen.
-
-**Probe:** Reihenfolge spiegelt den Aufwand wider: Trennung direkt integrierbar, linear mit Formel lösbar, exakt erfordert Potentialsuche.
-
-**Typischer Fehler:** Mit "exakt" anfangen und unnötig in Differentialform bringen, obwohl die DGL trivial trennbar ist.`,
-        [
-          'Einfachster Typ zuerst prüfen.',
-          'Trennbar vor linear, linear vor exakt.',
-          'Bernoulli/Riccati sind Sonderfälle zur Schluss.',
-        ],
       ),
     ],
 
-    // ── [1] Trennbar: ∫dy/g(y) = ∫f(x) dx + C ────────────────────────────
+    // ── [1] Störansatz Exponential ────────────────────────────────────────
     1: [
       ni(
-        'Sub-Goal "Trennbar: $\\int dy/g(y) = \\int f(x) dx + C$": [PRÜFUNG] Löse $y\' = 2xy$ mit $y(0) = 3$. Welchen Wert hat $y(1)$? (Nutze $e \\approx 2{,}71828$.)',
-        8.1548, 0.01, '',
-        `**Ansatz:** Trennung $dy/y = 2x\\,dx$, integrieren.
+        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Finde $A$ in $y_p = A e^{2x}$ für die DGL $y\'\' - 3y\' + 2y = 4e^{2x}$... Moment, ist der Ansatz überhaupt zulässig? Wenn nicht, schreibe $0$. Wenn ja, gib $A$ an.',
+        0, 0.001, '',
+        `**Ansatz:** Vor dem Einsetzen prüfen, ob $c=2$ Wurzel der charakteristischen Gleichung ist. Nur wenn nicht, ist der Ansatz $Ae^{cx}$ zulässig.
 
-**Rechnung:** $\\ln|y| = x^2 + C \\Rightarrow y = A e^{x^2}$. Mit $y(0)=3$: $A=3$. Also $y(x) = 3 e^{x^2}$. Bei $x=1$: $y(1) = 3e^1 = 3 \\cdot 2{,}71828 \\approx 8{,}1548$.
+**Rechnung:** Char. Gl.: $\\lambda^2-3\\lambda+2=(\\lambda-1)(\\lambda-2)=0$ → $\\lambda=1,2$. Da $c=2$ **Wurzel** ist, liegt Resonanz vor. Der Ansatz $Ae^{2x}$ ist **nicht** zulässig und muss zu $Axe^{2x}$ modifiziert werden. Antwort für $A$ im Standard-Ansatz: **0** (nicht zulässig).
 
-**Probe:** $y\'(x) = 6x e^{x^2}$ und $2xy = 2x \\cdot 3 e^{x^2} = 6x e^{x^2}$. ✓
+**Probe:** Einsetzen von $y_p=Ae^{2x}$ liefert $(4A-6A+2A)e^{2x}=0\\neq 4e^{2x}$ — Ansatz ergibt Widerspruch, genau weil $e^{2x}$ homogene Lösung ist.
 
-**Typischer Fehler:** $\\int 2x\\,dx = x^2$ vergessen und nur $2x$ im Exponent behalten, dann $y(1)=3e^2$.`,
+**Typischer Fehler:** Direkt einsetzen, ohne Resonanzcheck. Dann steht plötzlich $0=4e^{2x}$ und der Rechnende ist verwirrt. Regel: vor jedem $Ae^{cx}$-Ansatz kurz die char. Gleichung faktorisieren.`,
         [
-          'Trenne: $\\frac{dy}{y} = 2x\\,dx$.',
-          'Integriere beide Seiten, exponenziere.',
-          '$\\int 2x\\,dx = x^2$, nicht $2x$.',
+          'Bestimme die Wurzeln der charakteristischen Gleichung.',
+          'Liegt $c=2$ unter den Wurzeln?',
+          'Falls ja: Ansatz unzulässig → $A=0$ eintragen.',
         ],
       ),
       mc(
-        'Sub-Goal "Trennbar: $\\int dy/g(y) = \\int f(x) dx + C$": [PRÜFUNG] Die allgemeine Lösung von $y\' = \\frac{\\cos x}{y}$ lautet:',
+        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Für $y\'\' - 4y\' + 3y = 5e^{-x}$ ist der richtige Ansatz:',
         [
-          '$y^2 = 2\\sin x + C$',
-          '$y = \\sin x + C$',
-          '$y^2 = \\sin x + C$',
-          '$\\frac{1}{y} = -\\sin x + C$',
+          '$y_p = A e^{-x}$',
+          '$y_p = A x e^{-x}$',
+          '$y_p = A e^{x}$',
+          '$y_p = (Ax + B) e^{-x}$',
         ],
         0,
-        `**Ansatz:** Trennung: $y\\,dy = \\cos x\\,dx$.
+        `**Ansatz:** Ansatz $Ae^{cx}$ mit $c=-1$. Resonanz prüfen: char. Gleichung $\\lambda^2-4\\lambda+3=(\\lambda-1)(\\lambda-3)=0$ → $\\lambda=1,3$. $c=-1$ ist **keine** Wurzel → Ansatz $Ae^{-x}$ zulässig.
 
-**Rechnung:** $\\int y\\,dy = \\frac{y^2}{2}$, $\\int \\cos x\\,dx = \\sin x$. Also $\\frac{y^2}{2} = \\sin x + C_0 \\Rightarrow y^2 = 2\\sin x + C$ (mit $C=2C_0$).
+**Rechnung:** $y_p=Ae^{-x}$, $y_p'=-Ae^{-x}$, $y_p''=Ae^{-x}$. Einsetzen: $Ae^{-x}-4(-Ae^{-x})+3Ae^{-x}=(1+4+3)Ae^{-x}=8Ae^{-x}=5e^{-x}$ → $A=\\tfrac{5}{8}$.
 
-**Probe:** Implizite Ableitung: $2y y\' = 2\\cos x \\Rightarrow y y\' = \\cos x \\Rightarrow y\' = \\cos x / y$. ✓
+**Probe:** Mit $y_p=\\tfrac{5}{8}e^{-x}$: $y_p''-4y_p'+3y_p=\\tfrac{5}{8}e^{-x}(1+4+3)=\\tfrac{5}{8}\\cdot 8\\cdot e^{-x}=5e^{-x}$ ✓.
 
-**Typischer Fehler:** Den Faktor $2$ vor $\\sin x$ vergessen — entsteht beim Umstellen $y^2/2 \\to y^2$.`,
+**Typischer Fehler:** $c$ vorschnell mit einer Wurzel verwechseln (z. B. $c=-1$ mit $\\lambda=1$). Vorzeichen zählen — nur wenn $c$ exakt mit einem $\\lambda$ übereinstimmt, liegt Resonanz vor.`,
         [
-          'Bringe $y$ zu $dy$, $\\cos x$ zu $dx$.',
-          '$\\int y\\,dy = y^2/2$.',
-          'Multipliziere am Ende mit $2$.',
+          'Char. Gleichung: $\\lambda^2-4\\lambda+3=0$.',
+          'Wurzeln $\\lambda=1, 3$. Ist $c=-1$ dabei?',
+          'Nein → Standard-Ansatz $Ae^{-x}$.',
         ],
         {
-          1: 'Hier wurde die Integration von $y\\,dy$ als $y$ gelesen, aber $\\int y\\,dy = y^2/2$ — es entsteht ein Quadrat.',
-          2: 'Der Faktor $2$ fehlt. Aus $y^2/2 = \\sin x + C_0$ wird $y^2 = 2\\sin x + 2C_0$, die Konstante kann umbenannt werden, aber der Faktor $2$ vor $\\sin x$ bleibt.',
-          3: 'Das wäre die Lösung von $y\' = -\\cos x \\cdot y^2$ (andere DGL). Hier steht $1/y$ auf der rechten Seite, nicht $y^2$.',
+          1: 'Das wäre der Resonanzansatz. Hier liegt aber keine Resonanz vor: $c=-1$ ist keine Wurzel der char. Gleichung ($\\lambda=1, 3$). Ohne Resonanz bleibt der Ansatz im Standard-Format $Ae^{cx}$.',
+          2: 'Vorzeichen verwechselt: die Störfunktion ist $e^{-x}$, nicht $e^{x}$. Der Ansatz muss denselben Exponenten tragen wie die rechte Seite.',
+          3: 'Dieser Ansatz passt zu einer Störfunktion der Form $P_1(x)\\cdot e^{-x}=(ax+b)e^{-x}$. Hier ist aber $q(x)=5e^{-x}$ (nur Exponential, kein Polynomfaktor). Daher genügt $Ae^{-x}$.',
         },
       ),
       tf(
-        'Sub-Goal "Trennbar: $\\int dy/g(y) = \\int f(x) dx + C$": [PRÜFUNG] Bei der Trennung der Variablen für $y\' = f(x) g(y)$ darf $g(y_0) = 0$ sein, ohne dass eine Sonderbehandlung nötig ist.',
-        false,
-        `**Ansatz:** Im Trennungsschritt $dy/g(y) = f(x)dx$ taucht $g(y)$ im Nenner auf.
+        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Bei $y\'\' + y = e^{2x}$ ist $c=2$ kein Eigenwert der char. Gleichung, daher ist $y_p = A e^{2x}$ ein gültiger Ansatz.',
+        true,
+        `**Ansatz:** Resonanzcheck: Eigenwerte aus char. Gl. Wenn $c$ keiner davon ist → Standard-Exponentialansatz erlaubt.
 
-**Rechnung:** Wenn $g(y_0) = 0$, ist $y(x) \\equiv y_0$ eine konstante Gleichgewichtslösung, die die Trennungsformel nicht mehr erfasst (Division durch $0$). Diese muss separat notiert werden.
+**Rechnung:** Char. Gl.: $\\lambda^2+1=0$ → $\\lambda=\\pm i$. $c=2$ ist weder $+i$ noch $-i$ (und auch nicht rein reell wie $i$). Ansatz zulässig: $y_p=Ae^{2x}$, $y_p''=4Ae^{2x}$. $y_p''+y_p=5Ae^{2x}=e^{2x}$ → $A=1/5$.
 
-**Probe:** Beispiel $y\' = y(1-y)$: $g(y)=y(1-y)=0$ bei $y=0$ und $y=1$. Beide sind Gleichgewichte, die die Trennungslösung $y = 1/(1+Ae^{-x})$ nicht als Sonderfall enthält.
+**Probe:** $y_p=\\tfrac{1}{5}e^{2x}$: $y_p''+y_p=\\tfrac{1}{5}(4e^{2x}+e^{2x})=\\tfrac{1}{5}\\cdot 5e^{2x}=e^{2x}$ ✓.
 
-**Typischer Fehler:** Konstante Gleichgewichtslösungen übersehen und nur die "allgemeine" Lösung angeben. In der Prüfung: auf $g(y)=0$ prüfen.`,
+**Typischer Fehler:** Komplexe Eigenwerte mit beliebigen reellen $c$ verwechseln. Nur wenn $c$ **exakt** einer der (ggf. komplexen) Wurzeln ist, liegt Resonanz vor — $c=2$ ist ein völlig anderer Wert als $\\pm i$.`,
         [
-          'Was passiert, wenn man durch $g(y_0)$ dividiert, und $g(y_0)=0$?',
-          'Eine Lösung $y \\equiv y_0$ mit $g(y_0)=0$ heißt Gleichgewichtslösung.',
-          'Diese muss man oft zusätzlich zur allgemeinen Lösung angeben.',
+          'Wurzeln von $\\lambda^2+1=0$?',
+          'Vergleiche $c=2$ mit diesen Wurzeln.',
+          'Keine Übereinstimmung → kein Resonanzfall.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Sortiere die Schritte zur Bestimmung der partikulären Lösung bei exponentieller Störung.',
+        [
+          'Charakteristische Gleichung $\\lambda^2+p\\lambda+q=0$ aufstellen und Wurzeln bestimmen',
+          'Prüfen, ob $c$ eine Wurzel ist (Resonanzcheck)',
+          'Ansatz wählen: $Ae^{cx}$ (ohne Resonanz) oder $Axe^{cx}$ / $Ax^2e^{cx}$ (mit Resonanz)',
+          'Ansatz zweimal ableiten und in die DGL einsetzen',
+          'Koeffizient $A$ durch Koeffizientenvergleich berechnen',
+          'Probe: $y_p$ in die ursprüngliche DGL einsetzen',
+        ],
+        [0, 1, 2, 3, 4, 5],
+        `**Ansatz:** Der Resonanzcheck steht vor der Ansatzwahl — sonst riskiert man Widersprüche.
+
+**Rechnung:** Reihenfolge logisch: 1) homogen analysieren, 2) $c$ mit Wurzeln vergleichen, 3) Ansatz, 4) Einsetzen, 5) Koeffizienten, 6) Probe.
+
+**Probe:** Das Ergebnis muss die ursprüngliche DGL Punkt für Punkt erfüllen — nicht nur die homogene.
+
+**Typischer Fehler:** Sofort einsetzen ohne Resonanzcheck. Kommt dann $0=\\text{etwas}$ heraus, muss man zurück zum Anfang.`,
+        [
+          'Zuerst Wissen über die homogene DGL aufbauen.',
+          'Resonanzcheck bestimmt die Ansatz-Form.',
+          'Probe am Ende absichert die Lösung.',
         ],
       ),
       ni(
-        'Sub-Goal "Trennbar: $\\int dy/g(y) = \\int f(x) dx + C$": [PRÜFUNG] Die Lösung von $y\' = -k y$ mit $y(0)=100$ und $k=0{,}2$ wertet bei $t=5$ zu welchem Wert aus? (Nutze $e^{-1} \\approx 0{,}3679$.)',
-        36.79, 0.05, '',
-        `**Ansatz:** Trennung: $dy/y = -k\\,dt$.
+        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Berechne $A$ in $y_p = A e^{3x}$ für die DGL $y\'\' - 2y\' - 3y = 8 e^{3x}$... falls zulässig. Falls Resonanz vorliegt, trage $0$ ein.',
+        0, 0.001, '',
+        `**Ansatz:** Resonanzcheck! Char. Gleichung: $\\lambda^2-2\\lambda-3=(\\lambda-3)(\\lambda+1)=0$ → $\\lambda=3,-1$. $c=3$ ist Wurzel → Resonanz → Standard-Ansatz $Ae^{3x}$ ist **nicht** zulässig.
 
-**Rechnung:** $\\ln|y| = -kt + C \\Rightarrow y(t) = A e^{-kt}$. $y(0)=100 \\Rightarrow A=100$. Bei $t=5$, $k=0{,}2$: $y(5) = 100 e^{-1} \\approx 100 \\cdot 0{,}3679 = 36{,}79$.
+**Rechnung:** Zum Nachweis: mit $y_p=Ae^{3x}$: $y_p''-2y_p'-3y_p=(9-6-3)Ae^{3x}=0\\cdot Ae^{3x}=0\\neq 8e^{3x}$. Der Ansatz kann niemals die rechte Seite erzeugen. Antwort für $A$ im gefragten Ansatz: **0**.
 
-**Probe:** $y\'(5) = -0{,}2 \\cdot 36{,}79 = -7{,}36$; und $-k y = -0{,}2 \\cdot 36{,}79 = -7{,}36$. ✓
+**Probe:** Der korrekte Ansatz wäre $y_p=Axe^{3x}$: $y_p'=A(1+3x)e^{3x}$, $y_p''=A(6+9x)e^{3x}$. Einsetzen: $[A(6+9x)-2A(1+3x)-3Ax]e^{3x}=[6A+9Ax-2A-6Ax-3Ax]e^{3x}=4Ae^{3x}=8e^{3x}$ → $A=2$. Also $y_p=2xe^{3x}$ ist die richtige Partikulärlösung.
 
-**Typischer Fehler:** $kt = 0{,}2 \\cdot 5 = 1$ positiv statt negativ im Exponenten → $y=100 e \\approx 272$ statt $36{,}79$.`,
+**Typischer Fehler:** Resonanzcheck weglassen, Ansatz $Ae^{3x}$ einsetzen, auf $0=8e^{3x}$ stoßen und dann fälschlich schließen, die DGL habe keine Lösung. Die DGL hat sehr wohl eine Lösung — nur der naive Ansatz versagt.`,
         [
-          'Exponentialzerfall: $y = y_0 e^{-kt}$.',
-          'Berechne $kt = 0{,}2 \\cdot 5 = 1$.',
-          '$e^{-1} \\approx 0{,}368$.',
+          'Faktorisiere $\\lambda^2-2\\lambda-3$.',
+          'Wurzeln $\\lambda=3, -1$. $c=3$ dabei?',
+          'Ja → Resonanz → $A=0$ im Standard-Ansatz.',
         ],
-      ),
-      mc(
-        'Sub-Goal "Trennbar: $\\int dy/g(y) = \\int f(x) dx + C$": [PRÜFUNG] Die allgemeine Lösung von $y\' = 3x^2 y^2$ lautet:',
-        [
-          '$y = \\dfrac{-1}{x^3 + C}$',
-          '$y = x^3 + C$',
-          '$y = \\dfrac{1}{3x^2 + C}$',
-          '$y^2 = x^3 + C$',
-        ],
-        0,
-        `**Ansatz:** Trennung: $\\frac{dy}{y^2} = 3x^2\\,dx$.
-
-**Rechnung:** $\\int y^{-2}\\,dy = -y^{-1}$, $\\int 3x^2\\,dx = x^3$. Also $-\\frac{1}{y} = x^3 + C_0 \\Rightarrow y = \\frac{-1}{x^3 + C_0}$.
-
-**Probe:** $y\' = \\frac{3x^2}{(x^3+C_0)^2}$ und $3x^2 y^2 = 3x^2 \\cdot \\frac{1}{(x^3+C_0)^2} = \\frac{3x^2}{(x^3+C_0)^2}$. ✓
-
-**Typischer Fehler:** Das Minus-Vorzeichen aus $-1/y$ vergessen und $y = 1/(x^3+C)$ schreiben — erfüllt die DGL mit umgekehrtem Vorzeichen.`,
-        [
-          'Trenne $dy/y^2 = 3x^2\\,dx$.',
-          '$\\int y^{-2}\\,dy = -y^{-1}$.',
-          'Löse nach $y$ auf.',
-        ],
-        {
-          1: 'Das ist einfach das Integral von $3x^2$ bezüglich $x$, aber die DGL verknüpft $y$ und $y\'$ — es muss auch nach $y$ getrennt werden.',
-          2: 'Bei der Trennung wurde nicht integriert, sondern nur $y^2$ auf die andere Seite gebracht. Das ist kein gültiger Integrationsschritt.',
-          3: 'Das wäre die Lösung einer anderen DGL ($2y y\' = 3x^2$). Hier verschwindet das $y^2$ auf der rechten Seite nicht so einfach.',
-        },
       ),
     ],
 
-    // ── [2] Exakte DGL: M_y = N_x prüfen, Potentialfunktion F finden, F=C
+    // ── [2] Störansatz Trig ───────────────────────────────────────────────
     2: [
       mc(
-        'Sub-Goal "Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$": [PRÜFUNG] Prüfe $(3x^2 + 2y)\\,dx + (2x + 3y^2)\\,dy = 0$ auf Exaktheit.',
+        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Welcher Ansatz ist für $y\'\' + 3y\' + 2y = 4\\cos(2x)$ richtig?',
         [
-          'Exakt, $M_y = N_x = 2$',
-          'Nicht exakt, $M_y = 2$, $N_x = 3y^2$',
-          'Exakt, $M_y = N_x = 3x^2 + 3y^2$',
-          'Nicht exakt, $M_y = 3x^2$, $N_x = 2$',
+          '$y_p = A\\cos(2x) + B\\sin(2x)$',
+          '$y_p = A\\cos(2x)$',
+          '$y_p = A\\sin(2x)$',
+          '$y_p = A e^{2ix}$',
         ],
         0,
-        `**Ansatz:** Kriterium: $M_y = N_x$.
+        `**Ansatz:** Bei trigonometrischer Störung $q(x)=a\\cos(\\omega x)+b\\sin(\\omega x)$ (ein Summand genügt) lautet der vollständige Ansatz **immer** $y_p=A\\cos(\\omega x)+B\\sin(\\omega x)$ mit **beiden** Funktionen — auch wenn nur eine in $q$ auftritt. Grund: Ableiten wechselt zwischen $\\cos$ und $\\sin$. Vorab Resonanzcheck: ist $\\pm i\\omega$ Wurzel der char. Gl.?
 
-**Rechnung:** $M = 3x^2 + 2y \\Rightarrow M_y = 2$. $N = 2x + 3y^2 \\Rightarrow N_x = 2$. Beide gleich $2$, also exakt.
+**Rechnung:** Char. Gl.: $\\lambda^2+3\\lambda+2=(\\lambda+1)(\\lambda+2)=0$ → $\\lambda=-1,-2$. $\\pm 2i$ ist **nicht** darunter → kein Resonanzfall. Ansatz: $y_p=A\\cos 2x+B\\sin 2x$. Einsetzen liefert $(-2A+6B)\\cos 2x+(-6A-2B)\\sin 2x=4\\cos 2x$, also $-2A+6B=4$ und $-6A-2B=0$, Lösung $A=-\\tfrac{1}{5}$, $B=\\tfrac{3}{5}$.
 
-**Probe:** Potential $F = x^3 + 2xy + y^3$: $F_x = 3x^2 + 2y = M$, $F_y = 2x + 3y^2 = N$. ✓
+**Probe:** $y_p=-\\tfrac{1}{5}\\cos 2x+\\tfrac{3}{5}\\sin 2x$ in die DGL eingesetzt ergibt exakt $4\\cos 2x$.
 
-**Typischer Fehler:** Die partiellen Ableitungen in der falschen Variable bilden — $M$ wird nach $y$ abgeleitet (nicht nach $x$), $N$ nach $x$ (nicht nach $y$).`,
+**Typischer Fehler:** Nur $A\\cos(2x)$ ansetzen, weil in $q$ nur $\\cos$ steht. Aber $y_p'$ erzeugt $\\sin$, $y_p''$ wieder $\\cos$ — ohne $\\sin$-Anteil im Ansatz bleibt ein Rest, der nicht gematcht werden kann.`,
         [
-          '$M_y = \\partial M / \\partial y$, nicht $\\partial M / \\partial x$.',
-          'Leite $M$ nach $y$ ab, $N$ nach $x$ ab.',
-          'Beide Ergebnisse vergleichen.',
+          'Erzeugt Ableiten von $\\cos(2x)$ einen $\\sin$-Beitrag?',
+          'Beide Funktionen müssen im Ansatz stehen.',
+          'Resonanz nur bei $\\pm i\\omega$ als Wurzel der char. Gl.',
         ],
         {
-          1: 'Hier wurde $N$ nach $y$ abgeleitet statt nach $x$. Korrekt: $\\partial_x(2x+3y^2) = 2$.',
-          2: 'Hier wurden beide nach den jeweils "anderen" Variablen abgeleitet: $M$ nach $x$ und $N$ nach $y$. Das ist gerade falsch — Exaktheit verlangt gemischte Ableitungen.',
-          3: 'Hier wurde $M$ nach $x$ statt nach $y$ abgeleitet, und $N$ korrekt nach $x$. Richtig: $M_y = \\partial_y(3x^2+2y) = 2$.',
+          1: 'Der Ansatz $A\\cos(2x)$ allein reicht nicht. Ableiten bringt $\\sin(2x)$-Terme ins Spiel, die keinen Matching-Partner haben. Der Koeffizientenvergleich bricht zusammen.',
+          2: 'Gleicher Fehler wie bei $\\cos$ allein: Ableitung von $A\\sin(2x)$ liefert $\\cos(2x)$-Anteile, die nicht aufgefangen werden können. Beide Funktionen sind nötig.',
+          3: 'Komplexer Ansatz ist theoretisch möglich, aber bei reellen Koeffizienten und reeller rechter Seite ist der reelle Ansatz $A\\cos+B\\sin$ Standard. Außerdem würde $Ae^{2ix}$ hier Resonanzcheck mit $\\lambda=2i$ erfordern.',
         },
       ),
       ni(
-        'Sub-Goal "Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$": [PRÜFUNG] Die DGL $(2x + y)\\,dx + (x + 2y)\\,dy = 0$ ist exakt. Finde das Potential $F(x,y)$ mit $F(0,0)=0$ und werte es bei $(x,y)=(1,2)$ aus.',
-        7, 0.01, '',
-        `**Ansatz:** Exaktheit prüfen, dann $F_x = M$, $F_y = N$ integrieren.
+        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Für $y\'\' + 4y = 6\\sin(x)$ setzt man $y_p = A\\cos(x) + B\\sin(x)$ an. Berechne $B$.',
+        2, 0.001, '',
+        `**Ansatz:** Trigonometrische Störung mit $\\omega=1$. Resonanzcheck: $\\lambda^2+4=0$ → $\\lambda=\\pm 2i$, also $\\pm i\\omega=\\pm i$ ist **keine** Wurzel → Standard-Ansatz.
 
-**Rechnung:** $M_y = 1 = N_x$ → exakt. $F = \\int M\\,dx = x^2 + xy + \\phi(y)$. Ableiten: $F_y = x + \\phi\'(y) = N = x + 2y \\Rightarrow \\phi\'(y) = 2y \\Rightarrow \\phi(y) = y^2$. Also $F(x,y) = x^2 + xy + y^2$. Bei $(1,2)$: $1 + 2 + 4 = 7$.
+**Rechnung:** $y_p=A\\cos x+B\\sin x$, $y_p''=-A\\cos x-B\\sin x$. Einsetzen: $(-A+4A)\\cos x+(-B+4B)\\sin x=3A\\cos x+3B\\sin x=6\\sin x$. Koeffizientenvergleich: $3A=0\\Rightarrow A=0$, $3B=6\\Rightarrow B=2$.
 
-**Probe:** $F(0,0) = 0$ ✓, $F_x = 2x+y = M$ ✓, $F_y = x + 2y = N$ ✓.
+**Probe:** $y_p=2\\sin x$: $y_p''+4y_p=-2\\sin x+8\\sin x=6\\sin x$ ✓.
 
-**Typischer Fehler:** Nach $x$ integrieren, aber das $\\phi(y)$ vergessen, oder $\\phi\'(y)$ fälschlich als $0$ behandeln.`,
+**Typischer Fehler:** Vergessen, dass $y_p''$ das Vorzeichen wechselt ($-A\\cos x$, nicht $+A\\cos x$). Dann Koeffizienten falsch.`,
         [
-          '$F = \\int M\\,dx + \\phi(y)$.',
-          '$\\phi(y)$ aus der Bedingung $F_y = N$ bestimmen.',
-          'Bei $(1,2)$ einsetzen.',
+          "Zweite Ableitung: $y_p''=-A\\cos x-B\\sin x$.",
+          'In die DGL einsetzen und nach $\\cos, \\sin$ sortieren.',
+          'Koeffizient vor $\\sin x$: $(-B+4B)=3B=6$.',
         ],
       ),
       tf(
-        'Sub-Goal "Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$": [PRÜFUNG] Wenn eine DGL $M\\,dx + N\\,dy = 0$ exakt ist, existiert genau ein Potential $F$ mit $F_x = M$, $F_y = N$.',
+        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Wenn die Störfunktion nur $\\sin(\\omega x)$ ist, reicht als Ansatz $y_p = B\\sin(\\omega x)$ ohne $\\cos$-Term.',
         false,
-        `**Ansatz:** Potential ist nur bis auf Konstante eindeutig.
+        `**Ansatz:** Falsch. Auch bei reinem $\\sin$ (oder reinem $\\cos$) in der Störung braucht man **beide** Anteile im Ansatz, sobald die DGL einen Term mit **erster Ableitung** ($y'$) enthält.
 
-**Rechnung:** Ist $F$ ein Potential, so auch $F + c$ für jede Konstante $c$. Beide erfüllen $F_x = M$, $F_y = N$.
+**Rechnung:** Beispiel $y'+y=\\sin x$: mit $y_p=B\\sin x$ erhält man $B\\cos x+B\\sin x=\\sin x$ — das geht nicht, weil links $\\cos x$ auftaucht, rechts aber nicht. Der Koeffizientenvergleich liefert $B=0$ (aus $\\cos$-Anteil) und $B=1$ (aus $\\sin$-Anteil) — Widerspruch. Also braucht es $y_p=A\\cos x+B\\sin x$.
 
-**Probe:** Im Beispiel $(2x+y)dx+(x+2y)dy=0$: sowohl $F = x^2+xy+y^2$ als auch $F+100$ sind Potentiale, und die Lösungskurven $F=C$ sind identisch (nur Konstante anders).
+**Probe:** Nur wenn die DGL keinen $y'$-Term hat (z. B. $y''+\\omega_0^2 y=\\sin\\omega x$ mit $\\omega\\neq\\omega_0$), kommt man ausnahmsweise mit einem einzigen trig-Term aus. Generell-Regel: **beide** Terme ansetzen.
 
-**Typischer Fehler:** Denken, dass das Potential streng eindeutig ist. Man normiert es meist durch $F(x_0,y_0)=0$.`,
+**Typischer Fehler:** "$q$ enthält nur $\\sin$, also brauche ich nur $B\\sin$". Funktioniert manchmal zufällig, versagt aber sobald $y'$ im Spiel ist.`,
         [
-          'Integration lässt immer eine Konstante frei.',
-          'Zwei Potentiale unterscheiden sich nur um eine Konstante.',
-          'Die Lösungskurve $F=C$ ist dieselbe.',
-        ],
-      ),
-      mc(
-        'Sub-Goal "Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$": [PRÜFUNG] Welche Lösung (implizit) hat $(2xy + 1)\\,dx + (x^2 + 4y)\\,dy = 0$?',
-        [
-          '$x^2 y + x + 2y^2 = C$',
-          '$x^2 y + 2y^2 = C$',
-          '$x y^2 + x + 2y^2 = C$',
-          '$2xy + 4y = C$',
-        ],
-        0,
-        `**Ansatz:** Exaktheit: $M_y = 2x = N_x$ ✓. Potential integrieren.
-
-**Rechnung:** $F = \\int M\\,dx = x^2 y + x + \\phi(y)$. $F_y = x^2 + \\phi\'(y) = x^2 + 4y \\Rightarrow \\phi\'(y) = 4y \\Rightarrow \\phi(y) = 2y^2$. Also $F = x^2 y + x + 2y^2 = C$.
-
-**Probe:** $F_x = 2xy+1 = M$ ✓. $F_y = x^2 + 4y = N$ ✓.
-
-**Typischer Fehler:** Den $+x$-Beitrag vergessen, der aus $\\int 1\\,dx = x$ kommt.`,
-        [
-          'Integriere $M$ nach $x$, inklusive der $+1$.',
-          '$\\int (2xy+1)\\,dx = x^2 y + x$.',
-          '$\\phi(y)$ aus $F_y = N$ bestimmen.',
-        ],
-        {
-          1: 'Der $+x$-Term fehlt. $\\int 1\\,dx = x$, nicht $0$.',
-          2: 'Hier wurde $2xy$ falsch integriert — $\\int 2xy\\,dx = x^2 y$, nicht $xy^2$.',
-          3: 'Hier wurde $\\phi\'(y) = 4y$ nicht integriert, sondern als Summand übernommen. $\\int 4y\\,dy = 2y^2$, und $M$ enthält keinen reinen $2xy$-Term ohne weitere Integration.',
-        },
-      ),
-      sorting(
-        'Sub-Goal "Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$": [PRÜFUNG] Bringe die Schritte zur Lösung einer exakten DGL in die richtige Reihenfolge.',
-        [
-          'Schreibe die DGL in der Form $M(x,y)\\,dx + N(x,y)\\,dy = 0$',
-          'Prüfe $M_y = N_x$',
-          'Integriere $M$ nach $x$: $F = \\int M\\,dx + \\phi(y)$',
-          'Bestimme $\\phi(y)$ aus $F_y = N$',
-          'Gib die Lösung implizit als $F(x,y) = C$ an',
-        ],
-        [0, 1, 2, 3, 4],
-        `**Ansatz:** Standardalgorithmus für exakte DGL.
-
-**Rechnung:** (1) Standardform → (2) Exaktheits-Test → (3) Partielle Integration nach $x$ → (4) Integrationskonstante $\\phi(y)$ über $F_y = N$ fixieren → (5) implizite Lösung $F=C$.
-
-**Probe:** Am Beispiel wird jeder Schritt durchgeführt; überspringt man den Test, riskiert man falsche Methode.
-
-**Typischer Fehler:** Direkt integrieren, ohne $M_y = N_x$ zu prüfen. Ist die DGL *nicht* exakt, produziert dieser Weg eine falsche Potentialfunktion.`,
-        [
-          'Erst Form prüfen, dann Methode wählen.',
-          'Test vor Integration.',
-          '$\\phi(y)$ zuletzt fixieren.',
-        ],
-      ),
-    ],
-
-    // ── [3] AWP: Konstante C aus y(x_0) = y_0 bestimmen ────────────────────
-    3: [
-      ni(
-        'Sub-Goal "AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen": [PRÜFUNG] AWP: $y\' = y$, $y(0) = 7$. Welchen Wert hat die Integrationskonstante $C$ in $y = C e^x$?',
-        7, 0, '',
-        `**Ansatz:** Allgemeine Lösung einsetzen und Anfangsbedingung nutzen.
-
-**Rechnung:** $y(0) = C e^0 = C = 7 \\Rightarrow C = 7$.
-
-**Probe:** $y(x) = 7e^x$, $y(0) = 7$ ✓, $y\' = 7e^x = y$ ✓.
-
-**Typischer Fehler:** $C = 7 e^0$ berechnen und $e^0 = 0$ annehmen — aber $e^0 = 1$.`,
-        [
-          'Setze $x_0 = 0$ in $y = Ce^x$ ein.',
-          '$e^0 = 1$.',
-          '$y(0) = C$.',
-        ],
-      ),
-      mc(
-        'Sub-Goal "AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen": [PRÜFUNG] AWP: $y\' + y = 0$, $y(1) = e$. Wie lautet die partikuläre Lösung?',
-        [
-          '$y = e^{2-x}$',
-          '$y = e^{-x}$',
-          '$y = e \\cdot e^{-x}$',
-          '$y = e^{x-2}$',
-        ],
-        0,
-        `**Ansatz:** Homogene Lösung $y = Ce^{-x}$, $C$ aus $y(1)=e$.
-
-**Rechnung:** $y(1) = C e^{-1} = e \\Rightarrow C = e \\cdot e = e^2$. Also $y(x) = e^2 \\cdot e^{-x} = e^{2-x}$.
-
-**Probe:** $y(1) = e^{2-1} = e$ ✓. $y\' = -e^{2-x} = -y$ ✓.
-
-**Typischer Fehler:** $C = e \\cdot e^1 = e^2$ durch Multiplikation statt Division erhalten — es passt zufällig, aber aus falschem Grund. Saubere Rechnung: $C = e / e^{-1} = e^2$.`,
-        [
-          'Erst homogene Lösung aufstellen: $y = Ce^{-x}$.',
-          'AB $y(1)=e$ einsetzen.',
-          '$C = e \\cdot e^1$.',
-        ],
-        {
-          1: 'Das ist die allgemeine homogene Lösung mit $C=1$, aber dann wäre $y(1) = e^{-1} \\neq e$. Die Anfangsbedingung muss eingebaut werden.',
-          2: 'Fast richtig: $e \\cdot e^{-x} = e^{1-x}$, das ist *nicht* $e^{2-x}$. Bei $x=1$ gibt $e^{1-1}=e^0=1 \\neq e$.',
-          3: '$e^{x-2}$ ist *steigend* (positiver Exponent in $x$). Die DGL $y\'+y=0$ hat abklingende Lösungen. Vorzeichenfehler im Exponenten.',
-        },
-      ),
-      tf(
-        'Sub-Goal "AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen": [PRÜFUNG] Bei einem AWP einer linearen DGL 1. Ordnung ist die Konstante $C$ eindeutig durch die Anfangsbedingung bestimmt.',
-        true,
-        `**Ansatz:** Satz von Picard-Lindelöf bei stetigen Koeffizienten.
-
-**Rechnung:** Lineare DGL 1. Ordnung $y\'+p(x)y = q(x)$ hat bei stetigen $p, q$ eine eindeutige Lösung durch jeden Punkt $(x_0, y_0)$ — ein einziges $C$.
-
-**Probe:** Bei $y\' = y$, $y(0)=3$: $y = Ce^x$, $C = 3$ — kein anderer Wert erfüllt $y(0)=3$.
-
-**Typischer Fehler:** Verwechslung mit 2. Ordnung: dort gibt es zwei Konstanten und man braucht zwei Bedingungen.`,
-        [
-          'Picard-Lindelöf: eindeutige Lösung bei stetigen Koeffizienten.',
-          'Lineare DGL 1. Ordnung → eine Konstante → eine Bedingung.',
-          'Bei 2. Ordnung bräuchte man zwei.',
-        ],
-      ),
-      ni(
-        'Sub-Goal "AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen": [PRÜFUNG] AWP: $y\' = -3y + 6$, $y(0) = 1$. Welchen Wert erreicht $y(t)$ für $t \\to \\infty$?',
-        2, 0.01, '',
-        `**Ansatz:** Partikuläre Lösung (konstant) + homogene Lösung.
-
-**Rechnung:** $y_p$: setze $y_p = A$ konstant, dann $0 = -3A+6 \\Rightarrow A=2$. Homogen: $y_h = Ce^{-3t}$. Allg.: $y = 2 + Ce^{-3t}$. $y(0)=1$: $2+C=1 \\Rightarrow C=-1$. $y(t) = 2 - e^{-3t} \\to 2$ für $t\\to\\infty$.
-
-**Probe:** $y\' = 3e^{-3t}$ und $-3y+6 = -3(2-e^{-3t})+6 = -6+3e^{-3t}+6 = 3e^{-3t}$. ✓
-
-**Typischer Fehler:** Den Gleichgewichtswert direkt aus $y(0)$ entnehmen statt aus $\\dot y = 0$.`,
-        [
-          'Gleichgewicht: $y\' = 0$.',
-          '$-3y+6=0 \\Rightarrow y=2$.',
-          'Wegen $e^{-3t} \\to 0$ nähert sich die Lösung dem Gleichgewicht.',
+          "Wirkt $y'$ auf $B\\sin x$? Was entsteht?",
+          'Reine $\\sin$-Ansätze versagen, sobald $\\cos$ aus Ableitung kommt.',
+          'Im Zweifel immer beide Funktionen ansetzen.',
         ],
       ),
       matching(
-        'Sub-Goal "AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen": [PRÜFUNG] Ordne der allgemeinen Lösung (mit Konstante $C$) die passende Anfangsbedingung und den resultierenden $C$-Wert zu.',
+        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Ordne jeder trigonometrischen Störfunktion den passenden Ansatz zu.',
         [
-          { left: '$y = C e^{2x}$, $y(0)=5$', right: '$C = 5$' },
-          { left: '$y^2 = x^2 + C$, $y(0)=3$', right: '$C = 9$' },
-          { left: '$y = C e^{-x}$, $y(\\ln 2) = 1$', right: '$C = 2$' },
-          { left: '$y = 1 + C e^{-x}$, $y(0)=3$', right: '$C = 2$' },
+          { left: '$q(x)=3\\cos(2x)$', right: '$y_p=A\\cos(2x)+B\\sin(2x)$' },
+          { left: '$q(x)=\\sin(5x)-2\\cos(5x)$', right: '$y_p=A\\cos(5x)+B\\sin(5x)$' },
+          { left: '$q(x)=e^{x}\\cos(3x)$', right: '$y_p=e^{x}(A\\cos(3x)+B\\sin(3x))$' },
+          { left: '$q(x)=x\\sin(2x)$', right: '$y_p=(Ax+B)\\cos(2x)+(Cx+D)\\sin(2x)$' },
         ],
-        `**Ansatz:** Jeweils $x_0, y_0$ einsetzen und nach $C$ auflösen.
+        `**Ansatz:** Trig-Ansatz = **vollständige Form** mit $\\cos$ und $\\sin$, bei gleicher Frequenz $\\omega$. Produkte mit $e^{\\alpha x}$ oder Polynomen werden entsprechend multipliziert bzw. in Polynomen-Ansatz ausgeschrieben.
 
-**Rechnung:** (1) $5 = C \\cdot 1 \\Rightarrow C=5$. (2) $9 = 0 + C \\Rightarrow C=9$. (3) $1 = C e^{-\\ln 2} = C/2 \\Rightarrow C=2$. (4) $3 = 1 + C \\Rightarrow C=2$.
+**Rechnung:** - $e^{\\alpha x}\\cos\\omega x$: Ansatz $e^{\\alpha x}(A\\cos+B\\sin)$, Resonanz bei $\\alpha\\pm i\\omega$ Wurzel. - $x^n\\cos\\omega x$: Ansatz mit Polynomfaktor $(Ax^n+\\dots)\\cos+(Cx^n+\\dots)\\sin$.
 
-**Probe:** Jeder eingesetzte Wert liefert die Anfangsbedingung zurück.
+**Probe:** Beim Einsetzen müssen alle Terme $x^k\\cdot \\cos\\omega x$ und $x^k\\cdot \\sin\\omega x$ gematcht werden — dafür ist der vollständige Ansatz nötig.
 
-**Typischer Fehler:** (3) $e^{-\\ln 2} = 1/2$ vergessen und $C=1$ eintragen.`,
+**Typischer Fehler:** Bei $x\\sin(2x)$ nur $Cx\\sin(2x)$ ansetzen. Ableiten bringt aber auch Terme ohne $x$ (nur $\\sin$, $\\cos$) und $\\cos$-Terme — alle Freiheitsgrade müssen rein.`,
         [
-          'Anfangsbedingung $x_0$ in die allgemeine Lösung einsetzen.',
-          'Nach $C$ auflösen.',
-          'Bei impliziter Form auch $y^2$ beachten.',
+          'Frequenz $\\omega$ aus der Störung übernehmen.',
+          'Bei Produktstörungen (z. B. mit $e^{\\alpha x}$ oder $x^n$) den Ansatz entsprechend erweitern.',
+          'Immer $\\cos$ UND $\\sin$ im Ansatz.',
         ],
+      ),
+      mc(
+        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Bei welcher DGL tritt **Resonanz** auf, so dass der Standard-Ansatz $y_p=A\\cos(3x)+B\\sin(3x)$ **NICHT** direkt zulässig ist?',
+        [
+          '$y\'\' + 9y = \\cos(3x)$',
+          '$y\'\' + 4y = \\cos(3x)$',
+          '$y\'\' + 16y = \\cos(3x)$',
+          '$y\'\' + y = \\cos(3x)$',
+        ],
+        0,
+        `**Ansatz:** Resonanzcheck bei Trig-Störung: Tritt $\\pm i\\omega$ (mit $\\omega$ = Störfrequenz) als Wurzel der charakteristischen Gleichung auf? Nur dann liegt Resonanz vor und der Standard-Ansatz scheitert.
+
+**Rechnung:** - A: $\\lambda^2+9=0$ → $\\lambda=\\pm 3i$ = $\\pm i\\omega$ mit $\\omega=3$ → **Resonanz**. Ansatz muss $\\cdot x$: $y_p=x(A\\cos 3x+B\\sin 3x)$. - B: $\\lambda=\\pm 2i \\neq \\pm 3i$, kein Resonanzfall. - C: $\\lambda=\\pm 4i \\neq \\pm 3i$, kein Resonanzfall. - D: $\\lambda=\\pm i \\neq \\pm 3i$, kein Resonanzfall.
+
+**Probe:** In A mit Standard-Ansatz $y_p=A\\cos 3x+B\\sin 3x$: $y_p''+9y_p=-9A\\cos-9B\\sin+9A\\cos+9B\\sin=0 \\neq \\cos 3x$. Das zeigt: der Standard-Ansatz kann die rechte Seite niemals erzeugen → Resonanz bestätigt.
+
+**Typischer Fehler:** Resonanz nur bei exakter Frequenz-Übereinstimmung $\\pm i\\omega$ = Wurzel. In A ist $\\omega_0=\\sqrt{9}=3=\\omega$ → Eigenfrequenz = Störfrequenz → klassische mechanische Resonanz.`,
+        [
+          'Eigenfrequenz aus $\\lambda^2+q=0$: $\\omega_0=\\sqrt{q}$.',
+          'Störfrequenz hier $\\omega=3$. Wo ist $\\omega_0=\\omega$?',
+          'A: $q=9$, $\\omega_0=3=\\omega$ → Resonanz.',
+        ],
+        {
+          1: 'Hier ist $\\omega_0=\\sqrt{4}=2\\neq 3=\\omega$, also kein Resonanzfall. Der Standard-Ansatz $A\\cos 3x+B\\sin 3x$ ist zulässig und liefert $A=-\\tfrac{1}{5}, B=0$.',
+          2: '$\\omega_0=\\sqrt{16}=4\\neq 3=\\omega$, also kein Resonanzfall. Der Standard-Ansatz funktioniert: $y_p=\\tfrac{1}{7}\\cos 3x$.',
+          3: '$\\omega_0=1\\neq 3=\\omega$, also kein Resonanzfall. Der Standard-Ansatz ist zulässig: $y_p=-\\tfrac{1}{8}\\cos 3x$.',
+        },
       ),
     ],
 
-    // ── [4] Bernoulli y' + py = q y^n: Substitution u = y^(1-n) ────────────
+    // ── [3] Resonanzfall ──────────────────────────────────────────────────
+    3: [
+      mc(
+        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Wähle den Ansatz für $y\'\' - 4y\' + 4y = e^{2x}$.',
+        [
+          '$y_p = A x^2 e^{2x}$',
+          '$y_p = A e^{2x}$',
+          '$y_p = A x e^{2x}$',
+          '$y_p = (Ax + B) e^{2x}$',
+        ],
+        0,
+        `**Ansatz:** Char. Gleichung $\\lambda^2-4\\lambda+4=(\\lambda-2)^2=0$ hat die **Doppelwurzel** $\\lambda=2$. Störexponent $c=2$ stimmt damit überein → Resonanz. Bei Doppelwurzel multipliziert man mit $x^2$ (bei einfacher Wurzel nur mit $x$).
+
+**Rechnung:** Ansatz $y_p=Ax^2e^{2x}$. Ableitungen: $y_p'=A(2x+2x^2)e^{2x}=2A(x+x^2)e^{2x}$, $y_p''=2A(1+2x)e^{2x}+4A(x+x^2)e^{2x}=2A(1+4x+2x^2)e^{2x}$. Einsetzen und Sortieren (Koeffizienten $x^0, x^1, x^2$) ergibt $2A e^{2x}=e^{2x}$ → $A=\\tfrac{1}{2}$. Also $y_p=\\tfrac{1}{2}x^2e^{2x}$.
+
+**Probe:** $y_h=(C_1+C_2x)e^{2x}$. Beim Einsetzen von $y_p=Axe^{2x}$ würde man $0=e^{2x}$ erhalten — der Ansatz mit $x$ versagt (ist auch homogene Lösung!), erst $x^2$ bricht die Resonanz.
+
+**Typischer Fehler:** Nur mit $x$ multiplizieren, wenn eine Doppelwurzel vorliegt. Dann rechnet man lange, bis plötzlich $A=0\\cdot\\text{etwas}$ herauskommt und spürt den Fehler zu spät.`,
+        [
+          'Char. Gl.: $(\\lambda-2)^2=0$ — doppelte Wurzel.',
+          '$c=2$ ist diese Wurzel → Resonanz mit Multiplizität 2.',
+          'Multiplikation mit $x^2$ (nicht nur $x$).',
+        ],
+        {
+          1: 'Ohne Resonanzbehandlung. Aber $e^{2x}$ ist Teil der homogenen Lösung (sogar doppelt), daher liefert $Ae^{2x}$ beim Einsetzen $0\\neq e^{2x}$. Ansatz unbrauchbar.',
+          2: 'Nur ein $x$-Faktor. Das bricht die Resonanz bei *einfacher* Wurzel, nicht bei *doppelter*. Hier ist $\\lambda=2$ doppelt, daher ist auch $xe^{2x}$ schon homogene Lösung. Man braucht $x^2$.',
+          3: 'Dieser Ansatz passt zu einer Störung der Form $(ax+b)e^{2x}$, also einem Polynomfaktor. Hier ist die Störung aber nur $e^{2x}$ (konstanter Faktor) → Ansatz wäre überparametrisiert und die Lösung des Koeffizientensystems würde $A=0$, $B$ frei ergeben — ungeeignet.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Bestimme $A$ in $y_p = Ax e^x$ für die DGL $y\'\' - y = 4 e^x$.',
+        2, 0.001, '',
+        `**Ansatz:** Char. Gl. $\\lambda^2-1=0$ → $\\lambda=\\pm 1$. Störexponent $c=1$ ist *einfache* Wurzel → Resonanz, Multiplizität 1, Ansatz $Axe^x$.
+
+**Rechnung:** $y_p=Axe^x$, $y_p'=A(1+x)e^x$, $y_p''=A(2+x)e^x$. $y_p''-y_p=A(2+x)e^x-Axe^x=2Ae^x=4e^x$ → $A=2$.
+
+**Probe:** $y_p=2xe^x$: $y_p''-y_p=2(2+x)e^x-2xe^x=4e^x$ ✓.
+
+**Typischer Fehler:** Produktregel beim Ableiten vergessen. Dann kommt $y_p'=Ae^x$ (statt $A(1+x)e^x$) heraus und $A$ ist falsch.`,
+        [
+          'Char. Gl.: $\\lambda^2-1=(\\lambda-1)(\\lambda+1)=0$ → $\\lambda=\\pm 1$.',
+          '$c=1$ ist *einfache* Wurzel → Ansatz $\\cdot x$.',
+          "Produktregel: $(xe^x)'=(1+x)e^x$.",
+        ],
+      ),
+      tf(
+        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Bei $y\'\' + y = \\sin(x)$ liegt Resonanz vor, weil $\\pm i$ (die Wurzeln der char. Gleichung) auch die Frequenz der Störung ergeben.',
+        true,
+        `**Ansatz:** Bei trigonometrischer Störung liegt Resonanz vor, wenn $\\pm i\\omega$ (mit $\\omega$ = Störfrequenz) eine Wurzel der char. Gleichung ist.
+
+**Rechnung:** Char. Gl.: $\\lambda^2+1=0$ → $\\lambda=\\pm i$. Störung $\\sin(x)$ hat $\\omega=1$, also $\\pm i\\omega=\\pm i$ — exakt die Wurzeln. Also Resonanz. Ansatz: $y_p=x(A\\cos x+B\\sin x)$. Einsetzen liefert $A=-\\tfrac{1}{2}$, $B=0$.
+
+**Probe:** $y_p=-\\tfrac{1}{2}x\\cos x$: $y_p'=-\\tfrac{1}{2}\\cos x+\\tfrac{1}{2}x\\sin x$, $y_p''=\\sin x+\\tfrac{1}{2}x\\cos x$. $y_p''+y_p=\\sin x+\\tfrac{1}{2}x\\cos x-\\tfrac{1}{2}x\\cos x=\\sin x$ ✓.
+
+**Typischer Fehler:** Bei Trig-Resonanz denken, man müsse mit $x^2$ multiplizieren. Nein — $\\pm i$ ist nur *einfache* Wurzel, daher reicht $x$. $x^2$ bräuchte man bei Doppelwurzel (was bei rein imaginären Wurzeln selten ist).`,
+        [
+          'Stör­frequenz $\\omega=1$. Vergleiche mit den char. Wurzeln.',
+          'Wurzeln $\\pm i$, also $\\pm i\\cdot 1$ → Resonanzfall.',
+          'Einfache Wurzel → Ansatz $\\cdot x$, nicht $\\cdot x^2$.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Sortiere die Entscheidungslogik beim Resonanzcheck.',
+        [
+          'Charakteristische Gleichung aufstellen und Wurzeln $\\lambda_{1,2}$ bestimmen',
+          'Aus der Störfunktion den "Prüf-Exponenten" $c$ bestimmen ($c$ direkt bei $e^{cx}$; $c=\\pm i\\omega$ bei $\\sin/\\cos$)',
+          'Vergleichen: stimmt $c$ mit einer Wurzel überein?',
+          'Nein → Standard-Ansatz ohne $x$-Faktor',
+          'Ja, einfache Wurzel → Ansatz mit $x$ multiplizieren',
+          'Ja, Doppelwurzel → Ansatz mit $x^2$ multiplizieren',
+        ],
+        [0, 1, 2, 3, 4, 5],
+        `**Ansatz:** Der Resonanzcheck ist entscheidend für den Erfolg des Ansatzes. Reihenfolge: erst homogene Analyse, dann Störanalyse, dann Vergleich, dann Ansatzwahl nach Multiplizität.
+
+**Rechnung:** Die Multiplizität der Wurzel entscheidet über die Potenz des $x$-Faktors. Faustregel: "$x^{\\text{Multiplizität}}$".
+
+**Probe:** Wenn nach dem Einsetzen $0=\\text{etwas}$ steht, ist der $x$-Faktor zu klein gewählt — höhere Potenz probieren.
+
+**Typischer Fehler:** Direkt Standard-Ansatz, ohne Resonanzcheck. Besonders gefährlich bei Doppelwurzel.`,
+        [
+          'Homogene Lösung zuerst — sie sagt, was bereits „belegt" ist.',
+          'Prüf-Exponent: bei $\\sin(\\omega x)$ ist $c=\\pm i\\omega$.',
+          'Multiplizität bestimmt die Potenz des $x$-Faktors.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Welche Aussage zur Resonanz ist FALSCH?',
+        [
+          'Resonanz tritt nur bei exponentieller Störung auf, nie bei trigonometrischer.',
+          'Bei Doppelwurzel als Resonanzursache wird mit $x^2$ multipliziert.',
+          'Resonanz bedeutet: die Störfunktion ist bereits homogene Lösung.',
+          'Bei einfacher Wurzel reicht Multiplikation mit $x$.',
+        ],
+        0,
+        `**Ansatz:** Resonanz kann bei jeder Störform auftreten, bei der der „Prüf-Exponent" $c$ (reell bei $e^{cx}$, komplex $\\pm i\\omega$ bei $\\sin/\\cos$) mit einer Wurzel der char. Gleichung übereinstimmt.
+
+**Rechnung:** Trigonometrische Resonanz ist der wichtigste Fall in der Technik: Erreger-Frequenz = Eigenfrequenz → Amplitudenaufschaukelung. Beispiel: $y''+\\omega_0^2 y=\\sin(\\omega_0 x)$ — resonanzverstärkte Schwingung.
+
+**Probe:** A ist genau deshalb falsch. B, C, D stimmen: Multiplizität → $x$-Potenz; Resonanz = Störung ist homogene Lösung; einfache Wurzel → $\\cdot x$.
+
+**Typischer Fehler:** Resonanz nur mit „Schwingung" oder nur mit $e^{cx}$ assoziieren. In Wahrheit ist sie ein allgemeines Phänomen, sobald der Ansatz-Exponent eine Wurzel der char. Gleichung trifft — egal ob reell oder komplex.`,
+        [
+          'Suche die falsche Aussage.',
+          'Kann Resonanz auch bei $\\sin/\\cos$-Störung auftreten?',
+          'Klassisches Beispiel: Schwingung im Gleichklang.',
+        ],
+        {
+          1: 'Diese Aussage ist *richtig*: bei Doppelwurzel braucht man $x^2$, um aus der zweifach-homogenen Lösung herauszukommen. Sie ist also nicht die gesuchte falsche Aussage.',
+          2: 'Richtig: das ist genau die Definition von Resonanz. Wenn die Störfunktion selbst homogene Lösung ist, dann erzeugt der Standard-Ansatz eine $0$ auf der linken Seite.',
+          3: 'Richtig — einfache Wurzel, Multiplizität 1, Ansatz $\\cdot x^1$. Die Regel ist konsistent mit $x^{\\text{Multiplizität}}$.',
+        },
+      ),
+    ],
+
+    // ── [4] Allgemeine Lösung ──────────────────────────────────────────────
     4: [
       mc(
-        'Sub-Goal "Bernoulli $y\' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert": [PRÜFUNG] Welche Substitution linearisiert $y\' + 2y = x y^3$?',
+        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Die allgemeine Lösung von $y\'\' - 3y\' + 2y = 6$ lautet:',
         [
-          '$u = y^{-2}$',
-          '$u = y^2$',
-          '$u = y^3$',
-          '$u = \\ln y$',
+          '$y = C_1 e^{x} + C_2 e^{2x} + 3$',
+          '$y = C_1 e^{x} + C_2 e^{2x}$',
+          '$y = 3$',
+          '$y = C_1 e^{-x} + C_2 e^{-2x} + 3$',
         ],
         0,
-        `**Ansatz:** Bernoulli $y\'+py=qy^n$ mit Substitution $u = y^{1-n}$.
+        `**Ansatz:** Allgemeine Lösung = homogene Lösung $y_h$ + beliebige Partikulärlösung $y_p$.
 
-**Rechnung:** Hier $n=3$, also $u = y^{1-3} = y^{-2}$.
+**Rechnung:** - Homogen: $\\lambda^2-3\\lambda+2=(\\lambda-1)(\\lambda-2)=0$ → $\\lambda=1,2$ → $y_h=C_1e^x+C_2e^{2x}$. - Partikulär: Störung konstant, Ansatz $y_p=A$ (da $\\lambda=0$ keine Wurzel). $0+0+2A=6$ → $A=3$, also $y_p=3$. - Gesamt: $y=C_1e^x+C_2e^{2x}+3$.
 
-**Probe:** $u\' = -2y^{-3}y\'$. Aus der DGL $y\' = -2y + xy^3$ folgt $u\' = -2y^{-3}(-2y + xy^3) = 4y^{-2} - 2x = 4u - 2x$. Lineare DGL für $u$: $u\' - 4u = -2x$. ✓
+**Probe:** $y'=C_1e^x+2C_2e^{2x}$, $y''=C_1e^x+4C_2e^{2x}$. $y''-3y'+2y=(1-3+2)C_1e^x+(4-6+2)C_2e^{2x}+0-0+6=0+0+6=6$ ✓.
 
-**Typischer Fehler:** $u = y^n$ statt $u = y^{1-n}$ — genau umgekehrt.`,
+**Typischer Fehler:** Partikulärlösung weglassen und nur $y_h$ angeben. Dann erfüllt $y$ die homogene DGL, nicht die inhomogene — die rechte Seite 6 fehlt völlig.`,
         [
-          'Formel: $u = y^{1-n}$.',
-          'Hier $n=3$.',
-          '$1-3 = -2$.',
+          'Homogene Lösung bestimmen.',
+          'Partikulärlösung für konstante Störung: $y_p=A$.',
+          'Gesamt: $y=y_h+y_p$.',
         ],
         {
-          1: 'Das wäre $u = y^{1+n}$ statt $y^{1-n}$. Vorzeichen vertauscht.',
-          2: '$u = y^n = y^3$ ist nicht die Standardsubstitution. Die Ableitung $u\'=3y^2 y\'$ führt nicht zur linearen DGL in $u$.',
-          3: '$u = \\ln y$ wird bei $n=1$ genutzt (separabler Grenzfall). Hier ist $n=3 \\neq 1$.',
+          1: "Die Partikulärlösung fehlt. Diese Form löst nur die homogene DGL $y''-3y'+2y=0$, nicht die inhomogene mit rechter Seite $6$. Bei $y=y_h$ ergibt das Einsetzen $0$, nicht $6$.",
+          2: 'Das ist nur die Partikulärlösung allein, ohne die zwei Integrationskonstanten der homogenen Lösung. Eine DGL 2. Ordnung braucht **zwei** freie Konstanten für die Anfangsbedingungen.',
+          3: 'Falsche Vorzeichen im Exponenten. Aus $(\\lambda-1)(\\lambda-2)=0$ folgt $\\lambda=+1, +2$, nicht $-1, -2$. Prüfe die Faktorisierung.',
         },
       ),
-      tf(
-        'Sub-Goal "Bernoulli $y\' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert": [PRÜFUNG] Die Bernoulli-DGL $y\' + p(x)y = q(x) y^n$ ist für $n = 0$ und $n = 1$ bereits linear.',
-        true,
-        `**Ansatz:** Für $n=0$ oder $n=1$ fehlt die nichtlineare Potenz.
+      ni(
+        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Für $y\'\' + y = 2$ lautet $y_h = C_1\\cos x + C_2\\sin x$ und $y_p = 2$. Wie viele freie Konstanten enthält die allgemeine Lösung?',
+        2, 0, '',
+        `**Ansatz:** Die Anzahl freier Konstanten in der allgemeinen Lösung einer linearen DGL n-ter Ordnung ist immer $n$ — unabhängig davon, ob die DGL homogen oder inhomogen ist. Die Partikulärlösung bringt keine zusätzlichen Konstanten, weil sie fest gewählt ist.
 
-**Rechnung:** $n=0$: $y\'+py=q$ — klassisch linear. $n=1$: $y\'+py=qy \\Rightarrow y\' + (p-q)y = 0$ — linear und homogen.
+**Rechnung:** DGL ist 2. Ordnung → genau 2 Konstanten in $y_h$, keine in $y_p$. Also $y=C_1\\cos x+C_2\\sin x+2$ hat **2** freie Konstanten ($C_1, C_2$).
 
-**Probe:** Substitution $u=y^{1-n}$ entartet: bei $n=1$ wäre $u=y^0=1$, konstant. Die Substitution macht keinen Sinn, weil nicht nötig.
+**Probe:** Ein AWP mit $y(0)$ und $y'(0)$ liefert genau 2 Bedingungen, passend zu 2 Konstanten — eindeutig lösbar.
 
-**Typischer Fehler:** Bernoulli-Substitution blind bei $n=0,1$ anwenden und einen $0$-Exponenten-Fehler erzeugen.`,
+**Typischer Fehler:** Die Partikulärlösung als weitere Konstante zählen ("2 aus $y_h$ + 1 aus $y_p = 3$"). Falsch: $y_p=2$ ist ein fester Zahlenwert, keine freie Konstante.`,
         [
-          'Bernoulli wird nur für $n \\neq 0, 1$ sinnvoll.',
-          '$n=0$: reine lineare inhomogene DGL.',
-          '$n=1$: reine lineare homogene DGL.',
+          'Ordnung der DGL bestimmt die Anzahl freier Konstanten.',
+          'Partikulärlösung enthält keine freien Konstanten.',
+          'Zähle nur $C_1, C_2, \\dots$ in $y_h$.',
         ],
       ),
-      ni(
-        'Sub-Goal "Bernoulli $y\' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert": [PRÜFUNG] Bei Bernoulli $y\' + p y = q y^n$ mit $n = 5$: Welchen Exponenten hat die Substitution $u = y^?$',
-        -4, 0, '',
-        `**Ansatz:** Formel $u = y^{1-n}$.
+      tf(
+        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Wenn $y_{p,1}$ und $y_{p,2}$ zwei verschiedene Partikulärlösungen derselben inhomogenen DGL sind, ist ihre Differenz $y_{p,1}-y_{p,2}$ eine Lösung der homogenen DGL.',
+        true,
+        `**Ansatz:** Linearität: Für linearen Differentialoperator $L$ gilt $L[y_1-y_2]=L[y_1]-L[y_2]$.
 
-**Rechnung:** $1 - 5 = -4$. Also $u = y^{-4}$.
+**Rechnung:** Aus $L[y_{p,1}]=q$ und $L[y_{p,2}]=q$ folgt $L[y_{p,1}-y_{p,2}]=q-q=0$. Also ist $y_{p,1}-y_{p,2}$ Lösung der homogenen Gleichung. Konsequenz: Jede weitere Partikulärlösung unterscheidet sich von einer gegebenen nur durch einen homogenen Anteil — und kann daher durch Neubelegung von $C_1, C_2$ absorbiert werden. Die allgemeine Lösung $y=y_h+y_p$ ist eindeutig (im Sinne der Lösungsmenge), auch wenn $y_p$ nicht eindeutig ist.
 
-**Probe:** Ableitung: $u\' = -4 y^{-5} y\'$. Das linearisiert die DGL in $u$.
+**Probe:** Beispiel $y''+y=2$: $y_{p,1}=2$ und $y_{p,2}=2+\\cos x$ sind beide partikulär (da $\\cos x$ homogene Lösung). Differenz: $-\\cos x$ — homogene Lösung ✓.
 
-**Typischer Fehler:** Statt $1-n$ den Wert $n-1$ nehmen und $+4$ angeben.`,
+**Typischer Fehler:** Glauben, es gäbe genau eine Partikulärlösung. In Wahrheit ist $y_p$ nur bis auf eine homogene Lösung bestimmt — daher wählt man den *einfachsten* Ansatz-Typ.`,
         [
-          '$u = y^{1-n}$.',
-          '$n=5 \\Rightarrow 1-5$.',
-          'Das Vorzeichen zählt.',
+          'Linearität von $L$.',
+          '$L[y_1-y_2]=L[y_1]-L[y_2]$.',
+          'Wenn $L[y_1]=L[y_2]=q$, dann $L[y_1-y_2]=0$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Ordne DGL und allgemeine Lösung zu.',
+        [
+          { left: '$y\'\' + y = 0$', right: '$y = C_1\\cos x + C_2\\sin x$' },
+          { left: '$y\'\' + y = 4$', right: '$y = C_1\\cos x + C_2\\sin x + 4$' },
+          { left: '$y\'\' - y = e^{2x}$', right: '$y = C_1 e^{x} + C_2 e^{-x} + \\tfrac{1}{3}e^{2x}$' },
+          { left: '$y\'\' - 2y\' + y = 0$', right: '$y = (C_1 + C_2 x) e^{x}$' },
+        ],
+        `**Ansatz:** Für jede DGL: homogene Lösung bestimmen (Char. Gl.), partikuläre Lösung per Ansatz finden, dann $y_h+y_p$.
+
+**Rechnung:** - $y''+y=0$: $\\lambda=\\pm i$ → $y_h$. - $y''+y=4$: wie oben, $y_p=4$ (Konstante). - $y''-y=e^{2x}$: $\\lambda=\\pm 1$, $y_p=Ae^{2x}$, $4A-A=1\\cdot e^{2x}$ aus Koeffizienten → $3A=1$ → $A=\\tfrac{1}{3}$. - $y''-2y'+y=0$: $\\lambda=1$ doppelt → $(C_1+C_2x)e^x$.
+
+**Probe:** Jede Lösung erfüllt die DGL, was man durch Einsetzen prüfen kann.
+
+**Typischer Fehler:** Bei Doppelwurzel den $x$-Faktor vergessen: $y=(C_1+C_2)e^x$ statt $(C_1+C_2x)e^x$. Dann nur eine effektive Konstante — die zweite Bedingung im AWP ist nicht erfüllbar.`,
+        [
+          'Homogene Lösung zuerst.',
+          'Bei Doppelwurzel: $x$-Faktor.',
+          'Partikulärlösung je nach Störterm.',
         ],
       ),
       sorting(
-        'Sub-Goal "Bernoulli $y\' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert": [PRÜFUNG] Bringe die Lösungsschritte einer Bernoulli-DGL in die richtige Reihenfolge.',
+        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Sortiere die Schritte zur Bestimmung der allgemeinen Lösung einer inhomogenen linearen DGL 2. Ordnung.',
         [
-          'Bernoulli-Form identifizieren: $y\' + p(x)y = q(x) y^n$ mit $n \\neq 0, 1$',
-          'Substitution $u = y^{1-n}$ wählen, $u\' = (1-n) y^{-n} y\'$',
-          'Umformen zu linearer DGL für $u$: $u\' + (1-n) p(x) u = (1-n) q(x)$',
-          'Lineare DGL für $u$ mit integrierendem Faktor lösen',
-          'Rücksubstitution $y = u^{1/(1-n)}$',
+          'Charakteristische Gleichung $\\lambda^2+p\\lambda+q=0$ aufstellen',
+          'Wurzeln $\\lambda_1, \\lambda_2$ bestimmen und homogene Lösung $y_h$ aufschreiben',
+          'Ansatz für partikuläre Lösung $y_p$ nach Typ der Störfunktion wählen',
+          'Resonanz prüfen und Ansatz ggf. mit $x$ oder $x^2$ multiplizieren',
+          'Ansatz einsetzen und Koeffizienten berechnen',
+          'Allgemeine Lösung zusammensetzen: $y = y_h + y_p$',
         ],
-        [0, 1, 2, 3, 4],
-        `**Ansatz:** Standardalgorithmus für Bernoulli.
+        [0, 1, 2, 3, 4, 5],
+        `**Ansatz:** Standard-Workflow: homogen zuerst, dann partikulär mit Resonanzcheck, dann summieren. Diese Reihenfolge ist prüfungskritisch.
 
-**Rechnung:** Identifikation → Substitution → Linearisierung → lineare Lösung → Rücksubstitution.
+**Rechnung:** - Schritt 1–2: homogen. - Schritt 3–4: Ansatzwahl mit Resonanzcheck. - Schritt 5: Koeffizienten. - Schritt 6: Summe.
 
-**Probe:** Jeder Schritt hat ein klar definiertes Ziel; Überspringen des Substitutionsschrittes macht die DGL unlösbar ohne Speziallmethoden.
+**Probe:** Am Ende durch Einsetzen verifizieren, dass $y$ die DGL erfüllt.
 
-**Typischer Fehler:** Rücksubstitution vergessen und die Lösung für $u$ als Endergebnis angeben.`,
+**Typischer Fehler:** Resonanzcheck nach hinten schieben oder vergessen. Das erzeugt später Widersprüche beim Koeffizientenvergleich.`,
         [
-          'Erst Typ erkennen, dann Substitution.',
-          'Lineare DGL in $u$ mit Standardmethode lösen.',
-          'Am Ende zurück zu $y$.',
+          'Homogene Lösung baut das Fundament.',
+          'Resonanzcheck ist Teil der Ansatzwahl.',
+          'Zum Schluss summieren.',
         ],
-      ),
-      mc(
-        'Sub-Goal "Bernoulli $y\' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert": [PRÜFUNG] Nach Substitution $u = y^{-1}$ wird $y\' + y = y^2$ zu:',
-        [
-          '$u\' - u = -1$',
-          '$u\' + u = -1$',
-          '$u\' - u = 1$',
-          '$u\' + u = 1$',
-        ],
-        0,
-        `**Ansatz:** $u = y^{-1}$, also $u\' = -y^{-2} y\'$. DGL umformen.
-
-**Rechnung:** Teile die DGL durch $y^2$: $y^{-2} y\' + y^{-1} = 1$. Setze $u\' = -y^{-2} y\'$, also $y^{-2} y\' = -u\'$. Damit $-u\' + u = 1 \\Rightarrow u\' - u = -1$.
-
-**Probe:** Löse $u\' - u = -1$: $u_h = Ce^x$, $u_p = 1$. $u = 1 + Ce^x$, also $y = 1/(1 + Ce^x)$. Ableitung: $y\' = -Ce^x/(1+Ce^x)^2$. DGL-Test: $y\' + y = \\frac{-Ce^x + (1+Ce^x)}{(1+Ce^x)^2} = \\frac{1}{(1+Ce^x)^2} = y^2$ ✓.
-
-**Typischer Fehler:** Vorzeichen bei $u\' = -y^{-2} y\'$ falsch übertragen und $u\' + u = -1$ erhalten.`,
-        [
-          'Teile die DGL durch $y^2$.',
-          '$u\' = -y^{-2} y\'$, also Vorzeichen wechselt.',
-          'Lineare DGL in $u$ aufstellen.',
-        ],
-        {
-          1: 'Vorzeichen von $u\'$ falsch: aus $u = y^{-1}$ folgt $u\' = -y^{-2}y\'$ (Minus!), also wird $y^{-2}y\' = -u\'$ beim Einsetzen.',
-          2: 'Rechte Seite falsches Vorzeichen. Nach Division durch $y^2$ steht $1$ auf der rechten Seite, und wegen des Vorzeichen-Flips in $u\'$ bleibt $-1$ am Ende.',
-          3: 'Beide Vorzeichen falsch. Saubere Rechnung: $y^{-2}y\' = -u\'$, Division durch $y^2$ gibt $-u\' + u = 1$, Umstellen: $u\' - u = -1$.',
-        },
       ),
     ],
 
-    // ── [5] Integrierender Faktor bei nicht-exakter DGL ────────────────────
+    // ── [5] AWP bei 2. Ordnung ────────────────────────────────────────────
     5: [
-      mc(
-        'Sub-Goal "Integrierender Faktor bei nicht-exakter DGL: $\\mu(x)$ oder $\\mu(y)$ finden": [PRÜFUNG] Für eine nicht-exakte DGL $M\\,dx + N\\,dy = 0$ existiert ein integrierender Faktor $\\mu(x)$ genau dann, wenn:',
+      ni(
+        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] Gegeben $y\'\' - y = 0$ mit $y(0) = 3$ und $y\'(0) = 1$. Berechne $C_1$ in der Lösung $y = C_1 e^{x} + C_2 e^{-x}$.',
+        2, 0.001, '',
+        `**Ansatz:** Zwei Bedingungen für zwei Konstanten. System aus $y(0)$ und $y'(0)$ aufstellen, lösen.
+
+**Rechnung:** $y(0)=C_1+C_2=3$. $y'(x)=C_1e^x-C_2e^{-x}$, $y'(0)=C_1-C_2=1$. Addition: $2C_1=4$ → $C_1=2$, dann $C_2=1$.
+
+**Probe:** $y=2e^x+e^{-x}$: $y(0)=2+1=3$ ✓, $y'(0)=2-1=1$ ✓.
+
+**Typischer Fehler:** Das Gleichungssystem falsch aufstellen, etwa $y'(0)=C_1+C_2$ statt $C_1-C_2$. Ableitung sauber: $\\frac{d}{dx}e^{-x}=-e^{-x}$ beachten!`,
         [
-          '$\\dfrac{M_y - N_x}{N}$ nur von $x$ abhängt',
-          '$M_y = N_x$',
-          '$\\dfrac{M_y - N_x}{M}$ nur von $y$ abhängt',
-          '$M$ und $N$ stetig sind',
+          "$y(0)=C_1+C_2$ und $y'(0)=C_1-C_2$.",
+          'Zwei Gleichungen für zwei Unbekannte.',
+          'Addition eliminiert $C_2$: $2C_1=4$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] Welche Aussage zum AWP bei DGL 2. Ordnung ist RICHTIG?',
+        [
+          'Zwei Anfangsbedingungen sind nötig, um beide Konstanten $C_1, C_2$ eindeutig zu bestimmen.',
+          'Eine einzige Anfangsbedingung $y(0)$ reicht immer aus.',
+          'Die Anfangsbedingungen werden auf die Partikulärlösung angewendet, nicht auf die Gesamtlösung.',
+          'Bei Doppelwurzel reicht eine Anfangsbedingung.',
         ],
         0,
-        `**Ansatz:** Kriterium für $\\mu(x)$ allein.
+        `**Ansatz:** Eine lineare DGL $n$-ter Ordnung hat $n$ freie Konstanten, benötigt also $n$ Bedingungen. Bei 2. Ordnung: genau **zwei** Bedingungen, typisch $y(x_0)$ und $y'(x_0)$.
 
-**Rechnung:** Aus $(\\mu M)_y = (\\mu N)_x$ und $\\mu = \\mu(x)$ folgt $\\mu M_y = \\mu\' N + \\mu N_x \\Rightarrow \\frac{\\mu\'}{\\mu} = \\frac{M_y - N_x}{N}$. Damit nur von $x$ abhängig, muss die rechte Seite reine $x$-Funktion sein.
+**Rechnung:** Die Bedingungen werden auf die **Gesamtlösung** $y=y_h+y_p$ angewandt, nicht nur auf $y_h$ oder $y_p$. Grund: nur die Gesamtlösung beschreibt den realen Verlauf; $y_h$ hätte falsche Anfangswerte.
 
-**Probe:** Dann $\\mu(x) = e^{\\int \\frac{M_y - N_x}{N}\\,dx}$.
+**Probe:** Standardbeispiel: Feder-Masse-System mit Anfangsauslenkung $y(0)=y_0$ und Anfangsgeschwindigkeit $y'(0)=v_0$ — zwei physikalische Messgrößen, zwei mathematische Bedingungen.
 
-**Typischer Fehler:** Den Test mit $M_y = N_x$ durchführen und bei Nicht-Exaktheit aufgeben — die DGL kann trotzdem via $\\mu$ lösbar sein.`,
+**Typischer Fehler:** Bedingungen nur auf $y_h$ anwenden und $y_p$ dabei vergessen. Dann passt der Funktionswert bei $x=0$ nicht zur Realität.`,
         [
-          'Multipliziere die DGL mit $\\mu(x)$.',
-          'Exaktheitsbedingung $(\\mu M)_y = (\\mu N)_x$ liefert DGL für $\\mu$.',
-          'Division durch $N$ auf beiden Seiten.',
+          'Ordnung der DGL = Anzahl nötiger Bedingungen.',
+          'Hier 2. Ordnung → 2 Bedingungen.',
+          'Anwendung auf Gesamtlösung $y=y_h+y_p$.',
         ],
         {
-          1: '$M_y = N_x$ bedeutet, die DGL ist *schon* exakt — dann braucht man keinen integrierenden Faktor.',
-          2: 'Das ist das Kriterium für $\\mu(y)$ (nur von $y$ abhängig), nicht für $\\mu(x)$.',
-          3: 'Stetigkeit allein reicht nicht — Exaktheit ist eine strukturelle Eigenschaft, nicht nur Regularität.',
+          1: 'Eine einzige Bedingung lässt die zweite Konstante unbestimmt — die Lösung ist dann nicht eindeutig. Auch bei 1. Ordnung braucht man *eine* Bedingung (passend zur Ordnung); bei 2. Ordnung sind es *zwei*.',
+          2: 'Die Bedingungen müssen auf die Gesamtlösung $y=y_h+y_p$ angewandt werden. Die Partikulärlösung allein enthält keine freien Konstanten, sodass das Einsetzen keinen Parameter festlegt.',
+          3: 'Auch bei Doppelwurzel hat die Lösung $(C_1+C_2 x)e^{\\lambda x}$ zwei freie Konstanten. Entsprechend sind zwei Bedingungen nötig, auch hier.',
         },
-      ),
-      ni(
-        'Sub-Goal "Integrierender Faktor bei nicht-exakter DGL: $\\mu(x)$ oder $\\mu(y)$ finden": [PRÜFUNG] Berechne den integrierenden Faktor $\\mu(x)$ der linearen DGL $y\' + \\frac{2}{x} y = x$. Welchen Wert hat $\\mu(2)$?',
-        4, 0.01, '',
-        `**Ansatz:** Für $y\' + p(x) y = q(x)$: $\\mu(x) = e^{\\int p\\,dx}$.
-
-**Rechnung:** $\\int \\frac{2}{x}\\,dx = 2\\ln|x| = \\ln x^2$. Also $\\mu(x) = e^{\\ln x^2} = x^2$. Bei $x=2$: $\\mu(2) = 4$.
-
-**Probe:** Nach Multiplikation: $x^2 y\' + 2x y = x^3$, also $(x^2 y)\' = x^3$. ✓ — linke Seite ist tatsächlich die Produktableitung.
-
-**Typischer Fehler:** $\\int \\frac{2}{x} dx$ als $\\frac{2}{x^2}$ oder $2x$ berechnen, statt $2\\ln|x|$.`,
-        [
-          '$\\mu = e^{\\int p\\,dx}$.',
-          '$\\int \\frac{2}{x}\\,dx = 2\\ln|x|$.',
-          '$e^{2 \\ln x} = x^2$.',
-        ],
       ),
       tf(
-        'Sub-Goal "Integrierender Faktor bei nicht-exakter DGL: $\\mu(x)$ oder $\\mu(y)$ finden": [PRÜFUNG] Ein integrierender Faktor $\\mu(x,y)$ kann generell für jede nicht-exakte DGL in geschlossener Form angegeben werden.',
+        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] Die Anfangsbedingungen $y(0)=0$ und $y(1)=1$ reichen ebenfalls aus, um die zwei Konstanten einer DGL 2. Ordnung eindeutig zu bestimmen.',
         false,
-        `**Ansatz:** Allgemein hängt $\\mu$ von $x$ und $y$ ab und erfüllt eine partielle DGL.
+        `**Ansatz:** Unterscheide **Anfangswertproblem (AWP)** und **Randwertproblem (RWP)**. AWP: beide Bedingungen am gleichen $x_0$, meist $y(x_0)$ und $y'(x_0)$. RWP: Bedingungen an zwei verschiedenen Stellen.
 
-**Rechnung:** Die PDE $(\\mu M)_y = (\\mu N)_x$ ist für allgemeines $\\mu(x,y)$ genauso schwer zu lösen wie die ursprüngliche DGL. Nur in Sonderfällen ($\\mu$ nur von $x$, nur von $y$, oder einem Produkt $x^a y^b$) findet man $\\mu$ in geschlossener Form.
+**Rechnung:** $y(0)=0$ und $y(1)=1$ ist ein **Randwertproblem** (zwei verschiedene $x$-Werte, beide am Funktionswert, nicht an der Ableitung). RWP sind lösbar oder auch nicht — nicht immer eindeutig. Beispiel: $y''+\\pi^2 y=0$ mit $y(0)=0$, $y(1)=0$ hat unendlich viele Lösungen ($y=C\\sin(\\pi x)$ für beliebiges $C$). Die Aussage „reichen ebenfalls aus" ist also falsch — RWP sind keine direkten AWP-Ersatz.
 
-**Probe:** Gegenbeispiel: $y\,dx - x\,dy = 0$ ist nicht exakt, $\\mu=1/x^2$ funktioniert. Aber für allgemeines nichtexaktes $M, N$ gibt es keine Universalformel.
+**Probe:** Standard-AWP: $y(0)=a$, $y'(0)=b$ — immer eindeutig lösbar (Existenz- und Eindeutigkeitssatz). RWP: Abhängig von Eigenwerten der DGL.
 
-**Typischer Fehler:** Erwarten, dass jede nicht-exakte DGL durch integrierenden Faktor handhabbar ist. In der Praxis testet man $\\mu(x)$ und $\\mu(y)$ — scheitern beide, weicht man auf andere Methoden aus.`,
+**Typischer Fehler:** Zwei Bedingungen sofort als "reicht aus" werten, ohne zu prüfen, an welchen Stellen sie gelten. An **gleicher** Stelle (eine Funktionswert, eine Ableitung) = AWP, eindeutig. An **verschiedenen** Stellen = RWP, nicht immer eindeutig.`,
         [
-          'Exaktheitsbedingung für $\\mu(x,y)$ ist eine PDE.',
-          'Geschlossene Form nur in Spezialfällen.',
-          '$\\mu(x)$ und $\\mu(y)$ sind die Standard-Tests.',
+          'AWP vs. RWP unterscheiden.',
+          'AWP: beide Bedingungen bei $x_0$, eine Funktionswert, eine Ableitung.',
+          'RWP: Bedingungen an zwei verschiedenen Stellen.',
         ],
       ),
-      mc(
-        'Sub-Goal "Integrierender Faktor bei nicht-exakter DGL: $\\mu(x)$ oder $\\mu(y)$ finden": [PRÜFUNG] Welcher integrierende Faktor $\\mu(x)$ macht $y\\,dx + (x^2 y - x)\\,dy = 0$ exakt?',
+      sorting(
+        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] Sortiere die Schritte zur Lösung eines AWP 2. Ordnung.',
         [
-          '$\\mu(x) = 1/x^2$',
-          '$\\mu(x) = x$',
-          '$\\mu(x) = x^2$',
-          '$\\mu(x) = 1/x$',
+          'Allgemeine Lösung bestimmen: $y(x) = y_h(x) + y_p(x)$',
+          'Ableitung $y\'(x)$ bilden',
+          'Anfangswerte $y(x_0)$ und $y\'(x_0)$ einsetzen — zwei Gleichungen entstehen',
+          'Das $2 \\times 2$-Gleichungssystem nach $C_1$ und $C_2$ auflösen',
+          'Lösung mit konkreten Werten für $C_1, C_2$ angeben',
+          'Probe: Anfangswerte einsetzen und DGL verifizieren',
         ],
-        0,
-        `**Ansatz:** $M=y$, $N=x^2 y - x$. Test $M_y=1$, $N_x=2xy-1$. Nicht exakt. Kriterium $\\frac{M_y - N_x}{N} = \\frac{1-(2xy-1)}{x^2 y - x} = \\frac{2-2xy}{x(xy-1)} = \\frac{-2(xy-1)}{x(xy-1)} = -\\frac{2}{x}$ — reine $x$-Funktion ✓.
+        [0, 1, 2, 3, 4, 5],
+        `**Ansatz:** Standard-Workflow AWP: erst allgemein, dann Bedingungen einsetzen, dann auflösen.
 
-**Rechnung:** $\\mu(x) = e^{\\int -2/x\\,dx} = e^{-2\\ln|x|} = 1/x^2$.
+**Rechnung:** - Schritt 1: $y=y_h+y_p$. - Schritt 2: Ableitung. - Schritt 3: Bedingungen einsetzen → 2 Gleichungen. - Schritt 4: $2\\times 2$-LGS lösen. - Schritt 5: konkrete Lösung. - Schritt 6: Probe.
 
-**Probe:** Neu: $M\\mu = y/x^2$, $N\\mu = y - 1/x$. $(M\\mu)_y = 1/x^2$, $(N\\mu)_x = 1/x^2$. ✓
+**Probe:** Am Ende sowohl $y(x_0)$ als auch $y'(x_0)$ prüfen, zusätzlich die DGL selbst.
 
-**Typischer Fehler:** Vorzeichen im Integral vergessen — $e^{+2\\ln x} = x^2$ statt $1/x^2$.`,
+**Typischer Fehler:** Bedingungen einsetzen vor $y_p$ dazuaddiert — dann ist das System falsch parametrisiert.`,
         [
-          'Teste $\\frac{M_y - N_x}{N}$.',
-          'Bei reiner $x$-Abhängigkeit: $\\mu = e^{\\int \\frac{M_y-N_x}{N}\\,dx}$.',
-          'Vorzeichen im Exponenten beachten.',
+          'Allgemeine Lösung inkl. $y_p$ ist die Basis.',
+          "Ableitung $y'$ für die zweite Bedingung nötig.",
+          'Probe absichert die Konstanten.',
         ],
-        {
-          1: '$\\mu = x$ würde den Ansatz $\\frac{M_y-N_x}{N}=1/x$ erfordern. Hier ist der Wert aber $-2/x$.',
-          2: 'Vorzeichenfehler: $e^{-2\\ln x} = 1/x^2$, nicht $x^2$. Test $\\mu=x^2$: $(y x^2)_y = x^2$, $((x^2 y - x) x^2)_x = (x^4 y - x^3)_x = 4x^3 y - 3x^2$ — nicht gleich.',
-          3: '$\\mu=1/x$: $(y/x)_y = 1/x$, $((x^2y-x)/x)_x = (xy-1)_x = y$ — nicht gleich.',
-        },
       ),
-      matching(
-        'Sub-Goal "Integrierender Faktor bei nicht-exakter DGL: $\\mu(x)$ oder $\\mu(y)$ finden": [PRÜFUNG] Ordne dem Ausdruck den passenden integrierenden Faktor zu.',
+      ni(
+        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] AWP: $y\'\' + 4y = 0$, $y(0) = 2$, $y\'(0) = 6$. Berechne $C_2$ in $y = C_1\\cos(2x) + C_2\\sin(2x)$.',
+        3, 0.001, '',
+        `**Ansatz:** Zwei Bedingungen aufstellen, dann auflösen.
+
+**Rechnung:** $y(0)=C_1\\cdot 1+C_2\\cdot 0=C_1=2$ → $C_1=2$. $y'(x)=-2C_1\\sin(2x)+2C_2\\cos(2x)$, $y'(0)=2C_2=6$ → $C_2=3$.
+
+**Probe:** $y=2\\cos(2x)+3\\sin(2x)$: $y(0)=2$ ✓, $y'(x)=-4\\sin(2x)+6\\cos(2x)$, $y'(0)=6$ ✓. Auch DGL: $y''=-8\\cos(2x)-12\\sin(2x)$, $y''+4y=-8\\cos-12\\sin+8\\cos+12\\sin=0$ ✓.
+
+**Typischer Fehler:** Faktor $2$ beim Ableiten von $\\sin(2x)$ vergessen. Dann $y'(0)=C_2$ statt $2C_2$ und $C_2=6$ (falsch).`,
         [
-          { left: '$\\frac{M_y - N_x}{N}$ hängt nur von $x$ ab', right: '$\\mu(x) = e^{\\int \\frac{M_y-N_x}{N}\\,dx}$' },
-          { left: '$\\frac{N_x - M_y}{M}$ hängt nur von $y$ ab', right: '$\\mu(y) = e^{\\int \\frac{N_x-M_y}{M}\\,dy}$' },
-          { left: 'Lineare DGL $y\' + p(x) y = q(x)$', right: '$\\mu(x) = e^{\\int p(x)\\,dx}$' },
-          { left: '$M_y = N_x$ bereits erfüllt', right: 'kein integrierender Faktor nötig ($\\mu = 1$)' },
-        ],
-        `**Ansatz:** Für jeden Fall gibt es eine Formel.
-
-**Rechnung:** Die ersten beiden sind die klassischen Kriterien, der dritte Fall ist der wichtigste Sonderfall (lineare DGL), der vierte trivial.
-
-**Probe:** Die Formeln folgen alle aus $(\\mu M)_y = (\\mu N)_x$ unter der jeweiligen Annahme.
-
-**Typischer Fehler:** Vorzeichen verwechseln — bei $\\mu(y)$ steht $N_x - M_y$ im Zähler, nicht $M_y - N_x$.`,
-        [
-          'Welche Variable ist $\\mu$ abhängig?',
-          'Vorzeichen im Zähler unterscheidet $\\mu(x)$ und $\\mu(y)$.',
-          'Lineare DGL ist Sonderfall.',
+          'Kettenregel: $\\frac{d}{dx}\\sin(2x)=2\\cos(2x)$.',
+          "$y'(0)=2C_2$, da $\\cos(0)=1$, $\\sin(0)=0$.",
+          '$2C_2=6$ → $C_2=3$.',
         ],
       ),
     ],
   },
 
+  // dgl-3-2 — Prüfung: DGL 2. Ordnung & Anwendungen  (6 subGoals)
+  // Je 5 Aufgaben = 30 Goal-Tasks
+  // ────────────────────────────────────────────────────────────────────────
+  'dgl-3-2': {
+
+    // ── [0] Störansatz Polynom ────────────────────────────────────────────
+    0: [
+      mc(
+        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Welcher Ansatz für $y_p$ ist bei $y\'\' - y\' + y = x^2 + 3$ richtig?',
+        [
+          '$y_p = Ax^2 + Bx + C$',
+          '$y_p = Ax^2$',
+          '$y_p = Ax^2 + Bx$',
+          '$y_p = A\\cdot(x^2+3)$',
+        ],
+        0,
+        `**Ansatz:** Ist die Störfunktion ein Polynom $P_n(x)$ vom Grad $n$ und $\\lambda=0$ keine Wurzel der char. Gleichung, wählt man als Partikulärlösung ein vollständiges Polynom $Q_n(x)$ gleichen Grades mit allen Koeffizienten $A,B,C,\\dots$.
+
+**Rechnung:** Hier $n=2$, char. Gleichung $\\lambda^2-\\lambda+1=0$ hat $\\lambda=\\tfrac{1\\pm i\\sqrt{3}}{2}\\neq 0$, kein Resonanzfall. Also $y_p=Ax^2+Bx+C$. Einsetzen ergibt $2A-(2Ax+B)+Ax^2+Bx+C=x^2+3$, Koeffizientenvergleich: $A=1$, $-2A+B=0\\Rightarrow B=2$, $2A-B+C=3\\Rightarrow C=3$.
+
+**Probe:** Mit $y_p=x^2+2x+3$: $y_p'=2x+2$, $y_p''=2$. $y_p''-y_p'+y_p=2-(2x+2)+x^2+2x+3=x^2+3$ ✓.
+
+**Typischer Fehler:** Nur das Monom höchsten Grades ansetzen (z. B. $Ax^2$). Dann bleibt beim Einsetzen $3$ auf der rechten Seite übrig und es findet sich kein passender Koeffizient — der Koeffizientenvergleich scheitert.`,
+        [
+          'Welchen Grad hat die Störfunktion?',
+          'Faustregel: Polynom-Ansatz = vollständiges Polynom gleichen Grades.',
+          'Koeffizientenvergleich braucht ALLE Monome ($x^2, x^1, x^0$).',
+        ],
+        {
+          1: 'Ein Ansatz mit nur $Ax^2$ lässt die Terme $Bx$ und $C$ fehlen. Beim Einsetzen tauchen jedoch $x^1$- und $x^0$-Beiträge auf — ohne die restlichen Koeffizienten kannst du das System $Ax^2+3$ nicht erfüllen.',
+          2: "Fehlt der konstante Term $C$. Bei $y_p=Ax^2+Bx$ liefert $y_p''-y_p'$ einen konstanten Beitrag $2A-B$, aber es gibt keinen freien Parameter, um die $+3$ auf der rechten Seite zu matchen.",
+          3: 'Das ist kein allgemeiner Polynom-Ansatz, sondern nur eine Skalierung der rechten Seite. Bei linearen DGL mit konstanten Koeffizienten muss man unabhängige Koeffizienten für jede Potenz einführen — sonst zu wenige Freiheitsgrade.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Gegeben $y\'\' + 4y = 8x + 12$. Bestimme im Polynom-Ansatz $y_p = Ax + B$ den Koeffizienten $A$.',
+        2, 0.001, '',
+        `**Ansatz:** Störfunktion ist linear (Grad 1), char. Gl. $\\lambda^2+4=0$ hat $\\lambda=\\pm 2i\\neq 0$ — kein Resonanzfall. Ansatz $y_p=Ax+B$.
+
+**Rechnung:** $y_p'=A$, $y_p''=0$. Einsetzen: $0+4(Ax+B)=8x+12$, also $4Ax+4B=8x+12$. Koeffizientenvergleich: $4A=8\\Rightarrow A=2$, $4B=12\\Rightarrow B=3$.
+
+**Probe:** $y_p=2x+3$: $y_p''+4y_p=0+4(2x+3)=8x+12$ ✓.
+
+**Typischer Fehler:** $y_p'$ oder $y_p''$ falsch gebildet — bei linearem Ansatz ist $y_p''=0$ und nicht etwa $A$. Dann würde $A$ zusätzlich auf der linken Seite auftauchen und das Ergebnis verfälschen.`,
+        [
+          "Ansatz $y_p=Ax+B$, dann $y_p'$ und $y_p''$ bilden.",
+          'In DGL einsetzen und nach Potenzen von $x$ sortieren.',
+          'Koeffizient vor $x$ vergleichen: $4A=8$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Bei $y\'\' + 3y\' + 2y = 5x^3$ ist der passende Partikulär-Ansatz $y_p = Ax^3 + Bx^2 + Cx + D$.',
+        true,
+        `**Ansatz:** Polynom-Störfunktion vom Grad $n$ → Ansatz ist vollständiges Polynom gleichen Grades, sofern $\\lambda=0$ keine Wurzel der char. Gleichung ist.
+
+**Rechnung:** $\\lambda^2+3\\lambda+2=(\\lambda+1)(\\lambda+2)=0$ liefert $\\lambda=-1,-2$. $\\lambda=0$ ist keine Wurzel. Daher kein Resonanzfall, und der vollständige Polynom-Ansatz $y_p=Ax^3+Bx^2+Cx+D$ ist korrekt.
+
+**Probe:** Einsetzen erzeugt beim Differenzieren Terme bis Grad 3 ($y_p''$: Grad 1, $y_p'$: Grad 2, $y_p$: Grad 3). Der Koeffizientenvergleich liefert 4 Gleichungen für 4 Unbekannte — das System ist eindeutig lösbar.
+
+**Typischer Fehler:** Nur $y_p=Ax^3$ ansetzen und dann das Koeffizientensystem nicht schließen können. Beim Ableiten von $Ax^3$ entstehen auch $x^2$- und $x^1$-Terme — diese brauchen eigene Koeffizienten.`,
+        [
+          'Stell fest, ob $\\lambda=0$ Wurzel der char. Gl. ist.',
+          'Faktorisiere $\\lambda^2+3\\lambda+2$.',
+          'Kein Resonanzfall → vollständiges Polynom gleichen Grades.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Ordne jeder Störfunktion den passenden Polynom-Ansatz zu (ohne Resonanz).',
+        [
+          { left: '$q(x)=7$ (Konstante)', right: '$y_p = A$' },
+          { left: '$q(x)=3x-2$', right: '$y_p = Ax + B$' },
+          { left: '$q(x)=x^2$', right: '$y_p = Ax^2 + Bx + C$' },
+          { left: '$q(x)=5x^3 - x + 4$', right: '$y_p = Ax^3 + Bx^2 + Cx + D$' },
+        ],
+        `**Ansatz:** Der Grad des Ansatzes richtet sich nach dem **höchsten** Grad in $q(x)$. Unabhängig von der konkreten Form (fehlende Zwischenglieder wie bei $5x^3-x+4$ ohne $x^2$) wird immer das **vollständige** Polynom dieses Grades angesetzt.
+
+**Rechnung:** Ableitungen mischen die Potenzen — alle Koeffizienten werden benötigt. Der Koeffizientenvergleich löst dann ein $(n+1)\\times(n+1)$-System.
+
+**Probe:** Jede Wahl muss beim Einsetzen Koeffizientenvergleich erlauben. Fehlende Grade im Ansatz blockieren einzelne Gleichungen.
+
+**Typischer Fehler:** Bei $q(x)=5x^3-x+4$ nur $Ax^3+Cx+D$ ansetzen (weil $x^2$ fehlt). Falsch — die Ableitungen erzeugen $x^2$-Terme, die sonst nicht gematcht werden können.`,
+        [
+          'Höchster Grad von $q(x)$ bestimmt Grad des Ansatzes.',
+          'Immer vollständiges Polynom — auch wenn Zwischenglieder in $q$ fehlen.',
+          'Konstante Störfunktion → konstanter Ansatz.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Für $y\'\' - y\' = 2x + 1$ ist der Standard-Ansatz $y_p = Ax + B$ falsch — warum?',
+        [
+          '$\\lambda=0$ ist Wurzel der char. Gleichung — Resonanz, Ansatz muss $\\cdot x$ werden',
+          'Der Ansatz ist korrekt — das System ist einfach lösbar',
+          'Der Ansatz hat zu viele Parameter',
+          'Polynom-Störfunktionen erlauben keine Konstante im Ansatz',
+        ],
+        0,
+        `**Ansatz:** Bei Polynom-Störansatz muss man prüfen, ob $\\lambda=0$ Wurzel der charakteristischen Gleichung ist. Ist ja — weil Konstanten bereits zur homogenen Lösung gehören — so tritt Resonanz auf und der Ansatz wird mit $x$ multipliziert.
+
+**Rechnung:** Char. Gleichung: $\\lambda^2-\\lambda=\\lambda(\\lambda-1)=0$ → $\\lambda=0,1$. Da $\\lambda=0$ Wurzel ist, steckt in $y_h=C_1+C_2 e^x$ bereits die Konstante $C_1$. Der Ansatz $Ax+B$ enthält $B$ (Konstante) — das ist die homogene Lösung und bringt nichts. Korrektur: $y_p=x(Ax+B)=Ax^2+Bx$.
+
+**Probe:** Mit $y_p=Ax^2+Bx$: $y_p'=2Ax+B$, $y_p''=2A$. $y_p''-y_p'=2A-2Ax-B=-2Ax+(2A-B)=2x+1$ → $-2A=2\\Rightarrow A=-1$, $2A-B=1\\Rightarrow B=-3$. Also $y_p=-x^2-3x$.
+
+**Typischer Fehler:** Resonanzprüfung vergessen. Das passiert besonders bei Polynom-Störungen, weil Konstanten nicht als "Exponential mit $\\lambda=0$" gesehen werden. Faustregel: fehlt der Term $y$ (also $q=0$) in der DGL, ist $\\lambda=0$ immer Wurzel.`,
+        [
+          'Char. Gleichung $\\lambda^2-\\lambda=0$ faktorisieren.',
+          'Welche Wurzeln? Ist $\\lambda=0$ darunter?',
+          'Wenn ja: Resonanz — Polynom-Ansatz $\\cdot x$.',
+        ],
+        {
+          1: 'Der Ansatz $Ax+B$ enthält $B$ als Konstante — das ist aber bereits Teil der homogenen Lösung ($y_h=C_1+C_2e^x$). Resonanz muss berücksichtigt werden, sonst scheitert der Koeffizientenvergleich.',
+          2: 'Die Anzahl der Parameter passt zum Grad der Störfunktion. Das Problem ist nicht Überparametrisierung, sondern dass ein Teil des Ansatzes bereits die homogene DGL löst (→ Resonanz).',
+          3: 'Polynom-Ansätze dürfen konstante Terme enthalten (sonst könnte man $q(x)=7$ nie treffen). Das Problem ist hier speziell, dass in dieser DGL der Term $y$ fehlt — dadurch wird $\\lambda=0$ zur Wurzel.',
+        },
+      ),
+    ],
+
+    // ── [1] Störansatz Exponential ────────────────────────────────────────
+    1: [
+      ni(
+        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Finde $A$ in $y_p = A e^{2x}$ für die DGL $y\'\' - 3y\' + 2y = 4e^{2x}$... Moment, ist der Ansatz überhaupt zulässig? Wenn nicht, schreibe $0$. Wenn ja, gib $A$ an.',
+        0, 0.001, '',
+        `**Ansatz:** Vor dem Einsetzen prüfen, ob $c=2$ Wurzel der charakteristischen Gleichung ist. Nur wenn nicht, ist der Ansatz $Ae^{cx}$ zulässig.
+
+**Rechnung:** Char. Gl.: $\\lambda^2-3\\lambda+2=(\\lambda-1)(\\lambda-2)=0$ → $\\lambda=1,2$. Da $c=2$ **Wurzel** ist, liegt Resonanz vor. Der Ansatz $Ae^{2x}$ ist **nicht** zulässig und muss zu $Axe^{2x}$ modifiziert werden. Antwort für $A$ im Standard-Ansatz: **0** (nicht zulässig).
+
+**Probe:** Einsetzen von $y_p=Ae^{2x}$ liefert $(4A-6A+2A)e^{2x}=0\\neq 4e^{2x}$ — Ansatz ergibt Widerspruch, genau weil $e^{2x}$ homogene Lösung ist.
+
+**Typischer Fehler:** Direkt einsetzen, ohne Resonanzcheck. Dann steht plötzlich $0=4e^{2x}$ und der Rechnende ist verwirrt. Regel: vor jedem $Ae^{cx}$-Ansatz kurz die char. Gleichung faktorisieren.`,
+        [
+          'Bestimme die Wurzeln der charakteristischen Gleichung.',
+          'Liegt $c=2$ unter den Wurzeln?',
+          'Falls ja: Ansatz unzulässig → $A=0$ eintragen.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Für $y\'\' - 4y\' + 3y = 5e^{-x}$ ist der richtige Ansatz:',
+        [
+          '$y_p = A e^{-x}$',
+          '$y_p = A x e^{-x}$',
+          '$y_p = A e^{x}$',
+          '$y_p = (Ax + B) e^{-x}$',
+        ],
+        0,
+        `**Ansatz:** Ansatz $Ae^{cx}$ mit $c=-1$. Resonanz prüfen: char. Gleichung $\\lambda^2-4\\lambda+3=(\\lambda-1)(\\lambda-3)=0$ → $\\lambda=1,3$. $c=-1$ ist **keine** Wurzel → Ansatz $Ae^{-x}$ zulässig.
+
+**Rechnung:** $y_p=Ae^{-x}$, $y_p'=-Ae^{-x}$, $y_p''=Ae^{-x}$. Einsetzen: $Ae^{-x}-4(-Ae^{-x})+3Ae^{-x}=(1+4+3)Ae^{-x}=8Ae^{-x}=5e^{-x}$ → $A=\\tfrac{5}{8}$.
+
+**Probe:** Mit $y_p=\\tfrac{5}{8}e^{-x}$: $y_p''-4y_p'+3y_p=\\tfrac{5}{8}e^{-x}(1+4+3)=\\tfrac{5}{8}\\cdot 8\\cdot e^{-x}=5e^{-x}$ ✓.
+
+**Typischer Fehler:** $c$ vorschnell mit einer Wurzel verwechseln (z. B. $c=-1$ mit $\\lambda=1$). Vorzeichen zählen — nur wenn $c$ exakt mit einem $\\lambda$ übereinstimmt, liegt Resonanz vor.`,
+        [
+          'Char. Gleichung: $\\lambda^2-4\\lambda+3=0$.',
+          'Wurzeln $\\lambda=1, 3$. Ist $c=-1$ dabei?',
+          'Nein → Standard-Ansatz $Ae^{-x}$.',
+        ],
+        {
+          1: 'Das wäre der Resonanzansatz. Hier liegt aber keine Resonanz vor: $c=-1$ ist keine Wurzel der char. Gleichung ($\\lambda=1, 3$). Ohne Resonanz bleibt der Ansatz im Standard-Format $Ae^{cx}$.',
+          2: 'Vorzeichen verwechselt: die Störfunktion ist $e^{-x}$, nicht $e^{x}$. Der Ansatz muss denselben Exponenten tragen wie die rechte Seite.',
+          3: 'Dieser Ansatz passt zu einer Störfunktion der Form $P_1(x)\\cdot e^{-x}=(ax+b)e^{-x}$. Hier ist aber $q(x)=5e^{-x}$ (nur Exponential, kein Polynomfaktor). Daher genügt $Ae^{-x}$.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Bei $y\'\' + y = e^{2x}$ ist $c=2$ kein Eigenwert der char. Gleichung, daher ist $y_p = A e^{2x}$ ein gültiger Ansatz.',
+        true,
+        `**Ansatz:** Resonanzcheck: Eigenwerte aus char. Gl. Wenn $c$ keiner davon ist → Standard-Exponentialansatz erlaubt.
+
+**Rechnung:** Char. Gl.: $\\lambda^2+1=0$ → $\\lambda=\\pm i$. $c=2$ ist weder $+i$ noch $-i$ (und auch nicht rein reell wie $i$). Ansatz zulässig: $y_p=Ae^{2x}$, $y_p''=4Ae^{2x}$. $y_p''+y_p=5Ae^{2x}=e^{2x}$ → $A=1/5$.
+
+**Probe:** $y_p=\\tfrac{1}{5}e^{2x}$: $y_p''+y_p=\\tfrac{1}{5}(4e^{2x}+e^{2x})=\\tfrac{1}{5}\\cdot 5e^{2x}=e^{2x}$ ✓.
+
+**Typischer Fehler:** Komplexe Eigenwerte mit beliebigen reellen $c$ verwechseln. Nur wenn $c$ **exakt** einer der (ggf. komplexen) Wurzeln ist, liegt Resonanz vor — $c=2$ ist ein völlig anderer Wert als $\\pm i$.`,
+        [
+          'Wurzeln von $\\lambda^2+1=0$?',
+          'Vergleiche $c=2$ mit diesen Wurzeln.',
+          'Keine Übereinstimmung → kein Resonanzfall.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Sortiere die Schritte zur Bestimmung der partikulären Lösung bei exponentieller Störung.',
+        [
+          'Charakteristische Gleichung $\\lambda^2+p\\lambda+q=0$ aufstellen und Wurzeln bestimmen',
+          'Prüfen, ob $c$ eine Wurzel ist (Resonanzcheck)',
+          'Ansatz wählen: $Ae^{cx}$ (ohne Resonanz) oder $Axe^{cx}$ / $Ax^2e^{cx}$ (mit Resonanz)',
+          'Ansatz zweimal ableiten und in die DGL einsetzen',
+          'Koeffizient $A$ durch Koeffizientenvergleich berechnen',
+          'Probe: $y_p$ in die ursprüngliche DGL einsetzen',
+        ],
+        [0, 1, 2, 3, 4, 5],
+        `**Ansatz:** Der Resonanzcheck steht vor der Ansatzwahl — sonst riskiert man Widersprüche.
+
+**Rechnung:** Reihenfolge logisch: 1) homogen analysieren, 2) $c$ mit Wurzeln vergleichen, 3) Ansatz, 4) Einsetzen, 5) Koeffizienten, 6) Probe.
+
+**Probe:** Das Ergebnis muss die ursprüngliche DGL Punkt für Punkt erfüllen — nicht nur die homogene.
+
+**Typischer Fehler:** Sofort einsetzen ohne Resonanzcheck. Kommt dann $0=\\text{etwas}$ heraus, muss man zurück zum Anfang.`,
+        [
+          'Zuerst Wissen über die homogene DGL aufbauen.',
+          'Resonanzcheck bestimmt die Ansatz-Form.',
+          'Probe am Ende absichert die Lösung.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Berechne $A$ in $y_p = A e^{3x}$ für die DGL $y\'\' - 2y\' - 3y = 8 e^{3x}$... falls zulässig. Falls Resonanz vorliegt, trage $0$ ein.',
+        0, 0.001, '',
+        `**Ansatz:** Resonanzcheck! Char. Gleichung: $\\lambda^2-2\\lambda-3=(\\lambda-3)(\\lambda+1)=0$ → $\\lambda=3,-1$. $c=3$ ist Wurzel → Resonanz → Standard-Ansatz $Ae^{3x}$ ist **nicht** zulässig.
+
+**Rechnung:** Zum Nachweis: mit $y_p=Ae^{3x}$: $y_p''-2y_p'-3y_p=(9-6-3)Ae^{3x}=0\\cdot Ae^{3x}=0\\neq 8e^{3x}$. Der Ansatz kann niemals die rechte Seite erzeugen. Antwort für $A$ im gefragten Ansatz: **0**.
+
+**Probe:** Der korrekte Ansatz wäre $y_p=Axe^{3x}$: $y_p'=A(1+3x)e^{3x}$, $y_p''=A(6+9x)e^{3x}$. Einsetzen: $[A(6+9x)-2A(1+3x)-3Ax]e^{3x}=[6A+9Ax-2A-6Ax-3Ax]e^{3x}=4Ae^{3x}=8e^{3x}$ → $A=2$. Also $y_p=2xe^{3x}$ ist die richtige Partikulärlösung.
+
+**Typischer Fehler:** Resonanzcheck weglassen, Ansatz $Ae^{3x}$ einsetzen, auf $0=8e^{3x}$ stoßen und dann fälschlich schließen, die DGL habe keine Lösung. Die DGL hat sehr wohl eine Lösung — nur der naive Ansatz versagt.`,
+        [
+          'Faktorisiere $\\lambda^2-2\\lambda-3$.',
+          'Wurzeln $\\lambda=3, -1$. $c=3$ dabei?',
+          'Ja → Resonanz → $A=0$ im Standard-Ansatz.',
+        ],
+      ),
+    ],
+
+    // ── [2] Störansatz Trig ───────────────────────────────────────────────
+    2: [
+      mc(
+        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Welcher Ansatz ist für $y\'\' + 3y\' + 2y = 4\\cos(2x)$ richtig?',
+        [
+          '$y_p = A\\cos(2x) + B\\sin(2x)$',
+          '$y_p = A\\cos(2x)$',
+          '$y_p = A\\sin(2x)$',
+          '$y_p = A e^{2ix}$',
+        ],
+        0,
+        `**Ansatz:** Bei trigonometrischer Störung $q(x)=a\\cos(\\omega x)+b\\sin(\\omega x)$ (ein Summand genügt) lautet der vollständige Ansatz **immer** $y_p=A\\cos(\\omega x)+B\\sin(\\omega x)$ mit **beiden** Funktionen — auch wenn nur eine in $q$ auftritt. Grund: Ableiten wechselt zwischen $\\cos$ und $\\sin$. Vorab Resonanzcheck: ist $\\pm i\\omega$ Wurzel der char. Gl.?
+
+**Rechnung:** Char. Gl.: $\\lambda^2+3\\lambda+2=(\\lambda+1)(\\lambda+2)=0$ → $\\lambda=-1,-2$. $\\pm 2i$ ist **nicht** darunter → kein Resonanzfall. Ansatz: $y_p=A\\cos 2x+B\\sin 2x$. Einsetzen liefert $(-2A+6B)\\cos 2x+(-6A-2B)\\sin 2x=4\\cos 2x$, also $-2A+6B=4$ und $-6A-2B=0$, Lösung $A=-\\tfrac{1}{5}$, $B=\\tfrac{3}{5}$.
+
+**Probe:** $y_p=-\\tfrac{1}{5}\\cos 2x+\\tfrac{3}{5}\\sin 2x$ in die DGL eingesetzt ergibt exakt $4\\cos 2x$.
+
+**Typischer Fehler:** Nur $A\\cos(2x)$ ansetzen, weil in $q$ nur $\\cos$ steht. Aber $y_p'$ erzeugt $\\sin$, $y_p''$ wieder $\\cos$ — ohne $\\sin$-Anteil im Ansatz bleibt ein Rest, der nicht gematcht werden kann.`,
+        [
+          'Erzeugt Ableiten von $\\cos(2x)$ einen $\\sin$-Beitrag?',
+          'Beide Funktionen müssen im Ansatz stehen.',
+          'Resonanz nur bei $\\pm i\\omega$ als Wurzel der char. Gl.',
+        ],
+        {
+          1: 'Der Ansatz $A\\cos(2x)$ allein reicht nicht. Ableiten bringt $\\sin(2x)$-Terme ins Spiel, die keinen Matching-Partner haben. Der Koeffizientenvergleich bricht zusammen.',
+          2: 'Gleicher Fehler wie bei $\\cos$ allein: Ableitung von $A\\sin(2x)$ liefert $\\cos(2x)$-Anteile, die nicht aufgefangen werden können. Beide Funktionen sind nötig.',
+          3: 'Komplexer Ansatz ist theoretisch möglich, aber bei reellen Koeffizienten und reeller rechter Seite ist der reelle Ansatz $A\\cos+B\\sin$ Standard. Außerdem würde $Ae^{2ix}$ hier Resonanzcheck mit $\\lambda=2i$ erfordern.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Für $y\'\' + 4y = 6\\sin(x)$ setzt man $y_p = A\\cos(x) + B\\sin(x)$ an. Berechne $B$.',
+        2, 0.001, '',
+        `**Ansatz:** Trigonometrische Störung mit $\\omega=1$. Resonanzcheck: $\\lambda^2+4=0$ → $\\lambda=\\pm 2i$, also $\\pm i\\omega=\\pm i$ ist **keine** Wurzel → Standard-Ansatz.
+
+**Rechnung:** $y_p=A\\cos x+B\\sin x$, $y_p''=-A\\cos x-B\\sin x$. Einsetzen: $(-A+4A)\\cos x+(-B+4B)\\sin x=3A\\cos x+3B\\sin x=6\\sin x$. Koeffizientenvergleich: $3A=0\\Rightarrow A=0$, $3B=6\\Rightarrow B=2$.
+
+**Probe:** $y_p=2\\sin x$: $y_p''+4y_p=-2\\sin x+8\\sin x=6\\sin x$ ✓.
+
+**Typischer Fehler:** Vergessen, dass $y_p''$ das Vorzeichen wechselt ($-A\\cos x$, nicht $+A\\cos x$). Dann Koeffizienten falsch.`,
+        [
+          "Zweite Ableitung: $y_p''=-A\\cos x-B\\sin x$.",
+          'In die DGL einsetzen und nach $\\cos, \\sin$ sortieren.',
+          'Koeffizient vor $\\sin x$: $(-B+4B)=3B=6$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Wenn die Störfunktion nur $\\sin(\\omega x)$ ist, reicht als Ansatz $y_p = B\\sin(\\omega x)$ ohne $\\cos$-Term.',
+        false,
+        `**Ansatz:** Falsch. Auch bei reinem $\\sin$ (oder reinem $\\cos$) in der Störung braucht man **beide** Anteile im Ansatz, sobald die DGL einen Term mit **erster Ableitung** ($y'$) enthält.
+
+**Rechnung:** Beispiel $y'+y=\\sin x$: mit $y_p=B\\sin x$ erhält man $B\\cos x+B\\sin x=\\sin x$ — das geht nicht, weil links $\\cos x$ auftaucht, rechts aber nicht. Der Koeffizientenvergleich liefert $B=0$ (aus $\\cos$-Anteil) und $B=1$ (aus $\\sin$-Anteil) — Widerspruch. Also braucht es $y_p=A\\cos x+B\\sin x$.
+
+**Probe:** Nur wenn die DGL keinen $y'$-Term hat (z. B. $y''+\\omega_0^2 y=\\sin\\omega x$ mit $\\omega\\neq\\omega_0$), kommt man ausnahmsweise mit einem einzigen trig-Term aus. Generell-Regel: **beide** Terme ansetzen.
+
+**Typischer Fehler:** "$q$ enthält nur $\\sin$, also brauche ich nur $B\\sin$". Funktioniert manchmal zufällig, versagt aber sobald $y'$ im Spiel ist.`,
+        [
+          "Wirkt $y'$ auf $B\\sin x$? Was entsteht?",
+          'Reine $\\sin$-Ansätze versagen, sobald $\\cos$ aus Ableitung kommt.',
+          'Im Zweifel immer beide Funktionen ansetzen.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Ordne jeder trigonometrischen Störfunktion den passenden Ansatz zu.',
+        [
+          { left: '$q(x)=3\\cos(2x)$', right: '$y_p=A\\cos(2x)+B\\sin(2x)$' },
+          { left: '$q(x)=\\sin(5x)-2\\cos(5x)$', right: '$y_p=A\\cos(5x)+B\\sin(5x)$' },
+          { left: '$q(x)=e^{x}\\cos(3x)$', right: '$y_p=e^{x}(A\\cos(3x)+B\\sin(3x))$' },
+          { left: '$q(x)=x\\sin(2x)$', right: '$y_p=(Ax+B)\\cos(2x)+(Cx+D)\\sin(2x)$' },
+        ],
+        `**Ansatz:** Trig-Ansatz = **vollständige Form** mit $\\cos$ und $\\sin$, bei gleicher Frequenz $\\omega$. Produkte mit $e^{\\alpha x}$ oder Polynomen werden entsprechend multipliziert bzw. in Polynomen-Ansatz ausgeschrieben.
+
+**Rechnung:** - $e^{\\alpha x}\\cos\\omega x$: Ansatz $e^{\\alpha x}(A\\cos+B\\sin)$, Resonanz bei $\\alpha\\pm i\\omega$ Wurzel. - $x^n\\cos\\omega x$: Ansatz mit Polynomfaktor $(Ax^n+\\dots)\\cos+(Cx^n+\\dots)\\sin$.
+
+**Probe:** Beim Einsetzen müssen alle Terme $x^k\\cdot \\cos\\omega x$ und $x^k\\cdot \\sin\\omega x$ gematcht werden — dafür ist der vollständige Ansatz nötig.
+
+**Typischer Fehler:** Bei $x\\sin(2x)$ nur $Cx\\sin(2x)$ ansetzen. Ableiten bringt aber auch Terme ohne $x$ (nur $\\sin$, $\\cos$) und $\\cos$-Terme — alle Freiheitsgrade müssen rein.`,
+        [
+          'Frequenz $\\omega$ aus der Störung übernehmen.',
+          'Bei Produktstörungen (z. B. mit $e^{\\alpha x}$ oder $x^n$) den Ansatz entsprechend erweitern.',
+          'Immer $\\cos$ UND $\\sin$ im Ansatz.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Bei welcher DGL tritt **Resonanz** auf, so dass der Standard-Ansatz $y_p=A\\cos(3x)+B\\sin(3x)$ **NICHT** direkt zulässig ist?',
+        [
+          '$y\'\' + 9y = \\cos(3x)$',
+          '$y\'\' + 4y = \\cos(3x)$',
+          '$y\'\' + 16y = \\cos(3x)$',
+          '$y\'\' + y = \\cos(3x)$',
+        ],
+        0,
+        `**Ansatz:** Resonanzcheck bei Trig-Störung: Tritt $\\pm i\\omega$ (mit $\\omega$ = Störfrequenz) als Wurzel der charakteristischen Gleichung auf? Nur dann liegt Resonanz vor und der Standard-Ansatz scheitert.
+
+**Rechnung:** - A: $\\lambda^2+9=0$ → $\\lambda=\\pm 3i$ = $\\pm i\\omega$ mit $\\omega=3$ → **Resonanz**. Ansatz muss $\\cdot x$: $y_p=x(A\\cos 3x+B\\sin 3x)$. - B: $\\lambda=\\pm 2i \\neq \\pm 3i$, kein Resonanzfall. - C: $\\lambda=\\pm 4i \\neq \\pm 3i$, kein Resonanzfall. - D: $\\lambda=\\pm i \\neq \\pm 3i$, kein Resonanzfall.
+
+**Probe:** In A mit Standard-Ansatz $y_p=A\\cos 3x+B\\sin 3x$: $y_p''+9y_p=-9A\\cos-9B\\sin+9A\\cos+9B\\sin=0 \\neq \\cos 3x$. Das zeigt: der Standard-Ansatz kann die rechte Seite niemals erzeugen → Resonanz bestätigt.
+
+**Typischer Fehler:** Resonanz nur bei exakter Frequenz-Übereinstimmung $\\pm i\\omega$ = Wurzel. In A ist $\\omega_0=\\sqrt{9}=3=\\omega$ → Eigenfrequenz = Störfrequenz → klassische mechanische Resonanz.`,
+        [
+          'Eigenfrequenz aus $\\lambda^2+q=0$: $\\omega_0=\\sqrt{q}$.',
+          'Störfrequenz hier $\\omega=3$. Wo ist $\\omega_0=\\omega$?',
+          'A: $q=9$, $\\omega_0=3=\\omega$ → Resonanz.',
+        ],
+        {
+          1: 'Hier ist $\\omega_0=\\sqrt{4}=2\\neq 3=\\omega$, also kein Resonanzfall. Der Standard-Ansatz $A\\cos 3x+B\\sin 3x$ ist zulässig und liefert $A=-\\tfrac{1}{5}, B=0$.',
+          2: '$\\omega_0=\\sqrt{16}=4\\neq 3=\\omega$, also kein Resonanzfall. Der Standard-Ansatz funktioniert: $y_p=\\tfrac{1}{7}\\cos 3x$.',
+          3: '$\\omega_0=1\\neq 3=\\omega$, also kein Resonanzfall. Der Standard-Ansatz ist zulässig: $y_p=-\\tfrac{1}{8}\\cos 3x$.',
+        },
+      ),
+    ],
+
+    // ── [3] Resonanzfall ──────────────────────────────────────────────────
+    3: [
+      mc(
+        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Wähle den Ansatz für $y\'\' - 4y\' + 4y = e^{2x}$.',
+        [
+          '$y_p = A x^2 e^{2x}$',
+          '$y_p = A e^{2x}$',
+          '$y_p = A x e^{2x}$',
+          '$y_p = (Ax + B) e^{2x}$',
+        ],
+        0,
+        `**Ansatz:** Char. Gleichung $\\lambda^2-4\\lambda+4=(\\lambda-2)^2=0$ hat die **Doppelwurzel** $\\lambda=2$. Störexponent $c=2$ stimmt damit überein → Resonanz. Bei Doppelwurzel multipliziert man mit $x^2$ (bei einfacher Wurzel nur mit $x$).
+
+**Rechnung:** Ansatz $y_p=Ax^2e^{2x}$. Ableitungen: $y_p'=A(2x+2x^2)e^{2x}=2A(x+x^2)e^{2x}$, $y_p''=2A(1+2x)e^{2x}+4A(x+x^2)e^{2x}=2A(1+4x+2x^2)e^{2x}$. Einsetzen und Sortieren (Koeffizienten $x^0, x^1, x^2$) ergibt $2A e^{2x}=e^{2x}$ → $A=\\tfrac{1}{2}$. Also $y_p=\\tfrac{1}{2}x^2e^{2x}$.
+
+**Probe:** $y_h=(C_1+C_2x)e^{2x}$. Beim Einsetzen von $y_p=Axe^{2x}$ würde man $0=e^{2x}$ erhalten — der Ansatz mit $x$ versagt (ist auch homogene Lösung!), erst $x^2$ bricht die Resonanz.
+
+**Typischer Fehler:** Nur mit $x$ multiplizieren, wenn eine Doppelwurzel vorliegt. Dann rechnet man lange, bis plötzlich $A=0\\cdot\\text{etwas}$ herauskommt und spürt den Fehler zu spät.`,
+        [
+          'Char. Gl.: $(\\lambda-2)^2=0$ — doppelte Wurzel.',
+          '$c=2$ ist diese Wurzel → Resonanz mit Multiplizität 2.',
+          'Multiplikation mit $x^2$ (nicht nur $x$).',
+        ],
+        {
+          1: 'Ohne Resonanzbehandlung. Aber $e^{2x}$ ist Teil der homogenen Lösung (sogar doppelt), daher liefert $Ae^{2x}$ beim Einsetzen $0\\neq e^{2x}$. Ansatz unbrauchbar.',
+          2: 'Nur ein $x$-Faktor. Das bricht die Resonanz bei *einfacher* Wurzel, nicht bei *doppelter*. Hier ist $\\lambda=2$ doppelt, daher ist auch $xe^{2x}$ schon homogene Lösung. Man braucht $x^2$.',
+          3: 'Dieser Ansatz passt zu einer Störung der Form $(ax+b)e^{2x}$, also einem Polynomfaktor. Hier ist die Störung aber nur $e^{2x}$ (konstanter Faktor) → Ansatz wäre überparametrisiert und die Lösung des Koeffizientensystems würde $A=0$, $B$ frei ergeben — ungeeignet.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Bestimme $A$ in $y_p = Ax e^x$ für die DGL $y\'\' - y = 4 e^x$.',
+        2, 0.001, '',
+        `**Ansatz:** Char. Gl. $\\lambda^2-1=0$ → $\\lambda=\\pm 1$. Störexponent $c=1$ ist *einfache* Wurzel → Resonanz, Multiplizität 1, Ansatz $Axe^x$.
+
+**Rechnung:** $y_p=Axe^x$, $y_p'=A(1+x)e^x$, $y_p''=A(2+x)e^x$. $y_p''-y_p=A(2+x)e^x-Axe^x=2Ae^x=4e^x$ → $A=2$.
+
+**Probe:** $y_p=2xe^x$: $y_p''-y_p=2(2+x)e^x-2xe^x=4e^x$ ✓.
+
+**Typischer Fehler:** Produktregel beim Ableiten vergessen. Dann kommt $y_p'=Ae^x$ (statt $A(1+x)e^x$) heraus und $A$ ist falsch.`,
+        [
+          'Char. Gl.: $\\lambda^2-1=(\\lambda-1)(\\lambda+1)=0$ → $\\lambda=\\pm 1$.',
+          '$c=1$ ist *einfache* Wurzel → Ansatz $\\cdot x$.',
+          "Produktregel: $(xe^x)'=(1+x)e^x$.",
+        ],
+      ),
+      tf(
+        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Bei $y\'\' + y = \\sin(x)$ liegt Resonanz vor, weil $\\pm i$ (die Wurzeln der char. Gleichung) auch die Frequenz der Störung ergeben.',
+        true,
+        `**Ansatz:** Bei trigonometrischer Störung liegt Resonanz vor, wenn $\\pm i\\omega$ (mit $\\omega$ = Störfrequenz) eine Wurzel der char. Gleichung ist.
+
+**Rechnung:** Char. Gl.: $\\lambda^2+1=0$ → $\\lambda=\\pm i$. Störung $\\sin(x)$ hat $\\omega=1$, also $\\pm i\\omega=\\pm i$ — exakt die Wurzeln. Also Resonanz. Ansatz: $y_p=x(A\\cos x+B\\sin x)$. Einsetzen liefert $A=-\\tfrac{1}{2}$, $B=0$.
+
+**Probe:** $y_p=-\\tfrac{1}{2}x\\cos x$: $y_p'=-\\tfrac{1}{2}\\cos x+\\tfrac{1}{2}x\\sin x$, $y_p''=\\sin x+\\tfrac{1}{2}x\\cos x$. $y_p''+y_p=\\sin x+\\tfrac{1}{2}x\\cos x-\\tfrac{1}{2}x\\cos x=\\sin x$ ✓.
+
+**Typischer Fehler:** Bei Trig-Resonanz denken, man müsse mit $x^2$ multiplizieren. Nein — $\\pm i$ ist nur *einfache* Wurzel, daher reicht $x$. $x^2$ bräuchte man bei Doppelwurzel (was bei rein imaginären Wurzeln selten ist).`,
+        [
+          'Stör­frequenz $\\omega=1$. Vergleiche mit den char. Wurzeln.',
+          'Wurzeln $\\pm i$, also $\\pm i\\cdot 1$ → Resonanzfall.',
+          'Einfache Wurzel → Ansatz $\\cdot x$, nicht $\\cdot x^2$.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Sortiere die Entscheidungslogik beim Resonanzcheck.',
+        [
+          'Charakteristische Gleichung aufstellen und Wurzeln $\\lambda_{1,2}$ bestimmen',
+          'Aus der Störfunktion den "Prüf-Exponenten" $c$ bestimmen ($c$ direkt bei $e^{cx}$; $c=\\pm i\\omega$ bei $\\sin/\\cos$)',
+          'Vergleichen: stimmt $c$ mit einer Wurzel überein?',
+          'Nein → Standard-Ansatz ohne $x$-Faktor',
+          'Ja, einfache Wurzel → Ansatz mit $x$ multiplizieren',
+          'Ja, Doppelwurzel → Ansatz mit $x^2$ multiplizieren',
+        ],
+        [0, 1, 2, 3, 4, 5],
+        `**Ansatz:** Der Resonanzcheck ist entscheidend für den Erfolg des Ansatzes. Reihenfolge: erst homogene Analyse, dann Störanalyse, dann Vergleich, dann Ansatzwahl nach Multiplizität.
+
+**Rechnung:** Die Multiplizität der Wurzel entscheidet über die Potenz des $x$-Faktors. Faustregel: "$x^{\\text{Multiplizität}}$".
+
+**Probe:** Wenn nach dem Einsetzen $0=\\text{etwas}$ steht, ist der $x$-Faktor zu klein gewählt — höhere Potenz probieren.
+
+**Typischer Fehler:** Direkt Standard-Ansatz, ohne Resonanzcheck. Besonders gefährlich bei Doppelwurzel.`,
+        [
+          'Homogene Lösung zuerst — sie sagt, was bereits „belegt" ist.',
+          'Prüf-Exponent: bei $\\sin(\\omega x)$ ist $c=\\pm i\\omega$.',
+          'Multiplizität bestimmt die Potenz des $x$-Faktors.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Welche Aussage zur Resonanz ist FALSCH?',
+        [
+          'Resonanz tritt nur bei exponentieller Störung auf, nie bei trigonometrischer.',
+          'Bei Doppelwurzel als Resonanzursache wird mit $x^2$ multipliziert.',
+          'Resonanz bedeutet: die Störfunktion ist bereits homogene Lösung.',
+          'Bei einfacher Wurzel reicht Multiplikation mit $x$.',
+        ],
+        0,
+        `**Ansatz:** Resonanz kann bei jeder Störform auftreten, bei der der „Prüf-Exponent" $c$ (reell bei $e^{cx}$, komplex $\\pm i\\omega$ bei $\\sin/\\cos$) mit einer Wurzel der char. Gleichung übereinstimmt.
+
+**Rechnung:** Trigonometrische Resonanz ist der wichtigste Fall in der Technik: Erreger-Frequenz = Eigenfrequenz → Amplitudenaufschaukelung. Beispiel: $y''+\\omega_0^2 y=\\sin(\\omega_0 x)$ — resonanzverstärkte Schwingung.
+
+**Probe:** A ist genau deshalb falsch. B, C, D stimmen: Multiplizität → $x$-Potenz; Resonanz = Störung ist homogene Lösung; einfache Wurzel → $\\cdot x$.
+
+**Typischer Fehler:** Resonanz nur mit „Schwingung" oder nur mit $e^{cx}$ assoziieren. In Wahrheit ist sie ein allgemeines Phänomen, sobald der Ansatz-Exponent eine Wurzel der char. Gleichung trifft — egal ob reell oder komplex.`,
+        [
+          'Suche die falsche Aussage.',
+          'Kann Resonanz auch bei $\\sin/\\cos$-Störung auftreten?',
+          'Klassisches Beispiel: Schwingung im Gleichklang.',
+        ],
+        {
+          1: 'Diese Aussage ist *richtig*: bei Doppelwurzel braucht man $x^2$, um aus der zweifach-homogenen Lösung herauszukommen. Sie ist also nicht die gesuchte falsche Aussage.',
+          2: 'Richtig: das ist genau die Definition von Resonanz. Wenn die Störfunktion selbst homogene Lösung ist, dann erzeugt der Standard-Ansatz eine $0$ auf der linken Seite.',
+          3: 'Richtig — einfache Wurzel, Multiplizität 1, Ansatz $\\cdot x^1$. Die Regel ist konsistent mit $x^{\\text{Multiplizität}}$.',
+        },
+      ),
+    ],
+
+    // ── [4] Allgemeine Lösung ──────────────────────────────────────────────
+    4: [
+      mc(
+        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Die allgemeine Lösung von $y\'\' - 3y\' + 2y = 6$ lautet:',
+        [
+          '$y = C_1 e^{x} + C_2 e^{2x} + 3$',
+          '$y = C_1 e^{x} + C_2 e^{2x}$',
+          '$y = 3$',
+          '$y = C_1 e^{-x} + C_2 e^{-2x} + 3$',
+        ],
+        0,
+        `**Ansatz:** Allgemeine Lösung = homogene Lösung $y_h$ + beliebige Partikulärlösung $y_p$.
+
+**Rechnung:** - Homogen: $\\lambda^2-3\\lambda+2=(\\lambda-1)(\\lambda-2)=0$ → $\\lambda=1,2$ → $y_h=C_1e^x+C_2e^{2x}$. - Partikulär: Störung konstant, Ansatz $y_p=A$ (da $\\lambda=0$ keine Wurzel). $0+0+2A=6$ → $A=3$, also $y_p=3$. - Gesamt: $y=C_1e^x+C_2e^{2x}+3$.
+
+**Probe:** $y'=C_1e^x+2C_2e^{2x}$, $y''=C_1e^x+4C_2e^{2x}$. $y''-3y'+2y=(1-3+2)C_1e^x+(4-6+2)C_2e^{2x}+0-0+6=0+0+6=6$ ✓.
+
+**Typischer Fehler:** Partikulärlösung weglassen und nur $y_h$ angeben. Dann erfüllt $y$ die homogene DGL, nicht die inhomogene — die rechte Seite 6 fehlt völlig.`,
+        [
+          'Homogene Lösung bestimmen.',
+          'Partikulärlösung für konstante Störung: $y_p=A$.',
+          'Gesamt: $y=y_h+y_p$.',
+        ],
+        {
+          1: "Die Partikulärlösung fehlt. Diese Form löst nur die homogene DGL $y''-3y'+2y=0$, nicht die inhomogene mit rechter Seite $6$. Bei $y=y_h$ ergibt das Einsetzen $0$, nicht $6$.",
+          2: 'Das ist nur die Partikulärlösung allein, ohne die zwei Integrationskonstanten der homogenen Lösung. Eine DGL 2. Ordnung braucht **zwei** freie Konstanten für die Anfangsbedingungen.',
+          3: 'Falsche Vorzeichen im Exponenten. Aus $(\\lambda-1)(\\lambda-2)=0$ folgt $\\lambda=+1, +2$, nicht $-1, -2$. Prüfe die Faktorisierung.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Für $y\'\' + y = 2$ lautet $y_h = C_1\\cos x + C_2\\sin x$ und $y_p = 2$. Wie viele freie Konstanten enthält die allgemeine Lösung?',
+        2, 0, '',
+        `**Ansatz:** Die Anzahl freier Konstanten in der allgemeinen Lösung einer linearen DGL n-ter Ordnung ist immer $n$ — unabhängig davon, ob die DGL homogen oder inhomogen ist. Die Partikulärlösung bringt keine zusätzlichen Konstanten, weil sie fest gewählt ist.
+
+**Rechnung:** DGL ist 2. Ordnung → genau 2 Konstanten in $y_h$, keine in $y_p$. Also $y=C_1\\cos x+C_2\\sin x+2$ hat **2** freie Konstanten ($C_1, C_2$).
+
+**Probe:** Ein AWP mit $y(0)$ und $y'(0)$ liefert genau 2 Bedingungen, passend zu 2 Konstanten — eindeutig lösbar.
+
+**Typischer Fehler:** Die Partikulärlösung als weitere Konstante zählen ("2 aus $y_h$ + 1 aus $y_p = 3$"). Falsch: $y_p=2$ ist ein fester Zahlenwert, keine freie Konstante.`,
+        [
+          'Ordnung der DGL bestimmt die Anzahl freier Konstanten.',
+          'Partikulärlösung enthält keine freien Konstanten.',
+          'Zähle nur $C_1, C_2, \\dots$ in $y_h$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Wenn $y_{p,1}$ und $y_{p,2}$ zwei verschiedene Partikulärlösungen derselben inhomogenen DGL sind, ist ihre Differenz $y_{p,1}-y_{p,2}$ eine Lösung der homogenen DGL.',
+        true,
+        `**Ansatz:** Linearität: Für linearen Differentialoperator $L$ gilt $L[y_1-y_2]=L[y_1]-L[y_2]$.
+
+**Rechnung:** Aus $L[y_{p,1}]=q$ und $L[y_{p,2}]=q$ folgt $L[y_{p,1}-y_{p,2}]=q-q=0$. Also ist $y_{p,1}-y_{p,2}$ Lösung der homogenen Gleichung. Konsequenz: Jede weitere Partikulärlösung unterscheidet sich von einer gegebenen nur durch einen homogenen Anteil — und kann daher durch Neubelegung von $C_1, C_2$ absorbiert werden. Die allgemeine Lösung $y=y_h+y_p$ ist eindeutig (im Sinne der Lösungsmenge), auch wenn $y_p$ nicht eindeutig ist.
+
+**Probe:** Beispiel $y''+y=2$: $y_{p,1}=2$ und $y_{p,2}=2+\\cos x$ sind beide partikulär (da $\\cos x$ homogene Lösung). Differenz: $-\\cos x$ — homogene Lösung ✓.
+
+**Typischer Fehler:** Glauben, es gäbe genau eine Partikulärlösung. In Wahrheit ist $y_p$ nur bis auf eine homogene Lösung bestimmt — daher wählt man den *einfachsten* Ansatz-Typ.`,
+        [
+          'Linearität von $L$.',
+          '$L[y_1-y_2]=L[y_1]-L[y_2]$.',
+          'Wenn $L[y_1]=L[y_2]=q$, dann $L[y_1-y_2]=0$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Ordne DGL und allgemeine Lösung zu.',
+        [
+          { left: '$y\'\' + y = 0$', right: '$y = C_1\\cos x + C_2\\sin x$' },
+          { left: '$y\'\' + y = 4$', right: '$y = C_1\\cos x + C_2\\sin x + 4$' },
+          { left: '$y\'\' - y = e^{2x}$', right: '$y = C_1 e^{x} + C_2 e^{-x} + \\tfrac{1}{3}e^{2x}$' },
+          { left: '$y\'\' - 2y\' + y = 0$', right: '$y = (C_1 + C_2 x) e^{x}$' },
+        ],
+        `**Ansatz:** Für jede DGL: homogene Lösung bestimmen (Char. Gl.), partikuläre Lösung per Ansatz finden, dann $y_h+y_p$.
+
+**Rechnung:** - $y''+y=0$: $\\lambda=\\pm i$ → $y_h$. - $y''+y=4$: wie oben, $y_p=4$ (Konstante). - $y''-y=e^{2x}$: $\\lambda=\\pm 1$, $y_p=Ae^{2x}$, $4A-A=1\\cdot e^{2x}$ aus Koeffizienten → $3A=1$ → $A=\\tfrac{1}{3}$. - $y''-2y'+y=0$: $\\lambda=1$ doppelt → $(C_1+C_2x)e^x$.
+
+**Probe:** Jede Lösung erfüllt die DGL, was man durch Einsetzen prüfen kann.
+
+**Typischer Fehler:** Bei Doppelwurzel den $x$-Faktor vergessen: $y=(C_1+C_2)e^x$ statt $(C_1+C_2x)e^x$. Dann nur eine effektive Konstante — die zweite Bedingung im AWP ist nicht erfüllbar.`,
+        [
+          'Homogene Lösung zuerst.',
+          'Bei Doppelwurzel: $x$-Faktor.',
+          'Partikulärlösung je nach Störterm.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Sortiere die Schritte zur Bestimmung der allgemeinen Lösung einer inhomogenen linearen DGL 2. Ordnung.',
+        [
+          'Charakteristische Gleichung $\\lambda^2+p\\lambda+q=0$ aufstellen',
+          'Wurzeln $\\lambda_1, \\lambda_2$ bestimmen und homogene Lösung $y_h$ aufschreiben',
+          'Ansatz für partikuläre Lösung $y_p$ nach Typ der Störfunktion wählen',
+          'Resonanz prüfen und Ansatz ggf. mit $x$ oder $x^2$ multiplizieren',
+          'Ansatz einsetzen und Koeffizienten berechnen',
+          'Allgemeine Lösung zusammensetzen: $y = y_h + y_p$',
+        ],
+        [0, 1, 2, 3, 4, 5],
+        `**Ansatz:** Standard-Workflow: homogen zuerst, dann partikulär mit Resonanzcheck, dann summieren. Diese Reihenfolge ist prüfungskritisch.
+
+**Rechnung:** - Schritt 1–2: homogen. - Schritt 3–4: Ansatzwahl mit Resonanzcheck. - Schritt 5: Koeffizienten. - Schritt 6: Summe.
+
+**Probe:** Am Ende durch Einsetzen verifizieren, dass $y$ die DGL erfüllt.
+
+**Typischer Fehler:** Resonanzcheck nach hinten schieben oder vergessen. Das erzeugt später Widersprüche beim Koeffizientenvergleich.`,
+        [
+          'Homogene Lösung baut das Fundament.',
+          'Resonanzcheck ist Teil der Ansatzwahl.',
+          'Zum Schluss summieren.',
+        ],
+      ),
+    ],
+
+    // ── [5] AWP bei 2. Ordnung ────────────────────────────────────────────
+    5: [
+      ni(
+        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] Gegeben $y\'\' - y = 0$ mit $y(0) = 3$ und $y\'(0) = 1$. Berechne $C_1$ in der Lösung $y = C_1 e^{x} + C_2 e^{-x}$.',
+        2, 0.001, '',
+        `**Ansatz:** Zwei Bedingungen für zwei Konstanten. System aus $y(0)$ und $y'(0)$ aufstellen, lösen.
+
+**Rechnung:** $y(0)=C_1+C_2=3$. $y'(x)=C_1e^x-C_2e^{-x}$, $y'(0)=C_1-C_2=1$. Addition: $2C_1=4$ → $C_1=2$, dann $C_2=1$.
+
+**Probe:** $y=2e^x+e^{-x}$: $y(0)=2+1=3$ ✓, $y'(0)=2-1=1$ ✓.
+
+**Typischer Fehler:** Das Gleichungssystem falsch aufstellen, etwa $y'(0)=C_1+C_2$ statt $C_1-C_2$. Ableitung sauber: $\\frac{d}{dx}e^{-x}=-e^{-x}$ beachten!`,
+        [
+          "$y(0)=C_1+C_2$ und $y'(0)=C_1-C_2$.",
+          'Zwei Gleichungen für zwei Unbekannte.',
+          'Addition eliminiert $C_2$: $2C_1=4$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] Welche Aussage zum AWP bei DGL 2. Ordnung ist RICHTIG?',
+        [
+          'Zwei Anfangsbedingungen sind nötig, um beide Konstanten $C_1, C_2$ eindeutig zu bestimmen.',
+          'Eine einzige Anfangsbedingung $y(0)$ reicht immer aus.',
+          'Die Anfangsbedingungen werden auf die Partikulärlösung angewendet, nicht auf die Gesamtlösung.',
+          'Bei Doppelwurzel reicht eine Anfangsbedingung.',
+        ],
+        0,
+        `**Ansatz:** Eine lineare DGL $n$-ter Ordnung hat $n$ freie Konstanten, benötigt also $n$ Bedingungen. Bei 2. Ordnung: genau **zwei** Bedingungen, typisch $y(x_0)$ und $y'(x_0)$.
+
+**Rechnung:** Die Bedingungen werden auf die **Gesamtlösung** $y=y_h+y_p$ angewandt, nicht nur auf $y_h$ oder $y_p$. Grund: nur die Gesamtlösung beschreibt den realen Verlauf; $y_h$ hätte falsche Anfangswerte.
+
+**Probe:** Standardbeispiel: Feder-Masse-System mit Anfangsauslenkung $y(0)=y_0$ und Anfangsgeschwindigkeit $y'(0)=v_0$ — zwei physikalische Messgrößen, zwei mathematische Bedingungen.
+
+**Typischer Fehler:** Bedingungen nur auf $y_h$ anwenden und $y_p$ dabei vergessen. Dann passt der Funktionswert bei $x=0$ nicht zur Realität.`,
+        [
+          'Ordnung der DGL = Anzahl nötiger Bedingungen.',
+          'Hier 2. Ordnung → 2 Bedingungen.',
+          'Anwendung auf Gesamtlösung $y=y_h+y_p$.',
+        ],
+        {
+          1: 'Eine einzige Bedingung lässt die zweite Konstante unbestimmt — die Lösung ist dann nicht eindeutig. Auch bei 1. Ordnung braucht man *eine* Bedingung (passend zur Ordnung); bei 2. Ordnung sind es *zwei*.',
+          2: 'Die Bedingungen müssen auf die Gesamtlösung $y=y_h+y_p$ angewandt werden. Die Partikulärlösung allein enthält keine freien Konstanten, sodass das Einsetzen keinen Parameter festlegt.',
+          3: 'Auch bei Doppelwurzel hat die Lösung $(C_1+C_2 x)e^{\\lambda x}$ zwei freie Konstanten. Entsprechend sind zwei Bedingungen nötig, auch hier.',
+        },
+      ),
+      tf(
+        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] Die Anfangsbedingungen $y(0)=0$ und $y(1)=1$ reichen ebenfalls aus, um die zwei Konstanten einer DGL 2. Ordnung eindeutig zu bestimmen.',
+        false,
+        `**Ansatz:** Unterscheide **Anfangswertproblem (AWP)** und **Randwertproblem (RWP)**. AWP: beide Bedingungen am gleichen $x_0$, meist $y(x_0)$ und $y'(x_0)$. RWP: Bedingungen an zwei verschiedenen Stellen.
+
+**Rechnung:** $y(0)=0$ und $y(1)=1$ ist ein **Randwertproblem** (zwei verschiedene $x$-Werte, beide am Funktionswert, nicht an der Ableitung). RWP sind lösbar oder auch nicht — nicht immer eindeutig. Beispiel: $y''+\\pi^2 y=0$ mit $y(0)=0$, $y(1)=0$ hat unendlich viele Lösungen ($y=C\\sin(\\pi x)$ für beliebiges $C$). Die Aussage „reichen ebenfalls aus" ist also falsch — RWP sind keine direkten AWP-Ersatz.
+
+**Probe:** Standard-AWP: $y(0)=a$, $y'(0)=b$ — immer eindeutig lösbar (Existenz- und Eindeutigkeitssatz). RWP: Abhängig von Eigenwerten der DGL.
+
+**Typischer Fehler:** Zwei Bedingungen sofort als "reicht aus" werten, ohne zu prüfen, an welchen Stellen sie gelten. An **gleicher** Stelle (eine Funktionswert, eine Ableitung) = AWP, eindeutig. An **verschiedenen** Stellen = RWP, nicht immer eindeutig.`,
+        [
+          'AWP vs. RWP unterscheiden.',
+          'AWP: beide Bedingungen bei $x_0$, eine Funktionswert, eine Ableitung.',
+          'RWP: Bedingungen an zwei verschiedenen Stellen.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] Sortiere die Schritte zur Lösung eines AWP 2. Ordnung.',
+        [
+          'Allgemeine Lösung bestimmen: $y(x) = y_h(x) + y_p(x)$',
+          'Ableitung $y\'(x)$ bilden',
+          'Anfangswerte $y(x_0)$ und $y\'(x_0)$ einsetzen — zwei Gleichungen entstehen',
+          'Das $2 \\times 2$-Gleichungssystem nach $C_1$ und $C_2$ auflösen',
+          'Lösung mit konkreten Werten für $C_1, C_2$ angeben',
+          'Probe: Anfangswerte einsetzen und DGL verifizieren',
+        ],
+        [0, 1, 2, 3, 4, 5],
+        `**Ansatz:** Standard-Workflow AWP: erst allgemein, dann Bedingungen einsetzen, dann auflösen.
+
+**Rechnung:** - Schritt 1: $y=y_h+y_p$. - Schritt 2: Ableitung. - Schritt 3: Bedingungen einsetzen → 2 Gleichungen. - Schritt 4: $2\\times 2$-LGS lösen. - Schritt 5: konkrete Lösung. - Schritt 6: Probe.
+
+**Probe:** Am Ende sowohl $y(x_0)$ als auch $y'(x_0)$ prüfen, zusätzlich die DGL selbst.
+
+**Typischer Fehler:** Bedingungen einsetzen vor $y_p$ dazuaddiert — dann ist das System falsch parametrisiert.`,
+        [
+          'Allgemeine Lösung inkl. $y_p$ ist die Basis.',
+          "Ableitung $y'$ für die zweite Bedingung nötig.",
+          'Probe absichert die Konstanten.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] AWP: $y\'\' + 4y = 0$, $y(0) = 2$, $y\'(0) = 6$. Berechne $C_2$ in $y = C_1\\cos(2x) + C_2\\sin(2x)$.',
+        3, 0.001, '',
+        `**Ansatz:** Zwei Bedingungen aufstellen, dann auflösen.
+
+**Rechnung:** $y(0)=C_1\\cdot 1+C_2\\cdot 0=C_1=2$ → $C_1=2$. $y'(x)=-2C_1\\sin(2x)+2C_2\\cos(2x)$, $y'(0)=2C_2=6$ → $C_2=3$.
+
+**Probe:** $y=2\\cos(2x)+3\\sin(2x)$: $y(0)=2$ ✓, $y'(x)=-4\\sin(2x)+6\\cos(2x)$, $y'(0)=6$ ✓. Auch DGL: $y''=-8\\cos(2x)-12\\sin(2x)$, $y''+4y=-8\\cos-12\\sin+8\\cos+12\\sin=0$ ✓.
+
+**Typischer Fehler:** Faktor $2$ beim Ableiten von $\\sin(2x)$ vergessen. Dann $y'(0)=C_2$ statt $2C_2$ und $C_2=6$ (falsch).`,
+        [
+          'Kettenregel: $\\frac{d}{dx}\\sin(2x)=2\\cos(2x)$.',
+          "$y'(0)=2C_2$, da $\\cos(0)=1$, $\\sin(0)=0$.",
+          '$2C_2=6$ → $C_2=3$.',
+        ],
+      ),
+    ],
+  },
 }

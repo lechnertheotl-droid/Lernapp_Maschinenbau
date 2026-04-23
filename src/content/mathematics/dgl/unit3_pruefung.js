@@ -573,6 +573,10 @@ $$y'' + ay' + by = q(x)$$
 
 **Schritt 4 — AWP:** Konstanten $C_1, C_2$ aus $y(x_0)$ und $y'(x_0)$ bestimmen.`,
       },
+      {
+        id: 'dgl-3-2-s1b', type: 'visualization', title: 'Feder-Masse-Dämpfer — Wurzeltypen live',
+        visualizationId: 'spring-mass-damper', params: {},
+      },
       { id: 'dgl-3-2-s2', type: 'exercise', title: 'Aufgabe 1 — Char. Gleichung', exerciseRef: 'ex-dgl-3-2-a' },
       { id: 'dgl-3-2-s3', type: 'exercise', title: 'Aufgabe 2 — Doppelwurzel', exerciseRef: 'ex-dgl-3-2-b' },
       { id: 'dgl-3-2-s4', type: 'exercise', title: 'Aufgabe 3 — Komplexe Wurzeln', exerciseRef: 'ex-dgl-3-2-c' },
