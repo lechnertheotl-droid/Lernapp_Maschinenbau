@@ -104,7 +104,7 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Lessons | 226 | — | — |
 | Aufgaben (gesamt) | 3195 | 4520+ (≥ 20/Lesson) | 🟡 |
 | Aufgaben mit 4-Block | 1295 (41 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 1248 / 1248 (100 %) | 100 % | ✅ |
+| MC mit wrongAnswerExplanations | 1251 / 1251 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 196 / 1134 (17 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -201,7 +201,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 - Lessons: 18
 - Aufgaben: **363** (manuell: 66 · supplemental: 297)
 - 4-Block: 226/363 (62 %) 🟡
-- MC-wAE: 137/137 (100 %) ✅
+- MC-wAE: 140/140 (100 %) ✅
 - Sub-Goals: 37/87 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
@@ -244,7 +244,7 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
-| `trig-1-0` Winkel-Intuition (Einstieg) | 3 | 3/3 | 20 | 5/4/4/4/3 | 20/20 | 5/5 | ✅ | — |
+| `trig-1-0` Winkel-Intuition (Einstieg) | 3 | 3/3 | 20 | 8/4/4/2/2 | 20/20 | 8/8 | ✅ | — |
 | `trig-1-1` Winkel und ihre Maße | 4 | 0/4 | 11 | 5/3/1/1/1 | 2/11 | 5/5 | ✅ | +4 Goal, +9 4B |
 | `trig-1-2` Rechtwinkliges Dreieck | 3 | 0/3 | 11 | 6/2/1/1/1 | 0/11 | 6/6 | ✅ | +3 Goal, +11 4B |
 | `trig-1-3` Die Grundwerte | 4 | 0/4 | 12 | 8/2/1/1/0 | 2/12 | 8/8 | ✅ | +4 Goal, +10 4B |
