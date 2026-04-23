@@ -58,6 +58,67 @@ Keine Aufgabe wird akzeptiert, die nicht **alle** Punkte erfüllt:
 - **Typen-Rotation pro Lesson:** Mischung aus mc/ni/tf/matching/sorting — nicht 5× MC in Folge.
 - **100 % manuell, fachlich korrekt, konkret** — keine Platzhalter, keine generischen Templates.
 - **Visualisierungen einbauen, wenn sie dem Stoff helfen** (siehe nächster Abschnitt).
+- **Pedagogy-Tag** (wenn die Lesson einen `blueprint` trägt — gilt für alle algebra-Lessons): Jede Aufgabe bekommt ein Feld `pedagogy: { stage, subGoal, uses }`. `stage` aus `PEDAGOGY_STAGES` (`recognize` / `apply-guided` / `apply-independent` / `error-analysis` / `transfer`), `subGoal` als Index in `lesson.subGoals`, `uses` als Liste von Konzept-IDs aus dem Lesson-Blueprint oder aus `blueprint.prerequisites`. Der Validator erzwingt das hart für Topics in `BLUEPRINT_ENFORCED_TOPICS`.
+
+---
+
+## Lesson-Blueprint: Der didaktische Bauplan pro Lesson
+
+Jede Lesson eines Topics mit Blueprint (Start: algebra, weitere folgen) trägt ein Feld `blueprint` mit dem vollständigen Bauplan:
+
+```js
+blueprint: {
+  prerequisites: [{ lessonId: 'alg-0-2', concepts: ['bruch-erweitern'] }, ...],
+  concepts: [
+    // Reihenfolge = didaktische Einführungsreihenfolge.
+    // dependsOn darf nur auf frühere concepts ODER prerequisites.concepts verweisen.
+    { id: 'log-def',       title: '$\\log_b(x) = y \\iff b^y = x$',      dependsOn: [] },
+    { id: 'log-produkt',   title: '$\\ln(ab) = \\ln a + \\ln b$',         dependsOn: ['log-def'] },
+    { id: 'log-basiswechsel', title: '$\\log_b x = \\ln x / \\ln b$',     dependsOn: ['log-def', 'log-potenz'] },
+  ],
+  subGoalConcepts: { 0: ['log-def'], 1: ['log-produkt'], 2: ['log-basiswechsel'] },
+  taskPlan: [
+    // Jede Zeile definiert mindestens `qty` Aufgaben mit dieser Sub-Goal×Stage×Type-Kombination.
+    // `uses` listet die Konzept-IDs, die getestet werden MÜSSEN — zum Einsatzzeitpunkt eingeführt.
+    { subGoal: 0, stage: 'recognize', type: 'true-false', uses: ['log-def'], qty: 1, note: 'Optional' },
+    { subGoal: 1, stage: 'apply-independent', type: 'number-input', uses: ['log-produkt'], qty: 2 },
+    { subGoal: 2, stage: 'transfer', type: 'number-input', uses: ['log-basiswechsel', 'log-produkt'], qty: 1 },
+  ],
+}
+```
+
+**Invarianten** (vom Validator geprüft):
+
+1. `concepts[i].dependsOn` ⊆ `{concepts[0..i-1].id}` ∪ (alle `prerequisites[*].concepts`).
+2. `subGoalConcepts[i]` referenziert nur Konzepte aus `concepts`, und jedes `concept` kommt in mind. einem Sub-Goal vor.
+3. `taskPlan[k].uses` ⊆ Konzepte des eigenen Sub-Goals und aller früheren Sub-Goals + prerequisites.
+4. Jede Exercise des Topics trägt `pedagogy: { stage, subGoal, uses }` mit denselben Regeln.
+
+**STATUS.md rendert Blueprint-Lessons als Matrix-Card:** jede `taskPlan`-Zeile erscheint mit ✅/🟡/🔴 (erfüllt / teilweise / offen). Die Card ist der komplette Bauplan — was fehlt, ist direkt ablesbar.
+
+**So schreibst du eine neue blueprintsierte Aufgabe:**
+
+```js
+import { mc, ni, tag } from './_helpers'
+
+export const algebraSubGoalTasks = {
+  'alg-1-3': {
+    0: [
+      tag(
+        ni(
+          'Sub-Goal "Definition: $\\log_b x = y \\iff b^y = x$": Berechne $\\log_2 32$.',
+          5, 0, '', '**Ansatz:**…\n\n**Rechnung:**…\n\n**Probe:**…\n\n**Typischer Fehler:**…',
+          ['Welche Basis?', 'Schreibe als $2^?=32$', 'Zähle die Faktoren'],
+        ),
+        { stage: 'apply-independent', subGoal: 0, uses: ['log-def'] },
+      ),
+      // weitere Aufgaben …
+    ],
+  },
+}
+```
+
+`pedagogy` kann alternativ als letzter Positions-Parameter an `mc/ni/tf/matching/sorting` übergeben werden — der `tag(...)`-Wrapper ist nur bequemer, wenn man vorhandene Calls schrittweise nachzieht.
 
 ---
 

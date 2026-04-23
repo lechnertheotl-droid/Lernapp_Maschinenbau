@@ -13,6 +13,153 @@
  */
 
 import { getAllTopics } from '../src/content/index.js'
+import { BLUEPRINT_ENFORCED_TOPICS, PEDAGOGY_STAGES } from '../src/content/curriculum.js'
+
+const VALID_EXERCISE_TYPES = new Set([
+  'multiple-choice',
+  'number-input',
+  'true-false',
+  'matching',
+  'sorting',
+])
+
+/**
+ * Validiert den Blueprint einer Lesson gegen die Invarianten aus curriculum.js.
+ * Sammelt Fehler in `bucket`. Rückgabe: Set der "zum Zeitpunkt X" eingeführten
+ * Konzept-IDs je Sub-Goal — wird für die Exercise-Validierung wiederverwendet.
+ */
+function validateBlueprint(lesson, lp, bucket) {
+  const bp = lesson.blueprint
+  if (!bp || typeof bp !== 'object') {
+    bucket.push(`${lp}: Blueprint-Pflicht — lesson.blueprint fehlt (Topic ist in BLUEPRINT_ENFORCED_TOPICS).`)
+    return { availableBySubGoal: new Map(), allConcepts: new Set() }
+  }
+
+  const prereqConcepts = new Set()
+  if (Array.isArray(bp.prerequisites)) {
+    for (const p of bp.prerequisites) {
+      if (Array.isArray(p?.concepts)) for (const c of p.concepts) prereqConcepts.add(c)
+    }
+  }
+
+  const conceptList = Array.isArray(bp.concepts) ? bp.concepts : []
+  if (conceptList.length === 0) {
+    bucket.push(`${lp}: blueprint.concepts muss ein nicht-leeres Array sein.`)
+  }
+
+  const conceptIds = new Set()
+  const seenSoFar = new Set([...prereqConcepts])
+  for (let i = 0; i < conceptList.length; i++) {
+    const c = conceptList[i]
+    if (!c || typeof c.id !== 'string' || !c.id.trim()) {
+      bucket.push(`${lp}: blueprint.concepts[${i}] braucht ein nicht-leeres String-Feld 'id'.`)
+      continue
+    }
+    if (conceptIds.has(c.id)) {
+      bucket.push(`${lp}: blueprint.concepts — doppelte Konzept-ID "${c.id}".`)
+    }
+    if (typeof c.title !== 'string' || !c.title.trim()) {
+      bucket.push(`${lp}: blueprint.concepts[${i}] (${c.id}) braucht ein Feld 'title'.`)
+    }
+    const deps = Array.isArray(c.dependsOn) ? c.dependsOn : []
+    for (const dep of deps) {
+      if (!seenSoFar.has(dep)) {
+        bucket.push(`${lp}: Konzept "${c.id}" hängt von "${dep}" ab — das ist weder vorher eingeführt noch in prerequisites.concepts.`)
+      }
+    }
+    conceptIds.add(c.id)
+    seenSoFar.add(c.id)
+  }
+
+  const subGoals = Array.isArray(lesson.subGoals) ? lesson.subGoals : []
+  const sgc = bp.subGoalConcepts ?? {}
+  const coveredConcepts = new Set()
+  const availableBySubGoal = new Map()
+  const runningAvailable = new Set([...prereqConcepts])
+  for (let i = 0; i < subGoals.length; i++) {
+    const raw = sgc[i] ?? sgc[String(i)]
+    if (!Array.isArray(raw)) {
+      bucket.push(`${lp}: blueprint.subGoalConcepts[${i}] fehlt oder ist kein Array.`)
+      availableBySubGoal.set(i, new Set(runningAvailable))
+      continue
+    }
+    for (const cid of raw) {
+      if (!conceptIds.has(cid)) {
+        bucket.push(`${lp}: subGoalConcepts[${i}] referenziert unbekanntes Konzept "${cid}".`)
+      } else {
+        coveredConcepts.add(cid)
+        runningAvailable.add(cid)
+      }
+    }
+    availableBySubGoal.set(i, new Set(runningAvailable))
+  }
+  for (const cid of conceptIds) {
+    if (!coveredConcepts.has(cid)) {
+      bucket.push(`${lp}: Konzept "${cid}" wird von keinem Sub-Goal abgedeckt.`)
+    }
+  }
+
+  const taskPlan = Array.isArray(bp.taskPlan) ? bp.taskPlan : []
+  if (taskPlan.length === 0) {
+    bucket.push(`${lp}: blueprint.taskPlan muss ein nicht-leeres Array sein.`)
+  }
+  for (let k = 0; k < taskPlan.length; k++) {
+    const row = taskPlan[k]
+    const rp = `${lp}/taskPlan[${k}]`
+    if (!Number.isInteger(row?.subGoal) || row.subGoal < 0 || row.subGoal >= subGoals.length) {
+      bucket.push(`${rp}: subGoal ${row?.subGoal} außerhalb [0, ${subGoals.length - 1}].`)
+      continue
+    }
+    if (!PEDAGOGY_STAGES.includes(row.stage)) {
+      bucket.push(`${rp}: stage "${row.stage}" ungültig (erlaubt: ${PEDAGOGY_STAGES.join(', ')}).`)
+    }
+    if (!VALID_EXERCISE_TYPES.has(row.type)) {
+      bucket.push(`${rp}: type "${row.type}" ungültig.`)
+    }
+    const qty = row.qty ?? 1
+    if (!Number.isInteger(qty) || qty < 1) {
+      bucket.push(`${rp}: qty muss ganzzahlig ≥ 1 sein (${qty}).`)
+    }
+    const avail = availableBySubGoal.get(row.subGoal) ?? new Set()
+    const uses = Array.isArray(row.uses) ? row.uses : []
+    if (uses.length === 0) {
+      bucket.push(`${rp}: uses ist leer — jede taskPlan-Zeile muss mindestens ein Konzept testen.`)
+    }
+    for (const u of uses) {
+      if (!avail.has(u)) {
+        bucket.push(`${rp}: uses "${u}" ist zum Zeitpunkt Sub-Goal ${row.subGoal} noch nicht eingeführt (weder in früheren subGoalConcepts noch in prerequisites).`)
+      }
+    }
+  }
+
+  return { availableBySubGoal, allConcepts: seenSoFar }
+}
+
+function validateExercisePedagogy(ex, lesson, ep, availableBySubGoal, bucket) {
+  const p = ex?.pedagogy
+  if (!p || typeof p !== 'object') {
+    bucket.push(`${ep}: pedagogy fehlt — Topic ist blueprint-enforced, jede Aufgabe braucht { stage, subGoal, uses }.`)
+    return
+  }
+  if (!PEDAGOGY_STAGES.includes(p.stage)) {
+    bucket.push(`${ep}: pedagogy.stage "${p.stage}" ungültig (erlaubt: ${PEDAGOGY_STAGES.join(', ')}).`)
+  }
+  const sgLen = Array.isArray(lesson.subGoals) ? lesson.subGoals.length : 0
+  if (!Number.isInteger(p.subGoal) || p.subGoal < 0 || p.subGoal >= sgLen) {
+    bucket.push(`${ep}: pedagogy.subGoal ${p.subGoal} außerhalb [0, ${sgLen - 1}].`)
+    return
+  }
+  const avail = availableBySubGoal.get(p.subGoal) ?? new Set()
+  const uses = Array.isArray(p.uses) ? p.uses : []
+  if (uses.length === 0) {
+    bucket.push(`${ep}: pedagogy.uses ist leer — jede Aufgabe muss mind. ein Konzept testen.`)
+  }
+  for (const u of uses) {
+    if (!avail.has(u)) {
+      bucket.push(`${ep}: pedagogy.uses "${u}" ist zum Zeitpunkt Sub-Goal ${p.subGoal} noch nicht eingeführt.`)
+    }
+  }
+}
 
 const topics = getAllTopics()
 
@@ -180,16 +327,33 @@ for (const topic of topics) {
         }
       }
 
+      // Blueprint-Pflicht für Topics in BLUEPRINT_ENFORCED_TOPICS.
+      const enforceBlueprint = BLUEPRINT_ENFORCED_TOPICS.includes(topic.id)
+      let availableBySubGoal = new Map()
+      if (enforceBlueprint) {
+        const res = validateBlueprint(lesson, lp, errors)
+        availableBySubGoal = res.availableBySubGoal
+      }
+
       // Exercise-Level-Checks (zusätzlich zu den Runtime-Checks in
       // src/content/index.js getContentQualityIssues()). Hier prüfen wir
       // Felder, die dort noch nicht geprüft werden, um den Build früh zu
       // brechen statt erst beim Laden der App.
+      const lessonExerciseIds = new Set(
+        (lesson.steps ?? [])
+          .filter((s) => s.type === 'exercise' || s.type === 'mastery-check')
+          .map((s) => s.exerciseRef)
+          .filter(Boolean)
+      )
       const allExercises = [
         ...Object.values(unit.exercises ?? {}),
         ...Object.values(lesson.exercises ?? {}),
       ]
       for (const ex of allExercises) {
         if (ex.lessonId && ex.lessonId !== lesson.id) continue
+        // Für enforced topics: nur Aufgaben dieser Lesson prüfen (über Step-Refs);
+        // vermeidet False-Positives bei unit-geteilten Exercises.
+        if (enforceBlueprint && !lessonExerciseIds.has(ex.id)) continue
         const ep = `${lp}/exercise[${ex.id ?? '?'}]`
         if (Array.isArray(ex.hints) && ex.hints.length < 3) {
           warnings.push(`${ep}: nur ${ex.hints.length} Hint(s), empfohlen ≥ 3`)
@@ -202,6 +366,10 @@ for (const topic of topics) {
           )
         }
         checkExerciseDollars(ex, ep, errors)
+
+        if (enforceBlueprint) {
+          validateExercisePedagogy(ex, lesson, ep, availableBySubGoal, errors)
+        }
       }
     }
   }

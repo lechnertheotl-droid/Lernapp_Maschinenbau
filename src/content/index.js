@@ -37,7 +37,7 @@ import { integralrechnungSubGoalTasks } from './subgoal_tasks/integralrechnung'
 import { technischeMechanikSubGoalTasks } from './subgoal_tasks/technische_mechanik'
 import { festigkeitslehreSubGoalTasks } from './subgoal_tasks/festigkeitslehre'
 import { differentialgleichungenSubGoalTasks } from './subgoal_tasks/differentialgleichungen'
-import { MIN_EXERCISES_PER_LESSON, MIN_TASKS_PER_SUB_GOAL, TOPIC_GUIDES } from './curriculum'
+import { MIN_EXERCISES_PER_LESSON, MIN_TASKS_PER_SUB_GOAL, TOPIC_GUIDES, BLUEPRINT_ENFORCED_TOPICS, PEDAGOGY_STAGES } from './curriculum'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
 const MANUAL_SUPPLEMENTS = {
@@ -462,12 +462,38 @@ export function getAgentTasks() {
         const hasVisualization = (lesson.steps ?? []).some((s) => s.type === 'visualization')
         const recommendedVisualizations = TOPIC_GUIDES[topic.id]?.recommendedVisualizations ?? []
 
+        // Bei Topics mit Blueprint-Zwang: eine Lesson gilt als "braucht
+        // Aufmerksamkeit", solange auch nur eine taskPlan-Zeile nicht mind.
+        // `qty` passende Exercises (stage + subGoal + type + uses) hat.
+        // Vereinfachter Check hier — volle Matrix-Coverage macht generate-status.js.
+        let blueprintIncomplete = false
+        if (lesson.blueprint && Array.isArray(lesson.blueprint.taskPlan)) {
+          for (const row of lesson.blueprint.taskPlan) {
+            const reqUses = new Set(row.uses ?? [])
+            const matches = exercises.filter((ex) => {
+              const p = ex?.pedagogy
+              if (!p) return false
+              if (p.stage !== row.stage) return false
+              if (p.subGoal !== row.subGoal) return false
+              if (ex.type !== row.type) return false
+              const exUses = new Set(p.uses ?? [])
+              for (const u of reqUses) if (!exUses.has(u)) return false
+              return true
+            })
+            if (matches.length < (row.qty ?? 1)) {
+              blueprintIncomplete = true
+              break
+            }
+          }
+        }
+
         const needsAny =
           missing > 0 ||
           subGoalsMissingTasks.length > 0 ||
           fourBlockMissing.length > 0 ||
           mcMissingWae.length > 0 ||
-          (!hasVisualization && recommendedVisualizations.length > 0)
+          (!hasVisualization && recommendedVisualizations.length > 0) ||
+          blueprintIncomplete
         if (!needsAny) continue
 
         // Ziel-Datei: supplements/<topic>.js (Standard) oder subgoal_tasks/<topic>.js (Goal-Tasks)
@@ -484,6 +510,9 @@ export function getAgentTasks() {
         else if (missing > 0 || subGoalsMissingTasks.length > 0) priority = 'medium'
         if (isExamUnit && have < MIN_EXERCISES_PER_LESSON) priority = 'critical'
 
+        const isBlueprintEnforced = BLUEPRINT_ENFORCED_TOPICS.includes(topic.id)
+        const blueprint = lesson.blueprint ?? null
+
         tasks.push({
           topicId: topic.id,
           topicTitle: topic.title,
@@ -491,6 +520,7 @@ export function getAgentTasks() {
           unitTitle: unit.title,
           lessonId: lesson.id,
           lessonTitle: lesson.title,
+          lessonSummary: lesson.summary ?? null,
           isExamUnit,
           have,
           target: MIN_EXERCISES_PER_LESSON,
@@ -505,6 +535,19 @@ export function getAgentTasks() {
           recommendedVisualizations,
           targetFile,
           priority,
+          // Blueprint-Daten für neue Task-Card-Rendering (nur gefüllt, wenn die
+          // Lesson bereits einen Bauplan trägt). generate-status.js nutzt diese
+          // Felder, um die Progressions-Matrix zu rendern.
+          blueprint,
+          isBlueprintEnforced,
+          exercises: exercises.map((ex) => ({
+            id: ex.id,
+            type: ex.type,
+            pedagogy: ex.pedagogy ?? null,
+            subGoalIndex: typeof ex.subGoalIndex === 'number' ? ex.subGoalIndex : null,
+            isGoalTask: Boolean(ex.isGoalTask),
+            isSupplemental: Boolean(ex.isSupplemental),
+          })),
         })
       }
     }

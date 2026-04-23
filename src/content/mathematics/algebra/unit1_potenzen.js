@@ -362,6 +362,53 @@ const lessons_alg_u1 = [
       { label: 'Produkt/Quotient in Klammer: $(xy)^n = x^n y^n$, $(x/y)^n = x^n/y^n$', examRelevance: 'mittel' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-0-4', concepts: ['distributiv', 'aequivalenz'] },
+      ],
+      concepts: [
+        { id: 'potenz-def',       title: '$x^n$ = $n$-fache Multiplikation von $x$',                              dependsOn: [] },
+        { id: 'pot-mult',         title: 'Gleiche Basis Multiplikation: $x^a \\cdot x^b = x^{a+b}$',              dependsOn: ['potenz-def'] },
+        { id: 'pot-div',          title: 'Gleiche Basis Division: $x^a / x^b = x^{a-b}$',                         dependsOn: ['pot-mult'] },
+        { id: 'pot-potenz',       title: 'Potenz einer Potenz: $(x^a)^b = x^{a\\cdot b}$',                        dependsOn: ['potenz-def'] },
+        { id: 'pot-produkt',      title: 'Produkt in Klammer: $(xy)^n = x^n y^n$',                                dependsOn: ['potenz-def'] },
+        { id: 'pot-quotient',     title: 'Quotient in Klammer: $(x/y)^n = x^n/y^n$',                              dependsOn: ['pot-produkt'] },
+        { id: 'pot-null',         title: '$x^0 = 1$ für $x \\neq 0$',                                             dependsOn: ['pot-div'] },
+        { id: 'pot-negativ',      title: '$x^{-n} = 1/x^n$',                                                      dependsOn: ['pot-div'] },
+      ],
+      subGoalConcepts: {
+        0: ['pot-mult', 'pot-div'],
+        1: ['pot-potenz'],
+        2: ['pot-null', 'pot-negativ'],
+        3: ['pot-produkt', 'pot-quotient'],
+      },
+      taskPlan: [
+        // SG 0 — Gleiche Basis
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['pot-mult'],                            qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pot-mult', 'pot-div'],                 qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['pot-mult'],                            qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pot-mult'],                            qty: 1, note: 'Distraktor: Exponenten multipliziert statt addiert' },
+        { subGoal: 0, stage: 'transfer',          type: 'number-input',    uses: ['pot-mult', 'pot-div'],                 qty: 1 },
+        // SG 1 — Potenz einer Potenz
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['pot-potenz'],                          qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pot-potenz'],                          qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['pot-potenz'],                          qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pot-potenz', 'pot-mult'],              qty: 1, note: 'Distraktor: mit Multiplikation-Regel verwechselt' },
+        { subGoal: 1, stage: 'transfer',          type: 'matching',        uses: ['pot-potenz', 'pot-mult'],              qty: 1, note: 'Term ↔ Regel' },
+        // SG 2 — Null- und negativer Exponent
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['pot-null', 'pot-negativ'],             qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pot-negativ'],                         qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['pot-negativ'],                         qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pot-null'],                            qty: 1, note: 'Distraktor: $x^0 = 0$' },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['pot-negativ', 'pot-mult'],             qty: 1 },
+        // SG 3 — Produkt/Quotient in Klammer
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['pot-produkt'],                         qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pot-produkt'],                         qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['pot-produkt'],                         qty: 1, note: '$(2x)^3$ auflösen' },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pot-produkt'],                         qty: 1, note: 'Distraktor: Exponent nur auf Variable' },
+        { subGoal: 3, stage: 'transfer',          type: 'number-input',    uses: ['pot-quotient', 'pot-produkt'],         qty: 1 },
+      ],
+    },
     nextLessonId: 'alg-1-2',
     steps: [
       {
@@ -417,6 +464,46 @@ const lessons_alg_u1 = [
       { label: 'Nenner rational machen: Erweitern mit passender Wurzel löst Wurzeln aus dem Nenner', examRelevance: 'mittel' },
     ],
     prerequisites: ['alg-1-1'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-1-1', concepts: ['pot-potenz', 'pot-mult', 'pot-negativ'] },
+        { lessonId: 'alg-0-2', concepts: ['bruch-erweitern'] },
+      ],
+      concepts: [
+        { id: 'wurzel-bruchpot',  title: '$\\sqrt[n]{x} = x^{1/n}$ — Wurzel als Bruchpotenz',                           dependsOn: [] },
+        { id: 'wurzel-def-bereich', title: 'Definitionsbereich: $\\sqrt{x}$ nur für $x \\geq 0$ in $\\mathbb R$',       dependsOn: ['wurzel-bruchpot'] },
+        { id: 'wurzel-produkt',   title: '$\\sqrt{ab} = \\sqrt a \\cdot \\sqrt b$ (für $a,b \\geq 0$)',                  dependsOn: ['wurzel-bruchpot'] },
+        { id: 'wurzel-quotient',  title: '$\\sqrt{a/b} = \\sqrt a/\\sqrt b$',                                            dependsOn: ['wurzel-produkt'] },
+        { id: 'wurzel-summe-nein', title: '$\\sqrt{a+b} \\neq \\sqrt a + \\sqrt b$ — nicht linear',                      dependsOn: ['wurzel-produkt'] },
+        { id: 'wurzel-vereinfachen', title: 'Quadratzahl-Faktor herausziehen: $\\sqrt{12}=2\\sqrt 3$',                   dependsOn: ['wurzel-produkt'] },
+        { id: 'nenner-rational',  title: 'Nenner rational machen durch Erweitern mit $\\sqrt{\\cdots}$',                 dependsOn: ['wurzel-produkt'] },
+      ],
+      subGoalConcepts: {
+        0: ['wurzel-bruchpot', 'wurzel-def-bereich'],
+        1: ['wurzel-produkt', 'wurzel-quotient', 'wurzel-summe-nein', 'wurzel-vereinfachen'],
+        2: ['nenner-rational'],
+      },
+      taskPlan: [
+        // SG 0 — Wurzel als Bruchpotenz
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['wurzel-bruchpot'],                            qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['wurzel-bruchpot'],                            qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['wurzel-bruchpot'],                            qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['wurzel-def-bereich'],                         qty: 1, note: '$\\sqrt{-4}$ in $\\mathbb R$?' },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['wurzel-bruchpot'],                            qty: 1, note: 'Wurzel ↔ Potenzschreibweise' },
+        // SG 1 — Rechenregeln / Summe-Falle / Vereinfachen
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['wurzel-summe-nein'],                          qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['wurzel-produkt'],                             qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['wurzel-vereinfachen'],                        qty: 2, note: '$\\sqrt{50}$, $\\sqrt{72}$ vereinfachen' },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['wurzel-summe-nein'],                          qty: 1, note: 'Distraktor: Wurzel auf Summe verteilt' },
+        { subGoal: 1, stage: 'transfer',          type: 'sorting',         uses: ['wurzel-produkt', 'wurzel-vereinfachen'],      qty: 1 },
+        // SG 2 — Nenner rational machen
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['nenner-rational'],                            qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['nenner-rational'],                            qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['nenner-rational'],                            qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['nenner-rational'],                            qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['nenner-rational', 'wurzel-vereinfachen'],     qty: 1 },
+      ],
+    },
     nextLessonId: 'alg-1-3',
     steps: [
       {
@@ -477,6 +564,74 @@ $$\\sqrt{50} = \\sqrt{25 \\cdot 2} = 5\\sqrt{2}$$
       { label: 'Exp-Log-Umkehrung: $e^{\\ln x} = x$ (für $x > 0$), $\\ln(e^x) = x$', examRelevance: 'hoch' },
     ],
     prerequisites: ['alg-1-1', 'alg-1-2'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-1-1', concepts: ['pot-mult', 'pot-potenz', 'pot-negativ'] },
+      ],
+      concepts: [
+        { id: 'log-def',          title: '$\\log_b(x) = y \\iff b^y = x$ (für $b>0, b\\neq 1, x>0$)',          dependsOn: [] },
+        { id: 'log-spezialfaelle', title: '$\\ln$ (Basis $e$), $\\log$ (Basis 10), $\\log_2$ (Bits)',          dependsOn: ['log-def'] },
+        { id: 'log-produkt',      title: 'Produktregel $\\ln(ab) = \\ln a + \\ln b$',                          dependsOn: ['log-def'] },
+        { id: 'log-quotient',     title: 'Quotientenregel $\\ln(a/b) = \\ln a - \\ln b$',                      dependsOn: ['log-produkt'] },
+        { id: 'log-potenz',       title: 'Potenzregel $\\ln(a^n) = n \\ln a$',                                 dependsOn: ['log-produkt'] },
+        { id: 'log-basiswechsel', title: 'Basiswechsel $\\log_b x = \\ln x / \\ln b$',                         dependsOn: ['log-def', 'log-potenz'] },
+        { id: 'log-summe-nein',   title: '$\\ln(a+b) \\neq \\ln a + \\ln b$ — keine Linearität',               dependsOn: ['log-produkt'] },
+        { id: 'log-umkehr',       title: '$e^{\\ln x} = x$ und $\\ln(e^x) = x$ — Umkehrfunktions-Identität',   dependsOn: ['log-def'] },
+      ],
+      subGoalConcepts: {
+        0: ['log-def', 'log-spezialfaelle'],
+        1: ['log-produkt'],
+        2: ['log-quotient'],
+        3: ['log-potenz'],
+        4: ['log-basiswechsel'],
+        5: ['log-summe-nein'],
+        6: ['log-umkehr'],
+      },
+      taskPlan: [
+        // SG 0 — Definition
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['log-def'],                              qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['log-def'],                              qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['log-def'],                              qty: 1, note: '$\\log_2 32$' },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['log-def'],                              qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['log-spezialfaelle'],                    qty: 1, note: 'Basis ↔ Anwendungskontext' },
+        // SG 1 — Produktregel
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['log-produkt'],                          qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['log-produkt'],                          qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['log-produkt'],                          qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['log-produkt'],                          qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'number-input',    uses: ['log-produkt'],                          qty: 1 },
+        // SG 2 — Quotientenregel
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['log-quotient'],                         qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['log-quotient'],                         qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['log-quotient', 'log-produkt'],          qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['log-quotient'],                         qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['log-quotient', 'log-produkt'],          qty: 1 },
+        // SG 3 — Potenzregel
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['log-potenz'],                           qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['log-potenz'],                           qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['log-potenz'],                           qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['log-potenz'],                           qty: 1, note: 'Distraktor: Potenz mit Exponent multipliziert' },
+        { subGoal: 3, stage: 'transfer',          type: 'number-input',    uses: ['log-potenz', 'log-produkt'],            qty: 1 },
+        // SG 4 — Basiswechsel
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['log-basiswechsel'],                     qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['log-basiswechsel'],                     qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'number-input',    uses: ['log-basiswechsel'],                     qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['log-basiswechsel'],                     qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'number-input',    uses: ['log-basiswechsel'],                     qty: 1, note: 'Halbwertszeit / Zinseszins' },
+        // SG 5 — Summen-Falle
+        { subGoal: 5, stage: 'recognize',         type: 'true-false',      uses: ['log-summe-nein'],                       qty: 1 },
+        { subGoal: 5, stage: 'apply-guided',      type: 'multiple-choice', uses: ['log-summe-nein'],                       qty: 1 },
+        { subGoal: 5, stage: 'apply-independent', type: 'multiple-choice', uses: ['log-summe-nein'],                       qty: 1, note: 'Aus Alternativ-Umformungen die richtige wählen' },
+        { subGoal: 5, stage: 'error-analysis',    type: 'multiple-choice', uses: ['log-summe-nein'],                       qty: 1, note: 'Distraktor: Summe in Produkt zerlegt' },
+        { subGoal: 5, stage: 'transfer',          type: 'matching',        uses: ['log-summe-nein', 'log-produkt'],        qty: 1, note: 'Erlaubte vs. verbotene Umformung' },
+        // SG 6 — Exp-Log-Umkehrung
+        { subGoal: 6, stage: 'recognize',         type: 'true-false',      uses: ['log-umkehr'],                           qty: 1 },
+        { subGoal: 6, stage: 'apply-guided',      type: 'multiple-choice', uses: ['log-umkehr'],                           qty: 1 },
+        { subGoal: 6, stage: 'apply-independent', type: 'number-input',    uses: ['log-umkehr'],                           qty: 1, note: '$e^x = 5$ lösen' },
+        { subGoal: 6, stage: 'error-analysis',    type: 'multiple-choice', uses: ['log-umkehr'],                           qty: 1 },
+        { subGoal: 6, stage: 'transfer',          type: 'number-input',    uses: ['log-umkehr', 'log-potenz'],             qty: 1 },
+      ],
+    },
     nextLessonId: null,
     steps: [
       {

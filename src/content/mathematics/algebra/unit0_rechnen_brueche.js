@@ -507,6 +507,49 @@ const lessons_alg_u0 = [
       { label: 'Klammerschachtelung von innen nach außen abarbeiten', examRelevance: 'mittel' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [],
+      concepts: [
+        { id: 'prio-basic',        title: 'Vorrangregel: Punkt- vor Strichrechnung',                     dependsOn: [] },
+        { id: 'prio-potenz',       title: 'Potenz- vor Punktrechnung',                                   dependsOn: ['prio-basic'] },
+        { id: 'prio-klammer',      title: 'Klammern überschreiben die Präzedenz (zuerst ausrechnen)',    dependsOn: ['prio-basic'] },
+        { id: 'minus-vorklammer',  title: '$-(a+b) = -a - b$ — Minuszeichen auf alle Summanden',         dependsOn: [] },
+        { id: 'minus-mal-minus',   title: '$(-a)(-b) = +ab$ — Doppel-Minus = Plus',                      dependsOn: ['minus-vorklammer'] },
+        { id: 'klammer-schachtel', title: 'Geschachtelte Klammern: innerste zuerst auflösen',            dependsOn: ['prio-klammer'] },
+      ],
+      subGoalConcepts: {
+        0: ['prio-basic', 'prio-potenz'],
+        1: ['minus-vorklammer'],
+        2: ['minus-mal-minus'],
+        3: ['prio-klammer', 'klammer-schachtel'],
+      },
+      taskPlan: [
+        // SG 0 — Punkt-vor-Strich
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',       uses: ['prio-basic'],                         qty: 1, note: 'Aussage „$3+4\\cdot 2 = 11$" prüfen' },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice',  uses: ['prio-basic'],                         qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',     uses: ['prio-basic', 'prio-potenz'],          qty: 2, note: 'Term mit Potenz + Mult + Strich' },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice',  uses: ['prio-basic'],                         qty: 1, note: 'Distraktor: von links nach rechts gerechnet' },
+        { subGoal: 0, stage: 'transfer',          type: 'sorting',          uses: ['prio-basic', 'prio-potenz'],          qty: 1, note: 'Schritte in korrekte Reihenfolge bringen' },
+        // SG 1 — Minus vor Klammer
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',       uses: ['minus-vorklammer'],                   qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice',  uses: ['minus-vorklammer'],                   qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',     uses: ['minus-vorklammer'],                   qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice',  uses: ['minus-vorklammer'],                   qty: 1, note: 'Distraktor: nur ersten Summanden umgedreht' },
+        { subGoal: 1, stage: 'transfer',          type: 'matching',         uses: ['minus-vorklammer'],                   qty: 1, note: 'Klammer-Term ↔ aufgelöstes Ergebnis' },
+        // SG 2 — Doppel-Minus
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',       uses: ['minus-mal-minus'],                    qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice',  uses: ['minus-mal-minus'],                    qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',     uses: ['minus-mal-minus'],                    qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice',  uses: ['minus-mal-minus'],                    qty: 1, note: 'Distraktor: Vorzeichen übersehen' },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',     uses: ['minus-mal-minus', 'minus-vorklammer'], qty: 1, note: 'Kombi: $-(-(2-5))$ oder ähnlich' },
+        // SG 3 — Klammerschachtelung
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',       uses: ['klammer-schachtel'],                  qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice',  uses: ['klammer-schachtel'],                  qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',     uses: ['klammer-schachtel'],                  qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice',  uses: ['klammer-schachtel'],                  qty: 1, note: 'Distraktor: äußerste Klammer zuerst gerechnet' },
+        { subGoal: 3, stage: 'transfer',          type: 'sorting',          uses: ['klammer-schachtel', 'prio-klammer'],  qty: 1 },
+      ],
+    },
     nextLessonId: 'alg-0-2',
     steps: [
       {
@@ -562,6 +605,52 @@ $-(3 - 5) = -3 + 5 = 2$.
       { label: 'Bruch vollständig kürzen per ggT', examRelevance: 'mittel' },
     ],
     prerequisites: ['alg-0-1'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-0-1', concepts: ['prio-basic', 'prio-klammer'] },
+      ],
+      concepts: [
+        { id: 'bruch-erweitern', title: 'Erweitern/Kürzen: Zähler und Nenner mit/durch dieselbe Zahl (Wert bleibt)', dependsOn: [] },
+        { id: 'ggt-kuerzen',     title: 'Vollständiges Kürzen per ggT von Zähler und Nenner',                         dependsOn: ['bruch-erweitern'] },
+        { id: 'kgv-hauptnenner', title: 'Hauptnenner = kgV der Einzelnenner (Primfaktorzerlegung)',                   dependsOn: ['bruch-erweitern'] },
+        { id: 'bruch-add',       title: 'Addition/Subtraktion: erst Hauptnenner, dann Zähler rechnen',                dependsOn: ['kgv-hauptnenner'] },
+        { id: 'bruch-mult',      title: 'Multiplikation: Zähler $\\cdot$ Zähler, Nenner $\\cdot$ Nenner',             dependsOn: [] },
+        { id: 'bruch-div-kehr',  title: 'Division durch Bruch = Multiplikation mit Kehrwert',                         dependsOn: ['bruch-mult'] },
+        { id: 'doppelbruch',     title: 'Doppelbruch auflösen über Division-Kehrwert-Regel',                          dependsOn: ['bruch-div-kehr'] },
+      ],
+      subGoalConcepts: {
+        0: ['kgv-hauptnenner', 'bruch-add'],
+        1: ['bruch-div-kehr'],
+        2: ['doppelbruch'],
+        3: ['ggt-kuerzen'],
+      },
+      taskPlan: [
+        // SG 0 — Hauptnenner (kgV)
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['kgv-hauptnenner'],                       qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['kgv-hauptnenner'],                       qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['kgv-hauptnenner', 'bruch-add'],          qty: 2, note: 'kgV bestimmen + Brüche addieren' },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['bruch-add'],                             qty: 1, note: 'Distraktor: Zähler und Nenner einzeln addiert' },
+        { subGoal: 0, stage: 'transfer',          type: 'sorting',         uses: ['kgv-hauptnenner', 'bruch-add'],          qty: 1 },
+        // SG 1 — Division durch Bruch
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['bruch-div-kehr'],                        qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['bruch-div-kehr'],                        qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['bruch-div-kehr'],                        qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['bruch-div-kehr'],                        qty: 1, note: 'Distraktor: statt Kehrwert direkt dividiert' },
+        { subGoal: 1, stage: 'transfer',          type: 'matching',        uses: ['bruch-div-kehr', 'bruch-mult'],          qty: 1 },
+        // SG 2 — Doppelbrüche
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['doppelbruch'],                           qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['doppelbruch'],                           qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['doppelbruch'],                           qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['doppelbruch'],                           qty: 1, note: 'Distraktor: Zähler und Nenner falsch gruppiert' },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['doppelbruch', 'ggt-kuerzen'],            qty: 1, note: 'Doppelbruch auflösen + Endkürzen' },
+        // SG 3 — ggT-Kürzen
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['ggt-kuerzen'],                           qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['ggt-kuerzen'],                           qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['ggt-kuerzen'],                           qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['ggt-kuerzen'],                           qty: 1, note: 'Distraktor: nicht vollständig gekürzt' },
+        { subGoal: 3, stage: 'transfer',          type: 'sorting',         uses: ['ggt-kuerzen'],                           qty: 1 },
+      ],
+    },
     nextLessonId: 'alg-0-3',
     steps: [
       {
@@ -614,6 +703,59 @@ Nur bei **gleichem Nenner** werden Zähler addiert.
       { label: 'Prozentpunkt vs. Prozent: $15\\%$ auf $10\\%$ erhöht ist $11{,}5\\%$, nicht $25\\%$', examRelevance: 'mittel' },
     ],
     prerequisites: ['alg-0-2'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-0-2', concepts: ['bruch-erweitern', 'bruch-mult'] },
+      ],
+      concepts: [
+        { id: 'prozent-def',      title: '$p\\%$ bedeutet $\\dfrac{p}{100}$',                                                dependsOn: [] },
+        { id: 'prozent-grund',    title: 'Grundformel $W = G \\cdot \\tfrac{p}{100}$ und Umstellungen nach $G$ / $p$',       dependsOn: ['prozent-def'] },
+        { id: 'wachstumsfaktor',  title: 'Wachstumsfaktor: $\\pm p\\%$ als $\\times (1 \\pm p/100)$',                        dependsOn: ['prozent-def'] },
+        { id: 'prozent-kette',    title: 'Zwei Änderungen in Folge multiplizieren sich (nicht addieren)',                   dependsOn: ['wachstumsfaktor'] },
+        { id: 'direkt-prop',      title: 'Direkte Proportionalität: $x_1/y_1 = x_2/y_2$',                                   dependsOn: [] },
+        { id: 'indirekt-prop',    title: 'Indirekte Proportionalität: $x_1 y_1 = x_2 y_2$',                                 dependsOn: ['direkt-prop'] },
+        { id: 'prozentpunkt',     title: 'Prozentpunkt vs. Prozent: Differenz vs. relativer Anstieg',                       dependsOn: ['wachstumsfaktor'] },
+      ],
+      subGoalConcepts: {
+        0: ['prozent-def', 'prozent-grund'],
+        1: ['wachstumsfaktor'],
+        2: ['prozent-kette'],
+        3: ['direkt-prop', 'indirekt-prop'],
+        4: ['prozentpunkt'],
+      },
+      taskPlan: [
+        // SG 0 — Grundformel
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['prozent-def'],                                qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['prozent-grund'],                              qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['prozent-grund'],                              qty: 2, note: 'Einmal $W$, einmal $G$ oder $p$ gesucht' },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['prozent-grund'],                              qty: 1, note: 'Distraktor: durch $p$ statt $p/100$ geteilt' },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['prozent-grund'],                              qty: 1 },
+        // SG 1 — Wachstumsfaktor
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['wachstumsfaktor'],                            qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['wachstumsfaktor'],                            qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['wachstumsfaktor'],                            qty: 1, note: 'Rabatt-Rechnung' },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['wachstumsfaktor'],                            qty: 1, note: 'Distraktor: Differenz statt Faktor gerechnet' },
+        { subGoal: 1, stage: 'transfer',          type: 'number-input',    uses: ['wachstumsfaktor'],                            qty: 1, note: 'Rückrechnen vom Endpreis zum Grundpreis' },
+        // SG 2 — Änderungen in Folge
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['prozent-kette'],                              qty: 1, note: '+10% dann −10% ergibt 100%? — falsch' },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['prozent-kette'],                              qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['prozent-kette'],                              qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['prozent-kette'],                              qty: 1, note: 'Distraktor: Prozente addiert' },
+        { subGoal: 2, stage: 'transfer',          type: 'sorting',         uses: ['prozent-kette', 'wachstumsfaktor'],           qty: 1 },
+        // SG 3 — Proportionalität
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['direkt-prop', 'indirekt-prop'],               qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['direkt-prop'],                                qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['indirekt-prop'],                              qty: 1, note: 'Pumpen-Typ-Dreisatz' },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['direkt-prop', 'indirekt-prop'],               qty: 1, note: 'Distraktor: direkt statt indirekt gerechnet' },
+        { subGoal: 3, stage: 'transfer',          type: 'matching',        uses: ['direkt-prop', 'indirekt-prop'],               qty: 1, note: 'Situation ↔ Typ' },
+        // SG 4 — Prozentpunkt vs. Prozent
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['prozentpunkt'],                               qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['prozentpunkt'],                               qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'number-input',    uses: ['prozentpunkt'],                               qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['prozentpunkt'],                               qty: 1, note: 'Distraktor: Prozentpunkte addiert statt multipliziert' },
+        { subGoal: 4, stage: 'transfer',          type: 'number-input',    uses: ['prozentpunkt', 'wachstumsfaktor'],            qty: 1 },
+      ],
+    },
     nextLessonId: 'alg-0-4',
     steps: [
       {
@@ -667,6 +809,64 @@ Nur bei **gleichem Nenner** werden Zähler addiert.
       { label: 'Beim Quadrieren Probe nötig (Scheinlösungen möglich)', examRelevance: 'mittel' },
     ],
     prerequisites: ['alg-0-2'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-0-1', concepts: ['prio-basic', 'minus-vorklammer'] },
+        { lessonId: 'alg-0-2', concepts: ['bruch-erweitern'] },
+      ],
+      concepts: [
+        { id: 'gleichartige-terme',   title: 'Gleichartige Terme: gleiche Variable mit gleichem Exponenten',              dependsOn: [] },
+        { id: 'koeff-addieren',       title: 'Nur die Koeffizienten gleichartiger Terme addieren',                        dependsOn: ['gleichartige-terme'] },
+        { id: 'distributiv',          title: 'Distributivgesetz: $a(b+c) = ab + ac$',                                     dependsOn: [] },
+        { id: 'ausklammern',          title: 'Ausklammern als Umkehrung des Distributivgesetzes',                         dependsOn: ['distributiv'] },
+        { id: 'binom-1',              title: '1. binomische Formel: $(a+b)^2 = a^2 + 2ab + b^2$',                         dependsOn: ['distributiv'] },
+        { id: 'binom-2',              title: '2. binomische Formel: $(a-b)^2 = a^2 - 2ab + b^2$',                         dependsOn: ['distributiv'] },
+        { id: 'binom-3',              title: '3. binomische Formel: $(a+b)(a-b) = a^2 - b^2$',                            dependsOn: ['distributiv'] },
+        { id: 'aequivalenz',          title: 'Äquivalenzumformung: auf beiden Seiten dasselbe tun',                       dependsOn: [] },
+        { id: 'nicht-durch-null',     title: 'Division durch Null verboten (verliert Lösungen)',                          dependsOn: ['aequivalenz'] },
+        { id: 'formel-umstellen',     title: 'Formel nach Variable umstellen: Operationen umkehren',                      dependsOn: ['aequivalenz'] },
+        { id: 'quadrieren-probe',     title: 'Beim Quadrieren Probe nötig — Scheinlösungen möglich',                      dependsOn: ['aequivalenz'] },
+      ],
+      subGoalConcepts: {
+        0: ['gleichartige-terme', 'koeff-addieren'],
+        1: ['distributiv', 'ausklammern'],
+        2: ['binom-1', 'binom-2', 'binom-3'],
+        3: ['aequivalenz', 'nicht-durch-null', 'formel-umstellen'],
+        4: ['quadrieren-probe'],
+      },
+      taskPlan: [
+        // SG 0 — Gleichartige Terme
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['gleichartige-terme'],                         qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['gleichartige-terme', 'koeff-addieren'],       qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['koeff-addieren'],                             qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['gleichartige-terme'],                         qty: 1, note: 'Distraktor: $x+x^2$ als gleichartig behandelt' },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['gleichartige-terme'],                         qty: 1, note: 'Terme ↔ gleichartige Gruppe' },
+        // SG 1 — Distributivgesetz
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['distributiv'],                                qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['distributiv'],                                qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['distributiv'],                                qty: 1, note: 'Ausmultiplizieren' },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['distributiv'],                                qty: 1, note: 'Distraktor: Faktor nur auf ersten Summanden' },
+        { subGoal: 1, stage: 'transfer',          type: 'number-input',    uses: ['ausklammern'],                                qty: 1, note: 'Ausklammern des größten gemeinsamen Faktors' },
+        // SG 2 — Binomische Formeln
+        { subGoal: 2, stage: 'recognize',         type: 'matching',        uses: ['binom-1', 'binom-2', 'binom-3'],              qty: 1, note: 'Formel ↔ Typ' },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['binom-1'],                                    qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['binom-2'],                                    qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['binom-1', 'binom-2'],                         qty: 1, note: 'Distraktor: mittleren Term vergessen' },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['binom-3'],                                    qty: 1, note: 'Anwendung 3. binomische Formel in Zahlenrechnung' },
+        // SG 3 — Äquivalenz / Formel umstellen
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['aequivalenz', 'nicht-durch-null'],            qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['aequivalenz'],                                qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['formel-umstellen'],                           qty: 1, note: 'Formel nach Variable umstellen' },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['nicht-durch-null'],                           qty: 1, note: 'Distraktor: durch 0-Term geteilt' },
+        { subGoal: 3, stage: 'transfer',          type: 'sorting',         uses: ['aequivalenz', 'formel-umstellen'],            qty: 1 },
+        // SG 4 — Quadrieren & Probe
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['quadrieren-probe'],                           qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['quadrieren-probe'],                           qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'number-input',    uses: ['quadrieren-probe'],                           qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['quadrieren-probe'],                           qty: 1, note: 'Distraktor: Scheinlösung akzeptiert' },
+        { subGoal: 4, stage: 'transfer',          type: 'sorting',         uses: ['quadrieren-probe', 'aequivalenz'],            qty: 1 },
+      ],
+    },
     nextLessonId: null,
     steps: [
       {

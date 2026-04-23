@@ -2456,76 +2456,187 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-4-1` · Prüfung: Algebra-Grundlagen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×2, matching ×1
-- **Typen einsetzen (Rotation):** sorting, matching, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Diskriminante: $D > 0$ zwei, $D = 0$ eine, $D < 0$ keine reelle Lösung
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Exponentialgleichung $a^x = b$: durch Logarithmieren $x = \log_a b = \ln b / \ln a$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Wurzelgleichung: beide Seiten quadrieren + Probe (Scheinlösungen möglich)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Argumente von $\ln$, $\log$, $e^{(\cdot)}$ müssen dimensionslos sein
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Bei Prüfungsaufgaben Rechenweg sichtbar: jede Umformung nummerieren/benennen
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-1-1` → `pot-mult`, `pot-potenz`, `pot-negativ`
+  - `alg-1-3` → `log-produkt`, `log-potenz`, `log-basiswechsel`, `log-umkehr`
+  - `alg-2-2` → `abc-formel`, `diskriminante`
+  - `alg-0-4` → `quadrieren-probe`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `pr-diskriminante` — Fallunterscheidung $D>0,=0,<0$ im Prüfungskontext (SG 0)
+  2. `pr-exp-gleichung` — Exponentialgleichung $a^x=b$ durch Logarithmieren lösen (SG 1)
+  3. `pr-wurzel-gleichung` — Wurzelgleichung: quadrieren + Probe gegen Scheinlösungen (SG 2)
+  4. `pr-dimensionslos` — Argumente von $\ln,\log,e^\cdot$ sind dimensionslos (SG 3)
+  5. `pr-rechenweg` — Prüfungsrechnung: jede Umformung benennen (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `pr-diskriminante` · **0/5+** — Diskriminante: $D > 0$ zwei, $D = 0$ eine, $D < 0$ keine reelle Lösung
+  - 🔴 [1] _hoch_ · Konzepte: `pr-exp-gleichung` · **0/5+** — Exponentialgleichung $a^x = b$: durch Logarithmieren $x = \log_a b = \ln b / \ln a$
+  - 🔴 [2] _hoch_ · Konzepte: `pr-wurzel-gleichung` · **0/5+** — Wurzelgleichung: beide Seiten quadrieren + Probe (Scheinlösungen möglich)
+  - 🔴 [3] _hoch_ · Konzepte: `pr-dimensionslos` · **0/5+** — Argumente von $\ln$, $\log$, $e^{(\cdot)}$ müssen dimensionslos sein
+  - 🔴 [4] _mittel_ · Konzepte: `pr-rechenweg` · **0/5+** — Bei Prüfungsaufgaben Rechenweg sichtbar: jede Umformung nummerieren/benennen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `pr-diskriminante` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pr-diskriminante` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `pr-diskriminante` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  4 | 0 | error-analysis     | multiple-choice  | `pr-diskriminante` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `pr-diskriminante` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `pr-exp-gleichung` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pr-exp-gleichung` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `pr-exp-gleichung` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  9 | 1 | error-analysis     | multiple-choice  | `pr-exp-gleichung` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | sorting          | `pr-exp-gleichung` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `pr-wurzel-gleichung` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pr-wurzel-gleichung` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `pr-wurzel-gleichung` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 14 | 2 | error-analysis     | multiple-choice  | `pr-wurzel-gleichung` | 1 | 0 | 🔴 | Distraktor: Probe vergessen |
+| 15 | 2 | transfer           | sorting          | `pr-wurzel-gleichung` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `pr-dimensionslos` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pr-dimensionslos` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `pr-dimensionslos` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pr-dimensionslos` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `pr-dimensionslos` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `pr-rechenweg` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `pr-rechenweg` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | sorting          | `pr-rechenweg` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `pr-rechenweg` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | sorting          | `pr-rechenweg` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-4-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-4-1-a`, `ex-alg-4-1-b`, `ex-alg-4-1-d`, `ex-alg-4-1-e`, `ex-alg-4-1-f`, `ex-alg-4-1-g`, `ex-alg-4-1-h`, `ex-alg-4-1-i` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-4-2` · Prüfung: Funktionen & Anwendungen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×1, true-false ×2, sorting ×1
-- **Typen einsetzen (Rotation):** matching, number-input, sorting, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Scheitelpunkt Parabel $ax^2+bx+c$: $x_S = -b/(2a)$, $y_S = f(x_S)$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Scheitelform: $f(x) = a(x - x_S)^2 + y_S$ (quadratische Ergänzung)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Umkehrfunktion: $y = f(x)$ → nach $x$ auflösen → $x \leftrightarrow y$ tauschen
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Anwendung Wärmeausdehnung: $l(T) = l_0(1 + \alpha T)$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Anwendung Abklingen: $p(t) = p_0 e^{-kt}$, Halbwertszeit $t_{1/2} = \ln 2/k$
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Anwendung Umsatz: $U(x) = x \cdot p(x)$, Maximum bei $U'(x) = 0$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-2-2` → `abc-formel`, `faktor-form`
+  - `alg-3-4` → `umkehr-verfahren`, `umkehr-bereiche`
+  - `alg-3-2` → `exp-fkt`, `log-fkt`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `pr-scheitel-formel` — Scheitelpunkt Parabel: $x_S=-b/(2a)$, $y_S=f(x_S)$ (SG 0)
+  2. `pr-scheitel-form` — Scheitelform $f(x)=a(x-x_S)^2 + y_S$ via quadratischer Ergänzung ⇐ `pr-scheitel-formel` (SG 1)
+  3. `pr-umkehr-prakt` — Umkehrfunktion praktisch berechnen (SG 2)
+  4. `pr-waermeausdehnung` — Wärmeausdehnung $l(T) = l_0(1+\alpha T)$ (SG 3)
+  5. `pr-abklingen` — Abklingen $p(t)=p_0 e^{-kt}$, $t_{1/2}=\ln 2/k$ (SG 4)
+  6. `pr-umsatz` — Umsatz $U(x)=x\cdot p(x)$, Maximum bei $U'(x)=0$ (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `pr-scheitel-formel` · **0/5+** — Scheitelpunkt Parabel $ax^2+bx+c$: $x_S = -b/(2a)$, $y_S = f(x_S)$
+  - 🔴 [1] _hoch_ · Konzepte: `pr-scheitel-form` · **0/5+** — Scheitelform: $f(x) = a(x - x_S)^2 + y_S$ (quadratische Ergänzung)
+  - 🔴 [2] _hoch_ · Konzepte: `pr-umkehr-prakt` · **0/5+** — Umkehrfunktion: $y = f(x)$ → nach $x$ auflösen → $x \leftrightarrow y$ tauschen
+  - 🔴 [3] _mittel_ · Konzepte: `pr-waermeausdehnung` · **0/5+** — Anwendung Wärmeausdehnung: $l(T) = l_0(1 + \alpha T)$
+  - 🔴 [4] _hoch_ · Konzepte: `pr-abklingen` · **0/5+** — Anwendung Abklingen: $p(t) = p_0 e^{-kt}$, Halbwertszeit $t_{1/2} = \ln 2/k$
+  - 🔴 [5] _mittel_ · Konzepte: `pr-umsatz` · **0/5+** — Anwendung Umsatz: $U(x) = x \cdot p(x)$, Maximum bei $U'(x) = 0$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `pr-scheitel-formel` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pr-scheitel-formel` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `pr-scheitel-formel` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  4 | 0 | error-analysis     | multiple-choice  | `pr-scheitel-formel` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `pr-scheitel-formel` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `pr-scheitel-form` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pr-scheitel-form` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `pr-scheitel-form` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pr-scheitel-form` | 1 | 0 | 🔴 | Vorzeichen von $h$ in $(x-h)^2$ |
+| 10 | 1 | transfer           | sorting          | `pr-scheitel-form`, `pr-scheitel-formel` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `pr-umkehr-prakt` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pr-umkehr-prakt` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `pr-umkehr-prakt` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 14 | 2 | error-analysis     | multiple-choice  | `pr-umkehr-prakt` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | sorting          | `pr-umkehr-prakt` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `pr-waermeausdehnung` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pr-waermeausdehnung` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `pr-waermeausdehnung` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pr-waermeausdehnung` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `pr-waermeausdehnung` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `pr-abklingen` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `pr-abklingen` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `pr-abklingen` | 1 | 0 | 🔴 | Halbwertszeit |
+| 24 | 4 | error-analysis     | multiple-choice  | `pr-abklingen` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `pr-abklingen` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `pr-umsatz` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `pr-umsatz` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `pr-umsatz` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `pr-umsatz` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | number-input     | `pr-umsatz` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-4-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-4-2-a`, `ex-alg-4-2-b`, `ex-alg-4-2-c`, `ex-alg-4-2-e`, `ex-alg-4-2-f`, `ex-alg-4-2-g`, `ex-alg-4-2-h`, `ex-alg-4-2-j` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-4-3` · Prüfung: Gleichungs­systeme & technische Anwendungen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — $2\times 2$-LGS: Einsetzungs-, Additions-, Gleichsetzungsmethode — alle äquivalent
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Betrag auflösen: Fallunterscheidung $|x| = x$ für $x \geq 0$, $|x| = -x$ für $x < 0$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — pH-Wert: $\text{pH} = -\log_{10}[H^+]$ (logarithmische Skala der H⁺-Konzentration)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — dB-Skala: $L = 10 \log_{10}(P/P_0)$ (Leistung) bzw. $= 20 \log_{10}(U/U_0)$ (Amplitude)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — LGS-Lösungsfälle: eindeutig (det $\neq 0$), keine Lösung (Widerspruch), unendlich (parallel)
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Technik-Anwendungen: Kirchhoffsche Maschenregeln, Biegespannung, Mischrechnung
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-2-1` → `iso-variable`, `koeff-dividieren`, `probe-einsetzen`
+  - `alg-1-3` → `log-def`, `log-basiswechsel`, `log-potenz`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `pr-lgs-methoden` — $2\times2$-LGS: Einsetzungs-, Additions-, Gleichsetzungsmethode (SG 0)
+  2. `pr-betrag-fall` — Betrag auflösen: Fallunterscheidung $|x|=\pm x$ (SG 1)
+  3. `pr-pH` — pH-Wert $\text{pH}=-\log_{10}[\text H^+]$ (SG 2)
+  4. `pr-dB` — Dezibel-Skala $L=10\log_{10}(P/P_0)$ bzw. $=20\log_{10}(U/U_0)$ (SG 3)
+  5. `pr-lgs-faelle` — LGS-Lösungsfälle: eindeutig/keine/unendlich viele ⇐ `pr-lgs-methoden` (SG 4)
+  6. `pr-technik-lgs` — Technik-LGS: Maschenregel, Biegespannung, Mischrechnung ⇐ `pr-lgs-methoden` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `pr-lgs-methoden` · **0/5+** — $2\times 2$-LGS: Einsetzungs-, Additions-, Gleichsetzungsmethode — alle äquivalent
+  - 🔴 [1] _hoch_ · Konzepte: `pr-betrag-fall` · **0/5+** — Betrag auflösen: Fallunterscheidung $|x| = x$ für $x \geq 0$, $|x| = -x$ für $x < 0$
+  - 🔴 [2] _hoch_ · Konzepte: `pr-pH` · **0/5+** — pH-Wert: $\text{pH} = -\log_{10}[H^+]$ (logarithmische Skala der H⁺-Konzentration)
+  - 🔴 [3] _hoch_ · Konzepte: `pr-dB` · **0/5+** — dB-Skala: $L = 10 \log_{10}(P/P_0)$ (Leistung) bzw. $= 20 \log_{10}(U/U_0)$ (Amplitude)
+  - 🔴 [4] _hoch_ · Konzepte: `pr-lgs-faelle` · **0/5+** — LGS-Lösungsfälle: eindeutig (det $\neq 0$), keine Lösung (Widerspruch), unendlich (parallel)
+  - 🔴 [5] _mittel_ · Konzepte: `pr-technik-lgs` · **0/5+** — Technik-Anwendungen: Kirchhoffsche Maschenregeln, Biegespannung, Mischrechnung
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | matching         | `pr-lgs-methoden` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pr-lgs-methoden` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `pr-lgs-methoden` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  4 | 0 | error-analysis     | multiple-choice  | `pr-lgs-methoden` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | sorting          | `pr-lgs-methoden` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `pr-betrag-fall` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pr-betrag-fall` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `pr-betrag-fall` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pr-betrag-fall` | 1 | 0 | 🔴 | Distraktor: nur positiven Fall |
+| 10 | 1 | transfer           | sorting          | `pr-betrag-fall` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `pr-pH` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pr-pH` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `pr-pH` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `pr-pH` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `pr-pH` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `pr-dB` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pr-dB` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `pr-dB` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pr-dB` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `pr-dB` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | matching         | `pr-lgs-faelle` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `pr-lgs-faelle` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `pr-lgs-faelle` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `pr-lgs-faelle` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `pr-lgs-faelle` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | matching         | `pr-technik-lgs` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `pr-technik-lgs` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `pr-technik-lgs` | 1 | 0 | 🔴 | [PRÜFUNG] technisch |
+| 29 | 5 | error-analysis     | multiple-choice  | `pr-technik-lgs` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | number-input     | `pr-technik-lgs` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-4-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-4-3-a`, `ex-alg-4-3-b`, `ex-alg-4-3-c`, `ex-alg-4-3-d`, `ex-alg-4-3-e`, `ex-alg-4-3-f`, `ex-alg-4-3-g`, `ex-alg-4-3-h` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `la-3-1` · Prüfung: Matrizen & Determinanten
 
@@ -4849,74 +4960,175 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-3-1` · Funktionsbegriff
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×2, matching ×1
-- **Typen einsetzen (Rotation):** sorting, matching, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Funktion: jedem $x$ aus Definitionsbereich wird *genau ein* $y$ zugeordnet
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Definitionsbereich $D$: alle zulässigen $x$ (Division durch 0 ausschließen, Radikand $\ge 0$, Logarithmus $>0$)
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Injektiv = verschiedene $x$ $\to$ verschiedene $y$; surjektiv = jedes $y$ im Bild wird getroffen; bijektiv = beides
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-1-3` → `log-def`
+  - `alg-1-2` → `wurzel-def-bereich`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `fkt-def` — Funktion = jedes $x \in D$ erhält genau ein $y$ (SG 0)
+  2. `fkt-graph` — Funktionsgraph $\{(x,f(x))\}$ und vertikaler Linientest ⇐ `fkt-def` (SG 0)
+  3. `def-bereich` — Definitionsbereich: Division $\neq 0$, Wurzel $\geq 0$, $\log > 0$ ⇐ `fkt-def` (SG 1)
+  4. `wertebereich` — Wertebereich = Menge aller tatsächlich erreichten $y$ ⇐ `fkt-def` (SG 1)
+  5. `injektiv` — Injektiv: $f(x_1)=f(x_2) \Rightarrow x_1=x_2$ ⇐ `fkt-def` (SG 2)
+  6. `surjektiv` — Surjektiv: jedes $y$ der Zielmenge hat ein Urbild ⇐ `fkt-def` (SG 2)
+  7. `bijektiv` — Bijektiv = injektiv + surjektiv (Voraussetzung für Umkehrung) ⇐ `injektiv`, `surjektiv` (SG 2)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `fkt-def`, `fkt-graph` · **0/5+** — Funktion: jedem $x$ aus Definitionsbereich wird *genau ein* $y$ zugeordnet
+  - 🔴 [1] _hoch_ · Konzepte: `def-bereich`, `wertebereich` · **0/5+** — Definitionsbereich $D$: alle zulässigen $x$ (Division durch 0 ausschließen, Radikand $\ge 0$, Logarithmus $>0$)
+  - 🔴 [2] _mittel_ · Konzepte: `injektiv`, `surjektiv`, `bijektiv` · **0/5+** — Injektiv = verschiedene $x$ $\to$ verschiedene $y$; surjektiv = jedes $y$ im Bild wird getroffen; bijektiv = beides
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `fkt-def` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `fkt-graph` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `fkt-graph` | 1 | 0 | 🔴 | Vertikaler Linientest |
+|  4 | 0 | error-analysis     | multiple-choice  | `fkt-def` | 1 | 0 | 🔴 | Distraktor: Kreis als Funktionsgraph |
+|  5 | 0 | transfer           | matching         | `fkt-def` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `def-bereich` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `def-bereich` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `def-bereich`, `wertebereich` | 2 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `def-bereich` | 1 | 0 | 🔴 | Distraktor: Polstelle nicht ausgeschlossen |
+| 10 | 1 | transfer           | matching         | `def-bereich` | 1 | 0 | 🔴 | Funktion ↔ maximaler Definitionsbereich |
+| 11 | 2 | recognize          | matching         | `injektiv`, `surjektiv`, `bijektiv` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `injektiv` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `bijektiv` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `injektiv`, `surjektiv` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | true-false       | `bijektiv` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 15 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-3-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-1-a`, `ex-alg-3-1-b`, `ex-alg-3-1-c`, `ex-alg-3-1-manual-1`, `ex-alg-3-1-manual-2`, `ex-alg-3-1-manual-3`, `ex-alg-3-1-manual-4`, `ex-alg-3-1-manual-5` … (+3 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-3-3` · Funktionsoperationen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Horizontale Verschiebung: $f(x - a)$ = $a$ nach rechts (Vorzeichen kontraintuitiv!)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Vertikale Verschiebung: $f(x) + b$ = $b$ nach oben
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Streckung vertikal: $c \cdot f(x)$ (für $c > 1$), horizontal: $f(x/c)$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Spiegelung an $x$-Achse: $-f(x)$, an $y$-Achse: $f(-x)$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Merkregel: Änderungen im Argument wirken horizontal und **umgekehrt**
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Funktionskomposition: $(f \circ g)(x) = f(g(x))$ (Reihenfolge beachten)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-3-1` → `fkt-def`, `fkt-graph`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `trafo-hor-verschieben` — Horizontale Verschiebung: $f(x-a)$ um $a$ nach rechts (SG 0)
+  2. `trafo-vert-verschieben` — Vertikale Verschiebung: $f(x)+b$ um $b$ nach oben (SG 1)
+  3. `trafo-vert-streck` — Vertikale Streckung: $c \cdot f(x)$ ⇐ `trafo-vert-verschieben` (SG 2)
+  4. `trafo-hor-streck` — Horizontale Streckung: $f(x/c)$ (umgekehrt!) ⇐ `trafo-hor-verschieben` (SG 2)
+  5. `trafo-spiegel-x` — Spiegelung an $x$-Achse: $-f(x)$ (SG 3)
+  6. `trafo-spiegel-y` — Spiegelung an $y$-Achse: $f(-x)$ (SG 3)
+  7. `trafo-merkregel` — Argument-Änderungen wirken horizontal und umgekehrt ⇐ `trafo-hor-verschieben`, `trafo-hor-streck` (SG 4)
+  8. `fkt-komposition` — $(f \circ g)(x) = f(g(x))$ — Reihenfolge beachten (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `trafo-hor-verschieben` · **0/5+** — Horizontale Verschiebung: $f(x - a)$ = $a$ nach rechts (Vorzeichen kontraintuitiv!)
+  - 🔴 [1] _hoch_ · Konzepte: `trafo-vert-verschieben` · **0/5+** — Vertikale Verschiebung: $f(x) + b$ = $b$ nach oben
+  - 🔴 [2] _hoch_ · Konzepte: `trafo-vert-streck`, `trafo-hor-streck` · **0/5+** — Streckung vertikal: $c \cdot f(x)$ (für $c > 1$), horizontal: $f(x/c)$
+  - 🔴 [3] _hoch_ · Konzepte: `trafo-spiegel-x`, `trafo-spiegel-y` · **0/5+** — Spiegelung an $x$-Achse: $-f(x)$, an $y$-Achse: $f(-x)$
+  - 🔴 [4] _mittel_ · Konzepte: `trafo-merkregel` · **0/5+** — Merkregel: Änderungen im Argument wirken horizontal und **umgekehrt**
+  - 🔴 [5] _mittel_ · Konzepte: `fkt-komposition` · **0/5+** — Funktionskomposition: $(f \circ g)(x) = f(g(x))$ (Reihenfolge beachten)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `trafo-hor-verschieben` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `trafo-hor-verschieben` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `trafo-hor-verschieben` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `trafo-hor-verschieben` | 1 | 0 | 🔴 | Distraktor: Vorzeichen nicht getauscht |
+|  5 | 0 | transfer           | matching         | `trafo-hor-verschieben` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `trafo-vert-verschieben` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `trafo-vert-verschieben` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `trafo-vert-verschieben` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `trafo-vert-verschieben` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `trafo-vert-verschieben`, `trafo-hor-verschieben` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `trafo-vert-streck`, `trafo-hor-streck` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `trafo-vert-streck` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `trafo-hor-streck` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `trafo-hor-streck` | 1 | 0 | 🔴 | Distraktor: horizontale Streckung intuitiv gerechnet |
+| 15 | 2 | transfer           | matching         | `trafo-vert-streck`, `trafo-hor-streck` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | matching         | `trafo-spiegel-x`, `trafo-spiegel-y` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `trafo-spiegel-x` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `trafo-spiegel-y` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `trafo-spiegel-x`, `trafo-spiegel-y` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `trafo-spiegel-x`, `trafo-spiegel-y` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `trafo-merkregel` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `trafo-merkregel` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `trafo-merkregel` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `trafo-merkregel` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | sorting          | `trafo-merkregel` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `fkt-komposition` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `fkt-komposition` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `fkt-komposition` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `fkt-komposition` | 1 | 0 | 🔴 | Distraktor: Reihenfolge vertauscht |
+| 30 | 5 | transfer           | matching         | `fkt-komposition` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-3-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-3-c`, `ex-alg-3-3-manual-1`, `ex-alg-3-3-manual-2`, `ex-alg-3-3-manual-3`, `ex-alg-3-3-manual-4`, `ex-alg-3-3-manual-5`, `ex-alg-3-3-manual-6`, `ex-alg-3-3-manual-7` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-3-4` · Umkehrfunktionen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Existenz: $f$ muss **bijektiv** sein (injektiv UND surjektiv)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Berechnung: $y = f(x)$ nach $x$ auflösen, dann $x \leftrightarrow y$ tauschen
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Graphisch: Spiegelung an der Winkelhalbierenden $y = x$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Def.bereich von $f^{-1}$ = Wertebereich von $f$ (und umgekehrt)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Eigenschaft: $f^{-1}(f(x)) = x$ und $f(f^{-1}(y)) = y$
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Für nicht-injektives $f$ (z.B. $x^2$) Def.bereich einschränken: $[0,\infty)$ macht Umkehrung möglich
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-3-1` → `injektiv`, `surjektiv`, `bijektiv`, `def-bereich`, `wertebereich`
+  - `alg-0-4` → `aequivalenz`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `umkehr-existenz` — Umkehrfunktion existiert genau wenn $f$ bijektiv ist (SG 0)
+  2. `umkehr-verfahren` — Verfahren: $y=f(x)$ nach $x$ auflösen, dann Rollen tauschen ⇐ `umkehr-existenz` (SG 1)
+  3. `umkehr-graph` — Graphische Konstruktion: Spiegelung an $y=x$ ⇐ `umkehr-existenz` (SG 2)
+  4. `umkehr-bereiche` — $D(f^{-1}) = W(f)$ und $W(f^{-1}) = D(f)$ ⇐ `umkehr-existenz` (SG 3)
+  5. `umkehr-identitaet` — $f^{-1}(f(x)) = x$ und $f(f^{-1}(y)) = y$ ⇐ `umkehr-verfahren` (SG 4)
+  6. `umkehr-einschraenken` — Nicht-injektives $f$: Definitionsbereich einschränken ⇐ `umkehr-existenz` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `umkehr-existenz` · **0/5+** — Existenz: $f$ muss **bijektiv** sein (injektiv UND surjektiv)
+  - 🔴 [1] _hoch_ · Konzepte: `umkehr-verfahren` · **0/5+** — Berechnung: $y = f(x)$ nach $x$ auflösen, dann $x \leftrightarrow y$ tauschen
+  - 🔴 [2] _hoch_ · Konzepte: `umkehr-graph` · **0/5+** — Graphisch: Spiegelung an der Winkelhalbierenden $y = x$
+  - 🔴 [3] _hoch_ · Konzepte: `umkehr-bereiche` · **0/5+** — Def.bereich von $f^{-1}$ = Wertebereich von $f$ (und umgekehrt)
+  - 🔴 [4] _mittel_ · Konzepte: `umkehr-identitaet` · **0/5+** — Eigenschaft: $f^{-1}(f(x)) = x$ und $f(f^{-1}(y)) = y$
+  - 🔴 [5] _mittel_ · Konzepte: `umkehr-einschraenken` · **0/5+** — Für nicht-injektives $f$ (z.B. $x^2$) Def.bereich einschränken: $[0,\infty)$ macht Umkehrung möglich
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `umkehr-existenz` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `umkehr-existenz` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `umkehr-existenz` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `umkehr-existenz` | 1 | 0 | 🔴 | Distraktor: bijektiv nicht geprüft |
+|  5 | 0 | transfer           | matching         | `umkehr-existenz` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `umkehr-verfahren` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `umkehr-verfahren` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `umkehr-verfahren` | 2 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `umkehr-verfahren` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | sorting          | `umkehr-verfahren` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `umkehr-graph` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `umkehr-graph` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `umkehr-graph` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `umkehr-graph` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `umkehr-graph` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `umkehr-bereiche` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `umkehr-bereiche` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `umkehr-bereiche` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `umkehr-bereiche` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `umkehr-bereiche` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `umkehr-identitaet` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `umkehr-identitaet` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `umkehr-identitaet` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `umkehr-identitaet` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `umkehr-identitaet` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `umkehr-einschraenken` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `umkehr-einschraenken` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `umkehr-einschraenken`, `umkehr-verfahren` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `umkehr-einschraenken` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | number-input     | `umkehr-einschraenken`, `umkehr-verfahren` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-3-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-4-a`, `ex-alg-3-4-b`, `ex-alg-3-4-c`, `ex-alg-3-4-manual-1`, `ex-alg-3-4-manual-2`, `ex-alg-3-4-manual-3`, `ex-alg-3-4-manual-4`, `ex-alg-3-4-manual-5` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `la-1-5` · Eigenwerte und Eigenvektoren
 
@@ -5430,123 +5642,293 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-1-2` · Wurzeln und gebrochene Exponenten
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Wurzel als Bruchpotenz: $\sqrt[n]{x} = x^{1/n}$, dadurch gelten alle Potenzgesetze
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Wurzel des Produkts: $\sqrt{ab} = \sqrt a \cdot \sqrt b$ — aber $\sqrt{a+b} \neq \sqrt a + \sqrt b$
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Nenner rational machen: Erweitern mit passender Wurzel löst Wurzeln aus dem Nenner
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-1-1` → `pot-potenz`, `pot-mult`, `pot-negativ`
+  - `alg-0-2` → `bruch-erweitern`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `wurzel-bruchpot` — $\sqrt[n]{x} = x^{1/n}$ — Wurzel als Bruchpotenz (SG 0)
+  2. `wurzel-def-bereich` — Definitionsbereich: $\sqrt{x}$ nur für $x \geq 0$ in $\mathbb R$ ⇐ `wurzel-bruchpot` (SG 0)
+  3. `wurzel-produkt` — $\sqrt{ab} = \sqrt a \cdot \sqrt b$ (für $a,b \geq 0$) ⇐ `wurzel-bruchpot` (SG 1)
+  4. `wurzel-quotient` — $\sqrt{a/b} = \sqrt a/\sqrt b$ ⇐ `wurzel-produkt` (SG 1)
+  5. `wurzel-summe-nein` — $\sqrt{a+b} \neq \sqrt a + \sqrt b$ — nicht linear ⇐ `wurzel-produkt` (SG 1)
+  6. `wurzel-vereinfachen` — Quadratzahl-Faktor herausziehen: $\sqrt{12}=2\sqrt 3$ ⇐ `wurzel-produkt` (SG 1)
+  7. `nenner-rational` — Nenner rational machen durch Erweitern mit $\sqrt{\cdots}$ ⇐ `wurzel-produkt` (SG 2)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `wurzel-bruchpot`, `wurzel-def-bereich` · **0/5+** — Wurzel als Bruchpotenz: $\sqrt[n]{x} = x^{1/n}$, dadurch gelten alle Potenzgesetze
+  - 🔴 [1] _hoch_ · Konzepte: `wurzel-produkt`, `wurzel-quotient`, `wurzel-summe-nein`, `wurzel-vereinfachen` · **0/5+** — Wurzel des Produkts: $\sqrt{ab} = \sqrt a \cdot \sqrt b$ — aber $\sqrt{a+b} \neq \sqrt a + \sqrt b$
+  - 🔴 [2] _mittel_ · Konzepte: `nenner-rational` · **0/5+** — Nenner rational machen: Erweitern mit passender Wurzel löst Wurzeln aus dem Nenner
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `wurzel-bruchpot` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `wurzel-bruchpot` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `wurzel-bruchpot` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `wurzel-def-bereich` | 1 | 0 | 🔴 | $\sqrt{-4}$ in $\mathbb R$? |
+|  5 | 0 | transfer           | matching         | `wurzel-bruchpot` | 1 | 0 | 🔴 | Wurzel ↔ Potenzschreibweise |
+|  6 | 1 | recognize          | true-false       | `wurzel-summe-nein` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `wurzel-produkt` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `wurzel-vereinfachen` | 2 | 0 | 🔴 | $\sqrt{50}$, $\sqrt{72}$ vereinfachen |
+|  9 | 1 | error-analysis     | multiple-choice  | `wurzel-summe-nein` | 1 | 0 | 🔴 | Distraktor: Wurzel auf Summe verteilt |
+| 10 | 1 | transfer           | sorting          | `wurzel-produkt`, `wurzel-vereinfachen` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `nenner-rational` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `nenner-rational` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `nenner-rational` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `nenner-rational` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `nenner-rational`, `wurzel-vereinfachen` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 15 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-1-2-a`, `ex-alg-1-2-b`, `ex-alg-1-2-d`, `ex-alg-1-2-manual-1`, `ex-alg-1-2-manual-2`, `ex-alg-1-2-manual-3`, `ex-alg-1-2-manual-4`, `ex-alg-1-2-manual-5` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-1-3` · Logarithmen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×4, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Definition: $\log_b x = y \iff b^y = x$ (für $b>0, b\neq 1, x>0$)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Produktregel: $\ln(ab) = \ln a + \ln b$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Quotientenregel: $\ln(a/b) = \ln a - \ln b$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Potenzregel: $\ln(a^n) = n \ln a$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Basiswechsel: $\log_b x = \ln x / \ln b$
-  - 🔴 [5] (hoch) **0/5+** Aufgaben — Typische Falle: $\ln(a+b) \neq \ln a + \ln b$ (kein Logarithmusgesetz für Summen)
-  - 🔴 [6] (hoch) **0/5+** Aufgaben — Exp-Log-Umkehrung: $e^{\ln x} = x$ (für $x > 0$), $\ln(e^x) = x$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5, SG 6: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-1-1` → `pot-mult`, `pot-potenz`, `pot-negativ`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `log-def` — $\log_b(x) = y \iff b^y = x$ (für $b>0, b\neq 1, x>0$) (SG 0)
+  2. `log-spezialfaelle` — $\ln$ (Basis $e$), $\log$ (Basis 10), $\log_2$ (Bits) ⇐ `log-def` (SG 0)
+  3. `log-produkt` — Produktregel $\ln(ab) = \ln a + \ln b$ ⇐ `log-def` (SG 1)
+  4. `log-quotient` — Quotientenregel $\ln(a/b) = \ln a - \ln b$ ⇐ `log-produkt` (SG 2)
+  5. `log-potenz` — Potenzregel $\ln(a^n) = n \ln a$ ⇐ `log-produkt` (SG 3)
+  6. `log-basiswechsel` — Basiswechsel $\log_b x = \ln x / \ln b$ ⇐ `log-def`, `log-potenz` (SG 4)
+  7. `log-summe-nein` — $\ln(a+b) \neq \ln a + \ln b$ — keine Linearität ⇐ `log-produkt` (SG 5)
+  8. `log-umkehr` — $e^{\ln x} = x$ und $\ln(e^x) = x$ — Umkehrfunktions-Identität ⇐ `log-def` (SG 6)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `log-def`, `log-spezialfaelle` · **0/5+** — Definition: $\log_b x = y \iff b^y = x$ (für $b>0, b\neq 1, x>0$)
+  - 🔴 [1] _hoch_ · Konzepte: `log-produkt` · **0/5+** — Produktregel: $\ln(ab) = \ln a + \ln b$
+  - 🔴 [2] _hoch_ · Konzepte: `log-quotient` · **0/5+** — Quotientenregel: $\ln(a/b) = \ln a - \ln b$
+  - 🔴 [3] _hoch_ · Konzepte: `log-potenz` · **0/5+** — Potenzregel: $\ln(a^n) = n \ln a$
+  - 🔴 [4] _hoch_ · Konzepte: `log-basiswechsel` · **0/5+** — Basiswechsel: $\log_b x = \ln x / \ln b$
+  - 🔴 [5] _hoch_ · Konzepte: `log-summe-nein` · **0/5+** — Typische Falle: $\ln(a+b) \neq \ln a + \ln b$ (kein Logarithmusgesetz für Summen)
+  - 🔴 [6] _hoch_ · Konzepte: `log-umkehr` · **0/5+** — Exp-Log-Umkehrung: $e^{\ln x} = x$ (für $x > 0$), $\ln(e^x) = x$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `log-def` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `log-def` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `log-def` | 1 | 0 | 🔴 | $\log_2 32$ |
+|  4 | 0 | error-analysis     | multiple-choice  | `log-def` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `log-spezialfaelle` | 1 | 0 | 🔴 | Basis ↔ Anwendungskontext |
+|  6 | 1 | recognize          | true-false       | `log-produkt` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `log-produkt` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `log-produkt` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `log-produkt` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `log-produkt` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `log-quotient` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `log-quotient` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `log-quotient`, `log-produkt` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `log-quotient` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `log-quotient`, `log-produkt` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `log-potenz` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `log-potenz` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `log-potenz` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `log-potenz` | 1 | 0 | 🔴 | Distraktor: Potenz mit Exponent multipliziert |
+| 20 | 3 | transfer           | number-input     | `log-potenz`, `log-produkt` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `log-basiswechsel` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `log-basiswechsel` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `log-basiswechsel` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `log-basiswechsel` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `log-basiswechsel` | 1 | 0 | 🔴 | Halbwertszeit / Zinseszins |
+| 26 | 5 | recognize          | true-false       | `log-summe-nein` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `log-summe-nein` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `log-summe-nein` | 1 | 0 | 🔴 | Aus Alternativ-Umformungen die richtige wählen |
+| 29 | 5 | error-analysis     | multiple-choice  | `log-summe-nein` | 1 | 0 | 🔴 | Distraktor: Summe in Produkt zerlegt |
+| 30 | 5 | transfer           | matching         | `log-summe-nein`, `log-produkt` | 1 | 0 | 🔴 | Erlaubte vs. verbotene Umformung |
+| 31 | 6 | recognize          | true-false       | `log-umkehr` | 1 | 0 | 🔴 |  |
+| 32 | 6 | apply-guided       | multiple-choice  | `log-umkehr` | 1 | 0 | 🔴 |  |
+| 33 | 6 | apply-independent  | number-input     | `log-umkehr` | 1 | 0 | 🔴 | $e^x = 5$ lösen |
+| 34 | 6 | error-analysis     | multiple-choice  | `log-umkehr` | 1 | 0 | 🔴 |  |
+| 35 | 6 | transfer           | number-input     | `log-umkehr`, `log-potenz` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 35 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-1-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-1-3-a`, `ex-alg-1-3-b`, `ex-alg-1-3-c`, `ex-alg-1-3-d`, `ex-alg-1-3-manual-1`, `ex-alg-1-3-manual-2`, `ex-alg-1-3-manual-3`, `ex-alg-1-3-manual-4` … (+4 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-2-1` · Lineare Gleichungen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×4, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Äquivalenzumformungen: gleiche Operation auf beiden Seiten — Gleichung bleibt erhalten
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Standardvorgehen: Klammern auflösen $\to$ Variable auf eine Seite $\to$ durch Koeffizient teilen
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Textaufgaben: Variable definieren, Gleichung aufstellen, lösen, zurück in den Kontext interpretieren
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Probe durch Einsetzen in Original-Gleichung schützt vor Vorzeichen- und Umformungsfehlern
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-0-4` → `aequivalenz`, `distributiv`, `formel-umstellen`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `lin-form` — Lineare Gleichung $ax + b = 0$ als Standardform (SG 0)
+  2. `iso-variable` — Variable auf eine Seite isolieren (Äquivalenz) ⇐ `lin-form` (SG 0)
+  3. `koeff-dividieren` — Durch Koeffizient von $x$ dividieren ($\neq 0$) ⇐ `iso-variable` (SG 1)
+  4. `text-uebersetzung` — Textaufgabe → Variable definieren → Gleichung aufstellen ⇐ `iso-variable` (SG 2)
+  5. `probe-einsetzen` — Probe: Lösung in Original-Gleichung einsetzen ⇐ `koeff-dividieren` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `lin-form`, `iso-variable` · **0/5+** — Äquivalenzumformungen: gleiche Operation auf beiden Seiten — Gleichung bleibt erhalten
+  - 🔴 [1] _hoch_ · Konzepte: `iso-variable`, `koeff-dividieren` · **0/5+** — Standardvorgehen: Klammern auflösen $\to$ Variable auf eine Seite $\to$ durch Koeffizient teilen
+  - 🔴 [2] _mittel_ · Konzepte: `text-uebersetzung` · **0/5+** — Textaufgaben: Variable definieren, Gleichung aufstellen, lösen, zurück in den Kontext interpretieren
+  - 🔴 [3] _hoch_ · Konzepte: `probe-einsetzen` · **0/5+** — Probe durch Einsetzen in Original-Gleichung schützt vor Vorzeichen- und Umformungsfehlern
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `iso-variable` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `iso-variable` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `iso-variable` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `iso-variable` | 1 | 0 | 🔴 | Distraktor: Operation nur auf einer Seite |
+|  5 | 0 | transfer           | sorting          | `iso-variable` | 1 | 0 | 🔴 | Umformungsschritte ordnen |
+|  6 | 1 | recognize          | true-false       | `koeff-dividieren` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `iso-variable`, `koeff-dividieren` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `iso-variable`, `koeff-dividieren` | 2 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `koeff-dividieren` | 1 | 0 | 🔴 | Distraktor: Vorzeichen beim Umstellen übersehen |
+| 10 | 1 | transfer           | sorting          | `iso-variable`, `koeff-dividieren` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | matching         | `text-uebersetzung` | 1 | 0 | 🔴 | Textbaustein ↔ Variable |
+| 12 | 2 | apply-guided       | multiple-choice  | `text-uebersetzung` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `text-uebersetzung` | 2 | 0 | 🔴 | Altersaufgabe + Flächenaufgabe |
+| 14 | 2 | error-analysis     | multiple-choice  | `text-uebersetzung` | 1 | 0 | 🔴 | Distraktor: falsche Variable definiert |
+| 15 | 2 | transfer           | number-input     | `text-uebersetzung` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `probe-einsetzen` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `probe-einsetzen` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | true-false       | `probe-einsetzen` | 1 | 0 | 🔴 | Lösung gegeben — prüfen ob richtig |
+| 19 | 3 | error-analysis     | multiple-choice  | `probe-einsetzen` | 1 | 0 | 🔴 | Distraktor: Probe auf umgeformter Gleichung statt Original |
+| 20 | 3 | transfer           | sorting          | `probe-einsetzen`, `iso-variable` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-2-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-1-manual-1`, `ex-alg-2-1-manual-2`, `ex-alg-2-1-manual-3`, `ex-alg-2-1-manual-4`, `ex-alg-2-1-manual-5`, `ex-alg-2-1-manual-6`, `ex-alg-2-1-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-2-3` · Polynomgleichungen & Polynomdivision
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Nullstellenraten: Teiler des absoluten Glieds testen ($\pm 1, \pm 2, \ldots$)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Polynomdivision: Nach Nullstelle $x_0$ durch $(x - x_0)$ teilen, Grad sinkt um 1
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Rest der Polynomdivision bei Nullstelle muss 0 sein (Probe!)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Horner-Schema: kompakte Tabelle, doppelt nutzbar (Polynomwert + Division)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Linearfaktor-Zerlegung $P(x) = (x-x_1)(x-x_2)\cdots(x-x_n)$ falls vollständig reell zerlegbar
-  - 🔴 [5] (niedrig) **0/5+** Aufgaben — Bei $x^3 + ax + b$ ohne rationale Nullstelle: Cardano oder numerisch
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-2-2` → `faktor-form`, `abc-formel`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `polynom-grad` — Grad eines Polynoms und höchster Summand
+  2. `rat-wurzel` — Rationaler Wurzelsatz: ganzzahlige Nullstelle teilt das absolute Glied ⇐ `polynom-grad` (SG 0)
+  3. `polydiv` — Polynomdivision $P(x) \div (x-x_0)$ — Grad sinkt um 1 ⇐ `rat-wurzel` (SG 1)
+  4. `polydiv-rest` — Rest der Polynomdivision bei einer Nullstelle ist 0 (Probe) ⇐ `polydiv` (SG 2)
+  5. `horner` — Horner-Schema als kompakte Polynomdivision + Funktionswert-Berechnung ⇐ `polydiv` (SG 3)
+  6. `linearfaktor` — Linearfaktor-Zerlegung $P(x) = \prod (x-x_i)$ bei reellen Nullstellen ⇐ `polydiv` (SG 4)
+  7. `cardano-info` — Ohne rationale Nullstelle: Cardano oder numerisch (Infotiefe) ⇐ `rat-wurzel` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `rat-wurzel` · **0/5+** — Nullstellenraten: Teiler des absoluten Glieds testen ($\pm 1, \pm 2, \ldots$)
+  - 🔴 [1] _hoch_ · Konzepte: `polydiv` · **0/5+** — Polynomdivision: Nach Nullstelle $x_0$ durch $(x - x_0)$ teilen, Grad sinkt um 1
+  - 🔴 [2] _hoch_ · Konzepte: `polydiv-rest` · **0/5+** — Rest der Polynomdivision bei Nullstelle muss 0 sein (Probe!)
+  - 🔴 [3] _mittel_ · Konzepte: `horner` · **0/5+** — Horner-Schema: kompakte Tabelle, doppelt nutzbar (Polynomwert + Division)
+  - 🔴 [4] _hoch_ · Konzepte: `linearfaktor` · **0/5+** — Linearfaktor-Zerlegung $P(x) = (x-x_1)(x-x_2)\cdots(x-x_n)$ falls vollständig reell zerlegbar
+  - 🔴 [5] _niedrig_ · Konzepte: `cardano-info` · **0/5+** — Bei $x^3 + ax + b$ ohne rationale Nullstelle: Cardano oder numerisch
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `rat-wurzel` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `rat-wurzel` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `rat-wurzel` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `rat-wurzel` | 1 | 0 | 🔴 | Distraktor: Teiler des Leitkoeffizienten statt Absolutglied |
+|  5 | 0 | transfer           | matching         | `rat-wurzel` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `polydiv` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `polydiv` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `polydiv` | 2 | 0 | 🔴 | Quotient + konstantes Glied |
+|  9 | 1 | error-analysis     | multiple-choice  | `polydiv` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | sorting          | `polydiv` | 1 | 0 | 🔴 | Divisionsschritte ordnen |
+| 11 | 2 | recognize          | true-false       | `polydiv-rest` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `polydiv-rest` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `polydiv-rest` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `polydiv-rest` | 1 | 0 | 🔴 | Distraktor: Rest $\neq 0$ akzeptiert |
+| 15 | 2 | transfer           | true-false       | `polydiv-rest`, `rat-wurzel` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `horner` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `horner` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `horner` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `horner` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | sorting          | `horner` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | matching         | `linearfaktor` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `linearfaktor`, `polydiv` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `linearfaktor` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `linearfaktor` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `linearfaktor`, `rat-wurzel` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `cardano-info` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `cardano-info` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `cardano-info` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `cardano-info` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | matching         | `cardano-info`, `rat-wurzel` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-2-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-3-a`, `ex-alg-2-3-b`, `ex-alg-2-3-c`, `ex-alg-2-3-manual-1`, `ex-alg-2-3-manual-2`, `ex-alg-2-3-manual-3`, `ex-alg-2-3-manual-4`, `ex-alg-2-3-manual-5` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-2-4` · Ungleichungen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Multiplikation/Division mit negativer Zahl: Ungleichheitszeichen umdrehen!
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Betragsungleichung $|x - a| < b$: $a - b < x < a + b$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Betragsungleichung $|x - a| > b$: $x < a - b$ ODER $x > a + b$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Quadratische Ungleichung: Nullstellen finden, Vorzeichentabelle aufstellen, Bereiche ablesen
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Lösungsmenge im Intervall-Notation: $(-\infty, a) \cup (b, \infty)$ statt $x < a$ oder $x > b$
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Bruchungleichungen: Polstellen des Nenners separat betrachten, nicht quer-multiplizieren
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-2-1` → `iso-variable`, `koeff-dividieren`
+  - `alg-2-2` → `faktor-form`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `ungl-zeichen-flip` — Multiplikation/Division mit negativer Zahl → $<$ und $>$ tauschen (SG 0)
+  2. `betrag-kleiner` — $|x-a|<b \iff a-b < x < a+b$ (SG 1)
+  3. `betrag-groesser` — $|x-a|>b \iff x<a-b$ ODER $x>a+b$ ⇐ `betrag-kleiner` (SG 2)
+  4. `vz-tabelle` — Vorzeichentabelle für quadratische Ungleichungen (SG 3)
+  5. `intervall-notation` — Intervall-Notation $(-\infty, a) \cup (b, \infty)$ ⇐ `vz-tabelle` (SG 4)
+  6. `bruch-ungl-pol` — Bruchungleichung: Polstellen separat betrachten ⇐ `vz-tabelle`, `ungl-zeichen-flip` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `ungl-zeichen-flip` · **0/5+** — Multiplikation/Division mit negativer Zahl: Ungleichheitszeichen umdrehen!
+  - 🔴 [1] _hoch_ · Konzepte: `betrag-kleiner` · **0/5+** — Betragsungleichung $|x - a| < b$: $a - b < x < a + b$
+  - 🔴 [2] _hoch_ · Konzepte: `betrag-groesser` · **0/5+** — Betragsungleichung $|x - a| > b$: $x < a - b$ ODER $x > a + b$
+  - 🔴 [3] _hoch_ · Konzepte: `vz-tabelle` · **0/5+** — Quadratische Ungleichung: Nullstellen finden, Vorzeichentabelle aufstellen, Bereiche ablesen
+  - 🔴 [4] _mittel_ · Konzepte: `intervall-notation` · **0/5+** — Lösungsmenge im Intervall-Notation: $(-\infty, a) \cup (b, \infty)$ statt $x < a$ oder $x > b$
+  - 🔴 [5] _mittel_ · Konzepte: `bruch-ungl-pol` · **0/5+** — Bruchungleichungen: Polstellen des Nenners separat betrachten, nicht quer-multiplizieren
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `ungl-zeichen-flip` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `ungl-zeichen-flip` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `ungl-zeichen-flip` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `ungl-zeichen-flip` | 1 | 0 | 🔴 | Distraktor: Zeichen nicht getauscht |
+|  5 | 0 | transfer           | sorting          | `ungl-zeichen-flip` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `betrag-kleiner` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `betrag-kleiner` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `betrag-kleiner` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `betrag-kleiner` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `betrag-kleiner` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `betrag-groesser` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `betrag-groesser` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `betrag-groesser` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `betrag-groesser`, `betrag-kleiner` | 1 | 0 | 🔴 | Distraktor: ODER als UND behandelt |
+| 15 | 2 | transfer           | matching         | `betrag-groesser`, `betrag-kleiner` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `vz-tabelle` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `vz-tabelle` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `vz-tabelle` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `vz-tabelle` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | sorting          | `vz-tabelle` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | matching         | `intervall-notation` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `intervall-notation` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `intervall-notation`, `vz-tabelle` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `intervall-notation` | 1 | 0 | 🔴 | Distraktor: offene vs. geschlossene Grenze verwechselt |
+| 25 | 4 | transfer           | matching         | `intervall-notation` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `bruch-ungl-pol` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `bruch-ungl-pol` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `bruch-ungl-pol` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `bruch-ungl-pol` | 1 | 0 | 🔴 | Distraktor: quer-multipliziert ohne Fallunterscheidung |
+| 30 | 5 | transfer           | sorting          | `bruch-ungl-pol` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-2-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-4-d`, `ex-alg-2-4-manual-1`, `ex-alg-2-4-manual-2`, `ex-alg-2-4-manual-3`, `ex-alg-2-4-manual-4`, `ex-alg-2-4-manual-5`, `ex-alg-2-4-manual-6`, `ex-alg-2-4-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `la-1-1` · Was ist eine Matrix?
 
@@ -6030,73 +6412,170 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-1-1` · Potenzgesetze
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
-- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Gleiche Basis: $x^a \cdot x^b = x^{a+b}$ und $x^a/x^b = x^{a-b}$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Potenz einer Potenz: $(x^a)^b = x^{a \cdot b}$ — niemals mit Multiplikation verwechseln
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Negativer Exponent $x^{-n} = 1/x^n$ und nullter Exponent $x^0 = 1$ (für $x \neq 0$)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Produkt/Quotient in Klammer: $(xy)^n = x^n y^n$, $(x/y)^n = x^n/y^n$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-0-4` → `distributiv`, `aequivalenz`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `potenz-def` — $x^n$ = $n$-fache Multiplikation von $x$
+  2. `pot-mult` — Gleiche Basis Multiplikation: $x^a \cdot x^b = x^{a+b}$ ⇐ `potenz-def` (SG 0)
+  3. `pot-div` — Gleiche Basis Division: $x^a / x^b = x^{a-b}$ ⇐ `pot-mult` (SG 0)
+  4. `pot-potenz` — Potenz einer Potenz: $(x^a)^b = x^{a\cdot b}$ ⇐ `potenz-def` (SG 1)
+  5. `pot-produkt` — Produkt in Klammer: $(xy)^n = x^n y^n$ ⇐ `potenz-def` (SG 3)
+  6. `pot-quotient` — Quotient in Klammer: $(x/y)^n = x^n/y^n$ ⇐ `pot-produkt` (SG 3)
+  7. `pot-null` — $x^0 = 1$ für $x \neq 0$ ⇐ `pot-div` (SG 2)
+  8. `pot-negativ` — $x^{-n} = 1/x^n$ ⇐ `pot-div` (SG 2)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `pot-mult`, `pot-div` · **0/5+** — Gleiche Basis: $x^a \cdot x^b = x^{a+b}$ und $x^a/x^b = x^{a-b}$
+  - 🔴 [1] _hoch_ · Konzepte: `pot-potenz` · **0/5+** — Potenz einer Potenz: $(x^a)^b = x^{a \cdot b}$ — niemals mit Multiplikation verwechseln
+  - 🔴 [2] _hoch_ · Konzepte: `pot-null`, `pot-negativ` · **0/5+** — Negativer Exponent $x^{-n} = 1/x^n$ und nullter Exponent $x^0 = 1$ (für $x \neq 0$)
+  - 🔴 [3] _mittel_ · Konzepte: `pot-produkt`, `pot-quotient` · **0/5+** — Produkt/Quotient in Klammer: $(xy)^n = x^n y^n$, $(x/y)^n = x^n/y^n$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `pot-mult` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pot-mult`, `pot-div` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `pot-mult` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `pot-mult` | 1 | 0 | 🔴 | Distraktor: Exponenten multipliziert statt addiert |
+|  5 | 0 | transfer           | number-input     | `pot-mult`, `pot-div` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `pot-potenz` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pot-potenz` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `pot-potenz` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pot-potenz`, `pot-mult` | 1 | 0 | 🔴 | Distraktor: mit Multiplikation-Regel verwechselt |
+| 10 | 1 | transfer           | matching         | `pot-potenz`, `pot-mult` | 1 | 0 | 🔴 | Term ↔ Regel |
+| 11 | 2 | recognize          | true-false       | `pot-null`, `pot-negativ` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pot-negativ` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `pot-negativ` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `pot-null` | 1 | 0 | 🔴 | Distraktor: $x^0 = 0$ |
+| 15 | 2 | transfer           | number-input     | `pot-negativ`, `pot-mult` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `pot-produkt` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pot-produkt` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `pot-produkt` | 1 | 0 | 🔴 | $(2x)^3$ auflösen |
+| 19 | 3 | error-analysis     | multiple-choice  | `pot-produkt` | 1 | 0 | 🔴 | Distraktor: Exponent nur auf Variable |
+| 20 | 3 | transfer           | number-input     | `pot-quotient`, `pot-produkt` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-1-1-b`, `ex-alg-1-1-d`, `ex-alg-1-1-e`, `ex-alg-1-1-manual-1`, `ex-alg-1-1-manual-2`, `ex-alg-1-1-manual-3`, `ex-alg-1-1-manual-4`, `ex-alg-1-1-manual-5` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-2-2` · Quadratische Gleichungen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
-- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×4, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Mitternachtsformel $x = (-b \pm \sqrt{b^2 - 4ac})/(2a)$ für $ax^2 + bx + c = 0$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Diskriminante $D = b^2 - 4ac$: $D>0$ zwei reelle Lösungen, $D=0$ eine doppelte, $D<0$ keine reelle
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Satz von Vieta: $x_1 + x_2 = -b/a$, $x_1 \cdot x_2 = c/a$ — zum schnellen Raten/Prüfen
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Faktorisierte Form $(x - x_1)(x - x_2) = 0$ macht Nullstellen direkt sichtbar
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-0-4` → `binom-1`, `binom-2`, `binom-3`, `aequivalenz`
+  - `alg-1-2` → `wurzel-bruchpot`, `wurzel-def-bereich`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `quad-form` — Allgemeine Form $ax^2 + bx + c = 0$ (mit $a \neq 0$) (SG 0)
+  2. `abc-formel` — Mitternachtsformel $x = (-b \pm \sqrt{b^2 - 4ac})/(2a)$ ⇐ `quad-form` (SG 0)
+  3. `pq-formel` — pq-Formel für Normalform $x^2 + px + q = 0$ ⇐ `abc-formel` (SG 0)
+  4. `diskriminante` — Diskriminante $D=b^2-4ac$ — Fallunterscheidung $D>0,=0,<0$ ⇐ `abc-formel` (SG 1)
+  5. `vieta` — Vieta: $x_1+x_2=-p$, $x_1 x_2 = q$ (Normalform) ⇐ `pq-formel` (SG 2)
+  6. `faktor-form` — Faktorisierte Form $(x-x_1)(x-x_2)=0$ zeigt Nullstellen direkt ⇐ `abc-formel` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `quad-form`, `abc-formel`, `pq-formel` · **0/5+** — Mitternachtsformel $x = (-b \pm \sqrt{b^2 - 4ac})/(2a)$ für $ax^2 + bx + c = 0$
+  - 🔴 [1] _hoch_ · Konzepte: `diskriminante` · **0/5+** — Diskriminante $D = b^2 - 4ac$: $D>0$ zwei reelle Lösungen, $D=0$ eine doppelte, $D<0$ keine reelle
+  - 🔴 [2] _mittel_ · Konzepte: `vieta` · **0/5+** — Satz von Vieta: $x_1 + x_2 = -b/a$, $x_1 \cdot x_2 = c/a$ — zum schnellen Raten/Prüfen
+  - 🔴 [3] _hoch_ · Konzepte: `faktor-form` · **0/5+** — Faktorisierte Form $(x - x_1)(x - x_2) = 0$ macht Nullstellen direkt sichtbar
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `abc-formel` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pq-formel` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `abc-formel` | 2 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `abc-formel` | 1 | 0 | 🔴 | Distraktor: Vorzeichen unter der Wurzel falsch |
+|  5 | 0 | transfer           | sorting          | `abc-formel`, `pq-formel` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | matching         | `diskriminante` | 1 | 0 | 🔴 | $D$-Fall ↔ Lösungsanzahl |
+|  7 | 1 | apply-guided       | multiple-choice  | `diskriminante` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `diskriminante` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `diskriminante` | 1 | 0 | 🔴 | Distraktor: $D<0$ mit $D=0$ verwechselt |
+| 10 | 1 | transfer           | true-false       | `diskriminante`, `abc-formel` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `vieta` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `vieta` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `vieta` | 1 | 0 | 🔴 | Lösungen raten + Probe |
+| 14 | 2 | error-analysis     | multiple-choice  | `vieta` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `vieta` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `faktor-form` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `faktor-form` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `faktor-form`, `abc-formel` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `faktor-form` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `faktor-form`, `vieta` | 1 | 0 | 🔴 | Faktor ↔ Nullstelle |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-2-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-2-a`, `ex-alg-2-2-b`, `ex-alg-2-2-d`, `ex-alg-2-2-e`, `ex-alg-2-2-manual-1`, `ex-alg-2-2-manual-2`, `ex-alg-2-2-manual-3`, `ex-alg-2-2-manual-4` … (+3 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-3-2` · Elementare Funktionen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
-- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×2, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, sorting, number-input, matching, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Potenzfunktion $x^n$: gerade $n$ → Parabel, ungerade $n$ → S-Form; Def.bereich $\mathbb{R}$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Exponentialfunktion $a^x$ ($a>0, a\neq 1$): Wertebereich $(0,\infty)$, streng monoton
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Logarithmusfunktion $\log_a x$: Def.bereich $(0,\infty)$, Umkehrung von $a^x$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Wachstumshierarchie: $\ln x \ll x^n \ll a^x$ für $x \to \infty$ (mit $a > 1$)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Eulersche Zahl $e \approx 2{,}718$: Basis des natürlichen Logarithmus
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Wurzelfunktion $\sqrt{x} = x^{1/2}$: Def.bereich $[0,\infty)$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-3-1` → `fkt-def`, `def-bereich`, `wertebereich`
+  - `alg-1-1` → `pot-potenz`
+  - `alg-1-2` → `wurzel-bruchpot`
+  - `alg-1-3` → `log-def`, `log-umkehr`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `potenz-fkt` — Potenzfunktion $f(x)=x^n$: Symmetrie je nach gerade/ungerade $n$ (SG 0)
+  2. `exp-fkt` — Exponentialfunktion $f(x)=a^x$ ($a>0, a\neq 1$): $W = (0,\infty)$ (SG 1)
+  3. `log-fkt` — Logarithmusfunktion $f(x)=\log_a x$: $D = (0,\infty)$ ⇐ `exp-fkt` (SG 2)
+  4. `wurzel-fkt` — Wurzelfunktion $f(x)=\sqrt x$: $D = [0,\infty)$ (SG 5)
+  5. `euler-zahl` — $e \approx 2{,}718$ als Basis des natürlichen Logarithmus ⇐ `exp-fkt` (SG 4)
+  6. `wachstum-hierarchie` — Wachstumshierarchie $\ln x \ll x^n \ll a^x$ für $x \to \infty$ ⇐ `potenz-fkt`, `exp-fkt`, `log-fkt` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `potenz-fkt` · **0/5+** — Potenzfunktion $x^n$: gerade $n$ → Parabel, ungerade $n$ → S-Form; Def.bereich $\mathbb{R}$
+  - 🔴 [1] _hoch_ · Konzepte: `exp-fkt` · **0/5+** — Exponentialfunktion $a^x$ ($a>0, a\neq 1$): Wertebereich $(0,\infty)$, streng monoton
+  - 🔴 [2] _hoch_ · Konzepte: `log-fkt` · **0/5+** — Logarithmusfunktion $\log_a x$: Def.bereich $(0,\infty)$, Umkehrung von $a^x$
+  - 🔴 [3] _hoch_ · Konzepte: `wachstum-hierarchie` · **0/5+** — Wachstumshierarchie: $\ln x \ll x^n \ll a^x$ für $x \to \infty$ (mit $a > 1$)
+  - 🔴 [4] _mittel_ · Konzepte: `euler-zahl` · **0/5+** — Eulersche Zahl $e \approx 2{,}718$: Basis des natürlichen Logarithmus
+  - 🔴 [5] _mittel_ · Konzepte: `wurzel-fkt` · **0/5+** — Wurzelfunktion $\sqrt{x} = x^{1/2}$: Def.bereich $[0,\infty)$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `potenz-fkt` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `potenz-fkt` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | matching         | `potenz-fkt` | 1 | 0 | 🔴 | Graph ↔ $x^n$ |
+|  4 | 0 | error-analysis     | multiple-choice  | `potenz-fkt` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `potenz-fkt` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `exp-fkt` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `exp-fkt` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `exp-fkt` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `exp-fkt` | 1 | 0 | 🔴 | Distraktor: $a^x$ kann $0$ sein |
+| 10 | 1 | transfer           | matching         | `exp-fkt` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `log-fkt` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `log-fkt` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `log-fkt` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `log-fkt` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `log-fkt`, `exp-fkt` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | matching         | `wachstum-hierarchie` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `wachstum-hierarchie` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `wachstum-hierarchie` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `wachstum-hierarchie` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | sorting          | `wachstum-hierarchie` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `euler-zahl` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `euler-zahl` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `euler-zahl` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `euler-zahl` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `euler-zahl` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `wurzel-fkt` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `wurzel-fkt` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `wurzel-fkt` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `wurzel-fkt` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | matching         | `wurzel-fkt` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-3-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-2-a`, `ex-alg-3-2-b`, `ex-alg-3-2-c`, `ex-alg-3-2-d`, `ex-alg-3-2-e`, `ex-alg-3-2-manual-1`, `ex-alg-3-2-manual-2`, `ex-alg-3-2-manual-3` … (+4 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `la-1-2` · Matrizenrechnung
 
@@ -6352,36 +6831,100 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-0-1` · Grundrechnen, Klammern & Vorrang
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Aufgaben aktuell:** 26 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×6, true-false ×5, matching ×5, sorting ×4
-- **Typen einsetzen (Rotation):** sorting, true-false, matching
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - ✅ [0] (hoch) **5/5+** Aufgaben — Vorrangregel Punkt-vor-Strich bei gemischten Termen
-  - ✅ [1] (hoch) **5/5+** Aufgaben — Minuszeichen vor Klammer auf alle Summanden anwenden
-  - ✅ [2] (mittel) **5/5+** Aufgaben — Doppel-Minus aufgelöst: $(-a)(-b)=+ab$
-  - ✅ [3] (mittel) **5/5+** Aufgaben — Klammerschachtelung von innen nach außen abarbeiten
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `prio-basic` — Vorrangregel: Punkt- vor Strichrechnung (SG 0)
+  2. `prio-potenz` — Potenz- vor Punktrechnung ⇐ `prio-basic` (SG 0)
+  3. `prio-klammer` — Klammern überschreiben die Präzedenz (zuerst ausrechnen) ⇐ `prio-basic` (SG 3)
+  4. `minus-vorklammer` — $-(a+b) = -a - b$ — Minuszeichen auf alle Summanden (SG 1)
+  5. `minus-mal-minus` — $(-a)(-b) = +ab$ — Doppel-Minus = Plus ⇐ `minus-vorklammer` (SG 2)
+  6. `klammer-schachtel` — Geschachtelte Klammern: innerste zuerst auflösen ⇐ `prio-klammer` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `prio-basic`, `prio-potenz` · **5/5+** — Vorrangregel Punkt-vor-Strich bei gemischten Termen
+  - ✅ [1] _hoch_ · Konzepte: `minus-vorklammer` · **5/5+** — Minuszeichen vor Klammer auf alle Summanden anwenden
+  - ✅ [2] _mittel_ · Konzepte: `minus-mal-minus` · **5/5+** — Doppel-Minus aufgelöst: $(-a)(-b)=+ab$
+  - ✅ [3] _mittel_ · Konzepte: `prio-klammer`, `klammer-schachtel` · **5/5+** — Klammerschachtelung von innen nach außen abarbeiten
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `prio-basic` | 1 | 0 | 🔴 | Aussage „$3+4\cdot 2 = 11$" prüfen |
+|  2 | 0 | apply-guided       | multiple-choice  | `prio-basic` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `prio-basic`, `prio-potenz` | 2 | 0 | 🔴 | Term mit Potenz + Mult + Strich |
+|  4 | 0 | error-analysis     | multiple-choice  | `prio-basic` | 1 | 0 | 🔴 | Distraktor: von links nach rechts gerechnet |
+|  5 | 0 | transfer           | sorting          | `prio-basic`, `prio-potenz` | 1 | 0 | 🔴 | Schritte in korrekte Reihenfolge bringen |
+|  6 | 1 | recognize          | true-false       | `minus-vorklammer` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `minus-vorklammer` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `minus-vorklammer` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `minus-vorklammer` | 1 | 0 | 🔴 | Distraktor: nur ersten Summanden umgedreht |
+| 10 | 1 | transfer           | matching         | `minus-vorklammer` | 1 | 0 | 🔴 | Klammer-Term ↔ aufgelöstes Ergebnis |
+| 11 | 2 | recognize          | true-false       | `minus-mal-minus` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `minus-mal-minus` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `minus-mal-minus` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `minus-mal-minus` | 1 | 0 | 🔴 | Distraktor: Vorzeichen übersehen |
+| 15 | 2 | transfer           | number-input     | `minus-mal-minus`, `minus-vorklammer` | 1 | 0 | 🔴 | Kombi: $-(-(2-5))$ oder ähnlich |
+| 16 | 3 | recognize          | true-false       | `klammer-schachtel` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `klammer-schachtel` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `klammer-schachtel` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `klammer-schachtel` | 1 | 0 | 🔴 | Distraktor: äußerste Klammer zuerst gerechnet |
+| 20 | 3 | transfer           | sorting          | `klammer-schachtel`, `prio-klammer` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-0-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-0-2` · Bruchrechnen sicher
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Aufgaben aktuell:** 26 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×5, true-false ×5, matching ×4, sorting ×5
-- **Typen einsetzen (Rotation):** matching, number-input, true-false
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - ✅ [0] (hoch) **5/5+** Aufgaben — Hauptnenner bei ungleichnamigen Brüchen finden (kgV)
-  - ✅ [1] (hoch) **5/5+** Aufgaben — Division durch Bruch als Multiplikation mit Kehrwert
-  - ✅ [2] (mittel) **5/5+** Aufgaben — Doppelbrüche auflösen
-  - ✅ [3] (mittel) **5/5+** Aufgaben — Bruch vollständig kürzen per ggT
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-0-1` → `prio-basic`, `prio-klammer`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `bruch-erweitern` — Erweitern/Kürzen: Zähler und Nenner mit/durch dieselbe Zahl (Wert bleibt)
+  2. `ggt-kuerzen` — Vollständiges Kürzen per ggT von Zähler und Nenner ⇐ `bruch-erweitern` (SG 3)
+  3. `kgv-hauptnenner` — Hauptnenner = kgV der Einzelnenner (Primfaktorzerlegung) ⇐ `bruch-erweitern` (SG 0)
+  4. `bruch-add` — Addition/Subtraktion: erst Hauptnenner, dann Zähler rechnen ⇐ `kgv-hauptnenner` (SG 0)
+  5. `bruch-mult` — Multiplikation: Zähler $\cdot$ Zähler, Nenner $\cdot$ Nenner
+  6. `bruch-div-kehr` — Division durch Bruch = Multiplikation mit Kehrwert ⇐ `bruch-mult` (SG 1)
+  7. `doppelbruch` — Doppelbruch auflösen über Division-Kehrwert-Regel ⇐ `bruch-div-kehr` (SG 2)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `kgv-hauptnenner`, `bruch-add` · **5/5+** — Hauptnenner bei ungleichnamigen Brüchen finden (kgV)
+  - ✅ [1] _hoch_ · Konzepte: `bruch-div-kehr` · **5/5+** — Division durch Bruch als Multiplikation mit Kehrwert
+  - ✅ [2] _mittel_ · Konzepte: `doppelbruch` · **5/5+** — Doppelbrüche auflösen
+  - ✅ [3] _mittel_ · Konzepte: `ggt-kuerzen` · **5/5+** — Bruch vollständig kürzen per ggT
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kgv-hauptnenner` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kgv-hauptnenner` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `kgv-hauptnenner`, `bruch-add` | 2 | 0 | 🔴 | kgV bestimmen + Brüche addieren |
+|  4 | 0 | error-analysis     | multiple-choice  | `bruch-add` | 1 | 0 | 🔴 | Distraktor: Zähler und Nenner einzeln addiert |
+|  5 | 0 | transfer           | sorting          | `kgv-hauptnenner`, `bruch-add` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `bruch-div-kehr` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `bruch-div-kehr` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `bruch-div-kehr` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `bruch-div-kehr` | 1 | 0 | 🔴 | Distraktor: statt Kehrwert direkt dividiert |
+| 10 | 1 | transfer           | matching         | `bruch-div-kehr`, `bruch-mult` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `doppelbruch` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `doppelbruch` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `doppelbruch` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `doppelbruch` | 1 | 0 | 🔴 | Distraktor: Zähler und Nenner falsch gruppiert |
+| 15 | 2 | transfer           | number-input     | `doppelbruch`, `ggt-kuerzen` | 1 | 0 | 🔴 | Doppelbruch auflösen + Endkürzen |
+| 16 | 3 | recognize          | true-false       | `ggt-kuerzen` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `ggt-kuerzen` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `ggt-kuerzen` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `ggt-kuerzen` | 1 | 0 | 🔴 | Distraktor: nicht vollständig gekürzt |
+| 20 | 3 | transfer           | sorting          | `ggt-kuerzen` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-0-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `int-3-4` · Bogenlänge & Durchschnittswert
 
@@ -6477,38 +7020,119 @@ npm run build              # abschließender End-zu-End-Check
 #### `alg-0-3` · Prozent & Dreisatz
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Aufgaben aktuell:** 31 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×8, true-false ×6, matching ×6, sorting ×5
-- **Typen einsetzen (Rotation):** sorting, multiple-choice, true-false
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - ✅ [0] (hoch) **5/5+** Aufgaben — Grundformel: $W = G \cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$
-  - ✅ [1] (hoch) **5/5+** Aufgaben — Wachstumsfaktor: $+p\% \to \times(1 + p/100)$, $-p\% \to \times(1 - p/100)$
-  - ✅ [2] (hoch) **5/5+** Aufgaben — Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\%$ dann $-10\% \neq 0$)
-  - ✅ [3] (hoch) **5/5+** Aufgaben — Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$
-  - ✅ [4] (mittel) **5/5+** Aufgaben — Prozentpunkt vs. Prozent: $15\%$ auf $10\%$ erhöht ist $11{,}5\%$, nicht $25\%$
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-0-2` → `bruch-erweitern`, `bruch-mult`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `prozent-def` — $p\%$ bedeutet $\dfrac{p}{100}$ (SG 0)
+  2. `prozent-grund` — Grundformel $W = G \cdot \tfrac{p}{100}$ und Umstellungen nach $G$ / $p$ ⇐ `prozent-def` (SG 0)
+  3. `wachstumsfaktor` — Wachstumsfaktor: $\pm p\%$ als $\times (1 \pm p/100)$ ⇐ `prozent-def` (SG 1)
+  4. `prozent-kette` — Zwei Änderungen in Folge multiplizieren sich (nicht addieren) ⇐ `wachstumsfaktor` (SG 2)
+  5. `direkt-prop` — Direkte Proportionalität: $x_1/y_1 = x_2/y_2$ (SG 3)
+  6. `indirekt-prop` — Indirekte Proportionalität: $x_1 y_1 = x_2 y_2$ ⇐ `direkt-prop` (SG 3)
+  7. `prozentpunkt` — Prozentpunkt vs. Prozent: Differenz vs. relativer Anstieg ⇐ `wachstumsfaktor` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `prozent-def`, `prozent-grund` · **5/5+** — Grundformel: $W = G \cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$
+  - ✅ [1] _hoch_ · Konzepte: `wachstumsfaktor` · **5/5+** — Wachstumsfaktor: $+p\% \to \times(1 + p/100)$, $-p\% \to \times(1 - p/100)$
+  - ✅ [2] _hoch_ · Konzepte: `prozent-kette` · **5/5+** — Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\%$ dann $-10\% \neq 0$)
+  - ✅ [3] _hoch_ · Konzepte: `direkt-prop`, `indirekt-prop` · **5/5+** — Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$
+  - ✅ [4] _mittel_ · Konzepte: `prozentpunkt` · **5/5+** — Prozentpunkt vs. Prozent: $15\%$ auf $10\%$ erhöht ist $11{,}5\%$, nicht $25\%$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `prozent-def` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `prozent-grund` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `prozent-grund` | 2 | 0 | 🔴 | Einmal $W$, einmal $G$ oder $p$ gesucht |
+|  4 | 0 | error-analysis     | multiple-choice  | `prozent-grund` | 1 | 0 | 🔴 | Distraktor: durch $p$ statt $p/100$ geteilt |
+|  5 | 0 | transfer           | matching         | `prozent-grund` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `wachstumsfaktor` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `wachstumsfaktor` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `wachstumsfaktor` | 1 | 0 | 🔴 | Rabatt-Rechnung |
+|  9 | 1 | error-analysis     | multiple-choice  | `wachstumsfaktor` | 1 | 0 | 🔴 | Distraktor: Differenz statt Faktor gerechnet |
+| 10 | 1 | transfer           | number-input     | `wachstumsfaktor` | 1 | 0 | 🔴 | Rückrechnen vom Endpreis zum Grundpreis |
+| 11 | 2 | recognize          | true-false       | `prozent-kette` | 1 | 0 | 🔴 | +10% dann −10% ergibt 100%? — falsch |
+| 12 | 2 | apply-guided       | multiple-choice  | `prozent-kette` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `prozent-kette` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `prozent-kette` | 1 | 0 | 🔴 | Distraktor: Prozente addiert |
+| 15 | 2 | transfer           | sorting          | `prozent-kette`, `wachstumsfaktor` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `direkt-prop`, `indirekt-prop` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `direkt-prop` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `indirekt-prop` | 1 | 0 | 🔴 | Pumpen-Typ-Dreisatz |
+| 19 | 3 | error-analysis     | multiple-choice  | `direkt-prop`, `indirekt-prop` | 1 | 0 | 🔴 | Distraktor: direkt statt indirekt gerechnet |
+| 20 | 3 | transfer           | matching         | `direkt-prop`, `indirekt-prop` | 1 | 0 | 🔴 | Situation ↔ Typ |
+| 21 | 4 | recognize          | true-false       | `prozentpunkt` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `prozentpunkt` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `prozentpunkt` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `prozentpunkt` | 1 | 0 | 🔴 | Distraktor: Prozentpunkte addiert statt multipliziert |
+| 25 | 4 | transfer           | number-input     | `prozentpunkt`, `wachstumsfaktor` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-0-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-0-4` · Termumformung & Gleichungen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Aufgaben aktuell:** 31 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×7, true-false ×6, matching ×5, sorting ×6
-- **Typen einsetzen (Rotation):** matching, true-false, sorting
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - ✅ [0] (hoch) **5/5+** Aufgaben — Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren
-  - ✅ [1] (hoch) **5/5+** Aufgaben — Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)
-  - ✅ [2] (hoch) **5/5+** Aufgaben — Binomische Formeln: $(a\pm b)^2 = a^2 \pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$
-  - ✅ [3] (hoch) **5/5+** Aufgaben — Äquivalenzumformungen: auf beiden Seiten dasselbe tun, nicht durch Null teilen
-  - ✅ [4] (mittel) **5/5+** Aufgaben — Beim Quadrieren Probe nötig (Scheinlösungen möglich)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Bruchrechnen fehlerfrei (Hauptnenner, Kürzen, Doppelbruch, Division durch Bruch = Mult. mit Kehrwert). · Potenz- und Logarithmengesetze auswendig. · Lineare und quadratische Gleichungen mit großer Lösungsformel. · …
-  - _Typische Fehler (gute Distraktoren):_ Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-  - _Klausur-Fokus:_ Bruchgleichungen mit Definitionsbereich. · Quadratische Gleichung und Scheitelpunktberechnung. · Exponential-/Logarithmus-Anwendungen (z. B. Zinseszins, RC-Entladung).
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-0-1` → `prio-basic`, `minus-vorklammer`
+  - `alg-0-2` → `bruch-erweitern`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `gleichartige-terme` — Gleichartige Terme: gleiche Variable mit gleichem Exponenten (SG 0)
+  2. `koeff-addieren` — Nur die Koeffizienten gleichartiger Terme addieren ⇐ `gleichartige-terme` (SG 0)
+  3. `distributiv` — Distributivgesetz: $a(b+c) = ab + ac$ (SG 1)
+  4. `ausklammern` — Ausklammern als Umkehrung des Distributivgesetzes ⇐ `distributiv` (SG 1)
+  5. `binom-1` — 1. binomische Formel: $(a+b)^2 = a^2 + 2ab + b^2$ ⇐ `distributiv` (SG 2)
+  6. `binom-2` — 2. binomische Formel: $(a-b)^2 = a^2 - 2ab + b^2$ ⇐ `distributiv` (SG 2)
+  7. `binom-3` — 3. binomische Formel: $(a+b)(a-b) = a^2 - b^2$ ⇐ `distributiv` (SG 2)
+  8. `aequivalenz` — Äquivalenzumformung: auf beiden Seiten dasselbe tun (SG 3)
+  9. `nicht-durch-null` — Division durch Null verboten (verliert Lösungen) ⇐ `aequivalenz` (SG 3)
+  10. `formel-umstellen` — Formel nach Variable umstellen: Operationen umkehren ⇐ `aequivalenz` (SG 3)
+  11. `quadrieren-probe` — Beim Quadrieren Probe nötig — Scheinlösungen möglich ⇐ `aequivalenz` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `gleichartige-terme`, `koeff-addieren` · **5/5+** — Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren
+  - ✅ [1] _hoch_ · Konzepte: `distributiv`, `ausklammern` · **5/5+** — Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)
+  - ✅ [2] _hoch_ · Konzepte: `binom-1`, `binom-2`, `binom-3` · **5/5+** — Binomische Formeln: $(a\pm b)^2 = a^2 \pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$
+  - ✅ [3] _hoch_ · Konzepte: `aequivalenz`, `nicht-durch-null`, `formel-umstellen` · **5/5+** — Äquivalenzumformungen: auf beiden Seiten dasselbe tun, nicht durch Null teilen
+  - ✅ [4] _mittel_ · Konzepte: `quadrieren-probe` · **5/5+** — Beim Quadrieren Probe nötig (Scheinlösungen möglich)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `gleichartige-terme` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `gleichartige-terme`, `koeff-addieren` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `koeff-addieren` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `gleichartige-terme` | 1 | 0 | 🔴 | Distraktor: $x+x^2$ als gleichartig behandelt |
+|  5 | 0 | transfer           | matching         | `gleichartige-terme` | 1 | 0 | 🔴 | Terme ↔ gleichartige Gruppe |
+|  6 | 1 | recognize          | true-false       | `distributiv` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `distributiv` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `distributiv` | 1 | 0 | 🔴 | Ausmultiplizieren |
+|  9 | 1 | error-analysis     | multiple-choice  | `distributiv` | 1 | 0 | 🔴 | Distraktor: Faktor nur auf ersten Summanden |
+| 10 | 1 | transfer           | number-input     | `ausklammern` | 1 | 0 | 🔴 | Ausklammern des größten gemeinsamen Faktors |
+| 11 | 2 | recognize          | matching         | `binom-1`, `binom-2`, `binom-3` | 1 | 0 | 🔴 | Formel ↔ Typ |
+| 12 | 2 | apply-guided       | multiple-choice  | `binom-1` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `binom-2` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `binom-1`, `binom-2` | 1 | 0 | 🔴 | Distraktor: mittleren Term vergessen |
+| 15 | 2 | transfer           | number-input     | `binom-3` | 1 | 0 | 🔴 | Anwendung 3. binomische Formel in Zahlenrechnung |
+| 16 | 3 | recognize          | true-false       | `aequivalenz`, `nicht-durch-null` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `aequivalenz` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `formel-umstellen` | 1 | 0 | 🔴 | Formel nach Variable umstellen |
+| 19 | 3 | error-analysis     | multiple-choice  | `nicht-durch-null` | 1 | 0 | 🔴 | Distraktor: durch 0-Term geteilt |
+| 20 | 3 | transfer           | sorting          | `aequivalenz`, `formel-umstellen` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `quadrieren-probe` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `quadrieren-probe` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `quadrieren-probe` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `quadrieren-probe` | 1 | 0 | 🔴 | Distraktor: Scheinlösung akzeptiert |
+| 25 | 4 | transfer           | sorting          | `quadrieren-probe`, `aequivalenz` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-0-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `trig-3-5` · Sinussatz & Cosinussatz
 

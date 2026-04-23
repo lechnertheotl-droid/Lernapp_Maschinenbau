@@ -41,6 +41,7 @@ import {
   isMcWithCompleteWae,
   collectTopicMetrics,
   percent,
+  computeBlueprintCoverage,
 } from './lib/content-metrics.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -383,6 +384,171 @@ if (practiceGaps.length > 0) {
   out.push(``)
 }
 
+// ─── Task-Card-Renderer ─────────────────────────────────────────────────────
+
+function statusBadge(status) {
+  if (status === 'done') return '✅'
+  if (status === 'partial') return '🟡'
+  return '🔴'
+}
+
+function renderBlueprintCard(t, out) {
+  const bp = t.blueprint
+  out.push(`#### \`${t.lessonId}\` · ${t.lessonTitle}`)
+  out.push(``)
+  out.push(`- **Topic:** \`${t.topicId}\` (${t.topicTitle}) · **Unit:** ${t.unitTitle}${t.isExamUnit ? ' · **[PRÜFUNG]**' : ''}`)
+  if (t.lessonSummary) out.push(`- **Lesson-Ziel:** ${t.lessonSummary}`)
+
+  // 1) Prerequisites — was muss sitzen, bevor diese Lesson beginnt?
+  if (Array.isArray(bp.prerequisites) && bp.prerequisites.length > 0) {
+    out.push(`- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**`)
+    for (const p of bp.prerequisites) {
+      const concepts = Array.isArray(p.concepts) ? p.concepts.map((c) => `\`${c}\``).join(', ') : '—'
+      out.push(`  - \`${p.lessonId}\` → ${concepts}`)
+    }
+  } else {
+    out.push(`- **Prerequisites:** keine (Einstiegs-Lesson).`)
+  }
+
+  // 2) Konzept-Sequenz — geordnete Liste mit dependsOn-Pfeilen.
+  if (Array.isArray(bp.concepts) && bp.concepts.length > 0) {
+    out.push(`- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**`)
+    // Sub-Goal-Index je Konzept (für Spaltenlabel)
+    const conceptToSg = new Map()
+    for (const [sgKey, list] of Object.entries(bp.subGoalConcepts ?? {})) {
+      for (const cid of list ?? []) {
+        if (!conceptToSg.has(cid)) conceptToSg.set(cid, Number(sgKey))
+      }
+    }
+    bp.concepts.forEach((c, i) => {
+      const deps = Array.isArray(c.dependsOn) && c.dependsOn.length > 0
+        ? ` ⇐ ${c.dependsOn.map((d) => `\`${d}\``).join(', ')}`
+        : ''
+      const sg = conceptToSg.has(c.id) ? ` (SG ${conceptToSg.get(c.id)})` : ''
+      out.push(`  ${i + 1}. \`${c.id}\` — ${c.title}${deps}${sg}`)
+    })
+  }
+
+  // 3) Sub-Goals mit Konzept-Zuordnung und aktueller Coverage.
+  if (t.subGoalsCoverage && t.subGoalsCoverage.length > 0) {
+    out.push(`- **Sub-Goals (mindestens ${MIN_TASKS_PER_SUB_GOAL} Aufgaben je Sub-Goal — mehr ist besser):**`)
+    for (const sg of t.subGoalsCoverage) {
+      const sgc = bp.subGoalConcepts?.[sg.index] ?? bp.subGoalConcepts?.[String(sg.index)] ?? []
+      const conceptList = sgc.map((c) => `\`${c}\``).join(', ') || '—'
+      const status = sg.have >= sg.target ? '✅' : sg.have > 0 ? '🟡' : '🔴'
+      out.push(`  - ${status} [${sg.index}] _${sg.examRelevance}_ · Konzepte: ${conceptList} · **${sg.have}/${sg.target}+** — ${sg.label}`)
+    }
+  }
+
+  // 4) Aufgaben-Bauplan: Matrix mit Status je taskPlan-Zeile.
+  const coverage = computeBlueprintCoverage(bp, t.exercises ?? [])
+  const missingRows = coverage.filter((c) => c.status !== 'done')
+  out.push(`- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**`)
+  out.push(``)
+  out.push(`| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |`)
+  out.push(`|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|`)
+  coverage.forEach((c, i) => {
+    const row = c.row
+    const uses = (row.uses ?? []).map((u) => `\`${u}\``).join(', ')
+    const note = row.note ?? ''
+    const qty = row.qty ?? 1
+    const have = c.matched.length
+    out.push(`| ${String(i + 1).padStart(2)} | ${row.subGoal} | ${String(row.stage).padEnd(18)} | ${String(row.type).padEnd(16)} | ${uses} | ${qty} | ${have} | ${statusBadge(c.status)} | ${note} |`)
+  })
+  out.push(``)
+
+  if (missingRows.length > 0) {
+    out.push(`- **Offene Aufgaben-Lücken:** ${missingRows.length} (Zeilen ${missingRows.map((m) => m.index + 1).join(', ')}) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.`)
+  }
+
+  // 5) Ablage-Vorgabe.
+  out.push(`- **Ablage:**`)
+  out.push(`  - Goal-Tasks (mit Sub-Goal-Zuordnung): \`${t.targetFile.goalTasks}\` unter \`'${t.lessonId}': { 0: [...], 1: [...], ... }\``)
+  out.push(`  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): \`${t.targetFile.supplements}\``)
+
+  // 6) Qualitäts-Warnungen, die auch alte Checks abdecken.
+  if (t.fourBlockMissing.length > 0) {
+    out.push(`- **4-Block-Erklärung fehlt bei:** ${t.fourBlockMissing.slice(0, 8).map((id) => `\`${id}\``).join(', ')}${t.fourBlockMissing.length > 8 ? ` … (+${t.fourBlockMissing.length - 8} weitere)` : ''}`)
+  }
+  if (t.mcMissingWae.length > 0) {
+    out.push(`- **MC-wAE fehlt bei:** ${t.mcMissingWae.slice(0, 8).map((id) => `\`${id}\``).join(', ')}${t.mcMissingWae.length > 8 ? ` … (+${t.mcMissingWae.length - 8} weitere)` : ''}`)
+  }
+
+  // 7) Visualisierung (wie bisher).
+  if (t.recommendedVisualizations && t.recommendedVisualizations.length > 0) {
+    if (t.hasVisualization) {
+      out.push(`- **Visualisierung:** ✅ vorhanden. Weitere möglich: ${t.recommendedVisualizations.map((v) => `\`${v}\``).join(', ')}.`)
+    } else {
+      out.push(`- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: ${t.recommendedVisualizations.map((v) => `\`${v}\``).join(', ')}.`)
+    }
+  }
+
+  // 8) Topic-Kontext.
+  const guideForTask = TOPIC_GUIDES[t.topicId]
+  if (guideForTask?.commonMistakes?.length > 0) {
+    out.push(`- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** ${guideForTask.commonMistakes.slice(0, 3).join(' · ')}${guideForTask.commonMistakes.length > 3 ? ' · …' : ''}`)
+  }
+}
+
+function renderLegacyCard(t, out) {
+  out.push(`#### \`${t.lessonId}\` · ${t.lessonTitle}`)
+  out.push(``)
+  out.push(`- **Topic:** \`${t.topicId}\` (${t.topicTitle}) · **Unit:** ${t.unitTitle}${t.isExamUnit ? ' · **[PRÜFUNG]**' : ''}`)
+  out.push(`- **Aufgaben aktuell:** ${t.have} · **mindestens:** ${t.target} · **fehlen bis Minimum:** ${t.missing} (mehr ist besser, kein Cap)`)
+  const histParts = Object.entries(t.typeHistogram)
+    .filter(([, n]) => n > 0)
+    .map(([type, n]) => `${type} ×${n}`)
+  out.push(`- **Typen vorhanden:** ${histParts.length > 0 ? histParts.join(', ') : '— (leer)'}`)
+  out.push(`- **Typen einsetzen (Rotation):** ${t.suggestedTypes.join(', ')}`)
+
+  if (t.subGoalsCoverage && t.subGoalsCoverage.length > 0) {
+    out.push(`- **Sub-Goals dieser Lesson** (mindestens ${MIN_TASKS_PER_SUB_GOAL} Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):`)
+    for (const sg of t.subGoalsCoverage) {
+      const status = sg.have >= sg.target ? '✅' : sg.have > 0 ? '🟡' : '🔴'
+      out.push(`  - ${status} [${sg.index}] (${sg.examRelevance}) **${sg.have}/${sg.target}+** Aufgaben — ${sg.label}`)
+    }
+  }
+
+  if (t.subGoalsMissingTasks.length > 0) {
+    const deltas = t.subGoalsMissingTasks.map((m) => `SG ${m.index}: +${m.target - m.have}`).join(', ')
+    out.push(`- **Goal-Tasks fehlen (mindestens):** ${deltas} — gerne mehr, keine Obergrenze`)
+    out.push(`  - Ablage: \`${t.targetFile.goalTasks}\``)
+    out.push(`  - Format: \`{ [subGoalIndex]: Exercise[] }\` — Array pro Sub-Goal, beliebig viele Einträge.`)
+  }
+  if (t.missing > 0) {
+    out.push(`- **Zusatz-Aufgaben fehlen (mindestens):** ${t.missing} — gerne mehr, keine Obergrenze`)
+    out.push(`  - Ablage: \`${t.targetFile.supplements}\``)
+  }
+  if (t.fourBlockMissing.length > 0) {
+    out.push(`- **4-Block-Erklärung fehlt bei:** ${t.fourBlockMissing.slice(0, 8).map((id) => `\`${id}\``).join(', ')}${t.fourBlockMissing.length > 8 ? ` … (+${t.fourBlockMissing.length - 8} weitere)` : ''}`)
+  }
+  if (t.mcMissingWae.length > 0) {
+    out.push(`- **MC-wAE fehlt bei:** ${t.mcMissingWae.slice(0, 8).map((id) => `\`${id}\``).join(', ')}${t.mcMissingWae.length > 8 ? ` … (+${t.mcMissingWae.length - 8} weitere)` : ''}`)
+  }
+
+  if (t.recommendedVisualizations && t.recommendedVisualizations.length > 0) {
+    if (t.hasVisualization) {
+      out.push(`- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): ${t.recommendedVisualizations.map((v) => `\`${v}\``).join(', ')} — bei passenden Lesson-Themen als weiteren \`type: 'visualization'\`-Step einbauen.`)
+    } else {
+      out.push(`- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen \`type: 'visualization'\`-Step in \`lesson.steps\` einbauen. Passende Viz-IDs für dieses Topic: ${t.recommendedVisualizations.map((v) => `\`${v}\``).join(', ')}. Alle 21 verfügbaren Viz siehe \`AVAILABLE_VISUALIZATIONS\` in \`src/content/curriculum.js\`.`)
+    }
+  }
+
+  const guideForTask = TOPIC_GUIDES[t.topicId]
+  if (guideForTask) {
+    out.push(`- **Lehrplan-Kontext für \`${t.topicId}\`** (aus \`src/content/curriculum.js\`):`)
+    if (guideForTask.mustKnow?.length > 0) {
+      out.push(`  - _Must-Know:_ ${guideForTask.mustKnow.slice(0, 3).join(' · ')}${guideForTask.mustKnow.length > 3 ? ` · …` : ''}`)
+    }
+    if (guideForTask.commonMistakes?.length > 0) {
+      out.push(`  - _Typische Fehler (gute Distraktoren):_ ${guideForTask.commonMistakes.slice(0, 3).join(' · ')}${guideForTask.commonMistakes.length > 3 ? ` · …` : ''}`)
+    }
+    if (guideForTask.examFocus?.length > 0) {
+      out.push(`  - _Klausur-Fokus:_ ${guideForTask.examFocus.join(' · ')}`)
+    }
+  }
+}
+
 // ─── Agenten-Auftragsliste ──────────────────────────────────────────────────
 // Alles, was ein Coding-Agent (Claude Code) braucht, um fehlende Aufgaben zu
 // schreiben, in kopierbaren Task-Cards.
@@ -449,64 +615,10 @@ if (agentTasks.length > 0) {
     out.push(``)
 
     for (const t of bucket) {
-      out.push(`#### \`${t.lessonId}\` · ${t.lessonTitle}`)
-      out.push(``)
-      out.push(`- **Topic:** \`${t.topicId}\` (${t.topicTitle}) · **Unit:** ${t.unitTitle}${t.isExamUnit ? ' · **[PRÜFUNG]**' : ''}`)
-      out.push(`- **Aufgaben aktuell:** ${t.have} · **mindestens:** ${t.target} · **fehlen bis Minimum:** ${t.missing} (mehr ist besser, kein Cap)`)
-      const histParts = Object.entries(t.typeHistogram)
-        .filter(([, n]) => n > 0)
-        .map(([type, n]) => `${type} ×${n}`)
-      out.push(`- **Typen vorhanden:** ${histParts.length > 0 ? histParts.join(', ') : '— (leer)'}`)
-      out.push(`- **Typen einsetzen (Rotation):** ${t.suggestedTypes.join(', ')}`)
-
-      if (t.subGoalsCoverage && t.subGoalsCoverage.length > 0) {
-        out.push(`- **Sub-Goals dieser Lesson** (mindestens ${MIN_TASKS_PER_SUB_GOAL} Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):`)
-        for (const sg of t.subGoalsCoverage) {
-          const status = sg.have >= sg.target ? '✅' : sg.have > 0 ? '🟡' : '🔴'
-          out.push(`  - ${status} [${sg.index}] (${sg.examRelevance}) **${sg.have}/${sg.target}+** Aufgaben — ${sg.label}`)
-        }
-      }
-
-      if (t.subGoalsMissingTasks.length > 0) {
-        const deltas = t.subGoalsMissingTasks.map((m) => `SG ${m.index}: +${m.target - m.have}`).join(', ')
-        out.push(`- **Goal-Tasks fehlen (mindestens):** ${deltas} — gerne mehr, keine Obergrenze`)
-        out.push(`  - Ablage: \`${t.targetFile.goalTasks}\``)
-        out.push(`  - Format: \`{ [subGoalIndex]: Exercise[] }\` — Array pro Sub-Goal, beliebig viele Einträge.`)
-      }
-      if (t.missing > 0) {
-        out.push(`- **Zusatz-Aufgaben fehlen (mindestens):** ${t.missing} — gerne mehr, keine Obergrenze`)
-        out.push(`  - Ablage: \`${t.targetFile.supplements}\``)
-      }
-      if (t.fourBlockMissing.length > 0) {
-        out.push(`- **4-Block-Erklärung fehlt bei:** ${t.fourBlockMissing.slice(0, 8).map((id) => `\`${id}\``).join(', ')}${t.fourBlockMissing.length > 8 ? ` … (+${t.fourBlockMissing.length - 8} weitere)` : ''}`)
-      }
-      if (t.mcMissingWae.length > 0) {
-        out.push(`- **MC-wAE fehlt bei:** ${t.mcMissingWae.slice(0, 8).map((id) => `\`${id}\``).join(', ')}${t.mcMissingWae.length > 8 ? ` … (+${t.mcMissingWae.length - 8} weitere)` : ''}`)
-      }
-
-      // Visualisierung — in dieser Lesson vorhanden, oder zu ergänzen?
-      if (t.recommendedVisualizations && t.recommendedVisualizations.length > 0) {
-        if (t.hasVisualization) {
-          out.push(`- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): ${t.recommendedVisualizations.map((v) => `\`${v}\``).join(', ')} — bei passenden Lesson-Themen als weiteren \`type: 'visualization'\`-Step einbauen.`)
-        } else {
-          out.push(`- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen \`type: 'visualization'\`-Step in \`lesson.steps\` einbauen. Passende Viz-IDs für dieses Topic: ${t.recommendedVisualizations.map((v) => `\`${v}\``).join(', ')}. Alle 21 verfügbaren Viz siehe \`AVAILABLE_VISUALIZATIONS\` in \`src/content/curriculum.js\`.`)
-        }
-      }
-
-      // Topic-Guide-Kontext: damit der Agent weiß, welche Lehrplan-Inhalte die
-      // Aufgaben dieser Lesson bedienen müssen.
-      const guideForTask = TOPIC_GUIDES[t.topicId]
-      if (guideForTask) {
-        out.push(`- **Lehrplan-Kontext für \`${t.topicId}\`** (aus \`src/content/curriculum.js\`):`)
-        if (guideForTask.mustKnow?.length > 0) {
-          out.push(`  - _Must-Know:_ ${guideForTask.mustKnow.slice(0, 3).join(' · ')}${guideForTask.mustKnow.length > 3 ? ` · …` : ''}`)
-        }
-        if (guideForTask.commonMistakes?.length > 0) {
-          out.push(`  - _Typische Fehler (gute Distraktoren):_ ${guideForTask.commonMistakes.slice(0, 3).join(' · ')}${guideForTask.commonMistakes.length > 3 ? ` · …` : ''}`)
-        }
-        if (guideForTask.examFocus?.length > 0) {
-          out.push(`  - _Klausur-Fokus:_ ${guideForTask.examFocus.join(' · ')}`)
-        }
+      if (t.blueprint) {
+        renderBlueprintCard(t, out)
+      } else {
+        renderLegacyCard(t, out)
       }
       out.push(``)
     }

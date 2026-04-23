@@ -130,6 +130,108 @@ export const MIN_EXERCISES_PER_LESSON = 20
 export const MIN_TASKS_PER_SUB_GOAL = 5
 
 /**
+ * PEDAGOGY_STAGES — die fünf Progressionsstufen, in denen eine Lesson ihre
+ * Aufgaben anordnet. Jede Aufgabe gehört EINER Stufe an. Der Bauplan
+ * (`lesson.blueprint.taskPlan`) füllt diese Stufen pro Sub-Goal systematisch.
+ *
+ *   recognize          — Regel/Begriff wiedererkennen (TF, Matching, einfache MC).
+ *   apply-guided       — Regel mit Teilschritt anwenden (MC mit Zwischenschritt, NI einfach).
+ *   apply-independent  — Regel sicher ohne Hilfe (NI mittel, MC ohne Teaser).
+ *   error-analysis     — typischen Fehler erkennen (MC-Fehlersuche, TF mit Haken).
+ *   transfer           — Kontextwechsel / Klausur (Sorting-Prozess, NI mit Anwendung, [PRÜFUNG]).
+ */
+export const PEDAGOGY_STAGES = [
+  'recognize',
+  'apply-guided',
+  'apply-independent',
+  'error-analysis',
+  'transfer',
+]
+
+/**
+ * BLUEPRINT_ENFORCED_TOPICS — Topics, für die der Validator den Blueprint-
+ * Contract HART durchsetzt. Für diese Topics gilt:
+ *
+ *   • Jede Lesson MUSS ein `blueprint`-Objekt tragen (s. Schema unten).
+ *   • Jede Exercise (in unit*-Dateien, supplements/, subgoal_tasks/) MUSS
+ *     ein `pedagogy: { stage, subGoal, uses }` tragen.
+ *   • `blueprint.taskPlan[].uses` und `pedagogy.uses` dürfen nur Konzepte
+ *     referenzieren, die zum Einsatzzeitpunkt bereits eingeführt sind
+ *     (aus `blueprint.concepts` oder `blueprint.prerequisites`).
+ *
+ * Topics außerhalb dieser Liste werden unverändert validiert (keine
+ * Blueprint-Pflicht) — so kann die Migration Topic für Topic laufen.
+ */
+export const BLUEPRINT_ENFORCED_TOPICS = [
+  // 'algebra',  // wird freigeschaltet, sobald alle algebra-Lessons blueprintsiert sind
+]
+
+/**
+ * LESSON-BLUEPRINT-SCHEMA — der didaktische Bauplan jeder Lesson.
+ *
+ * Ziel: Aus dem Blueprint ist ablesbar, WELCHE Konzepte in welcher Reihenfolge
+ * eingeführt werden, WELCHE Aufgabe welches Konzept testet (auf welcher
+ * Progressionsstufe), und WAS als Vorwissen aus früheren Lessons erwartet
+ * wird. Der Blueprint ist die Single Source of Truth für die Task-Cards in
+ * STATUS.md.
+ *
+ * Der Blueprint steht direkt in der Lesson-Definition (in den
+ * `unit<N>_*.js`-Dateien unter `src/content/<kategorie>/<topic>/`):
+ *
+ *   {
+ *     id: 'alg-1-3',
+ *     title: 'Logarithmusgesetze',
+ *     subGoals: [...],
+ *     steps: [...],
+ *     blueprint: {
+ *       prerequisites: [
+ *         { lessonId: 'alg-1-1', concepts: ['pot-gesetz-mult', 'pot-gesetz-potenz'] },
+ *       ],
+ *       concepts: [
+ *         // Reihenfolge = didaktische Einführungsreihenfolge.
+ *         // `dependsOn` darf nur auf frühere concepts ODER auf prerequisites.concepts verweisen.
+ *         { id: 'log-def',        title: 'Definition $\\log_b(x)$', dependsOn: [] },
+ *         { id: 'log-rule-mult',  title: 'Produkt-Regel',           dependsOn: ['log-def'] },
+ *         { id: 'log-rule-pot',   title: 'Potenz-Regel',            dependsOn: ['log-def'] },
+ *         { id: 'log-base-change',title: 'Basiswechsel',            dependsOn: ['log-def','log-rule-pot'] },
+ *       ],
+ *       subGoalConcepts: {
+ *         0: ['log-def'],
+ *         1: ['log-rule-mult', 'log-rule-pot'],
+ *         2: ['log-base-change'],
+ *       },
+ *       taskPlan: [
+ *         // Jede Zeile definiert mindestens eine Aufgabe dieser Sub-Goal×Stufe×Typ-Kombination.
+ *         // `qty` ist das Minimum (mehr ist erlaubt). `uses` listet die Konzept-IDs,
+ *         // die diese Aufgabe testen soll — MÜSSEN im Blueprint eingeführt sein.
+ *         { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['log-def'],       qty: 1 },
+ *         { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['log-def'],       qty: 1 },
+ *         { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['log-def'],       qty: 2 },
+ *         { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['log-def'],       qty: 1 },
+ *         { subGoal: 0, stage: 'transfer',          type: 'sorting',         uses: ['log-def'],       qty: 1 },
+ *         { subGoal: 1, stage: 'recognize',         type: 'matching',        uses: ['log-rule-mult','log-rule-pot'], qty: 1 },
+ *         // ...
+ *       ],
+ *     },
+ *   }
+ *
+ * Invarianten (vom Validator `scripts/validate-content.js` geprüft, wenn das
+ * Topic in `BLUEPRINT_ENFORCED_TOPICS` ist):
+ *
+ *   1. `concepts[i].dependsOn` ⊆ {concepts[0..i-1].id} ∪ (∪ prerequisites[*].concepts)
+ *   2. `subGoalConcepts` deckt jedes Sub-Goal ab, und jede Konzept-ID darin
+ *      existiert in `concepts`.
+ *   3. Jedes Konzept in `concepts` taucht in mind. einem `subGoalConcepts[i]` auf.
+ *   4. `taskPlan[k].uses` ⊆ Konzepte des eigenen Sub-Goals ∪ dependsOn-Closure
+ *      (eine Aufgabe darf nur Konzepte nutzen, die ihr Sub-Goal einführt oder
+ *      die vorher — in diesem oder früheren Sub-Goals — schon eingeführt wurden).
+ *   5. `taskPlan[k].stage` ∈ PEDAGOGY_STAGES, `type` ∈ {'multiple-choice',
+ *      'number-input', 'true-false', 'matching', 'sorting'}.
+ *   6. Jede Exercise des Topics trägt `pedagogy: { stage, subGoal, uses }`
+ *      mit denselben Invarianten wie taskPlan-Zeilen.
+ */
+
+/**
  * Alle verfügbaren Visualisierungs-Komponenten (aus
  * src/components/visualizations/VisualizationEngine.jsx) mit kurzer
  * Beschreibung. Claude Code soll beim Schreiben einer Lesson prüfen, ob eine
