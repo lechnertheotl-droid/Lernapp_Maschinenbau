@@ -17,6 +17,677 @@ import { mc, ni, tf, matching, sorting } from './_helpers'
 export const differentialgleichungenSubGoalTasks = {
 
   // ────────────────────────────────────────────────────────────────────────
+  // dgl-2-2 — DGL-Systeme  (6 subGoals)
+  // Je 5 Aufgaben = 30 Goal-Tasks
+  // ────────────────────────────────────────────────────────────────────────
+  'dgl-2-2': {
+
+    // ── [0] Matrixform: y' = A·y ──────────────────────────────────────
+    0: [
+      mc(
+        'Sub-Goal "Matrixform: $\\vec y\' = A \\vec y$ mit Vektor $\\vec y$ und Koeffizientenmatrix $A$": Schreibe das System $y_1\' = 2y_1 - y_2$, $y_2\' = y_1 + 3y_2$ in Matrixform. Welche Matrix $A$ gehört zu $\\vec y\' = A \\vec y$?',
+        [
+          '$A = \\begin{pmatrix} 2 & -1 \\\\ 1 & 3 \\end{pmatrix}$',
+          '$A = \\begin{pmatrix} 2 & 1 \\\\ -1 & 3 \\end{pmatrix}$',
+          '$A = \\begin{pmatrix} -1 & 2 \\\\ 3 & 1 \\end{pmatrix}$',
+          '$A = \\begin{pmatrix} 2 & 3 \\\\ -1 & 1 \\end{pmatrix}$',
+        ],
+        0,
+        `**Ansatz:** Zeile $i$ der Matrix $A$ enthält die Koeffizienten in der Gleichung für $y_i\'$: $y_i\' = A_{i1}\\,y_1 + A_{i2}\\,y_2$.
+
+**Rechnung:** Zeile 1 aus $y_1\' = 2y_1 - y_2$: $(A_{11}, A_{12}) = (2, -1)$. Zeile 2 aus $y_2\' = y_1 + 3y_2$: $(A_{21}, A_{22}) = (1, 3)$.
+
+**Probe:** $A\\vec y = \\begin{pmatrix} 2 & -1 \\\\ 1 & 3 \\end{pmatrix}\\begin{pmatrix} y_1 \\\\ y_2 \\end{pmatrix} = \\begin{pmatrix} 2y_1 - y_2 \\\\ y_1 + 3y_2 \\end{pmatrix}$ ✓.
+
+**Typischer Fehler:** Spalten mit Zeilen verwechselt. Spalte $j$ multipliziert mit $y_j$, Zeile $i$ liefert $y_i\'$ — nicht umgekehrt.`,
+        [
+          'Zeile $i$ enthält die Koeffizienten der Gleichung für $y_i\'$.',
+          'Zeile 1 kommt aus der ersten Gleichung ($y_1\'$).',
+          'Vorzeichen der Koeffizienten genau übernehmen.',
+        ],
+        {
+          1: 'Hier wurde transponiert: du hast $A^T$ geschrieben. Zeile 1 enthält $(2, 1)$ — aber in der ersten Gleichung steht $-y_2$, also muss Zeile 1 ein $-1$ an zweiter Stelle haben.',
+          2: 'Die Zeilen wurden vertauscht. Zeile 1 gehört zur Gleichung für $y_1\'$, nicht für $y_2\'$.',
+          3: 'Vermischte Einträge. Tipp: Notiere zuerst die Zeilen einzeln, dann in die Matrix einsortieren.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Matrixform: $\\vec y\' = A \\vec y$ mit Vektor $\\vec y$ und Koeffizientenmatrix $A$": Für das System $y_1\' = 4y_1 - 2y_2$, $y_2\' = 3y_1 - y_2$ — welchen Wert hat der Matrixeintrag $A_{22}$?',
+        -1, 0.001, '',
+        `**Ansatz:** $A_{22}$ ist der Koeffizient vor $y_2$ in der Gleichung für $y_2\'$.
+
+**Rechnung:** Aus $y_2\' = 3y_1 - y_2$ lese ab: Koeffizient vor $y_2$ ist $-1$. Also $A_{22} = -1$.
+
+**Probe:** $A = \\begin{pmatrix} 4 & -2 \\\\ 3 & -1 \\end{pmatrix}$, und zweite Komponente von $A\\vec y$ ist $3y_1 + (-1)y_2$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen: der Koeffizient ist $-1$, nicht $+1$, wegen des Minuszeichens vor $y_2$.`,
+        [
+          'Notation: $A_{ij}$ = Eintrag in Zeile $i$, Spalte $j$.',
+          '$A_{22}$ = Koeffizient von $y_2$ in der Gleichung für $y_2\'$.',
+          'Vorzeichen aus dem Text übernehmen.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Matrixform: $\\vec y\' = A \\vec y$ mit Vektor $\\vec y$ und Koeffizientenmatrix $A$": Für ein homogenes lineares DGL-System 1. Ordnung mit $n$ gekoppelten Unbekannten $y_1,\\ldots,y_n$ ist die Koeffizientenmatrix $A$ quadratisch $n \\times n$.',
+        true,
+        `**Ansatz:** Dimensionen auf beiden Seiten vergleichen.
+
+**Rechnung:** $\\vec y \\in \\mathbb{R}^n$, $\\vec y\' \\in \\mathbb{R}^n$. Damit $A\\vec y$ ein $n$-Vektor wird, muss $A$ $n$ Spalten haben; damit das Ergebnis $n$-dimensional ist, muss $A$ $n$ Zeilen haben. Also $A \\in \\mathbb{R}^{n\\times n}$.
+
+**Probe:** Bei $n=2$: $2\\times 2$ Matrix, bei $n=3$: $3\\times 3$. Eindeutig gesetzt durch die Anzahl der Gleichungen.
+
+**Typischer Fehler:** $A$ als rechteckige Matrix anzusetzen. Für ein geschlossenes System mit gleicher Ein- und Ausgangsdimension muss $A$ quadratisch sein.`,
+        [
+          'Dimensionscheck: $A \\vec y$ liefert einen Vektor gleicher Dimension wie $\\vec y\'$.',
+          'Anzahl Zeilen = Anzahl DGL; Anzahl Spalten = Anzahl Unbekannte.',
+          'Für geschlossene Systeme sind beide gleich $n$.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Matrixform: $\\vec y\' = A \\vec y$ mit Vektor $\\vec y$ und Koeffizientenmatrix $A$": Ordne die Systeme ihrer Matrix $A$ zu.',
+        [
+          { left: '$y_1\' = y_2$, $y_2\' = -y_1$', right: '$\\begin{pmatrix} 0 & 1 \\\\ -1 & 0 \\end{pmatrix}$' },
+          { left: '$y_1\' = 3y_1$, $y_2\' = -2y_2$ (entkoppelt)', right: '$\\begin{pmatrix} 3 & 0 \\\\ 0 & -2 \\end{pmatrix}$' },
+          { left: '$y_1\' = y_1 + y_2$, $y_2\' = y_1 + y_2$', right: '$\\begin{pmatrix} 1 & 1 \\\\ 1 & 1 \\end{pmatrix}$' },
+          { left: '$y_1\' = 2y_1$, $y_2\' = y_1 + 2y_2$', right: '$\\begin{pmatrix} 2 & 0 \\\\ 1 & 2 \\end{pmatrix}$' },
+        ],
+        `**Ansatz:** Zeilenweise Koeffizienten in die Matrix eintragen.
+
+**Rechnung:** (1) Rotation: Nullen auf Diagonale, Off-Diagonalen $+1$ und $-1$. (2) Entkoppelt: Diagonalmatrix. (3) Alle Einträge gleich → Rang 1. (4) Untere Dreiecksmatrix (Jordan-artig mit doppelter Wurzel $\\lambda=2$).
+
+**Probe:** Jede Matrix mit $\\vec y$ multiplizieren und vergleichen.
+
+**Typischer Fehler:** Bei entkoppelten Systemen Nullen auf den Off-Diagonalen vergessen.`,
+        [
+          'Ohne $y_j$-Term in Zeile $i$ → $A_{ij} = 0$.',
+          'Entkoppelte Systeme haben Diagonalmatrizen.',
+          'Rotation hat antisymmetrische Off-Diagonalen.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Matrixform: $\\vec y\' = A \\vec y$ mit Vektor $\\vec y$ und Koeffizientenmatrix $A$": Warum ist die Matrixform $\\vec y\' = A\\vec y$ gegenüber dem expliziten Gleichungssystem *vorteilhaft*?',
+        [
+          'Man kann Eigenwerte/Eigenvektoren von $A$ berechnen und bekommt daraus direkt die allgemeine Lösung.',
+          'Die Matrixform reduziert die Ordnung der DGL.',
+          'Sie erlaubt die Anwendung der Trennung der Variablen.',
+          'Matrixform vermeidet die Notwendigkeit von Anfangsbedingungen.',
+        ],
+        0,
+        `**Ansatz:** Nach Nutzen der Matrixform fragen: warum sie die Lösung *systematisch* ermöglicht.
+
+**Rechnung:** Der Ansatz $\\vec y = \\vec v e^{\\lambda t}$ reduziert die DGL auf das lineare Eigenwertproblem $A\\vec v = \\lambda \\vec v$ — ein rein algebraisches Problem, mit gut etablierten Werkzeugen (charakteristisches Polynom, Diagonalisierung).
+
+**Probe:** Ohne Matrixform müsste man das gekoppelte System von Hand entkoppeln (z.B. durch Substitution), was bei $n>2$ schnell unübersichtlich wird.
+
+**Typischer Fehler:** Matrixform mit „einfacherer DGL" gleichsetzen — die DGL wird nicht einfacher, sondern in eine Form gebracht, die lineare Algebra zugänglich macht.`,
+        [
+          'Matrixform wandelt das DGL-Problem in lineare Algebra um.',
+          'Eigenwertgleichung $A\\vec v = \\lambda \\vec v$ ist rein algebraisch.',
+          'Anfangsbedingungen sind weiterhin nötig.',
+        ],
+        {
+          1: 'Die Ordnung wird nicht reduziert. DGL 1. Ordnung bleibt 1. Ordnung — nur in vektorieller Form.',
+          2: 'Trennung der Variablen funktioniert bei gekoppelten Systemen *nicht* direkt, weil die Gleichungen in $y_1, y_2, \\ldots$ verkoppelt sind.',
+          3: 'AWP bleibt AWP — Anfangsbedingungen werden für die $n$ unbekannten Konstanten $C_1, \\ldots, C_n$ benötigt.',
+        },
+      ),
+    ],
+
+    // ── [1] Reduktion höherer Ordnung: y_1=y, y_2=y', ... ────────────
+    1: [
+      mc(
+        'Sub-Goal "Reduktion höherer Ordnung: $y_1 = y, y_2 = y\', \\ldots, y_n = y^{(n-1)}$": Schreibe die DGL $y\'\' + 4y\' + 3y = 0$ als System 1. Ordnung mit $y_1 = y$, $y_2 = y\'$. Welche Matrix gehört dazu?',
+        [
+          '$A = \\begin{pmatrix} 0 & 1 \\\\ -3 & -4 \\end{pmatrix}$',
+          '$A = \\begin{pmatrix} 0 & 1 \\\\ 3 & 4 \\end{pmatrix}$',
+          '$A = \\begin{pmatrix} 0 & 1 \\\\ -4 & -3 \\end{pmatrix}$',
+          '$A = \\begin{pmatrix} 1 & 0 \\\\ -3 & -4 \\end{pmatrix}$',
+        ],
+        0,
+        `**Ansatz:** Standard-Substitution: $y_1 = y$, $y_2 = y\'$. Dann $y_1\' = y_2$ und $y_2\' = y\'\' = -4y\' - 3y = -3y_1 - 4y_2$.
+
+**Rechnung:** Zeile 1: $(0, 1)$ (aus $y_1\' = 0\\cdot y_1 + 1\\cdot y_2$). Zeile 2: $(-3, -4)$ (aus $y_2\' = -3y_1 - 4y_2$). Companion-Matrix: unteres Dreieck mit Koeffizienten umgekehrt im Vorzeichen.
+
+**Probe:** Ansatz $y=e^{\\lambda t}$ in $y\'\'+4y\'+3y=0$ → $\\lambda^2+4\\lambda+3=(\\lambda+1)(\\lambda+3)=0$. Charakteristisches Polynom von $A$: $\\det(A-\\lambda I) = \\lambda(\\lambda+4)+3 = \\lambda^2+4\\lambda+3$ ✓.
+
+**Typischer Fehler:** Koeffizienten ohne Vorzeichenwechsel übertragen. Aus $y\'\'=-4y\'-3y$ müssen die Vorzeichen in $A$ negativ sein.`,
+        [
+          'Standard: $y_1 = y$, $y_2 = y\'$, also $y_1\' = y_2$.',
+          '$y_2\' = y\'\' = -$(Koeffizient $y\'$)$\\cdot y_2 -$(Koeffizient $y$)$\\cdot y_1$.',
+          'Achtung: Vorzeichen drehen sich beim Umstellen nach $y\'\'$.',
+        ],
+        {
+          1: 'Vorzeichen fehlen: Aus $y\'\'=-4y\'-3y$ folgt Zeile 2 $(-3,-4)$, nicht $(+3,+4)$.',
+          2: 'Reihenfolge der Koeffizienten vertauscht: Spalte 1 = Koeffizient von $y_1 = y$, also $-3$; Spalte 2 = Koeffizient von $y_2 = y\'$, also $-4$.',
+          3: 'Zeile 1 falsch: $y_1\' = y\' = y_2$, also Zeile 1 $(0,1)$, nicht $(1,0)$.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Reduktion höherer Ordnung: $y_1 = y, y_2 = y\', \\ldots, y_n = y^{(n-1)}$": DGL 3. Ordnung $y\'\'\' = 2y\'\' - y\' + 5y$ wird in ein System 1. Ordnung umgeschrieben. Wie viele Komponenten hat der Vektor $\\vec y$?',
+        3, 0.001, '',
+        `**Ansatz:** Eine DGL $n$-ter Ordnung wird zu einem System aus $n$ DGL 1. Ordnung mit $n$ Unbekannten.
+
+**Rechnung:** Hier $n=3$ (dritte Ableitung). Substitution: $y_1=y$, $y_2=y\'$, $y_3=y\'\'$. Also $\\vec y\\in\\mathbb{R}^3$.
+
+**Probe:** $y_1\'=y_2$, $y_2\'=y_3$, $y_3\'=y\'\'\'=2y_3-y_2+5y_1$ — drei Gleichungen.
+
+**Typischer Fehler:** $n-1$ Komponenten annehmen (oft bei erstem Versuch). Tatsächlich braucht man eine Komponente *pro Ableitungsordnung bis $n-1$*, d.h. $n$ insgesamt.`,
+        [
+          'Eine DGL $n$-ter Ordnung wird zu $n$ DGL 1. Ordnung.',
+          'Neue Variablen: $y_1 = y, y_2 = y\', \\ldots, y_n = y^{(n-1)}$.',
+          '$y^{(n-1)} = y^{(3-1)} = y\'\'$ ist das höchste verwendete.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Reduktion höherer Ordnung: $y_1 = y, y_2 = y\', \\ldots, y_n = y^{(n-1)}$": Welche Substitution gilt bei DGL 4. Ordnung?',
+        [
+          '$y_1 = y,\\ y_2 = y\',\\ y_3 = y\'\',\\ y_4 = y\'\'\'$',
+          '$y_1 = y\',\\ y_2 = y\'\',\\ y_3 = y\'\'\',\\ y_4 = y^{(4)}$',
+          '$y_1 = y,\\ y_2 = y\',\\ y_3 = y\'\',\\ y_4 = y^{(4)}$',
+          '$y_1 = y,\\ y_2 = y^{(4)}$',
+        ],
+        0,
+        `**Ansatz:** Jede Zwischenableitung bis inklusive Ordnung $n-1$ als eigene Variable.
+
+**Rechnung:** $n=4$: Variablen $y_1=y^{(0)}$, $y_2=y^{(1)}$, $y_3=y^{(2)}$, $y_4=y^{(3)}$. Die höchste Ableitung $y^{(4)}$ steht auf der rechten Seite der letzten DGL.
+
+**Probe:** $y_1\'=y_2$, $y_2\'=y_3$, $y_3\'=y_4$, $y_4\'=y^{(4)}$ — Kette von DGL 1. Ordnung.
+
+**Typischer Fehler:** $y^{(4)}$ als eigene Variable einführen wollen. Es ist aber keine „neue" Unbekannte, sondern durch die DGL selbst festgelegt.`,
+        [
+          'Variablen für Ordnungen 0 bis $n-1$.',
+          'Die höchste Ableitung $y^{(n)}$ selbst wird durch die DGL ausgedrückt.',
+          'Insgesamt $n$ Variablen.',
+        ],
+        {
+          1: 'Beginnt bei $y\'$ statt $y$ — dann fehlt die $y$-Variable. Man braucht $y$ selbst als $y_1$.',
+          2: 'Falscher Sprung: $y_4 = y^{(4)}$ überspringt $y\'\'\'$. Die Variablen müssen lückenlos sein.',
+          3: 'Viel zu wenige Variablen: bei 4. Ordnung brauchst du *vier* Komponenten.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Reduktion höherer Ordnung: $y_1 = y, y_2 = y\', \\ldots, y_n = y^{(n-1)}$": Die Reduktion einer DGL höherer Ordnung auf ein System 1. Ordnung ändert die Lösungsmenge.',
+        false,
+        `**Ansatz:** Äquivalenz von DGL $n$-ter Ordnung und System $n$-ter Größe.
+
+**Rechnung:** Jede Lösung $y(t)$ der DGL liefert direkt $(y(t), y\'(t), \\ldots, y^{(n-1)}(t))^T$ — eine Lösung des Systems. Umgekehrt erfüllt die erste Komponente des Systems genau die ursprüngliche DGL. Damit sind die Lösungsmengen bijektiv verwandt.
+
+**Probe:** Dimension des Lösungsraums: DGL $n$-ter Ordnung hat $n$ linear unabhängige Lösungen; das System hat auch $n$ linear unabhängige Lösungen. Dimensionsgleich.
+
+**Typischer Fehler:** Glauben, durch Reduktion werde die Lösung „einfacher" im Sinne *weniger* Lösungen. Nein — Lösungsmenge bleibt identisch, nur die *Darstellung* ändert sich.`,
+        [
+          'Bijektion zwischen Skalarlösungen und Vektorlösungen.',
+          'Dimension des Lösungsraums bleibt $n$.',
+          'Reduktion ist nur Umformulierung, keine Einschränkung.',
+        ],
+      ),
+      sorting(
+        'Sub-Goal "Reduktion höherer Ordnung: $y_1 = y, y_2 = y\', \\ldots, y_n = y^{(n-1)}$": Sortiere die Schritte zur Umformung einer DGL höherer Ordnung in ein System 1. Ordnung.',
+        [
+          'Ordnung $n$ der DGL bestimmen.',
+          'Variablen $y_1 = y, y_2 = y\', \\ldots, y_n = y^{(n-1)}$ einführen.',
+          'DGL nach $y^{(n)}$ auflösen und als $y_n\' = \\ldots$ schreiben.',
+          'System in Matrixform $\\vec y\' = A \\vec y$ bringen.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Klar strukturierter Algorithmus.
+
+**Rechnung:** (1) Ordnung = Anzahl der neuen Variablen. (2) Neue Variablen = Ableitungen. (3) Die höchste Ableitung liefert die letzte Gleichung. (4) Koeffizienten in Companion-Matrix organisieren.
+
+**Probe:** Companion-Matrix hat Einsen über der Diagonale (oder unter, je nach Konvention) und die negierten DGL-Koeffizienten in der letzten Zeile.
+
+**Typischer Fehler:** Schritt 3 vergessen und die DGL nicht nach $y^{(n)}$ aufgelöst haben — dann fehlt die letzte Gleichung des Systems.`,
+        [
+          'Zuerst die Ordnung, dann die Variablen.',
+          'Die DGL nach der höchsten Ableitung auflösen.',
+          'Matrixform erleichtert die spätere Eigenwert-Analyse.',
+        ],
+      ),
+    ],
+
+    // ── [2] Eigenwertansatz: A·v = λ·v ────────────────────────────────
+    2: [
+      mc(
+        'Sub-Goal "Eigenwertansatz: $\\vec y = \\vec v e^{\\lambda t}$ → $A \\vec v = \\lambda \\vec v$": Warum liefert der Ansatz $\\vec y = \\vec v \\cdot e^{\\lambda t}$ für das System $\\vec y\' = A \\vec y$ das Eigenwertproblem $A\\vec v = \\lambda \\vec v$?',
+        [
+          'Weil $\\vec y\' = \\lambda \\vec v e^{\\lambda t}$ und $A\\vec y = A\\vec v e^{\\lambda t}$ — nach Kürzen von $e^{\\lambda t}$ bleibt $\\lambda\\vec v = A\\vec v$.',
+          'Weil $\\vec v$ per Definition ein Eigenvektor ist.',
+          'Weil der Ansatz $A$ diagonalisiert.',
+          'Weil die Exponentialfunktion selbst ein Eigenvektor ist.',
+        ],
+        0,
+        `**Ansatz:** Ableitung des Ansatzes und Einsetzen.
+
+**Rechnung:** $\\vec y = \\vec v e^{\\lambda t}$ → $\\vec y\' = \\vec v \\lambda e^{\\lambda t}$ (da $\\vec v$ konstant). Einsetzen in DGL: $\\vec v \\lambda e^{\\lambda t} = A\\vec v e^{\\lambda t}$. Division durch $e^{\\lambda t}\\neq 0$: $\\lambda \\vec v = A\\vec v$ — genau die Eigenwertgleichung.
+
+**Probe:** Umgekehrt: Wenn $A\\vec v = \\lambda\\vec v$, dann erfüllt $\\vec y = \\vec v e^{\\lambda t}$ die DGL.
+
+**Typischer Fehler:** Die Kettenregel bei der Ableitung vergessen: $\\frac{d}{dt}(\\vec v e^{\\lambda t}) = \\vec v \\cdot \\lambda e^{\\lambda t}$, nicht $\\vec v \\cdot e^{\\lambda t}$.`,
+        [
+          'Ableiten, einsetzen, vergleichen.',
+          '$e^{\\lambda t}$ auf beiden Seiten kürzt sich heraus.',
+          'Das reine Matrix-Vektor-Problem $A\\vec v = \\lambda\\vec v$ bleibt übrig.',
+        ],
+        {
+          1: 'Das ist *nachträglich* richtig (am Ende sind $\\vec v$ Eigenvektoren), aber keine Begründung *warum* der Ansatz darauf führt. Die Rechnung erklärt es konkret.',
+          2: 'Die Matrixform wird diagonalisiert, wenn genügend linear unabhängige Eigenvektoren existieren — aber das ist eine *Folge* des Ansatzes, nicht der Grund.',
+          3: 'Die Exponentialfunktion ist im skalaren Fall Eigenfunktion des Ableitungsoperators, aber das ist eine andere Struktur. Bei Vektoren kommt erst durch $A\\vec v$ der Eigenvektor ins Spiel.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Eigenwertansatz: $\\vec y = \\vec v e^{\\lambda t}$ → $A \\vec v = \\lambda \\vec v$": Gegeben $A = \\begin{pmatrix} 3 & 0 \\\\ 0 & -1 \\end{pmatrix}$. Welcher Eigenwert gehört zum Eigenvektor $\\vec v = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$?',
+        3, 0.001, '',
+        `**Ansatz:** Direkt $A\\vec v$ berechnen und mit $\\lambda\\vec v$ vergleichen.
+
+**Rechnung:** $A\\begin{pmatrix}1\\\\0\\end{pmatrix} = \\begin{pmatrix}3\\\\0\\end{pmatrix} = 3\\cdot\\begin{pmatrix}1\\\\0\\end{pmatrix}$. Also $\\lambda = 3$.
+
+**Probe:** $A\\vec v = 3\\vec v$ ✓ — Eigenwertgleichung erfüllt.
+
+**Typischer Fehler:** Diagonalmatrix mit anderen Einträgen verwechselt. Achtung: Der Eigenwert entspricht der Zeile, zu der der Eigenvektor „gehört" (hier Zeile 1, also $A_{11} = 3$).`,
+        [
+          'Berechne $A\\vec v$ direkt.',
+          'Für Diagonalmatrix: $A \\vec e_i = A_{ii} \\vec e_i$.',
+          '$\\vec v = \\vec e_1$ liefert $\\lambda = A_{11}$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Eigenwertansatz: $\\vec y = \\vec v e^{\\lambda t}$ → $A \\vec v = \\lambda \\vec v$": Wie bestimmt man die Eigenwerte einer $n\\times n$-Matrix $A$?',
+        [
+          'Löse $\\det(A - \\lambda I) = 0$ (charakteristisches Polynom in $\\lambda$).',
+          'Löse $\\det(A) = \\lambda$.',
+          'Berechne den Rang von $A$.',
+          'Setze $A\\vec v = \\vec 0$ und löse.',
+        ],
+        0,
+        `**Ansatz:** Die Eigenwertgleichung $A\\vec v = \\lambda\\vec v$ → $(A - \\lambda I)\\vec v = \\vec 0$. Für nicht-triviale $\\vec v$: $\\det(A-\\lambda I) = 0$.
+
+**Rechnung:** Das charakteristische Polynom ist Polynom vom Grad $n$ in $\\lambda$; seine $n$ Wurzeln (mit Vielfachheit) sind die Eigenwerte.
+
+**Probe:** $2\\times 2$: $\\det\\begin{pmatrix} a-\\lambda & b \\\\ c & d-\\lambda \\end{pmatrix} = (a-\\lambda)(d-\\lambda) - bc = \\lambda^2 - (a+d)\\lambda + (ad-bc)$.
+
+**Typischer Fehler:** $(A-\\lambda I)\\vec v = \\vec 0$ direkt durch Gauss-Elimination lösen, obwohl $\\lambda$ noch unbekannt ist. Erst Determinante = 0 zur Bestimmung von $\\lambda$, dann Eigenvektor.`,
+        [
+          'Eigenwertgleichung umschreiben: $(A-\\lambda I)\\vec v = \\vec 0$.',
+          'Nicht-triviale Lösungen gibt es nur bei $\\det(A-\\lambda I) = 0$.',
+          'Das charakteristische Polynom hat Grad $n$.',
+        ],
+        {
+          1: 'Das ist falsch dimensioniert: $\\det(A)$ ist eine Zahl, $\\lambda$ auch — aber die Gleichung $\\det(A) = \\lambda$ würde nur einen Wert liefern, nicht die $n$ Eigenwerte.',
+          2: 'Der Rang sagt aus, wie viele linear unabhängige Eigenvektoren zum Eigenwert $0$ existieren (Dimension des Kerns), gibt aber die Eigenwerte selbst nicht an.',
+          3: 'Das sucht nur Eigenvektoren zum Eigenwert $\\lambda = 0$. Alle anderen Eigenwerte gehen verloren.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Eigenwertansatz: $\\vec y = \\vec v e^{\\lambda t}$ → $A \\vec v = \\lambda \\vec v$": Der Eigenvektor $\\vec v$ ist eindeutig — er hängt nicht von Skalierung ab.',
+        false,
+        `**Ansatz:** Eigenvektoren bilden einen Unterraum — $\\vec v$ und $c\\vec v$ sind beide Eigenvektoren zum selben $\\lambda$.
+
+**Rechnung:** $A(c\\vec v) = c(A\\vec v) = c(\\lambda \\vec v) = \\lambda(c\\vec v)$. Also ist jede Skalierung ebenfalls Eigenvektor.
+
+**Probe:** Für die Lösung $\\vec y = \\vec v e^{\\lambda t}$ ist die Skalierung unkritisch, weil sie in der Integrationskonstante $C_1$ aufgeht: $\\vec y = C_1 (c\\vec v) e^{\\lambda t} = (C_1 c)\\vec v e^{\\lambda t}$.
+
+**Typischer Fehler:** In der Klausur zwei „unterschiedliche" Eigenvektoren zum gleichen Eigenwert angeben, die sich nur in Skalierung unterscheiden — das sind dieselben.`,
+        [
+          'Vielfache eines Eigenvektors sind ebenfalls Eigenvektoren.',
+          'Der Eigenraum zu $\\lambda$ ist mindestens 1-dimensional.',
+          'Üblicherweise wählt man „einfache" Form (z.B. ganzzahlige Einträge).',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Eigenwertansatz: $\\vec y = \\vec v e^{\\lambda t}$ → $A \\vec v = \\lambda \\vec v$": Für $A = \\begin{pmatrix} 2 & 1 \\\\ 0 & 3 \\end{pmatrix}$ — was ist der Eigenwert $\\lambda_1$ (kleinerer Wert)?',
+        2, 0.001, '',
+        `**Ansatz:** Obere Dreiecksmatrix — Eigenwerte stehen auf der Diagonale.
+
+**Rechnung:** $\\det(A-\\lambda I) = (2-\\lambda)(3-\\lambda) - 0 = 0$ → $\\lambda = 2$ oder $\\lambda = 3$. Kleinerer Wert: $\\lambda_1 = 2$.
+
+**Probe:** Eigenvektor zu $\\lambda_1 = 2$: aus $(A-2I)\\vec v = \\begin{pmatrix} 0 & 1 \\\\ 0 & 1 \\end{pmatrix}\\vec v = \\vec 0$ → $v_2 = 0$, $v_1$ beliebig → $\\vec v_1 = \\begin{pmatrix}1\\\\0\\end{pmatrix}$.
+
+**Typischer Fehler:** Den Eintrag $A_{12} = 1$ in die Eigenwertrechnung einbeziehen. Bei Dreiecksmatrizen verschwindet dieser in $\\det(A-\\lambda I)$ — nur die Diagonalelemente zählen.`,
+        [
+          'Dreiecksmatrix: Eigenwerte = Diagonale.',
+          '$\\lambda_1 = 2$, $\\lambda_2 = 3$.',
+          'Off-Diagonal-Element beeinflusst Eigenvektor, nicht Eigenwert.',
+        ],
+      ),
+    ],
+
+    // ── [3] Allgemeine Lösung: y = Σ C_i·v_i·e^{λ_i·t} ────────────────
+    3: [
+      mc(
+        'Sub-Goal "Allgemeine Lösung: $\\vec y = \\sum C_i \\vec v_i e^{\\lambda_i t}$": System $\\vec y\' = A\\vec y$ mit Eigenwerten $\\lambda_1 = -1$, $\\lambda_2 = -2$ und Eigenvektoren $\\vec v_1 = \\begin{pmatrix}1\\\\1\\end{pmatrix}$, $\\vec v_2 = \\begin{pmatrix}1\\\\2\\end{pmatrix}$. Allgemeine Lösung?',
+        [
+          '$\\vec y = C_1 \\begin{pmatrix}1\\\\1\\end{pmatrix} e^{-t} + C_2 \\begin{pmatrix}1\\\\2\\end{pmatrix} e^{-2t}$',
+          '$\\vec y = C_1 \\begin{pmatrix}1\\\\1\\end{pmatrix} e^{-2t} + C_2 \\begin{pmatrix}1\\\\2\\end{pmatrix} e^{-t}$',
+          '$\\vec y = (C_1 + C_2)\\begin{pmatrix}1\\\\1\\end{pmatrix} e^{-t}$',
+          '$\\vec y = \\begin{pmatrix}1\\\\1\\end{pmatrix} e^{-t} + \\begin{pmatrix}1\\\\2\\end{pmatrix} e^{-2t}$',
+        ],
+        0,
+        `**Ansatz:** Linearkombination der Grundlösungen $\\vec v_i e^{\\lambda_i t}$ mit freien Konstanten.
+
+**Rechnung:** $\\vec y = C_1 \\vec v_1 e^{\\lambda_1 t} + C_2 \\vec v_2 e^{\\lambda_2 t} = C_1 \\begin{pmatrix}1\\\\1\\end{pmatrix} e^{-t} + C_2 \\begin{pmatrix}1\\\\2\\end{pmatrix} e^{-2t}$.
+
+**Probe:** Ableiten und einsetzen: $\\vec y\' = -C_1\\begin{pmatrix}1\\\\1\\end{pmatrix} e^{-t} - 2C_2\\begin{pmatrix}1\\\\2\\end{pmatrix} e^{-2t}$. Die Eigenwert-Beziehung $A\\vec v_i = \\lambda_i \\vec v_i$ sichert die Übereinstimmung mit $A\\vec y$.
+
+**Typischer Fehler:** Eigenwerte mit falschen Eigenvektoren koppeln — bei gemischter Paarung ist die Lösung nicht mehr korrekt.`,
+        [
+          'Zu jedem Paar $(\\lambda_i, \\vec v_i)$ gehört eine Grundlösung.',
+          'Allgemeine Lösung: Linearkombination der Grundlösungen.',
+          'Je eine Konstante $C_i$ pro Eigenpaar.',
+        ],
+        {
+          1: 'Die Eigenvektoren sind den falschen Eigenwerten zugeordnet. $\\vec v_1$ gehört zu $\\lambda_1 = -1$, nicht zu $\\lambda_2 = -2$.',
+          2: 'Konstanten $C_1 + C_2$ zusammenzufassen funktioniert nur, wenn die Grundlösungen proportional sind — hier sind sie linear unabhängig.',
+          3: 'Konstanten fehlen. Eine allgemeine Lösung muss freie Parameter für die $n$ Anfangsbedingungen enthalten — ohne $C_1, C_2$ ist das eine spezielle (partikuläre) Lösung.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Allgemeine Lösung: $\\vec y = \\sum C_i \\vec v_i e^{\\lambda_i t}$": AWP $\\vec y\' = A\\vec y$ mit $\\vec y(0) = \\begin{pmatrix}3\\\\5\\end{pmatrix}$. Eigenzerlegung: $\\lambda_1=1$, $\\vec v_1=\\begin{pmatrix}1\\\\1\\end{pmatrix}$; $\\lambda_2=-1$, $\\vec v_2=\\begin{pmatrix}1\\\\-1\\end{pmatrix}$. Welchen Wert hat $C_1$?',
+        4, 0.001, '',
+        `**Ansatz:** Anfangsbedingung: $\\vec y(0) = C_1 \\vec v_1 + C_2 \\vec v_2 = \\begin{pmatrix}3\\\\5\\end{pmatrix}$.
+
+**Rechnung:** Komponenten: $C_1 + C_2 = 3$, $C_1 - C_2 = 5$. Addieren: $2C_1 = 8 \\Rightarrow C_1 = 4$. Subtrahieren: $2C_2 = -2 \\Rightarrow C_2 = -1$.
+
+**Probe:** $C_1 \\vec v_1 + C_2 \\vec v_2 = 4\\begin{pmatrix}1\\\\1\\end{pmatrix} - \\begin{pmatrix}1\\\\-1\\end{pmatrix} = \\begin{pmatrix}3\\\\5\\end{pmatrix}$ ✓.
+
+**Typischer Fehler:** AWP bei $t=0$ einsetzen und $e^0 = 0$ rechnen (statt $1$). Dann verschwindet die rechte Seite und das System ist ungelöst.`,
+        [
+          '$\\vec y(0) = C_1 \\vec v_1 + C_2 \\vec v_2$ (da $e^0 = 1$).',
+          'Komponentenweises $2\\times 2$-LGS für $C_1, C_2$.',
+          'Addition/Subtraktion der beiden Gleichungen entkoppelt das System.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Allgemeine Lösung: $\\vec y = \\sum C_i \\vec v_i e^{\\lambda_i t}$": Eine $n\\times n$-Matrix $A$ mit $n$ verschiedenen Eigenwerten besitzt $n$ linear unabhängige Eigenvektoren, sodass die allgemeine Lösung vollständig durch $\\vec y = \\sum_{i=1}^n C_i \\vec v_i e^{\\lambda_i t}$ beschrieben ist.',
+        true,
+        `**Ansatz:** Satz aus der linearen Algebra: Eigenvektoren zu paarweise verschiedenen Eigenwerten sind linear unabhängig.
+
+**Rechnung:** $n$ linear unabhängige Eigenvektoren $\\Rightarrow$ $A$ diagonalisierbar $\\Rightarrow$ Lösungsraum wird von $\\{\\vec v_i e^{\\lambda_i t}\\}_{i=1..n}$ aufgespannt.
+
+**Probe:** Dimension des Lösungsraums = $n$, übereinstimmend mit $n$ Anfangsbedingungen.
+
+**Typischer Fehler:** Bei mehrfachen Eigenwerten auf diese Aussage zu bauen. Dann kann die Anzahl linear unabhängiger Eigenvektoren *weniger* als $n$ sein (Jordan-Ketten nötig).`,
+        [
+          'Verschiedene Eigenwerte → Eigenvektoren linear unabhängig.',
+          '$n$ Paare $(\\lambda_i, \\vec v_i)$ spannen den Lösungsraum auf.',
+          'Gilt *nicht* automatisch bei mehrfachen Eigenwerten.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Allgemeine Lösung: $\\vec y = \\sum C_i \\vec v_i e^{\\lambda_i t}$": Wie viele Integrationskonstanten treten in der allgemeinen Lösung eines $3\\times 3$-DGL-Systems $\\vec y\' = A\\vec y$ auf?',
+        [
+          '$3$',
+          '$2$',
+          '$6$',
+          '$9$',
+        ],
+        0,
+        `**Ansatz:** Eine Konstante pro linear unabhängiger Grundlösung.
+
+**Rechnung:** Eine $3\\times 3$-Matrix liefert (bei halbwegs-nichtausgeartetem Spektrum) 3 Grundlösungen $\\vec v_i e^{\\lambda_i t}$. Die allgemeine Lösung $\\vec y = C_1\\vec v_1 e^{\\lambda_1 t} + C_2\\vec v_2 e^{\\lambda_2 t} + C_3\\vec v_3 e^{\\lambda_3 t}$ hat 3 freie Parameter.
+
+**Probe:** 3 AWP-Gleichungen (eine pro Komponente $y_i(0)$) legen 3 Unbekannte $C_i$ fest — konsistent.
+
+**Typischer Fehler:** Komponentenzahl mit Systemdimension verwechseln und $n^2$ oder $2n$ Konstanten erwarten.`,
+        [
+          'Eine Konstante pro Grundlösung.',
+          '$n$ Grundlösungen bei $n\\times n$-System.',
+          '$n$ AWP-Komponenten legen $n$ Konstanten fest.',
+        ],
+        {
+          1: 'Zu wenige Freiheitsgrade. Ein $3\\times 3$-System hat Lösungsraum-Dimension 3, nicht 2.',
+          2: 'Das wäre bei DGL 6. Ordnung. Hier geht es um ein $3\\times 3$-System 1. Ordnung.',
+          3: '$n^2 = 9$ wäre die Anzahl Matrixelemente, nicht Konstanten. Richtige Anzahl ist $n = 3$.',
+        },
+      ),
+      matching(
+        'Sub-Goal "Allgemeine Lösung: $\\vec y = \\sum C_i \\vec v_i e^{\\lambda_i t}$": Ordne jeden Eigenwert-Typ seinem Beitrag zur Lösung zu.',
+        [
+          { left: 'Reeller Eigenwert $\\lambda < 0$', right: 'Exponentielles Abklingen: $\\vec v e^{\\lambda t} \\to \\vec 0$' },
+          { left: 'Reeller Eigenwert $\\lambda > 0$', right: 'Exponentielles Wachstum: $|\\vec v e^{\\lambda t}| \\to \\infty$' },
+          { left: 'Imaginäres Paar $\\pm i\\omega$', right: 'Reine Schwingung mit Kreisfrequenz $\\omega$' },
+          { left: 'Komplexes Paar $\\alpha \\pm i\\omega$ mit $\\alpha<0$', right: 'Gedämpfte Schwingung: $e^{\\alpha t}$ umhüllt Oszillation' },
+        ],
+        `**Ansatz:** Vorzeichen von $\\text{Re}(\\lambda)$ gibt die Zeitentwicklung vor; Imaginärteil gibt Oszillationsfrequenz.
+
+**Rechnung:** Lösung proportional zu $e^{\\lambda t} = e^{\\alpha t}(\\cos\\omega t + i\\sin\\omega t)$ bei $\\lambda = \\alpha + i\\omega$. Realteil von $\\lambda$ steuert Exponentialhülle, Imaginärteil die Oszillation.
+
+**Probe:** Feder-Masse-Dämpfer: kritische Dämpfung → doppelte Wurzel; unterdämpft → komplexes Paar mit $\\alpha < 0$; überdämpft → zwei reelle negative Wurzeln.
+
+**Typischer Fehler:** Imaginärteil mit Dämpfung verwechseln. Dämpfung steckt im *Realteil*, Oszillationsfrequenz im *Imaginärteil*.`,
+        [
+          '$\\text{Re}(\\lambda)$ steuert Wachstum/Abklingen.',
+          '$\\text{Im}(\\lambda)$ steuert Oszillation.',
+          '$\\alpha = 0$ → reine Schwingung.',
+        ],
+      ),
+    ],
+
+    // ── [4] Stabilität: alle Re(λ_i) < 0 → asymptotisch stabil ────────
+    4: [
+      mc(
+        'Sub-Goal "Stabilität: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": System mit Eigenwerten $\\lambda_1 = -2$, $\\lambda_2 = -0{,}5$. Wie verhält sich die Lösung für $t \\to \\infty$?',
+        [
+          '$\\vec y(t) \\to \\vec 0$ (asymptotisch stabil)',
+          '$\\vec y(t)$ wächst unbeschränkt',
+          '$\\vec y(t)$ schwingt mit konstanter Amplitude',
+          'Nicht bestimmbar aus Eigenwerten allein',
+        ],
+        0,
+        `**Ansatz:** Alle Eigenwerte haben $\\text{Re}(\\lambda_i) < 0$ — Definition asymptotischer Stabilität.
+
+**Rechnung:** $\\vec y = C_1 \\vec v_1 e^{-2t} + C_2 \\vec v_2 e^{-0{,}5 t}$. Beide $e^{\\lambda t} \\to 0$ für $t \\to \\infty$. Damit $\\vec y \\to \\vec 0$ unabhängig von den Konstanten.
+
+**Probe:** Langsamstes Abklingen dominiert: $e^{-0{,}5t}$ bleibt länger endlich. Nach $t = 10$: $e^{-5} \\approx 0{,}007$ — praktisch null.
+
+**Typischer Fehler:** $\\lambda = -0{,}5$ als „fast null" interpretieren und Instabilität vermuten. Auch kleine negative Werte sichern Stabilität, nur langsamer.`,
+        [
+          'Kriterium: alle $\\text{Re}(\\lambda_i) < 0$.',
+          'Hier beide Eigenwerte reell und negativ → stabil.',
+          'Langsamster Eigenwert (betragsmäßig kleinster) bestimmt Dominanzrate.',
+        ],
+        {
+          1: 'Wachstum würde einen Eigenwert mit $\\text{Re}(\\lambda) > 0$ erfordern. Alle hier sind negativ.',
+          2: 'Konstante Schwingung entspricht $\\text{Re}(\\lambda) = 0$ (imaginär). Hier ist nicht-null.',
+          3: 'Nur aus Eigenwerten folgt bereits Stabilität: Satz aus DGL-Theorie für lineare Systeme mit konstanten Koeffizienten.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Stabilität: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": Ein einziger Eigenwert mit $\\text{Re}(\\lambda) > 0$ reicht aus, um das gesamte System instabil zu machen.',
+        true,
+        `**Ansatz:** Jede Grundlösung $\\vec v_i e^{\\lambda_i t}$ mit $\\text{Re}(\\lambda_i) > 0$ wächst unbeschränkt. Auch wenn andere Moden gedämpft sind, dominiert der wachsende.
+
+**Rechnung:** Für eine generische Anfangsbedingung ist $C_i \\neq 0$ für den instabilen Mode — dann divergiert der Beitrag $C_i \\vec v_i e^{\\lambda_i t}$.
+
+**Probe:** Nur spezielle AWP (orthogonal zum instabilen Eigenvektor) bleiben beschränkt — diese Menge hat Maß null.
+
+**Typischer Fehler:** Nur den größten Eigenwert betrachten und dessen Kollegen ignorieren. Für Stabilität müssen *alle* Eigenwerte $\\text{Re}(\\lambda) < 0$ erfüllen.`,
+        [
+          'Stabilität: *alle* Eigenwerte $\\text{Re}(\\lambda) < 0$.',
+          'Ein einziger „schlechter" Eigenwert reicht zur Instabilität.',
+          'Formal: maximaler Realteil = Stabilitätsrate.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Stabilität: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": Welches System ist *grenzstabil* (stabil, aber nicht asymptotisch stabil)?',
+        [
+          'Eigenwerte $\\lambda_{1,2} = \\pm 2i$',
+          'Eigenwerte $\\lambda_1 = -1$, $\\lambda_2 = -3$',
+          'Eigenwerte $\\lambda_1 = 2$, $\\lambda_2 = -1$',
+          'Eigenwerte $\\lambda_{1,2} = -1 \\pm i$',
+        ],
+        0,
+        `**Ansatz:** Grenzstabil = alle Eigenwerte haben $\\text{Re}(\\lambda) \\leq 0$ und mindestens einer hat $\\text{Re}(\\lambda) = 0$, wobei dieser einfach ist.
+
+**Rechnung:** Rein imaginäre Eigenwerte $\\pm 2i$: $\\text{Re}(\\lambda) = 0$. Lösung ist reine Schwingung (beschränkt, aber klingt nicht ab).
+
+**Probe:** $\\vec y = C_1\\vec v_1 \\cos(2t) + C_2\\vec v_2 \\sin(2t)$ — bleibt beschränkt, aber $\\vec y \\not\\to \\vec 0$.
+
+**Typischer Fehler:** Grenzstabil mit asymptotisch stabil gleichsetzen. Grenzstabil bedeutet *beschränkt*, nicht *abklingend*.`,
+        [
+          'Asymptotisch stabil: $\\text{Re}(\\lambda) < 0$ strikt.',
+          'Grenzstabil: $\\text{Re}(\\lambda) \\leq 0$ mit Gleichheit bei einfachen Eigenwerten.',
+          'Instabil: irgendein $\\text{Re}(\\lambda) > 0$.',
+        ],
+        {
+          1: 'Alle negativ → asymptotisch stabil, nicht nur grenzstabil. Beide klingen ab.',
+          2: '$\\lambda_1 = 2 > 0$ → instabil, nicht (grenz-)stabil.',
+          3: 'Realteil $-1 < 0$ → asymptotisch stabil (gedämpfte Schwingung).',
+        },
+      ),
+      ni(
+        'Sub-Goal "Stabilität: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": Ein $2\\times 2$-System hat Eigenwerte $\\lambda_1 = -3$ und $\\lambda_2 = -0{,}5$. Der *langsamste* Abklingmode dominiert das Langzeitverhalten. Zu welcher Zeit $t$ ist dieser Mode auf $1/e \\approx 0{,}368$ seines Startwerts abgeklungen?',
+        2, 0.01, '',
+        `**Ansatz:** Zeitkonstante $\\tau = 1/|\\lambda|$ für Mode mit kleinstem $|\\lambda|$.
+
+**Rechnung:** Langsamster Mode: $\\lambda_2 = -0{,}5$, $\\tau = 1/0{,}5 = 2$. Nach $t=2$ ist $e^{-0{,}5\\cdot 2} = e^{-1} \\approx 0{,}368$.
+
+**Probe:** Faktor $1/e$ erreicht nach genau einer Zeitkonstanten, definitionsgemäß.
+
+**Typischer Fehler:** Falsche Zuordnung: „schnellster Abklingmode" statt „langsamster". Für das Langzeitverhalten dominiert der langsamste.`,
+        [
+          'Zeitkonstante $\\tau = 1/|\\text{Re}(\\lambda)|$.',
+          'Langsamster Mode hat das kleinste $|\\lambda|$.',
+          'Nach $\\tau$ Sekunden: Signal auf $1/e$ abgeklungen.',
+        ],
+      ),
+      matching(
+        'Sub-Goal "Stabilität: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": Ordne jedem Eigenwert-Spektrum den Stabilitätstyp zu.',
+        [
+          { left: 'Alle $\\text{Re}(\\lambda_i) < 0$', right: 'Asymptotisch stabil: $\\vec y \\to \\vec 0$' },
+          { left: 'Ein $\\text{Re}(\\lambda_i) > 0$', right: 'Instabil: $\\vec y$ wächst unbeschränkt' },
+          { left: 'Nur $\\text{Re}(\\lambda_i) \\leq 0$, einfache am Rand', right: 'Grenzstabil: beschränkt, aber nicht abklingend' },
+          { left: 'Alle $\\text{Re}(\\lambda_i) = 0$, linear unabhängige Eigenvektoren', right: 'Reine Schwingung (Zentrumstyp)' },
+        ],
+        `**Ansatz:** Klassifikation nach Realteil des Eigenwertspektrums.
+
+**Rechnung:** Kriterien aus der Theorie dynamischer Systeme. Doppelte Eigenwerte mit $\\text{Re}(\\lambda) = 0$ sind potenziell instabil (polynomielles Wachstum, z.B. $t\\cdot e^{0\\cdot t} = t$).
+
+**Probe:** Im Phasenporträt sichtbar: Knoten (asymp.), Sattel (inst.), Zentrum (grenzstabil), Spirale (asymp. oder inst. je nach Realteil).
+
+**Typischer Fehler:** Grenzstabilität mit asymptotischer Stabilität vermengen. Nur Abklingmoden (strikt negativ) sind asymptotisch stabil.`,
+        [
+          'Klassifizierung rein über $\\text{Re}(\\lambda)$.',
+          'Rand-Eigenwerte ($\\text{Re} = 0$) nur bei einfacher Vielfachheit harmlos.',
+          'Mehrfache Eigenwerte am Rand → polynomielles Wachstum.',
+        ],
+      ),
+    ],
+
+    // ── [5] Komplexe EW: α ± iβ → Real-/Imaginärteil nehmen ───────────
+    5: [
+      mc(
+        'Sub-Goal "Komplexe EW: Paare $\\alpha \\pm i\\beta$ → Real-/Imaginärteil nehmen für reelle Lösung": System mit komplex konjugiertem EW-Paar $\\lambda_{1,2} = -1 \\pm 2i$ und (komplexem) Eigenvektor $\\vec v = \\begin{pmatrix}1\\\\i\\end{pmatrix}$ zu $\\lambda_1$. Welche reelle Lösung gehört dazu?',
+        [
+          '$\\vec y = C_1 e^{-t}\\begin{pmatrix}\\cos 2t \\\\ -\\sin 2t\\end{pmatrix} + C_2 e^{-t}\\begin{pmatrix}\\sin 2t \\\\ \\cos 2t\\end{pmatrix}$',
+          '$\\vec y = C_1 e^{-t}\\begin{pmatrix}1\\\\i\\end{pmatrix} + C_2 e^{-t}\\begin{pmatrix}1\\\\-i\\end{pmatrix}$',
+          '$\\vec y = e^{-t}\\begin{pmatrix}\\cos 2t \\\\ \\sin 2t\\end{pmatrix}$',
+          '$\\vec y = C_1\\cos 2t \\begin{pmatrix}1\\\\1\\end{pmatrix} + C_2\\sin 2t \\begin{pmatrix}1\\\\-1\\end{pmatrix}$',
+        ],
+        0,
+        `**Ansatz:** Reelle Grundlösungen aus Real- und Imaginärteil von $\\vec v e^{\\lambda_1 t}$ extrahieren.
+
+**Rechnung:** $\\vec v e^{\\lambda_1 t} = \\begin{pmatrix}1\\\\i\\end{pmatrix} e^{(-1+2i)t} = e^{-t}\\begin{pmatrix}1\\\\i\\end{pmatrix}(\\cos 2t + i\\sin 2t) = e^{-t}\\begin{pmatrix}\\cos 2t + i\\sin 2t\\\\ i\\cos 2t - \\sin 2t\\end{pmatrix}$. Realteil: $e^{-t}\\begin{pmatrix}\\cos 2t\\\\-\\sin 2t\\end{pmatrix}$; Imaginärteil: $e^{-t}\\begin{pmatrix}\\sin 2t\\\\\\cos 2t\\end{pmatrix}$.
+
+**Probe:** Beide erfüllen das reelle System — lineare Kombination ergibt die allgemeine reelle Lösung.
+
+**Typischer Fehler:** Komplexe Lösung $\\vec v e^{\\lambda t}$ direkt als reelle Lösung nehmen. Sie ist komplex; nur Real- und Imaginärteil sind reell.`,
+        [
+          'Eine komplexe Grundlösung $\\vec v e^{\\lambda_1 t}$ liefert zwei reelle: Re und Im.',
+          'Multiplikation $\\vec v \\cdot e^{\\lambda t}$ mit $\\lambda = \\alpha + i\\beta$ und Euler-Formel.',
+          'Die zweite konjugierte Grundlösung bringt keine neue Information.',
+        ],
+        {
+          1: 'Die komplexe Form ist korrekt, aber nicht reell. Für eine reelle Lösung muss man Real- und Imaginärteil trennen.',
+          2: 'Das ist nur eine partikuläre Lösung mit bestimmter Konstante; die allgemeine Lösung hat 2 freie Parameter.',
+          3: 'Eigenvektor nicht aus der Rechnung, sondern geraten. Die Komponenten $(\\cos, \\sin)$ und $(\\sin, \\cos)$ tauchen *gemischt* aus $\\vec v$ und $e^{i\\beta t}$ auf.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Komplexe EW: Paare $\\alpha \\pm i\\beta$ → Real-/Imaginärteil nehmen für reelle Lösung": Bei einer reellen Matrix $A$ treten komplexe Eigenwerte immer in konjugierten Paaren auf.',
+        true,
+        `**Ansatz:** Charakteristisches Polynom $p(\\lambda) = \\det(A - \\lambda I)$ hat *reelle* Koeffizienten, weil $A$ reell ist.
+
+**Rechnung:** Fundamentalsatz der Algebra + reelle Koeffizienten: nicht-reelle Nullstellen kommen als komplex konjugierte Paare.
+
+**Probe:** $2\\times 2$-Beispiel: $A = \\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$ → $\\lambda^2+1=0$ → $\\lambda = \\pm i$. Konjugiertes Paar.
+
+**Typischer Fehler:** Einen einzelnen komplexen Eigenwert als korrekt akzeptieren. Bei reeller Matrix gibt's *immer* das konjugierte Pendant.`,
+        [
+          'Reelle Koeffizienten im charakteristischen Polynom.',
+          'Komplexe Nullstellen treten paarweise konjugiert auf.',
+          'Aus $\\lambda = \\alpha + i\\beta$ folgt auch $\\bar\\lambda = \\alpha - i\\beta$.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Komplexe EW: Paare $\\alpha \\pm i\\beta$ → Real-/Imaginärteil nehmen für reelle Lösung": Ein gedämpftes Schwingungssystem hat Eigenwerte $\\lambda_{1,2} = -2 \\pm 3i$. Welche Schwingungsfrequenz $\\omega$ hat die Lösung?',
+        3, 0.001, '',
+        `**Ansatz:** Imaginärteil der Eigenwerte = Kreisfrequenz $\\omega$.
+
+**Rechnung:** $\\lambda = \\alpha + i\\omega$ mit $\\alpha = -2$, $\\omega = 3$. Die Lösung enthält Terme $e^{-2t}\\cos(3t)$ und $e^{-2t}\\sin(3t)$.
+
+**Probe:** Dämpfungsrate $|\\alpha| = 2$ (Hüllkurve klingt ab), Schwingungskreisfrequenz $\\omega = 3$ rad/s.
+
+**Typischer Fehler:** Realteil und Imaginärteil verwechseln. Kreisfrequenz ist *immer* der Imaginärteil.`,
+        [
+          'Lösung $\\propto e^{\\alpha t}(\\cos\\omega t + i\\sin\\omega t)$.',
+          'Imaginärteil von $\\lambda$ = Kreisfrequenz $\\omega$.',
+          'Hier: $\\omega = 3$ rad/s.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Komplexe EW: Paare $\\alpha \\pm i\\beta$ → Real-/Imaginärteil nehmen für reelle Lösung": Ein konjugiertes Eigenwert-Paar liefert wie viele reelle linear unabhängige Grundlösungen?',
+        [
+          '2 (Realteil und Imaginärteil)',
+          '1 (nur eine komplexe Lösung)',
+          '4 (zwei pro Eigenwert)',
+          '0 (komplexe Eigenwerte liefern keine reelle Lösung)',
+        ],
+        0,
+        `**Ansatz:** Eine komplexe Grundlösung $\\vec v e^{\\lambda t}$ zerlegt sich in Realteil + $i\\cdot$ Imaginärteil.
+
+**Rechnung:** Realteil und Imaginärteil sind beide reelle Lösungen der DGL (da die Operation linear ist und $A$ reell). Sie sind außerdem linear unabhängig, weil die komplexe Lösung auf die zwei Funktionen projiziert wird.
+
+**Probe:** Konjugierter Partner $\\overline{\\vec v e^{\\lambda t}} = \\bar{\\vec v} e^{\\bar\\lambda t}$ liefert dieselben zwei reellen Funktionen (Real- und negativer Imaginärteil), also nichts Neues.
+
+**Typischer Fehler:** Von 4 reellen Lösungen ausgehen, weil 2 komplexe Eigenwerte vorliegen. Korrekter Zähltrick: jedes Paar zählt *einmal* und liefert 2 reelle.`,
+        [
+          'Komplexe Grundlösung = Realteil + $i\\cdot$ Imaginärteil.',
+          'Beide Teile sind reelle Lösungen, linear unabhängig.',
+          'Konjugierter Eigenwert liefert dieselben Informationen.',
+        ],
+        {
+          1: 'Die komplexe Lösung allein ist nicht reell, aber aus ihr lassen sich zwei reelle extrahieren.',
+          2: 'Das würde zu $2n$ Konstanten bei $n$-dim-System führen — zu viele. Jedes Paar liefert 2, nicht 4.',
+          3: 'Falsch: aus komplexen Eigenwerten lassen sich reelle Lösungen per Euler-Formel gewinnen. Gerade das ist der Standardweg.',
+        },
+      ),
+      sorting(
+        'Sub-Goal "Komplexe EW: Paare $\\alpha \\pm i\\beta$ → Real-/Imaginärteil nehmen für reelle Lösung": Sortiere die Schritte zur Berechnung reeller Lösungen bei komplexen Eigenwerten.',
+        [
+          'Charakteristisches Polynom lösen; komplexes Paar $\\lambda = \\alpha \\pm i\\beta$ identifizieren.',
+          'Komplexen Eigenvektor $\\vec v$ zu $\\lambda_1 = \\alpha + i\\beta$ berechnen.',
+          'Komplexe Grundlösung $\\vec v e^{\\lambda_1 t}$ aufstellen und per Euler-Formel expandieren.',
+          'Real- und Imaginärteil als zwei reelle linear unabhängige Grundlösungen extrahieren.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Standardablauf für reelle Lösungen bei komplexem EW-Paar.
+
+**Rechnung:** Eigenwerte → Eigenvektor → Ausdruck → Re/Im-Trennung. Der zweite Eigenwert $\\lambda_2 = \\bar\\lambda_1$ wird nicht separat gebraucht — sein Beitrag wird durch Re/Im abgedeckt.
+
+**Probe:** Sanity-Check: Zwei reelle Grundlösungen pro konjugiertem Paar — stimmt mit der Dimensionsrechnung.
+
+**Typischer Fehler:** Schritt 4 vergessen und mit komplexen Funktionen weiterrechnen, obwohl reelle AWP vorliegen. Die Lösung muss am Ende reell sein.`,
+        [
+          'Nur einen der beiden konjugierten Eigenwerte bearbeiten.',
+          'Euler-Formel $e^{i\\beta t} = \\cos\\beta t + i\\sin\\beta t$ verwenden.',
+          'Realteil und Imaginärteil → zwei reelle Grundlösungen.',
+        ],
+      ),
+    ],
+  },
+
+
+  // ────────────────────────────────────────────────────────────────────────
   // dgl-3-1 — Prüfung: DGL 1. Ordnung  (6 subGoals)
   // Je 5 Aufgaben = 30 Goal-Tasks
   // ────────────────────────────────────────────────────────────────────────

@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2795 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 893 (32 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 1056 / 1056 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 118 / 1134 (10 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2825 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 926 (33 %) | 100 % der Aufgaben | 🔴 |
+| MC mit wrongAnswerExplanations | 1068 / 1068 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 124 / 1134 (11 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -532,10 +532,10 @@ _LGS stecken in jeder FEM-Simulation, Ausgleichsrechnung, Signalverarbeitung. Ei
 - Phase: **2. Sem** · Level: vertiefung · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 10
-- Aufgaben: **200** (manuell: 61 · supplemental: 139)
-- 4-Block: 112/200 (56 %) 🔴
-- MC-wAE: 81/81 (100 %) ✅
-- Sub-Goals: 18/57 Goal-Tasks verknüpft 🔴
+- Aufgaben: **230** (manuell: 61 · supplemental: 169)
+- 4-Block: 145/230 (63 %) 🟡
+- MC-wAE: 93/93 (100 %) ✅
+- Sub-Goals: 24/57 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Gewöhnliche DGL: Trennbare, lineare erster Ordnung, lineare zweiter Ordnung mit konstanten Koeffizienten.**
@@ -579,7 +579,7 @@ _Physik spricht DGL: Schwingungen, Abkühlung, Population, RC-Glieder. DGL-Siche
 | `dgl-1-3` Lineare DGL 1. Ordnung | 6 | 0/6 | 12 | 6/3/1/1/1 | 0/12 | 6/6 | ✅ | +6 Goal, +12 4B |
 | `dgl-1-4` DGL 2. Ordnung mit konstanten Koeffizienten | 6 | 0/6 | 11 | 6/2/1/1/1 | 0/11 | 6/6 | ✅ | +6 Goal, +11 4B |
 | `dgl-2-1` Variation der Konstanten | 5 | 0/5 | 11 | 6/2/1/1/1 | 0/11 | 6/6 | ✅ | +5 Goal, +11 4B |
-| `dgl-2-2` DGL-Systeme | 6 | 0/6 | 10 | 4/2/2/1/1 | 0/10 | 4/4 | ✅ | +6 Goal, +10 4B |
+| `dgl-2-2` DGL-Systeme | 6 | 6/6 | 40 | 16/9/8/4/3 | 33/40 | 16/16 | ✅ | +7 4B |
 | `dgl-2-3` Technische Anwendungen | 6 | 0/6 | 11 | 5/2/1/2/1 | 0/11 | 5/5 | ✅ | +6 Goal, +11 4B |
 | `dgl-3-1` Prüfung: DGL 1. Ordnung | 6 | 6/6 | 41 | 19/8/8/3/3 | 41/41 | 19/19 | ✅ | — |
 | `dgl-3-2` Prüfung: DGL 2. Ordnung & Anwendungen | 6 | 6/6 | 41 | 15/10/8/4/4 | 30/41 | 15/15 | ✅ | +11 4B |
@@ -3033,7 +3033,7 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
   - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
-### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 138 Lessons
+### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 137 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -3732,31 +3732,6 @@ npm run build              # abschließender End-zu-End-Check
   - _Must-Know:_ Skalarprodukt: Orthogonalität ($\vec a\cdot\vec b=0$) und Winkel ($\cos\varphi = \vec a\cdot\vec b/(|\vec a||\vec b|)$). · Kreuzprodukt: Normalenvektor + Parallelogrammfläche; Reihenfolge ist nicht kommutativ. · Hessesche Normalform für Abstand Punkt–Ebene. · …
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
   - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
-
-#### `dgl-2-2` · DGL-Systeme
-
-- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Fortgeschrittene Methoden
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Matrixform: $\vec y' = A \vec y$ mit Vektor $\vec y$ und Koeffizientenmatrix $A$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Reduktion höherer Ordnung: $y_1 = y, y_2 = y', \ldots, y_n = y^{(n-1)}$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Eigenwertansatz: $\vec y = \vec v e^{\lambda t}$ → $A \vec v = \lambda \vec v$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Allgemeine Lösung: $\vec y = \sum C_i \vec v_i e^{\lambda_i t}$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Stabilität: alle $\text{Re}(\lambda_i) < 0$ → asymptotisch stabil
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Komplexe EW: Paare $\alpha \pm i\beta$ → Real-/Imaginärteil nehmen für reelle Lösung
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/differentialgleichungen.js`
-- **4-Block-Erklärung fehlt bei:** `ex-dgl-2-2-a`, `ex-dgl-2-2-b`, `ex-dgl-2-2-manual-1`, `ex-dgl-2-2-manual-2`, `ex-dgl-2-2-manual-3`, `ex-dgl-2-2-manual-4`, `ex-dgl-2-2-manual-5`, `ex-dgl-2-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
-  - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
-  - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
 
 #### `mech-1-1` · Kräfte und Freikörperbild
 
@@ -6338,7 +6313,7 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
   - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 18 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 19 Lessons
 
 #### `mech-0-3` · Dimensionsanalyse — Einheitencheck
 
@@ -6628,6 +6603,26 @@ npm run build              # abschließender End-zu-End-Check
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
   - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+
+#### `dgl-2-2` · DGL-Systeme
+
+- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Fortgeschrittene Methoden
+- **Aufgaben aktuell:** 40 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
+- **Typen vorhanden:** multiple-choice ×16, number-input ×9, true-false ×8, matching ×4, sorting ×3
+- **Typen einsetzen (Rotation):** sorting, matching, true-false
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
+  - ✅ [0] (hoch) **5/5+** Aufgaben — Matrixform: $\vec y' = A \vec y$ mit Vektor $\vec y$ und Koeffizientenmatrix $A$
+  - ✅ [1] (hoch) **5/5+** Aufgaben — Reduktion höherer Ordnung: $y_1 = y, y_2 = y', \ldots, y_n = y^{(n-1)}$
+  - ✅ [2] (hoch) **5/5+** Aufgaben — Eigenwertansatz: $\vec y = \vec v e^{\lambda t}$ → $A \vec v = \lambda \vec v$
+  - ✅ [3] (hoch) **5/5+** Aufgaben — Allgemeine Lösung: $\vec y = \sum C_i \vec v_i e^{\lambda_i t}$
+  - ✅ [4] (hoch) **5/5+** Aufgaben — Stabilität: alle $\text{Re}(\lambda_i) < 0$ → asymptotisch stabil
+  - ✅ [5] (mittel) **5/5+** Aufgaben — Komplexe EW: Paare $\alpha \pm i\beta$ → Real-/Imaginärteil nehmen für reelle Lösung
+- **4-Block-Erklärung fehlt bei:** `ex-dgl-2-2-manual-1`, `ex-dgl-2-2-manual-2`, `ex-dgl-2-2-manual-3`, `ex-dgl-2-2-manual-4`, `ex-dgl-2-2-manual-5`, `ex-dgl-2-2-manual-6`, `ex-dgl-2-2-manual-7`
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `spring-mass-damper`, `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
+- **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
+  - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+  - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
 
 #### `dgl-3-2` · Prüfung: DGL 2. Ordnung & Anwendungen
 
