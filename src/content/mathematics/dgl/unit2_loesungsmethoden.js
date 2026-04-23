@@ -100,7 +100,13 @@ export const exercises_dgl_u2 = {
       'Eine DGL',
     ],
     correctIndex: 2,
-    explanation: '$A$ ist eine quadratische **Matrix** (die Koeffizientenmatrix). $\\vec{y}$ ist ein Vektor von Funktionen. Das System koppelt mehrere DGL miteinander.',
+    explanation: `**Ansatz:** Beide Seiten der Gleichung $\\vec y\\,' = A \\vec y$ müssen Vektoren derselben Dimension sein. Links steht $\\vec y\\,'$ (ein Vektor), also muss $A \\vec y$ auch ein Vektor sein.
+
+**Rechnung:** Bildet $A$ einen Vektor $\\vec y \\in \\mathbb R^n$ linear auf einen Vektor gleicher Dimension ab, so ist $A$ per Definition eine **quadratische $n\\times n$-Matrix**. Sie enthält die Koeffizienten, die die $n$ skalaren DGL $y_i' = \\sum_j a_{ij} y_j$ miteinander verkoppeln.
+
+**Probe:** Beispiel $\\vec y = (y_1, y_2)^T$, $A = \\begin{pmatrix} 0 & 1 \\\\ -2 & -3 \\end{pmatrix}$ → $A \\vec y = (y_2, -2y_1 - 3y_2)^T$ — ein Vektor, wie gefordert.
+
+**Typischer Fehler:** "$A$ ist doch irgendwas mit Zahlen" — aber ein Skalar würde $\\vec y$ nur skalieren (und die Komponenten blieben entkoppelt), ein Vektor würde per Skalarprodukt einen Skalar liefern. Nur eine **Matrix** bildet Vektor → Vektor ab.`,
     hints: [
       'Was steht links vom Gleichheitszeichen? Was muss rechts dieselbe Form haben?',
       '$\\vec y$ und $\\vec y\'$ sind Vektoren. Für $A \\vec y$ muss $A$ eine Matrix sein.',
@@ -116,7 +122,13 @@ export const exercises_dgl_u2 = {
     id: 'ex-dgl-2-2-b', lessonId: 'dgl-2-2', type: 'true-false',
     statement: 'Jede DGL höherer Ordnung lässt sich in ein System von DGL 1. Ordnung umschreiben.',
     correct: true,
-    explanation: 'Ja! Trick: Substitution $y_1 = y$, $y_2 = y\'$, $y_3 = y\'\'$, ... Zum Beispiel wird $y\'\' + 3y\' + 2y = 0$ zu: $y_1\' = y_2$ und $y_2\' = -3y_2 - 2y_1$.',
+    explanation: `**Ansatz:** Für eine DGL $n$-ter Ordnung $y^{(n)} = f(x, y, y', \\ldots, y^{(n-1)})$ führe für *jede* Ableitung eine neue Variable ein: $y_1 = y$, $y_2 = y'$, ..., $y_n = y^{(n-1)}$.
+
+**Rechnung:** Automatisch gilt $y_1' = y_2$, $y_2' = y_3$, ..., $y_{n-1}' = y_n$. Nur die letzte Gleichung $y_n' = y^{(n)}$ bekommt die ursprüngliche DGL, umgestellt nach der höchsten Ableitung. Beispiel $y'' + 3y' + 2y = 0$: mit $y_1 = y$, $y_2 = y'$ wird daraus $y_1' = y_2$ und $y_2' = -3y_2 - 2y_1$.
+
+**Probe:** Aus $y_1' = y_2$ und $y_2' = -3y_2 - 2y_1$ folgt $y_1'' = y_2' = -3y_2 - 2y_1 = -3y_1' - 2y_1$, also $y_1'' + 3y_1' + 2y_1 = 0$ ✓ — die ursprüngliche DGL.
+
+**Typischer Fehler:** Man vergisst, dass nicht nur $y'' = \\ldots$ aufgelöst werden muss, sondern auch die *Kopplung* $y_1' = y_2$ dazugehört. Beide Gleichungen zusammen bilden das System — eine allein reicht nicht.`,
     hints: [
       'Trick: führe für jede Ableitung eine neue Variable ein.',
       'Beispiel: $y_1 = y$, $y_2 = y\'$, $y_3 = y\'\'$, ...',
@@ -133,7 +145,13 @@ export const exercises_dgl_u2 = {
       '$y_2\' = y_1 + y_2$',
     ],
     correctIndex: 1,
-    explanation: 'Aus $y\'\' + 5y\' + 6y = 0$ folgt $y\'\' = -5y\' - 6y$. Mit $y_2 = y\'$ und $y_1 = y$: $y_2\' = -6y_1 - 5y_2$.',
+    explanation: `**Ansatz:** Substituiere $y_1 = y$, $y_2 = y'$. Dann ist automatisch $y_1' = y_2$. Die zweite Systemgleichung $y_2' = y''$ bekommt den umgestellten Inhalt der ursprünglichen DGL.
+
+**Rechnung:** Aus $y'' + 5y' + 6y = 0$ folgt $y'' = -5y' - 6y$. Einsetzen der Substitution ($y \\to y_1$, $y' \\to y_2$, $y'' \\to y_2'$): $y_2' = -5 y_2 - 6 y_1$. Umsortiert nach $y_1, y_2$: $\\boxed{y_2' = -6 y_1 - 5 y_2}$.
+
+**Probe:** In Matrixform $\\vec y\\,' = \\begin{pmatrix} 0 & 1 \\\\ -6 & -5 \\end{pmatrix} \\vec y$. Charakteristisches Polynom: $\\lambda^2 + 5\\lambda + 6 = 0$ mit $\\lambda_1 = -2$, $\\lambda_2 = -3$ — identisch zur ursprünglichen DGL ✓.
+
+**Typischer Fehler:** Die Koeffizienten $5$ und $6$ werden falsch zugeordnet. Merkregel: $5$ steht in der DGL vor $y'$ (= $y_2$), also Koeffizient von $y_2$ im System. $6$ steht vor $y$ (= $y_1$), also Koeffizient von $y_1$. Und: **Vorzeichen wechseln** beim Umstellen nach $y''$.`,
     hints: [
       'Löse zuerst die ursprüngliche DGL nach $y\'\'$ auf.',
       '$y\'\' = -5y\' - 6y$. Ersetze nun $y \\to y_1$ und $y\' \\to y_2$.',
@@ -341,6 +359,20 @@ Man bestimmt:
 $$A = \\begin{pmatrix} 0 & 1 \\\\ -2 & -3 \\end{pmatrix}$$
 $\\det(A - \\lambda I) = \\lambda^2 + 3\\lambda + 2 = (\\lambda + 1)(\\lambda + 2) = 0$
 $\\lambda_1 = -1$, $\\lambda_2 = -2$ — beide negativ, also stabiles System (alles klingt ab).`,
+      },
+      {
+        id: 'dgl-2-2-s2b', type: 'visualization', title: 'Eigenwerte & Stabilität im Bild',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => Math.exp(-1 * x), color: '#10b981', label: 'λ = -1 (stabil, klingt ab)' },
+            { fn: (x) => Math.exp(-2 * x), color: '#3b82f6', label: 'λ = -2 (stabil, klingt schneller ab)' },
+            { fn: (x) => Math.exp(0.3 * x), color: '#ef4444', label: 'λ = +0.3 (instabil, wächst)' },
+          ],
+          xRange: [0, 5],
+          yRange: [-0.5, 4.5],
+          showGrid: true,
+        },
       },
       { id: 'dgl-2-2-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-dgl-2-2-a' },
       { id: 'dgl-2-2-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-dgl-2-2-b' },
