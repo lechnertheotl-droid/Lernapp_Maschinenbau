@@ -545,6 +545,46 @@ const lessons_alg_u3 = [
       { label: 'Injektiv = verschiedene $x$ $\\to$ verschiedene $y$; surjektiv = jedes $y$ im Bild wird getroffen; bijektiv = beides', examRelevance: 'mittel' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-1-3', concepts: ['log-def'] },
+        { lessonId: 'alg-1-2', concepts: ['wurzel-def-bereich'] },
+      ],
+      concepts: [
+        { id: 'fkt-def',        title: 'Funktion = jedes $x \\in D$ erhält genau ein $y$',                         dependsOn: [] },
+        { id: 'fkt-graph',      title: 'Funktionsgraph $\\{(x,f(x))\\}$ und vertikaler Linientest',               dependsOn: ['fkt-def'] },
+        { id: 'def-bereich',    title: 'Definitionsbereich: Division $\\neq 0$, Wurzel $\\geq 0$, $\\log > 0$',   dependsOn: ['fkt-def'] },
+        { id: 'wertebereich',   title: 'Wertebereich = Menge aller tatsächlich erreichten $y$',                  dependsOn: ['fkt-def'] },
+        { id: 'injektiv',       title: 'Injektiv: $f(x_1)=f(x_2) \\Rightarrow x_1=x_2$',                          dependsOn: ['fkt-def'] },
+        { id: 'surjektiv',      title: 'Surjektiv: jedes $y$ der Zielmenge hat ein Urbild',                      dependsOn: ['fkt-def'] },
+        { id: 'bijektiv',       title: 'Bijektiv = injektiv + surjektiv (Voraussetzung für Umkehrung)',          dependsOn: ['injektiv', 'surjektiv'] },
+      ],
+      subGoalConcepts: {
+        0: ['fkt-def', 'fkt-graph'],
+        1: ['def-bereich', 'wertebereich'],
+        2: ['injektiv', 'surjektiv', 'bijektiv'],
+      },
+      taskPlan: [
+        // SG 0 — Funktion
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['fkt-def'],                                    qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['fkt-graph'],                                  qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'multiple-choice', uses: ['fkt-graph'],                                  qty: 1, note: 'Vertikaler Linientest' },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['fkt-def'],                                    qty: 1, note: 'Distraktor: Kreis als Funktionsgraph' },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['fkt-def'],                                    qty: 1 },
+        // SG 1 — Def./Wertebereich
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['def-bereich'],                                qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['def-bereich'],                                qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'multiple-choice', uses: ['def-bereich', 'wertebereich'],                qty: 2 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['def-bereich'],                                qty: 1, note: 'Distraktor: Polstelle nicht ausgeschlossen' },
+        { subGoal: 1, stage: 'transfer',          type: 'matching',        uses: ['def-bereich'],                                qty: 1, note: 'Funktion ↔ maximaler Definitionsbereich' },
+        // SG 2 — Injektiv/Surjektiv/Bijektiv
+        { subGoal: 2, stage: 'recognize',         type: 'matching',        uses: ['injektiv', 'surjektiv', 'bijektiv'],          qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['injektiv'],                                   qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'multiple-choice', uses: ['bijektiv'],                                   qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['injektiv', 'surjektiv'],                      qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'true-false',      uses: ['bijektiv'],                                   qty: 1 },
+      ],
+    },
     nextLessonId: 'alg-3-2',
     steps: [
       {
@@ -616,6 +656,68 @@ Beispiel: $f(x) = 2x + 1$ ist bijektiv (als $\\mathbb{R} \\to \\mathbb{R}$).
       { label: 'Wurzelfunktion $\\sqrt{x} = x^{1/2}$: Def.bereich $[0,\\infty)$', examRelevance: 'mittel' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-3-1', concepts: ['fkt-def', 'def-bereich', 'wertebereich'] },
+        { lessonId: 'alg-1-1', concepts: ['pot-potenz'] },
+        { lessonId: 'alg-1-2', concepts: ['wurzel-bruchpot'] },
+        { lessonId: 'alg-1-3', concepts: ['log-def', 'log-umkehr'] },
+      ],
+      concepts: [
+        { id: 'potenz-fkt',        title: 'Potenzfunktion $f(x)=x^n$: Symmetrie je nach gerade/ungerade $n$',         dependsOn: [] },
+        { id: 'exp-fkt',           title: 'Exponentialfunktion $f(x)=a^x$ ($a>0, a\\neq 1$): $W = (0,\\infty)$',     dependsOn: [] },
+        { id: 'log-fkt',           title: 'Logarithmusfunktion $f(x)=\\log_a x$: $D = (0,\\infty)$',                  dependsOn: ['exp-fkt'] },
+        { id: 'wurzel-fkt',        title: 'Wurzelfunktion $f(x)=\\sqrt x$: $D = [0,\\infty)$',                        dependsOn: [] },
+        { id: 'euler-zahl',        title: '$e \\approx 2{,}718$ als Basis des natürlichen Logarithmus',               dependsOn: ['exp-fkt'] },
+        { id: 'wachstum-hierarchie', title: 'Wachstumshierarchie $\\ln x \\ll x^n \\ll a^x$ für $x \\to \\infty$',   dependsOn: ['potenz-fkt', 'exp-fkt', 'log-fkt'] },
+      ],
+      subGoalConcepts: {
+        0: ['potenz-fkt'],
+        1: ['exp-fkt'],
+        2: ['log-fkt'],
+        3: ['wachstum-hierarchie'],
+        4: ['euler-zahl'],
+        5: ['wurzel-fkt'],
+      },
+      taskPlan: [
+        // SG 0 — Potenzfunktion
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['potenz-fkt'],                                 qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['potenz-fkt'],                                 qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'matching',        uses: ['potenz-fkt'],                                 qty: 1, note: 'Graph ↔ $x^n$' },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['potenz-fkt'],                                 qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['potenz-fkt'],                                 qty: 1 },
+        // SG 1 — Exponentialfunktion
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['exp-fkt'],                                    qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['exp-fkt'],                                    qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['exp-fkt'],                                    qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['exp-fkt'],                                    qty: 1, note: 'Distraktor: $a^x$ kann $0$ sein' },
+        { subGoal: 1, stage: 'transfer',          type: 'matching',        uses: ['exp-fkt'],                                    qty: 1 },
+        // SG 2 — Logarithmusfunktion
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['log-fkt'],                                    qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['log-fkt'],                                    qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['log-fkt'],                                    qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['log-fkt'],                                    qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'matching',        uses: ['log-fkt', 'exp-fkt'],                         qty: 1 },
+        // SG 3 — Wachstumshierarchie
+        { subGoal: 3, stage: 'recognize',         type: 'matching',        uses: ['wachstum-hierarchie'],                        qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['wachstum-hierarchie'],                        qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'multiple-choice', uses: ['wachstum-hierarchie'],                        qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['wachstum-hierarchie'],                        qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'sorting',         uses: ['wachstum-hierarchie'],                        qty: 1 },
+        // SG 4 — Euler
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['euler-zahl'],                                 qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['euler-zahl'],                                 qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'number-input',    uses: ['euler-zahl'],                                 qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['euler-zahl'],                                 qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'matching',        uses: ['euler-zahl'],                                 qty: 1 },
+        // SG 5 — Wurzelfunktion
+        { subGoal: 5, stage: 'recognize',         type: 'true-false',      uses: ['wurzel-fkt'],                                 qty: 1 },
+        { subGoal: 5, stage: 'apply-guided',      type: 'multiple-choice', uses: ['wurzel-fkt'],                                 qty: 1 },
+        { subGoal: 5, stage: 'apply-independent', type: 'number-input',    uses: ['wurzel-fkt'],                                 qty: 1 },
+        { subGoal: 5, stage: 'error-analysis',    type: 'multiple-choice', uses: ['wurzel-fkt'],                                 qty: 1 },
+        { subGoal: 5, stage: 'transfer',          type: 'matching',        uses: ['wurzel-fkt'],                                 qty: 1 },
+      ],
+    },
     nextLessonId: 'alg-3-3',
     steps: [
       {
@@ -680,6 +782,67 @@ Beispiel: $f(x) = 2x + 1$ ist bijektiv (als $\\mathbb{R} \\to \\mathbb{R}$).
       { label: 'Funktionskomposition: $(f \\circ g)(x) = f(g(x))$ (Reihenfolge beachten)', examRelevance: 'mittel' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-3-1', concepts: ['fkt-def', 'fkt-graph'] },
+      ],
+      concepts: [
+        { id: 'trafo-hor-verschieben',   title: 'Horizontale Verschiebung: $f(x-a)$ um $a$ nach rechts',                     dependsOn: [] },
+        { id: 'trafo-vert-verschieben',  title: 'Vertikale Verschiebung: $f(x)+b$ um $b$ nach oben',                         dependsOn: [] },
+        { id: 'trafo-vert-streck',       title: 'Vertikale Streckung: $c \\cdot f(x)$',                                      dependsOn: ['trafo-vert-verschieben'] },
+        { id: 'trafo-hor-streck',        title: 'Horizontale Streckung: $f(x/c)$ (umgekehrt!)',                              dependsOn: ['trafo-hor-verschieben'] },
+        { id: 'trafo-spiegel-x',         title: 'Spiegelung an $x$-Achse: $-f(x)$',                                          dependsOn: [] },
+        { id: 'trafo-spiegel-y',         title: 'Spiegelung an $y$-Achse: $f(-x)$',                                          dependsOn: [] },
+        { id: 'trafo-merkregel',         title: 'Argument-Änderungen wirken horizontal und umgekehrt',                       dependsOn: ['trafo-hor-verschieben', 'trafo-hor-streck'] },
+        { id: 'fkt-komposition',         title: '$(f \\circ g)(x) = f(g(x))$ — Reihenfolge beachten',                        dependsOn: [] },
+      ],
+      subGoalConcepts: {
+        0: ['trafo-hor-verschieben'],
+        1: ['trafo-vert-verschieben'],
+        2: ['trafo-vert-streck', 'trafo-hor-streck'],
+        3: ['trafo-spiegel-x', 'trafo-spiegel-y'],
+        4: ['trafo-merkregel'],
+        5: ['fkt-komposition'],
+      },
+      taskPlan: [
+        // SG 0 — Horizontal verschieben
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['trafo-hor-verschieben'],                      qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['trafo-hor-verschieben'],                      qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'multiple-choice', uses: ['trafo-hor-verschieben'],                      qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['trafo-hor-verschieben'],                      qty: 1, note: 'Distraktor: Vorzeichen nicht getauscht' },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['trafo-hor-verschieben'],                      qty: 1 },
+        // SG 1 — Vertikal verschieben
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['trafo-vert-verschieben'],                     qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['trafo-vert-verschieben'],                     qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['trafo-vert-verschieben'],                     qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['trafo-vert-verschieben'],                     qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'matching',        uses: ['trafo-vert-verschieben', 'trafo-hor-verschieben'], qty: 1 },
+        // SG 2 — Streckung
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['trafo-vert-streck', 'trafo-hor-streck'],       qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['trafo-vert-streck'],                          qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'multiple-choice', uses: ['trafo-hor-streck'],                           qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['trafo-hor-streck'],                           qty: 1, note: 'Distraktor: horizontale Streckung intuitiv gerechnet' },
+        { subGoal: 2, stage: 'transfer',          type: 'matching',        uses: ['trafo-vert-streck', 'trafo-hor-streck'],      qty: 1 },
+        // SG 3 — Spiegelung
+        { subGoal: 3, stage: 'recognize',         type: 'matching',        uses: ['trafo-spiegel-x', 'trafo-spiegel-y'],         qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['trafo-spiegel-x'],                            qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'multiple-choice', uses: ['trafo-spiegel-y'],                            qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['trafo-spiegel-x', 'trafo-spiegel-y'],         qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'matching',        uses: ['trafo-spiegel-x', 'trafo-spiegel-y'],         qty: 1 },
+        // SG 4 — Merkregel
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['trafo-merkregel'],                            qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['trafo-merkregel'],                            qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'multiple-choice', uses: ['trafo-merkregel'],                            qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['trafo-merkregel'],                            qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'sorting',         uses: ['trafo-merkregel'],                            qty: 1 },
+        // SG 5 — Komposition
+        { subGoal: 5, stage: 'recognize',         type: 'true-false',      uses: ['fkt-komposition'],                            qty: 1 },
+        { subGoal: 5, stage: 'apply-guided',      type: 'multiple-choice', uses: ['fkt-komposition'],                            qty: 1 },
+        { subGoal: 5, stage: 'apply-independent', type: 'number-input',    uses: ['fkt-komposition'],                            qty: 1 },
+        { subGoal: 5, stage: 'error-analysis',    type: 'multiple-choice', uses: ['fkt-komposition'],                            qty: 1, note: 'Distraktor: Reihenfolge vertauscht' },
+        { subGoal: 5, stage: 'transfer',          type: 'matching',        uses: ['fkt-komposition'],                            qty: 1 },
+      ],
+    },
     nextLessonId: 'alg-3-4',
     steps: [
       {
@@ -723,6 +886,66 @@ Beispiel: $f(x) = 2x + 1$ ist bijektiv (als $\\mathbb{R} \\to \\mathbb{R}$).
       { label: 'Für nicht-injektives $f$ (z.B. $x^2$) Def.bereich einschränken: $[0,\\infty)$ macht Umkehrung möglich', examRelevance: 'mittel' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-3-1', concepts: ['injektiv', 'surjektiv', 'bijektiv', 'def-bereich', 'wertebereich'] },
+        { lessonId: 'alg-0-4', concepts: ['aequivalenz'] },
+      ],
+      concepts: [
+        { id: 'umkehr-existenz',   title: 'Umkehrfunktion existiert genau wenn $f$ bijektiv ist',                              dependsOn: [] },
+        { id: 'umkehr-verfahren',  title: 'Verfahren: $y=f(x)$ nach $x$ auflösen, dann Rollen tauschen',                      dependsOn: ['umkehr-existenz'] },
+        { id: 'umkehr-graph',      title: 'Graphische Konstruktion: Spiegelung an $y=x$',                                     dependsOn: ['umkehr-existenz'] },
+        { id: 'umkehr-bereiche',   title: '$D(f^{-1}) = W(f)$ und $W(f^{-1}) = D(f)$',                                        dependsOn: ['umkehr-existenz'] },
+        { id: 'umkehr-identitaet', title: '$f^{-1}(f(x)) = x$ und $f(f^{-1}(y)) = y$',                                        dependsOn: ['umkehr-verfahren'] },
+        { id: 'umkehr-einschraenken', title: 'Nicht-injektives $f$: Definitionsbereich einschränken',                         dependsOn: ['umkehr-existenz'] },
+      ],
+      subGoalConcepts: {
+        0: ['umkehr-existenz'],
+        1: ['umkehr-verfahren'],
+        2: ['umkehr-graph'],
+        3: ['umkehr-bereiche'],
+        4: ['umkehr-identitaet'],
+        5: ['umkehr-einschraenken'],
+      },
+      taskPlan: [
+        // SG 0 — Existenz
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['umkehr-existenz'],                            qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['umkehr-existenz'],                            qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'multiple-choice', uses: ['umkehr-existenz'],                            qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['umkehr-existenz'],                            qty: 1, note: 'Distraktor: bijektiv nicht geprüft' },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['umkehr-existenz'],                            qty: 1 },
+        // SG 1 — Berechnung
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['umkehr-verfahren'],                           qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['umkehr-verfahren'],                           qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['umkehr-verfahren'],                           qty: 2 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['umkehr-verfahren'],                           qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'sorting',         uses: ['umkehr-verfahren'],                           qty: 1 },
+        // SG 2 — Graph
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['umkehr-graph'],                               qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['umkehr-graph'],                               qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'multiple-choice', uses: ['umkehr-graph'],                               qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['umkehr-graph'],                               qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'matching',        uses: ['umkehr-graph'],                               qty: 1 },
+        // SG 3 — Bereiche
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['umkehr-bereiche'],                            qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['umkehr-bereiche'],                            qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'multiple-choice', uses: ['umkehr-bereiche'],                            qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['umkehr-bereiche'],                            qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'matching',        uses: ['umkehr-bereiche'],                            qty: 1 },
+        // SG 4 — Identität
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['umkehr-identitaet'],                          qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['umkehr-identitaet'],                          qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'number-input',    uses: ['umkehr-identitaet'],                          qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['umkehr-identitaet'],                          qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'number-input',    uses: ['umkehr-identitaet'],                          qty: 1 },
+        // SG 5 — Einschränkung
+        { subGoal: 5, stage: 'recognize',         type: 'true-false',      uses: ['umkehr-einschraenken'],                       qty: 1 },
+        { subGoal: 5, stage: 'apply-guided',      type: 'multiple-choice', uses: ['umkehr-einschraenken'],                       qty: 1 },
+        { subGoal: 5, stage: 'apply-independent', type: 'multiple-choice', uses: ['umkehr-einschraenken', 'umkehr-verfahren'],   qty: 1 },
+        { subGoal: 5, stage: 'error-analysis',    type: 'multiple-choice', uses: ['umkehr-einschraenken'],                       qty: 1 },
+        { subGoal: 5, stage: 'transfer',          type: 'number-input',    uses: ['umkehr-einschraenken', 'umkehr-verfahren'],   qty: 1 },
+      ],
+    },
     nextLessonId: null,
     steps: [
       {

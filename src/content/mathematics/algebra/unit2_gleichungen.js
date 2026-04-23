@@ -620,6 +620,50 @@ const lessons_alg_u2 = [
       { label: 'Probe durch Einsetzen in Original-Gleichung schützt vor Vorzeichen- und Umformungsfehlern', examRelevance: 'hoch' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-0-4', concepts: ['aequivalenz', 'distributiv', 'formel-umstellen'] },
+      ],
+      concepts: [
+        { id: 'lin-form',       title: 'Lineare Gleichung $ax + b = 0$ als Standardform',                      dependsOn: [] },
+        { id: 'iso-variable',   title: 'Variable auf eine Seite isolieren (Äquivalenz)',                      dependsOn: ['lin-form'] },
+        { id: 'koeff-dividieren', title: 'Durch Koeffizient von $x$ dividieren ($\\neq 0$)',                  dependsOn: ['iso-variable'] },
+        { id: 'text-uebersetzung', title: 'Textaufgabe → Variable definieren → Gleichung aufstellen',         dependsOn: ['iso-variable'] },
+        { id: 'probe-einsetzen', title: 'Probe: Lösung in Original-Gleichung einsetzen',                      dependsOn: ['koeff-dividieren'] },
+      ],
+      subGoalConcepts: {
+        0: ['lin-form', 'iso-variable'],
+        1: ['iso-variable', 'koeff-dividieren'],
+        2: ['text-uebersetzung'],
+        3: ['probe-einsetzen'],
+      },
+      taskPlan: [
+        // SG 0 — Äquivalenzumformungen
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['iso-variable'],                                qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['iso-variable'],                                qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['iso-variable'],                                qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['iso-variable'],                                qty: 1, note: 'Distraktor: Operation nur auf einer Seite' },
+        { subGoal: 0, stage: 'transfer',          type: 'sorting',         uses: ['iso-variable'],                                qty: 1, note: 'Umformungsschritte ordnen' },
+        // SG 1 — Standardvorgehen
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['koeff-dividieren'],                            qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['iso-variable', 'koeff-dividieren'],            qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['iso-variable', 'koeff-dividieren'],            qty: 2 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['koeff-dividieren'],                            qty: 1, note: 'Distraktor: Vorzeichen beim Umstellen übersehen' },
+        { subGoal: 1, stage: 'transfer',          type: 'sorting',         uses: ['iso-variable', 'koeff-dividieren'],            qty: 1 },
+        // SG 2 — Textaufgaben
+        { subGoal: 2, stage: 'recognize',         type: 'matching',        uses: ['text-uebersetzung'],                           qty: 1, note: 'Textbaustein ↔ Variable' },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['text-uebersetzung'],                           qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['text-uebersetzung'],                           qty: 2, note: 'Altersaufgabe + Flächenaufgabe' },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['text-uebersetzung'],                           qty: 1, note: 'Distraktor: falsche Variable definiert' },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['text-uebersetzung'],                           qty: 1 },
+        // SG 3 — Probe
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['probe-einsetzen'],                             qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['probe-einsetzen'],                             qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'true-false',      uses: ['probe-einsetzen'],                             qty: 1, note: 'Lösung gegeben — prüfen ob richtig' },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['probe-einsetzen'],                             qty: 1, note: 'Distraktor: Probe auf umgeformter Gleichung statt Original' },
+        { subGoal: 3, stage: 'transfer',          type: 'sorting',         uses: ['probe-einsetzen', 'iso-variable'],             qty: 1 },
+      ],
+    },
     nextLessonId: 'alg-2-2',
     steps: [
       {
@@ -665,6 +709,52 @@ const lessons_alg_u2 = [
       { label: 'Faktorisierte Form $(x - x_1)(x - x_2) = 0$ macht Nullstellen direkt sichtbar', examRelevance: 'hoch' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-0-4', concepts: ['binom-1', 'binom-2', 'binom-3', 'aequivalenz'] },
+        { lessonId: 'alg-1-2', concepts: ['wurzel-bruchpot', 'wurzel-def-bereich'] },
+      ],
+      concepts: [
+        { id: 'quad-form',      title: 'Allgemeine Form $ax^2 + bx + c = 0$ (mit $a \\neq 0$)',                  dependsOn: [] },
+        { id: 'abc-formel',     title: 'Mitternachtsformel $x = (-b \\pm \\sqrt{b^2 - 4ac})/(2a)$',               dependsOn: ['quad-form'] },
+        { id: 'pq-formel',      title: 'pq-Formel für Normalform $x^2 + px + q = 0$',                            dependsOn: ['abc-formel'] },
+        { id: 'diskriminante',  title: 'Diskriminante $D=b^2-4ac$ — Fallunterscheidung $D>0,=0,<0$',             dependsOn: ['abc-formel'] },
+        { id: 'vieta',          title: 'Vieta: $x_1+x_2=-p$, $x_1 x_2 = q$ (Normalform)',                        dependsOn: ['pq-formel'] },
+        { id: 'faktor-form',    title: 'Faktorisierte Form $(x-x_1)(x-x_2)=0$ zeigt Nullstellen direkt',         dependsOn: ['abc-formel'] },
+      ],
+      subGoalConcepts: {
+        0: ['quad-form', 'abc-formel', 'pq-formel'],
+        1: ['diskriminante'],
+        2: ['vieta'],
+        3: ['faktor-form'],
+      },
+      taskPlan: [
+        // SG 0 — Mitternachts-/pq-Formel
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['abc-formel'],                                  qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pq-formel'],                                   qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['abc-formel'],                                  qty: 2 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['abc-formel'],                                  qty: 1, note: 'Distraktor: Vorzeichen unter der Wurzel falsch' },
+        { subGoal: 0, stage: 'transfer',          type: 'sorting',         uses: ['abc-formel', 'pq-formel'],                     qty: 1 },
+        // SG 1 — Diskriminante
+        { subGoal: 1, stage: 'recognize',         type: 'matching',        uses: ['diskriminante'],                               qty: 1, note: '$D$-Fall ↔ Lösungsanzahl' },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['diskriminante'],                               qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['diskriminante'],                               qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['diskriminante'],                               qty: 1, note: 'Distraktor: $D<0$ mit $D=0$ verwechselt' },
+        { subGoal: 1, stage: 'transfer',          type: 'true-false',      uses: ['diskriminante', 'abc-formel'],                 qty: 1 },
+        // SG 2 — Vieta
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['vieta'],                                       qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['vieta'],                                       qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['vieta'],                                       qty: 1, note: 'Lösungen raten + Probe' },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['vieta'],                                       qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'matching',        uses: ['vieta'],                                       qty: 1 },
+        // SG 3 — Faktorisierte Form
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['faktor-form'],                                 qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['faktor-form'],                                 qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['faktor-form', 'abc-formel'],                   qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['faktor-form'],                                 qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'matching',        uses: ['faktor-form', 'vieta'],                        qty: 1, note: 'Faktor ↔ Nullstelle' },
+      ],
+    },
     nextLessonId: 'alg-2-3',
     steps: [
       {
@@ -735,6 +825,66 @@ Nützlich zum schnellen Raten ganzzahliger Lösungen oder zur Probe!`,
       { label: 'Bei $x^3 + ax + b$ ohne rationale Nullstelle: Cardano oder numerisch', examRelevance: 'niedrig' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-2-2', concepts: ['faktor-form', 'abc-formel'] },
+      ],
+      concepts: [
+        { id: 'polynom-grad',     title: 'Grad eines Polynoms und höchster Summand',                                            dependsOn: [] },
+        { id: 'rat-wurzel',       title: 'Rationaler Wurzelsatz: ganzzahlige Nullstelle teilt das absolute Glied',              dependsOn: ['polynom-grad'] },
+        { id: 'polydiv',          title: 'Polynomdivision $P(x) \\div (x-x_0)$ — Grad sinkt um 1',                              dependsOn: ['rat-wurzel'] },
+        { id: 'polydiv-rest',     title: 'Rest der Polynomdivision bei einer Nullstelle ist 0 (Probe)',                         dependsOn: ['polydiv'] },
+        { id: 'horner',           title: 'Horner-Schema als kompakte Polynomdivision + Funktionswert-Berechnung',               dependsOn: ['polydiv'] },
+        { id: 'linearfaktor',     title: 'Linearfaktor-Zerlegung $P(x) = \\prod (x-x_i)$ bei reellen Nullstellen',              dependsOn: ['polydiv'] },
+        { id: 'cardano-info',     title: 'Ohne rationale Nullstelle: Cardano oder numerisch (Infotiefe)',                       dependsOn: ['rat-wurzel'] },
+      ],
+      subGoalConcepts: {
+        0: ['rat-wurzel'],
+        1: ['polydiv'],
+        2: ['polydiv-rest'],
+        3: ['horner'],
+        4: ['linearfaktor'],
+        5: ['cardano-info'],
+      },
+      taskPlan: [
+        // SG 0 — Nullstellenraten
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['rat-wurzel'],                                 qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['rat-wurzel'],                                 qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['rat-wurzel'],                                 qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['rat-wurzel'],                                 qty: 1, note: 'Distraktor: Teiler des Leitkoeffizienten statt Absolutglied' },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['rat-wurzel'],                                 qty: 1 },
+        // SG 1 — Polynomdivision
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['polydiv'],                                    qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['polydiv'],                                    qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['polydiv'],                                    qty: 2, note: 'Quotient + konstantes Glied' },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['polydiv'],                                    qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'sorting',         uses: ['polydiv'],                                    qty: 1, note: 'Divisionsschritte ordnen' },
+        // SG 2 — Rest = 0
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['polydiv-rest'],                               qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['polydiv-rest'],                               qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['polydiv-rest'],                               qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['polydiv-rest'],                               qty: 1, note: 'Distraktor: Rest $\\neq 0$ akzeptiert' },
+        { subGoal: 2, stage: 'transfer',          type: 'true-false',      uses: ['polydiv-rest', 'rat-wurzel'],                 qty: 1 },
+        // SG 3 — Horner-Schema
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['horner'],                                     qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['horner'],                                     qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['horner'],                                     qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['horner'],                                     qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'sorting',         uses: ['horner'],                                     qty: 1 },
+        // SG 4 — Linearfaktor-Zerlegung
+        { subGoal: 4, stage: 'recognize',         type: 'matching',        uses: ['linearfaktor'],                               qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['linearfaktor', 'polydiv'],                    qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'number-input',    uses: ['linearfaktor'],                               qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['linearfaktor'],                               qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'number-input',    uses: ['linearfaktor', 'rat-wurzel'],                 qty: 1 },
+        // SG 5 — Cardano/numerisch (info)
+        { subGoal: 5, stage: 'recognize',         type: 'true-false',      uses: ['cardano-info'],                               qty: 1 },
+        { subGoal: 5, stage: 'apply-guided',      type: 'multiple-choice', uses: ['cardano-info'],                               qty: 1 },
+        { subGoal: 5, stage: 'apply-independent', type: 'multiple-choice', uses: ['cardano-info'],                               qty: 1 },
+        { subGoal: 5, stage: 'error-analysis',    type: 'multiple-choice', uses: ['cardano-info'],                               qty: 1 },
+        { subGoal: 5, stage: 'transfer',          type: 'matching',        uses: ['cardano-info', 'rat-wurzel'],                 qty: 1 },
+      ],
+    },
     nextLessonId: 'alg-2-4',
     steps: [
       {
@@ -775,6 +925,66 @@ Nützlich zum schnellen Raten ganzzahliger Lösungen oder zur Probe!`,
       { label: 'Bruchungleichungen: Polstellen des Nenners separat betrachten, nicht quer-multiplizieren', examRelevance: 'mittel' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-2-1', concepts: ['iso-variable', 'koeff-dividieren'] },
+        { lessonId: 'alg-2-2', concepts: ['faktor-form'] },
+      ],
+      concepts: [
+        { id: 'ungl-zeichen-flip', title: 'Multiplikation/Division mit negativer Zahl → $<$ und $>$ tauschen',        dependsOn: [] },
+        { id: 'betrag-kleiner',    title: '$|x-a|<b \\iff a-b < x < a+b$',                                           dependsOn: [] },
+        { id: 'betrag-groesser',   title: '$|x-a|>b \\iff x<a-b$ ODER $x>a+b$',                                      dependsOn: ['betrag-kleiner'] },
+        { id: 'vz-tabelle',        title: 'Vorzeichentabelle für quadratische Ungleichungen',                        dependsOn: [] },
+        { id: 'intervall-notation', title: 'Intervall-Notation $(-\\infty, a) \\cup (b, \\infty)$',                   dependsOn: ['vz-tabelle'] },
+        { id: 'bruch-ungl-pol',    title: 'Bruchungleichung: Polstellen separat betrachten',                         dependsOn: ['vz-tabelle', 'ungl-zeichen-flip'] },
+      ],
+      subGoalConcepts: {
+        0: ['ungl-zeichen-flip'],
+        1: ['betrag-kleiner'],
+        2: ['betrag-groesser'],
+        3: ['vz-tabelle'],
+        4: ['intervall-notation'],
+        5: ['bruch-ungl-pol'],
+      },
+      taskPlan: [
+        // SG 0 — Zeichen umdrehen
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['ungl-zeichen-flip'],                          qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['ungl-zeichen-flip'],                          qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['ungl-zeichen-flip'],                          qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['ungl-zeichen-flip'],                          qty: 1, note: 'Distraktor: Zeichen nicht getauscht' },
+        { subGoal: 0, stage: 'transfer',          type: 'sorting',         uses: ['ungl-zeichen-flip'],                          qty: 1 },
+        // SG 1 — |x-a|<b
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['betrag-kleiner'],                             qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['betrag-kleiner'],                             qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['betrag-kleiner'],                             qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['betrag-kleiner'],                             qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'matching',        uses: ['betrag-kleiner'],                             qty: 1 },
+        // SG 2 — |x-a|>b
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['betrag-groesser'],                            qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['betrag-groesser'],                            qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['betrag-groesser'],                            qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['betrag-groesser', 'betrag-kleiner'],          qty: 1, note: 'Distraktor: ODER als UND behandelt' },
+        { subGoal: 2, stage: 'transfer',          type: 'matching',        uses: ['betrag-groesser', 'betrag-kleiner'],          qty: 1 },
+        // SG 3 — Vorzeichentabelle
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['vz-tabelle'],                                 qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['vz-tabelle'],                                 qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['vz-tabelle'],                                 qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['vz-tabelle'],                                 qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'sorting',         uses: ['vz-tabelle'],                                 qty: 1 },
+        // SG 4 — Intervall-Notation
+        { subGoal: 4, stage: 'recognize',         type: 'matching',        uses: ['intervall-notation'],                         qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['intervall-notation'],                         qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'multiple-choice', uses: ['intervall-notation', 'vz-tabelle'],           qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['intervall-notation'],                         qty: 1, note: 'Distraktor: offene vs. geschlossene Grenze verwechselt' },
+        { subGoal: 4, stage: 'transfer',          type: 'matching',        uses: ['intervall-notation'],                         qty: 1 },
+        // SG 5 — Bruchungleichungen
+        { subGoal: 5, stage: 'recognize',         type: 'true-false',      uses: ['bruch-ungl-pol'],                             qty: 1 },
+        { subGoal: 5, stage: 'apply-guided',      type: 'multiple-choice', uses: ['bruch-ungl-pol'],                             qty: 1 },
+        { subGoal: 5, stage: 'apply-independent', type: 'number-input',    uses: ['bruch-ungl-pol'],                             qty: 1 },
+        { subGoal: 5, stage: 'error-analysis',    type: 'multiple-choice', uses: ['bruch-ungl-pol'],                             qty: 1, note: 'Distraktor: quer-multipliziert ohne Fallunterscheidung' },
+        { subGoal: 5, stage: 'transfer',          type: 'sorting',         uses: ['bruch-ungl-pol'],                             qty: 1 },
+      ],
+    },
     nextLessonId: null,
     steps: [
       {

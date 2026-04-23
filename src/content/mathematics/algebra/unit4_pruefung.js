@@ -978,6 +978,60 @@ const lessons_alg_u4 = [
       { label: 'Bei Prüfungsaufgaben Rechenweg sichtbar: jede Umformung nummerieren/benennen', examRelevance: 'mittel' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-1-1', concepts: ['pot-mult', 'pot-potenz', 'pot-negativ'] },
+        { lessonId: 'alg-1-3', concepts: ['log-produkt', 'log-potenz', 'log-basiswechsel', 'log-umkehr'] },
+        { lessonId: 'alg-2-2', concepts: ['abc-formel', 'diskriminante'] },
+        { lessonId: 'alg-0-4', concepts: ['quadrieren-probe'] },
+      ],
+      concepts: [
+        { id: 'pr-diskriminante',    title: 'Fallunterscheidung $D>0,=0,<0$ im Prüfungskontext',           dependsOn: [] },
+        { id: 'pr-exp-gleichung',    title: 'Exponentialgleichung $a^x=b$ durch Logarithmieren lösen',     dependsOn: [] },
+        { id: 'pr-wurzel-gleichung', title: 'Wurzelgleichung: quadrieren + Probe gegen Scheinlösungen',    dependsOn: [] },
+        { id: 'pr-dimensionslos',    title: 'Argumente von $\\ln,\\log,e^\\cdot$ sind dimensionslos',      dependsOn: [] },
+        { id: 'pr-rechenweg',        title: 'Prüfungsrechnung: jede Umformung benennen',                   dependsOn: [] },
+      ],
+      subGoalConcepts: {
+        0: ['pr-diskriminante'],
+        1: ['pr-exp-gleichung'],
+        2: ['pr-wurzel-gleichung'],
+        3: ['pr-dimensionslos'],
+        4: ['pr-rechenweg'],
+      },
+      taskPlan: [
+        // SG 0 — Diskriminante
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['pr-diskriminante'],                             qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-diskriminante'],                             qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['pr-diskriminante'],                             qty: 1, note: '[PRÜFUNG]' },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-diskriminante'],                             qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['pr-diskriminante'],                             qty: 1 },
+        // SG 1 — Exponentialgleichung
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['pr-exp-gleichung'],                             qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-exp-gleichung'],                             qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['pr-exp-gleichung'],                             qty: 1, note: '[PRÜFUNG]' },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-exp-gleichung'],                             qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'sorting',         uses: ['pr-exp-gleichung'],                             qty: 1 },
+        // SG 2 — Wurzelgleichung
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['pr-wurzel-gleichung'],                          qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-wurzel-gleichung'],                          qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['pr-wurzel-gleichung'],                          qty: 1, note: '[PRÜFUNG]' },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-wurzel-gleichung'],                          qty: 1, note: 'Distraktor: Probe vergessen' },
+        { subGoal: 2, stage: 'transfer',          type: 'sorting',         uses: ['pr-wurzel-gleichung'],                          qty: 1 },
+        // SG 3 — Dimensionslosigkeit
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['pr-dimensionslos'],                             qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-dimensionslos'],                             qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'multiple-choice', uses: ['pr-dimensionslos'],                             qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-dimensionslos'],                             qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'matching',        uses: ['pr-dimensionslos'],                             qty: 1 },
+        // SG 4 — Rechenweg
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['pr-rechenweg'],                                 qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-rechenweg'],                                 qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'sorting',         uses: ['pr-rechenweg'],                                 qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-rechenweg'],                                 qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'sorting',         uses: ['pr-rechenweg'],                                 qty: 1 },
+      ],
+    },
     nextLessonId: 'alg-4-2',
     steps: [
       {
@@ -1074,6 +1128,67 @@ $$x_{1,2} = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}, \\quad D = b^{2} - 4ac$$
       { label: 'Anwendung Umsatz: $U(x) = x \\cdot p(x)$, Maximum bei $U\'(x) = 0$', examRelevance: 'mittel' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-2-2', concepts: ['abc-formel', 'faktor-form'] },
+        { lessonId: 'alg-3-4', concepts: ['umkehr-verfahren', 'umkehr-bereiche'] },
+        { lessonId: 'alg-3-2', concepts: ['exp-fkt', 'log-fkt'] },
+      ],
+      concepts: [
+        { id: 'pr-scheitel-formel', title: 'Scheitelpunkt Parabel: $x_S=-b/(2a)$, $y_S=f(x_S)$',                 dependsOn: [] },
+        { id: 'pr-scheitel-form',   title: 'Scheitelform $f(x)=a(x-x_S)^2 + y_S$ via quadratischer Ergänzung',   dependsOn: ['pr-scheitel-formel'] },
+        { id: 'pr-umkehr-prakt',    title: 'Umkehrfunktion praktisch berechnen',                                dependsOn: [] },
+        { id: 'pr-waermeausdehnung', title: 'Wärmeausdehnung $l(T) = l_0(1+\\alpha T)$',                        dependsOn: [] },
+        { id: 'pr-abklingen',       title: 'Abklingen $p(t)=p_0 e^{-kt}$, $t_{1/2}=\\ln 2/k$',                  dependsOn: [] },
+        { id: 'pr-umsatz',          title: 'Umsatz $U(x)=x\\cdot p(x)$, Maximum bei $U\'(x)=0$',                dependsOn: [] },
+      ],
+      subGoalConcepts: {
+        0: ['pr-scheitel-formel'],
+        1: ['pr-scheitel-form'],
+        2: ['pr-umkehr-prakt'],
+        3: ['pr-waermeausdehnung'],
+        4: ['pr-abklingen'],
+        5: ['pr-umsatz'],
+      },
+      taskPlan: [
+        // SG 0 — Scheitelformel
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['pr-scheitel-formel'],                           qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-scheitel-formel'],                           qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['pr-scheitel-formel'],                           qty: 1, note: '[PRÜFUNG]' },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-scheitel-formel'],                           qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['pr-scheitel-formel'],                           qty: 1 },
+        // SG 1 — Scheitelform
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['pr-scheitel-form'],                             qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-scheitel-form'],                             qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['pr-scheitel-form'],                             qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-scheitel-form'],                             qty: 1, note: 'Vorzeichen von $h$ in $(x-h)^2$' },
+        { subGoal: 1, stage: 'transfer',          type: 'sorting',         uses: ['pr-scheitel-form', 'pr-scheitel-formel'],       qty: 1 },
+        // SG 2 — Umkehrfunktion praktisch
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['pr-umkehr-prakt'],                              qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-umkehr-prakt'],                              qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['pr-umkehr-prakt'],                              qty: 1, note: '[PRÜFUNG]' },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-umkehr-prakt'],                              qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'sorting',         uses: ['pr-umkehr-prakt'],                              qty: 1 },
+        // SG 3 — Wärmeausdehnung
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['pr-waermeausdehnung'],                          qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-waermeausdehnung'],                          qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['pr-waermeausdehnung'],                          qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-waermeausdehnung'],                          qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'number-input',    uses: ['pr-waermeausdehnung'],                          qty: 1 },
+        // SG 4 — Abklingen
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['pr-abklingen'],                                 qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-abklingen'],                                 qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'number-input',    uses: ['pr-abklingen'],                                 qty: 1, note: 'Halbwertszeit' },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-abklingen'],                                 qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'number-input',    uses: ['pr-abklingen'],                                 qty: 1 },
+        // SG 5 — Umsatz
+        { subGoal: 5, stage: 'recognize',         type: 'true-false',      uses: ['pr-umsatz'],                                    qty: 1 },
+        { subGoal: 5, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-umsatz'],                                    qty: 1 },
+        { subGoal: 5, stage: 'apply-independent', type: 'number-input',    uses: ['pr-umsatz'],                                    qty: 1 },
+        { subGoal: 5, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-umsatz'],                                    qty: 1 },
+        { subGoal: 5, stage: 'transfer',          type: 'number-input',    uses: ['pr-umsatz'],                                    qty: 1 },
+      ],
+    },
     nextLessonId: 'alg-4-3',
     steps: [
       {
@@ -1166,6 +1281,66 @@ Polynom­division → restliche Nullstellen bestimmen.`,
       { label: 'Technik-Anwendungen: Kirchhoffsche Maschenregeln, Biegespannung, Mischrechnung', examRelevance: 'mittel' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'alg-2-1', concepts: ['iso-variable', 'koeff-dividieren', 'probe-einsetzen'] },
+        { lessonId: 'alg-1-3', concepts: ['log-def', 'log-basiswechsel', 'log-potenz'] },
+      ],
+      concepts: [
+        { id: 'pr-lgs-methoden',   title: '$2\\times2$-LGS: Einsetzungs-, Additions-, Gleichsetzungsmethode',    dependsOn: [] },
+        { id: 'pr-betrag-fall',    title: 'Betrag auflösen: Fallunterscheidung $|x|=\\pm x$',                    dependsOn: [] },
+        { id: 'pr-pH',             title: 'pH-Wert $\\text{pH}=-\\log_{10}[\\text H^+]$',                         dependsOn: [] },
+        { id: 'pr-dB',             title: 'Dezibel-Skala $L=10\\log_{10}(P/P_0)$ bzw. $=20\\log_{10}(U/U_0)$',   dependsOn: [] },
+        { id: 'pr-lgs-faelle',     title: 'LGS-Lösungsfälle: eindeutig/keine/unendlich viele',                 dependsOn: ['pr-lgs-methoden'] },
+        { id: 'pr-technik-lgs',    title: 'Technik-LGS: Maschenregel, Biegespannung, Mischrechnung',           dependsOn: ['pr-lgs-methoden'] },
+      ],
+      subGoalConcepts: {
+        0: ['pr-lgs-methoden'],
+        1: ['pr-betrag-fall'],
+        2: ['pr-pH'],
+        3: ['pr-dB'],
+        4: ['pr-lgs-faelle'],
+        5: ['pr-technik-lgs'],
+      },
+      taskPlan: [
+        // SG 0 — LGS-Methoden
+        { subGoal: 0, stage: 'recognize',         type: 'matching',        uses: ['pr-lgs-methoden'],                              qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-lgs-methoden'],                              qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['pr-lgs-methoden'],                              qty: 1, note: '[PRÜFUNG]' },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-lgs-methoden'],                              qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'sorting',         uses: ['pr-lgs-methoden'],                              qty: 1 },
+        // SG 1 — Betrag
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['pr-betrag-fall'],                               qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-betrag-fall'],                               qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['pr-betrag-fall'],                               qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-betrag-fall'],                               qty: 1, note: 'Distraktor: nur positiven Fall' },
+        { subGoal: 1, stage: 'transfer',          type: 'sorting',         uses: ['pr-betrag-fall'],                               qty: 1 },
+        // SG 2 — pH
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['pr-pH'],                                        qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-pH'],                                        qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['pr-pH'],                                        qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-pH'],                                        qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['pr-pH'],                                        qty: 1 },
+        // SG 3 — dB
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['pr-dB'],                                        qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-dB'],                                        qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['pr-dB'],                                        qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-dB'],                                        qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'number-input',    uses: ['pr-dB'],                                        qty: 1 },
+        // SG 4 — LGS-Fälle
+        { subGoal: 4, stage: 'recognize',         type: 'matching',        uses: ['pr-lgs-faelle'],                                qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-lgs-faelle'],                                qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'multiple-choice', uses: ['pr-lgs-faelle'],                                qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-lgs-faelle'],                                qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'matching',        uses: ['pr-lgs-faelle'],                                qty: 1 },
+        // SG 5 — Technik
+        { subGoal: 5, stage: 'recognize',         type: 'matching',        uses: ['pr-technik-lgs'],                               qty: 1 },
+        { subGoal: 5, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pr-technik-lgs'],                               qty: 1 },
+        { subGoal: 5, stage: 'apply-independent', type: 'number-input',    uses: ['pr-technik-lgs'],                               qty: 1, note: '[PRÜFUNG] technisch' },
+        { subGoal: 5, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pr-technik-lgs'],                               qty: 1 },
+        { subGoal: 5, stage: 'transfer',          type: 'number-input',    uses: ['pr-technik-lgs'],                               qty: 1 },
+      ],
+    },
     nextLessonId: null,
     steps: [
       {
