@@ -17,6 +17,677 @@ import { mc, ni, tf, matching, sorting } from './_helpers'
 export const differentialgleichungenSubGoalTasks = {
 
   // ────────────────────────────────────────────────────────────────────────
+  // dgl-3-1 — Prüfung: DGL 1. Ordnung  (6 subGoals)
+  // Je 5 Aufgaben = 30 Goal-Tasks
+  // ────────────────────────────────────────────────────────────────────────
+  'dgl-3-1': {
+
+    // ── [0] Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati? ──
+    0: [
+      mc(
+        'Sub-Goal "Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?": [PRÜFUNG] Welchen Typ hat $y\' + \\frac{y}{x} = x^2 y^3$?',
+        [
+          'Bernoulli-DGL (mit $n = 3$)',
+          'Lineare DGL 1. Ordnung',
+          'Exakte DGL',
+          'Riccati-DGL',
+        ],
+        0,
+        `**Ansatz:** Vergleiche die Struktur mit den Standardformen. Bernoulli hat die Form $y\' + p(x)\\,y = q(x)\\,y^n$ mit $n\\neq 0,1$; linear ist $y\'+p(x)y=q(x)$; Riccati hat zusätzlich einen $y^2$-Term und einen freien Summanden: $y\'=a(x)y^2+b(x)y+c(x)$.
+
+**Rechnung:** Hier: $y\' + \\frac{1}{x}y = x^2 \\cdot y^3$. Die rechte Seite enthält $y^3$, also nichtlinear in $y$, aber strukturgleich zu Bernoulli mit $p(x)=1/x$, $q(x)=x^2$, $n=3$. Substitution $u = y^{1-n} = y^{-2}$ linearisiert.
+
+**Probe:** Test-Matching: Linear bräuchte $y^1$ rechts — fällt weg, da $y^3$ auftaucht. Exakt bräuchte Form $M\\,dx+N\\,dy=0$ mit $M_y=N_x$ — hier erst umzuschreiben. Riccati bräuchte $y^2$, nicht $y^3$. Bernoulli passt eindeutig.
+
+**Typischer Fehler:** Alles, was in $y$ nichtlinear ist, reflexartig als „nichtlinear, also nicht lösbar" einordnen. Bernoulli ist der klassische Fall, der über Substitution doch linear wird.`,
+        [
+          'Stell die DGL in Standardform und schau auf den Potenz-Exponenten von $y$ auf der rechten Seite.',
+          'Bernoulli: $y\' + p(x)\\,y = q(x)\\,y^n$ mit $n\\neq 0,1$.',
+          'Riccati hätte auch $y^2$ und einen freien Summanden.',
+        ],
+        {
+          1: 'Linear hieße $y\' + p(x)y = q(x)$ — also $y$ nur in 1. Potenz, keine $y^n$-Faktoren rechts. Der Term $x^2 y^3$ macht die DGL aber nichtlinear in $y$.',
+          2: 'Exakt bezieht sich auf die Differentialform $M(x,y)\\,dx + N(x,y)\\,dy = 0$ mit $M_y = N_x$. Die DGL ist in $y\'$-Form gegeben, und selbst nach Umschreiben fehlt die Integrabilitätsbedingung.',
+          3: 'Riccati hätte die Form $y\' = a(x)y^2 + b(x)y + c(x)$ (Polynom in $y$ bis Grad 2). Hier steckt $y^3$, nicht $y^2$, und auch kein freier Absolutterm — also Bernoulli.',
+        },
+      ),
+      matching(
+        'Sub-Goal "Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?": [PRÜFUNG] Ordne jede DGL ihrem Typ zu.',
+        [
+          { left: '$y\' = x \\cdot (1 + y^2)$', right: 'Trennbar' },
+          { left: '$y\' + x y = \\sin x$', right: 'Lineare DGL 1. Ordnung' },
+          { left: '$(2xy)\\,dx + (x^2 + \\cos y)\\,dy = 0$', right: 'Exakte DGL' },
+          { left: '$y\' + 2y = y^2 \\cdot e^x$', right: 'Bernoulli-DGL ($n = 2$)' },
+        ],
+        `**Ansatz:** Strukturtest Punkt für Punkt.
+
+**Rechnung:** (1) $y\'=f(x)\\,g(y)$ mit $f=x$, $g=1+y^2$ — trennbar. (2) $y\'+p(x)y=q(x)$ mit $p=x$, $q=\\sin x$ — linear. (3) $M=2xy$, $N=x^2+\\cos y$, $M_y=2x$, $N_x=2x$ — exakt. (4) $y\'+2y=e^x \\cdot y^2$ — Bernoulli mit $n=2$.
+
+**Probe:** Jeder Typ wird mit seiner Methode gelöst — Trennung, int. Faktor, Potentialfunktion, Substitution $u=y^{-1}$.
+
+**Typischer Fehler:** Trennbare DGL nicht als solche erkannt, weil die rechte Seite als ein Block $x(1+y^2)$ wahrgenommen wird. Formal trennbar ist sie, sobald man sie als Produkt $f(x)\\cdot g(y)$ schreiben kann.`,
+        [
+          'Trennbar = faktorisierbar in $f(x) \\cdot g(y)$.',
+          'Linear in $y$ und $y\'$ mit getrennter Inhomogenität $q(x)$?',
+          'Bei $M\\,dx + N\\,dy = 0$: $M_y = N_x$ testen.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?": [PRÜFUNG] Die DGL $y\' = y^2 + x$ ist eine Riccati-DGL.',
+        true,
+        `**Ansatz:** Riccati: $y\'=a(x)y^2+b(x)y+c(x)$. Hier $a=1$, $b=0$, $c=x$.
+
+**Rechnung:** Alle Komponenten passen in das Riccati-Schema; fehlende $y$-Terme sind mit Koeffizient $0$ zulässig. Bernoulli wäre nur, wenn kein freier Summand $c(x)$ vorhanden wäre.
+
+**Probe:** $y=y_p$ einsetzen, dann $u=1/(y-y_p)$ → lineare DGL für $u$. Das ist die Standard-Riccati-Methode und funktioniert hier.
+
+**Typischer Fehler:** Weil $y^1$-Term fehlt, wird die DGL nicht als Riccati erkannt. Der $y^1$-Term darf aber mit Koeffizient $0$ auftreten.`,
+        [
+          'Riccati erlaubt $y^2$-Term *und* freien $c(x)$-Summanden.',
+          'Fehlende Terme haben Koeffizient $0$ — sind aber formal vorhanden.',
+          'Bernoulli hätte $c(x) = 0$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?": [PRÜFUNG] Welche DGL ist *nicht* trennbar?',
+        [
+          '$y\' = x + y$',
+          '$y\' = x \\cdot e^y$',
+          '$y\' = \\frac{\\sin x}{y}$',
+          '$y\' = \\sqrt{x}\\cdot(1+y)$',
+        ],
+        0,
+        `**Ansatz:** Trennbar bedeutet $y\' = f(x)\\cdot g(y)$. Eine *Summe* $x+y$ ist nicht als Produkt einer reinen $x$- und einer reinen $y$-Funktion schreibbar.
+
+**Rechnung:** (a) $y\'=x+y$ — Summe, nicht faktorisierbar (aber *linear*, mit int. Faktor $e^{-x}$). (b) $x\\cdot e^y$ — trennbar. (c) $\\sin x \\cdot \\tfrac{1}{y}$ — trennbar. (d) $\\sqrt{x}\\cdot(1+y)$ — trennbar.
+
+**Probe:** Test: Lässt sich $\\frac{dy}{dx}=\\dots$ nach Variablen trennen? Bei $x+y$ nein — beim Dividieren durch $y$ bleibt $x/y$ stehen, das ist kein Produkt.
+
+**Typischer Fehler:** $y\'=x+y$ als „trennbar durch $\\frac{dy}{x+y}=dx$" behandeln. Aber $\\int \\frac{dy}{x+y}$ hängt von $x$ ab — das ist keine reine $y$-Stammfunktion.`,
+        [
+          'Trennbar = Produkt $f(x)\\cdot g(y)$, nicht Summe $f(x)+g(y)$.',
+          'Ein Summenterm $x+y$ lässt sich nicht faktorisieren.',
+          '$y\'=x+y$ ist aber linear: $y\'-y=x$.',
+        ],
+        {
+          1: 'Trennbar: $\\frac{dy}{e^y}=x\\,dx$, also $-e^{-y}=\\tfrac{x^2}{2}+C$. Das klappt, weil $e^y$ als reiner $y$-Faktor separierbar ist.',
+          2: 'Trennbar: $y\\,dy=\\sin x\\,dx$, also $\\tfrac{y^2}{2}=-\\cos x+C$.',
+          3: 'Trennbar: $\\frac{dy}{1+y}=\\sqrt{x}\\,dx$, also $\\ln|1+y|=\\tfrac{2}{3}x^{3/2}+C$.',
+        },
+      ),
+      sorting(
+        'Sub-Goal "Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?": [PRÜFUNG] Sortiere die DGL nach dem Grad der $y$-Nichtlinearität (rechts) von linear → quadratisch → kubisch.',
+        [
+          '$y\' + 2y = \\cos x$',
+          '$y\' = x y^2 + 1$',
+          '$y\' + y = y^3 \\cdot e^x$',
+        ],
+        [0, 1, 2],
+        `**Ansatz:** $y$-Exponent auf der rechten Seite zählen.
+
+**Rechnung:** (a) $y^1$ → linear. (b) $y^2$ → Riccati (quadratisch in $y$). (c) $y^3$ → Bernoulli mit $n=3$ (kubisch in $y$).
+
+**Probe:** Lösungsmethoden passen zur Komplexität: linear mit int. Faktor, Riccati über Substitution $u=1/(y-y_p)$, Bernoulli über $u=y^{1-n}$ — mit steigendem Aufwand.
+
+**Typischer Fehler:** Die Ordnung der DGL (hier überall 1. Ordnung) mit der $y$-Nichtlinearität verwechseln. „1. Ordnung" bezieht sich auf die höchste Ableitung, nicht auf die Potenz von $y$.`,
+        [
+          'Potenz von $y$ auf der rechten Seite ist das Kriterium.',
+          'Linear = $y^1$, Riccati = $y^2 + $ freier Term, Bernoulli = $y^n$.',
+          'Ordnung der DGL ≠ Grad in $y$.',
+        ],
+      ),
+    ],
+
+    // ── [1] Trennbar: ∫dy/g(y) = ∫f(x)dx + C ──────────────────────────
+    1: [
+      mc(
+        'Sub-Goal "Trennbar: $\\int dy/g(y) = \\int f(x) dx + C$": [PRÜFUNG] Löse $y\' = \\frac{x}{y}$ allgemein.',
+        [
+          '$y^2 = x^2 + C$',
+          '$y = x + C$',
+          '$y^2 = 2x + C$',
+          '$y^2 = \\frac{x^2}{2} + C$',
+        ],
+        0,
+        `**Ansatz:** Trennen: $y\\,dy = x\\,dx$.
+
+**Rechnung:** Integrieren beider Seiten: $\\int y\\,dy = \\tfrac{y^2}{2}$, $\\int x\\,dx = \\tfrac{x^2}{2}$. Also $\\tfrac{y^2}{2}=\\tfrac{x^2}{2}+K$. Mal $2$: $y^2=x^2+C$ (mit $C=2K$).
+
+**Probe:** Implizit ableiten: $2y\\,y\'=2x$, also $y\'=x/y$ ✓.
+
+**Typischer Fehler:** Faktor $\\tfrac{1}{2}$ auf beiden Seiten vergessen und dadurch Koeffizient auf einer Seite vergessen mitzuziehen — weil beide Seiten denselben Faktor haben, kürzt er sich heraus.`,
+        [
+          'Bring alle $y$ nach links, alle $x$ nach rechts.',
+          'Integriere: $\\int y\\,dy = y^2/2$, $\\int x\\,dx = x^2/2$.',
+          'Mal $2$ beide Seiten: $y^2 = x^2 + C$.',
+        ],
+        {
+          1: 'Das ist die Lösung von $y\'=1$, nicht von $y\'=x/y$. Der $y$-Faktor im Nenner darf nicht ignoriert werden.',
+          2: 'Faktor $\\tfrac12$ wurde nur auf einer Seite verrechnet. Integriere $\\int x\\,dx = \\tfrac{x^2}{2}$, nicht $x$ — sonst bleibt nach Multiplikation mit $2$ ein Faktor $2$ übrig.',
+          3: 'Faktor auf der falschen Seite gekürzt. Nach $\\tfrac{y^2}{2}=\\tfrac{x^2}{2}+K$ ergibt Mal-$2$ die Form $y^2=x^2+C$, *nicht* $y^2=\\tfrac{x^2}{2}$.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Trennbar: $\\int dy/g(y) = \\int f(x) dx + C$": [PRÜFUNG] AWP: $y\' = \\frac{y}{x}$, $y(1) = 4$. Welchen Wert hat $y(2)$?',
+        8, 0.01, '',
+        `**Ansatz:** Trennen: $\\frac{dy}{y}=\\frac{dx}{x}$.
+
+**Rechnung:** $\\ln|y|=\\ln|x|+K$, also $|y|=e^K\\cdot|x|=A|x|$. Allgemein $y=Ax$. AWP: $4=A\\cdot 1$ → $A=4$, also $y=4x$. Bei $x=2$: $y(2)=8$.
+
+**Probe:** $y=4x$: $y\'=4=\\frac{4x}{x}=\\frac{y}{x}$ ✓; $y(1)=4$ ✓.
+
+**Typischer Fehler:** Die Konstante nach Integration vergessen oder das Vorzeichen von $\\ln|y|$ anders als $\\ln|x|$ behandeln. Beide Seiten haben denselben Logarithmus-Aufbau, also auch vergleichbare Konstante.`,
+        [
+          '$\\frac{dy}{y}=\\frac{dx}{x}$ integrieren.',
+          '$\\ln|y|=\\ln|x|+K$ in $y = A\\cdot x$ umschreiben.',
+          'Anfangsbedingung $y(1)=4$ → $A=4$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Trennbar: $\\int dy/g(y) = \\int f(x) dx + C$": [PRÜFUNG] Bei der DGL $y\' = g(y)$ (reine $y$-Abhängigkeit) erhält man die Lösung durch $x = \\int \\frac{dy}{g(y)} + C$.',
+        true,
+        `**Ansatz:** $\\frac{dy}{dx}=g(y)$ → $\\frac{dy}{g(y)}=dx$ → beide Seiten integrieren.
+
+**Rechnung:** $\\int\\frac{dy}{g(y)}=\\int 1\\,dx = x + C$. Also $x$ ausgedrückt als Funktion von $y$ — die Rollen von abhängiger und unabhängiger Variable sind vertauscht, aber die Lösung ist korrekt.
+
+**Probe:** Beispiel $y\'=y$: $\\int\\frac{dy}{y}=\\ln|y|=x+C$ → $y=e^{x+C}$ ✓.
+
+**Typischer Fehler:** $\\int 1\\,dx$ weglassen und statt $x+C$ nur $C$ schreiben — dann verschwindet die $x$-Abhängigkeit.`,
+        [
+          'Autonome DGL: rechte Seite nur von $y$ abhängig.',
+          'Trennung wie gewohnt: $\\int\\frac{dy}{g(y)}=\\int 1\\,dx = x+C$.',
+          'Die Lösung ist meist in *impliziter* Form.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Trennbar: $\\int dy/g(y) = \\int f(x) dx + C$": [PRÜFUNG] Welches ist die allgemeine Lösung von $y\' = y \\cdot \\cos x$?',
+        [
+          '$y = C \\cdot e^{\\sin x}$',
+          '$y = C \\cdot \\sin x$',
+          '$y = e^{\\cos x} + C$',
+          '$y = C \\cdot e^{-\\sin x}$',
+        ],
+        0,
+        `**Ansatz:** Trennen: $\\frac{dy}{y}=\\cos x\\,dx$.
+
+**Rechnung:** $\\ln|y|=\\sin x+K$ → $|y|=e^K\\cdot e^{\\sin x}=C\\cdot e^{\\sin x}$ (mit $C>0$; negatives Vorzeichen erlaubt, wenn man $C\\in\\mathbb{R}$ zulässt). Lösung: $y=C\\cdot e^{\\sin x}$.
+
+**Probe:** $y\'=C\\cdot\\cos x\\cdot e^{\\sin x}=y\\cdot\\cos x$ ✓.
+
+**Typischer Fehler:** $\\int\\cos x\\,dx=\\sin x$ mit $-\\sin x$ oder mit $\\cos x$ verwechselt. Ableitung: $(\\sin x)\'=\\cos x$, daher Stammfunktion $\\sin x$.`,
+        [
+          'Trennen und integrieren.',
+          '$\\int\\cos x\\,dx=\\sin x$ (nicht $\\cos x$!).',
+          '$\\ln|y|=\\sin x+K$ → $y=C\\cdot e^{\\sin x}$.',
+        ],
+        {
+          1: 'Hier wurde Integration mit Multiplikation verwechselt. $\\int \\frac{dy}{y} = \\ln|y|$, also muss am Ende $e^{\\dots}$ stehen — keine reine Sinusfunktion.',
+          2: 'Vorzeichenfehler und fehlendes $e$: $\\int\\cos x\\,dx=+\\sin x$ und die Konstante tritt *multiplikativ* nach Exponentiation auf, nicht additiv.',
+          3: 'Vorzeichenfehler bei der Integration von $\\cos x$: Das richtige Ergebnis ist $+\\sin x$, nicht $-\\sin x$. $-\\sin x$ wäre die Stammfunktion von $-\\cos x$.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Trennbar: $\\int dy/g(y) = \\int f(x) dx + C$": [PRÜFUNG] Löse $y\' = 1 + y^2$, $y(0) = 0$. Welchen Wert hat $y$ bei $x = \\pi/6$? (auf 4 Dezimalstellen)',
+        0.5774, 0.001, '',
+        `**Ansatz:** Trennbar: $\\frac{dy}{1+y^2}=dx$.
+
+**Rechnung:** $\\arctan y = x + C$. AWP $y(0)=0$: $\\arctan 0 = 0 = 0 + C$ → $C=0$. Lösung: $y = \\tan x$. Bei $x=\\pi/6$: $y=\\tan(\\pi/6)=1/\\sqrt{3}\\approx 0{,}5774$.
+
+**Probe:** $y=\\tan x$: $y\'=\\sec^2 x = 1+\\tan^2 x = 1+y^2$ ✓; $y(0)=0$ ✓.
+
+**Typischer Fehler:** $\\int\\frac{dy}{1+y^2}$ als $\\ln(1+y^2)$ statt $\\arctan y$ — das wäre $\\int\\frac{2y\\,dy}{1+y^2}$. Der Zähler ist hier aber $1$, nicht $2y$.`,
+        [
+          'Integration: $\\int \\frac{dy}{1+y^2} = \\arctan y$ (nicht $\\ln$!).',
+          'Löse nach $y$ auf: $y = \\tan(x + C)$.',
+          '$\\tan(\\pi/6) = 1/\\sqrt{3}$.',
+        ],
+      ),
+    ],
+
+    // ── [2] Exakte DGL: M_y = N_x, Potentialfunktion F ────────────────
+    2: [
+      mc(
+        'Sub-Goal "Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$": [PRÜFUNG] Ist $(3x^2 y + 2)\\,dx + (x^3 + 4y)\\,dy = 0$ exakt, und wie lautet die Potentialfunktion $F(x,y)$?',
+        [
+          'Ja exakt, $F = x^3 y + 2x + 2y^2$',
+          'Ja exakt, $F = x^3 y + 2x$',
+          'Nicht exakt',
+          'Ja exakt, $F = 3x^2 y^2 + 2xy + 4y$',
+        ],
+        0,
+        `**Ansatz:** $M=3x^2y+2$, $N=x^3+4y$. Exaktheit: $M_y\\stackrel{?}{=}N_x$.
+
+**Rechnung:** $M_y=3x^2$, $N_x=3x^2$ ✓ exakt. Potential: $F_x=M=3x^2y+2$ → $F=\\int(3x^2y+2)\\,dx=x^3y+2x+h(y)$. Dann $F_y=x^3+h\'(y)\\stackrel{!}{=}N=x^3+4y$, also $h\'(y)=4y$ → $h(y)=2y^2$. Ergebnis: $F=x^3y+2x+2y^2$.
+
+**Probe:** $F_x=3x^2y+2=M$ ✓, $F_y=x^3+4y=N$ ✓. Lösung: $x^3y+2x+2y^2=C$.
+
+**Typischer Fehler:** Beim Nachziehen von $h(y)$ nur den ursprünglichen $y$-Anteil kopieren, den $\\int 4y\\,dy = 2y^2$ aber vergessen.`,
+        [
+          'Erst Exaktheit testen ($M_y = N_x$).',
+          'Dann $F = \\int M\\,dx + h(y)$ ansetzen.',
+          '$h\'(y)$ aus $F_y = N$ bestimmen.',
+        ],
+        {
+          1: 'Der $y$-Anteil $h(y) = 2y^2$ wurde vergessen. Ohne ihn ist $F_y = x^3 \\neq N = x^3 + 4y$.',
+          2: '$M_y = 3x^2$ und $N_x = 3x^2$ sind identisch — also *ist* die DGL exakt.',
+          3: 'Falsche Potentialfunktion. Überprüfe durch Ableiten: $F_x$ sollte $M$ ergeben, $F_y$ sollte $N$ ergeben. Hier: $(3x^2y^2+2xy+4y)_x = 6xy^2+2y \\neq M = 3x^2y+2$.',
+        },
+      ),
+      tf(
+        'Sub-Goal "Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$": [PRÜFUNG] Wenn $M_y \\neq N_x$, ist die DGL nicht lösbar.',
+        false,
+        `**Ansatz:** „Nicht exakt" $\\neq$ „nicht lösbar".
+
+**Rechnung:** Bei $M_y\\neq N_x$ kann man oft einen integrierenden Faktor $\\mu(x)$ oder $\\mu(y)$ finden, sodass $\\mu M\\,dx+\\mu N\\,dy=0$ exakt wird. Typische Kriterien: $(M_y-N_x)/N$ hängt nur von $x$ ab → $\\mu(x)$; $(N_x-M_y)/M$ nur von $y$ → $\\mu(y)$.
+
+**Probe:** Beispiel $y\\,dx+(2x-ye^y)\\,dy=0$: $M_y=1$, $N_x=2$, nicht exakt. Aber $\\mu(y)=y$ macht's exakt.
+
+**Typischer Fehler:** Vorschnell aufgeben, wenn die Exaktheitsbedingung scheitert. Integrierender Faktor ist oft noch ein Weg.`,
+        [
+          'Exaktheit ist nur *eine* Methode — andere Methoden bleiben möglich.',
+          'Integrierender Faktor $\\mu$ kann nicht-exakt → exakt machen.',
+          'Auch Trennung oder Linearität kann funktionieren.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$": [PRÜFUNG] Für die exakte DGL $(2xy)\\,dx + (x^2 + 1)\\,dy = 0$ mit $y(1) = 2$: Welchen Wert hat die Integrationskonstante $C$ in der impliziten Lösung $x^2 y + y = C$?',
+        4, 0.001, '',
+        `**Ansatz:** Exaktheit prüfen, Potential $F$ aufstellen, AWP einsetzen.
+
+**Rechnung:** $M_y=2x=N_x$ ✓ exakt. $F=\\int 2xy\\,dx=x^2y+h(y)$; $F_y=x^2+h\'(y)=x^2+1$ → $h\'(y)=1$ → $h(y)=y$. Also $F=x^2y+y$. AWP: $F(1,2)=1\\cdot 2+2=4$ → $C=4$.
+
+**Probe:** Lösung $x^2y+y=4$ bei $(1,2)$: $1\\cdot 2+2=4$ ✓.
+
+**Typischer Fehler:** $h(y)$ beim Aufintegrieren vergessen — dann fehlt am Ende der Term $+y$ und $C=2$ (falsch).`,
+        [
+          'Potential: $F = x^2 y + y$ (Herleitung über $F_x = M$, $F_y = N$).',
+          'Einsetzen $x = 1$, $y = 2$ in $F$ liefert $C$.',
+          '$F(1,2) = 1 \\cdot 2 + 2 = 4$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$": [PRÜFUNG] Welche DGL ist *nicht* exakt?',
+        [
+          '$(y + 2x)\\,dx + (2y)\\,dy = 0$',
+          '$(2xy)\\,dx + (x^2)\\,dy = 0$',
+          '$(y\\cos x)\\,dx + (\\sin x)\\,dy = 0$',
+          '$(e^y)\\,dx + (x e^y)\\,dy = 0$',
+        ],
+        0,
+        `**Ansatz:** Für jede DGL $M_y$ und $N_x$ vergleichen.
+
+**Rechnung:** (a) $M=y+2x$, $M_y=1$; $N=2y$, $N_x=0$. $1\\neq 0$ → *nicht* exakt. (b) $M_y=2x$, $N_x=2x$ ✓ exakt. (c) $M_y=\\cos x$, $N_x=\\cos x$ ✓ exakt. (d) $M_y=e^y$, $N_x=e^y$ ✓ exakt.
+
+**Probe:** Bei (a) könnte man integrierenden Faktor $\\mu(y)$ suchen: $(N_x-M_y)/M = -1/(y+2x)$ hängt noch von $x$ ab → auch $\\mu(y)$ scheitert. Andere Methoden nötig.
+
+**Typischer Fehler:** Automatisch annehmen, dass DGL mit „schlichter" rechter Seite exakt sind. Erst $M_y$ und $N_x$ rechnen, dann urteilen.`,
+        [
+          'Partielle Ableitung nur nach der Zielvariable bilden.',
+          '$M_y = \\partial_y M$ — alle anderen Variablen konstant halten.',
+          'Bei konstantem $N$ (hier $2y$ hat $N_x = 0$) ist Exaktheit oft verletzt.',
+        ],
+        {
+          1: 'Exakt: $M_y = 2x = N_x$. Das ist ein klassisches Beispiel einer exakten DGL.',
+          2: 'Exakt: $M_y = \\cos x = N_x$. Ableitungen stimmen überein.',
+          3: 'Exakt: $M_y = e^y$, $N_x = e^y$.',
+        },
+      ),
+      sorting(
+        'Sub-Goal "Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$": [PRÜFUNG] Sortiere die Lösungs-Schritte einer exakten DGL in die richtige Reihenfolge.',
+        [
+          'Exaktheit prüfen: $M_y \\stackrel{?}{=} N_x$.',
+          'Ansatz $F(x,y) = \\int M\\,dx + h(y)$.',
+          'Aus $F_y = N$ die Funktion $h(y)$ bestimmen.',
+          'Implizite Lösung $F(x,y) = C$ hinschreiben.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Standard-Kochrezept: Test → Ansatz → ergänzen → Lösung.
+
+**Rechnung:** (1) Ohne Exaktheit keine Potentialfunktion. (2) Integriere $M$ nach $x$; Integrationskonstante ist eine Funktion $h(y)$. (3) Setze die $y$-Ableitung gleich $N$, integriere $h\'(y)$ nach $y$. (4) Ergebnis ist implizite Lösung.
+
+**Probe:** Schritt 1 und 2 klassifizieren und vorbereiten; Schritt 3 schließt die Parametrisierung; Schritt 4 fixiert Konstante per AWP.
+
+**Typischer Fehler:** Schritt 1 überspringen und direkt integrieren — wenn die DGL nicht exakt ist, führt die Methode zu einer falschen „Lösung".`,
+        [
+          'Ohne Exaktheitstest keine gültige Methode.',
+          'Integrationskonstante von $\\int M\\,dx$ ist Funktion $h(y)$.',
+          '$F_y = N$ fixiert $h\'(y)$.',
+        ],
+      ),
+    ],
+
+    // ── [3] AWP: Konstante C aus y(x₀) = y₀ bestimmen ─────────────────
+    3: [
+      ni(
+        'Sub-Goal "AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen": [PRÜFUNG] AWP $y\' = 2y$, $y(0) = 5$. Welchen Wert hat die Konstante $C$ in der allgemeinen Lösung $y = Ce^{2x}$?',
+        5, 0.001, '',
+        `**Ansatz:** Allgemeine Lösung ist bekannt; AWP einsetzen.
+
+**Rechnung:** $y(0)=C\\cdot e^0=C\\cdot 1=C$. Gleichsetzen: $C=5$.
+
+**Probe:** $y=5e^{2x}$: $y(0)=5$ ✓, $y\'=10e^{2x}=2y$ ✓.
+
+**Typischer Fehler:** Exponent $e^{2\\cdot 0}=e^0=1$ nicht sauber ausgewertet — mit $e^0 = 0$ (statt $1$) käme $C=\\infty$ oder ein Absurditätsresultat heraus.`,
+        [
+          '$y(0) = Ce^{0} = C$ — also direkt ablesbar.',
+          'Setze $y_0 = 5$ in $y(x_0)$ ein.',
+          '$e^0 = 1$ (nicht $0$!).',
+        ],
+      ),
+      mc(
+        'Sub-Goal "AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen": [PRÜFUNG] Für $y\' = y$, $y(1) = e^2$: Welche partikuläre Lösung ergibt sich?',
+        [
+          '$y = e^{x+1}$',
+          '$y = e^x$',
+          '$y = e^{2x}$',
+          '$y = 2e^x$',
+        ],
+        0,
+        `**Ansatz:** Allgemeine Lösung $y=Ce^x$, $C$ aus AWP.
+
+**Rechnung:** $y(1)=Ce^1=e^2$ → $C=e^2/e=e$. Lösung: $y=e\\cdot e^x=e^{x+1}$.
+
+**Probe:** $y(1)=e^{1+1}=e^2$ ✓; $y\'=e^{x+1}=y$ ✓.
+
+**Typischer Fehler:** $C$ als $e^2$ stehen lassen, weil $e^1$ im Nenner übersehen wird. Merke: $e^2/e^1=e^{2-1}=e^1$.`,
+        [
+          'Allgemeine Lösung: $y = Ce^x$.',
+          '$y(1) = Ce$, gleichsetzen mit $e^2$.',
+          'Exponentenregel: $e^2 / e = e$.',
+        ],
+        {
+          1: 'Das löst zwar $y\' = y$, erfüllt aber $y(1) = e \\neq e^2$ nicht.',
+          2: 'Das löst $y\' = 2y$, nicht $y\' = y$. Ableiten: $(e^{2x})\' = 2e^{2x} = 2y$.',
+          3: '$y = 2e^x$: $y(1) = 2e \\neq e^2$ (da $2 \\neq e \\approx 2{,}718$).',
+        },
+      ),
+      tf(
+        'Sub-Goal "AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen": [PRÜFUNG] Ein AWP 1. Ordnung hat genau eine Lösung, wenn $f(x,y)$ und $\\partial f/\\partial y$ in einer Umgebung der Anfangswertstelle stetig sind (Picard-Lindelöf).',
+        true,
+        `**Ansatz:** Existenz- und Eindeutigkeitssatz von Picard-Lindelöf.
+
+**Rechnung:** Stetigkeit von $f$ sichert *Existenz*, Stetigkeit (sogar Lipschitz-Bedingung) von $\\partial f/\\partial y$ sichert *Eindeutigkeit*. Zusammen → genau eine lokale Lösung in einer offenen Umgebung.
+
+**Probe:** Gegenbeispiel-Kontrolle: $y\' = \\sqrt{y}$, $y(0)=0$ hat $\\partial f/\\partial y = 1/(2\\sqrt{y})$, singulär bei $y=0$ — daher mehrere Lösungen ($y=0$ und $y=x^2/4$), was genau die Regel bestätigt.
+
+**Typischer Fehler:** Stetigkeit von $f$ allein als ausreichend ansehen. Für *Eindeutigkeit* muss zusätzlich $\\partial f/\\partial y$ stetig sein (oder Lipschitz).`,
+        [
+          'Picard-Lindelöf: stetig + Lipschitz → Existenz und Eindeutigkeit.',
+          'Nur stetig → nur Existenz (Peano).',
+          'Gegenbeispiel: $y\' = \\sqrt{y}$ hat zwei Lösungen für $y(0) = 0$.',
+        ],
+      ),
+      ni(
+        'Sub-Goal "AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen": [PRÜFUNG] Lineare DGL $y\' + y = 1$ mit $y(0) = 3$. Welchen Wert hat $y(\\ln 2)$?',
+        2, 0.01, '',
+        `**Ansatz:** Homogene Lösung + Partikulärlösung, dann AWP einsetzen.
+
+**Rechnung:** $y_h=Ce^{-x}$, $y_p=1$ (Ansatz Konstante: $0+A=1\\Rightarrow A=1$). Allgemein $y=Ce^{-x}+1$. AWP: $C+1=3\\Rightarrow C=2$. Also $y=2e^{-x}+1$. $y(\\ln 2)=2e^{-\\ln 2}+1=2\\cdot\\tfrac{1}{2}+1=1+1=2$.
+
+**Probe:** $y\'(\\ln 2)=-2e^{-\\ln 2}=-1$, $y\'+y=-1+2=1$ ✓; AWP $y(0)=2+1=3$ ✓.
+
+**Typischer Fehler:** $e^{-\\ln 2}=\\tfrac12$ ausmultipliziert als $-2\\ln 2$ oder falsch. Merke: $e^{-\\ln a}=1/a$.`,
+        [
+          'Allgemeine Lösung: $y = Ce^{-x} + 1$.',
+          '$C = 2$ aus AWP.',
+          '$e^{-\\ln 2} = 1/2$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen": [PRÜFUNG] Gegeben AWP $y\' = 2xy$, $y(1) = e$. Welche Lösung?',
+        [
+          '$y = e^{x^2}$',
+          '$y = e^{x^2 - 1}$',
+          '$y = e^{x^2 + 1}$',
+          '$y = e \\cdot x^2$',
+        ],
+        0,
+        `**Ansatz:** Trennen: $\\frac{dy}{y}=2x\\,dx$.
+
+**Rechnung:** $\\ln|y|=x^2+K$ → $y=Ae^{x^2}$. AWP $y(1)=Ae=e$ → $A=1$. Lösung: $y=e^{x^2}$.
+
+**Probe:** $y(1)=e^1=e$ ✓; $y\'=2xe^{x^2}=2xy$ ✓.
+
+**Typischer Fehler:** $A$ durch $-1$ oder $+1$ verschoben behandeln: Aus $Ae^1=e^1$ folgt $A=1$, nicht $A=e^{-1}$ (was $y=e^{x^2-1}$ ergäbe, aber bei $x=1$ den Wert $1\\neq e$ liefert).`,
+        [
+          'Allgemeine Lösung: $y = Ae^{x^2}$.',
+          'Einsetzen $x = 1$: $y(1) = Ae = e$ → $A = 1$.',
+          'Keine Verschiebung im Exponenten nötig.',
+        ],
+        {
+          1: '$e^{x^2-1}$: bei $x=1$ ist $y=e^0=1 \\neq e$. Die Konstante $A$ wurde in den Exponenten verschoben, was den Wert falsch macht.',
+          2: '$e^{x^2+1}$: bei $x=1$ ist $y=e^2 \\neq e$. Auch hier falsche Platzierung der Konstante.',
+          3: 'Das ist eine *Polynom*-Lösung, aber die Trennung liefert eine *Exponentialfunktion*. Ableitung: $(ex^2)\' = 2ex = 2x \\cdot y/x$ — stimmt nicht mit $y\' = 2xy$ überein.',
+        },
+      ),
+    ],
+
+    // ── [4] Bernoulli: Substitution u = y^{1-n} linearisiert ─────────
+    4: [
+      mc(
+        'Sub-Goal "Bernoulli $y\' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert": [PRÜFUNG] Welche Substitution linearisiert $y\' + y = y^3$?',
+        [
+          '$u = y^{-2}$',
+          '$u = y^{2}$',
+          '$u = y^{-3}$',
+          '$u = \\ln y$',
+        ],
+        0,
+        `**Ansatz:** Bernoulli-Standardsubstitution $u=y^{1-n}$ für DGL der Form $y\'+py=qy^n$.
+
+**Rechnung:** Hier $n=3$, also $u=y^{1-3}=y^{-2}$. Ableitung: $u\'=-2y^{-3}\\,y\'$. Einsetzen: $y\'+y=y^3$ mit $y\'=-\\tfrac{y^3}{2}u\'$ → nach Umformung $u\' - 2u = -2$ (linear in $u$).
+
+**Probe:** Die linearisierte DGL $u\'-2u=-2$ löst sich mit int. Faktor $\\mu=e^{-2x}$: $(ue^{-2x})\'=-2e^{-2x}$, $ue^{-2x}=e^{-2x}+K$, $u=1+Ke^{2x}$. Rückweg: $y^{-2}=1+Ke^{2x}$.
+
+**Typischer Fehler:** $u=y^n$ statt $u=y^{1-n}$. Dann wird die DGL noch nichtlinearer.`,
+        [
+          'Merke: $u = y^{1-n}$.',
+          'Für $n = 3$: $u = y^{1-3} = y^{-2}$.',
+          'Ableiten $u\'$ ersetzt $y\'$ implizit.',
+        ],
+        {
+          1: '$u = y^{1+n} = y^4$ — das ist keine Bernoulli-Formel. Die Standardsubstitution ist $u = y^{1-n}$.',
+          2: '$u = y^{-n} = y^{-3}$ — auch falsch. Die Formel lautet $1 - n$, nicht $-n$.',
+          3: '$u = \\ln y$ funktioniert nur beim Spezialfall $n = 1$ (separierbar). Für allgemeines $n$ brauchen wir Potenzsubstitution.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Bernoulli $y\' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert": [PRÜFUNG] Für Bernoulli $y\' - y = xy^2$ lautet die Substitution $u = y^{-1}$. Welchen Exponenten $m$ hat $y$, wenn $y\'$ in die DGL eingesetzt wird (i.e. $y\' = \\dots \\cdot y^m \\cdot u\'$)?',
+        2, 0.001, '',
+        `**Ansatz:** Mit $u=y^{-1}$: $u\'=-y^{-2}y\'$, also $y\'=-y^2 u\'$.
+
+**Rechnung:** Es erscheint $y^m$ mit $m=2$ als Vorfaktor bei $u\'$.
+
+**Probe:** Einsetzen in die Original-DGL: $-y^2 u\'-y=xy^2$, durch $-y^2$ teilen: $u\'+y^{-1}=-x$, und $y^{-1}=u$ → $u\'+u=-x$ (linear).
+
+**Typischer Fehler:** $m=1$ angeben, weil man „eins ableitet". Aber die Kettenregel liefert $y^{-2}$ im Ergebnis von $u\'$, entsprechend $+2$ beim Auflösen nach $y\'$.`,
+        [
+          '$u = y^{-1}$, also $u\' = -y^{-2} \\cdot y\'$.',
+          'Nach $y\'$ umstellen: $y\' = -y^2 u\'$.',
+          'Der Exponent am $y$ ist $m = 2$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Bernoulli $y\' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert": [PRÜFUNG] Für $n = 0$ oder $n = 1$ ist die Bernoulli-DGL bereits linear, sodass die Substitution $u = y^{1-n}$ überflüssig ist.',
+        true,
+        `**Ansatz:** Testen: bei $n=0$ wird $y^n=1$, bei $n=1$ wird $y^n=y$.
+
+**Rechnung:** (i) $n=0$: $y\'+py=q$ — linear in Standardform. (ii) $n=1$: $y\'+py=qy$ → $y\'+(p-q)y=0$ — linear homogen.
+
+**Probe:** Substitution $u=y^{1-0}=y^1=y$ (identisch) oder $u=y^{1-1}=y^0=1$ (konstant, informationslos) — tatsächlich überflüssig.
+
+**Typischer Fehler:** Trotzdem blind die Substitution ansetzen und sich selbst Nebenrechnung produzieren. Erst Bernoulli-Test ($n\\neq 0,1$), dann substituieren.`,
+        [
+          '$n = 0$: $y^0 = 1$ → linear.',
+          '$n = 1$: $y^1 = y$ → linear.',
+          'Bernoulli-Substitution nur für $n \\neq 0, 1$ nötig.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Bernoulli $y\' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert": [PRÜFUNG] Die Substitution $u = y^{1-n}$ in $y\' + p(x)y = q(x)y^n$ führt auf welche DGL für $u$?',
+        [
+          '$u\' + (1-n)\\,p(x)\\,u = (1-n)\\,q(x)$',
+          '$u\' + p(x)\\,u = q(x)$',
+          '$u\' + n\\,p(x)\\,u = n\\,q(x)$',
+          '$u\' = (1-n)\\,(q - p\\,u)$',
+        ],
+        0,
+        `**Ansatz:** $u=y^{1-n}$, $u\'=(1-n)y^{-n}y\'$.
+
+**Rechnung:** Aus $y\'=\\frac{y^n}{1-n}u\'$ in $y\'+py=qy^n$ einsetzen: $\\frac{y^n}{1-n}u\'+py=qy^n$. Mal $(1-n)y^{-n}$ und mit $u=y^{1-n}$: $u\'+(1-n)p\\,u=(1-n)q$.
+
+**Probe:** Verifikation: $n=2$, $p=1$, $q=1$ → $u\'-u=-1$; das ist tatsächlich linear.
+
+**Typischer Fehler:** Faktor $(1-n)$ auf der linken Seite vergessen, nur rechts ansetzen. Er gehört *zu beiden* Koeffizienten.`,
+        [
+          'Produktregel: $u\' = (1-n) \\cdot y^{-n} \\cdot y\'$.',
+          'Nach $y\'$ auflösen, in DGL einsetzen.',
+          'Beide Koeffizienten multiplizieren sich mit $(1-n)$.',
+        ],
+        {
+          1: 'Das wäre unveränderte Koeffizienten — aber $(1-n)$ taucht bei der Umrechnung auf beiden Seiten auf und darf nicht unterschlagen werden.',
+          2: 'Falscher Faktor: der Exponent in der Substitution ist $1-n$, nicht $n$. Bei $n = 2$ ergibt das Vorzeichenwechsel.',
+          3: 'Vorzeichenrichtig, aber falsche Form: die lineare DGL ist $u\' + (1-n)p u = (1-n)q$ und nicht explizit als Inhomogenität in Produkt-Form.',
+        },
+      ),
+      sorting(
+        'Sub-Goal "Bernoulli $y\' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert": [PRÜFUNG] Sortiere die Bernoulli-Lösungsschritte in die richtige Reihenfolge.',
+        [
+          'Bernoulli-Form erkennen: $y\' + p(x)y = q(x)y^n$ mit $n \\neq 0, 1$.',
+          'Substituiere $u = y^{1-n}$, berechne $u\'$.',
+          'Linearisierte DGL $u\' + (1-n)pu = (1-n)q$ mit int. Faktor lösen.',
+          'Rücksubstitution $y = u^{1/(1-n)}$.',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Kochrezept.
+
+**Rechnung:** (1) Typ identifizieren. (2) Substitution durchführen. (3) Lineare DGL mit Standardmethode lösen. (4) Rück zu $y$.
+
+**Probe:** Bei jedem Schritt sollte die DGL einfacher werden; Fehler bei Schritt 2 propagieren sich durch.
+
+**Typischer Fehler:** Die Rücksubstitution vergessen — Lösung steht für $u$, nicht für $y$.`,
+        [
+          'Erst klassifizieren, dann substituieren.',
+          'Nach Linearisierung wie gewohnt lösen.',
+          'Rückweg nicht vergessen.',
+        ],
+      ),
+    ],
+
+    // ── [5] Integrierender Faktor bei nicht-exakter DGL ───────────────
+    5: [
+      mc(
+        'Sub-Goal "Integrierender Faktor bei nicht-exakter DGL: $\\mu(x)$ oder $\\mu(y)$ finden": [PRÜFUNG] Wann existiert ein integrierender Faktor $\\mu(x)$ (nur von $x$ abhängig) für $M\\,dx + N\\,dy = 0$?',
+        [
+          'Wenn $(M_y - N_x)/N$ nur von $x$ abhängt',
+          'Wenn $(M_y - N_x)/M$ nur von $y$ abhängt',
+          'Immer, bei jeder nicht-exakten DGL',
+          'Nie — nur $\\mu(x,y)$ ist allgemein',
+        ],
+        0,
+        `**Ansatz:** Bedingung herleiten aus $(\\mu M)_y=(\\mu N)_x$ mit $\\mu=\\mu(x)$: $\\mu M_y=\\mu N_x+\\mu\' N$. Auflösen: $\\mu\'/\\mu=(M_y-N_x)/N$. Damit das eine ODE in $x$ ist, darf die rechte Seite nur von $x$ abhängen.
+
+**Rechnung:** Bedingung: $(M_y-N_x)/N=f(x)$ — dann $\\mu=e^{\\int f(x)\\,dx}$.
+
+**Probe:** Beispiel $y\\,dx+(2x-ye^y)\\,dy=0$: $M_y=1$, $N_x=2$, $(M_y-N_x)/N=-1/(2x-ye^y)$ hängt von $y$ ab — *kein* $\\mu(x)$. Dafür $(N_x-M_y)/M=1/y$, nur $y$ → $\\mu(y)=y$.
+
+**Typischer Fehler:** Zähler und Nenner vertauschen: Für $\\mu(x)$ steht $N$ im Nenner, nicht $M$.`,
+        [
+          'Aus $(\\mu M)_y = (\\mu N)_x$ herleiten.',
+          'Für $\\mu(x)$: $(M_y - N_x)/N$ muss nur von $x$ abhängen.',
+          'Für $\\mu(y)$: $(N_x - M_y)/M$ muss nur von $y$ abhängen.',
+        ],
+        {
+          1: 'Das ist das Kriterium für $\\mu(y)$, nicht für $\\mu(x)$. Der Nenner bei $\\mu(x)$ ist $N$.',
+          2: 'Nicht immer existiert ein nur-von-$x$-abhängiger Faktor. Die Gleichung $(M_y-N_x)/N = f(x)$ kann von $y$ abhängen — dann gibt es nur $\\mu(x,y)$.',
+          3: 'In vielen Fällen reicht $\\mu(x)$ oder $\\mu(y)$. Nur wenn beide scheitern, muss man allgemeiner suchen.',
+        },
+      ),
+      ni(
+        'Sub-Goal "Integrierender Faktor bei nicht-exakter DGL: $\\mu(x)$ oder $\\mu(y)$ finden": [PRÜFUNG] Finde den integrierenden Faktor $\\mu(x)$ für $(3x^2 + 2y)\\,dx + (x)\\,dy = 0$. Welchen Wert hat $\\mu$ bei $x = 2$?',
+        2, 0.01, '',
+        `**Ansatz:** $M=3x^2+2y$, $N=x$. $M_y=2$, $N_x=1$, nicht exakt. Test: $(M_y-N_x)/N=(2-1)/x=1/x$ — nur $x$, also existiert $\\mu(x)$.
+
+**Rechnung:** $\\mu\'/\\mu=1/x$ → $\\ln\\mu=\\ln x$ → $\\mu(x)=x$. Bei $x=2$: $\\mu(2)=2$.
+
+**Probe:** $\\mu M=3x^3+2xy$, $(\\mu M)_y=2x$; $\\mu N=x^2$, $(\\mu N)_x=2x$ ✓ exakt.
+
+**Typischer Fehler:** $\\mu=e^{1/x}$ statt $\\mu=x$. Verwechselt mit $\\mu=e^{\\int f\\,dx}$ — aber $\\int \\frac{1}{x}dx=\\ln x$, also $\\mu=e^{\\ln x}=x$, *nicht* $e^{1/x}$.`,
+        [
+          '$(M_y - N_x)/N = 1/x$ nur von $x$ abhängig.',
+          '$\\mu = e^{\\int 1/x\\,dx} = e^{\\ln x} = x$.',
+          'Bei $x = 2$: $\\mu = 2$.',
+        ],
+      ),
+      tf(
+        'Sub-Goal "Integrierender Faktor bei nicht-exakter DGL: $\\mu(x)$ oder $\\mu(y)$ finden": [PRÜFUNG] Nach Multiplikation mit dem richtigen integrierenden Faktor $\\mu$ wird eine ursprünglich nicht-exakte DGL exakt, und die Lösungsstruktur der alten DGL bleibt erhalten.',
+        true,
+        `**Ansatz:** $\\mu$ ist nullstellenfrei (sonst multiplizieren wir mit $0$), daher ändert sich die Lösungsmenge nicht.
+
+**Rechnung:** Lösung von $M\\,dx+N\\,dy=0$ erfüllt $dy/dx=-M/N$ — dieselbe Bedingung für $\\mu M\\,dx+\\mu N\\,dy=0$, weil $\\mu$ sich im Quotienten kürzt.
+
+**Probe:** Hier steckt die Gefahr: Wenn $\\mu(x,y)=0$ für gewisse Punkte, können neue oder verlorene Lösungen entstehen. Die Regel gilt nur bei nullstellenfreiem $\\mu$.
+
+**Typischer Fehler:** „Nach Multiplikation bekomme ich eine neue DGL" — ja, aber mit *denselben* Lösungen, solange $\\mu\\neq 0$.`,
+        [
+          'Multiplikation mit $\\mu \\neq 0$ ändert die Lösungsmenge nicht.',
+          'Die neue DGL ist exakt, also über Potentialfunktion lösbar.',
+          'Vorsicht bei Nullstellen von $\\mu$.',
+        ],
+      ),
+      mc(
+        'Sub-Goal "Integrierender Faktor bei nicht-exakter DGL: $\\mu(x)$ oder $\\mu(y)$ finden": [PRÜFUNG] Welcher integrierende Faktor linearisiert $y\' + p(x)\\,y = q(x)$?',
+        [
+          '$\\mu(x) = e^{\\int p(x)\\,dx}$',
+          '$\\mu(x) = e^{-\\int p(x)\\,dx}$',
+          '$\\mu(x) = e^{\\int q(x)\\,dx}$',
+          '$\\mu(x) = p(x) \\cdot q(x)$',
+        ],
+        0,
+        `**Ansatz:** Linear 1. Ordnung — Standardkonstruktion. Wir wollen $(\\mu y)\'=\\mu y\'+\\mu\' y$ als linke Seite der DGL identifizieren, d.h. $\\mu\'=\\mu p$.
+
+**Rechnung:** $\\frac{\\mu\'}{\\mu}=p \\Rightarrow \\mu=e^{\\int p\\,dx}$. Multiplikation mit $\\mu$: $(\\mu y)\'=\\mu q$, also $y=\\tfrac{1}{\\mu}\\int \\mu q\\,dx + C/\\mu$.
+
+**Probe:** $p=1$: $\\mu=e^x$. DGL $y\'+y=e^{-x}$: $(e^x y)\'=1$, $e^x y=x+C$, $y=e^{-x}(x+C)$ — stimmt.
+
+**Typischer Fehler:** Vorzeichen $-\\int p$ im Exponenten. Dann wäre $\\mu\'=-p\\mu$ und die linke Seite passt nicht zu $(\\mu y)\'$.`,
+        [
+          'Produktregel: $(\\mu y)\' = \\mu y\' + \\mu\' y$.',
+          'Vergleich mit $\\mu y\' + \\mu p y$: $\\mu\' = \\mu p$.',
+          'Löse: $\\mu = e^{\\int p\\,dx}$.',
+        ],
+        {
+          1: 'Vorzeichen falsch: Aus $\\mu\' = \\mu p$ folgt $\\mu = e^{+\\int p}$, nicht $e^{-\\int p}$.',
+          2: '$q$ ist die Inhomogenität und kommt nicht in den integrierenden Faktor. Nur $p$ zählt.',
+          3: 'Keine Exponentialfunktion — erfüllt $\\mu\' = \\mu p$ nicht.',
+        },
+      ),
+      matching(
+        'Sub-Goal "Integrierender Faktor bei nicht-exakter DGL: $\\mu(x)$ oder $\\mu(y)$ finden": [PRÜFUNG] Ordne jedem Kriterium den passenden integrierenden Faktor zu.',
+        [
+          { left: '$(M_y - N_x)/N$ hängt nur von $x$ ab', right: '$\\mu(x) = e^{\\int (M_y - N_x)/N\\,dx}$' },
+          { left: '$(N_x - M_y)/M$ hängt nur von $y$ ab', right: '$\\mu(y) = e^{\\int (N_x - M_y)/M\\,dy}$' },
+          { left: 'Lineare DGL $y\' + p y = q$', right: '$\\mu(x) = e^{\\int p(x)\\,dx}$' },
+          { left: 'Keines der obigen Kriterien erfüllt', right: 'Allgemeiner Ansatz $\\mu(x,y)$ oder andere Methode' },
+        ],
+        `**Ansatz:** Zuordnung nach Strukturtest.
+
+**Rechnung:** Jeder Eintrag ergibt sich aus $(\\mu M)_y=(\\mu N)_x$ mit entsprechender Einschränkung auf $\\mu(x)$, $\\mu(y)$ oder allgemeiner.
+
+**Probe:** Alle Faktoren machen ursprüngliche DGL exakt; bei linearer Spezialform reduziert sich alles auf Standard-int-Faktor.
+
+**Typischer Fehler:** Nenner $M$ vs $N$ verwechseln — fataler Vorzeichen- und Abhängigkeitsfehler.`,
+        [
+          'Zähler: immer Differenz der partiellen Ableitungen.',
+          'Nenner: abhängig von der Variable, die übrig bleiben soll.',
+          'Für linear: $p(x)$ direkt im Exponenten.',
+        ],
+      ),
+    ],
+  },
+
+
+  // ────────────────────────────────────────────────────────────────────────
   // dgl-3-2 — Prüfung: DGL 2. Ordnung & Anwendungen  (6 subGoals)
   // Je 5 Aufgaben = 30 Goal-Tasks
   // ────────────────────────────────────────────────────────────────────────
