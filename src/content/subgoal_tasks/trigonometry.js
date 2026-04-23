@@ -360,342 +360,1605 @@ export const trigonometrySubGoalTasks = {
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // trig-1-1 — Winkel und ihre Maße (Grad ↔ Radiant)  (4 subGoals)
+  // 21 Matrix-Aufgaben: SGs 0/1/3 je 5, SG 2 mit 6 (2× apply-independent).
+  // ────────────────────────────────────────────────────────────────────────
+  'trig-1-1': {
+    // ── [0] DEG/RAD-Umschaltung am Taschenrechner ─────────────────────────
+    0: [
+      tf(
+        'Auf einem Taschenrechner im DEG-Modus liefert $\\sin(30)$ den Wert $0{,}5$.',
+        true,
+        `**Ansatz:** Im DEG-Modus interpretiert der Rechner die Eingabe als Grad.
+
+**Rechnung:** $\\sin(30°) = 0{,}5$ (Standardwert aus der Trigonometrie-Tabelle).
+
+**Probe:** Im RAD-Modus läge $\\sin(30) \\approx -0{,}988$ (weil $30$ rad $\\approx 1719°$ entspricht — modulo $360°$ etwa $279°$, dort negativ).
+
+**Typischer Fehler:** Annehmen, der Rechner erkenne automatisch Grad — er folgt nur dem eingestellten Modus.`,
+        [
+          'Was bedeutet der DEG-Modus?',
+          'Grad-Interpretation der Eingabe.',
+          'Standard-Wert $\\sin(30°) = 1/2$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['deg-rad-modus'] },
+      ),
+      mc(
+        'Du tippst $\\sin(90)$ ein und erhältst $0{,}894$. In welchem Modus ist dein Rechner?',
+        ['RAD (Radiant)', 'DEG (Grad)', 'GRAD (Neu-Grad, $100$ Einheiten pro Quadrant)', 'Der Wert $0{,}894$ ist bei keinem Modus möglich.'],
+        0,
+        `**Ansatz:** In DEG wäre $\\sin(90°) = 1$ exakt. Der Abweichende Wert verrät einen anderen Modus.
+
+**Rechnung:** $\\sin(90\\,\\text{rad}) \\approx 0{,}894$, weil $90\\,\\text{rad}$ modulo $2\\pi \\approx 90 - 14 \\cdot 2\\pi \\approx 2{,}04\\,\\text{rad}$, und $\\sin(2{,}04) \\approx 0{,}894$.
+
+**Probe:** Testen mit einem bekannten Wert: $\\sin(90°) = 1$. Wenn der Rechner etwas anderes liefert, stimmt der Modus nicht.
+
+**Typischer Fehler:** Ohne Modus-Check rechnen und krumme Dezimalwerte akzeptieren.`,
+        [
+          'Welchen Wert MÜSSTE $\\sin(90°)$ haben?',
+          'Der tatsächliche Wert weicht deutlich ab.',
+          'Rechner interpretiert die $90$ nicht als Grad.',
+        ],
+        {
+          1: 'Im DEG-Modus wäre $\\sin(90) = 1$ exakt. Der Wert $0{,}894$ ist unmöglich.',
+          2: 'Im GRAD-Modus wäre $\\sin(90) = \\sin(81°) \\approx 0{,}988$, auch nicht $0{,}894$.',
+          3: '$0{,}894$ ist durchaus möglich — nur im RAD-Modus, weil $90\\,\\text{rad}$ ein ganz anderer Winkel ist.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['deg-rad-modus'] },
+      ),
+      mc(
+        'Du willst $\\sin(\\pi/2)$ berechnen. In welchem Modus muss der Rechner stehen, damit $1$ als Ergebnis kommt?',
+        ['RAD (Radiant)', 'DEG (Grad)', 'Beide liefern $1$.', 'Keiner — $\\sin(\\pi/2)$ ist nicht definiert.'],
+        0,
+        `**Ansatz:** $\\pi/2$ ist ein Bogenmaß-Ausdruck — der Rechner muss im RAD-Modus interpretieren.
+
+**Rechnung:** $\\sin(\\pi/2\\,\\text{rad}) = \\sin(90°) = 1$. Im DEG-Modus würde $\\sin(\\pi/2 \\text{ als Grad}) = \\sin(1{,}5708°) \\approx 0{,}0274$.
+
+**Probe:** Immer prüfen: Ist die Eingabe "krumm" (wie $\\pi/2 \\approx 1{,}5708$) → RAD-Modus wählen.
+
+**Typischer Fehler:** Annehmen, $\\pi/2$ sei ein Grad-Ausdruck — aber $\\pi/2$ steht konventionell für Radiant.`,
+        [
+          'Ist $\\pi/2$ ein Grad- oder Radiant-Ausdruck?',
+          '$\\pi$ im Argument → Bogenmaß.',
+          'Ergebnis-Ziel: $1$. In welchem Modus gilt $\\sin = 1$ bei $\\pi/2$?',
+        ],
+        {
+          1: 'DEG würde $\\pi/2$ als $1{,}5708°$ lesen — $\\sin$ davon ist nahezu Null.',
+          2: 'DEG liefert nicht $1$, siehe oben. RAD ist eindeutig.',
+          3: '$\\sin(\\pi/2)$ ist sehr wohl definiert — im RAD-Modus exakt $1$.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['deg-rad-modus'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $\\sin(30)$ und bekommt $-0{,}988$ statt $0{,}5$. Wo liegt der Fehler?',
+        [
+          'Der Rechner steht im RAD-Modus; die Eingabe $30$ wird als $30\\,\\text{rad}$ interpretiert statt als $30°$.',
+          'Die Sinus-Taste ist defekt.',
+          'Der Rechner liefert sowieso nur Näherungswerte — $-0{,}988$ ist nah an $0{,}5$.',
+          '$\\sin(30°)$ ist tatsächlich $-0{,}988$.',
+        ],
+        0,
+        `**Ansatz:** $-0{,}988$ ist ein krummer Wert, der nicht zum bekannten $\\sin(30°) = 0{,}5$ passt. Modus-Fehler ist die mit Abstand häufigste Ursache.
+
+**Rechnung:** $30\\,\\text{rad}$ modulo $2\\pi$ liegt bei etwa $4{,}58\\,\\text{rad} \\approx 262{,}4°$, also im 3./4. Quadranten, wo $\\sin$ negativ ist. $\\sin(30\\,\\text{rad}) \\approx -0{,}988$ passt exakt.
+
+**Probe:** Auf DEG umstellen: $\\sin(30) = 0{,}5$ ✓.
+
+**Typischer Fehler:** Genau dieser — Prüfungsklassiker. Immer den Modus prüfen, bevor Winkelfunktionen eingegeben werden.`,
+        [
+          'Kennst du $\\sin(30°)$? Was sollte rauskommen?',
+          'Der Rechner liefert einen ganz anderen Wert — warum?',
+          'Modus-Prüfung: DEG oder RAD?',
+        ],
+        {
+          1: 'Ein defekter Rechner ist extrem unwahrscheinlich; Modus-Fehler in $99\\%$ der Fälle.',
+          2: '$-0{,}988$ und $0{,}5$ sind nicht "nah" — sie haben unterschiedliche Vorzeichen. Das ist ein struktureller Fehler.',
+          3: '$\\sin(30°) = 0{,}5$ ist ein fundamentaler Grundwert — steht in jeder Formelsammlung.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['deg-rad-modus'] },
+      ),
+      matching(
+        'Ordne jedem Rechenergebnis den Modus des Taschenrechners zu (Eingabe: $\\sin(90)$).',
+        [
+          { left: '$\\sin(90) = 1$',               right: 'DEG (Grad)' },
+          { left: '$\\sin(90) \\approx 0{,}894$',   right: 'RAD (Radiant)' },
+          { left: '$\\sin(90) \\approx 0{,}988$',   right: 'GRAD (Neu-Grad)' },
+          { left: '$\\sin(90) = $ Fehler',          right: 'Eingabe ungültig' },
+        ],
+        `**Ansatz:** Je nach Modus hat der Rechner eine andere Interpretation der Eingabe $90$.
+
+**Rechnung:** DEG: $\\sin(90°) = 1$; RAD: $\\sin(90\\,\\text{rad})$ modulo $2\\pi \\approx \\sin(2{,}04) \\approx 0{,}894$; GRAD (Neu-Grad, $400$ pro Kreis): $\\sin(90 \\text{ grd}) = \\sin(81°) \\approx 0{,}988$.
+
+**Probe:** Umstellen und nachprüfen, welches Ergebnis kommt — das verrät den aktuellen Modus.
+
+**Typischer Fehler:** Den Neu-Grad-Modus (GRAD/grd) ignorieren — auf vielen wissenschaftlichen Rechnern ist er die dritte Option.`,
+        [
+          'Drei Modi: DEG, RAD, GRAD.',
+          'DEG liefert den Standardwert $\\sin(90°)=1$.',
+          'Krumme Werte verraten RAD oder GRAD.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['deg-rad-modus'] },
+      ),
+    ],
+
+    // ── [1] π-Vielfache: π/6, π/4, π/3, π/2 als Grad erkennen ──────────────
+    1: [
+      matching(
+        'Ordne jedem π-Vielfachen den passenden Winkel in Grad zu.',
+        [
+          { left: '$\\pi/6$', right: '$30°$' },
+          { left: '$\\pi/4$', right: '$45°$' },
+          { left: '$\\pi/3$', right: '$60°$' },
+          { left: '$\\pi/2$', right: '$90°$' },
+        ],
+        `**Ansatz:** $\\pi$ rad $= 180°$. Bruchteile von $\\pi$ entsprechen den gleichen Bruchteilen von $180°$.
+
+**Rechnung:** $\\pi/6 = 180°/6 = 30°$; $\\pi/4 = 180°/4 = 45°$; $\\pi/3 = 180°/3 = 60°$; $\\pi/2 = 180°/2 = 90°$.
+
+**Probe:** $\\pi/6 + \\pi/3 = \\pi/6 + 2\\pi/6 = 3\\pi/6 = \\pi/2 = 90°$, und $30° + 60° = 90°$ ✓.
+
+**Typischer Fehler:** $\\pi/6$ mit $60°$ verwechseln (weil "6"). Tatsächlich: Nenner $6$ → $180°/6 = 30°$.`,
+        [
+          '$\\pi = 180°$.',
+          'Nenner bestimmt die Teilung von $180°$.',
+          'Brüche von $\\pi$ ↔ Brüche von $180°$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['pi-vielfache'] },
+      ),
+      mc(
+        'Was entspricht $\\pi/4$ in Grad?',
+        ['$45°$', '$25°$', '$90°$', '$60°$'],
+        0,
+        `**Ansatz:** $\\pi = 180°$, also $\\pi/4 = 180°/4$.
+
+**Rechnung:** $180°/4 = 45°$.
+
+**Probe:** $4 \\cdot 45° = 180°$ ✓.
+
+**Typischer Fehler:** $\\pi/4$ mit $\\pi \\cdot 4 = 720°$ verwechseln oder als $25°$ (Nenner-Missverständnis).`,
+        [
+          '$\\pi = 180°$.',
+          'Division durch $4$.',
+          '$180/4 = ?$',
+        ],
+        {
+          1: '$25°$ hat keinen Zusammenhang zu $\\pi/4$. Der Wert stammt aus $100°/4$ — falsche Basis.',
+          2: '$90°$ ist $\\pi/2$, nicht $\\pi/4$.',
+          3: '$60°$ ist $\\pi/3$. $\\pi/4$ ist kleiner.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['pi-vielfache'] },
+      ),
+      ni(
+        'Wie viele Grad entspricht $\\pi/3$?',
+        60, 0, '°',
+        `**Ansatz:** $\\pi = 180°$, also $\\pi/3 = 180°/3$.
+
+**Rechnung:** $180°/3 = 60°$.
+
+**Probe:** $3 \\cdot 60° = 180° = \\pi$ ✓.
+
+**Typischer Fehler:** $\\pi/3$ mit $30°$ verwechseln (weil "3"). Nenner $3$ → Teilung von $180°$ durch $3$.`,
+        [
+          '$\\pi = 180°$.',
+          '$\\pi/3 = 180°/3$.',
+          'Ergebnis in Grad.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['pi-vielfache'] },
+      ),
+      mc(
+        'Ein Schüler schreibt: „$\\pi/6 = 60°$, weil die $6$ im Nenner steht." Welcher Fehler liegt vor?',
+        [
+          'Der Nenner $n$ bedeutet **Teilung** von $180°$ durch $n$, nicht "ist gleich $n$". Korrekt: $\\pi/6 = 180°/6 = 30°$.',
+          'Er müsste $\\pi \\cdot 6 = 1080°$ rechnen.',
+          '$\\pi/6$ ist ein Grad-Ausdruck und muss direkt gelesen werden.',
+          'Die Aussage stimmt — $\\pi/6$ ist wirklich $60°$.',
+        ],
+        0,
+        `**Ansatz:** $\\pi/n$ = $n$-tel von $\\pi$, also $n$-tel von $180°$. Der Nenner wird als **Divisor** eingesetzt.
+
+**Rechnung:** Korrekt: $\\pi/6 = 180°/6 = 30°$. Der Schüler-Wert $60°$ wäre $\\pi/3$.
+
+**Probe:** $\\pi/6 + \\pi/3 = \\pi/2 = 90°$. Mit Schülerwerten $60° + 60° = 120° \\neq 90°$ — Widerspruch.
+
+**Typischer Fehler:** Genau dieser — Nenner $n$ direkt mit Gradzahl gleichsetzen. Merkhilfe: $\\pi/n$ = "Stück" des Halbkreises.`,
+        [
+          'Wie liest man $\\pi/6$?',
+          '$180° / ? = 30°$.',
+          'Der Nenner TEILT, er benennt nicht.',
+        ],
+        {
+          1: '$\\pi \\cdot 6$ wäre "$\\pi$ mal $6$", nicht "$\\pi$ durch $6$". Das ist eine andere Operation.',
+          2: '$\\pi/6$ ist ein Radiant-Ausdruck, keine Grad-Angabe. Umrechnung nötig.',
+          3: 'Die Aussage stimmt nicht — $\\pi/6 = 30°$, nicht $60°$.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['pi-vielfache'] },
+      ),
+      matching(
+        'Ordne jedem π-Vielfachen den korrekten Grad-Wert zu.',
+        [
+          { left: '$2\\pi/3$',  right: '$120°$' },
+          { left: '$3\\pi/4$',  right: '$135°$' },
+          { left: '$5\\pi/6$',  right: '$150°$' },
+          { left: '$3\\pi/2$',  right: '$270°$' },
+        ],
+        `**Ansatz:** $\\pi = 180°$. $k\\pi/n = k \\cdot 180°/n$.
+
+**Rechnung:**
+· $2\\pi/3 = 2 \\cdot 180°/3 = 120°$
+· $3\\pi/4 = 3 \\cdot 180°/4 = 135°$
+· $5\\pi/6 = 5 \\cdot 180°/6 = 150°$
+· $3\\pi/2 = 3 \\cdot 180°/2 = 270°$
+
+**Probe:** Alle Werte unter $360°$ (Vollkreis).
+
+**Typischer Fehler:** Zähler und Nenner verwechseln: $2\\pi/3$ als "$3$ mal $180°$ durch $2$" rechnen.`,
+        [
+          '$k\\pi/n = k \\cdot 180°/n$.',
+          'Erst $180°/n$ ausrechnen, dann mit $k$ multiplizieren.',
+          'Brüche von $\\pi$ skalieren linear mit Grad.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['pi-vielfache'] },
+      ),
+    ],
+
+    // ── [2] Umrechnungsformel α_rad = α_deg · π/180 ────────────────────────
+    2: [
+      tf(
+        'Die Umrechnungsformel $\\alpha_{\\mathrm{rad}} = \\alpha_\\circ \\cdot \\dfrac{\\pi}{180}$ gilt für alle Winkel, auch für größere als $360°$.',
+        true,
+        `**Ansatz:** Die Formel ist eine lineare Proportionalität zwischen Grad- und Bogenmaß.
+
+**Rechnung:** $720° \\cdot \\pi/180 = 4\\pi$ rad (zwei volle Umdrehungen). Funktioniert für jeden Wert.
+
+**Probe:** Rückrechnung: $4\\pi \\cdot 180/\\pi = 720°$ ✓.
+
+**Typischer Fehler:** Annehmen, die Formel gelte nur im ersten Quadranten — sie ist eine mathematische Skalierung, uneingeschränkt gültig.`,
+        [
+          'Ist die Formel eine lineare Skalierung?',
+          'Funktioniert für jedes Vielfache von $\\pi$.',
+          'Unabhängig vom Quadranten oder Vollkreis.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['umrechnung-formel'] },
+      ),
+      mc(
+        'Wie lautet $60°$ in Radiant?',
+        ['$\\dfrac{\\pi}{3}$', '$\\dfrac{\\pi}{60}$', '$60\\pi$', '$\\dfrac{180}{60\\pi}$'],
+        0,
+        `**Ansatz:** $\\alpha_{\\mathrm{rad}} = \\alpha_\\circ \\cdot \\pi/180$.
+
+**Rechnung:** $60 \\cdot \\pi/180 = \\pi/3$.
+
+**Probe:** $\\pi/3 \\cdot 180/\\pi = 60°$ ✓.
+
+**Typischer Fehler:** $60$ direkt als Nenner einsetzen ($\\pi/60$) oder Grad und $\\pi$ multiplizieren.`,
+        [
+          'Formel: $\\alpha_\\circ \\cdot \\pi/180$.',
+          '$60 \\cdot \\pi/180 = ?$',
+          'Kürzen von $60/180 = 1/3$.',
+        ],
+        {
+          1: '$\\pi/60$ entsteht bei falscher Einsetzung: $\\pi/180 \\cdot (1/60)$ — umgekehrt.',
+          2: '$60\\pi$ wäre, wenn man $\\pi/180$ als "$\\pi$" multiplizieren würde und die Division durch $180$ vergisst.',
+          3: 'Das ist eine Mischform, die mathematisch keinen Sinn ergibt.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['umrechnung-formel'] },
+      ),
+      ni(
+        'Rechne $45°$ in Radiant um. Gib den Wert als Dezimalzahl (4 Nachkommastellen) an.',
+        0.7854, 0.001, '',
+        `**Ansatz:** $\\alpha_{\\mathrm{rad}} = 45 \\cdot \\pi/180 = \\pi/4$.
+
+**Rechnung:** $\\pi/4 \\approx 3{,}1416/4 \\approx 0{,}7854$.
+
+**Probe:** $0{,}7854 \\cdot 180/\\pi \\approx 45°$ ✓.
+
+**Typischer Fehler:** $45 \\cdot \\pi \\approx 141{,}37$ oder $45/\\pi \\approx 14{,}32$ rechnen — falsche Formel-Anwendung.`,
+        [
+          'Formel: Grad $\\cdot \\pi/180$.',
+          '$45/180 = 1/4$, also $\\pi/4$.',
+          '$\\pi/4$ dezimal.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['umrechnung-formel'] },
+      ),
+      ni(
+        'Rechne $\\dfrac{2\\pi}{3}$ in Grad um.',
+        120, 0, '°',
+        `**Ansatz:** Umgekehrt: $\\alpha_\\circ = \\alpha_{\\mathrm{rad}} \\cdot 180/\\pi$.
+
+**Rechnung:** $(2\\pi/3) \\cdot 180/\\pi = 2 \\cdot 180/3 = 360/3 = 120°$.
+
+**Probe:** $120 \\cdot \\pi/180 = 120\\pi/180 = 2\\pi/3$ ✓.
+
+**Typischer Fehler:** $\\pi/180$ statt $180/\\pi$ nutzen und einen winzigen Wert erhalten.`,
+        [
+          'Radiant zu Grad: $\\cdot 180/\\pi$.',
+          '$\\pi$ kürzt sich weg.',
+          '$2 \\cdot 180/3 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['umrechnung-formel'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $\\pi/2$ zu Grad und bekommt $1{,}5708°$. Wo liegt der Fehler?',
+        [
+          'Er hat mit $\\pi/180$ multipliziert (Grad→Radiant-Richtung) statt mit $180/\\pi$ (Radiant→Grad-Richtung).',
+          'Sein Rechner ist falsch kalibriert.',
+          'Die Antwort $1{,}5708°$ ist richtig — $\\pi/2$ ist ein kleiner Winkel.',
+          '$\\pi/2$ ist in Grad gar nicht definiert.',
+        ],
+        0,
+        `**Ansatz:** $\\pi/2$ ist Bogenmaß, soll zu Grad. Formel: $\\alpha_\\circ = \\alpha_{\\mathrm{rad}} \\cdot 180/\\pi$. Der Schüler hat die umgekehrte Formel angewandt.
+
+**Rechnung:** Korrekt: $(\\pi/2) \\cdot 180/\\pi = 90°$. Der Schüler-Wert $1{,}5708°$ entspricht $(\\pi/2) \\cdot \\pi/180 = \\pi^2/360 \\approx 0{,}0274 \\ne 1{,}5708$ — eigentlich: er hat $(\\pi/2)$ direkt als Zahl in einen Rechner im DEG-Modus mit der Formel $\\cdot 1$ eingegeben, also $\\pi/2 \\approx 1{,}5708$ als "Grad"-Zahl gelesen.
+
+**Probe:** Klarer Reality-Check: $\\pi/2$ entspricht $90°$ (Grundwert). Ein Wert von $1{,}5708°$ ist fast ein Null-Grad-Winkel — völlig unplausibel.
+
+**Typischer Fehler:** Umrechnungsrichtung vertauschen. Merkhilfe: Grad hat mehr Zahlen als Radiant (für denselben Winkel). Beim Umrechnen Radiant→Grad → Zahl wird GRÖSSER (Multiplikation mit $180/\\pi \\approx 57$).`,
+        [
+          'Welche Richtung: Radiant→Grad oder Grad→Radiant?',
+          'Faustregel: Radiant-Zahl $\\cdot 57 \\approx $ Grad-Zahl.',
+          '$\\pi/2 \\cdot 57 \\approx 90°$, nicht $1{,}6°$.',
+        ],
+        {
+          1: 'Ein Rechner-Fehler ist unwahrscheinlich. Formel-Fehler in der Umrechnung ist die häufigste Ursache.',
+          2: 'Grundwert: $\\pi/2 = 90°$. Das weicht dramatisch von $1{,}6°$ ab.',
+          3: '$\\pi/2$ ist problemlos in Grad umrechenbar — $90°$.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['umrechnung-formel'] },
+      ),
+      ni(
+        'Rechne $135°$ in Radiant um. Gib den Bruch-Koeffizienten von $\\pi$ als Dezimalzahl an (also $k$ in $k\\pi$).',
+        0.75, 0.001, '',
+        `**Ansatz:** $135 \\cdot \\pi/180 = 135\\pi/180$. Kürzen: $135/180 = 3/4 = 0{,}75$.
+
+**Rechnung:** $135/180 = 3/4$. Also $135° = (3/4)\\pi = 3\\pi/4$. Der Koeffizient ist $0{,}75$.
+
+**Probe:** $(3/4)\\pi \\cdot 180/\\pi = 3/4 \\cdot 180 = 135°$ ✓.
+
+**Typischer Fehler:** Nicht kürzen und $135\\pi/180$ stehen lassen; oder falsche Division.`,
+        [
+          '$135 \\cdot \\pi/180$.',
+          'Kürzen von $135/180$.',
+          'Koeffizient als Dezimalzahl.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['umrechnung-formel'] },
+      ),
+    ],
+
+    // ── [3] Bogenlänge am Einheitskreis als Winkelmaß ──────────────────────
+    3: [
+      tf(
+        'Die Formel $b = r \\cdot \\alpha$ für die Bogenlänge gilt nur, wenn $\\alpha$ im Bogenmaß (Radiant) angegeben ist.',
+        true,
+        `**Ansatz:** Die Definition des Bogenmaßes ist, dass der Bogen am Einheitskreis numerisch gleich dem Winkel ist.
+
+**Rechnung:** Am Einheitskreis ($r = 1$): $b = 1 \\cdot \\alpha = \\alpha$ — nur gültig in Radiant. Für $r \\ne 1$: $b = r\\alpha_{\\mathrm{rad}}$.
+
+**Probe:** Grad-Einsetzung: $b = 5 \\cdot 90° = 450$ Einheiten — unsinnig. Richtig: $5 \\cdot \\pi/2 \\approx 7{,}85$.
+
+**Typischer Fehler:** Gradzahl direkt einsetzen ohne Umrechnung. Klassiker in Prüfungen.`,
+        [
+          'Warum ist Radiant für Bogenlängen bequem?',
+          '$b = r\\alpha$ erfordert dimensionslose $\\alpha$.',
+          'In Grad müsste $\\alpha_\\circ \\cdot \\pi/180$ eingesetzt werden.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['bogenlaenge'] },
+      ),
+      mc(
+        'Ein Kreis hat Radius $r = 2$. Wie lang ist der Bogen für einen Winkel von $\\alpha = \\pi/2$?',
+        ['$\\pi$', '$2\\pi$', '$\\pi/4$', '$4\\pi$'],
+        0,
+        `**Ansatz:** $b = r \\cdot \\alpha$.
+
+**Rechnung:** $b = 2 \\cdot \\pi/2 = \\pi$.
+
+**Probe:** Viertelkreis mit Radius $2$: Umfang $= 2\\pi r = 4\\pi$. Viertel davon: $\\pi$ ✓.
+
+**Typischer Fehler:** $\\pi/4$ rechnen (Division statt Multiplikation) oder $4\\pi$ (vollen Umfang nehmen statt Viertel).`,
+        [
+          'Formel: $b = r \\cdot \\alpha$.',
+          '$r = 2$, $\\alpha = \\pi/2$.',
+          'Multiplizieren.',
+        ],
+        {
+          1: '$2\\pi$ wäre der Halbkreis ($\\alpha = \\pi$), nicht der Viertelkreis.',
+          2: '$\\pi/4$ ergäbe sich bei $b = \\alpha/r$ — falsche Formel (Division statt Multiplikation).',
+          3: '$4\\pi$ ist der volle Umfang, nicht der Bogen für $\\pi/2$.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['bogenlaenge'] },
+      ),
+      ni(
+        'Berechne die Bogenlänge für $r = 5$ und $\\alpha = \\pi/3$.',
+        5.236, 0.01, '',
+        `**Ansatz:** $b = r \\cdot \\alpha$.
+
+**Rechnung:** $b = 5 \\cdot \\pi/3 = 5\\pi/3 \\approx 5{,}236$.
+
+**Probe:** Drittel des halben Umfangs eines Kreises mit $r=5$: $\\pi r / 3 = 5\\pi/3$ ✓.
+
+**Typischer Fehler:** $\\alpha$ in Grad einsetzen ($60°$): $b = 5 \\cdot 60 = 300$ — völlig falsch.`,
+        [
+          'Formel: $b = r\\alpha$ (mit $\\alpha$ in Radiant).',
+          '$5 \\cdot \\pi/3 = ?$',
+          'Dezimalwert: $\\pi/3 \\approx 1{,}047$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['bogenlaenge'] },
+      ),
+      mc(
+        'Ein Schüler berechnet die Bogenlänge mit $r = 10$ und $\\alpha = 60°$ (Grad!) und kommt auf $b = 600$. Wo liegt der Fehler?',
+        [
+          'Er hat die Gradzahl direkt in die Formel $b = r\\alpha$ eingesetzt, ohne in Radiant umzurechnen. Korrekt: $\\alpha = \\pi/3 \\Rightarrow b = 10\\pi/3 \\approx 10{,}47$.',
+          'Die Rechnung ist korrekt — $600$ ist die richtige Bogenlänge.',
+          'Er hätte $b = r/\\alpha$ rechnen müssen.',
+          'Die Formel gilt nur für Kreise mit $r = 1$.',
+        ],
+        0,
+        `**Ansatz:** Die Formel $b = r\\alpha$ setzt $\\alpha$ im Bogenmaß voraus.
+
+**Rechnung:** Korrekt: $60° = \\pi/3$ rad. $b = 10 \\cdot \\pi/3 \\approx 10{,}47$. Der Schüler-Wert $600$ ist fast $60$ mal zu groß.
+
+**Probe:** Plausibilität: der volle Umfang des Kreises mit $r = 10$ ist $2\\pi r \\approx 62{,}83$. Ein $60°$-Bogen kann unmöglich $600$ sein — das ist fast das Zehnfache des Gesamtumfangs.
+
+**Typischer Fehler:** Dieser hier — Einsetzen der Gradzahl ohne Umrechnung. Prüfungsklassiker. Immer erst in Radiant bringen.`,
+        [
+          'Passt die Größenordnung des Ergebnisses?',
+          'Gesamtumfang mit $r = 10$: $\\approx 62{,}8$.',
+          'Einheit der $\\alpha$-Variable prüfen.',
+        ],
+        {
+          1: '$600$ ist um das Fast-Zehnfache größer als der gesamte Umfang. Das kann kein einzelner Bogen sein.',
+          2: '$b = r/\\alpha$ wäre dimensionsmäßig unsinnig und liefert nicht den gewünschten Wert.',
+          3: 'Die Formel gilt für jeden Radius, nicht nur $r = 1$. $r = 1$ ist nur ein Spezialfall (Einheitskreis).',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['bogenlaenge'] },
+      ),
+      ni(
+        'Ein Kreissektor hat Bogenlänge $b = 4$ und Radius $r = 8$. Berechne den zugehörigen Winkel $\\alpha$ in Radiant.',
+        0.5, 0.01, '',
+        `**Ansatz:** $\\alpha = b/r$ (Umstellung von $b = r\\alpha$).
+
+**Rechnung:** $\\alpha = 4/8 = 0{,}5$ rad.
+
+**Probe:** $r \\cdot \\alpha = 8 \\cdot 0{,}5 = 4 = b$ ✓.
+
+**Typischer Fehler:** $\\alpha = b \\cdot r = 32$ rechnen (Multiplikation statt Division).`,
+        [
+          'Umstellen von $b = r\\alpha$.',
+          '$\\alpha = b/r$.',
+          'Einfache Division.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['bogenlaenge'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // trig-1-2 — Rechtwinkliges Dreieck / SOH-CAH-TOA  (3 subGoals)
+  // 15 Matrix-Aufgaben: 3 SGs × 5 Stufen. Alle mit pedagogy.
+  // ────────────────────────────────────────────────────────────────────────
+  'trig-1-2': {
+    // ── [0] SOH-CAH-TOA als Merkregel ─────────────────────────────────────
+    0: [
+      matching(
+        'Ordne jeder Winkelfunktion ihr Seitenverhältnis im rechtwinkligen Dreieck zu.',
+        [
+          { left: '$\\sin(\\alpha)$', right: 'Gegenkathete / Hypotenuse' },
+          { left: '$\\cos(\\alpha)$', right: 'Ankathete / Hypotenuse' },
+          { left: '$\\tan(\\alpha)$', right: 'Gegenkathete / Ankathete' },
+        ],
+        `**Ansatz:** SOH-CAH-TOA — die Standard-Merkregel für die drei Grundfunktionen.
+
+**Rechnung:** SOH: $\\sin = G/H$ (Opposite/Hypotenuse). CAH: $\\cos = A/H$ (Adjacent/Hypotenuse). TOA: $\\tan = G/A$ (Opposite/Adjacent).
+
+**Probe:** $\\tan = \\sin/\\cos = (G/H)/(A/H) = G/A$ ✓.
+
+**Typischer Fehler:** Gegenkathete/Ankathete verwechseln — beide sind Kathete und sehen sich ähnlich.`,
+        [
+          'SOH-CAH-TOA aufschreiben.',
+          'Jeder Buchstabe steht für eine Seite: O = Opposite (Gegen), A = Adjacent (An), H = Hypotenuse.',
+          'Sinus/Kosinus teilen durch Hypotenuse; Tangens nicht.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['soh-cah-toa'] },
+      ),
+      mc(
+        'In einem rechtwinkligen Dreieck ist die Gegenkathete zu $\\alpha$ gleich $3$ und die Hypotenuse gleich $5$. Wie groß ist $\\sin(\\alpha)$?',
+        ['$\\dfrac{3}{5}$', '$\\dfrac{5}{3}$', '$\\dfrac{4}{5}$', '$\\dfrac{3}{4}$'],
+        0,
+        `**Ansatz:** $\\sin = $ Gegenkathete / Hypotenuse.
+
+**Rechnung:** $\\sin(\\alpha) = 3/5 = 0{,}6$.
+
+**Probe:** Da $3^2 + 4^2 = 5^2$, ist die Ankathete $4$, und $\\cos = 4/5$; $\\sin^2 + \\cos^2 = 9/25 + 16/25 = 1$ ✓.
+
+**Typischer Fehler:** Nenner und Zähler vertauschen ($5/3$) oder $\\cos$-Wert angeben ($4/5$).`,
+        [
+          'Formel: $\\sin = G/H$.',
+          'Gegenkathete $= 3$, Hypotenuse $= 5$.',
+          'Einfach einsetzen.',
+        ],
+        {
+          1: '$5/3$ ist der Kehrwert — das wäre $1/\\sin(\\alpha) = \\csc(\\alpha)$, nicht $\\sin$.',
+          2: '$4/5$ ist $\\cos(\\alpha)$ (Ankathete/Hypotenuse), nicht $\\sin$.',
+          3: '$3/4$ wäre $\\tan(\\alpha)$ (G/A), nicht $\\sin$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['soh-cah-toa'] },
+      ),
+      ni(
+        'In einem rechtwinkligen Dreieck ist die Ankathete zu $\\alpha$ gleich $8$ und die Hypotenuse gleich $10$. Wie groß ist $\\cos(\\alpha)$? (Dezimalzahl)',
+        0.8, 0.001, '',
+        `**Ansatz:** $\\cos = $ Ankathete / Hypotenuse.
+
+**Rechnung:** $\\cos(\\alpha) = 8/10 = 0{,}8$.
+
+**Probe:** Gegenkathete via Pythagoras: $\\sqrt{10^2 - 8^2} = \\sqrt{36} = 6$. $\\sin = 6/10 = 0{,}6$. $\\sin^2 + \\cos^2 = 0{,}36 + 0{,}64 = 1$ ✓.
+
+**Typischer Fehler:** $\\sin$ statt $\\cos$ berechnen (Verhältnis passt nicht).`,
+        [
+          'Formel: $\\cos = A/H$.',
+          '$A = 8$, $H = 10$.',
+          'Teilen.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['soh-cah-toa'] },
+      ),
+      mc(
+        'Ein Schüler behauptet: $\\sin(\\alpha) = \\dfrac{\\text{Hypotenuse}}{\\text{Gegenkathete}}$. Wo liegt der Fehler?',
+        [
+          'Zähler und Nenner sind vertauscht. Korrekt ist $\\sin(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Hypotenuse}}$ (SOH: Opposite over Hypotenuse).',
+          'Die Formel ist richtig — nur die Reihenfolge unüblich.',
+          'Er müsste $\\text{Ankathete}$ statt $\\text{Gegenkathete}$ verwenden.',
+          '$\\sin$ ist gar nicht in rechtwinkligen Dreiecken definiert.',
+        ],
+        0,
+        `**Ansatz:** SOH = **O**pposite (Gegenkathete) over **H**ypotenuse, also Gegenkathete / Hypotenuse.
+
+**Rechnung:** Schülerwert mit $G=3, H=5$: $5/3 \\approx 1{,}67$. Aber $\\sin$-Werte liegen im Intervall $[-1, 1]$. $1{,}67$ ist unmöglich.
+
+**Probe:** Grenzfall: bei $\\alpha = 90°$ sind Gegenkathete = Hypotenuse, also $\\sin(90°) = H/H = 1$. Mit der Schüler-Formel käme $H/G = H/H = 1$ zufällig auch — aber für andere Winkel liefert sie Werte $> 1$, was unmöglich ist.
+
+**Typischer Fehler:** Zähler und Nenner beim Aufstellen vertauschen. Merkhilfe: SOH = **S**inus → **O**pposite oben, **H**ypotenuse unten.`,
+        [
+          'Werte-Bereich von $\\sin$: $[-1, 1]$.',
+          'Test: bei spitzem Winkel muss Verhältnis $< 1$ sein.',
+          'Merkhilfe SOH präzise lesen.',
+        ],
+        {
+          1: 'Die Reihenfolge ist nicht egal — Zähler durch Nenner ändert den Wert drastisch.',
+          2: 'Ankathete/Hypotenuse wäre $\\cos$, nicht die Lösung des Problems. Das Problem ist die Vertauschung.',
+          3: '$\\sin$ ist gerade im rechtwinkligen Dreieck klassisch definiert.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['soh-cah-toa'] },
+      ),
+      ni(
+        'Ein Dreieck mit rechtem Winkel hat die Katheten $a = 7$ und $b = 24$. Berechne $\\sin(\\alpha)$, wenn $\\alpha$ der Winkel gegenüber von $a$ ist. (Dezimalzahl, 2 NK)',
+        0.28, 0.01, '',
+        `**Ansatz:** Erst Hypotenuse via Pythagoras, dann $\\sin = $ Gegenkathete $a$ / Hypotenuse.
+
+**Rechnung:** $c = \\sqrt{7^2 + 24^2} = \\sqrt{49 + 576} = \\sqrt{625} = 25$. $\\sin(\\alpha) = 7/25 = 0{,}28$.
+
+**Probe:** $\\cos(\\alpha) = 24/25 = 0{,}96$. $\\sin^2 + \\cos^2 = 0{,}0784 + 0{,}9216 = 1$ ✓.
+
+**Typischer Fehler:** Hypotenuse vergessen zu berechnen und stattdessen $7/24$ rechnen (das wäre $\\tan$, nicht $\\sin$).`,
+        [
+          'Pythagoras: $c^2 = a^2 + b^2$.',
+          '$\\sqrt{49 + 576} = ?$',
+          '$\\sin(\\alpha) = a/c$ mit $a$ = Gegenkathete.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['soh-cah-toa'] },
+      ),
+    ],
+
+    // ── [1] Gegenkathete vs. Ankathete in beliebiger Dreiecksorientierung ──
+    1: [
+      tf(
+        'Die Gegenkathete eines Winkels $\\alpha$ ist die Seite, die $\\alpha$ NICHT berührt (also gegenüberliegt).',
+        true,
+        `**Ansatz:** Definition: Gegenkathete = Seite gegenüber dem Winkel. Ankathete = Seite, die den Winkel (zusammen mit der Hypotenuse) einschließt.
+
+**Rechnung:** Bei $\\alpha = 30°$ im Dreieck mit Hypotenuse $c$: die Seite, die $\\alpha$ nicht berührt, ist gegenüber von $\\alpha$ → Gegenkathete.
+
+**Probe:** Mit der Definition kann man G/A auch bei gedrehtem Dreieck richtig identifizieren.
+
+**Typischer Fehler:** Gegenkathete als "die längere Kathete" identifizieren — das hängt aber vom Winkel ab, nicht von der absoluten Länge.`,
+        [
+          'Gegenkathete liegt gegenüber.',
+          'Sie berührt den Winkel NICHT.',
+          'Ankathete und Hypotenuse schließen den Winkel ein.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['kathete-orientierung'] },
+      ),
+      mc(
+        'In einem rechtwinkligen Dreieck ist der rechte Winkel bei $C$, $\\alpha = 30°$ bei $A$, $\\beta = 60°$ bei $B$. Welche Seite ist die Gegenkathete zu $\\alpha$?',
+        ['Die Seite $a$ (gegenüber von $A$)', 'Die Seite $b$ (gegenüber von $B$)', 'Die Seite $c$ (Hypotenuse)', 'Es gibt keine Gegenkathete.'],
+        0,
+        `**Ansatz:** In der Standardbezeichnung: Seite $a$ liegt gegenüber Winkel $A$.
+
+**Rechnung:** Gegenkathete zu $\\alpha$ (Winkel $A$) ist $a$.
+
+**Probe:** Ankathete zu $\\alpha$ ist $b$, Hypotenuse ist $c$ (gegenüber dem rechten Winkel $C$).
+
+**Typischer Fehler:** Seitenbezeichnung und Winkelbezeichnung verwechseln.`,
+        [
+          'Standard: Seite gegenüber Winkel mit Kleinbuchstabe.',
+          'Seite $a$ ↔ Winkel $A$ (gegenüber).',
+          'Gegenkathete = gegenüber vom Winkel.',
+        ],
+        {
+          1: '$b$ ist gegenüber von $B$, also Gegenkathete zu $\\beta$, nicht zu $\\alpha$.',
+          2: '$c$ ist Hypotenuse, gegenüber des rechten Winkels.',
+          3: 'Jeder nicht-rechte Winkel hat eine Gegenkathete.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['kathete-orientierung'] },
+      ),
+      mc(
+        'Ein rechtwinkliges Dreieck liegt mit der Hypotenuse waagerecht am unteren Rand. Der rechte Winkel zeigt nach unten-links, $\\alpha$ nach unten-rechts. Welche Seite ist Ankathete zu $\\alpha$?',
+        ['Die Seite auf der waagerechten Linie (zwischen $\\alpha$ und dem rechten Winkel).', 'Die linke schräge Seite (gegenüber von $\\alpha$).', 'Die Hypotenuse.', 'Es gibt keine Ankathete bei schräger Lage.'],
+        0,
+        `**Ansatz:** Ankathete = Kathete, die den Winkel $\\alpha$ berührt (neben ihm liegt, aber nicht die Hypotenuse ist).
+
+**Rechnung:** Bei $\\alpha$ am unteren-rechten Eck berührt: die waagerechte Seite (zum rechten Winkel) UND die Hypotenuse. Die waagerechte ist die Ankathete; die Hypotenuse ist keine Kathete.
+
+**Probe:** Die dritte Seite (links schräg nach oben) liegt gegenüber von $\\alpha$ → Gegenkathete.
+
+**Typischer Fehler:** Lage des Dreiecks verwirrt — bei gedrehtem Dreieck "horizontal = Ankathete" annehmen. Relevanz ist die Position zum Winkel, nicht zur Erdachse.`,
+        [
+          'Ankathete berührt den Winkel.',
+          'Ankathete $\\neq$ Hypotenuse.',
+          'Drehlage des Dreiecks ändert nichts.',
+        ],
+        {
+          1: 'Die linke schräge Seite liegt gegenüber → Gegenkathete, nicht Ankathete.',
+          2: 'Hypotenuse berührt zwar $\\alpha$, ist aber per Definition keine Kathete.',
+          3: 'Ankathete existiert bei jedem nicht-rechten Winkel, unabhängig von der Lage.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['kathete-orientierung'] },
+      ),
+      mc(
+        'Ein Schüler sagt: „Die Gegenkathete ist immer die Seite, die waagerecht liegt." Wo liegt der Fehler?',
+        [
+          '"Gegenkathete" definiert sich durch die Lage zum Winkel (gegenüber), nicht durch eine absolute Richtung im Raum.',
+          'Waagerecht ist immer die Ankathete.',
+          'Gegenkathete gibt es nur bei waagerecht liegenden Dreiecken.',
+          'Die Aussage stimmt — Gegenkathete ist immer waagerecht.',
+        ],
+        0,
+        `**Ansatz:** Die Begriffe "Gegen-" und "Ankathete" sind winkelbezogen, nicht raumbezogen.
+
+**Rechnung:** Bei einem gedrehten Dreieck kann die Gegenkathete beliebig orientiert sein (horizontal, vertikal, schräg). Entscheidend: liegt sie gegenüber vom Winkel oder nicht.
+
+**Probe:** Ein Standard-Dreieck mit Hypotenuse oben liegt mit der Gegenkathete des unteren Winkels schräg — nicht waagerecht.
+
+**Typischer Fehler:** Dieser hier. Symptome: Schüler löst Lehrbuch-Aufgaben richtig, versagt bei gedrehten Skizzen in Prüfungen.`,
+        [
+          'Ist "Gegenkathete" eine absolute oder relative Eigenschaft?',
+          'Drehe das Dreieck — wo liegt die Gegenkathete jetzt?',
+          'Raumbezug vs. Winkelbezug.',
+        ],
+        {
+          1: 'Waagerecht ist nicht automatisch Ankathete — hängt vom Winkel ab, nicht von der Orientierung.',
+          2: 'Dreiecke können beliebig im Raum gedreht sein. Die Trig-Begriffe bleiben konsistent.',
+          3: 'Die Aussage ist falsch — ein einfaches Gegenbeispiel (gedrehtes Dreieck) entlarvt das.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['kathete-orientierung'] },
+      ),
+      matching(
+        'Im Dreieck mit rechtem Winkel bei $C$, Seiten $a, b, c$: Ordne jedem Winkel seine Gegen- bzw. Ankathete zu.',
+        [
+          { left: 'Gegenkathete zu $\\alpha$ (Winkel $A$)', right: 'Seite $a$' },
+          { left: 'Ankathete zu $\\alpha$',                 right: 'Seite $b$' },
+          { left: 'Gegenkathete zu $\\beta$ (Winkel $B$)',  right: 'Seite $b$' },
+          { left: 'Hypotenuse',                             right: 'Seite $c$' },
+        ],
+        `**Ansatz:** Standard-Nomenklatur: Kleinbuchstabe $=$ Seite gegenüber Großbuchstabe-Winkel.
+
+**Rechnung:** Seite $a$ gegenüber $A$, etc. Hypotenuse $c$ gegenüber dem rechten Winkel $C$.
+
+**Probe:** Für $\\alpha$: Gegen $= a$, An $= b$. Für $\\beta$: Gegen $= b$, An $= a$. Die Rolle vertauscht sich beim Wechsel des Winkels.
+
+**Typischer Fehler:** Eine feste Zuordnung "Kathete ist immer Ankathete" annehmen. Rolle hängt vom Winkel ab.`,
+        [
+          'Seite und Winkel mit Groß-/Kleinbuchstabe.',
+          'Gegenkathete zu $\\alpha$ = Seite $a$.',
+          'Rolle wechselt beim anderen Winkel.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['kathete-orientierung'] },
+      ),
+    ],
+
+    // ── [2] Umkehrfunktionen arcsin / arccos / arctan ──────────────────────
+    2: [
+      tf(
+        'Der Befehl $\\arcsin(0{,}5)$ am Taschenrechner liefert im DEG-Modus $30°$.',
+        true,
+        `**Ansatz:** $\\arcsin$ liefert den Winkel, dessen Sinus der gegebene Wert ist.
+
+**Rechnung:** $\\sin(30°) = 0{,}5$, also $\\arcsin(0{,}5) = 30°$.
+
+**Probe:** Im RAD-Modus wäre $\\arcsin(0{,}5) \\approx 0{,}5236$ rad $= \\pi/6 = 30°$.
+
+**Typischer Fehler:** Modus nicht beachten — dann Ergebnisse wie $0{,}5236°$ statt $30°$.`,
+        [
+          'Umkehrfunktion zu $\\sin$.',
+          '$\\sin(30°) = 0{,}5$.',
+          'Modus des Rechners prüfen.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['arcsin-arccos-arctan'] },
+      ),
+      mc(
+        'Welche Umkehrfunktion verwendest du, um den Winkel zu bestimmen, wenn die Ankathete $= 4$ und die Hypotenuse $= 5$ bekannt sind?',
+        ['$\\arccos(4/5)$', '$\\arcsin(4/5)$', '$\\arctan(4/5)$', '$\\arccos(5/4)$'],
+        0,
+        `**Ansatz:** $\\cos(\\alpha) = A/H$, also $\\alpha = \\arccos(A/H)$.
+
+**Rechnung:** $\\arccos(4/5) = \\arccos(0{,}8) \\approx 36{,}87°$.
+
+**Probe:** $\\cos(36{,}87°) \\approx 0{,}8$ ✓.
+
+**Typischer Fehler:** $\\arcsin(4/5)$ nehmen und den falschen Winkel bekommen (arcsin von A/H wäre nicht zielführend).`,
+        [
+          'Welches Seitenverhältnis liegt vor?',
+          'A/H passt zu $\\cos$.',
+          'Umkehrfunktion: $\\arccos$.',
+        ],
+        {
+          1: '$\\arcsin(4/5)$ würde einen anderen Winkel liefern, der nicht zum Verhältnis $A/H$ passt.',
+          2: '$\\arctan$ bräuchte $G/A$, nicht $A/H$.',
+          3: '$5/4 > 1$ — $\\arccos$ ist nur für Werte $\\in [-1, 1]$ definiert, liefert also Fehler.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['arcsin-arccos-arctan'] },
+      ),
+      ni(
+        'Berechne $\\arctan(1)$ in Grad.',
+        45, 0, '°',
+        `**Ansatz:** $\\tan(45°) = 1$, also $\\arctan(1) = 45°$.
+
+**Rechnung:** $\\arctan(1) = 45°$.
+
+**Probe:** $\\tan(45°) = \\sin(45°)/\\cos(45°) = (\\sqrt{2}/2)/(\\sqrt{2}/2) = 1$ ✓.
+
+**Typischer Fehler:** $\\arctan(1)$ mit $1°$ verwechseln (Input-Output nicht klar trennen).`,
+        [
+          'Welcher Winkel hat $\\tan = 1$?',
+          'Symmetrischer Fall: Gegen- = Ankathete.',
+          'Das passiert bei $45°$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['arcsin-arccos-arctan'] },
+      ),
+      mc(
+        'Ein Schüler soll den Winkel bestimmen mit $\\sin(\\alpha) = 0{,}7$ und tippt im RAD-Modus $\\arcsin(0{,}7)$. Er erhält $0{,}775$ und schreibt das als Ergebnis in Grad. Wo liegt der Fehler?',
+        [
+          'Der Wert $0{,}775$ ist das Ergebnis in Radiant, nicht in Grad. Umrechnung nötig: $0{,}775 \\cdot 180/\\pi \\approx 44{,}4°$.',
+          'Der Sinus-Wert $0{,}7$ ist nicht erlaubt.',
+          '$\\arcsin$ liefert immer Grad — die $0{,}775$ sind korrekt.',
+          '$\\sin(\\alpha) = 0{,}7$ hat keine Lösung.',
+        ],
+        0,
+        `**Ansatz:** $\\arcsin$ im RAD-Modus liefert Radiant, im DEG-Modus Grad. Der Schüler muss wissen, in welchem Modus er ist.
+
+**Rechnung:** $\\arcsin(0{,}7)$ im RAD-Modus $\\approx 0{,}7754$ rad. Umgerechnet: $0{,}7754 \\cdot 180/\\pi \\approx 44{,}43°$.
+
+**Probe:** $\\sin(44{,}43°) \\approx 0{,}7$ ✓. Der Schüler-Wert $0{,}775°$ wäre ein nahezu Null-Grad-Winkel, mit $\\sin \\approx 0{,}0135$ — Widerspruch.
+
+**Typischer Fehler:** Modus-Info beim Ablesen ignorieren. Plausibilitäts-Check: $\\sin(0{,}775°) \\ne 0{,}7$ entlarvt den Fehler sofort.`,
+        [
+          'In welchem Modus war der Rechner?',
+          'Einheit des Ergebnisses = Einheit der Ausgabe.',
+          'Test: $\\sin(\\text{Schüler-Winkel}) = 0{,}7$?',
+        ],
+        {
+          1: '$0{,}7$ ist erlaubt — liegt im Intervall $[-1, 1]$.',
+          2: 'Der Rechner folgt dem Modus, nicht dem Wunsch des Nutzers. Im RAD-Modus → Radiant-Ergebnis.',
+          3: '$\\sin(\\alpha) = 0{,}7$ hat sehr wohl Lösungen: $\\alpha \\approx 44{,}4°$ oder $180°-44{,}4° = 135{,}6°$.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['arcsin-arccos-arctan'] },
+      ),
+      ni(
+        'In einem rechtwinkligen Dreieck sind Gegenkathete $= 3$ und Ankathete $= 4$. Bestimme den Winkel $\\alpha$ in Grad (1 NK).',
+        36.9, 0.1, '°',
+        `**Ansatz:** $\\tan(\\alpha) = G/A = 3/4$, also $\\alpha = \\arctan(3/4)$.
+
+**Rechnung:** $\\arctan(0{,}75) \\approx 36{,}87°$.
+
+**Probe:** $\\tan(36{,}87°) \\approx 0{,}75 = 3/4$ ✓. Hypotenuse via Pythagoras: $\\sqrt{9 + 16} = 5$. $\\sin(36{,}87°) = 3/5 = 0{,}6$ ✓.
+
+**Typischer Fehler:** $\\arcsin$ oder $\\arccos$ statt $\\arctan$ nutzen — oder G und A vertauschen.`,
+        [
+          'Welches Seitenverhältnis?',
+          'G/A führt zu $\\tan$.',
+          'Umkehrfunktion $\\arctan$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['arcsin-arccos-arctan'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // trig-1-3 — Die Grundwerte (0°, 30°, 45°, 60°, 90°)  (4 subGoals)
+  // 20 Matrix-Aufgaben: 4 SGs × 5 Stufen.
+  // ────────────────────────────────────────────────────────────────────────
+  'trig-1-3': {
+    // ── [0] Sinus-Grundwerte auswendig ─────────────────────────────────────
+    0: [
+      matching(
+        'Ordne jedem Winkel seinen $\\sin$-Wert zu.',
+        [
+          { left: '$\\sin(0°)$',  right: '$0$' },
+          { left: '$\\sin(30°)$', right: '$\\tfrac{1}{2}$' },
+          { left: '$\\sin(45°)$', right: '$\\tfrac{\\sqrt{2}}{2}$' },
+          { left: '$\\sin(60°)$', right: '$\\tfrac{\\sqrt{3}}{2}$' },
+          { left: '$\\sin(90°)$', right: '$1$' },
+        ],
+        `**Ansatz:** Die fünf Grundwerte-Paare auswendig lernen.
+
+**Rechnung:** $\\sin(0°)=0$; $\\sin(30°)=1/2$; $\\sin(45°)=\\sqrt{2}/2\\approx 0{,}707$; $\\sin(60°)=\\sqrt{3}/2\\approx 0{,}866$; $\\sin(90°)=1$.
+
+**Probe:** Monoton wachsend von $0$ auf $1$. Dezimal: $0, 0{,}5, 0{,}707, 0{,}866, 1$ ✓.
+
+**Typischer Fehler:** $\\sin(30°)$ und $\\sin(60°)$ vertauschen — beide sind "schöne" Werte, aber bei $30°$ ist der Sinus klein ($1/2$), bei $60°$ ist er groß ($\\sqrt{3}/2$).`,
+        [
+          'Fünf Grundwerte.',
+          'Monoton wachsend von $0$ auf $1$.',
+          '$\\sin(30°)$ klein, $\\sin(60°)$ groß.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['grundwerte-sin'] },
+      ),
+      mc(
+        'Welchen Wert hat $\\sin(60°)$?',
+        ['$\\dfrac{\\sqrt{3}}{2}$', '$\\dfrac{1}{2}$', '$\\dfrac{\\sqrt{2}}{2}$', '$\\sqrt{3}$'],
+        0,
+        `**Ansatz:** Grundwert aus der Tabelle.
+
+**Rechnung:** $\\sin(60°) = \\sqrt{3}/2 \\approx 0{,}866$.
+
+**Probe:** Herleitung aus $30°$-$60°$-$90°$-Dreieck mit Seiten $1, \\sqrt{3}, 2$: Gegenkathete zu $60°$ ist $\\sqrt{3}$, Hypotenuse $2$.
+
+**Typischer Fehler:** Mit $\\sin(30°) = 1/2$ verwechseln. Merkhilfe: bei $60°$ ist die Gegenkathete länger als bei $30°$, also größerer $\\sin$-Wert.`,
+        [
+          'Grundwerte-Tabelle.',
+          '$\\sin(60°)$: groß oder klein?',
+          'Dezimal: $\\approx 0{,}866$.',
+        ],
+        {
+          1: '$1/2$ ist $\\sin(30°)$, nicht $\\sin(60°)$.',
+          2: '$\\sqrt{2}/2 \\approx 0{,}707$ ist $\\sin(45°)$.',
+          3: '$\\sqrt{3}$ wäre größer als $1$ — unmöglich für $\\sin$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['grundwerte-sin'] },
+      ),
+      ni(
+        'Berechne $\\sin(30°) + \\sin(90°)$.',
+        1.5, 0.001, '',
+        `**Ansatz:** Beide Grundwerte einsetzen.
+
+**Rechnung:** $1/2 + 1 = 1{,}5$.
+
+**Probe:** Dezimal: $0{,}5 + 1 = 1{,}5$ ✓.
+
+**Typischer Fehler:** $\\sin(30°) + \\sin(90°) = \\sin(120°)$ schreiben (falsche Additivität). Sinus ist nicht linear — siehe trig-3-1.`,
+        [
+          'Grundwerte einsetzen.',
+          '$\\sin(30°) = ?$',
+          '$\\sin(90°) = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['grundwerte-sin'] },
+      ),
+      mc(
+        'Ein Schüler schreibt $\\sin(45°) = 0{,}5$. Wo liegt der Fehler?',
+        [
+          '$\\sin(45°) = \\sqrt{2}/2 \\approx 0{,}707$, nicht $0{,}5$. Er hat vermutlich mit $\\sin(30°) = 0{,}5$ verwechselt.',
+          '$\\sin(45°) = 0{,}5$ ist korrekt.',
+          '$\\sin(45°)$ existiert nicht — nur $\\sin(30°)$ und $\\sin(60°)$.',
+          'Er müsste $\\sin(45°) = 45/90 = 0{,}5$ rechnen.',
+        ],
+        0,
+        `**Ansatz:** $\\sin(45°)$ ist ein spezieller Grundwert: die Gegenkathete = die Ankathete im gleichschenklig-rechtwinkligen Dreieck, also $\\sin(45°) = \\cos(45°) = \\sqrt{2}/2$.
+
+**Rechnung:** Korrekt: $\\sin(45°) = \\sqrt{2}/2 \\approx 0{,}707$. Schüler-Wert $0{,}5$ wäre $\\sin(30°)$.
+
+**Probe:** $\\sin^2(45°) + \\cos^2(45°) = 0{,}5 + 0{,}5 = 1$ ✓ (passt zur Grundformel).
+
+**Typischer Fehler:** Grundwerte pauschal mit $0{,}5$-Bereich schätzen. Die fünf Werte müssen exakt auswendig gelernt werden.`,
+        [
+          'Grundwerte-Tabelle: $\\sin(45°) = ?$',
+          'Merkregel: $\\sqrt{n}/2$ für $n=0,1,2,3,4$ bei $0°, 30°, 45°, 60°, 90°$.',
+          'Dezimal testen: $0{,}707 \\ne 0{,}5$.',
+        ],
+        {
+          1: '$0{,}5$ ist $\\sin(30°)$, nicht $\\sin(45°)$.',
+          2: '$\\sin(45°)$ ist ein zentraler Grundwert (Gleichseitig-rechtwinkliges Dreieck).',
+          3: 'Die Formel "Winkel/90" ist keine gültige $\\sin$-Definition.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['grundwerte-sin'] },
+      ),
+      matching(
+        'Ordne jeden Sinus-Wert seinem Winkel zu.',
+        [
+          { left: '$0{,}5$',   right: '$30°$' },
+          { left: '$0{,}707$', right: '$45°$' },
+          { left: '$0{,}866$', right: '$60°$' },
+          { left: '$1$',       right: '$90°$' },
+        ],
+        `**Ansatz:** Rückwärts-Matching — vom Wert zum Winkel.
+
+**Rechnung:** Kurvendiskussion $\\sin$ zwischen $0°$ und $90°$: monoton wachsend.
+
+**Probe:** $\\arcsin$-Test auf dem Rechner (DEG-Modus).
+
+**Typischer Fehler:** Zahlenbenutzung — $0{,}866$ und $0{,}707$ werden leicht vertauscht.`,
+        [
+          'Dezimal-Kontrolle: $0{,}5 < 0{,}707 < 0{,}866 < 1$.',
+          'Monoton wachsend von $0°$ bis $90°$.',
+          '$\\arcsin$ zur Prüfung.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['grundwerte-sin'] },
+      ),
+    ],
+
+    // ── [1] Merkregel √n/2 für n = 0, 1, 2, 3, 4 ───────────────────────────
+    1: [
+      tf(
+        'Die Merkregel $\\sin = \\sqrt{n}/2$ mit $n=0,1,2,3,4$ liefert die Sinus-Grundwerte für $0°, 30°, 45°, 60°, 90°$.',
+        true,
+        `**Ansatz:** Mnemotechnisches Muster für alle fünf Standardwerte.
+
+**Rechnung:** $\\sqrt{0}/2 = 0$; $\\sqrt{1}/2 = 1/2$; $\\sqrt{2}/2$; $\\sqrt{3}/2$; $\\sqrt{4}/2 = 2/2 = 1$. Alle stimmen.
+
+**Probe:** Dezimal: $0, 0{,}5, 0{,}707, 0{,}866, 1$ — identisch mit den bekannten Grundwerten.
+
+**Typischer Fehler:** Merkregel als Rechenregel missverstehen — sie funktioniert NUR für diese 5 Winkel, nicht für andere.`,
+        [
+          'Fünf Standardwinkel, fünf einfache Brüche.',
+          'Muster $\\sqrt{n}/2$.',
+          '$n$ läuft von $0$ bis $4$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['wurzel-n-muster'] },
+      ),
+      mc(
+        'Mit der Merkregel $\\sin = \\sqrt{n}/2$: welcher Winkel entspricht $n = 2$?',
+        ['$45°$', '$30°$', '$60°$', '$90°$'],
+        0,
+        `**Ansatz:** Zuordnung $n \\leftrightarrow $ Winkel: $n=0 \\to 0°$, $n=1 \\to 30°$, $n=2 \\to 45°$, $n=3 \\to 60°$, $n=4 \\to 90°$.
+
+**Rechnung:** $n=2 \\to 45°$. Wert: $\\sqrt{2}/2$.
+
+**Probe:** $\\sin(45°) = \\sqrt{2}/2$ ✓.
+
+**Typischer Fehler:** $n$ und den Winkel direkt gleichsetzen (z. B. $n=2 \\to 2°$).`,
+        [
+          'Fünf Winkel: $0, 30, 45, 60, 90$.',
+          'Fünf $n$-Werte: $0, 1, 2, 3, 4$.',
+          'Position $n+1$ in der Liste.',
+        ],
+        {
+          1: '$30°$ ist $n=1$.',
+          2: '$60°$ ist $n=3$.',
+          3: '$90°$ ist $n=4$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['wurzel-n-muster'] },
+      ),
+      ni(
+        'Wende die Merkregel an: Bei $n = 3$ ergibt die Formel $\\sqrt{n}/2$ welchen Dezimalwert? (3 NK)',
+        0.866, 0.01, '',
+        `**Ansatz:** $\\sqrt{3}/2$.
+
+**Rechnung:** $\\sqrt{3} \\approx 1{,}732$. $1{,}732/2 = 0{,}866$.
+
+**Probe:** Dies ist $\\sin(60°)$. Bekannt: $\\sin(60°) \\approx 0{,}866$ ✓.
+
+**Typischer Fehler:** $3/2 = 1{,}5$ rechnen (Wurzel vergessen).`,
+        [
+          '$\\sqrt{3} \\approx ?$',
+          'Geteilt durch $2$.',
+          '$\\sqrt{3} \\approx 1{,}732$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['wurzel-n-muster'] },
+      ),
+      mc(
+        'Ein Schüler wendet die Merkregel $\\sqrt{n}/2$ auf $\\sin(120°)$ an mit $n = 5$ und erhält $\\sqrt{5}/2 \\approx 1{,}118$. Wo liegt der Fehler?',
+        [
+          'Die Merkregel gilt NUR für die fünf Grundwinkel $0°, 30°, 45°, 60°, 90°$. Für $120°$ gilt sie nicht. Außerdem ist $\\sin > 1$ unmöglich.',
+          '$n = 5$ ist erlaubt, aber der Wurzel-Wert wurde falsch berechnet.',
+          'Die Regel gilt mit $n = 5$ nur im Bogenmaß.',
+          'Die Rechnung stimmt: $\\sin(120°) \\approx 1{,}118$.',
+        ],
+        0,
+        `**Ansatz:** Die Merkregel ist mnemotechnisch, kein Rechengesetz. Sie trifft nur für die fünf Standardwinkel zu.
+
+**Rechnung:** Tatsächlich: $\\sin(120°) = \\sin(180°-120°) = \\sin(60°) = \\sqrt{3}/2 \\approx 0{,}866$.
+
+**Probe:** Sinus liegt immer im Bereich $[-1, 1]$. $1{,}118$ sprengt diesen Bereich — sofortiges Warnsignal.
+
+**Typischer Fehler:** Mnemotechniken mit Rechenregeln verwechseln. Die Regel funktioniert durch glückliche Zahlencoincidence, nicht durch mathematische Herleitung.`,
+        [
+          'Bereich von $\\sin$: $[-1, 1]$.',
+          'Gilt die Merkregel universell?',
+          '$\\sin(120°)$ via Quadranten-Symmetrie: $\\sin(60°)$.',
+        ],
+        {
+          1: '$n = 5$ ist nicht erlaubt — die Regel hat nur fünf Werte.',
+          2: 'Die Regel hat nichts mit dem Bogenmaß zu tun.',
+          3: '$1{,}118 > 1$ — unmöglich für Sinus.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['wurzel-n-muster'] },
+      ),
+      sorting(
+        'Bringe die fünf Sinus-Grundwerte nach aufsteigender Größe in die richtige Reihenfolge.',
+        [
+          '$\\sin(0°) = 0$',
+          '$\\sin(30°) = \\tfrac{1}{2}$',
+          '$\\sin(45°) = \\tfrac{\\sqrt{2}}{2}$',
+          '$\\sin(60°) = \\tfrac{\\sqrt{3}}{2}$',
+          '$\\sin(90°) = 1$',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Sinus ist im ersten Quadranten monoton wachsend.
+
+**Rechnung:** Dezimal: $0, 0{,}5, 0{,}707, 0{,}866, 1$.
+
+**Probe:** Auch $\\sqrt{0}/2 < \\sqrt{1}/2 < \\sqrt{2}/2 < \\sqrt{3}/2 < \\sqrt{4}/2$ ✓.
+
+**Typischer Fehler:** $\\sqrt{3}/2$ und $\\sqrt{2}/2$ vertauschen — obwohl $\\sqrt{3} > \\sqrt{2}$.`,
+        [
+          'Monoton wachsend von $0°$ bis $90°$.',
+          'Dezimal-Kontrolle.',
+          '$\\sqrt{n}$ wächst mit $n$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['wurzel-n-muster'] },
+      ),
+    ],
+
+    // ── [2] Kosinus = Sinus rückwärts, und Tangens-Grundwerte ─────────────
+    2: [
+      tf(
+        '$\\cos(0°) = 1$ und $\\cos(90°) = 0$ — die Kosinus-Werte sind genau die Sinus-Werte in umgekehrter Reihenfolge.',
+        true,
+        `**Ansatz:** Komplementär-Eigenschaft: $\\cos(\\alpha) = \\sin(90°-\\alpha)$.
+
+**Rechnung:** $\\cos(0°) = \\sin(90°) = 1$; $\\cos(30°) = \\sin(60°) = \\sqrt{3}/2$; $\\cos(45°) = \\sin(45°) = \\sqrt{2}/2$; $\\cos(60°) = \\sin(30°) = 1/2$; $\\cos(90°) = \\sin(0°) = 0$.
+
+**Probe:** $\\sin^2 + \\cos^2 = 1$ ✓.
+
+**Typischer Fehler:** $\\cos$ und $\\sin$ bei denselben Winkeln verwechseln. Besonders fies: $\\sin(30°) = \\cos(60°) = 1/2$ — die Werte sind gleich, aber bei verschiedenen Winkeln.`,
+        [
+          'Symmetrie: $\\cos(\\alpha) = \\sin(90°-\\alpha)$.',
+          'Kosinus-Tabelle ist Sinus-Tabelle gespiegelt.',
+          'Dezimal: $1, 0{,}866, 0{,}707, 0{,}5, 0$.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['grundwerte-cos'] },
+      ),
+      mc(
+        'Welcher Wert ist gleich $\\cos(60°)$?',
+        ['$\\dfrac{1}{2}$', '$\\dfrac{\\sqrt{3}}{2}$', '$\\dfrac{\\sqrt{2}}{2}$', '$1$'],
+        0,
+        `**Ansatz:** Komplementär: $\\cos(60°) = \\sin(30°) = 1/2$.
+
+**Rechnung:** $\\cos(60°) = 1/2$.
+
+**Probe:** Im $30°$-$60°$-$90°$-Dreieck: Ankathete zu $60°$ ist die kurze Kathete $1$, Hypotenuse $2$. $\\cos = 1/2$ ✓.
+
+**Typischer Fehler:** $\\sqrt{3}/2$ angeben (das ist $\\cos(30°)$, nicht $\\cos(60°)$).`,
+        [
+          'Komplementärwinkel-Regel.',
+          '$\\cos(60°) = \\sin(30°)$.',
+          '$\\sin(30°) = ?$',
+        ],
+        {
+          1: '$\\sqrt{3}/2$ ist $\\cos(30°)$, nicht $\\cos(60°)$.',
+          2: '$\\sqrt{2}/2$ ist $\\cos(45°)$.',
+          3: '$1$ ist $\\cos(0°)$.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['grundwerte-cos'] },
+      ),
+      ni(
+        'Berechne $\\tan(60°)$. (3 NK)',
+        1.732, 0.01, '',
+        `**Ansatz:** $\\tan = \\sin/\\cos$.
+
+**Rechnung:** $\\tan(60°) = \\sin(60°)/\\cos(60°) = (\\sqrt{3}/2)/(1/2) = \\sqrt{3} \\approx 1{,}732$.
+
+**Probe:** $\\tan(60°) = \\sqrt{3}$ steht in jeder Formelsammlung.
+
+**Typischer Fehler:** $\\tan(60°) = \\sin(60°) \\cdot \\cos(60°) = \\sqrt{3}/4$ rechnen (Multiplikation statt Division).`,
+        [
+          '$\\tan = \\sin / \\cos$.',
+          '$\\sin(60°) = \\sqrt{3}/2$, $\\cos(60°) = 1/2$.',
+          'Division: $(\\sqrt{3}/2) / (1/2) = \\sqrt{3}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['grundwerte-tan'] },
+      ),
+      mc(
+        'Ein Schüler schreibt $\\cos(30°) = \\sin(30°) = 0{,}5$. Wo liegt der Fehler?',
+        [
+          '$\\cos(30°) = \\sin(60°) = \\sqrt{3}/2 \\approx 0{,}866$, nicht $0{,}5$. Der Schüler hat Sinus und Kosinus beim gleichen Winkel gleichgesetzt.',
+          '$\\sin(30°) = 0{,}866$ ist richtig, aber $\\cos(30°)$ nicht.',
+          'Bei allen Grundwinkeln gilt $\\sin = \\cos$.',
+          '$\\sin$ und $\\cos$ sind sowieso immer gleich.',
+        ],
+        0,
+        `**Ansatz:** $\\sin(\\alpha) = \\cos(\\alpha)$ gilt NUR bei $\\alpha = 45°$. Bei allen anderen Winkeln sind sie unterschiedlich.
+
+**Rechnung:** Korrekt: $\\sin(30°) = 1/2$, aber $\\cos(30°) = \\sqrt{3}/2 \\approx 0{,}866$. Komplementär: $\\cos(30°) = \\sin(60°)$.
+
+**Probe:** $\\sin^2(30°) + \\cos^2(30°) = 1/4 + 3/4 = 1$ ✓. Mit Schülerwert: $1/4 + 1/4 = 1/2 \\ne 1$ — Widerspruch.
+
+**Typischer Fehler:** $\\sin$ und $\\cos$ gleichsetzen — gilt nur bei $45°$.`,
+        [
+          'Wann gilt $\\sin = \\cos$?',
+          '$\\sin(30°) \\ne \\cos(30°)$.',
+          'Komplementär: $\\cos(\\alpha) = \\sin(90°-\\alpha)$.',
+        ],
+        {
+          1: '$\\sin(30°) = 0{,}5$, nicht $0{,}866$.',
+          2: 'Die Gleichheit gilt nur bei $45°$, nicht bei allen Grundwinkeln.',
+          3: '$\\sin$ und $\\cos$ sind unterschiedliche Funktionen, nur in Ausnahmefällen gleich.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['grundwerte-cos', 'grundwerte-sin'] },
+      ),
+      matching(
+        'Ordne jedem Winkel sein Paar $(\\sin, \\cos)$ zu.',
+        [
+          { left: '$0°$',  right: '$(0, 1)$' },
+          { left: '$30°$', right: '$(\\tfrac{1}{2}, \\tfrac{\\sqrt{3}}{2})$' },
+          { left: '$45°$', right: '$(\\tfrac{\\sqrt{2}}{2}, \\tfrac{\\sqrt{2}}{2})$' },
+          { left: '$60°$', right: '$(\\tfrac{\\sqrt{3}}{2}, \\tfrac{1}{2})$' },
+          { left: '$90°$', right: '$(1, 0)$' },
+        ],
+        `**Ansatz:** Komplementaritäten ausnutzen.
+
+**Rechnung:** Vollständige Tabelle — beide Funktionen gleichzeitig.
+
+**Probe:** $\\sin^2 + \\cos^2 = 1$ bei jedem Paar verifiziert.
+
+**Typischer Fehler:** Zahlen zu schnell vermischen — Paar-Tabelle auswendig, dann sind sie stabil.`,
+        [
+          'Je $5$ Paare für $0°$ bis $90°$.',
+          '$\\sin$-Werte wachsen, $\\cos$-Werte fallen.',
+          'Bei $45°$ sind beide gleich.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['grundwerte-cos', 'grundwerte-sin'] },
+      ),
+    ],
+
+    // ── [3] Komplementärwinkel: cos α = sin(90° − α) ───────────────────────
+    3: [
+      tf(
+        'Für jeden Winkel $\\alpha$ gilt $\\cos(\\alpha) = \\sin(90° - \\alpha)$.',
+        true,
+        `**Ansatz:** Komplementaritäts-Beziehung — Gegen- und Ankathete tauschen Rollen bei der $90°$-Ergänzung.
+
+**Rechnung:** Im rechtwinkligen Dreieck: $\\sin(\\alpha) = G/H$; bei Winkel $90°-\\alpha$ ist die Gegenkathete zur Ankathete von $\\alpha$ geworden, also $\\sin(90°-\\alpha) = A/H = \\cos(\\alpha)$.
+
+**Probe:** $\\cos(30°) = \\sqrt{3}/2 = \\sin(60°) = \\sin(90°-30°)$ ✓.
+
+**Typischer Fehler:** Ergänzung zu $180°$ statt $90°$ annehmen.`,
+        [
+          'Komplementär: Ergänzung zu $90°$.',
+          'Gegen- und Ankathete wechseln Rollen.',
+          'Universell für alle Winkel.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['komplementaer'] },
+      ),
+      mc(
+        'Welcher Ausdruck ist gleich $\\cos(50°)$?',
+        ['$\\sin(40°)$', '$\\sin(50°)$', '$\\sin(130°)$', '$\\sin(90°)$'],
+        0,
+        `**Ansatz:** $\\cos(\\alpha) = \\sin(90°-\\alpha)$.
+
+**Rechnung:** $\\cos(50°) = \\sin(90°-50°) = \\sin(40°)$.
+
+**Probe:** Beide Werte dezimal: $\\cos(50°) \\approx 0{,}643$, $\\sin(40°) \\approx 0{,}643$ ✓.
+
+**Typischer Fehler:** $\\cos(50°) = \\sin(50°)$ annehmen (gilt nur bei $45°$).`,
+        [
+          'Formel: $\\cos(\\alpha) = \\sin(90°-\\alpha)$.',
+          '$90° - 50° = ?$',
+          'Komplementärer Winkel.',
+        ],
+        {
+          1: '$\\sin(50°) \\ne \\cos(50°)$ — Gleichheit nur bei $45°$.',
+          2: '$\\sin(130°) = \\sin(180°-130°) = \\sin(50°)$ — passt nicht.',
+          3: '$\\sin(90°) = 1$ — konstant, kein funktionaler Zusammenhang.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['komplementaer'] },
+      ),
+      ni(
+        'Gegeben $\\sin(25°) \\approx 0{,}423$. Bestimme $\\cos(65°)$. (3 NK)',
+        0.423, 0.01, '',
+        `**Ansatz:** $\\cos(65°) = \\sin(90°-65°) = \\sin(25°)$.
+
+**Rechnung:** $\\cos(65°) = \\sin(25°) = 0{,}423$.
+
+**Probe:** $65° + 25° = 90°$ ✓.
+
+**Typischer Fehler:** $\\sin(65°)$ statt $\\cos(65°)$ rechnen.`,
+        [
+          'Komplementär: $\\cos(65°) = \\sin(\\ldots)$.',
+          '$90° - 65° = 25°$.',
+          'Wert aus der Angabe ablesen.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['komplementaer'] },
+      ),
+      mc(
+        'Ein Schüler sagt: „Weil $\\cos(\\alpha) = \\sin(90°-\\alpha)$, gilt auch $\\cos(120°) = \\sin(90°-120°) = \\sin(-30°) = -\\sin(30°) = -0{,}5$." Wo liegt der Fehler?',
+        [
+          'Die Rechnung ist an sich richtig. $\\cos(120°) = -1/2$. Kein Fehler — die Formel gilt universell.',
+          'Die Formel gilt nur für Winkel zwischen $0°$ und $90°$.',
+          '$\\sin(-30°) = +0{,}5$, nicht $-0{,}5$.',
+          '$\\cos(120°)$ ist nicht definiert.',
+        ],
+        0,
+        `**Ansatz:** Die Komplementär-Formel ist tatsächlich universell. Der Schüler kommt auf das richtige Ergebnis.
+
+**Rechnung:** $\\cos(120°) = -1/2$ (bekannter Wert im 2. Quadranten).
+
+**Probe:** Direkt: $\\cos(120°) = -\\cos(60°) = -1/2$ ✓. Über Komplementär: $\\sin(-30°) = -\\sin(30°) = -1/2$ ✓.
+
+**Typischer Fehler:** Annehmen, dass die Formel außerhalb von $0°$–$90°$ nicht gilt — sie gilt aber universell, mit den entsprechenden Vorzeichen.`,
+        [
+          'Gilt die Komplementär-Formel universell?',
+          'Berechne $\\cos(120°)$ direkt als Kontrolle.',
+          'Sinus ist ungerade Funktion.',
+        ],
+        {
+          1: 'Die Formel gilt für alle $\\alpha$, nicht nur $0°$–$90°$.',
+          2: '$\\sin(-30°) = -\\sin(30°) = -0{,}5$ (ungerade Funktion).',
+          3: '$\\cos(120°)$ ist selbstverständlich definiert — $-0{,}5$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['komplementaer'] },
+      ),
+      ni(
+        'Berechne $\\sin(30°) + \\cos(60°)$ (beide Grundwerte kombiniert).',
+        1, 0.001, '',
+        `**Ansatz:** Beide sind gleich: $\\sin(30°) = \\cos(60°) = 1/2$ (Komplementär-Regel).
+
+**Rechnung:** $1/2 + 1/2 = 1$.
+
+**Probe:** $\\sin(30°) = \\cos(90°-30°) = \\cos(60°)$, also zwei gleiche Werte.
+
+**Typischer Fehler:** Werte verschieden einsetzen: $1/2 + 1/\\sqrt{3} = $ falsch.`,
+        [
+          'Komplementär: $\\sin(30°)$ und $\\cos(60°)$ gleich.',
+          'Beide Werte: $1/2$.',
+          'Summe.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['komplementaer', 'grundwerte-sin'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // trig-1-4 — Vorzeichen und Quadranten  (3 subGoals)
   // Je 5 Aufgaben = 15 Goal-Tasks
   // ────────────────────────────────────────────────────────────────────────
   'trig-1-4': {
-
-    // ── [0] Quadranten I-IV, Vorzeichen von sin (y) und cos (x) ───────────
+    // ── [0] Quadranten I-IV und Vorzeichen-Regel ASTC ─────────────────────
     0: [
-      mc(
-        'In welchem Quadranten gilt $\\sin\\alpha < 0$ UND $\\cos\\alpha > 0$?',
+      tf(
+        'Im 2. Quadranten ($90°$ bis $180°$) ist $\\sin > 0$ und $\\cos < 0$.',
+        true,
+        `**Ansatz:** ASTC-Regel: "All Students Take Calculus". Im 2. Quadranten ist nur $\\sin$ positiv.
+
+**Rechnung:** Am Einheitskreis im 2. Quadranten: $y > 0$ (also $\\sin > 0$), $x < 0$ (also $\\cos < 0$).
+
+**Probe:** $\\sin(120°) = +\\sqrt{3}/2 > 0$, $\\cos(120°) = -1/2 < 0$ ✓.
+
+**Typischer Fehler:** Quadranten und Grenzen verwechseln. Der 2. Quadrant beginnt bei $90°$, nicht bei $180°$.`,
         [
-          '4. Quadrant ($270°$–$360°$)',
-          '1. Quadrant ($0°$–$90°$)',
-          '2. Quadrant ($90°$–$180°$)',
-          '3. Quadrant ($180°$–$270°$)',
+          'ASTC: Quadrant 2 → "Sinus positiv".',
+          'Am Einheitskreis: $x$ ist $\\cos$, $y$ ist $\\sin$.',
+          '2. Quadrant: $x < 0$, $y > 0$.',
         ],
-        0,
-        `**Ansatz:** Punktlage am Einheitskreis nach Vorzeichen bestimmen.
-
-**Rechnung:** $\\sin < 0$ heißt $y < 0$ (unterhalb x-Achse); $\\cos > 0$ heißt $x > 0$ (rechts der y-Achse). Beide Bedingungen zusammen: rechts-unten = 4. Quadrant.
-
-**Probe:** $\\alpha = 300°$ (4. Q): $\\sin(300°) = -\\tfrac{\\sqrt{3}}{2} < 0$ ✓; $\\cos(300°) = \\tfrac{1}{2} > 0$ ✓.
-
-**Typischer Fehler:** Die ASTC-Regel falsch interpretieren — im 4. Quadrant ist **nur** $\\cos$ positiv, $\\sin$ und $\\tan$ sind negativ.`,
-        [
-          '$\\sin = y$-Koordinate; $\\cos = x$-Koordinate.',
-          '$y < 0$ (unten), $x > 0$ (rechts): welcher Quadrant?',
-          'ASTC: nur Cos positiv = 4. Quadrant.',
-        ],
-        {
-          1: '1. Q: beide positiv (ASTC: All). Hier aber $\\sin < 0$ verlangt.',
-          2: '2. Q: nur Sinus positiv. Hier müsste $\\cos > 0$ sein, was im 2. Q aber nicht gilt.',
-          3: '3. Q: beide negativ (nur Tangens positiv). Hier ist $\\cos < 0$, nicht $> 0$.',
-        },
+        { stage: 'recognize', subGoal: 0, uses: ['vorzeichen-ASTC'] },
       ),
-      ni(
-        'In welchem Quadranten liegt der Winkel $\\alpha = 250°$? (Antwort als Zahl 1, 2, 3 oder 4.)',
-        3, 0, '',
-        `**Ansatz:** Quadrantengrenzen $0°$–$90°$–$180°$–$270°$–$360°$.
+      mc(
+        'In welchem Quadranten liegt der Winkel $225°$?',
+        ['3. Quadrant', '2. Quadrant', '4. Quadrant', '1. Quadrant'],
+        0,
+        `**Ansatz:** Quadrantengrenzen: I ($0°$–$90°$), II ($90°$–$180°$), III ($180°$–$270°$), IV ($270°$–$360°$).
 
-**Rechnung:** $180° < 250° < 270°$ → 3. Quadrant.
+**Rechnung:** $180° < 225° < 270°$ → **3. Quadrant**.
 
-**Probe:** $\\sin(250°) \\approx -0{,}94 < 0$; $\\cos(250°) \\approx -0{,}34 < 0$. Beide negativ → 3. Q ✓.
+**Probe:** $\\sin(225°) = -\\sin(45°) < 0$, $\\cos(225°) = -\\cos(45°) < 0$ — beide negativ, wie im 3. Quadranten erwartet (ASTC: "Take" = nur Tangens positiv).
 
-**Typischer Fehler:** Zwischen 2. und 3. Q vertauschen — 2. Q endet bei $180°$, 3. Q beginnt ab $180°$.`,
+**Typischer Fehler:** Winkel in Grad falsch auf die Quadranten verteilen.`,
         [
-          '$90°, 180°, 270°, 360°$: Quadrantengrenzen.',
-          '$250°$ liegt zwischen $180°$ und $270°$.',
+          'Quadrantengrenzen auswendig.',
+          '$180° < 225° < 270°$.',
           '3. Quadrant.',
         ],
+        {
+          1: '$225° > 180°$, also nicht im 2. Quadranten.',
+          2: '$225° < 270°$, also nicht im 4. Quadranten.',
+          3: '$225° > 90°$, also nicht im 1. Quadranten.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['vorzeichen-ASTC'] },
       ),
-      tf(
-        'Im 3. Quadrant ist der Tangens positiv.',
-        true,
-        `**Ansatz:** ASTC-Regel: im 3. Quadrant ist nur **Tangens** positiv.
+      mc(
+        'Bestimme das Vorzeichen von $\\cos(200°)$.',
+        ['negativ', 'positiv', 'Null', 'nicht definiert'],
+        0,
+        `**Ansatz:** $200°$ liegt im 3. Quadranten. ASTC: im 3. Quadranten ist nur $\\tan > 0$, $\\sin$ und $\\cos$ sind negativ.
 
-**Rechnung:** $\\tan = \\sin/\\cos$. Im 3. Q: $\\sin < 0$ und $\\cos < 0$. Ein Bruch aus zwei negativen Zahlen ist **positiv**. Also $\\tan > 0$.
+**Rechnung:** $\\cos(200°) < 0$.
 
-**Probe:** $\\tan(225°) = \\sin(225°)/\\cos(225°) = (-\\tfrac{\\sqrt{2}}{2}) / (-\\tfrac{\\sqrt{2}}{2}) = +1$ ✓.
+**Probe:** Direkt: $\\cos(200°) = -\\cos(20°) \\approx -0{,}94$ — negativ ✓.
 
-**Typischer Fehler:** Annehmen, alle Funktionen im 3. Q seien negativ — $\\sin$ und $\\cos$ ja, aber $\\tan$ positiv.`,
+**Typischer Fehler:** Vorzeichen vergessen und einfach $\\cos(200°) = \\cos(20°)$ rechnen.`,
         [
-          'ASTC: nur T positiv im 3. Q.',
-          '$\\tan = \\sin / \\cos$.',
-          'Minus durch Minus ist Plus.',
+          'Welcher Quadrant für $200°$?',
+          '3. Quadrant: ASTC → nur $\\tan$ positiv.',
+          'Also $\\cos < 0$.',
         ],
+        {
+          1: 'Im 3. Quadranten ist $\\cos$ negativ.',
+          2: '$\\cos(200°) \\ne 0$ — das wäre nur bei $90°$ oder $270°$.',
+          3: '$\\cos$ ist für alle Winkel definiert.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['vorzeichen-ASTC'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $\\sin(150°) = -0{,}5$ und begründet: „$150°$ ist größer als $90°$, also negativ." Wo liegt der Fehler?',
+        [
+          '$150°$ liegt im 2. Quadranten, wo $\\sin$ positiv ist (ASTC). Korrekt: $\\sin(150°) = +0{,}5$.',
+          '$\\sin$ ist ab $180°$ negativ, ab $90°$ ist es noch positiv.',
+          '$\\sin(150°)$ ist tatsächlich $-0{,}5$.',
+          'Der Schüler müsste den Referenzwinkel verwenden.',
+        ],
+        0,
+        `**Ansatz:** Das Vorzeichen hängt vom Quadranten ab, nicht pauschal von "$>90°$".
+
+**Rechnung:** $150° \\in $ 2. Quadrant (zwischen $90°$ und $180°$). Dort ist $\\sin > 0$. $\\sin(150°) = \\sin(180°-150°) = \\sin(30°) = +0{,}5$.
+
+**Probe:** Am Einheitskreis: $y$-Koordinate bei $150°$ ist positiv.
+
+**Typischer Fehler:** Pauschales "größere Winkel sind negativ" statt ASTC-Regel anwenden.`,
+        [
+          'Welcher Quadrant für $150°$?',
+          'ASTC: 2. Quadrant → $\\sin > 0$.',
+          'Am Einheitskreis: $y$-Wert bei $150°$.',
+        ],
+        {
+          1: 'ASTC verteilt das Vorzeichen pro Quadrant. Nicht erst ab $180°$, sondern schon im 3. Quadranten wird $\\sin$ negativ.',
+          2: '$\\sin(150°) = +0{,}5$, nicht $-0{,}5$.',
+          3: 'Der Referenzwinkel ist nützlich, aber der Schüler hat hier das VORZEICHEN falsch.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['vorzeichen-ASTC'] },
       ),
       matching(
-        'Ordne jeden Quadrant dem Vorzeichenmuster von ($\\sin, \\cos, \\tan$) zu.',
+        'Ordne jedem Quadranten die ASTC-Eigenschaft zu.',
         [
-          { left: '1. Quadrant',     right: '$(+, +, +)$' },
-          { left: '2. Quadrant',     right: '$(+, -, -)$' },
-          { left: '3. Quadrant',     right: '$(-, -, +)$' },
-          { left: '4. Quadrant',     right: '$(-, +, -)$' },
+          { left: '1. Quadrant (0°–90°)',   right: 'All: $\\sin, \\cos, \\tan$ alle positiv' },
+          { left: '2. Quadrant (90°–180°)', right: 'Students: nur $\\sin$ positiv' },
+          { left: '3. Quadrant (180°–270°)', right: 'Take: nur $\\tan$ positiv' },
+          { left: '4. Quadrant (270°–360°)', right: 'Calculus: nur $\\cos$ positiv' },
         ],
-        `**Ansatz:** ASTC-Regel: All, Sin, Tan, Cos positiv.
+        `**Ansatz:** Merkhilfe "All Students Take Calculus" — jeder Buchstabe zeigt, welche Funktion im jeweiligen Quadrant positiv ist.
 
-**Rechnung:** Pro Quadrant welche Funktion(en) positiv:
-· 1. Q: alle drei.
-· 2. Q: nur Sin.
-· 3. Q: nur Tan.
-· 4. Q: nur Cos.
+**Rechnung:** I: alle positiv. II: nur $\\sin$. III: nur $\\tan$. IV: nur $\\cos$.
 
-Alle anderen Vorzeichen sind negativ.
+**Probe:** Über das Vorzeichen von $x$ (Kosinus) und $y$ (Sinus) auf dem Einheitskreis: $\\tan = \\sin/\\cos$ — beide negativ (Quadrant III) → $\\tan > 0$.
 
-**Probe:** $\\tan$-Vorzeichen = $\\sin \\cdot \\cos$-Vorzeichenprodukt.
-
-**Typischer Fehler:** Reihenfolge der ASTC-Regel verwechseln.`,
+**Typischer Fehler:** Reihenfolge der Quadranten gegen den Uhrzeigersinn nicht eingehalten.`,
         [
-          'ASTC-Merkspruch gegen Uhrzeigersinn.',
-          'In jedem Q ist nur die genannte Funktion positiv.',
-          'Tan = Sin / Cos.',
+          'ASTC = All Students Take Calculus.',
+          'Reihenfolge gegen Uhrzeigersinn.',
+          'Nur $\\sin, \\tan, \\cos$ werden pro Quadrant geprüft.',
         ],
-      ),
-      sorting(
-        'Bringe die Schritte zur Bestimmung der Vorzeichen von $\\sin(200°)$ und $\\cos(200°)$ in die richtige Reihenfolge.',
-        [
-          'Quadrant identifizieren: $180° < 200° < 270°$ → 3. Quadrant',
-          'ASTC-Regel: im 3. Q ist nur Tangens positiv',
-          '$\\sin(200°) < 0$ und $\\cos(200°) < 0$',
-          'Kontrolle: $200° = 180° + 20°$; $\\sin(200°) = -\\sin(20°) < 0$ ✓',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Quadrant → ASTC → Vorzeichen → Kontrolle über Reduktionsformel.
-
-**Rechnung:** Beide negativ.
-
-**Probe:** $\\sin(200°) \\approx -0{,}342$, $\\cos(200°) \\approx -0{,}940$ ✓.
-
-**Typischer Fehler:** ASTC-Regel ohne Quadrantenbestimmung anwenden.`,
-        [
-          'Quadrant zuerst.',
-          'Dann ASTC.',
-          'Dann Vorzeichen.',
-        ],
+        { stage: 'transfer', subGoal: 0, uses: ['vorzeichen-ASTC'] },
       ),
     ],
 
-    // ── [1] Symmetrien: sin(180°-α) = sin α, cos(180°-α) = -cos α ─────────
+    // ── [1] Symmetrien: sin(180°-α) = sin α, cos(180°-α) = -cos α ──────────
     1: [
-      mc(
-        'Welche Identität gilt für jeden Winkel $\\alpha$?',
+      tf(
+        'Es gilt $\\sin(180° - \\alpha) = \\sin(\\alpha)$ für jeden Winkel $\\alpha$.',
+        true,
+        `**Ansatz:** Spiegelung am 90°-Strahl: der neue Winkel hat dieselbe $y$-Koordinate (Sinus) am Einheitskreis.
+
+**Rechnung:** Graphisch: Punkt bei $\\alpha$ ist $(x, y)$, Punkt bei $180°-\\alpha$ ist $(-x, y)$. Gleiche Höhe → gleicher Sinus.
+
+**Probe:** $\\sin(150°) = \\sin(180°-150°) = \\sin(30°) = 0{,}5$ ✓.
+
+**Typischer Fehler:** Formel mit $\\sin(-\\alpha)$ verwechseln — das wäre Punktspiegelung am Ursprung.`,
         [
-          '$\\sin(180° - \\alpha) = \\sin\\alpha$',
-          '$\\sin(180° - \\alpha) = -\\sin\\alpha$',
-          '$\\cos(180° - \\alpha) = \\cos\\alpha$',
-          '$\\sin(180° - \\alpha) = \\cos\\alpha$',
+          'Spiegelung am $y$-Strahl bei $90°$.',
+          '$y$-Koordinate bleibt gleich.',
+          'Sinus ist $y$-Koordinate.',
         ],
+        { stage: 'recognize', subGoal: 1, uses: ['symmetrie-sin', 'symmetrie-cos'] },
+      ),
+      mc(
+        'Berechne $\\cos(150°)$ mithilfe der Symmetrie-Formel.',
+        ['$-\\dfrac{\\sqrt{3}}{2}$', '$+\\dfrac{\\sqrt{3}}{2}$', '$-\\dfrac{1}{2}$', '$+\\dfrac{1}{2}$'],
         0,
-        `**Ansatz:** Symmetrie des Einheitskreises an der y-Achse.
+        `**Ansatz:** $\\cos(180°-\\alpha) = -\\cos(\\alpha)$. Hier $\\alpha = 30°$.
 
-**Rechnung:** Bei Spiegelung an der y-Achse bleibt die y-Koordinate ($\\sin$) gleich, die x-Koordinate ($\\cos$) wechselt Vorzeichen. Also $\\sin(180° - \\alpha) = \\sin\\alpha$ (positiv bleibt) und $\\cos(180° - \\alpha) = -\\cos\\alpha$ (Vorzeichenwechsel).
+**Rechnung:** $\\cos(150°) = -\\cos(30°) = -\\sqrt{3}/2$.
 
-**Probe:** $\\sin(180° - 30°) = \\sin(150°) = 0{,}5 = \\sin(30°)$ ✓. $\\cos(150°) = -\\cos(30°) \\approx -0{,}866$ ✓.
+**Probe:** $150°$ ist im 2. Quadranten → $\\cos < 0$ (ASTC). Betrag: $\\cos(30°) = \\sqrt{3}/2$. Daraus $-\\sqrt{3}/2$ ✓.
 
-**Typischer Fehler:** Supplementsymmetrie bei Kosinus unverändert lassen — das Minuszeichen ist entscheidend.`,
+**Typischer Fehler:** Vorzeichen vergessen — $+\\sqrt{3}/2$ statt $-\\sqrt{3}/2$.`,
         [
-          'Spiegelung an der y-Achse.',
-          '$\\sin$ (y-Koordinate) bleibt.',
-          '$\\cos$ (x-Koordinate) wechselt Vorzeichen.',
+          'Formel: $\\cos(180°-\\alpha) = -\\cos(\\alpha)$.',
+          '$\\alpha = 30°$.',
+          '$\\cos(30°) = \\sqrt{3}/2$, dann negieren.',
         ],
         {
-          1: '$\\sin$ bleibt unverändert bei Spiegelung an y-Achse, keine Vorzeichenwechsel.',
-          2: '$\\cos$ wechselt Vorzeichen: $\\cos(180° - \\alpha) = -\\cos\\alpha$, nicht $+\\cos\\alpha$.',
-          3: '$\\sin$ und $\\cos$ werden durch Supplementwinkel nicht ineinander überführt — das ist die Kofunktionsregel ($\\sin(90° - \\alpha) = \\cos\\alpha$).',
+          1: 'Vorzeichen fehlt — $150°$ liegt im 2. Quadranten ($\\cos < 0$).',
+          2: '$-1/2$ wäre $\\cos(120°)$, nicht $\\cos(150°)$.',
+          3: '$+1/2$ wäre $\\cos(60°)$, hat mit $150°$ nichts zu tun.',
         },
+        { stage: 'apply-guided', subGoal: 1, uses: ['symmetrie-sin'] },
       ),
       ni(
-        'Berechne $\\sin(170°)$ ohne Taschenrechner, indem du die Symmetrie ausnutzt. (Ergebnis auf 4 Nachkommastellen — verwende $\\sin(10°) \\approx 0{,}1736$.)',
-        0.1736, 0.001, '',
-        `**Ansatz:** Supplementsymmetrie: $\\sin(180° - \\alpha) = \\sin\\alpha$ mit $\\alpha = 10°$.
+        'Berechne $\\cos(135°)$ mithilfe der Symmetrie-Formel. (3 NK)',
+        -0.707, 0.01, '',
+        `**Ansatz:** $\\cos(180°-\\alpha) = -\\cos(\\alpha)$ mit $\\alpha = 45°$.
 
-**Rechnung:** $\\sin(170°) = \\sin(180° - 10°) = \\sin(10°) \\approx 0{,}1736$.
+**Rechnung:** $\\cos(135°) = -\\cos(45°) = -\\sqrt{2}/2 \\approx -0{,}707$.
 
-**Probe:** Taschenrechner: $\\sin(170°) \\approx 0{,}1736$ ✓.
+**Probe:** $135°$ im 2. Quadranten → negativ. Betrag $\\approx 0{,}707$ (Grundwert) ✓.
 
-**Typischer Fehler:** Minuszeichen wie bei $\\cos$ einfügen — bei $\\sin$ bleibt das Vorzeichen.`,
+**Typischer Fehler:** Vorzeichen vergessen.`,
         [
-          'Schreibe $170° = 180° - 10°$.',
-          'Formel: $\\sin(180° - \\alpha) = \\sin\\alpha$.',
-          'Kein Vorzeichenwechsel bei Sinus.',
+          'Referenzwinkel $180°-135° = 45°$.',
+          '$\\cos(45°) = \\sqrt{2}/2$.',
+          '2. Quadrant → negativ.',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['symmetrie-cos'] },
       ),
-      tf(
-        'Für alle Winkel $\\alpha$ gilt $\\cos(180° - \\alpha) = -\\cos\\alpha$.',
-        true,
-        `**Ansatz:** Spiegelung des Einheitskreispunkts an der y-Achse.
-
-**Rechnung:** Punkt bei $\\alpha$: $(x, y) = (\\cos\\alpha, \\sin\\alpha)$. Punkt bei $180° - \\alpha$: $(-x, y)$ (y-Achsen-Spiegelung). Also $\\cos(180° - \\alpha) = -x = -\\cos\\alpha$.
-
-**Probe:** $\\cos(120°) = -\\cos(60°) = -0{,}5$ ✓.
-
-**Typischer Fehler:** Minuszeichen bei $\\sin$ statt bei $\\cos$ einfügen.`,
+      mc(
+        'Ein Schüler rechnet: „$\\sin(180°-120°) = \\sin(60°) = \\sqrt{3}/2$. Also $\\sin(120°) = -\\sqrt{3}/2$, weil das Minus vor der Klammer greift." Wo liegt der Fehler?',
         [
-          'Spiegelung an y-Achse.',
-          'x-Koordinate wechselt Vorzeichen.',
-          '$\\cos$ ist x-Koordinate.',
+          'Die Formel ist $\\sin(180°-\\alpha) = +\\sin(\\alpha)$, ohne Vorzeichenwechsel. Korrekt: $\\sin(120°) = +\\sqrt{3}/2$.',
+          'Die Rechnung ist richtig — $\\sin(120°) = -\\sqrt{3}/2$.',
+          'Er hätte $\\sin(180°+\\alpha)$ statt $\\sin(180°-\\alpha)$ nehmen müssen.',
+          'Sinus-Symmetrie gilt gar nicht bei $120°$.',
         ],
+        0,
+        `**Ansatz:** Sinus: spiegelsymmetrisch am $90°$-Strahl, keine Vorzeichenumkehr.
+
+**Rechnung:** Korrekt: $\\sin(120°) = \\sin(180°-120°) = \\sin(60°) = +\\sqrt{3}/2$ (positive im 2. Quadranten, ASTC-konform).
+
+**Probe:** ASTC: 2. Quadrant → $\\sin > 0$. Schüler-Wert $-\\sqrt{3}/2$ verletzt das.
+
+**Typischer Fehler:** Die Formel aus "Minus vor Klammer" falsch übertragen. Die Formel selbst hat KEIN Minus (im Gegensatz zu $\\cos$).`,
+        [
+          'Sinus-Formel: $\\sin(180°-\\alpha) = \\sin(\\alpha)$ (gleich, kein Minus).',
+          'Kosinus hingegen: $\\cos(180°-\\alpha) = -\\cos(\\alpha)$.',
+          'ASTC: Vorzeichen per Quadrant prüfen.',
+        ],
+        {
+          1: '$-\\sqrt{3}/2$ im 2. Quadranten wäre für $\\sin$ falsch (ASTC).',
+          2: '$\\sin(180°+\\alpha) = -\\sin(\\alpha)$ — andere Formel.',
+          3: 'Sinus-Symmetrie gilt universell.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['symmetrie-sin', 'symmetrie-cos'] },
       ),
-      matching(
-        'Ordne jeder Symmetrie den passenden Ausdruck zu.',
+      ni(
+        'Berechne $\\sin(150°) + \\cos(135°)$. (3 NK)',
+        -0.207, 0.01, '',
+        `**Ansatz:** Beide via Symmetrie.
+
+**Rechnung:** $\\sin(150°) = \\sin(30°) = 0{,}5$. $\\cos(135°) = -\\cos(45°) = -\\sqrt{2}/2 \\approx -0{,}707$. Summe $\\approx 0{,}5 - 0{,}707 = -0{,}207$.
+
+**Probe:** Vorzeichen stimmen (ASTC).
+
+**Typischer Fehler:** Beide gleich negativ machen und zu $-0{,}5 - 0{,}707 = -1{,}207$ kommen.`,
         [
-          { left: '$\\sin(-\\alpha)$',          right: '$-\\sin\\alpha$ (Punktsymmetrie zu O)' },
-          { left: '$\\cos(-\\alpha)$',          right: '$\\cos\\alpha$ (Achsensymmetrie zu x-Achse)' },
-          { left: '$\\sin(180° - \\alpha)$',    right: '$\\sin\\alpha$ (Achsensymmetrie zu y-Achse)' },
-          { left: '$\\cos(180° - \\alpha)$',    right: '$-\\cos\\alpha$ (Achsensymmetrie zu y-Achse)' },
+          'Symmetrie für jeden Summanden einzeln.',
+          '$\\sin(150°) = +0{,}5$.',
+          '$\\cos(135°) = -0{,}707$.',
         ],
-        `**Ansatz:** Vier Grund-Symmetrien am Einheitskreis.
-
-**Rechnung:** Jede Symmetrie ist über die Koordinatentransformation erklärbar.
-
-**Probe:** Zahlentest mit $\\alpha = 30°$ für jede Zeile.
-
-**Typischer Fehler:** $\\sin$ und $\\cos$ verwechseln — $\\sin$ ist ungerade (Vorzeichenwechsel bei $-\\alpha$), $\\cos$ ist gerade.`,
-        [
-          'Negation $-\\alpha$: $\\sin$ ungerade, $\\cos$ gerade.',
-          'Supplement $180° - \\alpha$: $\\sin$ bleibt, $\\cos$ kippt.',
-          'Spiegelachse ändert jeweils eine Koordinate.',
-        ],
-      ),
-      sorting(
-        'Bringe die Schritte zur Berechnung von $\\cos(150°)$ über Symmetrie in die richtige Reihenfolge.',
-        [
-          'Schreibe $150° = 180° - 30°$',
-          'Formel: $\\cos(180° - \\alpha) = -\\cos\\alpha$',
-          'Einsetzen: $\\cos(150°) = -\\cos(30°)$',
-          'Grundwert: $\\cos(30°) = \\tfrac{\\sqrt{3}}{2}$, also $\\cos(150°) = -\\tfrac{\\sqrt{3}}{2}$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Symmetrie-Formel → Einsetzen → Grundwert.
-
-**Rechnung:** $\\cos(150°) = -\\tfrac{\\sqrt{3}}{2}$.
-
-**Probe:** Taschenrechner: $\\cos(150°) \\approx -0{,}866$ ✓.
-
-**Typischer Fehler:** Vorzeichenwechsel vergessen oder bei $\\sin$ einfügen.`,
-        [
-          'Supplementdarstellung.',
-          'Formel mit Vorzeichenwechsel für $\\cos$.',
-          'Grundwert einsetzen.',
-        ],
+        { stage: 'transfer', subGoal: 1, uses: ['symmetrie-sin', 'symmetrie-cos'] },
       ),
     ],
 
-    // ── [2] Reduktionsformel: jeden Winkel auf Referenzwinkel 0°-90° ──────
+    // ── [2] Referenzwinkel: Reduktion auf 0°–90° ──────────────────────────
     2: [
-      mc(
-        'Was ist der Referenzwinkel von $225°$?',
+      tf(
+        'Der Referenzwinkel zu $210°$ ist $30°$.',
+        true,
+        `**Ansatz:** Referenzwinkel = spitzer Winkel zur nächsten $x$-Achse.
+
+**Rechnung:** $210°$ im 3. Quadranten. Abstand zu $180°$: $210° - 180° = 30°$. Also Referenzwinkel $30°$.
+
+**Probe:** $\\sin(210°) = -\\sin(30°) = -0{,}5$ ✓ (3. Quadrant → $\\sin < 0$).
+
+**Typischer Fehler:** $360° - 210° = 150°$ rechnen (falsche Nähe-Achse).`,
         [
-          '$45°$',
-          '$135°$',
-          '$225°$',
-          '$315°$',
+          'Referenzwinkel zur NÄCHSTEN $x$-Achse.',
+          '3. Quadrant → Abstand zu $180°$.',
+          '$210° - 180° = 30°$.',
         ],
+        { stage: 'recognize', subGoal: 2, uses: ['referenzwinkel'] },
+      ),
+      mc(
+        'Bestimme den Referenzwinkel zu $300°$.',
+        ['$60°$', '$120°$', '$300°$', '$-60°$'],
         0,
-        `**Ansatz:** Referenzwinkel ist der Abstand zur **nächsten** x-Achse (bei $0°$ oder $180°$).
+        `**Ansatz:** $300°$ im 4. Quadranten. Nähe zur $x$-Achse bei $360°$.
 
-**Rechnung:** $225°$ liegt im 3. Quadrant. Abstand zur $180°$-Achse: $225° - 180° = 45°$.
+**Rechnung:** $360° - 300° = 60°$.
 
-**Probe:** $|\\sin(225°)| = \\sin(45°) = \\tfrac{\\sqrt{2}}{2}$ ✓. $|\\cos(225°)| = \\cos(45°)$ ✓.
+**Probe:** $\\sin(300°) = -\\sin(60°) = -\\sqrt{3}/2$ (4. Quadrant → $\\sin < 0$).
 
-**Typischer Fehler:** Abstand zur y-Achse nehmen oder die ganze Zahl als Referenz nehmen.`,
+**Typischer Fehler:** $300° - 180° = 120°$ nehmen (falsche Achse).`,
         [
-          'Abstand zur nächsten x-Achse.',
-          'Im 3. Q: Abstand zu $180°$.',
-          '$225° - 180° = ?$',
+          '4. Quadrant: Referenz zu $360°$.',
+          '$360 - 300 = ?$',
+          'Referenzwinkel immer positiv und $\\leq 90°$.',
         ],
         {
-          1: '$135°$ wäre der Winkel zu y-Achse (270°); falsche Achsenwahl.',
-          2: '$225°$ ist der Original-Winkel, nicht der Referenzwinkel.',
-          3: '$315°$ wäre der Winkel zur $360°$-Vollumdrehung, nicht zur x-Achse.',
+          1: '$120°$ wäre Referenz zu $180°$ — falsche Achse.',
+          2: '$300°$ ist der Originalwinkel selbst, nicht der Referenzwinkel.',
+          3: 'Referenzwinkel sind immer positiv ($0°$–$90°$).',
         },
+        { stage: 'apply-guided', subGoal: 2, uses: ['referenzwinkel'] },
       ),
       ni(
-        'Berechne $\\sin(330°)$ mit der Reduktionsformel. Gib das Ergebnis als Dezimalzahl an.',
-        -0.5, 0.01, '',
-        `**Ansatz:** $330°$ im 4. Q; Referenzwinkel $360° - 330° = 30°$. Im 4. Q: $\\sin < 0$.
+        'Bestimme den Referenzwinkel zu $225°$ (in Grad).',
+        45, 0, '°',
+        `**Ansatz:** $225°$ im 3. Quadranten. Abstand zu $180°$.
 
-**Rechnung:** $\\sin(330°) = -\\sin(30°) = -0{,}5$.
+**Rechnung:** $225° - 180° = 45°$.
 
-**Probe:** Taschenrechner: $\\sin(330°) = -0{,}5$ ✓.
+**Probe:** $\\sin(225°) = -\\sin(45°) = -\\sqrt{2}/2 \\approx -0{,}707$ ✓.
 
-**Typischer Fehler:** Vorzeichen vergessen — im 4. Q ist $\\sin$ negativ (ASTC).`,
+**Typischer Fehler:** $225° - 90° = 135°$ rechnen (falsche Achse).`,
         [
-          'Referenzwinkel: $360° - 330° = 30°$.',
-          '4. Q: Vorzeichen von $\\sin$ negativ.',
-          '$-\\sin(30°) = ?$',
+          '3. Quadrant: Referenz zu $180°$.',
+          '$225 - 180 = ?$',
+          'Immer spitzer Winkel.',
         ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['referenzwinkel'] },
       ),
-      tf(
-        'Der Referenzwinkel ist immer positiv und liegt zwischen $0°$ und $90°$.',
-        true,
-        `**Ansatz:** Definition des Referenzwinkels.
-
-**Rechnung:** Per Konvention ist der Referenzwinkel der **spitzwinklige** Winkel zwischen Schenkel und x-Achse, daher immer $0° \\le \\theta_{\\text{ref}} \\le 90°$.
-
-**Probe:** Egal in welchem Quadrant: $\\theta_{\\text{ref}} \\in [0°, 90°]$ per Konstruktion.
-
-**Typischer Fehler:** Negative oder Winkel $>90°$ als Referenz angeben.`,
+      mc(
+        'Ein Schüler bestimmt den Referenzwinkel zu $100°$ als $100° - 90° = 10°$. Wo liegt der Fehler?',
         [
-          'Referenzwinkel: immer spitz.',
-          'Abstand zur nächsten x-Achse.',
-          'Zwischen 0° und 90°.',
+          'Referenzwinkel werden zur $x$-Achse ($0°$ oder $180°$) gemessen, nicht zur $y$-Achse. Korrekt: $180° - 100° = 80°$.',
+          'Die Rechnung stimmt — Referenz zu $90°$ ist korrekt.',
+          'Er hätte $100°$ direkt übernehmen müssen.',
+          '$10°$ ist richtig — der Schüler hat einfach klein gemacht.',
         ],
+        0,
+        `**Ansatz:** Der Referenzwinkel wird immer zur nächsten $x$-Achse (nicht $y$-Achse) gemessen.
+
+**Rechnung:** $100°$ im 2. Quadranten. Nächste $x$-Achse: $180°$. Referenz: $180° - 100° = 80°$.
+
+**Probe:** $\\sin(100°) = \\sin(80°) \\approx 0{,}985$ (nah bei $1$, weil $100°$ nah bei $90°$ — dem Maximum).
+
+**Typischer Fehler:** $y$-Achse bei $90°$ als Bezug nehmen — aber Referenzwinkel verwendet $x$-Achsen.`,
+        [
+          'Wohin wird der Referenzwinkel gemessen?',
+          'Zur nächsten $x$-Achse ($0°/180°$), nicht zu $90°$.',
+          '$100°$ im 2. Quadrant → zu $180°$.',
+        ],
+        {
+          1: 'Die Bezugsachse ist falsch — $x$- nicht $y$-Achse.',
+          2: '$100°$ ist kein Referenzwinkel (muss $\\leq 90°$ sein).',
+          3: '$10°$ passt zu keiner Sinus/Kosinus-Symmetrie von $100°$.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['referenzwinkel'] },
       ),
-      matching(
-        'Ordne jedem Winkel seinen Referenzwinkel zu.',
+      ni(
+        'Gegeben: $\\sin(40°) \\approx 0{,}643$. Berechne $\\sin(220°)$ via Referenzwinkel. (3 NK)',
+        -0.643, 0.01, '',
+        `**Ansatz:** $220°$ im 3. Quadranten. Referenzwinkel: $220° - 180° = 40°$. Vorzeichen: 3. Quadrant → $\\sin < 0$.
+
+**Rechnung:** $\\sin(220°) = -\\sin(40°) \\approx -0{,}643$.
+
+**Probe:** ASTC: 3. Quadrant → $\\sin < 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen.`,
         [
-          { left: '$130°$',    right: '$50°$' },
-          { left: '$200°$',    right: '$20°$' },
-          { left: '$290°$',    right: '$70°$' },
-          { left: '$95°$',     right: '$85°$' },
+          'Referenzwinkel bestimmen.',
+          'Vorzeichen über ASTC/Quadrant.',
+          'Wert aus der Angabe.',
         ],
-        `**Ansatz:** Je nach Quadrant: Abstand zur nächsten x-Achse.
-
-**Rechnung:**
-· 2. Q: $180° - $ Winkel.
-· 3. Q: Winkel $- 180°$.
-· 4. Q: $360° - $ Winkel.
-· $130°$: $180 - 130 = 50$.
-· $200°$: $200 - 180 = 20$.
-· $290°$: $360 - 290 = 70$.
-· $95°$: $180 - 95 = 85$.
-
-**Probe:** Alle Referenzwinkel zwischen $0°$ und $90°$.
-
-**Typischer Fehler:** Formel pro Quadrant nicht auseinanderhalten.`,
-        [
-          'Quadrant identifizieren.',
-          'Abstand zur nächsten x-Achse.',
-          'Bei 2./3. Q: $180°$ als Bezug; bei 4. Q: $360°$.',
-        ],
-      ),
-      sorting(
-        'Bringe die Schritte zur Berechnung von $\\cos(210°)$ in die richtige Reihenfolge.',
-        [
-          'Quadrant: $180° < 210° < 270°$ → 3. Quadrant',
-          'Referenzwinkel: $210° - 180° = 30°$',
-          'Vorzeichen im 3. Q: $\\cos < 0$',
-          'Ergebnis: $\\cos(210°) = -\\cos(30°) = -\\tfrac{\\sqrt{3}}{2}$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Quadrant → Referenzwinkel → Vorzeichen → Grundwert.
-
-**Rechnung:** $\\cos(210°) = -\\tfrac{\\sqrt{3}}{2} \\approx -0{,}866$.
-
-**Probe:** Taschenrechner bestätigt.
-
-**Typischer Fehler:** Vorzeichenschritt überspringen.`,
-        [
-          'Quadrant zuerst.',
-          'Referenzwinkel aus Abstand zur x-Achse.',
-          'Vorzeichen per ASTC.',
-        ],
+        { stage: 'transfer', subGoal: 2, uses: ['referenzwinkel', 'vorzeichen-ASTC'] },
       ),
     ],
   },
+
 
   // ────────────────────────────────────────────────────────────────────────
   // trig-2-1 — Der Einheitskreis  (4 subGoals)
