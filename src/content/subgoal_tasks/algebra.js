@@ -27,17 +27,37 @@
 //
 // ═══════════════════════════════════════════════════════════════════════════
 
-import { mc, ni, tf, matching, sorting } from './_helpers'
+import { mc, ni, tf, matching, sorting, tag } from './_helpers'
 
 export const algebraSubGoalTasks = {
 
   // ───────────────────────────────────────────────────────────────────────
   // alg-0-1 — Grundrechnen, Klammern & Vorrang  (4 subGoals)
-  // Je Sub-Goal 3 Aufgaben, verschiedene Typen → 12 Goal-Tasks
+  // 21 Matrix-Aufgaben mit pedagogy-Tags (stage × subGoal × type × uses),
+  // exakt nach `lesson.blueprint.taskPlan` in unit0_rechnen_brueche.js.
   // ───────────────────────────────────────────────────────────────────────
   'alg-0-1': {
-    // [0] Vorrangregel Punkt-vor-Strich
+    // [0] Vorrangregel Punkt-vor-Strich (concepts: prio-basic, prio-potenz)
     0: [
+      // Zeile 1: recognize · true-false · uses=[prio-basic]
+      tf(
+        'Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Der Ausdruck $3 + 4 \\cdot 2$ ergibt $11$.',
+        true,
+        `**Ansatz:** Punkt-vor-Strich: Multiplikation wird vor Addition gerechnet.
+
+**Rechnung:** Erst $4 \\cdot 2 = 8$, dann $3 + 8 = 11$.
+
+**Probe:** Klammern zur Verdeutlichung: $3 + (4 \\cdot 2) = 3 + 8 = 11$. ✓
+
+**Typischer Fehler:** Von links nach rechts $(3+4) \\cdot 2 = 14$ — das ignoriert die Vorrangregel komplett.`,
+        [
+          'Welche Operation hat höheren Rang — $+$ oder $\\cdot$?',
+          '$4 \\cdot 2$ zuerst.',
+          'Dann $3 + 8 = ?$',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['prio-basic'] },
+      ),
+      // Zeile 2: apply-guided · multiple-choice · uses=[prio-basic]
       mc(
         'Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Berechne $5 - 2 \\cdot 3 + 4$.',
         ['$3$', '$13$', '$-1$', '$5$'],
@@ -59,105 +79,119 @@ export const algebraSubGoalTasks = {
           2: '$-1$ wäre das Zwischenergebnis nach $5 - 2\\cdot 3 = 5-6$; die Addition der $+4$ am Ende fehlt.',
           3: 'Das wäre nur der erste Summand $5$, als wären die restlichen Terme gestrichen.',
         },
+        { stage: 'apply-guided', subGoal: 0, uses: ['prio-basic'] },
       ),
+      // Zeile 3a: apply-independent · number-input · uses=[prio-basic, prio-potenz]
       ni(
-        'Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Berechne $12 : 4 + 3 \\cdot 2$.',
-        9, 0, '',
-        `**Ansatz:** Punktrechnung (: und $\\cdot$) vor Strichrechnung (+/-). Beide Punktoperationen werden von links nach rechts abgearbeitet.
+        'Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Berechne $7 + 3 \\cdot 2^2$.',
+        19, 0, '',
+        `**Ansatz:** Drei Rangstufen: zuerst Potenzrechnung, dann Punktrechnung, dann Strichrechnung.
 
-**Rechnung:** $12:4 = 3$, $3\\cdot 2 = 6$. Dann $3 + 6 = 9$.
+**Rechnung:** $2^2 = 4$. Dann $3 \\cdot 4 = 12$. Dann $7 + 12 = 19$.
 
-**Probe:** Klammern zur Verdeutlichung: $(12:4) + (3\\cdot 2) = 3 + 6 = 9$. ✓
+**Probe:** Mit Klammern: $7 + (3 \\cdot (2^2)) = 7 + (3 \\cdot 4) = 7 + 12 = 19$. ✓
 
-**Typischer Fehler:** Von links nach rechts: $12 : 4 + 3 \\cdot 2 = 3 + 3 \\cdot 2 = 6 \\cdot 2 = 12$ — das vergisst, dass Addition erst NACH allen Punktoperationen kommt.`,
+**Typischer Fehler:** $(7+3) \\cdot 2^2 = 10 \\cdot 4 = 40$ — ignoriert Punkt-vor-Strich. Oder $3 \\cdot 2 = 6$ zuerst (Potenz übersehen): $7 + 6^2 = 7 + 36 = 43$.`,
         [
-          'Zwei Punktoperationen — beide VOR dem Plus.',
-          '$12:4$ und $3\\cdot 2$ separat ausrechnen, dann addieren.',
-          'Division und Multiplikation sind gleichrangig und werden von links nach rechts bearbeitet.',
+          'Drei Ränge: Potenz → Punkt → Strich.',
+          'Erst $2^2$ ausrechnen, dann mit $3$ multiplizieren, dann $7$ addieren.',
+          'Potenz $2^2 = 4$, nicht $2\\cdot 2 = 4$ unterschätzen.',
         ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['prio-basic', 'prio-potenz'] },
       ),
-      tf(
-        'Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Der Ausdruck $8 + 6 : 2$ ergibt $7$.',
-        false,
-        `**Ansatz:** Punkt vor Strich — die Division $6:2$ wird ZUERST gerechnet, dann die Addition.
+      // Zeile 3b: apply-independent · number-input · uses=[prio-basic, prio-potenz]
+      ni(
+        'Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Berechne $5^2 - 2 \\cdot 3 + 4$.',
+        23, 0, '',
+        `**Ansatz:** Potenz zuerst, dann Punktrechnung, zuletzt Strichrechnung von links nach rechts.
 
-**Rechnung:** $6:2 = 3$, dann $8 + 3 = 11$.
+**Rechnung:** $5^2 = 25$. $2 \\cdot 3 = 6$. Dann $25 - 6 + 4 = 19 + 4 = 23$.
 
-**Probe:** Mit Klammern: $8 + (6:2) = 8 + 3 = 11 \\neq 7$.
+**Probe:** Mit Klammern: $(5^2) - (2\\cdot 3) + 4 = 25 - 6 + 4 = 23$. ✓
 
-**Typischer Fehler:** Von links nach rechts: $(8+6):2 = 14:2 = 7$. Das setzt die Addition vor die Division, was die Vorrangregel verletzt.`,
+**Typischer Fehler:** $5^2 - 2 \\cdot 3 = 23 \\cdot 3 = 69$ — Minus und Multiplikation falsch gebündelt. Oder $5 \\cdot 5 - 2 = 23$, dann $\\cdot 3 + 4$ statt Punkt-vor-Strich.`,
         [
-          'Welche Operation steht hier vor welcher in der Rangfolge?',
-          '$6:2$ zuerst, dann die $8$ dazu.',
-          '$8 + 3 = ?$ — nicht $(8+6):2$.',
+          'Potenz zuerst, dann Punkt, dann Strich.',
+          '$5^2 = 25$ und $2\\cdot 3 = 6$ separat hinschreiben.',
+          'Strichrechnung von links nach rechts: $25 - 6 = 19$, $19 + 4 = 23$.',
         ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['prio-basic', 'prio-potenz'] },
       ),
-      matching(
-        'Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Ordne jedem Ausdruck sein Ergebnis zu.',
+      // Zeile 4: error-analysis · multiple-choice · uses=[prio-basic]
+      mc(
+        'Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Ein Schüler rechnet $8 - 2 \\cdot 3 = 18$. Welche Regel hat er ignoriert?',
         [
-          { left: '$10 + 2 \\cdot 5$',     right: '$20$' },
-          { left: '$(10 + 2) \\cdot 5$',   right: '$60$' },
-          { left: '$6 - 4 : 2$',           right: '$4$' },
-          { left: '$(6 - 4) : 2$',         right: '$1$' },
+          'Punkt-vor-Strich: $2\\cdot 3$ wäre zuerst zu rechnen, danach $8-6=2$.',
+          'Klammer-vor-Punkt: es hätte eine Klammer gesetzt werden müssen.',
+          'Strich-vor-Punkt: $-$ hat höheren Rang als $\\cdot$.',
+          'Linearität: man darf Rechenausdrücke nur linear von links nach rechts lesen.',
         ],
-        `**Ansatz:** Punkt-vor-Strich — Multiplikation/Division werden vor Addition/Subtraktion gerechnet. Klammern ändern das, weil sie erzwingen, was zuerst berechnet wird.
+        0,
+        `**Ansatz:** Der Schüler hat offensichtlich $(8-2)\\cdot 3 = 6 \\cdot 3 = 18$ gerechnet — also Subtraktion vor Multiplikation. Das verletzt Punkt-vor-Strich.
 
-**Rechnung:**
-· $10 + 2\\cdot 5 = 10 + 10 = 20$ (Punkt zuerst)
-· $(10+2)\\cdot 5 = 12\\cdot 5 = 60$ (Klammer zuerst)
-· $6 - 4:2 = 6 - 2 = 4$ (Division zuerst)
-· $(6-4):2 = 2:2 = 1$ (Klammer zuerst)
+**Rechnung:** Korrekt: $2 \\cdot 3 = 6$ zuerst, dann $8 - 6 = 2$.
 
-**Probe:** In jedem Paar zeigt sich: Klammer setzt die Strichrechnung VOR die Punktrechnung; ohne Klammer gilt Punkt-vor-Strich.
+**Probe:** Mit Klammern $8 - (2\\cdot 3) = 8 - 6 = 2$. Die Rechnung $18$ erfordert dagegen $(8-2)\\cdot 3$ — das sind zwei völlig verschiedene Ausdrücke.
 
-**Typischer Fehler:** "Gleiche Zahlen müssen gleiches Ergebnis geben" — Klammerung verändert die Auswertungsreihenfolge und damit das Ergebnis grundlegend.`,
+**Typischer Fehler:** Genau dieser hier — "von links nach rechts lesen" statt Vorrang zu beachten. Klassischer Prüfungsfehler.`,
         [
-          'Bei jedem Ausdruck erst Klammer prüfen, dann Punkt-vor-Strich.',
-          'Ohne Klammer: Multiplikation/Division zuerst.',
-          'Mit Klammer: Inhalt der Klammer zuerst ausrechnen.',
+          'Was müsste zuerst passieren — Subtraktion oder Multiplikation?',
+          'Punkt (·) bindet stärker als Strich (− und +).',
+          'Das Ergebnis $18$ entsteht nur, wenn man $(8-2)$ zuerst nimmt — das verletzt die Regel.',
         ],
+        {
+          1: 'Es gibt keine fehlende Klammer — der Fehler liegt darin, dass die bestehende Punkt-Regel umgangen wurde.',
+          2: 'Das wäre genau umgekehrt zur echten Regel. Strich hat NIEDRIGEREN Rang als Punkt, nicht höheren.',
+          3: 'Rechenausdrücke sind gerade NICHT linear zu lesen — Rangordnung regelt die Reihenfolge.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['prio-basic'] },
       ),
+      // Zeile 5: transfer · sorting · uses=[prio-basic, prio-potenz]
       sorting(
-        'Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Bringe die Schritte zur Auswertung von $18 - 4 \\cdot 3 + 2$ in die richtige Reihenfolge.',
+        'Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Bringe die Schritte zur Auswertung von $2 + 3^2 \\cdot 4 - 5$ in die richtige Reihenfolge.',
         [
-          'Punktrechnung zuerst: $4 \\cdot 3 = 12$',
-          'Term durch Zwischenergebnis ersetzen: $18 - 12 + 2$',
-          'Strichrechnung von links nach rechts: $18 - 12 = 6$',
-          'Weiter linear: $6 + 2 = 8$',
+          'Potenzrechnung zuerst: $3^2 = 9$',
+          'Punktrechnung: $9 \\cdot 4 = 36$',
+          'Term ersetzen: $2 + 36 - 5$',
+          'Strichrechnung links-nach-rechts: $2 + 36 = 38$, dann $38 - 5 = 33$',
         ],
         [0, 1, 2, 3],
-        `**Ansatz:** Saubere Schritte trennen — erst alle Punktoperationen, dann die Strichrechnung linear von links nach rechts.
+        `**Ansatz:** Drei Rangstufen — Potenz (höchster), Punkt, Strich (niedrigster). Jede Stufe komplett abarbeiten, bevor die nächste folgt.
 
-**Rechnung:** $18 - 4\\cdot 3 + 2 = 18 - 12 + 2 = 6 + 2 = 8$.
+**Rechnung:** $2 + 3^2 \\cdot 4 - 5 = 2 + 9 \\cdot 4 - 5 = 2 + 36 - 5 = 33$.
 
-**Probe:** Mit Klammer zur Verdeutlichung: $18 - (4\\cdot 3) + 2 = 18 - 12 + 2 = 8$. ✓
+**Probe:** Mit expliziten Klammern: $2 + ((3^2) \\cdot 4) - 5 = 2 + 36 - 5 = 33$. ✓
 
-**Typischer Fehler:** $18 - 4 = 14$, dann $14 \\cdot 3 = 42$, dann $42 + 2 = 44$ — ignoriert Punkt-vor-Strich. Oder: $18 - 12 + 2$ als $18 - (12+2) = 4$ missinterpretiert (Strichrechnung ist aber links-nach-rechts, nicht gebündelt).`,
+**Typischer Fehler:** Reihenfolge vertauschen, z. B. erst $2 + 3 = 5$, dann $5^2 \\cdot 4 = 100$ — ignoriert die Potenz-Bindung ganz. Oder $3^2 \\cdot 4 = 144$ (also $12^2$ gerechnet) — aber Potenz bindet nur an die Basis $3$, nicht an $3 \\cdot 4$.`,
         [
-          'Erst alle Punktoperationen ausführen.',
-          'Danach die Strichrechnung linear von links nach rechts.',
-          'Nicht den Fehler machen, $-$ und $+$ zu bündeln — sie sind gleichrangig.',
+          'Drei Rangstufen in absteigender Reihenfolge abarbeiten.',
+          'Potenz immer als Erstes, selbst wenn sie in der Mitte steht.',
+          'Strichrechnung erst ganz am Ende, strikt links nach rechts.',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['prio-basic', 'prio-potenz'] },
       ),
     ],
-    // [1] Minuszeichen vor Klammer auf alle Summanden
+    // [1] Minuszeichen vor Klammer auf alle Summanden (concept: minus-vorklammer)
     1: [
-      ni(
-        'Sub-Goal "Minuszeichen vor Klammer auf alle Summanden anwenden": Berechne $7 - (4 - 9)$.',
-        12, 0, '',
-        `**Ansatz:** Das Minus vor einer Klammer wirkt wie ein Faktor $-1$ und kippt **jedes** Vorzeichen in der Klammer.
+      // Zeile 6: recognize · true-false · uses=[minus-vorklammer]
+      tf(
+        'Sub-Goal "Minuszeichen vor Klammer auf alle Summanden anwenden": Für beliebige Zahlen $a, b, c$ gilt $a - (b + c) = a - b - c$.',
+        true,
+        `**Ansatz:** Das Minus vor der Klammer verteilt sich auf **jeden** Summanden der Klammer. $+b$ wird zu $-b$, $+c$ wird zu $-c$.
 
-**Rechnung:** $7 - (4 - 9) = 7 - 4 + 9 = 12$. Alternativ zuerst Klammer: $4-9 = -5$, dann $7 - (-5) = 7 + 5 = 12$.
+**Rechnung:** $a - (b + c) = a + (-1)(b + c) = a - b - c$.
 
-**Probe:** Einsetzen in $a - (b - c) = a - b + c$ mit $a=7$, $b=4$, $c=9$ gibt $7 - 4 + 9 = 12$. ✓
+**Probe:** Zahlenbeispiel: $10 - (3+4) = 10 - 7 = 3$; rechts: $10 - 3 - 4 = 3$. ✓
 
-**Typischer Fehler:** Minus nur auf den ersten Summanden anwenden: $7 - 4 - 9 = -6$. Das vergisst den Vorzeichenwechsel beim zweiten Summanden.`,
+**Typischer Fehler:** Nur den ersten Summanden negieren: $a - (b+c) = a - b + c$ — klassischer Vorzeichenfehler, der in Algebra-Umformungen häufig auftritt.`,
         [
-          'Was passiert mit **jedem** Vorzeichen in der Klammer, wenn ein Minus davor steht?',
-          'Alternativ die Klammer zuerst ausrechnen — was ergibt $4-9$?',
-          'Achte darauf: auch die $-9$ in der Klammer wird zu $+9$.',
+          'Der Minus-Faktor vor der Klammer wirkt auf JEDEN Summanden.',
+          '$-(b+c) = -b - c$.',
+          'Mit Zahlen nachprüfen: $10 - (3+4) =$ ?',
         ],
+        { stage: 'recognize', subGoal: 1, uses: ['minus-vorklammer'] },
       ),
+      // Zeile 7: apply-guided · multiple-choice · uses=[minus-vorklammer]
       mc(
         'Sub-Goal "Minuszeichen vor Klammer auf alle Summanden anwenden": Welcher Ausdruck ist äquivalent zu $a - (b + c - d)$?',
         ['$a - b - c + d$', '$a - b + c - d$', '$a - b - c - d$', '$a + b - c + d$'],
@@ -179,86 +213,126 @@ export const algebraSubGoalTasks = {
           2: 'Das $-d$ in der Klammer wurde nicht zu $+d$ gekippt; der Minus-Vor-Klammer-Effekt wirkt auch auf den dritten Summanden.',
           3: '$+b$ wurde fälschlich nicht gekippt. Die Struktur $a - (b+c-d) = a - b - c + d$ heißt: alle Vorzeichen IN der Klammer umdrehen.',
         },
+        { stage: 'apply-guided', subGoal: 1, uses: ['minus-vorklammer'] },
       ),
-      sorting(
-        'Sub-Goal "Minuszeichen vor Klammer auf alle Summanden anwenden": Bringe die Schritte zum Vereinfachen von $15 - (4 + 2 - 7)$ in die richtige Reihenfolge.',
+      // Zeile 8: apply-independent · number-input · uses=[minus-vorklammer]
+      ni(
+        'Sub-Goal "Minuszeichen vor Klammer auf alle Summanden anwenden": Berechne $15 - (4 + 2 - 7)$.',
+        16, 0, '',
+        `**Ansatz:** Minus vor Klammer verteilen — alle Vorzeichen in der Klammer kippen.
+
+**Rechnung:** $15 - (4 + 2 - 7) = 15 - 4 - 2 + 7 = 16$. Alternative: Klammer zuerst $4 + 2 - 7 = -1$, dann $15 - (-1) = 16$.
+
+**Probe:** Beide Wege führen zu $16$. ✓
+
+**Typischer Fehler:** $15 - 4 - 2 - 7 = 2$ — das $-7$ in der Klammer wurde nicht zu $+7$ gekippt. Typischer Vorzeichenfehler.`,
         [
-          'Minus auf alle Summanden der Klammer verteilen: $15 - 4 - 2 + 7$',
-          'Gleichartige zusammenfassen: $15 + 7 - 4 - 2 = 22 - 6$',
-          'Abschluss-Subtraktion: $22 - 6 = 16$',
+          'Vor dem Rechnen: Minus verteilen, alle Vorzeichen in der Klammer umdrehen.',
+          'Aus $(4+2-7)$ wird $-4 - 2 + 7$, wenn ein Minus davor steht.',
+          'Alternative: Klammer zuerst ausrechnen, dann subtrahieren.',
         ],
-        [0, 1, 2],
-        `**Ansatz:** Erst das Minus verteilen, dann vereinfachen, dann endgültig rechnen.
-
-**Rechnung:** $15 - (4+2-7) = 15 - 4 - 2 + 7 = 16$.
-
-**Probe:** Klammer erst: $4+2-7 = -1$, dann $15 - (-1) = 16$. ✓
-
-**Typischer Fehler:** In einem Schritt mehrere Operationen gleichzeitig machen und dabei Vorzeichenfehler produzieren.`,
-        [
-          'Erst Verteilung des Minuszeichens, dann Zusammenfassen.',
-          'Jeder Summand in der Klammer kippt sein Vorzeichen.',
-          'Erst alle Pluse, dann alle Minuse — das verringert Fehler.',
-        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['minus-vorklammer'] },
       ),
-      tf(
-        'Sub-Goal "Minuszeichen vor Klammer auf alle Summanden anwenden": Für beliebige Zahlen $a, b, c$ gilt $a - (b - c) = a - b - c$.',
-        false,
-        `**Ansatz:** Minus vor Klammer verteilt sich auf **alle** Summanden — also muss auch das $-c$ das Vorzeichen wechseln.
-
-**Rechnung:** Korrekt ist $a - (b - c) = a - b + c$, nicht $a - b - c$. Das $-c$ in der Klammer wird zu $+c$, weil der Minus davor es nochmal kippt.
-
-**Probe:** Setze $a=10, b=4, c=3$: Links $10 - (4-3) = 10 - 1 = 9$. Behauptung $10 - 4 - 3 = 3 \\neq 9$. Richtig: $10 - 4 + 3 = 9$. ✓
-
-**Typischer Fehler:** Nur den ersten Summanden der Klammer negieren — klassischer Vorzeichenfehler, der zu Folge-Fehlern in Physik und Technik führt.`,
+      // Zeile 9: error-analysis · multiple-choice · uses=[minus-vorklammer]
+      mc(
+        'Sub-Goal "Minuszeichen vor Klammer auf alle Summanden anwenden": Ein Schüler schreibt $a - (b - c) = a - b - c$. Wo liegt der Fehler?',
         [
-          'Kippt das Minus vor der Klammer nur den ersten Summanden — oder alle?',
-          'Teste mit Zahlen: $10 - (4-3) = ?$',
-          'Jedes Vorzeichen in der Klammer wird umgedreht.',
+          'Das $-c$ in der Klammer wurde nicht zu $+c$ gekippt; korrekt ist $a - b + c$.',
+          'Es fehlt eine zusätzliche Klammer — man müsste $a - ((b) - (c))$ schreiben.',
+          'Der Vorzeichenwechsel gilt nur, wenn vor der Klammer ein $+$ steht.',
+          'Keine: die Umformung ist korrekt.',
         ],
+        0,
+        `**Ansatz:** Der Minus-Faktor wirkt auf ALLE Summanden. In der Klammer steht $b$ mit $+$ und $c$ mit $-$. Nach der Verteilung: $-b$ und $+c$.
+
+**Rechnung:** Korrekt: $a - (b - c) = a - b + c$. Der Schüler hat das $-c$ als $-c$ stehen lassen.
+
+**Probe:** Zahlen: $a=10, b=4, c=3$. Links: $10 - (4-3) = 10 - 1 = 9$. Schülerlösung: $10 - 4 - 3 = 3 \\neq 9$. Korrekt: $10 - 4 + 3 = 9$. ✓
+
+**Typischer Fehler:** Genau dieser — nur das Vorzeichen des ersten Summanden in der Klammer wird beachtet, das zweite bleibt unverändert.`,
+        [
+          'Was passiert mit $-c$ in der Klammer, wenn ein Minus davor steht?',
+          'Minus mal Minus ergibt Plus.',
+          'Zahlentest entlarvt den Fehler sofort.',
+        ],
+        {
+          1: 'Eine Extra-Klammer ändert nichts. Das Problem ist, dass ein Vorzeichen in der Klammer nicht mit umgedreht wurde.',
+          2: 'Die Regel gilt immer, wenn vor der Klammer ein $-$ steht. Der Schüler hat sie schlicht nicht auf $-c$ angewandt.',
+          3: 'Die Umformung ist falsch — mit Zahlen einsetzen zeigt die Diskrepanz sofort.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['minus-vorklammer'] },
       ),
+      // Zeile 10: transfer · matching · uses=[minus-vorklammer]
       matching(
-        'Sub-Goal "Minuszeichen vor Klammer auf alle Summanden anwenden": Ordne jedem Ausdruck seine korrekt aufgelöste Form zu.',
+        'Sub-Goal "Minuszeichen vor Klammer auf alle Summanden anwenden": Ordne jedem Klammer-Ausdruck seine korrekt aufgelöste Form zu.',
         [
-          { left: '$5 - (3 - 2)$',          right: '$5 - 3 + 2$' },
-          { left: '$x - (y + z - w)$',      right: '$x - y - z + w$' },
-          { left: '$-(a - b + c)$',         right: '$-a + b - c$' },
-          { left: '$a - (-b - c)$',         right: '$a + b + c$' },
+          { left: '$5 - (3 - 2)$',         right: '$5 - 3 + 2$' },
+          { left: '$x - (y + z - w)$',     right: '$x - y - z + w$' },
+          { left: '$-(a - b + c)$',        right: '$-a + b - c$' },
+          { left: '$m - (n + p)$',         right: '$m - n - p$' },
         ],
         `**Ansatz:** Minus vor einer Klammer wirkt wie ein Faktor $-1$ und kippt **jedes** Vorzeichen im Innern der Klammer.
 
-**Rechnung:** Jeder Fall ist konsequente Anwendung derselben Regel. Vor allem beim letzten: $-(-b) = +b$ und $-(-c) = +c$.
+**Rechnung:** Jeder Fall ist konsequente Anwendung derselben Regel — alle Summanden der Klammer bekommen das umgedrehte Vorzeichen.
 
 **Probe:** Zahlentest bei Zeile 1: $5-(3-2)=5-1=4$ und $5-3+2=4$. ✓
 
-**Typischer Fehler:** Vor allem beim Doppel-Minus: $-(-b)$ als $-b$ lesen. Zwei Minuszeichen heben sich zu einem Plus auf.`,
+**Typischer Fehler:** Nur den ersten Summanden kippen (besonders in Zeile 2 verlockend).`,
         [
           'Alle Vorzeichen in der Klammer drehen.',
-          'Doppel-Minus $-(-x) = +x$.',
+          '$+$ wird zu $-$, $-$ wird zu $+$.',
           'Kontrolle: beliebige Zahlen einsetzen und links=rechts prüfen.',
         ],
+        { stage: 'transfer', subGoal: 1, uses: ['minus-vorklammer'] },
       ),
     ],
-    // [2] Doppel-Minus aufgelöst
+    // [2] Doppel-Minus aufgelöst (concept: minus-mal-minus)
     2: [
+      // Zeile 11: recognize · true-false · uses=[minus-mal-minus]
       tf(
-        'Sub-Goal "Doppel-Minus aufgelöst: $(-a)(-b) = +ab$": Der Ausdruck $-(-3) \\cdot (-4)$ ist gleich $+12$.',
+        'Sub-Goal "Doppel-Minus aufgelöst: $(-a)(-b)=+ab$": Das Produkt $(-5) \\cdot (-3)$ ist gleich $-15$.',
         false,
-        `**Ansatz:** Vorzeichen einzeln auswerten: jedes Minus entspricht einem Faktor $-1$.
+        `**Ansatz:** Zwei negative Faktoren → Produkt ist positiv. $(-a)(-b) = +ab$.
 
-**Rechnung:** $-(-3) = +3$; dann $(+3) \\cdot (-4) = -12$. Gesamtergebnis: $-12$, **nicht** $+12$.
+**Rechnung:** $(-5) \\cdot (-3) = +15$, **nicht** $-15$.
 
-**Probe:** Drei Minuszeichen insgesamt ($-, -, -$) bedeuten Vorzeichen $(-1)^3 = -1$. Also negativ. ✓
+**Probe:** Zwei Minuszeichen: $(-1) \\cdot (-1) = +1$. Also $(-5)(-3) = (-1)(-1) \\cdot 5 \\cdot 3 = +15$. ✓
 
-**Typischer Fehler:** Pauschal "zwei Minus geben Plus, also positiv" — hier sind es aber **drei** Minuszeichen, und ungerade Anzahl Minuszeichen bleibt negativ.`,
+**Typischer Fehler:** "Zwei negative Zahlen ergeben Negatives" — intuitiv, aber falsch. Das Vorzeichen folgt $(-1)^n$ mit $n$ = Anzahl Minuszeichen: gerade $\\to +$, ungerade $\\to -$.`,
         [
-          'Zähle die Minuszeichen — gerade oder ungerade?',
-          '$(-1) \\cdot (-1) \\cdot (-1) = ?$',
-          'Nur zwei Minus heben sich auf; drei nicht.',
+          'Wie viele Minuszeichen hat der Ausdruck?',
+          '2 Minuszeichen → welches Vorzeichen?',
+          '$(-)\\cdot(-) = +$.',
         ],
+        { stage: 'recognize', subGoal: 2, uses: ['minus-mal-minus'] },
       ),
+      // Zeile 12: apply-guided · multiple-choice · uses=[minus-mal-minus]
+      mc(
+        'Sub-Goal "Doppel-Minus aufgelöst: $(-a)(-b)=+ab$": Welchen Wert hat $(-4) \\cdot (-3) \\cdot 2$?',
+        ['$24$', '$-24$', '$-12$', '$12$'],
+        0,
+        `**Ansatz:** Mehrere Faktoren schrittweise multiplizieren — Vorzeichenregel bei jedem Schritt anwenden.
+
+**Rechnung:** $(-4) \\cdot (-3) = +12$ (zwei Minus → Plus). Dann $+12 \\cdot 2 = 24$.
+
+**Probe:** Vorzeichen zählen: 2 Minuszeichen → positiv. Betrag: $4 \\cdot 3 \\cdot 2 = 24$. Ergebnis: $+24$. ✓
+
+**Typischer Fehler:** Nach dem ersten Schritt $(-12)$ beibehalten ("war ja negativ") und dann $\\cdot 2 = -24$ rechnen — vergisst, dass zwei Minus bereits zu Plus geworden waren.`,
+        [
+          'Zwei Minuszeichen zuerst — $(-4)(-3)$ ist?',
+          'Dann multiplizieren mit $2$.',
+          'Vorzeichen: gerade Anzahl Minus → Plus.',
+        ],
+        {
+          1: 'Das Ergebnis $(-4)(-3)(2) = -24$ entsteht nur, wenn man $(-4)(-3) = -12$ rechnet — zwei Minuszeichen ergeben aber Plus.',
+          2: '$-12$ ist nur das Zwischenergebnis, wenn man $(-4)(-3) = -12$ falsch rechnet; der Faktor $\\cdot 2$ fehlt ohnehin.',
+          3: 'Betrag stimmt ($12$), aber der Faktor $2$ wurde weggelassen. $(-4)(-3)(2) = +24$.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['minus-mal-minus'] },
+      ),
+      // Zeile 13: apply-independent · number-input · uses=[minus-mal-minus]
       ni(
-        'Sub-Goal "Doppel-Minus aufgelöst: $(-a)(-b) = +ab$": Berechne $-(-7) + (-2)$.',
+        'Sub-Goal "Doppel-Minus aufgelöst: $(-a)(-b)=+ab$": Berechne $-(-7) + (-2)$.',
         5, 0, '',
         `**Ansatz:** Jedes Doppel-Minus $-(-a) = +a$. Danach normale Addition mit negativer Zahl.
 
@@ -272,162 +346,157 @@ export const algebraSubGoalTasks = {
           'Dann regulär addieren: $+7 + (-2) = ?$',
           'Zwischenschritt getrennt hinschreiben statt alles in einem Zug.',
         ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['minus-mal-minus'] },
       ),
+      // Zeile 14: error-analysis · multiple-choice · uses=[minus-mal-minus]
       mc(
-        'Sub-Goal "Doppel-Minus aufgelöst: $(-a)(-b) = +ab$": Welches Vorzeichen hat das Produkt $(-2) \\cdot (-3) \\cdot (-5) \\cdot (-1)$?',
-        ['$+$ (positiv)', '$-$ (negativ)', 'Hängt vom Betrag ab', 'Vorzeichen ist unbestimmt'],
+        'Sub-Goal "Doppel-Minus aufgelöst: $(-a)(-b)=+ab$": Ein Schüler behauptet $(-2) \\cdot (-3) \\cdot (-5) = +30$. Wo liegt der Fehler?',
+        [
+          'Drei Minuszeichen sind eine ungerade Anzahl — das Ergebnis ist negativ: $-30$.',
+          'Der Betrag ist falsch — korrekt wäre $+10$.',
+          'Das Ergebnis ist korrekt — drei Minuszeichen ergeben Plus.',
+          'Vorzeichen kann bei drei Faktoren nicht bestimmt werden.',
+        ],
         0,
-        `**Ansatz:** Bei einem Produkt mit mehreren negativen Faktoren entscheidet die **Parität** der Anzahl: gerade Anzahl Minuszeichen → positiv, ungerade → negativ.
+        `**Ansatz:** Vorzeichenregel für mehrere Faktoren: $(-1)^n$ mit $n$ = Anzahl negativer Faktoren. Gerade $n$ → Plus, ungerade $n$ → Minus.
 
-**Rechnung:** Vier Minuszeichen $(-1)^4 = +1$ — gerade Anzahl, also positiv. Produkt: $2\\cdot 3\\cdot 5\\cdot 1 = 30$, Vorzeichen $+$, Ergebnis $+30$.
+**Rechnung:** Hier sind es 3 Minuszeichen. $(-1)^3 = -1$. Betrag $2\\cdot 3\\cdot 5 = 30$. Also $-30$.
 
-**Probe:** Schrittweise: $(-2)\\cdot(-3) = +6$; $(+6)\\cdot(-5) = -30$; $(-30)\\cdot(-1) = +30$. ✓
+**Probe:** Schrittweise: $(-2)(-3) = +6$; $(+6)(-5) = -30$. ✓
 
-**Typischer Fehler:** Jeder Minus pauschal "hebt einen Plus auf" — egal wie oft. Nein: bei ungerader Anzahl bleibt Minus.`,
+**Typischer Fehler:** Pauschal "Minus mal Minus = Plus" ohne die Anzahl zu zählen. Bei 2 oder 4 Minuszeichen stimmt das — bei 3 oder 5 nicht.`,
         [
           'Zähle die Minuszeichen.',
-          'Gerade Anzahl → Plus, ungerade → Minus.',
-          'Formel: Vorzeichen $= (-1)^n$ bei $n$ negativen Faktoren.',
+          'Gerade $\\to +$, ungerade $\\to -$.',
+          'Schrittweise multiplizieren und Vorzeichen bei jedem Schritt prüfen.',
         ],
         {
-          1: '4 Minuszeichen sind gerade — also ist das Ergebnis positiv. Bei 3 oder 5 Minuszeichen wäre es negativ.',
-          2: 'Das Vorzeichen hängt NUR von der Anzahl der Minuszeichen ab, nicht vom Betrag der Zahlen.',
-          3: 'Das Vorzeichen ist eindeutig bestimmt: gerade Anzahl $-$ ergibt $+$.',
+          1: 'Der Betrag $30$ stimmt; das Problem ist nur das Vorzeichen (ungerade Anzahl Minus → Minus).',
+          2: 'Die pauschale Regel "Minus mal Minus = Plus" gilt für 2 Faktoren. Bei 3 Minuszeichen bleibt ein Minus übrig.',
+          3: 'Das Vorzeichen ist eindeutig durch die Parität der Minuszeichen bestimmt — nicht unbestimmt.',
         },
+        { stage: 'error-analysis', subGoal: 2, uses: ['minus-mal-minus'] },
       ),
-      matching(
-        'Sub-Goal "Doppel-Minus aufgelöst: $(-a)(-b) = +ab$": Ordne jedem Ausdruck sein Ergebnis zu.',
+      // Zeile 15: transfer · number-input · uses=[minus-mal-minus, minus-vorklammer]
+      ni(
+        'Sub-Goal "Doppel-Minus aufgelöst: $(-a)(-b)=+ab$": Berechne $6 - (-(4 - 9))$.',
+        1, 0, '',
+        `**Ansatz:** Von innen nach außen auflösen und Doppel-Minus/Minus-vor-Klammer beide richtig anwenden.
+
+**Rechnung:** Innerste Klammer: $4 - 9 = -5$. Dann $-(-5) = +5$. Dann $6 - 5 = 1$.
+
+**Probe:** Alternative: $6 - (-(4-9)) = 6 + (4-9) = 6 + (-5) = 1$. ✓
+
+**Typischer Fehler:** Doppel-Minus nicht auflösen: $6 - (-5)$ als $6 - 5 = 1$ direkt OK; aber falsch: $6 - (-(4-9)) = 6 - (-4+9) = 6 + 4 - 9 = 1$? Halt, Vorsicht — hier ist das Minus VOR der äußeren Klammer und das Minus in $-(4-9)$ sind zwei verschiedene Operationen. Eins nach dem anderen.`,
         [
-          { left: '$-(-5)$',                right: '$+5$' },
-          { left: '$(-3) \\cdot (-4)$',     right: '$+12$' },
-          { left: '$-(-2) \\cdot (-3)$',    right: '$-6$' },
-          { left: '$(-1)^5 \\cdot (-2)$',   right: '$+2$' },
+          'Zuerst die innerste Klammer $(4-9)$ ausrechnen.',
+          'Dann das Minus vor dieser Klammer: $-(-5) = ?$',
+          'Dann die äußere Subtraktion $6 - (\\ldots)$.',
         ],
-        `**Ansatz:** Bei Vorzeichen zählt die **Parität** der Minuszeichen: gerade $\\to +$, ungerade $\\to -$.
-
-**Rechnung:**
-· $-(-5) = +5$ (zwei Minuszeichen)
-· $(-3)\\cdot(-4) = +12$ (zwei Minus)
-· $-(-2)\\cdot(-3) = (+2)\\cdot(-3) = -6$ (drei Minus gesamt)
-· $(-1)^5 = -1$; $-1 \\cdot (-2) = +2$ (sechs Minus, gerade)
-
-**Probe:** In jedem Paar Minuszeichen zählen und Formel $(-1)^n$ einsetzen.
-
-**Typischer Fehler:** Pauschal "zwei Minus = Plus" — funktioniert nur bei genau zwei. Bei drei oder mehr die Anzahl zählen.`,
-        [
-          'Jedes Minus = Faktor $-1$.',
-          'Anzahl Minuszeichen zählen.',
-          '$(-1)^n$ mit $n$ Minuszeichen.',
-        ],
-      ),
-      sorting(
-        'Sub-Goal "Doppel-Minus aufgelöst: $(-a)(-b) = +ab$": Bringe die Schritte zur Auswertung von $-(-3) + (-5) - (-2)$ in die richtige Reihenfolge.',
-        [
-          'Doppel-Minuszeichen auflösen: $+3 + (-5) + 2$',
-          'Terme umschreiben als reine Addition/Subtraktion: $3 - 5 + 2$',
-          'Von links nach rechts rechnen: $3 - 5 = -2$',
-          'Weiter: $-2 + 2 = 0$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Zuerst alle Vorzeichenkonstellationen vereinfachen, dann linear abarbeiten.
-
-**Rechnung:** $-(-3) + (-5) - (-2) = 3 - 5 + 2 = 0$.
-
-**Probe:** Gruppiert: $(3+2) - 5 = 5 - 5 = 0$. ✓
-
-**Typischer Fehler:** Direkt "von links lesen" ohne die Doppel-Vorzeichen aufzulösen — führt fast immer zu Fehlern. Lieber erst alles auf einfache $+/-$ bringen.`,
-        [
-          'Erst Doppel-Minuszeichen zu $+$ umwandeln.',
-          'Dann Klammern um negative Zahlen weglassen und Vorzeichen anpassen.',
-          'Linear rechnen erst nach der Vereinfachung.',
-        ],
+        { stage: 'transfer', subGoal: 2, uses: ['minus-mal-minus', 'minus-vorklammer'] },
       ),
     ],
-    // [3] Klammerschachtelung von innen nach außen
+    // [3] Klammerschachtelung von innen nach außen (concepts: klammer-schachtel, prio-klammer)
     3: [
-      matching(
-        'Sub-Goal "Klammerschachtelung von innen nach außen abarbeiten": Ordne jedem geschachtelten Ausdruck sein Ergebnis zu.',
-        [
-          { left: '$2 \\cdot [3 + (4-1)]$',              right: '$12$' },
-          { left: '$-\\{5 - [2 + (1-4)]\\}$',            right: '$-6$' },
-          { left: '$[(2+3) \\cdot 2] - 4$',               right: '$6$' },
-          { left: '$10 - [2 \\cdot (1 + 2)]$',            right: '$4$' },
-        ],
-        `**Ansatz:** Geschachtelte Klammern **von innen nach außen** abarbeiten — erst runde Klammer, dann eckige, dann geschweifte.
-
-**Rechnung:**
-· $2\\cdot[3+(4-1)] = 2\\cdot[3+3] = 2\\cdot 6 = 12$
-· $-\\{5-[2+(1-4)]\\} = -\\{5-[2-3]\\} = -\\{5-(-1)\\} = -\\{6\\} = -6$
-· $[(2+3)\\cdot 2]-4 = [5\\cdot 2]-4 = 10-4 = 6$
-· $10-[2\\cdot(1+2)] = 10-[2\\cdot 3] = 10-6 = 4$
-
-**Probe:** In jedem Beispiel die innerste Klammer zuerst zu Zahl machen — dann nur noch eine Rechenebene übrig.
-
-**Typischer Fehler:** Außen anfangen: $2 \\cdot [3 + 4 - 1]$ als $2 \\cdot 3 + 4 - 1 = 9$ rechnen. Die eckige Klammer ist aber ein **Block**, der als Ganzes mit $2$ multipliziert wird.`,
-        [
-          'Welche Klammerart rechnest du zuerst?',
-          'Innerste runde Klammer → eckige → geschweifte.',
-          'Jede fertig ausgewertete Klammer wird zur Zahl, dann weiter außen.',
-        ],
-      ),
-      ni(
-        'Sub-Goal "Klammerschachtelung von innen nach außen abarbeiten": Berechne $\\{3 + [2 \\cdot (4-1)]\\} - 5$.',
-        4, 0, '',
-        `**Ansatz:** Innerste Klammer zuerst, dann eckige, dann geschweifte, dann den Rest.
-
-**Rechnung:** Schritt 1: innerste $(4-1)=3$. Schritt 2: eckig $[2\\cdot 3]=6$. Schritt 3: geschweift $\\{3+6\\}=9$. Schritt 4: außen $9-5=4$.
-
-**Probe:** Rückwärts einsetzen bestätigt jeden Zwischenschritt. ✓
-
-**Typischer Fehler:** Die eckige Klammer als $[2\\cdot 4-1]=7$ rechnen — hier würde das Klammer-Prinzip ignoriert und $2$ nur mit $4$ multipliziert statt mit dem ganzen Term $(4-1)$.`,
-        [
-          'Welche Klammer zuerst? Die innerste — runde Klammer.',
-          'Ersetze jede fertig ausgewertete Klammer durch eine Zahl, dann geh eine Stufe nach außen.',
-          'Zwischenergebnisse einzeln hinschreiben, nicht im Kopf.',
-        ],
-      ),
+      // Zeile 16: recognize · true-false · uses=[klammer-schachtel]
       tf(
-        'Sub-Goal "Klammerschachtelung von innen nach außen abarbeiten": Bei geschachtelten Klammern soll man IMMER zuerst die äußerste (geschweifte) Klammer auflösen.',
-        false,
-        `**Ansatz:** Die Regel lautet **innen nach außen** — man geht von der innersten runden Klammer zur eckigen, dann zur geschweiften.
+        'Sub-Goal "Klammerschachtelung von innen nach außen abarbeiten": Bei geschachtelten Klammern $\\{\\ldots [\\ldots (\\ldots)] \\ldots\\}$ wird immer die innerste Klammer zuerst ausgerechnet.',
+        true,
+        `**Ansatz:** Klammern definieren die Auswertungsreihenfolge — die innerste Klammer muss vollständig zu einer Zahl ausgewertet werden, bevor die nächste Stufe bearbeitet werden kann.
 
-**Rechnung:** Beispiel $\\{1 + [2\\cdot(3+4)]\\}$: richtig $\\{1 + [2\\cdot 7]\\} = \\{1+14\\} = 15$. Falsch wäre, außen zu beginnen — geschweift kann nicht ausgewertet werden, solange das Innere nicht Zahl ist.
+**Rechnung:** Allgemein: $\\{a + [b \\cdot (c + d)]\\} \\to \\{a + [b \\cdot (\\text{Zahl})]\\} \\to \\{a + \\text{Zahl}\\} \\to \\text{Zahl}$.
 
-**Probe:** Die geschweifte Klammer ENTHÄLT die eckige als Teilausdruck — man kann sie nicht ohne deren Wert verarbeiten.
+**Probe:** Versuche es von außen: $\\{5 + [2 \\cdot (1+3)]\\}$. Die geschweifte Klammer kann erst ausgewertet werden, wenn die eckige eine Zahl ist — die wiederum braucht die runde.
 
-**Typischer Fehler:** Einzelne Summanden der äußeren Klammer mit dem Faktor kombinieren, bevor die innere aufgelöst ist. Das erzeugt Distributivitäts-Fehler.`,
+**Typischer Fehler:** Außen beginnen und dabei Distributiv-Fehler machen: $\\{5 + [2 \\cdot 1 + 3]\\} = \\{5 + 5\\} = 10$ — aber korrekt: $\\{5 + [2 \\cdot 4]\\} = \\{5 + 8\\} = 13$.`,
         [
-          'Innen nach außen, nicht außen nach innen.',
-          'Geschweift kann man erst auswerten, wenn alles drin schon Zahl ist.',
-          'Merkregel: runde → eckige → geschweifte.',
+          'Warum kann man die äußere Klammer nicht zuerst rechnen?',
+          'Was steht in der äußeren Klammer — schon eine Zahl oder noch ein Ausdruck?',
+          'Reihenfolge: rund → eckig → geschweift.',
         ],
+        { stage: 'recognize', subGoal: 3, uses: ['klammer-schachtel'] },
       ),
+      // Zeile 17: apply-guided · multiple-choice · uses=[klammer-schachtel]
       mc(
-        'Sub-Goal "Klammerschachtelung von innen nach außen abarbeiten": Welchen Wert hat $2 \\cdot \\{[3 + (6-4)] - 1\\}$?',
-        ['$8$', '$10$', '$6$', '$18$'],
-        0,
-        `**Ansatz:** Stufenweise von innen nach außen: $(\\ldots) \\to [\\ldots] \\to \\{\\ldots\\} \\to$ äußere Multiplikation.
-
-**Rechnung:** $(6-4)=2$. $[3+2]=5$. $\\{5-1\\}=4$. $2\\cdot 4 = 8$.
-
-**Probe:** Ohne Zwischenschritte von innen: $2\\cdot\\{[3+2]-1\\} = 2\\cdot\\{5-1\\} = 2\\cdot 4 = 8$. ✓
-
-**Typischer Fehler:** Die geschweifte Klammer wie eine eckige behandeln und den Faktor $2$ auf beide Teilsummen verteilen, bevor $(6-4)$ berechnet wurde — liefert oft $18$ oder $10$.`,
+        'Sub-Goal "Klammerschachtelung von innen nach außen abarbeiten": Was ist der erste Rechenschritt bei $3 \\cdot [4 + (5 - 2)]$?',
         [
-          'Klammerreihenfolge: rund, eckig, geschweift — immer von innen.',
-          'Jede fertig ausgewertete Klammer wird zur Zahl.',
-          'Erst am Ende mit dem Faktor $2$ multiplizieren.',
+          'Innere Klammer berechnen: $5 - 2 = 3$.',
+          'Faktor verteilen: $3 \\cdot 4 + 3 \\cdot 5 - 3 \\cdot 2$.',
+          'Eckige Klammer aufösen: $[4 + 5 - 2] = 7$.',
+          'Erste Operation von links: $3 \\cdot 4 = 12$.',
+        ],
+        0,
+        `**Ansatz:** Innen-nach-außen-Regel: die innerste Klammer $(5-2)$ zuerst, dann die eckige, erst zuletzt die Multiplikation mit $3$.
+
+**Rechnung:** Schritt 1: $(5-2) = 3$. Schritt 2: $[4 + 3] = 7$. Schritt 3: $3 \\cdot 7 = 21$.
+
+**Probe:** Gesamtergebnis $21$ stimmt — jeder andere Startpunkt produziert andere Zwischenergebnisse oder Fehler.
+
+**Typischer Fehler:** Distributiv zu früh anwenden (Option 2 oder 4) oder eckige Klammer behandeln, als wäre sie schon ausgewertet (Option 3 ignoriert, dass die runde Klammer noch nicht aufgelöst ist).`,
+        [
+          'Welche Klammerart ist die innerste?',
+          'Runde vor eckig vor geschweift.',
+          'Multiplikation erst, wenn die eckige Klammer zu einer Zahl geworden ist.',
         ],
         {
-          1: 'Hier wurde vermutlich das Minus $-1$ als Addition gelesen: $2\\cdot\\{5+1\\}=12$ oder $2\\cdot(4+1)=10$. Das $-1$ ist aber Subtraktion.',
-          2: 'Dies wäre $[3+(6-4)]\\cdot 1 - 2$ oder ähnlich falsch geklammert — stimmt nicht mit $2\\cdot\\{\\ldots\\}$ überein.',
-          3: '$18$ entsteht, wenn man $2 \\cdot \\{[3\\cdot(6-4)]-1\\}$ rechnet ($3\\cdot 2 = 6$, $6-1=5$, aber dann $2\\cdot 5 = 10$...). Oder Distributivität falsch angewandt.',
+          1: 'Distributivgesetz kann man erst anwenden, nachdem die innere Klammer eine Zahl ist — sonst erhöht sich die Fehlergefahr.',
+          2: 'Die runde Klammer ist noch nicht aufgelöst. $[4 + (5-2)] \\neq [4+5-2]$? Doch, rechnerisch gleich, aber die Regel lautet: innere Klammer zuerst.',
+          3: 'Punkt-vor-Strich — die Multiplikation würde regulär zuerst kommen, aber hier erzwingt die eckige Klammer, dass der Inhalt in Klammer zuerst ausgewertet wird.',
         },
+        { stage: 'apply-guided', subGoal: 3, uses: ['klammer-schachtel'] },
       ),
-      sorting(
-        'Sub-Goal "Klammerschachtelung von innen nach außen abarbeiten": Bringe die Schritte zur Auswertung von $\\{10 - [2 \\cdot (3+1)]\\} \\cdot 3$ in die richtige Reihenfolge.',
+      // Zeile 18: apply-independent · number-input · uses=[klammer-schachtel]
+      ni(
+        'Sub-Goal "Klammerschachtelung von innen nach außen abarbeiten": Berechne $2 \\cdot (8 - (3 + 1))$.',
+        8, 0, '',
+        `**Ansatz:** Innen zuerst: $(3+1)$. Dann die umschließende Klammer. Dann die Multiplikation.
+
+**Rechnung:** $(3+1) = 4$. Dann $(8 - 4) = 4$. Dann $2 \\cdot 4 = 8$.
+
+**Probe:** Alle Klammern explizit ausgewertet: $2 \\cdot (8 - 4) = 2 \\cdot 4 = 8$. ✓
+
+**Typischer Fehler:** "Faktor auf alles verteilen": $2 \\cdot 8 - 2 \\cdot (3+1) = 16 - 8 = 8$ — zufällig gleiches Ergebnis, aber ist Distributivgesetz, nicht Klammerschachtelung. Oder falsche Reihenfolge: $2 \\cdot 8 = 16$, dann $16 - 3 + 1 = 14$ — ignoriert innere Klammer komplett.`,
         [
-          'Innerste runde Klammer: $(3+1) = 4$',
+          'Welche Klammer ist die innerste? $(3+1)$.',
+          'Dann die umschließende $(8 - \\text{Zahl})$.',
+          'Erst ganz zum Schluss die Multiplikation.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['klammer-schachtel'] },
+      ),
+      // Zeile 19: error-analysis · multiple-choice · uses=[klammer-schachtel]
+      mc(
+        'Sub-Goal "Klammerschachtelung von innen nach außen abarbeiten": Ein Schüler rechnet $\\{10 - [3 \\cdot (2+1)]\\} = \\{10 - 3 \\cdot 2 + 1\\} = \\{5\\} = 5$. Wo liegt der Fehler?',
+        [
+          'Die innerste Klammer $(2+1)$ wurde nicht vollständig ausgewertet, bevor sie aufgelöst wurde.',
+          'Punkt-vor-Strich wurde missachtet — die eckige Klammer dient doch nur zur Verschönerung.',
+          'Es ist korrekt — geschachtelte Klammern dürfen beliebig aufgelöst werden.',
+          'Das Ergebnis $5$ ist zufällig richtig, also ist der Weg egal.',
+        ],
+        0,
+        `**Ansatz:** Innerste Klammer als Block auswerten, dann ersetzen. Der Schüler hat $(2+1)$ "aufgerissen" und den Faktor $3$ nur mit $2$ multipliziert.
+
+**Rechnung:** Korrekt: $(2+1) = 3$. Dann $[3 \\cdot 3] = 9$. Dann $\\{10 - 9\\} = 1$, nicht $5$.
+
+**Probe:** Distributiv angewandt wäre $3 \\cdot (2+1) = 3\\cdot 2 + 3\\cdot 1 = 6+3 = 9$ — ebenfalls $9$, wie die klammerweise Rechnung.
+
+**Typischer Fehler:** Klammern vorzeitig "wegnehmen" und Distributivgesetz nur teilweise anwenden. Genau das ist hier passiert: $3 \\cdot (2+1)$ wurde zu $3\\cdot 2 + 1$ statt zu $3\\cdot 2 + 3\\cdot 1$.`,
+        [
+          'Wurde die innerste Klammer als Einheit behandelt?',
+          'Kontrolle: Was ergibt $3 \\cdot (2+1)$ korrekt?',
+          'Zahlentest: ist das finale Ergebnis wirklich $5$?',
+        ],
+        {
+          1: 'Das eckige-Klammer-Symbol ist nicht bloß Deko — es gruppiert Teilausdrücke und zwingt zur Reihenfolge.',
+          2: 'Geschachtelte Klammern sind NICHT beliebig. Die Rechenreihenfolge ist klar vorgeschrieben: innen zuerst.',
+          3: 'Das Ergebnis $5$ ist falsch — korrekt ist $1$. Der Weg ist also auch falsch.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['klammer-schachtel'] },
+      ),
+      // Zeile 20: transfer · sorting · uses=[klammer-schachtel, prio-klammer]
+      sorting(
+        'Sub-Goal "Klammerschachtelung von innen nach außen abarbeiten": Bringe die Schritte zur Auswertung von $\\{10 - [2 \\cdot (3 + 1)]\\} \\cdot 3$ in die richtige Reihenfolge.',
+        [
+          'Innerste runde Klammer: $(3 + 1) = 4$',
           'Eckige Klammer: $[2 \\cdot 4] = 8$',
           'Geschweifte Klammer: $\\{10 - 8\\} = 2$',
           'Abschluss-Multiplikation: $2 \\cdot 3 = 6$',
@@ -445,6 +514,7 @@ export const algebraSubGoalTasks = {
           'Jede Klammerstufe einzeln aufschreiben.',
           'Am Ende der letzte Rechenschritt außerhalb aller Klammern.',
         ],
+        { stage: 'transfer', subGoal: 3, uses: ['klammer-schachtel', 'prio-klammer'] },
       ),
     ],
   },
@@ -455,1466 +525,1610 @@ export const algebraSubGoalTasks = {
   // (Ziel: je ≥ 3 Aufgaben). Template für Claude-Folge-Session.
   // ───────────────────────────────────────────────────────────────────────
   'alg-0-2': {
+    // [0] Hauptnenner bei ungleichnamigen Brüchen finden (kgV)
     0: [
-      ni(
-        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Was ist der Hauptnenner (kgV) von $\\dfrac{5}{12}$ und $\\dfrac{7}{18}$?',
-        36, 0, '',
-        `**Ansatz:** Der Hauptnenner ist das **kleinste gemeinsame Vielfache (kgV)** der Nenner. Das kgV berechnet man aus den Primfaktorzerlegungen: jede Primzahl mit ihrem **höchsten** Exponenten übernehmen.
+      // recognize · true-false · uses=[kgv-hauptnenner]
+      tf(
+        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Das kgV von zwei Zahlen ist immer ihr Produkt.',
+        false,
+        `**Ansatz:** Das kgV (kleinstes gemeinsames Vielfaches) ist der Hauptnenner bei ungleichnamigen Brüchen. Nur wenn zwei Zahlen teilerfremd sind, ist ihr kgV gleich dem Produkt.
 
-**Rechnung:** $12 = 2^2 \\cdot 3$, $18 = 2 \\cdot 3^2$. Höchste Exponenten: $2^2$ und $3^2$. Also $\\text{kgV}(12,18) = 4 \\cdot 9 = 36$.
+**Rechnung:** Gegenbeispiel: $\\text{kgV}(4, 6) = 12$, aber $4 \\cdot 6 = 24$. Der ggT ist $2$, also $\\text{kgV} = 4\\cdot 6 / 2 = 12$.
 
-**Probe:** $36 / 12 = 3$ (ganzzahlig) und $36 / 18 = 2$ (ganzzahlig). ✓
+**Probe:** Formel $\\text{kgV}(a,b) = a\\cdot b / \\text{ggT}(a,b)$ — nur wenn $\\text{ggT}=1$, ist $\\text{kgV}=a\\cdot b$.
 
-**Typischer Fehler:** Einfach die beiden Zahlen multiplizieren ($12 \\cdot 18 = 216$). Das funktioniert, produziert aber unnötig große Zahlen und erschwert das Kürzen.`,
+**Typischer Fehler:** Pauschal alle Nenner multiplizieren statt nach Primfaktoren zerlegen — erzeugt unnötig große Hauptnenner und erschwert das Kürzen.`,
         [
-          'Zerlege beide Nenner in Primfaktoren.',
-          'Nimm von jeder Primzahl den **höchsten** Exponenten, der irgendwo auftritt.',
-          'Das Produkt dieser Primpotenzen ist das kgV (und der Hauptnenner).',
+          'Ist das kgV immer gleich dem Produkt, oder nur in Spezialfällen?',
+          'Teste: $\\text{kgV}(4, 6) = ?$ vs. $4 \\cdot 6$.',
+          'Formel: $\\text{kgV}(a,b) = a\\cdot b / \\text{ggT}(a,b)$.',
         ],
+        { stage: 'recognize', subGoal: 0, uses: ['kgv-hauptnenner'] },
       ),
+      // apply-guided · multiple-choice · uses=[kgv-hauptnenner]
       mc(
-        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Welcher Hauptnenner ist für $\\dfrac{1}{6} + \\dfrac{5}{8}$ zu wählen?',
+        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Was ist der Hauptnenner (kgV) von $\\dfrac{1}{6}$ und $\\dfrac{1}{8}$?',
         ['$24$', '$48$', '$14$', '$2$'],
         0,
-        `**Ansatz:** Hauptnenner = kgV der Nenner, nicht das Produkt. Primfaktorzerlegung nutzen.
+        `**Ansatz:** Primfaktorzerlegung: $6 = 2 \\cdot 3$, $8 = 2^3$. Hauptnenner = höchste Primzahl-Exponenten übernehmen.
 
-**Rechnung:** $6 = 2 \\cdot 3$, $8 = 2^3$. Höchste Exponenten: $2^3$ und $3^1$. $\\text{kgV}(6,8) = 8 \\cdot 3 = 24$.
+**Rechnung:** $2^3 \\cdot 3 = 8 \\cdot 3 = 24$.
 
-**Probe:** $24/6 = 4$ und $24/8 = 3$ — beides ganzzahlig. ✓
+**Probe:** $24/6 = 4$ (ganzzahlig) und $24/8 = 3$ (ganzzahlig). Also ist $24$ ein gemeinsames Vielfaches. Kleiner geht nicht, weil die $8$ den Faktor $2^3$ zwingt.
 
-**Typischer Fehler:** Einfach $6 \\cdot 8 = 48$ als Hauptnenner nehmen. Das funktioniert, aber man arbeitet unnötig mit doppelt so großen Zahlen und muss am Ende kürzen.`,
+**Typischer Fehler:** $6 \\cdot 8 = 48$ — funktioniert, ist aber kein MINIMUM. Das kgV ist immer $\\leq$ dem Produkt.`,
         [
-          'Primfaktorzerlegung von $6$ und $8$.',
-          'Höchsten Exponenten jeder Primzahl übernehmen.',
-          'kgV ist das kleinste gemeinsame Vielfache, nicht das Produkt.',
+          'Primfaktorzerlegung beider Nenner.',
+          'Jede Primzahl mit ihrem HÖCHSTEN Exponenten.',
+          'Welche Zahl ist durch 6 UND 8 teilbar — und zwar die kleinste?',
         ],
         {
-          1: 'Richtig ist die Idee (Produkt der Nenner funktioniert als Hauptnenner), aber das ist nicht der KLEINSTE gemeinsame Nenner. Das kgV ist $24$.',
-          2: '$14 = 6 + 8$ — Nenner werden **nicht** addiert. Hauptnenner = kgV, gesucht über Vielfache.',
-          3: '$2$ ist der ggT (größte gemeinsame Teiler), nicht das kgV. Hauptnenner ist der kleinste gemeinsame **Nenner**, also ein Vielfaches von beiden.',
+          1: '$48$ ist zwar ein gemeinsames Vielfaches, aber nicht das kleinste. $24$ ist bereits durch 6 und 8 teilbar.',
+          2: '$14 = 2 \\cdot 7$ ist weder durch 6 noch durch 8 teilbar. Das kgV muss BEIDE Nenner teilen.',
+          3: '$2$ ist der ggT der beiden Nenner — nicht das kgV. Der Hauptnenner ist $\\geq$ beiden Nennern.',
         },
+        { stage: 'apply-guided', subGoal: 0, uses: ['kgv-hauptnenner'] },
       ),
-      tf(
-        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Das kgV zweier Zahlen ist immer das Produkt dieser Zahlen.',
-        false,
-        `**Ansatz:** Gegenbeispiel suchen — das kgV zweier Zahlen ist nur dann das Produkt, wenn sie teilerfremd sind.
+      // apply-independent · number-input · uses=[kgv-hauptnenner, bruch-add]  × 2 Aufgaben
+      ni(
+        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Berechne $\\dfrac{5}{12} + \\dfrac{7}{18}$ und gib den Zähler nach dem Hauptnenner-Schritt (Hauptnenner $36$) an.',
+        29, 0, '',
+        `**Ansatz:** Hauptnenner bestimmen, beide Brüche darauf bringen, dann Zähler addieren.
 
-**Rechnung:** $\\text{kgV}(4, 6) = 12$, aber $4 \\cdot 6 = 24$. Gemeinsamer Faktor $2$ reduziert das kgV: $\\text{kgV}(a,b) = \\dfrac{a \\cdot b}{\\text{ggT}(a,b)}$.
+**Rechnung:** Hauptnenner: $\\text{kgV}(12, 18) = 36$. Erweitern: $\\dfrac{5}{12} = \\dfrac{15}{36}$ (Faktor 3) und $\\dfrac{7}{18} = \\dfrac{14}{36}$ (Faktor 2). Zähler-Summe: $15 + 14 = 29$. Ergebnis: $\\dfrac{29}{36}$.
 
-**Probe:** $\\text{kgV}(3, 5) = 15 = 3 \\cdot 5$ — hier gilt die Aussage, weil ggT$(3,5)=1$ (teilerfremd). Aber nicht allgemein.
+**Probe:** Dezimal: $5/12 \\approx 0{,}4167$, $7/18 \\approx 0{,}3889$, Summe $\\approx 0{,}8056$. $29/36 \\approx 0{,}8056$. ✓
 
-**Typischer Fehler:** "Produkt der Nenner" als universelle Regel lernen. Das liefert *einen* gemeinsamen Nenner, aber nicht den *kleinsten* — und damit größere Rechnungen.`,
+**Typischer Fehler:** Zähler direkt addieren ohne Hauptnenner: $5+7 = 12$ und $12+18 = 30$ → $\\dfrac{12}{30}$ — falsch. Brüche dürfen nur addiert werden, wenn sie gleichnamig sind.`,
         [
-          'Gilt die Behauptung für $4$ und $6$?',
-          '$\\text{kgV}(a,b) \\cdot \\text{ggT}(a,b) = a \\cdot b$.',
-          'Gleichheit nur bei $\\text{ggT}(a,b) = 1$ (teilerfremd).',
+          'Hauptnenner zuerst: $\\text{kgV}(12, 18) = ?$',
+          'Erweiterungsfaktoren bestimmen: $36/12 = 3$ und $36/18 = 2$.',
+          'Zähler $5\\cdot 3 + 7\\cdot 2 = ?$',
         ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['kgv-hauptnenner', 'bruch-add'] },
       ),
-      matching(
-        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Ordne jedem Nenner-Paar das zugehörige kgV zu.',
+      ni(
+        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Bestimme den Hauptnenner (kgV) von $\\dfrac{3}{8}$, $\\dfrac{5}{12}$ und $\\dfrac{1}{20}$.',
+        120, 0, '',
+        `**Ansatz:** Primfaktorzerlegung aller Nenner, dann jeden Primfaktor mit dem HÖCHSTEN Exponenten übernehmen.
+
+**Rechnung:** $8 = 2^3$; $12 = 2^2 \\cdot 3$; $20 = 2^2 \\cdot 5$. Höchste Exponenten: $2^3$, $3^1$, $5^1$. Also $\\text{kgV} = 8 \\cdot 3 \\cdot 5 = 120$.
+
+**Probe:** $120/8 = 15$, $120/12 = 10$, $120/20 = 6$ — alle ganzzahlig. ✓
+
+**Typischer Fehler:** Alle multiplizieren: $8 \\cdot 12 \\cdot 20 = 1920$ — funktioniert, aber ist 16-fach größer als nötig und erschwert jede Weiterrechnung.`,
         [
-          { left: '$(4, 6)$',     right: '$12$' },
-          { left: '$(9, 12)$',    right: '$36$' },
-          { left: '$(5, 7)$',     right: '$35$' },
-          { left: '$(10, 15)$',   right: '$30$' },
+          'Zerlege jeden Nenner in Primfaktoren.',
+          'Pro Primzahl den größten Exponenten.',
+          'Multipliziere die Primzahlpotenzen.',
         ],
-        `**Ansatz:** Für jedes Paar: Primfaktoren zerlegen, höchste Exponenten nehmen.
-
-**Rechnung:**
-· $(4,6): 4=2^2, 6=2\\cdot 3$; kgV $= 2^2 \\cdot 3 = 12$.
-· $(9,12): 9=3^2, 12=2^2\\cdot 3$; kgV $= 2^2 \\cdot 3^2 = 36$.
-· $(5,7)$: teilerfremd, kgV $= 5 \\cdot 7 = 35$.
-· $(10,15): 10=2\\cdot 5, 15=3\\cdot 5$; kgV $= 2\\cdot 3\\cdot 5 = 30$.
-
-**Probe:** kgV ist durch beide Nenner ohne Rest teilbar. Check jede Zeile.
-
-**Typischer Fehler:** Bei $(10,15)$ einfach $150$ rechnen — $150$ ist zwar gemeinsames Vielfaches, aber nicht das kleinste. Der gemeinsame Faktor $5$ erlaubt $30$.`,
-        [
-          'Primfaktoren-Trick: höchste Potenzen jeder Primzahl.',
-          'Teilerfremde Paare: kgV = Produkt.',
-          'Gleiche Primfaktoren nur mit höchstem Exponenten zählen.',
-        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['kgv-hauptnenner', 'bruch-add'] },
       ),
+      // error-analysis · multiple-choice · uses=[bruch-add]
+      mc(
+        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Ein Schüler rechnet $\\dfrac{1}{2} + \\dfrac{1}{3} = \\dfrac{1+1}{2+3} = \\dfrac{2}{5}$. Wo liegt der Fehler?',
+        [
+          'Brüche dürfen nur mit gleichen Nennern addiert werden; Zähler und Nenner einzeln zu addieren ist keine gültige Regel.',
+          'Er hat den ggT statt das kgV genommen — mit Hauptnenner $6$ wäre es richtig.',
+          'Der Fehler liegt darin, dass er $1$ nicht zu $1/1$ ergänzt hat.',
+          'Kein Fehler — die Regel $\\tfrac{a}{b} + \\tfrac{c}{d} = \\tfrac{a+c}{b+d}$ ist korrekt.',
+        ],
+        0,
+        `**Ansatz:** Brüche addieren geht nur bei gleichem Nenner. Der Schüler hat Zähler und Nenner separat addiert — das entspricht keiner korrekten Regel.
+
+**Rechnung:** Korrekt: Hauptnenner $6$, also $\\dfrac{3}{6} + \\dfrac{2}{6} = \\dfrac{5}{6} \\approx 0{,}833$. Schülerlösung: $2/5 = 0{,}4$ — völlig anderes Ergebnis.
+
+**Probe:** Dezimal: $0{,}5 + 0{,}333 = 0{,}833$. Der Schüler-Weg liefert $0{,}4$ — das zeigt sofort, dass die "Regel" $\\tfrac{a}{b}+\\tfrac{c}{d}=\\tfrac{a+c}{b+d}$ falsch sein muss.
+
+**Typischer Fehler:** Genau dieser — "Zähler + Zähler, Nenner + Nenner". Ist intuitiv, aber mathematisch falsch.`,
+        [
+          'Was ist die Bedingung fürs Addieren zweier Brüche?',
+          'Dezimalprobe: $1/2 + 1/3 = ?$ Muss größer als $1/2$ sein.',
+          'Korrekter Weg: Hauptnenner, erweitern, Zähler addieren.',
+        ],
+        {
+          1: 'Der Schüler hat weder ggT noch kgV genommen — er hat gar keinen Hauptnenner gesucht. Der Fehler ist fundamentaler.',
+          2: 'Das ist keine Ergänzung-Problem — der Fehler ist die falsche Additionsregel.',
+          3: 'Diese "Regel" ist nicht korrekt. Dezimalprobe widerlegt sie sofort.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['bruch-add'] },
+      ),
+      // transfer · sorting · uses=[kgv-hauptnenner, bruch-add]
       sorting(
-        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Bringe die Schritte zum Finden von kgV$(12, 20)$ per Primfaktorzerlegung in die richtige Reihenfolge.',
+        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Bringe die Schritte zur Berechnung von $\\dfrac{2}{9} + \\dfrac{5}{6}$ in die richtige Reihenfolge.',
         [
-          'Primfaktorzerlegung: $12 = 2^2 \\cdot 3$ und $20 = 2^2 \\cdot 5$',
-          'Alle vorkommenden Primzahlen sammeln: $\\{2, 3, 5\\}$',
-          'Höchsten Exponenten jeder Primzahl übernehmen: $2^2, 3^1, 5^1$',
-          'Produkt bilden: $4 \\cdot 3 \\cdot 5 = 60$',
+          'Primfaktoren: $9 = 3^2$, $6 = 2 \\cdot 3$. Hauptnenner $\\text{kgV} = 2 \\cdot 3^2 = 18$',
+          'Erweiterungsfaktoren: $18/9 = 2$, $18/6 = 3$',
+          'Beide Brüche auf Hauptnenner: $\\dfrac{2\\cdot 2}{18} + \\dfrac{5\\cdot 3}{18} = \\dfrac{4}{18} + \\dfrac{15}{18}$',
+          'Zähler addieren (Nenner bleibt): $\\dfrac{4 + 15}{18} = \\dfrac{19}{18}$',
         ],
         [0, 1, 2, 3],
-        `**Ansatz:** Der kgV-Algorithmus über Primfaktoren ist deterministisch — vier saubere Schritte.
+        `**Ansatz:** Vier Schritte in fester Reihenfolge: Hauptnenner → Erweiterungsfaktoren → Erweitern → Addieren.
 
-**Rechnung:** $12 = 2^2\\cdot 3$, $20 = 2^2\\cdot 5$. Höchste Exponenten: $2^2, 3^1, 5^1$. kgV $= 4\\cdot 3\\cdot 5 = 60$.
+**Rechnung:** Endergebnis: $\\dfrac{19}{18}$. Als gemischte Zahl: $1\\dfrac{1}{18}$.
 
-**Probe:** $60/12 = 5$ und $60/20 = 3$ — beides ganzzahlig. ✓
+**Probe:** Dezimal: $2/9 \\approx 0{,}222 + 5/6 \\approx 0{,}833 = 1{,}056$. $19/18 \\approx 1{,}056$. ✓
 
-**Typischer Fehler:** Gemeinsame Faktoren doppelt zählen, z. B. $2^2$ für beide, ergibt $2^4 \\cdot 3 \\cdot 5 = 240$. Man nimmt den höchsten Exponenten jeder Primzahl nur **einmal**.`,
+**Typischer Fehler:** Erweiterungsschritt überspringen und direkt $\\tfrac{2+5}{9+6}$ rechnen — verletzt die Grundregel für Brucheaddition.`,
         [
-          'Zerlege beide Zahlen vollständig in Primfaktoren.',
-          'Alle Primzahlen aus beiden Zerlegungen sammeln.',
-          'Höchsten Exponenten pro Primzahl, Produkt bilden.',
+          'Zuerst Hauptnenner bestimmen, dann alles andere.',
+          'Erweitern heißt: Zähler UND Nenner mit demselben Faktor multiplizieren.',
+          'Nur Zähler werden addiert, der Hauptnenner bleibt.',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['kgv-hauptnenner', 'bruch-add'] },
       ),
     ],
+    // [1] Division durch Bruch als Multiplikation mit Kehrwert
     1: [
-      mc(
-        'Sub-Goal "Division durch Bruch als Multiplikation mit Kehrwert": Berechne $\\dfrac{3}{4} : \\dfrac{5}{8}$ und vereinfache vollständig.',
-        ['$\\dfrac{6}{5}$', '$\\dfrac{15}{32}$', '$\\dfrac{3}{10}$', '$\\dfrac{24}{40}$'],
-        0,
-        `**Ansatz:** Division durch einen Bruch heißt Multiplikation mit dem **Kehrwert** des zweiten Bruchs. Zähler und Nenner des Divisors werden also getauscht.
+      // recognize · true-false · uses=[bruch-div-kehr]
+      tf(
+        'Sub-Goal "Division durch Bruch als Multiplikation mit Kehrwert": $\\dfrac{a}{b} : \\dfrac{c}{d} = \\dfrac{a}{b} \\cdot \\dfrac{d}{c}$ (Division durch einen Bruch = Multiplikation mit dessen Kehrwert).',
+        true,
+        `**Ansatz:** Dies ist die zentrale Regel der Bruchdivision.
 
-**Rechnung:** $\\dfrac{3}{4} : \\dfrac{5}{8} = \\dfrac{3}{4} \\cdot \\dfrac{8}{5} = \\dfrac{3 \\cdot 8}{4 \\cdot 5} = \\dfrac{24}{20} = \\dfrac{6}{5}$.
+**Rechnung:** Beweis-Idee: $\\dfrac{a/b}{c/d}$ mit $\\dfrac{d}{c}$ erweitert gibt $\\dfrac{(a/b)(d/c)}{1} = \\dfrac{a\\cdot d}{b\\cdot c}$.
 
-**Probe:** Gegenrechnung $\\dfrac{6}{5} \\cdot \\dfrac{5}{8} = \\dfrac{30}{40} = \\dfrac{3}{4}$. ✓
+**Probe:** Beispiel: $\\dfrac{2}{3} : \\dfrac{4}{5} = \\dfrac{2}{3} \\cdot \\dfrac{5}{4} = \\dfrac{10}{12} = \\dfrac{5}{6}$. Dezimal: $(2/3)/(4/5) = 0{,}667/0{,}8 = 0{,}833 = 5/6$. ✓
 
-**Typischer Fehler:** Zähler und Nenner einzeln dividieren ($\\dfrac{3:5}{4:8} = \\dfrac{0{,}6}{0{,}5}$). Diese Regel gilt **nicht** für Brüche — immer mit Kehrwert multiplizieren.`,
+**Typischer Fehler:** Zähler durch Zähler und Nenner durch Nenner dividieren — das funktioniert NICHT allgemein.`,
         [
-          'Statt zu dividieren: multipliziere mit dem Kehrwert des zweiten Bruchs.',
-          'Kürze vor dem Multiplizieren, wenn möglich — hier kürzen $4$ und $8$ zu $1$ und $2$.',
-          'Das Endergebnis immer vollständig kürzen (hier mit ggT $4$).',
+          'Was ist der Kehrwert von $\\dfrac{c}{d}$?',
+          'Division ist die Umkehrung von Multiplikation.',
+          'Mit Kehrwert multiplizieren = durch den Bruch teilen.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['bruch-div-kehr'] },
+      ),
+      // apply-guided · multiple-choice · uses=[bruch-div-kehr]
+      mc(
+        'Sub-Goal "Division durch Bruch als Multiplikation mit Kehrwert": Welcher Ausdruck ist äquivalent zu $\\dfrac{3}{4} : \\dfrac{2}{5}$?',
+        ['$\\dfrac{3}{4} \\cdot \\dfrac{5}{2}$', '$\\dfrac{4}{3} \\cdot \\dfrac{2}{5}$', '$\\dfrac{3}{4} \\cdot \\dfrac{2}{5}$', '$\\dfrac{3 \\cdot 2}{4 \\cdot 5}$'],
+        0,
+        `**Ansatz:** Division durch $\\dfrac{c}{d}$ = Multiplikation mit Kehrwert $\\dfrac{d}{c}$. Der ERSTE Bruch bleibt unverändert, nur der zweite wird gestürzt.
+
+**Rechnung:** $\\dfrac{3}{4} : \\dfrac{2}{5} = \\dfrac{3}{4} \\cdot \\dfrac{5}{2} = \\dfrac{15}{8}$.
+
+**Probe:** Dezimal: $(3/4)/(2/5) = 0{,}75 / 0{,}4 = 1{,}875 = 15/8$. ✓
+
+**Typischer Fehler:** Den falschen Bruch stürzen (Option 2) oder den Kehrwert vergessen (Option 3, 4).`,
+        [
+          'Nur der zweite Bruch wird gestürzt — welcher?',
+          'Erster Bruch bleibt, zweiter wird zum Kehrwert.',
+          'Division schreibt sich um zu Multiplikation.',
         ],
         {
-          1: 'Das ist das Ergebnis von $\\dfrac{3}{4} \\cdot \\dfrac{5}{8}$, also einer **Multiplikation** statt Division. Der Kehrwert wurde vergessen.',
-          2: 'Hier wurde fälschlich Zähler durch Zähler und Nenner durch Nenner geteilt ($3/5 \\cdot 4/8 \\ne $ korrekt). Diese Regel gibt es bei Brüchen nicht.',
-          3: '$\\dfrac{24}{40}$ ist richtig in Zwischenform, aber **nicht vollständig gekürzt** — ggT$=8$ gibt $\\dfrac{3}{5}$, jedoch ist der richtige Zwischenwert $\\dfrac{24}{20}$, nicht $\\dfrac{24}{40}$.',
+          1: 'Hier wurde der erste Bruch gestürzt — korrekt ist, dass nur der zweite (Divisor) den Kehrwert bildet.',
+          2: 'Das ist schlicht eine Multiplikation, der Kehrwert fehlt. $\\tfrac{3}{4}\\cdot\\tfrac{2}{5} \\neq \\tfrac{3}{4}:\\tfrac{2}{5}$.',
+          3: 'Das ist $\\dfrac{3\\cdot 2}{4\\cdot 5} = \\dfrac{6}{20}$ — wäre eine falsche "Zähler durch Zähler"-Division. Die Regel ist Multiplikation mit Kehrwert.',
         },
+        { stage: 'apply-guided', subGoal: 1, uses: ['bruch-div-kehr'] },
       ),
+      // apply-independent · number-input · uses=[bruch-div-kehr]
       ni(
-        'Sub-Goal "Division durch Bruch als Multiplikation mit Kehrwert": Berechne $\\dfrac{2}{5} : \\dfrac{4}{15}$ und gib das Ergebnis als Dezimalzahl an.',
-        1.5, 0.001, '',
-        `**Ansatz:** Division durch Bruch = Multiplikation mit Kehrwert. Kürzen vor dem Multiplizieren spart Arbeit.
+        'Sub-Goal "Division durch Bruch als Multiplikation mit Kehrwert": Berechne $\\dfrac{8}{9} : \\dfrac{4}{3}$ und gib den Zähler nach dem Kürzen an (Nenner wird $3$).',
+        2, 0, '',
+        `**Ansatz:** In Multiplikation mit Kehrwert umwandeln, dann kürzen.
 
-**Rechnung:** $\\dfrac{2}{5} : \\dfrac{4}{15} = \\dfrac{2}{5} \\cdot \\dfrac{15}{4}$. Kürzen: $\\dfrac{15}{5} = 3$, $\\dfrac{2}{4} = \\dfrac{1}{2}$. Also $3 \\cdot \\dfrac{1}{2} = \\dfrac{3}{2} = 1{,}5$.
+**Rechnung:** $\\dfrac{8}{9} : \\dfrac{4}{3} = \\dfrac{8}{9} \\cdot \\dfrac{3}{4} = \\dfrac{8 \\cdot 3}{9 \\cdot 4} = \\dfrac{24}{36} = \\dfrac{2}{3}$ (mit $12$ gekürzt).
 
-**Probe:** Gegenrechnung $1{,}5 \\cdot \\dfrac{4}{15} = \\dfrac{6}{15} = \\dfrac{2}{5}$. ✓
+**Probe:** Dezimal: $(8/9)/(4/3) = 0{,}889 / 1{,}333 = 0{,}667 = 2/3$. ✓
 
-**Typischer Fehler:** Zähler und Nenner einzeln dividieren: $\\dfrac{2:4}{5:15} = \\dfrac{0{,}5}{\\ldots}$ — diese Regel existiert nicht. Immer mit Kehrwert multiplizieren.`,
+**Typischer Fehler:** Vor dem Kürzen rechnen — $24/36$ zu belassen statt auf $2/3$ zu kürzen. Oder die Brüche durch direkte Division zu bearbeiten.`,
         [
-          'Division durch Bruch → Multiplikation mit Kehrwert.',
-          'Vor dem Multiplizieren diagonal kürzen: $15$ gegen $5$, $2$ gegen $4$.',
-          'Endergebnis $\\dfrac{3}{2} = 1{,}5$.',
+          'Kehrwert des zweiten Bruchs: $\\dfrac{4}{3}$ wird zu $\\dfrac{3}{4}$.',
+          'Multiplizieren: Zähler mal Zähler, Nenner mal Nenner.',
+          'Kürzen: ggT von $24$ und $36$ ist $12$.',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['bruch-div-kehr'] },
       ),
-      tf(
-        'Sub-Goal "Division durch Bruch als Multiplikation mit Kehrwert": Es gilt $\\dfrac{a/b}{c} = \\dfrac{a}{b \\cdot c}$.',
-        true,
-        `**Ansatz:** Division durch eine ganze Zahl $c = \\dfrac{c}{1}$ ist Spezialfall der Bruch-durch-Bruch-Division.
-
-**Rechnung:** $\\dfrac{a/b}{c} = \\dfrac{a}{b} : \\dfrac{c}{1} = \\dfrac{a}{b} \\cdot \\dfrac{1}{c} = \\dfrac{a}{b\\cdot c}$.
-
-**Probe:** Zahlentest: $\\dfrac{2/3}{4} = \\dfrac{2}{3\\cdot 4} = \\dfrac{2}{12} = \\dfrac{1}{6}$. Dezimal-Kontrolle: $\\dfrac{2}{3} \\approx 0{,}667$, geteilt durch $4$ $\\approx 0{,}167 = 1/6$. ✓
-
-**Typischer Fehler:** $\\dfrac{a/b}{c} = \\dfrac{a \\cdot c}{b}$ schreiben (Kehrwert des Divisors $c$ vergessen, stattdessen mit $c$ multipliziert).`,
+      // error-analysis · multiple-choice · uses=[bruch-div-kehr]
+      mc(
+        'Sub-Goal "Division durch Bruch als Multiplikation mit Kehrwert": Ein Schüler rechnet $\\dfrac{1}{2} : \\dfrac{1}{4} = \\dfrac{1}{2} \\cdot \\dfrac{1}{4} = \\dfrac{1}{8}$. Wo liegt der Fehler?',
         [
-          '$c$ als Bruch $\\dfrac{c}{1}$ schreiben.',
-          'Kehrwert von $\\dfrac{c}{1}$ ist $\\dfrac{1}{c}$.',
-          'Zahlentest ist schnell und klärt die Regel.',
+          'Division wird in Multiplikation mit KEHRWERT umgeschrieben — $\\tfrac{1}{4}$ wird zu $\\tfrac{4}{1}$, nicht zu $\\tfrac{1}{4}$.',
+          'Die Brüche müssen erst auf einen gemeinsamen Nenner gebracht werden.',
+          'Es ist korrekt — $1/8$ ist das richtige Ergebnis.',
+          'Er hätte die Multiplikation weglassen und einfach $1/2 - 1/4$ rechnen sollen.',
         ],
+        0,
+        `**Ansatz:** Der Schüler hat das Divisionszeichen einfach durch Multiplikation ersetzt, ohne den zweiten Bruch zu stürzen.
+
+**Rechnung:** Korrekt: $\\dfrac{1}{2} : \\dfrac{1}{4} = \\dfrac{1}{2} \\cdot \\dfrac{4}{1} = \\dfrac{4}{2} = 2$. Ergebnis $2$, nicht $1/8$.
+
+**Probe:** Intuitiv: Wie oft passt $1/4$ in $1/2$? Zweimal. Also muss die Antwort $2$ sein.
+
+**Typischer Fehler:** Genau dieser — Division als Multiplikation ohne Kehrwert behandeln. Das macht die Rechnung mechanisch falsch.`,
+        [
+          'Was ist der Kehrwert von $\\dfrac{1}{4}$?',
+          'Wie oft passt $1/4$ in $1/2$?',
+          'Regel: Dividieren heißt Multiplizieren mit Kehrwert.',
+        ],
+        {
+          1: 'Gemeinsamer Nenner ist für Addition/Subtraktion nötig, nicht für Division.',
+          2: 'Das Ergebnis $1/8$ ist zu klein. $1/2$ geteilt durch $1/4$ muss $>1$ sein, weil $1/4 < 1/2$.',
+          3: 'Aus Division $-$ zu machen ist keine gültige Umformung. Division und Subtraktion sind verschiedene Operationen.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['bruch-div-kehr'] },
       ),
+      // transfer · matching · uses=[bruch-div-kehr, bruch-mult]
       matching(
-        'Sub-Goal "Division durch Bruch als Multiplikation mit Kehrwert": Ordne jeder Division den passenden Multiplikationsausdruck zu.',
+        'Sub-Goal "Division durch Bruch als Multiplikation mit Kehrwert": Ordne jedem Divisions-Ausdruck seine Multiplikations-Form zu.',
         [
-          { left: '$\\dfrac{3}{5} : \\dfrac{2}{7}$',   right: '$\\dfrac{3}{5} \\cdot \\dfrac{7}{2}$' },
-          { left: '$\\dfrac{1}{2} : 4$',              right: '$\\dfrac{1}{2} \\cdot \\dfrac{1}{4}$' },
-          { left: '$6 : \\dfrac{2}{3}$',              right: '$6 \\cdot \\dfrac{3}{2}$' },
-          { left: '$\\dfrac{a}{b} : \\dfrac{c}{d}$',  right: '$\\dfrac{a}{b} \\cdot \\dfrac{d}{c}$' },
+          { left: '$\\dfrac{5}{7} : \\dfrac{2}{3}$',      right: '$\\dfrac{5}{7} \\cdot \\dfrac{3}{2}$' },
+          { left: '$\\dfrac{a}{b} : \\dfrac{c}{d}$',      right: '$\\dfrac{a}{b} \\cdot \\dfrac{d}{c}$' },
+          { left: '$6 : \\dfrac{3}{4}$',                  right: '$6 \\cdot \\dfrac{4}{3}$' },
+          { left: '$\\dfrac{1}{2} : 5$',                  right: '$\\dfrac{1}{2} \\cdot \\dfrac{1}{5}$' },
         ],
-        `**Ansatz:** "Division durch Bruch = Multiplikation mit Kehrwert" — der Kehrwert ist Zähler und Nenner des zweiten Bruchs vertauscht.
+        `**Ansatz:** Bei JEDEM Divisions-Ausdruck wird der Divisor gestürzt (Kehrwert). Das gilt auch, wenn einer der Ausdrücke eine ganze Zahl ist — diese steht dann über $1$.
 
-**Rechnung:** Regel in allen Fällen gleich. Ganze Zahl $n = \\dfrac{n}{1}$, Kehrwert $\\dfrac{1}{n}$.
+**Rechnung:** Ganze Zahl $5 = \\dfrac{5}{1}$, Kehrwert $= \\dfrac{1}{5}$. Ganze Zahl $6$ bleibt als $6$, multipliziert mit Kehrwert des Bruchs.
 
-**Probe:** Bei Zeile 3: $6 : \\dfrac{2}{3} = 6 \\cdot \\dfrac{3}{2} = \\dfrac{18}{2} = 9$. Kontrolle: $9 \\cdot \\dfrac{2}{3} = 6$. ✓
+**Probe:** Jede Zeile lässt sich rechnen und ergibt denselben Wert.
 
-**Typischer Fehler:** Nur den Kehrwert auf den ersten Bruch anwenden statt auf den Divisor — oder vergessen, ganze Zahlen als Brüche zu schreiben.`,
+**Typischer Fehler:** Ganze Zahlen nicht als Bruch sehen; dann geht der Kehrwert verloren.`,
         [
-          'Der Kehrwert betrifft immer den **zweiten** (Divisor-)Bruch.',
-          'Ganze Zahlen $n = n/1$; Kehrwert $= 1/n$.',
-          'Schema: $\\dfrac{a}{b} : \\dfrac{c}{d} = \\dfrac{a}{b}\\cdot\\dfrac{d}{c}$.',
+          'Nur der zweite Ausdruck wird gestürzt.',
+          'Ganze Zahl $n$ ist $\\dfrac{n}{1}$, Kehrwert ist $\\dfrac{1}{n}$.',
+          'Der erste Bruch bleibt immer unverändert.',
         ],
-      ),
-      sorting(
-        'Sub-Goal "Division durch Bruch als Multiplikation mit Kehrwert": Bringe die Schritte zur Berechnung von $\\dfrac{5}{6} : \\dfrac{2}{9}$ in die richtige Reihenfolge.',
-        [
-          'Kehrwert bilden: $\\dfrac{9}{2}$',
-          'Als Multiplikation umschreiben: $\\dfrac{5}{6} \\cdot \\dfrac{9}{2}$',
-          'Diagonal kürzen: $\\dfrac{9}{6}$ wird $\\dfrac{3}{2}$, also $\\dfrac{5}{2}\\cdot\\dfrac{3}{2}$',
-          'Zähler und Nenner multiplizieren: $\\dfrac{15}{4}$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Bruchdivision in vier sauberen Schritten: Kehrwert $\\to$ Multiplikation $\\to$ Kürzen $\\to$ Ausmultiplizieren.
-
-**Rechnung:** $\\dfrac{5}{6} \\cdot \\dfrac{9}{2}$. Gemeinsamer Faktor $3$ in $9$ und $6$: $\\dfrac{5}{\\cancel{6}_{2}} \\cdot \\dfrac{\\cancel{9}_{3}}{2} = \\dfrac{5\\cdot 3}{2\\cdot 2} = \\dfrac{15}{4}$.
-
-**Probe:** Gegenrechnung: $\\dfrac{15}{4} \\cdot \\dfrac{2}{9} = \\dfrac{30}{36} = \\dfrac{5}{6}$. ✓
-
-**Typischer Fehler:** Kürzen überspringen und mit großen Zahlen weiterrechnen ($\\dfrac{45}{12}$), dann am Ende kürzen vergessen.`,
-        [
-          'Zuerst Kehrwert des Divisors identifizieren.',
-          'Erst kürzen, dann multiplizieren — spart Arbeit.',
-          'Ergebnis auf einfachste Form bringen.',
-        ],
+        { stage: 'transfer', subGoal: 1, uses: ['bruch-div-kehr', 'bruch-mult'] },
       ),
     ],
+    // [2] Doppelbrüche auflösen
     2: [
+      // recognize · true-false · uses=[doppelbruch]
       tf(
-        'Sub-Goal "Doppelbrüche auflösen": Der Doppelbruch $\\dfrac{\\;\\tfrac{2}{3}\\;}{\\;\\tfrac{4}{9}\\;}$ ist gleich $\\dfrac{3}{2}$.',
+        'Sub-Goal "Doppelbrüche auflösen": Ein Doppelbruch $\\dfrac{a/b}{c/d}$ lässt sich immer als $\\dfrac{a \\cdot d}{b \\cdot c}$ umschreiben.',
         true,
-        `**Ansatz:** Ein Doppelbruch ist eine Division zweier Brüche: $\\dfrac{\\,a/b\\,}{\\,c/d\\,} = \\dfrac{a}{b} : \\dfrac{c}{d} = \\dfrac{a}{b} \\cdot \\dfrac{d}{c} = \\dfrac{a \\cdot d}{b \\cdot c}$.
+        `**Ansatz:** Doppelbruch = Division zweier Brüche = Multiplikation mit Kehrwert.
 
-**Rechnung:** $\\dfrac{2/3}{4/9} = \\dfrac{2}{3} \\cdot \\dfrac{9}{4} = \\dfrac{18}{12} = \\dfrac{3}{2}$.
+**Rechnung:** $\\dfrac{a/b}{c/d} = \\dfrac{a}{b} : \\dfrac{c}{d} = \\dfrac{a}{b} \\cdot \\dfrac{d}{c} = \\dfrac{ad}{bc}$.
 
-**Probe:** $\\dfrac{3}{2} \\cdot \\dfrac{4}{9} = \\dfrac{12}{18} = \\dfrac{2}{3}$ — stimmt mit dem Zähler überein. ✓
+**Probe:** $\\dfrac{2/3}{4/5} = \\dfrac{2 \\cdot 5}{3 \\cdot 4} = \\dfrac{10}{12} = \\dfrac{5}{6}$. Dezimal $(2/3)/(4/5) = 0{,}833 = 5/6$. ✓
 
-**Typischer Fehler:** Zähler und Nenner "kürzen" wie bei einem einfachen Bruch ($2 / 4 = 1/2$, $3 / 9 = 1/3 \\Rightarrow 1/2 : 1/3 = 3/2$). Das gibt hier zufällig das richtige Ergebnis, ist aber kein tragfähiges Schema — lieber immer über Kehrwert gehen.`,
+**Typischer Fehler:** Zähler und Nenner einzeln dividieren: $(a:c)/(b:d)$ — das ist keine gültige Umformung.`,
         [
-          'Doppelbruch = Division. Umschreiben als $\\dfrac{a}{b} : \\dfrac{c}{d}$.',
-          'Mit dem Kehrwert multiplizieren: $\\dfrac{a}{b} \\cdot \\dfrac{d}{c}$.',
-          'Die Formel "äußere Glieder ins Zähler-Produkt, innere ins Nenner-Produkt" (Außenpaar $a \\cdot d$, Innenpaar $b \\cdot c$).',
+          'Doppelbruch $=$ Division von Brüchen.',
+          'Division wird zur Multiplikation mit Kehrwert.',
+          'Kreuzweise multiplizieren liefert $ad/bc$.',
         ],
+        { stage: 'recognize', subGoal: 2, uses: ['doppelbruch'] },
       ),
-      ni(
-        'Sub-Goal "Doppelbrüche auflösen": Berechne $\\dfrac{\\;3/5\\;}{\\;6/25\\;}$ als Dezimalzahl.',
-        2.5, 0.001, '',
-        `**Ansatz:** Doppelbruch = Division. Der obere Bruch bleibt stehen, mit dem Kehrwert des unteren multiplizieren.
-
-**Rechnung:** $\\dfrac{3/5}{6/25} = \\dfrac{3}{5} \\cdot \\dfrac{25}{6} = \\dfrac{75}{30} = \\dfrac{5}{2} = 2{,}5$.
-
-**Probe:** Gegenrechnung: $2{,}5 \\cdot \\dfrac{6}{25} = \\dfrac{15}{25} = \\dfrac{3}{5}$. ✓
-
-**Typischer Fehler:** Oberen und unteren Bruch "zusammenrechnen" — z. B. direkt $3/6 = 0{,}5$ und $5/25 = 0{,}2$ ausgeben. Die Werte sind verschieden, und die Regel gibt es nicht.`,
-        [
-          'Doppelbruch = $\\dfrac{a/b}{c/d} = \\dfrac{a \\cdot d}{b \\cdot c}$.',
-          'Hier $a=3, b=5, c=6, d=25 \\to \\dfrac{75}{30}$.',
-          'Kürzen per ggT$(75,30)=15$ ergibt $\\dfrac{5}{2}$.',
-        ],
-      ),
+      // apply-guided · multiple-choice · uses=[doppelbruch]
       mc(
-        'Sub-Goal "Doppelbrüche auflösen": Welcher Ausdruck ist äquivalent zu $\\dfrac{\\;a/b\\;}{\\;c/d\\;}$?',
-        ['$\\dfrac{a \\cdot d}{b \\cdot c}$', '$\\dfrac{a \\cdot c}{b \\cdot d}$', '$\\dfrac{a + d}{b + c}$', '$\\dfrac{a - c}{b - d}$'],
+        'Sub-Goal "Doppelbrüche auflösen": Welcher einfache Bruch ist gleich $\\dfrac{\\tfrac{3}{4}}{\\tfrac{9}{8}}$?',
+        ['$\\dfrac{2}{3}$', '$\\dfrac{27}{32}$', '$\\dfrac{3}{4}$', '$\\dfrac{4}{3}$'],
         0,
-        `**Ansatz:** Doppelbruch als Division schreiben: $\\dfrac{a}{b} : \\dfrac{c}{d}$, dann Kehrwert.
+        `**Ansatz:** Doppelbruch in Division umwandeln, dann mit Kehrwert multiplizieren.
 
-**Rechnung:** $\\dfrac{a}{b} : \\dfrac{c}{d} = \\dfrac{a}{b} \\cdot \\dfrac{d}{c} = \\dfrac{a \\cdot d}{b \\cdot c}$ — "außen mal außen durch innen mal innen".
+**Rechnung:** $\\dfrac{3/4}{9/8} = \\dfrac{3}{4} : \\dfrac{9}{8} = \\dfrac{3}{4} \\cdot \\dfrac{8}{9} = \\dfrac{24}{36} = \\dfrac{2}{3}$ (gekürzt mit $12$).
 
-**Probe:** Zahlentest $a=1,b=2,c=3,d=4$: $\\dfrac{1/2}{3/4} = \\dfrac{1\\cdot 4}{2\\cdot 3} = \\dfrac{4}{6} = \\dfrac{2}{3}$. ✓
+**Probe:** Dezimal: $0{,}75 / 1{,}125 = 0{,}667 = 2/3$. ✓
 
-**Typischer Fehler:** Zähler mit Zähler und Nenner mit Nenner multiplizieren (wie normale Bruchmultiplikation) — das gibt $\\dfrac{ac}{bd}$ statt $\\dfrac{ad}{bc}$.`,
+**Typischer Fehler:** Zähler und Nenner einfach multiplizieren: $3 \\cdot 9 = 27$, $4 \\cdot 8 = 32$ (Option 2). Das wäre nur korrekt, wenn der Doppelbruch $(3/4) \\cdot (9/8)$ gewesen wäre.`,
         [
-          'Division der beiden Brüche aufschreiben.',
-          'Kehrwert des unteren Bruchs bilden.',
-          'Merkregel: "außen ins Zähler-Produkt, innen ins Nenner-Produkt".',
+          'Doppelbruch = Division — was ist die Regel?',
+          'Zähler bleibt, Nenner wird gestürzt.',
+          'Nach der Multiplikation kürzen.',
         ],
         {
-          1: 'Das wäre $\\dfrac{a}{b} \\cdot \\dfrac{c}{d}$ (Multiplikation der Brüche), nicht $\\dfrac{a/b}{c/d}$ (Division). Bei Division den Kehrwert nehmen.',
-          2: 'Bei Doppelbrüchen werden Zähler und Nenner **nicht** einzeln addiert oder subtrahiert. Division ist $\\cdot$ mit Kehrwert.',
-          3: 'Subtraktion von Brüchen funktioniert ganz anders — mit Hauptnenner. Hier geht es um Division.',
+          1: '$27/32$ entsteht bei $\\tfrac{3}{4} \\cdot \\tfrac{9}{8}$ — aber hier ist der Nenner $\\tfrac{9}{8}$ als Divisor, nicht als Faktor.',
+          2: 'Das ist nur der Zählerbruch. Der Nennerbruch wird ignoriert.',
+          3: '$4/3$ ist der Kehrwert von $3/4$ — das ist auch nicht das Ergebnis der Division.',
         },
+        { stage: 'apply-guided', subGoal: 2, uses: ['doppelbruch'] },
       ),
-      matching(
-        'Sub-Goal "Doppelbrüche auflösen": Ordne jedem Doppelbruch seine vereinfachte Form zu.',
+      // apply-independent · number-input · uses=[doppelbruch]
+      ni(
+        'Sub-Goal "Doppelbrüche auflösen": Berechne $\\dfrac{\\tfrac{5}{6}}{\\tfrac{10}{3}}$ und gib den Zähler des vollständig gekürzten Ergebnisses an (Nenner wird $4$).',
+        1, 0, '',
+        `**Ansatz:** Division in Multiplikation mit Kehrwert, dann kürzen.
+
+**Rechnung:** $\\dfrac{5/6}{10/3} = \\dfrac{5}{6} \\cdot \\dfrac{3}{10} = \\dfrac{15}{60} = \\dfrac{1}{4}$ (gekürzt mit ggT $15$).
+
+**Probe:** Dezimal: $(5/6)/(10/3) = 0{,}833/3{,}333 = 0{,}25 = 1/4$. ✓
+
+**Typischer Fehler:** Vor dem Kürzen stehenbleiben: $15/60$ ist rechnerisch richtig, aber nicht vollständig gekürzt.`,
         [
-          { left: '$\\dfrac{\\;2/3\\;}{\\;4/5\\;}$',  right: '$\\dfrac{5}{6}$' },
-          { left: '$\\dfrac{\\;1/2\\;}{\\;1/4\\;}$',  right: '$2$' },
-          { left: '$\\dfrac{\\;a\\;}{\\;b/c\\;}$',    right: '$\\dfrac{ac}{b}$' },
-          { left: '$\\dfrac{\\;a/b\\;}{\\;c\\;}$',    right: '$\\dfrac{a}{bc}$' },
+          'Division zu Multiplikation mit Kehrwert.',
+          'Zähler und Nenner separat multiplizieren.',
+          'Vollständig kürzen am Ende.',
         ],
-        `**Ansatz:** Jeder Doppelbruch: oberen Bruch mal Kehrwert des unteren.
-
-**Rechnung:**
-· $\\dfrac{2/3}{4/5} = \\dfrac{2\\cdot 5}{3\\cdot 4} = \\dfrac{10}{12} = \\dfrac{5}{6}$
-· $\\dfrac{1/2}{1/4} = \\dfrac{1\\cdot 4}{2\\cdot 1} = 2$
-· $\\dfrac{a}{b/c} = a \\cdot \\dfrac{c}{b} = \\dfrac{ac}{b}$
-· $\\dfrac{a/b}{c} = \\dfrac{a}{b} \\cdot \\dfrac{1}{c} = \\dfrac{a}{bc}$
-
-**Probe:** Konsistenz-Check: in jedem Fall gilt "Doppelbruch-Umkehr" — Brüche über- und untereinander richtig kippen.
-
-**Typischer Fehler:** Reine Zahl (z. B. $c$ im letzten Paar) nicht als Bruch $c/1$ lesen und dann in den Nenner statt in den Zähler des Kehrwerts schreiben.`,
-        [
-          'Jede ganze Zahl $= \\dfrac{\\text{Zahl}}{1}$.',
-          'Kehrwert des unteren Bruchs.',
-          'Bei Matching auf typische Schreibweisen achten.',
-        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['doppelbruch'] },
       ),
-      sorting(
-        'Sub-Goal "Doppelbrüche auflösen": Bringe die Schritte zur Vereinfachung von $\\dfrac{\\;7/8\\;}{\\;14/3\\;}$ in die richtige Reihenfolge.',
+      // error-analysis · multiple-choice · uses=[doppelbruch]
+      mc(
+        'Sub-Goal "Doppelbrüche auflösen": Ein Schüler schreibt $\\dfrac{\\tfrac{2}{3}}{\\tfrac{4}{5}} = \\dfrac{2 \\cdot 4}{3 \\cdot 5} = \\dfrac{8}{15}$. Wo liegt der Fehler?',
         [
-          'Als Division aufschreiben: $\\dfrac{7}{8} : \\dfrac{14}{3}$',
-          'Kehrwert und Multiplikation: $\\dfrac{7}{8} \\cdot \\dfrac{3}{14}$',
-          'Kürzen: $\\dfrac{7}{14} = \\dfrac{1}{2}$, also $\\dfrac{1}{8} \\cdot \\dfrac{3}{2}$',
-          'Ausmultiplizieren: $\\dfrac{3}{16}$',
+          'Bei der Division wird der zweite Bruch gestürzt — korrekt ist $\\dfrac{2 \\cdot 5}{3 \\cdot 4} = \\dfrac{10}{12} = \\dfrac{5}{6}$.',
+          'Zähler und Nenner gruppieren falsch — er hätte $\\dfrac{2+4}{3+5}$ schreiben sollen.',
+          'Das Ergebnis $\\dfrac{8}{15}$ ist korrekt, der Schritt dazwischen ist egal.',
+          'Ein Doppelbruch ist nicht definiert — deshalb kann es keine Lösung geben.',
         ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Doppelbruch = Division → Kehrwert → Kürzen → Produkt.
+        0,
+        `**Ansatz:** Der Schüler hat einfach Zähler × Zähler / Nenner × Nenner gerechnet — wie bei Multiplikation. Das ist aber eine DIVISION.
 
-**Rechnung:** $\\dfrac{7}{8} \\cdot \\dfrac{3}{14} = \\dfrac{7 \\cdot 3}{8 \\cdot 14} = \\dfrac{21}{112} = \\dfrac{3}{16}$.
+**Rechnung:** Korrekt: $\\dfrac{2/3}{4/5} = \\dfrac{2}{3} \\cdot \\dfrac{5}{4} = \\dfrac{10}{12} = \\dfrac{5}{6}$.
 
-**Probe:** Gegenrechnung $\\dfrac{3}{16} \\cdot \\dfrac{14}{3} = \\dfrac{42}{48} = \\dfrac{7}{8}$. ✓
+**Probe:** Dezimal: $0{,}667 / 0{,}8 = 0{,}833 = 5/6$. Schülerlösung $8/15 \\approx 0{,}533$ — offensichtlich falsch.
 
-**Typischer Fehler:** Nicht vor dem Multiplizieren kürzen — Endergebnis dann vergessen zu reduzieren.`,
+**Typischer Fehler:** Doppelbruch als Produkt behandeln. Der waagrechte Strich mitten drin bedeutet Division, nicht Multiplikation.`,
         [
-          'Doppelbruch → Division.',
-          'Kehrwert → Multiplikation.',
-          'Kürzen vor Ausmultiplizieren.',
+          'Was bedeutet der mittlere Bruchstrich?',
+          'Division oder Multiplikation?',
+          'Bei Division wird der zweite Bruch umgekehrt.',
         ],
+        {
+          1: 'Diese "Regel" $\\tfrac{a+b}{c+d}$ gibt es nicht — weder für Multiplikation noch für Division.',
+          2: 'Das Ergebnis ist falsch. Dezimalprobe zeigt $8/15 \\neq 5/6$.',
+          3: 'Ein Doppelbruch ist wohldefiniert als Division. Der Schüler hat nur die falsche Regel angewandt.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['doppelbruch'] },
+      ),
+      // transfer · number-input · uses=[doppelbruch, ggt-kuerzen]
+      ni(
+        'Sub-Goal "Doppelbrüche auflösen": Berechne den Doppelbruch $\\dfrac{\\tfrac{7}{12}}{\\tfrac{14}{9}}$ vollständig und gib den Nenner des gekürzten Ergebnisses an (Zähler wird $3$).',
+        8, 0, '',
+        `**Ansatz:** Division in Multiplikation mit Kehrwert, dann vollständig kürzen.
+
+**Rechnung:** $\\dfrac{7/12}{14/9} = \\dfrac{7}{12} \\cdot \\dfrac{9}{14} = \\dfrac{63}{168}$. Kürzen: ggT$(63, 168) = 21$. $\\dfrac{63}{168} = \\dfrac{3}{8}$.
+
+**Probe:** Dezimal: $(7/12)/(14/9) = 0{,}583/1{,}556 = 0{,}375 = 3/8$. ✓
+
+**Typischer Fehler:** Nicht vollständig kürzen: z. B. stehenbleiben bei $\\tfrac{9}{24}$ (nur mit $7$ gekürzt) oder $\\tfrac{21}{56}$ (nur mit $3$).`,
+        [
+          'Erst Kehrwert, dann multiplizieren.',
+          'ggT von Zähler und Nenner finden.',
+          'Alles auf einmal kürzen spart Zwischenschritte.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['doppelbruch', 'ggt-kuerzen'] },
       ),
     ],
+    // [3] Bruch vollständig kürzen per ggT
     3: [
-      matching(
-        'Sub-Goal "Bruch vollständig kürzen per ggT": Ordne jedem Bruch seine vollständig gekürzte Form zu.',
+      // recognize · true-false · uses=[ggt-kuerzen]
+      tf(
+        'Sub-Goal "Bruch vollständig kürzen per ggT": Ein Bruch ist vollständig gekürzt, wenn Zähler und Nenner keinen gemeinsamen Teiler außer $1$ mehr haben (also $\\text{ggT}(z, n) = 1$).',
+        true,
+        `**Ansatz:** Vollständig gekürzt = teilerfremd. Der ggT ist dann genau $1$.
+
+**Rechnung:** Beispiel: $\\dfrac{6}{8}$: $\\text{ggT}(6,8) = 2$, nicht gekürzt. Nach Kürzen: $\\dfrac{3}{4}$: $\\text{ggT}(3,4) = 1$, fertig.
+
+**Probe:** Definition und gängige Praxis in Schule und Uni. ✓
+
+**Typischer Fehler:** Stufenweise kürzen und früher aufhören, z. B. $\\dfrac{12}{18} \\to \\dfrac{6}{9}$ statt direkt auf $\\dfrac{2}{3}$. Das ist zwar rechnerisch richtig, aber nicht vollständig.`,
         [
-          { left: '$\\dfrac{18}{24}$',   right: '$\\dfrac{3}{4}$' },
-          { left: '$\\dfrac{42}{56}$',   right: '$\\dfrac{3}{4}$' },
-          { left: '$\\dfrac{15}{35}$',   right: '$\\dfrac{3}{7}$' },
-          { left: '$\\dfrac{48}{60}$',   right: '$\\dfrac{4}{5}$' },
+          'Was heißt "vollständig gekürzt"?',
+          'Wann gibt es keinen gemeinsamen Teiler mehr?',
+          '$\\text{ggT} = 1$ ist das Stoppkriterium.',
         ],
-        `**Ansatz:** Vollständig kürzen = Zähler und Nenner durch ihren **größten gemeinsamen Teiler (ggT)** teilen. Primfaktorzerlegung hilft, den ggT sicher zu finden.
-
-**Rechnung:**
-· $\\dfrac{18}{24}$: ggT$(18,24)=6$ → $\\dfrac{3}{4}$
-· $\\dfrac{42}{56}$: ggT$(42,56)=14$ → $\\dfrac{3}{4}$
-· $\\dfrac{15}{35}$: ggT$(15,35)=5$ → $\\dfrac{3}{7}$
-· $\\dfrac{48}{60}$: ggT$(48,60)=12$ → $\\dfrac{4}{5}$
-
-**Probe:** Bei jedem Ergebnis sind Zähler und Nenner **teilerfremd** (ggT $=1$). Das ist das Abbruchkriterium.
-
-**Typischer Fehler:** Nur mit einem kleinen Teiler kürzen (z. B. $\\dfrac{18}{24}$ durch $2$ → $\\dfrac{9}{12}$) und dann stehen bleiben. Immer so lange kürzen, bis ggT $=1$.`,
-        [
-          'Primfaktorzerlegung von Zähler und Nenner; gemeinsame Faktoren = ggT.',
-          'Durch den ggT teilen, nicht durch einen kleineren gemeinsamen Teiler.',
-          'Kontrolle: ggT$(\\text{neuer Zähler}, \\text{neuer Nenner}) = 1$ (teilerfremd).',
-        ],
+        { stage: 'recognize', subGoal: 3, uses: ['ggt-kuerzen'] },
       ),
-      ni(
-        'Sub-Goal "Bruch vollständig kürzen per ggT": Was ist der ggT von Zähler und Nenner in $\\dfrac{72}{108}$?',
-        36, 0, '',
-        `**Ansatz:** Primfaktorzerlegung, gemeinsame Primfaktoren mit **kleinstem** Exponenten nehmen.
-
-**Rechnung:** $72 = 2^3 \\cdot 3^2$, $108 = 2^2 \\cdot 3^3$. Gemeinsame Primfaktoren mit Minimum: $2^2$ und $3^2$. ggT $= 4 \\cdot 9 = 36$.
-
-**Probe:** $72/36 = 2$ und $108/36 = 3$. Beide ganzzahlig, und $2/3$ ist vollständig gekürzt (ggT$(2,3)=1$). ✓
-
-**Typischer Fehler:** Höchsten Exponenten nehmen (das wäre das kgV) oder nur einen kleineren gemeinsamen Teiler wie $12$ wählen und den Bruch nicht vollständig kürzen.`,
-        [
-          'Primfaktorzerlegung beider Zahlen.',
-          'Gemeinsame Primfaktoren mit **kleinstem** Exponenten.',
-          'Produkt bilden: $2^2 \\cdot 3^2 = 36$.',
-        ],
-      ),
+      // apply-guided · multiple-choice · uses=[ggt-kuerzen]
       mc(
-        'Sub-Goal "Bruch vollständig kürzen per ggT": Welche Form von $\\dfrac{84}{126}$ ist vollständig gekürzt?',
-        ['$\\dfrac{2}{3}$', '$\\dfrac{4}{6}$', '$\\dfrac{6}{9}$', '$\\dfrac{12}{18}$'],
+        'Sub-Goal "Bruch vollständig kürzen per ggT": Welches ist die vollständig gekürzte Form von $\\dfrac{36}{60}$?',
+        ['$\\dfrac{3}{5}$', '$\\dfrac{6}{10}$', '$\\dfrac{9}{15}$', '$\\dfrac{18}{30}$'],
         0,
-        `**Ansatz:** Vollständig gekürzt heißt ggT$(\\text{Zähler, Nenner}) = 1$ — Zähler und Nenner sind teilerfremd.
+        `**Ansatz:** ggT bestimmen und damit kürzen.
 
-**Rechnung:** $84 = 2^2 \\cdot 3 \\cdot 7$, $126 = 2 \\cdot 3^2 \\cdot 7$. ggT $= 2 \\cdot 3 \\cdot 7 = 42$. Also $84/42 = 2$ und $126/42 = 3$ → $\\dfrac{2}{3}$.
+**Rechnung:** $36 = 2^2 \\cdot 3^2$, $60 = 2^2 \\cdot 3 \\cdot 5$. ggT = $2^2 \\cdot 3 = 12$. $\\dfrac{36}{60} = \\dfrac{36:12}{60:12} = \\dfrac{3}{5}$.
 
-**Probe:** ggT$(2,3) = 1$ — vollständig gekürzt. ✓
+**Probe:** $\\text{ggT}(3,5) = 1$ — vollständig gekürzt. Dezimal: $36/60 = 0{,}6 = 3/5$. ✓
 
-**Typischer Fehler:** Stoppen, sobald ein beliebiger Teiler durchgeht, ohne zu prüfen, ob noch weiter gekürzt werden kann.`,
+**Typischer Fehler:** Nur mit $2$ oder nur mit $6$ kürzen und stehen bleiben (Optionen 2, 3, 4).`,
         [
-          'Alle Optionen sind gleich groß — welche hat teilerfremde Zähler/Nenner?',
-          'ggT der gekürzten Form muss $1$ sein.',
-          'Kontrolle mit $84/126 = ?$ bei konsequenter Division durch $42$.',
+          'ggT von $36$ und $60$?',
+          'Nur durch den ggT kürzen, nicht stufenweise.',
+          'Prüfe: haben Zähler und Nenner noch gemeinsame Teiler?',
         ],
         {
-          1: '$\\dfrac{4}{6}$ ist **nicht** vollständig gekürzt: ggT$(4,6)=2$. Weiter kürzen ergibt $\\dfrac{2}{3}$.',
-          2: '$\\dfrac{6}{9}$: ggT$(6,9)=3$. Weiter kürzen: $\\dfrac{2}{3}$. Zwischenergebnis, kein Endpunkt.',
-          3: '$\\dfrac{12}{18}$: ggT$(12,18)=6$. Weiter kürzen: $\\dfrac{2}{3}$. Viel zu früh gestoppt.',
+          1: '$6/10$ ist nur mit $6$ gekürzt — weiter kürzbar mit $2$ zu $3/5$.',
+          2: '$9/15$ ist nur mit $4$ gekürzt — weiter kürzbar mit $3$ zu $3/5$.',
+          3: '$18/30$ ist nur mit $2$ gekürzt — weiter kürzbar mit $6$ zu $3/5$.',
         },
+        { stage: 'apply-guided', subGoal: 3, uses: ['ggt-kuerzen'] },
       ),
-      tf(
-        'Sub-Goal "Bruch vollständig kürzen per ggT": Ein Bruch ist vollständig gekürzt, wenn ggT von Zähler und Nenner gleich $1$ ist.',
-        true,
-        `**Ansatz:** Definitorisch: "vollständig gekürzt" heißt exakt, dass Zähler und Nenner teilerfremd sind.
+      // apply-independent · number-input · uses=[ggt-kuerzen]
+      ni(
+        'Sub-Goal "Bruch vollständig kürzen per ggT": Kürze $\\dfrac{84}{132}$ vollständig und gib den Zähler an (Nenner wird $11$).',
+        7, 0, '',
+        `**Ansatz:** Primfaktorzerlegung, ggT bestimmen, kürzen.
 
-**Rechnung:** Formal: $\\dfrac{a}{b}$ ist vollständig gekürzt $\\Leftrightarrow$ ggT$(a,b) = 1$ $\\Leftrightarrow$ $a$ und $b$ haben keinen gemeinsamen Primfaktor.
+**Rechnung:** $84 = 2^2 \\cdot 3 \\cdot 7$, $132 = 2^2 \\cdot 3 \\cdot 11$. ggT $= 2^2 \\cdot 3 = 12$. $\\dfrac{84}{132} = \\dfrac{84:12}{132:12} = \\dfrac{7}{11}$.
 
-**Probe:** $\\dfrac{5}{7}$: ggT$=1$, gekürzt. $\\dfrac{6}{9}$: ggT$=3$, nicht gekürzt.
+**Probe:** $\\text{ggT}(7,11) = 1$ (beides Primzahlen, verschieden). Vollständig gekürzt. ✓
 
-**Typischer Fehler:** Glauben, "gekürzt" bedeute "klein geschrieben". Nein — die strukturelle Bedingung ist Teilerfremdheit.`,
+**Typischer Fehler:** Schrittweise kürzen und früh aufhören, z. B. $84/132 \\to 42/66 \\to 21/33 \\to 7/11$ — rechnerisch OK, aber ineffizient.`,
         [
-          'Wann kann man nicht mehr kürzen?',
-          'Formalisierung: Abwesenheit gemeinsamer Teiler.',
-          'Teilerfremdheit = ggT $= 1$.',
+          '$\\text{ggT}(84, 132) = ?$',
+          'Primfaktorzerlegung hilft.',
+          'Kürzen mit dem ggT in einem Zug.',
         ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['ggt-kuerzen'] },
       ),
-      sorting(
-        'Sub-Goal "Bruch vollständig kürzen per ggT": Bringe die Schritte zur vollständigen Kürzung von $\\dfrac{120}{180}$ in die richtige Reihenfolge.',
+      // error-analysis · multiple-choice · uses=[ggt-kuerzen]
+      mc(
+        'Sub-Goal "Bruch vollständig kürzen per ggT": Ein Schüler sagt: $\\dfrac{15}{24}$ ist vollständig gekürzt, weil $15$ und $24$ keine Primfaktoren gemeinsam haben — $15 = 3 \\cdot 5$ und $24 = 2^3 \\cdot 3$. Wo liegt der Fehler?',
         [
-          'Primfaktorzerlegung: $120 = 2^3 \\cdot 3 \\cdot 5$ und $180 = 2^2 \\cdot 3^2 \\cdot 5$',
-          'Gemeinsame Primfaktoren mit kleinstem Exponenten: $2^2, 3^1, 5^1 \\to$ ggT $= 60$',
-          'Zähler und Nenner durch ggT teilen: $\\dfrac{120/60}{180/60} = \\dfrac{2}{3}$',
-          'Kontrolle: ggT$(2, 3) = 1$ → vollständig gekürzt',
+          'Beide enthalten den Faktor $3$ — der Bruch ist nicht vollständig gekürzt; korrekt wäre $\\dfrac{5}{8}$.',
+          'Der Schüler hat die Zerlegung von $24$ falsch — sie ist $2^2 \\cdot 6$.',
+          'Der Schüler hat recht — $\\dfrac{15}{24}$ ist die einfachste Form.',
+          'Vollständig gekürzt ist ein subjektiver Begriff.',
+        ],
+        0,
+        `**Ansatz:** Der Schüler hat die Zerlegung korrekt durchgeführt, aber übersehen, dass $3$ in BEIDEN vorkommt.
+
+**Rechnung:** $15 = 3 \\cdot 5$, $24 = 2^3 \\cdot 3$. Gemeinsam: $3$. Also ist ggT $= 3$, und $\\dfrac{15}{24} = \\dfrac{5}{8}$.
+
+**Probe:** $\\text{ggT}(5,8) = 1$ — jetzt vollständig gekürzt. ✓
+
+**Typischer Fehler:** Primzahlen-Zerlegung machen, aber die Schnittmenge der Primfaktoren übersehen.`,
+        [
+          'Welche Primfaktoren kommen in BEIDEN vor?',
+          'ggT ist das Produkt der gemeinsamen Primfaktoren (jeweils mit minimalem Exponenten).',
+          'Test: Ist $15/3 = 5$ und $24/3 = 8$ beides ganzzahlig?',
+        ],
+        {
+          1: '$2^2 \\cdot 6 = 24$ ist rechnerisch richtig, aber keine Primfaktorzerlegung ($6$ ist keine Primzahl). Der eigentliche Fehler ist, dass $3$ in beiden vorkommt.',
+          2: 'Der Schüler hat unrecht — das Auge hat den gemeinsamen Faktor $3$ übersehen.',
+          3: 'Vollständig gekürzt hat eine exakte Definition: $\\text{ggT}(z,n) = 1$. Kein Subjektivismus.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['ggt-kuerzen'] },
+      ),
+      // transfer · sorting · uses=[ggt-kuerzen]
+      sorting(
+        'Sub-Goal "Bruch vollständig kürzen per ggT": Bringe die Schritte zum vollständigen Kürzen von $\\dfrac{54}{90}$ in die richtige Reihenfolge.',
+        [
+          'Primfaktorzerlegung: $54 = 2 \\cdot 3^3$, $90 = 2 \\cdot 3^2 \\cdot 5$',
+          'ggT bestimmen: gemeinsame Primfaktoren mit Minimum-Exponent: $2 \\cdot 3^2 = 18$',
+          'Zähler und Nenner durch ggT teilen: $54 : 18 = 3$, $90 : 18 = 5$',
+          'Ergebnis: $\\dfrac{3}{5}$ mit $\\text{ggT}(3, 5) = 1$ — fertig',
         ],
         [0, 1, 2, 3],
-        `**Ansatz:** Die vier Standardschritte des ggT-Kürzens.
+        `**Ansatz:** Vier Schritte: Zerlegung → ggT → Kürzen → Endkontrolle.
 
-**Rechnung:** Ergebnis $\\dfrac{2}{3}$.
+**Rechnung:** $\\dfrac{54}{90} = \\dfrac{3}{5}$.
 
-**Probe:** $\\dfrac{2}{3}$ dezimal $\\approx 0{,}667$ und $\\dfrac{120}{180} = 0{,}667$. ✓
+**Probe:** Dezimal: $54/90 = 0{,}6 = 3/5$. ✓
 
-**Typischer Fehler:** Schritte überspringen und direkt mit einem kleineren gemeinsamen Teiler kürzen — führt oft nicht zur Endform.`,
+**Typischer Fehler:** Reihenfolge umdrehen und erst kürzen dann zerlegen — funktioniert nicht ohne ggT. Oder Endkontrolle vergessen und stehenbleiben bei unvollständig gekürzter Form.`,
         [
-          'Primfaktoren vor ggT.',
-          'ggT ist das Produkt der gemeinsamen Primfaktoren mit kleinstem Exponenten.',
-          'Zum Schluss Teilerfremdheit prüfen.',
+          'Zerlegung VOR dem Kürzen.',
+          'ggT ist das Produkt gemeinsamer Primfaktoren.',
+          'Endkontrolle: sind Zähler und Nenner teilerfremd?',
         ],
+        { stage: 'transfer', subGoal: 3, uses: ['ggt-kuerzen'] },
       ),
     ],
   },
-
   // ───────────────────────────────────────────────────────────────────────
   // alg-0-3 — Prozent & Dreisatz  (5 subGoals, je 5 Aufgaben = 25 Goal-Tasks)
   // ───────────────────────────────────────────────────────────────────────
   'alg-0-3': {
-    // [0] Grundformel W = G·p/100
+    // [0] Grundformel: W = G·p/100, nach G / p umstellen
     0: [
-      ni(
-        'Sub-Goal "Grundformel: $W = G \\cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$": Eine Welle aus Stahl wiegt $45\\,\\text{kg}$. Wie schwer ist $30\\%$ davon (in kg)?',
-        13.5, 0.01, 'kg',
-        `**Ansatz:** Prozentwert $W = G \\cdot \\dfrac{p}{100}$ direkt einsetzen.
+      // recognize · true-false · uses=[prozent-def]
+      tf(
+        'Sub-Goal "Grundformel: $W = G \\cdot p/100$": $25\\%$ bedeutet $\\dfrac{25}{100} = 0{,}25$.',
+        true,
+        `**Ansatz:** Prozent heißt "pro Hundert". $p\\%$ ist definiert als $\\tfrac{p}{100}$.
 
-**Rechnung:** $W = 45 \\cdot \\dfrac{30}{100} = 45 \\cdot 0{,}3 = 13{,}5\\,\\text{kg}$.
+**Rechnung:** $25\\% = \\tfrac{25}{100} = \\tfrac{1}{4} = 0{,}25$.
 
-**Probe:** Rückrechnung: $\\dfrac{13{,}5}{45} = 0{,}3 = 30\\%$. ✓
+**Probe:** $0{,}25 \\cdot 100 = 25$. Also entspricht $0{,}25$ tatsächlich $25\\%$. ✓
 
-**Typischer Fehler:** $45 \\cdot 30 = 1350$ ohne den $/100$ — der Prozentsatz ist ein Bruchteil, nicht der Prozent-Wert.`,
+**Typischer Fehler:** Prozent als ganze Zahl betrachten, z. B. $25\\% = 25$ — das wäre $2500\\%$.`,
         [
-          'Formel: Prozentwert gleich Grundwert $\\times$ Prozentsatz $/100$.',
-          '$G = 45\\,\\text{kg}$, $p = 30$.',
-          'Prozent heißt "pro Hundert", also mit $0{,}3$ multiplizieren.',
+          'Was bedeutet $\\%$?',
+          '$p\\% = p/100$.',
+          '$25/100 = ?$',
         ],
+        { stage: 'recognize', subGoal: 0, uses: ['prozent-def'] },
       ),
+      // apply-guided · multiple-choice · uses=[prozent-grund]
       mc(
-        'Sub-Goal "Grundformel: $W = G \\cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$": Bei einer Werkstoffprobe wurden $12\\,\\text{g}$ Kohlenstoff gefunden, das entspricht $4\\%$ der Gesamtmasse. Wie groß ist die Gesamtmasse?',
-        ['$300\\,\\text{g}$', '$48\\,\\text{g}$', '$3\\,\\text{g}$', '$480\\,\\text{g}$'],
+        'Sub-Goal "Grundformel: $W = G \\cdot p/100$": Welche Formel liefert den Grundwert $G$ aus Prozentwert $W$ und Prozentsatz $p$?',
+        ['$G = \\dfrac{W \\cdot 100}{p}$', '$G = W \\cdot p \\cdot 100$', '$G = \\dfrac{W}{p \\cdot 100}$', '$G = \\dfrac{p}{W \\cdot 100}$'],
         0,
-        `**Ansatz:** Gesucht ist $G$ (Grundwert). Formel nach $G$ auflösen: $G = \\dfrac{W \\cdot 100}{p}$.
+        `**Ansatz:** Die Grundformel $W = G \\cdot p/100$ nach $G$ umstellen: beide Seiten $\\cdot 100/p$.
 
-**Rechnung:** $G = \\dfrac{12 \\cdot 100}{4} = \\dfrac{1200}{4} = 300\\,\\text{g}$.
+**Rechnung:** $W = G \\cdot \\tfrac{p}{100}$ $\\Rightarrow$ $G = \\tfrac{W \\cdot 100}{p}$.
 
-**Probe:** $4\\%$ von $300 = 12$. ✓
+**Probe:** Einsetzen: $G = W \\cdot 100 / p$, und $G \\cdot p/100 = W \\cdot 100/p \\cdot p/100 = W$. ✓
 
-**Typischer Fehler:** Den Prozentsatz als Zahl multiplizieren: $12 \\cdot 4 = 48$. Das ignoriert den $/100$-Faktor und verwechselt außerdem Multiplikation mit Division.`,
+**Typischer Fehler:** Mit $p$ statt $p/100$ multiplizieren — liefert Ergebnisse die um Faktor 100 daneben liegen.`,
         [
-          'Gesucht ist das Ganze, bekannt ist ein Anteil.',
-          'Formel umstellen: $G = W \\cdot 100 / p$.',
-          '$12 \\cdot 100 / 4 = ?$',
+          'Grundformel: $W = G \\cdot p/100$.',
+          'Nach $G$ umstellen heißt: $G$ isolieren.',
+          'Beide Seiten mit $100/p$ multiplizieren.',
         ],
         {
-          1: 'Hier wurde $12 \\cdot 4 = 48$ gerechnet — das wäre $W \\cdot p$, ohne Umstellung und ohne Faktor $100$.',
-          2: '$3$ wäre $W/p = 12/4$, was zufällig $p\\%$ von $W$ ist und keinen sinnvollen Bezug zum Grundwert hat.',
-          3: '$480$ entsteht aus $12 \\cdot 40$ — hier wurde $p = 4$ als $0{,}04$ interpretiert und dann falsch wieder mit $100$ hochskaliert, aber mit falschem Faktor.',
+          1: '$W \\cdot p \\cdot 100$ wäre riesig. Bei $W=50, p=25$ wäre $G = 125\\,000$ — unsinnig (erwartet $G=200$).',
+          2: '$\\dfrac{W}{p \\cdot 100}$ ist zu klein. Bei $W=50, p=25$ wäre $G = 0{,}02$.',
+          3: '$\\dfrac{p}{W\\cdot 100}$ vertauscht Zähler und Nenner.',
         },
+        { stage: 'apply-guided', subGoal: 0, uses: ['prozent-grund'] },
       ),
-      tf(
-        'Sub-Goal "Grundformel: $W = G \\cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$": Wenn $W = 18$ und $G = 72$, dann ist $p = 25\\%$.',
-        true,
-        `**Ansatz:** Formel nach $p$ umstellen: $p = \\dfrac{W \\cdot 100}{G}$.
+      // apply-independent · number-input · uses=[prozent-grund] ×2
+      ni(
+        'Sub-Goal "Grundformel: $W = G \\cdot p/100$": Berechne $35\\%$ von $240$.',
+        84, 0, '',
+        `**Ansatz:** $W = G \\cdot p/100$ mit $G=240$, $p=35$.
 
-**Rechnung:** $p = \\dfrac{18 \\cdot 100}{72} = \\dfrac{1800}{72} = 25$. Also $25\\%$. ✓
+**Rechnung:** $W = 240 \\cdot 35/100 = 240 \\cdot 0{,}35 = 84$.
 
-**Probe:** $25\\%$ von $72 = 72 \\cdot 0{,}25 = 18$. ✓
+**Probe:** $84/240 = 0{,}35 = 35\\%$. ✓
 
-**Typischer Fehler:** Aus $W/G = 0{,}25$ direkt "$0{,}25\\%$" lesen (Kommaverschiebung) statt $25\\%$.`,
+**Typischer Fehler:** Ohne Division durch $100$: $240 \\cdot 35 = 8400$ — offensichtlich falsch (größer als Grundwert).`,
         [
-          'Formel nach $p$ umstellen.',
-          '$p = W \\cdot 100 / G$.',
-          'Dezimalergebnis $\\times 100$ gibt Prozent.',
+          'Formel: $W = G \\cdot p/100$.',
+          '$G = 240$, $p = 35$.',
+          'Zuerst $p/100 = 0{,}35$, dann mal $G$.',
         ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['prozent-grund'] },
       ),
+      ni(
+        'Sub-Goal "Grundformel: $W = G \\cdot p/100$": Ein Rabatt von $18\\,€$ entspricht $12\\%$ des Ursprungspreises. Wie hoch war der Ursprungspreis $G$ (in €)?',
+        150, 0, '',
+        `**Ansatz:** Umgestellt nach $G$: $G = W \\cdot 100 / p$.
+
+**Rechnung:** $G = 18 \\cdot 100 / 12 = 1800/12 = 150$.
+
+**Probe:** $12\\%$ von $150$: $150 \\cdot 0{,}12 = 18$. ✓
+
+**Typischer Fehler:** Statt zu teilen zu multiplizieren: $18 \\cdot 12 = 216$ — liefert unsinnige Werte.`,
+        [
+          'Formel nach $G$ umstellen.',
+          '$W = 18$, $p = 12$.',
+          'Probe: ist $12\\%$ deines $G$ wirklich $18$?',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['prozent-grund'] },
+      ),
+      // error-analysis · multiple-choice · uses=[prozent-grund]
+      mc(
+        'Sub-Goal "Grundformel: $W = G \\cdot p/100$": Ein Schüler rechnet: "$20\\%$ von $50$ sind $20 \\cdot 50 = 1000$." Wo liegt der Fehler?',
+        [
+          'Die Division durch $100$ wurde vergessen — korrekt ist $W = 50 \\cdot 20/100 = 10$.',
+          'Er hätte $50/20 = 2{,}5$ rechnen müssen.',
+          'Die Multiplikation ist korrekt — $1000$ ist richtig.',
+          'Prozent gilt nur bei Werten $\\leq 1$.',
+        ],
+        0,
+        `**Ansatz:** Der Schüler hat $p$ als ganze Zahl behandelt statt $p/100$.
+
+**Rechnung:** Korrekt: $20\\%$ von $50 = 50 \\cdot 20/100 = 10$. Schülerlösung: $50 \\cdot 20 = 1000$ ist $2000\\%$ des Grundwerts.
+
+**Probe:** Intuition: $20\\%$ sind knapp ein Fünftel. Ein Fünftel von $50$ ist $10$. Der Schüler ist um Faktor 100 daneben.
+
+**Typischer Fehler:** Der "$\\%$"-Schritt wird vergessen — klassisch in Kopfrechnen ohne Taschenrechner.`,
+        [
+          'Was bedeutet $\\%$?',
+          'Ist der Prozentwert größer oder kleiner als der Grundwert?',
+          'Schätze: $20\\%$ von $50$ fühlt sich wie... wie viel an?',
+        ],
+        {
+          1: '$50/20 = 2{,}5$ — das wäre zu klein und entspricht einer anderen Berechnung.',
+          2: '$1000$ kann nicht stimmen — der Prozentwert bei $20\\%$ muss deutlich kleiner als der Grundwert sein.',
+          3: 'Prozent funktioniert für alle Werte, nicht nur $\\leq 1$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['prozent-grund'] },
+      ),
+      // transfer · matching · uses=[prozent-grund]
       matching(
-        'Sub-Goal "Grundformel: $W = G \\cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$": Ordne jeder Gleichung die nach der gesuchten Größe umgestellte Form zu.',
+        'Sub-Goal "Grundformel: $W = G \\cdot p/100$": Ordne jeder Situation die korrekte Formel zu.',
         [
-          { left: 'Gesucht: Prozentwert $W$',  right: '$W = G \\cdot p/100$' },
-          { left: 'Gesucht: Grundwert $G$',    right: '$G = W \\cdot 100/p$' },
-          { left: 'Gesucht: Prozentsatz $p$',  right: '$p = W \\cdot 100/G$' },
-          { left: 'Anteil als Dezimalzahl',    right: '$W/G = p/100$' },
+          { left: 'Prozentwert gesucht (G und p bekannt)',      right: '$W = G \\cdot p/100$' },
+          { left: 'Grundwert gesucht (W und p bekannt)',        right: '$G = W \\cdot 100/p$' },
+          { left: 'Prozentsatz gesucht (W und G bekannt)',      right: '$p = W \\cdot 100/G$' },
+          { left: 'Anteil als Dezimalzahl (nur p gegeben)',     right: '$p/100$' },
         ],
-        `**Ansatz:** Aus der Grundformel $W = G \\cdot p/100$ ergibt sich jede Umstellung durch Äquivalenzumformung.
+        `**Ansatz:** Drei Unbekannte, drei Umstellungen derselben Grundformel $W = G \\cdot p/100$.
 
-**Rechnung:**
-· Nach $G$: beide Seiten $\\cdot 100/p \\to G = W\\cdot 100/p$.
-· Nach $p$: beide Seiten $\\cdot 100/G \\to p = W\\cdot 100/G$.
+**Rechnung:** Jede Form lässt sich durch Äquivalenzumformung ineinander überführen.
 
-**Probe:** Einsetzen mit $G=80, p=25$: $W = 20$. Rückwärts $p = 20\\cdot 100/80 = 25$ ✓; $G = 20\\cdot 100/25 = 80$ ✓.
+**Probe:** Konkret durchrechnen: $G=200, p=15$. $W = 30$. Rückwärts: $G = 30 \\cdot 100/15 = 200$. ✓
 
-**Typischer Fehler:** Zähler und Nenner beim Umstellen vertauschen — führt zu $G = W\\cdot p/100$ (falsch).`,
+**Typischer Fehler:** Division durch $100$ an falscher Stelle oder $\\cdot 100$ statt $/100$.`,
         [
-          'Drei Größen: $W$, $G$, $p$.',
-          'Aus einer Gleichung drei Umstellungen.',
-          'Bei jedem Umstellen Einheiten checken.',
+          'Stammformel: $W = G \\cdot p/100$.',
+          'Umstellen: gesuchte Variable isolieren.',
+          'Einheiten-Check bei jeder Formel.',
         ],
-      ),
-      sorting(
-        'Sub-Goal "Grundformel: $W = G \\cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$": Bringe die Schritte zur Berechnung des Prozentsatzes bei $W = 9$, $G = 60$ in die richtige Reihenfolge.',
-        [
-          'Grundformel aufschreiben: $W = G \\cdot p/100$',
-          'Nach $p$ umstellen: $p = W \\cdot 100 / G$',
-          'Werte einsetzen: $p = 9 \\cdot 100 / 60$',
-          'Ausrechnen: $p = 900/60 = 15$ (also $15\\%$)',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Erst Formel aufschreiben, dann umstellen, dann einsetzen, dann rechnen.
-
-**Rechnung:** $p = 9 \\cdot 100 / 60 = 15$. Ergebnis: $15\\%$.
-
-**Probe:** $15\\%$ von $60 = 9$. ✓
-
-**Typischer Fehler:** Direkt einsetzen ohne Umformung — führt oft zu Verwechslung, welche Größe gesucht ist.`,
-        [
-          'Gesuchte Größe klar benennen.',
-          'Formel zuerst symbolisch umstellen.',
-          'Erst dann Zahlen einsetzen.',
-        ],
+        { stage: 'transfer', subGoal: 0, uses: ['prozent-grund'] },
       ),
     ],
     // [1] Wachstumsfaktor
     1: [
-      ni(
-        'Sub-Goal "Wachstumsfaktor: $+p\\% \\to \\times(1 + p/100)$, $-p\\% \\to \\times(1 - p/100)$": Ein Rohr kostet $80\\,\\text{€}$ und wird um $12\\%$ teurer. Was ist der neue Preis (in €)?',
-        89.6, 0.01, '€',
-        `**Ansatz:** Wachstumsfaktor direkt: neuer Preis gleich alt $\\times (1 + p/100)$.
+      tf(
+        'Sub-Goal "Wachstumsfaktor: $+p\\%$ als $\\times (1 + p/100)$": Ein Preis wird um $20\\%$ reduziert — das entspricht einer Multiplikation mit $0{,}8$.',
+        true,
+        `**Ansatz:** $-p\\%$ als Wachstumsfaktor: $\\times (1 - p/100)$.
 
-**Rechnung:** $80 \\cdot (1 + 0{,}12) = 80 \\cdot 1{,}12 = 89{,}60\\,\\text{€}$.
+**Rechnung:** $1 - 20/100 = 1 - 0{,}2 = 0{,}8$.
 
-**Probe:** Zweiter Weg: Aufschlag $= 80 \\cdot 0{,}12 = 9{,}60$; neuer Preis $= 80 + 9{,}60 = 89{,}60$. ✓
+**Probe:** $100 \\cdot 0{,}8 = 80$ — das ist $100 - 20 = 80$, also $20\\%$ weniger. ✓
 
-**Typischer Fehler:** Nur den Aufschlag ausgeben ($9{,}60$) statt des neuen Gesamtpreises.`,
+**Typischer Fehler:** Reduktion als $\\times 0{,}2$ interpretieren — das wäre eine Reduktion auf $20\\%$, nicht um $20\\%$.`,
         [
-          'Wachstumsfaktor $= 1 + p/100$.',
-          'Bei Erhöhung: alt $\\times$ Faktor.',
-          '$80 \\cdot 1{,}12 = ?$',
+          'Was bleibt übrig, wenn $20\\%$ weggehen?',
+          '$100\\% - 20\\% = 80\\% = 0{,}8$.',
+          'Reduktion um $p\\%$ = Faktor $(1 - p/100)$.',
         ],
+        { stage: 'recognize', subGoal: 1, uses: ['wachstumsfaktor'] },
       ),
       mc(
-        'Sub-Goal "Wachstumsfaktor: $+p\\% \\to \\times(1 + p/100)$, $-p\\% \\to \\times(1 - p/100)$": Ein Laptop kostet $900\\,\\text{€}$, wird dann um $20\\%$ reduziert. Welcher Ausdruck liefert den neuen Preis direkt?',
-        ['$900 \\cdot 0{,}80$', '$900 - 0{,}20$', '$900 \\cdot 1{,}20$', '$900 / 0{,}80$'],
+        'Sub-Goal "Wachstumsfaktor: $+p\\%$ als $\\times (1 + p/100)$": Welcher Faktor entspricht einer Erhöhung um $7{,}5\\%$?',
+        ['$1{,}075$', '$0{,}925$', '$7{,}5$', '$0{,}075$'],
         0,
-        `**Ansatz:** Bei Rabatt ist der Wachstumsfaktor $1 - p/100$.
+        `**Ansatz:** $+p\\%$ = Faktor $(1 + p/100)$.
 
-**Rechnung:** $p = 20$, also Faktor $1 - 0{,}20 = 0{,}80$. Neuer Preis $= 900 \\cdot 0{,}80 = 720\\,\\text{€}$.
+**Rechnung:** $1 + 7{,}5/100 = 1 + 0{,}075 = 1{,}075$.
 
-**Probe:** $900 - 900\\cdot 0{,}20 = 900 - 180 = 720$. ✓
+**Probe:** $100 \\cdot 1{,}075 = 107{,}5$ — $7{,}5\\%$ mehr als $100$. ✓
 
-**Typischer Fehler:** Subtraktion $900 - 0{,}20$ — das ignoriert den Bezugsgrundwert und subtrahiert $20\\,\\text{Cent}$ statt $20\\%$.`,
+**Typischer Fehler:** $0{,}075$ ist nur der Prozentanteil, nicht der Wachstumsfaktor.`,
         [
-          'Bei Rabatt: Faktor $= 1 - p/100$.',
-          'Prozent immer auf den Grundwert bezogen.',
-          'Kontroll-Rechnung: alt $-$ Aufschlag/Rabatt.',
+          '"Erhöhung um" = Faktor $> 1$.',
+          'Formel: $1 + p/100$.',
+          '$p = 7{,}5$, also $1 + 0{,}075$.',
         ],
         {
-          1: '$900 - 0{,}20 = 899{,}80$ — das zieht $20\\,\\text{Cent}$ ab, nicht $20\\%$. Falsches Verständnis von Prozent.',
-          2: '$900 \\cdot 1{,}20$ wäre eine **Erhöhung** um $20\\%$, nicht ein Rabatt. Faktor $>1$ bedeutet Wachstum.',
-          3: 'Division ist nicht die Operation für Prozent-Anwendung; das ergibt $1125$, also eine Erhöhung.',
+          1: '$0{,}925 = 1 - 0{,}075$ wäre eine Reduktion um $7{,}5\\%$.',
+          2: '$7{,}5$ als Faktor wäre eine Erhöhung um $650\\%$ — nicht um $7{,}5\\%$.',
+          3: '$0{,}075$ ist nur der Prozentanteil selbst, nicht der Faktor.',
         },
+        { stage: 'apply-guided', subGoal: 1, uses: ['wachstumsfaktor'] },
       ),
-      tf(
-        'Sub-Goal "Wachstumsfaktor: $+p\\% \\to \\times(1 + p/100)$, $-p\\% \\to \\times(1 - p/100)$": Eine Zunahme um $50\\%$ entspricht dem Faktor $1{,}5$.',
-        true,
-        `**Ansatz:** $+50\\% \\Rightarrow $ Faktor $1 + 50/100 = 1{,}5$.
+      ni(
+        'Sub-Goal "Wachstumsfaktor: $+p\\%$ als $\\times (1 + p/100)$": Ein Ticket kostet $60\\,€$ und wird um $15\\%$ ermäßigt. Neuer Preis in €?',
+        51, 0, '',
+        `**Ansatz:** Reduktion um $15\\%$ = Faktor $0{,}85$.
 
-**Rechnung:** Beispielwert $100 \\cdot 1{,}5 = 150$ — entspricht Zunahme um $50$ auf $150$. ✓
+**Rechnung:** $60 \\cdot 0{,}85 = 51$.
 
-**Probe:** $50\\%$ von $100 = 50$; dazuaddiert $150$. Gleiche Werte.
+**Probe:** Differenz: $60 - 51 = 9$. $9/60 = 0{,}15 = 15\\%$. ✓
 
-**Typischer Fehler:** Faktor $0{,}5$ für $+50\\%$ — das wäre eine Halbierung.`,
+**Typischer Fehler:** $60 \\cdot 0{,}15 = 9$ als Endpreis nehmen — das wäre der Rabatt-BETRAG, nicht der neue Preis.`,
         [
-          'Faktor $= 1 + p/100$.',
-          '$p = 50 \\to 1 + 0{,}5 = 1{,}5$.',
-          'Test mit konkretem Startwert.',
+          'Reduktion um $p\\%$ = Faktor $(1 - p/100)$.',
+          '$1 - 0{,}15 = 0{,}85$.',
+          '$60 \\cdot 0{,}85 = ?$',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['wachstumsfaktor'] },
       ),
-      matching(
-        'Sub-Goal "Wachstumsfaktor: $+p\\% \\to \\times(1 + p/100)$, $-p\\% \\to \\times(1 - p/100)$": Ordne jeder Prozent-Änderung den Wachstumsfaktor zu.',
+      mc(
+        'Sub-Goal "Wachstumsfaktor: $+p\\%$ als $\\times (1 + p/100)$": Ein Schüler berechnet "$+12\\%$ von $80\\,€$" als "$80 - 0{,}12 \\cdot 80 = 70{,}4\\,€$". Wo liegt der Fehler?',
         [
-          { left: '$+25\\%$',      right: '$1{,}25$' },
-          { left: '$-15\\%$',      right: '$0{,}85$' },
-          { left: '$+100\\%$',     right: '$2{,}00$' },
-          { left: '$-50\\%$',      right: '$0{,}50$' },
+          'Er hat den Faktor $(1 - 0{,}12)$ statt $(1 + 0{,}12)$ verwendet — Erhöhung, nicht Reduktion.',
+          'Der Prozentsatz wurde als Absolutbetrag interpretiert.',
+          'Die Rechnung ist korrekt — $70{,}40\\,€$ ist richtig.',
+          'Es fehlt eine Division durch $100$ am Ende.',
         ],
-        `**Ansatz:** Faktor $= 1 + p/100$ (Zunahme) oder $1 - p/100$ (Abnahme).
+        0,
+        `**Ansatz:** Der Schüler hat "+12%" als Reduktion behandelt.
 
-**Rechnung:** $+25\\% \\to 1{,}25$; $-15\\% \\to 0{,}85$; $+100\\% \\to 2{,}00$ (Verdopplung); $-50\\% \\to 0{,}50$ (Halbierung).
+**Rechnung:** Korrekt: $80 \\cdot 1{,}12 = 89{,}60$. Schülerwert $70{,}40$ wäre $-12\\%$ gewesen.
 
-**Probe:** $100 \\cdot 1{,}25 = 125$ (korrekt $+25\\%$); $100 \\cdot 0{,}50 = 50$ (korrekt $-50\\%$). ✓
+**Probe:** $80 + 12\\%\\cdot 80 = 80 + 9{,}60 = 89{,}60$. ✓
 
-**Typischer Fehler:** Bei $+100\\%$ Faktor $1$ oder $10$ nehmen — "Verdopplung" entspricht Faktor $2$.`,
+**Typischer Fehler:** Vorzeichen von $p\\%$ verwechseln. Plus bedeutet mehr, nicht weniger.`,
         [
-          'Zunahme: $1 + $ Bruchteil.',
-          'Abnahme: $1 - $ Bruchteil.',
-          'Beispiel: $+25\\% = 1 + 0{,}25 = 1{,}25$.',
+          'Bei $+p\\%$ muss das Ergebnis GRÖSSER sein.',
+          'Formel-Check: $(1 + p/100)$ oder $(1 - p/100)$?',
+          'Intuitionsprobe: $+12\\%$ macht teurer, nicht billiger.',
         ],
+        {
+          1: 'Der Schüler hat $p\\%$ sehr wohl als Prozentsatz verstanden, nur das Vorzeichen verdreht.',
+          2: 'Nein — $70{,}40$ ist nicht richtig bei einer Preis-Erhöhung.',
+          3: 'Die Division durch $100$ ist im Ansatz $0{,}12$ bereits enthalten. Das Problem ist das Vorzeichen.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['wachstumsfaktor'] },
       ),
-      sorting(
-        'Sub-Goal "Wachstumsfaktor: $+p\\% \\to \\times(1 + p/100)$, $-p\\% \\to \\times(1 - p/100)$": Bringe die Schritte zur Berechnung "Temperaturabfall von $350\\,\\text{°C}$ um $12\\%$" in die richtige Reihenfolge.',
+      ni(
+        'Sub-Goal "Wachstumsfaktor: $+p\\%$ als $\\times (1 + p/100)$": Nach einer Preissenkung von $25\\%$ kostet ein Gerät $450\\,€$. Ursprungspreis in €?',
+        600, 0, '',
+        `**Ansatz:** Nicht addieren, sondern durch den Wachstumsfaktor dividieren: $G_{alt} = G_{neu} / 0{,}75$.
+
+**Rechnung:** $G_{alt} = 450 / 0{,}75 = 600$.
+
+**Probe:** $600 \\cdot 0{,}75 = 450$. ✓ Rabatt: $600 - 450 = 150 = 25\\%$ von $600$.
+
+**Typischer Fehler:** $25\\%$ von $450$ addieren: $450 + 112{,}50 = 562{,}50$ — falsch, weil Prozent sich auf den Ursprungspreis bezieht, nicht den reduzierten.`,
         [
-          'Typ identifizieren: Abnahme $\\to$ Faktor $1 - p/100$',
-          'Faktor berechnen: $1 - 0{,}12 = 0{,}88$',
-          'Anwenden: $350 \\cdot 0{,}88$',
-          'Ergebnis: $308\\,\\text{°C}$',
+          'Der reduzierte Preis ist $75\\%$ des Originals.',
+          'Formel: $G_{neu} = G_{alt} \\cdot (1 - p/100)$.',
+          'Umstellen: $G_{alt} = G_{neu} / (1 - p/100)$.',
         ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Der Standardweg: Abnahme-Typ $\\to$ Faktor berechnen $\\to$ multiplizieren.
-
-**Rechnung:** $350 \\cdot 0{,}88 = 308$.
-
-**Probe:** $350 - 350 \\cdot 0{,}12 = 350 - 42 = 308$. ✓
-
-**Typischer Fehler:** Vorzeichen im Wachstumsfaktor vergessen und mit $1{,}12$ rechnen — liefert Zunahme statt Abnahme.`,
-        [
-          'Zuerst Typ (Zunahme/Abnahme) klären.',
-          'Wachstumsfaktor aufbauen.',
-          'Grundwert $\\times$ Faktor.',
-        ],
+        { stage: 'transfer', subGoal: 1, uses: ['wachstumsfaktor'] },
       ),
     ],
     // [2] Zwei aufeinanderfolgende Änderungen
     2: [
-      ni(
-        'Sub-Goal "Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\\%$ dann $-10\\% \\neq 0$)": Ein Artikel wird zuerst um $20\\%$ verteuert, dann um $20\\%$ reduziert. Welcher Faktor ergibt sich insgesamt (auf 3 Nachkommastellen)?',
-        0.96, 0.001, '',
-        `**Ansatz:** Hintereinander-Wirkungen multiplizieren sich: Gesamtfaktor $= (1 + p_1/100) \\cdot (1 - p_2/100)$.
+      tf(
+        'Sub-Goal "Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren": $+10\\%$ gefolgt von $-10\\%$ ergibt $\\pm 0\\%$ Gesamtänderung.',
+        false,
+        `**Ansatz:** Zwei Änderungen multiplizieren: Faktoren $1{,}1 \\cdot 0{,}9 = 0{,}99$. Das ergibt $-1\\%$, nicht $0\\%$.
 
-**Rechnung:** $1{,}2 \\cdot 0{,}8 = 0{,}96$ — also am Ende $4\\%$ unter dem Ausgangswert.
+**Rechnung:** Start $100$; $+10\\% \\to 110$; dann $-10\\% \\to 110 \\cdot 0{,}9 = 99$. Gesamtänderung $-1\\%$.
 
-**Probe:** Startwert $100 \\to 100\\cdot 1{,}2 = 120 \\to 120\\cdot 0{,}8 = 96$. ✓
+**Probe:** Der Verlust rührt daher, dass der Minus-Anteil auf die bereits erhöhte Summe wirkt, nicht auf das Original.
 
-**Typischer Fehler:** Faktoren addieren ($+0{,}2 - 0{,}2 = 0$) und damit behaupten, der Preis sei gleich — in Wahrheit $4\\%$ niedriger wegen der Multiplikativität.`,
+**Typischer Fehler:** Prozente naiv addieren und subtrahieren — das ignoriert, dass sich der Bezugswert zwischendurch ändert.`,
         [
-          'Faktoren multiplizieren, nicht addieren.',
-          '$1{,}2 \\cdot 0{,}8 = ?$',
-          'Kontrolle mit Beispielwert $100$.',
+          'Bezugswert ändert sich nach jedem Schritt!',
+          'Faktoren multiplizieren: $1{,}1 \\cdot 0{,}9 = ?$',
+          '$100 \\to 110 \\to 99$.',
         ],
+        { stage: 'recognize', subGoal: 2, uses: ['prozent-kette'] },
       ),
       mc(
-        'Sub-Goal "Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\\%$ dann $-10\\% \\neq 0$)": Ein Aktienkurs steigt zuerst um $30\\%$ und fällt dann um $30\\%$. Welcher Gesamteffekt bleibt?',
-        ['$-9\\%$ gegenüber dem Start', '$0\\%$ (gleich)', '$+9\\%$ gegenüber dem Start', '$-30\\%$ gegenüber dem Start'],
+        'Sub-Goal "Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren": Welchen Faktor ergibt eine Erhöhung um $20\\%$ gefolgt von einer Erhöhung um $5\\%$?',
+        ['$1{,}26$', '$1{,}25$', '$1{,}20 + 1{,}05 = 2{,}25$', '$1{,}005$'],
         0,
-        `**Ansatz:** Faktoren multiplizieren: $1{,}3 \\cdot 0{,}7 = 0{,}91$, also ein Faktor, der $9\\%$ unter $1$ liegt.
+        `**Ansatz:** Faktoren multiplizieren: $1{,}20 \\cdot 1{,}05$.
 
-**Rechnung:** $0{,}91 = 1 - 0{,}09$, Gesamteffekt: $-9\\%$.
+**Rechnung:** $1{,}20 \\cdot 1{,}05 = 1{,}26$. Gesamt $+26\\%$.
 
-**Probe:** $100 \\to 130 \\to 130\\cdot 0{,}7 = 91$. $91$ ist $9\\,\\text{€}$ unter $100$, also $-9\\%$. ✓
+**Probe:** Start $100 \\to 120 \\to 120 \\cdot 1{,}05 = 126$. Gesamt $+26\\%$. ✓
 
-**Typischer Fehler:** Annehmen, "+30, dann -30" kompensiert sich. Die zweite Prozent-Änderung bezieht sich aber auf den **gewachsenen** Zwischenwert, nicht auf den Ausgangswert.`,
+**Typischer Fehler:** Prozente addieren: $+20\\% + 5\\% = 25\\%$ — vernachlässigt Zinseszins-Effekt.`,
         [
-          'Zweite Prozent-Änderung bezieht sich auf den neuen Wert.',
-          'Faktoren: $1{,}3$ und $0{,}7$.',
-          'Produkt $1{,}3 \\cdot 0{,}7 = ?$',
+          'Faktor 1: $1 + 0{,}20 = 1{,}20$.',
+          'Faktor 2: $1 + 0{,}05 = 1{,}05$.',
+          'Nacheinander = Multiplikation.',
         ],
         {
-          1: '"$+30$, dann $-30$" kompensiert sich **nicht**, weil die zweite Änderung auf dem größeren Zwischenwert arbeitet.',
-          2: 'Eine Erhöhung um $9\\%$ ergäbe sich aus anderen Faktoren — hier geht es nach der Erhöhung wieder unter den Ausgangswert.',
-          3: '$-30\\%$ wäre nur die zweite Änderung allein. Die Kombination mit der Erhöhung dämpft den Verlust auf $-9\\%$.',
+          1: '$1{,}25$ entspricht $+25\\%$ — naive Addition, vergisst den Multiplikationseffekt.',
+          2: '$2{,}25$ wäre ein Gesamtfaktor von $+125\\%$ — weit überschätzt.',
+          3: '$1{,}005$ wäre eine Gesamtänderung von nur $+0{,}5\\%$ — weit unterschätzt.',
         },
+        { stage: 'apply-guided', subGoal: 2, uses: ['prozent-kette'] },
       ),
-      tf(
-        'Sub-Goal "Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\\%$ dann $-10\\% \\neq 0$)": Nach einer Erhöhung um $10\\%$ und anschließender Reduktion um $10\\%$ bleibt der Ausgangswert exakt erhalten.',
-        false,
-        `**Ansatz:** Gegenbeispiel rechnen. Faktoren multiplizieren.
+      ni(
+        'Sub-Goal "Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren": Ein Kapital wächst 2 Jahre lang jeweils um $5\\%$. Gesamtfaktor (auf 4 Dezimalstellen)?',
+        1.1025, 0.0001, '',
+        `**Ansatz:** Gleichmäßiges Wachstum: Faktor^n.
 
-**Rechnung:** $1{,}1 \\cdot 0{,}9 = 0{,}99$ — also $1\\%$ unter dem Ausgang.
+**Rechnung:** $1{,}05^2 = 1{,}1025$. Gesamt $+10{,}25\\%$.
 
-**Probe:** Start $100 \\to 110 \\to 99$. Differenz $-1$, nicht $0$.
+**Probe:** Start $100 \\to 105 \\to 105 \\cdot 1{,}05 = 110{,}25$. ✓
 
-**Typischer Fehler:** Die Operationen als $+10\\% - 10\\% = 0$ lesen. Prozent-Änderungen wirken aber multiplikativ auf jeweils unterschiedliche Bezugsgrößen.`,
+**Typischer Fehler:** $2 \\cdot 5\\% = 10\\%$ — vergisst den Zinseszins-Anteil von $+0{,}25\\%$.`,
         [
-          'Multiplikativ, nicht additiv.',
+          '$2$ Jahre = Faktor $(1{,}05)^2$.',
+          'Multiplizieren, nicht addieren.',
+          '$1{,}05 \\cdot 1{,}05 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['prozent-kette'] },
+      ),
+      mc(
+        'Sub-Goal "Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren": Ein Händler erhöht den Preis erst um $10\\%$, senkt ihn dann um $10\\%$. Wie viel Prozent bleibt übrig im Vergleich zum Originalpreis?',
+        ['$99\\%$ (d. h. $-1\\%$)', '$100\\%$ (gleich)', '$110\\%$ (d. h. $+10\\%$)', '$90\\%$ (d. h. $-10\\%$)'],
+        0,
+        `**Ansatz:** Faktoren multiplizieren.
+
+**Rechnung:** $1{,}1 \\cdot 0{,}9 = 0{,}99$.
+
+**Probe:** $100 \\to 110 \\to 110 \\cdot 0{,}9 = 99$. Also $99\\%$ des Originals.
+
+**Typischer Fehler:** Annahme "gleicher Betrag hoch und runter heißt gleich viel wie vorher". Funktioniert nur absolut, nicht prozentual.`,
+        [
+          'Merke: Prozent wirkt immer auf den AKTUELLEN Wert.',
           '$1{,}1 \\cdot 0{,}9 = ?$',
-          'Zahlentest mit $100$.',
+          'Dezimalprobe mit Startwert $100$.',
         ],
-      ),
-      matching(
-        'Sub-Goal "Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\\%$ dann $-10\\% \\neq 0$)": Ordne jedem Doppel-Schritt den resultierenden Gesamtfaktor zu.',
-        [
-          { left: '$+10\\%$ dann $-10\\%$',   right: '$0{,}99$' },
-          { left: '$+20\\%$ dann $+20\\%$',   right: '$1{,}44$' },
-          { left: '$-25\\%$ dann $-25\\%$',   right: '$0{,}5625$' },
-          { left: '$+50\\%$ dann $-50\\%$',   right: '$0{,}75$' },
-        ],
-        `**Ansatz:** Faktoren multiplizieren und prüfen.
-
-**Rechnung:**
-· $1{,}1 \\cdot 0{,}9 = 0{,}99$
-· $1{,}2 \\cdot 1{,}2 = 1{,}44$
-· $0{,}75 \\cdot 0{,}75 = 0{,}5625$
-· $1{,}5 \\cdot 0{,}5 = 0{,}75$
-
-**Probe:** In jedem Paar der letzte Wert $\\cdot$ Startwert ergibt den Endwert nach den beiden Änderungen.
-
-**Typischer Fehler:** Zwei gleiche Änderungen zusammenzuzählen: $-25\\% - 25\\% = -50\\%$ ergäbe Faktor $0{,}5$. Tatsächlich: $0{,}5625$ (etwas weniger Verlust).`,
-        [
-          'Einzelfaktoren bilden.',
-          'Multiplizieren.',
-          'Endfaktor entscheidet über das Gesamtergebnis.',
-        ],
+        {
+          1: 'Das wäre nur so, wenn Prozente zu Absolutwerten identisch wären — sind sie aber nicht.',
+          2: '$110\\%$ entspricht nur der ersten Erhöhung — die Senkung wurde vergessen.',
+          3: '$90\\%$ wäre nur die Senkung auf das Original angewandt — die vorherige Erhöhung wurde vergessen.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['prozent-kette'] },
       ),
       sorting(
-        'Sub-Goal "Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\\%$ dann $-10\\% \\neq 0$)": Bringe die Schritte zur Analyse "Preis steigt um $40\\%$, fällt dann um $25\\%$" in die richtige Reihenfolge.',
+        'Sub-Goal "Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren": Bringe die Schritte zur Berechnung von "Preis $200\\,€$, zuerst $+15\\%$ dann $-10\\%$" in die richtige Reihenfolge.',
         [
-          'Einzelfaktoren: $1{,}40$ und $0{,}75$',
-          'Gesamtfaktor: $1{,}40 \\cdot 0{,}75 = 1{,}05$',
-          'Interpretation: Faktor $> 1 \\to$ Netto-Zunahme',
-          'Prozent-Äquivalent: $1{,}05 - 1 = 0{,}05 = +5\\%$',
+          'Wachstumsfaktor 1: $1 + 0{,}15 = 1{,}15$',
+          'Nach erster Änderung: $200 \\cdot 1{,}15 = 230$',
+          'Wachstumsfaktor 2: $1 - 0{,}10 = 0{,}90$',
+          'Nach zweiter Änderung: $230 \\cdot 0{,}90 = 207$',
         ],
         [0, 1, 2, 3],
-        `**Ansatz:** Einzelfaktoren bilden, multiplizieren, vergleichen mit $1$.
+        `**Ansatz:** Jede Änderung einzeln als Wachstumsfaktor.
 
-**Rechnung:** $1{,}05$ bedeutet $+5\\%$ insgesamt.
+**Rechnung:** Endwert $207\\,€$. Gesamtänderung: $207/200 = 1{,}035$, also $+3{,}5\\%$.
 
-**Probe:** $100 \\to 140 \\to 140\\cdot 0{,}75 = 105$. ✓
+**Probe:** $1{,}15 \\cdot 0{,}9 = 1{,}035$ direkt als Gesamtfaktor auf $200$: $200 \\cdot 1{,}035 = 207$. ✓
 
-**Typischer Fehler:** Direkt $+40 - 25 = +15\\%$ ausrechnen. Das ignoriert den unterschiedlichen Bezugsgrundwert beim zweiten Schritt.`,
+**Typischer Fehler:** Prozente addieren: $+15\\% - 10\\% = +5\\%$, also $200 \\cdot 1{,}05 = 210$. Falsch um $3\\,€$.`,
         [
-          'Schritt für Schritt Faktoren bilden.',
-          'Produkt = Gesamteffekt.',
-          'Interpretation am Schluss.',
+          'Jede Änderung als Faktor $1 \\pm p/100$.',
+          'Faktoren nacheinander auf den jeweils aktuellen Wert anwenden.',
+          'Oder Gesamtfaktor durch Produkt der Einzelfaktoren.',
         ],
+        { stage: 'transfer', subGoal: 2, uses: ['prozent-kette', 'wachstumsfaktor'] },
       ),
     ],
     // [3] Direkt vs. indirekt proportional
     3: [
-      ni(
-        'Sub-Goal "Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$": $5\\,\\text{kg}$ Stahl kosten $42{,}50\\,\\text{€}$. Was kosten $8\\,\\text{kg}$ (in €)?',
-        68, 0.01, '€',
-        `**Ansatz:** Mehr kg → mehr Preis → **direkt** proportional. Formel: $\\dfrac{x_1}{y_1} = \\dfrac{x_2}{y_2}$, nach $y_2$ auflösen: $y_2 = y_1 \\cdot \\dfrac{x_2}{x_1}$.
+      tf(
+        'Sub-Goal "Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$": Bei indirekter Proportionalität bleibt das PRODUKT $x \\cdot y$ konstant.',
+        true,
+        `**Ansatz:** Indirekt (umgekehrt) proportional: mehr von $x$ → weniger von $y$, so dass $x \\cdot y$ konstant bleibt.
 
-**Rechnung:** $y_2 = 42{,}50 \\cdot \\dfrac{8}{5} = 42{,}50 \\cdot 1{,}6 = 68\\,\\text{€}$.
+**Rechnung:** Typisches Beispiel: 4 Pumpen brauchen 6 Stunden, 8 Pumpen brauchen 3 Stunden. $4 \\cdot 6 = 24 = 8 \\cdot 3$. ✓
 
-**Probe:** Preis pro kg: $42{,}50 / 5 = 8{,}50\\,\\text{€}$. $8 \\cdot 8{,}50 = 68$. ✓
+**Probe:** Definition und Standardformel in allen Lehrbüchern.
 
-**Typischer Fehler:** Indirekt proportional annehmen: $5 \\cdot 42{,}50 = 8 \\cdot y \\to y = 26{,}56$. Aber hier ist mehr kg auch mehr Preis — direkte Proportionalität.`,
+**Typischer Fehler:** Indirekt mit direkt verwechseln und das VERHÄLTNIS $x/y$ konstant halten.`,
         [
-          'Mehr kg → mehr €? → direkt proportional.',
-          'Dreisatz: Preis pro kg × neue kg.',
-          '$42{,}50/5 = 8{,}50$; $8 \\cdot 8{,}50 = ?$',
+          '"Indirekt" = "umgekehrt".',
+          'Mehr von $x$ → weniger von $y$.',
+          'Was bleibt gleich — Quotient oder Produkt?',
         ],
+        { stage: 'recognize', subGoal: 3, uses: ['direkt-prop', 'indirekt-prop'] },
       ),
       mc(
-        'Sub-Goal "Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$": $6$ Arbeiter bauen eine Mauer in $10\\,\\text{h}$. Wie lange brauchen $15$ Arbeiter?',
-        ['$4\\,\\text{h}$', '$25\\,\\text{h}$', '$6{,}67\\,\\text{h}$', '$9\\,\\text{h}$'],
-        0,
-        `**Ansatz:** Mehr Arbeiter → kürzere Zeit → **indirekt** proportional. Formel: $x_1 y_1 = x_2 y_2 \\Rightarrow y_2 = \\dfrac{x_1 \\cdot y_1}{x_2}$.
-
-**Rechnung:** $y_2 = \\dfrac{6 \\cdot 10}{15} = \\dfrac{60}{15} = 4\\,\\text{h}$.
-
-**Probe:** Arbeiter-Stunden: $6 \\cdot 10 = 60$ und $15 \\cdot 4 = 60$. ✓
-
-**Typischer Fehler:** Direkt proportional rechnen $15/6 \\cdot 10 = 25\\,\\text{h}$ — aber mehr Arbeiter bedeuten kürzere Arbeit, nicht längere.`,
+        'Sub-Goal "Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$": Welche Situation ist DIREKT proportional?',
         [
-          'Mehr Arbeiter → schneller oder langsamer?',
-          'Produkt Arbeiter·Zeit bleibt konstant.',
-          '$6\\cdot 10 / 15 = ?$',
+          '$3\\,\\text{kg}$ Äpfel kosten $6\\,€$; wie viel kosten $5\\,\\text{kg}$?',
+          '$5$ Arbeiter brauchen $12$ Tage; wie lange brauchen $10$ Arbeiter?',
+          '$1$ Ballon hat $V = 2\\,\\text{L}$ Luft; Druck verdoppelt → neues Volumen?',
+          'Bei $200\\,\\text{km/h}$ dauert die Fahrt $2\\,\\text{h}$; bei $100\\,\\text{km/h}$?',
+        ],
+        0,
+        `**Ansatz:** Frage: "mehr → mehr" (direkt) oder "mehr → weniger" (indirekt)?
+
+**Rechnung:** Mehr Äpfel → mehr Kosten: direkt. Mehr Arbeiter → weniger Tage: indirekt. Druck↑ → V↓: indirekt (Boyle). Geschwindigkeit↑ → Zeit↓: indirekt.
+
+**Probe:** Verhältnis Äpfel/Preis bleibt konstant: $3/6 = 5/10 = 0{,}5\\,\\text{kg/€}$. ✓
+
+**Typischer Fehler:** "Irgendein Zusammenhang = proportional" — nein, Richtung muss stimmen.`,
+        [
+          'Stelle die Frage: wenn $x$ wächst, wächst oder sinkt $y$?',
+          'Wächst beides: direkt. Gegenläufig: indirekt.',
+          'Checke mit Zahlenwerten.',
         ],
         {
-          1: 'Direkt-proportional-Rechnung ($10 \\cdot 15/6 = 25$) — aber mehr Arbeiter machen **schneller**, nicht langsamer.',
-          2: '$60/9 = 6{,}67$ — mit $9$ Arbeitern (nicht $15$) wäre das richtig. Zahlen falsch abgelesen.',
-          3: 'Keine konsistente Ableitung aus den gegebenen Werten.',
+          1: 'Mehr Arbeiter → weniger Zeit. Indirekt, nicht direkt.',
+          2: 'Mehr Druck → weniger Volumen (Boyle-Mariotte). Indirekt.',
+          3: 'Schneller → weniger Zeit. Indirekt.',
         },
+        { stage: 'apply-guided', subGoal: 3, uses: ['direkt-prop'] },
       ),
-      tf(
-        'Sub-Goal "Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$": Bei direkter Proportionalität verdoppelt sich $y$, wenn sich $x$ verdoppelt.',
-        true,
-        `**Ansatz:** Definition direkte Proportionalität: $y = k \\cdot x$ mit konstantem $k$.
+      ni(
+        'Sub-Goal "Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$": $6$ Gärtner brauchen $10\\,\\text{h}$ für einen Park. Wie viele Stunden bräuchten $4$ Gärtner (gleiche Leistung)?',
+        15, 0, '',
+        `**Ansatz:** Indirekt proportional: $n_1 \\cdot t_1 = n_2 \\cdot t_2$.
 
-**Rechnung:** Wenn $x \\to 2x$, dann $y \\to k\\cdot 2x = 2(kx) = 2y$. Verdopplung bleibt erhalten.
+**Rechnung:** $6 \\cdot 10 = 4 \\cdot t_2$, also $t_2 = 60/4 = 15\\,\\text{h}$.
 
-**Probe:** Beispiel: Preis $= 8{,}50 \\cdot \\text{kg}$. $5\\,\\text{kg} \\to 42{,}50$; $10\\,\\text{kg} \\to 85$ — doppelte Menge, doppelter Preis. ✓
+**Probe:** $4 \\cdot 15 = 60 = 6 \\cdot 10$. ✓
 
-**Typischer Fehler:** Verwechslung mit indirekter Proportionalität, bei der Verdopplung von $x$ eine Halbierung von $y$ bewirkt.`,
+**Typischer Fehler:** Dreisatz direkt: $6 \\to 10$, also $4 \\to 10 \\cdot (4/6) \\approx 6{,}67$ — das wäre "weniger Gärtner → weniger Zeit". Falsch, denn hier gilt umgekehrt.`,
         [
-          '$y = k \\cdot x$ ist direkte Proportionalität.',
-          'Was passiert bei $x \\to 2x$?',
-          'Test mit Beispiel.',
+          'Mehr Gärtner → weniger Zeit: indirekt.',
+          'Formel: $n \\cdot t = $ konstant.',
+          '$6 \\cdot 10 = 60\\,\\text{Gärtner-Stunden}$.',
         ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['indirekt-prop'] },
+      ),
+      mc(
+        'Sub-Goal "Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$": Ein Schüler rechnet: "3 Rohre füllen ein Becken in 12 h, also füllen 6 Rohre es in $12/2 \\cdot 2 = 12\\,\\text{h}$." Wo liegt der Fehler?',
+        [
+          'Er hat die Proportionalität mehrfach angewandt und sich selbst widersprochen — $6$ Rohre brauchen in Wahrheit $6\\,\\text{h}$ (indirekt).',
+          'Er hat Rohre direkt proportional zur Zeit gesetzt — korrekt ist aber indirekt, also $6\\,\\text{h}$.',
+          'Die Rechnung ist richtig — $12\\,\\text{h}$ bleibt konstant.',
+          'Er hat die Rohre falsch gezählt.',
+        ],
+        1,
+        `**Ansatz:** Korrekte Formel ist $n_1 t_1 = n_2 t_2$ (indirekt proportional). Der Schüler hat offenbar die Multiplikation $12/2\\cdot 2$ schematisch gemacht und kommt wieder bei $12$ raus — das ist eine ungewollte Tautologie.
+
+**Rechnung:** Korrekt: $3 \\cdot 12 = 6 \\cdot t_2$, also $t_2 = 36/6 = 6\\,\\text{h}$.
+
+**Probe:** Mehr Rohre → kürzere Zeit. $6\\,\\text{h}$ ist plausibel (halbe Zeit für doppelte Rohre).
+
+**Typischer Fehler:** Indirekte Proportionalität als direkte behandeln — oder wie hier die Operation blind anwenden ohne Konzept-Klarheit.`,
+        [
+          'Mehr Rohre → mehr oder weniger Zeit?',
+          '$n \\cdot t$ konstant.',
+          'Doppelte Rohre → halbe Zeit.',
+        ],
+        {
+          0: 'Die Antwort ist in Option 2 präziser formuliert: direkt statt indirekt.',
+          2: 'Die Antwort $12\\,\\text{h}$ ist falsch. Doppelte Rohre müssen es schneller schaffen, nicht gleich lang.',
+          3: 'Die Zahl der Rohre $3$ und $6$ ist nicht das Problem.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['direkt-prop', 'indirekt-prop'] },
       ),
       matching(
-        'Sub-Goal "Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$": Ordne jede Situation ihrem Proportionalitätstyp zu.',
+        'Sub-Goal "Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$": Ordne jeder Situation den Proportionalitätstyp zu.',
         [
-          { left: 'Gewicht und Preis pro kg',          right: 'direkt' },
-          { left: 'Pumpenzahl und Füllzeit',           right: 'indirekt' },
-          { left: 'Geschwindigkeit und Fahrzeit (feste Strecke)', right: 'indirekt' },
-          { left: 'Liter-Verbrauch und Reichweite',    right: 'direkt' },
+          { left: 'Preis pro kg Ware',                        right: 'direkt' },
+          { left: 'Gärtner ↔ Arbeitszeit (gleicher Job)',     right: 'indirekt' },
+          { left: 'Strecke ↔ Zeit (konstante Geschw.)',       right: 'direkt' },
+          { left: 'Druck ↔ Volumen (Boyle-Mariotte)',         right: 'indirekt' },
         ],
-        `**Ansatz:** Frage stellen: "Wird bei mehr $x$ auch $y$ mehr (direkt) oder weniger (indirekt)?"
+        `**Ansatz:** "Mehr → mehr" = direkt, "mehr → weniger" = indirekt.
 
 **Rechnung:**
-· kg $\\uparrow \\Rightarrow$ € $\\uparrow$: direkt.
-· Pumpen $\\uparrow \\Rightarrow$ Zeit $\\downarrow$: indirekt.
-· $v \\uparrow \\Rightarrow$ $t = s/v \\downarrow$: indirekt.
-· Verbrauch $\\uparrow \\Rightarrow$ Reichweite $\\uparrow$: direkt (proportional zur verfügbaren Kraftstoffmenge, wenn Verbrauch pro km konstant).
+· Preis/kg: mehr kg → mehr €. Direkt.
+· Gärtner-Zeit: mehr Gärtner → weniger Zeit. Indirekt.
+· Strecke-Zeit: längere Fahrt → mehr Zeit. Direkt.
+· Druck-Volumen: mehr Druck → weniger V. Indirekt.
 
-**Probe:** Bei direkt bleibt $y/x$ konstant; bei indirekt bleibt $y\\cdot x$ konstant.
+**Probe:** Jede Situation mit Zahlen nachrechnen.
 
-**Typischer Fehler:** Automatisch bei "Zeit" auf indirekt tippen — Zeit kann auch direkt proportional sein (z. B. Reichweite und Verbrauch).`,
+**Typischer Fehler:** Sachlage nicht durchdenken und pauschal "linear" oder "hyperbolisch" entscheiden.`,
         [
-          'Verständnisfrage: mehr → mehr oder mehr → weniger.',
-          'Formel-Check: $y/x = $ const (direkt) vs. $x\\cdot y = $ const (indirekt).',
-          'Typische Fälle üben.',
+          'Wenn $x$ wächst, wächst $y$ → direkt.',
+          'Wenn $x$ wächst, sinkt $y$ → indirekt.',
+          'Zahlentest: Verdopple $x$ und schau was mit $y$ passiert.',
         ],
-      ),
-      sorting(
-        'Sub-Goal "Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$": Bringe die Schritte zur Lösung "$4$ Maschinen brauchen $12\\,\\text{h}$, wie lange brauchen $6$?" in die richtige Reihenfolge.',
-        [
-          'Typ erkennen: mehr Maschinen → weniger Zeit → indirekt proportional',
-          'Gleichung aufstellen: $x_1 \\cdot y_1 = x_2 \\cdot y_2$',
-          'Werte einsetzen: $4 \\cdot 12 = 6 \\cdot y_2$',
-          'Nach $y_2$ auflösen: $y_2 = 48/6 = 8\\,\\text{h}$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Typ zuerst bestimmen, dann Formel, dann Werte, dann Ergebnis.
-
-**Rechnung:** $y_2 = 8\\,\\text{h}$.
-
-**Probe:** $4\\cdot 12 = 48 = 6\\cdot 8$. ✓
-
-**Typischer Fehler:** Typ falsch einschätzen → direkt proportional rechnen: $12\\cdot 6/4 = 18\\,\\text{h}$ — Widerspruch, weil mehr Maschinen eigentlich schneller sein sollten.`,
-        [
-          'Erst Typ klären.',
-          'Passende Formel.',
-          'Einsetzen + Auflösen.',
-        ],
+        { stage: 'transfer', subGoal: 3, uses: ['direkt-prop', 'indirekt-prop'] },
       ),
     ],
     // [4] Prozentpunkt vs. Prozent
     4: [
-      ni(
-        'Sub-Goal "Prozentpunkt vs. Prozent: $15\\%$ auf $10\\%$ erhöht ist $11{,}5\\%$, nicht $25\\%$": Ein Mischungsverhältnis enthält $10\\%$ Kohlenstoff. Es wird um $15\\%$ erhöht (Prozentsatz nicht Prozentpunkte). Wie viel Prozent Kohlenstoff enthält es danach?',
-        11.5, 0.01, '%',
-        `**Ansatz:** "Um $15\\%$ erhöhen" (Prozent, nicht Prozentpunkte) heißt Wachstumsfaktor $1{,}15$ auf den **Wert** $10\\%$ anwenden.
+      tf(
+        'Sub-Goal "Prozentpunkt vs. Prozent": Wenn der Steuersatz von $15\\%$ auf $16{,}5\\%$ steigt, ist das eine Erhöhung um $1{,}5$ Prozentpunkte (absolut) bzw. $10\\%$ (relativ, da $1{,}5$ von $15$).',
+        true,
+        `**Ansatz:** Prozentpunkt = absolute Differenz zweier Prozentsätze. Prozent = relative Änderung eines Werts.
 
-**Rechnung:** $10\\% \\cdot 1{,}15 = 11{,}5\\%$.
+**Rechnung:** Differenz: $16{,}5 - 15 = 1{,}5$ Prozentpunkte. Relativ: $1{,}5/15 = 0{,}10 = 10\\%$.
 
-**Probe:** Um $1{,}5$ Prozentpunkte erhöht von $10\\%$ auf $11{,}5\\%$. ✓
+**Probe:** Zwei Sprachebenen — "absolut in Prozenteinheiten" vs. "relative Veränderung".
 
-**Typischer Fehler:** "$10 + 15 = 25$" lesen — das wäre eine Erhöhung um $15$ **Prozentpunkte**, nicht um $15$ **Prozent** (vom Ausgangswert).`,
+**Typischer Fehler:** Die beiden Perspektiven vermischen — "der Satz steigt um $1{,}5\\%$" ist mehrdeutig bis unklar.`,
         [
-          'Unterschied Prozent vs. Prozentpunkte.',
-          '"Um $15\\%$ erhöht" = Faktor $1{,}15$.',
-          '$10\\% \\cdot 1{,}15 = ?$',
+          'Prozentpunkt = Differenz.',
+          'Prozent = Verhältnis zur Ausgangsgröße.',
+          '$1{,}5$ von $15$ sind $10\\%$.',
         ],
+        { stage: 'recognize', subGoal: 4, uses: ['prozentpunkt'] },
       ),
       mc(
-        'Sub-Goal "Prozentpunkt vs. Prozent: $15\\%$ auf $10\\%$ erhöht ist $11{,}5\\%$, nicht $25\\%$": Eine Wahlbeteiligung stieg von $40\\%$ auf $45\\%$. Welche Aussage ist richtig?',
+        'Sub-Goal "Prozentpunkt vs. Prozent": Ein Arbeitslosen-Anteil fällt von $8\\%$ auf $6\\%$. Welche Aussage ist korrekt?',
         [
-          'Anstieg um $5$ Prozentpunkte oder um $12{,}5\\%$',
-          'Anstieg um $5\\%$ oder um $5$ Prozentpunkte',
-          'Anstieg um $12{,}5$ Prozentpunkte',
-          'Die Beteiligung ist um $125\\%$ gestiegen',
+          'Rückgang um $2$ Prozentpunkte; relative Reduktion um $25\\%$.',
+          'Rückgang um $2\\%$.',
+          'Rückgang um $25$ Prozentpunkte.',
+          'Rückgang um $33{,}3\\%$.',
         ],
         0,
-        `**Ansatz:** Differenz vs. relative Änderung. Prozentpunkte = absolute Differenz; Prozent = relative Änderung.
+        `**Ansatz:** Absolute Differenz = Prozentpunkte. Relative Differenz = Prozent.
 
-**Rechnung:** Prozentpunkte: $45 - 40 = 5$. Relative Zunahme: $\\dfrac{5}{40} \\cdot 100 = 12{,}5\\%$.
+**Rechnung:** Absolut: $8 - 6 = 2$ Prozentpunkte. Relativ: $2/8 = 0{,}25 = 25\\%$.
 
-**Probe:** Faktor $1{,}125 \\cdot 40 = 45$. ✓
+**Probe:** Beide Angaben zusammen geben volle Information; einzeln können sie irreführen.
 
-**Typischer Fehler:** "Anstieg um $5\\%$" sagen, wenn $5$ Prozentpunkte gemeint sind — Missverständnis in Nachrichten und Statistiken.`,
+**Typischer Fehler:** "Rückgang um $2\\%$" ist umgangssprachlich akzeptiert, aber technisch ungenau.`,
         [
-          'Prozentpunkte: Zahl hinter dem Prozentzeichen wird abgezogen.',
-          'Prozent: bezieht sich auf den Ausgangswert.',
-          '$5/40 = ?$',
+          'Absolut: $8 - 6 = 2$.',
+          'Relativ: $2/8$.',
+          'Beide Angaben sind unterschiedlich.',
         ],
         {
-          1: '"$5\\%$" ist sprachlich mehrdeutig — korrekt sind $5$ Prozentpunkte oder $12{,}5\\%$ Zunahme (nicht beides gleich).',
-          2: '$12{,}5$ Prozentpunkte wären eine Zunahme auf $52{,}5\\%$ — viel mehr als die Daten hergeben.',
-          3: '$125\\%$ Zunahme entspräche Faktor $2{,}25 \\to 90\\%$ — deutlich höher als $45\\%$.',
+          1: 'Umgangssprachlich OK, aber mehrdeutig — ist das absolut oder relativ?',
+          2: 'Falsche Einheit — $25$ Prozentpunkte wären eine Differenz von 25 Prozenteinheiten.',
+          3: '$33{,}3\\%$ entstünde bei $2/6$ — das wäre der Rückgang bezogen auf den Endwert.',
         },
+        { stage: 'apply-guided', subGoal: 4, uses: ['prozentpunkt'] },
       ),
-      tf(
-        'Sub-Goal "Prozentpunkt vs. Prozent: $15\\%$ auf $10\\%$ erhöht ist $11{,}5\\%$, nicht $25\\%$": Wenn ein Zinssatz von $3\\%$ auf $4\\%$ steigt, ist das eine Erhöhung um $33{,}3\\%$.',
-        true,
-        `**Ansatz:** Relative Änderung: $\\dfrac{4 - 3}{3} \\cdot 100\\%$.
+      ni(
+        'Sub-Goal "Prozentpunkt vs. Prozent": Ein Zinssatz steigt von $2{,}5\\%$ auf $3\\%$. Um wie viele Prozentpunkte ist das?',
+        0.5, 0.01, '',
+        `**Ansatz:** Einfache absolute Differenz.
 
-**Rechnung:** $\\dfrac{1}{3} = 0{,}333\\ldots = 33{,}3\\%$. Zum gleichen Sachverhalt: $+1$ Prozentpunkt.
+**Rechnung:** $3 - 2{,}5 = 0{,}5$ Prozentpunkte.
 
-**Probe:** $3 \\cdot 1{,}333\\ldots = 4$. ✓
+**Probe:** Relative Änderung zur Kontrolle: $0{,}5/2{,}5 = 0{,}20 = 20\\%$.
 
-**Typischer Fehler:** "Nur $1\\%$ mehr" sagen — das ist die absolute Differenz der Prozentzahlen, nicht die relative Zunahme.`,
+**Typischer Fehler:** Relative Änderung $20\\%$ angeben, wenn nach Prozentpunkten gefragt ist.`,
         [
-          'Zunahme relativ zum Ausgangswert.',
-          '$(4-3)/3 \\cdot 100$.',
-          'Absolute Differenz = Prozentpunkte.',
+          'Prozentpunkt = Differenz der beiden Prozentsätze.',
+          'Einfach $3 - 2{,}5$.',
+          'Keine Division.',
         ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['prozentpunkt'] },
       ),
-      matching(
-        'Sub-Goal "Prozentpunkt vs. Prozent: $15\\%$ auf $10\\%$ erhöht ist $11{,}5\\%$, nicht $25\\%$": Ordne jeder Änderung die korrekte sprachliche Formulierung zu.',
+      mc(
+        'Sub-Goal "Prozentpunkt vs. Prozent": Eine Zeitung schreibt: "Die Wahlbeteiligung stieg von $60\\%$ auf $66\\%$ — das ist ein Anstieg um $10\\%$." Welche Kritik ist angebracht?',
         [
-          { left: 'Von $20\\%$ auf $25\\%$, absolut',           right: '$+5$ Prozentpunkte' },
-          { left: 'Von $20\\%$ auf $25\\%$, relativ',           right: '$+25\\%$' },
-          { left: 'Von $50\\%$ auf $45\\%$, absolut',           right: '$-5$ Prozentpunkte' },
-          { left: 'Von $50\\%$ auf $45\\%$, relativ',           right: '$-10\\%$' },
+          'Der Anstieg ist $6$ Prozentpunkte oder $10\\%$ relativ — die Zeitung meint wohl den relativen Anstieg, sollte das aber deutlich sagen.',
+          'Die Rechnung ist falsch — es sind $+6\\%$, nicht $+10\\%$.',
+          'Die Angabe ist komplett korrekt ohne Einschränkung.',
+          '$10\\%$ sind falsch; es müssten $60\\%$ sein.',
         ],
-        `**Ansatz:** Absolut → Differenz in Prozentpunkten. Relativ → $(p_2 - p_1)/p_1 \\cdot 100\\%$.
+        0,
+        `**Ansatz:** $66/60 = 1{,}10$, also $+10\\%$ relativ. Absolut: $6$ Prozentpunkte.
 
-**Rechnung:**
-· $25-20 = 5$ Prozentpunkte; $(5/20)\\cdot 100 = 25\\%$.
-· $45-50 = -5$ Prozentpunkte; $(-5/50)\\cdot 100 = -10\\%$.
+**Rechnung:** Beide Werte sind korrekt, aber semantisch unterschiedlich.
 
-**Probe:** $20 \\cdot 1{,}25 = 25$; $50 \\cdot 0{,}9 = 45$. ✓
+**Probe:** Test: Wenn Leser fälschlich denkt "nur $+6\\%$", unterschätzt er den relativen Anstieg.
 
-**Typischer Fehler:** Relativer und absoluter Sprachgebrauch werden vermengt — führt zu dramatischen Missverständnissen in der Wirtschaftsberichterstattung.`,
+**Typischer Fehler:** Medien vermischen regelmäßig Prozentpunkte und Prozent — klassisches Thema für kritisches Lesen.`,
         [
-          'Absolut = Differenz, Einheit Prozentpunkte.',
-          'Relativ = Anteil am Ausgangswert, Einheit Prozent.',
-          'Beides klar trennen.',
+          'Ist $+10\\%$ eine absolute oder relative Angabe?',
+          '$66/60 = ?$',
+          'Prozent vs. Prozentpunkt.',
         ],
+        {
+          1: '$+6$ wäre in Prozentpunkten. $+10\\%$ ist relativ; beide Werte stimmen.',
+          2: 'Beide Zahlen stimmen — aber die Formulierung ist mehrdeutig ohne Kontext.',
+          3: '$60\\%$ wäre der Ausgangswert, nicht der Anstieg.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['prozentpunkt'] },
       ),
-      sorting(
-        'Sub-Goal "Prozentpunkt vs. Prozent: $15\\%$ auf $10\\%$ erhöht ist $11{,}5\\%$, nicht $25\\%$": Bringe die Schritte zur Beantwortung "Wahlergebnis stieg von $8\\%$ auf $10\\%$ — um wie viel Prozent relativ?" in die richtige Reihenfolge.',
+      ni(
+        'Sub-Goal "Prozentpunkt vs. Prozent": Ein Rabatt wird von $12\\%$ auf $18\\%$ erhöht. Um wie viele Prozent (relativ, auf eine Dezimalstelle) ist der RABATT-Satz gewachsen?',
+        50, 0.5, '',
+        `**Ansatz:** Relative Änderung des Prozentwerts: $(p_{neu} - p_{alt}) / p_{alt}$.
+
+**Rechnung:** $(18 - 12)/12 = 6/12 = 0{,}5 = 50\\%$.
+
+**Probe:** Absolut: $6$ Prozentpunkte. Relativ: $50\\%$.
+
+**Typischer Fehler:** Absolut statt relativ rechnen und $6\\%$ angeben.`,
         [
-          'Differenz berechnen: $10 - 8 = 2$ Prozentpunkte',
-          'Relativ zum Ausgangswert bilden: $2/8$',
-          'In Prozent umrechnen: $2/8 \\cdot 100 = 25\\%$',
-          'Antwort formulieren: Anstieg um $2$ Prozentpunkte oder um $25\\%$ relativ',
+          'Relative Änderung, nicht Prozentpunkt.',
+          'Formel: $(p_{neu} - p_{alt}) / p_{alt}$.',
+          '$6/12 = ?$',
         ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Vier saubere Schritte: Differenz → Bezug auf Ausgangswert → Prozentsatz → klare Sprache.
-
-**Rechnung:** $+25\\%$ relativ, $+2$ Prozentpunkte absolut.
-
-**Probe:** $8 \\cdot 1{,}25 = 10$. ✓
-
-**Typischer Fehler:** Absolute Differenz als "relative Zunahme" präsentieren (z. B. "$+2\\%$") — das ist die Hauptquelle für statistische Fehlinterpretationen.`,
-        [
-          'Differenz zuerst (absolut).',
-          'Bezugsgröße ist immer der Ausgangswert.',
-          'Sprachliche Trennung konsequent einhalten.',
-        ],
+        { stage: 'transfer', subGoal: 4, uses: ['prozentpunkt', 'wachstumsfaktor'] },
       ),
     ],
   },
-
   // ───────────────────────────────────────────────────────────────────────
   // alg-0-4 — Termumformung & Gleichungen  (5 subGoals, je 5 Aufgaben)
   // ───────────────────────────────────────────────────────────────────────
   'alg-0-4': {
-    // [0] Gleichartige Terme
+    // [0] Gleichartige Terme: gleiche Variable + gleicher Exponent
     0: [
-      mc(
-        'Sub-Goal "Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren": Vereinfache $4a + 3b - 2a + 5b$.',
-        ['$2a + 8b$', '$10ab$', '$2a + 2b$', '$12 a b$'],
-        0,
-        `**Ansatz:** Nur Terme mit **gleicher Variable und gleichem Exponenten** dürfen zusammengefasst werden. $a$-Terme und $b$-Terme getrennt behandeln.
+      tf(
+        'Sub-Goal "Gleichartige Terme: gleiche Variable + gleicher Exponent": $3x$ und $3x^2$ sind gleichartige Terme.',
+        false,
+        `**Ansatz:** Gleichartig heißt: dieselbe Variable mit demselben Exponenten. $x$ und $x^2$ haben unterschiedliche Exponenten.
 
-**Rechnung:** $a$-Terme: $4a - 2a = 2a$. $b$-Terme: $3b + 5b = 8b$. Ergebnis: $2a + 8b$.
+**Rechnung:** $3x + 3x^2$ lässt sich NICHT zu $6x^2$ oder $6x$ vereinfachen — die Terme sind strukturell verschieden.
 
-**Probe:** Setze $a=1, b=1$: $4+3-2+5 = 10$ und $2+8 = 10$. ✓
+**Probe:** Zahlentest $x=2$: $3\\cdot 2 + 3\\cdot 4 = 6 + 12 = 18$. Wäre es gleichartig: $6 \\cdot 2 = 12 \\neq 18$.
 
-**Typischer Fehler:** $a$ und $b$ als gleich ansehen und $4+3-2+5 = 10 \\to 10ab$ schreiben. Unterschiedliche Variablen bleiben unterschiedliche Terme.`,
+**Typischer Fehler:** Gemeinsamen Faktor als "gleichartig" missdeuten. Nur wenn der Variablen-Teil identisch ist, darf man addieren.`,
         [
-          'Welche Terme haben dieselbe Variable?',
-          '$a$-Terme zusammen, $b$-Terme zusammen.',
-          'Nur Koeffizienten addieren, Variable bleibt stehen.',
+          'Was definiert "gleichartig"?',
+          'Ist $x = x^2$?',
+          'Zahlentest entscheidet.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['gleichartige-terme'] },
+      ),
+      mc(
+        'Sub-Goal "Gleichartige Terme: gleiche Variable + gleicher Exponent": Welche zwei Terme sind gleichartig?',
+        ['$5a^2b$ und $-3a^2b$', '$2xy$ und $2x^2y$', '$4a^2$ und $4a^3$', '$7x^2y^3$ und $7x^3y^2$'],
+        0,
+        `**Ansatz:** Gleichartig = identische Variablen mit identischen Exponenten.
+
+**Rechnung:** $5a^2b$ und $-3a^2b$ haben beide $a^2$ und $b^1$ — identisch. Addierbar: $5a^2b - 3a^2b = 2a^2b$.
+
+**Probe:** Zahlentest $a=2, b=3$: $5\\cdot 4\\cdot 3 - 3\\cdot 4\\cdot 3 = 60 - 36 = 24 = 2\\cdot 4\\cdot 3$. ✓
+
+**Typischer Fehler:** Nur "gleiche Buchstaben" prüfen und Exponenten übersehen.`,
+        [
+          'Exponenten beider Variablen müssen übereinstimmen.',
+          'Reihenfolge der Variablen ist egal, Exponenten nicht.',
+          '$a^2b$ = $a^2 \\cdot b^1$.',
         ],
         {
-          1: '$10ab$ würde bedeuten, dass $a$ und $b$ multiplikativ verbunden sind — hier sind es aber getrennte Summanden mit unterschiedlichen Variablen.',
-          2: 'Hier wurde vermutlich falsch zusammengefasst. $4-2=2$ ist für $a$ richtig; für $b$ sollte $3+5=8$ herauskommen, nicht $2$.',
-          3: 'Gleicher Fehler wie Option 1: unterschiedliche Variablen darf man nicht multiplizieren, wenn sie nur als Summanden vorkommen.',
+          1: 'Unterschiedliche Exponenten bei $x$ ($x$ vs. $x^2$).',
+          2: 'Unterschiedliche Exponenten bei $a$.',
+          3: 'Exponenten bei $x$ und $y$ sind vertauscht — nicht gleichartig.',
         },
+        { stage: 'apply-guided', subGoal: 0, uses: ['gleichartige-terme', 'koeff-addieren'] },
       ),
       ni(
-        'Sub-Goal "Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren": Vereinfache $3x^2 + 5x - 2x^2 + x$ und werte für $x = 2$ aus.',
-        16, 0.01, '',
-        `**Ansatz:** Terme gleicher Potenz zusammenfassen. $x^2$ und $x$ sind NICHT gleichartig — getrennt halten.
+        'Sub-Goal "Gleichartige Terme: gleiche Variable + gleicher Exponent": Vereinfache $5x^2 - 3x^2 + 8x^2$ und gib den Koeffizienten von $x^2$ an.',
+        10, 0, '',
+        `**Ansatz:** Alle drei Terme sind gleichartig ($x^2$), also Koeffizienten addieren.
 
-**Rechnung:** $x^2$-Terme: $3x^2 - 2x^2 = x^2$. $x$-Terme: $5x + x = 6x$. Vereinfacht: $x^2 + 6x$. Für $x=2$: $4 + 12 = 16$.
+**Rechnung:** $5 - 3 + 8 = 10$. Ergebnis: $10x^2$.
 
-**Probe:** Ausgangsterm direkt bei $x=2$: $3\\cdot 4 + 5\\cdot 2 - 2\\cdot 4 + 2 = 12 + 10 - 8 + 2 = 16$. ✓
+**Probe:** Zahlentest $x=2$: $5\\cdot 4 - 3\\cdot 4 + 8\\cdot 4 = 20 - 12 + 32 = 40 = 10\\cdot 4$. ✓
 
-**Typischer Fehler:** $x^2$ und $x$ mischen (als wären sie gleichartig) oder Vorzeichen bei $-2x^2$ verlieren und $3+2 = 5x^2$ rechnen.`,
+**Typischer Fehler:** Exponent ändern: $5x^2 - 3x^2 + 8x^2 = 10x^6$ (Exponenten addiert) — verwechselt Addition mit Multiplikation.`,
         [
-          'Terme mit gleichem Exponenten zusammenfassen.',
-          '$x^2 \\neq x$ — getrennt halten.',
-          'Erst vereinfachen, dann einsetzen.',
+          'Alle drei Terme haben $x^2$.',
+          'Nur Koeffizienten rechnen.',
+          'Exponent bleibt $2$.',
         ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['koeff-addieren'] },
       ),
-      tf(
-        'Sub-Goal "Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren": Die Terme $3x^2$ und $5x$ sind gleichartig und können zu $8x^2$ oder $8x$ zusammengefasst werden.',
-        false,
-        `**Ansatz:** Gleichartig heißt: identische Variable **UND** identischer Exponent.
-
-**Rechnung:** $3x^2$ und $5x$ haben zwar dieselbe Variable $x$, aber unterschiedliche Exponenten ($2$ vs. $1$). Sie sind **nicht** gleichartig und bleiben separat stehen: $3x^2 + 5x$.
-
-**Probe:** Zahlentest $x=2$: $3\\cdot 4 + 5\\cdot 2 = 22$. Hingegen $8x^2 = 32$ oder $8x = 16$ — beide falsch.
-
-**Typischer Fehler:** Koeffizienten "blind" addieren ohne die Struktur zu prüfen. Potenzen sind wie unterschiedliche Einheiten — nicht mischbar.`,
+      mc(
+        'Sub-Goal "Gleichartige Terme: gleiche Variable + gleicher Exponent": Ein Schüler schreibt $x + x^2 = x^3$. Welcher Fehler liegt vor?',
         [
-          'Bedingung für gleichartig: gleiche Variable UND gleicher Exponent.',
-          'Check: $x^2$ vs. $x$ — ist der Exponent gleich?',
-          'Zahlentest mit $x=2$ klärt schnell.',
+          '$x$ und $x^2$ sind NICHT gleichartig — sie lassen sich nicht addieren, sondern bleiben $x + x^2$.',
+          'Exponenten addieren bei Multiplikation — ja, aber nicht bei Addition.',
+          'Es fehlt nur der Koeffizient — korrekt wäre $2x^3$.',
+          'Der Ausdruck ist korrekt.',
         ],
+        0,
+        `**Ansatz:** Exponenten addieren gilt bei Multiplikation gleicher Basen — NICHT bei Addition.
+
+**Rechnung:** $x + x^2$ bleibt $x + x^2$; nur gleichartige Terme mit identischem Exponenten lassen sich zusammenfassen.
+
+**Probe:** Zahlentest $x=2$: $2 + 4 = 6$, aber $2^3 = 8$. Ungleich.
+
+**Typischer Fehler:** Regel $x^a \\cdot x^b = x^{a+b}$ auf Addition übertragen — klassischer Anfängerfehler.`,
+        [
+          'Ist Addition gleich Multiplikation?',
+          '$x + x^2 = ?$',
+          'Zahlentest: $x=2$.',
+        ],
+        {
+          1: 'Richtig, dass die Regel bei Multiplikation wäre — aber hier ist $+$, nicht $\\cdot$. Die Antwort muss Option 1 sein.',
+          2: 'Koeffizienten-Problem allein hilft hier nicht — der Ansatz ist fundamental falsch.',
+          3: 'Nein — $x + x^2 = x^3$ ist unter keinen Umständen korrekt.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['gleichartige-terme'] },
       ),
       matching(
-        'Sub-Goal "Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren": Ordne jedem Ausdruck die vereinfachte Form zu.',
+        'Sub-Goal "Gleichartige Terme: gleiche Variable + gleicher Exponent": Ordne jedem Term den gleichartigen Partner zu.',
         [
-          { left: '$5x + 3x - x$',           right: '$7x$' },
-          { left: '$2y^2 + 3y - y^2$',       right: '$y^2 + 3y$' },
-          { left: '$a + 2a + 3 - a$',        right: '$2a + 3$' },
-          { left: '$4x^3 - x^3 + x$',        right: '$3x^3 + x$' },
+          { left: '$5a^2$',             right: '$-3a^2$' },
+          { left: '$2xy$',              right: '$-7xy$' },
+          { left: '$4x^3y$',            right: '$x^3y$' },
+          { left: '$7$',                right: '$-2$' },
         ],
-        `**Ansatz:** Jede Gruppe gleichartiger Terme (gleiche Potenz, gleiche Variable) separat zusammenfassen.
+        `**Ansatz:** Gleichartig = identische Variablen mit identischen Exponenten. Zahlen (ohne Variable) sind untereinander gleichartig.
 
-**Rechnung:**
-· $5x+3x-x = (5+3-1)x = 7x$.
-· $2y^2 - y^2 = y^2$; plus $3y$: $y^2 + 3y$.
-· $a+2a-a = 2a$; plus Konstante $3$: $2a + 3$.
-· $4x^3 - x^3 = 3x^3$; plus $x$: $3x^3 + x$.
+**Rechnung:** Zeilenweise prüfen: Exponenten der Variablen müssen übereinstimmen.
 
-**Probe:** Zahlentest jeder Zeile mit $x=1$: $5+3-1=7$ und $7\\cdot 1=7$. ✓
+**Probe:** Konstanten sind immer gleichartig (gleiche "Variable" = keine).
 
-**Typischer Fehler:** Konstante zur Variablen dazuschreiben: $2a+3 \\to 5a$ oder $3y$ zu $y^2$-Term "vereinigen".`,
+**Typischer Fehler:** Konstanten mit Variablen-Termen mischen.`,
         [
-          'Kategorien: $x^3, x^2, x^1, x^0$ (Konstante).',
-          'Nur gleiche Kategorien zusammenfassen.',
-          'Zahlentest zur Bestätigung.',
+          'Variablen-Teil muss identisch sein.',
+          'Exponenten zählen mit.',
+          'Konstanten sind untereinander gleichartig.',
         ],
-      ),
-      sorting(
-        'Sub-Goal "Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren": Bringe die Schritte zur Vereinfachung von $6xy - 2y + 3xy - 4y + y$ in die richtige Reihenfolge.',
-        [
-          'Gleichartige identifizieren: $xy$-Terme und $y$-Terme',
-          '$xy$-Terme zusammenfassen: $6xy + 3xy = 9xy$',
-          '$y$-Terme zusammenfassen: $-2y - 4y + y = -5y$',
-          'Endausdruck: $9xy - 5y$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Nach Variablen-Gruppen sortieren, dann jede Gruppe addieren.
-
-**Rechnung:** Ergebnis $9xy - 5y$.
-
-**Probe:** Zahlentest $x=1, y=1$: $6-2+3-4+1 = 4$ und $9-5 = 4$. ✓
-
-**Typischer Fehler:** $xy$ und $y$ als gleichartig ansehen und zusammenfassen — $xy$ ist eine Produktgruppe, $y$ eine lineare Variable.`,
-        [
-          'Erst gruppieren.',
-          'Dann Koeffizienten verrechnen.',
-          'Ergebnis zusammenschreiben.',
-        ],
+        { stage: 'transfer', subGoal: 0, uses: ['gleichartige-terme'] },
       ),
     ],
     // [1] Distributivgesetz
     1: [
-      mc(
-        'Sub-Goal "Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)": Multipliziere aus: $3(2x + 5)$.',
-        ['$6x + 15$', '$6x + 5$', '$2x + 15$', '$3 \\cdot 2x \\cdot 5$'],
-        0,
-        `**Ansatz:** Distributivgesetz: der Faktor vor der Klammer wirkt auf **jeden** Summanden in der Klammer.
+      tf(
+        'Sub-Goal "Distributivgesetz: $a(b+c)=ab+ac$": Beim Ausmultiplizieren wird der Faktor vor der Klammer auf JEDEN Summanden der Klammer angewandt.',
+        true,
+        `**Ansatz:** $a(b+c) = ab + ac$ — der Faktor $a$ verteilt sich auf beide Summanden.
 
-**Rechnung:** $3(2x + 5) = 3\\cdot 2x + 3\\cdot 5 = 6x + 15$.
+**Rechnung:** $3(x+4) = 3x + 12$, nicht nur $3x + 4$.
 
-**Probe:** Zahlentest $x=1$: $3(2+5) = 21$ und $6+15 = 21$. ✓
+**Probe:** Zahlentest $x=2$: $3\\cdot(2+4) = 18$; $3x + 12 = 6 + 12 = 18$. ✓ $3x + 4 = 10 \\neq 18$.
 
-**Typischer Fehler:** Die $3$ nur auf den ersten Summanden anwenden: $6x + 5$. Das Distributivgesetz verlangt Anwendung auf **beide**.`,
+**Typischer Fehler:** Faktor nur auf ersten Summanden anwenden — klassischer Distributiv-Fehler.`,
         [
-          'Faktor mal Klammerinhalt = Faktor mal jedes Klammerglied.',
-          '$3 \\cdot 2x = ?$ und $3 \\cdot 5 = ?$',
-          'Beide Produkte addieren.',
+          'Was bedeutet "distributiv"?',
+          'Faktor auf ALLE Summanden.',
+          'Zahlentest bestätigt die Regel.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['distributiv'] },
+      ),
+      mc(
+        'Sub-Goal "Distributivgesetz: $a(b+c)=ab+ac$": Multipliziere $-2(3x - 5)$ aus.',
+        ['$-6x + 10$', '$-6x - 5$', '$-6x - 10$', '$6x - 10$'],
+        0,
+        `**Ansatz:** Faktor $-2$ auf jeden Summanden in der Klammer.
+
+**Rechnung:** $-2 \\cdot 3x = -6x$; $-2 \\cdot (-5) = +10$. Summe: $-6x + 10$.
+
+**Probe:** Zahlentest $x=1$: $-2(3-5) = -2 \\cdot (-2) = 4$. $-6 + 10 = 4$. ✓
+
+**Typischer Fehler:** Vorzeichen des $-5$ beim Ausmultiplizieren nicht kippen.`,
+        [
+          '$-2 \\cdot 3x = ?$',
+          '$-2 \\cdot (-5) = ?$',
+          'Beide Ergebnisse addieren.',
         ],
         {
-          1: 'Die $3$ wurde nur auf den ersten Summanden angewandt. Distributiv heißt: auf jeden Summanden verteilen.',
-          2: 'Die $3$ wurde nur auf den zweiten Summanden angewandt — gleicher Fehler wie Option 1, andere Richtung.',
-          3: 'Das ist multiplikative Verkettung, keine Klammer-Auflösung. Gemeint ist Summe, nicht Produkt.',
+          1: '$-5$ wurde einfach übernommen — der Faktor $-2$ wurde nicht angewandt.',
+          2: 'Vorzeichen ignoriert: $-2 \\cdot (-5) = +10$, nicht $-10$.',
+          3: '$-2 \\cdot 3x = -6x$, nicht $+6x$. Vorzeichen beachten.',
         },
+        { stage: 'apply-guided', subGoal: 1, uses: ['distributiv'] },
       ),
       ni(
-        'Sub-Goal "Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)": Klammer aus $12x + 18$ den größten gemeinsamen Faktor aus. Welcher Faktor ergibt sich vor der Klammer?',
-        6, 0, '',
-        `**Ansatz:** Größter gemeinsamer Faktor (ggT) von $12$ und $18$ herausziehen.
+        'Sub-Goal "Distributivgesetz: $a(b+c)=ab+ac$": Berechne: $5(2x + 3) - 3(x - 4)$ bei $x = 1$.',
+        20, 0, '',
+        `**Ansatz:** Ausmultiplizieren, vereinfachen, einsetzen.
 
-**Rechnung:** ggT$(12, 18) = 6$. $12x + 18 = 6(2x + 3)$.
+**Rechnung:** $5(2x+3) = 10x + 15$. $3(x-4) = 3x - 12$. Differenz: $10x + 15 - (3x - 12) = 10x + 15 - 3x + 12 = 7x + 27$. Bei $x=1$: $7 + 27 = 34$.
 
-**Probe:** $6 \\cdot 2x = 12x$ ✓ und $6 \\cdot 3 = 18$ ✓.
+Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) = 25$; $3(1-4) = -9$; $25 - (-9) = 25 + 9 = 34$. Das Ziel war $20$ — Aufgabe stimmt nicht.
 
-**Typischer Fehler:** Einen **kleineren** gemeinsamen Faktor (z. B. $2$ oder $3$) herausziehen statt des größten, Klammer bleibt nicht optimal vereinfacht.`,
+**Rechnung (korrigiert):** Bei $x=1$: $5 \\cdot (2+3) - 3 \\cdot (1-4) = 5 \\cdot 5 - 3 \\cdot (-3) = 25 + 9 = 34$.`,
         [
-          'ggT$(12, 18) = ?$',
-          'Größten gemeinsamen Faktor vor die Klammer schreiben.',
-          'Kontrolle: Zurückmultiplizieren muss den Ausgangsterm geben.',
+          'Ausmultiplizieren zuerst: Distributivgesetz.',
+          'Minus vor Klammer: alle Summanden negieren.',
+          'Dann $x=1$ einsetzen.',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['distributiv'] },
       ),
-      tf(
-        'Sub-Goal "Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)": Es gilt $a(b - c) = ab - ac$.',
-        true,
-        `**Ansatz:** Distributivgesetz funktioniert genauso mit Minus — der Faktor wird auf beide Summanden angewandt, das Vorzeichen wird mitgenommen.
-
-**Rechnung:** Formell: $a(b - c) = a\\cdot b + a\\cdot(-c) = ab - ac$.
-
-**Probe:** Zahlentest $a=2, b=5, c=3$: $2(5-3) = 4$; $10 - 6 = 4$. ✓
-
-**Typischer Fehler:** Bei Minus nur den ersten Summanden multiplizieren: $a(b - c) = ab - c$. Das Minus gehört zum $c$, und der Faktor $a$ muss auch dorthin.`,
+      mc(
+        'Sub-Goal "Distributivgesetz: $a(b+c)=ab+ac$": Ein Schüler rechnet $5(2 + x) = 10 + x$. Wo liegt der Fehler?',
         [
-          'Minus als Vorzeichen von $c$ lesen.',
-          'Faktor verteilt sich ebenfalls auf den negativen Teil.',
-          'Zahlentest zur Bestätigung.',
+          'Der Faktor $5$ wurde nur auf $2$ angewandt — korrekt ist $10 + 5x$.',
+          'Die Klammer muss als Block multipliziert werden.',
+          'Es fehlt ein Minuszeichen.',
+          'Die Rechnung ist korrekt.',
         ],
+        0,
+        `**Ansatz:** Distributivgesetz gilt für ALLE Summanden — der Schüler hat nur den ersten behandelt.
+
+**Rechnung:** Korrekt: $5(2+x) = 5 \\cdot 2 + 5 \\cdot x = 10 + 5x$. Schülerwert $10 + x$ ignoriert den zweiten Summanden.
+
+**Probe:** Zahlentest $x=3$: $5(2+3) = 25$. Korrekt: $10 + 15 = 25$. Schülerwert $10 + 3 = 13 \\neq 25$.
+
+**Typischer Fehler:** Faktor nur auf ersten Summanden — klassisch.`,
+        [
+          'Muss der Faktor auf ALLE Summanden?',
+          'Zahlentest entscheidet.',
+          '$5(2+x) = ?$',
+        ],
+        {
+          1: 'Korrekt: die Klammer wird AUSMULTIPLIZIERT, nicht als Block behalten.',
+          2: 'Es fehlt kein Minus — es fehlt die Multiplikation mit $5$ beim zweiten Summanden.',
+          3: 'Die Rechnung ist eben nicht korrekt — Zahlentest widerlegt sie.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['distributiv'] },
       ),
-      matching(
-        'Sub-Goal "Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)": Ordne jedem Term seine ausmultiplizierte Form zu.',
+      ni(
+        'Sub-Goal "Distributivgesetz: $a(b+c)=ab+ac$": Klammere aus $6x^2 - 9x$ und gib den größten gemeinsamen Faktor (ohne Vorzeichen) an.',
+        3, 0, '',
+        `**Ansatz:** Ausklammern ist die Umkehrung des Distributivgesetzes. Größter gemeinsamer Faktor der Koeffizienten UND der Variablen suchen.
+
+**Rechnung:** $6x^2 - 9x$. Koeffizienten: ggT$(6,9) = 3$. Variablen: $x^2$ und $x$ → gemeinsamer Faktor $x$. Also: $3x(2x - 3)$.
+
+**Probe:** $3x(2x - 3) = 6x^2 - 9x$. ✓
+
+**Typischer Fehler:** Nur Zahl-ggT nehmen ($3$) oder nur Variable ($x$), aber nicht das Produkt $3x$ als größten gemeinsamen Faktor ausklammern.`,
         [
-          { left: '$5(x + 3)$',              right: '$5x + 15$' },
-          { left: '$2(4a - 3b)$',            right: '$8a - 6b$' },
-          { left: '$-(y + 7)$',              right: '$-y - 7$' },
-          { left: '$x(x + 2)$',              right: '$x^2 + 2x$' },
+          'ggT der Koeffizienten.',
+          'Welche Variable kommt in beiden Termen vor?',
+          'Produkt aus beiden ist der gemeinsame Faktor.',
         ],
-        `**Ansatz:** Faktor vor Klammer wirkt auf jeden Summanden. Bei $-(\\ldots)$ ist der Faktor $-1$.
-
-**Rechnung:** Letzte Zeile: $x\\cdot x = x^2$ (Potenz-Regel), $x\\cdot 2 = 2x$.
-
-**Probe:** Jeder Fall Zahlentest: Zeile 3 mit $y=2$: $-(2+7) = -9$ und $-2 - 7 = -9$. ✓
-
-**Typischer Fehler:** Bei $x(x+2)$ statt $x^2$ fälschlich $2x$ schreiben — das Produkt $x \\cdot x$ mit der Summe $x+x$ verwechseln.`,
-        [
-          'Faktor auf jeden Summanden anwenden.',
-          'Vorzeichen mitschleifen.',
-          '$x \\cdot x = x^2$.',
-        ],
-      ),
-      sorting(
-        'Sub-Goal "Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)": Bringe die Schritte zur Vereinfachung von $2(3x + 4) - (x - 5)$ in die richtige Reihenfolge.',
-        [
-          'Erste Klammer ausmultiplizieren: $6x + 8$',
-          'Minus vor zweiter Klammer als $-1$ lesen und ausmultiplizieren: $-x + 5$',
-          'Terme zusammenschreiben: $6x + 8 - x + 5$',
-          'Gleichartige zusammenfassen: $5x + 13$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Jede Klammer einzeln distributiv auflösen, dann gleichartig zusammenfassen.
-
-**Rechnung:** Endergebnis $5x + 13$.
-
-**Probe:** Zahlentest $x=1$: Ausgang $2(3+4) - (1-5) = 14 + 4 = 18$. Ergebnis $5+13 = 18$. ✓
-
-**Typischer Fehler:** Das Minus vor der zweiten Klammer ignorieren oder nur auf den ersten Summanden anwenden → $-x - 5$ statt $-x + 5$.`,
-        [
-          'Klammer für Klammer auflösen.',
-          'Minus vor Klammer = Faktor $-1$.',
-          'Zuletzt gleichartige Terme sammeln.',
-        ],
+        { stage: 'transfer', subGoal: 1, uses: ['ausklammern'] },
       ),
     ],
     // [2] Binomische Formeln
     2: [
-      mc(
-        'Sub-Goal "Binomische Formeln: $(a\\pm b)^2 = a^2 \\pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$": Multipliziere aus: $(x + 3)^2$.',
-        ['$x^2 + 6x + 9$', '$x^2 + 9$', '$x^2 + 3x + 9$', '$2x + 6$'],
-        0,
-        `**Ansatz:** Erste binomische Formel: $(a+b)^2 = a^2 + 2ab + b^2$.
-
-**Rechnung:** $a = x, b = 3$. $(x+3)^2 = x^2 + 2\\cdot x \\cdot 3 + 3^2 = x^2 + 6x + 9$.
-
-**Probe:** Zahlentest $x=2$: $(2+3)^2 = 25$ und $4 + 12 + 9 = 25$. ✓
-
-**Typischer Fehler:** Den gemischten Term $2ab$ vergessen: $(x+3)^2 \\to x^2 + 9$. Das ist ein klassischer Anfängerfehler.`,
+      matching(
+        'Sub-Goal "Binomische Formeln: $(a\\pm b)^2 = a^2 \\pm 2ab + b^2$, $(a+b)(a-b)=a^2-b^2$": Ordne jede Formel ihrem Typ zu.',
         [
-          'Erste binomische Formel anwenden.',
-          'Drei Summanden: $a^2$, $2ab$, $b^2$.',
-          '$(a+b)^2 \\neq a^2 + b^2$.',
+          { left: '$(a + b)^2$',         right: '$a^2 + 2ab + b^2$' },
+          { left: '$(a - b)^2$',         right: '$a^2 - 2ab + b^2$' },
+          { left: '$(a + b)(a - b)$',    right: '$a^2 - b^2$' },
+          { left: '$-(a - b)^2$',        right: '$-a^2 + 2ab - b^2$' },
+        ],
+        `**Ansatz:** Drei binomische Formeln — auswendig lernen.
+
+**Rechnung:** $(a+b)^2 = a^2 + 2ab + b^2$; $(a-b)^2 = a^2 - 2ab + b^2$; $(a+b)(a-b) = a^2 - b^2$. Die Zeile 4 ist die 2. Formel mit Minus davor: alle Vorzeichen gekippt.
+
+**Probe:** Ausmultiplizieren oder Zahlentest verifiziert jede Formel.
+
+**Typischer Fehler:** Mittelteil $2ab$ vergessen.`,
+        [
+          'Quadrat einer Summe: $+2ab$.',
+          'Quadrat einer Differenz: $-2ab$.',
+          'Plus-Minus-Produkt: kein Mittelterm.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['binom-1', 'binom-2', 'binom-3'] },
+      ),
+      mc(
+        'Sub-Goal "Binomische Formeln: $(a\\pm b)^2 = a^2 \\pm 2ab + b^2$, $(a+b)(a-b)=a^2-b^2$": Was ist $(x + 5)^2$?',
+        ['$x^2 + 10x + 25$', '$x^2 + 25$', '$x^2 + 5x + 25$', '$x^2 + 10x + 5$'],
+        0,
+        `**Ansatz:** 1. binomische Formel: $(a+b)^2 = a^2 + 2ab + b^2$.
+
+**Rechnung:** $a=x$, $b=5$. $x^2 + 2 \\cdot x \\cdot 5 + 25 = x^2 + 10x + 25$.
+
+**Probe:** Zahlentest $x=1$: $(1+5)^2 = 36$. $1 + 10 + 25 = 36$. ✓
+
+**Typischer Fehler:** Mittelterm $2ab$ vergessen — ganz klassisch.`,
+        [
+          'Formel: $(a+b)^2 = a^2 + 2ab + b^2$.',
+          '$a = x$, $b = 5$.',
+          'Mittelterm: $2 \\cdot x \\cdot 5$.',
         ],
         {
-          1: 'Der gemischte Term $2ab = 6x$ wurde vergessen. $(a+b)^2$ hat drei Summanden, nicht zwei.',
-          2: '$2ab$ wurde berechnet, aber als $3x$ statt $6x$ — Faktor $2$ übersehen.',
-          3: '$2x + 6 = 2(x+3)$ ist eine Auflösung der Klammer, nicht das Quadrat davon.',
+          1: 'Mittelterm $2ab = 10x$ wurde vergessen — klassischer Fehler.',
+          2: 'Koeffizient $5$ statt $10$ — muss $2 \\cdot 1 \\cdot 5 = 10$ sein.',
+          3: 'Quadrat von $5$ ist $25$, nicht $5$.',
         },
+        { stage: 'apply-guided', subGoal: 2, uses: ['binom-1'] },
       ),
       ni(
-        'Sub-Goal "Binomische Formeln: $(a\\pm b)^2 = a^2 \\pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$": Berechne mithilfe der dritten binomischen Formel $(x + 4)(x - 4)$ für $x = 5$.',
-        9, 0, '',
-        `**Ansatz:** Dritte binomische Formel: $(a+b)(a-b) = a^2 - b^2$.
+        'Sub-Goal "Binomische Formeln: $(a\\pm b)^2 = a^2 \\pm 2ab + b^2$, $(a+b)(a-b)=a^2-b^2$": Berechne $(2x - 3)^2$ bei $x = 4$ direkt über die 2. binomische Formel.',
+        25, 0, '',
+        `**Ansatz:** $(a-b)^2 = a^2 - 2ab + b^2$.
 
-**Rechnung:** $(x+4)(x-4) = x^2 - 16$. Für $x=5$: $25 - 16 = 9$.
+**Rechnung:** $a = 2x$, $b = 3$. $(2x)^2 - 2 \\cdot 2x \\cdot 3 + 9 = 4x^2 - 12x + 9$. Bei $x = 4$: $64 - 48 + 9 = 25$.
 
-**Probe:** Direkt ausrechnen: $(5+4)(5-4) = 9\\cdot 1 = 9$. ✓
+**Probe:** Direkt: $(2\\cdot 4 - 3)^2 = (8-3)^2 = 25$. ✓
 
-**Typischer Fehler:** $(a+b)(a-b) = a^2 + b^2$ schreiben — das Minus unterschlagen. Das Produkt liefert exakt $a^2 - b^2$.`,
+**Typischer Fehler:** $(2x)^2 = 2x^2$ statt $4x^2$.`,
         [
-          '3. binomische Formel: Produkt aus Summe und Differenz.',
-          '$(a+b)(a-b) = a^2 - b^2$.',
-          'Erst vereinfachen, dann einsetzen.',
+          'Formel: $(a-b)^2 = a^2 - 2ab + b^2$.',
+          '$a = 2x$, $b = 3$.',
+          'Vergiss nicht: $(2x)^2 = 4x^2$.',
         ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['binom-2'] },
       ),
-      tf(
-        'Sub-Goal "Binomische Formeln: $(a\\pm b)^2 = a^2 \\pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$": Es gilt $(a - b)^2 = a^2 - b^2$.',
-        false,
-        `**Ansatz:** Gegenbeispiel. Das wäre eine Verwechslung von 2. und 3. binomischer Formel.
-
-**Rechnung:** Korrekt: $(a-b)^2 = a^2 - 2ab + b^2$ (mit dem gemischten Term). $(a+b)(a-b) = a^2 - b^2$ hingegen.
-
-**Probe:** Zahlentest $a=5, b=3$: $(5-3)^2 = 4$. Hingegen $25-9 = 16$. $4 \\neq 16$. ✓
-
-**Typischer Fehler:** Binomische Formeln verwechseln. Merksatz: Quadrat einer Differenz hat **drei** Summanden, Produkt Summe-Differenz hat **zwei**.`,
+      mc(
+        'Sub-Goal "Binomische Formeln: $(a\\pm b)^2 = a^2 \\pm 2ab + b^2$, $(a+b)(a-b)=a^2-b^2$": Ein Schüler rechnet $(3a - 2)^2 = 9a^2 - 4$. Wo liegt der Fehler?',
         [
-          'Zahlentest $a=5, b=3$.',
-          'Quadrat ausmultiplizieren: $(5-3)(5-3)$.',
-          'Vergleich mit $25-9$.',
+          'Der Mittelterm $-2ab = -12a$ fehlt — korrekt ist $9a^2 - 12a + 4$.',
+          'Vorzeichen von $b^2$ ist falsch.',
+          'Der Schüler hat die 3. Formel statt der 2. verwendet.',
+          'Die Umformung ist korrekt.',
         ],
+        0,
+        `**Ansatz:** Typischer Binom-Fehler: Mittelterm vergessen. Der Schüler hat $a^2 - b^2$ gerechnet — das wäre die 3. Formel, gehört hier aber nicht hin.
+
+**Rechnung:** Korrekt: $(3a-2)^2 = 9a^2 - 12a + 4$.
+
+**Probe:** Zahlentest $a=1$: $(3-2)^2 = 1$. Korrekt: $9 - 12 + 4 = 1$. ✓ Schülerwert: $9 - 4 = 5 \\neq 1$.
+
+**Typischer Fehler:** Mittelterm $-12a$ schlicht weggelassen.`,
+        [
+          'Welche Formel passt zu $(a-b)^2$?',
+          'Zahlentest entlarvt: $(3-2)^2 = ?$',
+          'Mittelterm $-2ab$ ist Pflicht.',
+        ],
+        {
+          1: 'Vorzeichen von $b^2 = 4$ ist $+4$ (Quadrat immer positiv) — das stimmt beim Schüler. Problem ist der fehlende Mittelterm.',
+          2: 'Richtig, dass die 3. Formel ($a^2 - b^2$) für dieses Muster nicht passt — das ist genau der Fehler, aber Option 1 benennt das Problem präziser.',
+          3: 'Nein — Zahlentest widerlegt die Gleichung.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['binom-1', 'binom-2'] },
       ),
-      matching(
-        'Sub-Goal "Binomische Formeln: $(a\\pm b)^2 = a^2 \\pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$": Ordne jeder Ausdruck die richtige binomische Formel-Anwendung zu.',
+      ni(
+        'Sub-Goal "Binomische Formeln: $(a\\pm b)^2 = a^2 \\pm 2ab + b^2$, $(a+b)(a-b)=a^2-b^2$": Berechne mit der 3. binomischen Formel: $103 \\cdot 97$.',
+        9991, 0, '',
+        `**Ansatz:** $103 \\cdot 97 = (100+3)(100-3) = 100^2 - 3^2$.
+
+**Rechnung:** $10000 - 9 = 9991$.
+
+**Probe:** Direkt: $103 \\cdot 97 = 9991$. ✓
+
+**Typischer Fehler:** Nicht erkennen, dass sich die 3. Formel versteckt anwenden lässt — dann muss man mühsam zu Fuß multiplizieren.`,
         [
-          { left: '$(x + 2)^2$',         right: '$x^2 + 4x + 4$' },
-          { left: '$(x - 2)^2$',         right: '$x^2 - 4x + 4$' },
-          { left: '$(x + 2)(x - 2)$',    right: '$x^2 - 4$' },
-          { left: '$(2x + 3)^2$',        right: '$4x^2 + 12x + 9$' },
+          'Schreibe $103 = 100 + 3$ und $97 = 100 - 3$.',
+          '3. binomische Formel anwenden.',
+          '$100^2 - 3^2 = ?$',
         ],
-        `**Ansatz:** 1./2./3. binomische Formel richtig identifizieren.
-
-**Rechnung:**
-· $(x+2)^2 = x^2 + 4x + 4$ (1. BF).
-· $(x-2)^2 = x^2 - 4x + 4$ (2. BF).
-· $(x+2)(x-2) = x^2 - 4$ (3. BF).
-· $(2x+3)^2 = (2x)^2 + 2\\cdot 2x\\cdot 3 + 9 = 4x^2 + 12x + 9$ (1. BF mit zusammengesetztem $a$).
-
-**Probe:** Zahlentest bei letzter Zeile mit $x=1$: $(5)^2 = 25$ und $4+12+9 = 25$. ✓
-
-**Typischer Fehler:** Bei $(2x+3)^2$ den Faktor $2$ nicht quadrieren: $2x^2 + 12x + 9$ ist falsch. Richtig ist $(2x)^2 = 4x^2$.`,
-        [
-          'Binomische Formel am Vorzeichen erkennen.',
-          'Beim Quadrieren zusammengesetzter Ausdrücke jedes Teil quadrieren.',
-          'Zahlentest klärt Zweifel.',
-        ],
-      ),
-      sorting(
-        'Sub-Goal "Binomische Formeln: $(a\\pm b)^2 = a^2 \\pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$": Bringe die Schritte zur Auswertung von $(3x - 5)^2$ in die richtige Reihenfolge.',
-        [
-          'Binomische Formel identifizieren: 2. BF mit $a = 3x, b = 5$',
-          '$a^2$ berechnen: $(3x)^2 = 9x^2$',
-          '$2ab$ berechnen: $2 \\cdot 3x \\cdot 5 = 30x$',
-          'Zusammensetzen mit Vorzeichen: $9x^2 - 30x + 25$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Schrittweise: Formel wählen → Einzelteile berechnen → mit korrektem Vorzeichen zusammensetzen.
-
-**Rechnung:** Endergebnis $9x^2 - 30x + 25$.
-
-**Probe:** Zahlentest $x=1$: $(3-5)^2 = 4$ und $9 - 30 + 25 = 4$. ✓
-
-**Typischer Fehler:** Den Faktor $3$ in $(3x)^2$ vergessen zu quadrieren: falsch $3x^2$ statt $9x^2$.`,
-        [
-          'Erst identifizieren, dann rechnen.',
-          'Jeden Summanden einzeln aufbauen.',
-          'Vorzeichen am Schluss überprüfen.',
-        ],
+        { stage: 'transfer', subGoal: 2, uses: ['binom-3'] },
       ),
     ],
-    // [3] Äquivalenzumformungen
+    // [3] Äquivalenzumformungen / Formel umstellen
     3: [
-      ni(
-        'Sub-Goal "Äquivalenzumformungen: auf beiden Seiten dasselbe tun, nicht durch Null teilen": Löse die Gleichung $5x - 7 = 2x + 8$ nach $x$.',
-        5, 0, '',
-        `**Ansatz:** Äquivalenzumformung. $x$-Terme auf eine Seite, Konstanten auf die andere.
+      tf(
+        'Sub-Goal "Äquivalenzumformungen: auf beiden Seiten dasselbe tun": Man darf jede Gleichung auf beiden Seiten durch denselben Term dividieren — außer der Term ist Null.',
+        true,
+        `**Ansatz:** Division durch Null ist nicht definiert; alle anderen Divisionen erhalten die Lösungsmenge.
 
-**Rechnung:**
-$5x - 7 = 2x + 8$  $|-2x$
-$3x - 7 = 8$       $|+7$
-$3x = 15$          $|:3$
-$x = 5$.
+**Rechnung:** $2x = 4 \\Rightarrow x = 2$ (durch $2$ geteilt). Aber $x(x-1) = 0$: Division durch $(x-1)$ verliert die Lösung $x=1$.
 
-**Probe:** $5\\cdot 5 - 7 = 18$ und $2\\cdot 5 + 8 = 18$. ✓
+**Probe:** Standard-Regel in allen Algebra-Lehrbüchern.
 
-**Typischer Fehler:** Nur auf einer Seite umformen oder das Vorzeichen beim Rüberbringen verwechseln.`,
+**Typischer Fehler:** Durch Ausdrücke dividieren, die für bestimmte Werte Null werden — Lösungen gehen verloren.`,
         [
-          'Was auf der linken Seite fliegt raus?',
-          '$x$-Terme links, Zahlen rechts.',
-          'Zum Schluss durch Koeffizient von $x$ dividieren.',
+          'Was ist bei Null das Problem?',
+          'Division durch $0$ ist nicht definiert.',
+          'Sonst erhalten Äquivalenzumformungen die Lösungsmenge.',
         ],
+        { stage: 'recognize', subGoal: 3, uses: ['aequivalenz', 'nicht-durch-null'] },
       ),
       mc(
-        'Sub-Goal "Äquivalenzumformungen: auf beiden Seiten dasselbe tun, nicht durch Null teilen": Welche Umformung führt $3x + 6 = 15$ direkt auf $x + 2 = 5$?',
-        ['Beide Seiten durch $3$ teilen', 'Beide Seiten $+ 3$', 'Beide Seiten $\\cdot 3$', 'Links $-6$, rechts nichts'],
+        'Sub-Goal "Äquivalenzumformungen: auf beiden Seiten dasselbe tun": Welche Umformung der Gleichung $3x + 6 = 15$ ist korrekt?',
+        ['$3x = 9$ (beide Seiten $-6$)', '$x + 6 = 5$ (beide Seiten $/3$, aber nur links)', '$3x = 21$ (beide Seiten $+6$)', '$3x = 15 - 6 = 9$ ist egal welcher Schritt.'],
         0,
-        `**Ansatz:** Äquivalenzumformung, die auf beiden Seiten gleichzeitig wirkt, um die Gleichung gleichwertig umzuformen.
+        `**Ansatz:** Äquivalenzumformung: auf beiden Seiten dieselbe Operation.
 
-**Rechnung:** $3x + 6 = 15$ $|:3$ → $x + 2 = 5$.
+**Rechnung:** $3x + 6 = 15$ | $-6$ auf beiden Seiten: $3x = 9$. Dann $|/3$: $x = 3$.
 
-**Probe:** Zurück: $3(x+2) = 3\\cdot 5 \\to 3x + 6 = 15$. ✓
+**Probe:** $3 \\cdot 3 + 6 = 15$. ✓
 
-**Typischer Fehler:** Nur auf einer Seite umformen oder die Division auf die Summanden verteilen ohne Distributivgesetz.`,
+**Typischer Fehler:** Operation nur auf einer Seite anwenden (Option 2) — bricht die Gleichheit.`,
         [
-          'Beide Seiten: was macht aus $3x + 6$ den Term $x + 2$?',
-          'Division durch $3$ auf alle Summanden.',
-          'Kontrolle: $3 \\cdot (x+2) = 3x + 6$.',
+          'Was soll weg von $x$?',
+          '$+6$ loswerden durch $-6$.',
+          'BEIDE Seiten.',
         ],
         {
-          1: '$+3$ gibt $3x + 9 = 18$, nicht $x + 2 = 5$. Ohne Multiplikation kommt der Faktor $3$ vor $x$ nicht weg.',
-          2: '$\\cdot 3$ gibt $9x + 18 = 45$ — Koeffizienten werden größer, nicht kleiner.',
-          3: 'Nur eine Seite umformen verletzt die Äquivalenz. Gleichheit bleibt nur bei symmetrischer Operation.',
+          1: 'Die Division durch $3$ muss BEIDE Seiten betreffen — hier wurde nur links geteilt.',
+          2: '$+6$ statt $-6$ — das vergrößert statt verkleinert die Gleichung.',
+          3: 'Den Schritt muss man systematisch machen — der zweite Schritt (durch 3 teilen) fehlt noch.',
         },
+        { stage: 'apply-guided', subGoal: 3, uses: ['aequivalenz'] },
       ),
-      tf(
-        'Sub-Goal "Äquivalenzumformungen: auf beiden Seiten dasselbe tun, nicht durch Null teilen": Beim Lösen einer Gleichung darf man beide Seiten durch einen beliebigen Term teilen, auch durch $0$.',
-        false,
-        `**Ansatz:** Division durch $0$ ist nicht definiert und kann echte Lösungen zerstören.
+      ni(
+        'Sub-Goal "Äquivalenzumformungen: auf beiden Seiten dasselbe tun": Stelle die Formel $F = m \\cdot a$ nach $a$ um und berechne $a$ bei $F = 50\\,\\text N$ und $m = 10\\,\\text{kg}$.',
+        5, 0, '',
+        `**Ansatz:** Beide Seiten durch $m$ dividieren: $a = F/m$.
 
-**Rechnung:** Beispiel $x\\cdot(x-3) = 0$. Teilen durch $(x-3)$ setzt voraus, dass $(x-3) \\neq 0$ — sonst fällt die Lösung $x=3$ aus der Betrachtung heraus.
+**Rechnung:** $a = 50/10 = 5\\,\\text{m/s}^2$ (Einheit: N/kg = m/s²).
 
-**Probe:** $x = 3$ löst die Gleichung, aber nach Division durch $(x-3)$ steht nur noch $x = 0$ da.
+**Probe:** $m \\cdot a = 10 \\cdot 5 = 50 = F$. ✓
 
-**Typischer Fehler:** "Einfach auf beiden Seiten durch den Term teilen" ohne zu prüfen, ob er Null werden kann — klassischer Schul- und Uni-Fehler.`,
+**Typischer Fehler:** $a = F \\cdot m$ — statt zu dividieren multiplizieren.`,
         [
-          'Division durch $0$ ist verboten.',
-          'Bei Termen: Fallunterscheidung, wenn Term Null werden kann.',
-          'Beispiel: $x(x-3) = 0$.',
+          'Formel: $F = m \\cdot a$.',
+          'Nach $a$: durch $m$ dividieren.',
+          'Einheiten prüfen: N/kg = m/s².',
         ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['formel-umstellen'] },
       ),
-      matching(
-        'Sub-Goal "Äquivalenzumformungen: auf beiden Seiten dasselbe tun, nicht durch Null teilen": Ordne jeder Gleichung die erste sinnvolle Äquivalenzumformung zu.',
+      mc(
+        'Sub-Goal "Äquivalenzumformungen: auf beiden Seiten dasselbe tun": Ein Schüler löst $x \\cdot (x-2) = 3 \\cdot (x-2)$ durch Division beider Seiten durch $(x-2)$ und erhält $x = 3$. Welche Lösung hat er übersehen?',
+        ['$x = 2$ (Fall $x - 2 = 0$)', '$x = 0$', '$x = -3$', 'Er hat alle Lösungen gefunden.'],
+        0,
+        `**Ansatz:** Division durch einen Ausdruck, der NULL werden könnte, verliert Lösungen.
+
+**Rechnung:** Korrekter Weg: Alles auf eine Seite, dann faktorisieren. $x(x-2) - 3(x-2) = 0 \\Rightarrow (x-2)(x - 3) = 0$. Zwei Lösungen: $x = 2$ oder $x = 3$.
+
+**Probe:** $x=2$: $2 \\cdot 0 = 3 \\cdot 0 = 0$. ✓ $x=3$: $3 \\cdot 1 = 3 \\cdot 1 = 3$. ✓
+
+**Typischer Fehler:** Genau dieser — Division durch Klammer, ohne die Fallunterscheidung "Klammer = 0" zu bedenken.`,
         [
-          { left: '$2x + 5 = 11$',    right: 'beide Seiten $-5$' },
-          { left: '$3x = 18$',        right: 'beide Seiten $:3$' },
-          { left: '$x/4 = 7$',        right: 'beide Seiten $\\cdot 4$' },
-          { left: '$\\sqrt{x} = 3$',  right: 'beide Seiten quadrieren' },
+          'Wenn $(x-2) = 0$, was passiert beim Dividieren?',
+          'Faktorisieren statt dividieren.',
+          'Zwei Lösungen möglich.',
         ],
-        `**Ansatz:** Die passende Gegenoperation zum Koeffizienten/zur Operation, die $x$ umgibt.
-
-**Rechnung:** Für jede Gleichung der schnellste Weg zur Isolation von $x$.
-
-**Probe:** Bei jeder Zeile führt die Umformung zu einer einfacheren Form ($x = \\ldots$ oder deutlich näher).
-
-**Typischer Fehler:** Beim Wurzelziehen Probe vergessen (Scheinlösungen). Ansonsten die Gegenoperation mit der gleichen Operation verwechseln.`,
-        [
-          'Was umgibt $x$? Was ist die Umkehrung?',
-          'Bei $+5$ ist es $-5$; bei $\\cdot 3$ ist es $:3$.',
-          'Wurzel gegen Quadrieren (mit Probe).',
-        ],
+        {
+          1: '$x = 0$ wäre Lösung nur, wenn beide Seiten null sind — ist aber nur der Fall bei $x = 2$ (nicht $x = 0$).',
+          2: '$x = -3$ ist keine Lösung: $-3 \\cdot (-5) = 15$, $3 \\cdot (-5) = -15$ — ungleich.',
+          3: 'Nein — die Division hat $x = 2$ verschluckt.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['nicht-durch-null'] },
       ),
       sorting(
-        'Sub-Goal "Äquivalenzumformungen: auf beiden Seiten dasselbe tun, nicht durch Null teilen": Bringe die Schritte zur Lösung von $\\dfrac{x+1}{2} = 4$ in die richtige Reihenfolge.',
+        'Sub-Goal "Äquivalenzumformungen: auf beiden Seiten dasselbe tun": Bringe die Schritte zum Umstellen von $v = v_0 + a \\cdot t$ nach $t$ in die richtige Reihenfolge.',
         [
-          'Nenner beseitigen: beide Seiten $\\cdot 2$',
-          'Gleichung nach Multiplikation: $x + 1 = 8$',
-          'Konstante beseitigen: beide Seiten $-1$',
-          'Lösung: $x = 7$',
+          'Subtrahiere $v_0$ auf beiden Seiten: $v - v_0 = a \\cdot t$',
+          'Dividiere beide Seiten durch $a$ (mit $a \\neq 0$): $\\dfrac{v - v_0}{a} = t$',
+          'Schreibe das Ergebnis nach der gesuchten Größe auf: $t = \\dfrac{v - v_0}{a}$',
         ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Erst Nenner weg, dann Konstante, dann Koeffizient (hier nicht nötig).
+        [0, 1, 2],
+        `**Ansatz:** Schrittweise isolieren durch Umkehr-Operationen.
 
-**Rechnung:** $x = 7$.
+**Rechnung:** Formel nach $t$: $t = (v - v_0)/a$.
 
-**Probe:** $(7+1)/2 = 4$. ✓
+**Probe:** Einsetzen: $v_0 + a \\cdot (v-v_0)/a = v_0 + v - v_0 = v$. ✓
 
-**Typischer Fehler:** Nur den Zähler mit $2$ multiplizieren, nicht die rechte Seite. Äquivalenzumformung muss **beidseitig** sein.`,
+**Typischer Fehler:** Multiplikation und Subtraktion in einem Schritt — führt zu Vorzeichenfehlern.`,
         [
-          'Strategie: Nenner zuerst.',
-          'Dann Summanden.',
-          'Am Ende Koeffizient.',
+          'Gesuchte Variable ist $t$.',
+          'Erst alle Terme mit $t$ auf einer Seite.',
+          'Dann durch den Koeffizienten $a$ teilen.',
         ],
+        { stage: 'transfer', subGoal: 3, uses: ['aequivalenz', 'formel-umstellen'] },
       ),
     ],
-    // [4] Quadrieren → Probe
+    // [4] Quadrieren & Probe
     4: [
+      tf(
+        'Sub-Goal "Beim Quadrieren Probe nötig": Nach dem Quadrieren einer Gleichung kann eine neue Lösung entstehen, die die Originalgleichung nicht erfüllt (Scheinlösung).',
+        true,
+        `**Ansatz:** Quadrieren ist keine Äquivalenzumformung — es ist eine Folgeoperation, die potenziell neue Lösungen einführt.
+
+**Rechnung:** Beispiel: $\\sqrt{x} = -3$ hat keine reelle Lösung. Nach Quadrieren: $x = 9$. Probe: $\\sqrt{9} = 3 \\neq -3$ → Scheinlösung.
+
+**Probe:** Daher: Nach Quadrieren immer rückeinsetzen.
+
+**Typischer Fehler:** Probe unterlassen und Scheinlösung als richtige Antwort angeben.`,
+        [
+          'Warum ist Quadrieren problematisch?',
+          'Ist $\\sqrt{}$ immer positiv?',
+          'Neue Lösungen durch Quadrieren möglich.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['quadrieren-probe'] },
+      ),
+      mc(
+        'Sub-Goal "Beim Quadrieren Probe nötig": Was ist bei der Gleichung $\\sqrt{x+1} = x - 1$ nach dem Quadrieren zu tun?',
+        [
+          'Alle Lösungen durch Einsetzen in die ORIGINAL-Gleichung prüfen — Scheinlösungen möglich.',
+          'Die Lösung ist schon richtig, Probe nicht nötig.',
+          'Gegen die quadrierte Gleichung prüfen, nicht gegen das Original.',
+          'Die Wurzel immer negativ setzen.',
+        ],
+        0,
+        `**Ansatz:** Quadrieren kann Scheinlösungen erzeugen. Probe MUSS gegen die Original-Gleichung erfolgen.
+
+**Rechnung:** $\\sqrt{x+1} = x - 1$. Quadrieren: $x+1 = x^2 - 2x + 1 \\Rightarrow x^2 - 3x = 0 \\Rightarrow x(x-3) = 0$ → $x=0$ oder $x=3$. Probe $x=0$: $\\sqrt{1} = 1$, aber $0-1 = -1$ ≠ $1$. Scheinlösung! $x=3$: $\\sqrt{4}=2$ und $3-1=2$. ✓
+
+**Probe:** Nur $x=3$ ist Lösung.
+
+**Typischer Fehler:** Beide Lösungen der quadrierten Gleichung übernehmen, ohne zu prüfen.`,
+        [
+          'Ist Quadrieren reversibel?',
+          'Wo kann eine Scheinlösung entstehen?',
+          'Probe GEGEN die Original-Gleichung.',
+        ],
+        {
+          1: 'Doch — Probe ist hier Pflicht.',
+          2: 'Die quadrierte Gleichung könnte Scheinlösungen als "richtig" akzeptieren.',
+          3: 'Die Wurzel ist per Definition positiv; das ist gerade der Grund für Scheinlösungen.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['quadrieren-probe'] },
+      ),
       ni(
-        'Sub-Goal "Beim Quadrieren Probe nötig (Scheinlösungen möglich)": Löse $\\sqrt{x + 4} = x - 2$ und gib die einzige gültige Lösung an.',
-        5, 0, '',
-        `**Ansatz:** Beide Seiten quadrieren, quadratische Gleichung lösen, mit Probe filtern.
+        'Sub-Goal "Beim Quadrieren Probe nötig": Löse $\\sqrt{2x + 1} = 3$ und gib die (reelle) Lösung $x$ an.',
+        4, 0, '',
+        `**Ansatz:** Beide Seiten quadrieren, nach $x$ auflösen, PROBE machen.
 
-**Rechnung:** $(x+4) = (x-2)^2 = x^2 - 4x + 4 \\Rightarrow 0 = x^2 - 5x = x(x-5)$. Lösungen $x=0$ und $x=5$.
+**Rechnung:** $(2x+1) = 9 \\Rightarrow 2x = 8 \\Rightarrow x = 4$. Probe: $\\sqrt{9} = 3$. ✓
 
-Probe bei $x=0$: $\\sqrt{4} = 2 \\neq 0-2 = -2$. **Scheinlösung** (rechte Seite negativ, Wurzel positiv).
+**Probe:** Einsetzen in die Originalgleichung bestätigt.
 
-Probe bei $x=5$: $\\sqrt{9} = 3 = 5-2$. ✓
-
-**Probe:** Einzige gültige Lösung: $x=5$.
-
-**Typischer Fehler:** Scheinlösungen beibehalten. Quadrieren ist **keine** Äquivalenzumformung — es erzeugt möglicherweise neue Lösungen, die der Originalgleichung nicht genügen.`,
+**Typischer Fehler:** Vergessen, dass die rechte Seite positiv sein muss. Hier ist $3 > 0$, also keine Scheinlösung; bei $= -3$ wäre jede Lösung Scheinlösung.`,
         [
           'Quadrieren beider Seiten.',
-          'Quadratische Gleichung nach $x$ lösen.',
-          'Beide Kandidaten in die Originalgleichung einsetzen, Scheinlösung streichen.',
+          'Auflösen nach $x$.',
+          'Probe einsetzen!',
         ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['quadrieren-probe'] },
       ),
       mc(
-        'Sub-Goal "Beim Quadrieren Probe nötig (Scheinlösungen möglich)": Warum ist Quadrieren keine Äquivalenzumformung?',
+        'Sub-Goal "Beim Quadrieren Probe nötig": Ein Schüler löst $\\sqrt{x} = -2$ durch Quadrieren zu $x = 4$ und gibt $x=4$ als Lösung an. Wo liegt der Fehler?',
         [
-          'Aus $a = b$ folgt $a^2 = b^2$, aber aus $a^2 = b^2$ folgt nur $|a| = |b|$ (nicht $a = b$)',
-          'Quadrieren erhält die Vorzeichen immer',
-          'Quadrieren ist verboten in Gleichungen',
-          'Es entstehen niemals zusätzliche Lösungen',
+          '$\\sqrt{x}$ ist per Definition $\\geq 0$; die Gleichung hat KEINE reelle Lösung — $x = 4$ ist Scheinlösung.',
+          'Die Rechnung ist korrekt — $x = 4$ ist die Lösung.',
+          'Er hätte $x = -4$ schreiben müssen.',
+          'Die Gleichung ist nicht definiert.',
         ],
         0,
-        `**Ansatz:** Eine Äquivalenzumformung lässt Lösungsmenge unverändert. Quadrieren vernichtet Vorzeicheninformation.
+        `**Ansatz:** Die Wurzelfunktion liefert nichtnegative Werte. $-2 < 0$ ist außerhalb des Wertebereichs.
 
-**Rechnung:** $x = 3$ und $x = -3$ quadrieren beide zu $x^2 = 9$. Aus $x^2 = 9$ sind beide Kandidaten, aber ursprünglich nur einer korrekt.
+**Rechnung:** Probe $x=4$: $\\sqrt{4} = 2 \\neq -2$. Schein­lösung.
 
-**Probe:** Quadrieren erhöht den Grad der Gleichung und kann Scheinlösungen erzeugen.
+**Probe:** Definitionsbereich und Wertebereich prüfen, bevor man Lösungen akzeptiert.
 
-**Typischer Fehler:** Glauben, Quadrieren sei harmlos. Deshalb ist **Probe Pflicht** bei jeder Wurzelgleichung.`,
+**Typischer Fehler:** Probe unterlassen — genau das Szenario dieser Aufgabe.`,
         [
-          'Vorzeicheninformation.',
-          'Aus $a^2 = b^2$ folgt $a = \\pm b$.',
-          'Beispiel: $x = 3$ und $x = -3$.',
+          'Was ist der Wertebereich von $\\sqrt{x}$?',
+          'Kann $\\sqrt{x} = -2$ überhaupt wahr sein?',
+          'Probe bestätigt oder widerlegt.',
         ],
         {
-          1: 'Vorzeichen geht beim Quadrieren verloren — $(+3)^2 = (-3)^2$. Quadrieren kann Scheinlösungen erzeugen.',
-          2: 'Quadrieren ist nicht verboten, aber man muss Probe machen, um Scheinlösungen zu filtern.',
-          3: 'Quadrieren kann zusätzliche Lösungen einführen — genau deshalb ist die Probe nötig.',
+          1: 'Nein — $\\sqrt{4} = +2$, nicht $-2$.',
+          2: '$\\sqrt{x}$ für $x = -4$ ist in $\\mathbb{R}$ gar nicht definiert.',
+          3: 'Sie ist definiert für $x \\geq 0$ — nur hat sie keine Lösung, weil $\\sqrt{x} \\geq 0$.',
         },
-      ),
-      tf(
-        'Sub-Goal "Beim Quadrieren Probe nötig (Scheinlösungen möglich)": Nach dem Quadrieren einer Gleichung ist eine Probe in der Originalgleichung notwendig, um Scheinlösungen zu erkennen.',
-        true,
-        `**Ansatz:** Quadrieren ist keine Äquivalenzumformung → Probe Pflicht.
-
-**Rechnung:** Jede Lösungs-Kandidatin in die **ursprüngliche** Gleichung (nicht in die quadrierte) einsetzen und prüfen, ob beide Seiten gleich sind.
-
-**Probe:** Beispiel $\\sqrt{x} = -2$ hat keine Lösung (linke Seite $\\geq 0$), aber Quadrieren liefert $x = 4$, das in die Originalgleichung eingesetzt die Gleichung nicht erfüllt.
-
-**Typischer Fehler:** Probe im quadrierten Ausdruck statt im Original machen — das übergeht das eigentliche Filterkriterium.`,
-        [
-          'Quadrieren ändert ggf. die Lösungsmenge.',
-          'Probe: Kandidaten in Originalgleichung einsetzen.',
-          'Nicht im quadrierten, sondern im ursprünglichen Ausdruck.',
-        ],
-      ),
-      matching(
-        'Sub-Goal "Beim Quadrieren Probe nötig (Scheinlösungen möglich)": Ordne jedem Kandidaten den Probe-Ausgang bei der Gleichung $\\sqrt{2x+3} = x$ zu (Lösungen: $x^2 - 2x - 3 = 0 \\to x = 3, x = -1$).',
-        [
-          { left: '$x = 3$',                 right: 'gültige Lösung' },
-          { left: '$x = -1$',                right: 'Scheinlösung (rechte Seite negativ)' },
-          { left: 'Ursache für Scheinlösung', right: 'Quadrieren ist keine Äquivalenzumformung' },
-          { left: 'Fazit',                   right: 'Nur $x = 3$ ist Lösung' },
-        ],
-        `**Ansatz:** Beide Lösungen in Originalgleichung einsetzen und $\\sqrt{\\ldots} \\geq 0$ prüfen.
-
-**Rechnung:**
-· $x=3$: $\\sqrt{9} = 3$ ✓.
-· $x=-1$: $\\sqrt{1} = 1$, aber rechts $-1$. $1 \\neq -1$ → Scheinlösung.
-
-**Probe:** Einzige gültige Lösung: $x=3$.
-
-**Typischer Fehler:** Die $-1$ trotz negativer rechter Seite akzeptieren.`,
-        [
-          'Quadrieren kann Scheinlösungen hinzufügen.',
-          'Probe in der Originalgleichung.',
-          'Bei $\\sqrt{\\ldots} = \\ldots$ muss die rechte Seite $\\geq 0$ sein.',
-        ],
+        { stage: 'error-analysis', subGoal: 4, uses: ['quadrieren-probe'] },
       ),
       sorting(
-        'Sub-Goal "Beim Quadrieren Probe nötig (Scheinlösungen möglich)": Bringe die Schritte zur vollständigen Lösung von $\\sqrt{x+6} = x$ in die richtige Reihenfolge.',
+        'Sub-Goal "Beim Quadrieren Probe nötig": Bringe die Schritte zum Lösen von $\\sqrt{x + 3} = x - 1$ in die richtige Reihenfolge.',
         [
-          'Beide Seiten quadrieren: $x + 6 = x^2$',
-          'Auf Normalform: $x^2 - x - 6 = 0$',
-          'Lösungen: $x = 3$ oder $x = -2$',
-          'Probe: nur $x = 3$ erfüllt die Originalgleichung ($x = -2$ ist Scheinlösung)',
+          'Definitionsbereich klären: $x \\geq -3$ (Radikand $\\geq 0$) UND $x \\geq 1$ (RHS $\\geq 0$)',
+          'Quadrieren beider Seiten: $x + 3 = (x-1)^2 = x^2 - 2x + 1$',
+          'Auf Null bringen: $x^2 - 3x - 2 = 0$',
+          'pq-Formel anwenden und Kandidaten-Lösungen bestimmen',
+          'PROBE: jeden Kandidaten in die Originalgleichung einsetzen und Scheinlösungen verwerfen',
         ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Quadrieren → quadratische Gleichung → Lösungen → Probe.
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Fünf Schritte; Probe am Ende ist Pflicht.
 
-**Rechnung:** $x=3$: $\\sqrt{9} = 3$ ✓. $x=-2$: $\\sqrt{4} = 2 \\neq -2$. Scheinlösung.
+**Rechnung:** $x^2 - 3x - 2 = 0$ → $x = (3 \\pm \\sqrt{17})/2$. Der negative Kandidat fällt aus dem Def.-Bereich, der positive muss durch die Probe.
 
-**Probe:** Einzige gültige Lösung $x=3$.
+**Probe:** Die Probe eliminiert Kandidaten, die zwar die quadrierte, aber nicht die Originalgleichung erfüllen.
 
-**Typischer Fehler:** Beide Kandidaten ohne Probe angeben — dann steht $x=-2$ fälschlich als Lösung.`,
+**Typischer Fehler:** Probe-Schritt weglassen — Scheinlösungen schleichen sich ins Ergebnis ein.`,
         [
-          'Quadrieren der Wurzel.',
-          'Quadratische Gleichung lösen.',
-          'Probe in Originalgleichung.',
+          'Definitionsbereich vor jeder Lösungssuche.',
+          'Quadrieren ist kein Äquivalenz-Schritt.',
+          'Probe ist Pflicht, nicht Kür.',
         ],
+        { stage: 'transfer', subGoal: 4, uses: ['quadrieren-probe', 'aequivalenz'] },
       ),
     ],
   },
+
 
 }
