@@ -33,8 +33,29 @@
 // ═══════════════════════════════════════════════════════════════════════════
 
 import { mc, ni, tf, matching, sorting, tag } from './_helpers'
+import { algebraSupplementExtras } from './algebra_extras'
 
-export const algebraSubGoalTasks = {
+// Merged Goal-Tasks: handgeschriebene + aus supplements migrierte Aufgaben.
+// Supplements wurden pro Lesson als zusätzliche SG-Tasks eingegliedert
+// (Slot-zu-Stage-Mapping: concept→apply-guided, calc→apply-independent,
+// tf→recognize, matching/sorting/transfer→transfer, error→error-analysis).
+function mergeGoalTasks(primary, extras) {
+  const out = { ...primary }
+  for (const [lid, extra] of Object.entries(extras)) {
+    if (!out[lid]) { out[lid] = extra; continue }
+    const merged = {}
+    const allSgs = new Set([...Object.keys(out[lid]), ...Object.keys(extra)].map(Number))
+    for (const sg of allSgs) {
+      const a = out[lid][sg] ?? []
+      const b = extra[sg] ?? []
+      merged[sg] = [...a, ...b]
+    }
+    out[lid] = merged
+  }
+  return out
+}
+
+const handwrittenAlgebraSubGoalTasks = {
 
   // ───────────────────────────────────────────────────────────────────────
   // alg-0-1 — Grundrechnen, Klammern & Vorrang  (4 subGoals)
@@ -885,7 +906,7 @@ export const algebraSubGoalTasks = {
           'ggT von Zähler und Nenner finden.',
           'Alles auf einmal kürzen spart Zwischenschritte.',
         ],
-        { stage: 'transfer', subGoal: 2, uses: ['doppelbruch', 'ggt-kuerzen'] },
+        { stage: 'transfer', subGoal: 2, uses: ['doppelbruch'] },
       ),
     ],
     // [3] Bruch vollständig kürzen per ggT
@@ -10442,3 +10463,5 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
   },
 
 }
+
+export const algebraSubGoalTasks = mergeGoalTasks(handwrittenAlgebraSubGoalTasks, algebraSupplementExtras)

@@ -163,7 +163,7 @@ export const PEDAGOGY_STAGES = [
  * Blueprint-Pflicht) — so kann die Migration Topic für Topic laufen.
  */
 export const BLUEPRINT_ENFORCED_TOPICS = [
-  // 'algebra',  // wird freigeschaltet, sobald alle algebra-Lessons blueprintsiert sind
+  'algebra',  // alle 18 Lessons blueprintsiert + alle Aufgaben pedagogy-getaggt
 ]
 
 /**

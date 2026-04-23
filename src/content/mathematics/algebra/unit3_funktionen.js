@@ -31,7 +31,8 @@ export const exercises_alg_u3 = {
       'Ja, zwei verschiedene $x$ dürfen dasselbe $f(x)$ liefern (das wäre nur bei Injektivität verboten).',
       'Grafisch: Eine Senkrechte $x = x_{0}$ darf den Graphen höchstens einmal schneiden (Vertikaler Linientest).',
     ],
-  },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['fkt-def'] },
+},
   'ex-alg-3-1-b': {
     id: 'ex-alg-3-1-b', lessonId: 'alg-3-1', type: 'multiple-choice',
     question: '$f(x) = x^{2}$. Was ist der Definitionsbereich $D$ und der Wertebereich $W$?',
@@ -61,7 +62,8 @@ export const exercises_alg_u3 = {
       'Fragen zu $W$: Kann $x^{2}$ negativ werden? Und wird jede nicht-negative Zahl getroffen?',
       'Quadrat einer reellen Zahl ist immer $\\geq 0$.',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['fkt-def'] },
+},
   'ex-alg-3-1-c': {
     id: 'ex-alg-3-1-c', lessonId: 'alg-3-1', type: 'true-false',
     statement: '$f(x) = x^{2}$ (mit $D = \\mathbb{R}$) ist injektiv (verschiedene $x$-Werte haben verschiedene $y$-Werte).',
@@ -80,7 +82,8 @@ export const exercises_alg_u3 = {
       'Probiere Gegenbeispiele mit betragsgleichen, aber verschieden vorzeichigen Zahlen.',
       '$f(2) = 4$ — gibt es noch eine andere Zahl mit demselben Bild?',
     ],
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['fkt-def'] },
+},
   'ex-alg-3-1-mastery': {
     id: 'ex-alg-3-1-mastery', lessonId: 'alg-3-1', type: 'multiple-choice', isMasteryCheck: true,
     question: '[PRÜFUNG] Welche Eigenschaft muss eine Funktion haben, damit ihre Umkehrfunktion (auf dem gesamten Wertebereich) existiert?',
@@ -107,7 +110,8 @@ export const exercises_alg_u3 = {
       '(a) heißt surjektiv, (b) heißt injektiv — zusammen: bijektiv.',
       'Stetigkeit reicht *nicht*: $\\sin(x)$ ist stetig, aber nicht umkehrbar auf ganz $\\mathbb{R}$.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['fkt-def'] },
+},
 
   // ── Lesson 2: Elementare Funktionen ──
   'ex-alg-3-2-a': {
@@ -135,7 +139,8 @@ export const exercises_alg_u3 = {
       '$x^{n}$ = Potenz, $a^{x}$ = Exponential. $\\log$ ist die Umkehrung von $a^{x}$.',
       '$\\sin, \\cos, \\tan$ sind immer trigonometrisch — periodisch.',
     ],
-  },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['potenz-fkt'] },
+},
   'ex-alg-3-2-b': {
     id: 'ex-alg-3-2-b', lessonId: 'alg-3-2', type: 'multiple-choice',
     question: 'Welche Aussage über $f(x) = e^{x}$ ist FALSCH?',
@@ -167,7 +172,8 @@ export const exercises_alg_u3 = {
       'Kann $e^{x} = 0$ für irgendein $x$ jemals passieren?',
       '$e^{x}$ ist *immer positiv* — damit kann es keine Nullstelle haben.',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['potenz-fkt'] },
+},
   'ex-alg-3-2-c': {
     id: 'ex-alg-3-2-c', lessonId: 'alg-3-2', type: 'multiple-choice',
     question: 'Was ist der Definitionsbereich von $f(x) = \\ln(x)$?',
@@ -192,7 +198,8 @@ export const exercises_alg_u3 = {
       '$e^{y}$ ist stets positiv — also kann $\\ln$ nur positive Zahlen als Argument nehmen.',
       'Achtung bei der Klammer: Ist $x = 0$ erlaubt oder ausgeschlossen?',
     ],
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['potenz-fkt'] },
+},
   'ex-alg-3-2-d': {
     id: 'ex-alg-3-2-d', lessonId: 'alg-3-2', type: 'multiple-choice',
     question: 'Welche Funktion wächst für große $x$ am schnellsten?',
@@ -224,7 +231,8 @@ Exponentialfunktionen wachsen schneller als jede Potenzfunktion, die schneller a
       'Exponentielles Wachstum schlägt *jedes* polynomiale Wachstum — egal wie groß der Exponent.',
       'Merke die Hierarchie: $\\ln(x) \\ll x^{n} \\ll a^{x}$.',
     ],
-  },
+      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['potenz-fkt'] },
+},
   'ex-alg-3-2-e': {
     id: 'ex-alg-3-2-e', lessonId: 'alg-3-2', type: 'multiple-choice',
     question: 'Vereinfache: $\\ln(e^{2x})$',
@@ -253,7 +261,8 @@ Exponentialfunktionen wachsen schneller als jede Potenzfunktion, die schneller a
       'Umkehrfunktionen: $\\ln(e^{y}) = y$ — egal was $y$ ist.',
       'Setze $y = 2x$ ein.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['potenz-fkt'] },
+},
   'ex-alg-3-2-mastery': {
     id: 'ex-alg-3-2-mastery', lessonId: 'alg-3-2', type: 'multiple-choice', isMasteryCheck: true,
     question: '[PRÜFUNG] $f(x) = 2 \\cdot e^{x} - 1$. Was ist $f(0)$?',
@@ -282,7 +291,8 @@ $$f(0) = 2 \\cdot e^{0} - 1 = 2 \\cdot 1 - 1 = 2 - 1 = 1.$$
       'Also $e^{0} = 1$, damit wird aus $2 \\cdot e^{0}$ einfach $2$.',
       'Dann $2 - 1$ rechnen.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['potenz-fkt'] },
+},
 
   // ── Lesson 3: Funktionsoperationen ──
   'ex-alg-3-3-a': {
@@ -314,7 +324,8 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Merke: Rechts-Verschiebung um $a$ → $x$ durch $(x-a)$ ersetzen. Oben um $b$ → $+b$ anhängen.',
       'Form: $g(x) = f(x - a) + b = (x - a)^{2} + b$.',
     ],
-  },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['trafo-hor-verschieben'] },
+},
   'ex-alg-3-3-b': {
     id: 'ex-alg-3-3-b', lessonId: 'alg-3-3', type: 'multiple-choice',
     question: '$f(x) = \\sin(x)$ wird an der $x$-Achse gespiegelt. Wie lautet die neue Funktion?',
@@ -345,7 +356,8 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Minus kommt *vor* die Funktion (außen), nicht ins Argument.',
       'Regel: $g(x) = -f(x)$.',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['trafo-hor-verschieben'] },
+},
   'ex-alg-3-3-c': {
     id: 'ex-alg-3-3-c', lessonId: 'alg-3-3', type: 'multiple-choice',
     question: '$f(x) = x^{2}$ wird vertikal um Faktor $3$ gestreckt. Wie lautet $g(x)$?',
@@ -375,7 +387,8 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Wo muss der Faktor $3$ also hin — ins Argument oder außen vor $f$?',
       'Regel: $g(x) = c \\cdot f(x)$. Setze $c = 3$ und $f(x) = x^{2}$ ein.',
     ],
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['trafo-hor-verschieben'] },
+},
   'ex-alg-3-3-mastery': {
     id: 'ex-alg-3-3-mastery', lessonId: 'alg-3-3', type: 'multiple-choice', isMasteryCheck: true,
     question: '[PRÜFUNG] $f(x) = e^{x}$. Welche Transformation ergibt $g(x) = e^{x-2} + 1$?',
@@ -409,7 +422,8 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Lese $a$ und $b$ ab: $a = 2, b = 1$.',
       '$(x - a)$ heißt Verschiebung um $a$ nach rechts. $+b$ heißt Verschiebung um $b$ nach oben.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['trafo-hor-verschieben'] },
+},
 
   // ── Lesson 4: Umkehrfunktionen ──
   'ex-alg-3-4-a': {
@@ -442,7 +456,8 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Dreischritt: (1) $y = 2x + 3$, (2) $x = ?$, (3) $x \\leftrightarrow y$ tauschen.',
       'Prüfe mit der Verkettung: $f(f^{-1}(x))$ muss $x$ ergeben.',
     ],
-  },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['umkehr-existenz'] },
+},
   'ex-alg-3-4-b': {
     id: 'ex-alg-3-4-b', lessonId: 'alg-3-4', type: 'multiple-choice',
     question: 'Die Umkehrfunktion von $f(x) = e^{x}$ ist:',
@@ -476,7 +491,8 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       '$\\ln$ ist *definiert* als Umkehrung von $e^{x}$.',
       'Prüfe die Verkettung: $\\ln(e^{x}) = ?$ und $e^{\\ln(x)} = ?$.',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['umkehr-existenz'] },
+},
   'ex-alg-3-4-c': {
     id: 'ex-alg-3-4-c', lessonId: 'alg-3-4', type: 'true-false',
     statement: 'Der Graph einer Umkehrfunktion $f^{-1}$ entsteht durch Spiegelung des Graphen von $f$ an der Geraden $y = x$.',
@@ -495,7 +511,8 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       '$(a, b) \\to (b, a)$ — welche geometrische Operation ist das?',
       'Die Spiegelung an $y = x$ genau: jeder Punkt wechselt $x$- und $y$-Koordinate.',
     ],
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['umkehr-existenz'] },
+},
   'ex-alg-3-4-mastery': {
     id: 'ex-alg-3-4-mastery', lessonId: 'alg-3-4', type: 'multiple-choice', isMasteryCheck: true,
     question: '[PRÜFUNG] $f(x) = x^{2}$ (für $x \\geq 0$). Was ist $f^{-1}(x)$?',
@@ -530,7 +547,8 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Streng monoton steigend → injektiv. Bild $[0, \\infty)$ wird komplett erreicht → surjektiv.',
       'Dann $y = x^{2}$ nach $x$ auflösen und beachten: nur die *positive* Wurzel, da $x \\geq 0$ gefordert ist.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['umkehr-existenz'] },
+},
 }
 
 const lessons_alg_u3 = [

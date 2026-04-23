@@ -25,7 +25,8 @@ $$3x + 7 = 22 \\quad | -7 \\\\ 3x = 15 \\quad | :3 \\\\ x = 5$$
       'Regel: Was du links machst, musst du auch rechts machen (Waagenprinzip).',
       'Nach dem Subtrahieren von $7$ bleibt $3x = 15$. Jetzt durch $3$ teilen.',
     ],
-  },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['lin-form'] },
+},
   'ex-alg-2-1-b': {
     id: 'ex-alg-2-1-b', lessonId: 'alg-2-1', type: 'number-input',
     question: 'Löse: $5x - 3 = 2x + 9$',
@@ -45,7 +46,8 @@ $$5x - 3 = 2x + 9 \\quad | -2x \\\\ 3x - 3 = 9 \\quad | +3 \\\\ 3x = 12 \\quad |
       'Rechenschritt: $5x - 2x = 9 + 3$, also $3x = 12$.',
       'Teile am Ende durch den Koeffizienten vor $x$.',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['lin-form'] },
+},
   'ex-alg-2-1-c': {
     id: 'ex-alg-2-1-c', lessonId: 'alg-2-1', type: 'multiple-choice',
     question: 'Ein Rechteck hat Umfang $U = 30$ cm. Die Länge ist doppelt so groß wie die Breite. Wie breit ist das Rechteck?',
@@ -73,7 +75,8 @@ Also: Breite $= 5$ cm, Länge $= 10$ cm.
       'Umfangsformel: $U = 2(l + b)$. Setze $l = 2b$ ein.',
       'Du erhältst $30 = 6b$. Löse nach $b$ auf.',
     ],
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['lin-form'] },
+},
   'ex-alg-2-1-d': {
     id: 'ex-alg-2-1-d', lessonId: 'alg-2-1', type: 'multiple-choice',
     question: 'Textaufgabe: Ein Zug fährt mit $v_{1} = 80$ km/h los. $2$ Stunden später startet ein zweiter Zug mit $v_{2} = 120$ km/h auf der gleichen Strecke. Nach wie vielen Stunden (ab Start des 2. Zuges) holt der schnellere den langsameren ein?',
@@ -101,7 +104,8 @@ Alternative: Aufholgeschwindigkeit $= v_{2} - v_{1} = 40$ km/h. Zeit $= 160 \\te
       'Pro Stunde holt Zug 2 um $v_{2} - v_{1} = 40$ km auf. Wie lange braucht er für $160$ km Vorsprung?',
       'Rechne $160 / 40 = ?$',
     ],
-  },
+      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['lin-form'] },
+},
   'ex-alg-2-1-mastery': {
     id: 'ex-alg-2-1-mastery', lessonId: 'alg-2-1', type: 'number-input', isMasteryCheck: true,
     question: '[PRÜFUNG] Löse: $\\dfrac{2x + 1}{3} = \\dfrac{x - 2}{2} + 1$. Gib $x$ an.',
@@ -121,7 +125,8 @@ $$6 \\cdot \\dfrac{2x+1}{3} = 6 \\cdot \\dfrac{x-2}{2} + 6 \\cdot 1 \\\\ 2(2x+1)
       'Hauptnenner von $3$ und $2$ ist $6$. Denke daran: Auch die $+1$ wird mit $6$ multipliziert!',
       'Nach dem Multiplizieren: $2(2x+1) = 3(x-2) + 6$. Klammern auflösen und nach $x$ sortieren.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['lin-form'] },
+},
 
   // ── Lesson 2: Quadratische Gleichungen ──
   'ex-alg-2-2-a': {
@@ -151,7 +156,8 @@ Also $x_{1} = 3$, $x_{2} = 2$.
       'Formel: $x_{1,2} = -\\dfrac{p}{2} \\pm \\sqrt{\\left(\\dfrac{p}{2}\\right)^{2} - q}$. Alternativ Vieta: zwei Zahlen mit Summe $5$ und Produkt $6$?',
       'Rechne $\\left(\\dfrac{-5}{2}\\right)^{2} - 6 = 6{,}25 - 6 = 0{,}25$ — Wurzel daraus ist $0{,}5$.',
     ],
-  },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['quad-form'] },
+},
   'ex-alg-2-2-b': {
     id: 'ex-alg-2-2-b', lessonId: 'alg-2-2', type: 'multiple-choice',
     question: 'Die Diskriminante $D = b^{2} - 4ac$ einer quadratischen Gleichung $ax^{2} + bx + c = 0$ ist negativ ($D < 0$). Was bedeutet das?',
@@ -179,7 +185,8 @@ Also $x_{1} = 3$, $x_{2} = 2$.
       'Regel: $\\sqrt{\\text{negative Zahl}}$ ist nicht reell.',
       'Geometrisch: Wie viele Schnittpunkte hat die Parabel mit der $x$-Achse?',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['quad-form'] },
+},
   'ex-alg-2-2-c': {
     id: 'ex-alg-2-2-c', lessonId: 'alg-2-2', type: 'number-input',
     question: 'Löse mit der pq-Formel: $x^{2} + 4x - 5 = 0$. Gib die POSITIVE Lösung an.',
@@ -203,7 +210,8 @@ Also $x_{1} = 1$, $x_{2} = -5$. Die positive Lösung ist $x = 1$.
       'Achtung Vorzeichen: $-q = -(-5) = +5$. Unter der Wurzel steht also $4 + 5 = 9$.',
       'Nach $\\sqrt{9} = 3$ erhältst du $x_{1,2} = -2 \\pm 3$ — welche ist die positive?',
     ],
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['quad-form'] },
+},
   'ex-alg-2-2-d': {
     id: 'ex-alg-2-2-d', lessonId: 'alg-2-2', type: 'multiple-choice',
     question: 'Nach Vieta: $x^{2} - 7x + 12 = 0$. Was gilt für die Lösungen $x_{1}$ und $x_{2}$?',
@@ -234,7 +242,8 @@ $$x_{1} + x_{2} = -(-7) = 7, \\qquad x_{1} \\cdot x_{2} = 12$$
       'Hier liest du $p$ und $q$ aus $x^{2} + px + q$ ab: $p = -7$, $q = 12$.',
       'Welche zwei Zahlen haben Summe $7$ und Produkt $12$? (Probeweise im Kopf.)',
     ],
-  },
+      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['quad-form'] },
+},
   'ex-alg-2-2-e': {
     id: 'ex-alg-2-2-e', lessonId: 'alg-2-2', type: 'multiple-choice',
     question: 'Wie viele Lösungen hat $2x^{2} + 3x + 5 = 0$?',
@@ -262,7 +271,8 @@ Da $D = -31 < 0$, existiert **keine reelle Lösung**.
       'Hier: $a = 2$, $b = 3$, $c = 5$. Rechne $D = 3^{2} - 4 \\cdot 2 \\cdot 5$.',
       'Ist $D > 0$, $= 0$ oder $< 0$? Das bestimmt die Anzahl der reellen Lösungen.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['quad-form'] },
+},
   'ex-alg-2-2-mastery': {
     id: 'ex-alg-2-2-mastery', lessonId: 'alg-2-2', type: 'number-input', isMasteryCheck: true,
     question: '[PRÜFUNG] Löse: $2x^{2} - 8x + 6 = 0$. Gib die GRÖSSERE Lösung an.',
@@ -289,7 +299,8 @@ Somit $x_{1} = 3$, $x_{2} = 1$. Die größere Lösung ist $x = 3$.
       'Nach dem Teilen: $x^{2} - 4x + 3 = 0$. Jetzt pq-Formel mit $p = -4$, $q = 3$.',
       'Du erhältst $x = 2 \\pm \\sqrt{4-3} = 2 \\pm 1$. Welche ist die größere?',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['quad-form'] },
+},
 
   // ── Lesson 3: Polynomgleichungen & Polynomdivision ──
   'ex-alg-2-3-a': {
@@ -319,7 +330,8 @@ Also ist $x = 1$ eine Nullstelle von $P$.
       'Teilergebnisse: $1^{3} = 1$, $6 \\cdot 1^{2} = 6$, $11 \\cdot 1 = 11$.',
       'Summiere: $1 - 6 + 11 - 6 = ?$. Wenn das Ergebnis Null ist, ist $x=1$ Nullstelle.',
     ],
-  },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['rat-wurzel'] },
+},
   'ex-alg-2-3-b': {
     id: 'ex-alg-2-3-b', lessonId: 'alg-2-3', type: 'multiple-choice',
     question: '$(x^{3} - 6x^{2} + 11x - 6) \\div (x - 1)$ ergibt:',
@@ -347,7 +359,8 @@ Der Quotient ist $x^{2} - 5x + 6$, Rest $0$ — das bestätigt, dass $x=1$ Nulls
       'Multipliziere $x^{2} \\cdot (x-1) = x^{3} - x^{2}$ und ziehe das vom Dividenden ab.',
       'Arbeite schrittweise nach unten: nächster Quotiententerm, multiplizieren, subtrahieren — bis Rest $0$.',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['rat-wurzel'] },
+},
   'ex-alg-2-3-c': {
     id: 'ex-alg-2-3-c', lessonId: 'alg-2-3', type: 'multiple-choice',
     question: 'Für $P(x) = 2x^{3} + 3x^{2} - 1$ an der Stelle $x_{0} = -1$: Was ist $P(-1)$?',
@@ -382,7 +395,8 @@ Letzte Zahl in der Summenzeile ist $P(-1) = 0$. ✓
       'Setze ein: $P(-1) = 2 \\cdot (-1) + 3 \\cdot 1 - 1$.',
       'Addiere die Terme: $-2 + 3 - 1 = ?$',
     ],
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['rat-wurzel'] },
+},
   'ex-alg-2-3-d': {
     id: 'ex-alg-2-3-d', lessonId: 'alg-2-3', type: 'multiple-choice',
     question: 'Polynomdivision mit Rest: $(x^{2} + 3x + 5) : (x + 2) = ?$',
@@ -417,7 +431,8 @@ Also $(x^{2} + 3x + 5) = (x + 1)(x + 2) + 3$.
       'Der Restsatz: Der Rest von $P(x) : (x - a)$ ist immer $P(a)$. Hier: $a = -2$, also $P(-2) = ?$',
       'Quotient $x + 1$; Probe $P(-2) = 3$ sollte als Rest auftauchen.',
     ],
-  },
+      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['rat-wurzel'] },
+},
   'ex-alg-2-3-mastery': {
     id: 'ex-alg-2-3-mastery', lessonId: 'alg-2-3', type: 'multiple-choice', isMasteryCheck: true,
     question: '[PRÜFUNG] Alle Nullstellen von $P(x) = x^{3} - 3x^{2} + 2x$ sind:',
@@ -454,7 +469,8 @@ Also $x_{2} = 2$, $x_{3} = 1$.
       'Nach $P(x) = x (x^{2} - 3x + 2)$: Eine Nullstelle ist sofort ablesbar, die anderen kommen aus der Klammer.',
       'Quadratische Gleichung $x^{2} - 3x + 2 = 0$: Zwei Zahlen mit Summe $3$ und Produkt $2$?',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['rat-wurzel'] },
+},
 
   // ── Lesson 4: Ungleichungen ──
   'ex-alg-2-4-a': {
@@ -482,7 +498,8 @@ $$2x - 3 > 7 \\quad | +3 \\\\ 2x > 10 \\quad | :2 \\; (\\text{positiv, Zeichen b
       'Teile jetzt durch $2$. Der Divisor ist positiv — das Zeichen bleibt also.',
       'Ergebnis: $x > 5$. Keine Umdrehung nötig!',
     ],
-  },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['ungl-zeichen-flip'] },
+},
   'ex-alg-2-4-b': {
     id: 'ex-alg-2-4-b', lessonId: 'alg-2-4', type: 'multiple-choice',
     question: 'Löse: $-3x < 12$',
@@ -510,7 +527,8 @@ $$-3x < 12 \\quad | : (-3) \\; (\\text{negativ! Zeichen dreht}) \\\\ x > -4$$
       'Regel: Multiplikation/Division mit negativer Zahl dreht "$<$" zu "$>$" (und umgekehrt).',
       '$-3x < 12 \\Leftrightarrow x > -4$ (Zeichen gedreht).',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['ungl-zeichen-flip'] },
+},
   'ex-alg-2-4-c': {
     id: 'ex-alg-2-4-c', lessonId: 'alg-2-4', type: 'multiple-choice',
     question: 'Löse: $|x - 3| < 5$',
@@ -536,7 +554,8 @@ $$|x - 3| < 5 \\; \\Leftrightarrow \\; -5 < x - 3 < 5 \\quad | +3 \\; (\\text{in
       'Setze ein und löse die Doppelungleichung: $-5 < x - 3 < 5$.',
       'Addiere in allen drei Teilen $+3$: $-5 + 3 < x < 5 + 3$, also $-2 < x < 8$.',
     ],
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['ungl-zeichen-flip'] },
+},
   'ex-alg-2-4-d': {
     id: 'ex-alg-2-4-d', lessonId: 'alg-2-4', type: 'multiple-choice',
     question: 'Löse: $x^{2} - 4 > 0$',
@@ -576,7 +595,8 @@ Gesucht ist "Produkt $> 0$" — das trifft in $x < -2$ und $x > 2$ zu.
       'Nullstellen sind $x = -2$ und $x = 2$. Zwischen und außerhalb gelten unterschiedliche Vorzeichen.',
       'Ein Produkt ist positiv, wenn beide Faktoren dasselbe Vorzeichen haben — das passiert für $x < -2$ *oder* $x > 2$.',
     ],
-  },
+      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['ungl-zeichen-flip'] },
+},
   'ex-alg-2-4-mastery': {
     id: 'ex-alg-2-4-mastery', lessonId: 'alg-2-4', type: 'multiple-choice', isMasteryCheck: true,
     question: '[PRÜFUNG] Löse: $|2x + 1| \\leq 7$',
@@ -604,7 +624,8 @@ $$|2x + 1| \\leq 7 \\; \\Leftrightarrow \\; -7 \\leq 2x + 1 \\leq 7 \\quad | -1 
       'Subtrahiere in allen drei Teilen $1$: $-8 \\leq 2x \\leq 6$.',
       'Teile durch $2$ (positiv, kein Umdrehen): $-4 \\leq x \\leq 3$.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['ungl-zeichen-flip'] },
+},
 }
 
 const lessons_alg_u2 = [
@@ -839,7 +860,7 @@ Nützlich zum schnellen Raten ganzzahliger Lösungen oder zur Probe!`,
         { id: 'cardano-info',     title: 'Ohne rationale Nullstelle: Cardano oder numerisch (Infotiefe)',                       dependsOn: ['rat-wurzel'] },
       ],
       subGoalConcepts: {
-        0: ['rat-wurzel'],
+        0: ['polynom-grad', 'rat-wurzel'],
         1: ['polydiv'],
         2: ['polydiv-rest'],
         3: ['horner'],

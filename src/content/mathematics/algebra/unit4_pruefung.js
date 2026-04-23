@@ -31,7 +31,8 @@ export const exercises_alg_u4 = {
       'Formel: $x^{m/n} = (\\sqrt[n]{x})^{m}$. Also $8^{2/3} = (\\sqrt[3]{8})^{2}$.',
       'Konkret: $\\sqrt[3]{8} = 2$, also $8^{2/3} = 4$. Exponenten von $x$ und $y$ jeweils mit $2/3$ multiplizieren.',
     ],
-  },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['pr-diskriminante'] },
+},
   'ex-alg-4-1-b': {
     id: 'ex-alg-4-1-b', lessonId: 'alg-4-1', type: 'multiple-choice',
     question: '[PRÜFUNG] Löse nach $x$ auf: $\\ln(2x - 1) = 3$',
@@ -59,7 +60,8 @@ export const exercises_alg_u4 = {
       'Formel: $\\ln(A) = B \\Leftrightarrow A = e^{B}$.',
       'Konkret: $2x - 1 = e^{3}$, dann $+1$ auf beide Seiten und durch $2$ teilen.',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['pr-diskriminante'] },
+},
   'ex-alg-4-1-c': {
     id: 'ex-alg-4-1-c', lessonId: 'alg-4-1', type: 'number-input',
     question: '[PRÜFUNG] Berechne: $\\log_{2}(128)$. Gib eine ganze Zahl ein.',
@@ -83,7 +85,8 @@ Also $\\log_{2}(128) = 7$.
       'Formel: $\\log_{b}(x) = y \\Leftrightarrow b^{y} = x$. Hier $2^{y} = 128$.',
       'Konkret: Zähle hoch: $2, 4, 8, 16, 32, 64, 128$ — das ist die 7. Potenz.',
     ],
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['pr-diskriminante'] },
+},
   'ex-alg-4-1-d': {
     id: 'ex-alg-4-1-d', lessonId: 'alg-4-1', type: 'true-false',
     statement: '[PRÜFUNG] Es gilt: $\\log(a \\cdot b) = \\log(a) \\cdot \\log(b)$.',
@@ -105,7 +108,8 @@ Also $\\log_{2}(128) = 7$.
       'Formel: $\\log(a \\cdot b) = \\log(a) + \\log(b)$ (Produkt wird Summe, nicht Produkt).',
       'Konkret: $\\log(100) = 2$, aber $\\log(10) \\cdot \\log(10) = 1$. Also $2 \\neq 1$ — Behauptung falsch.',
     ],
-  },
+      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['pr-diskriminante'] },
+},
   'ex-alg-4-1-e': {
     id: 'ex-alg-4-1-e', lessonId: 'alg-4-1', type: 'multiple-choice',
     question: '[PRÜFUNG] Vereinfache: $\\log_{3}(81) - \\log_{3}(3)$',
@@ -135,7 +139,8 @@ Also $\\log_{2}(128) = 7$.
       'Formel: $\\log(A) - \\log(B) = \\log(A/B)$ und $\\log_{a}(a^{n}) = n$.',
       'Konkret: $81 = 3^{4}$, $3 = 3^{1}$, also $4 - 1 = 3$.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['pr-diskriminante'] },
+},
   'ex-alg-4-1-f': {
     id: 'ex-alg-4-1-f', lessonId: 'alg-4-1', type: 'multiple-choice',
     question: '[PRÜFUNG] Löse die quadratische Gleichung: $x^{2} - 5x + 6 = 0$',
@@ -166,7 +171,8 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
       'Formel: $x^{2} + px + q = (x - r_{1})(x - r_{2})$ mit $r_{1} \\cdot r_{2} = q$, $r_{1} + r_{2} = -p$.',
       'Konkret: $2 \\cdot 3 = 6$ und $2 + 3 = 5$. Also $(x-2)(x-3) = 0$.',
     ],
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['pr-diskriminante'] },
+},
   'ex-alg-4-1-g': {
     id: 'ex-alg-4-1-g', lessonId: 'alg-4-1', type: 'number-input',
     question: '[PRÜFUNG] Die Gleichung $2x^{2} + 4x - 6 = 0$ hat zwei Lösungen. Was ist die größere Lösung?',
@@ -191,7 +197,8 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
       'Formel: $x_{1,2} = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$.',
       'Konkret: Mit $a=1, b=2, c=-3$ folgt $D = 16$, also $x_{1,2} = (-2 \\pm 4)/2$. Größere Wurzel: $+1$.',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['pr-diskriminante'] },
+},
   'ex-alg-4-1-h': {
     id: 'ex-alg-4-1-h', lessonId: 'alg-4-1', type: 'true-false',
     statement: '[PRÜFUNG] Die Gleichung $x^{2} + 4 = 0$ hat in $\\mathbb{R}$ keine Lösung.',
@@ -213,7 +220,8 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
       'Formel: Diskriminante $D = b^{2} - 4ac$, $D < 0 \\Rightarrow$ keine reellen Lösungen.',
       'Konkret: $D = 0 - 16 = -16 < 0$ — also in $\\mathbb{R}$ keine Lösung.',
     ],
-  },
+      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['pr-diskriminante'] },
+},
   'ex-alg-4-1-i': {
     id: 'ex-alg-4-1-i', lessonId: 'alg-4-1', type: 'matching',
     question: '[PRÜFUNG] Ordne jedem Ausdruck das richtige Vereinfachungsergebnis zu:',
@@ -240,7 +248,8 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
       'Formel: $\\log(a \\cdot b) = \\log a + \\log b$; $\\log(a/b) = \\log a - \\log b$; $\\log(a^{n}) = n \\log a$.',
       'Konkret: $e^{\\ln(x)} = x$, weil $\\ln$ und $e^{\\cdot}$ Umkehrfunktionen sind.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['pr-diskriminante'] },
+},
   'ex-alg-4-1-j': {
     id: 'ex-alg-4-1-j', lessonId: 'alg-4-1', type: 'multiple-choice',
     question: '[PRÜFUNG] Wie viele reelle Lösungen hat $x^{2} - 6x + 9 = 0$?',
@@ -269,7 +278,8 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
       'Formel: $D > 0$ → $2$ verschiedene; $D = 0$ → Doppellösung; $D < 0$ → keine reellen.',
       'Konkret: $D = 36 - 36 = 0$, also Doppellösung bei $x = 3$.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['pr-diskriminante'] },
+},
   'ex-alg-4-1-mastery': {
     id: 'ex-alg-4-1-mastery', lessonId: 'alg-4-1', type: 'multiple-choice', isMasteryCheck: true,
     question: '[PRÜFUNG] Ein Druckbehälter hat Innendruck $p(t) = p_{0} \\cdot e^{-kt}$. Nach $5$ s ist der Druck auf die Hälfte gesunken. Wie groß ist $k$?',
@@ -299,7 +309,8 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
       'Formel: $e^{-kt} = 1/2$ bei $t = T_{1/2}$, also $k = \\ln(2)/T_{1/2}$.',
       'Konkret: $-5k = \\ln(1/2) = -\\ln(2)$, also $k = \\ln(2)/5$.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['pr-diskriminante'] },
+},
 
   // ── Lektion 4-2: Prüfung Funktionen & Anwendungen ────────────────────────
   'ex-alg-4-2-a': {
@@ -329,7 +340,8 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
       'Formel: $f\'(x) = 3x^{2} - 3$, $f\'\'(x) = 6x$.',
       'Konkret: $3x^{2} - 3 = 0 \\Rightarrow x = \\pm 1$. Vorzeichen von $f\'\'$ prüfen.',
     ],
-  },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['pr-scheitel-formel'] },
+},
   'ex-alg-4-2-b': {
     id: 'ex-alg-4-2-b', lessonId: 'alg-4-2', type: 'multiple-choice',
     question: '[PRÜFUNG] Was ist die Umkehrfunktion von $f(x) = 3x - 2$?',
@@ -360,7 +372,8 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
       'Formel: Bei $y = ax + b$ ist $f^{-1}(x) = (x - b)/a$.',
       'Konkret: $y = 3x - 2 \\Rightarrow x = (y + 2)/3$. Dann $x \\leftrightarrow y$.',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['pr-scheitel-formel'] },
+},
   'ex-alg-4-2-c': {
     id: 'ex-alg-4-2-c', lessonId: 'alg-4-2', type: 'true-false',
     statement: '[PRÜFUNG] $f(x) = x^{3}$ ist eine bijektive Funktion ($\\mathbb{R} \\to \\mathbb{R}$) und besitzt daher eine Umkehrfunktion.',
@@ -382,7 +395,8 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
       'Formel: Streng monoton $\\Rightarrow$ injektiv; Wertemenge $= \\mathbb{R} \\Rightarrow$ surjektiv.',
       'Konkret: $f\'(x) = 3x^{2} \\geq 0$, also monoton. $\\sqrt[3]{\\cdot}$ ist auf $\\mathbb{R}$ definiert.',
     ],
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['pr-scheitel-formel'] },
+},
   'ex-alg-4-2-d': {
     id: 'ex-alg-4-2-d', lessonId: 'alg-4-2', type: 'multiple-choice',
     question: '[PRÜFUNG] Eine Parabel hat die Gleichung $f(x) = 2(x - 3)^{2} + 1$. Was ist der Scheitelpunkt?',
@@ -411,7 +425,8 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
       'Formel: $S(h \\mid k)$ — aber Achtung: $h$ ist das, was von $x$ **subtrahiert** wird.',
       'Konkret: $(x - 3)^{2}$ bedeutet $h = 3$, nicht $-3$.',
     ],
-  },
+      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['pr-scheitel-formel'] },
+},
   'ex-alg-4-2-e': {
     id: 'ex-alg-4-2-e', lessonId: 'alg-4-2', type: 'number-input',
     question: '[PRÜFUNG] $f(x) = x^{2} - 4x + 3$. An welcher $x$-Stelle liegt der Scheitelpunkt (Minimum)?',
@@ -441,7 +456,8 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
       'Formel: Oder quadratisch ergänzen: $(x-h)^{2} + k$-Form finden.',
       'Konkret: $a = 1$, $b = -4$, also $x_{S} = 4/2 = 2$.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['pr-scheitel-formel'] },
+},
   'ex-alg-4-2-f': {
     id: 'ex-alg-4-2-f', lessonId: 'alg-4-2', type: 'multiple-choice',
     question: '[PRÜFUNG] Welche Funktion hat den Definitionsbereich $D = (0, \\infty)$?',
@@ -470,7 +486,8 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
       'Formel: $\\ln(x)$ ist nur für $x > 0$ definiert. $e^{x}, x^{2}, \\sin(x)$ sind überall definiert.',
       'Konkret: $\\ln(x)$ ist die einzige mit $D = (0, \\infty)$.',
     ],
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['pr-scheitel-formel'] },
+},
   'ex-alg-4-2-g': {
     id: 'ex-alg-4-2-g', lessonId: 'alg-4-2', type: 'sorting',
     question: '[PRÜFUNG] Bringe die Schritte zur Bestimmung der Umkehrfunktion von $f(x) = 2e^{x} - 1$ in die richtige Reihenfolge:',
@@ -501,7 +518,8 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
       'Formel: $\\ln$ ist die Umkehrung von $e^{\\cdot}$ — zuletzt anwenden.',
       'Konkret: Konstanten isolieren → durch Koeffizient teilen → logarithmieren → umbenennen.',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['pr-scheitel-formel'] },
+},
   'ex-alg-4-2-h': {
     id: 'ex-alg-4-2-h', lessonId: 'alg-4-2', type: 'multiple-choice',
     question: '[PRÜFUNG] Ein Bauteil dehnt sich mit $l(T) = l_{0} \\cdot (1 + \\alpha \\cdot T)$ aus. $l_{0} = 1$ m, $\\alpha = 2 \\cdot 10^{-5}$ K$^{-1}$. Bei $T = 500$ K ist $l = $',
@@ -532,7 +550,8 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
       'Formel: $l(T) = l_{0}(1 + \\alpha T)$. Einheit von $\\alpha T$: dimensionslos.',
       'Konkret: $2 \\cdot 10^{-5} \\cdot 500 = 10^{3} \\cdot 10^{-5} = 10^{-2} = 0{,}01$.',
     ],
-  },
+      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['pr-scheitel-formel'] },
+},
   'ex-alg-4-2-i': {
     id: 'ex-alg-4-2-i', lessonId: 'alg-4-2', type: 'true-false',
     statement: '[PRÜFUNG] Der Graph von $f^{-1}(x)$ entsteht aus dem Graphen von $f(x)$ durch Spiegelung an der Geraden $y = x$.',
@@ -555,7 +574,8 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
       'Formel: Umkehrfunktion $=$ Vertauschung von $x$ und $y$.',
       'Konkret: $(a, b) \\to (b, a)$ ist geometrisch Spiegelung an $y = x$.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['pr-scheitel-formel'] },
+},
   'ex-alg-4-2-j': {
     id: 'ex-alg-4-2-j', lessonId: 'alg-4-2', type: 'multiple-choice',
     question: '[PRÜFUNG] Polynomdivision: $(x^{3} - 2x^{2} - 5x + 6) \\div (x - 1)$. Das Ergebnis ist:',
@@ -585,7 +605,8 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
       'Formel: Multiplizier und subtrahier, hole nächsten Term herunter, wiederhole.',
       'Konkret: Rücktest: $(x-1) \\cdot$ Ergebnis muss das Originalpolynom geben.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['pr-scheitel-formel'] },
+},
   'ex-alg-4-2-mastery': {
     id: 'ex-alg-4-2-mastery', lessonId: 'alg-4-2', type: 'multiple-choice', isMasteryCheck: true,
     question: '[PRÜFUNG] Die Nachfragefunktion eines Produkts lautet $p(x) = 100 - 2x$ (Preis in €, $x = $ Menge). Der Umsatz $U(x) = x \\cdot p(x)$ wird maximal bei $x = $',
@@ -616,7 +637,8 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
       'Formel: $x_{S} = -b/(2a)$ für $U(x) = ax^{2} + bx + c$.',
       'Konkret: $U(x) = -2x^{2} + 100x$, also $x_{S} = -100/(-4) = 25$.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['pr-scheitel-formel'] },
+},
 
   // ── Lektion 4-3: Gleichungssysteme & technische Anwendungen ────────────────
   'ex-alg-4-3-a': {
@@ -655,7 +677,8 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
       'Formel: Aus $x - y = 1$ folgt $x = 1 + y$.',
       'Konkret: Einsetzen gibt $5y = 5$, also $y = 1, x = 2$. Probe machen.',
     ],
-  },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['pr-lgs-methoden'] },
+},
   'ex-alg-4-3-b': {
     id: 'ex-alg-4-3-b', lessonId: 'alg-4-3', type: 'number-input',
     question: '[PRÜFUNG] Ein Tragwerk hat zwei Stäbe mit Kräften $F_{1}$, $F_{2}$. Gleichgewicht: $F_{1} + 2F_{2} = 12$ kN und $2F_{1} - F_{2} = 4$ kN. Welchen Wert hat $F_{1}$ in kN?',
@@ -684,7 +707,8 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
       'Formel: Standard-Einsetzungs­verfahren für 2×2-Systeme.',
       'Konkret: $24 - 5F_{2} = 4 \\Rightarrow F_{2} = 4$, dann $F_{1} = 4$ kN.',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['pr-lgs-methoden'] },
+},
   'ex-alg-4-3-c': {
     id: 'ex-alg-4-3-c', lessonId: 'alg-4-3', type: 'true-false',
     statement: '[PRÜFUNG] Eine Wurzelgleichung $\\sqrt{f(x)} = g(x)$ löst man durch Quadrieren beider Seiten — die erhaltene Lösung muss IMMER in die Originalgleichung eingesetzt werden, weil Quadrieren Scheinlösungen erzeugen kann.',
@@ -707,7 +731,8 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
       'Formel: $A = B \\Rightarrow A^{2} = B^{2}$, aber nicht umgekehrt.',
       'Konkret: $\\sqrt{x} = -1$ hat keine Lösung, aber quadriert gibt $x = 1$ — das ist eine Scheinlösung.',
     ],
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['pr-lgs-methoden'] },
+},
   'ex-alg-4-3-d': {
     id: 'ex-alg-4-3-d', lessonId: 'alg-4-3', type: 'matching',
     question: '[PRÜFUNG] Ordne den Gleichungstypen ihre Standard­lösungsmethode zu.',
@@ -735,7 +760,8 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
       'Formel: $|f| = c \\Leftrightarrow f = c \\lor f = -c$; $\\sqrt{f} = g \\Rightarrow f = g^{2}$ (+ Probe).',
       'Konkret: Nicht-äquivalente Umformungen (Quadrieren, Beträge entfernen) brauchen immer Nachprüfung.',
     ],
-  },
+      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['pr-lgs-methoden'] },
+},
   'ex-alg-4-3-e': {
     id: 'ex-alg-4-3-e', lessonId: 'alg-4-3', type: 'number-input',
     question: '[PRÜFUNG] Löse $\\sqrt{x + 5} = x - 1$. Gib die gültige Lösung $x$ an.',
@@ -765,7 +791,8 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
       'Formel: $\\sqrt{A} = B \\Rightarrow A = B^{2}$ (+ Vorbedingung $B \\geq 0$).',
       'Konkret: $x^{2} - 3x - 4 = 0 \\Rightarrow x = 4$ oder $x = -1$. Probe eliminiert $-1$.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['pr-lgs-methoden'] },
+},
   'ex-alg-4-3-f': {
     id: 'ex-alg-4-3-f', lessonId: 'alg-4-3', type: 'multiple-choice',
     question: '[PRÜFUNG] Eine Betragsungleichung $|2x - 3| \\leq 5$ hat welche Lösungsmenge?',
@@ -803,7 +830,8 @@ $f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.
       'Formel: $|u| \\leq c \\Leftrightarrow -c \\leq u \\leq c$.',
       'Konkret: $-5 \\leq 2x - 3 \\leq 5 \\Rightarrow -1 \\leq x \\leq 4$.',
     ],
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['pr-lgs-methoden'] },
+},
   'ex-alg-4-3-g': {
     id: 'ex-alg-4-3-g', lessonId: 'alg-4-3', type: 'number-input',
     question: '[PRÜFUNG] Exponential­zerfall: Radioaktive Probe mit Halbwertszeit $T_{1/2} = 10$ min. Wie lange (in min) dauert es, bis nur noch $25\\,\\%$ der ursprünglichen Menge da sind?',
@@ -835,7 +863,8 @@ $0{,}25 = (1/2)^{t/10} \\Rightarrow \\ln(0{,}25) = (t/10) \\ln(1/2) \\Rightarrow
       'Formel: $N(t) = N_{0} \\cdot (1/2)^{t/T_{1/2}}$.',
       'Konkret: $(1/2)^{t/10} = 1/4 \\Rightarrow t/10 = 2 \\Rightarrow t = 20$ min.',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['pr-lgs-methoden'] },
+},
   'ex-alg-4-3-h': {
     id: 'ex-alg-4-3-h', lessonId: 'alg-4-3', type: 'sorting',
     question: '[PRÜFUNG] Ordne die Schritte zur Lösung einer Exponential­gleichung $a^{x} = b$.',
@@ -864,7 +893,8 @@ $0{,}25 = (1/2)^{t/10} \\Rightarrow \\ln(0{,}25) = (t/10) \\ln(1/2) \\Rightarrow
       'Formel: $\\ln(a^{x}) = x \\ln(a)$. Gilt nur für $a > 0$.',
       'Konkret: Probe nicht vergessen — vor allem bei gerundeten Ergebnissen.',
     ],
-  },
+      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['pr-lgs-methoden'] },
+},
   'ex-alg-4-3-i': {
     id: 'ex-alg-4-3-i', lessonId: 'alg-4-3', type: 'true-false',
     statement: '[PRÜFUNG] Ein überbestimmtes lineares Gleichungssystem (mehr Gleichungen als Unbekannte) hat IMMER keine Lösung.',
@@ -889,7 +919,8 @@ $0{,}25 = (1/2)^{t/10} \\Rightarrow \\ln(0{,}25) = (t/10) \\ln(1/2) \\Rightarrow
       'Formel: Lineare Abhängigkeit $\\Rightarrow$ Rang bleibt klein $\\Rightarrow$ Lösbarkeit möglich.',
       'Konkret: $x = 2, 2x = 4, 3x = 6$ ist überbestimmt, aber mit $x = 2$ lösbar.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['pr-lgs-methoden'] },
+},
   'ex-alg-4-3-j': {
     id: 'ex-alg-4-3-j', lessonId: 'alg-4-3', type: 'number-input',
     question: '[PRÜFUNG] Zwei Stromquellen laden einen Kondensator. System: $I_{1} + I_{2} = 3$ A und $R_{1} I_{1} - R_{2} I_{2} = 0$ mit $R_{1} = 2\\,\\Omega$, $R_{2} = 4\\,\\Omega$. Welchen Wert hat $I_{1}$ in A?',
@@ -917,7 +948,8 @@ $0{,}25 = (1/2)^{t/10} \\Rightarrow \\ln(0{,}25) = (t/10) \\ln(1/2) \\Rightarrow
       'Formel: $R_{1} I_{1} = R_{2} I_{2} \\Rightarrow I_{1} = (R_{2}/R_{1}) I_{2} = 2 I_{2}$.',
       'Konkret: Einsetzen gibt $3 I_{2} = 3 \\Rightarrow I_{2} = 1$, also $I_{1} = 2$ A.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['pr-lgs-methoden'] },
+},
   'ex-alg-4-3-mastery': {
     id: 'ex-alg-4-3-mastery', lessonId: 'alg-4-3', type: 'multiple-choice', isMasteryCheck: true,
     question: '[PRÜFUNG] Die pH-Skala: $\\text{pH} = -\\log_{10}[\\text{H}^{+}]$. Eine Säure hat $[\\text{H}^{+}] = 10^{-3}$ mol/L. Welche pH und wie ändert sie sich, wenn die Konzentration verdoppelt wird?',
@@ -957,7 +989,8 @@ $0{,}25 = (1/2)^{t/10} \\Rightarrow \\ln(0{,}25) = (t/10) \\ln(1/2) \\Rightarrow
       'Formel: $-\\log(2 \\cdot 10^{-3}) = -\\log 2 - \\log 10^{-3} = -\\log 2 + 3$.',
       'Konkret: $\\log_{10}(2) \\approx 0{,}30$. Verdopplung senkt pH um $0{,}30$.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['pr-lgs-methoden'] },
+},
 }
 
 const lessons_alg_u4 = [
