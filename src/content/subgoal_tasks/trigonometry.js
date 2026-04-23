@@ -50,6 +50,7 @@ export const trigonometrySubGoalTasks = {
           2: 'Rechter Winkel ist exakt $90°$. $135°$ ist $45°$ mehr.',
           3: 'Gestreckter Winkel ist exakt $180°$. $135°$ ist $45°$ weniger.',
         },
+        { stage: 'apply-guided', subGoal: 0, uses: ['winkel-typen'] },
       ),
       ni(
         'Wie viele Grad hat ein rechter Winkel?',
@@ -66,6 +67,7 @@ export const trigonometrySubGoalTasks = {
           '$360° / 4 = ?$',
           'Ein rechter Winkel ist am Buchstabe "L" zu sehen.',
         ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['winkel-typen'] },
       ),
       tf(
         'Ein Winkel von $89°$ ist stumpf.',
@@ -82,6 +84,7 @@ export const trigonometrySubGoalTasks = {
           'Alles $<90°$ ist spitz.',
           'Alles $>90°$ (bis $180°$) ist stumpf.',
         ],
+        { stage: 'recognize', subGoal: 0, uses: ['winkel-typen'] },
       ),
       matching(
         'Ordne jeden Winkel seiner Klasse zu.',
@@ -103,6 +106,7 @@ export const trigonometrySubGoalTasks = {
           'Grenzen sind exakt: $90°$ und $180°$.',
           '$0°$ ist Sonderfall (kein Winkel).',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['winkel-typen'] },
       ),
       sorting(
         'Sortiere die Winkelklassen nach aufsteigender Größe.',
@@ -125,6 +129,7 @@ export const trigonometrySubGoalTasks = {
           'Spitz, recht, stumpf, gestreckt.',
           'Dann käme noch überstumpf ($180°$–$360°$) und voll ($360°$).',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['winkel-typen'] },
       ),
     ],
 
@@ -145,6 +150,7 @@ export const trigonometrySubGoalTasks = {
           '$\\gamma = 180° - \\alpha - \\beta$.',
           '$180 - 60 - 75 = ?$',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['winkelsumme-180'] },
       ),
       mc(
         'In einem rechtwinkligen Dreieck ist ein nicht-rechter Winkel $35°$. Wie groß ist der andere nicht-rechte Winkel?',
@@ -172,6 +178,7 @@ export const trigonometrySubGoalTasks = {
           2: '$65°$ würde $90° + 35° + 65° = 190°$ ergeben, zu viel.',
           3: '$35°$ zweimal würde $160°$ ergeben — fehlen $20°$ zur Winkelsumme.',
         },
+        { stage: 'apply-guided', subGoal: 1, uses: ['winkelsumme-180'] },
       ),
       tf(
         'Ein Dreieck kann zwei stumpfe Winkel haben.',
@@ -188,6 +195,7 @@ export const trigonometrySubGoalTasks = {
           'Stumpf: $>90°$.',
           '$2 \\cdot $ stumpf $> 180°$ unmöglich.',
         ],
+        { stage: 'recognize', subGoal: 1, uses: ['winkelsumme-180'] },
       ),
       matching(
         'Ordne jedem Dreieck den fehlenden Winkel $\\gamma$ zu.',
@@ -213,6 +221,7 @@ export const trigonometrySubGoalTasks = {
           'Summe der drei Winkel $= 180°$.',
           'Bei gleichen Winkeln: gleichschenkliges Dreieck.',
         ],
+        { stage: 'transfer', subGoal: 1, uses: ['winkelsumme-180'] },
       ),
       sorting(
         'Bringe die Schritte zur Bestimmung des dritten Winkels in $\\alpha = 45°, \\beta = 55°$ in die richtige Reihenfolge.',
@@ -235,6 +244,7 @@ export const trigonometrySubGoalTasks = {
           'Umstellen auf gesuchte Größe.',
           'Dann Zahlen einsetzen.',
         ],
+        { stage: 'transfer', subGoal: 1, uses: ['winkelsumme-180'] },
       ),
     ],
 
@@ -266,6 +276,7 @@ export const trigonometrySubGoalTasks = {
           2: '$20°$ ist die Komplementärwinkel-Rechnung ($90° - 70°$), hat nichts mit Scheitelwinkeln zu tun.',
           3: '$180°$ wäre nur die Summe von $70°$ und dem Nebenwinkel. Einzelwinkel ist nicht $180°$.',
         },
+        { stage: 'apply-guided', subGoal: 2, uses: ['scheitel-nebenwinkel'] },
       ),
       ni(
         'Zwei Geraden schneiden sich. Ein Winkel ist $55°$. Wie groß ist der Nebenwinkel (in Grad)?',
@@ -282,6 +293,7 @@ export const trigonometrySubGoalTasks = {
           '$180 - 55 = ?$',
           'Zwei Winkel auf einer Geraden ergeben $180°$.',
         ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['scheitel-nebenwinkel'] },
       ),
       tf(
         'Zwei Scheitelwinkel an einem Geradenkreuz sind immer gleich groß.',
@@ -298,6 +310,7 @@ export const trigonometrySubGoalTasks = {
           'Gemeinsamer Scheitelpunkt.',
           'Winkel sind gleich groß (Kongruenz).',
         ],
+        { stage: 'recognize', subGoal: 2, uses: ['scheitel-nebenwinkel'] },
       ),
       matching(
         'Ordne jedem Paar die Beziehung zu.',
@@ -319,6 +332,7 @@ export const trigonometrySubGoalTasks = {
           'Daneben = Neben ($180°$).',
           'Im 90°-Dreieck: Rest = $90°$ insgesamt.',
         ],
+        { stage: 'transfer', subGoal: 2, uses: ['scheitel-nebenwinkel'] },
       ),
       sorting(
         'Bringe die Schritte zur Bestimmung aller vier Winkel an einem Geradenkreuz mit gegebenem $\\alpha = 40°$ in die richtige Reihenfolge.',
@@ -341,6 +355,7 @@ export const trigonometrySubGoalTasks = {
           'Daneben = Ergänzung zu $180°$.',
           'Vier Winkel summieren zu $360°$.',
         ],
+        { stage: 'transfer', subGoal: 2, uses: ['scheitel-nebenwinkel'] },
       ),
     ],
   },
