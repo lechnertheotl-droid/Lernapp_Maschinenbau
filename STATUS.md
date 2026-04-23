@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2828 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 928 (33 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 1086 / 1086 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 124 / 1134 (11 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2899 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 999 (34 %) | 100 % der Aufgaben | 🔴 |
+| MC mit wrongAnswerExplanations | 1115 / 1115 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 138 / 1134 (12 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -126,10 +126,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **282** (manuell: 112 · supplemental: 170)
-- 4-Block: 139/282 (49 %) 🔴
-- MC-wAE: 126/126 (100 %) ✅
-- Sub-Goals: 18/90 Goal-Tasks verknüpft 🔴
+- Aufgaben: **353** (manuell: 112 · supplemental: 241)
+- 4-Block: 210/353 (59 %) 🔴
+- MC-wAE: 155/155 (100 %) ✅
+- Sub-Goals: 32/90 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Algebraische Umformungen, Gleichungen und Funktionen — das rechnerische Fundament für alles danach.**
@@ -177,9 +177,9 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | `alg-0-2` Bruchrechnen sicher | 4 | 4/4 | 27 | 11/7/5/1/3 | 27/27 | 11/11 | ✅ | — |
 | `alg-0-3` Prozent & Dreisatz | 5 | 5/5 | 32 | 11/11/6/3/1 | 32/32 | 11/11 | ✅ | — |
 | `alg-0-4` Termumformung & Gleichungen | 5 | 5/5 | 31 | 12/9/5/2/3 | 30/31 | 12/12 | ✅ | +1 4B |
-| `alg-1-1` Potenzgesetze | 4 | 0/4 | 13 | 7/3/1/1/1 | 3/13 | 7/7 | ✅ | +4 Goal, +10 4B |
-| `alg-1-2` Wurzeln und gebrochene Exponenten | 3 | 0/3 | 12 | 5/3/2/1/1 | 1/12 | 5/5 | ✅ | +3 Goal, +11 4B |
-| `alg-1-3` Logarithmen | 7 | 0/7 | 12 | 5/4/1/1/1 | 0/12 | 5/5 | ✅ | +7 Goal, +12 4B |
+| `alg-1-1` Potenzgesetze | 4 | 4/4 | 33 | 15/10/5/2/1 | 23/33 | 15/15 | ✅ | +10 4B |
+| `alg-1-2` Wurzeln und gebrochene Exponenten | 3 | 3/3 | 28 | 11/8/5/2/2 | 17/28 | 11/11 | ✅ | +11 4B |
+| `alg-1-3` Logarithmen | 7 | 7/7 | 47 | 20/15/8/3/1 | 35/47 | 20/20 | ✅ | +12 4B |
 | `alg-2-1` Lineare Gleichungen | 4 | 0/4 | 12 | 5/4/1/1/1 | 5/12 | 5/5 | ✅ | +4 Goal, +7 4B |
 | `alg-2-2` Quadratische Gleichungen | 4 | 0/4 | 13 | 6/4/1/1/1 | 2/13 | 6/6 | ✅ | +4 Goal, +11 4B |
 | `alg-2-3` Polynomgleichungen & Polynomdivision | 6 | 0/6 | 12 | 7/2/1/1/1 | 1/12 | 7/7 | ✅ | +6 Goal, +11 4B |
@@ -3144,7 +3144,7 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
   - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
-### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 137 Lessons
+### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 134 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -5639,122 +5639,6 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
   - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
 
-#### `alg-1-2` · Wurzeln und gebrochene Exponenten
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-1-1` → `pot-potenz`, `pot-mult`, `pot-negativ`
-  - `alg-0-2` → `bruch-erweitern`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `wurzel-bruchpot` — $\sqrt[n]{x} = x^{1/n}$ — Wurzel als Bruchpotenz (SG 0)
-  2. `wurzel-def-bereich` — Definitionsbereich: $\sqrt{x}$ nur für $x \geq 0$ in $\mathbb R$ ⇐ `wurzel-bruchpot` (SG 0)
-  3. `wurzel-produkt` — $\sqrt{ab} = \sqrt a \cdot \sqrt b$ (für $a,b \geq 0$) ⇐ `wurzel-bruchpot` (SG 1)
-  4. `wurzel-quotient` — $\sqrt{a/b} = \sqrt a/\sqrt b$ ⇐ `wurzel-produkt` (SG 1)
-  5. `wurzel-summe-nein` — $\sqrt{a+b} \neq \sqrt a + \sqrt b$ — nicht linear ⇐ `wurzel-produkt` (SG 1)
-  6. `wurzel-vereinfachen` — Quadratzahl-Faktor herausziehen: $\sqrt{12}=2\sqrt 3$ ⇐ `wurzel-produkt` (SG 1)
-  7. `nenner-rational` — Nenner rational machen durch Erweitern mit $\sqrt{\cdots}$ ⇐ `wurzel-produkt` (SG 2)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `wurzel-bruchpot`, `wurzel-def-bereich` · **0/5+** — Wurzel als Bruchpotenz: $\sqrt[n]{x} = x^{1/n}$, dadurch gelten alle Potenzgesetze
-  - 🔴 [1] _hoch_ · Konzepte: `wurzel-produkt`, `wurzel-quotient`, `wurzel-summe-nein`, `wurzel-vereinfachen` · **0/5+** — Wurzel des Produkts: $\sqrt{ab} = \sqrt a \cdot \sqrt b$ — aber $\sqrt{a+b} \neq \sqrt a + \sqrt b$
-  - 🔴 [2] _mittel_ · Konzepte: `nenner-rational` · **0/5+** — Nenner rational machen: Erweitern mit passender Wurzel löst Wurzeln aus dem Nenner
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `wurzel-bruchpot` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `wurzel-bruchpot` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `wurzel-bruchpot` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `wurzel-def-bereich` | 1 | 0 | 🔴 | $\sqrt{-4}$ in $\mathbb R$? |
-|  5 | 0 | transfer           | matching         | `wurzel-bruchpot` | 1 | 0 | 🔴 | Wurzel ↔ Potenzschreibweise |
-|  6 | 1 | recognize          | true-false       | `wurzel-summe-nein` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `wurzel-produkt` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `wurzel-vereinfachen` | 2 | 0 | 🔴 | $\sqrt{50}$, $\sqrt{72}$ vereinfachen |
-|  9 | 1 | error-analysis     | multiple-choice  | `wurzel-summe-nein` | 1 | 0 | 🔴 | Distraktor: Wurzel auf Summe verteilt |
-| 10 | 1 | transfer           | sorting          | `wurzel-produkt`, `wurzel-vereinfachen` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `nenner-rational` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `nenner-rational` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `nenner-rational` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `nenner-rational` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `nenner-rational`, `wurzel-vereinfachen` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 15 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:**
-  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-1-2': { 0: [...], 1: [...], ... }`
-  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-1-2-a`, `ex-alg-1-2-b`, `ex-alg-1-2-d`, `ex-alg-1-2-manual-1`, `ex-alg-1-2-manual-2`, `ex-alg-1-2-manual-3`, `ex-alg-1-2-manual-4`, `ex-alg-1-2-manual-5` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
-#### `alg-1-3` · Logarithmen
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-1-1` → `pot-mult`, `pot-potenz`, `pot-negativ`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `log-def` — $\log_b(x) = y \iff b^y = x$ (für $b>0, b\neq 1, x>0$) (SG 0)
-  2. `log-spezialfaelle` — $\ln$ (Basis $e$), $\log$ (Basis 10), $\log_2$ (Bits) ⇐ `log-def` (SG 0)
-  3. `log-produkt` — Produktregel $\ln(ab) = \ln a + \ln b$ ⇐ `log-def` (SG 1)
-  4. `log-quotient` — Quotientenregel $\ln(a/b) = \ln a - \ln b$ ⇐ `log-produkt` (SG 2)
-  5. `log-potenz` — Potenzregel $\ln(a^n) = n \ln a$ ⇐ `log-produkt` (SG 3)
-  6. `log-basiswechsel` — Basiswechsel $\log_b x = \ln x / \ln b$ ⇐ `log-def`, `log-potenz` (SG 4)
-  7. `log-summe-nein` — $\ln(a+b) \neq \ln a + \ln b$ — keine Linearität ⇐ `log-produkt` (SG 5)
-  8. `log-umkehr` — $e^{\ln x} = x$ und $\ln(e^x) = x$ — Umkehrfunktions-Identität ⇐ `log-def` (SG 6)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `log-def`, `log-spezialfaelle` · **0/5+** — Definition: $\log_b x = y \iff b^y = x$ (für $b>0, b\neq 1, x>0$)
-  - 🔴 [1] _hoch_ · Konzepte: `log-produkt` · **0/5+** — Produktregel: $\ln(ab) = \ln a + \ln b$
-  - 🔴 [2] _hoch_ · Konzepte: `log-quotient` · **0/5+** — Quotientenregel: $\ln(a/b) = \ln a - \ln b$
-  - 🔴 [3] _hoch_ · Konzepte: `log-potenz` · **0/5+** — Potenzregel: $\ln(a^n) = n \ln a$
-  - 🔴 [4] _hoch_ · Konzepte: `log-basiswechsel` · **0/5+** — Basiswechsel: $\log_b x = \ln x / \ln b$
-  - 🔴 [5] _hoch_ · Konzepte: `log-summe-nein` · **0/5+** — Typische Falle: $\ln(a+b) \neq \ln a + \ln b$ (kein Logarithmusgesetz für Summen)
-  - 🔴 [6] _hoch_ · Konzepte: `log-umkehr` · **0/5+** — Exp-Log-Umkehrung: $e^{\ln x} = x$ (für $x > 0$), $\ln(e^x) = x$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `log-def` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `log-def` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `log-def` | 1 | 0 | 🔴 | $\log_2 32$ |
-|  4 | 0 | error-analysis     | multiple-choice  | `log-def` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | matching         | `log-spezialfaelle` | 1 | 0 | 🔴 | Basis ↔ Anwendungskontext |
-|  6 | 1 | recognize          | true-false       | `log-produkt` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `log-produkt` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `log-produkt` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `log-produkt` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | number-input     | `log-produkt` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `log-quotient` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `log-quotient` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `log-quotient`, `log-produkt` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `log-quotient` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `log-quotient`, `log-produkt` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `log-potenz` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `log-potenz` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `log-potenz` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `log-potenz` | 1 | 0 | 🔴 | Distraktor: Potenz mit Exponent multipliziert |
-| 20 | 3 | transfer           | number-input     | `log-potenz`, `log-produkt` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `log-basiswechsel` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `log-basiswechsel` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `log-basiswechsel` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `log-basiswechsel` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | number-input     | `log-basiswechsel` | 1 | 0 | 🔴 | Halbwertszeit / Zinseszins |
-| 26 | 5 | recognize          | true-false       | `log-summe-nein` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `log-summe-nein` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | multiple-choice  | `log-summe-nein` | 1 | 0 | 🔴 | Aus Alternativ-Umformungen die richtige wählen |
-| 29 | 5 | error-analysis     | multiple-choice  | `log-summe-nein` | 1 | 0 | 🔴 | Distraktor: Summe in Produkt zerlegt |
-| 30 | 5 | transfer           | matching         | `log-summe-nein`, `log-produkt` | 1 | 0 | 🔴 | Erlaubte vs. verbotene Umformung |
-| 31 | 6 | recognize          | true-false       | `log-umkehr` | 1 | 0 | 🔴 |  |
-| 32 | 6 | apply-guided       | multiple-choice  | `log-umkehr` | 1 | 0 | 🔴 |  |
-| 33 | 6 | apply-independent  | number-input     | `log-umkehr` | 1 | 0 | 🔴 | $e^x = 5$ lösen |
-| 34 | 6 | error-analysis     | multiple-choice  | `log-umkehr` | 1 | 0 | 🔴 |  |
-| 35 | 6 | transfer           | number-input     | `log-umkehr`, `log-potenz` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 35 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:**
-  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-1-3': { 0: [...], 1: [...], ... }`
-  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-1-3-a`, `ex-alg-1-3-b`, `ex-alg-1-3-c`, `ex-alg-1-3-d`, `ex-alg-1-3-manual-1`, `ex-alg-1-3-manual-2`, `ex-alg-1-3-manual-3`, `ex-alg-1-3-manual-4` … (+4 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
 #### `alg-2-1` · Lineare Gleichungen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
@@ -6409,58 +6293,6 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
   - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
 
-#### `alg-1-1` · Potenzgesetze
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-0-4` → `distributiv`, `aequivalenz`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `potenz-def` — $x^n$ = $n$-fache Multiplikation von $x$
-  2. `pot-mult` — Gleiche Basis Multiplikation: $x^a \cdot x^b = x^{a+b}$ ⇐ `potenz-def` (SG 0)
-  3. `pot-div` — Gleiche Basis Division: $x^a / x^b = x^{a-b}$ ⇐ `pot-mult` (SG 0)
-  4. `pot-potenz` — Potenz einer Potenz: $(x^a)^b = x^{a\cdot b}$ ⇐ `potenz-def` (SG 1)
-  5. `pot-produkt` — Produkt in Klammer: $(xy)^n = x^n y^n$ ⇐ `potenz-def` (SG 3)
-  6. `pot-quotient` — Quotient in Klammer: $(x/y)^n = x^n/y^n$ ⇐ `pot-produkt` (SG 3)
-  7. `pot-null` — $x^0 = 1$ für $x \neq 0$ ⇐ `pot-div` (SG 2)
-  8. `pot-negativ` — $x^{-n} = 1/x^n$ ⇐ `pot-div` (SG 2)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `pot-mult`, `pot-div` · **0/5+** — Gleiche Basis: $x^a \cdot x^b = x^{a+b}$ und $x^a/x^b = x^{a-b}$
-  - 🔴 [1] _hoch_ · Konzepte: `pot-potenz` · **0/5+** — Potenz einer Potenz: $(x^a)^b = x^{a \cdot b}$ — niemals mit Multiplikation verwechseln
-  - 🔴 [2] _hoch_ · Konzepte: `pot-null`, `pot-negativ` · **0/5+** — Negativer Exponent $x^{-n} = 1/x^n$ und nullter Exponent $x^0 = 1$ (für $x \neq 0$)
-  - 🔴 [3] _mittel_ · Konzepte: `pot-produkt`, `pot-quotient` · **0/5+** — Produkt/Quotient in Klammer: $(xy)^n = x^n y^n$, $(x/y)^n = x^n/y^n$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `pot-mult` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `pot-mult`, `pot-div` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `pot-mult` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `pot-mult` | 1 | 0 | 🔴 | Distraktor: Exponenten multipliziert statt addiert |
-|  5 | 0 | transfer           | number-input     | `pot-mult`, `pot-div` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `pot-potenz` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `pot-potenz` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `pot-potenz` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `pot-potenz`, `pot-mult` | 1 | 0 | 🔴 | Distraktor: mit Multiplikation-Regel verwechselt |
-| 10 | 1 | transfer           | matching         | `pot-potenz`, `pot-mult` | 1 | 0 | 🔴 | Term ↔ Regel |
-| 11 | 2 | recognize          | true-false       | `pot-null`, `pot-negativ` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `pot-negativ` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `pot-negativ` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `pot-null` | 1 | 0 | 🔴 | Distraktor: $x^0 = 0$ |
-| 15 | 2 | transfer           | number-input     | `pot-negativ`, `pot-mult` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `pot-produkt` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `pot-produkt` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `pot-produkt` | 1 | 0 | 🔴 | $(2x)^3$ auflösen |
-| 19 | 3 | error-analysis     | multiple-choice  | `pot-produkt` | 1 | 0 | 🔴 | Distraktor: Exponent nur auf Variable |
-| 20 | 3 | transfer           | number-input     | `pot-quotient`, `pot-produkt` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:**
-  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-1-1': { 0: [...], 1: [...], ... }`
-  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-1-1-b`, `ex-alg-1-1-d`, `ex-alg-1-1-e`, `ex-alg-1-1-manual-1`, `ex-alg-1-1-manual-2`, `ex-alg-1-1-manual-3`, `ex-alg-1-1-manual-4`, `ex-alg-1-1-manual-5` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
 #### `alg-2-2` · Quadratische Gleichungen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
@@ -6792,7 +6624,7 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
   - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 19 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 22 Lessons
 
 #### `mech-0-3` · Dimensionsanalyse — Einheitencheck
 
@@ -6921,6 +6753,51 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:**
   - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-0-2': { 0: [...], 1: [...], ... }`
   - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
+#### `alg-1-2` · Wurzeln und gebrochene Exponenten
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-1-1` → `pot-potenz`, `pot-mult`, `pot-negativ`
+  - `alg-0-2` → `bruch-erweitern`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `wurzel-bruchpot` — $\sqrt[n]{x} = x^{1/n}$ — Wurzel als Bruchpotenz (SG 0)
+  2. `wurzel-def-bereich` — Definitionsbereich: $\sqrt{x}$ nur für $x \geq 0$ in $\mathbb R$ ⇐ `wurzel-bruchpot` (SG 0)
+  3. `wurzel-produkt` — $\sqrt{ab} = \sqrt a \cdot \sqrt b$ (für $a,b \geq 0$) ⇐ `wurzel-bruchpot` (SG 1)
+  4. `wurzel-quotient` — $\sqrt{a/b} = \sqrt a/\sqrt b$ ⇐ `wurzel-produkt` (SG 1)
+  5. `wurzel-summe-nein` — $\sqrt{a+b} \neq \sqrt a + \sqrt b$ — nicht linear ⇐ `wurzel-produkt` (SG 1)
+  6. `wurzel-vereinfachen` — Quadratzahl-Faktor herausziehen: $\sqrt{12}=2\sqrt 3$ ⇐ `wurzel-produkt` (SG 1)
+  7. `nenner-rational` — Nenner rational machen durch Erweitern mit $\sqrt{\cdots}$ ⇐ `wurzel-produkt` (SG 2)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `wurzel-bruchpot`, `wurzel-def-bereich` · **5/5+** — Wurzel als Bruchpotenz: $\sqrt[n]{x} = x^{1/n}$, dadurch gelten alle Potenzgesetze
+  - ✅ [1] _hoch_ · Konzepte: `wurzel-produkt`, `wurzel-quotient`, `wurzel-summe-nein`, `wurzel-vereinfachen` · **6/5+** — Wurzel des Produkts: $\sqrt{ab} = \sqrt a \cdot \sqrt b$ — aber $\sqrt{a+b} \neq \sqrt a + \sqrt b$
+  - ✅ [2] _mittel_ · Konzepte: `nenner-rational` · **5/5+** — Nenner rational machen: Erweitern mit passender Wurzel löst Wurzeln aus dem Nenner
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `wurzel-bruchpot` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `wurzel-bruchpot` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `wurzel-bruchpot` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `wurzel-def-bereich` | 1 | 1 | ✅ | $\sqrt{-4}$ in $\mathbb R$? |
+|  5 | 0 | transfer           | matching         | `wurzel-bruchpot` | 1 | 1 | ✅ | Wurzel ↔ Potenzschreibweise |
+|  6 | 1 | recognize          | true-false       | `wurzel-summe-nein` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `wurzel-produkt` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `wurzel-vereinfachen` | 2 | 2 | ✅ | $\sqrt{50}$, $\sqrt{72}$ vereinfachen |
+|  9 | 1 | error-analysis     | multiple-choice  | `wurzel-summe-nein` | 1 | 1 | ✅ | Distraktor: Wurzel auf Summe verteilt |
+| 10 | 1 | transfer           | sorting          | `wurzel-produkt`, `wurzel-vereinfachen` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `nenner-rational` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `nenner-rational` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `nenner-rational` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `nenner-rational` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `nenner-rational`, `wurzel-vereinfachen` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
+- **4-Block-Erklärung fehlt bei:** `ex-alg-1-2-a`, `ex-alg-1-2-b`, `ex-alg-1-2-d`, `ex-alg-1-2-manual-1`, `ex-alg-1-2-manual-2`, `ex-alg-1-2-manual-3`, `ex-alg-1-2-manual-4`, `ex-alg-1-2-manual-5` … (+3 weitere)
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
@@ -7150,6 +7027,57 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
   - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
+#### `alg-1-1` · Potenzgesetze
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-0-4` → `distributiv`, `aequivalenz`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `potenz-def` — $x^n$ = $n$-fache Multiplikation von $x$
+  2. `pot-mult` — Gleiche Basis Multiplikation: $x^a \cdot x^b = x^{a+b}$ ⇐ `potenz-def` (SG 0)
+  3. `pot-div` — Gleiche Basis Division: $x^a / x^b = x^{a-b}$ ⇐ `pot-mult` (SG 0)
+  4. `pot-potenz` — Potenz einer Potenz: $(x^a)^b = x^{a\cdot b}$ ⇐ `potenz-def` (SG 1)
+  5. `pot-produkt` — Produkt in Klammer: $(xy)^n = x^n y^n$ ⇐ `potenz-def` (SG 3)
+  6. `pot-quotient` — Quotient in Klammer: $(x/y)^n = x^n/y^n$ ⇐ `pot-produkt` (SG 3)
+  7. `pot-null` — $x^0 = 1$ für $x \neq 0$ ⇐ `pot-div` (SG 2)
+  8. `pot-negativ` — $x^{-n} = 1/x^n$ ⇐ `pot-div` (SG 2)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `pot-mult`, `pot-div` · **5/5+** — Gleiche Basis: $x^a \cdot x^b = x^{a+b}$ und $x^a/x^b = x^{a-b}$
+  - ✅ [1] _hoch_ · Konzepte: `pot-potenz` · **5/5+** — Potenz einer Potenz: $(x^a)^b = x^{a \cdot b}$ — niemals mit Multiplikation verwechseln
+  - ✅ [2] _hoch_ · Konzepte: `pot-null`, `pot-negativ` · **5/5+** — Negativer Exponent $x^{-n} = 1/x^n$ und nullter Exponent $x^0 = 1$ (für $x \neq 0$)
+  - ✅ [3] _mittel_ · Konzepte: `pot-produkt`, `pot-quotient` · **5/5+** — Produkt/Quotient in Klammer: $(xy)^n = x^n y^n$, $(x/y)^n = x^n/y^n$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `pot-mult` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pot-mult`, `pot-div` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `pot-mult` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `pot-mult` | 1 | 1 | ✅ | Distraktor: Exponenten multipliziert statt addiert |
+|  5 | 0 | transfer           | number-input     | `pot-mult`, `pot-div` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `pot-potenz` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pot-potenz` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `pot-potenz` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pot-potenz`, `pot-mult` | 1 | 1 | ✅ | Distraktor: mit Multiplikation-Regel verwechselt |
+| 10 | 1 | transfer           | matching         | `pot-potenz`, `pot-mult` | 1 | 1 | ✅ | Term ↔ Regel |
+| 11 | 2 | recognize          | true-false       | `pot-null`, `pot-negativ` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pot-negativ` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `pot-negativ` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `pot-null` | 1 | 1 | ✅ | Distraktor: $x^0 = 0$ |
+| 15 | 2 | transfer           | number-input     | `pot-negativ`, `pot-mult` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `pot-produkt` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pot-produkt` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `pot-produkt` | 1 | 1 | ✅ | $(2x)^3$ auflösen |
+| 19 | 3 | error-analysis     | multiple-choice  | `pot-produkt` | 1 | 1 | ✅ | Distraktor: Exponent nur auf Variable |
+| 20 | 3 | transfer           | number-input     | `pot-quotient`, `pot-produkt` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
+- **4-Block-Erklärung fehlt bei:** `ex-alg-1-1-b`, `ex-alg-1-1-d`, `ex-alg-1-1-e`, `ex-alg-1-1-manual-1`, `ex-alg-1-1-manual-2`, `ex-alg-1-1-manual-3`, `ex-alg-1-1-manual-4`, `ex-alg-1-1-manual-5` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
 #### `trig-2-2` · sin und cos als Koordinaten
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Einheitskreis und Winkelfunktionen
@@ -7284,3 +7212,72 @@ npm run build              # abschließender End-zu-End-Check
   - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
   - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
   - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
+
+#### `alg-1-3` · Logarithmen
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-1-1` → `pot-mult`, `pot-potenz`, `pot-negativ`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `log-def` — $\log_b(x) = y \iff b^y = x$ (für $b>0, b\neq 1, x>0$) (SG 0)
+  2. `log-spezialfaelle` — $\ln$ (Basis $e$), $\log$ (Basis 10), $\log_2$ (Bits) ⇐ `log-def` (SG 0)
+  3. `log-produkt` — Produktregel $\ln(ab) = \ln a + \ln b$ ⇐ `log-def` (SG 1)
+  4. `log-quotient` — Quotientenregel $\ln(a/b) = \ln a - \ln b$ ⇐ `log-produkt` (SG 2)
+  5. `log-potenz` — Potenzregel $\ln(a^n) = n \ln a$ ⇐ `log-produkt` (SG 3)
+  6. `log-basiswechsel` — Basiswechsel $\log_b x = \ln x / \ln b$ ⇐ `log-def`, `log-potenz` (SG 4)
+  7. `log-summe-nein` — $\ln(a+b) \neq \ln a + \ln b$ — keine Linearität ⇐ `log-produkt` (SG 5)
+  8. `log-umkehr` — $e^{\ln x} = x$ und $\ln(e^x) = x$ — Umkehrfunktions-Identität ⇐ `log-def` (SG 6)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `log-def`, `log-spezialfaelle` · **5/5+** — Definition: $\log_b x = y \iff b^y = x$ (für $b>0, b\neq 1, x>0$)
+  - ✅ [1] _hoch_ · Konzepte: `log-produkt` · **5/5+** — Produktregel: $\ln(ab) = \ln a + \ln b$
+  - ✅ [2] _hoch_ · Konzepte: `log-quotient` · **5/5+** — Quotientenregel: $\ln(a/b) = \ln a - \ln b$
+  - ✅ [3] _hoch_ · Konzepte: `log-potenz` · **5/5+** — Potenzregel: $\ln(a^n) = n \ln a$
+  - ✅ [4] _hoch_ · Konzepte: `log-basiswechsel` · **5/5+** — Basiswechsel: $\log_b x = \ln x / \ln b$
+  - ✅ [5] _hoch_ · Konzepte: `log-summe-nein` · **5/5+** — Typische Falle: $\ln(a+b) \neq \ln a + \ln b$ (kein Logarithmusgesetz für Summen)
+  - ✅ [6] _hoch_ · Konzepte: `log-umkehr` · **5/5+** — Exp-Log-Umkehrung: $e^{\ln x} = x$ (für $x > 0$), $\ln(e^x) = x$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `log-def` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `log-def` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `log-def` | 1 | 1 | ✅ | $\log_2 32$ |
+|  4 | 0 | error-analysis     | multiple-choice  | `log-def` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | matching         | `log-spezialfaelle` | 1 | 1 | ✅ | Basis ↔ Anwendungskontext |
+|  6 | 1 | recognize          | true-false       | `log-produkt` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `log-produkt` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `log-produkt` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `log-produkt` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `log-produkt` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `log-quotient` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `log-quotient` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `log-quotient`, `log-produkt` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `log-quotient` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `log-quotient`, `log-produkt` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `log-potenz` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `log-potenz` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `log-potenz` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `log-potenz` | 1 | 1 | ✅ | Distraktor: Potenz mit Exponent multipliziert |
+| 20 | 3 | transfer           | number-input     | `log-potenz`, `log-produkt` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `log-basiswechsel` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `log-basiswechsel` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `log-basiswechsel` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `log-basiswechsel` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | number-input     | `log-basiswechsel` | 1 | 1 | ✅ | Halbwertszeit / Zinseszins |
+| 26 | 5 | recognize          | true-false       | `log-summe-nein` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `log-summe-nein` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `log-summe-nein` | 1 | 1 | ✅ | Aus Alternativ-Umformungen die richtige wählen |
+| 29 | 5 | error-analysis     | multiple-choice  | `log-summe-nein` | 1 | 1 | ✅ | Distraktor: Summe in Produkt zerlegt |
+| 30 | 5 | transfer           | matching         | `log-summe-nein`, `log-produkt` | 1 | 1 | ✅ | Erlaubte vs. verbotene Umformung |
+| 31 | 6 | recognize          | true-false       | `log-umkehr` | 1 | 1 | ✅ |  |
+| 32 | 6 | apply-guided       | multiple-choice  | `log-umkehr` | 1 | 1 | ✅ |  |
+| 33 | 6 | apply-independent  | number-input     | `log-umkehr` | 1 | 1 | ✅ | $e^x = 5$ lösen |
+| 34 | 6 | error-analysis     | multiple-choice  | `log-umkehr` | 1 | 1 | ✅ |  |
+| 35 | 6 | transfer           | number-input     | `log-umkehr`, `log-potenz` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-1-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
+- **4-Block-Erklärung fehlt bei:** `ex-alg-1-3-a`, `ex-alg-1-3-b`, `ex-alg-1-3-c`, `ex-alg-1-3-d`, `ex-alg-1-3-manual-1`, `ex-alg-1-3-manual-2`, `ex-alg-1-3-manual-3`, `ex-alg-1-3-manual-4` … (+4 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …

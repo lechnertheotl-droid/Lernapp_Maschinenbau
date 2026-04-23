@@ -2136,4 +2136,1556 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
   },
 
 
+  // ───────────────────────────────────────────────────────────────────────
+  // alg-1-1 — Potenzgesetze (4 SGs, 20 Matrix-Aufgaben)
+  // ───────────────────────────────────────────────────────────────────────
+  'alg-1-1': {
+    // [0] Gleiche Basis: x^a · x^b und x^a / x^b
+    0: [
+      tf(
+        'Das Produkt $x^3 \\cdot x^5$ kann als $x^8$ geschrieben werden.',
+        true,
+        `**Ansatz:** Gleiche Basis bei Multiplikation: Exponenten addieren.
+
+**Rechnung:** $x^3 \\cdot x^5 = x^{3+5} = x^8$.
+
+**Probe:** $x=2$: $8 \\cdot 32 = 256 = 2^8$. ✓
+
+**Typischer Fehler:** Exponenten multiplizieren: $x^3 \\cdot x^5 = x^{15}$ — Regel für Potenz-der-Potenz, nicht für Multiplikation gleicher Basen.`,
+        [
+          'Gleiche Basis — welche Regel gilt?',
+          '$x^a \\cdot x^b = x^{a+b}$.',
+          '$3 + 5 = ?$',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['pot-mult'] },
+      ),
+      mc(
+        'Vereinfache $\\dfrac{a^7}{a^3}$.',
+        ['$a^4$', '$a^{10}$', '$a^{21}$', '$a^{7/3}$'],
+        0,
+        `**Ansatz:** Gleiche Basis bei Division: Exponenten subtrahieren.
+
+**Rechnung:** $a^7 / a^3 = a^{7-3} = a^4$.
+
+**Probe:** $a=2$: $128/8 = 16 = 2^4$. ✓
+
+**Typischer Fehler:** Addieren ($a^{10}$) oder dividieren des Exponenten ($a^{7/3}$).`,
+        [
+          'Division gleicher Basis — welche Regel?',
+          '$a^m/a^n = a^{m-n}$.',
+          '$7 - 3 = ?$',
+        ],
+        {
+          1: '$a^{10}$ entsteht durch $a^{7+3}$ — das wäre Multiplikation, nicht Division.',
+          2: '$a^{21}$ wäre $(a^7)^3$ — also Potenz einer Potenz. Auch nicht zutreffend.',
+          3: 'Exponenten werden bei Division SUBTRAHIERT, nicht dividiert.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['pot-mult', 'pot-div'] },
+      ),
+      ni(
+        'Berechne $\\dfrac{2^{10}}{2^7}$.',
+        8, 0, '',
+        `**Ansatz:** Gleiche Basis, also Exponenten subtrahieren.
+
+**Rechnung:** $2^{10}/2^7 = 2^{10-7} = 2^3 = 8$.
+
+**Probe:** $1024/128 = 8$. ✓
+
+**Typischer Fehler:** $1024 - 128 = 896$ — Subtraktion der Werte statt der Exponenten.`,
+        [
+          'Gleiche Basis $2$ — Exponenten subtrahieren.',
+          '$2^{10-7} = ?$',
+          '$2^3 = 8$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['pot-mult'] },
+      ),
+      mc(
+        'Ein Schüler schreibt $x^2 \\cdot x^3 = x^6$. Wo liegt der Fehler?',
+        [
+          'Er hat die Exponenten multipliziert — bei Multiplikation gleicher Basen werden sie ADDIERT: $x^5$.',
+          'Die Basis müsste verdoppelt werden: $(2x)^5$.',
+          'Der Ausdruck ist korrekt.',
+          'Die Exponenten müssen dividiert werden: $x^{2/3}$.',
+        ],
+        0,
+        `**Ansatz:** $x^a \\cdot x^b = x^{a+b}$, NICHT $x^{a \\cdot b}$. Die Regel $x^{a\\cdot b}$ gilt bei Potenz einer Potenz $(x^a)^b$.
+
+**Rechnung:** Korrekt: $x^2 \\cdot x^3 = x^{2+3} = x^5$.
+
+**Probe:** $x=2$: $4 \\cdot 8 = 32 = 2^5$ ✓. Schüler: $x^6 = 64 \\neq 32$.
+
+**Typischer Fehler:** Multiplikationsregel mit Potenz-der-Potenz-Regel verwechseln.`,
+        [
+          'Welche Operation steht zwischen den Potenzen?',
+          'Multiplikation gleicher Basen → Exponenten $+$.',
+          'Potenz einer Potenz → Exponenten $\\cdot$.',
+        ],
+        {
+          1: 'Die Basis bleibt gleich — $(2x)^5$ wäre eine ganz andere Aufgabe.',
+          2: 'Nein, $x^6 \\neq x^5$ bei Zahlentests.',
+          3: 'Exponenten werden bei Multiplikation addiert, nicht dividiert.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['pot-mult'] },
+      ),
+      ni(
+        'Vereinfache $\\dfrac{3^4 \\cdot 3^6}{3^5}$ und gib den Wert als ganze Zahl an.',
+        243, 0, '',
+        `**Ansatz:** Erst Zähler zusammenfassen (Mult. gleicher Basis), dann mit Nenner verrechnen (Div. gleicher Basis).
+
+**Rechnung:** $3^4 \\cdot 3^6 = 3^{10}$. $3^{10} / 3^5 = 3^5 = 243$.
+
+**Probe:** Alternativ: $3^{4+6-5} = 3^5 = 243$. ✓
+
+**Typischer Fehler:** Unterschiedliche Operationen vermischen.`,
+        [
+          'Zähler: Exponenten addieren.',
+          'Dann durch Nenner: Exponenten subtrahieren.',
+          '$3^5 = 243$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['pot-mult', 'pot-div'] },
+      ),
+    ],
+    // [1] Potenz einer Potenz: (x^a)^b
+    1: [
+      tf(
+        'Der Ausdruck $(y^3)^4$ ist gleich $y^7$.',
+        false,
+        `**Ansatz:** Potenz einer Potenz: Exponenten MULTIPLIZIEREN.
+
+**Rechnung:** $(y^3)^4 = y^{3 \\cdot 4} = y^{12}$, nicht $y^7$.
+
+**Probe:** $y=2$: $(2^3)^4 = 8^4 = 4096 = 2^{12}$. $2^7 = 128$. ✓
+
+**Typischer Fehler:** Multiplikation mit Addition verwechseln.`,
+        [
+          'Welche Regel gilt bei Potenz einer Potenz?',
+          '$(y^a)^b = y^{a \\cdot b}$.',
+          '$3 \\cdot 4 = ?$',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['pot-potenz'] },
+      ),
+      mc(
+        'Vereinfache $(x^4)^5$.',
+        ['$x^{20}$', '$x^9$', '$x^{4 + 5}$', '$5x^4$'],
+        0,
+        `**Ansatz:** Potenz einer Potenz: Exponenten multiplizieren.
+
+**Rechnung:** $(x^4)^5 = x^{4 \\cdot 5} = x^{20}$.
+
+**Probe:** $x=2$: $(2^4)^5 = 16^5 = 1\\,048\\,576 = 2^{20}$. ✓
+
+**Typischer Fehler:** Exponenten addieren statt multiplizieren.`,
+        [
+          'Äußere Klammer — welche Regel?',
+          'Exponenten multiplizieren.',
+          '$4 \\cdot 5 = ?$',
+        ],
+        {
+          1: 'Das wäre $x^4 \\cdot x^5$ (Multiplikation gleicher Basen). Hier ist aber die äußere Potenz, also $\\cdot$.',
+          2: 'Addition ist die Regel bei Mult. gleicher Basen, nicht bei Potenz einer Potenz.',
+          3: '$5x^4$ wäre $5 \\cdot x^4$, nicht $(x^4)^5$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['pot-potenz'] },
+      ),
+      ni(
+        'Berechne $(2^3)^2$.',
+        64, 0, '',
+        `**Ansatz:** Potenz einer Potenz: Exponenten multiplizieren, dann ausrechnen.
+
+**Rechnung:** $(2^3)^2 = 2^{3 \\cdot 2} = 2^6 = 64$.
+
+**Probe:** $2^3 = 8$, $8^2 = 64$. ✓
+
+**Typischer Fehler:** $2^{3+2} = 2^5 = 32$.`,
+        [
+          'Exponenten multiplizieren.',
+          '$3 \\cdot 2 = 6$.',
+          '$2^6 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['pot-potenz'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $(a^3)^4 = a^7$. Wo liegt der Fehler?',
+        [
+          'Bei Potenz einer Potenz werden Exponenten MULTIPLIZIERT — korrekt ist $a^{12}$.',
+          'Die Basis müsste gekürzt werden: $a^4$.',
+          'Der Ausdruck ist korrekt.',
+          'Exponenten müssten voneinander abgezogen werden: $a^{-1}$.',
+        ],
+        0,
+        `**Ansatz:** Der Schüler hat die Additions-Regel (gleiche Basis $\\cdot$) mit der Potenz-der-Potenz-Regel ($\\cdot$) verwechselt.
+
+**Rechnung:** Korrekt: $(a^3)^4 = a^{3 \\cdot 4} = a^{12}$.
+
+**Probe:** $a=2$: $(2^3)^4 = 8^4 = 4096 = 2^{12}$. Schüler: $2^7 = 128 \\neq 4096$.
+
+**Typischer Fehler:** Genau dieser — Verwechslung der beiden Potenzregeln.`,
+        [
+          'Was ist die ÄUSSERE Operation hier?',
+          'Potenz einer Potenz: $\\cdot$.',
+          'Zahlentest: $(2^3)^4 = ?$',
+        ],
+        {
+          1: 'Basen werden bei Potenzen nicht "gekürzt" — das ist keine Regel.',
+          2: 'Zahlentest widerlegt den Schüler.',
+          3: 'Subtraktion gilt bei Division gleicher Basen — nicht hier.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['pot-potenz', 'pot-mult'] },
+      ),
+      matching(
+        'Ordne jedem Ausdruck seine vereinfachte Form zu.',
+        [
+          { left: '$x^2 \\cdot x^3$',   right: '$x^5$' },
+          { left: '$(x^2)^3$',          right: '$x^6$' },
+          { left: '$x^5 / x^2$',        right: '$x^3$' },
+          { left: '$(x^3)^2 \\cdot x$', right: '$x^7$' },
+        ],
+        `**Ansatz:** Richtige Regel pro Operation wählen.
+
+**Rechnung:**
+· $x^2 \\cdot x^3 = x^{2+3} = x^5$ (Addition)
+· $(x^2)^3 = x^{2 \\cdot 3} = x^6$ (Multiplikation)
+· $x^5/x^2 = x^{5-2} = x^3$ (Subtraktion)
+· $(x^3)^2 \\cdot x = x^6 \\cdot x^1 = x^7$ (Kombination)
+
+**Probe:** Jeder Fall mit Zahlen testbar.
+
+**Typischer Fehler:** Multiplikations- und Potenz-Regel vermischen.`,
+        [
+          'Erst Operation erkennen, dann Regel.',
+          'Addition bei $\\cdot$, Multiplikation bei Potenz der Potenz.',
+          'Kombinierte Ausdrücke schrittweise vereinfachen.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['pot-potenz', 'pot-mult'] },
+      ),
+    ],
+    // [2] Negativer und Null-Exponent
+    2: [
+      tf(
+        'Es gilt $5^0 = 1$ (für $x \\neq 0$ ist $x^0 = 1$).',
+        true,
+        `**Ansatz:** Konvention + Herleitung: $x^a/x^a = x^{a-a} = x^0$ und gleichzeitig $= 1$.
+
+**Rechnung:** $5^0 = 1$.
+
+**Probe:** $5^3/5^3 = 125/125 = 1 = 5^0$. ✓
+
+**Typischer Fehler:** $x^0 = 0$ annehmen ("alles hoch 0 ist 0") — falsch.`,
+        [
+          '$x^a/x^a = ?$',
+          'Exponentenregel: $x^{a-a} = x^0$.',
+          'Konvention: $x^0 = 1$.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['pot-null', 'pot-negativ'] },
+      ),
+      mc(
+        'Welcher Wert hat $3^{-2}$?',
+        ['$\\dfrac{1}{9}$', '$-9$', '$-6$', '$\\dfrac{1}{-9}$'],
+        0,
+        `**Ansatz:** Negativer Exponent: Kehrwert. $x^{-n} = 1/x^n$.
+
+**Rechnung:** $3^{-2} = 1/3^2 = 1/9$.
+
+**Probe:** $3^{-2} \\cdot 3^2 = 3^0 = 1$. Also $1/9 \\cdot 9 = 1$. ✓
+
+**Typischer Fehler:** Das Vorzeichen auf die Basis schreiben: $(-3)^2 = 9$ und davon $-9$.`,
+        [
+          'Negativer Exponent → Kehrwert.',
+          '$x^{-n} = 1/x^n$.',
+          '$3^2 = 9$.',
+        ],
+        {
+          1: 'Das Vorzeichen wirkt NICHT auf die Basis, sondern kippt in Kehrwert um.',
+          2: 'Ebenso falsch — der Exponent beschreibt den Kehrwert, nicht eine Subtraktion.',
+          3: 'Das Vorzeichen kippt in den Kehrwert, nicht in einen negativen Bruch.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['pot-negativ'] },
+      ),
+      ni(
+        'Schreibe $\\dfrac{1}{2^4}$ als Potenz mit negativem Exponent und gib den Wert an (Dezimalzahl).',
+        0.0625, 0.0001, '',
+        `**Ansatz:** $1/x^n = x^{-n}$. Danach ausrechnen.
+
+**Rechnung:** $1/2^4 = 2^{-4}$. $2^4 = 16$, also $1/16 = 0{,}0625$.
+
+**Probe:** $0{,}0625 \\cdot 16 = 1$. ✓
+
+**Typischer Fehler:** $-2^4 = -16$ schreiben — das ist nicht der Kehrwert.`,
+        [
+          'Negativer Exponent ist der Kehrwert.',
+          '$2^{-4} = 1/2^4 = 1/16$.',
+          '$1/16 = 0{,}0625$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['pot-negativ'] },
+      ),
+      mc(
+        'Ein Schüler sagt: "$x^0 = 0$, weil man die Basis mit nichts multipliziert." Wo liegt der Fehler?',
+        [
+          'Per Konvention ist $x^0 = 1$ (für $x \\neq 0$) — aus $x^a/x^a = x^{a-a} = x^0 = 1$.',
+          'Er hat recht — $x^0 = 0$ für alle $x$.',
+          'Nur $0^0 = 1$; alle anderen Basen haben $x^0 = x$.',
+          'Exponent $0$ ist nicht definiert.',
+        ],
+        0,
+        `**Ansatz:** Aus der Division-Regel folgt zwingend $x^0 = 1$.
+
+**Rechnung:** $x^2/x^2 = x^{2-2} = x^0$ UND $x^2/x^2 = 1$. Also $x^0 = 1$.
+
+**Probe:** $5^0 = 1$, $2{,}718^0 = 1$, $x^0 = 1$ für alle $x \\neq 0$.
+
+**Typischer Fehler:** "Hoch 0 heißt gar nicht multipliziert, also 0" — verwechselt Multiplikation mit einem leeren Produkt (das per Konvention 1 ist).`,
+        [
+          '$x^3/x^3 = ?$',
+          'Was muss $x^0$ sein, damit die Regel stimmt?',
+          '$1$, nicht $0$.',
+        ],
+        {
+          1: 'Nein, $x^0 = 1$ ist überall Konvention und logisch herleitbar.',
+          2: '$0^0$ ist ein Sonderfall (oft als $1$ definiert in Kombinatorik, unbestimmt in Analysis).',
+          3: 'Exponent $0$ ist sehr wohl definiert: $x^0 = 1$.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['pot-null'] },
+      ),
+      ni(
+        'Vereinfache $\\dfrac{x^{-3} \\cdot x^5}{x^{-1}}$ und gib den Exponenten an.',
+        3, 0, '',
+        `**Ansatz:** Mit Potenzgesetzen kombinieren. Zähler: Exponenten addieren. Dann durch Nenner.
+
+**Rechnung:** Zähler $x^{-3+5} = x^2$. Durch $x^{-1}$: $x^{2-(-1)} = x^{2+1} = x^3$.
+
+**Probe:** $x=2$: Zähler $1/8 \\cdot 32 = 4$. Nenner $1/2$. $4/(1/2) = 8 = 2^3$. ✓
+
+**Typischer Fehler:** Vorzeichen des negativen Exponenten vergessen beim Subtrahieren.`,
+        [
+          'Zähler zusammenfassen: $-3 + 5 = 2$.',
+          'Durch Nenner: $2 - (-1) = 3$.',
+          '$x^3$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['pot-negativ', 'pot-mult'] },
+      ),
+    ],
+    // [3] Produkt/Quotient in Klammer
+    3: [
+      tf(
+        'Es gilt $(xy)^3 = x^3 y^3$.',
+        true,
+        `**Ansatz:** Produkt in Klammer: Exponent auf jeden Faktor verteilen.
+
+**Rechnung:** $(xy)^3 = (xy)(xy)(xy) = x^3 y^3$.
+
+**Probe:** $x=2, y=3$: $(6)^3 = 216 = 8 \\cdot 27$. ✓
+
+**Typischer Fehler:** Exponent nur auf eine Variable anwenden: $xy^3$.`,
+        [
+          'Klammer mit Produkt hoch $n$.',
+          'Exponent verteilt sich auf jeden Faktor.',
+          'Merke: $(xy)^n = x^n \\cdot y^n$.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['pot-produkt'] },
+      ),
+      mc(
+        'Vereinfache $(2x)^3$.',
+        ['$8x^3$', '$2x^3$', '$6x^3$', '$2x \\cdot 3$'],
+        0,
+        `**Ansatz:** $(2x)^3 = 2^3 \\cdot x^3$.
+
+**Rechnung:** $2^3 = 8$. Also $8x^3$.
+
+**Probe:** $x=1$: $(2 \\cdot 1)^3 = 8$. $8 \\cdot 1^3 = 8$. ✓
+
+**Typischer Fehler:** Exponent nur auf $x$: $2x^3$.`,
+        [
+          'Exponent auf JEDEN Faktor.',
+          '$2^3 = 8$ und $x^3$.',
+          'Ergebnis: $8x^3$.',
+        ],
+        {
+          1: 'Der Exponent wurde nur auf $x$ angewandt, nicht auf den Faktor $2$.',
+          2: '$6 = 2 \\cdot 3$ — das wäre $2$ multipliziert mit dem Exponenten, kein korrektes Gesetz.',
+          3: '$(2x)^3 \\neq 2x \\cdot 3$. Die Klammer-hoch-$n$-Regel gilt multiplikativ.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['pot-produkt'] },
+      ),
+      ni(
+        'Berechne $(3a^2)^2$ bei $a=2$.',
+        144, 0, '',
+        `**Ansatz:** Jeden Faktor hoch 2: $(3a^2)^2 = 3^2 \\cdot (a^2)^2 = 9a^4$. Dann einsetzen.
+
+**Rechnung:** $9 \\cdot a^4$ bei $a=2$: $9 \\cdot 16 = 144$.
+
+**Probe:** $(3 \\cdot 4)^2 = 12^2 = 144$. ✓
+
+**Typischer Fehler:** $(a^2)^2 = a^4$ vergessen; stattdessen $a^2$ belassen.`,
+        [
+          '$3^2 = 9$, $(a^2)^2 = a^4$.',
+          'Ergebnis: $9a^4$.',
+          'Einsetzen: $9 \\cdot 16$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['pot-produkt'] },
+      ),
+      mc(
+        'Ein Schüler schreibt $(3x)^2 = 3x^2$. Wo liegt der Fehler?',
+        [
+          'Der Exponent $2$ muss auf JEDEN Faktor in der Klammer: korrekt ist $9x^2$.',
+          'Die Klammer müsste weg: $3x^2$.',
+          'Der Schüler hat recht.',
+          'Der Exponent gilt nur für Variablen.',
+        ],
+        0,
+        `**Ansatz:** Produkt-in-Klammer-Regel: Exponent auf alle Faktoren verteilen.
+
+**Rechnung:** $(3x)^2 = 3^2 \\cdot x^2 = 9x^2$, nicht $3x^2$.
+
+**Probe:** $x=2$: $(3 \\cdot 2)^2 = 36$. Korrekt: $9 \\cdot 4 = 36$. Schüler: $3 \\cdot 4 = 12 \\neq 36$.
+
+**Typischer Fehler:** Der Schüler hat den Exponent nur auf $x$ angewandt, den Faktor $3$ ignoriert.`,
+        [
+          'Was passiert mit $3$ in $(3x)^2$?',
+          'Exponent auf JEDEN Faktor.',
+          '$3^2 = 9$.',
+        ],
+        {
+          1: 'Die Klammer ist hier essentiell — sie sagt, dass der Exponent auf das gesamte Produkt wirkt.',
+          2: 'Zahlentest widerlegt die Schülerrechnung.',
+          3: 'Nein, der Exponent gilt für ALLE Faktoren in der Klammer — Zahlen und Variablen.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['pot-produkt'] },
+      ),
+      ni(
+        'Vereinfache $\\left(\\dfrac{2x^2}{y}\\right)^3$ und gib den Exponenten von $x$ an.',
+        6, 0, '',
+        `**Ansatz:** Quotient-in-Klammer-Regel: jeden Faktor einzeln hochnehmen.
+
+**Rechnung:** $\\left(\\dfrac{2x^2}{y}\\right)^3 = \\dfrac{(2x^2)^3}{y^3} = \\dfrac{8x^6}{y^3}$. Exponent von $x$ ist $6$.
+
+**Probe:** $(2 \\cdot 1^2/1)^3 = 8$; $8 \\cdot 1^6/1^3 = 8$. ✓
+
+**Typischer Fehler:** $(x^2)^3 = x^5$ statt $x^6$.`,
+        [
+          'Quotient-in-Klammer: jeden Faktor hoch $3$.',
+          '$(x^2)^3 = x^{2\\cdot 3} = x^6$.',
+          'Exponent $6$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['pot-quotient', 'pot-produkt'] },
+      ),
+    ],
+  },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // alg-1-2 — Wurzeln & gebrochene Exponenten (3 SGs, 16 Matrix-Aufgaben)
+  // ───────────────────────────────────────────────────────────────────────
+  'alg-1-2': {
+    // [0] Wurzel als Bruchpotenz
+    0: [
+      tf(
+        'Es gilt $\\sqrt[n]{x} = x^{1/n}$.',
+        true,
+        `**Ansatz:** Wurzel als Bruchpotenz — dadurch gelten alle Potenzgesetze.
+
+**Rechnung:** $\\sqrt[3]{x} = x^{1/3}$, $\\sqrt{x} = x^{1/2}$.
+
+**Probe:** $(\\sqrt{4})^2 = 4 = 4^1 = (4^{1/2})^2 = 4^{2 \\cdot 1/2} = 4^1$. ✓
+
+**Typischer Fehler:** $\\sqrt[n]{x} = x^n$ annehmen — vertauscht die Bedeutung.`,
+        [
+          'Wurzel ist der Kehrwert der Potenz.',
+          '$\\sqrt[n]{x} = x^{1/n}$.',
+          'Nicht $x^n$ verwechseln.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['wurzel-bruchpot'] },
+      ),
+      mc(
+        'Welche Potenzschreibweise entspricht $\\sqrt[4]{x^3}$?',
+        ['$x^{3/4}$', '$x^{4/3}$', '$x^{3 \\cdot 4}$', '$x^{3-4}$'],
+        0,
+        `**Ansatz:** $\\sqrt[n]{x^m} = x^{m/n}$.
+
+**Rechnung:** $\\sqrt[4]{x^3} = x^{3/4}$.
+
+**Probe:** $x=16$: $\\sqrt[4]{16^3} = \\sqrt[4]{4096} = 8$. $16^{3/4} = (16^{1/4})^3 = 2^3 = 8$. ✓
+
+**Typischer Fehler:** Exponenten vertauschen.`,
+        [
+          'Wurzelgrad im Nenner.',
+          'Exponent im Zähler.',
+          '$\\sqrt[n]{x^m} = x^{m/n}$.',
+        ],
+        {
+          1: 'Das wäre die Inversion — $n$ und $m$ vertauscht.',
+          2: 'Multiplikation gilt bei Potenz einer Potenz, nicht hier.',
+          3: 'Subtraktion gilt bei Division gleicher Basen.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['wurzel-bruchpot'] },
+      ),
+      ni(
+        'Berechne $\\sqrt[3]{8^2}$.',
+        4, 0, '',
+        `**Ansatz:** Als Bruchpotenz: $8^{2/3}$.
+
+**Rechnung:** $8^{2/3} = (8^{1/3})^2 = 2^2 = 4$.
+
+**Probe:** $\\sqrt[3]{64} = 4$. ✓
+
+**Typischer Fehler:** $\\sqrt[3]{8^2}$ als $(\\sqrt[3]{8})^2$ rechnen ist richtig; aber $2^3 = 8$ für $\\sqrt[3]{8}$ nicht vergessen.`,
+        [
+          'Als $8^{2/3}$ schreiben.',
+          'Erst Wurzel, dann Potenz: $\\sqrt[3]{8} = 2$.',
+          '$2^2 = 4$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['wurzel-bruchpot'] },
+      ),
+      mc(
+        'Warum ist $\\sqrt{-4}$ in $\\mathbb{R}$ NICHT definiert?',
+        [
+          'Das Quadrat jeder reellen Zahl ist $\\geq 0$ — es gibt keine reelle Zahl $y$ mit $y^2 = -4$.',
+          'Die Wurzel ist $-2$, aber negativ.',
+          'Die Wurzel ist $2i$, aber das ist auch reell.',
+          'Der Radikand muss eine Quadratzahl sein.',
+        ],
+        0,
+        `**Ansatz:** $\\sqrt{x}$ ist in $\\mathbb{R}$ nur für $x \\geq 0$ definiert.
+
+**Rechnung:** Wenn $\\sqrt{-4} = y$ existierte, müsste $y^2 = -4$ sein. Aber $y^2 \\geq 0$ für alle reellen $y$.
+
+**Probe:** $0^2 = 0$, $(-2)^2 = 4$, $2^2 = 4$ — nie negativ.
+
+**Typischer Fehler:** Denken, $\\sqrt{-4} = -2$ (weil $(-2)^2 = 4$) — aber das ist $+4$, nicht $-4$.`,
+        [
+          'Was ist das Quadrat reeller Zahlen?',
+          'Kann $y^2$ negativ sein?',
+          'Wertebereich der Quadratfunktion.',
+        ],
+        {
+          1: '$(-2)^2 = +4$, nicht $-4$. Es gibt keine reelle Wurzel aus $-4$.',
+          2: '$2i$ ist komplex, nicht reell.',
+          3: 'Jede Zahl $\\geq 0$ hat eine Wurzel in $\\mathbb{R}$, nicht nur Quadratzahlen.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['wurzel-def-bereich'] },
+      ),
+      matching(
+        'Ordne jedem Wurzelausdruck seine Potenzschreibweise zu.',
+        [
+          { left: '$\\sqrt{x}$',        right: '$x^{1/2}$' },
+          { left: '$\\sqrt[3]{x}$',     right: '$x^{1/3}$' },
+          { left: '$\\sqrt[5]{x^2}$',   right: '$x^{2/5}$' },
+          { left: '$\\sqrt{x^3}$',      right: '$x^{3/2}$' },
+        ],
+        `**Ansatz:** Wurzelgrad → Nenner, Exponent des Radikanden → Zähler.
+
+**Rechnung:** $\\sqrt[n]{x^m} = x^{m/n}$.
+
+**Probe:** In jeder Zeile: $m$ oben, $n$ unten.
+
+**Typischer Fehler:** Zähler und Nenner vertauschen.`,
+        [
+          'Wurzel ist immer $\\cdot 1/n$ im Exponenten.',
+          'Zähler: Potenz des Radikanden.',
+          'Nenner: Wurzelgrad.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['wurzel-bruchpot'] },
+      ),
+    ],
+    // [1] Rechenregeln / Summe-Falle / Vereinfachen
+    1: [
+      tf(
+        'Es gilt $\\sqrt{a + b} = \\sqrt{a} + \\sqrt{b}$.',
+        false,
+        `**Ansatz:** Wurzel ist NICHT linear. $\\sqrt{a+b} \\neq \\sqrt{a} + \\sqrt{b}$ im Allgemeinen.
+
+**Rechnung:** Gegenbeispiel: $\\sqrt{9+16} = \\sqrt{25} = 5$, aber $\\sqrt{9} + \\sqrt{16} = 3 + 4 = 7$. $5 \\neq 7$.
+
+**Probe:** Die Regel gilt nur für Produkte ($\\sqrt{ab} = \\sqrt{a}\\sqrt{b}$), nicht für Summen.
+
+**Typischer Fehler:** Distributivgesetz auf Wurzeln übertragen — aber Wurzel ist keine Multiplikation.`,
+        [
+          'Teste mit $a=9, b=16$.',
+          'Was ist $\\sqrt{25}$?',
+          'Was ist $\\sqrt{9} + \\sqrt{16}$?',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['wurzel-summe-nein'] },
+      ),
+      mc(
+        'Vereinfache $\\sqrt{8} \\cdot \\sqrt{2}$.',
+        ['$4$', '$\\sqrt{10}$', '$2\\sqrt{5}$', '$\\sqrt{16}$'],
+        0,
+        `**Ansatz:** Produkt unter der Wurzel: $\\sqrt{a}\\sqrt{b} = \\sqrt{ab}$.
+
+**Rechnung:** $\\sqrt{8} \\cdot \\sqrt{2} = \\sqrt{16} = 4$.
+
+**Probe:** $\\sqrt{8} \\approx 2{,}83$; $2{,}83 \\cdot 1{,}41 \\approx 4$. ✓
+
+**Typischer Fehler:** Beim Addieren landet man bei $\\sqrt{10}$, aber hier ist Multiplikation.`,
+        [
+          'Produkt-Regel: $\\sqrt{a}\\sqrt{b} = \\sqrt{ab}$.',
+          '$8 \\cdot 2 = 16$.',
+          '$\\sqrt{16} = ?$',
+        ],
+        {
+          1: '$\\sqrt{10}$ wäre $\\sqrt{8 + 2}$ — aber hier steht Multiplikation.',
+          2: 'Auch falsch — wäre das Ergebnis einer anderen Rechnung.',
+          3: '$\\sqrt{16}$ stimmt, aber die einfachste Form ist $4$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['wurzel-produkt'] },
+      ),
+      ni(
+        'Vereinfache $\\sqrt{50}$ und gib den Koeffizient vor $\\sqrt{2}$ an.',
+        5, 0, '',
+        `**Ansatz:** Quadratzahl-Faktor aus der Wurzel ziehen.
+
+**Rechnung:** $50 = 25 \\cdot 2$. $\\sqrt{50} = \\sqrt{25} \\cdot \\sqrt{2} = 5\\sqrt{2}$.
+
+**Probe:** $(5\\sqrt{2})^2 = 25 \\cdot 2 = 50$. ✓
+
+**Typischer Fehler:** $\\sqrt{50}$ mit anderen Zahlen verwechseln.`,
+        [
+          'Zerlege $50$ mit Quadratzahl.',
+          '$25 \\cdot 2$.',
+          'Quadratzahl-Wurzel herausziehen.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['wurzel-vereinfachen'] },
+      ),
+      ni(
+        'Vereinfache $\\sqrt{72}$ und gib den Koeffizient vor $\\sqrt{2}$ an.',
+        6, 0, '',
+        `**Ansatz:** Quadratzahl-Faktor herausziehen.
+
+**Rechnung:** $72 = 36 \\cdot 2$. $\\sqrt{72} = \\sqrt{36} \\cdot \\sqrt{2} = 6\\sqrt{2}$.
+
+**Probe:** $(6\\sqrt{2})^2 = 36 \\cdot 2 = 72$. ✓
+
+**Typischer Fehler:** Kleinere Zerlegung wählen: $\\sqrt{72} = \\sqrt{9 \\cdot 8} = 3\\sqrt{8}$, dann $\\sqrt{8} = 2\\sqrt{2}$, Ergebnis $6\\sqrt{2}$ — funktioniert, ist aber umständlicher.`,
+        [
+          'Quadratzahl-Faktor von $72$.',
+          '$36 \\cdot 2 = 72$.',
+          '$\\sqrt{36} = 6$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['wurzel-vereinfachen'] },
+      ),
+      mc(
+        'Ein Schüler schreibt $\\sqrt{25 + 144} = 5 + 12 = 17$. Wo liegt der Fehler?',
+        [
+          'Wurzel lässt sich nicht auf Summen verteilen — korrekt: $\\sqrt{169} = 13$.',
+          'Er hat $\\sqrt{25} = 5$ falsch berechnet.',
+          'Der Ausdruck ist korrekt.',
+          'Er hätte mit $2$ erweitern müssen.',
+        ],
+        0,
+        `**Ansatz:** $\\sqrt{a+b} \\neq \\sqrt{a} + \\sqrt{b}$. Summe IN der Wurzel muss zuerst ausgerechnet werden.
+
+**Rechnung:** $\\sqrt{25+144} = \\sqrt{169} = 13$, nicht $17$.
+
+**Probe:** $13^2 = 169$, $17^2 = 289 \\neq 169$.
+
+**Typischer Fehler:** Distributivgesetz auf Wurzeln anwenden — gilt nicht.`,
+        [
+          'Wurzel ist nicht linear.',
+          'Zuerst Summe IN der Wurzel ausrechnen.',
+          '$\\sqrt{169} = ?$',
+        ],
+        {
+          1: '$\\sqrt{25} = 5$ ist korrekt — der Fehler ist das Verteilen der Wurzel auf die Summanden.',
+          2: 'Zahlentest widerlegt die Rechnung.',
+          3: 'Erweitern mit 2 ändert das Problem nicht — die Wurzel muss über der Summe bleiben.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['wurzel-summe-nein'] },
+      ),
+      sorting(
+        'Bringe die Schritte zur Vereinfachung von $\\sqrt{200}$ in die richtige Reihenfolge.',
+        [
+          'Zerlege $200$ mit Quadratzahl: $200 = 100 \\cdot 2$',
+          'Produkt-Regel: $\\sqrt{200} = \\sqrt{100} \\cdot \\sqrt{2}$',
+          'Quadratzahl-Wurzel ziehen: $\\sqrt{100} = 10$',
+          'Ergebnis: $10\\sqrt{2}$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Vier Schritte: Zerlegen, Produkt-Regel, Wurzel ziehen, kombinieren.
+
+**Rechnung:** $\\sqrt{200} = 10\\sqrt{2}$.
+
+**Probe:** $(10\\sqrt{2})^2 = 100 \\cdot 2 = 200$. ✓
+
+**Typischer Fehler:** Reihenfolge vertauschen und Wurzel vor dem Zerlegen ziehen.`,
+        [
+          'Erst Quadratzahl-Faktor.',
+          'Produkt-Regel trennt die Wurzel.',
+          'Wurzel der Quadratzahl = Koeffizient.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['wurzel-produkt', 'wurzel-vereinfachen'] },
+      ),
+    ],
+    // [2] Nenner rational machen
+    2: [
+      tf(
+        'Man kann den Ausdruck $\\dfrac{1}{\\sqrt{2}}$ durch Erweitern mit $\\sqrt{2}$ zu $\\dfrac{\\sqrt{2}}{2}$ umformen.',
+        true,
+        `**Ansatz:** Nenner rational machen: mit passender Wurzel erweitern.
+
+**Rechnung:** $\\dfrac{1}{\\sqrt{2}} \\cdot \\dfrac{\\sqrt{2}}{\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2}$.
+
+**Probe:** $1/\\sqrt{2} \\approx 0{,}707$; $\\sqrt{2}/2 \\approx 0{,}707$. ✓
+
+**Typischer Fehler:** Mit $2$ erweitern (statt $\\sqrt{2}$) — die Wurzel bleibt im Nenner.`,
+        [
+          'Womit muss man erweitern, damit der Nenner rational wird?',
+          '$\\sqrt{2} \\cdot \\sqrt{2} = 2$.',
+          'Erweitern = Zähler UND Nenner mit gleichem Faktor.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['nenner-rational'] },
+      ),
+      mc(
+        'Mache den Nenner von $\\dfrac{3}{\\sqrt{5}}$ rational.',
+        ['$\\dfrac{3\\sqrt{5}}{5}$', '$\\dfrac{3}{5}$', '$\\sqrt{5}/3$', '$3\\sqrt{5}$'],
+        0,
+        `**Ansatz:** Mit $\\sqrt{5}$ erweitern.
+
+**Rechnung:** $\\dfrac{3}{\\sqrt{5}} \\cdot \\dfrac{\\sqrt{5}}{\\sqrt{5}} = \\dfrac{3\\sqrt{5}}{5}$.
+
+**Probe:** $3/\\sqrt{5} \\approx 1{,}342$; $3\\sqrt{5}/5 \\approx 1{,}342$. ✓
+
+**Typischer Fehler:** Nur Nenner erweitern ohne Zähler anzupassen.`,
+        [
+          'Erweitern mit $\\sqrt{5}$.',
+          'Zähler UND Nenner.',
+          '$\\sqrt{5} \\cdot \\sqrt{5} = 5$.',
+        ],
+        {
+          1: 'Das $\\sqrt{5}$ im Zähler wurde vergessen — Erweitern ist Multiplikation beider Seiten.',
+          2: 'Kehrwert — nicht rational gemacht.',
+          3: 'Da fehlt der Nenner ganz.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['nenner-rational'] },
+      ),
+      ni(
+        'Mache den Nenner von $\\dfrac{4}{\\sqrt{2}}$ rational und gib den Zähler an (ohne $\\sqrt{2}$: die ganze Zahl vor $\\sqrt{2}$).',
+        2, 0, '',
+        `**Ansatz:** Mit $\\sqrt{2}$ erweitern und dann kürzen.
+
+**Rechnung:** $\\dfrac{4}{\\sqrt{2}} = \\dfrac{4\\sqrt{2}}{2} = 2\\sqrt{2}$.
+
+**Probe:** $4/\\sqrt{2} \\approx 2{,}83$; $2\\sqrt{2} \\approx 2{,}83$. ✓
+
+**Typischer Fehler:** Nicht kürzen — Ergebnis $4\\sqrt{2}/2$ ist rechnerisch richtig, aber nicht vereinfacht.`,
+        [
+          'Mit $\\sqrt{2}$ erweitern.',
+          'Dann mit ggT $2$ kürzen.',
+          'Ergebnis: $2\\sqrt{2}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['nenner-rational'] },
+      ),
+      mc(
+        'Ein Schüler schreibt $\\dfrac{1}{\\sqrt{3}} = \\dfrac{1}{3}$ und behauptet damit den Nenner rational gemacht zu haben. Wo liegt der Fehler?',
+        [
+          'Er hat einfach $\\sqrt{3}$ durch $3$ ersetzt — das ist keine gültige Umformung. Korrekt: $\\dfrac{\\sqrt{3}}{3}$.',
+          'Er hat nur den Zähler verändert.',
+          'Der Ausdruck ist korrekt.',
+          'Der Nenner war bereits rational.',
+        ],
+        0,
+        `**Ansatz:** Eine Wurzel verschwindet nicht, indem man sie streicht.
+
+**Rechnung:** $1/\\sqrt{3} \\approx 0{,}577$, nicht $1/3 \\approx 0{,}333$.
+
+**Probe:** Zahlentest zeigt Ungleichheit.
+
+**Typischer Fehler:** "$\\sqrt{}$ weglassen macht keinen Unterschied" — falsch.`,
+        [
+          'Wie wird eine Wurzel aus dem Nenner entfernt?',
+          'Durch Erweitern, nicht durch Weglassen.',
+          'Zahlentest: $1/\\sqrt{3}$ vs. $1/3$.',
+        ],
+        {
+          1: 'Der Nenner wurde falsch verändert, nicht der Zähler.',
+          2: 'Zahlentest widerlegt die Gleichheit.',
+          3: 'Der Nenner war $\\sqrt{3}$ — nicht rational.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['nenner-rational'] },
+      ),
+      ni(
+        'Mache $\\dfrac{\\sqrt{6}}{\\sqrt{2}}$ zum Nenner-rationalen Ausdruck und gib den Wert als Quadratzahl-Wurzel an (Radikand).',
+        3, 0, '',
+        `**Ansatz:** Quotient unter der Wurzel zusammenfassen ODER erweitern.
+
+**Rechnung:** $\\dfrac{\\sqrt{6}}{\\sqrt{2}} = \\sqrt{\\dfrac{6}{2}} = \\sqrt{3}$. Nenner rational (er ist $1$).
+
+**Probe:** $\\sqrt{6}/\\sqrt{2} \\approx 2{,}449/1{,}414 \\approx 1{,}732 = \\sqrt{3}$. ✓
+
+**Typischer Fehler:** Brute-force erweitern statt Quotient-Regel anwenden.`,
+        [
+          'Quotient unter der Wurzel.',
+          '$\\sqrt{6}/\\sqrt{2} = \\sqrt{6/2}$.',
+          '$6/2 = 3$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['nenner-rational', 'wurzel-vereinfachen'] },
+      ),
+    ],
+  },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // alg-1-3 — Logarithmen (7 SGs, 35 Matrix-Aufgaben)
+  // ───────────────────────────────────────────────────────────────────────
+  'alg-1-3': {
+    // [0] Definition log_b(x) = y ⟺ b^y = x
+    0: [
+      tf(
+        'Es gilt $\\log_2(8) = 3$, weil $2^3 = 8$.',
+        true,
+        `**Ansatz:** Definition: $\\log_b(x) = y \\iff b^y = x$.
+
+**Rechnung:** $2^3 = 8$, also $\\log_2(8) = 3$.
+
+**Probe:** $2 \\cdot 2 \\cdot 2 = 8$. ✓
+
+**Typischer Fehler:** Basis und Argument vertauschen.`,
+        [
+          'Was bedeutet $\\log_b(x) = y$?',
+          'Es ist die Umkehrung von $b^y = x$.',
+          '$2^3 = ?$',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['log-def'] },
+      ),
+      mc(
+        'Was ist $\\log_3(27)$?',
+        ['$3$', '$9$', '$27/3 = 9$', '$\\ln(27)/3$'],
+        0,
+        `**Ansatz:** $\\log_3(27) = y \\iff 3^y = 27$.
+
+**Rechnung:** $3^3 = 27$, also $y = 3$.
+
+**Probe:** $\\log_3(27) = \\log_3(3^3) = 3$. ✓
+
+**Typischer Fehler:** Division statt Logarithmus: $27/3 = 9$.`,
+        [
+          '$3^? = 27$.',
+          'Zähle die Faktoren.',
+          '$3 \\cdot 3 \\cdot 3 = 27$.',
+        ],
+        {
+          1: '$9 = 3^2$, aber wir suchen den Exponenten, nicht das Argument einer anderen Potenz.',
+          2: 'Division ist nicht Logarithmus.',
+          3: 'Basiswechsel ist hier unnötig — $3^3 = 27$ direkt.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['log-def'] },
+      ),
+      ni(
+        'Berechne $\\log_2(32)$.',
+        5, 0, '',
+        `**Ansatz:** $2^y = 32$.
+
+**Rechnung:** $2^5 = 32$, also $\\log_2(32) = 5$.
+
+**Probe:** $2 \\cdot 2 \\cdot 2 \\cdot 2 \\cdot 2 = 32$. ✓
+
+**Typischer Fehler:** $32/2 = 16$ denken.`,
+        [
+          '$2^? = 32$.',
+          '$2^4 = 16$, $2^5 = 32$.',
+          'Antwort: $5$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['log-def'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $\\log_4(64) = 64/4 = 16$. Wo liegt der Fehler?',
+        [
+          'Logarithmus ist die Umkehrung der Exponentialfunktion, keine Division: $\\log_4(64) = 3$, weil $4^3 = 64$.',
+          'Er hätte $64 \\cdot 4 = 256$ rechnen müssen.',
+          'Der Ausdruck ist korrekt.',
+          'Die Basis $4$ ist nicht zulässig.',
+        ],
+        0,
+        `**Ansatz:** $\\log_b(x)$ ≠ $x/b$. Stattdessen: $b^y = x$.
+
+**Rechnung:** $4^3 = 64$, also $\\log_4(64) = 3$.
+
+**Probe:** $4 \\cdot 4 \\cdot 4 = 64$. ✓
+
+**Typischer Fehler:** Division mit Logarithmus verwechseln — sehr häufiger Anfängerfehler.`,
+        [
+          'Logarithmus ist keine Division.',
+          '$\\log_b(x) = y$ bedeutet $b^y = x$.',
+          'Zahlentest: $4^3 = ?$',
+        ],
+        {
+          1: 'Multiplikation ist auch nicht Logarithmus.',
+          2: 'Zahlentest: $4^{16}$ ist eine riesige Zahl, nicht $64$.',
+          3: 'Jede positive Basis $\\neq 1$ ist erlaubt.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['log-def'] },
+      ),
+      matching(
+        'Ordne jeder Basis den typischen Anwendungskontext zu.',
+        [
+          { left: '$\\ln$ (Basis $e$)',        right: 'Natürliche Wachstumsprozesse, DGL, Analysis' },
+          { left: '$\\log$ (Basis $10$)',      right: 'dB-Skala, pH-Wert, Technik' },
+          { left: '$\\log_2$ (Basis $2$)',     right: 'Informatik, Bits, Algorithmen-Komplexität' },
+          { left: '$\\log_b$ (beliebig)',      right: 'Allgemeine Definition, Basiswechsel möglich' },
+        ],
+        `**Ansatz:** Jede Basis hat einen typischen Anwendungsbereich.
+
+**Rechnung:** Die drei Standardbasen $e$, $10$, $2$ sind am häufigsten.
+
+**Probe:** Konvention in Wissenschaft und Technik.
+
+**Typischer Fehler:** Basen austauschbar behandeln.`,
+        [
+          'Basis $e$ — natürlich (Analysis).',
+          'Basis $10$ — technisch (dB, pH).',
+          'Basis $2$ — Informatik.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['log-spezialfaelle'] },
+      ),
+    ],
+    // [1] Produktregel: ln(ab) = ln(a) + ln(b)
+    1: [
+      tf(
+        'Für $a, b > 0$ gilt $\\ln(ab) = \\ln(a) + \\ln(b)$.',
+        true,
+        `**Ansatz:** Produktregel — Multiplikation wird zu Addition.
+
+**Rechnung:** Beweisidee: $e^{\\ln a + \\ln b} = e^{\\ln a} \\cdot e^{\\ln b} = a \\cdot b$.
+
+**Probe:** $\\ln(6) = \\ln(2) + \\ln(3) \\approx 0{,}693 + 1{,}099 = 1{,}792$. ✓
+
+**Typischer Fehler:** $\\ln(ab) = \\ln(a) \\cdot \\ln(b)$ — Multiplikation statt Addition.`,
+        [
+          'Logarithmus vom Produkt — welche Operation?',
+          'Multiplikation wird zu Addition.',
+          '$\\ln(ab) = \\ln a + \\ln b$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['log-produkt'] },
+      ),
+      mc(
+        'Vereinfache $\\ln(12) - \\ln(3)$.',
+        ['$\\ln(4)$', '$\\ln(9)$', '$4$', '$\\ln(12/3) = \\ln(4)$'],
+        0,
+        `**Ansatz:** $\\ln(a) - \\ln(b) = \\ln(a/b)$ (Quotientenregel, implizit Produkt-Umkehrung).
+
+**Rechnung:** $\\ln(12) - \\ln(3) = \\ln(12/3) = \\ln(4)$.
+
+**Probe:** $\\ln(12) \\approx 2{,}485$, $\\ln(3) \\approx 1{,}099$. Differenz $\\approx 1{,}386 = \\ln(4)$. ✓
+
+**Typischer Fehler:** Subtrahieren der Argumente: $\\ln(12-3) = \\ln(9)$.`,
+        [
+          'Differenz von Logarithmen → Quotient.',
+          '$12/3 = 4$.',
+          '$\\ln(4)$ ist die einfachste Form.',
+        ],
+        {
+          1: 'Das wäre $\\ln(12 - 3) = \\ln(9)$ — aber der Logarithmus ist nicht linear.',
+          2: '$4$ ohne Wurzel/Logarithmus ist nicht der Logarithmus von etwas Konkretem.',
+          3: 'Das ist dieselbe Antwort wie Option 1, nur anders notiert.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['log-produkt'] },
+      ),
+      ni(
+        'Bestimme $\\log_2(4 \\cdot 8)$ als ganze Zahl.',
+        5, 0, '',
+        `**Ansatz:** Produktregel: $\\log_2(4 \\cdot 8) = \\log_2(4) + \\log_2(8)$.
+
+**Rechnung:** $\\log_2(4) = 2$, $\\log_2(8) = 3$. Summe $= 5$.
+
+**Probe:** $4 \\cdot 8 = 32 = 2^5$. ✓
+
+**Typischer Fehler:** Multiplikation: $2 \\cdot 3 = 6$ statt $2 + 3 = 5$.`,
+        [
+          'Produktregel: Logs addieren.',
+          '$\\log_2(4) = 2$, $\\log_2(8) = 3$.',
+          '$2 + 3 = 5$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['log-produkt'] },
+      ),
+      mc(
+        'Ein Schüler schreibt $\\ln(a \\cdot b) = \\ln(a) \\cdot \\ln(b)$. Wo liegt der Fehler?',
+        [
+          'Produktregel: $\\ln(a \\cdot b) = \\ln(a) + \\ln(b)$ — Multiplikation wird zu ADDITION, nicht Multiplikation.',
+          'Der Logarithmus des Produkts ist das Produkt der Argumente.',
+          'Es ist korrekt.',
+          'Der Logarithmus ist nicht definiert für Produkte.',
+        ],
+        0,
+        `**Ansatz:** Klassischer Fehler: Verwechslung von Produkt- und Additions-Regel.
+
+**Rechnung:** Korrekt: $\\ln(a b) = \\ln a + \\ln b$.
+
+**Probe:** $\\ln(6) = \\ln(2 \\cdot 3) = \\ln 2 + \\ln 3 \\approx 1{,}792$. Schüler: $\\ln 2 \\cdot \\ln 3 \\approx 0{,}762 \\neq 1{,}792$.
+
+**Typischer Fehler:** Logarithmus-Regeln verwechseln.`,
+        [
+          'Welche Operation wird beim Log aus einer Multiplikation?',
+          'Produkt → Summe, nicht Produkt.',
+          'Zahlentest.',
+        ],
+        {
+          1: 'Weder das Produkt der Argumente noch das Produkt der Logarithmen — die Summe der Logarithmen.',
+          2: 'Zahlentest widerlegt.',
+          3: 'Der Logarithmus ist für alle $x > 0$ definiert — auch Produkte positiver Zahlen.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['log-produkt'] },
+      ),
+      ni(
+        'Vereinfache $\\ln(4) + \\ln(25)$ als $\\ln(\\text{Zahl})$ und gib diese Zahl an.',
+        100, 0, '',
+        `**Ansatz:** Produktregel: Summe → Produkt.
+
+**Rechnung:** $\\ln(4) + \\ln(25) = \\ln(4 \\cdot 25) = \\ln(100)$.
+
+**Probe:** $\\ln(100) \\approx 4{,}605$. $\\ln(4) + \\ln(25) \\approx 1{,}386 + 3{,}219 = 4{,}605$. ✓
+
+**Typischer Fehler:** Addition der Argumente: $\\ln(4+25) = \\ln(29)$.`,
+        [
+          'Summe von Logs → Logarithmus des Produkts.',
+          '$4 \\cdot 25 = ?$',
+          '$\\ln(100)$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['log-produkt'] },
+      ),
+    ],
+    // [2] Quotientenregel: ln(a/b) = ln(a) - ln(b)
+    2: [
+      tf(
+        'Für $a, b > 0$ gilt $\\ln(a/b) = \\ln(a) - \\ln(b)$.',
+        true,
+        `**Ansatz:** Quotientenregel — Division wird zu Subtraktion.
+
+**Rechnung:** Beweis: $\\ln(a/b) = \\ln(a \\cdot b^{-1}) = \\ln a + \\ln(b^{-1}) = \\ln a - \\ln b$.
+
+**Probe:** $\\ln(6/2) = \\ln(3) \\approx 1{,}099$. $\\ln(6) - \\ln(2) \\approx 1{,}792 - 0{,}693 = 1{,}099$. ✓
+
+**Typischer Fehler:** Division: $\\ln(a)/\\ln(b)$ statt Subtraktion.`,
+        [
+          'Quotient im Log → Subtraktion.',
+          'Herleitung über Produkt-Regel und negative Exponenten.',
+          'Gegenprüfung mit Zahlen.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['log-quotient'] },
+      ),
+      mc(
+        'Vereinfache $\\log(50) - \\log(5)$ (Basis 10).',
+        ['$\\log(10) = 1$', '$\\log(55)$', '$10$', '$\\log(45)$'],
+        0,
+        `**Ansatz:** Quotientenregel.
+
+**Rechnung:** $\\log(50) - \\log(5) = \\log(50/5) = \\log(10) = 1$.
+
+**Probe:** $\\log(10) = 1$ da $10^1 = 10$. ✓
+
+**Typischer Fehler:** Addition ($\\log(55)$) oder Subtraktion der Argumente ($\\log(45)$).`,
+        [
+          'Differenz → Quotient.',
+          '$50/5 = 10$.',
+          '$\\log(10) = 1$ (Basis $10$).',
+        ],
+        {
+          1: 'Das wäre $\\log(50) + \\log(5)$ — Addition, nicht Subtraktion.',
+          2: '$10$ ohne Logarithmus — wäre das Argument, nicht der Wert.',
+          3: 'Subtraktion der Argumente ist nicht die Quotientenregel.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['log-quotient'] },
+      ),
+      ni(
+        'Bestimme $\\log_3(81/9)$ als ganze Zahl.',
+        2, 0, '',
+        `**Ansatz:** Quotientenregel + Direktrechnung.
+
+**Rechnung:** $81/9 = 9 = 3^2$. $\\log_3(9) = 2$. Alternativ: $\\log_3(81) - \\log_3(9) = 4 - 2 = 2$.
+
+**Probe:** $3^2 = 9$. ✓
+
+**Typischer Fehler:** Quotientenregel übersehen und direkt $\\log_3(81) = 4$ ohne Anpassung nehmen.`,
+        [
+          'Quotientenregel oder Direktrechnung.',
+          '$81/9 = 9$.',
+          '$\\log_3(9) = 2$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['log-quotient', 'log-produkt'] },
+      ),
+      mc(
+        'Ein Schüler schreibt $\\ln(10/2) = \\ln(10) / \\ln(2)$. Wo liegt der Fehler?',
+        [
+          'Quotient IN dem Log → Subtraktion der Logs: $\\ln(10) - \\ln(2)$, nicht Division.',
+          'Das ist der Basiswechsel, hier aber falsch angewendet.',
+          'Die Rechnung ist korrekt.',
+          '$\\ln$ ist nicht für Brüche definiert.',
+        ],
+        0,
+        `**Ansatz:** Verwechslung der Quotientenregel (Subtraktion) mit der Basiswechselformel (Division).
+
+**Rechnung:** Korrekt: $\\ln(10/2) = \\ln(10) - \\ln(2) = \\ln(5)$.
+
+**Probe:** $\\ln(5) \\approx 1{,}609$. $\\ln(10)/\\ln(2) \\approx 2{,}303/0{,}693 \\approx 3{,}322 = \\log_2(10)$ — ganz andere Zahl!
+
+**Typischer Fehler:** Genau dieser — Quotientenregel mit Basiswechsel verwechseln.`,
+        [
+          'Quotient IM Log → Subtraktion der Logs.',
+          'Division der Logs wäre Basiswechsel.',
+          'Zwei verschiedene Regeln.',
+        ],
+        {
+          1: 'Basiswechsel: $\\log_b(x) = \\ln(x)/\\ln(b)$ — hier nicht anwendbar.',
+          2: 'Zahlentest widerlegt.',
+          3: '$\\ln$ ist für alle positiven Argumente definiert, auch $10/2$.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['log-quotient'] },
+      ),
+      ni(
+        'Vereinfache $\\ln(30) - \\ln(5) - \\ln(2)$ als $\\ln(\\text{Zahl})$ und gib diese Zahl an.',
+        3, 0, '',
+        `**Ansatz:** Zwei Subtraktionen → zwei Divisionen.
+
+**Rechnung:** $\\ln(30) - \\ln(5) - \\ln(2) = \\ln(30/5) - \\ln(2) = \\ln(6) - \\ln(2) = \\ln(6/2) = \\ln(3)$.
+
+**Probe:** $\\ln(3) \\approx 1{,}099$. Zahlenwert der linken Seite: $\\approx 3{,}401 - 1{,}609 - 0{,}693 = 1{,}099$. ✓
+
+**Typischer Fehler:** Fall-Back auf Produkt statt Quotient.`,
+        [
+          'Jede Subtraktion → Quotient.',
+          '$30/5 = 6$, dann $6/2 = 3$.',
+          '$\\ln(3)$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['log-quotient', 'log-produkt'] },
+      ),
+    ],
+    // [3] Potenzregel: ln(a^n) = n · ln(a)
+    3: [
+      tf(
+        'Für $a > 0$ gilt $\\ln(a^n) = n \\cdot \\ln(a)$.',
+        true,
+        `**Ansatz:** Potenzregel — Exponent wird zum Faktor.
+
+**Rechnung:** Beweisidee: $\\ln(a^n) = \\ln(a \\cdot a \\cdots a)$ ($n$-mal) $= \\ln a + \\ln a + \\cdots + \\ln a = n \\ln a$.
+
+**Probe:** $\\ln(4) = \\ln(2^2) = 2\\ln(2) \\approx 2 \\cdot 0{,}693 = 1{,}386$. ✓
+
+**Typischer Fehler:** $\\ln(a^n) = (\\ln a)^n$ — Potenz außen statt Faktor.`,
+        [
+          'Exponent im Log → vor den Log ziehen.',
+          '$\\ln(a^n) = n \\cdot \\ln a$.',
+          'Nicht $(\\ln a)^n$.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['log-potenz'] },
+      ),
+      mc(
+        'Vereinfache $\\ln(e^5)$.',
+        ['$5$', '$e^5$', '$5 \\ln e$', '$\\ln 5$'],
+        0,
+        `**Ansatz:** Potenzregel + $\\ln(e) = 1$.
+
+**Rechnung:** $\\ln(e^5) = 5 \\ln e = 5 \\cdot 1 = 5$.
+
+**Probe:** $e^{\\ln(e^5)} = e^5$. ✓
+
+**Typischer Fehler:** Vergessen, dass $\\ln(e) = 1$.`,
+        [
+          'Exponent vor den Log: $5 \\ln e$.',
+          '$\\ln(e) = 1$.',
+          '$5 \\cdot 1 = 5$.',
+        ],
+        {
+          1: '$e^5$ wäre das Argument, nicht das Ergebnis.',
+          2: '$5 \\ln e = 5 \\cdot 1 = 5$ ist mathematisch gleich, aber die einfachste Form ist $5$.',
+          3: '$\\ln 5$ wäre die Aufgabe $\\ln(5)$, nicht $\\ln(e^5)$.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['log-potenz'] },
+      ),
+      ni(
+        'Bestimme $\\log_2(8^3)$ als ganze Zahl.',
+        9, 0, '',
+        `**Ansatz:** Potenzregel: $\\log_2(8^3) = 3 \\log_2(8)$.
+
+**Rechnung:** $\\log_2(8) = 3$. $3 \\cdot 3 = 9$.
+
+**Probe:** $8^3 = 512 = 2^9$. ✓
+
+**Typischer Fehler:** Potenzregel mit Multiplikationsregel verwechseln.`,
+        [
+          'Potenzregel.',
+          '$\\log_2(8) = 3$.',
+          '$3 \\cdot 3 = 9$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['log-potenz'] },
+      ),
+      mc(
+        'Ein Schüler schreibt $\\ln(x^3) = 3^{\\ln x}$. Wo liegt der Fehler?',
+        [
+          'Potenzregel: $\\ln(x^n) = n \\cdot \\ln x$ — der Exponent wird ein FAKTOR, nicht Basis einer Potenz.',
+          'Korrekt wäre $\\ln(3x)$.',
+          'Der Ausdruck ist korrekt.',
+          '$x$ müsste negativ sein.',
+        ],
+        0,
+        `**Ansatz:** Verwechslung: Exponent wird zum Multiplikator, nicht zur Basis einer neuen Potenz.
+
+**Rechnung:** Korrekt: $\\ln(x^3) = 3 \\ln x$.
+
+**Probe:** $x=e$: $\\ln(e^3) = 3$. Korrekt: $3 \\ln e = 3$. Schüler: $3^{\\ln e} = 3^1 = 3$ zufällig gleich! Aber $x=e^2$: $\\ln(e^6) = 6$. Korrekt: $3 \\cdot 2 = 6$. Schüler: $3^2 = 9 \\neq 6$.
+
+**Typischer Fehler:** Potenzregel völlig falsch verstanden.`,
+        [
+          'Was passiert mit dem Exponenten?',
+          'Er wird ein Faktor VOR dem Logarithmus.',
+          'Zahlentest mit $x = e^2$.',
+        ],
+        {
+          1: 'Das wäre $\\ln(3x) = \\ln 3 + \\ln x$ — ganz andere Struktur.',
+          2: 'Zahlentest mit $x = e^2$ widerlegt.',
+          3: 'Logarithmus ist für alle $x > 0$ definiert.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['log-potenz'] },
+      ),
+      ni(
+        'Vereinfache $\\ln(a^2 b^3) - \\ln(a b)$ und drücke das Ergebnis als Faktor$\\cdot \\ln a +$ Faktor$\\cdot \\ln b$ aus. Gib den Koeffizienten von $\\ln b$ an.',
+        2, 0, '',
+        `**Ansatz:** Quotientenregel + Potenzregel + Produktregel zusammen.
+
+**Rechnung:** $\\ln(a^2 b^3) - \\ln(ab) = \\ln\\dfrac{a^2 b^3}{ab} = \\ln(a b^2) = \\ln a + 2\\ln b$.
+
+**Probe:** Koeffizient von $\\ln a$ ist $1$, von $\\ln b$ ist $2$.
+
+**Typischer Fehler:** Exponenten nicht zu Faktoren ziehen.`,
+        [
+          'Quotientenregel zuerst.',
+          'Dann kürzen.',
+          'Dann Potenz- und Produktregel.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['log-potenz', 'log-produkt'] },
+      ),
+    ],
+    // [4] Basiswechsel: log_b(x) = ln(x) / ln(b)
+    4: [
+      tf(
+        'Es gilt $\\log_b(x) = \\dfrac{\\ln(x)}{\\ln(b)}$.',
+        true,
+        `**Ansatz:** Basiswechsel — damit kann man jeden Logarithmus auf $\\ln$ oder $\\log_{10}$ umrechnen.
+
+**Rechnung:** $\\log_b x = y \\iff b^y = x \\iff y \\ln b = \\ln x \\iff y = \\ln x / \\ln b$.
+
+**Probe:** $\\log_2(8) = \\ln(8)/\\ln(2) \\approx 2{,}079/0{,}693 = 3$. ✓
+
+**Typischer Fehler:** Basis und Argument im Bruch vertauschen.`,
+        [
+          'Wofür ist der Basiswechsel nützlich?',
+          'Taschenrechner hat meist nur $\\ln$ und $\\log$.',
+          'Formel: $\\ln x / \\ln b$.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['log-basiswechsel'] },
+      ),
+      mc(
+        'Schreibe $\\log_5(125)$ mit $\\ln$.',
+        ['$\\dfrac{\\ln(125)}{\\ln(5)}$', '$\\dfrac{\\ln(5)}{\\ln(125)}$', '$\\ln(125) \\cdot \\ln(5)$', '$\\ln(125) - \\ln(5)$'],
+        0,
+        `**Ansatz:** $\\log_b x = \\ln x / \\ln b$ — Basis unten.
+
+**Rechnung:** $\\log_5(125) = \\ln(125)/\\ln(5)$.
+
+**Probe:** $5^3 = 125$, also $\\log_5(125) = 3$. $\\ln(125)/\\ln(5) \\approx 4{,}828/1{,}609 = 3$. ✓
+
+**Typischer Fehler:** Basis und Argument vertauschen.`,
+        [
+          'Basis wandert in den Nenner.',
+          'Argument bleibt im Zähler.',
+          '$\\log_b x = \\ln x / \\ln b$.',
+        ],
+        {
+          1: 'Basis und Argument vertauscht.',
+          2: 'Multiplikation ist falsch.',
+          3: 'Subtraktion wäre $\\ln(x/b)$, nicht der Basiswechsel.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['log-basiswechsel'] },
+      ),
+      ni(
+        'Berechne $\\log_5(125)$ als ganze Zahl.',
+        3, 0, '',
+        `**Ansatz:** Direkt oder per Basiswechsel.
+
+**Rechnung:** $5^3 = 125$, also $\\log_5(125) = 3$.
+
+**Probe:** Basiswechsel: $\\ln(125)/\\ln(5) \\approx 4{,}828/1{,}609 = 3$. ✓
+
+**Typischer Fehler:** Basiswechsel verwenden, wenn direkte Erkenntnis einfacher ist.`,
+        [
+          '$5^? = 125$.',
+          '$5 \\cdot 5 = 25$, $25 \\cdot 5 = 125$.',
+          'Antwort: $3$.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['log-basiswechsel'] },
+      ),
+      mc(
+        'Ein Schüler schreibt $\\log_2(16) = \\ln(2)/\\ln(16)$. Wo liegt der Fehler?',
+        [
+          'Basiswechsel: Basis $b$ kommt in den NENNER, Argument $x$ in den Zähler: $\\ln(16)/\\ln(2) = 4$.',
+          'Basiswechsel ist unnötig — direkt $16/2 = 8$.',
+          'Es ist korrekt.',
+          'Die Basis muss $10$ sein.',
+        ],
+        0,
+        `**Ansatz:** Nenner = Logarithmus der Basis.
+
+**Rechnung:** Korrekt: $\\log_2(16) = \\ln(16)/\\ln(2) = 4$ (da $2^4 = 16$).
+
+**Probe:** Schülerrechnung: $\\ln 2 / \\ln 16 \\approx 0{,}693/2{,}773 = 0{,}25 = 1/4$ — das ist der Kehrwert.
+
+**Typischer Fehler:** Zähler und Nenner vertauscht.`,
+        [
+          'Wo steht die Basis in der Formel?',
+          'Basis im Nenner.',
+          'Zahlentest: Was ist $\\log_2(16)$?',
+        ],
+        {
+          1: '$16/2 = 8$ ist Division, kein Logarithmus.',
+          2: 'Zahlentest widerlegt sofort.',
+          3: 'Der Basiswechsel funktioniert mit jeder Basis.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['log-basiswechsel'] },
+      ),
+      ni(
+        'Eine radioaktive Substanz hat Halbwertszeit $T_{1/2} = 10\\,\\text{Jahre}$. Nach wie vielen Jahren sind nur noch $12{,}5\\%$ übrig? (ganze Zahl)',
+        30, 0, '',
+        `**Ansatz:** $12{,}5\\% = 1/8 = (1/2)^3$. Also 3 Halbwertszeiten.
+
+**Rechnung:** $3 \\cdot 10\\,\\text{Jahre} = 30\\,\\text{Jahre}$.
+
+**Probe:** Formel: $N(t) = N_0 (1/2)^{t/T}$. $t = T \\cdot \\log_{1/2}(0{,}125) = 10 \\cdot 3 = 30$.
+
+**Typischer Fehler:** $12{,}5\\%$ falsch zerlegen und andere Halbwertszeiten rechnen.`,
+        [
+          '$12{,}5\\% = 1/8$.',
+          '$1/8 = (1/2)^?$.',
+          '$3$ Halbwertszeiten.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['log-basiswechsel'] },
+      ),
+    ],
+    // [5] Summen-Falle: ln(a+b) ≠ ln(a) + ln(b)
+    5: [
+      tf(
+        'Es gilt $\\ln(a+b) = \\ln(a) + \\ln(b)$ für alle $a, b > 0$.',
+        false,
+        `**Ansatz:** Produktregel gilt nur für PRODUKT, nicht Summe.
+
+**Rechnung:** Gegenbeispiel: $\\ln(1 + 1) = \\ln(2) \\approx 0{,}693$, aber $\\ln(1) + \\ln(1) = 0$. Ungleich.
+
+**Probe:** $\\ln$ ist nicht linear.
+
+**Typischer Fehler:** Distributivgesetz auf Logarithmus übertragen.`,
+        [
+          'Was passiert bei $a = b = 1$?',
+          '$\\ln(2)$ vs. $\\ln(1) + \\ln(1)$.',
+          'Logarithmus ist nicht linear.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['log-summe-nein'] },
+      ),
+      mc(
+        'Welche Umformung ist KORREKT?',
+        [
+          '$\\ln(ab) = \\ln a + \\ln b$',
+          '$\\ln(a+b) = \\ln a + \\ln b$',
+          '$\\ln(a) + \\ln(b) = \\ln(a+b)$',
+          '$\\ln(a/b) = \\ln a \\cdot \\ln b$',
+        ],
+        0,
+        `**Ansatz:** Produktregel vs. Summen-Falle.
+
+**Rechnung:** $\\ln(ab) = \\ln a + \\ln b$ ist die Produktregel. Die anderen sind falsch.
+
+**Probe:** $\\ln(6) = \\ln(2) + \\ln(3) \\approx 1{,}792$. ✓
+
+**Typischer Fehler:** Produkt- und Additionsregel verwechseln.`,
+        [
+          'Produkt IN dem Log → Summe der Logs.',
+          'Summe IN dem Log bleibt stehen.',
+          'Keine Linearität.',
+        ],
+        {
+          1: 'Falsch — $\\ln(a+b) \\neq \\ln a + \\ln b$.',
+          2: 'Rückwärts dieselbe falsche Regel.',
+          3: 'Quotient wird zu Differenz, nicht Produkt.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['log-summe-nein'] },
+      ),
+      mc(
+        'Welche Umformung ist zulässig? $\\ln(3 + 5) = ?$',
+        [
+          'Nicht vereinfachbar — bleibt $\\ln(8)$.',
+          '$\\ln(3) + \\ln(5) = \\ln(15)$.',
+          '$\\ln(3) \\cdot \\ln(5)$.',
+          '$3 \\ln(5)$.',
+        ],
+        0,
+        `**Ansatz:** Summen-Falle — keine Vereinfachung möglich.
+
+**Rechnung:** $\\ln(3+5) = \\ln(8)$. Mehr geht nicht direkt.
+
+**Probe:** Man könnte $\\ln(8) = \\ln(2^3) = 3\\ln(2)$ schreiben — also die Argumente NACH Ausrechnen der Summe vereinfachen.
+
+**Typischer Fehler:** Produktregel auf Summe anwenden.`,
+        [
+          'Summe IN dem Log.',
+          'Keine direkte Umformung.',
+          'Zuerst Summe ausrechnen, dann evtl. vereinfachen.',
+        ],
+        {
+          1: 'Produktregel gilt für Multiplikation, nicht Addition.',
+          2: 'Das ist keine gültige Regel.',
+          3: '$3 \\ln(5)$ wäre $\\ln(5^3) = \\ln(125)$, nicht $\\ln(8)$.',
+        },
+        { stage: 'apply-independent', subGoal: 5, uses: ['log-summe-nein'] },
+      ),
+      mc(
+        'Ein Schüler zerlegt $\\ln(7) = \\ln(3) + \\ln(4)$ mit der Begründung "$3 + 4 = 7$". Wo liegt der Fehler?',
+        [
+          'Die Produktregel gilt nur für $\\ln(3 \\cdot 4)$, nicht $\\ln(3 + 4)$. $\\ln(3) + \\ln(4) = \\ln(12)$, nicht $\\ln(7)$.',
+          'Er hätte $7 = 3 \\cdot 4 - 5$ schreiben müssen.',
+          'Der Schüler hat recht.',
+          'Die Logarithmen müssen gleich sein.',
+        ],
+        0,
+        `**Ansatz:** $\\ln(a) + \\ln(b) = \\ln(a \\cdot b)$, nicht $\\ln(a + b)$.
+
+**Rechnung:** $\\ln(3) + \\ln(4) = \\ln(12) \\neq \\ln(7)$.
+
+**Probe:** $\\ln(7) \\approx 1{,}946$, $\\ln(12) \\approx 2{,}485$. Ungleich.
+
+**Typischer Fehler:** Addition im Argument als Multiplikation behandeln.`,
+        [
+          'Welche Operation ergibt die Summe $\\ln a + \\ln b$?',
+          'Logarithmus des PRODUKTS, nicht der Summe.',
+          'Zahlentest.',
+        ],
+        {
+          1: 'Das wäre gesucht, aber die Umformung ist trotzdem falsch.',
+          2: 'Zahlentest zeigt Ungleichheit.',
+          3: '"Müssen gleich sein" ist keine Regel.',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['log-summe-nein'] },
+      ),
+      matching(
+        'Ordne jede Umformung als "korrekt" oder "falsch" zu.',
+        [
+          { left: '$\\ln(ab) = \\ln a + \\ln b$',   right: 'korrekt (Produktregel)' },
+          { left: '$\\ln(a/b) = \\ln a - \\ln b$', right: 'korrekt (Quotientenregel)' },
+          { left: '$\\ln(a + b) = \\ln a + \\ln b$', right: 'falsch (Summen-Falle)' },
+          { left: '$\\ln(a^n) = n \\ln a$',          right: 'korrekt (Potenzregel)' },
+        ],
+        `**Ansatz:** Die drei gültigen Logarithmusgesetze + die Summen-Falle als Kontrast.
+
+**Rechnung:** Produkt→Summe, Quotient→Differenz, Potenz→Faktor. Summe im Argument: **KEINE** Vereinfachung.
+
+**Probe:** Jede Regel mit Zahlen testbar.
+
+**Typischer Fehler:** Summen-Falle als "vierte Regel" missverstehen.`,
+        [
+          'Produkt ↔ Summe.',
+          'Quotient ↔ Differenz.',
+          'Potenz ↔ Faktor.',
+          'Summe bleibt unverändert.',
+        ],
+        { stage: 'transfer', subGoal: 5, uses: ['log-summe-nein', 'log-produkt'] },
+      ),
+    ],
+    // [6] Exp-Log-Umkehrung: e^{ln x} = x, ln(e^x) = x
+    6: [
+      tf(
+        'Es gilt $e^{\\ln(x)} = x$ für alle $x > 0$.',
+        true,
+        `**Ansatz:** Umkehrfunktions-Identität: $\\exp$ und $\\ln$ sind Umkehrungen.
+
+**Rechnung:** $\\ln(x) = y \\iff e^y = x$. Also $e^{\\ln x} = e^y = x$.
+
+**Probe:** $e^{\\ln 5} = 5$. ✓
+
+**Typischer Fehler:** Denken, die Funktionen heben sich nicht vollständig auf.`,
+        [
+          '$\\ln$ und $\\exp$ sind Umkehrfunktionen.',
+          'Zusammenhang aus der Definition.',
+          'Zahlentest mit $x=5$.',
+        ],
+        { stage: 'recognize', subGoal: 6, uses: ['log-umkehr'] },
+      ),
+      mc(
+        'Vereinfache $\\ln(e^7)$.',
+        ['$7$', '$e$', '$e^7$', 'keine Vereinfachung möglich'],
+        0,
+        `**Ansatz:** $\\ln(e^x) = x$.
+
+**Rechnung:** $\\ln(e^7) = 7$.
+
+**Probe:** $e^7 \\approx 1097$; $\\ln(1097) \\approx 7$. ✓
+
+**Typischer Fehler:** Funktionen heben nicht aufeinander auf.`,
+        [
+          'Umkehr-Identität anwenden.',
+          '$\\ln(e^x) = x$.',
+          'Einfach $7$.',
+        ],
+        {
+          1: '$e$ wäre $\\ln(e^1)$.',
+          2: '$e^7$ ist das Argument — $\\ln$ "nimmt den Exponenten heraus".',
+          3: 'Doch — Umkehrung macht es sehr einfach.',
+        },
+        { stage: 'apply-guided', subGoal: 6, uses: ['log-umkehr'] },
+      ),
+      ni(
+        'Löse $e^x = 5$ nach $x$. Gib das Ergebnis auf 3 Dezimalen an.',
+        1.609, 0.01, '',
+        `**Ansatz:** Logarithmieren beider Seiten: $\\ln(e^x) = \\ln(5)$, also $x = \\ln(5)$.
+
+**Rechnung:** $x = \\ln(5) \\approx 1{,}609$.
+
+**Probe:** $e^{1{,}609} \\approx 5$. ✓
+
+**Typischer Fehler:** $x = 5/e$ rechnen.`,
+        [
+          'Beide Seiten logarithmieren.',
+          '$\\ln(e^x) = x$.',
+          '$x = \\ln(5)$.',
+        ],
+        { stage: 'apply-independent', subGoal: 6, uses: ['log-umkehr'] },
+      ),
+      mc(
+        'Ein Schüler löst $e^{\\ln(x)} = 7$ als $x = e^7$. Wo liegt der Fehler?',
+        [
+          'Die Umkehr-Identität vereinfacht die linke Seite sofort: $e^{\\ln x} = x$. Also $x = 7$, nicht $e^7$.',
+          'Er hätte beide Seiten quadrieren müssen.',
+          'Er hat recht.',
+          'Die Gleichung ist unlösbar.',
+        ],
+        0,
+        `**Ansatz:** $e$ und $\\ln$ heben sich gegenseitig auf.
+
+**Rechnung:** $e^{\\ln x} = x$. Also $x = 7$ direkt.
+
+**Probe:** $e^{\\ln 7} = 7$. ✓ Schülerlösung $x = e^7 \\approx 1097$, dann $\\ln(1097) \\approx 7$, $e^7 \\neq 7$.
+
+**Typischer Fehler:** Umkehr-Identität übersehen und mühsam rechnen.`,
+        [
+          '$e^{\\ln(x)} = ?$',
+          'Funktionen heben sich auf.',
+          'Zahlentest.',
+        ],
+        {
+          1: 'Quadrieren ist keine Umkehrung hier.',
+          2: 'Die Umkehr-Identität macht die Rechnung trivial.',
+          3: 'Gleichung ist perfekt lösbar.',
+        },
+        { stage: 'error-analysis', subGoal: 6, uses: ['log-umkehr'] },
+      ),
+      ni(
+        'Löse $e^{2x} = 64$ nach $x$. Nutze $\\ln(64) = 6\\ln(2)$. Gib die Antwort als Bruch (auf 3 Dezimalen umgerechnet).',
+        2.079, 0.01, '',
+        `**Ansatz:** Logarithmieren: $2x = \\ln(64)$.
+
+**Rechnung:** $2x = 6\\ln(2) \\approx 4{,}159$. $x \\approx 2{,}079$.
+
+**Probe:** $e^{2 \\cdot 2{,}079} = e^{4{,}159} \\approx 64$. ✓
+
+**Typischer Fehler:** Potenzregel vergessen: $\\ln(64)$ ohne Zerlegung.`,
+        [
+          'Beide Seiten logarithmieren.',
+          '$2x = \\ln(64) = 6\\ln 2$.',
+          '$x = 3\\ln 2 \\approx 2{,}079$.',
+        ],
+        { stage: 'transfer', subGoal: 6, uses: ['log-umkehr', 'log-potenz'] },
+      ),
+    ],
+  },
+
 }
