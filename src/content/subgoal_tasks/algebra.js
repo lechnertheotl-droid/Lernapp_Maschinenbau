@@ -8519,4 +8519,1926 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
     ],
   },
 
+  // ───────────────────────────────────────────────────────────────────────
+  // alg-4-1 — Prüfung: Algebra-Grundlagen (5 SGs, 25 Aufgaben)
+  // Alle Aufgaben mit [PRÜFUNG] -Prefix.
+  // ───────────────────────────────────────────────────────────────────────
+  'alg-4-1': {
+    // [0] Diskriminante
+    0: [
+      tf(
+        '[PRÜFUNG] Für $D > 0$ hat die quadratische Gleichung $ax^2 + bx + c = 0$ zwei verschiedene reelle Lösungen.',
+        true,
+        `**Ansatz:** Diskriminantenfall prüfen.
+
+**Rechnung:** $D = b^2 - 4ac > 0 \\Rightarrow \\sqrt{D}$ reell, $\\pm\\sqrt{D}$ liefert zwei verschiedene Lösungen.
+
+**Probe:** $x^2 - 5x + 6$: $D = 25 - 24 = 1$, zwei Lösungen ($2, 3$). ✓
+
+**Typischer Fehler:** $D = 0$ als "zwei" zählen.`,
+        [
+          'Diskriminante.',
+          '$D > 0$ Fall.',
+          'Zwei verschiedene Lösungen.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['pr-diskriminante'] },
+      ),
+      mc(
+        '[PRÜFUNG] Wie viele reelle Lösungen hat $2x^2 + 3x + 5 = 0$?',
+        ['Keine', 'Eine doppelte', 'Zwei verschiedene', 'Unendlich viele'],
+        0,
+        `**Ansatz:** $D$ berechnen.
+
+**Rechnung:** $D = 9 - 40 = -31 < 0$.
+
+**Probe:** Keine reelle Lösung.
+
+**Typischer Fehler:** Vorzeichen von $D$ ignorieren.`,
+        [
+          '$D = b^2 - 4ac$.',
+          '$9 - 40 = -31$.',
+          '$D < 0$: keine reelle Lösung.',
+        ],
+        {
+          1: '$D \\neq 0$.',
+          2: '$D < 0$, also keine.',
+          3: 'Quadratisch: max $2$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['pr-diskriminante'] },
+      ),
+      ni(
+        '[PRÜFUNG] Berechne die Diskriminante von $x^2 + 4x - 5 = 0$.',
+        36, 0, '',
+        `**Ansatz:** $D = b^2 - 4ac$.
+
+**Rechnung:** $a=1, b=4, c=-5$. $D = 16 - 4 \\cdot 1 \\cdot (-5) = 16 + 20 = 36$.
+
+**Probe:** $D > 0$: zwei reelle Lösungen ($x = 1, x = -5$).
+
+**Typischer Fehler:** Vorzeichen von $c$ falsch.`,
+        [
+          '$D = b^2 - 4ac$.',
+          '$b = 4$, also $b^2 = 16$.',
+          '$-4ac = -4(-5) = 20$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['pr-diskriminante'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Prüfling erhält für $x^2 - 6x + 9 = 0$ den Wert $D = 0$ und schreibt "keine Lösung". Wo liegt der Fehler?',
+        [
+          '$D = 0$ bedeutet EINE (doppelte) Lösung, nicht keine.',
+          'Er hätte auf komplexe Zahlen zurückgreifen müssen.',
+          'Die Rechnung ist korrekt.',
+          '$D$ müsste negativ sein.',
+        ],
+        0,
+        `**Ansatz:** $D = 0$-Fall richtig interpretieren.
+
+**Rechnung:** $x = -b/(2a) = 6/2 = 3$. Doppellösung.
+
+**Probe:** $(x-3)^2 = 0$.
+
+**Typischer Fehler:** $D = 0$ mit $D < 0$ verwechseln.`,
+        [
+          '$D = 0$ heißt was?',
+          'Doppellösung.',
+          'Parabel berührt $x$-Achse.',
+        ],
+        {
+          1: 'Reelle Doppellösung existiert.',
+          2: 'Wahre Rechnung, aber Schluss falsch.',
+          3: 'Rechnung ist korrekt.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['pr-diskriminante'] },
+      ),
+      matching(
+        '[PRÜFUNG] Ordne jedem Diskriminantenfall die Lösungsanzahl zu.',
+        [
+          { left: '$D > 0$',  right: 'zwei verschiedene reelle' },
+          { left: '$D = 0$',  right: 'eine (doppelte)' },
+          { left: '$D < 0$',  right: 'keine reelle' },
+          { left: '$D = 16$', right: 'zwei verschiedene (positive $D$)' },
+        ],
+        `**Ansatz:** Diskriminante-Fälle.
+
+**Rechnung:** Standardtabelle.
+
+**Probe:** Jede Lösung prüfen.
+
+**Typischer Fehler:** $D = 0$ als keine.`,
+        [
+          'Drei Fälle.',
+          'Vorzeichen von $D$.',
+          'Anzahl Lösungen.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['pr-diskriminante'] },
+      ),
+    ],
+    // [1] Exponentialgleichung
+    1: [
+      tf(
+        '[PRÜFUNG] Die Gleichung $a^x = b$ (mit $a, b > 0, a \\neq 1$) löst man durch Logarithmieren zu $x = \\log_a(b)$.',
+        true,
+        `**Ansatz:** Logarithmieren beider Seiten.
+
+**Rechnung:** $\\log_a(a^x) = \\log_a(b) \\Rightarrow x = \\log_a(b)$.
+
+**Probe:** $2^x = 8 \\Rightarrow x = \\log_2(8) = 3$.
+
+**Typischer Fehler:** Basis und Argument vertauschen.`,
+        [
+          'Logarithmieren.',
+          'Basis gleich.',
+          '$x = \\log_a(b)$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['pr-exp-gleichung'] },
+      ),
+      mc(
+        '[PRÜFUNG] Löse $3^x = 81$ nach $x$.',
+        ['$4$', '$27$', '$\\log(81/3)$', '$\\sqrt[3]{81}$'],
+        0,
+        `**Ansatz:** $3^x = 81$ als Potenz von $3$ erkennen.
+
+**Rechnung:** $81 = 3^4$. Also $x = 4$.
+
+**Probe:** $3^4 = 81$ ✓.
+
+**Typischer Fehler:** Division rechnen.`,
+        [
+          '$81$ als Potenz von $3$.',
+          '$3 \\cdot 3 \\cdot 3 \\cdot 3 = 81$.',
+          '$x = 4$.',
+        ],
+        {
+          1: 'Division ist nicht Logarithmus.',
+          2: 'Verwirrt.',
+          3: 'Wurzel ist falsche Operation.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['pr-exp-gleichung'] },
+      ),
+      ni(
+        '[PRÜFUNG] Löse $e^x = 10$ und gib $x$ auf 3 Dezimalen an.',
+        2.303, 0.01, '',
+        `**Ansatz:** $x = \\ln(10)$.
+
+**Rechnung:** $\\ln(10) \\approx 2.303$.
+
+**Probe:** $e^{2.303} \\approx 10$ ✓.
+
+**Typischer Fehler:** $\\log_{10}(e) = 0.434$ nehmen.`,
+        [
+          'Logarithmieren.',
+          '$\\ln(e^x) = x$.',
+          '$x = \\ln 10$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['pr-exp-gleichung'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Prüfling löst $2^x = -4$ und erhält $x = \\log_2(-4)$. Wo liegt der Fehler?',
+        [
+          '$2^x > 0$ für alle $x$ — die Gleichung hat KEINE reelle Lösung.',
+          'Er hätte $\\log_{-2}(4)$ schreiben müssen.',
+          'Alles korrekt.',
+          'Die Gleichung hat $x = -2$.',
+        ],
+        0,
+        `**Ansatz:** Wertebereich von $a^x$ beachten.
+
+**Rechnung:** $2^x \\in (0, \\infty)$, niemals negativ.
+
+**Probe:** Keine reelle Lösung.
+
+**Typischer Fehler:** Existenzbereich ignorieren.`,
+        [
+          'Wertebereich $a^x$?',
+          'Immer positiv.',
+          '$-4$ nicht im Wertebereich.',
+        ],
+        {
+          1: 'Basis muss positiv sein.',
+          2: 'Keine Lösung.',
+          3: '$2^{-2} = 1/4$, nicht $-4$.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['pr-exp-gleichung'] },
+      ),
+      sorting(
+        '[PRÜFUNG] Bringe die Schritte zur Lösung von $2 \\cdot 3^x = 54$ in die richtige Reihenfolge.',
+        [
+          'Beide Seiten durch $2$: $3^x = 27$',
+          'Als Potenz von $3$ erkennen: $27 = 3^3$',
+          'Exponenten vergleichen: $x = 3$',
+        ],
+        [0, 1, 2],
+        `**Ansatz:** Erst isolieren, dann logarithmieren.
+
+**Rechnung:** $x = 3$.
+
+**Probe:** $2 \\cdot 3^3 = 2 \\cdot 27 = 54$ ✓.
+
+**Typischer Fehler:** Direkt logarithmieren ohne $2$ zu eliminieren.`,
+        [
+          'Erst Koeffizient isolieren.',
+          'Dann vergleichen.',
+          'Einfach, wenn Basen passen.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['pr-exp-gleichung'] },
+      ),
+    ],
+    // [2] Wurzelgleichung
+    2: [
+      tf(
+        '[PRÜFUNG] Wurzelgleichungen löst man durch Quadrieren. Danach ist die Probe zwingend nötig.',
+        true,
+        `**Ansatz:** Quadrieren ist keine Äquivalenzumformung.
+
+**Rechnung:** Beispiel $\\sqrt{x} = -3$: Quadrieren gibt $x = 9$, aber $\\sqrt{9} = 3 \\neq -3$ → Scheinlösung.
+
+**Probe:** Rückeinsetzen in Original-Gleichung.
+
+**Typischer Fehler:** Probe weglassen.`,
+        [
+          'Quadrieren erzeugt Scheinlösungen.',
+          'Probe Pflicht.',
+          'Original-Gleichung.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['pr-wurzel-gleichung'] },
+      ),
+      mc(
+        '[PRÜFUNG] Löse $\\sqrt{x + 5} = 3$.',
+        ['$x = 4$', '$x = -2$', '$x = 3$', '$x = 14$'],
+        0,
+        `**Ansatz:** Quadrieren + Probe.
+
+**Rechnung:** $x + 5 = 9 \\Rightarrow x = 4$.
+
+**Probe:** $\\sqrt{9} = 3$ ✓.
+
+**Typischer Fehler:** Nicht quadrieren.`,
+        [
+          'Beide Seiten quadrieren.',
+          '$x + 5 = 9$.',
+          '$x = 4$, Probe bestätigt.',
+        ],
+        {
+          1: 'Negativ — Scheinlösung möglich, aber hier $x = -2$: $\\sqrt{3}$, nicht $3$.',
+          2: 'Nicht Lösung.',
+          3: 'Nicht Lösung.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['pr-wurzel-gleichung'] },
+      ),
+      ni(
+        '[PRÜFUNG] Löse $\\sqrt{2x - 3} = 5$.',
+        14, 0, '',
+        `**Ansatz:** Quadrieren.
+
+**Rechnung:** $2x - 3 = 25 \\Rightarrow 2x = 28 \\Rightarrow x = 14$.
+
+**Probe:** $\\sqrt{25} = 5$ ✓.
+
+**Typischer Fehler:** Quadrieren falsch.`,
+        [
+          'Quadrieren: $2x - 3 = 25$.',
+          '$2x = 28$.',
+          '$x = 14$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['pr-wurzel-gleichung'] },
+      ),
+      mc(
+        '[PRÜFUNG] Bei $\\sqrt{x} = x - 6$ ergibt Quadrieren $x = x^2 - 12x + 36$. Ein Prüfling erhält $x = 4$ und $x = 9$ und gibt beide als Lösung an. Wo liegt der Fehler?',
+        [
+          'Probe zeigt: $\\sqrt{4} = 2 \\neq 4 - 6 = -2$ — $x = 4$ ist Scheinlösung. Nur $x = 9$ ist Lösung.',
+          'Beide Lösungen sind korrekt.',
+          'Er hätte nur $x = 4$ nehmen sollen.',
+          'Die Gleichung hat keine Lösung.',
+        ],
+        0,
+        `**Ansatz:** Probe eliminiert Scheinlösungen.
+
+**Rechnung:** $x = 9$: $\\sqrt{9} = 3 = 9 - 6 = 3$ ✓. $x = 4$: $\\sqrt{4} = 2 \\neq -2 = 4 - 6$ ✗.
+
+**Probe:** Nur $x = 9$ valide.
+
+**Typischer Fehler:** Ohne Probe.`,
+        [
+          'Probe bei jeder Kandidatenlösung.',
+          'Wurzel nur positiv.',
+          'Rechte Seite muss $\\geq 0$ sein.',
+        ],
+        {
+          1: 'Nur $x = 9$ ist Lösung.',
+          2: '$x = 9$ ist valide, $x = 4$ nicht.',
+          3: '$x = 9$ löst die Gleichung.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['pr-wurzel-gleichung'] },
+      ),
+      sorting(
+        '[PRÜFUNG] Bringe die Lösungsschritte für $\\sqrt{3x + 1} = x - 1$ in die richtige Reihenfolge.',
+        [
+          'Definitionsbereich: $3x + 1 \\geq 0$ UND $x - 1 \\geq 0$, also $x \\geq 1$',
+          'Beide Seiten quadrieren: $3x + 1 = x^2 - 2x + 1$',
+          'Auf Null bringen: $x^2 - 5x = 0$, also $x(x-5) = 0$',
+          'Kandidaten: $x = 0$ (außerhalb Def.bereich) und $x = 5$',
+          'Probe bei $x = 5$: $\\sqrt{16} = 4 = 5 - 1$ ✓',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Systematisch mit Probe.
+
+**Rechnung:** $x = 5$.
+
+**Probe:** ✓.
+
+**Typischer Fehler:** Probe-Schritt überspringen.`,
+        [
+          'Def.bereich zuerst.',
+          'Quadrieren.',
+          'Probe Pflicht.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['pr-wurzel-gleichung'] },
+      ),
+    ],
+    // [3] Dimensionslose Argumente
+    3: [
+      tf(
+        '[PRÜFUNG] Argumente von $\\ln$, $\\log$ und $e^{(\\cdot)}$ müssen dimensionslos sein.',
+        true,
+        `**Ansatz:** Log-Funktionen sind transzendent — nur reine Zahlen.
+
+**Rechnung:** $\\ln(100 \\text{m})$ ist nicht definiert. Stattdessen $\\ln(100 \\text{m} / 1 \\text{m}) = \\ln(100)$.
+
+**Probe:** Einheitencheck in Formeln.
+
+**Typischer Fehler:** Dimensionsbehaftete Argumente akzeptieren.`,
+        [
+          'Einheitencheck.',
+          'Log-Argument?',
+          'Immer dimensionslos.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['pr-dimensionslos'] },
+      ),
+      mc(
+        '[PRÜFUNG] Welche Formel ist physikalisch KORREKT formuliert?',
+        [
+          '$\\text{pH} = -\\log_{10}(c / c_0)$ mit $c_0 = 1\\,\\text{mol/L}$',
+          '$\\text{pH} = -\\log_{10}(\\text{mol/L})$',
+          '$\\text{pH} = -\\log_{10}(100\\,\\text{mol/L})$',
+          '$\\text{pH} = \\text{mol/L}$',
+        ],
+        0,
+        `**Ansatz:** Log-Argument dimensionslos.
+
+**Rechnung:** Normierung mit Referenzkonzentration.
+
+**Probe:** Standardform in Chemie.
+
+**Typischer Fehler:** Einheit im Log.`,
+        [
+          'Referenzgröße nötig.',
+          'Verhältnis ist dimensionslos.',
+          '$c/c_0$.',
+        ],
+        {
+          1: 'Einheit im Log — falsch.',
+          2: 'Nicht sinnvoll.',
+          3: 'pH ist keine Konzentration.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['pr-dimensionslos'] },
+      ),
+      mc(
+        '[PRÜFUNG] Was ist die korrekte Form für Dezibel $L$ bei Leistung $P$?',
+        [
+          '$L = 10 \\log_{10}(P/P_0)$ mit Referenz $P_0$',
+          '$L = 10 \\log_{10}(P)$ direkt in Watt',
+          '$L = P/P_0$',
+          '$L = \\log(P) \\cdot 10$',
+        ],
+        0,
+        `**Ansatz:** Verhältnis zur Referenzleistung.
+
+**Rechnung:** $L = 10 \\log_{10}(P/P_0)$ dB.
+
+**Probe:** Standard in Akustik/Elektrotechnik.
+
+**Typischer Fehler:** Referenz weglassen.`,
+        [
+          'Verhältnis.',
+          'Dimensionslos.',
+          'Referenz entscheidend.',
+        ],
+        {
+          1: 'Ohne Referenz geht nicht.',
+          2: 'Das ist nicht dB.',
+          3: 'Referenz fehlt.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['pr-dimensionslos'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Prüfling schreibt in der Halbwertszeit-Formel $N(t) = N_0 e^{-kt}$ mit $k = 0.05\\,\\text{pro Jahr}$ und $t$ in Jahren. Ist das korrekt dimensioniert?',
+        [
+          'Ja — $kt$ ist dimensionslos (pro Jahr $\\cdot$ Jahr).',
+          'Nein — $k$ darf keine Einheit haben.',
+          'Nein — $t$ ist falsch.',
+          'Nein — die Gleichung ist dimensional falsch.',
+        ],
+        0,
+        `**Ansatz:** Produkt $kt$ muss dimensionslos sein.
+
+**Rechnung:** $[k] = 1/\\text{Jahr}$, $[t] = \\text{Jahr}$. Produkt: dimensionslos.
+
+**Probe:** $e^{(\\cdot)}$-Argument OK.
+
+**Typischer Fehler:** $k$ als dimensionslos annehmen.`,
+        [
+          'Produkt $kt$ betrachten.',
+          'Einheiten kürzen sich.',
+          'Dimensionslos.',
+        ],
+        {
+          1: '$k$ hat Einheit $1/\\text{Zeit}$.',
+          2: '$t$ in Zeit-Einheit ist korrekt.',
+          3: 'Dimensional korrekt.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['pr-dimensionslos'] },
+      ),
+      matching(
+        '[PRÜFUNG] Ordne jeder Größe die passende Bedingung zu.',
+        [
+          { left: '$\\ln(x)$',         right: 'nur $x > 0$, dimensionslos' },
+          { left: '$e^x$',             right: 'beliebiges reelles $x$, dimensionslos' },
+          { left: '$\\sin(x)$',        right: 'Argument in Bogenmaß (rad), dimensionslos' },
+          { left: '$\\sqrt{x}$',       right: 'nur $x \\geq 0$' },
+        ],
+        `**Ansatz:** Typische Einschränkungen.
+
+**Rechnung:** Jede Funktion hat Anforderungen.
+
+**Probe:** Standardliste.
+
+**Typischer Fehler:** Einheiten im Argument.`,
+        [
+          'Jede Funktion hat Regeln.',
+          'Transzendente Funktionen dimensionslos.',
+          'Einschränkungen prüfen.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['pr-dimensionslos'] },
+      ),
+    ],
+    // [4] Rechenweg
+    4: [
+      tf(
+        '[PRÜFUNG] In Prüfungsaufgaben ist ein klar strukturierter Rechenweg mit nummerierten Schritten wichtig für volle Punktzahl.',
+        true,
+        `**Ansatz:** Teilpunkte für Zwischenschritte.
+
+**Rechnung:** Selbst bei Endfehler gibt es Punkte für korrekte Methode.
+
+**Probe:** Übliche Klausurpraxis.
+
+**Typischer Fehler:** Nur Endergebnis hinschreiben.`,
+        [
+          'Struktur wichtig.',
+          'Teilpunkte.',
+          'Methode zählt.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['pr-rechenweg'] },
+      ),
+      mc(
+        '[PRÜFUNG] Welche Reihenfolge ist der BESTE Prüfungs-Rechenweg?',
+        [
+          'Gegeben/Gesucht → Ansatz → Rechnung → Probe',
+          'Direkt ausrechnen → Fehler suchen',
+          'Endergebnis raten → Probe',
+          'Nur Formel hinschreiben',
+        ],
+        0,
+        `**Ansatz:** Systematisches Vorgehen.
+
+**Rechnung:** Klar strukturierte Schritte.
+
+**Probe:** Standardvorgehen in Klausuren.
+
+**Typischer Fehler:** Unstrukturiertes Vorgehen.`,
+        [
+          'Systematisches Vorgehen.',
+          'Gegeben-Gesucht-Lösung-Probe.',
+          'Klare Struktur.',
+        ],
+        {
+          1: 'Unstrukturiert.',
+          2: 'Raten ist keine Methode.',
+          3: 'Nur Formel reicht nicht für Punkte.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['pr-rechenweg'] },
+      ),
+      sorting(
+        '[PRÜFUNG] Bringe die Teile eines Prüfungs-Rechenwegs in Reihenfolge.',
+        [
+          'Aufgabe zweimal lesen, Gegeben/Gesucht markieren',
+          'Ansatz/Methode wählen und begründen',
+          'Schrittweise rechnen mit nummerierten Umformungen',
+          'Probe durchführen',
+          'Ergebnis zusammenfassen mit Einheiten',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Prüfungsstrategie.
+
+**Rechnung:** Fünf systematische Schritte.
+
+**Probe:** Standardvorgehen.
+
+**Typischer Fehler:** Schritte auslassen.`,
+        [
+          'Reihenfolge wichtig.',
+          'Nichts überspringen.',
+          'Probe UND Zusammenfassung.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['pr-rechenweg'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Prüfling rechnet die Aufgabe korrekt, schreibt aber nur das Endergebnis hin. Wie wirkt sich das in der Bewertung aus?',
+        [
+          'Nur volle Punktzahl bei absolut korrektem Ergebnis; bei Fehler keine Teilpunkte.',
+          'Unstrukturierte Antwort wird automatisch ignoriert.',
+          'Keine Auswirkung — nur das Ergebnis zählt.',
+          'Die ganze Prüfung wird abgelehnt.',
+        ],
+        0,
+        `**Ansatz:** Risikoreich ohne Struktur.
+
+**Rechnung:** Bei kleinen Rechenfehlern gibt's keine Teilpunkte.
+
+**Probe:** Klausurrealität.
+
+**Typischer Fehler:** Endresultat-only-Stil.`,
+        [
+          'Teilpunkte vs. alles-oder-nichts.',
+          'Struktur zeigt Verständnis.',
+          'Sicherheit durch Vorgehen.',
+        ],
+        {
+          1: 'Überzogen — wird bewertet.',
+          2: 'Rechenweg beeinflusst Punktezahl.',
+          3: 'Prüfung wird trotzdem bewertet.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['pr-rechenweg'] },
+      ),
+      sorting(
+        '[PRÜFUNG] Bringe die Elemente einer vollständigen Lösung für $x^2 - 6x + 8 = 0$ in Reihenfolge.',
+        [
+          'Gegeben: quadratische Gleichung $x^2 - 6x + 8 = 0$',
+          'Ansatz: pq-Formel mit $p = -6, q = 8$',
+          'Rechnung: $x_{1,2} = 3 \\pm \\sqrt{9 - 8} = 3 \\pm 1$',
+          'Lösungen: $x_1 = 4, x_2 = 2$',
+          'Probe: $(x-2)(x-4) = x^2 - 6x + 8$ ✓',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Beispielhaft vollständige Lösung.
+
+**Rechnung:** Jeder Schritt klar.
+
+**Probe:** Beim Gutachter sichtbar.
+
+**Typischer Fehler:** Schritte zusammenfassen.`,
+        [
+          'Jeder Schritt sichtbar.',
+          'Systematisch.',
+          'Probe als letzter Schritt.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['pr-rechenweg'] },
+      ),
+    ],
+  },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // alg-4-2 — Prüfung: Funktionen & Anwendungen (6 SGs, 30 Aufgaben)
+  // ───────────────────────────────────────────────────────────────────────
+  'alg-4-2': {
+    // [0] Scheitelformel
+    0: [
+      tf(
+        '[PRÜFUNG] Der Scheitelpunkt einer Parabel $y = ax^2 + bx + c$ liegt bei $x_S = -b/(2a)$.',
+        true,
+        `**Ansatz:** Ableitung $= 0$: $2ax + b = 0$.
+
+**Rechnung:** $x_S = -b/(2a)$.
+
+**Probe:** $y = x^2 + 2x + 1$: $x_S = -2/2 = -1$.
+
+**Typischer Fehler:** Vorzeichen vergessen.`,
+        [
+          'Ableitung null.',
+          '$x_S = -b/(2a)$.',
+          'Minus beachten.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['pr-scheitel-formel'] },
+      ),
+      mc(
+        '[PRÜFUNG] Was ist der Scheitelpunkt von $y = 2x^2 - 8x + 3$?',
+        ['$(2, -5)$', '$(-2, 19)$', '$(4, -5)$', '$(-4, 67)$'],
+        0,
+        `**Ansatz:** $x_S = -b/(2a)$, dann $y_S$.
+
+**Rechnung:** $x_S = 8/4 = 2$. $y_S = 2(4) - 8(2) + 3 = 8 - 16 + 3 = -5$.
+
+**Probe:** $(2, -5)$.
+
+**Typischer Fehler:** Vorzeichen falsch.`,
+        [
+          '$a = 2, b = -8$.',
+          '$x_S = 8/4 = 2$.',
+          '$y_S = f(2) = -5$.',
+        ],
+        {
+          1: 'Vorzeichen von $x_S$ falsch.',
+          2: '$x_S$ falsch.',
+          3: 'Beides falsch.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['pr-scheitel-formel'] },
+      ),
+      ni(
+        '[PRÜFUNG] Berechne den $x$-Wert des Scheitelpunkts von $y = x^2 - 10x + 7$.',
+        5, 0, '',
+        `**Ansatz:** $x_S = -b/(2a)$.
+
+**Rechnung:** $x_S = 10/2 = 5$.
+
+**Probe:** Ableitung: $2x - 10 = 0 \\Rightarrow x = 5$.
+
+**Typischer Fehler:** Vorzeichen übersehen.`,
+        [
+          '$a = 1, b = -10$.',
+          '$x_S = -b/(2a) = 10/2$.',
+          '$= 5$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['pr-scheitel-formel'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Schüler berechnet für $y = -x^2 + 6x - 4$ den Scheitel bei $x_S = -6/(2 \\cdot (-1)) = 3$. Wo könnte er verunsichert sein?',
+        [
+          'Er ist korrekt — das Minus in $a = -1$ wird durch das Minus in der Formel kompensiert.',
+          'Der Scheitel müsste bei $x = -3$ sein.',
+          'Die Formel gilt nicht für negatives $a$.',
+          'Er hätte $a = 1$ verwenden müssen.',
+        ],
+        0,
+        `**Ansatz:** Vorzeichen konsequent anwenden.
+
+**Rechnung:** $a = -1, b = 6$. $x_S = -6/(-2) = 3$.
+
+**Probe:** $y_S = -9 + 18 - 4 = 5$. Maximum bei $(3, 5)$.
+
+**Typischer Fehler:** Vorzeichen-Verwirrung.`,
+        [
+          '$a$ kann negativ sein.',
+          'Parabel öffnet nach unten.',
+          'Formel gilt trotzdem.',
+        ],
+        {
+          1: 'Minus/Minus = Plus.',
+          2: 'Formel gilt für jedes $a \\neq 0$.',
+          3: '$a$ ist die Koeffizient vor $x^2$, hier $-1$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['pr-scheitel-formel'] },
+      ),
+      matching(
+        '[PRÜFUNG] Ordne jeder Parabel ihren Scheitelpunkt zu.',
+        [
+          { left: '$y = x^2$',               right: '$(0, 0)$' },
+          { left: '$y = x^2 - 4$',           right: '$(0, -4)$' },
+          { left: '$y = (x - 3)^2$',         right: '$(3, 0)$' },
+          { left: '$y = (x + 1)^2 + 5$',     right: '$(-1, 5)$' },
+        ],
+        `**Ansatz:** Scheitelform direkt ablesen.
+
+**Rechnung:** $y = (x - h)^2 + k$: Scheitel $(h, k)$.
+
+**Probe:** Standard-Form.
+
+**Typischer Fehler:** Vorzeichen von $h$ verwechseln.`,
+        [
+          'Scheitelform $y = (x-h)^2 + k$.',
+          'Scheitel $(h, k)$.',
+          'Vorzeichen beachten.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['pr-scheitel-formel'] },
+      ),
+    ],
+    // [1] Scheitelform
+    1: [
+      tf(
+        '[PRÜFUNG] Die Scheitelform $y = a(x - h)^2 + k$ entsteht durch quadratische Ergänzung aus $y = ax^2 + bx + c$.',
+        true,
+        `**Ansatz:** Standardumformung.
+
+**Rechnung:** $y = a(x^2 + (b/a)x) + c = a(x + b/(2a))^2 + c - b^2/(4a)$.
+
+**Probe:** Übereinstimmung prüfen.
+
+**Typischer Fehler:** Koeffizient $a$ vergessen.`,
+        [
+          'Quadratische Ergänzung.',
+          'Koeffizient $a$ ausklammern.',
+          'Scheitelform herstellen.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['pr-scheitel-form'] },
+      ),
+      mc(
+        '[PRÜFUNG] Welche Scheitelform hat $y = x^2 - 4x + 7$?',
+        ['$y = (x - 2)^2 + 3$', '$y = (x + 2)^2 + 7$', '$y = (x - 4)^2 + 7$', '$y = (x - 2)^2 + 7$'],
+        0,
+        `**Ansatz:** Quadratische Ergänzung.
+
+**Rechnung:** $x^2 - 4x = (x-2)^2 - 4$. Also $y = (x-2)^2 - 4 + 7 = (x-2)^2 + 3$.
+
+**Probe:** Scheitel $(2, 3)$.
+
+**Typischer Fehler:** $-4$ nicht ausgleichen.`,
+        [
+          'Halbiere $b = -4$: $h = -2$ (außen: $+2$).',
+          'Quadratische Ergänzung.',
+          'Konstante anpassen.',
+        ],
+        {
+          1: 'Vorzeichen.',
+          2: '$h$ falsch.',
+          3: 'Konstante nicht korrigiert.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['pr-scheitel-form'] },
+      ),
+      ni(
+        '[PRÜFUNG] Für $y = x^2 + 6x + 5$ ist die Scheitelform $y = (x + 3)^2 + k$. Was ist $k$?',
+        -4, 0, '',
+        `**Ansatz:** Quadratische Ergänzung.
+
+**Rechnung:** $x^2 + 6x = (x+3)^2 - 9$. $y = (x+3)^2 - 9 + 5 = (x+3)^2 - 4$.
+
+**Probe:** $k = -4$.
+
+**Typischer Fehler:** $+9$ statt $-9$.`,
+        [
+          '$h = 3$ (Halbe von $6$).',
+          '$(x+3)^2 = x^2 + 6x + 9$.',
+          'Differenz $c - 9 = -4$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['pr-scheitel-form'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Prüfling schreibt die Scheitelform von $y = x^2 - 6x + 5$ als $y = (x + 3)^2 - 4$. Wo liegt der Fehler?',
+        [
+          'Das Vorzeichen: $h$ muss POSITIV sein. Korrekt: $y = (x - 3)^2 - 4$ (Scheitel bei $(3, -4)$).',
+          'Die Konstante müsste $+4$ sein.',
+          'Alles richtig.',
+          'Der Exponent müsste $3$ sein.',
+        ],
+        0,
+        `**Ansatz:** $h$ hat entgegengesetztes Vorzeichen zu $b/2$.
+
+**Rechnung:** $b = -6$, also $h = 3$ (POSITIV).
+
+**Probe:** $y = (x-3)^2 - 4$. Nullstelle: $x = 3 \\pm 2$.
+
+**Typischer Fehler:** $h$-Vorzeichen.`,
+        [
+          'Vorzeichen von $h$ in $(x - h)^2$.',
+          '$b = -6 \\Rightarrow h = +3$.',
+          'Kontraintuitiv.',
+        ],
+        {
+          1: 'Konstante stimmt: $-4$.',
+          2: 'Zahlentest widerlegt.',
+          3: 'Exponent bleibt $2$.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['pr-scheitel-form'] },
+      ),
+      sorting(
+        '[PRÜFUNG] Bringe die Schritte der quadratischen Ergänzung für $y = x^2 + 4x - 3$ in Reihenfolge.',
+        [
+          'Gruppiere quadratische Terme: $y = (x^2 + 4x) - 3$',
+          'Quadratische Ergänzung: $y = (x + 2)^2 - 4 - 3$',
+          'Vereinfachen: $y = (x + 2)^2 - 7$',
+          'Scheitel ablesen: $(-2, -7)$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Systematisch.
+
+**Rechnung:** Scheitel $(-2, -7)$.
+
+**Probe:** $f(-2) = 4 - 8 - 3 = -7$ ✓.
+
+**Typischer Fehler:** Quadratische Ergänzung falsch.`,
+        [
+          'Gruppieren.',
+          'Ergänzen.',
+          'Vereinfachen.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['pr-scheitel-form', 'pr-scheitel-formel'] },
+      ),
+    ],
+    // [2] Umkehrfunktion praktisch
+    2: [
+      tf(
+        '[PRÜFUNG] Zur Bestimmung der Umkehrfunktion $f^{-1}$: $y = f(x)$ nach $x$ auflösen, dann Namen tauschen.',
+        true,
+        `**Ansatz:** Standardverfahren.
+
+**Rechnung:** $y = 3x + 5 \\Rightarrow x = (y-5)/3 \\Rightarrow f^{-1}(x) = (x-5)/3$.
+
+**Probe:** $f(f^{-1}(x)) = x$.
+
+**Typischer Fehler:** Namen nicht tauschen.`,
+        [
+          'Auflösen + Tauschen.',
+          'Standard.',
+          'Umkehr-Identität prüfen.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['pr-umkehr-prakt'] },
+      ),
+      mc(
+        '[PRÜFUNG] Was ist die Umkehrfunktion von $f(x) = 2x - 6$?',
+        ['$f^{-1}(x) = (x + 6)/2$', '$f^{-1}(x) = (x - 6)/2$', '$f^{-1}(x) = 2x + 6$', '$f^{-1}(x) = -2x + 6$'],
+        0,
+        `**Ansatz:** $y = 2x - 6 \\Rightarrow x = (y+6)/2$.
+
+**Rechnung:** $f^{-1}(x) = (x+6)/2$.
+
+**Probe:** $f(f^{-1}(x)) = 2(x+6)/2 - 6 = x + 6 - 6 = x$ ✓.
+
+**Typischer Fehler:** Vorzeichen.`,
+        [
+          'Schrittweise umkehren.',
+          '$-6$ wird $+6$.',
+          'Dann durch $2$ teilen.',
+        ],
+        {
+          1: 'Vorzeichen von $6$ falsch.',
+          2: '$f$ gespiegelt/skaliert, nicht umgekehrt.',
+          3: 'Vorzeichen komplett falsch.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['pr-umkehr-prakt'] },
+      ),
+      ni(
+        '[PRÜFUNG] Bestimme $f^{-1}(x)$ für $f(x) = 3x + 9$ und gib $f^{-1}(0)$ an.',
+        -3, 0, '',
+        `**Ansatz:** $y = 3x + 9 \\Rightarrow x = (y-9)/3 \\Rightarrow f^{-1}(x) = (x-9)/3$.
+
+**Rechnung:** $f^{-1}(0) = -9/3 = -3$.
+
+**Probe:** $f(-3) = -9 + 9 = 0$ ✓.
+
+**Typischer Fehler:** $(x+9)/3$.`,
+        [
+          '$f^{-1}(x) = (x - 9)/3$.',
+          '$f^{-1}(0) = -3$.',
+          'Probe bestätigt.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['pr-umkehr-prakt'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Prüfling ermittelt die Umkehrfunktion von $f(x) = x^2$ auf ganz $\\mathbb{R}$ ohne Einschränkung. Wo liegt das Problem?',
+        [
+          '$x^2$ ist nicht injektiv auf $\\mathbb{R}$ — Umkehrung erst nach Einschränkung auf $[0, \\infty)$ möglich.',
+          'Er hätte $\\pm\\sqrt{y}$ schreiben sollen.',
+          'Alles korrekt.',
+          'Die Umkehrfunktion ist nicht definiert.',
+        ],
+        0,
+        `**Ansatz:** Bijektivität prüfen.
+
+**Rechnung:** Ohne Einschränkung keine Funktion.
+
+**Probe:** Auf $[0,\\infty)$: $f^{-1}(y) = \\sqrt{y}$.
+
+**Typischer Fehler:** Bijektivität ignorieren.`,
+        [
+          'Ist $x^2$ injektiv auf $\\mathbb{R}$?',
+          'Einschränkung nötig.',
+          'Nach Einschränkung umkehrbar.',
+        ],
+        {
+          1: 'Mehrdeutige "Funktion".',
+          2: 'Nein, erst nach Einschränkung.',
+          3: 'Doch — auf eingeschränktem Bereich.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['pr-umkehr-prakt'] },
+      ),
+      sorting(
+        '[PRÜFUNG] Bringe die Schritte zur Umkehrung von $f(x) = \\dfrac{x - 2}{5}$ in Reihenfolge.',
+        [
+          'Gleichung: $y = (x - 2)/5$',
+          'Mit $5$ multiplizieren: $5y = x - 2$',
+          'Nach $x$ auflösen: $x = 5y + 2$',
+          'Namen tauschen: $f^{-1}(x) = 5x + 2$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Systematisches Umstellen.
+
+**Rechnung:** $f^{-1}(x) = 5x + 2$.
+
+**Probe:** $f(f^{-1}(x)) = (5x + 2 - 2)/5 = x$ ✓.
+
+**Typischer Fehler:** Schritte auslassen.`,
+        [
+          'Schrittweise.',
+          'Operationen umkehren.',
+          'Am Ende Namen tauschen.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['pr-umkehr-prakt'] },
+      ),
+    ],
+    // [3] Wärmeausdehnung
+    3: [
+      tf(
+        '[PRÜFUNG] Die Länge eines Metallstabs bei Temperaturänderung folgt $l(T) = l_0(1 + \\alpha \\cdot \\Delta T)$.',
+        true,
+        `**Ansatz:** Lineare thermische Ausdehnung.
+
+**Rechnung:** $\\Delta l = l_0 \\alpha \\Delta T$.
+
+**Probe:** Standardphysik.
+
+**Typischer Fehler:** $\\alpha$-Einheit falsch.`,
+        [
+          'Thermische Ausdehnung.',
+          'Linear in $T$.',
+          '$\\alpha \\Delta T$ dimensionslos.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['pr-waermeausdehnung'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Stahlstab ($\\alpha = 12 \\cdot 10^{-6} / \\text{K}$) von $l_0 = 1\\,\\text{m}$ wird um $\\Delta T = 100\\,\\text{K}$ erwärmt. Wie viel dehnt er sich aus?',
+        ['$1.2\\,\\text{mm}$', '$1.2\\,\\text{cm}$', '$0.12\\,\\text{mm}$', '$12\\,\\text{mm}$'],
+        0,
+        `**Ansatz:** $\\Delta l = l_0 \\alpha \\Delta T$.
+
+**Rechnung:** $\\Delta l = 1 \\cdot 12 \\cdot 10^{-6} \\cdot 100 = 1.2 \\cdot 10^{-3}\\,\\text{m} = 1.2\\,\\text{mm}$.
+
+**Probe:** Einheiten: $\\text{m} \\cdot 1/\\text{K} \\cdot \\text{K} = \\text{m}$ ✓.
+
+**Typischer Fehler:** Komma verschieben.`,
+        [
+          'Formel direkt anwenden.',
+          'Einheiten prüfen.',
+          'In mm umrechnen.',
+        ],
+        {
+          1: '10× zu groß.',
+          2: '10× zu klein.',
+          3: '10× zu groß.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['pr-waermeausdehnung'] },
+      ),
+      ni(
+        '[PRÜFUNG] Ein Kupferstab ($\\alpha = 16 \\cdot 10^{-6}/\\text{K}$) mit $l_0 = 2\\,\\text{m}$ wird um $50\\,\\text{K}$ erwärmt. Berechne $\\Delta l$ in mm.',
+        1.6, 0.1, '',
+        `**Ansatz:** Formel einsetzen.
+
+**Rechnung:** $\\Delta l = 2 \\cdot 16 \\cdot 10^{-6} \\cdot 50 = 1.6 \\cdot 10^{-3}\\,\\text{m} = 1.6\\,\\text{mm}$.
+
+**Probe:** Einheiten passen.
+
+**Typischer Fehler:** $\\alpha$ falsch einsetzen.`,
+        [
+          '$\\Delta l = l_0 \\alpha \\Delta T$.',
+          '$2 \\cdot 16 \\cdot 10^{-6} \\cdot 50$.',
+          'In mm.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['pr-waermeausdehnung'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Prüfling rechnet $\\alpha \\cdot T$ statt $\\alpha \\cdot \\Delta T$ und erhält falsche Ergebnisse. Wo liegt der Unterschied?',
+        [
+          'Die Ausdehnung ist PROPORTIONAL ZUR TEMPERATURÄNDERUNG, nicht zur absoluten Temperatur. Referenzzustand nötig.',
+          'Kein Unterschied.',
+          '$T$ muss in Celsius sein.',
+          '$\\alpha$ ändert sich mit $T$.',
+        ],
+        0,
+        `**Ansatz:** $\\Delta l$ bezieht sich auf Referenzlänge.
+
+**Rechnung:** $l(T) = l_0(1 + \\alpha(T - T_0))$ oder $l(T_0 + \\Delta T) = l_0 + l_0 \\alpha \\Delta T$.
+
+**Probe:** Ohne Referenzpunkt keine Aussage.
+
+**Typischer Fehler:** Temperaturdifferenz vs. absolut.`,
+        [
+          'Referenzzustand nötig.',
+          '$\\Delta T = T - T_0$.',
+          'Differenz, nicht absolut.',
+        ],
+        {
+          1: 'Großer Unterschied bei hohen $T$.',
+          2: 'Einheit egal bei DIFFERENZ.',
+          3: 'Ja, aber Näherung linear.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['pr-waermeausdehnung'] },
+      ),
+      ni(
+        '[PRÜFUNG] Eine Brücke aus Stahl ($\\alpha = 12 \\cdot 10^{-6}/\\text{K}$) ist im Winter ($-10°\\text{C}$) $100\\,\\text{m}$ lang. Wie lang ist sie bei $+30°\\text{C}$ (in m)?',
+        100.048, 0.01, '',
+        `**Ansatz:** $\\Delta T = 40\\,\\text{K}$.
+
+**Rechnung:** $\\Delta l = 100 \\cdot 12 \\cdot 10^{-6} \\cdot 40 = 4.8 \\cdot 10^{-2}\\,\\text{m} = 0.048\\,\\text{m}$. $l = 100.048\\,\\text{m}$.
+
+**Probe:** Brückenpläne berücksichtigen Dehnung.
+
+**Typischer Fehler:** $\\Delta T$ falsch.`,
+        [
+          '$\\Delta T = 30 - (-10) = 40$.',
+          'Formel.',
+          'Gesamt $l_0 + \\Delta l$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['pr-waermeausdehnung'] },
+      ),
+    ],
+    // [4] Abklingen
+    4: [
+      tf(
+        '[PRÜFUNG] Bei radioaktivem Zerfall gilt $N(t) = N_0 e^{-kt}$ mit Zerfallskonstante $k > 0$.',
+        true,
+        `**Ansatz:** Exponentieller Abfall.
+
+**Rechnung:** $N$ nimmt exponentiell ab.
+
+**Probe:** $N(0) = N_0$, $\\lim_{t \\to \\infty} N(t) = 0$.
+
+**Typischer Fehler:** $k$-Vorzeichen.`,
+        [
+          'Exponentialfunktion mit negativem Exponenten.',
+          '$k > 0$: Abklingen.',
+          '$N_0$ Anfangsmenge.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['pr-abklingen'] },
+      ),
+      mc(
+        '[PRÜFUNG] Für $N(t) = N_0 e^{-kt}$ ist die Halbwertszeit $T_{1/2}$:',
+        ['$T_{1/2} = \\ln(2)/k$', '$T_{1/2} = k / \\ln(2)$', '$T_{1/2} = 2/k$', '$T_{1/2} = k \\cdot 2$'],
+        0,
+        `**Ansatz:** $N(T_{1/2}) = N_0/2$.
+
+**Rechnung:** $e^{-kT_{1/2}} = 1/2 \\Rightarrow kT_{1/2} = \\ln 2 \\Rightarrow T_{1/2} = \\ln 2/k$.
+
+**Probe:** Einheit: $1/k$ hat Zeit-Einheit.
+
+**Typischer Fehler:** Zähler/Nenner.`,
+        [
+          'Halbwert-Bedingung.',
+          'Logarithmieren.',
+          '$T_{1/2} = \\ln 2 / k$.',
+        ],
+        {
+          1: 'Zähler/Nenner vertauscht.',
+          2: 'Falsche Formel.',
+          3: 'Unsinn.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['pr-abklingen'] },
+      ),
+      ni(
+        '[PRÜFUNG] Eine Substanz zerfällt mit $k = 0.1/\\text{Jahr}$. Wie lang ist die Halbwertszeit in Jahren (auf 2 Dezimalen)?',
+        6.93, 0.1, '',
+        `**Ansatz:** $T_{1/2} = \\ln 2 / k$.
+
+**Rechnung:** $T_{1/2} = 0.693/0.1 = 6.93\\,\\text{Jahre}$.
+
+**Probe:** $\\ln 2 \\approx 0.693$.
+
+**Typischer Fehler:** $\\ln 2$ falsch.`,
+        [
+          '$\\ln 2 \\approx 0.693$.',
+          '$T_{1/2} = 0.693/0.1$.',
+          '$= 6.93$.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['pr-abklingen'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Prüfling schreibt die Zerfallsgleichung als $N(t) = N_0 e^{kt}$ ohne Minus im Exponenten. Wo liegt der Fehler?',
+        [
+          'Positive $k$ im Exponenten würde WACHSTUM bedeuten, nicht Zerfall. Minus nötig: $e^{-kt}$.',
+          'Er hätte $k < 0$ annehmen müssen (was möglich ist).',
+          'Alles korrekt.',
+          'Das Minus spielt keine Rolle.',
+        ],
+        0,
+        `**Ansatz:** Vorzeichen des Exponenten.
+
+**Rechnung:** $e^{kt}$ mit $k > 0$: $N$ wächst. $e^{-kt}$: $N$ fällt.
+
+**Probe:** Zerfall = Abnahme = Minus.
+
+**Typischer Fehler:** Vorzeichen vergessen.`,
+        [
+          'Wachstum oder Abnahme?',
+          'Vorzeichen entscheidet.',
+          'Zerfall = negativer Exponent.',
+        ],
+        {
+          1: 'Konvention: $k > 0$ im Kontext Zerfall.',
+          2: 'Vorzeichen fehlt.',
+          3: 'Doch, sehr entscheidend.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['pr-abklingen'] },
+      ),
+      ni(
+        '[PRÜFUNG] Nach $20\\,\\text{Jahren}$ sind $25\\%$ einer Substanz übrig. Wie groß ist $k$ (pro Jahr, auf 4 Dezimalen)?',
+        0.0693, 0.001, '',
+        `**Ansatz:** $0.25 = e^{-k \\cdot 20}$, logarithmieren.
+
+**Rechnung:** $-k \\cdot 20 = \\ln 0.25 = -\\ln 4 = -2\\ln 2$. $k = 2\\ln 2 / 20 = \\ln 2 / 10 \\approx 0.0693$.
+
+**Probe:** $T_{1/2} = \\ln 2 / 0.0693 = 10$. Und 20 Jahre = 2 Halbwertszeiten → $25\\%$ ✓.
+
+**Typischer Fehler:** $\\ln 0.25$ falsch.`,
+        [
+          'Gleichung $0.25 = e^{-20k}$.',
+          'Logarithmieren.',
+          '$k = \\ln 4 / 20$.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['pr-abklingen'] },
+      ),
+    ],
+    // [5] Umsatz
+    5: [
+      tf(
+        '[PRÜFUNG] Bei Umsatz $U(x) = x \\cdot p(x)$ liegt das Maximum dort, wo die Grenzkosten $U\'(x) = 0$ sind.',
+        true,
+        `**Ansatz:** Notwendige Bedingung für Maximum.
+
+**Rechnung:** $U'(x) = 0 \\Rightarrow$ stationärer Punkt.
+
+**Probe:** $U''(x) < 0$ bestätigt Maximum.
+
+**Typischer Fehler:** Minimum mit Maximum verwechseln.`,
+        [
+          'Ableitung null.',
+          'Stationärer Punkt.',
+          'Hinreichend: zweite Ableitung negativ.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['pr-umsatz'] },
+      ),
+      mc(
+        '[PRÜFUNG] Gegeben $U(x) = x(10 - x)$. Wo liegt das Maximum?',
+        ['$x = 5$', '$x = 10$', '$x = 2$', '$x = 0$'],
+        0,
+        `**Ansatz:** Ableiten + null setzen.
+
+**Rechnung:** $U(x) = 10x - x^2$. $U'(x) = 10 - 2x = 0 \\Rightarrow x = 5$.
+
+**Probe:** $U(5) = 25$. $U''(5) = -2 < 0$: Maximum.
+
+**Typischer Fehler:** $x = 10$ (wo $U = 0$) statt Maximum.`,
+        [
+          'Ableiten.',
+          '$U\'(x) = 10 - 2x$.',
+          'Nullstelle $x = 5$.',
+        ],
+        {
+          1: 'Nullstelle, nicht Maximum.',
+          2: 'Nicht optimal.',
+          3: 'Randwert $0$, nicht Maximum.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['pr-umsatz'] },
+      ),
+      ni(
+        '[PRÜFUNG] Für $U(x) = x(20 - 2x)$ liegt das Maximum bei welchem $x$?',
+        5, 0, '',
+        `**Ansatz:** Ableiten.
+
+**Rechnung:** $U(x) = 20x - 2x^2$. $U'(x) = 20 - 4x = 0 \\Rightarrow x = 5$.
+
+**Probe:** $U(5) = 5 \\cdot 10 = 50$.
+
+**Typischer Fehler:** Vorzeichen.`,
+        [
+          '$U(x) = 20x - 2x^2$.',
+          '$U\'(x) = 20 - 4x$.',
+          '$x = 5$.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['pr-umsatz'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Prüfling setzt $U(x) = 0$ statt $U\'(x) = 0$ und erhält ein falsches Maximum. Wo liegt das Missverständnis?',
+        [
+          '$U(x) = 0$ liefert NULLSTELLEN (Randwerte, wo Umsatz null ist). Das Maximum ist wo die ABLEITUNG $U\'(x) = 0$ ist.',
+          'Er hätte $U\'\'(x)$ setzen müssen.',
+          'Er hat recht.',
+          'Die Aufgabe ist nicht lösbar.',
+        ],
+        0,
+        `**Ansatz:** Unterscheidung Nullstelle vs. Extrema.
+
+**Rechnung:** Nullstellen: wo Funktion $0$. Maxima: wo Ableitung $0$.
+
+**Probe:** $U(x) = x(10-x)$: Nullstellen bei $x = 0, 10$. Maximum bei $x = 5$.
+
+**Typischer Fehler:** Nullstelle mit Maximum verwechseln.`,
+        [
+          'Nullstelle ≠ Maximum.',
+          'Ableitung null = Extremum.',
+          'Konzeptuell unterscheiden.',
+        ],
+        {
+          1: '$U\'\' = 0$ gäbe Wendepunkte.',
+          2: 'Fundamentaler Fehler.',
+          3: 'Mit der richtigen Methode lösbar.',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['pr-umsatz'] },
+      ),
+      ni(
+        '[PRÜFUNG] Der Preis sinkt linear: $p(x) = 100 - 2x$. Berechne das $x$ bei maximalem Umsatz $U(x) = x \\cdot p(x)$.',
+        25, 0, '',
+        `**Ansatz:** $U(x) = x(100 - 2x) = 100x - 2x^2$. Ableiten.
+
+**Rechnung:** $U'(x) = 100 - 4x = 0 \\Rightarrow x = 25$.
+
+**Probe:** $U(25) = 25 \\cdot 50 = 1250$.
+
+**Typischer Fehler:** Koeffizient falsch.`,
+        [
+          'Umsatz aufstellen.',
+          'Ableiten.',
+          '$x = 25$.',
+        ],
+        { stage: 'transfer', subGoal: 5, uses: ['pr-umsatz'] },
+      ),
+    ],
+  },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // alg-4-3 — Prüfung: Gleichungssysteme & Anwendungen (6 SGs, 30 Aufgaben)
+  // ───────────────────────────────────────────────────────────────────────
+  'alg-4-3': {
+    // [0] LGS-Methoden
+    0: [
+      matching(
+        '[PRÜFUNG] Ordne jeder LGS-Methode ihre Kernidee zu.',
+        [
+          { left: 'Einsetzungsverfahren',   right: 'Eine Gleichung nach einer Variable auflösen, in andere einsetzen' },
+          { left: 'Additionsverfahren',     right: 'Gleichungen so addieren/subtrahieren, dass eine Variable wegfällt' },
+          { left: 'Gleichsetzungsverfahren', right: 'Beide nach derselben Variable auflösen, dann gleichsetzen' },
+          { left: 'Gauß-Verfahren',         right: 'Systematische Elimination in Matrixform' },
+        ],
+        `**Ansatz:** Vier gängige Methoden.
+
+**Rechnung:** Alle führen zur gleichen Lösung bei konsistentem LGS.
+
+**Probe:** Standardmethoden.
+
+**Typischer Fehler:** Methoden vermischen.`,
+        [
+          'Jede Methode hat Kern.',
+          'Äquivalent bei konsistentem LGS.',
+          'Unterschiedliche Herangehen.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['pr-lgs-methoden'] },
+      ),
+      mc(
+        '[PRÜFUNG] Löse $\\begin{cases} x + y = 10 \\\\ x - y = 4 \\end{cases}$.',
+        ['$x = 7, y = 3$', '$x = 3, y = 7$', '$x = 5, y = 5$', '$x = 10, y = 4$'],
+        0,
+        `**Ansatz:** Addieren: $2x = 14$.
+
+**Rechnung:** $x = 7$. $y = 10 - 7 = 3$.
+
+**Probe:** $7 + 3 = 10$, $7 - 3 = 4$ ✓.
+
+**Typischer Fehler:** Vorzeichen.`,
+        [
+          'Addieren beide Gleichungen.',
+          '$y$ fällt weg.',
+          '$x = 7$.',
+        ],
+        {
+          1: 'Variablen vertauscht.',
+          2: 'Summe $10$, aber Differenz $0$.',
+          3: 'Keine Lösung.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['pr-lgs-methoden'] },
+      ),
+      ni(
+        '[PRÜFUNG] Löse $\\begin{cases} 2x + y = 8 \\\\ x - y = 1 \\end{cases}$. Gib $x$ an.',
+        3, 0, '',
+        `**Ansatz:** Addieren.
+
+**Rechnung:** $3x = 9 \\Rightarrow x = 3$. Dann $y = 3 - 1 = 2$.
+
+**Probe:** $6 + 2 = 8$, $3 - 2 = 1$ ✓.
+
+**Typischer Fehler:** Koeffizient falsch.`,
+        [
+          'Addieren.',
+          '$3x = 9$.',
+          '$x = 3$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['pr-lgs-methoden'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Prüfling addiert die Gleichungen $\\begin{cases} x + y = 5 \\\\ x + y = 3 \\end{cases}$ und erhält $2x + 2y = 8$, daraus $x + y = 4$. Wo liegt das Problem?',
+        [
+          'Das System ist WIDERSPRÜCHLICH ($5 \\neq 3$) — keine Lösung existiert.',
+          'Er hätte subtrahieren müssen.',
+          'Alles korrekt.',
+          'Eine der Zahlen ist falsch.',
+        ],
+        0,
+        `**Ansatz:** Gleichungen widersprechen sich.
+
+**Rechnung:** $x + y$ kann nicht gleichzeitig $5$ und $3$ sein.
+
+**Probe:** Keine Lösung.
+
+**Typischer Fehler:** Widersprüchlichkeit übersehen.`,
+        [
+          'Sind Gleichungen konsistent?',
+          'Parallele Geraden.',
+          'Keine Schnittpunkte.',
+        ],
+        {
+          1: 'Subtraktion würde $0 = 2$ zeigen — Widerspruch.',
+          2: 'Keine Lösung.',
+          3: 'Beide Zahlen sind legitim, aber widersprüchlich.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['pr-lgs-methoden'] },
+      ),
+      sorting(
+        '[PRÜFUNG] Bringe die Schritte des Einsetzungsverfahrens für $\\begin{cases} y = 2x + 1 \\\\ 3x + y = 11 \\end{cases}$ in Reihenfolge.',
+        [
+          'Auflösung der ersten: $y = 2x + 1$',
+          'Einsetzen in zweite: $3x + 2x + 1 = 11$',
+          'Nach $x$ auflösen: $5x = 10 \\Rightarrow x = 2$',
+          'Rückeinsetzen: $y = 2 \\cdot 2 + 1 = 5$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Einsetzungsverfahren Schritt für Schritt.
+
+**Rechnung:** $x = 2, y = 5$.
+
+**Probe:** $5 = 4 + 1$ ✓, $6 + 5 = 11$ ✓.
+
+**Typischer Fehler:** Einsetzen falsch.`,
+        [
+          'Eine nach Variable auflösen.',
+          'Einsetzen.',
+          'Rückwärts berechnen.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['pr-lgs-methoden'] },
+      ),
+    ],
+    // [1] Betragsgleichung
+    1: [
+      tf(
+        '[PRÜFUNG] Zur Lösung von $|f(x)| = c$ (mit $c > 0$) macht man Fallunterscheidung: $f(x) = c$ oder $f(x) = -c$.',
+        true,
+        `**Ansatz:** Betrag eliminieren über Fallunterscheidung.
+
+**Rechnung:** $|y| = c \\iff y = \\pm c$.
+
+**Probe:** $|x - 3| = 2$: $x = 5$ oder $x = 1$.
+
+**Typischer Fehler:** Nur einen Fall betrachten.`,
+        [
+          'Betrag = zwei Fälle.',
+          'Plus und minus.',
+          'Beide prüfen.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['pr-betrag-fall'] },
+      ),
+      mc(
+        '[PRÜFUNG] Löse $|2x - 4| = 6$.',
+        ['$x = 5$ oder $x = -1$', '$x = 5$', '$x = -1$', '$x = 6$'],
+        0,
+        `**Ansatz:** $2x - 4 = 6$ oder $2x - 4 = -6$.
+
+**Rechnung:** Fall 1: $x = 5$. Fall 2: $x = -1$.
+
+**Probe:** $|10 - 4| = 6$ ✓. $|-2 - 4| = 6$ ✓.
+
+**Typischer Fehler:** Nur einen Fall.`,
+        [
+          'Zwei Fälle.',
+          '$2x - 4 = \\pm 6$.',
+          'Beide prüfen.',
+        ],
+        {
+          1: 'Nur positiver Fall.',
+          2: 'Nur negativer Fall.',
+          3: 'Irrelevant.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['pr-betrag-fall'] },
+      ),
+      ni(
+        '[PRÜFUNG] Löse $|x - 3| = 5$. Gib die KLEINERE Lösung an.',
+        -2, 0, '',
+        `**Ansatz:** Zwei Fälle.
+
+**Rechnung:** $x - 3 = 5 \\Rightarrow x = 8$. $x - 3 = -5 \\Rightarrow x = -2$.
+
+**Probe:** $|-5| = 5$ ✓.
+
+**Typischer Fehler:** Vorzeichen.`,
+        [
+          'Zwei Fälle.',
+          'Kleinere wählen.',
+          '$x = -2$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['pr-betrag-fall'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Prüfling löst $|x + 1| = 4$ als $x = 3$ und gibt keine zweite Lösung. Wo liegt der Fehler?',
+        [
+          'Er hat nur den positiven Fall betrachtet. Zweite Lösung: $x + 1 = -4 \\Rightarrow x = -5$.',
+          'Die Lösung ist korrekt.',
+          'Nur negativer Fall.',
+          'Keine Lösung.',
+        ],
+        0,
+        `**Ansatz:** Beide Fälle prüfen.
+
+**Rechnung:** $x = 3$ und $x = -5$.
+
+**Probe:** $|4| = 4$ ✓, $|-4| = 4$ ✓.
+
+**Typischer Fehler:** Fallunterscheidung.`,
+        [
+          'Wie viele Fälle?',
+          'Plus UND minus.',
+          'Beide Lösungen.',
+        ],
+        {
+          1: 'Nur eine Lösung — unvollständig.',
+          2: 'Positiver Fall ergab $x = 3$, nicht negativer.',
+          3: 'Doch — zwei Lösungen.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['pr-betrag-fall'] },
+      ),
+      sorting(
+        '[PRÜFUNG] Bringe die Schritte zur Lösung von $|3x - 6| = 9$ in Reihenfolge.',
+        [
+          'Fall 1: $3x - 6 = 9 \\Rightarrow x = 5$',
+          'Fall 2: $3x - 6 = -9 \\Rightarrow x = -1$',
+          'Probe Fall 1: $|9| = 9$ ✓',
+          'Probe Fall 2: $|-9| = 9$ ✓',
+          'Lösungen: $x \\in \\{-1, 5\\}$',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Systematisch.
+
+**Rechnung:** Zwei Lösungen.
+
+**Probe:** Beide bestätigt.
+
+**Typischer Fehler:** Probe weglassen.`,
+        [
+          'Zwei Fälle.',
+          'Beide proben.',
+          'Lösungsmenge.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['pr-betrag-fall'] },
+      ),
+    ],
+    // [2] pH-Wert
+    2: [
+      tf(
+        '[PRÜFUNG] Der pH-Wert ist definiert als $\\text{pH} = -\\log_{10}([\\text{H}^+]/c_0)$ mit $c_0 = 1\\,\\text{mol/L}$.',
+        true,
+        `**Ansatz:** Standard-Definition.
+
+**Rechnung:** Logarithmische Skala.
+
+**Probe:** $[\\text{H}^+] = 10^{-7}$: pH $= 7$ (neutral).
+
+**Typischer Fehler:** Minus vergessen.`,
+        [
+          'Logarithmus mit Minus.',
+          'Referenz $c_0 = 1\\,\\text{mol/L}$.',
+          'Dimensionslos.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['pr-pH'] },
+      ),
+      mc(
+        '[PRÜFUNG] Welchen pH-Wert hat eine Lösung mit $[\\text{H}^+] = 10^{-3}\\,\\text{mol/L}$?',
+        ['$3$', '$-3$', '$10^{-3}$', '$7$'],
+        0,
+        `**Ansatz:** $\\text{pH} = -\\log_{10}(10^{-3}) = 3$.
+
+**Rechnung:** Minus hebt Minus auf.
+
+**Probe:** $\\text{pH} < 7$: sauer.
+
+**Typischer Fehler:** Minus vergessen.`,
+        [
+          '$-\\log_{10}(10^{-3})$.',
+          '$= -(-3) = 3$.',
+          'Saure Lösung.',
+        ],
+        {
+          1: 'Minus doppelt.',
+          2: 'Nicht pH.',
+          3: 'Neutral wäre $10^{-7}$.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['pr-pH'] },
+      ),
+      ni(
+        '[PRÜFUNG] Welche $\\text{H}^+$-Konzentration (mol/L, als Zehnerpotenz-Exponent) hat pH 5?',
+        -5, 0, '',
+        `**Ansatz:** pH $= 5 \\Rightarrow [\\text{H}^+] = 10^{-5}\\,\\text{mol/L}$.
+
+**Rechnung:** Exponent $-5$.
+
+**Probe:** $-\\log_{10}(10^{-5}) = 5$ ✓.
+
+**Typischer Fehler:** Vorzeichen.`,
+        [
+          'Umkehr: $[\\text{H}^+] = 10^{-\\text{pH}}$.',
+          'pH 5 → Exponent $-5$.',
+          'Minus beachten.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['pr-pH'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Prüfling rechnet für eine Lösung mit $[\\text{H}^+] = 10^{-2}\\,\\text{mol/L}$ einen pH von $-2$. Wo liegt der Fehler?',
+        [
+          'Das Minuszeichen in der pH-Definition wurde ignoriert. Korrekt: $\\text{pH} = -(-2) = 2$.',
+          'Er hätte $+2$ schreiben müssen.',
+          'Alles korrekt.',
+          'pH kann nicht negativ sein.',
+        ],
+        0,
+        `**Ansatz:** Minus in der Formel.
+
+**Rechnung:** $-\\log_{10}(10^{-2}) = -(-2) = 2$.
+
+**Probe:** Saure Lösung, pH $2 < 7$.
+
+**Typischer Fehler:** Minus weglassen.`,
+        [
+          'Minus in der Formel.',
+          'Doppelt negativ = positiv.',
+          'pH ist positiv bei verdünnten.',
+        ],
+        {
+          1: 'Beides stimmt jetzt.',
+          2: 'Beide falsch.',
+          3: 'Sehr stark saure Lösungen können pH $< 0$ haben.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['pr-pH'] },
+      ),
+      ni(
+        '[PRÜFUNG] Zwei Säuren: Säure A mit pH 3, Säure B mit pH 5. Wievielmal größer ist $[\\text{H}^+]$ in A gegenüber B?',
+        100, 0, '',
+        `**Ansatz:** $[\\text{H}^+]_A = 10^{-3}$, $[\\text{H}^+]_B = 10^{-5}$.
+
+**Rechnung:** Verhältnis $10^{-3}/10^{-5} = 10^2 = 100$.
+
+**Probe:** 2 pH-Einheiten Unterschied = Faktor 100.
+
+**Typischer Fehler:** Additionslogik.`,
+        [
+          '2 pH-Einheiten.',
+          'Jede Einheit Faktor 10.',
+          '$10^2 = 100$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['pr-pH'] },
+      ),
+    ],
+    // [3] dB-Skala
+    3: [
+      tf(
+        '[PRÜFUNG] Für Leistungs-Verhältnisse gilt $L = 10 \\log_{10}(P/P_0)$ in dB.',
+        true,
+        `**Ansatz:** Standarddefinition.
+
+**Rechnung:** Leistungsdifferenz logarithmisch.
+
+**Probe:** $P/P_0 = 10$: $L = 10$ dB.
+
+**Typischer Fehler:** $20$ statt $10$ bei Leistung.`,
+        [
+          '$10 \\log_{10}$ bei Leistung.',
+          'Verhältnis.',
+          'Referenz $P_0$.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['pr-dB'] },
+      ),
+      mc(
+        '[PRÜFUNG] Eine Leistung verdoppelt sich von $P_0$ auf $2 P_0$. Wie viele dB entspricht das?',
+        ['$\\approx 3$ dB', '$10$ dB', '$6$ dB', '$20$ dB'],
+        0,
+        `**Ansatz:** $L = 10 \\log_{10}(2) \\approx 3.01$.
+
+**Rechnung:** Merkregel: Verdopplung = $\\approx 3$ dB.
+
+**Probe:** $\\log_{10}(2) \\approx 0.301$.
+
+**Typischer Fehler:** Faktor $20$ für Leistung.`,
+        [
+          '$10 \\log_{10}(2)$.',
+          '$\\approx 3$ dB.',
+          'Merkregel.',
+        ],
+        {
+          1: 'Das wäre Faktor 10.',
+          2: '6 dB ist Faktor 4 bei Leistung.',
+          3: 'Das wäre Faktor 100.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['pr-dB'] },
+      ),
+      ni(
+        '[PRÜFUNG] Ein Signal mit Verhältnis $P/P_0 = 1000$ entspricht wie vielen dB?',
+        30, 0, '',
+        `**Ansatz:** $L = 10 \\log_{10}(1000) = 10 \\cdot 3 = 30$.
+
+**Rechnung:** $\\log_{10}(10^3) = 3$.
+
+**Probe:** 30 dB.
+
+**Typischer Fehler:** $100$ oder $3$.`,
+        [
+          'Basis-Regel: $\\log_{10}(10^3) = 3$.',
+          'Mal 10 für dB.',
+          '$= 30$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['pr-dB'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Schüler berechnet für $P/P_0 = 100$ einen Wert von $100$ dB. Wo liegt der Fehler?',
+        [
+          'Die dB-Skala ist logarithmisch: $L = 10 \\log_{10}(100) = 10 \\cdot 2 = 20$ dB, nicht $100$.',
+          'Er hätte Faktor 20 nehmen sollen.',
+          'Korrekt.',
+          'dB ist linear.',
+        ],
+        0,
+        `**Ansatz:** Logarithmische Skala.
+
+**Rechnung:** $L = 10 \\cdot \\log_{10}(100) = 20$ dB.
+
+**Probe:** Merkregel: Faktor 10 = 10 dB, Faktor 100 = 20 dB.
+
+**Typischer Fehler:** Verhältnis direkt als dB.`,
+        [
+          'dB ist logarithmisch.',
+          'Faktor 10 → 10 dB.',
+          'Faktor 100 → 20 dB.',
+        ],
+        {
+          1: 'Faktor 20 wäre bei Amplitude.',
+          2: 'dB ist nicht das Verhältnis direkt.',
+          3: 'dB ist logarithmisch.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['pr-dB'] },
+      ),
+      ni(
+        '[PRÜFUNG] Ein Verstärker verstärkt die Spannung um Faktor 100. Wie viel dB entspricht das (Amplitude → $20 \\log$)?',
+        40, 0, '',
+        `**Ansatz:** Für Amplituden-Verhältnis: $L = 20 \\log_{10}(U/U_0)$.
+
+**Rechnung:** $20 \\log_{10}(100) = 20 \\cdot 2 = 40$ dB.
+
+**Probe:** Amplituden-Faktor 100 = 40 dB.
+
+**Typischer Fehler:** $10$ statt $20$.`,
+        [
+          'Amplitude: Faktor 20.',
+          '$\\log_{10}(100) = 2$.',
+          '$20 \\cdot 2 = 40$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['pr-dB'] },
+      ),
+    ],
+    // [4] LGS-Fälle
+    4: [
+      matching(
+        '[PRÜFUNG] Ordne jedem LGS-Fall seine Interpretation zu.',
+        [
+          { left: 'Eindeutige Lösung',      right: 'Zwei Geraden schneiden sich in einem Punkt' },
+          { left: 'Keine Lösung',            right: 'Parallele Geraden' },
+          { left: 'Unendlich viele Lösungen', right: 'Identische Geraden (dieselbe Gleichung)' },
+          { left: 'Widerspruch',             right: 'Gleichungen widersprechen sich' },
+        ],
+        `**Ansatz:** Geometrische Interpretation.
+
+**Rechnung:** Drei Fälle.
+
+**Probe:** Standard LGS-Theorie.
+
+**Typischer Fehler:** Fälle verwechseln.`,
+        [
+          'Geometrie: Geraden.',
+          'Schnitt, parallel, identisch.',
+          'Drei Möglichkeiten.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['pr-lgs-faelle'] },
+      ),
+      mc(
+        '[PRÜFUNG] Wann hat das LGS $\\begin{cases} ax + by = c \\\\ dx + ey = f \\end{cases}$ unendlich viele Lösungen?',
+        [
+          'Wenn beide Gleichungen Vielfache voneinander sind (inkl. rechte Seite)',
+          'Wenn $a = d$',
+          'Wenn $b = e$',
+          'Nie',
+        ],
+        0,
+        `**Ansatz:** Identität ist nötig (auch Konstante).
+
+**Rechnung:** Gleichungen müssen komplett proportional sein.
+
+**Probe:** $x + y = 2$ und $2x + 2y = 4$: unendlich.
+
+**Typischer Fehler:** Nur Koeffizienten prüfen.`,
+        [
+          'Gleichungen identisch.',
+          'Inklusive Konstante.',
+          'Proportionalität.',
+        ],
+        {
+          1: 'Nicht ausreichend.',
+          2: 'Nicht ausreichend.',
+          3: 'Doch — bei proportionalen Geraden.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['pr-lgs-faelle'] },
+      ),
+      mc(
+        '[PRÜFUNG] Das System $\\begin{cases} 2x + 3y = 6 \\\\ 4x + 6y = 12 \\end{cases}$ hat:',
+        ['Unendlich viele Lösungen', 'Genau eine Lösung', 'Keine Lösung', 'Zwei Lösungen'],
+        0,
+        `**Ansatz:** Zweite Gleichung = $2 \\cdot$ erste. Komplett proportional.
+
+**Rechnung:** Identische Geraden.
+
+**Probe:** $4x + 6y = 12 \\Leftrightarrow 2x + 3y = 6$.
+
+**Typischer Fehler:** Keine Lösung annehmen.`,
+        [
+          'Gleichung 2 = 2 · Gleichung 1.',
+          'Identisch.',
+          'Unendlich.',
+        ],
+        {
+          1: 'Zwei identische Geraden haben keine eindeutige.',
+          2: 'Doch — aber alle Lösungen.',
+          3: 'Geraden nicht isoliert.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['pr-lgs-faelle'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Prüfling erhält beim Lösen eines LGS die Zeile $0 = 5$. Was bedeutet das?',
+        [
+          'Das System hat KEINE Lösung — die Gleichungen widersprechen sich.',
+          'Die Lösung ist $x = 0, y = 5$.',
+          'Er hat sich verrechnet.',
+          'Unendlich viele Lösungen.',
+        ],
+        0,
+        `**Ansatz:** Widerspruch = keine Lösung.
+
+**Rechnung:** $0 = 5$ ist unmöglich.
+
+**Probe:** Parallele Geraden.
+
+**Typischer Fehler:** Als Lösung interpretieren.`,
+        [
+          'Wann $0 = c$?',
+          'Bei Widerspruch.',
+          'Keine Lösung.',
+        ],
+        {
+          1: 'Das ergibt keine Koordinaten.',
+          2: 'Nicht zwingend.',
+          3: 'Das wäre $0 = 0$.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['pr-lgs-faelle'] },
+      ),
+      matching(
+        '[PRÜFUNG] Ordne jedem LGS den Lösungstyp zu.',
+        [
+          { left: '$x + y = 3, x - y = 1$',        right: 'Eindeutig ($x = 2, y = 1$)' },
+          { left: '$x + y = 3, 2x + 2y = 6$',       right: 'Unendlich viele' },
+          { left: '$x + y = 3, x + y = 5$',         right: 'Keine Lösung' },
+          { left: '$2x + 3y = 7, 2x + 3y = 7$',     right: 'Unendlich viele (identisch)' },
+        ],
+        `**Ansatz:** Typ erkennen.
+
+**Rechnung:** Abhängigkeit prüfen.
+
+**Probe:** Proportionalität, Konsistenz.
+
+**Typischer Fehler:** Typen vermischen.`,
+        [
+          'Konstante prüfen.',
+          'Proportionalität.',
+          'Widerspruch erkennen.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['pr-lgs-faelle'] },
+      ),
+    ],
+    // [5] Technik-LGS
+    5: [
+      matching(
+        '[PRÜFUNG] Ordne jeder technischen Situation die LGS-Anwendung zu.',
+        [
+          { left: 'Kirchhoffsche Maschenregel',  right: 'LGS aus Spannungs-Schleifen' },
+          { left: 'Biegespannung (Balken)',      right: 'LGS aus Gleichgewichtsbedingungen' },
+          { left: 'Mischrechnung',               right: 'LGS aus Mengen-/Konzentrations-Bilanzen' },
+          { left: 'Statik (Lager)',              right: 'LGS aus Kraft-/Momentengleichgewicht' },
+        ],
+        `**Ansatz:** Technik führt auf LGS.
+
+**Rechnung:** Verschiedene Anwendungsfelder.
+
+**Probe:** Standardvorgehen.
+
+**Typischer Fehler:** Falsche Gleichungen aufstellen.`,
+        [
+          'Physikalische Bilanzen.',
+          'Gleichgewichtsbedingungen.',
+          'LGS aufstellen.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['pr-technik-lgs'] },
+      ),
+      mc(
+        '[PRÜFUNG] In einer Schaltung gilt nach Maschenregel $I_1 + I_2 = 3$ und $2I_1 - I_2 = 0$. Wie groß ist $I_1$?',
+        ['$1$ A', '$2$ A', '$3$ A', '$0$ A'],
+        0,
+        `**Ansatz:** LGS lösen.
+
+**Rechnung:** Addieren: $3I_1 = 3 \\Rightarrow I_1 = 1$. $I_2 = 2$.
+
+**Probe:** $1 + 2 = 3$ ✓, $2 - 2 = 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen.`,
+        [
+          'Addieren oder einsetzen.',
+          '$I_1 = 1$.',
+          'Probe in beiden.',
+        ],
+        {
+          1: 'Das ist $I_2$.',
+          2: 'Summe.',
+          3: 'Keine Lösung.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['pr-technik-lgs'] },
+      ),
+      ni(
+        '[PRÜFUNG] Zwei Sorten Kaffee werden gemischt: Sorte A mit $10\\,€/\\text{kg}$, Sorte B mit $15\\,€/\\text{kg}$. Gesamt $10\\,\\text{kg}$ zu $12\\,€/\\text{kg}$. Wie viel kg Sorte A?',
+        6, 0, '',
+        `**Ansatz:** LGS: $A + B = 10$, $10A + 15B = 120$.
+
+**Rechnung:** Aus 1: $B = 10 - A$. In 2: $10A + 15(10 - A) = 120 \\Rightarrow 10A + 150 - 15A = 120 \\Rightarrow -5A = -30 \\Rightarrow A = 6$.
+
+**Probe:** $6 \\text{kg} \\cdot 10 + 4 \\text{kg} \\cdot 15 = 60 + 60 = 120$ ✓.
+
+**Typischer Fehler:** Gleichung falsch aufstellen.`,
+        [
+          'Mengen + Gesamtwert.',
+          'Zwei Gleichungen.',
+          '$A = 6$.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['pr-technik-lgs'] },
+      ),
+      mc(
+        '[PRÜFUNG] Ein Prüfling stellt für ein Balken-LGS nur die Kraftbilanz auf, nicht die Momentenbilanz. Wo liegt das Problem?',
+        [
+          'Ein Balken mit zwei Lagern braucht BEIDE Bilanzen — sonst System unterbestimmt.',
+          'Nur Kraftbilanz reicht.',
+          'Nur Momentenbilanz reicht.',
+          'Keine Bilanz nötig.',
+        ],
+        0,
+        `**Ansatz:** Statik braucht beide Bilanzen.
+
+**Rechnung:** Bei 2D: $\\sum F_x = 0$, $\\sum F_y = 0$, $\\sum M = 0$.
+
+**Probe:** Drei Gleichungen für drei Unbekannte.
+
+**Typischer Fehler:** Bilanz weglassen.`,
+        [
+          'Gleichgewichtsbedingungen.',
+          'Alle drei (bei 2D).',
+          'Vollständiges System.',
+        ],
+        {
+          1: 'Unterbestimmt.',
+          2: 'Ebenfalls unterbestimmt.',
+          3: 'Statik braucht Bilanzen.',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['pr-technik-lgs'] },
+      ),
+      ni(
+        '[PRÜFUNG] Ein Balken von $4\\,\\text{m}$ Länge mit Last $200\\,\\text{N}$ in der Mitte. Lagerkraft an Punkt A (linkes Lager) in N?',
+        100, 0, '',
+        `**Ansatz:** Symmetrie: $A = B = F/2$.
+
+**Rechnung:** $A = 100\\,\\text{N}$, $B = 100\\,\\text{N}$.
+
+**Probe:** $A + B = 200 = F$ ✓.
+
+**Typischer Fehler:** Moment falsch.`,
+        [
+          'Symmetrie bei mittiger Last.',
+          'Beide Lager gleich belastet.',
+          '$100\\,\\text{N}$.',
+        ],
+        { stage: 'transfer', subGoal: 5, uses: ['pr-technik-lgs'] },
+      ),
+    ],
+  },
+
 }
