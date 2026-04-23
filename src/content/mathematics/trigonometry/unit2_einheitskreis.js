@@ -431,6 +431,49 @@ const lessons_u2 = [
       { label: 'Durchmesser $d = 2$ nicht mit Radius $r = 1$ verwechseln', examRelevance: 'niedrig' },
     ],
     prerequisites: ['trig-1-3'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-1-3', concepts: ['grundwerte-sin', 'grundwerte-cos'] },
+      ],
+      concepts: [
+        { id: 'einheitskreis-def', title: 'Einheitskreis: $x^2 + y^2 = 1$ um den Ursprung',                              dependsOn: [] },
+        { id: 'winkel-messung',    title: 'Winkel gemessen von positiver $x$-Achse gegen Uhrzeigersinn',               dependsOn: ['einheitskreis-def'] },
+        { id: 'punkt-parametrisierung', title: 'Punkt auf Kreis: $P = (\\cos\\alpha, \\sin\\alpha)$',                   dependsOn: ['winkel-messung'] },
+        { id: 'quadrantenpunkte',  title: 'Achsenpunkte: $0° \\to (1,0)$, $90° \\to (0,1)$, $180° \\to (-1,0)$, $270° \\to (0,-1)$', dependsOn: ['punkt-parametrisierung'] },
+        { id: 'durchmesser-radius', title: 'Durchmesser $d = 2r = 2$ vs. Radius $r = 1$',                               dependsOn: ['einheitskreis-def'] },
+      ],
+      subGoalConcepts: {
+        0: ['einheitskreis-def'],
+        1: ['winkel-messung', 'punkt-parametrisierung'],
+        2: ['quadrantenpunkte'],
+        3: ['durchmesser-radius'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['einheitskreis-def'],        qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['einheitskreis-def'],        qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['einheitskreis-def'],        qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['einheitskreis-def'],        qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['einheitskreis-def'],        qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['punkt-parametrisierung'],   qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['punkt-parametrisierung'],   qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['punkt-parametrisierung'],   qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['punkt-parametrisierung'],   qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'matching',        uses: ['punkt-parametrisierung'],   qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'matching',        uses: ['quadrantenpunkte'],         qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['quadrantenpunkte'],         qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['quadrantenpunkte'],         qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['quadrantenpunkte'],         qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'multiple-choice', uses: ['quadrantenpunkte'],         qty: 1 },
+
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['durchmesser-radius'],       qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['durchmesser-radius'],       qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['durchmesser-radius'],       qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['durchmesser-radius'],       qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'multiple-choice', uses: ['durchmesser-radius'],       qty: 1 },
+      ],
+    },
     nextLessonId: 'trig-2-2',
     steps: [
       {
@@ -466,6 +509,56 @@ Die Koordinaten von $P$ sind dann genau **$(\\cos(\\alpha), \\sin(\\alpha))$** �
       { label: 'Werte liegen stets im Intervall $[-1, +1]$, weil $r = 1$', examRelevance: 'mittel' },
     ],
     prerequisites: ['trig-2-1'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-2-1', concepts: ['einheitskreis-def', 'punkt-parametrisierung'] },
+      ],
+      concepts: [
+        { id: 'cos-x-sin-y',        title: 'Konvention: $\\cos\\alpha = x$-Koord., $\\sin\\alpha = y$-Koord.',                dependsOn: [] },
+        { id: 'koord-universell',   title: 'Definition gilt für ALLE reellen Winkel (positiv, negativ, $>360°$)',            dependsOn: ['cos-x-sin-y'] },
+        { id: 'koord-zu-winkel',    title: 'Winkel aus $(x, y)$-Koordinaten via Vorzeichen + Referenzwinkel',                 dependsOn: ['cos-x-sin-y'] },
+        { id: 'eselsbruecke-xy',    title: 'Merkregel: c-Osinus = $x$-Achse, $s$-Inus = $y$-Achse',                           dependsOn: [] },
+        { id: 'wertebereich-sincos', title: 'Wertebereich $[-1, +1]$ folgt direkt aus $r = 1$',                               dependsOn: ['cos-x-sin-y'] },
+      ],
+      subGoalConcepts: {
+        0: ['cos-x-sin-y'],
+        1: ['koord-universell'],
+        2: ['koord-zu-winkel'],
+        3: ['eselsbruecke-xy'],
+        4: ['wertebereich-sincos'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['cos-x-sin-y'],         qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['cos-x-sin-y'],         qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['cos-x-sin-y'],         qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['cos-x-sin-y'],         qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['cos-x-sin-y'],         qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['koord-universell'],    qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['koord-universell'],    qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['koord-universell'],    qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['koord-universell'],    qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'number-input',    uses: ['koord-universell'],    qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'multiple-choice', uses: ['koord-zu-winkel'],     qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['koord-zu-winkel'],     qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['koord-zu-winkel'],     qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['koord-zu-winkel'],     qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'matching',        uses: ['koord-zu-winkel'],     qty: 1 },
+
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['eselsbruecke-xy'],     qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['eselsbruecke-xy'],     qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'multiple-choice', uses: ['eselsbruecke-xy'],     qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['eselsbruecke-xy'],     qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'matching',        uses: ['eselsbruecke-xy'],     qty: 1 },
+
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['wertebereich-sincos'], qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['wertebereich-sincos'], qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'multiple-choice', uses: ['wertebereich-sincos'], qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['wertebereich-sincos'], qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'true-false',      uses: ['wertebereich-sincos'], qty: 1 },
+      ],
+    },
     nextLessonId: 'trig-2-3',
     steps: [
       {

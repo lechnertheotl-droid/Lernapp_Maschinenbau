@@ -104,7 +104,7 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Lessons | 226 | — | — |
 | Aufgaben (gesamt) | 3251 | 4520+ (≥ 20/Lesson) | 🟡 |
 | Aufgaben mit 4-Block | 1351 (42 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 1279 / 1279 (100 %) | 100 % | ✅ |
+| MC mit wrongAnswerExplanations | 1293 / 1293 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 207 / 1134 (18 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -201,7 +201,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 - Lessons: 18
 - Aufgaben: **419** (manuell: 66 · supplemental: 353)
 - 4-Block: 282/419 (67 %) 🟡
-- MC-wAE: 168/168 (100 %) ✅
+- MC-wAE: 182/182 (100 %) ✅
 - Sub-Goals: 48/87 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
@@ -249,8 +249,8 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 | `trig-1-2` Rechtwinkliges Dreieck | 3 | 3/3 | 26 | 13/6/3/3/1 | 15/26 | 13/13 | ✅ | +11 4B |
 | `trig-1-3` Die Grundwerte | 4 | 4/4 | 32 | 16/7/4/4/1 | 22/32 | 16/16 | ✅ | +10 4B |
 | `trig-1-4` Vorzeichen und Quadranten | 3 | 3/3 | 25 | 12/6/4/2/1 | 18/25 | 12/12 | ✅ | +7 4B |
-| `trig-2-1` Der Einheitskreis | 4 | 4/4 | 30 | 9/6/5/5/5 | 23/30 | 9/9 | ✅ | +7 4B |
-| `trig-2-2` sin und cos als Koordinaten | 5 | 5/5 | 35 | 10/7/6/6/6 | 27/35 | 10/10 | ✅ | +8 4B |
+| `trig-2-1` Der Einheitskreis | 4 | 4/4 | 30 | 15/6/4/4/1 | 23/30 | 15/15 | ✅ | +7 4B |
+| `trig-2-2` sin und cos als Koordinaten | 5 | 5/5 | 35 | 18/6/6/4/1 | 27/35 | 18/18 | ✅ | +8 4B |
 | `trig-2-3` Symmetrien und Periodizität | 6 | 0/6 | 10 | 5/2/1/1/1 | 1/10 | 5/5 | ✅ | +6 Goal, +9 4B |
 | `trig-2-4` Tangens im Einheitskreis | 6 | 0/6 | 10 | 5/2/1/1/1 | 0/10 | 5/5 | ✅ | +6 Goal, +10 4B |
 | `trig-2-5` Alle vier Quadranten | 6 | 0/6 | 10 | 5/2/1/1/1 | 1/10 | 5/5 | ✅ | +6 Goal, +9 4B |
@@ -6271,20 +6271,50 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-2-1` · Der Einheitskreis
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Einheitskreis und Winkelfunktionen
-- **Aufgaben aktuell:** 30 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×9, number-input ×6, true-false ×5, matching ×5, sorting ×5
-- **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - ✅ [0] (hoch) **5/5+** Aufgaben — Einheitskreis = Kreis um Ursprung mit $r = 1$, Gleichung $x^2 + y^2 = 1$
-  - ✅ [1] (hoch) **5/5+** Aufgaben — Punkt auf Kreis $P = (\cos\alpha, \sin\alpha)$ — Winkel von positiver $x$-Achse gegen Uhrzeigersinn
-  - ✅ [2] (hoch) **5/5+** Aufgaben — Quadrantenpunkte: $0° \to (1,0)$, $90° \to (0,1)$, $180° \to (-1,0)$, $270° \to (0,-1)$
-  - ✅ [3] (niedrig) **5/5+** Aufgaben — Durchmesser $d = 2$ nicht mit Radius $r = 1$ verwechseln
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `trig-1-3` → `grundwerte-sin`, `grundwerte-cos`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `einheitskreis-def` — Einheitskreis: $x^2 + y^2 = 1$ um den Ursprung (SG 0)
+  2. `winkel-messung` — Winkel gemessen von positiver $x$-Achse gegen Uhrzeigersinn ⇐ `einheitskreis-def` (SG 1)
+  3. `punkt-parametrisierung` — Punkt auf Kreis: $P = (\cos\alpha, \sin\alpha)$ ⇐ `winkel-messung` (SG 1)
+  4. `quadrantenpunkte` — Achsenpunkte: $0° \to (1,0)$, $90° \to (0,1)$, $180° \to (-1,0)$, $270° \to (0,-1)$ ⇐ `punkt-parametrisierung` (SG 2)
+  5. `durchmesser-radius` — Durchmesser $d = 2r = 2$ vs. Radius $r = 1$ ⇐ `einheitskreis-def` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `einheitskreis-def` · **5/5+** — Einheitskreis = Kreis um Ursprung mit $r = 1$, Gleichung $x^2 + y^2 = 1$
+  - ✅ [1] _hoch_ · Konzepte: `winkel-messung`, `punkt-parametrisierung` · **5/5+** — Punkt auf Kreis $P = (\cos\alpha, \sin\alpha)$ — Winkel von positiver $x$-Achse gegen Uhrzeigersinn
+  - ✅ [2] _hoch_ · Konzepte: `quadrantenpunkte` · **5/5+** — Quadrantenpunkte: $0° \to (1,0)$, $90° \to (0,1)$, $180° \to (-1,0)$, $270° \to (0,-1)$
+  - ✅ [3] _niedrig_ · Konzepte: `durchmesser-radius` · **5/5+** — Durchmesser $d = 2$ nicht mit Radius $r = 1$ verwechseln
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `einheitskreis-def` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `einheitskreis-def` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `einheitskreis-def` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `einheitskreis-def` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | matching         | `einheitskreis-def` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `punkt-parametrisierung` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `punkt-parametrisierung` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `punkt-parametrisierung` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `punkt-parametrisierung` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | matching         | `punkt-parametrisierung` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | matching         | `quadrantenpunkte` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `quadrantenpunkte` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `quadrantenpunkte` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `quadrantenpunkte` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | multiple-choice  | `quadrantenpunkte` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `durchmesser-radius` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `durchmesser-radius` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `durchmesser-radius` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `durchmesser-radius` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | multiple-choice  | `durchmesser-radius` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/trigonometry.js` unter `'trig-2-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-1-manual-1`, `ex-trig-2-1-manual-2`, `ex-trig-2-1-manual-3`, `ex-trig-2-1-manual-4`, `ex-trig-2-1-manual-5`, `ex-trig-2-1-manual-6`, `ex-trig-2-1-manual-7`
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `unit-circle`, `trig-explorer`, `sin-wave-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
-  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
-  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
 #### `alg-0-4` · Termumformung & Gleichungen
 
@@ -6669,21 +6699,56 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-2-2` · sin und cos als Koordinaten
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Einheitskreis und Winkelfunktionen
-- **Aufgaben aktuell:** 35 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×10, number-input ×7, true-false ×6, matching ×6, sorting ×6
-- **Typen einsetzen (Rotation):** true-false, matching, sorting
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - ✅ [0] (hoch) **5/5+** Aufgaben — $\cos\alpha$ = $x$-Koordinate (horizontal), $\sin\alpha$ = $y$-Koordinate (vertikal)
-  - ✅ [1] (hoch) **5/5+** Aufgaben — Definition gilt für **alle** reellen Winkel, nicht nur $0°$–$90°$
-  - ✅ [2] (hoch) **5/5+** Aufgaben — Aus Koordinaten $(x,y)$ auf Kreis den Winkel über Vorzeichen + Referenzwinkel ermitteln
-  - ✅ [3] (niedrig) **5/5+** Aufgaben — Eselsbrücke: **c**osinus → **x**-Achse, **s**inus → $y$-Achse (vertikal)
-  - ✅ [4] (mittel) **5/5+** Aufgaben — Werte liegen stets im Intervall $[-1, +1]$, weil $r = 1$
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `trig-2-1` → `einheitskreis-def`, `punkt-parametrisierung`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `cos-x-sin-y` — Konvention: $\cos\alpha = x$-Koord., $\sin\alpha = y$-Koord. (SG 0)
+  2. `koord-universell` — Definition gilt für ALLE reellen Winkel (positiv, negativ, $>360°$) ⇐ `cos-x-sin-y` (SG 1)
+  3. `koord-zu-winkel` — Winkel aus $(x, y)$-Koordinaten via Vorzeichen + Referenzwinkel ⇐ `cos-x-sin-y` (SG 2)
+  4. `eselsbruecke-xy` — Merkregel: c-Osinus = $x$-Achse, $s$-Inus = $y$-Achse (SG 3)
+  5. `wertebereich-sincos` — Wertebereich $[-1, +1]$ folgt direkt aus $r = 1$ ⇐ `cos-x-sin-y` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `cos-x-sin-y` · **5/5+** — $\cos\alpha$ = $x$-Koordinate (horizontal), $\sin\alpha$ = $y$-Koordinate (vertikal)
+  - ✅ [1] _hoch_ · Konzepte: `koord-universell` · **5/5+** — Definition gilt für **alle** reellen Winkel, nicht nur $0°$–$90°$
+  - ✅ [2] _hoch_ · Konzepte: `koord-zu-winkel` · **5/5+** — Aus Koordinaten $(x,y)$ auf Kreis den Winkel über Vorzeichen + Referenzwinkel ermitteln
+  - ✅ [3] _niedrig_ · Konzepte: `eselsbruecke-xy` · **5/5+** — Eselsbrücke: **c**osinus → **x**-Achse, **s**inus → $y$-Achse (vertikal)
+  - ✅ [4] _mittel_ · Konzepte: `wertebereich-sincos` · **5/5+** — Werte liegen stets im Intervall $[-1, +1]$, weil $r = 1$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `cos-x-sin-y` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `cos-x-sin-y` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `cos-x-sin-y` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `cos-x-sin-y` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | matching         | `cos-x-sin-y` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `koord-universell` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `koord-universell` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `koord-universell` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `koord-universell` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `koord-universell` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | multiple-choice  | `koord-zu-winkel` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `koord-zu-winkel` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `koord-zu-winkel` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `koord-zu-winkel` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | matching         | `koord-zu-winkel` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `eselsbruecke-xy` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `eselsbruecke-xy` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `eselsbruecke-xy` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `eselsbruecke-xy` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | matching         | `eselsbruecke-xy` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `wertebereich-sincos` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `wertebereich-sincos` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `wertebereich-sincos` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `wertebereich-sincos` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | true-false       | `wertebereich-sincos` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/trigonometry.js` unter `'trig-2-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-2-manual-1`, `ex-trig-2-2-manual-2`, `ex-trig-2-2-manual-3`, `ex-trig-2-2-manual-4`, `ex-trig-2-2-manual-5`, `ex-trig-2-2-manual-6`, `ex-trig-2-2-manual-7`, `ex-trig-2-2-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `unit-circle`, `trig-explorer`, `sin-wave-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
-  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
-  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
 #### `alg-4-1` · Prüfung: Algebra-Grundlagen
 
