@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2765 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 852 (31 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 1044 / 1044 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 112 / 1134 (10 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2795 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 893 (32 %) | 100 % der Aufgaben | 🔴 |
+| MC mit wrongAnswerExplanations | 1056 / 1056 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 118 / 1134 (10 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -532,10 +532,10 @@ _LGS stecken in jeder FEM-Simulation, Ausgleichsrechnung, Signalverarbeitung. Ei
 - Phase: **2. Sem** · Level: vertiefung · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 10
-- Aufgaben: **170** (manuell: 61 · supplemental: 109)
-- 4-Block: 71/170 (42 %) 🔴
-- MC-wAE: 69/69 (100 %) ✅
-- Sub-Goals: 12/57 Goal-Tasks verknüpft 🔴
+- Aufgaben: **200** (manuell: 61 · supplemental: 139)
+- 4-Block: 112/200 (56 %) 🔴
+- MC-wAE: 81/81 (100 %) ✅
+- Sub-Goals: 18/57 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Gewöhnliche DGL: Trennbare, lineare erster Ordnung, lineare zweiter Ordnung mit konstanten Koeffizienten.**
@@ -581,7 +581,7 @@ _Physik spricht DGL: Schwingungen, Abkühlung, Population, RC-Glieder. DGL-Siche
 | `dgl-2-1` Variation der Konstanten | 5 | 0/5 | 11 | 6/2/1/1/1 | 0/11 | 6/6 | ✅ | +5 Goal, +11 4B |
 | `dgl-2-2` DGL-Systeme | 6 | 0/6 | 10 | 4/2/2/1/1 | 0/10 | 4/4 | ✅ | +6 Goal, +10 4B |
 | `dgl-2-3` Technische Anwendungen | 6 | 0/6 | 11 | 5/2/1/2/1 | 0/11 | 5/5 | ✅ | +6 Goal, +11 4B |
-| `dgl-3-1` Prüfung: DGL 1. Ordnung | 6 | 0/6 | 11 | 7/1/2/1/0 | 0/11 | 7/7 | ✅ | +6 Goal, +11 4B |
+| `dgl-3-1` Prüfung: DGL 1. Ordnung | 6 | 6/6 | 41 | 19/8/8/3/3 | 41/41 | 19/19 | ✅ | — |
 | `dgl-3-2` Prüfung: DGL 2. Ordnung & Anwendungen | 6 | 6/6 | 41 | 15/10/8/4/4 | 30/41 | 15/15 | ✅ | +11 4B |
 | `dgl-3-3` Prüfung: Systeme & technische Modellbildung | 6 | 6/6 | 41 | 10/10/8/6/7 | 41/41 | 10/10 | ✅ | — |
 
@@ -1485,7 +1485,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 60 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 59 Lessons
 
 #### `fest-2-4` · Wechselfestigkeit und Betriebsfestigkeit
 
@@ -2674,31 +2674,6 @@ npm run build              # abschließender End-zu-End-Check
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
   - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
-
-#### `dgl-3-1` · Prüfung: DGL 1. Ordnung
-
-- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×1, true-false ×2, matching ×1
-- **Typen einsetzen (Rotation):** sorting, number-input, matching, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Trennbar: $\int dy/g(y) = \int f(x) dx + C$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Bernoulli $y' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Integrierender Faktor bei nicht-exakter DGL: $\mu(x)$ oder $\mu(y)$ finden
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/differentialgleichungen.js`
-- **4-Block-Erklärung fehlt bei:** `ex-dgl-3-1-a`, `ex-dgl-3-1-b`, `ex-dgl-3-1-c`, `ex-dgl-3-1-d`, `ex-dgl-3-1-e`, `ex-dgl-3-1-f`, `ex-dgl-3-1-g`, `ex-dgl-3-1-h` … (+3 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `spring-mass-damper`, `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
-  - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
-  - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
 
 #### `mech-3-1` · Statik: Prüfungsaufgaben
 

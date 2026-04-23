@@ -14,8 +14,18 @@ export const exercises_dgl_u3 = {
       '$y = 2e^x$',
     ],
     correctIndex: 0,
-    explanation: 'Trennung: $\\frac{dy}{y} = x\\,dx$. Integration: $\\ln|y| = \\frac{x^2}{2} + C$, also $y = Ae^{x^2/2}$. Anfangsbedingung $y(0) = 2$: $A = 2$. Lösung: $y = 2e^{x^2/2}$.',
-    hints: ['Bringe alle y auf eine Seite, alle x auf die andere.', 'Integriere $\\int \\frac{dy}{y} = \\ln|y|$.'],
+    explanation: `**Ansatz:** DGL $y\'=xy$ ist separabel (Produkt aus $x$-Funktion und $y$-Funktion). Variablen trennen: $\\frac{dy}{y}=x\\,dx$.
+
+**Rechnung:** Integration beider Seiten: $\\ln|y|=\\tfrac{x^2}{2}+K$, also $y=Ae^{x^2/2}$. AWP $y(0)=2$: $A\\cdot e^0=A=2$. Lösung: $y=2e^{x^2/2}$.
+
+**Probe:** $y\'=2e^{x^2/2}\\cdot x = x\\cdot y$ ✓; $y(0)=2\\cdot 1=2$ ✓.
+
+**Typischer Fehler:** $\\int x\\,dx$ als $x^2$ statt $x^2/2$ integriert — Faktor $1/2$ übersehen.`,
+    hints: [
+      'Trennbar? $y\' = f(x)\\cdot g(y)$ mit $f=x$, $g=y$ → ja.',
+      'Integriere $\\int \\frac{dy}{y} = \\ln|y|$ und $\\int x\\,dx = x^2/2$.',
+      'Aus $\\ln|y| = x^2/2 + K$ wird $y = Ae^{x^2/2}$; Konstante per AWP bestimmen.',
+    ],
     wrongAnswerExplanations: {
       1: 'Der Faktor $1/2$ im Exponenten fehlt. $\\int x\\,dx = \\frac{x^2}{2}$, nicht $x^2$. Wer $x^2$ schreibt, behandelt $x$ wie $2x$ beim Integrieren. Richtig: $\\ln|y| = \\frac{x^2}{2}+C \\Rightarrow y=Ae^{x^2/2}$.',
       2: 'Hier wurde die Anfangsbedingung additiv eingebaut ($+1$), aber bei multiplikativer Lösung $y=Ae^{x^2/2}$ gehört der Wert als *Vorfaktor*, nicht als Summand. Außerdem gibt $e^0+1=2$ zwar $y(0)=2$, aber die DGL $y\'=xy$ ist nicht erfüllt: $y\'=xe^{x^2/2}$ und $xy = xe^{x^2/2}+x \\neq y\'$.',
@@ -32,8 +42,18 @@ export const exercises_dgl_u3 = {
       '$y = C\\cos(3x)$',
     ],
     correctIndex: 0,
-    explanation: 'Trennung der Variablen: $\\frac{dy}{y} = 3\\,dx \\Rightarrow \\ln|y| = 3x + C \\Rightarrow y = Ce^{3x}$. Alternativ: charakteristische Gleichung $\\lambda - 3 = 0 \\Rightarrow \\lambda = 3$.',
-    hints: ['Charakteristische Gleichung: setze $y = e^{\\lambda x}$ an.'],
+    explanation: `**Ansatz:** Homogene lineare DGL 1. Ordnung — zwei Wege: (a) Trennung der Variablen, (b) Ansatz $y=e^{\\lambda x}$ mit charakteristischer Gleichung.
+
+**Rechnung:** Trennung: $\\frac{dy}{y}=3\\,dx \\Rightarrow \\ln|y|=3x+K \\Rightarrow y=Ce^{3x}$. Alternativ: $y=e^{\\lambda x}$ in $y\'-3y=0$ ergibt $\\lambda-3=0 \\Rightarrow \\lambda=3$.
+
+**Probe:** $y=Ce^{3x}$: $y\'=3Ce^{3x}=3y$ ✓, also $y\'-3y=0$ ✓.
+
+**Typischer Fehler:** Vorzeichen im Exponenten falsch gesetzt. Aus $y\'-3y=0$ folgt $y\'=+3y$, entsprechend $\\lambda=+3$, nicht $-3$.`,
+    hints: [
+      'Homogene lineare DGL 1. Ordnung: $y=e^{\\lambda x}$-Ansatz.',
+      'Charakteristische Gleichung: $\\lambda-3=0$.',
+      'Exponent = Koeffizient vor $y$ mit richtigem Vorzeichen.',
+    ],
     wrongAnswerExplanations: {
       1: 'Vorzeichenfehler im Exponenten. Aus $y\'-3y=0$ folgt $y\'=+3y$, also $\\lambda=+3$. Test: $y=Ce^{-3x} \\Rightarrow y\'=-3Ce^{-3x}=-3y$, aber die DGL verlangt $y\'=+3y$.',
       2: 'Das ist eine lineare Funktion, keine Exponentialfunktion. Die DGL $y\'=3y$ erfordert $y\'$ proportional zu $y$; bei $y=3Cx$ ist $y\'=3C$ konstant, also nicht proportional zu $y$.',
@@ -44,8 +64,18 @@ export const exercises_dgl_u3 = {
     id: 'ex-dgl-3-1-c', lessonId: 'dgl-3-1', type: 'true-false',
     statement: '[PRÜFUNG] Die DGL $y\' + \\frac{2}{x}y = x^3$ ist eine lineare DGL 1. Ordnung.',
     correct: true,
-    explanation: 'Ja, die Standardform $y\' + p(x)y = q(x)$ liegt vor mit $p(x) = \\frac{2}{x}$ und $q(x) = x^3$. y und y\' kommen nur in der 1. Potenz vor — das ist linear.',
-    hints: ['Prüfe: Kommt y oder y\' nur in der 1. Potenz vor? Treten Produkte y·y\' auf?'],
+    explanation: `**Ansatz:** Lineare DGL 1. Ordnung hat die Form $y\'+p(x)y=q(x)$ mit $y$ und $y\'$ linear, Koeffizienten rein von $x$ abhängig.
+
+**Rechnung:** Hier $p(x)=2/x$, $q(x)=x^3$. $y$ taucht nur in 1. Potenz auf, $y\'$ ebenfalls, keine Produkte $yy\'$ oder $y^2$.
+
+**Probe:** Lösbar mit integrierendem Faktor $\\mu(x)=e^{\\int 2/x\\,dx}=e^{2\\ln x}=x^2$ — Standardmethode greift.
+
+**Typischer Fehler:** $p(x)=2/x$ mit $y/x$ verwechseln und denken, es sei nichtlinear. Der Quotient $2/x$ ist nur Koeffizient in $x$, nicht in $y$.`,
+    hints: [
+      'Definition linear: $y$ und $y\'$ nur in 1. Potenz.',
+      'Koeffizienten dürfen beliebige Funktionen von $x$ sein (auch $1/x$).',
+      'Produkte wie $y\\cdot y\'$ oder $y^2$ würden linear ausschließen.',
+    ],
   },
   'ex-dgl-3-1-d': {
     id: 'ex-dgl-3-1-d', lessonId: 'dgl-3-1', type: 'multiple-choice',
@@ -57,8 +87,18 @@ export const exercises_dgl_u3 = {
       '$\\mu(x) = p(x)$',
     ],
     correctIndex: 0,
-    explanation: 'Der integrierende Faktor ist $\\mu(x) = e^{\\int p(x)\\,dx}$. Multipliziert man die DGL damit, ergibt die linke Seite die Ableitung von $(\\mu \\cdot y)\'$.',
-    hints: ['Nach Multiplikation mit $\\mu$ soll gelten: $(\\mu y)\' = \\mu q(x)$.'],
+    explanation: `**Ansatz:** Suche $\\mu$ so, dass $\\mu\\cdot y\'+\\mu p\\cdot y=(\\mu y)\'$. Produktregel erzwingt $\\mu\'=\\mu p$.
+
+**Rechnung:** Lösung der DGL für $\\mu$: $\\mu\'/\\mu=p \\Rightarrow \\ln\\mu=\\int p\\,dx \\Rightarrow \\mu=e^{\\int p\\,dx}$.
+
+**Probe:** $(\\mu y)\'=\\mu\' y+\\mu y\'=\\mu p y+\\mu y\'=\\mu(y\'+py)=\\mu q$ — genau was wir wollten.
+
+**Typischer Fehler:** Vorzeichen $-\\int p$ im Exponenten, oder die Exponentialfunktion vergessen und nur die Stammfunktion als $\\mu$ nehmen.`,
+    hints: [
+      'Forderung: $(\\mu y)\' = \\mu y\' + \\mu p y$ → $\\mu\' = \\mu p$.',
+      'Separable DGL für $\\mu$: $\\frac{d\\mu}{\\mu} = p\\,dx$.',
+      'Integrieren und exponenzieren: $\\mu = e^{\\int p\\,dx}$.',
+    ],
     wrongAnswerExplanations: {
       1: 'Vorzeichenfehler im Exponenten. Aus der Forderung $\\mu\' = \\mu \\cdot p$ folgt $\\mu = e^{+\\int p\\,dx}$ (positives Vorzeichen). Mit $e^{-\\int p\\,dx}$ wäre $\\mu\' = -p\\mu$, und die linke Seite der DGL wird nicht zur Produktableitung.',
       2: 'Ohne Exponentialfunktion erfüllt $\\mu$ nicht die Differentialgleichung $\\mu\'=p\\mu$. Beispiel $p=1$: $\\mu=\\int 1\\,dx=x$ gibt $\\mu\'=1$, aber $p\\mu=x \\neq 1$. Der Exponent muss die Stammfunktion sein *und* in der e-Funktion stehen.',
@@ -71,8 +111,18 @@ export const exercises_dgl_u3 = {
     correctValue: 0.6767,
     tolerance: 0.001,
     unit: '',
-    explanation: 'Allgemeine Lösung: $y = Ce^{-2x}$. Anfangsbedingung: $y(0) = C = 5$. Also $y(1) = 5e^{-2} \\approx 5 \\cdot 0{,}1353 = 0{,}6767$.',
-    hints: ['Trenne Variablen: $\\frac{dy}{y} = -2\\,dx$, integriere.', 'Setze $x = 1$ in $y = 5e^{-2x}$ ein.'],
+    explanation: `**Ansatz:** Homogene lineare DGL 1. Ordnung; Trennung der Variablen liefert Exponentiallösung.
+
+**Rechnung:** Aus $y\'=-2y$: $\\frac{dy}{y}=-2\\,dx \\Rightarrow \\ln|y|=-2x+K \\Rightarrow y=Ce^{-2x}$. AWP $y(0)=5$: $C=5$. Wert: $y(1)=5e^{-2}\\approx 5\\cdot 0{,}1353=0{,}6767$.
+
+**Probe:** $y(0)=5\\cdot 1=5$ ✓; $y\'=-10e^{-2x}=-2\\cdot 5e^{-2x}=-2y$ ✓.
+
+**Typischer Fehler:** Vorzeichen im Exponenten verlieren, oder $e^{-2}\\approx 0{,}1353$ nicht auswendig haben und mit $1/e^2$ verwechseln (ist zwar äquivalent, aber Rechnung wird fehleranfälliger).`,
+    hints: [
+      'Trenne Variablen: $\\frac{dy}{y} = -2\\,dx$, integriere.',
+      'Allgemein: $y = Ce^{-2x}$; $C$ aus AWP bestimmen.',
+      '$e^{-2} \\approx 0{,}1353$.',
+    ],
   },
   'ex-dgl-3-1-f': {
     id: 'ex-dgl-3-1-f', lessonId: 'dgl-3-1', type: 'multiple-choice',
@@ -84,8 +134,18 @@ export const exercises_dgl_u3 = {
       '$y = Ce^x + \\frac{1}{2}e^{-x}$',
     ],
     correctIndex: 0,
-    explanation: 'Homogene Lösung: $y_h = Ce^{-x}$. Partikulärer Ansatz: $y_p = Ae^x$. Einsetzen: $Ae^x + Ae^x = e^x \\Rightarrow 2A = 1 \\Rightarrow A = \\frac{1}{2}$. Allgemein: $y = Ce^{-x} + \\frac{1}{2}e^x$.',
-    hints: ['Zerlege in $y = y_h + y_p$.', 'Für $q(x) = e^x$: Ansatz $y_p = Ae^x$, wenn $e^x$ keine Lösung der homogenen DGL ist.'],
+    explanation: `**Ansatz:** Inhomogene lineare DGL: $y=y_h+y_p$. Homogen: $y\'+y=0$, char. Gleichung $\\lambda+1=0 \\Rightarrow \\lambda=-1$. Partikulär: Ansatz vom Typ der Störfunktion, $y_p=Ae^x$ (da $e^x$ keine homogene Lösung).
+
+**Rechnung:** $y_h=Ce^{-x}$. Einsetzen $y_p=Ae^x$: $Ae^x+Ae^x=e^x \\Rightarrow 2A=1 \\Rightarrow A=1/2$. Allgemein: $y=Ce^{-x}+\\tfrac{1}{2}e^x$.
+
+**Probe:** $y\'=-Ce^{-x}+\\tfrac{1}{2}e^x$; $y\'+y=-Ce^{-x}+\\tfrac{1}{2}e^x+Ce^{-x}+\\tfrac{1}{2}e^x=e^x$ ✓.
+
+**Typischer Fehler:** Den Faktor $1/2$ vergessen — wer $y_p=e^x$ ansetzt, erhält beim Einsetzen $2e^x$ auf der linken Seite, nicht $e^x$.`,
+    hints: [
+      'Zerlege in $y = y_h + y_p$.',
+      'Für $q(x) = e^x$: Ansatz $y_p = Ae^x$, wenn $e^x$ keine Lösung der homogenen DGL ist.',
+      'Einsetzen und Koeffizient $A$ bestimmen: $2A = 1$.',
+    ],
     wrongAnswerExplanations: {
       1: 'Zwei Fehler: Homogene Lösung ist $Ce^{-x}$ (nicht $Ce^x$, denn $y\'+y=0 \\Rightarrow \\lambda=-1$). Außerdem fehlt der Faktor $1/2$ bei der Partikulärlösung: Einsetzen $y_p=e^x$ gibt $e^x+e^x=2e^x \\neq e^x$.',
       2: 'Die Partikulärlösung ist falsch. $y_p=e^{-x}$ *ist* die homogene Lösung (Resonanzfall), also wäre $y_p\'+y_p=0$, nicht $e^x$. Außerdem passt der Ansatztyp nicht: für $q=e^x$ muss $y_p \\propto e^x$ gewählt werden, nicht $e^{-x}$.',
@@ -96,8 +156,18 @@ export const exercises_dgl_u3 = {
     id: 'ex-dgl-3-1-g', lessonId: 'dgl-3-1', type: 'true-false',
     statement: '[PRÜFUNG] Die Gleichung $M(x,y)\\,dx + N(x,y)\\,dy = 0$ ist exakt, wenn $\\frac{\\partial M}{\\partial y} = \\frac{\\partial N}{\\partial x}$ gilt.',
     correct: true,
-    explanation: 'Korrekt. Die Bedingung $M_y = N_x$ ist notwendig und hinreichend dafür, dass ein Potential $F(x,y)$ mit $F_x = M$ und $F_y = N$ existiert. Die Lösung ist dann $F(x,y) = C$.',
-    hints: ['Exakt bedeutet: Die DGL ist das totale Differential von $F$.'],
+    explanation: `**Ansatz:** Exaktheit verlangt, dass $M\\,dx+N\\,dy$ ein totales Differential $dF=F_x\\,dx+F_y\\,dy$ ist. Dann $F_x=M$, $F_y=N$.
+
+**Rechnung:** Satz von Schwarz: $F_{xy}=F_{yx}$, also $M_y=N_x$. Umgekehrt: gilt $M_y=N_x$ auf einfach zusammenhängendem Gebiet, existiert ein Potential $F$ — Bedingung ist also sowohl notwendig als auch hinreichend.
+
+**Probe:** Beispiel $M=y$, $N=x$: $M_y=1=N_x$ → exakt, $F=xy$, Lösung $xy=C$.
+
+**Typischer Fehler:** „$M=N$" mit „$M_y=N_x$" verwechseln — das sind ganz unterschiedliche Bedingungen.`,
+    hints: [
+      'Exakt bedeutet: Die DGL ist das totale Differential von $F$.',
+      'Satz von Schwarz: gemischte partielle Ableitungen kommutieren.',
+      'Bedingung: $\\partial M/\\partial y = \\partial N/\\partial x$ (nicht $M=N$!).',
+    ],
   },
   'ex-dgl-3-1-h': {
     id: 'ex-dgl-3-1-h', lessonId: 'dgl-3-1', type: 'multiple-choice',
@@ -109,8 +179,18 @@ export const exercises_dgl_u3 = {
       'Nicht exakt, da keine Lösung existiert',
     ],
     correctIndex: 0,
-    explanation: '$M = 2xy + y^2 \\Rightarrow M_y = 2x + 2y$. $N = x^2 + 2xy \\Rightarrow N_x = 2x + 2y$. Da $M_y = N_x$ ist die DGL exakt. Potential: $F = x^2y + xy^2$, Lösung: $x^2y + xy^2 = C$.',
-    hints: ['$M_y = \\frac{\\partial}{\\partial y}(2xy + y^2)$; $N_x = \\frac{\\partial}{\\partial x}(x^2 + 2xy)$'],
+    explanation: `**Ansatz:** Exaktheits-Check: $M_y$ und $N_x$ bilden, auf Gleichheit prüfen.
+
+**Rechnung:** $M=2xy+y^2$ → $M_y=2x+2y$. $N=x^2+2xy$ → $N_x=2x+2y$. Gleichheit ✓ exakt. Potential: $F=\\int M\\,dx=x^2y+xy^2+h(y)$, dann $F_y=x^2+2xy+h\'(y)=N=x^2+2xy$ → $h\'(y)=0$ → $h=\\text{const}$. Lösung: $x^2y+xy^2=C$.
+
+**Probe:** Totales Differential: $dF=(2xy+y^2)\\,dx+(x^2+2xy)\\,dy=M\\,dx+N\\,dy$ ✓.
+
+**Typischer Fehler:** $M=N$ oder „gleiche Struktur" als Exaktheitskriterium benutzen. Nur $M_y=N_x$ zählt.`,
+    hints: [
+      '$M_y = \\frac{\\partial}{\\partial y}(2xy + y^2) = 2x + 2y$',
+      '$N_x = \\frac{\\partial}{\\partial x}(x^2 + 2xy) = 2x + 2y$',
+      'Gleichheit der partiellen Ableitungen = Exaktheit.',
+    ],
     wrongAnswerExplanations: {
       1: 'Die partiellen Ableitungen wurden falsch berechnet. Korrekt: $\\partial_y(2xy+y^2)=2x+2y$ und $\\partial_x(x^2+2xy)=2x+2y$. Beide sind gleich, also ist die DGL exakt.',
       2: '$M=N$ ist *nicht* das Kriterium für Exaktheit. Exaktheit verlangt $M_y = N_x$ (Gleichheit der gemischten partiellen Ableitungen, Satz von Schwarz). Hier ist tatsächlich $M = 2xy+y^2 \\neq x^2+2xy = N$, aber die DGL ist trotzdem exakt.',
@@ -126,16 +206,36 @@ export const exercises_dgl_u3 = {
       { left: '$M\\,dx + N\\,dy = 0$ mit $M_y = N_x$', right: 'Exakte DGL (Potentialfunktion)' },
       { left: '$y\' = f\\left(\\frac{y}{x}\\right)$', right: 'Substitution $v = y/x$' },
     ],
-    explanation: 'Jede DGL-Klasse hat ihre bevorzugte Lösungsmethode: Trennbare DGL → Trennung; lineare DGL 1. Ordnung → Int. Faktor; exakte DGL → Potential; homogene DGL (im Sinne von $y/x$) → Substitution.',
-    hints: ['Die Struktur der DGL verrät die Methode.'],
+    explanation: `**Ansatz:** Struktur-Diagnose: Strukturmerkmal → Methode.
+
+**Rechnung:** (1) $f(x)g(y)$ → Variablen trennen. (2) $y\'+p(x)y=q(x)$ → int. Faktor $e^{\\int p\\,dx}$. (3) $M_y=N_x$ → Potential-Ansatz. (4) $y\'=f(y/x)$ → homogen im Sinne $y/x$, Substitution $v=y/x$.
+
+**Probe:** Methode am Beispiel jeweils kurz durchspielen bestätigt die Zuordnung.
+
+**Typischer Fehler:** Methoden nach Gefühl wählen; besser: erst Typ identifizieren, dann Methode anwenden.`,
+    hints: [
+      'Die Struktur der DGL verrät die Methode.',
+      'Sichtbare Merkmale: trennbar, linear, exakt, homogen-im-Quotienten.',
+      'Bei Zweifeln: Bernoulli- oder Riccati-Form prüfen.',
+    ],
   },
   'ex-dgl-3-1-j': {
     id: 'ex-dgl-3-1-j', lessonId: 'dgl-3-1', type: 'multiple-choice',
     question: '[PRÜFUNG] Welchen Wert hat $C$ beim AWP $y\' = \\frac{x}{y}$, $y(0) = 3$? (Allg. Lösung: $y^2 = x^2 + C$)',
     options: ['$C = 3$', '$C = 6$', '$C = 9$', '$C = 0$'],
     correctIndex: 2,
-    explanation: 'Allgemeine Lösung: $y^2 = x^2 + C$. Einsetzen von $y(0) = 3$: $9 = 0 + C \\Rightarrow C = 9$. Die partikuläre Lösung ist $y = \\sqrt{x^2 + 9}$.',
-    hints: ['Setze $x = 0$ und $y = 3$ in die allgemeine Lösung ein.'],
+    explanation: `**Ansatz:** Allgemeine Lösung steht bereit; AWP bestimmt $C$.
+
+**Rechnung:** $y^2=x^2+C$; AWP $y(0)=3$: $3^2=0+C \\Rightarrow C=9$. Partikuläre Lösung: $y=\\sqrt{x^2+9}$.
+
+**Probe:** $y(0)=\\sqrt{9}=3$ ✓; implizit ableiten: $2y\\,y\'=2x \\Rightarrow y\'=x/y$ ✓.
+
+**Typischer Fehler:** $y=3$ statt $y^2=9$ einsetzen. Die implizite Lösung enthält $y^2$, also muss auch der AWP-Wert quadriert werden.`,
+    hints: [
+      'Setze $x = 0$ und $y = 3$ in die allgemeine Lösung ein.',
+      'Achtung: $y^2$, also $y = 3$ bedeutet $y^2 = 9$ (nicht $3$).',
+      'Partikuläre Lösung: $y = \\sqrt{x^2 + 9}$.',
+    ],
     wrongAnswerExplanations: {
       0: 'Hier wurde $y=3$ linear eingesetzt statt $y^2$. Die allgemeine Lösung enthält $y^2$, nicht $y$. Aus $y(0)=3$ folgt $y^2 = 9$, nicht $3$. Also $C=9$.',
       1: '$2y$ statt $y^2$ eingesetzt — Quadrat mit Verdopplung verwechselt. $y^2 = 3^2 = 9$, nicht $2 \\cdot 3 = 6$. Daraus $C=9$.',
@@ -152,8 +252,18 @@ export const exercises_dgl_u3 = {
       '$y = 1 + 2e^{-2x}$',
     ],
     correctIndex: 0,
-    explanation: 'Homogene Lösung: $y_h = Ce^{-2x}$. Partikuläre Lösung (konstanter Ansatz $y_p = A$): $2A = 4 \\Rightarrow A = 2$. Allgemeine Lösung: $y = Ce^{-2x} + 2$. AWP $y(0) = 1$: $C + 2 = 1 \\Rightarrow C = -1$. Ergebnis: $y = 2 - e^{-2x}$.',
-    hints: ['Homogene Lösung: $\\lambda + 2 = 0 \\Rightarrow \\lambda = -2$.', 'Partikulärer Ansatz: $y_p = \\text{const}$, da $q(x) = 4$ konstant ist.'],
+    explanation: `**Ansatz:** Vollständige Lösung eines inhomogenen AWP: (i) homogene Lösung, (ii) partikuläre Lösung passend zur Störfunktion, (iii) Konstante aus AWP.
+
+**Rechnung:** Homogen: $\\lambda+2=0 \\Rightarrow \\lambda=-2$, $y_h=Ce^{-2x}$. Partikulär für $q=4$: Ansatz $y_p=A$ (Konstante), $0+2A=4 \\Rightarrow A=2$. Allgemein: $y=Ce^{-2x}+2$. AWP $y(0)=1$: $C+2=1 \\Rightarrow C=-1$. Lösung: $y=2-e^{-2x}$.
+
+**Probe:** $y(0)=2-1=1$ ✓; $y\'=2e^{-2x}$; $y\'+2y=2e^{-2x}+2(2-e^{-2x})=2e^{-2x}+4-2e^{-2x}=4$ ✓.
+
+**Typischer Fehler:** Konstante $C$ *vor* Addition von $y_p$ aus AWP bestimmen — dann wird $y_p$ nicht mitberücksichtigt und $C$ ist falsch.`,
+    hints: [
+      'Homogene Lösung: $\\lambda + 2 = 0 \\Rightarrow \\lambda = -2$.',
+      'Partikulärer Ansatz: $y_p = \\text{const}$, da $q(x) = 4$ konstant ist.',
+      'Erst $y = y_h + y_p$ aufstellen, dann AWP einsetzen.',
+    ],
     wrongAnswerExplanations: {
       1: 'Vorzeichenfehler bei $C$. Aus $y(0)=1$ und $y_p=2$ folgt $C=1-2=-1$, nicht $+1$. Test: $y(0)=1 \\cdot 1 + 2 = 3 \\neq 1$ — erfüllt die Anfangsbedingung nicht.',
       2: 'Im Exponenten falsches Vorzeichen. Aus $y\'+2y=0$ folgt $\\lambda=-2$, also $y_h=Ce^{-2x}$ (e-Funktion klingt ab, weil $+2y$ zurückzieht). $+2x$ im Exponenten gäbe $y\'-2y=0$.',
