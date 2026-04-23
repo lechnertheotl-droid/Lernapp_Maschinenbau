@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import {
   DndContext,
   PointerSensor,
@@ -42,15 +42,6 @@ export function validate(answer: SortingAnswer, exercise: SortingExercise) {
   }
   const correct = answer.order.every((val, i) => val === exercise.correctOrder[i])
   return { isCorrect: correct }
-}
-
-function initialShuffle(items: string[], seed: number): number[] {
-  const indices = items.map((_, i) => i)
-  for (let i = indices.length - 1; i > 0; i--) {
-    const j = Math.floor((((seed + i * 13) % 97) / 97) * (i + 1))
-    ;[indices[i], indices[j]] = [indices[j], indices[i]]
-  }
-  return indices
 }
 
 function SortableItem({
@@ -109,11 +100,9 @@ function SortableItem({
 }
 
 export function Sorting({ exercise, onSubmit, disabled }: Props) {
-  const shuffled = useMemo(
-    () => initialShuffle(exercise.items, 51),
-    [exercise.items]
-  )
-  const [order, setOrder] = useState<number[]>(shuffled)
+  // `exercise.items` kommt bereits vom Helper in einer Darstellungs-Reihenfolge,
+  // die garantiert NICHT `correctOrder` ist. Wir rendern sie 1:1.
+  const [order, setOrder] = useState<number[]>(() => exercise.items.map((_, i) => i))
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),

@@ -24,7 +24,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [0] Dimensionskonsistenz ─────────────────────────────────────────
     0: [
       ni(
-        'Sub-Goal "Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen": Welche ganze Zahl $n$ muss in der Formel $E_\\text{kin} = \\tfrac{1}{2}\\,m\\,v^n$ stehen, damit die Gleichung auf kinetische Energie in Joule führt?',
+        'Welche ganze Zahl $n$ muss in der Formel $E_\\text{kin} = \\tfrac{1}{2}\\,m\\,v^n$ stehen, damit die Gleichung auf kinetische Energie in Joule führt?',
         2, 0, '',
         `**Ansatz:** Zieleinheit links: $[E] = \\text{J} = \\text{kg}\\cdot\\text{m}^2/\\text{s}^2$. Einheit rechts ohne Vorfaktor: $[m]\\cdot[v]^n = \\text{kg}\\cdot(\\text{m}/\\text{s})^n$. Die beiden müssen gleich sein.
 
@@ -40,7 +40,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen": Welche dieser Formeln ist **dimensional korrekt** für die Leistung $P$?',
+        'Welche dieser Formeln ist **dimensional korrekt** für die Leistung $P$?',
         [
           '$P = F \\cdot v$',
           '$P = F \\cdot s$',
@@ -67,7 +67,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen": Die Formel $a = v \\cdot t$ für die Beschleunigung ist dimensional konsistent.',
+        'Die Formel $a = v \\cdot t$ für die Beschleunigung ist dimensional konsistent.',
         false,
         `**Ansatz:** Links $[a] = \\text{m/s}^2$. Rechts $[v]\\cdot[t] = (\\text{m/s})\\cdot\\text{s} = \\text{m}$. Einheiten stimmen nicht überein.
 
@@ -83,7 +83,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen": Welche Einheit hat die **rechte Seite** jeweils?',
+        'Welche Einheit hat die **rechte Seite** jeweils?',
         [
           { left: '$F\\cdot v$ (mit $[F]=\\text{N}$, $[v]=\\text{m/s}$)', right: 'W (Leistung)' },
           { left: '$m\\cdot v$ (mit $[m]=\\text{kg}$, $[v]=\\text{m/s}$)', right: 'kg·m/s (Impuls)' },
@@ -104,7 +104,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen": Ordne die Schritte einer Dimensionsprüfung.',
+        'Ordne die Schritte einer Dimensionsprüfung.',
         [
           'Zieleinheit der linken Seite festhalten (z. B. N, J, Pa)',
           'Für jede Größe auf der rechten Seite die Einheit notieren',
@@ -131,7 +131,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [1] Basis-SI-Einheiten ───────────────────────────────────────────
     1: [
       mc(
-        'Sub-Goal "Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut": Welche der folgenden Einheiten ist **keine** SI-Basiseinheit?',
+        'Welche der folgenden Einheiten ist **keine** SI-Basiseinheit?',
         [
           'Meter (m)',
           'Kilogramm (kg)',
@@ -158,7 +158,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       matching(
-        'Sub-Goal "Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut": Ordne jeder physikalischen Grundgröße ihre SI-Basiseinheit zu.',
+        'Ordne jeder physikalischen Grundgröße ihre SI-Basiseinheit zu.',
         [
           { left: 'Länge', right: 'm (Meter)' },
           { left: 'Masse', right: 'kg (Kilogramm)' },
@@ -180,7 +180,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut": Das SI-System hat genau **sieben** Basiseinheiten, aus denen alle anderen Einheiten zusammengesetzt werden.',
+        'Das SI-System hat genau **sieben** Basiseinheiten, aus denen alle anderen Einheiten zusammengesetzt werden.',
         true,
         `**Ansatz:** SI-Basiseinheiten: m, kg, s, A, K, mol, cd — das sind 7.
 
@@ -196,7 +196,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut": Drücke die Einheit **Newton** ausschließlich in SI-Basiseinheiten aus: $1\\,\\text{N} = 1\\,\\text{kg}^a \\cdot \\text{m}^b \\cdot \\text{s}^c$. Gib $a + b + |c|$ an.',
+        'Drücke die Einheit **Newton** ausschließlich in SI-Basiseinheiten aus: $1\\,\\text{N} = 1\\,\\text{kg}^a \\cdot \\text{m}^b \\cdot \\text{s}^c$. Gib $a + b + |c|$ an.',
         4, 0, '',
         `**Ansatz:** $F = m\\cdot a$ ⇒ $[F] = [m]\\cdot[a] = \\text{kg}\\cdot\\text{m/s}^2 = \\text{kg}^1\\cdot\\text{m}^1\\cdot\\text{s}^{-2}$.
 
@@ -212,7 +212,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut": Ordne die Einheiten von "direkte Basiseinheit" zu "drei Schritte abgeleitet".',
+        'Ordne die Einheiten von "direkte Basiseinheit" zu "drei Schritte abgeleitet".',
         [
           'Meter (m) — Basiseinheit Länge',
           'Newton (N) — kg·m/s² (1 Schritt: aus F = m·a)',
@@ -238,7 +238,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [2] Pascal-Einheit ───────────────────────────────────────────────
     2: [
       ni(
-        'Sub-Goal "Einheit Pascal: $1\\,\\text{Pa} = 1\\,\\text{N/m}^2 = 1\\,\\text{kg}/(\\text{m}\\cdot\\text{s}^2)$": Wie viele Pascal sind $1\\,\\text{MPa}$?',
+        'Wie viele Pascal sind $1\\,\\text{MPa}$?',
         1000000, 1, 'Pa',
         `**Ansatz:** $1\\,\\text{M} = 10^6$. Präfix "Mega" multipliziert mit Faktor eine Million.
 
@@ -254,7 +254,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Einheit Pascal: $1\\,\\text{Pa} = 1\\,\\text{N/m}^2 = 1\\,\\text{kg}/(\\text{m}\\cdot\\text{s}^2)$": Welche Einheit ist **nicht** äquivalent zu Pascal?',
+        'Welche Einheit ist **nicht** äquivalent zu Pascal?',
         [
           'N/m²',
           'kg/(m·s²)',
@@ -281,7 +281,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Einheit Pascal: $1\\,\\text{Pa} = 1\\,\\text{N/m}^2 = 1\\,\\text{kg}/(\\text{m}\\cdot\\text{s}^2)$": Der Wert $1\\,\\text{N/mm}^2$ entspricht exakt $1\\,\\text{MPa}$.',
+        'Der Wert $1\\,\\text{N/mm}^2$ entspricht exakt $1\\,\\text{MPa}$.',
         true,
         `**Ansatz:** Umrechnen auf Pascal: $1\\,\\text{N/mm}^2 = 1\\,\\text{N}/(10^{-3}\\,\\text{m})^2 = 1\\,\\text{N}/10^{-6}\\,\\text{m}^2 = 10^6\\,\\text{N/m}^2 = 10^6\\,\\text{Pa} = 1\\,\\text{MPa}$.
 
@@ -297,7 +297,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Einheit Pascal: $1\\,\\text{Pa} = 1\\,\\text{N/m}^2 = 1\\,\\text{kg}/(\\text{m}\\cdot\\text{s}^2)$": Ein Überdruck von $2{,}5\\,\\text{bar}$ entspricht wie vielen Kilopascal?',
+        'Ein Überdruck von $2{,}5\\,\\text{bar}$ entspricht wie vielen Kilopascal?',
         250, 0.5, 'kPa',
         `**Ansatz:** $1\\,\\text{bar} = 10^5\\,\\text{Pa} = 100\\,\\text{kPa}$.
 
@@ -313,7 +313,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Einheit Pascal: $1\\,\\text{Pa} = 1\\,\\text{N/m}^2 = 1\\,\\text{kg}/(\\text{m}\\cdot\\text{s}^2)$": Ordne jede Druckangabe ihrem Wert in Pa zu.',
+        'Ordne jede Druckangabe ihrem Wert in Pa zu.',
         [
           { left: '1 hPa', right: '$10^2\\,\\text{Pa} = 100\\,\\text{Pa}$' },
           { left: '1 kPa', right: '$10^3\\,\\text{Pa} = 1000\\,\\text{Pa}$' },
@@ -339,7 +339,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [3] Umrechnungen vor dem Einsetzen ──────────────────────────────
     3: [
       ni(
-        'Sub-Goal "Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen": Eine Querschnittsfläche beträgt $A = 250\\,\\text{mm}^2$. Wie viele m² sind das? (wissenschaftliche Schreibweise erlaubt)',
+        'Eine Querschnittsfläche beträgt $A = 250\\,\\text{mm}^2$. Wie viele m² sind das? (wissenschaftliche Schreibweise erlaubt)',
         0.00025, 0.0000001, 'm²',
         `**Ansatz:** $1\\,\\text{mm} = 10^{-3}\\,\\text{m}$ ⇒ $1\\,\\text{mm}^2 = (10^{-3})^2\\,\\text{m}^2 = 10^{-6}\\,\\text{m}^2$.
 
@@ -355,7 +355,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen": Eine Stange hat $A = 100\\,\\text{mm}^2$ und trägt $F = 50\\,\\text{kN}$. Normalspannung $\\sigma = F/A$ in **MPa**?',
+        'Eine Stange hat $A = 100\\,\\text{mm}^2$ und trägt $F = 50\\,\\text{kN}$. Normalspannung $\\sigma = F/A$ in **MPa**?',
         500, 1, 'MPa',
         `**Ansatz:** Praktiker-Trick: in MPa landet man direkt, wenn $F$ in **N** und $A$ in **mm²** eingesetzt wird — $1\\,\\text{N/mm}^2 = 1\\,\\text{MPa}$.
 
@@ -371,7 +371,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen": Welche Umrechnung ist **falsch**?',
+        'Welche Umrechnung ist **falsch**?',
         [
           '$150\\,\\text{kN} = 150\\,000\\,\\text{N}$',
           '$250\\,\\text{MPa} = 2{,}5\\cdot 10^8\\,\\text{Pa}$',
@@ -398,7 +398,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen": Die Einheiten "N/mm²" und "MPa" haben denselben Zahlenwert — ein Stab mit $\\sigma = 350\\,\\text{MPa}$ trägt also $350\\,\\text{N/mm}^2$.',
+        'Die Einheiten "N/mm²" und "MPa" haben denselben Zahlenwert — ein Stab mit $\\sigma = 350\\,\\text{MPa}$ trägt also $350\\,\\text{N/mm}^2$.',
         true,
         `**Ansatz:** $1\\,\\text{N/mm}^2 = 1\\,\\text{N}/(10^{-3}\\,\\text{m})^2 = 10^6\\,\\text{N/m}^2 = 10^6\\,\\text{Pa} = 1\\,\\text{MPa}$.
 
@@ -414,7 +414,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen": Bringe die Arbeitsschritte einer sauberen Rechnung in die Reihenfolge, die Fehler vermeidet.',
+        'Bringe die Arbeitsschritte einer sauberen Rechnung in die Reihenfolge, die Fehler vermeidet.',
         [
           'Einheitensystem wählen (z. B. alles in SI-Basis, oder alles in N/mm²-Praxis)',
           'Jede Eingabegröße explizit in dieses System umrechnen',
@@ -448,7 +448,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [0] Coulombsches Reibgesetz: $F_R = \mu F_N$ ────────────────────
     0: [
       ni(
-        'Sub-Goal "Coulombsches Reibgesetz: $F_R = \\mu F_N$": Eine Kiste (m = 25 kg) wird auf horizontalem Boden mit Gleitreibwert $\\mu = 0{,}25$ gezogen. Wie groß ist die Reibkraft? ($g = 9{,}81\\,\\text{m/s}^2$; auf 2 Nachkommastellen in Newton)',
+        'Eine Kiste (m = 25 kg) wird auf horizontalem Boden mit Gleitreibwert $\\mu = 0{,}25$ gezogen. Wie groß ist die Reibkraft? ($g = 9{,}81\\,\\text{m/s}^2$; auf 2 Nachkommastellen in Newton)',
         61.31, 0.1, 'N',
         `**Ansatz:** Auf horizontalem Boden trägt die Normalkraft das volle Gewicht: $F_N = mg$. Coulombsches Reibgesetz: $F_R = \\mu F_N$.
 
@@ -464,7 +464,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Coulombsches Reibgesetz: $F_R = \\mu F_N$": Ein Block liegt auf horizontalem Boden. Eine vertikale Zusatzkraft $F_Z = 50\\,\\text{N}$ drückt ihn **zusätzlich** nach unten. Der Block wiegt $mg = 100\\,\\text{N}$ und $\\mu = 0{,}4$. Wie groß ist die Reibkraft beim Gleiten?',
+        'Ein Block liegt auf horizontalem Boden. Eine vertikale Zusatzkraft $F_Z = 50\\,\\text{N}$ drückt ihn **zusätzlich** nach unten. Der Block wiegt $mg = 100\\,\\text{N}$ und $\\mu = 0{,}4$. Wie groß ist die Reibkraft beim Gleiten?',
         ['$40\\,\\text{N}$', '$60\\,\\text{N}$', '$20\\,\\text{N}$', '$100\\,\\text{N}$'],
         1,
         `**Ansatz:** Die Normalkraft setzt sich aus **allen** nach unten wirkenden Kräften zusammen. $F_N = mg + F_Z$ wenn $F_Z$ zusätzlich drückt.
@@ -486,7 +486,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Coulombsches Reibgesetz: $F_R = \\mu F_N$": Die Reibkraft $F_R = \\mu F_N$ hängt von der Auflagefläche ab: je größer die Kontaktfläche, desto größer die Reibkraft.',
+        'Die Reibkraft $F_R = \\mu F_N$ hängt von der Auflagefläche ab: je größer die Kontaktfläche, desto größer die Reibkraft.',
         false,
         `**Ansatz:** Das Coulombsche Reibgesetz enthält nur Reibwert $\\mu$ und Normalkraft $F_N$ — die Kontaktfläche tritt nicht auf. Die Reibkraft ist **flächenunabhängig**.
 
@@ -502,7 +502,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Coulombsches Reibgesetz: $F_R = \\mu F_N$": Ordne jedem Materialpaar den typischen Gleitreibwert zu.',
+        'Ordne jedem Materialpaar den typischen Gleitreibwert zu.',
         [
           { left: 'Stahl / Stahl (trocken)', right: '$\\mu \\approx 0{,}15$' },
           { left: 'Stahl / Stahl (geschmiert)', right: '$\\mu \\approx 0{,}05$' },
@@ -523,7 +523,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Coulombsches Reibgesetz: $F_R = \\mu F_N$": Ein Werkstück (m = 40 kg) soll auf horizontalem Boden gezogen werden. Welcher **Mindestwert** des Gleitreibwerts $\\mu$ ist mit einer Zugkraft $F_Z = 100\\,\\text{N}$ gerade noch überwindbar? (Antwort auf 3 Nachkommastellen)',
+        'Ein Werkstück (m = 40 kg) soll auf horizontalem Boden gezogen werden. Welcher **Mindestwert** des Gleitreibwerts $\\mu$ ist mit einer Zugkraft $F_Z = 100\\,\\text{N}$ gerade noch überwindbar? (Antwort auf 3 Nachkommastellen)',
         0.255, 0.002, '',
         `**Ansatz:** Für gleichmäßiges Gleiten: $F_Z = F_R = \\mu F_N$. Auf horizontaler Fläche $F_N = mg$. Nach $\\mu$ auflösen.
 
@@ -543,7 +543,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [1] Haftreibung > Gleitreibung ──────────────────────────────────
     1: [
       tf(
-        'Sub-Goal "Haftreibwert $\\mu_0$ > Gleitreibwert $\\mu$ (Losreißen braucht mehr Kraft)": Um einen ruhenden Körper in Bewegung zu setzen, muss die aufgebrachte Kraft die Haftreibung $\\mu_0 F_N$ überschreiten — sobald der Körper gleitet, reicht die geringere Gleitreibung $\\mu F_N$.',
+        'Um einen ruhenden Körper in Bewegung zu setzen, muss die aufgebrachte Kraft die Haftreibung $\\mu_0 F_N$ überschreiten — sobald der Körper gleitet, reicht die geringere Gleitreibung $\\mu F_N$.',
         true,
         `**Ansatz:** Haftreibwert $\\mu_0$ gilt für den ruhenden Körper (bis zum Losreißen). Sobald der Körper gleitet, sinkt der effektive Reibwert auf den Gleitreibwert $\\mu < \\mu_0$.
 
@@ -559,7 +559,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Haftreibwert $\\mu_0$ > Gleitreibwert $\\mu$ (Losreißen braucht mehr Kraft)": Ein Block (m = 20 kg) auf horizontalem Boden hat Haftreibwert $\\mu_0 = 0{,}35$ und Gleitreibwert $\\mu = 0{,}25$. Welche Zugkraft ist **minimal nötig**, um den Block in Bewegung zu setzen? ($g = 9{,}81$, auf 1 Nachkommastelle in N)',
+        'Ein Block (m = 20 kg) auf horizontalem Boden hat Haftreibwert $\\mu_0 = 0{,}35$ und Gleitreibwert $\\mu = 0{,}25$. Welche Zugkraft ist **minimal nötig**, um den Block in Bewegung zu setzen? ($g = 9{,}81$, auf 1 Nachkommastelle in N)',
         68.7, 0.2, 'N',
         `**Ansatz:** Zum Losreißen muss die Zugkraft die maximale Haftreibung überschreiten: $F_Z > \\mu_0 F_N$. An der Grenze gilt Gleichheit.
 
@@ -575,7 +575,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Haftreibwert $\\mu_0$ > Gleitreibwert $\\mu$ (Losreißen braucht mehr Kraft)": Ein Block steht still. Ein waagerechter Zug $F_Z = 30\\,\\text{N}$ wirkt, während die maximale Haftreibung $\\mu_0 F_N = 50\\,\\text{N}$ beträgt. Wie groß ist die Reibkraft gerade jetzt?',
+        'Ein Block steht still. Ein waagerechter Zug $F_Z = 30\\,\\text{N}$ wirkt, während die maximale Haftreibung $\\mu_0 F_N = 50\\,\\text{N}$ beträgt. Wie groß ist die Reibkraft gerade jetzt?',
         ['$30\\,\\text{N}$ (entgegen $F_Z$)', '$50\\,\\text{N}$ (maximale Haft)', '$\\mu F_N$ (Gleitreibung)', '$0\\,\\text{N}$ (keine Bewegung)'],
         0,
         `**Ansatz:** Haftreibung ist eine **passive Zwangskraft** — sie stellt sich gerade so ein, dass Gleichgewicht herrscht, **solange** sie nicht ihre Obergrenze $\\mu_0 F_N$ überschreitet.
@@ -597,7 +597,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       sorting(
-        'Sub-Goal "Haftreibwert $\\mu_0$ > Gleitreibwert $\\mu$ (Losreißen braucht mehr Kraft)": Bei wachsender Zugkraft $F_Z$ auf einen ruhenden Körper — bringe die Phasen in die richtige Reihenfolge.',
+        'Bei wachsender Zugkraft $F_Z$ auf einen ruhenden Körper — bringe die Phasen in die richtige Reihenfolge.',
         [
           'Phase 1: $F_Z$ klein — Körper ruht, Haftreibung $F_R = F_Z$ (passive Anpassung)',
           'Phase 2: $F_Z$ erreicht $\\mu_0 F_N$ — Haftreibung am Maximum, Körper steht noch',
@@ -620,7 +620,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Haftreibwert $\\mu_0$ > Gleitreibwert $\\mu$ (Losreißen braucht mehr Kraft)": Ordne jedem Zustand den zutreffenden Reibwert zu.',
+        'Ordne jedem Zustand den zutreffenden Reibwert zu.',
         [
           { left: 'Ruhender Körper, Zugkraft < Grenzwert', right: 'Haftreibung, aktuell $F_R = F_Z < \\mu_0 F_N$' },
           { left: 'Körper kurz vor Losreißen', right: 'Haftreibung am Maximum: $F_R = \\mu_0 F_N$' },
@@ -645,7 +645,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [2] Geneigte Ebene: $F_N = mg\cos\alpha$, $F_H = mg\sin\alpha$ ──
     2: [
       ni(
-        'Sub-Goal "Auf geneigter Ebene: $F_N = mg\\cos\\alpha$, $F_H = mg\\sin\\alpha$": Ein Körper (m = 10 kg) liegt auf einer geneigten Ebene mit $\\alpha = 20°$. Wie groß ist die Normalkraft? ($g = 9{,}81$, auf 2 Nachkommastellen in N)',
+        'Ein Körper (m = 10 kg) liegt auf einer geneigten Ebene mit $\\alpha = 20°$. Wie groß ist die Normalkraft? ($g = 9{,}81$, auf 2 Nachkommastellen in N)',
         92.18, 0.1, 'N',
         `**Ansatz:** Zerlegung der Gewichtskraft $mg$ in Komponenten: senkrecht zur Ebene (Normalkraft) und parallel (Hangabtrieb). Normalkraft $F_N = mg\\cos\\alpha$.
 
@@ -661,7 +661,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Auf geneigter Ebene: $F_N = mg\\cos\\alpha$, $F_H = mg\\sin\\alpha$": Gleicher Körper (m = 10 kg) auf $\\alpha = 20°$ Ebene. Wie groß ist die Hangabtriebskraft? (auf 2 Nachkommastellen in N)',
+        'Gleicher Körper (m = 10 kg) auf $\\alpha = 20°$ Ebene. Wie groß ist die Hangabtriebskraft? (auf 2 Nachkommastellen in N)',
         33.55, 0.1, 'N',
         `**Ansatz:** Hangabtrieb $F_H$ = Komponente der Gewichtskraft **entlang** der Ebene abwärts. $F_H = mg\\sin\\alpha$.
 
@@ -679,7 +679,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Auf geneigter Ebene: $F_N = mg\\cos\\alpha$, $F_H = mg\\sin\\alpha$": Wieso taucht **derselbe Winkel** $\\alpha$ im Zerlegungsdreieck des Gewichtsvektors auf wie der Neigungswinkel der Ebene?',
+        'Wieso taucht **derselbe Winkel** $\\alpha$ im Zerlegungsdreieck des Gewichtsvektors auf wie der Neigungswinkel der Ebene?',
         [
           'Wechselwinkel: zwei parallele Linien (Gewichtsrichtung vertikal, Normale zur Ebene) schneiden durch eine dritte Linie (Ebene) — Winkel auf der geneigten Seite sind gleich',
           'Nur Zufall, meistens ist er leicht anders',
@@ -706,7 +706,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Auf geneigter Ebene: $F_N = mg\\cos\\alpha$, $F_H = mg\\sin\\alpha$": Für einen reibungsfreien Körper auf geneigter Ebene ergibt sich die Beschleunigung zu $a = g\\sin\\alpha$ — unabhängig von der Masse.',
+        'Für einen reibungsfreien Körper auf geneigter Ebene ergibt sich die Beschleunigung zu $a = g\\sin\\alpha$ — unabhängig von der Masse.',
         true,
         `**Ansatz:** Ohne Reibung wirkt nur der Hangabtrieb $F_H = mg\\sin\\alpha$. Nach Newton: $F = ma$, also $mg\\sin\\alpha = ma \\Rightarrow a = g\\sin\\alpha$.
 
@@ -722,7 +722,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Auf geneigter Ebene: $F_N = mg\\cos\\alpha$, $F_H = mg\\sin\\alpha$": Bringe die Schritte der Reibungs-Analyse auf geneigter Ebene in die richtige Reihenfolge.',
+        'Bringe die Schritte der Reibungs-Analyse auf geneigter Ebene in die richtige Reihenfolge.',
         [
           'Freikörperbild: Körper auf Ebene mit Gewicht, Normalkraft, Reibkraft, evtl. Zugkraft',
           'Koordinatensystem wählen: Achse entlang der Ebene, senkrecht dazu',
@@ -749,7 +749,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [3] Selbsthemmung: $\tan\alpha \leq \mu_0$ ──────────────────────
     3: [
       mc(
-        'Sub-Goal "Selbsthemmung: Körper gleitet nicht, solange $\\tan\\alpha \\leq \\mu_0$": Ein Körper auf einer Ebene mit Haftreibwert $\\mu_0 = 0{,}4$. Bei welcher Neigung beginnt der Körper gerade zu rutschen?',
+        'Ein Körper auf einer Ebene mit Haftreibwert $\\mu_0 = 0{,}4$. Bei welcher Neigung beginnt der Körper gerade zu rutschen?',
         ['$\\alpha = 21{,}8°$', '$\\alpha = 40°$', '$\\alpha = 66{,}4°$', '$\\alpha = 90°$'],
         0,
         `**Ansatz:** Selbsthemmung bricht zusammen, wenn $\\tan\\alpha = \\mu_0$. Grenzfall: $\\tan\\alpha_{\\text{krit}} = \\mu_0 \\Rightarrow \\alpha_{\\text{krit}} = \\arctan(\\mu_0)$.
@@ -771,7 +771,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Selbsthemmung: Körper gleitet nicht, solange $\\tan\\alpha \\leq \\mu_0$": Ein Keil mit Neigung $\\alpha = 10°$ klemmt ein Werkstück gegen eine Wand. Wie groß muss $\\mu_0$ **mindestens** sein, damit der Keil nicht herausrutscht? (auf 3 Nachkommastellen)',
+        'Ein Keil mit Neigung $\\alpha = 10°$ klemmt ein Werkstück gegen eine Wand. Wie groß muss $\\mu_0$ **mindestens** sein, damit der Keil nicht herausrutscht? (auf 3 Nachkommastellen)',
         0.176, 0.002, '',
         `**Ansatz:** Selbsthemmung am Keil: Der Keil hält nur, wenn die Rückstellkraft die Haftreibung nicht überschreitet. Grenzfall: $\\tan\\alpha \\leq \\mu_0$.
 
@@ -787,7 +787,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Selbsthemmung: Körper gleitet nicht, solange $\\tan\\alpha \\leq \\mu_0$": Die Selbsthemmung-Grenze ist massenunabhängig: ob ein 1-kg-Block oder ein 1-Tonnen-Block, die kritische Neigung ist dieselbe.',
+        'Die Selbsthemmung-Grenze ist massenunabhängig: ob ein 1-kg-Block oder ein 1-Tonnen-Block, die kritische Neigung ist dieselbe.',
         true,
         `**Ansatz:** Gleichgewicht parallel zur Ebene: $mg\\sin\\alpha \\leq \\mu_0 mg\\cos\\alpha$. Masse und $g$ kürzen sich. Übrig: $\\tan\\alpha \\leq \\mu_0$.
 
@@ -803,7 +803,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Selbsthemmung: Körper gleitet nicht, solange $\\tan\\alpha \\leq \\mu_0$": Ein Schraubgewinde ist **selbsthemmend**, wenn der Steigungswinkel kleiner als der Reibwinkel ist. Welches Gewinde garantiert sichere Fixierung ohne Kontermutter?',
+        'Ein Schraubgewinde ist **selbsthemmend**, wenn der Steigungswinkel kleiner als der Reibwinkel ist. Welches Gewinde garantiert sichere Fixierung ohne Kontermutter?',
         [
           'Steigungswinkel $\\alpha = 3°$, Reibwinkel $\\rho = 8°$ (fest, $\\alpha < \\rho$)',
           'Steigungswinkel $\\alpha = 10°$, Reibwinkel $\\rho = 5°$ (rutscht)',
@@ -830,7 +830,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       sorting(
-        'Sub-Goal "Selbsthemmung: Körper gleitet nicht, solange $\\tan\\alpha \\leq \\mu_0$": Bringe die Schritte der Selbsthemm-Prüfung für eine Förderband-Neigung in die richtige Reihenfolge.',
+        'Bringe die Schritte der Selbsthemm-Prüfung für eine Förderband-Neigung in die richtige Reihenfolge.',
         [
           'Reibwerte recherchieren (Riemen / Paket-Oberfläche), besonders $\\mu_0$',
           'Kritische Neigung berechnen: $\\alpha_{\\text{krit}} = \\arctan(\\mu_0)$',
@@ -857,7 +857,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [4] Reibwinkel $\rho = \arctan\mu$ ──────────────────────────────
     4: [
       ni(
-        'Sub-Goal "Reibwinkel $\\rho = \\arctan\\mu$: Neigung, bei der Körper gerade zu gleiten beginnt": Ein Material hat Haftreibwert $\\mu_0 = 0{,}577$. Wie groß ist der Reibwinkel $\\rho$? (in Grad, auf ganze Zahlen)',
+        'Ein Material hat Haftreibwert $\\mu_0 = 0{,}577$. Wie groß ist der Reibwinkel $\\rho$? (in Grad, auf ganze Zahlen)',
         30, 0.5, '°',
         `**Ansatz:** Reibwinkel $\\rho = \\arctan(\\mu_0)$.
 
@@ -873,7 +873,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Reibwinkel $\\rho = \\arctan\\mu$: Neigung, bei der Körper gerade zu gleiten beginnt": Ordne jedem Haftreibwert den zugehörigen Reibwinkel zu.',
+        'Ordne jedem Haftreibwert den zugehörigen Reibwinkel zu.',
         [
           { left: '$\\mu_0 = 0{,}2$', right: '$\\rho \\approx 11{,}3°$' },
           { left: '$\\mu_0 = 0{,}5$', right: '$\\rho \\approx 26{,}6°$' },
@@ -894,7 +894,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Reibwinkel $\\rho = \\arctan\\mu$: Neigung, bei der Körper gerade zu gleiten beginnt": Der Reibwinkel ist genau der Winkel zwischen der Richtung der resultierenden Kontaktkraft (Normal + Reibung) und der Flächennormale.',
+        'Der Reibwinkel ist genau der Winkel zwischen der Richtung der resultierenden Kontaktkraft (Normal + Reibung) und der Flächennormale.',
         true,
         `**Ansatz:** Die resultierende Kontaktkraft hat Normal-Komponente $F_N$ und maximale Reib-Komponente $\\mu_0 F_N$. Winkel zur Normale: $\\tan\\phi = (\\mu_0 F_N)/F_N = \\mu_0 \\Rightarrow \\phi = \\arctan\\mu_0 = \\rho$.
 
@@ -910,7 +910,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Reibwinkel $\\rho = \\arctan\\mu$: Neigung, bei der Körper gerade zu gleiten beginnt": Wie ist der Reibwinkel in einem **Selbsthemmungskriterium** zu verwenden?',
+        'Wie ist der Reibwinkel in einem **Selbsthemmungskriterium** zu verwenden?',
         [
           'Selbsthemmung genau, wenn Neigungswinkel $\\alpha \\leq \\rho$',
           'Selbsthemmung genau, wenn $\\alpha > \\rho$',
@@ -937,7 +937,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Reibwinkel $\\rho = \\arctan\\mu$: Neigung, bei der Körper gerade zu gleiten beginnt": Ein Versuchsaufbau: Eine Ebene wird so lange geneigt, bis ein aufgelegter Stahlklotz gerade zu rutschen beginnt — bei $\\alpha = 11{,}31°$. Welcher Haftreibwert $\\mu_0$ lässt sich daraus bestimmen? (auf 2 Nachkommastellen)',
+        'Ein Versuchsaufbau: Eine Ebene wird so lange geneigt, bis ein aufgelegter Stahlklotz gerade zu rutschen beginnt — bei $\\alpha = 11{,}31°$. Welcher Haftreibwert $\\mu_0$ lässt sich daraus bestimmen? (auf 2 Nachkommastellen)',
         0.2, 0.005, '',
         `**Ansatz:** Der gemessene Rutschwinkel **ist** per Definition der Reibwinkel $\\rho$. Umgekehrt: $\\mu_0 = \\tan\\rho$.
 
@@ -964,7 +964,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [0] Diskrete Massen: $x_S = \sum m_i x_i / \sum m_i$ ────────────
     0: [
       ni(
-        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Drei Massen liegen auf einer Stange: $m_1 = 2\\,\\text{kg}$ bei $x_1 = 0\\,\\text{m}$, $m_2 = 3\\,\\text{kg}$ bei $x_2 = 1\\,\\text{m}$, $m_3 = 5\\,\\text{kg}$ bei $x_3 = 4\\,\\text{m}$. Wo liegt der Schwerpunkt? (auf 2 Nachkommastellen)',
+        'Drei Massen liegen auf einer Stange: $m_1 = 2\\,\\text{kg}$ bei $x_1 = 0\\,\\text{m}$, $m_2 = 3\\,\\text{kg}$ bei $x_2 = 1\\,\\text{m}$, $m_3 = 5\\,\\text{kg}$ bei $x_3 = 4\\,\\text{m}$. Wo liegt der Schwerpunkt? (auf 2 Nachkommastellen)',
         2.3, 0.01, 'm',
         `**Ansatz:** Massengewichtetes Mittel: $x_S = \\sum m_i x_i / \\sum m_i$.
 
@@ -980,7 +980,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Zwei Massen auf einer Stange: $m_1 = 4\\,\\text{kg}$ bei $x_1 = 1\\,\\text{m}$ und $m_2 = 1\\,\\text{kg}$ bei $x_2 = 6\\,\\text{m}$. Wo liegt $x_S$?',
+        'Zwei Massen auf einer Stange: $m_1 = 4\\,\\text{kg}$ bei $x_1 = 1\\,\\text{m}$ und $m_2 = 1\\,\\text{kg}$ bei $x_2 = 6\\,\\text{m}$. Wo liegt $x_S$?',
         ['$x_S = 2\\,\\text{m}$', '$x_S = 3{,}5\\,\\text{m}$', '$x_S = 5\\,\\text{m}$', '$x_S = 1{,}4\\,\\text{m}$'],
         0,
         `**Ansatz:** $x_S = (m_1 x_1 + m_2 x_2)/(m_1 + m_2)$.
@@ -1002,7 +1002,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Vier gleich schwere Kugeln ($m = 2\\,\\text{kg}$ jede) liegen bei $x = 0, 2, 5, 9\\,\\text{m}$. Wo ist $x_S$?',
+        'Vier gleich schwere Kugeln ($m = 2\\,\\text{kg}$ jede) liegen bei $x = 0, 2, 5, 9\\,\\text{m}$. Wo ist $x_S$?',
         4, 0.01, 'm',
         `**Ansatz:** Bei gleichen Massen reduziert sich die Formel auf das arithmetische Mittel der Positionen: $x_S = (x_1 + x_2 + \\dots + x_n)/n$.
 
@@ -1018,7 +1018,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Die Schwerpunktformel liefert auch für dreidimensionale Massensysteme komponentenweise die Schwerpunktkoordinaten: $x_S, y_S, z_S$ werden mit derselben Formel unabhängig voneinander berechnet.',
+        'Die Schwerpunktformel liefert auch für dreidimensionale Massensysteme komponentenweise die Schwerpunktkoordinaten: $x_S, y_S, z_S$ werden mit derselben Formel unabhängig voneinander berechnet.',
         true,
         `**Ansatz:** Vektorwertig: $\\vec r_S = \\sum m_i \\vec r_i / \\sum m_i$. Komponentenweise: $x_S = \\sum m_i x_i / M$, analog $y_S, z_S$. Die drei Gleichungen sind entkoppelt.
 
@@ -1034,7 +1034,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Ordne jeder Situation die korrekte Schwerpunkt-Aussage zu.',
+        'Ordne jeder Situation die korrekte Schwerpunkt-Aussage zu.',
         [
           { left: 'Zwei gleiche Massen bei $x_1$ und $x_2$', right: '$x_S = (x_1 + x_2)/2$ (arithm. Mittel)' },
           { left: 'Massen $m$ und $3m$ bei $x=0$ und $x=4$', right: '$x_S = 3$ (näher an der größeren Masse)' },
@@ -1055,7 +1055,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$": Fünf Kugeln: $m_1 = 1\\,\\text{kg}$ bei $x=0$, $m_2 = 2\\,\\text{kg}$ bei $x=1$, $m_3 = 3\\,\\text{kg}$ bei $x=2$, $m_4 = 2\\,\\text{kg}$ bei $x=3$, $m_5 = 1\\,\\text{kg}$ bei $x=4$. Wo liegt der Schwerpunkt? (auf 1 Nachkommastelle)',
+        'Fünf Kugeln: $m_1 = 1\\,\\text{kg}$ bei $x=0$, $m_2 = 2\\,\\text{kg}$ bei $x=1$, $m_3 = 3\\,\\text{kg}$ bei $x=2$, $m_4 = 2\\,\\text{kg}$ bei $x=3$, $m_5 = 1\\,\\text{kg}$ bei $x=4$. Wo liegt der Schwerpunkt? (auf 1 Nachkommastelle)',
         2, 0.05, 'm',
         `**Ansatz:** Die Massenverteilung ist symmetrisch um $x = 2$ (gleiche Massen im gleichen Abstand). Daher muss $x_S$ genau auf der Symmetrieachse liegen.
 
@@ -1075,7 +1075,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [1] Zusammengesetzte Flächen: Summenregel ───────────────────────
     1: [
       ni(
-        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Ein T-Profil besteht aus einem horizontalen Rechteck $R_1$ ($100 \\times 20\\,\\text{mm}$, $x_{S1} = 50\\,\\text{mm}$, $y_{S1} = 90\\,\\text{mm}$) und einem vertikalen Rechteck $R_2$ ($20 \\times 80\\,\\text{mm}$, $x_{S2} = 50\\,\\text{mm}$, $y_{S2} = 40\\,\\text{mm}$). Berechne $y_S$ des gesamten T-Profils. (auf 1 Nachkommastelle)',
+        'Ein T-Profil besteht aus einem horizontalen Rechteck $R_1$ ($100 \\times 20\\,\\text{mm}$, $x_{S1} = 50\\,\\text{mm}$, $y_{S1} = 90\\,\\text{mm}$) und einem vertikalen Rechteck $R_2$ ($20 \\times 80\\,\\text{mm}$, $x_{S2} = 50\\,\\text{mm}$, $y_{S2} = 40\\,\\text{mm}$). Berechne $y_S$ des gesamten T-Profils. (auf 1 Nachkommastelle)',
         67.8, 0.2, 'mm',
         `**Ansatz:** Flächengewichtetes Mittel in $y$: $y_S = (A_1 y_{S1} + A_2 y_{S2})/(A_1 + A_2)$. Bei homogenem Material ersetzt $A_i$ die Masse.
 
@@ -1091,7 +1091,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Bei einem Profil aus zwei Rechtecken (gleiche Fläche $A$, Schwerpunkte $x_{S1}$ und $x_{S2}$) — wo liegt der Gesamtschwerpunkt?',
+        'Bei einem Profil aus zwei Rechtecken (gleiche Fläche $A$, Schwerpunkte $x_{S1}$ und $x_{S2}$) — wo liegt der Gesamtschwerpunkt?',
         [
           'In der Mitte zwischen $x_{S1}$ und $x_{S2}$: $x_S = (x_{S1}+x_{S2})/2$',
           'Beim größeren Teilschwerpunkt',
@@ -1118,7 +1118,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Ein Profil besteht aus einem Quadrat ($100 \\times 100\\,\\text{mm}$, $x_{S1} = 50\\,\\text{mm}$) und einem angesetzten Rechteck ($200 \\times 50\\,\\text{mm}$, Schwerpunkt $x_{S2} = 200\\,\\text{mm}$ rechts vom Quadrat, bezogen auf denselben Ursprung). Wo liegt $x_S$?',
+        'Ein Profil besteht aus einem Quadrat ($100 \\times 100\\,\\text{mm}$, $x_{S1} = 50\\,\\text{mm}$) und einem angesetzten Rechteck ($200 \\times 50\\,\\text{mm}$, Schwerpunkt $x_{S2} = 200\\,\\text{mm}$ rechts vom Quadrat, bezogen auf denselben Ursprung). Wo liegt $x_S$?',
         125, 0.5, 'mm',
         `**Ansatz:** $x_S = (A_1 x_{S1} + A_2 x_{S2})/(A_1 + A_2)$.
 
@@ -1134,7 +1134,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Für homogene Platten (konstante Dicke und Dichte) liefert die Flächen-Schwerpunktformel dasselbe Ergebnis wie die Massen-Schwerpunktformel.',
+        'Für homogene Platten (konstante Dicke und Dichte) liefert die Flächen-Schwerpunktformel dasselbe Ergebnis wie die Massen-Schwerpunktformel.',
         true,
         `**Ansatz:** Bei homogenem Material gilt $m_i = \\rho \\cdot t \\cdot A_i$ (Dichte $\\rho$, Dicke $t$, Fläche $A_i$). In der Schwerpunktformel kürzen sich $\\rho$ und $t$.
 
@@ -1150,7 +1150,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Bringe die Schritte zur Berechnung des Flächenschwerpunkts eines zusammengesetzten Profils in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Berechnung des Flächenschwerpunkts eines zusammengesetzten Profils in die richtige Reihenfolge.',
         [
           'Koordinatensystem wählen (Ursprung an markanter Ecke)',
           'Profil in Teilflächen zerlegen (Rechtecke, Dreiecke, Kreissegmente)',
@@ -1173,7 +1173,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Zusammengesetzte Flächen: $x_S = \\sum A_i x_{S,i} / \\sum A_i$": Ein I-Profil (Doppel-T) besteht aus drei Rechtecken: Obergurt ($120 \\times 15\\,\\text{mm}$, $y_S = 142{,}5\\,\\text{mm}$), Steg ($15 \\times 120\\,\\text{mm}$, $y_S = 75\\,\\text{mm}$), Untergurt ($120 \\times 15\\,\\text{mm}$, $y_S = 7{,}5\\,\\text{mm}$). Wo liegt der Schwerpunkt $y_S$? (auf 1 Nachkommastelle)',
+        'Ein I-Profil (Doppel-T) besteht aus drei Rechtecken: Obergurt ($120 \\times 15\\,\\text{mm}$, $y_S = 142{,}5\\,\\text{mm}$), Steg ($15 \\times 120\\,\\text{mm}$, $y_S = 75\\,\\text{mm}$), Untergurt ($120 \\times 15\\,\\text{mm}$, $y_S = 7{,}5\\,\\text{mm}$). Wo liegt der Schwerpunkt $y_S$? (auf 1 Nachkommastelle)',
         75, 0.5, 'mm',
         `**Ansatz:** Das I-Profil ist **symmetrisch** um die Mittelebene. Der Schwerpunkt muss dort liegen — hier $y_S = 75\\,\\text{mm}$.
 
@@ -1193,7 +1193,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [2] Loch als negative Fläche ────────────────────────────────────
     2: [
       ni(
-        'Sub-Goal "Loch als negative Fläche subtrahieren": Eine quadratische Platte ($200 \\times 200\\,\\text{mm}$) hat ein kreisrundes Loch (Radius $r = 30\\,\\text{mm}$) mit Mittelpunkt bei $x = 60\\,\\text{mm}$, $y = 100\\,\\text{mm}$. Wo liegt $x_S$ der gelochten Platte? (Ursprung in der linken unteren Ecke, auf 2 Nachkommastellen)',
+        'Eine quadratische Platte ($200 \\times 200\\,\\text{mm}$) hat ein kreisrundes Loch (Radius $r = 30\\,\\text{mm}$) mit Mittelpunkt bei $x = 60\\,\\text{mm}$, $y = 100\\,\\text{mm}$. Wo liegt $x_S$ der gelochten Platte? (Ursprung in der linken unteren Ecke, auf 2 Nachkommastellen)',
         103.04, 0.2, 'mm',
         `**Ansatz:** Loch behandeln wie negative Fläche: $x_S = (A_\\text{Voll} \\cdot x_\\text{S,Voll} - A_\\text{Loch} \\cdot x_\\text{S,Loch})/(A_\\text{Voll} - A_\\text{Loch})$.
 
@@ -1209,7 +1209,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Loch als negative Fläche subtrahieren": Eine symmetrische Scheibe hat ein rundes Loch **oberhalb** der Mitte gebohrt. In welche Richtung verschiebt sich der Schwerpunkt gegenüber der unversehrten Scheibe?',
+        'Eine symmetrische Scheibe hat ein rundes Loch **oberhalb** der Mitte gebohrt. In welche Richtung verschiebt sich der Schwerpunkt gegenüber der unversehrten Scheibe?',
         [
           'Nach unten (weg vom Loch)',
           'Nach oben (zum Loch hin)',
@@ -1236,7 +1236,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Loch als negative Fläche subtrahieren": Eine rechteckige Platte ($60 \\times 40\\,\\text{mm}$) hat ein quadratisches Loch ($20 \\times 20\\,\\text{mm}$) mit Mittelpunkt bei $x = 15\\,\\text{mm}$, $y = 20\\,\\text{mm}$ gebohrt (Ursprung in der linken unteren Ecke). Wo liegt $x_S$ der gelochten Platte? (auf 2 Nachkommastellen)',
+        'Eine rechteckige Platte ($60 \\times 40\\,\\text{mm}$) hat ein quadratisches Loch ($20 \\times 20\\,\\text{mm}$) mit Mittelpunkt bei $x = 15\\,\\text{mm}$, $y = 20\\,\\text{mm}$ gebohrt (Ursprung in der linken unteren Ecke). Wo liegt $x_S$ der gelochten Platte? (auf 2 Nachkommastellen)',
         33, 0.05, 'mm',
         `**Ansatz:** Negative Fläche: $x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$.
 
@@ -1252,7 +1252,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Loch als negative Fläche subtrahieren": Ordne jedem Szenario die richtige Formel zu.',
+        'Ordne jedem Szenario die richtige Formel zu.',
         [
           { left: 'Platte mit einem Loch', right: '$x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$' },
           { left: 'Zwei angesetzte Flächen', right: '$x_S = (A_1 x_1 + A_2 x_2)/(A_1 + A_2)$' },
@@ -1273,7 +1273,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Loch als negative Fläche subtrahieren": Wenn ein Loch **im Schwerpunkt** des Vollkörpers liegt, ändert sich die Schwerpunktposition durch das Loch nicht.',
+        'Wenn ein Loch **im Schwerpunkt** des Vollkörpers liegt, ändert sich die Schwerpunktposition durch das Loch nicht.',
         true,
         `**Ansatz:** $x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$. Falls $x_L = x_V$: $x_S = (A_V x_V - A_L x_V)/(A_V - A_L) = x_V (A_V - A_L)/(A_V - A_L) = x_V$.
 
@@ -1289,7 +1289,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Loch als negative Fläche subtrahieren": Bringe die Schritte zur Berechnung des Schwerpunkts einer gelochten Platte in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Berechnung des Schwerpunkts einer gelochten Platte in die richtige Reihenfolge.',
         [
           'Vollkörper und Loch getrennt definieren (Geometrie, Lage)',
           'Fläche und Schwerpunkt des Vollkörpers bestimmen: $A_V$, $x_V$',
@@ -1316,7 +1316,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [3] Symmetrie ausnutzen ─────────────────────────────────────────
     3: [
       tf(
-        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Bei einer homogenen Fläche mit zwei zueinander senkrechten Symmetrieachsen liegt der Schwerpunkt exakt im Schnittpunkt beider Achsen.',
+        'Bei einer homogenen Fläche mit zwei zueinander senkrechten Symmetrieachsen liegt der Schwerpunkt exakt im Schnittpunkt beider Achsen.',
         true,
         `**Ansatz:** Jede Symmetrieachse zwingt den Schwerpunkt auf sich. Zwei Achsen → Schnittpunkt ist der einzige Punkt auf beiden.
 
@@ -1332,7 +1332,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Ein gleichseitiges Dreieck (Seitenlänge $a$) ist homogen. Wo liegt der Schwerpunkt?',
+        'Ein gleichseitiges Dreieck (Seitenlänge $a$) ist homogen. Wo liegt der Schwerpunkt?',
         [
           'Im Schnittpunkt der drei Seitenhalbierenden (Schwerpunkt, 1/3 von der Basis)',
           'In der Mitte des Dreiecks (Höhe/2)',
@@ -1359,7 +1359,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Ein Kreisring hat Außenradius $R = 50\\,\\text{mm}$ und Innenradius $r = 20\\,\\text{mm}$. Wie weit liegt der Schwerpunkt vom Mittelpunkt entfernt?',
+        'Ein Kreisring hat Außenradius $R = 50\\,\\text{mm}$ und Innenradius $r = 20\\,\\text{mm}$. Wie weit liegt der Schwerpunkt vom Mittelpunkt entfernt?',
         0, 0.01, 'mm',
         `**Ansatz:** Ein Kreisring ist **zentralsymmetrisch** (unendlich viele Symmetrieachsen durch den Mittelpunkt). Der Schwerpunkt muss auf allen liegen — nur der Mittelpunkt selbst erfüllt das.
 
@@ -1375,7 +1375,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Ordne jedem Körper die Lage seines Schwerpunkts zu.',
+        'Ordne jedem Körper die Lage seines Schwerpunkts zu.',
         [
           { left: 'Homogene Kugel', right: 'Kugelmittelpunkt (Zentralsymmetrie)' },
           { left: 'Homogener Zylinder', right: 'Auf der Zylinderachse, auf halber Höhe' },
@@ -1396,7 +1396,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Bringe die Checkliste "Symmetrie vor Rechnung" in die richtige Reihenfolge.',
+        'Bringe die Checkliste "Symmetrie vor Rechnung" in die richtige Reihenfolge.',
         [
           'Körper skizzieren und Geometrie klären',
           'Alle Symmetrieachsen / Symmetrieebenen eintragen',
@@ -1419,7 +1419,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse": Ein symmetrisches T-Profil (Obergurt $100 \\times 10\\,\\text{mm}$ zentriert über Steg $10 \\times 80\\,\\text{mm}$) wird vertikal durch seine Symmetrieachse (Mitte des Stegs) betrachtet. Wie groß ist $x_S$ gemessen vom linken Rand des Obergurts? (auf 1 Nachkommastelle)',
+        'Ein symmetrisches T-Profil (Obergurt $100 \\times 10\\,\\text{mm}$ zentriert über Steg $10 \\times 80\\,\\text{mm}$) wird vertikal durch seine Symmetrieachse (Mitte des Stegs) betrachtet. Wie groß ist $x_S$ gemessen vom linken Rand des Obergurts? (auf 1 Nachkommastelle)',
         50, 0.1, 'mm',
         `**Ansatz:** Das T-Profil hat eine **vertikale** Symmetrieachse (Mitte von Obergurt und Steg). Der Schwerpunkt liegt auf dieser Achse.
 
@@ -1439,7 +1439,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [4] Standardflächen auswendig ───────────────────────────────────
     4: [
       matching(
-        'Sub-Goal "Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\\pi)$": Ordne jeder Standardfläche ihre Schwerpunkt-Position zu (gemessen entlang der Symmetrieachse von der Basis bzw. vom Mittelpunkt aus).',
+        'Ordne jeder Standardfläche ihre Schwerpunkt-Position zu (gemessen entlang der Symmetrieachse von der Basis bzw. vom Mittelpunkt aus).',
         [
           { left: 'Rechteck (Basis $b$, Höhe $h$)', right: 'Schwerpunkt in der Mitte: $h/2$ über der Basis' },
           { left: 'Dreieck (Basis $b$, Höhe $h$)', right: 'Schwerpunkt bei $h/3$ über der Basis (nahe der Basis)' },
@@ -1460,7 +1460,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\\pi)$": Wo liegt der Schwerpunkt eines Halbkreises mit Radius $r = 30\\,\\text{mm}$, gemessen vom Durchmesser? (auf 2 Nachkommastellen)',
+        'Wo liegt der Schwerpunkt eines Halbkreises mit Radius $r = 30\\,\\text{mm}$, gemessen vom Durchmesser? (auf 2 Nachkommastellen)',
         12.73, 0.05, 'mm',
         `**Ansatz:** Standardformel: Schwerpunktabstand Halbkreis vom Durchmesser ist $y_S = 4r/(3\\pi)$.
 
@@ -1476,7 +1476,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\\pi)$": Ein Dreieck hat Höhe $h = 90\\,\\text{mm}$. Wo liegt der Schwerpunkt gemessen **von der Spitze** aus?',
+        'Ein Dreieck hat Höhe $h = 90\\,\\text{mm}$. Wo liegt der Schwerpunkt gemessen **von der Spitze** aus?',
         ['$y_S = 60\\,\\text{mm}$ (bei $2h/3$ von der Spitze)', '$y_S = 30\\,\\text{mm}$ (bei $h/3$ von der Spitze)', '$y_S = 45\\,\\text{mm}$ (bei $h/2$)', '$y_S = 90\\,\\text{mm}$ (an der Basis)'],
         0,
         `**Ansatz:** Dreiecksschwerpunkt liegt bei $h/3$ **von der Basis** aus — das entspricht $2h/3$ von der Spitze.
@@ -1498,7 +1498,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\\pi)$": Der Schwerpunkt eines Halbkreises liegt genau in der Mitte seines Radius, also bei $r/2$ vom Durchmesser aus.',
+        'Der Schwerpunkt eines Halbkreises liegt genau in der Mitte seines Radius, also bei $r/2$ vom Durchmesser aus.',
         false,
         `**Ansatz:** Der Halbkreis-Schwerpunkt liegt bei $4r/(3\\pi) \\approx 0{,}4244\\,r$, **nicht** bei $r/2 = 0{,}5\\,r$.
 
@@ -1514,7 +1514,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\\pi)$": Ein Profil besteht aus einem Rechteck ($60 \\times 40\\,\\text{mm}$) mit einem aufgesetzten Dreieck (Basis $60\\,\\text{mm}$ auf der Oberkante des Rechtecks, Höhe $30\\,\\text{mm}$ nach oben). Wo liegt $y_S$ des Gesamtprofils? (Ursprung in der linken unteren Ecke des Rechtecks, auf 1 Nachkommastelle)',
+        'Ein Profil besteht aus einem Rechteck ($60 \\times 40\\,\\text{mm}$) mit einem aufgesetzten Dreieck (Basis $60\\,\\text{mm}$ auf der Oberkante des Rechtecks, Höhe $30\\,\\text{mm}$ nach oben). Wo liegt $y_S$ des Gesamtprofils? (Ursprung in der linken unteren Ecke des Rechtecks, auf 1 Nachkommastelle)',
         28.2, 0.2, 'mm',
         `**Ansatz:** Rechteck-Schwerpunkt $y_{S1} = 20\\,\\text{mm}$ (Mitte). Dreieck-Schwerpunkt $y_{S2} = 40 + h/3 = 40 + 10 = 50\\,\\text{mm}$ (Basis auf Oberkante, $h/3$ darüber). Flächengewichtetes Mittel.
 
@@ -1541,7 +1541,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [0] Eigenkreisfrequenz $\omega_0 = \sqrt{c/m}$, Periode $T = 2\pi/\omega_0$ ─
     0: [
       ni(
-        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": Ein Feder-Masse-System hat $c = 800\\,\\text{N/m}$ und $m = 2\\,\\text{kg}$. Wie groß ist $\\omega_0$?',
+        'Ein Feder-Masse-System hat $c = 800\\,\\text{N/m}$ und $m = 2\\,\\text{kg}$. Wie groß ist $\\omega_0$?',
         20, 0.05, 'rad/s',
         `**Ansatz:** Eigenkreisfrequenz des ungedämpften Feder-Masse-Systems: $\\omega_0 = \\sqrt{c/m}$.
 
@@ -1557,7 +1557,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": Wie ändert sich $\\omega_0$, wenn die Masse bei gleicher Feder **verdoppelt** wird?',
+        'Wie ändert sich $\\omega_0$, wenn die Masse bei gleicher Feder **verdoppelt** wird?',
         [
           '$\\omega_0$ wird um den Faktor $1/\\sqrt{2}$ kleiner',
           '$\\omega_0$ wird halbiert',
@@ -1584,7 +1584,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": $c = 500\\,\\text{N/m}$, $m = 5\\,\\text{kg}$. Berechne die Schwingungsdauer $T$. (auf 2 Nachkommastellen)',
+        '$c = 500\\,\\text{N/m}$, $m = 5\\,\\text{kg}$. Berechne die Schwingungsdauer $T$. (auf 2 Nachkommastellen)',
         0.63, 0.01, 's',
         `**Ansatz:** Erst $\\omega_0 = \\sqrt{c/m}$, dann $T = 2\\pi/\\omega_0$.
 
@@ -1600,7 +1600,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": Wird die Federsteifigkeit $c$ verdoppelt (Masse gleich), verdoppelt sich auch die Eigenkreisfrequenz $\\omega_0$.',
+        'Wird die Federsteifigkeit $c$ verdoppelt (Masse gleich), verdoppelt sich auch die Eigenkreisfrequenz $\\omega_0$.',
         false,
         `**Ansatz:** $\\omega_0 = \\sqrt{c/m}$ — Abhängigkeit ist $\\sqrt{c}$, nicht linear in $c$.
 
@@ -1616,7 +1616,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": Ordne jeder Änderung am Feder-Masse-System die resultierende Änderung von $\\omega_0$ zu.',
+        'Ordne jeder Änderung am Feder-Masse-System die resultierende Änderung von $\\omega_0$ zu.',
         [
           { left: 'Masse $m$ verdoppeln', right: '$\\omega_0$ um Faktor $1/\\sqrt{2}$ kleiner' },
           { left: 'Masse $m$ halbieren', right: '$\\omega_0$ um Faktor $\\sqrt{2}$ größer' },
@@ -1637,7 +1637,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Eigenkreisfrequenz: $\\omega_0 = \\sqrt{c/m}$, Periode $T = 2\\pi/\\omega_0$": Bringe die Schritte zur Berechnung der Schwingungsdauer $T$ aus $c$ und $m$ in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Berechnung der Schwingungsdauer $T$ aus $c$ und $m$ in die richtige Reihenfolge.',
         [
           '$T$ aus $2\\pi/\\omega_0$ ausrechnen und Einheit (Sekunde) prüfen',
           'Formel notieren: $\\omega_0 = \\sqrt{c/m}$',
@@ -1664,7 +1664,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [1] Harmonische Schwingung: $x(t) = A \sin(\omega_0 t + \varphi)$ ──
     1: [
       mc(
-        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Was bezeichnet der Parameter $A$ in der Schwingungsgleichung?',
+        'Was bezeichnet der Parameter $A$ in der Schwingungsgleichung?',
         [
           'Die maximale Auslenkung aus der Ruhelage (Amplitude)',
           'Die Kreisfrequenz in rad/s',
@@ -1691,7 +1691,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Gegeben $x(t) = 0{,}05 \\sin(10t + \\pi/6)\\,\\text{m}$. Welche Auslenkung $x(0)$ liegt bei $t = 0$ vor? (auf 3 Nachkommastellen in Meter)',
+        'Gegeben $x(t) = 0{,}05 \\sin(10t + \\pi/6)\\,\\text{m}$. Welche Auslenkung $x(0)$ liegt bei $t = 0$ vor? (auf 3 Nachkommastellen in Meter)',
         0.025, 0.001, 'm',
         `**Ansatz:** $t = 0$ einsetzen: $x(0) = A \\sin(\\varphi)$.
 
@@ -1707,7 +1707,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Der Phasenwinkel $\\varphi$ verschiebt die Schwingung entlang der Zeitachse, ohne Amplitude oder Frequenz zu verändern.',
+        'Der Phasenwinkel $\\varphi$ verschiebt die Schwingung entlang der Zeitachse, ohne Amplitude oder Frequenz zu verändern.',
         true,
         `**Ansatz:** Mit $\\sin(\\omega_0 t + \\varphi) = \\sin(\\omega_0 (t + \\varphi/\\omega_0))$ ist $\\varphi$ äquivalent zu einer Zeitverschiebung um $\\Delta t = \\varphi/\\omega_0$.
 
@@ -1723,7 +1723,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Amplitude $A = 0{,}02\\,\\text{m}$, $\\omega_0 = 50\\,\\text{rad/s}$. Wie groß ist die maximale Geschwindigkeit $v_\\max$?',
+        'Amplitude $A = 0{,}02\\,\\text{m}$, $\\omega_0 = 50\\,\\text{rad/s}$. Wie groß ist die maximale Geschwindigkeit $v_\\max$?',
         1, 0.01, 'm/s',
         `**Ansatz:** $v(t) = \\dot{x}(t) = A \\omega_0 \\cos(\\omega_0 t + \\varphi)$. Maximum bei $\\cos = 1$: $v_\\max = A \\omega_0$.
 
@@ -1739,7 +1739,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Ordne jedem Parameter die richtige physikalische Bedeutung zu.',
+        'Ordne jedem Parameter die richtige physikalische Bedeutung zu.',
         [
           { left: '$A$', right: 'Amplitude — maximale Auslenkung aus der Ruhelage' },
           { left: '$\\omega_0$', right: 'Eigenkreisfrequenz in rad/s' },
@@ -1760,7 +1760,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Harmonische Schwingung: $x(t) = A \\sin(\\omega_0 t + \\varphi)$": Welche Funktion beschreibt die Beschleunigung $a(t) = \\ddot{x}(t)$?',
+        'Welche Funktion beschreibt die Beschleunigung $a(t) = \\ddot{x}(t)$?',
         [
           '$a(t) = -A \\omega_0^2 \\sin(\\omega_0 t + \\varphi) = -\\omega_0^2 \\, x(t)$',
           '$a(t) = A \\omega_0 \\cos(\\omega_0 t + \\varphi)$',
@@ -1791,7 +1791,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [2] Resonanz bei $\Omega = \omega_0$ ─────────────────────────────
     2: [
       mc(
-        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Wann tritt Resonanz bei einem schwingungsfähigen System auf?',
+        'Wann tritt Resonanz bei einem schwingungsfähigen System auf?',
         [
           'Wenn die Erregerfrequenz $\\Omega$ mit der Eigenfrequenz $\\omega_0$ übereinstimmt',
           'Wenn die Erregerfrequenz $\\Omega$ viel größer als $\\omega_0$ ist',
@@ -1818,7 +1818,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Bei einem vollständig ungedämpften System wächst die Amplitude im Resonanzfall rechnerisch unbegrenzt an.',
+        'Bei einem vollständig ungedämpften System wächst die Amplitude im Resonanzfall rechnerisch unbegrenzt an.',
         true,
         `**Ansatz:** Im ungedämpften Resonanzfall $\\Omega = \\omega_0$ versagt der Ansatz mit einfacher sinusförmiger partikulärer Lösung — es entsteht ein Term $\\propto t \\cdot \\cos(\\omega_0 t)$, der mit der Zeit linear wächst.
 
@@ -1834,7 +1834,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Ein Motor hat die Eigenkreisfrequenz $\\omega_0 = 50\\,\\text{rad/s}$. Bei welcher Drehzahl $n$ (in U/min) tritt Resonanz auf? (auf 1 Nachkommastelle)',
+        'Ein Motor hat die Eigenkreisfrequenz $\\omega_0 = 50\\,\\text{rad/s}$. Bei welcher Drehzahl $n$ (in U/min) tritt Resonanz auf? (auf 1 Nachkommastelle)',
         477.5, 1, 'U/min',
         `**Ansatz:** Drehzahl und Kreisfrequenz verknüpft über $\\omega = 2\\pi n/60$. Resonanz bei $\\omega = \\omega_0$.
 
@@ -1850,7 +1850,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Welche Maßnahme wirkt am **direktesten** gegen Resonanzschäden in einem Maschinengestell?',
+        'Welche Maßnahme wirkt am **direktesten** gegen Resonanzschäden in einem Maschinengestell?',
         [
           'Betriebsdrehzahl (Erregerfrequenz $\\Omega$) deutlich weg von $\\omega_0$ verlegen',
           'Betriebsdrehzahl exakt auf $\\omega_0$ einstellen',
@@ -1877,7 +1877,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       sorting(
-        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Bringe die physikalischen Phasen beim Aufbau einer Resonanz in die richtige Reihenfolge.',
+        'Bringe die physikalischen Phasen beim Aufbau einer Resonanz in die richtige Reihenfolge.',
         [
           'Erregerfrequenz $\\Omega$ nähert sich der Eigenfrequenz $\\omega_0$ an',
           'Externe Kraft speist pro Periode phasenrichtig Energie in das System ein',
@@ -1899,7 +1899,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Resonanz bei $\\Omega = \\omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)": Ein System hat $\\omega_0 = 40\\,\\text{rad/s}$. Zur sicheren Resonanzvermeidung soll die Erregerfrequenz mindestens $30\\,\\%$ oberhalb von $\\omega_0$ liegen. Welche Mindestfrequenz $\\Omega_\\min$ (in rad/s)?',
+        'Ein System hat $\\omega_0 = 40\\,\\text{rad/s}$. Zur sicheren Resonanzvermeidung soll die Erregerfrequenz mindestens $30\\,\\%$ oberhalb von $\\omega_0$ liegen. Welche Mindestfrequenz $\\Omega_\\min$ (in rad/s)?',
         52, 0.1, 'rad/s',
         `**Ansatz:** $30\\,\\%$ Abstand nach oben: $\\Omega_\\min = 1{,}3 \\cdot \\omega_0$.
 
@@ -1919,7 +1919,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [3] Dämpfungsgrad $D = d/(2\sqrt{cm})$ ──────────────────────────
     3: [
       ni(
-        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": System mit $c = 1000\\,\\text{N/m}$, $m = 10\\,\\text{kg}$, $d = 40\\,\\text{Ns/m}$. Berechne $D$. (dimensionslos)',
+        'System mit $c = 1000\\,\\text{N/m}$, $m = 10\\,\\text{kg}$, $d = 40\\,\\text{Ns/m}$. Berechne $D$. (dimensionslos)',
         0.2, 0.005, '',
         `**Ansatz:** Lehrsches Dämpfungsmaß: $D = d/(2\\sqrt{cm})$.
 
@@ -1935,7 +1935,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": Für $D < 1$ ist das System schwach (unterkritisch) gedämpft und schwingt mit abnehmender Amplitude weiter.',
+        'Für $D < 1$ ist das System schwach (unterkritisch) gedämpft und schwingt mit abnehmender Amplitude weiter.',
         true,
         `**Ansatz:** Lösungsstruktur der gedämpften DGL $m\\ddot{x} + d\\dot{x} + cx = 0$ hängt vom Verhältnis $D$ ab.
 
@@ -1951,7 +1951,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": Was bedeutet $D = 1$ physikalisch?',
+        'Was bedeutet $D = 1$ physikalisch?',
         [
           'Aperiodischer Grenzfall — schnellste Rückkehr zur Ruhelage ohne Überschwingen',
           'Resonanz mit unbegrenzt wachsender Amplitude',
@@ -1978,7 +1978,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       matching(
-        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": Ordne jedem Bereich von $D$ das richtige Systemverhalten zu.',
+        'Ordne jedem Bereich von $D$ das richtige Systemverhalten zu.',
         [
           { left: '$D = 0$', right: 'Ungedämpft — Amplitude bleibt ewig konstant' },
           { left: '$0 < D < 1$', right: 'Unterkritisch gedämpft — Schwingung klingt exponentiell ab' },
@@ -1999,7 +1999,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": Geforderter Dämpfungsgrad $D = 0{,}05$ bei $c = 400\\,\\text{N/m}$ und $m = 1\\,\\text{kg}$. Welchen Dämpfungskoeffizienten $d$ muss der Dämpfer bringen?',
+        'Geforderter Dämpfungsgrad $D = 0{,}05$ bei $c = 400\\,\\text{N/m}$ und $m = 1\\,\\text{kg}$. Welchen Dämpfungskoeffizienten $d$ muss der Dämpfer bringen?',
         2, 0.05, 'Ns/m',
         `**Ansatz:** Formel umstellen: $d = 2 D \\sqrt{cm}$.
 
@@ -2015,7 +2015,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Dämpfungsgrad (Lehrsches Maß) $D = d/(2\\sqrt{cm})$": Welcher Dämpfungsgrad $D$ ist beim Auto-Stoßdämpfer typischerweise gewünscht?',
+        'Welcher Dämpfungsgrad $D$ ist beim Auto-Stoßdämpfer typischerweise gewünscht?',
         [
           '$D \\approx 0{,}3$–$0{,}4$ — Federverhalten spürbar, aber Schwingungen klingen schnell ab',
           '$D = 0$ — Insassen sollen frei mitschwingen',
@@ -2046,7 +2046,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [4] Mathematisches Pendel $\omega_0 = \sqrt{g/l}$ ────────────────
     4: [
       ni(
-        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Ein mathematisches Pendel hat die Länge $l = 1\\,\\text{m}$ ($g = 9{,}81\\,\\text{m/s}^2$). Berechne die Periodendauer $T$. (auf 2 Nachkommastellen)',
+        'Ein mathematisches Pendel hat die Länge $l = 1\\,\\text{m}$ ($g = 9{,}81\\,\\text{m/s}^2$). Berechne die Periodendauer $T$. (auf 2 Nachkommastellen)',
         2.01, 0.02, 's',
         `**Ansatz:** $\\omega_0 = \\sqrt{g/l}$, dann $T = 2\\pi/\\omega_0 = 2\\pi\\sqrt{l/g}$.
 
@@ -2062,7 +2062,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Dasselbe Pendel wird auf den Mond ($g_\\text{Mond} \\approx 1{,}62\\,\\text{m/s}^2$) gebracht. Wie ändert sich die Periodendauer $T$?',
+        'Dasselbe Pendel wird auf den Mond ($g_\\text{Mond} \\approx 1{,}62\\,\\text{m/s}^2$) gebracht. Wie ändert sich die Periodendauer $T$?',
         [
           '$T$ wird länger (Faktor $\\sqrt{g_\\text{Erde}/g_\\text{Mond}} \\approx 2{,}46$)',
           '$T$ wird kürzer (Faktor ~1/6)',
@@ -2089,7 +2089,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Die Periodendauer eines mathematischen Pendels hängt bei kleinen Auslenkungen von der Pendelmasse ab.',
+        'Die Periodendauer eines mathematischen Pendels hängt bei kleinen Auslenkungen von der Pendelmasse ab.',
         false,
         `**Ansatz:** In $\\omega_0 = \\sqrt{g/l}$ kommt **keine Masse** vor.
 
@@ -2105,7 +2105,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Ein Pendel soll eine Periodendauer von exakt $T = 1{,}0\\,\\text{s}$ haben ($g = 9{,}81\\,\\text{m/s}^2$). Welche Länge $l$ ist nötig? (auf 3 Nachkommastellen in Meter)',
+        'Ein Pendel soll eine Periodendauer von exakt $T = 1{,}0\\,\\text{s}$ haben ($g = 9{,}81\\,\\text{m/s}^2$). Welche Länge $l$ ist nötig? (auf 3 Nachkommastellen in Meter)',
         0.248, 0.003, 'm',
         `**Ansatz:** $T = 2\\pi\\sqrt{l/g}$ → nach $l$ umstellen: $l = g T^2/(4\\pi^2)$.
 
@@ -2121,7 +2121,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Bringe die Herleitungsschritte für $\\omega_0 = \\sqrt{g/l}$ in die richtige Reihenfolge.',
+        'Bringe die Herleitungsschritte für $\\omega_0 = \\sqrt{g/l}$ in die richtige Reihenfolge.',
         [
           'Kleinwinkelnäherung $\\sin\\varphi \\approx \\varphi$ für kleine Auslenkungen',
           'Rücktreibende Kraft: $F_r = -m g \\sin\\varphi$ (Tangentialkomponente der Gewichtskraft)',
@@ -2144,7 +2144,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Mathematisches Pendel: $\\omega_0 = \\sqrt{g/l}$ (kleine Auslenkungen)": Ordne jeder Pendellänge die zugehörige Periodendauer zu ($g = 9{,}81\\,\\text{m/s}^2$).',
+        'Ordne jeder Pendellänge die zugehörige Periodendauer zu ($g = 9{,}81\\,\\text{m/s}^2$).',
         [
           { left: '$l = 0{,}10\\,\\text{m}$', right: '$T \\approx 0{,}63\\,\\text{s}$' },
           { left: '$l = 0{,}25\\,\\text{m}$', right: '$T \\approx 1{,}00\\,\\text{s}$' },
@@ -2176,7 +2176,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [0] Drallsatz: M = J·α (Rotationsanalog zu F = ma) ─────────────
     0: [
       ni(
-        'Sub-Goal "Drallsatz: $M = J \\cdot \\alpha$ (Rotationsanalog zu $F = ma$)": Ein Elektromotor übt an seiner Welle ein Drehmoment $M = 40\\,\\text{Nm}$ aus. Die Welle hat $J = 0{,}8\\,\\text{kg}\\cdot\\text{m}^2$. Wie groß ist die Winkelbeschleunigung $\\alpha$?',
+        'Ein Elektromotor übt an seiner Welle ein Drehmoment $M = 40\\,\\text{Nm}$ aus. Die Welle hat $J = 0{,}8\\,\\text{kg}\\cdot\\text{m}^2$. Wie groß ist die Winkelbeschleunigung $\\alpha$?',
         50, 0.1, 'rad/s²',
         `**Ansatz:** Drallsatz — das Rotationsanalog zu $F = ma$ — lautet $M = J\\alpha$. Umgestellt: $\\alpha = M/J$.
 
@@ -2192,7 +2192,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Drallsatz: $M = J \\cdot \\alpha$ (Rotationsanalog zu $F = ma$)": Bei gleichbleibendem Trägheitsmoment wird das angreifende Moment **verdreifacht**. Wie ändert sich die Winkelbeschleunigung?',
+        'Bei gleichbleibendem Trägheitsmoment wird das angreifende Moment **verdreifacht**. Wie ändert sich die Winkelbeschleunigung?',
         [
           '$\\alpha$ bleibt gleich',
           '$\\alpha$ wird dreimal so groß',
@@ -2219,7 +2219,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Drallsatz: $M = J \\cdot \\alpha$ (Rotationsanalog zu $F = ma$)": Eine Schwungscheibe ($J = 2{,}5\\,\\text{kg}\\cdot\\text{m}^2$) wird aus der Ruhe in $t = 4\\,\\text{s}$ auf $n = 600\\,\\text{U/min}$ gebracht. Welches konstante Drehmoment ist dafür nötig? (auf ganze Nm)',
+        'Eine Schwungscheibe ($J = 2{,}5\\,\\text{kg}\\cdot\\text{m}^2$) wird aus der Ruhe in $t = 4\\,\\text{s}$ auf $n = 600\\,\\text{U/min}$ gebracht. Welches konstante Drehmoment ist dafür nötig? (auf ganze Nm)',
         39, 1, 'Nm',
         `**Ansatz:** Konstantes Moment ⇒ konstante Winkelbeschleunigung. Erst $\\omega_\\text{end}$ in rad/s umrechnen, dann $\\alpha = \\Delta\\omega/\\Delta t$, dann $M = J\\alpha$.
 
@@ -2235,7 +2235,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Drallsatz: $M = J \\cdot \\alpha$ (Rotationsanalog zu $F = ma$)": Im Drallsatz $M = J\\alpha$ entspricht das Trägheitsmoment $J$ dem Rotationsanalog zur **Masse** $m$ aus $F = ma$.',
+        'Im Drallsatz $M = J\\alpha$ entspricht das Trägheitsmoment $J$ dem Rotationsanalog zur **Masse** $m$ aus $F = ma$.',
         true,
         `**Ansatz:** Die Gegenüberstellung Translation ↔ Rotation: $F \\leftrightarrow M$, $m \\leftrightarrow J$, $a \\leftrightarrow \\alpha$, $v \\leftrightarrow \\omega$, $p = mv \\leftrightarrow L = J\\omega$.
 
@@ -2251,7 +2251,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Drallsatz: $M = J \\cdot \\alpha$ (Rotationsanalog zu $F = ma$)": Ordne jeder Translationsgröße das passende Rotationsanalog zu.',
+        'Ordne jeder Translationsgröße das passende Rotationsanalog zu.',
         [
           { left: 'Masse $m$', right: 'Trägheitsmoment $J$' },
           { left: 'Kraft $F$', right: 'Drehmoment $M$' },
@@ -2277,7 +2277,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [1] Standardträgheitsmomente: Vollzylinder ½mR², Stab mL²/12 ──
     1: [
       ni(
-        'Sub-Goal "Standardträgheitsmomente: Vollzylinder $\\tfrac{1}{2}mR^2$, Stab $\\tfrac{1}{12}mL^2$": Vollzylinder, $m = 4\\,\\text{kg}$, $R = 0{,}2\\,\\text{m}$. Bestimme das Massenträgheitsmoment um die Längsachse.',
+        'Vollzylinder, $m = 4\\,\\text{kg}$, $R = 0{,}2\\,\\text{m}$. Bestimme das Massenträgheitsmoment um die Längsachse.',
         0.08, 0.001, 'kg·m²',
         `**Ansatz:** Vollzylinder um die eigene Längsachse (Symmetrieachse): $J = \\tfrac{1}{2}mR^2$.
 
@@ -2293,7 +2293,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Standardträgheitsmomente: Vollzylinder $\\tfrac{1}{2}mR^2$, Stab $\\tfrac{1}{12}mL^2$": Ein Vollzylinder wird bei gleicher Masse mit **doppeltem** Radius gefertigt. Um welchen Faktor ändert sich $J$?',
+        'Ein Vollzylinder wird bei gleicher Masse mit **doppeltem** Radius gefertigt. Um welchen Faktor ändert sich $J$?',
         [
           'Faktor $2$',
           'Faktor $4$',
@@ -2320,7 +2320,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Standardträgheitsmomente: Vollzylinder $\\tfrac{1}{2}mR^2$, Stab $\\tfrac{1}{12}mL^2$": Dünner Stab, $m = 6\\,\\text{kg}$, $L = 2\\,\\text{m}$. Trägheitsmoment **um die Schwerpunktachse** senkrecht zum Stab?',
+        'Dünner Stab, $m = 6\\,\\text{kg}$, $L = 2\\,\\text{m}$. Trägheitsmoment **um die Schwerpunktachse** senkrecht zum Stab?',
         2, 0.01, 'kg·m²',
         `**Ansatz:** Stab um Schwerpunkt-Querachse: $J_S = \\tfrac{1}{12}mL^2$. Der Faktor $\\tfrac{1}{12}$ unterscheidet sich vom Stab-am-Ende-Wert $\\tfrac{1}{3}mL^2$.
 
@@ -2336,7 +2336,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Standardträgheitsmomente: Vollzylinder $\\tfrac{1}{2}mR^2$, Stab $\\tfrac{1}{12}mL^2$": Bei **gleicher** Masse und gleichem Außenradius hat ein **Hohlzylinder** (dünne Schale) das gleiche Trägheitsmoment um die Längsachse wie ein **Vollzylinder**.',
+        'Bei **gleicher** Masse und gleichem Außenradius hat ein **Hohlzylinder** (dünne Schale) das gleiche Trägheitsmoment um die Längsachse wie ein **Vollzylinder**.',
         false,
         `**Ansatz:** Vollzylinder: $J = \\tfrac{1}{2}mR^2$. Dünner Hohlzylinder (Masse am Radius $R$): $J = mR^2$. Verhältnis $2:1$.
 
@@ -2352,7 +2352,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Standardträgheitsmomente: Vollzylinder $\\tfrac{1}{2}mR^2$, Stab $\\tfrac{1}{12}mL^2$": Ordne jedem Körper die richtige Formel für das Massenträgheitsmoment um die angegebene Achse zu.',
+        'Ordne jedem Körper die richtige Formel für das Massenträgheitsmoment um die angegebene Achse zu.',
         [
           { left: 'Vollzylinder, Längsachse', right: '$\\tfrac{1}{2}mR^2$' },
           { left: 'Dünner Hohlzylinder (Schale), Längsachse', right: '$mR^2$' },
@@ -2378,7 +2378,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [2] Steiner: J_A = J_S + m·d² ──────────────────────────────────
     2: [
       ni(
-        'Sub-Goal "Steinerscher Anteil: $J_A = J_S + m d^2$ (Parallelachsenverschiebung)": Ein dünner Stab ($m = 4\\,\\text{kg}$, $L = 1\\,\\text{m}$) rotiert um eine Querachse am **Stabende**. Wie groß ist das Trägheitsmoment? (auf 3 Nachkommastellen)',
+        'Ein dünner Stab ($m = 4\\,\\text{kg}$, $L = 1\\,\\text{m}$) rotiert um eine Querachse am **Stabende**. Wie groß ist das Trägheitsmoment? (auf 3 Nachkommastellen)',
         1.333, 0.005, 'kg·m²',
         `**Ansatz:** Schwerpunktträgheitsmoment + Steinerscher Anteil. $J_S = \\tfrac{1}{12}mL^2$, Abstand Schwerpunkt–Endachse: $d = L/2$.
 
@@ -2394,7 +2394,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Steinerscher Anteil: $J_A = J_S + m d^2$ (Parallelachsenverschiebung)": Welche Voraussetzung muss erfüllt sein, damit man den Satz von Steiner $J_A = J_S + m d^2$ anwenden darf?',
+        'Welche Voraussetzung muss erfüllt sein, damit man den Satz von Steiner $J_A = J_S + m d^2$ anwenden darf?',
         [
           'Die Drehachse $A$ muss durch den Schwerpunkt verlaufen.',
           'Die Drehachse $A$ muss **parallel** zur Schwerpunktachse sein.',
@@ -2421,7 +2421,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Steinerscher Anteil: $J_A = J_S + m d^2$ (Parallelachsenverschiebung)": Ein Vollzylinder ($m = 3\\,\\text{kg}$, $R = 0{,}1\\,\\text{m}$) rotiert um eine Achse, die **parallel** zur Zylinderlängsachse verläuft und im Abstand $d = 0{,}1\\,\\text{m}$ zu dieser liegt. Wie groß ist $J_A$? (auf 4 Nachkommastellen)',
+        'Ein Vollzylinder ($m = 3\\,\\text{kg}$, $R = 0{,}1\\,\\text{m}$) rotiert um eine Achse, die **parallel** zur Zylinderlängsachse verläuft und im Abstand $d = 0{,}1\\,\\text{m}$ zu dieser liegt. Wie groß ist $J_A$? (auf 4 Nachkommastellen)',
         0.045, 0.001, 'kg·m²',
         `**Ansatz:** $J_S$ = Zylinder um Längsachse = $\\tfrac{1}{2}mR^2$. Dann Steiner: $J_A = J_S + m d^2$.
 
@@ -2437,7 +2437,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Steinerscher Anteil: $J_A = J_S + m d^2$ (Parallelachsenverschiebung)": Das Trägheitsmoment um eine beliebige Achse parallel zur Schwerpunktachse ist **immer mindestens so groß** wie das Trägheitsmoment um die Schwerpunktachse selbst.',
+        'Das Trägheitsmoment um eine beliebige Achse parallel zur Schwerpunktachse ist **immer mindestens so groß** wie das Trägheitsmoment um die Schwerpunktachse selbst.',
         true,
         `**Ansatz:** $J_A = J_S + m d^2$. Da $m > 0$ und $d^2 \\geq 0$ gilt $m d^2 \\geq 0$. Also $J_A \\geq J_S$, mit Gleichheit nur bei $d = 0$.
 
@@ -2453,7 +2453,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Steinerscher Anteil: $J_A = J_S + m d^2$ (Parallelachsenverschiebung)": Bringe die Rechenschritte zur Berechnung des Trägheitsmoments um eine Parallelachse in die richtige Reihenfolge.',
+        'Bringe die Rechenschritte zur Berechnung des Trägheitsmoments um eine Parallelachse in die richtige Reihenfolge.',
         [
           'Massenträgheitsmoment um Schwerpunktachse $J_S$ aus der Formelsammlung nachschlagen',
           'Prüfen: Ist die gesuchte Achse parallel zur Schwerpunktachse?',
@@ -2480,7 +2480,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [3] Rotationsenergie E_rot = ½ J ω² ────────────────────────────
     3: [
       ni(
-        'Sub-Goal "Rotationsenergie: $E_{\\text{rot}} = \\tfrac{1}{2} J \\omega^2$": Ein Rotor mit $J = 0{,}5\\,\\text{kg}\\cdot\\text{m}^2$ dreht sich mit $\\omega = 10\\,\\text{rad/s}$. Wie groß ist die Rotationsenergie?',
+        'Ein Rotor mit $J = 0{,}5\\,\\text{kg}\\cdot\\text{m}^2$ dreht sich mit $\\omega = 10\\,\\text{rad/s}$. Wie groß ist die Rotationsenergie?',
         25, 0.1, 'J',
         `**Ansatz:** $E_\\text{rot} = \\tfrac{1}{2} J \\omega^2$ — formal identisch zu $E_\\text{kin} = \\tfrac{1}{2} m v^2$.
 
@@ -2496,7 +2496,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Rotationsenergie: $E_{\\text{rot}} = \\tfrac{1}{2} J \\omega^2$": Die Winkelgeschwindigkeit eines Schwungrads wird **verdoppelt**. Wie ändert sich seine Rotationsenergie?',
+        'Die Winkelgeschwindigkeit eines Schwungrads wird **verdoppelt**. Wie ändert sich seine Rotationsenergie?',
         [
           'verdoppelt sich',
           'vervierfacht sich',
@@ -2523,7 +2523,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Rotationsenergie: $E_{\\text{rot}} = \\tfrac{1}{2} J \\omega^2$": Ein Schwungrad (Vollzylinder, $m = 10\\,\\text{kg}$, $R = 0{,}3\\,\\text{m}$) rotiert mit $n = 3000\\,\\text{U/min}$. Wieviel Energie ist gespeichert? (auf ganze J)',
+        'Ein Schwungrad (Vollzylinder, $m = 10\\,\\text{kg}$, $R = 0{,}3\\,\\text{m}$) rotiert mit $n = 3000\\,\\text{U/min}$. Wieviel Energie ist gespeichert? (auf ganze J)',
         22207, 50, 'J',
         `**Ansatz:** Erst $J = \\tfrac{1}{2}mR^2$, dann $\\omega = 2\\pi n/60$, dann $E = \\tfrac{1}{2}J\\omega^2$.
 
@@ -2539,7 +2539,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Rotationsenergie: $E_{\\text{rot}} = \\tfrac{1}{2} J \\omega^2$": Bei einem reinen Rollvorgang (Zylinder rollt schlupffrei eine Ebene hinunter) wandelt sich die potenzielle Energie **ausschließlich** in translatorische kinetische Energie $\\tfrac{1}{2}mv^2$ um.',
+        'Bei einem reinen Rollvorgang (Zylinder rollt schlupffrei eine Ebene hinunter) wandelt sich die potenzielle Energie **ausschließlich** in translatorische kinetische Energie $\\tfrac{1}{2}mv^2$ um.',
         false,
         `**Ansatz:** Ein rollender Körper besitzt sowohl Translations- als auch Rotationsenergie: $E_\\text{kin,ges} = \\tfrac{1}{2}mv^2 + \\tfrac{1}{2}J\\omega^2$. Beim schlupffreien Rollen ist $v = R\\omega$.
 
@@ -2555,7 +2555,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Rotationsenergie: $E_{\\text{rot}} = \\tfrac{1}{2} J \\omega^2$": Bringe die Schritte zur Berechnung der Rotationsenergie eines Schwungrads (gegeben: $m$, $R$, $n$) in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Berechnung der Rotationsenergie eines Schwungrads (gegeben: $m$, $R$, $n$) in die richtige Reihenfolge.',
         [
           'Trägheitsmoment berechnen: $J = \\tfrac{1}{2}mR^2$ (Vollzylinder)',
           'Drehzahl $n$ in rad/s umrechnen: $\\omega = 2\\pi n/60$',
@@ -2582,7 +2582,7 @@ export const technischeMechanikSubGoalTasks = {
     // ── [4] Drehimpuls L = J ω, Erhaltung bei M_ext = 0 ────────────────
     4: [
       ni(
-        'Sub-Goal "Drehimpuls: $L = J \\omega$, Erhaltung bei $M_{\\text{ext}} = 0$": Eine Schwungscheibe hat $J = 2\\,\\text{kg}\\cdot\\text{m}^2$ und dreht sich mit $\\omega = 15\\,\\text{rad/s}$. Wie groß ist der Drehimpuls?',
+        'Eine Schwungscheibe hat $J = 2\\,\\text{kg}\\cdot\\text{m}^2$ und dreht sich mit $\\omega = 15\\,\\text{rad/s}$. Wie groß ist der Drehimpuls?',
         30, 0.1, 'kg·m²/s',
         `**Ansatz:** Drehimpuls: $L = J\\omega$ (Rotationsanalog zu $p = mv$).
 
@@ -2598,7 +2598,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Drehimpuls: $L = J \\omega$, Erhaltung bei $M_{\\text{ext}} = 0$": Eine Eiskunstläuferin dreht mit $\\omega_1 = 2\\,\\text{rad/s}$ und $J_1 = 6\\,\\text{kg}\\cdot\\text{m}^2$ (ausgestreckte Arme). Sie zieht die Arme an, neues $J_2 = 2\\,\\text{kg}\\cdot\\text{m}^2$. Mit welcher Winkelgeschwindigkeit dreht sie dann?',
+        'Eine Eiskunstläuferin dreht mit $\\omega_1 = 2\\,\\text{rad/s}$ und $J_1 = 6\\,\\text{kg}\\cdot\\text{m}^2$ (ausgestreckte Arme). Sie zieht die Arme an, neues $J_2 = 2\\,\\text{kg}\\cdot\\text{m}^2$. Mit welcher Winkelgeschwindigkeit dreht sie dann?',
         [
           '$2\\,\\text{rad/s}$',
           '$6\\,\\text{rad/s}$',
@@ -2625,7 +2625,7 @@ export const technischeMechanikSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Drehimpuls: $L = J \\omega$, Erhaltung bei $M_{\\text{ext}} = 0$": Wenn die Summe aller äußeren Drehmomente null ist, bleibt der Drehimpuls eines Systems **betrags- und richtungsmäßig** konstant.',
+        'Wenn die Summe aller äußeren Drehmomente null ist, bleibt der Drehimpuls eines Systems **betrags- und richtungsmäßig** konstant.',
         true,
         `**Ansatz:** Drallsatz in Vektorform: $\\vec{M}_\\text{ext} = d\\vec{L}/dt$. Aus $\\vec{M}_\\text{ext} = \\vec{0}$ folgt $d\\vec{L}/dt = \\vec{0}$, also $\\vec{L} = \\text{const}$.
 
@@ -2641,7 +2641,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Drehimpuls: $L = J \\omega$, Erhaltung bei $M_{\\text{ext}} = 0$": Zwei Drehplattformen: Plattform 1 ($J_1 = 4\\,\\text{kg}\\cdot\\text{m}^2$, $\\omega_1 = 5\\,\\text{rad/s}$) wird auf Plattform 2 ($J_2 = 1\\,\\text{kg}\\cdot\\text{m}^2$, anfangs in Ruhe) abgesetzt und koppelt reibungsschlüssig. Welche gemeinsame Winkelgeschwindigkeit stellt sich ein?',
+        'Zwei Drehplattformen: Plattform 1 ($J_1 = 4\\,\\text{kg}\\cdot\\text{m}^2$, $\\omega_1 = 5\\,\\text{rad/s}$) wird auf Plattform 2 ($J_2 = 1\\,\\text{kg}\\cdot\\text{m}^2$, anfangs in Ruhe) abgesetzt und koppelt reibungsschlüssig. Welche gemeinsame Winkelgeschwindigkeit stellt sich ein?',
         4, 0.01, 'rad/s',
         `**Ansatz:** Inelastischer „Rotationsstoß" — Drehimpuls ist erhalten ($M_\\text{ext} = 0$, reine innere Reibung): $J_1\\omega_1 + J_2\\cdot 0 = (J_1 + J_2)\\omega$.
 
@@ -2657,7 +2657,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Drehimpuls: $L = J \\omega$, Erhaltung bei $M_{\\text{ext}} = 0$": Ordne jedem Translationsbegriff sein Rotationsanalog zu.',
+        'Ordne jedem Translationsbegriff sein Rotationsanalog zu.',
         [
           { left: 'Impuls $p = m v$', right: 'Drehimpuls $L = J \\omega$' },
           { left: 'Impulserhaltung bei $\\vec{F}_\\text{ext} = 0$', right: 'Drehimpulserhaltung bei $\\vec{M}_\\text{ext} = 0$' },

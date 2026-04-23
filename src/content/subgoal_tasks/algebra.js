@@ -6,18 +6,23 @@
 // als Value — erlaubt (und fordert!) mehrere Aufgaben pro Sub-Goal:
 //
 //   'lessonId': {
-//     0: [mc('Sub-Goal "..."'), ni('Sub-Goal "..."'), tf('Sub-Goal "..."')],
+//     0: [mc('Frage ...'), ni('Frage ...'), tf('Aussage ...')],
 //     1: [ni('...'), mc('...'), matching('...')],
 //     ...
 //   }
 //
 // Qualitätskontrakt pro Aufgabe:
-//   - Sub-Goal-Label wörtlich in der Frage zitiert
+//   - Frage/Statement enthält NUR die Aufgabe selbst — der Sub-Goal-Kontext
+//     wird automatisch vom UI-Header angezeigt (kein "Sub-Goal »…«:"-Prefix).
 //   - 4-Block-Erklärung: Ansatz / Rechnung / Probe / Typischer Fehler
 //   - ≥ 3 Hints, gestaffelt (Konzept → Methode → konkreter Schritt)
 //   - MC mit ≥ 3 Optionen: `wrongAnswerExplanations` für JEDEN falschen Index
 //   - Typen-Rotation pro Sub-Goal (nicht 3× MC fürs selbe Sub-Goal)
 //   - Prüfungs-Units (alg-4-*): `[PRÜFUNG] `-Prefix in Frage/Statement
+//
+// Der `mc()`-Helper permutiert Optionen deterministisch (→ richtige Antwort
+// ist nie an Position 0). Der `sorting()`-Helper permutiert Items ebenfalls
+// (→ Start-Reihenfolge ist garantiert NICHT die richtige Zielreihenfolge).
 //
 // MENGE pro Sub-Goal: Ziel ist MIN_TASKS_PER_SUB_GOAL (= 3) — mehr ist besser.
 // Wer wirklich Routine bekommen will, braucht 3-5 verschiedene Aufgaben pro
@@ -41,7 +46,7 @@ export const algebraSubGoalTasks = {
     0: [
       // Zeile 1: recognize · true-false · uses=[prio-basic]
       tf(
-        'Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Der Ausdruck $3 + 4 \\cdot 2$ ergibt $11$.',
+        'Der Ausdruck $3 + 4 \\cdot 2$ ergibt $11$.',
         true,
         `**Ansatz:** Punkt-vor-Strich: Multiplikation wird vor Addition gerechnet.
 
@@ -59,7 +64,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 2: apply-guided · multiple-choice · uses=[prio-basic]
       mc(
-        'Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Berechne $5 - 2 \\cdot 3 + 4$.',
+        'Berechne $5 - 2 \\cdot 3 + 4$.',
         ['$3$', '$13$', '$-1$', '$5$'],
         0,
         `**Ansatz:** Vorrangregel — Multiplikation vor Addition/Subtraktion. Plus und Minus sind gleichrangig und werden von links nach rechts abgearbeitet.
@@ -83,7 +88,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 3a: apply-independent · number-input · uses=[prio-basic, prio-potenz]
       ni(
-        'Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Berechne $7 + 3 \\cdot 2^2$.',
+        'Berechne $7 + 3 \\cdot 2^2$.',
         19, 0, '',
         `**Ansatz:** Drei Rangstufen: zuerst Potenzrechnung, dann Punktrechnung, dann Strichrechnung.
 
@@ -101,7 +106,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 3b: apply-independent · number-input · uses=[prio-basic, prio-potenz]
       ni(
-        'Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Berechne $5^2 - 2 \\cdot 3 + 4$.',
+        'Berechne $5^2 - 2 \\cdot 3 + 4$.',
         23, 0, '',
         `**Ansatz:** Potenz zuerst, dann Punktrechnung, zuletzt Strichrechnung von links nach rechts.
 
@@ -119,7 +124,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 4: error-analysis · multiple-choice · uses=[prio-basic]
       mc(
-        'Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Ein Schüler rechnet $8 - 2 \\cdot 3 = 18$. Welche Regel hat er ignoriert?',
+        'Ein Schüler rechnet $8 - 2 \\cdot 3 = 18$. Welche Regel hat er ignoriert?',
         [
           'Punkt-vor-Strich: $2\\cdot 3$ wäre zuerst zu rechnen, danach $8-6=2$.',
           'Klammer-vor-Punkt: es hätte eine Klammer gesetzt werden müssen.',
@@ -148,7 +153,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 5: transfer · sorting · uses=[prio-basic, prio-potenz]
       sorting(
-        'Sub-Goal "Vorrangregel Punkt-vor-Strich bei gemischten Termen": Bringe die Schritte zur Auswertung von $2 + 3^2 \\cdot 4 - 5$ in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Auswertung von $2 + 3^2 \\cdot 4 - 5$ in die richtige Reihenfolge.',
         [
           'Potenzrechnung zuerst: $3^2 = 9$',
           'Punktrechnung: $9 \\cdot 4 = 36$',
@@ -175,7 +180,7 @@ export const algebraSubGoalTasks = {
     1: [
       // Zeile 6: recognize · true-false · uses=[minus-vorklammer]
       tf(
-        'Sub-Goal "Minuszeichen vor Klammer auf alle Summanden anwenden": Für beliebige Zahlen $a, b, c$ gilt $a - (b + c) = a - b - c$.',
+        'Für beliebige Zahlen $a, b, c$ gilt $a - (b + c) = a - b - c$.',
         true,
         `**Ansatz:** Das Minus vor der Klammer verteilt sich auf **jeden** Summanden der Klammer. $+b$ wird zu $-b$, $+c$ wird zu $-c$.
 
@@ -193,7 +198,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 7: apply-guided · multiple-choice · uses=[minus-vorklammer]
       mc(
-        'Sub-Goal "Minuszeichen vor Klammer auf alle Summanden anwenden": Welcher Ausdruck ist äquivalent zu $a - (b + c - d)$?',
+        'Welcher Ausdruck ist äquivalent zu $a - (b + c - d)$?',
         ['$a - b - c + d$', '$a - b + c - d$', '$a - b - c - d$', '$a + b - c + d$'],
         0,
         `**Ansatz:** Das Minus vor der Klammer verteilt sich auf **jeden** Summanden der Klammer — alle Vorzeichen in der Klammer werden gekippt.
@@ -217,7 +222,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 8: apply-independent · number-input · uses=[minus-vorklammer]
       ni(
-        'Sub-Goal "Minuszeichen vor Klammer auf alle Summanden anwenden": Berechne $15 - (4 + 2 - 7)$.',
+        'Berechne $15 - (4 + 2 - 7)$.',
         16, 0, '',
         `**Ansatz:** Minus vor Klammer verteilen — alle Vorzeichen in der Klammer kippen.
 
@@ -235,7 +240,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 9: error-analysis · multiple-choice · uses=[minus-vorklammer]
       mc(
-        'Sub-Goal "Minuszeichen vor Klammer auf alle Summanden anwenden": Ein Schüler schreibt $a - (b - c) = a - b - c$. Wo liegt der Fehler?',
+        'Ein Schüler schreibt $a - (b - c) = a - b - c$. Wo liegt der Fehler?',
         [
           'Das $-c$ in der Klammer wurde nicht zu $+c$ gekippt; korrekt ist $a - b + c$.',
           'Es fehlt eine zusätzliche Klammer — man müsste $a - ((b) - (c))$ schreiben.',
@@ -264,7 +269,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 10: transfer · matching · uses=[minus-vorklammer]
       matching(
-        'Sub-Goal "Minuszeichen vor Klammer auf alle Summanden anwenden": Ordne jedem Klammer-Ausdruck seine korrekt aufgelöste Form zu.',
+        'Ordne jedem Klammer-Ausdruck seine korrekt aufgelöste Form zu.',
         [
           { left: '$5 - (3 - 2)$',         right: '$5 - 3 + 2$' },
           { left: '$x - (y + z - w)$',     right: '$x - y - z + w$' },
@@ -290,7 +295,7 @@ export const algebraSubGoalTasks = {
     2: [
       // Zeile 11: recognize · true-false · uses=[minus-mal-minus]
       tf(
-        'Sub-Goal "Doppel-Minus aufgelöst: $(-a)(-b)=+ab$": Das Produkt $(-5) \\cdot (-3)$ ist gleich $-15$.',
+        'Das Produkt $(-5) \\cdot (-3)$ ist gleich $-15$.',
         false,
         `**Ansatz:** Zwei negative Faktoren → Produkt ist positiv. $(-a)(-b) = +ab$.
 
@@ -308,7 +313,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 12: apply-guided · multiple-choice · uses=[minus-mal-minus]
       mc(
-        'Sub-Goal "Doppel-Minus aufgelöst: $(-a)(-b)=+ab$": Welchen Wert hat $(-4) \\cdot (-3) \\cdot 2$?',
+        'Welchen Wert hat $(-4) \\cdot (-3) \\cdot 2$?',
         ['$24$', '$-24$', '$-12$', '$12$'],
         0,
         `**Ansatz:** Mehrere Faktoren schrittweise multiplizieren — Vorzeichenregel bei jedem Schritt anwenden.
@@ -332,7 +337,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 13: apply-independent · number-input · uses=[minus-mal-minus]
       ni(
-        'Sub-Goal "Doppel-Minus aufgelöst: $(-a)(-b)=+ab$": Berechne $-(-7) + (-2)$.',
+        'Berechne $-(-7) + (-2)$.',
         5, 0, '',
         `**Ansatz:** Jedes Doppel-Minus $-(-a) = +a$. Danach normale Addition mit negativer Zahl.
 
@@ -350,7 +355,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 14: error-analysis · multiple-choice · uses=[minus-mal-minus]
       mc(
-        'Sub-Goal "Doppel-Minus aufgelöst: $(-a)(-b)=+ab$": Ein Schüler behauptet $(-2) \\cdot (-3) \\cdot (-5) = +30$. Wo liegt der Fehler?',
+        'Ein Schüler behauptet $(-2) \\cdot (-3) \\cdot (-5) = +30$. Wo liegt der Fehler?',
         [
           'Drei Minuszeichen sind eine ungerade Anzahl — das Ergebnis ist negativ: $-30$.',
           'Der Betrag ist falsch — korrekt wäre $+10$.',
@@ -379,7 +384,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 15: transfer · number-input · uses=[minus-mal-minus, minus-vorklammer]
       ni(
-        'Sub-Goal "Doppel-Minus aufgelöst: $(-a)(-b)=+ab$": Berechne $6 - (-(4 - 9))$.',
+        'Berechne $6 - (-(4 - 9))$.',
         1, 0, '',
         `**Ansatz:** Von innen nach außen auflösen und Doppel-Minus/Minus-vor-Klammer beide richtig anwenden.
 
@@ -400,7 +405,7 @@ export const algebraSubGoalTasks = {
     3: [
       // Zeile 16: recognize · true-false · uses=[klammer-schachtel]
       tf(
-        'Sub-Goal "Klammerschachtelung von innen nach außen abarbeiten": Bei geschachtelten Klammern $\\{\\ldots [\\ldots (\\ldots)] \\ldots\\}$ wird immer die innerste Klammer zuerst ausgerechnet.',
+        'Bei geschachtelten Klammern $\\{\\ldots [\\ldots (\\ldots)] \\ldots\\}$ wird immer die innerste Klammer zuerst ausgerechnet.',
         true,
         `**Ansatz:** Klammern definieren die Auswertungsreihenfolge — die innerste Klammer muss vollständig zu einer Zahl ausgewertet werden, bevor die nächste Stufe bearbeitet werden kann.
 
@@ -418,7 +423,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 17: apply-guided · multiple-choice · uses=[klammer-schachtel]
       mc(
-        'Sub-Goal "Klammerschachtelung von innen nach außen abarbeiten": Was ist der erste Rechenschritt bei $3 \\cdot [4 + (5 - 2)]$?',
+        'Was ist der erste Rechenschritt bei $3 \\cdot [4 + (5 - 2)]$?',
         [
           'Innere Klammer berechnen: $5 - 2 = 3$.',
           'Faktor verteilen: $3 \\cdot 4 + 3 \\cdot 5 - 3 \\cdot 2$.',
@@ -447,7 +452,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 18: apply-independent · number-input · uses=[klammer-schachtel]
       ni(
-        'Sub-Goal "Klammerschachtelung von innen nach außen abarbeiten": Berechne $2 \\cdot (8 - (3 + 1))$.',
+        'Berechne $2 \\cdot (8 - (3 + 1))$.',
         8, 0, '',
         `**Ansatz:** Innen zuerst: $(3+1)$. Dann die umschließende Klammer. Dann die Multiplikation.
 
@@ -465,7 +470,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 19: error-analysis · multiple-choice · uses=[klammer-schachtel]
       mc(
-        'Sub-Goal "Klammerschachtelung von innen nach außen abarbeiten": Ein Schüler rechnet $\\{10 - [3 \\cdot (2+1)]\\} = \\{10 - 3 \\cdot 2 + 1\\} = \\{5\\} = 5$. Wo liegt der Fehler?',
+        'Ein Schüler rechnet $\\{10 - [3 \\cdot (2+1)]\\} = \\{10 - 3 \\cdot 2 + 1\\} = \\{5\\} = 5$. Wo liegt der Fehler?',
         [
           'Die innerste Klammer $(2+1)$ wurde nicht vollständig ausgewertet, bevor sie aufgelöst wurde.',
           'Punkt-vor-Strich wurde missachtet — die eckige Klammer dient doch nur zur Verschönerung.',
@@ -494,7 +499,7 @@ export const algebraSubGoalTasks = {
       ),
       // Zeile 20: transfer · sorting · uses=[klammer-schachtel, prio-klammer]
       sorting(
-        'Sub-Goal "Klammerschachtelung von innen nach außen abarbeiten": Bringe die Schritte zur Auswertung von $\\{10 - [2 \\cdot (3 + 1)]\\} \\cdot 3$ in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Auswertung von $\\{10 - [2 \\cdot (3 + 1)]\\} \\cdot 3$ in die richtige Reihenfolge.',
         [
           'Innerste runde Klammer: $(3 + 1) = 4$',
           'Eckige Klammer: $[2 \\cdot 4] = 8$',
@@ -529,7 +534,7 @@ export const algebraSubGoalTasks = {
     0: [
       // recognize · true-false · uses=[kgv-hauptnenner]
       tf(
-        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Das kgV von zwei Zahlen ist immer ihr Produkt.',
+        'Das kgV von zwei Zahlen ist immer ihr Produkt.',
         false,
         `**Ansatz:** Das kgV (kleinstes gemeinsames Vielfaches) ist der Hauptnenner bei ungleichnamigen Brüchen. Nur wenn zwei Zahlen teilerfremd sind, ist ihr kgV gleich dem Produkt.
 
@@ -547,7 +552,7 @@ export const algebraSubGoalTasks = {
       ),
       // apply-guided · multiple-choice · uses=[kgv-hauptnenner]
       mc(
-        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Was ist der Hauptnenner (kgV) von $\\dfrac{1}{6}$ und $\\dfrac{1}{8}$?',
+        'Was ist der Hauptnenner (kgV) von $\\dfrac{1}{6}$ und $\\dfrac{1}{8}$?',
         ['$24$', '$48$', '$14$', '$2$'],
         0,
         `**Ansatz:** Primfaktorzerlegung: $6 = 2 \\cdot 3$, $8 = 2^3$. Hauptnenner = höchste Primzahl-Exponenten übernehmen.
@@ -571,7 +576,7 @@ export const algebraSubGoalTasks = {
       ),
       // apply-independent · number-input · uses=[kgv-hauptnenner, bruch-add]  × 2 Aufgaben
       ni(
-        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Berechne $\\dfrac{5}{12} + \\dfrac{7}{18}$ und gib den Zähler nach dem Hauptnenner-Schritt (Hauptnenner $36$) an.',
+        'Berechne $\\dfrac{5}{12} + \\dfrac{7}{18}$ und gib den Zähler nach dem Hauptnenner-Schritt (Hauptnenner $36$) an.',
         29, 0, '',
         `**Ansatz:** Hauptnenner bestimmen, beide Brüche darauf bringen, dann Zähler addieren.
 
@@ -588,7 +593,7 @@ export const algebraSubGoalTasks = {
         { stage: 'apply-independent', subGoal: 0, uses: ['kgv-hauptnenner', 'bruch-add'] },
       ),
       ni(
-        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Bestimme den Hauptnenner (kgV) von $\\dfrac{3}{8}$, $\\dfrac{5}{12}$ und $\\dfrac{1}{20}$.',
+        'Bestimme den Hauptnenner (kgV) von $\\dfrac{3}{8}$, $\\dfrac{5}{12}$ und $\\dfrac{1}{20}$.',
         120, 0, '',
         `**Ansatz:** Primfaktorzerlegung aller Nenner, dann jeden Primfaktor mit dem HÖCHSTEN Exponenten übernehmen.
 
@@ -606,7 +611,7 @@ export const algebraSubGoalTasks = {
       ),
       // error-analysis · multiple-choice · uses=[bruch-add]
       mc(
-        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Ein Schüler rechnet $\\dfrac{1}{2} + \\dfrac{1}{3} = \\dfrac{1+1}{2+3} = \\dfrac{2}{5}$. Wo liegt der Fehler?',
+        'Ein Schüler rechnet $\\dfrac{1}{2} + \\dfrac{1}{3} = \\dfrac{1+1}{2+3} = \\dfrac{2}{5}$. Wo liegt der Fehler?',
         [
           'Brüche dürfen nur mit gleichen Nennern addiert werden; Zähler und Nenner einzeln zu addieren ist keine gültige Regel.',
           'Er hat den ggT statt das kgV genommen — mit Hauptnenner $6$ wäre es richtig.',
@@ -635,7 +640,7 @@ export const algebraSubGoalTasks = {
       ),
       // transfer · sorting · uses=[kgv-hauptnenner, bruch-add]
       sorting(
-        'Sub-Goal "Hauptnenner bei ungleichnamigen Brüchen finden (kgV)": Bringe die Schritte zur Berechnung von $\\dfrac{2}{9} + \\dfrac{5}{6}$ in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Berechnung von $\\dfrac{2}{9} + \\dfrac{5}{6}$ in die richtige Reihenfolge.',
         [
           'Primfaktoren: $9 = 3^2$, $6 = 2 \\cdot 3$. Hauptnenner $\\text{kgV} = 2 \\cdot 3^2 = 18$',
           'Erweiterungsfaktoren: $18/9 = 2$, $18/6 = 3$',
@@ -662,7 +667,7 @@ export const algebraSubGoalTasks = {
     1: [
       // recognize · true-false · uses=[bruch-div-kehr]
       tf(
-        'Sub-Goal "Division durch Bruch als Multiplikation mit Kehrwert": $\\dfrac{a}{b} : \\dfrac{c}{d} = \\dfrac{a}{b} \\cdot \\dfrac{d}{c}$ (Division durch einen Bruch = Multiplikation mit dessen Kehrwert).',
+        '$\\dfrac{a}{b} : \\dfrac{c}{d} = \\dfrac{a}{b} \\cdot \\dfrac{d}{c}$ (Division durch einen Bruch = Multiplikation mit dessen Kehrwert).',
         true,
         `**Ansatz:** Dies ist die zentrale Regel der Bruchdivision.
 
@@ -680,7 +685,7 @@ export const algebraSubGoalTasks = {
       ),
       // apply-guided · multiple-choice · uses=[bruch-div-kehr]
       mc(
-        'Sub-Goal "Division durch Bruch als Multiplikation mit Kehrwert": Welcher Ausdruck ist äquivalent zu $\\dfrac{3}{4} : \\dfrac{2}{5}$?',
+        'Welcher Ausdruck ist äquivalent zu $\\dfrac{3}{4} : \\dfrac{2}{5}$?',
         ['$\\dfrac{3}{4} \\cdot \\dfrac{5}{2}$', '$\\dfrac{4}{3} \\cdot \\dfrac{2}{5}$', '$\\dfrac{3}{4} \\cdot \\dfrac{2}{5}$', '$\\dfrac{3 \\cdot 2}{4 \\cdot 5}$'],
         0,
         `**Ansatz:** Division durch $\\dfrac{c}{d}$ = Multiplikation mit Kehrwert $\\dfrac{d}{c}$. Der ERSTE Bruch bleibt unverändert, nur der zweite wird gestürzt.
@@ -704,7 +709,7 @@ export const algebraSubGoalTasks = {
       ),
       // apply-independent · number-input · uses=[bruch-div-kehr]
       ni(
-        'Sub-Goal "Division durch Bruch als Multiplikation mit Kehrwert": Berechne $\\dfrac{8}{9} : \\dfrac{4}{3}$ und gib den Zähler nach dem Kürzen an (Nenner wird $3$).',
+        'Berechne $\\dfrac{8}{9} : \\dfrac{4}{3}$ und gib den Zähler nach dem Kürzen an (Nenner wird $3$).',
         2, 0, '',
         `**Ansatz:** In Multiplikation mit Kehrwert umwandeln, dann kürzen.
 
@@ -722,7 +727,7 @@ export const algebraSubGoalTasks = {
       ),
       // error-analysis · multiple-choice · uses=[bruch-div-kehr]
       mc(
-        'Sub-Goal "Division durch Bruch als Multiplikation mit Kehrwert": Ein Schüler rechnet $\\dfrac{1}{2} : \\dfrac{1}{4} = \\dfrac{1}{2} \\cdot \\dfrac{1}{4} = \\dfrac{1}{8}$. Wo liegt der Fehler?',
+        'Ein Schüler rechnet $\\dfrac{1}{2} : \\dfrac{1}{4} = \\dfrac{1}{2} \\cdot \\dfrac{1}{4} = \\dfrac{1}{8}$. Wo liegt der Fehler?',
         [
           'Division wird in Multiplikation mit KEHRWERT umgeschrieben — $\\tfrac{1}{4}$ wird zu $\\tfrac{4}{1}$, nicht zu $\\tfrac{1}{4}$.',
           'Die Brüche müssen erst auf einen gemeinsamen Nenner gebracht werden.',
@@ -751,7 +756,7 @@ export const algebraSubGoalTasks = {
       ),
       // transfer · matching · uses=[bruch-div-kehr, bruch-mult]
       matching(
-        'Sub-Goal "Division durch Bruch als Multiplikation mit Kehrwert": Ordne jedem Divisions-Ausdruck seine Multiplikations-Form zu.',
+        'Ordne jedem Divisions-Ausdruck seine Multiplikations-Form zu.',
         [
           { left: '$\\dfrac{5}{7} : \\dfrac{2}{3}$',      right: '$\\dfrac{5}{7} \\cdot \\dfrac{3}{2}$' },
           { left: '$\\dfrac{a}{b} : \\dfrac{c}{d}$',      right: '$\\dfrac{a}{b} \\cdot \\dfrac{d}{c}$' },
@@ -777,7 +782,7 @@ export const algebraSubGoalTasks = {
     2: [
       // recognize · true-false · uses=[doppelbruch]
       tf(
-        'Sub-Goal "Doppelbrüche auflösen": Ein Doppelbruch $\\dfrac{a/b}{c/d}$ lässt sich immer als $\\dfrac{a \\cdot d}{b \\cdot c}$ umschreiben.',
+        'Ein Doppelbruch $\\dfrac{a/b}{c/d}$ lässt sich immer als $\\dfrac{a \\cdot d}{b \\cdot c}$ umschreiben.',
         true,
         `**Ansatz:** Doppelbruch = Division zweier Brüche = Multiplikation mit Kehrwert.
 
@@ -795,7 +800,7 @@ export const algebraSubGoalTasks = {
       ),
       // apply-guided · multiple-choice · uses=[doppelbruch]
       mc(
-        'Sub-Goal "Doppelbrüche auflösen": Welcher einfache Bruch ist gleich $\\dfrac{\\tfrac{3}{4}}{\\tfrac{9}{8}}$?',
+        'Welcher einfache Bruch ist gleich $\\dfrac{\\tfrac{3}{4}}{\\tfrac{9}{8}}$?',
         ['$\\dfrac{2}{3}$', '$\\dfrac{27}{32}$', '$\\dfrac{3}{4}$', '$\\dfrac{4}{3}$'],
         0,
         `**Ansatz:** Doppelbruch in Division umwandeln, dann mit Kehrwert multiplizieren.
@@ -819,7 +824,7 @@ export const algebraSubGoalTasks = {
       ),
       // apply-independent · number-input · uses=[doppelbruch]
       ni(
-        'Sub-Goal "Doppelbrüche auflösen": Berechne $\\dfrac{\\tfrac{5}{6}}{\\tfrac{10}{3}}$ und gib den Zähler des vollständig gekürzten Ergebnisses an (Nenner wird $4$).',
+        'Berechne $\\dfrac{\\tfrac{5}{6}}{\\tfrac{10}{3}}$ und gib den Zähler des vollständig gekürzten Ergebnisses an (Nenner wird $4$).',
         1, 0, '',
         `**Ansatz:** Division in Multiplikation mit Kehrwert, dann kürzen.
 
@@ -837,7 +842,7 @@ export const algebraSubGoalTasks = {
       ),
       // error-analysis · multiple-choice · uses=[doppelbruch]
       mc(
-        'Sub-Goal "Doppelbrüche auflösen": Ein Schüler schreibt $\\dfrac{\\tfrac{2}{3}}{\\tfrac{4}{5}} = \\dfrac{2 \\cdot 4}{3 \\cdot 5} = \\dfrac{8}{15}$. Wo liegt der Fehler?',
+        'Ein Schüler schreibt $\\dfrac{\\tfrac{2}{3}}{\\tfrac{4}{5}} = \\dfrac{2 \\cdot 4}{3 \\cdot 5} = \\dfrac{8}{15}$. Wo liegt der Fehler?',
         [
           'Bei der Division wird der zweite Bruch gestürzt — korrekt ist $\\dfrac{2 \\cdot 5}{3 \\cdot 4} = \\dfrac{10}{12} = \\dfrac{5}{6}$.',
           'Zähler und Nenner gruppieren falsch — er hätte $\\dfrac{2+4}{3+5}$ schreiben sollen.',
@@ -866,7 +871,7 @@ export const algebraSubGoalTasks = {
       ),
       // transfer · number-input · uses=[doppelbruch, ggt-kuerzen]
       ni(
-        'Sub-Goal "Doppelbrüche auflösen": Berechne den Doppelbruch $\\dfrac{\\tfrac{7}{12}}{\\tfrac{14}{9}}$ vollständig und gib den Nenner des gekürzten Ergebnisses an (Zähler wird $3$).',
+        'Berechne den Doppelbruch $\\dfrac{\\tfrac{7}{12}}{\\tfrac{14}{9}}$ vollständig und gib den Nenner des gekürzten Ergebnisses an (Zähler wird $3$).',
         8, 0, '',
         `**Ansatz:** Division in Multiplikation mit Kehrwert, dann vollständig kürzen.
 
@@ -887,7 +892,7 @@ export const algebraSubGoalTasks = {
     3: [
       // recognize · true-false · uses=[ggt-kuerzen]
       tf(
-        'Sub-Goal "Bruch vollständig kürzen per ggT": Ein Bruch ist vollständig gekürzt, wenn Zähler und Nenner keinen gemeinsamen Teiler außer $1$ mehr haben (also $\\text{ggT}(z, n) = 1$).',
+        'Ein Bruch ist vollständig gekürzt, wenn Zähler und Nenner keinen gemeinsamen Teiler außer $1$ mehr haben (also $\\text{ggT}(z, n) = 1$).',
         true,
         `**Ansatz:** Vollständig gekürzt = teilerfremd. Der ggT ist dann genau $1$.
 
@@ -905,7 +910,7 @@ export const algebraSubGoalTasks = {
       ),
       // apply-guided · multiple-choice · uses=[ggt-kuerzen]
       mc(
-        'Sub-Goal "Bruch vollständig kürzen per ggT": Welches ist die vollständig gekürzte Form von $\\dfrac{36}{60}$?',
+        'Welches ist die vollständig gekürzte Form von $\\dfrac{36}{60}$?',
         ['$\\dfrac{3}{5}$', '$\\dfrac{6}{10}$', '$\\dfrac{9}{15}$', '$\\dfrac{18}{30}$'],
         0,
         `**Ansatz:** ggT bestimmen und damit kürzen.
@@ -929,7 +934,7 @@ export const algebraSubGoalTasks = {
       ),
       // apply-independent · number-input · uses=[ggt-kuerzen]
       ni(
-        'Sub-Goal "Bruch vollständig kürzen per ggT": Kürze $\\dfrac{84}{132}$ vollständig und gib den Zähler an (Nenner wird $11$).',
+        'Kürze $\\dfrac{84}{132}$ vollständig und gib den Zähler an (Nenner wird $11$).',
         7, 0, '',
         `**Ansatz:** Primfaktorzerlegung, ggT bestimmen, kürzen.
 
@@ -947,7 +952,7 @@ export const algebraSubGoalTasks = {
       ),
       // error-analysis · multiple-choice · uses=[ggt-kuerzen]
       mc(
-        'Sub-Goal "Bruch vollständig kürzen per ggT": Ein Schüler sagt: $\\dfrac{15}{24}$ ist vollständig gekürzt, weil $15$ und $24$ keine Primfaktoren gemeinsam haben — $15 = 3 \\cdot 5$ und $24 = 2^3 \\cdot 3$. Wo liegt der Fehler?',
+        'Ein Schüler sagt: $\\dfrac{15}{24}$ ist vollständig gekürzt, weil $15$ und $24$ keine Primfaktoren gemeinsam haben — $15 = 3 \\cdot 5$ und $24 = 2^3 \\cdot 3$. Wo liegt der Fehler?',
         [
           'Beide enthalten den Faktor $3$ — der Bruch ist nicht vollständig gekürzt; korrekt wäre $\\dfrac{5}{8}$.',
           'Der Schüler hat die Zerlegung von $24$ falsch — sie ist $2^2 \\cdot 6$.',
@@ -976,7 +981,7 @@ export const algebraSubGoalTasks = {
       ),
       // transfer · sorting · uses=[ggt-kuerzen]
       sorting(
-        'Sub-Goal "Bruch vollständig kürzen per ggT": Bringe die Schritte zum vollständigen Kürzen von $\\dfrac{54}{90}$ in die richtige Reihenfolge.',
+        'Bringe die Schritte zum vollständigen Kürzen von $\\dfrac{54}{90}$ in die richtige Reihenfolge.',
         [
           'Primfaktorzerlegung: $54 = 2 \\cdot 3^3$, $90 = 2 \\cdot 3^2 \\cdot 5$',
           'ggT bestimmen: gemeinsame Primfaktoren mit Minimum-Exponent: $2 \\cdot 3^2 = 18$',
@@ -1008,7 +1013,7 @@ export const algebraSubGoalTasks = {
     0: [
       // recognize · true-false · uses=[prozent-def]
       tf(
-        'Sub-Goal "Grundformel: $W = G \\cdot p/100$": $25\\%$ bedeutet $\\dfrac{25}{100} = 0{,}25$.',
+        '$25\\%$ bedeutet $\\dfrac{25}{100} = 0{,}25$.',
         true,
         `**Ansatz:** Prozent heißt "pro Hundert". $p\\%$ ist definiert als $\\tfrac{p}{100}$.
 
@@ -1026,7 +1031,7 @@ export const algebraSubGoalTasks = {
       ),
       // apply-guided · multiple-choice · uses=[prozent-grund]
       mc(
-        'Sub-Goal "Grundformel: $W = G \\cdot p/100$": Welche Formel liefert den Grundwert $G$ aus Prozentwert $W$ und Prozentsatz $p$?',
+        'Welche Formel liefert den Grundwert $G$ aus Prozentwert $W$ und Prozentsatz $p$?',
         ['$G = \\dfrac{W \\cdot 100}{p}$', '$G = W \\cdot p \\cdot 100$', '$G = \\dfrac{W}{p \\cdot 100}$', '$G = \\dfrac{p}{W \\cdot 100}$'],
         0,
         `**Ansatz:** Die Grundformel $W = G \\cdot p/100$ nach $G$ umstellen: beide Seiten $\\cdot 100/p$.
@@ -1050,7 +1055,7 @@ export const algebraSubGoalTasks = {
       ),
       // apply-independent · number-input · uses=[prozent-grund] ×2
       ni(
-        'Sub-Goal "Grundformel: $W = G \\cdot p/100$": Berechne $35\\%$ von $240$.',
+        'Berechne $35\\%$ von $240$.',
         84, 0, '',
         `**Ansatz:** $W = G \\cdot p/100$ mit $G=240$, $p=35$.
 
@@ -1067,7 +1072,7 @@ export const algebraSubGoalTasks = {
         { stage: 'apply-independent', subGoal: 0, uses: ['prozent-grund'] },
       ),
       ni(
-        'Sub-Goal "Grundformel: $W = G \\cdot p/100$": Ein Rabatt von $18\\,€$ entspricht $12\\%$ des Ursprungspreises. Wie hoch war der Ursprungspreis $G$ (in €)?',
+        'Ein Rabatt von $18\\,€$ entspricht $12\\%$ des Ursprungspreises. Wie hoch war der Ursprungspreis $G$ (in €)?',
         150, 0, '',
         `**Ansatz:** Umgestellt nach $G$: $G = W \\cdot 100 / p$.
 
@@ -1085,7 +1090,7 @@ export const algebraSubGoalTasks = {
       ),
       // error-analysis · multiple-choice · uses=[prozent-grund]
       mc(
-        'Sub-Goal "Grundformel: $W = G \\cdot p/100$": Ein Schüler rechnet: "$20\\%$ von $50$ sind $20 \\cdot 50 = 1000$." Wo liegt der Fehler?',
+        'Ein Schüler rechnet: "$20\\%$ von $50$ sind $20 \\cdot 50 = 1000$." Wo liegt der Fehler?',
         [
           'Die Division durch $100$ wurde vergessen — korrekt ist $W = 50 \\cdot 20/100 = 10$.',
           'Er hätte $50/20 = 2{,}5$ rechnen müssen.',
@@ -1114,7 +1119,7 @@ export const algebraSubGoalTasks = {
       ),
       // transfer · matching · uses=[prozent-grund]
       matching(
-        'Sub-Goal "Grundformel: $W = G \\cdot p/100$": Ordne jeder Situation die korrekte Formel zu.',
+        'Ordne jeder Situation die korrekte Formel zu.',
         [
           { left: 'Prozentwert gesucht (G und p bekannt)',      right: '$W = G \\cdot p/100$' },
           { left: 'Grundwert gesucht (W und p bekannt)',        right: '$G = W \\cdot 100/p$' },
@@ -1139,7 +1144,7 @@ export const algebraSubGoalTasks = {
     // [1] Wachstumsfaktor
     1: [
       tf(
-        'Sub-Goal "Wachstumsfaktor: $+p\\%$ als $\\times (1 + p/100)$": Ein Preis wird um $20\\%$ reduziert — das entspricht einer Multiplikation mit $0{,}8$.',
+        'Ein Preis wird um $20\\%$ reduziert — das entspricht einer Multiplikation mit $0{,}8$.',
         true,
         `**Ansatz:** $-p\\%$ als Wachstumsfaktor: $\\times (1 - p/100)$.
 
@@ -1156,7 +1161,7 @@ export const algebraSubGoalTasks = {
         { stage: 'recognize', subGoal: 1, uses: ['wachstumsfaktor'] },
       ),
       mc(
-        'Sub-Goal "Wachstumsfaktor: $+p\\%$ als $\\times (1 + p/100)$": Welcher Faktor entspricht einer Erhöhung um $7{,}5\\%$?',
+        'Welcher Faktor entspricht einer Erhöhung um $7{,}5\\%$?',
         ['$1{,}075$', '$0{,}925$', '$7{,}5$', '$0{,}075$'],
         0,
         `**Ansatz:** $+p\\%$ = Faktor $(1 + p/100)$.
@@ -1179,7 +1184,7 @@ export const algebraSubGoalTasks = {
         { stage: 'apply-guided', subGoal: 1, uses: ['wachstumsfaktor'] },
       ),
       ni(
-        'Sub-Goal "Wachstumsfaktor: $+p\\%$ als $\\times (1 + p/100)$": Ein Ticket kostet $60\\,€$ und wird um $15\\%$ ermäßigt. Neuer Preis in €?',
+        'Ein Ticket kostet $60\\,€$ und wird um $15\\%$ ermäßigt. Neuer Preis in €?',
         51, 0, '',
         `**Ansatz:** Reduktion um $15\\%$ = Faktor $0{,}85$.
 
@@ -1196,7 +1201,7 @@ export const algebraSubGoalTasks = {
         { stage: 'apply-independent', subGoal: 1, uses: ['wachstumsfaktor'] },
       ),
       mc(
-        'Sub-Goal "Wachstumsfaktor: $+p\\%$ als $\\times (1 + p/100)$": Ein Schüler berechnet "$+12\\%$ von $80\\,€$" als "$80 - 0{,}12 \\cdot 80 = 70{,}4\\,€$". Wo liegt der Fehler?',
+        'Ein Schüler berechnet "$+12\\%$ von $80\\,€$" als "$80 - 0{,}12 \\cdot 80 = 70{,}4\\,€$". Wo liegt der Fehler?',
         [
           'Er hat den Faktor $(1 - 0{,}12)$ statt $(1 + 0{,}12)$ verwendet — Erhöhung, nicht Reduktion.',
           'Der Prozentsatz wurde als Absolutbetrag interpretiert.',
@@ -1224,7 +1229,7 @@ export const algebraSubGoalTasks = {
         { stage: 'error-analysis', subGoal: 1, uses: ['wachstumsfaktor'] },
       ),
       ni(
-        'Sub-Goal "Wachstumsfaktor: $+p\\%$ als $\\times (1 + p/100)$": Nach einer Preissenkung von $25\\%$ kostet ein Gerät $450\\,€$. Ursprungspreis in €?',
+        'Nach einer Preissenkung von $25\\%$ kostet ein Gerät $450\\,€$. Ursprungspreis in €?',
         600, 0, '',
         `**Ansatz:** Nicht addieren, sondern durch den Wachstumsfaktor dividieren: $G_{alt} = G_{neu} / 0{,}75$.
 
@@ -1244,7 +1249,7 @@ export const algebraSubGoalTasks = {
     // [2] Zwei aufeinanderfolgende Änderungen
     2: [
       tf(
-        'Sub-Goal "Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren": $+10\\%$ gefolgt von $-10\\%$ ergibt $\\pm 0\\%$ Gesamtänderung.',
+        '$+10\\%$ gefolgt von $-10\\%$ ergibt $\\pm 0\\%$ Gesamtänderung.',
         false,
         `**Ansatz:** Zwei Änderungen multiplizieren: Faktoren $1{,}1 \\cdot 0{,}9 = 0{,}99$. Das ergibt $-1\\%$, nicht $0\\%$.
 
@@ -1261,7 +1266,7 @@ export const algebraSubGoalTasks = {
         { stage: 'recognize', subGoal: 2, uses: ['prozent-kette'] },
       ),
       mc(
-        'Sub-Goal "Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren": Welchen Faktor ergibt eine Erhöhung um $20\\%$ gefolgt von einer Erhöhung um $5\\%$?',
+        'Welchen Faktor ergibt eine Erhöhung um $20\\%$ gefolgt von einer Erhöhung um $5\\%$?',
         ['$1{,}26$', '$1{,}25$', '$1{,}20 + 1{,}05 = 2{,}25$', '$1{,}005$'],
         0,
         `**Ansatz:** Faktoren multiplizieren: $1{,}20 \\cdot 1{,}05$.
@@ -1284,7 +1289,7 @@ export const algebraSubGoalTasks = {
         { stage: 'apply-guided', subGoal: 2, uses: ['prozent-kette'] },
       ),
       ni(
-        'Sub-Goal "Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren": Ein Kapital wächst 2 Jahre lang jeweils um $5\\%$. Gesamtfaktor (auf 4 Dezimalstellen)?',
+        'Ein Kapital wächst 2 Jahre lang jeweils um $5\\%$. Gesamtfaktor (auf 4 Dezimalstellen)?',
         1.1025, 0.0001, '',
         `**Ansatz:** Gleichmäßiges Wachstum: Faktor^n.
 
@@ -1301,7 +1306,7 @@ export const algebraSubGoalTasks = {
         { stage: 'apply-independent', subGoal: 2, uses: ['prozent-kette'] },
       ),
       mc(
-        'Sub-Goal "Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren": Ein Händler erhöht den Preis erst um $10\\%$, senkt ihn dann um $10\\%$. Wie viel Prozent bleibt übrig im Vergleich zum Originalpreis?',
+        'Ein Händler erhöht den Preis erst um $10\\%$, senkt ihn dann um $10\\%$. Wie viel Prozent bleibt übrig im Vergleich zum Originalpreis?',
         ['$99\\%$ (d. h. $-1\\%$)', '$100\\%$ (gleich)', '$110\\%$ (d. h. $+10\\%$)', '$90\\%$ (d. h. $-10\\%$)'],
         0,
         `**Ansatz:** Faktoren multiplizieren.
@@ -1324,7 +1329,7 @@ export const algebraSubGoalTasks = {
         { stage: 'error-analysis', subGoal: 2, uses: ['prozent-kette'] },
       ),
       sorting(
-        'Sub-Goal "Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren": Bringe die Schritte zur Berechnung von "Preis $200\\,€$, zuerst $+15\\%$ dann $-10\\%$" in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Berechnung von "Preis $200\\,€$, zuerst $+15\\%$ dann $-10\\%$" in die richtige Reihenfolge.',
         [
           'Wachstumsfaktor 1: $1 + 0{,}15 = 1{,}15$',
           'Nach erster Änderung: $200 \\cdot 1{,}15 = 230$',
@@ -1350,7 +1355,7 @@ export const algebraSubGoalTasks = {
     // [3] Direkt vs. indirekt proportional
     3: [
       tf(
-        'Sub-Goal "Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$": Bei indirekter Proportionalität bleibt das PRODUKT $x \\cdot y$ konstant.',
+        'Bei indirekter Proportionalität bleibt das PRODUKT $x \\cdot y$ konstant.',
         true,
         `**Ansatz:** Indirekt (umgekehrt) proportional: mehr von $x$ → weniger von $y$, so dass $x \\cdot y$ konstant bleibt.
 
@@ -1367,7 +1372,7 @@ export const algebraSubGoalTasks = {
         { stage: 'recognize', subGoal: 3, uses: ['direkt-prop', 'indirekt-prop'] },
       ),
       mc(
-        'Sub-Goal "Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$": Welche Situation ist DIREKT proportional?',
+        'Welche Situation ist DIREKT proportional?',
         [
           '$3\\,\\text{kg}$ Äpfel kosten $6\\,€$; wie viel kosten $5\\,\\text{kg}$?',
           '$5$ Arbeiter brauchen $12$ Tage; wie lange brauchen $10$ Arbeiter?',
@@ -1395,7 +1400,7 @@ export const algebraSubGoalTasks = {
         { stage: 'apply-guided', subGoal: 3, uses: ['direkt-prop'] },
       ),
       ni(
-        'Sub-Goal "Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$": $6$ Gärtner brauchen $10\\,\\text{h}$ für einen Park. Wie viele Stunden bräuchten $4$ Gärtner (gleiche Leistung)?',
+        '$6$ Gärtner brauchen $10\\,\\text{h}$ für einen Park. Wie viele Stunden bräuchten $4$ Gärtner (gleiche Leistung)?',
         15, 0, '',
         `**Ansatz:** Indirekt proportional: $n_1 \\cdot t_1 = n_2 \\cdot t_2$.
 
@@ -1412,7 +1417,7 @@ export const algebraSubGoalTasks = {
         { stage: 'apply-independent', subGoal: 3, uses: ['indirekt-prop'] },
       ),
       mc(
-        'Sub-Goal "Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$": Ein Schüler rechnet: "3 Rohre füllen ein Becken in 12 h, also füllen 6 Rohre es in $12/2 \\cdot 2 = 12\\,\\text{h}$." Wo liegt der Fehler?',
+        'Ein Schüler rechnet: "3 Rohre füllen ein Becken in 12 h, also füllen 6 Rohre es in $12/2 \\cdot 2 = 12\\,\\text{h}$." Wo liegt der Fehler?',
         [
           'Er hat die Proportionalität mehrfach angewandt und sich selbst widersprochen — $6$ Rohre brauchen in Wahrheit $6\\,\\text{h}$ (indirekt).',
           'Er hat Rohre direkt proportional zur Zeit gesetzt — korrekt ist aber indirekt, also $6\\,\\text{h}$.',
@@ -1440,7 +1445,7 @@ export const algebraSubGoalTasks = {
         { stage: 'error-analysis', subGoal: 3, uses: ['direkt-prop', 'indirekt-prop'] },
       ),
       matching(
-        'Sub-Goal "Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$": Ordne jeder Situation den Proportionalitätstyp zu.',
+        'Ordne jeder Situation den Proportionalitätstyp zu.',
         [
           { left: 'Preis pro kg Ware',                        right: 'direkt' },
           { left: 'Gärtner ↔ Arbeitszeit (gleicher Job)',     right: 'indirekt' },
@@ -1469,7 +1474,7 @@ export const algebraSubGoalTasks = {
     // [4] Prozentpunkt vs. Prozent
     4: [
       tf(
-        'Sub-Goal "Prozentpunkt vs. Prozent": Wenn der Steuersatz von $15\\%$ auf $16{,}5\\%$ steigt, ist das eine Erhöhung um $1{,}5$ Prozentpunkte (absolut) bzw. $10\\%$ (relativ, da $1{,}5$ von $15$).',
+        'Wenn der Steuersatz von $15\\%$ auf $16{,}5\\%$ steigt, ist das eine Erhöhung um $1{,}5$ Prozentpunkte (absolut) bzw. $10\\%$ (relativ, da $1{,}5$ von $15$).',
         true,
         `**Ansatz:** Prozentpunkt = absolute Differenz zweier Prozentsätze. Prozent = relative Änderung eines Werts.
 
@@ -1486,7 +1491,7 @@ export const algebraSubGoalTasks = {
         { stage: 'recognize', subGoal: 4, uses: ['prozentpunkt'] },
       ),
       mc(
-        'Sub-Goal "Prozentpunkt vs. Prozent": Ein Arbeitslosen-Anteil fällt von $8\\%$ auf $6\\%$. Welche Aussage ist korrekt?',
+        'Ein Arbeitslosen-Anteil fällt von $8\\%$ auf $6\\%$. Welche Aussage ist korrekt?',
         [
           'Rückgang um $2$ Prozentpunkte; relative Reduktion um $25\\%$.',
           'Rückgang um $2\\%$.',
@@ -1514,7 +1519,7 @@ export const algebraSubGoalTasks = {
         { stage: 'apply-guided', subGoal: 4, uses: ['prozentpunkt'] },
       ),
       ni(
-        'Sub-Goal "Prozentpunkt vs. Prozent": Ein Zinssatz steigt von $2{,}5\\%$ auf $3\\%$. Um wie viele Prozentpunkte ist das?',
+        'Ein Zinssatz steigt von $2{,}5\\%$ auf $3\\%$. Um wie viele Prozentpunkte ist das?',
         0.5, 0.01, '',
         `**Ansatz:** Einfache absolute Differenz.
 
@@ -1531,7 +1536,7 @@ export const algebraSubGoalTasks = {
         { stage: 'apply-independent', subGoal: 4, uses: ['prozentpunkt'] },
       ),
       mc(
-        'Sub-Goal "Prozentpunkt vs. Prozent": Eine Zeitung schreibt: "Die Wahlbeteiligung stieg von $60\\%$ auf $66\\%$ — das ist ein Anstieg um $10\\%$." Welche Kritik ist angebracht?',
+        'Eine Zeitung schreibt: "Die Wahlbeteiligung stieg von $60\\%$ auf $66\\%$ — das ist ein Anstieg um $10\\%$." Welche Kritik ist angebracht?',
         [
           'Der Anstieg ist $6$ Prozentpunkte oder $10\\%$ relativ — die Zeitung meint wohl den relativen Anstieg, sollte das aber deutlich sagen.',
           'Die Rechnung ist falsch — es sind $+6\\%$, nicht $+10\\%$.',
@@ -1559,7 +1564,7 @@ export const algebraSubGoalTasks = {
         { stage: 'error-analysis', subGoal: 4, uses: ['prozentpunkt'] },
       ),
       ni(
-        'Sub-Goal "Prozentpunkt vs. Prozent": Ein Rabatt wird von $12\\%$ auf $18\\%$ erhöht. Um wie viele Prozent (relativ, auf eine Dezimalstelle) ist der RABATT-Satz gewachsen?',
+        'Ein Rabatt wird von $12\\%$ auf $18\\%$ erhöht. Um wie viele Prozent (relativ, auf eine Dezimalstelle) ist der RABATT-Satz gewachsen?',
         50, 0.5, '',
         `**Ansatz:** Relative Änderung des Prozentwerts: $(p_{neu} - p_{alt}) / p_{alt}$.
 
@@ -1584,7 +1589,7 @@ export const algebraSubGoalTasks = {
     // [0] Gleichartige Terme: gleiche Variable + gleicher Exponent
     0: [
       tf(
-        'Sub-Goal "Gleichartige Terme: gleiche Variable + gleicher Exponent": $3x$ und $3x^2$ sind gleichartige Terme.',
+        '$3x$ und $3x^2$ sind gleichartige Terme.',
         false,
         `**Ansatz:** Gleichartig heißt: dieselbe Variable mit demselben Exponenten. $x$ und $x^2$ haben unterschiedliche Exponenten.
 
@@ -1601,7 +1606,7 @@ export const algebraSubGoalTasks = {
         { stage: 'recognize', subGoal: 0, uses: ['gleichartige-terme'] },
       ),
       mc(
-        'Sub-Goal "Gleichartige Terme: gleiche Variable + gleicher Exponent": Welche zwei Terme sind gleichartig?',
+        'Welche zwei Terme sind gleichartig?',
         ['$5a^2b$ und $-3a^2b$', '$2xy$ und $2x^2y$', '$4a^2$ und $4a^3$', '$7x^2y^3$ und $7x^3y^2$'],
         0,
         `**Ansatz:** Gleichartig = identische Variablen mit identischen Exponenten.
@@ -1624,7 +1629,7 @@ export const algebraSubGoalTasks = {
         { stage: 'apply-guided', subGoal: 0, uses: ['gleichartige-terme', 'koeff-addieren'] },
       ),
       ni(
-        'Sub-Goal "Gleichartige Terme: gleiche Variable + gleicher Exponent": Vereinfache $5x^2 - 3x^2 + 8x^2$ und gib den Koeffizienten von $x^2$ an.',
+        'Vereinfache $5x^2 - 3x^2 + 8x^2$ und gib den Koeffizienten von $x^2$ an.',
         10, 0, '',
         `**Ansatz:** Alle drei Terme sind gleichartig ($x^2$), also Koeffizienten addieren.
 
@@ -1641,7 +1646,7 @@ export const algebraSubGoalTasks = {
         { stage: 'apply-independent', subGoal: 0, uses: ['koeff-addieren'] },
       ),
       mc(
-        'Sub-Goal "Gleichartige Terme: gleiche Variable + gleicher Exponent": Ein Schüler schreibt $x + x^2 = x^3$. Welcher Fehler liegt vor?',
+        'Ein Schüler schreibt $x + x^2 = x^3$. Welcher Fehler liegt vor?',
         [
           '$x$ und $x^2$ sind NICHT gleichartig — sie lassen sich nicht addieren, sondern bleiben $x + x^2$.',
           'Exponenten addieren bei Multiplikation — ja, aber nicht bei Addition.',
@@ -1669,7 +1674,7 @@ export const algebraSubGoalTasks = {
         { stage: 'error-analysis', subGoal: 0, uses: ['gleichartige-terme'] },
       ),
       matching(
-        'Sub-Goal "Gleichartige Terme: gleiche Variable + gleicher Exponent": Ordne jedem Term den gleichartigen Partner zu.',
+        'Ordne jedem Term den gleichartigen Partner zu.',
         [
           { left: '$5a^2$',             right: '$-3a^2$' },
           { left: '$2xy$',              right: '$-7xy$' },
@@ -1694,7 +1699,7 @@ export const algebraSubGoalTasks = {
     // [1] Distributivgesetz
     1: [
       tf(
-        'Sub-Goal "Distributivgesetz: $a(b+c)=ab+ac$": Beim Ausmultiplizieren wird der Faktor vor der Klammer auf JEDEN Summanden der Klammer angewandt.',
+        'Beim Ausmultiplizieren wird der Faktor vor der Klammer auf JEDEN Summanden der Klammer angewandt.',
         true,
         `**Ansatz:** $a(b+c) = ab + ac$ — der Faktor $a$ verteilt sich auf beide Summanden.
 
@@ -1711,7 +1716,7 @@ export const algebraSubGoalTasks = {
         { stage: 'recognize', subGoal: 1, uses: ['distributiv'] },
       ),
       mc(
-        'Sub-Goal "Distributivgesetz: $a(b+c)=ab+ac$": Multipliziere $-2(3x - 5)$ aus.',
+        'Multipliziere $-2(3x - 5)$ aus.',
         ['$-6x + 10$', '$-6x - 5$', '$-6x - 10$', '$6x - 10$'],
         0,
         `**Ansatz:** Faktor $-2$ auf jeden Summanden in der Klammer.
@@ -1734,7 +1739,7 @@ export const algebraSubGoalTasks = {
         { stage: 'apply-guided', subGoal: 1, uses: ['distributiv'] },
       ),
       ni(
-        'Sub-Goal "Distributivgesetz: $a(b+c)=ab+ac$": Berechne: $5(2x + 3) - 3(x - 4)$ bei $x = 1$.',
+        'Berechne: $5(2x + 3) - 3(x - 4)$ bei $x = 1$.',
         20, 0, '',
         `**Ansatz:** Ausmultiplizieren, vereinfachen, einsetzen.
 
@@ -1751,7 +1756,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         { stage: 'apply-independent', subGoal: 1, uses: ['distributiv'] },
       ),
       mc(
-        'Sub-Goal "Distributivgesetz: $a(b+c)=ab+ac$": Ein Schüler rechnet $5(2 + x) = 10 + x$. Wo liegt der Fehler?',
+        'Ein Schüler rechnet $5(2 + x) = 10 + x$. Wo liegt der Fehler?',
         [
           'Der Faktor $5$ wurde nur auf $2$ angewandt — korrekt ist $10 + 5x$.',
           'Die Klammer muss als Block multipliziert werden.',
@@ -1779,7 +1784,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         { stage: 'error-analysis', subGoal: 1, uses: ['distributiv'] },
       ),
       ni(
-        'Sub-Goal "Distributivgesetz: $a(b+c)=ab+ac$": Klammere aus $6x^2 - 9x$ und gib den größten gemeinsamen Faktor (ohne Vorzeichen) an.',
+        'Klammere aus $6x^2 - 9x$ und gib den größten gemeinsamen Faktor (ohne Vorzeichen) an.',
         3, 0, '',
         `**Ansatz:** Ausklammern ist die Umkehrung des Distributivgesetzes. Größter gemeinsamer Faktor der Koeffizienten UND der Variablen suchen.
 
@@ -1799,7 +1804,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
     // [2] Binomische Formeln
     2: [
       matching(
-        'Sub-Goal "Binomische Formeln: $(a\\pm b)^2 = a^2 \\pm 2ab + b^2$, $(a+b)(a-b)=a^2-b^2$": Ordne jede Formel ihrem Typ zu.',
+        'Ordne jede Formel ihrem Typ zu.',
         [
           { left: '$(a + b)^2$',         right: '$a^2 + 2ab + b^2$' },
           { left: '$(a - b)^2$',         right: '$a^2 - 2ab + b^2$' },
@@ -1821,7 +1826,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         { stage: 'recognize', subGoal: 2, uses: ['binom-1', 'binom-2', 'binom-3'] },
       ),
       mc(
-        'Sub-Goal "Binomische Formeln: $(a\\pm b)^2 = a^2 \\pm 2ab + b^2$, $(a+b)(a-b)=a^2-b^2$": Was ist $(x + 5)^2$?',
+        'Was ist $(x + 5)^2$?',
         ['$x^2 + 10x + 25$', '$x^2 + 25$', '$x^2 + 5x + 25$', '$x^2 + 10x + 5$'],
         0,
         `**Ansatz:** 1. binomische Formel: $(a+b)^2 = a^2 + 2ab + b^2$.
@@ -1844,7 +1849,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         { stage: 'apply-guided', subGoal: 2, uses: ['binom-1'] },
       ),
       ni(
-        'Sub-Goal "Binomische Formeln: $(a\\pm b)^2 = a^2 \\pm 2ab + b^2$, $(a+b)(a-b)=a^2-b^2$": Berechne $(2x - 3)^2$ bei $x = 4$ direkt über die 2. binomische Formel.',
+        'Berechne $(2x - 3)^2$ bei $x = 4$ direkt über die 2. binomische Formel.',
         25, 0, '',
         `**Ansatz:** $(a-b)^2 = a^2 - 2ab + b^2$.
 
@@ -1861,7 +1866,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         { stage: 'apply-independent', subGoal: 2, uses: ['binom-2'] },
       ),
       mc(
-        'Sub-Goal "Binomische Formeln: $(a\\pm b)^2 = a^2 \\pm 2ab + b^2$, $(a+b)(a-b)=a^2-b^2$": Ein Schüler rechnet $(3a - 2)^2 = 9a^2 - 4$. Wo liegt der Fehler?',
+        'Ein Schüler rechnet $(3a - 2)^2 = 9a^2 - 4$. Wo liegt der Fehler?',
         [
           'Der Mittelterm $-2ab = -12a$ fehlt — korrekt ist $9a^2 - 12a + 4$.',
           'Vorzeichen von $b^2$ ist falsch.',
@@ -1889,7 +1894,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         { stage: 'error-analysis', subGoal: 2, uses: ['binom-1', 'binom-2'] },
       ),
       ni(
-        'Sub-Goal "Binomische Formeln: $(a\\pm b)^2 = a^2 \\pm 2ab + b^2$, $(a+b)(a-b)=a^2-b^2$": Berechne mit der 3. binomischen Formel: $103 \\cdot 97$.',
+        'Berechne mit der 3. binomischen Formel: $103 \\cdot 97$.',
         9991, 0, '',
         `**Ansatz:** $103 \\cdot 97 = (100+3)(100-3) = 100^2 - 3^2$.
 
@@ -1909,7 +1914,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
     // [3] Äquivalenzumformungen / Formel umstellen
     3: [
       tf(
-        'Sub-Goal "Äquivalenzumformungen: auf beiden Seiten dasselbe tun": Man darf jede Gleichung auf beiden Seiten durch denselben Term dividieren — außer der Term ist Null.',
+        'Man darf jede Gleichung auf beiden Seiten durch denselben Term dividieren — außer der Term ist Null.',
         true,
         `**Ansatz:** Division durch Null ist nicht definiert; alle anderen Divisionen erhalten die Lösungsmenge.
 
@@ -1926,7 +1931,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         { stage: 'recognize', subGoal: 3, uses: ['aequivalenz', 'nicht-durch-null'] },
       ),
       mc(
-        'Sub-Goal "Äquivalenzumformungen: auf beiden Seiten dasselbe tun": Welche Umformung der Gleichung $3x + 6 = 15$ ist korrekt?',
+        'Welche Umformung der Gleichung $3x + 6 = 15$ ist korrekt?',
         ['$3x = 9$ (beide Seiten $-6$)', '$x + 6 = 5$ (beide Seiten $/3$, aber nur links)', '$3x = 21$ (beide Seiten $+6$)', '$3x = 15 - 6 = 9$ ist egal welcher Schritt.'],
         0,
         `**Ansatz:** Äquivalenzumformung: auf beiden Seiten dieselbe Operation.
@@ -1949,7 +1954,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         { stage: 'apply-guided', subGoal: 3, uses: ['aequivalenz'] },
       ),
       ni(
-        'Sub-Goal "Äquivalenzumformungen: auf beiden Seiten dasselbe tun": Stelle die Formel $F = m \\cdot a$ nach $a$ um und berechne $a$ bei $F = 50\\,\\text N$ und $m = 10\\,\\text{kg}$.',
+        'Stelle die Formel $F = m \\cdot a$ nach $a$ um und berechne $a$ bei $F = 50\\,\\text N$ und $m = 10\\,\\text{kg}$.',
         5, 0, '',
         `**Ansatz:** Beide Seiten durch $m$ dividieren: $a = F/m$.
 
@@ -1966,7 +1971,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         { stage: 'apply-independent', subGoal: 3, uses: ['formel-umstellen'] },
       ),
       mc(
-        'Sub-Goal "Äquivalenzumformungen: auf beiden Seiten dasselbe tun": Ein Schüler löst $x \\cdot (x-2) = 3 \\cdot (x-2)$ durch Division beider Seiten durch $(x-2)$ und erhält $x = 3$. Welche Lösung hat er übersehen?',
+        'Ein Schüler löst $x \\cdot (x-2) = 3 \\cdot (x-2)$ durch Division beider Seiten durch $(x-2)$ und erhält $x = 3$. Welche Lösung hat er übersehen?',
         ['$x = 2$ (Fall $x - 2 = 0$)', '$x = 0$', '$x = -3$', 'Er hat alle Lösungen gefunden.'],
         0,
         `**Ansatz:** Division durch einen Ausdruck, der NULL werden könnte, verliert Lösungen.
@@ -1989,7 +1994,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         { stage: 'error-analysis', subGoal: 3, uses: ['nicht-durch-null'] },
       ),
       sorting(
-        'Sub-Goal "Äquivalenzumformungen: auf beiden Seiten dasselbe tun": Bringe die Schritte zum Umstellen von $v = v_0 + a \\cdot t$ nach $t$ in die richtige Reihenfolge.',
+        'Bringe die Schritte zum Umstellen von $v = v_0 + a \\cdot t$ nach $t$ in die richtige Reihenfolge.',
         [
           'Subtrahiere $v_0$ auf beiden Seiten: $v - v_0 = a \\cdot t$',
           'Dividiere beide Seiten durch $a$ (mit $a \\neq 0$): $\\dfrac{v - v_0}{a} = t$',
@@ -2014,7 +2019,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
     // [4] Quadrieren & Probe
     4: [
       tf(
-        'Sub-Goal "Beim Quadrieren Probe nötig": Nach dem Quadrieren einer Gleichung kann eine neue Lösung entstehen, die die Originalgleichung nicht erfüllt (Scheinlösung).',
+        'Nach dem Quadrieren einer Gleichung kann eine neue Lösung entstehen, die die Originalgleichung nicht erfüllt (Scheinlösung).',
         true,
         `**Ansatz:** Quadrieren ist keine Äquivalenzumformung — es ist eine Folgeoperation, die potenziell neue Lösungen einführt.
 
@@ -2031,7 +2036,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         { stage: 'recognize', subGoal: 4, uses: ['quadrieren-probe'] },
       ),
       mc(
-        'Sub-Goal "Beim Quadrieren Probe nötig": Was ist bei der Gleichung $\\sqrt{x+1} = x - 1$ nach dem Quadrieren zu tun?',
+        'Was ist bei der Gleichung $\\sqrt{x+1} = x - 1$ nach dem Quadrieren zu tun?',
         [
           'Alle Lösungen durch Einsetzen in die ORIGINAL-Gleichung prüfen — Scheinlösungen möglich.',
           'Die Lösung ist schon richtig, Probe nicht nötig.',
@@ -2059,7 +2064,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         { stage: 'apply-guided', subGoal: 4, uses: ['quadrieren-probe'] },
       ),
       ni(
-        'Sub-Goal "Beim Quadrieren Probe nötig": Löse $\\sqrt{2x + 1} = 3$ und gib die (reelle) Lösung $x$ an.',
+        'Löse $\\sqrt{2x + 1} = 3$ und gib die (reelle) Lösung $x$ an.',
         4, 0, '',
         `**Ansatz:** Beide Seiten quadrieren, nach $x$ auflösen, PROBE machen.
 
@@ -2076,7 +2081,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         { stage: 'apply-independent', subGoal: 4, uses: ['quadrieren-probe'] },
       ),
       mc(
-        'Sub-Goal "Beim Quadrieren Probe nötig": Ein Schüler löst $\\sqrt{x} = -2$ durch Quadrieren zu $x = 4$ und gibt $x=4$ als Lösung an. Wo liegt der Fehler?',
+        'Ein Schüler löst $\\sqrt{x} = -2$ durch Quadrieren zu $x = 4$ und gibt $x=4$ als Lösung an. Wo liegt der Fehler?',
         [
           '$\\sqrt{x}$ ist per Definition $\\geq 0$; die Gleichung hat KEINE reelle Lösung — $x = 4$ ist Scheinlösung.',
           'Die Rechnung ist korrekt — $x = 4$ ist die Lösung.',
@@ -2104,7 +2109,7 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         { stage: 'error-analysis', subGoal: 4, uses: ['quadrieren-probe'] },
       ),
       sorting(
-        'Sub-Goal "Beim Quadrieren Probe nötig": Bringe die Schritte zum Lösen von $\\sqrt{x + 3} = x - 1$ in die richtige Reihenfolge.',
+        'Bringe die Schritte zum Lösen von $\\sqrt{x + 3} = x - 1$ in die richtige Reihenfolge.',
         [
           'Definitionsbereich klären: $x \\geq -3$ (Radikand $\\geq 0$) UND $x \\geq 1$ (RHS $\\geq 0$)',
           'Quadrieren beider Seiten: $x + 3 = (x-1)^2 = x^2 - 2x + 1$',

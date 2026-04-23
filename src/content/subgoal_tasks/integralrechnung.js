@@ -24,7 +24,7 @@ export const integralrechnungSubGoalTasks = {
     // ── [0] Bogenlänge $L = \int \sqrt{1 + [f'(x)]^2}\,dx$ ──────────────
     0: [
       mc(
-        'Sub-Goal "Bogenlänge: $L = \\int_a^b \\sqrt{1 + [f\'(x)]^2} dx$ (Pythagoras am Differentialdreieck)": Woher kommt die Wurzel $\\sqrt{1 + [f\'(x)]^2}$ in der Bogenlängen-Formel?',
+        'Woher kommt die Wurzel $\\sqrt{1 + [f\'(x)]^2}$ in der Bogenlängen-Formel?',
         [
           'Aus Pythagoras: $ds^2 = dx^2 + dy^2$, und $dy = f\'(x)\\,dx$',
           'Aus der Kettenregel: $d/dx\\,[f(x)^2] = 2f(x)f\'(x)$',
@@ -51,7 +51,7 @@ export const integralrechnungSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Bogenlänge: $L = \\int_a^b \\sqrt{1 + [f\'(x)]^2} dx$ (Pythagoras am Differentialdreieck)": Berechne die Bogenlänge der Geraden $f(x) = 2x + 1$ auf $[0, 4]$ (auf 2 Nachkommastellen).',
+        'Berechne die Bogenlänge der Geraden $f(x) = 2x + 1$ auf $[0, 4]$ (auf 2 Nachkommastellen).',
         8.94, 0.02, '',
         `**Ansatz:** Für jede Gerade $f(x) = mx + c$ ist $f\'(x) = m$ konstant, also ist der Integrand konstant und das Integral trivial.
 
@@ -67,7 +67,7 @@ export const integralrechnungSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Bogenlänge: $L = \\int_a^b \\sqrt{1 + [f\'(x)]^2} dx$ (Pythagoras am Differentialdreieck)": Für jede stetig differenzierbare Funktion gilt $L \\geq b - a$, mit Gleichheit genau für horizontale Geraden.',
+        'Für jede stetig differenzierbare Funktion gilt $L \\geq b - a$, mit Gleichheit genau für horizontale Geraden.',
         true,
         `**Ansatz:** Der Integrand $\\sqrt{1 + [f\'(x)]^2} \\geq \\sqrt{1} = 1$ für alle $x$, mit Gleichheit genau wenn $f\'(x) = 0$.
 
@@ -83,7 +83,7 @@ export const integralrechnungSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Bogenlänge: $L = \\int_a^b \\sqrt{1 + [f\'(x)]^2} dx$ (Pythagoras am Differentialdreieck)": Berechne die Bogenlänge der Kurve $f(x) = \\dfrac{x^2}{4} - \\dfrac{\\ln x}{2}$ auf $[1, e]$ (auf 3 Nachkommastellen).',
+        'Berechne die Bogenlänge der Kurve $f(x) = \\dfrac{x^2}{4} - \\dfrac{\\ln x}{2}$ auf $[1, e]$ (auf 3 Nachkommastellen).',
         2.097, 0.01, '',
         `**Ansatz:** Die Funktion ist bewusst so konstruiert, dass $1 + [f\'(x)]^2$ ein **vollständiges Quadrat** ergibt — die Wurzel lässt sich dann ohne Mühe ziehen.
 
@@ -105,7 +105,7 @@ Numerisch: $e^2 \\approx 7{,}389$, also $L \\approx 8{,}389/4 \\approx 2{,}097$.
         ],
       ),
       matching(
-        'Sub-Goal "Bogenlänge: $L = \\int_a^b \\sqrt{1 + [f\'(x)]^2} dx$ (Pythagoras am Differentialdreieck)": Ordne jeder Funktion die Bogenlänge auf dem gegebenen Intervall zu.',
+        'Ordne jeder Funktion die Bogenlänge auf dem gegebenen Intervall zu.',
         [
           { left: '$f(x) = 3$ auf $[0, 5]$ (horizontale Gerade)', right: '$L = 5$' },
           { left: '$f(x) = x$ auf $[0, 1]$', right: '$L = \\sqrt{2}$' },
@@ -134,7 +134,7 @@ Numerisch: $e^2 \\approx 7{,}389$, also $L \\approx 8{,}389/4 \\approx 2{,}097$.
     // ── [1] Durchschnittswert $\bar f = \frac{1}{b-a}\int f\,dx$ ─────────
     1: [
       ni(
-        'Sub-Goal "Durchschnittswert: $\\bar{f} = \\frac{1}{b-a} \\int_a^b f(x) dx$": Berechne den Durchschnittswert von $f(x) = \\sin x$ auf $[0, \\pi]$ (auf 3 Nachkommastellen).',
+        'Berechne den Durchschnittswert von $f(x) = \\sin x$ auf $[0, \\pi]$ (auf 3 Nachkommastellen).',
         0.637, 0.005, '',
         `**Ansatz:** Durchschnittswert-Formel: $\\bar{f} = \\dfrac{1}{b-a}\\int_a^b f\\,dx$.
 
@@ -150,7 +150,7 @@ Numerisch: $e^2 \\approx 7{,}389$, also $L \\approx 8{,}389/4 \\approx 2{,}097$.
         ],
       ),
       mc(
-        'Sub-Goal "Durchschnittswert: $\\bar{f} = \\frac{1}{b-a} \\int_a^b f(x) dx$": Warum teilt man durch $(b-a)$?',
+        'Warum teilt man durch $(b-a)$?',
         [
           'Damit das Ergebnis die Dimension von $f$ hat (nicht Dimension Fläche)',
           'Damit das Integral konvergiert',
@@ -177,7 +177,7 @@ Numerisch: $e^2 \\approx 7{,}389$, also $L \\approx 8{,}389/4 \\approx 2{,}097$.
         },
       ),
       tf(
-        'Sub-Goal "Durchschnittswert: $\\bar{f} = \\frac{1}{b-a} \\int_a^b f(x) dx$": Der Durchschnittswert einer nicht-konstanten Funktion kann mit dem arithmetischen Mittel der Randwerte $(f(a)+f(b))/2$ übereinstimmen, muss es aber nicht.',
+        'Der Durchschnittswert einer nicht-konstanten Funktion kann mit dem arithmetischen Mittel der Randwerte $(f(a)+f(b))/2$ übereinstimmen, muss es aber nicht.',
         true,
         `**Ansatz:** Das arithmetische Mittel der Randwerte ist die Trapezregel-Näherung — sie stimmt mit dem Integralmittel nur für bestimmte Funktionen exakt überein (z.B. lineare Funktionen).
 
@@ -195,7 +195,7 @@ Gegenbeispiel: $f(x) = x^2$ auf $[0,2]$: $\\bar{f} = \\tfrac{1}{2}\\int_0^2 x^2\
         ],
       ),
       ni(
-        'Sub-Goal "Durchschnittswert: $\\bar{f} = \\frac{1}{b-a} \\int_a^b f(x) dx$": Ein Strom $i(t) = I_0 \\sin(\\omega t)$ mit $I_0 = 10\\,\\text{A}$. Wie groß ist der **Gleichrichtwert** (Durchschnitt des Absolutbetrags) über eine volle Periode $T = 2\\pi/\\omega$? (auf 3 Nachkommastellen in Ampere)',
+        'Ein Strom $i(t) = I_0 \\sin(\\omega t)$ mit $I_0 = 10\\,\\text{A}$. Wie groß ist der **Gleichrichtwert** (Durchschnitt des Absolutbetrags) über eine volle Periode $T = 2\\pi/\\omega$? (auf 3 Nachkommastellen in Ampere)',
         6.366, 0.01, 'A',
         `**Ansatz:** Gleichrichtwert $\\bar{|i|} = \\dfrac{1}{T}\\int_0^T |I_0 \\sin(\\omega t)|\\,dt$. Wegen Symmetrie: $\\bar{|i|} = \\dfrac{2}{T}\\int_0^{T/2} I_0 \\sin(\\omega t)\\,dt$.
 
@@ -211,7 +211,7 @@ Gegenbeispiel: $f(x) = x^2$ auf $[0,2]$: $\\bar{f} = \\tfrac{1}{2}\\int_0^2 x^2\
         ],
       ),
       sorting(
-        'Sub-Goal "Durchschnittswert: $\\bar{f} = \\frac{1}{b-a} \\int_a^b f(x) dx$": Bringe die Schritte zur Berechnung des Durchschnittswerts von $f(x) = 4 - x^2$ auf $[-2, 2]$ in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Berechnung des Durchschnittswerts von $f(x) = 4 - x^2$ auf $[-2, 2]$ in die richtige Reihenfolge.',
         [
           'Intervallbreite $b - a$ bestimmen ($= 4$)',
           'Stammfunktion $F(x) = 4x - x^3/3$ bilden',
@@ -238,7 +238,7 @@ Gegenbeispiel: $f(x) = x^2$ auf $[0,2]$: $\\bar{f} = \\tfrac{1}{2}\\int_0^2 x^2\
     // ── [2] Parametrisierte Kurve $(x(t), y(t))$: $L = \int \sqrt{x'^2+y'^2}dt$
     2: [
       ni(
-        'Sub-Goal "Parametrisierte Kurve $(x(t), y(t))$: $L = \\int_{t_1}^{t_2} \\sqrt{x\'^2 + y\'^2} dt$": Bogenlänge der Kurve $x(t) = \\cos t$, $y(t) = \\sin t$ auf $t \\in [0, 2\\pi]$ (auf 3 Nachkommastellen).',
+        'Bogenlänge der Kurve $x(t) = \\cos t$, $y(t) = \\sin t$ auf $t \\in [0, 2\\pi]$ (auf 3 Nachkommastellen).',
         6.283, 0.002, '',
         `**Ansatz:** Formel für parametrisierte Kurven: $L = \\int_{t_1}^{t_2} \\sqrt{x\'(t)^2 + y\'(t)^2}\\,dt$.
 
@@ -254,7 +254,7 @@ Gegenbeispiel: $f(x) = x^2$ auf $[0,2]$: $\\bar{f} = \\tfrac{1}{2}\\int_0^2 x^2\
         ],
       ),
       mc(
-        'Sub-Goal "Parametrisierte Kurve $(x(t), y(t))$: $L = \\int_{t_1}^{t_2} \\sqrt{x\'^2 + y\'^2} dt$": Warum ist die parametrisierte Form **allgemeiner** als die explizite Formel $L = \\int\\sqrt{1 + f\'(x)^2}\\,dx$?',
+        'Warum ist die parametrisierte Form **allgemeiner** als die explizite Formel $L = \\int\\sqrt{1 + f\'(x)^2}\\,dx$?',
         [
           'Sie funktioniert auch für Kurven, die keine Funktion $y = f(x)$ sind (z.B. Kreis, Schleifen)',
           'Sie liefert kürzere Ergebnisse',
@@ -281,7 +281,7 @@ Gegenbeispiel: $f(x) = x^2$ auf $[0,2]$: $\\bar{f} = \\tfrac{1}{2}\\int_0^2 x^2\
         },
       ),
       ni(
-        'Sub-Goal "Parametrisierte Kurve $(x(t), y(t))$: $L = \\int_{t_1}^{t_2} \\sqrt{x\'^2 + y\'^2} dt$": Die Zykloidkurve $x(t) = t - \\sin t$, $y(t) = 1 - \\cos t$ beschreibt ein Punkt auf einem rollenden Einheitsrad. Berechne die Bogenlänge einer vollen Umdrehung ($t \\in [0, 2\\pi]$).',
+        'Die Zykloidkurve $x(t) = t - \\sin t$, $y(t) = 1 - \\cos t$ beschreibt ein Punkt auf einem rollenden Einheitsrad. Berechne die Bogenlänge einer vollen Umdrehung ($t \\in [0, 2\\pi]$).',
         8, 0.01, '',
         `**Ansatz:** $x\'(t) = 1 - \\cos t$, $y\'(t) = \\sin t$. $(x\')^2 + (y\')^2 = (1-\\cos t)^2 + \\sin^2 t = 1 - 2\\cos t + \\cos^2 t + \\sin^2 t = 2 - 2\\cos t = 2(1-\\cos t)$.
 
@@ -299,7 +299,7 @@ Halbwinkel-Identität: $1 - \\cos t = 2\\sin^2(t/2)$. Also $(x\')^2+(y\')^2 = 4\
         ],
       ),
       tf(
-        'Sub-Goal "Parametrisierte Kurve $(x(t), y(t))$: $L = \\int_{t_1}^{t_2} \\sqrt{x\'^2 + y\'^2} dt$": Die parametrisierte Bogenlängenformel ist geschwindigkeitsbasiert: $\\sqrt{x\'(t)^2 + y\'(t)^2}$ ist der Betrag des Geschwindigkeitsvektors $\\vec{v}(t)$.',
+        'Die parametrisierte Bogenlängenformel ist geschwindigkeitsbasiert: $\\sqrt{x\'(t)^2 + y\'(t)^2}$ ist der Betrag des Geschwindigkeitsvektors $\\vec{v}(t)$.',
         true,
         `**Ansatz:** In der Mechanik ist $(x\'(t), y\'(t))$ der Geschwindigkeitsvektor $\\vec{v}$ eines Punkts auf der Bahn. Sein Betrag $|\\vec v| = \\sqrt{x\'^2 + y\'^2}$ ist die skalare Geschwindigkeit.
 
@@ -315,7 +315,7 @@ Halbwinkel-Identität: $1 - \\cos t = 2\\sin^2(t/2)$. Also $(x\')^2+(y\')^2 = 4\
         ],
       ),
       matching(
-        'Sub-Goal "Parametrisierte Kurve $(x(t), y(t))$: $L = \\int_{t_1}^{t_2} \\sqrt{x\'^2 + y\'^2} dt$": Ordne jeder Parametrisierung die Kurve zu.',
+        'Ordne jeder Parametrisierung die Kurve zu.',
         [
           { left: '$x = \\cos t$, $y = \\sin t$, $t \\in [0, 2\\pi]$', right: 'Einheitskreis (einmal gegen den Uhrzeigersinn)' },
           { left: '$x = R\\cos t$, $y = R\\sin t$', right: 'Kreis mit Radius $R$ um den Ursprung' },
@@ -340,7 +340,7 @@ Halbwinkel-Identität: $1 - \\cos t = 2\\sin^2(t/2)$. Also $(x\')^2+(y\')^2 = 4\
     // ── [3] Mittelwertsatz der Integralrechnung: $\exists \xi$ ──────────
     3: [
       tf(
-        'Sub-Goal "Mittelwertsatz der Integralrechnung: $\\exists \\xi \\in [a,b]$ mit $f(\\xi) = \\bar{f}$": Für jede stetige Funktion $f$ auf $[a,b]$ existiert mindestens ein Punkt $\\xi$ im Intervall, an dem $f(\\xi)$ gleich dem Durchschnittswert ist.',
+        'Für jede stetige Funktion $f$ auf $[a,b]$ existiert mindestens ein Punkt $\\xi$ im Intervall, an dem $f(\\xi)$ gleich dem Durchschnittswert ist.',
         true,
         `**Ansatz:** Der Mittelwertsatz der Integralrechnung besagt: Ist $f$ stetig auf $[a,b]$, so existiert ein $\\xi \\in [a,b]$ mit $\\int_a^b f\\,dx = f(\\xi)(b-a)$, also $f(\\xi) = \\bar f$.
 
@@ -356,7 +356,7 @@ Halbwinkel-Identität: $1 - \\cos t = 2\\sin^2(t/2)$. Also $(x\')^2+(y\')^2 = 4\
         ],
       ),
       ni(
-        'Sub-Goal "Mittelwertsatz der Integralrechnung: $\\exists \\xi \\in [a,b]$ mit $f(\\xi) = \\bar{f}$": Finde $\\xi \\in [0, 2]$ mit $f(\\xi) = \\bar f$ für $f(x) = x^2$ (auf 3 Nachkommastellen).',
+        'Finde $\\xi \\in [0, 2]$ mit $f(\\xi) = \\bar f$ für $f(x) = x^2$ (auf 3 Nachkommastellen).',
         1.155, 0.01, '',
         `**Ansatz:** Erst Durchschnittswert berechnen, dann Gleichung $f(\\xi) = \\bar f$ nach $\\xi$ lösen.
 
@@ -372,7 +372,7 @@ Halbwinkel-Identität: $1 - \\cos t = 2\\sin^2(t/2)$. Also $(x\')^2+(y\')^2 = 4\
         ],
       ),
       mc(
-        'Sub-Goal "Mittelwertsatz der Integralrechnung: $\\exists \\xi \\in [a,b]$ mit $f(\\xi) = \\bar{f}$": Was garantiert der Mittelwertsatz **nicht**?',
+        'Was garantiert der Mittelwertsatz **nicht**?',
         [
           'Eindeutigkeit des Punkts $\\xi$',
           'Existenz mindestens eines Punkts $\\xi$',
@@ -399,7 +399,7 @@ Halbwinkel-Identität: $1 - \\cos t = 2\\sin^2(t/2)$. Also $(x\')^2+(y\')^2 = 4\
         },
       ),
       matching(
-        'Sub-Goal "Mittelwertsatz der Integralrechnung: $\\exists \\xi \\in [a,b]$ mit $f(\\xi) = \\bar{f}$": Ordne jeder Funktion den Mittelwert-Punkt $\\xi$ auf dem Intervall zu.',
+        'Ordne jeder Funktion den Mittelwert-Punkt $\\xi$ auf dem Intervall zu.',
         [
           { left: '$f(x) = x$ auf $[0, 4]$', right: '$\\xi = 2$ (Intervallmitte)' },
           { left: '$f(x) = 3$ (Konstante) auf $[a, b]$', right: 'jeder Punkt in $[a,b]$ erfüllt $f(\\xi) = \\bar f$' },
@@ -424,7 +424,7 @@ Halbwinkel-Identität: $1 - \\cos t = 2\\sin^2(t/2)$. Also $(x\')^2+(y\')^2 = 4\
         ],
       ),
       ni(
-        'Sub-Goal "Mittelwertsatz der Integralrechnung: $\\exists \\xi \\in [a,b]$ mit $f(\\xi) = \\bar{f}$": Ein Auto fährt $t = 0$ bis $t = 10\\,\\text{s}$ mit $v(t) = t + 2\\,\\text{m/s}$. Zu welcher Zeit $\\xi$ hat das Auto seine Durchschnittsgeschwindigkeit? (in Sekunden)',
+        'Ein Auto fährt $t = 0$ bis $t = 10\\,\\text{s}$ mit $v(t) = t + 2\\,\\text{m/s}$. Zu welcher Zeit $\\xi$ hat das Auto seine Durchschnittsgeschwindigkeit? (in Sekunden)',
         5, 0.05, 's',
         `**Ansatz:** Mittelwertsatz: $v(\\xi) = \\bar v$ für ein $\\xi \\in [0, 10]$.
 
@@ -444,7 +444,7 @@ Halbwinkel-Identität: $1 - \\cos t = 2\\sin^2(t/2)$. Also $(x\')^2+(y\')^2 = 4\
     // ── [4] Anwendung Maschinenbau: Zahnrad-Evolventen, Rohre, Seile ────
     4: [
       ni(
-        'Sub-Goal "Anwendung Maschinenbau: Zahnrad-Evolventen, Rohrleitungen, Seilverläufe": Ein Rohr folgt der Parabel $y(x) = 0{,}1\\,x^2$ zwischen $x = 0$ und $x = 10\\,\\text{m}$. Wie viele Meter Rohrmaterial werden benötigt? (auf 2 Nachkommastellen)',
+        'Ein Rohr folgt der Parabel $y(x) = 0{,}1\\,x^2$ zwischen $x = 0$ und $x = 10\\,\\text{m}$. Wie viele Meter Rohrmaterial werden benötigt? (auf 2 Nachkommastellen)',
         14.79, 0.05, 'm',
         `**Ansatz:** Benötigtes Material = Bogenlänge der Kurve, nicht horizontale Projektion.
 
@@ -464,7 +464,7 @@ $L = 5 \\cdot 2{,}9579 \\approx 14{,}79$ m.
         ],
       ),
       mc(
-        'Sub-Goal "Anwendung Maschinenbau: Zahnrad-Evolventen, Rohrleitungen, Seilverläufe": Ein frei hängendes Seil bildet eine Kettenlinie $y(x) = a\\cosh(x/a)$. Warum NICHT einfach mit der Sekantenlänge rechnen?',
+        'Ein frei hängendes Seil bildet eine Kettenlinie $y(x) = a\\cosh(x/a)$. Warum NICHT einfach mit der Sekantenlänge rechnen?',
         [
           'Die Bogenlänge ist systematisch größer als die Sekante (Materialunterschätzung)',
           'Die Sekante liegt über der Kurve, nicht darunter',
@@ -491,7 +491,7 @@ $L = 5 \\cdot 2{,}9579 \\approx 14{,}79$ m.
         },
       ),
       tf(
-        'Sub-Goal "Anwendung Maschinenbau: Zahnrad-Evolventen, Rohrleitungen, Seilverläufe": Die Evolvente eines Kreises mit Radius $R$ hat die Parametrisierung $x(t) = R(\\cos t + t \\sin t)$, $y(t) = R(\\sin t - t\\cos t)$, und ihre Bogenlänge von $t=0$ bis $t=T$ ist $L = R T^2/2$.',
+        'Die Evolvente eines Kreises mit Radius $R$ hat die Parametrisierung $x(t) = R(\\cos t + t \\sin t)$, $y(t) = R(\\sin t - t\\cos t)$, und ihre Bogenlänge von $t=0$ bis $t=T$ ist $L = R T^2/2$.',
         true,
         `**Ansatz:** Ableitungen berechnen, Integrand vereinfachen, integrieren.
 
@@ -509,7 +509,7 @@ $L = \\int_0^T Rt\\,dt = R \\cdot T^2/2$.
         ],
       ),
       sorting(
-        'Sub-Goal "Anwendung Maschinenbau: Zahnrad-Evolventen, Rohrleitungen, Seilverläufe": Bringe die Schritte einer Material-Berechnung für ein gekrümmtes Rohr in die richtige Reihenfolge.',
+        'Bringe die Schritte einer Material-Berechnung für ein gekrümmtes Rohr in die richtige Reihenfolge.',
         [
           'Geometrie der Rohrführung als Kurve $y = f(x)$ oder parametrisiert aufschreiben',
           'Ableitung(en) bilden und Integrand $\\sqrt{1+[f\'(x)]^2}$ oder $\\sqrt{x\'^2+y\'^2}$ aufstellen',
@@ -532,7 +532,7 @@ $L = \\int_0^T Rt\\,dt = R \\cdot T^2/2$.
         ],
       ),
       matching(
-        'Sub-Goal "Anwendung Maschinenbau: Zahnrad-Evolventen, Rohrleitungen, Seilverläufe": Ordne jeder Maschinenbau-Anwendung die relevante Integralformel zu.',
+        'Ordne jeder Maschinenbau-Anwendung die relevante Integralformel zu.',
         [
           { left: 'Seillänge einer Hochspannungsleitung (Kettenlinie)', right: 'Bogenlängen-Integral $\\int\\sqrt{1+y\'^2}\\,dx$' },
           { left: 'Mittlere Temperatur in einem Wärmetauscher entlang $[L_1, L_2]$', right: 'Mittelwertsatz: $\\bar T = \\tfrac{1}{L_2-L_1}\\int T(x)\\,dx$' },
