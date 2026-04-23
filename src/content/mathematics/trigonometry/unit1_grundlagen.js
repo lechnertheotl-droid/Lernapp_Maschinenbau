@@ -643,7 +643,7 @@ $$\\alpha + \\beta + \\gamma = 180°$$
         { id: 'bogenlaenge',      title: 'Bogenlänge $b = r\\cdot\\alpha_{\\mathrm{rad}}$ am Kreis',            dependsOn: ['radiant-def'] },
       ],
       subGoalConcepts: {
-        0: ['deg-rad-modus'],
+        0: ['radiant-def', 'deg-rad-modus'],
         1: ['pi-vielfache'],
         2: ['umrechnung-formel'],
         3: ['bogenlaenge'],
@@ -956,7 +956,7 @@ Der Grund: Diese Winkel kommen in regelmäßigen Geometrien vor (gleichseitiges 
         2: ['referenzwinkel'],
       },
       taskPlan: [
-        { subGoal: 0, stage: 'recognize',         type: 'matching',        uses: ['vorzeichen-ASTC'],    qty: 1 },
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['vorzeichen-ASTC'],    qty: 1 },
         { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['vorzeichen-ASTC'],    qty: 1 },
         { subGoal: 0, stage: 'apply-independent', type: 'multiple-choice', uses: ['vorzeichen-ASTC'],    qty: 1 },
         { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['vorzeichen-ASTC'],    qty: 1 },
