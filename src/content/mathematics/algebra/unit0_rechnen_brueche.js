@@ -28,7 +28,8 @@ export const exercises_alg_u0 = {
       2: 'Das wäre $3 + 4 + 3 = 10$ — keine Rechenoperation im Term passt dazu.',
       3: 'Das wäre $(3+4) \\cdot (2+1)$ oder ähnlich — stimmt nicht mit $3 + 4 \\cdot 2$ überein.',
     },
-  },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['prio-basic'] },
+},
   'ex-alg-0-1-b': {
     id: 'ex-alg-0-1-b', lessonId: 'alg-0-1', type: 'number-input',
     question: 'Berechne: $2 \\cdot (3 + 4)$',
@@ -45,7 +46,8 @@ export const exercises_alg_u0 = {
       'Danach mit dem $2$ vor der Klammer multiplizieren.',
       'Alternativ: $2 \\cdot 3 + 2 \\cdot 4$ — beide Wege geben dasselbe.',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['prio-basic'] },
+},
   'ex-alg-0-1-c': {
     id: 'ex-alg-0-1-c', lessonId: 'alg-0-1', type: 'multiple-choice',
     question: 'Berechne: $-(3 - 5)$',
@@ -68,7 +70,8 @@ export const exercises_alg_u0 = {
       2: 'Das Minus wurde nur auf die $3$ angewandt: $-3-5=-8$. Es wirkt aber auf beide Summanden in der Klammer.',
       3: 'Das wäre $-3 \\cdot (-5/\\ldots)$ oder ähnlich — nicht $-(3-5)$.',
     },
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['prio-basic'] },
+},
   'ex-alg-0-1-d': {
     id: 'ex-alg-0-1-d', lessonId: 'alg-0-1', type: 'true-false',
     statement: 'Der Ausdruck $3 + 4 \\cdot 2$ ergibt $14$.',
@@ -84,7 +87,8 @@ export const exercises_alg_u0 = {
       'Punkt-vor-Strich prüfen.',
       'Was müsste geklammert sein, damit $14$ richtig wäre?',
     ],
-  },
+      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['prio-basic'] },
+},
   'ex-alg-0-1-e': {
     id: 'ex-alg-0-1-e', lessonId: 'alg-0-1', type: 'matching',
     question: 'Ordne jedem Ausdruck den korrekten Wert zu.',
@@ -109,7 +113,8 @@ export const exercises_alg_u0 = {
       'Rechne jeden Ausdruck einzeln aus, dann zuordnen.',
       'Bei Klammern: innen zuerst.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['prio-basic'] },
+},
   'ex-alg-0-1-mastery': {
     id: 'ex-alg-0-1-mastery', lessonId: 'alg-0-1', type: 'number-input', isMasteryCheck: true,
     question: 'Berechne: $-2 \\cdot (3 - 5) + 4$',
@@ -126,7 +131,8 @@ export const exercises_alg_u0 = {
       'Dann multiplizieren — Vorzeichen beachten (Minus mal Minus = Plus).',
       'Zum Schluss $+4$.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['prio-basic'] },
+},
 
   // ───────────── Lektion 0-2: Brüche ─────────────
   'ex-alg-0-2-a': {
@@ -151,7 +157,8 @@ export const exercises_alg_u0 = {
       2: 'Durch 6 geteilt gäbe $1$ im Zähler, aber $9/6$ ist keine ganze Zahl — der ggT ist $3$, nicht $6$.',
       3: '$6$ und $9$ haben den gemeinsamen Teiler $3$. Kürzen ist also möglich.',
     },
-  },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['kgv-hauptnenner'] },
+},
   'ex-alg-0-2-b': {
     id: 'ex-alg-0-2-b', lessonId: 'alg-0-2', type: 'multiple-choice',
     question: 'Berechne: $\\dfrac{1}{2} + \\dfrac{1}{3}$',
@@ -174,7 +181,8 @@ export const exercises_alg_u0 = {
       2: 'Vermutlich hast du „$1/2$ + $1/3$" als „$1/(2+3)$" gelesen. Das ist keine gültige Regel.',
       3: 'Das wäre $\\tfrac{1+1}{6}$ — aber die Zähler beim Gleichnamigmachen sind $3$ und $2$, nicht $1$ und $1$.',
     },
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['kgv-hauptnenner'] },
+},
   'ex-alg-0-2-c': {
     id: 'ex-alg-0-2-c', lessonId: 'alg-0-2', type: 'number-input',
     question: 'Berechne: $\\dfrac{2}{3} \\cdot \\dfrac{3}{4}$. Gib das Ergebnis als Dezimalzahl an.',
@@ -191,7 +199,8 @@ export const exercises_alg_u0 = {
       'Kürzen geht auch diagonal (z. B. 3 oben gegen 3 unten).',
       'Endergebnis dezimal umrechnen: $1/2 = 0{,}5$.',
     ],
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['kgv-hauptnenner'] },
+},
   'ex-alg-0-2-d': {
     id: 'ex-alg-0-2-d', lessonId: 'alg-0-2', type: 'true-false',
     statement: '$\\dfrac{a}{b} + \\dfrac{c}{d} = \\dfrac{a+c}{b+d}$ — diese Regel ist für beliebige Brüche korrekt.',
@@ -207,7 +216,8 @@ export const exercises_alg_u0 = {
       'Ein Gegenbeispiel reicht, um eine Regel zu widerlegen.',
       'Teste $\\tfrac{1}{2} + \\tfrac{1}{2}$ — wird das $1$ oder $\\tfrac{2}{4}$?',
     ],
-  },
+      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['kgv-hauptnenner'] },
+},
   'ex-alg-0-2-e': {
     id: 'ex-alg-0-2-e', lessonId: 'alg-0-2', type: 'sorting',
     question: 'Bringe die Schritte zur Addition $\\tfrac{1}{4} + \\tfrac{2}{3}$ in die richtige Reihenfolge.',
@@ -229,7 +239,8 @@ export const exercises_alg_u0 = {
       'Addition braucht erst gleiche Nenner.',
       'Erst am Ende schauen, ob sich das Ergebnis kürzen lässt.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['kgv-hauptnenner'] },
+},
   'ex-alg-0-2-mastery': {
     id: 'ex-alg-0-2-mastery', lessonId: 'alg-0-2', type: 'multiple-choice', isMasteryCheck: true,
     question: 'Berechne: $\\dfrac{2}{5} + \\dfrac{1}{3} - \\dfrac{1}{15}$',
@@ -252,7 +263,8 @@ export const exercises_alg_u0 = {
       2: 'Gleicher Wert wie A, aber nicht gekürzt. Die gefragte einfachste Form ist $\\tfrac{2}{3}$.',
       3: '$\\tfrac{1}{2} = \\tfrac{7{,}5}{15}$ — passt zahlenmäßig nicht zu Zähler $10$ auf Nenner $15$.',
     },
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['kgv-hauptnenner'] },
+},
 
   // ───────────── Lektion 0-3: Prozent & Dreisatz ─────────────
   'ex-alg-0-3-a': {
@@ -277,7 +289,8 @@ export const exercises_alg_u0 = {
       2: 'Das ist $80 - 25$. Prozent heißt „pro 100", nicht „minus".',
       3: 'Das wäre $80 \\cdot 0{,}04 = 4\\%$ von $80$ — du hast ein Komma verschoben.',
     },
-  },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['prozent-def'] },
+},
   'ex-alg-0-3-b': {
     id: 'ex-alg-0-3-b', lessonId: 'alg-0-3', type: 'number-input',
     question: 'Ein Pullover kostet $60\\,\\text{€}$ und wird um $15\\%$ reduziert. Wie viel kostet er nach der Reduktion (in €)?',
@@ -294,7 +307,8 @@ export const exercises_alg_u0 = {
       'Dann vom ursprünglichen Preis abziehen.',
       'Oder direkt: Preis $\\times (1 - 0{,}15) = $ Preis $\\times 0{,}85$.',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['prozent-def'] },
+},
   'ex-alg-0-3-c': {
     id: 'ex-alg-0-3-c', lessonId: 'alg-0-3', type: 'number-input',
     question: 'Dreisatz: $3$ Pumpen füllen einen Tank in $8$ Stunden. Wie lange brauchen $4$ Pumpen (in Stunden)?',
@@ -311,7 +325,8 @@ export const exercises_alg_u0 = {
       'Schneller → indirekt proportional → Produkt bleibt konstant.',
       'Pumpen · Zeit $=$ konstant. Wie viel sind es hier?',
     ],
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['prozent-def'] },
+},
   'ex-alg-0-3-d': {
     id: 'ex-alg-0-3-d', lessonId: 'alg-0-3', type: 'true-false',
     statement: 'Wenn ein Wert um $20\\%$ steigt und dann um $20\\%$ fällt, ist der Endwert gleich dem Ausgangswert.',
@@ -327,7 +342,8 @@ export const exercises_alg_u0 = {
       'Rechne an einem Beispielwert (z. B. 100) durch.',
       'Der zweite Prozentsatz bezieht sich auf den **neuen** Wert, nicht den ursprünglichen.',
     ],
-  },
+      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['prozent-def'] },
+},
   'ex-alg-0-3-e': {
     id: 'ex-alg-0-3-e', lessonId: 'alg-0-3', type: 'matching',
     question: 'Ordne die Begriffe den Formeln zu.',
@@ -348,7 +364,8 @@ export const exercises_alg_u0 = {
       'Grundformel $W = G \\cdot p/100$ — alle anderen Formen durch Umstellen.',
       'Wachstumsfaktor $= 1 + p/100$ (Zunahme) bzw. $1 - p/100$ (Abnahme).',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['prozent-def'] },
+},
   'ex-alg-0-3-mastery': {
     id: 'ex-alg-0-3-mastery', lessonId: 'alg-0-3', type: 'number-input', isMasteryCheck: true,
     question: 'Ein Werkstoff enthält $3{,}5\\%$ Kohlenstoff. In einer Probe von $800\\,\\text{g}$ ist wie viel Kohlenstoff enthalten (in g)?',
@@ -365,7 +382,8 @@ export const exercises_alg_u0 = {
       'Gesucht: Prozentwert $W$.',
       '$W = G \\cdot p/100$.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['prozent-def'] },
+},
 
   // ───────────── Lektion 0-4: Termumformung & Gleichungen ─────────────
   'ex-alg-0-4-a': {
@@ -390,7 +408,8 @@ export const exercises_alg_u0 = {
       2: 'Du hast alle Koeffizienten addiert und das Minus übersehen.',
       3: 'Typische Verwechslung mit Potenzgesetzen. Aber $2x+3x-x$ ist eine Summe, keine Multiplikation — der Exponent bleibt $1$.',
     },
-  },
+      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['gleichartige-terme'] },
+},
   'ex-alg-0-4-b': {
     id: 'ex-alg-0-4-b', lessonId: 'alg-0-4', type: 'number-input',
     question: 'Löse die Gleichung nach $x$ auf: $2x + 6 = 14$',
@@ -408,7 +427,8 @@ $$2x + 6 = 14 \\quad | -6 \\\\ 2x = 8 \\quad | :2 \\\\ x = 4$$
       'Danach durch den Koeffizienten teilen — hier durch $2$.',
       'Am Ende Probe machen: Einsetzen und prüfen.',
     ],
-  },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['gleichartige-terme'] },
+},
   'ex-alg-0-4-c': {
     id: 'ex-alg-0-4-c', lessonId: 'alg-0-4', type: 'multiple-choice',
     question: 'Löse die Formel $F = m \\cdot a$ nach $a$ auf.',
@@ -431,7 +451,8 @@ $$2x + 6 = 14 \\quad | -6 \\\\ 2x = 8 \\quad | :2 \\\\ x = 4$$
       2: 'Das ist der Kehrwert. Vermutlich hast du rechts $F/m$, aber Zähler und Nenner vertauscht.',
       3: 'Subtraktion passt zu $F = m + a$, nicht zu $F = m \\cdot a$.',
     },
-  },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['gleichartige-terme'] },
+},
   'ex-alg-0-4-d': {
     id: 'ex-alg-0-4-d', lessonId: 'alg-0-4', type: 'true-false',
     statement: 'Beim Lösen einer Gleichung darf man beide Seiten mit derselben Zahl multiplizieren, ohne das Gleichheitszeichen zu verlieren (solange die Zahl nicht Null ist).',
@@ -446,7 +467,8 @@ $$2x + 6 = 14 \\quad | -6 \\\\ 2x = 8 \\quad | :2 \\\\ x = 4$$
     hints: [
       'Gilt die Regel für **jede** Zahl — auch für $0$?',
     ],
-  },
+      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['gleichartige-terme'] },
+},
   'ex-alg-0-4-e': {
     id: 'ex-alg-0-4-e', lessonId: 'alg-0-4', type: 'sorting',
     question: 'Bringe die Schritte zur Lösung von $3x - 5 = 10$ in die richtige Reihenfolge.',
@@ -469,7 +491,8 @@ $$2x + 6 = 14 \\quad | -6 \\\\ 2x = 8 \\quad | :2 \\\\ x = 4$$
       'Danach die Zahl weg, die **multipliziert** wird.',
       'Zum Schluss Probe.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['gleichartige-terme'] },
+},
   'ex-alg-0-4-mastery': {
     id: 'ex-alg-0-4-mastery', lessonId: 'alg-0-4', type: 'number-input', isMasteryCheck: true,
     question: 'Löse: $\\dfrac{x+4}{3} = 5$ nach $x$.',
@@ -487,7 +510,8 @@ $$\\dfrac{x+4}{3} = 5 \\;\\big|\\; \\cdot 3 \\\\ x + 4 = 15 \\;\\big|\\; -4 \\\\
       'Danach die $+4$ auf die andere Seite bringen.',
       'Probe nicht vergessen.',
     ],
-  },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['gleichartige-terme'] },
+},
 }
 
 const lessons_alg_u0 = [
@@ -619,8 +643,8 @@ $-(3 - 5) = -3 + 5 = 2$.
         { id: 'doppelbruch',     title: 'Doppelbruch auflösen über Division-Kehrwert-Regel',                          dependsOn: ['bruch-div-kehr'] },
       ],
       subGoalConcepts: {
-        0: ['kgv-hauptnenner', 'bruch-add'],
-        1: ['bruch-div-kehr'],
+        0: ['bruch-erweitern', 'kgv-hauptnenner', 'bruch-add'],
+        1: ['bruch-mult', 'bruch-div-kehr'],
         2: ['doppelbruch'],
         3: ['ggt-kuerzen'],
       },
@@ -642,7 +666,7 @@ $-(3 - 5) = -3 + 5 = 2$.
         { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['doppelbruch'],                           qty: 1 },
         { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['doppelbruch'],                           qty: 1 },
         { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['doppelbruch'],                           qty: 1, note: 'Distraktor: Zähler und Nenner falsch gruppiert' },
-        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['doppelbruch', 'ggt-kuerzen'],            qty: 1, note: 'Doppelbruch auflösen + Endkürzen' },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['doppelbruch'],                           qty: 1, note: 'Doppelbruch auflösen (ggT-Kürzung folgt in SG 3)' },
         // SG 3 — ggT-Kürzen
         { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['ggt-kuerzen'],                           qty: 1 },
         { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['ggt-kuerzen'],                           qty: 1 },
