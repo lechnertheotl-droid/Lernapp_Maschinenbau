@@ -25,7 +25,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [0] Matrixform: y' = A·y ──────────────────────────────────────
     0: [
       mc(
-        'Sub-Goal "Matrixform: $\\vec y\' = A \\vec y$ mit Vektor $\\vec y$ und Koeffizientenmatrix $A$": Schreibe das System $y_1\' = 2y_1 - y_2$, $y_2\' = y_1 + 3y_2$ in Matrixform. Welche Matrix $A$ gehört zu $\\vec y\' = A \\vec y$?',
+        'Schreibe das System $y_1\' = 2y_1 - y_2$, $y_2\' = y_1 + 3y_2$ in Matrixform. Welche Matrix $A$ gehört zu $\\vec y\' = A \\vec y$?',
         [
           '$A = \\begin{pmatrix} 2 & -1 \\\\ 1 & 3 \\end{pmatrix}$',
           '$A = \\begin{pmatrix} 2 & 1 \\\\ -1 & 3 \\end{pmatrix}$',
@@ -52,7 +52,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Matrixform: $\\vec y\' = A \\vec y$ mit Vektor $\\vec y$ und Koeffizientenmatrix $A$": Für das System $y_1\' = 4y_1 - 2y_2$, $y_2\' = 3y_1 - y_2$ — welchen Wert hat der Matrixeintrag $A_{22}$?',
+        'Für das System $y_1\' = 4y_1 - 2y_2$, $y_2\' = 3y_1 - y_2$ — welchen Wert hat der Matrixeintrag $A_{22}$?',
         -1, 0.001, '',
         `**Ansatz:** $A_{22}$ ist der Koeffizient vor $y_2$ in der Gleichung für $y_2\'$.
 
@@ -68,7 +68,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Matrixform: $\\vec y\' = A \\vec y$ mit Vektor $\\vec y$ und Koeffizientenmatrix $A$": Für ein homogenes lineares DGL-System 1. Ordnung mit $n$ gekoppelten Unbekannten $y_1,\\ldots,y_n$ ist die Koeffizientenmatrix $A$ quadratisch $n \\times n$.',
+        'Für ein homogenes lineares DGL-System 1. Ordnung mit $n$ gekoppelten Unbekannten $y_1,\\ldots,y_n$ ist die Koeffizientenmatrix $A$ quadratisch $n \\times n$.',
         true,
         `**Ansatz:** Dimensionen auf beiden Seiten vergleichen.
 
@@ -84,7 +84,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Matrixform: $\\vec y\' = A \\vec y$ mit Vektor $\\vec y$ und Koeffizientenmatrix $A$": Ordne die Systeme ihrer Matrix $A$ zu.',
+        'Ordne die Systeme ihrer Matrix $A$ zu.',
         [
           { left: '$y_1\' = y_2$, $y_2\' = -y_1$', right: '$\\begin{pmatrix} 0 & 1 \\\\ -1 & 0 \\end{pmatrix}$' },
           { left: '$y_1\' = 3y_1$, $y_2\' = -2y_2$ (entkoppelt)', right: '$\\begin{pmatrix} 3 & 0 \\\\ 0 & -2 \\end{pmatrix}$' },
@@ -105,7 +105,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Matrixform: $\\vec y\' = A \\vec y$ mit Vektor $\\vec y$ und Koeffizientenmatrix $A$": Warum ist die Matrixform $\\vec y\' = A\\vec y$ gegenüber dem expliziten Gleichungssystem *vorteilhaft*?',
+        'Warum ist die Matrixform $\\vec y\' = A\\vec y$ gegenüber dem expliziten Gleichungssystem *vorteilhaft*?',
         [
           'Man kann Eigenwerte/Eigenvektoren von $A$ berechnen und bekommt daraus direkt die allgemeine Lösung.',
           'Die Matrixform reduziert die Ordnung der DGL.',
@@ -136,7 +136,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [1] Reduktion höherer Ordnung: y_1=y, y_2=y', ... ────────────
     1: [
       mc(
-        'Sub-Goal "Reduktion höherer Ordnung: $y_1 = y, y_2 = y\', \\ldots, y_n = y^{(n-1)}$": Schreibe die DGL $y\'\' + 4y\' + 3y = 0$ als System 1. Ordnung mit $y_1 = y$, $y_2 = y\'$. Welche Matrix gehört dazu?',
+        'Schreibe die DGL $y\'\' + 4y\' + 3y = 0$ als System 1. Ordnung mit $y_1 = y$, $y_2 = y\'$. Welche Matrix gehört dazu?',
         [
           '$A = \\begin{pmatrix} 0 & 1 \\\\ -3 & -4 \\end{pmatrix}$',
           '$A = \\begin{pmatrix} 0 & 1 \\\\ 3 & 4 \\end{pmatrix}$',
@@ -163,7 +163,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Reduktion höherer Ordnung: $y_1 = y, y_2 = y\', \\ldots, y_n = y^{(n-1)}$": DGL 3. Ordnung $y\'\'\' = 2y\'\' - y\' + 5y$ wird in ein System 1. Ordnung umgeschrieben. Wie viele Komponenten hat der Vektor $\\vec y$?',
+        'DGL 3. Ordnung $y\'\'\' = 2y\'\' - y\' + 5y$ wird in ein System 1. Ordnung umgeschrieben. Wie viele Komponenten hat der Vektor $\\vec y$?',
         3, 0.001, '',
         `**Ansatz:** Eine DGL $n$-ter Ordnung wird zu einem System aus $n$ DGL 1. Ordnung mit $n$ Unbekannten.
 
@@ -179,7 +179,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Reduktion höherer Ordnung: $y_1 = y, y_2 = y\', \\ldots, y_n = y^{(n-1)}$": Welche Substitution gilt bei DGL 4. Ordnung?',
+        'Welche Substitution gilt bei DGL 4. Ordnung?',
         [
           '$y_1 = y,\\ y_2 = y\',\\ y_3 = y\'\',\\ y_4 = y\'\'\'$',
           '$y_1 = y\',\\ y_2 = y\'\',\\ y_3 = y\'\'\',\\ y_4 = y^{(4)}$',
@@ -206,7 +206,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Reduktion höherer Ordnung: $y_1 = y, y_2 = y\', \\ldots, y_n = y^{(n-1)}$": Die Reduktion einer DGL höherer Ordnung auf ein System 1. Ordnung ändert die Lösungsmenge.',
+        'Die Reduktion einer DGL höherer Ordnung auf ein System 1. Ordnung ändert die Lösungsmenge.',
         false,
         `**Ansatz:** Äquivalenz von DGL $n$-ter Ordnung und System $n$-ter Größe.
 
@@ -222,7 +222,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Reduktion höherer Ordnung: $y_1 = y, y_2 = y\', \\ldots, y_n = y^{(n-1)}$": Sortiere die Schritte zur Umformung einer DGL höherer Ordnung in ein System 1. Ordnung.',
+        'Sortiere die Schritte zur Umformung einer DGL höherer Ordnung in ein System 1. Ordnung.',
         [
           'Ordnung $n$ der DGL bestimmen.',
           'Variablen $y_1 = y, y_2 = y\', \\ldots, y_n = y^{(n-1)}$ einführen.',
@@ -248,7 +248,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [2] Eigenwertansatz: A·v = λ·v ────────────────────────────────
     2: [
       mc(
-        'Sub-Goal "Eigenwertansatz: $\\vec y = \\vec v e^{\\lambda t}$ → $A \\vec v = \\lambda \\vec v$": Warum liefert der Ansatz $\\vec y = \\vec v \\cdot e^{\\lambda t}$ für das System $\\vec y\' = A \\vec y$ das Eigenwertproblem $A\\vec v = \\lambda \\vec v$?',
+        'Warum liefert der Ansatz $\\vec y = \\vec v \\cdot e^{\\lambda t}$ für das System $\\vec y\' = A \\vec y$ das Eigenwertproblem $A\\vec v = \\lambda \\vec v$?',
         [
           'Weil $\\vec y\' = \\lambda \\vec v e^{\\lambda t}$ und $A\\vec y = A\\vec v e^{\\lambda t}$ — nach Kürzen von $e^{\\lambda t}$ bleibt $\\lambda\\vec v = A\\vec v$.',
           'Weil $\\vec v$ per Definition ein Eigenvektor ist.',
@@ -275,7 +275,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Eigenwertansatz: $\\vec y = \\vec v e^{\\lambda t}$ → $A \\vec v = \\lambda \\vec v$": Gegeben $A = \\begin{pmatrix} 3 & 0 \\\\ 0 & -1 \\end{pmatrix}$. Welcher Eigenwert gehört zum Eigenvektor $\\vec v = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$?',
+        'Gegeben $A = \\begin{pmatrix} 3 & 0 \\\\ 0 & -1 \\end{pmatrix}$. Welcher Eigenwert gehört zum Eigenvektor $\\vec v = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$?',
         3, 0.001, '',
         `**Ansatz:** Direkt $A\\vec v$ berechnen und mit $\\lambda\\vec v$ vergleichen.
 
@@ -291,7 +291,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Eigenwertansatz: $\\vec y = \\vec v e^{\\lambda t}$ → $A \\vec v = \\lambda \\vec v$": Wie bestimmt man die Eigenwerte einer $n\\times n$-Matrix $A$?',
+        'Wie bestimmt man die Eigenwerte einer $n\\times n$-Matrix $A$?',
         [
           'Löse $\\det(A - \\lambda I) = 0$ (charakteristisches Polynom in $\\lambda$).',
           'Löse $\\det(A) = \\lambda$.',
@@ -318,7 +318,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Eigenwertansatz: $\\vec y = \\vec v e^{\\lambda t}$ → $A \\vec v = \\lambda \\vec v$": Der Eigenvektor $\\vec v$ ist eindeutig — er hängt nicht von Skalierung ab.',
+        'Der Eigenvektor $\\vec v$ ist eindeutig — er hängt nicht von Skalierung ab.',
         false,
         `**Ansatz:** Eigenvektoren bilden einen Unterraum — $\\vec v$ und $c\\vec v$ sind beide Eigenvektoren zum selben $\\lambda$.
 
@@ -334,7 +334,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Eigenwertansatz: $\\vec y = \\vec v e^{\\lambda t}$ → $A \\vec v = \\lambda \\vec v$": Für $A = \\begin{pmatrix} 2 & 1 \\\\ 0 & 3 \\end{pmatrix}$ — was ist der Eigenwert $\\lambda_1$ (kleinerer Wert)?',
+        'Für $A = \\begin{pmatrix} 2 & 1 \\\\ 0 & 3 \\end{pmatrix}$ — was ist der Eigenwert $\\lambda_1$ (kleinerer Wert)?',
         2, 0.001, '',
         `**Ansatz:** Obere Dreiecksmatrix — Eigenwerte stehen auf der Diagonale.
 
@@ -354,7 +354,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [3] Allgemeine Lösung: y = Σ C_i·v_i·e^{λ_i·t} ────────────────
     3: [
       mc(
-        'Sub-Goal "Allgemeine Lösung: $\\vec y = \\sum C_i \\vec v_i e^{\\lambda_i t}$": System $\\vec y\' = A\\vec y$ mit Eigenwerten $\\lambda_1 = -1$, $\\lambda_2 = -2$ und Eigenvektoren $\\vec v_1 = \\begin{pmatrix}1\\\\1\\end{pmatrix}$, $\\vec v_2 = \\begin{pmatrix}1\\\\2\\end{pmatrix}$. Allgemeine Lösung?',
+        'System $\\vec y\' = A\\vec y$ mit Eigenwerten $\\lambda_1 = -1$, $\\lambda_2 = -2$ und Eigenvektoren $\\vec v_1 = \\begin{pmatrix}1\\\\1\\end{pmatrix}$, $\\vec v_2 = \\begin{pmatrix}1\\\\2\\end{pmatrix}$. Allgemeine Lösung?',
         [
           '$\\vec y = C_1 \\begin{pmatrix}1\\\\1\\end{pmatrix} e^{-t} + C_2 \\begin{pmatrix}1\\\\2\\end{pmatrix} e^{-2t}$',
           '$\\vec y = C_1 \\begin{pmatrix}1\\\\1\\end{pmatrix} e^{-2t} + C_2 \\begin{pmatrix}1\\\\2\\end{pmatrix} e^{-t}$',
@@ -381,7 +381,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Allgemeine Lösung: $\\vec y = \\sum C_i \\vec v_i e^{\\lambda_i t}$": AWP $\\vec y\' = A\\vec y$ mit $\\vec y(0) = \\begin{pmatrix}3\\\\5\\end{pmatrix}$. Eigenzerlegung: $\\lambda_1=1$, $\\vec v_1=\\begin{pmatrix}1\\\\1\\end{pmatrix}$; $\\lambda_2=-1$, $\\vec v_2=\\begin{pmatrix}1\\\\-1\\end{pmatrix}$. Welchen Wert hat $C_1$?',
+        'AWP $\\vec y\' = A\\vec y$ mit $\\vec y(0) = \\begin{pmatrix}3\\\\5\\end{pmatrix}$. Eigenzerlegung: $\\lambda_1=1$, $\\vec v_1=\\begin{pmatrix}1\\\\1\\end{pmatrix}$; $\\lambda_2=-1$, $\\vec v_2=\\begin{pmatrix}1\\\\-1\\end{pmatrix}$. Welchen Wert hat $C_1$?',
         4, 0.001, '',
         `**Ansatz:** Anfangsbedingung: $\\vec y(0) = C_1 \\vec v_1 + C_2 \\vec v_2 = \\begin{pmatrix}3\\\\5\\end{pmatrix}$.
 
@@ -397,7 +397,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Allgemeine Lösung: $\\vec y = \\sum C_i \\vec v_i e^{\\lambda_i t}$": Eine $n\\times n$-Matrix $A$ mit $n$ verschiedenen Eigenwerten besitzt $n$ linear unabhängige Eigenvektoren, sodass die allgemeine Lösung vollständig durch $\\vec y = \\sum_{i=1}^n C_i \\vec v_i e^{\\lambda_i t}$ beschrieben ist.',
+        'Eine $n\\times n$-Matrix $A$ mit $n$ verschiedenen Eigenwerten besitzt $n$ linear unabhängige Eigenvektoren, sodass die allgemeine Lösung vollständig durch $\\vec y = \\sum_{i=1}^n C_i \\vec v_i e^{\\lambda_i t}$ beschrieben ist.',
         true,
         `**Ansatz:** Satz aus der linearen Algebra: Eigenvektoren zu paarweise verschiedenen Eigenwerten sind linear unabhängig.
 
@@ -413,7 +413,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Allgemeine Lösung: $\\vec y = \\sum C_i \\vec v_i e^{\\lambda_i t}$": Wie viele Integrationskonstanten treten in der allgemeinen Lösung eines $3\\times 3$-DGL-Systems $\\vec y\' = A\\vec y$ auf?',
+        'Wie viele Integrationskonstanten treten in der allgemeinen Lösung eines $3\\times 3$-DGL-Systems $\\vec y\' = A\\vec y$ auf?',
         [
           '$3$',
           '$2$',
@@ -440,7 +440,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       matching(
-        'Sub-Goal "Allgemeine Lösung: $\\vec y = \\sum C_i \\vec v_i e^{\\lambda_i t}$": Ordne jeden Eigenwert-Typ seinem Beitrag zur Lösung zu.',
+        'Ordne jeden Eigenwert-Typ seinem Beitrag zur Lösung zu.',
         [
           { left: 'Reeller Eigenwert $\\lambda < 0$', right: 'Exponentielles Abklingen: $\\vec v e^{\\lambda t} \\to \\vec 0$' },
           { left: 'Reeller Eigenwert $\\lambda > 0$', right: 'Exponentielles Wachstum: $|\\vec v e^{\\lambda t}| \\to \\infty$' },
@@ -465,7 +465,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [4] Stabilität: alle Re(λ_i) < 0 → asymptotisch stabil ────────
     4: [
       mc(
-        'Sub-Goal "Stabilität: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": System mit Eigenwerten $\\lambda_1 = -2$, $\\lambda_2 = -0{,}5$. Wie verhält sich die Lösung für $t \\to \\infty$?',
+        'System mit Eigenwerten $\\lambda_1 = -2$, $\\lambda_2 = -0{,}5$. Wie verhält sich die Lösung für $t \\to \\infty$?',
         [
           '$\\vec y(t) \\to \\vec 0$ (asymptotisch stabil)',
           '$\\vec y(t)$ wächst unbeschränkt',
@@ -492,7 +492,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Stabilität: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": Ein einziger Eigenwert mit $\\text{Re}(\\lambda) > 0$ reicht aus, um das gesamte System instabil zu machen.',
+        'Ein einziger Eigenwert mit $\\text{Re}(\\lambda) > 0$ reicht aus, um das gesamte System instabil zu machen.',
         true,
         `**Ansatz:** Jede Grundlösung $\\vec v_i e^{\\lambda_i t}$ mit $\\text{Re}(\\lambda_i) > 0$ wächst unbeschränkt. Auch wenn andere Moden gedämpft sind, dominiert der wachsende.
 
@@ -508,7 +508,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Stabilität: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": Welches System ist *grenzstabil* (stabil, aber nicht asymptotisch stabil)?',
+        'Welches System ist *grenzstabil* (stabil, aber nicht asymptotisch stabil)?',
         [
           'Eigenwerte $\\lambda_{1,2} = \\pm 2i$',
           'Eigenwerte $\\lambda_1 = -1$, $\\lambda_2 = -3$',
@@ -535,7 +535,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Stabilität: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": Ein $2\\times 2$-System hat Eigenwerte $\\lambda_1 = -3$ und $\\lambda_2 = -0{,}5$. Der *langsamste* Abklingmode dominiert das Langzeitverhalten. Zu welcher Zeit $t$ ist dieser Mode auf $1/e \\approx 0{,}368$ seines Startwerts abgeklungen?',
+        'Ein $2\\times 2$-System hat Eigenwerte $\\lambda_1 = -3$ und $\\lambda_2 = -0{,}5$. Der *langsamste* Abklingmode dominiert das Langzeitverhalten. Zu welcher Zeit $t$ ist dieser Mode auf $1/e \\approx 0{,}368$ seines Startwerts abgeklungen?',
         2, 0.01, '',
         `**Ansatz:** Zeitkonstante $\\tau = 1/|\\lambda|$ für Mode mit kleinstem $|\\lambda|$.
 
@@ -551,7 +551,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Stabilität: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": Ordne jedem Eigenwert-Spektrum den Stabilitätstyp zu.',
+        'Ordne jedem Eigenwert-Spektrum den Stabilitätstyp zu.',
         [
           { left: 'Alle $\\text{Re}(\\lambda_i) < 0$', right: 'Asymptotisch stabil: $\\vec y \\to \\vec 0$' },
           { left: 'Ein $\\text{Re}(\\lambda_i) > 0$', right: 'Instabil: $\\vec y$ wächst unbeschränkt' },
@@ -576,7 +576,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [5] Komplexe EW: α ± iβ → Real-/Imaginärteil nehmen ───────────
     5: [
       mc(
-        'Sub-Goal "Komplexe EW: Paare $\\alpha \\pm i\\beta$ → Real-/Imaginärteil nehmen für reelle Lösung": System mit komplex konjugiertem EW-Paar $\\lambda_{1,2} = -1 \\pm 2i$ und (komplexem) Eigenvektor $\\vec v = \\begin{pmatrix}1\\\\i\\end{pmatrix}$ zu $\\lambda_1$. Welche reelle Lösung gehört dazu?',
+        'System mit komplex konjugiertem EW-Paar $\\lambda_{1,2} = -1 \\pm 2i$ und (komplexem) Eigenvektor $\\vec v = \\begin{pmatrix}1\\\\i\\end{pmatrix}$ zu $\\lambda_1$. Welche reelle Lösung gehört dazu?',
         [
           '$\\vec y = C_1 e^{-t}\\begin{pmatrix}\\cos 2t \\\\ -\\sin 2t\\end{pmatrix} + C_2 e^{-t}\\begin{pmatrix}\\sin 2t \\\\ \\cos 2t\\end{pmatrix}$',
           '$\\vec y = C_1 e^{-t}\\begin{pmatrix}1\\\\i\\end{pmatrix} + C_2 e^{-t}\\begin{pmatrix}1\\\\-i\\end{pmatrix}$',
@@ -603,7 +603,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Komplexe EW: Paare $\\alpha \\pm i\\beta$ → Real-/Imaginärteil nehmen für reelle Lösung": Bei einer reellen Matrix $A$ treten komplexe Eigenwerte immer in konjugierten Paaren auf.',
+        'Bei einer reellen Matrix $A$ treten komplexe Eigenwerte immer in konjugierten Paaren auf.',
         true,
         `**Ansatz:** Charakteristisches Polynom $p(\\lambda) = \\det(A - \\lambda I)$ hat *reelle* Koeffizienten, weil $A$ reell ist.
 
@@ -619,7 +619,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Komplexe EW: Paare $\\alpha \\pm i\\beta$ → Real-/Imaginärteil nehmen für reelle Lösung": Ein gedämpftes Schwingungssystem hat Eigenwerte $\\lambda_{1,2} = -2 \\pm 3i$. Welche Schwingungsfrequenz $\\omega$ hat die Lösung?',
+        'Ein gedämpftes Schwingungssystem hat Eigenwerte $\\lambda_{1,2} = -2 \\pm 3i$. Welche Schwingungsfrequenz $\\omega$ hat die Lösung?',
         3, 0.001, '',
         `**Ansatz:** Imaginärteil der Eigenwerte = Kreisfrequenz $\\omega$.
 
@@ -635,7 +635,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Komplexe EW: Paare $\\alpha \\pm i\\beta$ → Real-/Imaginärteil nehmen für reelle Lösung": Ein konjugiertes Eigenwert-Paar liefert wie viele reelle linear unabhängige Grundlösungen?',
+        'Ein konjugiertes Eigenwert-Paar liefert wie viele reelle linear unabhängige Grundlösungen?',
         [
           '2 (Realteil und Imaginärteil)',
           '1 (nur eine komplexe Lösung)',
@@ -662,7 +662,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       sorting(
-        'Sub-Goal "Komplexe EW: Paare $\\alpha \\pm i\\beta$ → Real-/Imaginärteil nehmen für reelle Lösung": Sortiere die Schritte zur Berechnung reeller Lösungen bei komplexen Eigenwerten.',
+        'Sortiere die Schritte zur Berechnung reeller Lösungen bei komplexen Eigenwerten.',
         [
           'Charakteristisches Polynom lösen; komplexes Paar $\\lambda = \\alpha \\pm i\\beta$ identifizieren.',
           'Komplexen Eigenvektor $\\vec v$ zu $\\lambda_1 = \\alpha + i\\beta$ berechnen.',
@@ -696,7 +696,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [0] Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati? ──
     0: [
       mc(
-        'Sub-Goal "Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?": [PRÜFUNG] Welchen Typ hat $y\' + \\frac{y}{x} = x^2 y^3$?',
+        '[PRÜFUNG] Welchen Typ hat $y\' + \\frac{y}{x} = x^2 y^3$?',
         [
           'Bernoulli-DGL (mit $n = 3$)',
           'Lineare DGL 1. Ordnung',
@@ -723,7 +723,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       matching(
-        'Sub-Goal "Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?": [PRÜFUNG] Ordne jede DGL ihrem Typ zu.',
+        '[PRÜFUNG] Ordne jede DGL ihrem Typ zu.',
         [
           { left: '$y\' = x \\cdot (1 + y^2)$', right: 'Trennbar' },
           { left: '$y\' + x y = \\sin x$', right: 'Lineare DGL 1. Ordnung' },
@@ -744,7 +744,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?": [PRÜFUNG] Die DGL $y\' = y^2 + x$ ist eine Riccati-DGL.',
+        '[PRÜFUNG] Die DGL $y\' = y^2 + x$ ist eine Riccati-DGL.',
         true,
         `**Ansatz:** Riccati: $y\'=a(x)y^2+b(x)y+c(x)$. Hier $a=1$, $b=0$, $c=x$.
 
@@ -760,7 +760,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?": [PRÜFUNG] Welche DGL ist *nicht* trennbar?',
+        '[PRÜFUNG] Welche DGL ist *nicht* trennbar?',
         [
           '$y\' = x + y$',
           '$y\' = x \\cdot e^y$',
@@ -787,7 +787,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       sorting(
-        'Sub-Goal "Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?": [PRÜFUNG] Sortiere die DGL nach dem Grad der $y$-Nichtlinearität (rechts) von linear → quadratisch → kubisch.',
+        '[PRÜFUNG] Sortiere die DGL nach dem Grad der $y$-Nichtlinearität (rechts) von linear → quadratisch → kubisch.',
         [
           '$y\' + 2y = \\cos x$',
           '$y\' = x y^2 + 1$',
@@ -812,7 +812,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [1] Trennbar: ∫dy/g(y) = ∫f(x)dx + C ──────────────────────────
     1: [
       mc(
-        'Sub-Goal "Trennbar: $\\int dy/g(y) = \\int f(x) dx + C$": [PRÜFUNG] Löse $y\' = \\frac{x}{y}$ allgemein.',
+        '[PRÜFUNG] Löse $y\' = \\frac{x}{y}$ allgemein.',
         [
           '$y^2 = x^2 + C$',
           '$y = x + C$',
@@ -839,7 +839,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Trennbar: $\\int dy/g(y) = \\int f(x) dx + C$": [PRÜFUNG] AWP: $y\' = \\frac{y}{x}$, $y(1) = 4$. Welchen Wert hat $y(2)$?',
+        '[PRÜFUNG] AWP: $y\' = \\frac{y}{x}$, $y(1) = 4$. Welchen Wert hat $y(2)$?',
         8, 0.01, '',
         `**Ansatz:** Trennen: $\\frac{dy}{y}=\\frac{dx}{x}$.
 
@@ -855,7 +855,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Trennbar: $\\int dy/g(y) = \\int f(x) dx + C$": [PRÜFUNG] Bei der DGL $y\' = g(y)$ (reine $y$-Abhängigkeit) erhält man die Lösung durch $x = \\int \\frac{dy}{g(y)} + C$.',
+        '[PRÜFUNG] Bei der DGL $y\' = g(y)$ (reine $y$-Abhängigkeit) erhält man die Lösung durch $x = \\int \\frac{dy}{g(y)} + C$.',
         true,
         `**Ansatz:** $\\frac{dy}{dx}=g(y)$ → $\\frac{dy}{g(y)}=dx$ → beide Seiten integrieren.
 
@@ -871,7 +871,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Trennbar: $\\int dy/g(y) = \\int f(x) dx + C$": [PRÜFUNG] Welches ist die allgemeine Lösung von $y\' = y \\cdot \\cos x$?',
+        '[PRÜFUNG] Welches ist die allgemeine Lösung von $y\' = y \\cdot \\cos x$?',
         [
           '$y = C \\cdot e^{\\sin x}$',
           '$y = C \\cdot \\sin x$',
@@ -898,7 +898,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Trennbar: $\\int dy/g(y) = \\int f(x) dx + C$": [PRÜFUNG] Löse $y\' = 1 + y^2$, $y(0) = 0$. Welchen Wert hat $y$ bei $x = \\pi/6$? (auf 4 Dezimalstellen)',
+        '[PRÜFUNG] Löse $y\' = 1 + y^2$, $y(0) = 0$. Welchen Wert hat $y$ bei $x = \\pi/6$? (auf 4 Dezimalstellen)',
         0.5774, 0.001, '',
         `**Ansatz:** Trennbar: $\\frac{dy}{1+y^2}=dx$.
 
@@ -918,7 +918,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [2] Exakte DGL: M_y = N_x, Potentialfunktion F ────────────────
     2: [
       mc(
-        'Sub-Goal "Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$": [PRÜFUNG] Ist $(3x^2 y + 2)\\,dx + (x^3 + 4y)\\,dy = 0$ exakt, und wie lautet die Potentialfunktion $F(x,y)$?',
+        '[PRÜFUNG] Ist $(3x^2 y + 2)\\,dx + (x^3 + 4y)\\,dy = 0$ exakt, und wie lautet die Potentialfunktion $F(x,y)$?',
         [
           'Ja exakt, $F = x^3 y + 2x + 2y^2$',
           'Ja exakt, $F = x^3 y + 2x$',
@@ -945,7 +945,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$": [PRÜFUNG] Wenn $M_y \\neq N_x$, ist die DGL nicht lösbar.',
+        '[PRÜFUNG] Wenn $M_y \\neq N_x$, ist die DGL nicht lösbar.',
         false,
         `**Ansatz:** „Nicht exakt" $\\neq$ „nicht lösbar".
 
@@ -961,7 +961,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$": [PRÜFUNG] Für die exakte DGL $(2xy)\\,dx + (x^2 + 1)\\,dy = 0$ mit $y(1) = 2$: Welchen Wert hat die Integrationskonstante $C$ in der impliziten Lösung $x^2 y + y = C$?',
+        '[PRÜFUNG] Für die exakte DGL $(2xy)\\,dx + (x^2 + 1)\\,dy = 0$ mit $y(1) = 2$: Welchen Wert hat die Integrationskonstante $C$ in der impliziten Lösung $x^2 y + y = C$?',
         4, 0.001, '',
         `**Ansatz:** Exaktheit prüfen, Potential $F$ aufstellen, AWP einsetzen.
 
@@ -977,7 +977,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$": [PRÜFUNG] Welche DGL ist *nicht* exakt?',
+        '[PRÜFUNG] Welche DGL ist *nicht* exakt?',
         [
           '$(y + 2x)\\,dx + (2y)\\,dy = 0$',
           '$(2xy)\\,dx + (x^2)\\,dy = 0$',
@@ -1004,7 +1004,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       sorting(
-        'Sub-Goal "Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$": [PRÜFUNG] Sortiere die Lösungs-Schritte einer exakten DGL in die richtige Reihenfolge.',
+        '[PRÜFUNG] Sortiere die Lösungs-Schritte einer exakten DGL in die richtige Reihenfolge.',
         [
           'Exaktheit prüfen: $M_y \\stackrel{?}{=} N_x$.',
           'Ansatz $F(x,y) = \\int M\\,dx + h(y)$.',
@@ -1030,7 +1030,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [3] AWP: Konstante C aus y(x₀) = y₀ bestimmen ─────────────────
     3: [
       ni(
-        'Sub-Goal "AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen": [PRÜFUNG] AWP $y\' = 2y$, $y(0) = 5$. Welchen Wert hat die Konstante $C$ in der allgemeinen Lösung $y = Ce^{2x}$?',
+        '[PRÜFUNG] AWP $y\' = 2y$, $y(0) = 5$. Welchen Wert hat die Konstante $C$ in der allgemeinen Lösung $y = Ce^{2x}$?',
         5, 0.001, '',
         `**Ansatz:** Allgemeine Lösung ist bekannt; AWP einsetzen.
 
@@ -1046,7 +1046,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen": [PRÜFUNG] Für $y\' = y$, $y(1) = e^2$: Welche partikuläre Lösung ergibt sich?',
+        '[PRÜFUNG] Für $y\' = y$, $y(1) = e^2$: Welche partikuläre Lösung ergibt sich?',
         [
           '$y = e^{x+1}$',
           '$y = e^x$',
@@ -1073,7 +1073,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen": [PRÜFUNG] Ein AWP 1. Ordnung hat genau eine Lösung, wenn $f(x,y)$ und $\\partial f/\\partial y$ in einer Umgebung der Anfangswertstelle stetig sind (Picard-Lindelöf).',
+        '[PRÜFUNG] Ein AWP 1. Ordnung hat genau eine Lösung, wenn $f(x,y)$ und $\\partial f/\\partial y$ in einer Umgebung der Anfangswertstelle stetig sind (Picard-Lindelöf).',
         true,
         `**Ansatz:** Existenz- und Eindeutigkeitssatz von Picard-Lindelöf.
 
@@ -1089,7 +1089,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen": [PRÜFUNG] Lineare DGL $y\' + y = 1$ mit $y(0) = 3$. Welchen Wert hat $y(\\ln 2)$?',
+        '[PRÜFUNG] Lineare DGL $y\' + y = 1$ mit $y(0) = 3$. Welchen Wert hat $y(\\ln 2)$?',
         2, 0.01, '',
         `**Ansatz:** Homogene Lösung + Partikulärlösung, dann AWP einsetzen.
 
@@ -1105,7 +1105,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen": [PRÜFUNG] Gegeben AWP $y\' = 2xy$, $y(1) = e$. Welche Lösung?',
+        '[PRÜFUNG] Gegeben AWP $y\' = 2xy$, $y(1) = e$. Welche Lösung?',
         [
           '$y = e^{x^2}$',
           '$y = e^{x^2 - 1}$',
@@ -1136,7 +1136,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [4] Bernoulli: Substitution u = y^{1-n} linearisiert ─────────
     4: [
       mc(
-        'Sub-Goal "Bernoulli $y\' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert": [PRÜFUNG] Welche Substitution linearisiert $y\' + y = y^3$?',
+        '[PRÜFUNG] Welche Substitution linearisiert $y\' + y = y^3$?',
         [
           '$u = y^{-2}$',
           '$u = y^{2}$',
@@ -1163,7 +1163,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Bernoulli $y\' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert": [PRÜFUNG] Für Bernoulli $y\' - y = xy^2$ lautet die Substitution $u = y^{-1}$. Welchen Exponenten $m$ hat $y$, wenn $y\'$ in die DGL eingesetzt wird (i.e. $y\' = \\dots \\cdot y^m \\cdot u\'$)?',
+        '[PRÜFUNG] Für Bernoulli $y\' - y = xy^2$ lautet die Substitution $u = y^{-1}$. Welchen Exponenten $m$ hat $y$, wenn $y\'$ in die DGL eingesetzt wird (i.e. $y\' = \\dots \\cdot y^m \\cdot u\'$)?',
         2, 0.001, '',
         `**Ansatz:** Mit $u=y^{-1}$: $u\'=-y^{-2}y\'$, also $y\'=-y^2 u\'$.
 
@@ -1179,7 +1179,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Bernoulli $y\' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert": [PRÜFUNG] Für $n = 0$ oder $n = 1$ ist die Bernoulli-DGL bereits linear, sodass die Substitution $u = y^{1-n}$ überflüssig ist.',
+        '[PRÜFUNG] Für $n = 0$ oder $n = 1$ ist die Bernoulli-DGL bereits linear, sodass die Substitution $u = y^{1-n}$ überflüssig ist.',
         true,
         `**Ansatz:** Testen: bei $n=0$ wird $y^n=1$, bei $n=1$ wird $y^n=y$.
 
@@ -1195,7 +1195,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Bernoulli $y\' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert": [PRÜFUNG] Die Substitution $u = y^{1-n}$ in $y\' + p(x)y = q(x)y^n$ führt auf welche DGL für $u$?',
+        '[PRÜFUNG] Die Substitution $u = y^{1-n}$ in $y\' + p(x)y = q(x)y^n$ führt auf welche DGL für $u$?',
         [
           '$u\' + (1-n)\\,p(x)\\,u = (1-n)\\,q(x)$',
           '$u\' + p(x)\\,u = q(x)$',
@@ -1222,7 +1222,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       sorting(
-        'Sub-Goal "Bernoulli $y\' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert": [PRÜFUNG] Sortiere die Bernoulli-Lösungsschritte in die richtige Reihenfolge.',
+        '[PRÜFUNG] Sortiere die Bernoulli-Lösungsschritte in die richtige Reihenfolge.',
         [
           'Bernoulli-Form erkennen: $y\' + p(x)y = q(x)y^n$ mit $n \\neq 0, 1$.',
           'Substituiere $u = y^{1-n}$, berechne $u\'$.',
@@ -1248,7 +1248,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [5] Integrierender Faktor bei nicht-exakter DGL ───────────────
     5: [
       mc(
-        'Sub-Goal "Integrierender Faktor bei nicht-exakter DGL: $\\mu(x)$ oder $\\mu(y)$ finden": [PRÜFUNG] Wann existiert ein integrierender Faktor $\\mu(x)$ (nur von $x$ abhängig) für $M\\,dx + N\\,dy = 0$?',
+        '[PRÜFUNG] Wann existiert ein integrierender Faktor $\\mu(x)$ (nur von $x$ abhängig) für $M\\,dx + N\\,dy = 0$?',
         [
           'Wenn $(M_y - N_x)/N$ nur von $x$ abhängt',
           'Wenn $(M_y - N_x)/M$ nur von $y$ abhängt',
@@ -1275,7 +1275,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Integrierender Faktor bei nicht-exakter DGL: $\\mu(x)$ oder $\\mu(y)$ finden": [PRÜFUNG] Finde den integrierenden Faktor $\\mu(x)$ für $(3x^2 + 2y)\\,dx + (x)\\,dy = 0$. Welchen Wert hat $\\mu$ bei $x = 2$?',
+        '[PRÜFUNG] Finde den integrierenden Faktor $\\mu(x)$ für $(3x^2 + 2y)\\,dx + (x)\\,dy = 0$. Welchen Wert hat $\\mu$ bei $x = 2$?',
         2, 0.01, '',
         `**Ansatz:** $M=3x^2+2y$, $N=x$. $M_y=2$, $N_x=1$, nicht exakt. Test: $(M_y-N_x)/N=(2-1)/x=1/x$ — nur $x$, also existiert $\\mu(x)$.
 
@@ -1291,7 +1291,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Integrierender Faktor bei nicht-exakter DGL: $\\mu(x)$ oder $\\mu(y)$ finden": [PRÜFUNG] Nach Multiplikation mit dem richtigen integrierenden Faktor $\\mu$ wird eine ursprünglich nicht-exakte DGL exakt, und die Lösungsstruktur der alten DGL bleibt erhalten.',
+        '[PRÜFUNG] Nach Multiplikation mit dem richtigen integrierenden Faktor $\\mu$ wird eine ursprünglich nicht-exakte DGL exakt, und die Lösungsstruktur der alten DGL bleibt erhalten.',
         true,
         `**Ansatz:** $\\mu$ ist nullstellenfrei (sonst multiplizieren wir mit $0$), daher ändert sich die Lösungsmenge nicht.
 
@@ -1307,7 +1307,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Integrierender Faktor bei nicht-exakter DGL: $\\mu(x)$ oder $\\mu(y)$ finden": [PRÜFUNG] Welcher integrierende Faktor linearisiert $y\' + p(x)\\,y = q(x)$?',
+        '[PRÜFUNG] Welcher integrierende Faktor linearisiert $y\' + p(x)\\,y = q(x)$?',
         [
           '$\\mu(x) = e^{\\int p(x)\\,dx}$',
           '$\\mu(x) = e^{-\\int p(x)\\,dx}$',
@@ -1334,7 +1334,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       matching(
-        'Sub-Goal "Integrierender Faktor bei nicht-exakter DGL: $\\mu(x)$ oder $\\mu(y)$ finden": [PRÜFUNG] Ordne jedem Kriterium den passenden integrierenden Faktor zu.',
+        '[PRÜFUNG] Ordne jedem Kriterium den passenden integrierenden Faktor zu.',
         [
           { left: '$(M_y - N_x)/N$ hängt nur von $x$ ab', right: '$\\mu(x) = e^{\\int (M_y - N_x)/N\\,dx}$' },
           { left: '$(N_x - M_y)/M$ hängt nur von $y$ ab', right: '$\\mu(y) = e^{\\int (N_x - M_y)/M\\,dy}$' },
@@ -1367,7 +1367,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [0] Störansatz Polynom ────────────────────────────────────────────
     0: [
       mc(
-        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Welcher Ansatz für $y_p$ ist bei $y\'\' - y\' + y = x^2 + 3$ richtig?',
+        '[PRÜFUNG] Welcher Ansatz für $y_p$ ist bei $y\'\' - y\' + y = x^2 + 3$ richtig?',
         [
           '$y_p = Ax^2 + Bx + C$',
           '$y_p = Ax^2$',
@@ -1394,7 +1394,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Gegeben $y\'\' + 4y = 8x + 12$. Bestimme im Polynom-Ansatz $y_p = Ax + B$ den Koeffizienten $A$.',
+        '[PRÜFUNG] Gegeben $y\'\' + 4y = 8x + 12$. Bestimme im Polynom-Ansatz $y_p = Ax + B$ den Koeffizienten $A$.',
         2, 0.001, '',
         `**Ansatz:** Störfunktion ist linear (Grad 1), char. Gl. $\\lambda^2+4=0$ hat $\\lambda=\\pm 2i\\neq 0$ — kein Resonanzfall. Ansatz $y_p=Ax+B$.
 
@@ -1410,7 +1410,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Bei $y\'\' + 3y\' + 2y = 5x^3$ ist der passende Partikulär-Ansatz $y_p = Ax^3 + Bx^2 + Cx + D$.',
+        '[PRÜFUNG] Bei $y\'\' + 3y\' + 2y = 5x^3$ ist der passende Partikulär-Ansatz $y_p = Ax^3 + Bx^2 + Cx + D$.',
         true,
         `**Ansatz:** Polynom-Störfunktion vom Grad $n$ → Ansatz ist vollständiges Polynom gleichen Grades, sofern $\\lambda=0$ keine Wurzel der char. Gleichung ist.
 
@@ -1426,7 +1426,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Ordne jeder Störfunktion den passenden Polynom-Ansatz zu (ohne Resonanz).',
+        '[PRÜFUNG] Ordne jeder Störfunktion den passenden Polynom-Ansatz zu (ohne Resonanz).',
         [
           { left: '$q(x)=7$ (Konstante)', right: '$y_p = A$' },
           { left: '$q(x)=3x-2$', right: '$y_p = Ax + B$' },
@@ -1447,7 +1447,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Für $y\'\' - y\' = 2x + 1$ ist der Standard-Ansatz $y_p = Ax + B$ falsch — warum?',
+        '[PRÜFUNG] Für $y\'\' - y\' = 2x + 1$ ist der Standard-Ansatz $y_p = Ax + B$ falsch — warum?',
         [
           '$\\lambda=0$ ist Wurzel der char. Gleichung — Resonanz, Ansatz muss $\\cdot x$ werden',
           'Der Ansatz ist korrekt — das System ist einfach lösbar',
@@ -1478,7 +1478,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [1] Störansatz Exponential ────────────────────────────────────────
     1: [
       ni(
-        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Finde $A$ in $y_p = A e^{2x}$ für die DGL $y\'\' - 3y\' + 2y = 4e^{2x}$... Moment, ist der Ansatz überhaupt zulässig? Wenn nicht, schreibe $0$. Wenn ja, gib $A$ an.',
+        '[PRÜFUNG] Finde $A$ in $y_p = A e^{2x}$ für die DGL $y\'\' - 3y\' + 2y = 4e^{2x}$... Moment, ist der Ansatz überhaupt zulässig? Wenn nicht, schreibe $0$. Wenn ja, gib $A$ an.',
         0, 0.001, '',
         `**Ansatz:** Vor dem Einsetzen prüfen, ob $c=2$ Wurzel der charakteristischen Gleichung ist. Nur wenn nicht, ist der Ansatz $Ae^{cx}$ zulässig.
 
@@ -1494,7 +1494,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Für $y\'\' - 4y\' + 3y = 5e^{-x}$ ist der richtige Ansatz:',
+        '[PRÜFUNG] Für $y\'\' - 4y\' + 3y = 5e^{-x}$ ist der richtige Ansatz:',
         [
           '$y_p = A e^{-x}$',
           '$y_p = A x e^{-x}$',
@@ -1521,7 +1521,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Bei $y\'\' + y = e^{2x}$ ist $c=2$ kein Eigenwert der char. Gleichung, daher ist $y_p = A e^{2x}$ ein gültiger Ansatz.',
+        '[PRÜFUNG] Bei $y\'\' + y = e^{2x}$ ist $c=2$ kein Eigenwert der char. Gleichung, daher ist $y_p = A e^{2x}$ ein gültiger Ansatz.',
         true,
         `**Ansatz:** Resonanzcheck: Eigenwerte aus char. Gl. Wenn $c$ keiner davon ist → Standard-Exponentialansatz erlaubt.
 
@@ -1537,7 +1537,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Sortiere die Schritte zur Bestimmung der partikulären Lösung bei exponentieller Störung.',
+        '[PRÜFUNG] Sortiere die Schritte zur Bestimmung der partikulären Lösung bei exponentieller Störung.',
         [
           'Charakteristische Gleichung $\\lambda^2+p\\lambda+q=0$ aufstellen und Wurzeln bestimmen',
           'Prüfen, ob $c$ eine Wurzel ist (Resonanzcheck)',
@@ -1561,7 +1561,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Berechne $A$ in $y_p = A e^{3x}$ für die DGL $y\'\' - 2y\' - 3y = 8 e^{3x}$... falls zulässig. Falls Resonanz vorliegt, trage $0$ ein.',
+        '[PRÜFUNG] Berechne $A$ in $y_p = A e^{3x}$ für die DGL $y\'\' - 2y\' - 3y = 8 e^{3x}$... falls zulässig. Falls Resonanz vorliegt, trage $0$ ein.',
         0, 0.001, '',
         `**Ansatz:** Resonanzcheck! Char. Gleichung: $\\lambda^2-2\\lambda-3=(\\lambda-3)(\\lambda+1)=0$ → $\\lambda=3,-1$. $c=3$ ist Wurzel → Resonanz → Standard-Ansatz $Ae^{3x}$ ist **nicht** zulässig.
 
@@ -1581,7 +1581,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [2] Störansatz Trig ───────────────────────────────────────────────
     2: [
       mc(
-        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Welcher Ansatz ist für $y\'\' + 3y\' + 2y = 4\\cos(2x)$ richtig?',
+        '[PRÜFUNG] Welcher Ansatz ist für $y\'\' + 3y\' + 2y = 4\\cos(2x)$ richtig?',
         [
           '$y_p = A\\cos(2x) + B\\sin(2x)$',
           '$y_p = A\\cos(2x)$',
@@ -1608,7 +1608,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Für $y\'\' + 4y = 6\\sin(x)$ setzt man $y_p = A\\cos(x) + B\\sin(x)$ an. Berechne $B$.',
+        '[PRÜFUNG] Für $y\'\' + 4y = 6\\sin(x)$ setzt man $y_p = A\\cos(x) + B\\sin(x)$ an. Berechne $B$.',
         2, 0.001, '',
         `**Ansatz:** Trigonometrische Störung mit $\\omega=1$. Resonanzcheck: $\\lambda^2+4=0$ → $\\lambda=\\pm 2i$, also $\\pm i\\omega=\\pm i$ ist **keine** Wurzel → Standard-Ansatz.
 
@@ -1624,7 +1624,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Wenn die Störfunktion nur $\\sin(\\omega x)$ ist, reicht als Ansatz $y_p = B\\sin(\\omega x)$ ohne $\\cos$-Term.',
+        '[PRÜFUNG] Wenn die Störfunktion nur $\\sin(\\omega x)$ ist, reicht als Ansatz $y_p = B\\sin(\\omega x)$ ohne $\\cos$-Term.',
         false,
         `**Ansatz:** Falsch. Auch bei reinem $\\sin$ (oder reinem $\\cos$) in der Störung braucht man **beide** Anteile im Ansatz, sobald die DGL einen Term mit **erster Ableitung** ($y'$) enthält.
 
@@ -1640,7 +1640,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Ordne jeder trigonometrischen Störfunktion den passenden Ansatz zu.',
+        '[PRÜFUNG] Ordne jeder trigonometrischen Störfunktion den passenden Ansatz zu.',
         [
           { left: '$q(x)=3\\cos(2x)$', right: '$y_p=A\\cos(2x)+B\\sin(2x)$' },
           { left: '$q(x)=\\sin(5x)-2\\cos(5x)$', right: '$y_p=A\\cos(5x)+B\\sin(5x)$' },
@@ -1661,7 +1661,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Bei welcher DGL tritt **Resonanz** auf, so dass der Standard-Ansatz $y_p=A\\cos(3x)+B\\sin(3x)$ **NICHT** direkt zulässig ist?',
+        '[PRÜFUNG] Bei welcher DGL tritt **Resonanz** auf, so dass der Standard-Ansatz $y_p=A\\cos(3x)+B\\sin(3x)$ **NICHT** direkt zulässig ist?',
         [
           '$y\'\' + 9y = \\cos(3x)$',
           '$y\'\' + 4y = \\cos(3x)$',
@@ -1692,7 +1692,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [3] Resonanzfall ──────────────────────────────────────────────────
     3: [
       mc(
-        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Wähle den Ansatz für $y\'\' - 4y\' + 4y = e^{2x}$.',
+        '[PRÜFUNG] Wähle den Ansatz für $y\'\' - 4y\' + 4y = e^{2x}$.',
         [
           '$y_p = A x^2 e^{2x}$',
           '$y_p = A e^{2x}$',
@@ -1719,7 +1719,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Bestimme $A$ in $y_p = Ax e^x$ für die DGL $y\'\' - y = 4 e^x$.',
+        '[PRÜFUNG] Bestimme $A$ in $y_p = Ax e^x$ für die DGL $y\'\' - y = 4 e^x$.',
         2, 0.001, '',
         `**Ansatz:** Char. Gl. $\\lambda^2-1=0$ → $\\lambda=\\pm 1$. Störexponent $c=1$ ist *einfache* Wurzel → Resonanz, Multiplizität 1, Ansatz $Axe^x$.
 
@@ -1735,7 +1735,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Bei $y\'\' + y = \\sin(x)$ liegt Resonanz vor, weil $\\pm i$ (die Wurzeln der char. Gleichung) auch die Frequenz der Störung ergeben.',
+        '[PRÜFUNG] Bei $y\'\' + y = \\sin(x)$ liegt Resonanz vor, weil $\\pm i$ (die Wurzeln der char. Gleichung) auch die Frequenz der Störung ergeben.',
         true,
         `**Ansatz:** Bei trigonometrischer Störung liegt Resonanz vor, wenn $\\pm i\\omega$ (mit $\\omega$ = Störfrequenz) eine Wurzel der char. Gleichung ist.
 
@@ -1751,7 +1751,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Sortiere die Entscheidungslogik beim Resonanzcheck.',
+        '[PRÜFUNG] Sortiere die Entscheidungslogik beim Resonanzcheck.',
         [
           'Charakteristische Gleichung aufstellen und Wurzeln $\\lambda_{1,2}$ bestimmen',
           'Aus der Störfunktion den "Prüf-Exponenten" $c$ bestimmen ($c$ direkt bei $e^{cx}$; $c=\\pm i\\omega$ bei $\\sin/\\cos$)',
@@ -1775,7 +1775,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Welche Aussage zur Resonanz ist FALSCH?',
+        '[PRÜFUNG] Welche Aussage zur Resonanz ist FALSCH?',
         [
           'Resonanz tritt nur bei exponentieller Störung auf, nie bei trigonometrischer.',
           'Bei Doppelwurzel als Resonanzursache wird mit $x^2$ multipliziert.',
@@ -1806,7 +1806,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [4] Allgemeine Lösung ──────────────────────────────────────────────
     4: [
       mc(
-        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Die allgemeine Lösung von $y\'\' - 3y\' + 2y = 6$ lautet:',
+        '[PRÜFUNG] Die allgemeine Lösung von $y\'\' - 3y\' + 2y = 6$ lautet:',
         [
           '$y = C_1 e^{x} + C_2 e^{2x} + 3$',
           '$y = C_1 e^{x} + C_2 e^{2x}$',
@@ -1833,7 +1833,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Für $y\'\' + y = 2$ lautet $y_h = C_1\\cos x + C_2\\sin x$ und $y_p = 2$. Wie viele freie Konstanten enthält die allgemeine Lösung?',
+        '[PRÜFUNG] Für $y\'\' + y = 2$ lautet $y_h = C_1\\cos x + C_2\\sin x$ und $y_p = 2$. Wie viele freie Konstanten enthält die allgemeine Lösung?',
         2, 0, '',
         `**Ansatz:** Die Anzahl freier Konstanten in der allgemeinen Lösung einer linearen DGL n-ter Ordnung ist immer $n$ — unabhängig davon, ob die DGL homogen oder inhomogen ist. Die Partikulärlösung bringt keine zusätzlichen Konstanten, weil sie fest gewählt ist.
 
@@ -1849,7 +1849,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Wenn $y_{p,1}$ und $y_{p,2}$ zwei verschiedene Partikulärlösungen derselben inhomogenen DGL sind, ist ihre Differenz $y_{p,1}-y_{p,2}$ eine Lösung der homogenen DGL.',
+        '[PRÜFUNG] Wenn $y_{p,1}$ und $y_{p,2}$ zwei verschiedene Partikulärlösungen derselben inhomogenen DGL sind, ist ihre Differenz $y_{p,1}-y_{p,2}$ eine Lösung der homogenen DGL.',
         true,
         `**Ansatz:** Linearität: Für linearen Differentialoperator $L$ gilt $L[y_1-y_2]=L[y_1]-L[y_2]$.
 
@@ -1865,7 +1865,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Ordne DGL und allgemeine Lösung zu.',
+        '[PRÜFUNG] Ordne DGL und allgemeine Lösung zu.',
         [
           { left: '$y\'\' + y = 0$', right: '$y = C_1\\cos x + C_2\\sin x$' },
           { left: '$y\'\' + y = 4$', right: '$y = C_1\\cos x + C_2\\sin x + 4$' },
@@ -1886,7 +1886,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Sortiere die Schritte zur Bestimmung der allgemeinen Lösung einer inhomogenen linearen DGL 2. Ordnung.',
+        '[PRÜFUNG] Sortiere die Schritte zur Bestimmung der allgemeinen Lösung einer inhomogenen linearen DGL 2. Ordnung.',
         [
           'Charakteristische Gleichung $\\lambda^2+p\\lambda+q=0$ aufstellen',
           'Wurzeln $\\lambda_1, \\lambda_2$ bestimmen und homogene Lösung $y_h$ aufschreiben',
@@ -1914,7 +1914,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [5] AWP bei 2. Ordnung ────────────────────────────────────────────
     5: [
       ni(
-        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] Gegeben $y\'\' - y = 0$ mit $y(0) = 3$ und $y\'(0) = 1$. Berechne $C_1$ in der Lösung $y = C_1 e^{x} + C_2 e^{-x}$.',
+        '[PRÜFUNG] Gegeben $y\'\' - y = 0$ mit $y(0) = 3$ und $y\'(0) = 1$. Berechne $C_1$ in der Lösung $y = C_1 e^{x} + C_2 e^{-x}$.',
         2, 0.001, '',
         `**Ansatz:** Zwei Bedingungen für zwei Konstanten. System aus $y(0)$ und $y'(0)$ aufstellen, lösen.
 
@@ -1930,7 +1930,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] Welche Aussage zum AWP bei DGL 2. Ordnung ist RICHTIG?',
+        '[PRÜFUNG] Welche Aussage zum AWP bei DGL 2. Ordnung ist RICHTIG?',
         [
           'Zwei Anfangsbedingungen sind nötig, um beide Konstanten $C_1, C_2$ eindeutig zu bestimmen.',
           'Eine einzige Anfangsbedingung $y(0)$ reicht immer aus.',
@@ -1957,7 +1957,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] Die Anfangsbedingungen $y(0)=0$ und $y(1)=1$ reichen ebenfalls aus, um die zwei Konstanten einer DGL 2. Ordnung eindeutig zu bestimmen.',
+        '[PRÜFUNG] Die Anfangsbedingungen $y(0)=0$ und $y(1)=1$ reichen ebenfalls aus, um die zwei Konstanten einer DGL 2. Ordnung eindeutig zu bestimmen.',
         false,
         `**Ansatz:** Unterscheide **Anfangswertproblem (AWP)** und **Randwertproblem (RWP)**. AWP: beide Bedingungen am gleichen $x_0$, meist $y(x_0)$ und $y'(x_0)$. RWP: Bedingungen an zwei verschiedenen Stellen.
 
@@ -1973,7 +1973,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] Sortiere die Schritte zur Lösung eines AWP 2. Ordnung.',
+        '[PRÜFUNG] Sortiere die Schritte zur Lösung eines AWP 2. Ordnung.',
         [
           'Allgemeine Lösung bestimmen: $y(x) = y_h(x) + y_p(x)$',
           'Ableitung $y\'(x)$ bilden',
@@ -1997,7 +1997,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] AWP: $y\'\' + 4y = 0$, $y(0) = 2$, $y\'(0) = 6$. Berechne $C_2$ in $y = C_1\\cos(2x) + C_2\\sin(2x)$.',
+        '[PRÜFUNG] AWP: $y\'\' + 4y = 0$, $y(0) = 2$, $y\'(0) = 6$. Berechne $C_2$ in $y = C_1\\cos(2x) + C_2\\sin(2x)$.',
         3, 0.001, '',
         `**Ansatz:** Zwei Bedingungen aufstellen, dann auflösen.
 
@@ -2023,7 +2023,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [0] Störansatz Polynom ────────────────────────────────────────────
     0: [
       mc(
-        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Welcher Ansatz für $y_p$ ist bei $y\'\' - y\' + y = x^2 + 3$ richtig?',
+        '[PRÜFUNG] Welcher Ansatz für $y_p$ ist bei $y\'\' - y\' + y = x^2 + 3$ richtig?',
         [
           '$y_p = Ax^2 + Bx + C$',
           '$y_p = Ax^2$',
@@ -2050,7 +2050,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Gegeben $y\'\' + 4y = 8x + 12$. Bestimme im Polynom-Ansatz $y_p = Ax + B$ den Koeffizienten $A$.',
+        '[PRÜFUNG] Gegeben $y\'\' + 4y = 8x + 12$. Bestimme im Polynom-Ansatz $y_p = Ax + B$ den Koeffizienten $A$.',
         2, 0.001, '',
         `**Ansatz:** Störfunktion ist linear (Grad 1), char. Gl. $\\lambda^2+4=0$ hat $\\lambda=\\pm 2i\\neq 0$ — kein Resonanzfall. Ansatz $y_p=Ax+B$.
 
@@ -2066,7 +2066,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Bei $y\'\' + 3y\' + 2y = 5x^3$ ist der passende Partikulär-Ansatz $y_p = Ax^3 + Bx^2 + Cx + D$.',
+        '[PRÜFUNG] Bei $y\'\' + 3y\' + 2y = 5x^3$ ist der passende Partikulär-Ansatz $y_p = Ax^3 + Bx^2 + Cx + D$.',
         true,
         `**Ansatz:** Polynom-Störfunktion vom Grad $n$ → Ansatz ist vollständiges Polynom gleichen Grades, sofern $\\lambda=0$ keine Wurzel der char. Gleichung ist.
 
@@ -2082,7 +2082,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Ordne jeder Störfunktion den passenden Polynom-Ansatz zu (ohne Resonanz).',
+        '[PRÜFUNG] Ordne jeder Störfunktion den passenden Polynom-Ansatz zu (ohne Resonanz).',
         [
           { left: '$q(x)=7$ (Konstante)', right: '$y_p = A$' },
           { left: '$q(x)=3x-2$', right: '$y_p = Ax + B$' },
@@ -2103,7 +2103,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Störansatz Polynom: $y_p = $ Polynom gleichen Grades": [PRÜFUNG] Für $y\'\' - y\' = 2x + 1$ ist der Standard-Ansatz $y_p = Ax + B$ falsch — warum?',
+        '[PRÜFUNG] Für $y\'\' - y\' = 2x + 1$ ist der Standard-Ansatz $y_p = Ax + B$ falsch — warum?',
         [
           '$\\lambda=0$ ist Wurzel der char. Gleichung — Resonanz, Ansatz muss $\\cdot x$ werden',
           'Der Ansatz ist korrekt — das System ist einfach lösbar',
@@ -2134,7 +2134,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [1] Störansatz Exponential ────────────────────────────────────────
     1: [
       ni(
-        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Finde $A$ in $y_p = A e^{2x}$ für die DGL $y\'\' - 3y\' + 2y = 4e^{2x}$... Moment, ist der Ansatz überhaupt zulässig? Wenn nicht, schreibe $0$. Wenn ja, gib $A$ an.',
+        '[PRÜFUNG] Finde $A$ in $y_p = A e^{2x}$ für die DGL $y\'\' - 3y\' + 2y = 4e^{2x}$... Moment, ist der Ansatz überhaupt zulässig? Wenn nicht, schreibe $0$. Wenn ja, gib $A$ an.',
         0, 0.001, '',
         `**Ansatz:** Vor dem Einsetzen prüfen, ob $c=2$ Wurzel der charakteristischen Gleichung ist. Nur wenn nicht, ist der Ansatz $Ae^{cx}$ zulässig.
 
@@ -2150,7 +2150,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Für $y\'\' - 4y\' + 3y = 5e^{-x}$ ist der richtige Ansatz:',
+        '[PRÜFUNG] Für $y\'\' - 4y\' + 3y = 5e^{-x}$ ist der richtige Ansatz:',
         [
           '$y_p = A e^{-x}$',
           '$y_p = A x e^{-x}$',
@@ -2177,7 +2177,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Bei $y\'\' + y = e^{2x}$ ist $c=2$ kein Eigenwert der char. Gleichung, daher ist $y_p = A e^{2x}$ ein gültiger Ansatz.',
+        '[PRÜFUNG] Bei $y\'\' + y = e^{2x}$ ist $c=2$ kein Eigenwert der char. Gleichung, daher ist $y_p = A e^{2x}$ ein gültiger Ansatz.',
         true,
         `**Ansatz:** Resonanzcheck: Eigenwerte aus char. Gl. Wenn $c$ keiner davon ist → Standard-Exponentialansatz erlaubt.
 
@@ -2193,7 +2193,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Sortiere die Schritte zur Bestimmung der partikulären Lösung bei exponentieller Störung.',
+        '[PRÜFUNG] Sortiere die Schritte zur Bestimmung der partikulären Lösung bei exponentieller Störung.',
         [
           'Charakteristische Gleichung $\\lambda^2+p\\lambda+q=0$ aufstellen und Wurzeln bestimmen',
           'Prüfen, ob $c$ eine Wurzel ist (Resonanzcheck)',
@@ -2217,7 +2217,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)": [PRÜFUNG] Berechne $A$ in $y_p = A e^{3x}$ für die DGL $y\'\' - 2y\' - 3y = 8 e^{3x}$... falls zulässig. Falls Resonanz vorliegt, trage $0$ ein.',
+        '[PRÜFUNG] Berechne $A$ in $y_p = A e^{3x}$ für die DGL $y\'\' - 2y\' - 3y = 8 e^{3x}$... falls zulässig. Falls Resonanz vorliegt, trage $0$ ein.',
         0, 0.001, '',
         `**Ansatz:** Resonanzcheck! Char. Gleichung: $\\lambda^2-2\\lambda-3=(\\lambda-3)(\\lambda+1)=0$ → $\\lambda=3,-1$. $c=3$ ist Wurzel → Resonanz → Standard-Ansatz $Ae^{3x}$ ist **nicht** zulässig.
 
@@ -2237,7 +2237,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [2] Störansatz Trig ───────────────────────────────────────────────
     2: [
       mc(
-        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Welcher Ansatz ist für $y\'\' + 3y\' + 2y = 4\\cos(2x)$ richtig?',
+        '[PRÜFUNG] Welcher Ansatz ist für $y\'\' + 3y\' + 2y = 4\\cos(2x)$ richtig?',
         [
           '$y_p = A\\cos(2x) + B\\sin(2x)$',
           '$y_p = A\\cos(2x)$',
@@ -2264,7 +2264,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Für $y\'\' + 4y = 6\\sin(x)$ setzt man $y_p = A\\cos(x) + B\\sin(x)$ an. Berechne $B$.',
+        '[PRÜFUNG] Für $y\'\' + 4y = 6\\sin(x)$ setzt man $y_p = A\\cos(x) + B\\sin(x)$ an. Berechne $B$.',
         2, 0.001, '',
         `**Ansatz:** Trigonometrische Störung mit $\\omega=1$. Resonanzcheck: $\\lambda^2+4=0$ → $\\lambda=\\pm 2i$, also $\\pm i\\omega=\\pm i$ ist **keine** Wurzel → Standard-Ansatz.
 
@@ -2280,7 +2280,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Wenn die Störfunktion nur $\\sin(\\omega x)$ ist, reicht als Ansatz $y_p = B\\sin(\\omega x)$ ohne $\\cos$-Term.',
+        '[PRÜFUNG] Wenn die Störfunktion nur $\\sin(\\omega x)$ ist, reicht als Ansatz $y_p = B\\sin(\\omega x)$ ohne $\\cos$-Term.',
         false,
         `**Ansatz:** Falsch. Auch bei reinem $\\sin$ (oder reinem $\\cos$) in der Störung braucht man **beide** Anteile im Ansatz, sobald die DGL einen Term mit **erster Ableitung** ($y'$) enthält.
 
@@ -2296,7 +2296,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Ordne jeder trigonometrischen Störfunktion den passenden Ansatz zu.',
+        '[PRÜFUNG] Ordne jeder trigonometrischen Störfunktion den passenden Ansatz zu.',
         [
           { left: '$q(x)=3\\cos(2x)$', right: '$y_p=A\\cos(2x)+B\\sin(2x)$' },
           { left: '$q(x)=\\sin(5x)-2\\cos(5x)$', right: '$y_p=A\\cos(5x)+B\\sin(5x)$' },
@@ -2317,7 +2317,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Störansatz Trig: $y_p = A \\cos\\omega x + B \\sin\\omega x$": [PRÜFUNG] Bei welcher DGL tritt **Resonanz** auf, so dass der Standard-Ansatz $y_p=A\\cos(3x)+B\\sin(3x)$ **NICHT** direkt zulässig ist?',
+        '[PRÜFUNG] Bei welcher DGL tritt **Resonanz** auf, so dass der Standard-Ansatz $y_p=A\\cos(3x)+B\\sin(3x)$ **NICHT** direkt zulässig ist?',
         [
           '$y\'\' + 9y = \\cos(3x)$',
           '$y\'\' + 4y = \\cos(3x)$',
@@ -2348,7 +2348,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [3] Resonanzfall ──────────────────────────────────────────────────
     3: [
       mc(
-        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Wähle den Ansatz für $y\'\' - 4y\' + 4y = e^{2x}$.',
+        '[PRÜFUNG] Wähle den Ansatz für $y\'\' - 4y\' + 4y = e^{2x}$.',
         [
           '$y_p = A x^2 e^{2x}$',
           '$y_p = A e^{2x}$',
@@ -2375,7 +2375,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Bestimme $A$ in $y_p = Ax e^x$ für die DGL $y\'\' - y = 4 e^x$.',
+        '[PRÜFUNG] Bestimme $A$ in $y_p = Ax e^x$ für die DGL $y\'\' - y = 4 e^x$.',
         2, 0.001, '',
         `**Ansatz:** Char. Gl. $\\lambda^2-1=0$ → $\\lambda=\\pm 1$. Störexponent $c=1$ ist *einfache* Wurzel → Resonanz, Multiplizität 1, Ansatz $Axe^x$.
 
@@ -2391,7 +2391,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Bei $y\'\' + y = \\sin(x)$ liegt Resonanz vor, weil $\\pm i$ (die Wurzeln der char. Gleichung) auch die Frequenz der Störung ergeben.',
+        '[PRÜFUNG] Bei $y\'\' + y = \\sin(x)$ liegt Resonanz vor, weil $\\pm i$ (die Wurzeln der char. Gleichung) auch die Frequenz der Störung ergeben.',
         true,
         `**Ansatz:** Bei trigonometrischer Störung liegt Resonanz vor, wenn $\\pm i\\omega$ (mit $\\omega$ = Störfrequenz) eine Wurzel der char. Gleichung ist.
 
@@ -2407,7 +2407,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Sortiere die Entscheidungslogik beim Resonanzcheck.',
+        '[PRÜFUNG] Sortiere die Entscheidungslogik beim Resonanzcheck.',
         [
           'Charakteristische Gleichung aufstellen und Wurzeln $\\lambda_{1,2}$ bestimmen',
           'Aus der Störfunktion den "Prüf-Exponenten" $c$ bestimmen ($c$ direkt bei $e^{cx}$; $c=\\pm i\\omega$ bei $\\sin/\\cos$)',
@@ -2431,7 +2431,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Resonanzfall: Wenn Störung homogene Lösung ist → $\\times x$ (oder $\\times x^2$ bei Doppelwurzel)": [PRÜFUNG] Welche Aussage zur Resonanz ist FALSCH?',
+        '[PRÜFUNG] Welche Aussage zur Resonanz ist FALSCH?',
         [
           'Resonanz tritt nur bei exponentieller Störung auf, nie bei trigonometrischer.',
           'Bei Doppelwurzel als Resonanzursache wird mit $x^2$ multipliziert.',
@@ -2462,7 +2462,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [4] Allgemeine Lösung ──────────────────────────────────────────────
     4: [
       mc(
-        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Die allgemeine Lösung von $y\'\' - 3y\' + 2y = 6$ lautet:',
+        '[PRÜFUNG] Die allgemeine Lösung von $y\'\' - 3y\' + 2y = 6$ lautet:',
         [
           '$y = C_1 e^{x} + C_2 e^{2x} + 3$',
           '$y = C_1 e^{x} + C_2 e^{2x}$',
@@ -2489,7 +2489,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Für $y\'\' + y = 2$ lautet $y_h = C_1\\cos x + C_2\\sin x$ und $y_p = 2$. Wie viele freie Konstanten enthält die allgemeine Lösung?',
+        '[PRÜFUNG] Für $y\'\' + y = 2$ lautet $y_h = C_1\\cos x + C_2\\sin x$ und $y_p = 2$. Wie viele freie Konstanten enthält die allgemeine Lösung?',
         2, 0, '',
         `**Ansatz:** Die Anzahl freier Konstanten in der allgemeinen Lösung einer linearen DGL n-ter Ordnung ist immer $n$ — unabhängig davon, ob die DGL homogen oder inhomogen ist. Die Partikulärlösung bringt keine zusätzlichen Konstanten, weil sie fest gewählt ist.
 
@@ -2505,7 +2505,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Wenn $y_{p,1}$ und $y_{p,2}$ zwei verschiedene Partikulärlösungen derselben inhomogenen DGL sind, ist ihre Differenz $y_{p,1}-y_{p,2}$ eine Lösung der homogenen DGL.',
+        '[PRÜFUNG] Wenn $y_{p,1}$ und $y_{p,2}$ zwei verschiedene Partikulärlösungen derselben inhomogenen DGL sind, ist ihre Differenz $y_{p,1}-y_{p,2}$ eine Lösung der homogenen DGL.',
         true,
         `**Ansatz:** Linearität: Für linearen Differentialoperator $L$ gilt $L[y_1-y_2]=L[y_1]-L[y_2]$.
 
@@ -2521,7 +2521,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Ordne DGL und allgemeine Lösung zu.',
+        '[PRÜFUNG] Ordne DGL und allgemeine Lösung zu.',
         [
           { left: '$y\'\' + y = 0$', right: '$y = C_1\\cos x + C_2\\sin x$' },
           { left: '$y\'\' + y = 4$', right: '$y = C_1\\cos x + C_2\\sin x + 4$' },
@@ -2542,7 +2542,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Allgemeine Lösung: $y = y_h + y_p$": [PRÜFUNG] Sortiere die Schritte zur Bestimmung der allgemeinen Lösung einer inhomogenen linearen DGL 2. Ordnung.',
+        '[PRÜFUNG] Sortiere die Schritte zur Bestimmung der allgemeinen Lösung einer inhomogenen linearen DGL 2. Ordnung.',
         [
           'Charakteristische Gleichung $\\lambda^2+p\\lambda+q=0$ aufstellen',
           'Wurzeln $\\lambda_1, \\lambda_2$ bestimmen und homogene Lösung $y_h$ aufschreiben',
@@ -2570,7 +2570,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [5] AWP bei 2. Ordnung ────────────────────────────────────────────
     5: [
       ni(
-        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] Gegeben $y\'\' - y = 0$ mit $y(0) = 3$ und $y\'(0) = 1$. Berechne $C_1$ in der Lösung $y = C_1 e^{x} + C_2 e^{-x}$.',
+        '[PRÜFUNG] Gegeben $y\'\' - y = 0$ mit $y(0) = 3$ und $y\'(0) = 1$. Berechne $C_1$ in der Lösung $y = C_1 e^{x} + C_2 e^{-x}$.',
         2, 0.001, '',
         `**Ansatz:** Zwei Bedingungen für zwei Konstanten. System aus $y(0)$ und $y'(0)$ aufstellen, lösen.
 
@@ -2586,7 +2586,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] Welche Aussage zum AWP bei DGL 2. Ordnung ist RICHTIG?',
+        '[PRÜFUNG] Welche Aussage zum AWP bei DGL 2. Ordnung ist RICHTIG?',
         [
           'Zwei Anfangsbedingungen sind nötig, um beide Konstanten $C_1, C_2$ eindeutig zu bestimmen.',
           'Eine einzige Anfangsbedingung $y(0)$ reicht immer aus.',
@@ -2613,7 +2613,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] Die Anfangsbedingungen $y(0)=0$ und $y(1)=1$ reichen ebenfalls aus, um die zwei Konstanten einer DGL 2. Ordnung eindeutig zu bestimmen.',
+        '[PRÜFUNG] Die Anfangsbedingungen $y(0)=0$ und $y(1)=1$ reichen ebenfalls aus, um die zwei Konstanten einer DGL 2. Ordnung eindeutig zu bestimmen.',
         false,
         `**Ansatz:** Unterscheide **Anfangswertproblem (AWP)** und **Randwertproblem (RWP)**. AWP: beide Bedingungen am gleichen $x_0$, meist $y(x_0)$ und $y'(x_0)$. RWP: Bedingungen an zwei verschiedenen Stellen.
 
@@ -2629,7 +2629,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] Sortiere die Schritte zur Lösung eines AWP 2. Ordnung.',
+        '[PRÜFUNG] Sortiere die Schritte zur Lösung eines AWP 2. Ordnung.',
         [
           'Allgemeine Lösung bestimmen: $y(x) = y_h(x) + y_p(x)$',
           'Ableitung $y\'(x)$ bilden',
@@ -2653,7 +2653,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y\'(x_0)$ → zwei Konstanten": [PRÜFUNG] AWP: $y\'\' + 4y = 0$, $y(0) = 2$, $y\'(0) = 6$. Berechne $C_2$ in $y = C_1\\cos(2x) + C_2\\sin(2x)$.',
+        '[PRÜFUNG] AWP: $y\'\' + 4y = 0$, $y(0) = 2$, $y\'(0) = 6$. Berechne $C_2$ in $y = C_1\\cos(2x) + C_2\\sin(2x)$.',
         3, 0.001, '',
         `**Ansatz:** Zwei Bedingungen aufstellen, dann auflösen.
 
@@ -2680,7 +2680,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [0] Euler explizit: y_{n+1} = y_n + h·f(x_n, y_n), Fehler O(h) ──
     0: [
       ni(
-        'Sub-Goal "Euler explizit: $y_{n+1} = y_n + h \\cdot f(x_n, y_n)$, Fehler $O(h)$": [PRÜFUNG] Für $\\dot y = y$, $y(0) = 1$, $h = 0{,}5$ — welchen Wert liefert ein Euler-Schritt für $y_1$?',
+        '[PRÜFUNG] Für $\\dot y = y$, $y(0) = 1$, $h = 0{,}5$ — welchen Wert liefert ein Euler-Schritt für $y_1$?',
         1.5, 0.001, '',
         `**Ansatz:** Euler-Formel einmal anwenden: $y_1 = y_0 + h \\cdot f(x_0, y_0)$ mit $f(x,y) = y$.
 
@@ -2696,7 +2696,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Euler explizit: $y_{n+1} = y_n + h \\cdot f(x_n, y_n)$, Fehler $O(h)$": [PRÜFUNG] Was bedeutet „globaler Fehler $O(h)$" bei Euler?',
+        '[PRÜFUNG] Was bedeutet „globaler Fehler $O(h)$" bei Euler?',
         [
           'Halbieren von $h$ halbiert (ungefähr) den Gesamtfehler am Endzeitpunkt.',
           'Der Fehler pro Schritt halbiert sich nur, der Gesamtfehler bleibt gleich.',
@@ -2723,7 +2723,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Euler explizit: $y_{n+1} = y_n + h \\cdot f(x_n, y_n)$, Fehler $O(h)$": [PRÜFUNG] Der explizite Euler ist ein *einschrittiges* Verfahren — zur Berechnung von $y_{n+1}$ genügt ausschließlich die Kenntnis von $y_n$.',
+        '[PRÜFUNG] Der explizite Euler ist ein *einschrittiges* Verfahren — zur Berechnung von $y_{n+1}$ genügt ausschließlich die Kenntnis von $y_n$.',
         true,
         `**Ansatz:** „Einschrittig" heißt: pro Update-Formel wird nur der letzte Zustand benötigt, keine älteren Werte $y_{n-1}, y_{n-2}, \\dots$.
 
@@ -2739,7 +2739,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Euler explizit: $y_{n+1} = y_n + h \\cdot f(x_n, y_n)$, Fehler $O(h)$": [PRÜFUNG] Ein Kühlturm wird mit $\\dot T = -0{,}4(T-20)$, $T(0)=80$ °C simuliert. Berechne mit Euler und $h=1$ min den Wert $T_1$ (in °C).',
+        '[PRÜFUNG] Ein Kühlturm wird mit $\\dot T = -0{,}4(T-20)$, $T(0)=80$ °C simuliert. Berechne mit Euler und $h=1$ min den Wert $T_1$ (in °C).',
         56, 0.1, '°C',
         `**Ansatz:** Einmal Euler-Schritt auf $f(t,T) = -0{,}4(T-20)$ anwenden.
 
@@ -2755,7 +2755,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Euler explizit: $y_{n+1} = y_n + h \\cdot f(x_n, y_n)$, Fehler $O(h)$": [PRÜFUNG] Bringe die Teilschritte eines einzelnen Euler-Updates in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Teilschritte eines einzelnen Euler-Updates in die richtige Reihenfolge.',
         [
           'Aktuellen Zustand $y_n$ und Zeit $x_n$ bereitstellen',
           'Steigung $f(x_n, y_n)$ an dieser Stelle auswerten',
@@ -2782,7 +2782,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [1] Stabilität via Eigenwerte: alle Re(λ_i)<0 → asymptotisch stabil ──
     1: [
       mc(
-        'Sub-Goal "Stabilität via Eigenwerte: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": [PRÜFUNG] System $\\dot{\\vec x} = A\\vec x$ mit $A = \\begin{pmatrix} -1 & 2 \\\\ 0 & -3 \\end{pmatrix}$. Ist das System asymptotisch stabil?',
+        '[PRÜFUNG] System $\\dot{\\vec x} = A\\vec x$ mit $A = \\begin{pmatrix} -1 & 2 \\\\ 0 & -3 \\end{pmatrix}$. Ist das System asymptotisch stabil?',
         [
           'Ja — beide Eigenwerte sind reell und negativ.',
           'Nein — einer der Einträge in $A$ ist positiv.',
@@ -2809,7 +2809,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Stabilität via Eigenwerte: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": [PRÜFUNG] System $\\dot{\\vec x} = \\begin{pmatrix} 0 & 1 \\\\ -4 & -2 \\end{pmatrix}\\vec x$ (gedämpfter Oszillator). Berechne den Realteil der Eigenwerte.',
+        '[PRÜFUNG] System $\\dot{\\vec x} = \\begin{pmatrix} 0 & 1 \\\\ -4 & -2 \\end{pmatrix}\\vec x$ (gedämpfter Oszillator). Berechne den Realteil der Eigenwerte.',
         -1, 0.001, '',
         `**Ansatz:** Eigenwerte einer $2\\times 2$-Matrix aus $\\lambda^2 - \\text{tr}(A)\\lambda + \\det(A) = 0$.
 
@@ -2825,7 +2825,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Stabilität via Eigenwerte: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": [PRÜFUNG] Ein System mit rein imaginären Eigenwerten $\\lambda = \\pm i\\omega$ ist asymptotisch stabil, weil die Lösungen beschränkt bleiben.',
+        '[PRÜFUNG] Ein System mit rein imaginären Eigenwerten $\\lambda = \\pm i\\omega$ ist asymptotisch stabil, weil die Lösungen beschränkt bleiben.',
         false,
         `**Ansatz:** Asymptotische Stabilität verlangt $\\text{Re}(\\lambda_i) < 0$ — also *strenge* Negativität, nicht bloß beschränkte Lösungen.
 
@@ -2841,7 +2841,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Stabilität via Eigenwerte: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": [PRÜFUNG] Ordne Eigenwert-Konfigurationen ihren Stabilitätseigenschaften zu.',
+        '[PRÜFUNG] Ordne Eigenwert-Konfigurationen ihren Stabilitätseigenschaften zu.',
         [
           { left: '$\\lambda_1 = -2$, $\\lambda_2 = -5$', right: 'asymptotisch stabil (rein abklingend)' },
           { left: '$\\lambda_{1,2} = -1 \\pm 3i$', right: 'asymptotisch stabil (gedämpfte Schwingung)' },
@@ -2862,7 +2862,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Stabilität via Eigenwerte: alle $\\text{Re}(\\lambda_i) < 0$ → asymptotisch stabil": [PRÜFUNG] Bringe die Schritte der Stabilitätsanalyse eines linearen DGL-Systems in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Schritte der Stabilitätsanalyse eines linearen DGL-Systems in die richtige Reihenfolge.',
         [
           'Systemmatrix $A$ aus den Koeffizienten der DGL extrahieren',
           'Charakteristisches Polynom $\\det(A - \\lambda I) = 0$ aufstellen',
@@ -2890,7 +2890,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [2] Bilanzgleichungen: Masse, Energie, Kraft, Ladung ──────────────
     2: [
       matching(
-        'Sub-Goal "Bilanzgleichungen: Massenbilanz, Energiebilanz, Kräftebilanz, Ladungsbilanz": [PRÜFUNG] Ordne jeder Bilanzart das zugehörige Beispiel und die Leitformel zu.',
+        '[PRÜFUNG] Ordne jeder Bilanzart das zugehörige Beispiel und die Leitformel zu.',
         [
           { left: 'Massenbilanz', right: 'Tank: $\\dot V = q_{ein} - q_{aus}$' },
           { left: 'Energiebilanz', right: 'Kühlkörper: $C_W \\dot T = \\dot Q_{ein} - \\alpha(T-T_U)$' },
@@ -2911,7 +2911,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Bilanzgleichungen: Massenbilanz, Energiebilanz, Kräftebilanz, Ladungsbilanz": [PRÜFUNG] Ein Kondensator wird über einen Widerstand geladen: Strom $I$, Ladung $q$, Quelle $U_0$. Welche Bilanzgleichung ergibt $\\dot q$?',
+        '[PRÜFUNG] Ein Kondensator wird über einen Widerstand geladen: Strom $I$, Ladung $q$, Quelle $U_0$. Welche Bilanzgleichung ergibt $\\dot q$?',
         [
           '$R\\dot q + q/C = U_0$',
           '$\\dot q = U_0 - R \\cdot q$',
@@ -2938,7 +2938,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Bilanzgleichungen: Massenbilanz, Energiebilanz, Kräftebilanz, Ladungsbilanz": [PRÜFUNG] Wärmetauscher: Zufuhr $\\dot Q_{ein} = 500$ W, Verlust $\\alpha(T-T_U) = 25$ W/K · $(T-T_U)$, $T_U = 20$ °C. Berechne die stationäre Endtemperatur $T_\\infty$ in °C.',
+        '[PRÜFUNG] Wärmetauscher: Zufuhr $\\dot Q_{ein} = 500$ W, Verlust $\\alpha(T-T_U) = 25$ W/K · $(T-T_U)$, $T_U = 20$ °C. Berechne die stationäre Endtemperatur $T_\\infty$ in °C.',
         40, 0.1, '°C',
         `**Ansatz:** Energiebilanz am Wärmetauscher: $C_W \\dot T = \\dot Q_{ein} - \\alpha(T-T_U)$. Stationär setze $\\dot T = 0$.
 
@@ -2954,7 +2954,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Bilanzgleichungen: Massenbilanz, Energiebilanz, Kräftebilanz, Ladungsbilanz": [PRÜFUNG] Bei der Kräftebilanz eines Feder-Masse-Dämpfer-Systems $m\\ddot x = -kx - d\\dot x + F(t)$ ist das Vorzeichen von $-kx$ rückstellend, weil die Feder der Auslenkung entgegenwirkt.',
+        '[PRÜFUNG] Bei der Kräftebilanz eines Feder-Masse-Dämpfer-Systems $m\\ddot x = -kx - d\\dot x + F(t)$ ist das Vorzeichen von $-kx$ rückstellend, weil die Feder der Auslenkung entgegenwirkt.',
         true,
         `**Ansatz:** Federkraft nach Hooke: $F_{Feder} = -kx$, d.h. bei positiver Auslenkung zieht die Feder zurück in Richtung Ursprung.
 
@@ -2970,7 +2970,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Bilanzgleichungen: Massenbilanz, Energiebilanz, Kräftebilanz, Ladungsbilanz": [PRÜFUNG] Bringe die Schritte „Bilanzgleichung aufstellen" in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Schritte „Bilanzgleichung aufstellen" in die richtige Reihenfolge.',
         [
           'Kontrollvolumen / Bilanzraum festlegen',
           'Erhaltungsgröße wählen (Masse, Energie, Impuls, Ladung)',
@@ -2998,7 +2998,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [3] Mechanik-Elektrik-Analogie ────────────────────────────────────
     3: [
       matching(
-        'Sub-Goal "Mechanik-Elektrik-Analogie: $m \\leftrightarrow L$, $d \\leftrightarrow R$, $1/k \\leftrightarrow C$, $F \\leftrightarrow U$": [PRÜFUNG] Ordne die mechanischen Größen ihren elektrischen Analoga zu.',
+        '[PRÜFUNG] Ordne die mechanischen Größen ihren elektrischen Analoga zu.',
         [
           { left: 'Masse $m$', right: 'Induktivität $L$' },
           { left: 'Dämpfung $d$', right: 'Widerstand $R$' },
@@ -3019,7 +3019,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Mechanik-Elektrik-Analogie: $m \\leftrightarrow L$, $d \\leftrightarrow R$, $1/k \\leftrightarrow C$, $F \\leftrightarrow U$": [PRÜFUNG] Ein Feder-Masse-System hat $m=2$ kg, $k=200$ N/m, $d=4$ Ns/m. Welche RLC-Schaltung hat genau dieselbe DGL-Struktur (Eigenfrequenz und Dämpfung)?',
+        '[PRÜFUNG] Ein Feder-Masse-System hat $m=2$ kg, $k=200$ N/m, $d=4$ Ns/m. Welche RLC-Schaltung hat genau dieselbe DGL-Struktur (Eigenfrequenz und Dämpfung)?',
         [
           '$L=2$ H, $R=4$ Ω, $C=1/200$ F',
           '$L=2$ H, $R=4$ Ω, $C=200$ F',
@@ -3046,7 +3046,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Mechanik-Elektrik-Analogie: $m \\leftrightarrow L$, $d \\leftrightarrow R$, $1/k \\leftrightarrow C$, $F \\leftrightarrow U$": [PRÜFUNG] Ein RLC-Kreis mit $L=0{,}5$ H, $R=2$ Ω, $C=0{,}002$ F wird als mechanisches System interpretiert. Welche Federkonstante $k$ (in N/m) entspricht der Kapazität?',
+        '[PRÜFUNG] Ein RLC-Kreis mit $L=0{,}5$ H, $R=2$ Ω, $C=0{,}002$ F wird als mechanisches System interpretiert. Welche Federkonstante $k$ (in N/m) entspricht der Kapazität?',
         500, 1, 'N/m',
         `**Ansatz:** $k \\leftrightarrow 1/C$, also $k = 1/C$ (sofern Einheiten nur Proportionalitäten widerspiegeln).
 
@@ -3062,7 +3062,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Mechanik-Elektrik-Analogie: $m \\leftrightarrow L$, $d \\leftrightarrow R$, $1/k \\leftrightarrow C$, $F \\leftrightarrow U$": [PRÜFUNG] In der Mechanik-Elektrik-Analogie entspricht der Dämpfung $d$ eines mechanischen Systems der Induktivität $L$ einer Schaltung.',
+        '[PRÜFUNG] In der Mechanik-Elektrik-Analogie entspricht der Dämpfung $d$ eines mechanischen Systems der Induktivität $L$ einer Schaltung.',
         false,
         `**Ansatz:** Prüfe die Analogie-Zuordnung: $m \\leftrightarrow L$, $d \\leftrightarrow R$, $k \\leftrightarrow 1/C$.
 
@@ -3078,7 +3078,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Mechanik-Elektrik-Analogie: $m \\leftrightarrow L$, $d \\leftrightarrow R$, $1/k \\leftrightarrow C$, $F \\leftrightarrow U$": [PRÜFUNG] Bringe die Übertragung „mechanisches Modell → elektrisches Analogon" in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Übertragung „mechanisches Modell → elektrisches Analogon" in die richtige Reihenfolge.',
         [
           'Mechanische DGL $m\\ddot x + d\\dot x + kx = F$ aufschreiben',
           'Koeffizienten identifizieren: $m, d, k, F$',
@@ -3105,7 +3105,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [4] Stationäre Lösung: ẏ = 0 → algebraisches System ───────────────
     4: [
       ni(
-        'Sub-Goal "Stationäre Lösung: $\\dot y = 0$ → algebraisches System (Gleichgewicht)": [PRÜFUNG] Wärmeleitung in einem Rohr: $C_W \\dot T = \\dot Q_{ein} - kA(T-T_U)$ mit $\\dot Q_{ein} = 800$ W, $kA = 20$ W/K, $T_U = 15$ °C. Welche Endtemperatur (in °C) stellt sich stationär ein?',
+        '[PRÜFUNG] Wärmeleitung in einem Rohr: $C_W \\dot T = \\dot Q_{ein} - kA(T-T_U)$ mit $\\dot Q_{ein} = 800$ W, $kA = 20$ W/K, $T_U = 15$ °C. Welche Endtemperatur (in °C) stellt sich stationär ein?',
         55, 0.1, '°C',
         `**Ansatz:** Stationär $\\dot T = 0 \\Rightarrow$ algebraische Gleichung nach $T_\\infty$.
 
@@ -3121,7 +3121,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Stationäre Lösung: $\\dot y = 0$ → algebraisches System (Gleichgewicht)": [PRÜFUNG] Welche Aussage zur stationären Lösung eines autonomen Systems $\\dot y = f(y)$ ist richtig?',
+        '[PRÜFUNG] Welche Aussage zur stationären Lösung eines autonomen Systems $\\dot y = f(y)$ ist richtig?',
         [
           'Stationäre Lösungen sind genau die Nullstellen von $f$: $f(y^*) = 0$.',
           'Stationäre Lösungen sind die Nullstellen von $f$ und zusätzlich alle Wendepunkte von $y(t)$.',
@@ -3148,7 +3148,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Stationäre Lösung: $\\dot y = 0$ → algebraisches System (Gleichgewicht)": [PRÜFUNG] Für ein lineares System $\\dot{\\vec x} = A\\vec x + \\vec b$ mit invertierbarer Matrix $A$ ist die stationäre Lösung eindeutig durch $\\vec x^* = -A^{-1}\\vec b$ gegeben.',
+        '[PRÜFUNG] Für ein lineares System $\\dot{\\vec x} = A\\vec x + \\vec b$ mit invertierbarer Matrix $A$ ist die stationäre Lösung eindeutig durch $\\vec x^* = -A^{-1}\\vec b$ gegeben.',
         true,
         `**Ansatz:** Stationär $\\dot{\\vec x} = 0$ → $A\\vec x^* + \\vec b = 0$ → lineares Gleichungssystem.
 
@@ -3164,7 +3164,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Stationäre Lösung: $\\dot y = 0$ → algebraisches System (Gleichgewicht)": [PRÜFUNG] Ordne Systemen ihre stationären Lösungen zu.',
+        '[PRÜFUNG] Ordne Systemen ihre stationären Lösungen zu.',
         [
           { left: '$\\dot V = 10 - 0{,}2 V$ (Tank)', right: '$V^* = 50$' },
           { left: '$\\dot T = -k(T - 25)$, $k>0$', right: '$T^* = 25$' },
@@ -3185,7 +3185,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Stationäre Lösung: $\\dot y = 0$ → algebraisches System (Gleichgewicht)": [PRÜFUNG] Ordne die Schritte „stationäre Lösung bestimmen und interpretieren" in die richtige Reihenfolge.',
+        '[PRÜFUNG] Ordne die Schritte „stationäre Lösung bestimmen und interpretieren" in die richtige Reihenfolge.',
         [
           'DGL aufstellen: $\\dot y = f(y, u)$',
           'Ableitungsterm auf null setzen: $\\dot y = 0$',
@@ -3212,7 +3212,7 @@ export const differentialgleichungenSubGoalTasks = {
     // ── [5] Newton'sches Abkühlungsgesetz ─────────────────────────────────
     5: [
       ni(
-        'Sub-Goal "Newton\'sches Abkühlungsgesetz: $\\dot T = -k(T - T_U)$, Lösung $T(t) = T_U + (T_0 - T_U)e^{-kt}$": [PRÜFUNG] Ein Kaffee hat $T_0 = 90$ °C und kühlt in $T_U = 20$ °C ab. Nach 5 min misst man $T = 55$ °C. Wie viele Minuten braucht er, um auf $T = 28{,}75$ °C zu fallen?',
+        '[PRÜFUNG] Ein Kaffee hat $T_0 = 90$ °C und kühlt in $T_U = 20$ °C ab. Nach 5 min misst man $T = 55$ °C. Wie viele Minuten braucht er, um auf $T = 28{,}75$ °C zu fallen?',
         15, 0.1, 'min',
         `**Ansatz:** Newton-Abkühlung $T(t) = T_U + (T_0 - T_U)e^{-kt}$. Erst $k$ aus der Messung bestimmen, dann nach $t$ auflösen.
 
@@ -3228,7 +3228,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Newton\'sches Abkühlungsgesetz: $\\dot T = -k(T - T_U)$, Lösung $T(t) = T_U + (T_0 - T_U)e^{-kt}$": [PRÜFUNG] Welche Eigenschaft hat die Lösung $T(t) = T_U + (T_0-T_U)e^{-kt}$?',
+        '[PRÜFUNG] Welche Eigenschaft hat die Lösung $T(t) = T_U + (T_0-T_U)e^{-kt}$?',
         [
           'Exponentieller Zerfall der Temperaturdifferenz, Asymptote $T_U$.',
           'Linearer Zerfall, $T$ trifft $T_U$ nach endlicher Zeit.',
@@ -3255,7 +3255,7 @@ export const differentialgleichungenSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Newton\'sches Abkühlungsgesetz: $\\dot T = -k(T - T_U)$, Lösung $T(t) = T_U + (T_0 - T_U)e^{-kt}$": [PRÜFUNG] Die Zeit, in der sich die Temperaturdifferenz $\\Delta T = T - T_U$ halbiert, hängt bei der Newton-Abkühlung nicht vom Anfangswert $T_0$ ab.',
+        '[PRÜFUNG] Die Zeit, in der sich die Temperaturdifferenz $\\Delta T = T - T_U$ halbiert, hängt bei der Newton-Abkühlung nicht vom Anfangswert $T_0$ ab.',
         true,
         `**Ansatz:** Halbierungsbedingung: $\\Delta T(t_{1/2}) = \\tfrac12 \\Delta T(0)$.
 
@@ -3271,7 +3271,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Newton\'sches Abkühlungsgesetz: $\\dot T = -k(T - T_U)$, Lösung $T(t) = T_U + (T_0 - T_U)e^{-kt}$": [PRÜFUNG] Ordne Situation und Konsequenz für die Newton-Abkühlung zu.',
+        '[PRÜFUNG] Ordne Situation und Konsequenz für die Newton-Abkühlung zu.',
         [
           { left: '$k$ wird größer (bessere Isolierung umgekehrt, schlechte Isolierung)', right: 'Abkühlung läuft schneller, kürzere Halbwertszeit' },
           { left: '$T_U$ wird höher', right: 'Endtemperatur $T_\\infty$ höher, Zeitverlauf verschoben' },
@@ -3292,7 +3292,7 @@ export const differentialgleichungenSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Newton\'sches Abkühlungsgesetz: $\\dot T = -k(T - T_U)$, Lösung $T(t) = T_U + (T_0 - T_U)e^{-kt}$": [PRÜFUNG] Bringe die Lösungsschritte für ein Newton-Abkühlungs-Anfangswertproblem in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Lösungsschritte für ein Newton-Abkühlungs-Anfangswertproblem in die richtige Reihenfolge.',
         [
           'DGL identifizieren: $\\dot T = -k(T - T_U)$',
           'Substitution $\\Delta T = T - T_U$ → $\\dot{\\Delta T} = -k \\Delta T$',

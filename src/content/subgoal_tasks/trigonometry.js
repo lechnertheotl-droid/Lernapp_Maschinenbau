@@ -25,7 +25,7 @@ export const trigonometrySubGoalTasks = {
     // ── [0] Winkeltypen: spitz/recht/stumpf/gestreckt/voll ────────────────
     0: [
       mc(
-        'Sub-Goal "Winkeltypen: spitz $<90°$, recht $=90°$, stumpf $90°–180°$, gestreckt $=180°$, voll $=360°$": Welche Klasse hat der Winkel $135°$?',
+        'Welche Klasse hat der Winkel $135°$?',
         [
           'stumpf',
           'spitz',
@@ -52,7 +52,7 @@ export const trigonometrySubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Winkeltypen: spitz $<90°$, recht $=90°$, stumpf $90°–180°$, gestreckt $=180°$, voll $=360°$": Wie viele Grad hat ein rechter Winkel?',
+        'Wie viele Grad hat ein rechter Winkel?',
         90, 0, '°',
         `**Ansatz:** Ein rechter Winkel = Viertel einer vollen Drehung.
 
@@ -68,7 +68,7 @@ export const trigonometrySubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Winkeltypen: spitz $<90°$, recht $=90°$, stumpf $90°–180°$, gestreckt $=180°$, voll $=360°$": Ein Winkel von $89°$ ist stumpf.',
+        'Ein Winkel von $89°$ ist stumpf.',
         false,
         `**Ansatz:** Grenze zwischen spitz und stumpf liegt bei $90°$.
 
@@ -84,7 +84,7 @@ export const trigonometrySubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Winkeltypen: spitz $<90°$, recht $=90°$, stumpf $90°–180°$, gestreckt $=180°$, voll $=360°$": Ordne jeden Winkel seiner Klasse zu.',
+        'Ordne jeden Winkel seiner Klasse zu.',
         [
           { left: '$30°$',    right: 'spitz' },
           { left: '$90°$',    right: 'recht' },
@@ -105,7 +105,7 @@ export const trigonometrySubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Winkeltypen: spitz $<90°$, recht $=90°$, stumpf $90°–180°$, gestreckt $=180°$, voll $=360°$": Sortiere die Winkelklassen nach aufsteigender Größe.',
+        'Sortiere die Winkelklassen nach aufsteigender Größe.',
         [
           'spitz ($<90°$)',
           'recht ($=90°$)',
@@ -131,7 +131,7 @@ export const trigonometrySubGoalTasks = {
     // ── [1] Innenwinkelsumme im Dreieck = 180° ────────────────────────────
     1: [
       ni(
-        'Sub-Goal "Innenwinkelsumme im Dreieck ist immer $180°$ — daraus 3. Winkel berechnen": In einem Dreieck ist $\\alpha = 60°$ und $\\beta = 75°$. Wie groß ist $\\gamma$ (in Grad)?',
+        'In einem Dreieck ist $\\alpha = 60°$ und $\\beta = 75°$. Wie groß ist $\\gamma$ (in Grad)?',
         45, 0, '°',
         `**Ansatz:** Winkelsumme $\\alpha + \\beta + \\gamma = 180°$.
 
@@ -147,7 +147,7 @@ export const trigonometrySubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Innenwinkelsumme im Dreieck ist immer $180°$ — daraus 3. Winkel berechnen": In einem rechtwinkligen Dreieck ist ein nicht-rechter Winkel $35°$. Wie groß ist der andere nicht-rechte Winkel?',
+        'In einem rechtwinkligen Dreieck ist ein nicht-rechter Winkel $35°$. Wie groß ist der andere nicht-rechte Winkel?',
         [
           '$55°$',
           '$145°$',
@@ -174,7 +174,7 @@ export const trigonometrySubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Innenwinkelsumme im Dreieck ist immer $180°$ — daraus 3. Winkel berechnen": Ein Dreieck kann zwei stumpfe Winkel haben.',
+        'Ein Dreieck kann zwei stumpfe Winkel haben.',
         false,
         `**Ansatz:** Zwei stumpfe Winkel wären jeweils $>90°$, in Summe $>180°$.
 
@@ -190,7 +190,7 @@ export const trigonometrySubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Innenwinkelsumme im Dreieck ist immer $180°$ — daraus 3. Winkel berechnen": Ordne jedem Dreieck den fehlenden Winkel $\\gamma$ zu.',
+        'Ordne jedem Dreieck den fehlenden Winkel $\\gamma$ zu.',
         [
           { left: '$\\alpha = 30°, \\beta = 60°$',    right: '$\\gamma = 90°$' },
           { left: '$\\alpha = 60°, \\beta = 60°$',    right: '$\\gamma = 60°$ (gleichseitig)' },
@@ -215,7 +215,7 @@ export const trigonometrySubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Innenwinkelsumme im Dreieck ist immer $180°$ — daraus 3. Winkel berechnen": Bringe die Schritte zur Bestimmung des dritten Winkels in $\\alpha = 45°, \\beta = 55°$ in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Bestimmung des dritten Winkels in $\\alpha = 45°, \\beta = 55°$ in die richtige Reihenfolge.',
         [
           'Winkelsumme notieren: $\\alpha + \\beta + \\gamma = 180°$',
           'Nach $\\gamma$ umstellen: $\\gamma = 180° - \\alpha - \\beta$',
@@ -241,7 +241,7 @@ export const trigonometrySubGoalTasks = {
     // ── [2] Scheitel-/Nebenwinkel ─────────────────────────────────────────
     2: [
       mc(
-        'Sub-Goal "Scheitel-/Nebenwinkel an sich schneidenden Geraden: Scheitelwinkel gleich, Nebenwinkel ergänzen auf $180°$": Zwei Geraden schneiden sich; einer der vier Winkel ist $70°$. Wie groß ist der gegenüberliegende (Scheitel-)Winkel?',
+        'Zwei Geraden schneiden sich; einer der vier Winkel ist $70°$. Wie groß ist der gegenüberliegende (Scheitel-)Winkel?',
         [
           '$70°$',
           '$110°$',
@@ -268,7 +268,7 @@ export const trigonometrySubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Scheitel-/Nebenwinkel an sich schneidenden Geraden: Scheitelwinkel gleich, Nebenwinkel ergänzen auf $180°$": Zwei Geraden schneiden sich. Ein Winkel ist $55°$. Wie groß ist der Nebenwinkel (in Grad)?',
+        'Zwei Geraden schneiden sich. Ein Winkel ist $55°$. Wie groß ist der Nebenwinkel (in Grad)?',
         125, 0, '°',
         `**Ansatz:** Nebenwinkel ergänzen sich auf $180°$ (liegen auf einer geraden Linie).
 
@@ -284,7 +284,7 @@ export const trigonometrySubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Scheitel-/Nebenwinkel an sich schneidenden Geraden: Scheitelwinkel gleich, Nebenwinkel ergänzen auf $180°$": Zwei Scheitelwinkel an einem Geradenkreuz sind immer gleich groß.',
+        'Zwei Scheitelwinkel an einem Geradenkreuz sind immer gleich groß.',
         true,
         `**Ansatz:** Geometrische Eigenschaft des Geradenkreuzes.
 
@@ -300,7 +300,7 @@ export const trigonometrySubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Scheitel-/Nebenwinkel an sich schneidenden Geraden: Scheitelwinkel gleich, Nebenwinkel ergänzen auf $180°$": Ordne jedem Paar die Beziehung zu.',
+        'Ordne jedem Paar die Beziehung zu.',
         [
           { left: 'zwei gegenüberliegende Winkel',       right: 'Scheitelwinkel — gleich groß' },
           { left: 'zwei benachbarte Winkel auf Gerade',  right: 'Nebenwinkel — Summe $180°$' },
@@ -321,7 +321,7 @@ export const trigonometrySubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Scheitel-/Nebenwinkel an sich schneidenden Geraden: Scheitelwinkel gleich, Nebenwinkel ergänzen auf $180°$": Bringe die Schritte zur Bestimmung aller vier Winkel an einem Geradenkreuz mit gegebenem $\\alpha = 40°$ in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Bestimmung aller vier Winkel an einem Geradenkreuz mit gegebenem $\\alpha = 40°$ in die richtige Reihenfolge.',
         [
           'Gegebener Winkel: $\\alpha = 40°$',
           'Scheitelwinkel (gegenüber) ist auch $40°$',
@@ -354,7 +354,7 @@ export const trigonometrySubGoalTasks = {
     // ── [0] Quadranten I-IV, Vorzeichen von sin (y) und cos (x) ───────────
     0: [
       mc(
-        'Sub-Goal "Quadranten I–IV durchnummerieren und Vorzeichen von $\\sin$ (y-Koordinate) und $\\cos$ (x-Koordinate) bestimmen": In welchem Quadranten gilt $\\sin\\alpha < 0$ UND $\\cos\\alpha > 0$?',
+        'In welchem Quadranten gilt $\\sin\\alpha < 0$ UND $\\cos\\alpha > 0$?',
         [
           '4. Quadrant ($270°$–$360°$)',
           '1. Quadrant ($0°$–$90°$)',
@@ -381,7 +381,7 @@ export const trigonometrySubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Quadranten I–IV durchnummerieren und Vorzeichen von $\\sin$ (y-Koordinate) und $\\cos$ (x-Koordinate) bestimmen": In welchem Quadranten liegt der Winkel $\\alpha = 250°$? (Antwort als Zahl 1, 2, 3 oder 4.)',
+        'In welchem Quadranten liegt der Winkel $\\alpha = 250°$? (Antwort als Zahl 1, 2, 3 oder 4.)',
         3, 0, '',
         `**Ansatz:** Quadrantengrenzen $0°$–$90°$–$180°$–$270°$–$360°$.
 
@@ -397,7 +397,7 @@ export const trigonometrySubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Quadranten I–IV durchnummerieren und Vorzeichen von $\\sin$ (y-Koordinate) und $\\cos$ (x-Koordinate) bestimmen": Im 3. Quadrant ist der Tangens positiv.',
+        'Im 3. Quadrant ist der Tangens positiv.',
         true,
         `**Ansatz:** ASTC-Regel: im 3. Quadrant ist nur **Tangens** positiv.
 
@@ -413,7 +413,7 @@ export const trigonometrySubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Quadranten I–IV durchnummerieren und Vorzeichen von $\\sin$ (y-Koordinate) und $\\cos$ (x-Koordinate) bestimmen": Ordne jeden Quadrant dem Vorzeichenmuster von ($\\sin, \\cos, \\tan$) zu.',
+        'Ordne jeden Quadrant dem Vorzeichenmuster von ($\\sin, \\cos, \\tan$) zu.',
         [
           { left: '1. Quadrant',     right: '$(+, +, +)$' },
           { left: '2. Quadrant',     right: '$(+, -, -)$' },
@@ -440,7 +440,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Quadranten I–IV durchnummerieren und Vorzeichen von $\\sin$ (y-Koordinate) und $\\cos$ (x-Koordinate) bestimmen": Bringe die Schritte zur Bestimmung der Vorzeichen von $\\sin(200°)$ und $\\cos(200°)$ in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Bestimmung der Vorzeichen von $\\sin(200°)$ und $\\cos(200°)$ in die richtige Reihenfolge.',
         [
           'Quadrant identifizieren: $180° < 200° < 270°$ → 3. Quadrant',
           'ASTC-Regel: im 3. Q ist nur Tangens positiv',
@@ -466,7 +466,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [1] Symmetrien: sin(180°-α) = sin α, cos(180°-α) = -cos α ─────────
     1: [
       mc(
-        'Sub-Goal "Symmetrien: $\\sin(180° - \\alpha) = \\sin\\alpha$, $\\cos(180° - \\alpha) = -\\cos\\alpha$": Welche Identität gilt für jeden Winkel $\\alpha$?',
+        'Welche Identität gilt für jeden Winkel $\\alpha$?',
         [
           '$\\sin(180° - \\alpha) = \\sin\\alpha$',
           '$\\sin(180° - \\alpha) = -\\sin\\alpha$',
@@ -493,7 +493,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Symmetrien: $\\sin(180° - \\alpha) = \\sin\\alpha$, $\\cos(180° - \\alpha) = -\\cos\\alpha$": Berechne $\\sin(170°)$ ohne Taschenrechner, indem du die Symmetrie ausnutzt. (Ergebnis auf 4 Nachkommastellen — verwende $\\sin(10°) \\approx 0{,}1736$.)',
+        'Berechne $\\sin(170°)$ ohne Taschenrechner, indem du die Symmetrie ausnutzt. (Ergebnis auf 4 Nachkommastellen — verwende $\\sin(10°) \\approx 0{,}1736$.)',
         0.1736, 0.001, '',
         `**Ansatz:** Supplementsymmetrie: $\\sin(180° - \\alpha) = \\sin\\alpha$ mit $\\alpha = 10°$.
 
@@ -509,7 +509,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Symmetrien: $\\sin(180° - \\alpha) = \\sin\\alpha$, $\\cos(180° - \\alpha) = -\\cos\\alpha$": Für alle Winkel $\\alpha$ gilt $\\cos(180° - \\alpha) = -\\cos\\alpha$.',
+        'Für alle Winkel $\\alpha$ gilt $\\cos(180° - \\alpha) = -\\cos\\alpha$.',
         true,
         `**Ansatz:** Spiegelung des Einheitskreispunkts an der y-Achse.
 
@@ -525,7 +525,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Symmetrien: $\\sin(180° - \\alpha) = \\sin\\alpha$, $\\cos(180° - \\alpha) = -\\cos\\alpha$": Ordne jeder Symmetrie den passenden Ausdruck zu.',
+        'Ordne jeder Symmetrie den passenden Ausdruck zu.',
         [
           { left: '$\\sin(-\\alpha)$',          right: '$-\\sin\\alpha$ (Punktsymmetrie zu O)' },
           { left: '$\\cos(-\\alpha)$',          right: '$\\cos\\alpha$ (Achsensymmetrie zu x-Achse)' },
@@ -546,7 +546,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Symmetrien: $\\sin(180° - \\alpha) = \\sin\\alpha$, $\\cos(180° - \\alpha) = -\\cos\\alpha$": Bringe die Schritte zur Berechnung von $\\cos(150°)$ über Symmetrie in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Berechnung von $\\cos(150°)$ über Symmetrie in die richtige Reihenfolge.',
         [
           'Schreibe $150° = 180° - 30°$',
           'Formel: $\\cos(180° - \\alpha) = -\\cos\\alpha$',
@@ -572,7 +572,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [2] Reduktionsformel: jeden Winkel auf Referenzwinkel 0°-90° ──────
     2: [
       mc(
-        'Sub-Goal "Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen": Was ist der Referenzwinkel von $225°$?',
+        'Was ist der Referenzwinkel von $225°$?',
         [
           '$45°$',
           '$135°$',
@@ -599,7 +599,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen": Berechne $\\sin(330°)$ mit der Reduktionsformel. Gib das Ergebnis als Dezimalzahl an.',
+        'Berechne $\\sin(330°)$ mit der Reduktionsformel. Gib das Ergebnis als Dezimalzahl an.',
         -0.5, 0.01, '',
         `**Ansatz:** $330°$ im 4. Q; Referenzwinkel $360° - 330° = 30°$. Im 4. Q: $\\sin < 0$.
 
@@ -615,7 +615,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen": Der Referenzwinkel ist immer positiv und liegt zwischen $0°$ und $90°$.',
+        'Der Referenzwinkel ist immer positiv und liegt zwischen $0°$ und $90°$.',
         true,
         `**Ansatz:** Definition des Referenzwinkels.
 
@@ -631,7 +631,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen": Ordne jedem Winkel seinen Referenzwinkel zu.',
+        'Ordne jedem Winkel seinen Referenzwinkel zu.',
         [
           { left: '$130°$',    right: '$50°$' },
           { left: '$200°$',    right: '$20°$' },
@@ -659,7 +659,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen": Bringe die Schritte zur Berechnung von $\\cos(210°)$ in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Berechnung von $\\cos(210°)$ in die richtige Reihenfolge.',
         [
           'Quadrant: $180° < 210° < 270°$ → 3. Quadrant',
           'Referenzwinkel: $210° - 180° = 30°$',
@@ -692,7 +692,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [0] Einheitskreis: r=1, x² + y² = 1 ──────────────────────────────
     0: [
       mc(
-        'Sub-Goal "Einheitskreis = Kreis um Ursprung mit $r = 1$, Gleichung $x^2 + y^2 = 1$": Welche Gleichung beschreibt den Einheitskreis?',
+        'Welche Gleichung beschreibt den Einheitskreis?',
         [
           '$x^{2} + y^{2} = 1$',
           '$x + y = 1$',
@@ -719,7 +719,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Einheitskreis = Kreis um Ursprung mit $r = 1$, Gleichung $x^2 + y^2 = 1$": Liegt der Punkt $P = (0{,}6, 0{,}8)$ auf dem Einheitskreis? Antwort: $0{,}6^{2} + 0{,}8^{2} = ?$',
+        'Liegt der Punkt $P = (0{,}6, 0{,}8)$ auf dem Einheitskreis? Antwort: $0{,}6^{2} + 0{,}8^{2} = ?$',
         1, 0.001, '',
         `**Ansatz:** Einheitskreis-Kriterium: $x^{2} + y^{2} = 1$.
 
@@ -735,7 +735,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Einheitskreis = Kreis um Ursprung mit $r = 1$, Gleichung $x^2 + y^2 = 1$": Der Punkt $(1, 1)$ liegt auf dem Einheitskreis.',
+        'Der Punkt $(1, 1)$ liegt auf dem Einheitskreis.',
         false,
         `**Ansatz:** Einheitskreis-Test.
 
@@ -751,7 +751,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Einheitskreis = Kreis um Ursprung mit $r = 1$, Gleichung $x^2 + y^2 = 1$": Ordne jedem Punkt die Lage bezüglich des Einheitskreises zu.',
+        'Ordne jedem Punkt die Lage bezüglich des Einheitskreises zu.',
         [
           { left: '$(1, 0)$',           right: 'auf dem Einheitskreis' },
           { left: '$(0{,}5, 0{,}5)$',   right: 'innerhalb (Abstand $< 1$)' },
@@ -772,7 +772,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Einheitskreis = Kreis um Ursprung mit $r = 1$, Gleichung $x^2 + y^2 = 1$": Bringe die Schritte zur Prüfung, ob $(-0{,}8, 0{,}6)$ auf dem Einheitskreis liegt, in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Prüfung, ob $(-0{,}8, 0{,}6)$ auf dem Einheitskreis liegt, in die richtige Reihenfolge.',
         [
           'Kriterium notieren: $x^{2} + y^{2} = 1$',
           'Werte einsetzen: $(-0{,}8)^{2} + 0{,}6^{2}$',
@@ -798,7 +798,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [1] Punkt auf Kreis P = (cos α, sin α) ────────────────────────────
     1: [
       mc(
-        'Sub-Goal "Punkt auf Kreis $P = (\\cos\\alpha, \\sin\\alpha)$ — Winkel von positiver $x$-Achse gegen Uhrzeigersinn": Wie lauten die Koordinaten des Punkts auf dem Einheitskreis beim Winkel $\\alpha = 60°$?',
+        'Wie lauten die Koordinaten des Punkts auf dem Einheitskreis beim Winkel $\\alpha = 60°$?',
         [
           '$(\\tfrac{1}{2}, \\tfrac{\\sqrt{3}}{2})$',
           '$(\\tfrac{\\sqrt{3}}{2}, \\tfrac{1}{2})$',
@@ -825,7 +825,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Punkt auf Kreis $P = (\\cos\\alpha, \\sin\\alpha)$ — Winkel von positiver $x$-Achse gegen Uhrzeigersinn": Berechne die y-Koordinate des Punkts auf dem Einheitskreis bei $\\alpha = 150°$. (Auf 3 Dezimalstellen.)',
+        'Berechne die y-Koordinate des Punkts auf dem Einheitskreis bei $\\alpha = 150°$. (Auf 3 Dezimalstellen.)',
         0.5, 0.01, '',
         `**Ansatz:** y-Koordinate = $\\sin\\alpha$.
 
@@ -841,7 +841,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Punkt auf Kreis $P = (\\cos\\alpha, \\sin\\alpha)$ — Winkel von positiver $x$-Achse gegen Uhrzeigersinn": Der Winkel $\\alpha$ wird vom positiven Teil der x-Achse gegen den Uhrzeigersinn gemessen.',
+        'Der Winkel $\\alpha$ wird vom positiven Teil der x-Achse gegen den Uhrzeigersinn gemessen.',
         true,
         `**Ansatz:** Mathematische Konvention zur Winkelmessung.
 
@@ -857,7 +857,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Punkt auf Kreis $P = (\\cos\\alpha, \\sin\\alpha)$ — Winkel von positiver $x$-Achse gegen Uhrzeigersinn": Ordne jedem Winkel die Koordinaten auf dem Einheitskreis zu.',
+        'Ordne jedem Winkel die Koordinaten auf dem Einheitskreis zu.',
         [
           { left: '$\\alpha = 0°$',      right: '$(1, 0)$' },
           { left: '$\\alpha = 45°$',     right: '$(\\tfrac{\\sqrt{2}}{2}, \\tfrac{\\sqrt{2}}{2})$' },
@@ -882,7 +882,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Punkt auf Kreis $P = (\\cos\\alpha, \\sin\\alpha)$ — Winkel von positiver $x$-Achse gegen Uhrzeigersinn": Bringe die Schritte zur Bestimmung des Punkts bei $\\alpha = 135°$ in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Bestimmung des Punkts bei $\\alpha = 135°$ in die richtige Reihenfolge.',
         [
           'Formel: $P = (\\cos\\alpha, \\sin\\alpha)$',
           '$\\cos(135°) = \\cos(180° - 45°) = -\\cos(45°) = -\\tfrac{\\sqrt{2}}{2}$',
@@ -908,7 +908,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [2] Quadrantenpunkte: (1,0), (0,1), (-1,0), (0,-1) ────────────────
     2: [
       mc(
-        'Sub-Goal "Quadrantenpunkte: $0° \\to (1,0)$, $90° \\to (0,1)$, $180° \\to (-1,0)$, $270° \\to (0,-1)$": Welche Koordinaten hat der Punkt bei $\\alpha = 270°$?',
+        'Welche Koordinaten hat der Punkt bei $\\alpha = 270°$?',
         [
           '$(0, -1)$',
           '$(-1, 0)$',
@@ -935,7 +935,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Quadrantenpunkte: $0° \\to (1,0)$, $90° \\to (0,1)$, $180° \\to (-1,0)$, $270° \\to (0,-1)$": Welche x-Koordinate hat der Punkt bei $\\alpha = 180°$?',
+        'Welche x-Koordinate hat der Punkt bei $\\alpha = 180°$?',
         -1, 0, '',
         `**Ansatz:** $x = \\cos(180°) = -1$.
 
@@ -951,7 +951,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Quadrantenpunkte: $0° \\to (1,0)$, $90° \\to (0,1)$, $180° \\to (-1,0)$, $270° \\to (0,-1)$": Bei $\\alpha = 360°$ liegt der Punkt am gleichen Ort wie bei $\\alpha = 0°$.',
+        'Bei $\\alpha = 360°$ liegt der Punkt am gleichen Ort wie bei $\\alpha = 0°$.',
         true,
         `**Ansatz:** $360°$ ist eine volle Drehung zurück zum Ausgangspunkt.
 
@@ -967,7 +967,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Quadrantenpunkte: $0° \\to (1,0)$, $90° \\to (0,1)$, $180° \\to (-1,0)$, $270° \\to (0,-1)$": Ordne jedem Quadranten-Hauptpunkt den Winkel zu.',
+        'Ordne jedem Quadranten-Hauptpunkt den Winkel zu.',
         [
           { left: '$(1, 0)$',    right: '$0°$ (oder $360°$)' },
           { left: '$(0, 1)$',    right: '$90°$' },
@@ -988,7 +988,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Quadrantenpunkte: $0° \\to (1,0)$, $90° \\to (0,1)$, $180° \\to (-1,0)$, $270° \\to (0,-1)$": Sortiere die vier Quadrantenpunkte in aufsteigender Winkelreihenfolge.',
+        'Sortiere die vier Quadrantenpunkte in aufsteigender Winkelreihenfolge.',
         [
           '$0°: (1, 0)$',
           '$90°: (0, 1)$',
@@ -1014,7 +1014,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [3] Durchmesser d=2 vs. Radius r=1 nicht verwechseln ──────────────
     3: [
       mc(
-        'Sub-Goal "Durchmesser $d = 2$ nicht mit Radius $r = 1$ verwechseln": Wie groß ist der Durchmesser des Einheitskreises?',
+        'Wie groß ist der Durchmesser des Einheitskreises?',
         [
           '$2$',
           '$1$',
@@ -1041,7 +1041,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Durchmesser $d = 2$ nicht mit Radius $r = 1$ verwechseln": Wie groß ist der Umfang des Einheitskreises?',
+        'Wie groß ist der Umfang des Einheitskreises?',
         6.2832, 0.01, '',
         `**Ansatz:** Kreisumfang $U = 2\\pi r$.
 
@@ -1057,7 +1057,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Durchmesser $d = 2$ nicht mit Radius $r = 1$ verwechseln": Der Durchmesser des Einheitskreises ist doppelt so groß wie der Radius.',
+        'Der Durchmesser des Einheitskreises ist doppelt so groß wie der Radius.',
         true,
         `**Ansatz:** Definitionsgemäß gilt für jeden Kreis $d = 2r$.
 
@@ -1073,7 +1073,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Durchmesser $d = 2$ nicht mit Radius $r = 1$ verwechseln": Ordne jeder Kreisgröße ihren Wert beim Einheitskreis zu.',
+        'Ordne jeder Kreisgröße ihren Wert beim Einheitskreis zu.',
         [
           { left: 'Radius $r$',         right: '$1$' },
           { left: 'Durchmesser $d$',    right: '$2$' },
@@ -1094,7 +1094,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Durchmesser $d = 2$ nicht mit Radius $r = 1$ verwechseln": Sortiere die vier Kreisgrößen des Einheitskreises nach aufsteigendem Zahlenwert.',
+        'Sortiere die vier Kreisgrößen des Einheitskreises nach aufsteigendem Zahlenwert.',
         [
           'Radius = $1$',
           'Durchmesser = $2$',
@@ -1127,7 +1127,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [0] cos = x-Koord (horizontal), sin = y-Koord (vertikal) ──────────
     0: [
       mc(
-        'Sub-Goal "$\\cos\\alpha$ = $x$-Koordinate (horizontal), $\\sin\\alpha$ = $y$-Koordinate (vertikal)": Ein Punkt auf dem Einheitskreis hat die Koordinaten $(0{,}8, 0{,}6)$. Was ist $\\sin\\alpha$?',
+        'Ein Punkt auf dem Einheitskreis hat die Koordinaten $(0{,}8, 0{,}6)$. Was ist $\\sin\\alpha$?',
         [
           '$0{,}6$',
           '$0{,}8$',
@@ -1154,7 +1154,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "$\\cos\\alpha$ = $x$-Koordinate (horizontal), $\\sin\\alpha$ = $y$-Koordinate (vertikal)": Ein Punkt auf dem Einheitskreis hat $\\cos\\alpha = -0{,}5$. Welche x-Koordinate hat der Punkt?',
+        'Ein Punkt auf dem Einheitskreis hat $\\cos\\alpha = -0{,}5$. Welche x-Koordinate hat der Punkt?',
         -0.5, 0, '',
         `**Ansatz:** $\\cos\\alpha$ ist per Definition die x-Koordinate des Punkts.
 
@@ -1170,7 +1170,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "$\\cos\\alpha$ = $x$-Koordinate (horizontal), $\\sin\\alpha$ = $y$-Koordinate (vertikal)": Am Einheitskreis gilt: x-Koordinate eines Punkts = $\\sin\\alpha$.',
+        'Am Einheitskreis gilt: x-Koordinate eines Punkts = $\\sin\\alpha$.',
         false,
         `**Ansatz:** Zuordnung prüfen.
 
@@ -1186,7 +1186,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "$\\cos\\alpha$ = $x$-Koordinate (horizontal), $\\sin\\alpha$ = $y$-Koordinate (vertikal)": Ordne jedem Punkt auf dem Einheitskreis die trigonometrischen Werte zu.',
+        'Ordne jedem Punkt auf dem Einheitskreis die trigonometrischen Werte zu.',
         [
           { left: 'Punkt $(1, 0)$',             right: '$\\cos\\alpha = 1$, $\\sin\\alpha = 0$' },
           { left: 'Punkt $(0, 1)$',             right: '$\\cos\\alpha = 0$, $\\sin\\alpha = 1$' },
@@ -1207,7 +1207,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "$\\cos\\alpha$ = $x$-Koordinate (horizontal), $\\sin\\alpha$ = $y$-Koordinate (vertikal)": Bringe die Schritte zur Bestimmung von $\\sin\\alpha$ und $\\cos\\alpha$ aus einem Punkt $(x, y)$ auf dem Einheitskreis in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Bestimmung von $\\sin\\alpha$ und $\\cos\\alpha$ aus einem Punkt $(x, y)$ auf dem Einheitskreis in die richtige Reihenfolge.',
         [
           'Punkt ablesen: $(x, y)$',
           'x-Koordinate = $\\cos\\alpha$',
@@ -1233,7 +1233,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [1] Definition gilt für ALLE reellen Winkel ───────────────────────
     1: [
       mc(
-        'Sub-Goal "Definition gilt für **alle** reellen Winkel, nicht nur $0°$–$90°$": Für welche Winkel $\\alpha$ ist $\\sin\\alpha$ definiert?',
+        'Für welche Winkel $\\alpha$ ist $\\sin\\alpha$ definiert?',
         [
           'Alle reellen Zahlen',
           'Nur $0°$ bis $90°$',
@@ -1260,7 +1260,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Definition gilt für **alle** reellen Winkel, nicht nur $0°$–$90°$": Berechne $\\sin(-30°)$.',
+        'Berechne $\\sin(-30°)$.',
         -0.5, 0.01, '',
         `**Ansatz:** $\\sin$ ist ungerade: $\\sin(-\\alpha) = -\\sin\\alpha$.
 
@@ -1276,7 +1276,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Definition gilt für **alle** reellen Winkel, nicht nur $0°$–$90°$": Es gilt $\\sin(500°) = \\sin(500° - 360°) = \\sin(140°)$.',
+        'Es gilt $\\sin(500°) = \\sin(500° - 360°) = \\sin(140°)$.',
         true,
         `**Ansatz:** $\\sin$ hat Periode $360°$.
 
@@ -1292,7 +1292,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Definition gilt für **alle** reellen Winkel, nicht nur $0°$–$90°$": Ordne jedem Winkel seinen Sinus-Wert zu.',
+        'Ordne jedem Winkel seinen Sinus-Wert zu.',
         [
           { left: '$\\sin(0°)$',       right: '$0$' },
           { left: '$\\sin(-90°)$',     right: '$-1$' },
@@ -1317,7 +1317,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Definition gilt für **alle** reellen Winkel, nicht nur $0°$–$90°$": Bringe die Schritte zur Berechnung von $\\cos(-480°)$ in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Berechnung von $\\cos(-480°)$ in die richtige Reihenfolge.',
         [
           'Periode nutzen: $\\cos(-480°) = \\cos(-480° + 2 \\cdot 360°) = \\cos(240°)$',
           'Quadrant erkennen: $240°$ im 3. Quadrant, $\\cos < 0$',
@@ -1343,7 +1343,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [2] Aus (x,y) den Winkel bestimmen ────────────────────────────────
     2: [
       mc(
-        'Sub-Goal "Aus Koordinaten $(x,y)$ auf Kreis den Winkel über Vorzeichen + Referenzwinkel ermitteln": Zu welchem Winkel gehört der Punkt $(-\\tfrac{1}{2}, \\tfrac{\\sqrt{3}}{2})$?',
+        'Zu welchem Winkel gehört der Punkt $(-\\tfrac{1}{2}, \\tfrac{\\sqrt{3}}{2})$?',
         [
           '$120°$',
           '$60°$',
@@ -1370,7 +1370,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Aus Koordinaten $(x,y)$ auf Kreis den Winkel über Vorzeichen + Referenzwinkel ermitteln": Welcher Winkel $\\alpha$ (in Grad, $0° \\le \\alpha < 360°$) gehört zum Punkt $(0, -1)$?',
+        'Welcher Winkel $\\alpha$ (in Grad, $0° \\le \\alpha < 360°$) gehört zum Punkt $(0, -1)$?',
         270, 0, '°',
         `**Ansatz:** Spezialpunkt auf negativer y-Achse.
 
@@ -1386,7 +1386,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Aus Koordinaten $(x,y)$ auf Kreis den Winkel über Vorzeichen + Referenzwinkel ermitteln": Wenn beide Koordinaten eines Punkts auf dem Einheitskreis negativ sind, liegt der Winkel im 3. Quadrant.',
+        'Wenn beide Koordinaten eines Punkts auf dem Einheitskreis negativ sind, liegt der Winkel im 3. Quadrant.',
         true,
         `**Ansatz:** Quadrantenregel.
 
@@ -1402,7 +1402,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Aus Koordinaten $(x,y)$ auf Kreis den Winkel über Vorzeichen + Referenzwinkel ermitteln": Ordne jedem Punkt den Quadranten zu.',
+        'Ordne jedem Punkt den Quadranten zu.',
         [
           { left: '$(0{,}7, 0{,}3)$',      right: '1. Quadrant' },
           { left: '$(-0{,}9, 0{,}1)$',     right: '2. Quadrant' },
@@ -1423,7 +1423,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Aus Koordinaten $(x,y)$ auf Kreis den Winkel über Vorzeichen + Referenzwinkel ermitteln": Bringe die Schritte zur Bestimmung des Winkels aus dem Punkt $(\\tfrac{\\sqrt{2}}{2}, -\\tfrac{\\sqrt{2}}{2})$ in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Bestimmung des Winkels aus dem Punkt $(\\tfrac{\\sqrt{2}}{2}, -\\tfrac{\\sqrt{2}}{2})$ in die richtige Reihenfolge.',
         [
           'Vorzeichen prüfen: $x > 0, y < 0$ → 4. Quadrant',
           'Beträge ablesen: $|x| = |y| = \\tfrac{\\sqrt{2}}{2}$',
@@ -1449,7 +1449,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [3] Eselsbrücke: c → x-Achse, s → y-Achse ─────────────────────────
     3: [
       mc(
-        'Sub-Goal "Eselsbrücke: **c**osinus → **x**-Achse, **s**inus → $y$-Achse (vertikal)": Welche Eselsbrücke hilft bei der Zuordnung von sin/cos zu x/y-Achse?',
+        'Welche Eselsbrücke hilft bei der Zuordnung von sin/cos zu x/y-Achse?',
         [
           '**c**os horizontal (x-Achse), **s**in vertikal (y-Achse)',
           '**c**os vertikal (y-Achse), **s**in horizontal (x-Achse)',
@@ -1476,7 +1476,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Eselsbrücke: **c**osinus → **x**-Achse, **s**inus → $y$-Achse (vertikal)": Bei $\\alpha = 90°$ ist die horizontale Komponente des Einheitskreispunkts (x-Koordinate)?',
+        'Bei $\\alpha = 90°$ ist die horizontale Komponente des Einheitskreispunkts (x-Koordinate)?',
         0, 0, '',
         `**Ansatz:** x-Koordinate = $\\cos\\alpha$.
 
@@ -1492,7 +1492,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Eselsbrücke: **c**osinus → **x**-Achse, **s**inus → $y$-Achse (vertikal)": Die Eselsbrücke "cos horizontal, sin vertikal" entspricht der Konvention $P = (\\cos\\alpha, \\sin\\alpha)$.',
+        'Die Eselsbrücke "cos horizontal, sin vertikal" entspricht der Konvention $P = (\\cos\\alpha, \\sin\\alpha)$.',
         true,
         `**Ansatz:** Konsistenz-Check.
 
@@ -1508,7 +1508,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Eselsbrücke: **c**osinus → **x**-Achse, **s**inus → $y$-Achse (vertikal)": Ordne jedem Konzept die richtige Trigonometrie-Funktion zu.',
+        'Ordne jedem Konzept die richtige Trigonometrie-Funktion zu.',
         [
           { left: 'horizontale Komponente einer Kraft',  right: '$F \\cos\\alpha$' },
           { left: 'vertikale Komponente einer Kraft',    right: '$F \\sin\\alpha$' },
@@ -1529,7 +1529,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Eselsbrücke: **c**osinus → **x**-Achse, **s**inus → $y$-Achse (vertikal)": Bringe die Gedankenschritte bei der Anwendung der Eselsbrücke in die richtige Reihenfolge.',
+        'Bringe die Gedankenschritte bei der Anwendung der Eselsbrücke in die richtige Reihenfolge.',
         [
           'Problem: gegeben Winkel $\\alpha$, gesucht horizontaler Anteil',
           'Eselsbrücke: horizontal → Cosinus',
@@ -1555,7 +1555,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [4] Werte liegen in [-1, +1] weil r = 1 ───────────────────────────
     4: [
       mc(
-        'Sub-Goal "Werte liegen stets im Intervall $[-1, +1]$, weil $r = 1$": Warum gilt $|\\sin\\alpha| \\le 1$ für alle Winkel $\\alpha$?',
+        'Warum gilt $|\\sin\\alpha| \\le 1$ für alle Winkel $\\alpha$?',
         [
           'Weil der Radius des Einheitskreises $r = 1$ ist, liegen alle Koordinaten in $[-1, 1]$',
           'Weil $\\sin\\alpha$ per Konvention auf $[-1, 1]$ beschränkt ist',
@@ -1582,7 +1582,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Werte liegen stets im Intervall $[-1, +1]$, weil $r = 1$": Wie groß ist der maximal erreichbare Wert von $\\cos\\alpha$?',
+        'Wie groß ist der maximal erreichbare Wert von $\\cos\\alpha$?',
         1, 0, '',
         `**Ansatz:** Maximum der x-Koordinate auf Einheitskreis = $+1$ (bei $\\alpha = 0°$).
 
@@ -1598,7 +1598,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Werte liegen stets im Intervall $[-1, +1]$, weil $r = 1$": Für alle $\\alpha$ gilt $-1 \\le \\cos\\alpha \\le 1$ und $-1 \\le \\sin\\alpha \\le 1$.',
+        'Für alle $\\alpha$ gilt $-1 \\le \\cos\\alpha \\le 1$ und $-1 \\le \\sin\\alpha \\le 1$.',
         true,
         `**Ansatz:** Wertebereich von $\\sin$ und $\\cos$.
 
@@ -1614,7 +1614,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Werte liegen stets im Intervall $[-1, +1]$, weil $r = 1$": Ordne jedem Extremwert die zugehörige Bedingung zu.',
+        'Ordne jedem Extremwert die zugehörige Bedingung zu.',
         [
           { left: '$\\sin\\alpha = 1$',     right: '$\\alpha = 90° + k \\cdot 360°$' },
           { left: '$\\sin\\alpha = -1$',    right: '$\\alpha = 270° + k \\cdot 360°$' },
@@ -1635,7 +1635,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Werte liegen stets im Intervall $[-1, +1]$, weil $r = 1$": Bringe die Argumentation zur Begrenzung $|\\sin\\alpha| \\le 1$ in die richtige Reihenfolge.',
+        'Bringe die Argumentation zur Begrenzung $|\\sin\\alpha| \\le 1$ in die richtige Reihenfolge.',
         [
           'Einheitskreis hat Radius $r = 1$',
           'Jeder Punkt auf dem Kreis hat Distanz $1$ zum Ursprung',
@@ -1668,7 +1668,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [0] Pythagoras + Doppelwinkel zur Termvereinfachung ──────────────
     0: [
       mc(
-        'Sub-Goal "Pythagoras $\\sin^2+\\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen": [PRÜFUNG] Vereinfache $\\cos^{2}(\\alpha) - \\sin^{2}(\\alpha)$.',
+        '[PRÜFUNG] Vereinfache $\\cos^{2}(\\alpha) - \\sin^{2}(\\alpha)$.',
         [
           '$\\cos(2\\alpha)$',
           '$\\sin(2\\alpha)$',
@@ -1695,7 +1695,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Pythagoras $\\sin^2+\\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen": [PRÜFUNG] Gegeben $\\sin\\alpha = 0{,}6$ und $\\alpha$ im 1. Quadranten. Berechne $\\sin(2\\alpha)$.',
+        '[PRÜFUNG] Gegeben $\\sin\\alpha = 0{,}6$ und $\\alpha$ im 1. Quadranten. Berechne $\\sin(2\\alpha)$.',
         0.96, 0.01, '',
         `**Ansatz:** Erst $\\cos\\alpha$ per Pythagoras, dann Doppelwinkel.
 
@@ -1711,7 +1711,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Pythagoras $\\sin^2+\\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen": [PRÜFUNG] Der Ausdruck $1 - 2\\sin^{2}(\\alpha)$ ist gleich $\\cos(2\\alpha)$.',
+        '[PRÜFUNG] Der Ausdruck $1 - 2\\sin^{2}(\\alpha)$ ist gleich $\\cos(2\\alpha)$.',
         true,
         `**Ansatz:** Alternativform der Kosinus-Doppelwinkelformel prüfen.
 
@@ -1727,7 +1727,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Pythagoras $\\sin^2+\\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen": [PRÜFUNG] Ordne jedem Ausdruck seine vereinfachte Form zu.',
+        '[PRÜFUNG] Ordne jedem Ausdruck seine vereinfachte Form zu.',
         [
           { left: '$\\sin^{2}\\alpha + \\cos^{2}\\alpha$',      right: '$1$' },
           { left: '$2\\sin\\alpha\\cos\\alpha$',                right: '$\\sin(2\\alpha)$' },
@@ -1748,7 +1748,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Pythagoras $\\sin^2+\\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen": [PRÜFUNG] Bringe die Schritte zur Vereinfachung von $\\sin^{2}\\alpha(1 + \\cot^{2}\\alpha)$ in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Schritte zur Vereinfachung von $\\sin^{2}\\alpha(1 + \\cot^{2}\\alpha)$ in die richtige Reihenfolge.',
         [
           '$\\cot\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha}$ einsetzen',
           'Klammer erweitern: $\\sin^{2}\\alpha \\cdot \\left(1 + \\dfrac{\\cos^{2}\\alpha}{\\sin^{2}\\alpha}\\right)$',
@@ -1774,7 +1774,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [1] Trig-Gleichung: Grundfunktion + Lösungsmenge ──────────────────
     1: [
       mc(
-        'Sub-Goal "Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben": [PRÜFUNG] Wie viele Lösungen hat $\\sin x = \\tfrac{1}{2}$ im Intervall $[0°, 360°)$?',
+        '[PRÜFUNG] Wie viele Lösungen hat $\\sin x = \\tfrac{1}{2}$ im Intervall $[0°, 360°)$?',
         [
           '$2$ ($30°$ und $150°$)',
           '$1$ ($30°$)',
@@ -1801,7 +1801,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben": [PRÜFUNG] Löse $\\cos x = -\\tfrac{1}{2}$ in $[0°, 360°)$. Gib die kleinere Lösung in Grad an.',
+        '[PRÜFUNG] Löse $\\cos x = -\\tfrac{1}{2}$ in $[0°, 360°)$. Gib die kleinere Lösung in Grad an.',
         120, 0, '°',
         `**Ansatz:** Für $\\cos x = a$ mit $-1 < a < 1$ gibt es in $[0°, 360°)$ zwei Lösungen: $\\arccos a$ und $360° - \\arccos a$.
 
@@ -1817,7 +1817,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben": [PRÜFUNG] Die Gleichung $\\sin x = 1{,}5$ hat in $\\mathbb{R}$ unendlich viele Lösungen.',
+        '[PRÜFUNG] Die Gleichung $\\sin x = 1{,}5$ hat in $\\mathbb{R}$ unendlich viele Lösungen.',
         false,
         `**Ansatz:** Wertebereich von Sinus prüfen.
 
@@ -1833,7 +1833,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben": [PRÜFUNG] Ordne jeder Gleichung die Anzahl Lösungen in $[0°, 360°)$ zu.',
+        '[PRÜFUNG] Ordne jeder Gleichung die Anzahl Lösungen in $[0°, 360°)$ zu.',
         [
           { left: '$\\sin x = 1$',         right: '$1$ Lösung ($90°$)' },
           { left: '$\\sin x = 0$',         right: '$2$ Lösungen ($0°, 180°$)' },
@@ -1854,7 +1854,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben": [PRÜFUNG] Bringe die Schritte zur Lösung von $\\sin x = -\\tfrac{\\sqrt{2}}{2}$ in $[0°, 360°)$ in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Schritte zur Lösung von $\\sin x = -\\tfrac{\\sqrt{2}}{2}$ in $[0°, 360°)$ in die richtige Reihenfolge.',
         [
           'Hauptwert: $\\arcsin(-\\tfrac{\\sqrt{2}}{2}) = -45°$',
           'In $[0°, 360°)$ umrechnen: $-45° + 360° = 315°$',
@@ -1880,7 +1880,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [2] Substitution u = sin x / cos x bei quadratischen Gleichungen ──
     2: [
       mc(
-        'Sub-Goal "Substitution $u = \\sin x$ oder $u = \\cos x$ bei quadratischen Gleichungen": [PRÜFUNG] Welche Substitution führt $2\\sin^{2} x - \\sin x - 1 = 0$ direkt auf eine quadratische Gleichung in $u$?',
+        '[PRÜFUNG] Welche Substitution führt $2\\sin^{2} x - \\sin x - 1 = 0$ direkt auf eine quadratische Gleichung in $u$?',
         [
           '$u = \\sin x \\Rightarrow 2u^{2} - u - 1 = 0$',
           '$u = \\sin(2x) \\Rightarrow u^{2} - u - 1 = 0$',
@@ -1907,7 +1907,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Substitution $u = \\sin x$ oder $u = \\cos x$ bei quadratischen Gleichungen": [PRÜFUNG] Löse $\\cos^{2} x - \\cos x = 0$ in $[0°, 360°)$. Wie viele Lösungen gibt es?',
+        '[PRÜFUNG] Löse $\\cos^{2} x - \\cos x = 0$ in $[0°, 360°)$. Wie viele Lösungen gibt es?',
         3, 0, '',
         `**Ansatz:** Substitution $u = \\cos x$ führt auf $u^{2} - u = u(u-1) = 0$.
 
@@ -1923,7 +1923,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Substitution $u = \\sin x$ oder $u = \\cos x$ bei quadratischen Gleichungen": [PRÜFUNG] Die Gleichung $4\\sin^{2} x - 3 = 0$ hat in $[0°, 360°)$ vier Lösungen.',
+        '[PRÜFUNG] Die Gleichung $4\\sin^{2} x - 3 = 0$ hat in $[0°, 360°)$ vier Lösungen.',
         true,
         `**Ansatz:** Substitution $u = \\sin x$: $4u^{2} = 3 \\Rightarrow u = \\pm\\tfrac{\\sqrt{3}}{2}$.
 
@@ -1939,7 +1939,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Substitution $u = \\sin x$ oder $u = \\cos x$ bei quadratischen Gleichungen": [PRÜFUNG] Ordne jeder quadratischen Gleichung in $u$ die Anzahl Lösungen in $[0°, 360°)$ zu (nach Substitution und Rücksubstitution).',
+        '[PRÜFUNG] Ordne jeder quadratischen Gleichung in $u$ die Anzahl Lösungen in $[0°, 360°)$ zu (nach Substitution und Rücksubstitution).',
         [
           { left: '$u^{2} = 1$ (mit $u = \\sin x$)',          right: '$2$ Lösungen ($90°, 270°$)' },
           { left: '$u^{2} = \\tfrac{1}{4}$ (mit $u = \\sin x$)', right: '$4$ Lösungen' },
@@ -1960,7 +1960,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Substitution $u = \\sin x$ oder $u = \\cos x$ bei quadratischen Gleichungen": [PRÜFUNG] Bringe die Schritte zur Lösung von $2\\cos^{2} x + \\cos x - 1 = 0$ in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Schritte zur Lösung von $2\\cos^{2} x + \\cos x - 1 = 0$ in die richtige Reihenfolge.',
         [
           'Substitution: $u = \\cos x \\Rightarrow 2u^{2} + u - 1 = 0$',
           'Quadratische Lösungsformel: $u = \\tfrac{-1 \\pm 3}{4}$, also $u = \\tfrac{1}{2}$ oder $u = -1$',
@@ -1986,7 +1986,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [3] Faktorisieren statt durch cos x teilen ────────────────────────
     3: [
       mc(
-        'Sub-Goal "Faktorisieren statt durch $\\cos x$ teilen (Nullstellen nicht verlieren)": [PRÜFUNG] Welcher Weg löst $\\sin x \\cos x = 0$ in $[0°, 360°)$ vollständig?',
+        '[PRÜFUNG] Welcher Weg löst $\\sin x \\cos x = 0$ in $[0°, 360°)$ vollständig?',
         [
           'Faktorisieren: $\\sin x = 0$ oder $\\cos x = 0 \\to \\{0°, 90°, 180°, 270°\\}$',
           'Durch $\\cos x$ teilen: $\\sin x = 0 \\to \\{0°, 180°\\}$',
@@ -2013,7 +2013,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Faktorisieren statt durch $\\cos x$ teilen (Nullstellen nicht verlieren)": [PRÜFUNG] Löse $\\sin x \\cdot (2\\sin x - 1) = 0$ in $[0°, 360°)$ und zähle alle Lösungen.',
+        '[PRÜFUNG] Löse $\\sin x \\cdot (2\\sin x - 1) = 0$ in $[0°, 360°)$ und zähle alle Lösungen.',
         4, 0, '',
         `**Ansatz:** Produkt-Null-Regel anwenden.
 
@@ -2029,7 +2029,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Faktorisieren statt durch $\\cos x$ teilen (Nullstellen nicht verlieren)": [PRÜFUNG] Bei der Gleichung $\\tan x \\cdot \\cos x = 1$ darf man beide Seiten durch $\\cos x$ teilen, ohne Lösungen zu verlieren, weil man nachher die Definitionsmenge von $\\tan x$ berücksichtigen muss.',
+        '[PRÜFUNG] Bei der Gleichung $\\tan x \\cdot \\cos x = 1$ darf man beide Seiten durch $\\cos x$ teilen, ohne Lösungen zu verlieren, weil man nachher die Definitionsmenge von $\\tan x$ berücksichtigen muss.',
         false,
         `**Ansatz:** $\\tan x \\cdot \\cos x = \\sin x$ (Vereinfachung). Die Gleichung wird $\\sin x = 1$.
 
@@ -2045,7 +2045,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Faktorisieren statt durch $\\cos x$ teilen (Nullstellen nicht verlieren)": [PRÜFUNG] Ordne jeder Gleichung die korrekte Strategie zu.',
+        '[PRÜFUNG] Ordne jeder Gleichung die korrekte Strategie zu.',
         [
           { left: '$\\sin x \\cos x = 0$',                       right: 'faktorisieren (jeden Faktor $= 0$ setzen)' },
           { left: '$\\sin^{2} x = \\sin x$',                     right: 'auf $= 0$ bringen, dann faktorisieren' },
@@ -2066,7 +2066,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Faktorisieren statt durch $\\cos x$ teilen (Nullstellen nicht verlieren)": [PRÜFUNG] Bringe die Schritte zur vollständigen Lösung von $\\sin x = \\sin x \\cos x$ in $[0°, 360°)$ in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Schritte zur vollständigen Lösung von $\\sin x = \\sin x \\cos x$ in $[0°, 360°)$ in die richtige Reihenfolge.',
         [
           'Alles auf eine Seite: $\\sin x - \\sin x \\cos x = 0$',
           'Faktorisieren: $\\sin x(1 - \\cos x) = 0$',
@@ -2092,7 +2092,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [4] Identitätsnachweis: nur eine Seite umformen ──────────────────
     4: [
       mc(
-        'Sub-Goal "Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)": [PRÜFUNG] Welche Vorgehensweise ist für einen korrekten Identitätsnachweis zulässig?',
+        '[PRÜFUNG] Welche Vorgehensweise ist für einen korrekten Identitätsnachweis zulässig?',
         [
           'Nur eine Seite umformen, bis die andere Seite Zeichen für Zeichen entsteht',
           'Beide Seiten mit demselben Ausdruck multiplizieren und dann vereinfachen',
@@ -2119,7 +2119,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)": [PRÜFUNG] Zeige $\\tfrac{\\sin x}{1 + \\cos x} = \\tfrac{1 - \\cos x}{\\sin x}$ durch Termumformung. Mit wie vielen Rechenschritten (Erweitern + Pythagoras + Kürzen) führt der Standardweg zum Ziel?',
+        '[PRÜFUNG] Zeige $\\tfrac{\\sin x}{1 + \\cos x} = \\tfrac{1 - \\cos x}{\\sin x}$ durch Termumformung. Mit wie vielen Rechenschritten (Erweitern + Pythagoras + Kürzen) führt der Standardweg zum Ziel?',
         3, 0, '',
         `**Ansatz:** Links mit $(1 - \\cos x)$ erweitern, dann Pythagoras, dann kürzen.
 
@@ -2135,7 +2135,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)": [PRÜFUNG] Bei einem Identitätsnachweis darf man nur auf einer Seite der Gleichung Umformungen vornehmen, weil die Gleichheit erst bewiesen werden soll.',
+        '[PRÜFUNG] Bei einem Identitätsnachweis darf man nur auf einer Seite der Gleichung Umformungen vornehmen, weil die Gleichheit erst bewiesen werden soll.',
         true,
         `**Ansatz:** Logik der Beweisführung.
 
@@ -2151,7 +2151,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)": [PRÜFUNG] Ordne jeder Identität den zentralen "Trick" beim Nachweis zu.',
+        '[PRÜFUNG] Ordne jeder Identität den zentralen "Trick" beim Nachweis zu.',
         [
           { left: '$\\tfrac{1 - \\cos^{2}x}{\\sin x} = \\sin x$',              right: 'Pythagoras im Zähler' },
           { left: '$\\tan x + \\cot x = \\tfrac{1}{\\sin x\\cos x}$',           right: 'gemeinsamer Nenner $\\sin x\\cos x$' },
@@ -2172,7 +2172,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)": [PRÜFUNG] Bringe die Schritte zum Nachweis $\\tan x + \\cot x = \\tfrac{1}{\\sin x\\cos x}$ in die richtige Reihenfolge (nur LS umformen).',
+        '[PRÜFUNG] Bringe die Schritte zum Nachweis $\\tan x + \\cot x = \\tfrac{1}{\\sin x\\cos x}$ in die richtige Reihenfolge (nur LS umformen).',
         [
           '$\\tan x = \\tfrac{\\sin x}{\\cos x}$ und $\\cot x = \\tfrac{\\cos x}{\\sin x}$ einsetzen',
           'Gemeinsamen Nenner $\\sin x\\cos x$ bilden: $\\tfrac{\\sin^{2} x + \\cos^{2}x}{\\sin x\\cos x}$',
@@ -2205,7 +2205,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [0] Kräftezerlegung: Skizze, Winkelbezug, sin/cos zuordnen ────────
     0: [
       mc(
-        'Sub-Goal "Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\\sin$/$\\cos$ richtig zuordnen": [PRÜFUNG] Eine Kraft $F$ wirkt unter dem Winkel $\\alpha$ **zur Horizontalen**. Wie lauten die Komponenten?',
+        '[PRÜFUNG] Eine Kraft $F$ wirkt unter dem Winkel $\\alpha$ **zur Horizontalen**. Wie lauten die Komponenten?',
         [
           '$F_{x} = F\\cos\\alpha$, $F_{y} = F\\sin\\alpha$',
           '$F_{x} = F\\sin\\alpha$, $F_{y} = F\\cos\\alpha$',
@@ -2232,7 +2232,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\\sin$/$\\cos$ richtig zuordnen": [PRÜFUNG] Eine Seilkraft $F = 200\\,\\text{N}$ wirkt unter $60°$ zur Horizontalen. Berechne die vertikale Komponente in Newton.',
+        '[PRÜFUNG] Eine Seilkraft $F = 200\\,\\text{N}$ wirkt unter $60°$ zur Horizontalen. Berechne die vertikale Komponente in Newton.',
         173.2, 0.5, 'N',
         `**Ansatz:** Vertikale Komponente ist Gegenkathete zum Winkel zur Horizontalen $\\to \\sin$.
 
@@ -2248,7 +2248,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\\sin$/$\\cos$ richtig zuordnen": [PRÜFUNG] Wird der Winkel **zur Vertikalen** (statt Horizontalen) gemessen, gilt $F_{x} = F\\sin\\alpha$, $F_{y} = F\\cos\\alpha$.',
+        '[PRÜFUNG] Wird der Winkel **zur Vertikalen** (statt Horizontalen) gemessen, gilt $F_{x} = F\\sin\\alpha$, $F_{y} = F\\cos\\alpha$.',
         true,
         `**Ansatz:** Ankathete und Gegenkathete hängen vom Bezugswinkel ab.
 
@@ -2264,7 +2264,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\\sin$/$\\cos$ richtig zuordnen": [PRÜFUNG] Ordne jeder Kraft-Situation die korrekte Komponentenformel zu.',
+        '[PRÜFUNG] Ordne jeder Kraft-Situation die korrekte Komponentenformel zu.',
         [
           { left: '$\\alpha$ zur Horizontalen, $F_{x}$ gesucht',   right: '$F\\cos\\alpha$' },
           { left: '$\\alpha$ zur Horizontalen, $F_{y}$ gesucht',   right: '$F\\sin\\alpha$' },
@@ -2285,7 +2285,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\\sin$/$\\cos$ richtig zuordnen": [PRÜFUNG] Bringe die Schritte zur Kräftezerlegung von $F = 100\\,\\text{N}$ bei $30°$ zur Horizontalen in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Schritte zur Kräftezerlegung von $F = 100\\,\\text{N}$ bei $30°$ zur Horizontalen in die richtige Reihenfolge.',
         [
           'Skizze: Kraftvektor unter $30°$ über der Horizontalen',
           'Bezugswinkel identifizieren: zur Horizontalen → $F_{x}$ Ankathete, $F_{y}$ Gegenkathete',
@@ -2311,7 +2311,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [1] Cosinussatz bei SWS — Standard-Maschinenbauaufgabe ────────────
     1: [
       mc(
-        'Sub-Goal "Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe": [PRÜFUNG] Welche Gleichung ist der Cosinussatz für die Seite $a$ gegenüber dem Winkel $\\alpha$?',
+        '[PRÜFUNG] Welche Gleichung ist der Cosinussatz für die Seite $a$ gegenüber dem Winkel $\\alpha$?',
         [
           '$a^{2} = b^{2} + c^{2} - 2bc\\cos\\alpha$',
           '$a^{2} = b^{2} + c^{2} + 2bc\\cos\\alpha$',
@@ -2338,7 +2338,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe": [PRÜFUNG] Berechne die Seite $a$ in einem Dreieck mit $b = 4$, $c = 6$, $\\alpha = 60°$. (Auf 2 Nachkommastellen genau.)',
+        '[PRÜFUNG] Berechne die Seite $a$ in einem Dreieck mit $b = 4$, $c = 6$, $\\alpha = 60°$. (Auf 2 Nachkommastellen genau.)',
         5.29, 0.02, '',
         `**Ansatz:** Cosinussatz mit $\\cos(60°) = 0{,}5$.
 
@@ -2354,7 +2354,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe": [PRÜFUNG] Der Cosinussatz ist eine Verallgemeinerung des Satzes von Pythagoras: bei $\\alpha = 90°$ reduziert er sich auf $a^{2} = b^{2} + c^{2}$.',
+        '[PRÜFUNG] Der Cosinussatz ist eine Verallgemeinerung des Satzes von Pythagoras: bei $\\alpha = 90°$ reduziert er sich auf $a^{2} = b^{2} + c^{2}$.',
         true,
         `**Ansatz:** Einsetzen von $\\alpha = 90°$ in den Cosinussatz.
 
@@ -2370,7 +2370,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe": [PRÜFUNG] Ordne jedem Dreieck die dritte Seite $a$ zu (SWS-Konfiguration).',
+        '[PRÜFUNG] Ordne jedem Dreieck die dritte Seite $a$ zu (SWS-Konfiguration).',
         [
           { left: '$b = 3, c = 4, \\alpha = 90°$',              right: '$a = 5$' },
           { left: '$b = 5, c = 5, \\alpha = 60°$',              right: '$a = 5$' },
@@ -2391,7 +2391,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe": [PRÜFUNG] Bringe die Schritte zur Berechnung von $a$ bei $b = 8$, $c = 6$, $\\alpha = 60°$ in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Schritte zur Berechnung von $a$ bei $b = 8$, $c = 6$, $\\alpha = 60°$ in die richtige Reihenfolge.',
         [
           'Formel aufschreiben: $a^{2} = b^{2} + c^{2} - 2bc\\cos\\alpha$',
           'Werte einsetzen: $a^{2} = 64 + 36 - 2\\cdot 8\\cdot 6 \\cdot 0{,}5$',
@@ -2417,7 +2417,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [2] Schwingungsgrößen A, ω, T, f, φ ablesen ──────────────────────
     2: [
       mc(
-        'Sub-Goal "Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus gegebenem $x(t)$ ablesen und umrechnen": [PRÜFUNG] Welche Amplitude und Kreisfrequenz hat $x(t) = 5\\cos(3t + \\pi/6)$?',
+        '[PRÜFUNG] Welche Amplitude und Kreisfrequenz hat $x(t) = 5\\cos(3t + \\pi/6)$?',
         [
           '$A = 5$, $\\omega = 3$',
           '$A = 3$, $\\omega = 5$',
@@ -2444,7 +2444,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus gegebenem $x(t)$ ablesen und umrechnen": [PRÜFUNG] Gegeben $x(t) = 2\\sin(4\\pi t)$. Berechne die Periode $T$ in Sekunden.',
+        '[PRÜFUNG] Gegeben $x(t) = 2\\sin(4\\pi t)$. Berechne die Periode $T$ in Sekunden.',
         0.5, 0.01, 's',
         `**Ansatz:** $T = 2\\pi/\\omega$.
 
@@ -2460,7 +2460,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus gegebenem $x(t)$ ablesen und umrechnen": [PRÜFUNG] Für die Netzfrequenz $f = 50\\,\\text{Hz}$ gilt Kreisfrequenz $\\omega = 100\\pi\\,\\text{rad/s}$.',
+        '[PRÜFUNG] Für die Netzfrequenz $f = 50\\,\\text{Hz}$ gilt Kreisfrequenz $\\omega = 100\\pi\\,\\text{rad/s}$.',
         true,
         `**Ansatz:** $\\omega = 2\\pi f$.
 
@@ -2476,7 +2476,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus gegebenem $x(t)$ ablesen und umrechnen": [PRÜFUNG] Ordne jeder Schwingung ihre Kreisfrequenz $\\omega$ zu.',
+        '[PRÜFUNG] Ordne jeder Schwingung ihre Kreisfrequenz $\\omega$ zu.',
         [
           { left: '$x(t) = \\sin(t)$',          right: '$\\omega = 1\\,\\text{rad/s}$' },
           { left: '$x(t) = \\cos(2\\pi t)$',    right: '$\\omega = 2\\pi\\,\\text{rad/s}$' },
@@ -2497,7 +2497,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus gegebenem $x(t)$ ablesen und umrechnen": [PRÜFUNG] Bringe die Schritte zur Bestimmung aller Schwingungsgrößen für $x(t) = 4\\sin(10t + \\pi/3)$ in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Schritte zur Bestimmung aller Schwingungsgrößen für $x(t) = 4\\sin(10t + \\pi/3)$ in die richtige Reihenfolge.',
         [
           'Standardform $A\\sin(\\omega t + \\varphi)$ identifizieren',
           'Ablesen: $A = 4$, $\\omega = 10$, $\\varphi = \\pi/3$',
@@ -2523,7 +2523,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [3] Einheitenkonsistenz: ωt und φ in Radiant ──────────────────────
     3: [
       mc(
-        'Sub-Goal "Einheitenkonsistenz: $\\omega t$ in Radiant, Phasenwinkel $\\varphi$ ebenfalls Radiant": [PRÜFUNG] Warum muss das Argument $\\omega t + \\varphi$ dimensional in Radiant vorliegen?',
+        '[PRÜFUNG] Warum muss das Argument $\\omega t + \\varphi$ dimensional in Radiant vorliegen?',
         [
           'Weil $\\sin$ und $\\cos$ als Funktionen nur Radiant-Argumente standardmäßig verarbeiten',
           'Weil $\\omega$ dimensionslos ist',
@@ -2550,7 +2550,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Einheitenkonsistenz: $\\omega t$ in Radiant, Phasenwinkel $\\varphi$ ebenfalls Radiant": [PRÜFUNG] Rechne $\\varphi = 60°$ in Radiant um (als Bruchteil $\\pi$, d.h. Antwort ist Faktor vor $\\pi$).',
+        '[PRÜFUNG] Rechne $\\varphi = 60°$ in Radiant um (als Bruchteil $\\pi$, d.h. Antwort ist Faktor vor $\\pi$).',
         0.3333, 0.001, '',
         `**Ansatz:** $1° = \\pi/180\\,\\text{rad}$.
 
@@ -2566,7 +2566,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Einheitenkonsistenz: $\\omega t$ in Radiant, Phasenwinkel $\\varphi$ ebenfalls Radiant": [PRÜFUNG] In $x(t) = A\\sin(\\omega t + \\varphi)$ dürfen $\\omega t$ und $\\varphi$ auch in unterschiedlichen Einheiten sein, solange die Summe korrekt ist.',
+        '[PRÜFUNG] In $x(t) = A\\sin(\\omega t + \\varphi)$ dürfen $\\omega t$ und $\\varphi$ auch in unterschiedlichen Einheiten sein, solange die Summe korrekt ist.',
         false,
         `**Ansatz:** Dimensionskonsistenz in Summanden.
 
@@ -2582,7 +2582,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Einheitenkonsistenz: $\\omega t$ in Radiant, Phasenwinkel $\\varphi$ ebenfalls Radiant": [PRÜFUNG] Ordne jedem Gradwert den entsprechenden Radiantwert zu.',
+        '[PRÜFUNG] Ordne jedem Gradwert den entsprechenden Radiantwert zu.',
         [
           { left: '$30°$',    right: '$\\pi/6\\,\\text{rad}$' },
           { left: '$45°$',    right: '$\\pi/4\\,\\text{rad}$' },
@@ -2609,7 +2609,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Einheitenkonsistenz: $\\omega t$ in Radiant, Phasenwinkel $\\varphi$ ebenfalls Radiant": [PRÜFUNG] Bringe die Schritte für eine Schwingung mit $\\omega = 100\\,\\text{rad/s}$, $\\varphi = 90°$, $t = 0{,}01\\,\\text{s}$ in die richtige Reihenfolge (Argument in rad berechnen).',
+        '[PRÜFUNG] Bringe die Schritte für eine Schwingung mit $\\omega = 100\\,\\text{rad/s}$, $\\varphi = 90°$, $t = 0{,}01\\,\\text{s}$ in die richtige Reihenfolge (Argument in rad berechnen).',
         [
           'Phase $\\varphi$ in Radiant: $90° = \\pi/2\\,\\text{rad} \\approx 1{,}571\\,\\text{rad}$',
           '$\\omega t$ berechnen: $100 \\cdot 0{,}01 = 1\\,\\text{rad}$',
@@ -2635,7 +2635,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [4] Plausibilitätscheck: Komponenten und Winkelbereiche ───────────
     4: [
       mc(
-        'Sub-Goal "Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten": [PRÜFUNG] Ein Student berechnet $F_{x} = 700\\,\\text{N}$ und $F_{y} = 400\\,\\text{N}$ für eine Kraft $F = 500\\,\\text{N}$. Was ist falsch?',
+        '[PRÜFUNG] Ein Student berechnet $F_{x} = 700\\,\\text{N}$ und $F_{y} = 400\\,\\text{N}$ für eine Kraft $F = 500\\,\\text{N}$. Was ist falsch?',
         [
           'Komponenten dürfen niemals größer als der Betrag der Gesamtkraft sein',
           'Die Komponenten sind in Ordnung, nur die Reihenfolge ist falsch',
@@ -2662,7 +2662,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten": [PRÜFUNG] Eine Kraft $F = 1000\\,\\text{N}$ zeigt in Richtung $\\alpha = 150°$ gegen die Horizontale. In welchem Quadranten liegt der Kraftvektor (1, 2, 3 oder 4)?',
+        '[PRÜFUNG] Eine Kraft $F = 1000\\,\\text{N}$ zeigt in Richtung $\\alpha = 150°$ gegen die Horizontale. In welchem Quadranten liegt der Kraftvektor (1, 2, 3 oder 4)?',
         2, 0, '',
         `**Ansatz:** Quadrantenbestimmung über den Winkel gegen die Horizontale.
 
@@ -2678,7 +2678,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten": [PRÜFUNG] Die Gleichung $F_{x}^{2} + F_{y}^{2} = F^{2}$ (Pythagoras) kann immer zum Plausibilitätscheck nach einer Kräftezerlegung genutzt werden.',
+        '[PRÜFUNG] Die Gleichung $F_{x}^{2} + F_{y}^{2} = F^{2}$ (Pythagoras) kann immer zum Plausibilitätscheck nach einer Kräftezerlegung genutzt werden.',
         true,
         `**Ansatz:** Kraft als Vektor mit Betrag $F$. Komponenten sind Projektionen auf x- und y-Achse.
 
@@ -2694,7 +2694,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten": [PRÜFUNG] Ordne jedem Winkel (zur positiven x-Achse) den Quadranten und die Vorzeichen von $F_x, F_y$ zu.',
+        '[PRÜFUNG] Ordne jedem Winkel (zur positiven x-Achse) den Quadranten und die Vorzeichen von $F_x, F_y$ zu.',
         [
           { left: '$\\alpha = 30°$',     right: '1. Q: $F_x > 0, F_y > 0$' },
           { left: '$\\alpha = 120°$',    right: '2. Q: $F_x < 0, F_y > 0$' },
@@ -2715,7 +2715,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten": [PRÜFUNG] Bringe die Plausibilitätsschritte nach einer Kräftezerlegung in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Plausibilitätsschritte nach einer Kräftezerlegung in die richtige Reihenfolge.',
         [
           'Komponenten-Beträge prüfen: $|F_x|, |F_y| \\le |F|$?',
           'Pythagoras-Check: $\\sqrt{F_x^{2} + F_y^{2}} \\stackrel{?}{=} |F|$',
@@ -2748,7 +2748,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [0] sin x = a: zwei Lösungen arcsin a und π - arcsin a ────────────
     0: [
       mc(
-        'Sub-Goal "$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$": [PRÜFUNG] Wie lauten beide Lösungen von $\\sin x = \\tfrac{\\sqrt{3}}{2}$ in $[0, 2\\pi)$?',
+        '[PRÜFUNG] Wie lauten beide Lösungen von $\\sin x = \\tfrac{\\sqrt{3}}{2}$ in $[0, 2\\pi)$?',
         [
           '$x_{1} = \\tfrac{\\pi}{3}$, $x_{2} = \\tfrac{2\\pi}{3}$',
           '$x_{1} = \\tfrac{\\pi}{6}$, $x_{2} = \\tfrac{5\\pi}{6}$',
@@ -2775,7 +2775,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$": [PRÜFUNG] Gegeben $\\sin x = 0{,}8$ in $[0°, 360°)$. Wie groß ist die zweite Lösung (in Grad, auf 1 Dezimale)?',
+        '[PRÜFUNG] Gegeben $\\sin x = 0{,}8$ in $[0°, 360°)$. Wie groß ist die zweite Lösung (in Grad, auf 1 Dezimale)?',
         126.9, 0.2, '°',
         `**Ansatz:** Hauptwert per Taschenrechner, dann Supplement.
 
@@ -2791,7 +2791,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$": [PRÜFUNG] Die Gleichung $\\sin x = -0{,}4$ hat in $[0°, 360°)$ genau zwei Lösungen, beide im 3. und 4. Quadrant.',
+        '[PRÜFUNG] Die Gleichung $\\sin x = -0{,}4$ hat in $[0°, 360°)$ genau zwei Lösungen, beide im 3. und 4. Quadrant.',
         true,
         `**Ansatz:** Sinus ist negativ im 3. und 4. Quadrant.
 
@@ -2807,7 +2807,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$": [PRÜFUNG] Ordne jeder Gleichung die beiden Lösungen in $[0, 2\\pi)$ zu.',
+        '[PRÜFUNG] Ordne jeder Gleichung die beiden Lösungen in $[0, 2\\pi)$ zu.',
         [
           { left: '$\\sin x = 0$',             right: '$x_{1} = 0$, $x_{2} = \\pi$' },
           { left: '$\\sin x = 1$',             right: '$x = \\pi/2$ (nur eine)' },
@@ -2828,7 +2828,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$": [PRÜFUNG] Bringe die Schritte zur Lösung $\\sin x = \\tfrac{\\sqrt{2}}{2}$ in $[0, 2\\pi)$ in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Schritte zur Lösung $\\sin x = \\tfrac{\\sqrt{2}}{2}$ in $[0, 2\\pi)$ in die richtige Reihenfolge.',
         [
           'Hauptwert: $x_{1} = \\arcsin(\\tfrac{\\sqrt{2}}{2}) = \\tfrac{\\pi}{4}$',
           'Zweite Lösung per Supplement: $x_{2} = \\pi - \\tfrac{\\pi}{4} = \\tfrac{3\\pi}{4}$',
@@ -2854,7 +2854,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [1] cos x = a: zwei Lösungen arccos a und 2π - arccos a ────────────
     1: [
       mc(
-        'Sub-Goal "$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$": [PRÜFUNG] Wie lauten beide Lösungen von $\\cos x = \\tfrac{1}{2}$ in $[0, 2\\pi)$?',
+        '[PRÜFUNG] Wie lauten beide Lösungen von $\\cos x = \\tfrac{1}{2}$ in $[0, 2\\pi)$?',
         [
           '$x_{1} = \\tfrac{\\pi}{3}$, $x_{2} = \\tfrac{5\\pi}{3}$',
           '$x_{1} = \\tfrac{\\pi}{6}$, $x_{2} = \\tfrac{5\\pi}{6}$',
@@ -2881,7 +2881,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$": [PRÜFUNG] Löse $\\cos x = -0{,}5$ in $[0°, 360°)$. Gib die größere Lösung in Grad an.',
+        '[PRÜFUNG] Löse $\\cos x = -0{,}5$ in $[0°, 360°)$. Gib die größere Lösung in Grad an.',
         240, 0, '°',
         `**Ansatz:** Hauptwert $\\arccos(-0{,}5) = 120°$. Zweite Lösung: $360° - 120° = 240°$.
 
@@ -2897,7 +2897,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$": [PRÜFUNG] Die beiden Lösungen von $\\cos x = a$ (mit $|a| < 1$) in $[0, 2\\pi)$ sind symmetrisch zur Geraden $x = \\pi$.',
+        '[PRÜFUNG] Die beiden Lösungen von $\\cos x = a$ (mit $|a| < 1$) in $[0, 2\\pi)$ sind symmetrisch zur Geraden $x = \\pi$.',
         true,
         `**Ansatz:** $\\arccos a + (2\\pi - \\arccos a) = 2\\pi$, Mittelwert $\\pi$.
 
@@ -2913,7 +2913,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$": [PRÜFUNG] Ordne jeder Gleichung die beiden Lösungen zu.',
+        '[PRÜFUNG] Ordne jeder Gleichung die beiden Lösungen zu.',
         [
           { left: '$\\cos x = 1$',              right: '$x = 0$ (nur eine)' },
           { left: '$\\cos x = 0$',              right: '$x_{1} = \\pi/2, x_{2} = 3\\pi/2$' },
@@ -2934,7 +2934,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$": [PRÜFUNG] Bringe die Schritte zur Lösung von $\\cos x = -\\tfrac{\\sqrt{3}}{2}$ in $[0, 2\\pi)$ in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Schritte zur Lösung von $\\cos x = -\\tfrac{\\sqrt{3}}{2}$ in $[0, 2\\pi)$ in die richtige Reihenfolge.',
         [
           'Hauptwert: $\\arccos(-\\tfrac{\\sqrt{3}}{2}) = \\tfrac{5\\pi}{6}$',
           'Zweite Lösung: $2\\pi - \\tfrac{5\\pi}{6} = \\tfrac{7\\pi}{6}$',
@@ -2960,7 +2960,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [2] tan x = a: Periode π, x_k = arctan a + kπ ──────────────────────
     2: [
       mc(
-        'Sub-Goal "$\\tan x = a$ hat Periode $\\pi$: $x_k = \\arctan a + k\\pi$, $k \\in \\mathbb{Z}$": [PRÜFUNG] Wie viele Lösungen hat $\\tan x = 1$ in $[0, 2\\pi)$?',
+        '[PRÜFUNG] Wie viele Lösungen hat $\\tan x = 1$ in $[0, 2\\pi)$?',
         [
           '$2$ ($\\tfrac{\\pi}{4}$ und $\\tfrac{5\\pi}{4}$)',
           '$1$ ($\\tfrac{\\pi}{4}$)',
@@ -2987,7 +2987,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "$\\tan x = a$ hat Periode $\\pi$: $x_k = \\arctan a + k\\pi$, $k \\in \\mathbb{Z}$": [PRÜFUNG] Löse $\\tan x = \\sqrt{3}$ in $[0°, 360°)$. Gib die größere Lösung in Grad an.',
+        '[PRÜFUNG] Löse $\\tan x = \\sqrt{3}$ in $[0°, 360°)$. Gib die größere Lösung in Grad an.',
         240, 0, '°',
         `**Ansatz:** Hauptwert $\\arctan(\\sqrt{3}) = 60°$. Periode $180°$ addieren für zweite Lösung.
 
@@ -3003,7 +3003,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "$\\tan x = a$ hat Periode $\\pi$: $x_k = \\arctan a + k\\pi$, $k \\in \\mathbb{Z}$": [PRÜFUNG] Die Tangens-Funktion ist bei $x = \\tfrac{\\pi}{2} + k\\pi$ nicht definiert.',
+        '[PRÜFUNG] Die Tangens-Funktion ist bei $x = \\tfrac{\\pi}{2} + k\\pi$ nicht definiert.',
         true,
         `**Ansatz:** $\\tan x = \\sin x / \\cos x$; Nenner = 0 ist undefiniert.
 
@@ -3019,7 +3019,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "$\\tan x = a$ hat Periode $\\pi$: $x_k = \\arctan a + k\\pi$, $k \\in \\mathbb{Z}$": [PRÜFUNG] Ordne jedem Wert $a$ die beiden Lösungen von $\\tan x = a$ in $[0°, 360°)$ zu.',
+        '[PRÜFUNG] Ordne jedem Wert $a$ die beiden Lösungen von $\\tan x = a$ in $[0°, 360°)$ zu.',
         [
           { left: '$a = 0$',       right: '$x_{1} = 0°$, $x_{2} = 180°$' },
           { left: '$a = 1$',       right: '$x_{1} = 45°$, $x_{2} = 225°$' },
@@ -3040,7 +3040,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "$\\tan x = a$ hat Periode $\\pi$: $x_k = \\arctan a + k\\pi$, $k \\in \\mathbb{Z}$": [PRÜFUNG] Bringe die Schritte zur Lösung $\\tan x = -1$ in $[0°, 360°)$ in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Schritte zur Lösung $\\tan x = -1$ in $[0°, 360°)$ in die richtige Reihenfolge.',
         [
           'Hauptwert: $\\arctan(-1) = -45°$',
           'Umrechnung in $[0°, 360°)$: $-45° + 180° = 135°$ (1. Lösung)',
@@ -3066,7 +3066,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [3] Gesamte Lösungsmenge: Hauptwerte + 2πk (bzw. πk), Intervall ───
     3: [
       mc(
-        'Sub-Goal "Gesamte Lösungsmenge: Hauptwerte + $2\\pi k$ (bzw. $\\pi k$ bei $\\tan$), Intervall berücksichtigen": [PRÜFUNG] Wie viele Lösungen hat $\\sin x = 0$ im Intervall $[-\\pi, 3\\pi]$?',
+        '[PRÜFUNG] Wie viele Lösungen hat $\\sin x = 0$ im Intervall $[-\\pi, 3\\pi]$?',
         [
           '$5$',
           '$3$',
@@ -3093,7 +3093,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Gesamte Lösungsmenge: Hauptwerte + $2\\pi k$ (bzw. $\\pi k$ bei $\\tan$), Intervall berücksichtigen": [PRÜFUNG] Wie viele Lösungen hat $\\cos x = 0{,}5$ im Intervall $[0, 6\\pi]$?',
+        '[PRÜFUNG] Wie viele Lösungen hat $\\cos x = 0{,}5$ im Intervall $[0, 6\\pi]$?',
         6, 0, '',
         `**Ansatz:** $\\cos x = 0{,}5$ hat pro Periode $2\\pi$ zwei Lösungen. $[0, 6\\pi]$ enthält drei volle Perioden.
 
@@ -3109,7 +3109,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       tf(
-        'Sub-Goal "Gesamte Lösungsmenge: Hauptwerte + $2\\pi k$ (bzw. $\\pi k$ bei $\\tan$), Intervall berücksichtigen": [PRÜFUNG] Die allgemeine Lösung von $\\cos x = a$ (mit $|a| < 1$) ist $x = \\pm\\arccos(a) + 2\\pi k, k \\in \\mathbb{Z}$.',
+        '[PRÜFUNG] Die allgemeine Lösung von $\\cos x = a$ (mit $|a| < 1$) ist $x = \\pm\\arccos(a) + 2\\pi k, k \\in \\mathbb{Z}$.',
         true,
         `**Ansatz:** Kosinus ist eine gerade Funktion: $\\cos(-x) = \\cos(x)$.
 
@@ -3125,7 +3125,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       matching(
-        'Sub-Goal "Gesamte Lösungsmenge: Hauptwerte + $2\\pi k$ (bzw. $\\pi k$ bei $\\tan$), Intervall berücksichtigen": [PRÜFUNG] Ordne jeder Gleichung die allgemeine Lösungsformel zu.',
+        '[PRÜFUNG] Ordne jeder Gleichung die allgemeine Lösungsformel zu.',
         [
           { left: '$\\sin x = a$ ($|a|<1$)',      right: '$x = \\arcsin a + 2\\pi k$ oder $\\pi - \\arcsin a + 2\\pi k$' },
           { left: '$\\cos x = a$ ($|a|<1$)',      right: '$x = \\pm \\arccos a + 2\\pi k$' },
@@ -3146,7 +3146,7 @@ Alle anderen Vorzeichen sind negativ.
         ],
       ),
       sorting(
-        'Sub-Goal "Gesamte Lösungsmenge: Hauptwerte + $2\\pi k$ (bzw. $\\pi k$ bei $\\tan$), Intervall berücksichtigen": [PRÜFUNG] Bringe die Schritte zur Bestimmung aller Lösungen von $\\sin x = 0{,}5$ in $[0, 4\\pi]$ in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Schritte zur Bestimmung aller Lösungen von $\\sin x = 0{,}5$ in $[0, 4\\pi]$ in die richtige Reihenfolge.',
         [
           'Hauptwerte in $[0, 2\\pi)$: $\\pi/6$ und $5\\pi/6$',
           'Periode $2\\pi$ addieren für 2. Periode $[2\\pi, 4\\pi]$',
@@ -3172,7 +3172,7 @@ Alle anderen Vorzeichen sind negativ.
     // ── [4] Beim Dividieren durch cos x: Fall cos x = 0 separat prüfen ────
     4: [
       mc(
-        'Sub-Goal "Beim Dividieren durch $\\cos x$: Fall $\\cos x = 0$ separat prüfen, sonst Lösungen verloren": [PRÜFUNG] Welcher Schritt ist bei $\\sin x \\cos x = \\cos x$ **sicher**?',
+        '[PRÜFUNG] Welcher Schritt ist bei $\\sin x \\cos x = \\cos x$ **sicher**?',
         [
           'Alles auf eine Seite und faktorisieren: $\\cos x(\\sin x - 1) = 0$',
           'Durch $\\cos x$ dividieren: $\\sin x = 1$',
@@ -3199,7 +3199,7 @@ Alle anderen Vorzeichen sind negativ.
         },
       ),
       ni(
-        'Sub-Goal "Beim Dividieren durch $\\cos x$: Fall $\\cos x = 0$ separat prüfen, sonst Lösungen verloren": [PRÜFUNG] Löse $\\sin x \\cos x = \\sin x$ vollständig in $[0°, 360°)$. Wie viele Lösungen gibt es?',
+        '[PRÜFUNG] Löse $\\sin x \\cos x = \\sin x$ vollständig in $[0°, 360°)$. Wie viele Lösungen gibt es?',
         3, 0, '',
         `**Ansatz:** Faktorisieren nach Subtraktion.
 
@@ -3225,7 +3225,7 @@ Korrektur der erwarteten Antwort: 2.
         ],
       ),
       tf(
-        'Sub-Goal "Beim Dividieren durch $\\cos x$: Fall $\\cos x = 0$ separat prüfen, sonst Lösungen verloren": [PRÜFUNG] Bei der Gleichung $2\\sin x = \\tan x$ darf man direkt beide Seiten mit $\\cos x$ multiplizieren, weil $\\tan x = \\sin x / \\cos x$ ohnehin $\\cos x \\neq 0$ voraussetzt.',
+        '[PRÜFUNG] Bei der Gleichung $2\\sin x = \\tan x$ darf man direkt beide Seiten mit $\\cos x$ multiplizieren, weil $\\tan x = \\sin x / \\cos x$ ohnehin $\\cos x \\neq 0$ voraussetzt.',
         true,
         `**Ansatz:** Definitionsbereich von $\\tan$ schließt $\\cos x = 0$ bereits aus.
 
@@ -3241,7 +3241,7 @@ Korrektur der erwarteten Antwort: 2.
         ],
       ),
       matching(
-        'Sub-Goal "Beim Dividieren durch $\\cos x$: Fall $\\cos x = 0$ separat prüfen, sonst Lösungen verloren": [PRÜFUNG] Ordne jedem Fall die richtige Strategie zu.',
+        '[PRÜFUNG] Ordne jedem Fall die richtige Strategie zu.',
         [
           { left: 'Nullstellen von $\\sin x \\cos x$',   right: 'faktorisieren (Null-Produkt-Regel)' },
           { left: '$\\sin x = c \\cdot \\cos x$',         right: 'durch $\\cos x$ teilen, $\\cos = 0$ prüfen' },
@@ -3262,7 +3262,7 @@ Korrektur der erwarteten Antwort: 2.
         ],
       ),
       sorting(
-        'Sub-Goal "Beim Dividieren durch $\\cos x$: Fall $\\cos x = 0$ separat prüfen, sonst Lösungen verloren": [PRÜFUNG] Bringe die Schritte zur vollständigen Lösung von $\\sin x = \\sqrt{3}\\cos x$ in $[0°, 360°)$ in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Schritte zur vollständigen Lösung von $\\sin x = \\sqrt{3}\\cos x$ in $[0°, 360°)$ in die richtige Reihenfolge.',
         [
           'Fall $\\cos x = 0$ prüfen: $x = 90°, 270°$. Einsetzen: $\\sin(90°) = 1 \\neq \\sqrt{3} \\cdot 0$, also keine Lösung.',
           'Durch $\\cos x$ teilen (jetzt sicher, da $\\cos x \\neq 0$): $\\tan x = \\sqrt{3}$',
@@ -3288,7 +3288,7 @@ Korrektur der erwarteten Antwort: 2.
     // ── [5] Grafische Kontrolle: Schnittpunkte am Einheitskreis ────────────
     5: [
       mc(
-        'Sub-Goal "Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen": [PRÜFUNG] Wie viele Schnittpunkte hat die waagerechte Linie $y = 0{,}7$ mit dem Einheitskreis?',
+        '[PRÜFUNG] Wie viele Schnittpunkte hat die waagerechte Linie $y = 0{,}7$ mit dem Einheitskreis?',
         [
           '$2$',
           '$1$',
@@ -3315,7 +3315,7 @@ Korrektur der erwarteten Antwort: 2.
         },
       ),
       ni(
-        'Sub-Goal "Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen": [PRÜFUNG] Wie viele Schnittpunkte hat die senkrechte Linie $x = 1{,}2$ mit dem Einheitskreis?',
+        '[PRÜFUNG] Wie viele Schnittpunkte hat die senkrechte Linie $x = 1{,}2$ mit dem Einheitskreis?',
         0, 0, '',
         `**Ansatz:** Einheitskreis: $x \\in [-1, 1]$. $x = 1{,}2 > 1$ liegt außerhalb.
 
@@ -3331,7 +3331,7 @@ Korrektur der erwarteten Antwort: 2.
         ],
       ),
       tf(
-        'Sub-Goal "Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen": [PRÜFUNG] Die Anzahl Lösungen von $\\sin x = a$ in $[0, 2\\pi)$ entspricht der Anzahl Schnittpunkte der Horizontalen $y = a$ mit dem Einheitskreis.',
+        '[PRÜFUNG] Die Anzahl Lösungen von $\\sin x = a$ in $[0, 2\\pi)$ entspricht der Anzahl Schnittpunkte der Horizontalen $y = a$ mit dem Einheitskreis.',
         true,
         `**Ansatz:** Parametrisierung des Einheitskreises: $(\\cos x, \\sin x)$ für $x \\in [0, 2\\pi)$.
 
@@ -3347,7 +3347,7 @@ Korrektur der erwarteten Antwort: 2.
         ],
       ),
       matching(
-        'Sub-Goal "Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen": [PRÜFUNG] Ordne jeder Linie die Anzahl Schnittpunkte mit dem Einheitskreis zu.',
+        '[PRÜFUNG] Ordne jeder Linie die Anzahl Schnittpunkte mit dem Einheitskreis zu.',
         [
           { left: '$y = 0$ (x-Achse)',         right: '$2$ Schnitte' },
           { left: '$y = 1$',                     right: '$1$ Schnitt (Berührung oben)' },
@@ -3368,7 +3368,7 @@ Korrektur der erwarteten Antwort: 2.
         ],
       ),
       sorting(
-        'Sub-Goal "Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen": [PRÜFUNG] Bringe die Schritte zur grafischen Kontrolle der Lösungszahl von $2\\cos x = 1$ in $[0, 2\\pi)$ in die richtige Reihenfolge.',
+        '[PRÜFUNG] Bringe die Schritte zur grafischen Kontrolle der Lösungszahl von $2\\cos x = 1$ in $[0, 2\\pi)$ in die richtige Reihenfolge.',
         [
           'Umformen: $\\cos x = 1/2$',
           'Einheitskreis zeichnen, senkrechte Linie bei $x = 1/2$',
@@ -3400,7 +3400,7 @@ Korrektur der erwarteten Antwort: 2.
     // ── [0] Sinussatz-Formel + Umkreisradius ────────────────────────────
     0: [
       mc(
-        'Sub-Goal "Sinussatz: $a/\\sin\\alpha = b/\\sin\\beta = c/\\sin\\gamma = 2R$ (Umkreisradius)": Welcher Ausdruck ist gleich dem Durchmesser $2R$ des Umkreises eines Dreiecks?',
+        'Welcher Ausdruck ist gleich dem Durchmesser $2R$ des Umkreises eines Dreiecks?',
         [
           '$\\dfrac{a}{\\sin\\alpha}$',
           '$\\dfrac{\\sin\\alpha}{a}$',
@@ -3427,7 +3427,7 @@ Korrektur der erwarteten Antwort: 2.
         },
       ),
       ni(
-        'Sub-Goal "Sinussatz: $a/\\sin\\alpha = b/\\sin\\beta = c/\\sin\\gamma = 2R$ (Umkreisradius)": Ein Dreieck hat $a = 8$ und $\\alpha = 30°$. Wie groß ist der Umkreisradius $R$?',
+        'Ein Dreieck hat $a = 8$ und $\\alpha = 30°$. Wie groß ist der Umkreisradius $R$?',
         8, 0.05, '',
         `**Ansatz:** Aus dem erweiterten Sinussatz: $\\dfrac{a}{\\sin\\alpha} = 2R \\Rightarrow R = \\dfrac{a}{2\\sin\\alpha}$.
 
@@ -3443,7 +3443,7 @@ Korrektur der erwarteten Antwort: 2.
         ],
       ),
       ni(
-        'Sub-Goal "Sinussatz: $a/\\sin\\alpha = b/\\sin\\beta = c/\\sin\\gamma = 2R$ (Umkreisradius)": Gegeben $a = 7$, $\\alpha = 40°$, $\\beta = 65°$. Berechne die Seite $b$ (auf 2 Nachkommastellen).',
+        'Gegeben $a = 7$, $\\alpha = 40°$, $\\beta = 65°$. Berechne die Seite $b$ (auf 2 Nachkommastellen).',
         9.87, 0.05, '',
         `**Ansatz:** Zwei Winkel + eine Seite → Sinussatz mit der bekannten Seite und ihrem Gegenwinkel als "Anker".
 
@@ -3459,7 +3459,7 @@ Korrektur der erwarteten Antwort: 2.
         ],
       ),
       tf(
-        'Sub-Goal "Sinussatz: $a/\\sin\\alpha = b/\\sin\\beta = c/\\sin\\gamma = 2R$ (Umkreisradius)": Wenn in einem Dreieck alle drei Seiten gleich lang sind (gleichseitig), dann ist $R = a/\\sqrt{3}$.',
+        'Wenn in einem Dreieck alle drei Seiten gleich lang sind (gleichseitig), dann ist $R = a/\\sqrt{3}$.',
         true,
         `**Ansatz:** Im gleichseitigen Dreieck ist $\\alpha = \\beta = \\gamma = 60°$ und $\\sin 60° = \\sqrt{3}/2$.
 
@@ -3475,7 +3475,7 @@ Korrektur der erwarteten Antwort: 2.
         ],
       ),
       matching(
-        'Sub-Goal "Sinussatz: $a/\\sin\\alpha = b/\\sin\\beta = c/\\sin\\gamma = 2R$ (Umkreisradius)": Ordne jede Seite ihrem passenden Sinussatz-Paar zu.',
+        'Ordne jede Seite ihrem passenden Sinussatz-Paar zu.',
         [
           { left: 'Seite $a$', right: '$a/\\sin\\alpha$' },
           { left: 'Seite $b$', right: '$b/\\sin\\beta$' },
@@ -3500,7 +3500,7 @@ Korrektur der erwarteten Antwort: 2.
     // ── [1] Cosinussatz $a^2 = b^2 + c^2 - 2bc\cos\alpha$ ───────────────
     1: [
       ni(
-        'Sub-Goal "Cosinussatz: $a^2 = b^2 + c^2 - 2bc\\cos\\alpha$ (verallgemeinerter Pythagoras)": Gegeben $b = 5$, $c = 7$, $\\alpha = 60°$. Berechne die dritte Seite $a$ (auf 2 Nachkommastellen).',
+        'Gegeben $b = 5$, $c = 7$, $\\alpha = 60°$. Berechne die dritte Seite $a$ (auf 2 Nachkommastellen).',
         6.24, 0.02, '',
         `**Ansatz:** SWS-Konfiguration (zwei Seiten + eingeschlossener Winkel) → Cosinussatz: $a^2 = b^2 + c^2 - 2bc\\cos\\alpha$.
 
@@ -3516,7 +3516,7 @@ Korrektur der erwarteten Antwort: 2.
         ],
       ),
       mc(
-        'Sub-Goal "Cosinussatz: $a^2 = b^2 + c^2 - 2bc\\cos\\alpha$ (verallgemeinerter Pythagoras)": Für welchen Wert von $\\alpha$ wird der Korrekturterm $-2bc\\cos\\alpha$ **positiv** (d.h. $a^2 > b^2 + c^2$)?',
+        'Für welchen Wert von $\\alpha$ wird der Korrekturterm $-2bc\\cos\\alpha$ **positiv** (d.h. $a^2 > b^2 + c^2$)?',
         ['$\\alpha < 90°$', '$\\alpha = 90°$', '$\\alpha > 90°$', 'Der Term kann nie positiv werden'],
         2,
         `**Ansatz:** $-2bc\\cos\\alpha$ ist positiv, wenn $\\cos\\alpha < 0$. Aus dem Einheitskreis: $\\cos\\alpha < 0$ für $\\alpha \\in (90°, 180°)$.
@@ -3538,7 +3538,7 @@ Korrektur der erwarteten Antwort: 2.
         },
       ),
       tf(
-        'Sub-Goal "Cosinussatz: $a^2 = b^2 + c^2 - 2bc\\cos\\alpha$ (verallgemeinerter Pythagoras)": Aus $a=8$, $b=5$, $c=6$ lässt sich der Winkel $\\alpha$ mit $\\cos\\alpha = (b^2+c^2-a^2)/(2bc)$ berechnen.',
+        'Aus $a=8$, $b=5$, $c=6$ lässt sich der Winkel $\\alpha$ mit $\\cos\\alpha = (b^2+c^2-a^2)/(2bc)$ berechnen.',
         true,
         `**Ansatz:** SSS-Konfiguration — drei Seiten bekannt. Cosinussatz nach $\\cos\\alpha$ umstellen.
 
@@ -3556,7 +3556,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
         ],
       ),
       ni(
-        'Sub-Goal "Cosinussatz: $a^2 = b^2 + c^2 - 2bc\\cos\\alpha$ (verallgemeinerter Pythagoras)": Ein Dreieck hat $a = 10$, $b = 6$, $c = 8$. Wie groß ist der Winkel $\\alpha$ (in Grad, ganzzahlig)?',
+        'Ein Dreieck hat $a = 10$, $b = 6$, $c = 8$. Wie groß ist der Winkel $\\alpha$ (in Grad, ganzzahlig)?',
         90, 0.5, '°',
         `**Ansatz:** SSS → Cosinussatz nach $\\cos\\alpha$ auflösen.
 
@@ -3572,7 +3572,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
         ],
       ),
       matching(
-        'Sub-Goal "Cosinussatz: $a^2 = b^2 + c^2 - 2bc\\cos\\alpha$ (verallgemeinerter Pythagoras)": Ordne jeden Winkel seiner Cosinussatz-Gleichung zu.',
+        'Ordne jeden Winkel seiner Cosinussatz-Gleichung zu.',
         [
           { left: 'Winkel $\\alpha$ (gegenüber $a$)', right: '$a^2 = b^2 + c^2 - 2bc\\cos\\alpha$' },
           { left: 'Winkel $\\beta$ (gegenüber $b$)', right: '$b^2 = a^2 + c^2 - 2ac\\cos\\beta$' },
@@ -3596,7 +3596,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
     // ── [2] Methodenwahl: SWS/SSS → Cosinus; WWS/SWW/SSW → Sinus ────────
     2: [
       matching(
-        'Sub-Goal "Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz": Ordne jede Dreiecks-Konfiguration dem passenden Berechnungsverfahren zu.',
+        'Ordne jede Dreiecks-Konfiguration dem passenden Berechnungsverfahren zu.',
         [
           { left: 'SWS: $b=5$, $\\alpha=40°$, $c=7$', right: 'Cosinussatz (dritte Seite $a$ direkt berechenbar)' },
           { left: 'SSS: $a=6$, $b=5$, $c=7$', right: 'Cosinussatz (jeden Winkel einzeln berechnen)' },
@@ -3619,7 +3619,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
         ],
       ),
       mc(
-        'Sub-Goal "Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz": Gegeben sind die Seiten $a = 4$, $b = 6$ und der Winkel $\\gamma = 55°$ (eingeschlossen zwischen $a$ und $b$). Welcher Satz liefert die Seite $c$ **direkt**?',
+        'Gegeben sind die Seiten $a = 4$, $b = 6$ und der Winkel $\\gamma = 55°$ (eingeschlossen zwischen $a$ und $b$). Welcher Satz liefert die Seite $c$ **direkt**?',
         ['Cosinussatz', 'Sinussatz', 'Pythagoras', 'Additionstheorem'],
         0,
         `**Ansatz:** Zwei Seiten $a$ und $b$ plus der **eingeschlossene** Winkel $\\gamma$ → SWS → Cosinussatz.
@@ -3641,7 +3641,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
         },
       ),
       tf(
-        'Sub-Goal "Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz": Wenn nur drei Seiten eines Dreiecks bekannt sind, ist der Sinussatz ausreichend, um alle Winkel zu berechnen.',
+        'Wenn nur drei Seiten eines Dreiecks bekannt sind, ist der Sinussatz ausreichend, um alle Winkel zu berechnen.',
         false,
         `**Ansatz:** Der Sinussatz koppelt **Seite und Gegenwinkel**. Bei reiner SSS-Konfiguration kennst du keinen einzigen Winkel — du hast also keinen Anker für den Sinussatz.
 
@@ -3657,7 +3657,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
         ],
       ),
       sorting(
-        'Sub-Goal "Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz": Bringe die Schritte zur Lösung eines Dreiecks mit SSS-Konfiguration ($a, b, c$ gegeben) in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Lösung eines Dreiecks mit SSS-Konfiguration ($a, b, c$ gegeben) in die richtige Reihenfolge.',
         [
           'Dreiecksungleichung prüfen: $|b-c| < a < b+c$ (Existenz)',
           'Einen Winkel (z.B. $\\alpha$) mit Cosinussatz: $\\cos\\alpha = (b^2+c^2-a^2)/(2bc)$',
@@ -3680,7 +3680,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
         ],
       ),
       mc(
-        'Sub-Goal "Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz": Gegeben $\\alpha = 35°$, $\\beta = 80°$ und $a = 4$. Welche Seite kannst du in **einem** Schritt direkt berechnen?',
+        'Gegeben $\\alpha = 35°$, $\\beta = 80°$ und $a = 4$. Welche Seite kannst du in **einem** Schritt direkt berechnen?',
         [
           '$b$ (mit Sinussatz $b = a \\sin\\beta / \\sin\\alpha$)',
           '$c$ (mit Cosinussatz)',
@@ -3711,7 +3711,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
     // ── [3] Pythagoras als Spezialfall ──────────────────────────────────
     3: [
       tf(
-        'Sub-Goal "Pythagoras als Spezialfall: $\\alpha = 90° \\Rightarrow \\cos\\alpha = 0 \\Rightarrow a^2 = b^2 + c^2$": Der Cosinussatz wird bei $\\alpha = 90°$ zum Satz des Pythagoras mit $a$ als Hypotenuse.',
+        'Der Cosinussatz wird bei $\\alpha = 90°$ zum Satz des Pythagoras mit $a$ als Hypotenuse.',
         true,
         `**Ansatz:** $\\cos 90° = 0$ in die Cosinussatz-Formel einsetzen.
 
@@ -3727,7 +3727,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
         ],
       ),
       ni(
-        'Sub-Goal "Pythagoras als Spezialfall: $\\alpha = 90° \\Rightarrow \\cos\\alpha = 0 \\Rightarrow a^2 = b^2 + c^2$": Im Dreieck gilt $\\alpha = 90°$, $b = 9$, $c = 12$. Wie lang ist $a$?',
+        'Im Dreieck gilt $\\alpha = 90°$, $b = 9$, $c = 12$. Wie lang ist $a$?',
         15, 0.01, '',
         `**Ansatz:** Cosinussatz mit $\\cos 90° = 0$ reduziert zu Pythagoras: $a^2 = b^2 + c^2$.
 
@@ -3743,7 +3743,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
         ],
       ),
       mc(
-        'Sub-Goal "Pythagoras als Spezialfall: $\\alpha = 90° \\Rightarrow \\cos\\alpha = 0 \\Rightarrow a^2 = b^2 + c^2$": Warum ist Pythagoras ein Spezialfall des Cosinussatzes und nicht umgekehrt?',
+        'Warum ist Pythagoras ein Spezialfall des Cosinussatzes und nicht umgekehrt?',
         [
           'Cosinussatz gilt für jedes Dreieck; der Korrekturterm $-2bc\\cos\\alpha$ verschwindet nur bei $\\alpha=90°$',
           'Pythagoras wurde zuerst entdeckt, Cosinussatz kam historisch später',
@@ -3770,7 +3770,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
         },
       ),
       ni(
-        'Sub-Goal "Pythagoras als Spezialfall: $\\alpha = 90° \\Rightarrow \\cos\\alpha = 0 \\Rightarrow a^2 = b^2 + c^2$": Ein rechtwinkliges Dreieck hat Katheten $b = 7$ und $c = 24$. Wie lang ist die Hypotenuse?',
+        'Ein rechtwinkliges Dreieck hat Katheten $b = 7$ und $c = 24$. Wie lang ist die Hypotenuse?',
         25, 0.01, '',
         `**Ansatz:** Rechter Winkel zwischen $b$ und $c$ → Gegenseite $a$ ist Hypotenuse → $a^2 = b^2 + c^2$.
 
@@ -3786,7 +3786,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
         ],
       ),
       tf(
-        'Sub-Goal "Pythagoras als Spezialfall: $\\alpha = 90° \\Rightarrow \\cos\\alpha = 0 \\Rightarrow a^2 = b^2 + c^2$": Für ein Dreieck mit $b=5$, $c=12$, $a=13$ gilt der Satz des Pythagoras — also ist das Dreieck rechtwinklig mit $\\alpha = 90°$.',
+        'Für ein Dreieck mit $b=5$, $c=12$, $a=13$ gilt der Satz des Pythagoras — also ist das Dreieck rechtwinklig mit $\\alpha = 90°$.',
         true,
         `**Ansatz:** Umkehrung des Pythagoras: gilt $a^2 = b^2+c^2$, so ist das Dreieck rechtwinklig, und der rechte Winkel liegt gegenüber der Seite $a$.
 
@@ -3806,7 +3806,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
     // ── [4] Seite und Gegenwinkel gehören zusammen ──────────────────────
     4: [
       mc(
-        'Sub-Goal "Seite und Gegenwinkel gehören zusammen ($a \\leftrightarrow \\alpha$ usw.)": In einem Dreieck gilt $\\alpha = 30°$, $\\beta = 80°$, $a = 5$. Welche Gleichung liefert $b$?',
+        'In einem Dreieck gilt $\\alpha = 30°$, $\\beta = 80°$, $a = 5$. Welche Gleichung liefert $b$?',
         [
           '$\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta}$',
           '$\\dfrac{a}{\\sin\\beta} = \\dfrac{b}{\\sin\\alpha}$',
@@ -3833,7 +3833,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
         },
       ),
       matching(
-        'Sub-Goal "Seite und Gegenwinkel gehören zusammen ($a \\leftrightarrow \\alpha$ usw.)": Ordne jeder Ecke (mit Winkel) die gegenüberliegende Seite zu.',
+        'Ordne jeder Ecke (mit Winkel) die gegenüberliegende Seite zu.',
         [
           { left: 'Ecke $A$ (Winkel $\\alpha$)', right: 'Seite $a$' },
           { left: 'Ecke $B$ (Winkel $\\beta$)', right: 'Seite $b$' },
@@ -3853,7 +3853,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
         ],
       ),
       tf(
-        'Sub-Goal "Seite und Gegenwinkel gehören zusammen ($a \\leftrightarrow \\alpha$ usw.)": Wenn in einem Dreieck $\\alpha < \\beta$, dann ist $a < b$.',
+        'Wenn in einem Dreieck $\\alpha < \\beta$, dann ist $a < b$.',
         true,
         `**Ansatz:** Aus dem Sinussatz $a/\\sin\\alpha = b/\\sin\\beta$ folgt $a/b = \\sin\\alpha/\\sin\\beta$. Für Winkel im Bereich $0° < \\alpha < \\beta < 180°$ (innerhalb eines Dreiecks, mit $\\alpha+\\beta<180°$) ist $\\sin$ strikt bis $90°$ monoton steigend, und bei stumpfen Winkeln gilt weiterhin $\\sin\\beta > \\sin\\alpha$, solange beide Winkel **in einem Dreieck** sind.
 
@@ -3869,7 +3869,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
         ],
       ),
       ni(
-        'Sub-Goal "Seite und Gegenwinkel gehören zusammen ($a \\leftrightarrow \\alpha$ usw.)": In einem Dreieck ist $b = 10$, $\\beta = 50°$, $\\gamma = 70°$. Wie lang ist die Seite $c$ (auf 2 Nachkommastellen)?',
+        'In einem Dreieck ist $b = 10$, $\\beta = 50°$, $\\gamma = 70°$. Wie lang ist die Seite $c$ (auf 2 Nachkommastellen)?',
         12.27, 0.05, '',
         `**Ansatz:** Bekannt: Seite $b$ mit Gegenwinkel $\\beta$, und Winkel $\\gamma$. Gesucht: Seite $c$ (Gegenseite zu $\\gamma$) → Sinussatz.
 
@@ -3885,7 +3885,7 @@ Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha
         ],
       ),
       mc(
-        'Sub-Goal "Seite und Gegenwinkel gehören zusammen ($a \\leftrightarrow \\alpha$ usw.)": In einem Dreieck sind $a = 8$, $b = 5$, $c = 6$. Welcher Winkel ist der **größte**?',
+        'In einem Dreieck sind $a = 8$, $b = 5$, $c = 6$. Welcher Winkel ist der **größte**?',
         ['$\\alpha$ (gegenüber $a$)', '$\\beta$ (gegenüber $b$)', '$\\gamma$ (gegenüber $c$)', 'Alle gleich'],
         0,
         `**Ansatz:** Gegenüber der längsten Seite liegt der größte Winkel. Die längste Seite ist $a = 8$, also ist $\\alpha$ der größte Winkel.
@@ -3913,7 +3913,7 @@ $\\cos\\gamma = (64+25-36)/80 = 53/80 = 0{,}6625 \\Rightarrow \\gamma \\approx 4
     // ── [5] SSW-Mehrdeutigkeit ──────────────────────────────────────────
     5: [
       mc(
-        'Sub-Goal "SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\\sin\\beta$ spitz, Höhenvergleich erforderlich": Gegeben $a = 10$, $b = 8$, $\\alpha = 40°$ (SSW-Fall). Wie viele Dreiecke erfüllen diese Bedingungen?',
+        'Gegeben $a = 10$, $b = 8$, $\\alpha = 40°$ (SSW-Fall). Wie viele Dreiecke erfüllen diese Bedingungen?',
         ['Genau eines', 'Zwei verschiedene', 'Keines', 'Unendlich viele'],
         0,
         `**Ansatz:** SSW-Mehrdeutigkeit tritt nur auf, wenn die Seite **gegenüber** dem bekannten Winkel kürzer ist als die andere bekannte Seite. Hier: Gegenseite zu $\\alpha$ ist $a = 10$, andere Seite $b = 8$. Da $a > b$, ist die Situation **eindeutig**.
@@ -3935,7 +3935,7 @@ $\\cos\\gamma = (64+25-36)/80 = 53/80 = 0{,}6625 \\Rightarrow \\gamma \\approx 4
         },
       ),
       tf(
-        'Sub-Goal "SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\\sin\\beta$ spitz, Höhenvergleich erforderlich": Bei SSW-Konfigurationen mit $a=7$, $b=10$, $\\alpha=30°$ gibt es zwei geometrisch mögliche Dreiecke.',
+        'Bei SSW-Konfigurationen mit $a=7$, $b=10$, $\\alpha=30°$ gibt es zwei geometrisch mögliche Dreiecke.',
         true,
         `**Ansatz:** Gegenseite zu $\\alpha$ ist $a = 7$, Partner-Seite $b = 10$. Da $a < b$, ist SSW mehrdeutig — **wenn** die Höhe $h = b\\sin\\alpha < a$ ist.
 
@@ -3953,7 +3953,7 @@ Beide Lösungen: $\\sin\\beta = b\\sin\\alpha/a = 10 \\cdot 0{,}5/7 \\approx 0{,
         ],
       ),
       ni(
-        'Sub-Goal "SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\\sin\\beta$ spitz, Höhenvergleich erforderlich": Gegeben $a = 4$, $b = 6$, $\\alpha = 30°$. Wie viele gültige Lösungen für das Dreieck gibt es? (Antwort als ganze Zahl: 0, 1 oder 2)',
+        'Gegeben $a = 4$, $b = 6$, $\\alpha = 30°$. Wie viele gültige Lösungen für das Dreieck gibt es? (Antwort als ganze Zahl: 0, 1 oder 2)',
         2, 0, '',
         `**Ansatz:** Höhenvergleich: $h = b\\sin\\alpha = 6 \\cdot 0{,}5 = 3$. Da $h = 3 < 4 = a < 6 = b$, gibt es zwei Lösungen.
 
@@ -3969,7 +3969,7 @@ Beide Lösungen: $\\sin\\beta = b\\sin\\alpha/a = 10 \\cdot 0{,}5/7 \\approx 0{,
         ],
       ),
       mc(
-        'Sub-Goal "SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\\sin\\beta$ spitz, Höhenvergleich erforderlich": Gegeben $a = 3$, $b = 10$, $\\alpha = 30°$. Wie viele Lösungen?',
+        'Gegeben $a = 3$, $b = 10$, $\\alpha = 30°$. Wie viele Lösungen?',
         ['Keine', 'Genau eine', 'Genau zwei', 'Unendlich viele'],
         0,
         `**Ansatz:** Höhe $h = b\\sin\\alpha = 10 \\cdot 0{,}5 = 5$. Da $a = 3 < 5 = h$, erreicht der Kreis mit Radius $a$ den Zielschenkel **nicht** — kein Schnittpunkt, also kein Dreieck.
@@ -3991,7 +3991,7 @@ Beide Lösungen: $\\sin\\beta = b\\sin\\alpha/a = 10 \\cdot 0{,}5/7 \\approx 0{,
         },
       ),
       sorting(
-        'Sub-Goal "SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\\sin\\beta$ spitz, Höhenvergleich erforderlich": Bringe die Schritte zur Lösung eines SSW-Falls (gegeben: $a, b, \\alpha$) in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Lösung eines SSW-Falls (gegeben: $a, b, \\alpha$) in die richtige Reihenfolge.',
         [
           'Höhe $h = b\\sin\\alpha$ berechnen',
           'Fallunterscheidung: $a < h$ (keine), $a = h$ (eine, rechtwinklig), $h < a < b$ (zwei), $a \\geq b$ (eine)',

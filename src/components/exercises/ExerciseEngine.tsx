@@ -13,6 +13,7 @@ import { FreeTextInput,  validate as validateFT } from './FreeTextInput'
 import { FillInBlank,    validate as validateFIB } from './FillInBlank'
 import { MultiStepExercise, validate as validateMS } from './MultiStepExercise'
 import { HintSystem } from '@/components/lesson/HintSystem'
+import { MathText } from '@/components/ui/MathText'
 import { FeedbackContent, FeedbackActions } from '@/components/lesson/FeedbackDisplay'
 
 // Tool-Modals erst beim ersten Öffnen laden (mathjs & Formeldatenbank sind groß).
@@ -134,14 +135,22 @@ export function ExerciseEngine({ exerciseId, topicId, lessonId, onComplete }: Pr
   return (
     <div className="flex flex-col gap-4">
       <div className="bg-white dark:bg-surface-800 border-2 border-ink rounded-retro shadow-hard p-4 flex flex-col gap-4">
-        <div className="flex items-center justify-between gap-3">
-          <p className="font-mono text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest">
-            // Aufgabe
-          </p>
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex flex-col gap-1 flex-1 min-w-0">
+            <p className="font-mono text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest">
+              // Aufgabe
+            </p>
+            {exercise.subGoalLabel && (
+              <div className="font-mono text-[11px] font-bold text-ink dark:text-paper leading-snug">
+                <span>Sub-Goal:{' '}</span>
+                <MathText className="inline font-normal italic">{exercise.subGoalLabel}</MathText>
+              </div>
+            )}
+          </div>
           <button
             type="button"
             onClick={() => setShowCalculator(true)}
-            className="min-h-9 px-3 rounded-retro border-2 border-ink bg-lemon shadow-hard-lemon text-ink font-mono text-[10px] font-black uppercase tracking-wider retro-press tap-highlight-none"
+            className="min-h-9 px-3 rounded-retro border-2 border-ink bg-lemon shadow-hard-lemon text-ink font-mono text-[10px] font-black uppercase tracking-wider retro-press tap-highlight-none flex-shrink-0"
           >
             Rechner
           </button>

@@ -358,6 +358,12 @@ for (const topic of topics) {
         if (Array.isArray(ex.hints) && ex.hints.length < 3) {
           warnings.push(`${ep}: nur ${ex.hints.length} Hint(s), empfohlen ≥ 3`)
         }
+        // Sub-Goal-Label soll NICHT in der Frage stehen — der UI-Header
+        // zeigt es separat. Wörtliches Zitat in der Frage ist repetitiv.
+        const questionText = ex.question ?? ex.statement ?? ''
+        if (/^Sub-Goal\s+"[^"]+":\s*/.test(questionText)) {
+          warnings.push(`${ep}: Frage beginnt mit 'Sub-Goal "…":' — bitte entfernen (UI rendert subGoalLabel als Header)`)
+        }
         if (typeof ex.subGoalIndex === 'number') {
           const sgLen = Array.isArray(lesson.subGoals) ? lesson.subGoals.length : 0
           check(

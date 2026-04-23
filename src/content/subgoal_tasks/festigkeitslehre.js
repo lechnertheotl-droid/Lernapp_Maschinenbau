@@ -24,7 +24,7 @@ export const festigkeitslehreSubGoalTasks = {
     // ── [0] Torsionsspannung: τ_max = M_T / W_p ─────────────────────────
     0: [
       ni(
-        'Sub-Goal "Torsionsspannung: $\\tau_\\text{max} = M_T/W_p$": Eine Welle (Vollkreis, $d = 50\\,\\text{mm}$) überträgt das Torsionsmoment $M_T = 500\\,\\text{Nm}$. Wie groß ist die maximale Schubspannung? (auf eine Nachkommastelle in N/mm²)',
+        'Eine Welle (Vollkreis, $d = 50\\,\\text{mm}$) überträgt das Torsionsmoment $M_T = 500\\,\\text{Nm}$. Wie groß ist die maximale Schubspannung? (auf eine Nachkommastelle in N/mm²)',
         20.4, 0.3, 'N/mm²',
         `**Ansatz:** Torsion am Vollkreis: $\\tau_\\text{max} = M_T/W_p$ mit $W_p = \\pi d^3/16$. Einheiten konsequent halten: $M_T$ in Nmm, $d$ in mm ⇒ $\\tau$ in N/mm² = MPa.
 
@@ -40,7 +40,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Torsionsspannung: $\\tau_\\text{max} = M_T/W_p$": An welcher Stelle im Querschnitt einer tordierten Vollwelle ist die Schubspannung **maximal**?',
+        'An welcher Stelle im Querschnitt einer tordierten Vollwelle ist die Schubspannung **maximal**?',
         [
           'in der Mitte auf der Drehachse',
           'am Außenrand (Oberfläche)',
@@ -67,7 +67,7 @@ export const festigkeitslehreSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Torsionsspannung: $\\tau_\\text{max} = M_T/W_p$": Bei einer Welle aus Vollkreisquerschnitt verdoppelt sich die maximale Torsionsspannung, wenn das Torsionsmoment verdoppelt wird (bei konstantem Durchmesser).',
+        'Bei einer Welle aus Vollkreisquerschnitt verdoppelt sich die maximale Torsionsspannung, wenn das Torsionsmoment verdoppelt wird (bei konstantem Durchmesser).',
         true,
         `**Ansatz:** $\\tau_\\text{max} = M_T/W_p$ ist **linear** in $M_T$ bei festem $W_p$ (also festem $d$).
 
@@ -83,7 +83,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Torsionsspannung: $\\tau_\\text{max} = M_T/W_p$": Welle 1 hat $d_1 = 30\\,\\text{mm}$ und $\\tau_\\text{max,1} = 80\\,\\text{N/mm}^2$ bei einem bestimmten $M_T$. Welle 2 (selbes $M_T$) hat $d_2 = 60\\,\\text{mm}$. Welche Schubspannung ergibt sich bei Welle 2? (N/mm², auf eine Nachkommastelle)',
+        'Welle 1 hat $d_1 = 30\\,\\text{mm}$ und $\\tau_\\text{max,1} = 80\\,\\text{N/mm}^2$ bei einem bestimmten $M_T$. Welle 2 (selbes $M_T$) hat $d_2 = 60\\,\\text{mm}$. Welche Schubspannung ergibt sich bei Welle 2? (N/mm², auf eine Nachkommastelle)',
         10, 0.2, 'N/mm²',
         `**Ansatz:** $\\tau_\\text{max} = M_T/W_p$ mit $W_p = \\pi d^3/16$. Bei festem $M_T$ gilt $\\tau \\propto 1/d^3$.
 
@@ -99,7 +99,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Torsionsspannung: $\\tau_\\text{max} = M_T/W_p$": Bringe die Rechenschritte einer Torsionsaufgabe (gegeben: $d$ in mm, $M_T$ in Nm, gesucht: $\\tau_\\text{max}$ in N/mm²) in die richtige Reihenfolge.',
+        'Bringe die Rechenschritte einer Torsionsaufgabe (gegeben: $d$ in mm, $M_T$ in Nm, gesucht: $\\tau_\\text{max}$ in N/mm²) in die richtige Reihenfolge.',
         [
           'Einheiten prüfen: $M_T$ von Nm in Nmm umrechnen ($\\cdot 1000$)',
           'Polares Widerstandsmoment: $W_p = \\pi d^3/16$',
@@ -125,7 +125,7 @@ export const festigkeitslehreSubGoalTasks = {
     // ── [1] Polares Widerstandsmoment: W_p = π d³ / 16 ──────────────────
     1: [
       ni(
-        'Sub-Goal "Polares Widerstandsmoment Kreisquerschnitt: $W_p = \\pi d^3/16$": Vollkreisquerschnitt mit $d = 30\\,\\text{mm}$. Berechne das polare Widerstandsmoment. (auf ganze mm³)',
+        'Vollkreisquerschnitt mit $d = 30\\,\\text{mm}$. Berechne das polare Widerstandsmoment. (auf ganze mm³)',
         5301, 20, 'mm³',
         `**Ansatz:** Für Vollkreis: $W_p = \\pi d^3/16$.
 
@@ -141,7 +141,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Polares Widerstandsmoment Kreisquerschnitt: $W_p = \\pi d^3/16$": Der Durchmesser einer Welle wird **halbiert**. Um welchen Faktor ändert sich das polare Widerstandsmoment $W_p$?',
+        'Der Durchmesser einer Welle wird **halbiert**. Um welchen Faktor ändert sich das polare Widerstandsmoment $W_p$?',
         [
           'auf $1/2$',
           'auf $1/4$',
@@ -168,7 +168,7 @@ export const festigkeitslehreSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Polares Widerstandsmoment Kreisquerschnitt: $W_p = \\pi d^3/16$": Das polare Widerstandsmoment $W_p$ wächst **linear** mit dem Wellendurchmesser.',
+        'Das polare Widerstandsmoment $W_p$ wächst **linear** mit dem Wellendurchmesser.',
         false,
         `**Ansatz:** $W_p = \\pi d^3/16$ ist **kubisch** in $d$, nicht linear.
 
@@ -184,7 +184,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Polares Widerstandsmoment Kreisquerschnitt: $W_p = \\pi d^3/16$": Welcher **Mindestdurchmesser** ist erforderlich, damit eine Welle bei $M_T = 300\\,\\text{Nm}$ die zulässige Spannung $\\tau_\\text{zul} = 60\\,\\text{N/mm}^2$ nicht überschreitet? (auf eine Nachkommastelle in mm)',
+        'Welcher **Mindestdurchmesser** ist erforderlich, damit eine Welle bei $M_T = 300\\,\\text{Nm}$ die zulässige Spannung $\\tau_\\text{zul} = 60\\,\\text{N/mm}^2$ nicht überschreitet? (auf eine Nachkommastelle in mm)',
         29.4, 0.3, 'mm',
         `**Ansatz:** Auslegungsformel: $\\tau_\\text{zul} \\geq M_T/W_p$ ⇒ $W_p \\geq M_T/\\tau_\\text{zul}$. Dann $d$ aus $W_p = \\pi d^3/16$.
 
@@ -200,7 +200,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Polares Widerstandsmoment Kreisquerschnitt: $W_p = \\pi d^3/16$": Ordne jedem Wellendurchmesser den passenden Wert des polaren Widerstandsmoments zu.',
+        'Ordne jedem Wellendurchmesser den passenden Wert des polaren Widerstandsmoments zu.',
         [
           { left: '$d = 20\\,\\text{mm}$', right: '$W_p \\approx 1570\\,\\text{mm}^3$' },
           { left: '$d = 30\\,\\text{mm}$', right: '$W_p \\approx 5300\\,\\text{mm}^3$' },
@@ -225,7 +225,7 @@ export const festigkeitslehreSubGoalTasks = {
     // ── [2] Verdrehwinkel φ = M_T L / (G I_p) ───────────────────────────
     2: [
       ni(
-        'Sub-Goal "Verdrehwinkel: $\\varphi = M_T L/(G I_p)$ mit $I_p = \\pi d^4/32$": Welle aus Stahl ($G = 80\\,000\\,\\text{N/mm}^2$), $d = 40\\,\\text{mm}$, $L = 1\\,000\\,\\text{mm}$, $M_T = 300\\,\\text{Nm}$. Berechne den Verdrehwinkel in Radiant. (auf 4 Nachkommastellen)',
+        'Welle aus Stahl ($G = 80\\,000\\,\\text{N/mm}^2$), $d = 40\\,\\text{mm}$, $L = 1\\,000\\,\\text{mm}$, $M_T = 300\\,\\text{Nm}$. Berechne den Verdrehwinkel in Radiant. (auf 4 Nachkommastellen)',
         0.0149, 0.0005, 'rad',
         `**Ansatz:** $\\varphi = M_T L/(G I_p)$ mit $I_p = \\pi d^4/32$. Alle Größen im SI-konsistenten Satz: $M_T$ in Nmm, $L$ in mm, $G$ in N/mm², $I_p$ in mm⁴ ⇒ $\\varphi$ in rad (dimensionslos).
 
@@ -241,7 +241,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Verdrehwinkel: $\\varphi = M_T L/(G I_p)$ mit $I_p = \\pi d^4/32$": Die Länge einer Welle wird **verdreifacht** (bei sonst gleichen Parametern). Wie ändert sich der Verdrehwinkel $\\varphi$?',
+        'Die Länge einer Welle wird **verdreifacht** (bei sonst gleichen Parametern). Wie ändert sich der Verdrehwinkel $\\varphi$?',
         [
           'bleibt gleich',
           'wird dreimal so groß',
@@ -268,7 +268,7 @@ export const festigkeitslehreSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Verdrehwinkel: $\\varphi = M_T L/(G I_p)$ mit $I_p = \\pi d^4/32$": Bei Torsion hängt der Verdrehwinkel von der **vierten Potenz** des Durchmessers ab — Verdoppelung von $d$ verringert $\\varphi$ auf $1/16$.',
+        'Bei Torsion hängt der Verdrehwinkel von der **vierten Potenz** des Durchmessers ab — Verdoppelung von $d$ verringert $\\varphi$ auf $1/16$.',
         true,
         `**Ansatz:** $\\varphi = M_T L/(G I_p)$ und $I_p = \\pi d^4/32$. Also $\\varphi \\propto 1/d^4$.
 
@@ -284,7 +284,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Verdrehwinkel: $\\varphi = M_T L/(G I_p)$ mit $I_p = \\pi d^4/32$": $d = 20\\,\\text{mm}$, $L = 500\\,\\text{mm}$, $M_T = 50\\,\\text{Nm}$, $G = 80\\,000\\,\\text{N/mm}^2$. Wie groß ist $\\varphi$ in Grad? (auf 2 Nachkommastellen)',
+        '$d = 20\\,\\text{mm}$, $L = 500\\,\\text{mm}$, $M_T = 50\\,\\text{Nm}$, $G = 80\\,000\\,\\text{N/mm}^2$. Wie groß ist $\\varphi$ in Grad? (auf 2 Nachkommastellen)',
         1.14, 0.05, '°',
         `**Ansatz:** Erst $I_p$, dann $\\varphi$ in Radiant, dann in Grad umrechnen.
 
@@ -300,7 +300,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Verdrehwinkel: $\\varphi = M_T L/(G I_p)$ mit $I_p = \\pi d^4/32$": Bringe die Rechenschritte zum Verdrehwinkel einer Welle in die richtige Reihenfolge.',
+        'Bringe die Rechenschritte zum Verdrehwinkel einer Welle in die richtige Reihenfolge.',
         [
           'Werkstoffkenngröße $G$ nachschlagen (Stahl $\\approx 80\\,000\\,\\text{N/mm}^2$)',
           'Flächenträgheitsmoment $I_p = \\pi d^4/32$ berechnen',
@@ -327,7 +327,7 @@ export const festigkeitslehreSubGoalTasks = {
     // ── [3] Schubmodul Stahl G ≈ 80 GPa ─────────────────────────────────
     3: [
       ni(
-        'Sub-Goal "Schubmodul Stahl: $G \\approx 80\\,000$ MPa (ca. $E/(2(1+\\nu))$)": Stahl mit $E = 210\\,000\\,\\text{N/mm}^2$ und Poissonzahl $\\nu = 0{,}3$. Berechne den Schubmodul $G$. (auf ganze N/mm²)',
+        'Stahl mit $E = 210\\,000\\,\\text{N/mm}^2$ und Poissonzahl $\\nu = 0{,}3$. Berechne den Schubmodul $G$. (auf ganze N/mm²)',
         80769, 200, 'N/mm²',
         `**Ansatz:** Zusammenhang isotroper linear-elastischer Werkstoffe: $G = E/(2(1+\\nu))$.
 
@@ -343,7 +343,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Schubmodul Stahl: $G \\approx 80\\,000$ MPa (ca. $E/(2(1+\\nu))$)": Für isotrope Werkstoffe gilt der Zusammenhang $G = E/(2(1+\\nu))$ zwischen E-Modul, Poissonzahl und Schubmodul.',
+        'Für isotrope Werkstoffe gilt der Zusammenhang $G = E/(2(1+\\nu))$ zwischen E-Modul, Poissonzahl und Schubmodul.',
         true,
         `**Ansatz:** Klassische Elastizitätstheorie für isotrope, homogene Werkstoffe: die drei Kenngrößen $E$, $G$, $\\nu$ sind **nicht** unabhängig, sondern über diese Beziehung gekoppelt.
 
@@ -359,7 +359,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Schubmodul Stahl: $G \\approx 80\\,000$ MPa (ca. $E/(2(1+\\nu))$)": Welcher Wert liegt typischerweise im Bereich des Schubmoduls von **Baustahl**?',
+        'Welcher Wert liegt typischerweise im Bereich des Schubmoduls von **Baustahl**?',
         [
           '$G \\approx 10\\,000\\,\\text{N/mm}^2$',
           '$G \\approx 27\\,000\\,\\text{N/mm}^2$',
@@ -386,7 +386,7 @@ export const festigkeitslehreSubGoalTasks = {
         },
       ),
       matching(
-        'Sub-Goal "Schubmodul Stahl: $G \\approx 80\\,000$ MPa (ca. $E/(2(1+\\nu))$)": Ordne jedem Werkstoff seinen typischen Schubmodul zu (Richtwerte in N/mm²).',
+        'Ordne jedem Werkstoff seinen typischen Schubmodul zu (Richtwerte in N/mm²).',
         [
           { left: 'Stahl (S235, C45, …)', right: '$G \\approx 80\\,000\\,\\text{N/mm}^2$' },
           { left: 'Aluminiumlegierungen', right: '$G \\approx 27\\,000\\,\\text{N/mm}^2$' },
@@ -407,7 +407,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Schubmodul Stahl: $G \\approx 80\\,000$ MPa (ca. $E/(2(1+\\nu))$)": Aluminium mit $E = 70\\,000\\,\\text{N/mm}^2$ und $\\nu = 0{,}33$. Berechne $G$ in N/mm². (auf ganze Zahl)',
+        'Aluminium mit $E = 70\\,000\\,\\text{N/mm}^2$ und $\\nu = 0{,}33$. Berechne $G$ in N/mm². (auf ganze Zahl)',
         26316, 100, 'N/mm²',
         `**Ansatz:** Gleiche Formel wie bei Stahl, nur mit Aluminium-Kenngrößen: $G = E/(2(1+\\nu))$.
 
@@ -427,7 +427,7 @@ export const festigkeitslehreSubGoalTasks = {
     // ── [4] Reiner Schub (Niet, Bolzen): τ = F/A ────────────────────────
     4: [
       ni(
-        'Sub-Goal "Reiner Schub (Niet, Bolzen): $\\tau = F/A$": Ein **einschnittiger** Niet ($d = 10\\,\\text{mm}$) wird mit $F = 5\\,\\text{kN}$ auf Schub belastet. Wie groß ist die Scherspannung? (auf eine Nachkommastelle in N/mm²)',
+        'Ein **einschnittiger** Niet ($d = 10\\,\\text{mm}$) wird mit $F = 5\\,\\text{kN}$ auf Schub belastet. Wie groß ist die Scherspannung? (auf eine Nachkommastelle in N/mm²)',
         63.7, 0.5, 'N/mm²',
         `**Ansatz:** Reiner Schub bei einschnittiger Nietverbindung: $\\tau = F/A$ mit $A = \\pi d^2/4$ (eine Scherfläche).
 
@@ -443,7 +443,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Reiner Schub (Niet, Bolzen): $\\tau = F/A$": Was ist der **Unterschied** zwischen der Spannungsverteilung bei Torsion (Welle) und bei reinem Schub (Niet/Bolzen)?',
+        'Was ist der **Unterschied** zwischen der Spannungsverteilung bei Torsion (Welle) und bei reinem Schub (Niet/Bolzen)?',
         [
           'Beide haben über den Querschnitt konstante Spannung.',
           'Bei Torsion ist $\\tau$ linear in $r$, bei reinem Schub wird $\\tau$ als **über den Querschnitt konstant** angenommen.',
@@ -472,7 +472,7 @@ export const festigkeitslehreSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Reiner Schub (Niet, Bolzen): $\\tau = F/A$": Bei einem **zweischnittigen** Bolzen (Kraft wirkt auf zwei Scherebenen) ist die Schubspannung bei gleicher Gesamtkraft nur halb so groß wie bei einem einschnittigen Bolzen gleichen Durchmessers.',
+        'Bei einem **zweischnittigen** Bolzen (Kraft wirkt auf zwei Scherebenen) ist die Schubspannung bei gleicher Gesamtkraft nur halb so groß wie bei einem einschnittigen Bolzen gleichen Durchmessers.',
         true,
         `**Ansatz:** Zweischnittig bedeutet: die Kraft $F$ verteilt sich auf **zwei** Scherflächen $A = \\pi d^2/4$. Effektive Scherfläche: $2A$.
 
@@ -488,7 +488,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Reiner Schub (Niet, Bolzen): $\\tau = F/A$": Ein **zweischnittiger** Bolzen mit $d = 12\\,\\text{mm}$ wird auf Scherung mit $F = 20\\,\\text{kN}$ belastet. Wie groß ist die Scherspannung pro Scherfläche? (auf eine Nachkommastelle in N/mm²)',
+        'Ein **zweischnittiger** Bolzen mit $d = 12\\,\\text{mm}$ wird auf Scherung mit $F = 20\\,\\text{kN}$ belastet. Wie groß ist die Scherspannung pro Scherfläche? (auf eine Nachkommastelle in N/mm²)',
         88.4, 0.5, 'N/mm²',
         `**Ansatz:** Zweischnittig ⇒ effektive Scherfläche $= 2\\cdot A_1$ mit $A_1 = \\pi d^2/4$.
 
@@ -504,7 +504,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Reiner Schub (Niet, Bolzen): $\\tau = F/A$": Bringe die Schritte zur Auslegung einer Schraubenverbindung (gegeben: übertragene Kraft $F$, zulässige Spannung $\\tau_\\text{zul}$, Anzahl Scherflächen $n$) in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Auslegung einer Schraubenverbindung (gegeben: übertragene Kraft $F$, zulässige Spannung $\\tau_\\text{zul}$, Anzahl Scherflächen $n$) in die richtige Reihenfolge.',
         [
           'Anzahl der Scherflächen $n$ feststellen (einschnittig $n=1$, zweischnittig $n=2$)',
           'Erforderliche Scherfläche: $A_\\text{erf} = F/(n\\cdot\\tau_\\text{zul})$',
@@ -534,7 +534,7 @@ export const festigkeitslehreSubGoalTasks = {
     // Sub-Goal 0: Euler-Knicklast F_ki = π² E I/(βL)²
     0: [
       ni(
-        'Sub-Goal "Euler-Knicklast: $F_{ki} = \\pi^2 E I/(\\beta L)^2$": Stahlstab beidseitig gelenkig gelagert. $E = 210\\,000$ MPa, $I = 8\\,000$ mm⁴, $L = 2\\,000$ mm. Wie groß ist die Euler-Knicklast $F_{ki}$ in N?',
+        'Stahlstab beidseitig gelenkig gelagert. $E = 210\\,000$ MPa, $I = 8\\,000$ mm⁴, $L = 2\\,000$ mm. Wie groß ist die Euler-Knicklast $F_{ki}$ in N?',
         4145,
         50,
         'N',
@@ -552,7 +552,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Euler-Knicklast: $F_{ki} = \\pi^2 E I/(\\beta L)^2$": Ein Stab (β = 1) hat eine Knicklast von 10 kN. Wie ändert sich $F_{ki}$, wenn die Länge $L$ verdoppelt wird?',
+        'Ein Stab (β = 1) hat eine Knicklast von 10 kN. Wie ändert sich $F_{ki}$, wenn die Länge $L$ verdoppelt wird?',
         [
           '$F_{ki}$ viertelt sich auf 2{,}5 kN.',
           '$F_{ki}$ halbiert sich auf 5 kN.',
@@ -579,7 +579,7 @@ export const festigkeitslehreSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Euler-Knicklast: $F_{ki} = \\pi^2 E I/(\\beta L)^2$": Die Euler-Knicklast $F_{ki}$ ist linear proportional zum E-Modul $E$ des Werkstoffs.',
+        'Die Euler-Knicklast $F_{ki}$ ist linear proportional zum E-Modul $E$ des Werkstoffs.',
         true,
         `**Ansatz:** $F_{ki} = \\pi^2 \\cdot E \\cdot I / (\\beta L)^2$ — $E$ steht linear im Zähler.
 
@@ -595,7 +595,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Euler-Knicklast: $F_{ki} = \\pi^2 E I/(\\beta L)^2$": Gleicher Stab wie oben ($I = 8\\,000$ mm⁴, $L = 2\\,000$ mm, $\\beta = 1$), aber aus Aluminium ($E = 70\\,000$ MPa). Welche Knicklast?',
+        'Gleicher Stab wie oben ($I = 8\\,000$ mm⁴, $L = 2\\,000$ mm, $\\beta = 1$), aber aus Aluminium ($E = 70\\,000$ MPa). Welche Knicklast?',
         1382,
         30,
         'N',
@@ -613,7 +613,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Euler-Knicklast: $F_{ki} = \\pi^2 E I/(\\beta L)^2$": Bringe die Schritte zur Berechnung einer Euler-Knicklast in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Berechnung einer Euler-Knicklast in die richtige Reihenfolge.',
         [
           'Lagerungsart ablesen und $\\beta$ bestimmen.',
           'Flächenträgheitsmoment $I$ (schwächste Achse) ermitteln.',
@@ -640,7 +640,7 @@ export const festigkeitslehreSubGoalTasks = {
     // Sub-Goal 1: Einspannbeiwerte β
     1: [
       matching(
-        'Sub-Goal "Einspannbeiwerte: $\\beta = 1$ gelenkig/gelenkig, $\\beta = 2$ eingespannt/frei, $\\beta = 0{,}5$ beidseitig eingespannt": Ordne Lagerungsfall und Einspannbeiwert $\\beta$ zu.',
+        'Ordne Lagerungsfall und Einspannbeiwert $\\beta$ zu.',
         [
           { left: 'Beidseitig gelenkig gelagert', right: '$\\beta = 1$' },
           { left: 'Beidseitig eingespannt', right: '$\\beta = 0{,}5$' },
@@ -661,7 +661,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Einspannbeiwerte: $\\beta = 1$ gelenkig/gelenkig, $\\beta = 2$ eingespannt/frei, $\\beta = 0{,}5$ beidseitig eingespannt": Welche Lagerung liefert bei gleichem Stab die **höchste** Euler-Knicklast?',
+        'Welche Lagerung liefert bei gleichem Stab die **höchste** Euler-Knicklast?',
         [
           'Beidseitig eingespannt (β = 0{,}5).',
           'Beidseitig gelenkig (β = 1).',
@@ -688,7 +688,7 @@ export const festigkeitslehreSubGoalTasks = {
         },
       ),
       ni(
-        'Sub-Goal "Einspannbeiwerte: $\\beta = 1$ gelenkig/gelenkig, $\\beta = 2$ eingespannt/frei, $\\beta = 0{,}5$ beidseitig eingespannt": Stab mit $E = 210\\,000$ MPa, $I = 8\\,000$ mm⁴, $L = 2\\,000$ mm, **beidseitig eingespannt** ($\\beta = 0{,}5$). Knicklast $F_{ki}$ in N?',
+        'Stab mit $E = 210\\,000$ MPa, $I = 8\\,000$ mm⁴, $L = 2\\,000$ mm, **beidseitig eingespannt** ($\\beta = 0{,}5$). Knicklast $F_{ki}$ in N?',
         16580,
         200,
         'N',
@@ -706,7 +706,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Einspannbeiwerte: $\\beta = 1$ gelenkig/gelenkig, $\\beta = 2$ eingespannt/frei, $\\beta = 0{,}5$ beidseitig eingespannt": Die **Ersatzknicklänge** ist definiert als $L_\\text{eff} = \\beta \\cdot L$ und entspricht der Länge eines gedachten, beidseitig gelenkig gelagerten Stabs gleicher Knicklast.',
+        'Die **Ersatzknicklänge** ist definiert als $L_\\text{eff} = \\beta \\cdot L$ und entspricht der Länge eines gedachten, beidseitig gelenkig gelagerten Stabs gleicher Knicklast.',
         true,
         `**Ansatz:** Genau das ist die Idee hinter $\\beta$: jede reale Lagerung wird auf den Standardfall "gelenkig/gelenkig" zurückgeführt.
 
@@ -722,7 +722,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Einspannbeiwerte: $\\beta = 1$ gelenkig/gelenkig, $\\beta = 2$ eingespannt/frei, $\\beta = 0{,}5$ beidseitig eingespannt": Eine Fahnenstange ist am Boden einbetoniert und oben frei. Welcher Lagerungsfall und welches $\\beta$ liegen vor?',
+        'Eine Fahnenstange ist am Boden einbetoniert und oben frei. Welcher Lagerungsfall und welches $\\beta$ liegen vor?',
         [
           'Einseitig eingespannt, freies Ende; $\\beta = 2$.',
           'Beidseitig gelenkig; $\\beta = 1$.',
@@ -753,7 +753,7 @@ export const festigkeitslehreSubGoalTasks = {
     // Sub-Goal 2: Flächenträgheitsmoment I — schwächste Achse zählt
     2: [
       ni(
-        'Sub-Goal "Flächenträgheitsmoment $I$: schwächste Achse zählt (kleinstes $I$)": Rechteckquerschnitt $b \\times h = 20 \\times 40$ mm (b = 20, h = 40). Der Stab kann um jede Achse knicken. Welches $I_\\text{min}$ in mm⁴ ist für die Knicklast maßgebend?',
+        'Rechteckquerschnitt $b \\times h = 20 \\times 40$ mm (b = 20, h = 40). Der Stab kann um jede Achse knicken. Welches $I_\\text{min}$ in mm⁴ ist für die Knicklast maßgebend?',
         26667,
         50,
         'mm⁴',
@@ -771,7 +771,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Flächenträgheitsmoment $I$: schwächste Achse zählt (kleinstes $I$)": Warum wird für die Knicklast $I_\\text{min}$ (und nicht $I_\\text{max}$) eingesetzt?',
+        'Warum wird für die Knicklast $I_\\text{min}$ (und nicht $I_\\text{max}$) eingesetzt?',
         [
           'Der Stab knickt immer um die Achse mit dem kleinsten $I$ — das ist die "weichste" Richtung.',
           'Mit $I_\\text{min}$ wird die Rechnung konservativ — man rechnet nur zur Sicherheit das Minimum.',
@@ -798,7 +798,7 @@ export const festigkeitslehreSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Flächenträgheitsmoment $I$: schwächste Achse zählt (kleinstes $I$)": Für einen quadratischen Querschnitt ($b = h = a$) gilt $I_x = I_y = a^4/12$, daher ist jede Achse gleich stark und es gibt kein eindeutiges $I_\\text{min}$.',
+        'Für einen quadratischen Querschnitt ($b = h = a$) gilt $I_x = I_y = a^4/12$, daher ist jede Achse gleich stark und es gibt kein eindeutiges $I_\\text{min}$.',
         true,
         `**Ansatz:** Quadrat ist symmetrisch in x- und y-Richtung, also $I_x = I_y$.
 
@@ -814,7 +814,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Flächenträgheitsmoment $I$: schwächste Achse zählt (kleinstes $I$)": Ordne dem Querschnitt sein Flächenträgheitsmoment (schwächste Achse) zu.',
+        'Ordne dem Querschnitt sein Flächenträgheitsmoment (schwächste Achse) zu.',
         [
           { left: 'Kreis, Durchmesser $d$', right: '$I = \\pi d^4 / 64$' },
           { left: 'Quadrat, Seite $a$', right: '$I = a^4 / 12$' },
@@ -835,7 +835,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Flächenträgheitsmoment $I$: schwächste Achse zählt (kleinstes $I$)": Kreisquerschnitt mit Durchmesser $d = 20$ mm. Wie groß ist $I$ in mm⁴ (gerundet auf ganze Zahl)?',
+        'Kreisquerschnitt mit Durchmesser $d = 20$ mm. Wie groß ist $I$ in mm⁴ (gerundet auf ganze Zahl)?',
         7854,
         20,
         'mm⁴',
@@ -857,7 +857,7 @@ export const festigkeitslehreSubGoalTasks = {
     // Sub-Goal 3: Schlankheitsgrad λ = βL/i, i = √(I/A)
     3: [
       ni(
-        'Sub-Goal "Schlankheitsgrad $\\lambda = \\beta L/i$ mit Trägheitsradius $i = \\sqrt{I/A}$": Quadratischer Stab $a = 30$ mm, Länge $L = 2\\,000$ mm, beidseitig gelenkig ($\\beta = 1$). Schlankheitsgrad $\\lambda$?',
+        'Quadratischer Stab $a = 30$ mm, Länge $L = 2\\,000$ mm, beidseitig gelenkig ($\\beta = 1$). Schlankheitsgrad $\\lambda$?',
         231,
         3,
         '',
@@ -875,7 +875,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Schlankheitsgrad $\\lambda = \\beta L/i$ mit Trägheitsradius $i = \\sqrt{I/A}$": Wie ist der Trägheitsradius $i$ definiert?',
+        'Wie ist der Trägheitsradius $i$ definiert?',
         [
           '$i = \\sqrt{I/A}$ — Wurzel aus Flächenträgheitsmoment geteilt durch Querschnittsfläche.',
           '$i = I/A$ — Flächenträgheitsmoment geteilt durch Fläche.',
@@ -902,7 +902,7 @@ export const festigkeitslehreSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Schlankheitsgrad $\\lambda = \\beta L/i$ mit Trägheitsradius $i = \\sqrt{I/A}$": Der Schlankheitsgrad $\\lambda$ ist eine dimensionslose Zahl, die unabhängig von der Querschnittsgröße angibt, wie "knickgefährdet" ein Stab ist.',
+        'Der Schlankheitsgrad $\\lambda$ ist eine dimensionslose Zahl, die unabhängig von der Querschnittsgröße angibt, wie "knickgefährdet" ein Stab ist.',
         true,
         `**Ansatz:** $\\lambda = \\beta L / i$. Beide Größen haben Einheit Länge → Quotient ist dimensionslos.
 
@@ -918,7 +918,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Schlankheitsgrad $\\lambda = \\beta L/i$ mit Trägheitsradius $i = \\sqrt{I/A}$": Rechteckstab $b \\times h = 20 \\times 40$ mm, $L = 1\\,000$ mm, $\\beta = 1$. Schlankheitsgrad $\\lambda$?',
+        'Rechteckstab $b \\times h = 20 \\times 40$ mm, $L = 1\\,000$ mm, $\\beta = 1$. Schlankheitsgrad $\\lambda$?',
         173,
         3,
         '',
@@ -936,7 +936,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Schlankheitsgrad $\\lambda = \\beta L/i$ mit Trägheitsradius $i = \\sqrt{I/A}$": Bringe die Schritte zur Berechnung des Schlankheitsgrads in die richtige Reihenfolge.',
+        'Bringe die Schritte zur Berechnung des Schlankheitsgrads in die richtige Reihenfolge.',
         [
           'Querschnittsfläche $A$ bestimmen.',
           'Kleinstes Flächenträgheitsmoment $I_\\text{min}$ bestimmen.',
@@ -963,7 +963,7 @@ export const festigkeitslehreSubGoalTasks = {
     // Sub-Goal 4: Euler vs. Tetmajer/Johnson — Gültigkeitsbereiche
     4: [
       mc(
-        'Sub-Goal "Euler nur für elastisches Knicken ($\\sigma_{ki} < R_p$); bei kurzen Stäben Tetmajer/Johnson": In welchem Bereich des Schlankheitsgrads $\\lambda$ ist die **Euler-Formel** für Baustahl (S235) gültig?',
+        'In welchem Bereich des Schlankheitsgrads $\\lambda$ ist die **Euler-Formel** für Baustahl (S235) gültig?',
         [
           '$\\lambda \\gtrsim 100$ (schlanker Bereich).',
           '$\\lambda < 20$ (sehr kurz).',
@@ -990,7 +990,7 @@ export const festigkeitslehreSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Euler nur für elastisches Knicken ($\\sigma_{ki} < R_p$); bei kurzen Stäben Tetmajer/Johnson": Bei einem gedrungenen, kurzen Druckstab ($\\lambda \\approx 20$) versagt der Stab durch plastisches Fließen und nicht durch klassisches Euler-Knicken.',
+        'Bei einem gedrungenen, kurzen Druckstab ($\\lambda \\approx 20$) versagt der Stab durch plastisches Fließen und nicht durch klassisches Euler-Knicken.',
         true,
         `**Ansatz:** Kurze Stäbe haben sehr geringe Knickneigung. Stattdessen erreicht die Druckspannung $F/A$ die Streckgrenze und der Werkstoff fließt.
 
@@ -1006,7 +1006,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Euler nur für elastisches Knicken ($\\sigma_{ki} < R_p$); bei kurzen Stäben Tetmajer/Johnson": Stahlstab (S235, $R_p = 235$ MPa, $E = 210\\,000$ MPa) mit $\\lambda = 150$. Berechne die kritische Euler-Knickspannung $\\sigma_{ki}$ in MPa und entscheide intuitiv: Euler gültig?',
+        'Stahlstab (S235, $R_p = 235$ MPa, $E = 210\\,000$ MPa) mit $\\lambda = 150$. Berechne die kritische Euler-Knickspannung $\\sigma_{ki}$ in MPa und entscheide intuitiv: Euler gültig?',
         92,
         2,
         'MPa',
@@ -1024,7 +1024,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Euler nur für elastisches Knicken ($\\sigma_{ki} < R_p$); bei kurzen Stäben Tetmajer/Johnson": Ordne Schlankheitsbereich (Stahl S235) und zugehöriges Knick-Auslegungsverfahren zu.',
+        'Ordne Schlankheitsbereich (Stahl S235) und zugehöriges Knick-Auslegungsverfahren zu.',
         [
           { left: '$\\lambda \\gtrsim 100$ (schlank)', right: 'Euler-Formel (elastisches Knicken)' },
           { left: '$60 \\lesssim \\lambda \\lesssim 100$ (mittelschlank)', right: 'Tetmajer-Gerade (teilplastisch)' },
@@ -1045,7 +1045,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Euler nur für elastisches Knicken ($\\sigma_{ki} < R_p$); bei kurzen Stäben Tetmajer/Johnson": Ein Stahlstab (S235) hat $\\lambda = 70$. Welches Auslegungsverfahren ist das passende?',
+        'Ein Stahlstab (S235) hat $\\lambda = 70$. Welches Auslegungsverfahren ist das passende?',
         [
           'Tetmajer-Gerade (teilplastisches Knicken im Übergangsbereich).',
           'Euler-Formel — $\\lambda$ ist groß genug.',
@@ -1082,7 +1082,7 @@ export const festigkeitslehreSubGoalTasks = {
     // ── [0] Mittelpunkt: σ_M = (σ_x + σ_y)/2 ───────────────────────────
     0: [
       ni(
-        'Sub-Goal "Mittelpunkt: $\\sigma_M = (\\sigma_x + \\sigma_y)/2$": An einem Bauteil wird gemessen $\\sigma_x = 80\\,\\text{MPa}$, $\\sigma_y = 40\\,\\text{MPa}$, $\\tau_{xy} = 25\\,\\text{MPa}$. Bestimme den Mittelpunkt $\\sigma_M$ des Mohr-Kreises.',
+        'An einem Bauteil wird gemessen $\\sigma_x = 80\\,\\text{MPa}$, $\\sigma_y = 40\\,\\text{MPa}$, $\\tau_{xy} = 25\\,\\text{MPa}$. Bestimme den Mittelpunkt $\\sigma_M$ des Mohr-Kreises.',
         60, 0.5, 'MPa',
         `**Ansatz:** Der Mittelpunkt liegt auf der $\\sigma$-Achse bei $\\sigma_M = (\\sigma_x + \\sigma_y)/2$. $\\tau_{xy}$ wird **nicht** für den Mittelpunkt gebraucht — er verschiebt nur den Kreis vertikal (und damit den Radius), nicht horizontal.
 
@@ -1098,7 +1098,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Mittelpunkt: $\\sigma_M = (\\sigma_x + \\sigma_y)/2$": Ein Druckstab mit Zusatzbiegung liefert $\\sigma_x = 120\\,\\text{MPa}$ (Zug) und $\\sigma_y = -40\\,\\text{MPa}$ (Druck). Wo liegt der Mittelpunkt des Mohr-Kreises?',
+        'Ein Druckstab mit Zusatzbiegung liefert $\\sigma_x = 120\\,\\text{MPa}$ (Zug) und $\\sigma_y = -40\\,\\text{MPa}$ (Druck). Wo liegt der Mittelpunkt des Mohr-Kreises?',
         40, 0.5, 'MPa',
         `**Ansatz:** Vorzeichen konsequent mitschleppen — Druck ist negativ, Zug positiv. $\\sigma_M = (\\sigma_x + \\sigma_y)/2$.
 
@@ -1114,7 +1114,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Mittelpunkt: $\\sigma_M = (\\sigma_x + \\sigma_y)/2$": Bei **reinem Schub** ($\\sigma_x = \\sigma_y = 0$, $\\tau_{xy} \\neq 0$) liegt der Mittelpunkt des Mohr-Kreises …',
+        'Bei **reinem Schub** ($\\sigma_x = \\sigma_y = 0$, $\\tau_{xy} \\neq 0$) liegt der Mittelpunkt des Mohr-Kreises …',
         [
           'im Ursprung ($\\sigma_M = 0$)',
           'bei $\\sigma_M = \\tau_{xy}$',
@@ -1141,7 +1141,7 @@ export const festigkeitslehreSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Mittelpunkt: $\\sigma_M = (\\sigma_x + \\sigma_y)/2$": Beim Drehen des Schnitts um den betrachteten Punkt bleibt der Mittelpunkt des Mohr-Kreises ortsfest — er hängt nicht vom Schnittwinkel ab.',
+        'Beim Drehen des Schnitts um den betrachteten Punkt bleibt der Mittelpunkt des Mohr-Kreises ortsfest — er hängt nicht vom Schnittwinkel ab.',
         true,
         `**Ansatz:** $\\sigma_M$ ist die **halbe Spur** des Spannungstensors: $\\sigma_M = (\\sigma_x + \\sigma_y)/2 = \\text{trace}(\\underline{\\sigma})/2$. Die Spur ist eine **Invariante** gegenüber Drehung.
 
@@ -1157,7 +1157,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       sorting(
-        'Sub-Goal "Mittelpunkt: $\\sigma_M = (\\sigma_x + \\sigma_y)/2$": Bringe die Arbeitsschritte beim Zeichnen des Mohr-Kreises in die richtige Reihenfolge (gegeben: $\\sigma_x, \\sigma_y, \\tau_{xy}$).',
+        'Bringe die Arbeitsschritte beim Zeichnen des Mohr-Kreises in die richtige Reihenfolge (gegeben: $\\sigma_x, \\sigma_y, \\tau_{xy}$).',
         [
           'Vorzeichen klären (Zug +, Druck −, $\\tau$-Konvention)',
           'Mittelpunkt $\\sigma_M = (\\sigma_x + \\sigma_y)/2$ auf die $\\sigma$-Achse einzeichnen',
@@ -1183,7 +1183,7 @@ export const festigkeitslehreSubGoalTasks = {
     // ── [1] Radius: R = √(((σ_x - σ_y)/2)² + τ_xy²) ────────────────────
     1: [
       ni(
-        'Sub-Goal "Radius: $R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$": Gegeben $\\sigma_x = 100\\,\\text{MPa}$, $\\sigma_y = 20\\,\\text{MPa}$, $\\tau_{xy} = 30\\,\\text{MPa}$. Berechne den Radius $R$ des Mohr-Kreises.',
+        'Gegeben $\\sigma_x = 100\\,\\text{MPa}$, $\\sigma_y = 20\\,\\text{MPa}$, $\\tau_{xy} = 30\\,\\text{MPa}$. Berechne den Radius $R$ des Mohr-Kreises.',
         50, 0.5, 'MPa',
         `**Ansatz:** Der Radius ist die Hypotenuse aus zwei Beiträgen: halbe Differenz der Normalspannungen und Schub. Formel: $R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$.
 
@@ -1199,7 +1199,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Radius: $R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$": Eine Welle steht unter reiner Torsion: $\\sigma_x = \\sigma_y = 0$, $\\tau_{xy} = 45\\,\\text{MPa}$. Radius $R$?',
+        'Eine Welle steht unter reiner Torsion: $\\sigma_x = \\sigma_y = 0$, $\\tau_{xy} = 45\\,\\text{MPa}$. Radius $R$?',
         45, 0.5, 'MPa',
         `**Ansatz:** Bei reiner Torsion fällt der Differenz-Term weg, es bleibt nur $\\tau_{xy}$.
 
@@ -1215,7 +1215,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Radius: $R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$": Bei welcher Konfiguration wird der Radius **minimal** (genauer: $R = 0$)?',
+        'Bei welcher Konfiguration wird der Radius **minimal** (genauer: $R = 0$)?',
         [
           '$\\sigma_x = \\sigma_y$ **und** $\\tau_{xy} = 0$',
           '$\\sigma_x = -\\sigma_y$ und $\\tau_{xy} = 0$',
@@ -1242,7 +1242,7 @@ export const festigkeitslehreSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Radius: $R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$": Halbiert man die Schubspannung $\\tau_{xy}$ (alles andere konstant), halbiert sich auch der Radius $R$.',
+        'Halbiert man die Schubspannung $\\tau_{xy}$ (alles andere konstant), halbiert sich auch der Radius $R$.',
         false,
         `**Ansatz:** Die Beziehung ist **nicht** linear in $\\tau_{xy}$, sondern geht über eine Wurzel: $R = \\sqrt{(\\ldots)^2 + \\tau_{xy}^2}$. Nur im **Grenzfall** $\\sigma_x = \\sigma_y$ (Differenz-Term null) wäre es linear — im allgemeinen Fall nicht.
 
@@ -1258,7 +1258,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Radius: $R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$": Ordne die Spannungszustände ihrem Radius zu.',
+        'Ordne die Spannungszustände ihrem Radius zu.',
         [
           { left: '$\\sigma_x = 100,\\;\\sigma_y = 20,\\;\\tau_{xy} = 30$', right: '$R = 50\\,\\text{MPa}$' },
           { left: '$\\sigma_x = \\sigma_y = 0,\\;\\tau_{xy} = 60$', right: '$R = 60\\,\\text{MPa}$' },
@@ -1283,7 +1283,7 @@ export const festigkeitslehreSubGoalTasks = {
     // ── [2] Hauptspannungen: σ_{1,2} = σ_M ± R ─────────────────────────
     2: [
       ni(
-        'Sub-Goal "Hauptspannungen: $\\sigma_{1,2} = \\sigma_M \\pm R$": Gegeben $\\sigma_x = 100\\,\\text{MPa}$, $\\sigma_y = 40\\,\\text{MPa}$, $\\tau_{xy} = 40\\,\\text{MPa}$. Berechne die **größere** Hauptspannung $\\sigma_1$.',
+        'Gegeben $\\sigma_x = 100\\,\\text{MPa}$, $\\sigma_y = 40\\,\\text{MPa}$, $\\tau_{xy} = 40\\,\\text{MPa}$. Berechne die **größere** Hauptspannung $\\sigma_1$.',
         120, 0.5, 'MPa',
         `**Ansatz:** Mittelpunkt $\\sigma_M = (\\sigma_x+\\sigma_y)/2$, Radius $R = \\sqrt{((\\sigma_x-\\sigma_y)/2)^2 + \\tau_{xy}^2}$, dann $\\sigma_{1,2} = \\sigma_M \\pm R$. Größere = mit "+".
 
@@ -1299,7 +1299,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Hauptspannungen: $\\sigma_{1,2} = \\sigma_M \\pm R$": Gleiche Angaben ($\\sigma_x = 100, \\sigma_y = 40, \\tau_{xy} = 40$). Berechne die **kleinere** Hauptspannung $\\sigma_2$.',
+        'Gleiche Angaben ($\\sigma_x = 100, \\sigma_y = 40, \\tau_{xy} = 40$). Berechne die **kleinere** Hauptspannung $\\sigma_2$.',
         20, 0.5, 'MPa',
         `**Ansatz:** $\\sigma_2 = \\sigma_M - R$. Dieselben Zwischengrößen wie für $\\sigma_1$.
 
@@ -1315,7 +1315,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Hauptspannungen: $\\sigma_{1,2} = \\sigma_M \\pm R$": Kombinierter Spannungszustand: $\\sigma_x = 80\\,\\text{MPa}$, $\\sigma_y = -20\\,\\text{MPa}$ (Druck), $\\tau_{xy} = 0$. Größere Hauptspannung $\\sigma_1$?',
+        'Kombinierter Spannungszustand: $\\sigma_x = 80\\,\\text{MPa}$, $\\sigma_y = -20\\,\\text{MPa}$ (Druck), $\\tau_{xy} = 0$. Größere Hauptspannung $\\sigma_1$?',
         80, 0.5, 'MPa',
         `**Ansatz:** Bei $\\tau_{xy}=0$ sind die Achsen $x, y$ bereits Hauptachsen — $\\sigma_x$ und $\\sigma_y$ sind direkt die Hauptspannungen. Formal trotzdem über den Mohr-Kreis.
 
@@ -1331,7 +1331,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Hauptspannungen: $\\sigma_{1,2} = \\sigma_M \\pm R$": Bei welchem Zustand werden beide Hauptspannungen **gleich groß** ($\\sigma_1 = \\sigma_2$)?',
+        'Bei welchem Zustand werden beide Hauptspannungen **gleich groß** ($\\sigma_1 = \\sigma_2$)?',
         [
           'wenn $\\sigma_x = \\sigma_y$ und $\\tau_{xy} = 0$',
           'wenn $\\sigma_x = -\\sigma_y$',
@@ -1358,7 +1358,7 @@ export const festigkeitslehreSubGoalTasks = {
         },
       ),
       sorting(
-        'Sub-Goal "Hauptspannungen: $\\sigma_{1,2} = \\sigma_M \\pm R$": Ordne die Rechenschritte zur Bestimmung der Hauptspannungen.',
+        'Ordne die Rechenschritte zur Bestimmung der Hauptspannungen.',
         [
           'Ausgangsgrößen notieren: $\\sigma_x, \\sigma_y, \\tau_{xy}$ mit Vorzeichen',
           'Mittelpunkt: $\\sigma_M = (\\sigma_x + \\sigma_y)/2$',
@@ -1385,7 +1385,7 @@ export const festigkeitslehreSubGoalTasks = {
     // ── [3] Max. Schubspannung: τ_max = R ──────────────────────────────
     3: [
       ni(
-        'Sub-Goal "Maximale Schubspannung: $\\tau_\\text{max} = R$": Gegeben $\\sigma_1 = 150\\,\\text{MPa}$ und $\\sigma_2 = 30\\,\\text{MPa}$. Wie groß ist die maximale Schubspannung in der Ebene?',
+        'Gegeben $\\sigma_1 = 150\\,\\text{MPa}$ und $\\sigma_2 = 30\\,\\text{MPa}$. Wie groß ist die maximale Schubspannung in der Ebene?',
         60, 0.5, 'MPa',
         `**Ansatz:** $\\tau_\\text{max}$ entspricht dem **Radius** des Mohr-Kreises. Bei bekannten Hauptspannungen gilt $\\tau_\\text{max} = (\\sigma_1 - \\sigma_2)/2 = R$.
 
@@ -1401,7 +1401,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Maximale Schubspannung: $\\tau_\\text{max} = R$": Spannungszustand $\\sigma_x = 100\\,\\text{MPa}$, $\\sigma_y = -40\\,\\text{MPa}$, $\\tau_{xy} = 0$. $\\tau_\\text{max}$?',
+        'Spannungszustand $\\sigma_x = 100\\,\\text{MPa}$, $\\sigma_y = -40\\,\\text{MPa}$, $\\tau_{xy} = 0$. $\\tau_\\text{max}$?',
         70, 0.5, 'MPa',
         `**Ansatz:** Direkt: $\\tau_\\text{max} = R = \\sqrt{((\\sigma_x-\\sigma_y)/2)^2 + \\tau_{xy}^2}$. Mit $\\tau_{xy}=0$ vereinfacht sich das zu $|\\sigma_x - \\sigma_y|/2$.
 
@@ -1417,7 +1417,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Maximale Schubspannung: $\\tau_\\text{max} = R$": Die maximale Schubspannung tritt in Schnittrichtungen auf, die um **45°** zu den Hauptachsen gedreht sind.',
+        'Die maximale Schubspannung tritt in Schnittrichtungen auf, die um **45°** zu den Hauptachsen gedreht sind.',
         true,
         `**Ansatz:** Im Mohr-Kreis ist $\\tau_\\text{max}$ der oberste Scheitelpunkt des Kreises — er liegt gegenüber dem Mittelpunkt **senkrecht** zur $\\sigma$-Achse, also beim doppelten Winkel $2\\varphi = 90°$ relativ zu den Hauptachsen.
 
@@ -1433,7 +1433,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Maximale Schubspannung: $\\tau_\\text{max} = R$": Ein Bauteil steht unter reinem Zug $\\sigma_x = 200\\,\\text{MPa}$, $\\sigma_y = 0$, $\\tau_{xy} = 0$. Welche maximale Schubspannung entsteht im Bauteil?',
+        'Ein Bauteil steht unter reinem Zug $\\sigma_x = 200\\,\\text{MPa}$, $\\sigma_y = 0$, $\\tau_{xy} = 0$. Welche maximale Schubspannung entsteht im Bauteil?',
         [
           '$0\\,\\text{MPa}$ — kein Schub, da $\\tau_{xy} = 0$',
           '$100\\,\\text{MPa}$ — halbe Normalspannung',
@@ -1460,7 +1460,7 @@ export const festigkeitslehreSubGoalTasks = {
         },
       ),
       sorting(
-        'Sub-Goal "Maximale Schubspannung: $\\tau_\\text{max} = R$": Sortiere die Zustände nach aufsteigendem $\\tau_\\text{max}$.',
+        'Sortiere die Zustände nach aufsteigendem $\\tau_\\text{max}$.',
         [
           '$\\sigma_x = \\sigma_y = 80,\\;\\tau_{xy} = 0$ (hydrostatisch)',
           '$\\sigma_x = 100,\\;\\sigma_y = 60,\\;\\tau_{xy} = 0$',
@@ -1486,7 +1486,7 @@ export const festigkeitslehreSubGoalTasks = {
     // ── [4] Hauptachsenwinkel: tan(2φ) = 2τ_xy/(σ_x - σ_y) ─────────────
     4: [
       ni(
-        'Sub-Goal "Hauptachsenwinkel: $\\tan(2\\varphi) = 2\\tau_{xy}/(\\sigma_x - \\sigma_y)$": Gegeben $\\sigma_x = 60\\,\\text{MPa}$, $\\sigma_y = 20\\,\\text{MPa}$, $\\tau_{xy} = 20\\,\\text{MPa}$. Wie groß ist der Hauptachsenwinkel $\\varphi$ (in Grad, auf 0{,}1° genau)?',
+        'Gegeben $\\sigma_x = 60\\,\\text{MPa}$, $\\sigma_y = 20\\,\\text{MPa}$, $\\tau_{xy} = 20\\,\\text{MPa}$. Wie groß ist der Hauptachsenwinkel $\\varphi$ (in Grad, auf 0{,}1° genau)?',
         22.5, 0.3, '°',
         `**Ansatz:** $\\tan(2\\varphi) = 2\\tau_{xy}/(\\sigma_x - \\sigma_y)$. Zähler/Nenner ausrechnen, $\\arctan$, dann durch 2.
 
@@ -1502,7 +1502,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Hauptachsenwinkel: $\\tan(2\\varphi) = 2\\tau_{xy}/(\\sigma_x - \\sigma_y)$": Reiner Schub $\\sigma_x = \\sigma_y = 0$, $\\tau_{xy} = 40\\,\\text{MPa}$. Hauptachsenwinkel $\\varphi$?',
+        'Reiner Schub $\\sigma_x = \\sigma_y = 0$, $\\tau_{xy} = 40\\,\\text{MPa}$. Hauptachsenwinkel $\\varphi$?',
         45, 0.3, '°',
         `**Ansatz:** Nenner $\\sigma_x - \\sigma_y = 0$ ⇒ $\\tan(2\\varphi) \\to \\infty$ ⇒ $2\\varphi = 90°$ ⇒ $\\varphi = 45°$.
 
@@ -1518,7 +1518,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       tf(
-        'Sub-Goal "Hauptachsenwinkel: $\\tan(2\\varphi) = 2\\tau_{xy}/(\\sigma_x - \\sigma_y)$": Im Mohr-Kreis werden Winkel **doppelt** so groß dargestellt wie in der realen Bauteilgeometrie.',
+        'Im Mohr-Kreis werden Winkel **doppelt** so groß dargestellt wie in der realen Bauteilgeometrie.',
         true,
         `**Ansatz:** Beim Übergang von Zustand zu Zustand dreht der Zustandsvektor im Mohr-Kreis mit **doppeltem** Winkel — das ist der Kern der Konstruktion.
 
@@ -1534,7 +1534,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Hauptachsenwinkel: $\\tan(2\\varphi) = 2\\tau_{xy}/(\\sigma_x - \\sigma_y)$": Was folgt aus $\\tau_{xy} = 0$ (bei $\\sigma_x \\neq \\sigma_y$) für den Hauptachsenwinkel?',
+        'Was folgt aus $\\tau_{xy} = 0$ (bei $\\sigma_x \\neq \\sigma_y$) für den Hauptachsenwinkel?',
         [
           '$\\varphi = 0°$ — die Achsen $x, y$ sind bereits Hauptachsen',
           '$\\varphi = 45°$',
@@ -1561,7 +1561,7 @@ export const festigkeitslehreSubGoalTasks = {
         },
       ),
       matching(
-        'Sub-Goal "Hauptachsenwinkel: $\\tan(2\\varphi) = 2\\tau_{xy}/(\\sigma_x - \\sigma_y)$": Ordne die Spannungszustände dem Hauptachsenwinkel $\\varphi$ zu.',
+        'Ordne die Spannungszustände dem Hauptachsenwinkel $\\varphi$ zu.',
         [
           { left: '$\\sigma_x = 100,\\;\\sigma_y = 20,\\;\\tau_{xy} = 0$', right: '$\\varphi = 0°$' },
           { left: '$\\sigma_x = 60,\\;\\sigma_y = 20,\\;\\tau_{xy} = 20$', right: '$\\varphi = 22{,}5°$' },
@@ -1586,7 +1586,7 @@ export const festigkeitslehreSubGoalTasks = {
     // ── [5] Anwendung: Hypothesen (NH, GEH) ────────────────────────────
     5: [
       ni(
-        'Sub-Goal "Anwendung: Hauptspannungshypothese (spröde Werkstoffe), GEH (zähe)": Ein **spröder** Gusseisenflansch hat Hauptspannungen $\\sigma_1 = 80\\,\\text{MPa}$, $\\sigma_2 = -40\\,\\text{MPa}$. Vergleichsspannung nach **NH (Normalspannungshypothese)**?',
+        'Ein **spröder** Gusseisenflansch hat Hauptspannungen $\\sigma_1 = 80\\,\\text{MPa}$, $\\sigma_2 = -40\\,\\text{MPa}$. Vergleichsspannung nach **NH (Normalspannungshypothese)**?',
         80, 0.5, 'MPa',
         `**Ansatz:** Für spröde Werkstoffe (Gusseisen, Keramik, Beton unter Zug) ist die **Normalspannungshypothese** maßgeblich: $\\sigma_v = \\max(|\\sigma_1|, |\\sigma_2|)$ — es zählt die betragsmäßig größte Hauptspannung, weil spröde Werkstoffe durch Trennung versagen, nicht durch Fließen.
 
@@ -1602,7 +1602,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       ni(
-        'Sub-Goal "Anwendung: Hauptspannungshypothese (spröde Werkstoffe), GEH (zähe)": Ein **zäher** Stahl (S355) hat Hauptspannungen $\\sigma_1 = 200\\,\\text{MPa}$, $\\sigma_2 = 80\\,\\text{MPa}$. Vergleichsspannung nach **GEH**? (2D-Form, auf ganze MPa)',
+        'Ein **zäher** Stahl (S355) hat Hauptspannungen $\\sigma_1 = 200\\,\\text{MPa}$, $\\sigma_2 = 80\\,\\text{MPa}$. Vergleichsspannung nach **GEH**? (2D-Form, auf ganze MPa)',
         176, 1, 'MPa',
         `**Ansatz:** Für zähe Werkstoffe gilt die **Gestaltänderungsenergie-Hypothese (GEH, von Mises)**. 2D-Form: $\\sigma_v = \\sqrt{\\sigma_1^2 - \\sigma_1\\sigma_2 + \\sigma_2^2}$.
 
@@ -1618,7 +1618,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       mc(
-        'Sub-Goal "Anwendung: Hauptspannungshypothese (spröde Werkstoffe), GEH (zähe)": Welche Festigkeitshypothese ist für Baustahl (zäh) am geeignetsten?',
+        'Welche Festigkeitshypothese ist für Baustahl (zäh) am geeignetsten?',
         [
           'Gestaltänderungsenergie-Hypothese (GEH / von Mises)',
           'Normalspannungshypothese (NH / Rankine)',
@@ -1645,7 +1645,7 @@ export const festigkeitslehreSubGoalTasks = {
         },
       ),
       tf(
-        'Sub-Goal "Anwendung: Hauptspannungshypothese (spröde Werkstoffe), GEH (zähe)": Bei einachsigem Zug ($\\sigma_1 \\neq 0$, $\\sigma_2 = 0$) liefern NH und GEH denselben Wert für die Vergleichsspannung.',
+        'Bei einachsigem Zug ($\\sigma_1 \\neq 0$, $\\sigma_2 = 0$) liefern NH und GEH denselben Wert für die Vergleichsspannung.',
         true,
         `**Ansatz:** NH: $\\sigma_v = |\\sigma_1|$. GEH 2D: $\\sigma_v = \\sqrt{\\sigma_1^2 - 0 + 0} = |\\sigma_1|$. Beide liefern $|\\sigma_1|$.
 
@@ -1661,7 +1661,7 @@ export const festigkeitslehreSubGoalTasks = {
         ],
       ),
       matching(
-        'Sub-Goal "Anwendung: Hauptspannungshypothese (spröde Werkstoffe), GEH (zähe)": Ordne Werkstoff/Anwendung der **üblichen** Festigkeitshypothese zu.',
+        'Ordne Werkstoff/Anwendung der **üblichen** Festigkeitshypothese zu.',
         [
           { left: 'Baustahl S235, S355 (Bauteil im Maschinenbau)', right: 'GEH (von Mises)' },
           { left: 'Grauguss GJL-250 (Getriebegehäuse)', right: 'NH (Normalspannung)' },
