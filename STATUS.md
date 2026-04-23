@@ -104,7 +104,7 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Lessons | 226 | — | — |
 | Aufgaben (gesamt) | 2735 | 4520+ (≥ 20/Lesson) | 🟡 |
 | Aufgaben mit 4-Block | 811 (30 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 1040 / 1040 (100 %) | 100 % | ✅ |
+| MC mit wrongAnswerExplanations | 1038 / 1038 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 106 / 1134 (9 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -534,7 +534,7 @@ _LGS stecken in jeder FEM-Simulation, Ausgleichsrechnung, Signalverarbeitung. Ei
 - Lessons: 10
 - Aufgaben: **140** (manuell: 61 · supplemental: 79)
 - 4-Block: 30/140 (21 %) 🔴
-- MC-wAE: 65/65 (100 %) ✅
+- MC-wAE: 63/63 (100 %) ✅
 - Sub-Goals: 6/57 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
@@ -581,8 +581,8 @@ _Physik spricht DGL: Schwingungen, Abkühlung, Population, RC-Glieder. DGL-Siche
 | `dgl-2-1` Variation der Konstanten | 5 | 0/5 | 11 | 6/2/1/1/1 | 0/11 | 6/6 | ✅ | +5 Goal, +11 4B |
 | `dgl-2-2` DGL-Systeme | 6 | 0/6 | 10 | 4/2/2/1/1 | 0/10 | 4/4 | ✅ | +6 Goal, +10 4B |
 | `dgl-2-3` Technische Anwendungen | 6 | 0/6 | 11 | 5/2/1/2/1 | 0/11 | 5/5 | ✅ | +6 Goal, +11 4B |
-| `dgl-3-1` Prüfung: DGL 1. Ordnung | 6 | 6/6 | 41 | 18/8/8/4/3 | 30/41 | 18/18 | ✅ | +11 4B |
-| `dgl-3-2` Prüfung: DGL 2. Ordnung & Anwendungen | 6 | 0/6 | 11 | 6/2/2/1/0 | 0/11 | 6/6 | ✅ | +6 Goal, +11 4B |
+| `dgl-3-1` Prüfung: DGL 1. Ordnung | 6 | 0/6 | 11 | 7/1/2/1/0 | 0/11 | 7/7 | ✅ | +6 Goal, +11 4B |
+| `dgl-3-2` Prüfung: DGL 2. Ordnung & Anwendungen | 6 | 6/6 | 41 | 15/10/8/4/4 | 30/41 | 15/15 | ✅ | +11 4B |
 | `dgl-3-3` Prüfung: Systeme & technische Modellbildung | 6 | 0/6 | 11 | 4/3/2/1/1 | 0/11 | 4/4 | ✅ | +6 Goal, +11 4B |
 
 <a id="komplexe-zahlen"></a>
@@ -2675,26 +2675,26 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
   - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
 
-#### `dgl-3-2` · Prüfung: DGL 2. Ordnung & Anwendungen
+#### `dgl-3-1` · Prüfung: DGL 1. Ordnung
 
 - **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
 - **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×2, matching ×1
-- **Typen einsetzen (Rotation):** sorting, matching, number-input, true-false, multiple-choice
+- **Typen vorhanden:** multiple-choice ×7, number-input ×1, true-false ×2, matching ×1
+- **Typen einsetzen (Rotation):** sorting, number-input, matching, true-false, multiple-choice
 - **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Störansatz Polynom: $y_p = $ Polynom gleichen Grades
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Störansatz Trig: $y_p = A \cos\omega x + B \sin\omega x$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Resonanzfall: Wenn Störung homogene Lösung ist → $\times x$ (oder $\times x^2$ bei Doppelwurzel)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Allgemeine Lösung: $y = y_h + y_p$
-  - 🔴 [5] (hoch) **0/5+** Aufgaben — AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y'(x_0)$ → zwei Konstanten
+  - 🔴 [0] (hoch) **0/5+** Aufgaben — Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?
+  - 🔴 [1] (hoch) **0/5+** Aufgaben — Trennbar: $\int dy/g(y) = \int f(x) dx + C$
+  - 🔴 [2] (hoch) **0/5+** Aufgaben — Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$
+  - 🔴 [3] (hoch) **0/5+** Aufgaben — AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen
+  - 🔴 [4] (mittel) **0/5+** Aufgaben — Bernoulli $y' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert
+  - 🔴 [5] (mittel) **0/5+** Aufgaben — Integrierender Faktor bei nicht-exakter DGL: $\mu(x)$ oder $\mu(y)$ finden
 - **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
   - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
 - **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
   - Ablage: `src/content/supplements/differentialgleichungen.js`
-- **4-Block-Erklärung fehlt bei:** `ex-dgl-3-2-a`, `ex-dgl-3-2-b`, `ex-dgl-3-2-c`, `ex-dgl-3-2-d`, `ex-dgl-3-2-e`, `ex-dgl-3-2-f`, `ex-dgl-3-2-g`, `ex-dgl-3-2-h` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
+- **4-Block-Erklärung fehlt bei:** `ex-dgl-3-1-a`, `ex-dgl-3-1-b`, `ex-dgl-3-1-c`, `ex-dgl-3-1-d`, `ex-dgl-3-1-e`, `ex-dgl-3-1-f`, `ex-dgl-3-1-g`, `ex-dgl-3-1-h` … (+3 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `spring-mass-damper`, `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
   - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
@@ -6679,20 +6679,20 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
   - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
-#### `dgl-3-1` · Prüfung: DGL 1. Ordnung
+#### `dgl-3-2` · Prüfung: DGL 2. Ordnung & Anwendungen
 
 - **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
 - **Aufgaben aktuell:** 41 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×18, number-input ×8, true-false ×8, matching ×4, sorting ×3
-- **Typen einsetzen (Rotation):** sorting, matching, number-input
+- **Typen vorhanden:** multiple-choice ×15, number-input ×10, true-false ×8, matching ×4, sorting ×4
+- **Typen einsetzen (Rotation):** matching, sorting, true-false
 - **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - ✅ [0] (hoch) **5/5+** Aufgaben — Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?
-  - ✅ [1] (hoch) **5/5+** Aufgaben — Trennbar: $\int dy/g(y) = \int f(x) dx + C$
-  - ✅ [2] (hoch) **5/5+** Aufgaben — Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$
-  - ✅ [3] (hoch) **5/5+** Aufgaben — AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen
-  - ✅ [4] (mittel) **5/5+** Aufgaben — Bernoulli $y' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert
-  - ✅ [5] (mittel) **5/5+** Aufgaben — Integrierender Faktor bei nicht-exakter DGL: $\mu(x)$ oder $\mu(y)$ finden
-- **4-Block-Erklärung fehlt bei:** `ex-dgl-3-1-a`, `ex-dgl-3-1-b`, `ex-dgl-3-1-c`, `ex-dgl-3-1-d`, `ex-dgl-3-1-e`, `ex-dgl-3-1-f`, `ex-dgl-3-1-g`, `ex-dgl-3-1-h` … (+3 weitere)
+  - ✅ [0] (hoch) **5/5+** Aufgaben — Störansatz Polynom: $y_p = $ Polynom gleichen Grades
+  - ✅ [1] (hoch) **5/5+** Aufgaben — Störansatz Exponential: $y_p = A e^{cx}$ (falls $c$ kein EW der char. Gl.)
+  - ✅ [2] (hoch) **5/5+** Aufgaben — Störansatz Trig: $y_p = A \cos\omega x + B \sin\omega x$
+  - ✅ [3] (hoch) **5/5+** Aufgaben — Resonanzfall: Wenn Störung homogene Lösung ist → $\times x$ (oder $\times x^2$ bei Doppelwurzel)
+  - ✅ [4] (hoch) **5/5+** Aufgaben — Allgemeine Lösung: $y = y_h + y_p$
+  - ✅ [5] (hoch) **5/5+** Aufgaben — AWP bei 2. Ordnung: zwei Bedingungen $y(x_0), y'(x_0)$ → zwei Konstanten
+- **4-Block-Erklärung fehlt bei:** `ex-dgl-3-2-a`, `ex-dgl-3-2-b`, `ex-dgl-3-2-c`, `ex-dgl-3-2-d`, `ex-dgl-3-2-e`, `ex-dgl-3-2-f`, `ex-dgl-3-2-g`, `ex-dgl-3-2-h` … (+3 weitere)
 - **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `spring-mass-damper`, `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
 - **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
   - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
