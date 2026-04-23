@@ -6016,4 +6016,2507 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
     ],
   },
 
+  // ───────────────────────────────────────────────────────────────────────
+  // alg-3-1 — Funktionsbegriff (3 SGs, 16 Aufgaben)
+  // ───────────────────────────────────────────────────────────────────────
+  'alg-3-1': {
+    // [0] Funktionsdefinition
+    0: [
+      tf(
+        'Eine Funktion ordnet jedem Element aus dem Definitionsbereich GENAU EIN Element aus der Zielmenge zu.',
+        true,
+        `**Ansatz:** Definition der Funktion — eindeutige Zuordnung.
+
+**Rechnung:** Jedes $x \\in D$ hat genau ein $y = f(x)$. Nicht null, nicht zwei.
+
+**Probe:** Bei $f(x) = x^2$: $f(3) = 9$ (eindeutig), nicht "mal $9$, mal $-9$".
+
+**Typischer Fehler:** Relationen mit Funktionen verwechseln.`,
+        [
+          'Was ist "genau ein"?',
+          'Eindeutigkeit.',
+          'Pro $x$ ein $y$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['fkt-def'] },
+      ),
+      mc(
+        'Wie prüft man grafisch, ob eine Kurve eine Funktion darstellt?',
+        [
+          'Vertikaler Linientest: jede Senkrechte schneidet die Kurve höchstens einmal',
+          'Horizontaler Linientest: jede Waagrechte schneidet die Kurve einmal',
+          'Die Kurve muss geschlossen sein',
+          'Die Kurve muss durch den Ursprung gehen',
+        ],
+        0,
+        `**Ansatz:** Vertikale Linie = alle Punkte mit gleichem $x$. Mehrere $y$-Werte pro $x$ würden bedeuten: keine Funktion.
+
+**Rechnung:** $x^2 + y^2 = 1$ (Kreis): vertikale Linie $x = 0.5$ schneidet zwei Punkte → keine Funktion.
+
+**Probe:** Parabel $y = x^2$: jede Senkrechte schneidet max. einmal → Funktion.
+
+**Typischer Fehler:** Vertikal/horizontal verwechseln.`,
+        [
+          'Welche Achse teste ich?',
+          'Senkrechte zur $x$-Achse.',
+          'Max. ein Schnittpunkt.',
+        ],
+        {
+          1: 'Horizontaler Linientest prüft Injektivität, nicht Funktions-Eigenschaft.',
+          2: 'Offene Kurven können Funktionen sein (z. B. Geraden).',
+          3: 'Kein Kriterium — $y = x + 1$ ist Funktion, geht nicht durch Ursprung.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['fkt-graph'] },
+      ),
+      mc(
+        'Welche Kurve ist KEINE Funktion?',
+        [
+          'Der Kreis $x^2 + y^2 = 1$',
+          'Die Parabel $y = x^2$',
+          'Die Gerade $y = 2x + 1$',
+          'Die Wurzel $y = \\sqrt{x}$ (nur der positive Ast)',
+        ],
+        0,
+        `**Ansatz:** Vertikaler Linientest.
+
+**Rechnung:** Kreis: Senkrechte $x = 0$ schneidet Kreis bei $y = 1$ UND $y = -1$ → keine Funktion.
+
+**Probe:** Andere bestehen den Test.
+
+**Typischer Fehler:** Kreis als Funktion akzeptieren.`,
+        [
+          'Denke: $x = 0$ in einen Kreis.',
+          'Wie viele $y$-Werte?',
+          'Vertikaler Linientest.',
+        ],
+        {
+          1: 'Jede Senkrechte schneidet Parabel einmal.',
+          2: 'Jede Gerade $y = mx + b$ ist Funktion.',
+          3: 'Positiver Ast ist Funktion (eindeutig).',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['fkt-graph'] },
+      ),
+      mc(
+        'Ein Schüler zeichnet $x = y^2$ und behauptet, es sei eine Funktion $y$ von $x$. Wo liegt der Fehler?',
+        [
+          'Bei $x = 4$ gibt es zwei $y$-Werte: $y = 2$ und $y = -2$. Vertikaler Linientest scheitert.',
+          'Er hätte $y$ quadrieren müssen.',
+          'Die Kurve ist korrekt eine Funktion.',
+          'Die Umformung fehlt.',
+        ],
+        0,
+        `**Ansatz:** $x = y^2$ ergibt $y = \\pm \\sqrt{x}$ — zwei Werte pro $x$.
+
+**Rechnung:** $x = 4 \\Rightarrow y = \\pm 2$.
+
+**Probe:** Vertikaler Test bei $x = 4$: zwei Schnittpunkte.
+
+**Typischer Fehler:** $x$ und $y$ rollenverwirren.`,
+        [
+          'Zeichne $x = y^2$.',
+          'Was passiert bei $x = 4$?',
+          'Zwei Werte für $y$?',
+        ],
+        {
+          1: 'Quadrieren macht die Kurve zwei-ärmig.',
+          2: 'Zahlentest zeigt Gegenteil.',
+          3: 'Das wäre $y = \\sqrt{x}$ oder $y = -\\sqrt{x}$ — unterschiedliche Funktionen.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['fkt-def'] },
+      ),
+      matching(
+        'Ordne jedem Sachverhalt zu, ob es eine Funktion ist oder nicht.',
+        [
+          { left: '$y = x^2$',                      right: 'Funktion' },
+          { left: '$y = \\pm\\sqrt{x}$',            right: 'KEINE Funktion' },
+          { left: 'Geburtstag einer Person',         right: 'Funktion' },
+          { left: 'Personen zu einem Datum',         right: 'KEINE Funktion (viele Personen)' },
+        ],
+        `**Ansatz:** Eindeutige Zuordnung oder nicht.
+
+**Rechnung:** Funktion = pro Input genau ein Output.
+
+**Probe:** Jede Zeile durchgehen.
+
+**Typischer Fehler:** Bijektivität mit Funktion verwechseln.`,
+        [
+          'Pro Input genau ein Output?',
+          'Alltagsbeispiele mit Zuordnungen.',
+          'Eindeutigkeit.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['fkt-def'] },
+      ),
+    ],
+    // [1] Definitionsbereich
+    1: [
+      tf(
+        'Der Definitionsbereich von $f(x) = 1/(x-2)$ ist $\\mathbb{R} \\setminus \\{2\\}$ (alle Zahlen außer $2$).',
+        true,
+        `**Ansatz:** Division durch $0$ verboten — Polstelle ausschließen.
+
+**Rechnung:** $x - 2 = 0 \\Leftrightarrow x = 2$: NICHT erlaubt.
+
+**Probe:** Für alle anderen $x$ ist $f$ definiert.
+
+**Typischer Fehler:** Polstelle nicht ausschließen.`,
+        [
+          'Welche Zahl macht den Nenner $0$?',
+          'Division durch $0$ verboten.',
+          'Definitionsbereich ausschließen.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['def-bereich'] },
+      ),
+      mc(
+        'Bestimme den Definitionsbereich von $f(x) = \\sqrt{x - 3}$.',
+        ['$x \\geq 3$', '$x > 3$', '$x \\leq 3$', '$x \\neq 3$'],
+        0,
+        `**Ansatz:** Radikand $\\geq 0$.
+
+**Rechnung:** $x - 3 \\geq 0 \\Leftrightarrow x \\geq 3$.
+
+**Probe:** $x = 3$: $\\sqrt{0} = 0$ ✓. $x = 2$: $\\sqrt{-1}$ — nicht definiert in $\\mathbb{R}$.
+
+**Typischer Fehler:** $>$ statt $\\geq$.`,
+        [
+          'Wurzel erlaubt was?',
+          'Radikand $\\geq 0$.',
+          '$x - 3 \\geq 0$.',
+        ],
+        {
+          1: 'Bei $x = 3$ ist $\\sqrt{0}$ definiert.',
+          2: 'Falsche Richtung.',
+          3: '$x = 3$ ist erlaubt, nicht verboten.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['def-bereich'] },
+      ),
+      mc(
+        'Welchen maximalen Definitionsbereich hat $f(x) = \\ln(x)$?',
+        ['$x > 0$', '$x \\geq 0$', '$x \\neq 0$', '$\\mathbb{R}$'],
+        0,
+        `**Ansatz:** Logarithmus-Argument $> 0$.
+
+**Rechnung:** $x > 0$ strikt.
+
+**Probe:** $x = 1$: $\\ln 1 = 0$ ✓. $x = 0$: $\\ln 0 = -\\infty$ — nicht definiert.
+
+**Typischer Fehler:** $\\geq 0$.`,
+        [
+          'Log-Argument?',
+          'Muss strikt positiv.',
+          '$x > 0$.',
+        ],
+        {
+          1: '$\\ln 0$ ist nicht definiert.',
+          2: 'Negative Zahlen auch nicht.',
+          3: 'Nur positive Zahlen.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['def-bereich', 'wertebereich'] },
+      ),
+      mc(
+        'Welchen maximalen Definitionsbereich hat $f(x) = \\dfrac{\\sqrt{x+2}}{x-1}$?',
+        ['$x \\geq -2$ und $x \\neq 1$', '$x \\geq -2$', '$x > 1$', '$\\mathbb{R} \\setminus \\{1\\}$'],
+        0,
+        `**Ansatz:** Beide Bedingungen: Radikand $\\geq 0$ UND Nenner $\\neq 0$.
+
+**Rechnung:** $x + 2 \\geq 0 \\Leftrightarrow x \\geq -2$. Und $x - 1 \\neq 0 \\Leftrightarrow x \\neq 1$.
+
+**Probe:** $x = 0$: $\\sqrt{2}/(-1) = -\\sqrt{2}$ ✓. $x = 1$: Division durch $0$.
+
+**Typischer Fehler:** Nur eine Bedingung berücksichtigen.`,
+        [
+          'Zwei Einschränkungen.',
+          'Wurzel UND Nenner prüfen.',
+          'Beide gleichzeitig.',
+        ],
+        {
+          1: '$x = 1$ vergessen.',
+          2: '$x = -3$: $\\sqrt{-1}$ nicht definiert.',
+          3: 'Wurzel-Restriktion fehlt.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['def-bereich', 'wertebereich'] },
+      ),
+      mc(
+        'Ein Schüler sagt, der Definitionsbereich von $f(x) = 1/(x^2 + 1)$ sei $x \\neq 1$. Wo liegt der Fehler?',
+        [
+          '$x^2 + 1$ ist IMMER $> 0$ — nie $0$. Definitionsbereich: $\\mathbb{R}$.',
+          'Er hätte $x \\neq \\pm 1$ schreiben müssen.',
+          'Die Antwort ist korrekt.',
+          'Nenner muss negativ sein.',
+        ],
+        0,
+        `**Ansatz:** Wann ist $x^2 + 1 = 0$? Nie (in $\\mathbb{R}$).
+
+**Rechnung:** $x^2 \\geq 0$, also $x^2 + 1 \\geq 1 > 0$.
+
+**Probe:** Für alle $x$ ist $f(x)$ definiert.
+
+**Typischer Fehler:** $x^2 + 1$ mit $x + 1$ verwechseln.`,
+        [
+          'Kann $x^2 + 1$ null sein?',
+          '$x^2 \\geq 0$, also $x^2 + 1 \\geq 1$.',
+          'Nie $0$.',
+        ],
+        {
+          1: '$x^2 + 1$ ist kein $x^2 - 1$.',
+          2: 'Zahlentest widerlegt.',
+          3: 'Der Nenner ist nie negativ.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['def-bereich'] },
+      ),
+      matching(
+        'Ordne jeder Funktion ihren maximalen Definitionsbereich zu.',
+        [
+          { left: '$f(x) = \\sqrt{x}$',           right: '$x \\geq 0$' },
+          { left: '$f(x) = \\ln(x)$',             right: '$x > 0$' },
+          { left: '$f(x) = 1/x$',                 right: '$x \\neq 0$' },
+          { left: '$f(x) = x^2$',                 right: '$\\mathbb{R}$ (alle reellen Zahlen)' },
+        ],
+        `**Ansatz:** Jeder Typ hat typische Einschränkungen.
+
+**Rechnung:** Wurzel $\\geq 0$, Log $> 0$, Bruch $\\neq 0$, Polynom überall.
+
+**Probe:** Kritische Stellen prüfen.
+
+**Typischer Fehler:** Strikte vs. nicht-strikte Ungleichung.`,
+        [
+          'Wurzel nicht-negativ.',
+          'Logarithmus strikt positiv.',
+          'Polynome unbeschränkt.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['def-bereich'] },
+      ),
+    ],
+    // [2] Injektiv / Surjektiv / Bijektiv
+    2: [
+      matching(
+        'Ordne jedem Begriff seine Definition zu.',
+        [
+          { left: 'Injektiv',     right: 'Verschiedene $x$-Werte haben verschiedene Funktionswerte' },
+          { left: 'Surjektiv',    right: 'Jeder Wert der Zielmenge wird erreicht' },
+          { left: 'Bijektiv',     right: 'Injektiv UND surjektiv' },
+          { left: 'Umkehrbar',    right: 'Bijektiv (hat Umkehrfunktion)' },
+        ],
+        `**Ansatz:** Drei Eigenschaften, präzise Definitionen.
+
+**Rechnung:** Injektiv: $f(a) = f(b) \\Rightarrow a = b$. Surjektiv: $\\forall y \\exists x: f(x) = y$.
+
+**Probe:** Beispiele: $f(x) = 2x$ bijektiv; $f(x) = x^2$ auf $\\mathbb R$ weder.
+
+**Typischer Fehler:** Injektiv und surjektiv verwechseln.`,
+        [
+          'Injektiv = Eindeutigkeit nach unten.',
+          'Surjektiv = Vollständigkeit nach oben.',
+          'Bijektiv = beide.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['injektiv', 'surjektiv', 'bijektiv'] },
+      ),
+      mc(
+        'Ist $f: \\mathbb{R} \\to \\mathbb{R}, f(x) = x^2$ injektiv?',
+        ['Nein, weil $f(2) = f(-2) = 4$', 'Ja', 'Nur auf $[0, \\infty)$', 'Teilweise'],
+        0,
+        `**Ansatz:** Injektivität: verschiedene $x$ → verschiedene $y$.
+
+**Rechnung:** $f(2) = 4$ und $f(-2) = 4$. Verschiedene $x$, gleiches $y$ — nicht injektiv.
+
+**Probe:** Horizontaler Linientest: $y = 4$ schneidet zweimal.
+
+**Typischer Fehler:** Injektivität mit Funktion verwechseln.`,
+        [
+          'Ist die Zuordnung umkehrbar eindeutig?',
+          '$f(2)$ und $f(-2)$.',
+          'Gleiche $y$-Werte bei verschiedenen $x$?',
+        ],
+        {
+          1: 'Auf ganz $\\mathbb{R}$ nicht injektiv.',
+          2: 'Auf $[0, \\infty)$ tatsächlich ja — aber die Frage ist über $\\mathbb{R}$.',
+          3: '"Teilweise" ist keine mathematisch präzise Aussage.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['injektiv'] },
+      ),
+      mc(
+        'Ist $f: \\mathbb{R} \\to \\mathbb{R}, f(x) = x^3 + 1$ bijektiv?',
+        ['Ja', 'Nein, nicht injektiv', 'Nein, nicht surjektiv', 'Nicht entscheidbar'],
+        0,
+        `**Ansatz:** $x^3$ ist bijektiv auf $\\mathbb{R}$; Verschiebung ändert das nicht.
+
+**Rechnung:** $f'(x) = 3x^2 \\geq 0$, streng monoton steigend → injektiv. Werte: $\\mathbb{R}$ vollständig → surjektiv.
+
+**Probe:** Zu jedem $y$ gibt es ein $x = \\sqrt[3]{y-1}$.
+
+**Typischer Fehler:** Mit $x^2$ verwechseln.`,
+        [
+          'Streng monoton?',
+          'Wertebereich $\\mathbb{R}$?',
+          'Beides ✓.',
+        ],
+        {
+          1: 'Streng monoton → injektiv.',
+          2: 'Wertebereich $\\mathbb{R}$.',
+          3: 'Entscheidbar durch Monotonie.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['bijektiv'] },
+      ),
+      mc(
+        'Ein Schüler sagt: "Jede injektive Funktion ist auch surjektiv, weil beides ähnliche Bedingungen sind." Wo liegt der Fehler?',
+        [
+          'Injektiv und surjektiv sind UNABHÄNGIGE Eigenschaften. Bsp.: $f: \\mathbb{R} \\to \\mathbb{R}, f(x) = e^x$ ist injektiv, aber nicht surjektiv (kein $x$ mit $e^x = -1$).',
+          'Injektiv impliziert surjektiv stimmt.',
+          'Er hat recht.',
+          'Surjektiv impliziert injektiv, nicht umgekehrt.',
+        ],
+        0,
+        `**Ansatz:** Die Begriffe sind verschieden und unabhängig.
+
+**Rechnung:** $e^x$: injektiv (streng monoton), aber Wertebereich $(0, \\infty) \\neq \\mathbb{R}$.
+
+**Probe:** Gegenbeispiel zeigt Unabhängigkeit.
+
+**Typischer Fehler:** Definitionen nicht auseinanderhalten.`,
+        [
+          'Prüfe Exponentialfunktion.',
+          'Ist $e^x$ surjektiv auf $\\mathbb{R}$?',
+          'Wertebereich.',
+        ],
+        {
+          1: 'Gegenbeispiel widerlegt.',
+          2: 'Gegenbeispiel widerlegt.',
+          3: 'Auch das stimmt nicht generell.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['injektiv', 'surjektiv'] },
+      ),
+      tf(
+        'Nur bijektive Funktionen haben eine Umkehrfunktion (auf ihrem Bildbereich).',
+        true,
+        `**Ansatz:** Umkehrfunktion braucht eindeutige Umkehrung.
+
+**Rechnung:** Nicht-injektive Funktion: mehrere $x$ für ein $y$ → Umkehrung mehrdeutig.
+
+**Probe:** $f(x) = x^2$ auf $\\mathbb{R}$: nicht umkehrbar. Auf $[0, \\infty)$: umkehrbar, $f^{-1}(y) = \\sqrt{y}$.
+
+**Typischer Fehler:** Umkehrbarkeit mit "existiert irgendwie" verwechseln.`,
+        [
+          'Wann ist Umkehrung eindeutig?',
+          'Bijektivität nötig.',
+          'Auf passendem Bildbereich.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['bijektiv'] },
+      ),
+    ],
+  },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // alg-3-2 — Elementare Funktionen (6 SGs, 30 Aufgaben)
+  // ───────────────────────────────────────────────────────────────────────
+  'alg-3-2': {
+    // [0] Potenzfunktion
+    0: [
+      tf(
+        'Die Potenzfunktion $f(x) = x^n$ mit geradem $n$ ist achsensymmetrisch zur $y$-Achse.',
+        true,
+        `**Ansatz:** $f(-x) = (-x)^n = x^n = f(x)$ für gerade $n$.
+
+**Rechnung:** $x^2, x^4, x^6, \\ldots$ — alle haben Parabel-/U-Form.
+
+**Probe:** $f(-3) = 9 = f(3)$ bei $n = 2$.
+
+**Typischer Fehler:** Gerade vs. ungerade verwechseln.`,
+        [
+          'Was bedeutet achsensymmetrisch?',
+          '$f(-x) = f(x)$.',
+          'Gilt für $(-x)^n$?',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['potenz-fkt'] },
+      ),
+      mc(
+        'Welcher Graph passt zu $f(x) = x^3$?',
+        [
+          'S-Form, punktsymmetrisch zum Ursprung',
+          'Parabel, achsensymmetrisch zur $y$-Achse',
+          'Gerade durch Ursprung',
+          'Exponentialkurve',
+        ],
+        0,
+        `**Ansatz:** Ungerade Potenzen: S-Form, punktsymmetrisch.
+
+**Rechnung:** $f(-x) = -x^3 = -f(x)$ → Punktsymmetrie.
+
+**Probe:** $f(1) = 1$, $f(-1) = -1$, $f(2) = 8$, $f(-2) = -8$.
+
+**Typischer Fehler:** $x^3$ mit $x^2$ verwechseln.`,
+        [
+          'Exponent $3$ — gerade oder ungerade?',
+          'Ungerade: punktsymmetrisch.',
+          'S-Kurve.',
+        ],
+        {
+          1: 'Parabel ist $x^2$, gerade Potenzen.',
+          2: 'Gerade wäre $f(x) = mx$.',
+          3: 'Exponentialkurve $a^x$, nicht $x^n$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['potenz-fkt'] },
+      ),
+      matching(
+        'Ordne jeder Potenzfunktion ihre typische Graphen-Eigenschaft zu.',
+        [
+          { left: '$x^2$',    right: 'Parabel, Minimum bei $0$' },
+          { left: '$x^3$',    right: 'S-Form, Wendepunkt bei $0$' },
+          { left: '$x^4$',    right: 'Parabel-ähnlich, flacher bei $0$' },
+          { left: '$x^{-1}$', right: 'Hyperbel, Polstelle bei $0$' },
+        ],
+        `**Ansatz:** Unterschiedliche Exponenten → unterschiedliche Kurvenformen.
+
+**Rechnung:** Gerade: U-Form; ungerade: S-Form; negativ: Hyperbel.
+
+**Probe:** Zahlenwerte berechnen und zeichnen.
+
+**Typischer Fehler:** $x^{-1}$ mit Polynom verwechseln.`,
+        [
+          'Exponenten bestimmen Form.',
+          'Gerade / ungerade / negativ.',
+          'Jeder Typ eigene Kurve.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['potenz-fkt'] },
+      ),
+      mc(
+        'Ein Schüler zeichnet $f(x) = x^4$ als S-Kurve. Wo liegt der Fehler?',
+        [
+          'Gerade Potenzen (wie $4$) geben U-förmige Kurven (achsensymmetrisch), keine S-Kurven.',
+          'Er hätte $x^{1/4}$ zeichnen müssen.',
+          'Die Zeichnung ist korrekt.',
+          'Potenzfunktionen haben keine Form.',
+        ],
+        0,
+        `**Ansatz:** Parität des Exponenten.
+
+**Rechnung:** $f(-x) = (-x)^4 = x^4 = f(x)$ → achsensymmetrisch zur $y$-Achse.
+
+**Probe:** Zahlentest: $f(-2) = 16 = f(2)$.
+
+**Typischer Fehler:** S-Form für alle hohen Exponenten annehmen.`,
+        [
+          '$x^4$ = $x^4$?',
+          '$(-x)^4 = ?$',
+          'Symmetrie-Check.',
+        ],
+        {
+          1: 'Das wäre Wurzelfunktion, andere Form.',
+          2: 'S-Form wäre bei ungerader Potenz.',
+          3: 'Form hängt vom Exponent ab.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['potenz-fkt'] },
+      ),
+      matching(
+        'Ordne jeder Funktionsgleichung ihre Kurvenform zu.',
+        [
+          { left: '$y = x^2$',             right: 'nach oben geöffnete Parabel' },
+          { left: '$y = -x^2$',            right: 'nach unten geöffnete Parabel' },
+          { left: '$y = x^3$',             right: 'S-Form steigend' },
+          { left: '$y = -x^3$',            right: 'S-Form fallend' },
+        ],
+        `**Ansatz:** Vorzeichen und Exponent bestimmen Form.
+
+**Rechnung:** Minus spiegelt an der $x$-Achse.
+
+**Probe:** Zahlentest.
+
+**Typischer Fehler:** Vorzeichen des Koeffizienten ignorieren.`,
+        [
+          'Vorzeichen des Koeffizienten.',
+          'Parität des Exponenten.',
+          'Spiegelung durch Minus.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['potenz-fkt'] },
+      ),
+    ],
+    // [1] Exponentialfunktion
+    1: [
+      tf(
+        'Die Exponentialfunktion $f(x) = a^x$ (mit $a > 0, a \\neq 1$) hat immer positive Werte — ihr Wertebereich ist $(0, \\infty)$.',
+        true,
+        `**Ansatz:** $a^x > 0$ für alle reellen $x$.
+
+**Rechnung:** $a^0 = 1$, $a^1 = a > 0$, $a^{-1} = 1/a > 0$.
+
+**Probe:** Graph berührt nie die $x$-Achse.
+
+**Typischer Fehler:** $a^x = 0$ denken bei $x \\to -\\infty$.`,
+        [
+          'Wertebereich = alle möglichen $y$-Werte.',
+          'Kann $a^x$ negativ sein?',
+          'Kann $a^x = 0$ sein?',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['exp-fkt'] },
+      ),
+      mc(
+        'Wie verhält sich $f(x) = 2^x$ für $x \\to -\\infty$?',
+        [
+          '$f(x) \\to 0$ (aber nie $= 0$)',
+          '$f(x) \\to -\\infty$',
+          '$f(x) \\to 2$',
+          '$f(x) \\to 1$',
+        ],
+        0,
+        `**Ansatz:** Negativer Exponent = Kehrwert.
+
+**Rechnung:** $2^{-10} = 1/1024 \\approx 0.001$. $2^{-100}$ extrem klein, aber $> 0$.
+
+**Probe:** Niemals negativ, nie $= 0$.
+
+**Typischer Fehler:** Negatives Verhalten mit Polynom verwechseln.`,
+        [
+          '$2^{-n}$ für große $n$?',
+          'Kehrwerte sehr klein.',
+          'Asymptote $y = 0$.',
+        ],
+        {
+          1: 'Exponentialfunktion wird nie negativ.',
+          2: '$2^0 = 1$, nicht $2$.',
+          3: '$1$ wäre die Grenze bei $a = 1$ — aber $a = 2$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['exp-fkt'] },
+      ),
+      ni(
+        'Berechne $3^4$.',
+        81, 0, '',
+        `**Ansatz:** $3 \\cdot 3 \\cdot 3 \\cdot 3$.
+
+**Rechnung:** $9 \\cdot 9 = 81$.
+
+**Probe:** $3^4 = 3^2 \\cdot 3^2 = 9 \\cdot 9 = 81$.
+
+**Typischer Fehler:** $3 \\cdot 4 = 12$.`,
+        [
+          '$3 \\cdot 3 = 9$.',
+          '$9 \\cdot 3 = 27$.',
+          '$27 \\cdot 3 = 81$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['exp-fkt'] },
+      ),
+      mc(
+        'Ein Schüler behauptet, $f(x) = 2^x$ kann den Wert $0$ annehmen (für sehr kleines $x$). Wo liegt der Fehler?',
+        [
+          'Exponentialfunktionen sind IMMER positiv — sie nähern sich $0$ asymptotisch, aber erreichen nie $0$.',
+          'Die Funktion ist für negative $x$ nicht definiert.',
+          'Er hat recht.',
+          'Erst bei $x = -\\infty$.',
+        ],
+        0,
+        `**Ansatz:** Grenzwert vs. Wert unterscheiden.
+
+**Rechnung:** $\\lim_{x \\to -\\infty} 2^x = 0$, aber $2^x > 0$ für alle $x \\in \\mathbb{R}$.
+
+**Probe:** Kein $x$ mit $2^x = 0$.
+
+**Typischer Fehler:** Grenzwert als erreichten Wert missverstehen.`,
+        [
+          'Asymptote vs. Schnittpunkt.',
+          'Wertebereich $(0, \\infty)$.',
+          'Grenzwert $\\neq$ Wert.',
+        ],
+        {
+          1: 'Exponentialfunktion ist für alle $x$ definiert.',
+          2: 'Zahlentest widerlegt.',
+          3: '$x = -\\infty$ ist keine Zahl.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['exp-fkt'] },
+      ),
+      matching(
+        'Ordne jeder Exponentialfunktion ihre Eigenschaft zu.',
+        [
+          { left: '$a = 2$',         right: 'wächst streng monoton' },
+          { left: '$a = 0.5$',       right: 'fällt streng monoton' },
+          { left: '$a = e$',         right: 'natürliche Exponentialfunktion' },
+          { left: '$a = 10$',        right: 'dekadische Exponentialfunktion' },
+        ],
+        `**Ansatz:** Basis bestimmt Wachstumsverhalten.
+
+**Rechnung:** $a > 1$: wachsend; $0 < a < 1$: fallend.
+
+**Probe:** Graph-Skizze.
+
+**Typischer Fehler:** Wachstumsrichtung verwechseln.`,
+        [
+          'Basis größer als $1$ → wachsend.',
+          'Basis zwischen $0$ und $1$ → fallend.',
+          '$e$ natürlich; $10$ dekadisch.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['exp-fkt'] },
+      ),
+    ],
+    // [2] Logarithmusfunktion
+    2: [
+      tf(
+        'Die Logarithmusfunktion $f(x) = \\log_a(x)$ ist nur für $x > 0$ definiert.',
+        true,
+        `**Ansatz:** Logarithmus ist Umkehrung der Exponentialfunktion.
+
+**Rechnung:** Da $a^y > 0$ für alle reellen $y$, gibt es kein $\\log_a(0)$ oder $\\log_a(-1)$.
+
+**Probe:** Wertebereich von $a^x$ = Definitionsbereich von $\\log_a$.
+
+**Typischer Fehler:** $\\log(0) = -\\infty$ als "definiert" akzeptieren.`,
+        [
+          'Umkehrfunktion von $a^x$.',
+          'Wertebereich von $a^x$ = Def.bereich von $\\log_a$.',
+          '$(0, \\infty)$.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['log-fkt'] },
+      ),
+      mc(
+        'Wie verhält sich $\\log(x)$ bei $x \\to 0^+$?',
+        ['$\\log(x) \\to -\\infty$', '$\\log(x) \\to 0$', '$\\log(x) \\to \\infty$', 'Stetig in $0$'],
+        0,
+        `**Ansatz:** Logarithmus bei kleinen positiven Zahlen.
+
+**Rechnung:** $\\log(0.1) = -1, \\log(0.01) = -2, \\ldots$ — immer negativer.
+
+**Probe:** Grenzwert $-\\infty$.
+
+**Typischer Fehler:** $\\log(0)$ als $0$ annehmen.`,
+        [
+          '$\\log(1) = 0$.',
+          '$\\log(1/10) = -1$.',
+          'Was bei noch kleineren?',
+        ],
+        {
+          1: 'Das wäre $\\log(1)$.',
+          2: 'Umgekehrt — für $x \\to \\infty$.',
+          3: 'Polstelle, nicht stetig.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['log-fkt'] },
+      ),
+      ni(
+        'Berechne $\\log_{10}(1000)$.',
+        3, 0, '',
+        `**Ansatz:** $10^? = 1000$.
+
+**Rechnung:** $10^3 = 1000$.
+
+**Probe:** $\\log(1000) = 3$.
+
+**Typischer Fehler:** Verschieben.`,
+        [
+          '$10 \\cdot 10 \\cdot 10 = 1000$.',
+          'Also Exponent $3$.',
+          '$\\log_{10}(1000) = 3$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['log-fkt'] },
+      ),
+      mc(
+        'Ein Schüler sagt, $\\log(-5)$ sei $-\\log(5)$. Wo liegt der Fehler?',
+        [
+          'Logarithmus einer negativen Zahl ist in $\\mathbb{R}$ NICHT definiert — nicht $-\\log(5)$.',
+          'Er hätte $\\log(5) \\cdot (-1)$ rechnen müssen.',
+          'Die Antwort ist korrekt.',
+          'Logarithmen sind linear.',
+        ],
+        0,
+        `**Ansatz:** Definitionsbereich des Logarithmus.
+
+**Rechnung:** $\\log(x)$ braucht $x > 0$. $\\log(-5)$ existiert nicht in $\\mathbb{R}$.
+
+**Probe:** Kein $y$ mit $10^y = -5$.
+
+**Typischer Fehler:** Logarithmus als "Vorzeichen-invers" missverstehen.`,
+        [
+          'Wofür ist $\\log$ definiert?',
+          'Kann $10^y$ negativ sein?',
+          'Existenz vor Berechnung.',
+        ],
+        {
+          1: 'Dasselbe Problem.',
+          2: 'Zahlentest widerlegt.',
+          3: '$\\log$ ist nicht linear (keine Distributivität).',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['log-fkt'] },
+      ),
+      matching(
+        'Ordne jeder Exponentialfunktion ihre Umkehrfunktion zu.',
+        [
+          { left: '$y = 2^x$',             right: '$y = \\log_2(x)$' },
+          { left: '$y = e^x$',             right: '$y = \\ln(x)$' },
+          { left: '$y = 10^x$',            right: '$y = \\log(x)$ (Basis $10$)' },
+          { left: '$y = 0.5^x$',           right: '$y = \\log_{0.5}(x)$' },
+        ],
+        `**Ansatz:** Umkehrfunktion tauscht Basis in Logarithmus.
+
+**Rechnung:** Exponentialgleichung umkehren.
+
+**Probe:** $y = a^x \\Leftrightarrow x = \\log_a(y)$.
+
+**Typischer Fehler:** Basis verwechseln.`,
+        [
+          'Basis bleibt gleich.',
+          'Exp ↔ Log sind Umkehrungen.',
+          'Argument und Wert tauschen.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['log-fkt', 'exp-fkt'] },
+      ),
+    ],
+    // [3] Wachstumshierarchie
+    3: [
+      matching(
+        'Ordne die Funktionen nach ihrer Wachstumsgeschwindigkeit für $x \\to \\infty$ (langsam → schnell).',
+        [
+          { left: '1. Position (langsamstes Wachstum)', right: '$\\ln(x)$' },
+          { left: '2. Position',                         right: '$x^n$ (Potenz)' },
+          { left: '3. Position',                         right: '$a^x$ (Exponential, $a > 1$)' },
+          { left: '4. Position (schnellstes Wachstum)', right: '$x!$ (Fakultät)' },
+        ],
+        `**Ansatz:** Wachstumshierarchie.
+
+**Rechnung:** $\\ln(x) \\ll x^n \\ll a^x \\ll x!$ für $x \\to \\infty$.
+
+**Probe:** Bei $x = 10$: $\\ln 10 \\approx 2.3$, $10^2 = 100$, $2^{10} = 1024$, $10! \\approx 3.6$ Millionen.
+
+**Typischer Fehler:** Exponential und Potenz gleichsetzen.`,
+        [
+          'Log wächst am langsamsten.',
+          'Polynom mittelschnell.',
+          'Exponential und Fakultät sehr schnell.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['wachstum-hierarchie'] },
+      ),
+      mc(
+        'Welche Funktion wächst für $x \\to \\infty$ am schnellsten?',
+        ['$2^x$', '$x^{100}$', '$\\ln(x)$', '$100x$'],
+        0,
+        `**Ansatz:** Exponentialfunktion schlägt jedes Polynom.
+
+**Rechnung:** Für $x \\to \\infty$: $2^x / x^{100} \\to \\infty$.
+
+**Probe:** Bei großen $x$: $2^{200} \\approx 10^{60}$, $200^{100} \\approx 10^{230}$. Bei noch größeren $x$ kippt es.
+
+**Typischer Fehler:** Hohe Potenzen überschätzen.`,
+        [
+          'Exponent im Exponent?',
+          'Oder als Basis?',
+          'Exponentialfunktion.',
+        ],
+        {
+          1: 'Polynome werden von Exp überholt.',
+          2: 'Log am langsamsten.',
+          3: 'Linear am langsamsten unter den Polynomen.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['wachstum-hierarchie'] },
+      ),
+      mc(
+        'Was gilt für große $x$: $x^{1000}$ oder $1.01^x$?',
+        [
+          '$1.01^x$ wird größer (Exponentialfunktion schlägt jedes Polynom)',
+          '$x^{1000}$ ist immer größer',
+          'Beide gleich',
+          'Hängt von $x$ ab',
+        ],
+        0,
+        `**Ansatz:** Auch bei Basis knapp über $1$ schlägt Exp jedes Polynom.
+
+**Rechnung:** Für $x = 10^6$: $x^{1000} = 10^{6000}$. $1.01^{10^6} = ?$ Mit $\\ln(1.01) \\approx 0.01$: $1.01^{10^6} \\approx e^{10^4} = 10^{4343}$. Noch kleiner.
+
+**Für $x = 10^7$:** $1.01^{10^7} \\approx e^{10^5} = 10^{43\,429}$. $x^{1000} = 10^{7000}$. Nun ist Exp größer.
+
+**Probe:** Irgendwann kippt es immer.
+
+**Typischer Fehler:** Nicht groß genug denken.`,
+        [
+          'Wachstumshierarchie.',
+          'Exp schlägt Polynom langfristig.',
+          'Auch bei kleiner Basis.',
+        ],
+        {
+          1: 'Polynom wird letztendlich überholt.',
+          2: 'Ungleich in asymptotischem Verhalten.',
+          3: 'Hängt von $x$ ab, aber Exp gewinnt letztendlich.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['wachstum-hierarchie'] },
+      ),
+      mc(
+        'Ein Schüler behauptet, $x^2$ wachse schneller als $e^x$ für große $x$. Wo liegt der Fehler?',
+        [
+          'Falsch — $e^x$ schlägt JEDES Polynom für $x \\to \\infty$. $e^x / x^2 \\to \\infty$.',
+          'Er hat recht — $x^2$ wächst schneller.',
+          'Beide wachsen gleich.',
+          'Es hängt vom Bereich ab.',
+        ],
+        0,
+        `**Ansatz:** Wachstumshierarchie ist fix.
+
+**Rechnung:** $e^{100} \\approx 2.7 \\cdot 10^{43}$, $100^2 = 10^4$. $e^{100} \\gg 10^4$.
+
+**Probe:** L'Hôpital: $\\lim_{x\\to\\infty} x^2/e^x = 0$.
+
+**Typischer Fehler:** Kleine $x$ betrachten und verallgemeinern.`,
+        [
+          'Wer schlägt wen?',
+          'Exponential > Polynom langfristig.',
+          'Zahlentest bei $x = 100$.',
+        ],
+        {
+          1: 'Zahlentest widerlegt.',
+          2: 'Wachstumsraten unterschiedlich.',
+          3: 'Asymptotisch eindeutig.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['wachstum-hierarchie'] },
+      ),
+      sorting(
+        'Bringe die Funktionen in die Reihenfolge langsam → schnell wachsend (für $x \\to \\infty$).',
+        [
+          '$\\ln(x)$ (logarithmisch)',
+          '$\\sqrt{x}$ (Wurzel, polynomial Grad $1/2$)',
+          '$x$ (linear)',
+          '$x^2$ (quadratisch)',
+          '$2^x$ (exponential)',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Wachstumshierarchie.
+
+**Rechnung:** $\\ln(x) \\ll \\sqrt{x} \\ll x \\ll x^2 \\ll 2^x$.
+
+**Probe:** Bei $x = 100$: $\\ln 100 \\approx 4.6$, $\\sqrt{100} = 10$, $x = 100$, $x^2 = 10^4$, $2^{100} \\approx 10^{30}$.
+
+**Typischer Fehler:** Reihenfolge vertauschen.`,
+        [
+          'Log am langsamsten.',
+          'Potenzen aufsteigend.',
+          'Exp am schnellsten.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['wachstum-hierarchie'] },
+      ),
+    ],
+    // [4] Eulersche Zahl
+    4: [
+      tf(
+        'Die Eulersche Zahl $e \\approx 2{,}718$ ist die Basis des natürlichen Logarithmus.',
+        true,
+        `**Ansatz:** $\\ln(x) = \\log_e(x)$.
+
+**Rechnung:** $e = \\lim_{n\\to\\infty} (1 + 1/n)^n$.
+
+**Probe:** $\\ln(e) = 1$. $e^1 = e$.
+
+**Typischer Fehler:** $e$ als normale Konstante behandeln.`,
+        [
+          '$e$ — Zahl.',
+          '$\\ln$ — zugehöriger Logarithmus.',
+          'Natürlich: Ableitung und Funktion sind gleich.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['euler-zahl'] },
+      ),
+      mc(
+        'Was ist $e^0$?',
+        ['$1$', '$e$', '$0$', 'Nicht definiert'],
+        0,
+        `**Ansatz:** $a^0 = 1$ für jedes $a \\neq 0$.
+
+**Rechnung:** $e^0 = 1$.
+
+**Probe:** Aus Potenzgesetz $a^m / a^m = a^{m-m} = a^0 = 1$.
+
+**Typischer Fehler:** $e^0 = e$ denken.`,
+        [
+          'Potenzgesetz.',
+          'Jede Basis hoch $0$ = $1$.',
+          '$e^0 = 1$.',
+        ],
+        {
+          1: 'Das wäre $e^1$.',
+          2: '$0^0$ ist unbestimmt; $e^0 = 1$.',
+          3: 'Doch — klar definiert als $1$.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['euler-zahl'] },
+      ),
+      ni(
+        'Berechne $\\ln(e)$.',
+        1, 0, '',
+        `**Ansatz:** $\\ln(e) = \\log_e(e) = 1$.
+
+**Rechnung:** Basis gleich Argument → $1$.
+
+**Probe:** $e^1 = e$.
+
+**Typischer Fehler:** $\\ln(e) = e$ denken.`,
+        [
+          '$\\log_a(a) = 1$.',
+          'Basis = Argument.',
+          'Ergebnis $1$.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['euler-zahl'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $\\ln(e^2) = e^2$. Wo liegt der Fehler?',
+        [
+          '$\\ln$ und $\\exp$ heben sich auf: $\\ln(e^2) = 2$.',
+          'Er hätte $2 \\ln e$ rechnen müssen (ist dasselbe).',
+          'Die Antwort ist korrekt.',
+          '$\\ln(e^2) = e^2 \\cdot 2$.',
+        ],
+        0,
+        `**Ansatz:** Umkehr-Identität: $\\ln(e^x) = x$.
+
+**Rechnung:** $\\ln(e^2) = 2$.
+
+**Probe:** Über Potenzregel: $\\ln(e^2) = 2\\ln(e) = 2 \\cdot 1 = 2$.
+
+**Typischer Fehler:** Funktionen nicht aufheben.`,
+        [
+          'Was ist $\\ln(e^x)$?',
+          'Umkehrfunktion.',
+          'Ergibt $x$.',
+        ],
+        {
+          1: 'Doch — das ergibt dasselbe: $2 \\cdot 1 = 2$. Die Fehler-Antwort ist $e^2$.',
+          2: 'Zahlentest widerlegt.',
+          3: 'Unsinnige Formel.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['euler-zahl'] },
+      ),
+      matching(
+        'Ordne jeder Eigenschaft von $e^x$ ihre Beschreibung zu.',
+        [
+          { left: '$(e^x)\' = e^x$',           right: 'Ableitung gleicht der Funktion' },
+          { left: '$\\int e^x dx = e^x + C$',  right: 'Stammfunktion gleicht der Funktion' },
+          { left: '$e^x > 0$',                  right: 'immer positiv' },
+          { left: '$\\lim_{x \\to \\infty} e^x = \\infty$', right: 'streng monoton wachsend' },
+        ],
+        `**Ansatz:** Schlüsseleigenschaften von $e^x$.
+
+**Rechnung:** Einzigartig bei $e^x$: Ableitung und Stammfunktion sind gleich.
+
+**Probe:** Standard-Eigenschaften.
+
+**Typischer Fehler:** Mit anderen Exponentialfunktionen verwechseln.`,
+        [
+          'Besondere Eigenschaft: Ableitung gleich Funktion.',
+          'Positivität, Monotonie.',
+          'Grund für die Bedeutung in Analysis.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['euler-zahl'] },
+      ),
+    ],
+    // [5] Wurzelfunktion
+    5: [
+      tf(
+        'Die Wurzelfunktion $f(x) = \\sqrt{x}$ ist nur für $x \\geq 0$ definiert und hat Wertebereich $[0, \\infty)$.',
+        true,
+        `**Ansatz:** Quadratwurzel-Definition.
+
+**Rechnung:** $\\sqrt{x}$ in $\\mathbb{R}$ nur für $x \\geq 0$. Ergebnis per Konvention positiv.
+
+**Probe:** $\\sqrt{4} = 2$, $\\sqrt{0} = 0$, $\\sqrt{-1}$ nicht in $\\mathbb{R}$.
+
+**Typischer Fehler:** $\\sqrt{x}$ auch für negative $x$ akzeptieren.`,
+        [
+          'Wurzel — welche Basis?',
+          'Nicht-negativ.',
+          '$0$ eingeschlossen.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['wurzel-fkt'] },
+      ),
+      mc(
+        'Welche Form hat der Graph von $\\sqrt{x}$?',
+        [
+          'Im ersten Quadranten, startet in $(0, 0)$, wächst langsam',
+          'Parabel',
+          'Gerade',
+          'Hyperbel',
+        ],
+        0,
+        `**Ansatz:** $\\sqrt{x}$ ist Umkehrfunktion von $x^2$ (auf positivem Ast).
+
+**Rechnung:** $\\sqrt{0} = 0$, $\\sqrt{1} = 1$, $\\sqrt{4} = 2$, $\\sqrt{9} = 3$.
+
+**Probe:** Wachstum wird immer langsamer.
+
+**Typischer Fehler:** Mit Parabel verwechseln.`,
+        [
+          'Start bei $(0, 0)$.',
+          'Immer im ersten Quadranten.',
+          'Langsames Wachstum.',
+        ],
+        {
+          1: 'Parabel ist $y = x^2$.',
+          2: 'Keine Gerade.',
+          3: 'Hyperbel ist $y = 1/x$.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['wurzel-fkt'] },
+      ),
+      ni(
+        'Berechne $\\sqrt{49}$.',
+        7, 0, '',
+        `**Ansatz:** $7^2 = 49$.
+
+**Rechnung:** $\\sqrt{49} = 7$.
+
+**Probe:** $7^2 = 49$ ✓.
+
+**Typischer Fehler:** $49/2 = 24.5$.`,
+        [
+          '$7 \\cdot 7 = 49$.',
+          'Also $\\sqrt{49} = 7$.',
+          'Nicht Division.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['wurzel-fkt'] },
+      ),
+      mc(
+        'Ein Schüler sagt, $\\sqrt{16} = \\pm 4$. Wo liegt der Fehler?',
+        [
+          'Die Wurzelfunktion liefert per Konvention nur den POSITIVEN Wert: $\\sqrt{16} = 4$.',
+          'Die Wurzel ist nicht definiert.',
+          'Er hat recht.',
+          '$\\sqrt{16} = 2$.',
+        ],
+        0,
+        `**Ansatz:** Wurzelfunktion ist eindeutig.
+
+**Rechnung:** $\\sqrt{16} = 4$ (nicht $-4$). $(-4)^2 = 16$ stimmt, aber $\\sqrt{16}$ ist per Konvention der positive Ast.
+
+**Probe:** Ohne Konvention wäre $\\sqrt{}$ keine Funktion.
+
+**Typischer Fehler:** Quadratwurzel mit Gleichungslösung verwechseln.`,
+        [
+          'Wurzelfunktion ist eindeutig.',
+          'Gleichung $x^2 = 16$ hat zwei Lösungen.',
+          'Aber $\\sqrt{16}$ ist nur eine.',
+        ],
+        {
+          1: '$\\sqrt{16}$ ist für $16 > 0$ definiert.',
+          2: 'Wurzelfunktion muss eindeutig sein.',
+          3: '$\\sqrt{16} = 4$, nicht $2$.',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['wurzel-fkt'] },
+      ),
+      matching(
+        'Ordne jeder Wurzelart ihren Definitionsbereich zu.',
+        [
+          { left: '$\\sqrt{x}$ (Quadratwurzel)',   right: '$x \\geq 0$' },
+          { left: '$\\sqrt[3]{x}$ (Kubikwurzel)',  right: '$x \\in \\mathbb{R}$' },
+          { left: '$\\sqrt[4]{x}$',                right: '$x \\geq 0$' },
+          { left: '$\\sqrt[5]{x}$',                right: '$x \\in \\mathbb{R}$' },
+        ],
+        `**Ansatz:** Gerade Wurzel braucht $\\geq 0$; ungerade akzeptiert auch negativ.
+
+**Rechnung:** $\\sqrt[n]{-x}$ in $\\mathbb{R}$ nur für ungerade $n$.
+
+**Probe:** $\\sqrt[3]{-8} = -2$; $\\sqrt[4]{-8}$ nicht definiert.
+
+**Typischer Fehler:** Alle Wurzeln gleich behandeln.`,
+        [
+          'Gerade Wurzel: $\\geq 0$.',
+          'Ungerade Wurzel: alle reellen Zahlen.',
+          'Parität entscheidet.',
+        ],
+        { stage: 'transfer', subGoal: 5, uses: ['wurzel-fkt'] },
+      ),
+    ],
+  },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // alg-3-3 — Funktionsoperationen (6 SGs, 30 Aufgaben)
+  // ───────────────────────────────────────────────────────────────────────
+  'alg-3-3': {
+    // [0] Horizontale Verschiebung
+    0: [
+      tf(
+        'Der Graph von $f(x - 2)$ ist der Graph von $f(x)$ um $2$ Einheiten nach RECHTS verschoben.',
+        true,
+        `**Ansatz:** $f(x - a)$ verschiebt nach rechts (kontraintuitiv!).
+
+**Rechnung:** Argument $x - 2 = 0$ wenn $x = 2$. Also steht dort, wo früher $x = 0$ war, jetzt $x = 2$ → rechts verschoben.
+
+**Probe:** $f(x) = x^2$, $f(x-2) = (x-2)^2$. Neue Nullstelle bei $x = 2$.
+
+**Typischer Fehler:** Minus als "nach links" interpretieren.`,
+        [
+          'Wohin verschiebt Minus im Argument?',
+          'Nach rechts (umgekehrt).',
+          'Zahlentest mit $f(x) = x^2$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['trafo-hor-verschieben'] },
+      ),
+      mc(
+        'Um wie viel und in welche Richtung wird $f(x) = x^2$ durch $g(x) = (x+3)^2$ verschoben?',
+        ['$3$ nach LINKS', '$3$ nach RECHTS', '$3$ nach OBEN', '$9$ nach RECHTS'],
+        0,
+        `**Ansatz:** $f(x + a)$ verschiebt um $|a|$ nach LINKS (Vorzeichen dreht sich).
+
+**Rechnung:** $g(x) = (x+3)^2 = f(x - (-3))$. Rechts um $-3$ = links um $3$.
+
+**Probe:** Nullstelle bei $x = -3$. Originalparabel bei $x = 0$. Also $3$ nach links.
+
+**Typischer Fehler:** "+3" als "3 nach rechts" interpretieren.`,
+        [
+          'Setze $f(x) = x^2$ ein.',
+          'Wo liegt Nullstelle von $g$?',
+          'Bei $x = -3$: links vom Original.',
+        ],
+        {
+          1: 'Vorzeichen umgekehrt.',
+          2: 'Horizontale Verschiebung, nicht vertikale.',
+          3: '$9$ ist nicht der Verschiebebetrag.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['trafo-hor-verschieben'] },
+      ),
+      mc(
+        'Welche Funktion verschiebt $f(x) = \\sqrt{x}$ um $5$ Einheiten nach rechts?',
+        ['$g(x) = \\sqrt{x - 5}$', '$g(x) = \\sqrt{x + 5}$', '$g(x) = \\sqrt{x} - 5$', '$g(x) = \\sqrt{x} + 5$'],
+        0,
+        `**Ansatz:** Rechts = Minus im Argument.
+
+**Rechnung:** $f(x - 5) = \\sqrt{x - 5}$.
+
+**Probe:** Neuer Startpunkt bei $x = 5$ (Original bei $x = 0$).
+
+**Typischer Fehler:** Plus statt Minus.`,
+        [
+          'Rechts = Minus im Argument.',
+          'Start bei $x = 5$.',
+          '$\\sqrt{x - 5}$.',
+        ],
+        {
+          1: 'Nach links statt rechts.',
+          2: 'Vertikale Verschiebung.',
+          3: 'Vertikal hoch statt horizontal.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['trafo-hor-verschieben'] },
+      ),
+      mc(
+        'Ein Schüler zeichnet $g(x) = (x - 4)^2$ als Parabel mit Scheitel bei $(-4, 0)$. Wo liegt der Fehler?',
+        [
+          'Vorzeichen ist kontraintuitiv: $g(x) = f(x-4)$ → Scheitel bei $(+4, 0)$, nicht $(-4, 0)$.',
+          'Er müsste quadratische Ergänzung anwenden.',
+          'Alles korrekt.',
+          'Scheitel ist immer bei $(0, 0)$.',
+        ],
+        0,
+        `**Ansatz:** $f(x - a)$ verschiebt um $+a$ nach rechts, nicht nach links.
+
+**Rechnung:** Scheitel von $(x-4)^2$ bei $x = 4$ (wo $x - 4 = 0$).
+
+**Probe:** $g(4) = 0$, $g(0) = 16$.
+
+**Typischer Fehler:** Minus als "nach links" interpretieren.`,
+        [
+          'Wo wird $x - 4 = 0$?',
+          'Bei $x = 4$.',
+          'Scheitel dort.',
+        ],
+        {
+          1: 'Quadratische Ergänzung ist unnötig — schon in Scheitelform.',
+          2: 'Zahlentest widerlegt.',
+          3: 'Scheitel ist nicht immer bei $(0, 0)$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['trafo-hor-verschieben'] },
+      ),
+      matching(
+        'Ordne jeder Transformation die zugehörige Verschiebung zu.',
+        [
+          { left: '$f(x - 3)$',   right: '$3$ nach RECHTS' },
+          { left: '$f(x + 3)$',   right: '$3$ nach LINKS' },
+          { left: '$f(x - 10)$',  right: '$10$ nach RECHTS' },
+          { left: '$f(x + 1)$',   right: '$1$ nach LINKS' },
+        ],
+        `**Ansatz:** Vorzeichen im Argument umgekehrt mit Richtung.
+
+**Rechnung:** Minus → rechts; Plus → links.
+
+**Probe:** Zahlentest für jede.
+
+**Typischer Fehler:** Intuitive Zuordnung.`,
+        [
+          'Argument-Vorzeichen.',
+          'Wo wird das Argument $0$?',
+          'Dort liegt der "verschobene Ursprung".',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['trafo-hor-verschieben'] },
+      ),
+    ],
+    // [1] Vertikale Verschiebung
+    1: [
+      tf(
+        'Der Graph von $f(x) + 5$ ist der Graph von $f(x)$ um $5$ Einheiten nach OBEN verschoben.',
+        true,
+        `**Ansatz:** $+b$ außen → nach oben.
+
+**Rechnung:** Jeder Funktionswert wird um $5$ erhöht.
+
+**Probe:** $f(x) = x^2$, $g(x) = x^2 + 5$. Scheitel verschiebt sich von $(0,0)$ nach $(0,5)$.
+
+**Typischer Fehler:** Vertikale und horizontale Verschiebung verwechseln.`,
+        [
+          '$+b$ außen.',
+          'Vertikal nach oben.',
+          'Intuitiv (nicht kontraintuitiv wie horizontal).',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['trafo-vert-verschieben'] },
+      ),
+      mc(
+        'Wie verschiebt $g(x) = f(x) - 7$ den Graphen von $f$?',
+        ['$7$ nach UNTEN', '$7$ nach OBEN', '$7$ nach LINKS', '$7$ nach RECHTS'],
+        0,
+        `**Ansatz:** $-b$ außen → nach unten.
+
+**Rechnung:** Jeder Funktionswert um $7$ verringert.
+
+**Probe:** $f(0) = 5$, $g(0) = 5 - 7 = -2$.
+
+**Typischer Fehler:** Mit horizontaler Verschiebung verwechseln.`,
+        [
+          '$-b$ außen.',
+          'Verringert die $y$-Werte.',
+          'Nach unten.',
+        ],
+        {
+          1: 'Minus außen = nach unten.',
+          2: 'Horizontal braucht Argument-Änderung.',
+          3: 'Ebenso.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['trafo-vert-verschieben'] },
+      ),
+      ni(
+        'Eine Funktion $f(x) = x^2$ wird um $3$ Einheiten nach oben verschoben. Welchen Wert hat die neue Funktion bei $x = 2$?',
+        7, 0, '',
+        `**Ansatz:** $g(x) = f(x) + 3 = x^2 + 3$.
+
+**Rechnung:** $g(2) = 4 + 3 = 7$.
+
+**Probe:** $f(2) = 4$, also $f(2) + 3 = 7$.
+
+**Typischer Fehler:** Nur $f(2)$ rechnen.`,
+        [
+          'Neue Funktion: $g(x) = x^2 + 3$.',
+          '$g(2) = 4 + 3$.',
+          '$= 7$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['trafo-vert-verschieben'] },
+      ),
+      mc(
+        'Ein Schüler sagt, $g(x) = f(x) + 2$ verschiebt den Graphen nach LINKS. Wo liegt der Fehler?',
+        [
+          '$+b$ außen ist VERTIKAL (nach oben), nicht horizontal.',
+          'Er hätte nach rechts sagen müssen.',
+          'Kein Fehler.',
+          'Das $+2$ gehört ins Argument.',
+        ],
+        0,
+        `**Ansatz:** Außen = vertikal.
+
+**Rechnung:** $+2$ außen: nach oben.
+
+**Probe:** $g(0) = f(0) + 2$.
+
+**Typischer Fehler:** Vertikal und horizontal nicht unterscheiden.`,
+        [
+          'Wo steht das $+2$?',
+          'Außen oder im Argument?',
+          'Außen = vertikal.',
+        ],
+        {
+          1: 'Auch horizontal wäre falsch.',
+          2: 'Zahlentest widerlegt.',
+          3: 'Wenn es im Argument wäre, wäre es $f(x+2)$ = links.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['trafo-vert-verschieben'] },
+      ),
+      matching(
+        'Ordne jede Transformation ihrer Verschiebung zu.',
+        [
+          { left: '$f(x) + 5$',          right: '$5$ nach OBEN (vertikal)' },
+          { left: '$f(x - 5)$',          right: '$5$ nach RECHTS (horizontal)' },
+          { left: '$f(x) - 2$',          right: '$2$ nach UNTEN (vertikal)' },
+          { left: '$f(x + 2)$',          right: '$2$ nach LINKS (horizontal)' },
+        ],
+        `**Ansatz:** Argument = horizontal; außen = vertikal.
+
+**Rechnung:** Vier Varianten.
+
+**Probe:** Jede Zeile mit Zahlen prüfen.
+
+**Typischer Fehler:** Horizontal mit vertikal verwechseln.`,
+        [
+          'Innen = horizontal (Vorzeichen dreht).',
+          'Außen = vertikal (wie erwartet).',
+          'Vier Kombinationen.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['trafo-vert-verschieben', 'trafo-hor-verschieben'] },
+      ),
+    ],
+    // [2] Streckung
+    2: [
+      tf(
+        'Für $c > 1$ streckt $c \\cdot f(x)$ den Graphen VERTIKAL um den Faktor $c$.',
+        true,
+        `**Ansatz:** Vertikale Streckung: alle $y$-Werte mal $c$.
+
+**Rechnung:** $f(x) = 1$ → $c \\cdot f(x) = c$.
+
+**Probe:** Parabel $x^2$ → $2x^2$ steiler.
+
+**Typischer Fehler:** Horizontal und vertikal verwechseln.`,
+        [
+          '$c \\cdot f(x)$ außen.',
+          'Alle $y$-Werte multipliziert.',
+          'Vertikal gestreckt.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['trafo-vert-streck', 'trafo-hor-streck'] },
+      ),
+      mc(
+        'Wie wirkt $g(x) = 3f(x)$ auf den Graphen von $f$?',
+        ['Vertikal um Faktor $3$ gestreckt', 'Horizontal um Faktor $3$ gestaucht', 'Um $3$ nach oben verschoben', 'Um $3$ nach rechts verschoben'],
+        0,
+        `**Ansatz:** $c$ außen → vertikale Streckung.
+
+**Rechnung:** Jeder $y$-Wert mit $3$ multipliziert.
+
+**Probe:** $f(2) = 4 \\to g(2) = 12$.
+
+**Typischer Fehler:** Mit Verschiebung verwechseln.`,
+        [
+          'Multiplikation außen.',
+          'Vertikale Streckung.',
+          '$y$-Werte werden mal $3$.',
+        ],
+        {
+          1: 'Horizontale Stauchung wäre $f(3x)$.',
+          2: 'Verschiebung wäre Addition, nicht Multiplikation.',
+          3: 'Ebenso.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['trafo-vert-streck'] },
+      ),
+      mc(
+        'Wie wirkt $g(x) = f(2x)$ auf $f$ horizontal?',
+        ['Horizontal um Faktor $2$ gestaucht (schmaler)', 'Horizontal um Faktor $2$ gestreckt (breiter)', 'Vertikal um $2$ gestreckt', 'Um $2$ nach rechts'],
+        0,
+        `**Ansatz:** $f(cx)$ im Argument: horizontal gestaucht um Faktor $c$ (kontraintuitiv).
+
+**Rechnung:** Wo $f$ bei $x = 1$ einen Wert hatte, hat $g$ denselben Wert schon bei $x = 1/2$.
+
+**Probe:** $f(x) = x^2$, $g(x) = (2x)^2 = 4x^2$. Gleicher $y$-Wert bei halbem $x$.
+
+**Typischer Fehler:** "Faktor im Argument = gestreckt" intuitiv annehmen.`,
+        [
+          'Was passiert mit $x$-Koordinaten?',
+          'Halbiert (kontraintuitiv).',
+          'Graph wird schmaler.',
+        ],
+        {
+          1: 'Gestreckt wäre $f(x/2)$, also $c < 1$.',
+          2: 'Vertikale Streckung ist $cf(x)$.',
+          3: 'Verschiebung wäre Addition im Argument.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['trafo-hor-streck'] },
+      ),
+      mc(
+        'Ein Schüler denkt, $g(x) = f(3x)$ strecke den Graphen horizontal um Faktor $3$. Wo liegt der Fehler?',
+        [
+          'Horizontal STAUCHT um Faktor $3$ (kontraintuitiv) — der Graph wird schmaler, nicht breiter.',
+          'Er hätte $3f(x)$ schreiben müssen.',
+          'Er hat recht.',
+          'Es wird vertikal gestreckt.',
+        ],
+        0,
+        `**Ansatz:** Argument mit $c > 1$ multipliziert: Stauchung.
+
+**Rechnung:** $f(3 \\cdot 1) = f(3)$ — was bei $f$ bei $x = 3$ war, ist bei $g$ bei $x = 1$. Alles "näher" zusammengezogen.
+
+**Probe:** Breite halbiert bei Faktor $2$; gedrittelt bei Faktor $3$.
+
+**Typischer Fehler:** Intuitive "Streckung".`,
+        [
+          'Kontraintuitiv: Argument-Faktor $>1$ → Stauchung.',
+          'Zahlentest hilft.',
+          'Inverse Beziehung.',
+        ],
+        {
+          1: '$3f(x)$ wäre vertikale Streckung um $3$.',
+          2: 'Zahlentest widerlegt.',
+          3: 'Vertikal wäre $3 \\cdot f(x)$.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['trafo-hor-streck'] },
+      ),
+      matching(
+        'Ordne jede Transformation ihrem Effekt zu.',
+        [
+          { left: '$3f(x)$',      right: 'vertikal um $3$ gestreckt' },
+          { left: '$\\frac{1}{2} f(x)$', right: 'vertikal um $2$ gestaucht' },
+          { left: '$f(2x)$',      right: 'horizontal um $2$ gestaucht' },
+          { left: '$f(x/2)$',     right: 'horizontal um $2$ gestreckt' },
+        ],
+        `**Ansatz:** Vier Streckungsfälle.
+
+**Rechnung:** Außen vs. im Argument unterschiedlich.
+
+**Probe:** Merke: Argument ist invers.
+
+**Typischer Fehler:** Streckung/Stauchung verwechseln.`,
+        [
+          'Außen: intuitiv.',
+          'Im Argument: invers.',
+          'Vier Kombinationen.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['trafo-vert-streck', 'trafo-hor-streck'] },
+      ),
+    ],
+    // [3] Spiegelung
+    3: [
+      matching(
+        'Ordne jeder Spiegelungstransformation die Achse zu.',
+        [
+          { left: '$-f(x)$',   right: 'Spiegelung an der $x$-Achse' },
+          { left: '$f(-x)$',   right: 'Spiegelung an der $y$-Achse' },
+          { left: '$-f(-x)$',  right: 'Spiegelung am Ursprung (Punkt)' },
+          { left: '$|f(x)|$',  right: 'negative $y$-Werte nach oben gespiegelt' },
+        ],
+        `**Ansatz:** Vorzeichen bestimmt Spiegelachse.
+
+**Rechnung:** Minus außen: $y$ umkehren. Minus im Argument: $x$ umkehren.
+
+**Probe:** Zahlentests.
+
+**Typischer Fehler:** Achsen verwechseln.`,
+        [
+          'Minus außen: $x$-Achse.',
+          'Minus im Argument: $y$-Achse.',
+          'Beides: Ursprung.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['trafo-spiegel-x', 'trafo-spiegel-y'] },
+      ),
+      mc(
+        'Was passiert mit dem Graphen von $f(x) = x^2$, wenn man zu $-f(x)$ übergeht?',
+        ['Spiegelung an der $x$-Achse (Parabel öffnet nach unten)', 'Spiegelung an der $y$-Achse', 'Verschiebung nach unten', 'Keine Veränderung'],
+        0,
+        `**Ansatz:** Minus außen: vertikale Spiegelung.
+
+**Rechnung:** $-x^2$: alle $y$-Werte negativ, Parabel nach unten offen.
+
+**Probe:** $f(1) = 1 \\to -f(1) = -1$.
+
+**Typischer Fehler:** An $y$-Achse statt $x$-Achse spiegeln.`,
+        [
+          'Wo wird gespiegelt?',
+          'Horizontale Achse $=$ $x$-Achse.',
+          '$y$-Werte umkehren.',
+        ],
+        {
+          1: '$y$-Achse wäre $f(-x)$.',
+          2: 'Verschiebung wäre $f(x) - b$.',
+          3: 'Doch — deutliche Veränderung.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['trafo-spiegel-x'] },
+      ),
+      mc(
+        'Wie wirkt $g(x) = f(-x)$ auf einen achsensymmetrischen Graphen (z. B. $x^2$)?',
+        ['Keine sichtbare Änderung (Symmetrie)', 'Spiegelung an der $x$-Achse', 'Um $180°$ gedreht', 'Verschwindet'],
+        0,
+        `**Ansatz:** Achsensymmetrie zur $y$-Achse heißt $f(-x) = f(x)$.
+
+**Rechnung:** Bei $x^2$: $f(-x) = x^2 = f(x)$ — gleicher Graph.
+
+**Probe:** Jede achsensymmetrische Funktion ist invariant unter $y$-Achsen-Spiegelung.
+
+**Typischer Fehler:** Änderung erwarten.`,
+        [
+          'Symmetrie-Eigenschaft.',
+          '$f(-x) = f(x)$.',
+          'Keine Änderung.',
+        ],
+        {
+          1: '$x$-Achsen-Spiegelung wäre $-f(x)$.',
+          2: 'Punktsymmetrie wäre $-f(-x) = f(x)$, nicht bei Parabel.',
+          3: 'Graph bleibt gleich.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['trafo-spiegel-y'] },
+      ),
+      mc(
+        'Ein Schüler behauptet, $g(x) = -f(x)$ ist dasselbe wie $f(-x)$. Wo liegt der Fehler?',
+        [
+          'Das sind verschiedene Spiegelungen: $-f$ spiegelt an der $x$-Achse, $f(-x)$ an der $y$-Achse.',
+          'Nur bei geraden Funktionen sind sie gleich.',
+          'Er hat recht.',
+          'Beide verändern den Graphen nicht.',
+        ],
+        0,
+        `**Ansatz:** Zwei verschiedene Transformationen.
+
+**Rechnung:** $f(x) = x^3$. $-f(x) = -x^3$. $f(-x) = (-x)^3 = -x^3$. Zufällig gleich (ungerade Funktion). Aber $f(x) = x^2 + 1$: $-f(x) = -x^2 - 1$, $f(-x) = x^2 + 1$. Unterschiedlich!
+
+**Probe:** Generell verschieden.
+
+**Typischer Fehler:** Symmetriebegriffe verwechseln.`,
+        [
+          'Wo ist das Minus?',
+          'Außen → $x$-Achse.',
+          'Innen → $y$-Achse.',
+        ],
+        {
+          1: 'Nur bei ungeraden Funktionen ($f(-x) = -f(x)$) zufällig gleich.',
+          2: 'Zahlentest widerlegt.',
+          3: 'Beide können Graphen verändern.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['trafo-spiegel-x', 'trafo-spiegel-y'] },
+      ),
+      matching(
+        'Ordne jedem Ausdruck die zugehörige Transformation zu.',
+        [
+          { left: '$-f(x)$',            right: 'an $x$-Achse gespiegelt' },
+          { left: '$f(-x)$',            right: 'an $y$-Achse gespiegelt' },
+          { left: '$-f(-x)$',           right: 'am Ursprung gespiegelt' },
+          { left: '$f(x)$',             right: 'keine Spiegelung' },
+        ],
+        `**Ansatz:** Vier Fälle: keine, $x$, $y$, beide.
+
+**Rechnung:** Vorzeichen-Positionen.
+
+**Probe:** Zahlentest.
+
+**Typischer Fehler:** Kombinationen übersehen.`,
+        [
+          'Wo steht das Minus?',
+          'Außen → $x$, innen → $y$.',
+          'Beide → Ursprung.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['trafo-spiegel-x', 'trafo-spiegel-y'] },
+      ),
+    ],
+    // [4] Merkregel
+    4: [
+      tf(
+        'Änderungen im ARGUMENT wirken horizontal UND umgekehrt: $+a$ nach links, $\\cdot c$ staucht.',
+        true,
+        `**Ansatz:** Merkregel für Transformationen im Argument.
+
+**Rechnung:** $f(x+a)$: nach links; $f(cx)$ mit $c > 1$: gestaucht.
+
+**Probe:** Zahlentests.
+
+**Typischer Fehler:** Intuitiv denken — führt oft zu Fehlern.`,
+        [
+          'Im Argument: umgekehrt.',
+          'Plus → links, Mal → Stauchung.',
+          'Merkregel hilft.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['trafo-merkregel'] },
+      ),
+      mc(
+        'Welche Transformation ist INTUITIV (wirkt wie erwartet)?',
+        ['$f(x) + 3$ nach oben', '$f(x + 3)$ nach rechts', '$f(3x)$ horizontal gestreckt', '$f(x/2)$ horizontal gestaucht'],
+        0,
+        `**Ansatz:** Außen intuitiv, Innen kontraintuitiv.
+
+**Rechnung:** $f(x) + 3$ verschiebt um $3$ nach oben — exakt was Plus erwartet.
+
+**Probe:** Nur außen ist die Richtung intuitiv.
+
+**Typischer Fehler:** Mit Argument-Transformationen verwechseln.`,
+        [
+          'Welche Position ist intuitiv?',
+          'Außen.',
+          '$+$ oben, $-$ unten.',
+        ],
+        {
+          1: '$f(x+3)$ ist nach LINKS.',
+          2: '$f(3x)$ ist gestaucht.',
+          3: '$f(x/2)$ ist gestreckt.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['trafo-merkregel'] },
+      ),
+      mc(
+        'Was bewirkt die Transformation $g(x) = f(-2x)$?',
+        [
+          'Spiegelung an $y$-Achse UND horizontal um $2$ gestaucht',
+          'Spiegelung an $x$-Achse',
+          'Verschiebung um $-2$',
+          'Verdopplung der Werte',
+        ],
+        0,
+        `**Ansatz:** $f(-2x)$ = $f((-2) \\cdot x)$: Minus und Stauchung gleichzeitig.
+
+**Rechnung:** $-2x = -2 \\cdot x$: Vorzeichen-Flip (Spiegelung an $y$-Achse) UND Faktor $2$ (Stauchung).
+
+**Probe:** Kombiniert beides.
+
+**Typischer Fehler:** Nur eine der beiden Transformationen erkennen.`,
+        [
+          'Minus + Faktor.',
+          'Spiegelung + Stauchung.',
+          'Beide im Argument.',
+        ],
+        {
+          1: 'Nur halb — auch Stauchung.',
+          2: 'Das wäre Verschiebung, nicht Stauchung.',
+          3: 'Vertikale Streckung wäre außen.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['trafo-merkregel'] },
+      ),
+      mc(
+        'Ein Schüler zeichnet $g(x) = f(x - 5) + 3$ als "$5$ nach links und $3$ nach unten". Wo liegt der Fehler?',
+        [
+          '$x - 5$ im Argument ist nach RECHTS (nicht links); $+3$ außen ist nach OBEN (nicht unten).',
+          'Er hat nur die Vorzeichen verwechselt — korrekt wäre rechts + oben.',
+          'Das ist richtig.',
+          'Er hätte quadratische Ergänzung anwenden müssen.',
+        ],
+        0,
+        `**Ansatz:** Merkregel + Intuition.
+
+**Rechnung:** $x - 5$ im Argument → $5$ nach rechts. $+3$ außen → $3$ nach oben.
+
+**Probe:** Zahlentest. $f(0) \\to g(5) = f(0) + 3$.
+
+**Typischer Fehler:** Beide Richtungen verwechseln.`,
+        [
+          'Wo ist das Minus?',
+          'Im Argument = rechts.',
+          'Außen = oben.',
+        ],
+        {
+          1: 'Das ist die Antwort — beide Vorzeichen verwechselt.',
+          2: 'Zahlentest widerlegt.',
+          3: 'Quadratische Ergänzung unnötig.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['trafo-merkregel'] },
+      ),
+      sorting(
+        'Bringe die Transformationsschritte für $g(x) = 2f(-x + 3) - 1$ in die richtige Reihenfolge.',
+        [
+          'Original $f(x)$',
+          'Spiegeln an $y$-Achse: $f(-x)$',
+          'Horizontal verschieben: $f(-(x-3)) = f(-x+3)$',
+          'Vertikal strecken: $2f(-x+3)$',
+          'Vertikal verschieben: $2f(-x+3) - 1$',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Transformationen in Reihenfolge: innen → außen.
+
+**Rechnung:** Schritt für Schritt.
+
+**Probe:** Mehrere Transformationen kombiniert.
+
+**Typischer Fehler:** Reihenfolge ignorieren.`,
+        [
+          'Innen zuerst.',
+          'Dann vertikal.',
+          'Am Ende Verschiebung.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['trafo-merkregel'] },
+      ),
+    ],
+    // [5] Komposition
+    5: [
+      tf(
+        'Funktionskomposition: $(f \\circ g)(x) = f(g(x))$ — zuerst $g$, dann $f$.',
+        true,
+        `**Ansatz:** Kringel von rechts nach links lesen.
+
+**Rechnung:** $g(x)$ wird berechnet, dann als Argument von $f$ eingesetzt.
+
+**Probe:** $f(x) = x^2$, $g(x) = x+1$: $(f\\circ g)(2) = f(3) = 9$.
+
+**Typischer Fehler:** Reihenfolge umkehren.`,
+        [
+          'Kringel-Lesung: rechts zuerst.',
+          '$f(g(x))$.',
+          'Innen → außen.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['fkt-komposition'] },
+      ),
+      mc(
+        'Für $f(x) = x^2$ und $g(x) = x + 1$, was ist $(f \\circ g)(x)$?',
+        ['$(x+1)^2$', '$x^2 + 1$', '$x^2(x+1)$', '$x + 1^2$'],
+        0,
+        `**Ansatz:** $f(g(x)) = f(x+1) = (x+1)^2$.
+
+**Rechnung:** $(x+1)^2 = x^2 + 2x + 1$.
+
+**Probe:** $(f\\circ g)(2) = f(3) = 9 = (2+1)^2$. ✓
+
+**Typischer Fehler:** Addition statt Einsetzung.`,
+        [
+          '$g$ zuerst: $g(x) = x+1$.',
+          'Einsetzen in $f$: $f(x+1)$.',
+          '$= (x+1)^2$.',
+        ],
+        {
+          1: 'Das wäre $f(x) + 1$, nicht $(f\\circ g)(x)$.',
+          2: 'Das wäre $f(x) \\cdot g(x)$.',
+          3: '$x + 1^2 = x + 1$, unsinnig.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['fkt-komposition'] },
+      ),
+      ni(
+        'Für $f(x) = 2x + 3$ und $g(x) = x^2$, berechne $(f \\circ g)(4)$.',
+        35, 0, '',
+        `**Ansatz:** $f(g(4)) = f(16) = 2 \\cdot 16 + 3 = 35$.
+
+**Rechnung:** $g(4) = 16$. $f(16) = 32 + 3 = 35$.
+
+**Probe:** Schrittweise einsetzen.
+
+**Typischer Fehler:** $f$ und $g$ vertauschen.`,
+        [
+          '$g(4) = ?$',
+          '$= 16$.',
+          '$f(16) = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['fkt-komposition'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $(f \\circ g)(x)$ als $g(f(x))$. Wo liegt der Fehler?',
+        [
+          'Komposition ist $f(g(x))$, nicht $g(f(x))$ — die Reihenfolge wurde vertauscht.',
+          'Beide Formen sind gleich.',
+          'Er hat recht.',
+          'Die Komposition ist kommutativ.',
+        ],
+        0,
+        `**Ansatz:** Komposition ist NICHT kommutativ.
+
+**Rechnung:** Gegenbeispiel: $f(x) = x^2$, $g(x) = x + 1$. $(f\\circ g)(x) = (x+1)^2 = x^2 + 2x + 1$. $(g\\circ f)(x) = x^2 + 1$. Unterschiedlich!
+
+**Probe:** Zwei verschiedene Funktionen.
+
+**Typischer Fehler:** Kommutativität annehmen.`,
+        [
+          'Ist Komposition kommutativ?',
+          'Zahlentest mit verschiedenen $f, g$.',
+          'Generell unterschiedlich.',
+        ],
+        {
+          1: 'Nur bei speziellen Funktionen gleich.',
+          2: 'Zahlentest widerlegt.',
+          3: 'Kommutativ nur bei $f = g$ oder ähnlich.',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['fkt-komposition'] },
+      ),
+      matching(
+        'Gegeben $f(x) = 3x$ und $g(x) = x - 2$. Ordne jede Komposition ihrem Ausdruck zu.',
+        [
+          { left: '$f(g(x))$',       right: '$3(x-2) = 3x - 6$' },
+          { left: '$g(f(x))$',       right: '$3x - 2$' },
+          { left: '$f(f(x))$',       right: '$9x$' },
+          { left: '$g(g(x))$',       right: '$x - 4$' },
+        ],
+        `**Ansatz:** Systematisch einsetzen.
+
+**Rechnung:** Innere Funktion als Argument der äußeren.
+
+**Probe:** Jede Zeile nachrechnen.
+
+**Typischer Fehler:** Reihenfolge verwechseln.`,
+        [
+          'Innere in äußere einsetzen.',
+          'Von rechts nach links lesen.',
+          'Jede Komposition anders.',
+        ],
+        { stage: 'transfer', subGoal: 5, uses: ['fkt-komposition'] },
+      ),
+    ],
+  },
+
+  // ───────────────────────────────────────────────────────────────────────
+  // alg-3-4 — Umkehrfunktionen (6 SGs, 31 Aufgaben)
+  // ───────────────────────────────────────────────────────────────────────
+  'alg-3-4': {
+    // [0] Existenz der Umkehrfunktion
+    0: [
+      tf(
+        'Nur bijektive Funktionen haben eine Umkehrfunktion.',
+        true,
+        `**Ansatz:** Umkehrung braucht eindeutige Zuordnung in beide Richtungen.
+
+**Rechnung:** Bijektiv = injektiv (kein Wert doppelt) + surjektiv (jeder Zielwert erreicht).
+
+**Probe:** $f(x) = x^2$ auf $\\mathbb{R}$ nicht bijektiv → keine Umkehrfunktion. Auf $[0, \\infty)$ schon.
+
+**Typischer Fehler:** "Die meisten Funktionen sind umkehrbar".`,
+        [
+          'Was braucht Umkehrfunktion?',
+          'Injektivität + Surjektivität.',
+          'Bijektiv.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['umkehr-existenz'] },
+      ),
+      mc(
+        'Welche Funktion ist auf $\\mathbb{R}$ umkehrbar?',
+        ['$f(x) = x^3$', '$f(x) = x^2$', '$f(x) = |x|$', '$f(x) = \\sin(x)$'],
+        0,
+        `**Ansatz:** Bijektivität prüfen.
+
+**Rechnung:** $x^3$: streng monoton → bijektiv. $x^2, |x|, \\sin$: nicht injektiv.
+
+**Probe:** $x^3$ umkehrbar: $f^{-1}(y) = \\sqrt[3]{y}$.
+
+**Typischer Fehler:** Nur auf Definitionsbereich achten, nicht Injektivität.`,
+        [
+          'Wer ist streng monoton?',
+          'Kubik ja, Quadrat nein.',
+          'Sinus ist periodisch.',
+        ],
+        {
+          1: '$x^2$ ist nicht injektiv ($f(2) = f(-2) = 4$).',
+          2: 'Betrag ist nicht injektiv.',
+          3: 'Sinus ist periodisch.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['umkehr-existenz'] },
+      ),
+      mc(
+        'Die Funktion $f: \\mathbb{R} \\to \\mathbb{R}, f(x) = 2x + 5$ ist umkehrbar. Warum?',
+        [
+          'Sie ist streng monoton wachsend und deckt alle reellen Zahlen ab.',
+          'Sie ist stetig.',
+          'Sie ist ein Polynom.',
+          'Sie ist linear.',
+        ],
+        0,
+        `**Ansatz:** Lineare Funktionen mit $m \\neq 0$ sind immer bijektiv.
+
+**Rechnung:** $f'(x) = 2 > 0$, streng monoton. Wertebereich = $\\mathbb{R}$ = Zielmenge.
+
+**Probe:** $f^{-1}(y) = (y - 5)/2$.
+
+**Typischer Fehler:** Stetigkeit mit Umkehrbarkeit verwechseln.`,
+        [
+          'Welche Bedingungen für Umkehrbarkeit?',
+          'Monotonie + vollständiger Wertebereich.',
+          'Bei linear mit Steigung $\\neq 0$ erfüllt.',
+        ],
+        {
+          1: 'Stetigkeit allein reicht nicht ($x^2$ ist stetig).',
+          2: 'Polynome können unumkehrbar sein.',
+          3: 'Linear allein reicht nicht ($m = 0$ wäre konstant).',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['umkehr-existenz'] },
+      ),
+      mc(
+        'Ein Schüler sagt, $f(x) = x^2$ hat die Umkehrfunktion $f^{-1}(y) = \\sqrt{y}$. Wo liegt das Problem?',
+        [
+          'Auf ganz $\\mathbb{R}$ ist $x^2$ nicht bijektiv — erst auf eingeschränktem Definitionsbereich $[0, \\infty)$ ist $\\sqrt{y}$ die Umkehrfunktion.',
+          'Er hätte $\\pm\\sqrt{y}$ schreiben müssen.',
+          'Alles korrekt.',
+          'Die Umkehrfunktion existiert gar nicht.',
+        ],
+        0,
+        `**Ansatz:** Bijektivität erfordert Einschränkung.
+
+**Rechnung:** Auf $[0, \\infty)$: $f$ bijektiv, $f^{-1}(y) = \\sqrt{y}$. Auf $(-\\infty, 0]$: bijektiv, $f^{-1}(y) = -\\sqrt{y}$.
+
+**Probe:** Definitionsbereich muss spezifiziert werden.
+
+**Typischer Fehler:** $\\mathbb{R}$ als Definitionsbereich annehmen.`,
+        [
+          'Auf welchem Bereich ist $x^2$ bijektiv?',
+          'Nur auf einem Ast.',
+          'Einschränkung nötig.',
+        ],
+        {
+          1: '$\\pm\\sqrt{y}$ wäre keine Funktion.',
+          2: 'Ohne Einschränkung stimmt es nicht.',
+          3: 'Doch — auf passendem Bereich existiert sie.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['umkehr-existenz'] },
+      ),
+      matching(
+        'Ordne jeder Funktion ihre Umkehrbarkeits-Eigenschaft zu.',
+        [
+          { left: '$f(x) = 2x + 1$',        right: 'auf $\\mathbb{R}$ umkehrbar' },
+          { left: '$f(x) = x^2$',            right: 'nur auf $[0, \\infty)$ umkehrbar' },
+          { left: '$f(x) = e^x$',            right: 'auf $\\mathbb{R}$ umkehrbar ($\\to (0, \\infty)$)' },
+          { left: '$f(x) = \\sin(x)$',       right: 'nur auf $[-\\pi/2, \\pi/2]$ umkehrbar' },
+        ],
+        `**Ansatz:** Jede Funktion hat Bijektivitätsbedingungen.
+
+**Rechnung:** Lineare: überall. Quadratisch: eingeschränkt. Exp: überall. Sin: Hauptzweig.
+
+**Probe:** Monotonie prüfen.
+
+**Typischer Fehler:** Periodische Funktionen vergessen zu einschränken.`,
+        [
+          'Wo ist die Funktion bijektiv?',
+          'Manchmal nur Teilbereich.',
+          'Hauptzweige bei periodischen.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['umkehr-existenz'] },
+      ),
+    ],
+    // [1] Berechnungsverfahren
+    1: [
+      tf(
+        'Um die Umkehrfunktion zu berechnen: $y = f(x)$ nach $x$ auflösen, dann Namen tauschen.',
+        true,
+        `**Ansatz:** Standardvorgehen.
+
+**Rechnung:** 1. $y = f(x)$ schreiben. 2. Nach $x$ auflösen: $x = f^{-1}(y)$. 3. Tauschen: $y = f^{-1}(x)$.
+
+**Probe:** $y = 2x + 3 \\Rightarrow x = (y-3)/2 \\Rightarrow y = (x-3)/2$ als $f^{-1}(x)$.
+
+**Typischer Fehler:** Tausch vergessen.`,
+        [
+          'Drei Schritte.',
+          'Auflösen + Tauschen.',
+          'Standardverfahren.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['umkehr-verfahren'] },
+      ),
+      mc(
+        'Welche Umkehrfunktion hat $f(x) = 3x - 5$?',
+        ['$f^{-1}(x) = (x+5)/3$', '$f^{-1}(x) = (x-5)/3$', '$f^{-1}(x) = 3x + 5$', '$f^{-1}(x) = -3x + 5$'],
+        0,
+        `**Ansatz:** $y = 3x - 5 \\Rightarrow x = (y+5)/3$.
+
+**Rechnung:** Nach $x$ auflösen, dann Namen tauschen.
+
+**Probe:** $f(f^{-1}(x)) = 3 \\cdot (x+5)/3 - 5 = x + 5 - 5 = x$ ✓.
+
+**Typischer Fehler:** Vorzeichen verwechseln.`,
+        [
+          '$y = 3x - 5$ nach $x$.',
+          '$x = (y+5)/3$.',
+          'Dann Namen tauschen.',
+        ],
+        {
+          1: 'Vorzeichen von $5$ falsch.',
+          2: 'Das ist $f$ selbst (vergrößert).',
+          3: 'Komplett falsch.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['umkehr-verfahren'] },
+      ),
+      ni(
+        'Berechne $f^{-1}(7)$ für $f(x) = 2x + 1$.',
+        3, 0, '',
+        `**Ansatz:** $f^{-1}(y) = (y-1)/2$, einsetzen.
+
+**Rechnung:** $(7-1)/2 = 3$.
+
+**Probe:** $f(3) = 7$ ✓.
+
+**Typischer Fehler:** $2 \\cdot 7 + 1 = 15$ rechnen.`,
+        [
+          'Umkehrfunktion bilden.',
+          '$f^{-1}(x) = (x-1)/2$.',
+          'Einsetzen $x = 7$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['umkehr-verfahren'] },
+      ),
+      ni(
+        'Bestimme $f^{-1}(x)$ für $f(x) = \\dfrac{x-2}{3}$ und gib den Wert $f^{-1}(5)$ an.',
+        17, 0, '',
+        `**Ansatz:** $y = (x-2)/3 \\Rightarrow 3y = x - 2 \\Rightarrow x = 3y + 2$. Umkehrfunktion: $f^{-1}(x) = 3x + 2$.
+
+**Rechnung:** $f^{-1}(5) = 15 + 2 = 17$.
+
+**Probe:** $f(17) = (17-2)/3 = 15/3 = 5$ ✓.
+
+**Typischer Fehler:** Nur einen Schritt rückgängig machen.`,
+        [
+          'Umkehrfunktion bilden.',
+          '$f^{-1}(x) = 3x + 2$.',
+          'Einsetzen $5$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['umkehr-verfahren'] },
+      ),
+      mc(
+        'Ein Schüler bestimmt die Umkehrfunktion von $f(x) = x^3 + 1$ als $f^{-1}(x) = x^3 - 1$. Wo liegt der Fehler?',
+        [
+          'Er hat nur die Konstante verschoben. Korrekt: $x = y^3 + 1 \\Rightarrow y^3 = x - 1 \\Rightarrow y = \\sqrt[3]{x-1}$.',
+          'Er hat den Exponent vergessen.',
+          'Alles korrekt.',
+          'Die Umkehrfunktion existiert nicht.',
+        ],
+        0,
+        `**Ansatz:** Potenz muss wieder zur Wurzel werden.
+
+**Rechnung:** $y = x^3 + 1 \\Rightarrow x^3 = y - 1 \\Rightarrow x = \\sqrt[3]{y-1}$.
+
+**Probe:** $f(f^{-1}(5)) = (\\sqrt[3]{4})^3 + 1 = 4 + 1 = 5$ ✓.
+
+**Typischer Fehler:** Operationen nicht alle umkehren.`,
+        [
+          'Was macht $f$? Erst $x^3$, dann $+1$.',
+          'Rückwärts: erst $-1$, dann $\\sqrt[3]{\\cdot}$.',
+          'Alle Operationen umkehren.',
+        ],
+        {
+          1: 'Exponent ist da — aber falsche Richtung.',
+          2: 'Zahlentest widerlegt.',
+          3: '$x^3 + 1$ ist bijektiv auf $\\mathbb{R}$.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['umkehr-verfahren'] },
+      ),
+      sorting(
+        'Bringe die Schritte zur Umkehrung von $f(x) = \\dfrac{2x + 1}{3}$ in die richtige Reihenfolge.',
+        [
+          'Gleichung aufstellen: $y = (2x + 1)/3$',
+          'Mit $3$ multiplizieren: $3y = 2x + 1$',
+          'Nach $x$ auflösen: $x = (3y - 1)/2$',
+          'Namen tauschen: $f^{-1}(x) = (3x - 1)/2$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Systematisches Vorgehen.
+
+**Rechnung:** $f^{-1}(x) = (3x - 1)/2$.
+
+**Probe:** $f(f^{-1}(x)) = (2 \\cdot (3x-1)/2 + 1)/3 = (3x - 1 + 1)/3 = x$ ✓.
+
+**Typischer Fehler:** Schritte auslassen.`,
+        [
+          'Gleichung → Auflösen → Tauschen.',
+          'Jeden Schritt einzeln.',
+          'Probe durch Einsetzen.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['umkehr-verfahren'] },
+      ),
+    ],
+    // [2] Graphisch
+    2: [
+      tf(
+        'Der Graph der Umkehrfunktion ist die Spiegelung des ursprünglichen Graphen an der Winkelhalbierenden $y = x$.',
+        true,
+        `**Ansatz:** $(x, y) \\to (y, x)$ durch Spiegelung.
+
+**Rechnung:** $y = x$ Achse spiegelt $x$- und $y$-Koordinate.
+
+**Probe:** $f(x) = 2x$, Punkt $(1, 2)$. $f^{-1}(x) = x/2$, Punkt $(2, 1)$. Spiegelbild!
+
+**Typischer Fehler:** An $x$- oder $y$-Achse spiegeln.`,
+        [
+          'Punkt $(a, b)$ spiegeln an $y = x$.',
+          'Ergibt $(b, a)$.',
+          'Jeder Punkt des Graphen.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['umkehr-graph'] },
+      ),
+      mc(
+        'Wenn $f(1) = 5$, welcher Punkt gehört zum Graph von $f^{-1}$?',
+        ['$(5, 1)$', '$(1, 5)$', '$(-1, -5)$', '$(1/5, 1)$'],
+        0,
+        `**Ansatz:** Spiegelung: $(x, y) \\to (y, x)$.
+
+**Rechnung:** $(1, 5)$ von $f$ → $(5, 1)$ von $f^{-1}$.
+
+**Probe:** $f^{-1}(5) = 1$ (nach Definition).
+
+**Typischer Fehler:** Koordinaten nicht tauschen.`,
+        [
+          'Umkehrfunktion spiegelt Koordinaten.',
+          '$(x, y) \\to (y, x)$.',
+          '$f(1)=5 \\Rightarrow f^{-1}(5) = 1$.',
+        ],
+        {
+          1: 'Das ist $f$ selbst.',
+          2: 'Negation ist kein Umkehrverfahren.',
+          3: 'Kehrwert ist nicht Umkehrfunktion.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['umkehr-graph'] },
+      ),
+      mc(
+        'Welche Beziehung besteht zwischen den Graphen von $f(x) = e^x$ und $g(x) = \\ln(x)$?',
+        [
+          'Sie sind Spiegelbilder an $y = x$',
+          'Sie sind identisch',
+          'Sie sind Spiegelbilder an der $x$-Achse',
+          'Sie sind parallel',
+        ],
+        0,
+        `**Ansatz:** Umkehrfunktion = Spiegelung an $y = x$.
+
+**Rechnung:** $\\ln$ ist Umkehrfunktion von $e^x$. Also spiegelbildlich.
+
+**Probe:** $(1, e)$ von $e^x$ und $(e, 1)$ von $\\ln$.
+
+**Typischer Fehler:** Achse der Spiegelung verwechseln.`,
+        [
+          '$\\ln$ ist Umkehrung von $e^x$.',
+          'Umkehrfunktion-Regel.',
+          'Spiegelung an Winkelhalbierenden.',
+        ],
+        {
+          1: 'Deutlich verschieden.',
+          2: '$x$-Achse wäre $-e^x$ und $-\\ln$.',
+          3: 'Nicht parallel.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['umkehr-graph'] },
+      ),
+      mc(
+        'Ein Schüler spiegelt den Graph von $f$ an der $x$-Achse, um die Umkehrfunktion zu erhalten. Wo liegt der Fehler?',
+        [
+          'Die richtige Achse ist $y = x$ (Winkelhalbierende), nicht die $x$-Achse.',
+          'Er hätte an der $y$-Achse spiegeln müssen.',
+          'Das ist korrekt.',
+          'Spiegelung ist nicht nötig.',
+        ],
+        0,
+        `**Ansatz:** Umkehrfunktion ≠ Vorzeichen-Spiegelung.
+
+**Rechnung:** $x$-Achse: $(a, b) \\to (a, -b)$ — das wäre $-f(x)$, nicht $f^{-1}(x)$.
+
+**Probe:** $f(x) = 2x$, gespiegelt an $x$-Achse: $-2x$. Umkehrfunktion: $x/2$.
+
+**Typischer Fehler:** Spiegelachsen verwechseln.`,
+        [
+          'An welcher Achse wird gespiegelt?',
+          'Winkelhalbierende $y = x$.',
+          'Nicht Koordinatenachsen.',
+        ],
+        {
+          1: '$y$-Achse wäre $f(-x)$.',
+          2: 'Ist eben nicht korrekt.',
+          3: 'Doch — Spiegelung ist der Kern.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['umkehr-graph'] },
+      ),
+      matching(
+        'Ordne jedem Funktionspaar ihre Beziehung zu.',
+        [
+          { left: '$f(x) = x^2$ (auf $[0,\\infty)$) und $g(x) = \\sqrt{x}$', right: 'Umkehrfunktion (spiegelsymmetrisch an $y=x$)' },
+          { left: '$f(x) = e^x$ und $g(x) = \\ln(x)$', right: 'Umkehrfunktion' },
+          { left: '$f(x) = 2x$ und $g(x) = x/2$', right: 'Umkehrfunktion' },
+          { left: '$f(x) = x$ und $g(x) = x$', right: 'Sich selbst umkehrend (Identität)' },
+        ],
+        `**Ansatz:** Berühmte Umkehrfunktionspaare.
+
+**Rechnung:** Jedes Paar erfüllt $f(g(x)) = g(f(x)) = x$.
+
+**Probe:** Zahlentest.
+
+**Typischer Fehler:** Definitionsbereich bei Wurzel vergessen.`,
+        [
+          'Kannst du die Umkehrung ablesen?',
+          'Spiegelung prüfen.',
+          'Identität spiegelt sich selbst.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['umkehr-graph'] },
+      ),
+    ],
+    // [3] Bereiche
+    3: [
+      tf(
+        'Für $f: D \\to W$ bijektiv ist $D(f^{-1}) = W$ und $W(f^{-1}) = D$.',
+        true,
+        `**Ansatz:** Definitionsbereich und Wertebereich tauschen.
+
+**Rechnung:** Umkehrfunktion nimmt Werte von $f$ als Argumente.
+
+**Probe:** $f: [0,\\infty) \\to [0,\\infty), f(x) = x^2$. $f^{-1}: [0,\\infty) \\to [0,\\infty), f^{-1}(y) = \\sqrt{y}$.
+
+**Typischer Fehler:** Bereiche NICHT tauschen.`,
+        [
+          'Umkehrung tauscht Rollen.',
+          'Def. → Wert und umgekehrt.',
+          'Beide Bereiche wichtig.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['umkehr-bereiche'] },
+      ),
+      mc(
+        'Wenn $f(x) = e^x$ mit $D = \\mathbb{R}$ und $W = (0, \\infty)$ ist, was ist $D(f^{-1})$?',
+        ['$(0, \\infty)$', '$\\mathbb{R}$', '$[0, \\infty)$', '$(-\\infty, 0)$'],
+        0,
+        `**Ansatz:** Def.bereich der Umkehrfunktion = Wertebereich der Originalfunktion.
+
+**Rechnung:** $D(f^{-1}) = W(f) = (0, \\infty)$.
+
+**Probe:** $f^{-1}(x) = \\ln(x)$ braucht $x > 0$.
+
+**Typischer Fehler:** $\\mathbb{R}$ übertragen.`,
+        [
+          'Tausch der Bereiche.',
+          '$W(f) = D(f^{-1})$.',
+          '$(0, \\infty)$.',
+        ],
+        {
+          1: 'Das wäre $D(f)$.',
+          2: '$0$ nicht enthalten.',
+          3: 'Negativ geht bei $e^x$ nicht.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['umkehr-bereiche'] },
+      ),
+      mc(
+        'Gegeben $f: [2, 8] \\to [5, 23]$, $f(x) = 3x - 1$. Was ist der Definitionsbereich von $f^{-1}$?',
+        ['$[5, 23]$', '$[2, 8]$', '$\\mathbb{R}$', '$[-1, 7]$'],
+        0,
+        `**Ansatz:** Def. der Umkehrung = Wertebereich der Original.
+
+**Rechnung:** $W(f) = [5, 23]$. Also $D(f^{-1}) = [5, 23]$.
+
+**Probe:** $f^{-1}(5) = 2$, $f^{-1}(23) = 8$ — beide definiert.
+
+**Typischer Fehler:** Originaldefinition behalten.`,
+        [
+          'Tausch der Bereiche.',
+          '$W(f) \\to D(f^{-1})$.',
+          '$[5, 23]$.',
+        ],
+        {
+          1: 'Das wäre $D(f)$.',
+          2: '$\\mathbb{R}$ wäre unbeschränkt.',
+          3: 'Andere Zahlen.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['umkehr-bereiche'] },
+      ),
+      mc(
+        'Ein Schüler sagt: "Wenn $f: [0, 4] \\to [1, 17], f(x) = x^2 + 1$, dann ist $f^{-1}: [0, 4] \\to [1, 17]$." Wo liegt der Fehler?',
+        [
+          'Die Bereiche werden VERTAUSCHT: $f^{-1}: [1, 17] \\to [0, 4]$.',
+          'Die Bereiche sind korrekt.',
+          'Der Bereich ist $\\mathbb{R}$.',
+          'Die Umkehrfunktion existiert nicht.',
+        ],
+        0,
+        `**Ansatz:** Def.- und Wertebereich tauschen bei Umkehrung.
+
+**Rechnung:** $f^{-1}: [1, 17] \\to [0, 4]$.
+
+**Probe:** $f(2) = 5 \\Rightarrow f^{-1}(5) = 2$: Input $5 \\in [1,17]$, Output $2 \\in [0,4]$.
+
+**Typischer Fehler:** Bereiche einfach übernehmen.`,
+        [
+          'Tausch der Bereiche.',
+          'Input der Umkehrung = Output des Originals.',
+          'Und umgekehrt.',
+        ],
+        {
+          1: 'Bereiche MÜSSEN getauscht werden.',
+          2: 'Nein, eingeschränkt.',
+          3: 'Doch — auf eingeschränktem Def.bereich bijektiv.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['umkehr-bereiche'] },
+      ),
+      matching(
+        'Ordne jeder Funktion den Definitionsbereich der Umkehrfunktion zu.',
+        [
+          { left: '$f(x) = x^2$ auf $[0, \\infty)$',    right: '$D(f^{-1}) = [0, \\infty)$' },
+          { left: '$f(x) = e^x$ auf $\\mathbb{R}$',      right: '$D(f^{-1}) = (0, \\infty)$' },
+          { left: '$f(x) = \\ln(x)$ auf $(0, \\infty)$', right: '$D(f^{-1}) = \\mathbb{R}$' },
+          { left: '$f(x) = 2x + 3$ auf $\\mathbb{R}$',   right: '$D(f^{-1}) = \\mathbb{R}$' },
+        ],
+        `**Ansatz:** Wertebereich → Def.bereich der Umkehrung.
+
+**Rechnung:** Je nach Funktion.
+
+**Probe:** Pro Funktion den Wertebereich bestimmen.
+
+**Typischer Fehler:** Def.bereich behalten.`,
+        [
+          'Wertebereich bestimmen.',
+          'Das wird $D(f^{-1})$.',
+          'Pro Funktion unterschiedlich.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['umkehr-bereiche'] },
+      ),
+    ],
+    // [4] Identität
+    4: [
+      tf(
+        'Es gilt $f(f^{-1}(x)) = x$ und $f^{-1}(f(x)) = x$.',
+        true,
+        `**Ansatz:** Umkehrfunktion "macht rückgängig".
+
+**Rechnung:** Komposition heben sich auf.
+
+**Probe:** $f(x) = 2x$, $f^{-1}(x) = x/2$. $f(f^{-1}(x)) = 2(x/2) = x$ ✓.
+
+**Typischer Fehler:** Nur eine Richtung gelten lassen.`,
+        [
+          'Was bewirkt Umkehrung?',
+          'Macht $f$ rückgängig.',
+          'Beide Richtungen.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['umkehr-identitaet'] },
+      ),
+      mc(
+        'Für $f(x) = x^3$ und $f^{-1}(x) = \\sqrt[3]{x}$: Was ist $f(f^{-1}(8))$?',
+        ['$8$', '$2$', '$512$', '$8^3$'],
+        0,
+        `**Ansatz:** Umkehrung hebt sich auf.
+
+**Rechnung:** $f^{-1}(8) = 2$. $f(2) = 8$.
+
+**Probe:** Generell: $f(f^{-1}(x)) = x$.
+
+**Typischer Fehler:** Nur eine Funktion anwenden.`,
+        [
+          'Innere zuerst.',
+          '$\\sqrt[3]{8} = 2$.',
+          '$2^3 = 8$.',
+        ],
+        {
+          1: '$f^{-1}(8) = 2$ allein.',
+          2: 'Nur Original-Funktion.',
+          3: 'Doppelte Anwendung ohne Umkehr.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['umkehr-identitaet'] },
+      ),
+      ni(
+        'Für $f(x) = 3x + 2$ berechne $f^{-1}(f(7))$.',
+        7, 0, '',
+        `**Ansatz:** Umkehr-Identität: immer $x$.
+
+**Rechnung:** $f^{-1}(f(7)) = 7$.
+
+**Probe:** Oder explicit: $f(7) = 23$. $f^{-1}(23) = (23-2)/3 = 7$. ✓
+
+**Typischer Fehler:** Rechnerisch statt konzeptuell lösen.`,
+        [
+          'Umkehr-Identität.',
+          '$f^{-1}(f(x)) = x$.',
+          'Bei $x = 7$: $7$.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['umkehr-identitaet'] },
+      ),
+      mc(
+        'Ein Schüler behauptet $f^{-1}(f(x)) = f^{-1}(x) \\cdot f(x)$. Wo liegt der Fehler?',
+        [
+          'Komposition ist Einsetzung, nicht Multiplikation: $f^{-1}(f(x)) = x$.',
+          'Er hätte $f^{-1}(x) + f(x)$ schreiben müssen.',
+          'Er hat recht.',
+          'Die Regel gilt nur für lineare Funktionen.',
+        ],
+        0,
+        `**Ansatz:** Komposition heißt Einsetzen, nicht Multiplizieren.
+
+**Rechnung:** $f^{-1}(f(x)) = x$ für ALLE bijektiven $f$.
+
+**Probe:** Definition der Umkehrfunktion.
+
+**Typischer Fehler:** Komposition mit Multiplikation verwechseln.`,
+        [
+          'Was bedeutet Komposition?',
+          'Einsetzung.',
+          'Ergebnis ist $x$.',
+        ],
+        {
+          1: 'Auch Addition wäre falsch.',
+          2: 'Zahlentest widerlegt.',
+          3: 'Gilt für jede bijektive Funktion.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['umkehr-identitaet'] },
+      ),
+      ni(
+        'Berechne $f(f^{-1}(100))$ für irgendeine bijektive Funktion $f$.',
+        100, 0, '',
+        `**Ansatz:** Umkehr-Identität.
+
+**Rechnung:** $f(f^{-1}(x)) = x$, unabhängig von $f$.
+
+**Probe:** Bei $x = 100$: Ergebnis $100$.
+
+**Typischer Fehler:** Spezifische Funktion suchen.`,
+        [
+          'Identität gilt immer.',
+          'Input bleibt Output.',
+          'Bei $100$: $100$.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['umkehr-identitaet'] },
+      ),
+    ],
+    // [5] Einschränkung
+    5: [
+      tf(
+        'Eine nicht-injektive Funktion kann durch Einschränkung des Definitionsbereichs umkehrbar gemacht werden.',
+        true,
+        `**Ansatz:** Typische Strategie bei $x^2, \\sin, \\cos$.
+
+**Rechnung:** $x^2$ auf $[0, \\infty)$ ist bijektiv.
+
+**Probe:** $\\sqrt{y}$ ist wohldefinierte Umkehrfunktion.
+
+**Typischer Fehler:** Auf originalem Bereich umkehren wollen.`,
+        [
+          'Wann existiert Umkehrfunktion?',
+          'Bei Bijektivität.',
+          'Einschränkung kann helfen.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['umkehr-einschraenken'] },
+      ),
+      mc(
+        'Auf welchem Bereich ist $f(x) = x^2$ umkehrbar?',
+        ['$[0, \\infty)$ oder $(-\\infty, 0]$', '$\\mathbb{R}$', '$[-1, 1]$', 'Nirgends'],
+        0,
+        `**Ansatz:** Einschränkung auf monotonen Teil.
+
+**Rechnung:** $x^2$ ist auf $[0, \\infty)$ streng monoton wachsend, auf $(-\\infty, 0]$ streng monoton fallend — beides bijektiv auf $[0, \\infty)$.
+
+**Probe:** $f^{-1}(y) = \\sqrt{y}$ oder $-\\sqrt{y}$.
+
+**Typischer Fehler:** Ganz $\\mathbb{R}$ annehmen.`,
+        [
+          'Wo ist $x^2$ monoton?',
+          'Zwei Äste.',
+          'Jeder für sich umkehrbar.',
+        ],
+        {
+          1: 'Auf $\\mathbb{R}$ nicht bijektiv.',
+          2: 'Zu eingeschränkt.',
+          3: 'Doch — auf eingeschränktem Bereich.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['umkehr-einschraenken'] },
+      ),
+      mc(
+        'Schränke $f(x) = \\cos(x)$ ein, damit sie umkehrbar wird (Standardwahl).',
+        ['$[0, \\pi]$', '$[-\\pi, \\pi]$', '$[0, 2\\pi]$', '$(-\\infty, \\infty)$'],
+        0,
+        `**Ansatz:** Hauptzweig des $\\cos$.
+
+**Rechnung:** Auf $[0, \\pi]$ ist $\\cos$ streng monoton fallend, bijektiv auf $[-1, 1]$. Umkehrung: $\\arccos$.
+
+**Probe:** Standardkonvention.
+
+**Typischer Fehler:** Symmetrischen Bereich wählen.`,
+        [
+          'Hauptzweig.',
+          'Monotonie.',
+          '$[0, \\pi]$ Konvention.',
+        ],
+        {
+          1: 'Symmetrisch, aber nicht bijektiv ($\\cos$-achsensymmetrisch).',
+          2: 'Zwei Perioden.',
+          3: 'Periodisch, nicht bijektiv.',
+        },
+        { stage: 'apply-independent', subGoal: 5, uses: ['umkehr-einschraenken', 'umkehr-verfahren'] },
+      ),
+      mc(
+        'Ein Schüler möchte $f(x) = x^2$ auf ganz $\\mathbb{R}$ umkehren und erhält "$\\sqrt{y}$ oder $-\\sqrt{y}$". Wo liegt der Fehler?',
+        [
+          'Eine Umkehrfunktion muss EINDEUTIG sein. Deshalb muss $f$ erst auf einen monotonen Bereich eingeschränkt werden.',
+          'Er hätte nur $\\sqrt{y}$ nehmen sollen.',
+          'Er hat recht — zwei Äste sind OK.',
+          'Die Umkehrfunktion ist immer mehrdeutig.',
+        ],
+        0,
+        `**Ansatz:** Funktion muss eindeutig sein.
+
+**Rechnung:** $\\{\\sqrt{y}, -\\sqrt{y}\\}$ wäre eine Relation, keine Funktion.
+
+**Probe:** Einschränkung nötig.
+
+**Typischer Fehler:** Zweiwertigkeit akzeptieren.`,
+        [
+          'Funktion = eindeutig.',
+          'Zwei Werte = keine Funktion.',
+          'Einschränkung macht eindeutig.',
+        ],
+        {
+          1: 'Auswahl muss begründet sein (Einschränkung).',
+          2: 'Zwei Äste bilden keine Funktion.',
+          3: 'Umkehrfunktion ist IMMER eindeutig (wenn sie existiert).',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['umkehr-einschraenken'] },
+      ),
+      ni(
+        'Bestimme die Umkehrfunktion von $f(x) = x^2 - 4$ auf $[0, \\infty)$ und gib $f^{-1}(12)$ an.',
+        4, 0, '',
+        `**Ansatz:** Einschränkung auf $[0, \\infty)$ macht bijektiv. $y = x^2 - 4 \\Rightarrow x = \\sqrt{y+4}$.
+
+**Rechnung:** $f^{-1}(x) = \\sqrt{x + 4}$. $f^{-1}(12) = \\sqrt{16} = 4$.
+
+**Probe:** $f(4) = 16 - 4 = 12$ ✓.
+
+**Typischer Fehler:** Vorzeichen des $-4$ falsch.`,
+        [
+          'Einschränkung auf $[0,\\infty)$.',
+          '$y = x^2 - 4 \\Rightarrow x = \\sqrt{y+4}$.',
+          '$f^{-1}(12) = \\sqrt{16} = 4$.',
+        ],
+        { stage: 'transfer', subGoal: 5, uses: ['umkehr-einschraenken', 'umkehr-verfahren'] },
+      ),
+    ],
+  },
+
 }
