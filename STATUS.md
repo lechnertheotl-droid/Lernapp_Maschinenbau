@@ -1,6 +1,6 @@
 # Lernapp Status — Lehrplan & Content
 
-_auto-generiert · 2026-04-22 · `npm run status`_
+_auto-generiert · 2026-04-23 · `npm run status`_
 
 Single Source of Truth: Lehrplan (Phasen, Fächer, Tipps) **und** Content-Kennzahlen (Topics, Lessons, Aufgaben, Goal-Tasks, Qualitätsgaps). Quelle für den Lehrplan-Teil ist `src/content/curriculum.js` — dieselbe Datei, aus der auch die UI-Seite `/lehrplan` rendert.
 
@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2705 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 781 (29 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 1029 / 1029 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 100 / 1134 (9 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2735 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 811 (30 %) | 100 % der Aufgaben | 🔴 |
+| MC mit wrongAnswerExplanations | 1040 / 1040 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 106 / 1134 (9 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -532,10 +532,10 @@ _LGS stecken in jeder FEM-Simulation, Ausgleichsrechnung, Signalverarbeitung. Ei
 - Phase: **2. Sem** · Level: vertiefung · Exam-Relevanz: pflicht
 - Units: 3 (Prüfung am Ende ✅)
 - Lessons: 10
-- Aufgaben: **110** (manuell: 61 · supplemental: 49)
-- 4-Block: 0/110 (0 %) 🔴
-- MC-wAE: 54/54 (100 %) ✅
-- Sub-Goals: 0/57 Goal-Tasks verknüpft 🔴
+- Aufgaben: **140** (manuell: 61 · supplemental: 79)
+- 4-Block: 30/140 (21 %) 🔴
+- MC-wAE: 65/65 (100 %) ✅
+- Sub-Goals: 6/57 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Gewöhnliche DGL: Trennbare, lineare erster Ordnung, lineare zweiter Ordnung mit konstanten Koeffizienten.**
@@ -581,7 +581,7 @@ _Physik spricht DGL: Schwingungen, Abkühlung, Population, RC-Glieder. DGL-Siche
 | `dgl-2-1` Variation der Konstanten | 5 | 0/5 | 11 | 6/2/1/1/1 | 0/11 | 6/6 | ✅ | +5 Goal, +11 4B |
 | `dgl-2-2` DGL-Systeme | 6 | 0/6 | 10 | 4/2/2/1/1 | 0/10 | 4/4 | ✅ | +6 Goal, +10 4B |
 | `dgl-2-3` Technische Anwendungen | 6 | 0/6 | 11 | 5/2/1/2/1 | 0/11 | 5/5 | ✅ | +6 Goal, +11 4B |
-| `dgl-3-1` Prüfung: DGL 1. Ordnung | 6 | 0/6 | 11 | 7/1/2/1/0 | 0/11 | 7/7 | ✅ | +6 Goal, +11 4B |
+| `dgl-3-1` Prüfung: DGL 1. Ordnung | 6 | 6/6 | 41 | 18/8/8/4/3 | 30/41 | 18/18 | ✅ | +11 4B |
 | `dgl-3-2` Prüfung: DGL 2. Ordnung & Anwendungen | 6 | 0/6 | 11 | 6/2/2/1/0 | 0/11 | 6/6 | ✅ | +6 Goal, +11 4B |
 | `dgl-3-3` Prüfung: Systeme & technische Modellbildung | 6 | 0/6 | 11 | 4/3/2/1/1 | 0/11 | 4/4 | ✅ | +6 Goal, +11 4B |
 
@@ -1485,7 +1485,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 62 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 61 Lessons
 
 #### `fest-2-4` · Wechselfestigkeit und Betriebsfestigkeit
 
@@ -2674,31 +2674,6 @@ npm run build              # abschließender End-zu-End-Check
   - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
   - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
   - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
-
-#### `dgl-3-1` · Prüfung: DGL 1. Ordnung
-
-- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×1, true-false ×2, matching ×1
-- **Typen einsetzen (Rotation):** sorting, number-input, matching, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Trennbar: $\int dy/g(y) = \int f(x) dx + C$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Bernoulli $y' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Integrierender Faktor bei nicht-exakter DGL: $\mu(x)$ oder $\mu(y)$ finden
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/differentialgleichungen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/differentialgleichungen.js`
-- **4-Block-Erklärung fehlt bei:** `ex-dgl-3-1-a`, `ex-dgl-3-1-b`, `ex-dgl-3-1-c`, `ex-dgl-3-1-d`, `ex-dgl-3-1-e`, `ex-dgl-3-1-f`, `ex-dgl-3-1-g`, `ex-dgl-3-1-h` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
-  - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
-  - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
 
 #### `dgl-3-2` · Prüfung: DGL 2. Ordnung & Anwendungen
 
@@ -6413,7 +6388,7 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
   - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 17 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 18 Lessons
 
 #### `mech-0-3` · Dimensionsanalyse — Einheitencheck
 
@@ -6703,6 +6678,26 @@ npm run build              # abschließender End-zu-End-Check
   - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
   - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+
+#### `dgl-3-1` · Prüfung: DGL 1. Ordnung
+
+- **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
+- **Aufgaben aktuell:** 41 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
+- **Typen vorhanden:** multiple-choice ×18, number-input ×8, true-false ×8, matching ×4, sorting ×3
+- **Typen einsetzen (Rotation):** sorting, matching, number-input
+- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
+  - ✅ [0] (hoch) **5/5+** Aufgaben — Typerkennung: trennbar, linear, exakt, Bernoulli, Riccati?
+  - ✅ [1] (hoch) **5/5+** Aufgaben — Trennbar: $\int dy/g(y) = \int f(x) dx + C$
+  - ✅ [2] (hoch) **5/5+** Aufgaben — Exakte DGL: $M_y = N_x$ prüfen, Potentialfunktion $F$ finden, $F = C$
+  - ✅ [3] (hoch) **5/5+** Aufgaben — AWP: Konstante $C$ aus $y(x_0) = y_0$ bestimmen
+  - ✅ [4] (mittel) **5/5+** Aufgaben — Bernoulli $y' + py = q y^n$: Substitution $u = y^{1-n}$ linearisiert
+  - ✅ [5] (mittel) **5/5+** Aufgaben — Integrierender Faktor bei nicht-exakter DGL: $\mu(x)$ oder $\mu(y)$ finden
+- **4-Block-Erklärung fehlt bei:** `ex-dgl-3-1-a`, `ex-dgl-3-1-b`, `ex-dgl-3-1-c`, `ex-dgl-3-1-d`, `ex-dgl-3-1-e`, `ex-dgl-3-1-f`, `ex-dgl-3-1-g`, `ex-dgl-3-1-h` … (+3 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `spring-mass-damper`, `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
+- **Lehrplan-Kontext für `differentialgleichungen`** (aus `src/content/curriculum.js`):
+  - _Must-Know:_ Trennung der Variablen: $dy/dx=f(x)g(y) \Rightarrow \int dy/g(y)=\int f(x)\,dx$. · Lineare DGL 1. Ordnung: Integrierender Faktor $e^{\int a(x)\,dx}$. · Charakteristische Gleichung $\lambda^2+p\lambda+q=0$ bei linearen DGL 2. Ordnung. · …
+  - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+  - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
 
 #### `trig-4-3` · Prüfung: Einheitskreis & Gleichungssysteme
 
