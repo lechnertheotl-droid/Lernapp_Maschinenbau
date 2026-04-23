@@ -544,6 +544,39 @@ const lessons_u1 = [
       { label: 'Scheitel-/Nebenwinkel an sich schneidenden Geraden: Scheitelwinkel gleich, Nebenwinkel ergänzen auf $180°$', examRelevance: 'mittel' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [],
+      concepts: [
+        { id: 'winkel-def',          title: 'Winkel als Drehung, gemessen in Grad',                                 dependsOn: [] },
+        { id: 'winkel-typen',        title: 'Winkeltypen: spitz, recht, stumpf, gestreckt, voll',                   dependsOn: ['winkel-def'] },
+        { id: 'winkelsumme-180',     title: 'Innenwinkelsumme im Dreieck: $\\alpha + \\beta + \\gamma = 180°$',      dependsOn: ['winkel-def'] },
+        { id: 'scheitel-nebenwinkel', title: 'Scheitelwinkel gleich, Nebenwinkel ergänzen zu $180°$',                dependsOn: ['winkel-def'] },
+      ],
+      subGoalConcepts: {
+        0: ['winkel-def', 'winkel-typen'],
+        1: ['winkelsumme-180'],
+        2: ['scheitel-nebenwinkel'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['winkel-typen'],       qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['winkel-typen'],       qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['winkel-typen'],       qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['winkel-typen'],       qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'sorting',         uses: ['winkel-typen'],       qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['winkelsumme-180'],    qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['winkelsumme-180'],    qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['winkelsumme-180'],    qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'matching',        uses: ['winkelsumme-180'],    qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'sorting',         uses: ['winkelsumme-180'],    qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['scheitel-nebenwinkel'], qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['scheitel-nebenwinkel'], qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['scheitel-nebenwinkel'], qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'matching',        uses: ['scheitel-nebenwinkel'], qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'sorting',         uses: ['scheitel-nebenwinkel'], qty: 1 },
+      ],
+    },
     nextLessonId: 'trig-1-1',
     steps: [
       {
@@ -598,6 +631,49 @@ $$\\alpha + \\beta + \\gamma = 180°$$
       { label: 'Bogenlänge am Einheitskreis als Winkelmaß', examRelevance: 'mittel' },
     ],
     prerequisites: ['trig-1-0'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-1-0', concepts: ['winkel-def'] },
+      ],
+      concepts: [
+        { id: 'radiant-def',      title: 'Radiant: Bogenlänge am Einheitskreis als Winkelmaß ($2\\pi = 360°$)', dependsOn: [] },
+        { id: 'deg-rad-modus',    title: 'Taschenrechner auf DEG oder RAD umschalten',                         dependsOn: ['radiant-def'] },
+        { id: 'pi-vielfache',     title: 'π-Vielfache: $\\pi/6=30°, \\pi/4=45°, \\pi/3=60°, \\pi/2=90°$',      dependsOn: ['radiant-def'] },
+        { id: 'umrechnung-formel', title: '$\\alpha_{\\mathrm{rad}}=\\alpha_\\circ\\cdot\\pi/180$ und umgekehrt', dependsOn: ['radiant-def'] },
+        { id: 'bogenlaenge',      title: 'Bogenlänge $b = r\\cdot\\alpha_{\\mathrm{rad}}$ am Kreis',            dependsOn: ['radiant-def'] },
+      ],
+      subGoalConcepts: {
+        0: ['deg-rad-modus'],
+        1: ['pi-vielfache'],
+        2: ['umrechnung-formel'],
+        3: ['bogenlaenge'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['deg-rad-modus'],     qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['deg-rad-modus'],     qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'multiple-choice', uses: ['deg-rad-modus'],     qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['deg-rad-modus'],     qty: 1, note: 'Distraktor: falscher Modus führt zu unsinnigen Werten' },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['deg-rad-modus'],     qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'matching',        uses: ['pi-vielfache'],      qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pi-vielfache'],      qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['pi-vielfache'],      qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pi-vielfache'],      qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'matching',        uses: ['pi-vielfache'],      qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['umrechnung-formel'], qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['umrechnung-formel'], qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['umrechnung-formel'], qty: 2 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['umrechnung-formel'], qty: 1, note: 'Distraktor: $\\pi/180$ mit $180/\\pi$ verwechselt' },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['umrechnung-formel'], qty: 1 },
+
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['bogenlaenge'],       qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['bogenlaenge'],       qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['bogenlaenge'],       qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['bogenlaenge'],       qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'number-input',    uses: ['bogenlaenge'],       qty: 1 },
+      ],
+    },
     nextLessonId: 'trig-1-2',
     steps: [
       {
@@ -652,6 +728,41 @@ $$\\alpha_{\\circ} = \\alpha_{\\text{rad}} \\cdot \\dfrac{180}{\\pi}$$
       { label: 'Umkehrfunktionen arcsin/arccos/arctan sinnvoll einsetzen', examRelevance: 'mittel' },
     ],
     prerequisites: ['trig-1-1'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-1-0', concepts: ['winkel-def'] },
+      ],
+      concepts: [
+        { id: 'dreieck-seiten',     title: 'Hypotenuse, Gegenkathete, Ankathete im rechtwinkligen Dreieck', dependsOn: [] },
+        { id: 'soh-cah-toa',        title: 'SOH-CAH-TOA: $\\sin=G/H$, $\\cos=A/H$, $\\tan=G/A$',              dependsOn: ['dreieck-seiten'] },
+        { id: 'kathete-orientierung', title: 'Ankathete vs. Gegenkathete je nach Blickrichtung zum Winkel',  dependsOn: ['dreieck-seiten'] },
+        { id: 'arcsin-arccos-arctan', title: 'Umkehrfunktionen arcsin/arccos/arctan liefern Hauptwinkel',   dependsOn: ['soh-cah-toa'] },
+      ],
+      subGoalConcepts: {
+        0: ['dreieck-seiten', 'soh-cah-toa'],
+        1: ['kathete-orientierung'],
+        2: ['arcsin-arccos-arctan'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'matching',        uses: ['soh-cah-toa'],           qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['soh-cah-toa'],           qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['soh-cah-toa'],           qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['soh-cah-toa'],           qty: 1, note: 'Distraktor: sin und cos vertauscht' },
+        { subGoal: 0, stage: 'transfer',          type: 'number-input',    uses: ['soh-cah-toa'],           qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['kathete-orientierung'],  qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['kathete-orientierung'],  qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'multiple-choice', uses: ['kathete-orientierung'],  qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['kathete-orientierung'],  qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'matching',        uses: ['kathete-orientierung'],  qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['arcsin-arccos-arctan'],  qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['arcsin-arccos-arctan'],  qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['arcsin-arccos-arctan'],  qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['arcsin-arccos-arctan'],  qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['arcsin-arccos-arctan'],  qty: 1 },
+      ],
+    },
     nextLessonId: 'trig-1-3',
     steps: [
       {
@@ -736,6 +847,49 @@ $$\\tan(\\alpha) = \\dfrac{G}{A} = \\dfrac{\\text{Gegenkathete}}{\\text{Ankathet
       { label: 'Komplementärwinkel: $\\cos\\alpha = \\sin(90° - \\alpha)$ und umgekehrt', examRelevance: 'mittel' },
     ],
     prerequisites: ['trig-1-2'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-1-2', concepts: ['soh-cah-toa'] },
+      ],
+      concepts: [
+        { id: 'grundwerte-sin', title: '$\\sin$-Grundwerte: $0, \\tfrac12, \\tfrac{\\sqrt2}{2}, \\tfrac{\\sqrt3}{2}, 1$ für $0°,30°,45°,60°,90°$', dependsOn: [] },
+        { id: 'grundwerte-cos', title: '$\\cos$-Grundwerte: $1, \\tfrac{\\sqrt3}{2}, \\tfrac{\\sqrt2}{2}, \\tfrac12, 0$ (Sinus rückwärts)',           dependsOn: ['grundwerte-sin'] },
+        { id: 'wurzel-n-muster', title: 'Merkregel $\\sqrt{n}/2$ für $n=0,1,2,3,4$',                                                                 dependsOn: ['grundwerte-sin'] },
+        { id: 'grundwerte-tan',  title: '$\\tan$-Grundwerte: $0, 1/\\sqrt3, 1, \\sqrt3$, undef.',                                                    dependsOn: ['grundwerte-sin', 'grundwerte-cos'] },
+        { id: 'komplementaer',   title: '$\\cos\\alpha = \\sin(90°-\\alpha)$ und $\\sin\\alpha = \\cos(90°-\\alpha)$',                                dependsOn: ['grundwerte-sin', 'grundwerte-cos'] },
+      ],
+      subGoalConcepts: {
+        0: ['grundwerte-sin'],
+        1: ['wurzel-n-muster'],
+        2: ['grundwerte-cos', 'grundwerte-tan'],
+        3: ['komplementaer'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'matching',        uses: ['grundwerte-sin'], qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['grundwerte-sin'], qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['grundwerte-sin'], qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['grundwerte-sin'], qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['grundwerte-sin'], qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['wurzel-n-muster'], qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['wurzel-n-muster'], qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['wurzel-n-muster'], qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['wurzel-n-muster'], qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'sorting',         uses: ['wurzel-n-muster'], qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['grundwerte-cos'],  qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['grundwerte-cos'],  qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['grundwerte-tan'],  qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['grundwerte-cos', 'grundwerte-sin'], qty: 1, note: 'Distraktor: sin/cos verwechselt' },
+        { subGoal: 2, stage: 'transfer',          type: 'matching',        uses: ['grundwerte-cos', 'grundwerte-sin'], qty: 1 },
+
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['komplementaer'],   qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['komplementaer'],   qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['komplementaer'],   qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['komplementaer'],   qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'number-input',    uses: ['komplementaer', 'grundwerte-sin'], qty: 1 },
+      ],
+    },
     nextLessonId: 'trig-1-4',
     steps: [
       {
@@ -785,6 +939,42 @@ Der Grund: Diese Winkel kommen in regelmäßigen Geometrien vor (gleichseitiges 
       { label: 'Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen', examRelevance: 'mittel' },
     ],
     prerequisites: ['trig-1-3'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-1-3', concepts: ['grundwerte-sin', 'grundwerte-cos'] },
+      ],
+      concepts: [
+        { id: 'quadranten-def',   title: 'Quadranten I–IV auf dem Einheitskreis',                                      dependsOn: [] },
+        { id: 'vorzeichen-ASTC',  title: 'ASTC: All Students Take Calculus — Vorzeichen pro Quadrant',                 dependsOn: ['quadranten-def'] },
+        { id: 'symmetrie-sin',    title: '$\\sin(180°-\\alpha) = \\sin\\alpha$ (Sinus-Symmetrie)',                       dependsOn: ['vorzeichen-ASTC'] },
+        { id: 'symmetrie-cos',    title: '$\\cos(180°-\\alpha) = -\\cos\\alpha$ (Kosinus-Spiegel)',                      dependsOn: ['vorzeichen-ASTC'] },
+        { id: 'referenzwinkel',   title: 'Referenzwinkel: jeder Winkel auf $0°$–$90°$ zurückführen',                    dependsOn: ['vorzeichen-ASTC'] },
+      ],
+      subGoalConcepts: {
+        0: ['quadranten-def', 'vorzeichen-ASTC'],
+        1: ['symmetrie-sin', 'symmetrie-cos'],
+        2: ['referenzwinkel'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'matching',        uses: ['vorzeichen-ASTC'],    qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['vorzeichen-ASTC'],    qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'multiple-choice', uses: ['vorzeichen-ASTC'],    qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['vorzeichen-ASTC'],    qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['vorzeichen-ASTC'],    qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['symmetrie-sin', 'symmetrie-cos'], qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['symmetrie-sin'],      qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['symmetrie-cos'],      qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['symmetrie-sin', 'symmetrie-cos'], qty: 1, note: 'Distraktor: Vorzeichen übersehen' },
+        { subGoal: 1, stage: 'transfer',          type: 'number-input',    uses: ['symmetrie-sin', 'symmetrie-cos'], qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['referenzwinkel'],     qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['referenzwinkel'],     qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['referenzwinkel'],     qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['referenzwinkel'],     qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['referenzwinkel', 'vorzeichen-ASTC'], qty: 1 },
+      ],
+    },
     nextLessonId: 'trig-2-1',
     steps: [
       {
