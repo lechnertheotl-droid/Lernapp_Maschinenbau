@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3003 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 1103 (37 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 1157 / 1157 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 158 / 1134 (14 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3110 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 1210 (39 %) | 100 % der Aufgaben | 🔴 |
+| MC mit wrongAnswerExplanations | 1212 / 1212 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 179 / 1134 (16 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -126,10 +126,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **457** (manuell: 112 · supplemental: 345)
-- 4-Block: 314/457 (69 %) 🟡
-- MC-wAE: 197/197 (100 %) ✅
-- Sub-Goals: 52/90 Goal-Tasks verknüpft 🔴
+- Aufgaben: **564** (manuell: 112 · supplemental: 452)
+- 4-Block: 421/564 (75 %) 🟡
+- MC-wAE: 252/252 (100 %) ✅
+- Sub-Goals: 73/90 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
 
 **Algebraische Umformungen, Gleichungen und Funktionen — das rechnerische Fundament für alles danach.**
@@ -184,10 +184,10 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | `alg-2-2` Quadratische Gleichungen | 4 | 4/4 | 34 | 14/9/5/4/2 | 23/34 | 14/14 | ✅ | +11 4B |
 | `alg-2-3` Polynomgleichungen & Polynomdivision | 6 | 6/6 | 43 | 20/9/7/4/3 | 32/43 | 20/20 | ✅ | +11 4B |
 | `alg-2-4` Ungleichungen | 6 | 6/6 | 42 | 20/7/6/5/4 | 34/42 | 20/20 | ✅ | +8 4B |
-| `alg-3-1` Funktionsbegriff | 3 | 0/3 | 11 | 6/2/2/1/0 | 0/11 | 6/6 | ✅ | +3 Goal, +11 4B |
-| `alg-3-2` Elementare Funktionen | 6 | 0/6 | 13 | 7/2/1/2/1 | 1/13 | 7/7 | ✅ | +6 Goal, +12 4B |
-| `alg-3-3` Funktionsoperationen | 6 | 0/6 | 11 | 6/2/1/1/1 | 2/11 | 6/6 | ✅ | +6 Goal, +9 4B |
-| `alg-3-4` Umkehrfunktionen | 6 | 0/6 | 11 | 5/2/2/1/1 | 1/11 | 5/5 | ✅ | +6 Goal, +10 4B |
+| `alg-3-1` Funktionsbegriff | 3 | 3/3 | 27 | 16/2/5/4/0 | 16/27 | 16/16 | ✅ | +11 4B |
+| `alg-3-2` Elementare Funktionen | 6 | 6/6 | 43 | 20/6/6/9/2 | 31/43 | 20/20 | ✅ | +12 4B |
+| `alg-3-3` Funktionsoperationen | 6 | 6/6 | 41 | 22/4/6/7/2 | 32/41 | 22/22 | ✅ | +9 4B |
+| `alg-3-4` Umkehrfunktionen | 6 | 6/6 | 42 | 21/7/8/4/2 | 32/42 | 21/21 | ✅ | +10 4B |
 | `alg-4-1` Prüfung: Algebra-Grundlagen | 5 | 0/5 | 11 | 6/2/2/1/0 | 1/11 | 6/6 | ✅ | +5 Goal, +10 4B |
 | `alg-4-2` Prüfung: Funktionen & Anwendungen | 6 | 0/6 | 11 | 7/1/2/0/1 | 2/11 | 7/7 | ✅ | +6 Goal, +9 4B |
 | `alg-4-3` Prüfung: Gleichungs­systeme & technische Anwendungen | 6 | 0/6 | 11 | 3/4/2/1/1 | 0/11 | 3/3 | ✅ | +6 Goal, +11 4B |
@@ -3144,7 +3144,7 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
   - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
-### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 130 Lessons
+### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 126 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -4957,179 +4957,6 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
   - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
 
-#### `alg-3-1` · Funktionsbegriff
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-1-3` → `log-def`
-  - `alg-1-2` → `wurzel-def-bereich`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `fkt-def` — Funktion = jedes $x \in D$ erhält genau ein $y$ (SG 0)
-  2. `fkt-graph` — Funktionsgraph $\{(x,f(x))\}$ und vertikaler Linientest ⇐ `fkt-def` (SG 0)
-  3. `def-bereich` — Definitionsbereich: Division $\neq 0$, Wurzel $\geq 0$, $\log > 0$ ⇐ `fkt-def` (SG 1)
-  4. `wertebereich` — Wertebereich = Menge aller tatsächlich erreichten $y$ ⇐ `fkt-def` (SG 1)
-  5. `injektiv` — Injektiv: $f(x_1)=f(x_2) \Rightarrow x_1=x_2$ ⇐ `fkt-def` (SG 2)
-  6. `surjektiv` — Surjektiv: jedes $y$ der Zielmenge hat ein Urbild ⇐ `fkt-def` (SG 2)
-  7. `bijektiv` — Bijektiv = injektiv + surjektiv (Voraussetzung für Umkehrung) ⇐ `injektiv`, `surjektiv` (SG 2)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `fkt-def`, `fkt-graph` · **0/5+** — Funktion: jedem $x$ aus Definitionsbereich wird *genau ein* $y$ zugeordnet
-  - 🔴 [1] _hoch_ · Konzepte: `def-bereich`, `wertebereich` · **0/5+** — Definitionsbereich $D$: alle zulässigen $x$ (Division durch 0 ausschließen, Radikand $\ge 0$, Logarithmus $>0$)
-  - 🔴 [2] _mittel_ · Konzepte: `injektiv`, `surjektiv`, `bijektiv` · **0/5+** — Injektiv = verschiedene $x$ $\to$ verschiedene $y$; surjektiv = jedes $y$ im Bild wird getroffen; bijektiv = beides
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `fkt-def` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `fkt-graph` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `fkt-graph` | 1 | 0 | 🔴 | Vertikaler Linientest |
-|  4 | 0 | error-analysis     | multiple-choice  | `fkt-def` | 1 | 0 | 🔴 | Distraktor: Kreis als Funktionsgraph |
-|  5 | 0 | transfer           | matching         | `fkt-def` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `def-bereich` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `def-bereich` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `def-bereich`, `wertebereich` | 2 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `def-bereich` | 1 | 0 | 🔴 | Distraktor: Polstelle nicht ausgeschlossen |
-| 10 | 1 | transfer           | matching         | `def-bereich` | 1 | 0 | 🔴 | Funktion ↔ maximaler Definitionsbereich |
-| 11 | 2 | recognize          | matching         | `injektiv`, `surjektiv`, `bijektiv` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `injektiv` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `bijektiv` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `injektiv`, `surjektiv` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | true-false       | `bijektiv` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 15 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:**
-  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-3-1': { 0: [...], 1: [...], ... }`
-  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-3-1-a`, `ex-alg-3-1-b`, `ex-alg-3-1-c`, `ex-alg-3-1-manual-1`, `ex-alg-3-1-manual-2`, `ex-alg-3-1-manual-3`, `ex-alg-3-1-manual-4`, `ex-alg-3-1-manual-5` … (+3 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
-#### `alg-3-3` · Funktionsoperationen
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-3-1` → `fkt-def`, `fkt-graph`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `trafo-hor-verschieben` — Horizontale Verschiebung: $f(x-a)$ um $a$ nach rechts (SG 0)
-  2. `trafo-vert-verschieben` — Vertikale Verschiebung: $f(x)+b$ um $b$ nach oben (SG 1)
-  3. `trafo-vert-streck` — Vertikale Streckung: $c \cdot f(x)$ ⇐ `trafo-vert-verschieben` (SG 2)
-  4. `trafo-hor-streck` — Horizontale Streckung: $f(x/c)$ (umgekehrt!) ⇐ `trafo-hor-verschieben` (SG 2)
-  5. `trafo-spiegel-x` — Spiegelung an $x$-Achse: $-f(x)$ (SG 3)
-  6. `trafo-spiegel-y` — Spiegelung an $y$-Achse: $f(-x)$ (SG 3)
-  7. `trafo-merkregel` — Argument-Änderungen wirken horizontal und umgekehrt ⇐ `trafo-hor-verschieben`, `trafo-hor-streck` (SG 4)
-  8. `fkt-komposition` — $(f \circ g)(x) = f(g(x))$ — Reihenfolge beachten (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `trafo-hor-verschieben` · **0/5+** — Horizontale Verschiebung: $f(x - a)$ = $a$ nach rechts (Vorzeichen kontraintuitiv!)
-  - 🔴 [1] _hoch_ · Konzepte: `trafo-vert-verschieben` · **0/5+** — Vertikale Verschiebung: $f(x) + b$ = $b$ nach oben
-  - 🔴 [2] _hoch_ · Konzepte: `trafo-vert-streck`, `trafo-hor-streck` · **0/5+** — Streckung vertikal: $c \cdot f(x)$ (für $c > 1$), horizontal: $f(x/c)$
-  - 🔴 [3] _hoch_ · Konzepte: `trafo-spiegel-x`, `trafo-spiegel-y` · **0/5+** — Spiegelung an $x$-Achse: $-f(x)$, an $y$-Achse: $f(-x)$
-  - 🔴 [4] _mittel_ · Konzepte: `trafo-merkregel` · **0/5+** — Merkregel: Änderungen im Argument wirken horizontal und **umgekehrt**
-  - 🔴 [5] _mittel_ · Konzepte: `fkt-komposition` · **0/5+** — Funktionskomposition: $(f \circ g)(x) = f(g(x))$ (Reihenfolge beachten)
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `trafo-hor-verschieben` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `trafo-hor-verschieben` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `trafo-hor-verschieben` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `trafo-hor-verschieben` | 1 | 0 | 🔴 | Distraktor: Vorzeichen nicht getauscht |
-|  5 | 0 | transfer           | matching         | `trafo-hor-verschieben` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `trafo-vert-verschieben` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `trafo-vert-verschieben` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `trafo-vert-verschieben` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `trafo-vert-verschieben` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | matching         | `trafo-vert-verschieben`, `trafo-hor-verschieben` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `trafo-vert-streck`, `trafo-hor-streck` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `trafo-vert-streck` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `trafo-hor-streck` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `trafo-hor-streck` | 1 | 0 | 🔴 | Distraktor: horizontale Streckung intuitiv gerechnet |
-| 15 | 2 | transfer           | matching         | `trafo-vert-streck`, `trafo-hor-streck` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | matching         | `trafo-spiegel-x`, `trafo-spiegel-y` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `trafo-spiegel-x` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `trafo-spiegel-y` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `trafo-spiegel-x`, `trafo-spiegel-y` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | matching         | `trafo-spiegel-x`, `trafo-spiegel-y` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `trafo-merkregel` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `trafo-merkregel` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `trafo-merkregel` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `trafo-merkregel` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | sorting          | `trafo-merkregel` | 1 | 0 | 🔴 |  |
-| 26 | 5 | recognize          | true-false       | `fkt-komposition` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `fkt-komposition` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | number-input     | `fkt-komposition` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `fkt-komposition` | 1 | 0 | 🔴 | Distraktor: Reihenfolge vertauscht |
-| 30 | 5 | transfer           | matching         | `fkt-komposition` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:**
-  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-3-3': { 0: [...], 1: [...], ... }`
-  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-3-3-c`, `ex-alg-3-3-manual-1`, `ex-alg-3-3-manual-2`, `ex-alg-3-3-manual-3`, `ex-alg-3-3-manual-4`, `ex-alg-3-3-manual-5`, `ex-alg-3-3-manual-6`, `ex-alg-3-3-manual-7` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
-#### `alg-3-4` · Umkehrfunktionen
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-3-1` → `injektiv`, `surjektiv`, `bijektiv`, `def-bereich`, `wertebereich`
-  - `alg-0-4` → `aequivalenz`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `umkehr-existenz` — Umkehrfunktion existiert genau wenn $f$ bijektiv ist (SG 0)
-  2. `umkehr-verfahren` — Verfahren: $y=f(x)$ nach $x$ auflösen, dann Rollen tauschen ⇐ `umkehr-existenz` (SG 1)
-  3. `umkehr-graph` — Graphische Konstruktion: Spiegelung an $y=x$ ⇐ `umkehr-existenz` (SG 2)
-  4. `umkehr-bereiche` — $D(f^{-1}) = W(f)$ und $W(f^{-1}) = D(f)$ ⇐ `umkehr-existenz` (SG 3)
-  5. `umkehr-identitaet` — $f^{-1}(f(x)) = x$ und $f(f^{-1}(y)) = y$ ⇐ `umkehr-verfahren` (SG 4)
-  6. `umkehr-einschraenken` — Nicht-injektives $f$: Definitionsbereich einschränken ⇐ `umkehr-existenz` (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `umkehr-existenz` · **0/5+** — Existenz: $f$ muss **bijektiv** sein (injektiv UND surjektiv)
-  - 🔴 [1] _hoch_ · Konzepte: `umkehr-verfahren` · **0/5+** — Berechnung: $y = f(x)$ nach $x$ auflösen, dann $x \leftrightarrow y$ tauschen
-  - 🔴 [2] _hoch_ · Konzepte: `umkehr-graph` · **0/5+** — Graphisch: Spiegelung an der Winkelhalbierenden $y = x$
-  - 🔴 [3] _hoch_ · Konzepte: `umkehr-bereiche` · **0/5+** — Def.bereich von $f^{-1}$ = Wertebereich von $f$ (und umgekehrt)
-  - 🔴 [4] _mittel_ · Konzepte: `umkehr-identitaet` · **0/5+** — Eigenschaft: $f^{-1}(f(x)) = x$ und $f(f^{-1}(y)) = y$
-  - 🔴 [5] _mittel_ · Konzepte: `umkehr-einschraenken` · **0/5+** — Für nicht-injektives $f$ (z.B. $x^2$) Def.bereich einschränken: $[0,\infty)$ macht Umkehrung möglich
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `umkehr-existenz` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `umkehr-existenz` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `umkehr-existenz` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `umkehr-existenz` | 1 | 0 | 🔴 | Distraktor: bijektiv nicht geprüft |
-|  5 | 0 | transfer           | matching         | `umkehr-existenz` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `umkehr-verfahren` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `umkehr-verfahren` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `umkehr-verfahren` | 2 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `umkehr-verfahren` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | sorting          | `umkehr-verfahren` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `umkehr-graph` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `umkehr-graph` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `umkehr-graph` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `umkehr-graph` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | matching         | `umkehr-graph` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `umkehr-bereiche` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `umkehr-bereiche` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `umkehr-bereiche` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `umkehr-bereiche` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | matching         | `umkehr-bereiche` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `umkehr-identitaet` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `umkehr-identitaet` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `umkehr-identitaet` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `umkehr-identitaet` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | number-input     | `umkehr-identitaet` | 1 | 0 | 🔴 |  |
-| 26 | 5 | recognize          | true-false       | `umkehr-einschraenken` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `umkehr-einschraenken` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | multiple-choice  | `umkehr-einschraenken`, `umkehr-verfahren` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `umkehr-einschraenken` | 1 | 0 | 🔴 |  |
-| 30 | 5 | transfer           | number-input     | `umkehr-einschraenken`, `umkehr-verfahren` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:**
-  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-3-4': { 0: [...], 1: [...], ... }`
-  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-3-4-a`, `ex-alg-3-4-b`, `ex-alg-3-4-c`, `ex-alg-3-4-manual-1`, `ex-alg-3-4-manual-2`, `ex-alg-3-4-manual-3`, `ex-alg-3-4-manual-4`, `ex-alg-3-4-manual-5` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
 #### `la-1-5` · Eigenwerte und Eigenvektoren
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Matrizen & Determinanten
@@ -6118,71 +5945,6 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
   - _Klausur-Fokus:_ Kräftegleichgewicht in 3D mit Skalar-/Kreuzprodukt. · Abstand Punkt–Ebene und Gerade–Gerade. · Drehmoment $\vec M = \vec r\times\vec F$.
 
-#### `alg-3-2` · Elementare Funktionen
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-3-1` → `fkt-def`, `def-bereich`, `wertebereich`
-  - `alg-1-1` → `pot-potenz`
-  - `alg-1-2` → `wurzel-bruchpot`
-  - `alg-1-3` → `log-def`, `log-umkehr`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `potenz-fkt` — Potenzfunktion $f(x)=x^n$: Symmetrie je nach gerade/ungerade $n$ (SG 0)
-  2. `exp-fkt` — Exponentialfunktion $f(x)=a^x$ ($a>0, a\neq 1$): $W = (0,\infty)$ (SG 1)
-  3. `log-fkt` — Logarithmusfunktion $f(x)=\log_a x$: $D = (0,\infty)$ ⇐ `exp-fkt` (SG 2)
-  4. `wurzel-fkt` — Wurzelfunktion $f(x)=\sqrt x$: $D = [0,\infty)$ (SG 5)
-  5. `euler-zahl` — $e \approx 2{,}718$ als Basis des natürlichen Logarithmus ⇐ `exp-fkt` (SG 4)
-  6. `wachstum-hierarchie` — Wachstumshierarchie $\ln x \ll x^n \ll a^x$ für $x \to \infty$ ⇐ `potenz-fkt`, `exp-fkt`, `log-fkt` (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `potenz-fkt` · **0/5+** — Potenzfunktion $x^n$: gerade $n$ → Parabel, ungerade $n$ → S-Form; Def.bereich $\mathbb{R}$
-  - 🔴 [1] _hoch_ · Konzepte: `exp-fkt` · **0/5+** — Exponentialfunktion $a^x$ ($a>0, a\neq 1$): Wertebereich $(0,\infty)$, streng monoton
-  - 🔴 [2] _hoch_ · Konzepte: `log-fkt` · **0/5+** — Logarithmusfunktion $\log_a x$: Def.bereich $(0,\infty)$, Umkehrung von $a^x$
-  - 🔴 [3] _hoch_ · Konzepte: `wachstum-hierarchie` · **0/5+** — Wachstumshierarchie: $\ln x \ll x^n \ll a^x$ für $x \to \infty$ (mit $a > 1$)
-  - 🔴 [4] _mittel_ · Konzepte: `euler-zahl` · **0/5+** — Eulersche Zahl $e \approx 2{,}718$: Basis des natürlichen Logarithmus
-  - 🔴 [5] _mittel_ · Konzepte: `wurzel-fkt` · **0/5+** — Wurzelfunktion $\sqrt{x} = x^{1/2}$: Def.bereich $[0,\infty)$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `potenz-fkt` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `potenz-fkt` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | matching         | `potenz-fkt` | 1 | 0 | 🔴 | Graph ↔ $x^n$ |
-|  4 | 0 | error-analysis     | multiple-choice  | `potenz-fkt` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | matching         | `potenz-fkt` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `exp-fkt` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `exp-fkt` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `exp-fkt` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `exp-fkt` | 1 | 0 | 🔴 | Distraktor: $a^x$ kann $0$ sein |
-| 10 | 1 | transfer           | matching         | `exp-fkt` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `log-fkt` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `log-fkt` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `log-fkt` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `log-fkt` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | matching         | `log-fkt`, `exp-fkt` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | matching         | `wachstum-hierarchie` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `wachstum-hierarchie` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `wachstum-hierarchie` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `wachstum-hierarchie` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | sorting          | `wachstum-hierarchie` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `euler-zahl` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `euler-zahl` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `euler-zahl` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `euler-zahl` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | matching         | `euler-zahl` | 1 | 0 | 🔴 |  |
-| 26 | 5 | recognize          | true-false       | `wurzel-fkt` | 1 | 0 | 🔴 |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `wurzel-fkt` | 1 | 0 | 🔴 |  |
-| 28 | 5 | apply-independent  | number-input     | `wurzel-fkt` | 1 | 0 | 🔴 |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `wurzel-fkt` | 1 | 0 | 🔴 |  |
-| 30 | 5 | transfer           | matching         | `wurzel-fkt` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:**
-  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-3-2': { 0: [...], 1: [...], ... }`
-  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-3-2-a`, `ex-alg-3-2-b`, `ex-alg-3-2-c`, `ex-alg-3-2-d`, `ex-alg-3-2-e`, `ex-alg-3-2-manual-1`, `ex-alg-3-2-manual-2`, `ex-alg-3-2-manual-3` … (+4 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
 #### `la-1-2` · Matrizenrechnung
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Matrizen & Determinanten
@@ -6398,7 +6160,7 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
   - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 26 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 30 Lessons
 
 #### `mech-0-3` · Dimensionsanalyse — Einheitencheck
 
@@ -6528,6 +6290,51 @@ npm run build              # abschließender End-zu-End-Check
   - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-0-2': { 0: [...], 1: [...], ... }`
   - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
+#### `alg-3-1` · Funktionsbegriff
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-1-3` → `log-def`
+  - `alg-1-2` → `wurzel-def-bereich`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `fkt-def` — Funktion = jedes $x \in D$ erhält genau ein $y$ (SG 0)
+  2. `fkt-graph` — Funktionsgraph $\{(x,f(x))\}$ und vertikaler Linientest ⇐ `fkt-def` (SG 0)
+  3. `def-bereich` — Definitionsbereich: Division $\neq 0$, Wurzel $\geq 0$, $\log > 0$ ⇐ `fkt-def` (SG 1)
+  4. `wertebereich` — Wertebereich = Menge aller tatsächlich erreichten $y$ ⇐ `fkt-def` (SG 1)
+  5. `injektiv` — Injektiv: $f(x_1)=f(x_2) \Rightarrow x_1=x_2$ ⇐ `fkt-def` (SG 2)
+  6. `surjektiv` — Surjektiv: jedes $y$ der Zielmenge hat ein Urbild ⇐ `fkt-def` (SG 2)
+  7. `bijektiv` — Bijektiv = injektiv + surjektiv (Voraussetzung für Umkehrung) ⇐ `injektiv`, `surjektiv` (SG 2)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `fkt-def`, `fkt-graph` · **5/5+** — Funktion: jedem $x$ aus Definitionsbereich wird *genau ein* $y$ zugeordnet
+  - ✅ [1] _hoch_ · Konzepte: `def-bereich`, `wertebereich` · **6/5+** — Definitionsbereich $D$: alle zulässigen $x$ (Division durch 0 ausschließen, Radikand $\ge 0$, Logarithmus $>0$)
+  - ✅ [2] _mittel_ · Konzepte: `injektiv`, `surjektiv`, `bijektiv` · **5/5+** — Injektiv = verschiedene $x$ $\to$ verschiedene $y$; surjektiv = jedes $y$ im Bild wird getroffen; bijektiv = beides
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `fkt-def` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `fkt-graph` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `fkt-graph` | 1 | 1 | ✅ | Vertikaler Linientest |
+|  4 | 0 | error-analysis     | multiple-choice  | `fkt-def` | 1 | 1 | ✅ | Distraktor: Kreis als Funktionsgraph |
+|  5 | 0 | transfer           | matching         | `fkt-def` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `def-bereich` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `def-bereich` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `def-bereich`, `wertebereich` | 2 | 2 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `def-bereich` | 1 | 1 | ✅ | Distraktor: Polstelle nicht ausgeschlossen |
+| 10 | 1 | transfer           | matching         | `def-bereich` | 1 | 1 | ✅ | Funktion ↔ maximaler Definitionsbereich |
+| 11 | 2 | recognize          | matching         | `injektiv`, `surjektiv`, `bijektiv` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `injektiv` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `bijektiv` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `injektiv`, `surjektiv` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | true-false       | `bijektiv` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-3-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
+- **4-Block-Erklärung fehlt bei:** `ex-alg-3-1-a`, `ex-alg-3-1-b`, `ex-alg-3-1-c`, `ex-alg-3-1-manual-1`, `ex-alg-3-1-manual-2`, `ex-alg-3-1-manual-3`, `ex-alg-3-1-manual-4`, `ex-alg-3-1-manual-5` … (+3 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-1-2` · Wurzeln und gebrochene Exponenten
@@ -7045,6 +6852,69 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
   - _Klausur-Fokus:_ Lineare DGL 1. Ordnung mit AWP. · Gedämpfte Schwingung ($my''+cy'+ky=0$). · Ansatz für partikuläre Lösung (Typ: Polynom, $e^{ax}$, $\sin/\cos$).
 
+#### `alg-3-3` · Funktionsoperationen
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-3-1` → `fkt-def`, `fkt-graph`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `trafo-hor-verschieben` — Horizontale Verschiebung: $f(x-a)$ um $a$ nach rechts (SG 0)
+  2. `trafo-vert-verschieben` — Vertikale Verschiebung: $f(x)+b$ um $b$ nach oben (SG 1)
+  3. `trafo-vert-streck` — Vertikale Streckung: $c \cdot f(x)$ ⇐ `trafo-vert-verschieben` (SG 2)
+  4. `trafo-hor-streck` — Horizontale Streckung: $f(x/c)$ (umgekehrt!) ⇐ `trafo-hor-verschieben` (SG 2)
+  5. `trafo-spiegel-x` — Spiegelung an $x$-Achse: $-f(x)$ (SG 3)
+  6. `trafo-spiegel-y` — Spiegelung an $y$-Achse: $f(-x)$ (SG 3)
+  7. `trafo-merkregel` — Argument-Änderungen wirken horizontal und umgekehrt ⇐ `trafo-hor-verschieben`, `trafo-hor-streck` (SG 4)
+  8. `fkt-komposition` — $(f \circ g)(x) = f(g(x))$ — Reihenfolge beachten (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `trafo-hor-verschieben` · **5/5+** — Horizontale Verschiebung: $f(x - a)$ = $a$ nach rechts (Vorzeichen kontraintuitiv!)
+  - ✅ [1] _hoch_ · Konzepte: `trafo-vert-verschieben` · **5/5+** — Vertikale Verschiebung: $f(x) + b$ = $b$ nach oben
+  - ✅ [2] _hoch_ · Konzepte: `trafo-vert-streck`, `trafo-hor-streck` · **5/5+** — Streckung vertikal: $c \cdot f(x)$ (für $c > 1$), horizontal: $f(x/c)$
+  - ✅ [3] _hoch_ · Konzepte: `trafo-spiegel-x`, `trafo-spiegel-y` · **5/5+** — Spiegelung an $x$-Achse: $-f(x)$, an $y$-Achse: $f(-x)$
+  - ✅ [4] _mittel_ · Konzepte: `trafo-merkregel` · **5/5+** — Merkregel: Änderungen im Argument wirken horizontal und **umgekehrt**
+  - ✅ [5] _mittel_ · Konzepte: `fkt-komposition` · **5/5+** — Funktionskomposition: $(f \circ g)(x) = f(g(x))$ (Reihenfolge beachten)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `trafo-hor-verschieben` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `trafo-hor-verschieben` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `trafo-hor-verschieben` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `trafo-hor-verschieben` | 1 | 1 | ✅ | Distraktor: Vorzeichen nicht getauscht |
+|  5 | 0 | transfer           | matching         | `trafo-hor-verschieben` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `trafo-vert-verschieben` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `trafo-vert-verschieben` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `trafo-vert-verschieben` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `trafo-vert-verschieben` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | matching         | `trafo-vert-verschieben`, `trafo-hor-verschieben` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `trafo-vert-streck`, `trafo-hor-streck` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `trafo-vert-streck` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `trafo-hor-streck` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `trafo-hor-streck` | 1 | 1 | ✅ | Distraktor: horizontale Streckung intuitiv gerechnet |
+| 15 | 2 | transfer           | matching         | `trafo-vert-streck`, `trafo-hor-streck` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | matching         | `trafo-spiegel-x`, `trafo-spiegel-y` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `trafo-spiegel-x` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `trafo-spiegel-y` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `trafo-spiegel-x`, `trafo-spiegel-y` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | matching         | `trafo-spiegel-x`, `trafo-spiegel-y` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `trafo-merkregel` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `trafo-merkregel` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `trafo-merkregel` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `trafo-merkregel` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | sorting          | `trafo-merkregel` | 1 | 1 | ✅ |  |
+| 26 | 5 | recognize          | true-false       | `fkt-komposition` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `fkt-komposition` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | number-input     | `fkt-komposition` | 1 | 1 | ✅ |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `fkt-komposition` | 1 | 1 | ✅ | Distraktor: Reihenfolge vertauscht |
+| 30 | 5 | transfer           | matching         | `fkt-komposition` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-3-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
+- **4-Block-Erklärung fehlt bei:** `ex-alg-3-3-c`, `ex-alg-3-3-manual-1`, `ex-alg-3-3-manual-2`, `ex-alg-3-3-manual-3`, `ex-alg-3-3-manual-4`, `ex-alg-3-3-manual-5`, `ex-alg-3-3-manual-6`, `ex-alg-3-3-manual-7` … (+1 weitere)
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
 #### `dgl-3-2` · Prüfung: DGL 2. Ordnung & Anwendungen
 
 - **Topic:** `differentialgleichungen` (Differentialgleichungen) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
@@ -7147,6 +7017,68 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
+#### `alg-3-4` · Umkehrfunktionen
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-3-1` → `injektiv`, `surjektiv`, `bijektiv`, `def-bereich`, `wertebereich`
+  - `alg-0-4` → `aequivalenz`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `umkehr-existenz` — Umkehrfunktion existiert genau wenn $f$ bijektiv ist (SG 0)
+  2. `umkehr-verfahren` — Verfahren: $y=f(x)$ nach $x$ auflösen, dann Rollen tauschen ⇐ `umkehr-existenz` (SG 1)
+  3. `umkehr-graph` — Graphische Konstruktion: Spiegelung an $y=x$ ⇐ `umkehr-existenz` (SG 2)
+  4. `umkehr-bereiche` — $D(f^{-1}) = W(f)$ und $W(f^{-1}) = D(f)$ ⇐ `umkehr-existenz` (SG 3)
+  5. `umkehr-identitaet` — $f^{-1}(f(x)) = x$ und $f(f^{-1}(y)) = y$ ⇐ `umkehr-verfahren` (SG 4)
+  6. `umkehr-einschraenken` — Nicht-injektives $f$: Definitionsbereich einschränken ⇐ `umkehr-existenz` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `umkehr-existenz` · **5/5+** — Existenz: $f$ muss **bijektiv** sein (injektiv UND surjektiv)
+  - ✅ [1] _hoch_ · Konzepte: `umkehr-verfahren` · **6/5+** — Berechnung: $y = f(x)$ nach $x$ auflösen, dann $x \leftrightarrow y$ tauschen
+  - ✅ [2] _hoch_ · Konzepte: `umkehr-graph` · **5/5+** — Graphisch: Spiegelung an der Winkelhalbierenden $y = x$
+  - ✅ [3] _hoch_ · Konzepte: `umkehr-bereiche` · **5/5+** — Def.bereich von $f^{-1}$ = Wertebereich von $f$ (und umgekehrt)
+  - ✅ [4] _mittel_ · Konzepte: `umkehr-identitaet` · **5/5+** — Eigenschaft: $f^{-1}(f(x)) = x$ und $f(f^{-1}(y)) = y$
+  - ✅ [5] _mittel_ · Konzepte: `umkehr-einschraenken` · **5/5+** — Für nicht-injektives $f$ (z.B. $x^2$) Def.bereich einschränken: $[0,\infty)$ macht Umkehrung möglich
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `umkehr-existenz` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `umkehr-existenz` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `umkehr-existenz` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `umkehr-existenz` | 1 | 1 | ✅ | Distraktor: bijektiv nicht geprüft |
+|  5 | 0 | transfer           | matching         | `umkehr-existenz` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `umkehr-verfahren` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `umkehr-verfahren` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `umkehr-verfahren` | 2 | 2 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `umkehr-verfahren` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | sorting          | `umkehr-verfahren` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `umkehr-graph` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `umkehr-graph` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `umkehr-graph` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `umkehr-graph` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | matching         | `umkehr-graph` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `umkehr-bereiche` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `umkehr-bereiche` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `umkehr-bereiche` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `umkehr-bereiche` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | matching         | `umkehr-bereiche` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `umkehr-identitaet` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `umkehr-identitaet` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `umkehr-identitaet` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `umkehr-identitaet` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | number-input     | `umkehr-identitaet` | 1 | 1 | ✅ |  |
+| 26 | 5 | recognize          | true-false       | `umkehr-einschraenken` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `umkehr-einschraenken` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `umkehr-einschraenken`, `umkehr-verfahren` | 1 | 1 | ✅ |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `umkehr-einschraenken` | 1 | 1 | ✅ |  |
+| 30 | 5 | transfer           | number-input     | `umkehr-einschraenken`, `umkehr-verfahren` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-3-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
+- **4-Block-Erklärung fehlt bei:** `ex-alg-3-4-a`, `ex-alg-3-4-b`, `ex-alg-3-4-c`, `ex-alg-3-4-manual-1`, `ex-alg-3-4-manual-2`, `ex-alg-3-4-manual-3`, `ex-alg-3-4-manual-4`, `ex-alg-3-4-manual-5` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
 #### `alg-2-3` · Polynomgleichungen & Polynomdivision
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
@@ -7207,6 +7139,70 @@ npm run build              # abschließender End-zu-End-Check
   - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-2-3-a`, `ex-alg-2-3-b`, `ex-alg-2-3-c`, `ex-alg-2-3-manual-1`, `ex-alg-2-3-manual-2`, `ex-alg-2-3-manual-3`, `ex-alg-2-3-manual-4`, `ex-alg-2-3-manual-5` … (+3 weitere)
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
+#### `alg-3-2` · Elementare Funktionen
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-3-1` → `fkt-def`, `def-bereich`, `wertebereich`
+  - `alg-1-1` → `pot-potenz`
+  - `alg-1-2` → `wurzel-bruchpot`
+  - `alg-1-3` → `log-def`, `log-umkehr`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `potenz-fkt` — Potenzfunktion $f(x)=x^n$: Symmetrie je nach gerade/ungerade $n$ (SG 0)
+  2. `exp-fkt` — Exponentialfunktion $f(x)=a^x$ ($a>0, a\neq 1$): $W = (0,\infty)$ (SG 1)
+  3. `log-fkt` — Logarithmusfunktion $f(x)=\log_a x$: $D = (0,\infty)$ ⇐ `exp-fkt` (SG 2)
+  4. `wurzel-fkt` — Wurzelfunktion $f(x)=\sqrt x$: $D = [0,\infty)$ (SG 5)
+  5. `euler-zahl` — $e \approx 2{,}718$ als Basis des natürlichen Logarithmus ⇐ `exp-fkt` (SG 4)
+  6. `wachstum-hierarchie` — Wachstumshierarchie $\ln x \ll x^n \ll a^x$ für $x \to \infty$ ⇐ `potenz-fkt`, `exp-fkt`, `log-fkt` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `potenz-fkt` · **5/5+** — Potenzfunktion $x^n$: gerade $n$ → Parabel, ungerade $n$ → S-Form; Def.bereich $\mathbb{R}$
+  - ✅ [1] _hoch_ · Konzepte: `exp-fkt` · **5/5+** — Exponentialfunktion $a^x$ ($a>0, a\neq 1$): Wertebereich $(0,\infty)$, streng monoton
+  - ✅ [2] _hoch_ · Konzepte: `log-fkt` · **5/5+** — Logarithmusfunktion $\log_a x$: Def.bereich $(0,\infty)$, Umkehrung von $a^x$
+  - ✅ [3] _hoch_ · Konzepte: `wachstum-hierarchie` · **5/5+** — Wachstumshierarchie: $\ln x \ll x^n \ll a^x$ für $x \to \infty$ (mit $a > 1$)
+  - ✅ [4] _mittel_ · Konzepte: `euler-zahl` · **5/5+** — Eulersche Zahl $e \approx 2{,}718$: Basis des natürlichen Logarithmus
+  - ✅ [5] _mittel_ · Konzepte: `wurzel-fkt` · **5/5+** — Wurzelfunktion $\sqrt{x} = x^{1/2}$: Def.bereich $[0,\infty)$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `potenz-fkt` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `potenz-fkt` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | matching         | `potenz-fkt` | 1 | 1 | ✅ | Graph ↔ $x^n$ |
+|  4 | 0 | error-analysis     | multiple-choice  | `potenz-fkt` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | matching         | `potenz-fkt` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `exp-fkt` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `exp-fkt` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `exp-fkt` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `exp-fkt` | 1 | 1 | ✅ | Distraktor: $a^x$ kann $0$ sein |
+| 10 | 1 | transfer           | matching         | `exp-fkt` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `log-fkt` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `log-fkt` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `log-fkt` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `log-fkt` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | matching         | `log-fkt`, `exp-fkt` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | matching         | `wachstum-hierarchie` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `wachstum-hierarchie` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `wachstum-hierarchie` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `wachstum-hierarchie` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | sorting          | `wachstum-hierarchie` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `euler-zahl` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `euler-zahl` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `euler-zahl` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `euler-zahl` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | matching         | `euler-zahl` | 1 | 1 | ✅ |  |
+| 26 | 5 | recognize          | true-false       | `wurzel-fkt` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `wurzel-fkt` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | number-input     | `wurzel-fkt` | 1 | 1 | ✅ |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `wurzel-fkt` | 1 | 1 | ✅ |  |
+| 30 | 5 | transfer           | matching         | `wurzel-fkt` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/algebra.js` unter `'alg-3-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/algebra.js`
+- **4-Block-Erklärung fehlt bei:** `ex-alg-3-2-a`, `ex-alg-3-2-b`, `ex-alg-3-2-c`, `ex-alg-3-2-d`, `ex-alg-3-2-e`, `ex-alg-3-2-manual-1`, `ex-alg-3-2-manual-2`, `ex-alg-3-2-manual-3` … (+4 weitere)
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-1-3` · Logarithmen
