@@ -500,6 +500,22 @@ $$\\frac{dy}{g(y)} = f(x)\\,dx \\quad \\Rightarrow \\quad \\int \\frac{dy}{g(y)}
 
 **Merksatz:** Erst den Typ der DGL bestimmen, dann die passende Methode anwenden!`,
       },
+      {
+        id: 'dgl-3-1-s1b',
+        type: 'visualization',
+        title: 'Lösungskurven: Exponentielles Abklingen vs. Wachstum',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => Math.exp(-0.5 * x), color: '#3b82f6', label: 'y = e^{-x/2} (Abklingen, y\' = -y/2)' },
+            { fn: (x) => Math.exp(0.5 * x), color: '#ef4444', label: 'y = e^{x/2} (Wachstum, y\' = y/2)' },
+            { fn: (x) => 2 - Math.exp(-x), color: '#10b981', label: 'y = 2 - e^{-x} (AWP y\'+y=2, y(0)=1)' },
+          ],
+          xRange: [-1, 5],
+          yRange: [0, 3],
+          showGrid: true,
+        },
+      },
       { id: 'dgl-3-1-s2', type: 'exercise', title: 'Aufgabe 1 — Trennung der Variablen', exerciseRef: 'ex-dgl-3-1-a' },
       { id: 'dgl-3-1-s3', type: 'exercise', title: 'Aufgabe 2 — Homogene lineare DGL', exerciseRef: 'ex-dgl-3-1-b' },
       { id: 'dgl-3-1-s4', type: 'exercise', title: 'Aufgabe 3 — Linearität erkennen', exerciseRef: 'ex-dgl-3-1-c' },
