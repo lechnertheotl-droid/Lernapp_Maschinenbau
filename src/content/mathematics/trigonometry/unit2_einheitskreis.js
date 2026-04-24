@@ -599,6 +599,64 @@ Diese Definition gilt für **alle reellen Winkel** — nicht nur $0°$–$90°$.
       { label: 'Punktspiegelung: $\\sin(180°+\\alpha) = -\\sin\\alpha$, $\\cos(180°+\\alpha) = -\\cos\\alpha$', examRelevance: 'mittel' },
     ],
     prerequisites: ['trig-2-2'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-2-2', concepts: ['cos-x-sin-y', 'koord-universell'] },
+      ],
+      concepts: [
+        { id: 'periodizitaet-360',  title: 'Periodizität: $\\sin(\\alpha+360°)=\\sin\\alpha$, $\\cos(\\alpha+360°)=\\cos\\alpha$',  dependsOn: [] },
+        { id: 'sin-ungerade',       title: '$\\sin$ ungerade: $\\sin(-\\alpha)=-\\sin\\alpha$',                                     dependsOn: [] },
+        { id: 'cos-gerade',         title: '$\\cos$ gerade: $\\cos(-\\alpha)=\\cos\\alpha$',                                         dependsOn: [] },
+        { id: 'supplement-formel',  title: 'Supplementformel: $\\sin(180°-\\alpha)=\\sin\\alpha$, $\\cos(180°-\\alpha)=-\\cos\\alpha$', dependsOn: ['sin-ungerade', 'cos-gerade'] },
+        { id: 'komplement-formel',  title: 'Komplementformel: $\\sin(90°-\\alpha)=\\cos\\alpha$, $\\cos(90°-\\alpha)=\\sin\\alpha$',  dependsOn: [] },
+        { id: 'punktspiegelung',    title: 'Punktspiegelung: $\\sin(180°+\\alpha)=-\\sin\\alpha$, $\\cos(180°+\\alpha)=-\\cos\\alpha$', dependsOn: ['supplement-formel'] },
+      ],
+      subGoalConcepts: {
+        0: ['periodizitaet-360'],
+        1: ['sin-ungerade'],
+        2: ['cos-gerade'],
+        3: ['supplement-formel'],
+        4: ['komplement-formel'],
+        5: ['punktspiegelung'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['periodizitaet-360'], qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['periodizitaet-360'], qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['periodizitaet-360'], qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['periodizitaet-360'], qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['periodizitaet-360'], qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['sin-ungerade'],      qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['sin-ungerade'],      qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['sin-ungerade'],      qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['sin-ungerade'],      qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'matching',        uses: ['sin-ungerade'],      qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['cos-gerade'],        qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['cos-gerade'],        qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['cos-gerade'],        qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['cos-gerade'],        qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'matching',        uses: ['cos-gerade', 'sin-ungerade'], qty: 1 },
+
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['supplement-formel'], qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['supplement-formel'], qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['supplement-formel'], qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['supplement-formel'], qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'number-input',    uses: ['supplement-formel'], qty: 1 },
+
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['komplement-formel'], qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['komplement-formel'], qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'number-input',    uses: ['komplement-formel'], qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['komplement-formel'], qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'matching',        uses: ['komplement-formel'], qty: 1 },
+
+        { subGoal: 5, stage: 'recognize',         type: 'true-false',      uses: ['punktspiegelung'],   qty: 1 },
+        { subGoal: 5, stage: 'apply-guided',      type: 'multiple-choice', uses: ['punktspiegelung'],   qty: 1 },
+        { subGoal: 5, stage: 'apply-independent', type: 'number-input',    uses: ['punktspiegelung'],   qty: 1 },
+        { subGoal: 5, stage: 'error-analysis',    type: 'multiple-choice', uses: ['punktspiegelung'],   qty: 1 },
+        { subGoal: 5, stage: 'transfer',          type: 'number-input',    uses: ['punktspiegelung'],   qty: 1 },
+      ],
+    },
     nextLessonId: 'trig-2-4',
     steps: [
       {
@@ -648,6 +706,64 @@ $$\\sin(90° - \\alpha) = \\cos(\\alpha), \\quad \\cos(90° - \\alpha) = \\sin(\
       { label: 'Wertebereich: $(-\\infty, +\\infty)$, keine Beschränkung wie bei $\\sin$/$\\cos$', examRelevance: 'mittel' },
     ],
     prerequisites: ['trig-2-2'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-2-2', concepts: ['cos-x-sin-y'] },
+      ],
+      concepts: [
+        { id: 'tan-def',        title: 'Definition: $\\tan\\alpha = \\sin\\alpha/\\cos\\alpha = y/x$',                    dependsOn: [] },
+        { id: 'tan-polstellen', title: 'Polstellen bei $\\alpha = 90° + k\\cdot 180°$ (dort $\\cos\\alpha = 0$)',         dependsOn: ['tan-def'] },
+        { id: 'tan-periode',    title: 'Periode von $\\tan$ ist $180°$, nicht $360°$',                                    dependsOn: ['tan-def'] },
+        { id: 'tan-astc',       title: 'ASTC: $\\tan > 0$ in Q1, Q3 / $\\tan < 0$ in Q2, Q4',                             dependsOn: ['tan-def'] },
+        { id: 'tan-ungerade',   title: '$\\tan(-\\alpha) = -\\tan\\alpha$ (ungerade Funktion)',                           dependsOn: ['tan-def'] },
+        { id: 'tan-wertebereich', title: 'Wertebereich $\\tan: (-\\infty, +\\infty)$, keine Beschränkung',               dependsOn: ['tan-def', 'tan-polstellen'] },
+      ],
+      subGoalConcepts: {
+        0: ['tan-def'],
+        1: ['tan-polstellen'],
+        2: ['tan-periode'],
+        3: ['tan-astc'],
+        4: ['tan-ungerade'],
+        5: ['tan-wertebereich'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['tan-def'],          qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['tan-def'],          qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['tan-def'],          qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['tan-def'],          qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['tan-def'],          qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['tan-polstellen'],   qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['tan-polstellen'],   qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'multiple-choice', uses: ['tan-polstellen'],   qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['tan-polstellen'],   qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'matching',        uses: ['tan-polstellen'],   qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['tan-periode'],      qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['tan-periode'],      qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['tan-periode'],      qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['tan-periode'],      qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'matching',        uses: ['tan-periode'],      qty: 1 },
+
+        { subGoal: 3, stage: 'recognize',         type: 'matching',        uses: ['tan-astc'],         qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['tan-astc'],         qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'multiple-choice', uses: ['tan-astc'],         qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['tan-astc'],         qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'multiple-choice', uses: ['tan-astc'],         qty: 1 },
+
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['tan-ungerade'],     qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['tan-ungerade'],     qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'number-input',    uses: ['tan-ungerade'],     qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['tan-ungerade'],     qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'matching',        uses: ['tan-ungerade'],     qty: 1 },
+
+        { subGoal: 5, stage: 'recognize',         type: 'true-false',      uses: ['tan-wertebereich'], qty: 1 },
+        { subGoal: 5, stage: 'apply-guided',      type: 'multiple-choice', uses: ['tan-wertebereich'], qty: 1 },
+        { subGoal: 5, stage: 'apply-independent', type: 'true-false',      uses: ['tan-wertebereich'], qty: 1 },
+        { subGoal: 5, stage: 'error-analysis',    type: 'multiple-choice', uses: ['tan-wertebereich'], qty: 1 },
+        { subGoal: 5, stage: 'transfer',          type: 'multiple-choice', uses: ['tan-wertebereich'], qty: 1 },
+      ],
+    },
     nextLessonId: 'trig-2-5',
     steps: [
       {
@@ -679,6 +795,66 @@ $$\\sin(90° - \\alpha) = \\cos(\\alpha), \\quad \\cos(90° - \\alpha) = \\sin(\
       { label: 'Winkel $> 360°$ oder $< 0°$ per $\\alpha \\bmod 360°$ in Hauptbereich bringen', examRelevance: 'mittel' },
     ],
     prerequisites: ['trig-2-3', 'trig-2-4'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-2-3', concepts: ['supplement-formel', 'punktspiegelung', 'periodizitaet-360'] },
+        { lessonId: 'trig-2-4', concepts: ['tan-astc'] },
+        { lessonId: 'trig-1-3', concepts: ['grundwerte-sin', 'grundwerte-cos'] },
+      ],
+      concepts: [
+        { id: 'quadranten-grenzen', title: 'Quadranten Q1–Q4 mit den Winkelgrenzen $0°/90°/180°/270°/360°$',           dependsOn: [] },
+        { id: 'astc-vollstaendig',  title: 'ASTC: Q1 alle, Q2 Sinus, Q3 Tangens, Q4 Kosinus positiv',                  dependsOn: ['quadranten-grenzen'] },
+        { id: 'referenzwinkel-def', title: 'Referenzwinkel = spitzer Winkel zur $x$-Achse (zu $0°$ oder $180°$)',      dependsOn: ['quadranten-grenzen'] },
+        { id: 'vier-schritt-reduktion', title: '4-Schritt: Quadrant → Referenzwinkel → Q1-Grundwert → Vorzeichen aus ASTC', dependsOn: ['astc-vollstaendig', 'referenzwinkel-def'] },
+        { id: 'standardwerte-reduktion', title: 'Nur Q1-Grundwerte auswendig, alle anderen per Reduktion',             dependsOn: ['vier-schritt-reduktion'] },
+        { id: 'winkel-hauptbereich', title: 'Winkel $\\notin [0°, 360°)$ per $\\alpha \\bmod 360°$ reduzieren',         dependsOn: [] },
+      ],
+      subGoalConcepts: {
+        0: ['quadranten-grenzen'],
+        1: ['astc-vollstaendig'],
+        2: ['referenzwinkel-def'],
+        3: ['vier-schritt-reduktion'],
+        4: ['standardwerte-reduktion'],
+        5: ['winkel-hauptbereich'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'matching',        uses: ['quadranten-grenzen'],         qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['quadranten-grenzen'],         qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'multiple-choice', uses: ['quadranten-grenzen'],         qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['quadranten-grenzen'],         qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['quadranten-grenzen'],         qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'matching',        uses: ['astc-vollstaendig'],          qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['astc-vollstaendig'],          qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'multiple-choice', uses: ['astc-vollstaendig'],          qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['astc-vollstaendig'],          qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'multiple-choice', uses: ['astc-vollstaendig'],          qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['referenzwinkel-def'],         qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['referenzwinkel-def'],         qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['referenzwinkel-def'],         qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['referenzwinkel-def'],         qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'matching',        uses: ['referenzwinkel-def'],         qty: 1 },
+
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['vier-schritt-reduktion'],     qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['vier-schritt-reduktion'],     qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['vier-schritt-reduktion'],     qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['vier-schritt-reduktion'],     qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'sorting',         uses: ['vier-schritt-reduktion'],     qty: 1 },
+
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['standardwerte-reduktion'],    qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['standardwerte-reduktion'],    qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'number-input',    uses: ['standardwerte-reduktion'],    qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['standardwerte-reduktion'],    qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'number-input',    uses: ['standardwerte-reduktion'],    qty: 1 },
+
+        { subGoal: 5, stage: 'recognize',         type: 'true-false',      uses: ['winkel-hauptbereich'],        qty: 1 },
+        { subGoal: 5, stage: 'apply-guided',      type: 'multiple-choice', uses: ['winkel-hauptbereich'],        qty: 1 },
+        { subGoal: 5, stage: 'apply-independent', type: 'number-input',    uses: ['winkel-hauptbereich'],        qty: 1 },
+        { subGoal: 5, stage: 'error-analysis',    type: 'multiple-choice', uses: ['winkel-hauptbereich'],        qty: 1 },
+        { subGoal: 5, stage: 'transfer',          type: 'number-input',    uses: ['winkel-hauptbereich'],        qty: 1 },
+      ],
+    },
     nextLessonId: 'trig-3-1',
     steps: [
       {

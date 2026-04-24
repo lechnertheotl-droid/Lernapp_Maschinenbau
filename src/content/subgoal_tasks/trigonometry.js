@@ -4126,6 +4126,2051 @@ export const trigonometrySubGoalTasks = {
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // trig-2-3 — Symmetrien und Periodizität  (6 subGoals)
+  // 30 Matrix-Aufgaben: 6 SGs × 5 Stufen.
+  // ────────────────────────────────────────────────────────────────────────
+  'trig-2-3': {
+    // ── [0] Periodizität 360° ─────────────────────────────────────────────
+    0: [
+      tf(
+        'Für alle reellen Winkel $\\alpha$ und jede ganze Zahl $k$ gilt $\\sin(\\alpha + k \\cdot 360°) = \\sin(\\alpha)$.',
+        true,
+        `**Ansatz:** Vollumdrehungen landen den Punkt wieder an derselben Stelle am Einheitskreis.
+
+**Rechnung:** $k \\cdot 360°$ ist $k$-mal eine ganze Umrundung. Koordinaten unverändert → Sinus unverändert.
+
+**Probe:** $\\sin(30° + 360°) = \\sin 390° = \\sin 30° = 0{,}5$ ✓.
+
+**Typischer Fehler:** Annehmen, Periodizität gelte nur für $k = 1$.`,
+        [
+          'Periodizität bedeutet Wiederholung.',
+          'Periode = $360°$.',
+          'Beliebige Anzahl Umdrehungen.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['periodizitaet-360'] },
+      ),
+      mc(
+        'Welcher Winkel hat denselben Kosinus wie $45°$?',
+        ['$405°$', '$315°$', '$135°$', '$225°$'],
+        0,
+        `**Ansatz:** $\\cos(\\alpha + 360°) = \\cos\\alpha$. Also $\\cos 45° = \\cos(45° + 360°) = \\cos 405°$.
+
+**Rechnung:** $405° = 45° + 360°$, gleiche Position am Einheitskreis → gleicher Kosinus.
+
+**Probe:** $\\cos 405° = \\cos 45° = \\sqrt{2}/2 \\approx 0{,}707$ ✓.
+
+**Typischer Fehler:** $315°$ (= $360° - 45°$) angeben — da gilt auch $\\cos 315° = \\cos 45°$ (gerade Funktion), aber die Frage fragt nach Periodizität, nicht Symmetrie.`,
+        [
+          'Periodizität: Winkel $+ 360°$.',
+          '$45° + 360° = ?$',
+          'Alle anderen haben anderes Vorzeichen oder anderen Betrag.',
+        ],
+        {
+          1: '$\\cos 315° = \\cos 45°$ stimmt, aber das ist die $\\cos$-Symmetrie, nicht Periodizität. Die Frage-Option "Periodizität" passt nur zu $405°$.',
+          2: '$\\cos 135° = -\\cos 45°$ — anderes Vorzeichen.',
+          3: '$\\cos 225° = -\\cos 45°$ — anderes Vorzeichen.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['periodizitaet-360'] },
+      ),
+      ni(
+        'Berechne $\\sin(750°)$. (3 NK)',
+        0.5, 0.01, '',
+        `**Ansatz:** $750°$ auf $[0°, 360°)$ reduzieren: $750° - 2 \\cdot 360° = 30°$.
+
+**Rechnung:** $\\sin 750° = \\sin 30° = 0{,}5$.
+
+**Probe:** $750° = 2 \\cdot 360° + 30°$ — zwei volle Umdrehungen plus $30°$.
+
+**Typischer Fehler:** Nur einmal $360°$ abziehen: $750° - 360° = 390°$ — immer noch $> 360°$.`,
+        [
+          'Modulo $360°$.',
+          '$750° - 2 \\cdot 360° = ?$',
+          '$\\sin 30° = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['periodizitaet-360'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $\\sin(500°) = \\sin(500° - 360°) = \\sin(140°) = \\sin(140°)$ und landet bei einem Wert $\\approx 0{,}643$. Er behauptet dann $\\sin 500° = -0{,}643$, weil „$500°$ im 3. oder 4. Quadrant liegt". Wo liegt der Fehler?',
+        [
+          '$500° - 360° = 140°$ liegt im 2. Quadranten, wo $\\sin > 0$. $\\sin 500° = \\sin 140° = +0{,}643$ ist korrekt.',
+          'Die Rechnung war schon falsch — $\\sin 500° = 0$.',
+          'Er hätte $500° - 2 \\cdot 360° = -220°$ rechnen müssen.',
+          'Periodizität gilt nicht bei $\\sin$.',
+        ],
+        0,
+        `**Ansatz:** Nach der Reduktion den **reduzierten** Winkel und seinen Quadranten prüfen, nicht den Original-Wert.
+
+**Rechnung:** $500° - 360° = 140° \\in$ 2. Quadrant. Dort ist $\\sin > 0$ (ASTC). Also $\\sin 500° = \\sin 140° = +\\sin 40° \\approx +0{,}643$.
+
+**Probe:** $\\sin$ ist periodisch — der reduzierte Winkel bestimmt den Wert komplett, inkl. Vorzeichen.
+
+**Typischer Fehler:** Genau dieser — nach korrekter Periodizitäts-Reduktion den Original-Winkel nochmal im falschen Quadranten einordnen.`,
+        [
+          'Nach Reduktion: welcher Quadrant?',
+          '$140°$ liegt im 2. Quadrant.',
+          'ASTC: Sinus positiv dort.',
+        ],
+        {
+          1: 'Die Reduktion $500° \\to 140°$ ist mathematisch korrekt; das Problem ist die nachträgliche Vorzeichenbehandlung.',
+          2: '$500° - 720° = -220°$ wäre auch OK, aber nicht nötig.',
+          3: 'Periodizität gilt vollständig für $\\sin$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['periodizitaet-360'] },
+      ),
+      matching(
+        'Ordne jedem Winkel einen äquivalenten Winkel in $[0°, 360°)$ zu.',
+        [
+          { left: '$420°$',   right: '$60°$' },
+          { left: '$-30°$',   right: '$330°$' },
+          { left: '$800°$',   right: '$80°$' },
+          { left: '$-450°$',  right: '$270°$' },
+        ],
+        `**Ansatz:** $\\alpha \\mod 360°$ in den Hauptbereich bringen.
+
+**Rechnung:** $420° - 360° = 60°$. $-30° + 360° = 330°$. $800° - 2 \\cdot 360° = 80°$. $-450° + 2 \\cdot 360° = 270°$.
+
+**Probe:** Jeder Winkel steht für dieselbe Position am Einheitskreis wie sein Hauptwert.
+
+**Typischer Fehler:** Bei negativen Winkeln $360°$ addieren statt subtrahieren — je nach Vorzeichen beides nötig.`,
+        [
+          'Modulo $360°$.',
+          'Bei negativen Winkeln $+360°$ addieren, bis $\\geq 0$.',
+          'Bei großen Winkeln $360°$ abziehen.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['periodizitaet-360'] },
+      ),
+    ],
+
+    // ── [1] sin ist ungerade: sin(-α) = -sin α ────────────────────────────
+    1: [
+      tf(
+        'Für jeden Winkel $\\alpha$ gilt $\\sin(-\\alpha) = -\\sin(\\alpha)$.',
+        true,
+        `**Ansatz:** Sinus ist eine ungerade Funktion; das entspricht Spiegelung am Ursprung am Einheitskreis.
+
+**Rechnung:** $-\\alpha$ entspricht Drehung im Uhrzeigersinn, also Spiegelung an $x$-Achse. $y$-Koordinate wird negiert → $\\sin$ negiert.
+
+**Probe:** $\\sin(-30°) = -\\sin 30° = -0{,}5$ ✓.
+
+**Typischer Fehler:** $\\sin(-\\alpha) = \\sin\\alpha$ annehmen (wie bei Kosinus).`,
+        [
+          'Ungerade Funktion: $f(-x) = -f(x)$.',
+          '$\\sin$ ist ungerade.',
+          'Am Einheitskreis: $y$-Spiegelung an $x$-Achse.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['sin-ungerade'] },
+      ),
+      mc(
+        'Gegeben $\\sin 25° \\approx 0{,}423$. Wie groß ist $\\sin(-25°)$?',
+        ['$-0{,}423$', '$+0{,}423$', '$+0{,}577$', '$-0{,}577$'],
+        0,
+        `**Ansatz:** $\\sin(-\\alpha) = -\\sin\\alpha$.
+
+**Rechnung:** $\\sin(-25°) = -\\sin 25° = -0{,}423$.
+
+**Probe:** Betrag gleich, Vorzeichen gekippt.
+
+**Typischer Fehler:** $+0{,}423$ angeben (gerade Funktion annehmen).`,
+        [
+          'Ungerade Funktion.',
+          'Vorzeichen kippt.',
+          'Betrag bleibt.',
+        ],
+        {
+          1: '$\\cos$ wäre gerade; $\\sin$ ist ungerade → Vorzeichenwechsel.',
+          2: '$0{,}577 = \\tan 30°$ — hat nichts mit dieser Aufgabe zu tun.',
+          3: '$-0{,}577$ wäre aus falscher Quelle.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['sin-ungerade'] },
+      ),
+      ni(
+        'Berechne $\\sin(-60°)$. (3 NK)',
+        -0.866, 0.01, '',
+        `**Ansatz:** $\\sin(-\\alpha) = -\\sin\\alpha$ mit $\\alpha = 60°$.
+
+**Rechnung:** $\\sin(-60°) = -\\sin 60° = -\\sqrt{3}/2 \\approx -0{,}866$.
+
+**Probe:** Am Einheitskreis: Punkt bei $-60°$ im 4. Quadrant, $y < 0$ ✓.
+
+**Typischer Fehler:** $+0{,}866$ (Vorzeichen vergessen) oder $-1/2$ (mit $\\cos$ verwechselt).`,
+        [
+          '$\\sin$ ungerade.',
+          '$\\sin 60° = \\sqrt{3}/2$.',
+          'Vorzeichen kippen.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['sin-ungerade'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $\\sin(-45°) = \\sin 45° = \\sqrt{2}/2 \\approx 0{,}707$. Wo liegt der Fehler?',
+        [
+          'Sinus ist ungerade. Korrekt: $\\sin(-45°) = -\\sin 45° = -\\sqrt{2}/2 \\approx -0{,}707$.',
+          'Die Rechnung stimmt; Sinus ist symmetrisch.',
+          '$-45°$ ist gar nicht definiert.',
+          '$\\sin(-45°) = 0$.',
+        ],
+        0,
+        `**Ansatz:** Sinus-Eigenschaft: ungerade → Vorzeichenwechsel bei negativen Argumenten.
+
+**Rechnung:** Korrekt: $\\sin(-45°) = -\\sin 45° = -\\sqrt{2}/2$.
+
+**Probe:** Am Einheitskreis: $-45°$ liegt im 4. Quadrant, $y < 0$ → Sinus negativ.
+
+**Typischer Fehler:** $\\sin$ mit $\\cos$ (gerade) verwechseln.`,
+        [
+          'Ist $\\sin$ gerade oder ungerade?',
+          'Punkt bei $-45°$: 4. Quadrant.',
+          '$y$-Koordinate dort: positiv oder negativ?',
+        ],
+        {
+          1: 'Sinus ist NICHT symmetrisch am $y$-Achse (das wäre Kosinus).',
+          2: 'Alle reellen Winkel sind definiert, auch negative.',
+          3: '$\\sin(-45°) \\neq 0$ — das wäre nur bei $\\sin 0°, 180°$ usw.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['sin-ungerade'] },
+      ),
+      matching(
+        'Ordne jeden Sinus-Ausdruck seinem äquivalenten Wert zu.',
+        [
+          { left: '$\\sin(-30°)$',  right: '$-\\tfrac{1}{2}$' },
+          { left: '$\\sin(-60°)$',  right: '$-\\tfrac{\\sqrt{3}}{2}$' },
+          { left: '$\\sin(-90°)$',  right: '$-1$' },
+          { left: '$\\sin(-180°)$', right: '$0$' },
+        ],
+        `**Ansatz:** $\\sin(-\\alpha) = -\\sin\\alpha$ für jeden Winkel.
+
+**Rechnung:** Grundwerte negieren.
+
+**Probe:** Am Einheitskreis: Spiegelpunkte liegen symmetrisch zur $x$-Achse.
+
+**Typischer Fehler:** $\\sin(-180°) = -0 = 0$, korrekt (beide $0$).`,
+        [
+          'Alle $-$-Werte der Grundwerte.',
+          'Ausnahme: $\\sin 0° = 0$, $\\sin 180° = 0$ — bleiben $0$.',
+          'Regel: Vorzeichen kippen.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['sin-ungerade'] },
+      ),
+    ],
+
+    // ── [2] cos ist gerade: cos(-α) = cos α ────────────────────────────────
+    2: [
+      tf(
+        '$\\cos(-\\alpha) = \\cos(\\alpha)$ für jeden Winkel $\\alpha$.',
+        true,
+        `**Ansatz:** Kosinus ist gerade — Symmetrie an der $y$-Achse (oder: an der horizontalen Hauptachse).
+
+**Rechnung:** $-\\alpha$ entspricht Drehung im Uhrzeigersinn. Die $x$-Koordinate bleibt gleich → $\\cos$ unverändert.
+
+**Probe:** $\\cos(-30°) = \\cos 30° = \\sqrt{3}/2$ ✓.
+
+**Typischer Fehler:** $\\cos(-\\alpha) = -\\cos\\alpha$ annehmen (wie bei Sinus).`,
+        [
+          'Gerade Funktion: $f(-x) = f(x)$.',
+          '$\\cos$ ist gerade.',
+          'Am Einheitskreis: $x$-Koordinate unverändert.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['cos-gerade'] },
+      ),
+      mc(
+        'Gegeben $\\cos 40° \\approx 0{,}766$. Wie groß ist $\\cos(-40°)$?',
+        ['$+0{,}766$', '$-0{,}766$', '$+0{,}643$', '$-0{,}643$'],
+        0,
+        `**Ansatz:** $\\cos(-\\alpha) = \\cos\\alpha$.
+
+**Rechnung:** $\\cos(-40°) = \\cos 40° \\approx 0{,}766$.
+
+**Probe:** $\\cos$ ist gerade — Vorzeichen bleibt.
+
+**Typischer Fehler:** Kippen des Vorzeichens (Sinus-Eigenschaft übertragen).`,
+        [
+          'Gerade Funktion.',
+          'Vorzeichen bleibt.',
+          'Gleicher Wert.',
+        ],
+        {
+          1: 'Kippen des Vorzeichens wäre Sinus-Verhalten, nicht Kosinus.',
+          2: '$0{,}643 = \\sin 40°$ — Verwechslung mit Sinus.',
+          3: 'Vorzeichen + Sinus-Wert — komplett daneben.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['cos-gerade'] },
+      ),
+      ni(
+        'Berechne $\\cos(-60°)$. (3 NK)',
+        0.5, 0.01, '',
+        `**Ansatz:** $\\cos(-\\alpha) = \\cos\\alpha$.
+
+**Rechnung:** $\\cos(-60°) = \\cos 60° = 1/2 = 0{,}5$.
+
+**Probe:** Grundwert $\\cos 60° = 0{,}5$ ✓.
+
+**Typischer Fehler:** $-0{,}5$ angeben.`,
+        [
+          '$\\cos$ ist gerade.',
+          '$\\cos 60° = ?$',
+          'Vorzeichen bleibt positiv.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['cos-gerade'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $\\cos(-120°) = -\\cos(120°) = -(-1/2) = +1/2$. Wo liegt der Fehler?',
+        [
+          '$\\cos$ ist gerade, NICHT ungerade. $\\cos(-120°) = \\cos(120°) = -1/2$. Das Schülerergebnis $+1/2$ ist falsch.',
+          'Die Rechnung stimmt — $\\cos(-120°) = +1/2$.',
+          'Er müsste $\\cos$ durch $\\sin$ ersetzen.',
+          '$\\cos(120°)$ ist gar nicht definiert.',
+        ],
+        0,
+        `**Ansatz:** Eigenschaft von $\\cos$: gerade Funktion, kein Vorzeichenwechsel bei Negierung.
+
+**Rechnung:** Korrekt: $\\cos(-120°) = \\cos 120° = -1/2$ (Punkt im 2. Quadranten, $x < 0$).
+
+**Probe:** Am Einheitskreis: $-120°$ liegt im 3. Quadranten, $x < 0$ → $\\cos < 0$. Beide Winkel ($\\pm 120°$) haben negativen $\\cos$-Wert.
+
+**Typischer Fehler:** Dieser — $\\sin$-Eigenschaft auf $\\cos$ übertragen. Merkhilfe: $\\cos$ ist wie der Buchstabe "o" symmetrisch.`,
+        [
+          'Ist $\\cos$ ungerade?',
+          'Nein: gerade → $\\cos(-\\alpha) = \\cos\\alpha$.',
+          'Kein Vorzeichenwechsel.',
+        ],
+        {
+          1: 'Das Ergebnis $+1/2$ entsteht nur aus der falschen "ungerade"-Annahme.',
+          2: 'Nicht $\\sin$ ersetzen — $\\cos$ bleibt, aber mit richtiger Eigenschaft.',
+          3: '$\\cos 120° = -1/2$ ist wohldefiniert.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['cos-gerade'] },
+      ),
+      matching(
+        'Ordne jedem Ausdruck sein Ergebnis zu (Kombination gerade/ungerade).',
+        [
+          { left: '$\\cos(-45°)$', right: '$+\\tfrac{\\sqrt{2}}{2}$' },
+          { left: '$\\sin(-45°)$', right: '$-\\tfrac{\\sqrt{2}}{2}$' },
+          { left: '$\\cos(-90°)$', right: '$0$' },
+          { left: '$\\sin(-90°)$', right: '$-1$' },
+        ],
+        `**Ansatz:** Ungerade vs. gerade — $\\sin$ kippt Vorzeichen, $\\cos$ nicht.
+
+**Rechnung:** Grundwerte unverändert (bei $\\cos$) oder negiert (bei $\\sin$).
+
+**Probe:** Am Einheitskreis: negative Winkel spiegeln an $x$-Achse.
+
+**Typischer Fehler:** Alle negieren (oder keine).`,
+        [
+          '$\\cos$ bleibt (gerade).',
+          '$\\sin$ kippt (ungerade).',
+          'Grundwerte einsetzen.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['cos-gerade', 'sin-ungerade'] },
+      ),
+    ],
+
+    // ── [3] Supplementformel: sin(180°-α) = sin α, cos(180°-α) = -cos α ────
+    3: [
+      tf(
+        'Es gilt $\\sin(180° - \\alpha) = \\sin(\\alpha)$ und $\\cos(180° - \\alpha) = -\\cos(\\alpha)$.',
+        true,
+        `**Ansatz:** Spiegelung an der $y$-Achse: $y$-Koordinate bleibt ($\\sin$), $x$-Koordinate wechselt Vorzeichen ($\\cos$).
+
+**Rechnung:** Punkt bei $\\alpha$: $(x, y)$. Punkt bei $180°-\\alpha$: $(-x, y)$.
+
+**Probe:** $\\sin 150° = \\sin 30° = 0{,}5$ ✓. $\\cos 150° = -\\cos 30° = -\\sqrt{3}/2$ ✓.
+
+**Typischer Fehler:** Vorzeichen beider Formeln verwechseln.`,
+        [
+          'Spiegelung an $y$-Achse.',
+          'Sinus ($y$): gleich.',
+          'Kosinus ($x$): Vorzeichenwechsel.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['supplement-formel'] },
+      ),
+      mc(
+        'Berechne $\\cos(150°)$ mithilfe der Supplementformel.',
+        ['$-\\tfrac{\\sqrt{3}}{2}$', '$+\\tfrac{\\sqrt{3}}{2}$', '$-\\tfrac{1}{2}$', '$+\\tfrac{1}{2}$'],
+        0,
+        `**Ansatz:** $\\cos(180° - \\alpha) = -\\cos\\alpha$ mit $\\alpha = 30°$.
+
+**Rechnung:** $\\cos 150° = \\cos(180° - 30°) = -\\cos 30° = -\\sqrt{3}/2$.
+
+**Probe:** $150°$ im 2. Quadranten → $\\cos < 0$ (ASTC).
+
+**Typischer Fehler:** Vorzeichen vergessen oder $\\sin 30°$ einsetzen.`,
+        [
+          'Formel: $\\cos(180°-\\alpha) = -\\cos\\alpha$.',
+          '$\\alpha = 30°$.',
+          'Vorzeichen anwenden.',
+        ],
+        {
+          1: '$+\\sqrt{3}/2$ wäre ohne Vorzeichen, aber 2. Quadrant hat $\\cos < 0$.',
+          2: '$-1/2$ ist $\\cos 120°$, nicht $\\cos 150°$.',
+          3: '$+1/2$ ist $\\cos 60°$.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['supplement-formel'] },
+      ),
+      ni(
+        'Gegeben $\\sin 72° \\approx 0{,}951$. Berechne $\\sin(108°)$. (3 NK)',
+        0.951, 0.01, '',
+        `**Ansatz:** $\\sin(180° - \\alpha) = \\sin\\alpha$ mit $\\alpha = 72°$, weil $180° - 72° = 108°$.
+
+**Rechnung:** $\\sin 108° = \\sin 72° \\approx 0{,}951$.
+
+**Probe:** $108°$ im 2. Quadranten → $\\sin > 0$, passt.
+
+**Typischer Fehler:** Vorzeichenwechsel annehmen (nur bei $\\cos$).`,
+        [
+          'Supplementformel für Sinus.',
+          'Kein Vorzeichenwechsel.',
+          'Wert direkt übernehmen.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['supplement-formel'] },
+      ),
+      mc(
+        'Ein Schüler rechnet: „$\\sin(180° - 60°) = -\\sin 60°$, weil „Minus vor der Klammer das Vorzeichen kippt"." Wo liegt der Fehler?',
+        [
+          'Die Supplementformel $\\sin(180° - \\alpha) = +\\sin\\alpha$ ist KEINE algebraische Klammer-Auflösung. Am Einheitskreis bleibt die $y$-Koordinate bei Spiegelung an $y$-Achse gleich.',
+          'Die Rechnung stimmt für $\\sin$, nicht für $\\cos$.',
+          'Das Minus gilt nur für Winkel $> 180°$.',
+          'Die Formel lautet anders; korrekt wäre $\\sin(180° - \\alpha) = \\cos\\alpha$.',
+        ],
+        0,
+        `**Ansatz:** Die Supplementformel kommt aus der Geometrie, nicht aus linearer Algebra.
+
+**Rechnung:** Korrekt: $\\sin(180° - 60°) = \\sin 120° = +\\sin 60° = +\\sqrt{3}/2$.
+
+**Probe:** $120°$ im 2. Quadranten → $\\sin > 0$.
+
+**Typischer Fehler:** Genau dieser — die Klammer-Minus-Regel aus der Algebra fälschlich auf Trig-Funktionen übertragen.`,
+        [
+          'Trig-Formeln ≠ algebraische Umformungen.',
+          'Geometrische Herleitung.',
+          'Punkt bei $120°$: $y > 0$.',
+        ],
+        {
+          1: 'Die Formel gilt für $\\sin$: kein Vorzeichenwechsel.',
+          2: 'Das Minus ist keine Winkel-Grenze.',
+          3: '$\\sin(180°-\\alpha) = \\cos\\alpha$ ist falsch — das wäre die Komplementformel, und die hat $90°-\\alpha$, nicht $180°-\\alpha$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['supplement-formel'] },
+      ),
+      ni(
+        'Berechne $\\sin(150°) + \\cos(150°)$. (3 NK)',
+        -0.366, 0.01, '',
+        `**Ansatz:** Supplementformel separat für beide.
+
+**Rechnung:** $\\sin 150° = \\sin 30° = 0{,}5$. $\\cos 150° = -\\cos 30° = -\\sqrt{3}/2 \\approx -0{,}866$. Summe: $0{,}5 - 0{,}866 = -0{,}366$.
+
+**Probe:** Beide ASTC-konform (2. Quadrant: $\\sin > 0, \\cos < 0$).
+
+**Typischer Fehler:** Beide mit gleichem Vorzeichen ansetzen.`,
+        [
+          'Supplementformel für jeden Summanden.',
+          'Sinus: kein Vorzeichenwechsel.',
+          'Kosinus: Vorzeichenwechsel.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['supplement-formel'] },
+      ),
+    ],
+
+    // ── [4] Komplementformel: sin(90°-α) = cos α, cos(90°-α) = sin α ───────
+    4: [
+      tf(
+        'Es gilt $\\sin(90° - \\alpha) = \\cos(\\alpha)$ und $\\cos(90° - \\alpha) = \\sin(\\alpha)$.',
+        true,
+        `**Ansatz:** Komplementär — Seiten im rechtwinkligen Dreieck tauschen Rollen beim Komplementwinkel.
+
+**Rechnung:** Im Dreieck: $\\alpha$ und $90°-\\alpha$ sind die beiden nicht-rechten Winkel. Gegenkathete zum einen = Ankathete zum anderen.
+
+**Probe:** $\\sin 30° = 1/2 = \\cos 60°$; $\\sin(90° - 30°) = \\sin 60° = \\sqrt{3}/2 = \\cos 30°$ ✓.
+
+**Typischer Fehler:** Formeln vermischen: $\\sin(90°-\\alpha) = -\\cos\\alpha$ (Vorzeichen falsch).`,
+        [
+          'Komplementwinkel: ergänzen zu $90°$.',
+          'Im rechtwinkligen Dreieck.',
+          'Sinus und Kosinus tauschen.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['komplement-formel'] },
+      ),
+      mc(
+        'Welcher Ausdruck ist gleich $\\cos(50°)$?',
+        ['$\\sin(40°)$', '$\\cos(40°)$', '$-\\sin(40°)$', '$\\sin(50°)$'],
+        0,
+        `**Ansatz:** Komplementformel: $\\cos(\\alpha) = \\sin(90° - \\alpha) = \\sin(40°)$ mit $\\alpha = 50°$.
+
+**Rechnung:** $\\cos 50° = \\sin(90° - 50°) = \\sin 40°$.
+
+**Probe:** $\\cos 50° \\approx 0{,}643$, $\\sin 40° \\approx 0{,}643$ ✓.
+
+**Typischer Fehler:** $\\sin 50°$ annehmen (Komplementär vergessen) oder $\\cos 40°$ (Identität vermuten).`,
+        [
+          'Formel: $\\cos\\alpha = \\sin(90°-\\alpha)$.',
+          '$\\alpha = 50°$.',
+          '$90° - 50° = 40°$.',
+        ],
+        {
+          1: '$\\cos 40° \\neq \\cos 50°$ — unterschiedliche Werte.',
+          2: '$-\\sin 40° = -\\cos 50°$ — falsches Vorzeichen.',
+          3: '$\\sin 50° \\neq \\cos 50°$ — wären gleich nur bei $45°$.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['komplement-formel'] },
+      ),
+      ni(
+        'Gegeben $\\cos 15° \\approx 0{,}966$. Berechne $\\sin(75°)$. (3 NK)',
+        0.966, 0.01, '',
+        `**Ansatz:** $\\sin(75°) = \\cos(90° - 75°) = \\cos(15°)$.
+
+**Rechnung:** $\\sin 75° = \\cos 15° \\approx 0{,}966$.
+
+**Probe:** $75° + 15° = 90°$ — Komplementwinkel.
+
+**Typischer Fehler:** Formel rückwärts anwenden und $\\sin(15°)$ rechnen.`,
+        [
+          '$\\sin\\alpha = \\cos(90°-\\alpha)$.',
+          '$90° - 75° = 15°$.',
+          'Wert übernehmen.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['komplement-formel'] },
+      ),
+      mc(
+        'Ein Schüler sagt: „$\\sin 60° = \\cos 60° = \\sqrt{3}/2$, weil beide bei $60°$ denselben Wert haben." Wo liegt der Fehler?',
+        [
+          'Die Komplementformel wäre $\\sin 60° = \\cos(90° - 60°) = \\cos 30°$, NICHT $\\cos 60°$. Tatsächlich: $\\sin 60° = \\sqrt{3}/2$, aber $\\cos 60° = 1/2$.',
+          '$\\sin$ und $\\cos$ sind bei allen Grundwinkeln gleich.',
+          '$\\cos 60° = \\sqrt{3}/2$ ist korrekt.',
+          'Die Formel lautet $\\sin\\alpha = \\cos(180°-\\alpha)$.',
+        ],
+        0,
+        `**Ansatz:** $\\sin\\alpha = \\cos\\alpha$ gilt NUR bei $\\alpha = 45°$. Bei allen anderen Winkeln sind sie verschieden.
+
+**Rechnung:** Korrekt: $\\sin 60° = \\cos(90° - 60°) = \\cos 30° = \\sqrt{3}/2$. Auch richtig: $\\cos 60° = 1/2 \\neq \\sqrt{3}/2$.
+
+**Probe:** $\\sin^2 + \\cos^2 = 3/4 + 1/4 = 1$ ✓ (für $\\alpha = 60°$).
+
+**Typischer Fehler:** Komplementformel mit Argumentengleichheit verwechseln.`,
+        [
+          'Wann gilt $\\sin = \\cos$?',
+          'Nur bei $45°$.',
+          'Komplementformel verbindet $\\alpha$ mit $90°-\\alpha$.',
+        ],
+        {
+          1: 'Nur bei $45°$ gleich.',
+          2: '$\\cos 60° = 1/2$, nicht $\\sqrt{3}/2$.',
+          3: 'Die Komplementformel hat $90°-\\alpha$, nicht $180°-\\alpha$ (das wäre Supplement).',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['komplement-formel'] },
+      ),
+      matching(
+        'Ordne jedem Ausdruck seine Vereinfachung zu.',
+        [
+          { left: '$\\sin(90° - 30°)$', right: '$\\cos 30°$' },
+          { left: '$\\cos(90° - 25°)$', right: '$\\sin 25°$' },
+          { left: '$\\sin(90° - 45°)$', right: '$\\cos 45°$' },
+          { left: '$\\cos(90° - 80°)$', right: '$\\sin 80°$' },
+        ],
+        `**Ansatz:** Komplementformel schematisch anwenden.
+
+**Rechnung:** $\\sin(90°-\\alpha) = \\cos\\alpha$; $\\cos(90°-\\alpha) = \\sin\\alpha$.
+
+**Probe:** Bei $\\alpha = 45°$ sind beide Seiten identisch.
+
+**Typischer Fehler:** Formeln vertauschen.`,
+        [
+          'Sinus des Komplements $=$ Kosinus.',
+          'Kosinus des Komplements $=$ Sinus.',
+          'Schema einhalten.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['komplement-formel'] },
+      ),
+    ],
+
+    // ── [5] Punktspiegelung: sin(180°+α) = -sin α, cos(180°+α) = -cos α ────
+    5: [
+      tf(
+        'Für jeden Winkel gilt $\\sin(180° + \\alpha) = -\\sin\\alpha$ und $\\cos(180° + \\alpha) = -\\cos\\alpha$.',
+        true,
+        `**Ansatz:** Punktspiegelung am Ursprung — beide Koordinaten wechseln Vorzeichen.
+
+**Rechnung:** Punkt bei $\\alpha$: $(x, y)$. Punkt bei $180°+\\alpha$: $(-x, -y)$.
+
+**Probe:** $\\sin 210° = \\sin(180°+30°) = -\\sin 30° = -0{,}5$ ✓. $\\cos 210° = -\\cos 30° = -\\sqrt{3}/2$ ✓.
+
+**Typischer Fehler:** Nur ein Vorzeichen kippen.`,
+        [
+          'Punktspiegelung am Ursprung.',
+          'Beide Koordinaten wechseln.',
+          'Beide Vorzeichen kippen.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['punktspiegelung'] },
+      ),
+      mc(
+        'Berechne $\\sin(210°)$ mit der Punktspiegelungsformel.',
+        ['$-\\tfrac{1}{2}$', '$+\\tfrac{1}{2}$', '$-\\tfrac{\\sqrt{3}}{2}$', '$+\\tfrac{\\sqrt{3}}{2}$'],
+        0,
+        `**Ansatz:** $210° = 180° + 30°$, also $\\sin 210° = -\\sin 30° = -1/2$.
+
+**Rechnung:** $-\\sin 30° = -1/2$.
+
+**Probe:** $210°$ im 3. Quadranten → $\\sin < 0$ (ASTC).
+
+**Typischer Fehler:** Positives Vorzeichen oder falscher Grundwert.`,
+        [
+          'Formel: $\\sin(180°+\\alpha) = -\\sin\\alpha$.',
+          '$\\alpha = 30°$.',
+          'Vorzeichen kippen.',
+        ],
+        {
+          1: '$+1/2$ vergisst das Vorzeichen.',
+          2: '$-\\sqrt{3}/2$ ist $\\sin 240°$, nicht $\\sin 210°$.',
+          3: '$+\\sqrt{3}/2$ ist $\\sin 60°$ oder $\\sin 120°$.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['punktspiegelung'] },
+      ),
+      ni(
+        'Gegeben $\\cos 40° \\approx 0{,}766$. Berechne $\\cos(220°)$. (3 NK)',
+        -0.766, 0.01, '',
+        `**Ansatz:** $220° = 180° + 40°$, also $\\cos 220° = -\\cos 40° \\approx -0{,}766$.
+
+**Rechnung:** Vorzeichen kippen.
+
+**Probe:** $220°$ im 3. Quadranten → $\\cos < 0$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen.`,
+        [
+          'Punktspiegelungsformel für $\\cos$.',
+          '$\\alpha = 40°$.',
+          'Vorzeichen kippen.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['punktspiegelung'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $\\sin(200°) = -\\sin 20°$ (korrekt) und $\\cos(200°) = +\\cos 20°$ (er lässt $\\cos$ unverändert, weil es "gerade" ist). Wo liegt der Fehler?',
+        [
+          '„Gerade" betrifft nur $\\cos(-\\alpha) = \\cos\\alpha$, NICHT $\\cos(180°+\\alpha)$. Bei Punktspiegelung wird auch $\\cos$ negiert: $\\cos 200° = -\\cos 20°$.',
+          'Die Rechnung stimmt — $\\cos 200° = +\\cos 20°$.',
+          'Er müsste zu $\\cos(200°) = -\\cos 20°$ auch bei $\\sin$ das Vorzeichen wieder wechseln.',
+          'Die Formel gilt nur für Winkel $> 360°$.',
+        ],
+        0,
+        `**Ansatz:** Punktspiegelung (am Ursprung) ≠ Spiegelung an $y$-Achse (gerade Funktion).
+
+**Rechnung:** Korrekt: $\\cos 200° = \\cos(180° + 20°) = -\\cos 20° \\approx -0{,}940$.
+
+**Probe:** $200°$ im 3. Quadranten → $\\cos < 0$ (ASTC). Schüler-Wert $+\\cos 20°$ wäre positiv — Widerspruch.
+
+**Typischer Fehler:** „Gerade" mit „Verhalten bei Punktspiegelung" verwechseln.`,
+        [
+          'Welche Spiegelung ist hier?',
+          'Punktspiegelung kippt beide Koordinaten.',
+          '„Gerade" nur bei $\\cos(-\\alpha) = \\cos\\alpha$.',
+        ],
+        {
+          1: '$\\cos 200° < 0$ (3. Quadrant) — das Schülerergebnis $+\\cos 20°$ ist positiv, falsch.',
+          2: 'Die Sinus-Formel war korrekt.',
+          3: 'Die Formel gilt universell.',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['punktspiegelung'] },
+      ),
+      ni(
+        'Berechne $\\sin(225°) + \\cos(225°)$ (beide via Punktspiegelung). (3 NK)',
+        -1.414, 0.01, '',
+        `**Ansatz:** $225° = 180° + 45°$. Beide negieren.
+
+**Rechnung:** $\\sin 225° = -\\sin 45° = -\\sqrt{2}/2$; $\\cos 225° = -\\cos 45° = -\\sqrt{2}/2$. Summe: $-\\sqrt{2} \\approx -1{,}414$.
+
+**Probe:** Beide gleich (bei $45°$-Argument) und beide negativ (3. Quadrant).
+
+**Typischer Fehler:** Nur eines negieren.`,
+        [
+          'Punktspiegelung für beide.',
+          '$-\\sin 45° - \\cos 45° = ?$',
+          '$-\\sqrt{2}/2 - \\sqrt{2}/2 = -\\sqrt{2}$.',
+        ],
+        { stage: 'transfer', subGoal: 5, uses: ['punktspiegelung'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // trig-2-4 — Tangens im Einheitskreis  (6 subGoals)
+  // 30 Matrix-Aufgaben: 6 SGs × 5 Stufen.
+  // ────────────────────────────────────────────────────────────────────────
+  'trig-2-4': {
+    // ── [0] tan α = sin α / cos α = y/x ───────────────────────────────────
+    0: [
+      tf(
+        '$\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$ für alle Winkel mit $\\cos\\alpha \\neq 0$.',
+        true,
+        `**Ansatz:** Definition des Tangens.
+
+**Rechnung:** Am Einheitskreis: $\\tan\\alpha = y/x$, also Steigung der Ursprungsgerade zum Punkt $(\\cos\\alpha, \\sin\\alpha)$.
+
+**Probe:** $\\tan 45° = \\sin 45°/\\cos 45° = (\\sqrt 2/2)/(\\sqrt 2/2) = 1$ ✓.
+
+**Typischer Fehler:** $\\tan = \\cos/\\sin$ annehmen.`,
+        [
+          'Definition: Quotient aus Sinus und Kosinus.',
+          '$y/x$ am Einheitskreis.',
+          'Nicht umgekehrt.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['tan-def'] },
+      ),
+      mc(
+        'Welcher Wert ist $\\tan 45°$?',
+        ['$1$', '$0$', '$\\sqrt{2}$', '$\\sqrt{2}/2$'],
+        0,
+        `**Ansatz:** $\\tan 45° = \\sin 45°/\\cos 45°$.
+
+**Rechnung:** $(\\sqrt 2/2)/(\\sqrt 2/2) = 1$.
+
+**Probe:** Bei $45°$ ist Gegenkathete = Ankathete → Verhältnis $1$.
+
+**Typischer Fehler:** $\\sqrt 2$ oder $\\sqrt 2/2$ — Verwechslung mit Einzel-Werten.`,
+        [
+          '$\\tan = \\sin/\\cos$.',
+          'Bei $45°$: beide gleich.',
+          'Quotient $= 1$.',
+        ],
+        {
+          1: '$\\tan 0° = 0$, nicht $\\tan 45°$.',
+          2: '$\\sqrt 2$ ist kein Standardwert von $\\tan$.',
+          3: '$\\sqrt 2/2$ ist $\\sin/\\cos$ von $45°$ einzeln — nicht der Quotient.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['tan-def'] },
+      ),
+      ni(
+        'Ein Punkt auf dem Einheitskreis hat Koordinaten $(0{,}6, 0{,}8)$. Berechne $\\tan\\alpha$. (3 NK)',
+        1.333, 0.01, '',
+        `**Ansatz:** $\\tan\\alpha = y/x$.
+
+**Rechnung:** $\\tan\\alpha = 0{,}8/0{,}6 = 4/3 \\approx 1{,}333$.
+
+**Probe:** Punkt im 1. Quadranten → $\\tan > 0$ (ASTC) ✓.
+
+**Typischer Fehler:** $x/y$ statt $y/x$ rechnen.`,
+        [
+          '$\\tan = y/x$.',
+          '$y = 0{,}8$, $x = 0{,}6$.',
+          'Dividieren.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['tan-def'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $\\tan 60° = \\cos 60°/\\sin 60° = (1/2)/(\\sqrt 3/2) = 1/\\sqrt 3$. Wo liegt der Fehler?',
+        [
+          'Er hat Zähler und Nenner vertauscht. Richtig: $\\tan 60° = \\sin 60°/\\cos 60° = (\\sqrt 3/2)/(1/2) = \\sqrt 3$.',
+          'Die Rechnung stimmt — $\\tan 60° = 1/\\sqrt 3$.',
+          'Er hat den $60°$-Winkel mit $30°$ verwechselt.',
+          '$\\tan 60°$ ist undefiniert.',
+        ],
+        0,
+        `**Ansatz:** Definition: $\\tan = \\sin/\\cos$, NICHT $\\cos/\\sin$.
+
+**Rechnung:** Korrekt: $\\tan 60° = \\sqrt 3$ ($\\approx 1{,}732$). Das Schüler-Ergebnis $1/\\sqrt 3 \\approx 0{,}577$ ist tatsächlich $\\tan 30°$ (zufällig, weil beide Kehrwerte).
+
+**Probe:** $\\tan 60° = \\sqrt 3 \\approx 1{,}732$; $\\tan 30° = 1/\\sqrt 3 \\approx 0{,}577$.
+
+**Typischer Fehler:** Quotient-Richtung vertauschen. Merkhilfe: "$\\tan$ = Steigung = vertikal/horizontal = $y/x$ = $\\sin/\\cos$".`,
+        [
+          'Quotient in welche Richtung?',
+          '$\\tan = \\sin/\\cos$.',
+          'Steigung: vertikal $/$ horizontal.',
+        ],
+        {
+          1: 'Zahlenwert ist tatsächlich $\\tan 30°$, nicht $\\tan 60°$.',
+          2: 'Weder bei $30°$ noch $60°$ sind $\\sin/\\cos$ beide gleich $1/\\sqrt 3$ und $\\sqrt 3$.',
+          3: '$\\tan 60°$ ist wohldefiniert ($\\cos 60° \\neq 0$).',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['tan-def'] },
+      ),
+      matching(
+        'Ordne jedem Winkel seinen Tangens-Wert zu.',
+        [
+          { left: '$\\tan 0°$',  right: '$0$' },
+          { left: '$\\tan 30°$', right: '$1/\\sqrt{3}$' },
+          { left: '$\\tan 45°$', right: '$1$' },
+          { left: '$\\tan 60°$', right: '$\\sqrt{3}$' },
+        ],
+        `**Ansatz:** Grundwerte-Tabelle des Tangens auswendig.
+
+**Rechnung:** Aus Sinus/Kosinus-Werten: $\\tan = \\sin/\\cos$.
+
+**Probe:** Monotones Wachstum im 1. Quadranten von $0$ auf $\\infty$ bei $90°$.
+
+**Typischer Fehler:** $\\tan 30°$ und $\\tan 60°$ vertauschen.`,
+        [
+          'Grundwerte auswendig.',
+          '$\\tan 45° = 1$ (symmetrisch).',
+          '$\\tan 30° < 1 < \\tan 60°$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['tan-def'] },
+      ),
+    ],
+
+    // ── [1] Polstellen bei α = 90° + k·180° ───────────────────────────────
+    1: [
+      tf(
+        '$\\tan 90°$ ist nicht definiert, weil $\\cos 90° = 0$.',
+        true,
+        `**Ansatz:** Division durch Null. Bei $\\cos\\alpha = 0$ ist $\\tan\\alpha = \\sin\\alpha/0$ nicht definiert.
+
+**Rechnung:** $\\cos 90° = 0$, also $\\tan 90° = 1/0$ → Polstelle.
+
+**Probe:** Am Einheitskreis: Punkt $(0, 1)$; Steigung der Ursprungsgerade ist unendlich (senkrechte Linie).
+
+**Typischer Fehler:** $\\tan 90° = \\infty$ formal als "Wert" akzeptieren. In $\\mathbb{R}$ undefiniert.`,
+        [
+          'Wann hat Division keine Lösung?',
+          '$\\cos 90° = ?$',
+          'Division durch $0$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['tan-polstellen'] },
+      ),
+      mc(
+        'Bei welchem der folgenden Winkel ist $\\tan$ NICHT definiert?',
+        ['$90°$', '$45°$', '$180°$', '$0°$'],
+        0,
+        `**Ansatz:** Polstellen bei $\\cos\\alpha = 0$, also $\\alpha = 90°, 270°, 450°, \\ldots$
+
+**Rechnung:** $\\cos 90° = 0$ → $\\tan 90°$ undefiniert.
+
+**Probe:** Bei $45°, 180°, 0°$ ist $\\cos \\neq 0$, also $\\tan$ definiert.
+
+**Typischer Fehler:** $\\tan 180° = \\infty$ annehmen (stimmt nicht, $\\cos 180° = -1 \\neq 0$).`,
+        [
+          'Wo ist $\\cos = 0$?',
+          'Bei $90°, 270°, \\ldots$',
+          'Das sind die Polstellen.',
+        ],
+        {
+          1: '$\\tan 45° = 1$ (wohldefiniert).',
+          2: '$\\tan 180° = \\sin 180°/\\cos 180° = 0/(-1) = 0$ (wohldefiniert).',
+          3: '$\\tan 0° = 0/1 = 0$ (wohldefiniert).',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['tan-polstellen'] },
+      ),
+      mc(
+        'Welche Winkel sind Polstellen von $\\tan$ (im Bereich $[0°, 720°]$)?',
+        ['$90°, 270°, 450°, 630°$', '$0°, 180°, 360°, 540°$', '$45°, 225°, 405°, 585°$', 'Nur $90°$ und $270°$.'],
+        0,
+        `**Ansatz:** Polstellen bei $\\alpha = 90° + k \\cdot 180°$ für ganzes $k$.
+
+**Rechnung:** $k = 0, 1, 2, 3 \\Rightarrow 90°, 270°, 450°, 630°$.
+
+**Probe:** Alle haben $\\cos\\alpha = 0$.
+
+**Typischer Fehler:** Nur im Hauptbereich $[0°, 360°]$ suchen und Fortsetzung vergessen.`,
+        [
+          'Polstellen: $90° + k \\cdot 180°$.',
+          '$k = 0, 1, 2, 3$ in $[0, 720]$.',
+          'Ergibt $4$ Werte.',
+        ],
+        {
+          1: 'Dort ist $\\sin = 0$, $\\cos \\neq 0$ — $\\tan = 0$, wohldefiniert.',
+          2: 'Bei $45°$ etc. ist $\\tan = 1$, wohldefiniert.',
+          3: 'Polstellen gibt es periodisch $180°$-weise, nicht nur $90°, 270°$.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['tan-polstellen'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $\\tan 90° = \\sin 90°/\\cos 90° = 1/0 = \\infty$ und schreibt "$\\tan 90° = \\infty$" als Ergebnis. Wo liegt der Fehler?',
+        [
+          'In $\\mathbb{R}$ ist Division durch Null nicht definiert — "$\\infty$" ist keine reelle Zahl. Korrekt: $\\tan 90°$ ist undefiniert.',
+          'Die Rechnung ist korrekt.',
+          'Er müsste $\\tan 90° = -\\infty$ schreiben.',
+          '$\\tan 90° = 0$.',
+        ],
+        0,
+        `**Ansatz:** Unendlichkeit ist keine reelle Zahl, sondern ein Grenzwert-Symbol.
+
+**Rechnung:** Korrekt: $\\tan 90°$ ist nicht definiert. Grenzwert: $\\tan\\alpha \\to +\\infty$ für $\\alpha \\nearrow 90°$ und $\\to -\\infty$ für $\\alpha \\searrow 90°$ — zweiseitig unterschiedlich.
+
+**Probe:** In Prüfungen: "undefiniert" ist die einzig korrekte Antwort.
+
+**Typischer Fehler:** Umgangssprachlich "$\\tan 90° = \\infty$" akzeptieren, mathematisch inkorrekt.`,
+        [
+          'Ist $\\infty$ eine Zahl?',
+          'Was passiert bei Division durch $0$?',
+          'Grenzwerte sind keine Funktionswerte.',
+        ],
+        {
+          1: 'Die Rechnung $1/0$ führt nicht zu $\\infty$ als Ergebnis.',
+          2: 'Weder $+\\infty$ noch $-\\infty$ sind reelle Zahlen.',
+          3: '$\\tan 90° = 0$ ist komplett falsch — das wäre $\\tan 0°$ oder $\\tan 180°$.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['tan-polstellen'] },
+      ),
+      matching(
+        'Ordne jedem Winkel die Eigenschaft "Polstelle oder wohldefiniert" zu.',
+        [
+          { left: '$\\tan 60°$',  right: 'wohldefiniert' },
+          { left: '$\\tan 270°$', right: 'Polstelle' },
+          { left: '$\\tan 180°$', right: 'wohldefiniert' },
+          { left: '$\\tan 90°$',  right: 'Polstelle' },
+        ],
+        `**Ansatz:** Polstelle ↔ $\\cos\\alpha = 0$.
+
+**Rechnung:** $\\cos 60° = 1/2 \\neq 0$. $\\cos 270° = 0$ (Polstelle). $\\cos 180° = -1 \\neq 0$. $\\cos 90° = 0$ (Polstelle).
+
+**Probe:** Periodizität: $90° + k\\cdot 180°$.
+
+**Typischer Fehler:** $\\tan 180°$ als Polstelle annehmen — bei $180°$ ist $\\sin = 0$ (nicht $\\cos$), also $\\tan = 0$.`,
+        [
+          'Polstelle: $\\cos = 0$.',
+          '$\\cos = 0$ bei $90°, 270°$.',
+          '$\\cos 180° = -1$ (nicht 0).',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['tan-polstellen'] },
+      ),
+    ],
+
+    // ── [2] Periode von tan ist 180° ──────────────────────────────────────
+    2: [
+      tf(
+        'Die Periode von $\\tan$ ist $180°$, nicht $360°$.',
+        true,
+        `**Ansatz:** Nach $180°$-Drehung landet der Punkt gegenüber: $(x, y) \\to (-x, -y)$. Beide Vorzeichen kippen, Quotient $y/x$ bleibt gleich.
+
+**Rechnung:** $\\tan(\\alpha + 180°) = (-\\sin\\alpha)/(-\\cos\\alpha) = \\sin\\alpha/\\cos\\alpha = \\tan\\alpha$.
+
+**Probe:** $\\tan 30° = 1/\\sqrt 3 = \\tan 210°$ ✓.
+
+**Typischer Fehler:** Periode $360°$ annehmen (wie bei $\\sin, \\cos$).`,
+        [
+          'Was passiert bei Punktspiegelung?',
+          'Beide Vorzeichen kippen.',
+          'Im Quotient heben sich auf.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['tan-periode'] },
+      ),
+      mc(
+        'Welcher Winkel hat denselben Tangens wie $45°$?',
+        ['$225°$', '$315°$', '$135°$', '$405°$'],
+        0,
+        `**Ansatz:** Periode $180°$: $\\tan(\\alpha + 180°) = \\tan\\alpha$.
+
+**Rechnung:** $45° + 180° = 225°$. $\\tan 225° = \\tan 45° = 1$.
+
+**Probe:** Zahlenwert: beide Quadranten (Q1 und Q3) haben positiven Tangens ✓.
+
+**Typischer Fehler:** $135°$ (2. Q — negativ) oder $315°$ (4. Q — negativ) wählen.`,
+        [
+          'Periode $180°$.',
+          '$45° + 180° = ?$',
+          'ASTC: Q3 hat $\\tan > 0$.',
+        ],
+        {
+          1: '$\\tan 315° = \\tan(-45°) = -1 \\neq 1$.',
+          2: '$\\tan 135° = \\tan(180°-45°) = -\\tan 45° = -1$.',
+          3: '$405° - 360° = 45°$ — durch $360°$-Periode, aber das ist Periode, nicht $180°$-Symmetrie. Gleicher Wert, aber Frage nach $180°$-Symmetrie.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['tan-periode'] },
+      ),
+      ni(
+        'Gegeben $\\tan 15° \\approx 0{,}268$. Berechne $\\tan(195°)$. (3 NK)',
+        0.268, 0.01, '',
+        `**Ansatz:** $195° = 15° + 180°$ → Periode.
+
+**Rechnung:** $\\tan 195° = \\tan 15° \\approx 0{,}268$.
+
+**Probe:** $195°$ in Q3 → $\\tan > 0$ (ASTC) ✓.
+
+**Typischer Fehler:** Vorzeichen kippen (wie bei Supplementformel).`,
+        [
+          'Periode von $\\tan$.',
+          '$195° - 15° = 180°$.',
+          'Kein Vorzeichenwechsel.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['tan-periode'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $\\tan 200° = \\tan(200° - 360°) = \\tan(-160°) = -\\tan 160°$. Wo ist der Umweg überflüssig?',
+        [
+          'Die Periode von $\\tan$ ist $180°$, nicht $360°$. Direkt: $\\tan 200° = \\tan(200° - 180°) = \\tan 20°$. Einfacher und richtiger.',
+          'Die Rechnung ist optimal.',
+          'Er müsste mit $180°$ und $360°$ arbeiten.',
+          'Tangens hat keine Periode.',
+        ],
+        0,
+        `**Ansatz:** Kleinste Periode nutzen = $180°$.
+
+**Rechnung:** Direkt: $\\tan 200° = \\tan(200° - 180°) = \\tan 20° \\approx 0{,}364$. Keine Vorzeichen-Verwirrung.
+
+**Probe:** Der Schüler-Weg kommt auf dasselbe, aber ist fehleranfällig (Doppel-Vorzeichen).
+
+**Typischer Fehler:** Periode $360°$ annehmen (wie bei $\\sin, \\cos$). Bei $\\tan$ ist $180°$ kürzer.`,
+        [
+          'Periode von $\\tan$: $180°$.',
+          'Einfachste Reduktion.',
+          'Weniger Vorzeichen-Arithmetik.',
+        ],
+        {
+          1: 'Die Schüler-Rechnung ist korrekt, aber unnötig kompliziert.',
+          2: '$180°$ reicht für die Periode; $360°$ ist ein Vielfaches.',
+          3: '$\\tan$ ist sehr wohl periodisch, mit Periode $180°$.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['tan-periode'] },
+      ),
+      matching(
+        'Ordne jedem Winkel einen äquivalenten Tangens-Winkel in $[0°, 180°)$ zu.',
+        [
+          { left: '$\\tan 200°$', right: '$\\tan 20°$' },
+          { left: '$\\tan 320°$', right: '$\\tan 140°$' },
+          { left: '$\\tan 225°$', right: '$\\tan 45°$' },
+          { left: '$\\tan 190°$', right: '$\\tan 10°$' },
+        ],
+        `**Ansatz:** Modulo $180°$.
+
+**Rechnung:** $200° - 180° = 20°$. $320° - 180° = 140°$. $225° - 180° = 45°$. $190° - 180° = 10°$.
+
+**Probe:** Alle reduzierten Werte $\\in [0°, 180°)$.
+
+**Typischer Fehler:** $360°$ abziehen (falsche Periode).`,
+        [
+          '$\\tan$-Periode: $180°$.',
+          'Reduktion: $\\alpha - 180°$.',
+          'Wert identisch, Vorzeichen beachtet.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['tan-periode'] },
+      ),
+    ],
+
+    // ── [3] ASTC für Tangens: Q1 und Q3 positiv ───────────────────────────
+    3: [
+      matching(
+        'Ordne jedem Quadranten das Vorzeichen von $\\tan$ zu.',
+        [
+          { left: 'Q1 ($0°$–$90°$)',     right: 'positiv' },
+          { left: 'Q2 ($90°$–$180°$)',   right: 'negativ' },
+          { left: 'Q3 ($180°$–$270°$)',  right: 'positiv' },
+          { left: 'Q4 ($270°$–$360°$)',  right: 'negativ' },
+        ],
+        `**Ansatz:** $\\tan = y/x$. Vorzeichen aus den Quadranten:
+Q1: $x>0, y>0$ → $+/+=+$
+Q2: $x<0, y>0$ → $-/+=-$
+Q3: $x<0, y<0$ → $-/-=+$
+Q4: $x>0, y<0$ → $+/-=-$
+
+**Rechnung:** Nur Q1 und Q3 positiv.
+
+**Probe:** ASTC-Merkregel — "T" steht im Q3.
+
+**Typischer Fehler:** Alle Quadranten gleich behandeln.`,
+        [
+          '$\\tan = y/x$.',
+          'Vorzeichen pro Quadrant prüfen.',
+          'ASTC: T in Q3.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['tan-astc'] },
+      ),
+      mc(
+        'In welchem Quadranten ist $\\tan\\alpha > 0$ und $\\sin\\alpha < 0$ gleichzeitig?',
+        ['Q3', 'Q1', 'Q2', 'Q4'],
+        0,
+        `**Ansatz:** $\\tan > 0$ in Q1 und Q3. $\\sin < 0$ in Q3 und Q4. Schnittmenge: Q3.
+
+**Rechnung:** Q3: $x<0, y<0$. $\\sin = y < 0$ ✓. $\\tan = y/x = -/- > 0$ ✓.
+
+**Probe:** Beispiel: $\\alpha = 210°$ → $\\sin 210° = -0{,}5 < 0$; $\\tan 210° = \\tan 30° = 1/\\sqrt 3 > 0$ ✓.
+
+**Typischer Fehler:** Q1 (beide positiv) oder Q4 ($\\sin < 0$, aber $\\tan < 0$) wählen.`,
+        [
+          'ASTC anwenden.',
+          'Zwei Bedingungen kombinieren.',
+          'Nur ein Quadrant erfüllt beide.',
+        ],
+        {
+          1: 'Q1: $\\sin > 0$ — widerspricht.',
+          2: 'Q2: $\\tan < 0$ — widerspricht.',
+          3: 'Q4: $\\tan < 0$ — widerspricht.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['tan-astc'] },
+      ),
+      mc(
+        'Das Vorzeichen von $\\tan 300°$ ist:',
+        ['negativ', 'positiv', 'null', 'nicht bestimmbar'],
+        0,
+        `**Ansatz:** $300°$ im Q4 → $\\tan < 0$.
+
+**Rechnung:** ASTC: Q4 → nur $\\cos$ positiv, $\\sin$ und $\\tan$ negativ.
+
+**Probe:** $\\tan 300° = -\\tan 60° = -\\sqrt 3 \\approx -1{,}732$.
+
+**Typischer Fehler:** Q3 statt Q4 identifizieren.`,
+        [
+          'Quadrant von $300°$?',
+          'ASTC für $\\tan$.',
+          'Q4 → negativ.',
+        ],
+        {
+          1: 'Nicht positiv — Q4.',
+          2: '$\\tan$ ist nur bei $0°, 180°, \\ldots$ null.',
+          3: 'Sehr wohl bestimmbar — Quadrant ist klar.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['tan-astc'] },
+      ),
+      mc(
+        'Ein Schüler sagt: „$\\tan 150° > 0$, weil der Referenzwinkel $30°$ positiv ist." Wo liegt der Fehler?',
+        [
+          'Der Referenzwinkel ist IMMER positiv; das Vorzeichen von $\\tan$ kommt aus dem Quadranten. $150°$ liegt in Q2, wo $\\tan < 0$.',
+          'Die Rechnung stimmt.',
+          'Der Referenzwinkel ist $60°$, nicht $30°$.',
+          '$\\tan 150° = 0$.',
+        ],
+        0,
+        `**Ansatz:** Referenzwinkel-Betrag + Quadranten-Vorzeichen kombinieren.
+
+**Rechnung:** $|\\tan 150°| = |\\tan 30°| = 1/\\sqrt 3$. Aber Q2 → $\\tan < 0$ → $\\tan 150° = -1/\\sqrt 3$.
+
+**Probe:** Am Einheitskreis: Q2 hat $x < 0$, $y > 0$ → $\\tan = y/x < 0$.
+
+**Typischer Fehler:** Referenzwinkel-Vorzeichen als Trig-Funktions-Vorzeichen missdeuten.`,
+        [
+          'Referenzwinkel ist Betrag.',
+          'Vorzeichen kommt aus Quadrant.',
+          'Q2: $\\tan < 0$.',
+        ],
+        {
+          1: 'Die Aussage ist nicht korrekt — das Vorzeichen ist negativ.',
+          2: '$180° - 150° = 30°$, also Referenz $30°$ (nicht $60°$).',
+          3: '$\\tan 150° \\neq 0$ — das wäre nur bei $0°, 180°, \\ldots$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['tan-astc'] },
+      ),
+      mc(
+        'In welchem Quadranten gilt: $\\sin\\alpha > 0$, $\\cos\\alpha < 0$, $\\tan\\alpha < 0$?',
+        ['Q2', 'Q1', 'Q3', 'Q4'],
+        0,
+        `**Ansatz:** $\\sin > 0$ (Q1, Q2); $\\cos < 0$ (Q2, Q3). Schnitt: Q2. Check $\\tan = \\sin/\\cos = +/- < 0$ ✓.
+
+**Rechnung:** Q2 erfüllt alle drei.
+
+**Probe:** ASTC: Q2 = "Sinus" → nur Sinus positiv ✓.
+
+**Typischer Fehler:** Q3 wählen (dort $\\sin < 0$).`,
+        [
+          'Alle drei Bedingungen kombinieren.',
+          'Schnittmenge der Quadranten.',
+          'Q2: $\\sin+, \\cos-, \\tan-$.',
+        ],
+        {
+          1: 'Q1: alle positiv — widerspricht.',
+          2: 'Q3: $\\sin < 0$ — widerspricht.',
+          3: 'Q4: $\\sin < 0, \\cos > 0$ — widerspricht.',
+        },
+        { stage: 'transfer', subGoal: 3, uses: ['tan-astc'] },
+      ),
+    ],
+
+    // ── [4] tan ist ungerade: tan(-α) = -tan α ────────────────────────────
+    4: [
+      tf(
+        '$\\tan(-\\alpha) = -\\tan(\\alpha)$ für alle Winkel $\\alpha$ mit $\\cos\\alpha \\neq 0$.',
+        true,
+        `**Ansatz:** $\\tan = \\sin/\\cos$. $\\sin$ ungerade, $\\cos$ gerade. Quotient: ungerade.
+
+**Rechnung:** $\\tan(-\\alpha) = \\sin(-\\alpha)/\\cos(-\\alpha) = (-\\sin\\alpha)/\\cos\\alpha = -\\tan\\alpha$.
+
+**Probe:** $\\tan(-30°) = -\\tan 30° = -1/\\sqrt 3$ ✓.
+
+**Typischer Fehler:** $\\tan$ als gerade annehmen (weil $\\cos$ gerade ist).`,
+        [
+          'Quotient aus ungerade/gerade.',
+          'Resultat: ungerade.',
+          'Vorzeichen kippt.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['tan-ungerade'] },
+      ),
+      mc(
+        'Gegeben $\\tan 25° \\approx 0{,}466$. Wie groß ist $\\tan(-25°)$?',
+        ['$-0{,}466$', '$+0{,}466$', '$-1$', '$+2{,}145$'],
+        0,
+        `**Ansatz:** $\\tan(-\\alpha) = -\\tan\\alpha$.
+
+**Rechnung:** $-0{,}466$.
+
+**Probe:** Ungerade Funktion.
+
+**Typischer Fehler:** $+0{,}466$ (gerade Funktion angenommen) oder Kehrwert $\\approx 2{,}145$.`,
+        [
+          'Ungerade Funktion.',
+          'Vorzeichen kippt.',
+          'Betrag bleibt.',
+        ],
+        {
+          1: 'Positiv wäre gerade Funktion; $\\tan$ ist ungerade.',
+          2: '$-1$ ist $\\tan(-45°)$, nicht $\\tan(-25°)$.',
+          3: '$1/\\tan 25° = \\cot 25° \\approx 2{,}145$ — ungefragte Funktion.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['tan-ungerade'] },
+      ),
+      ni(
+        'Berechne $\\tan(-60°)$. (3 NK)',
+        -1.732, 0.01, '',
+        `**Ansatz:** $\\tan(-60°) = -\\tan 60° = -\\sqrt 3 \\approx -1{,}732$.
+
+**Rechnung:** Grundwert negieren.
+
+**Probe:** $-60°$ in Q4 → $\\tan < 0$ ✓.
+
+**Typischer Fehler:** Positives Ergebnis.`,
+        [
+          'Ungerade Funktion.',
+          '$\\tan 60° = \\sqrt 3$.',
+          'Negieren.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['tan-ungerade'] },
+      ),
+      mc(
+        'Ein Schüler sagt: „$\\tan(-45°) = \\tan 45° = 1$, weil beide Winkel die gleiche absolute Steigung $1$ haben." Wo liegt der Fehler?',
+        [
+          'Absolute Steigung ist $|\\tan|$. Das Vorzeichen unterscheidet: $\\tan(-45°) = -1$, weil die Ursprungsgerade im 4. Quadranten negative Steigung hat.',
+          'Die Rechnung stimmt.',
+          'Beide Winkel sind nicht definiert.',
+          '$\\tan 45° = -1$.',
+        ],
+        0,
+        `**Ansatz:** Vorzeichen zählt. $\\tan(-45°) = -\\tan 45° = -1$ (ungerade).
+
+**Rechnung:** Am Einheitskreis: $-45°$ liegt bei $(x, y) = (\\sqrt 2/2, -\\sqrt 2/2)$. Steigung $y/x = -1$.
+
+**Probe:** Visualisierung: Gerade von Ursprung nach unten-rechts hat negative Steigung.
+
+**Typischer Fehler:** „Betrag gleich" mit "Wert gleich" verwechseln.`,
+        [
+          'Steigung mit Vorzeichen.',
+          'Q4: Steigung negativ.',
+          'Ungerade Funktion.',
+        ],
+        {
+          1: 'Die Rechnung ignoriert das Vorzeichen.',
+          2: 'Beide Winkel sind wohldefiniert (kein Polstellen).',
+          3: '$\\tan 45° = +1$, nicht $-1$.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['tan-ungerade'] },
+      ),
+      matching(
+        'Ordne jedem Tangens-Ausdruck sein Ergebnis zu.',
+        [
+          { left: '$\\tan(-30°)$', right: '$-1/\\sqrt{3}$' },
+          { left: '$\\tan(-45°)$', right: '$-1$' },
+          { left: '$\\tan(-60°)$', right: '$-\\sqrt{3}$' },
+          { left: '$\\tan(-0°)$',  right: '$0$' },
+        ],
+        `**Ansatz:** Grundwerte negieren.
+
+**Rechnung:** Ungerade Funktion kippt Vorzeichen.
+
+**Probe:** Ausnahme: $\\tan 0° = 0 = -0 = \\tan(-0°)$.
+
+**Typischer Fehler:** Werte positiv lassen.`,
+        [
+          'Grundwerte + negieren.',
+          'Ausnahme: $0 \\to 0$.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['tan-ungerade'] },
+      ),
+    ],
+
+    // ── [5] Wertebereich tan: (-∞, +∞) ────────────────────────────────────
+    5: [
+      tf(
+        'Der Tangens kann jeden reellen Wert annehmen — Wertebereich ist $(-\\infty, +\\infty)$.',
+        true,
+        `**Ansatz:** Annäherung an Polstellen treibt $\\tan$ zu beliebig großen Werten.
+
+**Rechnung:** Zwischen zwei Polstellen ($-90°$ und $+90°$) wächst $\\tan$ monoton von $-\\infty$ bis $+\\infty$.
+
+**Probe:** $\\tan 89° \\approx 57{,}3$; $\\tan 89{,}9° \\approx 572{,}96$; $\\tan 89{,}99° \\approx 5729{,}58$. Beliebig groß.
+
+**Typischer Fehler:** $\\tan$ wie $\\sin, \\cos$ auf $[-1, 1]$ beschränkt annehmen.`,
+        [
+          'Wertebereich von $\\tan$.',
+          'Unbeschränkt nach beiden Seiten.',
+          'Verhalten bei Polstellen.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['tan-wertebereich'] },
+      ),
+      mc(
+        'Hat die Gleichung $\\tan\\alpha = 100$ eine Lösung in $\\mathbb{R}$?',
+        ['Ja — z. B. nahe $89{,}43°$.', 'Nein, $\\tan$ ist auf $[-1, 1]$ beschränkt.', 'Nur in $\\mathbb{C}$.', 'Nur für bestimmte Quadranten.'],
+        0,
+        `**Ansatz:** $\\tan$ nimmt jeden reellen Wert an.
+
+**Rechnung:** $\\arctan 100 \\approx 89{,}43°$. $\\tan 89{,}43° \\approx 100$ ✓.
+
+**Probe:** Monotonie im Hauptbereich garantiert Existenz einer Lösung.
+
+**Typischer Fehler:** Annehmen, $\\tan$ hätte dieselbe Beschränkung wie $\\sin$.`,
+        [
+          'Wertebereich $= \\mathbb{R}$.',
+          '$\\arctan 100 = ?$',
+          'Annäherung an Polstelle.',
+        ],
+        {
+          1: 'Das ist $\\sin/\\cos$, nicht $\\tan$.',
+          2: 'In $\\mathbb{R}$ ausreichend.',
+          3: 'Lösungen in allen Quadranten (wegen Periodizität).',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['tan-wertebereich'] },
+      ),
+      tf(
+        'Die Gleichung $\\tan\\alpha = 0{,}5$ hat unendlich viele Lösungen in $\\mathbb{R}$.',
+        true,
+        `**Ansatz:** Periodizität $180°$: alle Lösungen $\\alpha = \\arctan(0{,}5) + k \\cdot 180°$ für $k \\in \\mathbb{Z}$.
+
+**Rechnung:** Hauptlösung $\\alpha_0 = \\arctan(0{,}5) \\approx 26{,}57°$. Weitere: $206{,}57°, 386{,}57°, \\ldots$ und rückwärts $-153{,}43°, \\ldots$
+
+**Probe:** $\\tan$ ist periodisch mit Periode $180°$ → unendlich viele Werte in $\\mathbb{R}$.
+
+**Typischer Fehler:** Nur die Hauptlösung angeben.`,
+        [
+          'Periodizität von $\\tan$.',
+          'Lösungen wiederholen sich.',
+          'Unendlich in $\\mathbb{R}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['tan-wertebereich'] },
+      ),
+      mc(
+        'Ein Schüler meint: „$\\tan\\alpha \\geq -1$ immer, weil $\\tan$ nicht kleiner als $-1$ werden kann." Wo liegt der Fehler?',
+        [
+          '$\\tan$ hat KEIN unteres Schranken — er kann beliebig klein werden (z. B. $\\tan 95° \\approx -11{,}43$). Der Schüler verwechselt $\\tan$ mit $\\sin/\\cos$.',
+          'Die Aussage stimmt.',
+          '$\\tan$ ist nur positiv.',
+          'Unterster Wert ist $-10$.',
+        ],
+        0,
+        `**Ansatz:** Wertebereich $(-\\infty, +\\infty)$ — keine Schranke.
+
+**Rechnung:** $\\tan 95° = \\tan(95°-180°) = \\tan(-85°) \\approx -11{,}43$.
+
+**Probe:** Nahe Polstelle bei $90°$ oder $-90°$ wird $|\\tan|$ beliebig groß.
+
+**Typischer Fehler:** Eigenschaften von $\\sin/\\cos$ auf $\\tan$ übertragen. Merke: $\\tan$ hat Polstellen, keine Schranken.`,
+        [
+          'Wertebereich von $\\tan$.',
+          'Unbeschränkt.',
+          'Zahlenbeispiel nahe Polstelle.',
+        ],
+        {
+          1: '$\\tan$ ist NICHT auf $[-1, 1]$ oder $[-1, \\infty)$ beschränkt.',
+          2: '$\\tan < 0$ in Q2 und Q4 — sehr wohl negativ möglich.',
+          3: 'Es gibt keinen "untersten Wert".',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['tan-wertebereich'] },
+      ),
+      mc(
+        'Welche der folgenden Aussagen über den Wertebereich stimmt?',
+        [
+          '$\\tan: \\mathbb{R} \\setminus \\{90° + k\\cdot 180°\\} \\to \\mathbb{R}$, Definitionsbereich eingeschränkt, Wertebereich unbegrenzt.',
+          '$\\tan: \\mathbb{R} \\to [-1, 1]$.',
+          '$\\tan: \\mathbb{R}^+ \\to \\mathbb{R}^+$.',
+          '$\\tan: [0°, 360°) \\to \\mathbb{R}$.',
+        ],
+        0,
+        `**Ansatz:** $\\tan$ ist überall definiert außer bei Polstellen; Wertebereich unbegrenzt.
+
+**Rechnung:** Definitionslücken bei $\\cos\\alpha = 0$. Sonst: alle reellen Werte erreichbar.
+
+**Probe:** Genau diese Zwei-Eigenschaft charakterisiert $\\tan$.
+
+**Typischer Fehler:** Nur eine der beiden Einschränkungen erkennen.`,
+        [
+          'Definitionsbereich: $\\mathbb{R}$ minus Polstellen.',
+          'Wertebereich: $\\mathbb{R}$.',
+          'Zwei Einschränkungen kombiniert.',
+        ],
+        {
+          1: 'Das ist $\\sin$-Wertebereich, nicht $\\tan$.',
+          2: 'Negative Werte sind auch möglich — und negative Winkel im Definitionsbereich.',
+          3: '$\\tan$ ist auch bei $\\alpha < 0°$ und $\\alpha \\geq 360°$ definiert (Periodizität).',
+        },
+        { stage: 'transfer', subGoal: 5, uses: ['tan-wertebereich'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // trig-2-5 — Alle vier Quadranten  (6 subGoals)
+  // 30 Matrix-Aufgaben: 6 SGs × 5 Stufen.
+  // ────────────────────────────────────────────────────────────────────────
+  'trig-2-5': {
+    // ── [0] Quadrantengrenzen Q1-Q4 ───────────────────────────────────────
+    0: [
+      matching(
+        'Ordne jedem Winkelbereich den zugehörigen Quadranten zu.',
+        [
+          { left: '$0°$–$90°$',    right: 'Q1' },
+          { left: '$90°$–$180°$',  right: 'Q2' },
+          { left: '$180°$–$270°$', right: 'Q3' },
+          { left: '$270°$–$360°$', right: 'Q4' },
+        ],
+        `**Ansatz:** Quadranten durchnummeriert gegen den Uhrzeigersinn.
+
+**Rechnung:** Jeder Quadrant $90°$ breit.
+
+**Probe:** Achsenpunkte sind Grenzen, gehören per Konvention zum folgenden Quadranten.
+
+**Typischer Fehler:** Gegen- und Uhrzeigersinn verwechseln.`,
+        [
+          'Gegen den Uhrzeigersinn.',
+          'Q1 startet rechts.',
+          'Jeder $90°$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['quadranten-grenzen'] },
+      ),
+      mc(
+        'In welchem Quadranten liegt der Winkel $250°$?',
+        ['Q3', 'Q2', 'Q4', 'Q1'],
+        0,
+        `**Ansatz:** $180° < 250° < 270°$ → Q3.
+
+**Rechnung:** Direkt aus den Grenzen.
+
+**Probe:** Am Einheitskreis: $250°$ liegt unten-links, $x<0, y<0$.
+
+**Typischer Fehler:** Q4 annehmen (weil nah an $270°$), aber Grenze ist strikt bis $270°$.`,
+        [
+          '$180° < 250° < 270°$.',
+          'Q3 ist von $180°$ bis $270°$.',
+          'Q4 beginnt erst bei $270°$.',
+        ],
+        {
+          1: 'Q2 ist $90°$–$180°$, zu klein.',
+          2: 'Q4 beginnt erst bei $270°$.',
+          3: 'Q1 endet bei $90°$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['quadranten-grenzen'] },
+      ),
+      mc(
+        'In welchem Quadranten liegt der Winkel $95°$?',
+        ['Q2', 'Q1', 'Q3', 'Q4'],
+        0,
+        `**Ansatz:** $90° < 95° < 180°$ → Q2.
+
+**Rechnung:** Grenzen prüfen.
+
+**Probe:** $95°$ liegt oben-links, $x<0, y>0$.
+
+**Typischer Fehler:** Q1 annehmen (weil nah an $90°$).`,
+        [
+          'Gerade über $90°$.',
+          'Q2 beginnt ab $90°$.',
+          'Strikte Grenze.',
+        ],
+        {
+          1: 'Q1 endet bei $90°$.',
+          2: 'Q3 beginnt erst bei $180°$.',
+          3: 'Q4 beginnt bei $270°$.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['quadranten-grenzen'] },
+      ),
+      mc(
+        'Ein Schüler behauptet: „$90°$ liegt in Q1." Wo liegt der Fehler?',
+        [
+          '$90°$ ist die Grenze zwischen Q1 und Q2 und gehört per Konvention KEINEM Quadranten strikt an — Q1 endet vor $90°$, Q2 beginnt dort.',
+          'Die Aussage stimmt.',
+          '$90°$ gehört zu Q4.',
+          '$90°$ ist ein Ausnahmewinkel und wird ignoriert.',
+        ],
+        0,
+        `**Ansatz:** Achsenpunkte ($0°, 90°, 180°, 270°$) sind Grenzen, nicht Teil der Quadranten.
+
+**Rechnung:** Konvention: Q1 = $(0°, 90°)$ offen, Q2 = $(90°, 180°)$ offen.
+
+**Probe:** Bei exakt $90°$ ist $\\cos = 0$, was kein "typischer" Q1-Punkt ist.
+
+**Typischer Fehler:** Grenzen zu Q1 schlagen — aber sie sind Achsen, keine Quadranten.`,
+        [
+          'Achsenpunkte als Grenzen.',
+          'Quadranten sind offen.',
+          'Achsen gehören keinem.',
+        ],
+        {
+          1: 'Die Aussage ist nicht korrekt — Q1 endet vor $90°$.',
+          2: 'Q4 endet bei $360°$/$0°$; bei $90°$ gibt es keine Verbindung.',
+          3: '$90°$ ist wichtig — $\\sin 90° = 1$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['quadranten-grenzen'] },
+      ),
+      matching(
+        'Ordne jedem Winkel den zugehörigen Quadranten zu.',
+        [
+          { left: '$45°$',   right: 'Q1' },
+          { left: '$135°$',  right: 'Q2' },
+          { left: '$225°$',  right: 'Q3' },
+          { left: '$315°$',  right: 'Q4' },
+        ],
+        `**Ansatz:** Mittig in jedem Quadranten — klassische $45°$-Referenzen.
+
+**Rechnung:** $45° \\in (0, 90)$; $135° \\in (90, 180)$; $225° \\in (180, 270)$; $315° \\in (270, 360)$.
+
+**Probe:** Jedes um $90°$ vom nächsten.
+
+**Typischer Fehler:** Systematisch falsch zählen.`,
+        [
+          'Schrittweise $+90°$.',
+          '$45° + 90° = 135°$ → Q2.',
+          'Usw.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['quadranten-grenzen'] },
+      ),
+    ],
+
+    // ── [1] ASTC-Regel komplett ───────────────────────────────────────────
+    1: [
+      matching(
+        'Ordne jedem Quadranten die jeweils positiven Funktionen zu (ASTC).',
+        [
+          { left: 'Q1', right: 'Alle ($\\sin, \\cos, \\tan$)' },
+          { left: 'Q2', right: 'Nur $\\sin$' },
+          { left: 'Q3', right: 'Nur $\\tan$' },
+          { left: 'Q4', right: 'Nur $\\cos$' },
+        ],
+        `**Ansatz:** Merkhilfe "All Students Take Calculus".
+
+**Rechnung:** A=all, S=sin, T=tan, C=cos gehen gegen Uhrzeigersinn in Q1→Q4.
+
+**Probe:** In Q3 sind $x<0, y<0$ → $\\sin = y < 0$, $\\cos = x < 0$, $\\tan = y/x > 0$ (beide negativ → positiv im Quotient).
+
+**Typischer Fehler:** Reihenfolge verwechseln.`,
+        [
+          'ASTC als Merkhilfe.',
+          'Gegen Uhrzeigersinn.',
+          'Pro Quadrant nur die benannte Funktion positiv.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['astc-vollstaendig'] },
+      ),
+      mc(
+        'In Q3 ist folgende Funktion positiv:',
+        ['$\\tan$', '$\\sin$', '$\\cos$', 'keine'],
+        0,
+        `**Ansatz:** ASTC: T in Q3.
+
+**Rechnung:** Q3: $x<0, y<0$. $\\tan = y/x = -/- > 0$.
+
+**Probe:** $\\tan 225° = \\tan 45° = 1 > 0$ ✓.
+
+**Typischer Fehler:** Annehmen, in Q3 wäre alles negativ.`,
+        [
+          'Q3 = T im ASTC.',
+          'Beide Koordinaten negativ.',
+          'Quotient wird positiv.',
+        ],
+        {
+          1: '$\\sin = y < 0$ in Q3.',
+          2: '$\\cos = x < 0$ in Q3.',
+          3: 'Genau $\\tan$ ist positiv.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['astc-vollstaendig'] },
+      ),
+      mc(
+        'Ein Winkel hat $\\sin\\alpha > 0$ und $\\cos\\alpha < 0$. In welchem Quadranten liegt er?',
+        ['Q2', 'Q1', 'Q3', 'Q4'],
+        0,
+        `**Ansatz:** ASTC: Nur Sinus positiv → Q2.
+
+**Rechnung:** Q2: $x<0, y>0$.
+
+**Probe:** Beispiel: $\\alpha = 135°$ → $\\sin > 0, \\cos < 0$ ✓.
+
+**Typischer Fehler:** Q4 wählen (dort $\\cos > 0, \\sin < 0$).`,
+        [
+          'ASTC systematisch anwenden.',
+          '$\\sin > 0$: Q1 oder Q2.',
+          '$\\cos < 0$: Q2 oder Q3.',
+        ],
+        {
+          1: 'Q1: beide positiv.',
+          2: 'Q3: beide negativ.',
+          3: 'Q4: $\\sin < 0, \\cos > 0$.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['astc-vollstaendig'] },
+      ),
+      mc(
+        'Ein Schüler sagt: „In Q3 ist $\\tan$ negativ, weil beide Koordinaten negativ sind." Wo liegt der Fehler?',
+        [
+          'Bei $\\tan = y/x$ heben sich die beiden negativen Vorzeichen auf: $(-)/(-) = (+)$. Also $\\tan > 0$ in Q3.',
+          'Die Aussage stimmt.',
+          'Er hätte $\\tan = x/y$ schreiben müssen.',
+          '$\\tan$ ist in Q3 null.',
+        ],
+        0,
+        `**Ansatz:** Quotient zweier negativer Zahlen ist positiv.
+
+**Rechnung:** $\\tan = \\sin/\\cos$. In Q3: beide negativ → Quotient positiv.
+
+**Probe:** $\\tan 210° = \\sin 210°/\\cos 210° = (-1/2)/(-\\sqrt 3/2) = 1/\\sqrt 3 > 0$ ✓.
+
+**Typischer Fehler:** Pauschal "beide negativ = negativ" annehmen.`,
+        [
+          'Quotient negativer Zahlen.',
+          'Minus durch Minus.',
+          'ASTC: T in Q3.',
+        ],
+        {
+          1: '$\\tan$ wird positiv, nicht negativ.',
+          2: '$\\tan = y/x$, nicht $x/y$.',
+          3: '$\\tan$ ist nur bei $0°, 180°, \\ldots$ null.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['astc-vollstaendig'] },
+      ),
+      mc(
+        'Welche Funktionen sind in Q4 positiv?',
+        ['Nur $\\cos$', 'Nur $\\sin$', 'Nur $\\tan$', 'Alle drei'],
+        0,
+        `**Ansatz:** ASTC: C in Q4.
+
+**Rechnung:** Q4: $x > 0, y < 0$. $\\cos = x > 0$, $\\sin = y < 0$, $\\tan = y/x < 0$.
+
+**Probe:** $\\alpha = 315°$: $\\cos 315° = \\sqrt 2/2 > 0$; $\\sin = -\\sqrt 2/2 < 0$; $\\tan = -1 < 0$.
+
+**Typischer Fehler:** Mit Q1 verwechseln.`,
+        [
+          'Q4 = C in ASTC.',
+          '$x > 0$: Kosinus positiv.',
+          '$y < 0$: Sinus negativ.',
+        ],
+        {
+          1: 'Sinus in Q4 negativ.',
+          2: 'Tangens in Q4 negativ.',
+          3: 'Alle drei wäre nur Q1.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['astc-vollstaendig'] },
+      ),
+    ],
+
+    // ── [2] Referenzwinkel zur x-Achse ────────────────────────────────────
+    2: [
+      tf(
+        'Der Referenzwinkel wird immer zur nächsten $x$-Achse (bei $0°$ oder $180°$) gemessen, nicht zur $y$-Achse.',
+        true,
+        `**Ansatz:** Konvention: Referenzwinkel zur $x$-Achse.
+
+**Rechnung:** Q1: Abstand zu $0°$. Q2: Abstand zu $180°$. Q3: Abstand zu $180°$. Q4: Abstand zu $360°$.
+
+**Probe:** Referenzwinkel $\\in [0°, 90°]$.
+
+**Typischer Fehler:** Abstand zur $y$-Achse nehmen → ergibt $|90° - \\alpha|$-Werte.`,
+        [
+          'x-Achse, nicht y.',
+          'Nächste Hälfte.',
+          'Immer spitzer Winkel.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['referenzwinkel-def'] },
+      ),
+      mc(
+        'Welcher Referenzwinkel gehört zu $\\alpha = 230°$?',
+        ['$50°$', '$40°$', '$130°$', '$-130°$'],
+        0,
+        `**Ansatz:** Q3 → Abstand zu $180°$: $230° - 180° = 50°$.
+
+**Rechnung:** $50°$.
+
+**Probe:** $\\sin 230° = -\\sin 50°$, $\\cos 230° = -\\cos 50°$ ✓.
+
+**Typischer Fehler:** $360° - 230° = 130°$ → nicht spitz.`,
+        [
+          'Q3: Abstand zu $180°$.',
+          '$230 - 180 = ?$',
+          'Spitzer Winkel.',
+        ],
+        {
+          1: '$40° = 360° - 320°$ oder $90° - 50°$ — passt nicht.',
+          2: '$130°$ ist nicht spitz.',
+          3: 'Negative Werte bei Referenzwinkeln ausgeschlossen.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['referenzwinkel-def'] },
+      ),
+      ni(
+        'Bestimme den Referenzwinkel zu $\\alpha = 300°$ (in Grad).',
+        60, 0, '°',
+        `**Ansatz:** Q4: Abstand zu $360°$.
+
+**Rechnung:** $360° - 300° = 60°$.
+
+**Probe:** $\\cos 300° = +\\cos 60° = 0{,}5$, $\\sin 300° = -\\sin 60°$ ✓.
+
+**Typischer Fehler:** $300° - 180° = 120°$ rechnen (falsche Achse).`,
+        [
+          'Q4: Abstand zu $360°$.',
+          '$360 - 300 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['referenzwinkel-def'] },
+      ),
+      mc(
+        'Ein Schüler berechnet den Referenzwinkel zu $\\alpha = 120°$ als $120° - 90° = 30°$. Wo liegt der Fehler?',
+        [
+          'Referenzwinkel werden zur $x$-Achse gemessen ($0°$ oder $180°$), nicht zur $y$-Achse ($90°$). Korrekt: $180° - 120° = 60°$.',
+          'Die Rechnung stimmt.',
+          'Er müsste $120°$ direkt nehmen.',
+          '$30°$ ist zwar falsch, aber nicht weit von $60°$.',
+        ],
+        0,
+        `**Ansatz:** $x$-Achse als Bezugslinie.
+
+**Rechnung:** Q2 (da $90° < 120° < 180°$): $180° - 120° = 60°$.
+
+**Probe:** $\\sin 120° = \\sin 60° = \\sqrt 3/2$; Schüler-Ref $30°$ → $\\sin 30° = 0{,}5 \\neq \\sqrt 3/2$.
+
+**Typischer Fehler:** Klassischer Fall — Bezugsachse falsch.`,
+        [
+          'x-Achse, nicht y.',
+          'Q2 → zu $180°$.',
+          '$180° - 120° = ?$',
+        ],
+        {
+          1: 'Die Bezugslinie ist falsch.',
+          2: 'Referenzwinkel muss $\\leq 90°$ sein.',
+          3: 'Die $30°$ vs. $60°$ sind qualitativ verschieden.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['referenzwinkel-def'] },
+      ),
+      matching(
+        'Ordne jedem Winkel seinen Referenzwinkel zu.',
+        [
+          { left: '$75°$',   right: '$75°$' },
+          { left: '$165°$',  right: '$15°$' },
+          { left: '$200°$',  right: '$20°$' },
+          { left: '$340°$',  right: '$20°$' },
+        ],
+        `**Ansatz:** Je nach Quadrant: Q1 direkt; Q2: $180°-\\alpha$; Q3: $\\alpha-180°$; Q4: $360°-\\alpha$.
+
+**Rechnung:** $75° \\in$ Q1 → $75°$. $165° \\in$ Q2 → $180-165=15°$. $200° \\in$ Q3 → $200-180=20°$. $340° \\in$ Q4 → $360-340=20°$.
+
+**Probe:** Alle $\\in [0°, 90°]$.
+
+**Typischer Fehler:** Quadrant falsch identifizieren.`,
+        [
+          'Quadrant zuerst.',
+          'Formel pro Quadrant.',
+          'Immer spitzer Winkel.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['referenzwinkel-def'] },
+      ),
+    ],
+
+    // ── [3] 4-Schritt-Verfahren: Quadrant → Referenz → Grundwert → Vorzeichen ─
+    3: [
+      tf(
+        'Das Standard-Verfahren zur Berechnung von $\\sin\\alpha$ für $\\alpha \\notin [0°, 90°]$ lautet: Quadrant bestimmen → Referenzwinkel bilden → Q1-Grundwert nachschlagen → Vorzeichen aus ASTC ergänzen.',
+        true,
+        `**Ansatz:** Vier-Schritt-Verfahren reduziert jeden Winkel auf $[0°, 90°]$ + Vorzeichen.
+
+**Rechnung:** Beispiel $\\sin 210°$: Q3 → Ref $30°$ → $\\sin 30° = 1/2$ → in Q3 $\\sin < 0$ → $-1/2$.
+
+**Probe:** $\\sin 210° = -0{,}5$ per Tabelle ✓.
+
+**Typischer Fehler:** Nur 2-3 Schritte durchziehen (Vorzeichen oder Quadrant vergessen).`,
+        [
+          'Vier Schritte.',
+          'Quadrant zuerst, Vorzeichen zuletzt.',
+          'Dazwischen: Referenzwinkel + Q1-Wert.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['vier-schritt-reduktion'] },
+      ),
+      mc(
+        'Wende das 4-Schritt-Verfahren an: $\\cos 240°$ ist …',
+        ['$-1/2$', '$+1/2$', '$-\\sqrt{3}/2$', '$+\\sqrt{3}/2$'],
+        0,
+        `**Ansatz:** Quadrant $\\to$ Referenz $\\to$ Grundwert $\\to$ Vorzeichen.
+
+**Rechnung:** 1. Q3. 2. Ref = $240-180 = 60°$. 3. $\\cos 60° = 1/2$. 4. Q3 → $\\cos < 0$ → $-1/2$.
+
+**Probe:** Direkt: $\\cos 240° = -1/2$ ✓.
+
+**Typischer Fehler:** Q3 als $\\tan$-Quadrant verwechseln → Vorzeichen falsch.`,
+        [
+          'Schritt 1: Q3.',
+          'Schritt 2: Ref = $60°$.',
+          'Schritt 3 + 4.',
+        ],
+        {
+          1: 'Vorzeichen vergessen.',
+          2: '$\\sqrt 3/2$ ist $\\cos 30°$ oder $\\sin 60°$.',
+          3: 'Positives $\\sqrt 3/2$ wäre Q1.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['vier-schritt-reduktion'] },
+      ),
+      ni(
+        'Berechne $\\sin 150°$ per 4-Schritt-Verfahren. (3 NK)',
+        0.5, 0.01, '',
+        `**Ansatz:** 1. Q2. 2. Ref $= 180°-150° = 30°$. 3. $\\sin 30° = 0{,}5$. 4. Q2: $\\sin > 0$ → $+0{,}5$.
+
+**Rechnung:** $\\sin 150° = 0{,}5$.
+
+**Probe:** Supplementformel: $\\sin(180°-\\alpha) = \\sin\\alpha$ ✓.
+
+**Typischer Fehler:** Vorzeichen kippen.`,
+        [
+          'Q2.',
+          'Ref = $30°$.',
+          'Sinus positiv in Q2.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['vier-schritt-reduktion'] },
+      ),
+      mc(
+        'Ein Schüler berechnet $\\cos 200°$: 1. Q3. 2. Ref = $200° - 90° = 110°$. Wo liegt der Fehler?',
+        [
+          'Im Schritt 2: Referenzwinkel wird zur $x$-Achse (bei $180°$), nicht zur $y$-Achse (bei $90°$) gemessen. Korrekt: Ref $= 200° - 180° = 20°$.',
+          'Die Rechnung stimmt.',
+          'Er müsste $360° - 200° = 160°$ nehmen.',
+          'In Schritt 1: $200°$ ist nicht in Q3.',
+        ],
+        0,
+        `**Ansatz:** Referenzwinkel-Regel.
+
+**Rechnung:** Korrekt: Ref = $20°$, dann $\\cos 20° \\approx 0{,}940$, Q3 → $-0{,}940$.
+
+**Probe:** Ohne korrekten Referenzwinkel ist der ganze Weg falsch.
+
+**Typischer Fehler:** Wiederkehrende Referenzwinkel-Verwechslung.`,
+        [
+          'Schritt 2 genau prüfen.',
+          'x-Achse = Bezugslinie.',
+          'Q3 → zu $180°$.',
+        ],
+        {
+          1: 'Die Rechnung hat in Schritt 2 den Fehler.',
+          2: '$160°$ wäre Q2-Berechnung.',
+          3: '$200° \\in (180°, 270°) = $ Q3 korrekt.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['vier-schritt-reduktion'] },
+      ),
+      sorting(
+        'Bringe die Schritte zur Berechnung von $\\sin 330°$ per 4-Schritt-Verfahren in die richtige Reihenfolge.',
+        [
+          'Quadrant bestimmen: $330° \\in (270°, 360°)$ → Q4',
+          'Referenzwinkel: $360° - 330° = 30°$',
+          'Q1-Grundwert: $\\sin 30° = 1/2$',
+          'Vorzeichen aus ASTC: Q4 → $\\sin < 0$ → $-1/2$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Vier Schritte strikt einhalten.
+
+**Rechnung:** $\\sin 330° = -1/2$.
+
+**Probe:** Direkt: $\\sin(-30°) = -\\sin 30° = -1/2$ ✓.
+
+**Typischer Fehler:** Schritte mischen oder auslassen.`,
+        [
+          'Reihenfolge strikt.',
+          'Erst Quadrant, zuletzt Vorzeichen.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['vier-schritt-reduktion'] },
+      ),
+    ],
+
+    // ── [4] Standardwerte Q1 auswendig, Rest per Reduktion ────────────────
+    4: [
+      tf(
+        'Man muss nur die Q1-Grundwerte $\\sin$/$\\cos$ für $0°, 30°, 45°, 60°, 90°$ auswendig kennen — alle anderen Standardwerte ergeben sich per Reduktion.',
+        true,
+        `**Ansatz:** Ökonomisches Lernen: fünf Q1-Grundwerte + Reduktionsregeln = alle Werte.
+
+**Rechnung:** $\\sin 150° = \\sin(180°-30°) = \\sin 30°$. $\\cos 240° = -\\cos 60°$. Usw.
+
+**Probe:** Methode reicht für alle Standard-Prüfungs-Winkel.
+
+**Typischer Fehler:** Alle Werte einzeln auswendig lernen wollen.`,
+        [
+          '5 Grundwerte statt 20+.',
+          'Reduktion auf Q1.',
+          'Effizient.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['standardwerte-reduktion'] },
+      ),
+      mc(
+        'Berechne $\\cos 300°$ mit dem Reduktions-Ansatz.',
+        ['$1/2$', '$-1/2$', '$\\sqrt{3}/2$', '$-\\sqrt{3}/2$'],
+        0,
+        `**Ansatz:** Q4 → Ref $= 60°$ → $\\cos 60° = 1/2$ → Q4: $\\cos > 0$ → $+1/2$.
+
+**Rechnung:** $\\cos 300° = 1/2$.
+
+**Probe:** Punktspiegelung zu $\\cos 60°$ via $\\cos(-60°) = \\cos 60°$ und $300° = -60° + 360°$ ✓.
+
+**Typischer Fehler:** Vorzeichen kippen.`,
+        [
+          'Q4 → $\\cos > 0$.',
+          'Ref = $60°$.',
+          'Grundwert $\\cos 60°$.',
+        ],
+        {
+          1: 'Q4 hat $\\cos > 0$ — Vorzeichen stimmt nicht.',
+          2: '$\\sqrt 3/2 = \\cos 30°$, nicht $\\cos 60°$.',
+          3: '$-\\sqrt 3/2$ doppelt falsch.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['standardwerte-reduktion'] },
+      ),
+      ni(
+        'Berechne $\\sin 225°$ per Reduktion. (3 NK)',
+        -0.707, 0.01, '',
+        `**Ansatz:** Q3 → Ref $= 45°$ → $\\sin 45° = \\sqrt 2/2$ → Q3: $\\sin < 0$ → $-\\sqrt 2/2 \\approx -0{,}707$.
+
+**Rechnung:** $-0{,}707$.
+
+**Probe:** $\\sin(180°+45°) = -\\sin 45°$ ✓.
+
+**Typischer Fehler:** $\\cos 45°$ statt $\\sin 45°$ ablesen.`,
+        [
+          'Q3.',
+          'Ref $= 45°$.',
+          '$\\sin < 0$.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['standardwerte-reduktion'] },
+      ),
+      mc(
+        'Ein Schüler sagt: „Ich muss $\\sin 210°, \\sin 150°, \\sin 330°$ auswendig lernen." Wo liegt der Fehler?',
+        [
+          'Alle diese Werte lassen sich aus dem Grundwert $\\sin 30° = 1/2$ mit Vorzeichen aus ASTC berechnen. Auswendig lernen ist nicht nötig.',
+          'Er hat recht — keine Reduktion möglich.',
+          '$\\sin 150° \\neq \\sin 30°$.',
+          'ASTC gilt nicht für diese Winkel.',
+        ],
+        0,
+        `**Ansatz:** Reduktion auf Q1-Grundwerte. Alle drei haben Ref $30°$.
+
+**Rechnung:** $\\sin 150° = +\\sin 30° = 1/2$; $\\sin 210° = -\\sin 30° = -1/2$; $\\sin 330° = -\\sin 30° = -1/2$.
+
+**Probe:** Grundwert $\\sin 30° = 1/2$ reicht.
+
+**Typischer Fehler:** Alle Werte separat speichern (unnötig).`,
+        [
+          'Alle haben Ref $30°$.',
+          'Vorzeichen aus Quadrant.',
+          'Reduktion erspart Auswendiglernen.',
+        ],
+        {
+          1: 'Reduktion ist möglich und effizienter.',
+          2: '$\\sin 150° = +\\sin 30°$ (Supplementformel).',
+          3: 'ASTC gilt universell.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['standardwerte-reduktion'] },
+      ),
+      ni(
+        'Berechne $\\cos 150° + \\cos 210°$ per Reduktion. (3 NK)',
+        -1.732, 0.01, '',
+        `**Ansatz:** Beide Q2/Q3 → Ref $= 30°$ → $\\cos 30° = \\sqrt 3/2$. Q2: $\\cos < 0$; Q3: $\\cos < 0$.
+
+**Rechnung:** $-\\sqrt 3/2 - \\sqrt 3/2 = -\\sqrt 3 \\approx -1{,}732$.
+
+**Probe:** Beide in Quadranten mit $\\cos < 0$ → Summe negativ.
+
+**Typischer Fehler:** Vorzeichen inkonsistent anwenden.`,
+        [
+          'Beide Referenzwinkel gleich.',
+          'Q2 und Q3 → $\\cos < 0$.',
+          'Summe $= -\\sqrt 3$.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['standardwerte-reduktion'] },
+      ),
+    ],
+
+    // ── [5] Winkel > 360° oder < 0° per Modulo ───────────────────────────
+    5: [
+      tf(
+        'Jeder Winkel $\\alpha$ lässt sich per $\\alpha \\bmod 360°$ in den Hauptbereich $[0°, 360°)$ reduzieren.',
+        true,
+        `**Ansatz:** $\\sin, \\cos$ sind $360°$-periodisch. Modulo erhält den Funktionswert.
+
+**Rechnung:** $\\alpha \\bmod 360°$: ggf. mehrfach $360°$ addieren oder subtrahieren.
+
+**Probe:** $\\sin(\\alpha + k \\cdot 360°) = \\sin\\alpha$ für jedes $k$.
+
+**Typischer Fehler:** Modulo mit ganzzahliger Division bei negativen Zahlen falsch anwenden.`,
+        [
+          'Periodizität $360°$.',
+          'Modulo-Operation.',
+          'Hauptbereich $[0°, 360°)$.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['winkel-hauptbereich'] },
+      ),
+      mc(
+        'Reduziere $\\alpha = 500°$ in den Hauptbereich $[0°, 360°)$.',
+        ['$140°$', '$360°$', '$-220°$', '$860°$'],
+        0,
+        `**Ansatz:** $500° - 360° = 140° \\in [0°, 360°)$.
+
+**Rechnung:** $140°$.
+
+**Probe:** $\\sin 500° = \\sin 140° ✓$.
+
+**Typischer Fehler:** Zwei Mal $360°$ abziehen oder $360°$ stehenlassen.`,
+        [
+          'Einmal $360°$ abziehen.',
+          '$500 - 360 = ?$',
+          'Hauptbereich offen bei $360°$.',
+        ],
+        {
+          1: '$360°$ gehört nicht mehr zum Hauptbereich $[0°, 360°)$.',
+          2: 'Negativ: $500° - 2 \\cdot 360° = -220°$, aber außerhalb.',
+          3: '$500° + 360° = 860°$, noch weiter außerhalb.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['winkel-hauptbereich'] },
+      ),
+      ni(
+        'Reduziere $-50°$ in $[0°, 360°)$ und gib den Wert in Grad an.',
+        310, 0, '°',
+        `**Ansatz:** $-50° + 360° = 310°$.
+
+**Rechnung:** $310° \\in [0°, 360°)$ ✓.
+
+**Probe:** $\\sin(-50°) = -\\sin 50° = \\sin 310°$ (ASTC Q4: $\\sin < 0$) ✓.
+
+**Typischer Fehler:** $360° + 50° = 410°$ (wieder außerhalb).`,
+        [
+          'Negative Winkel: $+360°$.',
+          '$-50 + 360 = ?$',
+          'Hauptbereich.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['winkel-hauptbereich'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $\\sin 800°$: $800° - 360° = 440°$; dann $\\sin 440° = \\sin(440° - 360°) = \\sin 80°$. Wo ist sein Weg länger als nötig?',
+        [
+          'Er hätte direkt $800° - 2\\cdot 360° = 80°$ rechnen können. Der Zwischenschritt bei $440°$ war unnötig.',
+          'Der Weg ist optimal.',
+          'Er hätte $+360°$ addieren müssen.',
+          'Periodizität gilt nicht für $\\sin$.',
+        ],
+        0,
+        `**Ansatz:** Direkt auf Hauptbereich reduzieren.
+
+**Rechnung:** $800° \\bmod 360° = 800° - 2\\cdot 360° = 80°$.
+
+**Probe:** $\\sin 80° \\approx 0{,}985$ — dasselbe Ergebnis, aber weniger Rechenschritte.
+
+**Typischer Fehler:** Iterativ $360°$ abziehen statt direkt modulo rechnen.`,
+        [
+          'Modulo direkt.',
+          'Wie oft passt $360°$ in $800°$?',
+          '$2 \\cdot 360° = 720°$; $800° - 720° = 80°$.',
+        ],
+        {
+          1: 'Der Weg ist zwar korrekt, aber unnötig schrittweise.',
+          2: '$800° + 360° = 1160°$, weiter weg.',
+          3: 'Periodizität gilt sehr wohl.',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['winkel-hauptbereich'] },
+      ),
+      ni(
+        'Berechne $\\sin(-500°)$ via Modulo + Reduktion. (3 NK)',
+        -0.643, 0.01, '',
+        `**Ansatz:** $-500° + 2 \\cdot 360° = 220°$. Q3 → Ref $40°$ → $\\sin 40° \\approx 0{,}643$. Q3: $\\sin < 0$ → $-0{,}643$.
+
+**Rechnung:** $\\sin(-500°) = \\sin 220° = -\\sin 40° \\approx -0{,}643$.
+
+**Probe:** Alternativer Weg: $\\sin(-500°) = -\\sin 500° = -\\sin 140° = -\\sin 40°$ (Supplementformel).
+
+**Typischer Fehler:** Vorzeichen durchwechseln und verlieren.`,
+        [
+          'Modulo zuerst.',
+          '$-500° + 720° = 220°$.',
+          '4-Schritt-Verfahren.',
+        ],
+        { stage: 'transfer', subGoal: 5, uses: ['winkel-hauptbereich'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // trig-4-1 — Prüfung: Identitäten & Gleichungen  (5 subGoals, [PRÜFUNG])
   // Je 5 Aufgaben = 25 Goal-Tasks
   // ────────────────────────────────────────────────────────────────────────
