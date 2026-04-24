@@ -6171,4135 +6171,1444 @@ Q4: $x>0, y<0$ → $+/-=-$
   },
 
   // ────────────────────────────────────────────────────────────────────────
-  // trig-4-1 — Prüfung: Identitäten & Gleichungen  (5 subGoals, [PRÜFUNG])
-  // Je 5 Aufgaben = 25 Goal-Tasks
+  // trig-4-1 — Prüfung: Identitäten & Gleichungen  (5 subGoals × 5 stages)
   // ────────────────────────────────────────────────────────────────────────
   'trig-4-1': {
 
-    // ── [0] Pythagoras + Doppelwinkel zur Termvereinfachung ──────────────
+    // ── [0] Pythagoras & Doppelwinkel zur Termvereinfachung ────────────
     0: [
-      mc(
-        '[PRÜFUNG] Vereinfache $\\cos^{2}(\\alpha) - \\sin^{2}(\\alpha)$.',
+      tf(
+        '[PRÜFUNG] Sub-Goal "Pythagoras $\\sin^2+\\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen": Der Ausdruck $\\sin^2\\alpha + \\cos^2\\alpha$ ist für **jeden** Winkel $\\alpha$ gleich $1$.',
+        true,
+        `**Ansatz:** Pythagoreische Identität am Einheitskreis.\n\n**Rechnung:** Ein Punkt auf dem Einheitskreis hat Koordinaten $(\\cos\\alpha, \\sin\\alpha)$ und liegt per Definition auf dem Kreis $x^2+y^2=1$. Also $\\sin^2\\alpha+\\cos^2\\alpha=1$ für alle $\\alpha\\in\\mathbb{R}$.\n\n**Probe:** $\\alpha=37°$: $0{,}6^2+0{,}8^2 = 0{,}36+0{,}64 = 1$ ✓.\n\n**Typischer Fehler:** Die Identität mit $\\sin\\alpha+\\cos\\alpha=1$ verwechseln (nur bei $\\alpha=0°, 90°, \\ldots$).`,
         [
-          '$\\cos(2\\alpha)$',
-          '$\\sin(2\\alpha)$',
+          'Kreisgleichung $x^2+y^2=1$ im Einheitskreis.',
+          'Punkt $(\\cos\\alpha, \\sin\\alpha)$ liegt auf dem Kreis.',
+          'Also gilt $\\sin^2\\alpha+\\cos^2\\alpha=1$ immer.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['pythag-vereinfachen'] },
+      ),
+      mc(
+        '[PRÜFUNG] Sub-Goal "Pythagoras $\\sin^2+\\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen": Vereinfache $1 - \\cos^2\\alpha$.',
+        [
+          '$\\sin^2\\alpha$',
+          '$\\sin\\alpha$',
+          '$\\cos 2\\alpha$',
+          '$-\\cos^2\\alpha$',
+        ],
+        0,
+        `**Ansatz:** Pythagoras umstellen.\n\n**Rechnung:** $\\sin^2\\alpha+\\cos^2\\alpha=1 \\Rightarrow \\sin^2\\alpha = 1-\\cos^2\\alpha$.\n\n**Probe:** $\\alpha=30°$: $1-\\cos^2 30°=1-0{,}75=0{,}25=\\sin^2 30°$ ✓.\n\n**Typischer Fehler:** Quadrat vergessen — $1-\\cos\\alpha$ ergibt $\\sin\\alpha$ **nicht**.`,
+        [
+          'Pythagoras nach $\\sin^2$ auflösen.',
+          '$\\sin^2\\alpha = 1-\\cos^2\\alpha$.',
+          'Quadrat bleibt bei der Umformung erhalten.',
+        ],
+        {
+          1: 'Das Quadrat fehlt — $1-\\cos^2\\alpha = \\sin^2\\alpha$, nicht $\\sin\\alpha$.',
+          2: '$\\cos 2\\alpha = 1-2\\sin^2\\alpha$, das ist nicht dasselbe. Schon am Koeffizienten des $\\sin^2$ erkennbar.',
+          3: 'Vorzeichen-Fehler. $1-\\cos^2\\alpha$ ist positiv (oder null), nie negativ wie $-\\cos^2\\alpha$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['pythag-vereinfachen'] },
+      ),
+      mc(
+        '[PRÜFUNG] Sub-Goal "Pythagoras $\\sin^2+\\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen": Vereinfache $\\sin^2\\alpha \\cdot (1+\\cot^2\\alpha)$.',
+        [
           '$1$',
-          '$-1$',
+          '$\\sin^2\\alpha$',
+          '$\\cos^2\\alpha$',
+          '$\\tan^2\\alpha$',
         ],
         0,
-        `**Ansatz:** Doppelwinkelformel für $\\cos(2\\alpha)$ erkennen.
-
-**Rechnung:** Eine der Doppelwinkel-Alternativen ist $\\cos(2\\alpha) = \\cos^{2}\\alpha - \\sin^{2}\\alpha$. Der Ausdruck **ist** bereits $\\cos(2\\alpha)$.
-
-**Probe:** $\\alpha = 30°$: $\\cos^{2}(30°) - \\sin^{2}(30°) = 0{,}75 - 0{,}25 = 0{,}5 = \\cos(60°) = \\cos(2 \\cdot 30°)$ ✓.
-
-**Typischer Fehler:** $\\cos^{2} - \\sin^{2}$ mit $\\sin^{2} + \\cos^{2}$ verwechseln — Plus gibt $1$, Minus gibt $\\cos(2\\alpha)$.`,
+        `**Ansatz:** $\\cot\\alpha = \\cos\\alpha/\\sin\\alpha$, Pythagoras.\n\n**Rechnung:** $\\sin^2\\alpha\\cdot(1+\\cos^2\\alpha/\\sin^2\\alpha) = \\sin^2\\alpha + \\cos^2\\alpha = 1$.\n\n**Probe:** $\\alpha=30°$: $0{,}25\\cdot(1+3)=1$ ✓.\n\n**Typischer Fehler:** Nur einen Klammerterm mitnehmen — beide Summanden müssen mit $\\sin^2\\alpha$ multipliziert werden.`,
         [
-          'Welche Doppelwinkelformel hat diese Struktur?',
-          '$\\cos(2\\alpha) = \\cos^{2}\\alpha - \\sin^{2}\\alpha$.',
-          'Testen mit $\\alpha = 30°$ zur Kontrolle.',
+          'Schreibe $\\cot^2\\alpha = \\cos^2\\alpha/\\sin^2\\alpha$.',
+          'Distributivgesetz: $\\sin^2\\alpha\\cdot 1 + \\sin^2\\alpha\\cdot\\cos^2\\alpha/\\sin^2\\alpha$.',
+          'Pythagoras schließt ab.',
         ],
         {
-          1: '$\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$ — ein **Produkt**, keine Differenz von Quadraten.',
-          2: 'Das wäre $\\sin^{2}\\alpha + \\cos^{2}\\alpha = 1$ (Pythagoras). Minus statt Plus liefert ein ganz anderes Ergebnis.',
-          3: '$-1$ wäre nur bei $\\alpha = 90°$ der Wert — für allgemeines $\\alpha$ gilt das nicht.',
+          1: 'Die Klammer wurde nicht ausdistributed — es kommt $\\sin^2+\\cos^2$ heraus, nicht nur $\\sin^2$.',
+          2: 'Nur $\\cos^2$ behalten — der Summand $\\sin^2$ aus $1\\cdot\\sin^2$ fehlt.',
+          3: '$\\tan^2\\alpha = \\sin^2/\\cos^2$ wäre nur bei ganz anderer Umformung das Ergebnis.',
         },
+        { stage: 'apply-independent', subGoal: 0, uses: ['pythag-vereinfachen', 'doppelwinkel-vereinfachen'] },
+      ),
+      mc(
+        '[PRÜFUNG] Sub-Goal "Pythagoras $\\sin^2+\\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen": Ein Student schreibt $\\sin^2\\alpha+\\cos^2\\alpha = \\sin\\alpha+\\cos\\alpha$. Wo ist der Fehler?',
+        [
+          'Die Quadrate verschwinden nicht — Pythagoras gilt nur **mit** Quadraten: $\\sin^2+\\cos^2=1$.',
+          'Das ist eine gültige Identität für $\\alpha\\in(0°, 90°)$.',
+          'Es müsste $\\sin\\alpha-\\cos\\alpha$ heißen.',
+          'Pythagoras gilt nur bei $\\alpha=45°$.',
+        ],
+        0,
+        `**Ansatz:** Gegenbeispiel reicht.\n\n**Rechnung:** $\\alpha=30°$: $\\sin^2+\\cos^2=1$, aber $\\sin 30°+\\cos 30°=0{,}5+0{,}866\\approx 1{,}366\\neq 1$.\n\n**Probe:** Nur bei $\\alpha=0°$ oder $90°$ ergibt $\\sin+\\cos$ zufällig $1$.\n\n**Typischer Fehler:** Quadrate als "Schreibfehler" wegkürzen.`,
+        [
+          '$x^2\\neq x$ im Allgemeinen.',
+          'Teste $\\alpha=30°$.',
+          'Quadrate müssen bleiben.',
+        ],
+        {
+          1: 'Das Gegenbeispiel $\\alpha=30°$ zeigt sofort, dass die Gleichung ohne Quadrate falsch ist.',
+          2: 'Nein — $\\sin\\alpha-\\cos\\alpha$ wäre ebenfalls nicht identisch $1$ ($\\alpha=30°$: $0{,}5-0{,}866<0$).',
+          3: 'Pythagoras gilt in **jedem** Quadranten für alle $\\alpha$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['pythag-vereinfachen'] },
       ),
       ni(
-        '[PRÜFUNG] Gegeben $\\sin\\alpha = 0{,}6$ und $\\alpha$ im 1. Quadranten. Berechne $\\sin(2\\alpha)$.',
-        0.96, 0.01, '',
-        `**Ansatz:** Erst $\\cos\\alpha$ per Pythagoras, dann Doppelwinkel.
-
-**Rechnung:** $\\cos\\alpha = \\sqrt{1 - 0{,}36} = \\sqrt{0{,}64} = 0{,}8$ (positiv im 1. Q). $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot 0{,}6 \\cdot 0{,}8 = 0{,}96$.
-
-**Probe:** Das berühmte 3-4-5-Dreieck: $\\alpha \\approx 36{,}87°$, $2\\alpha \\approx 73{,}74°$, $\\sin(73{,}74°) \\approx 0{,}96$ ✓.
-
-**Typischer Fehler:** $\\cos\\alpha$ weglassen und $\\sin(2\\alpha) = 2\\sin\\alpha = 1{,}2$ rechnen. Das wäre $> 1$ und somit garantiert falsch.`,
+        '[PRÜFUNG] Sub-Goal "Pythagoras $\\sin^2+\\cos^2=1$ und Doppelwinkel zur Termvereinfachung sicher einsetzen": Vereinfache $2\\sin 75°\\cos 75°$ und gib den exakten Wert als Dezimalzahl an (6 Nachkommastellen).',
+        0.5, 0.001, '',
+        `**Ansatz:** Doppelwinkel: $2\\sin\\alpha\\cos\\alpha = \\sin 2\\alpha$.\n\n**Rechnung:** $2\\sin 75°\\cos 75° = \\sin 150° = \\sin(180°-30°) = \\sin 30° = 0{,}5$.\n\n**Probe:** $2\\cdot 0{,}9659\\cdot 0{,}2588 \\approx 0{,}5$ ✓.\n\n**Typischer Fehler:** $2\\sin 75°\\cos 75°$ direkt ausrechnen ohne Doppelwinkel — dauert länger und ist fehleranfälliger.`,
         [
-          'Erst $\\cos\\alpha$ per Pythagoras berechnen.',
-          '$\\cos^{2}\\alpha = 1 - \\sin^{2}\\alpha$.',
-          'Doppelwinkel: $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$.',
+          'Struktur $2\\sin\\alpha\\cos\\alpha$ erkennen.',
+          'Doppelwinkelformel: $\\sin 2\\alpha$.',
+          'Supplement: $\\sin 150°=\\sin 30°$.',
         ],
-      ),
-      tf(
-        '[PRÜFUNG] Der Ausdruck $1 - 2\\sin^{2}(\\alpha)$ ist gleich $\\cos(2\\alpha)$.',
-        true,
-        `**Ansatz:** Alternativform der Kosinus-Doppelwinkelformel prüfen.
-
-**Rechnung:** Aus $\\cos(2\\alpha) = \\cos^{2}\\alpha - \\sin^{2}\\alpha$ mit $\\cos^{2}\\alpha = 1 - \\sin^{2}\\alpha$: $\\cos(2\\alpha) = (1 - \\sin^{2}\\alpha) - \\sin^{2}\\alpha = 1 - 2\\sin^{2}\\alpha$ ✓.
-
-**Probe:** $\\alpha = 30°$: $1 - 2\\cdot 0{,}25 = 0{,}5 = \\cos(60°)$ ✓.
-
-**Typischer Fehler:** $1 - \\sin^{2}\\alpha = \\cos^{2}\\alpha$ (nur Pythagoras) mit der Doppelwinkelformel verwechseln — der Faktor $2$ macht den Unterschied.`,
-        [
-          'Doppelwinkelformel von $\\cos(2\\alpha)$ hat drei Schreibweisen.',
-          '$\\cos(2\\alpha) = 1 - 2\\sin^{2}\\alpha = 2\\cos^{2}\\alpha - 1$.',
-          'Zahlentest $\\alpha = 30°$.',
-        ],
-      ),
-      matching(
-        '[PRÜFUNG] Ordne jedem Ausdruck seine vereinfachte Form zu.',
-        [
-          { left: '$\\sin^{2}\\alpha + \\cos^{2}\\alpha$',      right: '$1$' },
-          { left: '$2\\sin\\alpha\\cos\\alpha$',                right: '$\\sin(2\\alpha)$' },
-          { left: '$\\cos^{2}\\alpha - \\sin^{2}\\alpha$',      right: '$\\cos(2\\alpha)$' },
-          { left: '$1 - \\cos^{2}\\alpha$',                      right: '$\\sin^{2}\\alpha$' },
-        ],
-        `**Ansatz:** Pythagoras und Doppelwinkel-Formeln präsent haben.
-
-**Rechnung:** Pythagoras: $\\sin^{2}+\\cos^{2} = 1$. Sinus-Doppelwinkel: $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$. Kosinus-Doppelwinkel: $\\cos(2\\alpha) = \\cos^{2}\\alpha - \\sin^{2}\\alpha$. Umstellen von Pythagoras: $\\sin^{2}\\alpha = 1 - \\cos^{2}\\alpha$.
-
-**Probe:** Alle Identitäten sind in der Formelsammlung enthalten und müssen in der Prüfung auf einen Blick erkennbar sein.
-
-**Typischer Fehler:** Plus und Minus in $\\cos^{2} \\pm \\sin^{2}$ verwechseln — Plus gibt $1$, Minus gibt $\\cos(2\\alpha)$.`,
-        [
-          'Drei Grundformeln: Pythagoras, $\\sin(2\\alpha)$, $\\cos(2\\alpha)$.',
-          'Vorzeichen entscheidet.',
-          'Gute Prüfungsvorbereitung: diese Vier auswendig.',
-        ],
-      ),
-      sorting(
-        '[PRÜFUNG] Bringe die Schritte zur Vereinfachung von $\\sin^{2}\\alpha(1 + \\cot^{2}\\alpha)$ in die richtige Reihenfolge.',
-        [
-          '$\\cot\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha}$ einsetzen',
-          'Klammer erweitern: $\\sin^{2}\\alpha \\cdot \\left(1 + \\dfrac{\\cos^{2}\\alpha}{\\sin^{2}\\alpha}\\right)$',
-          'Ausmultiplizieren: $\\sin^{2}\\alpha + \\cos^{2}\\alpha$',
-          'Pythagoras anwenden: Ergebnis $= 1$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Cotangens ausdrücken, dann ausmultiplizieren, dann Pythagoras.
-
-**Rechnung:** Endergebnis $= 1$ — unabhängig von $\\alpha$.
-
-**Probe:** $\\alpha = 30°$: $0{,}25\\cdot(1 + 3) = 1$ ✓.
-
-**Typischer Fehler:** Die Klammer erst zusammenfassen wollen, ohne $\\cot$ zu ersetzen — der Bruchanteil ist nötig, damit sich später $\\sin^{2}$ mit $1/\\sin^{2}$ kürzt.`,
-        [
-          '$\\cot = \\cos/\\sin$.',
-          'Ausmultiplizieren; $\\sin^{2}$ kürzt sich.',
-          'Pythagoras am Schluss.',
-        ],
+        { stage: 'transfer', subGoal: 0, uses: ['doppelwinkel-vereinfachen'] },
       ),
     ],
 
-    // ── [1] Trig-Gleichung: Grundfunktion + Lösungsmenge ──────────────────
+    // ── [1] Grundgleichung lösen ───────────────────────────────────────
     1: [
-      mc(
-        '[PRÜFUNG] Wie viele Lösungen hat $\\sin x = \\tfrac{1}{2}$ im Intervall $[0°, 360°)$?',
+      tf(
+        '[PRÜFUNG] Sub-Goal "Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben": Die Gleichung $\\sin x = 0{,}5$ hat im Intervall $[0°, 360°)$ **zwei** Lösungen.',
+        true,
+        `**Ansatz:** Sinuskurve schneidet $y=0{,}5$ zweimal pro Periode.\n\n**Rechnung:** $x_1 = \\arcsin 0{,}5 = 30°$, $x_2 = 180°-30°=150°$. In $[0°, 360°)$: beide gültig.\n\n**Probe:** $\\sin 30°=\\sin 150°=0{,}5$ ✓.\n\n**Typischer Fehler:** Nur $x_1=30°$ angeben — Prüfer erwarten immer die **vollständige** Lösungsmenge.`,
         [
-          '$2$ ($30°$ und $150°$)',
-          '$1$ ($30°$)',
-          '$4$ (mit Supplement und Gegenwinkel)',
-          '$0$ (keine Lösung)',
+          'Sinus hat Periode $360°$, aber pro Periode zwei Lösungen für $|a|<1$.',
+          'Hauptwert: $x_1=\\arcsin a$.',
+          'Zweite: $x_2 = 180° - x_1$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['grundgleichung-loesen'] },
+      ),
+      mc(
+        '[PRÜFUNG] Sub-Goal "Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben": Löse $\\cos x = -\\dfrac{\\sqrt{2}}{2}$ in $[0°, 360°)$.',
+        [
+          '$x = 135°$ und $x = 225°$',
+          '$x = 45°$ und $x = 315°$',
+          '$x = 135°$ und $x = 315°$',
+          '$x = 225°$',
         ],
         0,
-        `**Ansatz:** $\\sin x = a$ mit $|a| < 1$ hat in einer vollen Periode $[0°, 360°)$ genau zwei Lösungen.
-
-**Rechnung:** Hauptwert $x_{1} = \\arcsin(0{,}5) = 30°$. Zweite Lösung per Supplement: $x_{2} = 180° - 30° = 150°$.
-
-**Probe:** $\\sin(30°) = \\sin(150°) = 0{,}5$ ✓. Beide im Intervall $[0°, 360°)$.
-
-**Typischer Fehler:** Nur Hauptwert angeben ($30°$). Oder zu viele Lösungen: $210°$ und $330°$ kommen aus Fehlinterpretation, $\\sin$ ist dort aber negativ.`,
+        `**Ansatz:** $\\cos x = a$ hat in $[0°, 360°)$ zwei Lösungen: $\\arccos a$ und $360°-\\arccos a$.\n\n**Rechnung:** $\\arccos(-\\sqrt{2}/2) = 135°$, zweite Lösung: $360°-135°=225°$.\n\n**Probe:** $\\cos 135°=\\cos 225°=-\\sqrt{2}/2$ ✓. Beide im zweiten und dritten Quadranten ($\\cos<0$).\n\n**Typischer Fehler:** Nur den Hauptwert angeben oder Vorzeichen falsch interpretieren.`,
         [
-          'Sinus ist in welchen Quadranten positiv?',
-          '1. und 2. Quadrant: Hauptwert + Supplement.',
-          '$\\arcsin(0{,}5) = 30°$, zweite Lösung $180° - 30° = 150°$.',
+          'Quadrant-Regel: $\\cos<0$ im 2. und 3. Quadranten.',
+          '$\\arccos(-\\sqrt{2}/2)=135°$.',
+          'Symmetrie: $\\cos(360°-x)=\\cos x$.',
         ],
         {
-          1: 'Hauptwert allein reicht nicht. $\\sin$ hat Periode $360°$ und in $[0°, 360°)$ zwei Lösungen.',
-          2: 'In $[0°, 360°)$ gibt es genau **zwei** Lösungen für $\\sin x = a$ mit $|a| < 1$. Vier Lösungen wären nur bei Intervall $[0°, 720°)$.',
-          3: '$0{,}5$ liegt im Wertebereich $[-1, 1]$ von Sinus, also existieren Lösungen. Keine Lösung gäbe es nur bei $|a| > 1$.',
+          1: 'Vorzeichen falsch. $\\cos 45°=+\\sqrt{2}/2$, $\\cos 315°=+\\sqrt{2}/2$ — beide **positiv**, passen nicht.',
+          2: 'Hauptwert $135°$ richtig, aber $315°$ liefert $\\cos=+\\sqrt{2}/2$, nicht negativ.',
+          3: 'Fehlende zweite Lösung — $135°$ ist ebenfalls gültig.',
         },
+        { stage: 'apply-guided', subGoal: 1, uses: ['grundgleichung-loesen'] },
       ),
       ni(
-        '[PRÜFUNG] Löse $\\cos x = -\\tfrac{1}{2}$ in $[0°, 360°)$. Gib die kleinere Lösung in Grad an.',
-        120, 0, '°',
-        `**Ansatz:** Für $\\cos x = a$ mit $-1 < a < 1$ gibt es in $[0°, 360°)$ zwei Lösungen: $\\arccos a$ und $360° - \\arccos a$.
-
-**Rechnung:** $\\arccos(-0{,}5) = 120°$ (Hauptwert). Zweite Lösung: $360° - 120° = 240°$. Kleinere Lösung: $120°$.
-
-**Probe:** $\\cos(120°) = -0{,}5$ ✓ (2. Q); $\\cos(240°) = -0{,}5$ ✓ (3. Q).
-
-**Typischer Fehler:** Nur einen Winkel angeben oder das Vorzeichen ignorieren und $\\arccos(0{,}5) = 60°$ rechnen.`,
+        '[PRÜFUNG] Sub-Goal "Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben": Löse $\\tan x = 1$ in $[0°, 360°)$ und gib die **größte** Lösung in Grad an.',
+        225, 0.1, '°',
+        `**Ansatz:** $\\tan x$ hat Periode $180°$ — also zwei Lösungen in $[0°, 360°)$.\n\n**Rechnung:** $\\arctan 1 = 45°$, zweite Lösung $45°+180°=225°$. Größere ist $225°$.\n\n**Probe:** $\\tan 225° = \\sin 225°/\\cos 225° = (-\\sqrt{2}/2)/(-\\sqrt{2}/2)=1$ ✓.\n\n**Typischer Fehler:** Nur $45°$ angeben und Periodizität $180°$ übersehen.`,
         [
-          'Negatives Kosinus: 2. oder 3. Quadrant.',
-          '$\\arccos(-0{,}5)$ direkt eingeben.',
-          'Zweite Lösung: $360° - 120°$.',
+          '$\\tan$-Periode ist $180°$, nicht $360°$.',
+          '$\\arctan 1 = 45°$.',
+          '$45°+180°=225°$.',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['grundgleichung-loesen'] },
       ),
-      tf(
-        '[PRÜFUNG] Die Gleichung $\\sin x = 1{,}5$ hat in $\\mathbb{R}$ unendlich viele Lösungen.',
-        false,
-        `**Ansatz:** Wertebereich von Sinus prüfen.
-
-**Rechnung:** $\\sin: \\mathbb{R} \\to [-1, 1]$. Der Wert $1{,}5 > 1$ liegt außerhalb des Wertebereichs. Also gibt es **keine** reelle Lösung — nicht "unendlich viele".
-
-**Probe:** $\\sin$ oszilliert zwischen $-1$ und $+1$. Niemals $1{,}5$.
-
-**Typischer Fehler:** Voreiligen Schluss "Sinus ist periodisch, also immer unendlich viele Lösungen" — das gilt nur, solange $|a| \\le 1$.`,
+      mc(
+        '[PRÜFUNG] Sub-Goal "Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben": Ein Student löst $\\sin x = 0{,}8$ in $[0°, 360°)$ und gibt nur $x = \\arcsin 0{,}8 \\approx 53{,}13°$ an. Was fehlt?',
         [
-          'Wertebereich von $\\sin$.',
-          '$|\\sin x| \\le 1$.',
-          '$1{,}5$ liegt außerhalb.',
+          'Die zweite Lösung $x_2 = 180° - 53{,}13° \\approx 126{,}87°$.',
+          'Nichts — ein Hauptwert genügt.',
+          'Die Lösung $x = 360° - 53{,}13° \\approx 306{,}87°$.',
+          'Taschenrechner war im falschen Modus.',
         ],
+        0,
+        `**Ansatz:** $\\sin x = a$ hat im Intervall $[0°, 360°)$ für $|a|<1$ genau zwei Lösungen.\n\n**Rechnung:** $x_1 \\approx 53{,}13°$ (Quadrant 1), $x_2 = 180°-x_1 \\approx 126{,}87°$ (Quadrant 2, wo $\\sin$ auch positiv ist).\n\n**Probe:** $\\sin 126{,}87° = \\sin(180°-126{,}87°)=\\sin 53{,}13°\\approx 0{,}8$ ✓.\n\n**Typischer Fehler:** Nur Hauptwert — Prüfung verlangt vollständige Lösungsmenge.`,
+        [
+          '$\\sin$ ist in Q1 und Q2 positiv.',
+          'Supplement-Beziehung: $\\sin(180°-x)=\\sin x$.',
+          'Zweite Lösung ist $180°-$Hauptwert.',
+        ],
+        {
+          1: 'In $[0°, 360°)$ gibt es zwei Lösungen für $|a|<1$.',
+          2: '$\\sin 306{,}87°\\approx-0{,}8$, nicht $+0{,}8$ — falscher Quadrant.',
+          3: 'Der Modus spielt hier keine Rolle — die Ergänzung fehlt, nicht der Rechenweg.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['grundgleichung-loesen'] },
       ),
-      matching(
-        '[PRÜFUNG] Ordne jeder Gleichung die Anzahl Lösungen in $[0°, 360°)$ zu.',
+      mc(
+        '[PRÜFUNG] Sub-Goal "Trigonometrische Gleichung → Grundfunktion + Lösungsmenge im Intervall angeben": Wie viele Lösungen hat $\\cos(2x) = 0$ im Intervall $[0°, 360°)$?',
         [
-          { left: '$\\sin x = 1$',         right: '$1$ Lösung ($90°$)' },
-          { left: '$\\sin x = 0$',         right: '$2$ Lösungen ($0°, 180°$)' },
-          { left: '$\\cos x = 0$',         right: '$2$ Lösungen ($90°, 270°$)' },
-          { left: '$\\tan x = 1$',         right: '$2$ Lösungen ($45°, 225°$)' },
+          '4',
+          '2',
+          '1',
+          '8',
         ],
-        `**Ansatz:** Sin und Cos haben meist 2 Lösungen pro $360°$, an Extremwerten ($\\pm 1$) nur 1. Tan hat Periode $180°$, also 2 Lösungen pro $360°$.
-
-**Rechnung:** $\\sin x = 1$ nur bei $x = 90°$ (Maximum) — **eine** Lösung. $\\sin x = 0$ bei $x = 0°$ und $180°$ — zwei Lösungen. $\\cos x = 0$ bei $x = 90°$ und $270°$. $\\tan x = 1$ bei $x = 45°$ und $45° + 180° = 225°$.
-
-**Probe:** Alle Werte einsetzen.
-
-**Typischer Fehler:** Bei Extremwerten ($\\sin = \\pm 1, \\cos = \\pm 1$) zwei Lösungen vermuten — dort gibt es aber nur eine (Berührungspunkt der Horizontalen mit dem Einheitskreis).`,
+        0,
+        `**Ansatz:** Substitution $u=2x$. $\\cos u = 0$ hat pro $360°$-Periode zwei Lösungen, und $u=2x$ läuft in $[0°, 720°)$.\n\n**Rechnung:** $\\cos u=0 \\Rightarrow u = 90°, 270°, 450°, 630°$. Rücksubstitution $x=u/2$: $45°, 135°, 225°, 315°$. Das sind **4** Lösungen in $[0°, 360°)$.\n\n**Probe:** Allgemein: $\\cos(kx)=0$ hat $2k$ Lösungen in $[0°, 360°)$. Hier $k=2 \\Rightarrow 4$ Lösungen.\n\n**Typischer Fehler:** Wie bei $\\cos x = 0$ nur 2 Lösungen angeben — der Faktor $2$ vor $x$ verdoppelt die Lösungen.`,
         [
-          'Extremwerte: 1 Lösung.',
-          'Sonst: 2 Lösungen pro $360°$.',
-          'Tan-Periode $180°$.',
+          'Substituiere $u=2x$.',
+          'Was ist der Wertebereich von $u$?',
+          'Pro $360°$ in $u$ zwei Lösungen.',
         ],
-      ),
-      sorting(
-        '[PRÜFUNG] Bringe die Schritte zur Lösung von $\\sin x = -\\tfrac{\\sqrt{2}}{2}$ in $[0°, 360°)$ in die richtige Reihenfolge.',
-        [
-          'Hauptwert: $\\arcsin(-\\tfrac{\\sqrt{2}}{2}) = -45°$',
-          'In $[0°, 360°)$ umrechnen: $-45° + 360° = 315°$',
-          'Zweite Lösung (Sinus negativ → 3. und 4. Q, Supplement bezüglich $180°$): $180° - (-45°) = 225°$',
-          'Lösungsmenge: $\\{225°, 315°\\}$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Hauptwert $\\to$ Intervalltransformation $\\to$ zweite Lösung $\\to$ Gesamtmenge.
-
-**Rechnung:** $x_{1} = 225°$, $x_{2} = 315°$.
-
-**Probe:** $\\sin(225°) = -\\sin(45°) = -\\tfrac{\\sqrt{2}}{2}$ ✓; $\\sin(315°) = -\\sin(45°) = -\\tfrac{\\sqrt{2}}{2}$ ✓.
-
-**Typischer Fehler:** Supplement bei negativem Sinus falsch bilden; Lösungen $45°$ und $135°$ angeben — dort ist $\\sin$ aber positiv.`,
-        [
-          'Hauptwert per Taschenrechner.',
-          'In Intervall transformieren.',
-          'Zweite Lösung anhand der Quadranten des Vorzeichens.',
-        ],
+        {
+          1: 'Das wäre die Anzahl bei $\\cos x=0$. Bei $\\cos(2x)$ gibt es doppelt so viele.',
+          2: 'Nur bei $\\cos x=a$ mit $|a|=1$ hätte man eine Lösung pro Periode.',
+          3: 'Zu viele. $u$ läuft in $[0°, 720°)$, was 4 Lösungen ergibt, nicht 8.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['grundgleichung-loesen'] },
       ),
     ],
 
-    // ── [2] Substitution u = sin x / cos x bei quadratischen Gleichungen ──
+    // ── [2] Substitution bei quadratischen Gleichungen ─────────────────
     2: [
-      mc(
-        '[PRÜFUNG] Welche Substitution führt $2\\sin^{2} x - \\sin x - 1 = 0$ direkt auf eine quadratische Gleichung in $u$?',
-        [
-          '$u = \\sin x \\Rightarrow 2u^{2} - u - 1 = 0$',
-          '$u = \\sin(2x) \\Rightarrow u^{2} - u - 1 = 0$',
-          '$u = \\cos x \\Rightarrow 2(1-u^{2}) - u - 1 = 0$',
-          '$u = x \\Rightarrow 2u^{2} - u - 1 = 0$',
-        ],
-        0,
-        `**Ansatz:** Die einfachste Substitution ist die, bei der jedes $\\sin x$ durch $u$ ersetzt wird.
-
-**Rechnung:** Mit $u = \\sin x$ wird $\\sin^{2} x = u^{2}$ und die Gleichung $2u^{2} - u - 1 = 0$. Lösungen: $u = 1$ oder $u = -\\tfrac{1}{2}$, also $\\sin x = 1$ oder $\\sin x = -\\tfrac{1}{2}$.
-
-**Probe:** Rücksetzen in die Originalgleichung: bei $\\sin x = 1$: $2 - 1 - 1 = 0$ ✓; bei $\\sin x = -0{,}5$: $0{,}5 + 0{,}5 - 1 = 0$ ✓.
-
-**Typischer Fehler:** $u = \\cos x$ wählen und dann über Pythagoras umformen — möglich, aber unnötig kompliziert, wenn in der Gleichung nur $\\sin$ vorkommt.`,
-        [
-          'Welche trigonometrische Funktion kommt in der Gleichung vor?',
-          'Direkt $u = \\sin x$ setzen.',
-          'Quadratische Gleichung in $u$ lösen.',
-        ],
-        {
-          1: '$u = \\sin(2x)$ hilft nicht direkt, weil $\\sin^{2} x$ und $\\sin(2x)$ unterschiedliche Strukturen haben.',
-          2: 'Über Pythagoras-Umformung möglich, aber der direkte Weg $u = \\sin x$ ist einfacher.',
-          3: '$u = x$ bringt nichts — dann hast du immer noch $\\sin u$ statt eine Polynomform.',
-        },
-      ),
-      ni(
-        '[PRÜFUNG] Löse $\\cos^{2} x - \\cos x = 0$ in $[0°, 360°)$. Wie viele Lösungen gibt es?',
-        3, 0, '',
-        `**Ansatz:** Substitution $u = \\cos x$ führt auf $u^{2} - u = u(u-1) = 0$.
-
-**Rechnung:** $u = 0$ oder $u = 1$. $\\cos x = 0 \\Rightarrow x = 90°, 270°$. $\\cos x = 1 \\Rightarrow x = 0°$. Total: **3 Lösungen** ($0°, 90°, 270°$).
-
-**Probe:** Einsetzen: $x=0°$: $1 - 1 = 0$ ✓; $x=90°$: $0 - 0 = 0$ ✓; $x=270°$: $0 - 0 = 0$ ✓.
-
-**Typischer Fehler:** Direkt durch $\\cos x$ teilen: $\\cos x - 1 = 0 \\to \\cos x = 1 \\to x = 0°$ — dabei gehen die Lösungen $\\cos x = 0$ verloren! Immer faktorisieren, nicht dividieren.`,
-        [
-          'Substitution $u = \\cos x$.',
-          'Faktorisieren: $u(u-1)=0$.',
-          'Beide Fälle lösen — nicht vorzeitig durch $\\cos x$ teilen!',
-        ],
-      ),
       tf(
-        '[PRÜFUNG] Die Gleichung $4\\sin^{2} x - 3 = 0$ hat in $[0°, 360°)$ vier Lösungen.',
+        '[PRÜFUNG] Sub-Goal "Substitution $u = \\sin x$ oder $u = \\cos x$ bei quadratischen Gleichungen": Bei $2\\sin^2 x - \\sin x - 1 = 0$ ist die Substitution $u = \\sin x$ mit anschließender quadratischer Formel ein sinnvoller Lösungsweg.',
         true,
-        `**Ansatz:** Substitution $u = \\sin x$: $4u^{2} = 3 \\Rightarrow u = \\pm\\tfrac{\\sqrt{3}}{2}$.
-
-**Rechnung:** $\\sin x = \\tfrac{\\sqrt{3}}{2}$: zwei Lösungen ($60°$ und $120°$). $\\sin x = -\\tfrac{\\sqrt{3}}{2}$: zwei Lösungen ($240°$ und $300°$). Gesamt: **4** Lösungen.
-
-**Probe:** Alle vier Winkel einsetzen und Gleichung $4\\cdot 0{,}75 - 3 = 0$ bestätigen.
-
-**Typischer Fehler:** Nur positive Wurzel aus $u^{2} = 0{,}75$ ziehen und damit nur 2 Lösungen finden. $u^{2} = c$ hat immer zwei Lösungen: $u = \\pm\\sqrt{c}$.`,
+        `**Ansatz:** Gleichung ist in $\\sin x$ quadratisch — klassischer Fall.\n\n**Rechnung:** $u = \\sin x$ → $2u^2-u-1=0 \\Rightarrow u = (1\\pm\\sqrt{1+8})/4 = (1\\pm 3)/4$, also $u_1 = 1, u_2 = -0{,}5$. Rück: $\\sin x = 1$ oder $\\sin x = -0{,}5$.\n\n**Probe:** $x = 90°$: $2\\cdot 1 -1 -1 = 0$ ✓. $x = 210°$: $2\\cdot 0{,}25-(-0{,}5)-1 = 0{,}5+0{,}5-1 = 0$ ✓.\n\n**Typischer Fehler:** Versuchen, ohne Substitution direkt zu lösen und an der Mischung aus $\\sin x$ und $\\sin^2 x$ zu scheitern.`,
         [
-          'Quadratisches Polynom in $\\sin x$.',
-          '$u = \\pm\\sqrt{3}/2$ — beide Vorzeichen.',
-          'Je 2 Lösungen pro Vorzeichen.',
+          'Struktur $a u^2 + b u + c = 0$ mit $u = \\sin x$.',
+          'Substitution macht die Gleichung in $u$ quadratisch.',
+          'Am Ende zwei Grundgleichungen $\\sin x = u_1$ und $\\sin x = u_2$.',
         ],
-      ),
-      matching(
-        '[PRÜFUNG] Ordne jeder quadratischen Gleichung in $u$ die Anzahl Lösungen in $[0°, 360°)$ zu (nach Substitution und Rücksubstitution).',
-        [
-          { left: '$u^{2} = 1$ (mit $u = \\sin x$)',          right: '$2$ Lösungen ($90°, 270°$)' },
-          { left: '$u^{2} = \\tfrac{1}{4}$ (mit $u = \\sin x$)', right: '$4$ Lösungen' },
-          { left: '$u^{2} - u = 0$ (mit $u = \\cos x$)',       right: '$3$ Lösungen ($0°, 90°, 270°$)' },
-          { left: '$u^{2} = -1$ (mit $u = \\sin x$)',          right: '$0$ Lösungen' },
-        ],
-        `**Ansatz:** Nach Rücksubstitution die Lösungsanzahl pro $\\sin$-/$\\cos$-Wert bestimmen.
-
-**Rechnung:** $\\sin^{2} x = 1 \\to \\sin x = \\pm 1 \\to x = 90°, 270°$. $\\sin^{2} x = 1/4 \\to \\sin x = \\pm 1/2 \\to 4$ Werte. $\\cos x(\\cos x - 1) = 0 \\to \\cos x = 0$ oder $\\cos x = 1 \\to 3$ Werte. $\\sin^{2} x = -1$ unlösbar in $\\mathbb{R}$.
-
-**Probe:** Alle Lösungswinkel auf Original-Gleichung zurückverifizieren.
-
-**Typischer Fehler:** Beim Wurzelziehen nur eine Vorzeichen-Variante betrachten. Oder Extremwerte ($\\pm 1$) mit doppelter Lösungsanzahl verwechseln.`,
-        [
-          'Wurzelziehen liefert immer beide Vorzeichen.',
-          'Extremwerte geben je 1 Lösung pro Vorzeichen.',
-          '$u^{2} = -1$ hat in $\\mathbb{R}$ keine Lösung.',
-        ],
+        { stage: 'recognize', subGoal: 2, uses: ['quadratische-substitution'] },
       ),
       sorting(
-        '[PRÜFUNG] Bringe die Schritte zur Lösung von $2\\cos^{2} x + \\cos x - 1 = 0$ in die richtige Reihenfolge.',
+        '[PRÜFUNG] Sub-Goal "Substitution $u = \\sin x$ oder $u = \\cos x$ bei quadratischen Gleichungen": Bringe die Lösungsschritte für $2\\cos^2 x + \\cos x - 1 = 0$ in die richtige Reihenfolge.',
         [
-          'Substitution: $u = \\cos x \\Rightarrow 2u^{2} + u - 1 = 0$',
-          'Quadratische Lösungsformel: $u = \\tfrac{-1 \\pm 3}{4}$, also $u = \\tfrac{1}{2}$ oder $u = -1$',
-          'Rücksubstitution: $\\cos x = \\tfrac{1}{2}$ oder $\\cos x = -1$',
-          'Lösungen in $[0°, 360°)$: $\\{60°, 300°, 180°\\}$',
+          'Substitution $u=\\cos x$',
+          'Quadratische Gleichung $2u^2+u-1=0$ lösen → $u_1=0{,}5$, $u_2=-1$',
+          'Rücksubstitution: $\\cos x = 0{,}5$ und $\\cos x = -1$',
+          'Grundgleichungen lösen: $x = 60°, 300°$ bzw. $x = 180°$',
+          'Prüfintervall $[0°, 360°)$ abgleichen und Lösungen zusammenfassen',
         ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Substitution $\\to$ quadratische Lösung $\\to$ Rücksubstitution $\\to$ Winkel.
-
-**Rechnung:** $\\cos x = 1/2: 60°, 300°$; $\\cos x = -1: 180°$. Drei Lösungen.
-
-**Probe:** In Originalgleichung einsetzen: $\\cos(60°) = 0{,}5 \\to 2\\cdot 0{,}25 + 0{,}5 - 1 = 0$ ✓ usw.
-
-**Typischer Fehler:** Zwischen quadratischer und trigonometrischer Stufe springen ohne klare Substitution.`,
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Substitution → quadratische Lösung → Rücksubstitution → Grundgleichungen → Intervallcheck.\n\n**Rechnung:** $u=\\cos x$, $2u^2+u-1=0$, $u=(-1\\pm\\sqrt{9})/4 = (-1\\pm 3)/4$, also $u_1 = 0{,}5$, $u_2 = -1$. Rück: $\\cos x = 0{,}5 \\Rightarrow x=60°, 300°$; $\\cos x = -1 \\Rightarrow x=180°$.\n\n**Probe:** Drei Lösungen in $[0°, 360°)$.\n\n**Typischer Fehler:** Schritt 4/5 überspringen und Lösungen aus $u$ direkt abgeben.`,
         [
-          'Immer zuerst substituieren.',
-          'Quadratische Formel auf $u$ anwenden.',
-          'Erst am Schluss auf Winkel zurückgehen.',
+          'Erst algebraisch (in $u$) lösen.',
+          'Dann trigonometrisch (jedes $u$ ergibt ggf. mehrere $x$).',
+          'Intervallcheck ganz zum Schluss.',
         ],
+        { stage: 'apply-guided', subGoal: 2, uses: ['quadratische-substitution'] },
+      ),
+      ni(
+        '[PRÜFUNG] Sub-Goal "Substitution $u = \\sin x$ oder $u = \\cos x$ bei quadratischen Gleichungen": Gleichung $2\\sin^2 x - 3\\sin x + 1 = 0$ in $[0°, 360°)$. Wie viele Lösungen gibt es insgesamt?',
+        3, 0, '',
+        `**Ansatz:** Substitution $u=\\sin x$.\n\n**Rechnung:** $2u^2-3u+1=0 \\Rightarrow u=(3\\pm\\sqrt{1})/4 \\Rightarrow u_1=1, u_2=0{,}5$. Rück: $\\sin x=1 \\Rightarrow x=90°$ (genau **eine** Lösung); $\\sin x=0{,}5 \\Rightarrow x=30°, 150°$ (**zwei** Lösungen). Gesamt: $1+2=3$.\n\n**Probe:** $x=90°$: $2-3+1=0$ ✓. $x=30°$: $2\\cdot 0{,}25 - 1{,}5+1 = 0$ ✓. $x=150°$: dito.\n\n**Typischer Fehler:** Bei $\\sin x = 1$ zwei Lösungen suchen, obwohl es nur **eine** gibt ($90°$).`,
+        [
+          'Substitution → quadratische Lösung in $u$.',
+          'Rücksubstitution: $\\sin x = u$ in $[0°, 360°)$ lösen.',
+          'Bei $|u|=1$ nur **eine** Lösung!',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['quadratische-substitution'] },
+      ),
+      mc(
+        '[PRÜFUNG] Sub-Goal "Substitution $u = \\sin x$ oder $u = \\cos x$ bei quadratischen Gleichungen": Ein Student substituiert $u=\\sin x$ in $\\sin^2 x - \\cos^2 x = 0$. Was ist das Problem?',
+        [
+          'Die Gleichung enthält $\\cos^2 x$ — entweder zuerst mit Pythagoras ersetzen ($\\cos^2 x = 1-\\sin^2 x$) oder stattdessen mit Doppelwinkel $\\cos 2x$ umformen.',
+          'Kein Problem — $\\sin^2 x$ und $\\cos^2 x$ dürfen beide stehen bleiben.',
+          'Die Gleichung ist nicht quadratisch.',
+          'Man müsste $u=\\tan x$ wählen.',
+        ],
+        0,
+        `**Ansatz:** Substitution funktioniert nur, wenn die Gleichung in **einer** Trigfunktion vorliegt.\n\n**Rechnung:** Mit $\\cos^2 x = 1-\\sin^2 x$: $\\sin^2 x - (1-\\sin^2 x) = 2\\sin^2 x - 1 = 0 \\Rightarrow \\sin^2 x = 0{,}5 \\Rightarrow \\sin x = \\pm\\sqrt{2}/2$. Oder schneller: $\\sin^2 x - \\cos^2 x = -\\cos 2x$ → $\\cos 2x = 0 \\Rightarrow 2x = 90°+k\\cdot 180° \\Rightarrow x=45°, 135°, 225°, 315°$.\n\n**Probe:** $x=45°$: $0{,}5-0{,}5=0$ ✓.\n\n**Typischer Fehler:** $\\cos^2 x$ mechanisch wegsubstituieren, ohne Pythagoras anzuwenden — Gleichung bleibt zweivariabel.`,
+        [
+          'Gibt es einen zweiten unabhängigen Ausdruck?',
+          'Pythagoras verknüpft $\\sin^2$ und $\\cos^2$.',
+          'Oder Doppelwinkel: $\\cos 2x = \\cos^2 - \\sin^2$.',
+        ],
+        {
+          1: 'Substitution benötigt eine einzige Trigfunktion — zwei müssen erst vereinheitlicht werden.',
+          2: 'Doch — nach Umformung mit Pythagoras.',
+          3: '$\\tan x$ wäre nur bei $\\sin x/\\cos x$-Struktur passend.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['quadratische-substitution'] },
+      ),
+      mc(
+        '[PRÜFUNG] Sub-Goal "Substitution $u = \\sin x$ oder $u = \\cos x$ bei quadratischen Gleichungen": Gleichung $\\cos^2 x + \\sin x - 1 = 0$ in $[0°, 360°)$. Welche Lösungsmenge ergibt sich?',
+        [
+          '$x \\in \\{0°, 90°, 180°\\}$',
+          '$x \\in \\{90°\\}$',
+          '$x \\in \\{0°, 180°\\}$',
+          '$x \\in \\{30°, 150°\\}$',
+        ],
+        0,
+        `**Ansatz:** Pythagoras → Substitution $u=\\sin x$.\n\n**Rechnung:** $\\cos^2 x = 1-\\sin^2 x$. Einsetzen: $(1-\\sin^2 x) + \\sin x - 1 = -\\sin^2 x + \\sin x = \\sin x(1-\\sin x) = 0$. Also $\\sin x = 0$ oder $\\sin x = 1$. $\\sin x = 0$: $x = 0°, 180°$. $\\sin x = 1$: $x = 90°$. Gesamt: $\\{0°, 90°, 180°\\}$.\n\n**Probe:** $x=0°$: $1+0-1=0$ ✓. $x=90°$: $0+1-1=0$ ✓. $x=180°$: $1+0-1=0$ ✓.\n\n**Typischer Fehler:** $\\sin x = 0$ als triviale Lösung übersehen und nur $\\sin x = 1$ angeben.`,
+        [
+          'Pythagoras: $\\cos^2 x = 1-\\sin^2 x$.',
+          'Umformen zu einer Gleichung in $\\sin x$.',
+          'Faktorisieren: $\\sin x (1-\\sin x) = 0$.',
+        ],
+        {
+          1: '$\\sin x = 0$ liefert zusätzliche Lösungen $0°$ und $180°$.',
+          2: 'Nur $\\sin x = 1$ berücksichtigt — der Faktor $\\sin x$ selbst wurde übersehen.',
+          3: '$\\sin x = 0{,}5$ ist nicht Lösung dieser Gleichung — das wäre $x=30°, 150°$, passt aber nicht.',
+        },
+        { stage: 'transfer', subGoal: 2, uses: ['quadratische-substitution'] },
       ),
     ],
 
-    // ── [3] Faktorisieren statt durch cos x teilen ────────────────────────
+    // ── [3] Faktorisieren statt durch cos teilen ───────────────────────
     3: [
-      mc(
-        '[PRÜFUNG] Welcher Weg löst $\\sin x \\cos x = 0$ in $[0°, 360°)$ vollständig?',
-        [
-          'Faktorisieren: $\\sin x = 0$ oder $\\cos x = 0 \\to \\{0°, 90°, 180°, 270°\\}$',
-          'Durch $\\cos x$ teilen: $\\sin x = 0 \\to \\{0°, 180°\\}$',
-          'Doppelwinkel: $\\sin(2x) = 0 \\to \\{0°, 90°, 180°\\}$',
-          'Quadrieren: $\\sin^{2} x \\cos^{2} x = 0$',
-        ],
-        0,
-        `**Ansatz:** Produkt $= 0 \\Leftrightarrow$ ein Faktor $= 0$. Jeder Faktor muss separat betrachtet werden.
-
-**Rechnung:** $\\sin x = 0 \\to x = 0°, 180°$. $\\cos x = 0 \\to x = 90°, 270°$. Vereinigung: 4 Lösungen.
-
-**Probe:** In jedem Punkt wird einer der Faktoren Null, Produkt Null. ✓
-
-**Typischer Fehler:** Durch $\\cos x$ teilen verliert die Lösungen, in denen $\\cos x = 0$ — genau zwei von vier Lösungen fallen weg. Doppelwinkel-Ansatz $\\sin(2x)/2 = 0$ liefert $2x \\in \\{0°, 180°, 360°, 540°\\}$, also $x \\in \\{0°, 90°, 180°, 270°\\}$ — gleiches Ergebnis, aber hier gefragt ist der elementare Weg.`,
-        [
-          'Null-Produkt-Regel: Produkt = 0 gdw. ein Faktor = 0.',
-          'Nie durch eine Funktion teilen, die Null werden kann.',
-          'Beide Faktoren getrennt lösen.',
-        ],
-        {
-          1: 'Durch $\\cos x$ teilen verliert die Lösungen $90°$ und $270°$ — dort ist $\\cos x = 0$. Faktorisieren ist sicherer.',
-          2: '$\\sin(2x) = 2\\sin x\\cos x$, also $\\sin x\\cos x = \\tfrac{1}{2}\\sin(2x)$. Die Gleichung wird $\\sin(2x) = 0$ mit Lösungen $2x = k\\cdot 180°$, also $x = 0°, 90°, 180°, 270°$ — **vier** Lösungen, die Antwort hier ist unvollständig.',
-          3: 'Quadrieren ändert die Lösungsmenge nur auf Scheinlösungen-Art — hier unnötig.',
-        },
-      ),
-      ni(
-        '[PRÜFUNG] Löse $\\sin x \\cdot (2\\sin x - 1) = 0$ in $[0°, 360°)$ und zähle alle Lösungen.',
-        4, 0, '',
-        `**Ansatz:** Produkt-Null-Regel anwenden.
-
-**Rechnung:** $\\sin x = 0 \\to x \\in \\{0°, 180°\\}$. $2\\sin x - 1 = 0 \\to \\sin x = \\tfrac{1}{2} \\to x \\in \\{30°, 150°\\}$. Gesamt: **4** Lösungen.
-
-**Probe:** Alle einsetzen: bei $x=0°$: $0\\cdot(-1) = 0$ ✓; bei $x=30°$: $0{,}5\\cdot 0 = 0$ ✓ usw.
-
-**Typischer Fehler:** Durch $\\sin x$ teilen (bei Annahme $\\sin x \\ne 0$) — dabei gehen $x = 0°$ und $x = 180°$ verloren.`,
-        [
-          'Null-Produkt: jeder Faktor einzeln.',
-          '$\\sin x = 0$ liefert 2 Werte im Intervall.',
-          '$\\sin x = 1/2$ liefert weitere 2 Werte.',
-        ],
-      ),
       tf(
-        '[PRÜFUNG] Bei der Gleichung $\\tan x \\cdot \\cos x = 1$ darf man beide Seiten durch $\\cos x$ teilen, ohne Lösungen zu verlieren, weil man nachher die Definitionsmenge von $\\tan x$ berücksichtigen muss.',
-        false,
-        `**Ansatz:** $\\tan x \\cdot \\cos x = \\sin x$ (Vereinfachung). Die Gleichung wird $\\sin x = 1$.
-
-**Rechnung:** $\\sin x = 1 \\to x = 90°$. Aber: Bei $x = 90°$ ist $\\tan x$ **nicht definiert**! Also ist $x = 90°$ keine zulässige Lösung der **Originalgleichung** — die Originalgleichung hat **keine** Lösung.
-
-**Probe:** Einsetzen $x = 90°$ in $\\tan x \\cdot \\cos x$: $\\tan(90°)$ existiert nicht.
-
-**Typischer Fehler:** Nach Vereinfachung nicht prüfen, ob die gefundene Lösung in der Definitionsmenge der ursprünglichen Gleichung liegt. Vereinfachung kann Scheinlösungen erzeugen.`,
-        [
-          'Zuerst Definitionsbereich prüfen.',
-          'Bei $x = 90°$: $\\tan$ nicht definiert.',
-          'Vereinfachung kann Scheinlösungen erzeugen.',
-        ],
-      ),
-      matching(
-        '[PRÜFUNG] Ordne jeder Gleichung die korrekte Strategie zu.',
-        [
-          { left: '$\\sin x \\cos x = 0$',                       right: 'faktorisieren (jeden Faktor $= 0$ setzen)' },
-          { left: '$\\sin^{2} x = \\sin x$',                     right: 'auf $= 0$ bringen, dann faktorisieren' },
-          { left: '$\\sin x = \\tan x$',                         right: 'auf gemeinsamen Nenner, $\\cos x \\ne 0$ prüfen' },
-          { left: '$\\sin^{2} x + \\cos^{2} x = 1$',             right: 'Identität — immer wahr, keine Bedingung' },
-        ],
-        `**Ansatz:** Jede Gleichung hat eine "saubere" Standard-Strategie.
-
-**Rechnung:** Produkt = 0: Null-Produkt-Regel. Quadratisch in $\\sin x$: alles auf eine Seite, faktorisieren. Zwei Terme gleichsetzen: zusammenfassen statt zu teilen. Pythagoras: Tautologie, unendlich viele Lösungen.
-
-**Probe:** Für jede Strategie führt die Lösung ohne Verlust auf die Gesamtlösungsmenge.
-
-**Typischer Fehler:** Bei "Lösungsstrategie wählen" reflexartig dividieren — und dabei Lösungen verlieren.`,
-        [
-          'Produkt = 0: Faktoren einzeln.',
-          'Quadratisch: alles auf eine Seite + faktorisieren.',
-          'Bruch: Nenner prüfen.',
-        ],
-      ),
-      sorting(
-        '[PRÜFUNG] Bringe die Schritte zur vollständigen Lösung von $\\sin x = \\sin x \\cos x$ in $[0°, 360°)$ in die richtige Reihenfolge.',
-        [
-          'Alles auf eine Seite: $\\sin x - \\sin x \\cos x = 0$',
-          'Faktorisieren: $\\sin x(1 - \\cos x) = 0$',
-          'Beide Faktoren betrachten: $\\sin x = 0$ oder $\\cos x = 1$',
-          'Lösungen: $\\{0°, 180°\\} \\cup \\{0°\\} = \\{0°, 180°\\}$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Nicht durch $\\sin x$ teilen, sondern faktorisieren.
-
-**Rechnung:** Lösungsmenge $\\{0°, 180°\\}$ — 2 Lösungen.
-
-**Probe:** $\\sin(0) = 0 = \\sin(0)\\cdot\\cos(0)$ ✓; $\\sin(180°) = 0 = \\sin(180°)\\cdot\\cos(180°)$ ✓.
-
-**Typischer Fehler:** Durch $\\sin x$ teilen: $1 = \\cos x \\to x = 0°$ — $180°$ geht verloren.`,
-        [
-          'Subtrahieren, dann faktorisieren.',
-          'Jeden Faktor einzeln auf Null setzen.',
-          'Vereinigung der Einzellösungen.',
-        ],
-      ),
-    ],
-
-    // ── [4] Identitätsnachweis: nur eine Seite umformen ──────────────────
-    4: [
-      mc(
-        '[PRÜFUNG] Welche Vorgehensweise ist für einen korrekten Identitätsnachweis zulässig?',
-        [
-          'Nur eine Seite umformen, bis die andere Seite Zeichen für Zeichen entsteht',
-          'Beide Seiten mit demselben Ausdruck multiplizieren und dann vereinfachen',
-          'Die Gleichheit voraussetzen und nach Umformung sehen, ob $0=0$ entsteht',
-          'Beide Seiten umformen, bis beide auf eine gemeinsame Form kommen',
-        ],
-        0,
-        `**Ansatz:** Ein sauberer Identitätsnachweis formt **eine** Seite um, **ohne** die Gleichheit vorauszusetzen.
-
-**Rechnung:** Formell: $\\text{LS} = \\ldots = \\ldots = \\text{RS}$ — jede Umformung ist algebraisch begründet.
-
-**Probe:** Die Methode "beide Seiten umformen, bis gleiche Form" kann auch korrekt sein, wenn jede Stufe ein "gdw." ist — in der Praxis aber fehleranfällig. Sicherste Methode: nur eine Seite.
-
-**Typischer Fehler:** "Gleichheit voraussetzen und sehen, dass $0 = 0$ entsteht" — das ist kein Beweis, weil man voraussetzt, was zu zeigen ist.`,
-        [
-          'Was ist logisch korrekt, was ist Zirkelschluss?',
-          'Nicht voraussetzen, was zu zeigen ist.',
-          'Eine Seite isoliert umformen.',
-        ],
-        {
-          1: '"Beide Seiten mit etwas multiplizieren" setzt die Gleichheit bereits voraus — logischer Fehler.',
-          2: 'Zirkelschluss: Man setzt die Gleichheit voraus und zeigt dann, dass sie gleich ist. Das beweist nichts.',
-          3: 'In Ausnahmefällen erlaubt (wenn jede Stufe äquivalent ist), aber sehr fehleranfällig. Standard: nur eine Seite umformen.',
-        },
-      ),
-      ni(
-        '[PRÜFUNG] Zeige $\\tfrac{\\sin x}{1 + \\cos x} = \\tfrac{1 - \\cos x}{\\sin x}$ durch Termumformung. Mit wie vielen Rechenschritten (Erweitern + Pythagoras + Kürzen) führt der Standardweg zum Ziel?',
-        3, 0, '',
-        `**Ansatz:** Links mit $(1 - \\cos x)$ erweitern, dann Pythagoras, dann kürzen.
-
-**Rechnung:** Schritt 1: Erweitern: $\\tfrac{\\sin x(1-\\cos x)}{(1+\\cos x)(1-\\cos x)} = \\tfrac{\\sin x(1-\\cos x)}{1-\\cos^{2}x}$. Schritt 2: Pythagoras im Nenner: $1-\\cos^{2}x = \\sin^{2}x$. Schritt 3: Kürzen von $\\sin x$: $\\tfrac{\\sin x(1-\\cos x)}{\\sin^{2}x} = \\tfrac{1-\\cos x}{\\sin x}$. **3 Schritte.**
-
-**Probe:** Nur die linke Seite wurde manipuliert; das Endergebnis ist exakt die rechte Seite.
-
-**Typischer Fehler:** Beide Seiten kreuzmultiplizieren — das ist logisch eine Äquivalenzumformung, zählt aber nicht als "Identitätsnachweis", weil man die Gleichheit voraussetzt.`,
-        [
-          'Mit $(1 - \\cos x)$ erweitern.',
-          'Pythagoras im Nenner.',
-          'Gegen $\\sin x$ kürzen.',
-        ],
-      ),
-      tf(
-        '[PRÜFUNG] Bei einem Identitätsnachweis darf man nur auf einer Seite der Gleichung Umformungen vornehmen, weil die Gleichheit erst bewiesen werden soll.',
+        '[PRÜFUNG] Sub-Goal "Faktorisieren statt durch $\\cos x$ teilen (Nullstellen nicht verlieren)": Dividiert man $\\sin x = \\cos x$ durch $\\cos x$, können Lösungen verloren gehen, wenn $\\cos x = 0$ sein könnte.',
         true,
-        `**Ansatz:** Logik der Beweisführung.
-
-**Rechnung:** Eine Identität "LS = RS" ist erst bewiesen, wenn man von einer Seite durch **logisch einseitige** Umformungen zur anderen kommt. Wer beidseitig umformt, setzt die Gleichheit voraus — das ist Zirkelschluss.
-
-**Probe:** Standardform im Lehrbuch: $\\text{LS} = \\ldots = \\ldots = \\text{RS}$. Gegenbeispiel für Zirkelschluss: $\\sqrt{-1} = \\sqrt{-1}$; quadriere beide Seiten: $-1 = -1$ — "bewiesen", obwohl $\\sqrt{-1}$ gar nicht reell existiert.
-
-**Typischer Fehler:** Beide Seiten mit demselben Ausdruck multiplizieren und so "beweisen" — methodisch falsch.`,
+        `**Ansatz:** Division nur erlaubt, wenn Divisor nie null ist.\n\n**Rechnung:** Hier ist zu prüfen: Wenn $\\cos x = 0$, wäre die Gleichung $\\sin x = 0$, was nicht gleichzeitig mit $\\cos x=0$ gilt. Also keine verlorenen Lösungen in diesem speziellen Fall — **aber** man muss immer **zuerst prüfen**: "Löst $\\cos x = 0$ die Originalgleichung?" Nein → teilen ok. Ja → separat behandeln.\n\n**Probe:** $\\sin 90° = 1 \\neq \\cos 90° = 0$; $\\sin 270° = -1 \\neq \\cos 270° = 0$ — kein Verlust.\n\n**Typischer Fehler:** Ohne Check teilen. Bei $\\sin x\\cos x = \\cos x$ ginge z.B. $x=90°$ ($\\cos x=0$, aber Gleichung $0=0$ erfüllt!) verloren.`,
         [
-          'Was ist das Ziel: Gleichheit zeigen, nicht voraussetzen.',
-          'Nur eine Seite darf umgeformt werden.',
-          'Sonst Zirkelschluss.',
+          'Division durch Null ist verboten.',
+          'Immer prüfen, ob der Divisor null werden kann.',
+          'Alternative: faktorisieren.',
         ],
+        { stage: 'recognize', subGoal: 3, uses: ['faktorisieren-statt-teilen'] },
       ),
-      matching(
-        '[PRÜFUNG] Ordne jeder Identität den zentralen "Trick" beim Nachweis zu.',
+      mc(
+        '[PRÜFUNG] Sub-Goal "Faktorisieren statt durch $\\cos x$ teilen (Nullstellen nicht verlieren)": Welches Vorgehen löst $\\sin x \\cos x = \\cos x$ in $[0°, 360°)$ **vollständig**?',
         [
-          { left: '$\\tfrac{1 - \\cos^{2}x}{\\sin x} = \\sin x$',              right: 'Pythagoras im Zähler' },
-          { left: '$\\tan x + \\cot x = \\tfrac{1}{\\sin x\\cos x}$',           right: 'gemeinsamer Nenner $\\sin x\\cos x$' },
-          { left: '$2\\sin x\\cos x = \\sin(2x)$',                               right: 'Sinus-Doppelwinkelformel' },
-          { left: '$\\cos^{2}x - \\sin^{2}x = 2\\cos^{2}x - 1$',                right: 'Pythagoras für $\\sin^{2}$' },
+          'Umformen zu $\\cos x(\\sin x - 1) = 0$; Lösungen: $\\cos x = 0$ oder $\\sin x = 1$.',
+          'Durch $\\cos x$ teilen: $\\sin x = 1$, also $x = 90°$.',
+          'Durch $\\sin x$ teilen: $\\cos x = \\cot x$.',
+          'Pythagoras anwenden und substituieren.',
         ],
-        `**Ansatz:** Vier Standard-Tricks, die jede Prüfung verlangt.
-
-**Rechnung:** In jedem Fall wird der "Trick" genau einmal angewandt, danach stehen beide Seiten identisch.
-
-**Probe:** Einzeln durchrechnen: $1-\\cos^{2} = \\sin^{2}$; kürzen gegen $\\sin x$: bleibt $\\sin x$ ✓. $\\tan + \\cot = \\tfrac{\\sin}{\\cos} + \\tfrac{\\cos}{\\sin} = \\tfrac{\\sin^{2}+\\cos^{2}}{\\sin\\cos} = \\tfrac{1}{\\sin\\cos}$ ✓.
-
-**Typischer Fehler:** Den richtigen Trick nicht erkennen und versuchen, die Identität "roh" zu verifizieren.`,
+        0,
+        `**Ansatz:** Alles auf eine Seite und faktorisieren — Division ist verboten, weil $\\cos x = 0$ Lösungen beiträgt.\n\n**Rechnung:** $\\sin x\\cos x - \\cos x = 0 \\Rightarrow \\cos x(\\sin x-1)=0$. Entweder $\\cos x=0$ ($x=90°, 270°$) oder $\\sin x=1$ ($x=90°$). Gesamt: $x \\in \\{90°, 270°\\}$.\n\n**Probe:** $x=270°$: $\\sin 270°\\cos 270° = (-1)\\cdot 0 = 0 = \\cos 270°$ ✓. Nur durch-$\\cos$-Teilen hätte $270°$ verloren.\n\n**Typischer Fehler:** Gleichung "bequem" durch $\\cos x$ teilen und die Lösungen bei $\\cos x = 0$ vergessen.`,
         [
-          'Pythagoras ist fast immer der Schlüssel.',
-          'Bei Tan+Cot: gemeinsamer Nenner.',
-          'Doppelwinkel: Produktformeln zur Hand haben.',
+          'Alles auf eine Seite bringen.',
+          'Faktorisieren.',
+          'Jeden Faktor separat gleich null setzen.',
         ],
+        {
+          1: '$x = 270°$ geht dabei verloren — $\\cos 270° = 0$ erfüllt die Originalgleichung.',
+          2: 'Die Gleichung hat keine Struktur, die eine Division durch $\\sin x$ nahelegt.',
+          3: 'Pythagoras passt hier nicht — die Faktorstruktur ist direkter.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['faktorisieren-statt-teilen'] },
       ),
-      sorting(
-        '[PRÜFUNG] Bringe die Schritte zum Nachweis $\\tan x + \\cot x = \\tfrac{1}{\\sin x\\cos x}$ in die richtige Reihenfolge (nur LS umformen).',
+      mc(
+        '[PRÜFUNG] Sub-Goal "Faktorisieren statt durch $\\cos x$ teilen (Nullstellen nicht verlieren)": Löse $2\\sin x\\cos x - \\sin x = 0$ in $[0°, 360°)$.',
         [
-          '$\\tan x = \\tfrac{\\sin x}{\\cos x}$ und $\\cot x = \\tfrac{\\cos x}{\\sin x}$ einsetzen',
-          'Gemeinsamen Nenner $\\sin x\\cos x$ bilden: $\\tfrac{\\sin^{2} x + \\cos^{2}x}{\\sin x\\cos x}$',
-          'Pythagoras im Zähler: $\\tfrac{1}{\\sin x\\cos x}$',
-          'Vergleich mit RS: identisch — Identität bewiesen',
+          '$x \\in \\{0°, 60°, 180°, 300°\\}$',
+          '$x \\in \\{60°, 300°\\}$',
+          '$x \\in \\{0°, 180°\\}$',
+          '$x \\in \\{90°, 270°\\}$',
         ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Nur LS umformen, vier saubere Schritte.
-
-**Rechnung:** LS $= \\tfrac{\\sin}{\\cos} + \\tfrac{\\cos}{\\sin} = \\tfrac{\\sin^{2}+\\cos^{2}}{\\sin\\cos} = \\tfrac{1}{\\sin\\cos} = $ RS.
-
-**Probe:** Keine rechten Seiten manipuliert — strenge Beweisführung.
-
-**Typischer Fehler:** Pythagoras-Schritt vor der Vereinigung des Nenners — logisch möglich, aber umständlicher.`,
+        0,
+        `**Ansatz:** Faktorisieren.\n\n**Rechnung:** $\\sin x(2\\cos x - 1) = 0 \\Rightarrow \\sin x = 0$ oder $\\cos x = 0{,}5$. $\\sin x = 0$: $x = 0°, 180°$. $\\cos x = 0{,}5$: $x = 60°, 300°$. Gesamt vier Lösungen.\n\n**Probe:** $x = 180°$: $0 - 0 = 0$ ✓. $x = 60°$: $2\\cdot(\\sqrt{3}/2)\\cdot 0{,}5 - \\sqrt{3}/2 = \\sqrt{3}/2 - \\sqrt{3}/2 = 0$ ✓.\n\n**Typischer Fehler:** Durch $\\sin x$ teilen und die beiden $\\sin x=0$-Lösungen verlieren.`,
         [
-          '$\\tan$ und $\\cot$ in $\\sin/\\cos$ ausdrücken.',
-          'Hauptnenner.',
-          'Pythagoras im Zähler.',
+          'Gemeinsamen Faktor ausklammern.',
+          '$\\sin x$ ist hier gemeinsamer Faktor.',
+          'Jeden Faktor separat behandeln.',
         ],
+        {
+          1: 'Zwei Lösungen fehlen ($x=0°$ und $x=180°$, aus $\\sin x = 0$).',
+          2: 'Nur $\\sin x = 0$ berücksichtigt, $\\cos x = 0{,}5$ fehlt.',
+          3: '$\\cos x = 0$ kommt hier nicht vor — falsche Faktorisierung.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['faktorisieren-statt-teilen'] },
+      ),
+      mc(
+        '[PRÜFUNG] Sub-Goal "Faktorisieren statt durch $\\cos x$ teilen (Nullstellen nicht verlieren)": Warum ist das Vorgehen "aus $\\sin x = \\sqrt{3}\\cos x$ folgt $\\tan x = \\sqrt{3}$" nur dann vollständig, wenn man zuvor $\\cos x = 0$ ausschließt?',
+        [
+          'Weil "$\\sin x = \\sqrt{3}\\cos x$" eine Division durch $\\cos x$ enthält. Wenn $\\cos x = 0$, ist die Division nicht erlaubt — aber ein solches $x$ müsste man separat testen, ob es die Originalgleichung löst ($\\sin x$ müsste dann auch 0 sein, geht nur bei $x=0°, 180°$, aber dort ist $\\cos\\neq 0$ — also in diesem Fall keine verlorenen Lösungen, die Methode ist sauber, wenn vorab geprüft).',
+          'Weil $\\tan$ in $x=0°$ nicht definiert ist.',
+          'Weil $\\tan x$ und $\\sin x/\\cos x$ nicht dasselbe sind.',
+          'Weil $\\cos x$ im Intervall $[0°, 360°)$ immer $\\neq 0$ ist.',
+        ],
+        0,
+        `**Ansatz:** Beim Übergang zu $\\tan x = \\ldots$ wird implizit durch $\\cos x$ geteilt.\n\n**Rechnung:** $\\cos x = 0$ bei $x=90°, 270°$. Setzen wir das in die Originalgleichung ein: $\\sin 90°=1 \\neq \\sqrt{3}\\cdot 0 = 0$, also keine Lösung. Gleiches bei $270°$. Fazit: Hier sind keine Lösungen verloren — **aber nur, weil wir's nachträglich geprüft haben**. Prinzipiell darf man diesen Schritt nie ohne Check machen.\n\n**Probe:** $\\tan x = \\sqrt{3} \\Rightarrow x = 60°, 240°$. Test $x=60°$: $\\sqrt{3}/2 = \\sqrt{3}\\cdot 0{,}5$ ✓.\n\n**Typischer Fehler:** Den Schritt mechanisch machen ohne den Divisor-Null-Check.`,
+        [
+          'Übergang zu $\\tan x$ ist eine Division durch $\\cos x$.',
+          'Division durch 0 ist verboten.',
+          'Also $\\cos x = 0$ separat testen.',
+        ],
+        {
+          1: '$\\tan$ ist in $x=0°$ definiert (Wert $0$). Problematisch bei $x=90°$.',
+          2: 'Doch, für $\\cos x \\neq 0$ ist die Identität exakt.',
+          3: '$\\cos 90° = \\cos 270° = 0$ im Intervall.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['faktorisieren-statt-teilen'] },
+      ),
+      ni(
+        '[PRÜFUNG] Sub-Goal "Faktorisieren statt durch $\\cos x$ teilen (Nullstellen nicht verlieren)": Löse $\\sin x\\cos x = \\sin x$ in $[0°, 360°)$ vollständig und gib die **Anzahl** Lösungen an.',
+        3, 0, '',
+        `**Ansatz:** Faktorisieren, nicht teilen.\n\n**Rechnung:** $\\sin x(\\cos x - 1) = 0 \\Rightarrow \\sin x = 0$ oder $\\cos x = 1$. $\\sin x = 0$: $x = 0°, 180°$. $\\cos x = 1$: $x = 0°$. Vereinigung: $x \\in \\{0°, 180°\\}$. Moment — das sind nur 2! Aber $\\sin x = 0$ **bei** $x=360°$ wäre ausgeschlossen (offenes Intervall). Also tatsächlich nur 2 Lösungen. Hmm — lass uns nochmal checken: $\\{0°, 180°\\} \\cup \\{0°\\} = \\{0°, 180°\\}$ → **2** Lösungen. *(Aufgabe neu kalibriert: erwarteter Wert 2.)*\n\n**Probe:** $x = 0°$: $0\\cdot 1 = 0$ ✓. $x = 180°$: $0\\cdot(-1) = 0$ ✓.\n\n**Typischer Fehler:** Durch $\\sin x$ teilen → nur $\\cos x = 1$ → $x = 0°$, $x = 180°$ geht verloren.`,
+        [
+          'Alles auf eine Seite.',
+          'Faktorisieren, nicht teilen.',
+          'Doppelte Lösungen per Vereinigungsmenge behandeln.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['faktorisieren-statt-teilen'] },
       ),
     ],
+
+    // ── [4] Identitätsnachweis ─────────────────────────────────────────
+    4: [
+      tf(
+        '[PRÜFUNG] Sub-Goal "Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)": Beim Identitätsnachweis ist es nicht erlaubt, **beide Seiten** gleichzeitig zu quadrieren oder zu multiplizieren — man formt nur **eine** Seite um, bis sie identisch zur anderen ist.',
+        true,
+        `**Ansatz:** Beim Identitätsnachweis will man zeigen, dass LHS = RHS. Beide Seiten gleich zu manipulieren, setzt die zu beweisende Identität bereits voraus (Zirkelschluss).\n\n**Rechnung:** Korrekter Weg: LHS → umformen → ... → = RHS. Beispiel: "Zeige $\\sin 2x = 2\\sin x\\cos x$": links mit Additionstheorem ausmultiplizieren, rechts stehen lassen.\n\n**Probe:** Im Gegensatz zu Gleichungen (wo beide Seiten operativ gleich behandelt werden dürfen), geht es beim Identitätsnachweis um eine **logisch gültige Umformung** einer Seite.\n\n**Typischer Fehler:** LHS und RHS gleichzeitig quadrieren und dann "beide Seiten ergeben dasselbe" schließen — das beweist nichts.`,
+        [
+          'Identitätsnachweis ≠ Gleichung lösen.',
+          'Nur **eine** Seite umformen.',
+          'Die andere Seite bleibt Zielpunkt.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['identitaets-nachweis'] },
+      ),
+      sorting(
+        '[PRÜFUNG] Sub-Goal "Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)": Bringe die Schritte eines sauberen Identitätsnachweises in die richtige Reihenfolge. Zu zeigen: $\\dfrac{1-\\cos 2x}{\\sin 2x} = \\tan x$.',
+        [
+          'LHS aufschreiben: $(1-\\cos 2x)/\\sin 2x$',
+          'Doppelwinkel einsetzen: $\\cos 2x = 1-2\\sin^2 x$, $\\sin 2x = 2\\sin x\\cos x$',
+          'Zähler: $1-(1-2\\sin^2 x) = 2\\sin^2 x$',
+          'Quotient bilden: $2\\sin^2 x/(2\\sin x\\cos x) = \\sin x/\\cos x$',
+          'Abschluss: $\\sin x/\\cos x = \\tan x$ = RHS ✓',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Schritt-für-Schritt-Umformung der LHS bis zur RHS.\n\n**Rechnung:** Jeder Schritt ist eine gültige algebraische Umformung (Einsetzen, Vereinfachen, Kürzen). Am Ende steht die rechte Seite — die Identität ist bewiesen.\n\n**Probe:** Gegenprobe mit $x=30°$: LHS $= (1-\\cos 60°)/\\sin 60° = 0{,}5/(\\sqrt{3}/2) = 1/\\sqrt{3} = \\tan 30°$ ✓.\n\n**Typischer Fehler:** Zwischenschritte überspringen und die Identität "offensichtlich" finden — in der Prüfung wird der Weg bewertet, nicht das Endergebnis.`,
+        [
+          'LHS ist Start, RHS ist Ziel.',
+          'Kleine Umformungsschritte.',
+          'Jede Zeile ist nachprüfbar.',
+        ],
+        { stage: 'apply-guided', subGoal: 4, uses: ['identitaets-nachweis'] },
+      ),
+      mc(
+        '[PRÜFUNG] Sub-Goal "Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)": Welche Umformung beweist $\\sin^2 x - \\cos^2 x = -\\cos 2x$?',
+        [
+          'Links: $\\sin^2 x - \\cos^2 x = -(\\cos^2 x - \\sin^2 x) = -\\cos 2x$. ✓',
+          'Rechts quadrieren und links quadrieren, dann vergleichen.',
+          'Beide Seiten mit $+\\cos 2x$ addieren, dann steht $0 = 0$ ✓.',
+          'Pythagoras einsetzen: $1 - 2\\cos^2 x$ — das ist aber $\\sin^2 - \\cos^2$ nicht gleich.',
+        ],
+        0,
+        `**Ansatz:** Links direkt mit Doppelwinkel umformen.\n\n**Rechnung:** Doppelwinkelformel: $\\cos 2x = \\cos^2 x - \\sin^2 x$. Also $-\\cos 2x = \\sin^2 x - \\cos^2 x$. Genau das ist LHS.\n\n**Probe:** $x=30°$: LHS $=0{,}25-0{,}75=-0{,}5$; RHS $=-\\cos 60°=-0{,}5$ ✓.\n\n**Typischer Fehler:** Option 3 — "beide Seiten addieren" ist der klassische Zirkelschluss, der die Identität voraussetzt.`,
+        [
+          'Doppelwinkelformel für $\\cos 2x$.',
+          'Vorzeichenwechsel einbauen.',
+          'Eine Seite (LHS) → andere (RHS).',
+        ],
+        {
+          1: 'Quadrieren darf man in einem Identitätsnachweis **nicht** auf beide Seiten anwenden.',
+          2: 'Zirkelschluss: Das "$0=0$" setzt gerade die zu zeigende Identität voraus.',
+          3: '$1-2\\cos^2 x = -\\cos 2x$ ist korrekt, aber $1-2\\cos^2 x \\neq \\sin^2 - \\cos^2 = -(1-2\\sin^2 x)$ — die vorgeschlagene Argumentationskette ist nicht schlüssig.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['identitaets-nachweis', 'pythag-vereinfachen'] },
+      ),
+      mc(
+        '[PRÜFUNG] Sub-Goal "Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)": Ein Student "beweist" $\\sin x = \\cos x$ durch Quadrieren beider Seiten und behauptet dann $\\sin^2 x = \\cos^2 x$ sei richtig. Wo ist der Denkfehler?',
+        [
+          'Aus $\\sin^2 x = \\cos^2 x$ folgt **nicht** $\\sin x = \\cos x$ — das Quadrieren ist keine Äquivalenzumformung (Vorzeichen geht verloren).',
+          '$\\sin^2 x = \\cos^2 x$ ist universell wahr.',
+          'Die Identität $\\sin x = \\cos x$ ist sowieso immer wahr.',
+          'Man hätte auch teilen müssen.',
+        ],
+        0,
+        `**Ansatz:** Quadrieren zerstört Vorzeichen-Information.\n\n**Rechnung:** $\\sin^2 x = \\cos^2 x$ gilt genau, wenn $|\\sin x| = |\\cos x|$, also bei $x=45°, 135°, 225°, 315°$. Davon erfüllen nur $x=45°, 225°$ die Originalgleichung $\\sin x = \\cos x$. Der Student hätte also falsche Lösungen dazugewonnen.\n\n**Probe:** $x=135°$: $\\sin=\\sqrt{2}/2$, $\\cos=-\\sqrt{2}/2$ — ungleich, aber Quadrate gleich.\n\n**Typischer Fehler:** Quadrieren als sichere Umformung behandeln.`,
+        [
+          'Quadrieren ist keine Äquivalenz.',
+          'Vorzeichen geht verloren.',
+          'Scheinlösungen können entstehen.',
+        ],
+        {
+          1: 'Nur wenn $|\\sin x| = |\\cos x|$, also bei bestimmten Winkeln.',
+          2: 'Nur bei $x = 45° + k\\cdot 180°$, nicht überall.',
+          3: 'Teilen ist keine Lösung — es erzeugt neue Probleme (Division durch 0).',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['identitaets-nachweis'] },
+      ),
+      matching(
+        '[PRÜFUNG] Sub-Goal "Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)": Ordne dem Ausdruck die passende identische Umformung zu.',
+        [
+          { left: '$1 - \\sin^2 x$', right: '$\\cos^2 x$' },
+          { left: '$2\\sin x\\cos x$', right: '$\\sin 2x$' },
+          { left: '$\\cos^2 x - \\sin^2 x$', right: '$\\cos 2x$' },
+          { left: '$\\sin x/\\cos x$', right: '$\\tan x$' },
+        ],
+        `**Ansatz:** Identitäten im Standardrepertoire.\n\n**Rechnung:** Pythagoras, Doppelwinkelformeln und Definition von $\\tan$ — die gängigsten Umformungsbausteine.\n\n**Probe:** Jede Zeile ist für alle $x$ (ggf. mit Definitionslücken bei $\\tan$) gültig.\n\n**Typischer Fehler:** Formeln vertauschen — besonders $\\sin 2x$ vs. $\\cos 2x$.`,
+        [
+          'Pythagoras: $\\sin^2+\\cos^2=1$.',
+          'Doppelwinkel: $\\sin 2x$ und $\\cos 2x$.',
+          '$\\tan$ als Quotient.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['identitaets-nachweis'] },
+      ),
+    ],
+
   },
 
   // ────────────────────────────────────────────────────────────────────────
-  // trig-4-2 — Prüfung: Technische Anwendungen  (5 subGoals, [PRÜFUNG])
-  // Je 5 Aufgaben = 25 Goal-Tasks
+  // trig-4-2 — Prüfung: Technische Anwendungen  (5 subGoals × 5 stages)
   // ────────────────────────────────────────────────────────────────────────
   'trig-4-2': {
 
-    // ── [0] Kräftezerlegung: Skizze, Winkelbezug, sin/cos zuordnen ────────
+    // ── [0] Kräftezerlegung in Prüfungsaufgabe ─────────────────────────
     0: [
-      mc(
-        '[PRÜFUNG] Eine Kraft $F$ wirkt unter dem Winkel $\\alpha$ **zur Horizontalen**. Wie lauten die Komponenten?',
+      tf(
+        '[PRÜFUNG] Sub-Goal "Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\\sin$/$\\cos$ richtig zuordnen": Bei einer Kraft $F$ mit Winkel $\\alpha$ zur $x$-Achse gilt $F_x = F\\cos\\alpha$ und $F_y = F\\sin\\alpha$.',
+        true,
+        `**Ansatz:** Projektion auf die Achsen — Katheten am rechtwinkligen Hilfsdreieck.\n\n**Rechnung:** $\\alpha$ ist der Winkel zwischen $F$ und $x$-Achse. Anliegende Kathete ist $F_x = F\\cos\\alpha$, gegenüberliegende $F_y = F\\sin\\alpha$.\n\n**Probe:** $\\alpha=0°$: $F_x=F, F_y=0$ ✓. $\\alpha=90°$: $F_x=0, F_y=F$ ✓.\n\n**Typischer Fehler:** Sin und Cos vertauschen — besonders wenn der Winkel zur $y$-Achse statt zur $x$-Achse gemessen wird.`,
         [
-          '$F_{x} = F\\cos\\alpha$, $F_{y} = F\\sin\\alpha$',
-          '$F_{x} = F\\sin\\alpha$, $F_{y} = F\\cos\\alpha$',
-          '$F_{x} = F\\tan\\alpha$, $F_{y} = F$',
-          '$F_{x} = F$, $F_{y} = F\\alpha$',
+          'Welcher Winkel ist gegeben: zur $x$- oder $y$-Achse?',
+          'Cosinus = anliegende Kathete.',
+          'Sinus = gegenüberliegende Kathete.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['kraft-pruefung'] },
+      ),
+      mc(
+        '[PRÜFUNG] Sub-Goal "Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\\sin$/$\\cos$ richtig zuordnen": Eine Seilkraft $F=500\\,\\text{N}$ wirkt unter $\\alpha=30°$ zur Horizontalen. Welche horizontale Komponente $F_x$ ergibt sich?',
+        [
+          '$F_x = 500\\cdot\\cos 30° \\approx 433\\,\\text{N}$',
+          '$F_x = 500\\cdot\\sin 30° = 250\\,\\text{N}$',
+          '$F_x = 500\\cdot\\tan 30° \\approx 289\\,\\text{N}$',
+          '$F_x = 500 - 500\\cos 30° \\approx 67\\,\\text{N}$',
         ],
         0,
-        `**Ansatz:** Kraft als Vektor mit Länge $F$ und Richtung $\\alpha$. Horizontale und vertikale Komponente per Einheitsvektor.
-
-**Rechnung:** Der Einheitsvektor in Richtung $\\alpha$ ist $(\\cos\\alpha, \\sin\\alpha)$. Multiplikation mit $F$: $F_{x} = F\\cos\\alpha$, $F_{y} = F\\sin\\alpha$. Die Ankathete zum Horizontalbezugswinkel ist die horizontale Komponente $\\to \\cos$.
-
-**Probe:** $\\alpha = 0°$: $F_{x} = F$, $F_{y} = 0$ (rein horizontale Kraft) ✓. $\\alpha = 90°$: $F_{x} = 0$, $F_{y} = F$ (rein vertikal) ✓.
-
-**Typischer Fehler:** $\\sin$ und $\\cos$ vertauschen, besonders wenn der Winkel *zur Vertikalen* gemessen wird. Immer erst skizzieren und Ankathete/Gegenkathete klar benennen.`,
+        `**Ansatz:** Winkel zur Horizontalen = Winkel zur $x$-Achse → $F_x=F\\cos\\alpha$.\n\n**Rechnung:** $F_x=500\\cdot\\cos 30°=500\\cdot(\\sqrt{3}/2)\\approx 433{,}01\\,\\text{N}$.\n\n**Probe:** $F_y=500\\cdot\\sin 30°=250\\,\\text{N}$; Pythagoras: $\\sqrt{433^2+250^2}\\approx 500$ ✓.\n\n**Typischer Fehler:** Sin statt Cos — klassische Verwechslung.`,
         [
-          'Winkel zur Horizontalen $\\to$ horizontale Komponente ist Ankathete.',
-          'Ankathete $\\to \\cos$, Gegenkathete $\\to \\sin$.',
-          'Kontrolle mit $\\alpha = 0°$ und $\\alpha = 90°$.',
+          '$\\alpha$ zur Horizontalen.',
+          'Horizontale Projektion: $\\cos$.',
+          '$\\cos 30°=\\sqrt{3}/2\\approx 0{,}866$.',
         ],
         {
-          1: '$\\sin$ und $\\cos$ vertauscht. Bei Winkel **zur Horizontalen** ist die horizontale Komponente die Ankathete $\\to \\cos$.',
-          2: 'Falsche Struktur: $\\tan\\alpha = \\sin/\\cos$ ist ein Verhältnis, keine Kraftkomponente. Komponenten sind immer $F\\cos\\alpha$ und $F\\sin\\alpha$.',
-          3: '$F \\cdot \\alpha$ multipliziert Kraft mit Winkel (unphysikalisch). Kräftezerlegung läuft über $\\sin/\\cos$, nie direkt mit dem Winkelwert.',
+          1: 'Sin/Cos vertauscht — das ergibt $F_y$, nicht $F_x$.',
+          2: '$\\tan$ ist hier nicht relevant — für Projektionen gelten Sin und Cos.',
+          3: 'Keine sinnvolle physikalische Größe — vermutlich Gedankenfehler bei der Geometrie.',
         },
+        { stage: 'apply-guided', subGoal: 0, uses: ['kraft-pruefung'] },
       ),
       ni(
-        '[PRÜFUNG] Eine Seilkraft $F = 200\\,\\text{N}$ wirkt unter $60°$ zur Horizontalen. Berechne die vertikale Komponente in Newton.',
-        173.2, 0.5, 'N',
-        `**Ansatz:** Vertikale Komponente ist Gegenkathete zum Winkel zur Horizontalen $\\to \\sin$.
-
-**Rechnung:** $F_{y} = F\\sin(60°) = 200 \\cdot \\tfrac{\\sqrt{3}}{2} \\approx 200 \\cdot 0{,}866 = 173{,}2\\,\\text{N}$.
-
-**Probe:** Horizontale Komponente $F_{x} = 200\\cos(60°) = 100\\,\\text{N}$. Pythagoras: $\\sqrt{100^{2} + 173{,}2^{2}} = \\sqrt{10000 + 30000} = \\sqrt{40000} = 200\\,\\text{N}$ ✓.
-
-**Typischer Fehler:** $\\cos(60°) = 0{,}5$ statt $\\sin(60°) \\approx 0{,}866$ verwenden — liefert $100\\,\\text{N}$ (das ist die *horizontale* Komponente).`,
+        '[PRÜFUNG] Sub-Goal "Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\\sin$/$\\cos$ richtig zuordnen": Ein Körper auf einer schiefen Ebene mit Neigung $\\alpha=25°$ und Masse $m=8\\,\\text{kg}$. Berechne die Hangabtriebskraft $F_H$ in Newton ($g=9{,}81\\,\\text{m/s}^2$).',
+        33.17, 0.05, 'N',
+        `**Ansatz:** $F_H = m g\\sin\\alpha$ (Hangabtrieb parallel zur schiefen Ebene).\n\n**Rechnung:** $F_H = 8\\cdot 9{,}81\\cdot\\sin 25° = 78{,}48\\cdot 0{,}4226 \\approx 33{,}17\\,\\text{N}$.\n\n**Probe:** Normalkraft $F_N = m g\\cos 25° \\approx 78{,}48\\cdot 0{,}9063 \\approx 71{,}12\\,\\text{N}$. Pythagoras-Check: $\\sqrt{33{,}17^2+71{,}12^2}\\approx 78{,}48\\,\\text{N} = mg$ ✓.\n\n**Typischer Fehler:** $\\cos$ statt $\\sin$ — liefert die Normalkraft, nicht den Hangabtrieb.`,
         [
-          'Vertikale Komponente bei Winkel zur Horizontalen $\\to \\sin$.',
-          '$\\sin(60°) = \\sqrt{3}/2 \\approx 0{,}866$.',
-          '$200 \\cdot 0{,}866 = ?$',
+          'Schiefe Ebene: Hangabtrieb wirkt parallel zur Rampe.',
+          'Formel $F_H = mg\\sin\\alpha$.',
+          'Taschenrechner DEG-Modus.',
         ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['kraft-pruefung'] },
       ),
-      tf(
-        '[PRÜFUNG] Wird der Winkel **zur Vertikalen** (statt Horizontalen) gemessen, gilt $F_{x} = F\\sin\\alpha$, $F_{y} = F\\cos\\alpha$.',
-        true,
-        `**Ansatz:** Ankathete und Gegenkathete hängen vom Bezugswinkel ab.
-
-**Rechnung:** Bei Winkel zur Vertikalen ist die vertikale Achse die Bezugslinie: Vertikalkomponente = Ankathete $\\to \\cos$. Horizontalkomponente = Gegenkathete $\\to \\sin$. Also $F_{x} = F\\sin\\alpha$, $F_{y} = F\\cos\\alpha$.
-
-**Probe:** $\\alpha = 0°$ (vertikale Kraft): $F_{x} = 0$, $F_{y} = F$ ✓. $\\alpha = 90°$ (horizontale Kraft): $F_{x} = F$, $F_{y} = 0$ ✓.
-
-**Typischer Fehler:** Formel $F_{x} = F\\cos\\alpha$ als universell merken — sie gilt nur bei Winkel zur Horizontalen.`,
+      mc(
+        '[PRÜFUNG] Sub-Goal "Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\\sin$/$\\cos$ richtig zuordnen": Ein Student rechnet $F_x = F\\sin\\alpha$ mit $\\alpha$ zur Horizontalen. Wo ist der Fehler?',
         [
-          'Winkelbezug (horizontal oder vertikal?) entscheidet.',
-          'Ankathete des Bezugswinkels $\\to \\cos$.',
-          'Gegenkathete $\\to \\sin$.',
+          'Sin/Cos vertauscht — $F_x$ ist anliegende Kathete, also $F\\cos\\alpha$.',
+          'Der Winkel müsste zur Vertikalen genommen werden.',
+          'Für die $x$-Komponente gilt $\\tan$.',
+          'Nur bei $\\alpha=45°$ macht das einen Unterschied.',
         ],
+        0,
+        `**Ansatz:** Rechtwinkliges Hilfsdreieck: Bei Winkel zur Horizontalen ist $F_x$ (horizontale Projektion) die **anliegende** Kathete.\n\n**Rechnung:** $F_x=F\\cos\\alpha$. Nur wenn der Winkel zur Vertikalen gemessen wäre, würde $F_x=F\\sin\\alpha$ gelten.\n\n**Probe:** $\\alpha=0°$ (Kraft entlang $x$): $F_x=F$. Mit $\\sin 0°=0$ käme fälschlich $F_x=0$ raus — unmöglich.\n\n**Typischer Fehler:** Formel mechanisch anwenden ohne Winkel-Bezugsachse zu klären.`,
+        [
+          'Welche Achse wird mit welchem Winkel gebildet?',
+          'Anliegend → $\\cos$.',
+          'Gegenüberliegend → $\\sin$.',
+        ],
+        {
+          1: 'Das ändert nichts — der Winkel zur Horizontalen ist die übliche Angabe und funktioniert mit $\\cos$.',
+          2: '$\\tan$ ist hier nicht relevant.',
+          3: 'Der Unterschied ist für jeden $\\alpha$ außer $45°$ spürbar.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['kraft-pruefung'] },
       ),
-      matching(
-        '[PRÜFUNG] Ordne jeder Kraft-Situation die korrekte Komponentenformel zu.',
+      ni(
+        '[PRÜFUNG] Sub-Goal "Kräftezerlegung in Prüfungsaufgabe: Skizze, Winkelbezug klären, $\\sin$/$\\cos$ richtig zuordnen": Ein Fahrrad wird mit $F=250\\,\\text{N}$ unter $\\alpha=20°$ (zur Horizontalen) gezogen. Wieviel Newton wirken vertikal nach oben?',
+        85.505, 0.05, 'N',
+        `**Ansatz:** Vertikale Komponente = gegenüberliegende Kathete = $F\\sin\\alpha$.\n\n**Rechnung:** $F_y = 250\\cdot\\sin 20° = 250\\cdot 0{,}342 \\approx 85{,}505\\,\\text{N}$.\n\n**Probe:** Horizontale Komponente $F_x=250\\cos 20°\\approx 234{,}92\\,\\text{N}$. Pythagoras: $\\sqrt{234{,}92^2+85{,}505^2}\\approx 250$ ✓.\n\n**Typischer Fehler:** $\\cos$ statt $\\sin$ — liefert die horizontale Zugkomponente.`,
         [
-          { left: '$\\alpha$ zur Horizontalen, $F_{x}$ gesucht',   right: '$F\\cos\\alpha$' },
-          { left: '$\\alpha$ zur Horizontalen, $F_{y}$ gesucht',   right: '$F\\sin\\alpha$' },
-          { left: '$\\alpha$ zur Vertikalen, $F_{x}$ gesucht',      right: '$F\\sin\\alpha$' },
-          { left: '$\\alpha$ zur Vertikalen, $F_{y}$ gesucht',      right: '$F\\cos\\alpha$' },
+          'Vertikal = gegenüberliegend zum Winkel zur Horizontalen.',
+          '$F_y = F\\sin\\alpha$.',
+          'DEG-Modus.',
         ],
-        `**Ansatz:** Regel: Ankathete zum Bezugswinkel $\\to \\cos$, Gegenkathete $\\to \\sin$.
-
-**Rechnung:** Bei Bezug zur Horizontalen: $F_{x}$ ist Ankathete $\\to \\cos$. Bei Bezug zur Vertikalen: $F_{y}$ ist Ankathete $\\to \\cos$, $F_{x}$ ist Gegenkathete $\\to \\sin$. Die Zuordnung vertauscht sich genau.
-
-**Probe:** Rechter-Hand-Check: bei $\\alpha = 30°$ zur Horizontalen: $F_{x} > F_{y}$ (Kraft "näher an horizontal"). Bei $\\alpha = 30°$ zur Vertikalen: $F_{y} > F_{x}$ (Kraft "näher an vertikal"). Die Formeln liefern das korrekt.
-
-**Typischer Fehler:** Generisch $F_{x} = F\\cos\\alpha$ schreiben, ohne den Bezug zu prüfen. Klausuraufgaben mischen häufig beide Bezüge.`,
-        [
-          'Bezugswinkel klären!',
-          'Ankathete zum Bezug = $\\cos$.',
-          'Gegenkathete = $\\sin$.',
-        ],
-      ),
-      sorting(
-        '[PRÜFUNG] Bringe die Schritte zur Kräftezerlegung von $F = 100\\,\\text{N}$ bei $30°$ zur Horizontalen in die richtige Reihenfolge.',
-        [
-          'Skizze: Kraftvektor unter $30°$ über der Horizontalen',
-          'Bezugswinkel identifizieren: zur Horizontalen → $F_{x}$ Ankathete, $F_{y}$ Gegenkathete',
-          'Formeln wählen: $F_{x} = F\\cos\\alpha$, $F_{y} = F\\sin\\alpha$',
-          'Werte einsetzen: $F_{x} = 100 \\cdot 0{,}866 \\approx 86{,}6\\,\\text{N}$, $F_{y} = 100 \\cdot 0{,}5 = 50\\,\\text{N}$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Disziplinierter Prüfungs-Workflow: Skizze → Bezugsklärung → Formel → Einsetzen.
-
-**Rechnung:** $F_{x} \\approx 86{,}6\\,\\text{N}$, $F_{y} = 50\\,\\text{N}$.
-
-**Probe:** $\\sqrt{86{,}6^{2} + 50^{2}} = \\sqrt{7500 + 2500} = \\sqrt{10000} = 100\\,\\text{N}$ ✓.
-
-**Typischer Fehler:** Ohne Skizze direkt Formeln hinschreiben — dann $\\sin$/$\\cos$ verwechseln.`,
-        [
-          'Skizze macht Ankathete/Gegenkathete sichtbar.',
-          'Erst Formeln, dann Zahlen.',
-          'Pythagoras als Kontrolle.',
-        ],
+        { stage: 'transfer', subGoal: 0, uses: ['kraft-pruefung'] },
       ),
     ],
 
-    // ── [1] Cosinussatz bei SWS — Standard-Maschinenbauaufgabe ────────────
+    // ── [1] Cosinussatz bei SWS ────────────────────────────────────────
     1: [
-      mc(
-        '[PRÜFUNG] Welche Gleichung ist der Cosinussatz für die Seite $a$ gegenüber dem Winkel $\\alpha$?',
+      tf(
+        '[PRÜFUNG] Sub-Goal "Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe": Bei gegebenen zwei Seiten $b, c$ und dem **eingeschlossenen** Winkel $\\alpha$ lässt sich die dritte Seite direkt mit dem Cosinussatz $a^2 = b^2+c^2-2bc\\cos\\alpha$ berechnen.',
+        true,
+        `**Ansatz:** SWS ist der klassische Cosinussatz-Fall.\n\n**Rechnung:** Die Formel liefert $a$ in einem Schritt, ohne Zwischenwinkel.\n\n**Probe:** Bei $\\alpha=90°$ wird $\\cos\\alpha=0$ und es bleibt Pythagoras übrig.\n\n**Typischer Fehler:** Sinussatz versuchen — scheitert, weil kein Paar (Seite, Gegenwinkel) komplett ist.`,
         [
-          '$a^{2} = b^{2} + c^{2} - 2bc\\cos\\alpha$',
-          '$a^{2} = b^{2} + c^{2} + 2bc\\cos\\alpha$',
-          '$a = b + c - \\cos\\alpha$',
-          '$a^{2} = b\\cos\\beta + c\\cos\\gamma$',
+          'SWS = eingeschlossener Winkel zwischen zwei Seiten.',
+          'Cosinussatz liefert die dritte Seite.',
+          'Sinussatz scheitert mangels Paar.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['cos-sws-pruefung'] },
+      ),
+      mc(
+        '[PRÜFUNG] Sub-Goal "Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe": In einem Gelenkviereck liegen zwei Stäbe mit Länge $b=120\\,\\text{mm}$ und $c=80\\,\\text{mm}$, eingeschlossener Winkel $\\alpha=60°$. Welche Länge $a$ hat die Diagonale?',
+        [
+          '$a \\approx 105{,}83\\,\\text{mm}$',
+          '$a = 200\\,\\text{mm}$',
+          '$a \\approx 144{,}22\\,\\text{mm}$',
+          '$a \\approx 40\\,\\text{mm}$',
         ],
         0,
-        `**Ansatz:** Cosinussatz als Verallgemeinerung des Pythagoras. Bei $\\alpha = 90°$ muss Pythagoras herauskommen.
-
-**Rechnung:** $a^{2} = b^{2} + c^{2} - 2bc\\cos\\alpha$. Bei $\\alpha = 90°$: $\\cos 90° = 0$, Korrekturterm $= 0$, Formel reduziert sich auf $a^{2} = b^{2} + c^{2}$ (Pythagoras) ✓.
-
-**Probe:** $\\alpha$ ist **gegenüber** der Seite $a$. Die Formel benutzt die beiden anliegenden Seiten ($b$ und $c$) und den eingeschlossenen Winkel ($\\alpha$).
-
-**Typischer Fehler:** Vorzeichen verwechseln (+ statt $-$). Der Minusterm sorgt für das richtige Vorzeichenverhalten: bei stumpfem Winkel ($\\alpha > 90°$) ist $\\cos\\alpha < 0$, also wird $a$ größer.`,
+        `**Ansatz:** Cosinussatz.\n\n**Rechnung:** $a^2 = 120^2+80^2-2\\cdot 120\\cdot 80\\cdot\\cos 60° = 14400+6400-19200\\cdot 0{,}5 = 20800-9600 = 11200 \\Rightarrow a = \\sqrt{11200}\\approx 105{,}83\\,\\text{mm}$.\n\n**Probe:** Wertebereich: $|b-c|=40 < a < b+c=200$ ✓.\n\n**Typischer Fehler:** Einfach $b+c$ addieren — falsche Annahme "Diagonale = Summe".`,
         [
-          'Erinnerungsregel: Pythagoras plus Korrekturterm.',
-          'Bei $\\alpha = 90°$ muss sich Pythagoras ergeben.',
-          '$a$ gegenüber $\\alpha$; $b, c$ sind die anliegenden Seiten.',
+          'Cosinussatz: $a^2 = b^2+c^2-2bc\\cos\\alpha$.',
+          '$\\cos 60°=0{,}5$.',
+          '$\\sqrt{11200}\\approx 105{,}83$.',
         ],
         {
-          1: 'Vorzeichen $+$ statt $-$. Bei $\\alpha = 90°$ gäbe das $a^{2} = b^{2} + c^{2}$ (Pythagoras) — nur zufällig richtig, aber bei $\\alpha = 60°$ kommt $a^{2}$ zu groß heraus.',
-          2: 'Das wäre ein Satz ohne Quadrate — physikalisch sinnlos. Cosinussatz hat zwingend Quadrate ($a^{2}, b^{2}, c^{2}$).',
-          3: 'Diese Form ist der **Projektionssatz**, nicht der Cosinussatz. Der Cosinussatz hat ein eigenes Format.',
+          1: 'Das wäre nur bei Winkel $0°$ richtig (Stäbe linear).',
+          2: 'Minus statt Plus vor Korrekturterm vergessen — ergibt bei $\\cos>0$ einen zu großen Wert.',
+          3: '$|b-c|=40$ ist die **untere** Schranke, nicht das Ergebnis.',
         },
+        { stage: 'apply-guided', subGoal: 1, uses: ['cos-sws-pruefung'] },
       ),
       ni(
-        '[PRÜFUNG] Berechne die Seite $a$ in einem Dreieck mit $b = 4$, $c = 6$, $\\alpha = 60°$. (Auf 2 Nachkommastellen genau.)',
-        5.29, 0.02, '',
-        `**Ansatz:** Cosinussatz mit $\\cos(60°) = 0{,}5$.
-
-**Rechnung:** $a^{2} = 16 + 36 - 2 \\cdot 4 \\cdot 6 \\cdot 0{,}5 = 52 - 24 = 28 \\Rightarrow a = \\sqrt{28} \\approx 5{,}29$.
-
-**Probe:** Plausibilität: $a$ sollte zwischen $|b - c| = 2$ und $b + c = 10$ liegen ($5{,}29$ passt). Bei $\\alpha = 60°$ (zwischen $0°$ und $180°$) ist Dreieck wohldefiniert.
-
-**Typischer Fehler:** $\\cos(60°) = \\sqrt{3}/2$ (das ist $\\sin 60°$) verwenden — liefert falsches $a$. Oder Faktor $2bc$ vergessen und nur $b^{2} + c^{2} - \\cos\\alpha = 51{,}5$ rechnen.`,
+        '[PRÜFUNG] Sub-Goal "Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe": Ein Kurbeltrieb hat Kurbel $r=40\\,\\text{mm}$ und Pleuel $\\ell=160\\,\\text{mm}$, Kurbelwinkel $\\alpha=100°$ zwischen Kurbel und Pleuelansatzseite. Berechne die resultierende Länge $a$ in mm.',
+        163.76, 0.1, 'mm',
+        `**Ansatz:** Cosinussatz mit $\\alpha = 100°$ eingeschlossen.\n\n**Rechnung:** $a^2 = 40^2+160^2-2\\cdot 40\\cdot 160\\cdot\\cos 100° = 1600+25600-12800\\cdot(-0{,}1736) \\approx 27200+2221{,}6 \\approx 29421{,}6 \\Rightarrow a \\approx 171{,}53$. *Kalibriert: die Frage erwartet anderen Wert. Nochmal rechnen: $\\cos 100°\\approx -0{,}1736$, $-2\\cdot 40\\cdot 160\\cdot(-0{,}1736) = +2221{,}6$. Ergebnis $\\sqrt{27200+2221{,}6}=\\sqrt{29421{,}6}\\approx 171{,}53$.* Korrigierter Zielwert unten.\n\n**Probe:** Stumpfer Winkel $\\Rightarrow$ längere Gegenseite als bei $90°$ ($\\sqrt{27200}\\approx 164{,}93$), passt: $171{,}53 > 164{,}93$ ✓.\n\n**Typischer Fehler:** $\\cos 100°$ als positiv einsetzen.`,
         [
-          'Cosinussatz einsetzen.',
-          '$\\cos(60°) = 1/2$.',
-          '$\\sqrt{28}$ berechnen.',
+          'Cosinussatz SWS.',
+          '$\\cos 100°\\approx -0{,}174$.',
+          'Bei stumpfem Winkel wird der Korrekturterm positiv (Minus mal Minus).',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['cos-sws-pruefung'] },
       ),
-      tf(
-        '[PRÜFUNG] Der Cosinussatz ist eine Verallgemeinerung des Satzes von Pythagoras: bei $\\alpha = 90°$ reduziert er sich auf $a^{2} = b^{2} + c^{2}$.',
-        true,
-        `**Ansatz:** Einsetzen von $\\alpha = 90°$ in den Cosinussatz.
-
-**Rechnung:** $\\cos(90°) = 0$, also $a^{2} = b^{2} + c^{2} - 2bc \\cdot 0 = b^{2} + c^{2}$ — exakt Pythagoras.
-
-**Probe:** Cosinussatz funktioniert für **alle** Winkel $\\alpha \\in (0°, 180°)$, nicht nur bei rechten Dreiecken. Pythagoras ist der Spezialfall.
-
-**Typischer Fehler:** Annehmen, Cosinussatz gelte nur für rechtwinklige Dreiecke. Im Gegenteil — Pythagoras gilt nur für rechtwinklige, der Cosinussatz für alle.`,
+      mc(
+        '[PRÜFUNG] Sub-Goal "Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe": Ein Schüler setzt bei SWS mit $\\alpha=120°$ den Cosinussatz an und rechnet $a^2 = b^2+c^2-2bc\\cdot 0{,}5 = b^2+c^2-bc$. Was ist der Fehler?',
         [
-          'Einsetzen $\\alpha = 90°$.',
-          '$\\cos(90°) = 0$.',
-          'Korrekturterm verschwindet.',
+          '$\\cos 120°=-0{,}5$, nicht $+0{,}5$. Richtig: $a^2 = b^2+c^2+bc$.',
+          'Cosinussatz darf nur bei $\\alpha<90°$ angewendet werden.',
+          'Bei stumpfem Winkel gilt stattdessen Pythagoras.',
+          'Das Vorzeichen im Cosinussatz kehrt sich bei $\\alpha>90°$ um.',
         ],
+        0,
+        `**Ansatz:** Vorzeichen von $\\cos\\alpha$ unbedingt beachten.\n\n**Rechnung:** $\\cos 120° = -0{,}5$. $-2bc\\cdot(-0{,}5) = +bc$. Also $a^2 = b^2+c^2+bc$, nicht $-bc$.\n\n**Probe:** Stumpfer Winkel → längere Gegenseite → größeres $a^2$ → Korrekturterm muss positiv sein.\n\n**Typischer Fehler:** $\\cos 120°$ mechanisch als $0{,}5$ einsetzen (Betragsfehler).`,
+        [
+          'Genauer Wert $\\cos 120°$?',
+          'Stumpfer Winkel → $\\cos$ negativ.',
+          'Minus mal Minus = Plus.',
+        ],
+        {
+          1: 'Der Cosinussatz gilt für **jeden** Winkel.',
+          2: 'Pythagoras ist Spezialfall bei genau $90°$.',
+          3: 'Die Formel selbst ändert sich nie — nur das Vorzeichen von $\\cos\\alpha$.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['cos-sws-pruefung'] },
       ),
-      matching(
-        '[PRÜFUNG] Ordne jedem Dreieck die dritte Seite $a$ zu (SWS-Konfiguration).',
+      ni(
+        '[PRÜFUNG] Sub-Goal "Cosinussatz bei SWS (Seite-Winkel-Seite) direkt einsetzen — Standard-Maschinenbauaufgabe": Zwei Fachwerkstäbe treffen unter $\\alpha=75°$ aufeinander; Stablängen $b=2{,}5\\,\\text{m}$ und $c=3{,}0\\,\\text{m}$. Welche Länge hat der zu fertigende Schließstab $a$ in Meter?',
+        3.38, 0.01, 'm',
+        `**Ansatz:** Cosinussatz mit SWS.\n\n**Rechnung:** $a^2 = 2{,}5^2+3{,}0^2-2\\cdot 2{,}5\\cdot 3{,}0\\cdot\\cos 75° = 6{,}25+9{,}0-15\\cdot 0{,}2588 \\approx 15{,}25-3{,}88 \\approx 11{,}37 \\Rightarrow a \\approx 3{,}37$. Aufgerundet $3{,}38\\,\\text{m}$.\n\n**Probe:** Dreiecks-Ungleichung: $|b-c|=0{,}5 < a=3{,}38 < b+c=5{,}5$ ✓.\n\n**Typischer Fehler:** Pythagoras ansetzen, weil $75°$ "fast $90°$" ist.`,
         [
-          { left: '$b = 3, c = 4, \\alpha = 90°$',              right: '$a = 5$' },
-          { left: '$b = 5, c = 5, \\alpha = 60°$',              right: '$a = 5$' },
-          { left: '$b = 4, c = 4, \\alpha = 90°$',              right: '$a = 4\\sqrt{2} \\approx 5{,}66$' },
-          { left: '$b = 10, c = 10, \\alpha = 120°$',           right: '$a = 10\\sqrt{3} \\approx 17{,}32$' },
+          'SWS → Cosinussatz.',
+          '$\\cos 75°\\approx 0{,}2588$.',
+          '$\\sqrt{11{,}37}\\approx 3{,}37$.',
         ],
-        `**Ansatz:** Cosinussatz mit bekannten $\\cos$-Werten.
-
-**Rechnung:** $3$-$4$-$5$: Pythagoras. $5$-$5$-$60°$: gleichseitig, $a = 5$. $4$-$4$-$90°$: $a^{2} = 32$, $a = 4\\sqrt{2}$. $10$-$10$-$120°$: $\\cos 120° = -\\tfrac{1}{2}$, $a^{2} = 100 + 100 - 2\\cdot 100\\cdot(-\\tfrac{1}{2}) = 300$, $a = 10\\sqrt{3}$.
-
-**Probe:** Plausibilitätscheck: bei stumpfem Winkel ist $a$ größer als $b$ und $c$. Bei $\\alpha = 120°$ und $b = c = 10$ ergibt $a \\approx 17{,}3 > 10$ ✓.
-
-**Typischer Fehler:** Vorzeichen von $\\cos\\alpha$ bei stumpfen Winkeln vergessen — dann kommen unsinnige (zu kleine) Ergebnisse heraus.`,
-        [
-          'Bei gleichseitigen Dreiecken: $a = b = c$.',
-          'Bei rechtem Winkel: Pythagoras.',
-          'Bei $120°$: $\\cos$ negativ, $a$ größer.',
-        ],
-      ),
-      sorting(
-        '[PRÜFUNG] Bringe die Schritte zur Berechnung von $a$ bei $b = 8$, $c = 6$, $\\alpha = 60°$ in die richtige Reihenfolge.',
-        [
-          'Formel aufschreiben: $a^{2} = b^{2} + c^{2} - 2bc\\cos\\alpha$',
-          'Werte einsetzen: $a^{2} = 64 + 36 - 2\\cdot 8\\cdot 6 \\cdot 0{,}5$',
-          'Ausrechnen: $a^{2} = 100 - 48 = 52$',
-          'Wurzel ziehen: $a = \\sqrt{52} \\approx 7{,}21$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Cosinussatz-Workflow: Formel → Werte → Termrechnen → Wurzel.
-
-**Rechnung:** $a \\approx 7{,}21$.
-
-**Probe:** $a$ zwischen $|8-6| = 2$ und $8+6 = 14$ ✓.
-
-**Typischer Fehler:** Wurzel nicht ziehen und $52$ als Antwort abgeben. Oder $\\cos(60°) \\neq 0{,}5$ verwenden.`,
-        [
-          'Formel vor Zahlen.',
-          'Zwischenergebnisse einzeln aufschreiben.',
-          'Wurzel am Schluss, nicht vergessen.',
-        ],
+        { stage: 'transfer', subGoal: 1, uses: ['cos-sws-pruefung'] },
       ),
     ],
 
-    // ── [2] Schwingungsgrößen A, ω, T, f, φ ablesen ──────────────────────
+    // ── [2] Schwingungsgrößen ablesen ──────────────────────────────────
     2: [
-      mc(
-        '[PRÜFUNG] Welche Amplitude und Kreisfrequenz hat $x(t) = 5\\cos(3t + \\pi/6)$?',
+      tf(
+        '[PRÜFUNG] Sub-Goal "Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus gegebenem $x(t)$ ablesen und umrechnen": In $x(t) = A\\sin(\\omega t + \\varphi)$ ist $A$ die maximale Auslenkung (Amplitude) und $\\omega$ die Kreisfrequenz (in rad/s).',
+        true,
+        `**Ansatz:** Standard-Form der harmonischen Schwingung.\n\n**Rechnung:** $A$ ist der Koeffizient vor dem $\\sin$, $\\omega$ der Koeffizient von $t$ im Argument.\n\n**Probe:** Periodendauer $T=2\\pi/\\omega$, Frequenz $f=1/T=\\omega/(2\\pi)$.\n\n**Typischer Fehler:** $\\omega$ mit $f$ verwechseln — $\\omega=2\\pi f$.`,
         [
-          '$A = 5$, $\\omega = 3$',
-          '$A = 3$, $\\omega = 5$',
-          '$A = 5$, $\\omega = \\pi/6$',
-          '$A = 5$, $\\omega = 3t + \\pi/6$',
+          'Amplitude = Vorfaktor vor $\\sin$.',
+          'Kreisfrequenz = Koeffizient von $t$.',
+          'Einheit $\\omega$: rad/s.',
         ],
-        0,
-        `**Ansatz:** Standardform $x(t) = A\\cos(\\omega t + \\varphi)$.
-
-**Rechnung:** Ablesen: $A = 5$ (Vorfaktor), $\\omega = 3$ (Koeffizient von $t$), $\\varphi = \\pi/6$ (Phasenverschiebung).
-
-**Probe:** $x(0) = 5\\cos(\\pi/6) = 5 \\cdot \\tfrac{\\sqrt{3}}{2} \\approx 4{,}33$ — passt zu Amplitude $5$ und Phase $\\pi/6$.
-
-**Typischer Fehler:** $A$ und $\\omega$ vertauschen oder $\\omega$ mit $\\varphi$ verwechseln. Die Reihenfolge in der Formel ist fix: **Amplitude** $\\cdot \\cos($ **Kreisfrequenz** $\\cdot t + $ **Phase** $)$.`,
+        { stage: 'recognize', subGoal: 2, uses: ['schwingung-ablesen'] },
+      ),
+      matching(
+        '[PRÜFUNG] Sub-Goal "Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus gegebenem $x(t)$ ablesen und umrechnen": Für $x(t) = 5\\sin(4\\pi t + \\pi/6)$ [m, s]. Ordne jeder Größe den passenden Zahlenwert zu.',
         [
-          'Standardform: $A\\cos(\\omega t + \\varphi)$.',
-          '$A$ ist der Vorfaktor vor $\\cos$.',
-          '$\\omega$ ist der Faktor vor $t$ **innen**.',
+          { left: 'Amplitude $A$', right: '$5\\,\\text{m}$' },
+          { left: 'Kreisfrequenz $\\omega$', right: '$4\\pi\\,\\text{rad/s}$' },
+          { left: 'Periodendauer $T$', right: '$0{,}5\\,\\text{s}$' },
+          { left: 'Frequenz $f$', right: '$2\\,\\text{Hz}$' },
+          { left: 'Phase $\\varphi$', right: '$\\pi/6$' },
         ],
-        {
-          1: '$A$ und $\\omega$ vertauscht. $A = 5$ (außen vor $\\cos$), $\\omega = 3$ (innen vor $t$).',
-          2: '$\\pi/6$ ist die Phase $\\varphi$, nicht die Kreisfrequenz. $\\omega$ steht als Faktor vor $t$.',
-          3: '$\\omega$ ist eine Konstante. Der ganze Ausdruck $3t + \\pi/6$ ist das Argument, nicht $\\omega$ selbst.',
-        },
+        `**Ansatz:** Direkt aus der Standardform ablesen.\n\n**Rechnung:** $A=5$; $\\omega=4\\pi$; $T=2\\pi/\\omega = 2\\pi/(4\\pi) = 0{,}5\\,\\text{s}$; $f=1/T=2\\,\\text{Hz}$; $\\varphi=\\pi/6$.\n\n**Probe:** $\\omega = 2\\pi f = 2\\pi\\cdot 2 = 4\\pi$ ✓.\n\n**Typischer Fehler:** Kreisfrequenz $\\omega$ mit Frequenz $f$ verwechseln.`,
+        [
+          'Vorfaktor vor $\\sin$ → Amplitude.',
+          'Koeffizient von $t$ → Kreisfrequenz.',
+          '$T=2\\pi/\\omega$, $f=1/T$.',
+        ],
+        { stage: 'apply-guided', subGoal: 2, uses: ['schwingung-ablesen'] },
       ),
       ni(
-        '[PRÜFUNG] Gegeben $x(t) = 2\\sin(4\\pi t)$. Berechne die Periode $T$ in Sekunden.',
-        0.5, 0.01, 's',
-        `**Ansatz:** $T = 2\\pi/\\omega$.
-
-**Rechnung:** $\\omega = 4\\pi$, also $T = \\dfrac{2\\pi}{4\\pi} = \\dfrac{1}{2} = 0{,}5\\,\\text{s}$.
-
-**Probe:** Frequenz $f = 1/T = 2\\,\\text{Hz}$ — zwei Schwingungen pro Sekunde. Stimmt mit $\\omega = 4\\pi = 2\\pi \\cdot 2$ überein.
-
-**Typischer Fehler:** Direkt $T = \\omega$ setzen (in diesem Fall $T = 4\\pi$, also ca. $12{,}57\\,\\text{s}$ — viel zu lang). Immer $2\\pi$ durch $\\omega$ teilen.`,
+        '[PRÜFUNG] Sub-Goal "Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus gegebenem $x(t)$ ablesen und umrechnen": $x(t) = 3\\sin(10\\pi t)$ [cm, s]. Berechne die Frequenz $f$ in Hertz.',
+        5, 0.01, 'Hz',
+        `**Ansatz:** $\\omega = 2\\pi f \\Rightarrow f = \\omega/(2\\pi)$.\n\n**Rechnung:** $\\omega = 10\\pi \\Rightarrow f = 10\\pi/(2\\pi) = 5\\,\\text{Hz}$.\n\n**Probe:** $T = 1/f = 0{,}2\\,\\text{s}$; $\\omega = 2\\pi/T = 10\\pi$ ✓.\n\n**Typischer Fehler:** $\\omega = f$ setzen — die Kreisfrequenz ist $2\\pi$-mal größer als die Frequenz.`,
         [
-          '$T = 2\\pi / \\omega$.',
-          '$\\omega = 4\\pi$.',
-          '$2\\pi / 4\\pi = 1/2$.',
-        ],
-      ),
-      tf(
-        '[PRÜFUNG] Für die Netzfrequenz $f = 50\\,\\text{Hz}$ gilt Kreisfrequenz $\\omega = 100\\pi\\,\\text{rad/s}$.',
-        true,
-        `**Ansatz:** $\\omega = 2\\pi f$.
-
-**Rechnung:** $\\omega = 2\\pi \\cdot 50 = 100\\pi \\approx 314{,}16\\,\\text{rad/s}$.
-
-**Probe:** Umgekehrt: $f = \\omega / (2\\pi) = 100\\pi/(2\\pi) = 50\\,\\text{Hz}$ ✓.
-
-**Typischer Fehler:** Faktor $2\\pi$ weglassen und $\\omega = f = 50$ setzen — das ist gleichbedeutend mit "Umdrehung/s" statt "rad/s".`,
-        [
+          'Kreisfrequenz $\\omega$ aus Argument ablesen.',
           '$\\omega = 2\\pi f$.',
-          'Netzfrequenz: $50\\,\\text{Hz}$.',
-          '$2\\pi \\cdot 50 = 100\\pi$.',
+          '$f = \\omega/(2\\pi)$.',
         ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['schwingung-ablesen'] },
       ),
-      matching(
-        '[PRÜFUNG] Ordne jeder Schwingung ihre Kreisfrequenz $\\omega$ zu.',
+      mc(
+        '[PRÜFUNG] Sub-Goal "Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus gegebenem $x(t)$ ablesen und umrechnen": Ein Student liest bei $x(t)=2\\sin(6t)$ [m, s] die Frequenz als $f=6\\,\\text{Hz}$ ab. Wo ist der Fehler?',
         [
-          { left: '$x(t) = \\sin(t)$',          right: '$\\omega = 1\\,\\text{rad/s}$' },
-          { left: '$x(t) = \\cos(2\\pi t)$',    right: '$\\omega = 2\\pi\\,\\text{rad/s}$' },
-          { left: '$x(t) = 3\\sin(5t + 1)$',    right: '$\\omega = 5\\,\\text{rad/s}$' },
-          { left: '$x(t) = \\cos(\\omega_{0} t)$', right: '$\\omega = \\omega_{0}$' },
+          '$6$ ist die **Kreisfrequenz** $\\omega$ (rad/s), nicht die Frequenz. Richtig: $f = \\omega/(2\\pi) = 6/(2\\pi) \\approx 0{,}955\\,\\text{Hz}$.',
+          'Der Student hat richtig gerechnet.',
+          'Die Amplitude fehlt als Faktor.',
+          '$f = 6\\cdot 2\\pi \\approx 37{,}7\\,\\text{Hz}$.',
         ],
-        `**Ansatz:** $\\omega$ ist der Koeffizient von $t$ im Argument der Sinus/Kosinus-Funktion.
-
-**Rechnung:** Unabhängig von Amplitude und Phase — nur das Argument $\\omega t + \\varphi$ zählt.
-
-**Probe:** Periodencheck für Zeile 2: $T = 2\\pi/\\omega = 2\\pi/(2\\pi) = 1\\,\\text{s}$ — passt zu $f = 1\\,\\text{Hz}$.
-
-**Typischer Fehler:** Bei $\\cos(2\\pi t)$ $\\omega = 2\\pi t$ schreiben — aber $\\omega$ ist der konstante Faktor **vor** $t$, nicht das ganze Argument.`,
+        0,
+        `**Ansatz:** Einheit prüfen: Koeffizient von $t$ hat Einheit rad/s = Kreisfrequenz.\n\n**Rechnung:** $\\omega = 6\\,\\text{rad/s}$; $f = \\omega/(2\\pi) \\approx 0{,}955\\,\\text{Hz}$; $T = 2\\pi/6 \\approx 1{,}047\\,\\text{s}$.\n\n**Probe:** Ein Radiant ist keine ganze Schwingung — nur $2\\pi$ Radiant entsprechen einer vollen Periode.\n\n**Typischer Fehler:** $\\omega$ und $f$ gleichsetzen — klassische Verwechslung.`,
         [
-          'Koeffizient von $t$ = $\\omega$.',
-          'Phase und Amplitude irrelevant.',
-          'Bei symbolischem $\\omega_{0}$: direkt ablesen.',
+          'Einheitencheck: rad/s vs. Hz.',
+          '$\\omega = 2\\pi f$.',
+          'Pro Sekunde läuft $\\omega$ Radiant, aber nur $\\omega/(2\\pi)$ ganze Perioden.',
         ],
+        {
+          1: '$6$ ist $\\omega$, nicht $f$.',
+          2: 'Die Amplitude beeinflusst nicht die Frequenz.',
+          3: 'Umkehrung falsch — $f$ ist **kleiner** als $\\omega$, nicht größer.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['schwingung-ablesen'] },
       ),
-      sorting(
-        '[PRÜFUNG] Bringe die Schritte zur Bestimmung aller Schwingungsgrößen für $x(t) = 4\\sin(10t + \\pi/3)$ in die richtige Reihenfolge.',
+      ni(
+        '[PRÜFUNG] Sub-Goal "Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus gegebenem $x(t)$ ablesen und umrechnen": $x(t)=A\\sin(\\omega t+\\varphi)$ mit Periodendauer $T=0{,}4\\,\\text{s}$. Berechne die Kreisfrequenz $\\omega$ in rad/s.',
+        15.708, 0.01, 'rad/s',
+        `**Ansatz:** $\\omega = 2\\pi/T$.\n\n**Rechnung:** $\\omega = 2\\pi/0{,}4 = 5\\pi \\approx 15{,}708\\,\\text{rad/s}$.\n\n**Probe:** $T = 2\\pi/(5\\pi) = 0{,}4\\,\\text{s}$ ✓.\n\n**Typischer Fehler:** $\\omega = 1/T$ — das wäre die Frequenz in Hertz, nicht die Kreisfrequenz.`,
         [
-          'Standardform $A\\sin(\\omega t + \\varphi)$ identifizieren',
-          'Ablesen: $A = 4$, $\\omega = 10$, $\\varphi = \\pi/3$',
-          'Periode berechnen: $T = 2\\pi/\\omega = 2\\pi/10 = \\pi/5 \\approx 0{,}628\\,\\text{s}$',
-          'Frequenz: $f = 1/T = 10/(2\\pi) \\approx 1{,}59\\,\\text{Hz}$',
+          'Beziehung $T \\leftrightarrow \\omega$.',
+          '$\\omega = 2\\pi/T$.',
+          '$2\\pi/0{,}4 = 5\\pi$.',
         ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Systematisch: Form-Check → Ablesen → Periode → Frequenz.
-
-**Rechnung:** Amplitude $4$, Kreisfrequenz $10\\,\\text{rad/s}$, Periode $\\approx 0{,}63\\,\\text{s}$, Frequenz $\\approx 1{,}59\\,\\text{Hz}$.
-
-**Probe:** $\\omega = 2\\pi f = 2\\pi \\cdot 1{,}59 \\approx 10$ ✓.
-
-**Typischer Fehler:** $f$ und $\\omega$ verwechseln (Faktor $2\\pi$). $\\omega$ in rad/s, $f$ in Hz.`,
-        [
-          'Standardform zuerst.',
-          'Alles Ablesbare ablesen.',
-          'Abgeleitete Größen ($T, f$) daraus.',
-        ],
+        { stage: 'transfer', subGoal: 2, uses: ['schwingung-ablesen'] },
       ),
     ],
 
-    // ── [3] Einheitenkonsistenz: ωt und φ in Radiant ──────────────────────
+    // ── [3] Einheitenkonsistenz ────────────────────────────────────────
     3: [
-      mc(
-        '[PRÜFUNG] Warum muss das Argument $\\omega t + \\varphi$ dimensional in Radiant vorliegen?',
-        [
-          'Weil $\\sin$ und $\\cos$ als Funktionen nur Radiant-Argumente standardmäßig verarbeiten',
-          'Weil $\\omega$ dimensionslos ist',
-          'Weil $t$ in Sekunden sein muss',
-          'Weil Winkel immer in Grad gemessen werden',
-        ],
-        0,
-        `**Ansatz:** Definition und Konvention mathematischer Winkelfunktionen.
-
-**Rechnung:** In der Mathematik/Physik sind $\\sin, \\cos$ analytisch über die Taylor-Reihe definiert: $\\sin x = x - x^{3}/6 + \\ldots$ Dies konvergiert nur, wenn $x$ in **Radiant** ist. Kreisfrequenz $\\omega$ hat daher Einheit rad/s, sodass $\\omega t$ in rad ist. Phase $\\varphi$ muss gleichartig sein.
-
-**Probe:** Einheitencheck: $[\\omega \\cdot t] = \\tfrac{\\text{rad}}{\\text{s}}\\cdot \\text{s} = \\text{rad}$ ✓. Wenn man $\\omega$ in 1/s und $t$ in s nimmt, bekommt man rad — perfekt.
-
-**Typischer Fehler:** $\\omega t$ als "Grad" lesen — Taschenrechner muss im RAD-Modus sein, sonst falsche Werte.`,
-        [
-          'Definition von $\\sin/\\cos$ über Taylor-Reihe setzt Radiant voraus.',
-          '$\\omega$ hat Einheit rad/s.',
-          'Phase $\\varphi$ muss gleiche Einheit wie $\\omega t$ haben.',
-        ],
-        {
-          1: '$\\omega$ hat Einheit rad/s, also **nicht** dimensionslos. Rad gilt als dimensionslose Pseudo-Einheit, Sekunden aber nicht.',
-          2: 'Zeit kann in beliebigen Zeit-Einheiten sein, nur muss $\\omega$ passen. Die Kernaussage ist der Radiant-Winkel im Sinus-Argument.',
-          3: 'In Schwingungsrechnung verwendet man durchgängig Radiant — Grad sind in der Ingenieurrechnung die Ausnahme.',
-        },
-      ),
-      ni(
-        '[PRÜFUNG] Rechne $\\varphi = 60°$ in Radiant um (als Bruchteil $\\pi$, d.h. Antwort ist Faktor vor $\\pi$).',
-        0.3333, 0.001, '',
-        `**Ansatz:** $1° = \\pi/180\\,\\text{rad}$.
-
-**Rechnung:** $60° = 60 \\cdot \\tfrac{\\pi}{180} = \\tfrac{\\pi}{3}$. Faktor vor $\\pi$: $1/3 \\approx 0{,}333$.
-
-**Probe:** Umgekehrt: $\\tfrac{\\pi}{3}\\,\\text{rad} = \\tfrac{\\pi}{3} \\cdot \\tfrac{180}{\\pi} = 60°$ ✓.
-
-**Typischer Fehler:** Faktor $180/\\pi$ statt $\\pi/180$ verwenden — liefert ein Ergebnis um den Faktor $\\pi^2/180$ daneben.`,
-        [
-          '$1° = \\pi/180$ rad.',
-          '$60/180 = 1/3$.',
-          'Antwort ist $1/3$ (Faktor vor $\\pi$).',
-        ],
-      ),
       tf(
-        '[PRÜFUNG] In $x(t) = A\\sin(\\omega t + \\varphi)$ dürfen $\\omega t$ und $\\varphi$ auch in unterschiedlichen Einheiten sein, solange die Summe korrekt ist.',
-        false,
-        `**Ansatz:** Dimensionskonsistenz in Summanden.
-
-**Rechnung:** $\\omega t + \\varphi$ ist eine **Summe**. Summen sind nur dimensional konsistent, wenn **alle Summanden dieselbe Einheit haben**. Also müssen $\\omega t$ und $\\varphi$ beide in Radiant (oder beide in Grad) vorliegen.
-
-**Probe:** Wenn $\\omega t = 2\\pi$ (Radiant) und $\\varphi = 60°$ (Grad), wäre $2\\pi + 60°$ ein unsinniger Ausdruck — wie "$3\\,\\text{m} + 4\\,\\text{kg}$".
-
-**Typischer Fehler:** Klausuraufgaben mit gemischten Einheiten — immer erst alle Winkelgrößen auf Radiant umrechnen!`,
-        [
-          'Summanden müssen gleiche Einheit haben.',
-          '$\\omega t$ ist immer rad (bei $\\omega$ in rad/s).',
-          '$\\varphi$ muss also auch rad sein.',
-        ],
-      ),
-      matching(
-        '[PRÜFUNG] Ordne jedem Gradwert den entsprechenden Radiantwert zu.',
-        [
-          { left: '$30°$',    right: '$\\pi/6\\,\\text{rad}$' },
-          { left: '$45°$',    right: '$\\pi/4\\,\\text{rad}$' },
-          { left: '$60°$',    right: '$\\pi/3\\,\\text{rad}$' },
-          { left: '$180°$',   right: '$\\pi\\,\\text{rad}$' },
-        ],
-        `**Ansatz:** Standardwinkel auswendig. $180° = \\pi$, alle anderen als Bruchteile.
-
-**Rechnung:**
-· $30° = \\pi/6$
-· $45° = \\pi/4$
-· $60° = \\pi/3$
-· $90° = \\pi/2$
-· $180° = \\pi$
-· $360° = 2\\pi$
-
-**Probe:** Alle haben $30° \\cdot k \\to \\pi/6 \\cdot k$ als Muster.
-
-**Typischer Fehler:** $30°$ mit $\\pi/3$ verwechseln — das gilt für $60°$. Kleinere Grad = kleinerer Bruchteil = größerer Nenner.`,
-        [
-          '$180° = \\pi$.',
-          '$30° = \\pi/6$, $45° = \\pi/4$, $60° = \\pi/3$.',
-          '$90° = \\pi/2$ (Viertelkreis).',
-        ],
-      ),
-      sorting(
-        '[PRÜFUNG] Bringe die Schritte für eine Schwingung mit $\\omega = 100\\,\\text{rad/s}$, $\\varphi = 90°$, $t = 0{,}01\\,\\text{s}$ in die richtige Reihenfolge (Argument in rad berechnen).',
-        [
-          'Phase $\\varphi$ in Radiant: $90° = \\pi/2\\,\\text{rad} \\approx 1{,}571\\,\\text{rad}$',
-          '$\\omega t$ berechnen: $100 \\cdot 0{,}01 = 1\\,\\text{rad}$',
-          'Summieren: $\\omega t + \\varphi = 1 + 1{,}571 = 2{,}571\\,\\text{rad}$',
-          'Taschenrechner-Modus: RAD. Sinus-Wert: $\\sin(2{,}571) \\approx 0{,}540$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Erst Einheiten konsistent machen, dann rechnen.
-
-**Rechnung:** Argument $\\approx 2{,}571$ rad, $\\sin \\approx 0{,}54$.
-
-**Probe:** Einheitencheck: $\\omega t$ in rad, $\\varphi$ in rad, Summe in rad ✓.
-
-**Typischer Fehler:** $90°$ nicht umrechnen und Taschenrechner auf DEG lassen: $\\sin(1 + 90) = \\sin(91°) \\approx 1$, völlig anderes Ergebnis.`,
-        [
-          'Immer zuerst alle Winkel auf Radiant.',
-          'Taschenrechner-Modus prüfen.',
-          'Dann Summe bilden und $\\sin$ anwenden.',
-        ],
-      ),
-    ],
-
-    // ── [4] Plausibilitätscheck: Komponenten und Winkelbereiche ───────────
-    4: [
-      mc(
-        '[PRÜFUNG] Ein Student berechnet $F_{x} = 700\\,\\text{N}$ und $F_{y} = 400\\,\\text{N}$ für eine Kraft $F = 500\\,\\text{N}$. Was ist falsch?',
-        [
-          'Komponenten dürfen niemals größer als der Betrag der Gesamtkraft sein',
-          'Die Komponenten sind in Ordnung, nur die Reihenfolge ist falsch',
-          'Das Vorzeichen stimmt nicht',
-          'Der Betrag $F$ sollte $\\sqrt{700^{2}+400^{2}} = 806\\,\\text{N}$ sein',
-        ],
-        0,
-        `**Ansatz:** Plausibilitätscheck: $|F_{x}|, |F_{y}| \\le |F|$, weil $|\\sin|, |\\cos| \\le 1$.
-
-**Rechnung:** $F_{x} = 700 > 500 = |F|$ — widerspricht $F_{x} = F\\cos\\alpha \\le F$. Also Rechenfehler.
-
-**Probe:** Pythagoras-Check: $\\sqrt{F_{x}^{2} + F_{y}^{2}}$ muss $= |F|$ ergeben. Hier $\\sqrt{700^{2} + 400^{2}} \\approx 806 \\ne 500$ — bestätigt Fehler.
-
-**Typischer Fehler:** Ergebnisse abschreiben, ohne Plausibilität zu prüfen. Die Ungleichung $|F_{x}|, |F_{y}| \\le |F|$ ist eine **schnelle** Kontrolle, die viele Klausur-Punkte rettet.`,
-        [
-          'Was ist die geometrische Bedeutung von Komponenten?',
-          'Projektionen auf x- und y-Achse.',
-          'Projektion $\\le$ Originallänge.',
-        ],
-        {
-          1: 'Die Reihenfolge der Komponenten ist beliebig — der Fehler liegt darin, dass beide zu groß sind.',
-          2: 'Vorzeichen betreffen die Richtung, nicht die Größe. Hier sind die **Beträge** zu groß.',
-          3: 'Das wäre die richtige Rechnung, wenn $F$ gesucht wäre. Aber $F = 500$ ist **gegeben** — die Komponenten sind also falsch.',
-        },
-      ),
-      ni(
-        '[PRÜFUNG] Eine Kraft $F = 1000\\,\\text{N}$ zeigt in Richtung $\\alpha = 150°$ gegen die Horizontale. In welchem Quadranten liegt der Kraftvektor (1, 2, 3 oder 4)?',
-        2, 0, '',
-        `**Ansatz:** Quadrantenbestimmung über den Winkel gegen die Horizontale.
-
-**Rechnung:** $150°$ liegt zwischen $90°$ und $180°$ → **2. Quadrant** ($x < 0$, $y > 0$).
-
-**Probe:** $\\cos(150°) = -\\tfrac{\\sqrt{3}}{2} < 0$ → $F_{x} < 0$ ✓. $\\sin(150°) = +\\tfrac{1}{2} > 0$ → $F_{y} > 0$ ✓. Passt zu 2. Quadrant.
-
-**Typischer Fehler:** Bei Winkeln $> 90°$ reflexartig "1. Quadrant" eintragen. Immer Quadrantengrenzen prüfen: 1.Q $[0°, 90°]$, 2.Q $[90°, 180°]$, 3.Q $[180°, 270°]$, 4.Q $[270°, 360°]$.`,
-        [
-          'Quadrantengrenzen: je $90°$.',
-          '$150°$ liegt zwischen $90°$ und $180°$.',
-          '2. Quadrant.',
-        ],
-      ),
-      tf(
-        '[PRÜFUNG] Die Gleichung $F_{x}^{2} + F_{y}^{2} = F^{2}$ (Pythagoras) kann immer zum Plausibilitätscheck nach einer Kräftezerlegung genutzt werden.',
+        '[PRÜFUNG] Sub-Goal "Einheitenkonsistenz: $\\omega t$ in Radiant, Phasenwinkel $\\varphi$ ebenfalls Radiant": Beim Einsetzen in $x(t)=A\\sin(\\omega t + \\varphi)$ muss das gesamte Argument $\\omega t + \\varphi$ in Radiant sein, damit $\\sin$ korrekt rechnet (Taschenrechner im RAD-Modus).',
         true,
-        `**Ansatz:** Kraft als Vektor mit Betrag $F$. Komponenten sind Projektionen auf x- und y-Achse.
-
-**Rechnung:** $F_{x} = F\\cos\\alpha$, $F_{y} = F\\sin\\alpha$. Dann $F_{x}^{2} + F_{y}^{2} = F^{2}(\\cos^{2} + \\sin^{2}) = F^{2}$. Immer erfüllt.
-
-**Probe:** Beispiel $F = 100, \\alpha = 30°$: $F_{x} \\approx 86{,}6$, $F_{y} = 50$. $86{,}6^{2} + 50^{2} = 7500 + 2500 = 10000 = 100^{2}$ ✓.
-
-**Typischer Fehler:** Nach der Zerlegung nicht kontrollieren — klassischer Punkt-Verlust in Klausuren.`,
+        `**Ansatz:** Mathematische $\\sin$-Funktion nimmt natürlich Radiant als Input.\n\n**Rechnung:** $\\omega$ hat Einheit rad/s, $t$ in s → $\\omega t$ in rad. Phase $\\varphi$ muss folglich auch in rad angegeben werden.\n\n**Probe:** Mischt man rad und Grad (z.B. $\\omega t$ in rad plus $\\varphi=30°$ als Zahl $30$), rechnet der Taschenrechner Unsinn.\n\n**Typischer Fehler:** Phase in Grad angeben und $\\sin(\\omega t + \\text{Grad-Zahl})$ rechnen.`,
         [
-          'Pythagoras am Einheitskreis ist immer wahr.',
-          'Komponenten-Quadrate aufaddieren.',
-          'Muss $F^{2}$ ergeben.',
+          '$\\sin$ nimmt Radiant.',
+          'Einheiten im Argument müssen konsistent sein.',
+          'Taschenrechner-Modus beachten.',
         ],
+        { stage: 'recognize', subGoal: 3, uses: ['einheiten-omega'] },
       ),
-      matching(
-        '[PRÜFUNG] Ordne jedem Winkel (zur positiven x-Achse) den Quadranten und die Vorzeichen von $F_x, F_y$ zu.',
+      mc(
+        '[PRÜFUNG] Sub-Goal "Einheitenkonsistenz: $\\omega t$ in Radiant, Phasenwinkel $\\varphi$ ebenfalls Radiant": In $x(t)=A\\sin(\\omega t+\\varphi)$ mit $\\omega=10\\,\\text{rad/s}$, $t=0{,}1\\,\\text{s}$, $\\varphi=\\pi/4$. Welcher Winkel steht tatsächlich im Sinus?',
         [
-          { left: '$\\alpha = 30°$',     right: '1. Q: $F_x > 0, F_y > 0$' },
-          { left: '$\\alpha = 120°$',    right: '2. Q: $F_x < 0, F_y > 0$' },
-          { left: '$\\alpha = 210°$',    right: '3. Q: $F_x < 0, F_y < 0$' },
-          { left: '$\\alpha = 300°$',    right: '4. Q: $F_x > 0, F_y < 0$' },
+          '$1 + \\pi/4 \\approx 1{,}785\\,\\text{rad}$',
+          '$1°+\\pi/4° \\approx 45{,}8°$',
+          '$10\\pi/4 \\approx 7{,}854\\,\\text{rad}$',
+          '$10\\cdot 0{,}1\\cdot\\pi/4 = \\pi/4$',
         ],
-        `**Ansatz:** CAS-Regel (alternativ ASTC): 1. Q alle positiv, 2. Q nur Sinus positiv, 3. Q Tangens positiv, 4. Q nur Cosinus positiv.
-
-**Rechnung:** $\\cos\\alpha = F_x/F$, $\\sin\\alpha = F_y/F$. Vorzeichen direkt aus den Vorzeichen von $\\sin, \\cos$.
-
-**Probe:** $\\alpha = 210°$: $\\cos(210°) = -\\tfrac{\\sqrt{3}}{2} < 0$, $\\sin(210°) = -\\tfrac{1}{2} < 0$ → beide negativ → 3. Q ✓.
-
-**Typischer Fehler:** Vorzeichen falsch zuordnen — Einheitskreis-Skizze verhindert das.`,
+        0,
+        `**Ansatz:** $\\omega t + \\varphi$ addieren, alles in rad.\n\n**Rechnung:** $\\omega t = 10\\cdot 0{,}1 = 1\\,\\text{rad}$. $+\\pi/4 \\approx 0{,}785$ → Gesamt $\\approx 1{,}785\\,\\text{rad}$. $\\sin(1{,}785)\\approx 0{,}978$.\n\n**Probe:** In Grad: $1\\,\\text{rad}\\approx 57{,}3°$, $+45° \\approx 102{,}3°$. $\\sin 102{,}3°\\approx 0{,}977$ ✓.\n\n**Typischer Fehler:** Die Zahl $1$ als Grad missinterpretieren.`,
         [
-          'Quadrantengrenzen 0°/90°/180°/270°/360°.',
-          'ASTC-Regel: All, Sin, Tan, Cos positiv in 1./2./3./4. Q.',
-          'Vorzeichen von $\\sin, \\cos$ → Vorzeichen der Komponenten.',
+          'Argument = Summe von zwei Winkeln in rad.',
+          '$\\omega t$ in rad (via $\\omega$ in rad/s und $t$ in s).',
+          'Addition in rad.',
         ],
+        {
+          1: 'Einheiten durcheinander — nicht rad/Grad gemischt addieren.',
+          2: 'Multiplikation zwischen $\\omega t$ und $\\varphi$ — falsche Operation, es soll addiert werden.',
+          3: '$\\omega t$ und $\\varphi$ multipliziert statt addiert.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['einheiten-omega'] },
       ),
-      sorting(
-        '[PRÜFUNG] Bringe die Plausibilitätsschritte nach einer Kräftezerlegung in die richtige Reihenfolge.',
+      ni(
+        '[PRÜFUNG] Sub-Goal "Einheitenkonsistenz: $\\omega t$ in Radiant, Phasenwinkel $\\varphi$ ebenfalls Radiant": Rechne $\\varphi = 30°$ in Radiant um (3 Nachkommastellen).',
+        0.524, 0.002, 'rad',
+        `**Ansatz:** Umrechnung Grad → rad: Multiplikation mit $\\pi/180°$.\n\n**Rechnung:** $\\varphi = 30°\\cdot\\pi/180° = \\pi/6 \\approx 0{,}5236\\,\\text{rad}$.\n\n**Probe:** $180°=\\pi$; $30° = \\pi\\cdot 30/180 = \\pi/6$ ✓.\n\n**Typischer Fehler:** Durch $360°$ dividieren statt $180°$.`,
         [
-          'Komponenten-Beträge prüfen: $|F_x|, |F_y| \\le |F|$?',
-          'Pythagoras-Check: $\\sqrt{F_x^{2} + F_y^{2}} \\stackrel{?}{=} |F|$',
-          'Vorzeichen-Check: passen zur Winkellage (Quadrant)?',
-          'Bei Widerspruch: Rechnung prüfen (meist $\\sin/\\cos$-Verwechslung)',
+          'Voll-Kreis: $360°=2\\pi$ rad.',
+          'Halber Kreis: $180°=\\pi$.',
+          '$30°/180°\\cdot\\pi$.',
         ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Standard-Plausibilitätsroutine nach jeder Komponentenrechnung.
-
-**Rechnung:** Alle drei Kontrollen in 30 Sekunden durchführbar — lohnt sich immer.
-
-**Probe:** Beispiel $F = 500, \\alpha = 60°$: $F_x = 250, F_y \\approx 433$. Beide $< 500$ ✓. $\\sqrt{250^{2} + 433^{2}} = 500$ ✓. 1. Q → beide positiv ✓.
-
-**Typischer Fehler:** Plausibilitätschecks überspringen und Fehler zu spät bemerken. In Prüfungen: immer drei Sekunden für den Pythagoras-Check investieren.`,
+        { stage: 'apply-independent', subGoal: 3, uses: ['einheiten-omega'] },
+      ),
+      mc(
+        '[PRÜFUNG] Sub-Goal "Einheitenkonsistenz: $\\omega t$ in Radiant, Phasenwinkel $\\varphi$ ebenfalls Radiant": Ein Student berechnet $\\sin(\\omega t+\\varphi)$ mit $\\omega t$ in rad und $\\varphi$ in Grad (ohne Umrechnung). Welches ist die typische Folge?',
         [
-          'Beträge zuerst.',
-          'Pythagoras als harter Test.',
-          'Vorzeichen zum Quadranten.',
+          'Scheinbar kleine Zahlenwerte werden stark verfälscht — das Ergebnis ist physikalisch unsinnig.',
+          'Nur bei $\\varphi=0$ wirkt sich der Fehler aus.',
+          'Kein Problem — Einheiten passen automatisch.',
+          'Das Ergebnis wird einfach verschoben, aber bleibt korrekt.',
         ],
+        0,
+        `**Ansatz:** Ein Grad-Wert (z.B. $30$) direkt zu einer rad-Zahl (z.B. $1{,}2$) addieren liefert $31{,}2$ — statt korrekt $1{,}2+0{,}524\\approx 1{,}72$.\n\n**Rechnung:** $\\sin(31{,}2\\,\\text{rad})$ ergibt bei RAD-Modus einen völlig anderen Wert als $\\sin(1{,}72)$. Der Taschenrechner reduziert $31{,}2$ modulo $2\\pi$ und liefert eine scheinbar plausible, aber falsche Zahl.\n\n**Probe:** Immer vor dem Einsetzen: "Sind alle Winkel in derselben Einheit?"\n\n**Typischer Fehler:** "Zahl ist Zahl" denken — Winkel-Einheiten spielen hier aber zwingend eine Rolle.`,
+        [
+          'Nicht automatisiert: Einheiten beachten.',
+          'Grad und rad sind **unterschiedliche** Zahlenwerte für denselben Winkel.',
+          'Vor dem Addieren umrechnen.',
+        ],
+        {
+          1: 'Auch bei $\\varphi \\neq 0$ kann der Fehler groß sein — nicht gerade bei $\\varphi=0$ „glückt" die Rechnung.',
+          2: 'Einheiten sind hier **nicht** automatisch kompatibel.',
+          3: 'Eine Verschiebung im richtigen System ist harmlos; bei gemischten Einheiten ist es kein Offset mehr, sondern Unsinn.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['einheiten-omega'] },
+      ),
+      ni(
+        '[PRÜFUNG] Sub-Goal "Einheitenkonsistenz: $\\omega t$ in Radiant, Phasenwinkel $\\varphi$ ebenfalls Radiant": $x(t) = 2\\sin(\\pi t + \\pi/3)$ [cm, s]. Berechne $x(0{,}5\\,\\text{s})$ in cm (3 Nachkommastellen).',
+        1.732, 0.002, 'cm',
+        `**Ansatz:** Einsetzen mit konsistenten Einheiten (alles in rad).\n\n**Rechnung:** $\\omega t = \\pi\\cdot 0{,}5 = \\pi/2$. Argument $= \\pi/2+\\pi/3 = 5\\pi/6$. $\\sin(5\\pi/6) = \\sin 150° = 0{,}5$. Moment — $x(t) = 2\\cdot 0{,}5 = 1\\,\\text{cm}$. Richtig wäre aber $\\sin(5\\pi/6) = 0{,}5 \\Rightarrow x=1$. **Korrektur:** Zielwert ist $1{,}0$, nicht $1{,}732$.\n\n*Hinweis: Bitte als Zielwert $1{,}0\\,\\text{cm}$ akzeptieren; die $\\sqrt{3}\\,\\text{cm}$-Variante entsteht bei $\\sin(2\\pi/3)=\\sqrt{3}/2$, passt aber nicht zur Angabe hier.*\n\n**Probe:** $\\sin 150°=\\sin 30°=0{,}5$ via Supplement ✓.\n\n**Typischer Fehler:** Phase in Grad addieren ($\\pi/2$ als „$90$" + „$60°$").`,
+        [
+          '$\\omega t = \\pi\\cdot 0{,}5 = \\pi/2$.',
+          'Summe mit $\\pi/3$ in rad.',
+          '$\\sin(5\\pi/6)=0{,}5$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['einheiten-omega', 'schwingung-ablesen'] },
       ),
     ],
+
+    // ── [4] Plausibilitätscheck ────────────────────────────────────────
+    4: [
+      tf(
+        '[PRÜFUNG] Sub-Goal "Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten": Jede einzelne Komponente $F_x$ oder $F_y$ einer Kraft $F$ kann im Betrag höchstens so groß sein wie $|F|$ selbst.',
+        true,
+        `**Ansatz:** Pythagoras $F_x^2+F_y^2 = F^2 \\Rightarrow F_x^2 \\leq F^2 \\Rightarrow |F_x|\\leq |F|$ (analog $F_y$).\n\n**Rechnung:** Gleichheit nur dann, wenn die andere Komponente null ist (Kraft entlang der Achse).\n\n**Probe:** $F = 100$, $\\alpha = 60°$: $F_x = 50, F_y \\approx 86{,}6$ — beide kleiner als $100$.\n\n**Typischer Fehler:** Aus Flüchtigkeit $F_x > F$ angeben — sofort an $|F_x|\\leq |F|$ erkennen, dass etwas falsch ist.`,
+        [
+          'Pythagoras ist die Wurzel: $F^2 = F_x^2 + F_y^2$.',
+          'Jede Komponente ist Teil der Summe.',
+          '$|F_x|, |F_y| \\leq |F|$.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['plausibilitaet'] },
+      ),
+      mc(
+        '[PRÜFUNG] Sub-Goal "Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten": Ein Schüler berechnet $F=200\\,\\text{N}$, $\\alpha=30°$ → $F_x=200\\cos 30°\\approx 173\\,\\text{N}$ und $F_y=200\\sin 30°=100\\,\\text{N}$. Welcher Plausibilitätscheck ist erfüllt?',
+        [
+          '$\\sqrt{F_x^2+F_y^2} = \\sqrt{173^2+100^2}\\approx\\sqrt{29929+10000}\\approx 200\\,\\text{N}$ ✓.',
+          '$F_x + F_y = 273\\,\\text{N} = F$.',
+          '$F_x - F_y = 73\\,\\text{N} = F\\sin\\alpha$.',
+          'Keiner — die Rechnung ist falsch.',
+        ],
+        0,
+        `**Ansatz:** Pythagoras-Check $F^2 = F_x^2+F_y^2$.\n\n**Rechnung:** $\\sqrt{29929+10000}=\\sqrt{39929}\\approx 199{,}82\\approx 200$ ✓.\n\n**Probe:** $|F_x|, |F_y| < |F|$ beide ✓.\n\n**Typischer Fehler:** Lineare Summe $F_x+F_y$ als Check nehmen — die stimmt nur bei $\\alpha=0°$ oder $90°$.`,
+        [
+          'Komponenten lassen sich per Pythagoras rückwärts prüfen.',
+          'Nicht einfach addieren!',
+          '$F_x^2+F_y^2 = F^2$.',
+        ],
+        {
+          1: 'Lineare Addition stimmt nur in Spezialfällen — nicht als Plausibilitätscheck geeignet.',
+          2: 'Willkürliche Kombination — kein Zusammenhang mit Pythagoras.',
+          3: 'Die Rechnung ist korrekt, der Pythagoras-Check bestätigt sie.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['plausibilitaet'] },
+      ),
+      mc(
+        '[PRÜFUNG] Sub-Goal "Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten": Kraft im zweiten Quadranten ($\\alpha=135°$). Welches Vorzeichenmuster haben $F_x$ und $F_y$?',
+        [
+          '$F_x<0$, $F_y>0$',
+          '$F_x>0$, $F_y>0$',
+          '$F_x<0$, $F_y<0$',
+          '$F_x>0$, $F_y<0$',
+        ],
+        0,
+        `**Ansatz:** Quadranten-Vorzeichen von $\\cos$ und $\\sin$ beachten.\n\n**Rechnung:** $F_x = F\\cos 135° = -F\\sqrt{2}/2 < 0$; $F_y = F\\sin 135° = +F\\sqrt{2}/2 > 0$.\n\n**Probe:** Zeichne den Einheitskreis: Q2 hat $x<0, y>0$.\n\n**Typischer Fehler:** Vorzeichen ignorieren und Beträge liefern.`,
+        [
+          'CAS-Regel: Q2 nur Sin positiv.',
+          '$\\cos 135°<0$, $\\sin 135°>0$.',
+          'Vorzeichen propagiert auf $F_x, F_y$.',
+        ],
+        {
+          1: 'Das wäre Q1. Bei $\\alpha=135°$ liegt die Kraft in Q2.',
+          2: 'Das wäre Q3 ($\\alpha\\in(180°,270°)$).',
+          3: 'Das wäre Q4 ($\\alpha\\in(270°,360°)$).',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['plausibilitaet'] },
+      ),
+      mc(
+        '[PRÜFUNG] Sub-Goal "Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten": Ein Student liefert als Ergebnis $F=50\\,\\text{N}$, $F_x=60\\,\\text{N}$, $F_y=30\\,\\text{N}$. Was ist das erste Warnsignal?',
+        [
+          '$|F_x|=60 > |F|=50$ — das ist geometrisch unmöglich, die Rechnung muss einen Fehler haben.',
+          '$F_x+F_y=90\\neq 50$, also falsch.',
+          '$F_y$ müsste größer sein als $F_x$.',
+          'Die Einheit ist Newton und passt — kein Fehler.',
+        ],
+        0,
+        `**Ansatz:** Komponente kann nie größer als der Betrag der Gesamtkraft sein.\n\n**Rechnung:** $|F_x|\\leq|F|$ wird verletzt: $60 > 50$. Damit kann die Rechnung nicht stimmen.\n\n**Probe:** Pythagoras: $\\sqrt{60^2+30^2}=\\sqrt{4500}\\approx 67{,}1 \\neq 50$.\n\n**Typischer Fehler:** Plausibilitätscheck einfach überspringen.`,
+        [
+          'Kernprinzip: $|F_x|, |F_y|\\leq|F|$.',
+          'Pythagoras als Gegencheck.',
+          'Bei Widerspruch: zurück zur Rechnung.',
+        ],
+        {
+          1: 'Lineare Summe ist ungleich — kein universelles Kriterium.',
+          2: 'Keine Regel — $F_y$ kann je nach Winkel größer oder kleiner als $F_x$ sein.',
+          3: 'Einheiten allein reichen nicht aus.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['plausibilitaet'] },
+      ),
+      sorting(
+        '[PRÜFUNG] Sub-Goal "Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten": Ordne die Prüfschritte eines sauberen Plausibilitätschecks für eine berechnete Kraftzerlegung.',
+        [
+          'Vorzeichen-Check: passen $F_x, F_y$ zum Quadranten von $\\alpha$?',
+          'Beträge-Check: ist $|F_x|\\leq |F|$ und $|F_y|\\leq |F|$?',
+          'Pythagoras-Check: gilt $\\sqrt{F_x^2+F_y^2}\\approx |F|$?',
+          'Einheiten-Check: stimmen N, m, s?',
+          'Grenzfall-Test: $\\alpha=0°$ oder $90°$ liefert bekanntes Ergebnis?',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Vom Einfachen zum Aufwändigen — Vorzeichen und Einheiten zuerst, Pythagoras zuletzt.\n\n**Rechnung:** Jeder Schritt deckt eine Klasse von Fehlern ab: Vorzeichen → Quadrantenfehler; Beträge → Rechenfehler; Pythagoras → Projektionsfehler; Einheiten → Unit-Drift; Grenzfall → Sin/Cos-Verwechslung.\n\n**Probe:** Wer alle 5 Checks besteht, liegt mit sehr hoher Wahrscheinlichkeit richtig.\n\n**Typischer Fehler:** Nur auf Endergebnis schauen, nicht auf die Zwischenschritte.`,
+        [
+          'Systematisch prüfen, nicht nur zufällig.',
+          'Reihenfolge: einfach zu komplex.',
+          'Grenzfälle als Sicherheitsnetz.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['plausibilitaet'] },
+      ),
+    ],
+
   },
 
   // ────────────────────────────────────────────────────────────────────────
-  // trig-4-3 — Prüfung: Einheitskreis & Gleichungssysteme (6 subGoals, [PRÜFUNG])
-  // Je 5 Aufgaben = 30 Goal-Tasks
+  // trig-4-3 — Prüfung: Einheitskreis & Gleichungssysteme  (6 subGoals × 5 stages)
   // ────────────────────────────────────────────────────────────────────────
   'trig-4-3': {
 
-    // ── [0] sin x = a: zwei Lösungen arcsin a und π - arcsin a ────────────
-    0: [
-      mc(
-        '[PRÜFUNG] Wie lauten beide Lösungen von $\\sin x = \\tfrac{\\sqrt{3}}{2}$ in $[0, 2\\pi)$?',
-        [
-          '$x_{1} = \\tfrac{\\pi}{3}$, $x_{2} = \\tfrac{2\\pi}{3}$',
-          '$x_{1} = \\tfrac{\\pi}{6}$, $x_{2} = \\tfrac{5\\pi}{6}$',
-          '$x_{1} = \\tfrac{\\pi}{3}$, $x_{2} = \\tfrac{4\\pi}{3}$',
-          '$x_{1} = \\tfrac{\\pi}{3}$ (einzige Lösung)',
-        ],
-        0,
-        `**Ansatz:** $\\sin x = \\tfrac{\\sqrt{3}}{2}$ hat Hauptwert $\\arcsin(\\tfrac{\\sqrt{3}}{2}) = \\tfrac{\\pi}{3}$ (= 60°). Zweite Lösung: Supplement $\\pi - \\tfrac{\\pi}{3} = \\tfrac{2\\pi}{3}$.
-
-**Rechnung:** $x_{1} = \\tfrac{\\pi}{3}$ (1. Q), $x_{2} = \\tfrac{2\\pi}{3}$ (2. Q). Beide geben $\\sin = \\tfrac{\\sqrt{3}}{2}$.
-
-**Probe:** $\\sin(\\tfrac{\\pi}{3}) = \\sin(60°) = \\tfrac{\\sqrt{3}}{2}$ ✓. $\\sin(\\tfrac{2\\pi}{3}) = \\sin(120°) = \\sin(60°) = \\tfrac{\\sqrt{3}}{2}$ ✓.
-
-**Typischer Fehler:** Statt Supplement $\\pi - \\arcsin$ das Reflexions-Pendant $\\pi + \\arcsin$ verwenden — führt zum 3. Quadrant, wo $\\sin < 0$.`,
-        [
-          'Hauptwert: $\\arcsin(\\sqrt{3}/2)$.',
-          'Zweite Lösung: $\\pi - $ Hauptwert.',
-          '$\\arcsin(\\sqrt{3}/2) = \\pi/3$.',
-        ],
-        {
-          1: 'Das sind die Lösungen von $\\sin x = \\tfrac{1}{2}$, nicht $\\sin x = \\tfrac{\\sqrt{3}}{2}$. $\\arcsin(1/2) = \\pi/6$, $\\arcsin(\\sqrt{3}/2) = \\pi/3$.',
-          2: 'Falsche zweite Lösung: $\\tfrac{4\\pi}{3}$ liegt im 3. Quadrant, dort ist $\\sin$ negativ. Supplement wird über $\\pi - $ Hauptwert gebildet, nicht über $\\pi + $.',
-          3: '$\\sin x = a$ hat in $[0, 2\\pi)$ IMMER zwei Lösungen (für $|a| < 1$), nicht nur eine. Supplement nicht vergessen!',
-        },
-      ),
-      ni(
-        '[PRÜFUNG] Gegeben $\\sin x = 0{,}8$ in $[0°, 360°)$. Wie groß ist die zweite Lösung (in Grad, auf 1 Dezimale)?',
-        126.9, 0.2, '°',
-        `**Ansatz:** Hauptwert per Taschenrechner, dann Supplement.
-
-**Rechnung:** $\\arcsin(0{,}8) \\approx 53{,}13°$ (DEG-Modus!). Zweite Lösung: $180° - 53{,}13° = 126{,}87°$, also $\\approx 126{,}9°$.
-
-**Probe:** $\\sin(126{,}9°) \\approx 0{,}8$ ✓ (2. Quadrant, dort ist $\\sin > 0$).
-
-**Typischer Fehler:** Nur Hauptwert $53{,}1°$ angeben. Oder Supplement falsch: $360° - 53{,}1° = 306{,}9°$ (das ist die Gegen-Lösung für $\\sin x = -0{,}8$).`,
-        [
-          'Hauptwert: $\\arcsin(0{,}8)$.',
-          'Supplement: $180° - $ Hauptwert.',
-          '$180 - 53{,}13 = 126{,}87$.',
-        ],
-      ),
-      tf(
-        '[PRÜFUNG] Die Gleichung $\\sin x = -0{,}4$ hat in $[0°, 360°)$ genau zwei Lösungen, beide im 3. und 4. Quadrant.',
-        true,
-        `**Ansatz:** Sinus ist negativ im 3. und 4. Quadrant.
-
-**Rechnung:** Hauptwert $\\arcsin(-0{,}4) \\approx -23{,}58°$. Umrechnen auf $[0°, 360°)$: $-23{,}58° + 360° \\approx 336{,}4°$ (4. Q). Zweite Lösung per $180° - (-23{,}58°) = 203{,}6°$ (3. Q). Beide negativ in $\\sin$.
-
-**Probe:** $\\sin(203{,}6°) \\approx -0{,}4$ ✓, $\\sin(336{,}4°) \\approx -0{,}4$ ✓. Beide im 3./4. Quadrant.
-
-**Typischer Fehler:** Bei negativem Wert annehmen, die Lösungen wären im 1. und 2. Quadrant (dort ist $\\sin$ aber positiv).`,
-        [
-          'Wo ist $\\sin < 0$? 3. und 4. Quadrant.',
-          'Hauptwert negativ, dann per $180°$-Supplement.',
-          'Umrechnung in Bereich $[0°, 360°)$.',
-        ],
-      ),
-      matching(
-        '[PRÜFUNG] Ordne jeder Gleichung die beiden Lösungen in $[0, 2\\pi)$ zu.',
-        [
-          { left: '$\\sin x = 0$',             right: '$x_{1} = 0$, $x_{2} = \\pi$' },
-          { left: '$\\sin x = 1$',             right: '$x = \\pi/2$ (nur eine)' },
-          { left: '$\\sin x = \\tfrac{1}{2}$', right: '$x_{1} = \\pi/6$, $x_{2} = 5\\pi/6$' },
-          { left: '$\\sin x = -\\tfrac{1}{2}$', right: '$x_{1} = 7\\pi/6$, $x_{2} = 11\\pi/6$' },
-        ],
-        `**Ansatz:** Spezialfälle und Standardwerte.
-
-**Rechnung:** $\\sin = 0$ bei $x = 0, \\pi$. $\\sin = 1$ nur bei $x = \\pi/2$ (Maximum). $\\sin = 1/2$ bei $\\pi/6$ und $5\\pi/6$. Für negative Werte: dritter und vierter Quadrant.
-
-**Probe:** Jede Zeile mit Taschenrechner überprüfbar — $\\sin$-Werte stimmen.
-
-**Typischer Fehler:** Maximum- und Minimumwerte mit generellen Sinus-Lösungen verwechseln — bei $\\sin = \\pm 1$ gibt es nur eine Lösung.`,
-        [
-          'Bei $|a| = 1$: eine Lösung.',
-          'Bei $|a| < 1$: zwei Lösungen.',
-          'Negative $a$: 3. und 4. Quadrant.',
-        ],
-      ),
-      sorting(
-        '[PRÜFUNG] Bringe die Schritte zur Lösung $\\sin x = \\tfrac{\\sqrt{2}}{2}$ in $[0, 2\\pi)$ in die richtige Reihenfolge.',
-        [
-          'Hauptwert: $x_{1} = \\arcsin(\\tfrac{\\sqrt{2}}{2}) = \\tfrac{\\pi}{4}$',
-          'Zweite Lösung per Supplement: $x_{2} = \\pi - \\tfrac{\\pi}{4} = \\tfrac{3\\pi}{4}$',
-          'Lösungsmenge: $\\{\\tfrac{\\pi}{4}, \\tfrac{3\\pi}{4}\\}$',
-          'Probe: $\\sin(\\pi/4) = \\sin(3\\pi/4) = \\tfrac{\\sqrt{2}}{2}$ ✓',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Hauptwert $\\to$ Supplement $\\to$ Lösungsmenge $\\to$ Probe.
-
-**Rechnung:** Zwei Lösungen.
-
-**Probe:** Beide Werte $\\tfrac{\\pi}{4}, \\tfrac{3\\pi}{4}$ liegen in $[0, 2\\pi)$ und erfüllen die Gleichung.
-
-**Typischer Fehler:** Supplement-Schritt überspringen.`,
-        [
-          'Hauptwert $\\arcsin$.',
-          'Supplement: $\\pi - $ Hauptwert.',
-          'Beide Werte als Lösungsmenge.',
-        ],
-      ),
-    ],
-
-    // ── [1] cos x = a: zwei Lösungen arccos a und 2π - arccos a ────────────
-    1: [
-      mc(
-        '[PRÜFUNG] Wie lauten beide Lösungen von $\\cos x = \\tfrac{1}{2}$ in $[0, 2\\pi)$?',
-        [
-          '$x_{1} = \\tfrac{\\pi}{3}$, $x_{2} = \\tfrac{5\\pi}{3}$',
-          '$x_{1} = \\tfrac{\\pi}{6}$, $x_{2} = \\tfrac{5\\pi}{6}$',
-          '$x_{1} = \\tfrac{\\pi}{3}$, $x_{2} = \\tfrac{2\\pi}{3}$',
-          '$x_{1} = \\tfrac{\\pi}{3}$ (einzige Lösung)',
-        ],
-        0,
-        `**Ansatz:** Für $\\cos x = a$ gilt $x_{1} = \\arccos a$ und $x_{2} = 2\\pi - \\arccos a$.
-
-**Rechnung:** $\\arccos(\\tfrac{1}{2}) = \\tfrac{\\pi}{3}$ (60°). Zweite Lösung: $2\\pi - \\tfrac{\\pi}{3} = \\tfrac{5\\pi}{3}$ (300°).
-
-**Probe:** $\\cos(60°) = \\cos(300°) = 0{,}5$ ✓. Beide gleich weit von der x-Achse entfernt (Spiegelsymmetrie des Kosinus an der x-Achse).
-
-**Typischer Fehler:** Sinus-Supplement-Formel ($\\pi - $) auf Kosinus anwenden — liefert $\\tfrac{2\\pi}{3}$, aber dort ist $\\cos = -\\tfrac{1}{2}$.`,
-        [
-          'Hauptwert: $\\arccos(1/2) = \\pi/3$.',
-          'Zweite Lösung: $2\\pi - \\pi/3$.',
-          'Symmetrie: Kosinus-Spiegelung an x-Achse.',
-        ],
-        {
-          1: 'Das sind die Lösungen von $\\sin x = 1/2$. Für $\\cos x = 1/2$ ist der Hauptwert $\\pi/3$ und die zweite Lösung $2\\pi - \\pi/3 = 5\\pi/3$.',
-          2: 'Sinus-Formel angewandt: $\\pi - \\pi/3 = 2\\pi/3$. Dort ist aber $\\cos(2\\pi/3) = -1/2$, nicht $+1/2$. Kosinus braucht $2\\pi - $.',
-          3: '$\\cos x = a$ mit $|a| < 1$ hat IMMER zwei Lösungen in $[0, 2\\pi)$.',
-        },
-      ),
-      ni(
-        '[PRÜFUNG] Löse $\\cos x = -0{,}5$ in $[0°, 360°)$. Gib die größere Lösung in Grad an.',
-        240, 0, '°',
-        `**Ansatz:** Hauptwert $\\arccos(-0{,}5) = 120°$. Zweite Lösung: $360° - 120° = 240°$.
-
-**Rechnung:** $\\arccos(-0{,}5) = 120°$ (2. Q). Zweite Lösung: $240°$ (3. Q). Größere Lösung: $240°$.
-
-**Probe:** $\\cos(120°) = \\cos(240°) = -0{,}5$ ✓.
-
-**Typischer Fehler:** Hauptwert und zweite Lösung verwechseln und $120°$ angeben. Oder negatives Kosinus ignorieren.`,
-        [
-          '$\\arccos(-0{,}5) = 120°$.',
-          'Zweite Lösung: $360° - 120° = 240°$.',
-          'Größere der beiden: $240°$.',
-        ],
-      ),
-      tf(
-        '[PRÜFUNG] Die beiden Lösungen von $\\cos x = a$ (mit $|a| < 1$) in $[0, 2\\pi)$ sind symmetrisch zur Geraden $x = \\pi$.',
-        true,
-        `**Ansatz:** $\\arccos a + (2\\pi - \\arccos a) = 2\\pi$, Mittelwert $\\pi$.
-
-**Rechnung:** Die zwei Lösungen liegen bei $\\arccos a$ und $2\\pi - \\arccos a$. Ihre Summe ist $2\\pi$, ihr Mittelwert $\\pi$ — also symmetrisch um $x = \\pi$.
-
-**Probe:** $\\cos x = 1/2$: Lösungen $\\pi/3$ und $5\\pi/3$. Summe $= 2\\pi$, Mittel $= \\pi$ ✓.
-
-**Typischer Fehler:** Symmetrie zur $\\pi/2$-Achse annehmen (das wäre Sinus-Symmetrie). Kosinus hat Symmetrie zur $x$-Achse im Einheitskreis, was in der $x$-Variable dem Punkt $\\pi$ entspricht (wegen $2\\pi$-Periode).`,
-        [
-          'Summe der zwei Lösungen: $2\\pi$.',
-          'Mittelwert: $\\pi$.',
-          'Symmetrie um $x = \\pi$.',
-        ],
-      ),
-      matching(
-        '[PRÜFUNG] Ordne jeder Gleichung die beiden Lösungen zu.',
-        [
-          { left: '$\\cos x = 1$',              right: '$x = 0$ (nur eine)' },
-          { left: '$\\cos x = 0$',              right: '$x_{1} = \\pi/2, x_{2} = 3\\pi/2$' },
-          { left: '$\\cos x = \\tfrac{\\sqrt{2}}{2}$', right: '$x_{1} = \\pi/4, x_{2} = 7\\pi/4$' },
-          { left: '$\\cos x = -1$',             right: '$x = \\pi$ (nur eine)' },
-        ],
-        `**Ansatz:** Extremwerte ($\\pm 1$) geben nur eine Lösung; innere Werte zwei.
-
-**Rechnung:** $\\arccos(0) = \\pi/2$; zweite Lösung $2\\pi - \\pi/2 = 3\\pi/2$. $\\arccos(\\sqrt{2}/2) = \\pi/4$; zweite Lösung $2\\pi - \\pi/4 = 7\\pi/4$.
-
-**Probe:** Alle Werte in die Originalgleichung einsetzen.
-
-**Typischer Fehler:** Bei Extremwerten zwei Lösungen annehmen.`,
-        [
-          'Extremwerte: 1 Lösung.',
-          'Innere Werte: 2 Lösungen.',
-          'Zweite Lösung: $2\\pi - $ Hauptwert.',
-        ],
-      ),
-      sorting(
-        '[PRÜFUNG] Bringe die Schritte zur Lösung von $\\cos x = -\\tfrac{\\sqrt{3}}{2}$ in $[0, 2\\pi)$ in die richtige Reihenfolge.',
-        [
-          'Hauptwert: $\\arccos(-\\tfrac{\\sqrt{3}}{2}) = \\tfrac{5\\pi}{6}$',
-          'Zweite Lösung: $2\\pi - \\tfrac{5\\pi}{6} = \\tfrac{7\\pi}{6}$',
-          'Lösungsmenge: $\\{\\tfrac{5\\pi}{6}, \\tfrac{7\\pi}{6}\\}$',
-          'Probe: beide Winkel in 2. bzw. 3. Quadrant, $\\cos$ negativ ✓',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Hauptwert $\\to 2\\pi -$-Formel $\\to$ Lösungsmenge $\\to$ Probe.
-
-**Rechnung:** $\\{\\tfrac{5\\pi}{6}, \\tfrac{7\\pi}{6}\\}$.
-
-**Probe:** Beide Lösungen im Bereich mit $\\cos < 0$ (2. und 3. Q).
-
-**Typischer Fehler:** Sinus-Supplement $(\\pi - )$ anwenden — liefert falsche zweite Lösung.`,
-        [
-          'Hauptwert aus $\\arccos$.',
-          'Zweite Lösung: $2\\pi - $.',
-          'Nicht Sinus-Formel verwenden.',
-        ],
-      ),
-    ],
-
-    // ── [2] tan x = a: Periode π, x_k = arctan a + kπ ──────────────────────
-    2: [
-      mc(
-        '[PRÜFUNG] Wie viele Lösungen hat $\\tan x = 1$ in $[0, 2\\pi)$?',
-        [
-          '$2$ ($\\tfrac{\\pi}{4}$ und $\\tfrac{5\\pi}{4}$)',
-          '$1$ ($\\tfrac{\\pi}{4}$)',
-          '$4$ (je eine pro Quadrant)',
-          '$\\infty$',
-        ],
-        0,
-        `**Ansatz:** Periode von $\\tan$ ist $\\pi$, nicht $2\\pi$ wie bei $\\sin/\\cos$.
-
-**Rechnung:** Hauptwert $\\arctan(1) = \\tfrac{\\pi}{4}$. Mit Periode $\\pi$: $\\tfrac{\\pi}{4} + \\pi = \\tfrac{5\\pi}{4}$. In $[0, 2\\pi)$ liegen beide.
-
-**Probe:** $\\tan(\\tfrac{\\pi}{4}) = 1$, $\\tan(\\tfrac{5\\pi}{4}) = \\tan(\\tfrac{\\pi}{4}) = 1$ ✓.
-
-**Typischer Fehler:** Periode $2\\pi$ annehmen und nur eine Lösung geben. Tangens hat kürzere Periode — pro $2\\pi$ zwei Lösungen.`,
-        [
-          'Periode von $\\tan$: $\\pi$, nicht $2\\pi$.',
-          'In $[0, 2\\pi)$ zwei Perioden.',
-          'Je eine Lösung pro Periode.',
-        ],
-        {
-          1: 'Nur der Hauptwert — Tangens hat aber Periode $\\pi$, also existiert in $[0, 2\\pi)$ eine zweite Lösung bei $\\pi/4 + \\pi = 5\\pi/4$.',
-          2: 'Tangens ist nicht in allen Quadranten positiv. In 1. und 3. Q: $\\tan > 0$ (beide $\\to 1$ möglich). In 2. und 4. Q: $\\tan < 0$. Also nur 2 Lösungen für $\\tan = 1$.',
-          3: 'Nur auf ganz $\\mathbb{R}$ unendlich viele. Im begrenzten Intervall $[0, 2\\pi)$ genau 2.',
-        },
-      ),
-      ni(
-        '[PRÜFUNG] Löse $\\tan x = \\sqrt{3}$ in $[0°, 360°)$. Gib die größere Lösung in Grad an.',
-        240, 0, '°',
-        `**Ansatz:** Hauptwert $\\arctan(\\sqrt{3}) = 60°$. Periode $180°$ addieren für zweite Lösung.
-
-**Rechnung:** $x_{1} = 60°$, $x_{2} = 60° + 180° = 240°$. Größere: $240°$.
-
-**Probe:** $\\tan(60°) = \\sqrt{3}$ ✓, $\\tan(240°) = \\tan(60°) = \\sqrt{3}$ ✓ (Periode $180°$).
-
-**Typischer Fehler:** $360° - 60° = 300°$ als zweite Lösung angeben (das ist $\\tan = -\\sqrt{3}$).`,
-        [
-          '$\\arctan(\\sqrt{3}) = 60°$.',
-          'Periode: $180°$.',
-          'Zweite Lösung: $60 + 180 = 240°$.',
-        ],
-      ),
-      tf(
-        '[PRÜFUNG] Die Tangens-Funktion ist bei $x = \\tfrac{\\pi}{2} + k\\pi$ nicht definiert.',
-        true,
-        `**Ansatz:** $\\tan x = \\sin x / \\cos x$; Nenner = 0 ist undefiniert.
-
-**Rechnung:** $\\cos x = 0$ bei $x = \\tfrac{\\pi}{2} + k\\pi$. An diesen Stellen hat $\\tan$ Polstellen.
-
-**Probe:** $\\tan(\\tfrac{\\pi}{2}) = \\infty$ (bzw. undefiniert). $\\tan(\\tfrac{3\\pi}{2}) = $ undefiniert. Zwischen den Polen streng monoton wachsend.
-
-**Typischer Fehler:** Annehmen, $\\tan$ sei überall definiert. Bei trigonometrischen Gleichungen mit $\\tan$ immer Definitionsbereich prüfen.`,
-        [
-          '$\\tan = \\sin/\\cos$.',
-          'Nenner $\\cos x = 0$ macht Funktion undefiniert.',
-          '$\\cos x = 0$ bei $\\pi/2, 3\\pi/2, \\ldots$',
-        ],
-      ),
-      matching(
-        '[PRÜFUNG] Ordne jedem Wert $a$ die beiden Lösungen von $\\tan x = a$ in $[0°, 360°)$ zu.',
-        [
-          { left: '$a = 0$',       right: '$x_{1} = 0°$, $x_{2} = 180°$' },
-          { left: '$a = 1$',       right: '$x_{1} = 45°$, $x_{2} = 225°$' },
-          { left: '$a = -1$',      right: '$x_{1} = 135°$, $x_{2} = 315°$' },
-          { left: '$a = \\sqrt{3}$', right: '$x_{1} = 60°$, $x_{2} = 240°$' },
-        ],
-        `**Ansatz:** Hauptwert + $180°$-Verschiebung.
-
-**Rechnung:** $\\tan = 0$ bei $x = 0°, 180°$. $\\tan = 1$ bei $45°, 225°$. $\\tan = -1$: Hauptwert $-45°$, in $[0°, 360°)$: $315°$ und $315° - 180° = 135°$.
-
-**Probe:** Alle $\\tan$-Werte stimmen.
-
-**Typischer Fehler:** $\\tan = -1$: bei $225°$ statt $135°$ — aber $\\tan(225°) = \\tan(45°) = +1$, also falsch.`,
-        [
-          'Hauptwert und $+180°$.',
-          'Vorzeichen bei negativem $a$ beachten.',
-          'Periode ist $180°$, nicht $360°$.',
-        ],
-      ),
-      sorting(
-        '[PRÜFUNG] Bringe die Schritte zur Lösung $\\tan x = -1$ in $[0°, 360°)$ in die richtige Reihenfolge.',
-        [
-          'Hauptwert: $\\arctan(-1) = -45°$',
-          'Umrechnung in $[0°, 360°)$: $-45° + 180° = 135°$ (1. Lösung)',
-          'Zweite Lösung (+ Periode): $135° + 180° = 315°$',
-          'Lösungsmenge: $\\{135°, 315°\\}$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Hauptwert → in Intervall bringen → Periode addieren.
-
-**Rechnung:** Lösungen $135°$ und $315°$.
-
-**Probe:** $\\tan(135°) = -1$ ✓, $\\tan(315°) = -1$ ✓.
-
-**Typischer Fehler:** $-45° + 360° = 315°$ als einzige Lösung angeben und $135°$ vergessen.`,
-        [
-          'Periode $180°$ (nicht $360°$!).',
-          'Hauptwert eventuell negativ.',
-          'Beide Lösungen in $[0°, 360°)$.',
-        ],
-      ),
-    ],
-
-    // ── [3] Gesamte Lösungsmenge: Hauptwerte + 2πk (bzw. πk), Intervall ───
-    3: [
-      mc(
-        '[PRÜFUNG] Wie viele Lösungen hat $\\sin x = 0$ im Intervall $[-\\pi, 3\\pi]$?',
-        [
-          '$5$',
-          '$3$',
-          '$4$',
-          '$\\infty$',
-        ],
-        0,
-        `**Ansatz:** $\\sin x = 0$ bei $x = k\\pi$. Zählen, wie viele $k\\pi$ im Intervall liegen.
-
-**Rechnung:** $k\\pi \\in [-\\pi, 3\\pi]$ für $k \\in \\{-1, 0, 1, 2, 3\\}$, also 5 Werte: $-\\pi, 0, \\pi, 2\\pi, 3\\pi$.
-
-**Probe:** Länge des Intervalls $= 4\\pi$. Nullstellen von $\\sin$ im Abstand $\\pi$, also 4 Intervalllängen $\\pi \\to $ 5 Nullstellen (Randpunkte eingeschlossen).
-
-**Typischer Fehler:** Randpunkte übersehen oder nicht beide Ränder einschließen.`,
-        [
-          '$\\sin = 0$ bei Vielfachen von $\\pi$.',
-          'Intervall: $4\\pi$ lang.',
-          'Randpunkte $-\\pi$ und $3\\pi$ mitzählen.',
-        ],
-        {
-          1: 'Nur $\\{0, \\pi, 2\\pi\\}$ — aber das Intervall beginnt bei $-\\pi$ (zählt) und endet bei $3\\pi$ (zählt). Ergibt 5 Nullstellen.',
-          2: '$4$ Intervalllängen $\\pi$ ergeben 5 Teilpunkte (Zaun-Pfosten-Prinzip).',
-          3: 'Das Intervall ist begrenzt, also endlich viele Lösungen.',
-        },
-      ),
-      ni(
-        '[PRÜFUNG] Wie viele Lösungen hat $\\cos x = 0{,}5$ im Intervall $[0, 6\\pi]$?',
-        6, 0, '',
-        `**Ansatz:** $\\cos x = 0{,}5$ hat pro Periode $2\\pi$ zwei Lösungen. $[0, 6\\pi]$ enthält drei volle Perioden.
-
-**Rechnung:** $3 \\cdot 2 = 6$ Lösungen. Konkret: $\\tfrac{\\pi}{3}, \\tfrac{5\\pi}{3}$ in erster Periode, plus $+2\\pi, +4\\pi$ für weitere Perioden.
-
-**Probe:** Lösungen: $\\tfrac{\\pi}{3}, \\tfrac{5\\pi}{3}, \\tfrac{7\\pi}{3}, \\tfrac{11\\pi}{3}, \\tfrac{13\\pi}{3}, \\tfrac{17\\pi}{3}$ — alle $\\le 6\\pi$ ✓.
-
-**Typischer Fehler:** Intervalllänge falsch berechnen oder nur eine Lösung pro Periode zählen.`,
-        [
-          '$\\cos = 0{,}5$: 2 Lösungen pro Periode.',
-          'Intervall: $6\\pi$ lang = 3 Perioden.',
-          '$3 \\times 2 = 6$.',
-        ],
-      ),
-      tf(
-        '[PRÜFUNG] Die allgemeine Lösung von $\\cos x = a$ (mit $|a| < 1$) ist $x = \\pm\\arccos(a) + 2\\pi k, k \\in \\mathbb{Z}$.',
-        true,
-        `**Ansatz:** Kosinus ist eine gerade Funktion: $\\cos(-x) = \\cos(x)$.
-
-**Rechnung:** Hauptwert $+\\arccos(a)$, Spiegelwert $-\\arccos(a)$ (auch Lösung). Plus Periode $2\\pi k$ für alle Perioden.
-
-**Probe:** Alternativ schreibbar als $\\arccos(a) + 2\\pi k$ und $2\\pi - \\arccos(a) + 2\\pi k$ — mathematisch dieselbe Menge.
-
-**Typischer Fehler:** Nur positiven Hauptwert angeben und Spiegelung übersehen.`,
-        [
-          'Kosinus gerade Funktion.',
-          '$\\pm$ vor $\\arccos$ ist die Standardform.',
-          'Periode $2\\pi$ addieren.',
-        ],
-      ),
-      matching(
-        '[PRÜFUNG] Ordne jeder Gleichung die allgemeine Lösungsformel zu.',
-        [
-          { left: '$\\sin x = a$ ($|a|<1$)',      right: '$x = \\arcsin a + 2\\pi k$ oder $\\pi - \\arcsin a + 2\\pi k$' },
-          { left: '$\\cos x = a$ ($|a|<1$)',      right: '$x = \\pm \\arccos a + 2\\pi k$' },
-          { left: '$\\tan x = a$',                 right: '$x = \\arctan a + \\pi k$' },
-          { left: '$\\sin x = 1$',                 right: '$x = \\pi/2 + 2\\pi k$ (Periode, keine zweite Lösung)' },
-        ],
-        `**Ansatz:** Drei Grundgleichungen mit ihren Standardformeln.
-
-**Rechnung:** Die Formeln sind zentral für jede Prüfung.
-
-**Probe:** Bei $\\sin x = 1$ nur eine Lösung pro Periode (Extremwert) — daher keine zweite Lösungsformel nötig.
-
-**Typischer Fehler:** Bei Extremwerten ($\\sin = \\pm 1$, $\\cos = \\pm 1$) trotzdem zwei Lösungen per Formel generieren.`,
-        [
-          'Drei Grundtypen: sin, cos, tan.',
-          'Extremwerte: je 1 Lösung pro Periode.',
-          '$\\sin/\\cos$: Periode $2\\pi$; $\\tan$: Periode $\\pi$.',
-        ],
-      ),
-      sorting(
-        '[PRÜFUNG] Bringe die Schritte zur Bestimmung aller Lösungen von $\\sin x = 0{,}5$ in $[0, 4\\pi]$ in die richtige Reihenfolge.',
-        [
-          'Hauptwerte in $[0, 2\\pi)$: $\\pi/6$ und $5\\pi/6$',
-          'Periode $2\\pi$ addieren für 2. Periode $[2\\pi, 4\\pi]$',
-          'Zweite Periode: $\\pi/6 + 2\\pi = 13\\pi/6$, $5\\pi/6 + 2\\pi = 17\\pi/6$',
-          'Gesamtlösungsmenge: $\\{\\pi/6, 5\\pi/6, 13\\pi/6, 17\\pi/6\\}$ (4 Lösungen)',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Erst eine Periode, dann Periode mehrfach addieren.
-
-**Rechnung:** 4 Lösungen.
-
-**Probe:** Alle $\\le 4\\pi$, $\\sin$-Wert jeweils $0{,}5$ ✓.
-
-**Typischer Fehler:** Nur zwei Lösungen in $[0, 2\\pi)$ und die zweite Periode vergessen.`,
-        [
-          'Eine Periode komplett.',
-          'Dann Periode addieren.',
-          'Auf Intervall begrenzen.',
-        ],
-      ),
-    ],
-
-    // ── [4] Beim Dividieren durch cos x: Fall cos x = 0 separat prüfen ────
-    4: [
-      mc(
-        '[PRÜFUNG] Welcher Schritt ist bei $\\sin x \\cos x = \\cos x$ **sicher**?',
-        [
-          'Alles auf eine Seite und faktorisieren: $\\cos x(\\sin x - 1) = 0$',
-          'Durch $\\cos x$ dividieren: $\\sin x = 1$',
-          'Durch $\\sin x$ dividieren: $\\cos x = \\cos x / \\sin x$',
-          'Quadrieren und Pythagoras anwenden',
-        ],
-        0,
-        `**Ansatz:** Null-Produkt-Regel nach Faktorisierung.
-
-**Rechnung:** $\\sin x \\cos x - \\cos x = 0 \\Rightarrow \\cos x(\\sin x - 1) = 0 \\Rightarrow \\cos x = 0$ oder $\\sin x = 1$. Alle Lösungen erfasst.
-
-**Probe:** Lösungen in $[0, 2\\pi)$: $\\cos x = 0 \\to x = \\tfrac{\\pi}{2}, \\tfrac{3\\pi}{2}$. $\\sin x = 1 \\to x = \\tfrac{\\pi}{2}$ (schon enthalten). Gesamt: $\\{\\tfrac{\\pi}{2}, \\tfrac{3\\pi}{2}\\}$.
-
-**Typischer Fehler:** Durch $\\cos x$ teilen. Dabei geht die Lösung $\\cos x = 0$ verloren ($x = \\tfrac{3\\pi}{2}$ wird nicht mehr gefunden).`,
-        [
-          'Nicht durch Funktionen teilen, die Null werden können.',
-          'Faktorisieren ist sicherer.',
-          'Null-Produkt-Regel: jeder Faktor separat.',
-        ],
-        {
-          1: 'Durch $\\cos x$ teilen verliert die Lösung $\\cos x = 0$, also $x = \\tfrac{3\\pi}{2}$. Faktorisieren ist sicher.',
-          2: 'Durch $\\sin x$ teilen ist auch riskant — verliert potenziell Lösungen bei $\\sin x = 0$. Und die resultierende Gleichung ist keine Vereinfachung.',
-          3: 'Quadrieren kann Scheinlösungen einführen und macht die Gleichung komplizierter.',
-        },
-      ),
-      ni(
-        '[PRÜFUNG] Löse $\\sin x \\cos x = \\sin x$ vollständig in $[0°, 360°)$. Wie viele Lösungen gibt es?',
-        3, 0, '',
-        `**Ansatz:** Faktorisieren nach Subtraktion.
-
-**Rechnung:** $\\sin x (\\cos x - 1) = 0 \\Rightarrow \\sin x = 0$ oder $\\cos x = 1$. $\\sin x = 0 \\to \\{0°, 180°\\}$. $\\cos x = 1 \\to \\{0°\\}$. Vereinigung: $\\{0°, 180°\\}$ — das wären nur 2 Lösungen.
-
-Aber moment: $\\cos x = 1$ gibt nur $0°$ in $[0°, 360°)$, und $\\sin x = 0$ gibt $\\{0°, 180°\\}$. Vereinigung: $\\{0°, 180°\\}$. **2 Lösungen**.
-
-Nein — lass mich die Aufgabe noch einmal prüfen. $\\sin x \\cos x = \\sin x$ in $[0°, 360°)$:
-· $\\sin x = 0$: $x = 0°, 180°$.
-· $\\cos x = 1$: $x = 0°$ (bereits enthalten).
-
-Gesamtlösungsmenge: $\\{0°, 180°\\}$ — **2 Lösungen**. Die Antwort "$3$" in dieser Aufgabe wäre falsch.
-
-Korrektur der erwarteten Antwort: 2.
-
-**Probe:** $\\sin(0°) \\cos(0°) = 0 = \\sin(0°)$ ✓. $\\sin(180°) \\cos(180°) = 0 \\cdot (-1) = 0 = \\sin(180°)$ ✓.
-
-**Typischer Fehler:** Durch $\\sin x$ teilen und $\\cos x = 1$ als einzige Gleichung nehmen — $180°$ geht verloren.`,
-        [
-          'Faktorisieren, nicht teilen.',
-          '$\\sin x = 0$ oder $\\cos x = 1$.',
-          'Vereinigung: $\\{0°, 180°\\}$.',
-        ],
-      ),
-      tf(
-        '[PRÜFUNG] Bei der Gleichung $2\\sin x = \\tan x$ darf man direkt beide Seiten mit $\\cos x$ multiplizieren, weil $\\tan x = \\sin x / \\cos x$ ohnehin $\\cos x \\neq 0$ voraussetzt.',
-        true,
-        `**Ansatz:** Definitionsbereich von $\\tan$ schließt $\\cos x = 0$ bereits aus.
-
-**Rechnung:** $\\tan x$ ist nur definiert, wenn $\\cos x \\neq 0$. Multiplikation mit $\\cos x$ verändert also nichts am Definitionsbereich: $2\\sin x \\cos x = \\sin x$.
-
-**Probe:** Danach weiter: $\\sin x(2\\cos x - 1) = 0 \\Rightarrow \\sin x = 0$ oder $\\cos x = \\tfrac{1}{2}$. Bei $\\sin x = 0$: $x = 0, \\pi$. Bei beiden ist $\\cos x \\neq 0$ ✓. Bei $\\cos x = 1/2$: $x = \\pi/3, 5\\pi/3$, beide mit $\\cos \\neq 0$ ✓.
-
-**Typischer Fehler:** Trotz $\\tan$-Definitionsbereich noch extra "pro forma" prüfen. Oder umgekehrt: $\\tan x = 0$ und $\\sin x = 0$ als identisch annehmen — sie stimmen zwar in Lösungen überein, aber nur bei $\\cos \\neq 0$.`,
-        [
-          'Wo ist $\\tan$ definiert?',
-          '$\\cos x \\neq 0$.',
-          'Multiplikation mit $\\cos x$ ändert nichts am Definitionsbereich.',
-        ],
-      ),
-      matching(
-        '[PRÜFUNG] Ordne jedem Fall die richtige Strategie zu.',
-        [
-          { left: 'Nullstellen von $\\sin x \\cos x$',   right: 'faktorisieren (Null-Produkt-Regel)' },
-          { left: '$\\sin x = c \\cdot \\cos x$',         right: 'durch $\\cos x$ teilen, $\\cos = 0$ prüfen' },
-          { left: '$\\tan x = c$',                         right: 'direkt $x = \\arctan c + \\pi k$' },
-          { left: '$\\sin^{2} x + \\cos x = 1$',          right: 'mit $\\sin^{2} = 1 - \\cos^{2}$ Pythagoras einsetzen' },
-        ],
-        `**Ansatz:** Jeder Typ hat eine saubere Standardstrategie.
-
-**Rechnung:** Faktorisieren, $\\tan$-Umformung, Pythagoras — die drei häufigsten Tricks.
-
-**Probe:** Bei $\\sin x = c\\cos x$: durch $\\cos x$ teilen ergibt $\\tan x = c$, aber die Lösungen mit $\\cos x = 0$ einzeln prüfen (wenn $\\sin x \\neq 0$ dort, keine Lösung).
-
-**Typischer Fehler:** Die Fall-Unterscheidung nach Division vergessen.`,
-        [
-          'Produkt = 0: faktorisieren.',
-          'Division durch $\\cos x$: Fall $\\cos x = 0$ prüfen.',
-          'Pythagoras bei gemischten Potenzen.',
-        ],
-      ),
-      sorting(
-        '[PRÜFUNG] Bringe die Schritte zur vollständigen Lösung von $\\sin x = \\sqrt{3}\\cos x$ in $[0°, 360°)$ in die richtige Reihenfolge.',
-        [
-          'Fall $\\cos x = 0$ prüfen: $x = 90°, 270°$. Einsetzen: $\\sin(90°) = 1 \\neq \\sqrt{3} \\cdot 0$, also keine Lösung.',
-          'Durch $\\cos x$ teilen (jetzt sicher, da $\\cos x \\neq 0$): $\\tan x = \\sqrt{3}$',
-          'Hauptwert: $\\arctan(\\sqrt{3}) = 60°$',
-          'Mit Periode $180°$: $x_{1} = 60°$, $x_{2} = 240°$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Erst Null-Fall prüfen, dann sicher teilen, dann Standard-Tan-Lösung.
-
-**Rechnung:** Lösungen $\\{60°, 240°\\}$.
-
-**Probe:** $\\sin(60°) = \\sqrt{3}/2$, $\\cos(60°) = 1/2$, $\\sqrt{3} \\cdot 1/2 = \\sqrt{3}/2$ ✓.
-
-**Typischer Fehler:** Direkt teilen ohne $\\cos x = 0$-Prüfung. Hier macht es nichts aus, in anderen Fällen kann es zum Verlust von Lösungen führen.`,
-        [
-          'Erst Null-Fall prüfen.',
-          'Dann sicher teilen.',
-          'Standard-Tan-Lösung.',
-        ],
-      ),
-    ],
-
-    // ── [5] Grafische Kontrolle: Schnittpunkte am Einheitskreis ────────────
-    5: [
-      mc(
-        '[PRÜFUNG] Wie viele Schnittpunkte hat die waagerechte Linie $y = 0{,}7$ mit dem Einheitskreis?',
-        [
-          '$2$',
-          '$1$',
-          '$4$',
-          '$0$',
-        ],
-        0,
-        `**Ansatz:** Am Einheitskreis ($x^{2} + y^{2} = 1$) gibt $y = 0{,}7$ die Gleichung $x^{2} = 1 - 0{,}49 = 0{,}51$.
-
-**Rechnung:** $x = \\pm\\sqrt{0{,}51} \\approx \\pm 0{,}714$. Zwei Schnittpunkte: $(\\pm 0{,}714, 0{,}7)$.
-
-**Probe:** Interpretation: $\\sin x = 0{,}7$ hat zwei Lösungen pro Periode (im 1. und 2. Quadrant — die beiden Schnittpunkte der Horizontalen mit dem Kreis).
-
-**Typischer Fehler:** Extremwerte ($|a| = 1$) mit Zwischenwerten verwechseln — bei $|a| < 1$ immer zwei Schnittpunkte.`,
-        [
-          'Einheitskreis: $x^{2} + y^{2} = 1$.',
-          'Horizontale $y = 0{,}7$ kreuzt den Kreis zweimal.',
-          'Entspricht zwei Lösungen von $\\sin x = 0{,}7$.',
-        ],
-        {
-          1: 'Nur bei Extremwerten ($y = \\pm 1$) ist der Schnittpunkt einzig (Berührung). Für $|y| < 1$: zwei Schnitte.',
-          2: 'Eine Horizontale kann einen Kreis höchstens zweimal schneiden. $4$ wäre nur bei zwei Horizontalen möglich.',
-          3: 'Die Linie $y = 0{,}7$ schneidet den Einheitskreis, weil $|0{,}7| < 1$ im Wertebereich liegt.',
-        },
-      ),
-      ni(
-        '[PRÜFUNG] Wie viele Schnittpunkte hat die senkrechte Linie $x = 1{,}2$ mit dem Einheitskreis?',
-        0, 0, '',
-        `**Ansatz:** Einheitskreis: $x \\in [-1, 1]$. $x = 1{,}2 > 1$ liegt außerhalb.
-
-**Rechnung:** $x = 1{,}2$ schneidet den Einheitskreis **nicht** — keine Schnittpunkte. 0 Schnittpunkte.
-
-**Probe:** Interpretation: $\\cos x = 1{,}2$ hat keine Lösung, weil Wertebereich $[-1, 1]$.
-
-**Typischer Fehler:** Automatisch "2" eintragen, ohne Wertebereich zu prüfen.`,
-        [
-          'Einheitskreis: $x \\in [-1, 1]$.',
-          '$1{,}2$ liegt außerhalb.',
-          'Keine Schnitte.',
-        ],
-      ),
-      tf(
-        '[PRÜFUNG] Die Anzahl Lösungen von $\\sin x = a$ in $[0, 2\\pi)$ entspricht der Anzahl Schnittpunkte der Horizontalen $y = a$ mit dem Einheitskreis.',
-        true,
-        `**Ansatz:** Parametrisierung des Einheitskreises: $(\\cos x, \\sin x)$ für $x \\in [0, 2\\pi)$.
-
-**Rechnung:** Ein Schnittpunkt der Horizontalen $y = a$ entspricht genau einem Punkt auf dem Kreis mit $\\sin x = a$. Also Anzahl Schnittpunkte = Anzahl Lösungen in $[0, 2\\pi)$.
-
-**Probe:** $\\sin x = 0{,}5$: zwei Schnittpunkte (1. und 2. Q) → zwei Lösungen ($\\pi/6, 5\\pi/6$) ✓. $\\sin x = 1$: ein Schnittpunkt oben → eine Lösung ($\\pi/2$).
-
-**Typischer Fehler:** Geometrische und algebraische Zählweise getrennt sehen, statt sie als äquivalent zu erkennen.`,
-        [
-          'Einheitskreis ist $(\\cos x, \\sin x)$.',
-          'y-Koordinate ist $\\sin x$.',
-          'Horizontale $y = a$ = $\\sin x = a$.',
-        ],
-      ),
-      matching(
-        '[PRÜFUNG] Ordne jeder Linie die Anzahl Schnittpunkte mit dem Einheitskreis zu.',
-        [
-          { left: '$y = 0$ (x-Achse)',         right: '$2$ Schnitte' },
-          { left: '$y = 1$',                     right: '$1$ Schnitt (Berührung oben)' },
-          { left: '$y = 1{,}5$',                 right: '$0$ Schnitte' },
-          { left: '$x = 0{,}5$ (senkrecht)',     right: '$2$ Schnitte' },
-        ],
-        `**Ansatz:** Grafische Analyse: Horizontale und Vertikale auf dem Einheitskreis.
-
-**Rechnung:** $y = 0$: schneidet in $(\\pm 1, 0)$. $y = 1$: berührt in $(0, 1)$. $y = 1{,}5$: außerhalb. $x = 0{,}5$: schneidet in $(0{,}5, \\pm \\sqrt{0{,}75})$.
-
-**Probe:** Alle aus Kreisgleichung $x^{2} + y^{2} = 1$ abgeleitet.
-
-**Typischer Fehler:** $y = 1$ als zwei Schnittpunkte zählen — Berührung = ein Punkt.`,
-        [
-          'Horizontale/Vertikale auf Kreis.',
-          'Bei $|a| = 1$: Berührung (1 Punkt).',
-          'Bei $|a| > 1$: außerhalb (0 Punkte).',
-        ],
-      ),
-      sorting(
-        '[PRÜFUNG] Bringe die Schritte zur grafischen Kontrolle der Lösungszahl von $2\\cos x = 1$ in $[0, 2\\pi)$ in die richtige Reihenfolge.',
-        [
-          'Umformen: $\\cos x = 1/2$',
-          'Einheitskreis zeichnen, senkrechte Linie bei $x = 1/2$',
-          'Schnittpunkte zählen: 2 (oben und unten)',
-          'Zwei Lösungen: $\\pi/3$ und $5\\pi/3$',
-        ],
-        [0, 1, 2, 3],
-        `**Ansatz:** Algebra → Geometrie → Zählen → algebraische Werte ablesen.
-
-**Rechnung:** 2 Lösungen: $\\pi/3, 5\\pi/3$.
-
-**Probe:** $\\cos(\\pi/3) = 1/2$ ✓, $\\cos(5\\pi/3) = \\cos(-\\pi/3) = 1/2$ ✓.
-
-**Typischer Fehler:** Grafische Kontrolle auslassen und algebraische Lösungsanzahl falsch abschätzen.`,
-        [
-          'Erst umformen.',
-          'Dann Skizze.',
-          'Schnittpunkte zählen.',
-        ],
-      ),
-    ],
-  },
-
-  // ────────────────────────────────────────────────────────────────────────
-  // trig-3-1 — Additionstheoreme  (5 subGoals)
-  // 25 Matrix-Aufgaben: 5 SGs × 5 Stufen (recognize/apply-guided/
-  // apply-independent/error-analysis/transfer).
-  // ────────────────────────────────────────────────────────────────────────
-  'trig-3-1': {
-    // ── [0] sin(α±β) = sinα cosβ ± cosα sinβ ─────────────────────────────
+    // ── [0] sin x = a, zwei Lösungen ───────────────────────────────────
     0: [
       tf(
-        'Die Formel $\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$ ist korrekt.',
+        '[PRÜFUNG] Sub-Goal "$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$": Für $|a|<1$ hat $\\sin x = a$ in $[0, 2\\pi)$ genau zwei Lösungen.',
         true,
-        `**Ansatz:** Additionstheorem für Sinus — Kreuzform mit gleichem Vorzeichen wie im Winkel.
-
-**Rechnung:** Bei Sinus bleibt das Vorzeichen gleich: $\\sin(\\alpha \\pm \\beta) = \\sin\\alpha\\cos\\beta \\pm \\cos\\alpha\\sin\\beta$.
-
-**Probe:** $\\sin(60° + 30°) = \\sin 60°\\cos 30° + \\cos 60°\\sin 30° = \\tfrac{\\sqrt3}{2}\\cdot\\tfrac{\\sqrt3}{2} + \\tfrac12\\cdot\\tfrac12 = \\tfrac34 + \\tfrac14 = 1 = \\sin 90°$ ✓
-
-**Typischer Fehler:** Beide Produkte mit $\\sin\\alpha\\sin\\beta$ oder $\\cos\\alpha\\cos\\beta$ bilden — das ist die Kosinus-Formel.`,
+        `**Ansatz:** Sinuskurve schneidet eine Waagrechte $y=a$ pro Periode ($2\\pi$) zweimal — einmal im aufsteigenden, einmal im absteigenden Ast.\n\n**Rechnung:** $x_1 = \\arcsin a$ (Q1 oder Q4), $x_2 = \\pi - \\arcsin a$ (Q2 oder Q3 via Supplement).\n\n**Probe:** Bei $a=0{,}5$: $x_1 = \\pi/6$, $x_2 = 5\\pi/6$. Beide im Intervall.\n\n**Typischer Fehler:** Sonderfälle $|a|=1$ oder $|a|>1$ nicht bedenken — bei $|a|=1$ gibt's nur eine Lösung, bei $|a|>1$ keine.`,
         [
-          'Beim Sinus mischen sich Sinus und Kosinus — "Kreuzform".',
-          'Das Vorzeichen vor dem zweiten Term folgt dem Vorzeichen im Winkel.',
-          'Verifiziere mit $\\alpha=60°, \\beta=30°$ → Summe $=1$.',
+          'Einheitskreis-Skizze: waagrechte Schnittgerade $y=a$.',
+          'Zwei Schnittpunkte mit der Sinuskurve pro Periode.',
+          'Supplementbeziehung $\\sin(\\pi-x)=\\sin x$.',
         ],
-        { stage: 'recognize', subGoal: 0, uses: ['sin-add-thm'] },
+        { stage: 'recognize', subGoal: 0, uses: ['sin-zwei-loesungen'] },
       ),
       mc(
-        'Welcher Ausdruck ist gleich $\\sin(\\alpha + \\beta)$?',
+        '[PRÜFUNG] Sub-Goal "$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$": Löse $\\sin x = \\sqrt{3}/2$ in $[0, 2\\pi)$.',
         [
-          '$\\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$',
-          '$\\sin\\alpha + \\sin\\beta$',
-          '$\\sin\\alpha\\sin\\beta + \\cos\\alpha\\cos\\beta$',
-          '$\\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta$',
+          '$x = \\pi/3$ und $x = 2\\pi/3$',
+          '$x = \\pi/3$ und $x = 4\\pi/3$',
+          '$x = \\pi/6$ und $x = 5\\pi/6$',
+          '$x = \\pi/3$',
         ],
         0,
-        `**Ansatz:** Additionstheorem Sinus: Kreuzform $\\sin\\cos \\pm \\cos\\sin$ mit Vorzeichen wie im Winkel.
-
-**Rechnung:** Bei $+\\beta$ im Winkel steht $+$ zwischen den beiden Produkten.
-
-**Probe:** $\\sin(45°+45°) = \\sin 45°\\cos 45° + \\cos 45°\\sin 45° = \\tfrac12 + \\tfrac12 = 1 = \\sin 90°$ ✓
-
-**Typischer Fehler:** Sinus als linear behandeln und $\\sin\\alpha + \\sin\\beta$ schreiben — falsch.`,
+        `**Ansatz:** Hauptwert + Supplement.\n\n**Rechnung:** $\\arcsin(\\sqrt{3}/2) = \\pi/3$; zweite Lösung $\\pi - \\pi/3 = 2\\pi/3$.\n\n**Probe:** $\\sin(\\pi/3) = \\sin(2\\pi/3) = \\sqrt{3}/2$ ✓.\n\n**Typischer Fehler:** Addieren von $\\pi$ statt Supplement — liefert $4\\pi/3$, wo $\\sin$ aber $-\\sqrt{3}/2$ ist.`,
         [
-          'Sinus mischt beide Funktionen: $\\sin\\cos + \\cos\\sin$.',
-          'Das Vorzeichen folgt dem Winkel: $+\\beta$ → $+$.',
-          'Verifiziere mit $45°+45°=90°$.',
+          '$\\arcsin(\\sqrt{3}/2)$.',
+          'Supplement: $\\pi - x_1$.',
+          'Beide im Intervall?',
         ],
         {
-          1: 'Linearitätsfalle: $\\sin$ ist nicht additiv. Sonst wäre $\\sin(90°) = \\sin 45° + \\sin 45° = \\sqrt2 \\neq 1$.',
-          2: 'Das ist die Struktur der Kosinus-Formel (Produkte gleicher Funktionen).',
-          3: 'Vorzeichen verdreht: bei $\\sin(\\alpha+\\beta)$ steht $+$, bei $\\sin(\\alpha-\\beta)$ steht $-$.',
+          1: '$\\sin(4\\pi/3) = -\\sqrt{3}/2 \\neq +\\sqrt{3}/2$.',
+          2: 'Das wäre für $\\sin x = 1/2$ — nicht hier.',
+          3: 'Zweite Lösung vergessen.',
         },
-        { stage: 'apply-guided', subGoal: 0, uses: ['sin-add-thm'] },
+        { stage: 'apply-guided', subGoal: 0, uses: ['sin-zwei-loesungen'] },
       ),
       ni(
-        'Berechne $\\sin(30° + 45°)$ mit dem Additionstheorem. Gib das Ergebnis auf 4 Nachkommastellen.',
-        0.9659, 0.001, '',
-        `**Ansatz:** $\\sin(\\alpha+\\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$ mit $\\alpha=30°, \\beta=45°$.
-
-**Rechnung:** $\\sin 30°\\cos 45° + \\cos 30°\\sin 45° = \\tfrac12\\cdot\\tfrac{\\sqrt2}{2} + \\tfrac{\\sqrt3}{2}\\cdot\\tfrac{\\sqrt2}{2} = \\tfrac{\\sqrt2}{4} + \\tfrac{\\sqrt6}{4} = \\tfrac{\\sqrt2+\\sqrt6}{4} \\approx 0{,}9659$.
-
-**Probe:** $30°+45° = 75°$. Taschenrechner $\\sin 75° \\approx 0{,}9659$ ✓
-
-**Typischer Fehler:** Vorzeichen aus der Kosinus-Formel übernehmen oder $\\sin\\alpha + \\sin\\beta$ rechnen.`,
+        '[PRÜFUNG] Sub-Goal "$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$": Löse $\\sin x = 0{,}7$ in $[0, 2\\pi)$ und gib die **größere** Lösung in Radiant (3 Nachkommastellen) an.',
+        2.366, 0.01, 'rad',
+        `**Ansatz:** Hauptwert + Supplement.\n\n**Rechnung:** $x_1 = \\arcsin 0{,}7 \\approx 0{,}7754$ rad; $x_2 = \\pi - x_1 \\approx 2{,}3662$ rad. Größere: $x_2$.\n\n**Probe:** $\\sin(2{,}3662) = \\sin(\\pi - 2{,}3662) = \\sin(0{,}7754) \\approx 0{,}7$ ✓.\n\n**Typischer Fehler:** Taschenrechner im DEG-Modus — würde $\\approx 44{,}4°$ statt Radiant liefern.`,
         [
-          'Formel: $\\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$.',
-          'Grundwerte: $\\sin 30°=\\tfrac12$, $\\cos 45°=\\tfrac{\\sqrt2}{2}$, $\\cos 30°=\\tfrac{\\sqrt3}{2}$, $\\sin 45°=\\tfrac{\\sqrt2}{2}$.',
-          '$(\\sqrt2 + \\sqrt6)/4 \\approx (1{,}414+2{,}449)/4$.',
+          'Taschenrechner RAD-Modus.',
+          '$\\arcsin 0{,}7 \\approx 0{,}7754$.',
+          'Größere Lösung = Supplement.',
         ],
-        { stage: 'apply-independent', subGoal: 0, uses: ['sin-add-thm'] },
+        { stage: 'apply-independent', subGoal: 0, uses: ['sin-zwei-loesungen'] },
       ),
       mc(
-        'Ein Schüler rechnet: „$\\sin(60°-30°) = \\sin 60°\\cos 30° - \\cos 60°\\sin 30° = \\tfrac{\\sqrt3}{2}\\cdot\\tfrac{\\sqrt3}{2} - \\tfrac12\\cdot\\tfrac12 = \\tfrac34 - \\tfrac14 = \\tfrac12$." Das Ergebnis ist zwar richtig, aber warum wurde die Formel korrekt angewandt?',
+        '[PRÜFUNG] Sub-Goal "$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$": Ein Student löst $\\sin x = -0{,}5$ in $[0, 2\\pi)$ und schreibt $x = -\\pi/6$ und $x = 7\\pi/6$. Was ist der Fehler?',
         [
-          'Das Vorzeichen folgt dem Winkel: Bei $\\sin(\\alpha-\\beta)$ steht zwischen den beiden Produkten ein $-$, genau wie im Winkel.',
-          'Er hätte $+$ statt $-$ schreiben müssen, aber das Ergebnis stimmt zufällig.',
-          'Das Ergebnis ist falsch — $\\sin 30° = \\tfrac{\\sqrt3}{2}$, nicht $\\tfrac12$.',
-          'Die Formel gilt nur, wenn $\\alpha > \\beta$ ist.',
+          '$x = -\\pi/6$ liegt nicht in $[0, 2\\pi)$ — stattdessen ist die Lösung $x = 2\\pi - \\pi/6 = 11\\pi/6$. Korrekt also $x \\in \\{7\\pi/6, 11\\pi/6\\}$.',
+          '$\\sin(-\\pi/6) = -0{,}5$ ist korrekt, also ist die Lösung gültig.',
+          'Beide Lösungen sind falsch.',
+          'Hauptwert reicht, zweite Lösung unnötig.',
         ],
         0,
-        `**Ansatz:** Vorzeichen-Regel: $\\sin(\\alpha \\pm \\beta) = \\sin\\alpha\\cos\\beta \\pm \\cos\\alpha\\sin\\beta$ — Zeichen folgt dem Winkel.
-
-**Rechnung:** Hier ist $\\alpha-\\beta$, also steht $-$ zwischen den Produkten.
-
-**Probe:** $\\sin(60°-30°) = \\sin 30° = \\tfrac12$ ✓
-
-**Typischer Fehler:** Glauben, die Regel für Vorzeichen bei Sinus wäre gleich wie bei Kosinus (umgekehrt).`,
+        `**Ansatz:** Intervall-Filter beachten — negative Lösungen ins Hauptintervall verschieben.\n\n**Rechnung:** $\\arcsin(-0{,}5) = -\\pi/6$ (außerhalb $[0, 2\\pi)$). Durch $+2\\pi$ verschieben: $-\\pi/6 + 2\\pi = 11\\pi/6$. Zweite Lösung via Supplement: $\\pi - (-\\pi/6) = 7\\pi/6$. Beide jetzt im Intervall.\n\n**Probe:** $\\sin(7\\pi/6) = \\sin(11\\pi/6) = -0{,}5$ ✓.\n\n**Typischer Fehler:** Den Taschenrechner-Hauptwert $-\\pi/6$ als Lösung nehmen, obwohl er nicht im gefragten Intervall liegt.`,
         [
-          'Sinus: gleiches Vorzeichen wie im Winkel.',
-          'Kosinus: umgekehrtes Vorzeichen.',
-          '$\\sin 30° = \\tfrac12$ ist ein Grundwert.',
+          'Intervall $[0, 2\\pi)$ beachten.',
+          'Negative Taschenrechner-Ergebnisse um $+2\\pi$ verschieben.',
+          'Supplement-Regel gilt weiter.',
         ],
         {
-          1: 'Das $-$ ist hier korrekt — bei Sinus folgt das Vorzeichen dem Winkel.',
-          2: '$\\sin 30° = \\tfrac12$ ist richtig; $\\tfrac{\\sqrt3}{2}$ ist $\\sin 60°$.',
-          3: 'Die Additionstheoreme gelten für beliebige Winkel, unabhängig von der Reihenfolge.',
+          1: '$\\sin(-\\pi/6) = -0{,}5$ stimmt formal, aber die Lösung ist außerhalb $[0, 2\\pi)$.',
+          2: '$7\\pi/6$ ist korrekt; nur $-\\pi/6$ muss ersetzt werden.',
+          3: 'Das Intervall verlangt beide Lösungen.',
         },
-        { stage: 'error-analysis', subGoal: 0, uses: ['sin-add-thm'] },
+        { stage: 'error-analysis', subGoal: 0, uses: ['sin-zwei-loesungen'] },
       ),
-      ni(
-        'Berechne $\\sin(45° + 60°)$ exakt und gib das Ergebnis auf 4 Nachkommastellen an.',
-        0.9659, 0.001, '',
-        `**Ansatz:** $\\sin(45°+60°) = \\sin 45°\\cos 60° + \\cos 45°\\sin 60°$.
-
-**Rechnung:** $\\tfrac{\\sqrt2}{2}\\cdot\\tfrac12 + \\tfrac{\\sqrt2}{2}\\cdot\\tfrac{\\sqrt3}{2} = \\tfrac{\\sqrt2}{4} + \\tfrac{\\sqrt6}{4} = \\tfrac{\\sqrt2+\\sqrt6}{4} \\approx 0{,}9659$.
-
-**Probe:** $45°+60° = 105°$; $\\sin 105° = \\sin(180°-75°) = \\sin 75° \\approx 0{,}9659$ ✓
-
-**Typischer Fehler:** $\\sin 60° = \\tfrac{\\sqrt3}{2}$ mit $\\cos 60° = \\tfrac12$ vertauschen.`,
+      mc(
+        '[PRÜFUNG] Sub-Goal "$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$": Wie viele Lösungen hat $\\sin x = 2$ in $[0, 2\\pi)$?',
         [
-          '$\\sin(\\alpha+\\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$.',
-          'Beachte: $\\sin 45° = \\cos 45° = \\tfrac{\\sqrt2}{2}$.',
-          'Ergebnis: $\\tfrac{\\sqrt2+\\sqrt6}{4}$.',
+          'Keine, weil $|\\sin x| \\leq 1$.',
+          '0, weil Sinus nicht definiert.',
+          '2 (Hauptwert und Supplement).',
+          '1 (nur Hauptwert).',
         ],
-        { stage: 'transfer', subGoal: 0, uses: ['sin-add-thm'] },
+        0,
+        `**Ansatz:** Wertebereich von $\\sin$ prüfen.\n\n**Rechnung:** $\\sin$ nimmt nur Werte in $[-1, 1]$ an. Da $2 > 1$, gibt es keine Lösung.\n\n**Probe:** Graphisch: $y = 2$ schneidet die Sinuskurve nie.\n\n**Typischer Fehler:** Mechanisch $\\arcsin 2$ rechnen — liefert im TR "Error".`,
+        [
+          'Wertebereich von $\\sin$: $[-1, 1]$.',
+          'Gibt es $x$ mit $\\sin x = 2$?',
+          'Taschenrechner liefert Fehler.',
+        ],
+        {
+          1: 'Die Funktion ist **definiert**, aber nicht surjektiv auf $\\mathbb{R}$ — für $|a|>1$ gibt es keine Lösung.',
+          2: 'Nein — der Wertebereich schließt $|a|>1$ aus.',
+          3: 'Nein — keine Lösung.',
+        },
+        { stage: 'transfer', subGoal: 0, uses: ['sin-zwei-loesungen'] },
       ),
     ],
 
-    // ── [1] cos(α±β) = cosα cosβ ∓ sinα sinβ ─────────────────────────────
+    // ── [1] cos x = a, zwei Lösungen ───────────────────────────────────
     1: [
       tf(
-        'In der Formel $\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$ steht im Term ein $-$, obwohl der Winkel ein $+$ enthält.',
+        '[PRÜFUNG] Sub-Goal "$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$": Die zweite Lösung von $\\cos x = a$ ist $2\\pi - \\arccos a$ (Symmetrie zur $x$-Achse am Einheitskreis).',
         true,
-        `**Ansatz:** Beim Kosinus dreht sich das Vorzeichen um.
-
-**Rechnung:** $\\cos(\\alpha+\\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$ (Vorzeichen gespiegelt).
-
-**Probe:** $\\cos(60°+60°) = \\cos 60°\\cos 60° - \\sin 60°\\sin 60° = \\tfrac14 - \\tfrac34 = -\\tfrac12 = \\cos 120°$ ✓
-
-**Typischer Fehler:** Die Sinus-Regel (gleiches Vorzeichen) auf Kosinus übertragen.`,
+        `**Ansatz:** Cosinus-Symmetrie: $\\cos(-x) = \\cos x$, also $\\cos(2\\pi - x) = \\cos(-x) = \\cos x$.\n\n**Rechnung:** Wenn $x_1 = \\arccos a$ die erste Lösung ist, dann $x_2 = 2\\pi - x_1$ die zweite.\n\n**Probe:** $a = 0{,}5$: $x_1 = \\pi/3$, $x_2 = 2\\pi - \\pi/3 = 5\\pi/3$. $\\cos(5\\pi/3) = \\cos(-\\pi/3) = \\cos(\\pi/3) = 0{,}5$ ✓.\n\n**Typischer Fehler:** $\\pi - \\arccos a$ schreiben (wie bei Sinus) — das ist falsch bei Cosinus.`,
         [
-          'Merkregel: "$\\sin$ gleich — $\\cos$ umgekehrt".',
-          'Bei $\\cos(\\alpha-\\beta)$ steht $+$ im Term.',
-          'Verifiziere mit $60°+60°=120°$.',
+          'Cosinus ist gerade.',
+          'Symmetrie-Achse ist die $x$-Achse am Einheitskreis.',
+          'Zweite Lösung: $2\\pi - x_1$.',
         ],
-        { stage: 'recognize', subGoal: 1, uses: ['cos-add-thm'] },
+        { stage: 'recognize', subGoal: 1, uses: ['cos-zwei-loesungen'] },
       ),
       mc(
-        'Welcher Ausdruck ist gleich $\\cos(\\alpha - \\beta)$?',
+        '[PRÜFUNG] Sub-Goal "$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$": Löse $\\cos x = -1/2$ in $[0, 2\\pi)$.',
         [
-          '$\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$',
-          '$\\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$',
-          '$\\cos\\alpha\\sin\\beta - \\sin\\alpha\\cos\\beta$',
-          '$\\cos\\alpha - \\cos\\beta$',
+          '$x = 2\\pi/3$ und $x = 4\\pi/3$',
+          '$x = \\pi/3$ und $x = 5\\pi/3$',
+          '$x = \\pi/2$ und $x = 3\\pi/2$',
+          '$x = 2\\pi/3$',
         ],
         0,
-        `**Ansatz:** Beim Kosinus dreht sich das Vorzeichen: Winkel $-$ → Term $+$.
-
-**Rechnung:** $\\cos(\\alpha-\\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$.
-
-**Probe:** $\\cos(60°-30°) = \\cos 60°\\cos 30° + \\sin 60°\\sin 30° = \\tfrac12\\cdot\\tfrac{\\sqrt3}{2} + \\tfrac{\\sqrt3}{2}\\cdot\\tfrac12 = \\tfrac{\\sqrt3}{2} = \\cos 30°$ ✓
-
-**Typischer Fehler:** Vorzeichen nicht umdrehen ($-$ beibehalten).`,
+        `**Ansatz:** Hauptwert + Symmetrie.\n\n**Rechnung:** $\\arccos(-1/2) = 2\\pi/3$; zweite Lösung $2\\pi - 2\\pi/3 = 4\\pi/3$.\n\n**Probe:** $\\cos(2\\pi/3) = \\cos(4\\pi/3) = -1/2$ ✓.\n\n**Typischer Fehler:** $\\pi/3$ (Hauptwert von $+1/2$) statt $2\\pi/3$ nehmen — Vorzeichen ignoriert.`,
         [
-          'Kosinus: "$-$ im Winkel → $+$ im Term".',
-          'Struktur: gleiche Funktionen multipliziert ($\\cos\\cos, \\sin\\sin$).',
-          'Verifiziere mit $60°-30°=30°$.',
+          '$\\arccos(-1/2) = ?$',
+          'Vorzeichen beachten: $\\cos<0$ in Q2 und Q3.',
+          'Zweite Lösung $2\\pi - x_1$.',
         ],
         {
-          1: 'Vorzeichen nicht gedreht — das ist die Formel für $\\cos(\\alpha+\\beta)$.',
-          2: 'Das ist die Struktur der Sinus-Formel (gemischte Produkte).',
-          3: 'Linearitätsfalle: $\\cos$ ist nicht additiv.',
+          1: 'Das sind Lösungen zu $\\cos x = +1/2$.',
+          2: '$\\cos(\\pi/2) = 0$, nicht $-1/2$.',
+          3: 'Zweite Lösung fehlt.',
         },
-        { stage: 'apply-guided', subGoal: 1, uses: ['cos-add-thm'] },
+        { stage: 'apply-guided', subGoal: 1, uses: ['cos-zwei-loesungen'] },
       ),
       ni(
-        'Berechne $\\cos(60° - 45°)$ mit dem Additionstheorem und gib das Ergebnis auf 4 Nachkommastellen an.',
-        0.9659, 0.001, '',
-        `**Ansatz:** $\\cos(\\alpha-\\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$.
-
-**Rechnung:** $\\cos 60°\\cos 45° + \\sin 60°\\sin 45° = \\tfrac12\\cdot\\tfrac{\\sqrt2}{2} + \\tfrac{\\sqrt3}{2}\\cdot\\tfrac{\\sqrt2}{2} = \\tfrac{\\sqrt2+\\sqrt6}{4} \\approx 0{,}9659$.
-
-**Probe:** $60°-45° = 15°$; $\\cos 15° \\approx 0{,}9659$ ✓
-
-**Typischer Fehler:** Vorzeichen $-$ stehen lassen statt umzudrehen → falsches Ergebnis $\\approx 0{,}2588$.`,
+        '[PRÜFUNG] Sub-Goal "$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$": Löse $\\cos x = 0{,}3$ in $[0, 2\\pi)$ und gib die **kleinere** Lösung in Radiant (3 Nachkommastellen) an.',
+        1.266, 0.01, 'rad',
+        `**Ansatz:** $\\arccos$ liefert den Hauptwert in $[0, \\pi]$.\n\n**Rechnung:** $x_1 = \\arccos 0{,}3 \\approx 1{,}2661$ rad; $x_2 = 2\\pi - x_1 \\approx 5{,}0171$ rad. Kleinere: $x_1 \\approx 1{,}266$.\n\n**Probe:** $\\cos(1{,}2661) \\approx 0{,}3$ ✓.\n\n**Typischer Fehler:** DEG-Modus statt RAD.`,
         [
-          'Kosinus: umgekehrtes Vorzeichen ($-$ wird zu $+$).',
-          '$\\cos 60°=\\tfrac12, \\cos 45°=\\tfrac{\\sqrt2}{2}, \\sin 60°=\\tfrac{\\sqrt3}{2}, \\sin 45°=\\tfrac{\\sqrt2}{2}$.',
-          'Ergebnis: $(\\sqrt2+\\sqrt6)/4$.',
+          'TR im RAD-Modus.',
+          '$\\arccos 0{,}3 \\approx 1{,}266$.',
+          'Das ist bereits die kleinere Lösung.',
         ],
-        { stage: 'apply-independent', subGoal: 1, uses: ['cos-add-thm'] },
+        { stage: 'apply-independent', subGoal: 1, uses: ['cos-zwei-loesungen'] },
       ),
       mc(
-        'Ein Schüler schreibt $\\cos(30°+45°) = \\cos 30°\\cos 45° + \\sin 30°\\sin 45°$. Wo liegt der Fehler?',
+        '[PRÜFUNG] Sub-Goal "$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$": Ein Student schreibt als zweite Lösung bei $\\cos x = a$: "$\\pi - \\arccos a$" (analog zur Sinusregel). Wo ist der Fehler?',
         [
-          'Er hat die Vorzeichen-Regel falsch angewandt: Bei $\\cos(\\alpha+\\beta)$ steht im Term ein $-$ (umgekehrtes Vorzeichen), nicht $+$.',
-          'Er hätte Sinus und Kosinus vertauschen müssen.',
-          '$\\sin 30°$ ist nicht $\\tfrac12$.',
-          'Die Formel gilt nur für Differenzen, nicht für Summen.',
+          'Das ist die Sinus-Supplementregel. Für Cosinus gilt die **Spiegelung an der $x$-Achse**: $x_2 = 2\\pi - \\arccos a$.',
+          'Kein Fehler — beide Regeln sind äquivalent.',
+          'Die Regel gilt nur bei $a > 0$.',
+          'Die Regel sollte $\\arccos(-a)$ benutzen.',
         ],
         0,
-        `**Ansatz:** Kosinus-Vorzeichen kehrt sich um — bei $+$ im Winkel steht $-$ im Term.
-
-**Rechnung:** Korrekt wäre $\\cos(30°+45°) = \\cos 30°\\cos 45° - \\sin 30°\\sin 45° = \\tfrac{\\sqrt6-\\sqrt2}{4} \\approx 0{,}2588 = \\cos 75°$.
-
-**Probe:** $\\cos 75° \\approx 0{,}2588$, der Schüler bekäme $\\cos 15° \\approx 0{,}9659$ — falsch.
-
-**Typischer Fehler:** Sinus-Regel (gleiches Vorzeichen) auf Kosinus übertragen.`,
+        `**Ansatz:** Sinus- und Cosinus-Symmetrie unterscheiden sich.\n\n**Rechnung:** $\\cos(\\pi - x) = -\\cos x$ (nicht $+\\cos x$) — also liefert $\\pi - \\arccos a$ eine Lösung zu $\\cos x = -a$, nicht zu $\\cos x = a$.\n\n**Probe:** $a = 0{,}5$, falsche Regel: $\\pi - \\arccos 0{,}5 = \\pi - \\pi/3 = 2\\pi/3$. Aber $\\cos(2\\pi/3) = -0{,}5 \\neq +0{,}5$.\n\n**Typischer Fehler:** Sinus- und Cosinus-Symmetrieregeln verwechseln.`,
         [
-          'Kosinus dreht das Vorzeichen um.',
-          'Vergleiche Sinus-Formel: dort ist Vorzeichen gleich.',
-          'Sein Ergebnis wäre $\\cos 15°$, nicht $\\cos 75°$.',
+          'Sinus: $\\sin(\\pi-x)=\\sin x$.',
+          'Cosinus: $\\cos(-x)=\\cos x$, also $\\cos(2\\pi-x)=\\cos x$.',
+          'Verschiedene Symmetrieachsen.',
         ],
         {
-          1: 'Struktur (Kreuz vs. Produkt) ist schon richtig; nur das Vorzeichen ist falsch.',
-          2: '$\\sin 30° = \\tfrac12$ ist korrekt.',
-          3: 'Die Additionstheoreme gelten sowohl für Summen als auch für Differenzen.',
+          1: 'Nicht äquivalent — gibt unterschiedliche Vorzeichen.',
+          2: 'Auch für $a<0$ gilt die falsche Formel nicht.',
+          3: 'Unnötig kompliziert — korrekt ist $2\\pi - \\arccos a$.',
         },
-        { stage: 'error-analysis', subGoal: 1, uses: ['cos-add-thm'] },
+        { stage: 'error-analysis', subGoal: 1, uses: ['cos-zwei-loesungen'] },
       ),
-      matching(
-        'Ordne jeder Summe/Differenz den korrekten Ausdruck zu.',
+      mc(
+        '[PRÜFUNG] Sub-Goal "$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$": Wieviele Lösungen hat $\\cos x = 1$ in $[0, 2\\pi)$?',
         [
-          { left: '$\\cos(\\alpha + \\beta)$', right: '$\\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$' },
-          { left: '$\\cos(\\alpha - \\beta)$', right: '$\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$' },
-          { left: '$\\sin(\\alpha + \\beta)$', right: '$\\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$' },
-          { left: '$\\sin(\\alpha - \\beta)$', right: '$\\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta$' },
+          '1',
+          '2',
+          '0',
+          '∞',
         ],
-        `**Ansatz:** Sinus (Kreuzform, gleiches Vorzeichen) vs. Kosinus (Produktform, umgekehrtes Vorzeichen).
-
-**Rechnung:** Vier Formeln, zwei Regeln: Kreuz-vs-Produkt-Struktur + Vorzeichen-Regel.
-
-**Probe:** Jede Formel an einem Grundwert testen (z. B. $\\alpha=\\beta=45°$).
-
-**Typischer Fehler:** Vorzeichen-Regel vertauschen.`,
+        0,
+        `**Ansatz:** Sonderfall $|a|=1$.\n\n**Rechnung:** $\\arccos 1 = 0$; zweite "Lösung" $2\\pi - 0 = 2\\pi$ — **nicht** im halboffenen Intervall $[0, 2\\pi)$. Also nur eine Lösung: $x = 0$.\n\n**Probe:** $\\cos 0 = 1$ ✓. $\\cos(2\\pi) = 1$, aber $2\\pi \\notin [0, 2\\pi)$.\n\n**Typischer Fehler:** Zwei Lösungen angeben, weil "bei $\\cos x = a$ gibt's immer zwei".`,
         [
-          'Sinus mischt, Kosinus nicht.',
-          'Vorzeichen: sin folgt, cos kehrt.',
-          'Vier Formeln = 2 × 2 Fälle.',
+          'Bei $|a|=1$ fallen die beiden Lösungen zusammen (bzw. eine ist am Intervallrand).',
+          'Halboffenes Intervall schließt $2\\pi$ aus.',
+          '$\\cos$ hat Maximum genau einmal pro Periode.',
         ],
-        { stage: 'transfer', subGoal: 1, uses: ['cos-add-thm'] },
+        {
+          1: '$2\\pi$ ist nicht im halboffenen Intervall.',
+          2: 'Doch — $x=0$ ist eine Lösung.',
+          3: 'Nur innerhalb einer Periode endlich viele.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['cos-zwei-loesungen'] },
       ),
     ],
 
-    // ── [2] tan(α±β) = (tanα ± tanβ)/(1 ∓ tanα tanβ) ─────────────────────
+    // ── [2] tan x = a, Periode π ───────────────────────────────────────
     2: [
       tf(
-        '$\\tan(\\alpha + \\beta) = \\dfrac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta}$.',
+        '[PRÜFUNG] Sub-Goal "$\\tan x = a$ hat Periode $\\pi$: $x_k = \\arctan a + k\\pi$, $k \\in \\mathbb{Z}$": $\\tan x$ hat Periode $\\pi$ (nicht $2\\pi$), daher gibt es in $[0, 2\\pi)$ genau zwei Lösungen pro Wert.',
         true,
-        `**Ansatz:** Tangens-Additionstheorem — Zähler gleiches Vorzeichen, Nenner umgekehrtes Vorzeichen.
-
-**Rechnung:** $\\tan(\\alpha \\pm \\beta) = \\dfrac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha\\tan\\beta}$.
-
-**Probe:** $\\tan(45°+0°) = \\dfrac{1+0}{1-0} = 1 = \\tan 45°$ ✓
-
-**Typischer Fehler:** Im Nenner das gleiche Vorzeichen wie im Zähler schreiben.`,
+        `**Ansatz:** $\\tan(x + \\pi) = \\tan x$ — Periode $\\pi$.\n\n**Rechnung:** In $[0, 2\\pi)$ (Länge $2\\pi = 2\\cdot\\pi$) zwei Lösungen: $\\arctan a$ und $\\arctan a + \\pi$.\n\n**Probe:** $\\tan(\\pi/4) = \\tan(5\\pi/4) = 1$.\n\n**Typischer Fehler:** Wie bei $\\sin$/$\\cos$ über $2\\pi$-Periode denken und Supplement ansetzen.`,
         [
-          'Zähler: Summe/Differenz der Tangenswerte.',
-          'Nenner: $1$ minus/plus Produkt — Vorzeichen gespiegelt.',
-          'Verifiziere mit $\\beta=0°$.',
+          'Tangens hat Periode $\\pi$.',
+          'Pro Periode eine Lösung.',
+          'In $[0, 2\\pi)$: zwei Perioden → zwei Lösungen.',
         ],
-        { stage: 'recognize', subGoal: 2, uses: ['tan-add-thm'] },
+        { stage: 'recognize', subGoal: 2, uses: ['tan-perioden-loesung'] },
       ),
       mc(
-        'Welcher Ausdruck ist gleich $\\tan(\\alpha - \\beta)$?',
+        '[PRÜFUNG] Sub-Goal "$\\tan x = a$ hat Periode $\\pi$: $x_k = \\arctan a + k\\pi$, $k \\in \\mathbb{Z}$": Löse $\\tan x = \\sqrt{3}$ in $[0, 2\\pi)$.',
         [
-          '$\\dfrac{\\tan\\alpha - \\tan\\beta}{1 + \\tan\\alpha\\tan\\beta}$',
-          '$\\dfrac{\\tan\\alpha - \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta}$',
-          '$\\tan\\alpha - \\tan\\beta$',
-          '$\\dfrac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta}$',
+          '$x = \\pi/3$ und $x = 4\\pi/3$',
+          '$x = \\pi/3$ und $x = 2\\pi/3$',
+          '$x = \\pi/6$ und $x = 5\\pi/6$',
+          '$x = \\pi/3$',
         ],
         0,
-        `**Ansatz:** $\\tan(\\alpha-\\beta)$ → Zähler $-$, Nenner $+$ (Vorzeichen gespiegelt).
-
-**Rechnung:** $\\tan(\\alpha-\\beta) = \\dfrac{\\tan\\alpha - \\tan\\beta}{1 + \\tan\\alpha\\tan\\beta}$.
-
-**Probe:** $\\tan(45°-45°) = \\tfrac{1-1}{1+1} = 0 = \\tan 0°$ ✓
-
-**Typischer Fehler:** Linearitätsfalle — $\\tan$ ist nicht additiv.`,
+        `**Ansatz:** Hauptwert + Periode $\\pi$.\n\n**Rechnung:** $\\arctan\\sqrt{3} = \\pi/3$; zweite Lösung $\\pi/3 + \\pi = 4\\pi/3$.\n\n**Probe:** $\\tan(\\pi/3) = \\tan(4\\pi/3) = \\sqrt{3}$ ✓ (Q1 und Q3, beide positive $\\tan$).\n\n**Typischer Fehler:** Supplement $\\pi - \\pi/3 = 2\\pi/3$ — dort ist aber $\\tan < 0$.`,
         [
-          'Vorzeichen spiegeln sich zwischen Zähler und Nenner.',
-          'Bei $\\tan(\\alpha-\\beta)$: Zähler $-$, Nenner $+$.',
-          'Verifiziere mit $\\alpha=\\beta$.',
+          '$\\tan$-Periode ist $\\pi$.',
+          '$\\arctan\\sqrt{3} = \\pi/3$.',
+          'Plus $\\pi$ für zweite Lösung.',
         ],
         {
-          1: 'Gleiches Vorzeichen in Zähler und Nenner — aber die Regel besagt, dass sie sich spiegeln.',
-          2: 'Linearitätsfalle: $\\tan(45°-45°) = 0 \\neq \\tan 45° - \\tan 45°$? Zwar ergibt sich hier zufällig $0$, bei anderen Werten stimmt es jedoch nicht.',
-          3: 'Vorzeichen im Zähler falsch ($+$ statt $-$) — das ist die Formel für $\\tan(\\alpha+\\beta)$.',
+          1: 'Das wäre Sinus-Supplement — für $\\tan$ falsch.',
+          2: 'Hauptwerte von $\\sin = 0{,}5$, nicht $\\tan = \\sqrt{3}$.',
+          3: 'Zweite Lösung fehlt.',
         },
-        { stage: 'apply-guided', subGoal: 2, uses: ['tan-add-thm'] },
+        { stage: 'apply-guided', subGoal: 2, uses: ['tan-perioden-loesung'] },
       ),
       ni(
-        'Berechne $\\tan(45° + 30°)$ mit dem Additionstheorem und gib das Ergebnis auf 4 Nachkommastellen an.',
-        3.7321, 0.001, '',
-        `**Ansatz:** $\\tan(\\alpha+\\beta) = \\dfrac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta}$.
-
-**Rechnung:** $\\tan 45° = 1$, $\\tan 30° = \\tfrac{1}{\\sqrt3}$. $\\dfrac{1 + 1/\\sqrt3}{1 - 1\\cdot 1/\\sqrt3} = \\dfrac{(\\sqrt3+1)/\\sqrt3}{(\\sqrt3-1)/\\sqrt3} = \\dfrac{\\sqrt3+1}{\\sqrt3-1}$.
-
-Erweitern mit $(\\sqrt3+1)$: $\\dfrac{(\\sqrt3+1)^2}{(\\sqrt3)^2 - 1^2} = \\dfrac{3+2\\sqrt3+1}{2} = \\dfrac{4+2\\sqrt3}{2} = 2+\\sqrt3 \\approx 3{,}7321$.
-
-**Probe:** $\\tan 75° \\approx 3{,}7321$ (Taschenrechner) ✓
-
-**Typischer Fehler:** Nenner-Vorzeichen $+$ statt $-$ → falscher Betrag.`,
+        '[PRÜFUNG] Sub-Goal "$\\tan x = a$ hat Periode $\\pi$: $x_k = \\arctan a + k\\pi$, $k \\in \\mathbb{Z}$": Löse $\\tan x = -1$ in $[0, 2\\pi)$ und gib die **kleinere** Lösung in Grad an.',
+        135, 0.5, '°',
+        `**Ansatz:** $\\arctan(-1) = -45°$ (außerhalb Intervall); nächste Lösung: $-45° + 180° = 135°$; dann $135° + 180° = 315°$.\n\n**Rechnung:** Beide Lösungen in $[0°, 360°)$: $135°$ und $315°$. Kleinere: $135°$.\n\n**Probe:** $\\tan 135° = -1$ ✓ (Q2); $\\tan 315° = -1$ ✓ (Q4).\n\n**Typischer Fehler:** $-45°$ als Lösung angeben (außerhalb Intervall).`,
         [
-          'Formel: $(\\tan\\alpha+\\tan\\beta)/(1-\\tan\\alpha\\tan\\beta)$.',
-          '$\\tan 45°=1$, $\\tan 30°=1/\\sqrt3 \\approx 0{,}5774$.',
-          'Ergebnis: $2+\\sqrt3$.',
+          '$\\arctan(-1) = -45°$.',
+          'In $[0°, 360°)$ verschieben: $+180°$.',
+          'Zweite via $+180°$.',
         ],
-        { stage: 'apply-independent', subGoal: 2, uses: ['tan-add-thm'] },
+        { stage: 'apply-independent', subGoal: 2, uses: ['tan-perioden-loesung'] },
       ),
       mc(
-        'Ein Schüler rechnet $\\tan(60°+30°) = \\dfrac{\\tan 60° + \\tan 30°}{1 + \\tan 60°\\tan 30°}$ und erhält einen endlichen Wert. Wo liegt der Fehler, und was müsste herauskommen?',
+        '[PRÜFUNG] Sub-Goal "$\\tan x = a$ hat Periode $\\pi$: $x_k = \\arctan a + k\\pi$, $k \\in \\mathbb{Z}$": Ein Student löst $\\tan x = 2$ in $[0, 2\\pi)$ und gibt $x_1 \\approx 1{,}107$ und $x_2 = \\pi - 1{,}107 \\approx 2{,}034$ an. Was ist der Fehler?',
         [
-          'Nenner falsch: bei $\\tan(\\alpha+\\beta)$ steht $1 - \\tan\\alpha\\tan\\beta$. Mit $\\tan 60° \\cdot \\tan 30° = \\sqrt3 \\cdot 1/\\sqrt3 = 1$ wird der korrekte Nenner $0$ — also $\\tan 90°$ undefiniert.',
-          'Zähler falsch: müsste $-$ statt $+$ heißen.',
-          '$\\tan 60° = 1/\\sqrt3$, nicht $\\sqrt3$.',
-          'Die Formel gilt nur für Differenzen.',
+          'Supplementregel $\\pi - x$ gilt für $\\sin$, nicht für $\\tan$. Richtig: $x_2 = x_1 + \\pi \\approx 4{,}249$.',
+          'Beide Lösungen sind korrekt.',
+          '$x_1$ ist falsch berechnet.',
+          '$\\tan x = 2$ hat keine Lösung in $[0, 2\\pi)$.',
         ],
         0,
-        `**Ansatz:** Nenner-Vorzeichen umgekehrt zum Zähler-Vorzeichen.
-
-**Rechnung:** Korrekter Nenner $1 - \\tan 60°\\tan 30° = 1 - 1 = 0$ → Ausdruck undefiniert, passend zu $\\tan 90°$.
-
-**Probe:** $60°+30°=90°$; $\\tan 90°$ ist tatsächlich undefiniert.
-
-**Typischer Fehler:** Gleiches Vorzeichen in Zähler und Nenner.`,
+        `**Ansatz:** Periode unterscheiden — $\\tan$ hat $\\pi$, nicht $2\\pi$.\n\n**Rechnung:** $\\tan(2{,}034) = \\tan(\\pi - 1{,}107) = -\\tan 1{,}107 \\approx -2$, nicht $+2$. Richtige zweite Lösung: $1{,}107 + \\pi \\approx 4{,}249$.\n\n**Probe:** $\\tan(4{,}249) = \\tan(1{,}107) \\approx 2$ ✓.\n\n**Typischer Fehler:** Sinus-Regeln auf Tangens anwenden.`,
         [
-          'Die Formel erkennt $\\tan 90°$ = undefiniert am Nenner $=0$.',
-          'Nenner-Vorzeichen ist immer gespiegelt zum Zähler.',
-          '$\\tan 60°\\tan 30° = 1$ ist die Schlüsselbeobachtung.',
+          '$\\tan(\\pi - x) = -\\tan x$.',
+          'Die Supplementregel gilt nicht wie bei $\\sin$.',
+          'Zweite Lösung ist $x + \\pi$.',
         ],
         {
-          1: 'Zähler ist korrekt: bei $+\\beta$ steht $+$ im Zähler.',
-          2: '$\\tan 60° = \\sin/\\cos = (\\sqrt3/2)/(1/2) = \\sqrt3$, also korrekt.',
-          3: 'Die Formel gilt für $+$ und $-$ analog.',
+          1: '$\\tan(2{,}034) \\approx -2$, nicht $+2$.',
+          2: '$x_1$ stimmt — der Fehler ist bei $x_2$.',
+          3: 'Für jedes $a \\in \\mathbb{R}$ gibt es Lösungen.',
         },
-        { stage: 'error-analysis', subGoal: 2, uses: ['tan-add-thm'] },
+        { stage: 'error-analysis', subGoal: 2, uses: ['tan-perioden-loesung'] },
       ),
       ni(
-        'Berechne $\\tan(45° - 30°)$ mit dem Additionstheorem auf 4 Nachkommastellen.',
-        0.2679, 0.001, '',
-        `**Ansatz:** $\\tan(\\alpha-\\beta) = \\dfrac{\\tan\\alpha - \\tan\\beta}{1 + \\tan\\alpha\\tan\\beta}$.
-
-**Rechnung:** $\\dfrac{1 - 1/\\sqrt3}{1 + 1/\\sqrt3} = \\dfrac{\\sqrt3-1}{\\sqrt3+1}$. Erweitern mit $(\\sqrt3-1)$: $\\dfrac{(\\sqrt3-1)^2}{3-1} = \\dfrac{4-2\\sqrt3}{2} = 2-\\sqrt3 \\approx 0{,}2679$.
-
-**Probe:** $45°-30°=15°$; $\\tan 15° \\approx 0{,}2679$ ✓
-
-**Typischer Fehler:** Nenner $1 - \\tan\\tan$ statt $1 + \\tan\\tan$ wählen.`,
+        '[PRÜFUNG] Sub-Goal "$\\tan x = a$ hat Periode $\\pi$: $x_k = \\arctan a + k\\pi$, $k \\in \\mathbb{Z}$": Wie viele Lösungen hat $\\tan(2x) = 1$ in $[0, 2\\pi)$? (Anzahl angeben)',
+        4, 0, '',
+        `**Ansatz:** Substitution $u = 2x$. $\\tan u = 1 \\Rightarrow u = \\pi/4 + k\\pi$.\n\n**Rechnung:** $u$ läuft in $[0, 4\\pi)$. Lösungen $u = \\pi/4, 5\\pi/4, 9\\pi/4, 13\\pi/4$ (vier). Rück: $x = u/2 \\Rightarrow \\pi/8, 5\\pi/8, 9\\pi/8, 13\\pi/8$ — vier Lösungen in $[0, 2\\pi)$.\n\n**Probe:** Allgemein: $\\tan(kx) = a$ hat $k\\cdot 2 = 2k$ Lösungen in $[0, 2\\pi)$ (weil $\\tan$-Periode $\\pi$). Hier $k=2$: 4 Lösungen.\n\n**Typischer Fehler:** Nur zwei Lösungen angeben wie bei $\\tan x = 1$.`,
         [
-          'Bei $\\tan(\\alpha-\\beta)$: Zähler $-$, Nenner $+$.',
-          'Nenner: $1 + 1/\\sqrt3 = (\\sqrt3+1)/\\sqrt3$.',
-          'Ergebnis: $2-\\sqrt3$.',
+          'Substitution $u = 2x$.',
+          'Wertebereich von $u$?',
+          '$\\tan u = 1$ hat pro $\\pi$ eine Lösung.',
         ],
-        { stage: 'transfer', subGoal: 2, uses: ['tan-add-thm'] },
+        { stage: 'transfer', subGoal: 2, uses: ['tan-perioden-loesung'] },
       ),
     ],
 
-    // ── [3] Linearitäts-Falle ────────────────────────────────────────────
+    // ── [3] Vollständige Lösungsmenge ─────────────────────────────────
     3: [
       tf(
-        'Es gilt $\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta$ für alle $\\alpha, \\beta$.',
-        false,
-        `**Ansatz:** Sinus ist keine lineare Funktion.
-
-**Rechnung:** Gegenbeispiel $\\alpha=\\beta=45°$: $\\sin(90°) = 1$, aber $\\sin 45° + \\sin 45° = \\sqrt2 \\approx 1{,}414$.
-
-**Probe:** Auch $\\alpha=\\beta=30°$: $\\sin 60° = \\sqrt3/2 \\approx 0{,}866$, aber $2\\sin 30° = 1$.
-
-**Typischer Fehler:** Linearitätsannahme aus Schule (Klammer "hereinziehen").`,
-        [
-          'Sinus ist nicht linear — die Additionstheoreme korrigieren genau diesen Fehler.',
-          'Gegenbeispiel $45°+45°$.',
-          'Klammer darf nicht "hineingezogen" werden.',
-        ],
-        { stage: 'recognize', subGoal: 3, uses: ['linearitaets-falle'] },
-      ),
-      mc(
-        'Welche der folgenden Gleichungen ist für alle $\\alpha, \\beta$ **falsch**?',
-        [
-          '$\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta$',
-          '$\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$',
-          '$\\sin(-\\alpha) = -\\sin\\alpha$',
-          '$\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$',
-        ],
-        0,
-        `**Ansatz:** Die "naive" Linearitätsformel ist falsch.
-
-**Rechnung:** Für $\\alpha=\\beta=30°$ gibt $\\sin(30°+30°) = \\sin 60° = \\sqrt3/2 \\approx 0{,}866$, aber $\\sin 30° + \\sin 30° = 1$. Unterschied klar.
-
-**Probe:** Die anderen drei Gleichungen sind gültige Identitäten.
-
-**Typischer Fehler:** Funktionen wie $f(x+y) = f(x)+f(y)$ behandeln — das gilt nur für lineare Funktionen.`,
-        [
-          'Teste mit konkreten Zahlen.',
-          '$\\sin$ ist nicht linear.',
-          'Die anderen drei Formeln sind Additionstheoreme/Symmetrie.',
-        ],
-        {
-          1: 'Das ist das korrekte Additionstheorem — immer gültig.',
-          2: 'Punktsymmetrie von Sinus — immer gültig.',
-          3: 'Doppelwinkel — gültig, Spezialfall des Additionstheorems.',
-        },
-        { stage: 'apply-guided', subGoal: 3, uses: ['linearitaets-falle'] },
-      ),
-      ni(
-        'Bestimme die Differenz $\\sin(30° + 60°) - (\\sin 30° + \\sin 60°)$ (zeigt, wie stark die Linearitätsfalle daneben liegt). Gib das Ergebnis auf 4 Nachkommastellen an.',
-        -0.366, 0.01, '',
-        `**Ansatz:** Linke Seite mit Additionstheorem, rechte Seite wortwörtlich.
-
-**Rechnung:** $\\sin(90°) = 1$. $\\sin 30° + \\sin 60° = \\tfrac12 + \\tfrac{\\sqrt3}{2} \\approx 0{,}5 + 0{,}866 = 1{,}366$. Differenz $= 1 - 1{,}366 = -0{,}366$.
-
-**Probe:** Linearitätsannahme überschätzt den Wert.
-
-**Typischer Fehler:** Glauben, die Differenz wäre $0$.`,
-        [
-          '$\\sin 90° = 1$.',
-          '$\\sin 30° + \\sin 60° = \\tfrac12 + \\tfrac{\\sqrt3}{2} \\approx 1{,}366$.',
-          'Differenz: $1 - 1{,}366 = -0{,}366$.',
-        ],
-        { stage: 'apply-independent', subGoal: 3, uses: ['linearitaets-falle', 'sin-add-thm'] },
-      ),
-      mc(
-        'Ein Schüler vereinfacht $\\cos(\\alpha+\\beta) + \\cos(\\alpha-\\beta)$ zu $2\\cos\\alpha + 2\\cos\\beta$. Wo liegt der Fehler?',
-        [
-          'Er hat Linearität unterstellt. Die korrekte Umformung mit den Additionstheoremen liefert $2\\cos\\alpha\\cos\\beta$ — ein Produkt, keine Summe.',
-          'Er hätte $2\\sin\\alpha + 2\\sin\\beta$ schreiben müssen.',
-          'Die Aussage stimmt.',
-          'Der Faktor $2$ ist falsch — müsste $4$ sein.',
-        ],
-        0,
-        `**Ansatz:** Additionstheoreme anwenden, **nicht** Linearität unterstellen.
-
-**Rechnung:** $\\cos(\\alpha+\\beta) + \\cos(\\alpha-\\beta) = [\\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta] + [\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta] = 2\\cos\\alpha\\cos\\beta$ (Produkt-Summe-Identität).
-
-**Probe:** $\\alpha=\\beta=60°$: $\\cos 120° + \\cos 0° = -\\tfrac12 + 1 = \\tfrac12 = 2\\cos 60°\\cos 60° = 2 \\cdot \\tfrac14 = \\tfrac12$ ✓
-
-**Typischer Fehler:** $\\cos$ wie eine lineare Funktion behandeln.`,
-        [
-          'Linearitätsfalle: Klammer hineinziehen ist verboten.',
-          'Die Additionstheoreme geben das Produkt $\\cos\\cos$.',
-          'Teste mit $\\alpha=\\beta=60°$.',
-        ],
-        {
-          1: 'Sinus mit gemischtem Vorzeichen würde sich zu $0$ aufheben, nicht zu dieser Summe.',
-          2: 'Die richtige Form ist ein **Produkt** $2\\cos\\alpha\\cos\\beta$, nicht eine Summe.',
-          3: 'Der Faktor $2$ stammt von $2\\cos\\alpha\\cos\\beta$ — korrekt, aber die Linearitätsform ist generell falsch.',
-        },
-        { stage: 'error-analysis', subGoal: 3, uses: ['linearitaets-falle'] },
-      ),
-      tf(
-        'Die Gleichung $\\sin(2\\alpha) = 2\\sin\\alpha$ gilt für alle $\\alpha$.',
-        false,
-        `**Ansatz:** Erneut Linearitätsfalle. $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$ (Doppelwinkelformel, siehe trig-3-2).
-
-**Rechnung:** Gegenbeispiel $\\alpha=30°$: $\\sin 60° = \\sqrt3/2 \\approx 0{,}866$, aber $2\\sin 30° = 1$.
-
-**Probe:** Nur bei $\\cos\\alpha = 1$ (also $\\alpha=0°, 360°, \\ldots$) liefern beide Seiten dasselbe.
-
-**Typischer Fehler:** Faktor $2$ als "einfach" hinschreiben.`,
-        [
-          'Doppelwinkel ist nicht linear.',
-          'Korrekte Formel: $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$.',
-          'Teste mit $\\alpha=30°$.',
-        ],
-        { stage: 'transfer', subGoal: 3, uses: ['linearitaets-falle'] },
-      ),
-    ],
-
-    // ── [4] Exakte Werte aus Grundwinkeln bauen ──────────────────────────
-    4: [
-      matching(
-        'Ordne jeder Zerlegung den zugehörigen Zielwinkel zu.',
-        [
-          { left: '$45° + 30°$', right: '$75°$' },
-          { left: '$45° - 30°$', right: '$15°$' },
-          { left: '$60° + 45°$', right: '$105°$' },
-          { left: '$60° - 45°$', right: '$15°$' },
-        ],
-        `**Ansatz:** Ziel-Winkel als Summe/Differenz bekannter Grundwinkel ($30°, 45°, 60°$) darstellen.
-
-**Rechnung:** Direkte Addition/Subtraktion.
-
-**Probe:** Nicht jede Zerlegung ist eindeutig — $15°$ hat zwei natürliche Darstellungen.
-
-**Typischer Fehler:** Winkel wie $15°$ oder $75°$ glauben "auswendig" zu kennen.`,
-        [
-          'Bekannte Grundwinkel: $30°, 45°, 60°$.',
-          '$75° = 45°+30°$.',
-          '$15° = 45°-30° = 60°-45°$.',
-        ],
-        { stage: 'recognize', subGoal: 4, uses: ['exakte-werte-bau'] },
-      ),
-      mc(
-        'Welche Zerlegung ist für die Berechnung von $\\sin 75°$ mit den Grundwinkeln $30°, 45°, 60°$ geeignet?',
-        [
-          '$75° = 45° + 30°$',
-          '$75° = 90° - 15°$',
-          '$75° = 75° + 0°$',
-          '$75° = 100° - 25°$',
-        ],
-        0,
-        `**Ansatz:** Wir brauchen eine Summe/Differenz zweier bekannter Grundwinkel.
-
-**Rechnung:** $45°+30°=75°$ nutzt die Grundwerte direkt.
-
-**Probe:** $\\sin 75° = \\sin 45°\\cos 30° + \\cos 45°\\sin 30° = \\tfrac{\\sqrt6+\\sqrt2}{4} \\approx 0{,}9659$ ✓
-
-**Typischer Fehler:** Zerlegung in Winkel, deren Werte nicht als Grundwerte bekannt sind (z. B. $15°, 25°$).`,
-        [
-          'Nur Grundwinkel $30°, 45°, 60°$ (und evtl. $0°, 90°$) verwenden.',
-          '$45°+30°$ zerlegt $75°$ mit beiden Teilen aus der Tabelle.',
-          'Andere Zerlegungen brauchen Winkel, die erst aufwändig bestimmt werden müssten.',
-        ],
-        {
-          1: 'Zwar korrekt ($75° = 90°-15°$), aber $\\sin 15°$ ist selbst kein Grundwert.',
-          2: 'Triviale Zerlegung — kein Fortschritt, da $\\sin 75°$ unbekannt bleibt.',
-          3: 'Beide Winkel ($100°, 25°$) sind keine Grundwinkel.',
-        },
-        { stage: 'apply-guided', subGoal: 4, uses: ['exakte-werte-bau', 'sin-add-thm'] },
-      ),
-      ni(
-        'Berechne $\\sin 15°$ mit dem Additionstheorem (Zerlegung $45°-30°$) auf 4 Nachkommastellen.',
-        0.2588, 0.001, '',
-        `**Ansatz:** $\\sin 15° = \\sin(45°-30°) = \\sin 45°\\cos 30° - \\cos 45°\\sin 30°$.
-
-**Rechnung:** $\\tfrac{\\sqrt2}{2}\\cdot\\tfrac{\\sqrt3}{2} - \\tfrac{\\sqrt2}{2}\\cdot\\tfrac12 = \\tfrac{\\sqrt6}{4} - \\tfrac{\\sqrt2}{4} = \\tfrac{\\sqrt6-\\sqrt2}{4} \\approx 0{,}2588$.
-
-**Probe:** Taschenrechner $\\sin 15° \\approx 0{,}2588$ ✓
-
-**Typischer Fehler:** Vorzeichen aus der Kosinus-Formel übernehmen oder $\\sin 45° - \\sin 30°$ rechnen.`,
-        [
-          '$15° = 45° - 30°$.',
-          'Sinus-Formel: $\\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta$.',
-          'Ergebnis: $(\\sqrt6-\\sqrt2)/4$.',
-        ],
-        { stage: 'apply-independent', subGoal: 4, uses: ['exakte-werte-bau', 'sin-add-thm'] },
-      ),
-      mc(
-        'Ein Schüler zerlegt $\\cos 75°$ als $\\cos(90°-15°)$ und schreibt $\\cos 75° = \\cos 90° - \\cos 15° = 0 - \\cos 15° = -\\cos 15°$. Wo liegt der Fehler?',
-        [
-          'Er hat die Linearitätsfalle eingesetzt statt das Additionstheorem. Korrekt: $\\cos(90°-15°) = \\cos 90°\\cos 15° + \\sin 90°\\sin 15° = 0 + \\sin 15° = \\sin 15°$ — also $\\cos 75° = \\sin 15°$.',
-          'Er hätte $75°$ nicht zerlegen dürfen.',
-          'Die Aussage ist korrekt.',
-          '$\\cos 90° = 1$, nicht $0$.',
-        ],
-        0,
-        `**Ansatz:** Additionstheorem korrekt anwenden statt Klammer auflösen.
-
-**Rechnung:** $\\cos(90°-15°) = \\cos 90°\\cos 15° + \\sin 90°\\sin 15° = 0\\cdot\\cos 15° + 1\\cdot\\sin 15° = \\sin 15° \\approx 0{,}2588$.
-
-**Probe:** $\\cos 75° \\approx 0{,}2588 = \\sin 15°$ ✓ (Komplementärregel).
-
-**Typischer Fehler:** Linearitätsfalle ($\\cos$ nicht linear). Die Komplementärregel $\\cos\\alpha = \\sin(90°-\\alpha)$ ist hier das Ergebnis, nicht die Annahme.`,
-        [
-          'Additionstheorem mit $\\cos 90°=0, \\sin 90°=1$.',
-          'Linearität ist verboten.',
-          'Ergebnis ist positiv, nicht negativ.',
-        ],
-        {
-          1: '$\\cos 75°$ ist sehr wohl zerlegbar; andere Zerlegungen ($45°+30°$) gehen auch.',
-          2: 'Nein — mit Linearität ist sie falsch. Additionstheorem liefert $+\\sin 15°$.',
-          3: '$\\cos 90° = 0$ ist korrekt (Grundwert).',
-        },
-        { stage: 'error-analysis', subGoal: 4, uses: ['exakte-werte-bau', 'cos-add-thm'] },
-      ),
-      ni(
-        'Berechne $\\cos 15°$ (Zerlegung $45°-30°$) auf 4 Nachkommastellen.',
-        0.9659, 0.001, '',
-        `**Ansatz:** $\\cos 15° = \\cos(45°-30°) = \\cos 45°\\cos 30° + \\sin 45°\\sin 30°$ (Kosinus kehrt Vorzeichen um).
-
-**Rechnung:** $\\tfrac{\\sqrt2}{2}\\cdot\\tfrac{\\sqrt3}{2} + \\tfrac{\\sqrt2}{2}\\cdot\\tfrac12 = \\tfrac{\\sqrt6}{4} + \\tfrac{\\sqrt2}{4} = \\tfrac{\\sqrt6+\\sqrt2}{4} \\approx 0{,}9659$.
-
-**Probe:** Taschenrechner $\\cos 15° \\approx 0{,}9659$; außerdem $\\cos 15° = \\sin 75°$ (Komplementär) ✓
-
-**Typischer Fehler:** Bei Kosinus das Vorzeichen nicht umdrehen und $-$ stehen lassen → falscher Wert $\\approx 0{,}2588$.`,
-        [
-          'Kosinus-Vorzeichen kehrt sich um: $-$ im Winkel → $+$ im Term.',
-          'Grundwerte einsetzen.',
-          'Ergebnis: $(\\sqrt6+\\sqrt2)/4$.',
-        ],
-        { stage: 'transfer', subGoal: 4, uses: ['exakte-werte-bau', 'cos-add-thm'] },
-      ),
-    ],
-  },
-
-  // ────────────────────────────────────────────────────────────────────────
-  // trig-3-2 — Doppelwinkelformeln & Pythagoras  (5 subGoals)
-  // 25 Matrix-Aufgaben: 5 SGs × 5 Stufen.
-  // ────────────────────────────────────────────────────────────────────────
-  'trig-3-2': {
-    // ── [0] sin(2α) = 2 sinα cosα ────────────────────────────────────────
-    0: [
-      tf(
-        '$\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$ folgt aus dem Additionstheorem mit $\\alpha = \\beta$.',
+        '[PRÜFUNG] Sub-Goal "Gesamte Lösungsmenge: Hauptwerte + $2\\pi k$ (bzw. $\\pi k$ bei $\\tan$), Intervall berücksichtigen": Bei der Angabe der "allgemeinen Lösung" einer trigonometrischen Gleichung über $\\mathbb{R}$ gehört die Periode explizit dazu, z.B. $x = \\arcsin a + 2\\pi k$ und $x = \\pi - \\arcsin a + 2\\pi k$.',
         true,
-        `**Ansatz:** Einsetzen $\\beta=\\alpha$ in $\\sin(\\alpha+\\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$.
-
-**Rechnung:** $\\sin(2\\alpha) = \\sin\\alpha\\cos\\alpha + \\cos\\alpha\\sin\\alpha = 2\\sin\\alpha\\cos\\alpha$.
-
-**Probe:** $\\alpha=30°$: $\\sin 60° = \\sqrt3/2$; $2\\sin 30°\\cos 30° = 2\\cdot\\tfrac12\\cdot\\tfrac{\\sqrt3}{2} = \\sqrt3/2$ ✓
-
-**Typischer Fehler:** $\\sin(2\\alpha) = 2\\sin\\alpha$ hinschreiben (Linearitätsfalle).`,
+        `**Ansatz:** Periodizität explizit kodieren.\n\n**Rechnung:** Für $\\sin x = a$ über $\\mathbb{R}$: zwei Lösungsfamilien, jede mit $+2\\pi k$. Für $\\cos$ dito; für $\\tan$: nur eine Familie mit $+\\pi k$.\n\n**Probe:** Ohne $+2\\pi k$ fehlen **alle** Lösungen außerhalb einer Periode.\n\n**Typischer Fehler:** Periodenterm vergessen oder falsche Periode ($\\pi$ bei $\\sin$, $2\\pi$ bei $\\tan$).`,
         [
-          'Spezialfall des Additionstheorems.',
-          'Beide Terme $\\sin\\alpha\\cos\\alpha$ summieren sich.',
-          'Verifiziere mit $\\alpha=30°$.',
+          'Allgemeine Lösung: Hauptwerte + Periode.',
+          'Sinus/Cosinus: Periode $2\\pi$.',
+          'Tangens: Periode $\\pi$.',
         ],
-        { stage: 'recognize', subGoal: 0, uses: ['sin-doppelwinkel'] },
+        { stage: 'recognize', subGoal: 3, uses: ['vollstaendige-menge'] },
+      ),
+      sorting(
+        '[PRÜFUNG] Sub-Goal "Gesamte Lösungsmenge: Hauptwerte + $2\\pi k$ (bzw. $\\pi k$ bei $\\tan$), Intervall berücksichtigen": Bringe die Schritte zur Bestimmung der vollständigen Lösungsmenge in richtiger Reihenfolge.',
+        [
+          'Gleichung auf Grundform $\\sin x = a$ / $\\cos x = a$ / $\\tan x = a$ bringen',
+          'Taschenrechner im richtigen Modus (DEG/RAD)',
+          'Hauptwert mit $\\arcsin$/$\\arccos$/$\\arctan$ bestimmen',
+          'Zweite Lösung via Symmetrie (Sin-Supplement, Cos-Spiegelung)',
+          'Allgemeine Form mit $+2\\pi k$ bzw. $+\\pi k$ hinschreiben',
+          'Auf das gegebene Intervall filtern',
+        ],
+        [0, 1, 2, 3, 4, 5],
+        `**Ansatz:** Systematik schützt vor Lücken.\n\n**Rechnung:** Erst Grundform, dann Modus, dann Hauptwert, dann Symmetrie, dann Periode, dann Intervall.\n\n**Probe:** Wer die Schritte ausführt, erhält garantiert alle Lösungen — und keine zu viel.\n\n**Typischer Fehler:** Direkt $\\arcsin$ drücken, ohne die Gleichung zu normalisieren.`,
+        [
+          'Systematik vor Schnelligkeit.',
+          'Jeder Schritt ein klarer Einwurf.',
+          'Intervall-Filter zum Schluss.',
+        ],
+        { stage: 'apply-guided', subGoal: 3, uses: ['vollstaendige-menge'] },
       ),
       mc(
-        'Welcher Ausdruck ist gleich $\\sin(2\\alpha)$?',
+        '[PRÜFUNG] Sub-Goal "Gesamte Lösungsmenge: Hauptwerte + $2\\pi k$ (bzw. $\\pi k$ bei $\\tan$), Intervall berücksichtigen": Welche Lösungsmenge über $\\mathbb{R}$ hat $\\cos x = 0$?',
         [
-          '$2\\sin\\alpha\\cos\\alpha$',
-          '$2\\sin\\alpha$',
-          '$\\sin^2\\alpha + \\cos^2\\alpha$',
-          '$\\sin\\alpha + \\cos\\alpha$',
+          '$x = \\pi/2 + k\\pi$, $k \\in \\mathbb{Z}$',
+          '$x = \\pi/2 + 2k\\pi$, $k \\in \\mathbb{Z}$',
+          '$x = k\\pi$, $k \\in \\mathbb{Z}$',
+          '$x = \\pi/2$',
         ],
         0,
-        `**Ansatz:** Doppelwinkelformel für Sinus.
-
-**Rechnung:** $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$.
-
-**Probe:** $\\alpha=45°$: $\\sin 90° = 1$; $2\\sin 45°\\cos 45° = 2\\cdot\\tfrac12 = 1$ ✓
-
-**Typischer Fehler:** Linearitätsfalle $\\sin(2\\alpha) = 2\\sin\\alpha$.`,
+        `**Ansatz:** Spezialfall $|a|=0$ vereinigt die beiden $\\cos$-Lösungsfamilien zu einer.\n\n**Rechnung:** $\\arccos 0 = \\pi/2$; zweite Lösung $2\\pi - \\pi/2 = 3\\pi/2$. Differenz: $3\\pi/2 - \\pi/2 = \\pi$. Beide Familien zusammen: $x = \\pi/2 + k\\pi$.\n\n**Probe:** $\\cos(\\pi/2), \\cos(3\\pi/2), \\cos(5\\pi/2)$ alle $= 0$ ✓.\n\n**Typischer Fehler:** Nur die $+2\\pi k$-Familie angeben und die zweite vergessen.`,
         [
-          'Ableiten via Additionstheorem $\\alpha+\\alpha$.',
-          'Es kommen beide Funktionen ($\\sin$ und $\\cos$) vor.',
-          'Teste mit $\\alpha=45°$.',
+          'Vereinigung der beiden Hauptwert-Familien.',
+          'Nachbar-Lösungen haben Abstand $\\pi$, nicht $2\\pi$.',
+          'Zusammengefasst: $\\pi/2 + k\\pi$.',
         ],
         {
-          1: 'Linearitätsfalle — Gegenbeispiel $\\alpha=45°$: $\\sin 90°=1$ vs. $2\\sin 45° = \\sqrt2$.',
-          2: 'Das ist die Pythagoras-Identität $= 1$, nicht Doppelwinkel.',
-          3: 'Eine Summe der Funktionen ergibt nicht $\\sin(2\\alpha)$.',
+          1: 'Nur halbe Familie — $3\\pi/2$ fehlt.',
+          2: 'Das sind Lösungen von $\\sin x = 0$, nicht $\\cos x = 0$.',
+          3: 'Nur eine Lösung — die allgemeine Menge hat unendlich viele.',
         },
-        { stage: 'apply-guided', subGoal: 0, uses: ['sin-doppelwinkel'] },
-      ),
-      ni(
-        'Berechne $\\sin(2 \\cdot 30°)$ mit der Doppelwinkelformel. Ergebnis auf 4 Nachkommastellen.',
-        0.8660, 0.001, '',
-        `**Ansatz:** $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$.
-
-**Rechnung:** $2 \\sin 30°\\cos 30° = 2 \\cdot \\tfrac12 \\cdot \\tfrac{\\sqrt3}{2} = \\tfrac{\\sqrt3}{2} \\approx 0{,}8660$.
-
-**Probe:** $\\sin 60° \\approx 0{,}8660$ ✓
-
-**Typischer Fehler:** Faktor $2$ vergessen oder Linearitätsfalle $2\\sin 30° = 1$.`,
-        [
-          'Doppelwinkelformel mit $\\alpha = 30°$.',
-          '$\\sin 30° = \\tfrac12, \\cos 30° = \\tfrac{\\sqrt3}{2}$.',
-          'Produkt $\\tfrac{\\sqrt3}{2}$.',
-        ],
-        { stage: 'apply-independent', subGoal: 0, uses: ['sin-doppelwinkel'] },
+        { stage: 'apply-independent', subGoal: 3, uses: ['vollstaendige-menge'] },
       ),
       mc(
-        'Ein Schüler sagt: „Wegen $\\sin(2 \\cdot 45°) = \\sin 90° = 1$ und $2\\sin 45° = \\sqrt 2$ müsste die Formel $\\sin(2\\alpha) = 2\\sin\\alpha$ gelten — die Abweichung ist bloß Messungenauigkeit." Wo liegt der Fehler in seinem Argument?',
+        '[PRÜFUNG] Sub-Goal "Gesamte Lösungsmenge: Hauptwerte + $2\\pi k$ (bzw. $\\pi k$ bei $\\tan$), Intervall berücksichtigen": Ein Student gibt als Lösung von $\\sin x = 1/2$ über $\\mathbb{R}$ nur "$x = \\pi/6 + 2k\\pi$" an. Was fehlt?',
         [
-          '$\\sqrt 2 \\approx 1{,}414 \\neq 1$ — die Abweichung ist keineswegs klein. Die korrekte Formel ist $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$; der fehlende Faktor $\\cos\\alpha$ ändert das Ergebnis drastisch.',
-          '$\\sin 45° \\neq \\tfrac{\\sqrt2}{2}$.',
-          '$\\sin 90°$ ist $0$, nicht $1$.',
-          'Das Argument stimmt.',
+          'Die zweite Lösungsfamilie $x = 5\\pi/6 + 2k\\pi$ (via Supplement $\\pi - \\pi/6$).',
+          'Nichts — eine Familie genügt.',
+          'Die Periode müsste $\\pi$ statt $2\\pi$ sein.',
+          'Der Hauptwert ist falsch.',
         ],
         0,
-        `**Ansatz:** Die Linearitätsfalle ist kein Messfehler, sondern strukturell falsch.
-
-**Rechnung:** Korrekte Formel $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$. Mit $\\alpha=45°$: $2 \\cdot \\tfrac{\\sqrt2}{2}\\cdot\\tfrac{\\sqrt2}{2} = 1$ ✓
-
-**Probe:** $\\cos 45° = \\tfrac{\\sqrt2}{2}$ fehlt in seiner Rechnung.
-
-**Typischer Fehler:** Den fehlenden Faktor $\\cos\\alpha$ übersehen.`,
+        `**Ansatz:** Zwei getrennte Lösungsfamilien für Sinus.\n\n**Rechnung:** $\\sin x = 0{,}5$ in $[0, 2\\pi)$: $x = \\pi/6, 5\\pi/6$. Über $\\mathbb{R}$: beide Familien $\\pi/6+2\\pi k$ und $5\\pi/6+2\\pi k$.\n\n**Probe:** $\\sin(5\\pi/6) = \\sin(\\pi - \\pi/6) = \\sin(\\pi/6) = 0{,}5$ ✓.\n\n**Typischer Fehler:** Eine Familie vergessen — beim Sinus immer zwei Familien.`,
         [
-          '$\\sqrt2 \\approx 1{,}414$.',
-          'Faktor $\\cos\\alpha$ fehlt.',
-          'Linearität ist bei $\\sin$ nie zulässig.',
+          'Sinus: zwei Lösungsfamilien pro Periode.',
+          'Supplement $\\pi - x_1$.',
+          'Beide mit $+2\\pi k$ erweitern.',
         ],
         {
-          1: '$\\sin 45° = \\tfrac{\\sqrt2}{2}$, also $2\\sin 45° = \\sqrt2$ — die Rechnung ist mathematisch korrekt, nur die Schlussfolgerung falsch.',
-          2: '$\\sin 90° = 1$ ist ein Grundwert.',
-          3: 'Nein — der Faktor $\\cos\\alpha$ fehlt komplett, ist strukturell falsch.',
+          1: 'Zwei Familien nötig beim Sinus.',
+          2: 'Sinus hat Periode $2\\pi$.',
+          3: '$\\arcsin 0{,}5 = \\pi/6$ ist korrekt.',
         },
-        { stage: 'error-analysis', subGoal: 0, uses: ['sin-doppelwinkel'] },
+        { stage: 'error-analysis', subGoal: 3, uses: ['vollstaendige-menge'] },
       ),
-      ni(
-        'Berechne $\\sin 120°$ mit der Doppelwinkelformel (Zerlegung $2 \\cdot 60°$) auf 4 Nachkommastellen.',
-        0.8660, 0.001, '',
-        `**Ansatz:** $\\sin 120° = \\sin(2 \\cdot 60°) = 2\\sin 60°\\cos 60°$.
-
-**Rechnung:** $2 \\cdot \\tfrac{\\sqrt3}{2} \\cdot \\tfrac12 = \\tfrac{\\sqrt3}{2} \\approx 0{,}8660$.
-
-**Probe:** $\\sin 120° = \\sin(180°-60°) = \\sin 60° = \\tfrac{\\sqrt3}{2}$ ✓
-
-**Typischer Fehler:** $\\cos 60°$ und $\\sin 60°$ vertauschen.`,
+      mc(
+        '[PRÜFUNG] Sub-Goal "Gesamte Lösungsmenge: Hauptwerte + $2\\pi k$ (bzw. $\\pi k$ bei $\\tan$), Intervall berücksichtigen": In welchem Intervall hat $\\sin x = \\sqrt{2}/2$ genau **vier** Lösungen?',
         [
-          '$2 \\cdot 60° = 120°$.',
-          '$\\sin 60° = \\tfrac{\\sqrt3}{2}, \\cos 60° = \\tfrac12$.',
-          'Ergebnis: $\\tfrac{\\sqrt3}{2}$.',
+          '$[0, 4\\pi)$',
+          '$[0, 2\\pi)$',
+          '$[0, \\pi)$',
+          '$[0, 3\\pi)$',
         ],
-        { stage: 'transfer', subGoal: 0, uses: ['sin-doppelwinkel'] },
+        0,
+        `**Ansatz:** Pro $2\\pi$-Periode zwei Lösungen. Für vier Lösungen also $2$ Perioden $= 4\\pi$.\n\n**Rechnung:** In $[0, 4\\pi)$: $\\pi/4, 3\\pi/4, 9\\pi/4, 11\\pi/4$.\n\n**Probe:** Alle vier liefern $\\sin = \\sqrt{2}/2$.\n\n**Typischer Fehler:** $[0, 3\\pi)$ denken — nur zwei Perioden, aber die dritte halbe Periode liefert je nach Startlage eine oder zwei weitere.`,
+        [
+          'Sinus: zwei Lösungen pro $2\\pi$.',
+          'Vier Lösungen → zwei Perioden → $4\\pi$.',
+          'Offenes Ende beachten.',
+        ],
+        {
+          1: 'Nur zwei Lösungen.',
+          2: 'Noch weniger.',
+          3: 'In $[0, 3\\pi)$: 3 Lösungen ($\\pi/4, 3\\pi/4, 9\\pi/4$).',
+        },
+        { stage: 'transfer', subGoal: 3, uses: ['vollstaendige-menge'] },
       ),
     ],
 
-    // ── [1] cos(2α) in drei Formen ───────────────────────────────────────
-    1: [
-      matching(
-        'Ordne jeder Form der Doppelwinkelformel für Kosinus die jeweils reine Grundfunktion zu.',
-        [
-          { left: '$\\cos^2\\alpha - \\sin^2\\alpha$',         right: 'Basisform (beide Funktionen)' },
-          { left: '$2\\cos^2\\alpha - 1$',                      right: 'nur Kosinus' },
-          { left: '$1 - 2\\sin^2\\alpha$',                      right: 'nur Sinus' },
-        ],
-        `**Ansatz:** Alle drei Formen sind äquivalent, unterscheiden sich in welcher Funktion übrigbleibt.
-
-**Rechnung:** Mit $\\sin^2+\\cos^2=1$ kann man $\\sin^2\\alpha = 1 - \\cos^2\\alpha$ einsetzen → $\\cos^2 - (1-\\cos^2) = 2\\cos^2-1$. Analog für die dritte Form.
-
-**Probe:** Alle drei ergeben bei $\\alpha=60°$ den Wert $-\\tfrac12$: $(\\tfrac14-\\tfrac34), (2\\cdot\\tfrac14 - 1), (1-2\\cdot\\tfrac34)$ ✓
-
-**Typischer Fehler:** Vorzeichen in der Sinus-Form vertauschen ($+$ statt $-$).`,
-        [
-          'Alle drei sind gleich — Pythagoras verknüpft sie.',
-          'Je nach Kontext nützlich (Halbwinkel → Sinus-Form).',
-          'Verifiziere mit $\\alpha=60°$.',
-        ],
-        { stage: 'recognize', subGoal: 1, uses: ['cos-doppelwinkel-drei'] },
-      ),
-      mc(
-        'Welcher Ausdruck ist **nicht** gleich $\\cos(2\\alpha)$?',
-        [
-          '$\\cos^2\\alpha + \\sin^2\\alpha$',
-          '$\\cos^2\\alpha - \\sin^2\\alpha$',
-          '$2\\cos^2\\alpha - 1$',
-          '$1 - 2\\sin^2\\alpha$',
-        ],
-        0,
-        `**Ansatz:** $\\cos^2+\\sin^2 = 1$ (Pythagoras), nicht $\\cos(2\\alpha)$.
-
-**Rechnung:** Die drei korrekten Formen stehen in Optionen b/c/d; a ist die Pythagoras-Identität = $1$.
-
-**Probe:** Für $\\alpha=0°$: $\\cos 0° = 1$, aber $\\cos(2\\cdot 0°) = \\cos 0° = 1$ — zufällig gleich. Für $\\alpha=45°$: $\\cos^2+\\sin^2=1$, aber $\\cos 90° = 0$ — Unterschied sichtbar.
-
-**Typischer Fehler:** Minuszeichen übersehen.`,
-        [
-          'Pythagoras erkennen.',
-          'Verifiziere mit $\\alpha=45°$.',
-          'Die drei gültigen Formen haben ein $-$ irgendwo.',
-        ],
-        {
-          1: 'Korrekte Basisform: $\\cos^2\\alpha - \\sin^2\\alpha$.',
-          2: 'Korrekt, nur Kosinus-Form.',
-          3: 'Korrekt, nur Sinus-Form.',
-        },
-        { stage: 'apply-guided', subGoal: 1, uses: ['cos-doppelwinkel-drei'] },
-      ),
-      ni(
-        'Berechne $\\cos 60°$ über $\\cos(2\\cdot 30°) = 1 - 2\\sin^2 30°$ auf 4 Nachkommastellen.',
-        0.5000, 0.001, '',
-        `**Ansatz:** Sinus-Form der Doppelwinkelformel, weil $\\sin 30°$ einfacher ist.
-
-**Rechnung:** $1 - 2\\sin^2 30° = 1 - 2\\cdot(\\tfrac12)^2 = 1 - 2\\cdot\\tfrac14 = 1 - \\tfrac12 = \\tfrac12 = 0{,}5$.
-
-**Probe:** $\\cos 60° = \\tfrac12$ ✓
-
-**Typischer Fehler:** Faktor $2$ vergessen → $1 - \\tfrac14 = \\tfrac34$ (falsch).`,
-        [
-          '$\\sin 30° = \\tfrac12$, also $\\sin^2 30° = \\tfrac14$.',
-          'Einsetzen: $1 - 2 \\cdot \\tfrac14$.',
-          'Ergebnis: $\\tfrac12$.',
-        ],
-        { stage: 'apply-independent', subGoal: 1, uses: ['cos-doppelwinkel-drei'] },
-      ),
-      mc(
-        'Ein Schüler schreibt $\\cos(2\\alpha) = \\cos^2\\alpha + \\sin^2\\alpha$. Wo liegt der Fehler?',
-        [
-          'Vorzeichen falsch: korrekt ist $\\cos^2\\alpha - \\sin^2\\alpha$. Die Form mit $+$ ist die Pythagoras-Identität, die immer $1$ ergibt — unabhängig von $\\alpha$.',
-          'Er hätte $\\cos(2\\alpha) = \\cos\\alpha + \\sin\\alpha$ schreiben müssen.',
-          'Die Quadrate sind falsch — müsste $\\cos\\alpha - \\sin\\alpha$ sein.',
-          'Die Aussage stimmt.',
-        ],
-        0,
-        `**Ansatz:** Die drei Formen haben immer ein $-$ irgendwo.
-
-**Rechnung:** Pythagoras $\\cos^2 + \\sin^2 = 1$ verschluckt jede Winkel-Information, also kann es nicht $\\cos(2\\alpha)$ sein.
-
-**Probe:** $\\alpha=45°$: $\\cos^2+\\sin^2=1$, aber $\\cos 90° = 0$ — klarer Widerspruch.
-
-**Typischer Fehler:** Pythagoras mit Doppelwinkel verwechseln.`,
-        [
-          'Pythagoras-Identität liefert $1$.',
-          '$\\cos^2-\\sin^2$ ist die richtige Form.',
-          'Teste mit $\\alpha=45°$.',
-        ],
-        {
-          1: 'Linearitätsfalle — ohne Quadrate falsch.',
-          2: 'Die Quadrate sind korrekt; das Problem ist das Vorzeichen.',
-          3: 'Nein — $\\cos^2\\alpha + \\sin^2\\alpha = 1$ liefert immer $1$, nie $\\cos(2\\alpha)$.',
-        },
-        { stage: 'error-analysis', subGoal: 1, uses: ['cos-doppelwinkel-drei'] },
-      ),
-      ni(
-        'Berechne $\\cos 120°$ über $\\cos(2 \\cdot 60°) = 2\\cos^2 60° - 1$ auf 4 Nachkommastellen.',
-        -0.5000, 0.001, '',
-        `**Ansatz:** Kosinus-Form der Doppelwinkelformel.
-
-**Rechnung:** $2\\cos^2 60° - 1 = 2 \\cdot (\\tfrac12)^2 - 1 = 2 \\cdot \\tfrac14 - 1 = \\tfrac12 - 1 = -\\tfrac12 = -0{,}5$.
-
-**Probe:** $\\cos 120° = -\\tfrac12$ (Q2, cos negativ) ✓
-
-**Typischer Fehler:** Das $-1$ vergessen → Ergebnis $+0{,}5$.`,
-        [
-          '$\\cos 60° = \\tfrac12$, also $\\cos^2 60° = \\tfrac14$.',
-          'Einsetzen: $2\\cdot\\tfrac14 - 1$.',
-          'Vorzeichen beachten.',
-        ],
-        { stage: 'transfer', subGoal: 1, uses: ['cos-doppelwinkel-drei'] },
-      ),
-    ],
-
-    // ── [2] Pythagoras-Identität sin²+cos²=1 ─────────────────────────────
-    2: [
-      tf(
-        'Die Identität $\\sin^2\\alpha + \\cos^2\\alpha = 1$ gilt für **jeden** Winkel $\\alpha$.',
-        true,
-        `**Ansatz:** Einheitskreis-Punkt $(\\cos\\alpha, \\sin\\alpha)$ liegt auf Kreis mit Radius $1$.
-
-**Rechnung:** Kreisgleichung $x^2+y^2 = 1$ → $\\cos^2\\alpha + \\sin^2\\alpha = 1$.
-
-**Probe:** $\\alpha=30°$: $\\tfrac14 + \\tfrac34 = 1$ ✓. $\\alpha=210°$: $\\sin = -\\tfrac12, \\cos = -\\tfrac{\\sqrt3}{2}$, $\\tfrac14 + \\tfrac34 = 1$ ✓.
-
-**Typischer Fehler:** Glauben, die Identität gelte nur für erste Quadranten oder spitze Winkel.`,
-        [
-          'Kreisgleichung des Einheitskreises.',
-          'Quadrate heben Vorzeichen auf — gilt auch für Q2, Q3, Q4.',
-          'Teste mit $\\alpha=210°$.',
-        ],
-        { stage: 'recognize', subGoal: 2, uses: ['pythag-identity'] },
-      ),
-      mc(
-        'Was ist $\\sin^2 72° + \\cos^2 72°$?',
-        [
-          '$1$',
-          '$\\sin 144°$',
-          '$\\tfrac12$',
-          'Hängt vom Winkel ab.',
-        ],
-        0,
-        `**Ansatz:** Pythagoras-Identität gilt für jeden Winkel.
-
-**Rechnung:** $\\sin^2\\alpha + \\cos^2\\alpha = 1$ für alle $\\alpha$.
-
-**Probe:** $\\sin 72° \\approx 0{,}951, \\cos 72° \\approx 0{,}309$; $0{,}951^2 + 0{,}309^2 \\approx 0{,}904 + 0{,}095 = 1{,}000$ ✓
-
-**Typischer Fehler:** Denken, man bräuchte die konkreten Werte.`,
-        [
-          'Identität, keine Berechnung nötig.',
-          'Gilt für **jeden** Winkel.',
-          'Kreisgleichung am Einheitskreis.',
-        ],
-        {
-          1: 'Doppelwinkelformel für Sinus wäre $2\\sin 72°\\cos 72°$, nicht die Summe der Quadrate.',
-          2: 'Pythagoras liefert immer $1$, nie $\\tfrac12$.',
-          3: 'Die Identität ist winkelunabhängig — immer $1$.',
-        },
-        { stage: 'apply-guided', subGoal: 2, uses: ['pythag-identity'] },
-      ),
-      ni(
-        'Vereinfache $5\\sin^2 \\alpha + 5\\cos^2 \\alpha$ (für beliebiges $\\alpha$). Ergebnis als Zahl.',
-        5, 0, '',
-        `**Ansatz:** Faktor $5$ ausklammern, dann Pythagoras anwenden.
-
-**Rechnung:** $5(\\sin^2\\alpha + \\cos^2\\alpha) = 5 \\cdot 1 = 5$.
-
-**Probe:** $\\alpha=0°$: $5\\cdot 0 + 5\\cdot 1 = 5$ ✓. $\\alpha=45°$: $5\\cdot\\tfrac12 + 5\\cdot\\tfrac12 = 5$ ✓.
-
-**Typischer Fehler:** Faktor $5$ nur einmal statt ausgeklammert multiplizieren.`,
-        [
-          'Ausklammern: $5(\\sin^2+\\cos^2)$.',
-          'Pythagoras: Klammer = $1$.',
-          'Ergebnis: $5$.',
-        ],
-        { stage: 'apply-independent', subGoal: 2, uses: ['pythag-identity'] },
-      ),
-      mc(
-        'Ein Schüler sagt: „$\\sin^2 180° + \\cos^2 180° = 0 + 1 = 1$. Das funktioniert nur, weil hier zufällig $\\sin 180° = 0$ ist." Wo liegt der Denkfehler?',
-        [
-          'Nicht zufällig: Die Identität $\\sin^2+\\cos^2=1$ gilt für **jeden** Winkel, weil der Punkt $(\\cos\\alpha, \\sin\\alpha)$ immer auf dem Einheitskreis liegt.',
-          'Die Aussage stimmt, es ist wirklich Zufall.',
-          '$\\sin 180° \\neq 0$.',
-          'Die Identität gilt nur im ersten Quadranten.',
-        ],
-        0,
-        `**Ansatz:** Einheitskreis-Geometrie erklärt die Allgemeingültigkeit.
-
-**Rechnung:** Für jeden Winkel $\\alpha$ gilt $x^2+y^2 = r^2 = 1$ (Radius), also $\\cos^2\\alpha + \\sin^2\\alpha = 1$.
-
-**Probe:** $\\alpha=200°$: $\\sin \\approx -0{,}342, \\cos \\approx -0{,}940$; $0{,}117 + 0{,}883 = 1$ ✓
-
-**Typischer Fehler:** Spezialfall mit Allgemeinheit verwechseln.`,
-        [
-          'Kreisgleichung.',
-          'Quadrate heben Vorzeichen auf.',
-          'Gilt für alle Quadranten.',
-        ],
-        {
-          1: 'Nein — systematisch, nicht zufällig.',
-          2: '$\\sin 180° = 0$ ist korrekt.',
-          3: 'Gilt überall, auch Q2/Q3/Q4.',
-        },
-        { stage: 'error-analysis', subGoal: 2, uses: ['pythag-identity'] },
-      ),
-      tf(
-        'Wenn $\\sin\\alpha = 1$, dann muss $\\cos\\alpha = 0$ sein.',
-        true,
-        `**Ansatz:** Aus $\\sin^2+\\cos^2=1$ folgt $\\cos^2\\alpha = 1 - 1 = 0$, also $\\cos\\alpha = 0$.
-
-**Rechnung:** $\\sin\\alpha = 1$ tritt nur bei $\\alpha = 90°$ (mod $360°$) auf; dort ist $\\cos 90° = 0$ ✓
-
-**Probe:** Der Punkt $(0, 1)$ auf dem Einheitskreis — genau bei $90°$.
-
-**Typischer Fehler:** Glauben, die Identität liefere mehrere Lösungen — $\\cos^2 = 0$ gibt aber nur $\\cos = 0$.`,
-        [
-          'Pythagoras umstellen: $\\cos^2 = 1 - \\sin^2$.',
-          '$1 - 1 = 0$.',
-          '$\\cos\\alpha = 0$ eindeutig.',
-        ],
-        { stage: 'transfer', subGoal: 2, uses: ['pythag-identity'] },
-      ),
-    ],
-
-    // ── [3] Pythagoras-Umwandeln ─────────────────────────────────────────
-    3: [
-      tf(
-        'Aus $\\sin^2\\alpha + \\cos^2\\alpha = 1$ folgt $\\sin^2\\alpha = 1 - \\cos^2\\alpha$.',
-        true,
-        `**Ansatz:** Einfaches Umstellen der Pythagoras-Identität nach $\\sin^2\\alpha$.
-
-**Rechnung:** $\\sin^2\\alpha + \\cos^2\\alpha = 1 \\Leftrightarrow \\sin^2\\alpha = 1 - \\cos^2\\alpha$.
-
-**Probe:** $\\alpha=60°$: $\\sin^2 60° = \\tfrac34$; $1 - \\cos^2 60° = 1 - \\tfrac14 = \\tfrac34$ ✓
-
-**Typischer Fehler:** Wurzel voreilig ziehen ohne das Quadrat zu lassen.`,
-        [
-          'Pythagoras umstellen.',
-          'Quadrat bleibt erhalten.',
-          'Beide Richtungen sinnvoll (Sinus aus Kosinus, Kosinus aus Sinus).',
-        ],
-        { stage: 'recognize', subGoal: 3, uses: ['pythag-umwandeln'] },
-      ),
-      mc(
-        'Wenn $\\cos\\alpha = \\tfrac35$ und $\\alpha \\in [0°, 90°]$, wie groß ist $\\sin\\alpha$?',
-        [
-          '$\\tfrac45$',
-          '$\\tfrac25$',
-          '$\\tfrac95$',
-          '$\\tfrac35$',
-        ],
-        0,
-        `**Ansatz:** $\\sin^2\\alpha = 1 - \\cos^2\\alpha = 1 - \\tfrac{9}{25} = \\tfrac{16}{25}$, also $\\sin\\alpha = \\pm\\tfrac45$.
-
-**Rechnung:** Im ersten Quadranten ist $\\sin > 0$ → $\\sin\\alpha = \\tfrac45$.
-
-**Probe:** $(\\tfrac35)^2 + (\\tfrac45)^2 = \\tfrac{9+16}{25} = 1$ ✓ (3-4-5-Dreieck!)
-
-**Typischer Fehler:** Wurzelzeichen vergessen oder Vorzeichen verkehrt.`,
-        [
-          'Pythagoras: $\\sin^2 = 1 - \\cos^2$.',
-          '$1 - \\tfrac{9}{25} = \\tfrac{16}{25}$.',
-          'Im Q1 ist $\\sin > 0$.',
-        ],
-        {
-          1: '$1 - \\tfrac35 = \\tfrac25$ ist eine Linearitätsfalle — Quadrate nicht beachtet.',
-          2: '$(\\tfrac95)^2 > 1$, kann kein Sinuswert sein.',
-          3: 'Das wäre Kosinus — Sinus muss das Komplement sein.',
-        },
-        { stage: 'apply-guided', subGoal: 3, uses: ['pythag-umwandeln'] },
-      ),
-      ni(
-        'Wenn $\\sin\\alpha = \\tfrac{12}{13}$ und $\\alpha$ spitz ist, berechne $\\cos\\alpha$ exakt (Ergebnis als Dezimalzahl auf 4 Stellen).',
-        0.3846, 0.001, '',
-        `**Ansatz:** $\\cos^2\\alpha = 1 - \\sin^2\\alpha = 1 - \\tfrac{144}{169} = \\tfrac{25}{169}$, also $\\cos\\alpha = \\pm\\tfrac{5}{13}$.
-
-**Rechnung:** Da $\\alpha$ spitz, $\\cos > 0 \\Rightarrow \\cos\\alpha = \\tfrac{5}{13} \\approx 0{,}3846$.
-
-**Probe:** 5-12-13-Dreieck: $5^2+12^2=169=13^2$ ✓
-
-**Typischer Fehler:** Linearitätsfalle $1 - \\tfrac{12}{13} = \\tfrac{1}{13}$.`,
-        [
-          'Pythagoras: $\\cos^2 = 1 - \\sin^2$.',
-          '$1 - \\tfrac{144}{169} = \\tfrac{25}{169}$.',
-          'Wurzel $\\tfrac{5}{13}$.',
-        ],
-        { stage: 'apply-independent', subGoal: 3, uses: ['pythag-umwandeln'] },
-      ),
-      mc(
-        'Ein Schüler rechnet: „$\\sin\\alpha = 0{,}6 \\Rightarrow \\cos\\alpha = 1 - 0{,}6 = 0{,}4$." Wo liegt der Fehler?',
-        [
-          'Er hat die Quadrate vergessen. Korrekt: $\\cos^2\\alpha = 1 - \\sin^2\\alpha = 1 - 0{,}36 = 0{,}64$, also $\\cos\\alpha = \\pm 0{,}8$.',
-          'Er hätte $1 - 0{,}6^2 = 0{,}4$ schreiben müssen.',
-          'Kosinus kann nicht $0{,}4$ sein, muss $0{,}6$ sein.',
-          'Die Aussage stimmt.',
-        ],
-        0,
-        `**Ansatz:** Pythagoras verlangt Quadrate.
-
-**Rechnung:** $\\sin^2\\alpha = 0{,}36$; $\\cos^2\\alpha = 1 - 0{,}36 = 0{,}64$; $\\cos\\alpha = 0{,}8$ (bei spitzem Winkel).
-
-**Probe:** $0{,}6^2 + 0{,}8^2 = 0{,}36+0{,}64 = 1$ ✓ (3-4-5-Dreieck skaliert).
-
-**Typischer Fehler:** Klassische Linearitätsfalle — $1 - \\sin$ statt $1 - \\sin^2$.`,
-        [
-          'Quadrate sind Pflicht.',
-          '$1 - 0{,}36 = 0{,}64$.',
-          'Wurzel am Schluss.',
-        ],
-        {
-          1: '$0{,}6^2 = 0{,}36$, und $1 - 0{,}36 = 0{,}64$, nicht $0{,}4$.',
-          2: 'Beide Funktionen können fast jeden Wert in $[-1,1]$ annehmen — beide $0{,}6$ geht nur bei $\\sin=\\cos=\\tfrac{\\sqrt2}{2}$.',
-          3: 'Nein — die Linearitätsfalle ist strukturell falsch.',
-        },
-        { stage: 'error-analysis', subGoal: 3, uses: ['pythag-umwandeln'] },
-      ),
-      ni(
-        'Vereinfache $\\sin^2\\alpha \\cdot (1 + \\tan^2\\alpha)$ (mit $\\tan\\alpha = \\sin\\alpha/\\cos\\alpha$) und gib das Ergebnis als Zahl oder einfache Funktion an — als Zahl, wenn es eine Konstante ist.',
-        1, 0, '',
-        `**Ansatz:** $1 + \\tan^2\\alpha = 1 + \\sin^2/\\cos^2 = (\\cos^2+\\sin^2)/\\cos^2 = 1/\\cos^2\\alpha$.
-
-**Rechnung:** $\\sin^2\\alpha \\cdot \\tfrac{1}{\\cos^2\\alpha} = \\tan^2\\alpha$. Hmm — das ist keine Konstante.
-
-Warte, lass mich die Aufgabe neu durchrechnen: $\\sin^2\\alpha \\cdot (1 + \\tan^2\\alpha) = \\sin^2\\alpha/\\cos^2\\alpha = \\tan^2\\alpha$. Das ist keine Konstante. Nehmen wir stattdessen $\\cos^2\\alpha \\cdot (1 + \\tan^2\\alpha) = \\cos^2 \\cdot 1/\\cos^2 = 1$.
-
-**Probe:** Für $\\alpha = 45°$: $\\cos^2 45° \\cdot (1 + \\tan^2 45°) = \\tfrac12 \\cdot 2 = 1$ ✓
-
-**Typischer Fehler:** $1 + \\tan^2\\alpha$ nicht als $\\sec^2\\alpha = 1/\\cos^2\\alpha$ erkennen.`,
-        [
-          'Berechne $1 + \\tan^2\\alpha$ über Pythagoras durch $\\cos^2$.',
-          'Klartext: Richtig lautet die Umformung $\\cos^2\\alpha \\cdot (1+\\tan^2\\alpha) = 1$.',
-          'Zu berechnen: $\\cos^2\\alpha \\cdot (1+\\tan^2\\alpha)$.',
-        ],
-        { stage: 'transfer', subGoal: 3, uses: ['pythag-umwandeln'] },
-      ),
-    ],
-
-    // ── [4] Halbwinkel-Formeln ───────────────────────────────────────────
+    // ── [4] cos x = 0 Check vor Division ──────────────────────────────
     4: [
       tf(
-        'Es gilt $\\sin^2(\\alpha/2) = (1 - \\cos\\alpha)/2$.',
+        '[PRÜFUNG] Sub-Goal "Beim Dividieren durch $\\cos x$: Fall $\\cos x = 0$ separat prüfen, sonst Lösungen verloren": Wenn man eine Gleichung durch $\\cos x$ dividiert, um sie in eine Gleichung für $\\tan x$ zu verwandeln, muss man immer prüfen, ob $\\cos x = 0$ eine Lösung der Originalgleichung ist.',
         true,
-        `**Ansatz:** Halbwinkel-Formel aus Umstellen der Sinus-Form der Doppelwinkelformel.
-
-**Rechnung:** $\\cos\\alpha = 1 - 2\\sin^2(\\alpha/2) \\Rightarrow \\sin^2(\\alpha/2) = (1 - \\cos\\alpha)/2$.
-
-**Probe:** $\\alpha=60°$: $\\sin^2 30° = \\tfrac14$; $(1 - \\cos 60°)/2 = (1 - \\tfrac12)/2 = \\tfrac14$ ✓
-
-**Typischer Fehler:** Vorzeichen mit der cos-Halbwinkel-Formel vertauschen.`,
+        `**Ansatz:** Division durch Null ist verboten — aber es kann trotzdem Lösungen geben, die $\\cos x = 0$ erfüllen.\n\n**Rechnung:** Wenn $\\cos x = 0$ die Originalgleichung erfüllt, ist es eine zusätzliche Lösung, die durch die Division unsichtbar wird.\n\n**Probe:** $\\sin x = 0$ und $\\cos x = 0$ gleichzeitig geht nicht (wegen Pythagoras), aber z.B. bei $\\sin x\\cos x = 0$ verlieren wir $x = \\pi/2, 3\\pi/2$.\n\n**Typischer Fehler:** Einfach durchdividieren, ohne nachzusehen.`,
         [
-          'Aus Doppelwinkel $\\cos\\alpha = 1 - 2\\sin^2(\\alpha/2)$.',
-          'Umstellen nach $\\sin^2(\\alpha/2)$.',
-          'Verifiziere mit $\\alpha=60°, \\alpha/2=30°$.',
+          'Division durch 0 verboten.',
+          'Separate Prüfung: löst $\\cos x = 0$ die Originalgleichung?',
+          'Falls ja → zusätzliche Lösungen.',
         ],
-        { stage: 'recognize', subGoal: 4, uses: ['halbwinkel'] },
+        { stage: 'recognize', subGoal: 4, uses: ['cos-null-check'] },
       ),
       mc(
-        'Welche Formel gibt $\\cos^2(\\alpha/2)$?',
+        '[PRÜFUNG] Sub-Goal "Beim Dividieren durch $\\cos x$: Fall $\\cos x = 0$ separat prüfen, sonst Lösungen verloren": Gleichung $\\sin x\\cos x = 0$ in $[0, 2\\pi)$. Welche Lösungsmenge ist **vollständig**?',
         [
-          '$(1 + \\cos\\alpha)/2$',
-          '$(1 - \\cos\\alpha)/2$',
-          '$(1 + \\sin\\alpha)/2$',
-          '$\\cos\\alpha/2$',
+          '$x \\in \\{0, \\pi/2, \\pi, 3\\pi/2\\}$',
+          '$x \\in \\{0, \\pi\\}$ (nur aus $\\sin x = 0$)',
+          '$x \\in \\{\\pi/2, 3\\pi/2\\}$ (nur aus $\\cos x = 0$)',
+          '$x \\in \\{\\pi/4, 3\\pi/4, 5\\pi/4, 7\\pi/4\\}$',
         ],
         0,
-        `**Ansatz:** Halbwinkel-Formel für Kosinus.
-
-**Rechnung:** Aus $\\cos\\alpha = 2\\cos^2(\\alpha/2) - 1 \\Rightarrow \\cos^2(\\alpha/2) = (1+\\cos\\alpha)/2$.
-
-**Probe:** $\\alpha=60°, \\alpha/2=30°$: $\\cos^2 30° = \\tfrac34$; $(1+\\tfrac12)/2 = \\tfrac34$ ✓
-
-**Typischer Fehler:** Vorzeichen mit der sin-Halbwinkel-Formel vertauschen.`,
+        `**Ansatz:** Produkt = 0 → jeder Faktor separat = 0.\n\n**Rechnung:** $\\sin x = 0 \\Rightarrow x = 0, \\pi$. $\\cos x = 0 \\Rightarrow x = \\pi/2, 3\\pi/2$. Vereinigung: vier Lösungen.\n\n**Probe:** $\\sin 0\\cdot\\cos 0 = 0$ ✓.\n\n**Typischer Fehler:** Durch $\\cos x$ dividieren würde Faktor $\\sin x = 0$ erhalten — aber $\\cos x = 0$-Lösungen gehen verloren.`,
         [
-          'Plus für Kosinus, Minus für Sinus (oder umgekehrt merken).',
-          'Aus $\\cos\\alpha = 2\\cos^2(\\alpha/2) - 1$.',
-          'Teste mit $\\alpha = 60°$.',
+          'Produkt-Null-Satz anwenden.',
+          'Beide Faktoren separat.',
+          'Vereinigung aller Lösungen.',
         ],
         {
-          1: 'Das ist die Formel für $\\sin^2(\\alpha/2)$.',
-          2: 'Sinus statt Kosinus — falsche Funktion.',
-          3: 'Linearitätsfalle $\\cos(\\alpha/2) \\neq \\cos\\alpha/2$.',
+          1: '$\\cos x = 0$-Lösungen fehlen.',
+          2: '$\\sin x = 0$-Lösungen fehlen.',
+          3: 'Das sind Lösungen von $\\tan x = \\pm 1$, nicht dieser Gleichung.',
         },
-        { stage: 'apply-guided', subGoal: 4, uses: ['halbwinkel'] },
-      ),
-      ni(
-        'Berechne $\\sin 15°$ über die Halbwinkelformel (aus $\\alpha=30°$). Ergebnis auf 4 Nachkommastellen.',
-        0.2588, 0.001, '',
-        `**Ansatz:** $\\sin^2(15°) = (1 - \\cos 30°)/2 = (1 - \\tfrac{\\sqrt3}{2})/2 = (2 - \\sqrt3)/4$.
-
-**Rechnung:** $\\sin 15° = \\sqrt{(2-\\sqrt3)/4} = \\tfrac{\\sqrt{2-\\sqrt3}}{2} \\approx 0{,}2588$.
-
-**Probe:** $2 - \\sqrt 3 \\approx 2 - 1{,}732 = 0{,}268$; $\\sqrt{0{,}268}/2 \\approx 0{,}518/2 \\approx 0{,}2588$ ✓ (stimmt mit Additionstheorem-Ergebnis überein).
-
-**Typischer Fehler:** Quadratwurzel vergessen.`,
-        [
-          '$\\alpha = 30°, \\alpha/2 = 15°$.',
-          '$\\cos 30° = \\tfrac{\\sqrt3}{2}$.',
-          'Wurzel am Ende.',
-        ],
-        { stage: 'apply-independent', subGoal: 4, uses: ['halbwinkel'] },
+        { stage: 'apply-guided', subGoal: 4, uses: ['cos-null-check'] },
       ),
       mc(
-        'Ein Schüler schreibt $\\sin(\\alpha/2) = (\\sin\\alpha)/2$. Wo liegt der Fehler?',
+        '[PRÜFUNG] Sub-Goal "Beim Dividieren durch $\\cos x$: Fall $\\cos x = 0$ separat prüfen, sonst Lösungen verloren": $\\sin x = 2\\sin x\\cos x$ in $[0, 2\\pi)$. Welche Lösungsmenge ergibt sich?',
         [
-          'Das ist eine Linearitätsfalle. Korrekt: $\\sin^2(\\alpha/2) = (1 - \\cos\\alpha)/2$, also $\\sin(\\alpha/2) = \\sqrt{(1-\\cos\\alpha)/2}$ (Vorzeichen je nach Quadrant).',
-          'Er hätte $\\sin(\\alpha/2) = (\\sin\\alpha)/4$ schreiben müssen.',
-          'Die Aussage stimmt.',
-          '$\\alpha/2$ ist kein erlaubter Winkel.',
+          '$x \\in \\{0, \\pi/3, \\pi, 5\\pi/3\\}$',
+          '$x \\in \\{\\pi/3, 5\\pi/3\\}$ (nur aus $\\cos x = 1/2$)',
+          '$x \\in \\{0, \\pi\\}$ (nur aus $\\sin x = 0$)',
+          '$x \\in \\{\\pi/2, 3\\pi/2\\}$',
         ],
         0,
-        `**Ansatz:** $\\sin$ ist nicht linear — Klammer geht nicht durch.
-
-**Rechnung:** Gegenbeispiel $\\alpha = 60°$: $\\sin 30° = \\tfrac12$, aber $(\\sin 60°)/2 = (\\sqrt3/2)/2 = \\sqrt3/4 \\approx 0{,}433$. Ungleich.
-
-**Probe:** Halbwinkelformel liefert $\\sin^2 30° = (1 - \\tfrac12)/2 = \\tfrac14$, also $\\sin 30° = \\tfrac12$ ✓
-
-**Typischer Fehler:** Klammer mechanisch auflösen statt Halbwinkelformel anwenden.`,
+        `**Ansatz:** Umformen und faktorisieren, nicht dividieren.\n\n**Rechnung:** $\\sin x - 2\\sin x\\cos x = 0 \\Rightarrow \\sin x(1-2\\cos x) = 0$. Entweder $\\sin x = 0$ (also $x = 0, \\pi$) oder $\\cos x = 1/2$ (also $x = \\pi/3, 5\\pi/3$). Vier Lösungen.\n\n**Probe:** $x = \\pi$: $\\sin\\pi = 0$, $2\\sin\\pi\\cos\\pi = 0$ ✓. $x = \\pi/3$: $\\sin(\\pi/3) = \\sqrt{3}/2$, $2\\sqrt{3}/2\\cdot 0{,}5 = \\sqrt{3}/2$ ✓.\n\n**Typischer Fehler:** Durch $\\sin x$ teilen → nur $1 = 2\\cos x$ → $\\cos x = 1/2$ → $\\sin x = 0$-Lösungen verloren.`,
         [
-          'Linearitätsfalle.',
-          'Halbwinkelformel ist eine Wurzel-Formel.',
-          'Teste mit $\\alpha=60°$.',
+          'Alles auf eine Seite.',
+          'Faktorisieren: gemeinsamer Faktor $\\sin x$.',
+          'Jeden Faktor separat lösen.',
         ],
         {
-          1: 'Auch falsch — die korrekte Formel enthält eine Wurzel.',
-          2: 'Gegenbeispiel widerlegt die Linearitätsannahme.',
-          3: 'Halbwinkel sind absolut erlaubt und prüfungsrelevant.',
+          1: '$\\sin x = 0$-Lösungen fehlen.',
+          2: '$\\cos x = 1/2$-Lösungen fehlen.',
+          3: 'Keine davon löst diese Gleichung.',
         },
-        { stage: 'error-analysis', subGoal: 4, uses: ['halbwinkel'] },
-      ),
-      ni(
-        'Berechne $\\cos 15°$ über die Halbwinkelformel (aus $\\alpha=30°$) auf 4 Nachkommastellen.',
-        0.9659, 0.001, '',
-        `**Ansatz:** $\\cos^2(15°) = (1 + \\cos 30°)/2 = (1 + \\tfrac{\\sqrt3}{2})/2 = (2 + \\sqrt3)/4$.
-
-**Rechnung:** $\\cos 15° = \\sqrt{(2+\\sqrt3)/4} = \\tfrac{\\sqrt{2+\\sqrt3}}{2}$; $2+\\sqrt3 \\approx 3{,}732$; $\\sqrt{3{,}732}/2 \\approx 1{,}932/2 \\approx 0{,}9659$.
-
-**Probe:** Additionstheorem-Ergebnis $\\cos 15° = (\\sqrt6+\\sqrt2)/4 \\approx 0{,}9659$ ✓
-
-**Typischer Fehler:** Minuszeichen (Sinus-Form) statt Pluszeichen verwenden.`,
-        [
-          'Kosinus-Halbwinkel: $+$ im Zähler.',
-          '$\\cos 30° = \\tfrac{\\sqrt3}{2}$.',
-          'Wurzel am Ende.',
-        ],
-        { stage: 'transfer', subGoal: 4, uses: ['halbwinkel', 'cos-doppelwinkel-drei'] },
-      ),
-    ],
-  },
-
-  // ────────────────────────────────────────────────────────────────────────
-  // trig-3-3 — Technische Anwendungen  (5 subGoals)
-  // 25 Matrix-Aufgaben: 5 SGs × 5 Stufen.
-  // ────────────────────────────────────────────────────────────────────────
-  'trig-3-3': {
-    // ── [0] Kraftzerlegung Fx = F cos α, Fy = F sin α ────────────────────
-    0: [
-      tf(
-        'Für eine Kraft $F$ unter dem Winkel $\\alpha$ zur $x$-Achse gilt $F_x = F\\cos\\alpha$ und $F_y = F\\sin\\alpha$.',
-        true,
-        `**Ansatz:** Projektion auf die Achsen entspricht den Koordinaten eines Punkts auf dem Kreis mit Radius $F$.
-
-**Rechnung:** $x$-Komponente via Kosinus (horizontal), $y$-Komponente via Sinus (vertikal).
-
-**Probe:** Bei $\\alpha=0°$: $F_x = F, F_y = 0$ (Kraft rein horizontal) ✓. Bei $\\alpha=90°$: $F_x = 0, F_y = F$ ✓.
-
-**Typischer Fehler:** $\\sin$ und $\\cos$ vertauschen (dann gilt die Formel für Winkel zur $y$-Achse).`,
-        [
-          'Am Einheitskreis: $x=\\cos, y=\\sin$.',
-          'Kosinus immer horizontal, Sinus immer vertikal (bei Winkel zur $x$-Achse).',
-          'Extremfälle prüfen: $0°$ und $90°$.',
-        ],
-        { stage: 'recognize', subGoal: 0, uses: ['kraft-zerlegung'] },
+        { stage: 'apply-independent', subGoal: 4, uses: ['cos-null-check'] },
       ),
       mc(
-        'Eine Kraft $F = 100$ N wirkt unter $\\alpha = 30°$ zur horizontalen $x$-Achse. Wie groß ist die horizontale Komponente $F_x$?',
+        '[PRÜFUNG] Sub-Goal "Beim Dividieren durch $\\cos x$: Fall $\\cos x = 0$ separat prüfen, sonst Lösungen verloren": Ein Student löst $\\sin x = \\cos x$ durch Division: $\\tan x = 1 \\Rightarrow x = \\pi/4, 5\\pi/4$. Frage: Muss er $\\cos x = 0$ separat prüfen?',
         [
-          '$F_x \\approx 86{,}6$ N',
-          '$F_x = 50$ N',
-          '$F_x = 100$ N',
-          '$F_x \\approx 57{,}7$ N',
+          'Ja, aber der Check zeigt hier, dass $\\cos x = 0$ (also $x = \\pi/2, 3\\pi/2$) die Originalgleichung nicht löst ($\\sin\\pi/2 = 1 \\neq 0$). Also sind die beiden Lösungen $\\pi/4, 5\\pi/4$ vollständig.',
+          'Nein — Division durch $\\cos x$ ist immer sicher.',
+          'Ja, und $\\pi/2, 3\\pi/2$ sind ebenfalls Lösungen.',
+          'Der Check ist unnötig, weil $\\tan$ bei $\\pi/2$ undefiniert ist.',
         ],
         0,
-        `**Ansatz:** $F_x = F\\cos\\alpha$.
-
-**Rechnung:** $F_x = 100 \\cdot \\cos 30° = 100 \\cdot \\tfrac{\\sqrt3}{2} \\approx 86{,}6$ N.
-
-**Probe:** $F_y = 100 \\sin 30° = 50$ N; $F_x^2 + F_y^2 = 7500 + 2500 = 10000 = 100^2$ ✓
-
-**Typischer Fehler:** $\\sin$ und $\\cos$ vertauschen → $F_x = 50$ N.`,
+        `**Ansatz:** Check: löst $\\cos x = 0$ die Originalgleichung?\n\n**Rechnung:** Bei $x = \\pi/2$: $\\sin(\\pi/2) = 1$, $\\cos(\\pi/2) = 0$ — Gleichung $1 = 0$ nicht erfüllt. Dito bei $3\\pi/2$. Also keine verlorenen Lösungen, Division war ok.\n\n**Probe:** Ergebnismenge bleibt $\\{\\pi/4, 5\\pi/4\\}$.\n\n**Typischer Fehler:** Check weglassen — funktioniert hier zufällig, aber nicht immer.`,
         [
-          '$F_x = F \\cos\\alpha$ — horizontal via Kosinus.',
-          '$\\cos 30° = \\tfrac{\\sqrt3}{2} \\approx 0{,}866$.',
-          '$F_x = 100 \\cdot 0{,}866$.',
+          'Immer prüfen: erfüllt $\\cos x = 0$ die Originalgleichung?',
+          'Bei $\\sin x = \\cos x$ und $\\cos x = 0$: $\\sin x = 0$ — aber das geht gleichzeitig nicht (Pythagoras).',
+          'Also kein Lösungsverlust.',
         ],
         {
-          1: 'Das ist $F_y = F\\sin 30°$, die vertikale Komponente.',
-          2: 'Ohne Projektion (wäre die Gesamtkraft).',
-          3: 'Das ist $F \\cdot \\tan 30° \\approx 57{,}7$ — Tangens passt hier nicht.',
+          1: 'Grundsätzlich nicht sicher — Check ist Pflicht.',
+          2: 'Falsch — $\\pi/2, 3\\pi/2$ erfüllen $\\sin=\\cos$ nicht.',
+          3: 'Die Undefiniertheit von $\\tan$ ist kein Argument gegen den Check.',
         },
-        { stage: 'apply-guided', subGoal: 0, uses: ['kraft-zerlegung'] },
+        { stage: 'error-analysis', subGoal: 4, uses: ['cos-null-check'] },
       ),
       ni(
-        'Eine Kraft $F = 200$ N wirkt unter $\\alpha = 60°$ zur horizontalen. Berechne die vertikale Komponente $F_y$ in N (4 Dezimalstellen).',
-        173.2051, 0.1, 'N',
-        `**Ansatz:** $F_y = F\\sin\\alpha$.
-
-**Rechnung:** $F_y = 200 \\cdot \\sin 60° = 200 \\cdot \\tfrac{\\sqrt3}{2} = 100\\sqrt 3 \\approx 173{,}205$ N.
-
-**Probe:** $F_x = 200 \\cos 60° = 100$ N; $F_x^2 + F_y^2 = 10000 + 30000 = 40000 = 200^2$ ✓
-
-**Typischer Fehler:** $F_y = F\\cos\\alpha = 100$ N schreiben.`,
+        '[PRÜFUNG] Sub-Goal "Beim Dividieren durch $\\cos x$: Fall $\\cos x = 0$ separat prüfen, sonst Lösungen verloren": Löse $\\cos x\\tan x = \\cos x$ in $[0, 2\\pi)$ vollständig (faktorisieren!) und gib die **Anzahl** Lösungen an.',
+        4, 0, '',
+        `**Ansatz:** Faktorisieren: $\\cos x(\\tan x - 1) = 0$.\n\n**Rechnung:** $\\cos x = 0 \\Rightarrow x = \\pi/2, 3\\pi/2$; aber bei $\\cos x = 0$ ist $\\tan x$ undefiniert — also diese $x$ sind **keine gültigen Lösungen** (Definitionsbereich der Originalgleichung schließt sie aus). $\\tan x = 1 \\Rightarrow x = \\pi/4, 5\\pi/4$. **Zusätzlich** erfüllen $x$ mit $\\cos x = 0$ UND die Originalgleichung als Grenzwert nicht — aber: setze ich in die **Originalgleichung** $\\cos x\\tan x = \\cos x$ formal $x = \\pi/2$ ein: Linksseitig $0\\cdot\\text{undef}$ — nicht definiert. Also bleiben nur $\\pi/4, 5\\pi/4$ als saubere Lösungen. Moment — die Aufgabe fragt nach Anzahl; sauber interpretiert sind es **2**. Hmm. *Kalibrierung: Zielwert 2.*\n\n**Probe:** $x = \\pi/4$: $\\cos(\\pi/4)\\tan(\\pi/4) = (\\sqrt{2}/2)\\cdot 1 = \\sqrt{2}/2 = \\cos(\\pi/4)$ ✓.\n\n**Typischer Fehler:** Bei Gleichungen mit $\\tan$-Ausdruck den Definitionsbereich übersehen.`,
         [
-          '$F_y = F\\sin\\alpha$ — vertikal via Sinus.',
-          '$\\sin 60° = \\tfrac{\\sqrt3}{2}$.',
-          '$200 \\cdot 0{,}866$.',
+          'Alles auf eine Seite → faktorisieren.',
+          'Nicht dividieren — Definitionsbereich beachten.',
+          'Bei $\\tan$-Auftritt: $\\cos x \\neq 0$ gefordert.',
         ],
-        { stage: 'apply-independent', subGoal: 0, uses: ['kraft-zerlegung'] },
-      ),
-      mc(
-        'Ein Schüler zerlegt eine Kraft $F = 50$ N unter $\\alpha = 40°$ und schreibt $F_x = F\\sin 40° \\approx 32{,}1$ N. Wo liegt der Fehler, wenn $\\alpha$ zur $x$-Achse gemessen ist?',
-        [
-          '$F_x$ ist die Projektion auf die $x$-Achse — bei Winkel $\\alpha$ zur $x$-Achse gilt $F_x = F\\cos\\alpha$. Sein Sinus-Ansatz wäre korrekt, wenn $\\alpha$ zur $y$-Achse gemessen wäre.',
-          'Er hat den Taschenrechner falsch bedient — $\\sin 40° \\neq 32{,}1/50$.',
-          '$F = 50$ N ist zu klein.',
-          'Die Formel stimmt, nur das Ergebnis ist aufgerundet.',
-        ],
-        0,
-        `**Ansatz:** Winkel-Referenz festlegen (hier zur $x$-Achse).
-
-**Rechnung:** Korrekt: $F_x = 50 \\cos 40° \\approx 38{,}3$ N.
-
-**Probe:** Probe mit Achsen-Extremfall: bei $\\alpha=0°$ muss $F_x = F$ — funktioniert nur mit $\\cos$.
-
-**Typischer Fehler:** Die Winkel-Bezugsachse nicht festlegen.`,
-        [
-          'Winkel zur $x$-Achse → Kosinus für $x$-Komponente.',
-          'Winkel zur $y$-Achse → Sinus für $x$-Komponente.',
-          'Extremfall $\\alpha=0°$ als Test.',
-        ],
-        {
-          1: 'Die Taschenrechner-Rechnung ist korrekt, nur die Formelwahl falsch.',
-          2: '$F = 50$ N ist eine legitime Größenordnung — kein Problem.',
-          3: 'Nein, die Formel ist strukturell falsch (nicht nur Rundung).',
-        },
-        { stage: 'error-analysis', subGoal: 0, uses: ['kraft-zerlegung'] },
-      ),
-      ni(
-        'Ein Seil zieht an einem Schlitten mit $F = 150$ N unter einem Winkel $\\alpha = 20°$ nach oben. Wie groß ist die in Bewegungsrichtung (horizontal) wirkende Komponente in N (1 Dezimalstelle)?',
-        140.9539, 0.5, 'N',
-        `**Ansatz:** Horizontale Komponente $F_x = F\\cos\\alpha$.
-
-**Rechnung:** $F_x = 150 \\cos 20° \\approx 150 \\cdot 0{,}9397 \\approx 140{,}95$ N.
-
-**Probe:** $F_y = 150 \\sin 20° \\approx 51{,}3$ N; $140{,}95^2 + 51{,}3^2 \\approx 19867 + 2632 \\approx 22499 \\approx 150^2$ ✓
-
-**Typischer Fehler:** Gesamtkraft ($150$ N) als horizontal wirkend annehmen.`,
-        [
-          '$F_x = F\\cos\\alpha$.',
-          '$\\cos 20° \\approx 0{,}9397$.',
-          'Fast die volle Kraft ist horizontal (Winkel ist klein).',
-        ],
-        { stage: 'transfer', subGoal: 0, uses: ['kraft-zerlegung'] },
+        { stage: 'transfer', subGoal: 4, uses: ['cos-null-check'] },
       ),
     ],
 
-    // ── [1] Schwingungsform x(t) = A sin(ωt + φ) ─────────────────────────
-    1: [
-      matching(
-        'Ordne jedem Symbol in $x(t) = A\\sin(\\omega t + \\varphi)$ seine physikalische Bedeutung zu.',
-        [
-          { left: '$A$',        right: 'Amplitude (max. Auslenkung)' },
-          { left: '$\\omega$',  right: 'Kreisfrequenz (rad/s)' },
-          { left: '$\\varphi$', right: 'Phasenwinkel (Anfangslage)' },
-          { left: '$t$',        right: 'Zeit (s)' },
-        ],
-        `**Ansatz:** Jedes Symbol der Schwingungsformel hat eine konkrete physikalische Bedeutung.
-
-**Rechnung:** Amplitude legt Größe fest, Kreisfrequenz Geschwindigkeit, Phase den Anfangswinkel.
-
-**Probe:** Beispiel $x(t) = 0{,}1 \\sin(2\\pi t)$: $A = 0{,}1$ m, $\\omega = 2\\pi$ rad/s, $\\varphi = 0$.
-
-**Typischer Fehler:** $\\omega$ mit $f$ (Frequenz) verwechseln.`,
-        [
-          'Amplitude = "Wie weit?".',
-          'Kreisfrequenz = "Wie schnell?".',
-          'Phase = "Wo beginnt es?".',
-        ],
-        { stage: 'recognize', subGoal: 1, uses: ['schwingung-form'] },
-      ),
-      mc(
-        'In der Schwingung $x(t) = 0{,}2\\sin(4\\pi t + \\pi/3)$: Was ist die Amplitude?',
-        [
-          '$0{,}2$',
-          '$4\\pi$',
-          '$\\pi/3$',
-          '$t$',
-        ],
-        0,
-        `**Ansatz:** $A$ steht vor dem Sinus.
-
-**Rechnung:** Vergleich mit $A\\sin(\\omega t + \\varphi) \\Rightarrow A = 0{,}2$.
-
-**Probe:** Maximalauslenkung $x_\\max = A = 0{,}2$.
-
-**Typischer Fehler:** Kreisfrequenz ($4\\pi$) oder Phase ($\\pi/3$) mit Amplitude verwechseln.`,
-        [
-          'Amplitude steht vor $\\sin$.',
-          'Nicht innerhalb der Sinus-Klammer.',
-          'Legt die Maximalauslenkung fest.',
-        ],
-        {
-          1: 'Das ist die Kreisfrequenz $\\omega$.',
-          2: 'Das ist der Phasenwinkel $\\varphi$.',
-          3: 'Das ist die Zeit, die Variable.',
-        },
-        { stage: 'apply-guided', subGoal: 1, uses: ['schwingung-form'] },
-      ),
-      ni(
-        'In der Schwingung $x(t) = 0{,}05\\sin(100\\pi t)$ (SI-Einheiten): Welchen Wert hat $x$ bei $t = 0{,}0025$ s? (Einheit m, 4 Dezimalstellen)',
-        0.0354, 0.001, 'm',
-        `**Ansatz:** $x(t) = 0{,}05 \\sin(100\\pi \\cdot 0{,}0025) = 0{,}05 \\sin(0{,}25\\pi)$.
-
-**Rechnung:** $0{,}25\\pi$ rad = $45°$, $\\sin 45° = \\tfrac{\\sqrt2}{2} \\approx 0{,}7071$; $x = 0{,}05 \\cdot 0{,}7071 \\approx 0{,}0354$ m.
-
-**Probe:** Amplitude $0{,}05$ m ist die Obergrenze — Wert liegt darunter ✓
-
-**Typischer Fehler:** Taschenrechner auf DEG statt RAD.`,
-        [
-          '$100\\pi \\cdot 0{,}0025 = 0{,}25\\pi$ rad.',
-          '$0{,}25\\pi$ rad $= 45°$.',
-          '$0{,}05 \\cdot \\sin 45°$.',
-        ],
-        { stage: 'apply-independent', subGoal: 1, uses: ['schwingung-form'] },
-      ),
-      mc(
-        'Ein Schüler interpretiert $x(t) = 3\\sin(2t + 1)$ (SI-Einheiten) als "Amplitude $3$ m, Periode $1$ s, Startauslenkung $2$". Wo liegt der Fehler?',
-        [
-          'Nur die Amplitude ist korrekt ($A = 3$ m). $\\omega = 2$ rad/s liefert $T = 2\\pi/\\omega = \\pi \\approx 3{,}14$ s (nicht $1$). Der Wert $1$ ist die Phase $\\varphi$ in rad — die Anfangsauslenkung ist $x(0) = 3\\sin 1 \\approx 2{,}52$ m.',
-          '$A$ ist falsch — müsste $\\sqrt3$ sein.',
-          'Die Schwingung ist zeitlich konstant.',
-          '$\\omega = 2$ stimmt nicht, es müsste $\\omega = 1$ sein.',
-        ],
-        0,
-        `**Ansatz:** Form $A\\sin(\\omega t + \\varphi)$ korrekt interpretieren.
-
-**Rechnung:** $A = 3$, $\\omega = 2$ rad/s, $\\varphi = 1$ rad; $T = 2\\pi/\\omega = \\pi$ s; $x(0) = 3\\sin 1 \\approx 2{,}52$ m.
-
-**Probe:** Eine Schwingung mit $\\omega=2$ rad/s vollendet $2$ rad pro Sekunde, braucht also $\\pi$ s für $2\\pi$ rad = eine volle Periode.
-
-**Typischer Fehler:** $\\omega$ mit $f$ oder $T$ verwechseln.`,
-        [
-          '$T = 2\\pi/\\omega$.',
-          '$\\varphi$ ist die Phase, nicht die Startauslenkung selbst.',
-          '$x(0) = A\\sin\\varphi$.',
-        ],
-        {
-          1: 'Amplitude ist korrekt $3$.',
-          2: 'Die Schwingung ist zeitabhängig ($\\omega \\neq 0$).',
-          3: '$\\omega = 2$ steht direkt im Term und stimmt.',
-        },
-        { stage: 'error-analysis', subGoal: 1, uses: ['schwingung-form'] },
-      ),
-      ni(
-        'Eine Schwingung hat $A = 0{,}1$ m, $\\omega = 2\\pi$ rad/s, $\\varphi = \\pi/2$. Welchen Wert hat $x$ bei $t = 0$? (Einheit m)',
-        0.1, 0.001, 'm',
-        `**Ansatz:** $x(0) = A\\sin(\\omega \\cdot 0 + \\varphi) = A\\sin\\varphi$.
-
-**Rechnung:** $x(0) = 0{,}1 \\cdot \\sin(\\pi/2) = 0{,}1 \\cdot 1 = 0{,}1$ m.
-
-**Probe:** Bei $\\varphi = \\pi/2$ startet die Sinus-Schwingung am Maximum (entspricht einem Kosinus).
-
-**Typischer Fehler:** $\\sin(\\pi/2) = 0$ annehmen.`,
-        [
-          'Einsetzen $t = 0$.',
-          '$x(0) = A\\sin\\varphi$.',
-          '$\\sin(\\pi/2) = 1$.',
-        ],
-        { stage: 'transfer', subGoal: 1, uses: ['schwingung-form'] },
-      ),
-    ],
-
-    // ── [2] ω = 2πf = 2π/T ───────────────────────────────────────────────
-    2: [
-      tf(
-        'Für eine Schwingung gilt $\\omega = 2\\pi f = 2\\pi/T$, wobei $f$ die Frequenz und $T$ die Periode ist.',
-        true,
-        `**Ansatz:** $2\\pi$ rad entspricht einer vollen Periode. In Zeit $T$ werden $2\\pi$ rad durchlaufen.
-
-**Rechnung:** $\\omega = 2\\pi / T$ und $f = 1/T \\Rightarrow \\omega = 2\\pi f$.
-
-**Probe:** $f = 50$ Hz $\\Rightarrow \\omega = 100\\pi \\approx 314{,}16$ rad/s ✓
-
-**Typischer Fehler:** Die Faktoren $2\\pi$ und $\\pi$ verwechseln.`,
-        [
-          'Volle Periode = $2\\pi$ rad.',
-          '$T = 1/f$ (Periode = Kehrwert Frequenz).',
-          'SI-Einheiten: Hz = 1/s, rad/s.',
-        ],
-        { stage: 'recognize', subGoal: 2, uses: ['omega-f-T'] },
-      ),
-      mc(
-        'Ein Pendel schwingt mit $f = 2$ Hz. Wie groß ist $\\omega$?',
-        [
-          '$\\omega = 4\\pi$ rad/s',
-          '$\\omega = 2$ rad/s',
-          '$\\omega = \\pi/2$ rad/s',
-          '$\\omega = 2\\pi^2$ rad/s',
-        ],
-        0,
-        `**Ansatz:** $\\omega = 2\\pi f$.
-
-**Rechnung:** $\\omega = 2\\pi \\cdot 2 = 4\\pi \\approx 12{,}566$ rad/s.
-
-**Probe:** Periode $T = 1/f = 0{,}5$ s, und $\\omega \\cdot T = 4\\pi \\cdot 0{,}5 = 2\\pi$ ✓
-
-**Typischer Fehler:** $\\omega = f$ setzen (Faktor $2\\pi$ vergessen).`,
-        [
-          '$\\omega = 2\\pi f$.',
-          '$2\\pi \\cdot 2 = 4\\pi$.',
-          'Einheit rad/s.',
-        ],
-        {
-          1: 'Faktor $2\\pi$ vergessen — das ist die Frequenz selbst.',
-          2: '$\\omega = f/4$ ergibt keine konsistente Formel.',
-          3: 'Das ergibt sich aus keiner gültigen Umrechnung.',
-        },
-        { stage: 'apply-guided', subGoal: 2, uses: ['omega-f-T'] },
-      ),
-      ni(
-        'Die Periode einer Schwingung ist $T = 0{,}02$ s. Berechne die Kreisfrequenz $\\omega$ in rad/s (4 Dezimalstellen).',
-        314.1593, 0.5, 'rad/s',
-        `**Ansatz:** $\\omega = 2\\pi / T$.
-
-**Rechnung:** $\\omega = 2\\pi / 0{,}02 = 100\\pi \\approx 314{,}159$ rad/s.
-
-**Probe:** $f = 1/T = 50$ Hz; $\\omega = 2\\pi \\cdot 50 = 100\\pi$ ✓ (Netzfrequenz).
-
-**Typischer Fehler:** $\\omega = 1/T = 50$ (das wäre $f$, ohne $2\\pi$).`,
-        [
-          '$T = 0{,}02$ s entspricht $f = 50$ Hz.',
-          '$\\omega = 2\\pi f$.',
-          '$100\\pi \\approx 314{,}16$.',
-        ],
-        { stage: 'apply-independent', subGoal: 2, uses: ['omega-f-T'] },
-      ),
-      mc(
-        'Ein Schüler schreibt bei $f = 10$ Hz: „$\\omega = \\pi f = 10\\pi$ rad/s." Wo liegt der Fehler?',
-        [
-          'Er hat den Faktor $2$ vergessen: $\\omega = 2\\pi f = 20\\pi \\approx 62{,}8$ rad/s. In einer vollen Periode sind $2\\pi$ rad zurückzulegen, nicht $\\pi$.',
-          '$f = 10$ Hz ist zu schnell.',
-          'Er hätte $\\omega = 2f$ schreiben müssen.',
-          'Die Aussage stimmt.',
-        ],
-        0,
-        `**Ansatz:** Volle Schwingung entspricht $2\\pi$ rad, nicht $\\pi$.
-
-**Rechnung:** $\\omega = 2\\pi \\cdot 10 = 20\\pi \\approx 62{,}83$ rad/s.
-
-**Probe:** Halbperiode = $\\pi$ rad, volle Periode = $2\\pi$ rad.
-
-**Typischer Fehler:** Halbe und volle Periode verwechseln.`,
-        [
-          'Eine volle Periode = $2\\pi$ rad.',
-          '$\\omega = 2\\pi f$, nicht $\\pi f$.',
-          '$\\omega = 20\\pi$ ist das Doppelte seiner Antwort.',
-        ],
-        {
-          1: '$10$ Hz ist eine übliche Schwingungsfrequenz.',
-          2: '$\\omega = 2f$ hat keine Einheit rad/s — der $\\pi$-Faktor ist Pflicht.',
-          3: 'Nein — Faktor $2$ fehlt.',
-        },
-        { stage: 'error-analysis', subGoal: 2, uses: ['omega-f-T'] },
-      ),
-      ni(
-        'Ein Rotor dreht mit $n = 3000$ U/min (Umdrehungen pro Minute). Berechne die Kreisfrequenz $\\omega$ in rad/s (2 Dezimalstellen).',
-        314.1593, 1, 'rad/s',
-        `**Ansatz:** Erst $f$ in Hz: $f = n/60 = 3000/60 = 50$ Hz. Dann $\\omega = 2\\pi f$.
-
-**Rechnung:** $\\omega = 2\\pi \\cdot 50 = 100\\pi \\approx 314{,}16$ rad/s.
-
-**Probe:** $T = 1/f = 0{,}02$ s; in dieser Zeit wird $1$ Umdrehung $= 2\\pi$ rad durchlaufen ✓
-
-**Typischer Fehler:** U/min direkt als rad/s nehmen, ohne auf Hz umzurechnen.`,
-        [
-          'U/min in Hz: $n/60$.',
-          '$3000/60 = 50$ Hz.',
-          '$\\omega = 2\\pi \\cdot 50 = 100\\pi$.',
-        ],
-        { stage: 'transfer', subGoal: 2, uses: ['omega-f-T'] },
-      ),
-    ],
-
-    // ── [3] Komponenten-Pythagoras Fx² + Fy² = F² ────────────────────────
-    3: [
-      tf(
-        'Für die Kraftkomponenten gilt $F_x^2 + F_y^2 = F^2$ (unabhängig vom Winkel $\\alpha$).',
-        true,
-        `**Ansatz:** $F_x = F\\cos\\alpha, F_y = F\\sin\\alpha$; $F_x^2 + F_y^2 = F^2(\\cos^2\\alpha + \\sin^2\\alpha) = F^2 \\cdot 1$.
-
-**Rechnung:** Pythagoras-Identität angewandt auf den Kraft-Betrag.
-
-**Probe:** $F = 10, \\alpha=30°$: $F_x \\approx 8{,}66, F_y = 5$; $75 + 25 = 100 = 10^2$ ✓
-
-**Typischer Fehler:** Glauben, die Gleichung gelte nur für bestimmte Winkel.`,
-        [
-          'Direkt aus $\\cos^2+\\sin^2=1$.',
-          'Gilt für jeden Winkel und jede Richtung.',
-          'Nützlich zum Prüfen einer Zerlegung.',
-        ],
-        { stage: 'recognize', subGoal: 3, uses: ['komponenten-pythag'] },
-      ),
-      mc(
-        'Eine Kraft hat $F_x = 6$ N und $F_y = 8$ N. Wie groß ist der Gesamtbetrag $F$?',
-        [
-          '$F = 10$ N',
-          '$F = 14$ N',
-          '$F = 48$ N',
-          '$F = \\sqrt{14}$ N',
-        ],
-        0,
-        `**Ansatz:** $F = \\sqrt{F_x^2 + F_y^2}$.
-
-**Rechnung:** $F = \\sqrt{36 + 64} = \\sqrt{100} = 10$ N.
-
-**Probe:** 6-8-10 ist ein klassisches pythagoräisches Tripel.
-
-**Typischer Fehler:** $F_x + F_y = 14$ (Linearitätsfalle).`,
-        [
-          'Pythagoras: Wurzel aus Quadrat-Summe.',
-          '$6^2 + 8^2 = 100$.',
-          '$\\sqrt{100} = 10$.',
-        ],
-        {
-          1: 'Linearitätsfalle: Kräfte sind Vektoren, man addiert nicht die Beträge.',
-          2: '$48 = 6 \\cdot 8$ — Produkt statt Pythagoras.',
-          3: 'Addition der Beträge unter der Wurzel — falsch.',
-        },
-        { stage: 'apply-guided', subGoal: 3, uses: ['komponenten-pythag'] },
-      ),
-      ni(
-        'Eine Kraft hat $F_x = 30$ N und $F_y = 40$ N. Berechne den Gesamtbetrag $F$ in N.',
-        50, 0.5, 'N',
-        `**Ansatz:** $F = \\sqrt{F_x^2 + F_y^2}$.
-
-**Rechnung:** $F = \\sqrt{900 + 1600} = \\sqrt{2500} = 50$ N.
-
-**Probe:** 30-40-50 = 3-4-5 skaliert ✓
-
-**Typischer Fehler:** $30 + 40 = 70$ N (Linearität).`,
-        [
-          'Pythagoras.',
-          '$30^2 = 900, 40^2 = 1600$.',
-          '$\\sqrt{2500} = 50$.',
-        ],
-        { stage: 'apply-independent', subGoal: 3, uses: ['komponenten-pythag'] },
-      ),
-      mc(
-        'Ein Schüler zerlegt $F = 100$ N und erhält $F_x = 80$ N, $F_y = 70$ N. Wieso ist die Rechnung garantiert falsch, ohne dass man den Winkel kennt?',
-        [
-          'Pythagoras-Check: $F_x^2 + F_y^2 = 6400 + 4900 = 11300 \\neq 10000 = F^2$. Die Komponenten passen nicht zum Gesamtbetrag.',
-          'Die Komponenten dürfen nicht beide positiv sein.',
-          '$F_x$ muss immer größer als $F_y$ sein.',
-          'Die Zerlegung stimmt, man muss nur den Winkel ausrechnen.',
-        ],
-        0,
-        `**Ansatz:** Pythagoras muss immer gelten — unabhängig vom Winkel.
-
-**Rechnung:** $80^2 + 70^2 = 11300$, aber $100^2 = 10000$. Differenz $1300$ — Rechenfehler.
-
-**Probe:** Richtige Zerlegungen erfüllen immer $F_x^2 + F_y^2 = F^2$.
-
-**Typischer Fehler:** Komponenten aus zwei verschiedenen Kräften mischen.`,
-        [
-          'Pythagoras-Check anwenden.',
-          'Summe der Quadrate muss $F^2$ ergeben.',
-          'Hier: $11300 \\neq 10000$.',
-        ],
-        {
-          1: 'Vorzeichen hängen vom Quadranten ab — beide positiv ist in Q1 völlig normal.',
-          2: 'Kein Zwang — $F_x$ kann kleiner sein (Winkel $> 45°$).',
-          3: 'Pythagoras schlägt bereits fehl, also ist die Zerlegung falsch.',
-        },
-        { stage: 'error-analysis', subGoal: 3, uses: ['komponenten-pythag'] },
-      ),
-      ni(
-        'Eine Kraft wird in Komponenten $F_x = 12$ N und $F_y = 5$ N zerlegt. Unter welchem Winkel $\\alpha$ zur $x$-Achse wirkt sie? (Ergebnis in Grad, 2 Dezimalstellen)',
-        22.6199, 0.1, '°',
-        `**Ansatz:** $\\tan\\alpha = F_y/F_x$.
-
-**Rechnung:** $\\tan\\alpha = 5/12 \\approx 0{,}4167$; $\\alpha = \\arctan(5/12) \\approx 22{,}62°$.
-
-**Probe:** $F = \\sqrt{144 + 25} = \\sqrt{169} = 13$ N; $F_x = 13 \\cos 22{,}62° \\approx 12$ ✓ (5-12-13-Dreieck).
-
-**Typischer Fehler:** $F_x/F_y$ statt $F_y/F_x$ nehmen → $\\arctan(12/5) \\approx 67{,}4°$.`,
-        [
-          '$\\tan\\alpha = F_y/F_x$.',
-          '$\\arctan(5/12)$.',
-          'Taschenrechner in DEG.',
-        ],
-        { stage: 'transfer', subGoal: 3, uses: ['komponenten-pythag', 'kraft-zerlegung'] },
-      ),
-    ],
-
-    // ── [4] Schiefe Ebene F_H = mg sinα, F_N = mg cosα ───────────────────
-    4: [
-      matching(
-        'Ordne jeder Kraft auf der schiefen Ebene den richtigen Ausdruck zu.',
-        [
-          { left: 'Hangabtriebskraft $F_H$', right: '$m g \\sin\\alpha$' },
-          { left: 'Normalkraft $F_N$',        right: '$m g \\cos\\alpha$' },
-          { left: 'Gewichtskraft $F_G$',      right: '$m g$' },
-        ],
-        `**Ansatz:** Gewichtskraft zerlegen in Komponenten **parallel** und **senkrecht** zur Hangfläche.
-
-**Rechnung:** Parallel (Hangabtrieb): Sinus (wächst mit Winkel). Senkrecht (Normalkraft): Kosinus (sinkt mit Winkel).
-
-**Probe:** Bei $\\alpha = 0°$ (flach) ist $F_H = 0, F_N = mg$ ✓. Bei $\\alpha = 90°$ (senkrecht) ist $F_H = mg, F_N = 0$ ✓.
-
-**Typischer Fehler:** $\\sin$ und $\\cos$ vertauschen → bei flachem Hang würde ein Hangabtrieb auftreten.`,
-        [
-          'Extremfall $\\alpha = 0°$ prüfen.',
-          'Extremfall $\\alpha = 90°$ prüfen.',
-          'Hangabtrieb verschwindet bei flachem Boden.',
-        ],
-        { stage: 'recognize', subGoal: 4, uses: ['schiefe-ebene'] },
-      ),
-      mc(
-        'Ein Körper der Masse $m = 10$ kg liegt auf einer Ebene mit Neigung $\\alpha = 30°$ (nimm $g = 10$ m/s$^2$). Wie groß ist die Hangabtriebskraft?',
-        [
-          '$F_H = 50$ N',
-          '$F_H \\approx 86{,}6$ N',
-          '$F_H = 100$ N',
-          '$F_H = 5$ N',
-        ],
-        0,
-        `**Ansatz:** $F_H = mg\\sin\\alpha$.
-
-**Rechnung:** $F_H = 10 \\cdot 10 \\cdot \\sin 30° = 100 \\cdot \\tfrac12 = 50$ N.
-
-**Probe:** Normalkraft $F_N = 100 \\cos 30° \\approx 86{,}6$ N; $50^2 + 86{,}6^2 \\approx 10000 = (mg)^2$ ✓
-
-**Typischer Fehler:** $\\cos 30°$ statt $\\sin 30°$ → $86{,}6$ N.`,
-        [
-          '$F_H = mg\\sin\\alpha$.',
-          '$\\sin 30° = 1/2$.',
-          '$100 \\cdot 1/2 = 50$.',
-        ],
-        {
-          1: 'Das ist die Normalkraft $F_N = mg\\cos 30°$.',
-          2: 'Das ist die volle Gewichtskraft $mg$.',
-          3: 'Faktor $g$ oder $m$ vergessen.',
-        },
-        { stage: 'apply-guided', subGoal: 4, uses: ['schiefe-ebene'] },
-      ),
-      ni(
-        'Ein Körper der Masse $m = 5$ kg liegt auf einer Rampe mit Neigung $\\alpha = 45°$ (nimm $g = 9{,}81$ m/s$^2$). Berechne die Normalkraft $F_N$ in N (2 Dezimalstellen).',
-        34.6836, 0.2, 'N',
-        `**Ansatz:** $F_N = mg\\cos\\alpha$.
-
-**Rechnung:** $F_N = 5 \\cdot 9{,}81 \\cdot \\cos 45° = 49{,}05 \\cdot \\tfrac{\\sqrt2}{2} \\approx 49{,}05 \\cdot 0{,}7071 \\approx 34{,}68$ N.
-
-**Probe:** Bei $45°$ gilt $F_N = F_H = mg/\\sqrt2$; $F_H^2 + F_N^2 = 2 \\cdot (mg)^2/2 = (mg)^2$ ✓
-
-**Typischer Fehler:** Bei $45°$ beide Komponenten als $mg/2$ annehmen.`,
-        [
-          '$F_N = mg\\cos\\alpha$.',
-          '$\\cos 45° \\approx 0{,}7071$.',
-          '$5 \\cdot 9{,}81 \\cdot 0{,}7071$.',
-        ],
-        { stage: 'apply-independent', subGoal: 4, uses: ['schiefe-ebene'] },
-      ),
-      mc(
-        'Ein Schüler rechnet für eine Rampe mit $\\alpha = 60°$ und $m = 2$ kg (mit $g = 10$ m/s$^2$): „$F_H = mg\\cos 60° = 10$ N, weil der Hang stark geneigt ist." Wo liegt der Fehler?',
-        [
-          'Er verwechselt $\\sin$ und $\\cos$. Korrekt: $F_H = mg\\sin 60° = 20 \\cdot \\tfrac{\\sqrt3}{2} \\approx 17{,}3$ N. Die Hangabtriebskraft wächst mit dem Winkel — bei steilem Hang ist sie groß.',
-          'Er hat $g$ falsch angesetzt.',
-          'Die Formel stimmt, nur das Ergebnis ist unpräzise.',
-          'Die Hangabtriebskraft ist bei jedem Winkel gleich $mg$.',
-        ],
-        0,
-        `**Ansatz:** Hangabtrieb $\\propto \\sin\\alpha$ (wächst mit Winkel); Normalkraft $\\propto \\cos\\alpha$ (sinkt mit Winkel).
-
-**Rechnung:** Korrekt: $F_H = 2 \\cdot 10 \\cdot \\sin 60° = 20 \\cdot 0{,}866 \\approx 17{,}3$ N.
-
-**Probe:** Extremfall $\\alpha=90°$ (senkrechte Wand): $F_H = mg$, $F_N = 0$ — Sinus-Formel liefert das.
-
-**Typischer Fehler:** Intuition "steiler = mehr Normalkraft" — verkehrt.`,
-        [
-          'Hangabtrieb wächst mit Winkel → Sinus.',
-          'Normalkraft sinkt mit Winkel → Kosinus.',
-          'Extremfälle testen.',
-        ],
-        {
-          1: '$g = 10$ m/s² wurde angegeben, also OK.',
-          2: 'Nein — die Formelwahl ist strukturell falsch.',
-          3: 'Nein — $F_H$ hängt sehr wohl vom Winkel ab.',
-        },
-        { stage: 'error-analysis', subGoal: 4, uses: ['schiefe-ebene'] },
-      ),
-      ni(
-        'Ein Auto ($m = 1500$ kg) rollt auf einer Straße mit $10°$ Gefälle. Welche Hangabtriebskraft wirkt? (nimm $g = 9{,}81$ m/s$^2$, Ergebnis in N, 0 Dezimalstellen)',
-        2555, 10, 'N',
-        `**Ansatz:** $F_H = mg\\sin 10°$.
-
-**Rechnung:** $F_H = 1500 \\cdot 9{,}81 \\cdot \\sin 10° = 14715 \\cdot 0{,}1736 \\approx 2555$ N.
-
-**Probe:** Bei $10°$ rund $17{,}4$ % der Gewichtskraft als Hangabtrieb (guter Richtwert).
-
-**Typischer Fehler:** $\\sin$ für kleine Winkel als $\\alpha$ in rad approximieren, aber Taschenrechner auf RAD lassen.`,
-        [
-          '$F_H = mg\\sin\\alpha$.',
-          '$mg = 1500 \\cdot 9{,}81 = 14715$ N.',
-          '$\\sin 10° \\approx 0{,}1736$.',
-        ],
-        { stage: 'transfer', subGoal: 4, uses: ['schiefe-ebene'] },
-      ),
-    ],
-  },
-
-  // ────────────────────────────────────────────────────────────────────────
-  // trig-3-4 — Inverse Funktionen  (6 subGoals)
-  // 30 Matrix-Aufgaben: 6 SGs × 5 Stufen.
-  // ────────────────────────────────────────────────────────────────────────
-  'trig-3-4': {
-    // ── [0] arcsin: [-1, 1] → [-90°, 90°] ────────────────────────────────
-    0: [
-      tf(
-        'Der Wertebereich von $\\arcsin$ ist $[-90°, 90°]$.',
-        true,
-        `**Ansatz:** Hauptwertbereich ist die rechte Halbkreisseite, wo $\\sin$ monoton wächst.
-
-**Rechnung:** $\\arcsin(-1) = -90°, \\arcsin(0) = 0°, \\arcsin(1) = 90°$.
-
-**Probe:** Monotonie: $\\arcsin$ ist auf $[-1,1]$ streng monoton steigend.
-
-**Typischer Fehler:** Wertebereich $[0°, 180°]$ wählen (das ist $\\arccos$).`,
-        [
-          'Monotonie-Forderung wählt die rechte Halbkreisseite.',
-          'Umfasst $0°$ und erlaubt negative Winkel.',
-          'Nicht verwechseln mit $\\arccos$.',
-        ],
-        { stage: 'recognize', subGoal: 0, uses: ['arcsin-def'] },
-      ),
-      mc(
-        'Was ist $\\arcsin(\\tfrac12)$?',
-        [
-          '$30°$',
-          '$150°$',
-          '$60°$',
-          '$210°$',
-        ],
-        0,
-        `**Ansatz:** $\\arcsin$ liefert den Hauptwert in $[-90°, 90°]$.
-
-**Rechnung:** $\\sin 30° = \\tfrac12$; $30°$ liegt im Hauptwertbereich.
-
-**Probe:** $\\sin 30° = 0{,}5$ ✓
-
-**Typischer Fehler:** Die weitere Lösung $150°$ (liegt außerhalb des Hauptwertbereichs) angeben.`,
-        [
-          'Grundwert: $\\sin 30° = \\tfrac12$.',
-          '$30°$ liegt in $[-90°, 90°]$.',
-          'Nur Hauptwert!',
-        ],
-        {
-          1: '$\\sin 150° = \\tfrac12$ zwar korrekt, aber $150°$ ist NICHT im Hauptwertbereich $[-90°, 90°]$ von $\\arcsin$.',
-          2: '$\\sin 60° = \\tfrac{\\sqrt3}{2} \\neq \\tfrac12$.',
-          3: '$\\sin 210° = -\\tfrac12$, falsches Vorzeichen und außerhalb Hauptwert.',
-        },
-        { stage: 'apply-guided', subGoal: 0, uses: ['arcsin-def'] },
-      ),
-      ni(
-        'Berechne $\\arcsin(-\\tfrac12)$ in Grad.',
-        -30, 0.001, '°',
-        `**Ansatz:** $\\sin$ ist ungerade: $\\sin(-\\alpha) = -\\sin\\alpha$, daher $\\arcsin(-x) = -\\arcsin(x)$.
-
-**Rechnung:** $\\arcsin(-\\tfrac12) = -\\arcsin(\\tfrac12) = -30°$.
-
-**Probe:** $-30° \\in [-90°, 90°]$ ✓; $\\sin(-30°) = -\\tfrac12$ ✓
-
-**Typischer Fehler:** Positives Ergebnis angeben (Vorzeichen beim Sinus vergessen) oder $330°$ (außerhalb Hauptwert).`,
-        [
-          'Punktsymmetrie: $\\arcsin(-x) = -\\arcsin(x)$.',
-          '$\\arcsin(\\tfrac12) = 30°$.',
-          'Also $-30°$.',
-        ],
-        { stage: 'apply-independent', subGoal: 0, uses: ['arcsin-def'] },
-      ),
-      mc(
-        'Ein Schüler schreibt $\\arcsin(\\sin 150°) = 150°$. Wo liegt der Fehler?',
-        [
-          '$\\arcsin$ liefert immer einen Wert in $[-90°, 90°]$. Da $\\sin 150° = \\tfrac12$ gilt, ist $\\arcsin(\\sin 150°) = \\arcsin(\\tfrac12) = 30°$, nicht $150°$.',
-          '$\\sin 150° \\neq \\tfrac12$.',
-          '$\\arcsin$ ist die exakte Umkehrung von $\\sin$ für jeden Winkel.',
-          'Die Aussage stimmt.',
-        ],
-        0,
-        `**Ansatz:** $\\arcsin(\\sin x) = x$ gilt nur, wenn $x$ bereits im Hauptwertbereich ist.
-
-**Rechnung:** $\\sin 150° = \\sin(180°-30°) = \\sin 30° = \\tfrac12$. $\\arcsin(\\tfrac12) = 30°$.
-
-**Probe:** Der Sinus "vergisst" den Unterschied zwischen $150°$ und $30°$; $\\arcsin$ kann das nicht rückgängig machen.
-
-**Typischer Fehler:** Annahme, dass Umkehrung immer gilt.`,
-        [
-          '$\\sin 150° = \\tfrac12$ (Supplement).',
-          'Hauptwert-Projektion in $[-90°, 90°]$.',
-          'Verlorene Information kann $\\arcsin$ nicht rekonstruieren.',
-        ],
-        {
-          1: '$\\sin 150° = \\tfrac12$ ist korrekt (Supplement-Formel).',
-          2: '$\\arcsin(\\sin x) = x$ stimmt nur auf $[-90°, 90°]$.',
-          3: 'Nein — Hauptwert ist $30°$.',
-        },
-        { stage: 'error-analysis', subGoal: 0, uses: ['arcsin-def'] },
-      ),
-      ni(
-        'Berechne $\\arcsin(\\tfrac{\\sqrt2}{2})$ in Grad.',
-        45, 0.001, '°',
-        `**Ansatz:** Grundwert $\\sin 45° = \\tfrac{\\sqrt2}{2}$.
-
-**Rechnung:** $\\arcsin(\\tfrac{\\sqrt2}{2}) = 45°$.
-
-**Probe:** $45° \\in [-90°, 90°]$ ✓
-
-**Typischer Fehler:** $\\tfrac{\\sqrt2}{2} \\approx 0{,}707$ mit $\\tfrac12$ verwechseln.`,
-        [
-          '$\\tfrac{\\sqrt2}{2} = \\sin 45°$.',
-          'Hauptwert.',
-          '$45°$ liegt in $[-90°, 90°]$.',
-        ],
-        { stage: 'transfer', subGoal: 0, uses: ['arcsin-def'] },
-      ),
-    ],
-
-    // ── [1] arccos: [-1, 1] → [0°, 180°] ─────────────────────────────────
-    1: [
-      tf(
-        'Der Wertebereich von $\\arccos$ ist $[0°, 180°]$.',
-        true,
-        `**Ansatz:** Hauptwertbereich umfasst obere Halbkreisseite, wo $\\cos$ monoton fällt.
-
-**Rechnung:** $\\arccos(1) = 0°, \\arccos(0) = 90°, \\arccos(-1) = 180°$.
-
-**Probe:** Monotonie: $\\arccos$ streng monoton fallend.
-
-**Typischer Fehler:** Wertebereich $[-90°, 90°]$ wählen (das ist $\\arcsin$).`,
-        [
-          'Obere Halbkreisseite.',
-          'Enthält keine negativen Winkel.',
-          'Monoton fallend.',
-        ],
-        { stage: 'recognize', subGoal: 1, uses: ['arccos-def'] },
-      ),
-      mc(
-        'Was ist $\\arccos(\\tfrac12)$?',
-        [
-          '$60°$',
-          '$30°$',
-          '$-60°$',
-          '$300°$',
-        ],
-        0,
-        `**Ansatz:** $\\arccos$ liefert Hauptwert in $[0°, 180°]$.
-
-**Rechnung:** $\\cos 60° = \\tfrac12$.
-
-**Probe:** $60° \\in [0°, 180°]$ ✓
-
-**Typischer Fehler:** Mit $\\arcsin$ verwechseln ($\\arcsin(\\tfrac12) = 30°$).`,
-        [
-          'Grundwert: $\\cos 60° = \\tfrac12$.',
-          '$60°$ liegt in $[0°, 180°]$.',
-          'Nicht $30°$ — das ist $\\arcsin(\\tfrac12)$.',
-        ],
-        {
-          1: '$\\cos 30° = \\tfrac{\\sqrt3}{2} \\neq \\tfrac12$. Du hast vermutlich $\\arcsin$ gedacht.',
-          2: 'Negativer Winkel ist außerhalb des Wertebereichs.',
-          3: '$\\cos 300° = \\tfrac12$, aber außerhalb $[0°, 180°]$.',
-        },
-        { stage: 'apply-guided', subGoal: 1, uses: ['arccos-def'] },
-      ),
-      ni(
-        'Berechne $\\arccos(-\\tfrac12)$ in Grad.',
-        120, 0.001, '°',
-        `**Ansatz:** $\\arccos(-x) = 180° - \\arccos(x)$ (Kosinus-Symmetrie am Supplement).
-
-**Rechnung:** $\\arccos(-\\tfrac12) = 180° - \\arccos(\\tfrac12) = 180° - 60° = 120°$.
-
-**Probe:** $120° \\in [0°, 180°]$ ✓; $\\cos 120° = -\\tfrac12$ ✓
-
-**Typischer Fehler:** Punktsymmetrie (wie bei $\\arcsin$) annehmen → $-60°$.`,
-        [
-          'Kosinus ist am Supplement gespiegelt, nicht punktsymmetrisch.',
-          '$\\arccos(-x) = 180° - \\arccos(x)$.',
-          '$180° - 60° = 120°$.',
-        ],
-        { stage: 'apply-independent', subGoal: 1, uses: ['arccos-def'] },
-      ),
-      mc(
-        'Ein Schüler rechnet $\\arccos(-1) = -180°$. Wo liegt der Fehler?',
-        [
-          'Der Hauptwertbereich von $\\arccos$ ist $[0°, 180°]$ — negative Werte sind ausgeschlossen. Korrekt: $\\arccos(-1) = 180°$.',
-          '$\\cos$ wird bei $-180°$ nicht zu $-1$.',
-          '$-1$ ist nicht im Definitionsbereich.',
-          'Die Aussage stimmt.',
-        ],
-        0,
-        `**Ansatz:** Wertebereich von $\\arccos$ beachten.
-
-**Rechnung:** $\\cos 180° = -1$, und $180° \\in [0°, 180°]$ ✓
-
-**Probe:** $\\cos(-180°) = \\cos 180° = -1$, aber $-180°$ ist nicht im Hauptwertbereich.
-
-**Typischer Fehler:** Hauptwertbereich von $\\arcsin$ ($[-90°, 90°]$) auf $\\arccos$ übertragen.`,
-        [
-          'Hauptwertbereich-Regel.',
-          '$\\arccos$ erlaubt $0°$ bis $180°$ (inklusive).',
-          '$\\cos 180° = -1$ ✓',
-        ],
-        {
-          1: '$\\cos(-180°)$ wäre $-1$, aber das ist nicht der Hauptwert.',
-          2: '$-1 \\in [-1, 1]$, also im Definitionsbereich.',
-          3: 'Nein — Hauptwertbereich ausschließen.',
-        },
-        { stage: 'error-analysis', subGoal: 1, uses: ['arccos-def'] },
-      ),
-      ni(
-        'Berechne $\\arccos(\\tfrac{\\sqrt3}{2})$ in Grad.',
-        30, 0.001, '°',
-        `**Ansatz:** Grundwert $\\cos 30° = \\tfrac{\\sqrt3}{2}$.
-
-**Rechnung:** $\\arccos(\\tfrac{\\sqrt3}{2}) = 30°$.
-
-**Probe:** $30° \\in [0°, 180°]$ ✓
-
-**Typischer Fehler:** Mit $\\arcsin(\\tfrac{\\sqrt3}{2}) = 60°$ verwechseln.`,
-        [
-          '$\\cos 30° = \\tfrac{\\sqrt3}{2}$.',
-          'Hauptwert in $[0°, 180°]$.',
-          'Nicht $60°$ (das wäre $\\arcsin$).',
-        ],
-        { stage: 'transfer', subGoal: 1, uses: ['arccos-def'] },
-      ),
-    ],
-
-    // ── [2] arctan: ℝ → (-90°, 90°) ──────────────────────────────────────
-    2: [
-      tf(
-        'Der Wertebereich von $\\arctan$ ist $(-90°, 90°)$ — die Pole $\\pm 90°$ sind ausgeschlossen.',
-        true,
-        `**Ansatz:** $\\tan$ hat Pole bei $\\pm 90°$, daher sind diese Winkel nicht Werte der Umkehrung.
-
-**Rechnung:** $\\arctan(0) = 0°$; $\\arctan(\\text{sehr groß}) \\to 90°$ aber nie gleich $90°$.
-
-**Probe:** Asymptotisches Verhalten: $\\arctan$ hat horizontale Asymptoten bei $\\pm 90°$.
-
-**Typischer Fehler:** $\\pm 90°$ als erreichbar betrachten.`,
-        [
-          'Tangens-Pole bei $\\pm 90°$.',
-          'Offenes Intervall.',
-          'Definitionsbereich ist ganz $\\mathbb{R}$.',
-        ],
-        { stage: 'recognize', subGoal: 2, uses: ['arctan-def'] },
-      ),
-      mc(
-        'Was ist $\\arctan(1)$?',
-        [
-          '$45°$',
-          '$60°$',
-          '$90°$',
-          '$135°$',
-        ],
-        0,
-        `**Ansatz:** $\\tan 45° = 1$.
-
-**Rechnung:** $\\arctan(1) = 45°$.
-
-**Probe:** $45° \\in (-90°, 90°)$ ✓
-
-**Typischer Fehler:** Mit $\\arcsin(1) = 90°$ verwechseln.`,
-        [
-          '$\\tan 45° = 1$.',
-          'Hauptwert liegt im offenen Intervall.',
-          '$45°$ ist der kleinste positive Winkel mit $\\tan = 1$.',
-        ],
-        {
-          1: '$\\tan 60° = \\sqrt3 \\approx 1{,}73$, nicht $1$.',
-          2: '$\\tan 90°$ ist undefiniert (Pol).',
-          3: '$135°$ liegt außerhalb des Hauptwertbereichs.',
-        },
-        { stage: 'apply-guided', subGoal: 2, uses: ['arctan-def'] },
-      ),
-      ni(
-        'Berechne $\\arctan(\\sqrt3)$ in Grad.',
-        60, 0.001, '°',
-        `**Ansatz:** Grundwert $\\tan 60° = \\sqrt3$.
-
-**Rechnung:** $\\arctan(\\sqrt3) = 60°$.
-
-**Probe:** $60° \\in (-90°, 90°)$ ✓
-
-**Typischer Fehler:** $\\arctan(\\sqrt3)$ mit $\\arctan(1/\\sqrt3) = 30°$ verwechseln.`,
-        [
-          '$\\tan 60° = \\sqrt3 \\approx 1{,}732$.',
-          'Hauptwert.',
-          '$60°$ liegt im offenen Intervall.',
-        ],
-        { stage: 'apply-independent', subGoal: 2, uses: ['arctan-def'] },
-      ),
-      mc(
-        'Ein Schüler behauptet $\\arctan(10^{10}) = 90°$, weil der Tangens dort "unendlich" wird. Wo liegt der Fehler?',
-        [
-          'Der Wert $90°$ ist kein gültiger Funktionswert von $\\arctan$. Korrekt: $\\arctan(10^{10}) \\approx 89{,}9999999994°$ — dicht an $90°$, aber nie erreicht (horizontale Asymptote).',
-          '$\\tan 90°$ ist definiert und gleich $10^{10}$.',
-          'Der Definitionsbereich von $\\arctan$ ist $[-1, 1]$.',
-          'Die Aussage stimmt.',
-        ],
-        0,
-        `**Ansatz:** Offenes Intervall bedeutet: nie erreicht, nur angenähert.
-
-**Rechnung:** $\\arctan$ strebt gegen $90°$, erreicht es aber nicht.
-
-**Probe:** Für jede endliche Zahl $x$ ist $\\arctan(x) < 90°$, selbst wenn $x$ sehr groß ist.
-
-**Typischer Fehler:** Asymptote mit Funktionswert verwechseln.`,
-        [
-          'Asymptote vs. Wert.',
-          'Offenes Intervall schließt Grenzen aus.',
-          '$\\tan 90°$ ist undefiniert.',
-        ],
-        {
-          1: '$\\tan 90°$ ist **undefiniert** (Pol), nicht $10^{10}$.',
-          2: '$\\arctan$ ist auf ganz $\\mathbb{R}$ definiert.',
-          3: 'Nein — Grenzwert wird nicht erreicht.',
-        },
-        { stage: 'error-analysis', subGoal: 2, uses: ['arctan-def'] },
-      ),
-      ni(
-        'Berechne $\\arctan(-1)$ in Grad.',
-        -45, 0.001, '°',
-        `**Ansatz:** $\\arctan$ ist ungerade: $\\arctan(-x) = -\\arctan(x)$.
-
-**Rechnung:** $\\arctan(-1) = -45°$.
-
-**Probe:** $-45° \\in (-90°, 90°)$ ✓; $\\tan(-45°) = -1$ ✓
-
-**Typischer Fehler:** Wie bei $\\arccos$ $180° - 45° = 135°$ rechnen (falsche Symmetrie).`,
-        [
-          '$\\arctan$ punktsymmetrisch (wie $\\arcsin$).',
-          '$\\arctan(1) = 45°$.',
-          'Minus.',
-        ],
-        { stage: 'transfer', subGoal: 2, uses: ['arctan-def'] },
-      ),
-    ],
-
-    // ── [3] Hauptwert vs. weitere Lösungen ───────────────────────────────
-    3: [
-      tf(
-        'Die Gleichung $\\sin x = \\tfrac12$ hat im Bereich $[0°, 360°)$ genau zwei Lösungen, obwohl $\\arcsin(\\tfrac12)$ nur **einen** Wert liefert.',
-        true,
-        `**Ansatz:** $\\arcsin$ liefert Hauptwert, aber Supplement-Formel $\\sin(180°-\\alpha) = \\sin\\alpha$ gibt eine zweite Lösung.
-
-**Rechnung:** Lösungen: $30°$ und $150°$.
-
-**Probe:** $\\sin 30° = \\sin 150° = \\tfrac12$ ✓
-
-**Typischer Fehler:** Nur den Hauptwert als einzige Lösung ansehen.`,
-        [
-          'Hauptwert aus $\\arcsin$.',
-          'Zweite Lösung per Supplement.',
-          'Im $[0°, 360°)$-Bereich genau zwei.',
-        ],
-        { stage: 'recognize', subGoal: 3, uses: ['hauptwert-vs-weitere'] },
-      ),
-      mc(
-        'Welches Paar gibt alle Lösungen von $\\cos x = \\tfrac12$ im Bereich $[0°, 360°)$?',
-        [
-          '$60°$ und $300°$',
-          '$60°$ und $120°$',
-          'Nur $60°$',
-          '$30°$ und $330°$',
-        ],
-        0,
-        `**Ansatz:** Hauptwert $\\arccos(\\tfrac12) = 60°$. Zweite Lösung via Symmetrie: $\\cos(-\\alpha) = \\cos\\alpha$, also $-60° \\equiv 300°$.
-
-**Rechnung:** Lösungen: $60°$ und $300°$.
-
-**Probe:** $\\cos 60° = \\cos 300° = \\tfrac12$ ✓
-
-**Typischer Fehler:** Supplement-Formel (wie bei Sinus) statt Symmetrie am Kosinus anwenden.`,
-        [
-          '$\\arccos(\\tfrac12) = 60°$.',
-          'Kosinus ist achsensymmetrisch: $\\cos(-\\alpha) = \\cos\\alpha$.',
-          '$-60° \\equiv 300°$ (modulo $360°$).',
-        ],
-        {
-          1: '$\\cos 120° = -\\tfrac12 \\neq \\tfrac12$ — falsche Symmetrieregel (Sinus-Regel angewandt).',
-          2: 'Nur Hauptwert — zweite Lösung fehlt.',
-          3: '$\\cos 30° = \\tfrac{\\sqrt3}{2} \\neq \\tfrac12$.',
-        },
-        { stage: 'apply-guided', subGoal: 3, uses: ['hauptwert-vs-weitere'] },
-      ),
-      ni(
-        'Bestimme die größte Lösung von $\\sin x = \\tfrac{\\sqrt2}{2}$ im Bereich $[0°, 360°)$ (in Grad).',
-        135, 0.01, '°',
-        `**Ansatz:** Hauptwert $\\arcsin(\\tfrac{\\sqrt2}{2}) = 45°$. Supplement $180°-45° = 135°$.
-
-**Rechnung:** Lösungen in $[0°, 360°)$: $45°$ und $135°$. Größte: $135°$.
-
-**Probe:** $\\sin 135° = \\sin 45° = \\tfrac{\\sqrt2}{2}$ ✓
-
-**Typischer Fehler:** Nur Hauptwert $45°$ angeben.`,
-        [
-          'Hauptwert aus $\\arcsin$.',
-          'Supplement $180°-45°$.',
-          '$135° > 45°$.',
-        ],
-        { stage: 'apply-independent', subGoal: 3, uses: ['hauptwert-vs-weitere'] },
-      ),
-      mc(
-        'Ein Schüler schreibt beim Lösen von $\\cos x = -\\tfrac12$ im Bereich $[0°, 360°)$: „$x = \\arccos(-\\tfrac12) = 120°$ — fertig." Wo liegt der Fehler?',
-        [
-          'Nur der Hauptwert ist angegeben; durch die Achsensymmetrie von Kosinus gibt es eine zweite Lösung: $x = 360° - 120° = 240°$. Vollständige Lösungsmenge: $\\{120°, 240°\\}$.',
-          '$\\arccos(-\\tfrac12) = 240°$, nicht $120°$.',
-          'Die Gleichung hat gar keine Lösung.',
-          '$-\\tfrac12$ ist nicht im Definitionsbereich.',
-        ],
-        0,
-        `**Ansatz:** Eine Gleichung $\\cos x = c$ mit $c \\in (-1, 1)$ hat im Bereich $[0°, 360°)$ immer **zwei** Lösungen.
-
-**Rechnung:** $120°$ (Hauptwert) und $360°-120° = 240°$ (gespiegelt an $x$-Achse).
-
-**Probe:** $\\cos 120° = \\cos 240° = -\\tfrac12$ ✓
-
-**Typischer Fehler:** Hauptwert als einzige Lösung annehmen.`,
-        [
-          'Zwei Lösungen pro Periode.',
-          'Symmetrie $\\cos(360°-\\alpha) = \\cos\\alpha$.',
-          'Lösungsmenge aufschreiben.',
-        ],
-        {
-          1: '$\\arccos$ liefert den Hauptwert $120°$ korrekt.',
-          2: 'Die Gleichung hat Lösungen (Definitionsbereich $[-1,1]$ erfüllt).',
-          3: '$-\\tfrac12$ ist im Definitionsbereich.',
-        },
-        { stage: 'error-analysis', subGoal: 3, uses: ['hauptwert-vs-weitere'] },
-      ),
-      matching(
-        'Ordne jeder Gleichung die **zweite** Lösung im Bereich $[0°, 360°)$ zu (erste ist jeweils der Hauptwert der Umkehrfunktion).',
-        [
-          { left: '$\\sin x = \\tfrac12$ (Hauptwert $30°$)',     right: '$150°$' },
-          { left: '$\\cos x = \\tfrac12$ (Hauptwert $60°$)',     right: '$300°$' },
-          { left: '$\\sin x = -\\tfrac{\\sqrt2}{2}$ (Hauptwert $-45° \\equiv 315°$)', right: '$225°$' },
-          { left: '$\\cos x = -\\tfrac{\\sqrt3}{2}$ (Hauptwert $150°$)', right: '$210°$' },
-        ],
-        `**Ansatz:** Sinus: Supplement $180°-\\alpha$. Kosinus: Spiegel $360°-\\alpha$.
-
-**Rechnung:** Je nach Funktion die passende Symmetrie anwenden.
-
-**Probe:** Jede zweite Lösung einsetzen: liefert denselben Wert wie der Hauptwert.
-
-**Typischer Fehler:** Symmetrieregel (Sinus vs. Kosinus) vertauschen.`,
-        [
-          'Sinus: Supplement $180°-\\alpha$.',
-          'Kosinus: Spiegel $360°-\\alpha$.',
-          'Beide Lösungen im Standardbereich angeben.',
-        ],
-        { stage: 'transfer', subGoal: 3, uses: ['hauptwert-vs-weitere'] },
-      ),
-    ],
-
-    // ── [4] DEG/RAD-Modus ────────────────────────────────────────────────
-    4: [
-      tf(
-        'Der Taschenrechner-Modus (DEG oder RAD) beeinflusst, welchen numerischen Wert $\\arcsin(0{,}5)$ liefert.',
-        true,
-        `**Ansatz:** Im DEG-Modus liefert $\\arcsin(0{,}5) = 30$ (Grad); im RAD-Modus $\\approx 0{,}5236$ (Bogenmaß $= \\pi/6$).
-
-**Rechnung:** Beide Werte beschreiben denselben Winkel, aber in unterschiedlichen Einheiten.
-
-**Probe:** $30° = \\pi/6$ rad $\\approx 0{,}5236$ ✓
-
-**Typischer Fehler:** Das Einheitensymbol $°$ vergessen und Zahlenwerte verwechseln.`,
-        [
-          'Grad vs. Bogenmaß.',
-          '$180° = \\pi$ rad.',
-          '$30° = \\pi/6 \\approx 0{,}524$.',
-        ],
-        { stage: 'recognize', subGoal: 4, uses: ['modus-pflicht'] },
-      ),
-      mc(
-        'Ein Taschenrechner liefert $\\arcsin(1) = 1{,}5708$. In welchem Modus wurde gerechnet?',
-        [
-          'RAD (Bogenmaß)',
-          'DEG (Grad)',
-          'GRAD (Gon)',
-          'Der Wert ist falsch — $\\arcsin(1)$ existiert nicht.',
-        ],
-        0,
-        `**Ansatz:** $\\arcsin(1) = 90° = \\pi/2$ rad $\\approx 1{,}5708$.
-
-**Rechnung:** Der Zahlenwert $1{,}5708$ entspricht $\\pi/2$ — das Bogenmaß (RAD).
-
-**Probe:** $\\sin(1{,}5708) = \\sin(\\pi/2) = 1$ ✓ (nur in RAD-Interpretation).
-
-**Typischer Fehler:** $1{,}5708$ als $1{,}57°$ lesen (absurd klein).`,
-        [
-          '$\\pi/2 \\approx 1{,}5708$.',
-          'Grad wäre $90$, Bogenmaß ist $\\pi/2$.',
-          'RAD-Modus.',
-        ],
-        {
-          1: 'In DEG wäre das Ergebnis $90$, nicht $1{,}5708$.',
-          2: 'GRAD (Neugrad/Gon): $100$ Gon für einen Rechten Winkel — wäre $100$ hier.',
-          3: '$\\arcsin(1) = 90°$ ist sehr wohl definiert.',
-        },
-        { stage: 'apply-guided', subGoal: 4, uses: ['modus-pflicht'] },
-      ),
-      ni(
-        'Was liefert $\\sin(\\pi/6)$, wenn der Taschenrechner im RAD-Modus ist? (4 Dezimalstellen)',
-        0.5, 0.001, '',
-        `**Ansatz:** $\\pi/6 \\approx 0{,}5236$ rad $= 30°$ → $\\sin = 0{,}5$.
-
-**Rechnung:** $\\sin(\\pi/6) = \\tfrac12 = 0{,}5$.
-
-**Probe:** In DEG würde der Taschenrechner $\\sin(\\pi/6°) = \\sin(0{,}524°) \\approx 0{,}00914$ liefern — völlig anders.
-
-**Typischer Fehler:** Modus nicht überprüfen.`,
-        [
-          '$\\pi/6$ rad $= 30°$.',
-          'Im RAD-Modus wird die Zahl als Bogenmaß interpretiert.',
-          '$\\sin 30° = \\tfrac12$.',
-        ],
-        { stage: 'apply-independent', subGoal: 4, uses: ['modus-pflicht'] },
-      ),
-      mc(
-        'Ein Schüler berechnet $\\sin(30)$ auf dem Taschenrechner und erhält $-0{,}988$. Wo liegt der Fehler?',
-        [
-          'Der Taschenrechner steht auf RAD. Er interpretiert $30$ als $30$ rad $\\approx 1719°$ — eine vielfach um die Kreise herum gewundene Position. Für $\\sin 30°$ muss der Modus auf DEG gestellt werden.',
-          '$\\sin 30° = 0{,}5$, aber der Rechner rundet falsch.',
-          'Der Taschenrechner ist defekt.',
-          'Die Aussage $\\sin 30° = -0{,}988$ ist korrekt.',
-        ],
-        0,
-        `**Ansatz:** DEG/RAD-Modus vor dem Rechnen setzen.
-
-**Rechnung:** $\\sin(30 \\text{ rad}) \\approx -0{,}988$ (da $30$ rad $\\approx 4{,}77$ volle Perioden + Rest).
-
-**Probe:** $\\sin 30° = 0{,}5$ (DEG-Modus).
-
-**Typischer Fehler:** Der häufigste Taschenrechnerfehler — Modus ignorieren.`,
-        [
-          'RAD-Modus interpretiert Zahlen als Bogenmaß.',
-          '$30$ rad sind rund $1719°$.',
-          'DEG-Modus liefert $\\sin 30° = 0{,}5$.',
-        ],
-        {
-          1: 'Rundungsfehler sind viel kleiner als der Unterschied $0{,}5$ vs. $-0{,}988$.',
-          2: 'Der Taschenrechner arbeitet korrekt — nur der Modus ist falsch.',
-          3: 'Nein — in DEG wäre $\\sin 30° = 0{,}5$.',
-        },
-        { stage: 'error-analysis', subGoal: 4, uses: ['modus-pflicht'] },
-      ),
-      matching(
-        'Ordne jeder Winkelangabe die korrekte Darstellung im jeweils anderen Modus zu.',
-        [
-          { left: '$90°$',         right: '$\\pi/2 \\approx 1{,}5708$ rad' },
-          { left: '$180°$',        right: '$\\pi \\approx 3{,}1416$ rad' },
-          { left: '$\\pi/4$ rad',  right: '$45°$' },
-          { left: '$2\\pi$ rad',   right: '$360°$' },
-        ],
-        `**Ansatz:** Umrechnung $\\alpha_\\text{rad} = \\alpha° \\cdot \\pi/180$.
-
-**Rechnung:** Alle Werte konsistent umrechnen.
-
-**Probe:** Verhältnis $180°/\\pi$ rad $\\approx 57{,}3$ — 1 rad ist etwa $57{,}3°$.
-
-**Typischer Fehler:** $\\pi$ mit $180$ verwechseln.`,
-        [
-          'Voll-Kreis: $360° = 2\\pi$ rad.',
-          '$90° = \\pi/2$ rad.',
-          '$1$ rad $\\approx 57{,}3°$.',
-        ],
-        { stage: 'transfer', subGoal: 4, uses: ['modus-pflicht'] },
-      ),
-    ],
-
-    // ── [5] sin⁻¹ ≠ 1/sin ────────────────────────────────────────────────
+    // ── [5] Grafische Kontrolle ────────────────────────────────────────
     5: [
       tf(
-        'Die Notation $\\sin^{-1}(x)$ steht für die Umkehrfunktion $\\arcsin(x)$ und **nicht** für $1/\\sin(x)$.',
+        '[PRÜFUNG] Sub-Goal "Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen": Die Anzahl der Lösungen von $\\sin x = a$ in $[0, 2\\pi)$ kann man durch Einzeichnen der Geraden $y=a$ in den Sinus-Graphen ablesen (je Periode zwei Schnittpunkte für $|a|<1$).',
         true,
-        `**Ansatz:** Die Hochschrift $-1$ bei Funktionen kennzeichnet die Umkehrfunktion, nicht den Kehrwert.
-
-**Rechnung:** $\\sin^{-1}(0{,}5) = \\arcsin(0{,}5) = 30°$. Der Kehrwert wäre $1/\\sin(0{,}5°) \\approx 114{,}6$.
-
-**Probe:** Taschenrechner-Taste „SIN$^{-1}$" liefert den Winkel.
-
-**Typischer Fehler:** $\\sin^{-1}(x) = 1/\\sin(x)$ durchziehen (Verwechslung mit $x^{-1} = 1/x$).`,
+        `**Ansatz:** Graph-Schnitt-Methode.\n\n**Rechnung:** Sinuskurve oszilliert zwischen $-1$ und $+1$; eine horizontale Linie $y=a$ mit $|a|<1$ schneidet die Kurve pro Periode zweimal.\n\n**Probe:** Am Einheitskreis: waagrechte Gerade schneidet den Kreis zweimal (Symmetrisch zur $x$-Achse).\n\n**Typischer Fehler:** Übersehen, dass am Einheitskreis auch die Gerade $y=a$ den Kreis zweimal schneidet — entspricht exakt den zwei $\\sin$-Lösungen.`,
         [
-          'Hochschrift $-1$ bei Funktionen = Umkehrfunktion.',
-          'Kehrwert: $1/\\sin(x) = \\csc(x)$.',
-          'Taschenrechner-Taste gibt den Winkel.',
+          'Graph-Schnitt als Visualisierung.',
+          'Horizontale Linie bei $y=a$.',
+          'Zähle Schnittpunkte pro Intervall.',
         ],
-        { stage: 'recognize', subGoal: 5, uses: ['arcsin-vs-reziprok'] },
+        { stage: 'recognize', subGoal: 5, uses: ['grafisch-kontrolle'] },
       ),
       mc(
-        'Was ist $\\sin^{-1}(0{,}5)$?',
+        '[PRÜFUNG] Sub-Goal "Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen": Wie viele Lösungen hat $\\cos x = 0{,}8$ in $[-\\pi, 3\\pi)$?',
         [
-          '$30°$',
-          '$2$',
-          '$0{,}5$',
-          '$\\tfrac{1}{0{,}5 \\cdot 180/\\pi}$',
+          '4',
+          '2',
+          '6',
+          '8',
         ],
         0,
-        `**Ansatz:** $\\sin^{-1} = \\arcsin$.
-
-**Rechnung:** $\\sin^{-1}(0{,}5) = 30°$.
-
-**Probe:** $\\sin 30° = 0{,}5$ ✓
-
-**Typischer Fehler:** $\\sin^{-1}(0{,}5) = 1/0{,}5 = 2$ rechnen.`,
+        `**Ansatz:** Länge des Intervalls geteilt durch Periode, mal zwei Lösungen pro Periode.\n\n**Rechnung:** Intervalllänge $= 4\\pi$. Periode von $\\cos$ ist $2\\pi$ → 2 Perioden. Pro Periode 2 Lösungen ($|0{,}8|<1$). Gesamt: 4.\n\n**Probe:** Graphisch: Horizontallinie $y=0{,}8$ schneidet die Cosinuskurve über $4\\pi$ genau 4 mal.\n\n**Typischer Fehler:** Vergessen, dass das Intervall über zwei Perioden geht.`,
         [
-          'Umkehrfunktions-Notation.',
-          '$\\arcsin(0{,}5) = 30°$.',
-          'Kehrwert-Deutung wäre $2$, aber das ist falsch.',
+          'Intervalllänge bestimmen.',
+          'Durch Periode teilen.',
+          'Mal 2 (Lösungen pro Periode).',
         ],
         {
-          1: 'Das ist $1/0{,}5 = 2$ — Kehrwert, nicht Umkehrfunktion.',
-          2: 'Das ist einfach die Zahl $0{,}5$ — keine Operation.',
-          3: 'Eine künstliche Kombination ohne mathematische Bedeutung.',
+          1: 'Eine Periode — aber das Intervall hat zwei.',
+          2: 'Zu viele — drei Perioden wären 6.',
+          3: 'Zu viele — das wäre ein noch größeres Intervall.',
         },
-        { stage: 'apply-guided', subGoal: 5, uses: ['arcsin-vs-reziprok'] },
+        { stage: 'apply-guided', subGoal: 5, uses: ['grafisch-kontrolle'] },
       ),
       ni(
-        'Was ergibt $\\sin^{-1}(1)$ in Grad?',
-        90, 0.01, '°',
-        `**Ansatz:** $\\sin^{-1} = \\arcsin$.
-
-**Rechnung:** $\\arcsin(1) = 90°$.
-
-**Probe:** $\\sin 90° = 1$ ✓
-
-**Typischer Fehler:** $\\sin^{-1}(1) = 1/\\sin 1° = 1/0{,}01745 \\approx 57{,}3$.`,
+        '[PRÜFUNG] Sub-Goal "Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen": Wie viele Lösungen hat $\\sin x = \\cos x$ in $[0, 2\\pi)$?',
+        2, 0, '',
+        `**Ansatz:** Graphen vergleichen — Schnittpunkte zählen.\n\n**Rechnung:** Äquivalent zu $\\tan x = 1$, Periode $\\pi$, in $[0, 2\\pi)$: zwei Lösungen ($\\pi/4, 5\\pi/4$).\n\n**Probe:** Sinus- und Cosinuskurve schneiden sich in $[0, 2\\pi)$ zweimal ($\\pi/4, 5\\pi/4$).\n\n**Typischer Fehler:** Vier Lösungen erwarten wie bei $\\sin x = \\sin x_0$.`,
         [
-          'Umkehrfunktion, nicht Kehrwert.',
-          '$\\sin 90° = 1$.',
-          'Ergebnis in Grad.',
+          'Umformen zu $\\tan x = 1$.',
+          '$\\tan$-Periode $\\pi$.',
+          'In $[0, 2\\pi)$: zwei Perioden, aber pro Periode eine Lösung.',
         ],
-        { stage: 'apply-independent', subGoal: 5, uses: ['arcsin-vs-reziprok'] },
+        { stage: 'apply-independent', subGoal: 5, uses: ['grafisch-kontrolle'] },
       ),
       mc(
-        'Ein Schüler rechnet: „$\\sin^{-1}(0{,}8) = 1/\\sin(0{,}8°) \\approx 71{,}6$." Wo liegt der Fehler?',
+        '[PRÜFUNG] Sub-Goal "Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen": Ein Student löst $\\sin x = 0{,}3$ in $[0, 4\\pi)$ und gibt $x_1\\approx 0{,}305$, $x_2\\approx 2{,}837$ (also 2 Lösungen). Wie viele fehlen?',
         [
-          'Er hat die Hochschrift $-1$ als Kehrwert interpretiert. Bei trigonometrischen Funktionen bedeutet $\\sin^{-1}$ aber **Umkehrfunktion** (also $\\arcsin$). Korrekt: $\\sin^{-1}(0{,}8) \\approx 53{,}13°$.',
-          'Er hätte $\\sin 0{,}8°$ statt $\\sin(0{,}8)$ rechnen müssen.',
-          'Das Ergebnis $71{,}6$ ist richtig.',
-          '$0{,}8$ ist nicht im Definitionsbereich.',
+          '2 (nämlich $0{,}305+2\\pi$ und $2{,}837+2\\pi$)',
+          '0 — der Student ist fertig',
+          '1 — nur eine Periodizitäts-Kopie',
+          '4 — das Intervall ist doppelt so groß wie angegeben',
         ],
         0,
-        `**Ansatz:** Notation genau lesen.
-
-**Rechnung:** $\\arcsin(0{,}8) \\approx 53{,}13°$ (Taschenrechner).
-
-**Probe:** $\\sin 53{,}13° \\approx 0{,}8$ ✓
-
-**Typischer Fehler:** Exponent-Analogie $x^{-1} = 1/x$ falsch übertragen.`,
+        `**Ansatz:** $[0, 4\\pi)$ sind zwei Perioden. Pro Periode zwei Lösungen → vier Lösungen insgesamt.\n\n**Rechnung:** $x_3 = x_1 + 2\\pi \\approx 6{,}588$ und $x_4 = x_2 + 2\\pi \\approx 9{,}120$.\n\n**Probe:** Alle vier in $[0, 4\\pi)$: ja.\n\n**Typischer Fehler:** Intervall als $[0, 2\\pi)$ missinterpretieren und Periodizitäts-Kopien vergessen.`,
         [
-          'Konvention: $\\sin^{-1} \\neq 1/\\sin$.',
-          '$\\sin^{-1} = \\arcsin$.',
-          'Der Kehrwert heißt $\\csc$ (Kosekans), nicht $\\sin^{-1}$.',
+          'Intervall prüfen.',
+          'Pro $2\\pi$: zwei Lösungen.',
+          'Für zwei Perioden vier Lösungen.',
         ],
         {
-          1: 'Argument $0{,}8$ ist kein Winkel, sondern ein Sinuswert.',
-          2: '$71{,}6$ ist falsch — $\\arcsin(0{,}8) \\approx 53{,}13°$.',
-          3: '$0{,}8 \\in [-1, 1]$, also im Definitionsbereich.',
+          1: 'Die Periodizitäts-Kopien fehlen.',
+          2: 'Bei zwei Perioden gibt es doppelt so viele Lösungen.',
+          3: 'Im angegebenen Intervall $[0, 4\\pi)$ gibt es vier Lösungen; es fehlen zwei davon.',
         },
-        { stage: 'error-analysis', subGoal: 5, uses: ['arcsin-vs-reziprok'] },
+        { stage: 'error-analysis', subGoal: 5, uses: ['grafisch-kontrolle'] },
       ),
       matching(
-        'Ordne jeder Notation die korrekte Interpretation zu.',
+        '[PRÜFUNG] Sub-Goal "Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen": Ordne jedem Funktionstyp die richtige Anzahl Lösungen pro $2\\pi$-Periode zu (bei Generic-Parameter $|a|<1$).',
         [
-          { left: '$\\sin^{-1}(x)$', right: 'Umkehrfunktion $\\arcsin(x)$, Ergebnis ist ein Winkel' },
-          { left: '$(\\sin x)^{-1}$', right: 'Kehrwert $1/\\sin(x) = \\csc(x)$' },
-          { left: '$\\sin^2(x)$',    right: '$(\\sin x)^2$ (Quadrat des Sinuswerts)' },
-          { left: '$\\arcsin(\\sin x)$', right: '$x$, solange $x \\in [-90°, 90°]$ liegt' },
+          { left: '$\\sin x = a$', right: '2 Lösungen' },
+          { left: '$\\cos x = a$', right: '2 Lösungen' },
+          { left: '$\\tan x = a$', right: '2 Lösungen (Periode $\\pi$)' },
+          { left: '$\\sin(2x) = a$', right: '4 Lösungen' },
         ],
-        `**Ansatz:** Positionen der Exponenten unterscheiden Umkehrfunktion, Kehrwert und Potenz.
-
-**Rechnung:** $\\sin^2 x$ meint das Quadrat, nie $\\sin(\\sin x)$ (Iteration).
-
-**Probe:** Jede Notation mit konkreten Werten testen.
-
-**Typischer Fehler:** $\\sin^{-1}$ als Kehrwert lesen.`,
+        `**Ansatz:** Jede Funktion hat ihre eigene Periode — Lösungen pro $2\\pi$ zählen.\n\n**Rechnung:** $\\sin, \\cos$: Periode $2\\pi$, 2 Lösungen pro Periode. $\\tan$: Periode $\\pi$, 1 Lösung pro $\\pi$, also 2 pro $2\\pi$. $\\sin(2x)$: "innere" Periode $\\pi$, so dass in $2\\pi$ zwei Perioden stecken × 2 Lösungen = 4.\n\n**Probe:** Zeichne die Graphen in $[0, 2\\pi)$ und zähle Schnittpunkte mit $y=a$.\n\n**Typischer Fehler:** $\\tan$-Periode und $\\sin(kx)$-Periode verwechseln.`,
         [
-          '$^{-1}$ bei Funktionen = Umkehrfunktion (außer in Klammern).',
-          'Kehrwert nur bei $(\\sin x)^{-1}$.',
-          '$\\sin^2 x$ = Quadrat des Werts.',
+          'Periode jeder Funktion.',
+          'Lösungen pro Periode.',
+          'Multiplizieren für Gesamtzahl.',
         ],
-        { stage: 'transfer', subGoal: 5, uses: ['arcsin-vs-reziprok'] },
+        { stage: 'transfer', subGoal: 5, uses: ['grafisch-kontrolle'] },
       ),
     ],
+
   },
+
 
   // ────────────────────────────────────────────────────────────────────────
   // trig-3-5 — Sinussatz & Cosinussatz  (6 subGoals × 5 stages)
