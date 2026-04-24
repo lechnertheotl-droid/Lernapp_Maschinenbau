@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 3341 | 4520+ (≥ 20/Lesson) | 🟡 |
-| Aufgaben mit 4-Block | 1441 (43 %) | 100 % der Aufgaben | 🔴 |
-| MC mit wrongAnswerExplanations | 1336 / 1336 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 3446 | 4520+ (≥ 20/Lesson) | 🟡 |
+| Aufgaben mit 4-Block | 1546 (45 %) | 100 % der Aufgaben | 🔴 |
+| MC mit wrongAnswerExplanations | 1381 / 1381 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 246 / 1134 (22 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -199,10 +199,10 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **509** (manuell: 66 · supplemental: 443)
-- 4-Block: 372/509 (73 %) 🟡
-- MC-wAE: 225/225 (100 %) ✅
-- Sub-Goals: 66/87 Goal-Tasks verknüpft 🟡
+- Aufgaben: **614** (manuell: 66 · supplemental: 548)
+- 4-Block: 477/614 (78 %) 🟡
+- MC-wAE: 270/270 (100 %) ✅
+- Sub-Goals: 87/87 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
 
 **Winkel, Sinus/Kosinus/Tangens und Einheitskreis — die Sprache, in der Geometrie und Schwingungen beschrieben werden.**
@@ -254,11 +254,11 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 | `trig-2-3` Symmetrien und Periodizität | 6 | 6/6 | 40 | 17/10/7/5/1 | 31/40 | 17/17 | ✅ | +9 4B |
 | `trig-2-4` Tangens im Einheitskreis | 6 | 6/6 | 40 | 21/5/7/6/1 | 30/40 | 21/21 | ✅ | +10 4B |
 | `trig-2-5` Alle vier Quadranten | 6 | 6/6 | 40 | 20/8/5/5/2 | 31/40 | 20/20 | ✅ | +9 4B |
-| `trig-3-1` Additionstheoreme | 5 | 0/5 | 10 | 6/2/1/1/0 | 0/10 | 6/6 | ✅ | +5 Goal, +10 4B |
-| `trig-3-2` Doppelwinkelformeln und Pythagoreischer Satz | 5 | 0/5 | 10 | 6/2/1/1/0 | 0/10 | 6/6 | ✅ | +5 Goal, +10 4B |
-| `trig-3-3` Technische Anwendungen | 5 | 0/5 | 10 | 5/2/1/1/1 | 2/10 | 5/5 | ✅ | +5 Goal, +8 4B |
-| `trig-3-4` Inverse Funktionen | 6 | 0/6 | 10 | 5/2/1/1/1 | 2/10 | 5/5 | ✅ | +6 Goal, +8 4B |
-| `trig-3-5` Sinussatz & Cosinussatz | 6 | 6/6 | 33 | 11/9/7/4/2 | 33/33 | 11/11 | ✅ | — |
+| `trig-3-1` Additionstheoreme | 5 | 5/5 | 35 | 16/10/6/3/0 | 25/35 | 16/16 | ✅ | +10 4B |
+| `trig-3-2` Doppelwinkelformeln und Pythagoreischer Satz | 5 | 5/5 | 35 | 16/11/6/2/0 | 25/35 | 16/16 | ✅ | +10 4B |
+| `trig-3-3` Technische Anwendungen | 5 | 5/5 | 35 | 15/12/4/3/1 | 27/35 | 15/15 | ✅ | +8 4B |
+| `trig-3-4` Inverse Funktionen | 6 | 6/6 | 40 | 17/11/7/4/1 | 32/40 | 17/17 | ✅ | +8 4B |
+| `trig-3-5` Sinussatz & Cosinussatz | 6 | 6/6 | 33 | 14/10/6/2/1 | 33/33 | 14/14 | ✅ | — |
 | `trig-4-1` Prüfung: Identitäten & Gleichungen | 5 | 5/5 | 37 | 13/7/6/6/5 | 30/37 | 13/13 | ✅ | +7 4B |
 | `trig-4-2` Prüfung: Technische Anwendungen | 5 | 5/5 | 37 | 12/7/6/6/6 | 30/37 | 12/12 | ✅ | +7 4B |
 | `trig-4-3` Prüfung: Einheitskreis & Gleichungssysteme | 6 | 6/6 | 42 | 13/8/7/7/7 | 35/42 | 13/13 | ✅ | +7 4B |
@@ -2959,7 +2959,7 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
   - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
 
-### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 120 Lessons
+### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 116 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -3438,103 +3438,6 @@ npm run build              # abschließender End-zu-End-Check
   - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
   - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
   - _Klausur-Fokus:_ Wahrscheinlichkeit bei Normalverteilung mit Standardisierung. · Erwartungswert und Varianz einer diskreten Verteilung. · 95%-Konfidenzintervall für Mittelwert.
-
-#### `trig-3-1` · Additionstheoreme
-
-- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1
-- **Typen einsetzen (Rotation):** sorting, true-false, matching, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — $\sin(\alpha \pm \beta) = \sin\alpha\cos\beta \pm \cos\alpha\sin\beta$ (Kreuzform, Vorzeichen folgt Winkel)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — $\cos(\alpha \pm \beta) = \cos\alpha\cos\beta \mp \sin\alpha\sin\beta$ (umgekehrtes Vorzeichen!)
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — $\tan(\alpha \pm \beta) = (\tan\alpha \pm \tan\beta)/(1 \mp \tan\alpha\tan\beta)$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Linearitäts-Falle: $\sin(\alpha+\beta) \neq \sin\alpha + \sin\beta$ (nie addieren!)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Anwendung: exakte Werte wie $\sin 15°$, $\cos 75°$ aus Summen/Differenzen bekannter Grundwinkel
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/trigonometry.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/trigonometry.js`
-- **4-Block-Erklärung fehlt bei:** `ex-trig-3-1-a`, `ex-trig-3-1-b`, `ex-trig-3-1-manual-1`, `ex-trig-3-1-manual-2`, `ex-trig-3-1-manual-3`, `ex-trig-3-1-manual-4`, `ex-trig-3-1-manual-5`, `ex-trig-3-1-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `unit-circle`, `trig-explorer`, `sin-wave-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
-  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
-  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
-
-#### `trig-3-2` · Doppelwinkelformeln und Pythagoreischer Satz
-
-- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1
-- **Typen einsetzen (Rotation):** sorting, true-false, matching, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — $\sin(2\alpha) = 2\sin\alpha\cos\alpha$ (aus Additionstheorem mit $\beta = \alpha$)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — $\cos(2\alpha) = \cos^2\alpha - \sin^2\alpha = 2\cos^2\alpha - 1 = 1 - 2\sin^2\alpha$ (drei Formen)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Pythagoras-Identität $\sin^2\alpha + \cos^2\alpha = 1$ als Kreisgleichung am Einheitskreis
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Folgerungen: $\sin^2\alpha = 1 - \cos^2\alpha$, $\cos^2\alpha = 1 - \sin^2\alpha$ (zum Umwandeln)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Halbwinkel-Formeln: $\sin^2(\alpha/2) = (1-\cos\alpha)/2$, $\cos^2(\alpha/2) = (1+\cos\alpha)/2$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/trigonometry.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/trigonometry.js`
-- **4-Block-Erklärung fehlt bei:** `ex-trig-3-2-a`, `ex-trig-3-2-b`, `ex-trig-3-2-manual-1`, `ex-trig-3-2-manual-2`, `ex-trig-3-2-manual-3`, `ex-trig-3-2-manual-4`, `ex-trig-3-2-manual-5`, `ex-trig-3-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `unit-circle`, `trig-explorer`, `sin-wave-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
-  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
-  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
-
-#### `trig-3-3` · Technische Anwendungen
-
-- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Kraftzerlegung: $F_x = F\cos\alpha$, $F_y = F\sin\alpha$ (Winkel zur $x$-Achse)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Schwingung $x(t) = A\sin(\omega t + \varphi)$: $A$ Amplitude, $\omega$ Kreisfrequenz, $\varphi$ Phasenwinkel
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Zusammenhang $\omega = 2\pi f = 2\pi/T$ (Kreisfrequenz, Frequenz, Periode)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Pythagoras-Check: $F_x^2 + F_y^2 = F^2$ (Komponenten müssen zur Gesamtkraft passen)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Schiefe Ebene: Hangabtriebskraft $F_H = m g \sin\alpha$, Normalkraft $F_N = m g \cos\alpha$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/trigonometry.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/trigonometry.js`
-- **4-Block-Erklärung fehlt bei:** `ex-trig-3-3-a`, `ex-trig-3-3-manual-1`, `ex-trig-3-3-manual-2`, `ex-trig-3-3-manual-3`, `ex-trig-3-3-manual-4`, `ex-trig-3-3-manual-5`, `ex-trig-3-3-manual-6`, `ex-trig-3-3-manual-7`
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `unit-circle`, `trig-explorer`, `sin-wave-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
-  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
-  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
-
-#### `trig-3-4` · Inverse Funktionen
-
-- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — $\arcsin: [-1,1] \to [-90°, 90°]$ (rechte Hälfte, monoton wachsend)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — $\arccos: [-1,1] \to [0°, 180°]$ (obere Hälfte, monoton fallend)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — $\arctan: \mathbb{R} \to (-90°, 90°)$ (Pole ausgeschlossen)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Umkehrfunktion liefert nur Hauptwert — weitere Lösungen via Periodizität/Symmetrie ergänzen
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Taschenrechner-Modus DEG/RAD unbedingt beachten (häufigste Fehlerquelle)
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Notation $\sin^{-1}$ für $\arcsin$ nicht mit $1/\sin$ verwechseln
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/trigonometry.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/trigonometry.js`
-- **4-Block-Erklärung fehlt bei:** `ex-trig-3-4-b`, `ex-trig-3-4-manual-1`, `ex-trig-3-4-manual-2`, `ex-trig-3-4-manual-3`, `ex-trig-3-4-manual-4`, `ex-trig-3-4-manual-5`, `ex-trig-3-4-manual-6`, `ex-trig-3-4-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `unit-circle`, `trig-explorer`, `sin-wave-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
-  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
-  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
 
 #### `vek-1-3` · Kreuzprodukt
 
@@ -5832,7 +5735,7 @@ npm run build              # abschließender End-zu-End-Check
   - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
   - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 39 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 43 Lessons
 
 #### `mech-0-3` · Dimensionsanalyse — Einheitencheck
 
@@ -6456,21 +6359,64 @@ npm run build              # abschließender End-zu-End-Check
 #### `trig-3-5` · Sinussatz & Cosinussatz
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
-- **Aufgaben aktuell:** 33 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×11, number-input ×9, true-false ×7, matching ×4, sorting ×2
-- **Typen einsetzen (Rotation):** sorting, matching, true-false
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - ✅ [0] (hoch) **5/5+** Aufgaben — Sinussatz: $a/\sin\alpha = b/\sin\beta = c/\sin\gamma = 2R$ (Umkreisradius)
-  - ✅ [1] (hoch) **5/5+** Aufgaben — Cosinussatz: $a^2 = b^2 + c^2 - 2bc\cos\alpha$ (verallgemeinerter Pythagoras)
-  - ✅ [2] (hoch) **5/5+** Aufgaben — Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz
-  - ✅ [3] (mittel) **5/5+** Aufgaben — Pythagoras als Spezialfall: $\alpha = 90° \Rightarrow \cos\alpha = 0 \Rightarrow a^2 = b^2 + c^2$
-  - ✅ [4] (hoch) **5/5+** Aufgaben — Seite und Gegenwinkel gehören zusammen ($a \leftrightarrow \alpha$ usw.)
-  - ✅ [5] (mittel) **5/5+** Aufgaben — SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\sin\beta$ spitz, Höhenvergleich erforderlich
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `unit-circle`, `trig-explorer`, `sin-wave-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `trigonometry`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grad ↔ Radiant: $180°=\pi$, $90°=\pi/2$, $60°=\pi/3$, $45°=\pi/4$, $30°=\pi/6$. · sin/cos-Wert der Standardwinkel $0°, 30°, 45°, 60°, 90°$ auswendig. · Quadrantenvorzeichen (CAS-Regel: nur Cos, All, Sin, Tan positiv). · …
-  - _Typische Fehler (gute Distraktoren):_ Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
-  - _Klausur-Fokus:_ Dreiecksberechnung mit Sinus-/Kosinussatz. · Trigonometrische Gleichungen in $[0,2\pi)$ lösen. · Kräftezerlegung an schiefer Ebene.
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `trig-1-3` → `grundwerte-sin`, `grundwerte-cos`
+  - `trig-2-3` → `supplement-formel`
+  - `trig-3-4` → `arcsin-def`, `arccos-def`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `sinussatz` — Sinussatz $\dfrac{a}{\sin\alpha}=\dfrac{b}{\sin\beta}=\dfrac{c}{\sin\gamma}=2R$ (SG 0)
+  2. `cosinussatz` — Cosinussatz $a^2 = b^2 + c^2 - 2bc\cos\alpha$ (SG 1)
+  3. `methodenwahl` — Methodenwahl: SWS/SSS → Cosinussatz, WWS/SWW/SSW → Sinussatz ⇐ `sinussatz`, `cosinussatz` (SG 2)
+  4. `pythagoras-spezialfall` — Pythagoras als Spezialfall: $\alpha=90°\Rightarrow\cos\alpha=0\Rightarrow a^2=b^2+c^2$ ⇐ `cosinussatz` (SG 3)
+  5. `seite-gegenwinkel` — Paarung Seite $\leftrightarrow$ Gegenwinkel ($a\leftrightarrow\alpha$ usw.) ⇐ `sinussatz` (SG 4)
+  6. `ssw-mehrdeutigkeit` — SSW-Mehrdeutigkeit: Höhenvergleich $h=b\sin\alpha$, ggf. $\beta_2=180°-\beta_1$ ⇐ `sinussatz`, `seite-gegenwinkel` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `sinussatz` · **5/5+** — Sinussatz: $a/\sin\alpha = b/\sin\beta = c/\sin\gamma = 2R$ (Umkreisradius)
+  - ✅ [1] _hoch_ · Konzepte: `cosinussatz` · **5/5+** — Cosinussatz: $a^2 = b^2 + c^2 - 2bc\cos\alpha$ (verallgemeinerter Pythagoras)
+  - ✅ [2] _hoch_ · Konzepte: `methodenwahl` · **5/5+** — Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz
+  - ✅ [3] _mittel_ · Konzepte: `pythagoras-spezialfall` · **5/5+** — Pythagoras als Spezialfall: $\alpha = 90° \Rightarrow \cos\alpha = 0 \Rightarrow a^2 = b^2 + c^2$
+  - ✅ [4] _hoch_ · Konzepte: `seite-gegenwinkel` · **5/5+** — Seite und Gegenwinkel gehören zusammen ($a \leftrightarrow \alpha$ usw.)
+  - ✅ [5] _mittel_ · Konzepte: `ssw-mehrdeutigkeit` · **5/5+** — SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\sin\beta$ spitz, Höhenvergleich erforderlich
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `sinussatz` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `sinussatz` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `sinussatz` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `sinussatz` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | number-input     | `sinussatz` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `cosinussatz` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `cosinussatz` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `cosinussatz` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `cosinussatz` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `cosinussatz` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `methodenwahl` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | matching         | `methodenwahl` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `methodenwahl` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `methodenwahl` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | multiple-choice  | `methodenwahl` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `pythagoras-spezialfall` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pythagoras-spezialfall` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `pythagoras-spezialfall` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pythagoras-spezialfall` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | number-input     | `pythagoras-spezialfall`, `cosinussatz` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `seite-gegenwinkel` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | matching         | `seite-gegenwinkel` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `seite-gegenwinkel`, `sinussatz` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `seite-gegenwinkel` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | number-input     | `seite-gegenwinkel`, `sinussatz` | 1 | 1 | ✅ |  |
+| 26 | 5 | recognize          | true-false       | `ssw-mehrdeutigkeit` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `ssw-mehrdeutigkeit` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | number-input     | `ssw-mehrdeutigkeit`, `sinussatz` | 1 | 1 | ✅ |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `ssw-mehrdeutigkeit` | 1 | 1 | ✅ |  |
+| 30 | 5 | transfer           | sorting          | `ssw-mehrdeutigkeit` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/trigonometry.js` unter `'trig-3-5': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/trigonometry.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
 #### `alg-1-1` · Potenzgesetze
 
@@ -6672,6 +6618,173 @@ npm run build              # abschließender End-zu-End-Check
   - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/trigonometry.js` unter `'trig-2-2': { 0: [...], 1: [...], ... }`
   - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-2-manual-1`, `ex-trig-2-2-manual-2`, `ex-trig-2-2-manual-3`, `ex-trig-2-2-manual-4`, `ex-trig-2-2-manual-5`, `ex-trig-2-2-manual-6`, `ex-trig-2-2-manual-7`, `ex-trig-2-2-mastery`
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+
+#### `trig-3-1` · Additionstheoreme
+
+- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `trig-1-3` → `grundwerte-sin`, `grundwerte-cos`
+  - `trig-2-5` → `standardwerte-reduktion`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `sin-add-thm` — $\sin(\alpha \pm \beta) = \sin\alpha\cos\beta \pm \cos\alpha\sin\beta$ (Kreuzform, gleiches Vorzeichen wie Winkel) (SG 0)
+  2. `cos-add-thm` — $\cos(\alpha \pm \beta) = \cos\alpha\cos\beta \mp \sin\alpha\sin\beta$ (Produktform, Vorzeichen kehrt sich um) (SG 1)
+  3. `tan-add-thm` — $\tan(\alpha \pm \beta) = \dfrac{\tan\alpha \pm \tan\beta}{1 \mp \tan\alpha\tan\beta}$ ⇐ `sin-add-thm`, `cos-add-thm` (SG 2)
+  4. `linearitaets-falle` — Nicht-Linearität: $\sin(\alpha+\beta) \neq \sin\alpha + \sin\beta$ (gilt analog für cos/tan) ⇐ `sin-add-thm` (SG 3)
+  5. `exakte-werte-bau` — Nicht-Grundwinkel als Summe/Differenz bekannter Grundwinkel zerlegen ($15°=45°-30°$, $75°=45°+30°$) ⇐ `sin-add-thm`, `cos-add-thm` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `sin-add-thm` · **5/5+** — $\sin(\alpha \pm \beta) = \sin\alpha\cos\beta \pm \cos\alpha\sin\beta$ (Kreuzform, Vorzeichen folgt Winkel)
+  - ✅ [1] _hoch_ · Konzepte: `cos-add-thm` · **5/5+** — $\cos(\alpha \pm \beta) = \cos\alpha\cos\beta \mp \sin\alpha\sin\beta$ (umgekehrtes Vorzeichen!)
+  - ✅ [2] _mittel_ · Konzepte: `tan-add-thm` · **5/5+** — $\tan(\alpha \pm \beta) = (\tan\alpha \pm \tan\beta)/(1 \mp \tan\alpha\tan\beta)$
+  - ✅ [3] _hoch_ · Konzepte: `linearitaets-falle` · **5/5+** — Linearitäts-Falle: $\sin(\alpha+\beta) \neq \sin\alpha + \sin\beta$ (nie addieren!)
+  - ✅ [4] _hoch_ · Konzepte: `exakte-werte-bau` · **5/5+** — Anwendung: exakte Werte wie $\sin 15°$, $\cos 75°$ aus Summen/Differenzen bekannter Grundwinkel
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `sin-add-thm` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `sin-add-thm` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `sin-add-thm` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `sin-add-thm` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | number-input     | `sin-add-thm` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `cos-add-thm` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `cos-add-thm` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `cos-add-thm` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `cos-add-thm` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | matching         | `cos-add-thm` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `tan-add-thm` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `tan-add-thm` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `tan-add-thm` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `tan-add-thm` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `tan-add-thm` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `linearitaets-falle` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `linearitaets-falle` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `linearitaets-falle`, `sin-add-thm` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `linearitaets-falle` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | true-false       | `linearitaets-falle` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | matching         | `exakte-werte-bau` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `exakte-werte-bau`, `sin-add-thm` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `exakte-werte-bau`, `sin-add-thm` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `exakte-werte-bau`, `cos-add-thm` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | number-input     | `exakte-werte-bau`, `cos-add-thm` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/trigonometry.js` unter `'trig-3-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/trigonometry.js`
+- **4-Block-Erklärung fehlt bei:** `ex-trig-3-1-a`, `ex-trig-3-1-b`, `ex-trig-3-1-manual-1`, `ex-trig-3-1-manual-2`, `ex-trig-3-1-manual-3`, `ex-trig-3-1-manual-4`, `ex-trig-3-1-manual-5`, `ex-trig-3-1-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+
+#### `trig-3-2` · Doppelwinkelformeln und Pythagoreischer Satz
+
+- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `trig-3-1` → `sin-add-thm`, `cos-add-thm`
+  - `trig-2-2` → `cos-x-sin-y`
+  - `trig-1-3` → `grundwerte-sin`, `grundwerte-cos`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `sin-doppelwinkel` — $\sin(2\alpha) = 2\sin\alpha\cos\alpha$ (aus Additionstheorem mit $\beta=\alpha$) (SG 0)
+  2. `cos-doppelwinkel-drei` — $\cos(2\alpha) = \cos^2\alpha - \sin^2\alpha = 2\cos^2\alpha - 1 = 1 - 2\sin^2\alpha$ (drei Formen) (SG 1)
+  3. `pythag-identity` — $\sin^2\alpha + \cos^2\alpha = 1$ (Kreisgleichung des Einheitskreises) (SG 2)
+  4. `pythag-umwandeln` — Folgerungen $\sin^2\alpha = 1 - \cos^2\alpha$ und $\cos^2\alpha = 1 - \sin^2\alpha$ (zum Umwandeln) ⇐ `pythag-identity` (SG 3)
+  5. `halbwinkel` — $\sin^2(\alpha/2) = (1-\cos\alpha)/2$, $\cos^2(\alpha/2) = (1+\cos\alpha)/2$ ⇐ `cos-doppelwinkel-drei` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `sin-doppelwinkel` · **5/5+** — $\sin(2\alpha) = 2\sin\alpha\cos\alpha$ (aus Additionstheorem mit $\beta = \alpha$)
+  - ✅ [1] _hoch_ · Konzepte: `cos-doppelwinkel-drei` · **5/5+** — $\cos(2\alpha) = \cos^2\alpha - \sin^2\alpha = 2\cos^2\alpha - 1 = 1 - 2\sin^2\alpha$ (drei Formen)
+  - ✅ [2] _hoch_ · Konzepte: `pythag-identity` · **5/5+** — Pythagoras-Identität $\sin^2\alpha + \cos^2\alpha = 1$ als Kreisgleichung am Einheitskreis
+  - ✅ [3] _hoch_ · Konzepte: `pythag-umwandeln` · **5/5+** — Folgerungen: $\sin^2\alpha = 1 - \cos^2\alpha$, $\cos^2\alpha = 1 - \sin^2\alpha$ (zum Umwandeln)
+  - ✅ [4] _mittel_ · Konzepte: `halbwinkel` · **5/5+** — Halbwinkel-Formeln: $\sin^2(\alpha/2) = (1-\cos\alpha)/2$, $\cos^2(\alpha/2) = (1+\cos\alpha)/2$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `sin-doppelwinkel` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `sin-doppelwinkel` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `sin-doppelwinkel` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `sin-doppelwinkel` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | number-input     | `sin-doppelwinkel` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | matching         | `cos-doppelwinkel-drei` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `cos-doppelwinkel-drei` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `cos-doppelwinkel-drei` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `cos-doppelwinkel-drei` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `cos-doppelwinkel-drei` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `pythag-identity` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pythag-identity` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `pythag-identity` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `pythag-identity` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | true-false       | `pythag-identity` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `pythag-umwandeln` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pythag-umwandeln` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `pythag-umwandeln` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pythag-umwandeln` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | number-input     | `pythag-umwandeln` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `halbwinkel` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `halbwinkel` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `halbwinkel` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `halbwinkel` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | number-input     | `halbwinkel`, `cos-doppelwinkel-drei` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/trigonometry.js` unter `'trig-3-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/trigonometry.js`
+- **4-Block-Erklärung fehlt bei:** `ex-trig-3-2-a`, `ex-trig-3-2-b`, `ex-trig-3-2-manual-1`, `ex-trig-3-2-manual-2`, `ex-trig-3-2-manual-3`, `ex-trig-3-2-manual-4`, `ex-trig-3-2-manual-5`, `ex-trig-3-2-manual-6` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+
+#### `trig-3-3` · Technische Anwendungen
+
+- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `trig-1-3` → `grundwerte-sin`, `grundwerte-cos`
+  - `trig-2-2` → `cos-x-sin-y`
+  - `trig-3-2` → `pythag-identity`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `kraft-zerlegung` — Kraftzerlegung $F_x = F\cos\alpha$, $F_y = F\sin\alpha$ (Winkel zur $x$-Achse) (SG 0)
+  2. `schwingung-form` — Schwingung $x(t) = A\sin(\omega t + \varphi)$ mit Amplitude $A$, Kreisfrequenz $\omega$, Phase $\varphi$ (SG 1)
+  3. `omega-f-T` — Zusammenhang $\omega = 2\pi f = 2\pi/T$ (Kreisfrequenz, Frequenz $f$, Periode $T$) ⇐ `schwingung-form` (SG 2)
+  4. `komponenten-pythag` — Pythagoras-Check $F_x^2 + F_y^2 = F^2$ — Komponenten müssen zum Gesamtbetrag passen ⇐ `kraft-zerlegung` (SG 3)
+  5. `schiefe-ebene` — Schiefe Ebene: Hangabtrieb $F_H = m g \sin\alpha$, Normalkraft $F_N = m g \cos\alpha$ ⇐ `kraft-zerlegung` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `kraft-zerlegung` · **5/5+** — Kraftzerlegung: $F_x = F\cos\alpha$, $F_y = F\sin\alpha$ (Winkel zur $x$-Achse)
+  - ✅ [1] _hoch_ · Konzepte: `schwingung-form` · **5/5+** — Schwingung $x(t) = A\sin(\omega t + \varphi)$: $A$ Amplitude, $\omega$ Kreisfrequenz, $\varphi$ Phasenwinkel
+  - ✅ [2] _hoch_ · Konzepte: `omega-f-T` · **5/5+** — Zusammenhang $\omega = 2\pi f = 2\pi/T$ (Kreisfrequenz, Frequenz, Periode)
+  - ✅ [3] _mittel_ · Konzepte: `komponenten-pythag` · **5/5+** — Pythagoras-Check: $F_x^2 + F_y^2 = F^2$ (Komponenten müssen zur Gesamtkraft passen)
+  - ✅ [4] _hoch_ · Konzepte: `schiefe-ebene` · **5/5+** — Schiefe Ebene: Hangabtriebskraft $F_H = m g \sin\alpha$, Normalkraft $F_N = m g \cos\alpha$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kraft-zerlegung` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kraft-zerlegung` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `kraft-zerlegung` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `kraft-zerlegung` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | number-input     | `kraft-zerlegung` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | matching         | `schwingung-form` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `schwingung-form` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `schwingung-form` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `schwingung-form` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `schwingung-form` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `omega-f-T` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `omega-f-T` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `omega-f-T` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `omega-f-T` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `omega-f-T` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `komponenten-pythag` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `komponenten-pythag` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `komponenten-pythag` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `komponenten-pythag` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | number-input     | `komponenten-pythag`, `kraft-zerlegung` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | matching         | `schiefe-ebene` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `schiefe-ebene` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `schiefe-ebene` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `schiefe-ebene` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | number-input     | `schiefe-ebene` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/trigonometry.js` unter `'trig-3-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/trigonometry.js`
+- **4-Block-Erklärung fehlt bei:** `ex-trig-3-3-a`, `ex-trig-3-3-manual-1`, `ex-trig-3-3-manual-2`, `ex-trig-3-3-manual-3`, `ex-trig-3-3-manual-4`, `ex-trig-3-3-manual-5`, `ex-trig-3-3-manual-6`, `ex-trig-3-3-manual-7`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
@@ -6971,6 +7084,69 @@ npm run build              # abschließender End-zu-End-Check
   - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/trigonometry.js`
 - **4-Block-Erklärung fehlt bei:** `ex-trig-2-5-b`, `ex-trig-2-5-manual-1`, `ex-trig-2-5-manual-2`, `ex-trig-2-5-manual-3`, `ex-trig-2-5-manual-4`, `ex-trig-2-5-manual-5`, `ex-trig-2-5-manual-6`, `ex-trig-2-5-manual-7` … (+1 weitere)
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+
+#### `trig-3-4` · Inverse Funktionen
+
+- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Anwendungen und Identitäten
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `trig-1-2` → `deg-rad-modus`
+  - `trig-1-3` → `grundwerte-sin`, `grundwerte-cos`
+  - `trig-2-3` → `periodizitaet-360`, `supplement-formel`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `arcsin-def` — $\arcsin: [-1, 1] \to [-90°, 90°]$ (rechte Halbkreisseite, monoton wachsend) (SG 0)
+  2. `arccos-def` — $\arccos: [-1, 1] \to [0°, 180°]$ (obere Halbkreisseite, monoton fallend) (SG 1)
+  3. `arctan-def` — $\arctan: \mathbb{R} \to (-90°, 90°)$ (Pole ausgeschlossen) (SG 2)
+  4. `hauptwert-vs-weitere` — Umkehrfunktion liefert NUR Hauptwert — weitere Lösungen via Periodizität/Symmetrie ergänzen ⇐ `arcsin-def`, `arccos-def` (SG 3)
+  5. `modus-pflicht` — DEG/RAD-Modus: Ergebnis hängt vom Taschenrechner-Modus ab (häufigste Fehlerquelle) (SG 4)
+  6. `arcsin-vs-reziprok` — Notation $\sin^{-1}$ meint $\arcsin$, NICHT $1/\sin$ (Kehrwert) ⇐ `arcsin-def` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `arcsin-def` · **5/5+** — $\arcsin: [-1,1] \to [-90°, 90°]$ (rechte Hälfte, monoton wachsend)
+  - ✅ [1] _hoch_ · Konzepte: `arccos-def` · **5/5+** — $\arccos: [-1,1] \to [0°, 180°]$ (obere Hälfte, monoton fallend)
+  - ✅ [2] _hoch_ · Konzepte: `arctan-def` · **5/5+** — $\arctan: \mathbb{R} \to (-90°, 90°)$ (Pole ausgeschlossen)
+  - ✅ [3] _hoch_ · Konzepte: `hauptwert-vs-weitere` · **5/5+** — Umkehrfunktion liefert nur Hauptwert — weitere Lösungen via Periodizität/Symmetrie ergänzen
+  - ✅ [4] _hoch_ · Konzepte: `modus-pflicht` · **5/5+** — Taschenrechner-Modus DEG/RAD unbedingt beachten (häufigste Fehlerquelle)
+  - ✅ [5] _mittel_ · Konzepte: `arcsin-vs-reziprok` · **5/5+** — Notation $\sin^{-1}$ für $\arcsin$ nicht mit $1/\sin$ verwechseln
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `arcsin-def` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `arcsin-def` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `arcsin-def` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `arcsin-def` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | number-input     | `arcsin-def` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `arccos-def` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `arccos-def` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `arccos-def` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `arccos-def` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `arccos-def` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `arctan-def` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `arctan-def` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `arctan-def` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `arctan-def` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `arctan-def` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `hauptwert-vs-weitere` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `hauptwert-vs-weitere` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `hauptwert-vs-weitere` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `hauptwert-vs-weitere` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | matching         | `hauptwert-vs-weitere` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `modus-pflicht` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `modus-pflicht` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `modus-pflicht` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `modus-pflicht` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | matching         | `modus-pflicht` | 1 | 1 | ✅ |  |
+| 26 | 5 | recognize          | true-false       | `arcsin-vs-reziprok` | 1 | 1 | ✅ |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `arcsin-vs-reziprok` | 1 | 1 | ✅ |  |
+| 28 | 5 | apply-independent  | number-input     | `arcsin-vs-reziprok` | 1 | 1 | ✅ |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `arcsin-vs-reziprok` | 1 | 1 | ✅ |  |
+| 30 | 5 | transfer           | matching         | `arcsin-vs-reziprok` | 1 | 1 | ✅ |  |
+
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/trigonometry.js` unter `'trig-3-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/trigonometry.js`
+- **4-Block-Erklärung fehlt bei:** `ex-trig-3-4-b`, `ex-trig-3-4-manual-1`, `ex-trig-3-4-manual-2`, `ex-trig-3-4-manual-3`, `ex-trig-3-4-manual-4`, `ex-trig-3-4-manual-5`, `ex-trig-3-4-manual-6`, `ex-trig-3-4-manual-7`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
 #### `dgl-2-2` · DGL-Systeme

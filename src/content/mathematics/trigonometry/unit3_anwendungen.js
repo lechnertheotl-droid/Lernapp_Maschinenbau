@@ -435,6 +435,57 @@ const lessons_u3 = [
       { label: 'Anwendung: exakte Werte wie $\\sin 15°$, $\\cos 75°$ aus Summen/Differenzen bekannter Grundwinkel', examRelevance: 'hoch' },
     ],
     prerequisites: ['trig-2-5'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-1-3', concepts: ['grundwerte-sin', 'grundwerte-cos'] },
+        { lessonId: 'trig-2-5', concepts: ['standardwerte-reduktion'] },
+      ],
+      concepts: [
+        { id: 'sin-add-thm',        title: '$\\sin(\\alpha \\pm \\beta) = \\sin\\alpha\\cos\\beta \\pm \\cos\\alpha\\sin\\beta$ (Kreuzform, gleiches Vorzeichen wie Winkel)', dependsOn: [] },
+        { id: 'cos-add-thm',        title: '$\\cos(\\alpha \\pm \\beta) = \\cos\\alpha\\cos\\beta \\mp \\sin\\alpha\\sin\\beta$ (Produktform, Vorzeichen kehrt sich um)',    dependsOn: [] },
+        { id: 'tan-add-thm',        title: '$\\tan(\\alpha \\pm \\beta) = \\dfrac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha\\tan\\beta}$',                           dependsOn: ['sin-add-thm', 'cos-add-thm'] },
+        { id: 'linearitaets-falle', title: 'Nicht-Linearität: $\\sin(\\alpha+\\beta) \\neq \\sin\\alpha + \\sin\\beta$ (gilt analog für cos/tan)',                            dependsOn: ['sin-add-thm'] },
+        { id: 'exakte-werte-bau',   title: 'Nicht-Grundwinkel als Summe/Differenz bekannter Grundwinkel zerlegen ($15°=45°-30°$, $75°=45°+30°$)',                             dependsOn: ['sin-add-thm', 'cos-add-thm'] },
+      ],
+      subGoalConcepts: {
+        0: ['sin-add-thm'],
+        1: ['cos-add-thm'],
+        2: ['tan-add-thm'],
+        3: ['linearitaets-falle'],
+        4: ['exakte-werte-bau'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['sin-add-thm'],                      qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['sin-add-thm'],                      qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['sin-add-thm'],                      qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['sin-add-thm'],                      qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'number-input',    uses: ['sin-add-thm'],                      qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['cos-add-thm'],                      qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['cos-add-thm'],                      qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['cos-add-thm'],                      qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['cos-add-thm'],                      qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'matching',        uses: ['cos-add-thm'],                      qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['tan-add-thm'],                      qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['tan-add-thm'],                      qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['tan-add-thm'],                      qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['tan-add-thm'],                      qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['tan-add-thm'],                      qty: 1 },
+
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['linearitaets-falle'],               qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['linearitaets-falle'],               qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['linearitaets-falle', 'sin-add-thm'], qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['linearitaets-falle'],               qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'true-false',      uses: ['linearitaets-falle'],               qty: 1 },
+
+        { subGoal: 4, stage: 'recognize',         type: 'matching',        uses: ['exakte-werte-bau'],                  qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['exakte-werte-bau', 'sin-add-thm'],   qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'number-input',    uses: ['exakte-werte-bau', 'sin-add-thm'],   qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['exakte-werte-bau', 'cos-add-thm'],   qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'number-input',    uses: ['exakte-werte-bau', 'cos-add-thm'],   qty: 1 },
+      ],
+    },
     nextLessonId: 'trig-3-2',
     steps: [
       {
@@ -474,6 +525,58 @@ $$\\tan(\\alpha \\pm \\beta) = \\dfrac{\\tan(\\alpha) \\pm \\tan(\\beta)}{1 \\mp
       { label: 'Halbwinkel-Formeln: $\\sin^2(\\alpha/2) = (1-\\cos\\alpha)/2$, $\\cos^2(\\alpha/2) = (1+\\cos\\alpha)/2$', examRelevance: 'mittel' },
     ],
     prerequisites: ['trig-3-1'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-3-1', concepts: ['sin-add-thm', 'cos-add-thm'] },
+        { lessonId: 'trig-2-2', concepts: ['cos-x-sin-y'] },
+        { lessonId: 'trig-1-3', concepts: ['grundwerte-sin', 'grundwerte-cos'] },
+      ],
+      concepts: [
+        { id: 'sin-doppelwinkel',     title: '$\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$ (aus Additionstheorem mit $\\beta=\\alpha$)',                dependsOn: [] },
+        { id: 'cos-doppelwinkel-drei', title: '$\\cos(2\\alpha) = \\cos^2\\alpha - \\sin^2\\alpha = 2\\cos^2\\alpha - 1 = 1 - 2\\sin^2\\alpha$ (drei Formen)', dependsOn: [] },
+        { id: 'pythag-identity',      title: '$\\sin^2\\alpha + \\cos^2\\alpha = 1$ (Kreisgleichung des Einheitskreises)',                               dependsOn: [] },
+        { id: 'pythag-umwandeln',     title: 'Folgerungen $\\sin^2\\alpha = 1 - \\cos^2\\alpha$ und $\\cos^2\\alpha = 1 - \\sin^2\\alpha$ (zum Umwandeln)', dependsOn: ['pythag-identity'] },
+        { id: 'halbwinkel',           title: '$\\sin^2(\\alpha/2) = (1-\\cos\\alpha)/2$, $\\cos^2(\\alpha/2) = (1+\\cos\\alpha)/2$',                       dependsOn: ['cos-doppelwinkel-drei'] },
+      ],
+      subGoalConcepts: {
+        0: ['sin-doppelwinkel'],
+        1: ['cos-doppelwinkel-drei'],
+        2: ['pythag-identity'],
+        3: ['pythag-umwandeln'],
+        4: ['halbwinkel'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['sin-doppelwinkel'],                 qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['sin-doppelwinkel'],                 qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['sin-doppelwinkel'],                 qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['sin-doppelwinkel'],                 qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'number-input',    uses: ['sin-doppelwinkel'],                 qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'matching',        uses: ['cos-doppelwinkel-drei'],            qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['cos-doppelwinkel-drei'],            qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['cos-doppelwinkel-drei'],            qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['cos-doppelwinkel-drei'],            qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'number-input',    uses: ['cos-doppelwinkel-drei'],            qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['pythag-identity'],                  qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pythag-identity'],                  qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['pythag-identity'],                  qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pythag-identity'],                  qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'true-false',      uses: ['pythag-identity'],                  qty: 1 },
+
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['pythag-umwandeln'],                 qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pythag-umwandeln'],                 qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['pythag-umwandeln'],                 qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pythag-umwandeln'],                 qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'number-input',    uses: ['pythag-umwandeln'],                 qty: 1 },
+
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['halbwinkel'],                       qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['halbwinkel'],                       qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'number-input',    uses: ['halbwinkel'],                       qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['halbwinkel'],                       qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'number-input',    uses: ['halbwinkel', 'cos-doppelwinkel-drei'], qty: 1 },
+      ],
+    },
     nextLessonId: 'trig-3-3',
     steps: [
       {
@@ -510,6 +613,58 @@ Diese Formel ist extrem nützlich zum Vereinfachen und Umformen — insbesondere
       { label: 'Schiefe Ebene: Hangabtriebskraft $F_H = m g \\sin\\alpha$, Normalkraft $F_N = m g \\cos\\alpha$', examRelevance: 'hoch' },
     ],
     prerequisites: ['trig-2-5'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-1-3', concepts: ['grundwerte-sin', 'grundwerte-cos'] },
+        { lessonId: 'trig-2-2', concepts: ['cos-x-sin-y'] },
+        { lessonId: 'trig-3-2', concepts: ['pythag-identity'] },
+      ],
+      concepts: [
+        { id: 'kraft-zerlegung',    title: 'Kraftzerlegung $F_x = F\\cos\\alpha$, $F_y = F\\sin\\alpha$ (Winkel zur $x$-Achse)', dependsOn: [] },
+        { id: 'schwingung-form',    title: 'Schwingung $x(t) = A\\sin(\\omega t + \\varphi)$ mit Amplitude $A$, Kreisfrequenz $\\omega$, Phase $\\varphi$', dependsOn: [] },
+        { id: 'omega-f-T',          title: 'Zusammenhang $\\omega = 2\\pi f = 2\\pi/T$ (Kreisfrequenz, Frequenz $f$, Periode $T$)',                       dependsOn: ['schwingung-form'] },
+        { id: 'komponenten-pythag', title: 'Pythagoras-Check $F_x^2 + F_y^2 = F^2$ — Komponenten müssen zum Gesamtbetrag passen',                        dependsOn: ['kraft-zerlegung'] },
+        { id: 'schiefe-ebene',      title: 'Schiefe Ebene: Hangabtrieb $F_H = m g \\sin\\alpha$, Normalkraft $F_N = m g \\cos\\alpha$',                    dependsOn: ['kraft-zerlegung'] },
+      ],
+      subGoalConcepts: {
+        0: ['kraft-zerlegung'],
+        1: ['schwingung-form'],
+        2: ['omega-f-T'],
+        3: ['komponenten-pythag'],
+        4: ['schiefe-ebene'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['kraft-zerlegung'],                qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['kraft-zerlegung'],                qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['kraft-zerlegung'],                qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['kraft-zerlegung'],                qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'number-input',    uses: ['kraft-zerlegung'],                qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'matching',        uses: ['schwingung-form'],                qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['schwingung-form'],                qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['schwingung-form'],                qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['schwingung-form'],                qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'number-input',    uses: ['schwingung-form'],                qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['omega-f-T'],                      qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['omega-f-T'],                      qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['omega-f-T'],                      qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['omega-f-T'],                      qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['omega-f-T'],                      qty: 1 },
+
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['komponenten-pythag'],             qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['komponenten-pythag'],             qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['komponenten-pythag'],             qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['komponenten-pythag'],             qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'number-input',    uses: ['komponenten-pythag', 'kraft-zerlegung'], qty: 1 },
+
+        { subGoal: 4, stage: 'recognize',         type: 'matching',        uses: ['schiefe-ebene'],                  qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['schiefe-ebene'],                  qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'number-input',    uses: ['schiefe-ebene'],                  qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['schiefe-ebene'],                  qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'number-input',    uses: ['schiefe-ebene'],                  qty: 1 },
+      ],
+    },
     nextLessonId: 'trig-3-4',
     steps: [
       {
@@ -550,6 +705,66 @@ mit Amplitude $A$, Kreisfrequenz $\\omega$ und Phasenwinkel $\\varphi$.
       { label: 'Notation $\\sin^{-1}$ für $\\arcsin$ nicht mit $1/\\sin$ verwechseln', examRelevance: 'mittel' },
     ],
     prerequisites: ['trig-2-5'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-1-2', concepts: ['deg-rad-modus'] },
+        { lessonId: 'trig-1-3', concepts: ['grundwerte-sin', 'grundwerte-cos'] },
+        { lessonId: 'trig-2-3', concepts: ['periodizitaet-360', 'supplement-formel'] },
+      ],
+      concepts: [
+        { id: 'arcsin-def',            title: '$\\arcsin: [-1, 1] \\to [-90°, 90°]$ (rechte Halbkreisseite, monoton wachsend)',                dependsOn: [] },
+        { id: 'arccos-def',            title: '$\\arccos: [-1, 1] \\to [0°, 180°]$ (obere Halbkreisseite, monoton fallend)',                   dependsOn: [] },
+        { id: 'arctan-def',            title: '$\\arctan: \\mathbb{R} \\to (-90°, 90°)$ (Pole ausgeschlossen)',                                dependsOn: [] },
+        { id: 'hauptwert-vs-weitere',  title: 'Umkehrfunktion liefert NUR Hauptwert — weitere Lösungen via Periodizität/Symmetrie ergänzen',  dependsOn: ['arcsin-def', 'arccos-def'] },
+        { id: 'modus-pflicht',         title: 'DEG/RAD-Modus: Ergebnis hängt vom Taschenrechner-Modus ab (häufigste Fehlerquelle)',           dependsOn: [] },
+        { id: 'arcsin-vs-reziprok',    title: 'Notation $\\sin^{-1}$ meint $\\arcsin$, NICHT $1/\\sin$ (Kehrwert)',                             dependsOn: ['arcsin-def'] },
+      ],
+      subGoalConcepts: {
+        0: ['arcsin-def'],
+        1: ['arccos-def'],
+        2: ['arctan-def'],
+        3: ['hauptwert-vs-weitere'],
+        4: ['modus-pflicht'],
+        5: ['arcsin-vs-reziprok'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['arcsin-def'],                         qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['arcsin-def'],                         qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['arcsin-def'],                         qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['arcsin-def'],                         qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'number-input',    uses: ['arcsin-def'],                         qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['arccos-def'],                         qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['arccos-def'],                         qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['arccos-def'],                         qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['arccos-def'],                         qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'number-input',    uses: ['arccos-def'],                         qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['arctan-def'],                         qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['arctan-def'],                         qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['arctan-def'],                         qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['arctan-def'],                         qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['arctan-def'],                         qty: 1 },
+
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['hauptwert-vs-weitere'],               qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['hauptwert-vs-weitere'],               qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['hauptwert-vs-weitere'],               qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['hauptwert-vs-weitere'],               qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'matching',        uses: ['hauptwert-vs-weitere'],               qty: 1 },
+
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['modus-pflicht'],                      qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['modus-pflicht'],                      qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'number-input',    uses: ['modus-pflicht'],                      qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['modus-pflicht'],                      qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'matching',        uses: ['modus-pflicht'],                      qty: 1 },
+
+        { subGoal: 5, stage: 'recognize',         type: 'true-false',      uses: ['arcsin-vs-reziprok'],                 qty: 1 },
+        { subGoal: 5, stage: 'apply-guided',      type: 'multiple-choice', uses: ['arcsin-vs-reziprok'],                 qty: 1 },
+        { subGoal: 5, stage: 'apply-independent', type: 'number-input',    uses: ['arcsin-vs-reziprok'],                 qty: 1 },
+        { subGoal: 5, stage: 'error-analysis',    type: 'multiple-choice', uses: ['arcsin-vs-reziprok'],                 qty: 1 },
+        { subGoal: 5, stage: 'transfer',          type: 'matching',        uses: ['arcsin-vs-reziprok'],                 qty: 1 },
+      ],
+    },
     nextLessonId: 'trig-3-5',
     steps: [
       {
@@ -589,6 +804,66 @@ mit Amplitude $A$, Kreisfrequenz $\\omega$ und Phasenwinkel $\\varphi$.
       { label: 'SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\\sin\\beta$ spitz, Höhenvergleich erforderlich', examRelevance: 'mittel' },
     ],
     prerequisites: ['trig-3-4'],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-1-3', concepts: ['grundwerte-sin', 'grundwerte-cos'] },
+        { lessonId: 'trig-2-3', concepts: ['supplement-formel'] },
+        { lessonId: 'trig-3-4', concepts: ['arcsin-def', 'arccos-def'] },
+      ],
+      concepts: [
+        { id: 'sinussatz',              title: 'Sinussatz $\\dfrac{a}{\\sin\\alpha}=\\dfrac{b}{\\sin\\beta}=\\dfrac{c}{\\sin\\gamma}=2R$', dependsOn: [] },
+        { id: 'cosinussatz',            title: 'Cosinussatz $a^2 = b^2 + c^2 - 2bc\\cos\\alpha$',                                          dependsOn: [] },
+        { id: 'methodenwahl',           title: 'Methodenwahl: SWS/SSS → Cosinussatz, WWS/SWW/SSW → Sinussatz',                              dependsOn: ['sinussatz', 'cosinussatz'] },
+        { id: 'pythagoras-spezialfall', title: 'Pythagoras als Spezialfall: $\\alpha=90°\\Rightarrow\\cos\\alpha=0\\Rightarrow a^2=b^2+c^2$', dependsOn: ['cosinussatz'] },
+        { id: 'seite-gegenwinkel',      title: 'Paarung Seite $\\leftrightarrow$ Gegenwinkel ($a\\leftrightarrow\\alpha$ usw.)',            dependsOn: ['sinussatz'] },
+        { id: 'ssw-mehrdeutigkeit',     title: 'SSW-Mehrdeutigkeit: Höhenvergleich $h=b\\sin\\alpha$, ggf. $\\beta_2=180°-\\beta_1$',      dependsOn: ['sinussatz', 'seite-gegenwinkel'] },
+      ],
+      subGoalConcepts: {
+        0: ['sinussatz'],
+        1: ['cosinussatz'],
+        2: ['methodenwahl'],
+        3: ['pythagoras-spezialfall'],
+        4: ['seite-gegenwinkel'],
+        5: ['ssw-mehrdeutigkeit'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['sinussatz'],                              qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['sinussatz'],                              qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['sinussatz'],                              qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['sinussatz'],                              qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'number-input',    uses: ['sinussatz'],                              qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['cosinussatz'],                            qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['cosinussatz'],                            qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['cosinussatz'],                            qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['cosinussatz'],                            qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'number-input',    uses: ['cosinussatz'],                            qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['methodenwahl'],                           qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'matching',        uses: ['methodenwahl'],                           qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'multiple-choice', uses: ['methodenwahl'],                           qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['methodenwahl'],                           qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'multiple-choice', uses: ['methodenwahl'],                           qty: 1 },
+
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['pythagoras-spezialfall'],                 qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pythagoras-spezialfall'],                 qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['pythagoras-spezialfall'],                 qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pythagoras-spezialfall'],                 qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'number-input',    uses: ['pythagoras-spezialfall', 'cosinussatz'],  qty: 1 },
+
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['seite-gegenwinkel'],                      qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'matching',        uses: ['seite-gegenwinkel'],                      qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'number-input',    uses: ['seite-gegenwinkel', 'sinussatz'],         qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['seite-gegenwinkel'],                      qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'number-input',    uses: ['seite-gegenwinkel', 'sinussatz'],         qty: 1 },
+
+        { subGoal: 5, stage: 'recognize',         type: 'true-false',      uses: ['ssw-mehrdeutigkeit'],                     qty: 1 },
+        { subGoal: 5, stage: 'apply-guided',      type: 'multiple-choice', uses: ['ssw-mehrdeutigkeit'],                     qty: 1 },
+        { subGoal: 5, stage: 'apply-independent', type: 'number-input',    uses: ['ssw-mehrdeutigkeit', 'sinussatz'],        qty: 1 },
+        { subGoal: 5, stage: 'error-analysis',    type: 'multiple-choice', uses: ['ssw-mehrdeutigkeit'],                     qty: 1 },
+        { subGoal: 5, stage: 'transfer',          type: 'sorting',         uses: ['ssw-mehrdeutigkeit'],                     qty: 1 },
+      ],
+    },
     nextLessonId: null,
     steps: [
       {

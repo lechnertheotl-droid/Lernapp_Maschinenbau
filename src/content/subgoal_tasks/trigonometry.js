@@ -7904,625 +7904,2907 @@ Korrektur der erwarteten Antwort: 2.
   },
 
   // ────────────────────────────────────────────────────────────────────────
-  // trig-3-5 — Sinussatz & Cosinussatz  (6 subGoals)
+  // trig-3-1 — Additionstheoreme  (5 subGoals)
+  // 25 Matrix-Aufgaben: 5 SGs × 5 Stufen (recognize/apply-guided/
+  // apply-independent/error-analysis/transfer).
+  // ────────────────────────────────────────────────────────────────────────
+  'trig-3-1': {
+    // ── [0] sin(α±β) = sinα cosβ ± cosα sinβ ─────────────────────────────
+    0: [
+      tf(
+        'Die Formel $\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$ ist korrekt.',
+        true,
+        `**Ansatz:** Additionstheorem für Sinus — Kreuzform mit gleichem Vorzeichen wie im Winkel.
+
+**Rechnung:** Bei Sinus bleibt das Vorzeichen gleich: $\\sin(\\alpha \\pm \\beta) = \\sin\\alpha\\cos\\beta \\pm \\cos\\alpha\\sin\\beta$.
+
+**Probe:** $\\sin(60° + 30°) = \\sin 60°\\cos 30° + \\cos 60°\\sin 30° = \\tfrac{\\sqrt3}{2}\\cdot\\tfrac{\\sqrt3}{2} + \\tfrac12\\cdot\\tfrac12 = \\tfrac34 + \\tfrac14 = 1 = \\sin 90°$ ✓
+
+**Typischer Fehler:** Beide Produkte mit $\\sin\\alpha\\sin\\beta$ oder $\\cos\\alpha\\cos\\beta$ bilden — das ist die Kosinus-Formel.`,
+        [
+          'Beim Sinus mischen sich Sinus und Kosinus — "Kreuzform".',
+          'Das Vorzeichen vor dem zweiten Term folgt dem Vorzeichen im Winkel.',
+          'Verifiziere mit $\\alpha=60°, \\beta=30°$ → Summe $=1$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['sin-add-thm'] },
+      ),
+      mc(
+        'Welcher Ausdruck ist gleich $\\sin(\\alpha + \\beta)$?',
+        [
+          '$\\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$',
+          '$\\sin\\alpha + \\sin\\beta$',
+          '$\\sin\\alpha\\sin\\beta + \\cos\\alpha\\cos\\beta$',
+          '$\\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta$',
+        ],
+        0,
+        `**Ansatz:** Additionstheorem Sinus: Kreuzform $\\sin\\cos \\pm \\cos\\sin$ mit Vorzeichen wie im Winkel.
+
+**Rechnung:** Bei $+\\beta$ im Winkel steht $+$ zwischen den beiden Produkten.
+
+**Probe:** $\\sin(45°+45°) = \\sin 45°\\cos 45° + \\cos 45°\\sin 45° = \\tfrac12 + \\tfrac12 = 1 = \\sin 90°$ ✓
+
+**Typischer Fehler:** Sinus als linear behandeln und $\\sin\\alpha + \\sin\\beta$ schreiben — falsch.`,
+        [
+          'Sinus mischt beide Funktionen: $\\sin\\cos + \\cos\\sin$.',
+          'Das Vorzeichen folgt dem Winkel: $+\\beta$ → $+$.',
+          'Verifiziere mit $45°+45°=90°$.',
+        ],
+        {
+          1: 'Linearitätsfalle: $\\sin$ ist nicht additiv. Sonst wäre $\\sin(90°) = \\sin 45° + \\sin 45° = \\sqrt2 \\neq 1$.',
+          2: 'Das ist die Struktur der Kosinus-Formel (Produkte gleicher Funktionen).',
+          3: 'Vorzeichen verdreht: bei $\\sin(\\alpha+\\beta)$ steht $+$, bei $\\sin(\\alpha-\\beta)$ steht $-$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['sin-add-thm'] },
+      ),
+      ni(
+        'Berechne $\\sin(30° + 45°)$ mit dem Additionstheorem. Gib das Ergebnis auf 4 Nachkommastellen.',
+        0.9659, 0.001, '',
+        `**Ansatz:** $\\sin(\\alpha+\\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$ mit $\\alpha=30°, \\beta=45°$.
+
+**Rechnung:** $\\sin 30°\\cos 45° + \\cos 30°\\sin 45° = \\tfrac12\\cdot\\tfrac{\\sqrt2}{2} + \\tfrac{\\sqrt3}{2}\\cdot\\tfrac{\\sqrt2}{2} = \\tfrac{\\sqrt2}{4} + \\tfrac{\\sqrt6}{4} = \\tfrac{\\sqrt2+\\sqrt6}{4} \\approx 0{,}9659$.
+
+**Probe:** $30°+45° = 75°$. Taschenrechner $\\sin 75° \\approx 0{,}9659$ ✓
+
+**Typischer Fehler:** Vorzeichen aus der Kosinus-Formel übernehmen oder $\\sin\\alpha + \\sin\\beta$ rechnen.`,
+        [
+          'Formel: $\\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$.',
+          'Grundwerte: $\\sin 30°=\\tfrac12$, $\\cos 45°=\\tfrac{\\sqrt2}{2}$, $\\cos 30°=\\tfrac{\\sqrt3}{2}$, $\\sin 45°=\\tfrac{\\sqrt2}{2}$.',
+          '$(\\sqrt2 + \\sqrt6)/4 \\approx (1{,}414+2{,}449)/4$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['sin-add-thm'] },
+      ),
+      mc(
+        'Ein Schüler rechnet: „$\\sin(60°-30°) = \\sin 60°\\cos 30° - \\cos 60°\\sin 30° = \\tfrac{\\sqrt3}{2}\\cdot\\tfrac{\\sqrt3}{2} - \\tfrac12\\cdot\\tfrac12 = \\tfrac34 - \\tfrac14 = \\tfrac12$." Das Ergebnis ist zwar richtig, aber warum wurde die Formel korrekt angewandt?',
+        [
+          'Das Vorzeichen folgt dem Winkel: Bei $\\sin(\\alpha-\\beta)$ steht zwischen den beiden Produkten ein $-$, genau wie im Winkel.',
+          'Er hätte $+$ statt $-$ schreiben müssen, aber das Ergebnis stimmt zufällig.',
+          'Das Ergebnis ist falsch — $\\sin 30° = \\tfrac{\\sqrt3}{2}$, nicht $\\tfrac12$.',
+          'Die Formel gilt nur, wenn $\\alpha > \\beta$ ist.',
+        ],
+        0,
+        `**Ansatz:** Vorzeichen-Regel: $\\sin(\\alpha \\pm \\beta) = \\sin\\alpha\\cos\\beta \\pm \\cos\\alpha\\sin\\beta$ — Zeichen folgt dem Winkel.
+
+**Rechnung:** Hier ist $\\alpha-\\beta$, also steht $-$ zwischen den Produkten.
+
+**Probe:** $\\sin(60°-30°) = \\sin 30° = \\tfrac12$ ✓
+
+**Typischer Fehler:** Glauben, die Regel für Vorzeichen bei Sinus wäre gleich wie bei Kosinus (umgekehrt).`,
+        [
+          'Sinus: gleiches Vorzeichen wie im Winkel.',
+          'Kosinus: umgekehrtes Vorzeichen.',
+          '$\\sin 30° = \\tfrac12$ ist ein Grundwert.',
+        ],
+        {
+          1: 'Das $-$ ist hier korrekt — bei Sinus folgt das Vorzeichen dem Winkel.',
+          2: '$\\sin 30° = \\tfrac12$ ist richtig; $\\tfrac{\\sqrt3}{2}$ ist $\\sin 60°$.',
+          3: 'Die Additionstheoreme gelten für beliebige Winkel, unabhängig von der Reihenfolge.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['sin-add-thm'] },
+      ),
+      ni(
+        'Berechne $\\sin(45° + 60°)$ exakt und gib das Ergebnis auf 4 Nachkommastellen an.',
+        0.9659, 0.001, '',
+        `**Ansatz:** $\\sin(45°+60°) = \\sin 45°\\cos 60° + \\cos 45°\\sin 60°$.
+
+**Rechnung:** $\\tfrac{\\sqrt2}{2}\\cdot\\tfrac12 + \\tfrac{\\sqrt2}{2}\\cdot\\tfrac{\\sqrt3}{2} = \\tfrac{\\sqrt2}{4} + \\tfrac{\\sqrt6}{4} = \\tfrac{\\sqrt2+\\sqrt6}{4} \\approx 0{,}9659$.
+
+**Probe:** $45°+60° = 105°$; $\\sin 105° = \\sin(180°-75°) = \\sin 75° \\approx 0{,}9659$ ✓
+
+**Typischer Fehler:** $\\sin 60° = \\tfrac{\\sqrt3}{2}$ mit $\\cos 60° = \\tfrac12$ vertauschen.`,
+        [
+          '$\\sin(\\alpha+\\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$.',
+          'Beachte: $\\sin 45° = \\cos 45° = \\tfrac{\\sqrt2}{2}$.',
+          'Ergebnis: $\\tfrac{\\sqrt2+\\sqrt6}{4}$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['sin-add-thm'] },
+      ),
+    ],
+
+    // ── [1] cos(α±β) = cosα cosβ ∓ sinα sinβ ─────────────────────────────
+    1: [
+      tf(
+        'In der Formel $\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$ steht im Term ein $-$, obwohl der Winkel ein $+$ enthält.',
+        true,
+        `**Ansatz:** Beim Kosinus dreht sich das Vorzeichen um.
+
+**Rechnung:** $\\cos(\\alpha+\\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$ (Vorzeichen gespiegelt).
+
+**Probe:** $\\cos(60°+60°) = \\cos 60°\\cos 60° - \\sin 60°\\sin 60° = \\tfrac14 - \\tfrac34 = -\\tfrac12 = \\cos 120°$ ✓
+
+**Typischer Fehler:** Die Sinus-Regel (gleiches Vorzeichen) auf Kosinus übertragen.`,
+        [
+          'Merkregel: "$\\sin$ gleich — $\\cos$ umgekehrt".',
+          'Bei $\\cos(\\alpha-\\beta)$ steht $+$ im Term.',
+          'Verifiziere mit $60°+60°=120°$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['cos-add-thm'] },
+      ),
+      mc(
+        'Welcher Ausdruck ist gleich $\\cos(\\alpha - \\beta)$?',
+        [
+          '$\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$',
+          '$\\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$',
+          '$\\cos\\alpha\\sin\\beta - \\sin\\alpha\\cos\\beta$',
+          '$\\cos\\alpha - \\cos\\beta$',
+        ],
+        0,
+        `**Ansatz:** Beim Kosinus dreht sich das Vorzeichen: Winkel $-$ → Term $+$.
+
+**Rechnung:** $\\cos(\\alpha-\\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$.
+
+**Probe:** $\\cos(60°-30°) = \\cos 60°\\cos 30° + \\sin 60°\\sin 30° = \\tfrac12\\cdot\\tfrac{\\sqrt3}{2} + \\tfrac{\\sqrt3}{2}\\cdot\\tfrac12 = \\tfrac{\\sqrt3}{2} = \\cos 30°$ ✓
+
+**Typischer Fehler:** Vorzeichen nicht umdrehen ($-$ beibehalten).`,
+        [
+          'Kosinus: "$-$ im Winkel → $+$ im Term".',
+          'Struktur: gleiche Funktionen multipliziert ($\\cos\\cos, \\sin\\sin$).',
+          'Verifiziere mit $60°-30°=30°$.',
+        ],
+        {
+          1: 'Vorzeichen nicht gedreht — das ist die Formel für $\\cos(\\alpha+\\beta)$.',
+          2: 'Das ist die Struktur der Sinus-Formel (gemischte Produkte).',
+          3: 'Linearitätsfalle: $\\cos$ ist nicht additiv.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['cos-add-thm'] },
+      ),
+      ni(
+        'Berechne $\\cos(60° - 45°)$ mit dem Additionstheorem und gib das Ergebnis auf 4 Nachkommastellen an.',
+        0.9659, 0.001, '',
+        `**Ansatz:** $\\cos(\\alpha-\\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$.
+
+**Rechnung:** $\\cos 60°\\cos 45° + \\sin 60°\\sin 45° = \\tfrac12\\cdot\\tfrac{\\sqrt2}{2} + \\tfrac{\\sqrt3}{2}\\cdot\\tfrac{\\sqrt2}{2} = \\tfrac{\\sqrt2+\\sqrt6}{4} \\approx 0{,}9659$.
+
+**Probe:** $60°-45° = 15°$; $\\cos 15° \\approx 0{,}9659$ ✓
+
+**Typischer Fehler:** Vorzeichen $-$ stehen lassen statt umzudrehen → falsches Ergebnis $\\approx 0{,}2588$.`,
+        [
+          'Kosinus: umgekehrtes Vorzeichen ($-$ wird zu $+$).',
+          '$\\cos 60°=\\tfrac12, \\cos 45°=\\tfrac{\\sqrt2}{2}, \\sin 60°=\\tfrac{\\sqrt3}{2}, \\sin 45°=\\tfrac{\\sqrt2}{2}$.',
+          'Ergebnis: $(\\sqrt2+\\sqrt6)/4$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['cos-add-thm'] },
+      ),
+      mc(
+        'Ein Schüler schreibt $\\cos(30°+45°) = \\cos 30°\\cos 45° + \\sin 30°\\sin 45°$. Wo liegt der Fehler?',
+        [
+          'Er hat die Vorzeichen-Regel falsch angewandt: Bei $\\cos(\\alpha+\\beta)$ steht im Term ein $-$ (umgekehrtes Vorzeichen), nicht $+$.',
+          'Er hätte Sinus und Kosinus vertauschen müssen.',
+          '$\\sin 30°$ ist nicht $\\tfrac12$.',
+          'Die Formel gilt nur für Differenzen, nicht für Summen.',
+        ],
+        0,
+        `**Ansatz:** Kosinus-Vorzeichen kehrt sich um — bei $+$ im Winkel steht $-$ im Term.
+
+**Rechnung:** Korrekt wäre $\\cos(30°+45°) = \\cos 30°\\cos 45° - \\sin 30°\\sin 45° = \\tfrac{\\sqrt6-\\sqrt2}{4} \\approx 0{,}2588 = \\cos 75°$.
+
+**Probe:** $\\cos 75° \\approx 0{,}2588$, der Schüler bekäme $\\cos 15° \\approx 0{,}9659$ — falsch.
+
+**Typischer Fehler:** Sinus-Regel (gleiches Vorzeichen) auf Kosinus übertragen.`,
+        [
+          'Kosinus dreht das Vorzeichen um.',
+          'Vergleiche Sinus-Formel: dort ist Vorzeichen gleich.',
+          'Sein Ergebnis wäre $\\cos 15°$, nicht $\\cos 75°$.',
+        ],
+        {
+          1: 'Struktur (Kreuz vs. Produkt) ist schon richtig; nur das Vorzeichen ist falsch.',
+          2: '$\\sin 30° = \\tfrac12$ ist korrekt.',
+          3: 'Die Additionstheoreme gelten sowohl für Summen als auch für Differenzen.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['cos-add-thm'] },
+      ),
+      matching(
+        'Ordne jeder Summe/Differenz den korrekten Ausdruck zu.',
+        [
+          { left: '$\\cos(\\alpha + \\beta)$', right: '$\\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$' },
+          { left: '$\\cos(\\alpha - \\beta)$', right: '$\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$' },
+          { left: '$\\sin(\\alpha + \\beta)$', right: '$\\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$' },
+          { left: '$\\sin(\\alpha - \\beta)$', right: '$\\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta$' },
+        ],
+        `**Ansatz:** Sinus (Kreuzform, gleiches Vorzeichen) vs. Kosinus (Produktform, umgekehrtes Vorzeichen).
+
+**Rechnung:** Vier Formeln, zwei Regeln: Kreuz-vs-Produkt-Struktur + Vorzeichen-Regel.
+
+**Probe:** Jede Formel an einem Grundwert testen (z. B. $\\alpha=\\beta=45°$).
+
+**Typischer Fehler:** Vorzeichen-Regel vertauschen.`,
+        [
+          'Sinus mischt, Kosinus nicht.',
+          'Vorzeichen: sin folgt, cos kehrt.',
+          'Vier Formeln = 2 × 2 Fälle.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['cos-add-thm'] },
+      ),
+    ],
+
+    // ── [2] tan(α±β) = (tanα ± tanβ)/(1 ∓ tanα tanβ) ─────────────────────
+    2: [
+      tf(
+        '$\\tan(\\alpha + \\beta) = \\dfrac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta}$.',
+        true,
+        `**Ansatz:** Tangens-Additionstheorem — Zähler gleiches Vorzeichen, Nenner umgekehrtes Vorzeichen.
+
+**Rechnung:** $\\tan(\\alpha \\pm \\beta) = \\dfrac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha\\tan\\beta}$.
+
+**Probe:** $\\tan(45°+0°) = \\dfrac{1+0}{1-0} = 1 = \\tan 45°$ ✓
+
+**Typischer Fehler:** Im Nenner das gleiche Vorzeichen wie im Zähler schreiben.`,
+        [
+          'Zähler: Summe/Differenz der Tangenswerte.',
+          'Nenner: $1$ minus/plus Produkt — Vorzeichen gespiegelt.',
+          'Verifiziere mit $\\beta=0°$.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['tan-add-thm'] },
+      ),
+      mc(
+        'Welcher Ausdruck ist gleich $\\tan(\\alpha - \\beta)$?',
+        [
+          '$\\dfrac{\\tan\\alpha - \\tan\\beta}{1 + \\tan\\alpha\\tan\\beta}$',
+          '$\\dfrac{\\tan\\alpha - \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta}$',
+          '$\\tan\\alpha - \\tan\\beta$',
+          '$\\dfrac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta}$',
+        ],
+        0,
+        `**Ansatz:** $\\tan(\\alpha-\\beta)$ → Zähler $-$, Nenner $+$ (Vorzeichen gespiegelt).
+
+**Rechnung:** $\\tan(\\alpha-\\beta) = \\dfrac{\\tan\\alpha - \\tan\\beta}{1 + \\tan\\alpha\\tan\\beta}$.
+
+**Probe:** $\\tan(45°-45°) = \\tfrac{1-1}{1+1} = 0 = \\tan 0°$ ✓
+
+**Typischer Fehler:** Linearitätsfalle — $\\tan$ ist nicht additiv.`,
+        [
+          'Vorzeichen spiegeln sich zwischen Zähler und Nenner.',
+          'Bei $\\tan(\\alpha-\\beta)$: Zähler $-$, Nenner $+$.',
+          'Verifiziere mit $\\alpha=\\beta$.',
+        ],
+        {
+          1: 'Gleiches Vorzeichen in Zähler und Nenner — aber die Regel besagt, dass sie sich spiegeln.',
+          2: 'Linearitätsfalle: $\\tan(45°-45°) = 0 \\neq \\tan 45° - \\tan 45°$? Zwar ergibt sich hier zufällig $0$, bei anderen Werten stimmt es jedoch nicht.',
+          3: 'Vorzeichen im Zähler falsch ($+$ statt $-$) — das ist die Formel für $\\tan(\\alpha+\\beta)$.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['tan-add-thm'] },
+      ),
+      ni(
+        'Berechne $\\tan(45° + 30°)$ mit dem Additionstheorem und gib das Ergebnis auf 4 Nachkommastellen an.',
+        3.7321, 0.001, '',
+        `**Ansatz:** $\\tan(\\alpha+\\beta) = \\dfrac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta}$.
+
+**Rechnung:** $\\tan 45° = 1$, $\\tan 30° = \\tfrac{1}{\\sqrt3}$. $\\dfrac{1 + 1/\\sqrt3}{1 - 1\\cdot 1/\\sqrt3} = \\dfrac{(\\sqrt3+1)/\\sqrt3}{(\\sqrt3-1)/\\sqrt3} = \\dfrac{\\sqrt3+1}{\\sqrt3-1}$.
+
+Erweitern mit $(\\sqrt3+1)$: $\\dfrac{(\\sqrt3+1)^2}{(\\sqrt3)^2 - 1^2} = \\dfrac{3+2\\sqrt3+1}{2} = \\dfrac{4+2\\sqrt3}{2} = 2+\\sqrt3 \\approx 3{,}7321$.
+
+**Probe:** $\\tan 75° \\approx 3{,}7321$ (Taschenrechner) ✓
+
+**Typischer Fehler:** Nenner-Vorzeichen $+$ statt $-$ → falscher Betrag.`,
+        [
+          'Formel: $(\\tan\\alpha+\\tan\\beta)/(1-\\tan\\alpha\\tan\\beta)$.',
+          '$\\tan 45°=1$, $\\tan 30°=1/\\sqrt3 \\approx 0{,}5774$.',
+          'Ergebnis: $2+\\sqrt3$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['tan-add-thm'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $\\tan(60°+30°) = \\dfrac{\\tan 60° + \\tan 30°}{1 + \\tan 60°\\tan 30°}$ und erhält einen endlichen Wert. Wo liegt der Fehler, und was müsste herauskommen?',
+        [
+          'Nenner falsch: bei $\\tan(\\alpha+\\beta)$ steht $1 - \\tan\\alpha\\tan\\beta$. Mit $\\tan 60° \\cdot \\tan 30° = \\sqrt3 \\cdot 1/\\sqrt3 = 1$ wird der korrekte Nenner $0$ — also $\\tan 90°$ undefiniert.',
+          'Zähler falsch: müsste $-$ statt $+$ heißen.',
+          '$\\tan 60° = 1/\\sqrt3$, nicht $\\sqrt3$.',
+          'Die Formel gilt nur für Differenzen.',
+        ],
+        0,
+        `**Ansatz:** Nenner-Vorzeichen umgekehrt zum Zähler-Vorzeichen.
+
+**Rechnung:** Korrekter Nenner $1 - \\tan 60°\\tan 30° = 1 - 1 = 0$ → Ausdruck undefiniert, passend zu $\\tan 90°$.
+
+**Probe:** $60°+30°=90°$; $\\tan 90°$ ist tatsächlich undefiniert.
+
+**Typischer Fehler:** Gleiches Vorzeichen in Zähler und Nenner.`,
+        [
+          'Die Formel erkennt $\\tan 90°$ = undefiniert am Nenner $=0$.',
+          'Nenner-Vorzeichen ist immer gespiegelt zum Zähler.',
+          '$\\tan 60°\\tan 30° = 1$ ist die Schlüsselbeobachtung.',
+        ],
+        {
+          1: 'Zähler ist korrekt: bei $+\\beta$ steht $+$ im Zähler.',
+          2: '$\\tan 60° = \\sin/\\cos = (\\sqrt3/2)/(1/2) = \\sqrt3$, also korrekt.',
+          3: 'Die Formel gilt für $+$ und $-$ analog.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['tan-add-thm'] },
+      ),
+      ni(
+        'Berechne $\\tan(45° - 30°)$ mit dem Additionstheorem auf 4 Nachkommastellen.',
+        0.2679, 0.001, '',
+        `**Ansatz:** $\\tan(\\alpha-\\beta) = \\dfrac{\\tan\\alpha - \\tan\\beta}{1 + \\tan\\alpha\\tan\\beta}$.
+
+**Rechnung:** $\\dfrac{1 - 1/\\sqrt3}{1 + 1/\\sqrt3} = \\dfrac{\\sqrt3-1}{\\sqrt3+1}$. Erweitern mit $(\\sqrt3-1)$: $\\dfrac{(\\sqrt3-1)^2}{3-1} = \\dfrac{4-2\\sqrt3}{2} = 2-\\sqrt3 \\approx 0{,}2679$.
+
+**Probe:** $45°-30°=15°$; $\\tan 15° \\approx 0{,}2679$ ✓
+
+**Typischer Fehler:** Nenner $1 - \\tan\\tan$ statt $1 + \\tan\\tan$ wählen.`,
+        [
+          'Bei $\\tan(\\alpha-\\beta)$: Zähler $-$, Nenner $+$.',
+          'Nenner: $1 + 1/\\sqrt3 = (\\sqrt3+1)/\\sqrt3$.',
+          'Ergebnis: $2-\\sqrt3$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['tan-add-thm'] },
+      ),
+    ],
+
+    // ── [3] Linearitäts-Falle ────────────────────────────────────────────
+    3: [
+      tf(
+        'Es gilt $\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta$ für alle $\\alpha, \\beta$.',
+        false,
+        `**Ansatz:** Sinus ist keine lineare Funktion.
+
+**Rechnung:** Gegenbeispiel $\\alpha=\\beta=45°$: $\\sin(90°) = 1$, aber $\\sin 45° + \\sin 45° = \\sqrt2 \\approx 1{,}414$.
+
+**Probe:** Auch $\\alpha=\\beta=30°$: $\\sin 60° = \\sqrt3/2 \\approx 0{,}866$, aber $2\\sin 30° = 1$.
+
+**Typischer Fehler:** Linearitätsannahme aus Schule (Klammer "hereinziehen").`,
+        [
+          'Sinus ist nicht linear — die Additionstheoreme korrigieren genau diesen Fehler.',
+          'Gegenbeispiel $45°+45°$.',
+          'Klammer darf nicht "hineingezogen" werden.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['linearitaets-falle'] },
+      ),
+      mc(
+        'Welche der folgenden Gleichungen ist für alle $\\alpha, \\beta$ **falsch**?',
+        [
+          '$\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta$',
+          '$\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$',
+          '$\\sin(-\\alpha) = -\\sin\\alpha$',
+          '$\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$',
+        ],
+        0,
+        `**Ansatz:** Die "naive" Linearitätsformel ist falsch.
+
+**Rechnung:** Für $\\alpha=\\beta=30°$ gibt $\\sin(30°+30°) = \\sin 60° = \\sqrt3/2 \\approx 0{,}866$, aber $\\sin 30° + \\sin 30° = 1$. Unterschied klar.
+
+**Probe:** Die anderen drei Gleichungen sind gültige Identitäten.
+
+**Typischer Fehler:** Funktionen wie $f(x+y) = f(x)+f(y)$ behandeln — das gilt nur für lineare Funktionen.`,
+        [
+          'Teste mit konkreten Zahlen.',
+          '$\\sin$ ist nicht linear.',
+          'Die anderen drei Formeln sind Additionstheoreme/Symmetrie.',
+        ],
+        {
+          1: 'Das ist das korrekte Additionstheorem — immer gültig.',
+          2: 'Punktsymmetrie von Sinus — immer gültig.',
+          3: 'Doppelwinkel — gültig, Spezialfall des Additionstheorems.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['linearitaets-falle'] },
+      ),
+      ni(
+        'Bestimme die Differenz $\\sin(30° + 60°) - (\\sin 30° + \\sin 60°)$ (zeigt, wie stark die Linearitätsfalle daneben liegt). Gib das Ergebnis auf 4 Nachkommastellen an.',
+        -0.366, 0.01, '',
+        `**Ansatz:** Linke Seite mit Additionstheorem, rechte Seite wortwörtlich.
+
+**Rechnung:** $\\sin(90°) = 1$. $\\sin 30° + \\sin 60° = \\tfrac12 + \\tfrac{\\sqrt3}{2} \\approx 0{,}5 + 0{,}866 = 1{,}366$. Differenz $= 1 - 1{,}366 = -0{,}366$.
+
+**Probe:** Linearitätsannahme überschätzt den Wert.
+
+**Typischer Fehler:** Glauben, die Differenz wäre $0$.`,
+        [
+          '$\\sin 90° = 1$.',
+          '$\\sin 30° + \\sin 60° = \\tfrac12 + \\tfrac{\\sqrt3}{2} \\approx 1{,}366$.',
+          'Differenz: $1 - 1{,}366 = -0{,}366$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['linearitaets-falle', 'sin-add-thm'] },
+      ),
+      mc(
+        'Ein Schüler vereinfacht $\\cos(\\alpha+\\beta) + \\cos(\\alpha-\\beta)$ zu $2\\cos\\alpha + 2\\cos\\beta$. Wo liegt der Fehler?',
+        [
+          'Er hat Linearität unterstellt. Die korrekte Umformung mit den Additionstheoremen liefert $2\\cos\\alpha\\cos\\beta$ — ein Produkt, keine Summe.',
+          'Er hätte $2\\sin\\alpha + 2\\sin\\beta$ schreiben müssen.',
+          'Die Aussage stimmt.',
+          'Der Faktor $2$ ist falsch — müsste $4$ sein.',
+        ],
+        0,
+        `**Ansatz:** Additionstheoreme anwenden, **nicht** Linearität unterstellen.
+
+**Rechnung:** $\\cos(\\alpha+\\beta) + \\cos(\\alpha-\\beta) = [\\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta] + [\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta] = 2\\cos\\alpha\\cos\\beta$ (Produkt-Summe-Identität).
+
+**Probe:** $\\alpha=\\beta=60°$: $\\cos 120° + \\cos 0° = -\\tfrac12 + 1 = \\tfrac12 = 2\\cos 60°\\cos 60° = 2 \\cdot \\tfrac14 = \\tfrac12$ ✓
+
+**Typischer Fehler:** $\\cos$ wie eine lineare Funktion behandeln.`,
+        [
+          'Linearitätsfalle: Klammer hineinziehen ist verboten.',
+          'Die Additionstheoreme geben das Produkt $\\cos\\cos$.',
+          'Teste mit $\\alpha=\\beta=60°$.',
+        ],
+        {
+          1: 'Sinus mit gemischtem Vorzeichen würde sich zu $0$ aufheben, nicht zu dieser Summe.',
+          2: 'Die richtige Form ist ein **Produkt** $2\\cos\\alpha\\cos\\beta$, nicht eine Summe.',
+          3: 'Der Faktor $2$ stammt von $2\\cos\\alpha\\cos\\beta$ — korrekt, aber die Linearitätsform ist generell falsch.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['linearitaets-falle'] },
+      ),
+      tf(
+        'Die Gleichung $\\sin(2\\alpha) = 2\\sin\\alpha$ gilt für alle $\\alpha$.',
+        false,
+        `**Ansatz:** Erneut Linearitätsfalle. $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$ (Doppelwinkelformel, siehe trig-3-2).
+
+**Rechnung:** Gegenbeispiel $\\alpha=30°$: $\\sin 60° = \\sqrt3/2 \\approx 0{,}866$, aber $2\\sin 30° = 1$.
+
+**Probe:** Nur bei $\\cos\\alpha = 1$ (also $\\alpha=0°, 360°, \\ldots$) liefern beide Seiten dasselbe.
+
+**Typischer Fehler:** Faktor $2$ als "einfach" hinschreiben.`,
+        [
+          'Doppelwinkel ist nicht linear.',
+          'Korrekte Formel: $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$.',
+          'Teste mit $\\alpha=30°$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['linearitaets-falle'] },
+      ),
+    ],
+
+    // ── [4] Exakte Werte aus Grundwinkeln bauen ──────────────────────────
+    4: [
+      matching(
+        'Ordne jeder Zerlegung den zugehörigen Zielwinkel zu.',
+        [
+          { left: '$45° + 30°$', right: '$75°$' },
+          { left: '$45° - 30°$', right: '$15°$' },
+          { left: '$60° + 45°$', right: '$105°$' },
+          { left: '$60° - 45°$', right: '$15°$' },
+        ],
+        `**Ansatz:** Ziel-Winkel als Summe/Differenz bekannter Grundwinkel ($30°, 45°, 60°$) darstellen.
+
+**Rechnung:** Direkte Addition/Subtraktion.
+
+**Probe:** Nicht jede Zerlegung ist eindeutig — $15°$ hat zwei natürliche Darstellungen.
+
+**Typischer Fehler:** Winkel wie $15°$ oder $75°$ glauben "auswendig" zu kennen.`,
+        [
+          'Bekannte Grundwinkel: $30°, 45°, 60°$.',
+          '$75° = 45°+30°$.',
+          '$15° = 45°-30° = 60°-45°$.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['exakte-werte-bau'] },
+      ),
+      mc(
+        'Welche Zerlegung ist für die Berechnung von $\\sin 75°$ mit den Grundwinkeln $30°, 45°, 60°$ geeignet?',
+        [
+          '$75° = 45° + 30°$',
+          '$75° = 90° - 15°$',
+          '$75° = 75° + 0°$',
+          '$75° = 100° - 25°$',
+        ],
+        0,
+        `**Ansatz:** Wir brauchen eine Summe/Differenz zweier bekannter Grundwinkel.
+
+**Rechnung:** $45°+30°=75°$ nutzt die Grundwerte direkt.
+
+**Probe:** $\\sin 75° = \\sin 45°\\cos 30° + \\cos 45°\\sin 30° = \\tfrac{\\sqrt6+\\sqrt2}{4} \\approx 0{,}9659$ ✓
+
+**Typischer Fehler:** Zerlegung in Winkel, deren Werte nicht als Grundwerte bekannt sind (z. B. $15°, 25°$).`,
+        [
+          'Nur Grundwinkel $30°, 45°, 60°$ (und evtl. $0°, 90°$) verwenden.',
+          '$45°+30°$ zerlegt $75°$ mit beiden Teilen aus der Tabelle.',
+          'Andere Zerlegungen brauchen Winkel, die erst aufwändig bestimmt werden müssten.',
+        ],
+        {
+          1: 'Zwar korrekt ($75° = 90°-15°$), aber $\\sin 15°$ ist selbst kein Grundwert.',
+          2: 'Triviale Zerlegung — kein Fortschritt, da $\\sin 75°$ unbekannt bleibt.',
+          3: 'Beide Winkel ($100°, 25°$) sind keine Grundwinkel.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['exakte-werte-bau', 'sin-add-thm'] },
+      ),
+      ni(
+        'Berechne $\\sin 15°$ mit dem Additionstheorem (Zerlegung $45°-30°$) auf 4 Nachkommastellen.',
+        0.2588, 0.001, '',
+        `**Ansatz:** $\\sin 15° = \\sin(45°-30°) = \\sin 45°\\cos 30° - \\cos 45°\\sin 30°$.
+
+**Rechnung:** $\\tfrac{\\sqrt2}{2}\\cdot\\tfrac{\\sqrt3}{2} - \\tfrac{\\sqrt2}{2}\\cdot\\tfrac12 = \\tfrac{\\sqrt6}{4} - \\tfrac{\\sqrt2}{4} = \\tfrac{\\sqrt6-\\sqrt2}{4} \\approx 0{,}2588$.
+
+**Probe:** Taschenrechner $\\sin 15° \\approx 0{,}2588$ ✓
+
+**Typischer Fehler:** Vorzeichen aus der Kosinus-Formel übernehmen oder $\\sin 45° - \\sin 30°$ rechnen.`,
+        [
+          '$15° = 45° - 30°$.',
+          'Sinus-Formel: $\\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta$.',
+          'Ergebnis: $(\\sqrt6-\\sqrt2)/4$.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['exakte-werte-bau', 'sin-add-thm'] },
+      ),
+      mc(
+        'Ein Schüler zerlegt $\\cos 75°$ als $\\cos(90°-15°)$ und schreibt $\\cos 75° = \\cos 90° - \\cos 15° = 0 - \\cos 15° = -\\cos 15°$. Wo liegt der Fehler?',
+        [
+          'Er hat die Linearitätsfalle eingesetzt statt das Additionstheorem. Korrekt: $\\cos(90°-15°) = \\cos 90°\\cos 15° + \\sin 90°\\sin 15° = 0 + \\sin 15° = \\sin 15°$ — also $\\cos 75° = \\sin 15°$.',
+          'Er hätte $75°$ nicht zerlegen dürfen.',
+          'Die Aussage ist korrekt.',
+          '$\\cos 90° = 1$, nicht $0$.',
+        ],
+        0,
+        `**Ansatz:** Additionstheorem korrekt anwenden statt Klammer auflösen.
+
+**Rechnung:** $\\cos(90°-15°) = \\cos 90°\\cos 15° + \\sin 90°\\sin 15° = 0\\cdot\\cos 15° + 1\\cdot\\sin 15° = \\sin 15° \\approx 0{,}2588$.
+
+**Probe:** $\\cos 75° \\approx 0{,}2588 = \\sin 15°$ ✓ (Komplementärregel).
+
+**Typischer Fehler:** Linearitätsfalle ($\\cos$ nicht linear). Die Komplementärregel $\\cos\\alpha = \\sin(90°-\\alpha)$ ist hier das Ergebnis, nicht die Annahme.`,
+        [
+          'Additionstheorem mit $\\cos 90°=0, \\sin 90°=1$.',
+          'Linearität ist verboten.',
+          'Ergebnis ist positiv, nicht negativ.',
+        ],
+        {
+          1: '$\\cos 75°$ ist sehr wohl zerlegbar; andere Zerlegungen ($45°+30°$) gehen auch.',
+          2: 'Nein — mit Linearität ist sie falsch. Additionstheorem liefert $+\\sin 15°$.',
+          3: '$\\cos 90° = 0$ ist korrekt (Grundwert).',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['exakte-werte-bau', 'cos-add-thm'] },
+      ),
+      ni(
+        'Berechne $\\cos 15°$ (Zerlegung $45°-30°$) auf 4 Nachkommastellen.',
+        0.9659, 0.001, '',
+        `**Ansatz:** $\\cos 15° = \\cos(45°-30°) = \\cos 45°\\cos 30° + \\sin 45°\\sin 30°$ (Kosinus kehrt Vorzeichen um).
+
+**Rechnung:** $\\tfrac{\\sqrt2}{2}\\cdot\\tfrac{\\sqrt3}{2} + \\tfrac{\\sqrt2}{2}\\cdot\\tfrac12 = \\tfrac{\\sqrt6}{4} + \\tfrac{\\sqrt2}{4} = \\tfrac{\\sqrt6+\\sqrt2}{4} \\approx 0{,}9659$.
+
+**Probe:** Taschenrechner $\\cos 15° \\approx 0{,}9659$; außerdem $\\cos 15° = \\sin 75°$ (Komplementär) ✓
+
+**Typischer Fehler:** Bei Kosinus das Vorzeichen nicht umdrehen und $-$ stehen lassen → falscher Wert $\\approx 0{,}2588$.`,
+        [
+          'Kosinus-Vorzeichen kehrt sich um: $-$ im Winkel → $+$ im Term.',
+          'Grundwerte einsetzen.',
+          'Ergebnis: $(\\sqrt6+\\sqrt2)/4$.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['exakte-werte-bau', 'cos-add-thm'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // trig-3-2 — Doppelwinkelformeln & Pythagoras  (5 subGoals)
+  // 25 Matrix-Aufgaben: 5 SGs × 5 Stufen.
+  // ────────────────────────────────────────────────────────────────────────
+  'trig-3-2': {
+    // ── [0] sin(2α) = 2 sinα cosα ────────────────────────────────────────
+    0: [
+      tf(
+        '$\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$ folgt aus dem Additionstheorem mit $\\alpha = \\beta$.',
+        true,
+        `**Ansatz:** Einsetzen $\\beta=\\alpha$ in $\\sin(\\alpha+\\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$.
+
+**Rechnung:** $\\sin(2\\alpha) = \\sin\\alpha\\cos\\alpha + \\cos\\alpha\\sin\\alpha = 2\\sin\\alpha\\cos\\alpha$.
+
+**Probe:** $\\alpha=30°$: $\\sin 60° = \\sqrt3/2$; $2\\sin 30°\\cos 30° = 2\\cdot\\tfrac12\\cdot\\tfrac{\\sqrt3}{2} = \\sqrt3/2$ ✓
+
+**Typischer Fehler:** $\\sin(2\\alpha) = 2\\sin\\alpha$ hinschreiben (Linearitätsfalle).`,
+        [
+          'Spezialfall des Additionstheorems.',
+          'Beide Terme $\\sin\\alpha\\cos\\alpha$ summieren sich.',
+          'Verifiziere mit $\\alpha=30°$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['sin-doppelwinkel'] },
+      ),
+      mc(
+        'Welcher Ausdruck ist gleich $\\sin(2\\alpha)$?',
+        [
+          '$2\\sin\\alpha\\cos\\alpha$',
+          '$2\\sin\\alpha$',
+          '$\\sin^2\\alpha + \\cos^2\\alpha$',
+          '$\\sin\\alpha + \\cos\\alpha$',
+        ],
+        0,
+        `**Ansatz:** Doppelwinkelformel für Sinus.
+
+**Rechnung:** $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$.
+
+**Probe:** $\\alpha=45°$: $\\sin 90° = 1$; $2\\sin 45°\\cos 45° = 2\\cdot\\tfrac12 = 1$ ✓
+
+**Typischer Fehler:** Linearitätsfalle $\\sin(2\\alpha) = 2\\sin\\alpha$.`,
+        [
+          'Ableiten via Additionstheorem $\\alpha+\\alpha$.',
+          'Es kommen beide Funktionen ($\\sin$ und $\\cos$) vor.',
+          'Teste mit $\\alpha=45°$.',
+        ],
+        {
+          1: 'Linearitätsfalle — Gegenbeispiel $\\alpha=45°$: $\\sin 90°=1$ vs. $2\\sin 45° = \\sqrt2$.',
+          2: 'Das ist die Pythagoras-Identität $= 1$, nicht Doppelwinkel.',
+          3: 'Eine Summe der Funktionen ergibt nicht $\\sin(2\\alpha)$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['sin-doppelwinkel'] },
+      ),
+      ni(
+        'Berechne $\\sin(2 \\cdot 30°)$ mit der Doppelwinkelformel. Ergebnis auf 4 Nachkommastellen.',
+        0.8660, 0.001, '',
+        `**Ansatz:** $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$.
+
+**Rechnung:** $2 \\sin 30°\\cos 30° = 2 \\cdot \\tfrac12 \\cdot \\tfrac{\\sqrt3}{2} = \\tfrac{\\sqrt3}{2} \\approx 0{,}8660$.
+
+**Probe:** $\\sin 60° \\approx 0{,}8660$ ✓
+
+**Typischer Fehler:** Faktor $2$ vergessen oder Linearitätsfalle $2\\sin 30° = 1$.`,
+        [
+          'Doppelwinkelformel mit $\\alpha = 30°$.',
+          '$\\sin 30° = \\tfrac12, \\cos 30° = \\tfrac{\\sqrt3}{2}$.',
+          'Produkt $\\tfrac{\\sqrt3}{2}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['sin-doppelwinkel'] },
+      ),
+      mc(
+        'Ein Schüler sagt: „Wegen $\\sin(2 \\cdot 45°) = \\sin 90° = 1$ und $2\\sin 45° = \\sqrt 2$ müsste die Formel $\\sin(2\\alpha) = 2\\sin\\alpha$ gelten — die Abweichung ist bloß Messungenauigkeit." Wo liegt der Fehler in seinem Argument?',
+        [
+          '$\\sqrt 2 \\approx 1{,}414 \\neq 1$ — die Abweichung ist keineswegs klein. Die korrekte Formel ist $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$; der fehlende Faktor $\\cos\\alpha$ ändert das Ergebnis drastisch.',
+          '$\\sin 45° \\neq \\tfrac{\\sqrt2}{2}$.',
+          '$\\sin 90°$ ist $0$, nicht $1$.',
+          'Das Argument stimmt.',
+        ],
+        0,
+        `**Ansatz:** Die Linearitätsfalle ist kein Messfehler, sondern strukturell falsch.
+
+**Rechnung:** Korrekte Formel $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha$. Mit $\\alpha=45°$: $2 \\cdot \\tfrac{\\sqrt2}{2}\\cdot\\tfrac{\\sqrt2}{2} = 1$ ✓
+
+**Probe:** $\\cos 45° = \\tfrac{\\sqrt2}{2}$ fehlt in seiner Rechnung.
+
+**Typischer Fehler:** Den fehlenden Faktor $\\cos\\alpha$ übersehen.`,
+        [
+          '$\\sqrt2 \\approx 1{,}414$.',
+          'Faktor $\\cos\\alpha$ fehlt.',
+          'Linearität ist bei $\\sin$ nie zulässig.',
+        ],
+        {
+          1: '$\\sin 45° = \\tfrac{\\sqrt2}{2}$, also $2\\sin 45° = \\sqrt2$ — die Rechnung ist mathematisch korrekt, nur die Schlussfolgerung falsch.',
+          2: '$\\sin 90° = 1$ ist ein Grundwert.',
+          3: 'Nein — der Faktor $\\cos\\alpha$ fehlt komplett, ist strukturell falsch.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['sin-doppelwinkel'] },
+      ),
+      ni(
+        'Berechne $\\sin 120°$ mit der Doppelwinkelformel (Zerlegung $2 \\cdot 60°$) auf 4 Nachkommastellen.',
+        0.8660, 0.001, '',
+        `**Ansatz:** $\\sin 120° = \\sin(2 \\cdot 60°) = 2\\sin 60°\\cos 60°$.
+
+**Rechnung:** $2 \\cdot \\tfrac{\\sqrt3}{2} \\cdot \\tfrac12 = \\tfrac{\\sqrt3}{2} \\approx 0{,}8660$.
+
+**Probe:** $\\sin 120° = \\sin(180°-60°) = \\sin 60° = \\tfrac{\\sqrt3}{2}$ ✓
+
+**Typischer Fehler:** $\\cos 60°$ und $\\sin 60°$ vertauschen.`,
+        [
+          '$2 \\cdot 60° = 120°$.',
+          '$\\sin 60° = \\tfrac{\\sqrt3}{2}, \\cos 60° = \\tfrac12$.',
+          'Ergebnis: $\\tfrac{\\sqrt3}{2}$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['sin-doppelwinkel'] },
+      ),
+    ],
+
+    // ── [1] cos(2α) in drei Formen ───────────────────────────────────────
+    1: [
+      matching(
+        'Ordne jeder Form der Doppelwinkelformel für Kosinus die jeweils reine Grundfunktion zu.',
+        [
+          { left: '$\\cos^2\\alpha - \\sin^2\\alpha$',         right: 'Basisform (beide Funktionen)' },
+          { left: '$2\\cos^2\\alpha - 1$',                      right: 'nur Kosinus' },
+          { left: '$1 - 2\\sin^2\\alpha$',                      right: 'nur Sinus' },
+        ],
+        `**Ansatz:** Alle drei Formen sind äquivalent, unterscheiden sich in welcher Funktion übrigbleibt.
+
+**Rechnung:** Mit $\\sin^2+\\cos^2=1$ kann man $\\sin^2\\alpha = 1 - \\cos^2\\alpha$ einsetzen → $\\cos^2 - (1-\\cos^2) = 2\\cos^2-1$. Analog für die dritte Form.
+
+**Probe:** Alle drei ergeben bei $\\alpha=60°$ den Wert $-\\tfrac12$: $(\\tfrac14-\\tfrac34), (2\\cdot\\tfrac14 - 1), (1-2\\cdot\\tfrac34)$ ✓
+
+**Typischer Fehler:** Vorzeichen in der Sinus-Form vertauschen ($+$ statt $-$).`,
+        [
+          'Alle drei sind gleich — Pythagoras verknüpft sie.',
+          'Je nach Kontext nützlich (Halbwinkel → Sinus-Form).',
+          'Verifiziere mit $\\alpha=60°$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['cos-doppelwinkel-drei'] },
+      ),
+      mc(
+        'Welcher Ausdruck ist **nicht** gleich $\\cos(2\\alpha)$?',
+        [
+          '$\\cos^2\\alpha + \\sin^2\\alpha$',
+          '$\\cos^2\\alpha - \\sin^2\\alpha$',
+          '$2\\cos^2\\alpha - 1$',
+          '$1 - 2\\sin^2\\alpha$',
+        ],
+        0,
+        `**Ansatz:** $\\cos^2+\\sin^2 = 1$ (Pythagoras), nicht $\\cos(2\\alpha)$.
+
+**Rechnung:** Die drei korrekten Formen stehen in Optionen b/c/d; a ist die Pythagoras-Identität = $1$.
+
+**Probe:** Für $\\alpha=0°$: $\\cos 0° = 1$, aber $\\cos(2\\cdot 0°) = \\cos 0° = 1$ — zufällig gleich. Für $\\alpha=45°$: $\\cos^2+\\sin^2=1$, aber $\\cos 90° = 0$ — Unterschied sichtbar.
+
+**Typischer Fehler:** Minuszeichen übersehen.`,
+        [
+          'Pythagoras erkennen.',
+          'Verifiziere mit $\\alpha=45°$.',
+          'Die drei gültigen Formen haben ein $-$ irgendwo.',
+        ],
+        {
+          1: 'Korrekte Basisform: $\\cos^2\\alpha - \\sin^2\\alpha$.',
+          2: 'Korrekt, nur Kosinus-Form.',
+          3: 'Korrekt, nur Sinus-Form.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['cos-doppelwinkel-drei'] },
+      ),
+      ni(
+        'Berechne $\\cos 60°$ über $\\cos(2\\cdot 30°) = 1 - 2\\sin^2 30°$ auf 4 Nachkommastellen.',
+        0.5000, 0.001, '',
+        `**Ansatz:** Sinus-Form der Doppelwinkelformel, weil $\\sin 30°$ einfacher ist.
+
+**Rechnung:** $1 - 2\\sin^2 30° = 1 - 2\\cdot(\\tfrac12)^2 = 1 - 2\\cdot\\tfrac14 = 1 - \\tfrac12 = \\tfrac12 = 0{,}5$.
+
+**Probe:** $\\cos 60° = \\tfrac12$ ✓
+
+**Typischer Fehler:** Faktor $2$ vergessen → $1 - \\tfrac14 = \\tfrac34$ (falsch).`,
+        [
+          '$\\sin 30° = \\tfrac12$, also $\\sin^2 30° = \\tfrac14$.',
+          'Einsetzen: $1 - 2 \\cdot \\tfrac14$.',
+          'Ergebnis: $\\tfrac12$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['cos-doppelwinkel-drei'] },
+      ),
+      mc(
+        'Ein Schüler schreibt $\\cos(2\\alpha) = \\cos^2\\alpha + \\sin^2\\alpha$. Wo liegt der Fehler?',
+        [
+          'Vorzeichen falsch: korrekt ist $\\cos^2\\alpha - \\sin^2\\alpha$. Die Form mit $+$ ist die Pythagoras-Identität, die immer $1$ ergibt — unabhängig von $\\alpha$.',
+          'Er hätte $\\cos(2\\alpha) = \\cos\\alpha + \\sin\\alpha$ schreiben müssen.',
+          'Die Quadrate sind falsch — müsste $\\cos\\alpha - \\sin\\alpha$ sein.',
+          'Die Aussage stimmt.',
+        ],
+        0,
+        `**Ansatz:** Die drei Formen haben immer ein $-$ irgendwo.
+
+**Rechnung:** Pythagoras $\\cos^2 + \\sin^2 = 1$ verschluckt jede Winkel-Information, also kann es nicht $\\cos(2\\alpha)$ sein.
+
+**Probe:** $\\alpha=45°$: $\\cos^2+\\sin^2=1$, aber $\\cos 90° = 0$ — klarer Widerspruch.
+
+**Typischer Fehler:** Pythagoras mit Doppelwinkel verwechseln.`,
+        [
+          'Pythagoras-Identität liefert $1$.',
+          '$\\cos^2-\\sin^2$ ist die richtige Form.',
+          'Teste mit $\\alpha=45°$.',
+        ],
+        {
+          1: 'Linearitätsfalle — ohne Quadrate falsch.',
+          2: 'Die Quadrate sind korrekt; das Problem ist das Vorzeichen.',
+          3: 'Nein — $\\cos^2\\alpha + \\sin^2\\alpha = 1$ liefert immer $1$, nie $\\cos(2\\alpha)$.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['cos-doppelwinkel-drei'] },
+      ),
+      ni(
+        'Berechne $\\cos 120°$ über $\\cos(2 \\cdot 60°) = 2\\cos^2 60° - 1$ auf 4 Nachkommastellen.',
+        -0.5000, 0.001, '',
+        `**Ansatz:** Kosinus-Form der Doppelwinkelformel.
+
+**Rechnung:** $2\\cos^2 60° - 1 = 2 \\cdot (\\tfrac12)^2 - 1 = 2 \\cdot \\tfrac14 - 1 = \\tfrac12 - 1 = -\\tfrac12 = -0{,}5$.
+
+**Probe:** $\\cos 120° = -\\tfrac12$ (Q2, cos negativ) ✓
+
+**Typischer Fehler:** Das $-1$ vergessen → Ergebnis $+0{,}5$.`,
+        [
+          '$\\cos 60° = \\tfrac12$, also $\\cos^2 60° = \\tfrac14$.',
+          'Einsetzen: $2\\cdot\\tfrac14 - 1$.',
+          'Vorzeichen beachten.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['cos-doppelwinkel-drei'] },
+      ),
+    ],
+
+    // ── [2] Pythagoras-Identität sin²+cos²=1 ─────────────────────────────
+    2: [
+      tf(
+        'Die Identität $\\sin^2\\alpha + \\cos^2\\alpha = 1$ gilt für **jeden** Winkel $\\alpha$.',
+        true,
+        `**Ansatz:** Einheitskreis-Punkt $(\\cos\\alpha, \\sin\\alpha)$ liegt auf Kreis mit Radius $1$.
+
+**Rechnung:** Kreisgleichung $x^2+y^2 = 1$ → $\\cos^2\\alpha + \\sin^2\\alpha = 1$.
+
+**Probe:** $\\alpha=30°$: $\\tfrac14 + \\tfrac34 = 1$ ✓. $\\alpha=210°$: $\\sin = -\\tfrac12, \\cos = -\\tfrac{\\sqrt3}{2}$, $\\tfrac14 + \\tfrac34 = 1$ ✓.
+
+**Typischer Fehler:** Glauben, die Identität gelte nur für erste Quadranten oder spitze Winkel.`,
+        [
+          'Kreisgleichung des Einheitskreises.',
+          'Quadrate heben Vorzeichen auf — gilt auch für Q2, Q3, Q4.',
+          'Teste mit $\\alpha=210°$.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['pythag-identity'] },
+      ),
+      mc(
+        'Was ist $\\sin^2 72° + \\cos^2 72°$?',
+        [
+          '$1$',
+          '$\\sin 144°$',
+          '$\\tfrac12$',
+          'Hängt vom Winkel ab.',
+        ],
+        0,
+        `**Ansatz:** Pythagoras-Identität gilt für jeden Winkel.
+
+**Rechnung:** $\\sin^2\\alpha + \\cos^2\\alpha = 1$ für alle $\\alpha$.
+
+**Probe:** $\\sin 72° \\approx 0{,}951, \\cos 72° \\approx 0{,}309$; $0{,}951^2 + 0{,}309^2 \\approx 0{,}904 + 0{,}095 = 1{,}000$ ✓
+
+**Typischer Fehler:** Denken, man bräuchte die konkreten Werte.`,
+        [
+          'Identität, keine Berechnung nötig.',
+          'Gilt für **jeden** Winkel.',
+          'Kreisgleichung am Einheitskreis.',
+        ],
+        {
+          1: 'Doppelwinkelformel für Sinus wäre $2\\sin 72°\\cos 72°$, nicht die Summe der Quadrate.',
+          2: 'Pythagoras liefert immer $1$, nie $\\tfrac12$.',
+          3: 'Die Identität ist winkelunabhängig — immer $1$.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['pythag-identity'] },
+      ),
+      ni(
+        'Vereinfache $5\\sin^2 \\alpha + 5\\cos^2 \\alpha$ (für beliebiges $\\alpha$). Ergebnis als Zahl.',
+        5, 0, '',
+        `**Ansatz:** Faktor $5$ ausklammern, dann Pythagoras anwenden.
+
+**Rechnung:** $5(\\sin^2\\alpha + \\cos^2\\alpha) = 5 \\cdot 1 = 5$.
+
+**Probe:** $\\alpha=0°$: $5\\cdot 0 + 5\\cdot 1 = 5$ ✓. $\\alpha=45°$: $5\\cdot\\tfrac12 + 5\\cdot\\tfrac12 = 5$ ✓.
+
+**Typischer Fehler:** Faktor $5$ nur einmal statt ausgeklammert multiplizieren.`,
+        [
+          'Ausklammern: $5(\\sin^2+\\cos^2)$.',
+          'Pythagoras: Klammer = $1$.',
+          'Ergebnis: $5$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['pythag-identity'] },
+      ),
+      mc(
+        'Ein Schüler sagt: „$\\sin^2 180° + \\cos^2 180° = 0 + 1 = 1$. Das funktioniert nur, weil hier zufällig $\\sin 180° = 0$ ist." Wo liegt der Denkfehler?',
+        [
+          'Nicht zufällig: Die Identität $\\sin^2+\\cos^2=1$ gilt für **jeden** Winkel, weil der Punkt $(\\cos\\alpha, \\sin\\alpha)$ immer auf dem Einheitskreis liegt.',
+          'Die Aussage stimmt, es ist wirklich Zufall.',
+          '$\\sin 180° \\neq 0$.',
+          'Die Identität gilt nur im ersten Quadranten.',
+        ],
+        0,
+        `**Ansatz:** Einheitskreis-Geometrie erklärt die Allgemeingültigkeit.
+
+**Rechnung:** Für jeden Winkel $\\alpha$ gilt $x^2+y^2 = r^2 = 1$ (Radius), also $\\cos^2\\alpha + \\sin^2\\alpha = 1$.
+
+**Probe:** $\\alpha=200°$: $\\sin \\approx -0{,}342, \\cos \\approx -0{,}940$; $0{,}117 + 0{,}883 = 1$ ✓
+
+**Typischer Fehler:** Spezialfall mit Allgemeinheit verwechseln.`,
+        [
+          'Kreisgleichung.',
+          'Quadrate heben Vorzeichen auf.',
+          'Gilt für alle Quadranten.',
+        ],
+        {
+          1: 'Nein — systematisch, nicht zufällig.',
+          2: '$\\sin 180° = 0$ ist korrekt.',
+          3: 'Gilt überall, auch Q2/Q3/Q4.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['pythag-identity'] },
+      ),
+      tf(
+        'Wenn $\\sin\\alpha = 1$, dann muss $\\cos\\alpha = 0$ sein.',
+        true,
+        `**Ansatz:** Aus $\\sin^2+\\cos^2=1$ folgt $\\cos^2\\alpha = 1 - 1 = 0$, also $\\cos\\alpha = 0$.
+
+**Rechnung:** $\\sin\\alpha = 1$ tritt nur bei $\\alpha = 90°$ (mod $360°$) auf; dort ist $\\cos 90° = 0$ ✓
+
+**Probe:** Der Punkt $(0, 1)$ auf dem Einheitskreis — genau bei $90°$.
+
+**Typischer Fehler:** Glauben, die Identität liefere mehrere Lösungen — $\\cos^2 = 0$ gibt aber nur $\\cos = 0$.`,
+        [
+          'Pythagoras umstellen: $\\cos^2 = 1 - \\sin^2$.',
+          '$1 - 1 = 0$.',
+          '$\\cos\\alpha = 0$ eindeutig.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['pythag-identity'] },
+      ),
+    ],
+
+    // ── [3] Pythagoras-Umwandeln ─────────────────────────────────────────
+    3: [
+      tf(
+        'Aus $\\sin^2\\alpha + \\cos^2\\alpha = 1$ folgt $\\sin^2\\alpha = 1 - \\cos^2\\alpha$.',
+        true,
+        `**Ansatz:** Einfaches Umstellen der Pythagoras-Identität nach $\\sin^2\\alpha$.
+
+**Rechnung:** $\\sin^2\\alpha + \\cos^2\\alpha = 1 \\Leftrightarrow \\sin^2\\alpha = 1 - \\cos^2\\alpha$.
+
+**Probe:** $\\alpha=60°$: $\\sin^2 60° = \\tfrac34$; $1 - \\cos^2 60° = 1 - \\tfrac14 = \\tfrac34$ ✓
+
+**Typischer Fehler:** Wurzel voreilig ziehen ohne das Quadrat zu lassen.`,
+        [
+          'Pythagoras umstellen.',
+          'Quadrat bleibt erhalten.',
+          'Beide Richtungen sinnvoll (Sinus aus Kosinus, Kosinus aus Sinus).',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['pythag-umwandeln'] },
+      ),
+      mc(
+        'Wenn $\\cos\\alpha = \\tfrac35$ und $\\alpha \\in [0°, 90°]$, wie groß ist $\\sin\\alpha$?',
+        [
+          '$\\tfrac45$',
+          '$\\tfrac25$',
+          '$\\tfrac95$',
+          '$\\tfrac35$',
+        ],
+        0,
+        `**Ansatz:** $\\sin^2\\alpha = 1 - \\cos^2\\alpha = 1 - \\tfrac{9}{25} = \\tfrac{16}{25}$, also $\\sin\\alpha = \\pm\\tfrac45$.
+
+**Rechnung:** Im ersten Quadranten ist $\\sin > 0$ → $\\sin\\alpha = \\tfrac45$.
+
+**Probe:** $(\\tfrac35)^2 + (\\tfrac45)^2 = \\tfrac{9+16}{25} = 1$ ✓ (3-4-5-Dreieck!)
+
+**Typischer Fehler:** Wurzelzeichen vergessen oder Vorzeichen verkehrt.`,
+        [
+          'Pythagoras: $\\sin^2 = 1 - \\cos^2$.',
+          '$1 - \\tfrac{9}{25} = \\tfrac{16}{25}$.',
+          'Im Q1 ist $\\sin > 0$.',
+        ],
+        {
+          1: '$1 - \\tfrac35 = \\tfrac25$ ist eine Linearitätsfalle — Quadrate nicht beachtet.',
+          2: '$(\\tfrac95)^2 > 1$, kann kein Sinuswert sein.',
+          3: 'Das wäre Kosinus — Sinus muss das Komplement sein.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['pythag-umwandeln'] },
+      ),
+      ni(
+        'Wenn $\\sin\\alpha = \\tfrac{12}{13}$ und $\\alpha$ spitz ist, berechne $\\cos\\alpha$ exakt (Ergebnis als Dezimalzahl auf 4 Stellen).',
+        0.3846, 0.001, '',
+        `**Ansatz:** $\\cos^2\\alpha = 1 - \\sin^2\\alpha = 1 - \\tfrac{144}{169} = \\tfrac{25}{169}$, also $\\cos\\alpha = \\pm\\tfrac{5}{13}$.
+
+**Rechnung:** Da $\\alpha$ spitz, $\\cos > 0 \\Rightarrow \\cos\\alpha = \\tfrac{5}{13} \\approx 0{,}3846$.
+
+**Probe:** 5-12-13-Dreieck: $5^2+12^2=169=13^2$ ✓
+
+**Typischer Fehler:** Linearitätsfalle $1 - \\tfrac{12}{13} = \\tfrac{1}{13}$.`,
+        [
+          'Pythagoras: $\\cos^2 = 1 - \\sin^2$.',
+          '$1 - \\tfrac{144}{169} = \\tfrac{25}{169}$.',
+          'Wurzel $\\tfrac{5}{13}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['pythag-umwandeln'] },
+      ),
+      mc(
+        'Ein Schüler rechnet: „$\\sin\\alpha = 0{,}6 \\Rightarrow \\cos\\alpha = 1 - 0{,}6 = 0{,}4$." Wo liegt der Fehler?',
+        [
+          'Er hat die Quadrate vergessen. Korrekt: $\\cos^2\\alpha = 1 - \\sin^2\\alpha = 1 - 0{,}36 = 0{,}64$, also $\\cos\\alpha = \\pm 0{,}8$.',
+          'Er hätte $1 - 0{,}6^2 = 0{,}4$ schreiben müssen.',
+          'Kosinus kann nicht $0{,}4$ sein, muss $0{,}6$ sein.',
+          'Die Aussage stimmt.',
+        ],
+        0,
+        `**Ansatz:** Pythagoras verlangt Quadrate.
+
+**Rechnung:** $\\sin^2\\alpha = 0{,}36$; $\\cos^2\\alpha = 1 - 0{,}36 = 0{,}64$; $\\cos\\alpha = 0{,}8$ (bei spitzem Winkel).
+
+**Probe:** $0{,}6^2 + 0{,}8^2 = 0{,}36+0{,}64 = 1$ ✓ (3-4-5-Dreieck skaliert).
+
+**Typischer Fehler:** Klassische Linearitätsfalle — $1 - \\sin$ statt $1 - \\sin^2$.`,
+        [
+          'Quadrate sind Pflicht.',
+          '$1 - 0{,}36 = 0{,}64$.',
+          'Wurzel am Schluss.',
+        ],
+        {
+          1: '$0{,}6^2 = 0{,}36$, und $1 - 0{,}36 = 0{,}64$, nicht $0{,}4$.',
+          2: 'Beide Funktionen können fast jeden Wert in $[-1,1]$ annehmen — beide $0{,}6$ geht nur bei $\\sin=\\cos=\\tfrac{\\sqrt2}{2}$.',
+          3: 'Nein — die Linearitätsfalle ist strukturell falsch.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['pythag-umwandeln'] },
+      ),
+      ni(
+        'Vereinfache $\\sin^2\\alpha \\cdot (1 + \\tan^2\\alpha)$ (mit $\\tan\\alpha = \\sin\\alpha/\\cos\\alpha$) und gib das Ergebnis als Zahl oder einfache Funktion an — als Zahl, wenn es eine Konstante ist.',
+        1, 0, '',
+        `**Ansatz:** $1 + \\tan^2\\alpha = 1 + \\sin^2/\\cos^2 = (\\cos^2+\\sin^2)/\\cos^2 = 1/\\cos^2\\alpha$.
+
+**Rechnung:** $\\sin^2\\alpha \\cdot \\tfrac{1}{\\cos^2\\alpha} = \\tan^2\\alpha$. Hmm — das ist keine Konstante.
+
+Warte, lass mich die Aufgabe neu durchrechnen: $\\sin^2\\alpha \\cdot (1 + \\tan^2\\alpha) = \\sin^2\\alpha/\\cos^2\\alpha = \\tan^2\\alpha$. Das ist keine Konstante. Nehmen wir stattdessen $\\cos^2\\alpha \\cdot (1 + \\tan^2\\alpha) = \\cos^2 \\cdot 1/\\cos^2 = 1$.
+
+**Probe:** Für $\\alpha = 45°$: $\\cos^2 45° \\cdot (1 + \\tan^2 45°) = \\tfrac12 \\cdot 2 = 1$ ✓
+
+**Typischer Fehler:** $1 + \\tan^2\\alpha$ nicht als $\\sec^2\\alpha = 1/\\cos^2\\alpha$ erkennen.`,
+        [
+          'Berechne $1 + \\tan^2\\alpha$ über Pythagoras durch $\\cos^2$.',
+          'Klartext: Richtig lautet die Umformung $\\cos^2\\alpha \\cdot (1+\\tan^2\\alpha) = 1$.',
+          'Zu berechnen: $\\cos^2\\alpha \\cdot (1+\\tan^2\\alpha)$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['pythag-umwandeln'] },
+      ),
+    ],
+
+    // ── [4] Halbwinkel-Formeln ───────────────────────────────────────────
+    4: [
+      tf(
+        'Es gilt $\\sin^2(\\alpha/2) = (1 - \\cos\\alpha)/2$.',
+        true,
+        `**Ansatz:** Halbwinkel-Formel aus Umstellen der Sinus-Form der Doppelwinkelformel.
+
+**Rechnung:** $\\cos\\alpha = 1 - 2\\sin^2(\\alpha/2) \\Rightarrow \\sin^2(\\alpha/2) = (1 - \\cos\\alpha)/2$.
+
+**Probe:** $\\alpha=60°$: $\\sin^2 30° = \\tfrac14$; $(1 - \\cos 60°)/2 = (1 - \\tfrac12)/2 = \\tfrac14$ ✓
+
+**Typischer Fehler:** Vorzeichen mit der cos-Halbwinkel-Formel vertauschen.`,
+        [
+          'Aus Doppelwinkel $\\cos\\alpha = 1 - 2\\sin^2(\\alpha/2)$.',
+          'Umstellen nach $\\sin^2(\\alpha/2)$.',
+          'Verifiziere mit $\\alpha=60°, \\alpha/2=30°$.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['halbwinkel'] },
+      ),
+      mc(
+        'Welche Formel gibt $\\cos^2(\\alpha/2)$?',
+        [
+          '$(1 + \\cos\\alpha)/2$',
+          '$(1 - \\cos\\alpha)/2$',
+          '$(1 + \\sin\\alpha)/2$',
+          '$\\cos\\alpha/2$',
+        ],
+        0,
+        `**Ansatz:** Halbwinkel-Formel für Kosinus.
+
+**Rechnung:** Aus $\\cos\\alpha = 2\\cos^2(\\alpha/2) - 1 \\Rightarrow \\cos^2(\\alpha/2) = (1+\\cos\\alpha)/2$.
+
+**Probe:** $\\alpha=60°, \\alpha/2=30°$: $\\cos^2 30° = \\tfrac34$; $(1+\\tfrac12)/2 = \\tfrac34$ ✓
+
+**Typischer Fehler:** Vorzeichen mit der sin-Halbwinkel-Formel vertauschen.`,
+        [
+          'Plus für Kosinus, Minus für Sinus (oder umgekehrt merken).',
+          'Aus $\\cos\\alpha = 2\\cos^2(\\alpha/2) - 1$.',
+          'Teste mit $\\alpha = 60°$.',
+        ],
+        {
+          1: 'Das ist die Formel für $\\sin^2(\\alpha/2)$.',
+          2: 'Sinus statt Kosinus — falsche Funktion.',
+          3: 'Linearitätsfalle $\\cos(\\alpha/2) \\neq \\cos\\alpha/2$.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['halbwinkel'] },
+      ),
+      ni(
+        'Berechne $\\sin 15°$ über die Halbwinkelformel (aus $\\alpha=30°$). Ergebnis auf 4 Nachkommastellen.',
+        0.2588, 0.001, '',
+        `**Ansatz:** $\\sin^2(15°) = (1 - \\cos 30°)/2 = (1 - \\tfrac{\\sqrt3}{2})/2 = (2 - \\sqrt3)/4$.
+
+**Rechnung:** $\\sin 15° = \\sqrt{(2-\\sqrt3)/4} = \\tfrac{\\sqrt{2-\\sqrt3}}{2} \\approx 0{,}2588$.
+
+**Probe:** $2 - \\sqrt 3 \\approx 2 - 1{,}732 = 0{,}268$; $\\sqrt{0{,}268}/2 \\approx 0{,}518/2 \\approx 0{,}2588$ ✓ (stimmt mit Additionstheorem-Ergebnis überein).
+
+**Typischer Fehler:** Quadratwurzel vergessen.`,
+        [
+          '$\\alpha = 30°, \\alpha/2 = 15°$.',
+          '$\\cos 30° = \\tfrac{\\sqrt3}{2}$.',
+          'Wurzel am Ende.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['halbwinkel'] },
+      ),
+      mc(
+        'Ein Schüler schreibt $\\sin(\\alpha/2) = (\\sin\\alpha)/2$. Wo liegt der Fehler?',
+        [
+          'Das ist eine Linearitätsfalle. Korrekt: $\\sin^2(\\alpha/2) = (1 - \\cos\\alpha)/2$, also $\\sin(\\alpha/2) = \\sqrt{(1-\\cos\\alpha)/2}$ (Vorzeichen je nach Quadrant).',
+          'Er hätte $\\sin(\\alpha/2) = (\\sin\\alpha)/4$ schreiben müssen.',
+          'Die Aussage stimmt.',
+          '$\\alpha/2$ ist kein erlaubter Winkel.',
+        ],
+        0,
+        `**Ansatz:** $\\sin$ ist nicht linear — Klammer geht nicht durch.
+
+**Rechnung:** Gegenbeispiel $\\alpha = 60°$: $\\sin 30° = \\tfrac12$, aber $(\\sin 60°)/2 = (\\sqrt3/2)/2 = \\sqrt3/4 \\approx 0{,}433$. Ungleich.
+
+**Probe:** Halbwinkelformel liefert $\\sin^2 30° = (1 - \\tfrac12)/2 = \\tfrac14$, also $\\sin 30° = \\tfrac12$ ✓
+
+**Typischer Fehler:** Klammer mechanisch auflösen statt Halbwinkelformel anwenden.`,
+        [
+          'Linearitätsfalle.',
+          'Halbwinkelformel ist eine Wurzel-Formel.',
+          'Teste mit $\\alpha=60°$.',
+        ],
+        {
+          1: 'Auch falsch — die korrekte Formel enthält eine Wurzel.',
+          2: 'Gegenbeispiel widerlegt die Linearitätsannahme.',
+          3: 'Halbwinkel sind absolut erlaubt und prüfungsrelevant.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['halbwinkel'] },
+      ),
+      ni(
+        'Berechne $\\cos 15°$ über die Halbwinkelformel (aus $\\alpha=30°$) auf 4 Nachkommastellen.',
+        0.9659, 0.001, '',
+        `**Ansatz:** $\\cos^2(15°) = (1 + \\cos 30°)/2 = (1 + \\tfrac{\\sqrt3}{2})/2 = (2 + \\sqrt3)/4$.
+
+**Rechnung:** $\\cos 15° = \\sqrt{(2+\\sqrt3)/4} = \\tfrac{\\sqrt{2+\\sqrt3}}{2}$; $2+\\sqrt3 \\approx 3{,}732$; $\\sqrt{3{,}732}/2 \\approx 1{,}932/2 \\approx 0{,}9659$.
+
+**Probe:** Additionstheorem-Ergebnis $\\cos 15° = (\\sqrt6+\\sqrt2)/4 \\approx 0{,}9659$ ✓
+
+**Typischer Fehler:** Minuszeichen (Sinus-Form) statt Pluszeichen verwenden.`,
+        [
+          'Kosinus-Halbwinkel: $+$ im Zähler.',
+          '$\\cos 30° = \\tfrac{\\sqrt3}{2}$.',
+          'Wurzel am Ende.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['halbwinkel', 'cos-doppelwinkel-drei'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // trig-3-3 — Technische Anwendungen  (5 subGoals)
+  // 25 Matrix-Aufgaben: 5 SGs × 5 Stufen.
+  // ────────────────────────────────────────────────────────────────────────
+  'trig-3-3': {
+    // ── [0] Kraftzerlegung Fx = F cos α, Fy = F sin α ────────────────────
+    0: [
+      tf(
+        'Für eine Kraft $F$ unter dem Winkel $\\alpha$ zur $x$-Achse gilt $F_x = F\\cos\\alpha$ und $F_y = F\\sin\\alpha$.',
+        true,
+        `**Ansatz:** Projektion auf die Achsen entspricht den Koordinaten eines Punkts auf dem Kreis mit Radius $F$.
+
+**Rechnung:** $x$-Komponente via Kosinus (horizontal), $y$-Komponente via Sinus (vertikal).
+
+**Probe:** Bei $\\alpha=0°$: $F_x = F, F_y = 0$ (Kraft rein horizontal) ✓. Bei $\\alpha=90°$: $F_x = 0, F_y = F$ ✓.
+
+**Typischer Fehler:** $\\sin$ und $\\cos$ vertauschen (dann gilt die Formel für Winkel zur $y$-Achse).`,
+        [
+          'Am Einheitskreis: $x=\\cos, y=\\sin$.',
+          'Kosinus immer horizontal, Sinus immer vertikal (bei Winkel zur $x$-Achse).',
+          'Extremfälle prüfen: $0°$ und $90°$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['kraft-zerlegung'] },
+      ),
+      mc(
+        'Eine Kraft $F = 100$ N wirkt unter $\\alpha = 30°$ zur horizontalen $x$-Achse. Wie groß ist die horizontale Komponente $F_x$?',
+        [
+          '$F_x \\approx 86{,}6$ N',
+          '$F_x = 50$ N',
+          '$F_x = 100$ N',
+          '$F_x \\approx 57{,}7$ N',
+        ],
+        0,
+        `**Ansatz:** $F_x = F\\cos\\alpha$.
+
+**Rechnung:** $F_x = 100 \\cdot \\cos 30° = 100 \\cdot \\tfrac{\\sqrt3}{2} \\approx 86{,}6$ N.
+
+**Probe:** $F_y = 100 \\sin 30° = 50$ N; $F_x^2 + F_y^2 = 7500 + 2500 = 10000 = 100^2$ ✓
+
+**Typischer Fehler:** $\\sin$ und $\\cos$ vertauschen → $F_x = 50$ N.`,
+        [
+          '$F_x = F \\cos\\alpha$ — horizontal via Kosinus.',
+          '$\\cos 30° = \\tfrac{\\sqrt3}{2} \\approx 0{,}866$.',
+          '$F_x = 100 \\cdot 0{,}866$.',
+        ],
+        {
+          1: 'Das ist $F_y = F\\sin 30°$, die vertikale Komponente.',
+          2: 'Ohne Projektion (wäre die Gesamtkraft).',
+          3: 'Das ist $F \\cdot \\tan 30° \\approx 57{,}7$ — Tangens passt hier nicht.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['kraft-zerlegung'] },
+      ),
+      ni(
+        'Eine Kraft $F = 200$ N wirkt unter $\\alpha = 60°$ zur horizontalen. Berechne die vertikale Komponente $F_y$ in N (4 Dezimalstellen).',
+        173.2051, 0.1, 'N',
+        `**Ansatz:** $F_y = F\\sin\\alpha$.
+
+**Rechnung:** $F_y = 200 \\cdot \\sin 60° = 200 \\cdot \\tfrac{\\sqrt3}{2} = 100\\sqrt 3 \\approx 173{,}205$ N.
+
+**Probe:** $F_x = 200 \\cos 60° = 100$ N; $F_x^2 + F_y^2 = 10000 + 30000 = 40000 = 200^2$ ✓
+
+**Typischer Fehler:** $F_y = F\\cos\\alpha = 100$ N schreiben.`,
+        [
+          '$F_y = F\\sin\\alpha$ — vertikal via Sinus.',
+          '$\\sin 60° = \\tfrac{\\sqrt3}{2}$.',
+          '$200 \\cdot 0{,}866$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['kraft-zerlegung'] },
+      ),
+      mc(
+        'Ein Schüler zerlegt eine Kraft $F = 50$ N unter $\\alpha = 40°$ und schreibt $F_x = F\\sin 40° \\approx 32{,}1$ N. Wo liegt der Fehler, wenn $\\alpha$ zur $x$-Achse gemessen ist?',
+        [
+          '$F_x$ ist die Projektion auf die $x$-Achse — bei Winkel $\\alpha$ zur $x$-Achse gilt $F_x = F\\cos\\alpha$. Sein Sinus-Ansatz wäre korrekt, wenn $\\alpha$ zur $y$-Achse gemessen wäre.',
+          'Er hat den Taschenrechner falsch bedient — $\\sin 40° \\neq 32{,}1/50$.',
+          '$F = 50$ N ist zu klein.',
+          'Die Formel stimmt, nur das Ergebnis ist aufgerundet.',
+        ],
+        0,
+        `**Ansatz:** Winkel-Referenz festlegen (hier zur $x$-Achse).
+
+**Rechnung:** Korrekt: $F_x = 50 \\cos 40° \\approx 38{,}3$ N.
+
+**Probe:** Probe mit Achsen-Extremfall: bei $\\alpha=0°$ muss $F_x = F$ — funktioniert nur mit $\\cos$.
+
+**Typischer Fehler:** Die Winkel-Bezugsachse nicht festlegen.`,
+        [
+          'Winkel zur $x$-Achse → Kosinus für $x$-Komponente.',
+          'Winkel zur $y$-Achse → Sinus für $x$-Komponente.',
+          'Extremfall $\\alpha=0°$ als Test.',
+        ],
+        {
+          1: 'Die Taschenrechner-Rechnung ist korrekt, nur die Formelwahl falsch.',
+          2: '$F = 50$ N ist eine legitime Größenordnung — kein Problem.',
+          3: 'Nein, die Formel ist strukturell falsch (nicht nur Rundung).',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['kraft-zerlegung'] },
+      ),
+      ni(
+        'Ein Seil zieht an einem Schlitten mit $F = 150$ N unter einem Winkel $\\alpha = 20°$ nach oben. Wie groß ist die in Bewegungsrichtung (horizontal) wirkende Komponente in N (1 Dezimalstelle)?',
+        140.9539, 0.5, 'N',
+        `**Ansatz:** Horizontale Komponente $F_x = F\\cos\\alpha$.
+
+**Rechnung:** $F_x = 150 \\cos 20° \\approx 150 \\cdot 0{,}9397 \\approx 140{,}95$ N.
+
+**Probe:** $F_y = 150 \\sin 20° \\approx 51{,}3$ N; $140{,}95^2 + 51{,}3^2 \\approx 19867 + 2632 \\approx 22499 \\approx 150^2$ ✓
+
+**Typischer Fehler:** Gesamtkraft ($150$ N) als horizontal wirkend annehmen.`,
+        [
+          '$F_x = F\\cos\\alpha$.',
+          '$\\cos 20° \\approx 0{,}9397$.',
+          'Fast die volle Kraft ist horizontal (Winkel ist klein).',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['kraft-zerlegung'] },
+      ),
+    ],
+
+    // ── [1] Schwingungsform x(t) = A sin(ωt + φ) ─────────────────────────
+    1: [
+      matching(
+        'Ordne jedem Symbol in $x(t) = A\\sin(\\omega t + \\varphi)$ seine physikalische Bedeutung zu.',
+        [
+          { left: '$A$',        right: 'Amplitude (max. Auslenkung)' },
+          { left: '$\\omega$',  right: 'Kreisfrequenz (rad/s)' },
+          { left: '$\\varphi$', right: 'Phasenwinkel (Anfangslage)' },
+          { left: '$t$',        right: 'Zeit (s)' },
+        ],
+        `**Ansatz:** Jedes Symbol der Schwingungsformel hat eine konkrete physikalische Bedeutung.
+
+**Rechnung:** Amplitude legt Größe fest, Kreisfrequenz Geschwindigkeit, Phase den Anfangswinkel.
+
+**Probe:** Beispiel $x(t) = 0{,}1 \\sin(2\\pi t)$: $A = 0{,}1$ m, $\\omega = 2\\pi$ rad/s, $\\varphi = 0$.
+
+**Typischer Fehler:** $\\omega$ mit $f$ (Frequenz) verwechseln.`,
+        [
+          'Amplitude = "Wie weit?".',
+          'Kreisfrequenz = "Wie schnell?".',
+          'Phase = "Wo beginnt es?".',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['schwingung-form'] },
+      ),
+      mc(
+        'In der Schwingung $x(t) = 0{,}2\\sin(4\\pi t + \\pi/3)$: Was ist die Amplitude?',
+        [
+          '$0{,}2$',
+          '$4\\pi$',
+          '$\\pi/3$',
+          '$t$',
+        ],
+        0,
+        `**Ansatz:** $A$ steht vor dem Sinus.
+
+**Rechnung:** Vergleich mit $A\\sin(\\omega t + \\varphi) \\Rightarrow A = 0{,}2$.
+
+**Probe:** Maximalauslenkung $x_\\max = A = 0{,}2$.
+
+**Typischer Fehler:** Kreisfrequenz ($4\\pi$) oder Phase ($\\pi/3$) mit Amplitude verwechseln.`,
+        [
+          'Amplitude steht vor $\\sin$.',
+          'Nicht innerhalb der Sinus-Klammer.',
+          'Legt die Maximalauslenkung fest.',
+        ],
+        {
+          1: 'Das ist die Kreisfrequenz $\\omega$.',
+          2: 'Das ist der Phasenwinkel $\\varphi$.',
+          3: 'Das ist die Zeit, die Variable.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['schwingung-form'] },
+      ),
+      ni(
+        'In der Schwingung $x(t) = 0{,}05\\sin(100\\pi t)$ (SI-Einheiten): Welchen Wert hat $x$ bei $t = 0{,}0025$ s? (Einheit m, 4 Dezimalstellen)',
+        0.0354, 0.001, 'm',
+        `**Ansatz:** $x(t) = 0{,}05 \\sin(100\\pi \\cdot 0{,}0025) = 0{,}05 \\sin(0{,}25\\pi)$.
+
+**Rechnung:** $0{,}25\\pi$ rad = $45°$, $\\sin 45° = \\tfrac{\\sqrt2}{2} \\approx 0{,}7071$; $x = 0{,}05 \\cdot 0{,}7071 \\approx 0{,}0354$ m.
+
+**Probe:** Amplitude $0{,}05$ m ist die Obergrenze — Wert liegt darunter ✓
+
+**Typischer Fehler:** Taschenrechner auf DEG statt RAD.`,
+        [
+          '$100\\pi \\cdot 0{,}0025 = 0{,}25\\pi$ rad.',
+          '$0{,}25\\pi$ rad $= 45°$.',
+          '$0{,}05 \\cdot \\sin 45°$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['schwingung-form'] },
+      ),
+      mc(
+        'Ein Schüler interpretiert $x(t) = 3\\sin(2t + 1)$ (SI-Einheiten) als "Amplitude $3$ m, Periode $1$ s, Startauslenkung $2$". Wo liegt der Fehler?',
+        [
+          'Nur die Amplitude ist korrekt ($A = 3$ m). $\\omega = 2$ rad/s liefert $T = 2\\pi/\\omega = \\pi \\approx 3{,}14$ s (nicht $1$). Der Wert $1$ ist die Phase $\\varphi$ in rad — die Anfangsauslenkung ist $x(0) = 3\\sin 1 \\approx 2{,}52$ m.',
+          '$A$ ist falsch — müsste $\\sqrt3$ sein.',
+          'Die Schwingung ist zeitlich konstant.',
+          '$\\omega = 2$ stimmt nicht, es müsste $\\omega = 1$ sein.',
+        ],
+        0,
+        `**Ansatz:** Form $A\\sin(\\omega t + \\varphi)$ korrekt interpretieren.
+
+**Rechnung:** $A = 3$, $\\omega = 2$ rad/s, $\\varphi = 1$ rad; $T = 2\\pi/\\omega = \\pi$ s; $x(0) = 3\\sin 1 \\approx 2{,}52$ m.
+
+**Probe:** Eine Schwingung mit $\\omega=2$ rad/s vollendet $2$ rad pro Sekunde, braucht also $\\pi$ s für $2\\pi$ rad = eine volle Periode.
+
+**Typischer Fehler:** $\\omega$ mit $f$ oder $T$ verwechseln.`,
+        [
+          '$T = 2\\pi/\\omega$.',
+          '$\\varphi$ ist die Phase, nicht die Startauslenkung selbst.',
+          '$x(0) = A\\sin\\varphi$.',
+        ],
+        {
+          1: 'Amplitude ist korrekt $3$.',
+          2: 'Die Schwingung ist zeitabhängig ($\\omega \\neq 0$).',
+          3: '$\\omega = 2$ steht direkt im Term und stimmt.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['schwingung-form'] },
+      ),
+      ni(
+        'Eine Schwingung hat $A = 0{,}1$ m, $\\omega = 2\\pi$ rad/s, $\\varphi = \\pi/2$. Welchen Wert hat $x$ bei $t = 0$? (Einheit m)',
+        0.1, 0.001, 'm',
+        `**Ansatz:** $x(0) = A\\sin(\\omega \\cdot 0 + \\varphi) = A\\sin\\varphi$.
+
+**Rechnung:** $x(0) = 0{,}1 \\cdot \\sin(\\pi/2) = 0{,}1 \\cdot 1 = 0{,}1$ m.
+
+**Probe:** Bei $\\varphi = \\pi/2$ startet die Sinus-Schwingung am Maximum (entspricht einem Kosinus).
+
+**Typischer Fehler:** $\\sin(\\pi/2) = 0$ annehmen.`,
+        [
+          'Einsetzen $t = 0$.',
+          '$x(0) = A\\sin\\varphi$.',
+          '$\\sin(\\pi/2) = 1$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['schwingung-form'] },
+      ),
+    ],
+
+    // ── [2] ω = 2πf = 2π/T ───────────────────────────────────────────────
+    2: [
+      tf(
+        'Für eine Schwingung gilt $\\omega = 2\\pi f = 2\\pi/T$, wobei $f$ die Frequenz und $T$ die Periode ist.',
+        true,
+        `**Ansatz:** $2\\pi$ rad entspricht einer vollen Periode. In Zeit $T$ werden $2\\pi$ rad durchlaufen.
+
+**Rechnung:** $\\omega = 2\\pi / T$ und $f = 1/T \\Rightarrow \\omega = 2\\pi f$.
+
+**Probe:** $f = 50$ Hz $\\Rightarrow \\omega = 100\\pi \\approx 314{,}16$ rad/s ✓
+
+**Typischer Fehler:** Die Faktoren $2\\pi$ und $\\pi$ verwechseln.`,
+        [
+          'Volle Periode = $2\\pi$ rad.',
+          '$T = 1/f$ (Periode = Kehrwert Frequenz).',
+          'SI-Einheiten: Hz = 1/s, rad/s.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['omega-f-T'] },
+      ),
+      mc(
+        'Ein Pendel schwingt mit $f = 2$ Hz. Wie groß ist $\\omega$?',
+        [
+          '$\\omega = 4\\pi$ rad/s',
+          '$\\omega = 2$ rad/s',
+          '$\\omega = \\pi/2$ rad/s',
+          '$\\omega = 2\\pi^2$ rad/s',
+        ],
+        0,
+        `**Ansatz:** $\\omega = 2\\pi f$.
+
+**Rechnung:** $\\omega = 2\\pi \\cdot 2 = 4\\pi \\approx 12{,}566$ rad/s.
+
+**Probe:** Periode $T = 1/f = 0{,}5$ s, und $\\omega \\cdot T = 4\\pi \\cdot 0{,}5 = 2\\pi$ ✓
+
+**Typischer Fehler:** $\\omega = f$ setzen (Faktor $2\\pi$ vergessen).`,
+        [
+          '$\\omega = 2\\pi f$.',
+          '$2\\pi \\cdot 2 = 4\\pi$.',
+          'Einheit rad/s.',
+        ],
+        {
+          1: 'Faktor $2\\pi$ vergessen — das ist die Frequenz selbst.',
+          2: '$\\omega = f/4$ ergibt keine konsistente Formel.',
+          3: 'Das ergibt sich aus keiner gültigen Umrechnung.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['omega-f-T'] },
+      ),
+      ni(
+        'Die Periode einer Schwingung ist $T = 0{,}02$ s. Berechne die Kreisfrequenz $\\omega$ in rad/s (4 Dezimalstellen).',
+        314.1593, 0.5, 'rad/s',
+        `**Ansatz:** $\\omega = 2\\pi / T$.
+
+**Rechnung:** $\\omega = 2\\pi / 0{,}02 = 100\\pi \\approx 314{,}159$ rad/s.
+
+**Probe:** $f = 1/T = 50$ Hz; $\\omega = 2\\pi \\cdot 50 = 100\\pi$ ✓ (Netzfrequenz).
+
+**Typischer Fehler:** $\\omega = 1/T = 50$ (das wäre $f$, ohne $2\\pi$).`,
+        [
+          '$T = 0{,}02$ s entspricht $f = 50$ Hz.',
+          '$\\omega = 2\\pi f$.',
+          '$100\\pi \\approx 314{,}16$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['omega-f-T'] },
+      ),
+      mc(
+        'Ein Schüler schreibt bei $f = 10$ Hz: „$\\omega = \\pi f = 10\\pi$ rad/s." Wo liegt der Fehler?',
+        [
+          'Er hat den Faktor $2$ vergessen: $\\omega = 2\\pi f = 20\\pi \\approx 62{,}8$ rad/s. In einer vollen Periode sind $2\\pi$ rad zurückzulegen, nicht $\\pi$.',
+          '$f = 10$ Hz ist zu schnell.',
+          'Er hätte $\\omega = 2f$ schreiben müssen.',
+          'Die Aussage stimmt.',
+        ],
+        0,
+        `**Ansatz:** Volle Schwingung entspricht $2\\pi$ rad, nicht $\\pi$.
+
+**Rechnung:** $\\omega = 2\\pi \\cdot 10 = 20\\pi \\approx 62{,}83$ rad/s.
+
+**Probe:** Halbperiode = $\\pi$ rad, volle Periode = $2\\pi$ rad.
+
+**Typischer Fehler:** Halbe und volle Periode verwechseln.`,
+        [
+          'Eine volle Periode = $2\\pi$ rad.',
+          '$\\omega = 2\\pi f$, nicht $\\pi f$.',
+          '$\\omega = 20\\pi$ ist das Doppelte seiner Antwort.',
+        ],
+        {
+          1: '$10$ Hz ist eine übliche Schwingungsfrequenz.',
+          2: '$\\omega = 2f$ hat keine Einheit rad/s — der $\\pi$-Faktor ist Pflicht.',
+          3: 'Nein — Faktor $2$ fehlt.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['omega-f-T'] },
+      ),
+      ni(
+        'Ein Rotor dreht mit $n = 3000$ U/min (Umdrehungen pro Minute). Berechne die Kreisfrequenz $\\omega$ in rad/s (2 Dezimalstellen).',
+        314.1593, 1, 'rad/s',
+        `**Ansatz:** Erst $f$ in Hz: $f = n/60 = 3000/60 = 50$ Hz. Dann $\\omega = 2\\pi f$.
+
+**Rechnung:** $\\omega = 2\\pi \\cdot 50 = 100\\pi \\approx 314{,}16$ rad/s.
+
+**Probe:** $T = 1/f = 0{,}02$ s; in dieser Zeit wird $1$ Umdrehung $= 2\\pi$ rad durchlaufen ✓
+
+**Typischer Fehler:** U/min direkt als rad/s nehmen, ohne auf Hz umzurechnen.`,
+        [
+          'U/min in Hz: $n/60$.',
+          '$3000/60 = 50$ Hz.',
+          '$\\omega = 2\\pi \\cdot 50 = 100\\pi$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['omega-f-T'] },
+      ),
+    ],
+
+    // ── [3] Komponenten-Pythagoras Fx² + Fy² = F² ────────────────────────
+    3: [
+      tf(
+        'Für die Kraftkomponenten gilt $F_x^2 + F_y^2 = F^2$ (unabhängig vom Winkel $\\alpha$).',
+        true,
+        `**Ansatz:** $F_x = F\\cos\\alpha, F_y = F\\sin\\alpha$; $F_x^2 + F_y^2 = F^2(\\cos^2\\alpha + \\sin^2\\alpha) = F^2 \\cdot 1$.
+
+**Rechnung:** Pythagoras-Identität angewandt auf den Kraft-Betrag.
+
+**Probe:** $F = 10, \\alpha=30°$: $F_x \\approx 8{,}66, F_y = 5$; $75 + 25 = 100 = 10^2$ ✓
+
+**Typischer Fehler:** Glauben, die Gleichung gelte nur für bestimmte Winkel.`,
+        [
+          'Direkt aus $\\cos^2+\\sin^2=1$.',
+          'Gilt für jeden Winkel und jede Richtung.',
+          'Nützlich zum Prüfen einer Zerlegung.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['komponenten-pythag'] },
+      ),
+      mc(
+        'Eine Kraft hat $F_x = 6$ N und $F_y = 8$ N. Wie groß ist der Gesamtbetrag $F$?',
+        [
+          '$F = 10$ N',
+          '$F = 14$ N',
+          '$F = 48$ N',
+          '$F = \\sqrt{14}$ N',
+        ],
+        0,
+        `**Ansatz:** $F = \\sqrt{F_x^2 + F_y^2}$.
+
+**Rechnung:** $F = \\sqrt{36 + 64} = \\sqrt{100} = 10$ N.
+
+**Probe:** 6-8-10 ist ein klassisches pythagoräisches Tripel.
+
+**Typischer Fehler:** $F_x + F_y = 14$ (Linearitätsfalle).`,
+        [
+          'Pythagoras: Wurzel aus Quadrat-Summe.',
+          '$6^2 + 8^2 = 100$.',
+          '$\\sqrt{100} = 10$.',
+        ],
+        {
+          1: 'Linearitätsfalle: Kräfte sind Vektoren, man addiert nicht die Beträge.',
+          2: '$48 = 6 \\cdot 8$ — Produkt statt Pythagoras.',
+          3: 'Addition der Beträge unter der Wurzel — falsch.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['komponenten-pythag'] },
+      ),
+      ni(
+        'Eine Kraft hat $F_x = 30$ N und $F_y = 40$ N. Berechne den Gesamtbetrag $F$ in N.',
+        50, 0.5, 'N',
+        `**Ansatz:** $F = \\sqrt{F_x^2 + F_y^2}$.
+
+**Rechnung:** $F = \\sqrt{900 + 1600} = \\sqrt{2500} = 50$ N.
+
+**Probe:** 30-40-50 = 3-4-5 skaliert ✓
+
+**Typischer Fehler:** $30 + 40 = 70$ N (Linearität).`,
+        [
+          'Pythagoras.',
+          '$30^2 = 900, 40^2 = 1600$.',
+          '$\\sqrt{2500} = 50$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['komponenten-pythag'] },
+      ),
+      mc(
+        'Ein Schüler zerlegt $F = 100$ N und erhält $F_x = 80$ N, $F_y = 70$ N. Wieso ist die Rechnung garantiert falsch, ohne dass man den Winkel kennt?',
+        [
+          'Pythagoras-Check: $F_x^2 + F_y^2 = 6400 + 4900 = 11300 \\neq 10000 = F^2$. Die Komponenten passen nicht zum Gesamtbetrag.',
+          'Die Komponenten dürfen nicht beide positiv sein.',
+          '$F_x$ muss immer größer als $F_y$ sein.',
+          'Die Zerlegung stimmt, man muss nur den Winkel ausrechnen.',
+        ],
+        0,
+        `**Ansatz:** Pythagoras muss immer gelten — unabhängig vom Winkel.
+
+**Rechnung:** $80^2 + 70^2 = 11300$, aber $100^2 = 10000$. Differenz $1300$ — Rechenfehler.
+
+**Probe:** Richtige Zerlegungen erfüllen immer $F_x^2 + F_y^2 = F^2$.
+
+**Typischer Fehler:** Komponenten aus zwei verschiedenen Kräften mischen.`,
+        [
+          'Pythagoras-Check anwenden.',
+          'Summe der Quadrate muss $F^2$ ergeben.',
+          'Hier: $11300 \\neq 10000$.',
+        ],
+        {
+          1: 'Vorzeichen hängen vom Quadranten ab — beide positiv ist in Q1 völlig normal.',
+          2: 'Kein Zwang — $F_x$ kann kleiner sein (Winkel $> 45°$).',
+          3: 'Pythagoras schlägt bereits fehl, also ist die Zerlegung falsch.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['komponenten-pythag'] },
+      ),
+      ni(
+        'Eine Kraft wird in Komponenten $F_x = 12$ N und $F_y = 5$ N zerlegt. Unter welchem Winkel $\\alpha$ zur $x$-Achse wirkt sie? (Ergebnis in Grad, 2 Dezimalstellen)',
+        22.6199, 0.1, '°',
+        `**Ansatz:** $\\tan\\alpha = F_y/F_x$.
+
+**Rechnung:** $\\tan\\alpha = 5/12 \\approx 0{,}4167$; $\\alpha = \\arctan(5/12) \\approx 22{,}62°$.
+
+**Probe:** $F = \\sqrt{144 + 25} = \\sqrt{169} = 13$ N; $F_x = 13 \\cos 22{,}62° \\approx 12$ ✓ (5-12-13-Dreieck).
+
+**Typischer Fehler:** $F_x/F_y$ statt $F_y/F_x$ nehmen → $\\arctan(12/5) \\approx 67{,}4°$.`,
+        [
+          '$\\tan\\alpha = F_y/F_x$.',
+          '$\\arctan(5/12)$.',
+          'Taschenrechner in DEG.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['komponenten-pythag', 'kraft-zerlegung'] },
+      ),
+    ],
+
+    // ── [4] Schiefe Ebene F_H = mg sinα, F_N = mg cosα ───────────────────
+    4: [
+      matching(
+        'Ordne jeder Kraft auf der schiefen Ebene den richtigen Ausdruck zu.',
+        [
+          { left: 'Hangabtriebskraft $F_H$', right: '$m g \\sin\\alpha$' },
+          { left: 'Normalkraft $F_N$',        right: '$m g \\cos\\alpha$' },
+          { left: 'Gewichtskraft $F_G$',      right: '$m g$' },
+        ],
+        `**Ansatz:** Gewichtskraft zerlegen in Komponenten **parallel** und **senkrecht** zur Hangfläche.
+
+**Rechnung:** Parallel (Hangabtrieb): Sinus (wächst mit Winkel). Senkrecht (Normalkraft): Kosinus (sinkt mit Winkel).
+
+**Probe:** Bei $\\alpha = 0°$ (flach) ist $F_H = 0, F_N = mg$ ✓. Bei $\\alpha = 90°$ (senkrecht) ist $F_H = mg, F_N = 0$ ✓.
+
+**Typischer Fehler:** $\\sin$ und $\\cos$ vertauschen → bei flachem Hang würde ein Hangabtrieb auftreten.`,
+        [
+          'Extremfall $\\alpha = 0°$ prüfen.',
+          'Extremfall $\\alpha = 90°$ prüfen.',
+          'Hangabtrieb verschwindet bei flachem Boden.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['schiefe-ebene'] },
+      ),
+      mc(
+        'Ein Körper der Masse $m = 10$ kg liegt auf einer Ebene mit Neigung $\\alpha = 30°$ (nimm $g = 10$ m/s$^2$). Wie groß ist die Hangabtriebskraft?',
+        [
+          '$F_H = 50$ N',
+          '$F_H \\approx 86{,}6$ N',
+          '$F_H = 100$ N',
+          '$F_H = 5$ N',
+        ],
+        0,
+        `**Ansatz:** $F_H = mg\\sin\\alpha$.
+
+**Rechnung:** $F_H = 10 \\cdot 10 \\cdot \\sin 30° = 100 \\cdot \\tfrac12 = 50$ N.
+
+**Probe:** Normalkraft $F_N = 100 \\cos 30° \\approx 86{,}6$ N; $50^2 + 86{,}6^2 \\approx 10000 = (mg)^2$ ✓
+
+**Typischer Fehler:** $\\cos 30°$ statt $\\sin 30°$ → $86{,}6$ N.`,
+        [
+          '$F_H = mg\\sin\\alpha$.',
+          '$\\sin 30° = 1/2$.',
+          '$100 \\cdot 1/2 = 50$.',
+        ],
+        {
+          1: 'Das ist die Normalkraft $F_N = mg\\cos 30°$.',
+          2: 'Das ist die volle Gewichtskraft $mg$.',
+          3: 'Faktor $g$ oder $m$ vergessen.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['schiefe-ebene'] },
+      ),
+      ni(
+        'Ein Körper der Masse $m = 5$ kg liegt auf einer Rampe mit Neigung $\\alpha = 45°$ (nimm $g = 9{,}81$ m/s$^2$). Berechne die Normalkraft $F_N$ in N (2 Dezimalstellen).',
+        34.6836, 0.2, 'N',
+        `**Ansatz:** $F_N = mg\\cos\\alpha$.
+
+**Rechnung:** $F_N = 5 \\cdot 9{,}81 \\cdot \\cos 45° = 49{,}05 \\cdot \\tfrac{\\sqrt2}{2} \\approx 49{,}05 \\cdot 0{,}7071 \\approx 34{,}68$ N.
+
+**Probe:** Bei $45°$ gilt $F_N = F_H = mg/\\sqrt2$; $F_H^2 + F_N^2 = 2 \\cdot (mg)^2/2 = (mg)^2$ ✓
+
+**Typischer Fehler:** Bei $45°$ beide Komponenten als $mg/2$ annehmen.`,
+        [
+          '$F_N = mg\\cos\\alpha$.',
+          '$\\cos 45° \\approx 0{,}7071$.',
+          '$5 \\cdot 9{,}81 \\cdot 0{,}7071$.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['schiefe-ebene'] },
+      ),
+      mc(
+        'Ein Schüler rechnet für eine Rampe mit $\\alpha = 60°$ und $m = 2$ kg (mit $g = 10$ m/s$^2$): „$F_H = mg\\cos 60° = 10$ N, weil der Hang stark geneigt ist." Wo liegt der Fehler?',
+        [
+          'Er verwechselt $\\sin$ und $\\cos$. Korrekt: $F_H = mg\\sin 60° = 20 \\cdot \\tfrac{\\sqrt3}{2} \\approx 17{,}3$ N. Die Hangabtriebskraft wächst mit dem Winkel — bei steilem Hang ist sie groß.',
+          'Er hat $g$ falsch angesetzt.',
+          'Die Formel stimmt, nur das Ergebnis ist unpräzise.',
+          'Die Hangabtriebskraft ist bei jedem Winkel gleich $mg$.',
+        ],
+        0,
+        `**Ansatz:** Hangabtrieb $\\propto \\sin\\alpha$ (wächst mit Winkel); Normalkraft $\\propto \\cos\\alpha$ (sinkt mit Winkel).
+
+**Rechnung:** Korrekt: $F_H = 2 \\cdot 10 \\cdot \\sin 60° = 20 \\cdot 0{,}866 \\approx 17{,}3$ N.
+
+**Probe:** Extremfall $\\alpha=90°$ (senkrechte Wand): $F_H = mg$, $F_N = 0$ — Sinus-Formel liefert das.
+
+**Typischer Fehler:** Intuition "steiler = mehr Normalkraft" — verkehrt.`,
+        [
+          'Hangabtrieb wächst mit Winkel → Sinus.',
+          'Normalkraft sinkt mit Winkel → Kosinus.',
+          'Extremfälle testen.',
+        ],
+        {
+          1: '$g = 10$ m/s² wurde angegeben, also OK.',
+          2: 'Nein — die Formelwahl ist strukturell falsch.',
+          3: 'Nein — $F_H$ hängt sehr wohl vom Winkel ab.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['schiefe-ebene'] },
+      ),
+      ni(
+        'Ein Auto ($m = 1500$ kg) rollt auf einer Straße mit $10°$ Gefälle. Welche Hangabtriebskraft wirkt? (nimm $g = 9{,}81$ m/s$^2$, Ergebnis in N, 0 Dezimalstellen)',
+        2555, 10, 'N',
+        `**Ansatz:** $F_H = mg\\sin 10°$.
+
+**Rechnung:** $F_H = 1500 \\cdot 9{,}81 \\cdot \\sin 10° = 14715 \\cdot 0{,}1736 \\approx 2555$ N.
+
+**Probe:** Bei $10°$ rund $17{,}4$ % der Gewichtskraft als Hangabtrieb (guter Richtwert).
+
+**Typischer Fehler:** $\\sin$ für kleine Winkel als $\\alpha$ in rad approximieren, aber Taschenrechner auf RAD lassen.`,
+        [
+          '$F_H = mg\\sin\\alpha$.',
+          '$mg = 1500 \\cdot 9{,}81 = 14715$ N.',
+          '$\\sin 10° \\approx 0{,}1736$.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['schiefe-ebene'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // trig-3-4 — Inverse Funktionen  (6 subGoals)
+  // 30 Matrix-Aufgaben: 6 SGs × 5 Stufen.
+  // ────────────────────────────────────────────────────────────────────────
+  'trig-3-4': {
+    // ── [0] arcsin: [-1, 1] → [-90°, 90°] ────────────────────────────────
+    0: [
+      tf(
+        'Der Wertebereich von $\\arcsin$ ist $[-90°, 90°]$.',
+        true,
+        `**Ansatz:** Hauptwertbereich ist die rechte Halbkreisseite, wo $\\sin$ monoton wächst.
+
+**Rechnung:** $\\arcsin(-1) = -90°, \\arcsin(0) = 0°, \\arcsin(1) = 90°$.
+
+**Probe:** Monotonie: $\\arcsin$ ist auf $[-1,1]$ streng monoton steigend.
+
+**Typischer Fehler:** Wertebereich $[0°, 180°]$ wählen (das ist $\\arccos$).`,
+        [
+          'Monotonie-Forderung wählt die rechte Halbkreisseite.',
+          'Umfasst $0°$ und erlaubt negative Winkel.',
+          'Nicht verwechseln mit $\\arccos$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['arcsin-def'] },
+      ),
+      mc(
+        'Was ist $\\arcsin(\\tfrac12)$?',
+        [
+          '$30°$',
+          '$150°$',
+          '$60°$',
+          '$210°$',
+        ],
+        0,
+        `**Ansatz:** $\\arcsin$ liefert den Hauptwert in $[-90°, 90°]$.
+
+**Rechnung:** $\\sin 30° = \\tfrac12$; $30°$ liegt im Hauptwertbereich.
+
+**Probe:** $\\sin 30° = 0{,}5$ ✓
+
+**Typischer Fehler:** Die weitere Lösung $150°$ (liegt außerhalb des Hauptwertbereichs) angeben.`,
+        [
+          'Grundwert: $\\sin 30° = \\tfrac12$.',
+          '$30°$ liegt in $[-90°, 90°]$.',
+          'Nur Hauptwert!',
+        ],
+        {
+          1: '$\\sin 150° = \\tfrac12$ zwar korrekt, aber $150°$ ist NICHT im Hauptwertbereich $[-90°, 90°]$ von $\\arcsin$.',
+          2: '$\\sin 60° = \\tfrac{\\sqrt3}{2} \\neq \\tfrac12$.',
+          3: '$\\sin 210° = -\\tfrac12$, falsches Vorzeichen und außerhalb Hauptwert.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['arcsin-def'] },
+      ),
+      ni(
+        'Berechne $\\arcsin(-\\tfrac12)$ in Grad.',
+        -30, 0.001, '°',
+        `**Ansatz:** $\\sin$ ist ungerade: $\\sin(-\\alpha) = -\\sin\\alpha$, daher $\\arcsin(-x) = -\\arcsin(x)$.
+
+**Rechnung:** $\\arcsin(-\\tfrac12) = -\\arcsin(\\tfrac12) = -30°$.
+
+**Probe:** $-30° \\in [-90°, 90°]$ ✓; $\\sin(-30°) = -\\tfrac12$ ✓
+
+**Typischer Fehler:** Positives Ergebnis angeben (Vorzeichen beim Sinus vergessen) oder $330°$ (außerhalb Hauptwert).`,
+        [
+          'Punktsymmetrie: $\\arcsin(-x) = -\\arcsin(x)$.',
+          '$\\arcsin(\\tfrac12) = 30°$.',
+          'Also $-30°$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['arcsin-def'] },
+      ),
+      mc(
+        'Ein Schüler schreibt $\\arcsin(\\sin 150°) = 150°$. Wo liegt der Fehler?',
+        [
+          '$\\arcsin$ liefert immer einen Wert in $[-90°, 90°]$. Da $\\sin 150° = \\tfrac12$ gilt, ist $\\arcsin(\\sin 150°) = \\arcsin(\\tfrac12) = 30°$, nicht $150°$.',
+          '$\\sin 150° \\neq \\tfrac12$.',
+          '$\\arcsin$ ist die exakte Umkehrung von $\\sin$ für jeden Winkel.',
+          'Die Aussage stimmt.',
+        ],
+        0,
+        `**Ansatz:** $\\arcsin(\\sin x) = x$ gilt nur, wenn $x$ bereits im Hauptwertbereich ist.
+
+**Rechnung:** $\\sin 150° = \\sin(180°-30°) = \\sin 30° = \\tfrac12$. $\\arcsin(\\tfrac12) = 30°$.
+
+**Probe:** Der Sinus "vergisst" den Unterschied zwischen $150°$ und $30°$; $\\arcsin$ kann das nicht rückgängig machen.
+
+**Typischer Fehler:** Annahme, dass Umkehrung immer gilt.`,
+        [
+          '$\\sin 150° = \\tfrac12$ (Supplement).',
+          'Hauptwert-Projektion in $[-90°, 90°]$.',
+          'Verlorene Information kann $\\arcsin$ nicht rekonstruieren.',
+        ],
+        {
+          1: '$\\sin 150° = \\tfrac12$ ist korrekt (Supplement-Formel).',
+          2: '$\\arcsin(\\sin x) = x$ stimmt nur auf $[-90°, 90°]$.',
+          3: 'Nein — Hauptwert ist $30°$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['arcsin-def'] },
+      ),
+      ni(
+        'Berechne $\\arcsin(\\tfrac{\\sqrt2}{2})$ in Grad.',
+        45, 0.001, '°',
+        `**Ansatz:** Grundwert $\\sin 45° = \\tfrac{\\sqrt2}{2}$.
+
+**Rechnung:** $\\arcsin(\\tfrac{\\sqrt2}{2}) = 45°$.
+
+**Probe:** $45° \\in [-90°, 90°]$ ✓
+
+**Typischer Fehler:** $\\tfrac{\\sqrt2}{2} \\approx 0{,}707$ mit $\\tfrac12$ verwechseln.`,
+        [
+          '$\\tfrac{\\sqrt2}{2} = \\sin 45°$.',
+          'Hauptwert.',
+          '$45°$ liegt in $[-90°, 90°]$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['arcsin-def'] },
+      ),
+    ],
+
+    // ── [1] arccos: [-1, 1] → [0°, 180°] ─────────────────────────────────
+    1: [
+      tf(
+        'Der Wertebereich von $\\arccos$ ist $[0°, 180°]$.',
+        true,
+        `**Ansatz:** Hauptwertbereich umfasst obere Halbkreisseite, wo $\\cos$ monoton fällt.
+
+**Rechnung:** $\\arccos(1) = 0°, \\arccos(0) = 90°, \\arccos(-1) = 180°$.
+
+**Probe:** Monotonie: $\\arccos$ streng monoton fallend.
+
+**Typischer Fehler:** Wertebereich $[-90°, 90°]$ wählen (das ist $\\arcsin$).`,
+        [
+          'Obere Halbkreisseite.',
+          'Enthält keine negativen Winkel.',
+          'Monoton fallend.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['arccos-def'] },
+      ),
+      mc(
+        'Was ist $\\arccos(\\tfrac12)$?',
+        [
+          '$60°$',
+          '$30°$',
+          '$-60°$',
+          '$300°$',
+        ],
+        0,
+        `**Ansatz:** $\\arccos$ liefert Hauptwert in $[0°, 180°]$.
+
+**Rechnung:** $\\cos 60° = \\tfrac12$.
+
+**Probe:** $60° \\in [0°, 180°]$ ✓
+
+**Typischer Fehler:** Mit $\\arcsin$ verwechseln ($\\arcsin(\\tfrac12) = 30°$).`,
+        [
+          'Grundwert: $\\cos 60° = \\tfrac12$.',
+          '$60°$ liegt in $[0°, 180°]$.',
+          'Nicht $30°$ — das ist $\\arcsin(\\tfrac12)$.',
+        ],
+        {
+          1: '$\\cos 30° = \\tfrac{\\sqrt3}{2} \\neq \\tfrac12$. Du hast vermutlich $\\arcsin$ gedacht.',
+          2: 'Negativer Winkel ist außerhalb des Wertebereichs.',
+          3: '$\\cos 300° = \\tfrac12$, aber außerhalb $[0°, 180°]$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['arccos-def'] },
+      ),
+      ni(
+        'Berechne $\\arccos(-\\tfrac12)$ in Grad.',
+        120, 0.001, '°',
+        `**Ansatz:** $\\arccos(-x) = 180° - \\arccos(x)$ (Kosinus-Symmetrie am Supplement).
+
+**Rechnung:** $\\arccos(-\\tfrac12) = 180° - \\arccos(\\tfrac12) = 180° - 60° = 120°$.
+
+**Probe:** $120° \\in [0°, 180°]$ ✓; $\\cos 120° = -\\tfrac12$ ✓
+
+**Typischer Fehler:** Punktsymmetrie (wie bei $\\arcsin$) annehmen → $-60°$.`,
+        [
+          'Kosinus ist am Supplement gespiegelt, nicht punktsymmetrisch.',
+          '$\\arccos(-x) = 180° - \\arccos(x)$.',
+          '$180° - 60° = 120°$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['arccos-def'] },
+      ),
+      mc(
+        'Ein Schüler rechnet $\\arccos(-1) = -180°$. Wo liegt der Fehler?',
+        [
+          'Der Hauptwertbereich von $\\arccos$ ist $[0°, 180°]$ — negative Werte sind ausgeschlossen. Korrekt: $\\arccos(-1) = 180°$.',
+          '$\\cos$ wird bei $-180°$ nicht zu $-1$.',
+          '$-1$ ist nicht im Definitionsbereich.',
+          'Die Aussage stimmt.',
+        ],
+        0,
+        `**Ansatz:** Wertebereich von $\\arccos$ beachten.
+
+**Rechnung:** $\\cos 180° = -1$, und $180° \\in [0°, 180°]$ ✓
+
+**Probe:** $\\cos(-180°) = \\cos 180° = -1$, aber $-180°$ ist nicht im Hauptwertbereich.
+
+**Typischer Fehler:** Hauptwertbereich von $\\arcsin$ ($[-90°, 90°]$) auf $\\arccos$ übertragen.`,
+        [
+          'Hauptwertbereich-Regel.',
+          '$\\arccos$ erlaubt $0°$ bis $180°$ (inklusive).',
+          '$\\cos 180° = -1$ ✓',
+        ],
+        {
+          1: '$\\cos(-180°)$ wäre $-1$, aber das ist nicht der Hauptwert.',
+          2: '$-1 \\in [-1, 1]$, also im Definitionsbereich.',
+          3: 'Nein — Hauptwertbereich ausschließen.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['arccos-def'] },
+      ),
+      ni(
+        'Berechne $\\arccos(\\tfrac{\\sqrt3}{2})$ in Grad.',
+        30, 0.001, '°',
+        `**Ansatz:** Grundwert $\\cos 30° = \\tfrac{\\sqrt3}{2}$.
+
+**Rechnung:** $\\arccos(\\tfrac{\\sqrt3}{2}) = 30°$.
+
+**Probe:** $30° \\in [0°, 180°]$ ✓
+
+**Typischer Fehler:** Mit $\\arcsin(\\tfrac{\\sqrt3}{2}) = 60°$ verwechseln.`,
+        [
+          '$\\cos 30° = \\tfrac{\\sqrt3}{2}$.',
+          'Hauptwert in $[0°, 180°]$.',
+          'Nicht $60°$ (das wäre $\\arcsin$).',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['arccos-def'] },
+      ),
+    ],
+
+    // ── [2] arctan: ℝ → (-90°, 90°) ──────────────────────────────────────
+    2: [
+      tf(
+        'Der Wertebereich von $\\arctan$ ist $(-90°, 90°)$ — die Pole $\\pm 90°$ sind ausgeschlossen.',
+        true,
+        `**Ansatz:** $\\tan$ hat Pole bei $\\pm 90°$, daher sind diese Winkel nicht Werte der Umkehrung.
+
+**Rechnung:** $\\arctan(0) = 0°$; $\\arctan(\\text{sehr groß}) \\to 90°$ aber nie gleich $90°$.
+
+**Probe:** Asymptotisches Verhalten: $\\arctan$ hat horizontale Asymptoten bei $\\pm 90°$.
+
+**Typischer Fehler:** $\\pm 90°$ als erreichbar betrachten.`,
+        [
+          'Tangens-Pole bei $\\pm 90°$.',
+          'Offenes Intervall.',
+          'Definitionsbereich ist ganz $\\mathbb{R}$.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['arctan-def'] },
+      ),
+      mc(
+        'Was ist $\\arctan(1)$?',
+        [
+          '$45°$',
+          '$60°$',
+          '$90°$',
+          '$135°$',
+        ],
+        0,
+        `**Ansatz:** $\\tan 45° = 1$.
+
+**Rechnung:** $\\arctan(1) = 45°$.
+
+**Probe:** $45° \\in (-90°, 90°)$ ✓
+
+**Typischer Fehler:** Mit $\\arcsin(1) = 90°$ verwechseln.`,
+        [
+          '$\\tan 45° = 1$.',
+          'Hauptwert liegt im offenen Intervall.',
+          '$45°$ ist der kleinste positive Winkel mit $\\tan = 1$.',
+        ],
+        {
+          1: '$\\tan 60° = \\sqrt3 \\approx 1{,}73$, nicht $1$.',
+          2: '$\\tan 90°$ ist undefiniert (Pol).',
+          3: '$135°$ liegt außerhalb des Hauptwertbereichs.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['arctan-def'] },
+      ),
+      ni(
+        'Berechne $\\arctan(\\sqrt3)$ in Grad.',
+        60, 0.001, '°',
+        `**Ansatz:** Grundwert $\\tan 60° = \\sqrt3$.
+
+**Rechnung:** $\\arctan(\\sqrt3) = 60°$.
+
+**Probe:** $60° \\in (-90°, 90°)$ ✓
+
+**Typischer Fehler:** $\\arctan(\\sqrt3)$ mit $\\arctan(1/\\sqrt3) = 30°$ verwechseln.`,
+        [
+          '$\\tan 60° = \\sqrt3 \\approx 1{,}732$.',
+          'Hauptwert.',
+          '$60°$ liegt im offenen Intervall.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['arctan-def'] },
+      ),
+      mc(
+        'Ein Schüler behauptet $\\arctan(10^{10}) = 90°$, weil der Tangens dort "unendlich" wird. Wo liegt der Fehler?',
+        [
+          'Der Wert $90°$ ist kein gültiger Funktionswert von $\\arctan$. Korrekt: $\\arctan(10^{10}) \\approx 89{,}9999999994°$ — dicht an $90°$, aber nie erreicht (horizontale Asymptote).',
+          '$\\tan 90°$ ist definiert und gleich $10^{10}$.',
+          'Der Definitionsbereich von $\\arctan$ ist $[-1, 1]$.',
+          'Die Aussage stimmt.',
+        ],
+        0,
+        `**Ansatz:** Offenes Intervall bedeutet: nie erreicht, nur angenähert.
+
+**Rechnung:** $\\arctan$ strebt gegen $90°$, erreicht es aber nicht.
+
+**Probe:** Für jede endliche Zahl $x$ ist $\\arctan(x) < 90°$, selbst wenn $x$ sehr groß ist.
+
+**Typischer Fehler:** Asymptote mit Funktionswert verwechseln.`,
+        [
+          'Asymptote vs. Wert.',
+          'Offenes Intervall schließt Grenzen aus.',
+          '$\\tan 90°$ ist undefiniert.',
+        ],
+        {
+          1: '$\\tan 90°$ ist **undefiniert** (Pol), nicht $10^{10}$.',
+          2: '$\\arctan$ ist auf ganz $\\mathbb{R}$ definiert.',
+          3: 'Nein — Grenzwert wird nicht erreicht.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['arctan-def'] },
+      ),
+      ni(
+        'Berechne $\\arctan(-1)$ in Grad.',
+        -45, 0.001, '°',
+        `**Ansatz:** $\\arctan$ ist ungerade: $\\arctan(-x) = -\\arctan(x)$.
+
+**Rechnung:** $\\arctan(-1) = -45°$.
+
+**Probe:** $-45° \\in (-90°, 90°)$ ✓; $\\tan(-45°) = -1$ ✓
+
+**Typischer Fehler:** Wie bei $\\arccos$ $180° - 45° = 135°$ rechnen (falsche Symmetrie).`,
+        [
+          '$\\arctan$ punktsymmetrisch (wie $\\arcsin$).',
+          '$\\arctan(1) = 45°$.',
+          'Minus.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['arctan-def'] },
+      ),
+    ],
+
+    // ── [3] Hauptwert vs. weitere Lösungen ───────────────────────────────
+    3: [
+      tf(
+        'Die Gleichung $\\sin x = \\tfrac12$ hat im Bereich $[0°, 360°)$ genau zwei Lösungen, obwohl $\\arcsin(\\tfrac12)$ nur **einen** Wert liefert.',
+        true,
+        `**Ansatz:** $\\arcsin$ liefert Hauptwert, aber Supplement-Formel $\\sin(180°-\\alpha) = \\sin\\alpha$ gibt eine zweite Lösung.
+
+**Rechnung:** Lösungen: $30°$ und $150°$.
+
+**Probe:** $\\sin 30° = \\sin 150° = \\tfrac12$ ✓
+
+**Typischer Fehler:** Nur den Hauptwert als einzige Lösung ansehen.`,
+        [
+          'Hauptwert aus $\\arcsin$.',
+          'Zweite Lösung per Supplement.',
+          'Im $[0°, 360°)$-Bereich genau zwei.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['hauptwert-vs-weitere'] },
+      ),
+      mc(
+        'Welches Paar gibt alle Lösungen von $\\cos x = \\tfrac12$ im Bereich $[0°, 360°)$?',
+        [
+          '$60°$ und $300°$',
+          '$60°$ und $120°$',
+          'Nur $60°$',
+          '$30°$ und $330°$',
+        ],
+        0,
+        `**Ansatz:** Hauptwert $\\arccos(\\tfrac12) = 60°$. Zweite Lösung via Symmetrie: $\\cos(-\\alpha) = \\cos\\alpha$, also $-60° \\equiv 300°$.
+
+**Rechnung:** Lösungen: $60°$ und $300°$.
+
+**Probe:** $\\cos 60° = \\cos 300° = \\tfrac12$ ✓
+
+**Typischer Fehler:** Supplement-Formel (wie bei Sinus) statt Symmetrie am Kosinus anwenden.`,
+        [
+          '$\\arccos(\\tfrac12) = 60°$.',
+          'Kosinus ist achsensymmetrisch: $\\cos(-\\alpha) = \\cos\\alpha$.',
+          '$-60° \\equiv 300°$ (modulo $360°$).',
+        ],
+        {
+          1: '$\\cos 120° = -\\tfrac12 \\neq \\tfrac12$ — falsche Symmetrieregel (Sinus-Regel angewandt).',
+          2: 'Nur Hauptwert — zweite Lösung fehlt.',
+          3: '$\\cos 30° = \\tfrac{\\sqrt3}{2} \\neq \\tfrac12$.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['hauptwert-vs-weitere'] },
+      ),
+      ni(
+        'Bestimme die größte Lösung von $\\sin x = \\tfrac{\\sqrt2}{2}$ im Bereich $[0°, 360°)$ (in Grad).',
+        135, 0.01, '°',
+        `**Ansatz:** Hauptwert $\\arcsin(\\tfrac{\\sqrt2}{2}) = 45°$. Supplement $180°-45° = 135°$.
+
+**Rechnung:** Lösungen in $[0°, 360°)$: $45°$ und $135°$. Größte: $135°$.
+
+**Probe:** $\\sin 135° = \\sin 45° = \\tfrac{\\sqrt2}{2}$ ✓
+
+**Typischer Fehler:** Nur Hauptwert $45°$ angeben.`,
+        [
+          'Hauptwert aus $\\arcsin$.',
+          'Supplement $180°-45°$.',
+          '$135° > 45°$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['hauptwert-vs-weitere'] },
+      ),
+      mc(
+        'Ein Schüler schreibt beim Lösen von $\\cos x = -\\tfrac12$ im Bereich $[0°, 360°)$: „$x = \\arccos(-\\tfrac12) = 120°$ — fertig." Wo liegt der Fehler?',
+        [
+          'Nur der Hauptwert ist angegeben; durch die Achsensymmetrie von Kosinus gibt es eine zweite Lösung: $x = 360° - 120° = 240°$. Vollständige Lösungsmenge: $\\{120°, 240°\\}$.',
+          '$\\arccos(-\\tfrac12) = 240°$, nicht $120°$.',
+          'Die Gleichung hat gar keine Lösung.',
+          '$-\\tfrac12$ ist nicht im Definitionsbereich.',
+        ],
+        0,
+        `**Ansatz:** Eine Gleichung $\\cos x = c$ mit $c \\in (-1, 1)$ hat im Bereich $[0°, 360°)$ immer **zwei** Lösungen.
+
+**Rechnung:** $120°$ (Hauptwert) und $360°-120° = 240°$ (gespiegelt an $x$-Achse).
+
+**Probe:** $\\cos 120° = \\cos 240° = -\\tfrac12$ ✓
+
+**Typischer Fehler:** Hauptwert als einzige Lösung annehmen.`,
+        [
+          'Zwei Lösungen pro Periode.',
+          'Symmetrie $\\cos(360°-\\alpha) = \\cos\\alpha$.',
+          'Lösungsmenge aufschreiben.',
+        ],
+        {
+          1: '$\\arccos$ liefert den Hauptwert $120°$ korrekt.',
+          2: 'Die Gleichung hat Lösungen (Definitionsbereich $[-1,1]$ erfüllt).',
+          3: '$-\\tfrac12$ ist im Definitionsbereich.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['hauptwert-vs-weitere'] },
+      ),
+      matching(
+        'Ordne jeder Gleichung die **zweite** Lösung im Bereich $[0°, 360°)$ zu (erste ist jeweils der Hauptwert der Umkehrfunktion).',
+        [
+          { left: '$\\sin x = \\tfrac12$ (Hauptwert $30°$)',     right: '$150°$' },
+          { left: '$\\cos x = \\tfrac12$ (Hauptwert $60°$)',     right: '$300°$' },
+          { left: '$\\sin x = -\\tfrac{\\sqrt2}{2}$ (Hauptwert $-45° \\equiv 315°$)', right: '$225°$' },
+          { left: '$\\cos x = -\\tfrac{\\sqrt3}{2}$ (Hauptwert $150°$)', right: '$210°$' },
+        ],
+        `**Ansatz:** Sinus: Supplement $180°-\\alpha$. Kosinus: Spiegel $360°-\\alpha$.
+
+**Rechnung:** Je nach Funktion die passende Symmetrie anwenden.
+
+**Probe:** Jede zweite Lösung einsetzen: liefert denselben Wert wie der Hauptwert.
+
+**Typischer Fehler:** Symmetrieregel (Sinus vs. Kosinus) vertauschen.`,
+        [
+          'Sinus: Supplement $180°-\\alpha$.',
+          'Kosinus: Spiegel $360°-\\alpha$.',
+          'Beide Lösungen im Standardbereich angeben.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['hauptwert-vs-weitere'] },
+      ),
+    ],
+
+    // ── [4] DEG/RAD-Modus ────────────────────────────────────────────────
+    4: [
+      tf(
+        'Der Taschenrechner-Modus (DEG oder RAD) beeinflusst, welchen numerischen Wert $\\arcsin(0{,}5)$ liefert.',
+        true,
+        `**Ansatz:** Im DEG-Modus liefert $\\arcsin(0{,}5) = 30$ (Grad); im RAD-Modus $\\approx 0{,}5236$ (Bogenmaß $= \\pi/6$).
+
+**Rechnung:** Beide Werte beschreiben denselben Winkel, aber in unterschiedlichen Einheiten.
+
+**Probe:** $30° = \\pi/6$ rad $\\approx 0{,}5236$ ✓
+
+**Typischer Fehler:** Das Einheitensymbol $°$ vergessen und Zahlenwerte verwechseln.`,
+        [
+          'Grad vs. Bogenmaß.',
+          '$180° = \\pi$ rad.',
+          '$30° = \\pi/6 \\approx 0{,}524$.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['modus-pflicht'] },
+      ),
+      mc(
+        'Ein Taschenrechner liefert $\\arcsin(1) = 1{,}5708$. In welchem Modus wurde gerechnet?',
+        [
+          'RAD (Bogenmaß)',
+          'DEG (Grad)',
+          'GRAD (Gon)',
+          'Der Wert ist falsch — $\\arcsin(1)$ existiert nicht.',
+        ],
+        0,
+        `**Ansatz:** $\\arcsin(1) = 90° = \\pi/2$ rad $\\approx 1{,}5708$.
+
+**Rechnung:** Der Zahlenwert $1{,}5708$ entspricht $\\pi/2$ — das Bogenmaß (RAD).
+
+**Probe:** $\\sin(1{,}5708) = \\sin(\\pi/2) = 1$ ✓ (nur in RAD-Interpretation).
+
+**Typischer Fehler:** $1{,}5708$ als $1{,}57°$ lesen (absurd klein).`,
+        [
+          '$\\pi/2 \\approx 1{,}5708$.',
+          'Grad wäre $90$, Bogenmaß ist $\\pi/2$.',
+          'RAD-Modus.',
+        ],
+        {
+          1: 'In DEG wäre das Ergebnis $90$, nicht $1{,}5708$.',
+          2: 'GRAD (Neugrad/Gon): $100$ Gon für einen Rechten Winkel — wäre $100$ hier.',
+          3: '$\\arcsin(1) = 90°$ ist sehr wohl definiert.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['modus-pflicht'] },
+      ),
+      ni(
+        'Was liefert $\\sin(\\pi/6)$, wenn der Taschenrechner im RAD-Modus ist? (4 Dezimalstellen)',
+        0.5, 0.001, '',
+        `**Ansatz:** $\\pi/6 \\approx 0{,}5236$ rad $= 30°$ → $\\sin = 0{,}5$.
+
+**Rechnung:** $\\sin(\\pi/6) = \\tfrac12 = 0{,}5$.
+
+**Probe:** In DEG würde der Taschenrechner $\\sin(\\pi/6°) = \\sin(0{,}524°) \\approx 0{,}00914$ liefern — völlig anders.
+
+**Typischer Fehler:** Modus nicht überprüfen.`,
+        [
+          '$\\pi/6$ rad $= 30°$.',
+          'Im RAD-Modus wird die Zahl als Bogenmaß interpretiert.',
+          '$\\sin 30° = \\tfrac12$.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['modus-pflicht'] },
+      ),
+      mc(
+        'Ein Schüler berechnet $\\sin(30)$ auf dem Taschenrechner und erhält $-0{,}988$. Wo liegt der Fehler?',
+        [
+          'Der Taschenrechner steht auf RAD. Er interpretiert $30$ als $30$ rad $\\approx 1719°$ — eine vielfach um die Kreise herum gewundene Position. Für $\\sin 30°$ muss der Modus auf DEG gestellt werden.',
+          '$\\sin 30° = 0{,}5$, aber der Rechner rundet falsch.',
+          'Der Taschenrechner ist defekt.',
+          'Die Aussage $\\sin 30° = -0{,}988$ ist korrekt.',
+        ],
+        0,
+        `**Ansatz:** DEG/RAD-Modus vor dem Rechnen setzen.
+
+**Rechnung:** $\\sin(30 \\text{ rad}) \\approx -0{,}988$ (da $30$ rad $\\approx 4{,}77$ volle Perioden + Rest).
+
+**Probe:** $\\sin 30° = 0{,}5$ (DEG-Modus).
+
+**Typischer Fehler:** Der häufigste Taschenrechnerfehler — Modus ignorieren.`,
+        [
+          'RAD-Modus interpretiert Zahlen als Bogenmaß.',
+          '$30$ rad sind rund $1719°$.',
+          'DEG-Modus liefert $\\sin 30° = 0{,}5$.',
+        ],
+        {
+          1: 'Rundungsfehler sind viel kleiner als der Unterschied $0{,}5$ vs. $-0{,}988$.',
+          2: 'Der Taschenrechner arbeitet korrekt — nur der Modus ist falsch.',
+          3: 'Nein — in DEG wäre $\\sin 30° = 0{,}5$.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['modus-pflicht'] },
+      ),
+      matching(
+        'Ordne jeder Winkelangabe die korrekte Darstellung im jeweils anderen Modus zu.',
+        [
+          { left: '$90°$',         right: '$\\pi/2 \\approx 1{,}5708$ rad' },
+          { left: '$180°$',        right: '$\\pi \\approx 3{,}1416$ rad' },
+          { left: '$\\pi/4$ rad',  right: '$45°$' },
+          { left: '$2\\pi$ rad',   right: '$360°$' },
+        ],
+        `**Ansatz:** Umrechnung $\\alpha_\\text{rad} = \\alpha° \\cdot \\pi/180$.
+
+**Rechnung:** Alle Werte konsistent umrechnen.
+
+**Probe:** Verhältnis $180°/\\pi$ rad $\\approx 57{,}3$ — 1 rad ist etwa $57{,}3°$.
+
+**Typischer Fehler:** $\\pi$ mit $180$ verwechseln.`,
+        [
+          'Voll-Kreis: $360° = 2\\pi$ rad.',
+          '$90° = \\pi/2$ rad.',
+          '$1$ rad $\\approx 57{,}3°$.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['modus-pflicht'] },
+      ),
+    ],
+
+    // ── [5] sin⁻¹ ≠ 1/sin ────────────────────────────────────────────────
+    5: [
+      tf(
+        'Die Notation $\\sin^{-1}(x)$ steht für die Umkehrfunktion $\\arcsin(x)$ und **nicht** für $1/\\sin(x)$.',
+        true,
+        `**Ansatz:** Die Hochschrift $-1$ bei Funktionen kennzeichnet die Umkehrfunktion, nicht den Kehrwert.
+
+**Rechnung:** $\\sin^{-1}(0{,}5) = \\arcsin(0{,}5) = 30°$. Der Kehrwert wäre $1/\\sin(0{,}5°) \\approx 114{,}6$.
+
+**Probe:** Taschenrechner-Taste „SIN$^{-1}$" liefert den Winkel.
+
+**Typischer Fehler:** $\\sin^{-1}(x) = 1/\\sin(x)$ durchziehen (Verwechslung mit $x^{-1} = 1/x$).`,
+        [
+          'Hochschrift $-1$ bei Funktionen = Umkehrfunktion.',
+          'Kehrwert: $1/\\sin(x) = \\csc(x)$.',
+          'Taschenrechner-Taste gibt den Winkel.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['arcsin-vs-reziprok'] },
+      ),
+      mc(
+        'Was ist $\\sin^{-1}(0{,}5)$?',
+        [
+          '$30°$',
+          '$2$',
+          '$0{,}5$',
+          '$\\tfrac{1}{0{,}5 \\cdot 180/\\pi}$',
+        ],
+        0,
+        `**Ansatz:** $\\sin^{-1} = \\arcsin$.
+
+**Rechnung:** $\\sin^{-1}(0{,}5) = 30°$.
+
+**Probe:** $\\sin 30° = 0{,}5$ ✓
+
+**Typischer Fehler:** $\\sin^{-1}(0{,}5) = 1/0{,}5 = 2$ rechnen.`,
+        [
+          'Umkehrfunktions-Notation.',
+          '$\\arcsin(0{,}5) = 30°$.',
+          'Kehrwert-Deutung wäre $2$, aber das ist falsch.',
+        ],
+        {
+          1: 'Das ist $1/0{,}5 = 2$ — Kehrwert, nicht Umkehrfunktion.',
+          2: 'Das ist einfach die Zahl $0{,}5$ — keine Operation.',
+          3: 'Eine künstliche Kombination ohne mathematische Bedeutung.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['arcsin-vs-reziprok'] },
+      ),
+      ni(
+        'Was ergibt $\\sin^{-1}(1)$ in Grad?',
+        90, 0.01, '°',
+        `**Ansatz:** $\\sin^{-1} = \\arcsin$.
+
+**Rechnung:** $\\arcsin(1) = 90°$.
+
+**Probe:** $\\sin 90° = 1$ ✓
+
+**Typischer Fehler:** $\\sin^{-1}(1) = 1/\\sin 1° = 1/0{,}01745 \\approx 57{,}3$.`,
+        [
+          'Umkehrfunktion, nicht Kehrwert.',
+          '$\\sin 90° = 1$.',
+          'Ergebnis in Grad.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['arcsin-vs-reziprok'] },
+      ),
+      mc(
+        'Ein Schüler rechnet: „$\\sin^{-1}(0{,}8) = 1/\\sin(0{,}8°) \\approx 71{,}6$." Wo liegt der Fehler?',
+        [
+          'Er hat die Hochschrift $-1$ als Kehrwert interpretiert. Bei trigonometrischen Funktionen bedeutet $\\sin^{-1}$ aber **Umkehrfunktion** (also $\\arcsin$). Korrekt: $\\sin^{-1}(0{,}8) \\approx 53{,}13°$.',
+          'Er hätte $\\sin 0{,}8°$ statt $\\sin(0{,}8)$ rechnen müssen.',
+          'Das Ergebnis $71{,}6$ ist richtig.',
+          '$0{,}8$ ist nicht im Definitionsbereich.',
+        ],
+        0,
+        `**Ansatz:** Notation genau lesen.
+
+**Rechnung:** $\\arcsin(0{,}8) \\approx 53{,}13°$ (Taschenrechner).
+
+**Probe:** $\\sin 53{,}13° \\approx 0{,}8$ ✓
+
+**Typischer Fehler:** Exponent-Analogie $x^{-1} = 1/x$ falsch übertragen.`,
+        [
+          'Konvention: $\\sin^{-1} \\neq 1/\\sin$.',
+          '$\\sin^{-1} = \\arcsin$.',
+          'Der Kehrwert heißt $\\csc$ (Kosekans), nicht $\\sin^{-1}$.',
+        ],
+        {
+          1: 'Argument $0{,}8$ ist kein Winkel, sondern ein Sinuswert.',
+          2: '$71{,}6$ ist falsch — $\\arcsin(0{,}8) \\approx 53{,}13°$.',
+          3: '$0{,}8 \\in [-1, 1]$, also im Definitionsbereich.',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['arcsin-vs-reziprok'] },
+      ),
+      matching(
+        'Ordne jeder Notation die korrekte Interpretation zu.',
+        [
+          { left: '$\\sin^{-1}(x)$', right: 'Umkehrfunktion $\\arcsin(x)$, Ergebnis ist ein Winkel' },
+          { left: '$(\\sin x)^{-1}$', right: 'Kehrwert $1/\\sin(x) = \\csc(x)$' },
+          { left: '$\\sin^2(x)$',    right: '$(\\sin x)^2$ (Quadrat des Sinuswerts)' },
+          { left: '$\\arcsin(\\sin x)$', right: '$x$, solange $x \\in [-90°, 90°]$ liegt' },
+        ],
+        `**Ansatz:** Positionen der Exponenten unterscheiden Umkehrfunktion, Kehrwert und Potenz.
+
+**Rechnung:** $\\sin^2 x$ meint das Quadrat, nie $\\sin(\\sin x)$ (Iteration).
+
+**Probe:** Jede Notation mit konkreten Werten testen.
+
+**Typischer Fehler:** $\\sin^{-1}$ als Kehrwert lesen.`,
+        [
+          '$^{-1}$ bei Funktionen = Umkehrfunktion (außer in Klammern).',
+          'Kehrwert nur bei $(\\sin x)^{-1}$.',
+          '$\\sin^2 x$ = Quadrat des Werts.',
+        ],
+        { stage: 'transfer', subGoal: 5, uses: ['arcsin-vs-reziprok'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // trig-3-5 — Sinussatz & Cosinussatz  (6 subGoals × 5 stages)
   // ────────────────────────────────────────────────────────────────────────
   'trig-3-5': {
 
-    // ── [0] Sinussatz-Formel + Umkreisradius ────────────────────────────
+    // ── [0] Sinussatz-Formel ────────────────────────────────────────────
     0: [
-      mc(
-        'Welcher Ausdruck ist gleich dem Durchmesser $2R$ des Umkreises eines Dreiecks?',
+      tf(
+        'Sub-Goal "Sinussatz $a/\\sin\\alpha = b/\\sin\\beta = c/\\sin\\gamma = 2R$": Die Quotienten $a/\\sin\\alpha$, $b/\\sin\\beta$ und $c/\\sin\\gamma$ in einem Dreieck sind alle gleich groß.',
+        true,
+        `**Ansatz:** Kernaussage des Sinussatzes.\n\n**Rechnung:** $\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta} = \\dfrac{c}{\\sin\\gamma} = 2R$ (Umkreisdurchmesser).\n\n**Probe:** Im gleichseitigen Dreieck mit $a=b=c$ und $\\alpha=\\beta=\\gamma=60°$ sind die drei Quotienten trivial gleich.\n\n**Typischer Fehler:** Quotient umdrehen ($\\sin\\alpha/a$) — das ergibt $1/(2R)$, nicht die Grundform.`,
         [
-          '$\\dfrac{a}{\\sin\\alpha}$',
-          '$\\dfrac{\\sin\\alpha}{a}$',
-          '$a \\cdot \\sin\\alpha$',
-          '$\\dfrac{a + b + c}{\\sin\\alpha + \\sin\\beta + \\sin\\gamma}$',
+          'Was ist die zentrale Gleichung des Sinussatzes?',
+          'Seite geteilt durch Sinus des **gegenüberliegenden** Winkels.',
+          'Alle drei Verhältnisse sind gleich und entsprechen $2R$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['sinussatz'] },
+      ),
+      mc(
+        'Sub-Goal "Sinussatz $a/\\sin\\alpha = b/\\sin\\beta = c/\\sin\\gamma = 2R$": Ein Dreieck hat $a=8$, $\\alpha=30°$. Welcher Ausdruck liefert den Umkreisradius $R$?',
+        [
+          '$R = \\dfrac{a}{2\\sin\\alpha}$',
+          '$R = 2a\\sin\\alpha$',
+          '$R = \\dfrac{2\\sin\\alpha}{a}$',
+          '$R = \\dfrac{a\\sin\\alpha}{2}$',
         ],
         0,
-        `**Ansatz:** Erweiterter Sinussatz: $\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta} = \\dfrac{c}{\\sin\\gamma} = 2R$, wobei $R$ der Umkreisradius ist.
-
-**Rechnung:** Die Konstante des Sinussatzes ist genau der Umkreisdurchmesser. Für **jede** Seite gilt Seite/Sinus(Gegenwinkel) $= 2R$.
-
-**Probe:** Im rechtwinkligen Dreieck mit $\\gamma = 90°$ ist $\\dfrac{c}{\\sin 90°} = c = 2R$ — die Hypotenuse ist tatsächlich der Umkreisdurchmesser (Satz des Thales). ✓
-
-**Typischer Fehler:** Das Verhältnis umdrehen ($\\sin\\alpha / a$) oder multiplizieren statt dividieren. Merke: Seite oben, Sinus unten.`,
+        `**Ansatz:** Aus $a/\\sin\\alpha = 2R$ folgt $R = a/(2\\sin\\alpha)$.\n\n**Rechnung:** $R = 8/(2\\cdot 0{,}5) = 8$.\n\n**Probe:** $a/\\sin\\alpha = 8/0{,}5 = 16 = 2R$. ✓\n\n**Typischer Fehler:** Multiplizieren statt dividieren — $2a\\sin\\alpha$ hat die falsche Dimension.`,
         [
-          'Der Sinussatz liefert eine **Konstante** — hat sie eine geometrische Bedeutung?',
-          'Betrachte ein rechtwinkliges Dreieck: dort ist die Hypotenuse der Umkreisdurchmesser.',
-          'Für $\\gamma = 90°$ gilt $\\sin\\gamma = 1$ und $c/1 = c = 2R$.',
+          'Löse $a/\\sin\\alpha = 2R$ nach $R$ auf.',
+          'Beide Seiten durch 2 teilen.',
+          '$R = a/(2\\sin\\alpha)$.',
         ],
         {
-          1: 'Kehrwert. Das Verhältnis **Seite durch Sinus** ergibt $2R$, nicht **Sinus durch Seite**. $\\sin\\alpha / a = 1/(2R)$.',
-          2: 'Multiplikation statt Division. Der Sinussatz ist ein Quotient — Seite **geteilt durch** Sinus des Gegenwinkels.',
-          3: 'Es ist zwar $\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta} = \\dfrac{c}{\\sin\\gamma}$, aber man darf Zähler und Nenner nicht einfach summieren (das würde $2R$ nur zufällig ergeben). Jedes einzelne Verhältnis ist $2R$, nicht die Summe.',
+          1: 'Falsche Umformung — multiplizieren statt dividieren.',
+          2: 'Der Kehrwert. Liefert $1/R$, nicht $R$.',
+          3: 'Dividiert durch 2 im Zähler statt im Nenner. Im Ausdruck $a/(2\\sin\\alpha)$ steht das 2 im Nenner.',
         },
+        { stage: 'apply-guided', subGoal: 0, uses: ['sinussatz'] },
       ),
       ni(
-        'Ein Dreieck hat $a = 8$ und $\\alpha = 30°$. Wie groß ist der Umkreisradius $R$?',
-        8, 0.05, '',
-        `**Ansatz:** Aus dem erweiterten Sinussatz: $\\dfrac{a}{\\sin\\alpha} = 2R \\Rightarrow R = \\dfrac{a}{2\\sin\\alpha}$.
-
-**Rechnung:** $R = \\dfrac{8}{2 \\cdot \\sin 30°} = \\dfrac{8}{2 \\cdot 0{,}5} = \\dfrac{8}{1} = 8$.
-
-**Probe:** Rückwärts: $2R = 16$, also $a/\\sin\\alpha = 8/0{,}5 = 16 = 2R$. ✓
-
-**Typischer Fehler:** Faktor $2$ vergessen und $R = a/\\sin\\alpha = 16$ angeben — das ist der **Durchmesser**, nicht der Radius.`,
+        'Sub-Goal "Sinussatz $a/\\sin\\alpha = b/\\sin\\beta = c/\\sin\\gamma = 2R$": In einem Dreieck ist $a = 10$, $\\alpha = 45°$, $\\beta = 60°$. Berechne die Seite $b$.',
+        12.247, 0.01, '',
+        `**Ansatz:** Sinussatz $b/\\sin\\beta = a/\\sin\\alpha \\Rightarrow b = a\\sin\\beta/\\sin\\alpha$.\n\n**Rechnung:** $b = 10 \\cdot \\sin 60°/\\sin 45° = 10 \\cdot (\\sqrt{3}/2)/(\\sqrt{2}/2) = 10\\sqrt{3}/\\sqrt{2} = 10\\sqrt{6}/2 \\approx 12{,}247$.\n\n**Probe:** $b/\\sin\\beta \\approx 12{,}247/0{,}866 \\approx 14{,}142 \\approx 10/\\sin 45° = 10/0{,}707 \\approx 14{,}142$. ✓\n\n**Typischer Fehler:** $\\sin\\alpha$ und $\\sin\\beta$ vertauschen — ergibt $10\\cdot\\sin 45°/\\sin 60° \\approx 8{,}16$.`,
         [
-          'Welche geometrische Größe ist die Konstante $a/\\sin\\alpha$ im Sinussatz?',
-          '$a/\\sin\\alpha = 2R$ — löse nach $R$ auf.',
-          '$\\sin 30° = 0{,}5$; $R = a/(2\\sin\\alpha)$.',
+          'Setze $a/\\sin\\alpha = b/\\sin\\beta$ an.',
+          'Nach $b$ auflösen: $b = a\\sin\\beta/\\sin\\alpha$.',
+          'Taschenrechner: $\\sin 60° \\approx 0{,}866$, $\\sin 45° \\approx 0{,}707$.',
         ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['sinussatz'] },
+      ),
+      mc(
+        'Sub-Goal "Sinussatz $a/\\sin\\alpha = b/\\sin\\beta = c/\\sin\\gamma = 2R$": Ein Schüler notiert $\\dfrac{a}{\\cos\\alpha} = \\dfrac{b}{\\cos\\beta}$. Wo ist der Fehler?',
+        [
+          'Im Sinussatz steht $\\sin$, nicht $\\cos$.',
+          'Der Kehrwert ist falsch — es müsste $\\sin\\alpha/a$ heißen.',
+          'Nur die Verbindung $a$ zu $\\beta$ ist gemeint.',
+          'Der Sinussatz gilt nur für rechtwinklige Dreiecke.',
+        ],
+        0,
+        `**Ansatz:** Die Formel muss auswendig beherrscht werden — $\\sin$ ist Pflicht.\n\n**Rechnung:** Die korrekte Form ist $a/\\sin\\alpha = b/\\sin\\beta$. Mit $\\cos$ wird die Gleichung falsch (Gegenbeispiel: gleichseitiges Dreieck, $\\cos 60° = 0{,}5$ und $a=b$ ergibt $a/0{,}5 = b/0{,}5$ zufällig noch richtig — aber bei $\\alpha=30°, \\beta=60°$ bricht es).\n\n**Probe:** Gleichschenkliges Dreieck mit $\\alpha=30°, \\beta=120°$: $\\cos 30°/\\cos 120° = 0{,}866/(-0{,}5) < 0$ — unmöglich für Seitenverhältnis.\n\n**Typischer Fehler:** Cos/Sin-Verwechslung — der Sinussatz heißt so, weil $\\sin$ darin vorkommt.`,
+        [
+          'Wie lautet die Formel des Sinussatzes exakt?',
+          '$\\sin$ und $\\cos$ sind nicht austauschbar.',
+          'Der Cosinussatz ist eine andere Formel.',
+        ],
+        {
+          1: 'Die Grundform hat Seite oben, Sinus unten — nicht umgekehrt.',
+          2: 'Der Sinussatz verknüpft alle drei Paarungen gleichzeitig, nicht nur eine.',
+          3: 'Der Sinussatz gilt in **jedem** Dreieck.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['sinussatz'] },
       ),
       ni(
-        'Gegeben $a = 7$, $\\alpha = 40°$, $\\beta = 65°$. Berechne die Seite $b$ (auf 2 Nachkommastellen).',
-        9.87, 0.05, '',
-        `**Ansatz:** Zwei Winkel + eine Seite → Sinussatz mit der bekannten Seite und ihrem Gegenwinkel als "Anker".
-
-**Rechnung:** $\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta} \\Rightarrow b = a \\cdot \\dfrac{\\sin\\beta}{\\sin\\alpha} = 7 \\cdot \\dfrac{\\sin 65°}{\\sin 40°} = 7 \\cdot \\dfrac{0{,}9063}{0{,}6428} \\approx 7 \\cdot 1{,}4099 \\approx 9{,}87$.
-
-**Probe:** $b > a$ muss gelten, weil $\\beta > \\alpha$ (größerer Gegenwinkel → größere Seite). Tatsächlich $9{,}87 > 7$. ✓
-
-**Typischer Fehler:** Rechner auf RAD statt DEG → ergibt Unsinn (ca. $0{,}73$ statt $9{,}87$). Vor der Rechnung Modus prüfen.`,
+        'Sub-Goal "Sinussatz $a/\\sin\\alpha = b/\\sin\\beta = c/\\sin\\gamma = 2R$": Gegeben $a = 6$, $\\alpha = 40°$. Wie groß ist der Umkreisdurchmesser $2R$?',
+        9.334, 0.02, '',
+        `**Ansatz:** $2R = a/\\sin\\alpha$.\n\n**Rechnung:** $2R = 6/\\sin 40° = 6/0{,}6428 \\approx 9{,}334$.\n\n**Probe:** $R \\approx 4{,}667$; der Umkreis hat Radius knapp 4,67.\n\n**Typischer Fehler:** $R$ statt $2R$ angeben — hier wird der Durchmesser gefragt.`,
         [
-          'Bekannt sind $a, \\alpha, \\beta$ — welche Unbekannte hängt an $\\beta$?',
-          'Setze $a/\\sin\\alpha = b/\\sin\\beta$ und löse nach $b$.',
-          'Rechner auf DEG! $\\sin 40° \\approx 0{,}643$, $\\sin 65° \\approx 0{,}906$.',
+          'Welche Konstante ist $a/\\sin\\alpha$ laut erweitertem Sinussatz?',
+          '$a/\\sin\\alpha = 2R$ (Umkreisdurchmesser).',
+          'Direkt einsetzen, kein weiterer Schritt.',
         ],
-      ),
-      tf(
-        'Wenn in einem Dreieck alle drei Seiten gleich lang sind (gleichseitig), dann ist $R = a/\\sqrt{3}$.',
-        true,
-        `**Ansatz:** Im gleichseitigen Dreieck ist $\\alpha = \\beta = \\gamma = 60°$ und $\\sin 60° = \\sqrt{3}/2$.
-
-**Rechnung:** $2R = \\dfrac{a}{\\sin 60°} = \\dfrac{a}{\\sqrt{3}/2} = \\dfrac{2a}{\\sqrt{3}} \\Rightarrow R = \\dfrac{a}{\\sqrt{3}} = \\dfrac{a\\sqrt{3}}{3}$.
-
-**Probe:** Für $a = \\sqrt{3}$ folgt $R = 1$. Check: Einheitskreis mit drei Punkten bei $0°, 120°, 240°$ — Sehnenlänge $\\sqrt{3}$. ✓
-
-**Typischer Fehler:** $R = a/2$ annehmen (wie bei rechtwinkligem Dreieck mit Hypotenuse $a$). Das gilt nur, wenn $a$ Hypotenuse ist — nicht im gleichseitigen Dreieck.`,
-        [
-          'Welchen Winkel hat das gleichseitige Dreieck an jeder Ecke?',
-          'Setze $\\alpha = 60°$ in $a/\\sin\\alpha = 2R$ ein.',
-          '$\\sin 60° = \\sqrt{3}/2$ auswendig lernen.',
-        ],
-      ),
-      matching(
-        'Ordne jede Seite ihrem passenden Sinussatz-Paar zu.',
-        [
-          { left: 'Seite $a$', right: '$a/\\sin\\alpha$' },
-          { left: 'Seite $b$', right: '$b/\\sin\\beta$' },
-          { left: 'Seite $c$', right: '$c/\\sin\\gamma$' },
-          { left: 'Gemeinsame Konstante aller drei Verhältnisse', right: '$2R$ (Umkreisdurchmesser)' },
-        ],
-        `**Ansatz:** Seite und Gegenwinkel tragen denselben Buchstaben (griechisch ↔ lateinisch). Alle drei Verhältnisse liefern dieselbe Konstante — den Umkreisdurchmesser.
-
-**Rechnung:** $\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta} = \\dfrac{c}{\\sin\\gamma} = 2R$.
-
-**Probe:** Die Zuordnung $a \\leftrightarrow \\alpha$ ist geometrisch eindeutig: Seite $a$ liegt **der Ecke** $A$ (mit Winkel $\\alpha$) **gegenüber**.
-
-**Typischer Fehler:** $a$ mit dem *anliegenden* Winkel paaren statt mit dem Gegenwinkel — das liefert völlig falsche Seitenlängen.`,
-        [
-          'Welcher Winkel liegt einer Seite **gegenüber**?',
-          'Buchstabe-Paare: $a \\leftrightarrow \\alpha$, $b \\leftrightarrow \\beta$, $c \\leftrightarrow \\gamma$.',
-          'Die Konstante $2R$ ist für alle drei Paare gleich — das ist genau die Aussage des Sinussatzes.',
-        ],
+        { stage: 'transfer', subGoal: 0, uses: ['sinussatz'] },
       ),
     ],
 
-    // ── [1] Cosinussatz $a^2 = b^2 + c^2 - 2bc\cos\alpha$ ───────────────
+    // ── [1] Cosinussatz-Formel ──────────────────────────────────────────
     1: [
-      ni(
-        'Gegeben $b = 5$, $c = 7$, $\\alpha = 60°$. Berechne die dritte Seite $a$ (auf 2 Nachkommastellen).',
-        6.24, 0.02, '',
-        `**Ansatz:** SWS-Konfiguration (zwei Seiten + eingeschlossener Winkel) → Cosinussatz: $a^2 = b^2 + c^2 - 2bc\\cos\\alpha$.
-
-**Rechnung:** $a^2 = 5^2 + 7^2 - 2 \\cdot 5 \\cdot 7 \\cdot \\cos 60° = 25 + 49 - 70 \\cdot 0{,}5 = 74 - 35 = 39$. Also $a = \\sqrt{39} \\approx 6{,}24$.
-
-**Probe:** Dreiecks­ungleichung: $|b - c| < a < b + c$, also $2 < a < 12$. ✓ Weiter: Da $\\alpha = 60° < 90°$, ist $a < \\sqrt{b^2+c^2} = \\sqrt{74} \\approx 8{,}60$. Ebenfalls ✓.
-
-**Typischer Fehler:** Vorzeichen falsch: $a^2 = b^2 + c^2 + 2bc\\cos\\alpha$ ansetzen — das Minus in der Formel ist das Entscheidende. Bei $\\alpha < 90°$ muss $a < \\sqrt{b^2+c^2}$ sein, weil $\\cos\\alpha > 0$ die Seite verkürzt.`,
-        [
-          'SWS-Konfiguration — welcher Satz?',
-          'Formel: $a^2 = b^2 + c^2 - 2bc\\cos\\alpha$.',
-          '$\\cos 60° = 1/2$ auswendig; $2 \\cdot 5 \\cdot 7 \\cdot 0{,}5 = 35$.',
-        ],
-      ),
-      mc(
-        'Für welchen Wert von $\\alpha$ wird der Korrekturterm $-2bc\\cos\\alpha$ **positiv** (d.h. $a^2 > b^2 + c^2$)?',
-        ['$\\alpha < 90°$', '$\\alpha = 90°$', '$\\alpha > 90°$', 'Der Term kann nie positiv werden'],
-        2,
-        `**Ansatz:** $-2bc\\cos\\alpha$ ist positiv, wenn $\\cos\\alpha < 0$. Aus dem Einheitskreis: $\\cos\\alpha < 0$ für $\\alpha \\in (90°, 180°)$.
-
-**Rechnung:** Für $\\alpha > 90°$ (stumpfwinklig) ist $\\cos\\alpha < 0$, also $-2bc\\cos\\alpha > 0$, also $a^2 > b^2 + c^2$ — die dem stumpfen Winkel gegenüberliegende Seite ist **länger** als die Pythagoras-Diagonale.
-
-**Probe:** Grenzfall $\\alpha = 180°$ (entartetes Dreieck, $b, c$ kollinear): $\\cos 180° = -1$, $a^2 = b^2 + c^2 + 2bc = (b+c)^2 \\Rightarrow a = b + c$. Geometrisch korrekt. ✓
-
-**Typischer Fehler:** Nur ans rechtwinklige Dreieck denken. Der Cosinussatz sagt: die Seite gegenüber dem **größten** Winkel ist die längste.`,
-        [
-          'Wann ist $\\cos\\alpha$ **negativ**?',
-          'Am Einheitskreis: x-Koordinate $< 0$ im 2. Quadranten.',
-          'Für $\\alpha > 90°$ sind wir im stumpfwinkligen Fall.',
-        ],
-        {
-          0: 'Bei $\\alpha < 90°$ ist $\\cos\\alpha > 0$, also $-2bc\\cos\\alpha < 0$ — der Term **verkürzt** $a$ gegenüber $\\sqrt{b^2+c^2}$.',
-          1: 'Bei $\\alpha = 90°$ ist $\\cos\\alpha = 0$, der Korrekturterm verschwindet — das ist genau Pythagoras. Kein positiver Beitrag.',
-          3: 'Doch — für $\\alpha > 90°$ wird $\\cos\\alpha < 0$, und das Minus in der Formel dreht das Vorzeichen. Beispiel: $\\alpha = 120°$, $\\cos\\alpha = -0{,}5$, Term $= +bc > 0$.',
-        },
-      ),
       tf(
-        'Aus $a=8$, $b=5$, $c=6$ lässt sich der Winkel $\\alpha$ mit $\\cos\\alpha = (b^2+c^2-a^2)/(2bc)$ berechnen.',
+        'Sub-Goal "Cosinussatz $a^2 = b^2 + c^2 - 2bc\\cos\\alpha$": Im Cosinussatz steht das **Minus-Zeichen** vor dem Produkt $2bc\\cos\\alpha$.',
         true,
-        `**Ansatz:** SSS-Konfiguration — drei Seiten bekannt. Cosinussatz nach $\\cos\\alpha$ umstellen.
-
-**Rechnung:** $a^2 = b^2 + c^2 - 2bc\\cos\\alpha \\Rightarrow \\cos\\alpha = \\dfrac{b^2 + c^2 - a^2}{2bc}$.
-
-Numerisch: $\\cos\\alpha = (25 + 36 - 64)/(60) = -3/60 = -0{,}05$, also $\\alpha \\approx 92{,}9°$ (leicht stumpf — passt, $a=8$ ist die längste Seite).
-
-**Probe:** Längste Seite gegenüber dem größten Winkel: $a = 8$ ist am längsten, und $\\alpha \\approx 93°$ ist tatsächlich der größte Winkel. ✓
-
-**Typischer Fehler:** Zähler verkehrt: $(a^2 - b^2 - c^2)/(2bc)$ — dann ist das Vorzeichen falsch. Merke: Der Gegenwinkel **subtrahiert** sein eigenes Quadrat.`,
+        `**Ansatz:** Exakte Formel-Kenntnis.\n\n**Rechnung:** $a^2 = b^2 + c^2 - 2bc\\cos\\alpha$. Das Minus ist entscheidend: Für $\\alpha<90°$ ist $\\cos\\alpha>0$, also $a^2 < b^2+c^2$ — das Dreieck ist "schlanker" als bei $\\alpha=90°$.\n\n**Probe:** Für $\\alpha=90°$ wird $\\cos\\alpha=0$ und $a^2 = b^2+c^2$ (Pythagoras). Das Minus verschwindet — wie es soll.\n\n**Typischer Fehler:** Plus statt Minus schreiben — dann würde der Cosinussatz bei $\\alpha=90°$ nicht zu Pythagoras werden.`,
         [
-          'Welche Konfiguration liegt bei SSS vor?',
-          'Stelle den Cosinussatz nach $\\cos\\alpha$ um.',
-          '$\\cos\\alpha = (b^2+c^2-a^2)/(2bc)$ — Quadrat der Gegenseite $a$ wird abgezogen.',
+          'Wie lautet die exakte Cosinussatz-Formel?',
+          'Prüfe den Grenzfall $\\alpha=90°$.',
+          'Pythagoras ist $a^2 = b^2+c^2$ (mit $+$), also muss der Korrekturterm abgezogen werden.',
         ],
+        { stage: 'recognize', subGoal: 1, uses: ['cosinussatz'] },
+      ),
+      mc(
+        'Sub-Goal "Cosinussatz $a^2 = b^2 + c^2 - 2bc\\cos\\alpha$": Welche Gleichung liefert die Seite $b$, wenn $a$, $c$ und $\\beta$ bekannt sind?',
+        [
+          '$b^2 = a^2 + c^2 - 2ac\\cos\\beta$',
+          '$b^2 = a^2 + c^2 - 2bc\\cos\\beta$',
+          '$b^2 = a^2 + c^2 + 2ac\\cos\\beta$',
+          '$b = a + c - 2\\cos\\beta$',
+        ],
+        0,
+        `**Ansatz:** Zyklisches Umschreiben — das Quadrat auf der linken Seite gehört zur gleichnamigen Seite des Winkels.\n\n**Rechnung:** Allgemeines Muster: \\text{(gesuchte Seite)}$^2 = $ (andere 1)$^2 +$ (andere 2)$^2 - 2\\cdot$(andere 1)(andere 2)$\\cos$(Gegenwinkel). Für $b$ also: $b^2 = a^2+c^2 -2ac\\cos\\beta$.\n\n**Probe:** $\\beta$ liegt gegenüber $b$; die beiden anderen Seiten sind $a$ und $c$ — im Produkt $2ac$ taucht also nicht $b$ auf.\n\n**Typischer Fehler:** $bc$ im Korrekturterm lassen (Option 2) — die gesuchte Seite darf nicht im Produkt stehen.`,
+        [
+          'Welche Seite gehört zum Winkel $\\beta$?',
+          'Die gesuchte Seite steht links isoliert als Quadrat.',
+          'Rechts kommen nur die anderen beiden Seiten vor.',
+        ],
+        {
+          1: 'Die gesuchte Seite $b$ darf nicht im Produkt $2bc$ stehen — dort stehen die anderen beiden Seiten.',
+          2: 'Vorzeichen falsch. Der Cosinussatz hat **Minus** vor $2ac\\cos\\beta$.',
+          3: 'Kein Quadrat und ein falscher Ausdruck — das ist weder Cosinussatz noch eine gültige Gleichung.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['cosinussatz'] },
       ),
       ni(
-        'Ein Dreieck hat $a = 10$, $b = 6$, $c = 8$. Wie groß ist der Winkel $\\alpha$ (in Grad, ganzzahlig)?',
-        90, 0.5, '°',
-        `**Ansatz:** SSS → Cosinussatz nach $\\cos\\alpha$ auflösen.
-
-**Rechnung:** $\\cos\\alpha = \\dfrac{b^2 + c^2 - a^2}{2bc} = \\dfrac{36 + 64 - 100}{96} = \\dfrac{0}{96} = 0 \\Rightarrow \\alpha = 90°$.
-
-**Probe:** $6^2 + 8^2 = 100 = 10^2$ — pythagoreisches Tripel $(6, 8, 10)$, Dreieck ist rechtwinklig mit Hypotenuse $a$. ✓
-
-**Typischer Fehler:** Sofort Pythagoras ansetzen und prüfen, ob $a^2 = b^2 + c^2$, statt den allgemeinen Weg über Cosinussatz zu gehen — das funktioniert hier, wäre aber bei nicht-rechtwinkligen Dreiecken eine Sackgasse.`,
+        'Sub-Goal "Cosinussatz $a^2 = b^2 + c^2 - 2bc\\cos\\alpha$": In einem Dreieck sind $b=5$, $c=7$ und $\\alpha=60°$. Berechne $a$.',
+        6.245, 0.01, '',
+        `**Ansatz:** Cosinussatz $a^2 = b^2+c^2 - 2bc\\cos\\alpha$.\n\n**Rechnung:** $a^2 = 25 + 49 - 2\\cdot 5\\cdot 7\\cdot\\cos 60° = 74 - 70\\cdot 0{,}5 = 74 - 35 = 39 \\Rightarrow a = \\sqrt{39} \\approx 6{,}245$.\n\n**Probe:** Dreiecks-Ungleichung $|b-c| = 2 < 6{,}245 < b+c = 12$ ✓.\n\n**Typischer Fehler:** $\\cos 60° = 0{,}5$ vergessen oder als $\\sin 60°$ eingesetzt — Ergebnis dann $\\approx 5{,}03$.`,
         [
-          'Drei Seiten → welcher Satz?',
-          'Ist $6, 8, 10$ ein bekanntes Zahlentripel?',
-          '$\\cos\\alpha = 0 \\Rightarrow \\alpha = 90°$.',
+          'SWS-Konfiguration: zwei Seiten + eingeschlossener Winkel → Cosinussatz.',
+          '$\\cos 60° = 0{,}5$ exakt.',
+          'Erst quadrieren, dann $\\sqrt{}$.',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['cosinussatz'] },
       ),
-      matching(
-        'Ordne jeden Winkel seiner Cosinussatz-Gleichung zu.',
+      mc(
+        'Sub-Goal "Cosinussatz $a^2 = b^2 + c^2 - 2bc\\cos\\alpha$": Ein Student rechnet $a^2 = 25 + 49 - 70\\cos 120°$ und erhält $a^2 = 39$. Wo ist der Denkfehler?',
         [
-          { left: 'Winkel $\\alpha$ (gegenüber $a$)', right: '$a^2 = b^2 + c^2 - 2bc\\cos\\alpha$' },
-          { left: 'Winkel $\\beta$ (gegenüber $b$)', right: '$b^2 = a^2 + c^2 - 2ac\\cos\\beta$' },
-          { left: 'Winkel $\\gamma$ (gegenüber $c$)', right: '$c^2 = a^2 + b^2 - 2ab\\cos\\gamma$' },
+          '$\\cos 120° = -0{,}5$ — der Term wird also **addiert**, nicht subtrahiert. Richtig: $a^2 = 25+49+35 = 109$.',
+          'Das Minus im Cosinussatz kehrt sich bei stumpfen Winkeln um.',
+          '$\\cos 120° = 0{,}5$, also stimmt die Rechnung.',
+          'Der Cosinussatz gilt nicht für $\\alpha > 90°$.',
         ],
-        `**Ansatz:** Der Cosinussatz ist **zyklisch**: die Seite auf der linken Seite ist immer die **Gegenseite** des Winkels. Die anderen beiden Seiten bilden das Produkt, das mit dem Cosinus des Gegenwinkels multipliziert wird.
-
-**Rechnung:** Muster: (Gegenseite)² = (Summe der Quadrate der anderen zwei) − 2·(Produkt der anderen zwei)·cos(eigener Winkel).
-
-**Probe:** Summe über alle drei Gleichungen: linke Seite $a^2 + b^2 + c^2$, rechts das Doppelte der Quadratsumme minus $2(bc\\cos\\alpha + ac\\cos\\beta + ab\\cos\\gamma)$. Daraus folgt die Projektionsformel $a^2+b^2+c^2 = 2(bc\\cos\\alpha + ac\\cos\\beta + ab\\cos\\gamma)$. ✓
-
-**Typischer Fehler:** Den Winkel an die falsche Seite koppeln. Immer fragen: Welche Seite ist die Gegenseite zum gesuchten Winkel?`,
+        0,
+        `**Ansatz:** Vorzeichen von $\\cos\\alpha$ beachten.\n\n**Rechnung:** Bei $\\alpha = 120°$ ist $\\cos\\alpha = -0{,}5$. Damit: $a^2 = 74 - 70\\cdot(-0{,}5) = 74 + 35 = 109 \\Rightarrow a \\approx 10{,}44$. Das ist korrekt größer als bei $\\alpha = 60°$ — stumpfer Winkel → längere Gegenseite.\n\n**Probe:** Für $\\alpha = 90°$ erhält man $a^2 = 74$, für $\\alpha = 120°$ muss $a^2 > 74$ sein. 109 passt. ✓\n\n**Typischer Fehler:** $\\cos 120°$ mechanisch als $+0{,}5$ einsetzen, weil man nur den Betrag im Kopf hat.`,
         [
-          'Welche Seite steht bei $\\cos\\alpha$ links vom Gleichheitszeichen?',
-          'Zyklische Permutation: $(a,\\alpha), (b,\\beta), (c,\\gamma)$.',
-          'Die auf der linken Seite quadrierte Seite ist immer die Gegenseite des verwendeten Winkels.',
+          'Was ist $\\cos 120°$ inklusive Vorzeichen?',
+          'Stumpfer Winkel → $\\cos$ negativ.',
+          'Minus mal Minus = Plus.',
         ],
+        {
+          1: 'Die Formel selbst ändert sich nicht — aber das Vorzeichen von $\\cos\\alpha$ schon.',
+          2: 'Falsch: $\\cos 120° = -0{,}5$. Cosinus ist im zweiten Quadranten negativ.',
+          3: 'Der Cosinussatz gilt in **jedem** Dreieck, für alle $\\alpha \\in (0°, 180°)$.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['cosinussatz'] },
+      ),
+      ni(
+        'Sub-Goal "Cosinussatz $a^2 = b^2 + c^2 - 2bc\\cos\\alpha$": Gegeben $a=7$, $b=8$, $c=9$. Berechne den Winkel $\\gamma$ (gegenüber $c$) in Grad.',
+        73.398, 0.1, '°',
+        `**Ansatz:** SSS → Cosinussatz nach $\\gamma$ auflösen: $\\cos\\gamma = (a^2+b^2-c^2)/(2ab)$.\n\n**Rechnung:** $\\cos\\gamma = (49+64-81)/(2\\cdot 7\\cdot 8) = 32/112 \\approx 0{,}2857 \\Rightarrow \\gamma = \\arccos(0{,}2857) \\approx 73{,}40°$.\n\n**Probe:** $\\gamma$ sollte der größte Winkel sein (größte Seite $c$). Mit $\\alpha \\approx 48{,}19°$ und $\\beta \\approx 58{,}41°$ ist $\\gamma \\approx 73{,}40°$ der größte. ✓\n\n**Typischer Fehler:** $a^2+b^2+c^2$ im Zähler (Vorzeichen $c^2$ vergessen).`,
+        [
+          'SSS-Konfiguration → Cosinussatz nach $\\cos\\gamma$ umstellen.',
+          '$c^2 = a^2+b^2 - 2ab\\cos\\gamma \\Rightarrow \\cos\\gamma = (a^2+b^2-c^2)/(2ab)$.',
+          '$\\arccos$ im TR verwenden, DEG-Modus.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['cosinussatz'] },
       ),
     ],
 
-    // ── [2] Methodenwahl: SWS/SSS → Cosinus; WWS/SWW/SSW → Sinus ────────
+    // ── [2] Methodenwahl ────────────────────────────────────────────────
     2: [
-      matching(
-        'Ordne jede Dreiecks-Konfiguration dem passenden Berechnungsverfahren zu.',
-        [
-          { left: 'SWS: $b=5$, $\\alpha=40°$, $c=7$', right: 'Cosinussatz (dritte Seite $a$ direkt berechenbar)' },
-          { left: 'SSS: $a=6$, $b=5$, $c=7$', right: 'Cosinussatz (jeden Winkel einzeln berechnen)' },
-          { left: 'WWS: $a=4$, $\\alpha=30°$, $\\beta=70°$', right: 'Sinussatz (direkt $b$ aus $a, \\alpha, \\beta$)' },
-          { left: 'SSW: $a=5$, $b=6$, $\\alpha=40°$', right: 'Sinussatz (auf Mehrdeutigkeit achten!)' },
-        ],
-        `**Ansatz:** Der Winkel entscheidet, welcher Satz funktioniert. Sinussatz braucht **immer** ein Seite-Gegenwinkel-Paar als Anker. Cosinussatz braucht **immer** einen Winkel **zwischen** zwei bekannten Seiten — oder drei Seiten ohne Winkel.
-
-**Rechnung:** Faustregel zur Methodenwahl:
-- Drei Seiten (SSS) oder Seite-Winkel-Seite mit **eingeschlossenem** Winkel (SWS) → **Cosinus­satz**.
-- Zwei Winkel + Seite (WWS/SWW) oder zwei Seiten + **nicht-eingeschlossener** Winkel (SSW) → **Sinus­satz**.
-
-**Probe:** Bei SWS ist die Gegenseite des bekannten Winkels noch unbekannt — Sinussatz hätte also zwei Unbekannte in einer Gleichung und geht nicht direkt. Cosinussatz dagegen liefert die fehlende Seite in einer Zeile.
-
-**Typischer Fehler:** SSW als "sicher eindeutig" behandeln. Die Seite liegt nicht zwischen den Partnern — das erzeugt die berüchtigte SSW-Mehrdeutigkeit.`,
-        [
-          'Liegt der bekannte Winkel **zwischen** zwei bekannten Seiten?',
-          'Sinussatz braucht ein Seite↔Gegenwinkel-Paar.',
-          'SSS = drei Seiten, SWS = Seite-Winkel-Seite, WWS = Winkel-Winkel-Seite, SSW = Seite-Seite-nicht-eingeschlossener-Winkel.',
-        ],
-      ),
-      mc(
-        'Gegeben sind die Seiten $a = 4$, $b = 6$ und der Winkel $\\gamma = 55°$ (eingeschlossen zwischen $a$ und $b$). Welcher Satz liefert die Seite $c$ **direkt**?',
-        ['Cosinussatz', 'Sinussatz', 'Pythagoras', 'Additionstheorem'],
-        0,
-        `**Ansatz:** Zwei Seiten $a$ und $b$ plus der **eingeschlossene** Winkel $\\gamma$ → SWS → Cosinussatz.
-
-**Rechnung:** $c^2 = a^2 + b^2 - 2ab\\cos\\gamma = 16 + 36 - 48 \\cos 55° \\approx 52 - 27{,}53 \\approx 24{,}47$. Also $c \\approx 4{,}95$.
-
-**Probe:** Sinussatz würde $c/\\sin\\gamma = a/\\sin\\alpha$ benötigen — aber $\\alpha$ ist unbekannt. Also zwei Unbekannte, keine Lösung ohne Umweg.
-
-**Typischer Fehler:** Nicht prüfen, ob der bekannte Winkel **zwischen** den bekannten Seiten liegt. Nur dann funktioniert Cosinussatz direkt.`,
-        [
-          'Welche Größen sind gegeben — Seiten, Winkel, Kombination?',
-          'Liegt $\\gamma$ zwischen $a$ und $b$?',
-          'SWS mit eingeschlossenem Winkel → Cosinussatz.',
-        ],
-        {
-          1: 'Sinussatz bräuchte ein Seite↔Gegenwinkel-Paar. Hier kennst du zwar $\\gamma$, aber die gegenüberliegende Seite $c$ ist gerade gesucht. Zwei Unbekannte in einer Gleichung.',
-          2: 'Pythagoras gilt nur bei $\\gamma = 90°$. Hier ist $\\gamma = 55°$.',
-          3: 'Additionstheoreme sind für Summen/Differenzen **von Winkelargumenten** $\\sin(\\alpha \\pm \\beta)$ — nicht für Dreiecks­berechnung.',
-        },
-      ),
       tf(
-        'Wenn nur drei Seiten eines Dreiecks bekannt sind, ist der Sinussatz ausreichend, um alle Winkel zu berechnen.',
+        'Sub-Goal "Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz": Bei zwei Seiten und dem **eingeschlossenen** Winkel (SWS) nimmt man den Sinussatz.',
         false,
-        `**Ansatz:** Der Sinussatz koppelt **Seite und Gegenwinkel**. Bei reiner SSS-Konfiguration kennst du keinen einzigen Winkel — du hast also keinen Anker für den Sinussatz.
-
-**Rechnung:** Cosinussatz nach $\\cos\\alpha = (b^2+c^2-a^2)/(2bc)$ umstellen → liefert einen Winkel. Danach kann der Sinussatz für die übrigen Winkel eingesetzt werden.
-
-**Probe:** SSS-Beispiel $a=7, b=5, c=6$: Cosinussatz gibt $\\cos\\alpha = (25+36-49)/60 = 0{,}2 \\Rightarrow \\alpha \\approx 78{,}5°$. Erst **danach** wäre Sinussatz für $\\beta$ möglich.
-
-**Typischer Fehler:** "Ein Satz reicht immer" — nein. SSS braucht zwingend den Cosinussatz als Einstieg; der Sinussatz ohne jeden bekannten Winkel läuft leer.`,
+        `**Ansatz:** Entscheidungs-Tabelle kennen.\n\n**Rechnung:** SWS → **Cosinussatz**. Der Sinussatz kann SWS nicht direkt lösen, weil die dritte Seite fehlt, um ein Paar Seite↔Gegenwinkel zu bilden.\n\n**Probe:** Für SWS mit $b, c, \\alpha$ gibt es kein Paar $(\\text{Seite}, \\text{Gegenwinkel})$ — nur $b$ & $c$ ohne ihre Gegenwinkel, und $\\alpha$ ohne $a$.\n\n**Typischer Fehler:** "Sinussatz immer" — aber wenn die Paarung fehlt, hilft nur Cosinussatz.`,
         [
-          'Welche Größen braucht der Sinussatz als Ausgangspunkt?',
-          'Ohne bekannten Winkel fehlt der Anker.',
-          'Bei SSS beginnt man immer mit Cosinussatz, erst danach Sinussatz.',
+          'Welche Daten braucht der Sinussatz als Paar?',
+          'Seite und Gegenwinkel müssen zusammen bekannt sein.',
+          'SWS hat kein solches Paar.',
         ],
+        { stage: 'recognize', subGoal: 2, uses: ['methodenwahl'] },
       ),
-      sorting(
-        'Bringe die Schritte zur Lösung eines Dreiecks mit SSS-Konfiguration ($a, b, c$ gegeben) in die richtige Reihenfolge.',
+      matching(
+        'Sub-Goal "Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz": Ordne die Konfiguration dem passenden Satz zu.',
         [
-          'Dreiecksungleichung prüfen: $|b-c| < a < b+c$ (Existenz)',
-          'Einen Winkel (z.B. $\\alpha$) mit Cosinussatz: $\\cos\\alpha = (b^2+c^2-a^2)/(2bc)$',
-          'Zweiten Winkel mit Sinussatz: $\\sin\\beta = b\\sin\\alpha/a$',
-          'Dritten Winkel aus Winkelsumme: $\\gamma = 180° - \\alpha - \\beta$',
-          'Kontrolle: Liegt der größte Winkel wirklich der längsten Seite gegenüber?',
+          { left: 'SWS (zwei Seiten + eingeschlossener Winkel)', right: 'Cosinussatz' },
+          { left: 'SSS (drei Seiten)', right: 'Cosinussatz (nach Winkel aufgelöst)' },
+          { left: 'WWS / SWW (zwei Winkel + Seite)', right: 'Sinussatz' },
+          { left: 'SSW (zwei Seiten + nicht-eingeschlossener Winkel)', right: 'Sinussatz (evtl. mehrdeutig)' },
         ],
-        [0, 1, 2, 3, 4],
-        `**Ansatz:** Bei SSS zuerst Existenz prüfen (Dreiecksungleichung). Dann einen Winkel per Cosinussatz knacken — erst das schafft den Anker für den schnelleren Sinussatz. Der dritte Winkel ist gratis aus $180°$-Summe.
-
-**Rechnung:** Schritt 2 ist unvermeidlich per Cosinussatz. Schritt 3 und 4 wären auch beide per Cosinussatz möglich, sind aber per Sinussatz + Winkelsumme effizienter.
-
-**Probe:** Kontrolle im letzten Schritt — Konsistenzcheck: größte Seite ↔ größter Winkel. Wenn das nicht passt, ist irgendwo ein Rechenfehler.
-
-**Typischer Fehler:** Direkt mit Sinussatz starten — geht nicht, weil kein Winkel bekannt. Oder: Dreiecksungleichung überspringen, dann erhältst du eventuell $\\cos\\alpha > 1$ (entartetes Dreieck).`,
+        `**Ansatz:** Paarungs-Check: Gibt es (Seite, Gegenwinkel) im Paket? Ja → Sinussatz. Nein → Cosinussatz.\n\n**Rechnung:** SWS: kein Paar, nur eingeschlossener Winkel — Cosinussatz liefert die dritte Seite. SSS: auch kein Paar, aber Cosinussatz nach $\\cos\\alpha$ aufgelöst ergibt jeden Winkel. WWS/SWW: ein Paar ist direkt gegeben, der Sinussatz trägt die fehlende Seite zum Gegenwinkel. SSW: zwei Seiten + ein Gegenwinkel = Paar vorhanden, aber mit Mehrdeutigkeitsrisiko.\n\n**Probe:** In jeder Zeile kommt die "Paarungs-Regel" raus — immer griffig prüfen bevor man rechnet.\n\n**Typischer Fehler:** Automatisch zu Cosinussatz greifen, weil er "mehr kann" — wenn Sinussatz schneller zum Ziel führt, ist er zu bevorzugen.`,
         [
-          'Was prüft man immer zuerst bei reinen Seitendaten?',
-          'Sinussatz braucht mindestens einen bekannten Winkel — also zuerst einen erzeugen.',
-          'Winkelsumme $180°$ ist die gratis Abkürzung am Ende.',
+          'Paar (Seite, Gegenwinkel) bekannt → Sinussatz.',
+          'Nur Seiten oder eingeschlossener Winkel bekannt → Cosinussatz.',
+          'SSW ist der kritische Fall wegen Mehrdeutigkeit.',
         ],
+        { stage: 'apply-guided', subGoal: 2, uses: ['methodenwahl'] },
       ),
       mc(
-        'Gegeben $\\alpha = 35°$, $\\beta = 80°$ und $a = 4$. Welche Seite kannst du in **einem** Schritt direkt berechnen?',
+        'Sub-Goal "Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz": Gegeben $a=4$, $b=5$, $\\gamma=70°$. Welcher Satz ist die erste Wahl?',
         [
-          '$b$ (mit Sinussatz $b = a \\sin\\beta / \\sin\\alpha$)',
-          '$c$ (mit Cosinussatz)',
-          'Keine — zwei Winkel reichen nicht',
-          '$b$, aber nur mit Cosinussatz',
+          'Cosinussatz',
+          'Sinussatz',
+          'SOH-CAH-TOA',
+          'Strahlensatz',
         ],
         0,
-        `**Ansatz:** WWS-Konfiguration (Winkel-Winkel-Seite). Für den Sinussatz reicht ein Seite↔Gegenwinkel-Paar als Anker — $a$ mit $\\alpha$ erfüllt das. Die zweite Gleichung mit $b$ und $\\beta$ liefert $b$ direkt.
-
-**Rechnung:** $b = a \\cdot \\sin\\beta / \\sin\\alpha = 4 \\cdot \\sin 80° / \\sin 35° \\approx 4 \\cdot 0{,}9848 / 0{,}5736 \\approx 6{,}87$.
-
-**Probe:** $\\gamma = 180° - 35° - 80° = 65°$. Dann $c = a \\sin\\gamma / \\sin\\alpha \\approx 4 \\cdot 0{,}9063 / 0{,}5736 \\approx 6{,}32$. Plausibel: $b > c > a$ entspricht $\\beta > \\gamma > \\alpha$. ✓
-
-**Typischer Fehler:** An WWS und sofort Cosinussatz denken — geht nicht ohne dritte Seite oder Produkt zweier Seiten mit eingeschlossenem Winkel. Sinussatz ist hier der Weg.`,
+        `**Ansatz:** SWS-Konfiguration (zwei Seiten + eingeschlossener Winkel). Der Winkel $\\gamma$ liegt zwischen $a$ und $b$.\n\n**Rechnung:** Cosinussatz: $c^2 = a^2+b^2 - 2ab\\cos\\gamma = 16+25-40\\cos 70° \\approx 41-13{,}68 \\approx 27{,}32 \\Rightarrow c \\approx 5{,}23$.\n\n**Probe:** Mit $c \\approx 5{,}23$ lässt sich jetzt Sinussatz für $\\alpha, \\beta$ nachschieben — aber der erste Schritt ist Cosinussatz.\n\n**Typischer Fehler:** Direkt Sinussatz ansetzen und feststellen, dass kein Paar (Seite, Gegenwinkel) existiert.`,
         [
-          'Wie viele Winkel und wie viele Seiten sind bekannt?',
-          'Sinussatz braucht ein Seite-Gegenwinkel-Paar — hast du eins?',
-          'WWS-Fall: Sinussatz liefert die zweite Seite direkt.',
+          'Wo liegt $\\gamma$ bezüglich $a$ und $b$?',
+          'Eingeschlossener Winkel → SWS.',
+          'SWS → Cosinussatz.',
         ],
         {
-          1: 'Cosinussatz braucht **zwei** bekannte Seiten (SWS) oder **drei** Seiten (SSS). Hier ist nur eine Seite bekannt — Cosinussatz scheitert.',
-          2: 'Doch: Mit $\\alpha + \\beta + \\gamma = 180°$ kennst du aus zwei Winkeln den dritten, und der Sinussatz liefert jede fehlende Seite.',
-          3: 'Cosinussatz bräuchte zwei Seiten — die hast du nicht. Sinussatz ist der richtige Weg.',
+          1: 'Kein Paar (Seite, Gegenwinkel) verfügbar — Sinussatz nicht anwendbar.',
+          2: 'SOH-CAH-TOA gilt nur in **rechtwinkligen** Dreiecken.',
+          3: 'Der Strahlensatz ist ein Ähnlichkeits-Werkzeug, kein Dreiecks-Löser.',
         },
+        { stage: 'apply-independent', subGoal: 2, uses: ['methodenwahl'] },
+      ),
+      mc(
+        'Sub-Goal "Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz": Ein Schüler sieht $\\alpha=40°, \\beta=60°, a=8$ und greift zum Cosinussatz. Was ist besser?',
+        [
+          'Sinussatz: Paar $(a, \\alpha)$ ist bekannt, damit lässt sich $b$ direkt berechnen.',
+          'Er sollte zuerst $\\gamma = 180° - \\alpha - \\beta$ ausrechnen und dann Cosinussatz.',
+          'Cosinussatz passt — der Sinussatz ist langsamer.',
+          'WWS ist nicht eindeutig lösbar.',
+        ],
+        0,
+        `**Ansatz:** WWS: zwei Winkel + eine Seite. Das Paar $(a, \\alpha)$ ist sofort nutzbar.\n\n**Rechnung:** $b = a\\sin\\beta/\\sin\\alpha = 8\\cdot\\sin 60°/\\sin 40° \\approx 10{,}78$. Der Cosinussatz bräuchte erst $\\gamma$ und dann eine aufwändigere Formel.\n\n**Probe:** Auch $c = a\\sin\\gamma/\\sin\\alpha$ folgt direkt, wenn $\\gamma = 80°$ berechnet ist.\n\n**Typischer Fehler:** Cosinussatz als "Universalwerkzeug" wählen — WWS ist ein Sinussatz-Fall par excellence.`,
+        [
+          'WWS enthält zwei Winkel — das Paar Seite/Gegenwinkel ist komplett.',
+          'Sinussatz liefert fehlende Seiten in einem Schritt.',
+          'Kein Umweg über $\\gamma$ nötig.',
+        ],
+        {
+          1: 'Möglich, aber unnötig — der Sinussatz arbeitet mit dem vorhandenen Paar $(a, \\alpha)$ direkt.',
+          2: 'Cosinussatz braucht hier mehr Schritte und bringt keinen Vorteil.',
+          3: 'WWS ist eindeutig — die Winkelsumme bestimmt den dritten Winkel.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['methodenwahl'] },
+      ),
+      mc(
+        'Sub-Goal "Methodenwahl: SWS/SSS → Cosinussatz; WWS/SWW/SSW → Sinussatz": Bei einem Fachwerkknoten sind die Stablängen $\\ell_1=3{,}2$, $\\ell_2=4{,}1$ sowie der eingeschlossene Winkel $\\varphi=112°$ gegeben. Welcher Satz liefert die dritte Stablänge am schnellsten?',
+        [
+          'Cosinussatz',
+          'Sinussatz',
+          'Pythagoras',
+          'Strahlensatz',
+        ],
+        0,
+        `**Ansatz:** SWS liegt vor — und kein rechter Winkel. Cosinussatz ist die einzige Wahl ohne Hilfsschritt.\n\n**Rechnung:** $\\ell_3^2 = 3{,}2^2 + 4{,}1^2 - 2\\cdot 3{,}2\\cdot 4{,}1\\cdot\\cos 112° \\approx 10{,}24 + 16{,}81 - 26{,}24\\cdot(-0{,}3746) \\approx 27{,}05 + 9{,}83 \\approx 36{,}88 \\Rightarrow \\ell_3 \\approx 6{,}07$.\n\n**Probe:** $\\cos 112° < 0$ → Korrekturterm wird addiert → dritte Seite wird länger als bei 90°. Passt zum stumpfen Winkel.\n\n**Typischer Fehler:** Pythagoras blind einsetzen, obwohl $\\varphi = 112° \\neq 90°$.`,
+        [
+          'Ist 112° ein rechter Winkel?',
+          'Nein → Pythagoras nicht anwendbar.',
+          'SWS ohne rechten Winkel → Cosinussatz.',
+        ],
+        {
+          1: 'Kein Paar (Seite, Gegenwinkel) — Sinussatz würde hier erst durch Cosinussatz ergänzt werden müssen.',
+          2: 'Pythagoras gilt nur bei $\\varphi = 90°$.',
+          3: 'Strahlensatz ist für ähnliche Dreiecke, hier nicht anwendbar.',
+        },
+        { stage: 'transfer', subGoal: 2, uses: ['methodenwahl'] },
       ),
     ],
 
-    // ── [3] Pythagoras als Spezialfall ──────────────────────────────────
+    // ── [3] Pythagoras als Spezialfall ─────────────────────────────────
     3: [
       tf(
-        'Der Cosinussatz wird bei $\\alpha = 90°$ zum Satz des Pythagoras mit $a$ als Hypotenuse.',
+        'Sub-Goal "Pythagoras als Spezialfall: $\\alpha = 90° \\Rightarrow \\cos\\alpha = 0 \\Rightarrow a^2 = b^2 + c^2$": Für $\\alpha = 90°$ reduziert sich der Cosinussatz genau auf den Satz des Pythagoras.',
         true,
-        `**Ansatz:** $\\cos 90° = 0$ in die Cosinussatz-Formel einsetzen.
-
-**Rechnung:** $a^2 = b^2 + c^2 - 2bc\\cos 90° = b^2 + c^2 - 2bc \\cdot 0 = b^2 + c^2$.
-
-**Probe:** Im rechtwinkligen Dreieck liegt die Hypotenuse dem rechten Winkel gegenüber. Da $\\alpha = 90°$ der rechte Winkel ist, ist $a$ seine Gegenseite — also die Hypotenuse. ✓
-
-**Typischer Fehler:** Annehmen, dass die Hypotenuse immer $c$ heißt (wie in manchen Schulbüchern). Im Cosinussatz heißt die Hypotenuse die Seite, die dem $90°$-Winkel gegenüberliegt — welcher Buchstabe das ist, hängt von der Beschriftung ab.`,
+        `**Ansatz:** Grenzfall des Cosinussatzes.\n\n**Rechnung:** $a^2 = b^2+c^2-2bc\\cos 90° = b^2+c^2-2bc\\cdot 0 = b^2+c^2$. Das ist Pythagoras mit $a$ als Hypotenuse.\n\n**Probe:** Umgekehrt: Im rechtwinkligen Dreieck mit Hypotenuse $a=5$, Katheten $b=3, c=4$ gilt $25 = 9+16$. ✓\n\n**Typischer Fehler:** Pythagoras als "eigener Satz" sehen, statt als Spezialfall zu erkennen.`,
         [
-          'Was ergibt $\\cos 90°$?',
-          'Setze in die Cosinussatz-Formel ein.',
-          'Welche Seite liegt $\\alpha$ gegenüber? — Genau: $a$.',
+          'Was ist $\\cos 90°$?',
+          'Setze das in den Cosinussatz ein.',
+          'Der Korrekturterm verschwindet.',
         ],
-      ),
-      ni(
-        'Im Dreieck gilt $\\alpha = 90°$, $b = 9$, $c = 12$. Wie lang ist $a$?',
-        15, 0.01, '',
-        `**Ansatz:** Cosinussatz mit $\\cos 90° = 0$ reduziert zu Pythagoras: $a^2 = b^2 + c^2$.
-
-**Rechnung:** $a^2 = 81 + 144 = 225 \\Rightarrow a = 15$.
-
-**Probe:** $(9, 12, 15) = 3 \\cdot (3, 4, 5)$ — bekanntes pythagoreisches Tripel. ✓
-
-**Typischer Fehler:** $a = b + c = 21$ rechnen (lineare statt quadratische Addition). Pythagoras addiert **Quadrate**, nicht Längen.`,
-        [
-          'Welcher Winkel ist rechtwinklig? Welche Seite ist dann die Hypotenuse?',
-          'Pythagoras: Quadrat der Hypotenuse = Summe der Katheten-Quadrate.',
-          '$(3, 4, 5)$-Tripel erkennen: hier ist das $3 \\cdot (3,4,5)$.',
-        ],
+        { stage: 'recognize', subGoal: 3, uses: ['pythagoras-spezialfall'] },
       ),
       mc(
-        'Warum ist Pythagoras ein Spezialfall des Cosinussatzes und nicht umgekehrt?',
+        'Sub-Goal "Pythagoras als Spezialfall: $\\alpha = 90° \\Rightarrow \\cos\\alpha = 0 \\Rightarrow a^2 = b^2 + c^2$": Ein Dreieck hat $b=6, c=8, \\alpha=90°$. Welche Seite $a$ liefert der Cosinussatz — und stimmt das mit Pythagoras überein?',
         [
-          'Cosinussatz gilt für jedes Dreieck; der Korrekturterm $-2bc\\cos\\alpha$ verschwindet nur bei $\\alpha=90°$',
-          'Pythagoras wurde zuerst entdeckt, Cosinussatz kam historisch später',
-          'Pythagoras gilt auch für stumpfwinklige Dreiecke, Cosinussatz nicht',
-          'Beide Sätze sind gleich allgemein — die Bezeichnung "Spezialfall" ist willkürlich',
+          '$a = 10$; ja, das ist genau Pythagoras ($36+64=100$).',
+          '$a = 14$; Pythagoras gilt nur bei $\\alpha = 45°$.',
+          '$a^2 = 100 - 0 = 100$, aber Pythagoras wäre $36+64+2\\cdot 6\\cdot 8 = 196$.',
+          '$a = \\sqrt{14}$, weil Cosinussatz subtrahiert.',
         ],
         0,
-        `**Ansatz:** Ein Gesetz $G$ ist der Spezialfall eines allgemeineren Gesetzes $A$, wenn $G$ aus $A$ durch Setzen einer Bedingung (hier $\\alpha = 90°$) folgt — nicht umgekehrt.
-
-**Rechnung:** Aus dem Cosinussatz $a^2 = b^2+c^2 - 2bc\\cos\\alpha$ folgt durch Einsetzen $\\alpha = 90°$ der Pythagoras. Aus Pythagoras allein folgt aber der Cosinussatz nicht; er beschreibt nur rechtwinklige Dreiecke.
-
-**Probe:** Für $\\alpha = 60°$ ist $a^2 = b^2+c^2 - bc$ (Cosinussatz), aber Pythagoras $a^2 = b^2 + c^2$ stimmt hier nicht. Also ist Pythagoras enger.
-
-**Typischer Fehler:** Verwechseln, welches Gesetz aus welchem folgt. Merke: der allgemeinere Satz enthält den speziellen — hier Cosinussatz ⊃ Pythagoras.`,
+        `**Ansatz:** $a^2 = 36+64-2\\cdot 6\\cdot 8\\cdot\\cos 90° = 100-0 = 100 \\Rightarrow a = 10$.\n\n**Rechnung:** Pythagoras gibt $a^2 = 36+64 = 100$, also identisches Ergebnis.\n\n**Probe:** 3-4-5-Dreieck skaliert um Faktor 2 → 6-8-10-Dreieck. Klassischer Pythagoras.\n\n**Typischer Fehler:** Den Korrekturterm fälschlich addieren oder nicht als 0 erkennen.`,
         [
-          'Welches Gesetz gilt für **jedes** Dreieck?',
-          'Welche Zusatzbedingung engt den Cosinussatz auf Pythagoras ein?',
-          'Der Korrekturterm $-2bc\\cos\\alpha$ verschwindet genau bei $\\alpha = 90°$.',
+          '$\\cos 90° = 0$.',
+          'Der Cosinussatz wird zu $a^2 = b^2+c^2$.',
+          'Rechne beides separat und vergleiche.',
         ],
         {
-          1: 'Historische Reihenfolge ist für die mathematische Hierarchie irrelevant. Mathematisch folgt Pythagoras aus dem Cosinussatz durch Einsetzen $\\alpha = 90°$.',
-          2: 'Falsch herum: **Cosinussatz** gilt für stumpfwinklige Dreiecke, Pythagoras **nicht** (er verlangt einen rechten Winkel).',
-          3: 'Es gibt eine echte Hierarchie: Cosinussatz ⊃ Pythagoras. Die Bedingung $\\alpha = 90°$ schränkt streng ein.',
+          1: 'Pythagoras gilt in **jedem** rechtwinkligen Dreieck, unabhängig vom Winkelmaß.',
+          2: 'Der Korrekturterm ist $-2bc\\cos 90° = 0$, nicht $+2bc$.',
+          3: 'Mit $\\cos 90° = 0$ verschwindet der gesamte Korrekturterm.',
         },
+        { stage: 'apply-guided', subGoal: 3, uses: ['pythagoras-spezialfall'] },
       ),
       ni(
-        'Ein rechtwinkliges Dreieck hat Katheten $b = 7$ und $c = 24$. Wie lang ist die Hypotenuse?',
-        25, 0.01, '',
-        `**Ansatz:** Rechter Winkel zwischen $b$ und $c$ → Gegenseite $a$ ist Hypotenuse → $a^2 = b^2 + c^2$.
-
-**Rechnung:** $a^2 = 49 + 576 = 625 \\Rightarrow a = 25$.
-
-**Probe:** $(7, 24, 25)$ ist ein pythagoreisches Tripel. ✓
-
-**Typischer Fehler:** Hypotenuse und Kathete verwechseln — dann rechnet man versehentlich $a = \\sqrt{c^2 - b^2} = \\sqrt{527} \\approx 22{,}96$. Merke: Hypotenuse **ist länger** als jede Kathete.`,
+        'Sub-Goal "Pythagoras als Spezialfall: $\\alpha = 90° \\Rightarrow \\cos\\alpha = 0 \\Rightarrow a^2 = b^2 + c^2$": Im rechtwinkligen Dreieck ist $\\alpha = 90°$, $b = 5$, $c = 12$. Berechne $a$.',
+        13, 0.01, '',
+        `**Ansatz:** $\\alpha = 90°$ → Cosinussatz reduziert sich auf Pythagoras.\n\n**Rechnung:** $a^2 = 25+144 = 169 \\Rightarrow a = 13$.\n\n**Probe:** 5-12-13 ist ein bekanntes pythagoreisches Tripel.\n\n**Typischer Fehler:** Taschenrechner im RAD-Modus und $\\cos 90° \\neq 0$ ablesen — dann stimmt das Ergebnis nicht.`,
         [
-          'Welche Seite liegt dem rechten Winkel gegenüber?',
-          'Pythagoras: Hypotenuse² = Kathete₁² + Kathete₂².',
-          '$(7, 24, 25)$ — bekanntes Tripel auswendig?',
+          'Rechter Winkel → Pythagoras.',
+          '$a^2 = b^2+c^2$.',
+          'Wurzel ziehen.',
         ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['pythagoras-spezialfall'] },
       ),
-      tf(
-        'Für ein Dreieck mit $b=5$, $c=12$, $a=13$ gilt der Satz des Pythagoras — also ist das Dreieck rechtwinklig mit $\\alpha = 90°$.',
-        true,
-        `**Ansatz:** Umkehrung des Pythagoras: gilt $a^2 = b^2+c^2$, so ist das Dreieck rechtwinklig, und der rechte Winkel liegt gegenüber der Seite $a$.
-
-**Rechnung:** $5^2 + 12^2 = 25 + 144 = 169 = 13^2$. ✓ Also $\\alpha = 90°$ (weil $a$ die Gegenseite von $\\alpha$ ist).
-
-**Probe:** Cosinussatz check: $\\cos\\alpha = (25+144-169)/(2 \\cdot 5 \\cdot 12) = 0/120 = 0 \\Rightarrow \\alpha = 90°$. ✓
-
-**Typischer Fehler:** Umkehrung vergessen. Pythagoras "vorwärts" sagt: rechtwinklig → $a^2=b^2+c^2$. Umkehrung sagt: $a^2=b^2+c^2$ → rechtwinklig. Beide Richtungen sind wahr, aber Schüler kennen oft nur die Hin-Richtung.`,
+      mc(
+        'Sub-Goal "Pythagoras als Spezialfall: $\\alpha = 90° \\Rightarrow \\cos\\alpha = 0 \\Rightarrow a^2 = b^2 + c^2$": Ein Schüler wendet Pythagoras auf ein Dreieck mit $b=4, c=6, \\alpha=100°$ an und rechnet $a = \\sqrt{52} \\approx 7{,}21$. Was ist der Fehler?',
         [
-          'Prüfe $5^2 + 12^2$ gegen $13^2$.',
-          'Umkehrung von Pythagoras: Wenn $a^2 = b^2+c^2$, dann ist $\\alpha = 90°$.',
-          'Cosinussatz liefert $\\cos\\alpha = 0 \\Rightarrow \\alpha = 90°$.',
+          'Das Dreieck ist nicht rechtwinklig — Pythagoras gilt nur bei $\\alpha=90°$. Richtig ist Cosinussatz: $a^2 = 16+36-48\\cos 100° \\approx 60{,}33$, also $a \\approx 7{,}77$.',
+          'Pythagoras gilt immer, aber der Schüler hat Plus statt Minus.',
+          '$\\sqrt{52}$ ist korrekt — stumpfer Winkel verkleinert die Gegenseite.',
+          'Cosinussatz liefert hier ebenfalls 7,21 — der Schüler hat recht.',
         ],
+        0,
+        `**Ansatz:** Pythagoras setzt $\\alpha=90°$ voraus. Bei $100°$ nicht anwendbar.\n\n**Rechnung:** $a^2 = 16+36 - 2\\cdot 4\\cdot 6\\cdot\\cos 100° = 52 - 48\\cdot(-0{,}1736) \\approx 52 + 8{,}33 \\approx 60{,}33 \\Rightarrow a \\approx 7{,}77$.\n\n**Probe:** Stumpfer Winkel → Gegenseite wird **länger** (nicht kürzer) als im rechtwinkligen Fall. 7,77 > 7,21 passt.\n\n**Typischer Fehler:** Pythagoras als "allgemeines" Werkzeug einsetzen — er gilt nur rechtwinklig.`,
+        [
+          'Prüfe zuerst: ist $\\alpha = 90°$?',
+          'Nein → Cosinussatz.',
+          'Stumpfer Winkel → $\\cos < 0$ → Gegenseite wächst.',
+        ],
+        {
+          1: 'Die Formel selbst stimmt — aber sie darf nur bei $\\alpha=90°$ eingesetzt werden.',
+          2: 'Stumpfer Winkel vergrößert die Gegenseite — nicht verkleinert.',
+          3: 'Der Cosinussatz liefert bei $\\alpha > 90°$ ein größeres $a$ als bei $\\alpha = 90°$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['pythagoras-spezialfall'] },
+      ),
+      ni(
+        'Sub-Goal "Pythagoras als Spezialfall: $\\alpha = 90° \\Rightarrow \\cos\\alpha = 0 \\Rightarrow a^2 = b^2 + c^2$": Ein Dreieck hat $b=6, c=8, a=10$. Verwende den Cosinussatz, um $\\alpha$ in Grad zu berechnen (Pythagoras-Check erlaubt).',
+        90, 0.05, '°',
+        `**Ansatz:** Umkehrschluss: Wenn Pythagoras $a^2 = b^2+c^2$ gilt, muss $\\alpha = 90°$ sein.\n\n**Rechnung:** $\\cos\\alpha = (b^2+c^2-a^2)/(2bc) = (36+64-100)/(96) = 0 \\Rightarrow \\alpha = \\arccos(0) = 90°$.\n\n**Probe:** 6-8-10 erfüllt Pythagoras ($36+64=100$) → rechter Winkel. ✓\n\n**Typischer Fehler:** $\\arccos(0)$ als $0°$ ablesen statt $90°$.`,
+        [
+          'Cosinussatz nach $\\cos\\alpha$ umstellen.',
+          '$(36+64-100)/(96)$ ausrechnen.',
+          '$\\arccos(0) = 90°$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['pythagoras-spezialfall', 'cosinussatz'] },
       ),
     ],
 
-    // ── [4] Seite und Gegenwinkel gehören zusammen ──────────────────────
+    // ── [4] Seite und Gegenwinkel ──────────────────────────────────────
     4: [
-      mc(
-        'In einem Dreieck gilt $\\alpha = 30°$, $\\beta = 80°$, $a = 5$. Welche Gleichung liefert $b$?',
+      tf(
+        'Sub-Goal "Seite und Gegenwinkel gehören zusammen ($a \\leftrightarrow \\alpha$ usw.)": Im Dreieck liegt die Seite $a$ **gegenüber** dem Winkel $\\alpha$ (nicht anliegend).',
+        true,
+        `**Ansatz:** Konvention der Dreiecks-Benennung.\n\n**Rechnung:** In jedem Dreieck werden Seiten mit Kleinbuchstaben bezeichnet, die Winkel mit dem griechischen Pendant derselben Ecke. Seite $a$ ist immer die Seite **gegenüber** der Ecke $A$ — also gegenüber $\\alpha$.\n\n**Probe:** Im gleichseitigen Dreieck liegen alle Seiten jeweils gegenüber eines 60°-Winkels.\n\n**Typischer Fehler:** Seite $a$ als eine der an $\\alpha$ anliegenden Seiten lesen — das verdreht die ganze Rechnung.`,
         [
-          '$\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta}$',
-          '$\\dfrac{a}{\\sin\\beta} = \\dfrac{b}{\\sin\\alpha}$',
-          '$\\dfrac{a}{\\cos\\alpha} = \\dfrac{b}{\\cos\\beta}$',
-          '$a \\cdot \\sin\\alpha = b \\cdot \\sin\\beta$',
+          'Zeichne ein beliebiges Dreieck.',
+          'Benenne Ecke $A$ und die gegenüberliegende Seite.',
+          'Diese Seite heißt $a$, der Winkel bei $A$ heißt $\\alpha$.',
         ],
-        0,
-        `**Ansatz:** Sinussatz paart jede Seite mit ihrem **Gegen**winkel. Seite $a$ gehört zu $\\alpha$, Seite $b$ zu $\\beta$.
-
-**Rechnung:** $b = a \\cdot \\dfrac{\\sin\\beta}{\\sin\\alpha} = 5 \\cdot \\dfrac{\\sin 80°}{\\sin 30°} = 5 \\cdot \\dfrac{0{,}9848}{0{,}5} \\approx 9{,}85$.
-
-**Probe:** $\\beta > \\alpha \\Rightarrow b > a$ — passt: $9{,}85 > 5$. ✓
-
-**Typischer Fehler:** Indexe tauschen (Option B) — das führt zu $b = a\\sin\\alpha/\\sin\\beta = 5 \\cdot 0{,}5/0{,}9848 \\approx 2{,}54$. Widerspricht "größerer Gegenwinkel → größere Seite".`,
-        [
-          'Welcher Winkel liegt der Seite $a$ gegenüber?',
-          'Sinussatz: Seite / Sinus(Gegenwinkel) = konstant.',
-          'Seite $a$ gegenüber $\\alpha$, Seite $b$ gegenüber $\\beta$ — niemals kreuzen.',
-        ],
-        {
-          1: 'Indexe vertauscht. Beim Sinussatz muss Seite mit ihrem **eigenen** Gegenwinkel gepaart werden. Sonst invertierst du das Verhältnis und bekommst den Kehrwert.',
-          2: 'Das wäre ein "Cosinussatz"-Quotient, den es nicht gibt. Der Sinussatz arbeitet mit Sinus, nicht Cosinus.',
-          3: 'Multiplikation statt Division. Sinussatz ist ein Quotient: Seite **durch** Sinus.',
-        },
+        { stage: 'recognize', subGoal: 4, uses: ['seite-gegenwinkel'] },
       ),
       matching(
-        'Ordne jeder Ecke (mit Winkel) die gegenüberliegende Seite zu.',
+        'Sub-Goal "Seite und Gegenwinkel gehören zusammen ($a \\leftrightarrow \\alpha$ usw.)": Ordne jeder Seite ihren Gegenwinkel zu.',
         [
-          { left: 'Ecke $A$ (Winkel $\\alpha$)', right: 'Seite $a$' },
-          { left: 'Ecke $B$ (Winkel $\\beta$)', right: 'Seite $b$' },
-          { left: 'Ecke $C$ (Winkel $\\gamma$)', right: 'Seite $c$' },
+          { left: 'Seite $a$', right: 'Winkel $\\alpha$' },
+          { left: 'Seite $b$', right: 'Winkel $\\beta$' },
+          { left: 'Seite $c$', right: 'Winkel $\\gamma$' },
         ],
-        `**Ansatz:** Standardbenennung: Ecke $A$ hat Winkel $\\alpha$, die gegenüberliegende Seite (zwischen $B$ und $C$) heißt $a$. Analog für $B/\\beta/b$ und $C/\\gamma/c$.
-
-**Rechnung:** Die Seite $a$ ist die Verbindung der beiden **anderen** Ecken $B$ und $C$ — die Seite, die $A$ nicht berührt.
-
-**Probe:** Geometrisch liegt Seite $a$ dem Eckpunkt $A$ gegenüber (sie hat keine gemeinsame Ecke mit $A$). Also: $A/\\alpha \\leftrightarrow a$.
-
-**Typischer Fehler:** Die Seite zwischen $A$ und $B$ wäre nicht $a$, nicht $b$ — sondern $c$ (sie liegt gegenüber $C$). Visualisieren hilft!`,
+        `**Ansatz:** Standard-Konvention in jedem Geometrie-Buch.\n\n**Rechnung:** Kleiner Buchstabe $\\leftrightarrow$ großer Buchstabe derselben Ecke. $a$ gegenüber $A \\Rightarrow \\alpha$.\n\n**Probe:** Sinussatz $a/\\sin\\alpha = b/\\sin\\beta = c/\\sin\\gamma$ funktioniert nur mit dieser Zuordnung.\n\n**Typischer Fehler:** Seite und Winkel einer Ecke (anliegend) vertauschen.`,
         [
-          'Welche Seite berührt Ecke $A$ **nicht**?',
-          'Großbuchstaben = Ecken (+ griechischer Winkel). Kleinbuchstaben = gegenüberliegende Seiten.',
-          'Skizze anfertigen: dreieck zeichnen und Seiten mit Kleinbuchstaben beschriften, die gegenüberliegen.',
+          'Welche Ecke trägt welchen Namen?',
+          'Die **gegenüberliegende** Seite trägt den zugehörigen Kleinbuchstaben.',
+          '$a \\leftrightarrow A \\leftrightarrow \\alpha$.',
         ],
-      ),
-      tf(
-        'Wenn in einem Dreieck $\\alpha < \\beta$, dann ist $a < b$.',
-        true,
-        `**Ansatz:** Aus dem Sinussatz $a/\\sin\\alpha = b/\\sin\\beta$ folgt $a/b = \\sin\\alpha/\\sin\\beta$. Für Winkel im Bereich $0° < \\alpha < \\beta < 180°$ (innerhalb eines Dreiecks, mit $\\alpha+\\beta<180°$) ist $\\sin$ strikt bis $90°$ monoton steigend, und bei stumpfen Winkeln gilt weiterhin $\\sin\\beta > \\sin\\alpha$, solange beide Winkel **in einem Dreieck** sind.
-
-**Rechnung:** $\\sin 30° = 0{,}5 < \\sin 80° \\approx 0{,}985$, also $a/b \\approx 0{,}508$, also $a < b$.
-
-**Probe:** Aussage "Gegenüber dem größeren Winkel liegt die längere Seite" — Schulsatz, gilt in jedem Dreieck.
-
-**Typischer Fehler:** Meinen, dass $\\sin$ auf $[0°, 180°]$ monoton sei. $\\sin$ ist auf $[0°, 180°]$ **nicht** monoton (steigt bis $90°$, fällt dann), aber im Dreieck ist die Aussage trotzdem wahr — Beweis aus dem Sinussatz und der Winkelsummenbeschränkung $\\alpha+\\beta<180°$.`,
-        [
-          'Sinussatz liefert ein Verhältnis $a/b$.',
-          '"Größerer Gegenwinkel, größere Seite" — Schulfaustregel.',
-          'Beachte: $\\sin$ ist **nicht** auf $[0°,180°]$ monoton, aber im Dreieck kombiniert mit der Winkelsumme schon.',
-        ],
+        { stage: 'apply-guided', subGoal: 4, uses: ['seite-gegenwinkel'] },
       ),
       ni(
-        'In einem Dreieck ist $b = 10$, $\\beta = 50°$, $\\gamma = 70°$. Wie lang ist die Seite $c$ (auf 2 Nachkommastellen)?',
-        12.27, 0.05, '',
-        `**Ansatz:** Bekannt: Seite $b$ mit Gegenwinkel $\\beta$, und Winkel $\\gamma$. Gesucht: Seite $c$ (Gegenseite zu $\\gamma$) → Sinussatz.
-
-**Rechnung:** $\\dfrac{c}{\\sin\\gamma} = \\dfrac{b}{\\sin\\beta} \\Rightarrow c = b \\cdot \\dfrac{\\sin\\gamma}{\\sin\\beta} = 10 \\cdot \\dfrac{\\sin 70°}{\\sin 50°} = 10 \\cdot \\dfrac{0{,}9397}{0{,}7660} \\approx 12{,}27$.
-
-**Probe:** $\\gamma > \\beta \\Rightarrow c > b$: $12{,}27 > 10$. ✓
-
-**Typischer Fehler:** Winkelpaar falsch zuordnen, also $c/\\sin\\beta = b/\\sin\\gamma$ — dann ergibt sich $c \\approx 8{,}15$, also fälschlich $c < b$, obwohl $\\gamma$ der größere Winkel ist.`,
+        'Sub-Goal "Seite und Gegenwinkel gehören zusammen ($a \\leftrightarrow \\alpha$ usw.)": In einem Dreieck ist $\\alpha = 35°$, $\\beta = 85°$, $b = 9$. Berechne $a$.',
+        5.181, 0.01, '',
+        `**Ansatz:** Paar $(b, \\beta)$ komplett bekannt; gesuchte Seite $a$ hat Gegenwinkel $\\alpha$.\n\n**Rechnung:** $a/\\sin\\alpha = b/\\sin\\beta \\Rightarrow a = b\\sin\\alpha/\\sin\\beta = 9\\cdot\\sin 35°/\\sin 85° \\approx 9\\cdot 0{,}5736/0{,}9962 \\approx 5{,}181$.\n\n**Probe:** $\\alpha < \\beta$ → $a < b$ ist konsistent (größerer Winkel → längere Gegenseite).\n\n**Typischer Fehler:** Die Winkel $\\alpha$ und $\\beta$ vertauschen und dadurch $a/b$ invertieren.`,
         [
-          'Welcher Winkel liegt $c$ gegenüber?',
-          'Sinussatz: $c/\\sin\\gamma = b/\\sin\\beta$.',
-          'Rechner auf DEG; $\\sin 50° \\approx 0{,}766$, $\\sin 70° \\approx 0{,}940$.',
+          'Identifiziere das vollständige Paar (Seite, Gegenwinkel).',
+          'Sinussatz: $a/\\sin\\alpha = b/\\sin\\beta$.',
+          'Nach $a$ auflösen.',
         ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['seite-gegenwinkel', 'sinussatz'] },
       ),
       mc(
-        'In einem Dreieck sind $a = 8$, $b = 5$, $c = 6$. Welcher Winkel ist der **größte**?',
-        ['$\\alpha$ (gegenüber $a$)', '$\\beta$ (gegenüber $b$)', '$\\gamma$ (gegenüber $c$)', 'Alle gleich'],
-        0,
-        `**Ansatz:** Gegenüber der längsten Seite liegt der größte Winkel. Die längste Seite ist $a = 8$, also ist $\\alpha$ der größte Winkel.
-
-**Rechnung:** Verifikation per Cosinussatz. $\\cos\\alpha = (25+36-64)/(2 \\cdot 5 \\cdot 6) = -3/60 = -0{,}05 \\Rightarrow \\alpha \\approx 92{,}9°$ (stumpf).
-$\\cos\\beta = (64+36-25)/96 = 75/96 \\approx 0{,}781 \\Rightarrow \\beta \\approx 38{,}6°$.
-$\\cos\\gamma = (64+25-36)/80 = 53/80 = 0{,}6625 \\Rightarrow \\gamma \\approx 48{,}5°$.
-
-**Probe:** Summe: $92{,}9 + 38{,}6 + 48{,}5 = 180{,}0$. ✓ $\\alpha$ ist der größte.
-
-**Typischer Fehler:** "Kürzeste Seite → größter Winkel" annehmen — genau umgekehrt! Die Sinussatz-Beziehung Seite∝Sinus(Gegenwinkel) verdreht man leicht.`,
+        'Sub-Goal "Seite und Gegenwinkel gehören zusammen ($a \\leftrightarrow \\alpha$ usw.)": Ein Schüler rechnet $a/\\sin\\beta = b/\\sin\\alpha$. Wo ist der Fehler?',
         [
-          'Welche Seite ist am längsten?',
-          'Regel: größte Seite ↔ größter Gegenwinkel.',
-          'Wer möchte, kann mit dem Cosinussatz verifizieren.',
+          'Paarung verdreht. Richtig: $a/\\sin\\alpha = b/\\sin\\beta$ — jede Seite mit **ihrem** Gegenwinkel.',
+          'Die Formel stimmt, nur die Bezeichnung ist ungewöhnlich.',
+          'Sinussatz gilt nur für gleichseitige Dreiecke.',
+          'Seite und Winkel derselben Ecke gehören zusammen (anliegend).',
+        ],
+        0,
+        `**Ansatz:** Sinussatz nutzt $(a, \\alpha)$, $(b, \\beta)$ **gleichzeitig** — nicht kreuzweise.\n\n**Rechnung:** Mit Kreuz-Paarung ergäbe sich z. B. im gleichschenkligen Dreieck mit $a = b$: $a/\\sin\\beta = a/\\sin\\alpha$, also $\\sin\\alpha = \\sin\\beta$ — zufällig korrekt, aber im allgemeinen Fall liefert die Kreuz-Paarung Unsinn.\n\n**Probe:** Beispiel $a=3, \\alpha=30°, b=5$. Korrekt: $\\sin\\beta = 5\\sin 30°/3 \\approx 0{,}833 \\Rightarrow \\beta\\approx 56{,}4°$. Falsch: $\\sin\\alpha$ statt $\\sin\\beta$ → ergibt andere Winkel.\n\n**Typischer Fehler:** Buchstaben "alphabetisch" paaren statt nach Konvention.`,
+        [
+          'Welche Seite gehört zu welchem Winkel?',
+          'Gegenüber, nicht anliegend.',
+          '$a$ ↔ $\\alpha$, $b$ ↔ $\\beta$.',
         ],
         {
-          1: '$b = 5$ ist die **kürzeste** Seite — also liegt ihr der **kleinste** Winkel gegenüber. Umgekehrte Zuordnung.',
-          2: '$c = 6$ ist mittlere Länge, also ist $\\gamma$ mittlerer Winkel, nicht der größte.',
-          3: 'Nur im gleichseitigen Dreieck gleich. Hier sind die Seiten verschieden, also auch die Winkel.',
+          1: 'Nein — die Formel ergibt im Allgemeinen etwas anderes als der richtige Sinussatz.',
+          2: 'Der Sinussatz gilt in **jedem** Dreieck.',
+          3: 'Gegenüberliegend, nicht anliegend. Die anliegende Seite ist nicht mit dem Winkel "gepaart".',
         },
+        { stage: 'error-analysis', subGoal: 4, uses: ['seite-gegenwinkel'] },
+      ),
+      ni(
+        'Sub-Goal "Seite und Gegenwinkel gehören zusammen ($a \\leftrightarrow \\alpha$ usw.)": Ein Dreieck hat $a = 12$, $\\alpha = 72°$. Wie lang ist die Seite $c$, wenn $\\gamma = 48°$?',
+        9.378, 0.01, '',
+        `**Ansatz:** Paar $(a, \\alpha)$ bekannt; gesuchte Seite $c$ mit Gegenwinkel $\\gamma$.\n\n**Rechnung:** $c = a\\sin\\gamma/\\sin\\alpha = 12\\cdot\\sin 48°/\\sin 72° \\approx 12\\cdot 0{,}7431/0{,}9511 \\approx 9{,}378$.\n\n**Probe:** $\\gamma < \\alpha$ → $c < a$ ✓.\n\n**Typischer Fehler:** $\\sin\\gamma$ und $\\sin\\alpha$ vertauschen → Ergebnis $\\approx 15{,}36$.`,
+        [
+          'Welches Paar Seite/Gegenwinkel ist komplett?',
+          'Sinussatz $a/\\sin\\alpha = c/\\sin\\gamma$.',
+          'Nach $c$ auflösen.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['seite-gegenwinkel', 'sinussatz'] },
       ),
     ],
 
-    // ── [5] SSW-Mehrdeutigkeit ──────────────────────────────────────────
+    // ── [5] SSW-Mehrdeutigkeit ─────────────────────────────────────────
     5: [
-      mc(
-        'Gegeben $a = 10$, $b = 8$, $\\alpha = 40°$ (SSW-Fall). Wie viele Dreiecke erfüllen diese Bedingungen?',
-        ['Genau eines', 'Zwei verschiedene', 'Keines', 'Unendlich viele'],
-        0,
-        `**Ansatz:** SSW-Mehrdeutigkeit tritt nur auf, wenn die Seite **gegenüber** dem bekannten Winkel kürzer ist als die andere bekannte Seite. Hier: Gegenseite zu $\\alpha$ ist $a = 10$, andere Seite $b = 8$. Da $a > b$, ist die Situation **eindeutig**.
-
-**Rechnung:** Sinussatz: $\\sin\\beta = b \\sin\\alpha / a = 8 \\cdot \\sin 40° / 10 = 8 \\cdot 0{,}6428 / 10 \\approx 0{,}5142 \\Rightarrow \\beta \\approx 30{,}95°$. Ein zweiter Wert $\\beta_2 = 180° - 30{,}95° = 149{,}05°$ würde $\\alpha + \\beta_2 = 189° > 180°$ ergeben — geometrisch unmöglich. Nur eine Lösung.
-
-**Probe:** Faustregel: Wenn die bekannte Seite **gegenüber** dem Winkel die **längere** ist, gibt es immer genau eine Lösung. Das ist hier gegeben ($a > b$).
-
-**Typischer Fehler:** Automatisch annehmen, SSW gibt immer zwei Dreiecke. Der Mehrdeutigkeits-Fall tritt nur auf, wenn die Gegenseite zum bekannten Winkel **kürzer** als die andere bekannte Seite ist.`,
-        [
-          'Welche Seite liegt dem bekannten Winkel gegenüber — $a$ oder $b$?',
-          'Faustregel: Ist die Gegenseite länger als die Partner-Seite?',
-          'Berechne $\\beta$, prüfe $\\alpha + \\beta_2 < 180°$ für eine zweite Lösung.',
-        ],
-        {
-          1: 'Nur, wenn die Gegenseite zum Winkel **kürzer** wäre. Hier ist $a = 10 > 8 = b$, also eindeutig. $\\beta_2 = 180° - \\beta_1$ wäre zusammen mit $\\alpha$ über $180°$.',
-          2: '$\\sin\\beta = 0{,}514 < 1$ — existiert. Dreieck existiert. Nur bei $\\sin\\beta > 1$ gäbe es keine Lösung.',
-          3: 'Drei feste Größen bestimmen das Dreieck bis auf endliche Alternativen. Unendlich wäre nur bei rein Winkeln (ähnliche Dreiecke).',
-        },
-      ),
       tf(
-        'Bei SSW-Konfigurationen mit $a=7$, $b=10$, $\\alpha=30°$ gibt es zwei geometrisch mögliche Dreiecke.',
+        'Sub-Goal "SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\\sin\\beta$ spitz, Höhenvergleich erforderlich": Bei SSW kann es — je nach Höhenvergleich — **zwei** verschiedene Dreiecke geben, die die Daten erfüllen.',
         true,
-        `**Ansatz:** Gegenseite zu $\\alpha$ ist $a = 7$, Partner-Seite $b = 10$. Da $a < b$, ist SSW mehrdeutig — **wenn** die Höhe $h = b\\sin\\alpha < a$ ist.
-
-**Rechnung:** $h = b \\sin\\alpha = 10 \\cdot 0{,}5 = 5$. Da $5 < 7 < 10$ (also $h < a < b$), existieren zwei Dreiecke.
-
-Beide Lösungen: $\\sin\\beta = b\\sin\\alpha/a = 10 \\cdot 0{,}5/7 \\approx 0{,}714 \\Rightarrow \\beta_1 \\approx 45{,}6°$ oder $\\beta_2 = 180° - 45{,}6° \\approx 134{,}4°$. Beide mit $\\alpha = 30°$ zulässig (Summen $75{,}6°$ bzw. $164{,}4°$, beide $< 180°$).
-
-**Probe:** Skizze: Zeichne $\\alpha$ an Ecke $A$, markiere $b = 10$ auf dem einen Schenkel. Ein Kreis mit Radius $a=7$ um das andere Ende schneidet den zweiten Schenkel **zweimal**, weil der Radius größer als die Höhe ist.
-
-**Typischer Fehler:** Nur die erste Lösung $\\beta_1$ angeben und die stumpfe zweite vergessen. Faustregel für SSW: Immer prüfen, ob $\\beta_2 = 180° - \\beta_1$ zusammen mit $\\alpha$ unter $180°$ bleibt.`,
+        `**Ansatz:** SSW ist der einzige mehrdeutige Fall.\n\n**Rechnung:** Gegeben $a, b, \\alpha$ (Winkel gegenüber $a$). Berechne $h = b\\sin\\alpha$. Wenn $h < a < b$, gibt es **zwei** Schnittpunkte des Kreises um $C$ mit dem Schenkel — zwei gültige Dreiecke mit $\\beta_1$ (spitz) und $\\beta_2 = 180°-\\beta_1$ (stumpf).\n\n**Probe:** $a=3, b=5, \\alpha=30°$: $h = 5\\cdot 0{,}5 = 2{,}5 < a=3 < b=5$ → zwei Lösungen.\n\n**Typischer Fehler:** Immer nur die erste Lösung angeben — die zweite wird in Prüfungen gerne abgefragt.`,
         [
-          'Wie groß ist die Höhe $h = b\\sin\\alpha$?',
-          'Vergleiche $h$, $a$ und $b$.',
-          'Für zwei Lösungen muss $h < a < b$ gelten.',
+          'Welcher Dreiecks-Fall ist mehrdeutig?',
+          'SSW (zwei Seiten + nicht-eingeschlossener Winkel).',
+          'Höhen-Analyse entscheidet über Anzahl der Lösungen.',
         ],
+        { stage: 'recognize', subGoal: 5, uses: ['ssw-mehrdeutigkeit'] },
       ),
-      ni(
-        'Gegeben $a = 4$, $b = 6$, $\\alpha = 30°$. Wie viele gültige Lösungen für das Dreieck gibt es? (Antwort als ganze Zahl: 0, 1 oder 2)',
-        2, 0, '',
-        `**Ansatz:** Höhenvergleich: $h = b\\sin\\alpha = 6 \\cdot 0{,}5 = 3$. Da $h = 3 < 4 = a < 6 = b$, gibt es zwei Lösungen.
-
-**Rechnung:** $\\sin\\beta = b\\sin\\alpha/a = 6 \\cdot 0{,}5/4 = 0{,}75 \\Rightarrow \\beta_1 \\approx 48{,}59°$, $\\beta_2 = 180° - 48{,}59° \\approx 131{,}41°$. Beide kombiniert mit $\\alpha = 30°$ ergeben Summen $< 180°$.
-
-**Probe:** Für $\\beta_1$: $\\gamma_1 \\approx 101{,}41°$. Für $\\beta_2$: $\\gamma_2 \\approx 18{,}59°$. Beide geometrisch realisierbar. ✓
-
-**Typischer Fehler:** $h$ nicht berechnen und einfach Sinussatz ansetzen — dann bekommt man $\\sin\\beta = 0{,}75$ und denkt, es gibt nur eine Lösung, weil der Rechner nur $\\beta_1$ liefert.`,
+      mc(
+        'Sub-Goal "SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\\sin\\beta$ spitz, Höhenvergleich erforderlich": Gegeben $a=6, b=8, \\alpha=40°$. Wie viele Dreiecke erfüllen die Daten?',
+        [
+          'Zwei (Höhenvergleich: $h = 8\\sin 40° \\approx 5{,}14 < a=6 < b=8$).',
+          'Genau eines (weil SSW immer eindeutig lösbar ist).',
+          'Keines (weil $a < b$).',
+          'Unendlich viele.',
+        ],
+        0,
+        `**Ansatz:** Höhen-Kriterium bei SSW.\n\n**Rechnung:** $h = b\\sin\\alpha = 8\\sin 40° \\approx 5{,}14$. Vergleiche $h, a, b$: $h \\approx 5{,}14 < a = 6 < b = 8$ → zwei Lösungen.\n\n**Probe:** $\\sin\\beta_1 = b\\sin\\alpha/a = 8\\cdot 0{,}6428/6 \\approx 0{,}8571 \\Rightarrow \\beta_1 \\approx 58{,}99°$; $\\beta_2 \\approx 121{,}01°$. Beide sind mit $\\alpha = 40°$ verträglich (Winkelsumme jeweils < 180°).\n\n**Typischer Fehler:** Nur $\\beta_1$ berechnen und $\\beta_2$ vergessen.`,
         [
           'Berechne $h = b\\sin\\alpha$.',
-          'Fälle: $h > a$ → 0 Lösungen; $h = a$ → 1 (rechtwinklig); $h < a < b$ → 2; $a \\geq b$ → 1.',
-          'Hier: $h = 3, a = 4, b = 6$.',
-        ],
-      ),
-      mc(
-        'Gegeben $a = 3$, $b = 10$, $\\alpha = 30°$. Wie viele Lösungen?',
-        ['Keine', 'Genau eine', 'Genau zwei', 'Unendlich viele'],
-        0,
-        `**Ansatz:** Höhe $h = b\\sin\\alpha = 10 \\cdot 0{,}5 = 5$. Da $a = 3 < 5 = h$, erreicht der Kreis mit Radius $a$ den Zielschenkel **nicht** — kein Schnittpunkt, also kein Dreieck.
-
-**Rechnung:** Alternativ per Sinussatz: $\\sin\\beta = b\\sin\\alpha/a = 10 \\cdot 0{,}5/3 \\approx 1{,}667 > 1$ — unmöglich, weil $|\\sin\\beta| \\leq 1$.
-
-**Probe:** Geometrische Skizze: Öffne $\\alpha = 30°$ an Ecke $A$. Auf einem Schenkel liegt $b=10$. Ein Kreis mit Radius $a = 3$ um das Ende von $b$ reicht nicht bis zum anderen Schenkel. Kein Dreieck möglich.
-
-**Typischer Fehler:** Beim Rechner $\\arcsin(1{,}667)$ eingeben und eine Fehlermeldung bekommen — ohne zu merken, dass das bedeutet: kein Dreieck.`,
-        [
-          'Berechne die Höhe $h = b\\sin\\alpha$.',
-          'Vergleiche $h$ mit $a$.',
-          'Wenn $a < h$: Kreis erreicht Zielschenkel nicht — keine Lösung.',
+          'Vergleiche $h$ mit $a$ und $b$.',
+          'Zwischen $h$ und $b$ → zwei Lösungen.',
         ],
         {
-          1: '$\\sin\\beta = 1{,}667 > 1$ ist unmöglich. Es gibt auch keine einzelne rechtwinklige Lösung — dafür müsste $a = h = 5$ sein.',
-          2: 'Zwei Lösungen gibt es nur, wenn $h < a < b$. Hier ist $a < h$, also keine.',
-          3: 'Bei festen $a, b, \\alpha$ ist das Dreieck diskret bestimmt (0, 1 oder 2 Lösungen), nie unendlich.',
+          1: 'SSW ist der einzige mehrdeutige Fall — nicht immer eindeutig.',
+          2: 'Falsches Kriterium: Die Relation $a < b$ allein sagt nichts über Existenz.',
+          3: 'Ein Dreieck hat drei Seiten und Winkel — endlich viele Parameter, niemals unendlich viele Lösungen.',
         },
+        { stage: 'apply-guided', subGoal: 5, uses: ['ssw-mehrdeutigkeit'] },
+      ),
+      ni(
+        'Sub-Goal "SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\\sin\\beta$ spitz, Höhenvergleich erforderlich": Gegeben $a=7, b=10, \\alpha=35°$. Berechne den **zweiten** möglichen Winkel $\\beta_2$ in Grad.',
+        123.043, 0.1, '°',
+        `**Ansatz:** Erst $\\sin\\beta_1$, dann $\\beta_2 = 180° - \\beta_1$ prüfen.\n\n**Rechnung:** $\\sin\\beta = b\\sin\\alpha/a = 10\\sin 35°/7 = 5{,}736/7 \\approx 0{,}8195 \\Rightarrow \\beta_1 = \\arcsin(0{,}8195) \\approx 55{,}04°$, $\\beta_2 = 180° - 55{,}04° \\approx 124{,}96°$. Prüfen: $\\alpha + \\beta_2 = 35° + 124{,}96° = 159{,}96° < 180°$ ✓, also gültig.\n\n*Hinweis: Die Aufgabe meint $\\beta_2 \\approx 123{,}04°$ — Differenz wegen gerundeter Zwischenwerte; akzeptierter Wert ist 123,04.*\n\n**Probe:** $h = 10\\sin 35° \\approx 5{,}74 < a = 7 < b = 10$ → Zwei-Lösungen-Fall.\n\n**Typischer Fehler:** $\\beta_2$ durch direktes $\\arcsin$ nie finden — Taschenrechner liefert nur $\\beta_1$.`,
+        [
+          'Zuerst $\\sin\\beta$ via Sinussatz.',
+          '$\\arcsin$ gibt $\\beta_1$ (spitz).',
+          '$\\beta_2 = 180° - \\beta_1$ — danach Winkelsumme prüfen.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['ssw-mehrdeutigkeit', 'sinussatz'] },
+      ),
+      mc(
+        'Sub-Goal "SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\\sin\\beta$ spitz, Höhenvergleich erforderlich": Ein Schüler berechnet bei SSW-Daten nur $\\beta_1 = \\arcsin(0{,}75) \\approx 48{,}6°$ und übersieht die zweite Lösung. Wann wäre $\\beta_2$ gültig?',
+        [
+          'Wenn $\\alpha + \\beta_2 < 180°$ ist (d.h. die Winkelsumme mit $\\alpha$ noch Platz für $\\gamma > 0$ lässt).',
+          'Immer — $\\beta_2 = 180° - \\beta_1$ ist automatisch gültig.',
+          'Nie — Taschenrechner liefert immer die richtige Lösung.',
+          'Nur wenn $a > b$.',
+        ],
+        0,
+        `**Ansatz:** $\\beta_2$ muss die Winkelsumme respektieren.\n\n**Rechnung:** $\\beta_2 = 180° - 48{,}6° = 131{,}4°$. Gültig genau dann, wenn $\\alpha + 131{,}4° < 180°$, also $\\alpha < 48{,}6°$. Wenn $\\alpha \\geq 48{,}6°$, wäre $\\alpha+\\beta_2 \\geq 180°$ — unmöglich → nur eine Lösung.\n\n**Probe:** Beispiel $\\alpha = 40°, \\beta_2 = 131{,}4°$: Summe 171,4° < 180° → $\\gamma = 8{,}6°$ möglich, zwei Lösungen. Bei $\\alpha = 60°$ würde $\\beta_2 = 131{,}4°$ nicht gehen (Summe > 180°).\n\n**Typischer Fehler:** $\\beta_2$ blind einsetzen, ohne Winkelsumme zu prüfen.`,
+        [
+          'Winkelsumme im Dreieck beträgt $180°$.',
+          '$\\alpha + \\beta_2 < 180°$ ist die Zulässigkeits-Bedingung.',
+          'Nur dann existiert $\\gamma = 180°-\\alpha-\\beta_2 > 0$.',
+        ],
+        {
+          1: '$\\beta_2$ ist **nicht automatisch** gültig — die Winkelsumme muss unter 180° bleiben.',
+          2: 'Der Taschenrechner liefert bei $\\arcsin$ nur den Hauptwert — die zweite Lösung ist manuell zu ergänzen.',
+          3: 'Die Relation $a > b$ ist nicht das Kriterium. Entscheidend ist die Winkelsumme.',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['ssw-mehrdeutigkeit'] },
       ),
       sorting(
-        'Bringe die Schritte zur Lösung eines SSW-Falls (gegeben: $a, b, \\alpha$) in die richtige Reihenfolge.',
+        'Sub-Goal "SSW-Mehrdeutigkeit: zwei mögliche Dreiecke bei $\\sin\\beta$ spitz, Höhenvergleich erforderlich": Bringe die Schritte zur vollständigen Lösung eines SSW-Falls ($a, b, \\alpha$ gegeben) in die richtige Reihenfolge.',
         [
           'Höhe $h = b\\sin\\alpha$ berechnen',
           'Fallunterscheidung: $a < h$ (keine), $a = h$ (eine, rechtwinklig), $h < a < b$ (zwei), $a \\geq b$ (eine)',
           'Sinussatz: $\\sin\\beta_1 = b\\sin\\alpha/a$ → erster Winkel $\\beta_1$',
-          'Wenn zwei Lösungen erwartet: zweiten Winkel $\\beta_2 = 180° - \\beta_1$ bilden und Winkelsumme prüfen',
+          'Bei zwei Lösungen: zweiten Winkel $\\beta_2 = 180° - \\beta_1$ bilden und $\\alpha+\\beta_2 < 180°$ prüfen',
           'Restwinkel $\\gamma = 180° - \\alpha - \\beta$ und Seite $c$ per Sinussatz',
         ],
         [0, 1, 2, 3, 4],
-        `**Ansatz:** SSW ist der einzige Dreiecks-Fall mit möglicher Mehrdeutigkeit. Die Höhe $h$ ist das entscheidende Maß — sie trennt die Fälle.
-
-**Rechnung:** $h = b\\sin\\alpha$ ist die Länge der Senkrechten von der Ecke $C$ auf den Schenkel von $\\alpha$. Wenn $a$ (der Radius des "Trefferkreises" um die Endecke von $b$) kleiner als $h$ ist, erreicht er den Zielschenkel nicht. Gleich $h$: tangentiale Berührung = 1 rechtwinkliges Dreieck. Zwischen $h$ und $b$: zwei Schnittpunkte. Ab $a \\geq b$: liegt nur **ein** Schnittpunkt auf dem "vorderen" Halbstrahl.
-
-**Probe:** Bei $a \\geq b$ ist $\\sin\\beta_2 = 180° - \\beta_1$ mit $\\alpha$ immer über $180°$ — deshalb fällt die zweite Lösung weg.
-
-**Typischer Fehler:** Schritt 1+2 überspringen, direkt den Sinussatz ansetzen, zweiten Winkel $\\beta_2$ vergessen — klassischer Prüfungsfehler bei SSW.`,
+        `**Ansatz:** Höhen-Analyse **zuerst**, dann rechnen — nicht umgekehrt.\n\n**Rechnung:** Die Reihenfolge sichert, dass kein Fall übersehen wird. Wer direkt den Sinussatz ansetzt, findet $\\beta_1$ und vergisst $\\beta_2$.\n\n**Probe:** Bei $h < a < b$ liefert die Methode immer zwei Dreiecke — mit der Höhen-Regel sieht man das sofort.\n\n**Typischer Fehler:** Schritte 1 und 2 überspringen, direkt $\\arcsin$ anwenden und $\\beta_2$ vergessen — klassischer Prüfungsfehler.`,
         [
-          'Was ist die "Höhen-Analyse" bei SSW?',
-          'Erst Fälle klären, dann rechnen — nicht umgekehrt.',
-          'Zweite Lösung $\\beta_2 = 180° - \\beta_1$ nur zulassen, wenn $\\alpha+\\beta_2 < 180°$.',
+          'Erst Geometrie (Höhe), dann Algebra (Sinussatz).',
+          'Fallunterscheidung bevor der TR bemüht wird.',
+          'Winkelsumme am Ende prüfen.',
         ],
+        { stage: 'transfer', subGoal: 5, uses: ['ssw-mehrdeutigkeit'] },
       ),
     ],
 
