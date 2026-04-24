@@ -427,6 +427,59 @@ const lessons_u4 = [
       { label: 'Identitätsnachweis: linke Seite umformen bis rechte Seite entsteht (nicht beide gleichzeitig manipulieren)', examRelevance: 'mittel' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-3-2', concepts: ['pythag-identity', 'sin-doppelwinkel'] },
+        { lessonId: 'trig-3-1', concepts: ['sin-add-thm', 'cos-add-thm'] },
+        { lessonId: 'trig-3-4', concepts: ['arcsin-def', 'arccos-def', 'hauptwert-vs-weitere'] },
+      ],
+      concepts: [
+        { id: 'pythag-vereinfachen',        title: '$\\sin^2+\\cos^2=1$ zur Termvereinfachung einsetzen',                       dependsOn: [] },
+        { id: 'doppelwinkel-vereinfachen',  title: 'Doppelwinkel $\\sin 2x, \\cos 2x$ zur Vereinfachung erkennen/einsetzen',   dependsOn: [] },
+        { id: 'grundgleichung-loesen',      title: 'Grundgleichung $\\sin x=a, \\cos x=a$ im Intervall vollständig lösen',     dependsOn: [] },
+        { id: 'quadratische-substitution',  title: 'Substitution $u=\\sin x$ oder $u=\\cos x$ bei quadratischen Gleichungen',  dependsOn: ['grundgleichung-loesen'] },
+        { id: 'faktorisieren-statt-teilen', title: 'Faktorisieren statt durch $\\cos x$ teilen — Nullstellen nicht verlieren', dependsOn: ['grundgleichung-loesen'] },
+        { id: 'identitaets-nachweis',       title: 'Identitätsnachweis: nur **eine** Seite umformen, bis die andere entsteht',  dependsOn: ['pythag-vereinfachen'] },
+      ],
+      subGoalConcepts: {
+        0: ['pythag-vereinfachen', 'doppelwinkel-vereinfachen'],
+        1: ['grundgleichung-loesen'],
+        2: ['quadratische-substitution'],
+        3: ['faktorisieren-statt-teilen'],
+        4: ['identitaets-nachweis'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['pythag-vereinfachen'],                       qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['pythag-vereinfachen'],                       qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'multiple-choice', uses: ['pythag-vereinfachen', 'doppelwinkel-vereinfachen'], qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['pythag-vereinfachen'],                       qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'number-input',    uses: ['doppelwinkel-vereinfachen'],                 qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['grundgleichung-loesen'],                     qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['grundgleichung-loesen'],                     qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['grundgleichung-loesen'],                     qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['grundgleichung-loesen'],                     qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'multiple-choice', uses: ['grundgleichung-loesen'],                     qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['quadratische-substitution'],                 qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'sorting',         uses: ['quadratische-substitution'],                 qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['quadratische-substitution'],                 qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['quadratische-substitution'],                 qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'multiple-choice', uses: ['quadratische-substitution'],                 qty: 1 },
+
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['faktorisieren-statt-teilen'],                qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['faktorisieren-statt-teilen'],                qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'multiple-choice', uses: ['faktorisieren-statt-teilen'],                qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['faktorisieren-statt-teilen'],                qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'number-input',    uses: ['faktorisieren-statt-teilen'],                qty: 1 },
+
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['identitaets-nachweis'],                      qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'sorting',         uses: ['identitaets-nachweis'],                      qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'multiple-choice', uses: ['identitaets-nachweis', 'pythag-vereinfachen'], qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['identitaets-nachweis'],                      qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'matching',        uses: ['identitaets-nachweis'],                      qty: 1 },
+      ],
+    },
     nextLessonId: 'trig-4-2',
     steps: [
       {
@@ -481,6 +534,57 @@ const lessons_u4 = [
       { label: 'Plausibilitätscheck: Komponenten $|F_x|, |F_y| \\leq |F|$, Winkelbereich passt zum Quadranten', examRelevance: 'mittel' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-3-3', concepts: ['kraft-zerlegung', 'schwingung-form', 'omega-f-T', 'komponenten-pythag', 'schiefe-ebene'] },
+        { lessonId: 'trig-3-5', concepts: ['sinussatz', 'cosinussatz', 'methodenwahl'] },
+      ],
+      concepts: [
+        { id: 'kraft-pruefung',       title: 'Kräftezerlegung in Prüfungsaufgabe: Skizze + Winkelbezug + $\\sin/\\cos$-Zuordnung', dependsOn: [] },
+        { id: 'cos-sws-pruefung',     title: 'Cosinussatz bei SWS direkt einsetzen — Standard-MB-Aufgabe',                          dependsOn: [] },
+        { id: 'schwingung-ablesen',   title: 'Schwingungsgrößen $A, \\omega, T, f, \\varphi$ aus $x(t)$ ablesen',                    dependsOn: [] },
+        { id: 'einheiten-omega',      title: 'Einheitenkonsistenz: $\\omega t$ und $\\varphi$ in Radiant',                            dependsOn: ['schwingung-ablesen'] },
+        { id: 'plausibilitaet',       title: 'Plausibilitätscheck: $|F_x|, |F_y|\\leq |F|$, Quadranten passen',                      dependsOn: ['kraft-pruefung'] },
+      ],
+      subGoalConcepts: {
+        0: ['kraft-pruefung'],
+        1: ['cos-sws-pruefung'],
+        2: ['schwingung-ablesen'],
+        3: ['einheiten-omega'],
+        4: ['plausibilitaet'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['kraft-pruefung'],                          qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['kraft-pruefung'],                          qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['kraft-pruefung'],                          qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['kraft-pruefung'],                          qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'number-input',    uses: ['kraft-pruefung'],                          qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['cos-sws-pruefung'],                        qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['cos-sws-pruefung'],                        qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['cos-sws-pruefung'],                        qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['cos-sws-pruefung'],                        qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'number-input',    uses: ['cos-sws-pruefung'],                        qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['schwingung-ablesen'],                      qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'matching',        uses: ['schwingung-ablesen'],                      qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['schwingung-ablesen'],                      qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['schwingung-ablesen'],                      qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['schwingung-ablesen'],                      qty: 1 },
+
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['einheiten-omega'],                         qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['einheiten-omega'],                         qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['einheiten-omega'],                         qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['einheiten-omega'],                         qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'number-input',    uses: ['einheiten-omega', 'schwingung-ablesen'],   qty: 1 },
+
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['plausibilitaet'],                          qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['plausibilitaet'],                          qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'multiple-choice', uses: ['plausibilitaet'],                          qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['plausibilitaet'],                          qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'sorting',         uses: ['plausibilitaet'],                          qty: 1 },
+      ],
+    },
     nextLessonId: 'trig-4-3',
     steps: [
       {
@@ -538,6 +642,65 @@ $$\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta} = \\dfrac{c}{\\sin\\gamma} 
       { label: 'Grafische Kontrolle: Schnittpunkte $y = f(x)$ und $y = a$ am Einheitskreis zählen', examRelevance: 'mittel' },
     ],
     prerequisites: [],
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'trig-3-4', concepts: ['arcsin-def', 'arccos-def', 'arctan-def', 'hauptwert-vs-weitere'] },
+        { lessonId: 'trig-4-1', concepts: ['grundgleichung-loesen', 'faktorisieren-statt-teilen'] },
+      ],
+      concepts: [
+        { id: 'sin-zwei-loesungen',   title: '$\\sin x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arcsin a$ und $\\pi - \\arcsin a$',     dependsOn: [] },
+        { id: 'cos-zwei-loesungen',   title: '$\\cos x = a$ hat in $[0, 2\\pi)$ zwei Lösungen: $\\arccos a$ und $2\\pi - \\arccos a$',    dependsOn: [] },
+        { id: 'tan-perioden-loesung', title: '$\\tan x = a$ Periode $\\pi$: $x_k = \\arctan a + k\\pi$',                                   dependsOn: [] },
+        { id: 'vollstaendige-menge',  title: 'Gesamte Lösungsmenge: Hauptwerte + Periode, Intervall-Filter',                              dependsOn: ['sin-zwei-loesungen', 'cos-zwei-loesungen', 'tan-perioden-loesung'] },
+        { id: 'cos-null-check',       title: 'Bei Division durch $\\cos x$: $\\cos x = 0$ separat prüfen',                                 dependsOn: [] },
+        { id: 'grafisch-kontrolle',   title: 'Grafische Kontrolle: Schnittpunkte $y=f(x)$ mit $y=a$ zählen',                              dependsOn: ['sin-zwei-loesungen', 'cos-zwei-loesungen'] },
+      ],
+      subGoalConcepts: {
+        0: ['sin-zwei-loesungen'],
+        1: ['cos-zwei-loesungen'],
+        2: ['tan-perioden-loesung'],
+        3: ['vollstaendige-menge'],
+        4: ['cos-null-check'],
+        5: ['grafisch-kontrolle'],
+      },
+      taskPlan: [
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['sin-zwei-loesungen'],             qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['sin-zwei-loesungen'],             qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['sin-zwei-loesungen'],             qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['sin-zwei-loesungen'],             qty: 1 },
+        { subGoal: 0, stage: 'transfer',          type: 'multiple-choice', uses: ['sin-zwei-loesungen'],             qty: 1 },
+
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['cos-zwei-loesungen'],             qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['cos-zwei-loesungen'],             qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['cos-zwei-loesungen'],             qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['cos-zwei-loesungen'],             qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'multiple-choice', uses: ['cos-zwei-loesungen'],             qty: 1 },
+
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['tan-perioden-loesung'],           qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['tan-perioden-loesung'],           qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['tan-perioden-loesung'],           qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['tan-perioden-loesung'],           qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['tan-perioden-loesung'],           qty: 1 },
+
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['vollstaendige-menge'],            qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'sorting',         uses: ['vollstaendige-menge'],            qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'multiple-choice', uses: ['vollstaendige-menge'],            qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['vollstaendige-menge'],            qty: 1 },
+        { subGoal: 3, stage: 'transfer',          type: 'multiple-choice', uses: ['vollstaendige-menge'],            qty: 1 },
+
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['cos-null-check'],                 qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['cos-null-check'],                 qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'multiple-choice', uses: ['cos-null-check'],                 qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['cos-null-check'],                 qty: 1 },
+        { subGoal: 4, stage: 'transfer',          type: 'number-input',    uses: ['cos-null-check'],                 qty: 1 },
+
+        { subGoal: 5, stage: 'recognize',         type: 'true-false',      uses: ['grafisch-kontrolle'],             qty: 1 },
+        { subGoal: 5, stage: 'apply-guided',      type: 'multiple-choice', uses: ['grafisch-kontrolle'],             qty: 1 },
+        { subGoal: 5, stage: 'apply-independent', type: 'number-input',    uses: ['grafisch-kontrolle'],             qty: 1 },
+        { subGoal: 5, stage: 'error-analysis',    type: 'multiple-choice', uses: ['grafisch-kontrolle'],             qty: 1 },
+        { subGoal: 5, stage: 'transfer',          type: 'matching',        uses: ['grafisch-kontrolle'],             qty: 1 },
+      ],
+    },
     nextLessonId: null,
     steps: [
       {
