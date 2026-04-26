@@ -31,12 +31,33 @@ import { elektrotechnikSupplements } from './supplements/elektrotechnik'
 import { regelungstechnikSupplements } from './supplements/regelungstechnik'
 import { fourierLaplaceSupplements } from './supplements/fourier_laplace'
 import { werkstoffkundeSupplements } from './supplements/werkstoffkunde'
+import { komplexeZahlenSupplements } from './supplements/komplexe_zahlen'
+import { reihenFolgenSupplements } from './supplements/reihen_folgen'
+import { mehrdimAnalysisSupplements } from './supplements/mehrdim_analysis'
+import { numerikSupplements } from './supplements/numerik'
+import { statistikSupplements } from './supplements/statistik'
 import { algebraSubGoalTasks } from './subgoal_tasks/algebra'
 import { trigonometrySubGoalTasks } from './subgoal_tasks/trigonometry'
 import { integralrechnungSubGoalTasks } from './subgoal_tasks/integralrechnung'
 import { technischeMechanikSubGoalTasks } from './subgoal_tasks/technische_mechanik'
 import { festigkeitslehreSubGoalTasks } from './subgoal_tasks/festigkeitslehre'
 import { differentialgleichungenSubGoalTasks } from './subgoal_tasks/differentialgleichungen'
+import { vektorenSubGoalTasks } from './subgoal_tasks/vektoren'
+import { ableitungSubGoalTasks } from './subgoal_tasks/ableitung'
+import { lineareAlgebraSubGoalTasks } from './subgoal_tasks/lineare_algebra'
+import { komplexeZahlenSubGoalTasks } from './subgoal_tasks/komplexe_zahlen'
+import { reihenFolgenSubGoalTasks } from './subgoal_tasks/reihen_folgen'
+import { mehrdimAnalysisSubGoalTasks } from './subgoal_tasks/mehrdim_analysis'
+import { numerikSubGoalTasks } from './subgoal_tasks/numerik'
+import { statistikSubGoalTasks } from './subgoal_tasks/statistik'
+import { fourierLaplaceSubGoalTasks } from './subgoal_tasks/fourier_laplace'
+import { thermodynamikSubGoalTasks } from './subgoal_tasks/thermodynamik'
+import { fluidmechanikSubGoalTasks } from './subgoal_tasks/fluidmechanik'
+import { maschinenelementeSubGoalTasks } from './subgoal_tasks/maschinenelemente'
+import { elektrotechnikSubGoalTasks } from './subgoal_tasks/elektrotechnik'
+import { regelungstechnikSubGoalTasks } from './subgoal_tasks/regelungstechnik'
+import { werkstoffkundeSubGoalTasks } from './subgoal_tasks/werkstoffkunde'
+import { pythonMatlabSubGoalTasks } from './subgoal_tasks/python_matlab'
 import { MIN_EXERCISES_PER_LESSON, MIN_TASKS_PER_SUB_GOAL, TOPIC_GUIDES, BLUEPRINT_ENFORCED_TOPICS, PEDAGOGY_STAGES } from './curriculum'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
@@ -58,6 +79,11 @@ const MANUAL_SUPPLEMENTS = {
   ...regelungstechnikSupplements,
   ...fourierLaplaceSupplements,
   ...werkstoffkundeSupplements,
+  ...komplexeZahlenSupplements,
+  ...reihenFolgenSupplements,
+  ...mehrdimAnalysisSupplements,
+  ...numerikSupplements,
+  ...statistikSupplements,
 }
 
 // Sub-Goal-Zielaufgaben: pro Lesson ein Array, Index = Position im `subGoals`-Array
@@ -69,7 +95,22 @@ const SUBGOAL_EXERCISES = {
   ...technischeMechanikSubGoalTasks,
   ...festigkeitslehreSubGoalTasks,
   ...differentialgleichungenSubGoalTasks,
-  // vektoren, ableitung, … folgen in Folge-Sessions
+  ...vektorenSubGoalTasks,
+  ...ableitungSubGoalTasks,
+  ...lineareAlgebraSubGoalTasks,
+  ...komplexeZahlenSubGoalTasks,
+  ...reihenFolgenSubGoalTasks,
+  ...mehrdimAnalysisSubGoalTasks,
+  ...numerikSubGoalTasks,
+  ...statistikSubGoalTasks,
+  ...fourierLaplaceSubGoalTasks,
+  ...thermodynamikSubGoalTasks,
+  ...fluidmechanikSubGoalTasks,
+  ...maschinenelementeSubGoalTasks,
+  ...elektrotechnikSubGoalTasks,
+  ...regelungstechnikSubGoalTasks,
+  ...werkstoffkundeSubGoalTasks,
+  ...pythonMatlabSubGoalTasks,
 }
 
 function countExerciseSteps(lesson) {
