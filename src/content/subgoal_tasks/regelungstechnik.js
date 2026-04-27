@@ -1,8 +1,9 @@
 // ═══════════════════════════════════════════════════════════════════════════
-// Regelungstechnik — Zielaufgaben pro Sub-Goal (Stub)
+// Regelungstechnik — Zielaufgaben pro Sub-Goal (Stub — noch keine Aufgaben)
 // ═══════════════════════════════════════════════════════════════════════════
-
-// eslint-disable-next-line no-unused-vars
-import { mc, ni, tf, matching, sorting, tag } from './_helpers'
+//
+// Sobald Aufgaben dazukommen, importiere die Helfer aus ./_helpers:
+//   import { mc, ni, tf, matching, sorting, tag } from './_helpers'
+// und folge dem Format aus algebra.js / trigonometry.js.
 
 export const regelungstechnikSubGoalTasks = {}

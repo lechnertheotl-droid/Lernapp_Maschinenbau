@@ -30,7 +30,7 @@ Dieses Dokument ist die zentrale Anlaufstelle, wenn Claude (oder ein anderer Cod
 
 1. `npm run status` laufen lassen, damit STATUS.md aktuell ist.
 2. In STATUS.md unter `## Auftragsliste für Claude Code` die nächste Task-Card aussuchen (nach Priorität).
-3. Die Aufgaben in die in der Task-Card angegebene Datei schreiben (`supplements/<topic>.js` oder `subgoal_tasks/<topic>.js`).
+3. Die Aufgaben in die in der Task-Card angegebene Datei schreiben (`subgoal_tasks/<topic>.js`).
 4. `npm run validate:content && npm run status && npm test && npm run build` ausführen.
 5. Commit + Push + PR.
 
@@ -160,13 +160,12 @@ Vor dem Commit prüft `scripts/validate-content.js`, dass Pflichtfelder sitzen. 
 ```
 src/content/
   curriculum.js                — Lehrplan (Phasen, Topic-Guides, Tipps) · Single Source of Truth
-  index.js                     — Master-Registry, importiert alle Topics, Supplements, Goal-Tasks
+  index.js                     — Master-Registry, importiert alle Topics + Goal-Tasks
   mathematics/<topic>/
     index.js                   — Topic-Wrapper mit Units
-    unit<N>_<slug>.js          — Unit + Lessons + Grundaufgaben
+    unit<N>_<slug>.js          — Unit + Lessons + Grundaufgaben (Lesson-Path)
   engineering/<topic>/…        — dto. für Ingenieurs-Topics
-  supplements/<topic>.js       — handgeschriebene Vertiefungsaufgaben (bank(profile) → 7 Aufgaben)
-  subgoal_tasks/<topic>.js     — eine Aufgabe pro Sub-Goal einer Lesson
+  subgoal_tasks/<topic>.js     — Goal-Tasks pro Sub-Goal (alle handgeschriebenen Aufgaben gehen hierhin)
   practice/<topic>.ts          — Klausur-Simulationen (separate Registry)
 ```
 
@@ -188,34 +187,9 @@ src/content/index.js           — getAgentTasks() liefert strukturierte Task-Da
 
 ## Neue Aufgaben hinzufügen
 
-### Variante A: Supplements (Standard-Vertiefung)
+### Variante A: Goal-Tasks (Standard — alle neuen Aufgaben gehen hier hin)
 
-Neue Datei oder Profil in `src/content/supplements/<topic>.js`. Muster:
-
-```js
-const profiles = {
-  'alg-1-1': {                                 // Lesson-ID
-    explanation: `**Vertiefung zum Thema…**`,  // optional, Vertiefungs-Markdown
-    conceptQuestion: 'Welche Regel…?',
-    conceptOptions: ['…', '…', '…', '…'],
-    conceptCorrect: 0,
-    conceptExplanation: '**Ansatz:**…\n\n**Rechnung:**…\n\n**Probe:**…\n\n**Typischer Fehler:**…',
-    conceptHints: ['…', '…', '…'],
-    conceptWrongAnswers: { 1: '…', 2: '…', 3: '…' },
-    calcQuestion: '…', calcAnswer: 3, calcTolerance: 0.001, calcUnit: '',
-    calcExplanation: '…', calcHints: ['…', '…', '…'],
-    // … weitere 5 Slots (tf, matching, sorting, errorQuestion, transferQuestion)
-  },
-}
-```
-
-`bank(profile)` erzeugt daraus 7 typen-gemischte Aufgaben (MC, NI, TF, Matching, Sorting, MC, NI).
-
-Neue `supplements/<topic>.js`-Datei muss in `src/content/index.js` importiert und in `MANUAL_SUPPLEMENTS` gespreadet werden.
-
-### Variante B: Goal-Tasks (pro Sub-Goal mehrere Aufgaben!)
-
-Datei `src/content/subgoal_tasks/<topic>.js`. **Empfohlenes Format** — Objekt mit Sub-Goal-Index als Key, ARRAY von Aufgaben als Value. Pro Sub-Goal MEHRERE Aufgaben mit Typen-Variation:
+Datei `src/content/subgoal_tasks/<topic>.js`. **Format:** Objekt mit Sub-Goal-Index als Key, Array von Aufgaben als Value. Pro Sub-Goal mehrere Aufgaben mit Typen-Variation:
 
 ```js
 import { mc, ni, tf, matching, sorting } from './_helpers'
@@ -244,7 +218,7 @@ Legacy-Format (ein Array mit genau `subGoals.length` Einträgen) wird noch unter
 - Typen innerhalb einer Sub-Goal-Gruppe variieren (nicht 3× MC hintereinander).
 - Andere Zahlen / Kontexte / Fehler-Blickwinkel pro Aufgabe.
 
-### Variante C: Direkte Unit-Aufgaben
+### Variante B: Direkte Unit-Aufgaben (Lesson-Path)
 
 Nur für Aufgaben, die Teil des Lernpfads (Lesson-Steps) sein sollen. Ergänze die `exercises`-Map und die entsprechenden `steps` in `src/content/<kategorie>/<topic>/unit<N>_*.js`.
 

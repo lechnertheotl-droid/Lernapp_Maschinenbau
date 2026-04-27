@@ -14,23 +14,6 @@ import { fourierLaplaceTopic }  from './mathematics/fourier_laplace/index'
 import { engineeringTopics } from './engineering/maschinenbau'
 import { werkstoffkundeTopic }  from './engineering/werkstoffkunde/index'
 import { pythonMatlabTopic }  from './programming/python_matlab'
-import { trigonometrySupplements } from './supplements/trigonometry'
-import { algebraSupplements } from './supplements/algebra'
-import { ableitungSupplements } from './supplements/ableitung'
-import { vektorenSupplements } from './supplements/vektoren'
-import { integralrechnungSupplements } from './supplements/integralrechnung'
-import { dglSupplements } from './supplements/dgl'
-import { lineareAlgebraSupplements } from './supplements/lineare_algebra'
-import { pythonMatlabSupplements } from './supplements/python_matlab'
-import { mechanikSupplements } from './supplements/mechanik'
-import { festigkeitSupplements } from './supplements/festigkeit'
-import { thermodynamikSupplements } from './supplements/thermodynamik'
-import { fluidmechanikSupplements } from './supplements/fluidmechanik'
-import { maschinenelementeSupplements } from './supplements/maschinenelemente'
-import { elektrotechnikSupplements } from './supplements/elektrotechnik'
-import { regelungstechnikSupplements } from './supplements/regelungstechnik'
-import { fourierLaplaceSupplements } from './supplements/fourier_laplace'
-import { werkstoffkundeSupplements } from './supplements/werkstoffkunde'
 import { algebraSubGoalTasks } from './subgoal_tasks/algebra'
 import { trigonometrySubGoalTasks } from './subgoal_tasks/trigonometry'
 import { integralrechnungSubGoalTasks } from './subgoal_tasks/integralrechnung'
@@ -54,28 +37,9 @@ import { elektrotechnikSubGoalTasks } from './subgoal_tasks/elektrotechnik'
 import { regelungstechnikSubGoalTasks } from './subgoal_tasks/regelungstechnik'
 import { pythonMatlabSubGoalTasks } from './subgoal_tasks/python_matlab'
 import { MIN_EXERCISES_PER_LESSON, MIN_TASKS_PER_SUB_GOAL, TOPIC_GUIDES, BLUEPRINT_ENFORCED_TOPICS, PEDAGOGY_STAGES } from './curriculum'
+import { FOUR_BLOCK_PATTERNS } from './_helpers/quality'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
-const MANUAL_SUPPLEMENTS = {
-  ...trigonometrySupplements,
-  ...algebraSupplements,
-  ...ableitungSupplements,
-  ...vektorenSupplements,
-  ...integralrechnungSupplements,
-  ...dglSupplements,
-  ...lineareAlgebraSupplements,
-  ...pythonMatlabSupplements,
-  ...mechanikSupplements,
-  ...festigkeitSupplements,
-  ...thermodynamikSupplements,
-  ...fluidmechanikSupplements,
-  ...maschinenelementeSupplements,
-  ...elektrotechnikSupplements,
-  ...regelungstechnikSupplements,
-  ...fourierLaplaceSupplements,
-  ...werkstoffkundeSupplements,
-}
-
 // Sub-Goal-Zielaufgaben: pro Lesson ein Array, Index = Position im `subGoals`-Array
 // der Lesson. Pipeline prüft in `goalTaskExercises`, dass die Länge exakt matcht.
 const SUBGOAL_EXERCISES = {
@@ -106,44 +70,6 @@ const SUBGOAL_EXERCISES = {
 function countExerciseSteps(lesson) {
   return (lesson.steps ?? []).filter((step) => step.type === 'exercise' || step.type === 'mastery-check').length
 }
-
-// ─── Supplementals (nur aus MANUAL_SUPPLEMENTS — kein Template-Generator mehr)
-//
-// HISTORIE: Bis April 2026 existierte hier eine `lessonProfile`-Funktion mit
-// ~350 Zeilen generischer Keyword-Templates, die Lessons mit zu wenig Aufgaben
-// automatisch mit slop-Aufgaben auffüllte ("Welche Antwort beschreibt einen
-// typischen Fehler…", "Bringe die Prüfungsstrategie in Reihenfolge…"). Diese
-// auto-generierten Aufgaben hatten keinen inhaltlichen Bezug zur Lesson und
-// wurden als Slop entfernt.
-//
-// Supplementals kommen jetzt ausschließlich aus
-// `src/content/supplements/<topic>.js` — dort stehen handgeschriebene,
-// lessonspezifische Aufgaben. Lessons ohne manuelle Supplements werden in
-// STATUS.md als Lücke gelistet und müssen manuell befüllt werden.
-
-function supplementalExplanation(lesson, unit) {
-  const manual = MANUAL_SUPPLEMENTS[lesson.id]
-  if (!manual?.explanation) return null
-  const prefix = /prüfung/i.test(unit.title) ? '[PRÜFUNG] ' : ''
-  return {
-    id: `${lesson.id}-supp-explanation`,
-    type: 'explanation-formal',
-    title: `${prefix}Vertiefung: Prüfungsstrategie`,
-    content: manual.explanation,
-  }
-}
-
-function supplementalExercise(lesson, index) {
-  const manual = MANUAL_SUPPLEMENTS[lesson.id]?.exercises?.[index]
-  if (!manual) return null
-  return {
-    ...manual,
-    id: `ex-${lesson.id}-manual-${index + 1}`,
-    lessonId: lesson.id,
-    isSupplemental: true,
-  }
-}
-
 
 // Zielaufgaben pro Sub-Goal — eine Aufgabe pro Eintrag in `lesson.subGoals`.
 // Der Content liegt manuell in `src/content/subgoal_tasks/<topic>.js` und
@@ -211,7 +137,6 @@ function goalTaskExercises(lesson) {
         ...ex,
         id: `ex-${lesson.id}-goal-sg${idx}-${localIdx + 1}`,
         lessonId: lesson.id,
-        isSupplemental: true,
         isGoalTask: true,
         subGoalIndex: idx,
         subGoalLabel: subGoals[idx].label,
@@ -228,8 +153,9 @@ function withMinimumExercises(topic) {
     units: topic.units.map((unit) => {
       const exercises = { ...(unit.exercises ?? {}) }
       const lessons = unit.lessons.map((lesson) => {
-        // 1) Zielaufgaben einziehen (pro Sub-Goal eine Aufgabe).
         const goalTasks = goalTaskExercises(lesson)
+        if (goalTasks.length === 0) return lesson
+
         const goalSteps = goalTasks.map((exercise, index) => {
           exercises[exercise.id] = exercise
           return {
@@ -240,37 +166,11 @@ function withMinimumExercises(topic) {
           }
         })
 
-        // 2) ALLE verfügbaren manuellen Supplements einziehen — kein Cap auf
-        //    MIN_EXERCISES_PER_LESSON. Mehr Aufgaben = bessere Routine. Lessons
-        //    ohne MANUAL_SUPPLEMENTS bleiben auf ihrer tatsächlichen Aufgabenzahl
-        //    und werden in STATUS.md als Lücke gelistet (Ziel: ≥ MIN Aufgaben).
-        const supplemental = []
-        for (let index = 0; ; index++) {
-          const ex = supplementalExercise(lesson, index)
-          if (!ex) break
-          supplemental.push(ex)
-        }
-
-        if (goalTasks.length === 0 && supplemental.length === 0) return lesson
-
-        const supplementalSteps = supplemental.map((exercise, index) => {
-          exercises[exercise.id] = exercise
-          return {
-            id: `${lesson.id}-supp-s${index + 1}`,
-            type: 'exercise',
-            title: `Zusatzaufgabe ${index + 1}`,
-            exerciseRef: exercise.id,
-          }
-        })
-
         const currentSteps = lesson.steps ?? []
-        // Einfügereihenfolge: bestehende Steps → Zielaufgaben → (falls manuelle Supplements vorhanden) Erklärungs-Step + Zusatzaufgaben → mastery-check.
-        const explanationStep = supplemental.length > 0 ? supplementalExplanation(lesson, unit) : null
-        const supplementBlock = explanationStep ? [explanationStep, ...supplementalSteps] : supplementalSteps
         const masteryIndex = currentSteps.findIndex((step) => step.type === 'mastery-check')
         const steps = masteryIndex >= 0
-          ? [...currentSteps.slice(0, masteryIndex), ...goalSteps, ...supplementBlock, ...currentSteps.slice(masteryIndex)]
-          : [...currentSteps, ...goalSteps, ...supplementBlock]
+          ? [...currentSteps.slice(0, masteryIndex), ...goalSteps, ...currentSteps.slice(masteryIndex)]
+          : [...currentSteps, ...goalSteps]
 
         return { ...lesson, steps }
       })
@@ -472,9 +372,8 @@ export function getAgentTasks() {
         const subGoalsMissingTasks = subGoalsCoverage.filter((sg) => sg.have < sg.target)
 
         // 4-Block-Lücken
-        const FOUR_BLOCK = [/\*\*Ansatz\s*:\*\*/i, /\*\*Rechnung\s*:\*\*/i, /\*\*Probe\s*:\*\*/i, /\*\*Typischer Fehler\s*:\*\*/i]
         const fourBlockMissing = exercises
-          .filter((e) => typeof e.explanation !== 'string' || !FOUR_BLOCK.every((p) => p.test(e.explanation)))
+          .filter((e) => typeof e.explanation !== 'string' || !FOUR_BLOCK_PATTERNS.every((p) => p.test(e.explanation)))
           .map((e) => e.id)
 
         // MC ohne vollständige wrongAnswerExplanations
@@ -527,11 +426,9 @@ export function getAgentTasks() {
           blueprintIncomplete
         if (!needsAny) continue
 
-        // Ziel-Datei: supplements/<topic>.js (Standard) oder subgoal_tasks/<topic>.js (Goal-Tasks)
-        const supplementFileKey = topic.id.replace(/-/g, '_')
+        const goalTaskFileKey = topic.id.replace(/-/g, '_')
         const targetFile = {
-          supplements: `src/content/supplements/${supplementFileKey}.js`,
-          goalTasks: `src/content/subgoal_tasks/${supplementFileKey}.js`,
+          goalTasks: `src/content/subgoal_tasks/${goalTaskFileKey}.js`,
         }
 
         // Priorität: kritisch wenn <5 Aufgaben, hoch wenn <8, mittel sonst
@@ -577,7 +474,6 @@ export function getAgentTasks() {
             pedagogy: ex.pedagogy ?? null,
             subGoalIndex: typeof ex.subGoalIndex === 'number' ? ex.subGoalIndex : null,
             isGoalTask: Boolean(ex.isGoalTask),
-            isSupplemental: Boolean(ex.isSupplemental),
           })),
         })
       }
