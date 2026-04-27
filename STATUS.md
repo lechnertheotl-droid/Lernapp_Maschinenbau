@@ -2712,75 +2712,181 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-4-1` · Prüfung: Integrationstechniken
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×2
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Methodenwahl in Sekundenschnelle: innere Ableitung? → Subst., Produkt? → Part.Int., Bruch? → PBZ
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Bestimmtes Integral: Grenzen bei Substitution mit umrechnen, nicht rücksubstituieren
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Symmetrie nutzen: $\int_{-a}^a f(x) dx = 0$ bei ungerade, $= 2\int_0^a$ bei gerade
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Trigonometrische Substitution $x = a \sin u$ für $\sqrt{a^2 - x^2}$, $x = a \tan u$ für $a^2 + x^2$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Zweifache partielle Integration + Rückführung auf Ausgangsintegral (Kreistrick)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-2-1` → `subst-formel`, `subst-grenzen`, `subst-trig`
+  - `int-2-2` → `pi-formel`, `liate`, `pi-kreis`
+  - `int-2-3` → `pbz-grad`, `pbz-linear`
+  - `int-2-4` → `strategie-int`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `method-wahl` — Methodenwahl Sekunden: innere Abl.? → Subst., Produkt? → PI, Bruch? → PBZ (SG 0)
+  2. `best-int-grenzen` — Bestimmtes Integral: Grenzen bei Substitution mitumrechnen, NICHT zurück (SG 1)
+  3. `symmetrie-int` — Symmetrie nutzen: $\int_{-a}^a f=0$ bei ungerade, $=2\int_0^a$ bei gerade (SG 2)
+  4. `trig-subst-pruef` — Trig. Subst. $x=a\sin u$ für $\sqrt{a^2-x^2}$, $x=a\tan u$ für $a^2+x^2$ (SG 3)
+  5. `kreis-trick` — Zweifache PI + Rückführung auf Ausgangsintegral (Kreistrick) (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `method-wahl` · **0/5+** — Methodenwahl in Sekundenschnelle: innere Ableitung? → Subst., Produkt? → Part.Int., Bruch? → PBZ
+  - 🔴 [1] _hoch_ · Konzepte: `best-int-grenzen` · **0/5+** — Bestimmtes Integral: Grenzen bei Substitution mit umrechnen, nicht rücksubstituieren
+  - 🔴 [2] _mittel_ · Konzepte: `symmetrie-int` · **0/5+** — Symmetrie nutzen: $\int_{-a}^a f(x) dx = 0$ bei ungerade, $= 2\int_0^a$ bei gerade
+  - 🔴 [3] _mittel_ · Konzepte: `trig-subst-pruef` · **0/5+** — Trigonometrische Substitution $x = a \sin u$ für $\sqrt{a^2 - x^2}$, $x = a \tan u$ für $a^2 + x^2$
+  - 🔴 [4] _mittel_ · Konzepte: `kreis-trick` · **0/5+** — Zweifache partielle Integration + Rückführung auf Ausgangsintegral (Kreistrick)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `method-wahl` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `method-wahl` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `method-wahl` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `method-wahl` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `method-wahl` | 1 | 0 | 🔴 | Methode ↔ Aufgabentyp |
+|  6 | 1 | recognize          | true-false       | `best-int-grenzen` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `best-int-grenzen` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `best-int-grenzen` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `best-int-grenzen` | 1 | 0 | 🔴 | Grenzen nicht umgerechnet |
+| 10 | 1 | transfer           | number-input     | `best-int-grenzen` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 11 | 2 | recognize          | true-false       | `symmetrie-int` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `symmetrie-int` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `symmetrie-int` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `symmetrie-int` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `symmetrie-int` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `trig-subst-pruef` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `trig-subst-pruef` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `trig-subst-pruef` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `trig-subst-pruef` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `trig-subst-pruef` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 21 | 4 | recognize          | true-false       | `kreis-trick` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `kreis-trick` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `kreis-trick` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `kreis-trick` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | sorting          | `kreis-trick` | 1 | 0 | 🔴 | Schritte ordnen |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/integralrechnung.js` unter `'int-4-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-4-1-a`, `ex-int-4-1-b`, `ex-int-4-1-c`, `ex-int-4-1-d`, `ex-int-4-1-e`, `ex-int-4-1-f`, `ex-int-4-1-g`, `ex-int-4-1-h` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-4-2` · Prüfung: Anwendungen der Integralrechnung
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Flächenträgheitsmoment Rechteck: $I_x = bh^3/12$ um Schwerachse, $= bh^3/3$ um Rand
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Steiner'scher Satz: $I_a = I_s + A \cdot d^2$ (Abstand $d$ zwischen Achsen)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Schwerpunkt zusammengesetzter Flächen: $\bar{x} = \sum A_i \bar{x}_i / \sum A_i$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Rotationsvolumen mit Subtraktion: $V = \pi \int (f^2 - g^2) dx$ (Hohlkörper)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Wurfparabel / Strom-Zeit-Integrale als technische Flächenrechnung
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-3-1` → `flaeche-zwischen`, `flaeche-grenzen`
+  - `int-3-2` → `scheiben-x`, `rotation-y`
+  - `int-3-3` → `schwerpunkt-int`, `traegheits-int`
+  - `int-4-1` → `method-wahl`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `flaechen-traeg` — Flächenträgheitsmoment Rechteck: $I_x=bh^3/12$ (Schwerachse), $=bh^3/3$ (Rand) (SG 0)
+  2. `steiner` — Steiner: $I_a=I_s+A\cdot d^2$ (Achsenabstand $d$) ⇐ `flaechen-traeg` (SG 1)
+  3. `sp-zusammen` — Schwerpunkt zusammengesetzter Flächen: $\bar x=\sum A_i\bar x_i/\sum A_i$ (SG 2)
+  4. `rotation-hohl` — Rotationsvolumen mit Subtraktion: $V=\pi\int(f^2-g^2)dx$ (Hohlkörper) (SG 3)
+  5. `wurf-strom` — Wurfparabel / Strom-Zeit-Integrale als technische Flächenrechnung (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `flaechen-traeg` · **0/5+** — Flächenträgheitsmoment Rechteck: $I_x = bh^3/12$ um Schwerachse, $= bh^3/3$ um Rand
+  - 🔴 [1] _hoch_ · Konzepte: `steiner` · **0/5+** — Steiner'scher Satz: $I_a = I_s + A \cdot d^2$ (Abstand $d$ zwischen Achsen)
+  - 🔴 [2] _hoch_ · Konzepte: `sp-zusammen` · **0/5+** — Schwerpunkt zusammengesetzter Flächen: $\bar{x} = \sum A_i \bar{x}_i / \sum A_i$
+  - 🔴 [3] _hoch_ · Konzepte: `rotation-hohl` · **0/5+** — Rotationsvolumen mit Subtraktion: $V = \pi \int (f^2 - g^2) dx$ (Hohlkörper)
+  - 🔴 [4] _mittel_ · Konzepte: `wurf-strom` · **0/5+** — Wurfparabel / Strom-Zeit-Integrale als technische Flächenrechnung
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `flaechen-traeg` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `flaechen-traeg` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `flaechen-traeg` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `flaechen-traeg` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `flaechen-traeg` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `steiner` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `steiner` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `steiner`, `flaechen-traeg` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `steiner` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `steiner` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `sp-zusammen` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `sp-zusammen` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `sp-zusammen` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `sp-zusammen` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `sp-zusammen` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `rotation-hohl` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `rotation-hohl` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `rotation-hohl` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `rotation-hohl` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `rotation-hohl` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 21 | 4 | recognize          | true-false       | `wurf-strom` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `wurf-strom` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `wurf-strom` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `wurf-strom` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `wurf-strom` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/integralrechnung.js` unter `'int-4-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-4-2-a`, `ex-int-4-2-b`, `ex-int-4-2-c`, `ex-int-4-2-d`, `ex-int-4-2-e`, `ex-int-4-2-f`, `ex-int-4-2-g`, `ex-int-4-2-h` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-4-3` · Prüfung: Uneigentliche & numerische Integrale
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Uneigentliches Integral: $\int_a^\infty f dx = \lim_{b\to\infty} \int_a^b f dx$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — p-Integral $\int_1^\infty x^{-p} dx$: konvergent für $p > 1$, divergent sonst
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — p-Integral $\int_0^1 x^{-p} dx$: konvergent für $p < 1$, divergent sonst
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Trapezregel: $T = h[(f_0+f_n)/2 + \sum f_i]$, Fehler $O(h^2)$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Simpson-Regel: $S = (h/3)[f_0 + 4 \sum_{\text{ung.}} + 2 \sum_{\text{ger.}} + f_n]$, Fehler $O(h^4)$, $n$ gerade!
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Vergleichs-/Majorantenkriterium: $0 \leq f \leq g$, $\int g$ konv. $\Rightarrow \int f$ konv.
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-4` → `hauptsatz-12`
+  - `int-1-2` → `int-pot-regel`, `int-1-x`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `uneigentlich` — Uneigentliches Integral $\int_a^\infty f\,dx=\lim_{b\to\infty}\int_a^b f\,dx$ (SG 0)
+  2. `p-int-inf` — $\int_1^\infty x^{-p}dx$: konvergent für $p>1$, divergent sonst ⇐ `uneigentlich` (SG 1)
+  3. `p-int-0` — $\int_0^1 x^{-p}dx$: konvergent für $p<1$, divergent sonst ⇐ `uneigentlich` (SG 2)
+  4. `trapez` — Trapezregel: $T=h[(f_0+f_n)/2+\sum f_i]$, Fehler $O(h^2)$ (SG 3)
+  5. `simpson` — Simpson: $S=(h/3)[f_0+4\sum_{\text{ung.}}+2\sum_{\text{ger.}}+f_n]$, $O(h^4)$, $n$ gerade ⇐ `trapez` (SG 4)
+  6. `majorante` — Vergleichskriterium: $0\le f\le g$, $\int g$ konv. $\Rightarrow\int f$ konv. ⇐ `uneigentlich` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `uneigentlich` · **0/5+** — Uneigentliches Integral: $\int_a^\infty f dx = \lim_{b\to\infty} \int_a^b f dx$
+  - 🔴 [1] _hoch_ · Konzepte: `p-int-inf` · **0/5+** — p-Integral $\int_1^\infty x^{-p} dx$: konvergent für $p > 1$, divergent sonst
+  - 🔴 [2] _hoch_ · Konzepte: `p-int-0` · **0/5+** — p-Integral $\int_0^1 x^{-p} dx$: konvergent für $p < 1$, divergent sonst
+  - 🔴 [3] _hoch_ · Konzepte: `trapez` · **0/5+** — Trapezregel: $T = h[(f_0+f_n)/2 + \sum f_i]$, Fehler $O(h^2)$
+  - 🔴 [4] _hoch_ · Konzepte: `simpson` · **0/5+** — Simpson-Regel: $S = (h/3)[f_0 + 4 \sum_{\text{ung.}} + 2 \sum_{\text{ger.}} + f_n]$, Fehler $O(h^4)$, $n$ gerade!
+  - 🔴 [5] _mittel_ · Konzepte: `majorante` · **0/5+** — Vergleichs-/Majorantenkriterium: $0 \leq f \leq g$, $\int g$ konv. $\Rightarrow \int f$ konv.
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `uneigentlich` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `uneigentlich` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `uneigentlich` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `uneigentlich` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `uneigentlich` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `p-int-inf` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `p-int-inf` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `p-int-inf` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `p-int-inf` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `p-int-inf` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `p-int-0` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `p-int-0` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `p-int-0` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `p-int-0` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `p-int-0`, `p-int-inf` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `trapez` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `trapez` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `trapez` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `trapez` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `trapez` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `simpson` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `simpson` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `simpson` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `simpson` | 1 | 0 | 🔴 | $n$ ungerade verwendet |
+| 25 | 4 | transfer           | number-input     | `simpson`, `trapez` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `majorante` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `majorante` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `majorante` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `majorante` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | multiple-choice  | `majorante`, `p-int-inf` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/integralrechnung.js` unter `'int-4-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-4-3-a`, `ex-int-4-3-b`, `ex-int-4-3-c`, `ex-int-4-3-d`, `ex-int-4-3-e`, `ex-int-4-3-f`, `ex-int-4-3-g`, `ex-int-4-3-h` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `mech-3-1` · Statik: Prüfungsaufgaben
 
@@ -5350,99 +5456,233 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-1-5` · Hauptsatz der Differential- und Integralrechnung
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Teil 1: $F(x) = \int_a^x f(t) dt$ ist differenzierbar mit $F'(x) = f(x)$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Teil 2: $\int_a^b f(x) dx = F(b) - F(a)$ für jede Stammfunktion $F$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Voraussetzung: $f$ stetig auf $[a,b]$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Leibniz-Regel für variable Grenzen: $\frac{d}{dx} \int_{a(x)}^{b(x)} f(t) dt = f(b) b' - f(a) a'$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Folgerung: Integration und Differentiation sind Umkehroperationen
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-1` → `stammfunktion`
+  - `int-1-4` → `hauptsatz-12`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `hauptsatz-1` — Teil 1: $F(x)=\int_a^x f(t)dt$ ist differenzierbar mit $F'(x)=f(x)$ (SG 0)
+  2. `hauptsatz-2` — Teil 2: $\int_a^b f(x)dx=F(b)-F(a)$ für jede Stammfunktion $F$ (SG 1)
+  3. `hs-stetig-vorau` — Voraussetzung: $f$ stetig auf $[a,b]$ ⇐ `hauptsatz-1`, `hauptsatz-2` (SG 2)
+  4. `leibniz-regel` — Leibniz-Regel: $\frac{d}{dx}\int_{a(x)}^{b(x)}f(t)dt=f(b)b'-f(a)a'$ ⇐ `hauptsatz-1` (SG 3)
+  5. `umkehr-op` — Folgerung: Integration und Differentiation sind Umkehroperationen ⇐ `hauptsatz-1`, `hauptsatz-2` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `hauptsatz-1` · **0/5+** — Teil 1: $F(x) = \int_a^x f(t) dt$ ist differenzierbar mit $F'(x) = f(x)$
+  - 🔴 [1] _hoch_ · Konzepte: `hauptsatz-2` · **0/5+** — Teil 2: $\int_a^b f(x) dx = F(b) - F(a)$ für jede Stammfunktion $F$
+  - 🔴 [2] _hoch_ · Konzepte: `hs-stetig-vorau` · **0/5+** — Voraussetzung: $f$ stetig auf $[a,b]$
+  - 🔴 [3] _mittel_ · Konzepte: `leibniz-regel` · **0/5+** — Leibniz-Regel für variable Grenzen: $\frac{d}{dx} \int_{a(x)}^{b(x)} f(t) dt = f(b) b' - f(a) a'$
+  - 🔴 [4] _hoch_ · Konzepte: `umkehr-op` · **0/5+** — Folgerung: Integration und Differentiation sind Umkehroperationen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `hauptsatz-1` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `hauptsatz-1` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `hauptsatz-1` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `hauptsatz-1` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `hauptsatz-1` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `hauptsatz-2` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `hauptsatz-2` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `hauptsatz-2` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `hauptsatz-2` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `hauptsatz-2` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `hs-stetig-vorau` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `hs-stetig-vorau` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `hs-stetig-vorau` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `hs-stetig-vorau` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `hs-stetig-vorau` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `leibniz-regel` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `leibniz-regel` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `leibniz-regel` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `leibniz-regel` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `leibniz-regel` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `umkehr-op` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `umkehr-op` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `umkehr-op` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `umkehr-op` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `umkehr-op` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-5': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-5-b`, `ex-int-1-5-manual-1`, `ex-int-1-5-manual-2`, `ex-int-1-5-manual-3`, `ex-int-1-5-manual-4`, `ex-int-1-5-manual-5`, `ex-int-1-5-manual-6`, `ex-int-1-5-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-2-3` · Partialbruchzerlegung
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Integrationstechniken
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Voraussetzung: $\deg(\text{Zähler}) < \deg(\text{Nenner})$ (sonst Polynomdivision zuerst)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Einfacher Linearfaktor $(x-a)$: Ansatz $A/(x-a)$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Doppelter Linearfaktor $(x-a)^2$: Ansatz $A/(x-a) + B/(x-a)^2$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Irreduzibler quadr. Faktor $x^2+px+q$: Ansatz $(Ax+B)/(x^2+px+q)$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Koeffizienten via Einsetzmethode (Nullstellen) oder Koeffizientenvergleich
-  - 🔴 [5] (hoch) **0/5+** Aufgaben — Integration: $\int dx/(x-a) = \ln|x-a|$, $\int dx/(x-a)^n = -1/((n-1)(x-a)^{n-1})$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-2` → `int-1-x`, `int-pot-regel`
+  - `int-2-1` → `log-ableitung`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `pbz-grad` — Voraussetzung: $\deg(\text{Zähler})<\deg(\text{Nenner})$ (sonst Polynomdivision) (SG 0)
+  2. `pbz-linear` — Einfacher Linearfaktor $(x-a)$: Ansatz $A/(x-a)$ (SG 1)
+  3. `pbz-doppel` — Doppelter Linearfaktor $(x-a)^2$: $A/(x-a)+B/(x-a)^2$ ⇐ `pbz-linear` (SG 2)
+  4. `pbz-quadr` — Irreduzibler quadr. Faktor: $(Ax+B)/(x^2+px+q)$ (SG 3)
+  5. `pbz-koeff` — Koeffizienten via Einsetzmethode oder Koeffizientenvergleich ⇐ `pbz-linear`, `pbz-quadr` (SG 4)
+  6. `pbz-int` — Integration: $\int dx/(x-a)=\ln|x-a|$, $\int dx/(x-a)^n=-1/((n-1)(x-a)^{n-1})$ (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `pbz-grad` · **0/5+** — Voraussetzung: $\deg(\text{Zähler}) < \deg(\text{Nenner})$ (sonst Polynomdivision zuerst)
+  - 🔴 [1] _hoch_ · Konzepte: `pbz-linear` · **0/5+** — Einfacher Linearfaktor $(x-a)$: Ansatz $A/(x-a)$
+  - 🔴 [2] _hoch_ · Konzepte: `pbz-doppel` · **0/5+** — Doppelter Linearfaktor $(x-a)^2$: Ansatz $A/(x-a) + B/(x-a)^2$
+  - 🔴 [3] _hoch_ · Konzepte: `pbz-quadr` · **0/5+** — Irreduzibler quadr. Faktor $x^2+px+q$: Ansatz $(Ax+B)/(x^2+px+q)$
+  - 🔴 [4] _hoch_ · Konzepte: `pbz-koeff` · **0/5+** — Koeffizienten via Einsetzmethode (Nullstellen) oder Koeffizientenvergleich
+  - 🔴 [5] _hoch_ · Konzepte: `pbz-int` · **0/5+** — Integration: $\int dx/(x-a) = \ln|x-a|$, $\int dx/(x-a)^n = -1/((n-1)(x-a)^{n-1})$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `pbz-grad` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pbz-grad` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `pbz-grad` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `pbz-grad` | 1 | 0 | 🔴 | Polynomdivision vergessen |
+|  5 | 0 | transfer           | multiple-choice  | `pbz-grad` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `pbz-linear` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pbz-linear` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `pbz-linear` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pbz-linear` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `pbz-linear`, `pbz-int` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `pbz-doppel` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pbz-doppel` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `pbz-doppel` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `pbz-doppel` | 1 | 0 | 🔴 | Nur einen Term angesetzt |
+| 15 | 2 | transfer           | number-input     | `pbz-doppel`, `pbz-int` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `pbz-quadr` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pbz-quadr` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `pbz-quadr` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pbz-quadr` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `pbz-quadr` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `pbz-koeff` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `pbz-koeff` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `pbz-koeff`, `pbz-linear` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `pbz-koeff` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | sorting          | `pbz-koeff` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `pbz-int` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `pbz-int` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `pbz-int` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `pbz-int` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | number-input     | `pbz-int`, `pbz-linear` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/integralrechnung.js` unter `'int-2-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-2-3-manual-1`, `ex-int-2-3-manual-2`, `ex-int-2-3-manual-3`, `ex-int-2-3-manual-4`, `ex-int-2-3-manual-5`, `ex-int-2-3-manual-6`, `ex-int-2-3-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-3-2` · Rotationskörper
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Anwendungen
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×5, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Scheibenmethode ($x$-Achse): $V = \pi \int_a^b [f(x)]^2 dx$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Rotation um $y$-Achse: $V = \pi \int_c^d [g(y)]^2 dy$ mit Umkehrfunktion
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Schalenmethode: $V = 2\pi \int_a^b x \cdot f(x) dx$ (Rotation um $y$-Achse)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Mantelfläche: $M = 2\pi \int_a^b f(x) \sqrt{1 + [f'(x)]^2} dx$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Standardvolumina: Kegel $\pi r^2 h/3$, Kugel $4\pi r^3/3$, Zylinder $\pi r^2 h$ aus Integralen
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-4` → `hauptsatz-12`
+  - `int-1-2` → `int-pot-regel`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `scheiben-x` — Scheibenmethode ($x$-Achse): $V=\pi\int_a^b[f(x)]^2dx$ (SG 0)
+  2. `rotation-y` — Rotation um $y$-Achse: $V=\pi\int_c^d[g(y)]^2dy$ (Umkehrfunktion) ⇐ `scheiben-x` (SG 1)
+  3. `schalen` — Schalenmethode: $V=2\pi\int_a^b x\cdot f(x)dx$ (Rotation um $y$-Achse) (SG 2)
+  4. `mantelflaeche` — Mantelfläche: $M=2\pi\int_a^b f(x)\sqrt{1+[f'(x)]^2}dx$ (SG 3)
+  5. `std-volumina` — Standardvolumina aus Integralen: Kegel $\pi r^2 h/3$, Kugel $4\pi r^3/3$, Zylinder $\pi r^2 h$ ⇐ `scheiben-x` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `scheiben-x` · **0/5+** — Scheibenmethode ($x$-Achse): $V = \pi \int_a^b [f(x)]^2 dx$
+  - 🔴 [1] _hoch_ · Konzepte: `rotation-y` · **0/5+** — Rotation um $y$-Achse: $V = \pi \int_c^d [g(y)]^2 dy$ mit Umkehrfunktion
+  - 🔴 [2] _mittel_ · Konzepte: `schalen` · **0/5+** — Schalenmethode: $V = 2\pi \int_a^b x \cdot f(x) dx$ (Rotation um $y$-Achse)
+  - 🔴 [3] _mittel_ · Konzepte: `mantelflaeche` · **0/5+** — Mantelfläche: $M = 2\pi \int_a^b f(x) \sqrt{1 + [f'(x)]^2} dx$
+  - 🔴 [4] _hoch_ · Konzepte: `std-volumina` · **0/5+** — Standardvolumina: Kegel $\pi r^2 h/3$, Kugel $4\pi r^3/3$, Zylinder $\pi r^2 h$ aus Integralen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `scheiben-x` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `scheiben-x` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `scheiben-x` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `scheiben-x` | 1 | 0 | 🔴 | $\pi$ vergessen oder $f$ statt $f^2$ |
+|  5 | 0 | transfer           | number-input     | `scheiben-x` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `rotation-y` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `rotation-y` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `rotation-y` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `rotation-y` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `rotation-y` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `schalen` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `schalen` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `schalen` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `schalen` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `schalen`, `rotation-y` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `mantelflaeche` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `mantelflaeche` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `mantelflaeche` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `mantelflaeche` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `mantelflaeche` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `std-volumina` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `std-volumina` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `std-volumina`, `scheiben-x` | 1 | 0 | 🔴 | Kegel/Kugel-Volumen aus Integral |
+| 24 | 4 | error-analysis     | multiple-choice  | `std-volumina` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `std-volumina` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/integralrechnung.js` unter `'int-3-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-2-b`, `ex-int-3-2-c`, `ex-int-3-2-manual-1`, `ex-int-3-2-manual-2`, `ex-int-3-2-manual-3`, `ex-int-3-2-manual-4`, `ex-int-3-2-manual-5`, `ex-int-3-2-manual-6` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-3-3` · Technische Anwendungen
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Anwendungen
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×4, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Arbeit $W = \int_a^b F(x) dx$ bei ortsabhängiger Kraft
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Federenergie aus Hookeschem Gesetz $F = kx$: $W = \frac{1}{2} k s^2$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Flächenschwerpunkt: $\bar{x} = (1/A) \int x f(x) dx$, $\bar{y} = (1/(2A)) \int f(x)^2 dx$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Trägheitsmoment $I = \int r^2 dm$ für kontinuierliche Massenverteilung
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Effektivwert (RMS): $f_{\text{eff}} = \sqrt{(1/T) \int_0^T f(t)^2 dt}$ (Wechselstromtechnik)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-4` → `hauptsatz-12`
+  - `int-3-1` → `flaeche-pos`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `arbeit-int` — Arbeit $W=\int_a^b F(x)dx$ bei ortsabhängiger Kraft (SG 0)
+  2. `feder-energie` — Federenergie aus $F=kx$: $W=\frac{1}{2}ks^2$ ⇐ `arbeit-int` (SG 1)
+  3. `schwerpunkt-int` — Schwerpunkt: $\bar x=(1/A)\int x f(x)dx$, $\bar y=(1/(2A))\int f(x)^2 dx$ (SG 2)
+  4. `traegheits-int` — Trägheitsmoment $I=\int r^2\,dm$ für kontinuierliche Massenverteilung (SG 3)
+  5. `rms-effektiv` — Effektivwert $f_{\text{eff}}=\sqrt{(1/T)\int_0^T f(t)^2 dt}$ (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `arbeit-int` · **0/5+** — Arbeit $W = \int_a^b F(x) dx$ bei ortsabhängiger Kraft
+  - 🔴 [1] _hoch_ · Konzepte: `feder-energie` · **0/5+** — Federenergie aus Hookeschem Gesetz $F = kx$: $W = \frac{1}{2} k s^2$
+  - 🔴 [2] _hoch_ · Konzepte: `schwerpunkt-int` · **0/5+** — Flächenschwerpunkt: $\bar{x} = (1/A) \int x f(x) dx$, $\bar{y} = (1/(2A)) \int f(x)^2 dx$
+  - 🔴 [3] _hoch_ · Konzepte: `traegheits-int` · **0/5+** — Trägheitsmoment $I = \int r^2 dm$ für kontinuierliche Massenverteilung
+  - 🔴 [4] _mittel_ · Konzepte: `rms-effektiv` · **0/5+** — Effektivwert (RMS): $f_{\text{eff}} = \sqrt{(1/T) \int_0^T f(t)^2 dt}$ (Wechselstromtechnik)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `arbeit-int` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `arbeit-int` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `arbeit-int` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `arbeit-int` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `arbeit-int` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `feder-energie` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `feder-energie` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `feder-energie` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `feder-energie` | 1 | 0 | 🔴 | Faktor $1/2$ vergessen |
+| 10 | 1 | transfer           | number-input     | `feder-energie`, `arbeit-int` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `schwerpunkt-int` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `schwerpunkt-int` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `schwerpunkt-int` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `schwerpunkt-int` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `schwerpunkt-int` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `traegheits-int` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `traegheits-int` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `traegheits-int` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `traegheits-int` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `traegheits-int` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `rms-effektiv` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `rms-effektiv` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `rms-effektiv` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `rms-effektiv` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `rms-effektiv` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/integralrechnung.js` unter `'int-3-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-3-b`, `ex-int-3-3-manual-1`, `ex-int-3-3-manual-2`, `ex-int-3-3-manual-3`, `ex-int-3-3-manual-4`, `ex-int-3-3-manual-5`, `ex-int-3-3-manual-6`, `ex-int-3-3-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `dgl-1-1` · Was ist eine Differentialgleichung?
 
@@ -6082,144 +6322,323 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-1-1` · Stammfunktion — das Umkehren der Ableitung
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×2, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, sorting, number-input, matching, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Stammfunktion durch „Rückwärts-Ableiten" erkennen
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Integrationskonstante $+C$ nicht vergessen
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Probe durch Ableiten der gefundenen Stammfunktion
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `stammfunktion` — Stammfunktion $F$ mit $F'(x)=f(x)$ — Umkehrung der Ableitung (SG 0)
+  2. `rueckwaerts` — Stammfunktion durch „Rückwärts-Ableiten" finden ⇐ `stammfunktion` (SG 0)
+  3. `plus-c` — Integrationskonstante $+C$ niemals vergessen — unbestimmtes Integral ⇐ `stammfunktion` (SG 1)
+  4. `probe-ableiten` — Probe: gefundene Stammfunktion ableiten und mit $f$ vergleichen ⇐ `stammfunktion` (SG 2)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `stammfunktion`, `rueckwaerts` · **0/5+** — Stammfunktion durch „Rückwärts-Ableiten" erkennen
+  - 🔴 [1] _hoch_ · Konzepte: `plus-c` · **0/5+** — Integrationskonstante $+C$ nicht vergessen
+  - 🔴 [2] _mittel_ · Konzepte: `probe-ableiten` · **0/5+** — Probe durch Ableiten der gefundenen Stammfunktion
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `stammfunktion` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `rueckwaerts` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `rueckwaerts`, `stammfunktion` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `stammfunktion` | 1 | 0 | 🔴 | Ableitung statt Stammfunktion |
+|  5 | 0 | transfer           | matching         | `stammfunktion`, `rueckwaerts` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `plus-c` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `plus-c` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `plus-c` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `plus-c` | 1 | 0 | 🔴 | +C vergessen |
+| 10 | 1 | transfer           | multiple-choice  | `plus-c` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `probe-ableiten` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `probe-ableiten` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `probe-ableiten`, `rueckwaerts` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `probe-ableiten` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | sorting          | `probe-ableiten`, `rueckwaerts` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 15 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-1-manual-1`, `ex-int-1-1-manual-2`, `ex-int-1-1-manual-3`, `ex-int-1-1-manual-4`, `ex-int-1-1-manual-5`, `ex-int-1-1-manual-6`, `ex-int-1-1-manual-7`
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `integral-area`, `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-1-3` · Summenregel & Faktorregel
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Summenregel: $\int (f + g) dx = \int f\,dx + \int g\,dx$ — gliedweise integrieren
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Faktorregel: $\int c f(x) dx = c \int f(x) dx$ — Konstante vors Integral ziehen
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Für Produkt $f(x) \cdot g(x)$ gilt KEIN analoges Produktrecht — dort partielle Integration nötig
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Integrationskonstante $C$ bei unbestimmten Integralen konsequent mitschreiben
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-1` → `stammfunktion`, `plus-c`
+  - `int-1-2` → `int-pot-regel`, `int-summe`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `sum-regel-int` — Summenregel: $\int(f+g)dx=\int f\,dx+\int g\,dx$ (SG 0)
+  2. `faktor-regel-int` — Faktorregel: $\int c\,f(x)dx=c\int f(x)dx$ (SG 1)
+  3. `kein-prod-regel` — $\int f\cdot g\,dx\neq(\int f)(\int g)$ — partielle Integration nötig (SG 2)
+  4. `plus-c-konsequent` — $+C$ bei unbestimmten Integralen konsequent mitschreiben (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `sum-regel-int` · **0/5+** — Summenregel: $\int (f + g) dx = \int f\,dx + \int g\,dx$ — gliedweise integrieren
+  - 🔴 [1] _hoch_ · Konzepte: `faktor-regel-int` · **0/5+** — Faktorregel: $\int c f(x) dx = c \int f(x) dx$ — Konstante vors Integral ziehen
+  - 🔴 [2] _hoch_ · Konzepte: `kein-prod-regel` · **0/5+** — Für Produkt $f(x) \cdot g(x)$ gilt KEIN analoges Produktrecht — dort partielle Integration nötig
+  - 🔴 [3] _mittel_ · Konzepte: `plus-c-konsequent` · **0/5+** — Integrationskonstante $C$ bei unbestimmten Integralen konsequent mitschreiben
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `sum-regel-int` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `sum-regel-int` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `sum-regel-int` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `sum-regel-int` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `sum-regel-int` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `faktor-regel-int` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `faktor-regel-int` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `faktor-regel-int` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `faktor-regel-int` | 1 | 0 | 🔴 | $x$ als Konstante behandelt |
+| 10 | 1 | transfer           | matching         | `faktor-regel-int`, `sum-regel-int` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `kein-prod-regel` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `kein-prod-regel` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `kein-prod-regel` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `kein-prod-regel` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `kein-prod-regel` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `plus-c-konsequent` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `plus-c-konsequent` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `plus-c-konsequent` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `plus-c-konsequent` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `plus-c-konsequent` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-3-manual-1`, `ex-int-1-3-manual-2`, `ex-int-1-3-manual-3`, `ex-int-1-3-manual-4`, `ex-int-1-3-manual-5`, `ex-int-1-3-manual-6`, `ex-int-1-3-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-1-4` · Das bestimmte Integral
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×6, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Hauptsatz: $\int_a^b f(x) dx = F(b) - F(a)$ mit beliebiger Stammfunktion $F$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Geometrisch: Fläche *zwischen* Kurve und x-Achse — unterhalb wird NEGATIV gezählt
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Vertauschen der Grenzen dreht das Vorzeichen: $\int_a^b = -\int_b^a$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Bei bestimmtem Integral fällt die Integrationskonstante $C$ weg (kürzt sich raus)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-1` → `stammfunktion`
+  - `int-1-2` → `int-pot-regel`, `int-exp-trig`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `hauptsatz-12` — Hauptsatz Teil 2: $\int_a^b f(x)dx=F(b)-F(a)$ mit beliebiger Stammfunktion $F$ (SG 0)
+  2. `geom-flaeche` — Geometrisch: Fläche zwischen Kurve und x-Achse — unterhalb negativ ⇐ `hauptsatz-12` (SG 1)
+  3. `grenzen-tausch` — Vertauschen der Grenzen dreht Vorzeichen: $\int_a^b=-\int_b^a$ ⇐ `hauptsatz-12` (SG 2)
+  4. `c-faellt-weg` — Bei bestimmtem Integral kürzt sich $C$ heraus ⇐ `hauptsatz-12` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `hauptsatz-12` · **0/5+** — Hauptsatz: $\int_a^b f(x) dx = F(b) - F(a)$ mit beliebiger Stammfunktion $F$
+  - 🔴 [1] _hoch_ · Konzepte: `geom-flaeche` · **0/5+** — Geometrisch: Fläche *zwischen* Kurve und x-Achse — unterhalb wird NEGATIV gezählt
+  - 🔴 [2] _mittel_ · Konzepte: `grenzen-tausch` · **0/5+** — Vertauschen der Grenzen dreht das Vorzeichen: $\int_a^b = -\int_b^a$
+  - 🔴 [3] _mittel_ · Konzepte: `c-faellt-weg` · **0/5+** — Bei bestimmtem Integral fällt die Integrationskonstante $C$ weg (kürzt sich raus)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `hauptsatz-12` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `hauptsatz-12` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `hauptsatz-12` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `hauptsatz-12` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `hauptsatz-12` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `geom-flaeche` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `geom-flaeche` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `geom-flaeche`, `hauptsatz-12` | 1 | 0 | 🔴 | Vorzeichen |
+|  9 | 1 | error-analysis     | multiple-choice  | `geom-flaeche` | 1 | 0 | 🔴 | Negative Fläche als Wert akzeptiert |
+| 10 | 1 | transfer           | multiple-choice  | `geom-flaeche` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `grenzen-tausch` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `grenzen-tausch` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `grenzen-tausch` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `grenzen-tausch` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `grenzen-tausch` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `c-faellt-weg` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `c-faellt-weg` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `c-faellt-weg` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `c-faellt-weg` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `c-faellt-weg`, `hauptsatz-12` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-4-a`, `ex-int-1-4-d`, `ex-int-1-4-manual-1`, `ex-int-1-4-manual-2`, `ex-int-1-4-manual-3`, `ex-int-1-4-manual-4`, `ex-int-1-4-manual-5`, `ex-int-1-4-manual-6` … (+1 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `integral-area`, `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-2-1` · Substitution
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Integrationstechniken
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Formel: $\int f(g(x)) g'(x) dx = \int f(u) du$ mit $u = g(x)$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Substitution wählen, wenn Ableitung $g'(x)$ (bis auf Konstante) als Faktor im Integrand vorkommt
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Bei bestimmtem Integral Grenzen mit substituieren: $x = a \to u = g(a)$, analog $b$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Lineare Substitution $u = ax + b$: $du = a\, dx$, sehr häufig in Prüfungen
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Trigonometrische Substitution $x = \sin u$ für $\sqrt{1-x^2}$, $x = \tan u$ für $1+x^2$
-  - 🔴 [5] (hoch) **0/5+** Aufgaben — Standardformen: $\int f'(x)/f(x) dx = \ln|f(x)| + C$ (logarithmische Ableitung)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-2` → `int-pot-regel`, `int-1-x`, `int-exp-trig`
+  - `int-1-4` → `hauptsatz-12`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `subst-formel` — $\int f(g(x))g'(x)dx=\int f(u)du$ mit $u=g(x)$ — Kettenregel rückwärts (SG 0)
+  2. `subst-erkennen` — Substitution wählen, wenn $g'(x)$ als Faktor im Integrand erscheint ⇐ `subst-formel` (SG 1)
+  3. `subst-grenzen` — Bei bestimmtem Integral: Grenzen mit substituieren ($x=a\to u=g(a)$) ⇐ `subst-formel` (SG 2)
+  4. `subst-linear` — Lineare Substitution $u=ax+b$: $du=a\,dx$ — sehr häufig ⇐ `subst-formel` (SG 3)
+  5. `subst-trig` — Trig. Substitution: $x=\sin u$ für $\sqrt{1-x^2}$, $x=\tan u$ für $1+x^2$ ⇐ `subst-formel` (SG 4)
+  6. `log-ableitung` — $\int f'(x)/f(x)dx=\ln|f(x)|+C$ (logarithmische Ableitung) ⇐ `subst-formel` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `subst-formel` · **0/5+** — Formel: $\int f(g(x)) g'(x) dx = \int f(u) du$ mit $u = g(x)$
+  - 🔴 [1] _hoch_ · Konzepte: `subst-erkennen` · **0/5+** — Substitution wählen, wenn Ableitung $g'(x)$ (bis auf Konstante) als Faktor im Integrand vorkommt
+  - 🔴 [2] _hoch_ · Konzepte: `subst-grenzen` · **0/5+** — Bei bestimmtem Integral Grenzen mit substituieren: $x = a \to u = g(a)$, analog $b$
+  - 🔴 [3] _hoch_ · Konzepte: `subst-linear` · **0/5+** — Lineare Substitution $u = ax + b$: $du = a\, dx$, sehr häufig in Prüfungen
+  - 🔴 [4] _mittel_ · Konzepte: `subst-trig` · **0/5+** — Trigonometrische Substitution $x = \sin u$ für $\sqrt{1-x^2}$, $x = \tan u$ für $1+x^2$
+  - 🔴 [5] _hoch_ · Konzepte: `log-ableitung` · **0/5+** — Standardformen: $\int f'(x)/f(x) dx = \ln|f(x)| + C$ (logarithmische Ableitung)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `subst-formel` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `subst-formel` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `subst-formel` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `subst-formel` | 1 | 0 | 🔴 | $dx$ statt $du$ |
+|  5 | 0 | transfer           | number-input     | `subst-formel` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `subst-erkennen` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `subst-erkennen` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `subst-erkennen` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `subst-erkennen` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `subst-erkennen`, `subst-formel` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `subst-grenzen` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `subst-grenzen` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `subst-grenzen` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `subst-grenzen` | 1 | 0 | 🔴 | Grenzen nicht umgerechnet |
+| 15 | 2 | transfer           | number-input     | `subst-grenzen` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `subst-linear` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `subst-linear` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `subst-linear` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `subst-linear` | 1 | 0 | 🔴 | Faktor $1/a$ vergessen |
+| 20 | 3 | transfer           | number-input     | `subst-linear` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `subst-trig` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `subst-trig` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `subst-trig` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `subst-trig` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `subst-trig` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `log-ableitung` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `log-ableitung` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `log-ableitung` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `log-ableitung` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | matching         | `log-ableitung` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/integralrechnung.js` unter `'int-2-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-2-1-manual-1`, `ex-int-2-1-manual-2`, `ex-int-2-1-manual-3`, `ex-int-2-1-manual-4`, `ex-int-2-1-manual-5`, `ex-int-2-1-manual-6`, `ex-int-2-1-manual-7`, `ex-int-2-1-mastery`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-2-2` · Partielle Integration
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Integrationstechniken
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Formel: $\int u v' dx = uv - \int u' v dx$ (aus Produktregel hergeleitet)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — LIATE-Regel: **L**og, **I**nv.Trig, **A**lgebr., **T**rig, **E**xp — davor stehende wird $u$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Spezialtrick $\int \ln x\, dx$: setze $u = \ln x$, $v' = 1$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Mehrfache Anwendung bei $\int x^n e^x dx$ (Grad halbieren pro Schritt)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Kreisintegrale $\int e^x \sin x\, dx$: nach 2 Anwendungen nach Originalintegral auflösen
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-2` → `int-pot-regel`, `int-1-x`, `int-exp-trig`
+  - `int-2-1` → `subst-formel`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `pi-formel` — Partielle Integration $\int u\,v'\,dx=uv-\int u'\,v\,dx$ (aus Produktregel) (SG 0)
+  2. `liate` — LIATE-Regel: Log → InvTrig → Algebr. → Trig → Exp wird $u$ ⇐ `pi-formel` (SG 1)
+  3. `pi-ln` — Spezialtrick $\int\ln x\,dx$: $u=\ln x,\,v'=1$ ⇐ `pi-formel` (SG 2)
+  4. `pi-mehrfach` — Mehrfache Anwendung bei $\int x^n e^x\,dx$ (Grad halbiert) ⇐ `pi-formel` (SG 3)
+  5. `pi-kreis` — Kreisintegrale $\int e^x\sin x\,dx$: nach 2 PI nach Original auflösen ⇐ `pi-formel` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `pi-formel` · **0/5+** — Formel: $\int u v' dx = uv - \int u' v dx$ (aus Produktregel hergeleitet)
+  - 🔴 [1] _hoch_ · Konzepte: `liate` · **0/5+** — LIATE-Regel: **L**og, **I**nv.Trig, **A**lgebr., **T**rig, **E**xp — davor stehende wird $u$
+  - 🔴 [2] _hoch_ · Konzepte: `pi-ln` · **0/5+** — Spezialtrick $\int \ln x\, dx$: setze $u = \ln x$, $v' = 1$
+  - 🔴 [3] _mittel_ · Konzepte: `pi-mehrfach` · **0/5+** — Mehrfache Anwendung bei $\int x^n e^x dx$ (Grad halbieren pro Schritt)
+  - 🔴 [4] _mittel_ · Konzepte: `pi-kreis` · **0/5+** — Kreisintegrale $\int e^x \sin x\, dx$: nach 2 Anwendungen nach Originalintegral auflösen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `pi-formel` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pi-formel` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `pi-formel` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `pi-formel` | 1 | 0 | 🔴 | Vorzeichen vor zweitem Integral |
+|  5 | 0 | transfer           | number-input     | `pi-formel` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `liate` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `liate` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `liate` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `liate` | 1 | 0 | 🔴 | Falsche Wahl von $u$ |
+| 10 | 1 | transfer           | matching         | `liate`, `pi-formel` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `pi-ln` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pi-ln` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `pi-ln` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `pi-ln` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `pi-ln` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `pi-mehrfach` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pi-mehrfach` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `pi-mehrfach` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pi-mehrfach` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | sorting          | `pi-mehrfach` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `pi-kreis` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `pi-kreis` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `pi-kreis` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `pi-kreis` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | sorting          | `pi-kreis` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/integralrechnung.js` unter `'int-2-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-2-2-b`, `ex-int-2-2-manual-1`, `ex-int-2-2-manual-2`, `ex-int-2-2-manual-3`, `ex-int-2-2-manual-4`, `ex-int-2-2-manual-5`, `ex-int-2-2-manual-6`, `ex-int-2-2-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-3-1` · Flächenberechnung
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Anwendungen
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×5, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Fläche unter $f(x) \geq 0$ auf $[a,b]$: $A = \int_a^b f(x) dx$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Vorzeichenproblem: Bei $f < 0$ liefert Integral negativen Wert — Fläche = Betrag
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Fläche zwischen Kurven: $A = \int_a^b (f_{\text{oben}} - f_{\text{unten}}) dx$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Schnittpunkte als Integrationsgrenzen: $f(x) = g(x)$ lösen
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Bei Vorzeichenwechsel Nullstellen finden und in Teilintervalle splitten
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Fläche zwischen $y = $ const und Kurve: Horizontalstreifen oder Transformation
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-4` → `hauptsatz-12`, `geom-flaeche`
+  - `int-1-2` → `int-pot-regel`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `flaeche-pos` — Fläche unter $f\geq 0$: $A=\int_a^b f(x)dx$ (SG 0)
+  2. `flaeche-neg` — Bei $f<0$: Integral negativ → Fläche = Betrag ⇐ `flaeche-pos` (SG 1)
+  3. `flaeche-zwischen` — Fläche zwischen Kurven: $\int_a^b(f_{\text{oben}}-f_{\text{unten}})dx$ (SG 2)
+  4. `flaeche-grenzen` — Schnittpunkte als Integrationsgrenzen: $f(x)=g(x)$ lösen ⇐ `flaeche-zwischen` (SG 3)
+  5. `flaeche-split` — Bei VZ-Wechsel Nullstellen finden, in Teilintervalle splitten ⇐ `flaeche-neg` (SG 4)
+  6. `flaeche-horiz` — Fläche $y=$ const ↔ Kurve: Horizontalstreifen oder Transformation (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `flaeche-pos` · **0/5+** — Fläche unter $f(x) \geq 0$ auf $[a,b]$: $A = \int_a^b f(x) dx$
+  - 🔴 [1] _hoch_ · Konzepte: `flaeche-neg` · **0/5+** — Vorzeichenproblem: Bei $f < 0$ liefert Integral negativen Wert — Fläche = Betrag
+  - 🔴 [2] _hoch_ · Konzepte: `flaeche-zwischen` · **0/5+** — Fläche zwischen Kurven: $A = \int_a^b (f_{\text{oben}} - f_{\text{unten}}) dx$
+  - 🔴 [3] _hoch_ · Konzepte: `flaeche-grenzen` · **0/5+** — Schnittpunkte als Integrationsgrenzen: $f(x) = g(x)$ lösen
+  - 🔴 [4] _hoch_ · Konzepte: `flaeche-split` · **0/5+** — Bei Vorzeichenwechsel Nullstellen finden und in Teilintervalle splitten
+  - 🔴 [5] _mittel_ · Konzepte: `flaeche-horiz` · **0/5+** — Fläche zwischen $y = $ const und Kurve: Horizontalstreifen oder Transformation
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `flaeche-pos` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `flaeche-pos` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `flaeche-pos` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `flaeche-pos` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `flaeche-pos` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `flaeche-neg` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `flaeche-neg` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `flaeche-neg` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `flaeche-neg` | 1 | 0 | 🔴 | Negativen Wert als Fläche akzeptiert |
+| 10 | 1 | transfer           | number-input     | `flaeche-neg` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `flaeche-zwischen` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `flaeche-zwischen` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `flaeche-zwischen` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `flaeche-zwischen` | 1 | 0 | 🔴 | oben/unten verwechselt |
+| 15 | 2 | transfer           | number-input     | `flaeche-zwischen` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `flaeche-grenzen` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `flaeche-grenzen` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `flaeche-grenzen`, `flaeche-zwischen` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `flaeche-grenzen` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `flaeche-grenzen`, `flaeche-zwischen` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `flaeche-split` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `flaeche-split` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `flaeche-split` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `flaeche-split` | 1 | 0 | 🔴 | Nullstellen nicht gesucht |
+| 25 | 4 | transfer           | number-input     | `flaeche-split` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `flaeche-horiz` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `flaeche-horiz` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `flaeche-horiz` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `flaeche-horiz` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | number-input     | `flaeche-horiz` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/integralrechnung.js` unter `'int-3-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-3-1-manual-1`, `ex-int-3-1-manual-2`, `ex-int-3-1-manual-3`, `ex-int-3-1-manual-4`, `ex-int-3-1-manual-5`, `ex-int-3-1-manual-6`, `ex-int-3-1-manual-7`, `ex-int-3-1-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `integral-area`, `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `dgl-1-3` · Lineare DGL 1. Ordnung
 
@@ -6780,49 +7199,107 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-1-2` · Grundintegrale
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Stammfunktionen & Grundintegrale
-- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×2, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, sorting, number-input, matching, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Potenzregel $\int x^n dx = x^{n+1}/(n+1)+C$ für $n\neq-1$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Sonderfall $\int \frac{1}{x}dx = \ln|x|+C$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Stammfunktionen von $e^x$, $\sin x$, $\cos x$ auswendig
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Summen- und Faktorregel beim Integrieren
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-1` → `stammfunktion`, `plus-c`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `int-pot-regel` — $\int x^n dx=x^{n+1}/(n+1)+C$ für $n\neq -1$ (SG 0)
+  2. `int-1-x` — Sonderfall $\int 1/x\,dx=\ln|x|+C$ ⇐ `int-pot-regel` (SG 1)
+  3. `int-exp-trig` — Stammfunktionen: $e^x\to e^x$, $\sin x\to -\cos x$, $\cos x\to \sin x$ (SG 2)
+  4. `int-summe` — Summen- und Faktorregel beim Integrieren (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `int-pot-regel` · **0/5+** — Potenzregel $\int x^n dx = x^{n+1}/(n+1)+C$ für $n\neq-1$
+  - 🔴 [1] _hoch_ · Konzepte: `int-1-x` · **0/5+** — Sonderfall $\int \frac{1}{x}dx = \ln|x|+C$
+  - 🔴 [2] _hoch_ · Konzepte: `int-exp-trig` · **0/5+** — Stammfunktionen von $e^x$, $\sin x$, $\cos x$ auswendig
+  - 🔴 [3] _mittel_ · Konzepte: `int-summe` · **0/5+** — Summen- und Faktorregel beim Integrieren
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `int-pot-regel` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `int-pot-regel` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `int-pot-regel` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `int-pot-regel` | 1 | 0 | 🔴 | $n=-1$ falsch behandelt |
+|  5 | 0 | transfer           | number-input     | `int-pot-regel` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `int-1-x` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `int-1-x` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `int-1-x` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `int-1-x`, `int-pot-regel` | 1 | 0 | 🔴 | Potenzregel mit $n=-1$ fehlerhaft angewandt |
+| 10 | 1 | transfer           | multiple-choice  | `int-1-x` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `int-exp-trig` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `int-exp-trig` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `int-exp-trig` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `int-exp-trig` | 1 | 0 | 🔴 | Vorzeichen bei $\sin/\cos$ |
+| 15 | 2 | transfer           | matching         | `int-exp-trig` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `int-summe` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `int-summe`, `int-pot-regel` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `int-summe`, `int-pot-regel` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `int-summe` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `int-summe`, `int-pot-regel` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/integralrechnung.js` unter `'int-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-1-2-c`, `ex-int-1-2-e`, `ex-int-1-2-manual-1`, `ex-int-1-2-manual-2`, `ex-int-1-2-manual-3`, `ex-int-1-2-manual-4`, `ex-int-1-2-manual-5`, `ex-int-1-2-manual-6` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `int-2-4` · Gemischte Übungen
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Integrationstechniken
-- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×4, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Zähler = Ableitung des Nenners → direkte Stammfunktion $\ln|f|$ (ohne Substitution)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Halbwinkelformeln für $\sin^2 x = (1 - \cos 2x)/2$, $\cos^2 x = (1 + \cos 2x)/2$
-  - 🔴 [2] (niedrig) **0/5+** Aufgaben — Substitutionen $t = \tan(x/2)$ (Weierstraß) für rationale trigonometrische Ausdrücke
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Fourier-Orthogonalität: $\int_0^{2\pi} \sin(nx) \cos(mx) dx = 0$, nützliche Muster
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Integrationsstrategie wählen **vor** dem Rechnen — 10 s nachdenken spart 10 Minuten
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/integralrechnung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/integralrechnung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-2-1` → `subst-formel`, `log-ableitung`, `subst-trig`
+  - `int-2-2` → `pi-formel`, `liate`
+  - `int-2-3` → `pbz-grad`, `pbz-linear`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `log-direkt` — Zähler = Ableitung des Nenners → direkt $\ln|f|$ (SG 0)
+  2. `halbwinkel` — Halbwinkel: $\sin^2 x=(1-\cos 2x)/2$, $\cos^2 x=(1+\cos 2x)/2$ (SG 1)
+  3. `weierstrass` — Weierstraß-Substitution $t=\tan(x/2)$ für rationale trig. Ausdrücke (SG 2)
+  4. `fourier-orth` — Fourier-Orthogonalität: $\int_0^{2\pi}\sin(nx)\cos(mx)dx=0$ (SG 3)
+  5. `strategie-int` — Integrationsstrategie ZUERST wählen — 10 s nachdenken spart 10 min (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `log-direkt` · **0/5+** — Zähler = Ableitung des Nenners → direkte Stammfunktion $\ln|f|$ (ohne Substitution)
+  - 🔴 [1] _hoch_ · Konzepte: `halbwinkel` · **0/5+** — Halbwinkelformeln für $\sin^2 x = (1 - \cos 2x)/2$, $\cos^2 x = (1 + \cos 2x)/2$
+  - 🔴 [2] _niedrig_ · Konzepte: `weierstrass` · **0/5+** — Substitutionen $t = \tan(x/2)$ (Weierstraß) für rationale trigonometrische Ausdrücke
+  - 🔴 [3] _mittel_ · Konzepte: `fourier-orth` · **0/5+** — Fourier-Orthogonalität: $\int_0^{2\pi} \sin(nx) \cos(mx) dx = 0$, nützliche Muster
+  - 🔴 [4] _hoch_ · Konzepte: `strategie-int` · **0/5+** — Integrationsstrategie wählen **vor** dem Rechnen — 10 s nachdenken spart 10 Minuten
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `log-direkt` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `log-direkt` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `log-direkt` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `log-direkt` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `log-direkt` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `halbwinkel` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `halbwinkel` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `halbwinkel` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `halbwinkel` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `halbwinkel` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `weierstrass` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `weierstrass` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `weierstrass` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `weierstrass` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `weierstrass` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `fourier-orth` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `fourier-orth` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `fourier-orth` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `fourier-orth` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `fourier-orth` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `strategie-int` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `strategie-int` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | matching         | `strategie-int` | 1 | 0 | 🔴 | Methode ↔ Muster |
+| 24 | 4 | error-analysis     | multiple-choice  | `strategie-int` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | sorting          | `strategie-int` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/integralrechnung.js` unter `'int-2-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/integralrechnung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-int-2-4-manual-1`, `ex-int-2-4-manual-2`, `ex-int-2-4-manual-3`, `ex-int-2-4-manual-4`, `ex-int-2-4-manual-5`, `ex-int-2-4-manual-6`, `ex-int-2-4-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `abl-2-3` · Kettenregel — Schritt für Schritt
 
@@ -7292,20 +7769,57 @@ npm run build              # abschließender End-zu-End-Check
 #### `int-3-4` · Bogenlänge & Durchschnittswert
 
 - **Topic:** `integralrechnung` (Integralrechnung) · **Unit:** Anwendungen
-- **Aufgaben aktuell:** 28 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×11, true-false ×5, matching ×4, sorting ×2
-- **Typen einsetzen (Rotation):** sorting, matching, true-false
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - ✅ [0] (hoch) **5/5+** Aufgaben — Bogenlänge: $L = \int_a^b \sqrt{1 + [f'(x)]^2} dx$ (Pythagoras am Differentialdreieck)
-  - ✅ [1] (hoch) **5/5+** Aufgaben — Durchschnittswert: $\bar{f} = \frac{1}{b-a} \int_a^b f(x) dx$
-  - ✅ [2] (mittel) **5/5+** Aufgaben — Parametrisierte Kurve $(x(t), y(t))$: $L = \int_{t_1}^{t_2} \sqrt{x'^2 + y'^2} dt$
-  - ✅ [3] (mittel) **5/5+** Aufgaben — Mittelwertsatz der Integralrechnung: $\exists \xi \in [a,b]$ mit $f(\xi) = \bar{f}$
-  - ✅ [4] (mittel) **5/5+** Aufgaben — Anwendung Maschinenbau: Zahnrad-Evolventen, Rohrleitungen, Seilverläufe
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `integral-area`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `integralrechnung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Grundintegrale: $x^n, e^x, \sin x, \cos x, 1/x$. · Substitutionsregel: $\int f(g(x))g'(x)\,dx = \int f(u)\,du$. · Partielle Integration: $\int u\,v'\,dx = uv - \int u'\,v\,dx$. · …
-  - _Typische Fehler (gute Distraktoren):_ Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-  - _Klausur-Fokus:_ Partielle Integration mit $\ln$ oder $e^x$. · Substitution mit trigonometrischen Funktionen. · Fläche zwischen zwei Kurven (Schnittpunkte finden!).
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `int-1-4` → `hauptsatz-12`
+  - `int-3-1` → `flaeche-pos`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `bogenlaenge` — Bogenlänge $L=\int_a^b\sqrt{1+[f'(x)]^2}dx$ (Pythagoras am Differentialdreieck) (SG 0)
+  2. `durchschnitt` — Durchschnittswert $\bar f=\frac{1}{b-a}\int_a^b f(x)dx$ (SG 1)
+  3. `param-kurve` — Parametrisierte Kurve: $L=\int_{t_1}^{t_2}\sqrt{x'^2+y'^2}dt$ ⇐ `bogenlaenge` (SG 2)
+  4. `mws-int` — Mittelwertsatz: $\exists\xi\in[a,b]$ mit $f(\xi)=\bar f$ ⇐ `durchschnitt` (SG 3)
+  5. `mb-anwendung` — Anwendung Maschinenbau: Zahnrad-Evolventen, Rohrleitungen, Seilverläufe ⇐ `bogenlaenge` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `bogenlaenge` · **5/5+** — Bogenlänge: $L = \int_a^b \sqrt{1 + [f'(x)]^2} dx$ (Pythagoras am Differentialdreieck)
+  - ✅ [1] _hoch_ · Konzepte: `durchschnitt` · **5/5+** — Durchschnittswert: $\bar{f} = \frac{1}{b-a} \int_a^b f(x) dx$
+  - ✅ [2] _mittel_ · Konzepte: `param-kurve` · **5/5+** — Parametrisierte Kurve $(x(t), y(t))$: $L = \int_{t_1}^{t_2} \sqrt{x'^2 + y'^2} dt$
+  - ✅ [3] _mittel_ · Konzepte: `mws-int` · **5/5+** — Mittelwertsatz der Integralrechnung: $\exists \xi \in [a,b]$ mit $f(\xi) = \bar{f}$
+  - ✅ [4] _mittel_ · Konzepte: `mb-anwendung` · **5/5+** — Anwendung Maschinenbau: Zahnrad-Evolventen, Rohrleitungen, Seilverläufe
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `bogenlaenge` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `bogenlaenge` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `bogenlaenge` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `bogenlaenge` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `bogenlaenge` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `durchschnitt` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `durchschnitt` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `durchschnitt` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `durchschnitt` | 1 | 0 | 🔴 | Faktor $1/(b-a)$ vergessen |
+| 10 | 1 | transfer           | number-input     | `durchschnitt` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `param-kurve` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `param-kurve` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `param-kurve` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `param-kurve` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `param-kurve` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `mws-int` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `mws-int` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `mws-int`, `durchschnitt` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `mws-int` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `mws-int` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `mb-anwendung` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `mb-anwendung` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `mb-anwendung`, `bogenlaenge` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `mb-anwendung` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `mb-anwendung`, `bogenlaenge` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/integralrechnung.js` unter `'int-3-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/integralrechnung.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
 #### `mech-1-4` · Reibung
 
