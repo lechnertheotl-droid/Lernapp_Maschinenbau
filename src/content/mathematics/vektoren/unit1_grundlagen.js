@@ -625,6 +625,44 @@ const lessons_vek_u1 = [
     ],
     prerequisites: [],
     nextLessonId: 'vek-1-1',
+    blueprint: {
+      prerequisites: [],
+      concepts: [
+        { id: 'koord-2d',           title: 'Koordinatensystem $(x,y)$ — $x$ horizontal, $y$ vertikal, Ursprung $(0,0)$', dependsOn: [] },
+        { id: 'quadranten',         title: '4 Quadranten gegen den Uhrzeigersinn (Q1: $x>0,y>0$ … Q4: $x>0,y<0$)',     dependsOn: ['koord-2d'] },
+        { id: 'punkt',              title: 'Punkt $P=(x,y)$ — beschreibt einen Ort',                                     dependsOn: ['koord-2d'] },
+        { id: 'vektor',             title: 'Vektor $\\vec v=(v_x,v_y)$ — Verschiebung mit Betrag und Richtung',         dependsOn: ['koord-2d'] },
+        { id: 'punkt-vs-vektor',    title: 'Gleiche Schreibweise $(x,y)$, verschiedene Bedeutung (Ort vs. Verschiebung)', dependsOn: ['punkt', 'vektor'] },
+        { id: 'skalar-vs-vektor',   title: 'Skalar (nur Betrag) vs. Vektor (Betrag + Richtung) — Erkennung an „Richtung sinnvoll?"', dependsOn: ['vektor'] },
+        { id: 'ab-formel',          title: 'Verbindungsvektor $\\vec{AB}=B-A$ — komponentenweise',                       dependsOn: ['punkt', 'vektor'] },
+        { id: 'vektor-frei',        title: 'Freier Vektor: gleiche Länge & Richtung → gleicher Vektor, egal Startpunkt', dependsOn: ['vektor'] },
+      ],
+      subGoalConcepts: {
+        0: ['koord-2d', 'quadranten', 'punkt', 'vektor', 'punkt-vs-vektor', 'skalar-vs-vektor'],
+        1: ['ab-formel'],
+        2: ['vektor-frei'],
+      },
+      taskPlan: [
+        // SG 0 — Punkt vs. Vektor, Skalar-Erkennung
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['punkt-vs-vektor'],                         qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['skalar-vs-vektor'],                        qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'multiple-choice', uses: ['koord-2d'],                                qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['punkt-vs-vektor', 'skalar-vs-vektor'],     qty: 1, note: 'Masse/Gewicht-Verwechslung' },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['quadranten'],                              qty: 1 },
+        // SG 1 — AB-Formel
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['ab-formel'],                               qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['ab-formel'],                               qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['ab-formel'],                               qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['ab-formel'],                               qty: 1, note: 'Distraktor: A−B statt B−A' },
+        { subGoal: 1, stage: 'transfer',          type: 'number-input',    uses: ['ab-formel'],                               qty: 1, note: 'Anwendung in 3D oder mit negativen Koordinaten' },
+        // SG 2 — Freier Vektor
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['vektor-frei'],                             qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['vektor-frei', 'ab-formel'],                qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'multiple-choice', uses: ['vektor-frei'],                             qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['vektor-frei', 'punkt-vs-vektor'],          qty: 1, note: 'Distraktor: Punkt verschoben statt Vektor frei' },
+        { subGoal: 2, stage: 'transfer',          type: 'sorting',         uses: ['vektor-frei', 'ab-formel'],                qty: 1 },
+      ],
+    },
     steps: [
       {
         id: 'vek-1-0-s1', type: 'explanation-intuitive', title: 'Das Koordinatensystem',
@@ -676,6 +714,54 @@ $$\\vec{AB} = B - A = (B_x - A_x,\\; B_y - A_y)$$
     ],
     prerequisites: ['vek-1-0'],
     nextLessonId: 'vek-1-2',
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'vek-1-0', concepts: ['vektor', 'skalar-vs-vektor', 'punkt-vs-vektor'] },
+      ],
+      concepts: [
+        { id: 'komp-darstellung',  title: '$\\vec a=(a_x,a_y)$ in 2D bzw. $(a_x,a_y,a_z)$ in 3D — Komponentenform',           dependsOn: [] },
+        { id: 'betrag',            title: 'Betrag $|\\vec v|=\\sqrt{v_x^2+v_y^2(+v_z^2)}$ via Pythagoras',                     dependsOn: ['komp-darstellung'] },
+        { id: 'add-komp',          title: 'Addition komponentenweise: $\\vec a+\\vec b=(a_x+b_x,a_y+b_y)$',                    dependsOn: ['komp-darstellung'] },
+        { id: 'add-geo',           title: 'Geometrisch: Pfeile aneinandersetzen, Resultierende zeichnen',                       dependsOn: ['add-komp'] },
+        { id: 'sub-komp',          title: 'Subtraktion komponentenweise: $\\vec a-\\vec b=\\vec a+(-\\vec b)$',                  dependsOn: ['add-komp'] },
+        { id: 'skalar-mul',        title: 'Skalarmultiplikation $k\\vec a=(k a_x,k a_y)$ — verlängert/staucht/spiegelt',        dependsOn: ['komp-darstellung'] },
+        { id: 'einheitsvektor',    title: 'Einheitsvektor $\\vec e=\\vec v/|\\vec v|$ hat Länge 1, gleiche Richtung',           dependsOn: ['betrag', 'skalar-mul'] },
+        { id: 'tech-groessen',     title: 'Kraft, Geschwindigkeit, Verschiebung = Vektoren; Masse, Zeit, Temperatur = Skalare', dependsOn: [] },
+        { id: 'vra-axiome',        title: 'Kommutativ, Assoziativ, Distributiv für Vektoren',                                    dependsOn: ['add-komp', 'skalar-mul'] },
+      ],
+      subGoalConcepts: {
+        0: ['komp-darstellung', 'betrag'],
+        1: ['add-komp', 'sub-komp', 'add-geo', 'skalar-mul', 'vra-axiome'],
+        2: ['einheitsvektor'],
+        3: ['tech-groessen'],
+      },
+      taskPlan: [
+        // SG 0 — Betrag
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['betrag'],                              qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['betrag'],                              qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['betrag'],                              qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['betrag'],                              qty: 1, note: 'Distraktor: Wurzel vergessen / Komponenten addiert' },
+        { subGoal: 0, stage: 'transfer',          type: 'number-input',    uses: ['betrag'],                              qty: 1, note: '3D-Beispiel oder negative Komponenten' },
+        // SG 1 — Addition komponentenweise
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['add-komp', 'vra-axiome'],              qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['add-komp'],                            qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['add-komp', 'skalar-mul'],              qty: 1, note: '$2\\vec a + 3\\vec b$' },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['add-komp', 'sub-komp'],                qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'matching',        uses: ['add-komp', 'add-geo', 'skalar-mul'],    qty: 1 },
+        // SG 2 — Einheitsvektor
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['einheitsvektor'],                      qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['einheitsvektor', 'betrag'],            qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['einheitsvektor', 'betrag'],            qty: 1, note: 'Länge prüfen = 1' },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['einheitsvektor'],                      qty: 1, note: 'Distraktor: durch Komponente statt Betrag geteilt' },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['einheitsvektor', 'skalar-mul'],        qty: 1 },
+        // SG 3 — Vektor vs. Skalar in technischen Größen
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['tech-groessen'],                       qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['tech-groessen'],                       qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'matching',        uses: ['tech-groessen'],                       qty: 1, note: 'Größe ↔ Typ' },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['tech-groessen'],                       qty: 1, note: 'Masse/Gewichtskraft-Falle' },
+        { subGoal: 3, stage: 'transfer',          type: 'sorting',         uses: ['tech-groessen'],                       qty: 1 },
+      ],
+    },
     steps: [
       {
         id: 'vek-1-1-s1', type: 'explanation-intuitive', title: 'Was ist ein Vektor?',
@@ -739,6 +825,54 @@ $$|\\vec{a}| = \\sqrt{a_x^{2} + a_y^{2}} \\quad \\text{(2D)}, \\qquad |\\vec{a}|
     ],
     prerequisites: ['vek-1-1'],
     nextLessonId: 'vek-1-3',
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'vek-1-1', concepts: ['betrag', 'add-komp', 'skalar-mul'] },
+      ],
+      concepts: [
+        { id: 'sp-komp',         title: '$\\vec a\\cdot\\vec b=a_x b_x+a_y b_y+a_z b_z$ — Komponentenform liefert Zahl',         dependsOn: [] },
+        { id: 'sp-skalar',       title: 'Ergebnis ist ein Skalar (Zahl), kein Vektor',                                              dependsOn: ['sp-komp'] },
+        { id: 'sp-winkel',       title: '$\\vec a\\cdot\\vec b=|\\vec a||\\vec b|\\cos\\varphi$ — Winkelform',                       dependsOn: ['sp-komp'] },
+        { id: 'sp-vorzeichen',   title: 'Vorzeichen: $>0$ spitz, $=0$ rechtwinklig, $<0$ stumpf',                                   dependsOn: ['sp-winkel'] },
+        { id: 'sp-orthogonal',   title: 'Orthogonalitätstest $\\vec a\\perp\\vec b\\iff\\vec a\\cdot\\vec b=0$',                     dependsOn: ['sp-winkel'] },
+        { id: 'sp-winkel-formel', title: 'Winkel: $\\cos\\varphi=(\\vec a\\cdot\\vec b)/(|\\vec a||\\vec b|)$',                     dependsOn: ['sp-winkel'] },
+        { id: 'sp-projektion',   title: 'Projektion $\\vec a$ auf $\\vec b$: $\\vec a_b=(\\vec a\\cdot\\vec b/|\\vec b|^2)\\vec b$', dependsOn: ['sp-komp', 'sp-winkel'] },
+        { id: 'sp-arbeit',       title: 'Anwendung: Arbeit $W=\\vec F\\cdot\\vec s$',                                                dependsOn: ['sp-komp'] },
+        { id: 'sp-regeln',       title: 'Kommutativ, distributiv, mit Skalar verträglich',                                          dependsOn: ['sp-komp'] },
+      ],
+      subGoalConcepts: {
+        0: ['sp-komp', 'sp-skalar', 'sp-regeln'],
+        1: ['sp-winkel', 'sp-vorzeichen', 'sp-arbeit'],
+        2: ['sp-orthogonal', 'sp-winkel-formel'],
+        3: ['sp-projektion'],
+      },
+      taskPlan: [
+        // SG 0 — Komponentenform
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['sp-skalar'],                                qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['sp-komp'],                                  qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['sp-komp'],                                  qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['sp-komp', 'sp-skalar'],                     qty: 1, note: 'Distraktor: komponentenweises Produkt statt Summe' },
+        { subGoal: 0, stage: 'transfer',          type: 'number-input',    uses: ['sp-komp', 'sp-regeln'],                     qty: 1 },
+        // SG 1 — Winkelform
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['sp-winkel', 'sp-vorzeichen'],               qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['sp-winkel'],                                qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['sp-winkel'],                                qty: 1, note: 'Winkel rückwärts aus $|\\vec a|,|\\vec b|,\\cos$' },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['sp-vorzeichen'],                            qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'number-input',    uses: ['sp-arbeit', 'sp-winkel'],                   qty: 1, note: 'Arbeit Kraft·Weg' },
+        // SG 2 — Orthogonalität
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['sp-orthogonal'],                            qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['sp-orthogonal', 'sp-komp'],                 qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['sp-winkel-formel', 'sp-komp'],              qty: 1, note: 'Winkel in Grad' },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['sp-orthogonal'],                            qty: 1, note: 'Distraktor: Skalarprodukt $\\neq 0$ als parallel interpretiert' },
+        { subGoal: 2, stage: 'transfer',          type: 'matching',        uses: ['sp-vorzeichen', 'sp-orthogonal'],           qty: 1 },
+        // SG 3 — Projektion
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['sp-projektion'],                            qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['sp-projektion'],                            qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['sp-projektion', 'sp-komp'],                 qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['sp-projektion'],                            qty: 1, note: 'Distraktor: durch $|\\vec b|$ statt $|\\vec b|^2$' },
+        { subGoal: 3, stage: 'transfer',          type: 'number-input',    uses: ['sp-projektion', 'sp-arbeit'],               qty: 1 },
+      ],
+    },
     steps: [
       {
         id: 'vek-1-2-s1', type: 'explanation-formal', title: 'Skalarprodukt — Definition und Anwendungen',
@@ -787,6 +921,55 @@ wobei $\\varphi$ der eingeschlossene Winkel ist ($0° \\leq \\varphi \\leq 180°
     ],
     prerequisites: ['vek-1-2'],
     nextLessonId: 'vek-1-4',
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'vek-1-2', concepts: ['sp-komp', 'sp-orthogonal'] },
+        { lessonId: 'vek-1-1', concepts: ['betrag', 'add-komp'] },
+      ],
+      concepts: [
+        { id: 'kp-vektor',     title: '$\\vec a\\times\\vec b$ liefert einen Vektor (3D), nicht eine Zahl',                   dependsOn: [] },
+        { id: 'kp-3d-only',    title: 'Nur in 3D definiert',                                                                  dependsOn: ['kp-vektor'] },
+        { id: 'kp-komp',       title: 'Komponentenformel: $(a_y b_z-a_z b_y,\\;a_z b_x-a_x b_z,\\;a_x b_y-a_y b_x)$',         dependsOn: ['kp-3d-only'] },
+        { id: 'kp-orthog',     title: 'Ergebnis $\\perp\\vec a$ und $\\perp\\vec b$',                                          dependsOn: ['kp-vektor'] },
+        { id: 'kp-betrag',     title: '$|\\vec a\\times\\vec b|=|\\vec a||\\vec b|\\sin\\varphi$ = Parallelogrammfläche',     dependsOn: ['kp-vektor'] },
+        { id: 'kp-rh-regel',   title: 'Rechte-Hand-Regel: Zeigefinger $\\vec a$, Mittel $\\vec b$, Daumen Ergebnis',           dependsOn: ['kp-orthog'] },
+        { id: 'kp-antikomm',   title: '$\\vec a\\times\\vec b=-(\\vec b\\times\\vec a)$ — antikommutativ',                     dependsOn: ['kp-komp'] },
+        { id: 'kp-parallel',   title: 'Parallelitätstest: $\\vec a\\times\\vec b=\\vec 0\\iff\\vec a\\parallel\\vec b$',       dependsOn: ['kp-betrag'] },
+        { id: 'kp-vs-sp',      title: 'Skalar- vs. Kreuzprodukt: Zahl vs. Vektor; Winkel vs. Senkrechte',                     dependsOn: ['kp-vektor'] },
+      ],
+      subGoalConcepts: {
+        0: ['kp-vektor', 'kp-orthog', 'kp-vs-sp'],
+        1: ['kp-betrag'],
+        2: ['kp-rh-regel', 'kp-antikomm', 'kp-parallel'],
+        3: ['kp-3d-only', 'kp-komp'],
+      },
+      taskPlan: [
+        // SG 0 — Ergebnis ist Vektor
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['kp-vektor', 'kp-vs-sp'],                qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['kp-vektor', 'kp-orthog'],               qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'multiple-choice', uses: ['kp-orthog'],                            qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['kp-vs-sp'],                             qty: 1, note: 'Distraktor: Skalar- mit Kreuzprodukt verwechselt' },
+        { subGoal: 0, stage: 'transfer',          type: 'matching',        uses: ['kp-vs-sp', 'kp-orthog'],                qty: 1 },
+        // SG 1 — Betrag = Fläche
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['kp-betrag'],                            qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['kp-betrag'],                            qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['kp-betrag'],                            qty: 1, note: 'Parallelogrammfläche' },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['kp-betrag'],                            qty: 1, note: 'Distraktor: cos statt sin' },
+        { subGoal: 1, stage: 'transfer',          type: 'number-input',    uses: ['kp-betrag', 'kp-komp'],                 qty: 1, note: 'Dreiecksfläche = ½ |a×b|' },
+        // SG 2 — Rechte-Hand-Regel & Antikommutativität
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['kp-antikomm'],                          qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['kp-rh-regel'],                          qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'multiple-choice', uses: ['kp-parallel', 'kp-betrag'],             qty: 1 },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['kp-antikomm'],                          qty: 1, note: 'Distraktor: kommutativ angenommen' },
+        { subGoal: 2, stage: 'transfer',          type: 'matching',        uses: ['kp-rh-regel', 'kp-antikomm'],           qty: 1 },
+        // SG 3 — 3D & Komponentenformel
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['kp-3d-only'],                           qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['kp-komp'],                              qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['kp-komp'],                              qty: 1, note: 'Resultatkomponente $z$' },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['kp-komp'],                              qty: 1, note: 'Distraktor: Vorzeichen vertauscht' },
+        { subGoal: 3, stage: 'transfer',          type: 'number-input',    uses: ['kp-komp', 'kp-betrag'],                 qty: 1 },
+      ],
+    },
     steps: [
       {
         id: 'vek-1-3-s1', type: 'explanation-formal', title: 'Kreuzprodukt (Vektorprodukt)',
@@ -853,6 +1036,66 @@ $$|\\vec{a} \\times \\vec{b}| = |\\vec{a}| \\cdot |\\vec{b}| \\cdot \\sin(\\varp
     ],
     prerequisites: ['vek-1-3'],
     nextLessonId: null,
+    blueprint: {
+      prerequisites: [
+        { lessonId: 'vek-1-1', concepts: ['add-komp', 'betrag', 'einheitsvektor', 'skalar-mul'] },
+      ],
+      concepts: [
+        { id: 'kraft-vektor',     title: 'Kraft $\\vec F$ ist Vektor mit Betrag und Richtung — Einheit Newton',                  dependsOn: [] },
+        { id: 'kraft-zerlegung',  title: '$F_x=F\\cos\\alpha,\\;F_y=F\\sin\\alpha$ (Winkel zur $x$-Achse)',                      dependsOn: ['kraft-vektor'] },
+        { id: 'resultierende',    title: '$\\vec R=\\sum\\vec F_i$ komponentenweise',                                              dependsOn: ['kraft-zerlegung'] },
+        { id: 'gleichgewicht',    title: 'Gleichgewicht $\\sum F_x=0\\wedge\\sum F_y=0\\wedge\\sum F_z=0$',                        dependsOn: ['resultierende'] },
+        { id: 'r-betrag-richtung', title: '$|\\vec R|=\\sqrt{R_x^2+R_y^2}$, $\\tan\\alpha=R_y/R_x$',                                dependsOn: ['resultierende'] },
+        { id: 'einheits-tech',    title: 'Einheitsvektor $\\hat e=\\vec a/|\\vec a|$ — dimensionslos, Länge 1',                    dependsOn: [] },
+        { id: 'plausi-vorzeichen', title: 'Vorzeichen-Check: passt Resultate zur Skizze?',                                          dependsOn: ['kraft-zerlegung'] },
+      ],
+      subGoalConcepts: {
+        0: ['kraft-vektor', 'kraft-zerlegung'],
+        1: ['resultierende'],
+        2: ['gleichgewicht'],
+        3: ['einheits-tech'],
+        4: ['r-betrag-richtung'],
+        5: ['plausi-vorzeichen'],
+      },
+      taskPlan: [
+        // SG 0 — Komponentenzerlegung
+        { subGoal: 0, stage: 'recognize',         type: 'true-false',      uses: ['kraft-zerlegung'],                       qty: 1 },
+        { subGoal: 0, stage: 'apply-guided',      type: 'multiple-choice', uses: ['kraft-zerlegung'],                       qty: 1 },
+        { subGoal: 0, stage: 'apply-independent', type: 'number-input',    uses: ['kraft-zerlegung'],                       qty: 1 },
+        { subGoal: 0, stage: 'error-analysis',    type: 'multiple-choice', uses: ['kraft-zerlegung'],                       qty: 1, note: 'sin/cos vertauscht' },
+        { subGoal: 0, stage: 'transfer',          type: 'number-input',    uses: ['kraft-zerlegung'],                       qty: 1, note: '[PRÜFUNG]' },
+        // SG 1 — Resultierende
+        { subGoal: 1, stage: 'recognize',         type: 'true-false',      uses: ['resultierende'],                         qty: 1 },
+        { subGoal: 1, stage: 'apply-guided',      type: 'multiple-choice', uses: ['resultierende', 'kraft-zerlegung'],      qty: 1 },
+        { subGoal: 1, stage: 'apply-independent', type: 'number-input',    uses: ['resultierende', 'kraft-zerlegung'],      qty: 1 },
+        { subGoal: 1, stage: 'error-analysis',    type: 'multiple-choice', uses: ['resultierende'],                         qty: 1 },
+        { subGoal: 1, stage: 'transfer',          type: 'number-input',    uses: ['resultierende', 'kraft-zerlegung'],      qty: 1, note: '[PRÜFUNG] 3 Kräfte' },
+        // SG 2 — Gleichgewicht
+        { subGoal: 2, stage: 'recognize',         type: 'true-false',      uses: ['gleichgewicht'],                         qty: 1 },
+        { subGoal: 2, stage: 'apply-guided',      type: 'multiple-choice', uses: ['gleichgewicht'],                         qty: 1 },
+        { subGoal: 2, stage: 'apply-independent', type: 'number-input',    uses: ['gleichgewicht', 'kraft-zerlegung'],      qty: 1, note: 'Unbekannte Seilkraft' },
+        { subGoal: 2, stage: 'error-analysis',    type: 'multiple-choice', uses: ['gleichgewicht'],                         qty: 1 },
+        { subGoal: 2, stage: 'transfer',          type: 'number-input',    uses: ['gleichgewicht', 'kraft-zerlegung'],      qty: 1, note: '[PRÜFUNG]' },
+        // SG 3 — Einheitsvektor
+        { subGoal: 3, stage: 'recognize',         type: 'true-false',      uses: ['einheits-tech'],                         qty: 1 },
+        { subGoal: 3, stage: 'apply-guided',      type: 'multiple-choice', uses: ['einheits-tech'],                         qty: 1 },
+        { subGoal: 3, stage: 'apply-independent', type: 'number-input',    uses: ['einheits-tech'],                         qty: 1 },
+        { subGoal: 3, stage: 'error-analysis',    type: 'multiple-choice', uses: ['einheits-tech'],                         qty: 1, note: 'Länge ≠ 1 als Ergebnis-Falle' },
+        { subGoal: 3, stage: 'transfer',          type: 'number-input',    uses: ['einheits-tech'],                         qty: 1 },
+        // SG 4 — Betrag & Richtung der Resultierenden
+        { subGoal: 4, stage: 'recognize',         type: 'true-false',      uses: ['r-betrag-richtung'],                     qty: 1 },
+        { subGoal: 4, stage: 'apply-guided',      type: 'multiple-choice', uses: ['r-betrag-richtung'],                     qty: 1 },
+        { subGoal: 4, stage: 'apply-independent', type: 'number-input',    uses: ['r-betrag-richtung', 'resultierende'],    qty: 1 },
+        { subGoal: 4, stage: 'error-analysis',    type: 'multiple-choice', uses: ['r-betrag-richtung'],                     qty: 1, note: 'Quadrant beim arctan' },
+        { subGoal: 4, stage: 'transfer',          type: 'number-input',    uses: ['r-betrag-richtung', 'resultierende', 'kraft-zerlegung'], qty: 1, note: '[PRÜFUNG]' },
+        // SG 5 — Plausibilitätscheck
+        { subGoal: 5, stage: 'recognize',         type: 'true-false',      uses: ['plausi-vorzeichen'],                     qty: 1 },
+        { subGoal: 5, stage: 'apply-guided',      type: 'multiple-choice', uses: ['plausi-vorzeichen'],                     qty: 1 },
+        { subGoal: 5, stage: 'apply-independent', type: 'multiple-choice', uses: ['plausi-vorzeichen', 'kraft-zerlegung'],  qty: 1 },
+        { subGoal: 5, stage: 'error-analysis',    type: 'multiple-choice', uses: ['plausi-vorzeichen'],                     qty: 1 },
+        { subGoal: 5, stage: 'transfer',          type: 'sorting',         uses: ['plausi-vorzeichen', 'resultierende'],    qty: 1, note: 'Lösungsstrategie ordnen' },
+      ],
+    },
     steps: [
       {
         id: 'vek-1-4-s1', type: 'explanation-intuitive', title: 'Kräfte im Maschinenbau — Strategie',
