@@ -2855,77 +2855,194 @@ npm run build              # abschließender End-zu-End-Check
 #### `la-3-1` · Prüfung: Matrizen & Determinanten
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×2
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Matrixmultiplikation Zeile × Spalte — $AB \neq BA$ im Allgemeinen
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Laplace-Entwicklung: $\det A = \sum_j (-1)^{i+j} a_{ij} M_{ij}$ (beliebige Zeile/Spalte)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Inverse-Test: $A^{-1}$ existiert $\iff \det A \neq 0 \iff \text{rg}(A) = n$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Rang via Gauss: Zeilenstufenform → Anzahl Nicht-Null-Zeilen
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Äquivalenzkette: $A$ invertierbar $\iff \det \neq 0 \iff \text{rg} = n \iff A\vec x = \vec b$ eindeutig
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Parameteraufgabe: $A(\lambda)$, Werte für $\lambda$ finden, bei denen $\det = 0$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/lineare_algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `la-1-2` → `matrix-mult`, `mult-nicht-komm`
+  - `la-1-3` → `inv-existenz`
+  - `la-1-4` → `det-2x2`, `det-laplace`, `det-singular`
+  - `la-2-3` → `rang`, `eindeutig-bed`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `pr-mult` — Matrixmultiplikation Zeile × Spalte; $AB\neq BA$ allgemein (SG 0)
+  2. `pr-laplace` — Laplace-Entwicklung mit Vorzeichen-Schachbrett (SG 1)
+  3. `pr-inv-test` — Inverse-Test: $A^{-1}$ existiert $\iff\det A\neq 0\iff\operatorname{rg}(A)=n$ (SG 2)
+  4. `pr-rang-gauss` — Rang via Gauss: Anzahl Nicht-Null-Zeilen in Stufenform (SG 3)
+  5. `aequivalenz-kette` — $A$ invertierbar $\iff\det\neq 0\iff\operatorname{rg}=n\iff A\vec x=\vec b$ eindeutig ⇐ `pr-inv-test`, `pr-rang-gauss` (SG 4)
+  6. `param-det` — Parameteraufgabe: $A(\lambda)$ — Werte mit $\det=0$ finden ⇐ `pr-laplace` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `pr-mult` · **0/5+** — Matrixmultiplikation Zeile × Spalte — $AB \neq BA$ im Allgemeinen
+  - 🔴 [1] _hoch_ · Konzepte: `pr-laplace` · **0/5+** — Laplace-Entwicklung: $\det A = \sum_j (-1)^{i+j} a_{ij} M_{ij}$ (beliebige Zeile/Spalte)
+  - 🔴 [2] _hoch_ · Konzepte: `pr-inv-test` · **0/5+** — Inverse-Test: $A^{-1}$ existiert $\iff \det A \neq 0 \iff \text{rg}(A) = n$
+  - 🔴 [3] _hoch_ · Konzepte: `pr-rang-gauss` · **0/5+** — Rang via Gauss: Zeilenstufenform → Anzahl Nicht-Null-Zeilen
+  - 🔴 [4] _hoch_ · Konzepte: `aequivalenz-kette` · **0/5+** — Äquivalenzkette: $A$ invertierbar $\iff \det \neq 0 \iff \text{rg} = n \iff A\vec x = \vec b$ eindeutig
+  - 🔴 [5] _mittel_ · Konzepte: `param-det` · **0/5+** — Parameteraufgabe: $A(\lambda)$, Werte für $\lambda$ finden, bei denen $\det = 0$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `pr-mult` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pr-mult` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `pr-mult` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `pr-mult` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `pr-mult` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `pr-laplace` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pr-laplace` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `pr-laplace` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pr-laplace` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `pr-laplace` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `pr-inv-test` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pr-inv-test` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `pr-inv-test` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `pr-inv-test` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `pr-inv-test` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `pr-rang-gauss` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pr-rang-gauss` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `pr-rang-gauss` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pr-rang-gauss` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `pr-rang-gauss` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `aequivalenz-kette` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `aequivalenz-kette` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `aequivalenz-kette` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `aequivalenz-kette` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `aequivalenz-kette` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `param-det` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `param-det` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `param-det` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `param-det` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | number-input     | `param-det` | 1 | 0 | 🔴 | [PRÜFUNG] |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/lineare_algebra.js` unter `'la-3-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-3-1-a`, `ex-la-3-1-b`, `ex-la-3-1-c`, `ex-la-3-1-d`, `ex-la-3-1-e`, `ex-la-3-1-f`, `ex-la-3-1-g`, `ex-la-3-1-h` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
-  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
 
 #### `la-3-2` · Prüfung: LGS & Eigenwerte
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×8, number-input ×1, true-false ×2
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Rouché-Capelli-Kriterium: $\text{rg}(A) = \text{rg}([A|b])$ für Lösbarkeit
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Freie Variablen = $n - \text{rg}(A)$ (Parametrisierung der Lösungsmenge)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Eigenwerte via $\det(A - \lambda I) = 0$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Eigenvektor: Kern von $(A - \lambda I)$, normieren falls gefordert
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Spur = $\sum \lambda_i$, Determinante = $\prod \lambda_i$ (Quercheck!)
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Defekt: algebraische Vielfachheit > geometrische → nicht diagonalisierbar
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/lineare_algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `la-1-5` → `ew-glg`, `char-poly`, `eigenvektor`, `spur-det-ew`
+  - `la-2-3` → `kronecker`, `eindeutig-bed`, `unendlich-bed`, `rang`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `rouche-cap` — Rouché-Capelli: $\operatorname{rg}(A)=\operatorname{rg}([A|b])$ für Lösbarkeit (SG 0)
+  2. `freie-vars` — Freie Variablen $=n-\operatorname{rg}(A)$ — Parametrisierung der Lösungsmenge (SG 1)
+  3. `ew-pr` — Eigenwerte via $\det(A-\lambda I)=0$ (SG 2)
+  4. `ev-pr` — Eigenvektor: Kern von $(A-\lambda I)$, normieren falls gefordert ⇐ `ew-pr` (SG 3)
+  5. `spur-det-quer` — Quercheck: Spur $=\sum\lambda_i$, $\det=\prod\lambda_i$ ⇐ `ew-pr` (SG 4)
+  6. `defekt-vielfh` — Defekt: algebr. Vielfachheit > geometr. → nicht diagonalisierbar ⇐ `ev-pr` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `rouche-cap` · **0/5+** — Rouché-Capelli-Kriterium: $\text{rg}(A) = \text{rg}([A|b])$ für Lösbarkeit
+  - 🔴 [1] _hoch_ · Konzepte: `freie-vars` · **0/5+** — Freie Variablen = $n - \text{rg}(A)$ (Parametrisierung der Lösungsmenge)
+  - 🔴 [2] _hoch_ · Konzepte: `ew-pr` · **0/5+** — Eigenwerte via $\det(A - \lambda I) = 0$
+  - 🔴 [3] _hoch_ · Konzepte: `ev-pr` · **0/5+** — Eigenvektor: Kern von $(A - \lambda I)$, normieren falls gefordert
+  - 🔴 [4] _hoch_ · Konzepte: `spur-det-quer` · **0/5+** — Spur = $\sum \lambda_i$, Determinante = $\prod \lambda_i$ (Quercheck!)
+  - 🔴 [5] _mittel_ · Konzepte: `defekt-vielfh` · **0/5+** — Defekt: algebraische Vielfachheit > geometrische → nicht diagonalisierbar
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `rouche-cap` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `rouche-cap` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `rouche-cap` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `rouche-cap` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `rouche-cap` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `freie-vars` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `freie-vars` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `freie-vars` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `freie-vars` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `freie-vars` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 11 | 2 | recognize          | true-false       | `ew-pr` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `ew-pr` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `ew-pr` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `ew-pr` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `ew-pr` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `ev-pr` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `ev-pr` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `ev-pr` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `ev-pr` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `ev-pr` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `spur-det-quer` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `spur-det-quer` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `spur-det-quer` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `spur-det-quer` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `spur-det-quer` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `defekt-vielfh` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `defekt-vielfh` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `defekt-vielfh` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `defekt-vielfh` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | multiple-choice  | `defekt-vielfh` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/lineare_algebra.js` unter `'la-3-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-3-2-a`, `ex-la-3-2-b`, `ex-la-3-2-c`, `ex-la-3-2-d`, `ex-la-3-2-e`, `ex-la-3-2-f`, `ex-la-3-2-g`, `ex-la-3-2-h` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
-  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
 
 #### `la-3-3` · Prüfung: Diagonalisierung & technische Anwendungen
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×4, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Diagonalisierung: $A = PDP^{-1}$ mit $P = $ EV-Matrix, $D = \text{diag}(\lambda_i)$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Bedingung: $n$ linear unabhängige Eigenvektoren (algebr. = geom. Vielfachheit)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Matrixpotenzen via $A^k = P D^k P^{-1}$ (nur Diagonale potenzieren!)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Spektralsatz (symm. Matrix): reelle EW, orthogonale EV, $A = Q D Q^T$ mit $Q$ orthogonal
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Technik: Hauptträgheitsachsen, Hauptspannungen, Eigenfrequenzen, Stabilität ($|\lambda| < 1$)
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Defekte Matrix: nicht diagonalisierbar → Jordan-Normalform (Vertiefung)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/lineare_algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `la-1-3` → `inv-existenz`, `sym-orthog`
+  - `la-1-5` → `ew-glg`, `eigenvektor`, `sym-ew`
+  - `la-3-2` → `ev-pr`, `defekt-vielfh`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `diagonalis` — Diagonalisierung $A=PDP^{-1}$ mit $P=$ EV-Matrix, $D=\operatorname{diag}(\lambda_i)$ (SG 0)
+  2. `diag-bedingung` — Bedingung: $n$ linear unabhängige Eigenvektoren (algebr. = geom. Vielfachheit) ⇐ `diagonalis` (SG 1)
+  3. `matrix-pot` — Matrixpotenzen $A^k=PD^k P^{-1}$ (nur Diagonale potenzieren) ⇐ `diagonalis` (SG 2)
+  4. `spektral` — Spektralsatz (symm.): $A=QDQ^T$ mit $Q$ orthogonal ⇐ `diagonalis` (SG 3)
+  5. `tech-anwend-pr` — Anwendungen: Hauptträgheitsachsen, Hauptspannungen, Eigenfrequenzen, Stabilität (SG 4)
+  6. `jordan` — Defekte Matrix: nicht diagonalisierbar → Jordan-Normalform (Vertiefung) ⇐ `diag-bedingung` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `diagonalis` · **0/5+** — Diagonalisierung: $A = PDP^{-1}$ mit $P = $ EV-Matrix, $D = \text{diag}(\lambda_i)$
+  - 🔴 [1] _hoch_ · Konzepte: `diag-bedingung` · **0/5+** — Bedingung: $n$ linear unabhängige Eigenvektoren (algebr. = geom. Vielfachheit)
+  - 🔴 [2] _hoch_ · Konzepte: `matrix-pot` · **0/5+** — Matrixpotenzen via $A^k = P D^k P^{-1}$ (nur Diagonale potenzieren!)
+  - 🔴 [3] _hoch_ · Konzepte: `spektral` · **0/5+** — Spektralsatz (symm. Matrix): reelle EW, orthogonale EV, $A = Q D Q^T$ mit $Q$ orthogonal
+  - 🔴 [4] _hoch_ · Konzepte: `tech-anwend-pr` · **0/5+** — Technik: Hauptträgheitsachsen, Hauptspannungen, Eigenfrequenzen, Stabilität ($|\lambda| < 1$)
+  - 🔴 [5] _mittel_ · Konzepte: `jordan` · **0/5+** — Defekte Matrix: nicht diagonalisierbar → Jordan-Normalform (Vertiefung)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `diagonalis` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `diagonalis` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `diagonalis` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `diagonalis` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `diagonalis` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `diag-bedingung` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `diag-bedingung` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `diag-bedingung` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `diag-bedingung` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `diag-bedingung` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `matrix-pot` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `matrix-pot` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `matrix-pot` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `matrix-pot` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `matrix-pot` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `spektral` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `spektral` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `spektral` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `spektral` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `spektral` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `tech-anwend-pr` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `tech-anwend-pr` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `tech-anwend-pr` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `tech-anwend-pr` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `tech-anwend-pr` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 26 | 5 | recognize          | true-false       | `jordan` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `jordan` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `jordan` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `jordan` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | multiple-choice  | `jordan` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/lineare_algebra.js` unter `'la-3-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-3-3-a`, `ex-la-3-3-b`, `ex-la-3-3-c`, `ex-la-3-3-d`, `ex-la-3-3-e`, `ex-la-3-3-f`, `ex-la-3-3-g`, `ex-la-3-3-h` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
-  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
 
 #### `int-4-1` · Prüfung: Integrationstechniken
 
@@ -5828,100 +5945,242 @@ npm run build              # abschließender End-zu-End-Check
 #### `la-1-5` · Eigenwerte und Eigenvektoren
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Matrizen & Determinanten
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Eigenwertgleichung: $A \vec v = \lambda \vec v$ (Vektor bleibt in Richtung, nur gestreckt)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Charakteristisches Polynom: $\det(A - \lambda I) = 0$ → Eigenwerte $\lambda_i$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Eigenvektor zu $\lambda_i$: $(A - \lambda_i I)\vec v = 0$ lösen (Kern)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Spur und Determinante: $\text{tr}(A) = \sum \lambda_i$, $\det A = \prod \lambda_i$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Symmetrische Matrix: Eigenwerte reell, Eigenvektoren orthogonal (Hauptachsentransformation)
-  - 🔴 [5] (hoch) **0/5+** Aufgaben — Technik-Anwendung: Eigenfrequenzen (Schwingungen), Hauptspannungen (Festigkeit)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/lineare_algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `la-1-2` → `matrix-mult`
+  - `la-1-3` → `inv-existenz`, `sym-orthog`
+  - `la-1-4` → `det-laplace`, `det-singular`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `ew-glg` — Eigenwertgleichung $A\vec v=\lambda\vec v$ — Richtung bleibt, nur skaliert (SG 0)
+  2. `char-poly` — Charakteristisches Polynom $\det(A-\lambda I)=0$ → Eigenwerte $\lambda_i$ ⇐ `ew-glg` (SG 1)
+  3. `eigenvektor` — Eigenvektor zu $\lambda_i$: Kern von $(A-\lambda_i I)$ ⇐ `char-poly` (SG 2)
+  4. `spur-det-ew` — Spur $=\sum\lambda_i$, Determinante $=\prod\lambda_i$ ⇐ `char-poly` (SG 3)
+  5. `sym-ew` — Symmetrische Matrix: Eigenwerte reell, Eigenvektoren orthogonal ⇐ `ew-glg` (SG 4)
+  6. `tech-anwend-ew` — Anwendung: Eigenfrequenzen, Hauptspannungen (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `ew-glg` · **0/5+** — Eigenwertgleichung: $A \vec v = \lambda \vec v$ (Vektor bleibt in Richtung, nur gestreckt)
+  - 🔴 [1] _hoch_ · Konzepte: `char-poly` · **0/5+** — Charakteristisches Polynom: $\det(A - \lambda I) = 0$ → Eigenwerte $\lambda_i$
+  - 🔴 [2] _hoch_ · Konzepte: `eigenvektor` · **0/5+** — Eigenvektor zu $\lambda_i$: $(A - \lambda_i I)\vec v = 0$ lösen (Kern)
+  - 🔴 [3] _mittel_ · Konzepte: `spur-det-ew` · **0/5+** — Spur und Determinante: $\text{tr}(A) = \sum \lambda_i$, $\det A = \prod \lambda_i$
+  - 🔴 [4] _mittel_ · Konzepte: `sym-ew` · **0/5+** — Symmetrische Matrix: Eigenwerte reell, Eigenvektoren orthogonal (Hauptachsentransformation)
+  - 🔴 [5] _hoch_ · Konzepte: `tech-anwend-ew` · **0/5+** — Technik-Anwendung: Eigenfrequenzen (Schwingungen), Hauptspannungen (Festigkeit)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `ew-glg` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `ew-glg` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `ew-glg` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `ew-glg` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `ew-glg` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `char-poly` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `char-poly` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `char-poly` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `char-poly` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `char-poly` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `eigenvektor` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `eigenvektor` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `eigenvektor`, `char-poly` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `eigenvektor` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `eigenvektor` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `spur-det-ew` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `spur-det-ew` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `spur-det-ew` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `spur-det-ew` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `spur-det-ew`, `char-poly` | 1 | 0 | 🔴 | Quercheck |
+| 21 | 4 | recognize          | true-false       | `sym-ew` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `sym-ew` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `sym-ew` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `sym-ew` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `sym-ew` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `tech-anwend-ew` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `tech-anwend-ew` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `tech-anwend-ew`, `ew-glg` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `tech-anwend-ew` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | number-input     | `tech-anwend-ew` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/lineare_algebra.js` unter `'la-1-5': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-5-a`, `ex-la-1-5-b`, `ex-la-1-5-c`, `ex-la-1-5-manual-1`, `ex-la-1-5-manual-2`, `ex-la-1-5-manual-3`, `ex-la-1-5-manual-4`, `ex-la-1-5-manual-5` … (+3 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `eigenvector-viz`, `vector-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
-  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `eigenvector-viz`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
 
 #### `la-2-1` · LGS in Matrixform
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Lineare Gleichungssysteme
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Matrixform: $A\vec x = \vec b$ (Koeffizienten $A$, Unbekannte $\vec x$, rechte Seite $\vec b$)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Erweiterte Koeffizientenmatrix $[A|\vec b]$ mit Trennstrich
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Variablen in jeder Gleichung in gleicher Reihenfolge (sonst Koeffizienten falsch!)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Dimensionen: $A$ ist $m \times n$, $\vec x \in \mathbb{R}^n$, $\vec b \in \mathbb{R}^m$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Homogenes LGS: $\vec b = \vec 0$, triviale Lösung $\vec x = \vec 0$ existiert immer
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/lineare_algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `la-1-1` → `matrix-def`, `dimension`
+  - `la-1-2` → `matrix-mult`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `matrixform-lgs` — Matrixform $A\vec x=\vec b$ (SG 0)
+  2. `erweiterte-mat` — Erweiterte Koeffizientenmatrix $[A|\vec b]$ mit Trennstrich ⇐ `matrixform-lgs` (SG 1)
+  3. `lgs-reihenfolge` — Variablen in jeder Gleichung gleiche Reihenfolge — sonst Koeffizienten falsch ⇐ `matrixform-lgs` (SG 2)
+  4. `lgs-dimensionen` — $A\in\mathbb R^{m\times n}$, $\vec x\in\mathbb R^n$, $\vec b\in\mathbb R^m$ ⇐ `matrixform-lgs` (SG 3)
+  5. `homogen-lgs` — Homogenes LGS $\vec b=\vec 0$ — triviale Lösung $\vec x=\vec 0$ existiert immer ⇐ `matrixform-lgs` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `matrixform-lgs` · **0/5+** — Matrixform: $A\vec x = \vec b$ (Koeffizienten $A$, Unbekannte $\vec x$, rechte Seite $\vec b$)
+  - 🔴 [1] _hoch_ · Konzepte: `erweiterte-mat` · **0/5+** — Erweiterte Koeffizientenmatrix $[A|\vec b]$ mit Trennstrich
+  - 🔴 [2] _hoch_ · Konzepte: `lgs-reihenfolge` · **0/5+** — Variablen in jeder Gleichung in gleicher Reihenfolge (sonst Koeffizienten falsch!)
+  - 🔴 [3] _mittel_ · Konzepte: `lgs-dimensionen` · **0/5+** — Dimensionen: $A$ ist $m \times n$, $\vec x \in \mathbb{R}^n$, $\vec b \in \mathbb{R}^m$
+  - 🔴 [4] _mittel_ · Konzepte: `homogen-lgs` · **0/5+** — Homogenes LGS: $\vec b = \vec 0$, triviale Lösung $\vec x = \vec 0$ existiert immer
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `matrixform-lgs` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `matrixform-lgs` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `matrixform-lgs` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `matrixform-lgs` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `matrixform-lgs` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `erweiterte-mat` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `erweiterte-mat` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `erweiterte-mat` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `erweiterte-mat` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `erweiterte-mat` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `lgs-reihenfolge` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `lgs-reihenfolge` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `lgs-reihenfolge` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `lgs-reihenfolge` | 1 | 0 | 🔴 | Variablen in falscher Reihenfolge |
+| 15 | 2 | transfer           | matching         | `lgs-reihenfolge` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `lgs-dimensionen` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `lgs-dimensionen` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `lgs-dimensionen` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `lgs-dimensionen` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `lgs-dimensionen` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `homogen-lgs` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `homogen-lgs` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `homogen-lgs` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `homogen-lgs` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `homogen-lgs` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/lineare_algebra.js` unter `'la-2-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-1-a`, `ex-la-2-1-b`, `ex-la-2-1-c`, `ex-la-2-1-manual-1`, `ex-la-2-1-manual-2`, `ex-la-2-1-manual-3`, `ex-la-2-1-manual-4`, `ex-la-2-1-manual-5` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
-  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
 
 #### `la-2-3` · Lösbarkeit von LGS
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Lineare Gleichungssysteme
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Drei Fälle: eindeutig / unendlich / keine Lösung (Widerspruch)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Rang = Anzahl Pivots in Stufenform
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Kronecker-Capelli: $\text{rg}(A) \neq \text{rg}([A|b])$ → keine Lösung
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Eindeutig: $\text{rg}(A) = \text{rg}([A|b]) = n$ (Anzahl Unbekannte)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Unendlich: $\text{rg}(A) = \text{rg}([A|b]) < n$, freie Parameter = $n - \text{rg}(A)$
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Geometrisch (2D): Geraden schneidend / identisch / parallel
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/lineare_algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `la-2-1` → `matrixform-lgs`, `erweiterte-mat`
+  - `la-2-2` → `stufenform`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `drei-faelle` — Drei Fälle: eindeutig / unendlich / keine Lösung (Widerspruch) (SG 0)
+  2. `rang` — Rang = Anzahl Pivots in Stufenform (SG 1)
+  3. `kronecker` — Kronecker-Capelli: $\operatorname{rg}(A)\neq\operatorname{rg}([A|b])$ → keine Lösung ⇐ `rang` (SG 2)
+  4. `eindeutig-bed` — Eindeutig: $\operatorname{rg}(A)=\operatorname{rg}([A|b])=n$ ⇐ `rang`, `kronecker` (SG 3)
+  5. `unendlich-bed` — Unendlich: $\operatorname{rg}(A)=\operatorname{rg}([A|b])<n$, freie Parameter $=n-\operatorname{rg}(A)$ ⇐ `rang` (SG 4)
+  6. `geom-2d` — Geometrisch (2D): Geraden schneidend / identisch / parallel ⇐ `drei-faelle` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `drei-faelle` · **0/5+** — Drei Fälle: eindeutig / unendlich / keine Lösung (Widerspruch)
+  - 🔴 [1] _hoch_ · Konzepte: `rang` · **0/5+** — Rang = Anzahl Pivots in Stufenform
+  - 🔴 [2] _hoch_ · Konzepte: `kronecker` · **0/5+** — Kronecker-Capelli: $\text{rg}(A) \neq \text{rg}([A|b])$ → keine Lösung
+  - 🔴 [3] _hoch_ · Konzepte: `eindeutig-bed` · **0/5+** — Eindeutig: $\text{rg}(A) = \text{rg}([A|b]) = n$ (Anzahl Unbekannte)
+  - 🔴 [4] _hoch_ · Konzepte: `unendlich-bed` · **0/5+** — Unendlich: $\text{rg}(A) = \text{rg}([A|b]) < n$, freie Parameter = $n - \text{rg}(A)$
+  - 🔴 [5] _mittel_ · Konzepte: `geom-2d` · **0/5+** — Geometrisch (2D): Geraden schneidend / identisch / parallel
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `drei-faelle` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `drei-faelle` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `drei-faelle` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `drei-faelle` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `drei-faelle` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `rang` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `rang` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `rang` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `rang` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `rang` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `kronecker` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `kronecker` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `kronecker` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `kronecker` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `kronecker` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `eindeutig-bed` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `eindeutig-bed` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `eindeutig-bed` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `eindeutig-bed` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `eindeutig-bed` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `unendlich-bed` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `unendlich-bed` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `unendlich-bed` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `unendlich-bed` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `unendlich-bed` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `geom-2d` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `geom-2d` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `geom-2d` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `geom-2d` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | matching         | `geom-2d`, `drei-faelle` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/lineare_algebra.js` unter `'la-2-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-3-a`, `ex-la-2-3-b`, `ex-la-2-3-c`, `ex-la-2-3-manual-1`, `ex-la-2-3-manual-2`, `ex-la-2-3-manual-3`, `ex-la-2-3-manual-4`, `ex-la-2-3-manual-5` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
-  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
 
 #### `la-2-4` · Cramersche Regel & Anwendungen
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Lineare Gleichungssysteme
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×4, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Cramer: $x_i = \det(A_i)/\det(A)$, wobei $A_i$ = $A$ mit $i$-ter Spalte durch $\vec b$ ersetzt
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Voraussetzung: $\det(A) \neq 0$ (nicht anwendbar bei singulärer Matrix)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Nur für **quadratische** Systeme mit eindeutiger Lösung sinnvoll
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Ab $n > 4$ ist Gauss effizienter (Cramer = $O(n!)$ mit Sarrus, $n!$ Determinanten)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Technik-Anwendung: Kräftegleichgewicht, Knotenspannungsanalyse (Kirchhoff)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/lineare_algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `la-1-4` → `det-2x2`, `det-laplace`, `det-singular`
+  - `la-2-1` → `matrixform-lgs`
+  - `la-2-3` → `eindeutig-bed`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `cramer-formel` — Cramer: $x_i=\det(A_i)/\det(A)$, $A_i$ = $A$ mit $i$-ter Spalte durch $\vec b$ ersetzt (SG 0)
+  2. `cramer-vorauss` — Voraussetzung: $\det A\neq 0$ ⇐ `cramer-formel` (SG 1)
+  3. `cramer-quadrat` — Nur quadratisches System mit eindeutiger Lösung ⇐ `cramer-vorauss` (SG 2)
+  4. `cramer-aufwand` — Effizienz: ab $n>4$ Gauss überlegen ($n!$ Determinanten) ⇐ `cramer-formel` (SG 3)
+  5. `cramer-anwend` — Technik: Kräftegleichgewicht, Knotenspannungsanalyse ⇐ `cramer-formel` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `cramer-formel` · **0/5+** — Cramer: $x_i = \det(A_i)/\det(A)$, wobei $A_i$ = $A$ mit $i$-ter Spalte durch $\vec b$ ersetzt
+  - 🔴 [1] _hoch_ · Konzepte: `cramer-vorauss` · **0/5+** — Voraussetzung: $\det(A) \neq 0$ (nicht anwendbar bei singulärer Matrix)
+  - 🔴 [2] _hoch_ · Konzepte: `cramer-quadrat` · **0/5+** — Nur für **quadratische** Systeme mit eindeutiger Lösung sinnvoll
+  - 🔴 [3] _mittel_ · Konzepte: `cramer-aufwand` · **0/5+** — Ab $n > 4$ ist Gauss effizienter (Cramer = $O(n!)$ mit Sarrus, $n!$ Determinanten)
+  - 🔴 [4] _hoch_ · Konzepte: `cramer-anwend` · **0/5+** — Technik-Anwendung: Kräftegleichgewicht, Knotenspannungsanalyse (Kirchhoff)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `cramer-formel` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `cramer-formel` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `cramer-formel` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `cramer-formel` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `cramer-formel` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `cramer-vorauss` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `cramer-vorauss` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `cramer-vorauss` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `cramer-vorauss` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `cramer-vorauss` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `cramer-quadrat` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `cramer-quadrat` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `cramer-quadrat` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `cramer-quadrat` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `cramer-quadrat` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `cramer-aufwand` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `cramer-aufwand` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `cramer-aufwand` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `cramer-aufwand` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `cramer-aufwand` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `cramer-anwend` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `cramer-anwend` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `cramer-anwend`, `cramer-formel` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 24 | 4 | error-analysis     | multiple-choice  | `cramer-anwend` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `cramer-anwend` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/lineare_algebra.js` unter `'la-2-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-4-a`, `ex-la-2-4-b`, `ex-la-2-4-c`, `ex-la-2-4-manual-1`, `ex-la-2-4-manual-2`, `ex-la-2-4-manual-3`, `ex-la-2-4-manual-4`, `ex-la-2-4-manual-5` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
-  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
 
 #### `int-1-5` · Hauptsatz der Differential- und Integralrechnung
 
@@ -6864,100 +7123,240 @@ npm run build              # abschließender End-zu-End-Check
 #### `la-1-1` · Was ist eine Matrix?
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Matrizen & Determinanten
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Dimension $m \times n$ als „Zeilen $\times$ Spalten" lesen (Reihenfolge nicht tauschen)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Element $a_{ij}$: erster Index = Zeile, zweiter = Spalte
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Einheitsmatrix, Nullmatrix, Diagonalmatrix, quadratische Matrix auf einen Blick unterscheiden
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Transponierte $A^T$: Zeilen werden Spalten — praktisch für Dimensionscheck
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/lineare_algebra.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `matrix-def` — Matrix als Tabelle aus $m$ Zeilen × $n$ Spalten reeller Zahlen (SG 0)
+  2. `dimension` — Dimension $m\times n$ — „Zeilen × Spalten" (Reihenfolge!) ⇐ `matrix-def` (SG 0)
+  3. `element-aij` — Element $a_{ij}$: $i$ = Zeilenindex, $j$ = Spaltenindex ⇐ `matrix-def` (SG 1)
+  4. `spezial-matrizen` — Spezielle Matrizen: Einheits-, Null-, Diagonal-, quadratische Matrix ⇐ `dimension` (SG 2)
+  5. `transp-grundlage` — Transponierte $A^T$: Zeilen werden Spalten — Dimension $m\times n\to n\times m$ ⇐ `dimension`, `element-aij` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `matrix-def`, `dimension` · **0/5+** — Dimension $m \times n$ als „Zeilen $\times$ Spalten" lesen (Reihenfolge nicht tauschen)
+  - 🔴 [1] _hoch_ · Konzepte: `element-aij` · **0/5+** — Element $a_{ij}$: erster Index = Zeile, zweiter = Spalte
+  - 🔴 [2] _mittel_ · Konzepte: `spezial-matrizen` · **0/5+** — Einheitsmatrix, Nullmatrix, Diagonalmatrix, quadratische Matrix auf einen Blick unterscheiden
+  - 🔴 [3] _mittel_ · Konzepte: `transp-grundlage` · **0/5+** — Transponierte $A^T$: Zeilen werden Spalten — praktisch für Dimensionscheck
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `dimension` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `dimension` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `dimension` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `dimension` | 1 | 0 | 🔴 | Spalten/Zeilen vertauscht |
+|  5 | 0 | transfer           | matching         | `dimension` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `element-aij` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `element-aij` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `element-aij` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `element-aij` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `element-aij` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `spezial-matrizen` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `spezial-matrizen` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `spezial-matrizen` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `spezial-matrizen` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `spezial-matrizen` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `transp-grundlage` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `transp-grundlage` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `transp-grundlage` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `transp-grundlage` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `transp-grundlage`, `dimension` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/lineare_algebra.js` unter `'la-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-1-a`, `ex-la-1-1-b`, `ex-la-1-1-c`, `ex-la-1-1-d`, `ex-la-1-1-manual-1`, `ex-la-1-1-manual-2`, `ex-la-1-1-manual-3`, `ex-la-1-1-manual-4` … (+4 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
-  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
 
 #### `la-1-3` · Transponierte und Inverse
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Matrizen & Determinanten
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Transponierte: $(A^T)_{ij} = A_{ji}$ (Zeilen/Spalten tauschen), Dimensionen $m \times n \to n \times m$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Transponierten-Regeln: $(A+B)^T = A^T + B^T$, $(AB)^T = B^T A^T$ (Reihenfolge dreht!)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — 2x2-Inverse: $A^{-1} = \frac{1}{\det A}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Invertierbarkeit: $A^{-1}$ existiert $\iff \det A \neq 0$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Eigenschaft: $AA^{-1} = A^{-1}A = I$ (Einheitsmatrix)
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Symmetrische Matrix: $A^T = A$; orthogonale Matrix: $A^T = A^{-1}$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/lineare_algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `la-1-1` → `transp-grundlage`, `spezial-matrizen`
+  - `la-1-2` → `matrix-mult`, `transp-mult`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `transp-def` — Transponierte $(A^T)_{ij}=A_{ji}$ (Zeilen/Spalten tauschen) (SG 0)
+  2. `transp-regeln` — Regeln: $(A+B)^T=A^T+B^T$, $(AB)^T=B^T A^T$ (Reihenfolge dreht!) ⇐ `transp-def` (SG 1)
+  3. `inverse-2x2` — 2×2-Inverse: $A^{-1}=\frac{1}{\det A}\begin{pmatrix}d & -b \\ -c & a\end{pmatrix}$ (SG 2)
+  4. `inv-existenz` — Invertierbarkeit: $A^{-1}$ existiert $\iff\det A\neq 0$ ⇐ `inverse-2x2` (SG 3)
+  5. `inv-eigenschaft` — $AA^{-1}=A^{-1}A=I$ ⇐ `inv-existenz` (SG 4)
+  6. `sym-orthog` — Symmetrisch: $A^T=A$; orthogonal: $A^T=A^{-1}$ ⇐ `transp-def`, `inv-existenz` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `transp-def` · **0/5+** — Transponierte: $(A^T)_{ij} = A_{ji}$ (Zeilen/Spalten tauschen), Dimensionen $m \times n \to n \times m$
+  - 🔴 [1] _hoch_ · Konzepte: `transp-regeln` · **0/5+** — Transponierten-Regeln: $(A+B)^T = A^T + B^T$, $(AB)^T = B^T A^T$ (Reihenfolge dreht!)
+  - 🔴 [2] _hoch_ · Konzepte: `inverse-2x2` · **0/5+** — 2x2-Inverse: $A^{-1} = \frac{1}{\det A}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$
+  - 🔴 [3] _hoch_ · Konzepte: `inv-existenz` · **0/5+** — Invertierbarkeit: $A^{-1}$ existiert $\iff \det A \neq 0$
+  - 🔴 [4] _hoch_ · Konzepte: `inv-eigenschaft` · **0/5+** — Eigenschaft: $AA^{-1} = A^{-1}A = I$ (Einheitsmatrix)
+  - 🔴 [5] _mittel_ · Konzepte: `sym-orthog` · **0/5+** — Symmetrische Matrix: $A^T = A$; orthogonale Matrix: $A^T = A^{-1}$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `transp-def` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `transp-def` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `transp-def` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `transp-def` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `transp-def` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `transp-regeln` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `transp-regeln` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `transp-regeln` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `transp-regeln` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `transp-regeln` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `inverse-2x2` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `inverse-2x2` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `inverse-2x2` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `inverse-2x2` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `inverse-2x2` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `inv-existenz` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `inv-existenz` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `inv-existenz` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `inv-existenz` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `inv-existenz` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `inv-eigenschaft` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `inv-eigenschaft` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `inv-eigenschaft` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `inv-eigenschaft` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `inv-eigenschaft` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `sym-orthog` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `sym-orthog` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `sym-orthog` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `sym-orthog` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | matching         | `sym-orthog` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/lineare_algebra.js` unter `'la-1-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-3-a`, `ex-la-1-3-b`, `ex-la-1-3-c`, `ex-la-1-3-d`, `ex-la-1-3-manual-1`, `ex-la-1-3-manual-2`, `ex-la-1-3-manual-3`, `ex-la-1-3-manual-4` … (+4 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
-  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
 
 #### `la-1-4` · Determinanten
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Matrizen & Determinanten
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×5, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — 2x2: $\det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — 3x3 Regel von Sarrus: Haupt- minus Nebendiagonalen (nur 3x3!)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Laplace-Entwicklung: nach einer Zeile/Spalte, Vorzeichen-Schachbrett $(-1)^{i+j}$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Determinanten-Regeln: $\det(AB) = \det A \cdot \det B$, $\det A^T = \det A$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Geometrisch: $|\det A|$ = Flächen-/Volumen-Skalierungsfaktor
-  - 🔴 [5] (hoch) **0/5+** Aufgaben — $\det A = 0 \iff$ Spalten linear abhängig, $A$ singulär, kein $A^{-1}$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/lineare_algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `la-1-1` → `matrix-def`, `dimension`
+  - `la-1-2` → `matrix-mult`
+  - `la-1-3` → `inv-existenz`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `det-2x2` — 2×2: $\det\begin{pmatrix}a & b \\ c & d\end{pmatrix}=ad-bc$ (SG 0)
+  2. `det-sarrus` — 3×3 Sarrus: Haupt- minus Nebendiagonalen (nur 3×3!) (SG 1)
+  3. `det-laplace` — Laplace-Entwicklung nach Zeile/Spalte mit Vorzeichen-Schachbrett $(-1)^{i+j}$ (SG 2)
+  4. `det-regeln` — $\det(AB)=\det A\cdot\det B$, $\det A^T=\det A$ (SG 3)
+  5. `det-geom` — $|\det A|$ = Flächen-/Volumen-Skalierungsfaktor (SG 4)
+  6. `det-singular` — $\det A=0\iff$ Spalten linear abhängig, $A$ singulär, kein $A^{-1}$ (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `det-2x2` · **0/5+** — 2x2: $\det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc$
+  - 🔴 [1] _hoch_ · Konzepte: `det-sarrus` · **0/5+** — 3x3 Regel von Sarrus: Haupt- minus Nebendiagonalen (nur 3x3!)
+  - 🔴 [2] _hoch_ · Konzepte: `det-laplace` · **0/5+** — Laplace-Entwicklung: nach einer Zeile/Spalte, Vorzeichen-Schachbrett $(-1)^{i+j}$
+  - 🔴 [3] _hoch_ · Konzepte: `det-regeln` · **0/5+** — Determinanten-Regeln: $\det(AB) = \det A \cdot \det B$, $\det A^T = \det A$
+  - 🔴 [4] _hoch_ · Konzepte: `det-geom` · **0/5+** — Geometrisch: $|\det A|$ = Flächen-/Volumen-Skalierungsfaktor
+  - 🔴 [5] _hoch_ · Konzepte: `det-singular` · **0/5+** — $\det A = 0 \iff$ Spalten linear abhängig, $A$ singulär, kein $A^{-1}$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `det-2x2` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `det-2x2` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `det-2x2` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `det-2x2` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `det-2x2` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `det-sarrus` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `det-sarrus` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `det-sarrus` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `det-sarrus` | 1 | 0 | 🔴 | Sarrus auf 4×4 angewandt |
+| 10 | 1 | transfer           | number-input     | `det-sarrus` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `det-laplace` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `det-laplace` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `det-laplace` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `det-laplace` | 1 | 0 | 🔴 | Vorzeichen vergessen |
+| 15 | 2 | transfer           | number-input     | `det-laplace` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `det-regeln` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `det-regeln` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `det-regeln` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `det-regeln` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `det-regeln` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `det-geom` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `det-geom` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `det-geom` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `det-geom` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `det-geom` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `det-singular` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `det-singular` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `det-singular` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `det-singular` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | multiple-choice  | `det-singular` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/lineare_algebra.js` unter `'la-1-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-4-a`, `ex-la-1-4-b`, `ex-la-1-4-c`, `ex-la-1-4-d`, `ex-la-1-4-manual-1`, `ex-la-1-4-manual-2`, `ex-la-1-4-manual-3`, `ex-la-1-4-manual-4` … (+4 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
-  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
 
 #### `la-2-2` · Gauss-Algorithmus
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Lineare Gleichungssysteme
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×4, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Drei erlaubte Zeilenumformungen: Vertauschen, Skalieren (≠0), Addieren eines Vielfachen
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Ziel: Obere Dreiecksform / Stufenform (alle Einträge unter Pivot = 0)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Rücksubstitution: von unten nach oben, Variable nach Variable auflösen
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Pivotierung: bei $a_{ii} = 0$ Zeile tauschen, sonst Division durch 0
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Gauss-Jordan: zusätzlich auch über Pivots nullen → reduzierte Stufenform
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Matrix-Inversion mit Gauss: $[A | I] \to [I | A^{-1}]$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/lineare_algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `la-1-3` → `inv-existenz`, `inv-eigenschaft`
+  - `la-2-1` → `matrixform-lgs`, `erweiterte-mat`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `zeilen-umform` — Zeilenumformungen: Vertauschen, Skalieren ($\neq 0$), Addieren eines Vielfachen (SG 0)
+  2. `stufenform` — Ziel: obere Dreiecks-/Stufenform — alle Einträge unter Pivot $=0$ ⇐ `zeilen-umform` (SG 1)
+  3. `rueckwaerts` — Rücksubstitution: von unten nach oben Variable für Variable ⇐ `stufenform` (SG 2)
+  4. `pivotierung` — Pivotierung: bei $a_{ii}=0$ Zeile tauschen — sonst Division durch 0 ⇐ `zeilen-umform` (SG 3)
+  5. `gauss-jordan` — Gauss-Jordan: zusätzlich über Pivots nullen → reduzierte Stufenform ⇐ `stufenform` (SG 4)
+  6. `inverse-gauss` — Matrix-Inversion: $[A|I]\to[I|A^{-1}]$ ⇐ `gauss-jordan` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `zeilen-umform` · **0/5+** — Drei erlaubte Zeilenumformungen: Vertauschen, Skalieren (≠0), Addieren eines Vielfachen
+  - 🔴 [1] _hoch_ · Konzepte: `stufenform` · **0/5+** — Ziel: Obere Dreiecksform / Stufenform (alle Einträge unter Pivot = 0)
+  - 🔴 [2] _hoch_ · Konzepte: `rueckwaerts` · **0/5+** — Rücksubstitution: von unten nach oben, Variable nach Variable auflösen
+  - 🔴 [3] _hoch_ · Konzepte: `pivotierung` · **0/5+** — Pivotierung: bei $a_{ii} = 0$ Zeile tauschen, sonst Division durch 0
+  - 🔴 [4] _mittel_ · Konzepte: `gauss-jordan` · **0/5+** — Gauss-Jordan: zusätzlich auch über Pivots nullen → reduzierte Stufenform
+  - 🔴 [5] _mittel_ · Konzepte: `inverse-gauss` · **0/5+** — Matrix-Inversion mit Gauss: $[A | I] \to [I | A^{-1}]$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `zeilen-umform` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `zeilen-umform` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `zeilen-umform` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `zeilen-umform` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `zeilen-umform` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `stufenform` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `stufenform` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `stufenform`, `zeilen-umform` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `stufenform` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | sorting          | `stufenform` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `rueckwaerts` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `rueckwaerts` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `rueckwaerts` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `rueckwaerts` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `rueckwaerts` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `pivotierung` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pivotierung` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `pivotierung` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pivotierung` | 1 | 0 | 🔴 | Pivot 0 vergessen |
+| 20 | 3 | transfer           | multiple-choice  | `pivotierung` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `gauss-jordan` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `gauss-jordan` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `gauss-jordan` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `gauss-jordan` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `gauss-jordan` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `inverse-gauss` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `inverse-gauss` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `inverse-gauss` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `inverse-gauss` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | number-input     | `inverse-gauss` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/lineare_algebra.js` unter `'la-2-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-2-2-a`, `ex-la-2-2-b`, `ex-la-2-2-c`, `ex-la-2-2-d`, `ex-la-2-2-manual-1`, `ex-la-2-2-manual-2`, `ex-la-2-2-manual-3`, `ex-la-2-2-manual-4` … (+4 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
-  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
 
 #### `int-1-1` · Stammfunktion — das Umkehren der Ableitung
 
@@ -7854,25 +8253,50 @@ npm run build              # abschließender End-zu-End-Check
 #### `la-1-2` · Matrizenrechnung
 
 - **Topic:** `lineare-algebra` (Lineare Algebra) · **Unit:** Matrizen & Determinanten
-- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×4, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Addition nur bei identischer Dimension — elementweise
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Matrizenmultiplikation: „Zeile mal Spalte" — Innen-Dimensionen müssen passen ($m\!\times\!k$ · $k\!\times\!n$)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — $A\,B \neq B\,A$ im Allgemeinen — Reihenfolge wichtig
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Rechenregeln: $(A\,B)^T = B^T A^T$ (Reihenfolge dreht sich um)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/lineare_algebra.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/lineare_algebra.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `la-1-1` → `matrix-def`, `dimension`, `element-aij`, `transp-grundlage`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `matrix-add` — Addition: nur bei identischer Dimension, elementweise (SG 0)
+  2. `matrix-mult` — Multiplikation „Zeile mal Spalte"; Innen-Dimensionen müssen passen ($m\times k\cdot k\times n$) (SG 1)
+  3. `mult-nicht-komm` — $AB\neq BA$ im Allgemeinen — Reihenfolge wichtig ⇐ `matrix-mult` (SG 2)
+  4. `transp-mult` — $(AB)^T=B^T A^T$ — Reihenfolge dreht sich ⇐ `matrix-mult` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `matrix-add` · **0/5+** — Addition nur bei identischer Dimension — elementweise
+  - 🔴 [1] _hoch_ · Konzepte: `matrix-mult` · **0/5+** — Matrizenmultiplikation: „Zeile mal Spalte" — Innen-Dimensionen müssen passen ($m\!\times\!k$ · $k\!\times\!n$)
+  - 🔴 [2] _hoch_ · Konzepte: `mult-nicht-komm` · **0/5+** — $A\,B \neq B\,A$ im Allgemeinen — Reihenfolge wichtig
+  - 🔴 [3] _mittel_ · Konzepte: `transp-mult` · **0/5+** — Rechenregeln: $(A\,B)^T = B^T A^T$ (Reihenfolge dreht sich um)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `matrix-add` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `matrix-add` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `matrix-add` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `matrix-add` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `matrix-add` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `matrix-mult` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `matrix-mult` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `matrix-mult` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `matrix-mult` | 1 | 0 | 🔴 | Innen-Dimensionen falsch geprüft |
+| 10 | 1 | transfer           | number-input     | `matrix-mult` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `mult-nicht-komm` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `mult-nicht-komm` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `mult-nicht-komm` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `mult-nicht-komm` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `mult-nicht-komm` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `transp-mult` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `transp-mult` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `transp-mult` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `transp-mult` | 1 | 0 | 🔴 | Reihenfolge nicht umgedreht |
+| 20 | 3 | transfer           | multiple-choice  | `transp-mult` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/lineare_algebra.js` unter `'la-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/lineare_algebra.js`
 - **4-Block-Erklärung fehlt bei:** `ex-la-1-2-a`, `ex-la-1-2-b`, `ex-la-1-2-c`, `ex-la-1-2-d`, `ex-la-1-2-e`, `ex-la-1-2-manual-1`, `ex-la-1-2-manual-2`, `ex-la-1-2-manual-3` … (+5 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `eigenvector-viz`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `lineare-algebra`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Matrizenprodukt: Zeile mal Spalte, Dimensionen prüfen. · Determinante 2×2: $ad-bc$; 3×3: Regel von Sarrus oder Entwicklung nach Zeile. · $\det A\ne 0 \Leftrightarrow$ Matrix invertierbar, LGS eindeutig lösbar. · …
-  - _Typische Fehler (gute Distraktoren):_ Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
-  - _Klausur-Fokus:_ LGS mit Gauß-Verfahren und Probe. · 2×2- oder 3×3-Determinante berechnen. · Eigenwerte und Eigenvektoren für 2×2-Matrix.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `eigenvector-viz`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Matrizen multiplizieren in falscher Reihenfolge ($AB\ne BA$). · Bei 3×3-Determinante Vorzeichen der Kofaktoren falsch. · Bei Eigenvektor den Skalierungsfaktor nicht normiert oder wichtige Komponente auf 0 gesetzt.
 
 #### `int-1-2` · Grundintegrale
 
