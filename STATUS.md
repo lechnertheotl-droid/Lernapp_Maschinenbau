@@ -1711,167 +1711,386 @@ npm run build              # abschließender End-zu-End-Check
 #### `fluid-2-3` · Rohrströmung und Druckverlust
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Strömung
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×1, number-input ×2
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Darcy-Weisbach: $\Delta p = \lambda (L/d)(\rho v^2/2)$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Reynolds-Zahl: $Re = \rho v d/\mu$; laminar $<2300$, turbulent $>4000$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Hagen-Poiseuille (laminar): $\Delta p = 128 \mu L \dot V/(\pi d^4)$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Laminares Profil parabolisch, turbulent näherungsweise Blockprofil mit Randschicht
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Hydraulischer Durchmesser $d_h = 4A/U$ für Nicht-Kreisquerschnitte
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/fluidmechanik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fluid-2-1` → `v-strom`
+  - `fluid-2-2` → `bernoulli-verlust`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `darcy` — Darcy-Weisbach $\Delta p=\lambda(L/d)(\rho v^2/2)$ (SG 0)
+  2. `reynolds` — Reynolds $Re=\rho v d/\mu$; laminar $<2300$, turbulent $>4000$ (SG 1)
+  3. `hagen-poise` — Hagen-Poiseuille $\Delta p=128\mu L\dot V/(\pi d^4)$ (laminar) ⇐ `reynolds` (SG 2)
+  4. `profil` — Laminar parabolisch, turbulent Blockprofil + Randschicht ⇐ `reynolds` (SG 3)
+  5. `d-hydraul` — Hydraulischer Durchmesser $d_h=4A/U$ für Nicht-Kreis (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `darcy` · **0/5+** — Darcy-Weisbach: $\Delta p = \lambda (L/d)(\rho v^2/2)$
+  - 🔴 [1] _hoch_ · Konzepte: `reynolds` · **0/5+** — Reynolds-Zahl: $Re = \rho v d/\mu$; laminar $<2300$, turbulent $>4000$
+  - 🔴 [2] _hoch_ · Konzepte: `hagen-poise` · **0/5+** — Hagen-Poiseuille (laminar): $\Delta p = 128 \mu L \dot V/(\pi d^4)$
+  - 🔴 [3] _mittel_ · Konzepte: `profil` · **0/5+** — Laminares Profil parabolisch, turbulent näherungsweise Blockprofil mit Randschicht
+  - 🔴 [4] _mittel_ · Konzepte: `d-hydraul` · **0/5+** — Hydraulischer Durchmesser $d_h = 4A/U$ für Nicht-Kreisquerschnitte
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `darcy` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `darcy` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `darcy` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `darcy` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `darcy` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `reynolds` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `reynolds` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `reynolds` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `reynolds` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `reynolds` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `hagen-poise` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `hagen-poise` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `hagen-poise` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `hagen-poise` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `hagen-poise` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `profil` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `profil` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `profil` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `profil` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `profil` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `d-hydraul` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `d-hydraul` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `d-hydraul` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `d-hydraul` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `d-hydraul` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/fluidmechanik.js` unter `'fluid-2-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-2-3-a`, `ex-fluid-2-3-b`, `ex-fluid-2-3-c`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
-  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
-  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
 
 #### `fluid-2-4` · Ähnlichkeitsgesetze und Pumpen
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Strömung
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** number-input ×3
-- **Typen einsetzen (Rotation):** multiple-choice, true-false, matching, sorting, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Pumpengesetze: $\dot V \propto n$, $H \propto n^2$, $P \propto n^3$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Reynolds für Ähnlichkeit: Modell- und Prototyp-Re gleich halten
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Froude-Zahl: $Fr = v/\sqrt{gL}$ (Schwerewellen, offene Gerinne)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Euler-Zahl: $Eu = \Delta p/(\rho v^2)$ (Druckabfall)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Leistung verdoppeln bedeutet Drehzahl $\sqrt[3]{2} \approx 1{,}26$-fach
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/fluidmechanik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fluid-2-3` → `reynolds`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `pumpgesetz` — Pumpengesetze $\dot V\propto n$, $H\propto n^2$, $P\propto n^3$ (SG 0)
+  2. `re-aehnl` — Re-Ähnlichkeit: Modell und Prototyp gleich (SG 1)
+  3. `froude` — Froude $Fr=v/\sqrt{gL}$ (Schwerewellen) (SG 2)
+  4. `euler-zahl` — Euler-Zahl $Eu=\Delta p/(\rho v^2)$ (SG 3)
+  5. `p-doppelt` — Leistung verdoppeln: Drehzahl $\sqrt[3]{2}\approx 1{,}26$-fach ⇐ `pumpgesetz` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `pumpgesetz` · **0/5+** — Pumpengesetze: $\dot V \propto n$, $H \propto n^2$, $P \propto n^3$
+  - 🔴 [1] _hoch_ · Konzepte: `re-aehnl` · **0/5+** — Reynolds für Ähnlichkeit: Modell- und Prototyp-Re gleich halten
+  - 🔴 [2] _mittel_ · Konzepte: `froude` · **0/5+** — Froude-Zahl: $Fr = v/\sqrt{gL}$ (Schwerewellen, offene Gerinne)
+  - 🔴 [3] _mittel_ · Konzepte: `euler-zahl` · **0/5+** — Euler-Zahl: $Eu = \Delta p/(\rho v^2)$ (Druckabfall)
+  - 🔴 [4] _mittel_ · Konzepte: `p-doppelt` · **0/5+** — Leistung verdoppeln bedeutet Drehzahl $\sqrt[3]{2} \approx 1{,}26$-fach
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `pumpgesetz` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pumpgesetz` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `pumpgesetz` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `pumpgesetz` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `pumpgesetz` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `re-aehnl` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `re-aehnl` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `re-aehnl` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `re-aehnl` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `re-aehnl` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `froude` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `froude` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `froude` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `froude` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `froude` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `euler-zahl` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `euler-zahl` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `euler-zahl` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `euler-zahl` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `euler-zahl` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `p-doppelt` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `p-doppelt` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `p-doppelt` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `p-doppelt` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `p-doppelt` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/fluidmechanik.js` unter `'fluid-2-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-2-4-a`, `ex-fluid-2-4-b`, `ex-fluid-2-4-c`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
-  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
-  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
 
 #### `fluid-2-5` · Moody-Diagramm & Rohrreibung praktisch
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Strömung
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×1, number-input ×2
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Laminar: $\lambda = 64/Re$ (unabhängig von Rauhigkeit)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Turbulent glatt (Blasius, $Re < 10^5$): $\lambda = 0{,}316/Re^{0{,}25}$
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Turbulent rau: Moody-Diagramm oder Colebrook-Gleichung
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Relative Rauhigkeit $\varepsilon/d$: Materialkennwert aus Tabelle ablesen
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Bei voll-turbulenter Strömung: $\lambda$ Re-unabhängig (nur $\varepsilon/d$)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/fluidmechanik.js`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
-  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
-  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fluid-2-3` → `darcy`, `reynolds`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `lambda-laminar` — Laminar $\lambda=64/Re$ (rauhigkeits-unabhängig) (SG 0)
+  2. `blasius` — Turbulent glatt (Blasius): $\lambda=0{,}316/Re^{0{,}25}$ (SG 1)
+  3. `moody` — Turbulent rau: Moody-Diagramm oder Colebrook (SG 2)
+  4. `eps-d` — Relative Rauhigkeit $\varepsilon/d$ aus Tabelle (SG 3)
+  5. `voll-turb` — Voll-turbulent: $\lambda$ Re-unabhängig (nur $\varepsilon/d$) ⇐ `moody`, `eps-d` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `lambda-laminar` · **0/5+** — Laminar: $\lambda = 64/Re$ (unabhängig von Rauhigkeit)
+  - 🔴 [1] _hoch_ · Konzepte: `blasius` · **0/5+** — Turbulent glatt (Blasius, $Re < 10^5$): $\lambda = 0{,}316/Re^{0{,}25}$
+  - 🔴 [2] _mittel_ · Konzepte: `moody` · **0/5+** — Turbulent rau: Moody-Diagramm oder Colebrook-Gleichung
+  - 🔴 [3] _mittel_ · Konzepte: `eps-d` · **0/5+** — Relative Rauhigkeit $\varepsilon/d$: Materialkennwert aus Tabelle ablesen
+  - 🔴 [4] _mittel_ · Konzepte: `voll-turb` · **0/5+** — Bei voll-turbulenter Strömung: $\lambda$ Re-unabhängig (nur $\varepsilon/d$)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `lambda-laminar` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `lambda-laminar` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `lambda-laminar` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `lambda-laminar` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `lambda-laminar` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `blasius` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `blasius` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `blasius` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `blasius` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `blasius` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `moody` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `moody` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `moody` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `moody` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `moody` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `eps-d` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `eps-d` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `eps-d` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `eps-d` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `eps-d` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `voll-turb` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `voll-turb` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `voll-turb` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `voll-turb` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `voll-turb` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/fluidmechanik.js` unter `'fluid-2-5': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/fluidmechanik.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
 
 #### `melem-1-3` · Schweißverbindungen
 
 - **Topic:** `maschinenelemente` (Maschinenelemente) · **Unit:** Verbindungen
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×1, number-input ×1, true-false ×1
-- **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, number-input, true-false
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Kehlnaht-Spannung: $\tau = F/(a \cdot l_w)$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Nahtdicke Kehlnaht: $a \approx 0{,}7 \cdot h$ (Schenkellänge $h$)
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Verbindungsarten: Schweißen (stoffschlüssig, dauerhaft), Schrauben (lösbar)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Tragende Nahtlänge $l_w$ = geometrische Länge minus Endkrater (≈ $l - 2a$)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Zulässige Schweißnahtspannung = Grundwerkstoff $\times$ Schweißfaktor (z.B. 0{,}8)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/maschinenelemente.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `kehlnaht-tau` — Kehlnaht-Spannung $\tau=F/(a\cdot l_w)$ (SG 0)
+  2. `nahtdicke` — Nahtdicke $a\approx 0{,}7\cdot h$ ⇐ `kehlnaht-tau` (SG 1)
+  3. `verb-arten` — Schweißen (stoffschlüssig, dauerhaft) vs. Schrauben (lösbar) (SG 2)
+  4. `tragende-lw` — Tragende Nahtlänge $l_w\approx l-2a$ (Endkrater) ⇐ `kehlnaht-tau` (SG 3)
+  5. `schweissfakt` — $\sigma_{\text{zul}}^{\text{Schweiß}}=$ Grundwerkstoff $\times$ Schweißfaktor (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `kehlnaht-tau` · **0/5+** — Kehlnaht-Spannung: $\tau = F/(a \cdot l_w)$
+  - 🔴 [1] _hoch_ · Konzepte: `nahtdicke` · **0/5+** — Nahtdicke Kehlnaht: $a \approx 0{,}7 \cdot h$ (Schenkellänge $h$)
+  - 🔴 [2] _mittel_ · Konzepte: `verb-arten` · **0/5+** — Verbindungsarten: Schweißen (stoffschlüssig, dauerhaft), Schrauben (lösbar)
+  - 🔴 [3] _mittel_ · Konzepte: `tragende-lw` · **0/5+** — Tragende Nahtlänge $l_w$ = geometrische Länge minus Endkrater (≈ $l - 2a$)
+  - 🔴 [4] _mittel_ · Konzepte: `schweissfakt` · **0/5+** — Zulässige Schweißnahtspannung = Grundwerkstoff $\times$ Schweißfaktor (z.B. 0{,}8)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kehlnaht-tau` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kehlnaht-tau` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `kehlnaht-tau` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `kehlnaht-tau` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `kehlnaht-tau` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `nahtdicke` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `nahtdicke` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `nahtdicke` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `nahtdicke` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `nahtdicke` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `verb-arten` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `verb-arten` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `verb-arten` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `verb-arten` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `verb-arten` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `tragende-lw` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `tragende-lw` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `tragende-lw` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `tragende-lw` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `tragende-lw` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `schweissfakt` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `schweissfakt` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `schweissfakt` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `schweissfakt` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `schweissfakt` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/maschinenelemente.js` unter `'melem-1-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-1-3-a`, `ex-melem-1-3-b`, `ex-melem-1-3-c`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `lager-illustration`, `free-body-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
-  - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
-  - _Klausur-Fokus:_ Schraubenberechnung (Vorspannkraft, Betriebskraft). · Zahnradstufe: Drehzahl/Drehmoment am Ausgang. · Wälzlagerlebensdauer.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `lager-illustration`, `free-body-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
 
 #### `melem-2-3` · Lagerlebensdauer
 
 - **Topic:** `maschinenelemente` (Maschinenelemente) · **Unit:** Wellen, Lager, Zahnräder
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** number-input ×3
-- **Typen einsetzen (Rotation):** multiple-choice, true-false, matching, sorting, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — L10-Lebensdauer: $L_{10} = (C/P)^p$ Mio. Umdrehungen
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Exponent: $p = 3$ Kugellager, $p = 10/3$ Rollenlager
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — In Stunden: $L_{10h} = L_{10} \cdot 10^6/(60 \cdot n)$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — C = dyn. Tragzahl (Katalog), P = äquivalente dyn. Last ($P = X F_r + Y F_a$)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — L10 = 10 % Ausfallwahrscheinlichkeit (90 % der Lager halten länger)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/maschinenelemente.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `melem-2-1` → `lager-funkt`, `lager-arten`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `l10-formel` — L10 $=(C/P)^p$ Mio. Umdrehungen (SG 0)
+  2. `p-exponent` — $p=3$ Kugel, $p=10/3$ Rolle ⇐ `l10-formel` (SG 1)
+  3. `l10h` — In Stunden: $L_{10h}=L_{10}\cdot 10^6/(60n)$ ⇐ `l10-formel` (SG 2)
+  4. `c-p-werte` — C dyn. Tragzahl, $P=XF_r+YF_a$ äquivalente Last ⇐ `l10-formel` (SG 3)
+  5. `l10-stat` — L10 = 10 % Ausfallwahrscheinlichkeit ⇐ `l10-formel` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `l10-formel` · **0/5+** — L10-Lebensdauer: $L_{10} = (C/P)^p$ Mio. Umdrehungen
+  - 🔴 [1] _hoch_ · Konzepte: `p-exponent` · **0/5+** — Exponent: $p = 3$ Kugellager, $p = 10/3$ Rollenlager
+  - 🔴 [2] _hoch_ · Konzepte: `l10h` · **0/5+** — In Stunden: $L_{10h} = L_{10} \cdot 10^6/(60 \cdot n)$
+  - 🔴 [3] _hoch_ · Konzepte: `c-p-werte` · **0/5+** — C = dyn. Tragzahl (Katalog), P = äquivalente dyn. Last ($P = X F_r + Y F_a$)
+  - 🔴 [4] _mittel_ · Konzepte: `l10-stat` · **0/5+** — L10 = 10 % Ausfallwahrscheinlichkeit (90 % der Lager halten länger)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `l10-formel` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `l10-formel` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `l10-formel` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `l10-formel` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `l10-formel` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `p-exponent` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `p-exponent` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `p-exponent` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `p-exponent` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `p-exponent` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `l10h` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `l10h` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `l10h` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `l10h` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `l10h` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `c-p-werte` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `c-p-werte` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `c-p-werte` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `c-p-werte` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `c-p-werte` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `l10-stat` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `l10-stat` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `l10-stat` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `l10-stat` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `l10-stat` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/maschinenelemente.js` unter `'melem-2-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-2-3-a`, `ex-melem-2-3-b`, `ex-melem-2-3-c`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `lager-illustration`, `free-body-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
-  - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
-  - _Klausur-Fokus:_ Schraubenberechnung (Vorspannkraft, Betriebskraft). · Zahnradstufe: Drehzahl/Drehmoment am Ausgang. · Wälzlagerlebensdauer.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `lager-illustration`, `free-body-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
 
 #### `et-2-3` · Drehstrom & 3-Phasensystem
 
 - **Topic:** `elektrotechnik` (Elektrotechnik) · **Unit:** Wechselstrom
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×2, number-input ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Stern: $U_{LL} = \sqrt 3 U_{LN}$, $I_L = I_\text{Strang}$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Dreieck: $U_{LL} = U_\text{Strang}$, $I_L = \sqrt 3 I_\text{Strang}$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Drehstrom-Leistung: $P = \sqrt 3 U_{LL} I_L \cos\varphi$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Haushaltsnetz: $U_{LN} = 230$ V, $U_{LL} = 400$ V
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Y/$\Delta$-Anlauf: in Stern nur 1/3 Leistung → kleinerer Anlaufstrom
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/elektrotechnik.js`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
-  - _Klausur-Fokus:_ Netzwerkanalyse mit Kirchhoff. · Komplexe Impedanz eines RLC-Gliedes. · Wechselstrom-Leistung (Wirk-, Blind-, Scheinleistung).
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `et-1-3` → `p-ui`
+  - `et-2-1` → `effektiv`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `stern` — Stern: $U_{LL}=\sqrt 3 U_{LN}$, $I_L=I_{\text{Strang}}$ (SG 0)
+  2. `dreieck` — Dreieck: $U_{LL}=U_{\text{Strang}}$, $I_L=\sqrt 3 I_{\text{Strang}}$ (SG 1)
+  3. `p-3phasen` — Drehstrom-Leistung $P=\sqrt 3 U_{LL} I_L\cos\varphi$ ⇐ `stern`, `dreieck` (SG 2)
+  4. `haushalt-uln` — Haushalt: $U_{LN}=230$ V, $U_{LL}=400$ V ⇐ `stern` (SG 3)
+  5. `y-delta` — Y/$\Delta$-Anlauf: Stern nur 1/3 Leistung ⇐ `stern`, `dreieck` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `stern` · **0/5+** — Stern: $U_{LL} = \sqrt 3 U_{LN}$, $I_L = I_\text{Strang}$
+  - 🔴 [1] _hoch_ · Konzepte: `dreieck` · **0/5+** — Dreieck: $U_{LL} = U_\text{Strang}$, $I_L = \sqrt 3 I_\text{Strang}$
+  - 🔴 [2] _hoch_ · Konzepte: `p-3phasen` · **0/5+** — Drehstrom-Leistung: $P = \sqrt 3 U_{LL} I_L \cos\varphi$
+  - 🔴 [3] _hoch_ · Konzepte: `haushalt-uln` · **0/5+** — Haushaltsnetz: $U_{LN} = 230$ V, $U_{LL} = 400$ V
+  - 🔴 [4] _mittel_ · Konzepte: `y-delta` · **0/5+** — Y/$\Delta$-Anlauf: in Stern nur 1/3 Leistung → kleinerer Anlaufstrom
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `stern` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `stern` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `stern` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `stern` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `stern` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `dreieck` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `dreieck` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `dreieck` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `dreieck` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `dreieck` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `p-3phasen` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `p-3phasen` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `p-3phasen` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `p-3phasen` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `p-3phasen` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `haushalt-uln` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `haushalt-uln` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `haushalt-uln` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `haushalt-uln` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `haushalt-uln` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `y-delta` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `y-delta` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `y-delta` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `y-delta` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `y-delta` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/elektrotechnik.js` unter `'et-2-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/elektrotechnik.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
 
 #### `rt-2-3` · Bodediagramm & Phasengang
 
 - **Topic:** `regelungstechnik` (Regelungstechnik) · **Unit:** Regler und Stabilität
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×2, number-input ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Amplitudengang in dB: $A_\text{dB} = 20 \log_{10}|G|$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Grundbausteine: P $0°$; I $-90°$, $-20$ dB/Dek; D $+90°$, $+20$ dB/Dek
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — PT1 Grenzfrequenz $\omega_g = 1/T$, dort $|G| = -3$ dB
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Phasenreserve: $\varphi_R = 180° + \varphi(\omega_D)$ bei $|G_0| = 0$ dB
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Stabilitätsreserven: $\varphi_R > 30°$ akzeptabel, $> 60°$ sehr gut
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/regelungstechnik.js`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `complex-plane`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
-  - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
-  - _Klausur-Fokus:_ Stabilität mit Hurwitz prüfen und Grenzverstärkung finden. · Stationäre Regelabweichung P-Regler an PT1. · Sprungantwort eines PT1-Glieds skizzieren.
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `rt-1-2` → `pt1-glied`
+  - `rt-2-2` → `phi-amp-r`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `a-db` — Amplitude in dB: $A_{\text{dB}}=20\log_{10}|G|$ (SG 0)
+  2. `p-i-d-bode` — P 0°; I $-90°$, $-20$ dB/Dek; D $+90°$, $+20$ dB/Dek (SG 1)
+  3. `pt1-omega-g` — PT1 $\omega_g=1/T$, dort $|G|=-3$ dB (SG 2)
+  4. `phasenres` — Phasenreserve $\varphi_R=180°+\varphi(\omega_D)$ bei $|G_0|=0$ dB (SG 3)
+  5. `reserven-bode` — $\varphi_R>30°$ akzeptabel, $>60°$ sehr gut ⇐ `phasenres` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `a-db` · **0/5+** — Amplitudengang in dB: $A_\text{dB} = 20 \log_{10}|G|$
+  - 🔴 [1] _hoch_ · Konzepte: `p-i-d-bode` · **0/5+** — Grundbausteine: P $0°$; I $-90°$, $-20$ dB/Dek; D $+90°$, $+20$ dB/Dek
+  - 🔴 [2] _hoch_ · Konzepte: `pt1-omega-g` · **0/5+** — PT1 Grenzfrequenz $\omega_g = 1/T$, dort $|G| = -3$ dB
+  - 🔴 [3] _hoch_ · Konzepte: `phasenres` · **0/5+** — Phasenreserve: $\varphi_R = 180° + \varphi(\omega_D)$ bei $|G_0| = 0$ dB
+  - 🔴 [4] _hoch_ · Konzepte: `reserven-bode` · **0/5+** — Stabilitätsreserven: $\varphi_R > 30°$ akzeptabel, $> 60°$ sehr gut
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `a-db` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `a-db` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `a-db` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `a-db` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `a-db` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `p-i-d-bode` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `p-i-d-bode` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `p-i-d-bode` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `p-i-d-bode` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `p-i-d-bode` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `pt1-omega-g` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pt1-omega-g` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `pt1-omega-g` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `pt1-omega-g` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `pt1-omega-g` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `phasenres` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `phasenres` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `phasenres` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `phasenres` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `phasenres` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `reserven-bode` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `reserven-bode` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `reserven-bode` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `reserven-bode` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `reserven-bode` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/regelungstechnik.js` unter `'rt-2-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/regelungstechnik.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `complex-plane`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
 
 #### `mech-3-3` · Reibung, Kinematik & Schwingungen
 
@@ -2048,50 +2267,116 @@ npm run build              # abschließender End-zu-End-Check
 #### `fluid-3-2` · Druckverlust, Pumpen & Ähnlichkeit
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 4 · **mindestens:** 20 · **fehlen bis Minimum:** 16 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×1, number-input ×3
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Erweiterte Bernoulli mit Verlust: $+ \Delta p_V$ auf Senkeseite
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Pumpenleistung: $P = \rho g \dot V H / \eta_P$
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Reihenschaltung Rohre: $\Delta p_\text{ges} = \sum \Delta p_i$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Einzelverluste: $\Delta p = \zeta (\rho v^2/2)$ ($\zeta$ aus Tabelle für Krümmer, Ventile, \ldots)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Pumpenkennlinie × Anlagenkennlinie = Betriebspunkt
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 16 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/fluidmechanik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fluid-2-2` → `bernoulli-verlust`
+  - `fluid-2-3` → `darcy`
+  - `fluid-2-4` → `pumpgesetz`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `erw-bernoulli` — Erweiterte Bernoulli mit $+\Delta p_V$ auf Senkeseite (SG 0)
+  2. `pumpleistung` — Pumpenleistung $P=\rho g\dot V H/\eta_P$ (SG 1)
+  3. `reihen-rohre` — Reihenschaltung Rohre: $\Delta p_{\text{ges}}=\sum\Delta p_i$ (SG 2)
+  4. `zeta-verlust` — Einzelverluste $\Delta p=\zeta(\rho v^2/2)$ (SG 3)
+  5. `betriebspunkt` — Pumpenkennlinie × Anlagenkennlinie = Betriebspunkt (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `erw-bernoulli` · **0/5+** — Erweiterte Bernoulli mit Verlust: $+ \Delta p_V$ auf Senkeseite
+  - 🔴 [1] _hoch_ · Konzepte: `pumpleistung` · **0/5+** — Pumpenleistung: $P = \rho g \dot V H / \eta_P$
+  - 🔴 [2] _mittel_ · Konzepte: `reihen-rohre` · **0/5+** — Reihenschaltung Rohre: $\Delta p_\text{ges} = \sum \Delta p_i$
+  - 🔴 [3] _mittel_ · Konzepte: `zeta-verlust` · **0/5+** — Einzelverluste: $\Delta p = \zeta (\rho v^2/2)$ ($\zeta$ aus Tabelle für Krümmer, Ventile, \ldots)
+  - 🔴 [4] _mittel_ · Konzepte: `betriebspunkt` · **0/5+** — Pumpenkennlinie × Anlagenkennlinie = Betriebspunkt
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `erw-bernoulli` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `erw-bernoulli` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `erw-bernoulli` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `erw-bernoulli` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `erw-bernoulli` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `pumpleistung` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pumpleistung` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `pumpleistung` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pumpleistung` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `pumpleistung` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 11 | 2 | recognize          | true-false       | `reihen-rohre` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `reihen-rohre` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `reihen-rohre` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `reihen-rohre` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `reihen-rohre` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `zeta-verlust` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `zeta-verlust` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `zeta-verlust` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `zeta-verlust` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `zeta-verlust` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `betriebspunkt` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `betriebspunkt` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `betriebspunkt` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `betriebspunkt` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `betriebspunkt` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/fluidmechanik.js` unter `'fluid-3-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-3-2-a`, `ex-fluid-3-2-b`, `ex-fluid-3-2-c`, `ex-fluid-3-2-d`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
-  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
-  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
 
 #### `melem-3-2` · Schweißnähte, Lager & Lebensdauer
 
 - **Topic:** `maschinenelemente` (Maschinenelemente) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 4 · **mindestens:** 20 · **fehlen bis Minimum:** 16 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** number-input ×3, true-false ×1
-- **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Kehlnaht: $\tau = F/(a l_w)$, $a = 0{,}7 h$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Lagerlebensdauer: $L_{10} = (C/P)^p$, $p = 3$ (Kugel) / $p = 10/3$ (Rolle)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Einheiten-Check: L10 in Mio. U, L10h in Stunden nach $\times 10^6/(60n)$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Leistungs-Drehmoment-Umrechnung $\omega = 2\pi n/60$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Plausibilitäts-Check: typische Lagerlebensdauer 5000–50000 h
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 16 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/maschinenelemente.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `melem-1-3` → `kehlnaht-tau`, `nahtdicke`
+  - `melem-2-3` → `l10-formel`, `p-exponent`, `l10h`
+  - `melem-3-1` → `p-m-omega`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `kehlnaht-pr` — Kehlnaht $\tau=F/(a l_w)$, $a=0{,}7 h$ (SG 0)
+  2. `l10-pr` — Lagerlebensdauer $L_{10}=(C/P)^p$ (SG 1)
+  3. `einh-check` — L10 in Mio. U, L10h via $\times 10^6/(60n)$ ⇐ `l10-pr` (SG 2)
+  4. `omega-um` — Leistung↔Drehmoment $\omega=2\pi n/60$ (SG 3)
+  5. `l10-typisch` — Plausi-Check: typisch 5000–50000 h ⇐ `einh-check` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `kehlnaht-pr` · **0/5+** — Kehlnaht: $\tau = F/(a l_w)$, $a = 0{,}7 h$
+  - 🔴 [1] _hoch_ · Konzepte: `l10-pr` · **0/5+** — Lagerlebensdauer: $L_{10} = (C/P)^p$, $p = 3$ (Kugel) / $p = 10/3$ (Rolle)
+  - 🔴 [2] _hoch_ · Konzepte: `einh-check` · **0/5+** — Einheiten-Check: L10 in Mio. U, L10h in Stunden nach $\times 10^6/(60n)$
+  - 🔴 [3] _hoch_ · Konzepte: `omega-um` · **0/5+** — Leistungs-Drehmoment-Umrechnung $\omega = 2\pi n/60$
+  - 🔴 [4] _mittel_ · Konzepte: `l10-typisch` · **0/5+** — Plausibilitäts-Check: typische Lagerlebensdauer 5000–50000 h
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kehlnaht-pr` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kehlnaht-pr` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `kehlnaht-pr` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `kehlnaht-pr` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `kehlnaht-pr` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `l10-pr` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `l10-pr` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `l10-pr` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `l10-pr` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `l10-pr` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 11 | 2 | recognize          | true-false       | `einh-check` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `einh-check` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `einh-check` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `einh-check` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `einh-check` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `omega-um` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `omega-um` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `omega-um` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `omega-um` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `omega-um` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `l10-typisch` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `l10-typisch` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `l10-typisch` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `l10-typisch` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `l10-typisch` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/maschinenelemente.js` unter `'melem-3-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-3-2-a`, `ex-melem-3-2-b`, `ex-melem-3-2-c`, `ex-melem-3-2-d`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `lager-illustration`, `free-body-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
-  - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
-  - _Klausur-Fokus:_ Schraubenberechnung (Vorspannkraft, Betriebskraft). · Zahnradstufe: Drehzahl/Drehmoment am Ausgang. · Wälzlagerlebensdauer.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `lager-illustration`, `free-body-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
 
 #### `werk-pruefung-1` · Prüfung: Werkstoffwahl & Kennwerte
 
@@ -3107,26 +3392,58 @@ npm run build              # abschließender End-zu-End-Check
 #### `et-3-2` · Wechselstrom Prüfungsaufgaben
 
 - **Topic:** `elektrotechnik` (Elektrotechnik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×2, number-input ×5, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — RLC-Reihe Impedanz: $Z = R + j(\omega L - 1/(\omega C))$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Resonanzfrequenz: $\omega_0 = 1/\sqrt{LC}$, $f_0 = 1/(2\pi\sqrt{LC})$
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Güte $Q = \omega_0 L/R = 1/(\omega_0 RC)$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Wirk-/Blind-/Scheinleistung: $P = S\cos\varphi$, $Q = S\sin\varphi$, $S = UI$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Tiefpass $-20$ dB/Dekade oberhalb $f_g$, Hochpass umgekehrt
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/elektrotechnik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `et-2-1` → `impedanzen`, `phasenversch`
+  - `et-2-2` → `fg-rc`, `cos-phi`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `rlc-z` — RLC-Reihe $Z=R+j(\omega L-1/(\omega C))$ (SG 0)
+  2. `resonanz-rlc` — Resonanz $\omega_0=1/\sqrt{LC}$, $f_0=1/(2\pi\sqrt{LC})$ ⇐ `rlc-z` (SG 1)
+  3. `guete` — Güte $Q=\omega_0 L/R=1/(\omega_0 RC)$ ⇐ `resonanz-rlc` (SG 2)
+  4. `p-q-s` — Wirk/Blind/Schein $P=S\cos\varphi,Q=S\sin\varphi,S=UI$ (SG 3)
+  5. `tiefpass-db` — Tiefpass $-20$ dB/Dek. oberhalb $f_g$, Hochpass umgekehrt (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `rlc-z` · **0/5+** — RLC-Reihe Impedanz: $Z = R + j(\omega L - 1/(\omega C))$
+  - 🔴 [1] _hoch_ · Konzepte: `resonanz-rlc` · **0/5+** — Resonanzfrequenz: $\omega_0 = 1/\sqrt{LC}$, $f_0 = 1/(2\pi\sqrt{LC})$
+  - 🔴 [2] _mittel_ · Konzepte: `guete` · **0/5+** — Güte $Q = \omega_0 L/R = 1/(\omega_0 RC)$
+  - 🔴 [3] _hoch_ · Konzepte: `p-q-s` · **0/5+** — Wirk-/Blind-/Scheinleistung: $P = S\cos\varphi$, $Q = S\sin\varphi$, $S = UI$
+  - 🔴 [4] _mittel_ · Konzepte: `tiefpass-db` · **0/5+** — Tiefpass $-20$ dB/Dekade oberhalb $f_g$, Hochpass umgekehrt
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `rlc-z` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `rlc-z` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `rlc-z` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `rlc-z` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `rlc-z` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `resonanz-rlc` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `resonanz-rlc` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `resonanz-rlc` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `resonanz-rlc` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `resonanz-rlc` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `guete` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `guete` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `guete` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `guete` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `guete` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `p-q-s` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `p-q-s` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `p-q-s` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `p-q-s` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `p-q-s` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `tiefpass-db` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `tiefpass-db` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `tiefpass-db` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `tiefpass-db` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `tiefpass-db` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/elektrotechnik.js` unter `'et-3-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-3-2-a`, `ex-et-3-2-b`, `ex-et-3-2-manual-1`, `ex-et-3-2-manual-2`, `ex-et-3-2-manual-3`, `ex-et-3-2-manual-4`, `ex-et-3-2-manual-5`, `ex-et-3-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
-  - _Klausur-Fokus:_ Netzwerkanalyse mit Kirchhoff. · Komplexe Impedanz eines RLC-Gliedes. · Wechselstrom-Leistung (Wirk-, Blind-, Scheinleistung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
 
 #### `py-4-1` · Prüfung: Code-Verständnis & Fehlersuche
 
@@ -4000,98 +4317,227 @@ npm run build              # abschließender End-zu-End-Check
 #### `fluid-3-1` · Fluid: Prüfungsaufgaben
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×5, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Bernoulli vollständig: $p_1 + \tfrac{1}{2}\rho v_1^2 + \rho g z_1 = p_2 + \ldots$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Staudruck/Pitot: $v = \sqrt{2\Delta p/\rho}$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Kontinuität + Bernoulli kombiniert für Düsen/Verengungen
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Torricelli-Ausfluss: $v = \sqrt{2gh}$ (freies Ausströmen unter Wasserhöhe)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Reynolds-Zahl entscheidet Strömungsregime; laminar/turbulent bestimmt $\lambda$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/fluidmechanik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fluid-2-1` → `kontinuitaet`
+  - `fluid-2-2` → `bernoulli`, `torricelli`
+  - `fluid-2-3` → `reynolds`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `bernoulli-pr` — Bernoulli vollständig: $p_1+\tfrac12\rho v_1^2+\rho g z_1=p_2+\ldots$ (SG 0)
+  2. `pitot` — Staudruck/Pitot $v=\sqrt{2\Delta p/\rho}$ ⇐ `bernoulli-pr` (SG 1)
+  3. `kont-bern` — Kontinuität + Bernoulli für Düsen/Verengungen ⇐ `bernoulli-pr` (SG 2)
+  4. `torricelli-pr` — Torricelli-Ausfluss $v=\sqrt{2gh}$ ⇐ `bernoulli-pr` (SG 3)
+  5. `re-regime` — Re bestimmt laminar/turbulent → $\lambda$ (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `bernoulli-pr` · **0/5+** — Bernoulli vollständig: $p_1 + \tfrac{1}{2}\rho v_1^2 + \rho g z_1 = p_2 + \ldots$
+  - 🔴 [1] _hoch_ · Konzepte: `pitot` · **0/5+** — Staudruck/Pitot: $v = \sqrt{2\Delta p/\rho}$
+  - 🔴 [2] _hoch_ · Konzepte: `kont-bern` · **0/5+** — Kontinuität + Bernoulli kombiniert für Düsen/Verengungen
+  - 🔴 [3] _hoch_ · Konzepte: `torricelli-pr` · **0/5+** — Torricelli-Ausfluss: $v = \sqrt{2gh}$ (freies Ausströmen unter Wasserhöhe)
+  - 🔴 [4] _hoch_ · Konzepte: `re-regime` · **0/5+** — Reynolds-Zahl entscheidet Strömungsregime; laminar/turbulent bestimmt $\lambda$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `bernoulli-pr` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `bernoulli-pr` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `bernoulli-pr` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `bernoulli-pr` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `bernoulli-pr` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `pitot` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pitot` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `pitot` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pitot` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `pitot` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `kont-bern` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `kont-bern` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `kont-bern` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `kont-bern` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `kont-bern` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `torricelli-pr` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `torricelli-pr` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `torricelli-pr` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `torricelli-pr` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `torricelli-pr` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `re-regime` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `re-regime` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `re-regime` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `re-regime` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `re-regime` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/fluidmechanik.js` unter `'fluid-3-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-3-1-a`, `ex-fluid-3-1-b`, `ex-fluid-3-1-c`, `ex-fluid-3-1-manual-1`, `ex-fluid-3-1-manual-2`, `ex-fluid-3-1-manual-3`, `ex-fluid-3-1-manual-4`, `ex-fluid-3-1-manual-5` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
-  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
-  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
 
 #### `melem-3-1` · ME: Prüfungsaufgaben
 
 - **Topic:** `maschinenelemente` (Maschinenelemente) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×2, number-input ×6, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Leistung: $P = M \omega = M (2\pi n/60)$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Umfangskraft am Zahnrad: $F_t = 2M/d$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Mehrstufige Übersetzung: $i_\text{ges} = \prod i_i$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Abtriebsdrehzahl: $n_2 = n_1/i_\text{ges}$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Drehmoment steigt bei Untersetzung: $M_2 = i M_1 \eta$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/maschinenelemente.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `melem-2-2` → `uebersetz`, `mehrstufig`, `m-wandlung`, `f-t-zahn`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `p-m-omega` — Leistung $P=M\omega=M(2\pi n/60)$ (SG 0)
+  2. `ft-pr` — Umfangskraft am Zahnrad $F_t=2M/d$ (SG 1)
+  3. `i-prod` — Mehrstufig $i_{\text{ges}}=\prod i_i$ (SG 2)
+  4. `n-abtrieb` — Abtriebsdrehzahl $n_2=n_1/i_{\text{ges}}$ ⇐ `i-prod` (SG 3)
+  5. `m-untersetz` — Drehmoment bei Untersetzung $M_2=iM_1\eta$ ⇐ `i-prod` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `p-m-omega` · **0/5+** — Leistung: $P = M \omega = M (2\pi n/60)$
+  - 🔴 [1] _hoch_ · Konzepte: `ft-pr` · **0/5+** — Umfangskraft am Zahnrad: $F_t = 2M/d$
+  - 🔴 [2] _hoch_ · Konzepte: `i-prod` · **0/5+** — Mehrstufige Übersetzung: $i_\text{ges} = \prod i_i$
+  - 🔴 [3] _hoch_ · Konzepte: `n-abtrieb` · **0/5+** — Abtriebsdrehzahl: $n_2 = n_1/i_\text{ges}$
+  - 🔴 [4] _hoch_ · Konzepte: `m-untersetz` · **0/5+** — Drehmoment steigt bei Untersetzung: $M_2 = i M_1 \eta$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `p-m-omega` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `p-m-omega` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `p-m-omega` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `p-m-omega` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `p-m-omega` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `ft-pr` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `ft-pr` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `ft-pr` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `ft-pr` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `ft-pr` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `i-prod` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `i-prod` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `i-prod` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `i-prod` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `i-prod` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `n-abtrieb` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `n-abtrieb` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `n-abtrieb` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `n-abtrieb` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `n-abtrieb` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `m-untersetz` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `m-untersetz` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `m-untersetz` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `m-untersetz` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `m-untersetz` | 1 | 0 | 🔴 | [PRÜFUNG] |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/maschinenelemente.js` unter `'melem-3-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-3-1-a`, `ex-melem-3-1-b`, `ex-melem-3-1-c`, `ex-melem-3-1-manual-1`, `ex-melem-3-1-manual-2`, `ex-melem-3-1-manual-3`, `ex-melem-3-1-manual-4`, `ex-melem-3-1-manual-5` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `lager-illustration`, `free-body-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
-  - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
-  - _Klausur-Fokus:_ Schraubenberechnung (Vorspannkraft, Betriebskraft). · Zahnradstufe: Drehzahl/Drehmoment am Ausgang. · Wälzlagerlebensdauer.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `lager-illustration`, `free-body-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
 
 #### `et-3-1` · Gleichstrom Prüfungsaufgaben
 
 - **Topic:** `elektrotechnik` (Elektrotechnik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×2, number-input ×5, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, true-false, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Reihe: $R_\text{ges} = \sum R_i$; Parallel: $1/R_\text{ges} = \sum 1/R_i$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Spannungsteiler: $U_1 = U \cdot R_1/(R_1 + R_2)$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Stromteiler: $I_k = I_\text{ges} \cdot R_\text{par}/R_k$ (umgekehrt proportional)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Energie: $W = P \cdot t$; 1 kWh = 3{,}6 MJ
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Kirchhoff-Methode: Maschen + Knoten → LGS für mehrere unbekannte Ströme
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/elektrotechnik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `et-1-1` → `ohm`, `reihe-r`, `parallel-r`
+  - `et-1-2` → `kcl`, `kvl`, `spann-teiler`
+  - `et-1-3` → `p-ui`, `w-pt`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `reihe-par-pr` — Reihe $\sum R_i$, Parallel $\sum 1/R_i$ (SG 0)
+  2. `span-tlr-pr` — Spannungsteiler $U_1=U\cdot R_1/(R_1+R_2)$ (SG 1)
+  3. `strom-tlr` — Stromteiler $I_k=I_{\text{ges}}\cdot R_{\text{par}}/R_k$ (SG 2)
+  4. `kwh-mj` — $W=Pt$; 1 kWh = 3,6 MJ (SG 3)
+  5. `kirchhoff-lgs` — Kirchhoff-Methode: Maschen + Knoten → LGS (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `reihe-par-pr` · **0/5+** — Reihe: $R_\text{ges} = \sum R_i$; Parallel: $1/R_\text{ges} = \sum 1/R_i$
+  - 🔴 [1] _hoch_ · Konzepte: `span-tlr-pr` · **0/5+** — Spannungsteiler: $U_1 = U \cdot R_1/(R_1 + R_2)$
+  - 🔴 [2] _hoch_ · Konzepte: `strom-tlr` · **0/5+** — Stromteiler: $I_k = I_\text{ges} \cdot R_\text{par}/R_k$ (umgekehrt proportional)
+  - 🔴 [3] _hoch_ · Konzepte: `kwh-mj` · **0/5+** — Energie: $W = P \cdot t$; 1 kWh = 3{,}6 MJ
+  - 🔴 [4] _hoch_ · Konzepte: `kirchhoff-lgs` · **0/5+** — Kirchhoff-Methode: Maschen + Knoten → LGS für mehrere unbekannte Ströme
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `reihe-par-pr` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `reihe-par-pr` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `reihe-par-pr` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `reihe-par-pr` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `reihe-par-pr` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `span-tlr-pr` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `span-tlr-pr` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `span-tlr-pr` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `span-tlr-pr` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `span-tlr-pr` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `strom-tlr` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `strom-tlr` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `strom-tlr` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `strom-tlr` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `strom-tlr` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `kwh-mj` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `kwh-mj` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `kwh-mj` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `kwh-mj` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `kwh-mj` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `kirchhoff-lgs` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `kirchhoff-lgs` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `kirchhoff-lgs` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `kirchhoff-lgs` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `kirchhoff-lgs` | 1 | 0 | 🔴 | [PRÜFUNG] |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/elektrotechnik.js` unter `'et-3-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-3-1-a`, `ex-et-3-1-b`, `ex-et-3-1-c`, `ex-et-3-1-manual-1`, `ex-et-3-1-manual-2`, `ex-et-3-1-manual-3`, `ex-et-3-1-manual-4`, `ex-et-3-1-manual-5` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
-  - _Klausur-Fokus:_ Netzwerkanalyse mit Kirchhoff. · Komplexe Impedanz eines RLC-Gliedes. · Wechselstrom-Leistung (Wirk-, Blind-, Scheinleistung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
 
 #### `rt-3-1` · Regelkreis & PID Prüfungsaufgaben
 
 - **Topic:** `regelungstechnik` (Regelungstechnik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Führungs-Übertragungsfunktion: $T(s) = G_0/(1+G_0)$ mit $G_0 = G_R G_S$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Stationärer Regelfehler P-Regler: $e_\text{stat} = 1/(1+K_0)$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — I-Anteil erzwingt $e_\text{stat} = 0$ bei konstantem Sollwert
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Typ $k$ eines Systems: Anzahl der Integratoren in $G_0$; bestimmt Folgevermögen
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Rampenfolge: Typ 0 dauerhafter Fehler, Typ 1 Ausgleich, Typ 2 Beschleunigungsfolge
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/regelungstechnik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `rt-1-2` → `g-s`, `rk-schalt`
+  - `rt-2-1` → `pid-anteile`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `fuehrungs-t` — Führungs-ÜTF $T(s)=G_0/(1+G_0)$ mit $G_0=G_R G_S$ (SG 0)
+  2. `e-stat-p` — Stationärer Regelfehler P: $e_{\text{stat}}=1/(1+K_0)$ (SG 1)
+  3. `i-null-fehler` — I-Anteil erzwingt $e_{\text{stat}}=0$ bei konstantem Sollwert (SG 2)
+  4. `system-typ` — Typ $k$: Anzahl Integratoren in $G_0$ (SG 3)
+  5. `rampenfolge` — Rampenfolge: Typ 0 dauerhafter Fehler, Typ 1 Ausgleich, Typ 2 Beschl.-Folge ⇐ `system-typ` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `fuehrungs-t` · **0/5+** — Führungs-Übertragungsfunktion: $T(s) = G_0/(1+G_0)$ mit $G_0 = G_R G_S$
+  - 🔴 [1] _hoch_ · Konzepte: `e-stat-p` · **0/5+** — Stationärer Regelfehler P-Regler: $e_\text{stat} = 1/(1+K_0)$
+  - 🔴 [2] _hoch_ · Konzepte: `i-null-fehler` · **0/5+** — I-Anteil erzwingt $e_\text{stat} = 0$ bei konstantem Sollwert
+  - 🔴 [3] _mittel_ · Konzepte: `system-typ` · **0/5+** — Typ $k$ eines Systems: Anzahl der Integratoren in $G_0$; bestimmt Folgevermögen
+  - 🔴 [4] _mittel_ · Konzepte: `rampenfolge` · **0/5+** — Rampenfolge: Typ 0 dauerhafter Fehler, Typ 1 Ausgleich, Typ 2 Beschleunigungsfolge
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `fuehrungs-t` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `fuehrungs-t` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `fuehrungs-t` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `fuehrungs-t` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `fuehrungs-t` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `e-stat-p` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `e-stat-p` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `e-stat-p` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `e-stat-p` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `e-stat-p` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 11 | 2 | recognize          | true-false       | `i-null-fehler` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `i-null-fehler` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `i-null-fehler` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `i-null-fehler` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `i-null-fehler` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `system-typ` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `system-typ` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `system-typ` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `system-typ` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `system-typ` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `rampenfolge` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `rampenfolge` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `rampenfolge` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `rampenfolge` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `rampenfolge` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/regelungstechnik.js` unter `'rt-3-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/regelungstechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rt-3-1-a`, `ex-rt-3-1-b`, `ex-rt-3-1-c`, `ex-rt-3-1-manual-1`, `ex-rt-3-1-manual-2`, `ex-rt-3-1-manual-3`, `ex-rt-3-1-manual-4`, `ex-rt-3-1-manual-5` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `complex-plane`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
-  - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
-  - _Klausur-Fokus:_ Stabilität mit Hurwitz prüfen und Grenzverstärkung finden. · Stationäre Regelabweichung P-Regler an PT1. · Sprungantwort eines PT1-Glieds skizzieren.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `complex-plane`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
 
 #### `vek-3-1` · Gemischte Aufgaben Skalar- und Kreuzprodukt
 
@@ -6602,404 +7048,888 @@ npm run build              # abschließender End-zu-End-Check
 #### `fluid-1-1` · Hydrostatischer Druck
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Hydrostatik
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — $p = \rho g h$ — linearer Zusammenhang nur bei konstanter Dichte (Flüssigkeiten)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Überdruck vs. absoluter Druck: $p_\text{abs} = p_\text{atm} + p_\text{hydro}$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Druck in Flüssigkeit hängt nur von der Höhe ab, **nicht** von der Behälterform (hydrostat. Paradoxon)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Einheiten: 1 bar ≈ 10 m Wassersäule; 1 mbar ≈ 1 cm H₂O
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/fluidmechanik.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `rho-g-h` — $p=\rho g h$ bei konstanter Dichte (Flüssigkeiten) (SG 0)
+  2. `abs-ueber` — Überdruck vs. absoluter Druck: $p_{\text{abs}}=p_{\text{atm}}+p_{\text{hydro}}$ ⇐ `rho-g-h` (SG 1)
+  3. `paradoxon` — Hydrostat. Paradoxon: Druck nur höhenabhängig, nicht Behälterform ⇐ `rho-g-h` (SG 2)
+  4. `bar-h2o` — Einheiten: 1 bar ≈ 10 m H₂O (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `rho-g-h` · **0/5+** — $p = \rho g h$ — linearer Zusammenhang nur bei konstanter Dichte (Flüssigkeiten)
+  - 🔴 [1] _hoch_ · Konzepte: `abs-ueber` · **0/5+** — Überdruck vs. absoluter Druck: $p_\text{abs} = p_\text{atm} + p_\text{hydro}$
+  - 🔴 [2] _hoch_ · Konzepte: `paradoxon` · **0/5+** — Druck in Flüssigkeit hängt nur von der Höhe ab, **nicht** von der Behälterform (hydrostat. Paradoxon)
+  - 🔴 [3] _mittel_ · Konzepte: `bar-h2o` · **0/5+** — Einheiten: 1 bar ≈ 10 m Wassersäule; 1 mbar ≈ 1 cm H₂O
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `rho-g-h` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `rho-g-h` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `rho-g-h` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `rho-g-h` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `rho-g-h` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `abs-ueber` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `abs-ueber` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `abs-ueber` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `abs-ueber` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `abs-ueber` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `paradoxon` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `paradoxon` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `paradoxon` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `paradoxon` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `paradoxon` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `bar-h2o` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `bar-h2o` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `bar-h2o` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `bar-h2o` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `bar-h2o` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/fluidmechanik.js` unter `'fluid-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-1-1-a`, `ex-fluid-1-1-b`, `ex-fluid-1-1-manual-1`, `ex-fluid-1-1-manual-2`, `ex-fluid-1-1-manual-3`, `ex-fluid-1-1-manual-4`, `ex-fluid-1-1-manual-5`, `ex-fluid-1-1-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
-  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
-  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
 
 #### `fluid-1-2` · Auftrieb
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Hydrostatik
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — $F_A = \rho_\text{Fluid}\,g\,V_\text{verdrängt}$ — Dichte des **Fluids**, nicht des Körpers
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Schwimmen: $F_A = F_G$ → $V_\text{verdrängt} = m_\text{Körper}/\rho_\text{Fluid}$
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Vollständig getaucht: $V_\text{verdrängt} = V_\text{Körper}$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Dichte-Vergleich: Körper schwimmt, wenn $\rho_\text{Körper} < \rho_\text{Fluid}$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/fluidmechanik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fluid-1-1` → `rho-g-h`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `fa-formel` — $F_A=\rho_{\text{Fluid}}g V_{\text{verdr.}}$ (Fluid-Dichte!) (SG 0)
+  2. `schwimmen` — Schwimmen: $F_A=F_G$ → $V_{\text{verdr.}}=m/\rho_{\text{Fluid}}$ ⇐ `fa-formel` (SG 1)
+  3. `getaucht` — Vollständig getaucht: $V_{\text{verdr.}}=V_{\text{Körper}}$ ⇐ `fa-formel` (SG 2)
+  4. `dichte-vgl` — Schwimmt wenn $\rho_{\text{Körper}}<\rho_{\text{Fluid}}$ ⇐ `fa-formel` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `fa-formel` · **0/5+** — $F_A = \rho_\text{Fluid}\,g\,V_\text{verdrängt}$ — Dichte des **Fluids**, nicht des Körpers
+  - 🔴 [1] _hoch_ · Konzepte: `schwimmen` · **0/5+** — Schwimmen: $F_A = F_G$ → $V_\text{verdrängt} = m_\text{Körper}/\rho_\text{Fluid}$
+  - 🔴 [2] _mittel_ · Konzepte: `getaucht` · **0/5+** — Vollständig getaucht: $V_\text{verdrängt} = V_\text{Körper}$
+  - 🔴 [3] _hoch_ · Konzepte: `dichte-vgl` · **0/5+** — Dichte-Vergleich: Körper schwimmt, wenn $\rho_\text{Körper} < \rho_\text{Fluid}$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `fa-formel` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `fa-formel` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `fa-formel` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `fa-formel` | 1 | 0 | 🔴 | Körperdichte statt Fluiddichte |
+|  5 | 0 | transfer           | number-input     | `fa-formel` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `schwimmen` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `schwimmen` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `schwimmen` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `schwimmen` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `schwimmen` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `getaucht` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `getaucht` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `getaucht` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `getaucht` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `getaucht` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `dichte-vgl` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `dichte-vgl` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `dichte-vgl` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `dichte-vgl` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `dichte-vgl` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/fluidmechanik.js` unter `'fluid-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-1-2-a`, `ex-fluid-1-2-b`, `ex-fluid-1-2-manual-1`, `ex-fluid-1-2-manual-2`, `ex-fluid-1-2-manual-3`, `ex-fluid-1-2-manual-4`, `ex-fluid-1-2-manual-5`, `ex-fluid-1-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
-  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
-  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
 
 #### `fluid-2-1` · Kontinuitätsgleichung
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Strömung
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Kontinuität (inkompressibel): $A_1 v_1 = A_2 v_2 = \dot V$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Volumenstrom: $\dot V = A \cdot v$, Einheit m³/s
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Massenstrom (kompressibel): $\dot m = \rho A v$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Querschnitt kleiner → Geschwindigkeit größer ($v \propto 1/A$)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Umrechnung: Kreisquerschnitt $A = \pi d^2/4$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/fluidmechanik.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `kontinuitaet` — Kontinuität $A_1 v_1=A_2 v_2=\dot V$ (inkompressibel) (SG 0)
+  2. `v-strom` — Volumenstrom $\dot V=Av$, Einheit m³/s (SG 1)
+  3. `m-strom` — Massenstrom $\dot m=\rho A v$ (kompressibel) (SG 2)
+  4. `a-v-invers` — Querschnitt $\downarrow$ → $v\uparrow$ ($v\propto 1/A$) ⇐ `kontinuitaet` (SG 3)
+  5. `a-kreis-fluid` — Kreisquerschnitt $A=\pi d^2/4$ (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `kontinuitaet` · **0/5+** — Kontinuität (inkompressibel): $A_1 v_1 = A_2 v_2 = \dot V$
+  - 🔴 [1] _hoch_ · Konzepte: `v-strom` · **0/5+** — Volumenstrom: $\dot V = A \cdot v$, Einheit m³/s
+  - 🔴 [2] _hoch_ · Konzepte: `m-strom` · **0/5+** — Massenstrom (kompressibel): $\dot m = \rho A v$
+  - 🔴 [3] _hoch_ · Konzepte: `a-v-invers` · **0/5+** — Querschnitt kleiner → Geschwindigkeit größer ($v \propto 1/A$)
+  - 🔴 [4] _hoch_ · Konzepte: `a-kreis-fluid` · **0/5+** — Umrechnung: Kreisquerschnitt $A = \pi d^2/4$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kontinuitaet` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kontinuitaet` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `kontinuitaet` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `kontinuitaet` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `kontinuitaet` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `v-strom` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `v-strom` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `v-strom` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `v-strom` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `v-strom` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `m-strom` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `m-strom` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `m-strom` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `m-strom` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `m-strom` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `a-v-invers` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `a-v-invers` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `a-v-invers` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `a-v-invers` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `a-v-invers` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `a-kreis-fluid` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `a-kreis-fluid` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `a-kreis-fluid` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `a-kreis-fluid` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `a-kreis-fluid`, `kontinuitaet` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/fluidmechanik.js` unter `'fluid-2-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-2-1-a`, `ex-fluid-2-1-b`, `ex-fluid-2-1-manual-1`, `ex-fluid-2-1-manual-2`, `ex-fluid-2-1-manual-3`, `ex-fluid-2-1-manual-4`, `ex-fluid-2-1-manual-5`, `ex-fluid-2-1-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
-  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
-  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
 
 #### `fluid-2-2` · Bernoulli-Gleichung
 
 - **Topic:** `fluidmechanik` (Fluidmechanik) · **Unit:** Strömung
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Bernoulli: $p + \tfrac{1}{2}\rho v^2 + \rho g z = $ const (entlang Stromlinie)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Drei Druckarten: statisch $p$, dynamisch $\tfrac{1}{2}\rho v^2$, geodätisch $\rho g z$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Voraussetzungen: inkompressibel, stationär, reibungsfrei
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Torricelli: $v = \sqrt{2gh}$ (Ausflussgeschwindigkeit aus Behälter)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Mit Verlusten: $+ \Delta p_V$ auf rechter Seite
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/fluidmechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/fluidmechanik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fluid-1-1` → `rho-g-h`
+  - `fluid-2-1` → `kontinuitaet`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `bernoulli` — Bernoulli $p+\tfrac12\rho v^2+\rho g z=$const (SG 0)
+  2. `drei-drucke` — Statisch $p$, dynamisch $\tfrac12\rho v^2$, geodätisch $\rho g z$ ⇐ `bernoulli` (SG 1)
+  3. `bernoulli-vor` — Voraussetzungen: inkompressibel, stationär, reibungsfrei ⇐ `bernoulli` (SG 2)
+  4. `torricelli` — Torricelli $v=\sqrt{2gh}$ ⇐ `bernoulli` (SG 3)
+  5. `bernoulli-verlust` — Mit Verlust: $+\Delta p_V$ auf rechter Seite ⇐ `bernoulli` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `bernoulli` · **0/5+** — Bernoulli: $p + \tfrac{1}{2}\rho v^2 + \rho g z = $ const (entlang Stromlinie)
+  - 🔴 [1] _hoch_ · Konzepte: `drei-drucke` · **0/5+** — Drei Druckarten: statisch $p$, dynamisch $\tfrac{1}{2}\rho v^2$, geodätisch $\rho g z$
+  - 🔴 [2] _hoch_ · Konzepte: `bernoulli-vor` · **0/5+** — Voraussetzungen: inkompressibel, stationär, reibungsfrei
+  - 🔴 [3] _hoch_ · Konzepte: `torricelli` · **0/5+** — Torricelli: $v = \sqrt{2gh}$ (Ausflussgeschwindigkeit aus Behälter)
+  - 🔴 [4] _mittel_ · Konzepte: `bernoulli-verlust` · **0/5+** — Mit Verlusten: $+ \Delta p_V$ auf rechter Seite
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `bernoulli` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `bernoulli` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `bernoulli` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `bernoulli` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `bernoulli` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `drei-drucke` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `drei-drucke` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `drei-drucke` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `drei-drucke` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `drei-drucke` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `bernoulli-vor` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `bernoulli-vor` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `bernoulli-vor` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `bernoulli-vor` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `bernoulli-vor` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `torricelli` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `torricelli` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `torricelli` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `torricelli` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `torricelli` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `bernoulli-verlust` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `bernoulli-verlust` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `bernoulli-verlust` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `bernoulli-verlust` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `bernoulli-verlust` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/fluidmechanik.js` unter `'fluid-2-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/fluidmechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fluid-2-2-a`, `ex-fluid-2-2-b`, `ex-fluid-2-2-manual-1`, `ex-fluid-2-2-manual-2`, `ex-fluid-2-2-manual-3`, `ex-fluid-2-2-manual-4`, `ex-fluid-2-2-manual-5`, `ex-fluid-2-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `fluidmechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Hydrostatischer Druck $p=\rho g h$. · Kontinuität $A_1 v_1 = A_2 v_2$. · Bernoulli $p+\rho v^2/2 + \rho g h = \text{const}$ (für verlustfreie inkompressible Strömung). · …
-  - _Typische Fehler (gute Distraktoren):_ Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
-  - _Klausur-Fokus:_ Bernoulli mit Venturi-Düse. · Rohrreibung laminar: $\lambda=64/\text{Re}$, Druckverlust berechnen. · Auftrieb eines Körpers bestimmen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Höhenterm $\rho g h$ bei Bernoulli vergessen, wenn das Problem NICHT horizontal ist. · Reynolds dimensionsbehaftet gerechnet. · Verluste ignoriert, obwohl die Strömung offensichtlich turbulent ist.
 
 #### `melem-1-1` · Schraubenverbindungen
 
 - **Topic:** `maschinenelemente` (Maschinenelemente) · **Unit:** Verbindungen
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Vorspannkraft $F_V$ erzeugt Klemmkraft in der Fuge — verhindert Fugenöffnen
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Kraftverteilung: nur ein Bruchteil der Betriebskraft fließt durch die Schraube ($\phi$-Faktor)
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Festigkeitsklassen 8.8, 10.9, 12.9: erste Zahl ≈ $R_m/100$ MPa, zweite ≈ $R_e/R_m$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Anziehdrehmoment $M_A$ aus Hersteller-Tabelle — nie größer als Streckgrenze der Schraube
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/maschinenelemente.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `vorspann` — Vorspannkraft $F_V$ erzeugt Klemmkraft, verhindert Fugenöffnen (SG 0)
+  2. `phi-faktor` — Verspannungsfaktor $\phi$: nur Bruchteil der Betriebskraft durch Schraube ⇐ `vorspann` (SG 1)
+  3. `fkl` — Festigkeitsklassen 8.8, 10.9, 12.9 — erste Zahl ≈ $R_m/100$ (SG 2)
+  4. `anzieh-ma` — Anziehdrehmoment $M_A$ aus Tabelle, nie über Streckgrenze ⇐ `vorspann` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `vorspann` · **0/5+** — Vorspannkraft $F_V$ erzeugt Klemmkraft in der Fuge — verhindert Fugenöffnen
+  - 🔴 [1] _hoch_ · Konzepte: `phi-faktor` · **0/5+** — Kraftverteilung: nur ein Bruchteil der Betriebskraft fließt durch die Schraube ($\phi$-Faktor)
+  - 🔴 [2] _mittel_ · Konzepte: `fkl` · **0/5+** — Festigkeitsklassen 8.8, 10.9, 12.9: erste Zahl ≈ $R_m/100$ MPa, zweite ≈ $R_e/R_m$
+  - 🔴 [3] _mittel_ · Konzepte: `anzieh-ma` · **0/5+** — Anziehdrehmoment $M_A$ aus Hersteller-Tabelle — nie größer als Streckgrenze der Schraube
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `vorspann` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `vorspann` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `vorspann` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `vorspann` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `vorspann` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `phi-faktor` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `phi-faktor` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `phi-faktor` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `phi-faktor` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `phi-faktor` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `fkl` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `fkl` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `fkl` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `fkl` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `fkl` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `anzieh-ma` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `anzieh-ma` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `anzieh-ma` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `anzieh-ma` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `anzieh-ma` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/maschinenelemente.js` unter `'melem-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-1-1-a`, `ex-melem-1-1-b`, `ex-melem-1-1-manual-1`, `ex-melem-1-1-manual-2`, `ex-melem-1-1-manual-3`, `ex-melem-1-1-manual-4`, `ex-melem-1-1-manual-5`, `ex-melem-1-1-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `lager-illustration`, `free-body-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
-  - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
-  - _Klausur-Fokus:_ Schraubenberechnung (Vorspannkraft, Betriebskraft). · Zahnradstufe: Drehzahl/Drehmoment am Ausgang. · Wälzlagerlebensdauer.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `lager-illustration`, `free-body-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
 
 #### `melem-1-2` · Passfedern und formschlüssige Verbindungen
 
 - **Topic:** `maschinenelemente` (Maschinenelemente) · **Unit:** Verbindungen
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Formschluss: Geometrie überträgt Kraft (Passfeder, Zahn); Kraftschluss: Reibung überträgt Kraft (Presssitz, Kupplung)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Drehmoment aus Umfangskraft: $M_t = F_u \cdot r$; Umfangskraft $F_u = 2 M_t / d$ an der Welle mit Durchmesser $d$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Flächenpressung an der Passfeder: $p = F_u / (l \cdot h/2) \le p_{zul}$ — bestimmt die Passfeder-Länge $l$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Passfedern sind Normteile nach DIN 6885 — Form A (rund), Form B (gerade); Bezeichnung $b \times h \times l$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/maschinenelemente.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `form-kraft` — Form- vs. Kraftschluss: Geometrie vs. Reibung (SG 0)
+  2. `mt-fu` — $M_t=F_u\cdot r$, $F_u=2M_t/d$ (SG 1)
+  3. `fl-pressung` — Flächenpressung Passfeder $p=F_u/(l\cdot h/2)\le p_{\text{zul}}$ ⇐ `mt-fu` (SG 2)
+  4. `din-6885` — DIN 6885 Passfedern: Form A/B, $b\times h\times l$ ⇐ `fl-pressung` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `form-kraft` · **0/5+** — Formschluss: Geometrie überträgt Kraft (Passfeder, Zahn); Kraftschluss: Reibung überträgt Kraft (Presssitz, Kupplung)
+  - 🔴 [1] _hoch_ · Konzepte: `mt-fu` · **0/5+** — Drehmoment aus Umfangskraft: $M_t = F_u \cdot r$; Umfangskraft $F_u = 2 M_t / d$ an der Welle mit Durchmesser $d$
+  - 🔴 [2] _hoch_ · Konzepte: `fl-pressung` · **0/5+** — Flächenpressung an der Passfeder: $p = F_u / (l \cdot h/2) \le p_{zul}$ — bestimmt die Passfeder-Länge $l$
+  - 🔴 [3] _mittel_ · Konzepte: `din-6885` · **0/5+** — Passfedern sind Normteile nach DIN 6885 — Form A (rund), Form B (gerade); Bezeichnung $b \times h \times l$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `form-kraft` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `form-kraft` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `form-kraft` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `form-kraft` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `form-kraft` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `mt-fu` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `mt-fu` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `mt-fu` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `mt-fu` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `mt-fu` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `fl-pressung` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `fl-pressung` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `fl-pressung` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `fl-pressung` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `fl-pressung` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `din-6885` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `din-6885` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `din-6885` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `din-6885` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `din-6885` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/maschinenelemente.js` unter `'melem-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-1-2-a`, `ex-melem-1-2-b`, `ex-melem-1-2-manual-1`, `ex-melem-1-2-manual-2`, `ex-melem-1-2-manual-3`, `ex-melem-1-2-manual-4`, `ex-melem-1-2-manual-5`, `ex-melem-1-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `lager-illustration`, `free-body-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
-  - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
-  - _Klausur-Fokus:_ Schraubenberechnung (Vorspannkraft, Betriebskraft). · Zahnradstufe: Drehzahl/Drehmoment am Ausgang. · Wälzlagerlebensdauer.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `lager-illustration`, `free-body-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
 
 #### `melem-2-1` · Wellen und Lager
 
 - **Topic:** `maschinenelemente` (Maschinenelemente) · **Unit:** Wellen, Lager, Zahnräder
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Welle überträgt Drehmoment und Rotation
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Radiallast: quer zur Wellenachse; Axiallast: entlang Wellenachse
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Lagerfunktionen: Führung (radial/axial) + Stützung (Kraftaufnahme)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Fest-Los-Lagerung: ein Lager fixiert axial, anderes erlaubt Längsdehnung
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Lagerarten: Rillenkugel-, Schrägkugel-, Kegelrollen-, Pendelrollenlager
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/maschinenelemente.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `welle-funkt` — Welle überträgt Drehmoment und Rotation (SG 0)
+  2. `rad-ax-last` — Radiallast (quer) vs. Axiallast (entlang Achse) (SG 1)
+  3. `lager-funkt` — Lagerfunktion: Führung + Stützung ⇐ `rad-ax-last` (SG 2)
+  4. `fest-los` — Fest-Los-Lagerung: einer fixiert axial, anderer erlaubt Dehnung ⇐ `lager-funkt` (SG 3)
+  5. `lager-arten` — Rillenkugel-, Schrägkugel-, Kegelrollen-, Pendelrollenlager ⇐ `lager-funkt` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `welle-funkt` · **0/5+** — Welle überträgt Drehmoment und Rotation
+  - 🔴 [1] _hoch_ · Konzepte: `rad-ax-last` · **0/5+** — Radiallast: quer zur Wellenachse; Axiallast: entlang Wellenachse
+  - 🔴 [2] _hoch_ · Konzepte: `lager-funkt` · **0/5+** — Lagerfunktionen: Führung (radial/axial) + Stützung (Kraftaufnahme)
+  - 🔴 [3] _mittel_ · Konzepte: `fest-los` · **0/5+** — Fest-Los-Lagerung: ein Lager fixiert axial, anderes erlaubt Längsdehnung
+  - 🔴 [4] _mittel_ · Konzepte: `lager-arten` · **0/5+** — Lagerarten: Rillenkugel-, Schrägkugel-, Kegelrollen-, Pendelrollenlager
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `welle-funkt` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `welle-funkt` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `welle-funkt` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `welle-funkt` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `welle-funkt` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `rad-ax-last` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `rad-ax-last` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `rad-ax-last` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `rad-ax-last` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `rad-ax-last` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `lager-funkt` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `lager-funkt` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `lager-funkt` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `lager-funkt` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `lager-funkt` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `fest-los` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `fest-los` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `fest-los` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `fest-los` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `fest-los` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `lager-arten` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `lager-arten` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `lager-arten` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `lager-arten` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `lager-arten` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/maschinenelemente.js` unter `'melem-2-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-2-1-a`, `ex-melem-2-1-b`, `ex-melem-2-1-manual-1`, `ex-melem-2-1-manual-2`, `ex-melem-2-1-manual-3`, `ex-melem-2-1-manual-4`, `ex-melem-2-1-manual-5`, `ex-melem-2-1-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `lager-illustration`, `free-body-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
-  - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
-  - _Klausur-Fokus:_ Schraubenberechnung (Vorspannkraft, Betriebskraft). · Zahnradstufe: Drehzahl/Drehmoment am Ausgang. · Wälzlagerlebensdauer.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `lager-illustration`, `free-body-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
 
 #### `melem-2-2` · Zahnräder und Übersetzung
 
 - **Topic:** `maschinenelemente` (Maschinenelemente) · **Unit:** Wellen, Lager, Zahnräder
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Übersetzung: $i = z_2/z_1 = n_1/n_2 = d_2/d_1$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Mehrstufiges Getriebe: $i_\text{ges} = i_1 \cdot i_2 \cdots$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Drehmoment-Wandlung: $M_2 = i \cdot M_1 \cdot \eta$ (Untersetzung steigert Moment)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Umfangskraft $F_t = 2M/d$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Modul $m = d/z$ — Standardgröße für Zahnrad-Geometrie
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/maschinenelemente.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/maschinenelemente.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `uebersetz` — Übersetzung $i=z_2/z_1=n_1/n_2=d_2/d_1$ (SG 0)
+  2. `mehrstufig` — Mehrstufig $i_{\text{ges}}=i_1\cdot i_2\cdots$ ⇐ `uebersetz` (SG 1)
+  3. `m-wandlung` — Drehmoment-Wandlung $M_2=i\cdot M_1\cdot\eta$ ⇐ `uebersetz` (SG 2)
+  4. `f-t-zahn` — Umfangskraft Zahn $F_t=2M/d$ (SG 3)
+  5. `modul-zr` — Modul $m=d/z$ (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `uebersetz` · **0/5+** — Übersetzung: $i = z_2/z_1 = n_1/n_2 = d_2/d_1$
+  - 🔴 [1] _hoch_ · Konzepte: `mehrstufig` · **0/5+** — Mehrstufiges Getriebe: $i_\text{ges} = i_1 \cdot i_2 \cdots$
+  - 🔴 [2] _hoch_ · Konzepte: `m-wandlung` · **0/5+** — Drehmoment-Wandlung: $M_2 = i \cdot M_1 \cdot \eta$ (Untersetzung steigert Moment)
+  - 🔴 [3] _hoch_ · Konzepte: `f-t-zahn` · **0/5+** — Umfangskraft $F_t = 2M/d$
+  - 🔴 [4] _mittel_ · Konzepte: `modul-zr` · **0/5+** — Modul $m = d/z$ — Standardgröße für Zahnrad-Geometrie
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `uebersetz` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `uebersetz` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `uebersetz` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `uebersetz` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `uebersetz` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `mehrstufig` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `mehrstufig` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `mehrstufig` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `mehrstufig` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `mehrstufig` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `m-wandlung` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `m-wandlung` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `m-wandlung` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `m-wandlung` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `m-wandlung` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `f-t-zahn` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `f-t-zahn` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `f-t-zahn` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `f-t-zahn` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `f-t-zahn` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `modul-zr` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `modul-zr` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `modul-zr` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `modul-zr` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `modul-zr` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/maschinenelemente.js` unter `'melem-2-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/maschinenelemente.js`
 - **4-Block-Erklärung fehlt bei:** `ex-melem-2-2-a`, `ex-melem-2-2-b`, `ex-melem-2-2-manual-1`, `ex-melem-2-2-manual-2`, `ex-melem-2-2-manual-3`, `ex-melem-2-2-manual-4`, `ex-melem-2-2-manual-5`, `ex-melem-2-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `lager-illustration`, `free-body-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `maschinenelemente`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ ISO-Gewindedaten (M8, M10, …) aus Tabelle ablesen. · Übersetzungsverhältnis $i=z_2/z_1=n_1/n_2$. · Leistung, Drehmoment, Drehzahl: $P=T\omega=T\cdot 2\pi n$. · …
-  - _Typische Fehler (gute Distraktoren):_ Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
-  - _Klausur-Fokus:_ Schraubenberechnung (Vorspannkraft, Betriebskraft). · Zahnradstufe: Drehzahl/Drehmoment am Ausgang. · Wälzlagerlebensdauer.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `lager-illustration`, `free-body-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Drehzahl $n$ in 1/min oder 1/s — Einheit im Produkt $T\omega$ konsistent halten. · Bei Zahnradstufe die Richtung der Drehmomentsverstärkung vergessen (Übersetzung ins Langsame = mehr Moment). · Vorspannkraft einer Schraube mit Klemmkraft verwechselt.
 
 #### `et-1-1` · Ohmsches Gesetz und Grundbegriffe
 
 - **Topic:** `elektrotechnik` (Elektrotechnik) · **Unit:** Gleichstromkreise
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×2, number-input ×4, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, true-false, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Ohmsches Gesetz $U = R \cdot I$ — Dreieck-Merkhilfe: eine Größe abdecken, die anderen beiden ergeben sie
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Einheiten-Konsistenz: V, A, $\Omega$ — mA und k$\Omega$ immer vor der Rechnung umrechnen
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Reihenschaltung: Widerstände addieren sich, Strom ist überall gleich
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Parallelschaltung: Kehrwerte addieren ($1/R_{ges} = \sum 1/R_i$), Spannung überall gleich
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Spezialfall zwei Parallelwiderstände: $R_{ges} = R_1 R_2 / (R_1 + R_2)$ (Produkt-durch-Summe)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/elektrotechnik.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `ohm` — Ohmsches Gesetz $U=R\cdot I$ (SG 0)
+  2. `einheiten-uia` — V, A, $\Omega$ konsistent — mA, k$\Omega$ vorab umrechnen (SG 1)
+  3. `reihe-r` — Reihe: $R_{\text{ges}}=\sum R_i$, Strom überall gleich ⇐ `ohm` (SG 2)
+  4. `parallel-r` — Parallel: $1/R_{\text{ges}}=\sum 1/R_i$, Spannung überall gleich ⇐ `ohm` (SG 3)
+  5. `r-prod-sum` — 2 Parallelwiderstände: $R=R_1 R_2/(R_1+R_2)$ ⇐ `parallel-r` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `ohm` · **0/5+** — Ohmsches Gesetz $U = R \cdot I$ — Dreieck-Merkhilfe: eine Größe abdecken, die anderen beiden ergeben sie
+  - 🔴 [1] _hoch_ · Konzepte: `einheiten-uia` · **0/5+** — Einheiten-Konsistenz: V, A, $\Omega$ — mA und k$\Omega$ immer vor der Rechnung umrechnen
+  - 🔴 [2] _hoch_ · Konzepte: `reihe-r` · **0/5+** — Reihenschaltung: Widerstände addieren sich, Strom ist überall gleich
+  - 🔴 [3] _hoch_ · Konzepte: `parallel-r` · **0/5+** — Parallelschaltung: Kehrwerte addieren ($1/R_{ges} = \sum 1/R_i$), Spannung überall gleich
+  - 🔴 [4] _mittel_ · Konzepte: `r-prod-sum` · **0/5+** — Spezialfall zwei Parallelwiderstände: $R_{ges} = R_1 R_2 / (R_1 + R_2)$ (Produkt-durch-Summe)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `ohm` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `ohm` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `ohm` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `ohm` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `ohm` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `einheiten-uia` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `einheiten-uia` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `einheiten-uia` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `einheiten-uia` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `einheiten-uia` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `reihe-r` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `reihe-r` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `reihe-r` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `reihe-r` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `reihe-r` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `parallel-r` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `parallel-r` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `parallel-r` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `parallel-r` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `parallel-r` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `r-prod-sum` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `r-prod-sum` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `r-prod-sum` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `r-prod-sum` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `r-prod-sum` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/elektrotechnik.js` unter `'et-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-1-1-a`, `ex-et-1-1-b`, `ex-et-1-1-manual-1`, `ex-et-1-1-manual-2`, `ex-et-1-1-manual-3`, `ex-et-1-1-manual-4`, `ex-et-1-1-manual-5`, `ex-et-1-1-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
-  - _Klausur-Fokus:_ Netzwerkanalyse mit Kirchhoff. · Komplexe Impedanz eines RLC-Gliedes. · Wechselstrom-Leistung (Wirk-, Blind-, Scheinleistung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
 
 #### `et-1-2` · Kirchhoffsche Gesetze
 
 - **Topic:** `elektrotechnik` (Elektrotechnik) · **Unit:** Gleichstromkreise
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Knotensatz (KCL): An jedem Knoten ist die Summe zu- und abfließender Ströme null — Folge der Ladungserhaltung
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Maschensatz (KVL): In jeder geschlossenen Masche ist die Summe aller Spannungsabfälle null — Folge der Energieerhaltung
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Vorzeichenkonvention: Umlaufrichtung festlegen; in Umlaufrichtung Spannungsquelle positiv, Widerstand-Abfall negativ (oder konsistent umgekehrt)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Spannungsteiler: $U_2 = U \cdot R_2 / (R_1 + R_2)$ — direkter Spezialfall des Maschensatzes bei Reihenschaltung
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/elektrotechnik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `et-1-1` → `ohm`, `reihe-r`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `kcl` — Knotensatz: $\sum I_{\text{Knoten}}=0$ (Ladungserhaltung) (SG 0)
+  2. `kvl` — Maschensatz: $\sum U_{\text{Masche}}=0$ (Energieerhaltung) (SG 1)
+  3. `umlauf-vz` — Vorzeichenkonvention: Umlaufrichtung konsistent halten ⇐ `kvl` (SG 2)
+  4. `spann-teiler` — Spannungsteiler $U_2=U\cdot R_2/(R_1+R_2)$ ⇐ `kvl` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `kcl` · **0/5+** — Knotensatz (KCL): An jedem Knoten ist die Summe zu- und abfließender Ströme null — Folge der Ladungserhaltung
+  - 🔴 [1] _hoch_ · Konzepte: `kvl` · **0/5+** — Maschensatz (KVL): In jeder geschlossenen Masche ist die Summe aller Spannungsabfälle null — Folge der Energieerhaltung
+  - 🔴 [2] _hoch_ · Konzepte: `umlauf-vz` · **0/5+** — Vorzeichenkonvention: Umlaufrichtung festlegen; in Umlaufrichtung Spannungsquelle positiv, Widerstand-Abfall negativ (oder konsistent umgekehrt)
+  - 🔴 [3] _mittel_ · Konzepte: `spann-teiler` · **0/5+** — Spannungsteiler: $U_2 = U \cdot R_2 / (R_1 + R_2)$ — direkter Spezialfall des Maschensatzes bei Reihenschaltung
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kcl` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kcl` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `kcl` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `kcl` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `kcl` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `kvl` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `kvl` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `kvl` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `kvl` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `kvl` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `umlauf-vz` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `umlauf-vz` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `umlauf-vz` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `umlauf-vz` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `umlauf-vz` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `spann-teiler` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `spann-teiler` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `spann-teiler` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `spann-teiler` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `spann-teiler` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/elektrotechnik.js` unter `'et-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-1-2-a`, `ex-et-1-2-b`, `ex-et-1-2-manual-1`, `ex-et-1-2-manual-2`, `ex-et-1-2-manual-3`, `ex-et-1-2-manual-4`, `ex-et-1-2-manual-5`, `ex-et-1-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
-  - _Klausur-Fokus:_ Netzwerkanalyse mit Kirchhoff. · Komplexe Impedanz eines RLC-Gliedes. · Wechselstrom-Leistung (Wirk-, Blind-, Scheinleistung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
 
 #### `et-1-3` · Elektrische Leistung und Wirkungsgrad
 
 - **Topic:** `elektrotechnik` (Elektrotechnik) · **Unit:** Gleichstromkreise
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Leistung: $P = U \cdot I = U^2/R = I^2 R$ (drei äquivalente Formen)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Energie: $W = P \cdot t$ (Einheit Joule oder Wattstunden)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Wirkungsgrad: $\eta = P_\text{ab}/P_\text{zu}$, immer $\leq 1$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Wärmeverlust im Widerstand: $P_R = I^2 R$ (Stromwärmegesetz)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Nennspannungen Haushalt: 230 V (einphasig), 400 V (Drehstrom)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/elektrotechnik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `et-1-1` → `ohm`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `p-ui` — Leistung $P=UI=U^2/R=I^2 R$ (SG 0)
+  2. `w-pt` — Energie $W=P\cdot t$ (J oder Wh) ⇐ `p-ui` (SG 1)
+  3. `eta-et` — Wirkungsgrad $\eta=P_{\text{ab}}/P_{\text{zu}}\le 1$ ⇐ `p-ui` (SG 2)
+  4. `p-r-i2r` — Stromwärme $P_R=I^2 R$ ⇐ `p-ui` (SG 3)
+  5. `haushalt-u` — Haushalt: 230 V einphasig, 400 V Drehstrom (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `p-ui` · **0/5+** — Leistung: $P = U \cdot I = U^2/R = I^2 R$ (drei äquivalente Formen)
+  - 🔴 [1] _hoch_ · Konzepte: `w-pt` · **0/5+** — Energie: $W = P \cdot t$ (Einheit Joule oder Wattstunden)
+  - 🔴 [2] _hoch_ · Konzepte: `eta-et` · **0/5+** — Wirkungsgrad: $\eta = P_\text{ab}/P_\text{zu}$, immer $\leq 1$
+  - 🔴 [3] _hoch_ · Konzepte: `p-r-i2r` · **0/5+** — Wärmeverlust im Widerstand: $P_R = I^2 R$ (Stromwärmegesetz)
+  - 🔴 [4] _mittel_ · Konzepte: `haushalt-u` · **0/5+** — Nennspannungen Haushalt: 230 V (einphasig), 400 V (Drehstrom)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `p-ui` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `p-ui` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `p-ui` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `p-ui` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `p-ui` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `w-pt` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `w-pt` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `w-pt` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `w-pt` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `w-pt` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `eta-et` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `eta-et` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `eta-et` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `eta-et` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `eta-et` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `p-r-i2r` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `p-r-i2r` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `p-r-i2r` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `p-r-i2r` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `p-r-i2r` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `haushalt-u` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `haushalt-u` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `haushalt-u` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `haushalt-u` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `haushalt-u` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/elektrotechnik.js` unter `'et-1-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-1-3-a`, `ex-et-1-3-b`, `ex-et-1-3-manual-1`, `ex-et-1-3-manual-2`, `ex-et-1-3-manual-3`, `ex-et-1-3-manual-4`, `ex-et-1-3-manual-5`, `ex-et-1-3-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
-  - _Klausur-Fokus:_ Netzwerkanalyse mit Kirchhoff. · Komplexe Impedanz eines RLC-Gliedes. · Wechselstrom-Leistung (Wirk-, Blind-, Scheinleistung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
 
 #### `et-2-1` · Wechselstromgrundlagen und Impedanz
 
 - **Topic:** `elektrotechnik` (Elektrotechnik) · **Unit:** Wechselstrom
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Wechselspannung: $u(t) = \hat u \sin(\omega t + \varphi)$ mit $\omega = 2\pi f$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Effektivwert: $U = \hat u/\sqrt 2$ (Sinussignal)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Impedanzen: $Z_R = R$, $Z_L = j\omega L$, $Z_C = 1/(j\omega C)$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — |Z_L| = ωL steigt mit Frequenz, |Z_C| = 1/(ωC) fällt mit Frequenz
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Phasenverschiebung: Spule $+90°$ (Strom eilt nach), Kondensator $-90°$ (Strom eilt voraus)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/elektrotechnik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `et-1-1` → `ohm`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `wechselspann` — Wechselspannung $u(t)=\hat u\sin(\omega t+\varphi)$, $\omega=2\pi f$ (SG 0)
+  2. `effektiv` — Effektivwert $U=\hat u/\sqrt 2$ (Sinus) ⇐ `wechselspann` (SG 1)
+  3. `impedanzen` — Impedanzen $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$ (SG 2)
+  4. `z-frequenz` — $|Z_L|=\omega L$ steigt, $|Z_C|=1/(\omega C)$ fällt mit $f$ ⇐ `impedanzen` (SG 3)
+  5. `phasenversch` — Phase: Spule $+90°$ (I eilt nach), Kondensator $-90°$ (I eilt voraus) ⇐ `impedanzen` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `wechselspann` · **0/5+** — Wechselspannung: $u(t) = \hat u \sin(\omega t + \varphi)$ mit $\omega = 2\pi f$
+  - 🔴 [1] _hoch_ · Konzepte: `effektiv` · **0/5+** — Effektivwert: $U = \hat u/\sqrt 2$ (Sinussignal)
+  - 🔴 [2] _hoch_ · Konzepte: `impedanzen` · **0/5+** — Impedanzen: $Z_R = R$, $Z_L = j\omega L$, $Z_C = 1/(j\omega C)$
+  - 🔴 [3] _hoch_ · Konzepte: `z-frequenz` · **0/5+** — |Z_L| = ωL steigt mit Frequenz, |Z_C| = 1/(ωC) fällt mit Frequenz
+  - 🔴 [4] _hoch_ · Konzepte: `phasenversch` · **0/5+** — Phasenverschiebung: Spule $+90°$ (Strom eilt nach), Kondensator $-90°$ (Strom eilt voraus)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `wechselspann` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `wechselspann` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `wechselspann` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `wechselspann` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `wechselspann` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `effektiv` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `effektiv` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `effektiv` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `effektiv` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `effektiv` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `impedanzen` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `impedanzen` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `impedanzen` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `impedanzen` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `impedanzen` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `z-frequenz` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `z-frequenz` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `z-frequenz` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `z-frequenz` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `z-frequenz` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `phasenversch` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `phasenversch` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `phasenversch` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `phasenversch` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `phasenversch` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/elektrotechnik.js` unter `'et-2-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-2-1-a`, `ex-et-2-1-b`, `ex-et-2-1-manual-1`, `ex-et-2-1-manual-2`, `ex-et-2-1-manual-3`, `ex-et-2-1-manual-4`, `ex-et-2-1-manual-5`, `ex-et-2-1-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
-  - _Klausur-Fokus:_ Netzwerkanalyse mit Kirchhoff. · Komplexe Impedanz eines RLC-Gliedes. · Wechselstrom-Leistung (Wirk-, Blind-, Scheinleistung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
 
 #### `et-2-2` · RC- und RL-Schaltungen
 
 - **Topic:** `elektrotechnik` (Elektrotechnik) · **Unit:** Wechselstrom
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×2, number-input ×4, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, true-false, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — RC-Grenzfrequenz: $f_g = 1/(2\pi RC)$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Zeitkonstanten: RC $\tau = RC$, RL $\tau = L/R$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — RL-Impedanz-Betrag: $|Z| = \sqrt{R^2 + (\omega L)^2}$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Leistungsfaktor: $\cos\varphi = R/|Z|$, $P = S \cos\varphi$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Bei $f_g$: Betrag auf $1/\sqrt 2 \approx 0{,}707$ abgefallen (−3 dB)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/elektrotechnik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/elektrotechnik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `et-2-1` → `impedanzen`, `z-frequenz`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `fg-rc` — RC-Grenzfrequenz $f_g=1/(2\pi RC)$ (SG 0)
+  2. `tau-rc-rl` — Zeitkonstanten: RC $\tau=RC$, RL $\tau=L/R$ (SG 1)
+  3. `rl-betrag` — RL-Impedanz $|Z|=\sqrt{R^2+(\omega L)^2}$ (SG 2)
+  4. `cos-phi` — Leistungsfaktor $\cos\varphi=R/|Z|$, $P=S\cos\varphi$ ⇐ `rl-betrag` (SG 3)
+  5. `minus-3db` — Bei $f_g$: Betrag $1/\sqrt 2$ ($-3$ dB) ⇐ `fg-rc` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `fg-rc` · **0/5+** — RC-Grenzfrequenz: $f_g = 1/(2\pi RC)$
+  - 🔴 [1] _hoch_ · Konzepte: `tau-rc-rl` · **0/5+** — Zeitkonstanten: RC $\tau = RC$, RL $\tau = L/R$
+  - 🔴 [2] _hoch_ · Konzepte: `rl-betrag` · **0/5+** — RL-Impedanz-Betrag: $|Z| = \sqrt{R^2 + (\omega L)^2}$
+  - 🔴 [3] _hoch_ · Konzepte: `cos-phi` · **0/5+** — Leistungsfaktor: $\cos\varphi = R/|Z|$, $P = S \cos\varphi$
+  - 🔴 [4] _hoch_ · Konzepte: `minus-3db` · **0/5+** — Bei $f_g$: Betrag auf $1/\sqrt 2 \approx 0{,}707$ abgefallen (−3 dB)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `fg-rc` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `fg-rc` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `fg-rc` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `fg-rc` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `fg-rc` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `tau-rc-rl` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `tau-rc-rl` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `tau-rc-rl` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `tau-rc-rl` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `tau-rc-rl` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `rl-betrag` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `rl-betrag` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `rl-betrag` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `rl-betrag` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `rl-betrag` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `cos-phi` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `cos-phi` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `cos-phi` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `cos-phi` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `cos-phi` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `minus-3db` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `minus-3db` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `minus-3db` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `minus-3db` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `minus-3db` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/elektrotechnik.js` unter `'et-2-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/elektrotechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-et-2-2-a`, `ex-et-2-2-b`, `ex-et-2-2-manual-1`, `ex-et-2-2-manual-2`, `ex-et-2-2-manual-3`, `ex-et-2-2-manual-4`, `ex-et-2-2-manual-5`, `ex-et-2-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `elektrotechnik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ohmsches Gesetz $U=R\,I$ und Leistung $P=UI=I^2 R=U^2/R$. · Kirchhoff: Knotenregel ($\sum I=0$), Maschenregel ($\sum U=0$). · Komplexe Impedanz: $Z_R=R$, $Z_L=j\omega L$, $Z_C=1/(j\omega C)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
-  - _Klausur-Fokus:_ Netzwerkanalyse mit Kirchhoff. · Komplexe Impedanz eines RLC-Gliedes. · Wechselstrom-Leistung (Wirk-, Blind-, Scheinleistung).
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Spannungsteiler nur bei Reihenschaltung ohne Last zulässig. · Bei RLC-Schwingkreis Resonanzfrequenz $\omega_0=1/\sqrt{LC}$ mit Impedanz verwechselt. · Effektiv- und Scheitelwert vertauscht.
 
 #### `rt-1-1` · Regelkreis Grundbegriffe
 
 - **Topic:** `regelungstechnik` (Regelungstechnik) · **Unit:** Grundlagen des Regelkreises
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Signale: Führungsgröße $w$, Regelgröße $y$, Stellgröße $u$, Regelabweichung $e = w - y$, Störgröße $z$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Regelung (geschlossener Kreis) vs. Steuerung (offener Wirkungsablauf) — nur Regelung reagiert auf Störungen
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Blockschaltbild: Regler $\to$ Stellglied $\to$ Regelstrecke $\to$ Messglied $\to$ Vergleichsstelle (Rückführung)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Ziel jeder Regelung: $e \to 0$ trotz Störungen $z$ und Parameter-Schwankungen der Strecke
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/regelungstechnik.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `rk-signale` — Signale: $w,y,u,e=w-y,z$ (SG 0)
+  2. `rk-vs-st` — Regelung (geschlossen) vs. Steuerung (offen) — nur Regelung reagiert auf $z$ ⇐ `rk-signale` (SG 1)
+  3. `blockschalt` — Blockschaltbild: Regler→Stellglied→Strecke→Messglied→Vergleich (SG 2)
+  4. `rk-ziel` — Ziel: $e\to 0$ trotz $z$ und Parameter-Schwankungen ⇐ `rk-signale` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `rk-signale` · **0/5+** — Signale: Führungsgröße $w$, Regelgröße $y$, Stellgröße $u$, Regelabweichung $e = w - y$, Störgröße $z$
+  - 🔴 [1] _hoch_ · Konzepte: `rk-vs-st` · **0/5+** — Regelung (geschlossener Kreis) vs. Steuerung (offener Wirkungsablauf) — nur Regelung reagiert auf Störungen
+  - 🔴 [2] _hoch_ · Konzepte: `blockschalt` · **0/5+** — Blockschaltbild: Regler $\to$ Stellglied $\to$ Regelstrecke $\to$ Messglied $\to$ Vergleichsstelle (Rückführung)
+  - 🔴 [3] _mittel_ · Konzepte: `rk-ziel` · **0/5+** — Ziel jeder Regelung: $e \to 0$ trotz Störungen $z$ und Parameter-Schwankungen der Strecke
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `rk-signale` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `rk-signale` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `rk-signale` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `rk-signale` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `rk-signale` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `rk-vs-st` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `rk-vs-st` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `rk-vs-st` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `rk-vs-st` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `rk-vs-st` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `blockschalt` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `blockschalt` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `blockschalt` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `blockschalt` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | sorting          | `blockschalt` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `rk-ziel` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `rk-ziel` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `rk-ziel` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `rk-ziel` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `rk-ziel` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/regelungstechnik.js` unter `'rt-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/regelungstechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rt-1-1-a`, `ex-rt-1-1-b`, `ex-rt-1-1-manual-1`, `ex-rt-1-1-manual-2`, `ex-rt-1-1-manual-3`, `ex-rt-1-1-manual-4`, `ex-rt-1-1-manual-5`, `ex-rt-1-1-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `complex-plane`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
-  - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
-  - _Klausur-Fokus:_ Stabilität mit Hurwitz prüfen und Grenzverstärkung finden. · Stationäre Regelabweichung P-Regler an PT1. · Sprungantwort eines PT1-Glieds skizzieren.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `complex-plane`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
 
 #### `rt-1-2` · Übertragungsfunktion
 
 - **Topic:** `regelungstechnik` (Regelungstechnik) · **Unit:** Grundlagen des Regelkreises
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×2, number-input ×4, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, true-false, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Übertragungsfunktion $G(s) = Y(s)/U(s)$ nur für LTI-Systeme bei verschwindenden Anfangsbedingungen definiert
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — PT1-Glied: $G(s) = K/(1 + Ts)$ — Verstärkung $K$ und Zeitkonstante $T$; Sprungantwort $y(t) = K(1 - e^{-t/T})$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Statische Verstärkung = $G(0)$ — erhält man durch Einsetzen von $s = 0$ (Endwertsatz für Sprunganregung)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Serienschaltung: Übertragungsfunktionen werden multipliziert; Parallelschaltung: addiert; Rückführung: $T = G/(1+G H)$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Pole von $G(s)$ (Nullstellen des Nenners) bestimmen Stabilität: Realteil $< 0$ = stabil
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/regelungstechnik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `rt-1-1` → `blockschalt`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `g-s` — Übertragungsfunktion $G(s)=Y(s)/U(s)$ (LTI, AB=0) (SG 0)
+  2. `pt1-glied` — PT1 $G(s)=K/(1+Ts)$, Sprungantwort $K(1-e^{-t/T})$ ⇐ `g-s` (SG 1)
+  3. `g-0` — Statische Verstärkung $=G(0)$ ⇐ `g-s` (SG 2)
+  4. `rk-schalt` — Serie multiplizieren, parallel addieren, Rückführung $T=G/(1+GH)$ ⇐ `g-s` (SG 3)
+  5. `pole-stab` — Pole bestimmen Stabilität: $\operatorname{Re}<0$ = stabil ⇐ `g-s` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `g-s` · **0/5+** — Übertragungsfunktion $G(s) = Y(s)/U(s)$ nur für LTI-Systeme bei verschwindenden Anfangsbedingungen definiert
+  - 🔴 [1] _hoch_ · Konzepte: `pt1-glied` · **0/5+** — PT1-Glied: $G(s) = K/(1 + Ts)$ — Verstärkung $K$ und Zeitkonstante $T$; Sprungantwort $y(t) = K(1 - e^{-t/T})$
+  - 🔴 [2] _hoch_ · Konzepte: `g-0` · **0/5+** — Statische Verstärkung = $G(0)$ — erhält man durch Einsetzen von $s = 0$ (Endwertsatz für Sprunganregung)
+  - 🔴 [3] _hoch_ · Konzepte: `rk-schalt` · **0/5+** — Serienschaltung: Übertragungsfunktionen werden multipliziert; Parallelschaltung: addiert; Rückführung: $T = G/(1+G H)$
+  - 🔴 [4] _mittel_ · Konzepte: `pole-stab` · **0/5+** — Pole von $G(s)$ (Nullstellen des Nenners) bestimmen Stabilität: Realteil $< 0$ = stabil
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `g-s` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `g-s` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `g-s` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `g-s` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `g-s` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `pt1-glied` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pt1-glied` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `pt1-glied` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pt1-glied` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `pt1-glied` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `g-0` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `g-0` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `g-0` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `g-0` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `g-0` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `rk-schalt` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `rk-schalt` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `rk-schalt` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `rk-schalt` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `rk-schalt` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `pole-stab` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `pole-stab` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `pole-stab` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `pole-stab` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `pole-stab` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/regelungstechnik.js` unter `'rt-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/regelungstechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rt-1-2-a`, `ex-rt-1-2-b`, `ex-rt-1-2-manual-1`, `ex-rt-1-2-manual-2`, `ex-rt-1-2-manual-3`, `ex-rt-1-2-manual-4`, `ex-rt-1-2-manual-5`, `ex-rt-1-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `complex-plane`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
-  - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
-  - _Klausur-Fokus:_ Stabilität mit Hurwitz prüfen und Grenzverstärkung finden. · Stationäre Regelabweichung P-Regler an PT1. · Sprungantwort eines PT1-Glieds skizzieren.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `complex-plane`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
 
 #### `rt-2-1` · PID-Regler
 
 - **Topic:** `regelungstechnik` (Regelungstechnik) · **Unit:** Regler und Stabilität
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — PID-Formel: $u(t) = K_P(e + \frac{1}{T_I}\int e dt + T_D \dot e)$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — P: schnell, bleibender Regelfehler; I: beseitigt Dauerfehler; D: antizipiert
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — PID-Laplace: $G_R(s) = K_P(1 + 1/(T_I s) + T_D s)$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — I-Anteil dominiert bei niedrigen Frequenzen, D-Anteil bei hohen
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — D rauschempfindlich → in Praxis mit Filterung: $T_D s/(1 + \alpha T_D s)$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/regelungstechnik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `rt-1-2` → `g-s`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `pid-zeit` — PID $u(t)=K_P(e+\frac{1}{T_I}\int e\,dt+T_D\dot e)$ (SG 0)
+  2. `pid-anteile` — P schnell+Restfehler; I beseitigt Dauerfehler; D antizipiert ⇐ `pid-zeit` (SG 1)
+  3. `pid-laplace` — PID-Laplace $G_R(s)=K_P(1+1/(T_I s)+T_D s)$ ⇐ `pid-zeit` (SG 2)
+  4. `pid-frequenz` — I dominiert bei tiefen, D bei hohen Frequenzen ⇐ `pid-anteile` (SG 3)
+  5. `d-filter` — D rauschempfindlich → Filter $T_D s/(1+\alpha T_D s)$ ⇐ `pid-anteile` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `pid-zeit` · **0/5+** — PID-Formel: $u(t) = K_P(e + \frac{1}{T_I}\int e dt + T_D \dot e)$
+  - 🔴 [1] _hoch_ · Konzepte: `pid-anteile` · **0/5+** — P: schnell, bleibender Regelfehler; I: beseitigt Dauerfehler; D: antizipiert
+  - 🔴 [2] _hoch_ · Konzepte: `pid-laplace` · **0/5+** — PID-Laplace: $G_R(s) = K_P(1 + 1/(T_I s) + T_D s)$
+  - 🔴 [3] _hoch_ · Konzepte: `pid-frequenz` · **0/5+** — I-Anteil dominiert bei niedrigen Frequenzen, D-Anteil bei hohen
+  - 🔴 [4] _mittel_ · Konzepte: `d-filter` · **0/5+** — D rauschempfindlich → in Praxis mit Filterung: $T_D s/(1 + \alpha T_D s)$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `pid-zeit` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pid-zeit` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `pid-zeit` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `pid-zeit` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `pid-zeit` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `pid-anteile` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pid-anteile` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `pid-anteile` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pid-anteile` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `pid-anteile` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `pid-laplace` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pid-laplace` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `pid-laplace` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `pid-laplace` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `pid-laplace` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `pid-frequenz` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pid-frequenz` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `pid-frequenz` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pid-frequenz` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `pid-frequenz` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `d-filter` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `d-filter` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `d-filter` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `d-filter` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `d-filter` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/regelungstechnik.js` unter `'rt-2-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/regelungstechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rt-2-1-a`, `ex-rt-2-1-b`, `ex-rt-2-1-manual-1`, `ex-rt-2-1-manual-2`, `ex-rt-2-1-manual-3`, `ex-rt-2-1-manual-4`, `ex-rt-2-1-manual-5`, `ex-rt-2-1-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `complex-plane`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
-  - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
-  - _Klausur-Fokus:_ Stabilität mit Hurwitz prüfen und Grenzverstärkung finden. · Stationäre Regelabweichung P-Regler an PT1. · Sprungantwort eines PT1-Glieds skizzieren.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `complex-plane`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
 
 #### `rt-2-2` · Stabilität
 
 - **Topic:** `regelungstechnik` (Regelungstechnik) · **Unit:** Regler und Stabilität
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Stabilitätsbedingung: alle Pole in linker s-Halbebene ($\text{Re}(s_i) < 0$)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Hurwitz notwendig: alle Koeffizienten $>0$ (kein Vorzeichenwechsel)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Hurwitz hinreichend ab $n \geq 3$: Hurwitz-Determinanten $> 0$ prüfen
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Phasenrand $\varphi_R \geq 30°$, Amplitudenrand $A_R \geq 6$ dB (Praxisrichtwerte)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Pole auf $j\omega$-Achse: grenzstabil (ungedämpfte Schwingung)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/regelungstechnik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/regelungstechnik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `rt-1-2` → `pole-stab`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `stab-pol-rt` — Stabilität: alle Pole in linker s-Halbebene (SG 0)
+  2. `hurwitz-not` — Hurwitz notwendig: alle Koeffizienten $>0$ ⇐ `stab-pol-rt` (SG 1)
+  3. `hurwitz-det` — Hurwitz-Determinanten $>0$ ab $n\ge 3$ ⇐ `hurwitz-not` (SG 2)
+  4. `phi-amp-r` — Phasen-/Amplitudenrand $\varphi_R\ge 30°$, $A_R\ge 6$ dB (SG 3)
+  5. `jomega-pole` — Pole auf $j\omega$-Achse: grenzstabil ⇐ `stab-pol-rt` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `stab-pol-rt` · **0/5+** — Stabilitätsbedingung: alle Pole in linker s-Halbebene ($\text{Re}(s_i) < 0$)
+  - 🔴 [1] _hoch_ · Konzepte: `hurwitz-not` · **0/5+** — Hurwitz notwendig: alle Koeffizienten $>0$ (kein Vorzeichenwechsel)
+  - 🔴 [2] _hoch_ · Konzepte: `hurwitz-det` · **0/5+** — Hurwitz hinreichend ab $n \geq 3$: Hurwitz-Determinanten $> 0$ prüfen
+  - 🔴 [3] _hoch_ · Konzepte: `phi-amp-r` · **0/5+** — Phasenrand $\varphi_R \geq 30°$, Amplitudenrand $A_R \geq 6$ dB (Praxisrichtwerte)
+  - 🔴 [4] _mittel_ · Konzepte: `jomega-pole` · **0/5+** — Pole auf $j\omega$-Achse: grenzstabil (ungedämpfte Schwingung)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `stab-pol-rt` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `stab-pol-rt` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `stab-pol-rt` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `stab-pol-rt` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `stab-pol-rt` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `hurwitz-not` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `hurwitz-not` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `hurwitz-not` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `hurwitz-not` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `hurwitz-not` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `hurwitz-det` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `hurwitz-det` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `hurwitz-det` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `hurwitz-det` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `hurwitz-det` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `phi-amp-r` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `phi-amp-r` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `phi-amp-r` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `phi-amp-r` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `phi-amp-r` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `jomega-pole` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `jomega-pole` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `jomega-pole` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `jomega-pole` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `jomega-pole` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/regelungstechnik.js` unter `'rt-2-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/regelungstechnik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rt-2-2-a`, `ex-rt-2-2-b`, `ex-rt-2-2-manual-1`, `ex-rt-2-2-manual-2`, `ex-rt-2-2-manual-3`, `ex-rt-2-2-manual-4`, `ex-rt-2-2-manual-5`, `ex-rt-2-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `spring-mass-damper`, `complex-plane`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `regelungstechnik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Führungsübertragungsfunktion $T_w=G_0/(1+G_0)$ mit offenem Kreis $G_0$. · P-Regler hat bleibende Regelabweichung; I-Anteil beseitigt sie; D-Anteil wirkt vorausschauend. · PT1-Sprungantwort $y=K_S(1-e^{-t/T})$ — 63 % bei $t=T$. · …
-  - _Typische Fehler (gute Distraktoren):_ Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
-  - _Klausur-Fokus:_ Stabilität mit Hurwitz prüfen und Grenzverstärkung finden. · Stationäre Regelabweichung P-Regler an PT1. · Sprungantwort eines PT1-Glieds skizzieren.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `complex-plane`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Übertragungsfunktion mit und ohne Einheitsrückführung verwechselt. · Hurwitz-Kriterium mit Routh verwechselt. · Dauerschwingfrequenz bei Stabilitätsgrenze nicht berechnet.
 
 #### `werk-2-3` · Fe-C-Diagramm & Wärmebehandlung
 
