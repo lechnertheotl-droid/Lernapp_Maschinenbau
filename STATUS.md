@@ -1490,97 +1490,223 @@ npm run build              # abschließender End-zu-End-Check
 #### `fest-2-4` · Wechselfestigkeit und Betriebsfestigkeit
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Biegung und Torsion
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** number-input ×2, true-false ×1
-- **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Mittelspannung: $\sigma_m = (\sigma_\text{max} + \sigma_\text{min})/2$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Ausschlagspannung: $\sigma_a = (\sigma_\text{max} - \sigma_\text{min})/2$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Goodman-Kriterium: $\sigma_a/\sigma_W + \sigma_m/R_m \leq 1$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Wechselfestigkeit $\sigma_W$: Amplitudengrenze bei $\sigma_m = 0$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Schwingfestigkeit: Dauerfestigkeit, Zeitfestigkeit, Wöhlerlinie (N > 10⁶)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/festigkeitslehre.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fest-1-1` → `sigma-fa`
+  - `fest-2-2` → `re-rm-wahl`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `sigma-m` — Mittelspannung $\sigma_m=(\sigma_{\max}+\sigma_{\min})/2$ (SG 0)
+  2. `sigma-a` — Ausschlagspannung $\sigma_a=(\sigma_{\max}-\sigma_{\min})/2$ (SG 1)
+  3. `goodman` — Goodman $\sigma_a/\sigma_W+\sigma_m/R_m\le 1$ ⇐ `sigma-m`, `sigma-a` (SG 2)
+  4. `sigma-w` — Wechselfestigkeit $\sigma_W$: Amplitudengrenze bei $\sigma_m=0$ (SG 3)
+  5. `wohlerlinie` — Schwingfestigkeit: Dauerfestigkeit/Zeitfestigkeit/Wöhlerlinie ($N>10^6$) ⇐ `sigma-w` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `sigma-m` · **0/5+** — Mittelspannung: $\sigma_m = (\sigma_\text{max} + \sigma_\text{min})/2$
+  - 🔴 [1] _hoch_ · Konzepte: `sigma-a` · **0/5+** — Ausschlagspannung: $\sigma_a = (\sigma_\text{max} - \sigma_\text{min})/2$
+  - 🔴 [2] _hoch_ · Konzepte: `goodman` · **0/5+** — Goodman-Kriterium: $\sigma_a/\sigma_W + \sigma_m/R_m \leq 1$
+  - 🔴 [3] _hoch_ · Konzepte: `sigma-w` · **0/5+** — Wechselfestigkeit $\sigma_W$: Amplitudengrenze bei $\sigma_m = 0$
+  - 🔴 [4] _mittel_ · Konzepte: `wohlerlinie` · **0/5+** — Schwingfestigkeit: Dauerfestigkeit, Zeitfestigkeit, Wöhlerlinie (N > 10⁶)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `sigma-m` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `sigma-m` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `sigma-m` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `sigma-m` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `sigma-m` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `sigma-a` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `sigma-a` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `sigma-a` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `sigma-a` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `sigma-a` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `goodman` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `goodman` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `goodman` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `goodman` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `goodman` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `sigma-w` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `sigma-w` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `sigma-w` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `sigma-w` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `sigma-w` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `wohlerlinie` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `wohlerlinie` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `wohlerlinie` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `wohlerlinie` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `wohlerlinie` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-2-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-2-4-a`, `ex-fest-2-4-b`, `ex-fest-2-4-c`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
-  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
-  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
 
 #### `fest-2-5` · Kerbspannungen & Formzahl
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Biegung und Torsion
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×2, number-input ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Formzahl: $\alpha_K = \sigma_\text{max}/\sigma_\text{nenn}$ (rein geometrisch)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Kerbwirkungszahl $\beta_K \leq \alpha_K$ (werkstoffabhängig, bei zähen kleiner)
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Typische Werte: Welleabsatz scharf $\alpha_K = 2$–3, Gewindegrund $\alpha_K = 3$–5
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Maßnahmen: Verrundung ($r \uparrow$), Oberflächengüte, Druckeigenspannungen
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Dauerfestigkeit mit Kerbe: $\sigma_{W,K} = \sigma_W/\beta_K$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/festigkeitslehre.js`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
-  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
-  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fest-1-1` → `sigma-fa`
+  - `fest-2-4` → `sigma-w`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `formzahl` — Formzahl $\alpha_K=\sigma_{\max}/\sigma_{\text{nenn}}$ (rein geometrisch) (SG 0)
+  2. `kerbwirk` — Kerbwirkungszahl $\beta_K\le\alpha_K$ (werkstoffabhängig) ⇐ `formzahl` (SG 1)
+  3. `kerb-werte` — Welleabsatz scharf $\alpha_K=2$–3, Gewindegrund $3$–5 ⇐ `formzahl` (SG 2)
+  4. `kerb-massnahmen` — Verrundung, Oberflächengüte, Druckeigenspannungen ⇐ `formzahl` (SG 3)
+  5. `sigma-wk` — Dauerfestigkeit mit Kerbe $\sigma_{W,K}=\sigma_W/\beta_K$ ⇐ `kerbwirk` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `formzahl` · **0/5+** — Formzahl: $\alpha_K = \sigma_\text{max}/\sigma_\text{nenn}$ (rein geometrisch)
+  - 🔴 [1] _hoch_ · Konzepte: `kerbwirk` · **0/5+** — Kerbwirkungszahl $\beta_K \leq \alpha_K$ (werkstoffabhängig, bei zähen kleiner)
+  - 🔴 [2] _mittel_ · Konzepte: `kerb-werte` · **0/5+** — Typische Werte: Welleabsatz scharf $\alpha_K = 2$–3, Gewindegrund $\alpha_K = 3$–5
+  - 🔴 [3] _hoch_ · Konzepte: `kerb-massnahmen` · **0/5+** — Maßnahmen: Verrundung ($r \uparrow$), Oberflächengüte, Druckeigenspannungen
+  - 🔴 [4] _hoch_ · Konzepte: `sigma-wk` · **0/5+** — Dauerfestigkeit mit Kerbe: $\sigma_{W,K} = \sigma_W/\beta_K$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `formzahl` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `formzahl` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `formzahl` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `formzahl` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `formzahl` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `kerbwirk` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `kerbwirk` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `kerbwirk` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `kerbwirk` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `kerbwirk` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `kerb-werte` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `kerb-werte` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `kerb-werte` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `kerb-werte` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `kerb-werte` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `kerb-massnahmen` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `kerb-massnahmen` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `kerb-massnahmen` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `kerb-massnahmen` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `kerb-massnahmen` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `sigma-wk` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `sigma-wk` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `sigma-wk` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `sigma-wk` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `sigma-wk` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-2-5': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/festigkeitslehre.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
 
 #### `thermo-2-3` · Kreisprozesse
 
 - **Topic:** `thermodynamik` (Thermodynamik) · **Unit:** Hauptsätze
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×1, number-input ×2
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Carnot: $\eta_C = 1 - T_\text{kalt}/T_\text{warm}$ (in Kelvin!)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Otto-Prozess: $\eta_O = 1 - \varepsilon^{1-\gamma}$ mit Verdichtung $\varepsilon = V_1/V_2$
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Diesel-Prozess: etwas anderer Wirkungsgrad (Einspritzverhältnis)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Rankine/Clausius-Rankine: Dampfkraftwerk, Enthalpiewerte aus h-s-Diagramm
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Im pV-Diagramm: Fläche = Nutzarbeit pro Umlauf
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/thermodynamik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `thermo-1-2` → `volumenarbeit`
+  - `thermo-2-2` → `carnot`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `carnot-kp` — Carnot $\eta_C=1-T_{\text{kalt}}/T_{\text{warm}}$ (K) (SG 0)
+  2. `otto` — Otto $\eta_O=1-\varepsilon^{1-\gamma}$, $\varepsilon=V_1/V_2$ (SG 1)
+  3. `diesel` — Diesel-Prozess: anderer Wirkungsgrad (Einspritzverhältnis) ⇐ `otto` (SG 2)
+  4. `rankine` — Rankine/Clausius-Rankine: Dampfkraftwerk, h-s-Diagramm (SG 3)
+  5. `pv-flaeche` — pV-Fläche = Nutzarbeit pro Umlauf (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `carnot-kp` · **0/5+** — Carnot: $\eta_C = 1 - T_\text{kalt}/T_\text{warm}$ (in Kelvin!)
+  - 🔴 [1] _hoch_ · Konzepte: `otto` · **0/5+** — Otto-Prozess: $\eta_O = 1 - \varepsilon^{1-\gamma}$ mit Verdichtung $\varepsilon = V_1/V_2$
+  - 🔴 [2] _mittel_ · Konzepte: `diesel` · **0/5+** — Diesel-Prozess: etwas anderer Wirkungsgrad (Einspritzverhältnis)
+  - 🔴 [3] _mittel_ · Konzepte: `rankine` · **0/5+** — Rankine/Clausius-Rankine: Dampfkraftwerk, Enthalpiewerte aus h-s-Diagramm
+  - 🔴 [4] _hoch_ · Konzepte: `pv-flaeche` · **0/5+** — Im pV-Diagramm: Fläche = Nutzarbeit pro Umlauf
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `carnot-kp` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `carnot-kp` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `carnot-kp` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `carnot-kp` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `carnot-kp` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `otto` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `otto` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `otto` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `otto` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `otto` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `diesel` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `diesel` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `diesel` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `diesel` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `diesel` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `rankine` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `rankine` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `rankine` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `rankine` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `rankine` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `pv-flaeche` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `pv-flaeche` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `pv-flaeche` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `pv-flaeche` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `pv-flaeche` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/thermodynamik.js` unter `'thermo-2-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-2-3-a`, `ex-thermo-2-3-b`, `ex-thermo-2-3-c`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `pv-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
-  - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
-  - _Klausur-Fokus:_ Carnot-Wirkungsgrad einer Maschine. · Zustandsänderung: Isotherm, isobar, adiabat durchrechnen. · Entropieänderung bei idealem Gas.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `pv-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
 
 #### `thermo-2-4` · Wärmeübertragung
 
 - **Topic:** `thermodynamik` (Thermodynamik) · **Unit:** Hauptsätze
-- **Aufgaben aktuell:** 3 · **mindestens:** 20 · **fehlen bis Minimum:** 17 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** number-input ×2, true-false ×1
-- **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Fourier-Wärmeleitung: $\dot Q = \lambda A \Delta T/d$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Wärmeübergang (Newton): $\dot Q = \alpha A \Delta T$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — k-Wert (mehrlagige Wand): $1/k = 1/\alpha_1 + \sum d_i/\lambda_i + 1/\alpha_2$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Strahlung: $\dot Q = \varepsilon \sigma A (T_1^4 - T_2^4)$ (Stefan-Boltzmann)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Kleiner $k$-Wert = gute Dämmung
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 17 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/thermodynamik.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `fourier-wl` — Fourier-Wärmeleitung $\dot Q=\lambda A\Delta T/d$ (SG 0)
+  2. `newton-wue` — Wärmeübergang (Newton) $\dot Q=\alpha A\Delta T$ (SG 1)
+  3. `k-wert` — k-Wert mehrlagig: $1/k=1/\alpha_1+\sum d_i/\lambda_i+1/\alpha_2$ ⇐ `fourier-wl`, `newton-wue` (SG 2)
+  4. `strahlung` — Strahlung $\dot Q=\varepsilon\sigma A(T_1^4-T_2^4)$ (Stefan-Boltzmann) (SG 3)
+  5. `k-daemmung` — Kleiner k-Wert = gute Dämmung ⇐ `k-wert` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `fourier-wl` · **0/5+** — Fourier-Wärmeleitung: $\dot Q = \lambda A \Delta T/d$
+  - 🔴 [1] _hoch_ · Konzepte: `newton-wue` · **0/5+** — Wärmeübergang (Newton): $\dot Q = \alpha A \Delta T$
+  - 🔴 [2] _hoch_ · Konzepte: `k-wert` · **0/5+** — k-Wert (mehrlagige Wand): $1/k = 1/\alpha_1 + \sum d_i/\lambda_i + 1/\alpha_2$
+  - 🔴 [3] _mittel_ · Konzepte: `strahlung` · **0/5+** — Strahlung: $\dot Q = \varepsilon \sigma A (T_1^4 - T_2^4)$ (Stefan-Boltzmann)
+  - 🔴 [4] _hoch_ · Konzepte: `k-daemmung` · **0/5+** — Kleiner $k$-Wert = gute Dämmung
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `fourier-wl` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `fourier-wl` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `fourier-wl` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `fourier-wl` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `fourier-wl` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `newton-wue` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `newton-wue` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `newton-wue` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `newton-wue` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `newton-wue` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `k-wert` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `k-wert` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `k-wert` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `k-wert` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `k-wert` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `strahlung` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `strahlung` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `strahlung` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `strahlung` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `strahlung` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `k-daemmung` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `k-daemmung` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `k-daemmung` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `k-daemmung` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `k-daemmung` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/thermodynamik.js` unter `'thermo-2-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-2-4-a`, `ex-thermo-2-4-b`, `ex-thermo-2-4-c`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `pv-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
-  - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
-  - _Klausur-Fokus:_ Carnot-Wirkungsgrad einer Maschine. · Zustandsänderung: Isotherm, isobar, adiabat durchrechnen. · Entropieänderung bei idealem Gas.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `pv-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
 
 #### `fluid-2-3` · Rohrströmung und Druckverlust
 
@@ -1808,50 +1934,116 @@ npm run build              # abschließender End-zu-End-Check
 #### `fest-3-2` · Torsion, Knicken & Wechselfestigkeit
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 4 · **mindestens:** 20 · **fehlen bis Minimum:** 16 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** number-input ×3, true-false ×1
-- **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Torsionsspannung in Welle: $\tau = M_T/W_p$, $W_p = \pi d^3/16$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Knickung: Euler $F_{ki} = \pi^2 EI/(\beta L)^2$, $\beta$ aus Lagerung
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Goodman: $\sigma_a/\sigma_W + \sigma_m/R_m \leq 1/S$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Werkstoff S235: Mindeststreckgrenze $R_e = 235$ MPa
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Schlankheitsgrad prüfen vor Euler: $\lambda > \lambda_0$ sonst Tetmajer/Johnson
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 16 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/festigkeitslehre.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fest-1-3` → `tau-mt-wp`, `wp-d3-16`
+  - `fest-1-4` → `euler-fki`, `einspannbeiw`, `schlankheit`, `euler-grenze`
+  - `fest-2-4` → `goodman`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `tau-welle-pr` — Torsionsspannung Welle $\tau=M_T/W_p$, $W_p=\pi d^3/16$ (SG 0)
+  2. `euler-pr` — Euler $F_{ki}=\pi^2 EI/(\beta L)^2$, $\beta$ aus Lagerung (SG 1)
+  3. `goodman-s` — Goodman mit Sicherheit: $\sigma_a/\sigma_W+\sigma_m/R_m\le 1/S$ (SG 2)
+  4. `s235` — S235: Mindeststreckgrenze $R_e=235$ MPa (SG 3)
+  5. `lambda-grenze` — Schlankheit prüfen: $\lambda>\lambda_0$ Euler, sonst Tetmajer/Johnson ⇐ `euler-pr` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `tau-welle-pr` · **0/5+** — Torsionsspannung in Welle: $\tau = M_T/W_p$, $W_p = \pi d^3/16$
+  - 🔴 [1] _hoch_ · Konzepte: `euler-pr` · **0/5+** — Knickung: Euler $F_{ki} = \pi^2 EI/(\beta L)^2$, $\beta$ aus Lagerung
+  - 🔴 [2] _hoch_ · Konzepte: `goodman-s` · **0/5+** — Goodman: $\sigma_a/\sigma_W + \sigma_m/R_m \leq 1/S$
+  - 🔴 [3] _hoch_ · Konzepte: `s235` · **0/5+** — Werkstoff S235: Mindeststreckgrenze $R_e = 235$ MPa
+  - 🔴 [4] _mittel_ · Konzepte: `lambda-grenze` · **0/5+** — Schlankheitsgrad prüfen vor Euler: $\lambda > \lambda_0$ sonst Tetmajer/Johnson
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `tau-welle-pr` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `tau-welle-pr` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `tau-welle-pr` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `tau-welle-pr` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `tau-welle-pr` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `euler-pr` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `euler-pr` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `euler-pr` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `euler-pr` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `euler-pr` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 11 | 2 | recognize          | true-false       | `goodman-s` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `goodman-s` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `goodman-s` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `goodman-s` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `goodman-s` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `s235` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `s235` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `s235` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `s235` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `s235` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `lambda-grenze` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `lambda-grenze` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `lambda-grenze` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `lambda-grenze` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `lambda-grenze` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-3-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-3-2-a`, `ex-fest-3-2-b`, `ex-fest-3-2-c`, `ex-fest-3-2-d`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
-  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
-  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
 
 #### `thermo-3-2` · Kreisprozesse & Wärmeübertragung
 
 - **Topic:** `thermodynamik` (Thermodynamik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 4 · **mindestens:** 20 · **fehlen bis Minimum:** 16 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** number-input ×3, true-false ×1
-- **Typen einsetzen (Rotation):** multiple-choice, matching, sorting, true-false, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Leistung aus Wärmestrom: $P_\text{nutz} = \dot Q_\text{zu} \cdot \eta$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Wärmebilanz Kraftwerk: $\dot Q_\text{ab} = \dot Q_\text{zu} - P_\text{nutz}$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Otto-Wirkungsgrad: $\eta_O = 1 - \varepsilon^{1-\gamma}$, $\gamma \approx 1{,}4$ für Luft
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Wärmestrom durch Wand: $\dot Q = k A \Delta T$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Carnot als theoretische Obergrenze: reale Wirkungsgrade sind kleiner
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 16 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/thermodynamik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `thermo-2-2` → `eta-def`, `carnot`
+  - `thermo-2-3` → `otto`, `pv-flaeche`
+  - `thermo-2-4` → `k-wert`, `fourier-wl`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `p-nutz` — Leistung aus Wärmestrom $P_{\text{nutz}}=\dot Q_{\text{zu}}\cdot\eta$ (SG 0)
+  2. `kw-bilanz` — Kraftwerk-Bilanz $\dot Q_{\text{ab}}=\dot Q_{\text{zu}}-P_{\text{nutz}}$ ⇐ `p-nutz` (SG 1)
+  3. `otto-pr` — Otto $\eta_O=1-\varepsilon^{1-\gamma}$, $\gamma\approx 1{,}4$ für Luft (SG 2)
+  4. `q-wand` — Wärmestrom durch Wand $\dot Q=kA\Delta T$ (SG 3)
+  5. `carnot-obergrenze` — Carnot theoretische Obergrenze, reale $\eta$ kleiner (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `p-nutz` · **0/5+** — Leistung aus Wärmestrom: $P_\text{nutz} = \dot Q_\text{zu} \cdot \eta$
+  - 🔴 [1] _hoch_ · Konzepte: `kw-bilanz` · **0/5+** — Wärmebilanz Kraftwerk: $\dot Q_\text{ab} = \dot Q_\text{zu} - P_\text{nutz}$
+  - 🔴 [2] _hoch_ · Konzepte: `otto-pr` · **0/5+** — Otto-Wirkungsgrad: $\eta_O = 1 - \varepsilon^{1-\gamma}$, $\gamma \approx 1{,}4$ für Luft
+  - 🔴 [3] _hoch_ · Konzepte: `q-wand` · **0/5+** — Wärmestrom durch Wand: $\dot Q = k A \Delta T$
+  - 🔴 [4] _hoch_ · Konzepte: `carnot-obergrenze` · **0/5+** — Carnot als theoretische Obergrenze: reale Wirkungsgrade sind kleiner
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `p-nutz` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `p-nutz` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `p-nutz` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `p-nutz` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `p-nutz` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `kw-bilanz` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `kw-bilanz` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `kw-bilanz` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `kw-bilanz` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `kw-bilanz` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `otto-pr` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `otto-pr` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `otto-pr` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `otto-pr` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `otto-pr` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 16 | 3 | recognize          | true-false       | `q-wand` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `q-wand` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `q-wand` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `q-wand` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `q-wand` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `carnot-obergrenze` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `carnot-obergrenze` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `carnot-obergrenze` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `carnot-obergrenze` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `carnot-obergrenze` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/thermodynamik.js` unter `'thermo-3-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-3-2-a`, `ex-thermo-3-2-b`, `ex-thermo-3-2-c`, `ex-thermo-3-2-d`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `pv-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
-  - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
-  - _Klausur-Fokus:_ Carnot-Wirkungsgrad einer Maschine. · Zustandsänderung: Isotherm, isobar, adiabat durchrechnen. · Entropieänderung bei idealem Gas.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `pv-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
 
 #### `fluid-3-2` · Druckverlust, Pumpen & Ähnlichkeit
 
@@ -3693,50 +3885,117 @@ npm run build              # abschließender End-zu-End-Check
 #### `fest-3-1` · Festigkeit: Prüfungsaufgaben
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×2, number-input ×5, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, true-false, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Kombinierte Beanspruchung: Vergleichsspannung nach GEH (Mises) oder NH
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Mises: $\sigma_v = \sqrt{\sigma^2 + 3\tau^2}$ für Zug+Torsion
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Nachweis: $\sigma_v \leq R_e/S$ bzw. $R_m/S$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Querschnitts-Design: Welle dimensionieren aus gegebenen $M_b$, $M_T$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Sicherheit $S = R/\sigma_v \geq S_\text{soll}$ als Ergebnis angeben
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/festigkeitslehre.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fest-1-1` → `sigma-fa`
+  - `fest-1-3` → `tau-mt-wp`
+  - `fest-2-1` → `sigma-b`
+  - `fest-2-2` → `sigma-zul-fest`, `re-rm-wahl`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `kombi-bean` — Kombinierte Beanspruchung: Vergleichsspannung GEH (Mises) oder NH (SG 0)
+  2. `mises` — Mises $\sigma_v=\sqrt{\sigma^2+3\tau^2}$ für Zug+Torsion ⇐ `kombi-bean` (SG 1)
+  3. `nachweis-sv` — $\sigma_v\le R_e/S$ bzw. $R_m/S$ ⇐ `mises` (SG 2)
+  4. `welle-design` — Welle dimensionieren aus $M_b, M_T$ ⇐ `mises` (SG 3)
+  5. `s-ergebnis` — Sicherheit $S=R/\sigma_v\ge S_{\text{soll}}$ angeben ⇐ `nachweis-sv` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `kombi-bean` · **0/5+** — Kombinierte Beanspruchung: Vergleichsspannung nach GEH (Mises) oder NH
+  - 🔴 [1] _hoch_ · Konzepte: `mises` · **0/5+** — Mises: $\sigma_v = \sqrt{\sigma^2 + 3\tau^2}$ für Zug+Torsion
+  - 🔴 [2] _hoch_ · Konzepte: `nachweis-sv` · **0/5+** — Nachweis: $\sigma_v \leq R_e/S$ bzw. $R_m/S$
+  - 🔴 [3] _hoch_ · Konzepte: `welle-design` · **0/5+** — Querschnitts-Design: Welle dimensionieren aus gegebenen $M_b$, $M_T$
+  - 🔴 [4] _hoch_ · Konzepte: `s-ergebnis` · **0/5+** — Sicherheit $S = R/\sigma_v \geq S_\text{soll}$ als Ergebnis angeben
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kombi-bean` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kombi-bean` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `kombi-bean` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `kombi-bean` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `kombi-bean` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `mises` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `mises` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `mises` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `mises` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `mises` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 11 | 2 | recognize          | true-false       | `nachweis-sv` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `nachweis-sv` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `nachweis-sv` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `nachweis-sv` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `nachweis-sv` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `welle-design` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `welle-design` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `welle-design` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `welle-design` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `welle-design` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 21 | 4 | recognize          | true-false       | `s-ergebnis` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `s-ergebnis` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `s-ergebnis` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `s-ergebnis` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `s-ergebnis` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-3-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-3-1-a`, `ex-fest-3-1-b`, `ex-fest-3-1-c`, `ex-fest-3-1-manual-1`, `ex-fest-3-1-manual-2`, `ex-fest-3-1-manual-3`, `ex-fest-3-1-manual-4`, `ex-fest-3-1-manual-5` … (+3 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
-  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
-  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
 
 #### `thermo-3-1` · Thermo: Prüfungsaufgaben
 
 - **Topic:** `thermodynamik` (Thermodynamik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×2, number-input ×5, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, multiple-choice, true-false, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Isotherme Expansion: $W = nRT \ln(V_2/V_1)$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Isobar: $W = p \Delta V$, $Q = n c_p \Delta T$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Isochor: $W = 0$, $Q = n c_v \Delta T$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Adiabatisch: $pV^\gamma = $ const, $TV^{\gamma-1} = $ const
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Zustandsgleichung ideales Gas: $pV = nRT$ (oder $p = \rho R_s T$)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/thermodynamik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `thermo-1-1` → `pv-nrt`
+  - `thermo-1-2` → `isobar`, `isotherm`, `volumenarbeit`
+  - `thermo-2-1` → `hs1-geschl`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `iso-expansion` — Isotherme Expansion $W=nRT\ln(V_2/V_1)$ (SG 0)
+  2. `iso-bar-pr` — Isobar $W=p\Delta V$, $Q=n c_p\Delta T$ (SG 1)
+  3. `iso-chor` — Isochor $W=0$, $Q=n c_v\Delta T$ (SG 2)
+  4. `adiabatisch` — Adiabatisch $pV^\gamma=$const, $TV^{\gamma-1}=$const (SG 3)
+  5. `zustand-gas` — Zustandsgleichung $pV=nRT$ (oder $p=\rho R_s T$) (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `iso-expansion` · **0/5+** — Isotherme Expansion: $W = nRT \ln(V_2/V_1)$
+  - 🔴 [1] _hoch_ · Konzepte: `iso-bar-pr` · **0/5+** — Isobar: $W = p \Delta V$, $Q = n c_p \Delta T$
+  - 🔴 [2] _hoch_ · Konzepte: `iso-chor` · **0/5+** — Isochor: $W = 0$, $Q = n c_v \Delta T$
+  - 🔴 [3] _hoch_ · Konzepte: `adiabatisch` · **0/5+** — Adiabatisch: $pV^\gamma = $ const, $TV^{\gamma-1} = $ const
+  - 🔴 [4] _hoch_ · Konzepte: `zustand-gas` · **0/5+** — Zustandsgleichung ideales Gas: $pV = nRT$ (oder $p = \rho R_s T$)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `iso-expansion` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `iso-expansion` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `iso-expansion` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `iso-expansion` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `iso-expansion` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `iso-bar-pr` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `iso-bar-pr` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `iso-bar-pr` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `iso-bar-pr` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `iso-bar-pr` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `iso-chor` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `iso-chor` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `iso-chor` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `iso-chor` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `iso-chor` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `adiabatisch` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `adiabatisch` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `adiabatisch` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `adiabatisch` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `adiabatisch` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `zustand-gas` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `zustand-gas` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `zustand-gas` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `zustand-gas` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `zustand-gas` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/thermodynamik.js` unter `'thermo-3-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-3-1-a`, `ex-thermo-3-1-b`, `ex-thermo-3-1-c`, `ex-thermo-3-1-manual-1`, `ex-thermo-3-1-manual-2`, `ex-thermo-3-1-manual-3`, `ex-thermo-3-1-manual-4`, `ex-thermo-3-1-manual-5` … (+3 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `pv-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
-  - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
-  - _Klausur-Fokus:_ Carnot-Wirkungsgrad einer Maschine. · Zustandsänderung: Isotherm, isobar, adiabat durchrechnen. · Entropieänderung bei idealem Gas.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `pv-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
 
 #### `fluid-3-1` · Fluid: Prüfungsaufgaben
 
@@ -5932,190 +6191,413 @@ npm run build              # abschließender End-zu-End-Check
 #### `fest-1-1` · Normalspannung
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Spannung und Dehnung
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — $\sigma = F/A$ — Kraft normal zur Fläche, Einheit $\mathrm{N/mm^2 = MPa}$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — 1 MPa = 1 N/mm² = $10^6$ Pa: Einheiten-Umrechnung ohne Rechenfehler
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Zug vs. Druck: Vorzeichenkonvention (+Zug, −Druck) klar halten
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Querschnittsfläche: bei Kreis $A = \pi d^2/4$, nicht $\pi d^2$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/festigkeitslehre.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `sigma-fa` — Normalspannung $\sigma=F/A$ — Einheit MPa = N/mm² (SG 0)
+  2. `mpa-pa-fest` — 1 MPa = 1 N/mm² = $10^6$ Pa (SG 1)
+  3. `zug-druck` — Vorzeichenkonvention: + Zug, − Druck ⇐ `sigma-fa` (SG 2)
+  4. `a-kreis` — Kreisquerschnitt $A=\pi d^2/4$ (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `sigma-fa` · **0/5+** — $\sigma = F/A$ — Kraft normal zur Fläche, Einheit $\mathrm{N/mm^2 = MPa}$
+  - 🔴 [1] _hoch_ · Konzepte: `mpa-pa-fest` · **0/5+** — 1 MPa = 1 N/mm² = $10^6$ Pa: Einheiten-Umrechnung ohne Rechenfehler
+  - 🔴 [2] _mittel_ · Konzepte: `zug-druck` · **0/5+** — Zug vs. Druck: Vorzeichenkonvention (+Zug, −Druck) klar halten
+  - 🔴 [3] _hoch_ · Konzepte: `a-kreis` · **0/5+** — Querschnittsfläche: bei Kreis $A = \pi d^2/4$, nicht $\pi d^2$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `sigma-fa` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `sigma-fa` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `sigma-fa` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `sigma-fa` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `sigma-fa` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `mpa-pa-fest` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `mpa-pa-fest` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `mpa-pa-fest` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `mpa-pa-fest` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `mpa-pa-fest` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `zug-druck` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `zug-druck` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `zug-druck` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `zug-druck` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `zug-druck` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `a-kreis` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `a-kreis` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `a-kreis` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `a-kreis` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `a-kreis`, `sigma-fa` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-1-1-a`, `ex-fest-1-1-b`, `ex-fest-1-1-manual-1`, `ex-fest-1-1-manual-2`, `ex-fest-1-1-manual-3`, `ex-fest-1-1-manual-4`, `ex-fest-1-1-manual-5`, `ex-fest-1-1-manual-6` … (+2 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
-  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
-  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
 
 #### `fest-1-2` · Hookesches Gesetz
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Spannung und Dehnung
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — $\sigma = E\,\varepsilon$ im linear-elastischen Bereich — nur hier gilt Hooke
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Dehnung $\varepsilon = \Delta l / l_0$ dimensionslos; oft in ‰ oder %
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — E-Modul ist **Material-Konstante**, unabhängig von Geometrie (Stahl $\approx 210\,\mathrm{GPa}$)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Querkontraktion $\varepsilon_q = -\nu\,\varepsilon$ mit Poisson-Zahl $\nu \approx 0{,}3$ (Stahl)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/festigkeitslehre.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fest-1-1` → `sigma-fa`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `hooke` — $\sigma=E\varepsilon$ im linear-elastischen Bereich (SG 0)
+  2. `dehnung` — Dehnung $\varepsilon=\Delta l/l_0$, dimensionslos (SG 1)
+  3. `e-modul-mat` — E-Modul Materialkonstante (Stahl $\approx 210$ GPa) ⇐ `hooke` (SG 2)
+  4. `querkontr` — Querkontraktion $\varepsilon_q=-\nu\varepsilon$ mit $\nu\approx 0{,}3$ (Stahl) ⇐ `dehnung` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `hooke` · **0/5+** — $\sigma = E\,\varepsilon$ im linear-elastischen Bereich — nur hier gilt Hooke
+  - 🔴 [1] _hoch_ · Konzepte: `dehnung` · **0/5+** — Dehnung $\varepsilon = \Delta l / l_0$ dimensionslos; oft in ‰ oder %
+  - 🔴 [2] _hoch_ · Konzepte: `e-modul-mat` · **0/5+** — E-Modul ist **Material-Konstante**, unabhängig von Geometrie (Stahl $\approx 210\,\mathrm{GPa}$)
+  - 🔴 [3] _mittel_ · Konzepte: `querkontr` · **0/5+** — Querkontraktion $\varepsilon_q = -\nu\,\varepsilon$ mit Poisson-Zahl $\nu \approx 0{,}3$ (Stahl)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `hooke` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `hooke` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `hooke` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `hooke` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `hooke` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `dehnung` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `dehnung` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `dehnung` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `dehnung` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `dehnung` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `e-modul-mat` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `e-modul-mat` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `e-modul-mat` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `e-modul-mat` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `e-modul-mat` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `querkontr` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `querkontr` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `querkontr` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `querkontr` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `querkontr` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-1-2-a`, `ex-fest-1-2-b`, `ex-fest-1-2-manual-1`, `ex-fest-1-2-manual-2`, `ex-fest-1-2-manual-3`, `ex-fest-1-2-manual-4`, `ex-fest-1-2-manual-5`, `ex-fest-1-2-manual-6` … (+2 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
-  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
-  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
 
 #### `fest-2-1` · Biegespannung
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Biegung und Torsion
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Biegespannung: $\sigma_b = M_b/W_b$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Axiales Widerstandsmoment Rechteck: $W_b = bh^2/6$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Kreisquerschnitt: $W_b = \pi d^3/32$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Spannungsverteilung linear im Querschnitt: Null in neutraler Faser, max. am Rand
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — $\sigma_b = M_b y/I$ für beliebige Stelle $y$ von neutraler Faser
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/festigkeitslehre.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fest-1-1` → `sigma-fa`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `sigma-b` — Biegespannung $\sigma_b=M_b/W_b$ (SG 0)
+  2. `wb-rechteck` — Rechteck $W_b=bh^2/6$ ⇐ `sigma-b` (SG 1)
+  3. `wb-kreis` — Kreis $W_b=\pi d^3/32$ ⇐ `sigma-b` (SG 2)
+  4. `sigma-linear` — Lineare Verteilung: 0 in neutraler Faser, max. am Rand ⇐ `sigma-b` (SG 3)
+  5. `sigma-y` — $\sigma_b=M_b y/I$ für beliebige Faserstelle $y$ ⇐ `sigma-linear` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `sigma-b` · **0/5+** — Biegespannung: $\sigma_b = M_b/W_b$
+  - 🔴 [1] _hoch_ · Konzepte: `wb-rechteck` · **0/5+** — Axiales Widerstandsmoment Rechteck: $W_b = bh^2/6$
+  - 🔴 [2] _hoch_ · Konzepte: `wb-kreis` · **0/5+** — Kreisquerschnitt: $W_b = \pi d^3/32$
+  - 🔴 [3] _hoch_ · Konzepte: `sigma-linear` · **0/5+** — Spannungsverteilung linear im Querschnitt: Null in neutraler Faser, max. am Rand
+  - 🔴 [4] _mittel_ · Konzepte: `sigma-y` · **0/5+** — $\sigma_b = M_b y/I$ für beliebige Stelle $y$ von neutraler Faser
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `sigma-b` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `sigma-b` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `sigma-b` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `sigma-b` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `sigma-b` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `wb-rechteck` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `wb-rechteck` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `wb-rechteck` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `wb-rechteck` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `wb-rechteck`, `sigma-b` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `wb-kreis` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `wb-kreis` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `wb-kreis` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `wb-kreis` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `wb-kreis`, `sigma-b` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `sigma-linear` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `sigma-linear` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `sigma-linear` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `sigma-linear` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `sigma-linear` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `sigma-y` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `sigma-y` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `sigma-y` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `sigma-y` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `sigma-y` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-2-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-2-1-a`, `ex-fest-2-1-b`, `ex-fest-2-1-manual-1`, `ex-fest-2-1-manual-2`, `ex-fest-2-1-manual-3`, `ex-fest-2-1-manual-4`, `ex-fest-2-1-manual-5`, `ex-fest-2-1-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
-  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
-  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
 
 #### `fest-2-2` · Sicherheitszahl
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Biegung und Torsion
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Zulässige Spannung: $\sigma_\text{zul} = R/S$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Festigkeitsnachweis: $\sigma_\text{vorh} \leq \sigma_\text{zul}$
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Typische Sicherheitszahlen: $S = 1{,}5$ (zäh, statisch) bis $S = 4$ (dynamisch, spröde)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Referenz-Kennwerte: $R_e$ (Streckgrenze, zäh), $R_m$ (Zugfestigkeit, spröde)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Größeres $S$ → kleineres $\sigma_\text{zul}$ (mehr Sicherheit = weniger Auslastung erlaubt)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/festigkeitslehre.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/festigkeitslehre.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fest-1-1` → `sigma-fa`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `sigma-zul-fest` — $\sigma_{\text{zul}}=R/S$ (SG 0)
+  2. `fest-nachweis` — Nachweis $\sigma_{\text{vorh}}\le\sigma_{\text{zul}}$ ⇐ `sigma-zul-fest` (SG 1)
+  3. `s-werte` — $S=1{,}5$ statisch zäh bis $S=4$ dynamisch spröde ⇐ `sigma-zul-fest` (SG 2)
+  4. `re-rm-wahl` — $R_e$ (zäh) bzw. $R_m$ (spröde) als Referenz wählen ⇐ `sigma-zul-fest` (SG 3)
+  5. `s-monoton` — Größeres $S$ → kleineres $\sigma_{\text{zul}}$ ⇐ `sigma-zul-fest` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `sigma-zul-fest` · **0/5+** — Zulässige Spannung: $\sigma_\text{zul} = R/S$
+  - 🔴 [1] _hoch_ · Konzepte: `fest-nachweis` · **0/5+** — Festigkeitsnachweis: $\sigma_\text{vorh} \leq \sigma_\text{zul}$
+  - 🔴 [2] _mittel_ · Konzepte: `s-werte` · **0/5+** — Typische Sicherheitszahlen: $S = 1{,}5$ (zäh, statisch) bis $S = 4$ (dynamisch, spröde)
+  - 🔴 [3] _hoch_ · Konzepte: `re-rm-wahl` · **0/5+** — Referenz-Kennwerte: $R_e$ (Streckgrenze, zäh), $R_m$ (Zugfestigkeit, spröde)
+  - 🔴 [4] _hoch_ · Konzepte: `s-monoton` · **0/5+** — Größeres $S$ → kleineres $\sigma_\text{zul}$ (mehr Sicherheit = weniger Auslastung erlaubt)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `sigma-zul-fest` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `sigma-zul-fest` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `sigma-zul-fest` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `sigma-zul-fest` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `sigma-zul-fest` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `fest-nachweis` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `fest-nachweis` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `fest-nachweis` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `fest-nachweis` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `fest-nachweis` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `s-werte` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `s-werte` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `s-werte` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `s-werte` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `s-werte` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `re-rm-wahl` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `re-rm-wahl` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `re-rm-wahl` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `re-rm-wahl` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `re-rm-wahl` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `s-monoton` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `s-monoton` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `s-monoton` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `s-monoton` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `s-monoton` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-2-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/festigkeitslehre.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fest-2-2-a`, `ex-fest-2-2-b`, `ex-fest-2-2-manual-1`, `ex-fest-2-2-manual-2`, `ex-fest-2-2-manual-3`, `ex-fest-2-2-manual-4`, `ex-fest-2-2-manual-5`, `ex-fest-2-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
-  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
-  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
 
 #### `thermo-1-1` · Ideales Gas
 
 - **Topic:** `thermodynamik` (Thermodynamik) · **Unit:** Zustandsgrößen
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — $pV = nRT$ mit $R = 8{,}314\,\mathrm{J/(mol\,K)}$; alternativ $p V = m R_s T$ mit spez. Gaskonstante
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Temperatur **immer** in Kelvin: $T[K] = T[°C] + 273{,}15$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Einheiten: $p$ in Pa, $V$ in m³, $n$ in mol — keine Liter/bar in die Grundformel
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — $R_s = R/M$ aus molarer Masse $M$ des Gases (Luft: $M \approx 28{,}96\,\mathrm{g/mol}$)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/thermodynamik.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `pv-nrt` — Ideales Gas $pV=nRT$, $R=8{,}314$ J/(mol·K) (SG 0)
+  2. `t-kelvin` — Temperatur in Kelvin: $T[K]=T[°C]+273{,}15$ (SG 1)
+  3. `einheiten-pv` — Pa, m³, mol — keine Liter/bar in Grundformel ⇐ `pv-nrt` (SG 2)
+  4. `spez-r` — Spezifische Gaskonstante $R_s=R/M$ ⇐ `pv-nrt` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `pv-nrt` · **0/5+** — $pV = nRT$ mit $R = 8{,}314\,\mathrm{J/(mol\,K)}$; alternativ $p V = m R_s T$ mit spez. Gaskonstante
+  - 🔴 [1] _hoch_ · Konzepte: `t-kelvin` · **0/5+** — Temperatur **immer** in Kelvin: $T[K] = T[°C] + 273{,}15$
+  - 🔴 [2] _hoch_ · Konzepte: `einheiten-pv` · **0/5+** — Einheiten: $p$ in Pa, $V$ in m³, $n$ in mol — keine Liter/bar in die Grundformel
+  - 🔴 [3] _mittel_ · Konzepte: `spez-r` · **0/5+** — $R_s = R/M$ aus molarer Masse $M$ des Gases (Luft: $M \approx 28{,}96\,\mathrm{g/mol}$)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `pv-nrt` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pv-nrt` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `pv-nrt` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `pv-nrt` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `pv-nrt` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `t-kelvin` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `t-kelvin` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `t-kelvin` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `t-kelvin` | 1 | 0 | 🔴 | °C in pV=nRT eingesetzt |
+| 10 | 1 | transfer           | number-input     | `t-kelvin` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `einheiten-pv` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `einheiten-pv` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `einheiten-pv` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `einheiten-pv` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `einheiten-pv` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `spez-r` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `spez-r` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `spez-r` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `spez-r` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `spez-r` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/thermodynamik.js` unter `'thermo-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-1-1-a`, `ex-thermo-1-1-b`, `ex-thermo-1-1-manual-1`, `ex-thermo-1-1-manual-2`, `ex-thermo-1-1-manual-3`, `ex-thermo-1-1-manual-4`, `ex-thermo-1-1-manual-5`, `ex-thermo-1-1-manual-6` … (+2 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `pv-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
-  - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
-  - _Klausur-Fokus:_ Carnot-Wirkungsgrad einer Maschine. · Zustandsänderung: Isotherm, isobar, adiabat durchrechnen. · Entropieänderung bei idealem Gas.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `pv-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
 
 #### `thermo-1-2` · Druck und Arbeit
 
 - **Topic:** `thermodynamik` (Thermodynamik) · **Unit:** Zustandsgrößen
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Volumenarbeit $W = \int p\,dV$ = Fläche unter der Kurve im pV-Diagramm
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Isobar ($p$ const): $W = p \cdot \Delta V$ — direktes Rechteck
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Isotherm ($T$ const): $W = nRT \ln(V_2/V_1)$ — Vorzeichen beachten
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Vorzeichenkonvention: $W > 0$ = vom System **abgegeben**; umgekehrt in mancher Literatur
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/thermodynamik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `thermo-1-1` → `pv-nrt`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `volumenarbeit` — Volumenarbeit $W=\int p\,dV$ = Fläche im pV-Diagramm (SG 0)
+  2. `isobar` — Isobar ($p$ const): $W=p\cdot\Delta V$ ⇐ `volumenarbeit` (SG 1)
+  3. `isotherm` — Isotherm ($T$ const): $W=nRT\ln(V_2/V_1)$ ⇐ `volumenarbeit` (SG 2)
+  4. `vz-konv-w` — Vorzeichenkonvention: $W>0$ = abgegeben (Literatur unterschiedlich!) ⇐ `volumenarbeit` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `volumenarbeit` · **0/5+** — Volumenarbeit $W = \int p\,dV$ = Fläche unter der Kurve im pV-Diagramm
+  - 🔴 [1] _hoch_ · Konzepte: `isobar` · **0/5+** — Isobar ($p$ const): $W = p \cdot \Delta V$ — direktes Rechteck
+  - 🔴 [2] _hoch_ · Konzepte: `isotherm` · **0/5+** — Isotherm ($T$ const): $W = nRT \ln(V_2/V_1)$ — Vorzeichen beachten
+  - 🔴 [3] _mittel_ · Konzepte: `vz-konv-w` · **0/5+** — Vorzeichenkonvention: $W > 0$ = vom System **abgegeben**; umgekehrt in mancher Literatur
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `volumenarbeit` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `volumenarbeit` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `volumenarbeit` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `volumenarbeit` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `volumenarbeit` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `isobar` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `isobar` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `isobar` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `isobar` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `isobar` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `isotherm` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `isotherm` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `isotherm` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `isotherm` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `isotherm` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `vz-konv-w` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `vz-konv-w` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `vz-konv-w` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `vz-konv-w` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `vz-konv-w` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/thermodynamik.js` unter `'thermo-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-1-2-a`, `ex-thermo-1-2-b`, `ex-thermo-1-2-manual-1`, `ex-thermo-1-2-manual-2`, `ex-thermo-1-2-manual-3`, `ex-thermo-1-2-manual-4`, `ex-thermo-1-2-manual-5`, `ex-thermo-1-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `pv-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
-  - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
-  - _Klausur-Fokus:_ Carnot-Wirkungsgrad einer Maschine. · Zustandsänderung: Isotherm, isobar, adiabat durchrechnen. · Entropieänderung bei idealem Gas.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `pv-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
 
 #### `thermo-2-1` · Erster Hauptsatz
 
 - **Topic:** `thermodynamik` (Thermodynamik) · **Unit:** Hauptsätze
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — 1. Hauptsatz geschlossen: $\Delta U = Q - W$ (Q zugeführt, W abgegeben)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — 1. Hauptsatz offen (stationär): $\dot Q + \dot W_t = \dot m (h_2 - h_1)$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Vorzeichenkonvention: Q, W zugeführt > 0
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Innere Energie $U$ Zustandsgröße, Q und W Prozessgrößen
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Technische Arbeit $W_t = -\int V dp$ vs. Volumenarbeit $W = \int p dV$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/thermodynamik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `thermo-1-2` → `volumenarbeit`, `vz-konv-w`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `hs1-geschl` — 1. HS geschlossen: $\Delta U=Q-W$ (SG 0)
+  2. `hs1-offen` — 1. HS offen (stationär): $\dot Q+\dot W_t=\dot m(h_2-h_1)$ ⇐ `hs1-geschl` (SG 1)
+  3. `vz-q-w` — Vorzeichenkonvention: Q, W zugeführt $>0$ (SG 2)
+  4. `u-zustand` — Innere Energie $U$ Zustandsgröße; Q, W Prozessgrößen ⇐ `hs1-geschl` (SG 3)
+  5. `wt-vs-w` — Technische Arbeit $W_t=-\int V\,dp$ vs. Volumenarbeit $W=\int p\,dV$ ⇐ `hs1-offen` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `hs1-geschl` · **0/5+** — 1. Hauptsatz geschlossen: $\Delta U = Q - W$ (Q zugeführt, W abgegeben)
+  - 🔴 [1] _hoch_ · Konzepte: `hs1-offen` · **0/5+** — 1. Hauptsatz offen (stationär): $\dot Q + \dot W_t = \dot m (h_2 - h_1)$
+  - 🔴 [2] _hoch_ · Konzepte: `vz-q-w` · **0/5+** — Vorzeichenkonvention: Q, W zugeführt > 0
+  - 🔴 [3] _hoch_ · Konzepte: `u-zustand` · **0/5+** — Innere Energie $U$ Zustandsgröße, Q und W Prozessgrößen
+  - 🔴 [4] _mittel_ · Konzepte: `wt-vs-w` · **0/5+** — Technische Arbeit $W_t = -\int V dp$ vs. Volumenarbeit $W = \int p dV$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `hs1-geschl` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `hs1-geschl` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `hs1-geschl` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `hs1-geschl` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `hs1-geschl` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `hs1-offen` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `hs1-offen` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `hs1-offen` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `hs1-offen` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `hs1-offen` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `vz-q-w` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `vz-q-w` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `vz-q-w` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `vz-q-w` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `vz-q-w` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `u-zustand` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `u-zustand` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `u-zustand` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `u-zustand` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `u-zustand` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `wt-vs-w` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `wt-vs-w` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `wt-vs-w` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `wt-vs-w` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `wt-vs-w` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/thermodynamik.js` unter `'thermo-2-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-2-1-a`, `ex-thermo-2-1-b`, `ex-thermo-2-1-manual-1`, `ex-thermo-2-1-manual-2`, `ex-thermo-2-1-manual-3`, `ex-thermo-2-1-manual-4`, `ex-thermo-2-1-manual-5`, `ex-thermo-2-1-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `pv-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
-  - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
-  - _Klausur-Fokus:_ Carnot-Wirkungsgrad einer Maschine. · Zustandsänderung: Isotherm, isobar, adiabat durchrechnen. · Entropieänderung bei idealem Gas.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `pv-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
 
 #### `thermo-2-2` · Wirkungsgrad
 
 - **Topic:** `thermodynamik` (Thermodynamik) · **Unit:** Hauptsätze
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Wirkungsgrad: $\eta = E_\text{nutz}/E_\text{zu} \leq 1$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — 2. Hauptsatz: $\eta < 1$ für Wärmekraftmaschine (Entropieargument)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Carnot-Grenze: $\eta \leq \eta_C = 1 - T_\text{kalt}/T_\text{warm}$ (K!)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Kälteleistungszahl: $\varepsilon_K = Q_\text{kalt}/W$ (kann > 1 sein!)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Wärmepumpe: $\varepsilon_{WP} = Q_\text{warm}/W = \varepsilon_K + 1$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/thermodynamik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/thermodynamik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `thermo-1-1` → `t-kelvin`
+  - `thermo-2-1` → `hs1-geschl`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `eta-def` — Wirkungsgrad $\eta=E_{\text{nutz}}/E_{\text{zu}}\le 1$ (SG 0)
+  2. `hs2` — 2. HS: $\eta<1$ für Wärmekraftmaschine ⇐ `eta-def` (SG 1)
+  3. `carnot` — Carnot-Grenze $\eta_C=1-T_{\text{kalt}}/T_{\text{warm}}$ (K!) ⇐ `hs2` (SG 2)
+  4. `kaelte-eps` — Kälteleistungszahl $\varepsilon_K=Q_{\text{kalt}}/W$ (kann > 1) ⇐ `eta-def` (SG 3)
+  5. `waerme-eps` — Wärmepumpe $\varepsilon_{WP}=Q_{\text{warm}}/W=\varepsilon_K+1$ ⇐ `kaelte-eps` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `eta-def` · **0/5+** — Wirkungsgrad: $\eta = E_\text{nutz}/E_\text{zu} \leq 1$
+  - 🔴 [1] _hoch_ · Konzepte: `hs2` · **0/5+** — 2. Hauptsatz: $\eta < 1$ für Wärmekraftmaschine (Entropieargument)
+  - 🔴 [2] _hoch_ · Konzepte: `carnot` · **0/5+** — Carnot-Grenze: $\eta \leq \eta_C = 1 - T_\text{kalt}/T_\text{warm}$ (K!)
+  - 🔴 [3] _mittel_ · Konzepte: `kaelte-eps` · **0/5+** — Kälteleistungszahl: $\varepsilon_K = Q_\text{kalt}/W$ (kann > 1 sein!)
+  - 🔴 [4] _mittel_ · Konzepte: `waerme-eps` · **0/5+** — Wärmepumpe: $\varepsilon_{WP} = Q_\text{warm}/W = \varepsilon_K + 1$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `eta-def` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `eta-def` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `eta-def` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `eta-def` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `eta-def` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `hs2` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `hs2` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `hs2` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `hs2` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `hs2` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `carnot` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `carnot` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `carnot` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `carnot` | 1 | 0 | 🔴 | T in °C statt K |
+| 15 | 2 | transfer           | number-input     | `carnot` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `kaelte-eps` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `kaelte-eps` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `kaelte-eps` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `kaelte-eps` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `kaelte-eps` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `waerme-eps` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `waerme-eps` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `waerme-eps` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `waerme-eps` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `waerme-eps` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/thermodynamik.js` unter `'thermo-2-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/thermodynamik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-thermo-2-2-a`, `ex-thermo-2-2-b`, `ex-thermo-2-2-manual-1`, `ex-thermo-2-2-manual-2`, `ex-thermo-2-2-manual-3`, `ex-thermo-2-2-manual-4`, `ex-thermo-2-2-manual-5`, `ex-thermo-2-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `pv-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `thermodynamik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ideales Gasgesetz $pV=nRT$ (oder $pV=mR_sT$ mit spezifischer Gaskonstante). · 1. Hauptsatz: $\Delta U = Q + W$ (oder $Q-W$ je nach Konvention — KLAR angeben). · Carnot-Wirkungsgrad $\eta_C=1-T_{\text{kalt}}/T_{\text{heiß}}$ mit Kelvin! · …
-  - _Typische Fehler (gute Distraktoren):_ Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
-  - _Klausur-Fokus:_ Carnot-Wirkungsgrad einer Maschine. · Zustandsänderung: Isotherm, isobar, adiabat durchrechnen. · Entropieänderung bei idealem Gas.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `pv-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Celsius statt Kelvin eingesetzt — vor allem bei Carnot fatal. · Vorzeichen von $Q$ und $W$ (rein/raus) uneindeutig. · Adiabatengleichung $pV^\kappa=\text{const}$ statt $pV=\text{const}$ angewandt.
 
 #### `fluid-1-1` · Hydrostatischer Druck
 
@@ -9846,7 +10328,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 42 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 44 Lessons
 
 #### `mech-0-3` · Dimensionsanalyse — Einheitencheck
 
@@ -10330,23 +10812,114 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
+#### `fest-1-3` · Schubspannung und Torsion
+
+- **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Spannung und Dehnung
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fest-1-1` → `sigma-fa`, `a-kreis`
+  - `fest-1-2` → `hooke`, `querkontr`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `tau-mt-wp` — Torsion $\tau_{\max}=M_T/W_p$ (SG 0)
+  2. `wp-d3-16` — $W_p=\pi d^3/16$ Kreisquerschnitt ⇐ `tau-mt-wp` (SG 1)
+  3. `verdrehwinkel` — Verdrehwinkel $\varphi=M_T L/(G I_p)$, $I_p=\pi d^4/32$ ⇐ `tau-mt-wp` (SG 2)
+  4. `g-modul` — Schubmodul Stahl $G\approx 80\,000$ MPa (SG 3)
+  5. `rein-schub` — Reiner Schub (Niet, Bolzen) $\tau=F/A$ (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `tau-mt-wp` · **5/5+** — Torsionsspannung: $\tau_\text{max} = M_T/W_p$
+  - ✅ [1] _hoch_ · Konzepte: `wp-d3-16` · **5/5+** — Polares Widerstandsmoment Kreisquerschnitt: $W_p = \pi d^3/16$
+  - ✅ [2] _hoch_ · Konzepte: `verdrehwinkel` · **5/5+** — Verdrehwinkel: $\varphi = M_T L/(G I_p)$ mit $I_p = \pi d^4/32$
+  - ✅ [3] _mittel_ · Konzepte: `g-modul` · **5/5+** — Schubmodul Stahl: $G \approx 80\,000$ MPa (ca. $E/(2(1+\nu))$)
+  - ✅ [4] _hoch_ · Konzepte: `rein-schub` · **5/5+** — Reiner Schub (Niet, Bolzen): $\tau = F/A$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `tau-mt-wp` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `tau-mt-wp` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `tau-mt-wp` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `tau-mt-wp` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `tau-mt-wp` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `wp-d3-16` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `wp-d3-16` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `wp-d3-16` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `wp-d3-16` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `wp-d3-16`, `tau-mt-wp` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `verdrehwinkel` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `verdrehwinkel` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `verdrehwinkel` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `verdrehwinkel` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `verdrehwinkel` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `g-modul` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `g-modul` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `g-modul` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `g-modul` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `g-modul` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `rein-schub` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `rein-schub` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `rein-schub` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `rein-schub` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `rein-schub` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-1-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/festigkeitslehre.js`
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+
 #### `fest-1-4` · Knicken
 
 - **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Spannung und Dehnung
-- **Aufgaben aktuell:** 28 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×10, true-false ×6, matching ×3, sorting ×2
-- **Typen einsetzen (Rotation):** sorting, matching, true-false
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - ✅ [0] (hoch) **5/5+** Aufgaben — Euler-Knicklast: $F_{ki} = \pi^2 E I/(\beta L)^2$
-  - ✅ [1] (hoch) **5/5+** Aufgaben — Einspannbeiwerte: $\beta = 1$ gelenkig/gelenkig, $\beta = 2$ eingespannt/frei, $\beta = 0{,}5$ beidseitig eingespannt
-  - ✅ [2] (hoch) **5/5+** Aufgaben — Flächenträgheitsmoment $I$: schwächste Achse zählt (kleinstes $I$)
-  - ✅ [3] (mittel) **5/5+** Aufgaben — Schlankheitsgrad $\lambda = \beta L/i$ mit Trägheitsradius $i = \sqrt{I/A}$
-  - ✅ [4] (mittel) **5/5+** Aufgaben — Euler nur für elastisches Knicken ($\sigma_{ki} < R_p$); bei kurzen Stäben Tetmajer/Johnson
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `festigkeitslehre`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Normalspannung $\sigma=F/A$ in MPa. · Hooke: $\sigma=E\varepsilon$. · Biegespannung $\sigma_b = M_b/W_b$ mit Widerstandsmoment $W_b$. · …
-  - _Typische Fehler (gute Distraktoren):_ Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
-  - _Klausur-Fokus:_ Maximale Biegespannung im Balken. · Kombinierte Belastung Zug + Biegung (Superposition). · Torsion bei Welle: Nenndurchmesser berechnen.
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fest-1-2` → `e-modul-mat`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `euler-fki` — Euler-Knicklast $F_{ki}=\pi^2 EI/(\beta L)^2$ (SG 0)
+  2. `einspannbeiw` — Beiwerte $\beta$: 1 (g/g), 2 (e/frei), 0,5 (beidseitig eingespannt) ⇐ `euler-fki` (SG 1)
+  3. `i-min` — Schwächste Achse: kleinstes $I$ zählt ⇐ `euler-fki` (SG 2)
+  4. `schlankheit` — Schlankheit $\lambda=\beta L/i$, $i=\sqrt{I/A}$ ⇐ `euler-fki` (SG 3)
+  5. `euler-grenze` — Euler nur elastisch ($\sigma_{ki}<R_p$); sonst Tetmajer/Johnson ⇐ `euler-fki`, `schlankheit` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `euler-fki` · **5/5+** — Euler-Knicklast: $F_{ki} = \pi^2 E I/(\beta L)^2$
+  - ✅ [1] _hoch_ · Konzepte: `einspannbeiw` · **5/5+** — Einspannbeiwerte: $\beta = 1$ gelenkig/gelenkig, $\beta = 2$ eingespannt/frei, $\beta = 0{,}5$ beidseitig eingespannt
+  - ✅ [2] _hoch_ · Konzepte: `i-min` · **5/5+** — Flächenträgheitsmoment $I$: schwächste Achse zählt (kleinstes $I$)
+  - ✅ [3] _mittel_ · Konzepte: `schlankheit` · **5/5+** — Schlankheitsgrad $\lambda = \beta L/i$ mit Trägheitsradius $i = \sqrt{I/A}$
+  - ✅ [4] _mittel_ · Konzepte: `euler-grenze` · **5/5+** — Euler nur für elastisches Knicken ($\sigma_{ki} < R_p$); bei kurzen Stäben Tetmajer/Johnson
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `euler-fki` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `euler-fki` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `euler-fki` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `euler-fki` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `euler-fki` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `einspannbeiw` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `einspannbeiw` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `einspannbeiw` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `einspannbeiw` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `einspannbeiw` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `i-min` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `i-min` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `i-min` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `i-min` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `i-min` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `schlankheit` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `schlankheit` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `schlankheit` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `schlankheit` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `schlankheit` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `euler-grenze` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `euler-grenze` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `euler-grenze` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `euler-grenze` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `euler-grenze` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-1-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/festigkeitslehre.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
 
 #### `trig-2-1` · Der Einheitskreis
 
@@ -10720,6 +11293,68 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-alg-1-1-b`, `ex-alg-1-1-d`, `ex-alg-1-1-e`, `ex-alg-1-1-goal-sg0-6`, `ex-alg-1-1-goal-sg0-7`, `ex-alg-1-1-goal-sg0-8`, `ex-alg-1-1-goal-sg0-9`, `ex-alg-1-1-goal-sg0-10` … (+2 weitere)
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
+#### `fest-2-3` · Mohr'scher Spannungskreis
+
+- **Topic:** `festigkeitslehre` (Festigkeitslehre) · **Unit:** Biegung und Torsion
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fest-1-1` → `sigma-fa`
+  - `fest-1-3` → `tau-mt-wp`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `mohr-mitte` — Mittelpunkt $\sigma_M=(\sigma_x+\sigma_y)/2$ (SG 0)
+  2. `mohr-radius` — Radius $R=\sqrt{((\sigma_x-\sigma_y)/2)^2+\tau_{xy}^2}$ ⇐ `mohr-mitte` (SG 1)
+  3. `haupt-spann` — Hauptspannungen $\sigma_{1,2}=\sigma_M\pm R$ ⇐ `mohr-mitte`, `mohr-radius` (SG 2)
+  4. `tau-max` — Max. Schub $\tau_{\max}=R$ ⇐ `mohr-radius` (SG 3)
+  5. `haupt-winkel` — Hauptachsenwinkel $\tan(2\varphi)=2\tau_{xy}/(\sigma_x-\sigma_y)$ ⇐ `mohr-radius` (SG 4)
+  6. `mohr-anwend` — Hauptspannungshypothese (spröde) vs. GEH (zähe) ⇐ `haupt-spann` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `mohr-mitte` · **5/5+** — Mittelpunkt: $\sigma_M = (\sigma_x + \sigma_y)/2$
+  - ✅ [1] _hoch_ · Konzepte: `mohr-radius` · **5/5+** — Radius: $R = \sqrt{((\sigma_x - \sigma_y)/2)^2 + \tau_{xy}^2}$
+  - ✅ [2] _hoch_ · Konzepte: `haupt-spann` · **5/5+** — Hauptspannungen: $\sigma_{1,2} = \sigma_M \pm R$
+  - ✅ [3] _hoch_ · Konzepte: `tau-max` · **5/5+** — Max. Schubspannung: $\tau_\text{max} = R$
+  - ✅ [4] _mittel_ · Konzepte: `haupt-winkel` · **5/5+** — Hauptachsenwinkel: $\tan(2\varphi) = 2\tau_{xy}/(\sigma_x - \sigma_y)$
+  - ✅ [5] _mittel_ · Konzepte: `mohr-anwend` · **5/5+** — Anwendung: Hauptspannungshypothese (spröde Werkstoffe), GEH (zähe)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `mohr-mitte` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `mohr-mitte` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `mohr-mitte` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `mohr-mitte` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `mohr-mitte` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `mohr-radius` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `mohr-radius` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `mohr-radius` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `mohr-radius` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `mohr-radius` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `haupt-spann` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `haupt-spann` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `haupt-spann` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `haupt-spann` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `haupt-spann` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `tau-max` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `tau-max` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `tau-max` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `tau-max` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `tau-max` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `haupt-winkel` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `haupt-winkel` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `haupt-winkel` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `haupt-winkel` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `haupt-winkel` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `mohr-anwend` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `mohr-anwend` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `mohr-anwend` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `mohr-anwend` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | matching         | `mohr-anwend` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-2-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/festigkeitslehre.js`
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
 
 #### `alg-2-1` · Lineare Gleichungen
 
