@@ -2334,75 +2334,184 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-4-1` · Prüfung: Ableitungsregeln
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×2, true-false ×2, matching ×1
-- **Typen einsetzen (Rotation):** sorting, matching, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Grundableitungen: $(x^n)' = n x^{n-1}$, $(e^x)' = e^x$, $(\ln x)' = 1/x$, $(\sin x)' = \cos x$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — $(\cos x)' = -\sin x$ und $(\tan x)' = 1/\cos^2 x = 1 + \tan^2 x$
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — $(a^x)' = a^x \ln a$ und $(\log_a x)' = 1/(x \ln a)$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Ableitung der Umkehrfunktion: $(f^{-1})'(y) = 1/f'(x)$ mit $y = f(x)$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Kombinierte Regeln: Produkt mit Kette, Quotient mit Kette — Teilschritte dokumentieren (Punkte!)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-1-2` → `pot-regel`
+  - `abl-1-3` → `abl-sin`, `abl-cos`, `abl-tan`, `abl-exp`, `abl-ln`, `abl-ax`, `abl-loga`
+  - `abl-2-1` → `pr-formel`
+  - `abl-2-2` → `qr-formel`
+  - `abl-2-3` → `kr-formel-fest`, `kr-mehrfach`
+  - `abl-2-4` → `gemischt-strukt`, `gemischt-hierar`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `klausur-grund` — Grundableitungen-Tabelle: $(x^n)',(e^x)',(\ln x)',(\sin x)',(\cos x)'$ auswendig (SG 0)
+  2. `tan-cot` — $(\tan x)'=1/\cos^2 x=1+\tan^2 x$ (SG 1)
+  3. `klausur-allg` — $(a^x)'=a^x\ln a$, $(\log_a x)'=1/(x\ln a)$ (SG 2)
+  4. `umkehr-abl` — Umkehrfunktion: $(f^{-1})'(y)=1/f'(x)$ mit $y=f(x)$ (SG 3)
+  5. `kombiniert` — Kombinierte Regeln: Produkt mit Kette / Quotient mit Kette — Teilschritte dokumentieren (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `klausur-grund` · **0/5+** — Grundableitungen: $(x^n)' = n x^{n-1}$, $(e^x)' = e^x$, $(\ln x)' = 1/x$, $(\sin x)' = \cos x$
+  - 🔴 [1] _hoch_ · Konzepte: `tan-cot` · **0/5+** — $(\cos x)' = -\sin x$ und $(\tan x)' = 1/\cos^2 x = 1 + \tan^2 x$
+  - 🔴 [2] _mittel_ · Konzepte: `klausur-allg` · **0/5+** — $(a^x)' = a^x \ln a$ und $(\log_a x)' = 1/(x \ln a)$
+  - 🔴 [3] _mittel_ · Konzepte: `umkehr-abl` · **0/5+** — Ableitung der Umkehrfunktion: $(f^{-1})'(y) = 1/f'(x)$ mit $y = f(x)$
+  - 🔴 [4] _hoch_ · Konzepte: `kombiniert` · **0/5+** — Kombinierte Regeln: Produkt mit Kette, Quotient mit Kette — Teilschritte dokumentieren (Punkte!)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `klausur-grund` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `klausur-grund` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `klausur-grund` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `klausur-grund` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `klausur-grund` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `tan-cot` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `tan-cot` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `tan-cot` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `tan-cot` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `tan-cot` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `klausur-allg` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `klausur-allg` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `klausur-allg` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `klausur-allg` | 1 | 0 | 🔴 | $\ln a$ vergessen |
+| 15 | 2 | transfer           | number-input     | `klausur-allg` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 16 | 3 | recognize          | true-false       | `umkehr-abl` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `umkehr-abl` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `umkehr-abl` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `umkehr-abl` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `umkehr-abl` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `kombiniert` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `kombiniert` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `kombiniert` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `kombiniert` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `kombiniert` | 1 | 0 | 🔴 | [PRÜFUNG] |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-4-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-4-1-a`, `ex-abl-4-1-b`, `ex-abl-4-1-c`, `ex-abl-4-1-d`, `ex-abl-4-1-e`, `ex-abl-4-1-f`, `ex-abl-4-1-g`, `ex-abl-4-1-h` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `abl-4-2` · Prüfung: Kurvendiskussion & Anwendungen
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1
-- **Typen einsetzen (Rotation):** sorting, true-false, matching, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Optimierung: Zielfunktion aufstellen, Nebenbedingung einsetzen, auf eine Variable reduzieren
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Taylorreihe: $T_n(x) = \sum_{k=0}^n f^{(k)}(x_0)(x-x_0)^k/k!$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Näherungen bei $x_0 = 0$: $\sin x \approx x$, $\cos x \approx 1 - x^2/2$, $e^x \approx 1 + x + x^2/2$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Restglied (Lagrange): $R_n(x) = f^{(n+1)}(\xi)(x-x_0)^{n+1}/(n+1)!$ für ein $\xi$ dazwischen
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Monotoniebereiche aus $f'$-Vorzeichen, Wendebereiche aus $f''$-Vorzeichen
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-3-1` → `monotonie`, `extr-not`, `extr-hin-f2`
+  - `abl-3-2` → `kruemmung`, `wp-not`
+  - `abl-3-4` → `optimierung`, `global-intervall`, `taylor-2`
+  - `abl-4-1` → `klausur-grund`, `kombiniert`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `opt-strategy` — Optimierung: Zielfunktion + Nebenbedingung → eine Variable → ableiten (SG 0)
+  2. `taylor-formel` — Taylorreihe: $T_n(x)=\sum_{k=0}^n f^{(k)}(x_0)(x-x_0)^k/k!$ (SG 1)
+  3. `taylor-std` — Standard-Näherungen bei $x_0=0$: $\sin x\approx x$, $\cos x\approx 1-x^2/2$, $e^x\approx 1+x+x^2/2$ ⇐ `taylor-formel` (SG 2)
+  4. `restglied-lag` — Restglied (Lagrange): $R_n(x)=f^{(n+1)}(\xi)(x-x_0)^{n+1}/(n+1)!$ für ein $\xi$ dazwischen ⇐ `taylor-formel` (SG 3)
+  5. `mono-wendb` — Monotoniebereiche aus $f'$-VZ, Wendebereiche aus $f''$-VZ (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `opt-strategy` · **0/5+** — Optimierung: Zielfunktion aufstellen, Nebenbedingung einsetzen, auf eine Variable reduzieren
+  - 🔴 [1] _hoch_ · Konzepte: `taylor-formel` · **0/5+** — Taylorreihe: $T_n(x) = \sum_{k=0}^n f^{(k)}(x_0)(x-x_0)^k/k!$
+  - 🔴 [2] _hoch_ · Konzepte: `taylor-std` · **0/5+** — Näherungen bei $x_0 = 0$: $\sin x \approx x$, $\cos x \approx 1 - x^2/2$, $e^x \approx 1 + x + x^2/2$
+  - 🔴 [3] _mittel_ · Konzepte: `restglied-lag` · **0/5+** — Restglied (Lagrange): $R_n(x) = f^{(n+1)}(\xi)(x-x_0)^{n+1}/(n+1)!$ für ein $\xi$ dazwischen
+  - 🔴 [4] _hoch_ · Konzepte: `mono-wendb` · **0/5+** — Monotoniebereiche aus $f'$-Vorzeichen, Wendebereiche aus $f''$-Vorzeichen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `opt-strategy` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `opt-strategy` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `opt-strategy` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  4 | 0 | error-analysis     | multiple-choice  | `opt-strategy` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | sorting          | `opt-strategy` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `taylor-formel` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `taylor-formel` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `taylor-formel` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `taylor-formel` | 1 | 0 | 🔴 | Faktor $1/k!$ vergessen |
+| 10 | 1 | transfer           | number-input     | `taylor-formel` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `taylor-std` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `taylor-std` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `taylor-std` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `taylor-std` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `taylor-std` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `restglied-lag` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `restglied-lag` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `restglied-lag` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `restglied-lag` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `restglied-lag`, `taylor-formel` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `mono-wendb` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `mono-wendb` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `mono-wendb` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `mono-wendb` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | sorting          | `mono-wendb` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-4-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-4-2-a`, `ex-abl-4-2-b`, `ex-abl-4-2-c`, `ex-abl-4-2-d`, `ex-abl-4-2-e`, `ex-abl-4-2-f`, `ex-abl-4-2-g`, `ex-abl-4-2-h` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `abl-4-3` · Prüfung: Technische Optimierung & Newton-Verfahren
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Newton-Iteration: $x_{n+1} = x_n - f(x_n)/f'(x_n)$ — lokal quadratische Konvergenz
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Newton-Voraussetzungen: $f'(x_n) \neq 0$, guter Startwert nahe der Nullstelle
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Klassische Geometrie-Optima: Dose mit Deckel $h = 2r$, Rechteck $U$ const → Quadrat
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Max-Power-Theorem (ET): $R_L = R_i$ für maximale Leistung (Wirkungsgrad nur 50 %)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Globales Optimum: innere Kandidaten + Randwerte + Verhalten am Definitionsrand vergleichen
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Optimierung unter Nebenbedingung auch via Lagrange-Multiplikator $\nabla f = \lambda \nabla g$ (Vertiefung)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-3-4` → `optimierung`, `global-intervall`
+  - `abl-4-2` → `opt-strategy`
+  - `abl-1-1` → `tangenten-steigung`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `newton-iter` — Newton-Iteration $x_{n+1}=x_n-f(x_n)/f'(x_n)$ (SG 0)
+  2. `newton-voraus` — Voraussetzungen: $f'(x_n)\neq 0$, guter Startwert nahe Nullstelle ⇐ `newton-iter` (SG 1)
+  3. `opt-geom` — Klassiker: Dose $h=2r$, Rechteck $U$ const → Quadrat (SG 2)
+  4. `max-power` — Max-Power: $R_L=R_i$ für maximale Leistung (η=50 %) (SG 3)
+  5. `global-opt` — Globales Optimum: innere Kandidaten + Randwerte + Verhalten am Definitionsrand (SG 4)
+  6. `lagrange-mult` — Lagrange-Multiplikator: $\nabla f=\lambda\nabla g$ (Vertiefung) (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `newton-iter` · **0/5+** — Newton-Iteration: $x_{n+1} = x_n - f(x_n)/f'(x_n)$ — lokal quadratische Konvergenz
+  - 🔴 [1] _hoch_ · Konzepte: `newton-voraus` · **0/5+** — Newton-Voraussetzungen: $f'(x_n) \neq 0$, guter Startwert nahe der Nullstelle
+  - 🔴 [2] _mittel_ · Konzepte: `opt-geom` · **0/5+** — Klassische Geometrie-Optima: Dose mit Deckel $h = 2r$, Rechteck $U$ const → Quadrat
+  - 🔴 [3] _mittel_ · Konzepte: `max-power` · **0/5+** — Max-Power-Theorem (ET): $R_L = R_i$ für maximale Leistung (Wirkungsgrad nur 50 %)
+  - 🔴 [4] _hoch_ · Konzepte: `global-opt` · **0/5+** — Globales Optimum: innere Kandidaten + Randwerte + Verhalten am Definitionsrand vergleichen
+  - 🔴 [5] _mittel_ · Konzepte: `lagrange-mult` · **0/5+** — Optimierung unter Nebenbedingung auch via Lagrange-Multiplikator $\nabla f = \lambda \nabla g$ (Vertiefung)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `newton-iter` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `newton-iter` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `newton-iter` | 1 | 0 | 🔴 | Eine Iteration durchführen |
+|  4 | 0 | error-analysis     | multiple-choice  | `newton-iter` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `newton-iter` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `newton-voraus` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `newton-voraus` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `newton-voraus` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `newton-voraus` | 1 | 0 | 🔴 | Divergenz bei $f'\to 0$ |
+| 10 | 1 | transfer           | matching         | `newton-voraus`, `newton-iter` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `opt-geom` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `opt-geom` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `opt-geom` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 14 | 2 | error-analysis     | multiple-choice  | `opt-geom` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `opt-geom` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `max-power` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `max-power` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `max-power` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `max-power` | 1 | 0 | 🔴 | Wirkungsgrad-Verwechslung |
+| 20 | 3 | transfer           | number-input     | `max-power` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `global-opt` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `global-opt` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `global-opt` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `global-opt` | 1 | 0 | 🔴 | Rand vergessen |
+| 25 | 4 | transfer           | number-input     | `global-opt` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 26 | 5 | recognize          | true-false       | `lagrange-mult` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `lagrange-mult` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `lagrange-mult` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `lagrange-mult` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | multiple-choice  | `lagrange-mult` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-4-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-4-3-a`, `ex-abl-4-3-b`, `ex-abl-4-3-c`, `ex-abl-4-3-d`, `ex-abl-4-3-e`, `ex-abl-4-3-f`, `ex-abl-4-3-g`, `ex-abl-4-3-h` … (+3 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `vek-3-2` · Flächen- und Volumenberechnung
 
@@ -3098,27 +3207,65 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-5-2` · Stetigkeit von Funktionen
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grenzwerte und Stetigkeit
-- **Aufgaben aktuell:** 8 · **mindestens:** 20 · **fehlen bis Minimum:** 12 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Stetigkeit in $a$: $\lim_{x \to a} f(x) = f(a)$ (beide Seiten gleich UND gleich Funktionswert)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Hebbare Unstetigkeit: Grenzwert existiert, aber $f(a)$ fehlt oder weicht ab
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Sprungstelle: links- und rechtsseitiger Grenzwert existieren, sind aber verschieden
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Polstelle: $|f(x)| \to \infty$ für $x \to a$ (kein endlicher Grenzwert)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Zwischenwertsatz: $f$ stetig auf $[a,b]$ nimmt jeden Wert zwischen $f(a)$ und $f(b)$ an
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Differenzierbar $\Rightarrow$ stetig, aber Umkehrung falsch (z.B. $|x|$ bei $0$)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 12 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-5-1` → `lim-std-sin`, `lim-std-exp`
+  - `abl-1-1` → `grenzuebergang`, `diff-quotient`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `stetigkeit` — Stetigkeit in $a$: $\lim_{x\to a}f(x)=f(a)$ (beidseitig + Funktionswert) (SG 0)
+  2. `hebbare-unst` — Hebbar: Grenzwert existiert, aber $f(a)$ fehlt oder weicht ab ⇐ `stetigkeit` (SG 1)
+  3. `sprungstelle` — Sprung: linksseitig $\neq$ rechtsseitiger Grenzwert ⇐ `stetigkeit` (SG 2)
+  4. `polstelle-stet` — Polstelle: $|f(x)|\to\infty$ für $x\to a$ ⇐ `stetigkeit` (SG 3)
+  5. `zwischenwert` — Zwischenwertsatz: $f$ stetig auf $[a,b]$ nimmt jeden Wert $\in[f(a),f(b)]$ an ⇐ `stetigkeit` (SG 4)
+  6. `diff-impl-stet` — Differenzierbar $\Rightarrow$ stetig (Umkehrung falsch: $|x|$ bei 0) ⇐ `stetigkeit` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `stetigkeit` · **0/5+** — Stetigkeit in $a$: $\lim_{x \to a} f(x) = f(a)$ (beide Seiten gleich UND gleich Funktionswert)
+  - 🔴 [1] _hoch_ · Konzepte: `hebbare-unst` · **0/5+** — Hebbare Unstetigkeit: Grenzwert existiert, aber $f(a)$ fehlt oder weicht ab
+  - 🔴 [2] _hoch_ · Konzepte: `sprungstelle` · **0/5+** — Sprungstelle: links- und rechtsseitiger Grenzwert existieren, sind aber verschieden
+  - 🔴 [3] _hoch_ · Konzepte: `polstelle-stet` · **0/5+** — Polstelle: $|f(x)| \to \infty$ für $x \to a$ (kein endlicher Grenzwert)
+  - 🔴 [4] _hoch_ · Konzepte: `zwischenwert` · **0/5+** — Zwischenwertsatz: $f$ stetig auf $[a,b]$ nimmt jeden Wert zwischen $f(a)$ und $f(b)$ an
+  - 🔴 [5] _mittel_ · Konzepte: `diff-impl-stet` · **0/5+** — Differenzierbar $\Rightarrow$ stetig, aber Umkehrung falsch (z.B. $|x|$ bei $0$)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `stetigkeit` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `stetigkeit` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `stetigkeit` | 1 | 0 | 🔴 | Parameter so wählen, dass stetig |
+|  4 | 0 | error-analysis     | multiple-choice  | `stetigkeit` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `stetigkeit` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `hebbare-unst` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `hebbare-unst` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `hebbare-unst` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `hebbare-unst` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `hebbare-unst`, `stetigkeit` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `sprungstelle` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `sprungstelle` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `sprungstelle` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `sprungstelle` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `sprungstelle`, `hebbare-unst` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `polstelle-stet` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `polstelle-stet` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `polstelle-stet` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `polstelle-stet` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `polstelle-stet`, `sprungstelle`, `hebbare-unst` | 1 | 0 | 🔴 | Klassifikation Unstetigkeiten |
+| 21 | 4 | recognize          | true-false       | `zwischenwert` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `zwischenwert` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `zwischenwert` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `zwischenwert` | 1 | 0 | 🔴 | Stetigkeitsvoraussetzung vergessen |
+| 25 | 4 | transfer           | multiple-choice  | `zwischenwert` | 1 | 0 | 🔴 | Nullstelle existiert |
+| 26 | 5 | recognize          | true-false       | `diff-impl-stet` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `diff-impl-stet` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `diff-impl-stet` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `diff-impl-stet` | 1 | 0 | 🔴 | Umkehrung als wahr angenommen |
+| 30 | 5 | transfer           | matching         | `diff-impl-stet`, `stetigkeit` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-5-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-5-2-manual-1`, `ex-abl-5-2-manual-2`, `ex-abl-5-2-manual-3`, `ex-abl-5-2-manual-4`, `ex-abl-5-2-manual-5`, `ex-abl-5-2-manual-6`, `ex-abl-5-2-manual-7`, `ex-abl-5-2-mastery`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `werk-1-1` · Spannungs-Dehnungs-Diagramm
 
@@ -4922,27 +5069,66 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-5-1` · Grenzwerte von Funktionen
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grenzwerte und Stetigkeit
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Standardgrenzwerte: $\lim_{x \to 0} \sin x/x = 1$, $\lim_{x \to 0} (e^x-1)/x = 1$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Eulerzahl: $\lim_{x \to \infty} (1 + 1/x)^x = e$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — L'Hôpital nur bei unbestimmten Formen $0/0$ oder $\infty/\infty$ anwenden
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — L'Hôpital ggf. mehrfach anwenden, bis ein bestimmter Wert herauskommt
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Andere unbestimmte Formen: $0 \cdot \infty \to 0/0$, $\infty - \infty \to$ Hauptnenner, $0^0/\infty^0/1^\infty \to$ $\ln$ nehmen
-  - 🔴 [5] (hoch) **0/5+** Aufgaben — Wachstumshierarchie: $\ln x \ll x^n \ll e^x$ für $x \to \infty$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-1-3` → `abl-sin`, `abl-exp`, `abl-ln`
+  - `abl-1-1` → `grenzuebergang`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `lim-std-sin` — Standard $\lim_{x\to 0}\sin x/x=1$ (SG 0)
+  2. `lim-std-exp` — Standard $\lim_{x\to 0}(e^x-1)/x=1$ (SG 0)
+  3. `euler-grenzwert` — $\lim_{x\to\infty}(1+1/x)^x=e$ (SG 1)
+  4. `lhopital` — L'Hôpital nur bei $0/0$ oder $\infty/\infty$ (SG 2)
+  5. `lhopital-mehr` — L'Hôpital ggf. mehrfach anwenden ⇐ `lhopital` (SG 3)
+  6. `unbest-formen` — Andere unbestimmte Formen umformen: $0\cdot\infty\to 0/0$, $\infty-\infty\to$ Hauptnenner, $0^0/\infty^0/1^\infty\to\ln$ ⇐ `lhopital` (SG 4)
+  7. `wachstum` — Wachstumshierarchie: $\ln x\ll x^n\ll e^x$ für $x\to\infty$ (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `lim-std-sin`, `lim-std-exp` · **0/5+** — Standardgrenzwerte: $\lim_{x \to 0} \sin x/x = 1$, $\lim_{x \to 0} (e^x-1)/x = 1$
+  - 🔴 [1] _hoch_ · Konzepte: `euler-grenzwert` · **0/5+** — Eulerzahl: $\lim_{x \to \infty} (1 + 1/x)^x = e$
+  - 🔴 [2] _hoch_ · Konzepte: `lhopital` · **0/5+** — L'Hôpital nur bei unbestimmten Formen $0/0$ oder $\infty/\infty$ anwenden
+  - 🔴 [3] _hoch_ · Konzepte: `lhopital-mehr` · **0/5+** — L'Hôpital ggf. mehrfach anwenden, bis ein bestimmter Wert herauskommt
+  - 🔴 [4] _mittel_ · Konzepte: `unbest-formen` · **0/5+** — Andere unbestimmte Formen: $0 \cdot \infty \to 0/0$, $\infty - \infty \to$ Hauptnenner, $0^0/\infty^0/1^\infty \to$ $\ln$ nehmen
+  - 🔴 [5] _hoch_ · Konzepte: `wachstum` · **0/5+** — Wachstumshierarchie: $\ln x \ll x^n \ll e^x$ für $x \to \infty$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `lim-std-sin`, `lim-std-exp` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `lim-std-sin` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `lim-std-sin` | 1 | 0 | 🔴 | $\sin(3x)/x$ |
+|  4 | 0 | error-analysis     | multiple-choice  | `lim-std-sin` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `lim-std-exp` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `euler-grenzwert` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `euler-grenzwert` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `euler-grenzwert` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `euler-grenzwert` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `euler-grenzwert` | 1 | 0 | 🔴 | Zinseszins |
+| 11 | 2 | recognize          | true-false       | `lhopital` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `lhopital` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `lhopital` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `lhopital` | 1 | 0 | 🔴 | Anwendung ohne $0/0$ |
+| 15 | 2 | transfer           | number-input     | `lhopital` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `lhopital-mehr` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `lhopital-mehr` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `lhopital-mehr` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `lhopital-mehr` | 1 | 0 | 🔴 | Zwischenwert nicht überprüft |
+| 20 | 3 | transfer           | number-input     | `lhopital-mehr` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `unbest-formen` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `unbest-formen` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `unbest-formen`, `lhopital` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `unbest-formen` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `unbest-formen` | 1 | 0 | 🔴 | Form ↔ Umformung |
+| 26 | 5 | recognize          | true-false       | `wachstum` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `wachstum` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `wachstum` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `wachstum` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | sorting          | `wachstum` | 1 | 0 | 🔴 | Funktionen wachsend ordnen |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-5-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-5-1-b`, `ex-abl-5-1-manual-1`, `ex-abl-5-1-manual-2`, `ex-abl-5-1-manual-3`, `ex-abl-5-1-manual-4`, `ex-abl-5-1-manual-5`, `ex-abl-5-1-manual-6`, `ex-abl-5-1-manual-7` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `vek-1-1` · Vektoren — Grundbegriffe
 
@@ -5383,98 +5569,232 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-1-1` · Was ist eine Ableitung?
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grundlagen der Differentialrechnung
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Differenzenquotient → Differentialquotient als Grenzübergang
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Tangentensteigung aus $f'(x_0)$ ablesen
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Notwendige Extremum-Bedingung $f'(x_0)=0$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Ableitung als Momentan-Änderungsrate physikalisch deuten
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `sek-steigung` — Sekantensteigung $\Delta y/\Delta x = (f(x)-f(x_0))/(x-x_0)$ (SG 0)
+  2. `tangente` — Tangente an Kurve in $(x_0, f(x_0))$ — schmiegt sich an den Graphen (SG 1)
+  3. `grenzuebergang` — Grenzübergang $h\to 0$: Sekante wird Tangente ⇐ `sek-steigung`, `tangente` (SG 0)
+  4. `diff-quotient` — Differentialquotient $f'(x_0)=\lim_{h\to 0}(f(x_0+h)-f(x_0))/h$ ⇐ `grenzuebergang` (SG 0)
+  5. `tangenten-steigung` — $f'(x_0)$ = Tangentensteigung in $x_0$ ⇐ `diff-quotient`, `tangente` (SG 1)
+  6. `tangenten-gleichung` — Tangentengleichung $y=f'(x_0)(x-x_0)+f(x_0)$ ⇐ `tangenten-steigung` (SG 1)
+  7. `vorzeichen-fprime` — $f'>0$ steigend, $f'<0$ fallend, $f'=0$ waagrecht ⇐ `tangenten-steigung` (SG 1)
+  8. `extr-notwendig` — Notwendig für Extremum: $f'(x_0)=0$ ⇐ `vorzeichen-fprime` (SG 2)
+  9. `extr-nicht-hin` — Notwendig $\not\Rightarrow$ hinreichend (Sattelpunkt $x^3$ bei 0) ⇐ `extr-notwendig` (SG 2)
+  10. `aenderungsrate` — Ableitung = momentane Änderungsrate (Physik: $v=s'$, $a=v'$) ⇐ `diff-quotient` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `sek-steigung`, `grenzuebergang`, `diff-quotient` · **0/5+** — Differenzenquotient → Differentialquotient als Grenzübergang
+  - 🔴 [1] _hoch_ · Konzepte: `tangente`, `tangenten-steigung`, `tangenten-gleichung`, `vorzeichen-fprime` · **0/5+** — Tangentensteigung aus $f'(x_0)$ ablesen
+  - 🔴 [2] _hoch_ · Konzepte: `extr-notwendig`, `extr-nicht-hin` · **0/5+** — Notwendige Extremum-Bedingung $f'(x_0)=0$
+  - 🔴 [3] _mittel_ · Konzepte: `aenderungsrate` · **0/5+** — Ableitung als Momentan-Änderungsrate physikalisch deuten
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `diff-quotient`, `sek-steigung` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `diff-quotient` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `diff-quotient` | 1 | 0 | 🔴 | $f'(x_0)$ via Grenzwert |
+|  4 | 0 | error-analysis     | multiple-choice  | `grenzuebergang` | 1 | 0 | 🔴 | Grenzübergang vergessen → bleibt Sekante |
+|  5 | 0 | transfer           | sorting          | `sek-steigung`, `grenzuebergang`, `diff-quotient` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `tangenten-steigung`, `vorzeichen-fprime` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `tangenten-steigung` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `tangenten-steigung` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `vorzeichen-fprime` | 1 | 0 | 🔴 | Steigung mit Funktionswert verwechselt |
+| 10 | 1 | transfer           | number-input     | `tangenten-gleichung`, `tangenten-steigung` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `extr-notwendig`, `extr-nicht-hin` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `extr-notwendig` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `extr-notwendig` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `extr-nicht-hin` | 1 | 0 | 🔴 | Sattelpunkt als Extremum |
+| 15 | 2 | transfer           | matching         | `extr-notwendig`, `vorzeichen-fprime` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `aenderungsrate` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `aenderungsrate` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `aenderungsrate` | 1 | 0 | 🔴 | $v(t)=s'(t)$ |
+| 19 | 3 | error-analysis     | multiple-choice  | `aenderungsrate` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `aenderungsrate` | 1 | 0 | 🔴 | Größe ↔ Ableitungsbedeutung |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-1-manual-1`, `ex-abl-1-1-manual-2`, `ex-abl-1-1-manual-3`, `ex-abl-1-1-manual-4`, `ex-abl-1-1-manual-5`, `ex-abl-1-1-manual-6`, `ex-abl-1-1-manual-7`, `ex-abl-1-1-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `derivative-graph`, `function-graph`, `limit-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `abl-1-5` · Extremwerte und Kurvendiskussion
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grundlagen der Differentialrechnung
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Notwendige Bedingung für Extremum: $f'(x_0) = 0$ (waagrechte Tangente)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Hinreichend: $f''(x_0) > 0 \Rightarrow$ Min, $f''(x_0) < 0 \Rightarrow$ Max
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Bei $f''(x_0) = 0$: Vorzeichenwechsel von $f'$ prüfen oder höhere Ableitungen
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Wendepunkt: $f''(x_0) = 0$ mit Vorzeichenwechsel (oder $f'''(x_0) \neq 0$)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Randextrema bei beschränktem Intervall $[a, b]$ nicht vergessen
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Sattelpunkt = Wendepunkt mit waagrechter Tangente ($f' = 0$ UND $f'' = 0$)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-1-1` → `extr-notwendig`
+  - `abl-1-2` → `polynom-abl`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `fprime-null` — Notwendige Bedingung Extremum: $f'(x_0)=0$ (SG 0)
+  2. `f2prime` — Zweite Ableitung $f''$ — Krümmung (SG 1)
+  3. `hin-min-max` — Hinreichend: $f''>0\Rightarrow$ Min, $f''<0\Rightarrow$ Max ⇐ `fprime-null`, `f2prime` (SG 1)
+  4. `f2-null-vzw` — $f''(x_0)=0$: Vorzeichenwechsel von $f'$ prüfen ODER höhere Ableitungen ⇐ `hin-min-max` (SG 2)
+  5. `wendepunkt` — Wendepunkt: $f''(x_0)=0$ mit VZW (oder $f'''(x_0)\neq 0$) ⇐ `f2prime` (SG 3)
+  6. `rand-extrema` — Randextrema bei $[a,b]$: $f(a)$ und $f(b)$ vergleichen ⇐ `hin-min-max` (SG 4)
+  7. `sattel-1-5` — Sattelpunkt: $f'(x_0)=0$ UND $f''(x_0)=0$ ohne VZW ⇐ `fprime-null`, `wendepunkt` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `fprime-null` · **0/5+** — Notwendige Bedingung für Extremum: $f'(x_0) = 0$ (waagrechte Tangente)
+  - 🔴 [1] _hoch_ · Konzepte: `hin-min-max`, `f2prime` · **0/5+** — Hinreichend: $f''(x_0) > 0 \Rightarrow$ Min, $f''(x_0) < 0 \Rightarrow$ Max
+  - 🔴 [2] _hoch_ · Konzepte: `f2-null-vzw` · **0/5+** — Bei $f''(x_0) = 0$: Vorzeichenwechsel von $f'$ prüfen oder höhere Ableitungen
+  - 🔴 [3] _hoch_ · Konzepte: `wendepunkt` · **0/5+** — Wendepunkt: $f''(x_0) = 0$ mit Vorzeichenwechsel (oder $f'''(x_0) \neq 0$)
+  - 🔴 [4] _mittel_ · Konzepte: `rand-extrema` · **0/5+** — Randextrema bei beschränktem Intervall $[a, b]$ nicht vergessen
+  - 🔴 [5] _mittel_ · Konzepte: `sattel-1-5` · **0/5+** — Sattelpunkt = Wendepunkt mit waagrechter Tangente ($f' = 0$ UND $f'' = 0$)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `fprime-null` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `fprime-null` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `fprime-null` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `fprime-null` | 1 | 0 | 🔴 | Notwendig $\not\Rightarrow$ hinreichend |
+|  5 | 0 | transfer           | multiple-choice  | `fprime-null` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `hin-min-max`, `f2prime` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `hin-min-max` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `hin-min-max`, `fprime-null` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `hin-min-max` | 1 | 0 | 🔴 | Vorzeichen Min/Max getauscht |
+| 10 | 1 | transfer           | matching         | `hin-min-max` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `f2-null-vzw` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `f2-null-vzw` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `f2-null-vzw`, `fprime-null` | 1 | 0 | 🔴 | $x^4$ bei 0 |
+| 14 | 2 | error-analysis     | multiple-choice  | `f2-null-vzw` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | sorting          | `f2-null-vzw`, `hin-min-max` | 1 | 0 | 🔴 | Entscheidungsbaum |
+| 16 | 3 | recognize          | true-false       | `wendepunkt` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `wendepunkt` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `wendepunkt` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `wendepunkt` | 1 | 0 | 🔴 | y-Wert vergessen |
+| 20 | 3 | transfer           | number-input     | `wendepunkt` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `rand-extrema` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `rand-extrema` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `rand-extrema` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `rand-extrema` | 1 | 0 | 🔴 | Rand vergessen |
+| 25 | 4 | transfer           | number-input     | `rand-extrema` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `sattel-1-5` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `sattel-1-5` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `sattel-1-5` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `sattel-1-5` | 1 | 0 | 🔴 | Sattel als Extremum |
+| 30 | 5 | transfer           | matching         | `sattel-1-5`, `fprime-null` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-1-5': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-5-manual-1`, `ex-abl-1-5-manual-2`, `ex-abl-1-5-manual-3`, `ex-abl-1-5-manual-4`, `ex-abl-1-5-manual-5`, `ex-abl-1-5-manual-6`, `ex-abl-1-5-manual-7`
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `derivative-graph`, `function-graph`, `limit-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `abl-3-2` · Krümmung und Wendepunkte
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Kurvendiskussion
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Krümmung via $f''$: $f'' > 0$ → linksgekrümmt ($\cup$), $f'' < 0$ → rechtsgekrümmt ($\cap$)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Notwendige Bedingung für Wendepunkt: $f''(x_0) = 0$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Hinreichend: $f'''(x_0) \neq 0$ ODER $f''$ wechselt bei $x_0$ das Vorzeichen
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Sattelpunkt = Wendepunkt mit $f'(x_0) = 0$ (waagrechte Tangente), z.B. $f(x) = x^3$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Wendepunkt-Koordinaten: $(x_0, f(x_0))$ — y-Wert nicht vergessen
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-1-5` → `f2prime`, `wendepunkt`
+  - `abl-3-1` → `extr-not`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `kruemmung` — Krümmung via $f''$: $f''>0$ linksgekrümmt $\cup$, $f''<0$ rechtsgekrümmt $\cap$ (SG 0)
+  2. `wp-not` — Notwendig für Wendepunkt: $f''(x_0)=0$ (SG 1)
+  3. `wp-hin` — Hinreichend: $f'''(x_0)\neq 0$ ODER $f''$ wechselt VZ ⇐ `wp-not` (SG 2)
+  4. `sattel-wp` — Sattelpunkt = Wendepunkt mit $f'(x_0)=0$ ⇐ `wp-not` (SG 3)
+  5. `wp-koords` — Wendepunkt-Koordinaten: $(x_0,f(x_0))$ — y-Wert nicht vergessen! ⇐ `wp-hin` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `kruemmung` · **0/5+** — Krümmung via $f''$: $f'' > 0$ → linksgekrümmt ($\cup$), $f'' < 0$ → rechtsgekrümmt ($\cap$)
+  - 🔴 [1] _hoch_ · Konzepte: `wp-not` · **0/5+** — Notwendige Bedingung für Wendepunkt: $f''(x_0) = 0$
+  - 🔴 [2] _hoch_ · Konzepte: `wp-hin` · **0/5+** — Hinreichend: $f'''(x_0) \neq 0$ ODER $f''$ wechselt bei $x_0$ das Vorzeichen
+  - 🔴 [3] _mittel_ · Konzepte: `sattel-wp` · **0/5+** — Sattelpunkt = Wendepunkt mit $f'(x_0) = 0$ (waagrechte Tangente), z.B. $f(x) = x^3$
+  - 🔴 [4] _hoch_ · Konzepte: `wp-koords` · **0/5+** — Wendepunkt-Koordinaten: $(x_0, f(x_0))$ — y-Wert nicht vergessen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kruemmung` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kruemmung` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `kruemmung` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `kruemmung` | 1 | 0 | 🔴 | links/rechts vertauscht |
+|  5 | 0 | transfer           | matching         | `kruemmung` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `wp-not` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `wp-not` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `wp-not` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `wp-not` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `wp-not` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `wp-hin` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `wp-hin` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `wp-hin`, `wp-not` | 1 | 0 | 🔴 | $x^4$ bei 0 — kein WP |
+| 14 | 2 | error-analysis     | multiple-choice  | `wp-hin` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | sorting          | `wp-hin`, `wp-not` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `sattel-wp` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `sattel-wp` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `sattel-wp` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `sattel-wp` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `sattel-wp`, `wp-hin` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `wp-koords` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `wp-koords` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `wp-koords` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `wp-koords` | 1 | 0 | 🔴 | y-Wert vergessen |
+| 25 | 4 | transfer           | number-input     | `wp-koords` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-3-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-2-a`, `ex-abl-3-2-b`, `ex-abl-3-2-c`, `ex-abl-3-2-transfer`, `ex-abl-3-2-manual-1`, `ex-abl-3-2-manual-2`, `ex-abl-3-2-manual-3`, `ex-abl-3-2-manual-4` … (+4 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `abl-3-3` · Vollständige Kurvendiskussion
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Kurvendiskussion
-- **Aufgaben aktuell:** 12 · **mindestens:** 20 · **fehlen bis Minimum:** 8 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×3, true-false ×1, matching ×1, sorting ×2
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Reihenfolge: $D_f$ → Symmetrie → Nullstellen → $f', f''$ → Extrema → WP → $x \to \pm\infty$ → Graph
-  - 🔴 [1] (mittel) **0/5+** Aufgaben — Symmetrie: $f(-x) = f(x)$ gerade (y-Achse), $f(-x) = -f(x)$ ungerade (Ursprung)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Verhalten im Unendlichen: bei Polynom führender Term, bei Bruch Grad-Vergleich
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Polstellen & Asymptoten bei gebrochen-rationalen Funktionen separat untersuchen
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Abschluss-Skizze: Extrema, WP, Achsenschnittpunkte mit Koordinaten beschriften
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 8 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-3-1` → `monotonie`, `extr-not`, `extr-hin-f2`
+  - `abl-3-2` → `kruemmung`, `wp-not`, `wp-hin`
+  - `abl-1-2` → `polynom-abl`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `kd-rezept` — Reihenfolge: $D_f$ → Symmetrie → Nullstellen → $f',f''$ → Extrema → WP → $x\to\pm\infty$ → Graph (SG 0)
+  2. `symmetrie` — Symmetrie: $f(-x)=f(x)$ gerade (y-Achse); $f(-x)=-f(x)$ ungerade (Ursprung) (SG 1)
+  3. `verhalten-inf` — Verhalten im Unendlichen: Polynom führender Term; Bruch Grad-Vergleich (SG 2)
+  4. `polstelle` — Polstellen & Asymptoten bei gebrochen-rationalen Funktionen separat ⇐ `verhalten-inf` (SG 3)
+  5. `graph-skizze` — Skizze: Extrema, WP, Achsenschnittpunkte mit Koordinaten beschriften ⇐ `kd-rezept` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `kd-rezept` · **0/5+** — Reihenfolge: $D_f$ → Symmetrie → Nullstellen → $f', f''$ → Extrema → WP → $x \to \pm\infty$ → Graph
+  - 🔴 [1] _mittel_ · Konzepte: `symmetrie` · **0/5+** — Symmetrie: $f(-x) = f(x)$ gerade (y-Achse), $f(-x) = -f(x)$ ungerade (Ursprung)
+  - 🔴 [2] _hoch_ · Konzepte: `verhalten-inf` · **0/5+** — Verhalten im Unendlichen: bei Polynom führender Term, bei Bruch Grad-Vergleich
+  - 🔴 [3] _hoch_ · Konzepte: `polstelle` · **0/5+** — Polstellen & Asymptoten bei gebrochen-rationalen Funktionen separat untersuchen
+  - 🔴 [4] _mittel_ · Konzepte: `graph-skizze` · **0/5+** — Abschluss-Skizze: Extrema, WP, Achsenschnittpunkte mit Koordinaten beschriften
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kd-rezept` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kd-rezept` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | sorting          | `kd-rezept` | 1 | 0 | 🔴 | Schritte sortieren |
+|  4 | 0 | error-analysis     | multiple-choice  | `kd-rezept` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `kd-rezept` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `symmetrie` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `symmetrie` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `symmetrie` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `symmetrie` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `symmetrie` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `verhalten-inf` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `verhalten-inf` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `verhalten-inf` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `verhalten-inf` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `verhalten-inf` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `polstelle` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `polstelle` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `polstelle` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `polstelle` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `polstelle`, `verhalten-inf` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `graph-skizze` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `graph-skizze` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `graph-skizze` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `graph-skizze` | 1 | 0 | 🔴 | Koordinaten unbeschriftet |
+| 25 | 4 | transfer           | sorting          | `graph-skizze`, `kd-rezept` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-3-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-3-a`, `ex-abl-3-3-b`, `ex-abl-3-3-c`, `ex-abl-3-3-d`, `ex-abl-3-3-manual-1`, `ex-abl-3-3-manual-2`, `ex-abl-3-3-manual-3`, `ex-abl-3-3-manual-4` … (+4 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `vek-1-2` · Skalarprodukt
 
@@ -5929,191 +6249,443 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-1-2` · Potenzregel und Summenregel
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grundlagen der Differentialrechnung
-- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×8, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Potenzregel $(x^n)'=nx^{n-1}$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Summenregel $(f+g)'=f'+g'$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Wurzeln und Kehrwerte als Potenzen $x^{1/2}, x^{-1}$ ableiten
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Konstanten und Konstante Faktoren richtig behandeln
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-1-1` → `diff-quotient`, `tangenten-steigung`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `pot-regel` — Potenzregel $(x^n)'=nx^{n-1}$ (gilt für alle reellen $n$ im Definitionsbereich) (SG 0)
+  2. `konst-regel` — Konstante hat Ableitung 0: $(c)'=0$ (SG 3)
+  3. `faktor-regel` — Faktorregel: $(c\cdot f)'=c\cdot f'$ (SG 3)
+  4. `summen-regel` — Summenregel: $(f+g)'=f'+g'$ (SG 1)
+  5. `pot-negativ` — Negative Exponenten: $1/x^n=x^{-n}$ → Potenzregel anwenden ⇐ `pot-regel` (SG 2)
+  6. `pot-gebrochen` — Gebrochene Exponenten: $\sqrt[n]{x}=x^{1/n}$ → Potenzregel ⇐ `pot-regel` (SG 2)
+  7. `polynom-abl` — Polynom ableiten: Summen- + Faktor- + Potenzregel kombiniert ⇐ `pot-regel`, `faktor-regel`, `summen-regel` (SG 1)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `pot-regel` · **0/5+** — Potenzregel $(x^n)'=nx^{n-1}$
+  - 🔴 [1] _hoch_ · Konzepte: `summen-regel`, `polynom-abl` · **0/5+** — Summenregel $(f+g)'=f'+g'$
+  - 🔴 [2] _hoch_ · Konzepte: `pot-negativ`, `pot-gebrochen` · **0/5+** — Wurzeln und Kehrwerte als Potenzen $x^{1/2}, x^{-1}$ ableiten
+  - 🔴 [3] _mittel_ · Konzepte: `konst-regel`, `faktor-regel` · **0/5+** — Konstanten und Konstante Faktoren richtig behandeln
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `pot-regel` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pot-regel` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `pot-regel` | 1 | 0 | 🔴 | $f'(x)$ an Stelle $x_0$ |
+|  4 | 0 | error-analysis     | multiple-choice  | `pot-regel` | 1 | 0 | 🔴 | Exponent nicht runtergezogen |
+|  5 | 0 | transfer           | multiple-choice  | `pot-regel` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `summen-regel` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `summen-regel`, `polynom-abl` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `polynom-abl` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `summen-regel` | 1 | 0 | 🔴 | Summen-Produkt-Verwechslung |
+| 10 | 1 | transfer           | number-input     | `polynom-abl` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `pot-negativ`, `pot-gebrochen` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pot-gebrochen` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `pot-negativ`, `pot-regel` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `pot-negativ` | 1 | 0 | 🔴 | Vorzeichen bei $x^{-n}$ vergessen |
+| 15 | 2 | transfer           | number-input     | `pot-gebrochen` | 1 | 0 | 🔴 | $\sqrt{x}$ |
+| 16 | 3 | recognize          | true-false       | `konst-regel` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `faktor-regel`, `konst-regel` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `faktor-regel`, `pot-regel` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `konst-regel` | 1 | 0 | 🔴 | Konstante als Variable behandelt |
+| 20 | 3 | transfer           | matching         | `konst-regel`, `faktor-regel` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-2-manual-1`, `ex-abl-1-2-manual-2`, `ex-abl-1-2-manual-3`, `ex-abl-1-2-manual-4`, `ex-abl-1-2-manual-5`, `ex-abl-1-2-manual-6`, `ex-abl-1-2-manual-7`
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `derivative-graph`, `function-graph`, `limit-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `abl-1-3` · Ableitungen elementarer Funktionen
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grundlagen der Differentialrechnung
-- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×8, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — $(\sin x)' = \cos x$, $(\cos x)' = -\sin x$ — Vorzeichen bei Kosinus nicht vergessen
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — $(e^x)' = e^x$ (einzige Funktion mit $f' = f$) und $(\ln x)' = 1/x$
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Allgemeine Exponential-/Logarithmusfunktion: $(a^x)' = a^x \ln a$, $(\log_a x)' = 1/(x \ln a)$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Definitionsbereich beachten: $\ln x$ nur für $x>0$, $\sqrt x$ für $x \ge 0$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-1-1` → `diff-quotient`
+  - `abl-1-2` → `pot-regel`, `summen-regel`, `faktor-regel`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `abl-sin` — $(\sin x)'=\cos x$ (SG 0)
+  2. `abl-cos` — $(\cos x)'=-\sin x$ — Minuszeichen! ⇐ `abl-sin` (SG 0)
+  3. `abl-tan` — $(\tan x)'=1/\cos^2 x = 1+\tan^2 x$ ⇐ `abl-sin`, `abl-cos` (SG 0)
+  4. `abl-exp` — $(e^x)'=e^x$ — einzige Funktion mit $f'=f$ (SG 1)
+  5. `abl-ln` — $(\ln x)'=1/x$ für $x>0$ (SG 1)
+  6. `abl-ax` — $(a^x)'=a^x\ln a$ ⇐ `abl-exp` (SG 2)
+  7. `abl-loga` — $(\log_a x)'=1/(x\ln a)$ ⇐ `abl-ln` (SG 2)
+  8. `def-bereich` — Definitionsbereich: $\ln$ nur für $x>0$, $\sqrt{x}$ nur für $x\ge 0$ (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `abl-sin`, `abl-cos`, `abl-tan` · **0/5+** — $(\sin x)' = \cos x$, $(\cos x)' = -\sin x$ — Vorzeichen bei Kosinus nicht vergessen
+  - 🔴 [1] _hoch_ · Konzepte: `abl-exp`, `abl-ln` · **0/5+** — $(e^x)' = e^x$ (einzige Funktion mit $f' = f$) und $(\ln x)' = 1/x$
+  - 🔴 [2] _mittel_ · Konzepte: `abl-ax`, `abl-loga` · **0/5+** — Allgemeine Exponential-/Logarithmusfunktion: $(a^x)' = a^x \ln a$, $(\log_a x)' = 1/(x \ln a)$
+  - 🔴 [3] _mittel_ · Konzepte: `def-bereich` · **0/5+** — Definitionsbereich beachten: $\ln x$ nur für $x>0$, $\sqrt x$ für $x \ge 0$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `abl-sin`, `abl-cos` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `abl-sin`, `abl-cos` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `abl-sin`, `abl-cos` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `abl-cos` | 1 | 0 | 🔴 | Vorzeichen bei $\cos'$ vergessen |
+|  5 | 0 | transfer           | matching         | `abl-sin`, `abl-cos`, `abl-tan` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `abl-exp`, `abl-ln` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `abl-exp` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `abl-exp`, `abl-ln` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `abl-exp` | 1 | 0 | 🔴 | $(e^x)'=xe^{x-1}$ Falle |
+| 10 | 1 | transfer           | matching         | `abl-exp`, `abl-ln` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `abl-ax` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `abl-ax`, `abl-loga` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `abl-ax` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `abl-ax` | 1 | 0 | 🔴 | Faktor $\ln a$ vergessen |
+| 15 | 2 | transfer           | number-input     | `abl-loga` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `def-bereich` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `def-bereich` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `def-bereich`, `abl-ln` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `def-bereich` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `def-bereich` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-1-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-3-a`, `ex-abl-1-3-manual-1`, `ex-abl-1-3-manual-2`, `ex-abl-1-3-manual-3`, `ex-abl-1-3-manual-4`, `ex-abl-1-3-manual-5`, `ex-abl-1-3-manual-6`, `ex-abl-1-3-manual-7`
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `derivative-graph`, `function-graph`, `limit-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `abl-1-4` · Kettenregel
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Grundlagen der Differentialrechnung
-- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×8, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Kettenregel: $(f(g(x)))' = f'(g(x)) \cdot g'(x)$ — „äußere mal innere Ableitung"
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Äußere Funktion identifizieren (die, die man zuletzt ausführt) und separat ableiten
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Standardfälle: $(e^{u(x)})' = e^{u(x)} \cdot u'(x)$, $(\sin u)' = \cos u \cdot u'$, $(\ln u)' = u'/u$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Bei mehrfach verketteten Funktionen hierarchisch: erst äußerste Schale, dann nächst innere, etc.
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-1-2` → `pot-regel`, `summen-regel`
+  - `abl-1-3` → `abl-sin`, `abl-cos`, `abl-exp`, `abl-ln`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `verkettung` — Funktion in Funktion: $f(g(x))$ — innere $g$, äußere $f$ (SG 1)
+  2. `aussere-finden` — Äußere Funktion = die, die man zuletzt ausführt ⇐ `verkettung` (SG 1)
+  3. `kettenregel` — Kettenregel $[f(g(x))]'=f'(g(x))\cdot g'(x)$ — äußere mal innere Ableitung ⇐ `verkettung`, `aussere-finden` (SG 0)
+  4. `std-exp-u` — Standard $(e^{u(x)})'=e^{u(x)}\cdot u'$ ⇐ `kettenregel` (SG 2)
+  5. `std-sin-u` — Standard $(\sin u)'=\cos u\cdot u'$, $(\cos u)'=-\sin u\cdot u'$ ⇐ `kettenregel` (SG 2)
+  6. `std-ln-u` — Standard $(\ln u)'=u'/u$ ⇐ `kettenregel` (SG 2)
+  7. `mehrfach-kette` — Mehrfachverkettung: hierarchisch von außen nach innen ⇐ `kettenregel` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `kettenregel` · **0/5+** — Kettenregel: $(f(g(x)))' = f'(g(x)) \cdot g'(x)$ — „äußere mal innere Ableitung"
+  - 🔴 [1] _hoch_ · Konzepte: `verkettung`, `aussere-finden` · **0/5+** — Äußere Funktion identifizieren (die, die man zuletzt ausführt) und separat ableiten
+  - 🔴 [2] _hoch_ · Konzepte: `std-exp-u`, `std-sin-u`, `std-ln-u` · **0/5+** — Standardfälle: $(e^{u(x)})' = e^{u(x)} \cdot u'(x)$, $(\sin u)' = \cos u \cdot u'$, $(\ln u)' = u'/u$
+  - 🔴 [3] _mittel_ · Konzepte: `mehrfach-kette` · **0/5+** — Bei mehrfach verketteten Funktionen hierarchisch: erst äußerste Schale, dann nächst innere, etc.
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kettenregel` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kettenregel` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `kettenregel` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `kettenregel` | 1 | 0 | 🔴 | Innere Ableitung vergessen |
+|  5 | 0 | transfer           | multiple-choice  | `kettenregel` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `verkettung`, `aussere-finden` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `aussere-finden` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | matching         | `aussere-finden`, `verkettung` | 1 | 0 | 🔴 | Äußere/innere ↔ Funktion zuordnen |
+|  9 | 1 | error-analysis     | multiple-choice  | `aussere-finden` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | sorting          | `verkettung`, `aussere-finden`, `kettenregel` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `std-exp-u`, `std-sin-u` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `std-sin-u`, `std-exp-u` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `std-ln-u` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `std-ln-u` | 1 | 0 | 🔴 | $(\ln u)'=1/u$ statt $u'/u$ |
+| 15 | 2 | transfer           | matching         | `std-exp-u`, `std-sin-u`, `std-ln-u` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `mehrfach-kette` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `mehrfach-kette` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `mehrfach-kette` | 1 | 0 | 🔴 | $\sin(e^{x^2})$ |
+| 19 | 3 | error-analysis     | multiple-choice  | `mehrfach-kette` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | sorting          | `mehrfach-kette`, `aussere-finden` | 1 | 0 | 🔴 | Schalen sortieren |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-1-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-1-4-a`, `ex-abl-1-4-manual-1`, `ex-abl-1-4-manual-2`, `ex-abl-1-4-manual-3`, `ex-abl-1-4-manual-4`, `ex-abl-1-4-manual-5`, `ex-abl-1-4-manual-6`, `ex-abl-1-4-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `abl-2-1` · Produktregel
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Ableitungsregeln im Detail
-- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Formel: $(f \cdot g)' = f' g + f g'$ (zwei Summanden, kreuzweise)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Klassischer Fehler: $(fg)' \neq f' g'$ (nicht faktorweise ableiten!)
-  - 🔴 [2] (niedrig) **0/5+** Aufgaben — Geometrische Motivation: Flächenänderung eines Rechtecks mit variablen Seiten
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Dreifaches Produkt: $(fgh)' = f'gh + fg'h + fgh'$ (analog, drei Summanden)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Nach dem Ableiten ausklammern und vereinfachen — Prüfer erwartet gekürzte Form
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-1-2` → `pot-regel`, `summen-regel`, `faktor-regel`
+  - `abl-1-3` → `abl-sin`, `abl-cos`, `abl-exp`, `abl-ln`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `pr-formel` — Produktregel $(f\cdot g)'=f'g+fg'$ — zwei Summanden, kreuzweise (SG 0)
+  2. `pr-falle` — Klassischer Fehler: $(fg)'\neq f'g'$ — nicht faktorweise ableiten! ⇐ `pr-formel` (SG 1)
+  3. `pr-geometrie` — Rechteck-Bild: Flächenänderung mit zwei variablen Seiten (SG 2)
+  4. `pr-dreifach` — Dreifach: $(fgh)'=f'gh+fg'h+fgh'$ ⇐ `pr-formel` (SG 3)
+  5. `pr-vereinfachen` — Nach dem Ableiten ausklammern und vereinfachen ⇐ `pr-formel` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `pr-formel` · **0/5+** — Formel: $(f \cdot g)' = f' g + f g'$ (zwei Summanden, kreuzweise)
+  - 🔴 [1] _hoch_ · Konzepte: `pr-falle` · **0/5+** — Klassischer Fehler: $(fg)' \neq f' g'$ (nicht faktorweise ableiten!)
+  - 🔴 [2] _niedrig_ · Konzepte: `pr-geometrie` · **0/5+** — Geometrische Motivation: Flächenänderung eines Rechtecks mit variablen Seiten
+  - 🔴 [3] _mittel_ · Konzepte: `pr-dreifach` · **0/5+** — Dreifaches Produkt: $(fgh)' = f'gh + fg'h + fgh'$ (analog, drei Summanden)
+  - 🔴 [4] _mittel_ · Konzepte: `pr-vereinfachen` · **0/5+** — Nach dem Ableiten ausklammern und vereinfachen — Prüfer erwartet gekürzte Form
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `pr-formel` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pr-formel` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `pr-formel` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `pr-formel` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `pr-formel` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `pr-falle` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pr-falle`, `pr-formel` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `pr-falle` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pr-falle` | 1 | 0 | 🔴 | Faktor-für-Faktor abgeleitet |
+| 10 | 1 | transfer           | matching         | `pr-falle`, `pr-formel` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `pr-geometrie` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pr-geometrie` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `pr-geometrie` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `pr-geometrie` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `pr-geometrie`, `pr-formel` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `pr-dreifach` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pr-dreifach` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `pr-dreifach` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pr-dreifach` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `pr-dreifach`, `pr-formel` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `pr-vereinfachen` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `pr-vereinfachen`, `pr-formel` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `pr-vereinfachen` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `pr-vereinfachen` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | sorting          | `pr-vereinfachen`, `pr-formel` | 1 | 0 | 🔴 | Schritte ordnen |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-2-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-2-1-manual-1`, `ex-abl-2-1-manual-2`, `ex-abl-2-1-manual-3`, `ex-abl-2-1-manual-4`, `ex-abl-2-1-manual-5`, `ex-abl-2-1-manual-6`, `ex-abl-2-1-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `abl-2-2` · Quotientenregel
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Ableitungsregeln im Detail
-- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×8, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Formel: $(f/g)' = (f' g - f g')/g^2$ — Minuszeichen, Reihenfolge $f' g$ zuerst
-  - 🔴 [1] (mittel) **0/5+** Aufgaben — NAZ-Eselsbrücke: "**N**enner·**A**bl. **Z**ähler minus **Z**ähler·**A**bl. **N**enner, durch $N^2$"
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Nenner niemals ableiten ohne Vorzeichen: $f' g - f g'$ (NICHT $f g' - f' g$)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Alternative: $f/g = f \cdot g^{-1}$ mit Produkt- und Kettenregel ableiten
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Definitionsbereich: $g(x) \neq 0$ (Polstellen gesondert betrachten)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-2-1` → `pr-formel`
+  - `abl-1-3` → `abl-sin`, `abl-cos`, `abl-exp`, `abl-ln`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `qr-formel` — Quotientenregel $(f/g)'=(f'g-fg')/g^2$ (SG 0)
+  2. `qr-naz` — NAZ-Eselsbrücke: Nenner·Abl.Zähler − Zähler·Abl.Nenner, durch $N^2$ ⇐ `qr-formel` (SG 1)
+  3. `qr-vorzeichen` — Reihenfolge im Zähler: $f'g$ ZUERST, dann minus $fg'$ ⇐ `qr-formel` (SG 2)
+  4. `qr-via-pr` — Alternative: $f/g=f\cdot g^{-1}$ mit Produkt+Kettenregel ableiten ⇐ `qr-formel` (SG 3)
+  5. `qr-defbereich` — Definitionsbereich $g(x)\neq 0$ — Polstellen separat (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `qr-formel` · **0/5+** — Formel: $(f/g)' = (f' g - f g')/g^2$ — Minuszeichen, Reihenfolge $f' g$ zuerst
+  - 🔴 [1] _mittel_ · Konzepte: `qr-naz` · **0/5+** — NAZ-Eselsbrücke: "**N**enner·**A**bl. **Z**ähler minus **Z**ähler·**A**bl. **N**enner, durch $N^2$"
+  - 🔴 [2] _hoch_ · Konzepte: `qr-vorzeichen` · **0/5+** — Nenner niemals ableiten ohne Vorzeichen: $f' g - f g'$ (NICHT $f g' - f' g$)
+  - 🔴 [3] _mittel_ · Konzepte: `qr-via-pr` · **0/5+** — Alternative: $f/g = f \cdot g^{-1}$ mit Produkt- und Kettenregel ableiten
+  - 🔴 [4] _mittel_ · Konzepte: `qr-defbereich` · **0/5+** — Definitionsbereich: $g(x) \neq 0$ (Polstellen gesondert betrachten)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `qr-formel` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `qr-formel` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `qr-formel` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `qr-formel` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `qr-formel` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `qr-naz` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `qr-naz` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `qr-naz` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `qr-naz` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `qr-naz`, `qr-formel` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `qr-vorzeichen` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `qr-vorzeichen` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `qr-vorzeichen`, `qr-formel` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `qr-vorzeichen` | 1 | 0 | 🔴 | Reihenfolge $fg'-f'g$ |
+| 15 | 2 | transfer           | multiple-choice  | `qr-vorzeichen` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `qr-via-pr` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `qr-via-pr` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `qr-via-pr` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `qr-via-pr` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | sorting          | `qr-via-pr`, `qr-formel` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `qr-defbereich` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `qr-defbereich` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `qr-defbereich` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `qr-defbereich` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `qr-defbereich`, `qr-formel` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-2-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-2-2-a`, `ex-abl-2-2-manual-1`, `ex-abl-2-2-manual-2`, `ex-abl-2-2-manual-3`, `ex-abl-2-2-manual-4`, `ex-abl-2-2-manual-5`, `ex-abl-2-2-manual-6`, `ex-abl-2-2-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `abl-2-4` · Gemischte Regeln
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Ableitungsregeln im Detail
-- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Äußerste Struktur identifizieren: Produkt, Quotient oder Verkettung?
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Hierarchisch ableiten: erst äußerste Regel, dann innere Teile mit passender Regel
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Logarithmisches Ableiten bei $f(x)^{g(x)}$: $\ln y = g \ln f$, dann implizit differenzieren
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Umformen vor dem Ableiten: $\sqrt[n]{x}$ → $x^{1/n}$, $1/x^n$ → $x^{-n}$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Ergebnisse faktorisieren — Prüfer erwarten vereinfachte Antwort
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-1-2` → `pot-regel`, `pot-negativ`, `pot-gebrochen`
+  - `abl-2-1` → `pr-formel`, `pr-vereinfachen`
+  - `abl-2-2` → `qr-formel`
+  - `abl-2-3` → `kr-formel-fest`, `kr-mehrfach`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `gemischt-strukt` — Äußerste Struktur identifizieren: Produkt, Quotient oder Verkettung? (SG 0)
+  2. `gemischt-hierar` — Hierarchisch: erst äußerste Regel, dann innere Teile mit passender Regel ⇐ `gemischt-strukt` (SG 1)
+  3. `log-ableiten` — Logarithmisches Ableiten bei $f^g$: $\ln y=g\ln f$, dann implizit (SG 2)
+  4. `umformen-erst` — Vor dem Ableiten umformen: $\sqrt[n]{x}\to x^{1/n}$, $1/x^n\to x^{-n}$ (SG 3)
+  5. `gemischt-vereinf` — Ergebnis faktorisieren und vereinfachen — Klausurpunkte (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `gemischt-strukt` · **0/5+** — Äußerste Struktur identifizieren: Produkt, Quotient oder Verkettung?
+  - 🔴 [1] _hoch_ · Konzepte: `gemischt-hierar` · **0/5+** — Hierarchisch ableiten: erst äußerste Regel, dann innere Teile mit passender Regel
+  - 🔴 [2] _mittel_ · Konzepte: `log-ableiten` · **0/5+** — Logarithmisches Ableiten bei $f(x)^{g(x)}$: $\ln y = g \ln f$, dann implizit differenzieren
+  - 🔴 [3] _hoch_ · Konzepte: `umformen-erst` · **0/5+** — Umformen vor dem Ableiten: $\sqrt[n]{x}$ → $x^{1/n}$, $1/x^n$ → $x^{-n}$
+  - 🔴 [4] _mittel_ · Konzepte: `gemischt-vereinf` · **0/5+** — Ergebnisse faktorisieren — Prüfer erwarten vereinfachte Antwort
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `gemischt-strukt` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `gemischt-strukt` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `gemischt-strukt` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `gemischt-strukt` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `gemischt-strukt` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `gemischt-hierar` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `gemischt-hierar` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `gemischt-hierar` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `gemischt-hierar` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | sorting          | `gemischt-hierar`, `gemischt-strukt` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `log-ableiten` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `log-ableiten` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `log-ableiten` | 1 | 0 | 🔴 | $x^x$ |
+| 14 | 2 | error-analysis     | multiple-choice  | `log-ableiten` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | sorting          | `log-ableiten` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `umformen-erst` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `umformen-erst` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `umformen-erst` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `umformen-erst` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `umformen-erst` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `gemischt-vereinf` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `gemischt-vereinf` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `gemischt-vereinf` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `gemischt-vereinf` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | sorting          | `gemischt-vereinf` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-2-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-2-4-manual-1`, `ex-abl-2-4-manual-2`, `ex-abl-2-4-manual-3`, `ex-abl-2-4-manual-4`, `ex-abl-2-4-manual-5`, `ex-abl-2-4-manual-6`, `ex-abl-2-4-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `abl-3-1` · Monotonie und Extremwerte
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Kurvendiskussion
-- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Monotonie-Kriterium: $f'(x) > 0$ → streng wachsend, $f'(x) < 0$ → streng fallend
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Notwendige Bedingung für lokales Extremum: $f'(x_0) = 0$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Hinreichend via $f''$: $f''(x_0) > 0$ → Min, $f''(x_0) < 0$ → Max
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Hinreichend via Vorzeichenwechsel: $f'$ wechselt $+ \to -$ → Max, $- \to +$ → Min
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Kein Vorzeichenwechsel von $f'$ bei $f'(x_0) = 0$ → Sattelpunkt (z.B. $f(x) = x^3$ bei $0$)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-1-1` → `vorzeichen-fprime`, `extr-notwendig`
+  - `abl-1-5` → `hin-min-max`, `sattel-1-5`
+  - `abl-1-2` → `polynom-abl`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `monotonie` — Monotonie: $f'>0$ streng wachsend, $f'<0$ streng fallend (SG 0)
+  2. `extr-not` — Notwendig für lokales Extremum: $f'(x_0)=0$ (SG 1)
+  3. `extr-hin-f2` — Hinreichend via $f''$: $f''>0\Rightarrow$ Min, $f''<0\Rightarrow$ Max ⇐ `extr-not` (SG 2)
+  4. `extr-hin-vzw` — Hinreichend via VZW von $f'$: $+\to-$ Max, $-\to+$ Min ⇐ `monotonie`, `extr-not` (SG 3)
+  5. `sattel-3-1` — Kein VZW von $f'$ bei $f'(x_0)=0$ → Sattelpunkt (z.B. $x^3$ bei 0) ⇐ `extr-hin-vzw` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `monotonie` · **0/5+** — Monotonie-Kriterium: $f'(x) > 0$ → streng wachsend, $f'(x) < 0$ → streng fallend
+  - 🔴 [1] _hoch_ · Konzepte: `extr-not` · **0/5+** — Notwendige Bedingung für lokales Extremum: $f'(x_0) = 0$
+  - 🔴 [2] _hoch_ · Konzepte: `extr-hin-f2` · **0/5+** — Hinreichend via $f''$: $f''(x_0) > 0$ → Min, $f''(x_0) < 0$ → Max
+  - 🔴 [3] _hoch_ · Konzepte: `extr-hin-vzw` · **0/5+** — Hinreichend via Vorzeichenwechsel: $f'$ wechselt $+ \to -$ → Max, $- \to +$ → Min
+  - 🔴 [4] _mittel_ · Konzepte: `sattel-3-1` · **0/5+** — Kein Vorzeichenwechsel von $f'$ bei $f'(x_0) = 0$ → Sattelpunkt (z.B. $f(x) = x^3$ bei $0$)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `monotonie` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `monotonie` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `monotonie` | 1 | 0 | 🔴 | Monotoniebereich angeben |
+|  4 | 0 | error-analysis     | multiple-choice  | `monotonie` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `monotonie` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `extr-not` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `extr-not` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `extr-not` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `extr-not` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `extr-not` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `extr-hin-f2` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `extr-hin-f2` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `extr-hin-f2`, `extr-not` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `extr-hin-f2` | 1 | 0 | 🔴 | Vorzeichen Min/Max getauscht |
+| 15 | 2 | transfer           | matching         | `extr-hin-f2` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `extr-hin-vzw` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `extr-hin-vzw` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `extr-hin-vzw` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `extr-hin-vzw` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | sorting          | `extr-hin-vzw` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `sattel-3-1` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `sattel-3-1` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `sattel-3-1` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `sattel-3-1` | 1 | 0 | 🔴 | Sattel als Extremum |
+| 25 | 4 | transfer           | multiple-choice  | `sattel-3-1`, `extr-hin-vzw` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-3-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-1-a`, `ex-abl-3-1-b`, `ex-abl-3-1-c`, `ex-abl-3-1-d`, `ex-abl-3-1-transfer`, `ex-abl-3-1-manual-1`, `ex-abl-3-1-manual-2`, `ex-abl-3-1-manual-3` … (+5 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `derivative-graph`, `function-graph`, `limit-explorer` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `abl-3-4` · Prüfungsaufgaben Kurvendiskussion
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Kurvendiskussion
-- **Aufgaben aktuell:** 13 · **mindestens:** 20 · **fehlen bis Minimum:** 7 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×1, matching ×2, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, sorting, matching, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Typische Klausurfunktionen: Polynom, Bruch $p(x)/q(x)$, $x \cdot e^{-x}$, $e^{-x^2}$
-  - 🔴 [1] (mittel) **0/5+** Aufgaben — Plausibilitätsprüfung: Polynom Grad $n$ hat höchstens $n-1$ Extrema
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Globale Extrema auf Intervall $[a,b]$: innere Kandidaten + Randpunkte $f(a), f(b)$ vergleichen
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Anwendungsaufgabe (Optimierung): Zielfunktion aufstellen, Nebenbedingung einsetzen, dann ableiten
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Taylorpolynom $T_n(x)$ als schnelle lokale Kurvendiskussion 2. Ordnung
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 7 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-3-3` → `kd-rezept`, `symmetrie`, `verhalten-inf`, `polstelle`, `graph-skizze`
+  - `abl-3-1` → `extr-not`, `extr-hin-f2`
+  - `abl-3-2` → `wp-not`, `wp-hin`
+  - `abl-2-3` → `kr-formel-fest`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `klausur-typen` — Typische Klausurfunktionen: Polynom, $p(x)/q(x)$, $x\cdot e^{-x}$, $e^{-x^2}$ (SG 0)
+  2. `plausi-grad` — Polynom Grad $n$ → höchstens $n-1$ Extrema (SG 1)
+  3. `global-intervall` — Globale Extrema auf $[a,b]$: innere Kandidaten + Randwerte $f(a),f(b)$ (SG 2)
+  4. `optimierung` — Optimierung: Zielfunktion + Nebenbedingung → eine Variable → ableiten (SG 3)
+  5. `taylor-2` — Taylorpolynom $T_n(x)$ als schnelle lokale Kurvendiskussion 2. Ordnung (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `klausur-typen` · **0/5+** — Typische Klausurfunktionen: Polynom, Bruch $p(x)/q(x)$, $x \cdot e^{-x}$, $e^{-x^2}$
+  - 🔴 [1] _mittel_ · Konzepte: `plausi-grad` · **0/5+** — Plausibilitätsprüfung: Polynom Grad $n$ hat höchstens $n-1$ Extrema
+  - 🔴 [2] _hoch_ · Konzepte: `global-intervall` · **0/5+** — Globale Extrema auf Intervall $[a,b]$: innere Kandidaten + Randpunkte $f(a), f(b)$ vergleichen
+  - 🔴 [3] _hoch_ · Konzepte: `optimierung` · **0/5+** — Anwendungsaufgabe (Optimierung): Zielfunktion aufstellen, Nebenbedingung einsetzen, dann ableiten
+  - 🔴 [4] _mittel_ · Konzepte: `taylor-2` · **0/5+** — Taylorpolynom $T_n(x)$ als schnelle lokale Kurvendiskussion 2. Ordnung
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `klausur-typen` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `klausur-typen` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `klausur-typen` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  4 | 0 | error-analysis     | multiple-choice  | `klausur-typen` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `klausur-typen` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `plausi-grad` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `plausi-grad` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `plausi-grad` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `plausi-grad` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `plausi-grad` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `global-intervall` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `global-intervall` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `global-intervall` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `global-intervall` | 1 | 0 | 🔴 | Rand vergessen |
+| 15 | 2 | transfer           | number-input     | `global-intervall` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 16 | 3 | recognize          | true-false       | `optimierung` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `optimierung` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `optimierung` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `optimierung` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | sorting          | `optimierung` | 1 | 0 | 🔴 | Lösungsweg ordnen |
+| 21 | 4 | recognize          | true-false       | `taylor-2` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `taylor-2` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `taylor-2` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `taylor-2` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `taylor-2` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-3-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-3-4-a`, `ex-abl-3-4-b`, `ex-abl-3-4-c`, `ex-abl-3-4-d`, `ex-abl-3-4-e`, `ex-abl-3-4-manual-1`, `ex-abl-3-4-manual-2`, `ex-abl-3-4-manual-3` … (+5 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `vek-2-4` · Prüfungsaufgaben Analytische Geometrie
 
@@ -6255,26 +6827,58 @@ npm run build              # abschließender End-zu-End-Check
 #### `abl-2-3` · Kettenregel — Schritt für Schritt
 
 - **Topic:** `ableitung` (Differentialrechnung) · **Unit:** Ableitungsregeln im Detail
-- **Aufgaben aktuell:** 14 · **mindestens:** 20 · **fehlen bis Minimum:** 6 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×8, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Formel: $[f(g(x))]' = f'(g(x)) \cdot g'(x)$ — äußere mal innere Ableitung
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Innere Funktion in äußerer Ableitung unverändert eingesetzt lassen
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Mehrfachverkettung: Ableitungen von außen nach innen multiplizieren
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Häufigste Anwendung: $(ax+b)^n$, $e^{ax}$, $\sin(ax)$ — innere Ableitung $= a$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Häufiger Fehler: innere Ableitung vergessen (z.B. $(\sin 2x)' = 2\cos 2x$, nicht $\cos 2x$)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/ableitung.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 6 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/ableitung.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `abl-1-4` → `kettenregel`, `aussere-finden`, `std-exp-u`, `std-sin-u`, `std-ln-u`, `mehrfach-kette`
+  - `abl-1-3` → `abl-sin`, `abl-cos`, `abl-exp`, `abl-ln`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `kr-formel-fest` — Kettenregel-Formel: $[f(g(x))]'=f'(g(x))\cdot g'(x)$ — äußere mal innere Abl. (SG 0)
+  2. `kr-eingesetzt` — Innere bleibt in äußerer Ableitung eingesetzt — nicht selbst ableiten ⇐ `kr-formel-fest` (SG 1)
+  3. `kr-mehrfach` — Mehrfachverkettung: von außen nach innen multiplizieren ⇐ `kr-formel-fest` (SG 2)
+  4. `kr-linear-innen` — Standard $(ax+b)^n,\;e^{ax},\;\sin(ax)$: innere Ableitung $=a$ ⇐ `kr-formel-fest` (SG 3)
+  5. `kr-falle-innen` — Häufiger Fehler: innere Ableitung vergessen ($(\sin 2x)'=2\cos 2x$, nicht $\cos 2x$) ⇐ `kr-formel-fest` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `kr-formel-fest` · **0/5+** — Formel: $[f(g(x))]' = f'(g(x)) \cdot g'(x)$ — äußere mal innere Ableitung
+  - 🔴 [1] _hoch_ · Konzepte: `kr-eingesetzt` · **0/5+** — Innere Funktion in äußerer Ableitung unverändert eingesetzt lassen
+  - 🔴 [2] _hoch_ · Konzepte: `kr-mehrfach` · **0/5+** — Mehrfachverkettung: Ableitungen von außen nach innen multiplizieren
+  - 🔴 [3] _hoch_ · Konzepte: `kr-linear-innen` · **0/5+** — Häufigste Anwendung: $(ax+b)^n$, $e^{ax}$, $\sin(ax)$ — innere Ableitung $= a$
+  - 🔴 [4] _hoch_ · Konzepte: `kr-falle-innen` · **0/5+** — Häufiger Fehler: innere Ableitung vergessen (z.B. $(\sin 2x)' = 2\cos 2x$, nicht $\cos 2x$)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kr-formel-fest` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kr-formel-fest` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `kr-formel-fest` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `kr-formel-fest` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `kr-formel-fest` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `kr-eingesetzt` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `kr-eingesetzt` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `kr-eingesetzt` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `kr-eingesetzt` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `kr-eingesetzt` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `kr-mehrfach` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `kr-mehrfach` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `kr-mehrfach` | 1 | 0 | 🔴 | Doppelkette |
+| 14 | 2 | error-analysis     | multiple-choice  | `kr-mehrfach` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | sorting          | `kr-mehrfach` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `kr-linear-innen` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `kr-linear-innen` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `kr-linear-innen` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `kr-linear-innen` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `kr-linear-innen` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `kr-falle-innen` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `kr-falle-innen` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `kr-falle-innen` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `kr-falle-innen` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `kr-falle-innen` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/ableitung.js` unter `'abl-2-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/ableitung.js`
 - **4-Block-Erklärung fehlt bei:** `ex-abl-2-3-manual-1`, `ex-abl-2-3-manual-2`, `ex-abl-2-3-manual-3`, `ex-abl-2-3-manual-4`, `ex-abl-2-3-manual-5`, `ex-abl-2-3-manual-6`, `ex-abl-2-3-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `derivative-graph`, `function-graph`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `ableitung`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Ableitungen von $\sin, \cos, e^x, \ln x, x^n$ auswendig. · Kettenregel: äußere mal innere Ableitung. · Notwendige Bedingung für Extrema: $f'(x)=0$. Hinreichend: Vorzeichenwechsel von $f'$ oder $f''$ einsetzen. · …
-  - _Typische Fehler (gute Distraktoren):_ Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
-  - _Klausur-Fokus:_ Kurvendiskussion komplett (Definitionsbereich, Nullstellen, Asymptoten, Extrema, Wendepunkte). · Optimierungsaufgabe mit Nebenbedingung (Extremwertaufgabe). · l'Hospital für $0/0$-Grenzwerte.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
 #### `fl-1-1` · Fourier-Reihen — Grundbegriffe
 

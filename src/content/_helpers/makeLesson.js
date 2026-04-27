@@ -29,6 +29,7 @@ export function makeLesson({
   nextLessonId = null,
   isExam = false,
   createdAt,
+  blueprint,
 }) {
   const prefix = isExam ? '[PRÜFUNG] ' : ''
   const steps = []
@@ -109,6 +110,7 @@ export function makeLesson({
       learningGoals,
       ...(subGoals ? { subGoals } : {}),
       prerequisites,
+      ...(blueprint ? { blueprint } : {}),
       nextLessonId,
       createdAt,
       steps,
