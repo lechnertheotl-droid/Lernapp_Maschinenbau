@@ -3448,26 +3448,60 @@ npm run build              # abschließender End-zu-End-Check
 #### `py-4-1` · Prüfung: Code-Verständnis & Fehlersuche
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×5, true-false ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Indizierung: Python 0-basiert, Matlab 1-basiert (Off-by-one-Fehler!)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Operatoren: `*` vs `@`, `^` vs `.^` — elementweise vs. Matrix
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Python `range(a, b)`: $a, a+1, \ldots, b-1$; Matlab `a:b`: $a, a+1, \ldots, b$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Code Zeile-für-Zeile verfolgen, Variablenwerte neben Code notieren
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Typische Fehler: `=` vs `==`, fehlendes `:` in Python, Semikolon-Ausgabe in Matlab
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/python_matlab.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/python_matlab.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `py-1-3` → `index-base`
+  - `py-1-2` → `pot-op`
+  - `py-2-1` → `np-element`
+  - `py-1-4` → `for-range`, `eq-vs-assign`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `idx-offset` — Indizierung: Python 0-basiert vs Matlab 1-basiert (Off-by-one) (SG 0)
+  2. `op-mat-vs-el` — Operatoren: `*`/`@`, `^`/`.^` — elementweise vs Matrix (SG 1)
+  3. `range-vs-colon` — `range(a,b)`: $a..b-1$ vs `a:b`: $a..b$ (SG 2)
+  4. `trace-code` — Code Zeile-für-Zeile verfolgen (Variablentabelle daneben) ⇐ `idx-offset`, `range-vs-colon` (SG 3)
+  5. `common-bugs` — Typische Fehler: `=` vs `==`, `:` vergessen, `;` in Matlab ⇐ `trace-code` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `idx-offset` · **0/5+** — Indizierung: Python 0-basiert, Matlab 1-basiert (Off-by-one-Fehler!)
+  - 🔴 [1] _hoch_ · Konzepte: `op-mat-vs-el` · **0/5+** — Operatoren: `*` vs `@`, `^` vs `.^` — elementweise vs. Matrix
+  - 🔴 [2] _hoch_ · Konzepte: `range-vs-colon` · **0/5+** — Python `range(a, b)`: $a, a+1, \ldots, b-1$; Matlab `a:b`: $a, a+1, \ldots, b$
+  - 🔴 [3] _hoch_ · Konzepte: `trace-code` · **0/5+** — Code Zeile-für-Zeile verfolgen, Variablenwerte neben Code notieren
+  - 🔴 [4] _hoch_ · Konzepte: `common-bugs` · **0/5+** — Typische Fehler: `=` vs `==`, fehlendes `:` in Python, Semikolon-Ausgabe in Matlab
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `idx-offset` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `idx-offset` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `idx-offset` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `idx-offset` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `idx-offset` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `op-mat-vs-el` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `op-mat-vs-el` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `op-mat-vs-el` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `op-mat-vs-el` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `op-mat-vs-el` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `range-vs-colon` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `range-vs-colon` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `range-vs-colon` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `range-vs-colon` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `range-vs-colon` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `trace-code` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `trace-code` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `trace-code` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `trace-code` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `trace-code` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `common-bugs` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `common-bugs` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `common-bugs` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `common-bugs` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `common-bugs` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/python_matlab.js` unter `'py-4-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-4-1-a`, `ex-py-4-1-b`, `ex-py-4-1-c`, `ex-py-4-1-d`, `ex-py-4-1-e`, `ex-py-4-1-f`, `ex-py-4-1-g`, `ex-py-4-1-h` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
-  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
 #### `abl-4-1` · Prüfung: Ableitungsregeln
 
@@ -7996,287 +8030,643 @@ npm run build              # abschließender End-zu-End-Check
 #### `py-1-1` · Variablen & Datentypen
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Dynamische Typisierung: keine Typangabe nötig, aber Typ ändert sich mit dem Wert
-  - 🔴 [1] (mittel) **0/5+** Aufgaben — int/float/str/bool mit `type(x)` prüfen
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Explizite Konvertierung `int("42")`, `float(3)`, `str(3.14)` — `int("3.14")` wirft `ValueError`
-  - 🔴 [3] (niedrig) **0/5+** Aufgaben — `snake_case` für Variablen in Python; Matlab nutzt `camelCase` oder Unterstrich-frei
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/python_matlab.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/python_matlab.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `dyn-typing` — Dynamische Typisierung — Typ wechselt mit Wert (SG 0)
+  2. `type-funkt` — Typprüfung mit `type(x)` ⇐ `dyn-typing` (SG 1)
+  3. `konvertier` — Konvertierung `int()/float()/str()` — `int("3.14")` wirft Fehler ⇐ `dyn-typing` (SG 2)
+  4. `naming-conv` — snake_case (Python) vs. camelCase (Matlab) (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `dyn-typing` · **0/5+** — Dynamische Typisierung: keine Typangabe nötig, aber Typ ändert sich mit dem Wert
+  - 🔴 [1] _mittel_ · Konzepte: `type-funkt` · **0/5+** — int/float/str/bool mit `type(x)` prüfen
+  - 🔴 [2] _hoch_ · Konzepte: `konvertier` · **0/5+** — Explizite Konvertierung `int("42")`, `float(3)`, `str(3.14)` — `int("3.14")` wirft `ValueError`
+  - 🔴 [3] _niedrig_ · Konzepte: `naming-conv` · **0/5+** — `snake_case` für Variablen in Python; Matlab nutzt `camelCase` oder Unterstrich-frei
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `dyn-typing` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `dyn-typing` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `dyn-typing` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `dyn-typing` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `dyn-typing` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `type-funkt` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `type-funkt` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `type-funkt` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `type-funkt` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `type-funkt` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `konvertier` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `konvertier` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `konvertier` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `konvertier` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `konvertier` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `naming-conv` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `naming-conv` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `naming-conv` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `naming-conv` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `naming-conv` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-1-a`, `ex-py-1-1-b`, `ex-py-1-1-manual-1`, `ex-py-1-1-manual-2`, `ex-py-1-1-manual-3`, `ex-py-1-1-manual-4`, `ex-py-1-1-manual-5`, `ex-py-1-1-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
-  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
 #### `py-1-2` · Operatoren & Ausdrücke
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — `/` = Gleitkomma-Division, `//` = Ganzzahl-Division, `%` = Modulo
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Python: `**` für Potenz; Matlab: `^` (bei Arrays: `.^` elementweise)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Logische Operatoren: Python `and/or/not`, Matlab `&&/||/~` (skalar) bzw. `&/|/~` (elementweise)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Float-Vergleich mit `==` unzuverlässig — stattdessen `abs(a - b) < 1e-9`
-  - 🔴 [4] (niedrig) **0/5+** Aufgaben — `0 == False` und `1 == True` in Python — bool ist Subtyp von int
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/python_matlab.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/python_matlab.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `py-1-1` → `dyn-typing`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `div-op` — `/` Float, `//` Integer, `%` Modulo (SG 0)
+  2. `pot-op` — Python `**`, Matlab `^` bzw. `.^` elementweise (SG 1)
+  3. `log-op` — Logik Python `and/or/not`, Matlab `&&/||/~` (SG 2)
+  4. `float-cmp` — Float-Vergleich `abs(a-b)<1e-9` statt `==` (SG 3)
+  5. `bool-int` — `bool` ist Subtyp von `int`: `0==False`, `1==True` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `div-op` · **0/5+** — `/` = Gleitkomma-Division, `//` = Ganzzahl-Division, `%` = Modulo
+  - 🔴 [1] _hoch_ · Konzepte: `pot-op` · **0/5+** — Python: `**` für Potenz; Matlab: `^` (bei Arrays: `.^` elementweise)
+  - 🔴 [2] _hoch_ · Konzepte: `log-op` · **0/5+** — Logische Operatoren: Python `and/or/not`, Matlab `&&/||/~` (skalar) bzw. `&/|/~` (elementweise)
+  - 🔴 [3] _hoch_ · Konzepte: `float-cmp` · **0/5+** — Float-Vergleich mit `==` unzuverlässig — stattdessen `abs(a - b) < 1e-9`
+  - 🔴 [4] _niedrig_ · Konzepte: `bool-int` · **0/5+** — `0 == False` und `1 == True` in Python — bool ist Subtyp von int
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `div-op` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `div-op` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `div-op` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `div-op` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `div-op` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `pot-op` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pot-op` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `pot-op` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pot-op` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `pot-op` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `log-op` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `log-op` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `log-op` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `log-op` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `log-op` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `float-cmp` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `float-cmp` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `float-cmp` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `float-cmp` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `float-cmp` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `bool-int` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `bool-int` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `bool-int` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `bool-int` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `bool-int` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-2-a`, `ex-py-1-2-b`, `ex-py-1-2-manual-1`, `ex-py-1-2-manual-2`, `ex-py-1-2-manual-3`, `ex-py-1-2-manual-4`, `ex-py-1-2-manual-5`, `ex-py-1-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
-  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
 #### `py-1-3` · Listen & Arrays
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Python indiziert ab 0, Matlab ab 1 — Off-by-one-Fehler ist Quelle Nr. 1
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Slicing `liste[a:b]` liefert Elemente $a$ bis $b-1$ (rechte Grenze exklusiv)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — NumPy-Arrays: vektorisiert (elementweise `+ - * /`), viel schneller als reine Python-Listen
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Python-Listen können gemischte Typen; NumPy-Arrays nur einen Datentyp (dtype)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/python_matlab.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/python_matlab.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `index-base` — Python 0-basiert, Matlab 1-basiert (SG 0)
+  2. `slicing` — Slicing `liste[a:b]` — rechte Grenze exklusiv ⇐ `index-base` (SG 1)
+  3. `numpy-vec` — NumPy-Arrays vektorisiert (elementweise + − * /) (SG 2)
+  4. `dtype-mix` — Liste: gemischte Typen; NumPy: ein dtype ⇐ `numpy-vec` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `index-base` · **0/5+** — Python indiziert ab 0, Matlab ab 1 — Off-by-one-Fehler ist Quelle Nr. 1
+  - 🔴 [1] _hoch_ · Konzepte: `slicing` · **0/5+** — Slicing `liste[a:b]` liefert Elemente $a$ bis $b-1$ (rechte Grenze exklusiv)
+  - 🔴 [2] _hoch_ · Konzepte: `numpy-vec` · **0/5+** — NumPy-Arrays: vektorisiert (elementweise `+ - * /`), viel schneller als reine Python-Listen
+  - 🔴 [3] _mittel_ · Konzepte: `dtype-mix` · **0/5+** — Python-Listen können gemischte Typen; NumPy-Arrays nur einen Datentyp (dtype)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `index-base` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `index-base` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `index-base` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `index-base` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `index-base` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `slicing` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `slicing` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `slicing` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `slicing` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `slicing` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `numpy-vec` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `numpy-vec` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `numpy-vec` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `numpy-vec` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `numpy-vec` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `dtype-mix` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `dtype-mix` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `dtype-mix` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `dtype-mix` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `dtype-mix` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-3-a`, `ex-py-1-3-b`, `ex-py-1-3-manual-1`, `ex-py-1-3-manual-2`, `ex-py-1-3-manual-3`, `ex-py-1-3-manual-4`, `ex-py-1-3-manual-5`, `ex-py-1-3-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
-  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
 #### `py-1-4` · Kontrollstrukturen
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Python: Einrückung (4 Spaces) definiert Block — kein `end`; Matlab: immer `end`
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Vergleiche: `==` prüft Gleichheit, `=` weist zu — Verwechslung erzeugt stummen Bug
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — For-Schleife: `for i in range(n)` (0..n-1) in Python, `for i = 1:n` (1..n) in Matlab
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — While-Schleife braucht zwingend einen Abbruch-Mechanismus (Zähler, Bedingung) um Endlos-Loops zu verhindern
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/python_matlab.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/python_matlab.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `py-1-3` → `index-base`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `einrueckung` — Python: Einrückung statt `end`; Matlab: immer `end` (SG 0)
+  2. `eq-vs-assign` — `==` Vergleich, `=` Zuweisung (SG 1)
+  3. `for-range` — `for i in range(n)` 0..n−1 / Matlab `for i=1:n` 1..n (SG 2)
+  4. `while-abbruch` — While: Abbruchbedingung Pflicht (Endlos-Loop verhindern) (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `einrueckung` · **0/5+** — Python: Einrückung (4 Spaces) definiert Block — kein `end`; Matlab: immer `end`
+  - 🔴 [1] _hoch_ · Konzepte: `eq-vs-assign` · **0/5+** — Vergleiche: `==` prüft Gleichheit, `=` weist zu — Verwechslung erzeugt stummen Bug
+  - 🔴 [2] _hoch_ · Konzepte: `for-range` · **0/5+** — For-Schleife: `for i in range(n)` (0..n-1) in Python, `for i = 1:n` (1..n) in Matlab
+  - 🔴 [3] _mittel_ · Konzepte: `while-abbruch` · **0/5+** — While-Schleife braucht zwingend einen Abbruch-Mechanismus (Zähler, Bedingung) um Endlos-Loops zu verhindern
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `einrueckung` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `einrueckung` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `einrueckung` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `einrueckung` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `einrueckung` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `eq-vs-assign` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `eq-vs-assign` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `eq-vs-assign` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `eq-vs-assign` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `eq-vs-assign` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `for-range` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `for-range` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `for-range` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `for-range` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `for-range` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `while-abbruch` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `while-abbruch` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `while-abbruch` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `while-abbruch` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `while-abbruch` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-4-a`, `ex-py-1-4-b`, `ex-py-1-4-manual-1`, `ex-py-1-4-manual-2`, `ex-py-1-4-manual-3`, `ex-py-1-4-manual-4`, `ex-py-1-4-manual-5`, `ex-py-1-4-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
-  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
 #### `py-1-5` · Funktionen definieren
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Python Grundlagen
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Python: `def name(param):`, Matlab: `function y = name(x)` ... `end`
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Rückgabe: Python `return`, Matlab über Zuweisung an Ausgabevariable
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Default-Parameter: `def f(x, y=0):` — bei Aufruf nicht zwingend angeben
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Lambda: `sqr = lambda x: x**2` für kurze Inline-Funktionen
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Docstring (Python) oder Kommentare nach Function-Header (Matlab) dokumentieren
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/python_matlab.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/python_matlab.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `def-syntax` — Python `def name(param):`, Matlab `function y = name(x)` (SG 0)
+  2. `rueckgabe` — Python `return`, Matlab Zuweisung an Output-Variable ⇐ `def-syntax` (SG 1)
+  3. `default-par` — Default-Parameter `def f(x, y=0):` ⇐ `def-syntax` (SG 2)
+  4. `lambda` — Lambda `sqr = lambda x: x**2` (SG 3)
+  5. `doc-str` — Docstring (Python) / Header-Kommentar (Matlab) (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `def-syntax` · **0/5+** — Python: `def name(param):`, Matlab: `function y = name(x)` ... `end`
+  - 🔴 [1] _hoch_ · Konzepte: `rueckgabe` · **0/5+** — Rückgabe: Python `return`, Matlab über Zuweisung an Ausgabevariable
+  - 🔴 [2] _hoch_ · Konzepte: `default-par` · **0/5+** — Default-Parameter: `def f(x, y=0):` — bei Aufruf nicht zwingend angeben
+  - 🔴 [3] _mittel_ · Konzepte: `lambda` · **0/5+** — Lambda: `sqr = lambda x: x**2` für kurze Inline-Funktionen
+  - 🔴 [4] _mittel_ · Konzepte: `doc-str` · **0/5+** — Docstring (Python) oder Kommentare nach Function-Header (Matlab) dokumentieren
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `def-syntax` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `def-syntax` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `def-syntax` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `def-syntax` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `def-syntax` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `rueckgabe` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `rueckgabe` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `rueckgabe` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `rueckgabe` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `rueckgabe` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `default-par` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `default-par` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `default-par` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `default-par` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `default-par` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `lambda` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `lambda` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `lambda` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `lambda` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `lambda` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `doc-str` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `doc-str` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `doc-str` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `doc-str` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `doc-str` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/python_matlab.js` unter `'py-1-5': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-1-5-a`, `ex-py-1-5-b`, `ex-py-1-5-manual-1`, `ex-py-1-5-manual-2`, `ex-py-1-5-manual-3`, `ex-py-1-5-manual-4`, `ex-py-1-5-manual-5`, `ex-py-1-5-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
-  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
 #### `py-2-1` · NumPy Grundlagen
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Numerisches Rechnen
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Array erzeugen: `np.array([...])`, `np.zeros`, `np.ones`, `np.eye`, `np.linspace`
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Elementweise: `*` in NumPy, `.*` in Matlab; Matrixmultiplikation: `@` bzw. `*`
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Formen: `a.shape` (NumPy), `size(a)` (Matlab)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Vektorisierung statt Schleifen: $10$–$100\times$ schneller
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Broadcasting: $(n, 1) + (1, m) \to (n, m)$ automatisch
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/python_matlab.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/python_matlab.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `py-1-3` → `numpy-vec`, `dtype-mix`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `np-create` — Erzeugen: `np.array, zeros, ones, eye, linspace` (SG 0)
+  2. `np-element` — Elementweise `*` (NumPy) vs. `.*` (Matlab); Matrix `@` / `*` (SG 1)
+  3. `shape` — `a.shape` (NumPy) / `size(a)` (Matlab) ⇐ `np-create` (SG 2)
+  4. `vektorisier` — Vektorisierung statt Schleifen: 10–100× schneller ⇐ `np-element` (SG 3)
+  5. `broadcast` — Broadcasting $(n,1)+(1,m)\to(n,m)$ ⇐ `np-element` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `np-create` · **0/5+** — Array erzeugen: `np.array([...])`, `np.zeros`, `np.ones`, `np.eye`, `np.linspace`
+  - 🔴 [1] _hoch_ · Konzepte: `np-element` · **0/5+** — Elementweise: `*` in NumPy, `.*` in Matlab; Matrixmultiplikation: `@` bzw. `*`
+  - 🔴 [2] _hoch_ · Konzepte: `shape` · **0/5+** — Formen: `a.shape` (NumPy), `size(a)` (Matlab)
+  - 🔴 [3] _hoch_ · Konzepte: `vektorisier` · **0/5+** — Vektorisierung statt Schleifen: $10$–$100\times$ schneller
+  - 🔴 [4] _mittel_ · Konzepte: `broadcast` · **0/5+** — Broadcasting: $(n, 1) + (1, m) \to (n, m)$ automatisch
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `np-create` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `np-create` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `np-create` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `np-create` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `np-create` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `np-element` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `np-element` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `np-element` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `np-element` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `np-element` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `shape` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `shape` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `shape` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `shape` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `shape` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `vektorisier` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `vektorisier` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `vektorisier` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `vektorisier` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `vektorisier` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `broadcast` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `broadcast` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `broadcast` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `broadcast` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `broadcast` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/python_matlab.js` unter `'py-2-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-2-1-a`, `ex-py-2-1-b`, `ex-py-2-1-manual-1`, `ex-py-2-1-manual-2`, `ex-py-2-1-manual-3`, `ex-py-2-1-manual-4`, `ex-py-2-1-manual-5`, `ex-py-2-1-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
-  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
 #### `py-2-2` · Matplotlib — Daten visualisieren
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Numerisches Rechnen
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×2, matching ×1, sorting ×2
-- **Typen einsetzen (Rotation):** matching, number-input, true-false, sorting, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Basis-Plot: `plt.plot(x, y)`, Titel, `xlabel`, `ylabel`, `legend`, `grid`
-  - 🔴 [1] (mittel) **0/5+** Aufgaben — Farbe/Linienstil: `'b-'` blau, `'r--'` rot gestrichelt, `'g:'` grün gepunktet
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Mehrere Kurven: mehrere `plt.plot()`-Aufrufe nacheinander
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Speichern: `plt.savefig('name.png', dpi=150)` **vor** `plt.show()`
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Plots ohne Achsen-/Einheiten-Beschriftung verlieren in Berichten Punkte
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/python_matlab.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/python_matlab.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `py-2-1` → `np-create`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `plt-basis` — Basis-Plot `plt.plot(x,y)`, Titel, xlabel/ylabel, legend, grid (SG 0)
+  2. `farbstil` — Linienstil `'b-'`, `'r--'`, `'g:'` ⇐ `plt-basis` (SG 1)
+  3. `mehr-kurven` — Mehrere Kurven: mehrere `plt.plot()`-Aufrufe ⇐ `plt-basis` (SG 2)
+  4. `savefig` — `plt.savefig` VOR `plt.show()` ⇐ `plt-basis` (SG 3)
+  5. `plot-label` — Achsen/Einheiten beschriften — Punkte in Berichten ⇐ `plt-basis` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `plt-basis` · **0/5+** — Basis-Plot: `plt.plot(x, y)`, Titel, `xlabel`, `ylabel`, `legend`, `grid`
+  - 🔴 [1] _mittel_ · Konzepte: `farbstil` · **0/5+** — Farbe/Linienstil: `'b-'` blau, `'r--'` rot gestrichelt, `'g:'` grün gepunktet
+  - 🔴 [2] _hoch_ · Konzepte: `mehr-kurven` · **0/5+** — Mehrere Kurven: mehrere `plt.plot()`-Aufrufe nacheinander
+  - 🔴 [3] _mittel_ · Konzepte: `savefig` · **0/5+** — Speichern: `plt.savefig('name.png', dpi=150)` **vor** `plt.show()`
+  - 🔴 [4] _hoch_ · Konzepte: `plot-label` · **0/5+** — Plots ohne Achsen-/Einheiten-Beschriftung verlieren in Berichten Punkte
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `plt-basis` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `plt-basis` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `plt-basis` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `plt-basis` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `plt-basis` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `farbstil` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `farbstil` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | matching         | `farbstil` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `farbstil` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `farbstil` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `mehr-kurven` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `mehr-kurven` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `mehr-kurven` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `mehr-kurven` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `mehr-kurven` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `savefig` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `savefig` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `savefig` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `savefig` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `savefig` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `plot-label` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `plot-label` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `plot-label` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `plot-label` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `plot-label` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/python_matlab.js` unter `'py-2-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-2-2-a`, `ex-py-2-2-b`, `ex-py-2-2-manual-1`, `ex-py-2-2-manual-2`, `ex-py-2-2-manual-3`, `ex-py-2-2-manual-4`, `ex-py-2-2-manual-5`, `ex-py-2-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
-  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
 #### `py-2-3` · Gleichungen lösen & Optimierung
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Numerisches Rechnen
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Nullstelle: `scipy.optimize.fsolve(f, x0)` — Startwert sollte nah an Lösung
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — LGS: `np.linalg.solve(A, b)` statt `np.linalg.inv(A) @ b` (schneller, stabiler)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Matlab-Pendant: Backslash-Operator `A \ b`
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Optimierung: `scipy.optimize.minimize(f, x0)` für Minima (Maxima: `-f`)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Dimensionen prüfen vor Solve: `A.shape == (n, n)`, `b.shape == (n,)`
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/python_matlab.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/python_matlab.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `py-2-1` → `np-create`, `shape`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `fsolve` — fsolve $(f, x_0)$ — Startwert nah an Lösung (SG 0)
+  2. `linalg-solve` — `np.linalg.solve(A, b)` statt Inverse (SG 1)
+  3. `backslash` — Matlab `A \ b` ⇐ `linalg-solve` (SG 2)
+  4. `minimize` — minimize für Min, $-f$ für Max (SG 3)
+  5. `dim-check` — Vor solve Dimensionen prüfen $A: (n,n)$, $b: (n,)$ ⇐ `linalg-solve` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `fsolve` · **0/5+** — Nullstelle: `scipy.optimize.fsolve(f, x0)` — Startwert sollte nah an Lösung
+  - 🔴 [1] _hoch_ · Konzepte: `linalg-solve` · **0/5+** — LGS: `np.linalg.solve(A, b)` statt `np.linalg.inv(A) @ b` (schneller, stabiler)
+  - 🔴 [2] _hoch_ · Konzepte: `backslash` · **0/5+** — Matlab-Pendant: Backslash-Operator `A \ b`
+  - 🔴 [3] _hoch_ · Konzepte: `minimize` · **0/5+** — Optimierung: `scipy.optimize.minimize(f, x0)` für Minima (Maxima: `-f`)
+  - 🔴 [4] _mittel_ · Konzepte: `dim-check` · **0/5+** — Dimensionen prüfen vor Solve: `A.shape == (n, n)`, `b.shape == (n,)`
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `fsolve` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `fsolve` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `fsolve` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `fsolve` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `fsolve` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `linalg-solve` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `linalg-solve` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `linalg-solve` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `linalg-solve` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `linalg-solve` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `backslash` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `backslash` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `backslash` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `backslash` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `backslash` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `minimize` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `minimize` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `minimize` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `minimize` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `minimize` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `dim-check` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `dim-check` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `dim-check` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `dim-check` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `dim-check` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/python_matlab.js` unter `'py-2-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-2-3-a`, `ex-py-2-3-b`, `ex-py-2-3-manual-1`, `ex-py-2-3-manual-2`, `ex-py-2-3-manual-3`, `ex-py-2-3-manual-4`, `ex-py-2-3-manual-5`, `ex-py-2-3-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
-  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
 #### `py-2-4` · Numerische Integration & DGL
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** Numerisches Rechnen
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Bestimmtes Integral: `scipy.integrate.quad(f, a, b)` (adaptive Quadratur)
-  - 🔴 [1] (mittel) **0/5+** Aufgaben — Matlab-Pendant: `integral(@(x) f(x), a, b)`
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — DGL 2. Ordnung → System 1. Ordnung umschreiben, dann `solve_ivp` / `ode45`
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — ODE-Aufruf: `solve_ivp(f, [t0, t1], y0)`; `t_eval=...` für feste Ausgabezeitpunkte
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Standard-Solver: `RK45` (Python), `ode45` (Matlab) — adaptive Schrittweite, $O(h^5)$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/python_matlab.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/python_matlab.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `py-1-5` → `def-syntax`
+  - `py-2-3` → `fsolve`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `quad` — Bestimmtes Integral `scipy.integrate.quad(f, a, b)` (SG 0)
+  2. `matlab-int` — Matlab `integral(@(x) f(x), a, b)` ⇐ `quad` (SG 1)
+  3. `dgl-system` — DGL n. Ord. → System 1. Ordnung umschreiben (SG 2)
+  4. `solve-ivp` — `solve_ivp(f, [t0,t1], y0)`, `t_eval=...` ⇐ `dgl-system` (SG 3)
+  5. `rk45` — RK45 / ode45 — adaptive Schrittweite $O(h^5)$ ⇐ `solve-ivp` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `quad` · **0/5+** — Bestimmtes Integral: `scipy.integrate.quad(f, a, b)` (adaptive Quadratur)
+  - 🔴 [1] _mittel_ · Konzepte: `matlab-int` · **0/5+** — Matlab-Pendant: `integral(@(x) f(x), a, b)`
+  - 🔴 [2] _hoch_ · Konzepte: `dgl-system` · **0/5+** — DGL 2. Ordnung → System 1. Ordnung umschreiben, dann `solve_ivp` / `ode45`
+  - 🔴 [3] _hoch_ · Konzepte: `solve-ivp` · **0/5+** — ODE-Aufruf: `solve_ivp(f, [t0, t1], y0)`; `t_eval=...` für feste Ausgabezeitpunkte
+  - 🔴 [4] _mittel_ · Konzepte: `rk45` · **0/5+** — Standard-Solver: `RK45` (Python), `ode45` (Matlab) — adaptive Schrittweite, $O(h^5)$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `quad` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `quad` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `quad` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `quad` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `quad` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `matlab-int` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `matlab-int` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `matlab-int` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `matlab-int` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `matlab-int` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `dgl-system` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `dgl-system` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `dgl-system` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `dgl-system` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `dgl-system` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `solve-ivp` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `solve-ivp` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `solve-ivp` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `solve-ivp` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `solve-ivp` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `rk45` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `rk45` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `rk45` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `rk45` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `rk45` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/python_matlab.js` unter `'py-2-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-2-4-a`, `ex-py-2-4-b`, `ex-py-2-4-manual-1`, `ex-py-2-4-manual-2`, `ex-py-2-4-manual-3`, `ex-py-2-4-manual-4`, `ex-py-2-4-manual-5`, `ex-py-2-4-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
-  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
 #### `py-3-1` · Festigkeitsberechnung
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** MB-Anwendungen
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Rechteck: $I = bh^3/12$, $W = bh^2/6$ als Funktion
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Biegespannung $\sigma_b = M_b/W$ entlang Balken berechnen (Vektor-Operation)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Kritische Stelle: $M_\text{max}$ via `np.max(np.abs(M))`
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Verschiedene Querschnitte als Funktionen kapseln (DRY-Prinzip)
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Ergebnis-Plot: Spannungsverlauf über $x$ mit Skalierung & Einheit
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/python_matlab.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/python_matlab.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `py-1-5` → `def-syntax`
+  - `py-2-1` → `vektorisier`
+  - `py-2-2` → `plt-basis`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `i-w-funkt` — Rechteck $I=bh^3/12$, $W=bh^2/6$ als Funktion (SG 0)
+  2. `sigma-vec` — Biegespannung $\sigma_b=M_b/W$ entlang Balken (Vektor-Op) (SG 1)
+  3. `m-max-np` — $M_{\max}$ via `np.max(np.abs(M))` ⇐ `sigma-vec` (SG 2)
+  4. `qs-funktion` — Querschnitte als Funktionen kapseln (DRY) (SG 3)
+  5. `plot-sigma` — Spannungsverlauf $\sigma(x)$ plotten mit Einheit ⇐ `sigma-vec` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `i-w-funkt` · **0/5+** — Rechteck: $I = bh^3/12$, $W = bh^2/6$ als Funktion
+  - 🔴 [1] _hoch_ · Konzepte: `sigma-vec` · **0/5+** — Biegespannung $\sigma_b = M_b/W$ entlang Balken berechnen (Vektor-Operation)
+  - 🔴 [2] _hoch_ · Konzepte: `m-max-np` · **0/5+** — Kritische Stelle: $M_\text{max}$ via `np.max(np.abs(M))`
+  - 🔴 [3] _mittel_ · Konzepte: `qs-funktion` · **0/5+** — Verschiedene Querschnitte als Funktionen kapseln (DRY-Prinzip)
+  - 🔴 [4] _mittel_ · Konzepte: `plot-sigma` · **0/5+** — Ergebnis-Plot: Spannungsverlauf über $x$ mit Skalierung & Einheit
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `i-w-funkt` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `i-w-funkt` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `i-w-funkt` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `i-w-funkt` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `i-w-funkt` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `sigma-vec` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `sigma-vec` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `sigma-vec` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `sigma-vec` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `sigma-vec` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `m-max-np` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `m-max-np` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `m-max-np` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `m-max-np` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `m-max-np` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `qs-funktion` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `qs-funktion` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `qs-funktion` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `qs-funktion` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `qs-funktion` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `plot-sigma` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `plot-sigma` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `plot-sigma` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `plot-sigma` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `plot-sigma` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/python_matlab.js` unter `'py-3-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-3-1-a`, `ex-py-3-1-b`, `ex-py-3-1-manual-1`, `ex-py-3-1-manual-2`, `ex-py-3-1-manual-3`, `ex-py-3-1-manual-4`, `ex-py-3-1-manual-5`, `ex-py-3-1-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
-  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
 #### `py-3-2` · Datenauswertung & Messdaten
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** MB-Anwendungen
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×2, matching ×1, sorting ×2
-- **Typen einsetzen (Rotation):** matching, number-input, true-false, sorting, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — CSV lesen: `np.loadtxt` (einfach), `pd.read_csv` (mit Headern und Typen)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Statistik: `np.mean`, `np.std`, `np.median`, `np.max`, `np.min`
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Polynom-Fit: `np.polyfit(x, y, n)` → Koeffizienten
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Pandas DataFrames: `df['Spalte']`, `df.describe()` für Überblick
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Scatter + Fit-Kurve zusammen plotten (Mess vs. Modell)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/python_matlab.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/python_matlab.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `py-2-1` → `np-create`
+  - `py-2-2` → `plt-basis`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `csv-read` — `np.loadtxt` einfach, `pd.read_csv` mit Headern (SG 0)
+  2. `np-stat` — Statistik `np.mean/std/median/max/min` (SG 1)
+  3. `polyfit` — Polynom-Fit `np.polyfit(x, y, n)` (SG 2)
+  4. `pandas-df` — Pandas `df['Spalte']`, `df.describe()` ⇐ `csv-read` (SG 3)
+  5. `scatter-fit` — Scatter (Messung) + Fit-Kurve (Modell) zusammen ⇐ `polyfit` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `csv-read` · **0/5+** — CSV lesen: `np.loadtxt` (einfach), `pd.read_csv` (mit Headern und Typen)
+  - 🔴 [1] _hoch_ · Konzepte: `np-stat` · **0/5+** — Statistik: `np.mean`, `np.std`, `np.median`, `np.max`, `np.min`
+  - 🔴 [2] _hoch_ · Konzepte: `polyfit` · **0/5+** — Polynom-Fit: `np.polyfit(x, y, n)` → Koeffizienten
+  - 🔴 [3] _mittel_ · Konzepte: `pandas-df` · **0/5+** — Pandas DataFrames: `df['Spalte']`, `df.describe()` für Überblick
+  - 🔴 [4] _mittel_ · Konzepte: `scatter-fit` · **0/5+** — Scatter + Fit-Kurve zusammen plotten (Mess vs. Modell)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `csv-read` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `csv-read` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `csv-read` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `csv-read` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `csv-read` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `np-stat` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `np-stat` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `np-stat` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `np-stat` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `np-stat` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `polyfit` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `polyfit` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `polyfit` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `polyfit` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `polyfit` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `pandas-df` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pandas-df` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `pandas-df` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pandas-df` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `pandas-df` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `scatter-fit` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `scatter-fit` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `scatter-fit` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `scatter-fit` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `scatter-fit` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/python_matlab.js` unter `'py-3-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-3-2-a`, `ex-py-3-2-b`, `ex-py-3-2-manual-1`, `ex-py-3-2-manual-2`, `ex-py-3-2-manual-3`, `ex-py-3-2-manual-4`, `ex-py-3-2-manual-5`, `ex-py-3-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
-  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
 #### `py-3-3` · Simulation: Feder-Masse-Dämpfer
 
 - **Topic:** `python-matlab` (Python & Matlab) · **Unit:** MB-Anwendungen
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×4, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Bewegungsgleichung $m\ddot x + d\dot x + kx = F(t)$ als System 1. Ordnung
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Eigenkreisfrequenz $\omega_0 = \sqrt{k/m}$, Dämpfungsgrad $D = d/(2\sqrt{km})$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Frequenzgang: Amplitude über $\Omega$ plotten, Resonanzspitze bei $\Omega \approx \omega_0$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Parameter-Loop: Schleife über $\Omega$, pro Wert ODE lösen
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Einschwingvorgang ignorieren: nur zweite Hälfte der Zeitreihe auswerten
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/python_matlab.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/python_matlab.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `py-2-2` → `plt-basis`
+  - `py-2-4` → `dgl-system`, `solve-ivp`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `fmd-py` — Bewegungsgleichung $m\ddot x+d\dot x+kx=F(t)$ als System 1. Ord. (SG 0)
+  2. `omega0-d-py` — Eigen $\omega_0=\sqrt{k/m}$, Dämpfung $D=d/(2\sqrt{km})$ (SG 1)
+  3. `freq-gang` — Frequenzgang: Amplitude über $\Omega$ plotten (SG 2)
+  4. `param-loop` — Schleife über $\Omega$, pro Wert ODE lösen ⇐ `freq-gang` (SG 3)
+  5. `einschwing` — Einschwingvorgang ignorieren: zweite Hälfte auswerten ⇐ `param-loop` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `fmd-py` · **0/5+** — Bewegungsgleichung $m\ddot x + d\dot x + kx = F(t)$ als System 1. Ordnung
+  - 🔴 [1] _hoch_ · Konzepte: `omega0-d-py` · **0/5+** — Eigenkreisfrequenz $\omega_0 = \sqrt{k/m}$, Dämpfungsgrad $D = d/(2\sqrt{km})$
+  - 🔴 [2] _hoch_ · Konzepte: `freq-gang` · **0/5+** — Frequenzgang: Amplitude über $\Omega$ plotten, Resonanzspitze bei $\Omega \approx \omega_0$
+  - 🔴 [3] _mittel_ · Konzepte: `param-loop` · **0/5+** — Parameter-Loop: Schleife über $\Omega$, pro Wert ODE lösen
+  - 🔴 [4] _mittel_ · Konzepte: `einschwing` · **0/5+** — Einschwingvorgang ignorieren: nur zweite Hälfte der Zeitreihe auswerten
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `fmd-py` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `fmd-py` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `fmd-py` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `fmd-py` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `fmd-py` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `omega0-d-py` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `omega0-d-py` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `omega0-d-py` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `omega0-d-py` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `omega0-d-py` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `freq-gang` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `freq-gang` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `freq-gang` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `freq-gang` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `freq-gang` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `param-loop` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `param-loop` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `param-loop` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `param-loop` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `param-loop` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `einschwing` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `einschwing` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `einschwing` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `einschwing` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `einschwing` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/python_matlab.js` unter `'py-3-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/python_matlab.js`
 - **4-Block-Erklärung fehlt bei:** `ex-py-3-3-a`, `ex-py-3-3-b`, `ex-py-3-3-manual-1`, `ex-py-3-3-manual-2`, `ex-py-3-3-manual-3`, `ex-py-3-3-manual-4`, `ex-py-3-3-manual-5`, `ex-py-3-3-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `python-matlab`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ NumPy: `np.array`, `np.linspace`, elementweise $*$ vs. Matrix-$@$. · Lineare Gleichungssysteme: `np.linalg.solve(A, b)` (Matlab: `A\b`). · `len`, Indexierung (Python ab 0, Matlab ab 1), Slicing. · …
-  - _Typische Fehler (gute Distraktoren):_ In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
-  - _Klausur-Fokus:_ Codeschnipsel lesen und Ausgabe vorhersagen. · Fehler in gegebenem Code finden. · LGS mit NumPy lösen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** In Python `*` elementweise mit `@` (Matrixmultiplikation) verwechselt. · Indexoffset bei Übergang Python ↔ Matlab vergessen. · `np.linalg.inv(A) @ b` statt `np.linalg.solve(A, b)` (numerisch instabiler).
 
 #### `abl-5-1` · Grenzwerte von Funktionen
 
