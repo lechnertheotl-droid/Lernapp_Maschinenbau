@@ -2260,222 +2260,534 @@ npm run build              # abschließender End-zu-End-Check
 #### `mdim-pruefung-1` · Prüfung: Extrema, Fehlerfortpflanzung
 
 - **Topic:** `mehrdim-analysis` (Mehrdim. Analysis) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Kritische Stellen: $\nabla f = \vec 0$ (alle partiellen Ableitungen null)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Hesse-Matrix $H$: $\det H > 0$ und $f_{xx} > 0$ → Min; $\det H > 0, f_{xx} < 0$ → Max
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Sattelpunkt: $\det H < 0$ (Hesse indefinit)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Fehlerfortpflanzung (linear): $\Delta f \approx |\partial f/\partial x_1| \Delta x_1 + \ldots$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Gauß'sche Fehlerfortpflanzung (statistisch): $\sigma_f^2 = \sum (\partial f/\partial x_i)^2 \sigma_i^2$
-  - 🔴 [5] (hoch) **0/5+** Aufgaben — Lagrange: $\nabla f = \lambda \nabla g$ bei Nebenbedingung $g = 0$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/mehrdim_analysis.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/mehrdim_analysis.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mdim-1-1` → `part-abl`, `gradient`
+  - `mdim-1-2` → `krit-punkt`, `hesse-test`, `lagrange`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `krit-pr` — Kritische Stellen $\nabla f=\vec 0$ (SG 0)
+  2. `hesse-pr` — Hesse $\det H>0,f_{xx}>0$ Min, $\det H>0,f_{xx}<0$ Max (SG 1)
+  3. `sattel` — Sattelpunkt $\det H<0$ — indefinit ⇐ `hesse-pr` (SG 2)
+  4. `fehler-lin` — Fehlerfortpflanzung linear: $\Delta f\approx\sum|f_{x_i}|\Delta x_i$ (SG 3)
+  5. `gauss-fehler` — Gaußsche Fehlerfortpflanzung: $\sigma_f^2=\sum f_{x_i}^2\sigma_i^2$ (SG 4)
+  6. `lagrange-pr` — Lagrange $\nabla f=\lambda\nabla g$ bei NB (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `krit-pr` · **0/5+** — Kritische Stellen: $\nabla f = \vec 0$ (alle partiellen Ableitungen null)
+  - 🔴 [1] _hoch_ · Konzepte: `hesse-pr` · **0/5+** — Hesse-Matrix $H$: $\det H > 0$ und $f_{xx} > 0$ → Min; $\det H > 0, f_{xx} < 0$ → Max
+  - 🔴 [2] _hoch_ · Konzepte: `sattel` · **0/5+** — Sattelpunkt: $\det H < 0$ (Hesse indefinit)
+  - 🔴 [3] _hoch_ · Konzepte: `fehler-lin` · **0/5+** — Fehlerfortpflanzung (linear): $\Delta f \approx |\partial f/\partial x_1| \Delta x_1 + \ldots$
+  - 🔴 [4] _hoch_ · Konzepte: `gauss-fehler` · **0/5+** — Gauß'sche Fehlerfortpflanzung (statistisch): $\sigma_f^2 = \sum (\partial f/\partial x_i)^2 \sigma_i^2$
+  - 🔴 [5] _hoch_ · Konzepte: `lagrange-pr` · **0/5+** — Lagrange: $\nabla f = \lambda \nabla g$ bei Nebenbedingung $g = 0$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `krit-pr` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `krit-pr` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `krit-pr` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `krit-pr` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `krit-pr` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `hesse-pr` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `hesse-pr` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `hesse-pr` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `hesse-pr` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `hesse-pr` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `sattel` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `sattel` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `sattel` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `sattel` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `sattel` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `fehler-lin` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `fehler-lin` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `fehler-lin` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `fehler-lin` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `fehler-lin` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `gauss-fehler` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `gauss-fehler` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `gauss-fehler` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `gauss-fehler` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `gauss-fehler` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `lagrange-pr` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `lagrange-pr` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `lagrange-pr` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `lagrange-pr` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | number-input     | `lagrange-pr` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/mehrdim_analysis.js` unter `'mdim-pruefung-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-pruefung-1-1`, `ex-mdim-pruefung-1-2`, `ex-mdim-pruefung-1-3`, `ex-mdim-pruefung-1-4`, `ex-mdim-pruefung-1-5`, `ex-mdim-pruefung-1-6`, `ex-mdim-pruefung-1-7`, `ex-mdim-pruefung-1-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-3d`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `mehrdim-analysis`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Partielle Ableitung: alle anderen Variablen als Konstante behandeln. · Gradient $\nabla f$ zeigt in Richtung des steilsten Anstiegs. · Extrema: $\nabla f=\vec 0$ (notwendig) + Definitheit der Hesse-Matrix (hinreichend). · …
-  - _Typische Fehler (gute Distraktoren):_ Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
-  - _Klausur-Fokus:_ Extrema einer Funktion $f(x,y)$. · Lagrange-Multiplikatoren bei Nebenbedingung. · Tangentialebene in einem Punkt aufstellen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `vector-3d`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
 
 #### `mdim-pruefung-2` · Prüfung: Fehlerfortpflanzung & totales Differential
 
 - **Topic:** `mehrdim-analysis` (Mehrdim. Analysis) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Totales Differential: $df = f_x dx + f_y dy + \ldots$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Maximaler Fehler (linear): $|\Delta f| \leq \sum |f_{x_i}| |\Delta x_i|$ (obere Schranke)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Gauß'sche (statistisch): $\sigma_f = \sqrt{\sum (f_{x_i})^2 \sigma_{x_i}^2}$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Relativer Fehler: $|\Delta f/f| \leq \sum |\Delta x_i/x_i|$ bei Produkten
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Fehlerquelle mit dem größten $f_{x_i} \Delta x_i$ dominiert — dort zuerst verbessern
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/mehrdim_analysis.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/mehrdim_analysis.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mdim-1-1` → `part-abl`, `gradient`
+  - `mdim-pruefung-1` → `fehler-lin`, `gauss-fehler`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `totales-diff` — Totales Differential $df=f_x dx+f_y dy+\ldots$ (SG 0)
+  2. `max-fehler` — Maximaler Fehler (linear): $|\Delta f|\le\sum|f_{x_i}||\Delta x_i|$ ⇐ `totales-diff` (SG 1)
+  3. `gauss-stat` — Gaußsche statistische: $\sigma_f=\sqrt{\sum f_{x_i}^2\sigma_{x_i}^2}$ ⇐ `totales-diff` (SG 2)
+  4. `rel-fehler` — Relativer Fehler bei Produkten: $|\Delta f/f|\le\sum|\Delta x_i/x_i|$ ⇐ `max-fehler` (SG 3)
+  5. `dom-fehler` — Dominante Fehlerquelle: größter $f_{x_i}\Delta x_i$ → dort zuerst verbessern ⇐ `max-fehler` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `totales-diff` · **0/5+** — Totales Differential: $df = f_x dx + f_y dy + \ldots$
+  - 🔴 [1] _hoch_ · Konzepte: `max-fehler` · **0/5+** — Maximaler Fehler (linear): $|\Delta f| \leq \sum |f_{x_i}| |\Delta x_i|$ (obere Schranke)
+  - 🔴 [2] _hoch_ · Konzepte: `gauss-stat` · **0/5+** — Gauß'sche (statistisch): $\sigma_f = \sqrt{\sum (f_{x_i})^2 \sigma_{x_i}^2}$
+  - 🔴 [3] _hoch_ · Konzepte: `rel-fehler` · **0/5+** — Relativer Fehler: $|\Delta f/f| \leq \sum |\Delta x_i/x_i|$ bei Produkten
+  - 🔴 [4] _mittel_ · Konzepte: `dom-fehler` · **0/5+** — Fehlerquelle mit dem größten $f_{x_i} \Delta x_i$ dominiert — dort zuerst verbessern
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `totales-diff` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `totales-diff` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `totales-diff` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `totales-diff` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `totales-diff` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `max-fehler` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `max-fehler` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `max-fehler` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `max-fehler` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `max-fehler` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 11 | 2 | recognize          | true-false       | `gauss-stat` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `gauss-stat` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `gauss-stat` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `gauss-stat` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `gauss-stat` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `rel-fehler` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `rel-fehler` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `rel-fehler` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `rel-fehler` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `rel-fehler` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `dom-fehler` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `dom-fehler` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `dom-fehler` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `dom-fehler` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `dom-fehler` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/mehrdim_analysis.js` unter `'mdim-pruefung-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-pruefung-2-1`, `ex-mdim-pruefung-2-2`, `ex-mdim-pruefung-2-3`, `ex-mdim-pruefung-2-4`, `ex-mdim-pruefung-2-5`, `ex-mdim-pruefung-2-6`, `ex-mdim-pruefung-2-7`, `ex-mdim-pruefung-2-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-3d`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `mehrdim-analysis`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Partielle Ableitung: alle anderen Variablen als Konstante behandeln. · Gradient $\nabla f$ zeigt in Richtung des steilsten Anstiegs. · Extrema: $\nabla f=\vec 0$ (notwendig) + Definitheit der Hesse-Matrix (hinreichend). · …
-  - _Typische Fehler (gute Distraktoren):_ Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
-  - _Klausur-Fokus:_ Extrema einer Funktion $f(x,y)$. · Lagrange-Multiplikatoren bei Nebenbedingung. · Tangentialebene in einem Punkt aufstellen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `vector-3d`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
 
 #### `mdim-pruefung-3` · Prüfung: Lagrange & Gesamtaufgaben
 
 - **Topic:** `mehrdim-analysis` (Mehrdim. Analysis) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Lagrange-LGS: $f_x = \lambda g_x$, $f_y = \lambda g_y$, $g = 0$ (3 Gl. für 3 Unb.)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Hesse-Test: $D = f_{xx}f_{yy} - f_{xy}^2$; $D>0, f_{xx}>0$ Min; $D>0, f_{xx}<0$ Max; $D<0$ Sattel
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Bei $D = 0$: keine Entscheidung via Hesse, höhere Ordnungen nötig
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Mehrere NB: $\nabla f = \sum \lambda_i \nabla g_i$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Richtungsableitung: $D_{\vec u} f = \nabla f \cdot \vec u / |\vec u|$
-  - 🔴 [5] (hoch) **0/5+** Aufgaben — Gradient zeigt in Richtung stärksten Anstiegs, Betrag = maximale Steigung
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/mehrdim_analysis.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/mehrdim_analysis.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mdim-1-1` → `gradient`
+  - `mdim-1-2` → `hesse-test`, `lagrange-sys`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `lag-lgs` — Lagrange-LGS: $f_x=\lambda g_x$, $f_y=\lambda g_y$, $g=0$ (3 Gl.) (SG 0)
+  2. `hesse-d` — Hesse-Diskriminante $D=f_{xx}f_{yy}-f_{xy}^2$ (SG 1)
+  3. `d-null` — Bei $D=0$ keine Entscheidung via Hesse — höhere Ordnungen ⇐ `hesse-d` (SG 2)
+  4. `mehrere-nb` — Mehrere Nebenbedingungen: $\nabla f=\sum\lambda_i\nabla g_i$ (SG 3)
+  5. `richt-abl` — Richtungsableitung $D_{\vec u}f=\nabla f\cdot\vec u/|\vec u|$ (SG 4)
+  6. `grad-betrag` — Gradient zeigt steilsten Anstieg, Betrag = max. Steigung ⇐ `richt-abl` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `lag-lgs` · **0/5+** — Lagrange-LGS: $f_x = \lambda g_x$, $f_y = \lambda g_y$, $g = 0$ (3 Gl. für 3 Unb.)
+  - 🔴 [1] _hoch_ · Konzepte: `hesse-d` · **0/5+** — Hesse-Test: $D = f_{xx}f_{yy} - f_{xy}^2$; $D>0, f_{xx}>0$ Min; $D>0, f_{xx}<0$ Max; $D<0$ Sattel
+  - 🔴 [2] _mittel_ · Konzepte: `d-null` · **0/5+** — Bei $D = 0$: keine Entscheidung via Hesse, höhere Ordnungen nötig
+  - 🔴 [3] _mittel_ · Konzepte: `mehrere-nb` · **0/5+** — Mehrere NB: $\nabla f = \sum \lambda_i \nabla g_i$
+  - 🔴 [4] _hoch_ · Konzepte: `richt-abl` · **0/5+** — Richtungsableitung: $D_{\vec u} f = \nabla f \cdot \vec u / |\vec u|$
+  - 🔴 [5] _hoch_ · Konzepte: `grad-betrag` · **0/5+** — Gradient zeigt in Richtung stärksten Anstiegs, Betrag = maximale Steigung
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `lag-lgs` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `lag-lgs` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `lag-lgs` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `lag-lgs` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `lag-lgs` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `hesse-d` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `hesse-d` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `hesse-d` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `hesse-d` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `hesse-d` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `d-null` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `d-null` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `d-null` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `d-null` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `d-null` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `mehrere-nb` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `mehrere-nb` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `mehrere-nb` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `mehrere-nb` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `mehrere-nb` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `richt-abl` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `richt-abl` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `richt-abl` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `richt-abl` | 1 | 0 | 🔴 | Richtungsvektor nicht normiert |
+| 25 | 4 | transfer           | number-input     | `richt-abl` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `grad-betrag` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `grad-betrag` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `grad-betrag` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `grad-betrag` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | number-input     | `grad-betrag` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/mehrdim_analysis.js` unter `'mdim-pruefung-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-pruefung-3-1`, `ex-mdim-pruefung-3-2`, `ex-mdim-pruefung-3-3`, `ex-mdim-pruefung-3-4`, `ex-mdim-pruefung-3-5`, `ex-mdim-pruefung-3-6`, `ex-mdim-pruefung-3-7`, `ex-mdim-pruefung-3-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-3d`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `mehrdim-analysis`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Partielle Ableitung: alle anderen Variablen als Konstante behandeln. · Gradient $\nabla f$ zeigt in Richtung des steilsten Anstiegs. · Extrema: $\nabla f=\vec 0$ (notwendig) + Definitheit der Hesse-Matrix (hinreichend). · …
-  - _Typische Fehler (gute Distraktoren):_ Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
-  - _Klausur-Fokus:_ Extrema einer Funktion $f(x,y)$. · Lagrange-Multiplikatoren bei Nebenbedingung. · Tangentialebene in einem Punkt aufstellen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `vector-3d`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
 
 #### `num-pruefung-1` · Prüfung: Numerische Methoden kombiniert
 
 - **Topic:** `numerik` (Numerische Mathematik) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Bisektion: linear, halbiert Intervall, garantiert konvergent bei Vorzeichenwechsel
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Newton: quadratisch konvergent, $x_{n+1} = x_n - f(x_n)/f'(x_n)$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Trapezregel: Fehler $O(h^2)$; Simpson: Fehler $O(h^4)$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Konditionszahl $\kappa(A) = \|A\| \|A^{-1}\|$ — Stabilitätsindikator bei LGS
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Maschinengenauigkeit $\epsilon \approx 2{,}22 \cdot 10^{-16}$ (double), Rundungsfehler ansammeln
-  - 🔴 [5] (hoch) **0/5+** Aufgaben — Abbruchkriterium: $|x_{n+1} - x_n| < \epsilon$ oder max. Iterationen
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/numerik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/numerik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `num-1-1` → `newton-iter-num`, `abbruch`
+  - `num-1-2` → `bisektion`, `trapez-num`, `simpson-num`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `bisek-eigen` — Bisektion: linear, halbiert Intervall, garantiert konvergent bei Vorzeichenwechsel (SG 0)
+  2. `newton-eigen` — Newton: quadratisch konvergent (SG 1)
+  3. `fehler-ord` — Trapez $O(h^2)$, Simpson $O(h^4)$ (SG 2)
+  4. `kondition` — Konditionszahl $\kappa(A)=\|A\|\|A^{-1}\|$ — Stabilitätsindikator (SG 3)
+  5. `maschinen-eps` — Maschinengenauigkeit $\varepsilon\approx 2{,}22\cdot 10^{-16}$ (double) (SG 4)
+  6. `abbruch-pr` — Abbruchkriterium $|x_{n+1}-x_n|<\varepsilon$ oder max. Iterationen (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `bisek-eigen` · **0/5+** — Bisektion: linear, halbiert Intervall, garantiert konvergent bei Vorzeichenwechsel
+  - 🔴 [1] _hoch_ · Konzepte: `newton-eigen` · **0/5+** — Newton: quadratisch konvergent, $x_{n+1} = x_n - f(x_n)/f'(x_n)$
+  - 🔴 [2] _hoch_ · Konzepte: `fehler-ord` · **0/5+** — Trapezregel: Fehler $O(h^2)$; Simpson: Fehler $O(h^4)$
+  - 🔴 [3] _mittel_ · Konzepte: `kondition` · **0/5+** — Konditionszahl $\kappa(A) = \|A\| \|A^{-1}\|$ — Stabilitätsindikator bei LGS
+  - 🔴 [4] _mittel_ · Konzepte: `maschinen-eps` · **0/5+** — Maschinengenauigkeit $\epsilon \approx 2{,}22 \cdot 10^{-16}$ (double), Rundungsfehler ansammeln
+  - 🔴 [5] _hoch_ · Konzepte: `abbruch-pr` · **0/5+** — Abbruchkriterium: $|x_{n+1} - x_n| < \epsilon$ oder max. Iterationen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `bisek-eigen` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `bisek-eigen` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `bisek-eigen` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `bisek-eigen` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `bisek-eigen` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `newton-eigen` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `newton-eigen` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `newton-eigen` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  9 | 1 | error-analysis     | multiple-choice  | `newton-eigen` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `newton-eigen` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `fehler-ord` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `fehler-ord` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `fehler-ord` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `fehler-ord` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `fehler-ord` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `kondition` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `kondition` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `kondition` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `kondition` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `kondition` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `maschinen-eps` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `maschinen-eps` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `maschinen-eps` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `maschinen-eps` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `maschinen-eps` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `abbruch-pr` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `abbruch-pr` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `abbruch-pr` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `abbruch-pr` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | multiple-choice  | `abbruch-pr` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/numerik.js` unter `'num-pruefung-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-pruefung-1-1`, `ex-num-pruefung-1-2`, `ex-num-pruefung-1-3`, `ex-num-pruefung-1-4`, `ex-num-pruefung-1-5`, `ex-num-pruefung-1-6`, `ex-num-pruefung-1-7`, `ex-num-pruefung-1-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `numerik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Newton: $x_{n+1}=x_n-f(x_n)/f'(x_n)$, quadratisch konvergent. · Bisektion: sicher aber linear, braucht Vorzeichenwechsel. · Trapezregel: $I\approx h[y_0/2+y_1+\ldots+y_{n-1}+y_n/2]$, Fehler $O(h^2)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
-  - _Klausur-Fokus:_ Newton-Iteration für zwei Schritte mit Startwert. · Simpson-Regel mit $n=2$ oder $n=4$. · Fehlerordnung begründen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
 
 #### `num-pruefung-2` · Prüfung: Trapez, Simpson & Fehlerordnung
 
 - **Topic:** `numerik` (Numerische Mathematik) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Trapez: $T(h) = h[(f_0+f_n)/2 + \sum_{i=1}^{n-1} f_i]$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Simpson: $S(h) = (h/3)[f_0 + 4\sum_{\text{ung.}} f_i + 2\sum_{\text{ger.}} f_i + f_n]$, $n$ gerade
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Fehler Trapez: $|E| \leq (b-a) h^2 \max|f''|/12$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Fehler Simpson: $|E| \leq (b-a) h^4 \max|f^{(4)}|/180$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Anzahl $n$ für Toleranz: Fehlerformel nach $h$ bzw. $n$ auflösen
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Simpson exakt für Polynome bis Grad 3 (trotz Ordnung 4)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/numerik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/numerik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `num-1-2` → `trapez-num`, `simpson-num`, `simpson-exakt`
+  - `num-pruefung-1` → `fehler-ord`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `trapez-formel-pr` — Trapez $T(h)=h[(f_0+f_n)/2+\sum_{i=1}^{n-1}f_i]$ (SG 0)
+  2. `simpson-formel-pr` — Simpson $S(h)=(h/3)[f_0+4\sum_{\text{ung.}}+2\sum_{\text{ger.}}+f_n]$, $n$ gerade (SG 1)
+  3. `fehler-trapez` — Fehler Trapez $|E|\le(b-a)h^2\max|f''|/12$ (SG 2)
+  4. `fehler-simpson` — Fehler Simpson $|E|\le(b-a)h^4\max|f^{(4)}|/180$ (SG 3)
+  5. `n-toleranz` — Anzahl $n$ für Toleranz: Fehlerformel nach $h$/$n$ auflösen ⇐ `fehler-trapez`, `fehler-simpson` (SG 4)
+  6. `simpson-grad3` — Simpson exakt für Polynome bis Grad 3 (trotz Ordnung 4) (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `trapez-formel-pr` · **0/5+** — Trapez: $T(h) = h[(f_0+f_n)/2 + \sum_{i=1}^{n-1} f_i]$
+  - 🔴 [1] _hoch_ · Konzepte: `simpson-formel-pr` · **0/5+** — Simpson: $S(h) = (h/3)[f_0 + 4\sum_{\text{ung.}} f_i + 2\sum_{\text{ger.}} f_i + f_n]$, $n$ gerade
+  - 🔴 [2] _hoch_ · Konzepte: `fehler-trapez` · **0/5+** — Fehler Trapez: $|E| \leq (b-a) h^2 \max|f''|/12$
+  - 🔴 [3] _hoch_ · Konzepte: `fehler-simpson` · **0/5+** — Fehler Simpson: $|E| \leq (b-a) h^4 \max|f^{(4)}|/180$
+  - 🔴 [4] _hoch_ · Konzepte: `n-toleranz` · **0/5+** — Anzahl $n$ für Toleranz: Fehlerformel nach $h$ bzw. $n$ auflösen
+  - 🔴 [5] _mittel_ · Konzepte: `simpson-grad3` · **0/5+** — Simpson exakt für Polynome bis Grad 3 (trotz Ordnung 4)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `trapez-formel-pr` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `trapez-formel-pr` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `trapez-formel-pr` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `trapez-formel-pr` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `trapez-formel-pr` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `simpson-formel-pr` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `simpson-formel-pr` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `simpson-formel-pr` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `simpson-formel-pr` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `simpson-formel-pr` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `fehler-trapez` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `fehler-trapez` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `fehler-trapez` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `fehler-trapez` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `fehler-trapez` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `fehler-simpson` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `fehler-simpson` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `fehler-simpson` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `fehler-simpson` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `fehler-simpson` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `n-toleranz` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `n-toleranz` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `n-toleranz` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `n-toleranz` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `n-toleranz` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 26 | 5 | recognize          | true-false       | `simpson-grad3` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `simpson-grad3` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `simpson-grad3` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `simpson-grad3` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | multiple-choice  | `simpson-grad3` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/numerik.js` unter `'num-pruefung-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-pruefung-2-1`, `ex-num-pruefung-2-2`, `ex-num-pruefung-2-3`, `ex-num-pruefung-2-4`, `ex-num-pruefung-2-5`, `ex-num-pruefung-2-6`, `ex-num-pruefung-2-7`, `ex-num-pruefung-2-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `numerik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Newton: $x_{n+1}=x_n-f(x_n)/f'(x_n)$, quadratisch konvergent. · Bisektion: sicher aber linear, braucht Vorzeichenwechsel. · Trapezregel: $I\approx h[y_0/2+y_1+\ldots+y_{n-1}+y_n/2]$, Fehler $O(h^2)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
-  - _Klausur-Fokus:_ Newton-Iteration für zwei Schritte mit Startwert. · Simpson-Regel mit $n=2$ oder $n=4$. · Fehlerordnung begründen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
 
 #### `num-pruefung-3` · Prüfung: Kombinierte Aufgaben & Abbruchkriterien
 
 - **Topic:** `numerik` (Numerische Mathematik) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×1, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** number-input, matching, sorting, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Methodenwahl-Matrix: Nullstelle → Newton/Bisekt.; Integral → Simpson; LGS → Gauß/LU
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Newton schlägt fehl bei $f' \approx 0$ → Bisektion als Fallback robust
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Abbruchkriterium: absolut $|x_{n+1} - x_n| < \epsilon_{\text{abs}}$ oder relativ
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Euler-Verfahren für DGL: explizit instabil bei steifen Systemen; implizit stabil
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Runge-Kutta 4 (RK4): Fehler $O(h^4)$, Standard für DGL-Anfangswertprobleme
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/numerik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/numerik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `num-1-1` → `newton-iter-num`, `newton-fallen`
+  - `num-1-2` → `bisektion`, `simpson-num`
+  - `num-pruefung-1` → `kondition`, `abbruch-pr`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `method-matrix` — Methodenwahl: Nullstelle → Newton/Bisektion; Integral → Simpson; LGS → Gauß/LU (SG 0)
+  2. `newton-fallback` — Newton schlägt fehl bei $f'\approx 0$ → Bisektion als Fallback (SG 1)
+  3. `abbruch-abs-rel` — Abbruch absolut $|x_{n+1}-x_n|<\varepsilon_{\text{abs}}$ oder relativ (SG 2)
+  4. `euler-impl-expl` — Euler explizit instabil bei steifen Systemen; implizit stabil (SG 3)
+  5. `rk4` — Runge-Kutta 4: Fehler $O(h^4)$, Standard für DGL-AWP (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `method-matrix` · **0/5+** — Methodenwahl-Matrix: Nullstelle → Newton/Bisekt.; Integral → Simpson; LGS → Gauß/LU
+  - 🔴 [1] _hoch_ · Konzepte: `newton-fallback` · **0/5+** — Newton schlägt fehl bei $f' \approx 0$ → Bisektion als Fallback robust
+  - 🔴 [2] _hoch_ · Konzepte: `abbruch-abs-rel` · **0/5+** — Abbruchkriterium: absolut $|x_{n+1} - x_n| < \epsilon_{\text{abs}}$ oder relativ
+  - 🔴 [3] _mittel_ · Konzepte: `euler-impl-expl` · **0/5+** — Euler-Verfahren für DGL: explizit instabil bei steifen Systemen; implizit stabil
+  - 🔴 [4] _mittel_ · Konzepte: `rk4` · **0/5+** — Runge-Kutta 4 (RK4): Fehler $O(h^4)$, Standard für DGL-Anfangswertprobleme
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `method-matrix` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `method-matrix` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | matching         | `method-matrix` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `method-matrix` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `method-matrix` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `newton-fallback` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `newton-fallback` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `newton-fallback` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `newton-fallback` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `newton-fallback` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `abbruch-abs-rel` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `abbruch-abs-rel` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `abbruch-abs-rel` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `abbruch-abs-rel` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `abbruch-abs-rel` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `euler-impl-expl` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `euler-impl-expl` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `euler-impl-expl` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `euler-impl-expl` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `euler-impl-expl` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `rk4` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `rk4` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `rk4` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `rk4` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `rk4` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/numerik.js` unter `'num-pruefung-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-pruefung-3-1`, `ex-num-pruefung-3-2`, `ex-num-pruefung-3-3`, `ex-num-pruefung-3-4`, `ex-num-pruefung-3-5`, `ex-num-pruefung-3-6`, `ex-num-pruefung-3-7`, `ex-num-pruefung-3-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `numerik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Newton: $x_{n+1}=x_n-f(x_n)/f'(x_n)$, quadratisch konvergent. · Bisektion: sicher aber linear, braucht Vorzeichenwechsel. · Trapezregel: $I\approx h[y_0/2+y_1+\ldots+y_{n-1}+y_n/2]$, Fehler $O(h^2)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
-  - _Klausur-Fokus:_ Newton-Iteration für zwei Schritte mit Startwert. · Simpson-Regel mit $n=2$ oder $n=4$. · Fehlerordnung begründen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
 
 #### `stat-pruefung-1` · Prüfung: Schätzung & Hypothesentest
 
 - **Topic:** `statistik` (Statistik & Wahrscheinlichkeit) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — t-Test: Mittelwertvergleich, Verteilung bei unbekannter Varianz
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — $\chi^2$-Test: Anpassung an Verteilung oder Unabhängigkeitsprüfung
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Testentscheidung: Prüfgröße mit Quantil vergleichen oder p-Wert mit $\alpha$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Freiheitsgrade bei t-Test $df = n - 1$, bei $\chi^2$-Anpassung $df = k - 1 - r$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Konfidenzintervall-Breite $\propto 1/\sqrt n$ — Halbierung braucht 4× Stichprobe
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/statistik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/statistik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `stat-1-3` → `p-wert`, `ki-mw`, `t-test`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `t-test-pr` — t-Test: Mittelwertvergleich bei unbekannter Varianz (SG 0)
+  2. `chi-quadrat` — $\chi^2$-Test: Anpassung an Verteilung oder Unabhängigkeitsprüfung (SG 1)
+  3. `test-entscheid` — Testentscheidung: Prüfgröße mit Quantil oder p-Wert mit $\alpha$ (SG 2)
+  4. `freiheitsgrade` — Freiheitsgrade: t-Test $df=n-1$, $\chi^2$-Anpassung $df=k-1-r$ (SG 3)
+  5. `ki-breite` — KI-Breite $\propto 1/\sqrt n$ — Halbierung braucht 4× Stichprobe (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `t-test-pr` · **0/5+** — t-Test: Mittelwertvergleich, Verteilung bei unbekannter Varianz
+  - 🔴 [1] _hoch_ · Konzepte: `chi-quadrat` · **0/5+** — $\chi^2$-Test: Anpassung an Verteilung oder Unabhängigkeitsprüfung
+  - 🔴 [2] _hoch_ · Konzepte: `test-entscheid` · **0/5+** — Testentscheidung: Prüfgröße mit Quantil vergleichen oder p-Wert mit $\alpha$
+  - 🔴 [3] _mittel_ · Konzepte: `freiheitsgrade` · **0/5+** — Freiheitsgrade bei t-Test $df = n - 1$, bei $\chi^2$-Anpassung $df = k - 1 - r$
+  - 🔴 [4] _mittel_ · Konzepte: `ki-breite` · **0/5+** — Konfidenzintervall-Breite $\propto 1/\sqrt n$ — Halbierung braucht 4× Stichprobe
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `t-test-pr` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `t-test-pr` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `t-test-pr` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `t-test-pr` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `t-test-pr` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `chi-quadrat` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `chi-quadrat` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `chi-quadrat` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `chi-quadrat` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `chi-quadrat` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `test-entscheid` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `test-entscheid` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `test-entscheid` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `test-entscheid` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `test-entscheid` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `freiheitsgrade` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `freiheitsgrade` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `freiheitsgrade` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `freiheitsgrade` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `freiheitsgrade` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `ki-breite` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `ki-breite` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `ki-breite` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `ki-breite` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `ki-breite` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/statistik.js` unter `'stat-pruefung-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-pruefung-1-1`, `ex-stat-pruefung-1-2`, `ex-stat-pruefung-1-3`, `ex-stat-pruefung-1-4`, `ex-stat-pruefung-1-5`, `ex-stat-pruefung-1-6`, `ex-stat-pruefung-1-7`, `ex-stat-pruefung-1-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
-  - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
-  - _Klausur-Fokus:_ Wahrscheinlichkeit bei Normalverteilung mit Standardisierung. · Erwartungswert und Varianz einer diskreten Verteilung. · 95%-Konfidenzintervall für Mittelwert.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
 
 #### `stat-pruefung-2` · Prüfung: Normalverteilung & Standardisierung
 
 - **Topic:** `statistik` (Statistik & Wahrscheinlichkeit) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Standardisierung: $Z = (X - \mu)/\sigma \sim N(0,1)$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — $\Phi(-z) = 1 - \Phi(z)$ (Symmetrie)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — 68-95-99,7-Regel: $\pm 1\sigma \to 68\%$, $\pm 2\sigma \to 95\%$, $\pm 3\sigma \to 99{,}7\%$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Zentrale Quantile: $z_{0{,}025} = 1{,}96$, $z_{0{,}05} = 1{,}645$, $z_{0{,}01} = 2{,}576$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Rechts-, links-, beidseitiger Bereich: $P(X > a), P(X < a), P(a < X < b)$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/statistik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/statistik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `stat-1-2` → `mu-sigma`, `z-trans`, `sigma-regel`, `phi-symm`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `standardisierung` — Standardisierung $Z=(X-\mu)/\sigma\sim N(0,1)$ (SG 0)
+  2. `phi-symmetrie` — $\Phi(-z)=1-\Phi(z)$ (Symmetrie) (SG 1)
+  3. `sigma-pr` — 68-95-99,7-Regel auswendig (SG 2)
+  4. `zentrale-quant` — Quantile: $z_{0{,}025}=1{,}96$, $z_{0{,}05}=1{,}645$, $z_{0{,}01}=2{,}576$ (SG 3)
+  5. `p-bereich` — Rechts-/links-/beidseitig: $P(X>a),P(X<a),P(a<X<b)$ (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `standardisierung` · **0/5+** — Standardisierung: $Z = (X - \mu)/\sigma \sim N(0,1)$
+  - 🔴 [1] _hoch_ · Konzepte: `phi-symmetrie` · **0/5+** — $\Phi(-z) = 1 - \Phi(z)$ (Symmetrie)
+  - 🔴 [2] _hoch_ · Konzepte: `sigma-pr` · **0/5+** — 68-95-99,7-Regel: $\pm 1\sigma \to 68\%$, $\pm 2\sigma \to 95\%$, $\pm 3\sigma \to 99{,}7\%$
+  - 🔴 [3] _hoch_ · Konzepte: `zentrale-quant` · **0/5+** — Zentrale Quantile: $z_{0{,}025} = 1{,}96$, $z_{0{,}05} = 1{,}645$, $z_{0{,}01} = 2{,}576$
+  - 🔴 [4] _hoch_ · Konzepte: `p-bereich` · **0/5+** — Rechts-, links-, beidseitiger Bereich: $P(X > a), P(X < a), P(a < X < b)$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `standardisierung` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `standardisierung` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `standardisierung` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `standardisierung` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `standardisierung` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `phi-symmetrie` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `phi-symmetrie` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `phi-symmetrie` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `phi-symmetrie` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `phi-symmetrie` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `sigma-pr` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `sigma-pr` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `sigma-pr` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `sigma-pr` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `sigma-pr` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `zentrale-quant` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `zentrale-quant` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `zentrale-quant` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `zentrale-quant` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `zentrale-quant` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `p-bereich` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `p-bereich` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `p-bereich` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `p-bereich` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `p-bereich` | 1 | 0 | 🔴 | [PRÜFUNG] |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/statistik.js` unter `'stat-pruefung-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-pruefung-2-1`, `ex-stat-pruefung-2-2`, `ex-stat-pruefung-2-3`, `ex-stat-pruefung-2-4`, `ex-stat-pruefung-2-5`, `ex-stat-pruefung-2-6`, `ex-stat-pruefung-2-7`, `ex-stat-pruefung-2-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
-  - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
-  - _Klausur-Fokus:_ Wahrscheinlichkeit bei Normalverteilung mit Standardisierung. · Erwartungswert und Varianz einer diskreten Verteilung. · 95%-Konfidenzintervall für Mittelwert.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
 
 #### `stat-pruefung-3` · Prüfung: Konfidenzintervall & Gesamtaufgaben
 
 - **Topic:** `statistik` (Statistik & Wahrscheinlichkeit) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Stichprobenmittel $\bar x = (1/n) \sum x_i$, Stichproben-SD $s = \sqrt{\sum(x_i - \bar x)^2 /(n-1)}$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — 95%-KI: $\bar x \pm z_{0{,}025} \cdot \sigma/\sqrt n$ (Normalverteilung, $\sigma$ bekannt)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — t-KI bei $\sigma$ unbekannt: $\bar x \pm t_{n-1; 0{,}025} \cdot s/\sqrt n$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Stichprobenumfang: $n \geq (z_{\alpha/2} \sigma/\Delta)^2$ für Halbbreite $\Delta$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Teiler $n-1$ bei Stichproben-Varianz (Bessel-Korrektur, erwartungstreu)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/statistik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/statistik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `stat-1-1` → `erwart-disk`, `verschiebung`
+  - `stat-1-3` → `ki-mw`
+  - `stat-pruefung-2` → `zentrale-quant`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `stich-mw` — Stichprobenmittel $\bar x=(1/n)\sum x_i$, SD $s=\sqrt{\sum(x_i-\bar x)^2/(n-1)}$ (SG 0)
+  2. `ki-95` — 95%-KI: $\bar x\pm z_{0{,}025}\cdot\sigma/\sqrt n$ ($\sigma$ bekannt) (SG 1)
+  3. `t-ki` — t-KI bei $\sigma$ unbekannt: $\bar x\pm t_{n-1;0{,}025}\cdot s/\sqrt n$ ⇐ `stich-mw` (SG 2)
+  4. `stich-umfang` — Stichprobenumfang $n\ge(z_{\alpha/2}\sigma/\Delta)^2$ ⇐ `ki-95` (SG 3)
+  5. `bessel-korr` — Bessel-Korrektur (Teiler $n-1$) — erwartungstreue Varianz ⇐ `stich-mw` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `stich-mw` · **0/5+** — Stichprobenmittel $\bar x = (1/n) \sum x_i$, Stichproben-SD $s = \sqrt{\sum(x_i - \bar x)^2 /(n-1)}$
+  - 🔴 [1] _hoch_ · Konzepte: `ki-95` · **0/5+** — 95%-KI: $\bar x \pm z_{0{,}025} \cdot \sigma/\sqrt n$ (Normalverteilung, $\sigma$ bekannt)
+  - 🔴 [2] _hoch_ · Konzepte: `t-ki` · **0/5+** — t-KI bei $\sigma$ unbekannt: $\bar x \pm t_{n-1; 0{,}025} \cdot s/\sqrt n$
+  - 🔴 [3] _hoch_ · Konzepte: `stich-umfang` · **0/5+** — Stichprobenumfang: $n \geq (z_{\alpha/2} \sigma/\Delta)^2$ für Halbbreite $\Delta$
+  - 🔴 [4] _mittel_ · Konzepte: `bessel-korr` · **0/5+** — Teiler $n-1$ bei Stichproben-Varianz (Bessel-Korrektur, erwartungstreu)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `stich-mw` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `stich-mw` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `stich-mw` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `stich-mw` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `stich-mw` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `ki-95` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `ki-95` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `ki-95` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `ki-95` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `ki-95` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 11 | 2 | recognize          | true-false       | `t-ki` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `t-ki` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `t-ki` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `t-ki` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `t-ki` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `stich-umfang` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `stich-umfang` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `stich-umfang` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `stich-umfang` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `stich-umfang` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `bessel-korr` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `bessel-korr` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `bessel-korr` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `bessel-korr` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `bessel-korr` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/statistik.js` unter `'stat-pruefung-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-pruefung-3-1`, `ex-stat-pruefung-3-2`, `ex-stat-pruefung-3-3`, `ex-stat-pruefung-3-4`, `ex-stat-pruefung-3-5`, `ex-stat-pruefung-3-6`, `ex-stat-pruefung-3-7`, `ex-stat-pruefung-3-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
-  - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
-  - _Klausur-Fokus:_ Wahrscheinlichkeit bei Normalverteilung mit Standardisierung. · Erwartungswert und Varianz einer diskreten Verteilung. · 95%-Konfidenzintervall für Mittelwert.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
 
 #### `mech-3-2` · Dynamik: Prüfungsaufgaben
 
@@ -3458,52 +3770,128 @@ npm run build              # abschließender End-zu-End-Check
 #### `fl-3-1` · Fourier Prüfungsaufgaben
 
 - **Topic:** `fourier-laplace` (Fourier & Laplace) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 15 · **mindestens:** 20 · **fehlen bis Minimum:** 5 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×4, true-false ×2, matching ×2, sorting ×2
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Symmetrie nutzen: gerade Funktion → nur Kosinusreihe, ungerade → nur Sinusreihe
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Koeffizienten $a_n = (2/T)\int_0^T f(t)\cos(n\omega t)dt$, analog $b_n$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Konstantes Glied $a_0/2$ = Mittelwert der Funktion über eine Periode
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Parseval: Energie im Zeit- und Frequenzbereich gleich
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Konvergenz: punktweise bei Mittelwert-Sprung, gleichmäßig bei stetiger Fortsetzung
-  - 🔴 [5] (hoch) **0/5+** Aufgaben — Spektrum periodisch: diskrete Linien bei $n\omega_0$; aperiodisch: kontinuierlich $F(\omega)$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/fourier_laplace.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fl-1-1` → `periode`, `a-koeff`, `paritaet-fr`
+  - `fl-1-3` → `ft-def`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `fr-symm-pr` — Symmetrie: gerade → nur Kosinus, ungerade → nur Sinus (SG 0)
+  2. `fr-koeff-pr` — Koeffizienten $a_n=(2/T)\int_0^T f\cos(n\omega t)dt$, analog $b_n$ (SG 1)
+  3. `mittelwert` — $a_0/2$ = Mittelwert über eine Periode (SG 2)
+  4. `parseval` — Parseval: Energie im Zeit- und Frequenzbereich gleich (SG 3)
+  5. `konv-fr` — Konvergenz: punktweise bei Sprung zum Mittelwert, gleichmäßig bei stetiger Fortsetzung (SG 4)
+  6. `spektrum-typ` — Periodisch: diskrete Linien $n\omega_0$; aperiodisch: kontinuierlich $F(\omega)$ (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `fr-symm-pr` · **0/5+** — Symmetrie nutzen: gerade Funktion → nur Kosinusreihe, ungerade → nur Sinusreihe
+  - 🔴 [1] _hoch_ · Konzepte: `fr-koeff-pr` · **0/5+** — Koeffizienten $a_n = (2/T)\int_0^T f(t)\cos(n\omega t)dt$, analog $b_n$
+  - 🔴 [2] _hoch_ · Konzepte: `mittelwert` · **0/5+** — Konstantes Glied $a_0/2$ = Mittelwert der Funktion über eine Periode
+  - 🔴 [3] _mittel_ · Konzepte: `parseval` · **0/5+** — Parseval: Energie im Zeit- und Frequenzbereich gleich
+  - 🔴 [4] _mittel_ · Konzepte: `konv-fr` · **0/5+** — Konvergenz: punktweise bei Mittelwert-Sprung, gleichmäßig bei stetiger Fortsetzung
+  - 🔴 [5] _hoch_ · Konzepte: `spektrum-typ` · **0/5+** — Spektrum periodisch: diskrete Linien bei $n\omega_0$; aperiodisch: kontinuierlich $F(\omega)$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `fr-symm-pr` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `fr-symm-pr` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `fr-symm-pr` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `fr-symm-pr` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `fr-symm-pr` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `fr-koeff-pr` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `fr-koeff-pr` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `fr-koeff-pr` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `fr-koeff-pr` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `fr-koeff-pr` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 11 | 2 | recognize          | true-false       | `mittelwert` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `mittelwert` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `mittelwert` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `mittelwert` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `mittelwert` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `parseval` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `parseval` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `parseval` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `parseval` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `parseval` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `konv-fr` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `konv-fr` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `konv-fr` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `konv-fr` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `konv-fr` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `spektrum-typ` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `spektrum-typ` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `spektrum-typ` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `spektrum-typ` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | multiple-choice  | `spektrum-typ` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/fourier_laplace.js` unter `'fl-3-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-3-1-1`, `ex-fl-3-1-2`, `ex-fl-3-1-3`, `ex-fl-3-1-4`, `ex-fl-3-1-5`, `ex-fl-3-1-6`, `ex-fl-3-1-7`, `ex-fl-3-1-manual-1` … (+7 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
-  - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
 
 #### `fl-3-2` · Laplace Prüfungsaufgaben
 
 - **Topic:** `fourier-laplace` (Fourier & Laplace) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 15 · **mindestens:** 20 · **fehlen bis Minimum:** 5 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Sprungantwort: $Y(s) = G(s)/s$, Partialbruch + Rücktransformation
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Impulsantwort: $Y(s) = G(s)$ → direkt rücktransformieren
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Stabilität: alle Pole in linker s-Halbebene ($\text{Re}(p_i) < 0$)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Pol bei $s = -a$ → $e^{-at}$ in Zeitdomäne, konjugiert komplex → gedämpfte Schwingung
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — PT1: $G(s) = K/(1 + Ts)$, Zeitkonstante $T$, Verstärkung $K$
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — PT2: $G(s) = K\omega_0^2/(s^2 + 2D\omega_0 s + \omega_0^2)$, Dämpfungsgrad $D$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/fourier_laplace.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fl-2-1` → `lap-paare-1`
+  - `fl-2-2` → `uebertragung`, `pbz-lap`, `stab-pol`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `sprungantw` — Sprungantwort: $Y(s)=G(s)/s$, Partialbruch + Rück (SG 0)
+  2. `impulsantw` — Impulsantwort: $Y(s)=G(s)$ direkt rück (SG 1)
+  3. `stab-pole-pr` — Stabilität: alle Pole linke s-Halbebene ($\operatorname{Re}(p_i)<0$) (SG 2)
+  4. `pol-zeit` — Pol bei $s=-a$ → $e^{-at}$ in Zeit; konjugiert → gedämpfte Schwingung ⇐ `stab-pole-pr` (SG 3)
+  5. `pt1` — PT1: $G(s)=K/(1+Ts)$ (SG 4)
+  6. `pt2` — PT2: $G(s)=K\omega_0^2/(s^2+2D\omega_0 s+\omega_0^2)$ (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `sprungantw` · **0/5+** — Sprungantwort: $Y(s) = G(s)/s$, Partialbruch + Rücktransformation
+  - 🔴 [1] _hoch_ · Konzepte: `impulsantw` · **0/5+** — Impulsantwort: $Y(s) = G(s)$ → direkt rücktransformieren
+  - 🔴 [2] _hoch_ · Konzepte: `stab-pole-pr` · **0/5+** — Stabilität: alle Pole in linker s-Halbebene ($\text{Re}(p_i) < 0$)
+  - 🔴 [3] _hoch_ · Konzepte: `pol-zeit` · **0/5+** — Pol bei $s = -a$ → $e^{-at}$ in Zeitdomäne, konjugiert komplex → gedämpfte Schwingung
+  - 🔴 [4] _hoch_ · Konzepte: `pt1` · **0/5+** — PT1: $G(s) = K/(1 + Ts)$, Zeitkonstante $T$, Verstärkung $K$
+  - 🔴 [5] _mittel_ · Konzepte: `pt2` · **0/5+** — PT2: $G(s) = K\omega_0^2/(s^2 + 2D\omega_0 s + \omega_0^2)$, Dämpfungsgrad $D$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `sprungantw` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `sprungantw` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `sprungantw` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `sprungantw` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `sprungantw` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `impulsantw` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `impulsantw` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `impulsantw` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `impulsantw` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `impulsantw` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `stab-pole-pr` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `stab-pole-pr` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `stab-pole-pr` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `stab-pole-pr` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `stab-pole-pr` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `pol-zeit` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pol-zeit` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `pol-zeit` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pol-zeit` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `pol-zeit` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `pt1` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `pt1` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `pt1` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `pt1` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `pt1` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `pt2` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `pt2` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `pt2` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `pt2` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | multiple-choice  | `pt2` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/fourier_laplace.js` unter `'fl-3-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-3-2-1`, `ex-fl-3-2-2`, `ex-fl-3-2-3`, `ex-fl-3-2-4`, `ex-fl-3-2-5`, `ex-fl-3-2-6`, `ex-fl-3-2-7`, `ex-fl-3-2-manual-1` … (+7 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
-  - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
 
 ### 🟠 Hoch (< 8 Aufgaben) — 5 Lessons
 
@@ -4250,168 +4638,371 @@ npm run build              # abschließender End-zu-End-Check
 #### `mdim-1-1` · Partielle Ableitung verstehen
 
 - **Topic:** `mehrdim-analysis` (Mehrdim. Analysis) · **Unit:** Partielle Ableitungen & Gradient
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Beim Ableiten nach einer Variable: alle anderen sind **Konstanten**
-  - 🔴 [1] (mittel) **0/5+** Aufgaben — Schreibweisen $f_x$, $\partial f/\partial x$, $D_x f$ gleichwertig erkennen
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Gradient $\nabla f = (f_x, f_y)^T$ zeigt Richtung des steilsten Anstiegs
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Gradient $\perp$ Höhenlinie — Normale an Niveaumengen
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Satz von Schwarz: $f_{xy} = f_{yx}$ (bei stetigen zweiten Ableitungen)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/mehrdim_analysis.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/mehrdim_analysis.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `part-abl` — Partielle Ableitung: nach einer Variable, andere als Konstanten (SG 0)
+  2. `part-schreib` — Schreibweisen $f_x$, $\partial f/\partial x$, $D_x f$ gleichwertig ⇐ `part-abl` (SG 1)
+  3. `gradient` — Gradient $\nabla f=(f_x,f_y)^T$ — Richtung steilsten Anstiegs ⇐ `part-abl` (SG 2)
+  4. `grad-niveau` — Gradient $\perp$ Höhenlinie — Normale an Niveaumengen ⇐ `gradient` (SG 3)
+  5. `schwarz` — Satz von Schwarz: $f_{xy}=f_{yx}$ (bei stetigen 2. Ableitungen) ⇐ `part-abl` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `part-abl` · **0/5+** — Beim Ableiten nach einer Variable: alle anderen sind **Konstanten**
+  - 🔴 [1] _mittel_ · Konzepte: `part-schreib` · **0/5+** — Schreibweisen $f_x$, $\partial f/\partial x$, $D_x f$ gleichwertig erkennen
+  - 🔴 [2] _hoch_ · Konzepte: `gradient` · **0/5+** — Gradient $\nabla f = (f_x, f_y)^T$ zeigt Richtung des steilsten Anstiegs
+  - 🔴 [3] _hoch_ · Konzepte: `grad-niveau` · **0/5+** — Gradient $\perp$ Höhenlinie — Normale an Niveaumengen
+  - 🔴 [4] _mittel_ · Konzepte: `schwarz` · **0/5+** — Satz von Schwarz: $f_{xy} = f_{yx}$ (bei stetigen zweiten Ableitungen)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `part-abl` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `part-abl` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `part-abl` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `part-abl` | 1 | 0 | 🔴 | Andere Variable mit abgeleitet |
+|  5 | 0 | transfer           | number-input     | `part-abl` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `part-schreib` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `part-schreib` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `part-schreib` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `part-schreib` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `part-schreib` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `gradient` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `gradient` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `gradient` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `gradient` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `gradient` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `grad-niveau` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `grad-niveau` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `grad-niveau` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `grad-niveau` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `grad-niveau` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `schwarz` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `schwarz` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `schwarz` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `schwarz` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `schwarz` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/mehrdim_analysis.js` unter `'mdim-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-1-1-1`, `ex-mdim-1-1-2`, `ex-mdim-1-1-3`, `ex-mdim-1-1-4`, `ex-mdim-1-1-5`, `ex-mdim-1-1-6`, `ex-mdim-1-1-7`, `ex-mdim-1-1-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-3d`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `mehrdim-analysis`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Partielle Ableitung: alle anderen Variablen als Konstante behandeln. · Gradient $\nabla f$ zeigt in Richtung des steilsten Anstiegs. · Extrema: $\nabla f=\vec 0$ (notwendig) + Definitheit der Hesse-Matrix (hinreichend). · …
-  - _Typische Fehler (gute Distraktoren):_ Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
-  - _Klausur-Fokus:_ Extrema einer Funktion $f(x,y)$. · Lagrange-Multiplikatoren bei Nebenbedingung. · Tangentialebene in einem Punkt aufstellen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `vector-3d`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
 
 #### `mdim-1-2` · Hesse-Matrix und Lagrange-Multiplikatoren
 
 - **Topic:** `mehrdim-analysis` (Mehrdim. Analysis) · **Unit:** Partielle Ableitungen & Gradient
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×1, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** number-input, true-false, matching, sorting, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Notwendige Bedingung für Extremum: $\nabla f = 0$ (kritischer Punkt)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Hesse-Matrix $H = \begin{pmatrix} f_{xx} & f_{xy} \\ f_{yx} & f_{yy} \end{pmatrix}$ — Symmetrie nutzen
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — $\det H > 0 \wedge f_{xx} > 0$ → Minimum, $< 0 \wedge f_{xx} < 0$ → Maximum, $\det H < 0$ → Sattel
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Lagrange: $\nabla f = \lambda\,\nabla g$ bei Nebenbedingung $g(x,y) = 0$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Lagrange-System: $\nabla f - \lambda \nabla g = 0$ **und** $g = 0$ gemeinsam lösen
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/mehrdim_analysis.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/mehrdim_analysis.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mdim-1-1` → `part-abl`, `gradient`, `schwarz`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `krit-punkt` — Notwendige Bedingung Extremum: $\nabla f=0$ (kritischer Punkt) (SG 0)
+  2. `hesse` — Hesse-Matrix $H$ — symmetrisch (Schwarz) ⇐ `krit-punkt` (SG 1)
+  3. `hesse-test` — $\det H>0,f_{xx}>0$ Min; $\det H>0,f_{xx}<0$ Max; $\det H<0$ Sattel ⇐ `hesse` (SG 2)
+  4. `lagrange` — Lagrange: $\nabla f=\lambda\nabla g$ bei Nebenbedingung $g=0$ (SG 3)
+  5. `lagrange-sys` — Lagrange-System: $\nabla f-\lambda\nabla g=0$ UND $g=0$ gemeinsam lösen ⇐ `lagrange` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `krit-punkt` · **0/5+** — Notwendige Bedingung für Extremum: $\nabla f = 0$ (kritischer Punkt)
+  - 🔴 [1] _hoch_ · Konzepte: `hesse` · **0/5+** — Hesse-Matrix $H = \begin{pmatrix} f_{xx} & f_{xy} \\ f_{yx} & f_{yy} \end{pmatrix}$ — Symmetrie nutzen
+  - 🔴 [2] _hoch_ · Konzepte: `hesse-test` · **0/5+** — $\det H > 0 \wedge f_{xx} > 0$ → Minimum, $< 0 \wedge f_{xx} < 0$ → Maximum, $\det H < 0$ → Sattel
+  - 🔴 [3] _hoch_ · Konzepte: `lagrange` · **0/5+** — Lagrange: $\nabla f = \lambda\,\nabla g$ bei Nebenbedingung $g(x,y) = 0$
+  - 🔴 [4] _mittel_ · Konzepte: `lagrange-sys` · **0/5+** — Lagrange-System: $\nabla f - \lambda \nabla g = 0$ **und** $g = 0$ gemeinsam lösen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `krit-punkt` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `krit-punkt` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `krit-punkt` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `krit-punkt` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `krit-punkt` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `hesse` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `hesse` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `hesse` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `hesse` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `hesse` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `hesse-test` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `hesse-test` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `hesse-test` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `hesse-test` | 1 | 0 | 🔴 | Definitheit verkehrt interpretiert |
+| 15 | 2 | transfer           | matching         | `hesse-test` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `lagrange` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `lagrange` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `lagrange` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `lagrange` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `lagrange` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `lagrange-sys` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `lagrange-sys` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `lagrange-sys` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `lagrange-sys` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | sorting          | `lagrange-sys` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/mehrdim_analysis.js` unter `'mdim-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/mehrdim_analysis.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mdim-1-2-1`, `ex-mdim-1-2-2`, `ex-mdim-1-2-3`, `ex-mdim-1-2-4`, `ex-mdim-1-2-5`, `ex-mdim-1-2-6`, `ex-mdim-1-2-7`, `ex-mdim-1-2-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `vector-3d`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `mehrdim-analysis`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Partielle Ableitung: alle anderen Variablen als Konstante behandeln. · Gradient $\nabla f$ zeigt in Richtung des steilsten Anstiegs. · Extrema: $\nabla f=\vec 0$ (notwendig) + Definitheit der Hesse-Matrix (hinreichend). · …
-  - _Typische Fehler (gute Distraktoren):_ Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
-  - _Klausur-Fokus:_ Extrema einer Funktion $f(x,y)$. · Lagrange-Multiplikatoren bei Nebenbedingung. · Tangentialebene in einem Punkt aufstellen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `vector-3d`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei partieller Ableitung die "konstanten" Variablen versehentlich mit abgeleitet. · Hesse-Matrix-Definitheit falsch interpretiert (positiv definit = Minimum). · Richtungsvektor bei $D_{\vec u}$ nicht normiert.
 
 #### `num-1-1` · Newton-Verfahren
 
 - **Topic:** `numerik` (Numerische Mathematik) · **Unit:** Nullstellen & Integration
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Iterationsvorschrift $x_{n+1} = x_n - f(x_n)/f'(x_n)$ korrekt aufbauen
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Abbruchkriterium: $|x_{n+1} - x_n| < \varepsilon$ **oder** $|f(x_n)| < \delta$
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Quadratische Konvergenz: Anzahl korrekter Stellen verdoppelt sich pro Schritt (bei guten Startwerten)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Stolperfallen: $f'(x_n) = 0$ (Tangente horizontal), schlechter Startwert → Divergenz
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/numerik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/numerik.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `newton-iter-num` — $x_{n+1}=x_n-f(x_n)/f'(x_n)$ (SG 0)
+  2. `abbruch` — Abbruch: $|x_{n+1}-x_n|<\varepsilon$ oder $|f(x_n)|<\delta$ ⇐ `newton-iter-num` (SG 1)
+  3. `quad-konv` — Quadratische Konvergenz: korrekte Stellen verdoppeln sich ⇐ `newton-iter-num` (SG 2)
+  4. `newton-fallen` — Stolperfallen: $f'(x_n)=0$, schlechter Startwert → Divergenz ⇐ `newton-iter-num` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `newton-iter-num` · **0/5+** — Iterationsvorschrift $x_{n+1} = x_n - f(x_n)/f'(x_n)$ korrekt aufbauen
+  - 🔴 [1] _hoch_ · Konzepte: `abbruch` · **0/5+** — Abbruchkriterium: $|x_{n+1} - x_n| < \varepsilon$ **oder** $|f(x_n)| < \delta$
+  - 🔴 [2] _mittel_ · Konzepte: `quad-konv` · **0/5+** — Quadratische Konvergenz: Anzahl korrekter Stellen verdoppelt sich pro Schritt (bei guten Startwerten)
+  - 🔴 [3] _hoch_ · Konzepte: `newton-fallen` · **0/5+** — Stolperfallen: $f'(x_n) = 0$ (Tangente horizontal), schlechter Startwert → Divergenz
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `newton-iter-num` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `newton-iter-num` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `newton-iter-num` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `newton-iter-num` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `newton-iter-num` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `abbruch` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `abbruch` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `abbruch` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `abbruch` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `abbruch` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `quad-konv` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `quad-konv` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `quad-konv` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `quad-konv` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `quad-konv` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `newton-fallen` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `newton-fallen` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `newton-fallen` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `newton-fallen` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `newton-fallen` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/numerik.js` unter `'num-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-1-1-1`, `ex-num-1-1-2`, `ex-num-1-1-3`, `ex-num-1-1-4`, `ex-num-1-1-5`, `ex-num-1-1-6`, `ex-num-1-1-7`, `ex-num-1-1-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `numerik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Newton: $x_{n+1}=x_n-f(x_n)/f'(x_n)$, quadratisch konvergent. · Bisektion: sicher aber linear, braucht Vorzeichenwechsel. · Trapezregel: $I\approx h[y_0/2+y_1+\ldots+y_{n-1}+y_n/2]$, Fehler $O(h^2)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
-  - _Klausur-Fokus:_ Newton-Iteration für zwei Schritte mit Startwert. · Simpson-Regel mit $n=2$ oder $n=4$. · Fehlerordnung begründen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
 
 #### `num-1-2` · Bisektion und numerische Integration
 
 - **Topic:** `numerik` (Numerische Mathematik) · **Unit:** Nullstellen & Integration
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Bisektion benötigt Vorzeichenwechsel: $f(a)\cdot f(b) < 0$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Fehler der Bisektion nach $n$ Schritten: $(b-a)/2^n$ → Schrittzahl auflösen
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Trapezregel: $\tfrac{h}{2}(f_0 + 2f_1 + \ldots + 2f_{n-1} + f_n)$; Fehler $O(h^2)$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Simpson: nur bei **gerader** Teilintervallanzahl anwendbar; Fehler $O(h^4)$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Simpson ist exakt für Polynome bis Grad 3
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/numerik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/numerik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `num-1-1` → `newton-iter-num`, `abbruch`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `bisektion` — Bisektion benötigt Vorzeichenwechsel: $f(a)\cdot f(b)<0$ (SG 0)
+  2. `bisek-fehler` — Fehler nach $n$ Schritten: $(b-a)/2^n$ ⇐ `bisektion` (SG 1)
+  3. `trapez-num` — Trapezregel $\tfrac{h}{2}(f_0+2f_1+\ldots+f_n)$, Fehler $O(h^2)$ (SG 2)
+  4. `simpson-num` — Simpson: nur bei gerader Teilintervallanzahl, Fehler $O(h^4)$ (SG 3)
+  5. `simpson-exakt` — Simpson exakt für Polynome bis Grad 3 ⇐ `simpson-num` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `bisektion` · **0/5+** — Bisektion benötigt Vorzeichenwechsel: $f(a)\cdot f(b) < 0$
+  - 🔴 [1] _hoch_ · Konzepte: `bisek-fehler` · **0/5+** — Fehler der Bisektion nach $n$ Schritten: $(b-a)/2^n$ → Schrittzahl auflösen
+  - 🔴 [2] _hoch_ · Konzepte: `trapez-num` · **0/5+** — Trapezregel: $\tfrac{h}{2}(f_0 + 2f_1 + \ldots + 2f_{n-1} + f_n)$; Fehler $O(h^2)$
+  - 🔴 [3] _hoch_ · Konzepte: `simpson-num` · **0/5+** — Simpson: nur bei **gerader** Teilintervallanzahl anwendbar; Fehler $O(h^4)$
+  - 🔴 [4] _mittel_ · Konzepte: `simpson-exakt` · **0/5+** — Simpson ist exakt für Polynome bis Grad 3
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `bisektion` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `bisektion` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `bisektion` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `bisektion` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `bisektion` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `bisek-fehler` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `bisek-fehler` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `bisek-fehler` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `bisek-fehler` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `bisek-fehler` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `trapez-num` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `trapez-num` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `trapez-num` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `trapez-num` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `trapez-num` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `simpson-num` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `simpson-num` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `simpson-num` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `simpson-num` | 1 | 0 | 🔴 | $n$ ungerade |
+| 20 | 3 | transfer           | number-input     | `simpson-num` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `simpson-exakt` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `simpson-exakt` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `simpson-exakt` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `simpson-exakt` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `simpson-exakt` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/numerik.js` unter `'num-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/numerik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-num-1-2-1`, `ex-num-1-2-2`, `ex-num-1-2-3`, `ex-num-1-2-4`, `ex-num-1-2-5`, `ex-num-1-2-6`, `ex-num-1-2-7`, `ex-num-1-2-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`, `integral-area`, `limit-explorer`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `numerik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Newton: $x_{n+1}=x_n-f(x_n)/f'(x_n)$, quadratisch konvergent. · Bisektion: sicher aber linear, braucht Vorzeichenwechsel. · Trapezregel: $I\approx h[y_0/2+y_1+\ldots+y_{n-1}+y_n/2]$, Fehler $O(h^2)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
-  - _Klausur-Fokus:_ Newton-Iteration für zwei Schritte mit Startwert. · Simpson-Regel mit $n=2$ oder $n=4$. · Fehlerordnung begründen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`, `integral-area`, `limit-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Newton die Ableitung falsch eingesetzt. · Simpson braucht gerade Anzahl Teilintervalle — oft übersehen. · Konvergenz von Newton nicht geprüft (kann oszillieren).
 
 #### `stat-1-1` · Erwartungswert und Varianz
 
 - **Topic:** `statistik` (Statistik & Wahrscheinlichkeit) · **Unit:** Zufallsvariablen & Verteilungen
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Erwartungswert $E(X) = \sum_i x_i\,p_i$ bei diskreter $X$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Verschiebungssatz: $\operatorname{Var}(X) = E(X^2) - E(X)^2$ (rechnerisch meist einfacher)
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Einheiten: $E(X)$ wie $X$, $\operatorname{Var}(X)$ wie $X^2$, $\sigma$ wie $X$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Linearität: $E(aX + b) = a\,E(X) + b$, $\operatorname{Var}(aX + b) = a^2\,\operatorname{Var}(X)$ (Konstante fällt weg)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/statistik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/statistik.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `erwart-disk` — Erwartungswert $E(X)=\sum_i x_i p_i$ (diskret) (SG 0)
+  2. `verschiebung` — Verschiebungssatz $\operatorname{Var}(X)=E(X^2)-E(X)^2$ ⇐ `erwart-disk` (SG 1)
+  3. `einheiten-stat` — $E(X)$ wie $X$, $\operatorname{Var}$ wie $X^2$, $\sigma$ wie $X$ ⇐ `erwart-disk` (SG 2)
+  4. `linear-stat` — Linearität $E(aX+b)=aE(X)+b$, $\operatorname{Var}(aX+b)=a^2\operatorname{Var}(X)$ ⇐ `erwart-disk`, `verschiebung` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `erwart-disk` · **0/5+** — Erwartungswert $E(X) = \sum_i x_i\,p_i$ bei diskreter $X$
+  - 🔴 [1] _hoch_ · Konzepte: `verschiebung` · **0/5+** — Verschiebungssatz: $\operatorname{Var}(X) = E(X^2) - E(X)^2$ (rechnerisch meist einfacher)
+  - 🔴 [2] _mittel_ · Konzepte: `einheiten-stat` · **0/5+** — Einheiten: $E(X)$ wie $X$, $\operatorname{Var}(X)$ wie $X^2$, $\sigma$ wie $X$
+  - 🔴 [3] _hoch_ · Konzepte: `linear-stat` · **0/5+** — Linearität: $E(aX + b) = a\,E(X) + b$, $\operatorname{Var}(aX + b) = a^2\,\operatorname{Var}(X)$ (Konstante fällt weg)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `erwart-disk` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `erwart-disk` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `erwart-disk` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `erwart-disk` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `erwart-disk` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `verschiebung` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `verschiebung` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `verschiebung` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `verschiebung` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `verschiebung` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `einheiten-stat` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `einheiten-stat` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `einheiten-stat` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `einheiten-stat` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `einheiten-stat` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `linear-stat` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `linear-stat` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `linear-stat` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `linear-stat` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `linear-stat` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/statistik.js` unter `'stat-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-1-1-1`, `ex-stat-1-1-2`, `ex-stat-1-1-3`, `ex-stat-1-1-4`, `ex-stat-1-1-5`, `ex-stat-1-1-6`, `ex-stat-1-1-7`, `ex-stat-1-1-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
-  - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
-  - _Klausur-Fokus:_ Wahrscheinlichkeit bei Normalverteilung mit Standardisierung. · Erwartungswert und Varianz einer diskreten Verteilung. · 95%-Konfidenzintervall für Mittelwert.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
 
 #### `stat-1-2` · Normalverteilung
 
 - **Topic:** `statistik` (Statistik & Wahrscheinlichkeit) · **Unit:** Zufallsvariablen & Verteilungen
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Parameter: $\mu$ verschiebt, $\sigma$ streckt die Glockenkurve
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — z-Transformation $Z = (X-\mu)/\sigma$: jede Normalverteilung auf $N(0,1)$ zurückführen
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — 68/95/99{,}7-Regel: $\pm1\sigma$, $\pm2\sigma$, $\pm3\sigma$-Intervalle als Schätzung auswendig
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — $\Phi(z) = P(Z \le z)$: Tabelle nur für $z \ge 0$, für $z < 0$ Symmetrie $\Phi(-z) = 1 - \Phi(z)$ nutzen
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — $P(a \le X \le b) = \Phi(\tfrac{b-\mu}{\sigma}) - \Phi(\tfrac{a-\mu}{\sigma})$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/statistik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/statistik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `stat-1-1` → `erwart-disk`, `verschiebung`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `mu-sigma` — Parameter $\mu$ verschiebt, $\sigma$ streckt die Glockenkurve (SG 0)
+  2. `z-trans` — z-Transformation $Z=(X-\mu)/\sigma$ → $N(0,1)$ ⇐ `mu-sigma` (SG 1)
+  3. `sigma-regel` — 68/95/99,7-Regel: $\pm1\sigma,\pm2\sigma,\pm3\sigma$ ⇐ `mu-sigma` (SG 2)
+  4. `phi-symm` — $\Phi(z)$ Tabelle nur für $z\ge 0$, sonst $\Phi(-z)=1-\Phi(z)$ ⇐ `z-trans` (SG 3)
+  5. `p-intervall` — $P(a\le X\le b)=\Phi((b-\mu)/\sigma)-\Phi((a-\mu)/\sigma)$ ⇐ `z-trans`, `phi-symm` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `mu-sigma` · **0/5+** — Parameter: $\mu$ verschiebt, $\sigma$ streckt die Glockenkurve
+  - 🔴 [1] _hoch_ · Konzepte: `z-trans` · **0/5+** — z-Transformation $Z = (X-\mu)/\sigma$: jede Normalverteilung auf $N(0,1)$ zurückführen
+  - 🔴 [2] _hoch_ · Konzepte: `sigma-regel` · **0/5+** — 68/95/99{,}7-Regel: $\pm1\sigma$, $\pm2\sigma$, $\pm3\sigma$-Intervalle als Schätzung auswendig
+  - 🔴 [3] _hoch_ · Konzepte: `phi-symm` · **0/5+** — $\Phi(z) = P(Z \le z)$: Tabelle nur für $z \ge 0$, für $z < 0$ Symmetrie $\Phi(-z) = 1 - \Phi(z)$ nutzen
+  - 🔴 [4] _hoch_ · Konzepte: `p-intervall` · **0/5+** — $P(a \le X \le b) = \Phi(\tfrac{b-\mu}{\sigma}) - \Phi(\tfrac{a-\mu}{\sigma})$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `mu-sigma` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `mu-sigma` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `mu-sigma` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `mu-sigma` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `mu-sigma` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `z-trans` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `z-trans` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `z-trans` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `z-trans` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `z-trans` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `sigma-regel` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `sigma-regel` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `sigma-regel` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `sigma-regel` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `sigma-regel` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `phi-symm` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `phi-symm` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `phi-symm` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `phi-symm` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `phi-symm` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `p-intervall` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `p-intervall` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `p-intervall` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `p-intervall` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `p-intervall` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/statistik.js` unter `'stat-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-1-2-1`, `ex-stat-1-2-2`, `ex-stat-1-2-3`, `ex-stat-1-2-4`, `ex-stat-1-2-5`, `ex-stat-1-2-6`, `ex-stat-1-2-7`, `ex-stat-1-2-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
-  - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
-  - _Klausur-Fokus:_ Wahrscheinlichkeit bei Normalverteilung mit Standardisierung. · Erwartungswert und Varianz einer diskreten Verteilung. · 95%-Konfidenzintervall für Mittelwert.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
 
 #### `stat-1-3` · Hypothesentest und Konfidenzintervall
 
 - **Topic:** `statistik` (Statistik & Wahrscheinlichkeit) · **Unit:** Zufallsvariablen & Verteilungen
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — p-Wert < $\alpha$ → $H_0$ verwerfen (signifikantes Ergebnis)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — 95%-Konfidenzintervall Mittelwert: $\bar x \pm 1{,}96 \cdot \sigma/\sqrt n$ (normalverteilt)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Fehler 1. Art ($\alpha$): $H_0$ verworfen obwohl wahr; 2. Art ($\beta$): $H_0$ behalten obwohl falsch
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — t-Test bei unbekannter Varianz: $t = (\bar x - \mu_0)/(s/\sqrt n)$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Einseitig vs. zweiseitig: einseitiger Test nutzt $z_\alpha$, zweiseitig $z_{\alpha/2}$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/statistik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/statistik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `stat-1-1` → `erwart-disk`, `verschiebung`
+  - `stat-1-2` → `mu-sigma`, `z-trans`, `phi-symm`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `p-wert` — p-Wert $<\alpha\Rightarrow H_0$ verwerfen (SG 0)
+  2. `ki-mw` — 95%-KI Mittelwert: $\bar x\pm 1{,}96\cdot\sigma/\sqrt n$ (SG 1)
+  3. `fehler-art` — Fehler 1. Art ($\alpha$) / 2. Art ($\beta$) ⇐ `p-wert` (SG 2)
+  4. `t-test` — t-Test bei unbekannter Varianz: $t=(\bar x-\mu_0)/(s/\sqrt n)$ (SG 3)
+  5. `ein-zwei-seitig` — Einseitig $z_\alpha$ vs. zweiseitig $z_{\alpha/2}$ ⇐ `p-wert` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `p-wert` · **0/5+** — p-Wert < $\alpha$ → $H_0$ verwerfen (signifikantes Ergebnis)
+  - 🔴 [1] _hoch_ · Konzepte: `ki-mw` · **0/5+** — 95%-Konfidenzintervall Mittelwert: $\bar x \pm 1{,}96 \cdot \sigma/\sqrt n$ (normalverteilt)
+  - 🔴 [2] _hoch_ · Konzepte: `fehler-art` · **0/5+** — Fehler 1. Art ($\alpha$): $H_0$ verworfen obwohl wahr; 2. Art ($\beta$): $H_0$ behalten obwohl falsch
+  - 🔴 [3] _mittel_ · Konzepte: `t-test` · **0/5+** — t-Test bei unbekannter Varianz: $t = (\bar x - \mu_0)/(s/\sqrt n)$
+  - 🔴 [4] _mittel_ · Konzepte: `ein-zwei-seitig` · **0/5+** — Einseitig vs. zweiseitig: einseitiger Test nutzt $z_\alpha$, zweiseitig $z_{\alpha/2}$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `p-wert` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `p-wert` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `p-wert` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `p-wert` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `p-wert` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `ki-mw` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `ki-mw` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `ki-mw` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `ki-mw` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `ki-mw` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `fehler-art` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `fehler-art` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `fehler-art` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `fehler-art` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `fehler-art` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `t-test` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `t-test` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `t-test` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `t-test` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `t-test` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `ein-zwei-seitig` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `ein-zwei-seitig` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `ein-zwei-seitig` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `ein-zwei-seitig` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `ein-zwei-seitig` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/statistik.js` unter `'stat-1-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/statistik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-stat-1-3-1`, `ex-stat-1-3-2`, `ex-stat-1-3-3`, `ex-stat-1-3-4`, `ex-stat-1-3-5`, `ex-stat-1-3-6`, `ex-stat-1-3-7`, `ex-stat-1-3-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `statistik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Erwartungswert $E[X]=\sum x\,P(X=x)$ bzw. Integral. · Varianz $\operatorname{Var}(X)=E[X^2]-(E[X])^2$. · Normalverteilung: $\pm 1\sigma$ ≈ 68 %, $\pm 2\sigma$ ≈ 95 %, $\pm 3\sigma$ ≈ 99{,}7 %. · …
-  - _Typische Fehler (gute Distraktoren):_ $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
-  - _Klausur-Fokus:_ Wahrscheinlichkeit bei Normalverteilung mit Standardisierung. · Erwartungswert und Varianz einer diskreten Verteilung. · 95%-Konfidenzintervall für Mittelwert.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
 
 #### `trig-3-1` · Additionstheoreme
 
@@ -8462,123 +9053,282 @@ npm run build              # abschließender End-zu-End-Check
 #### `fl-1-1` · Fourier-Reihen — Grundbegriffe
 
 - **Topic:** `fourier-laplace` (Fourier & Laplace) · **Unit:** Fourier-Reihen
-- **Aufgaben aktuell:** 15 · **mindestens:** 20 · **fehlen bis Minimum:** 5 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — $T$-Periode und Grundfrequenz $\omega_0 = 2\pi/T$ korrekt identifizieren
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Formel: $a_0 = \tfrac{1}{T}\int_0^T f\,dt$ (DC-Anteil), $a_n$, $b_n$ mit Faktor $\tfrac{2}{T}$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Gerade $f$ ($f(-t) = f(t)$) → nur $a_n$; ungerade → nur $b_n$ — halbiert den Aufwand
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Reihenansatz: $f(t) = a_0/2 + \sum_n (a_n\cos + b_n\sin)$ — Faktor $1/2$ vor $a_0$ nicht vergessen
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Integration über eine volle Periode — Start- und Endpunkt frei wählbar (z. B. $-T/2$ bis $T/2$)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/fourier_laplace.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `periode` — $T$-Periode und Grundfrequenz $\omega_0=2\pi/T$ (SG 0)
+  2. `a-koeff` — Koeffizienten $a_0=\tfrac{1}{T}\int_0^T f\,dt$, $a_n,b_n$ mit $\tfrac{2}{T}$ ⇐ `periode` (SG 1)
+  3. `paritaet-fr` — Gerade $f$ → nur $a_n$; ungerade → nur $b_n$ ⇐ `a-koeff` (SG 2)
+  4. `reihe-ansatz` — Ansatz $f(t)=a_0/2+\sum_n(a_n\cos+b_n\sin)$ — Faktor $1/2$ ⇐ `a-koeff` (SG 3)
+  5. `integ-periode` — Integration über volle Periode — Start/Ende frei ⇐ `a-koeff` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `periode` · **0/5+** — $T$-Periode und Grundfrequenz $\omega_0 = 2\pi/T$ korrekt identifizieren
+  - 🔴 [1] _hoch_ · Konzepte: `a-koeff` · **0/5+** — Formel: $a_0 = \tfrac{1}{T}\int_0^T f\,dt$ (DC-Anteil), $a_n$, $b_n$ mit Faktor $\tfrac{2}{T}$
+  - 🔴 [2] _hoch_ · Konzepte: `paritaet-fr` · **0/5+** — Gerade $f$ ($f(-t) = f(t)$) → nur $a_n$; ungerade → nur $b_n$ — halbiert den Aufwand
+  - 🔴 [3] _hoch_ · Konzepte: `reihe-ansatz` · **0/5+** — Reihenansatz: $f(t) = a_0/2 + \sum_n (a_n\cos + b_n\sin)$ — Faktor $1/2$ vor $a_0$ nicht vergessen
+  - 🔴 [4] _mittel_ · Konzepte: `integ-periode` · **0/5+** — Integration über eine volle Periode — Start- und Endpunkt frei wählbar (z. B. $-T/2$ bis $T/2$)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `periode` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `periode` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `periode` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `periode` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `periode` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `a-koeff` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `a-koeff` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `a-koeff` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `a-koeff` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `a-koeff` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `paritaet-fr` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `paritaet-fr` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `paritaet-fr` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `paritaet-fr` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `paritaet-fr` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `reihe-ansatz` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `reihe-ansatz` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `reihe-ansatz` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `reihe-ansatz` | 1 | 0 | 🔴 | Faktor $1/2$ vergessen |
+| 20 | 3 | transfer           | multiple-choice  | `reihe-ansatz` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `integ-periode` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `integ-periode` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `integ-periode` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `integ-periode` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `integ-periode` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/fourier_laplace.js` unter `'fl-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-1-1-1`, `ex-fl-1-1-2`, `ex-fl-1-1-3`, `ex-fl-1-1-4`, `ex-fl-1-1-5`, `ex-fl-1-1-6`, `ex-fl-1-1-7`, `ex-fl-1-1-manual-1` … (+7 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
-  - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
 
 #### `fl-1-2` · Fourier-Reihe Rechteckimpuls
 
 - **Topic:** `fourier-laplace` (Fourier & Laplace) · **Unit:** Fourier-Reihen
-- **Aufgaben aktuell:** 15 · **mindestens:** 20 · **fehlen bis Minimum:** 5 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Ungerades Rechteck → nur $b_n$; nur **ungerade** $n$ liefern Beitrag ($b_n \propto 1/n$)
-  - 🔴 [1] (mittel) **0/5+** Aufgaben — Gibbs-Überschwinger ca. 9 % an Sprungstellen — wird mit mehr Termen nicht kleiner, nur schmaler
-  - 🔴 [2] (niedrig) **0/5+** Aufgaben — Konvergenz in der Mitte der Sprungstelle zum Mittelwert der beiden Seiten
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Amplitudenspektrum: $1/n$-Abfall → „langsame" Abnahme hoher Frequenzen
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/fourier_laplace.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fl-1-1` → `a-koeff`, `paritaet-fr`, `reihe-ansatz`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `rechteck-fr` — Ungerades Rechteck → nur $b_n$, nur ungerade $n$ liefern Beitrag ($b_n\propto 1/n$) (SG 0)
+  2. `gibbs` — Gibbs-Überschwinger ca. 9 % an Sprungstellen — wird mit mehr Termen nur schmaler (SG 1)
+  3. `mittelwert-sprung` — Konvergenz in Mitte der Sprungstelle = Mittelwert beider Seiten (SG 2)
+  4. `spektrum-1n` — Amplitudenspektrum: $1/n$-Abfall — langsame Abnahme hoher Frequenzen (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `rechteck-fr` · **0/5+** — Ungerades Rechteck → nur $b_n$; nur **ungerade** $n$ liefern Beitrag ($b_n \propto 1/n$)
+  - 🔴 [1] _mittel_ · Konzepte: `gibbs` · **0/5+** — Gibbs-Überschwinger ca. 9 % an Sprungstellen — wird mit mehr Termen nicht kleiner, nur schmaler
+  - 🔴 [2] _niedrig_ · Konzepte: `mittelwert-sprung` · **0/5+** — Konvergenz in der Mitte der Sprungstelle zum Mittelwert der beiden Seiten
+  - 🔴 [3] _mittel_ · Konzepte: `spektrum-1n` · **0/5+** — Amplitudenspektrum: $1/n$-Abfall → „langsame" Abnahme hoher Frequenzen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `rechteck-fr` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `rechteck-fr` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `rechteck-fr` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `rechteck-fr` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `rechteck-fr` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `gibbs` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `gibbs` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `gibbs` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `gibbs` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `gibbs` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `mittelwert-sprung` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `mittelwert-sprung` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `mittelwert-sprung` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `mittelwert-sprung` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `mittelwert-sprung` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `spektrum-1n` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `spektrum-1n` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `spektrum-1n` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `spektrum-1n` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `spektrum-1n` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/fourier_laplace.js` unter `'fl-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-1-2-1`, `ex-fl-1-2-2`, `ex-fl-1-2-3`, `ex-fl-1-2-4`, `ex-fl-1-2-5`, `ex-fl-1-2-6`, `ex-fl-1-2-7`, `ex-fl-1-2-manual-1` … (+7 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
-  - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
 
 #### `fl-1-3` · Fourier-Transformation
 
 - **Topic:** `fourier-laplace` (Fourier & Laplace) · **Unit:** Fourier-Reihen
-- **Aufgaben aktuell:** 15 · **mindestens:** 20 · **fehlen bis Minimum:** 5 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — FT-Definition: $F(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Rücktransformation: $f(t) = (1/2\pi) \int F(\omega) e^{i\omega t} d\omega$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Wichtige Paare: Rechteckpuls ↔ Sinc, Gauß ↔ Gauß, $\delta(t)$ ↔ 1
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Linearität: $\alpha f + \beta g \leftrightarrow \alpha F + \beta G$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Verschiebungssatz: $f(t-t_0) \leftrightarrow F(\omega) e^{-i\omega t_0}$
-  - 🔴 [5] (hoch) **0/5+** Aufgaben — Ableitungsregel: $f'(t) \leftrightarrow i\omega F(\omega)$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/fourier_laplace.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fl-1-1` → `periode`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `ft-def` — FT-Definition $F(\omega)=\int_{-\infty}^\infty f(t)e^{-i\omega t}dt$ (SG 0)
+  2. `ft-rueck` — Rücktransformation $f(t)=(1/2\pi)\int F(\omega)e^{i\omega t}d\omega$ ⇐ `ft-def` (SG 1)
+  3. `ft-paare` — Wichtige Paare: Rechteck↔Sinc, Gauß↔Gauß, $\delta(t)\leftrightarrow 1$ ⇐ `ft-def` (SG 2)
+  4. `ft-linear` — Linearität $\alpha f+\beta g\leftrightarrow\alpha F+\beta G$ ⇐ `ft-def` (SG 3)
+  5. `ft-verschieb` — Verschiebung $f(t-t_0)\leftrightarrow F(\omega)e^{-i\omega t_0}$ ⇐ `ft-def` (SG 4)
+  6. `ft-ableit` — Ableitung $f'(t)\leftrightarrow i\omega F(\omega)$ ⇐ `ft-def` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `ft-def` · **0/5+** — FT-Definition: $F(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt$
+  - 🔴 [1] _hoch_ · Konzepte: `ft-rueck` · **0/5+** — Rücktransformation: $f(t) = (1/2\pi) \int F(\omega) e^{i\omega t} d\omega$
+  - 🔴 [2] _hoch_ · Konzepte: `ft-paare` · **0/5+** — Wichtige Paare: Rechteckpuls ↔ Sinc, Gauß ↔ Gauß, $\delta(t)$ ↔ 1
+  - 🔴 [3] _hoch_ · Konzepte: `ft-linear` · **0/5+** — Linearität: $\alpha f + \beta g \leftrightarrow \alpha F + \beta G$
+  - 🔴 [4] _hoch_ · Konzepte: `ft-verschieb` · **0/5+** — Verschiebungssatz: $f(t-t_0) \leftrightarrow F(\omega) e^{-i\omega t_0}$
+  - 🔴 [5] _hoch_ · Konzepte: `ft-ableit` · **0/5+** — Ableitungsregel: $f'(t) \leftrightarrow i\omega F(\omega)$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `ft-def` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `ft-def` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `ft-def` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `ft-def` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `ft-def` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `ft-rueck` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `ft-rueck` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `ft-rueck` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `ft-rueck` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `ft-rueck` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `ft-paare` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `ft-paare` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `ft-paare` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `ft-paare` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `ft-paare` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `ft-linear` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `ft-linear` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `ft-linear` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `ft-linear` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `ft-linear` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `ft-verschieb` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `ft-verschieb` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `ft-verschieb` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `ft-verschieb` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `ft-verschieb` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `ft-ableit` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `ft-ableit` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `ft-ableit` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `ft-ableit` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | multiple-choice  | `ft-ableit` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/fourier_laplace.js` unter `'fl-1-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-1-3-1`, `ex-fl-1-3-2`, `ex-fl-1-3-3`, `ex-fl-1-3-4`, `ex-fl-1-3-5`, `ex-fl-1-3-6`, `ex-fl-1-3-7`, `ex-fl-1-3-manual-1` … (+7 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
-  - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
 
 #### `fl-2-1` · Laplace-Grundlagen
 
 - **Topic:** `fourier-laplace` (Fourier & Laplace) · **Unit:** Laplace-Transformation
-- **Aufgaben aktuell:** 15 · **mindestens:** 20 · **fehlen bis Minimum:** 5 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Definition: $\mathcal L\{f\}(s) = \int_0^\infty f(t) e^{-st} dt$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Wichtige Paare: $1 \leftrightarrow 1/s$, $t \leftrightarrow 1/s^2$, $e^{at} \leftrightarrow 1/(s-a)$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — $\sin(\omega t) \leftrightarrow \omega/(s^2 + \omega^2)$, $\cos(\omega t) \leftrightarrow s/(s^2 + \omega^2)$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Konvergenzbereich (ROC): $\text{Re}(s) > \sigma_0$ — hängt vom Signal ab
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Linearität: $\mathcal L\{\alpha f + \beta g\} = \alpha F + \beta G$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/fourier_laplace.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `lap-def` — $\mathcal L\{f\}(s)=\int_0^\infty f(t)e^{-st}dt$ (SG 0)
+  2. `lap-paare-1` — Paare: $1\leftrightarrow 1/s$, $t\leftrightarrow 1/s^2$, $e^{at}\leftrightarrow 1/(s-a)$ ⇐ `lap-def` (SG 1)
+  3. `lap-trig` — $\sin(\omega t)\leftrightarrow\omega/(s^2+\omega^2)$, $\cos\leftrightarrow s/(s^2+\omega^2)$ ⇐ `lap-def` (SG 2)
+  4. `roc` — Konvergenzbereich (ROC): $\operatorname{Re}(s)>\sigma_0$ ⇐ `lap-def` (SG 3)
+  5. `lap-linear` — Linearität $\mathcal L\{\alpha f+\beta g\}=\alpha F+\beta G$ ⇐ `lap-def` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `lap-def` · **0/5+** — Definition: $\mathcal L\{f\}(s) = \int_0^\infty f(t) e^{-st} dt$
+  - 🔴 [1] _hoch_ · Konzepte: `lap-paare-1` · **0/5+** — Wichtige Paare: $1 \leftrightarrow 1/s$, $t \leftrightarrow 1/s^2$, $e^{at} \leftrightarrow 1/(s-a)$
+  - 🔴 [2] _hoch_ · Konzepte: `lap-trig` · **0/5+** — $\sin(\omega t) \leftrightarrow \omega/(s^2 + \omega^2)$, $\cos(\omega t) \leftrightarrow s/(s^2 + \omega^2)$
+  - 🔴 [3] _mittel_ · Konzepte: `roc` · **0/5+** — Konvergenzbereich (ROC): $\text{Re}(s) > \sigma_0$ — hängt vom Signal ab
+  - 🔴 [4] _hoch_ · Konzepte: `lap-linear` · **0/5+** — Linearität: $\mathcal L\{\alpha f + \beta g\} = \alpha F + \beta G$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `lap-def` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `lap-def` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `lap-def` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `lap-def` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `lap-def` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `lap-paare-1` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `lap-paare-1` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `lap-paare-1` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `lap-paare-1` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `lap-paare-1` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `lap-trig` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `lap-trig` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `lap-trig` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `lap-trig` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `lap-trig` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `roc` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `roc` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `roc` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `roc` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `roc` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `lap-linear` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `lap-linear` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `lap-linear` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `lap-linear` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `lap-linear` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/fourier_laplace.js` unter `'fl-2-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-2-1-1`, `ex-fl-2-1-2`, `ex-fl-2-1-3`, `ex-fl-2-1-4`, `ex-fl-2-1-5`, `ex-fl-2-1-6`, `ex-fl-2-1-7`, `ex-fl-2-1-manual-1` … (+7 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
-  - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
 
 #### `fl-2-2` · Laplace zur DGL-Lösung
 
 - **Topic:** `fourier-laplace` (Fourier & Laplace) · **Unit:** Laplace-Transformation
-- **Aufgaben aktuell:** 15 · **mindestens:** 20 · **fehlen bis Minimum:** 5 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×6, number-input ×3, true-false ×2, matching ×2, sorting ×2
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Ableitungsregel: $\mathcal L\{y'\} = sY - y(0)$, $\mathcal L\{y''\} = s^2 Y - s y(0) - y'(0)$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — DGL-Lösung: transformieren → algebraische Gl. in $Y(s)$ → PBZ → rücktransformieren
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Übertragungsfunktion $G(s) = Y(s)/U(s)$ bei verschwindenden AB
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Partialbruchzerlegung nötig für Rücktransformation komplexer Ausdrücke
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Stabilität aus Polstellen von $G(s)$: alle $\text{Re}(p_i) < 0$ → BIBO-stabil
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Endwertsatz: $\lim_{t\to\infty} y(t) = \lim_{s\to 0} s Y(s)$ (falls Limes existiert)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/fourier_laplace.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/fourier_laplace.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `fl-2-1` → `lap-def`, `lap-paare-1`, `lap-trig`, `lap-linear`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `lap-ableit` — $\mathcal L\{y'\}=sY-y(0)$, $\mathcal L\{y''\}=s^2 Y-sy(0)-y'(0)$ (SG 0)
+  2. `dgl-loesung` — DGL-Lösung: transformieren → algebraisch in $Y(s)$ → PBZ → rück ⇐ `lap-ableit` (SG 1)
+  3. `uebertragung` — Übertragungsfunktion $G(s)=Y(s)/U(s)$ bei AB=0 ⇐ `dgl-loesung` (SG 2)
+  4. `pbz-lap` — Partialbruchzerlegung für Rücktransformation komplexer Ausdrücke ⇐ `dgl-loesung` (SG 3)
+  5. `stab-pol` — Stabilität: alle $\operatorname{Re}(p_i)<0$ → BIBO-stabil ⇐ `uebertragung` (SG 4)
+  6. `endwertsatz` — Endwertsatz $\lim_{t\to\infty}y(t)=\lim_{s\to 0}sY(s)$ ⇐ `dgl-loesung` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `lap-ableit` · **0/5+** — Ableitungsregel: $\mathcal L\{y'\} = sY - y(0)$, $\mathcal L\{y''\} = s^2 Y - s y(0) - y'(0)$
+  - 🔴 [1] _hoch_ · Konzepte: `dgl-loesung` · **0/5+** — DGL-Lösung: transformieren → algebraische Gl. in $Y(s)$ → PBZ → rücktransformieren
+  - 🔴 [2] _hoch_ · Konzepte: `uebertragung` · **0/5+** — Übertragungsfunktion $G(s) = Y(s)/U(s)$ bei verschwindenden AB
+  - 🔴 [3] _hoch_ · Konzepte: `pbz-lap` · **0/5+** — Partialbruchzerlegung nötig für Rücktransformation komplexer Ausdrücke
+  - 🔴 [4] _hoch_ · Konzepte: `stab-pol` · **0/5+** — Stabilität aus Polstellen von $G(s)$: alle $\text{Re}(p_i) < 0$ → BIBO-stabil
+  - 🔴 [5] _mittel_ · Konzepte: `endwertsatz` · **0/5+** — Endwertsatz: $\lim_{t\to\infty} y(t) = \lim_{s\to 0} s Y(s)$ (falls Limes existiert)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `lap-ableit` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `lap-ableit` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `lap-ableit` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `lap-ableit` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `lap-ableit` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `dgl-loesung` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `dgl-loesung` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `dgl-loesung` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `dgl-loesung` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | sorting          | `dgl-loesung` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `uebertragung` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `uebertragung` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `uebertragung` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `uebertragung` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `uebertragung` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `pbz-lap` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pbz-lap` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `pbz-lap` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pbz-lap` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `pbz-lap` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `stab-pol` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `stab-pol` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `stab-pol` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `stab-pol` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `stab-pol` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `endwertsatz` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `endwertsatz` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `endwertsatz` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `endwertsatz` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | number-input     | `endwertsatz` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/fourier_laplace.js` unter `'fl-2-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/fourier_laplace.js`
 - **4-Block-Erklärung fehlt bei:** `ex-fl-2-2-1`, `ex-fl-2-2-2`, `ex-fl-2-2-3`, `ex-fl-2-2-4`, `ex-fl-2-2-5`, `ex-fl-2-2-6`, `ex-fl-2-2-7`, `ex-fl-2-2-manual-1` … (+7 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `fourier-laplace`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Fourier-Koeffizienten $a_n=\tfrac{2}{T}\int f(t)\cos(n\omega t)\,dt$ bzw. $b_n$ mit $\sin$. · Gerade $f \Rightarrow b_n=0$, ungerade $\Rightarrow a_n=0$. · Laplace-Grundkorrespondenzen: $\sigma(t)\to 1/s$, $e^{-at}\to 1/(s+a)$, $\sin\omega t\to \omega/(s^2+\omega^2)$. · …
-  - _Typische Fehler (gute Distraktoren):_ Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
-  - _Klausur-Fokus:_ Fourier-Koeffizienten eines Rechteck-/Sägezahnsignals. · Sprungantwort eines PT1-Glieds per Laplace. · Rücktransformation einer Partialbruchzerlegung.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
 
 ### 🟢 Niedrig (4-Block / wAE nachziehen) — 41 Lessons
 
