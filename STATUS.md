@@ -1750,26 +1750,60 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-3-3` · Reibung, Kinematik & Schwingungen
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 4 · **mindestens:** 20 · **fehlen bis Minimum:** 16 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** number-input ×4
-- **Typen einsetzen (Rotation):** multiple-choice, true-false, matching, sorting, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Geneigte Ebene: gleiten wenn $F_H > F_{R,\max}$, d.h. $\tan\alpha > \mu_0$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Bremsweg-Formel: $s = v_0^2/(2a)$ bei Bremsbeschleunigung $a$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Eigenfrequenz Feder-Masse: $\omega_0 = \sqrt{c/m}$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Bei Parallelschaltung Federn: $c_\text{ges} = c_1 + c_2$; Serie: $1/c_\text{ges} = 1/c_1 + 1/c_2$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Rollen ohne Rutschen: $v = r\omega$, kinetische Energie $= \tfrac{1}{2}m v^2 + \tfrac{1}{2}J\omega^2$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 16 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/technische_mechanik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-1-4` → `selbsthemmung`, `schiefe-zerleg-mech`
+  - `mech-2-3` → `kin-glm-besch`
+  - `mech-2-4` → `eigen-omega`
+  - `mech-2-5` → `e-rot`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `gleitkrit` — Geneigte Ebene: gleiten wenn $\tan\alpha>\mu_0$ (SG 0)
+  2. `bremsweg` — Bremsweg $s=v_0^2/(2a)$ (SG 1)
+  3. `eigen-fm` — Feder-Masse Eigenfrequenz $\omega_0=\sqrt{c/m}$ (SG 2)
+  4. `feder-schalt` — Federn parallel $c=c_1+c_2$; Serie $1/c=1/c_1+1/c_2$ ⇐ `eigen-fm` (SG 3)
+  5. `rollen` — Rollen ohne Rutschen $v=r\omega$, $E_{\text{kin}}=\tfrac12 mv^2+\tfrac12 J\omega^2$ (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `gleitkrit` · **0/5+** — Geneigte Ebene: gleiten wenn $F_H > F_{R,\max}$, d.h. $\tan\alpha > \mu_0$
+  - 🔴 [1] _hoch_ · Konzepte: `bremsweg` · **0/5+** — Bremsweg-Formel: $s = v_0^2/(2a)$ bei Bremsbeschleunigung $a$
+  - 🔴 [2] _hoch_ · Konzepte: `eigen-fm` · **0/5+** — Eigenfrequenz Feder-Masse: $\omega_0 = \sqrt{c/m}$
+  - 🔴 [3] _mittel_ · Konzepte: `feder-schalt` · **0/5+** — Bei Parallelschaltung Federn: $c_\text{ges} = c_1 + c_2$; Serie: $1/c_\text{ges} = 1/c_1 + 1/c_2$
+  - 🔴 [4] _hoch_ · Konzepte: `rollen` · **0/5+** — Rollen ohne Rutschen: $v = r\omega$, kinetische Energie $= \tfrac{1}{2}m v^2 + \tfrac{1}{2}J\omega^2$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `gleitkrit` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `gleitkrit` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `gleitkrit` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `gleitkrit` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `gleitkrit` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `bremsweg` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `bremsweg` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `bremsweg` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `bremsweg` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `bremsweg` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `eigen-fm` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `eigen-fm` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `eigen-fm` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `eigen-fm` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `eigen-fm` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `feder-schalt` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `feder-schalt` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `feder-schalt` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `feder-schalt` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `feder-schalt` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `rollen` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `rollen` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `rollen` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `rollen` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `rollen` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-3-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-3-3-a`, `ex-mech-3-3-b`, `ex-mech-3-3-c`, `ex-mech-3-3-d`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `fest-3-2` · Torsion, Knicken & Wechselfestigkeit
 
@@ -2824,26 +2858,59 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-3-2` · Dynamik: Prüfungsaufgaben
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×2, number-input ×5, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Energieerhaltung mit Reibung: $E_1 = E_2 + W_R$ mit $W_R = F_R \cdot s$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Elastischer Stoß gleicher Massen: Geschwindigkeiten tauschen
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Arbeitssatz: $\sum W_i = \Delta E_{\text{kin}}$ (Gesamtarbeit = Änderung kin. Energie)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Bei freiem Fall aus Höhe $h$: $v = \sqrt{2gh}$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Reibungskraft am Boden: $F_R = \mu m g$, Nettokraft $F - F_R$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/technische_mechanik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-1-4` → `coulomb`
+  - `mech-2-2` → `arbeit`, `e-kin`, `energie-erhalt`
+  - `mech-2-3` → `freier-fall`, `impuls-erh`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `energie-mit-r` — Energieerhaltung mit Reibung: $E_1=E_2+W_R$, $W_R=F_R\cdot s$ (SG 0)
+  2. `stoss-elast` — Elastischer Stoß gleicher Massen: Geschwindigkeiten tauschen (SG 1)
+  3. `arbeitssatz` — Arbeitssatz $\sum W_i=\Delta E_{\text{kin}}$ (SG 2)
+  4. `fall-2gh` — Freier Fall aus $h$: $v=\sqrt{2gh}$ (SG 3)
+  5. `reibung-boden` — Reibung am Boden $F_R=\mu m g$, Nettokraft $F-F_R$ (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `energie-mit-r` · **0/5+** — Energieerhaltung mit Reibung: $E_1 = E_2 + W_R$ mit $W_R = F_R \cdot s$
+  - 🔴 [1] _hoch_ · Konzepte: `stoss-elast` · **0/5+** — Elastischer Stoß gleicher Massen: Geschwindigkeiten tauschen
+  - 🔴 [2] _hoch_ · Konzepte: `arbeitssatz` · **0/5+** — Arbeitssatz: $\sum W_i = \Delta E_{\text{kin}}$ (Gesamtarbeit = Änderung kin. Energie)
+  - 🔴 [3] _hoch_ · Konzepte: `fall-2gh` · **0/5+** — Bei freiem Fall aus Höhe $h$: $v = \sqrt{2gh}$
+  - 🔴 [4] _hoch_ · Konzepte: `reibung-boden` · **0/5+** — Reibungskraft am Boden: $F_R = \mu m g$, Nettokraft $F - F_R$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `energie-mit-r` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `energie-mit-r` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `energie-mit-r` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `energie-mit-r` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `energie-mit-r` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `stoss-elast` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `stoss-elast` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `stoss-elast` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `stoss-elast` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `stoss-elast` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `arbeitssatz` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `arbeitssatz` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `arbeitssatz` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `arbeitssatz` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `arbeitssatz` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `fall-2gh` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `fall-2gh` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `fall-2gh` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `fall-2gh` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `fall-2gh` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `reibung-boden` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `reibung-boden` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `reibung-boden` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `reibung-boden` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `reibung-boden` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-3-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-3-2-a`, `ex-mech-3-2-b`, `ex-mech-3-2-manual-1`, `ex-mech-3-2-manual-2`, `ex-mech-3-2-manual-3`, `ex-mech-3-2-manual-4`, `ex-mech-3-2-manual-5`, `ex-mech-3-2-manual-6` … (+2 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `et-3-2` · Wechselstrom Prüfungsaufgaben
 
@@ -3570,26 +3637,58 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-3-1` · Statik: Prüfungsaufgaben
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Prüfungsaufgaben · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 11 · **mindestens:** 20 · **fehlen bis Minimum:** 9 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×5, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Freikörperbild: alle äußeren Kräfte und Momente einzeichnen
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Drei Gleichgewichtsbedingungen in 2D: $\sum F_x = 0$, $\sum F_y = 0$, $\sum M_P = 0$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Lagertypen: Loslager (1 Reaktion), Festlager (2), Einspannung (3)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Momentensumme um geschickten Punkt (oft Auflager) eliminiert Unbekannte
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Statisch bestimmt: Anzahl Gleichungen = Anzahl Reaktionen
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 9 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/technische_mechanik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-1-1` → `fkb`, `gleichgew-2d`, `lagersymbole`
+  - `mech-1-2` → `moment-formel`, `bezugspunkt`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `fkb-pr` — Freikörperbild — alle äußeren Kräfte/Momente (SG 0)
+  2. `gleichgew-3-pr` — 3 Bedingungen 2D: $\sum F_x=0,\sum F_y=0,\sum M_P=0$ ⇐ `fkb-pr` (SG 1)
+  3. `lagertypen-pr` — Loslager (1), Festlager (2), Einspannung (3 Reaktionen) (SG 2)
+  4. `momenten-trick` — Momentensumme um geschickten Punkt eliminiert Unbekannte ⇐ `gleichgew-3-pr` (SG 3)
+  5. `statisch-best` — Statisch bestimmt: $\#$ Gleichungen $=\#$ Reaktionen ⇐ `lagertypen-pr`, `gleichgew-3-pr` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `fkb-pr` · **0/5+** — Freikörperbild: alle äußeren Kräfte und Momente einzeichnen
+  - 🔴 [1] _hoch_ · Konzepte: `gleichgew-3-pr` · **0/5+** — Drei Gleichgewichtsbedingungen in 2D: $\sum F_x = 0$, $\sum F_y = 0$, $\sum M_P = 0$
+  - 🔴 [2] _hoch_ · Konzepte: `lagertypen-pr` · **0/5+** — Lagertypen: Loslager (1 Reaktion), Festlager (2), Einspannung (3)
+  - 🔴 [3] _hoch_ · Konzepte: `momenten-trick` · **0/5+** — Momentensumme um geschickten Punkt (oft Auflager) eliminiert Unbekannte
+  - 🔴 [4] _hoch_ · Konzepte: `statisch-best` · **0/5+** — Statisch bestimmt: Anzahl Gleichungen = Anzahl Reaktionen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `fkb-pr` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `fkb-pr` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `fkb-pr` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `fkb-pr` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `fkb-pr` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `gleichgew-3-pr` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `gleichgew-3-pr` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `gleichgew-3-pr` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `gleichgew-3-pr` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `gleichgew-3-pr` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 11 | 2 | recognize          | true-false       | `lagertypen-pr` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `lagertypen-pr` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `lagertypen-pr` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `lagertypen-pr` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `lagertypen-pr` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `momenten-trick` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `momenten-trick` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `momenten-trick` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `momenten-trick` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `momenten-trick` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `statisch-best` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `statisch-best` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `statisch-best` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `statisch-best` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `statisch-best` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-3-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-3-1-a`, `ex-mech-3-1-b`, `ex-mech-3-1-c`, `ex-mech-3-1-manual-1`, `ex-mech-3-1-manual-2`, `ex-mech-3-1-manual-3`, `ex-mech-3-1-manual-4`, `ex-mech-3-1-manual-5` … (+3 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `fest-3-1` · Festigkeit: Prüfungsaufgaben
 
@@ -3974,94 +4073,207 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-0-1` · SI-Basiseinheiten & Präfixe
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Einheiten & Dimensionsanalyse (Einstieg)
-- **Aufgaben aktuell:** 5 · **mindestens:** 20 · **fehlen bis Minimum:** 15 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×1, number-input ×2, true-false ×1, matching ×1
-- **Typen einsetzen (Rotation):** sorting, multiple-choice, true-false, matching, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — SI-Präfixe giga, mega, kilo, milli, mikro, nano zuordnen
-  - 🔴 [1] (mittel) **0/5+** Aufgaben — Kilogramm als einzige SI-Basiseinheit mit Präfix
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Wissenschaftliche Notation $a \cdot 10^n$ sicher schreiben
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 15 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/technische_mechanik.js`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `si-basis-7` — 7 SI-Basiseinheiten: m, kg, s, A, K, mol, cd (SG 0)
+  2. `praefixe-1000` — Präfixe in 1000er-Schritten: giga ($10^9$), mega ($10^6$), kilo ($10^3$), milli, mikro, nano (SG 0)
+  3. `kg-anomalie` — kg ist die einzige Basiseinheit mit eingebautem Präfix ⇐ `si-basis-7` (SG 1)
+  4. `sci-notation` — Wissenschaftliche Notation $a\cdot 10^n$ (SG 2)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `si-basis-7`, `praefixe-1000` · **0/5+** — SI-Präfixe giga, mega, kilo, milli, mikro, nano zuordnen
+  - 🔴 [1] _mittel_ · Konzepte: `kg-anomalie` · **0/5+** — Kilogramm als einzige SI-Basiseinheit mit Präfix
+  - 🔴 [2] _hoch_ · Konzepte: `sci-notation` · **0/5+** — Wissenschaftliche Notation $a \cdot 10^n$ sicher schreiben
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `praefixe-1000` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `praefixe-1000` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `praefixe-1000` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `praefixe-1000` | 1 | 0 | 🔴 | M (mega) mit G (giga) verwechselt |
+|  5 | 0 | transfer           | matching         | `praefixe-1000` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `kg-anomalie` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `kg-anomalie`, `si-basis-7` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `kg-anomalie` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `kg-anomalie` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `si-basis-7` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `sci-notation` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `sci-notation` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `sci-notation` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `sci-notation` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `sci-notation`, `praefixe-1000` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 15 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-0-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/technische_mechanik.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `mech-0-2` · Abgeleitete Einheiten (N, J, Pa, W)
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Einheiten & Dimensionsanalyse (Einstieg)
-- **Aufgaben aktuell:** 5 · **mindestens:** 20 · **fehlen bis Minimum:** 15 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×1, number-input ×2, true-false ×1, matching ×1
-- **Typen einsetzen (Rotation):** sorting, multiple-choice, true-false, matching, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Newton $1\,\text{N} = 1\,\text{kg}\cdot\text{m}/\text{s}^2$ zerlegen
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — $1\,\text{MPa} = 1\,\text{N}/\text{mm}^2$ (Ingenieur-Konvention)
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — bar $\leftrightarrow$ Pa: $1\,\text{bar}=10^5\,\text{Pa}$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Dimensionsanalyse als Kontrollschritt
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 15 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/technische_mechanik.js`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-0-1` → `si-basis-7`, `praefixe-1000`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `newton-zerlegung` — $1\,\text{N}=1\,\text{kg}\cdot\text{m}/\text{s}^2$ (SG 0)
+  2. `mpa-nmm2` — $1\,\text{MPa}=1\,\text{N}/\text{mm}^2$ — Ingenieur-Konvention (SG 1)
+  3. `bar-pa` — bar↔Pa: $1\,\text{bar}=10^5\,\text{Pa}$ (SG 2)
+  4. `dim-check` — Dimensionsanalyse als Kontrollschritt — links/rechts dieselbe Einheit ⇐ `newton-zerlegung` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `newton-zerlegung` · **0/5+** — Newton $1\,\text{N} = 1\,\text{kg}\cdot\text{m}/\text{s}^2$ zerlegen
+  - 🔴 [1] _hoch_ · Konzepte: `mpa-nmm2` · **0/5+** — $1\,\text{MPa} = 1\,\text{N}/\text{mm}^2$ (Ingenieur-Konvention)
+  - 🔴 [2] _mittel_ · Konzepte: `bar-pa` · **0/5+** — bar $\leftrightarrow$ Pa: $1\,\text{bar}=10^5\,\text{Pa}$
+  - 🔴 [3] _hoch_ · Konzepte: `dim-check` · **0/5+** — Dimensionsanalyse als Kontrollschritt
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `newton-zerlegung` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `newton-zerlegung` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `newton-zerlegung` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `newton-zerlegung` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `newton-zerlegung` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `mpa-nmm2` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `mpa-nmm2` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `mpa-nmm2` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `mpa-nmm2` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `mpa-nmm2` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `bar-pa` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `bar-pa` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `bar-pa` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `bar-pa` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `bar-pa` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `dim-check` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `dim-check` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `dim-check` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `dim-check` | 1 | 0 | 🔴 | Inkonsistente Einheiten übersehen |
+| 20 | 3 | transfer           | multiple-choice  | `dim-check` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-0-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/technische_mechanik.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `mech-1-3` · Schnittkräfte N(x), Q(x), M(x)
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Aufgaben aktuell:** 5 · **mindestens:** 20 · **fehlen bis Minimum:** 15 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×2, number-input ×2, true-false ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Drei Schnittgrößen: Normalkraft $N(x)$, Querkraft $Q(x)$, Biegemoment $M(x)$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Zusammenhang: $Q(x) = dM/dx$, $q(x) = -dQ/dx$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Sprung in $Q$ bei Einzellast $F$, Knick in $M$ bei Einzellast
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — $M_{\max}$ an Stelle mit $Q = 0$ (gefährliche Stelle)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — An gelenkigen Auflagern ist $M = 0$ (Randbedingung)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 15 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/technische_mechanik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-1-1` → `gleichgew-2d`
+  - `mech-1-2` → `moment-formel`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `schnittgr-3` — Drei Schnittgrößen $N(x),Q(x),M(x)$ (SG 0)
+  2. `schnitt-diff` — Differentialzusammenhang: $Q(x)=dM/dx$, $q(x)=-dQ/dx$ ⇐ `schnittgr-3` (SG 1)
+  3. `sprung-knick` — Sprung in $Q$ bei Einzellast, Knick in $M$ bei Einzellast ⇐ `schnittgr-3` (SG 2)
+  4. `m-max` — $M_{\max}$ an Stelle mit $Q=0$ (gefährliche Stelle) ⇐ `schnitt-diff` (SG 3)
+  5. `rb-gelenk` — Gelenkiges Auflager: $M=0$ als Randbedingung ⇐ `schnittgr-3` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `schnittgr-3` · **0/5+** — Drei Schnittgrößen: Normalkraft $N(x)$, Querkraft $Q(x)$, Biegemoment $M(x)$
+  - 🔴 [1] _hoch_ · Konzepte: `schnitt-diff` · **0/5+** — Zusammenhang: $Q(x) = dM/dx$, $q(x) = -dQ/dx$
+  - 🔴 [2] _hoch_ · Konzepte: `sprung-knick` · **0/5+** — Sprung in $Q$ bei Einzellast $F$, Knick in $M$ bei Einzellast
+  - 🔴 [3] _hoch_ · Konzepte: `m-max` · **0/5+** — $M_{\max}$ an Stelle mit $Q = 0$ (gefährliche Stelle)
+  - 🔴 [4] _hoch_ · Konzepte: `rb-gelenk` · **0/5+** — An gelenkigen Auflagern ist $M = 0$ (Randbedingung)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `schnittgr-3` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `schnittgr-3` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `schnittgr-3` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `schnittgr-3` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `schnittgr-3` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `schnitt-diff` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `schnitt-diff` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `schnitt-diff` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `schnitt-diff` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `schnitt-diff` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `sprung-knick` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `sprung-knick` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `sprung-knick` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `sprung-knick` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `sprung-knick` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `m-max` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `m-max` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `m-max` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `m-max` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `m-max` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `rb-gelenk` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `rb-gelenk` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `rb-gelenk` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `rb-gelenk` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `rb-gelenk` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-3-a`, `ex-mech-1-3-b`, `ex-mech-1-3-c`, `ex-mech-1-3-d`, `ex-mech-1-3-e`
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `mech-2-3` · Kinematik
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Dynamik
-- **Aufgaben aktuell:** 5 · **mindestens:** 20 · **fehlen bis Minimum:** 15 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** number-input ×5
-- **Typen einsetzen (Rotation):** multiple-choice, true-false, matching, sorting, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Gleichförmig beschleunigt: $v = v_0 + at$, $s = s_0 + v_0 t + \tfrac{1}{2}at^2$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Energiegleichung: $v^2 = v_0^2 + 2a\Delta s$ (ohne Zeit)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Freier Fall: $a = g$, $v = gt$, $h = \tfrac{1}{2}gt^2$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Schräger Wurf: $v_x = v_0 \cos\alpha$, $v_y = v_0 \sin\alpha$, Wurfweite $= v_0^2 \sin 2\alpha/g$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Kreisbewegung: $\omega = 2\pi/T = 2\pi n$, $v = r\omega$, $a_z = v^2/r = r\omega^2$
-  - 🔴 [5] (hoch) **0/5+** Aufgaben — Impulserhaltung: $\sum m_i v_i = $ const (auch bei unelastischem Stoß)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 15 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/technische_mechanik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-2-1` → `newton-2`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `kin-glm-besch` — Gleichförmig beschleunigt: $v=v_0+at$, $s=s_0+v_0 t+\tfrac12 at^2$ (SG 0)
+  2. `kin-energiegl` — Energiegleichung $v^2=v_0^2+2a\Delta s$ (ohne Zeit) ⇐ `kin-glm-besch` (SG 1)
+  3. `freier-fall` — Freier Fall: $a=g$, $v=gt$, $h=\tfrac12 gt^2$ ⇐ `kin-glm-besch` (SG 2)
+  4. `schraeg-wurf` — Schräger Wurf: $v_x=v_0\cos\alpha$, $v_y=v_0\sin\alpha$, Wurfweite $v_0^2\sin 2\alpha/g$ ⇐ `freier-fall` (SG 3)
+  5. `kreisbeweg` — Kreisbewegung $\omega=2\pi/T$, $v=r\omega$, $a_z=v^2/r$ (SG 4)
+  6. `impuls-erh` — Impulserhaltung $\sum m_i v_i=$const (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `kin-glm-besch` · **0/5+** — Gleichförmig beschleunigt: $v = v_0 + at$, $s = s_0 + v_0 t + \tfrac{1}{2}at^2$
+  - 🔴 [1] _hoch_ · Konzepte: `kin-energiegl` · **0/5+** — Energiegleichung: $v^2 = v_0^2 + 2a\Delta s$ (ohne Zeit)
+  - 🔴 [2] _hoch_ · Konzepte: `freier-fall` · **0/5+** — Freier Fall: $a = g$, $v = gt$, $h = \tfrac{1}{2}gt^2$
+  - 🔴 [3] _hoch_ · Konzepte: `schraeg-wurf` · **0/5+** — Schräger Wurf: $v_x = v_0 \cos\alpha$, $v_y = v_0 \sin\alpha$, Wurfweite $= v_0^2 \sin 2\alpha/g$
+  - 🔴 [4] _hoch_ · Konzepte: `kreisbeweg` · **0/5+** — Kreisbewegung: $\omega = 2\pi/T = 2\pi n$, $v = r\omega$, $a_z = v^2/r = r\omega^2$
+  - 🔴 [5] _hoch_ · Konzepte: `impuls-erh` · **0/5+** — Impulserhaltung: $\sum m_i v_i = $ const (auch bei unelastischem Stoß)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kin-glm-besch` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kin-glm-besch` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `kin-glm-besch` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `kin-glm-besch` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `kin-glm-besch` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `kin-energiegl` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `kin-energiegl` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `kin-energiegl` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `kin-energiegl` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `kin-energiegl` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `freier-fall` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `freier-fall` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `freier-fall` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `freier-fall` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `freier-fall` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `schraeg-wurf` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `schraeg-wurf` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `schraeg-wurf` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `schraeg-wurf` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `schraeg-wurf` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `kreisbeweg` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `kreisbeweg` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `kreisbeweg` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `kreisbeweg` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `kreisbeweg` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `impuls-erh` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `impuls-erh` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `impuls-erh` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `impuls-erh` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | number-input     | `impuls-erh` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-2-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-3-a`, `ex-mech-2-3-b`, `ex-mech-2-3-c`, `ex-mech-2-3-d`, `ex-mech-2-3-e`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 ### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 120 Lessons
 
@@ -5507,97 +5719,215 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-1-1` · Kräfte und Freikörperbild
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Freikörperbild: Körper isolieren, alle äußeren Kräfte (inkl. Gewicht, Lagerreaktionen) eintragen
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Kraft = Vektor: Betrag + Richtung — Pfeile in positives Koordinatensystem, Vorzeichen ergibt sich aus Rechnung
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Standard-Lagersymbole: Festlager (2 Reaktionen), Loslager (1 Reaktion), Einspannung (2 Kräfte + 1 Moment)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Gleichgewicht in 2D: $\sum F_x = 0$, $\sum F_y = 0$, $\sum M = 0$ → max. 3 Unbekannte statisch bestimmbar
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/technische_mechanik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-0-2` → `newton-zerlegung`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `fkb` — Freikörperbild: Körper isolieren, alle äußeren Kräfte eintragen (SG 0)
+  2. `kraft-vektor` — Kraft = Vektor (Betrag + Richtung) (SG 1)
+  3. `lagersymbole` — Festlager (2 Reaktionen), Loslager (1), Einspannung (2 + 1 Moment) (SG 2)
+  4. `gleichgew-2d` — 2D-Gleichgewicht $\sum F_x=0,\sum F_y=0,\sum M=0$ → 3 Unbekannte ⇐ `fkb`, `lagersymbole` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `fkb` · **0/5+** — Freikörperbild: Körper isolieren, alle äußeren Kräfte (inkl. Gewicht, Lagerreaktionen) eintragen
+  - 🔴 [1] _hoch_ · Konzepte: `kraft-vektor` · **0/5+** — Kraft = Vektor: Betrag + Richtung — Pfeile in positives Koordinatensystem, Vorzeichen ergibt sich aus Rechnung
+  - 🔴 [2] _hoch_ · Konzepte: `lagersymbole` · **0/5+** — Standard-Lagersymbole: Festlager (2 Reaktionen), Loslager (1 Reaktion), Einspannung (2 Kräfte + 1 Moment)
+  - 🔴 [3] _hoch_ · Konzepte: `gleichgew-2d` · **0/5+** — Gleichgewicht in 2D: $\sum F_x = 0$, $\sum F_y = 0$, $\sum M = 0$ → max. 3 Unbekannte statisch bestimmbar
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `fkb` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `fkb` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `fkb` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `fkb` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `fkb` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `kraft-vektor` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `kraft-vektor` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `kraft-vektor` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `kraft-vektor` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `kraft-vektor` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `lagersymbole` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `lagersymbole` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `lagersymbole` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `lagersymbole` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `lagersymbole` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `gleichgew-2d` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `gleichgew-2d` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `gleichgew-2d` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `gleichgew-2d` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `gleichgew-2d` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-1-a`, `ex-mech-1-1-b`, `ex-mech-1-1-manual-1`, `ex-mech-1-1-manual-2`, `ex-mech-1-1-manual-3`, `ex-mech-1-1-manual-4`, `ex-mech-1-1-manual-5`, `ex-mech-1-1-manual-6` … (+2 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `mech-1-2` · Momente und Hebelarm
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Moment $M = F \cdot l_\perp$ — $l_\perp$ ist der SENKRECHTE Abstand vom Bezugspunkt zur Wirkungslinie
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Drehsinn-Konvention: gegen Uhrzeiger positiv (rechte Hand / Rechte-Hand-Regel in 3D)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Bezugspunkt frei wählbar — klug wählen: Punkt mit vielen unbekannten Kräften eliminiert diese
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Kreuzprodukt-Variante: $\vec M = \vec r \times \vec F$ in 3D oder bei schiefen Kräften
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/technische_mechanik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-1-1` → `kraft-vektor`, `gleichgew-2d`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `moment-formel` — Moment $M=F\cdot l_\perp$ — senkrechter Abstand zur Wirkungslinie (SG 0)
+  2. `drehsinn` — Drehsinn: gegen Uhrzeiger positiv (Rechte-Hand-Regel) (SG 1)
+  3. `bezugspunkt` — Bezugspunkt frei wählbar — klug = unbekannte Kräfte eliminieren ⇐ `moment-formel` (SG 2)
+  4. `m-kreuz` — 3D-Variante: $\vec M=\vec r\times\vec F$ ⇐ `moment-formel` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `moment-formel` · **0/5+** — Moment $M = F \cdot l_\perp$ — $l_\perp$ ist der SENKRECHTE Abstand vom Bezugspunkt zur Wirkungslinie
+  - 🔴 [1] _hoch_ · Konzepte: `drehsinn` · **0/5+** — Drehsinn-Konvention: gegen Uhrzeiger positiv (rechte Hand / Rechte-Hand-Regel in 3D)
+  - 🔴 [2] _hoch_ · Konzepte: `bezugspunkt` · **0/5+** — Bezugspunkt frei wählbar — klug wählen: Punkt mit vielen unbekannten Kräften eliminiert diese
+  - 🔴 [3] _mittel_ · Konzepte: `m-kreuz` · **0/5+** — Kreuzprodukt-Variante: $\vec M = \vec r \times \vec F$ in 3D oder bei schiefen Kräften
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `moment-formel` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `moment-formel` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `moment-formel` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `moment-formel` | 1 | 0 | 🔴 | Schräger Abstand statt senkrechter |
+|  5 | 0 | transfer           | number-input     | `moment-formel` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `drehsinn` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `drehsinn` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `drehsinn` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `drehsinn` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `drehsinn` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `bezugspunkt` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `bezugspunkt` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `bezugspunkt`, `moment-formel` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `bezugspunkt` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `bezugspunkt` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `m-kreuz` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `m-kreuz` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `m-kreuz` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `m-kreuz` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `m-kreuz` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-2-a`, `ex-mech-1-2-b`, `ex-mech-1-2-manual-1`, `ex-mech-1-2-manual-2`, `ex-mech-1-2-manual-3`, `ex-mech-1-2-manual-4`, `ex-mech-1-2-manual-5`, `ex-mech-1-2-manual-6` … (+2 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `mech-2-1` · Newtonsche Gesetze
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Dynamik
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — 2. Newton: $\sum \vec F = m \vec a$ (Grundgleichung der Dynamik)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — 1. Newton: ohne Kraft → gleichförmige Bewegung (Trägheitsprinzip)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — 3. Newton: actio = reactio, $\vec F_{AB} = -\vec F_{BA}$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Gewichtskraft: $F_G = m \cdot g$ mit $g \approx 9{,}81$ m/s²
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Masse (kg) ist Eigenschaft des Körpers, Gewichtskraft (N) Kraft im Schwerefeld
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/technische_mechanik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-1-1` → `kraft-vektor`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `newton-2` — 2. Newton: $\sum\vec F=m\vec a$ (SG 0)
+  2. `newton-1` — 1. Newton: Trägheitsprinzip (SG 1)
+  3. `newton-3` — 3. Newton: actio=reactio, $\vec F_{AB}=-\vec F_{BA}$ (SG 2)
+  4. `gewichtskraft` — $F_G=m\cdot g$ mit $g\approx 9{,}81$ m/s² ⇐ `newton-2` (SG 3)
+  5. `masse-vs-fg` — Masse (kg) vs. Gewichtskraft (N) ⇐ `gewichtskraft` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `newton-2` · **0/5+** — 2. Newton: $\sum \vec F = m \vec a$ (Grundgleichung der Dynamik)
+  - 🔴 [1] _hoch_ · Konzepte: `newton-1` · **0/5+** — 1. Newton: ohne Kraft → gleichförmige Bewegung (Trägheitsprinzip)
+  - 🔴 [2] _hoch_ · Konzepte: `newton-3` · **0/5+** — 3. Newton: actio = reactio, $\vec F_{AB} = -\vec F_{BA}$
+  - 🔴 [3] _hoch_ · Konzepte: `gewichtskraft` · **0/5+** — Gewichtskraft: $F_G = m \cdot g$ mit $g \approx 9{,}81$ m/s²
+  - 🔴 [4] _hoch_ · Konzepte: `masse-vs-fg` · **0/5+** — Masse (kg) ist Eigenschaft des Körpers, Gewichtskraft (N) Kraft im Schwerefeld
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `newton-2` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `newton-2` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `newton-2` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `newton-2` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `newton-2` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `newton-1` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `newton-1` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `newton-1` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `newton-1` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `newton-1` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `newton-3` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `newton-3` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `newton-3` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `newton-3` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `newton-3` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `gewichtskraft` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `gewichtskraft` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `gewichtskraft` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `gewichtskraft` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `gewichtskraft` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `masse-vs-fg` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `masse-vs-fg` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `masse-vs-fg` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `masse-vs-fg` | 1 | 0 | 🔴 | kg/N verwechselt |
+| 25 | 4 | transfer           | multiple-choice  | `masse-vs-fg` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-2-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-1-a`, `ex-mech-2-1-b`, `ex-mech-2-1-manual-1`, `ex-mech-2-1-manual-2`, `ex-mech-2-1-manual-3`, `ex-mech-2-1-manual-4`, `ex-mech-2-1-manual-5`, `ex-mech-2-1-manual-6` … (+2 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `mech-2-2` · Arbeit und Energie
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Dynamik
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, true-false, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Arbeit: $W = F \cdot s \cdot \cos\alpha$ (Skalarprodukt), Einheit Joule
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Senkrechte Kraft leistet keine Arbeit ($\cos 90° = 0$)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Kinetische Energie: $E_{\text{kin}} = \tfrac{1}{2} m v^2$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Potentielle Energie: $E_{\text{pot}} = m g h$ (nahe Erdoberfläche)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Federenergie: $E_{\text{Feder}} = \tfrac{1}{2} c x^2$
-  - 🔴 [5] (hoch) **0/5+** Aufgaben — Energieerhaltung: $E_{\text{kin}} + E_{\text{pot}} = $ const (konservatives System)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/technische_mechanik.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/technische_mechanik.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-2-1` → `gewichtskraft`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `arbeit` — Arbeit $W=F\cdot s\cdot\cos\alpha$ — Joule (SG 0)
+  2. `arbeit-90` — Senkrechte Kraft leistet keine Arbeit ($\cos 90°=0$) ⇐ `arbeit` (SG 1)
+  3. `e-kin` — Kinetische Energie $E_{\text{kin}}=\tfrac12 mv^2$ (SG 2)
+  4. `e-pot` — Potentielle Energie $E_{\text{pot}}=mgh$ (SG 3)
+  5. `e-feder` — Federenergie $E_{\text{Feder}}=\tfrac12 cx^2$ (SG 4)
+  6. `energie-erhalt` — Energieerhaltung $E_{\text{kin}}+E_{\text{pot}}=$const ⇐ `e-kin`, `e-pot` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `arbeit` · **0/5+** — Arbeit: $W = F \cdot s \cdot \cos\alpha$ (Skalarprodukt), Einheit Joule
+  - 🔴 [1] _hoch_ · Konzepte: `arbeit-90` · **0/5+** — Senkrechte Kraft leistet keine Arbeit ($\cos 90° = 0$)
+  - 🔴 [2] _hoch_ · Konzepte: `e-kin` · **0/5+** — Kinetische Energie: $E_{\text{kin}} = \tfrac{1}{2} m v^2$
+  - 🔴 [3] _hoch_ · Konzepte: `e-pot` · **0/5+** — Potentielle Energie: $E_{\text{pot}} = m g h$ (nahe Erdoberfläche)
+  - 🔴 [4] _hoch_ · Konzepte: `e-feder` · **0/5+** — Federenergie: $E_{\text{Feder}} = \tfrac{1}{2} c x^2$
+  - 🔴 [5] _hoch_ · Konzepte: `energie-erhalt` · **0/5+** — Energieerhaltung: $E_{\text{kin}} + E_{\text{pot}} = $ const (konservatives System)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `arbeit` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `arbeit` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `arbeit` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `arbeit` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `arbeit` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `arbeit-90` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `arbeit-90` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `arbeit-90` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `arbeit-90` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `arbeit-90` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `e-kin` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `e-kin` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `e-kin` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `e-kin` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `e-kin` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `e-pot` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `e-pot` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `e-pot` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `e-pot` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `e-pot` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `e-feder` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `e-feder` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `e-feder` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `e-feder` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `e-feder` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `energie-erhalt` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `energie-erhalt` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `energie-erhalt`, `e-kin`, `e-pot` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `energie-erhalt` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | number-input     | `energie-erhalt` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-2-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-2-2-a`, `ex-mech-2-2-b`, `ex-mech-2-2-manual-1`, `ex-mech-2-2-manual-2`, `ex-mech-2-2-manual-3`, `ex-mech-2-2-manual-4`, `ex-mech-2-2-manual-5`, `ex-mech-2-2-manual-6` … (+2 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `fest-1-1` · Normalspannung
 
@@ -9516,24 +9846,55 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `sin-wave-explorer`, `spring-mass-damper`, `complex-plane`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Periodendauer $T$ bei Integralen falsch gewählt. · Bei Rechtecksignalen die ungeraden $1/n$-Koeffizienten übersehen. · Laplace-Korrespondenzen auswendig, aber Verschiebungssatz ignoriert.
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 41 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 42 Lessons
 
 #### `mech-0-3` · Dimensionsanalyse — Einheitencheck
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Einheiten & Dimensionsanalyse (Einstieg)
-- **Aufgaben aktuell:** 24 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×7, true-false ×5, matching ×3, sorting ×4
-- **Typen einsetzen (Rotation):** matching, sorting, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - ✅ [0] (hoch) **5/5+** Aufgaben — Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen
-  - ✅ [1] (hoch) **5/5+** Aufgaben — Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut
-  - ✅ [2] (mittel) **5/5+** Aufgaben — Einheit Pascal: $1\,\text{Pa} = 1\,\text{N/m}^2 = 1\,\text{kg}/(\text{m}\cdot\text{s}^2)$
-  - ✅ [3] (hoch) **5/5+** Aufgaben — Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-0-1` → `si-basis-7`, `praefixe-1000`
+  - `mech-0-2` → `newton-zerlegung`, `dim-check`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `dim-konsistenz` — Links/rechts des $=$ müssen dieselben Einheiten stehen (SG 0)
+  2. `basis-aufbau` — Alle Einheiten aus 7 SI-Basisgrößen aufgebaut (SG 1)
+  3. `pa-zerlegung` — Pa $=$ N/m² $=$ kg/(m·s²) ⇐ `basis-aufbau` (SG 2)
+  4. `einheit-umform` — Vorab umrechnen: mm→m, MPa→Pa, kN→N — niemals gemischt rechnen (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `dim-konsistenz` · **5/5+** — Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen
+  - ✅ [1] _hoch_ · Konzepte: `basis-aufbau` · **5/5+** — Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut
+  - ✅ [2] _mittel_ · Konzepte: `pa-zerlegung` · **5/5+** — Einheit Pascal: $1\,\text{Pa} = 1\,\text{N/m}^2 = 1\,\text{kg}/(\text{m}\cdot\text{s}^2)$
+  - ✅ [3] _hoch_ · Konzepte: `einheit-umform` · **5/5+** — Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `dim-konsistenz` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `dim-konsistenz` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `dim-konsistenz` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `dim-konsistenz` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `dim-konsistenz` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `basis-aufbau` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `basis-aufbau` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `basis-aufbau` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `basis-aufbau` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `basis-aufbau` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `pa-zerlegung` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pa-zerlegung` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `pa-zerlegung` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `pa-zerlegung` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `pa-zerlegung` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `einheit-umform` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `einheit-umform` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `einheit-umform` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `einheit-umform` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `einheit-umform` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-0-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/technische_mechanik.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -9862,39 +10223,112 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-1-4` · Reibung
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Aufgaben aktuell:** 28 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×9, true-false ×6, matching ×3, sorting ×3
-- **Typen einsetzen (Rotation):** matching, sorting, true-false
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - ✅ [0] (hoch) **5/5+** Aufgaben — Coulombsches Reibgesetz: $F_R = \mu F_N$
-  - ✅ [1] (hoch) **5/5+** Aufgaben — Haftreibwert $\mu_0$ > Gleitreibwert $\mu$ (Losreißen braucht mehr Kraft)
-  - ✅ [2] (hoch) **5/5+** Aufgaben — Auf geneigter Ebene: $F_N = mg\cos\alpha$, $F_H = mg\sin\alpha$
-  - ✅ [3] (hoch) **5/5+** Aufgaben — Selbsthemmung: Körper gleitet nicht, solange $\tan\alpha \leq \mu_0$
-  - ✅ [4] (mittel) **5/5+** Aufgaben — Reibwinkel $\rho = \arctan\mu$: Neigung, bei der Körper gerade zu gleiten beginnt
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-1-1` → `kraft-vektor`, `gleichgew-2d`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `coulomb` — Coulombsches Reibgesetz $F_R=\mu F_N$ (SG 0)
+  2. `haft-gleit` — Haftreibwert $\mu_0>\mu$ Gleitreibwert ⇐ `coulomb` (SG 1)
+  3. `schiefe-zerleg-mech` — Schiefe Ebene $F_N=mg\cos\alpha$, $F_H=mg\sin\alpha$ (SG 2)
+  4. `selbsthemmung` — Selbsthemmung: kein Gleiten solange $\tan\alpha\le\mu_0$ ⇐ `haft-gleit`, `schiefe-zerleg-mech` (SG 3)
+  5. `reibwinkel` — Reibwinkel $\rho=\arctan\mu$ — Grenzneigung ⇐ `coulomb`, `selbsthemmung` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `coulomb` · **5/5+** — Coulombsches Reibgesetz: $F_R = \mu F_N$
+  - ✅ [1] _hoch_ · Konzepte: `haft-gleit` · **5/5+** — Haftreibwert $\mu_0$ > Gleitreibwert $\mu$ (Losreißen braucht mehr Kraft)
+  - ✅ [2] _hoch_ · Konzepte: `schiefe-zerleg-mech` · **5/5+** — Auf geneigter Ebene: $F_N = mg\cos\alpha$, $F_H = mg\sin\alpha$
+  - ✅ [3] _hoch_ · Konzepte: `selbsthemmung` · **5/5+** — Selbsthemmung: Körper gleitet nicht, solange $\tan\alpha \leq \mu_0$
+  - ✅ [4] _mittel_ · Konzepte: `reibwinkel` · **5/5+** — Reibwinkel $\rho = \arctan\mu$: Neigung, bei der Körper gerade zu gleiten beginnt
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `coulomb` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `coulomb` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `coulomb` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `coulomb` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `coulomb` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `haft-gleit` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `haft-gleit` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `haft-gleit` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `haft-gleit` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `haft-gleit` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `schiefe-zerleg-mech` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `schiefe-zerleg-mech` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `schiefe-zerleg-mech` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `schiefe-zerleg-mech` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `schiefe-zerleg-mech` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `selbsthemmung` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `selbsthemmung` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `selbsthemmung` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `selbsthemmung` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `selbsthemmung` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `reibwinkel` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `reibwinkel` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `reibwinkel` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `reibwinkel` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `reibwinkel` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/technische_mechanik.js`
 - **4-Block-Erklärung fehlt bei:** `ex-mech-1-4-goal-sg0-4`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `mech-2-5` · Dynamik starrer Körper
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Dynamik
-- **Aufgaben aktuell:** 28 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×13, true-false ×5, matching ×3, sorting ×2
-- **Typen einsetzen (Rotation):** sorting, matching, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - ✅ [0] (hoch) **5/5+** Aufgaben — Drallsatz: $M = J \cdot \alpha$ (Rotationsanalog zu $F = ma$)
-  - ✅ [1] (hoch) **5/5+** Aufgaben — Standardträgheitsmomente: Vollzylinder $\tfrac{1}{2}mR^2$, Stab $\tfrac{1}{12}mL^2$
-  - ✅ [2] (hoch) **5/5+** Aufgaben — Steinerscher Anteil: $J_A = J_S + m d^2$ (Parallelachsenverschiebung)
-  - ✅ [3] (hoch) **5/5+** Aufgaben — Rotationsenergie: $E_{\text{rot}} = \tfrac{1}{2} J \omega^2$
-  - ✅ [4] (hoch) **5/5+** Aufgaben — Drehimpuls: $L = J \omega$, Erhaltung bei $M_{\text{ext}} = 0$
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-2-1` → `newton-2`
+  - `mech-2-3` → `kreisbeweg`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `drallsatz` — Drallsatz $M=J\cdot\alpha$ (Rotationsanalog zu $F=ma$) (SG 0)
+  2. `std-j` — Standardträgheitsmomente: Vollzylinder $\tfrac12 mR^2$, Stab $\tfrac{1}{12}mL^2$ (SG 1)
+  3. `steiner-tm` — Steiner $J_A=J_S+md^2$ — Parallelachsenverschiebung ⇐ `std-j` (SG 2)
+  4. `e-rot` — Rotationsenergie $E_{\text{rot}}=\tfrac12 J\omega^2$ ⇐ `std-j` (SG 3)
+  5. `drehimpuls` — Drehimpuls $L=J\omega$ — Erhaltung bei $M_{\text{ext}}=0$ ⇐ `drallsatz` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `drallsatz` · **5/5+** — Drallsatz: $M = J \cdot \alpha$ (Rotationsanalog zu $F = ma$)
+  - ✅ [1] _hoch_ · Konzepte: `std-j` · **5/5+** — Standardträgheitsmomente: Vollzylinder $\tfrac{1}{2}mR^2$, Stab $\tfrac{1}{12}mL^2$
+  - ✅ [2] _hoch_ · Konzepte: `steiner-tm` · **5/5+** — Steinerscher Anteil: $J_A = J_S + m d^2$ (Parallelachsenverschiebung)
+  - ✅ [3] _hoch_ · Konzepte: `e-rot` · **5/5+** — Rotationsenergie: $E_{\text{rot}} = \tfrac{1}{2} J \omega^2$
+  - ✅ [4] _hoch_ · Konzepte: `drehimpuls` · **5/5+** — Drehimpuls: $L = J \omega$, Erhaltung bei $M_{\text{ext}} = 0$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `drallsatz` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `drallsatz` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `drallsatz` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `drallsatz` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `drallsatz` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `std-j` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `std-j` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `std-j` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `std-j` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `std-j` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `steiner-tm` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `steiner-tm` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `steiner-tm` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `steiner-tm` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `steiner-tm` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `e-rot` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `e-rot` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `e-rot` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `e-rot` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `e-rot` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `drehimpuls` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `drehimpuls` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `drehimpuls` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `drehimpuls` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `drehimpuls` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-2-5': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/technische_mechanik.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `fest-1-4` · Knicken
 
@@ -10611,20 +11045,55 @@ npm run build              # abschließender End-zu-End-Check
 #### `mech-1-5` · Schwerpunkt
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Aufgaben aktuell:** 39 · **mindestens:** 20 · **fehlen bis Minimum:** 0 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×7, number-input ×16, true-false ×7, matching ×5, sorting ×4
-- **Typen einsetzen (Rotation):** sorting, matching, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - ✅ [0] (hoch) **6/5+** Aufgaben — Diskrete Massen: $x_S = \sum m_i x_i / \sum m_i$
-  - ✅ [1] (hoch) **6/5+** Aufgaben — Zusammengesetzte Flächen: $x_S = \sum A_i x_{S,i} / \sum A_i$
-  - ✅ [2] (hoch) **6/5+** Aufgaben — Loch als negative Fläche subtrahieren
-  - ✅ [3] (mittel) **6/5+** Aufgaben — Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse
-  - ✅ [4] (mittel) **5/5+** Aufgaben — Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\pi)$
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `technische-mechanik`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Freikörperbild vollständig: alle äußeren Kräfte und Lagerreaktionen einzeichnen. · Drei Gleichgewichtsbedingungen in 2D: $\sum F_x=0$, $\sum F_y=0$, $\sum M=0$. · Newtonsche Axiome und $F=ma$ vektoriell anwenden. · …
-  - _Typische Fehler (gute Distraktoren):_ Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-  - _Klausur-Fokus:_ Auflagerreaktionen mit Streckenlast + Einzellast. · Schnittgrößenverlauf bei Balken. · Energieerhaltung bei schiefer Ebene / Pendel.
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `sp-diskret` — Diskrete Massen: $x_S=\sum m_i x_i/\sum m_i$ (SG 0)
+  2. `sp-flaechen` — Zusammengesetzte Flächen: $x_S=\sum A_i x_{S,i}/\sum A_i$ (SG 1)
+  3. `sp-loch` — Loch als negative Fläche subtrahieren ⇐ `sp-flaechen` (SG 2)
+  4. `sp-symmetrie` — Symmetrie: Schwerpunkt liegt auf Symmetrieachse (SG 3)
+  5. `sp-standard` — Standard: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\pi)$ (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `sp-diskret` · **6/5+** — Diskrete Massen: $x_S = \sum m_i x_i / \sum m_i$
+  - ✅ [1] _hoch_ · Konzepte: `sp-flaechen` · **6/5+** — Zusammengesetzte Flächen: $x_S = \sum A_i x_{S,i} / \sum A_i$
+  - ✅ [2] _hoch_ · Konzepte: `sp-loch` · **6/5+** — Loch als negative Fläche subtrahieren
+  - ✅ [3] _mittel_ · Konzepte: `sp-symmetrie` · **6/5+** — Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse
+  - ✅ [4] _mittel_ · Konzepte: `sp-standard` · **5/5+** — Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\pi)$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `sp-diskret` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `sp-diskret` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `sp-diskret` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `sp-diskret` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `sp-diskret` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `sp-flaechen` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `sp-flaechen` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `sp-flaechen` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `sp-flaechen` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `sp-flaechen` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `sp-loch` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `sp-loch` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `sp-loch` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `sp-loch` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `sp-loch` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `sp-symmetrie` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `sp-symmetrie` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `sp-symmetrie` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `sp-symmetrie` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `sp-symmetrie` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `sp-standard` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `sp-standard` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `sp-standard` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `sp-standard` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `sp-standard` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-5': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/technische_mechanik.js`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `trig-2-3` · Symmetrien und Periodizität
 
@@ -10873,6 +11342,61 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-2-2-manual-1`, `ex-dgl-2-2-manual-2`, `ex-dgl-2-2-manual-3`, `ex-dgl-2-2-manual-4`, `ex-dgl-2-2-manual-5`, `ex-dgl-2-2-manual-6`, `ex-dgl-2-2-manual-7`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `spring-mass-damper`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
+
+#### `mech-2-4` · Schwingungen
+
+- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Dynamik
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-2-1` → `newton-2`
+  - `mech-2-2` → `e-feder`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `eigen-omega` — Eigenkreisfrequenz $\omega_0=\sqrt{c/m}$, $T=2\pi/\omega_0$ (SG 0)
+  2. `harm-schw` — Harmonische Schwingung $x(t)=A\sin(\omega_0 t+\varphi)$ ⇐ `eigen-omega` (SG 1)
+  3. `resonanz-ung` — Resonanz: $\Omega=\omega_0$, Amplitude wächst (ungedämpft) ⇐ `eigen-omega` (SG 2)
+  4. `lehrsches-d` — Dämpfungsgrad (Lehrsches Maß) $D=d/(2\sqrt{cm})$ ⇐ `eigen-omega` (SG 3)
+  5. `mathe-pendel` — Mathematisches Pendel $\omega_0=\sqrt{g/l}$ ⇐ `eigen-omega` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `eigen-omega` · **6/5+** — Eigenkreisfrequenz: $\omega_0 = \sqrt{c/m}$, Periode $T = 2\pi/\omega_0$
+  - ✅ [1] _hoch_ · Konzepte: `harm-schw` · **6/5+** — Harmonische Schwingung: $x(t) = A \sin(\omega_0 t + \varphi)$
+  - ✅ [2] _hoch_ · Konzepte: `resonanz-ung` · **6/5+** — Resonanz bei $\Omega = \omega_0$ — Amplitude wächst unbegrenzt (ungedämpft)
+  - ✅ [3] _hoch_ · Konzepte: `lehrsches-d` · **6/5+** — Dämpfungsgrad (Lehrsches Maß) $D = d/(2\sqrt{cm})$
+  - ✅ [4] _mittel_ · Konzepte: `mathe-pendel` · **6/5+** — Mathematisches Pendel: $\omega_0 = \sqrt{g/l}$ (kleine Auslenkungen)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `eigen-omega` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `eigen-omega` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `eigen-omega` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `eigen-omega` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `eigen-omega` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `harm-schw` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `harm-schw` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `harm-schw` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `harm-schw` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `harm-schw` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `resonanz-ung` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `resonanz-ung` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `resonanz-ung` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `resonanz-ung` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `resonanz-ung` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `lehrsches-d` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `lehrsches-d` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `lehrsches-d` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `lehrsches-d` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `lehrsches-d` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `mathe-pendel` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `mathe-pendel` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `mathe-pendel` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `mathe-pendel` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `mathe-pendel` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-2-4': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/technische_mechanik.js`
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `alg-3-3` · Funktionsoperationen
 
