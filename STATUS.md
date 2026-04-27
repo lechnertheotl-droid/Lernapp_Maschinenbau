@@ -1870,26 +1870,58 @@ npm run build              # abschließender End-zu-End-Check
 #### `werk-pruefung-1` · Prüfung: Werkstoffwahl & Kennwerte
 
 - **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 8 · **mindestens:** 20 · **fehlen bis Minimum:** 12 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Zulässige Spannung: $\sigma_\text{zul} = R_m/S$ oder $R_e/S$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Typische S-Werte: statisch $S = 1{,}5$, schwingend $S = 2$–$3$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Kennwertwahl: zähe Stähle → $R_e$; spröde Werkstoffe → $R_m$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Einheit MPa = N/mm² = $10^6$ Pa
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Werkstoffgruppen: Stahl (hohe Festigkeit), Alu (leicht), Kunststoff (korrosionsfrei), Keramik (hart)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/werkstoffkunde.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 12 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/werkstoffkunde.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `werk-1-1` → `re-rm`, `sicherheit`
+  - `werk-1-2` → `metalle`, `keramik`, `kunststoffe`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `sigma-zul` — Zulässige Spannung $\sigma_{\text{zul}}=R_m/S$ oder $R_e/S$ (SG 0)
+  2. `typ-s-werte` — Typische $S$: statisch $1{,}5$, schwingend $2$–$3$ ⇐ `sigma-zul` (SG 1)
+  3. `kennwert-wahl` — Zähe Stähle → $R_e$; spröde Werkstoffe → $R_m$ ⇐ `sigma-zul` (SG 2)
+  4. `einheit-mpa` — MPa = N/mm² = $10^6$ Pa (SG 3)
+  5. `gruppen-wahl` — Werkstoffgruppen: Stahl/Alu/Kunststoff/Keramik nach Eigenschaftsprofil wählen (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `sigma-zul` · **0/5+** — Zulässige Spannung: $\sigma_\text{zul} = R_m/S$ oder $R_e/S$
+  - 🔴 [1] _hoch_ · Konzepte: `typ-s-werte` · **0/5+** — Typische S-Werte: statisch $S = 1{,}5$, schwingend $S = 2$–$3$
+  - 🔴 [2] _hoch_ · Konzepte: `kennwert-wahl` · **0/5+** — Kennwertwahl: zähe Stähle → $R_e$; spröde Werkstoffe → $R_m$
+  - 🔴 [3] _hoch_ · Konzepte: `einheit-mpa` · **0/5+** — Einheit MPa = N/mm² = $10^6$ Pa
+  - 🔴 [4] _mittel_ · Konzepte: `gruppen-wahl` · **0/5+** — Werkstoffgruppen: Stahl (hohe Festigkeit), Alu (leicht), Kunststoff (korrosionsfrei), Keramik (hart)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `sigma-zul` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `sigma-zul` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `sigma-zul` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `sigma-zul` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `sigma-zul` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `typ-s-werte` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `typ-s-werte` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `typ-s-werte` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `typ-s-werte` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `typ-s-werte` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `kennwert-wahl` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `kennwert-wahl` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `kennwert-wahl` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `kennwert-wahl` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `kennwert-wahl` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `einheit-mpa` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `einheit-mpa` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `einheit-mpa` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `einheit-mpa` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `einheit-mpa` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `gruppen-wahl` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `gruppen-wahl` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `gruppen-wahl` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `gruppen-wahl` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `gruppen-wahl` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-pruefung-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-pruefung-1-manual-1`, `ex-werk-pruefung-1-manual-2`, `ex-werk-pruefung-1-manual-3`, `ex-werk-pruefung-1-manual-4`, `ex-werk-pruefung-1-manual-5`, `ex-werk-pruefung-1-manual-6`, `ex-werk-pruefung-1-manual-7`, `ex-werk-pruefung-1-mastery`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
-  - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
-  - _Klausur-Fokus:_ Zugversuch vollständig interpretieren. · Zulässige Spannung mit Sicherheitszahl berechnen. · Prüfverfahren einem Anwendungsfall zuordnen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
 
 #### `komz-pruefung-1` · Prüfung: Anwendungen & Gesamtaufgaben
 
@@ -4099,97 +4131,214 @@ npm run build              # abschließender End-zu-End-Check
 #### `werk-1-1` · Spannungs-Dehnungs-Diagramm
 
 - **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Werkstoffkennwerte
-- **Aufgaben aktuell:** 8 · **mindestens:** 20 · **fehlen bis Minimum:** 12 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — $R_e$ = Streckgrenze (Ende elastisch); $R_m$ = Zugfestigkeit (Maximum); nicht verwechseln
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — $R_{p0,2}$ = 0,2-%-Dehngrenze bei Werkstoffen ohne ausgeprägte Streckgrenze (z. B. Aluminium)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — E-Modul = Steigung im linearen (Hookeschen) Bereich: $E = \sigma/\varepsilon$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Bruchdehnung $A$ in %: $(l_u - l_0)/l_0 \cdot 100$ — zäh vs. spröde
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Sicherheit $S = R_m/\sigma_\text{zul}$ bzw. $R_e/\sigma_\text{zul}$ — wo welcher Kennwert?
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/werkstoffkunde.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 12 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/werkstoffkunde.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `re-rm` — $R_e$ = Streckgrenze (Ende elastisch); $R_m$ = Zugfestigkeit (Maximum) (SG 0)
+  2. `rp02` — $R_{p0,2}$ = 0,2-%-Dehngrenze (Aluminium ohne ausgeprägte Streckgrenze) ⇐ `re-rm` (SG 1)
+  3. `e-modul` — E-Modul = Steigung im linearen Bereich: $E=\sigma/\varepsilon$ (SG 2)
+  4. `bruchdehnung` — Bruchdehnung $A=(l_u-l_0)/l_0\cdot 100\%$ — zäh vs. spröde (SG 3)
+  5. `sicherheit` — Sicherheit $S=R_m/\sigma_{\text{zul}}$ bzw. $R_e/\sigma_{\text{zul}}$ ⇐ `re-rm` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `re-rm` · **0/5+** — $R_e$ = Streckgrenze (Ende elastisch); $R_m$ = Zugfestigkeit (Maximum); nicht verwechseln
+  - 🔴 [1] _hoch_ · Konzepte: `rp02` · **0/5+** — $R_{p0,2}$ = 0,2-%-Dehngrenze bei Werkstoffen ohne ausgeprägte Streckgrenze (z. B. Aluminium)
+  - 🔴 [2] _hoch_ · Konzepte: `e-modul` · **0/5+** — E-Modul = Steigung im linearen (Hookeschen) Bereich: $E = \sigma/\varepsilon$
+  - 🔴 [3] _mittel_ · Konzepte: `bruchdehnung` · **0/5+** — Bruchdehnung $A$ in %: $(l_u - l_0)/l_0 \cdot 100$ — zäh vs. spröde
+  - 🔴 [4] _mittel_ · Konzepte: `sicherheit` · **0/5+** — Sicherheit $S = R_m/\sigma_\text{zul}$ bzw. $R_e/\sigma_\text{zul}$ — wo welcher Kennwert?
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `re-rm` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `re-rm` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `re-rm` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `re-rm` | 1 | 0 | 🔴 | $R_e$/$R_m$ verwechselt |
+|  5 | 0 | transfer           | matching         | `re-rm` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `rp02` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `rp02` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `rp02` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `rp02` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `rp02` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `e-modul` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `e-modul` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `e-modul` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `e-modul` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `e-modul` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `bruchdehnung` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `bruchdehnung` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `bruchdehnung` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `bruchdehnung` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `bruchdehnung` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `sicherheit` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `sicherheit` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `sicherheit` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `sicherheit` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `sicherheit` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-1-1-manual-1`, `ex-werk-1-1-manual-2`, `ex-werk-1-1-manual-3`, `ex-werk-1-1-manual-4`, `ex-werk-1-1-manual-5`, `ex-werk-1-1-manual-6`, `ex-werk-1-1-manual-7`, `ex-werk-1-1-mastery`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
-  - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
-  - _Klausur-Fokus:_ Zugversuch vollständig interpretieren. · Zulässige Spannung mit Sicherheitszahl berechnen. · Prüfverfahren einem Anwendungsfall zuordnen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
 
 #### `werk-1-2` · Werkstoffgruppen
 
 - **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Werkstoffkennwerte
-- **Aufgaben aktuell:** 8 · **mindestens:** 20 · **fehlen bis Minimum:** 12 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Metalle: zäh, gut umformbar, gut wärmeleitend — tragende Konstruktionen
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Keramik: hart, hitzebeständig, spröde — **nicht auf Zug** belasten
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Kunststoffe: leicht, korrosionsfest, niedriger E-Modul — Gehäuse, Gleitlager
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Verbunde (CFK, GFK): hohe spezifische Steifigkeit $E/\rho$ — Leichtbau
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Spezifische Steifigkeit $E/\rho$ als Leichtbau-Kennzahl (Titan, CFK, Alu > Stahl)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/werkstoffkunde.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 12 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/werkstoffkunde.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `werk-1-1` → `e-modul`, `re-rm`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `metalle` — Metalle: zäh, gut umformbar, gut wärmeleitend — tragend (SG 0)
+  2. `keramik` — Keramik: hart, hitzebeständig, spröde — nicht auf Zug (SG 1)
+  3. `kunststoffe` — Kunststoffe: leicht, korrosionsfest, niedriger E-Modul (SG 2)
+  4. `verbunde` — Verbunde (CFK, GFK): hohe spezifische Steifigkeit $E/\rho$ (SG 3)
+  5. `leichtbau` — Spezifische Steifigkeit $E/\rho$ als Leichtbau-Kennzahl (Titan, CFK, Alu > Stahl) (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `metalle` · **0/5+** — Metalle: zäh, gut umformbar, gut wärmeleitend — tragende Konstruktionen
+  - 🔴 [1] _hoch_ · Konzepte: `keramik` · **0/5+** — Keramik: hart, hitzebeständig, spröde — **nicht auf Zug** belasten
+  - 🔴 [2] _mittel_ · Konzepte: `kunststoffe` · **0/5+** — Kunststoffe: leicht, korrosionsfest, niedriger E-Modul — Gehäuse, Gleitlager
+  - 🔴 [3] _mittel_ · Konzepte: `verbunde` · **0/5+** — Verbunde (CFK, GFK): hohe spezifische Steifigkeit $E/\rho$ — Leichtbau
+  - 🔴 [4] _mittel_ · Konzepte: `leichtbau` · **0/5+** — Spezifische Steifigkeit $E/\rho$ als Leichtbau-Kennzahl (Titan, CFK, Alu > Stahl)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `metalle` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `metalle` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `metalle` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `metalle` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `metalle` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `keramik` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `keramik` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `keramik` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `keramik` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `keramik` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `kunststoffe` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `kunststoffe` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `kunststoffe` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `kunststoffe` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `kunststoffe` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `verbunde` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `verbunde` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `verbunde` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `verbunde` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `verbunde` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `leichtbau` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `leichtbau` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `leichtbau` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `leichtbau` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `leichtbau` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-1-2-manual-1`, `ex-werk-1-2-manual-2`, `ex-werk-1-2-manual-3`, `ex-werk-1-2-manual-4`, `ex-werk-1-2-manual-5`, `ex-werk-1-2-manual-6`, `ex-werk-1-2-manual-7`, `ex-werk-1-2-mastery`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
-  - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
-  - _Klausur-Fokus:_ Zugversuch vollständig interpretieren. · Zulässige Spannung mit Sicherheitszahl berechnen. · Prüfverfahren einem Anwendungsfall zuordnen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
 
 #### `werk-2-1` · Härteprüfung (HV, HB, HRC)
 
 - **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Prüfverfahren
-- **Aufgaben aktuell:** 8 · **mindestens:** 20 · **fehlen bis Minimum:** 12 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Vickers (HV): Diamantpyramide, universell für hart und dünn; Brinell (HB): Kugel, für weichere Werkstoffe
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Rockwell (HRC): direkt ablesbar am Messgerät — schnellste Prüfmethode in der Fertigung
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Faustformel Stahl: $R_m \approx 3{,}5 \cdot HV$ in MPa — Härte korreliert mit Zugfestigkeit
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Prüfkraft und Probendicke müssen zusammen passen, sonst verfälscht Untergrund das Ergebnis
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/werkstoffkunde.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 12 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/werkstoffkunde.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `werk-1-1` → `re-rm`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `vickers-brinell` — Vickers (HV) Diamantpyramide universell; Brinell (HB) Kugel für weichere (SG 0)
+  2. `rockwell` — Rockwell (HRC): direkt ablesbar, schnellste Methode in der Fertigung (SG 1)
+  3. `haerte-rm` — Faustformel Stahl: $R_m\approx 3{,}5\cdot HV$ in MPa ⇐ `vickers-brinell` (SG 2)
+  4. `pruefkraft` — Prüfkraft und Probendicke abstimmen — sonst Untergrund verfälscht (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `vickers-brinell` · **0/5+** — Vickers (HV): Diamantpyramide, universell für hart und dünn; Brinell (HB): Kugel, für weichere Werkstoffe
+  - 🔴 [1] _hoch_ · Konzepte: `rockwell` · **0/5+** — Rockwell (HRC): direkt ablesbar am Messgerät — schnellste Prüfmethode in der Fertigung
+  - 🔴 [2] _mittel_ · Konzepte: `haerte-rm` · **0/5+** — Faustformel Stahl: $R_m \approx 3{,}5 \cdot HV$ in MPa — Härte korreliert mit Zugfestigkeit
+  - 🔴 [3] _mittel_ · Konzepte: `pruefkraft` · **0/5+** — Prüfkraft und Probendicke müssen zusammen passen, sonst verfälscht Untergrund das Ergebnis
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `vickers-brinell` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `vickers-brinell` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `vickers-brinell` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `vickers-brinell` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `vickers-brinell` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `rockwell` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `rockwell` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `rockwell` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `rockwell` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `rockwell` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `haerte-rm` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `haerte-rm` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `haerte-rm` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `haerte-rm` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `haerte-rm` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `pruefkraft` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pruefkraft` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `pruefkraft` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `pruefkraft` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `pruefkraft` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-2-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-2-1-manual-1`, `ex-werk-2-1-manual-2`, `ex-werk-2-1-manual-3`, `ex-werk-2-1-manual-4`, `ex-werk-2-1-manual-5`, `ex-werk-2-1-manual-6`, `ex-werk-2-1-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
-  - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
-  - _Klausur-Fokus:_ Zugversuch vollständig interpretieren. · Zulässige Spannung mit Sicherheitszahl berechnen. · Prüfverfahren einem Anwendungsfall zuordnen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
 
 #### `werk-2-2` · Kerbschlagbiegeversuch
 
 - **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Prüfverfahren
-- **Aufgaben aktuell:** 8 · **mindestens:** 20 · **fehlen bis Minimum:** 12 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Charpy-Versuch: Pendel bricht gekerbte Probe, $KV = mg(h_0 - h_1)$ in Joule
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Hohe $KV$ → zäh, niedrige $KV$ → spröde
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Kritischer Grenzwert Stahlbau: $KV \geq 27$ J bei Einsatztemperatur
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Übergangstemperatur $T_\ddot{U}$: Abfall von $KV$ unterhalb → Sprödbruchgefahr bei Kälte
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Stahlbezeichnungen: J0 bei 0°C, J2 bei −20°C, K2 bei −40°C geprüft
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/werkstoffkunde.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 12 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/werkstoffkunde.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `werk-1-1` → `bruchdehnung`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `charpy` — Charpy-Versuch: $KV=mg(h_0-h_1)$ in J (SG 0)
+  2. `kv-zaeh-sproed` — Hohe $KV$ → zäh, niedrige $KV$ → spröde ⇐ `charpy` (SG 1)
+  3. `grenzwert-27` — Stahlbau: $KV\ge 27$ J bei Einsatztemperatur ⇐ `kv-zaeh-sproed` (SG 2)
+  4. `uebergangstemp` — Übergangstemperatur $T_\ddot U$: $KV$-Abfall → Sprödbruchgefahr bei Kälte ⇐ `kv-zaeh-sproed` (SG 3)
+  5. `stahl-j-bez` — Stahlbezeichnungen J0/J2/K2 = Prüftemperatur 0/−20/−40 °C ⇐ `grenzwert-27` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `charpy` · **0/5+** — Charpy-Versuch: Pendel bricht gekerbte Probe, $KV = mg(h_0 - h_1)$ in Joule
+  - 🔴 [1] _hoch_ · Konzepte: `kv-zaeh-sproed` · **0/5+** — Hohe $KV$ → zäh, niedrige $KV$ → spröde
+  - 🔴 [2] _hoch_ · Konzepte: `grenzwert-27` · **0/5+** — Kritischer Grenzwert Stahlbau: $KV \geq 27$ J bei Einsatztemperatur
+  - 🔴 [3] _hoch_ · Konzepte: `uebergangstemp` · **0/5+** — Übergangstemperatur $T_\ddot{U}$: Abfall von $KV$ unterhalb → Sprödbruchgefahr bei Kälte
+  - 🔴 [4] _mittel_ · Konzepte: `stahl-j-bez` · **0/5+** — Stahlbezeichnungen: J0 bei 0°C, J2 bei −20°C, K2 bei −40°C geprüft
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `charpy` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `charpy` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `charpy` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `charpy` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `charpy` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `kv-zaeh-sproed` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `kv-zaeh-sproed` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `kv-zaeh-sproed` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `kv-zaeh-sproed` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `kv-zaeh-sproed` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `grenzwert-27` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `grenzwert-27` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `grenzwert-27` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `grenzwert-27` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `grenzwert-27` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `uebergangstemp` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `uebergangstemp` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `uebergangstemp` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `uebergangstemp` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `uebergangstemp` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `stahl-j-bez` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `stahl-j-bez` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `stahl-j-bez` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `stahl-j-bez` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `stahl-j-bez` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-2-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-2-2-manual-1`, `ex-werk-2-2-manual-2`, `ex-werk-2-2-manual-3`, `ex-werk-2-2-manual-4`, `ex-werk-2-2-manual-5`, `ex-werk-2-2-manual-6`, `ex-werk-2-2-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
-  - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
-  - _Klausur-Fokus:_ Zugversuch vollständig interpretieren. · Zulässige Spannung mit Sicherheitszahl berechnen. · Prüfverfahren einem Anwendungsfall zuordnen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
 
 #### `komz-1-1` · Imaginäre Einheit & Gaußsche Zahlenebene
 
@@ -6043,27 +6192,64 @@ npm run build              # abschließender End-zu-End-Check
 #### `werk-2-3` · Fe-C-Diagramm & Wärmebehandlung
 
 - **Topic:** `werkstoffkunde` (Werkstoffkunde) · **Unit:** Prüfverfahren
-- **Aufgaben aktuell:** 10 · **mindestens:** 20 · **fehlen bis Minimum:** 10 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Ferrit (α, krz): weich/zäh; Austenit (γ, kfz): nur bei hoher T; Perlit (lamellar); Martensit (Nadeln, hart)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Eutektoider Punkt: $0{,}83\%$ C bei $723°$C — Austenit → Perlit
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Härtbarkeit: $0{,}3$–$0{,}8\%$ C nötig (zu wenig = kein Martensit, zu viel = spröde)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Wärmebehandlungen: Glühen (Gefüge-Gleichgewicht), Härten (abschrecken), Vergüten (Härten + Anlassen)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Vergüten: hohe Festigkeit + Zähigkeit durch angelassenen Martensit (z.B. 42CrMo4)
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Langsames Abkühlen → Diffusion → Perlit; Schnelles Abschrecken → diffusionslos → Martensit
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/werkstoffkunde.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 10 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/werkstoffkunde.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `werk-1-1` → `re-rm`, `sicherheit`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `fe-c-phasen` — Phasen: Ferrit (α, krz) weich/zäh; Austenit (γ, kfz); Perlit lamellar; Martensit hart (SG 0)
+  2. `eutektoid` — Eutektoider Punkt: $0{,}83\%$ C bei $723°$C — Austenit → Perlit ⇐ `fe-c-phasen` (SG 1)
+  3. `haertbarkeit` — Härtbarkeit: $0{,}3$–$0{,}8\%$ C nötig (zu wenig = kein Martensit) ⇐ `fe-c-phasen` (SG 2)
+  4. `waermebehandl` — Glühen, Härten (abschrecken), Vergüten (Härten + Anlassen) ⇐ `fe-c-phasen` (SG 3)
+  5. `verguten` — Vergüten: hohe Festigkeit + Zähigkeit (z.B. 42CrMo4) ⇐ `waermebehandl` (SG 4)
+  6. `abkuehlrate` — Langsam → Diffusion → Perlit; schnell → diffusionslos → Martensit ⇐ `fe-c-phasen` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `fe-c-phasen` · **0/5+** — Ferrit (α, krz): weich/zäh; Austenit (γ, kfz): nur bei hoher T; Perlit (lamellar); Martensit (Nadeln, hart)
+  - 🔴 [1] _hoch_ · Konzepte: `eutektoid` · **0/5+** — Eutektoider Punkt: $0{,}83\%$ C bei $723°$C — Austenit → Perlit
+  - 🔴 [2] _hoch_ · Konzepte: `haertbarkeit` · **0/5+** — Härtbarkeit: $0{,}3$–$0{,}8\%$ C nötig (zu wenig = kein Martensit, zu viel = spröde)
+  - 🔴 [3] _hoch_ · Konzepte: `waermebehandl` · **0/5+** — Wärmebehandlungen: Glühen (Gefüge-Gleichgewicht), Härten (abschrecken), Vergüten (Härten + Anlassen)
+  - 🔴 [4] _hoch_ · Konzepte: `verguten` · **0/5+** — Vergüten: hohe Festigkeit + Zähigkeit durch angelassenen Martensit (z.B. 42CrMo4)
+  - 🔴 [5] _mittel_ · Konzepte: `abkuehlrate` · **0/5+** — Langsames Abkühlen → Diffusion → Perlit; Schnelles Abschrecken → diffusionslos → Martensit
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `fe-c-phasen` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `fe-c-phasen` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `fe-c-phasen` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `fe-c-phasen` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `fe-c-phasen` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `eutektoid` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `eutektoid` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `eutektoid` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `eutektoid` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `eutektoid` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `haertbarkeit` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `haertbarkeit` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `haertbarkeit` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `haertbarkeit` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `haertbarkeit` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `waermebehandl` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `waermebehandl` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `waermebehandl` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `waermebehandl` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `waermebehandl` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `verguten` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `verguten` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `verguten` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `verguten` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `verguten` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `abkuehlrate` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `abkuehlrate` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `abkuehlrate` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `abkuehlrate` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | multiple-choice  | `abkuehlrate` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/werkstoffkunde.js` unter `'werk-2-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/werkstoffkunde.js`
 - **4-Block-Erklärung fehlt bei:** `ex-werk-2-3-manual-1`, `ex-werk-2-3-manual-2`, `ex-werk-2-3-manual-3`, `ex-werk-2-3-manual-4`, `ex-werk-2-3-manual-5`, `ex-werk-2-3-manual-6`, `ex-werk-2-3-manual-7`
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `stress-strain`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `werkstoffkunde`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Spannungs-Dehnungs-Diagramm ablesen: $R_e$, $R_m$, $A$, E-Modul aus Steigung. · Einheiten $\text{MPa}=\text{N/mm}^2$ und Umrechnung zu $\text{N/m}^2$. · Sicherheitszahl $S$ und zulässige Spannung $\sigma_{\text{zul}}=R_e/S$. · …
-  - _Typische Fehler (gute Distraktoren):_ Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
-  - _Klausur-Fokus:_ Zugversuch vollständig interpretieren. · Zulässige Spannung mit Sicherheitszahl berechnen. · Prüfverfahren einem Anwendungsfall zuordnen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Streckgrenze $R_e$ mit Zugfestigkeit $R_m$ verwechselt. · Bei Rockwell-HRC vergessen, dass die Skala aus einer Eindringtiefe abgeleitet ist. · $\text{N/mm}^2$ vs. $\text{MPa}$ als unterschiedlich angenommen.
 
 #### `py-1-1` · Variablen & Datentypen
 
