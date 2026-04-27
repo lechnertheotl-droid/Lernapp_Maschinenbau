@@ -1894,150 +1894,368 @@ npm run build              # abschließender End-zu-End-Check
 #### `komz-pruefung-1` · Prüfung: Anwendungen & Gesamtaufgaben
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×3, true-false ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, true-false, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Formwahl: $+/-$ → kartesisch, $\cdot/\div$ und Potenzen/Wurzeln → polar/exponential
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Impedanz ET: $Z_R = R$, $Z_L = i\omega L$, $Z_C = 1/(i\omega C)$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Komplexer Zeiger für Schwingung $x(t) = \text{Re}(A e^{i\omega t})$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Quadratische Gleichung in $\mathbb{C}$: Diskriminante $<0$ liefert komplexes konj. Paar
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — $z \cdot \bar z = |z|^2$ (Betrag-Quadrat aus Multiplikation mit Konjugiertem)
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Argumente beim Dividieren: $\arg(z_1/z_2) = \arg(z_1) - \arg(z_2)$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/komplexe_zahlen.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `komz-1-2` → `mult-c`, `div-c`, `z-zbar`
+  - `komz-2-1` → `betrag-c`, `argument`, `polarform`
+  - `komz-2-2` → `euler-formel`, `mult-polar`, `div-polar`
+  - `komz-3-2` → `wurzel-formel`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `formwahl` — Formwahl: $+/-$ → kartesisch, $\cdot/\div$/Pot/Wurzel → polar/exp. (SG 0)
+  2. `impedanz-et` — Impedanz ET: $Z_R=R$, $Z_L=i\omega L$, $Z_C=1/(i\omega C)$ (SG 1)
+  3. `zeiger` — Komplexer Zeiger: $x(t)=\operatorname{Re}(A e^{i\omega t})$ (SG 2)
+  4. `quadr-c` — Quadratische Gleichung in $\mathbb C$: Diskriminante $<0$ → konjugiertes Paar (SG 3)
+  5. `z-zbar-anwend` — $z\cdot\bar z=|z|^2$ — Anwendung in Beweisen (SG 4)
+  6. `arg-div` — $\arg(z_1/z_2)=\arg z_1-\arg z_2$ (mod $2\pi$) (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `formwahl` · **0/5+** — Formwahl: $+/-$ → kartesisch, $\cdot/\div$ und Potenzen/Wurzeln → polar/exponential
+  - 🔴 [1] _hoch_ · Konzepte: `impedanz-et` · **0/5+** — Impedanz ET: $Z_R = R$, $Z_L = i\omega L$, $Z_C = 1/(i\omega C)$
+  - 🔴 [2] _hoch_ · Konzepte: `zeiger` · **0/5+** — Komplexer Zeiger für Schwingung $x(t) = \text{Re}(A e^{i\omega t})$
+  - 🔴 [3] _hoch_ · Konzepte: `quadr-c` · **0/5+** — Quadratische Gleichung in $\mathbb{C}$: Diskriminante $<0$ liefert komplexes konj. Paar
+  - 🔴 [4] _hoch_ · Konzepte: `z-zbar-anwend` · **0/5+** — $z \cdot \bar z = |z|^2$ (Betrag-Quadrat aus Multiplikation mit Konjugiertem)
+  - 🔴 [5] _mittel_ · Konzepte: `arg-div` · **0/5+** — Argumente beim Dividieren: $\arg(z_1/z_2) = \arg(z_1) - \arg(z_2)$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `formwahl` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `formwahl` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `formwahl` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `formwahl` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `formwahl` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `impedanz-et` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `impedanz-et` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `impedanz-et` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `impedanz-et` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `impedanz-et` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 11 | 2 | recognize          | true-false       | `zeiger` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `zeiger` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `zeiger` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `zeiger` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `zeiger` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `quadr-c` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `quadr-c` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `quadr-c` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `quadr-c` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `quadr-c` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 21 | 4 | recognize          | true-false       | `z-zbar-anwend` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `z-zbar-anwend` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `z-zbar-anwend` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `z-zbar-anwend` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `z-zbar-anwend` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `arg-div` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `arg-div` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `arg-div` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `arg-div` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | multiple-choice  | `arg-div` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/komplexe_zahlen.js` unter `'komz-pruefung-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-pruefung-1-1`, `ex-komz-pruefung-1-2`, `ex-komz-pruefung-1-3`, `ex-komz-pruefung-1-4`, `ex-komz-pruefung-1-5`, `ex-komz-pruefung-1-6`, `ex-komz-pruefung-1-7`, `ex-komz-pruefung-1-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
-  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
-  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
 
 #### `komz-pruefung-2` · Prüfung: Polarform & Multiplikation
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Kartesisch → Polar: $r = \sqrt{a^2+b^2}$, $\varphi = \text{atan2}(b,a) \in (-\pi, \pi]$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Multiplikation: Beträge mal, Argumente plus (mod $2\pi$)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Division: Beträge durch, Argumente minus
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Quadrantenmerker: $-i$ hat $\varphi = -\pi/2$, $-1$ hat $\varphi = \pi$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Argument-Hauptwert wählen (sonst Punkte-Abzug bei nicht-eindeutiger Antwort)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/komplexe_zahlen.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `komz-2-1` → `betrag-c`, `argument`, `polarform`, `arg-haupt`
+  - `komz-2-2` → `mult-polar`, `div-polar`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `kart-zu-polar` — Kartesisch → Polar: $r=\sqrt{a^2+b^2}$, $\varphi=\text{atan2}(b,a)\in(-\pi,\pi]$ (SG 0)
+  2. `mult-polar-pr` — Mult.: Beträge mal, Argumente plus (mod $2\pi$) (SG 1)
+  3. `div-polar-pr` — Div.: Beträge durch, Argumente minus (SG 2)
+  4. `quadr-merker` — Quadrantenmerker: $-i\to\varphi=-\pi/2$, $-1\to\varphi=\pi$ (SG 3)
+  5. `arg-haupt-wahl` — Hauptwert wählen — sonst Punkte-Abzug (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `kart-zu-polar` · **0/5+** — Kartesisch → Polar: $r = \sqrt{a^2+b^2}$, $\varphi = \text{atan2}(b,a) \in (-\pi, \pi]$
+  - 🔴 [1] _hoch_ · Konzepte: `mult-polar-pr` · **0/5+** — Multiplikation: Beträge mal, Argumente plus (mod $2\pi$)
+  - 🔴 [2] _hoch_ · Konzepte: `div-polar-pr` · **0/5+** — Division: Beträge durch, Argumente minus
+  - 🔴 [3] _hoch_ · Konzepte: `quadr-merker` · **0/5+** — Quadrantenmerker: $-i$ hat $\varphi = -\pi/2$, $-1$ hat $\varphi = \pi$
+  - 🔴 [4] _mittel_ · Konzepte: `arg-haupt-wahl` · **0/5+** — Argument-Hauptwert wählen (sonst Punkte-Abzug bei nicht-eindeutiger Antwort)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kart-zu-polar` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kart-zu-polar` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `kart-zu-polar` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `kart-zu-polar` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `kart-zu-polar` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `mult-polar-pr` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `mult-polar-pr` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `mult-polar-pr` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `mult-polar-pr` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `mult-polar-pr` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `div-polar-pr` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `div-polar-pr` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `div-polar-pr` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `div-polar-pr` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `div-polar-pr` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `quadr-merker` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `quadr-merker` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `quadr-merker` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `quadr-merker` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `quadr-merker` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `arg-haupt-wahl` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `arg-haupt-wahl` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `arg-haupt-wahl` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `arg-haupt-wahl` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `arg-haupt-wahl` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/komplexe_zahlen.js` unter `'komz-pruefung-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-pruefung-2-1`, `ex-komz-pruefung-2-2`, `ex-komz-pruefung-2-3`, `ex-komz-pruefung-2-4`, `ex-komz-pruefung-2-5`, `ex-komz-pruefung-2-6`, `ex-komz-pruefung-2-7`, `ex-komz-pruefung-2-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
-  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
-  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
 
 #### `komz-pruefung-3` · Prüfung: Wurzeln & Gleichungen
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×3, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, multiple-choice, number-input
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Gleichung $z^n = w$: **alle $n$** Wurzeln angeben (Fundamentalsatz)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Wurzelformel in Polarform $w = r e^{i\varphi}$: $z_k = r^{1/n} e^{i(\varphi + 2\pi k)/n}$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Impedanz-Gesamt bei Reihe: $Z = R + i\omega L - i/(\omega C)$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Scheinwiderstand $|Z| = \sqrt{R^2 + X^2}$ mit Reaktanz $X = \omega L - 1/(\omega C)$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Resonanz: $\omega_0 = 1/\sqrt{LC}$ (Imaginärteil der Impedanz = 0)
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Phasenwinkel $\arg(Z) = \arctan(X/R)$: Spannungs- vs. Stromphasenlage
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/komplexe_zahlen.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `komz-2-1` → `polarform`, `argument`, `betrag-c`
+  - `komz-3-2` → `wurzel-formel`, `wurzel-anzahl`
+  - `komz-pruefung-1` → `impedanz-et`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `gl-zn-w` — Gleichung $z^n=w$: alle $n$ Wurzeln angeben (SG 0)
+  2. `wurzel-polar` — Wurzelformel in Polarform $w=r e^{i\varphi}$: $z_k=r^{1/n}e^{i(\varphi+2\pi k)/n}$ ⇐ `gl-zn-w` (SG 1)
+  3. `imp-reihe` — Impedanz Reihe: $Z=R+i\omega L-i/(\omega C)$ (SG 2)
+  4. `scheinwid` — Scheinwiderstand $|Z|=\sqrt{R^2+X^2}$ mit $X=\omega L-1/(\omega C)$ ⇐ `imp-reihe` (SG 3)
+  5. `resonanz` — Resonanz: $\omega_0=1/\sqrt{LC}$ ($\operatorname{Im} Z=0$) ⇐ `imp-reihe` (SG 4)
+  6. `phasenwinkel` — Phase $\arg Z=\arctan(X/R)$ ⇐ `imp-reihe` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `gl-zn-w` · **0/5+** — Gleichung $z^n = w$: **alle $n$** Wurzeln angeben (Fundamentalsatz)
+  - 🔴 [1] _hoch_ · Konzepte: `wurzel-polar` · **0/5+** — Wurzelformel in Polarform $w = r e^{i\varphi}$: $z_k = r^{1/n} e^{i(\varphi + 2\pi k)/n}$
+  - 🔴 [2] _hoch_ · Konzepte: `imp-reihe` · **0/5+** — Impedanz-Gesamt bei Reihe: $Z = R + i\omega L - i/(\omega C)$
+  - 🔴 [3] _hoch_ · Konzepte: `scheinwid` · **0/5+** — Scheinwiderstand $|Z| = \sqrt{R^2 + X^2}$ mit Reaktanz $X = \omega L - 1/(\omega C)$
+  - 🔴 [4] _hoch_ · Konzepte: `resonanz` · **0/5+** — Resonanz: $\omega_0 = 1/\sqrt{LC}$ (Imaginärteil der Impedanz = 0)
+  - 🔴 [5] _mittel_ · Konzepte: `phasenwinkel` · **0/5+** — Phasenwinkel $\arg(Z) = \arctan(X/R)$: Spannungs- vs. Stromphasenlage
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `gl-zn-w` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `gl-zn-w` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `gl-zn-w` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `gl-zn-w` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `gl-zn-w` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `wurzel-polar` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `wurzel-polar` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `wurzel-polar` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `wurzel-polar` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `wurzel-polar` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 11 | 2 | recognize          | true-false       | `imp-reihe` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `imp-reihe` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `imp-reihe` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `imp-reihe` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `imp-reihe` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `scheinwid` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `scheinwid` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `scheinwid` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `scheinwid` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `scheinwid` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `resonanz` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `resonanz` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `resonanz` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `resonanz` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `resonanz` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `phasenwinkel` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `phasenwinkel` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `phasenwinkel` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `phasenwinkel` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | multiple-choice  | `phasenwinkel` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/komplexe_zahlen.js` unter `'komz-pruefung-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-pruefung-3-1`, `ex-komz-pruefung-3-2`, `ex-komz-pruefung-3-3`, `ex-komz-pruefung-3-4`, `ex-komz-pruefung-3-5`, `ex-komz-pruefung-3-6`, `ex-komz-pruefung-3-7`, `ex-komz-pruefung-3-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
-  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
-  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
 
 #### `rf-pruefung-1` · Prüfung: Taylor, Konvergenz, Restglied
 
 - **Topic:** `reihen-folgen` (Reihen & Folgen) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×3, number-input ×2, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** matching, sorting, number-input, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Taylor: $f(x) = \sum f^{(n)}(x_0)(x-x_0)^n/n!$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Standardreihen: $e^x, \sin x, \cos x, \ln(1+x), 1/(1-x)$ auswendig
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Geometrische Reihe: $\sum q^n = 1/(1-q)$ für $|q| < 1$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Restglied Lagrange: $R_n = f^{(n+1)}(\xi)(x-x_0)^{n+1}/(n+1)!$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Konvergenzradius $R$: via Quotienten- oder Wurzelkriterium bestimmen
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Anwendung: Approximation, Grenzwerte mit Taylor (Alternative zu L'Hôpital)
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/reihen_folgen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/reihen_folgen.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `rf-1-2` → `taylor-formel-rf`, `maclaurin-std`, `lagrange-rest`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `taylor-pr` — Taylor: $f(x)=\sum f^{(n)}(x_0)(x-x_0)^n/n!$ (SG 0)
+  2. `standard-reihen` — Standardreihen: $e^x,\sin x,\cos x,\ln(1+x),1/(1-x)$ (SG 1)
+  3. `geom-reihe` — Geometrische Reihe: $\sum q^n=1/(1-q)$ für $|q|<1$ (SG 2)
+  4. `rest-pr` — Restglied Lagrange (Klausurformel) ⇐ `taylor-pr` (SG 3)
+  5. `konv-radius-pr` — Konvergenzradius via Quotienten- oder Wurzelkriterium (SG 4)
+  6. `taylor-anwend` — Anwendung: Approximation, Grenzwerte mit Taylor (Alternative zu L'Hôpital) ⇐ `taylor-pr` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `taylor-pr` · **0/5+** — Taylor: $f(x) = \sum f^{(n)}(x_0)(x-x_0)^n/n!$
+  - 🔴 [1] _hoch_ · Konzepte: `standard-reihen` · **0/5+** — Standardreihen: $e^x, \sin x, \cos x, \ln(1+x), 1/(1-x)$ auswendig
+  - 🔴 [2] _hoch_ · Konzepte: `geom-reihe` · **0/5+** — Geometrische Reihe: $\sum q^n = 1/(1-q)$ für $|q| < 1$
+  - 🔴 [3] _hoch_ · Konzepte: `rest-pr` · **0/5+** — Restglied Lagrange: $R_n = f^{(n+1)}(\xi)(x-x_0)^{n+1}/(n+1)!$
+  - 🔴 [4] _hoch_ · Konzepte: `konv-radius-pr` · **0/5+** — Konvergenzradius $R$: via Quotienten- oder Wurzelkriterium bestimmen
+  - 🔴 [5] _mittel_ · Konzepte: `taylor-anwend` · **0/5+** — Anwendung: Approximation, Grenzwerte mit Taylor (Alternative zu L'Hôpital)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `taylor-pr` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `taylor-pr` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `taylor-pr` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `taylor-pr` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `taylor-pr` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `standard-reihen` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `standard-reihen` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `standard-reihen` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `standard-reihen` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `standard-reihen` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `geom-reihe` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `geom-reihe` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `geom-reihe` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `geom-reihe` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `geom-reihe` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `rest-pr` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `rest-pr` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `rest-pr` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `rest-pr` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `rest-pr` | 1 | 0 | 🔴 | [PRÜFUNG] |
+| 21 | 4 | recognize          | true-false       | `konv-radius-pr` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `konv-radius-pr` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `konv-radius-pr` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `konv-radius-pr` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `konv-radius-pr` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `taylor-anwend` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `taylor-anwend` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `taylor-anwend`, `taylor-pr` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `taylor-anwend` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | number-input     | `taylor-anwend` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/reihen_folgen.js` unter `'rf-pruefung-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-pruefung-1-1`, `ex-rf-pruefung-1-2`, `ex-rf-pruefung-1-3`, `ex-rf-pruefung-1-4`, `ex-rf-pruefung-1-5`, `ex-rf-pruefung-1-6`, `ex-rf-pruefung-1-7`, `ex-rf-pruefung-1-8` … (+1 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `taylor-approx`, `function-graph` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `reihen-folgen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Geometrische Reihe: $\sum q^n=1/(1-q)$ für $|q|<1$. · Harmonische Reihe divergiert, p-Reihen konvergieren für $p>1$. · Quotientenkriterium $\lim|a_{n+1}/a_n|<1 \Rightarrow$ Konvergenz. · …
-  - _Typische Fehler (gute Distraktoren):_ Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
-  - _Klausur-Fokus:_ Konvergenz einer Reihe per Quotientenkriterium. · Taylor-Polynom 3. Grades an gegebener Stelle.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `taylor-approx`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
 
 #### `rf-pruefung-2` · Prüfung: Konvergenzkriterien & Potenzreihen
 
 - **Topic:** `reihen-folgen` (Reihen & Folgen) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Quotientenkriterium: $L = \lim |a_{n+1}/a_n|$ — $L < 1$ konv., $L > 1$ div., $L = 1$ unentsch.
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Wurzelkriterium: $L = \lim \sqrt[n]{|a_n|}$ — gleiche Regel
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Majorantenkriterium: $|a_n| \leq b_n$, $\sum b_n$ konv. → $\sum a_n$ abs. konv.
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Konvergenzradius: $R = 1/\limsup \sqrt[n]{|a_n|}$ (Cauchy-Hadamard)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Leibniz-Kriterium für alternierende Reihe: $a_n \searrow 0 \Rightarrow$ konv.
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Absolut vs. bedingt konvergent: $\sum |a_n|$ konv. (absolut) stärker als $\sum a_n$ konv.
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/reihen_folgen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/reihen_folgen.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `rf-1-1` → `folge-grenzwert`
+  - `rf-pruefung-1` → `standard-reihen`, `konv-radius-pr`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `quotientenkrit` — Quotientenkriterium $L=\lim|a_{n+1}/a_n|$ — $L<1$ konv., $L>1$ div., $L=1$ unentschieden (SG 0)
+  2. `wurzelkrit` — Wurzelkriterium $L=\lim\sqrt[n]{|a_n|}$ (SG 1)
+  3. `majorante-rf` — Majorantenkriterium: $|a_n|\le b_n$, $\sum b_n$ konv. → $\sum a_n$ abs. konv. (SG 2)
+  4. `cauchy-hadamard` — Konvergenzradius $R=1/\limsup\sqrt[n]{|a_n|}$ ⇐ `wurzelkrit` (SG 3)
+  5. `leibniz-krit` — Leibniz: alternierend mit $a_n\searrow 0\Rightarrow$ konv. (SG 4)
+  6. `absolut-bedingt` — Absolut konv. ($\sum|a_n|$) stärker als bedingt konv. ($\sum a_n$) (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `quotientenkrit` · **0/5+** — Quotientenkriterium: $L = \lim |a_{n+1}/a_n|$ — $L < 1$ konv., $L > 1$ div., $L = 1$ unentsch.
+  - 🔴 [1] _hoch_ · Konzepte: `wurzelkrit` · **0/5+** — Wurzelkriterium: $L = \lim \sqrt[n]{|a_n|}$ — gleiche Regel
+  - 🔴 [2] _hoch_ · Konzepte: `majorante-rf` · **0/5+** — Majorantenkriterium: $|a_n| \leq b_n$, $\sum b_n$ konv. → $\sum a_n$ abs. konv.
+  - 🔴 [3] _hoch_ · Konzepte: `cauchy-hadamard` · **0/5+** — Konvergenzradius: $R = 1/\limsup \sqrt[n]{|a_n|}$ (Cauchy-Hadamard)
+  - 🔴 [4] _hoch_ · Konzepte: `leibniz-krit` · **0/5+** — Leibniz-Kriterium für alternierende Reihe: $a_n \searrow 0 \Rightarrow$ konv.
+  - 🔴 [5] _mittel_ · Konzepte: `absolut-bedingt` · **0/5+** — Absolut vs. bedingt konvergent: $\sum |a_n|$ konv. (absolut) stärker als $\sum a_n$ konv.
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `quotientenkrit` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `quotientenkrit` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `quotientenkrit` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `quotientenkrit` | 1 | 0 | 🔴 | $L=1$ als konvergent interpretiert |
+|  5 | 0 | transfer           | number-input     | `quotientenkrit` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `wurzelkrit` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `wurzelkrit` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `wurzelkrit` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `wurzelkrit` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `wurzelkrit` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `majorante-rf` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `majorante-rf` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `majorante-rf` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `majorante-rf` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `majorante-rf` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `cauchy-hadamard` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `cauchy-hadamard` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `cauchy-hadamard` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `cauchy-hadamard` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `cauchy-hadamard` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `leibniz-krit` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `leibniz-krit` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `leibniz-krit` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `leibniz-krit` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `leibniz-krit` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `absolut-bedingt` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `absolut-bedingt` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `absolut-bedingt` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `absolut-bedingt` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | matching         | `absolut-bedingt`, `leibniz-krit` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/reihen_folgen.js` unter `'rf-pruefung-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-pruefung-2-1`, `ex-rf-pruefung-2-2`, `ex-rf-pruefung-2-3`, `ex-rf-pruefung-2-4`, `ex-rf-pruefung-2-5`, `ex-rf-pruefung-2-6`, `ex-rf-pruefung-2-7`, `ex-rf-pruefung-2-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `taylor-approx`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `reihen-folgen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Geometrische Reihe: $\sum q^n=1/(1-q)$ für $|q|<1$. · Harmonische Reihe divergiert, p-Reihen konvergieren für $p>1$. · Quotientenkriterium $\lim|a_{n+1}/a_n|<1 \Rightarrow$ Konvergenz. · …
-  - _Typische Fehler (gute Distraktoren):_ Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
-  - _Klausur-Fokus:_ Konvergenz einer Reihe per Quotientenkriterium. · Taylor-Polynom 3. Grades an gegebener Stelle.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `taylor-approx`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
 
 #### `rf-pruefung-3` · Prüfung: Taylor-Restglied & Näherungen
 
 - **Topic:** `reihen-folgen` (Reihen & Folgen) · **Unit:** Prüfung · **[PRÜFUNG]**
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Lagrange-Restglied: $|R_n(x)| \leq M \cdot |x-x_0|^{n+1}/(n+1)!$ mit $M = \max |f^{(n+1)}|$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Taylor-Fehler sinkt mit $1/(n+1)!$ — exponentiell bessere Näherung
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Linearisierung (n=1): $f(x) \approx f(x_0) + f'(x_0)(x-x_0)$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Fehlerschätzung Sinus/Cosinus: nächster Term liefert obere Schranke
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Taylor-Polynom-Grad via geforderter Genauigkeit $|R_n| < \epsilon$ bestimmen
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/reihen_folgen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/reihen_folgen.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `rf-1-2` → `taylor-formel-rf`, `lagrange-rest`, `maclaurin-std`
+  - `rf-pruefung-1` → `taylor-pr`, `standard-reihen`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `lagrange-bound` — Lagrange-Schranke: $|R_n(x)|\le M\cdot|x-x_0|^{n+1}/(n+1)!$ mit $M=\max|f^{(n+1)}|$ (SG 0)
+  2. `fehler-fakult` — Taylor-Fehler sinkt mit $1/(n+1)!$ — exponentielle Verbesserung ⇐ `lagrange-bound` (SG 1)
+  3. `linearisierung` — Linearisierung ($n=1$): $f(x)\approx f(x_0)+f'(x_0)(x-x_0)$ (SG 2)
+  4. `fehler-trig` — Sin/Cos-Fehlerschätzung: nächster Term liefert obere Schranke ⇐ `lagrange-bound` (SG 3)
+  5. `grad-genauigkeit` — Polynom-Grad via geforderter Genauigkeit $|R_n|<\varepsilon$ ⇐ `lagrange-bound` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `lagrange-bound` · **0/5+** — Lagrange-Restglied: $|R_n(x)| \leq M \cdot |x-x_0|^{n+1}/(n+1)!$ mit $M = \max |f^{(n+1)}|$
+  - 🔴 [1] _hoch_ · Konzepte: `fehler-fakult` · **0/5+** — Taylor-Fehler sinkt mit $1/(n+1)!$ — exponentiell bessere Näherung
+  - 🔴 [2] _hoch_ · Konzepte: `linearisierung` · **0/5+** — Linearisierung (n=1): $f(x) \approx f(x_0) + f'(x_0)(x-x_0)$
+  - 🔴 [3] _hoch_ · Konzepte: `fehler-trig` · **0/5+** — Fehlerschätzung Sinus/Cosinus: nächster Term liefert obere Schranke
+  - 🔴 [4] _mittel_ · Konzepte: `grad-genauigkeit` · **0/5+** — Taylor-Polynom-Grad via geforderter Genauigkeit $|R_n| < \epsilon$ bestimmen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `lagrange-bound` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `lagrange-bound` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `lagrange-bound` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `lagrange-bound` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `lagrange-bound` | 1 | 0 | 🔴 | [PRÜFUNG] |
+|  6 | 1 | recognize          | true-false       | `fehler-fakult` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `fehler-fakult` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `fehler-fakult` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `fehler-fakult` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `fehler-fakult` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `linearisierung` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `linearisierung` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `linearisierung` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `linearisierung` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `linearisierung` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `fehler-trig` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `fehler-trig` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `fehler-trig` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `fehler-trig` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `fehler-trig` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `grad-genauigkeit` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `grad-genauigkeit` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `grad-genauigkeit` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `grad-genauigkeit` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `grad-genauigkeit` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/reihen_folgen.js` unter `'rf-pruefung-3': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-pruefung-3-1`, `ex-rf-pruefung-3-2`, `ex-rf-pruefung-3-3`, `ex-rf-pruefung-3-4`, `ex-rf-pruefung-3-5`, `ex-rf-pruefung-3-6`, `ex-rf-pruefung-3-7`, `ex-rf-pruefung-3-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `taylor-approx`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `reihen-folgen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Geometrische Reihe: $\sum q^n=1/(1-q)$ für $|q|<1$. · Harmonische Reihe divergiert, p-Reihen konvergieren für $p>1$. · Quotientenkriterium $\lim|a_{n+1}/a_n|<1 \Rightarrow$ Konvergenz. · …
-  - _Typische Fehler (gute Distraktoren):_ Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
-  - _Klausur-Fokus:_ Konvergenz einer Reihe per Quotientenkriterium. · Taylor-Polynom 3. Grades an gegebener Stelle.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `taylor-approx`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
 
 #### `mdim-pruefung-1` · Prüfung: Extrema, Fehlerfortpflanzung
 
@@ -3471,194 +3689,446 @@ npm run build              # abschließender End-zu-End-Check
 #### `komz-1-1` · Imaginäre Einheit & Gaußsche Zahlenebene
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Kartesische Form
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×1, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** number-input, true-false, matching, sorting, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — $i^2 = -1$ als Definition — $i$ ist keine Variable, sondern fixes Symbol
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — $\operatorname{Re}(z)$ und $\operatorname{Im}(z)$: beide reell (der Imaginärteil ist **nicht** $bi$, sondern $b$)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Konjugierte $\bar z = a - bi$: Spiegelung an reeller Achse
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Reelle Zahl ⇔ $\operatorname{Im}(z) = 0$; rein imaginär ⇔ $\operatorname{Re}(z) = 0$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/komplexe_zahlen.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `i-def` — $i^2=-1$ — definierende Eigenschaft, kein Variable (SG 0)
+  2. `z-form` — Komplexe Zahl $z=a+bi$ mit $a,b\in\mathbb R$ ⇐ `i-def` (SG 1)
+  3. `re-im` — $\operatorname{Re}(z)=a$, $\operatorname{Im}(z)=b$ (beide reell, ohne $i$) ⇐ `z-form` (SG 1)
+  4. `gauss-ebene` — Gaußsche Zahlenebene: $z$ als Punkt $(a,b)$ ⇐ `z-form` (SG 1)
+  5. `konjugiert` — Konjugierte $\bar z=a-bi$ — Spiegelung an reeller Achse ⇐ `z-form` (SG 2)
+  6. `reell-imag-rein` — Reell $\iff\operatorname{Im}=0$; rein imaginär $\iff\operatorname{Re}=0$ ⇐ `re-im` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `i-def` · **0/5+** — $i^2 = -1$ als Definition — $i$ ist keine Variable, sondern fixes Symbol
+  - 🔴 [1] _hoch_ · Konzepte: `re-im`, `z-form`, `gauss-ebene` · **0/5+** — $\operatorname{Re}(z)$ und $\operatorname{Im}(z)$: beide reell (der Imaginärteil ist **nicht** $bi$, sondern $b$)
+  - 🔴 [2] _hoch_ · Konzepte: `konjugiert` · **0/5+** — Konjugierte $\bar z = a - bi$: Spiegelung an reeller Achse
+  - 🔴 [3] _mittel_ · Konzepte: `reell-imag-rein` · **0/5+** — Reelle Zahl ⇔ $\operatorname{Im}(z) = 0$; rein imaginär ⇔ $\operatorname{Re}(z) = 0$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `i-def` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `i-def` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `i-def` | 1 | 0 | 🔴 | $i^3, i^4$ |
+|  4 | 0 | error-analysis     | multiple-choice  | `i-def` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `i-def` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `re-im` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `re-im`, `z-form` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `re-im` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `re-im` | 1 | 0 | 🔴 | $\operatorname{Im}(z)=bi$ statt $b$ |
+| 10 | 1 | transfer           | multiple-choice  | `gauss-ebene` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `konjugiert` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `konjugiert` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `konjugiert` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `konjugiert` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `konjugiert` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `reell-imag-rein` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `reell-imag-rein` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `reell-imag-rein` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `reell-imag-rein` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `reell-imag-rein`, `re-im` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/komplexe_zahlen.js` unter `'komz-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-1-1-1`, `ex-komz-1-1-2`, `ex-komz-1-1-3`, `ex-komz-1-1-4`, `ex-komz-1-1-5`, `ex-komz-1-1-6`, `ex-komz-1-1-7`, `ex-komz-1-1-8` … (+1 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `complex-plane` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
-  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
-  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
 
 #### `komz-1-2` · Rechnen in kartesischer Form (+, −, ·, :)
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Kartesische Form
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1
-- **Typen einsetzen (Rotation):** sorting, true-false, matching, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Addition/Subtraktion komponentenweise — wie Vektoren
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Multiplikation: $(a+bi)(c+di)$ ausmultiplizieren und $i^2 = -1$ einsetzen
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Division: Zähler **und** Nenner mit $\bar{c+di} = c-di$ erweitern → Nenner reell $c^2 + d^2$
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — $z \cdot \bar z = |z|^2 = a^2 + b^2$ — immer reell und nicht-negativ
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/komplexe_zahlen.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `komz-1-1` → `i-def`, `z-form`, `re-im`, `konjugiert`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `add-sub-c` — Addition/Subtraktion komponentenweise — wie Vektoren (SG 0)
+  2. `mult-c` — Multiplikation: $(a+bi)(c+di)$ ausmultiplizieren, $i^2=-1$ (SG 1)
+  3. `div-c` — Division: mit $\bar{c+di}=c-di$ erweitern → reeller Nenner $c^2+d^2$ ⇐ `mult-c` (SG 2)
+  4. `z-zbar` — $z\cdot\bar z=|z|^2=a^2+b^2$ — immer reell und nicht-negativ ⇐ `mult-c` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `add-sub-c` · **0/5+** — Addition/Subtraktion komponentenweise — wie Vektoren
+  - 🔴 [1] _hoch_ · Konzepte: `mult-c` · **0/5+** — Multiplikation: $(a+bi)(c+di)$ ausmultiplizieren und $i^2 = -1$ einsetzen
+  - 🔴 [2] _hoch_ · Konzepte: `div-c` · **0/5+** — Division: Zähler **und** Nenner mit $\bar{c+di} = c-di$ erweitern → Nenner reell $c^2 + d^2$
+  - 🔴 [3] _mittel_ · Konzepte: `z-zbar` · **0/5+** — $z \cdot \bar z = |z|^2 = a^2 + b^2$ — immer reell und nicht-negativ
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `add-sub-c` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `add-sub-c` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `add-sub-c` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `add-sub-c` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `add-sub-c` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `mult-c` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `mult-c` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `mult-c` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `mult-c` | 1 | 0 | 🔴 | $i^2=+1$ Falle |
+| 10 | 1 | transfer           | number-input     | `mult-c` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `div-c` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `div-c` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `div-c` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `div-c` | 1 | 0 | 🔴 | Konjugiert nicht verwendet |
+| 15 | 2 | transfer           | number-input     | `div-c` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `z-zbar` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `z-zbar` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `z-zbar` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `z-zbar` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `z-zbar`, `div-c` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/komplexe_zahlen.js` unter `'komz-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-1-2-1`, `ex-komz-1-2-2`, `ex-komz-1-2-3`, `ex-komz-1-2-4`, `ex-komz-1-2-5`, `ex-komz-1-2-6`, `ex-komz-1-2-7`, `ex-komz-1-2-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
-  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
-  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
 
 #### `komz-2-1` · Betrag, Argument, Polarform
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Polarform, Euler & Rechnen
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Betrag: $|z| = \sqrt{a^2 + b^2}$ (Pythagoras)
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Argument: $\varphi = \arg(z)$ mit $\text{atan2}(b,a)$ (Quadrant beachten!)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Polarform: $z = |z|(\cos\varphi + i\sin\varphi) = |z| e^{i\varphi}$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Rücktransformation: $a = |z|\cos\varphi$, $b = |z|\sin\varphi$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Hauptwert des Arguments: $\varphi \in (-\pi, \pi]$ (Konvention)
-  - 🔴 [5] (hoch) **0/5+** Aufgaben — Typische Falle: einfacher $\arctan(b/a)$ gibt falschen Quadranten
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/komplexe_zahlen.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `komz-1-1` → `z-form`, `re-im`, `konjugiert`, `gauss-ebene`
+  - `komz-1-2` → `z-zbar`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `betrag-c` — Betrag $|z|=\sqrt{a^2+b^2}$ (Pythagoras) (SG 0)
+  2. `argument` — Argument $\varphi=\arg(z)$ via $\text{atan2}(b,a)$ (Quadrant!) (SG 1)
+  3. `polarform` — Polarform $z=|z|(\cos\varphi+i\sin\varphi)=|z|e^{i\varphi}$ ⇐ `betrag-c`, `argument` (SG 2)
+  4. `rueck-trans` — Rücktransformation: $a=|z|\cos\varphi$, $b=|z|\sin\varphi$ ⇐ `polarform` (SG 3)
+  5. `arg-haupt` — Hauptwert $\varphi\in(-\pi,\pi]$ ⇐ `argument` (SG 4)
+  6. `atan-falle` — Falle: einfacher $\arctan(b/a)$ gibt falschen Quadranten ⇐ `argument` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `betrag-c` · **0/5+** — Betrag: $|z| = \sqrt{a^2 + b^2}$ (Pythagoras)
+  - 🔴 [1] _hoch_ · Konzepte: `argument` · **0/5+** — Argument: $\varphi = \arg(z)$ mit $\text{atan2}(b,a)$ (Quadrant beachten!)
+  - 🔴 [2] _hoch_ · Konzepte: `polarform` · **0/5+** — Polarform: $z = |z|(\cos\varphi + i\sin\varphi) = |z| e^{i\varphi}$
+  - 🔴 [3] _hoch_ · Konzepte: `rueck-trans` · **0/5+** — Rücktransformation: $a = |z|\cos\varphi$, $b = |z|\sin\varphi$
+  - 🔴 [4] _mittel_ · Konzepte: `arg-haupt` · **0/5+** — Hauptwert des Arguments: $\varphi \in (-\pi, \pi]$ (Konvention)
+  - 🔴 [5] _hoch_ · Konzepte: `atan-falle` · **0/5+** — Typische Falle: einfacher $\arctan(b/a)$ gibt falschen Quadranten
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `betrag-c` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `betrag-c` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `betrag-c` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `betrag-c` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `betrag-c` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `argument` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `argument` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `argument` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `argument` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `argument` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `polarform` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `polarform` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `polarform`, `betrag-c`, `argument` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `polarform` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `polarform` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `rueck-trans` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `rueck-trans` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `rueck-trans` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `rueck-trans` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `rueck-trans` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `arg-haupt` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `arg-haupt` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `arg-haupt` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `arg-haupt` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | multiple-choice  | `arg-haupt` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `atan-falle` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `atan-falle` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `atan-falle` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `atan-falle` | 1 | 0 | 🔴 | Falscher Quadrant trotz korrekter Formel |
+| 30 | 5 | transfer           | matching         | `atan-falle`, `argument` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/komplexe_zahlen.js` unter `'komz-2-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-2-1-1`, `ex-komz-2-1-2`, `ex-komz-2-1-3`, `ex-komz-2-1-4`, `ex-komz-2-1-5`, `ex-komz-2-1-6`, `ex-komz-2-1-7`, `ex-komz-2-1-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
-  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
-  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
 
 #### `komz-2-2` · Euler-Formel & Exponentialdarstellung
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Polarform, Euler & Rechnen
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×5, number-input ×2, true-false ×1, matching ×1
-- **Typen einsetzen (Rotation):** sorting, true-false, matching, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Euler-Formel: $e^{i\varphi} = \cos\varphi + i\sin\varphi$
-  - 🔴 [1] (mittel) **0/5+** Aufgaben — Euler'sche Identität: $e^{i\pi} + 1 = 0$ (fünf Konstanten in einer Gleichung)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Multiplikation: $z_1 z_2 = r_1 r_2 e^{i(\varphi_1 + \varphi_2)}$ (Beträge mal, Argumente plus)
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Division: $z_1/z_2 = (r_1/r_2) e^{i(\varphi_1 - \varphi_2)}$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Konjugiert-komplex in Polarform: $\bar z = r e^{-i\varphi}$
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Sinus/Cosinus aus Euler: $\cos\varphi = (e^{i\varphi} + e^{-i\varphi})/2$, $\sin\varphi = (e^{i\varphi} - e^{-i\varphi})/(2i)$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/komplexe_zahlen.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `komz-2-1` → `polarform`, `argument`, `betrag-c`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `euler-formel` — Euler-Formel: $e^{i\varphi}=\cos\varphi+i\sin\varphi$ (SG 0)
+  2. `euler-identitaet` — Euler-Identität: $e^{i\pi}+1=0$ ⇐ `euler-formel` (SG 1)
+  3. `mult-polar` — Mult.: $z_1z_2=r_1r_2 e^{i(\varphi_1+\varphi_2)}$ (Beträge mal, Winkel plus) ⇐ `euler-formel` (SG 2)
+  4. `div-polar` — Div.: $z_1/z_2=(r_1/r_2)e^{i(\varphi_1-\varphi_2)}$ ⇐ `euler-formel` (SG 3)
+  5. `konj-polar` — Konjugiert in Polarform: $\bar z=re^{-i\varphi}$ ⇐ `euler-formel` (SG 4)
+  6. `cos-sin-euler` — $\cos\varphi=(e^{i\varphi}+e^{-i\varphi})/2$, $\sin\varphi=(e^{i\varphi}-e^{-i\varphi})/(2i)$ ⇐ `euler-formel`, `konj-polar` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `euler-formel` · **0/5+** — Euler-Formel: $e^{i\varphi} = \cos\varphi + i\sin\varphi$
+  - 🔴 [1] _mittel_ · Konzepte: `euler-identitaet` · **0/5+** — Euler'sche Identität: $e^{i\pi} + 1 = 0$ (fünf Konstanten in einer Gleichung)
+  - 🔴 [2] _hoch_ · Konzepte: `mult-polar` · **0/5+** — Multiplikation: $z_1 z_2 = r_1 r_2 e^{i(\varphi_1 + \varphi_2)}$ (Beträge mal, Argumente plus)
+  - 🔴 [3] _hoch_ · Konzepte: `div-polar` · **0/5+** — Division: $z_1/z_2 = (r_1/r_2) e^{i(\varphi_1 - \varphi_2)}$
+  - 🔴 [4] _hoch_ · Konzepte: `konj-polar` · **0/5+** — Konjugiert-komplex in Polarform: $\bar z = r e^{-i\varphi}$
+  - 🔴 [5] _mittel_ · Konzepte: `cos-sin-euler` · **0/5+** — Sinus/Cosinus aus Euler: $\cos\varphi = (e^{i\varphi} + e^{-i\varphi})/2$, $\sin\varphi = (e^{i\varphi} - e^{-i\varphi})/(2i)$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `euler-formel` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `euler-formel` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `euler-formel` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `euler-formel` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | matching         | `euler-formel` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `euler-identitaet` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `euler-identitaet` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `euler-identitaet` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `euler-identitaet` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | multiple-choice  | `euler-identitaet` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `mult-polar` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `mult-polar` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `mult-polar` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `mult-polar` | 1 | 0 | 🔴 | Beträge addiert statt multipliziert |
+| 15 | 2 | transfer           | number-input     | `mult-polar` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `div-polar` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `div-polar` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `div-polar` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `div-polar` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `div-polar`, `mult-polar` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `konj-polar` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `konj-polar` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `konj-polar` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `konj-polar` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `konj-polar` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `cos-sin-euler` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `cos-sin-euler` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | number-input     | `cos-sin-euler` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `cos-sin-euler` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | multiple-choice  | `cos-sin-euler` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/komplexe_zahlen.js` unter `'komz-2-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-2-2-1`, `ex-komz-2-2-2`, `ex-komz-2-2-3`, `ex-komz-2-2-4`, `ex-komz-2-2-5`, `ex-komz-2-2-6`, `ex-komz-2-2-7`, `ex-komz-2-2-8` … (+1 weitere)
-- **Visualisierung:** ✅ vorhanden. Weitere sinnvoll (aus Topic-Guide): `complex-plane` — bei passenden Lesson-Themen als weiteren `type: 'visualization'`-Step einbauen.
-- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
-  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
-  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
 
 #### `komz-3-1` · Potenzen — Formel von de Moivre
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Potenzen & Wurzeln
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Moivre: $z^n = |z|^n e^{in\varphi} = |z|^n (\cos n\varphi + i \sin n\varphi)$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Betrag hoch $n$, Argument mal $n$
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Anwendung: Mehrfach-Winkel-Formeln ($\cos 2\varphi, \sin 3\varphi, \ldots$) herleitbar
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Geometrisch: Streckung + Drehung — wiederholte Rotation um $\varphi$
-  - 🔴 [4] (mittel) **0/5+** Aufgaben — Negative Potenzen: $z^{-1} = (1/|z|) e^{-i\varphi}$
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/komplexe_zahlen.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `komz-2-1` → `polarform`, `betrag-c`, `argument`
+  - `komz-2-2` → `euler-formel`, `mult-polar`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `moivre` — Moivre: $z^n=|z|^n e^{in\varphi}=|z|^n(\cos n\varphi+i\sin n\varphi)$ (SG 0)
+  2. `moivre-betrag` — Betrag hoch $n$, Argument mal $n$ ⇐ `moivre` (SG 1)
+  3. `mehrfach-winkel` — Mehrfach-Winkel-Formeln aus Moivre herleitbar ⇐ `moivre` (SG 2)
+  4. `streck-rotation` — Geometrisch: Streckung + Drehung um $\varphi$ wiederholt ⇐ `moivre` (SG 3)
+  5. `neg-pot` — Negative Potenzen: $z^{-1}=(1/|z|)e^{-i\varphi}$ ⇐ `moivre` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `moivre` · **0/5+** — Moivre: $z^n = |z|^n e^{in\varphi} = |z|^n (\cos n\varphi + i \sin n\varphi)$
+  - 🔴 [1] _hoch_ · Konzepte: `moivre-betrag` · **0/5+** — Betrag hoch $n$, Argument mal $n$
+  - 🔴 [2] _mittel_ · Konzepte: `mehrfach-winkel` · **0/5+** — Anwendung: Mehrfach-Winkel-Formeln ($\cos 2\varphi, \sin 3\varphi, \ldots$) herleitbar
+  - 🔴 [3] _hoch_ · Konzepte: `streck-rotation` · **0/5+** — Geometrisch: Streckung + Drehung — wiederholte Rotation um $\varphi$
+  - 🔴 [4] _mittel_ · Konzepte: `neg-pot` · **0/5+** — Negative Potenzen: $z^{-1} = (1/|z|) e^{-i\varphi}$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `moivre` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `moivre` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `moivre` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `moivre` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `moivre` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `moivre-betrag` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `moivre-betrag` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `moivre-betrag` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `moivre-betrag` | 1 | 0 | 🔴 | Argument hoch $n$ statt mal $n$ |
+| 10 | 1 | transfer           | multiple-choice  | `moivre-betrag` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `mehrfach-winkel` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `mehrfach-winkel` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `mehrfach-winkel` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `mehrfach-winkel` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | multiple-choice  | `mehrfach-winkel` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `streck-rotation` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `streck-rotation` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `streck-rotation` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `streck-rotation` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `streck-rotation` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `neg-pot` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `neg-pot` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `neg-pot` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `neg-pot` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `neg-pot` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/komplexe_zahlen.js` unter `'komz-3-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-3-1-1`, `ex-komz-3-1-2`, `ex-komz-3-1-3`, `ex-komz-3-1-4`, `ex-komz-3-1-5`, `ex-komz-3-1-6`, `ex-komz-3-1-7`, `ex-komz-3-1-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
-  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
-  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
 
 #### `komz-3-2` · Wurzeln — alle n-ten Wurzeln finden
 
 - **Topic:** `komplexe-zahlen` (Komplexe Zahlen) · **Unit:** Potenzen & Wurzeln
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Wurzelformel: $z_k = |w|^{1/n} e^{i(\varphi + 2\pi k)/n}$ für $k = 0, 1, \ldots, n-1$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Anzahl: genau $n$ verschiedene $n$-te Wurzeln (Fundamentalsatz der Algebra)
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Geometrisch: regelmäßiges $n$-Eck auf Kreis mit Radius $|w|^{1/n}$
-  - 🔴 [3] (hoch) **0/5+** Aufgaben — Winkelabstand zwischen Wurzeln: $2\pi/n$
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Einheitswurzeln ($w=1$): $z_k = e^{i 2\pi k/n}$ — Ecken eines regelmäßigen $n$-Ecks
-  - 🔴 [5] (mittel) **0/5+** Aufgaben — Hauptwurzel $k=0$: die mit kleinstem positivem Argument
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5, SG 5: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/komplexe_zahlen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/komplexe_zahlen.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `komz-2-1` → `polarform`, `argument`
+  - `komz-2-2` → `euler-formel`
+  - `komz-3-1` → `moivre`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `wurzel-formel` — Wurzelformel: $z_k=|w|^{1/n}e^{i(\varphi+2\pi k)/n}$ für $k=0,1,\dots,n-1$ (SG 0)
+  2. `wurzel-anzahl` — $n$ verschiedene $n$-te Wurzeln (Fundamentalsatz) ⇐ `wurzel-formel` (SG 1)
+  3. `wurzel-neck` — Geometrisch: regelmäßiges $n$-Eck auf Kreis Radius $|w|^{1/n}$ ⇐ `wurzel-formel` (SG 2)
+  4. `wurzel-abstand` — Winkelabstand benachbarter Wurzeln: $2\pi/n$ ⇐ `wurzel-neck` (SG 3)
+  5. `einheits-wz` — Einheitswurzeln: $z_k=e^{i 2\pi k/n}$ — Ecken regelmäßiges $n$-Eck ⇐ `wurzel-formel` (SG 4)
+  6. `haupt-wz` — Hauptwurzel $k=0$: kleinstes positives Argument ⇐ `wurzel-formel` (SG 5)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `wurzel-formel` · **0/5+** — Wurzelformel: $z_k = |w|^{1/n} e^{i(\varphi + 2\pi k)/n}$ für $k = 0, 1, \ldots, n-1$
+  - 🔴 [1] _hoch_ · Konzepte: `wurzel-anzahl` · **0/5+** — Anzahl: genau $n$ verschiedene $n$-te Wurzeln (Fundamentalsatz der Algebra)
+  - 🔴 [2] _hoch_ · Konzepte: `wurzel-neck` · **0/5+** — Geometrisch: regelmäßiges $n$-Eck auf Kreis mit Radius $|w|^{1/n}$
+  - 🔴 [3] _hoch_ · Konzepte: `wurzel-abstand` · **0/5+** — Winkelabstand zwischen Wurzeln: $2\pi/n$
+  - 🔴 [4] _hoch_ · Konzepte: `einheits-wz` · **0/5+** — Einheitswurzeln ($w=1$): $z_k = e^{i 2\pi k/n}$ — Ecken eines regelmäßigen $n$-Ecks
+  - 🔴 [5] _mittel_ · Konzepte: `haupt-wz` · **0/5+** — Hauptwurzel $k=0$: die mit kleinstem positivem Argument
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `wurzel-formel` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `wurzel-formel` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `wurzel-formel` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `wurzel-formel` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `wurzel-formel` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `wurzel-anzahl` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `wurzel-anzahl` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `wurzel-anzahl` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `wurzel-anzahl` | 1 | 0 | 🔴 | Nur eine Wurzel angegeben |
+| 10 | 1 | transfer           | multiple-choice  | `wurzel-anzahl` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `wurzel-neck` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `wurzel-neck` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `wurzel-neck` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `wurzel-neck` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | matching         | `wurzel-neck` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `wurzel-abstand` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `wurzel-abstand` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | number-input     | `wurzel-abstand` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `wurzel-abstand` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | number-input     | `wurzel-abstand` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `einheits-wz` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `einheits-wz` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | number-input     | `einheits-wz` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `einheits-wz` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | number-input     | `einheits-wz` | 1 | 0 | 🔴 |  |
+| 26 | 5 | recognize          | true-false       | `haupt-wz` | 1 | 0 | 🔴 |  |
+| 27 | 5 | apply-guided       | multiple-choice  | `haupt-wz` | 1 | 0 | 🔴 |  |
+| 28 | 5 | apply-independent  | multiple-choice  | `haupt-wz` | 1 | 0 | 🔴 |  |
+| 29 | 5 | error-analysis     | multiple-choice  | `haupt-wz` | 1 | 0 | 🔴 |  |
+| 30 | 5 | transfer           | multiple-choice  | `haupt-wz`, `wurzel-formel` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 30 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/komplexe_zahlen.js` unter `'komz-3-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/komplexe_zahlen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-komz-3-2-1`, `ex-komz-3-2-2`, `ex-komz-3-2-3`, `ex-komz-3-2-4`, `ex-komz-3-2-5`, `ex-komz-3-2-6`, `ex-komz-3-2-7`, `ex-komz-3-2-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `complex-plane`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `komplexe-zahlen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ $i^2=-1$, Betrag $|z|=\sqrt{a^2+b^2}$, Argument $\arg z=\arctan(b/a)$. · Euler: $e^{i\varphi}=\cos\varphi + i\sin\varphi$. · Multiplikation in Polarform: Beträge mal, Argumente addieren. · …
-  - _Typische Fehler (gute Distraktoren):_ Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
-  - _Klausur-Fokus:_ Polar- ↔ Kartesisch umrechnen. · Potenz mit de Moivre $(re^{i\varphi})^n=r^n e^{in\varphi}$. · $n$-te Wurzeln auf dem Einheitskreis darstellen.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `complex-plane`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Argument in falschem Quadranten bestimmt — atan2 statt atan nutzen. · Bei $n$-ten Wurzeln nur eine Lösung angegeben — es sind IMMER $n$ Stück. · $|z|^2 = z\bar z$ vergessen.
 
 #### `rf-1-1` · Folgen und Grenzwerte
 
 - **Topic:** `reihen-folgen` (Reihen & Folgen) · **Unit:** Folgen, Reihen & Konvergenz
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×1, true-false ×2, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** number-input, matching, sorting, true-false, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Grenzwert $\lim_{n\to\infty} a_n$ anschaulich als „bleibt schließlich in jedem $\varepsilon$-Schlauch" begreifen
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Rationale Folgen: Grad-Vergleich (Zähler/Nenner) entscheidet über $0$, endlicher Grenzwert oder $\pm\infty$
-  - 🔴 [2] (hoch) **0/5+** Aufgaben — Grenzwertsätze: Summe, Produkt, Quotient (sofern Nennergrenzwert $\neq 0$)
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Monoton + beschränkt $\Rightarrow$ konvergent (ohne Grenzwert ausrechnen zu müssen)
-  - 🔴 [4] (hoch) **0/5+** Aufgaben — Nullfolgen: $1/n$, $1/n^k$, $q^n$ mit $|q|<1$ — als Bausteine auswendig
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5, SG 4: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/reihen_folgen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/reihen_folgen.js`
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `folge-grenzwert` — Grenzwert $\lim_{n\to\infty} a_n$ — schließlich in jedem $\varepsilon$-Schlauch (SG 0)
+  2. `rationale-folgen` — Rationale Folgen: Grad-Vergleich (Zähler/Nenner) bestimmt Grenzwert ⇐ `folge-grenzwert` (SG 1)
+  3. `gw-saetze` — Grenzwertsätze: Summe, Produkt, Quotient (Nenner $\neq 0$) ⇐ `folge-grenzwert` (SG 2)
+  4. `monoton-besch` — Monoton + beschränkt $\Rightarrow$ konvergent ⇐ `folge-grenzwert` (SG 3)
+  5. `nullfolgen` — Bausteine: $1/n,\,1/n^k,\,q^n$ mit $|q|<1$ als Nullfolgen ⇐ `folge-grenzwert` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `folge-grenzwert` · **0/5+** — Grenzwert $\lim_{n\to\infty} a_n$ anschaulich als „bleibt schließlich in jedem $\varepsilon$-Schlauch" begreifen
+  - 🔴 [1] _hoch_ · Konzepte: `rationale-folgen` · **0/5+** — Rationale Folgen: Grad-Vergleich (Zähler/Nenner) entscheidet über $0$, endlicher Grenzwert oder $\pm\infty$
+  - 🔴 [2] _hoch_ · Konzepte: `gw-saetze` · **0/5+** — Grenzwertsätze: Summe, Produkt, Quotient (sofern Nennergrenzwert $\neq 0$)
+  - 🔴 [3] _mittel_ · Konzepte: `monoton-besch` · **0/5+** — Monoton + beschränkt $\Rightarrow$ konvergent (ohne Grenzwert ausrechnen zu müssen)
+  - 🔴 [4] _hoch_ · Konzepte: `nullfolgen` · **0/5+** — Nullfolgen: $1/n$, $1/n^k$, $q^n$ mit $|q|<1$ — als Bausteine auswendig
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `folge-grenzwert` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `folge-grenzwert` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `folge-grenzwert` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `folge-grenzwert` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | multiple-choice  | `folge-grenzwert` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `rationale-folgen` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `rationale-folgen` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `rationale-folgen` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `rationale-folgen` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | number-input     | `rationale-folgen` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `gw-saetze` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `gw-saetze` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `gw-saetze` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `gw-saetze` | 1 | 0 | 🔴 | Quotient mit Nenner-Grenzwert 0 |
+| 15 | 2 | transfer           | matching         | `gw-saetze` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `monoton-besch` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `monoton-besch` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `monoton-besch` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `monoton-besch` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | multiple-choice  | `monoton-besch` | 1 | 0 | 🔴 |  |
+| 21 | 4 | recognize          | true-false       | `nullfolgen` | 1 | 0 | 🔴 |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `nullfolgen` | 1 | 0 | 🔴 |  |
+| 23 | 4 | apply-independent  | multiple-choice  | `nullfolgen` | 1 | 0 | 🔴 |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `nullfolgen` | 1 | 0 | 🔴 |  |
+| 25 | 4 | transfer           | matching         | `nullfolgen` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/reihen_folgen.js` unter `'rf-1-1': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-1-1-1`, `ex-rf-1-1-2`, `ex-rf-1-1-3`, `ex-rf-1-1-4`, `ex-rf-1-1-5`, `ex-rf-1-1-6`, `ex-rf-1-1-7`, `ex-rf-1-1-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `taylor-approx`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `reihen-folgen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Geometrische Reihe: $\sum q^n=1/(1-q)$ für $|q|<1$. · Harmonische Reihe divergiert, p-Reihen konvergieren für $p>1$. · Quotientenkriterium $\lim|a_{n+1}/a_n|<1 \Rightarrow$ Konvergenz. · …
-  - _Typische Fehler (gute Distraktoren):_ Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
-  - _Klausur-Fokus:_ Konvergenz einer Reihe per Quotientenkriterium. · Taylor-Polynom 3. Grades an gegebener Stelle.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `taylor-approx`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
 
 #### `rf-1-2` · Taylor-Polynome
 
 - **Topic:** `reihen-folgen` (Reihen & Folgen) · **Unit:** Folgen, Reihen & Konvergenz
-- **Aufgaben aktuell:** 9 · **mindestens:** 20 · **fehlen bis Minimum:** 11 (mehr ist besser, kein Cap)
-- **Typen vorhanden:** multiple-choice ×4, number-input ×2, true-false ×1, matching ×1, sorting ×1
-- **Typen einsetzen (Rotation):** true-false, matching, sorting, number-input, multiple-choice
-- **Sub-Goals dieser Lesson** (mindestens 5 Aufgaben pro Sub-Goal — mehr ist besser, kein Cap):
-  - 🔴 [0] (hoch) **0/5+** Aufgaben — Taylor-Formel $T_n(x) = \sum_{k=0}^n f^{(k)}(x_0)/k! \cdot (x-x_0)^k$
-  - 🔴 [1] (hoch) **0/5+** Aufgaben — Maclaurin-Reihen auswendig: $e^x$, $\sin x$, $\cos x$, $\ln(1+x)$, $1/(1-x)$
-  - 🔴 [2] (mittel) **0/5+** Aufgaben — Lagrange-Restglied $R_n = f^{(n+1)}(\xi)/(n+1)! \cdot (x-x_0)^{n+1}$ zum Fehler abschätzen
-  - 🔴 [3] (mittel) **0/5+** Aufgaben — Gerade Funktionen (cos) haben nur gerade Potenzen; ungerade (sin) nur ungerade
-- **Goal-Tasks fehlen (mindestens):** SG 0: +5, SG 1: +5, SG 2: +5, SG 3: +5 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/subgoal_tasks/reihen_folgen.js`
-  - Format: `{ [subGoalIndex]: Exercise[] }` — Array pro Sub-Goal, beliebig viele Einträge.
-- **Zusatz-Aufgaben fehlen (mindestens):** 11 — gerne mehr, keine Obergrenze
-  - Ablage: `src/content/supplements/reihen_folgen.js`
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `rf-1-1` → `folge-grenzwert`, `gw-saetze`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `taylor-formel-rf` — Taylor: $T_n(x)=\sum_{k=0}^n f^{(k)}(x_0)/k!\cdot(x-x_0)^k$ (SG 0)
+  2. `maclaurin-std` — Maclaurin auswendig: $e^x,\sin,\cos,\ln(1+x),1/(1-x)$ ⇐ `taylor-formel-rf` (SG 1)
+  3. `lagrange-rest` — Lagrange-Restglied $R_n=f^{(n+1)}(\xi)/(n+1)!\cdot(x-x_0)^{n+1}$ ⇐ `taylor-formel-rf` (SG 2)
+  4. `paritaet-pot` — Cos: nur gerade Potenzen; Sin: nur ungerade ⇐ `maclaurin-std` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - 🔴 [0] _hoch_ · Konzepte: `taylor-formel-rf` · **0/5+** — Taylor-Formel $T_n(x) = \sum_{k=0}^n f^{(k)}(x_0)/k! \cdot (x-x_0)^k$
+  - 🔴 [1] _hoch_ · Konzepte: `maclaurin-std` · **0/5+** — Maclaurin-Reihen auswendig: $e^x$, $\sin x$, $\cos x$, $\ln(1+x)$, $1/(1-x)$
+  - 🔴 [2] _mittel_ · Konzepte: `lagrange-rest` · **0/5+** — Lagrange-Restglied $R_n = f^{(n+1)}(\xi)/(n+1)! \cdot (x-x_0)^{n+1}$ zum Fehler abschätzen
+  - 🔴 [3] _mittel_ · Konzepte: `paritaet-pot` · **0/5+** — Gerade Funktionen (cos) haben nur gerade Potenzen; ungerade (sin) nur ungerade
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `taylor-formel-rf` | 1 | 0 | 🔴 |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `taylor-formel-rf` | 1 | 0 | 🔴 |  |
+|  3 | 0 | apply-independent  | number-input     | `taylor-formel-rf` | 1 | 0 | 🔴 |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `taylor-formel-rf` | 1 | 0 | 🔴 |  |
+|  5 | 0 | transfer           | number-input     | `taylor-formel-rf` | 1 | 0 | 🔴 |  |
+|  6 | 1 | recognize          | true-false       | `maclaurin-std` | 1 | 0 | 🔴 |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `maclaurin-std` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `maclaurin-std` | 1 | 0 | 🔴 |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `maclaurin-std` | 1 | 0 | 🔴 |  |
+| 10 | 1 | transfer           | matching         | `maclaurin-std` | 1 | 0 | 🔴 |  |
+| 11 | 2 | recognize          | true-false       | `lagrange-rest` | 1 | 0 | 🔴 |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `lagrange-rest` | 1 | 0 | 🔴 |  |
+| 13 | 2 | apply-independent  | number-input     | `lagrange-rest` | 1 | 0 | 🔴 |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `lagrange-rest` | 1 | 0 | 🔴 |  |
+| 15 | 2 | transfer           | number-input     | `lagrange-rest` | 1 | 0 | 🔴 |  |
+| 16 | 3 | recognize          | true-false       | `paritaet-pot` | 1 | 0 | 🔴 |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `paritaet-pot` | 1 | 0 | 🔴 |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `paritaet-pot` | 1 | 0 | 🔴 |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `paritaet-pot` | 1 | 0 | 🔴 |  |
+| 20 | 3 | transfer           | matching         | `paritaet-pot` | 1 | 0 | 🔴 |  |
+
+- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:**
+  - Goal-Tasks (mit Sub-Goal-Zuordnung): `src/content/subgoal_tasks/reihen_folgen.js` unter `'rf-1-2': { 0: [...], 1: [...], ... }`
+  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): `src/content/supplements/reihen_folgen.js`
 - **4-Block-Erklärung fehlt bei:** `ex-rf-1-2-1`, `ex-rf-1-2-2`, `ex-rf-1-2-3`, `ex-rf-1-2-4`, `ex-rf-1-2-5`, `ex-rf-1-2-6`, `ex-rf-1-2-7`, `ex-rf-1-2-8` … (+1 weitere)
-- **Visualisierung:** 🟡 fehlt — wenn sie dem Stoff hilft, einen `type: 'visualization'`-Step in `lesson.steps` einbauen. Passende Viz-IDs für dieses Topic: `taylor-approx`, `function-graph`. Alle 21 verfügbaren Viz siehe `AVAILABLE_VISUALIZATIONS` in `src/content/curriculum.js`.
-- **Lehrplan-Kontext für `reihen-folgen`** (aus `src/content/curriculum.js`):
-  - _Must-Know:_ Geometrische Reihe: $\sum q^n=1/(1-q)$ für $|q|<1$. · Harmonische Reihe divergiert, p-Reihen konvergieren für $p>1$. · Quotientenkriterium $\lim|a_{n+1}/a_n|<1 \Rightarrow$ Konvergenz. · …
-  - _Typische Fehler (gute Distraktoren):_ Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
-  - _Klausur-Fokus:_ Konvergenz einer Reihe per Quotientenkriterium. · Taylor-Polynom 3. Grades an gegebener Stelle.
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `taylor-approx`, `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Konvergenzkriterium für $|q|=1$ falsch bewertet. · Taylor-Entwicklungspunkt nicht mit angegeben. · Restglied ignoriert.
 
 #### `mdim-1-1` · Partielle Ableitung verstehen
 
