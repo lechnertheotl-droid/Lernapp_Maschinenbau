@@ -29,8 +29,8 @@ export function isMcWithCompleteWae(exercise) {
   )
 }
 
-export function isSupplementalExercise(exercise) {
-  return Boolean(exercise?.isSupplemental)
+export function isGoalTaskExercise(exercise) {
+  return Boolean(exercise?.isGoalTask)
 }
 
 export function countExercisesByType(topic) {
@@ -45,7 +45,7 @@ export function countExercisesByType(topic) {
 
 export function collectTopicMetrics(topic) {
   let total = 0
-  let supplemental = 0
+  let goalTasks = 0
   let fourBlock = 0
   let withExplanation = 0
   let mcTotal = 0
@@ -54,7 +54,7 @@ export function collectTopicMetrics(topic) {
   for (const unit of topic.units ?? []) {
     for (const ex of Object.values(unit.exercises ?? {})) {
       total += 1
-      if (isSupplementalExercise(ex)) supplemental += 1
+      if (isGoalTaskExercise(ex)) goalTasks += 1
       if (typeof ex.explanation === 'string' && ex.explanation.length > 0) {
         withExplanation += 1
         if (hasFourBlockExplanation(ex)) fourBlock += 1
@@ -68,36 +68,13 @@ export function collectTopicMetrics(topic) {
 
   return {
     total,
-    manual: total - supplemental,
-    supplemental,
+    lessonPath: total - goalTasks,
+    goalTasks,
     fourBlock,
     withExplanation,
     mcTotal,
     mcWithWae,
   }
-}
-
-export function collectLessonMetrics(topic, lesson) {
-  const unit = (topic.units ?? []).find((u) => u.lessons?.some((l) => l.id === lesson.id))
-  if (!unit) return { total: 0, manual: 0, supplemental: 0, fourBlock: 0 }
-
-  const exerciseSteps = (lesson.steps ?? []).filter(
-    (s) => s.type === 'exercise' || s.type === 'mastery-check'
-  )
-
-  let total = 0
-  let supplemental = 0
-  let fourBlock = 0
-
-  for (const step of exerciseSteps) {
-    const ex = unit.exercises?.[step.exerciseRef]
-    if (!ex) continue
-    total += 1
-    if (isSupplementalExercise(ex)) supplemental += 1
-    if (hasFourBlockExplanation(ex)) fourBlock += 1
-  }
-
-  return { total, manual: total - supplemental, supplemental, fourBlock }
 }
 
 export function percent(n, d) {
@@ -149,24 +126,4 @@ export function computeBlueprintCoverage(blueprint, exercises) {
 
     return { row, index, matched, status }
   })
-}
-
-/**
- * Sammelt alle Exercises einer Lesson (aus Unit-Map + aus Subgoal-Tasks).
- * Bewusst flache Liste — Coverage-Match benötigt nur `type` und `pedagogy`.
- */
-export function collectLessonExercises(topic, lesson, subGoalExercises = {}) {
-  const result = []
-  const unit = (topic.units ?? []).find((u) => u.lessons?.some((l) => l.id === lesson.id))
-  if (unit?.exercises) {
-    for (const step of lesson.steps ?? []) {
-      if (step.type !== 'exercise' && step.type !== 'mastery-check') continue
-      const ex = unit.exercises[step.exerciseRef]
-      if (ex) result.push(ex)
-    }
-  }
-  for (const arr of Object.values(subGoalExercises)) {
-    if (Array.isArray(arr)) result.push(...arr)
-  }
-  return result
 }

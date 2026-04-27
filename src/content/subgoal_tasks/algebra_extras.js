@@ -1,9 +1,11 @@
-// Automatisch generiert durch scripts/migrate-supplements.mjs
-// Enthält die 77 aus supplements/algebra.js migrierten Aufgaben mit pedagogy-Tags.
-// Struktur identisch zu algebraSubGoalTasks — wird in algebra.js gemerged.
+// Zusätzliche Algebra-Goal-Tasks (77 Stück), die strukturell zu denselben
+// (lesson, sub-goal)-Buckets wie algebra.js gehören. Werden in algebra.js
+// per `mergeGoalTasks` per (lessonId, subGoalIndex) konkateniert. Separat
+// abgelegt, weil die Code-Stile abweichen (kompakte Einzeiler vs. die
+// ausführlich kommentierten Aufgaben in algebra.js).
 import { mc, ni, tf, matching, sorting } from './_helpers'
 
-export const algebraSupplementExtras = {
+export const algebraExtraGoalTasks = {
   'alg-1-1': {
     0: [
       mc("Welche Regel passt zu x⁵ · x⁻²?", ["Exponenten addieren: x³","Exponenten multiplizieren: x⁻¹⁰","Basis addieren: 2x³","Exponenten subtrahieren: x⁷"], 0, "Bei gleicher Basis und Multiplikation werden die Exponenten addiert: 5 + (−2) = 3, also x³.", ["Die Basis ist in beiden Faktoren x.","Multiplikation gleicher Basen bedeutet Exponenten addieren."], {"1":"Exponenten multiplizieren gilt nur bei Potenz einer Potenz $(x^a)^b = x^{ab}$. Hier liegt aber Multiplikation zweier Potenzen mit gleicher Basis vor — also Exponenten addieren: $5+(-2)=3$.","2":"Basen addieren ist nicht erlaubt — $x^5 \\cdot x^{-2}$ ergibt nicht $2x^3$. Der Faktor bleibt 1, nur die Exponenten werden addiert: $x^3$.","3":"Subtraktion der Exponenten gilt bei Division $x^a/x^b = x^{a-b}$. Hier wird multipliziert, also addieren: $5+(-2)=3$, nicht $5-(-2)=7$."}, { stage: "apply-guided", subGoal: 0, uses: ["pot-mult"] }),

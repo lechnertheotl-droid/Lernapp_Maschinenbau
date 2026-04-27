@@ -33,12 +33,11 @@
 // ═══════════════════════════════════════════════════════════════════════════
 
 import { mc, ni, tf, matching, sorting, tag } from './_helpers'
-import { algebraSupplementExtras } from './algebra_extras'
+import { algebraExtraGoalTasks } from './algebra_extras'
 
-// Merged Goal-Tasks: handgeschriebene + aus supplements migrierte Aufgaben.
-// Supplements wurden pro Lesson als zusätzliche SG-Tasks eingegliedert
-// (Slot-zu-Stage-Mapping: concept→apply-guided, calc→apply-independent,
-// tf→recognize, matching/sorting/transfer→transfer, error→error-analysis).
+// Merge-Funktion für zwei Goal-Task-Maps (jeweils lessonId → SG-Index → Array).
+// Bei gleicher (lesson, SG) werden die Arrays konkateniert, sonst einfach
+// übernommen. algebra.js + algebra_extras.js liegen aus Stilgründen getrennt.
 function mergeGoalTasks(primary, extras) {
   const out = { ...primary }
   for (const [lid, extra] of Object.entries(extras)) {
@@ -10464,4 +10463,4 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
 
 }
 
-export const algebraSubGoalTasks = mergeGoalTasks(handwrittenAlgebraSubGoalTasks, algebraSupplementExtras)
+export const algebraSubGoalTasks = mergeGoalTasks(handwrittenAlgebraSubGoalTasks, algebraExtraGoalTasks)

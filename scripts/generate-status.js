@@ -306,7 +306,7 @@ for (const row of perTopic) {
   out.push(`- Phase: **${phaseLabel(topic.id)}** · Level: ${topic.level ?? '—'} · Exam-Relevanz: ${topic.examRelevance ?? '—'}`)
   out.push(`- Units: ${topic.units?.length ?? 0}${hasExamUnit ? (lastIsExam ? ' (Prüfung am Ende ✅)' : ' (⚠ Prüfung nicht letzte Unit)') : ' (⚠ keine Prüfungs-Unit)'}`)
   out.push(`- Lessons: ${perLesson.length}`)
-  out.push(`- Aufgaben: **${topicMetrics.total}** (Lesson-Path: ${topicMetrics.manual} · Goal-Tasks: ${topicMetrics.supplemental})`)
+  out.push(`- Aufgaben: **${topicMetrics.total}** (Lesson-Path: ${topicMetrics.lessonPath} · Goal-Tasks: ${topicMetrics.goalTasks})`)
   out.push(`- 4-Block: ${topicMetrics.fourBlock}/${topicMetrics.total} (${percent(topicMetrics.fourBlock, topicMetrics.total)} %) ${statusIcon(topicMetrics.fourBlock, topicMetrics.total)}`)
   out.push(`- MC-wAE: ${topicMetrics.mcWithWae}/${topicMetrics.mcTotal} (${percent(topicMetrics.mcWithWae, topicMetrics.mcTotal)} %) ${statusIcon(topicMetrics.mcWithWae, topicMetrics.mcTotal)}`)
   out.push(`- Sub-Goals: ${tSubGoalsCovered}/${tSubGoals} Goal-Tasks verknüpft ${statusIcon(tSubGoalsCovered, tSubGoals)}`)

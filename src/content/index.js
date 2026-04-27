@@ -136,7 +136,6 @@ function goalTaskExercises(lesson) {
         ...ex,
         id: `ex-${lesson.id}-goal-sg${idx}-${localIdx + 1}`,
         lessonId: lesson.id,
-        isSupplemental: true,
         isGoalTask: true,
         subGoalIndex: idx,
         subGoalLabel: subGoals[idx].label,
@@ -427,9 +426,9 @@ export function getAgentTasks() {
           blueprintIncomplete
         if (!needsAny) continue
 
-        const supplementFileKey = topic.id.replace(/-/g, '_')
+        const goalTaskFileKey = topic.id.replace(/-/g, '_')
         const targetFile = {
-          goalTasks: `src/content/subgoal_tasks/${supplementFileKey}.js`,
+          goalTasks: `src/content/subgoal_tasks/${goalTaskFileKey}.js`,
         }
 
         // Priorität: kritisch wenn <5 Aufgaben, hoch wenn <8, mittel sonst
@@ -475,7 +474,6 @@ export function getAgentTasks() {
             pedagogy: ex.pedagogy ?? null,
             subGoalIndex: typeof ex.subGoalIndex === 'number' ? ex.subGoalIndex : null,
             isGoalTask: Boolean(ex.isGoalTask),
-            isSupplemental: Boolean(ex.isSupplemental),
           })),
         })
       }

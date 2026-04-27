@@ -104,10 +104,10 @@ export const CURRICULUM_PHASES = [
  * gegen die tatsächliche Aufgabenzahl verglichen.
  *
  * Ausdrücklich kein Cap — Lessons dürfen (und sollen!) mehr als MIN haben.
- * Die Pipeline hängt ALLE verfügbaren manuellen Supplements an, unabhängig
- * vom Base-Count. Wer eine Klausur bestehen will, braucht Routine — Routine
- * kommt durch Menge. Ziel ist eine Typen-Mischung (MC, NI, TF, Matching,
- * Sorting) plus mindestens ein Mastery-Check am Ende.
+ * Die Pipeline hängt ALLE Goal-Tasks aus subgoal_tasks/<topic>.js an,
+ * unabhängig vom Base-Count. Wer eine Klausur bestehen will, braucht
+ * Routine — Routine kommt durch Menge. Ziel ist eine Typen-Mischung
+ * (MC, NI, TF, Matching, Sorting) plus mindestens ein Mastery-Check am Ende.
  */
 export const MIN_EXERCISES_PER_LESSON = 20
 
@@ -153,7 +153,7 @@ export const PEDAGOGY_STAGES = [
  * Contract HART durchsetzt. Für diese Topics gilt:
  *
  *   • Jede Lesson MUSS ein `blueprint`-Objekt tragen (s. Schema unten).
- *   • Jede Exercise (in unit*-Dateien, supplements/, subgoal_tasks/) MUSS
+ *   • Jede Exercise (in unit*-Dateien und subgoal_tasks/) MUSS
  *     ein `pedagogy: { stage, subGoal, uses }` tragen.
  *   • `blueprint.taskPlan[].uses` und `pedagogy.uses` dürfen nur Konzepte
  *     referenzieren, die zum Einsatzzeitpunkt bereits eingeführt sind
