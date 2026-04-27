@@ -2244,13 +2244,6 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         ],
         { stage: 'transfer', subGoal: 0, uses: ['pot-mult', 'pot-div'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      mc("Welche Regel passt zu x⁵ · x⁻²?", ["Exponenten addieren: x³","Exponenten multiplizieren: x⁻¹⁰","Basis addieren: 2x³","Exponenten subtrahieren: x⁷"], 0, "Bei gleicher Basis und Multiplikation werden die Exponenten addiert: 5 + (−2) = 3, also x³.", ["Die Basis ist in beiden Faktoren x.","Multiplikation gleicher Basen bedeutet Exponenten addieren."], {"1":"Exponenten multiplizieren gilt nur bei Potenz einer Potenz $(x^a)^b = x^{ab}$. Hier liegt aber Multiplikation zweier Potenzen mit gleicher Basis vor — also Exponenten addieren: $5+(-2)=3$.","2":"Basen addieren ist nicht erlaubt — $x^5 \\cdot x^{-2}$ ergibt nicht $2x^3$. Der Faktor bleibt 1, nur die Exponenten werden addiert: $x^3$.","3":"Subtraktion der Exponenten gilt bei Division $x^a/x^b = x^{a-b}$. Hier wird multipliziert, also addieren: $5+(-2)=3$, nicht $5-(-2)=7$."}, { stage: "apply-guided", subGoal: 0, uses: ["pot-mult"] }),
-      ni("Vereinfache (2x³)². Gib den Zahlenfaktor vor x⁶ an.", 4, 0, "", "(2x³)² = 2² · (x³)² = 4x⁶. Der Zahlenfaktor ist 4.", ["Die Klammer potenziert auch die 2.","(x³)² = x⁶."], { stage: "apply-independent", subGoal: 0, uses: ["pot-mult"] }),
-      tf("x⁴ + x⁴ lässt sich zu x⁸ vereinfachen.", false, "Falsch. x⁴ + x⁴ = 2x⁴. Exponenten addierst du bei Multiplikation, nicht bei Addition.", ["Hier steht ein Pluszeichen.","Teste mit x = 2."], { stage: "recognize", subGoal: 0, uses: ["pot-mult"] }),
-      sorting("Bringe die Vereinfachung von (3a²b⁻¹)² in die richtige Reihenfolge.", ["Klammer auf alle Faktoren anwenden","3² berechnen","(a²)² vereinfachen","(b⁻¹)² vereinfachen","Ergebnis 9a⁴b⁻² notieren"], [0,1,2,3,4], "(3a²b⁻¹)² = 3² · a⁴ · b⁻² = 9a⁴b⁻². Danach kann b⁻² optional als 1/b² geschrieben werden.", ["Die äußere 2 trifft jeden Faktor.","Negative Exponenten bleiben zunächst erlaubt."], { stage: "transfer", subGoal: 0, uses: ["pot-mult"] }),
-      mc("Welche Umformung ist falsch?", ["x³ · x⁴ = x¹²","(x³)⁴ = x¹²","x⁷ / x² = x⁵","x⁻² = 1/x²"], 0, "x³ · x⁴ = x⁷, weil bei gleicher Basis multipliziert und die Exponenten addiert werden. x¹² gehört zu (x³)⁴.", ["Vergleiche Multiplikation mit Potenz von Potenz.","Bei x³ · x⁴ steht keine äußere Klammerpotenz."], {"1":"$(x^3)^4 = x^{12}$ ist korrekt — Potenz einer Potenz multipliziert die Exponenten. Keine falsche Umformung.","2":"$x^7/x^2 = x^5$ ist korrekt: bei Division gleicher Basen werden Exponenten subtrahiert ($7-2=5$).","3":"$x^{-2} = 1/x^2$ ist die Definition des negativen Exponenten — völlig korrekt."}, { stage: "error-analysis", subGoal: 0, uses: ["pot-mult"] }),
-
     ],
     // [1] Potenz einer Potenz: (x^a)^b
     1: [
@@ -2575,10 +2568,6 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         ],
         { stage: 'transfer', subGoal: 3, uses: ['pot-quotient', 'pot-produkt'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      matching("Ordne die Potenzregel dem richtigen Ergebnis zu.", [{"left":"x² · x⁵","right":"x⁷"},{"left":"x⁸ / x³","right":"x⁵"},{"left":"(x²)³","right":"x⁶"}], "Multiplikation gleicher Basen addiert Exponenten, Division subtrahiert sie, Potenz von Potenz multipliziert sie.", ["Achte auf ·, / und Klammern.","Jede Operation hat eine andere Exponentenregel."], { stage: "transfer", subGoal: 3, uses: ["pot-produkt"] }),
-      ni("Vereinfache (10⁶ · 10⁻³) / 10². Gib den Exponenten von 10 im Ergebnis an.", 1, 0, "", "10⁶ · 10⁻³ / 10² = 10^(6−3−2) = 10¹. Der Exponent ist 1.", ["Multiplizieren: Exponenten addieren.","Dividieren: Exponenten subtrahieren."], { stage: "transfer", subGoal: 3, uses: ["pot-produkt"] }),
-
     ],
   },
 
@@ -2695,13 +2684,6 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         ],
         { stage: 'transfer', subGoal: 0, uses: ['wurzel-bruchpot'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      mc("Welche Schreibweise ist äquivalent zu √(a⁵) für a ≥ 0?", ["a^(5/2)","a^(2/5)","5a²","a⁵/² als Division durch 2 ohne Wurzelbezug"], 0, "√(a⁵) = (a⁵)^(1/2) = a^(5/2). Für a ≥ 0 ist die Potenzschreibweise eindeutig.", ["√x bedeutet x^(1/2).","Potenz von Potenz: Exponenten multiplizieren."], {"1":"Zähler und Nenner verdreht. Es gilt $\\sqrt[n]{a^m} = a^{m/n}$ — der Wurzelgrad $n$ steht im Nenner, die innere Potenz $m$ im Zähler. Hier: $\\sqrt{a^5} = a^{5/2}$, nicht $a^{2/5}$.","2":"Der 5er ist ein Exponent, kein Faktor — $\\sqrt{a^5} \\neq 5a^2$. Wurzel und Potenz kombinieren nach $a^{m/n}$, also $a^{5/2}$.","3":"Die Schreibweise $a^{5/2}$ als reine Division durch 2 ignoriert den Wurzelbezug. $5/2$ ist der gebrochene Exponent — untrennbar mit der Wurzel verknüpft: $a^{5/2} = \\sqrt{a^5}$."}, { stage: "apply-guided", subGoal: 0, uses: ["wurzel-bruchpot"] }),
-      ni("Vereinfache √75 = k√3. Gib k an.", 5, 0, "", "75 = 25 · 3, also √75 = √25 · √3 = 5√3. Damit ist k = 5.", ["Suche ein Quadrat in 75.","25 passt in 75."], { stage: "apply-independent", subGoal: 0, uses: ["wurzel-bruchpot"] }),
-      tf("Für alle reellen x gilt √(x²) = x.", false, "Falsch. √(x²) = |x|. Beispiel: x = −3 ergibt √9 = 3, aber x ist −3.", ["Die Wurzel liefert die nichtnegative Hauptwurzel.","Teste einen negativen Wert."], { stage: "recognize", subGoal: 0, uses: ["wurzel-bruchpot"] }),
-      sorting("Bringe die Vereinfachung von √(48a²) für a ≥ 0 in die richtige Reihenfolge.", ["48 als 16 · 3 schreiben","√16 herausziehen","√(a²) als a schreiben, weil a ≥ 0","Faktoren zusammenfassen","Ergebnis 4a√3 notieren"], [0,1,2,3,4], "√(48a²)=√(16·3·a²)=4a√3, wenn a ≥ 0 gilt.", ["Ziehe nur sichere Quadrate heraus.","Die Bedingung a ≥ 0 erlaubt √(a²)=a."], { stage: "transfer", subGoal: 0, uses: ["wurzel-bruchpot"] }),
-      mc("Welcher Schritt ist ohne Zusatzannahme falsch?", ["√(x²) = x","√(9x²) = 3|x|","x^(1/2) = √x für x ≥ 0","∛8 = 2"], 0, "Ohne x ≥ 0 gilt √(x²)=|x|. Das ist ein klassischer Vorzeichenfehler.", ["Die Wurzel ist nichtnegativ.","Was passiert bei x = −1?"], {"1":"$\\sqrt{9x^2} = 3|x|$ ist korrekt — die Konstante 9 kommt als 3 heraus, und $\\sqrt{x^2} = |x|$ gilt allgemein.","2":"$x^{1/2} = \\sqrt{x}$ für $x \\geq 0$ ist die Definition der Quadratwurzel als gebrochener Exponent. Korrekt.","3":"$\\sqrt[3]{8} = 2$ stimmt: $2^3 = 8$. Bei ungeraden Wurzeln ist das Vorzeichen unproblematisch."}, { stage: "error-analysis", subGoal: 0, uses: ["wurzel-bruchpot"] }),
-
     ],
     // [1] Rechenregeln / Summe-Falle / Vereinfachen
     1: [
@@ -2935,10 +2917,6 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         ],
         { stage: 'transfer', subGoal: 2, uses: ['nenner-rational', 'wurzel-vereinfachen'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      matching("Ordne Wurzelschreibweise und Potenzschreibweise zu.", [{"left":"√x","right":"x^(1/2)"},{"left":"∛x","right":"x^(1/3)"},{"left":"⁴√(x³)","right":"x^(3/4)"}], "Der Nenner des gebrochenen Exponenten ist der Wurzelgrad, der Zähler ist die Potenz im Radikanden.", ["Nenner = Wurzelgrad.","Zähler = innere Potenz."], { stage: "transfer", subGoal: 2, uses: ["nenner-rational"] }),
-      ni("Berechne 27^(2/3).", 9, 0, "", "27^(2/3) = (∛27)² = 3² = 9.", ["Erst die dritte Wurzel ziehen.","∛27 = 3."], { stage: "transfer", subGoal: 2, uses: ["nenner-rational"] }),
-
     ],
   },
 
@@ -3055,13 +3033,6 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         ],
         { stage: 'transfer', subGoal: 0, uses: ['log-spezialfaelle'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      mc("Was bedeutet log₂(32) = 5?", ["2⁵ = 32","5² = 32","32² = 5","2 + 5 = 32"], 0, "Der Logarithmus liefert den Exponenten. log₂(32)=5 bedeutet genau 2⁵=32.", ["Logarithmus fragt nach dem Exponenten.","Setze das Ergebnis als Hochzahl zur Basis 2."], {"1":"Basis und Exponent vertauscht: $5^2 = 25 \\neq 32$. Beim Logarithmus ist die Basis fest (hier 2) und der Logarithmuswert der gesuchte Exponent: $2^5 = 32$.","2":"$32^2 = 1024$, nicht 5. Der Logarithmus $\\log_2(32)$ sagt: Welche Hochzahl von 2 ergibt 32? Antwort: 5, also $2^5=32$.","3":"Addition hat mit Logarithmen nichts zu tun — $2+5=7$, nicht 32. $\\log_b(a)$ liefert den Exponenten, nicht die Summe."}, { stage: "apply-guided", subGoal: 0, uses: ["log-def"] }),
-      ni("Löse ln(x) = 2. Gib x näherungsweise an. Nutze e² ≈ 7,389.", 7.389, 0.01, "", "ln(x)=2 ist äquivalent zu x=e²≈7,389.", ["ln und eˣ sind Umkehrfunktionen.","Exponentiere beide Seiten mit e."], { stage: "apply-independent", subGoal: 0, uses: ["log-def"] }),
-      tf("ln(a · b) = ln(a) + ln(b) für a > 0 und b > 0.", true, "Richtig. Produkte werden im Logarithmus zu Summen. Das gilt aber nicht für ln(a + b).", ["Das Produktgesetz ist erlaubt.","Wichtig sind positive Argumente."], { stage: "recognize", subGoal: 0, uses: ["log-def"] }),
-      sorting("Bringe die Lösung von e^(2x) = 10 in die richtige Reihenfolge.", ["ln auf beide Seiten anwenden","ln(e^(2x)) = ln(10) schreiben","2x = ln(10) vereinfachen","durch 2 teilen","x = ln(10)/2 notieren"], [0,1,2,3,4], "ln ist die Umkehrfunktion von eˣ. Deshalb wird aus ln(e^(2x)) direkt 2x.", ["Die Umkehrfunktion löst den Exponenten.","Am Ende steht x alleine."], { stage: "transfer", subGoal: 0, uses: ["log-def"] }),
-      mc("Welche Umformung ist falsch?", ["ln(a + b) = ln(a) + ln(b)","ln(a · b) = ln(a) + ln(b)","ln(e³) = 3","e^(ln(5)) = 5"], 0, "Für Summen gibt es kein solches Logarithmusgesetz. Nur Produkte dürfen zu Summen werden.", ["Vergleiche mit dem Produktgesetz.","Teste a=b=1."], {"1":"$\\ln(a \\cdot b) = \\ln(a) + \\ln(b)$ ist das korrekte Produktgesetz. Gilt für $a,b>0$.","2":"$\\ln(e^3) = 3$ ist korrekt: $\\ln$ und $e^x$ sind Umkehrfunktionen, also $\\ln(e^x) = x$.","3":"$e^{\\ln(5)} = 5$ stimmt ebenfalls, weil $e^x$ und $\\ln$ Umkehrfunktionen sind: $e^{\\ln(a)} = a$ für $a > 0$."}, { stage: "error-analysis", subGoal: 0, uses: ["log-def"] }),
-
     ],
     // [1] Produktregel: ln(ab) = ln(a) + ln(b)
     1: [
@@ -3714,10 +3685,6 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         ],
         { stage: 'transfer', subGoal: 6, uses: ['log-umkehr', 'log-potenz'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      matching("Ordne die Logarithmusregeln zu.", [{"left":"ln(a · b)","right":"ln(a)+ln(b)"},{"left":"ln(a/b)","right":"ln(a)−ln(b)"},{"left":"ln(aʳ)","right":"r·ln(a)"}], "Produkt wird Summe, Quotient wird Differenz, Potenz wird Faktor vor dem Logarithmus.", ["Produkt/Summe, Quotient/Differenz.","Die Hochzahl wandert nach vorne."], { stage: "transfer", subGoal: 6, uses: ["log-umkehr"] }),
-      ni("Ein Wert wächst nach N(t)=N₀e^(0,2t). Nach welcher Zeit ist der Faktor e^(0,2t) = 2? Gib t mit ln(2)≈0,693 an.", 3.465, 0.02, "", "e^(0,2t)=2 → 0,2t=ln(2)≈0,693 → t≈3,465.", ["ln auf beide Seiten anwenden.","Teile am Ende durch 0,2."], { stage: "transfer", subGoal: 6, uses: ["log-umkehr"] }),
-
     ],
   },
 
@@ -3834,13 +3801,6 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         ],
         { stage: 'transfer', subGoal: 0, uses: ['iso-variable'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      mc("Welche Operation ist bei 4x − 7 = 13 der erste sinnvolle Schritt?", ["Auf beiden Seiten 7 addieren","Nur links 7 addieren","Durch 13 teilen","x durch 4 ersetzen"], 0, "Du willst den x-Term isolieren. Dazu addierst du auf beiden Seiten 7: 4x = 20.", ["Gleichung wie Waage denken.","Die −7 muss weg."], {"1":"Eine einseitige Addition zerstört die Äquivalenz der Gleichung. Man muss immer auf beiden Seiten dieselbe Operation ausführen (Waagemodell), sonst verändert sich die Lösungsmenge.","2":"Division durch 13 ergibt $4x/13 - 7/13 = 1$ — verkompliziert nur, ohne zu lösen. Gesucht ist die Isolation von $x$, nicht von 13.","3":"$x$ ist die Unbekannte, die du lösen willst — du darfst sie nicht durch 4 ersetzen. Das Ziel ist $x = ?$ am Ende, mit gültigen Äquivalenzumformungen."}, { stage: "apply-guided", subGoal: 0, uses: ["lin-form"] }),
-      ni("Löse 3(2x − 1) = 21. Gib x an.", 4, 0, "", "3(2x−1)=21 → 2x−1=7 → 2x=8 → x=4.", ["Teile zuerst durch 3.","Danach +1 und durch 2."], { stage: "apply-independent", subGoal: 0, uses: ["lin-form"] }),
-      tf("Bei einer linearen Gleichung darf man dieselbe Zahl auf beiden Seiten addieren, ohne die Lösungsmenge zu ändern.", true, "Richtig. Das ist eine Äquivalenzumformung. Genau deshalb bleibt die Gleichung gleichwertig.", ["Denke an die Waage.","Wichtig ist: auf beiden Seiten."], { stage: "recognize", subGoal: 0, uses: ["lin-form"] }),
-      sorting("Bringe den Lösungsweg für (x + 2)/5 = 4 in die richtige Reihenfolge.", ["Gleichung mit 5 multiplizieren","x + 2 = 20 erhalten","auf beiden Seiten 2 subtrahieren","x = 18 notieren","Probe einsetzen"], [0,1,2,3,4], "Brüche beseitigt man robust, indem man beide Seiten mit dem Nenner multipliziert. Die Probe verhindert Flüchtigkeitsfehler.", ["Erst den Nenner entfernen.","Die Probe kommt am Ende."], { stage: "transfer", subGoal: 0, uses: ["lin-form"] }),
-      mc("Was ist der Fehler in: 2x + 5 = 17 → 2x = 22 → x = 11?", ["Es wurde 5 addiert statt 5 subtrahiert","Man darf nie durch 2 teilen","17 wurde richtig zu 22","Die Lösung 11 ist korrekt"], 0, "Von 2x + 5 = 17 musst du 5 subtrahieren: 2x = 12, also x = 6.", ["Die +5 soll verschwinden.","Welche Gegenoperation braucht +5?"], {"1":"Doch, man darf durch 2 teilen — das ist eine gültige Äquivalenzumformung. Der Fehler liegt anderswo: bei 17 wurde +5 statt −5 gerechnet.","2":"17 wurde gerade falsch zu 22 — der Schritt hätte 17 − 5 = 12 ergeben müssen. Die +5 muss subtrahiert werden, nicht addiert.","3":"Die Lösung x = 11 stammt aus dem Fehler (+5 statt −5). Richtig: $x = 6$ (Probe: $2 \\cdot 6 + 5 = 17$ ✓)."}, { stage: "error-analysis", subGoal: 0, uses: ["lin-form"] }),
-
     ],
     // [1] Standardvorgehen
     1: [
@@ -4213,10 +4173,6 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
         ],
         { stage: 'transfer', subGoal: 3, uses: ['probe-einsetzen', 'iso-variable'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      matching("Ordne die Textgrößen einer Weg-Zeit-Aufgabe zu.", [{"left":"Weg","right":"v · t"},{"left":"Geschwindigkeit","right":"Weg / Zeit"},{"left":"Zeit","right":"Weg / Geschwindigkeit"}], "Viele lineare Textaufgaben entstehen aus s = v·t und einer unbekannten Zeit oder Strecke.", ["Einheiten helfen: km/h · h = km.","Löse die Formel bei Bedarf nach der gesuchten Größe."], { stage: "transfer", subGoal: 3, uses: ["probe-einsetzen"] }),
-      ni("Ein Behälter enthält 12 l. Er wird mit 3 l/min gefüllt. Nach wie vielen Minuten sind 30 l erreicht?", 6, 0, "min", "12 + 3t = 30 → 3t = 18 → t = 6 min.", ["Startwert plus Zuwachs pro Minute.","Stelle 12 + 3t = 30 auf."], { stage: "transfer", subGoal: 3, uses: ["probe-einsetzen"] }),
-
     ],
   },
 
@@ -4356,13 +4312,6 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
         ],
         { stage: 'transfer', subGoal: 0, uses: ['abc-formel', 'pq-formel'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      mc("Welche Methode ist für x² − 9 = 0 am schnellsten?", ["Differenz zweier Quadrate faktorisieren","Immer Newton-Verfahren","Logarithmieren","Beide Seiten quadrieren"], 0, "x² − 9 = (x−3)(x+3). Daraus folgen x = 3 und x = −3.", ["9 ist 3².","Nutze a² − b² = (a−b)(a+b)."], {"1":"Newton-Verfahren ist ein numerisches Näherungsverfahren — Overkill für eine simple quadratische Gleichung. Hier genügt eine direkte Faktorisierung $x^2 = 9 \\Rightarrow x = \\pm 3$.","2":"Logarithmen helfen bei Gleichungen mit $x$ im Exponenten ($a^x = c$), nicht bei Polynomen. $x^2 = 9$ löst man durch Wurzelziehen: $x = \\pm 3$.","3":"Quadrieren beider Seiten erzeugt oft Scheinlösungen und hilft hier nicht — die Gleichung ist bereits quadratisch. Die Differenz zweier Quadrate ist die eleganteste Methode."}, { stage: "apply-guided", subGoal: 0, uses: ["quad-form"] }),
-      ni("Berechne die Diskriminante D von x² − 4x + 5 = 0.", -4, 0, "", "Hier ist a=1, b=−4, c=5. D=b²−4ac=16−20=−4.", ["D = b² − 4ac.","b = −4, also b² = 16."], { stage: "apply-independent", subGoal: 0, uses: ["quad-form"] }),
-      tf("Wenn die Diskriminante einer quadratischen Gleichung negativ ist, gibt es keine reellen Lösungen.", true, "Richtig. Die Wurzel aus einer negativen Diskriminante ist im Reellen nicht definiert.", ["In der Lösungsformel steht √D.","Was passiert bei D < 0 in ℝ?"], { stage: "recognize", subGoal: 0, uses: ["quad-form"] }),
-      sorting("Bringe das Faktorisieren von x² − 5x + 6 = 0 in die richtige Reihenfolge.", ["Zwei Zahlen mit Produkt 6 suchen","Zusätzlich Summe 5 prüfen","Zahlen 2 und 3 erkennen","(x−2)(x−3)=0 schreiben","x=2 oder x=3 notieren"], [0,1,2,3,4], "Bei x² − 5x + 6 sucht man 2 und 3, weil 2·3=6 und 2+3=5. Wegen des Minuszeichens entstehen (x−2)(x−3).", ["Vieta hilft.","Achte auf die Vorzeichen im Faktor."], { stage: "transfer", subGoal: 0, uses: ["quad-form"] }),
-      mc("Welche Aussage ist falsch?", ["D = 0 bedeutet keine reelle Lösung","D < 0 bedeutet keine reelle Lösung","D > 0 bedeutet zwei reelle Lösungen","D = 0 bedeutet eine doppelte reelle Lösung"], 0, "D = 0 bedeutet genau eine doppelte reelle Lösung, nicht keine Lösung.", ["√0 ist definiert.","Dann fallen + und − in der Formel zusammen."], {"1":"$D < 0$ bedeutet tatsächlich keine reelle Lösung, weil $\\sqrt{D}$ im Reellen nicht existiert. Aussage korrekt.","2":"$D > 0$ liefert zwei verschiedene reelle Lösungen durch $\\pm\\sqrt{D}$. Aussage korrekt.","3":"$D = 0$ liefert eine doppelte Lösung (Parabel berührt x-Achse) — korrekt. Bei $\\pm\\sqrt{0}$ fallen beide Lösungen zusammen."}, { stage: "error-analysis", subGoal: 0, uses: ["quad-form"] }),
-
     ],
     // [1] Diskriminante
     1: [
@@ -4693,10 +4642,6 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
         ],
         { stage: 'transfer', subGoal: 3, uses: ['faktor-form', 'vieta'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      matching("Ordne die Diskriminante der Anzahl reeller Lösungen zu.", [{"left":"D > 0","right":"zwei reelle Lösungen"},{"left":"D = 0","right":"eine doppelte reelle Lösung"},{"left":"D < 0","right":"keine reelle Lösung"}], "Die Diskriminante entscheidet, wie viele Schnittpunkte die Parabel mit der x-Achse hat.", ["D steht unter der Wurzel.","Null unter der Wurzel liefert eine doppelte Lösung."], { stage: "transfer", subGoal: 3, uses: ["faktor-form"] }),
-      ni("Ein Rechteck hat Fläche 24 m² und Länge x, Breite x−2. Löse x(x−2)=24. Gib die positive Länge x an.", 6, 0, "m", "x(x−2)=24 → x²−2x−24=0 → (x−6)(x+4)=0. Positive Länge: x=6 m.", ["Bringe alles auf eine Seite.","Suche Faktoren von −24 mit Summe −2."], { stage: "transfer", subGoal: 3, uses: ["faktor-form"] }),
-
     ],
   },
 
@@ -4813,13 +4758,6 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
         ],
         { stage: 'transfer', subGoal: 0, uses: ['rat-wurzel'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      mc("Wenn P(3) = 0 gilt, welcher Faktor gehört zu P(x)?", ["(x − 3)","(x + 3)","(3x − 1)","(x − P)"], 0, "Nach dem Faktorsatz gilt: P(3)=0 genau dann, wenn (x−3) ein Faktor von P(x) ist.", ["Nullstelle x₀ führt zu Faktor (x−x₀).","Setze x=3 in den Faktor ein."], {"1":"Vorzeichenfehler: Nullstelle $x_0$ führt zum Faktor $(x - x_0)$. Bei $x_0 = 3$ ist das $(x - 3)$, nicht $(x + 3)$. $(x+3)$ gehört zur Nullstelle $x_0 = -3$.","2":"$(3x - 1)$ wird null bei $x = 1/3$, nicht bei $x = 3$. Linearfaktoren haben die Standardform $(x - x_0)$ mit Koeffizient 1 vor $x$.","3":"$(x - P)$ ist keine sinnvolle Schreibweise — $P$ ist das Polynom selbst, nicht die Nullstelle. Der Linearfaktor heißt $(x - x_0)$ mit konkretem Zahlenwert für $x_0$."}, { stage: "apply-guided", subGoal: 0, uses: ["rat-wurzel"] }),
-      ni("Berechne P(2) für P(x)=x³−4x.", 0, 0, "", "P(2)=2³−4·2=8−8=0. Also ist x=2 eine Nullstelle.", ["Setze x = 2 ein.","2³ = 8."], { stage: "apply-independent", subGoal: 0, uses: ["rat-wurzel"] }),
-      tf("Wenn bei der Polynomdivision durch (x−1) ein Rest ungleich 0 bleibt, ist x=1 keine Nullstelle.", true, "Richtig. Der Rest ist P(1). Ist er nicht 0, liegt keine Nullstelle bei x=1 vor.", ["Restsatz: Rest bei Division durch (x−a) ist P(a).","Nullstelle bedeutet Funktionswert 0."], { stage: "recognize", subGoal: 0, uses: ["rat-wurzel"] }),
-      sorting("Bringe das Lösen von P(x)=x³−3x²−4x+12 in die richtige Reihenfolge.", ["Einfache Nullstelle testen","P(2)=0 erkennen","durch (x−2) dividieren","quadratischen Restfaktor lösen","alle Nullstellen notieren"], [0,1,2,3,4], "Nach einer gefundenen Nullstelle reduziert die Division den Grad. Danach bleiben meist quadratische Standardmethoden.", ["Teste kleine ganze Zahlen.","Erst nach einer Nullstelle dividieren."], { stage: "transfer", subGoal: 0, uses: ["rat-wurzel"] }),
-      mc("Welche Aussage ist falsch?", ["Aus x₀ = −5 folgt der Faktor (x − 5)","Aus x₀ = 5 folgt der Faktor (x − 5)","P(0)=0 bedeutet Faktor x","Rest 0 bedeutet passende Nullstelle"], 0, "Aus x₀ = −5 folgt der Faktor x − (−5) = x + 5.", ["Achte auf das doppelte Minus.","Der Faktor muss bei x = −5 zu 0 werden."], {"1":"Aus $x_0 = 5$ folgt korrekt $(x - 5)$: Setze $x=5$ ein, Faktor wird null. Die Aussage ist richtig.","2":"$P(0) = 0$ bedeutet, dass $x = 0$ eine Nullstelle ist, also $(x - 0) = x$ ein Faktor ist. Korrekt.","3":"Rest 0 bei Polynomdivision durch $(x - x_0)$ bedeutet per Restsatz $P(x_0) = 0$, also Nullstelle. Korrekt."}, { stage: "error-analysis", subGoal: 0, uses: ["rat-wurzel"] }),
-
     ],
     // [1] Polynomdivision
     1: [
@@ -5396,10 +5334,6 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
         ],
         { stage: 'transfer', subGoal: 5, uses: ['cardano-info', 'rat-wurzel'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      matching("Ordne Nullstelle und Linearfaktor zu.", [{"left":"x₀ = 4","right":"x − 4"},{"left":"x₀ = −2","right":"x + 2"},{"left":"x₀ = 0","right":"x"}], "Der Linearfaktor lautet immer x − x₀. Bei negativen Nullstellen wird daraus ein Plus.", ["Setze die Nullstelle in den Faktor ein.","Der Faktor muss dann 0 werden."], { stage: "transfer", subGoal: 5, uses: ["cardano-info"] }),
-      ni("P(x)=x³−6x²+11x−6 hat die Nullstelle x=1. Nach Division bleibt x²−5x+6. Gib die kleinere weitere Nullstelle an.", 2, 0, "", "x²−5x+6=(x−2)(x−3). Die weiteren Nullstellen sind 2 und 3, die kleinere ist 2.", ["Faktorisiere den quadratischen Rest.","Produkt 6, Summe 5."], { stage: "transfer", subGoal: 5, uses: ["cardano-info"] }),
-
     ],
   },
 
@@ -5516,13 +5450,6 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
         ],
         { stage: 'transfer', subGoal: 0, uses: ['ungl-zeichen-flip'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      mc("Was passiert mit dem Zeichen, wenn du −2x > 8 durch −2 teilst?", ["Es dreht sich um: x < −4","Es bleibt gleich: x > −4","Es verschwindet","Es wird zu ="], 0, "Beim Dividieren durch eine negative Zahl dreht sich das Ungleichheitszeichen um: x < −4.", ["Negative Zahl beim Teilen.","Das Zeichen muss kippen."], {"1":"Beim Dividieren durch eine negative Zahl dreht sich das Zeichen um — nicht wegignorieren. Aus $-2x > 8$ folgt $x < -4$, nicht $x > -4$ (Probe: $x = -5$: $-2 \\cdot (-5) = 10 > 8$ ✓).","2":"Das Zeichen verschwindet nicht — es bleibt erhalten, aber gedreht. Division durch negative Zahlen erhält die Relation nicht, sie kehrt sich um.","3":"Ungleichheitszeichen werden nicht zu Gleichheitszeichen bei Äquivalenzumformungen. Division durch −2 lässt $>$ zu $<$ werden, nicht zu $=$."}, { stage: "apply-guided", subGoal: 0, uses: ["ungl-zeichen-flip"] }),
-      ni("Löse 5 − 2x ≤ 11. Gib die Grenzzahl an.", -3, 0, "", "5−2x≤11 → −2x≤6 → beim Teilen durch −2: x≥−3. Die Grenzzahl ist −3.", ["Subtrahiere zuerst 5.","Beim Teilen durch −2 Zeichen drehen."], { stage: "apply-independent", subGoal: 0, uses: ["ungl-zeichen-flip"] }),
-      tf("|x − 4| < 2 bedeutet 2 < x < 6.", true, "Richtig. Der Abstand von x zu 4 ist kleiner als 2, also liegt x zwischen 2 und 6.", ["Betrag als Abstand lesen.","Zwei Einheiten links und rechts von 4."], { stage: "recognize", subGoal: 0, uses: ["ungl-zeichen-flip"] }),
-      sorting("Bringe die Lösung von x² − 1 ≥ 0 in die richtige Reihenfolge.", ["Nullstellen −1 und 1 bestimmen","Zahlengerade in Intervalle teilen","Vorzeichen in jedem Intervall prüfen","Außenintervalle als positiv erkennen","Lösung x ≤ −1 oder x ≥ 1 notieren"], [0,1,2,3,4], "x²−1=(x−1)(x+1). Das Produkt ist außerhalb der Nullstellen positiv und zwischen ihnen negativ.", ["Erst Nullstellen, dann Intervalle.","Die Parabel öffnet nach oben."], { stage: "transfer", subGoal: 0, uses: ["ungl-zeichen-flip"] }),
-      mc("Welche Lösung ist falsch?", ["−4x < 8 → x < −2","−4x < 8 → x > −2","x + 5 ≥ 9 → x ≥ 4","|x| ≤ 2 → −2 ≤ x ≤ 2"], 0, "Beim Teilen durch −4 muss das Zeichen drehen: −4x<8 → x>−2.", ["Negative Division.","Das Zeichen muss wechseln."], {"1":"$-4x < 8 \\Rightarrow x > -2$ ist richtig (Zeichen dreht bei negativer Division). Korrekte Umformung.","2":"$x + 5 \\geq 9 \\Rightarrow x \\geq 4$: beidseitig 5 abziehen, Zeichen bleibt. Korrekt.","3":"$|x| \\leq 2 \\Rightarrow -2 \\leq x \\leq 2$: Betrag kleiner gleich liefert ein Doppelintervall um 0. Korrekt."}, { stage: "error-analysis", subGoal: 0, uses: ["ungl-zeichen-flip"] }),
-
     ],
     // [1] Betragsungleichung |x-a| < b
     1: [
@@ -6086,10 +6013,6 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
         ],
         { stage: 'transfer', subGoal: 5, uses: ['bruch-ungl-pol'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      matching("Ordne Ungleichung und Lösungsmenge zu.", [{"left":"x − 3 > 2","right":"x > 5"},{"left":"−x ≥ 4","right":"x ≤ −4"},{"left":"|x| < 3","right":"−3 < x < 3"}], "Lineare Ungleichungen brauchen Äquivalenzumformungen; Beträge beschreiben Abstände.", ["Beim negativen Faktor Zeichen drehen.","Betrag kleiner bedeutet Intervall zwischen zwei Grenzen."], { stage: "transfer", subGoal: 5, uses: ["bruch-ungl-pol"] }),
-      ni("Löse |2x| ≤ 10. Gib die obere Grenze der Lösungsmenge an.", 5, 0, "", "|2x|≤10 → −10≤2x≤10 → −5≤x≤5. Die obere Grenze ist 5.", ["Betrag kleiner/gleich wird zu einem Doppelintervall.","Teile danach durch 2."], { stage: "transfer", subGoal: 5, uses: ["bruch-ungl-pol"] }),
-
     ],
   },
 
@@ -6222,13 +6145,6 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
         ],
         { stage: 'transfer', subGoal: 0, uses: ['fkt-def'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      mc("Welche Zuordnung ist keine Funktion?", ["x=1 wird sowohl y=2 als auch y=3 zugeordnet","x=1 wird y=2 zugeordnet","x=2 wird y=4 zugeordnet","jedem x wird genau ein y zugeordnet"], 0, "Eine Funktion darf jedem Eingang genau einen Ausgang zuordnen. Zwei Ausgänge für denselben Eingang verletzen die Definition.", ["Fokus auf denselben x-Wert.","Eine Funktion ist eindeutig."], {"1":"$x=1 \\to y=2$ ist eine gültige Einzelzuordnung einer Funktion. Funktionen bilden jedes $x$ auf genau ein $y$ ab — diese erfüllt die Definition.","2":"$x=2 \\to y=4$ ist eine ordnungsgemäße Funktionszuordnung: eindeutig und wohldefiniert.","3":"Diese Beschreibung \"jedem x wird genau ein y zugeordnet\" ist gerade die Definition einer Funktion — damit ist sie keine Verletzung."}, { stage: "apply-guided", subGoal: 0, uses: ["fkt-def"] }),
-      ni("Für f(x)=2x²−1: Berechne f(3).", 17, 0, "", "f(3)=2·3²−1=18−1=17.", ["Setze x=3 ein.","3² = 9."], { stage: "apply-independent", subGoal: 0, uses: ["fkt-def"] }),
-      tf("f(x)=x² ist auf ℝ nicht injektiv.", true, "Richtig. Zum Beispiel f(2)=4 und f(−2)=4. Verschiedene Eingaben führen zum gleichen Ausgang.", ["Injektiv bedeutet: verschiedene x liefern verschiedene y.","Teste 2 und −2."], { stage: "recognize", subGoal: 0, uses: ["fkt-def"] }),
-      mc("Welcher Schritt muss bei der Funktionsprüfung einer Zuordnung zwingend als erstes erfolgen?", ["Eindeutigkeit prüfen – hat jeder Eingang genau einen Ausgang?","Wertebereich bestimmen","Definitionsbereich notieren","Den Graphen zeichnen"], 0, "Die Eindeutigkeit ist das Kernkriterium einer Funktion. Erst wenn jeder Eingang genau einen Ausgang hat, macht es Sinn, Definitions- und Wertebereich zu bestimmen.", ["Eine Funktion ist per Definition eindeutig.","Ohne Eindeutigkeitsprüfung ist alles Weitere sinnlos."], {"1":"Der Wertebereich folgt nach der Eindeutigkeitsprüfung — sonst bestimmt man den Wertebereich einer Nicht-Funktion. Eindeutigkeit ist die Voraussetzung für alle weiteren Schritte.","2":"Den Definitionsbereich kann man erst sinnvoll festlegen, wenn feststeht, dass es überhaupt eine Funktion ist. Zuerst Eindeutigkeit prüfen.","3":"Graph zeichnen ist eine Visualisierung, kein Formalitätstest. Zudem setzt ein sinnvoller Graph die Funktionseigenschaft (Eindeutigkeit) voraus."}, { stage: "transfer", subGoal: 0, uses: ["fkt-def"] }),
-      mc("Welche Aussage ist falsch?", ["Eine Funktion darf einem x-Wert beliebig viele y-Werte zuordnen","Eine Funktion hat einen Definitionsbereich","f(2) ist der Funktionswert bei x=2","Bijektiv bedeutet injektiv und surjektiv"], 0, "Eine Funktion ist eindeutig: Jeder x-Wert bekommt genau einen y-Wert.", ["Das Wort genau ist entscheidend.","Viele y für ein x ist verboten."], {"1":"Jede Funktion hat einen Definitionsbereich — das ist ein Grundbestandteil der Definition. Aussage korrekt.","2":"$f(2)$ ist per Notation der Funktionswert bei $x = 2$. Standard-Schreibweise, korrekt.","3":"Bijektiv ist definitionsgemäß \"injektiv und surjektiv\" — beide Eigenschaften zusammen. Korrekt."}, { stage: "error-analysis", subGoal: 0, uses: ["fkt-def"] }),
-
     ],
     // [1] Definitionsbereich
     1: [
@@ -6484,10 +6400,6 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
         ],
         { stage: 'transfer', subGoal: 2, uses: ['bijektiv'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      matching("Ordne die Funktionsbegriffe zu.", [{"left":"Definitionsbereich","right":"erlaubte x-Werte"},{"left":"Wertebereich","right":"mögliche y-Werte"},{"left":"bijektiv","right":"injektiv und surjektiv"}], "Diese Begriffe sind Grundlage für Umkehrfunktionen und Modellfunktionen.", ["Definition = Eingaben.","Wertebereich = Ausgaben."], { stage: "transfer", subGoal: 2, uses: ["injektiv"] }),
-      ni("Für f(x)=x² mit Definitionsbereich x≥0: Berechne den x-Wert, der f(x)=25 liefert.", 5, 0, "", "Bei x≥0 gilt x²=25 → x=5. Die negative Lösung −5 liegt nicht im Definitionsbereich.", ["Beachte den Definitionsbereich.","Nur die nichtnegative Lösung ist erlaubt."], { stage: "transfer", subGoal: 2, uses: ["injektiv"] }),
-
     ],
   },
 
@@ -6614,13 +6526,6 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
         ],
         { stage: 'transfer', subGoal: 0, uses: ['potenz-fkt'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      mc("Welche Funktion ist eine Exponentialfunktion?", ["f(x)=3·2ˣ","f(x)=x²","f(x)=ln(x)","f(x)=2x+1"], 0, "Bei einer Exponentialfunktion steht die Variable im Exponenten. Das ist bei 3·2ˣ der Fall.", ["Suche x in der Hochzahl.","x² ist eine Potenzfunktion."], {"1":"$f(x) = x^2$ ist eine Potenzfunktion — $x$ steht in der Basis, nicht im Exponenten. Bei Exponentialfunktionen wie $2^x$ steht $x$ oben.","2":"$\\ln(x)$ ist die Logarithmusfunktion (Umkehrfunktion von $e^x$), keine Exponentialfunktion. Sie wächst extrem langsam, Exponentialfunktionen extrem schnell.","3":"$f(x) = 2x + 1$ ist eine lineare Funktion — Polynom vom Grad 1. Bei Exponentialfunktionen steht $x$ im Exponenten, nicht als linearer Koeffizient."}, { stage: "apply-guided", subGoal: 0, uses: ["potenz-fkt"] }),
-      ni("Berechne f(0) für f(x)=5eˣ.", 5, 0, "", "e⁰=1, daher f(0)=5·1=5.", ["Jede positive Basis hoch 0 ist 1.","e⁰ = 1."], { stage: "apply-independent", subGoal: 0, uses: ["potenz-fkt"] }),
-      tf("ln(x) hat im Reellen den Definitionsbereich x > 0.", true, "Richtig. Der natürliche Logarithmus ist im Reellen nur für positive Argumente definiert.", ["Logarithmusargumente müssen positiv sein.","x=0 ist nicht erlaubt."], { stage: "recognize", subGoal: 0, uses: ["potenz-fkt"] }),
-      sorting("Sortiere das Wachstum für große positive x von langsam nach schnell.", ["ln(x)","x","x²","2ˣ"], [0,1,2,3], "Für große x wächst ln(x) sehr langsam, lineare Funktionen schneller, Polynome noch schneller und Exponentialfunktionen am schnellsten.", ["Logarithmus wächst sehr langsam.","Exponential schlägt Potenzen langfristig."], { stage: "transfer", subGoal: 0, uses: ["potenz-fkt"] }),
-      mc("Welche Aussage ist falsch?", ["ln(−1) ist im Reellen definiert","eˣ ist für alle reellen x positiv","x² ist eine Potenzfunktion","2ˣ ist eine Exponentialfunktion"], 0, "ln(−1) ist im Reellen nicht definiert, weil das Argument negativ ist.", ["Prüfe das Logarithmusargument.","Es muss positiv sein."], {"1":"$e^x > 0$ für alle $x \\in \\mathbb{R}$ ist korrekt — die Exponentialfunktion ist stets positiv. Selbst $e^{-100}$ ist positiv.","2":"$x^2$ ist tatsächlich eine Potenzfunktion: $x$ steht in der Basis, Exponent fest bei 2. Korrekt klassifiziert.","3":"$2^x$ hat $x$ im Exponenten — klassische Exponentialfunktion mit Basis 2. Korrekt."}, { stage: "error-analysis", subGoal: 0, uses: ["potenz-fkt"] }),
-
     ],
     // [1] Exponentialfunktion
     1: [
@@ -7201,10 +7106,6 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
         ],
         { stage: 'transfer', subGoal: 5, uses: ['wurzel-fkt'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      matching("Ordne Funktion und Typ zu.", [{"left":"x³","right":"Potenzfunktion"},{"left":"2ˣ","right":"Exponentialfunktion"},{"left":"ln(x)","right":"Logarithmusfunktion"}], "Der Ort der Variable entscheidet oft über den Funktionstyp: Basis, Exponent oder Logarithmusargument.", ["x in der Basis: Potenzfunktion.","x im Exponenten: Exponentialfunktion."], { stage: "transfer", subGoal: 5, uses: ["wurzel-fkt"] }),
-      ni("Eine Größe verdoppelt sich nach N(t)=3·2ᵗ. Berechne N(4).", 48, 0, "", "N(4)=3·2⁴=3·16=48.", ["Setze t=4 ein.","2⁴ = 16."], { stage: "transfer", subGoal: 5, uses: ["wurzel-fkt"] }),
-
     ],
   },
 
@@ -7327,13 +7228,6 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
         ],
         { stage: 'transfer', subGoal: 0, uses: ['trafo-hor-verschieben'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      mc("Was macht g(x)=f(x−4)+2 mit dem Graphen von f?", ["4 nach rechts und 2 nach oben","4 nach links und 2 nach unten","4 nach rechts und 2 nach unten","4 nach links und 2 nach oben"], 0, "x−4 im Argument verschiebt nach rechts um 4. +2 außerhalb verschiebt nach oben um 2.", ["Innen ist horizontal und wirkt scheinbar gegen das Vorzeichen.","Außen ist vertikal und direkt."], {"1":"Beide Richtungen falsch: $f(x-4)$ verschiebt nach rechts (nicht links), $+2$ außen verschiebt nach oben (nicht unten). Innen wirkt gegenläufig zum Vorzeichen, außen direkt.","2":"$+2$ außerhalb verschiebt nach oben, nicht nach unten. Nach unten wäre $-2$ außen. Horizontale Richtung stimmt hier, vertikale nicht.","3":"$x-4$ verschiebt nach rechts (nicht links) — das Vorzeichen im Argument wirkt gegenläufig. $f(x+4)$ würde nach links verschieben."}, { stage: "apply-guided", subGoal: 0, uses: ["trafo-hor-verschieben"] }),
-      ni("Für f(x)=x² und g(x)=3f(x): Berechne g(2).", 12, 0, "", "g(2)=3f(2)=3·2²=12.", ["Erst f(2) berechnen.","Danach mit 3 strecken."], { stage: "apply-independent", subGoal: 0, uses: ["trafo-hor-verschieben"] }),
-      tf("g(x)=f(x)+5 verschiebt den Graphen von f um 5 nach oben.", true, "Richtig. Eine Addition außerhalb der Funktion verändert die y-Werte direkt.", ["Außerhalb von f wirkt vertikal.","Alle y-Werte werden um 5 größer."], { stage: "recognize", subGoal: 0, uses: ["trafo-hor-verschieben"] }),
-      sorting("Bringe das Aufstellen von g(x) aus f(x)=x² bei Verschiebung 2 nach rechts und 1 nach unten in die richtige Reihenfolge.", ["Ausgangsfunktion f(x)=x² nehmen","Rechtsverschiebung als (x−2) einsetzen","Abwärtsverschiebung als −1 außen ergänzen","g(x)=(x−2)²−1 notieren"], [0,1,2,3], "Nach rechts verschieben heißt im Argument x−2. Nach unten verschieben heißt außen −1.", ["Horizontale Verschiebung steht im Argument.","Vertikale Verschiebung steht außerhalb."], { stage: "transfer", subGoal: 0, uses: ["trafo-hor-verschieben"] }),
-      mc("Welche Interpretation ist falsch?", ["f(x−2) verschiebt um 2 nach links","f(x)+2 verschiebt um 2 nach oben","−f(x) spiegelt an der x-Achse","2f(x) streckt vertikal um Faktor 2"], 0, "f(x−2) verschiebt um 2 nach rechts, nicht nach links.", ["Innen wirkt scheinbar entgegengesetzt.","Teste den Scheitel von x²."], {"1":"$f(x) + 2$ verschiebt den Graphen um 2 nach oben — jeder $y$-Wert wird um 2 größer. Korrekt.","2":"$-f(x)$ spiegelt an der $x$-Achse: $y \\to -y$. Korrekt.","3":"$2f(x)$ streckt vertikal um Faktor 2: $y \\to 2y$. Korrekt."}, { stage: "error-analysis", subGoal: 0, uses: ["trafo-hor-verschieben"] }),
-
     ],
     // [1] Vertikale Verschiebung
     1: [
@@ -7914,10 +7808,6 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
         ],
         { stage: 'transfer', subGoal: 5, uses: ['fkt-komposition'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      matching("Ordne Transformation und Wirkung zu.", [{"left":"f(x)+3","right":"3 nach oben"},{"left":"f(x−3)","right":"3 nach rechts"},{"left":"−f(x)","right":"Spiegelung an der x-Achse"}], "Außen: vertikal. Innen: horizontal. Vorzeichen vor der Funktion: Spiegelung an der x-Achse.", ["Innen bei x ist horizontal.","Ein Minus vor f kippt y-Werte."], { stage: "transfer", subGoal: 5, uses: ["fkt-komposition"] }),
-      ni("Der Scheitel von f(x)=x² wird durch g(x)=(x−3)²+4 verschoben. Gib die x-Koordinate des neuen Scheitels an.", 3, 0, "", "g(x)=(x−3)²+4 hat den Scheitel bei (3,4). Die x-Koordinate ist 3.", ["Scheitelpunktform: (x−a)²+b.","a ist die x-Koordinate."], { stage: "transfer", subGoal: 5, uses: ["fkt-komposition"] }),
-
     ],
   },
 
@@ -8045,13 +7935,6 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
         ],
         { stage: 'transfer', subGoal: 0, uses: ['umkehr-existenz'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      mc("Welche Bedingung ist für eine eindeutige Umkehrfunktion nötig?", ["Die Funktion ist bijektiv auf dem betrachteten Bereich","Die Funktion hat nur positive Werte","Die Funktion ist immer quadratisch","Der Graph darf die y-Achse nie schneiden"], 0, "Eine Umkehrfunktion ist eindeutig, wenn jeder y-Wert genau zu einem x-Wert gehört. Das ist Bijektivität.", ["Umkehrung muss eindeutig zurückgehen.","Injektivität ist besonders wichtig."], {"1":"Positive Funktionswerte ($f(x) > 0$) sind nicht notwendig — $f(x) = x$ (auf $\\mathbb{R}$) hat negative Werte und ist trotzdem bijektiv. Die entscheidende Eigenschaft ist Bijektivität.","2":"Die Funktionsart (quadratisch, linear, exponentiell) spielt keine Rolle — entscheidend ist Bijektivität. Quadratische Funktionen sind auf $\\mathbb{R}$ sogar nicht bijektiv (nicht injektiv).","3":"Die $y$-Achse schneiden ist harmlos — $f(0)$ existiert bei vielen bijektiven Funktionen. Die eigentliche Bedingung ist, dass jeder $y$-Wert höchstens einmal angenommen wird (Injektivität)."}, { stage: "apply-guided", subGoal: 0, uses: ["umkehr-existenz"] }),
-      ni("Für f(x)=4x−7: Berechne f⁻¹(5).", 3, 0, "", "Setze 5=4x−7 → 4x=12 → x=3. Also f⁻¹(5)=3.", ["Frage: Welches x liefert f(x)=5?","Löse 4x−7=5."], { stage: "apply-independent", subGoal: 0, uses: ["umkehr-existenz"] }),
-      tf("Der Graph von f⁻¹ entsteht durch Spiegelung des Graphen von f an der Geraden y=x.", true, "Richtig. Beim Umkehren werden x- und y-Koordinaten vertauscht.", ["Umkehrung tauscht Ein- und Ausgabe.","Spiegelachse ist y=x."], { stage: "recognize", subGoal: 0, uses: ["umkehr-existenz"] }),
-      sorting("Bringe die Bestimmung von f⁻¹ für f(x)=2x+6 in die richtige Reihenfolge.", ["y = 2x + 6 schreiben","nach x auflösen: x = (y−6)/2","x und y vertauschen","f⁻¹(x) = (x−6)/2 notieren"], [0,1,2,3], "Die Standardmethode ist: y schreiben, nach x auflösen, Variablen tauschen.", ["Nicht sofort x und y tauschen.","Erst nach x isolieren."], { stage: "transfer", subGoal: 0, uses: ["umkehr-existenz"] }),
-      mc("Welche Aussage ist falsch?", ["f(x)=x² hat auf ganz ℝ die Umkehrfunktion √x","f(x)=x³ hat auf ℝ eine Umkehrfunktion","f(x)=eˣ hat die Umkehrfunktion ln(x)","Definitions- und Wertebereich werden bei der Umkehrung vertauscht"], 0, "x² ist auf ganz ℝ nicht injektiv, weil x und −x denselben Wert liefern. Erst mit Bereichseinschränkung ist eine Umkehrung eindeutig.", ["Teste x=2 und x=−2.","Beide liefern 4."], {"1":"$x^3$ ist auf ganz $\\mathbb{R}$ streng monoton steigend (Ableitung $3x^2 \\geq 0$) und damit bijektiv. Umkehrfunktion $\\sqrt[3]{x}$ existiert für alle $x$. Korrekt.","2":"$e^x$ und $\\ln(x)$ sind das klassische Umkehrpaar: $e^{\\ln(x)} = x$, $\\ln(e^x) = x$. Korrekt.","3":"Bei der Umkehrung werden Definitions- und Wertebereich tatsächlich vertauscht — aus Eingabe wird Ausgabe und umgekehrt. Korrekt."}, { stage: "error-analysis", subGoal: 0, uses: ["umkehr-existenz"] }),
-
     ],
     // [1] Berechnungsverfahren
     1: [
@@ -8633,10 +8516,6 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
         ],
         { stage: 'transfer', subGoal: 5, uses: ['umkehr-einschraenken', 'umkehr-verfahren'] },
       ),
-      // ── Migrierte Aufgaben (ehemals algebra_extras.js) ────────────────────
-      matching("Ordne Funktion und Umkehrfunktion zu.", [{"left":"f(x)=x+3","right":"f⁻¹(x)=x−3"},{"left":"f(x)=2x","right":"f⁻¹(x)=x/2"},{"left":"f(x)=eˣ","right":"f⁻¹(x)=ln(x)"}], "Umkehrfunktionen machen die ursprüngliche Operation rückgängig: +3 wird −3, ·2 wird /2, eˣ wird ln(x).", ["Denke rückwärts.","eˣ und ln(x) sind Umkehrpaare."], { stage: "transfer", subGoal: 5, uses: ["umkehr-einschraenken"] }),
-      ni("Für f(x)=√x mit Definitionsbereich x≥0: Berechne f⁻¹(9).", 81, 0, "", "Wenn y=√x, dann x=y². Also f⁻¹(y)=y² und f⁻¹(9)=81.", ["√x rückgängig machen heißt quadrieren.","Setze y=9 in y² ein."], { stage: "transfer", subGoal: 5, uses: ["umkehr-einschraenken"] }),
-
     ],
   },
 
