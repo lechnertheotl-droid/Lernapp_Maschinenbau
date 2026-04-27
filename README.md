@@ -69,7 +69,7 @@ src/
     engineering/    # Tech. Mechanik, Festigkeit, Thermodynamik, Fluid,
                     # Maschinenelemente, Werkstoffkunde
     programming/    # Python/Matlab
-    supplements/    # Manuelle Ergänzungs-Lektionen
+    subgoal_tasks/  # Goal-Tasks pro Sub-Goal (alle handgeschriebenen Aufgaben)
     _helpers/       # makeLesson(), makeUnit() — Lektions-Scaffold-Helper
   context/          # AppContext (State + Dispatch, typsicher), appReducer
   pages/            # Dashboard, LessonView, LessonSummary, TopicDetail,

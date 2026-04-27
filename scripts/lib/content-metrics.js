@@ -152,11 +152,10 @@ export function computeBlueprintCoverage(blueprint, exercises) {
 }
 
 /**
- * Sammelt alle Exercises einer Lesson (aus Unit-Map + aus Supplements +
- * aus Subgoal-Tasks). Bewusst flache Liste — Coverage-Match benötigt nur
- * `type` und `pedagogy`.
+ * Sammelt alle Exercises einer Lesson (aus Unit-Map + aus Subgoal-Tasks).
+ * Bewusst flache Liste — Coverage-Match benötigt nur `type` und `pedagogy`.
  */
-export function collectLessonExercises(topic, lesson, supplementalExercises = [], subGoalExercises = {}) {
+export function collectLessonExercises(topic, lesson, subGoalExercises = {}) {
   const result = []
   const unit = (topic.units ?? []).find((u) => u.lessons?.some((l) => l.id === lesson.id))
   if (unit?.exercises) {
@@ -166,7 +165,6 @@ export function collectLessonExercises(topic, lesson, supplementalExercises = []
       if (ex) result.push(ex)
     }
   }
-  for (const ex of supplementalExercises) result.push(ex)
   for (const arr of Object.values(subGoalExercises)) {
     if (Array.isArray(arr)) result.push(...arr)
   }

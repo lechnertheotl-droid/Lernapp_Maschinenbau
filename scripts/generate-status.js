@@ -5,7 +5,7 @@
  * src/content/subgoal_tasks/PROGRESS.md).
  *
  * Aggregiert pro Topic und pro Lesson:
- *   · Kennzahlen (Aufg. total, manuell, supplemental, 4-Block-Coverage)
+ *   · Kennzahlen (Aufg. total, Lesson-Path, Goal-Tasks, 4-Block-Coverage)
  *   · Sub-Goals + Goal-Task-Verknüpfung
  *   · MC-wrongAnswerExplanations-Coverage
  *   · Practice-Exercises-Zahl
@@ -306,7 +306,7 @@ for (const row of perTopic) {
   out.push(`- Phase: **${phaseLabel(topic.id)}** · Level: ${topic.level ?? '—'} · Exam-Relevanz: ${topic.examRelevance ?? '—'}`)
   out.push(`- Units: ${topic.units?.length ?? 0}${hasExamUnit ? (lastIsExam ? ' (Prüfung am Ende ✅)' : ' (⚠ Prüfung nicht letzte Unit)') : ' (⚠ keine Prüfungs-Unit)'}`)
   out.push(`- Lessons: ${perLesson.length}`)
-  out.push(`- Aufgaben: **${topicMetrics.total}** (manuell: ${topicMetrics.manual} · supplemental: ${topicMetrics.supplemental})`)
+  out.push(`- Aufgaben: **${topicMetrics.total}** (Lesson-Path: ${topicMetrics.manual} · Goal-Tasks: ${topicMetrics.supplemental})`)
   out.push(`- 4-Block: ${topicMetrics.fourBlock}/${topicMetrics.total} (${percent(topicMetrics.fourBlock, topicMetrics.total)} %) ${statusIcon(topicMetrics.fourBlock, topicMetrics.total)}`)
   out.push(`- MC-wAE: ${topicMetrics.mcWithWae}/${topicMetrics.mcTotal} (${percent(topicMetrics.mcWithWae, topicMetrics.mcTotal)} %) ${statusIcon(topicMetrics.mcWithWae, topicMetrics.mcTotal)}`)
   out.push(`- Sub-Goals: ${tSubGoalsCovered}/${tSubGoals} Goal-Tasks verknüpft ${statusIcon(tSubGoalsCovered, tSubGoals)}`)
@@ -462,9 +462,7 @@ function renderBlueprintCard(t, out) {
   }
 
   // 5) Ablage-Vorgabe.
-  out.push(`- **Ablage:**`)
-  out.push(`  - Goal-Tasks (mit Sub-Goal-Zuordnung): \`${t.targetFile.goalTasks}\` unter \`'${t.lessonId}': { 0: [...], 1: [...], ... }\``)
-  out.push(`  - Zusatz-Aufgaben (freie Vertiefung, nicht an Matrix gebunden): \`${t.targetFile.supplements}\``)
+  out.push(`- **Ablage:** \`${t.targetFile.goalTasks}\` unter \`'${t.lessonId}': { 0: [...], 1: [...], ... }\``)
 
   // 6) Qualitäts-Warnungen, die auch alte Checks abdecken.
   if (t.fourBlockMissing.length > 0) {
@@ -517,7 +515,7 @@ function renderLegacyCard(t, out) {
   }
   if (t.missing > 0) {
     out.push(`- **Zusatz-Aufgaben fehlen (mindestens):** ${t.missing} — gerne mehr, keine Obergrenze`)
-    out.push(`  - Ablage: \`${t.targetFile.supplements}\``)
+    out.push(`  - Ablage: \`${t.targetFile.goalTasks}\` (passenden Sub-Goal-Index wählen)`)
   }
   if (t.fourBlockMissing.length > 0) {
     out.push(`- **4-Block-Erklärung fehlt bei:** ${t.fourBlockMissing.slice(0, 8).map((id) => `\`${id}\``).join(', ')}${t.fourBlockMissing.length > 8 ? ` … (+${t.fourBlockMissing.length - 8} weitere)` : ''}`)
@@ -583,9 +581,8 @@ if (agentTasks.length > 0) {
   out.push(``)
   out.push(`### Ablage-Orte`)
   out.push(``)
-  out.push(`- **Supplement-Aufgaben (Standard-Vertiefung):** \`src/content/supplements/<topic>.js\` im Profile-Format (s. vorhandene Dateien als Vorlage; \`bank(profile)\` erzeugt 7 typen-gemischte Aufgaben + Erklärung pro Lesson).`)
-  out.push(`- **Goal-Tasks (pro Sub-Goal eine Aufgabe):** \`src/content/subgoal_tasks/<topic>.js\` mit Helfern aus \`./_helpers.js\` (\`mc/ni/tf/matching/sorting\`). Array-Länge MUSS \`lesson.subGoals.length\` entsprechen.`)
-  out.push(`- **Registrierung:** Neues Supplement-File in \`src/content/index.js\` importieren und in \`MANUAL_SUPPLEMENTS\` spreaden; neues Goal-Task-File entsprechend in \`SUBGOAL_EXERCISES\`.`)
+  out.push(`- **Goal-Tasks (alle neuen Aufgaben gehen hier hin):** \`src/content/subgoal_tasks/<topic>.js\` mit Helfern aus \`./_helpers.js\` (\`mc/ni/tf/matching/sorting\` + \`tag(...)\` für Pedagogy). Format: \`'lessonId': { 0: [ex, ex, ...], 1: [ex, ...], ... }\` — Sub-Goal-Index als Key, Array von Aufgaben als Value, beliebig viele Einträge pro SG.`)
+  out.push(`- **Registrierung:** Neues Goal-Task-File in \`src/content/index.js\` importieren und in \`SUBGOAL_EXERCISES\` spreaden.`)
   out.push(``)
   out.push(`### Nach dem Schreiben verifizieren`)
   out.push(``)
