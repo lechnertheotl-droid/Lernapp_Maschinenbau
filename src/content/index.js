@@ -37,6 +37,7 @@ import { elektrotechnikSubGoalTasks } from './subgoal_tasks/elektrotechnik'
 import { regelungstechnikSubGoalTasks } from './subgoal_tasks/regelungstechnik'
 import { pythonMatlabSubGoalTasks } from './subgoal_tasks/python_matlab'
 import { MIN_EXERCISES_PER_LESSON, MIN_TASKS_PER_SUB_GOAL, TOPIC_GUIDES, BLUEPRINT_ENFORCED_TOPICS, PEDAGOGY_STAGES } from './curriculum'
+import { FOUR_BLOCK_PATTERNS } from './_helpers/quality'
 
 // ── Registry ──────────────────────────────────────────────────────────────────
 // Sub-Goal-Zielaufgaben: pro Lesson ein Array, Index = Position im `subGoals`-Array
@@ -371,9 +372,8 @@ export function getAgentTasks() {
         const subGoalsMissingTasks = subGoalsCoverage.filter((sg) => sg.have < sg.target)
 
         // 4-Block-Lücken
-        const FOUR_BLOCK = [/\*\*Ansatz\s*:\*\*/i, /\*\*Rechnung\s*:\*\*/i, /\*\*Probe\s*:\*\*/i, /\*\*Typischer Fehler\s*:\*\*/i]
         const fourBlockMissing = exercises
-          .filter((e) => typeof e.explanation !== 'string' || !FOUR_BLOCK.every((p) => p.test(e.explanation)))
+          .filter((e) => typeof e.explanation !== 'string' || !FOUR_BLOCK_PATTERNS.every((p) => p.test(e.explanation)))
           .map((e) => e.id)
 
         // MC ohne vollständige wrongAnswerExplanations

@@ -4,17 +4,8 @@
  * Runtime-Content-Objekten aus src/content/index.js.
  */
 
-const FOUR_BLOCK_PATTERNS = [
-  /\*\*Ansatz\s*:\*\*/i,
-  /\*\*Rechnung\s*:\*\*/i,
-  /\*\*Probe\s*:\*\*/i,
-  /\*\*Typischer Fehler\s*:\*\*/i,
-]
-
-export function hasFourBlockExplanation(exercise) {
-  if (typeof exercise?.explanation !== 'string') return false
-  return FOUR_BLOCK_PATTERNS.every((p) => p.test(exercise.explanation))
-}
+import { hasFourBlockExplanation } from '../../src/content/_helpers/quality.js'
+export { hasFourBlockExplanation }
 
 export function isMcWithCompleteWae(exercise) {
   if (exercise?.type !== 'multiple-choice') return null
