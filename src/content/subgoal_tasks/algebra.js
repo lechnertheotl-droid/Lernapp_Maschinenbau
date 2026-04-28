@@ -4498,6 +4498,49 @@ In $20$ Jahren ist der Vater $60$, der Sohn $30$ — Vater doppelt so alt.
         ],
         { stage: 'transfer', subGoal: 0, uses: ['abc-formel', 'pq-formel'] },
       ),
+      ni(
+        'Löse die rein-quadratische Gleichung $x^2 - 16 = 0$ und gib die NEGATIVE Lösung an.',
+        -4, 0, '',
+        `**Ansatz:** Bei einer Gleichung der Form $x^2 = c$ mit $c > 0$ gibt es ZWEI Lösungen: $x = +\\sqrt{c}$ und $x = -\\sqrt{c}$.
+
+**Rechnung:**
+$$x^2 - 16 = 0 \\quad | +16 \\\\ x^2 = 16 \\quad | \\sqrt{} \\\\ x = \\pm 4$$
+
+Also $x_1 = 4, x_2 = -4$. Die negative Lösung ist $x = -4$.
+
+**Probe:** $(-4)^2 - 16 = 16 - 16 = 0$ ✓.
+
+**Typischer Fehler:** Nur $x = +4$ angeben — beim Wurzelziehen aus einer Gleichung muss IMMER das $\\pm$-Zeichen mitgeschrieben werden, weil sowohl $4^2 = 16$ als auch $(-4)^2 = 16$ gilt.`,
+        [
+          '$x^2 = 16$ — welche Zahlen quadriert ergeben $16$?',
+          '$\\sqrt{16} = 4$, aber $(-4)^2 = 16$ auch.',
+          'Antwort enthält beide Vorzeichen: $x = \\pm 4$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['quad-form'] },
+      ),
+      ni(
+        'Löse $\\dfrac{1}{2}x^2 - x - 4 = 0$ und gib die GRÖSSERE Lösung an.',
+        4, 0, '',
+        `**Ansatz:** Erst auf Normalform bringen (mit $2$ multiplizieren), dann pq-Formel.
+
+**Rechnung:**
+$$\\dfrac{1}{2}x^2 - x - 4 = 0 \\quad | \\cdot 2 \\\\ x^2 - 2x - 8 = 0$$
+
+pq-Formel mit $p = -2$, $q = -8$:
+$$x_{1,2} = 1 \\pm \\sqrt{1 + 8} = 1 \\pm 3$$
+
+Also $x_1 = 4$, $x_2 = -2$. Die größere Lösung ist $x = 4$.
+
+**Probe:** $\\dfrac{1}{2} \\cdot 16 - 4 - 4 = 8 - 8 = 0$ ✓.
+
+**Typischer Fehler:** pq-Formel direkt mit $p = -1$, $q = -4$ aus der Originalgleichung anwenden — das gilt aber nur in Normalform mit Leitkoeffizient $1$. Erst durch $\\frac{1}{2}$ teilen (= mit $2$ multiplizieren), dann ablesen.`,
+        [
+          'pq-Formel verlangt $x^2 + px + q = 0$ — Leitkoeffizient muss $1$ sein.',
+          'Multipliziere die Gleichung mit $2$.',
+          'Danach $p = -2$, $q = -8$ ablesen und einsetzen.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['abc-formel', 'pq-formel'] },
+      ),
     ],
     // [1] Diskriminante
     1: [
@@ -4607,6 +4650,56 @@ In $20$ Jahren ist der Vater $60$, der Sohn $30$ — Vater doppelt so alt.
           'Parabel nicht schneidend.',
         ],
         { stage: 'transfer', subGoal: 1, uses: ['diskriminante', 'abc-formel'] },
+      ),
+      ni(
+        'Für welchen Wert $k$ hat die Gleichung $x^2 + 4x + k = 0$ genau eine (doppelte) reelle Lösung?',
+        4, 0, '',
+        `**Ansatz:** Genau eine doppelte Lösung tritt auf, wenn $D = 0$. Setze die Diskriminante auf $0$ und löse nach $k$.
+
+**Rechnung:** Mit $a = 1$, $b = 4$, $c = k$:
+$$D = b^2 - 4ac = 16 - 4k \\stackrel{!}{=} 0 \\quad \\Rightarrow \\quad k = 4$$
+
+**Probe:** Setze $k = 4$ ein: $x^2 + 4x + 4 = (x + 2)^2 = 0 \\Rightarrow x = -2$ (doppelt). $D = 16 - 16 = 0$ ✓.
+
+**Typischer Fehler:** Bei $4ac$ den Faktor $4$ vergessen und $k = 16$ angeben (aus $b^2 = 16$, $D = 16 - k$). Achte darauf: $4 \\cdot a \\cdot c$, hier mit $a = 1$ also $4k$, nicht $k$.`,
+        [
+          'Doppelte Lösung ⇔ $D = 0$.',
+          'Diskriminante: $D = b^2 - 4ac$ mit $a=1$, $b=4$, $c=k$.',
+          'Setze $16 - 4k = 0$ und löse nach $k$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['diskriminante'] },
+      ),
+      mc(
+        'Welche der folgenden Gleichungen hat ZWEI verschiedene reelle Lösungen?',
+        [
+          '$x^2 - 6x + 5 = 0$',
+          '$x^2 - 6x + 9 = 0$',
+          '$x^2 + x + 1 = 0$',
+          '$2x^2 + 8 = 0$',
+        ],
+        0,
+        `**Ansatz:** Pro Gleichung die Diskriminante $D = b^2 - 4ac$ ausrechnen und das Vorzeichen prüfen — nur $D > 0$ liefert zwei verschiedene reelle Lösungen.
+
+**Rechnung:**
+- A: $D = 36 - 20 = 16 > 0$ — zwei Lösungen ($x = 1$ und $x = 5$). ✓
+- B: $D = 36 - 36 = 0$ — eine doppelte Lösung ($x = 3$).
+- C: $D = 1 - 4 = -3 < 0$ — keine reelle Lösung.
+- D: $2x^2 = -8$, also $x^2 = -4$ — keine reelle Lösung.
+
+**Probe:** Einsetzen in A: $1 - 6 + 5 = 0$ ✓ und $25 - 30 + 5 = 0$ ✓.
+
+**Typischer Fehler:** Bei B den Wert $D = 0$ als „zwei Lösungen" zählen, weil die abc-Formel $\\pm$ ausgibt. $\\pm 0$ gibt aber denselben Wert — eine doppelte Lösung, kein Lösungspaar.`,
+        [
+          'Berechne für jede Gleichung die Diskriminante $D = b^2 - 4ac$.',
+          'Nur $D > 0$ ergibt zwei verschiedene Lösungen.',
+          '$D = 0$ → eine doppelte; $D < 0$ → keine reelle.',
+        ],
+        {
+          1: '$D = 0$ — das ist die Schwelle, bei der Parabel und $x$-Achse sich genau berühren. Eine doppelte Lösung, nicht zwei verschiedene.',
+          2: '$D = -3 < 0$ — Parabel über der $x$-Achse, keine Schnittpunkte.',
+          3: '$2x^2 + 8 = 0 \\Rightarrow x^2 = -4$ — kein reelles $x$ erfüllt das, da $x^2 \\geq 0$.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['diskriminante'] },
       ),
     ],
     // [2] Vieta
@@ -4718,6 +4811,54 @@ In $20$ Jahren ist der Vater $60$, der Sohn $30$ — Vater doppelt so alt.
         ],
         { stage: 'transfer', subGoal: 2, uses: ['vieta'] },
       ),
+      ni(
+        'Eine quadratische Gleichung in Normalform $x^2 + px + q = 0$ hat die Lösungen $x_1 = -3$ und $x_2 = 7$. Wie groß ist $q$?',
+        -21, 0, '',
+        `**Ansatz:** Vieta: $q = x_1 \\cdot x_2$ (Produkt der Lösungen).
+
+**Rechnung:** $q = (-3) \\cdot 7 = -21$.
+
+**Probe:** Mit $p = -(x_1 + x_2) = -4$ und $q = -21$ ergibt sich $x^2 - 4x - 21 = 0$. Einsetzen: $9 + 12 - 21 = 0$ ✓ und $49 - 28 - 21 = 0$ ✓. Die Faktorisierung $(x + 3)(x - 7) = x^2 - 4x - 21$ bestätigt es.
+
+**Typischer Fehler:** Vorzeichen vergessen — $-3 \\cdot 7$ als $+21$ statt $-21$ schreiben. Bei Vieta wird das Produkt der Lösungen DIREKT als $q$ eingesetzt, mit allen Vorzeichen.`,
+        [
+          'Vieta für Normalform: $q = x_1 \\cdot x_2$.',
+          'Setze die gegebenen Lösungen ein.',
+          'Achte auf das Vorzeichen: Minus mal Plus = Minus.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['vieta'] },
+      ),
+      mc(
+        'Ein Schüler soll die Gleichung mit Lösungen $x_1 = 2$, $x_2 = 6$ in Normalform aufstellen und schreibt $x^2 + 8x + 12 = 0$. Wo liegt der Fehler?',
+        [
+          'Vorzeichen bei $-p$ vergessen: Mit $x_1 + x_2 = 8$ ist $-p = 8$, also $p = -8$. Korrekt: $x^2 - 8x + 12 = 0$.',
+          'Das Produkt $12$ ist falsch, es müsste $8$ sein.',
+          'Die Gleichung ist korrekt.',
+          'Vieta gilt nicht für positive Lösungen.',
+        ],
+        0,
+        `**Ansatz:** Vieta für Normalform: $x_1 + x_2 = -p$ und $x_1 \\cdot x_2 = q$. Beim Aufstellen aus den Lösungen muss das Vorzeichen von $p$ umgedreht werden.
+
+**Rechnung:** Mit $x_1 = 2$, $x_2 = 6$:
+$$-p = x_1 + x_2 = 8 \\Rightarrow p = -8 \\\\ q = x_1 \\cdot x_2 = 12$$
+
+Korrekte Gleichung: $x^2 - 8x + 12 = 0$.
+
+**Probe:** Einsetzen $x = 2$: $4 - 16 + 12 = 0$ ✓. Einsetzen $x = 6$: $36 - 48 + 12 = 0$ ✓.
+
+**Typischer Fehler:** Die Summe $x_1 + x_2 = 8$ direkt als $p$ in die Gleichung übernehmen — also $+p$ statt $-p$. Ergibt $x^2 + 8x + 12 = 0$, deren Lösungen aber $-2$ und $-6$ wären (alle Vorzeichen umgekehrt).`,
+        [
+          'Vieta: $x_1 + x_2 = -p$, NICHT $+p$.',
+          'Die Summe wird mit umgedrehtem Vorzeichen zum mittleren Koeffizienten.',
+          'Probe durch Einsetzen oder Faktorisieren $(x - x_1)(x - x_2)$.',
+        ],
+        {
+          1: 'Das Produkt $2 \\cdot 6 = 12$ ist korrekt — nicht der Fehler. Falsch ist das Vorzeichen bei $p$.',
+          2: 'Probe widerlegt: $4 + 16 + 12 = 32 \\neq 0$ für $x = 2$. Mit der falschen Gleichung ist $x = 2$ keine Lösung mehr.',
+          3: 'Vieta gilt für jede quadratische Gleichung in Normalform — Vorzeichen der Lösungen sind irrelevant.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['vieta'] },
+      ),
     ],
     // [3] Faktorisierte Form
     3: [
@@ -4827,6 +4968,55 @@ In $20$ Jahren ist der Vater $60$, der Sohn $30$ — Vater doppelt so alt.
           'Vorzeichen umkehren.',
         ],
         { stage: 'transfer', subGoal: 3, uses: ['faktor-form', 'vieta'] },
+      ),
+      ni(
+        'Die quadratische Gleichung $x^2 - 6x + 9 = 0$ hat eine doppelte Nullstelle. Wie lautet sie?',
+        3, 0, '',
+        `**Ansatz:** $x^2 - 6x + 9$ ist ein vollständiges Quadrat — erkennbar an $9 = 3^2$ und Mittelglied $-6x = -2 \\cdot 3 \\cdot x$. Faktorisierte Form: $(x - 3)^2$.
+
+**Rechnung:**
+$$x^2 - 6x + 9 = (x - 3)^2 = 0 \\quad \\Rightarrow \\quad x - 3 = 0 \\quad \\Rightarrow \\quad x = 3$$
+
+Die Nullstelle ist $x = 3$ und tritt **doppelt** auf (also mit Vielfachheit $2$).
+
+**Probe:** $9 - 18 + 9 = 0$ ✓. Außerdem: Diskriminante $D = 36 - 36 = 0$ — bestätigt doppelte Lösung.
+
+**Typischer Fehler:** Beide Vorzeichen schreiben ($x = \\pm 3$) wie bei rein-quadratischen Gleichungen — bei doppelter Nullstelle ist es aber nur EIN Wert. Aus $(x-3)^2 = 0$ folgt $x = +3$, NICHT $x = \\pm 3$.`,
+        [
+          'Erkenne ein vollständiges Quadrat: $a^2 - 2ab + b^2 = (a - b)^2$.',
+          'Hier: $x^2 - 2 \\cdot 3 \\cdot x + 3^2 = (x - 3)^2$.',
+          'Aus $(x - 3)^2 = 0$ folgt $x - 3 = 0$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['faktor-form'] },
+      ),
+      mc(
+        'Welche Normalform gehört zur faktorisierten Form $(x + 1)(x - 6)$?',
+        [
+          '$x^2 - 5x - 6$',
+          '$x^2 + 5x - 6$',
+          '$x^2 - 7x - 6$',
+          '$x^2 - 5x + 6$',
+        ],
+        0,
+        `**Ansatz:** Ausmultiplizieren mit der binomischen Verteilung.
+
+**Rechnung:**
+$$(x + 1)(x - 6) = x^2 - 6x + x - 6 = x^2 - 5x - 6$$
+
+**Probe:** Vieta-Check: $-1 + 6 = 5$, also $-p = 5 \\Rightarrow p = -5$ ✓. $(-1) \\cdot 6 = -6 = q$ ✓. Nullstellen $x_1 = -1$, $x_2 = 6$ in $x^2 - 5x - 6$ einsetzen: $1 + 5 - 6 = 0$ ✓ und $36 - 30 - 6 = 0$ ✓.
+
+**Typischer Fehler:** Beim Mittelterm Vorzeichen falsch sortieren — Antwort B ($+5x$) entsteht, wenn man $-6 + 1 = -5$ als $+5$ liest. Antwort C ($-7x$) addiert die *Beträge* statt sie vorzeichenrichtig zu summieren.`,
+        [
+          'Verteile: $(x + 1)(x - 6) = x \\cdot x + x \\cdot (-6) + 1 \\cdot x + 1 \\cdot (-6)$.',
+          'Mittelterm: $-6x + x = -5x$. Vorzeichen genau prüfen.',
+          'Konstanter Term: $1 \\cdot (-6) = -6$.',
+        ],
+        {
+          1: 'Vorzeichen vom Mittelterm vertauscht — $-6x + x = -5x$ (nicht $+5x$).',
+          2: 'Beträge addiert statt vorzeichenrichtig: $|-6| + |1| = 7$. Aber $-6 + 1 = -5$, nicht $-7$.',
+          3: 'Konstanter Term falsch: $1 \\cdot (-6) = -6$, nicht $+6$. Plus mal Minus = Minus.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['faktor-form'] },
       ),
     ],
   },

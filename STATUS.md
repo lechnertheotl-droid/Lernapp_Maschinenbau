@@ -102,9 +102,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2327 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1435 (62 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1068 / 1068 (100 %) | 100 % | ✅ |
+| Aufgaben (gesamt) | 2335 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1447 (62 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1071 / 1071 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -126,9 +126,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **580** (Lesson-Path: 112 · Goal-Tasks: 468)
-- 4-Block: 514/580 (89 %) 🟡
-- MC-wAE: 268/268 (100 %) ✅
+- Aufgaben: **588** (Lesson-Path: 112 · Goal-Tasks: 476)
+- 4-Block: 526/588 (89 %) 🟡
+- MC-wAE: 271/271 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
 
@@ -181,7 +181,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | `alg-1-2` Wurzeln und gebrochene Exponenten | 3 | 3/3 | 21 | 9/6/4/1/1 | 17/21 | 9/9 | ✅ | +4 4B |
 | `alg-1-3` Logarithmen | 7 | 7/7 | 40 | 18/13/7/2/0 | 35/40 | 18/18 | ✅ | +5 4B |
 | `alg-2-1` Lineare Gleichungen | 4 | 4/4 | 35 | 14/11/5/2/3 | 35/35 | 14/14 | ✅ | — |
-| `alg-2-2` Quadratische Gleichungen | 4 | 4/4 | 27 | 12/7/4/3/1 | 23/27 | 12/12 | ✅ | +4 4B |
+| `alg-2-2` Quadratische Gleichungen | 4 | 4/4 | 35 | 15/12/4/3/1 | 35/35 | 15/15 | ✅ | — |
 | `alg-2-3` Polynomgleichungen & Polynomdivision | 6 | 6/6 | 36 | 18/7/6/3/2 | 32/36 | 18/18 | ✅ | +4 4B |
 | `alg-2-4` Ungleichungen | 6 | 6/6 | 35 | 18/5/5/4/3 | 34/35 | 18/18 | ✅ | +1 4B |
 | `alg-3-1` Funktionsbegriff | 3 | 3/3 | 20 | 13/0/4/3/0 | 16/20 | 13/13 | ✅ | +4 4B |
@@ -11351,7 +11351,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 37 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 36 Lessons
 
 #### `alg-3-1` · Funktionsbegriff
 
@@ -11716,54 +11716,6 @@ npm run build              # abschließender End-zu-End-Check
 
 - **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-2': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
-#### `alg-2-2` · Quadratische Gleichungen
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-0-4` → `binom-1`, `binom-2`, `binom-3`, `aequivalenz`
-  - `alg-1-2` → `wurzel-bruchpot`, `wurzel-def-bereich`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `quad-form` — Allgemeine Form $ax^2 + bx + c = 0$ (mit $a \neq 0$) (SG 0)
-  2. `abc-formel` — Mitternachtsformel $x = (-b \pm \sqrt{b^2 - 4ac})/(2a)$ ⇐ `quad-form` (SG 0)
-  3. `pq-formel` — pq-Formel für Normalform $x^2 + px + q = 0$ ⇐ `abc-formel` (SG 0)
-  4. `diskriminante` — Diskriminante $D=b^2-4ac$ — Fallunterscheidung $D>0,=0,<0$ ⇐ `abc-formel` (SG 1)
-  5. `vieta` — Vieta: $x_1+x_2=-p$, $x_1 x_2 = q$ (Normalform) ⇐ `pq-formel` (SG 2)
-  6. `faktor-form` — Faktorisierte Form $(x-x_1)(x-x_2)=0$ zeigt Nullstellen direkt ⇐ `abc-formel` (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `quad-form`, `abc-formel`, `pq-formel` · **6/5+** — Mitternachtsformel $x = (-b \pm \sqrt{b^2 - 4ac})/(2a)$ für $ax^2 + bx + c = 0$
-  - ✅ [1] _hoch_ · Konzepte: `diskriminante` · **5/5+** — Diskriminante $D = b^2 - 4ac$: $D>0$ zwei reelle Lösungen, $D=0$ eine doppelte, $D<0$ keine reelle
-  - ✅ [2] _mittel_ · Konzepte: `vieta` · **5/5+** — Satz von Vieta: $x_1 + x_2 = -b/a$, $x_1 \cdot x_2 = c/a$ — zum schnellen Raten/Prüfen
-  - ✅ [3] _hoch_ · Konzepte: `faktor-form` · **5/5+** — Faktorisierte Form $(x - x_1)(x - x_2) = 0$ macht Nullstellen direkt sichtbar
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `abc-formel` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `pq-formel` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `abc-formel` | 2 | 2 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `abc-formel` | 1 | 1 | ✅ | Distraktor: Vorzeichen unter der Wurzel falsch |
-|  5 | 0 | transfer           | sorting          | `abc-formel`, `pq-formel` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | matching         | `diskriminante` | 1 | 1 | ✅ | $D$-Fall ↔ Lösungsanzahl |
-|  7 | 1 | apply-guided       | multiple-choice  | `diskriminante` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `diskriminante` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `diskriminante` | 1 | 1 | ✅ | Distraktor: $D<0$ mit $D=0$ verwechselt |
-| 10 | 1 | transfer           | true-false       | `diskriminante`, `abc-formel` | 1 | 1 | ✅ |  |
-| 11 | 2 | recognize          | true-false       | `vieta` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `vieta` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `vieta` | 1 | 1 | ✅ | Lösungen raten + Probe |
-| 14 | 2 | error-analysis     | multiple-choice  | `vieta` | 1 | 1 | ✅ |  |
-| 15 | 2 | transfer           | matching         | `vieta` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | true-false       | `faktor-form` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `faktor-form` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `faktor-form`, `abc-formel` | 1 | 1 | ✅ |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `faktor-form` | 1 | 1 | ✅ |  |
-| 20 | 3 | transfer           | matching         | `faktor-form`, `vieta` | 1 | 1 | ✅ | Faktor ↔ Nullstelle |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-2-2': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-2-2-a`, `ex-alg-2-2-b`, `ex-alg-2-2-d`, `ex-alg-2-2-e`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `trig-2-2` · sin und cos als Koordinaten

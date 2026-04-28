@@ -136,12 +136,10 @@ $$6 \\cdot \\dfrac{2x+1}{3} = 6 \\cdot \\dfrac{x-2}{2} + 6 \\cdot 1 \\\\ 2(2x+1)
     correctIndex: 0,
     explanation: `**Ansatz:** Quadratische Gleichung in Normalform ($x^{2} + px + q = 0$ mit $p = -5$, $q = 6$) — pq-Formel oder Faktorisierung.
 
-**Rechnung (pq-Formel):**
+**Rechnung:** Mit pq-Formel:
 $$x_{1,2} = -\\dfrac{p}{2} \\pm \\sqrt{\\left(\\dfrac{p}{2}\\right)^{2} - q} = \\dfrac{5}{2} \\pm \\sqrt{\\dfrac{25}{4} - 6} = 2{,}5 \\pm \\sqrt{0{,}25} = 2{,}5 \\pm 0{,}5$$
 
-Also $x_{1} = 3$, $x_{2} = 2$.
-
-**Alternative (Vieta):** Suche zwei Zahlen mit Summe $5$ und Produkt $6$. Das sind $2$ und $3$. Faktorisierung: $(x-2)(x-3) = 0$.
+Also $x_{1} = 3$, $x_{2} = 2$. Alternative über Vieta: zwei Zahlen mit Summe $5$ und Produkt $6$ — das sind $2$ und $3$, Faktorisierung $(x-2)(x-3) = 0$.
 
 **Probe:** $3^{2} - 5 \\cdot 3 + 6 = 9 - 15 + 6 = 0$. ✓ $\\quad 2^{2} - 5 \\cdot 2 + 6 = 4 - 10 + 6 = 0$. ✓
 
@@ -156,7 +154,7 @@ Also $x_{1} = 3$, $x_{2} = 2$.
       'Formel: $x_{1,2} = -\\dfrac{p}{2} \\pm \\sqrt{\\left(\\dfrac{p}{2}\\right)^{2} - q}$. Alternativ Vieta: zwei Zahlen mit Summe $5$ und Produkt $6$?',
       'Rechne $\\left(\\dfrac{-5}{2}\\right)^{2} - 6 = 6{,}25 - 6 = 0{,}25$ — Wurzel daraus ist $0{,}5$.',
     ],
-      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['quad-form'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['quad-form', 'pq-formel'] },
 },
   'ex-alg-2-2-b': {
     id: 'ex-alg-2-2-b', lessonId: 'alg-2-2', type: 'multiple-choice',
@@ -174,6 +172,8 @@ Also $x_{1} = 3$, $x_{2} = 2$.
 - $D = 0$: eine doppelte reelle Lösung (Berührpunkt / Scheitel auf $x$-Achse)
 - $D < 0$: keine reelle Lösung (in $\\mathbb{C}$ gäbe es zwei komplex-konjugierte Lösungen)
 
+**Probe:** Konkretes Beispiel mit $D < 0$: $x^{2} + 1 = 0$, also $a=1, b=0, c=1$, $D = 0 - 4 = -4 < 0$. Tatsächlich gibt es keine reelle Zahl $x$ mit $x^{2} = -1$, weil Quadrate immer $\\geq 0$ sind.
+
 **Typischer Fehler:** "Unendlich viele Lösungen" gilt bei der Nullgleichung $0 = 0$ — das hat mit der Diskriminante nichts zu tun.`,
     wrongAnswerExplanations: {
       0: 'Zwei verschiedene reelle Lösungen erhältst du nur bei $D > 0$, nicht bei $D < 0$. Hier wäre der Ausdruck unter der Wurzel positiv, und $x_{1,2} = \\dfrac{-b \\pm \\sqrt{D}}{2a}$ hätte zwei verschiedene Werte. Bei $D < 0$ dagegen ist $\\sqrt{D}$ keine reelle Zahl — es gibt keinen reellen Schnittpunkt der Parabel mit der $x$-Achse.',
@@ -185,7 +185,7 @@ Also $x_{1} = 3$, $x_{2} = 2$.
       'Regel: $\\sqrt{\\text{negative Zahl}}$ ist nicht reell.',
       'Geometrisch: Wie viele Schnittpunkte hat die Parabel mit der $x$-Achse?',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['quad-form'] },
+      pedagogy: { stage: 'recognize', subGoal: 1, uses: ['diskriminante'] },
 },
   'ex-alg-2-2-c': {
     id: 'ex-alg-2-2-c', lessonId: 'alg-2-2', type: 'number-input',
@@ -210,7 +210,7 @@ Also $x_{1} = 1$, $x_{2} = -5$. Die positive Lösung ist $x = 1$.
       'Achtung Vorzeichen: $-q = -(-5) = +5$. Unter der Wurzel steht also $4 + 5 = 9$.',
       'Nach $\\sqrt{9} = 3$ erhältst du $x_{1,2} = -2 \\pm 3$ — welche ist die positive?',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['quad-form'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['quad-form', 'pq-formel'] },
 },
   'ex-alg-2-2-d': {
     id: 'ex-alg-2-2-d', lessonId: 'alg-2-2', type: 'multiple-choice',
@@ -222,14 +222,14 @@ Also $x_{1} = 1$, $x_{2} = -5$. Die positive Lösung ist $x = 1$.
       '$x_{1} + x_{2} = 12, \\; x_{1} \\cdot x_{2} = 7$',
     ],
     correctIndex: 0,
-    explanation: `**Ansatz:** Satz von Vieta auf die Normalform $x^{2} + px + q = 0$ anwenden.
+    explanation: `**Ansatz:** Satz von Vieta auf die Normalform $x^{2} + px + q = 0$ anwenden. Regel: $x_{1} + x_{2} = -p$ und $x_{1} \\cdot x_{2} = q$.
 
-**Regel:** Für $x^{2} + px + q = 0$ gilt $x_{1} + x_{2} = -p$ und $x_{1} \\cdot x_{2} = q$.
+**Rechnung:** Aus $x^{2} - 7x + 12 = 0$ liest man $p = -7$, $q = 12$ ab. Damit:
+$$x_{1} + x_{2} = -p = -(-7) = 7, \\qquad x_{1} \\cdot x_{2} = q = 12$$
 
-**Identifikation:** Hier $p = -7$, $q = 12$. Also:
-$$x_{1} + x_{2} = -(-7) = 7, \\qquad x_{1} \\cdot x_{2} = 12$$
+Welche zwei Zahlen haben Summe $7$ und Produkt $12$? Antwort: $3$ und $4$. Also $x_{1} = 3$, $x_{2} = 4$.
 
-**Probe durch Raten:** Welche zwei Zahlen addieren sich zu $7$ und multiplizieren sich zu $12$? Antwort: $3$ und $4$. Damit sind $x_{1} = 3$, $x_{2} = 4$ die Lösungen.
+**Probe:** $3 + 4 = 7$ ✓ und $3 \\cdot 4 = 12$ ✓. Einsetzen: $3^{2} - 7 \\cdot 3 + 12 = 9 - 21 + 12 = 0$ ✓.
 
 **Typischer Fehler:** Das Vorzeichen bei $-p$ vergessen — Antwort B ($x_{1}+x_{2} = -7$) stammt aus diesem Denkfehler. Antwort D verwechselt Summe und Produkt.`,
     wrongAnswerExplanations: {
@@ -242,7 +242,7 @@ $$x_{1} + x_{2} = -(-7) = 7, \\qquad x_{1} \\cdot x_{2} = 12$$
       'Hier liest du $p$ und $q$ aus $x^{2} + px + q$ ab: $p = -7$, $q = 12$.',
       'Welche zwei Zahlen haben Summe $7$ und Produkt $12$? (Probeweise im Kopf.)',
     ],
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['quad-form'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['vieta'] },
 },
   'ex-alg-2-2-e': {
     id: 'ex-alg-2-2-e', lessonId: 'alg-2-2', type: 'multiple-choice',
@@ -260,6 +260,8 @@ Da $D = -31 < 0$, existiert **keine reelle Lösung**.
 
 **Geometrisch:** Die Parabel $y = 2x^{2} + 3x + 5$ ist nach oben geöffnet ($a = 2 > 0$) und hat ihren Scheitel bei $y > 0$ — sie liegt komplett über der $x$-Achse.
 
+**Probe:** Scheitel der Parabel liegt bei $x_{S} = -b/(2a) = -3/4$, dort ist $y_{S} = 2 \\cdot 9/16 - 9/4 + 5 = 9/8 - 9/4 + 5 = 31/8 \\approx 3{,}88 > 0$. Die Parabel berührt die $x$-Achse also nicht — bestätigt $D < 0$.
+
 **Typischer Fehler:** Eine negative Zahl unter der Wurzel als "Null" interpretieren oder einfach $\\sqrt{-31}$ reell ziehen wollen. In $\\mathbb{R}$ gibt es diese Lösung nicht.`,
     wrongAnswerExplanations: {
       0: 'Zwei reelle Lösungen gäbe es nur bei $D > 0$. Du hast entweder das Vorzeichen beim Rechnen gedreht ($9 + 40 = 49$ statt $9 - 40 = -31$) oder nicht geprüft, ob $D$ positiv oder negativ ist. Richtig: $D = 9 - 40 = -31 < 0$, also keine reelle Lösung.',
@@ -271,7 +273,7 @@ Da $D = -31 < 0$, existiert **keine reelle Lösung**.
       'Hier: $a = 2$, $b = 3$, $c = 5$. Rechne $D = 3^{2} - 4 \\cdot 2 \\cdot 5$.',
       'Ist $D > 0$, $= 0$ oder $< 0$? Das bestimmt die Anzahl der reellen Lösungen.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['quad-form'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 1, uses: ['diskriminante'] },
 },
   'ex-alg-2-2-mastery': {
     id: 'ex-alg-2-2-mastery', lessonId: 'alg-2-2', type: 'number-input', isMasteryCheck: true,
@@ -299,7 +301,7 @@ Somit $x_{1} = 3$, $x_{2} = 1$. Die größere Lösung ist $x = 3$.
       'Nach dem Teilen: $x^{2} - 4x + 3 = 0$. Jetzt pq-Formel mit $p = -4$, $q = 3$.',
       'Du erhältst $x = 2 \\pm \\sqrt{4-3} = 2 \\pm 1$. Welche ist die größere?',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['quad-form'] },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['quad-form', 'abc-formel', 'pq-formel'] },
 },
 
   // ── Lesson 3: Polynomgleichungen & Polynomdivision ──
