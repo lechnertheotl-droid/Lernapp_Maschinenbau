@@ -25,7 +25,7 @@ $$3x + 7 = 22 \\quad | -7 \\\\ 3x = 15 \\quad | :3 \\\\ x = 5$$
       'Regel: Was du links machst, musst du auch rechts machen (Waagenprinzip).',
       'Nach dem Subtrahieren von $7$ bleibt $3x = 15$. Jetzt durch $3$ teilen.',
     ],
-      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['lin-form'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
 },
   'ex-alg-2-1-b': {
     id: 'ex-alg-2-1-b', lessonId: 'alg-2-1', type: 'number-input',
@@ -46,7 +46,7 @@ $$5x - 3 = 2x + 9 \\quad | -2x \\\\ 3x - 3 = 9 \\quad | +3 \\\\ 3x = 12 \\quad |
       'Rechenschritt: $5x - 2x = 9 + 3$, also $3x = 12$.',
       'Teile am Ende durch den Koeffizienten vor $x$.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['lin-form'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
 },
   'ex-alg-2-1-c': {
     id: 'ex-alg-2-1-c', lessonId: 'alg-2-1', type: 'multiple-choice',
@@ -75,7 +75,7 @@ Also: Breite $= 5$ cm, Länge $= 10$ cm.
       'Umfangsformel: $U = 2(l + b)$. Setze $l = 2b$ ein.',
       'Du erhältst $30 = 6b$. Löse nach $b$ auf.',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['lin-form'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['text-uebersetzung'] },
 },
   'ex-alg-2-1-d': {
     id: 'ex-alg-2-1-d', lessonId: 'alg-2-1', type: 'multiple-choice',
@@ -104,7 +104,7 @@ Alternative: Aufholgeschwindigkeit $= v_{2} - v_{1} = 40$ km/h. Zeit $= 160 \\te
       'Pro Stunde holt Zug 2 um $v_{2} - v_{1} = 40$ km auf. Wie lange braucht er für $160$ km Vorsprung?',
       'Rechne $160 / 40 = ?$',
     ],
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['lin-form'] },
+      pedagogy: { stage: 'transfer', subGoal: 2, uses: ['text-uebersetzung'] },
 },
   'ex-alg-2-1-mastery': {
     id: 'ex-alg-2-1-mastery', lessonId: 'alg-2-1', type: 'number-input', isMasteryCheck: true,
@@ -125,7 +125,7 @@ $$6 \\cdot \\dfrac{2x+1}{3} = 6 \\cdot \\dfrac{x-2}{2} + 6 \\cdot 1 \\\\ 2(2x+1)
       'Hauptnenner von $3$ und $2$ ist $6$. Denke daran: Auch die $+1$ wird mit $6$ multipliziert!',
       'Nach dem Multiplizieren: $2(2x+1) = 3(x-2) + 6$. Klammern auflösen und nach $x$ sortieren.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['lin-form'] },
+      pedagogy: { stage: 'transfer', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
 },
 
   // ── Lesson 2: Quadratische Gleichungen ──
@@ -136,12 +136,10 @@ $$6 \\cdot \\dfrac{2x+1}{3} = 6 \\cdot \\dfrac{x-2}{2} + 6 \\cdot 1 \\\\ 2(2x+1)
     correctIndex: 0,
     explanation: `**Ansatz:** Quadratische Gleichung in Normalform ($x^{2} + px + q = 0$ mit $p = -5$, $q = 6$) — pq-Formel oder Faktorisierung.
 
-**Rechnung (pq-Formel):**
+**Rechnung:** Mit pq-Formel:
 $$x_{1,2} = -\\dfrac{p}{2} \\pm \\sqrt{\\left(\\dfrac{p}{2}\\right)^{2} - q} = \\dfrac{5}{2} \\pm \\sqrt{\\dfrac{25}{4} - 6} = 2{,}5 \\pm \\sqrt{0{,}25} = 2{,}5 \\pm 0{,}5$$
 
-Also $x_{1} = 3$, $x_{2} = 2$.
-
-**Alternative (Vieta):** Suche zwei Zahlen mit Summe $5$ und Produkt $6$. Das sind $2$ und $3$. Faktorisierung: $(x-2)(x-3) = 0$.
+Also $x_{1} = 3$, $x_{2} = 2$. Alternative über Vieta: zwei Zahlen mit Summe $5$ und Produkt $6$ — das sind $2$ und $3$, Faktorisierung $(x-2)(x-3) = 0$.
 
 **Probe:** $3^{2} - 5 \\cdot 3 + 6 = 9 - 15 + 6 = 0$. ✓ $\\quad 2^{2} - 5 \\cdot 2 + 6 = 4 - 10 + 6 = 0$. ✓
 
@@ -156,7 +154,7 @@ Also $x_{1} = 3$, $x_{2} = 2$.
       'Formel: $x_{1,2} = -\\dfrac{p}{2} \\pm \\sqrt{\\left(\\dfrac{p}{2}\\right)^{2} - q}$. Alternativ Vieta: zwei Zahlen mit Summe $5$ und Produkt $6$?',
       'Rechne $\\left(\\dfrac{-5}{2}\\right)^{2} - 6 = 6{,}25 - 6 = 0{,}25$ — Wurzel daraus ist $0{,}5$.',
     ],
-      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['quad-form'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['quad-form', 'pq-formel'] },
 },
   'ex-alg-2-2-b': {
     id: 'ex-alg-2-2-b', lessonId: 'alg-2-2', type: 'multiple-choice',
@@ -174,6 +172,8 @@ Also $x_{1} = 3$, $x_{2} = 2$.
 - $D = 0$: eine doppelte reelle Lösung (Berührpunkt / Scheitel auf $x$-Achse)
 - $D < 0$: keine reelle Lösung (in $\\mathbb{C}$ gäbe es zwei komplex-konjugierte Lösungen)
 
+**Probe:** Konkretes Beispiel mit $D < 0$: $x^{2} + 1 = 0$, also $a=1, b=0, c=1$, $D = 0 - 4 = -4 < 0$. Tatsächlich gibt es keine reelle Zahl $x$ mit $x^{2} = -1$, weil Quadrate immer $\\geq 0$ sind.
+
 **Typischer Fehler:** "Unendlich viele Lösungen" gilt bei der Nullgleichung $0 = 0$ — das hat mit der Diskriminante nichts zu tun.`,
     wrongAnswerExplanations: {
       0: 'Zwei verschiedene reelle Lösungen erhältst du nur bei $D > 0$, nicht bei $D < 0$. Hier wäre der Ausdruck unter der Wurzel positiv, und $x_{1,2} = \\dfrac{-b \\pm \\sqrt{D}}{2a}$ hätte zwei verschiedene Werte. Bei $D < 0$ dagegen ist $\\sqrt{D}$ keine reelle Zahl — es gibt keinen reellen Schnittpunkt der Parabel mit der $x$-Achse.',
@@ -185,7 +185,7 @@ Also $x_{1} = 3$, $x_{2} = 2$.
       'Regel: $\\sqrt{\\text{negative Zahl}}$ ist nicht reell.',
       'Geometrisch: Wie viele Schnittpunkte hat die Parabel mit der $x$-Achse?',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['quad-form'] },
+      pedagogy: { stage: 'recognize', subGoal: 1, uses: ['diskriminante'] },
 },
   'ex-alg-2-2-c': {
     id: 'ex-alg-2-2-c', lessonId: 'alg-2-2', type: 'number-input',
@@ -210,7 +210,7 @@ Also $x_{1} = 1$, $x_{2} = -5$. Die positive Lösung ist $x = 1$.
       'Achtung Vorzeichen: $-q = -(-5) = +5$. Unter der Wurzel steht also $4 + 5 = 9$.',
       'Nach $\\sqrt{9} = 3$ erhältst du $x_{1,2} = -2 \\pm 3$ — welche ist die positive?',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['quad-form'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['quad-form', 'pq-formel'] },
 },
   'ex-alg-2-2-d': {
     id: 'ex-alg-2-2-d', lessonId: 'alg-2-2', type: 'multiple-choice',
@@ -222,14 +222,14 @@ Also $x_{1} = 1$, $x_{2} = -5$. Die positive Lösung ist $x = 1$.
       '$x_{1} + x_{2} = 12, \\; x_{1} \\cdot x_{2} = 7$',
     ],
     correctIndex: 0,
-    explanation: `**Ansatz:** Satz von Vieta auf die Normalform $x^{2} + px + q = 0$ anwenden.
+    explanation: `**Ansatz:** Satz von Vieta auf die Normalform $x^{2} + px + q = 0$ anwenden. Regel: $x_{1} + x_{2} = -p$ und $x_{1} \\cdot x_{2} = q$.
 
-**Regel:** Für $x^{2} + px + q = 0$ gilt $x_{1} + x_{2} = -p$ und $x_{1} \\cdot x_{2} = q$.
+**Rechnung:** Aus $x^{2} - 7x + 12 = 0$ liest man $p = -7$, $q = 12$ ab. Damit:
+$$x_{1} + x_{2} = -p = -(-7) = 7, \\qquad x_{1} \\cdot x_{2} = q = 12$$
 
-**Identifikation:** Hier $p = -7$, $q = 12$. Also:
-$$x_{1} + x_{2} = -(-7) = 7, \\qquad x_{1} \\cdot x_{2} = 12$$
+Welche zwei Zahlen haben Summe $7$ und Produkt $12$? Antwort: $3$ und $4$. Also $x_{1} = 3$, $x_{2} = 4$.
 
-**Probe durch Raten:** Welche zwei Zahlen addieren sich zu $7$ und multiplizieren sich zu $12$? Antwort: $3$ und $4$. Damit sind $x_{1} = 3$, $x_{2} = 4$ die Lösungen.
+**Probe:** $3 + 4 = 7$ ✓ und $3 \\cdot 4 = 12$ ✓. Einsetzen: $3^{2} - 7 \\cdot 3 + 12 = 9 - 21 + 12 = 0$ ✓.
 
 **Typischer Fehler:** Das Vorzeichen bei $-p$ vergessen — Antwort B ($x_{1}+x_{2} = -7$) stammt aus diesem Denkfehler. Antwort D verwechselt Summe und Produkt.`,
     wrongAnswerExplanations: {
@@ -242,7 +242,7 @@ $$x_{1} + x_{2} = -(-7) = 7, \\qquad x_{1} \\cdot x_{2} = 12$$
       'Hier liest du $p$ und $q$ aus $x^{2} + px + q$ ab: $p = -7$, $q = 12$.',
       'Welche zwei Zahlen haben Summe $7$ und Produkt $12$? (Probeweise im Kopf.)',
     ],
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['quad-form'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['vieta'] },
 },
   'ex-alg-2-2-e': {
     id: 'ex-alg-2-2-e', lessonId: 'alg-2-2', type: 'multiple-choice',
@@ -260,6 +260,8 @@ Da $D = -31 < 0$, existiert **keine reelle Lösung**.
 
 **Geometrisch:** Die Parabel $y = 2x^{2} + 3x + 5$ ist nach oben geöffnet ($a = 2 > 0$) und hat ihren Scheitel bei $y > 0$ — sie liegt komplett über der $x$-Achse.
 
+**Probe:** Scheitel der Parabel liegt bei $x_{S} = -b/(2a) = -3/4$, dort ist $y_{S} = 2 \\cdot 9/16 - 9/4 + 5 = 9/8 - 9/4 + 5 = 31/8 \\approx 3{,}88 > 0$. Die Parabel berührt die $x$-Achse also nicht — bestätigt $D < 0$.
+
 **Typischer Fehler:** Eine negative Zahl unter der Wurzel als "Null" interpretieren oder einfach $\\sqrt{-31}$ reell ziehen wollen. In $\\mathbb{R}$ gibt es diese Lösung nicht.`,
     wrongAnswerExplanations: {
       0: 'Zwei reelle Lösungen gäbe es nur bei $D > 0$. Du hast entweder das Vorzeichen beim Rechnen gedreht ($9 + 40 = 49$ statt $9 - 40 = -31$) oder nicht geprüft, ob $D$ positiv oder negativ ist. Richtig: $D = 9 - 40 = -31 < 0$, also keine reelle Lösung.',
@@ -271,7 +273,7 @@ Da $D = -31 < 0$, existiert **keine reelle Lösung**.
       'Hier: $a = 2$, $b = 3$, $c = 5$. Rechne $D = 3^{2} - 4 \\cdot 2 \\cdot 5$.',
       'Ist $D > 0$, $= 0$ oder $< 0$? Das bestimmt die Anzahl der reellen Lösungen.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['quad-form'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 1, uses: ['diskriminante'] },
 },
   'ex-alg-2-2-mastery': {
     id: 'ex-alg-2-2-mastery', lessonId: 'alg-2-2', type: 'number-input', isMasteryCheck: true,
@@ -299,7 +301,7 @@ Somit $x_{1} = 3$, $x_{2} = 1$. Die größere Lösung ist $x = 3$.
       'Nach dem Teilen: $x^{2} - 4x + 3 = 0$. Jetzt pq-Formel mit $p = -4$, $q = 3$.',
       'Du erhältst $x = 2 \\pm \\sqrt{4-3} = 2 \\pm 1$. Welche ist die größere?',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['quad-form'] },
+      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['quad-form', 'abc-formel', 'pq-formel'] },
 },
 
   // ── Lesson 3: Polynomgleichungen & Polynomdivision ──
@@ -318,6 +320,8 @@ Also ist $x = 1$ eine Nullstelle von $P$.
 **Folgerung:** Nach dem Faktorsatz ist $(x - 1)$ ein Teiler von $P(x)$. Per Polynomdivision kannst du nun den Grad reduzieren.
 
 **Warum $x = \\pm 1, \\pm 2, \\pm 3, \\pm 6$ probieren?** Rationale Nullstellen eines ganzzahligen Polynoms sind Teiler des absoluten Glieds — hier $-6$. Das spart viel Zeit beim Raten.
+
+**Probe:** Polynomdivision $(x^{3} - 6x^{2} + 11x - 6) : (x - 1) = x^{2} - 5x + 6$ mit Rest $0$ — bestätigt, dass $x = 1$ tatsächlich Nullstelle ist. Die zwei weiteren Nullstellen kommen aus $x^{2} - 5x + 6 = 0$: $x = 2$ und $x = 3$.
 
 **Typischer Fehler:** Antwort D ($P(1) = 6$) entsteht, wenn man das Minus vor der $6$ übersieht oder nur $-(-6) = 6$ betrachtet statt den Ausdruck vollständig auszuwerten.`,
     wrongAnswerExplanations: {
@@ -339,14 +343,14 @@ Also ist $x = 1$ eine Nullstelle von $P$.
     correctIndex: 0,
     explanation: `**Ansatz:** Polynomdivision wie schriftliche Division — Stelle für Stelle den Grad reduzieren.
 
-**Rechnung (schrittweise):**
+**Rechnung:** Schrittweise Polynomdivision:
 $$\\begin{aligned} (x^{3} - 6x^{2} + 11x - 6) &: (x-1) = x^{2} - 5x + 6 \\\\ -(x^{3} - x^{2}) & \\\\ \\hline -5x^{2} + 11x & \\\\ -(-5x^{2} + 5x) & \\\\ \\hline 6x - 6 & \\\\ -(6x - 6) & \\\\ \\hline 0 & \\end{aligned}$$
 
-Der Quotient ist $x^{2} - 5x + 6$, Rest $0$ — das bestätigt, dass $x=1$ Nullstelle war.
+Der Quotient ist $x^{2} - 5x + 6$, Rest $0$ — das bestätigt, dass $x=1$ Nullstelle war. Damit zerfällt $P(x) = (x-1)(x^{2} - 5x + 6) = (x-1)(x-2)(x-3)$, und alle Nullstellen sind $x = 1, 2, 3$.
 
-**Fortsetzung:** $x^{2} - 5x + 6 = (x-2)(x-3)$. Damit sind alle Nullstellen von $P$: $x = 1, 2, 3$.
+Alternative über das Horner-Schema an $x_{0} = 1$: Koeffizienten $1, -6, 11, -6$ liefern Einträge $1, -5, 6, 0$. Die ersten drei bilden den Quotienten $x^{2} - 5x + 6$, die letzte ist der Rest.
 
-**Alternative Horner-Schema** für $P(x)$ an $x_{0} = 1$: Koeffizienten $1, -6, 11, -6$ und Einträge $1, -5, 6, 0$. Die ersten drei bilden den Quotienten $x^{2} - 5x + 6$, die letzte ist der Rest.
+**Probe:** Rückmultiplikation: $(x-1)(x^{2} - 5x + 6) = x^{3} - 5x^{2} + 6x - x^{2} + 5x - 6 = x^{3} - 6x^{2} + 11x - 6$ ✓.
 
 **Typischer Fehler:** Vorzeichenfehler beim Subtrahieren — besonders beim mittleren Schritt $-(-5x^{2} + 5x)$. Immer das *ganze* abgezogene Polynom in Klammern setzen.`,
     wrongAnswerExplanations: {
@@ -359,7 +363,7 @@ Der Quotient ist $x^{2} - 5x + 6$, Rest $0$ — das bestätigt, dass $x=1$ Nulls
       'Multipliziere $x^{2} \\cdot (x-1) = x^{3} - x^{2}$ und ziehe das vom Dividenden ab.',
       'Arbeite schrittweise nach unten: nächster Quotiententerm, multiplizieren, subtrahieren — bis Rest $0$.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['rat-wurzel'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['polydiv'] },
 },
   'ex-alg-2-3-c': {
     id: 'ex-alg-2-3-c', lessonId: 'alg-2-3', type: 'multiple-choice',
@@ -368,21 +372,19 @@ Der Quotient ist $x^{2} - 5x + 6$, Rest $0$ — das bestätigt, dass $x=1$ Nulls
     correctIndex: 0,
     explanation: `**Ansatz:** Wert eines Polynoms an einer Stelle berechnen — direkt einsetzen oder Horner-Schema nutzen.
 
-**Rechnung (direkt einsetzen):**
+**Rechnung:** Direktes Einsetzen ($x = -1$, mit $0$-Koeffizient für den fehlenden $x^{1}$-Term):
 $$P(-1) = 2 \\cdot (-1)^{3} + 3 \\cdot (-1)^{2} + 0 \\cdot (-1) - 1 = -2 + 3 + 0 - 1 = 0$$
 
-Beachte: Der Koeffizient bei $x^{1}$ ist $0$ (fehlt im Polynom).
-
-**Rechnung (Horner-Schema):** Koeffizienten $2, 3, 0, -1$; auswertende Stelle $x_{0} = -1$.
+Per Horner-Schema mit Koeffizienten $2, 3, 0, -1$ und $x_{0} = -1$:
 
 | Koeffizient | $2$ | $3$ | $0$ | $-1$ |
 |---|---|---|---|---|
 | Vorgabe | | $-2$ | $-1$ | $1$ |
 | Summe | $2$ | $1$ | $-1$ | $0$ |
 
-Letzte Zahl in der Summenzeile ist $P(-1) = 0$. ✓
+Letzte Zahl in der Summenzeile ist $P(-1) = 0$ ✓ — beide Wege liefern dasselbe Ergebnis. Die ersten drei Einträge $2, 1, -1$ sind außerdem die Koeffizienten des Quotienten $2x^{2} + x - 1$ aus $P(x):(x+1)$.
 
-**Folgerung:** $x = -1$ ist eine Nullstelle; $(x+1)$ teilt $P(x)$. Die übrigen Einträge $2, 1, -1$ ergeben den Quotienten $2x^{2} + x - 1$.
+**Probe:** Da $P(-1) = 0$, ist $x = -1$ Nullstelle und $(x+1)$ teilt $P(x)$. Rückmultiplikation: $(x+1)(2x^{2} + x - 1) = 2x^{3} + x^{2} - x + 2x^{2} + x - 1 = 2x^{3} + 3x^{2} - 1$ ✓.
 
 **Typischer Fehler:** Vorzeichen bei $(-1)^{3}$ falsch — das ist $-1$, nicht $+1$. Wer $P(-1) = 2 + 3 - 1 = 4$ rechnet (Antwort D), hat das Minus übersehen.`,
     wrongAnswerExplanations: {
@@ -395,7 +397,7 @@ Letzte Zahl in der Summenzeile ist $P(-1) = 0$. ✓
       'Setze ein: $P(-1) = 2 \\cdot (-1) + 3 \\cdot 1 - 1$.',
       'Addiere die Terme: $-2 + 3 - 1 = ?$',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['rat-wurzel'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 3, uses: ['horner'] },
 },
   'ex-alg-2-3-d': {
     id: 'ex-alg-2-3-d', lessonId: 'alg-2-3', type: 'multiple-choice',
@@ -431,7 +433,7 @@ Also $(x^{2} + 3x + 5) = (x + 1)(x + 2) + 3$.
       'Der Restsatz: Der Rest von $P(x) : (x - a)$ ist immer $P(a)$. Hier: $a = -2$, also $P(-2) = ?$',
       'Quotient $x + 1$; Probe $P(-2) = 3$ sollte als Rest auftauchen.',
     ],
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['rat-wurzel'] },
+      pedagogy: { stage: 'error-analysis', subGoal: 2, uses: ['polydiv-rest'] },
 },
   'ex-alg-2-3-mastery': {
     id: 'ex-alg-2-3-mastery', lessonId: 'alg-2-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -440,21 +442,13 @@ Also $(x^{2} + 3x + 5) = (x + 1)(x + 2) + 3$.
     correctIndex: 0,
     explanation: `**Ansatz:** Kein absolutes Glied → $x$ ausklammern (erste Nullstelle geschenkt), dann quadratische Gleichung lösen.
 
-**Schritt 1 — Ausklammern:**
+**Rechnung:** Schritt 1 — Ausklammern:
 $$P(x) = x^{3} - 3x^{2} + 2x = x \\cdot (x^{2} - 3x + 2)$$
 
-Daraus liest man direkt ab: $x_{1} = 0$.
-
-**Schritt 2 — Quadratische Gleichung:** $x^{2} - 3x + 2 = 0$ mit $p = -3$, $q = 2$.
-
-pq-Formel:
+Daraus liest man direkt $x_{1} = 0$ ab. Schritt 2 — quadratische Gleichung $x^{2} - 3x + 2 = 0$ mit $p = -3$, $q = 2$, pq-Formel:
 $$x_{2,3} = \\dfrac{3}{2} \\pm \\sqrt{\\dfrac{9}{4} - 2} = 1{,}5 \\pm \\sqrt{0{,}25} = 1{,}5 \\pm 0{,}5$$
 
-Also $x_{2} = 2$, $x_{3} = 1$.
-
-**Alternative (Vieta):** Zwei Zahlen mit Summe $3$ und Produkt $2$ sind $1$ und $2$. Damit $(x-1)(x-2) = 0$.
-
-**Faktorisierte Form:** $P(x) = x(x-1)(x-2)$.
+Also $x_{2} = 2$, $x_{3} = 1$. Alternativ via Vieta: zwei Zahlen mit Summe $3$ und Produkt $2$ sind $1$ und $2$, also $(x-1)(x-2) = 0$. Die vollständige Linearfaktor-Zerlegung lautet $P(x) = x(x-1)(x-2)$.
 
 **Probe:** $P(0) = 0$ ✓, $P(1) = 1 - 3 + 2 = 0$ ✓, $P(2) = 8 - 12 + 4 = 0$ ✓.
 
@@ -469,7 +463,7 @@ Also $x_{2} = 2$, $x_{3} = 1$.
       'Nach $P(x) = x (x^{2} - 3x + 2)$: Eine Nullstelle ist sofort ablesbar, die anderen kommen aus der Klammer.',
       'Quadratische Gleichung $x^{2} - 3x + 2 = 0$: Zwei Zahlen mit Summe $3$ und Produkt $2$?',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['rat-wurzel'] },
+      pedagogy: { stage: 'transfer', subGoal: 4, uses: ['linearfaktor', 'rat-wurzel'] },
 },
 
   // ── Lesson 4: Ungleichungen ──
@@ -711,6 +705,33 @@ const lessons_alg_u2 = [
 3. Gleichung lösen
 4. Probe im Sachkontext!`,
       },
+      {
+        id: 'alg-2-1-s1b', type: 'explanation-intuitive',
+        title: 'Lösung = Schnittpunkt zweier Geraden',
+        content: `Eine lineare Gleichung wie $5x - 3 = 2x + 9$ kannst du auch **geometrisch** lesen:
+
+- Linke Seite: $f_{1}(x) = 5x - 3$ — eine Gerade mit Steigung $5$.
+- Rechte Seite: $f_{2}(x) = 2x + 9$ — eine Gerade mit Steigung $2$.
+
+**Lösung ist der $x$-Wert des Schnittpunkts.** Wo sich beide Geraden treffen, sind sie für dasselbe $x$ gleich groß — genau das verlangt die Gleichung.
+
+In der nächsten Visualisierung siehst du: Schnittpunkt bei $x = 4$, $y = 17$ — also $x = 4$.`,
+      },
+      {
+        id: 'alg-2-1-s1c', type: 'visualization',
+        title: 'Schnittpunkt von $5x - 3$ und $2x + 9$',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => 5 * x - 3, color: '#3b82f6', label: 'f₁(x) = 5x − 3' },
+            { fn: (x) => 2 * x + 9, color: '#ef4444', label: 'f₂(x) = 2x + 9' },
+          ],
+          xRange: [-2, 8],
+          yRange: [-15, 30],
+          showGrid: true,
+          marks: [{ x: 4, y: 17, label: 'Schnittpunkt (4, 17)' }],
+        },
+      },
       { id: 'alg-2-1-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-alg-2-1-a' },
       { id: 'alg-2-1-s3', type: 'exercise', title: 'Aufgabe 2 (Rechnung)', exerciseRef: 'ex-alg-2-1-b' },
       { id: 'alg-2-1-s4', type: 'exercise', title: 'Aufgabe 3 (Textaufgabe)', exerciseRef: 'ex-alg-2-1-c' },
@@ -924,6 +945,24 @@ Nützlich zum schnellen Raten ganzzahliger Lösungen oder zur Probe!`,
 - pq-Formel: $x_{2} = 2$, $x_{3} = 3$
 
 **Horner-Schema:** Eine schnelle, kompakte Methode für Polynomwert-Berechnung und Division — besonders bei Klausuren zeitsparend!`,
+      },
+      {
+        id: 'alg-2-3-s1b', type: 'visualization',
+        title: 'Drei Nullstellen geometrisch: $P(x) = x^{3} - 6x^{2} + 11x - 6$',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => x ** 3 - 6 * x * x + 11 * x - 6, color: '#3b82f6', label: 'P(x) = x³ − 6x² + 11x − 6' },
+          ],
+          xRange: [-0.5, 4],
+          yRange: [-2, 4],
+          showGrid: true,
+          marks: [
+            { x: 1, y: 0, label: 'x₁ = 1' },
+            { x: 2, y: 0, label: 'x₂ = 2' },
+            { x: 3, y: 0, label: 'x₃ = 3' },
+          ],
+        },
       },
       { id: 'alg-2-3-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-alg-2-3-a' },
       { id: 'alg-2-3-s3', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-alg-2-3-b' },
