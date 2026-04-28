@@ -5134,6 +5134,29 @@ $$(x + 1)(x - 6) = x^2 - 6x + x - 6 = x^2 - 5x - 6$$
         ],
         { stage: 'transfer', subGoal: 0, uses: ['rat-wurzel'] },
       ),
+      ni(
+        'Finde die einzige negative ganzzahlige Nullstelle von $P(x) = x^3 - 4x^2 + x + 6$. Gib sie an.',
+        -1, 0, '',
+        `**Ansatz:** Teiler von $6$ als Kandidaten testen: $\\pm 1, \\pm 2, \\pm 3, \\pm 6$. Negative der Reihe nach prüfen.
+
+**Rechnung:**
+- $P(-1) = -1 - 4 - 1 + 6 = 0$ ✓
+- $P(-2) = -8 - 16 - 2 + 6 = -20 \\neq 0$
+- $P(-3) = -27 - 36 - 3 + 6 = -60 \\neq 0$
+- $P(-6) = -216 - 144 - 6 + 6 = -360 \\neq 0$
+
+Die einzige negative ganzzahlige Nullstelle ist $x = -1$. Die anderen beiden sind positiv: $P(2) = 8 - 16 + 2 + 6 = 0$ und $P(3) = 27 - 36 + 3 + 6 = 0$.
+
+**Probe:** Faktorisierung $P(x) = (x+1)(x-2)(x-3)$. Ausmultiplizieren: $(x+1)(x-2) = x^2 - x - 2$; mal $(x-3)$: $x^3 - 3x^2 - x^2 + 3x - 2x + 6 = x^3 - 4x^2 + x + 6$ ✓.
+
+**Typischer Fehler:** Sich auf die erste positive Nullstelle stürzen und negative Kandidaten gar nicht testen. Der rationale Wurzelsatz fordert, *alle* Vorzeichen-Kombinationen der Teiler zu prüfen — gerade negative gehören dazu.`,
+        [
+          'Teiler von $6$ (Absolutglied): $\\pm 1, \\pm 2, \\pm 3, \\pm 6$.',
+          'Probiere systematisch die negativen Kandidaten: $-1, -2, -3, -6$.',
+          'Sobald $P(\\text{Wert}) = 0$ herauskommt, hast du die Nullstelle.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['rat-wurzel'] },
+      ),
     ],
     // [1] Polynomdivision
     1: [
@@ -5262,6 +5285,26 @@ $$(x + 1)(x - 6) = x^2 - 6x + x - 6 = x^2 - 5x - 6$$
         ],
         { stage: 'transfer', subGoal: 1, uses: ['polydiv'] },
       ),
+      ni(
+        'Führe $(x^3 - 8) : (x - 2)$ aus und gib den Koeffizienten des $x$-Terms im Quotienten an.',
+        2, 0, '',
+        `**Ansatz:** Im Dividenden fehlen die $x^2$- und $x$-Terme — als $0$-Koeffizienten ergänzen, dann normal dividieren.
+
+**Rechnung:** Schreibe als $x^3 + 0 \\cdot x^2 + 0 \\cdot x - 8$:
+$$\\begin{aligned} (x^3 + 0x^2 + 0x - 8) &: (x-2) = x^2 + 2x + 4 \\\\ -(x^3 - 2x^2) & \\\\ \\hline 2x^2 + 0x & \\\\ -(2x^2 - 4x) & \\\\ \\hline 4x - 8 & \\\\ -(4x - 8) & \\\\ \\hline 0 & \\end{aligned}$$
+
+Quotient: $x^2 + 2x + 4$. Koeffizient des $x$-Terms: $2$.
+
+**Probe:** $(x-2)(x^2 + 2x + 4) = x^3 + 2x^2 + 4x - 2x^2 - 4x - 8 = x^3 - 8$ ✓ — das ist die dritte binomische Formel $a^3 - b^3 = (a-b)(a^2 + ab + b^2)$.
+
+**Typischer Fehler:** Die fehlenden Terme einfach weglassen und mit $x^3 / (x-2)$ direkt loslegen — dann passen die Stellen nicht mehr und der Quotient wird falsch.`,
+        [
+          'Fehlende Potenzen mit $0$-Koeffizient ergänzen: $x^3 + 0 x^2 + 0 x - 8$.',
+          'Schrittweise dividieren — bei jedem Schritt höchsten Grad.',
+          'Erinnerung: $a^3 - b^3 = (a-b)(a^2 + ab + b^2)$ — das ist der Quotient.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['polydiv'] },
+      ),
     ],
     // [2] Rest = 0
     2: [
@@ -5366,6 +5409,26 @@ $$(x + 1)(x - 6) = x^2 - 6x + x - 6 = x^2 - 5x - 6$$
           'Ergibt $0$?',
         ],
         { stage: 'transfer', subGoal: 2, uses: ['polydiv-rest', 'rat-wurzel'] },
+      ),
+      ni(
+        'Welcher Rest entsteht bei der Polynomdivision $(x^3 + x - 5) : (x - 2)$? (Restsatz nutzen)',
+        5, 0, '',
+        `**Ansatz:** Restsatz: Der Rest von $P(x) : (x - a)$ ist immer $P(a)$ — kein vollständiges Dividieren nötig.
+
+**Rechnung:** Mit $a = 2$:
+$$P(2) = 2^3 + 2 - 5 = 8 + 2 - 5 = 5$$
+
+Also Rest $= 5$.
+
+**Probe:** Volle Polynomdivision liefert Quotient $x^2 + 2x + 5$ und Rest $5$: $(x-2)(x^2 + 2x + 5) + 5 = x^3 + 2x^2 + 5x - 2x^2 - 4x - 10 + 5 = x^3 + x - 5$ ✓.
+
+**Typischer Fehler:** Den Restsatz nicht nutzen und mühsam die volle Polynomdivision durchführen — bei reiner Restfrage genügt das Einsetzen von $a$ in $P(x)$. Außerdem: $(x - 2)$ heißt $a = +2$, nicht $-2$.`,
+        [
+          'Restsatz: Rest von $P(x) : (x - a)$ ist $P(a)$.',
+          'Hier: $a = 2$ (aus dem Faktor $x - 2$).',
+          'Setze $x = 2$ in $P(x)$ ein und rechne aus.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['polydiv-rest'] },
       ),
     ],
     // [3] Horner-Schema
@@ -5479,6 +5542,30 @@ $$(x + 1)(x - 6) = x^2 - 6x + x - 6 = x^2 - 5x - 6$$
         ],
         { stage: 'transfer', subGoal: 3, uses: ['horner'] },
       ),
+      ni(
+        'Berechne $P(-2)$ für $P(x) = 2x^4 + x^3 - 3x^2 + 5$ mit dem Horner-Schema.',
+        17, 0, '',
+        `**Ansatz:** Horner-Tabelle mit Koeffizienten $[2, 1, -3, 0, 5]$ (fehlender $x^1$-Term ist $0$) und auswertender Stelle $x_0 = -2$.
+
+**Rechnung:** Schrittweise Horner-Regel — jeder Eintrag ist Vorgänger $\\cdot (-2)$ plus nächster Koeffizient:
+
+| Koeffizient | $2$ | $1$ | $-3$ | $0$ | $5$ |
+|---|---|---|---|---|---|
+| Vorgabe |  | $-4$ | $6$ | $-6$ | $12$ |
+| Summe | $2$ | $-3$ | $3$ | $-6$ | $\\mathbf{17}$ |
+
+Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3$; $3 \\cdot (-2) + 0 = -6$; $-6 \\cdot (-2) + 5 = 12 + 5 = 17$.
+
+**Probe:** Direkteinsetzen: $P(-2) = 2 \\cdot 16 + (-8) - 12 + 0 + 5 = 32 - 8 - 12 + 5 = 17$ ✓.
+
+**Typischer Fehler:** Beim Horner-Schritt $-3 \\cdot (-2) = +6$ verlieren ($-3 \\cdot (-2) = -6$ falsch) — Vorzeichenfehler bei Multiplikation zweier negativer Zahlen. Oder: den fehlenden $x^1$-Term ohne $0$-Spalte überspringen — dann verschiebt sich die ganze Tabelle.`,
+        [
+          'Koeffizienten vollständig auflisten — fehlende Potenzen mit $0$ einfügen: $[2, 1, -3, 0, 5]$.',
+          'Horner-Regel: jeder Eintrag = Vorgänger $\\cdot x_0$ plus nächster Koeffizient.',
+          'Bei Vorzeichen achten — Minus mal Minus gibt Plus.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['horner'] },
+      ),
     ],
     // [4] Linearfaktor-Zerlegung
     4: [
@@ -5588,6 +5675,23 @@ $$(x + 1)(x - 6) = x^2 - 6x + x - 6 = x^2 - 5x - 6$$
           'Summe der drei Lösungen.',
         ],
         { stage: 'transfer', subGoal: 4, uses: ['linearfaktor', 'rat-wurzel'] },
+      ),
+      ni(
+        'Bei der Linearfaktor-Zerlegung von $P(x) = x^3 - 5x^2 + 8x - 4$ tritt die Nullstelle $x = 2$ doppelt auf. Welche Vielfachheit hat die Nullstelle $x = 1$?',
+        1, 0, '',
+        `**Ansatz:** Bei Vielfachheit $k$ erscheint der Faktor $(x - x_0)^k$ in der Zerlegung. Summe der Vielfachheiten = Grad des Polynoms.
+
+**Rechnung:** Grad $3$, eine doppelte Nullstelle bei $x = 2$ → bleibt eine *einfache* Nullstelle. Probe der Kandidaten: $P(1) = 1 - 5 + 8 - 4 = 0$ ✓ — also $x = 1$ einfach. Zerlegung: $P(x) = (x-1)(x-2)^2$.
+
+**Probe:** Ausmultiplizieren: $(x-2)^2 = x^2 - 4x + 4$; mal $(x-1)$: $x^3 - 4x^2 + 4x - x^2 + 4x - 4 = x^3 - 5x^2 + 8x - 4$ ✓.
+
+**Typischer Fehler:** Vielfachheiten nicht zur Grad-Summe addieren — bei kubischer Gleichung müssen die Vielfachheiten zusammen genau $3$ ergeben. Hier: $2$ (für $x=2$) $+ 1$ (für $x=1$) $= 3$. ✓`,
+        [
+          'Vielfachheits-Bilanz: Summe = Grad des Polynoms.',
+          'Doppelte Nullstelle zählt als Vielfachheit $2$.',
+          'Bei Grad $3$ und einer doppelten bleibt nur eine einfache übrig.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['linearfaktor'] },
       ),
     ],
     // [5] Cardano-info (niedriges Niveau)

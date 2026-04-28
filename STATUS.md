@@ -102,8 +102,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2335 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1447 (62 %) | 100 % der Aufgaben | 🟡 |
+| Aufgaben (gesamt) | 2340 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1456 (62 %) | 100 % der Aufgaben | 🟡 |
 | MC mit wrongAnswerExplanations | 1071 / 1071 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
@@ -126,8 +126,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **588** (Lesson-Path: 112 · Goal-Tasks: 476)
-- 4-Block: 526/588 (89 %) 🟡
+- Aufgaben: **593** (Lesson-Path: 112 · Goal-Tasks: 481)
+- 4-Block: 535/593 (90 %) 🟡
 - MC-wAE: 271/271 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
@@ -182,7 +182,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | `alg-1-3` Logarithmen | 7 | 7/7 | 40 | 18/13/7/2/0 | 35/40 | 18/18 | ✅ | +5 4B |
 | `alg-2-1` Lineare Gleichungen | 4 | 4/4 | 35 | 14/11/5/2/3 | 35/35 | 14/14 | ✅ | — |
 | `alg-2-2` Quadratische Gleichungen | 4 | 4/4 | 35 | 15/12/4/3/1 | 35/35 | 15/15 | ✅ | — |
-| `alg-2-3` Polynomgleichungen & Polynomdivision | 6 | 6/6 | 36 | 18/7/6/3/2 | 32/36 | 18/18 | ✅ | +4 4B |
+| `alg-2-3` Polynomgleichungen & Polynomdivision | 6 | 6/6 | 41 | 18/12/6/3/2 | 41/41 | 18/18 | ✅ | — |
 | `alg-2-4` Ungleichungen | 6 | 6/6 | 35 | 18/5/5/4/3 | 34/35 | 18/18 | ✅ | +1 4B |
 | `alg-3-1` Funktionsbegriff | 3 | 3/3 | 20 | 13/0/4/3/0 | 16/20 | 13/13 | ✅ | +4 4B |
 | `alg-3-2` Elementare Funktionen | 6 | 6/6 | 36 | 18/4/5/8/1 | 31/36 | 18/18 | ✅ | +5 4B |
@@ -11351,7 +11351,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 36 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 35 Lessons
 
 #### `alg-3-1` · Funktionsbegriff
 
@@ -12787,66 +12787,6 @@ npm run build              # abschließender End-zu-End-Check
 
 - **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-3-4': { 0: [...], 1: [...], ... }`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-4-a`, `ex-alg-3-4-b`, `ex-alg-3-4-c`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
-#### `alg-2-3` · Polynomgleichungen & Polynomdivision
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-2-2` → `faktor-form`, `abc-formel`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `polynom-grad` — Grad eines Polynoms und höchster Summand (SG 0)
-  2. `rat-wurzel` — Rationaler Wurzelsatz: ganzzahlige Nullstelle teilt das absolute Glied ⇐ `polynom-grad` (SG 0)
-  3. `polydiv` — Polynomdivision $P(x) \div (x-x_0)$ — Grad sinkt um 1 ⇐ `rat-wurzel` (SG 1)
-  4. `polydiv-rest` — Rest der Polynomdivision bei einer Nullstelle ist 0 (Probe) ⇐ `polydiv` (SG 2)
-  5. `horner` — Horner-Schema als kompakte Polynomdivision + Funktionswert-Berechnung ⇐ `polydiv` (SG 3)
-  6. `linearfaktor` — Linearfaktor-Zerlegung $P(x) = \prod (x-x_i)$ bei reellen Nullstellen ⇐ `polydiv` (SG 4)
-  7. `cardano-info` — Ohne rationale Nullstelle: Cardano oder numerisch (Infotiefe) ⇐ `rat-wurzel` (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `polynom-grad`, `rat-wurzel` · **5/5+** — Nullstellenraten: Teiler des absoluten Glieds testen ($\pm 1, \pm 2, \ldots$)
-  - ✅ [1] _hoch_ · Konzepte: `polydiv` · **6/5+** — Polynomdivision: Nach Nullstelle $x_0$ durch $(x - x_0)$ teilen, Grad sinkt um 1
-  - ✅ [2] _hoch_ · Konzepte: `polydiv-rest` · **5/5+** — Rest der Polynomdivision bei Nullstelle muss 0 sein (Probe!)
-  - ✅ [3] _mittel_ · Konzepte: `horner` · **5/5+** — Horner-Schema: kompakte Tabelle, doppelt nutzbar (Polynomwert + Division)
-  - ✅ [4] _hoch_ · Konzepte: `linearfaktor` · **5/5+** — Linearfaktor-Zerlegung $P(x) = (x-x_1)(x-x_2)\cdots(x-x_n)$ falls vollständig reell zerlegbar
-  - ✅ [5] _niedrig_ · Konzepte: `cardano-info` · **5/5+** — Bei $x^3 + ax + b$ ohne rationale Nullstelle: Cardano oder numerisch
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `rat-wurzel` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `rat-wurzel` | 1 | 2 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `rat-wurzel` | 1 | 1 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `rat-wurzel` | 1 | 2 | ✅ | Distraktor: Teiler des Leitkoeffizienten statt Absolutglied |
-|  5 | 0 | transfer           | matching         | `rat-wurzel` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `polydiv` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `polydiv` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `polydiv` | 2 | 2 | ✅ | Quotient + konstantes Glied |
-|  9 | 1 | error-analysis     | multiple-choice  | `polydiv` | 1 | 1 | ✅ |  |
-| 10 | 1 | transfer           | sorting          | `polydiv` | 1 | 1 | ✅ | Divisionsschritte ordnen |
-| 11 | 2 | recognize          | true-false       | `polydiv-rest` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `polydiv-rest` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `polydiv-rest` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `polydiv-rest` | 1 | 1 | ✅ | Distraktor: Rest $\neq 0$ akzeptiert |
-| 15 | 2 | transfer           | true-false       | `polydiv-rest`, `rat-wurzel` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | true-false       | `horner` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `horner` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `horner` | 1 | 1 | ✅ |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `horner` | 1 | 1 | ✅ |  |
-| 20 | 3 | transfer           | sorting          | `horner` | 1 | 1 | ✅ |  |
-| 21 | 4 | recognize          | matching         | `linearfaktor` | 1 | 1 | ✅ |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `linearfaktor`, `polydiv` | 1 | 1 | ✅ |  |
-| 23 | 4 | apply-independent  | number-input     | `linearfaktor` | 1 | 1 | ✅ |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `linearfaktor` | 1 | 1 | ✅ |  |
-| 25 | 4 | transfer           | number-input     | `linearfaktor`, `rat-wurzel` | 1 | 1 | ✅ |  |
-| 26 | 5 | recognize          | true-false       | `cardano-info` | 1 | 1 | ✅ |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `cardano-info` | 1 | 1 | ✅ |  |
-| 28 | 5 | apply-independent  | multiple-choice  | `cardano-info` | 1 | 1 | ✅ |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `cardano-info` | 1 | 1 | ✅ |  |
-| 30 | 5 | transfer           | matching         | `cardano-info`, `rat-wurzel` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-2-3': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-2-3-a`, `ex-alg-2-3-b`, `ex-alg-2-3-c`, `ex-alg-2-3-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 

@@ -321,6 +321,8 @@ Also ist $x = 1$ eine Nullstelle von $P$.
 
 **Warum $x = \\pm 1, \\pm 2, \\pm 3, \\pm 6$ probieren?** Rationale Nullstellen eines ganzzahligen Polynoms sind Teiler des absoluten Glieds — hier $-6$. Das spart viel Zeit beim Raten.
 
+**Probe:** Polynomdivision $(x^{3} - 6x^{2} + 11x - 6) : (x - 1) = x^{2} - 5x + 6$ mit Rest $0$ — bestätigt, dass $x = 1$ tatsächlich Nullstelle ist. Die zwei weiteren Nullstellen kommen aus $x^{2} - 5x + 6 = 0$: $x = 2$ und $x = 3$.
+
 **Typischer Fehler:** Antwort D ($P(1) = 6$) entsteht, wenn man das Minus vor der $6$ übersieht oder nur $-(-6) = 6$ betrachtet statt den Ausdruck vollständig auszuwerten.`,
     wrongAnswerExplanations: {
       1: 'Du hast beim Einsetzen das konstante Glied $-6$ weggelassen oder $1 - 6 + 11 - 6$ als $1 + (-6+11-6) = 1$ falsch gedacht. Richtig summiert: $1 - 6 + 11 - 6 = 0$ (nicht $1$). Rechne Schritt für Schritt: $1 - 6 = -5$, $-5 + 11 = 6$, $6 - 6 = 0$.',
@@ -341,14 +343,14 @@ Also ist $x = 1$ eine Nullstelle von $P$.
     correctIndex: 0,
     explanation: `**Ansatz:** Polynomdivision wie schriftliche Division — Stelle für Stelle den Grad reduzieren.
 
-**Rechnung (schrittweise):**
+**Rechnung:** Schrittweise Polynomdivision:
 $$\\begin{aligned} (x^{3} - 6x^{2} + 11x - 6) &: (x-1) = x^{2} - 5x + 6 \\\\ -(x^{3} - x^{2}) & \\\\ \\hline -5x^{2} + 11x & \\\\ -(-5x^{2} + 5x) & \\\\ \\hline 6x - 6 & \\\\ -(6x - 6) & \\\\ \\hline 0 & \\end{aligned}$$
 
-Der Quotient ist $x^{2} - 5x + 6$, Rest $0$ — das bestätigt, dass $x=1$ Nullstelle war.
+Der Quotient ist $x^{2} - 5x + 6$, Rest $0$ — das bestätigt, dass $x=1$ Nullstelle war. Damit zerfällt $P(x) = (x-1)(x^{2} - 5x + 6) = (x-1)(x-2)(x-3)$, und alle Nullstellen sind $x = 1, 2, 3$.
 
-**Fortsetzung:** $x^{2} - 5x + 6 = (x-2)(x-3)$. Damit sind alle Nullstellen von $P$: $x = 1, 2, 3$.
+Alternative über das Horner-Schema an $x_{0} = 1$: Koeffizienten $1, -6, 11, -6$ liefern Einträge $1, -5, 6, 0$. Die ersten drei bilden den Quotienten $x^{2} - 5x + 6$, die letzte ist der Rest.
 
-**Alternative Horner-Schema** für $P(x)$ an $x_{0} = 1$: Koeffizienten $1, -6, 11, -6$ und Einträge $1, -5, 6, 0$. Die ersten drei bilden den Quotienten $x^{2} - 5x + 6$, die letzte ist der Rest.
+**Probe:** Rückmultiplikation: $(x-1)(x^{2} - 5x + 6) = x^{3} - 5x^{2} + 6x - x^{2} + 5x - 6 = x^{3} - 6x^{2} + 11x - 6$ ✓.
 
 **Typischer Fehler:** Vorzeichenfehler beim Subtrahieren — besonders beim mittleren Schritt $-(-5x^{2} + 5x)$. Immer das *ganze* abgezogene Polynom in Klammern setzen.`,
     wrongAnswerExplanations: {
@@ -361,7 +363,7 @@ Der Quotient ist $x^{2} - 5x + 6$, Rest $0$ — das bestätigt, dass $x=1$ Nulls
       'Multipliziere $x^{2} \\cdot (x-1) = x^{3} - x^{2}$ und ziehe das vom Dividenden ab.',
       'Arbeite schrittweise nach unten: nächster Quotiententerm, multiplizieren, subtrahieren — bis Rest $0$.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['rat-wurzel'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['polydiv'] },
 },
   'ex-alg-2-3-c': {
     id: 'ex-alg-2-3-c', lessonId: 'alg-2-3', type: 'multiple-choice',
@@ -370,21 +372,19 @@ Der Quotient ist $x^{2} - 5x + 6$, Rest $0$ — das bestätigt, dass $x=1$ Nulls
     correctIndex: 0,
     explanation: `**Ansatz:** Wert eines Polynoms an einer Stelle berechnen — direkt einsetzen oder Horner-Schema nutzen.
 
-**Rechnung (direkt einsetzen):**
+**Rechnung:** Direktes Einsetzen ($x = -1$, mit $0$-Koeffizient für den fehlenden $x^{1}$-Term):
 $$P(-1) = 2 \\cdot (-1)^{3} + 3 \\cdot (-1)^{2} + 0 \\cdot (-1) - 1 = -2 + 3 + 0 - 1 = 0$$
 
-Beachte: Der Koeffizient bei $x^{1}$ ist $0$ (fehlt im Polynom).
-
-**Rechnung (Horner-Schema):** Koeffizienten $2, 3, 0, -1$; auswertende Stelle $x_{0} = -1$.
+Per Horner-Schema mit Koeffizienten $2, 3, 0, -1$ und $x_{0} = -1$:
 
 | Koeffizient | $2$ | $3$ | $0$ | $-1$ |
 |---|---|---|---|---|
 | Vorgabe | | $-2$ | $-1$ | $1$ |
 | Summe | $2$ | $1$ | $-1$ | $0$ |
 
-Letzte Zahl in der Summenzeile ist $P(-1) = 0$. ✓
+Letzte Zahl in der Summenzeile ist $P(-1) = 0$ ✓ — beide Wege liefern dasselbe Ergebnis. Die ersten drei Einträge $2, 1, -1$ sind außerdem die Koeffizienten des Quotienten $2x^{2} + x - 1$ aus $P(x):(x+1)$.
 
-**Folgerung:** $x = -1$ ist eine Nullstelle; $(x+1)$ teilt $P(x)$. Die übrigen Einträge $2, 1, -1$ ergeben den Quotienten $2x^{2} + x - 1$.
+**Probe:** Da $P(-1) = 0$, ist $x = -1$ Nullstelle und $(x+1)$ teilt $P(x)$. Rückmultiplikation: $(x+1)(2x^{2} + x - 1) = 2x^{3} + x^{2} - x + 2x^{2} + x - 1 = 2x^{3} + 3x^{2} - 1$ ✓.
 
 **Typischer Fehler:** Vorzeichen bei $(-1)^{3}$ falsch — das ist $-1$, nicht $+1$. Wer $P(-1) = 2 + 3 - 1 = 4$ rechnet (Antwort D), hat das Minus übersehen.`,
     wrongAnswerExplanations: {
@@ -397,7 +397,7 @@ Letzte Zahl in der Summenzeile ist $P(-1) = 0$. ✓
       'Setze ein: $P(-1) = 2 \\cdot (-1) + 3 \\cdot 1 - 1$.',
       'Addiere die Terme: $-2 + 3 - 1 = ?$',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['rat-wurzel'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 3, uses: ['horner'] },
 },
   'ex-alg-2-3-d': {
     id: 'ex-alg-2-3-d', lessonId: 'alg-2-3', type: 'multiple-choice',
@@ -433,7 +433,7 @@ Also $(x^{2} + 3x + 5) = (x + 1)(x + 2) + 3$.
       'Der Restsatz: Der Rest von $P(x) : (x - a)$ ist immer $P(a)$. Hier: $a = -2$, also $P(-2) = ?$',
       'Quotient $x + 1$; Probe $P(-2) = 3$ sollte als Rest auftauchen.',
     ],
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['rat-wurzel'] },
+      pedagogy: { stage: 'error-analysis', subGoal: 2, uses: ['polydiv-rest'] },
 },
   'ex-alg-2-3-mastery': {
     id: 'ex-alg-2-3-mastery', lessonId: 'alg-2-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -442,21 +442,13 @@ Also $(x^{2} + 3x + 5) = (x + 1)(x + 2) + 3$.
     correctIndex: 0,
     explanation: `**Ansatz:** Kein absolutes Glied → $x$ ausklammern (erste Nullstelle geschenkt), dann quadratische Gleichung lösen.
 
-**Schritt 1 — Ausklammern:**
+**Rechnung:** Schritt 1 — Ausklammern:
 $$P(x) = x^{3} - 3x^{2} + 2x = x \\cdot (x^{2} - 3x + 2)$$
 
-Daraus liest man direkt ab: $x_{1} = 0$.
-
-**Schritt 2 — Quadratische Gleichung:** $x^{2} - 3x + 2 = 0$ mit $p = -3$, $q = 2$.
-
-pq-Formel:
+Daraus liest man direkt $x_{1} = 0$ ab. Schritt 2 — quadratische Gleichung $x^{2} - 3x + 2 = 0$ mit $p = -3$, $q = 2$, pq-Formel:
 $$x_{2,3} = \\dfrac{3}{2} \\pm \\sqrt{\\dfrac{9}{4} - 2} = 1{,}5 \\pm \\sqrt{0{,}25} = 1{,}5 \\pm 0{,}5$$
 
-Also $x_{2} = 2$, $x_{3} = 1$.
-
-**Alternative (Vieta):** Zwei Zahlen mit Summe $3$ und Produkt $2$ sind $1$ und $2$. Damit $(x-1)(x-2) = 0$.
-
-**Faktorisierte Form:** $P(x) = x(x-1)(x-2)$.
+Also $x_{2} = 2$, $x_{3} = 1$. Alternativ via Vieta: zwei Zahlen mit Summe $3$ und Produkt $2$ sind $1$ und $2$, also $(x-1)(x-2) = 0$. Die vollständige Linearfaktor-Zerlegung lautet $P(x) = x(x-1)(x-2)$.
 
 **Probe:** $P(0) = 0$ ✓, $P(1) = 1 - 3 + 2 = 0$ ✓, $P(2) = 8 - 12 + 4 = 0$ ✓.
 
@@ -471,7 +463,7 @@ Also $x_{2} = 2$, $x_{3} = 1$.
       'Nach $P(x) = x (x^{2} - 3x + 2)$: Eine Nullstelle ist sofort ablesbar, die anderen kommen aus der Klammer.',
       'Quadratische Gleichung $x^{2} - 3x + 2 = 0$: Zwei Zahlen mit Summe $3$ und Produkt $2$?',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['rat-wurzel'] },
+      pedagogy: { stage: 'transfer', subGoal: 4, uses: ['linearfaktor', 'rat-wurzel'] },
 },
 
   // ── Lesson 4: Ungleichungen ──
@@ -953,6 +945,24 @@ Nützlich zum schnellen Raten ganzzahliger Lösungen oder zur Probe!`,
 - pq-Formel: $x_{2} = 2$, $x_{3} = 3$
 
 **Horner-Schema:** Eine schnelle, kompakte Methode für Polynomwert-Berechnung und Division — besonders bei Klausuren zeitsparend!`,
+      },
+      {
+        id: 'alg-2-3-s1b', type: 'visualization',
+        title: 'Drei Nullstellen geometrisch: $P(x) = x^{3} - 6x^{2} + 11x - 6$',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => x ** 3 - 6 * x * x + 11 * x - 6, color: '#3b82f6', label: 'P(x) = x³ − 6x² + 11x − 6' },
+          ],
+          xRange: [-0.5, 4],
+          yRange: [-2, 4],
+          showGrid: true,
+          marks: [
+            { x: 1, y: 0, label: 'x₁ = 1' },
+            { x: 2, y: 0, label: 'x₂ = 2' },
+            { x: 3, y: 0, label: 'x₃ = 3' },
+          ],
+        },
       },
       { id: 'alg-2-3-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-alg-2-3-a' },
       { id: 'alg-2-3-s3', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-alg-2-3-b' },
