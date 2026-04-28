@@ -1,6 +1,6 @@
 # Lernapp Status — Lehrplan & Content
 
-_auto-generiert · 2026-04-27 · `npm run status`_
+_auto-generiert · 2026-04-28 · `npm run status`_
 
 Single Source of Truth: Lehrplan (Phasen, Fächer, Tipps) **und** Content-Kennzahlen (Topics, Lessons, Aufgaben, Goal-Tasks, Qualitätsgaps). Quelle für den Lehrplan-Teil ist `src/content/curriculum.js` — dieselbe Datei, aus der auch die UI-Seite `/lehrplan` rendert.
 
@@ -102,9 +102,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2319 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1427 (62 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1065 / 1065 (100 %) | 100 % | ✅ |
+| Aufgaben (gesamt) | 2351 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1472 (63 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1066 / 1066 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -126,9 +126,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **572** (Lesson-Path: 112 · Goal-Tasks: 460)
-- 4-Block: 506/572 (88 %) 🟡
-- MC-wAE: 265/265 (100 %) ✅
+- Aufgaben: **604** (Lesson-Path: 112 · Goal-Tasks: 492)
+- 4-Block: 551/604 (91 %) 🟡
+- MC-wAE: 266/266 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
 
@@ -173,13 +173,13 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
-| `alg-0-1` Grundrechnen, Klammern & Vorrang | 4 | 4/4 | 27 | 10/8/5/2/2 | 27/27 | 10/10 | ✅ | — |
-| `alg-0-2` Bruchrechnen sicher | 4 | 4/4 | 27 | 11/7/5/1/3 | 27/27 | 11/11 | ✅ | — |
-| `alg-0-3` Prozent & Dreisatz | 5 | 5/5 | 32 | 11/11/6/3/1 | 32/32 | 11/11 | ✅ | — |
-| `alg-0-4` Termumformung & Gleichungen | 5 | 5/5 | 31 | 12/9/5/2/3 | 30/31 | 12/12 | ✅ | +1 4B |
-| `alg-1-1` Potenzgesetze | 4 | 4/4 | 26 | 13/8/4/1/0 | 23/26 | 13/13 | ✅ | +3 4B |
-| `alg-1-2` Wurzeln und gebrochene Exponenten | 3 | 3/3 | 21 | 9/6/4/1/1 | 17/21 | 9/9 | ✅ | +4 4B |
-| `alg-1-3` Logarithmen | 7 | 7/7 | 40 | 18/13/7/2/0 | 35/40 | 18/18 | ✅ | +5 4B |
+| `alg-0-1` Grundrechnen, Klammern & Vorrang | 4 | 4/4 | 31 | 10/12/5/2/2 | 31/31 | 10/10 | ✅ | — |
+| `alg-0-2` Bruchrechnen sicher | 4 | 4/4 | 31 | 12/10/5/1/3 | 31/31 | 12/12 | ✅ | — |
+| `alg-0-3` Prozent & Dreisatz | 5 | 5/5 | 37 | 11/16/6/3/1 | 37/37 | 11/11 | ✅ | — |
+| `alg-0-4` Termumformung & Gleichungen | 5 | 5/5 | 36 | 12/14/5/2/3 | 36/36 | 12/12 | ✅ | — |
+| `alg-1-1` Potenzgesetze | 4 | 4/4 | 30 | 13/12/4/1/0 | 30/30 | 13/13 | ✅ | — |
+| `alg-1-2` Wurzeln und gebrochene Exponenten | 3 | 3/3 | 24 | 9/9/4/1/1 | 24/24 | 9/9 | ✅ | — |
+| `alg-1-3` Logarithmen | 7 | 7/7 | 47 | 18/19/8/2/0 | 47/47 | 18/18 | ✅ | — |
 | `alg-2-1` Lineare Gleichungen | 4 | 4/4 | 27 | 11/8/4/1/3 | 27/27 | 11/11 | ✅ | — |
 | `alg-2-2` Quadratische Gleichungen | 4 | 4/4 | 27 | 12/7/4/3/1 | 23/27 | 12/12 | ✅ | +4 4B |
 | `alg-2-3` Polynomgleichungen & Polynomdivision | 6 | 6/6 | 36 | 18/7/6/3/2 | 32/36 | 18/18 | ✅ | +4 4B |
@@ -11351,7 +11351,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 38 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 37 Lessons
 
 #### `alg-3-1` · Funktionsbegriff
 
@@ -11411,31 +11411,30 @@ npm run build              # abschließender End-zu-End-Check
   6. `wurzel-vereinfachen` — Quadratzahl-Faktor herausziehen: $\sqrt{12}=2\sqrt 3$ ⇐ `wurzel-produkt` (SG 1)
   7. `nenner-rational` — Nenner rational machen durch Erweitern mit $\sqrt{\cdots}$ ⇐ `wurzel-produkt` (SG 2)
 - **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `wurzel-bruchpot`, `wurzel-def-bereich` · **5/5+** — Wurzel als Bruchpotenz: $\sqrt[n]{x} = x^{1/n}$, dadurch gelten alle Potenzgesetze
-  - ✅ [1] _hoch_ · Konzepte: `wurzel-produkt`, `wurzel-quotient`, `wurzel-summe-nein`, `wurzel-vereinfachen` · **6/5+** — Wurzel des Produkts: $\sqrt{ab} = \sqrt a \cdot \sqrt b$ — aber $\sqrt{a+b} \neq \sqrt a + \sqrt b$
-  - ✅ [2] _mittel_ · Konzepte: `nenner-rational` · **5/5+** — Nenner rational machen: Erweitern mit passender Wurzel löst Wurzeln aus dem Nenner
+  - ✅ [0] _hoch_ · Konzepte: `wurzel-bruchpot`, `wurzel-def-bereich` · **6/5+** — Wurzel als Bruchpotenz: $\sqrt[n]{x} = x^{1/n}$, dadurch gelten alle Potenzgesetze
+  - ✅ [1] _hoch_ · Konzepte: `wurzel-produkt`, `wurzel-quotient`, `wurzel-summe-nein`, `wurzel-vereinfachen` · **7/5+** — Wurzel des Produkts: $\sqrt{ab} = \sqrt a \cdot \sqrt b$ — aber $\sqrt{a+b} \neq \sqrt a + \sqrt b$
+  - ✅ [2] _mittel_ · Konzepte: `nenner-rational` · **6/5+** — Nenner rational machen: Erweitern mit passender Wurzel löst Wurzeln aus dem Nenner
 - **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
 
 | #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
 |----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
 |  1 | 0 | recognize          | true-false       | `wurzel-bruchpot` | 1 | 1 | ✅ |  |
 |  2 | 0 | apply-guided       | multiple-choice  | `wurzel-bruchpot` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `wurzel-bruchpot` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `wurzel-bruchpot` | 1 | 2 | ✅ |  |
 |  4 | 0 | error-analysis     | multiple-choice  | `wurzel-def-bereich` | 1 | 1 | ✅ | $\sqrt{-4}$ in $\mathbb R$? |
 |  5 | 0 | transfer           | matching         | `wurzel-bruchpot` | 1 | 1 | ✅ | Wurzel ↔ Potenzschreibweise |
 |  6 | 1 | recognize          | true-false       | `wurzel-summe-nein` | 1 | 1 | ✅ |  |
 |  7 | 1 | apply-guided       | multiple-choice  | `wurzel-produkt` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `wurzel-vereinfachen` | 2 | 2 | ✅ | $\sqrt{50}$, $\sqrt{72}$ vereinfachen |
+|  8 | 1 | apply-independent  | number-input     | `wurzel-vereinfachen` | 2 | 3 | ✅ | $\sqrt{50}$, $\sqrt{72}$ vereinfachen |
 |  9 | 1 | error-analysis     | multiple-choice  | `wurzel-summe-nein` | 1 | 1 | ✅ | Distraktor: Wurzel auf Summe verteilt |
 | 10 | 1 | transfer           | sorting          | `wurzel-produkt`, `wurzel-vereinfachen` | 1 | 1 | ✅ |  |
 | 11 | 2 | recognize          | true-false       | `nenner-rational` | 1 | 1 | ✅ |  |
 | 12 | 2 | apply-guided       | multiple-choice  | `nenner-rational` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `nenner-rational` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `nenner-rational` | 1 | 2 | ✅ |  |
 | 14 | 2 | error-analysis     | multiple-choice  | `nenner-rational` | 1 | 1 | ✅ |  |
 | 15 | 2 | transfer           | number-input     | `nenner-rational`, `wurzel-vereinfachen` | 1 | 1 | ✅ |  |
 
 - **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-1-2': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-1-2-a`, `ex-alg-1-2-b`, `ex-alg-1-2-d`, `ex-alg-1-2-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
@@ -11576,147 +11575,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-trig-1-3-b`, `ex-trig-1-3-c`, `ex-trig-1-3-mastery`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
-
-#### `alg-1-1` · Potenzgesetze
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-0-4` → `distributiv`, `aequivalenz`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `potenz-def` — $x^n$ = $n$-fache Multiplikation von $x$ (SG 0)
-  2. `pot-mult` — Gleiche Basis Multiplikation: $x^a \cdot x^b = x^{a+b}$ ⇐ `potenz-def` (SG 0)
-  3. `pot-div` — Gleiche Basis Division: $x^a / x^b = x^{a-b}$ ⇐ `pot-mult` (SG 0)
-  4. `pot-potenz` — Potenz einer Potenz: $(x^a)^b = x^{a\cdot b}$ ⇐ `potenz-def` (SG 1)
-  5. `pot-produkt` — Produkt in Klammer: $(xy)^n = x^n y^n$ ⇐ `potenz-def` (SG 3)
-  6. `pot-quotient` — Quotient in Klammer: $(x/y)^n = x^n/y^n$ ⇐ `pot-produkt` (SG 3)
-  7. `pot-null` — $x^0 = 1$ für $x \neq 0$ ⇐ `pot-div` (SG 2)
-  8. `pot-negativ` — $x^{-n} = 1/x^n$ ⇐ `pot-div` (SG 2)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `potenz-def`, `pot-mult`, `pot-div` · **5/5+** — Gleiche Basis: $x^a \cdot x^b = x^{a+b}$ und $x^a/x^b = x^{a-b}$
-  - ✅ [1] _hoch_ · Konzepte: `pot-potenz` · **5/5+** — Potenz einer Potenz: $(x^a)^b = x^{a \cdot b}$ — niemals mit Multiplikation verwechseln
-  - ✅ [2] _hoch_ · Konzepte: `pot-null`, `pot-negativ` · **5/5+** — Negativer Exponent $x^{-n} = 1/x^n$ und nullter Exponent $x^0 = 1$ (für $x \neq 0$)
-  - ✅ [3] _mittel_ · Konzepte: `pot-produkt`, `pot-quotient` · **5/5+** — Produkt/Quotient in Klammer: $(xy)^n = x^n y^n$, $(x/y)^n = x^n/y^n$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `pot-mult` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `pot-mult`, `pot-div` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `pot-mult` | 1 | 1 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `pot-mult` | 1 | 2 | ✅ | Distraktor: Exponenten multipliziert statt addiert |
-|  5 | 0 | transfer           | number-input     | `pot-mult`, `pot-div` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `pot-potenz` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `pot-potenz` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `pot-potenz` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `pot-potenz`, `pot-mult` | 1 | 1 | ✅ | Distraktor: mit Multiplikation-Regel verwechselt |
-| 10 | 1 | transfer           | matching         | `pot-potenz`, `pot-mult` | 1 | 1 | ✅ | Term ↔ Regel |
-| 11 | 2 | recognize          | true-false       | `pot-null`, `pot-negativ` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `pot-negativ` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `pot-negativ` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `pot-null` | 1 | 1 | ✅ | Distraktor: $x^0 = 0$ |
-| 15 | 2 | transfer           | number-input     | `pot-negativ`, `pot-mult` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | true-false       | `pot-produkt` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `pot-produkt` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `pot-produkt` | 1 | 1 | ✅ | $(2x)^3$ auflösen |
-| 19 | 3 | error-analysis     | multiple-choice  | `pot-produkt` | 1 | 1 | ✅ | Distraktor: Exponent nur auf Variable |
-| 20 | 3 | transfer           | number-input     | `pot-quotient`, `pot-produkt` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-1-1': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-1-1-b`, `ex-alg-1-1-d`, `ex-alg-1-1-e`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
-#### `alg-0-1` · Grundrechnen, Klammern & Vorrang
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Prerequisites:** keine (Einstiegs-Lesson).
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `prio-basic` — Vorrangregel: Punkt- vor Strichrechnung (SG 0)
-  2. `prio-potenz` — Potenz- vor Punktrechnung ⇐ `prio-basic` (SG 0)
-  3. `prio-klammer` — Klammern überschreiben die Präzedenz (zuerst ausrechnen) ⇐ `prio-basic` (SG 3)
-  4. `minus-vorklammer` — $-(a+b) = -a - b$ — Minuszeichen auf alle Summanden (SG 1)
-  5. `minus-mal-minus` — $(-a)(-b) = +ab$ — Doppel-Minus = Plus ⇐ `minus-vorklammer` (SG 2)
-  6. `klammer-schachtel` — Geschachtelte Klammern: innerste zuerst auflösen ⇐ `prio-klammer` (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `prio-basic`, `prio-potenz` · **6/5+** — Vorrangregel Punkt-vor-Strich bei gemischten Termen
-  - ✅ [1] _hoch_ · Konzepte: `minus-vorklammer` · **5/5+** — Minuszeichen vor Klammer auf alle Summanden anwenden
-  - ✅ [2] _mittel_ · Konzepte: `minus-mal-minus` · **5/5+** — Doppel-Minus aufgelöst: $(-a)(-b)=+ab$
-  - ✅ [3] _mittel_ · Konzepte: `prio-klammer`, `klammer-schachtel` · **5/5+** — Klammerschachtelung von innen nach außen abarbeiten
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `prio-basic` | 1 | 1 | ✅ | Aussage „$3+4\cdot 2 = 11$" prüfen |
-|  2 | 0 | apply-guided       | multiple-choice  | `prio-basic` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `prio-basic`, `prio-potenz` | 2 | 2 | ✅ | Term mit Potenz + Mult + Strich |
-|  4 | 0 | error-analysis     | multiple-choice  | `prio-basic` | 1 | 1 | ✅ | Distraktor: von links nach rechts gerechnet |
-|  5 | 0 | transfer           | sorting          | `prio-basic`, `prio-potenz` | 1 | 1 | ✅ | Schritte in korrekte Reihenfolge bringen |
-|  6 | 1 | recognize          | true-false       | `minus-vorklammer` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `minus-vorklammer` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `minus-vorklammer` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `minus-vorklammer` | 1 | 1 | ✅ | Distraktor: nur ersten Summanden umgedreht |
-| 10 | 1 | transfer           | matching         | `minus-vorklammer` | 1 | 1 | ✅ | Klammer-Term ↔ aufgelöstes Ergebnis |
-| 11 | 2 | recognize          | true-false       | `minus-mal-minus` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `minus-mal-minus` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `minus-mal-minus` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `minus-mal-minus` | 1 | 1 | ✅ | Distraktor: Vorzeichen übersehen |
-| 15 | 2 | transfer           | number-input     | `minus-mal-minus`, `minus-vorklammer` | 1 | 1 | ✅ | Kombi: $-(-(2-5))$ oder ähnlich |
-| 16 | 3 | recognize          | true-false       | `klammer-schachtel` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `klammer-schachtel` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `klammer-schachtel` | 1 | 1 | ✅ |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `klammer-schachtel` | 1 | 1 | ✅ | Distraktor: äußerste Klammer zuerst gerechnet |
-| 20 | 3 | transfer           | sorting          | `klammer-schachtel`, `prio-klammer` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-1': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
-#### `alg-0-2` · Bruchrechnen sicher
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-0-1` → `prio-basic`, `prio-klammer`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `bruch-erweitern` — Erweitern/Kürzen: Zähler und Nenner mit/durch dieselbe Zahl (Wert bleibt) (SG 0)
-  2. `ggt-kuerzen` — Vollständiges Kürzen per ggT von Zähler und Nenner ⇐ `bruch-erweitern` (SG 3)
-  3. `kgv-hauptnenner` — Hauptnenner = kgV der Einzelnenner (Primfaktorzerlegung) ⇐ `bruch-erweitern` (SG 0)
-  4. `bruch-add` — Addition/Subtraktion: erst Hauptnenner, dann Zähler rechnen ⇐ `kgv-hauptnenner` (SG 0)
-  5. `bruch-mult` — Multiplikation: Zähler $\cdot$ Zähler, Nenner $\cdot$ Nenner (SG 1)
-  6. `bruch-div-kehr` — Division durch Bruch = Multiplikation mit Kehrwert ⇐ `bruch-mult` (SG 1)
-  7. `doppelbruch` — Doppelbruch auflösen über Division-Kehrwert-Regel ⇐ `bruch-div-kehr` (SG 2)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `bruch-erweitern`, `kgv-hauptnenner`, `bruch-add` · **6/5+** — Hauptnenner bei ungleichnamigen Brüchen finden (kgV)
-  - ✅ [1] _hoch_ · Konzepte: `bruch-mult`, `bruch-div-kehr` · **5/5+** — Division durch Bruch als Multiplikation mit Kehrwert
-  - ✅ [2] _mittel_ · Konzepte: `doppelbruch` · **5/5+** — Doppelbrüche auflösen
-  - ✅ [3] _mittel_ · Konzepte: `ggt-kuerzen` · **5/5+** — Bruch vollständig kürzen per ggT
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `kgv-hauptnenner` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `kgv-hauptnenner` | 1 | 2 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `kgv-hauptnenner`, `bruch-add` | 2 | 2 | ✅ | kgV bestimmen + Brüche addieren |
-|  4 | 0 | error-analysis     | multiple-choice  | `bruch-add` | 1 | 1 | ✅ | Distraktor: Zähler und Nenner einzeln addiert |
-|  5 | 0 | transfer           | sorting          | `kgv-hauptnenner`, `bruch-add` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `bruch-div-kehr` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `bruch-div-kehr` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `bruch-div-kehr` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `bruch-div-kehr` | 1 | 1 | ✅ | Distraktor: statt Kehrwert direkt dividiert |
-| 10 | 1 | transfer           | matching         | `bruch-div-kehr`, `bruch-mult` | 1 | 1 | ✅ |  |
-| 11 | 2 | recognize          | true-false       | `doppelbruch` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `doppelbruch` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `doppelbruch` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `doppelbruch` | 1 | 1 | ✅ | Distraktor: Zähler und Nenner falsch gruppiert |
-| 15 | 2 | transfer           | number-input     | `doppelbruch` | 1 | 1 | ✅ | Doppelbruch auflösen (ggT-Kürzung folgt in SG 3) |
-| 16 | 3 | recognize          | true-false       | `ggt-kuerzen` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `ggt-kuerzen` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `ggt-kuerzen` | 1 | 1 | ✅ |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `ggt-kuerzen` | 1 | 1 | ✅ | Distraktor: nicht vollständig gekürzt |
-| 20 | 3 | transfer           | sorting          | `ggt-kuerzen` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-2': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-2-1` · Lineare Gleichungen
 
@@ -12127,115 +11985,143 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
 
-#### `alg-0-4` · Termumformung & Gleichungen
+#### `alg-1-1` · Potenzgesetze
 
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
 - **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-0-1` → `prio-basic`, `minus-vorklammer`
-  - `alg-0-2` → `bruch-erweitern`
+  - `alg-0-4` → `distributiv`, `aequivalenz`
 - **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `gleichartige-terme` — Gleichartige Terme: gleiche Variable mit gleichem Exponenten (SG 0)
-  2. `koeff-addieren` — Nur die Koeffizienten gleichartiger Terme addieren ⇐ `gleichartige-terme` (SG 0)
-  3. `distributiv` — Distributivgesetz: $a(b+c) = ab + ac$ (SG 1)
-  4. `ausklammern` — Ausklammern als Umkehrung des Distributivgesetzes ⇐ `distributiv` (SG 1)
-  5. `binom-1` — 1. binomische Formel: $(a+b)^2 = a^2 + 2ab + b^2$ ⇐ `distributiv` (SG 2)
-  6. `binom-2` — 2. binomische Formel: $(a-b)^2 = a^2 - 2ab + b^2$ ⇐ `distributiv` (SG 2)
-  7. `binom-3` — 3. binomische Formel: $(a+b)(a-b) = a^2 - b^2$ ⇐ `distributiv` (SG 2)
-  8. `aequivalenz` — Äquivalenzumformung: auf beiden Seiten dasselbe tun (SG 3)
-  9. `nicht-durch-null` — Division durch Null verboten (verliert Lösungen) ⇐ `aequivalenz` (SG 3)
-  10. `formel-umstellen` — Formel nach Variable umstellen: Operationen umkehren ⇐ `aequivalenz` (SG 3)
-  11. `quadrieren-probe` — Beim Quadrieren Probe nötig — Scheinlösungen möglich ⇐ `aequivalenz` (SG 4)
+  1. `potenz-def` — $x^n$ = $n$-fache Multiplikation von $x$ (SG 0)
+  2. `pot-mult` — Gleiche Basis Multiplikation: $x^a \cdot x^b = x^{a+b}$ ⇐ `potenz-def` (SG 0)
+  3. `pot-div` — Gleiche Basis Division: $x^a / x^b = x^{a-b}$ ⇐ `pot-mult` (SG 0)
+  4. `pot-potenz` — Potenz einer Potenz: $(x^a)^b = x^{a\cdot b}$ ⇐ `potenz-def` (SG 1)
+  5. `pot-produkt` — Produkt in Klammer: $(xy)^n = x^n y^n$ ⇐ `potenz-def` (SG 3)
+  6. `pot-quotient` — Quotient in Klammer: $(x/y)^n = x^n/y^n$ ⇐ `pot-produkt` (SG 3)
+  7. `pot-null` — $x^0 = 1$ für $x \neq 0$ ⇐ `pot-div` (SG 2)
+  8. `pot-negativ` — $x^{-n} = 1/x^n$ ⇐ `pot-div` (SG 2)
 - **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `gleichartige-terme`, `koeff-addieren` · **5/5+** — Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren
-  - ✅ [1] _hoch_ · Konzepte: `distributiv`, `ausklammern` · **5/5+** — Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)
-  - ✅ [2] _hoch_ · Konzepte: `binom-1`, `binom-2`, `binom-3` · **5/5+** — Binomische Formeln: $(a\pm b)^2 = a^2 \pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$
-  - ✅ [3] _hoch_ · Konzepte: `aequivalenz`, `nicht-durch-null`, `formel-umstellen` · **5/5+** — Äquivalenzumformungen: auf beiden Seiten dasselbe tun, nicht durch Null teilen
-  - ✅ [4] _mittel_ · Konzepte: `quadrieren-probe` · **5/5+** — Beim Quadrieren Probe nötig (Scheinlösungen möglich)
+  - ✅ [0] _hoch_ · Konzepte: `potenz-def`, `pot-mult`, `pot-div` · **6/5+** — Gleiche Basis: $x^a \cdot x^b = x^{a+b}$ und $x^a/x^b = x^{a-b}$
+  - ✅ [1] _hoch_ · Konzepte: `pot-potenz` · **6/5+** — Potenz einer Potenz: $(x^a)^b = x^{a \cdot b}$ — niemals mit Multiplikation verwechseln
+  - ✅ [2] _hoch_ · Konzepte: `pot-null`, `pot-negativ` · **6/5+** — Negativer Exponent $x^{-n} = 1/x^n$ und nullter Exponent $x^0 = 1$ (für $x \neq 0$)
+  - ✅ [3] _mittel_ · Konzepte: `pot-produkt`, `pot-quotient` · **6/5+** — Produkt/Quotient in Klammer: $(xy)^n = x^n y^n$, $(x/y)^n = x^n/y^n$
 - **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
 
 | #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
 |----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `gleichartige-terme` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `gleichartige-terme`, `koeff-addieren` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `koeff-addieren` | 1 | 1 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `gleichartige-terme` | 1 | 1 | ✅ | Distraktor: $x+x^2$ als gleichartig behandelt |
-|  5 | 0 | transfer           | matching         | `gleichartige-terme` | 1 | 1 | ✅ | Terme ↔ gleichartige Gruppe |
-|  6 | 1 | recognize          | true-false       | `distributiv` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `distributiv` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `distributiv` | 1 | 1 | ✅ | Ausmultiplizieren |
-|  9 | 1 | error-analysis     | multiple-choice  | `distributiv` | 1 | 1 | ✅ | Distraktor: Faktor nur auf ersten Summanden |
-| 10 | 1 | transfer           | number-input     | `ausklammern` | 1 | 1 | ✅ | Ausklammern des größten gemeinsamen Faktors |
-| 11 | 2 | recognize          | matching         | `binom-1`, `binom-2`, `binom-3` | 1 | 1 | ✅ | Formel ↔ Typ |
-| 12 | 2 | apply-guided       | multiple-choice  | `binom-1` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `binom-2` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `binom-1`, `binom-2` | 1 | 1 | ✅ | Distraktor: mittleren Term vergessen |
-| 15 | 2 | transfer           | number-input     | `binom-3` | 1 | 1 | ✅ | Anwendung 3. binomische Formel in Zahlenrechnung |
-| 16 | 3 | recognize          | true-false       | `aequivalenz`, `nicht-durch-null` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `aequivalenz` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `formel-umstellen` | 1 | 1 | ✅ | Formel nach Variable umstellen |
-| 19 | 3 | error-analysis     | multiple-choice  | `nicht-durch-null` | 1 | 1 | ✅ | Distraktor: durch 0-Term geteilt |
-| 20 | 3 | transfer           | sorting          | `aequivalenz`, `formel-umstellen` | 1 | 1 | ✅ |  |
-| 21 | 4 | recognize          | true-false       | `quadrieren-probe` | 1 | 1 | ✅ |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `quadrieren-probe` | 1 | 1 | ✅ |  |
-| 23 | 4 | apply-independent  | number-input     | `quadrieren-probe` | 1 | 1 | ✅ |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `quadrieren-probe` | 1 | 1 | ✅ | Distraktor: Scheinlösung akzeptiert |
-| 25 | 4 | transfer           | sorting          | `quadrieren-probe`, `aequivalenz` | 1 | 1 | ✅ |  |
+|  1 | 0 | recognize          | true-false       | `pot-mult` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pot-mult`, `pot-div` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `pot-mult` | 1 | 2 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `pot-mult` | 1 | 2 | ✅ | Distraktor: Exponenten multipliziert statt addiert |
+|  5 | 0 | transfer           | number-input     | `pot-mult`, `pot-div` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `pot-potenz` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pot-potenz` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `pot-potenz` | 1 | 2 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pot-potenz`, `pot-mult` | 1 | 1 | ✅ | Distraktor: mit Multiplikation-Regel verwechselt |
+| 10 | 1 | transfer           | matching         | `pot-potenz`, `pot-mult` | 1 | 1 | ✅ | Term ↔ Regel |
+| 11 | 2 | recognize          | true-false       | `pot-null`, `pot-negativ` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pot-negativ` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `pot-negativ` | 1 | 2 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `pot-null` | 1 | 1 | ✅ | Distraktor: $x^0 = 0$ |
+| 15 | 2 | transfer           | number-input     | `pot-negativ`, `pot-mult` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `pot-produkt` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pot-produkt` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `pot-produkt` | 1 | 1 | ✅ | $(2x)^3$ auflösen |
+| 19 | 3 | error-analysis     | multiple-choice  | `pot-produkt` | 1 | 1 | ✅ | Distraktor: Exponent nur auf Variable |
+| 20 | 3 | transfer           | number-input     | `pot-quotient`, `pot-produkt` | 1 | 1 | ✅ |  |
 
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-4': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-0-4-goal-sg1-3`
+- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-1-1': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
-#### `alg-0-3` · Prozent & Dreisatz
+#### `alg-0-1` · Grundrechnen, Klammern & Vorrang
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-0-2` → `bruch-erweitern`, `bruch-mult`
+- **Prerequisites:** keine (Einstiegs-Lesson).
 - **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `prozent-def` — $p\%$ bedeutet $\dfrac{p}{100}$ (SG 0)
-  2. `prozent-grund` — Grundformel $W = G \cdot \tfrac{p}{100}$ und Umstellungen nach $G$ / $p$ ⇐ `prozent-def` (SG 0)
-  3. `wachstumsfaktor` — Wachstumsfaktor: $\pm p\%$ als $\times (1 \pm p/100)$ ⇐ `prozent-def` (SG 1)
-  4. `prozent-kette` — Zwei Änderungen in Folge multiplizieren sich (nicht addieren) ⇐ `wachstumsfaktor` (SG 2)
-  5. `direkt-prop` — Direkte Proportionalität: $x_1/y_1 = x_2/y_2$ (SG 3)
-  6. `indirekt-prop` — Indirekte Proportionalität: $x_1 y_1 = x_2 y_2$ ⇐ `direkt-prop` (SG 3)
-  7. `prozentpunkt` — Prozentpunkt vs. Prozent: Differenz vs. relativer Anstieg ⇐ `wachstumsfaktor` (SG 4)
+  1. `prio-basic` — Vorrangregel: Punkt- vor Strichrechnung (SG 0)
+  2. `prio-potenz` — Potenz- vor Punktrechnung ⇐ `prio-basic` (SG 0)
+  3. `prio-klammer` — Klammern überschreiben die Präzedenz (zuerst ausrechnen) ⇐ `prio-basic` (SG 3)
+  4. `minus-vorklammer` — $-(a+b) = -a - b$ — Minuszeichen auf alle Summanden (SG 1)
+  5. `minus-mal-minus` — $(-a)(-b) = +ab$ — Doppel-Minus = Plus ⇐ `minus-vorklammer` (SG 2)
+  6. `klammer-schachtel` — Geschachtelte Klammern: innerste zuerst auflösen ⇐ `prio-klammer` (SG 3)
 - **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `prozent-def`, `prozent-grund` · **6/5+** — Grundformel: $W = G \cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$
-  - ✅ [1] _hoch_ · Konzepte: `wachstumsfaktor` · **5/5+** — Wachstumsfaktor: $+p\% \to \times(1 + p/100)$, $-p\% \to \times(1 - p/100)$
-  - ✅ [2] _hoch_ · Konzepte: `prozent-kette` · **5/5+** — Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\%$ dann $-10\% \neq 0$)
-  - ✅ [3] _hoch_ · Konzepte: `direkt-prop`, `indirekt-prop` · **5/5+** — Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$
-  - ✅ [4] _mittel_ · Konzepte: `prozentpunkt` · **5/5+** — Prozentpunkt vs. Prozent: $15\%$ auf $10\%$ erhöht ist $11{,}5\%$, nicht $25\%$
+  - ✅ [0] _hoch_ · Konzepte: `prio-basic`, `prio-potenz` · **7/5+** — Vorrangregel Punkt-vor-Strich bei gemischten Termen
+  - ✅ [1] _hoch_ · Konzepte: `minus-vorklammer` · **6/5+** — Minuszeichen vor Klammer auf alle Summanden anwenden
+  - ✅ [2] _mittel_ · Konzepte: `minus-mal-minus` · **6/5+** — Doppel-Minus aufgelöst: $(-a)(-b)=+ab$
+  - ✅ [3] _mittel_ · Konzepte: `prio-klammer`, `klammer-schachtel` · **6/5+** — Klammerschachtelung von innen nach außen abarbeiten
 - **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
 
 | #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
 |----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `prozent-def` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `prozent-grund` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `prozent-grund` | 2 | 2 | ✅ | Einmal $W$, einmal $G$ oder $p$ gesucht |
-|  4 | 0 | error-analysis     | multiple-choice  | `prozent-grund` | 1 | 1 | ✅ | Distraktor: durch $p$ statt $p/100$ geteilt |
-|  5 | 0 | transfer           | matching         | `prozent-grund` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `wachstumsfaktor` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `wachstumsfaktor` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `wachstumsfaktor` | 1 | 1 | ✅ | Rabatt-Rechnung |
-|  9 | 1 | error-analysis     | multiple-choice  | `wachstumsfaktor` | 1 | 1 | ✅ | Distraktor: Differenz statt Faktor gerechnet |
-| 10 | 1 | transfer           | number-input     | `wachstumsfaktor` | 1 | 1 | ✅ | Rückrechnen vom Endpreis zum Grundpreis |
-| 11 | 2 | recognize          | true-false       | `prozent-kette` | 1 | 1 | ✅ | +10% dann −10% ergibt 100%? — falsch |
-| 12 | 2 | apply-guided       | multiple-choice  | `prozent-kette` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `prozent-kette` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `prozent-kette` | 1 | 1 | ✅ | Distraktor: Prozente addiert |
-| 15 | 2 | transfer           | sorting          | `prozent-kette`, `wachstumsfaktor` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | true-false       | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `direkt-prop` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `indirekt-prop` | 1 | 1 | ✅ | Pumpen-Typ-Dreisatz |
-| 19 | 3 | error-analysis     | multiple-choice  | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ | Distraktor: direkt statt indirekt gerechnet |
-| 20 | 3 | transfer           | matching         | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ | Situation ↔ Typ |
-| 21 | 4 | recognize          | true-false       | `prozentpunkt` | 1 | 1 | ✅ |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `prozentpunkt` | 1 | 1 | ✅ |  |
-| 23 | 4 | apply-independent  | number-input     | `prozentpunkt` | 1 | 1 | ✅ |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `prozentpunkt` | 1 | 1 | ✅ | Distraktor: Prozentpunkte addiert statt multipliziert |
-| 25 | 4 | transfer           | number-input     | `prozentpunkt`, `wachstumsfaktor` | 1 | 1 | ✅ |  |
+|  1 | 0 | recognize          | true-false       | `prio-basic` | 1 | 1 | ✅ | Aussage „$3+4\cdot 2 = 11$" prüfen |
+|  2 | 0 | apply-guided       | multiple-choice  | `prio-basic` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `prio-basic`, `prio-potenz` | 2 | 2 | ✅ | Term mit Potenz + Mult + Strich |
+|  4 | 0 | error-analysis     | multiple-choice  | `prio-basic` | 1 | 1 | ✅ | Distraktor: von links nach rechts gerechnet |
+|  5 | 0 | transfer           | sorting          | `prio-basic`, `prio-potenz` | 1 | 1 | ✅ | Schritte in korrekte Reihenfolge bringen |
+|  6 | 1 | recognize          | true-false       | `minus-vorklammer` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `minus-vorklammer` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `minus-vorklammer` | 1 | 2 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `minus-vorklammer` | 1 | 1 | ✅ | Distraktor: nur ersten Summanden umgedreht |
+| 10 | 1 | transfer           | matching         | `minus-vorklammer` | 1 | 1 | ✅ | Klammer-Term ↔ aufgelöstes Ergebnis |
+| 11 | 2 | recognize          | true-false       | `minus-mal-minus` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `minus-mal-minus` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `minus-mal-minus` | 1 | 2 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `minus-mal-minus` | 1 | 1 | ✅ | Distraktor: Vorzeichen übersehen |
+| 15 | 2 | transfer           | number-input     | `minus-mal-minus`, `minus-vorklammer` | 1 | 1 | ✅ | Kombi: $-(-(2-5))$ oder ähnlich |
+| 16 | 3 | recognize          | true-false       | `klammer-schachtel` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `klammer-schachtel` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `klammer-schachtel` | 1 | 2 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `klammer-schachtel` | 1 | 1 | ✅ | Distraktor: äußerste Klammer zuerst gerechnet |
+| 20 | 3 | transfer           | sorting          | `klammer-schachtel`, `prio-klammer` | 1 | 1 | ✅ |  |
 
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-3': { 0: [...], 1: [...], ... }`
+- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-1': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
+#### `alg-0-2` · Bruchrechnen sicher
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-0-1` → `prio-basic`, `prio-klammer`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `bruch-erweitern` — Erweitern/Kürzen: Zähler und Nenner mit/durch dieselbe Zahl (Wert bleibt) (SG 0)
+  2. `ggt-kuerzen` — Vollständiges Kürzen per ggT von Zähler und Nenner ⇐ `bruch-erweitern` (SG 3)
+  3. `kgv-hauptnenner` — Hauptnenner = kgV der Einzelnenner (Primfaktorzerlegung) ⇐ `bruch-erweitern` (SG 0)
+  4. `bruch-add` — Addition/Subtraktion: erst Hauptnenner, dann Zähler rechnen ⇐ `kgv-hauptnenner` (SG 0)
+  5. `bruch-mult` — Multiplikation: Zähler $\cdot$ Zähler, Nenner $\cdot$ Nenner (SG 1)
+  6. `bruch-div-kehr` — Division durch Bruch = Multiplikation mit Kehrwert ⇐ `bruch-mult` (SG 1)
+  7. `doppelbruch` — Doppelbruch auflösen über Division-Kehrwert-Regel ⇐ `bruch-div-kehr` (SG 2)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `bruch-erweitern`, `kgv-hauptnenner`, `bruch-add` · **7/5+** — Hauptnenner bei ungleichnamigen Brüchen finden (kgV)
+  - ✅ [1] _hoch_ · Konzepte: `bruch-mult`, `bruch-div-kehr` · **6/5+** — Division durch Bruch als Multiplikation mit Kehrwert
+  - ✅ [2] _mittel_ · Konzepte: `doppelbruch` · **6/5+** — Doppelbrüche auflösen
+  - ✅ [3] _mittel_ · Konzepte: `ggt-kuerzen` · **6/5+** — Bruch vollständig kürzen per ggT
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kgv-hauptnenner` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kgv-hauptnenner` | 1 | 2 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `kgv-hauptnenner`, `bruch-add` | 2 | 3 | ✅ | kgV bestimmen + Brüche addieren |
+|  4 | 0 | error-analysis     | multiple-choice  | `bruch-add` | 1 | 1 | ✅ | Distraktor: Zähler und Nenner einzeln addiert |
+|  5 | 0 | transfer           | sorting          | `kgv-hauptnenner`, `bruch-add` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `bruch-div-kehr` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `bruch-div-kehr` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `bruch-div-kehr` | 1 | 2 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `bruch-div-kehr` | 1 | 1 | ✅ | Distraktor: statt Kehrwert direkt dividiert |
+| 10 | 1 | transfer           | matching         | `bruch-div-kehr`, `bruch-mult` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `doppelbruch` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `doppelbruch` | 1 | 2 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `doppelbruch` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `doppelbruch` | 1 | 1 | ✅ | Distraktor: Zähler und Nenner falsch gruppiert |
+| 15 | 2 | transfer           | number-input     | `doppelbruch` | 1 | 1 | ✅ | Doppelbruch auflösen (ggT-Kürzung folgt in SG 3) |
+| 16 | 3 | recognize          | true-false       | `ggt-kuerzen` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `ggt-kuerzen` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `ggt-kuerzen` | 1 | 2 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `ggt-kuerzen` | 1 | 1 | ✅ | Distraktor: nicht vollständig gekürzt |
+| 20 | 3 | transfer           | sorting          | `ggt-kuerzen` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-2': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
@@ -12883,6 +12769,64 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
+#### `alg-0-4` · Termumformung & Gleichungen
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-0-1` → `prio-basic`, `minus-vorklammer`
+  - `alg-0-2` → `bruch-erweitern`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `gleichartige-terme` — Gleichartige Terme: gleiche Variable mit gleichem Exponenten (SG 0)
+  2. `koeff-addieren` — Nur die Koeffizienten gleichartiger Terme addieren ⇐ `gleichartige-terme` (SG 0)
+  3. `distributiv` — Distributivgesetz: $a(b+c) = ab + ac$ (SG 1)
+  4. `ausklammern` — Ausklammern als Umkehrung des Distributivgesetzes ⇐ `distributiv` (SG 1)
+  5. `binom-1` — 1. binomische Formel: $(a+b)^2 = a^2 + 2ab + b^2$ ⇐ `distributiv` (SG 2)
+  6. `binom-2` — 2. binomische Formel: $(a-b)^2 = a^2 - 2ab + b^2$ ⇐ `distributiv` (SG 2)
+  7. `binom-3` — 3. binomische Formel: $(a+b)(a-b) = a^2 - b^2$ ⇐ `distributiv` (SG 2)
+  8. `aequivalenz` — Äquivalenzumformung: auf beiden Seiten dasselbe tun (SG 3)
+  9. `nicht-durch-null` — Division durch Null verboten (verliert Lösungen) ⇐ `aequivalenz` (SG 3)
+  10. `formel-umstellen` — Formel nach Variable umstellen: Operationen umkehren ⇐ `aequivalenz` (SG 3)
+  11. `quadrieren-probe` — Beim Quadrieren Probe nötig — Scheinlösungen möglich ⇐ `aequivalenz` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `gleichartige-terme`, `koeff-addieren` · **6/5+** — Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren
+  - ✅ [1] _hoch_ · Konzepte: `distributiv`, `ausklammern` · **6/5+** — Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)
+  - ✅ [2] _hoch_ · Konzepte: `binom-1`, `binom-2`, `binom-3` · **6/5+** — Binomische Formeln: $(a\pm b)^2 = a^2 \pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$
+  - ✅ [3] _hoch_ · Konzepte: `aequivalenz`, `nicht-durch-null`, `formel-umstellen` · **6/5+** — Äquivalenzumformungen: auf beiden Seiten dasselbe tun, nicht durch Null teilen
+  - ✅ [4] _mittel_ · Konzepte: `quadrieren-probe` · **6/5+** — Beim Quadrieren Probe nötig (Scheinlösungen möglich)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `gleichartige-terme` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `gleichartige-terme`, `koeff-addieren` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `koeff-addieren` | 1 | 2 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `gleichartige-terme` | 1 | 1 | ✅ | Distraktor: $x+x^2$ als gleichartig behandelt |
+|  5 | 0 | transfer           | matching         | `gleichartige-terme` | 1 | 1 | ✅ | Terme ↔ gleichartige Gruppe |
+|  6 | 1 | recognize          | true-false       | `distributiv` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `distributiv` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `distributiv` | 1 | 2 | ✅ | Ausmultiplizieren |
+|  9 | 1 | error-analysis     | multiple-choice  | `distributiv` | 1 | 1 | ✅ | Distraktor: Faktor nur auf ersten Summanden |
+| 10 | 1 | transfer           | number-input     | `ausklammern` | 1 | 1 | ✅ | Ausklammern des größten gemeinsamen Faktors |
+| 11 | 2 | recognize          | matching         | `binom-1`, `binom-2`, `binom-3` | 1 | 1 | ✅ | Formel ↔ Typ |
+| 12 | 2 | apply-guided       | multiple-choice  | `binom-1` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `binom-2` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `binom-1`, `binom-2` | 1 | 1 | ✅ | Distraktor: mittleren Term vergessen |
+| 15 | 2 | transfer           | number-input     | `binom-3` | 1 | 1 | ✅ | Anwendung 3. binomische Formel in Zahlenrechnung |
+| 16 | 3 | recognize          | true-false       | `aequivalenz`, `nicht-durch-null` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `aequivalenz` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `formel-umstellen` | 1 | 2 | ✅ | Formel nach Variable umstellen |
+| 19 | 3 | error-analysis     | multiple-choice  | `nicht-durch-null` | 1 | 1 | ✅ | Distraktor: durch 0-Term geteilt |
+| 20 | 3 | transfer           | sorting          | `aequivalenz`, `formel-umstellen` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `quadrieren-probe` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `quadrieren-probe` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `quadrieren-probe` | 1 | 2 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `quadrieren-probe` | 1 | 1 | ✅ | Distraktor: Scheinlösung akzeptiert |
+| 25 | 4 | transfer           | sorting          | `quadrieren-probe`, `aequivalenz` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-4': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
 #### `alg-2-3` · Polynomgleichungen & Polynomdivision
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
@@ -13060,71 +13004,57 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
-#### `alg-1-3` · Logarithmen
+#### `alg-0-3` · Prozent & Dreisatz
 
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
 - **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-1-1` → `pot-mult`, `pot-potenz`, `pot-negativ`
+  - `alg-0-2` → `bruch-erweitern`, `bruch-mult`
 - **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `log-def` — $\log_b(x) = y \iff b^y = x$ (für $b>0, b\neq 1, x>0$) (SG 0)
-  2. `log-spezialfaelle` — $\ln$ (Basis $e$), $\log$ (Basis 10), $\log_2$ (Bits) ⇐ `log-def` (SG 0)
-  3. `log-produkt` — Produktregel $\ln(ab) = \ln a + \ln b$ ⇐ `log-def` (SG 1)
-  4. `log-quotient` — Quotientenregel $\ln(a/b) = \ln a - \ln b$ ⇐ `log-produkt` (SG 2)
-  5. `log-potenz` — Potenzregel $\ln(a^n) = n \ln a$ ⇐ `log-produkt` (SG 3)
-  6. `log-basiswechsel` — Basiswechsel $\log_b x = \ln x / \ln b$ ⇐ `log-def`, `log-potenz` (SG 4)
-  7. `log-summe-nein` — $\ln(a+b) \neq \ln a + \ln b$ — keine Linearität ⇐ `log-produkt` (SG 5)
-  8. `log-umkehr` — $e^{\ln x} = x$ und $\ln(e^x) = x$ — Umkehrfunktions-Identität ⇐ `log-def` (SG 6)
+  1. `prozent-def` — $p\%$ bedeutet $\dfrac{p}{100}$ (SG 0)
+  2. `prozent-grund` — Grundformel $W = G \cdot \tfrac{p}{100}$ und Umstellungen nach $G$ / $p$ ⇐ `prozent-def` (SG 0)
+  3. `wachstumsfaktor` — Wachstumsfaktor: $\pm p\%$ als $\times (1 \pm p/100)$ ⇐ `prozent-def` (SG 1)
+  4. `prozent-kette` — Zwei Änderungen in Folge multiplizieren sich (nicht addieren) ⇐ `wachstumsfaktor` (SG 2)
+  5. `direkt-prop` — Direkte Proportionalität: $x_1/y_1 = x_2/y_2$ (SG 3)
+  6. `indirekt-prop` — Indirekte Proportionalität: $x_1 y_1 = x_2 y_2$ ⇐ `direkt-prop` (SG 3)
+  7. `prozentpunkt` — Prozentpunkt vs. Prozent: Differenz vs. relativer Anstieg ⇐ `wachstumsfaktor` (SG 4)
 - **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `log-def`, `log-spezialfaelle` · **5/5+** — Definition: $\log_b x = y \iff b^y = x$ (für $b>0, b\neq 1, x>0$)
-  - ✅ [1] _hoch_ · Konzepte: `log-produkt` · **5/5+** — Produktregel: $\ln(ab) = \ln a + \ln b$
-  - ✅ [2] _hoch_ · Konzepte: `log-quotient` · **5/5+** — Quotientenregel: $\ln(a/b) = \ln a - \ln b$
-  - ✅ [3] _hoch_ · Konzepte: `log-potenz` · **5/5+** — Potenzregel: $\ln(a^n) = n \ln a$
-  - ✅ [4] _hoch_ · Konzepte: `log-basiswechsel` · **5/5+** — Basiswechsel: $\log_b x = \ln x / \ln b$
-  - ✅ [5] _hoch_ · Konzepte: `log-summe-nein` · **5/5+** — Typische Falle: $\ln(a+b) \neq \ln a + \ln b$ (kein Logarithmusgesetz für Summen)
-  - ✅ [6] _hoch_ · Konzepte: `log-umkehr` · **5/5+** — Exp-Log-Umkehrung: $e^{\ln x} = x$ (für $x > 0$), $\ln(e^x) = x$
+  - ✅ [0] _hoch_ · Konzepte: `prozent-def`, `prozent-grund` · **7/5+** — Grundformel: $W = G \cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$
+  - ✅ [1] _hoch_ · Konzepte: `wachstumsfaktor` · **6/5+** — Wachstumsfaktor: $+p\% \to \times(1 + p/100)$, $-p\% \to \times(1 - p/100)$
+  - ✅ [2] _hoch_ · Konzepte: `prozent-kette` · **6/5+** — Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\%$ dann $-10\% \neq 0$)
+  - ✅ [3] _hoch_ · Konzepte: `direkt-prop`, `indirekt-prop` · **6/5+** — Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$
+  - ✅ [4] _mittel_ · Konzepte: `prozentpunkt` · **6/5+** — Prozentpunkt vs. Prozent: $15\%$ auf $10\%$ erhöht ist $11{,}5\%$, nicht $25\%$
 - **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
 
 | #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
 |----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `log-def` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `log-def` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `log-def` | 1 | 1 | ✅ | $\log_2 32$ |
-|  4 | 0 | error-analysis     | multiple-choice  | `log-def` | 1 | 2 | ✅ |  |
-|  5 | 0 | transfer           | matching         | `log-spezialfaelle` | 1 | 1 | ✅ | Basis ↔ Anwendungskontext |
-|  6 | 1 | recognize          | true-false       | `log-produkt` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `log-produkt` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `log-produkt` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `log-produkt` | 1 | 1 | ✅ |  |
-| 10 | 1 | transfer           | number-input     | `log-produkt` | 1 | 1 | ✅ |  |
-| 11 | 2 | recognize          | true-false       | `log-quotient` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `log-quotient` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `log-quotient`, `log-produkt` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `log-quotient` | 1 | 1 | ✅ |  |
-| 15 | 2 | transfer           | number-input     | `log-quotient`, `log-produkt` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | true-false       | `log-potenz` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `log-potenz` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `log-potenz` | 1 | 1 | ✅ |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `log-potenz` | 1 | 1 | ✅ | Distraktor: Potenz mit Exponent multipliziert |
-| 20 | 3 | transfer           | number-input     | `log-potenz`, `log-produkt` | 1 | 1 | ✅ |  |
-| 21 | 4 | recognize          | true-false       | `log-basiswechsel` | 1 | 1 | ✅ |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `log-basiswechsel` | 1 | 1 | ✅ |  |
-| 23 | 4 | apply-independent  | number-input     | `log-basiswechsel` | 1 | 1 | ✅ |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `log-basiswechsel` | 1 | 1 | ✅ |  |
-| 25 | 4 | transfer           | number-input     | `log-basiswechsel` | 1 | 1 | ✅ | Halbwertszeit / Zinseszins |
-| 26 | 5 | recognize          | true-false       | `log-summe-nein` | 1 | 1 | ✅ |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `log-summe-nein` | 1 | 1 | ✅ |  |
-| 28 | 5 | apply-independent  | multiple-choice  | `log-summe-nein` | 1 | 1 | ✅ | Aus Alternativ-Umformungen die richtige wählen |
-| 29 | 5 | error-analysis     | multiple-choice  | `log-summe-nein` | 1 | 1 | ✅ | Distraktor: Summe in Produkt zerlegt |
-| 30 | 5 | transfer           | matching         | `log-summe-nein`, `log-produkt` | 1 | 1 | ✅ | Erlaubte vs. verbotene Umformung |
-| 31 | 6 | recognize          | true-false       | `log-umkehr` | 1 | 1 | ✅ |  |
-| 32 | 6 | apply-guided       | multiple-choice  | `log-umkehr` | 1 | 1 | ✅ |  |
-| 33 | 6 | apply-independent  | number-input     | `log-umkehr` | 1 | 1 | ✅ | $e^x = 5$ lösen |
-| 34 | 6 | error-analysis     | multiple-choice  | `log-umkehr` | 1 | 1 | ✅ |  |
-| 35 | 6 | transfer           | number-input     | `log-umkehr`, `log-potenz` | 1 | 1 | ✅ |  |
+|  1 | 0 | recognize          | true-false       | `prozent-def` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `prozent-grund` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `prozent-grund` | 2 | 3 | ✅ | Einmal $W$, einmal $G$ oder $p$ gesucht |
+|  4 | 0 | error-analysis     | multiple-choice  | `prozent-grund` | 1 | 1 | ✅ | Distraktor: durch $p$ statt $p/100$ geteilt |
+|  5 | 0 | transfer           | matching         | `prozent-grund` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `wachstumsfaktor` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `wachstumsfaktor` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `wachstumsfaktor` | 1 | 2 | ✅ | Rabatt-Rechnung |
+|  9 | 1 | error-analysis     | multiple-choice  | `wachstumsfaktor` | 1 | 1 | ✅ | Distraktor: Differenz statt Faktor gerechnet |
+| 10 | 1 | transfer           | number-input     | `wachstumsfaktor` | 1 | 1 | ✅ | Rückrechnen vom Endpreis zum Grundpreis |
+| 11 | 2 | recognize          | true-false       | `prozent-kette` | 1 | 1 | ✅ | +10% dann −10% ergibt 100%? — falsch |
+| 12 | 2 | apply-guided       | multiple-choice  | `prozent-kette` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `prozent-kette` | 1 | 2 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `prozent-kette` | 1 | 1 | ✅ | Distraktor: Prozente addiert |
+| 15 | 2 | transfer           | sorting          | `prozent-kette`, `wachstumsfaktor` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `direkt-prop` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `indirekt-prop` | 1 | 1 | ✅ | Pumpen-Typ-Dreisatz |
+| 19 | 3 | error-analysis     | multiple-choice  | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ | Distraktor: direkt statt indirekt gerechnet |
+| 20 | 3 | transfer           | matching         | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ | Situation ↔ Typ |
+| 21 | 4 | recognize          | true-false       | `prozentpunkt` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `prozentpunkt` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `prozentpunkt` | 1 | 2 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `prozentpunkt` | 1 | 1 | ✅ | Distraktor: Prozentpunkte addiert statt multipliziert |
+| 25 | 4 | transfer           | number-input     | `prozentpunkt`, `wachstumsfaktor` | 1 | 1 | ✅ |  |
 
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-1-3': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-1-3-a`, `ex-alg-1-3-b`, `ex-alg-1-3-c`, `ex-alg-1-3-d`, `ex-alg-1-3-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `function-graph`.
+- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-3': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-4-2` · Prüfung: Funktionen & Anwendungen

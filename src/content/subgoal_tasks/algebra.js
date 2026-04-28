@@ -151,6 +151,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['prio-basic'] },
       ),
+      // Zusatz-Aufgabe SG 0: apply-independent · number-input · uses=[prio-basic, prio-potenz]
+      // Variation mit Division im Nenner — testet Punkt-Bindung in beiden Richtungen.
+      ni(
+        'Berechne $20 - 6 / 2 \\cdot 3 + 4$.',
+        15, 0, '',
+        `**Ansatz:** Division und Multiplikation sind beide „Punkt"-Operationen mit gleichem Rang — strikt von links nach rechts.
+
+**Rechnung:** $6 / 2 = 3$, dann $3 \\cdot 3 = 9$. Danach Strichrechnung: $20 - 9 + 4 = 15$.
+
+**Probe:** Mit Klammern: $20 - ((6/2)\\cdot 3) + 4 = 20 - 9 + 4 = 15$. ✓
+
+**Typischer Fehler:** $6 / (2 \\cdot 3) = 6/6 = 1$ — fälschlich erst die Multiplikation rechnen, weil sie „rechts vom Bruchstrich steht". Bei gleichem Rang gilt: links zuerst.`,
+        [
+          '$/$ und $\\cdot$ haben denselben Rang.',
+          'Bei Gleichrang: strikt links nach rechts.',
+          'Erst $6/2$, dann $\\cdot 3$ — nicht erst $2\\cdot 3$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['prio-basic'] },
+      ),
       // Zeile 5: transfer · sorting · uses=[prio-basic, prio-potenz]
       sorting(
         'Bringe die Schritte zur Auswertung von $2 + 3^2 \\cdot 4 - 5$ in die richtige Reihenfolge.',
@@ -267,6 +286,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['minus-vorklammer'] },
       ),
+      // Zusatz-Aufgabe SG 1: apply-independent · number-input · uses=[minus-vorklammer]
+      // Längere Kette mit zwei Minus-Klammern — testet Vorzeichen-Konsequenz mehrfach.
+      ni(
+        'Berechne $20 - (5 - 3) - (8 - 6 + 1)$.',
+        15, 0, '',
+        `**Ansatz:** Beide Minus-Klammern getrennt auflösen — alle Vorzeichen in jeder Klammer kippen.
+
+**Rechnung:** $20 - (5-3) - (8-6+1) = 20 - 5 + 3 - 8 + 6 - 1 = 15$. Alternative: Klammern zuerst $20 - 2 - 3 = 15$.
+
+**Probe:** Beide Wege liefern $15$. ✓
+
+**Typischer Fehler:** Bei der zweiten Klammer das $+1$ nicht zu $-1$ kippen: $20 - 5 + 3 - 8 + 6 + 1 = 17$. Häufig, wenn die Klammer drei Summanden hat und der dritte „vergessen" wird.`,
+        [
+          'Beide Klammern haben ein Minus davor — beide komplett kippen.',
+          'Aus $-(5-3)$ wird $-5+3$. Aus $-(8-6+1)$ wird $-8+6-1$.',
+          'Alternativer Weg: erst jede Klammer separat ausrechnen.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['minus-vorklammer'] },
+      ),
       // Zeile 10: transfer · matching · uses=[minus-vorklammer]
       matching(
         'Ordne jedem Klammer-Ausdruck seine korrekt aufgelöste Form zu.',
@@ -382,6 +420,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['minus-mal-minus'] },
       ),
+      // Zusatz-Aufgabe SG 2: apply-independent · number-input · uses=[minus-mal-minus]
+      // Vier Faktoren — testet Paritätsregel bei größerer Anzahl Minuszeichen.
+      ni(
+        'Berechne $(-2) \\cdot (-3) \\cdot (-1) \\cdot (-5)$.',
+        30, 0, '',
+        `**Ansatz:** Anzahl Minuszeichen zählen — gerade $\\to +$, ungerade $\\to -$. Beträge separat multiplizieren.
+
+**Rechnung:** Vier Minuszeichen $\\to (-1)^4 = +1$. Beträge: $2 \\cdot 3 \\cdot 1 \\cdot 5 = 30$. Ergebnis: $+30$.
+
+**Probe:** Schrittweise: $(-2)(-3) = +6$; $+6 \\cdot (-1) = -6$; $-6 \\cdot (-5) = +30$. ✓
+
+**Typischer Fehler:** Vorzeichen erst am Ende anhängen, ohne wirklich zu zählen — bei vier Faktoren leicht zu verzählen. Sicherer: Vorzeichen jedes Schritts neu bestimmen oder Paritätsregel.`,
+        [
+          'Zähl die Minuszeichen — gerade oder ungerade?',
+          'Gerade Anzahl $\\Rightarrow$ positives Ergebnis.',
+          'Beträge multiplizieren: $2 \\cdot 3 \\cdot 1 \\cdot 5$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['minus-mal-minus'] },
+      ),
       // Zeile 15: transfer · number-input · uses=[minus-mal-minus, minus-vorklammer]
       ni(
         'Berechne $6 - (-(4 - 9))$.',
@@ -392,7 +449,7 @@ export const algebraSubGoalTasks = {
 
 **Probe:** Alternative: $6 - (-(4-9)) = 6 + (4-9) = 6 + (-5) = 1$. ✓
 
-**Typischer Fehler:** Doppel-Minus nicht auflösen: $6 - (-5)$ als $6 - 5 = 1$ direkt OK; aber falsch: $6 - (-(4-9)) = 6 - (-4+9) = 6 + 4 - 9 = 1$? Halt, Vorsicht — hier ist das Minus VOR der äußeren Klammer und das Minus in $-(4-9)$ sind zwei verschiedene Operationen. Eins nach dem anderen.`,
+**Typischer Fehler:** Eines der beiden Minuszeichen vor der inneren Klammer übersehen, etwa $6 - (-(4-9)) = 6 - (4-9) = 6 - (-5) = 11$. Das äußere Minus wird einfach gestrichen, ohne dass die Doppel-Negation $-(-(\\ldots)) = +(\\ldots)$ angewendet wird.`,
         [
           'Zuerst die innerste Klammer $(4-9)$ ausrechnen.',
           'Dann das Minus vor dieser Klammer: $-(-5) = ?$',
@@ -427,7 +484,7 @@ export const algebraSubGoalTasks = {
         [
           'Innere Klammer berechnen: $5 - 2 = 3$.',
           'Faktor verteilen: $3 \\cdot 4 + 3 \\cdot 5 - 3 \\cdot 2$.',
-          'Eckige Klammer aufösen: $[4 + 5 - 2] = 7$.',
+          'Eckige Klammer auflösen: $[4 + 5 - 2] = 7$.',
           'Erste Operation von links: $3 \\cdot 4 = 12$.',
         ],
         0,
@@ -444,9 +501,9 @@ export const algebraSubGoalTasks = {
           'Multiplikation erst, wenn die eckige Klammer zu einer Zahl geworden ist.',
         ],
         {
-          1: 'Distributivgesetz kann man erst anwenden, nachdem die innere Klammer eine Zahl ist — sonst erhöht sich die Fehlergefahr.',
-          2: 'Die runde Klammer ist noch nicht aufgelöst. $[4 + (5-2)] \\neq [4+5-2]$? Doch, rechnerisch gleich, aber die Regel lautet: innere Klammer zuerst.',
-          3: 'Punkt-vor-Strich — die Multiplikation würde regulär zuerst kommen, aber hier erzwingt die eckige Klammer, dass der Inhalt in Klammer zuerst ausgewertet wird.',
+          1: 'Distributiv ist zwar mathematisch gültig, aber kein elementarer „Rechenschritt" — die Aufgabe fragt nach der Reihenfolge der Auswertung. Standard ist: innerste Klammer zuerst.',
+          2: 'Die runde Klammer wurde stillschweigend weggelassen, ohne sie auszurechnen. Erlaubt ist nur, eine Klammer aufzulösen, nachdem ihr Inhalt zu einer Zahl ($5-2=3$) reduziert wurde.',
+          3: 'Punkt-vor-Strich gilt nur, wenn keine Klammer erzwingt, was zuerst auszuwerten ist. Hier umfasst die eckige Klammer den Faktor $4$, also muss ihr Inhalt vor der Multiplikation eine Zahl sein.',
         },
         { stage: 'apply-guided', subGoal: 3, uses: ['klammer-schachtel'] },
       ),
@@ -496,6 +553,25 @@ export const algebraSubGoalTasks = {
           3: 'Das Ergebnis $5$ ist falsch — korrekt ist $1$. Der Weg ist also auch falsch.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['klammer-schachtel'] },
+      ),
+      // Zusatz-Aufgabe SG 3: apply-independent · number-input · uses=[klammer-schachtel, prio-klammer]
+      // Drei verschachtelte Klammern mit Vorzeichen — testet alle drei Konzepte zusammen.
+      ni(
+        'Berechne $5 \\cdot [3 + (10 - 2 \\cdot (1 + 3))]$.',
+        25, 0, '',
+        `**Ansatz:** Strikt von innen nach außen. Innerhalb der inneren Klammer wieder Punkt vor Strich.
+
+**Rechnung:** Innerste $(1+3) = 4$. Dann $2 \\cdot 4 = 8$. Dann $10 - 8 = 2$. Dann $[3 + 2] = 5$. Zuletzt $5 \\cdot 5 = 25$.
+
+**Probe:** Mit allen Klammern explizit: $5 \\cdot [3 + (10 - (2 \\cdot 4))] = 5 \\cdot [3 + 2] = 5 \\cdot 5 = 25$. ✓
+
+**Typischer Fehler:** Faktor $2$ falsch zuordnen, z. B. $2 \\cdot 1 + 3 = 5$ statt $2 \\cdot (1+3) = 8$ — die Klammer um $(1+3)$ wird ignoriert und $2$ nur auf den ersten Summanden multipliziert.`,
+        [
+          'Innerste Klammer ist $(1+3)$ — diese als Erstes.',
+          'Innerhalb der mittleren Klammer dann Punkt vor Strich: $2 \\cdot 4$ vor $10 - \\ldots$.',
+          'Erst ganz zum Schluss die Multiplikation mit $5$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['klammer-schachtel', 'prio-klammer'] },
       ),
       // Zeile 20: transfer · sorting · uses=[klammer-schachtel, prio-klammer]
       sorting(
@@ -638,6 +714,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['bruch-add'] },
       ),
+      // Zusatz-Aufgabe SG 0: apply-independent · number-input · uses=[kgv-hauptnenner, bruch-add]
+      // Subtraktion mit drei Brüchen — testet Vorzeichen + kgV-Bestimmung in Kombination.
+      ni(
+        'Berechne $\\dfrac{7}{10} - \\dfrac{1}{4} + \\dfrac{1}{5}$ und gib den Zähler über dem Hauptnenner $20$ an.',
+        13, 0, '',
+        `**Ansatz:** Hauptnenner aller Nenner bestimmen, alle Brüche darauf erweitern, dann Zähler mit Vorzeichen addieren/subtrahieren.
+
+**Rechnung:** $10 = 2 \\cdot 5$, $4 = 2^2$, $5 = 5$. Hauptnenner $= 2^2 \\cdot 5 = 20$. Erweitern: $\\tfrac{7}{10} = \\tfrac{14}{20}$, $\\tfrac{1}{4} = \\tfrac{5}{20}$, $\\tfrac{1}{5} = \\tfrac{4}{20}$. Zähler: $14 - 5 + 4 = 13$. Ergebnis $\\tfrac{13}{20}$.
+
+**Probe:** Dezimal: $0{,}7 - 0{,}25 + 0{,}2 = 0{,}65 = 13/20$. ✓
+
+**Typischer Fehler:** Vorzeichen verschlucken: $14 - 5 + 4$ als $14 - 9 = 5$ rechnen — Subtraktion vor Addition gemacht. Strichrechnung ist gleichrangig und geht streng von links nach rechts.`,
+        [
+          'Hauptnenner: $\\text{kgV}(10, 4, 5) = ?$',
+          'Erweitern: $20/10=2$, $20/4=5$, $20/5=4$. Damit Zähler bestimmen.',
+          'Strichrechnung links nach rechts: $14 - 5 = 9$, dann $+4$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['kgv-hauptnenner', 'bruch-add'] },
+      ),
       // transfer · sorting · uses=[kgv-hauptnenner, bruch-add]
       sorting(
         'Bringe die Schritte zur Berechnung von $\\dfrac{2}{9} + \\dfrac{5}{6}$ in die richtige Reihenfolge.',
@@ -754,6 +849,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['bruch-div-kehr'] },
       ),
+      // Zusatz-Aufgabe SG 1: apply-independent · number-input · uses=[bruch-div-kehr, bruch-mult]
+      // Ganze Zahl geteilt durch Bruch — testet Verständnis "Ganzzahl als n/1".
+      ni(
+        'Berechne $6 : \\dfrac{3}{4}$.',
+        8, 0, '',
+        `**Ansatz:** Ganze Zahl $6$ als $\\dfrac{6}{1}$ schreiben. Dann Division als Multiplikation mit Kehrwert.
+
+**Rechnung:** $6 : \\dfrac{3}{4} = \\dfrac{6}{1} \\cdot \\dfrac{4}{3} = \\dfrac{24}{3} = 8$.
+
+**Probe:** Wie oft passt $\\tfrac{3}{4}$ in $6$? In $1$ passt $\\tfrac{3}{4}$ etwas mehr als $1{,}33$-mal, in $6$ also $\\approx 8$-mal. ✓
+
+**Typischer Fehler:** $6$ einfach durch $3/4$ als „$6/3 \\cdot 4 = 8$" rechnen — gibt zwar zufällig dasselbe, ist aber unsystematisch. Häufiger: $6 \\cdot \\tfrac{3}{4} = 4{,}5$ — Kehrwert vergessen.`,
+        [
+          'Schreibe $6$ als Bruch: $\\dfrac{6}{1}$.',
+          'Kehrwert von $\\dfrac{3}{4}$ ist $\\dfrac{4}{3}$.',
+          'Multiplizieren: $\\dfrac{6}{1} \\cdot \\dfrac{4}{3} = \\dfrac{24}{3}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['bruch-div-kehr', 'bruch-mult'] },
+      ),
       // transfer · matching · uses=[bruch-div-kehr, bruch-mult]
       matching(
         'Ordne jedem Divisions-Ausdruck seine Multiplikations-Form zu.',
@@ -869,6 +983,31 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['doppelbruch'] },
       ),
+      // Zusatz-Aufgabe SG 2: apply-guided · multiple-choice · uses=[doppelbruch]
+      // Doppelbruch mit ganzer Zahl im Zähler oder Nenner — testet Erweiterung "Ganzzahl/1".
+      mc(
+        'Welcher Bruch ist gleich $\\dfrac{4}{\\tfrac{2}{5}}$?',
+        ['$10$', '$\\dfrac{8}{5}$', '$\\dfrac{2}{5}$', '$\\dfrac{4}{10}$'],
+        0,
+        `**Ansatz:** Ganze Zahl $4$ als $\\dfrac{4}{1}$ schreiben, dann Doppelbruch als Division.
+
+**Rechnung:** $\\dfrac{4}{2/5} = 4 : \\dfrac{2}{5} = \\dfrac{4}{1} \\cdot \\dfrac{5}{2} = \\dfrac{20}{2} = 10$.
+
+**Probe:** Dezimal: $4 / 0{,}4 = 10$. ✓
+
+**Typischer Fehler:** Statt zu stürzen einfach multiplizieren: $4 \\cdot \\tfrac{2}{5} = \\tfrac{8}{5}$ (Option 2). Genau das passiert, wenn man den Doppelbruch als „Produkt" liest.`,
+        [
+          'Doppelbruch = Division. Hier $4$ geteilt durch $\\tfrac{2}{5}$.',
+          'Kehrwert von $\\tfrac{2}{5}$ ist $\\tfrac{5}{2}$.',
+          'Mit Dezimalprobe gegenchecken: $4 / 0{,}4$.',
+        ],
+        {
+          1: '$\\tfrac{8}{5}$ entsteht bei $4 \\cdot \\tfrac{2}{5}$ — Multiplikation statt Division. Den Bruch im Nenner muss man stürzen.',
+          2: '$\\tfrac{2}{5}$ ist nur der Nenner-Bruch — die $4$ wurde komplett ignoriert.',
+          3: '$\\tfrac{4}{10}$ entsteht durch falsche Erweiterung: $\\tfrac{4 \\cdot 1}{1 \\cdot 10}$ ohne Verständnis der Doppelbruch-Regel.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['doppelbruch'] },
+      ),
       // transfer · number-input · uses=[doppelbruch, ggt-kuerzen]
       ni(
         'Berechne den Doppelbruch $\\dfrac{\\tfrac{7}{12}}{\\tfrac{14}{9}}$ vollständig und gib den Nenner des gekürzten Ergebnisses an (Zähler wird $3$).',
@@ -978,6 +1117,25 @@ export const algebraSubGoalTasks = {
           3: 'Vollständig gekürzt hat eine exakte Definition: $\\text{ggT}(z,n) = 1$. Kein Subjektivismus.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['ggt-kuerzen'] },
+      ),
+      // Zusatz-Aufgabe SG 3: apply-independent · number-input · uses=[ggt-kuerzen]
+      // Größere Zahlen mit gemeinsamen Faktoren — testet ggT-Bestimmung mit Primfaktoren.
+      ni(
+        'Kürze $\\dfrac{210}{462}$ vollständig und gib den Zähler des Ergebnisses an (Nenner wird $11$).',
+        5, 0, '',
+        `**Ansatz:** Beide Zahlen in Primfaktoren zerlegen, ggT als Produkt der gemeinsamen Primfaktoren mit Minimum-Exponent bestimmen.
+
+**Rechnung:** $210 = 2 \\cdot 3 \\cdot 5 \\cdot 7$. $462 = 2 \\cdot 3 \\cdot 7 \\cdot 11$. Gemeinsam: $2 \\cdot 3 \\cdot 7 = 42$. Also $\\dfrac{210}{462} = \\dfrac{210/42}{462/42} = \\dfrac{5}{11}$.
+
+**Probe:** $\\text{ggT}(5, 11) = 1$ (beides Primzahlen, verschieden) — vollständig gekürzt. Dezimal: $210/462 \\approx 0{,}4545 = 5/11$. ✓
+
+**Typischer Fehler:** Stufenweise mit kleinen Faktoren (z. B. nur durch $2$): $\\tfrac{210}{462} \\to \\tfrac{105}{231}$ — rechnerisch richtig, aber nicht fertig. Oder gemeinsame Primfaktoren übersehen, etwa die $7$ vergessen.`,
+        [
+          'Primfaktorzerlegung beider Zahlen.',
+          'ggT = Produkt der gemeinsamen Primzahlen.',
+          'Sind $5$ und $11$ teilerfremd? — Endkontrolle.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['ggt-kuerzen'] },
       ),
       // transfer · sorting · uses=[ggt-kuerzen]
       sorting(
@@ -1117,6 +1275,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['prozent-grund'] },
       ),
+      // Zusatz-Aufgabe SG 0: apply-independent · number-input · uses=[prozent-grund]
+      // Prozentsatz p gesucht — die seltenste Umstellung, kommt im Studium oft als „Anteil bestimmen" vor.
+      ni(
+        'In einer Stahllegierung von $640\\,\\text{kg}$ sind $48\\,\\text{kg}$ Chrom enthalten. Wie hoch ist der Chrom-Anteil in Prozent?',
+        7.5, 0.05, '%',
+        `**Ansatz:** Formel nach $p$ umstellen: $p = \\dfrac{W \\cdot 100}{G}$.
+
+**Rechnung:** $p = \\dfrac{48 \\cdot 100}{640} = \\dfrac{4800}{640} = 7{,}5$. Also $7{,}5\\,\\%$.
+
+**Probe:** $7{,}5\\%$ von $640\\,\\text{kg}$: $640 \\cdot 0{,}075 = 48\\,\\text{kg}$. ✓
+
+**Typischer Fehler:** Das $\\cdot 100$ vergessen: $48/640 = 0{,}075$ als Antwort hinschreiben, ohne in Prozent umzurechnen — die Antwort wäre dann der Dezimalanteil, nicht der Prozentsatz.`,
+        [
+          'Welche Größe ist gesucht — $W$, $G$ oder $p$?',
+          'Formel nach $p$ umstellen: $p = W \\cdot 100 / G$.',
+          'Probe: $p\\%$ von $640$ muss $48$ ergeben.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['prozent-grund'] },
+      ),
       // transfer · matching · uses=[prozent-grund]
       matching(
         'Ordne jeder Situation die korrekte Formel zu.',
@@ -1228,6 +1405,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['wachstumsfaktor'] },
       ),
+      // Zusatz-Aufgabe SG 1: apply-independent · number-input · uses=[wachstumsfaktor]
+      // Aufschlag (MwSt) statt Reduktion — testet Faktor (1+p/100) explizit, nicht (1-p/100).
+      ni(
+        'Auf einen Nettopreis von $250\\,€$ werden $20\\%$ Mehrwertsteuer aufgeschlagen. Brutto-Preis in €?',
+        300, 0, '',
+        `**Ansatz:** Aufschlag um $p\\%$ = Faktor $(1 + p/100)$.
+
+**Rechnung:** $1 + 20/100 = 1{,}20$. $250 \\cdot 1{,}20 = 300$.
+
+**Probe:** Differenz: $300 - 250 = 50$. $50/250 = 0{,}20 = 20\\%$. ✓
+
+**Typischer Fehler:** Den MwSt-Betrag $50\\,€$ als Brutto-Preis lesen — der ist nur der Aufschlag, der Brutto-Preis ist $\\text{Netto} + \\text{MwSt}$.`,
+        [
+          'Aufschlag um $p\\%$ = Faktor $(1 + p/100)$.',
+          '$1 + 0{,}20 = 1{,}20$.',
+          '$250 \\cdot 1{,}20 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['wachstumsfaktor'] },
+      ),
       ni(
         'Nach einer Preissenkung von $25\\%$ kostet ein Gerät $450\\,€$. Ursprungspreis in €?',
         600, 0, '',
@@ -1327,6 +1523,25 @@ export const algebraSubGoalTasks = {
           3: '$90\\%$ wäre nur die Senkung auf das Original angewandt — die vorherige Erhöhung wurde vergessen.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['prozent-kette'] },
+      ),
+      // Zusatz-Aufgabe SG 2: apply-independent · number-input · uses=[prozent-kette, wachstumsfaktor]
+      // Drei Änderungen in Folge — Verallgemeinerung der 2-Schritt-Kette auf n Schritte.
+      ni(
+        'Eine Aktie verliert in drei Quartalen jeweils $4\\%$. Welcher Anteil (in Prozent, eine Dezimalstelle) bleibt vom Ausgangskurs übrig?',
+        88.5, 0.1, '%',
+        `**Ansatz:** Drei aufeinanderfolgende Änderungen $\\to$ Faktoren multiplizieren.
+
+**Rechnung:** Jeder Faktor: $1 - 0{,}04 = 0{,}96$. Gesamt: $0{,}96^3 = 0{,}884736 \\approx 0{,}885 = 88{,}5\\%$.
+
+**Probe:** Schrittweise: $100 \\to 96 \\to 92{,}16 \\to 88{,}47$. Anteil $88{,}47/100 \\approx 88{,}5\\%$. ✓
+
+**Typischer Fehler:** $3 \\cdot 4\\% = 12\\%$ Verlust annehmen → $88\\%$ — der wahre Verlust ist etwas kleiner als die Summe, weil jeder Folge-Verlust auf einen kleineren Bezugswert wirkt.`,
+        [
+          'Drei Quartale = drei Faktoren multiplizieren.',
+          'Jeder Faktor: $1 - 0{,}04 = 0{,}96$.',
+          '$0{,}96 \\cdot 0{,}96 \\cdot 0{,}96 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['prozent-kette', 'wachstumsfaktor'] },
       ),
       sorting(
         'Bringe die Schritte zur Berechnung von "Preis $200\\,€$, zuerst $+15\\%$ dann $-10\\%$" in die richtige Reihenfolge.',
@@ -1438,11 +1653,30 @@ export const algebraSubGoalTasks = {
           'Doppelte Rohre → halbe Zeit.',
         ],
         {
-          0: 'Die Antwort ist in Option 2 präziser formuliert: direkt statt indirekt.',
+          0: 'Diese Antwort beschreibt das Symptom („Tautologie"), trifft aber nicht den Konzeptfehler. Der eigentliche Fehler ist die Verwechslung direkt ↔ indirekt — siehe Vergleichsantwort.',
           2: 'Die Antwort $12\\,\\text{h}$ ist falsch. Doppelte Rohre müssen es schneller schaffen, nicht gleich lang.',
-          3: 'Die Zahl der Rohre $3$ und $6$ ist nicht das Problem.',
+          3: 'Die Zahl der Rohre $3$ und $6$ ist nicht das Problem — die Anwendung der Proportionalitätsformel ist es.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['direkt-prop', 'indirekt-prop'] },
+      ),
+      // Zusatz-Aufgabe SG 3: apply-independent · number-input · uses=[direkt-prop]
+      // Direkter Dreisatz mit nicht-runden Zahlen — testet sauberes Aufstellen der Proportion.
+      ni(
+        'Ein Auto verbraucht $42\\,\\text{L}$ Diesel auf $560\\,\\text{km}$. Wie viel verbraucht es auf $750\\,\\text{km}$ (in L, eine Dezimalstelle)?',
+        56.3, 0.05, 'L',
+        `**Ansatz:** Direkt proportional: längere Strecke $\\to$ mehr Verbrauch. Verhältnis $V/s$ konstant.
+
+**Rechnung:** $\\dfrac{42}{560} = \\dfrac{V_2}{750}$. Also $V_2 = \\dfrac{42 \\cdot 750}{560} = \\dfrac{31\\,500}{560} = 56{,}25\\,\\text{L} \\approx 56{,}3\\,\\text{L}$.
+
+**Probe:** Verbrauch pro km: $42/560 = 0{,}075\\,\\text{L/km}$. Auf $750\\,\\text{km}$: $750 \\cdot 0{,}075 = 56{,}25\\,\\text{L}$. ✓
+
+**Typischer Fehler:** Indirekt rechnen ($42 \\cdot 560 / 750 = 31{,}4\\,\\text{L}$) — funktioniert nur bei Größen wie „Pumpen × Zeit", nicht bei „Verbrauch × Strecke".`,
+        [
+          'Mehr km → mehr Verbrauch: direkt proportional.',
+          'Verhältnis $V/s$ konstant: $42/560 = V_2/750$.',
+          'Oder Stückwert: $V$ pro km berechnen, dann $\\times 750$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['direkt-prop'] },
       ),
       matching(
         'Ordne jeder Situation den Proportionalitätstyp zu.',
@@ -1563,6 +1797,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 4, uses: ['prozentpunkt'] },
       ),
+      // Zusatz-Aufgabe SG 4: apply-independent · number-input · uses=[prozentpunkt]
+      // Rückwärts: aus relativer Änderung den absoluten Endwert in Prozentpunkten berechnen.
+      ni(
+        'Ein Aktien-Anteil von ursprünglich $40\\%$ steigt um $25\\%$ (relativ). Wie hoch ist der neue Anteil in Prozent?',
+        50, 0.05, '%',
+        `**Ansatz:** Relative Erhöhung $25\\%$ wirkt auf den Ausgangswert $40\\%$. Also Wachstumsfaktor $\\times 1{,}25$ — Ergebnis bleibt aber eine Prozentzahl (kein Doppelprozent).
+
+**Rechnung:** $40 \\cdot 1{,}25 = 50$. Neuer Anteil: $50\\,\\%$. Absolut: $+10$ Prozentpunkte.
+
+**Probe:** $50/40 = 1{,}25$ — relative Erhöhung um $25\\%$. ✓ Differenz $50 - 40 = 10$ Prozentpunkte.
+
+**Typischer Fehler:** $40\\% + 25\\% = 65\\%$ rechnen — vermischt Prozentpunkte (additiv) mit Prozent (multiplikativ).`,
+        [
+          'Relative Erhöhung wirkt auf den Ausgangswert.',
+          'Wachstumsfaktor $1{,}25$ angewandt auf $40$.',
+          'Antwort bleibt in Prozenteinheiten — Aktien-Anteil.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['prozentpunkt', 'wachstumsfaktor'] },
+      ),
       ni(
         'Ein Rabatt wird von $12\\%$ auf $18\\%$ erhöht. Um wie viele Prozent (relativ, auf eine Dezimalstelle) ist der RABATT-Satz gewachsen?',
         50, 0.5, '',
@@ -1673,6 +1926,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['gleichartige-terme'] },
       ),
+      // Zusatz-Aufgabe SG 0: apply-independent · number-input · uses=[koeff-addieren]
+      // Mehrere Variablen mit unterschiedlichen Termen — testet Trennung in zwei Sammelgruppen.
+      ni(
+        'Vereinfache $4a + 7b - 2a + 3b - a$ und gib den Koeffizienten von $a$ im Ergebnis an.',
+        1, 0, '',
+        `**Ansatz:** Zwei Sammelgruppen — alles mit $a$ und alles mit $b$ getrennt zusammenfassen.
+
+**Rechnung:** $a$-Terme: $4a - 2a - a = (4 - 2 - 1)a = a$ (Koeffizient $1$). $b$-Terme: $7b + 3b = 10b$. Ergebnis: $a + 10b$.
+
+**Probe:** Zahlentest $a = 1, b = 1$: Original $4 + 7 - 2 + 3 - 1 = 11$. Ergebnis $1 + 10 = 11$. ✓
+
+**Typischer Fehler:** $a$- und $b$-Terme mischen: $4a + 7b - 2a + 3b - a$ als $(4+7-2+3-1)\\cdot ab = 11ab$ — das setzt $a = b$ voraus, was nicht gegeben ist.`,
+        [
+          'Ungleiche Variablen $\\to$ getrennte Sammelgruppen.',
+          'Erst alle $a$-Terme zusammenfassen, dann alle $b$-Terme.',
+          'Vorzeichen sorgfältig: $4a - 2a - a = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['koeff-addieren'] },
+      ),
       matching(
         'Ordne jedem Term den gleichartigen Partner zu.',
         [
@@ -1740,18 +2012,18 @@ export const algebraSubGoalTasks = {
       ),
       ni(
         'Berechne: $5(2x + 3) - 3(x - 4)$ bei $x = 1$.',
-        20, 0, '',
-        `**Ansatz:** Ausmultiplizieren, vereinfachen, einsetzen.
+        34, 0, '',
+        `**Ansatz:** Beide Klammern ausmultiplizieren (Distributivgesetz), Vorzeichen vor der zweiten Klammer beachten, vereinfachen, einsetzen.
 
-**Rechnung:** $5(2x+3) = 10x + 15$. $3(x-4) = 3x - 12$. Differenz: $10x + 15 - (3x - 12) = 10x + 15 - 3x + 12 = 7x + 27$. Bei $x=1$: $7 + 27 = 34$.
+**Rechnung:** $5(2x+3) = 10x + 15$. $-3(x-4) = -3x + 12$ (Minus auf beide Summanden). Summe: $10x + 15 - 3x + 12 = 7x + 27$. Bei $x = 1$: $7 \\cdot 1 + 27 = 34$.
 
-Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) = 25$; $3(1-4) = -9$; $25 - (-9) = 25 + 9 = 34$. Das Ziel war $20$ — Aufgabe stimmt nicht.
+**Probe:** Direkt einsetzen vor dem Vereinfachen: $5 \\cdot (2+3) - 3 \\cdot (1-4) = 5 \\cdot 5 - 3 \\cdot (-3) = 25 + 9 = 34$. ✓
 
-**Rechnung (korrigiert):** Bei $x=1$: $5 \\cdot (2+3) - 3 \\cdot (1-4) = 5 \\cdot 5 - 3 \\cdot (-3) = 25 + 9 = 34$.`,
+**Typischer Fehler:** Das Minus vor der zweiten Klammer nur auf das $x$ anwenden, nicht auf $-4$: $10x + 15 - 3x - 12 = 7x + 3 \\Rightarrow 10$ bei $x=1$ — Vorzeichen-Fehler beim zweiten Summanden.`,
         [
-          'Ausmultiplizieren zuerst: Distributivgesetz.',
-          'Minus vor Klammer: alle Summanden negieren.',
-          'Dann $x=1$ einsetzen.',
+          'Beide Klammern ausmultiplizieren — Distributivgesetz.',
+          'Minus vor der zweiten Klammer: alle Summanden negieren.',
+          'Erst vereinfachen, dann $x = 1$ einsetzen — oder umgekehrt zur Probe.',
         ],
         { stage: 'apply-independent', subGoal: 1, uses: ['distributiv'] },
       ),
@@ -1782,6 +2054,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
           3: 'Die Rechnung ist eben nicht korrekt — Zahlentest widerlegt sie.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['distributiv'] },
+      ),
+      // Zusatz-Aufgabe SG 1: apply-independent · number-input · uses=[distributiv]
+      // Doppel-Distributiv (FOIL) ohne binomische Formel — testet systematisches Ausmultiplizieren.
+      ni(
+        'Multipliziere $(2x + 3)(x - 5)$ aus und gib den Koeffizienten von $x$ im Ergebnis an.',
+        -7, 0, '',
+        `**Ansatz:** Jeder Summand der ersten Klammer mit jedem Summanden der zweiten — vier Produkte.
+
+**Rechnung:** $(2x)(x) + (2x)(-5) + 3 \\cdot x + 3 \\cdot (-5) = 2x^2 - 10x + 3x - 15 = 2x^2 - 7x - 15$. Koeffizient von $x$: $-7$.
+
+**Probe:** Zahlentest $x = 2$: $(4+3)(2-5) = 7 \\cdot (-3) = -21$. Ergebnis: $2 \\cdot 4 - 7 \\cdot 2 - 15 = 8 - 14 - 15 = -21$. ✓
+
+**Typischer Fehler:** Nur „erstes mit erstem, zweites mit zweitem" rechnen: $(2x)(x) + (3)(-5) = 2x^2 - 15$ — die gemischten Produkte $(2x)(-5)$ und $3 \\cdot x$ fehlen. Ohne diese fehlt der lineare Term ganz.`,
+        [
+          'Vier Produkte: jeder Summand der einen Klammer mit jedem der anderen.',
+          '$(2x)(x), (2x)(-5), (3)(x), (3)(-5)$ — alle vier hinschreiben.',
+          'Linearer Koeffizient = $-10 + 3$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['distributiv'] },
       ),
       ni(
         'Klammere aus $6x^2 - 9x$ und gib den größten gemeinsamen Faktor (ohne Vorzeichen) an.',
@@ -1893,6 +2184,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['binom-1', 'binom-2'] },
       ),
+      // Zusatz-Aufgabe SG 2: apply-independent · number-input · uses=[binom-1]
+      // Faktorisieren rückwärts — testet Erkennen einer binomischen Formel im Termmuster.
+      ni(
+        'Faktorisiere $x^2 + 14x + 49$ als $(x + b)^2$ und gib $b$ an.',
+        7, 0, '',
+        `**Ansatz:** Muster der 1. binomischen Formel rückwärts: $a^2 + 2ab + b^2 = (a+b)^2$. Mit $a = x$ stimmt $b^2 = 49$ und $2ab = 14x$.
+
+**Rechnung:** $b^2 = 49 \\Rightarrow b = 7$ (positiv, weil mittlerer Term positiv). Probe: $2 \\cdot x \\cdot 7 = 14x$. ✓ Faktorisierung: $(x + 7)^2$.
+
+**Probe:** Ausmultiplizieren: $(x+7)^2 = x^2 + 14x + 49$. ✓
+
+**Typischer Fehler:** $b = \\sqrt{49} = 7$ erkennen, aber nicht prüfen, ob der mittlere Term zur Wahl passt. Bei z. B. $x^2 + 10x + 49$ gäbe es kein passendes $b$ (es wäre weder die 1. noch die 2. binomische Formel).`,
+        [
+          'Welche binomische Formel hat das Muster $? + ?\\cdot x + ?$ mit beiden Vorzeichen positiv?',
+          '$b^2 = 49 \\Rightarrow b = ?$',
+          'Probe: $2 \\cdot x \\cdot b$ muss den mittleren Term geben.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['binom-1'] },
+      ),
       ni(
         'Berechne mit der 3. binomischen Formel: $103 \\cdot 97$.',
         9991, 0, '',
@@ -1992,6 +2302,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
           3: 'Nein — die Division hat $x = 2$ verschluckt.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['nicht-durch-null'] },
+      ),
+      // Zusatz-Aufgabe SG 3: apply-independent · number-input · uses=[formel-umstellen]
+      // Formel mit Quotient — testet Multiplikation mit dem Nenner als ersten Schritt.
+      ni(
+        'Stelle $\\rho = \\dfrac{m}{V}$ nach dem Volumen $V$ um und berechne $V$ bei $m = 240\\,\\text{g}$ und $\\rho = 8\\,\\text{g/cm}^3$ in $\\text{cm}^3$.',
+        30, 0, '',
+        `**Ansatz:** Bruchgleichung: zuerst beide Seiten mit dem Nenner $V$ multiplizieren, dann durch $\\rho$ dividieren.
+
+**Rechnung:** $\\rho = m/V \\;|\\; \\cdot V \\Rightarrow \\rho \\cdot V = m \\;|\\; / \\rho \\Rightarrow V = m/\\rho$. Einsetzen: $V = 240/8 = 30\\,\\text{cm}^3$.
+
+**Probe:** $\\rho = m/V = 240/30 = 8\\,\\text{g/cm}^3$. ✓ Einheiten: $\\text{g}/(\\text{g/cm}^3) = \\text{cm}^3$.
+
+**Typischer Fehler:** Direkt $V = \\rho \\cdot m = 8 \\cdot 240 = 1920\\,\\text{cm}^3$ — Multiplikation statt Division (Formel falsch umgestellt).`,
+        [
+          'Erst Nenner weg: beide Seiten mit $V$ multiplizieren.',
+          'Dann durch $\\rho$ teilen: $V = m/\\rho$.',
+          'Einheiten-Check: $\\text{g}/(\\text{g/cm}^3) = \\text{cm}^3$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['formel-umstellen'] },
       ),
       sorting(
         'Bringe die Schritte zum Umstellen von $v = v_0 + a \\cdot t$ nach $t$ in die richtige Reihenfolge.',
@@ -2107,6 +2436,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
           3: 'Sie ist definiert für $x \\geq 0$ — nur hat sie keine Lösung, weil $\\sqrt{x} \\geq 0$.',
         },
         { stage: 'error-analysis', subGoal: 4, uses: ['quadrieren-probe'] },
+      ),
+      // Zusatz-Aufgabe SG 4: apply-independent · number-input · uses=[quadrieren-probe]
+      // Wurzelgleichung mit zwei Kandidaten — beide Werte testen, einer ist Scheinlösung.
+      ni(
+        'Löse $\\sqrt{x + 5} = x - 1$ und gib die EINZIGE reelle Lösung $x$ an.',
+        4, 0, '',
+        `**Ansatz:** Definitionsbereich klären (RHS $\\geq 0 \\Rightarrow x \\geq 1$), quadrieren, Kandidaten finden, Probe in Originalgleichung.
+
+**Rechnung:** Quadrieren: $x + 5 = (x-1)^2 = x^2 - 2x + 1 \\Rightarrow x^2 - 3x - 4 = 0 \\Rightarrow (x-4)(x+1) = 0$. Kandidaten: $x = 4$ oder $x = -1$.
+
+**Probe:** $x = 4$: $\\sqrt{9} = 3$ und $4 - 1 = 3$. ✓ $x = -1$: $\\sqrt{4} = 2$, aber $-1 - 1 = -2 \\neq 2$. Scheinlösung. Einzige Lösung: $x = 4$.
+
+**Typischer Fehler:** Beide Kandidaten ($4$ und $-1$) als Lösungen angeben, ohne in die Originalgleichung einzusetzen — die Wurzel ist per Definition $\\geq 0$, aber das Quadrieren akzeptiert auch negative rechte Seiten.`,
+        [
+          'Definitionsbereich: rechte Seite $x - 1 \\geq 0 \\Rightarrow x \\geq 1$.',
+          'Quadrieren $\\to$ quadratische Gleichung $\\to$ zwei Kandidaten.',
+          'PROBE in der Originalgleichung — Scheinlösung verwerfen.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['quadrieren-probe'] },
       ),
       sorting(
         'Bringe die Schritte zum Lösen von $\\sqrt{x + 3} = x - 1$ in die richtige Reihenfolge.',
@@ -2227,6 +2575,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['pot-mult'] },
       ),
+      // Zusatz-Aufgabe SG 0: apply-independent · number-input · uses=[pot-mult, pot-div]
+      // Zwei verschiedene Basen mischen — testet Trennung der Potenzgesetze pro Basis.
+      ni(
+        'Vereinfache $\\dfrac{2^5 \\cdot 5^3}{2^3 \\cdot 5}$ und gib den Wert als ganze Zahl an.',
+        100, 0, '',
+        `**Ansatz:** Potenzgesetze gelten pro Basis. Also $2$-Potenzen separat von $5$-Potenzen behandeln.
+
+**Rechnung:** $2^5 / 2^3 = 2^2 = 4$. $5^3 / 5^1 = 5^2 = 25$. Produkt: $4 \\cdot 25 = 100$.
+
+**Probe:** Direkt: $2^5 \\cdot 5^3 = 32 \\cdot 125 = 4000$; $2^3 \\cdot 5 = 8 \\cdot 5 = 40$; $4000/40 = 100$. ✓
+
+**Typischer Fehler:** Exponenten unabhängig von der Basis zusammenrechnen, etwa $5+3-3-1 = 4$ und Antwort $2^4 = 16$ — die Basen $2$ und $5$ dürfen aber nicht „zusammengeworfen" werden, weil $x^a/x^b = x^{a-b}$ nur bei gleicher Basis gilt.`,
+        [
+          'Verschiedene Basen $\\to$ getrennte Behandlung.',
+          '$2$-Anteil: $2^5/2^3 = 2^2$. $5$-Anteil: $5^3/5^1 = 5^2$.',
+          '$2^2 \\cdot 5^2 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['pot-mult', 'pot-div'] },
+      ),
       ni(
         'Vereinfache $\\dfrac{3^4 \\cdot 3^6}{3^5}$ und gib den Wert als ganze Zahl an.',
         243, 0, '',
@@ -2331,6 +2698,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
           3: 'Subtraktion gilt bei Division gleicher Basen — nicht hier.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['pot-potenz', 'pot-mult'] },
+      ),
+      // Zusatz-Aufgabe SG 1: apply-independent · number-input · uses=[pot-potenz]
+      // Doppelte Schachtelung — testet Anwendung der Potenz-der-Potenz-Regel mehrfach.
+      ni(
+        'Vereinfache $\\left((x^2)^3\\right)^4$ und gib den resultierenden Exponenten an.',
+        24, 0, '',
+        `**Ansatz:** Bei mehrfach geschachtelten Potenzen wird die Regel $(x^a)^b = x^{a \\cdot b}$ einfach mehrmals angewandt — alle Exponenten multiplizieren.
+
+**Rechnung:** $\\left((x^2)^3\\right)^4 = (x^{2 \\cdot 3})^4 = (x^6)^4 = x^{6 \\cdot 4} = x^{24}$. Oder direkt: $x^{2 \\cdot 3 \\cdot 4} = x^{24}$.
+
+**Probe:** Setze $x = 2$: Innerstes $2^2 = 4$, dann $4^3 = 64$, dann $64^4 = 16\\,777\\,216 = 2^{24}$. ✓
+
+**Typischer Fehler:** Exponenten addieren statt multiplizieren: $2 + 3 + 4 = 9 \\Rightarrow x^9$ — verwechselt die Regel mit der Multiplikations-Regel gleicher Basen.`,
+        [
+          'Geschachtelt $\\to$ mehrfach Potenz-der-Potenz.',
+          'Alle Exponenten miteinander multiplizieren.',
+          '$2 \\cdot 3 \\cdot 4 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['pot-potenz'] },
       ),
       matching(
         'Ordne jedem Ausdruck seine vereinfachte Form zu.',
@@ -2446,6 +2832,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['pot-null'] },
       ),
+      // Zusatz-Aufgabe SG 2: apply-independent · number-input · uses=[pot-negativ, pot-mult]
+      // Bruch mit gemischten Vorzeichen-Exponenten — testet Mehrfach-Anwendung der Negativ-Regel.
+      ni(
+        'Berechne $4^{-2} \\cdot 4^3$ und gib den Wert als Dezimalzahl an.',
+        4, 0.001, '',
+        `**Ansatz:** Gleiche Basis $\\to$ Exponenten addieren. Negative Exponenten zählen ganz normal mit.
+
+**Rechnung:** $4^{-2} \\cdot 4^3 = 4^{-2+3} = 4^1 = 4$.
+
+**Probe:** Direkt: $4^{-2} = 1/16 = 0{,}0625$ und $4^3 = 64$. Produkt: $0{,}0625 \\cdot 64 = 4$. ✓
+
+**Typischer Fehler:** Negativen Exponenten als Subtraktion bei der Multiplikation interpretieren: $4^3 - 4^2 = 64 - 16 = 48$ — verwechselt Multiplikation gleicher Basen mit Subtraktion der Werte.`,
+        [
+          'Gleiche Basis bei Multiplikation $\\to$ Exponenten addieren.',
+          '$-2 + 3 = ?$',
+          '$4^1 = 4$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['pot-negativ', 'pot-mult'] },
+      ),
       ni(
         'Vereinfache $\\dfrac{x^{-3} \\cdot x^5}{x^{-1}}$ und gib den Exponenten an.',
         3, 0, '',
@@ -2550,6 +2955,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
           3: 'Nein, der Exponent gilt für ALLE Faktoren in der Klammer — Zahlen und Variablen.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['pot-produkt'] },
+      ),
+      // Zusatz-Aufgabe SG 3: apply-independent · number-input · uses=[pot-quotient]
+      // Quotient mit Variablen + Zahlenbeispiel — testet pot-quotient mit konkretem Endwert.
+      ni(
+        'Berechne $\\left(\\dfrac{6}{2}\\right)^4$ direkt über die Quotientenregel.',
+        81, 0, '',
+        `**Ansatz:** Quotient-in-Klammer-Regel: $(a/b)^n = a^n/b^n$. Beide Faktoren einzeln potenzieren.
+
+**Rechnung:** $\\left(\\dfrac{6}{2}\\right)^4 = \\dfrac{6^4}{2^4} = \\dfrac{1296}{16} = 81$. Direkter Weg: erst kürzen $6/2 = 3$, dann $3^4 = 81$.
+
+**Probe:** $3^4 = 81$. ✓ Beide Wege liefern dasselbe Ergebnis.
+
+**Typischer Fehler:** $(6/2)^4 = 6^4 / 2 = 1296/2 = 648$ — Exponent nur auf Zähler angewandt, nicht auf Nenner.`,
+        [
+          'Quotient-in-Klammer: jeden Faktor hoch $n$.',
+          '$6^4 = 1296$ und $2^4 = 16$.',
+          'Kürzen-Trick: $6/2 = 3$, dann $3^4$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['pot-quotient'] },
       ),
       ni(
         'Vereinfache $\\left(\\dfrac{2x^2}{y}\\right)^3$ und gib den Exponenten von $x$ an.',
@@ -2661,6 +3085,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
           3: 'Jede Zahl $\\geq 0$ hat eine Wurzel in $\\mathbb{R}$, nicht nur Quadratzahlen.',
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['wurzel-def-bereich'] },
+      ),
+      // Zusatz-Aufgabe SG 0: apply-independent · number-input · uses=[wurzel-bruchpot]
+      // Bruchpotenz mit negativem Zähler — testet Kombination von wurzel-bruchpot und pot-negativ.
+      ni(
+        'Berechne $16^{-1/2}$ als Dezimalzahl.',
+        0.25, 0.001, '',
+        `**Ansatz:** Negativer Bruchexponent $\\to$ Kehrwert der Wurzel: $x^{-1/n} = 1/\\sqrt[n]{x}$.
+
+**Rechnung:** $16^{-1/2} = 1/16^{1/2} = 1/\\sqrt{16} = 1/4 = 0{,}25$.
+
+**Probe:** $0{,}25 \\cdot \\sqrt{16} = 0{,}25 \\cdot 4 = 1 = 16^{0}$. ✓ (Definition des Kehrwerts.)
+
+**Typischer Fehler:** Vorzeichen auf Zahlwert übertragen: $16^{-1/2} = -\\sqrt{16} = -4$ — das wäre nur mit Vorzeichen vor der Basis ($-\\sqrt{16}$), aber der Minus-Exponent macht den Kehrwert.`,
+        [
+          'Negativer Exponent $\\to$ Kehrwert.',
+          'Bruchexponent $1/2$ $\\to$ Quadratwurzel.',
+          '$1/\\sqrt{16} = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['wurzel-bruchpot'] },
       ),
       matching(
         'Ordne jedem Wurzelausdruck seine Potenzschreibweise zu.',
@@ -2789,6 +3232,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['wurzel-summe-nein'] },
       ),
+      // Zusatz-Aufgabe SG 1: apply-independent · number-input · uses=[wurzel-vereinfachen, wurzel-produkt]
+      // Wurzeln addieren — testet, dass nur gleichartige Wurzeln zusammenfassbar sind (nach Vereinfachen).
+      ni(
+        'Vereinfache $\\sqrt{18} + \\sqrt{50}$ und gib den Koeffizienten vor $\\sqrt{2}$ an.',
+        8, 0, '',
+        `**Ansatz:** Beide Wurzeln auf gleiche Form $k\\sqrt{2}$ bringen, dann Koeffizienten addieren.
+
+**Rechnung:** $\\sqrt{18} = \\sqrt{9 \\cdot 2} = 3\\sqrt{2}$. $\\sqrt{50} = \\sqrt{25 \\cdot 2} = 5\\sqrt{2}$. Summe: $3\\sqrt{2} + 5\\sqrt{2} = 8\\sqrt{2}$. Koeffizient $8$.
+
+**Probe:** Dezimal: $\\sqrt{18} \\approx 4{,}243$; $\\sqrt{50} \\approx 7{,}071$; Summe $\\approx 11{,}314$. $8\\sqrt{2} \\approx 8 \\cdot 1{,}414 = 11{,}314$. ✓
+
+**Typischer Fehler:** $\\sqrt{18} + \\sqrt{50} = \\sqrt{18 + 50} = \\sqrt{68}$ — Wurzel auf Summe verteilen verboten. Oder ohne Vereinfachen direkt addieren: $\\sqrt{18} + \\sqrt{50}$ stehen lassen, ohne dass die Gleichartigkeit sichtbar wird.`,
+        [
+          'Beide Wurzeln zuerst auf $k\\sqrt{2}$-Form vereinfachen.',
+          '$18 = 9 \\cdot 2$, $50 = 25 \\cdot 2$.',
+          'Gleichartige Wurzeln $\\to$ Koeffizienten addieren.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['wurzel-vereinfachen', 'wurzel-produkt'] },
+      ),
       sorting(
         'Bringe die Schritte zur Vereinfachung von $\\sqrt{200}$ in die richtige Reihenfolge.',
         [
@@ -2899,6 +3361,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
           3: 'Der Nenner war $\\sqrt{3}$ — nicht rational.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['nenner-rational'] },
+      ),
+      // Zusatz-Aufgabe SG 2: apply-independent · number-input · uses=[nenner-rational]
+      // Bruch mit Wurzelpotenz im Nenner — testet Erweitern mit passender Restwurzel.
+      ni(
+        'Mache den Nenner von $\\dfrac{5}{\\sqrt{20}}$ rational und gib den Koeffizienten vor $\\sqrt{5}$ im vollständig gekürzten Ergebnis an.',
+        0.5, 0.01, '',
+        `**Ansatz:** Erst Wurzel im Nenner vereinfachen, dann erweitern und kürzen.
+
+**Rechnung:** $\\sqrt{20} = 2\\sqrt{5}$, also $\\dfrac{5}{\\sqrt{20}} = \\dfrac{5}{2\\sqrt{5}}$. Erweitern mit $\\sqrt{5}$: $\\dfrac{5\\sqrt{5}}{2 \\cdot 5} = \\dfrac{5\\sqrt{5}}{10} = \\dfrac{\\sqrt{5}}{2}$. Koeffizient vor $\\sqrt{5}$ ist $\\tfrac{1}{2} = 0{,}5$.
+
+**Probe:** Dezimal: $5/\\sqrt{20} = 5/4{,}472 \\approx 1{,}118$. $\\sqrt{5}/2 \\approx 2{,}236/2 = 1{,}118$. ✓
+
+**Typischer Fehler:** Direkt mit $\\sqrt{20}$ erweitern statt erst vereinfachen: $5\\sqrt{20}/20 = \\sqrt{20}/4$. Stimmt rechnerisch, aber das Endergebnis ist nicht in einfachster Form ($\\sqrt{20} = 2\\sqrt{5}$, dann $2\\sqrt{5}/4 = \\sqrt{5}/2$).`,
+        [
+          'Erst $\\sqrt{20}$ vereinfachen: $\\sqrt{20} = 2\\sqrt{5}$.',
+          'Erweitern mit $\\sqrt{5}$: $\\sqrt{5} \\cdot \\sqrt{5} = 5$.',
+          'Endform: $\\sqrt{5}/2$ — Koeffizient $1/2$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['nenner-rational'] },
       ),
       ni(
         'Mache $\\dfrac{\\sqrt{6}}{\\sqrt{2}}$ zum Nenner-rationalen Ausdruck und gib den Wert als Quadratzahl-Wurzel an (Radikand).',
@@ -3011,6 +3492,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['log-def'] },
       ),
+      // Zusatz-Aufgabe SG 0: apply-independent · number-input · uses=[log-def]
+      // Logarithmus mit Basis 10 — testet log-def im dekadischen Standardfall.
+      ni(
+        'Berechne $\\log_{10}(10\\,000)$.',
+        4, 0, '',
+        `**Ansatz:** $\\log_{10}(x) = y$ heißt $10^{y} = x$. Welche Zehnerpotenz ist $10\\,000$?
+
+**Rechnung:** $10\\,000 = 10^{4}$, also $\\log_{10}(10\\,000) = 4$.
+
+**Probe:** $10 \\cdot 10 \\cdot 10 \\cdot 10 = 10\\,000$. ✓ Generell: $\\log_{10}(10^{n}) = n$ — Anzahl der Nullen einer Zehnerpotenz.
+
+**Typischer Fehler:** $10\\,000/10 = 1000$ rechnen — Logarithmus ist keine Division. Oder Zehnerpotenz falsch zählen ($10^{5}$ wäre $100\\,000$, $10^{3}$ ist $1000$).`,
+        [
+          'Wie oft passt $10$ in $10\\,000$ als Faktor?',
+          'Schreibe $10\\,000$ als Zehnerpotenz.',
+          'Anzahl der Nullen $=$ Logarithmus zur Basis $10$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['log-def'] },
+      ),
       matching(
         'Ordne jeder Basis den typischen Anwendungskontext zu.',
         [
@@ -3121,6 +3621,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['log-produkt'] },
       ),
+      // Zusatz-Aufgabe SG 1: apply-independent · number-input · uses=[log-produkt]
+      // Produktregel über drei Faktoren — testet iterierte Anwendung.
+      ni(
+        'Vereinfache $\\log_2(2) + \\log_2(4) + \\log_2(8)$ als ganze Zahl.',
+        6, 0, '',
+        `**Ansatz:** Drei Logarithmus-Summen zusammenfassen — Produktregel kann auf beliebig viele Faktoren ausgedehnt werden: $\\log_b(a_1 \\cdot a_2 \\cdot a_3) = \\log_b(a_1) + \\log_b(a_2) + \\log_b(a_3)$.
+
+**Rechnung:** $\\log_2(2) + \\log_2(4) + \\log_2(8) = \\log_2(2 \\cdot 4 \\cdot 8) = \\log_2(64) = 6$. Direkt: $1 + 2 + 3 = 6$.
+
+**Probe:** $2 \\cdot 4 \\cdot 8 = 64 = 2^{6}$. ✓ Beide Wege liefern $6$.
+
+**Typischer Fehler:** Logarithmen multiplizieren statt addieren: $1 \\cdot 2 \\cdot 3 = 6$ — zufällig richtige Zahl, aber falscher Weg. Bei anderen Werten ($\\log_2(2) + \\log_2(8) = 1+3 = 4$ vs. $1 \\cdot 3 = 3$) zeigt sich der Fehler.`,
+        [
+          'Produktregel $\\to$ Summe von Logs ist Log des Produkts.',
+          'Direktrechnung: $\\log_2(2) = 1$, $\\log_2(4) = 2$, $\\log_2(8) = 3$.',
+          '$1 + 2 + 3 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['log-produkt'] },
+      ),
       ni(
         'Vereinfache $\\ln(4) + \\ln(25)$ als $\\ln(\\text{Zahl})$ und gib diese Zahl an.',
         100, 0, '',
@@ -3225,6 +3744,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
           3: '$\\ln$ ist für alle positiven Argumente definiert, auch $10/2$.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['log-quotient'] },
+      ),
+      // Zusatz-Aufgabe SG 2: apply-independent · number-input · uses=[log-quotient, log-produkt]
+      // Quotient + Produkt kombiniert — testet Reihenfolge der Regeln in einem Ausdruck.
+      ni(
+        'Vereinfache $\\log_2(48) - \\log_2(3)$ als ganze Zahl.',
+        4, 0, '',
+        `**Ansatz:** Differenz von Logarithmen $\\to$ Quotient. Dann Direktrechnung.
+
+**Rechnung:** $\\log_2(48) - \\log_2(3) = \\log_2(48/3) = \\log_2(16) = 4$ (da $2^{4} = 16$).
+
+**Probe:** $48/3 = 16$. $\\log_2(16) = 4$ direkt. Numerisch: $\\log_2(48) \\approx 5{,}585$ und $\\log_2(3) \\approx 1{,}585$. Differenz $\\approx 4$. ✓
+
+**Typischer Fehler:** Argumente subtrahieren: $\\log_2(48 - 3) = \\log_2(45)$ — Quotientenregel ist nicht „Subtraktion der Argumente", sondern „Division". Oder die Logs einzeln berechnen, was ohne Taschenrechner schwierig ist.`,
+        [
+          'Differenz von Logs $\\to$ Quotient: $\\log_b(a) - \\log_b(c) = \\log_b(a/c)$.',
+          '$48/3 = 16$.',
+          '$\\log_2(16) = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['log-quotient', 'log-produkt'] },
       ),
       ni(
         'Vereinfache $\\ln(30) - \\ln(5) - \\ln(2)$ als $\\ln(\\text{Zahl})$ und gib diese Zahl an.',
@@ -3331,6 +3869,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['log-potenz'] },
       ),
+      // Zusatz-Aufgabe SG 3: apply-independent · number-input · uses=[log-potenz]
+      // Wurzel als Bruchpotenz im Argument — testet log-potenz mit Bruchexponenten.
+      ni(
+        'Vereinfache $\\log_3(\\sqrt{27})$ als Dezimalzahl (eine Nachkommastelle).',
+        1.5, 0.05, '',
+        `**Ansatz:** Wurzel als Bruchpotenz schreiben, dann Potenzregel: $\\log_b(\\sqrt[n]{a}) = \\log_b(a^{1/n}) = \\tfrac{1}{n} \\log_b(a)$.
+
+**Rechnung:** $\\sqrt{27} = 27^{1/2}$. $\\log_3(27^{1/2}) = \\tfrac{1}{2} \\log_3(27) = \\tfrac{1}{2} \\cdot 3 = 1{,}5$.
+
+**Probe:** $3^{1{,}5} = 3 \\cdot \\sqrt{3} \\approx 5{,}196 \\approx \\sqrt{27} \\approx 5{,}196$. ✓
+
+**Typischer Fehler:** Wurzel als „normale Funktion" behandeln und nicht als Bruchpotenz erkennen — dann scheitert die Potenzregel-Anwendung. Oder $\\log_3(\\sqrt{27}) = \\sqrt{\\log_3(27)} = \\sqrt{3} \\approx 1{,}73$ rechnen — Wurzel auf den Logarithmus statt aufs Argument.`,
+        [
+          'Wurzel als Bruchpotenz: $\\sqrt{a} = a^{1/2}$.',
+          'Potenzregel: $\\log_b(a^{n}) = n \\cdot \\log_b(a)$.',
+          '$\\log_3(27) = 3$, also $\\tfrac{1}{2} \\cdot 3 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['log-potenz'] },
+      ),
       ni(
         'Vereinfache $\\ln(a^2 b^3) - \\ln(a b)$ und drücke das Ergebnis als Faktor$\\cdot \\ln a +$ Faktor$\\cdot \\ln b$ aus. Gib den Koeffizienten von $\\ln b$ an.',
         2, 0, '',
@@ -3435,6 +3992,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
           3: 'Der Basiswechsel funktioniert mit jeder Basis.',
         },
         { stage: 'error-analysis', subGoal: 4, uses: ['log-basiswechsel'] },
+      ),
+      // Zusatz-Aufgabe SG 4: apply-independent · number-input · uses=[log-basiswechsel]
+      // Basiswechsel mit Taschenrechner-typischer Aufgabe — testet konkrete numerische Auswertung.
+      ni(
+        'Berechne $\\log_2(50)$ mit dem Basiswechsel und $\\ln$ auf 3 Dezimalen.',
+        5.644, 0.01, '',
+        `**Ansatz:** Basiswechsel: $\\log_b(x) = \\dfrac{\\ln(x)}{\\ln(b)}$. Damit lässt sich jeder Logarithmus mit dem Taschenrechner ($\\ln$ oder $\\log$) berechnen.
+
+**Rechnung:** $\\log_2(50) = \\dfrac{\\ln(50)}{\\ln(2)} \\approx \\dfrac{3{,}912}{0{,}693} \\approx 5{,}644$.
+
+**Probe:** $2^{5{,}644} \\approx 49{,}99 \\approx 50$. ✓ Plausibel: $2^{5} = 32$ und $2^{6} = 64$, also liegt $\\log_2(50)$ zwischen $5$ und $6$ — näher bei $6$ (denn $50$ liegt näher an $64$ als an $32$).
+
+**Typischer Fehler:** Zähler und Nenner vertauschen: $\\ln(2)/\\ln(50) \\approx 0{,}177$ — der Kehrwert. Oder $\\log_{10}/\\log_{10}$ (also $\\log_b(x) = \\log(x)/\\log(b)$) verwechseln: liefert numerisch dasselbe, ist aber konzeptuell ok.`,
+        [
+          'Basiswechsel: $\\log_b(x) = \\ln(x)/\\ln(b)$ — Basis im Nenner.',
+          '$\\ln(50) \\approx 3{,}912$, $\\ln(2) \\approx 0{,}693$.',
+          'Sanity-Check: Antwort sollte zwischen $5$ und $6$ liegen.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['log-basiswechsel'] },
       ),
       ni(
         'Eine radioaktive Substanz hat Halbwertszeit $T_{1/2} = 10\\,\\text{Jahre}$. Nach wie vielen Jahren sind nur noch $12{,}5\\%$ übrig? (ganze Zahl)',
@@ -3557,6 +4133,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         },
         { stage: 'error-analysis', subGoal: 5, uses: ['log-summe-nein'] },
       ),
+      // Zusatz-Aufgabe SG 5: recognize · true-false · uses=[log-summe-nein, log-produkt]
+      // Direkter Vergleich Produkt vs. Summe — testet Unterscheidung der beiden Fälle.
+      tf(
+        'Es gilt $\\ln(5) + \\ln(2) = \\ln(7)$ — die Logarithmen lassen sich addieren wie ihre Argumente.',
+        false,
+        `**Ansatz:** Die Aussage verwechselt zwei verschiedene Operationen: tatsächliche Addition der Logarithmen entspricht der Multiplikation der Argumente, nicht der Addition.
+
+**Rechnung:** Korrekt: $\\ln(5) + \\ln(2) = \\ln(5 \\cdot 2) = \\ln(10) \\neq \\ln(7)$. Behauptung wäre nur korrekt, wenn $\\ln$ linear wäre — ist es nicht.
+
+**Probe:** Numerisch: $\\ln(5) \\approx 1{,}609$, $\\ln(2) \\approx 0{,}693$. Summe $\\approx 2{,}303$. Das ist $\\ln(10)$, nicht $\\ln(7) \\approx 1{,}946$.
+
+**Typischer Fehler:** „Hinten in der Klammer kann ich addieren wie die Argumente" — falsch. Addition der Logarithmen $\\Rightarrow$ Multiplikation der Argumente (Produktregel).`,
+        [
+          'Produktregel: $\\ln(a) + \\ln(b) = \\ln(a \\cdot b)$, nicht $\\ln(a + b)$.',
+          'Was ist $5 \\cdot 2$? Das ist das Argument im zusammengefassten Log.',
+          'Numerisch prüfen: $\\ln(7) \\approx 1{,}95$ vs. $\\ln(10) \\approx 2{,}30$.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['log-summe-nein', 'log-produkt'] },
+      ),
       matching(
         'Ordne jede Umformung als "korrekt" oder "falsch" zu.',
         [
@@ -3667,6 +4262,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
           3: 'Gleichung ist perfekt lösbar.',
         },
         { stage: 'error-analysis', subGoal: 6, uses: ['log-umkehr'] },
+      ),
+      // Zusatz-Aufgabe SG 6: apply-independent · number-input · uses=[log-umkehr]
+      // Exponentialgleichung mit nicht-trivialem Argument — testet Umkehr-Identität in Anwendung.
+      ni(
+        'Löse $e^{x+2} = 10$ nach $x$ und gib das Ergebnis auf 3 Dezimalen an.',
+        0.303, 0.01, '',
+        `**Ansatz:** Beide Seiten logarithmieren — auf der linken Seite hebt $\\ln$ das $e$ auf: $\\ln(e^{x+2}) = x + 2$.
+
+**Rechnung:** $\\ln(e^{x+2}) = \\ln(10) \\Rightarrow x + 2 = \\ln(10) \\approx 2{,}303 \\Rightarrow x \\approx 0{,}303$.
+
+**Probe:** $e^{0{,}303 + 2} = e^{2{,}303} \\approx 10$. ✓
+
+**Typischer Fehler:** $\\ln$ nur auf das $e^{x}$ anwenden, $+2$ stehen lassen: $x = \\ln(10) - 2$? Stimmt zufällig — aber die korrekte Anwendung der Umkehr-Identität ist $\\ln(e^{x+2}) = x+2$ und dann erst umstellen. Andere Falle: $\\ln(10) = 1$ annehmen (das wäre $\\log_{10}(10) = 1$, aber $\\ln(10) \\approx 2{,}303$).`,
+        [
+          'Umkehr-Identität: $\\ln(e^{a}) = a$ — gilt für jeden Exponenten $a$.',
+          'Beide Seiten $\\ln$: $x + 2 = \\ln(10)$.',
+          '$\\ln(10) \\approx 2{,}303$ — zentrale Zahl, lohnt sich zu merken.',
+        ],
+        { stage: 'apply-independent', subGoal: 6, uses: ['log-umkehr'] },
       ),
       ni(
         'Löse $e^{2x} = 64$ nach $x$. Nutze $\\ln(64) = 6\\ln(2)$. Gib die Antwort als Bruch (auf 3 Dezimalen umgerechnet).',

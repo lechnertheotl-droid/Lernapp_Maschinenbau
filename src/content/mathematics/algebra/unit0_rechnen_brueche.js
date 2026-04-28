@@ -84,8 +84,9 @@ export const exercises_alg_u0 = {
 
 **Typischer Fehler:** Von links nach rechts rechnen ignoriert die Vorrangregel.`,
     hints: [
-      'Punkt-vor-Strich prüfen.',
+      'Punkt-vor-Strich prüfen — welche Operation kommt zuerst?',
       'Was müsste geklammert sein, damit $14$ richtig wäre?',
+      'Rechne $4 \\cdot 2$ zuerst und addiere dann $3$ — vergleiche mit $14$.',
     ],
       pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['prio-basic'] },
 },
@@ -111,7 +112,8 @@ export const exercises_alg_u0 = {
 **Typischer Fehler:** Klammern ignorieren ändert das Ergebnis dramatisch — siehe erste vs. zweite Zeile.`,
     hints: [
       'Rechne jeden Ausdruck einzeln aus, dann zuordnen.',
-      'Bei Klammern: innen zuerst.',
+      'Bei Klammern: innen zuerst, dann Punkt vor Strich.',
+      'Vorzeichen sorgfältig: $-(2-5) = -(-3) = +3$, nicht $-2-5 = -7$.',
     ],
       pedagogy: { stage: 'transfer', subGoal: 0, uses: ['prio-basic'] },
 },
@@ -215,6 +217,7 @@ export const exercises_alg_u0 = {
     hints: [
       'Ein Gegenbeispiel reicht, um eine Regel zu widerlegen.',
       'Teste $\\tfrac{1}{2} + \\tfrac{1}{2}$ — wird das $1$ oder $\\tfrac{2}{4}$?',
+      'Korrekt ist $\\tfrac{a}{b} + \\tfrac{c}{d} = \\tfrac{ad + cb}{bd}$ — die behauptete Regel ignoriert das.',
     ],
       pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['kgv-hauptnenner'] },
 },
@@ -237,6 +240,7 @@ export const exercises_alg_u0 = {
 **Typischer Fehler:** Zähler addieren vor dem Gleichnamigmachen — liefert falsches Ergebnis.`,
     hints: [
       'Addition braucht erst gleiche Nenner.',
+      'Erweitern heißt: Zähler UND Nenner mit demselben Faktor multiplizieren.',
       'Erst am Ende schauen, ob sich das Ergebnis kürzen lässt.',
     ],
       pedagogy: { stage: 'transfer', subGoal: 0, uses: ['kgv-hauptnenner'] },
@@ -341,6 +345,7 @@ export const exercises_alg_u0 = {
     hints: [
       'Rechne an einem Beispielwert (z. B. 100) durch.',
       'Der zweite Prozentsatz bezieht sich auf den **neuen** Wert, nicht den ursprünglichen.',
+      'Algebraisch: $x \\cdot 1{,}2 \\cdot 0{,}8 = 0{,}96\\,x$ — also $4\\%$ unter Start.',
     ],
       pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['prozent-def'] },
 },
@@ -362,6 +367,7 @@ export const exercises_alg_u0 = {
 **Typischer Fehler:** Wachstumsfaktor mit $p/100$ verwechseln — der Faktor enthält zusätzlich die $1$ (bei Abnahme $1 - p/100$).`,
     hints: [
       'Grundformel $W = G \\cdot p/100$ — alle anderen Formen durch Umstellen.',
+      'Nach $G$ umstellen: $G = W \\cdot 100/p$. Nach $p$: $p = W \\cdot 100/G$.',
       'Wachstumsfaktor $= 1 + p/100$ (Zunahme) bzw. $1 - p/100$ (Abnahme).',
     ],
       pedagogy: { stage: 'transfer', subGoal: 0, uses: ['prozent-def'] },
@@ -466,6 +472,8 @@ $$2x + 6 = 14 \\quad | -6 \\\\ 2x = 8 \\quad | :2 \\\\ x = 4$$
 **Typischer Fehler:** Multiplikation mit $0$ — dann steht immer $0 = 0$, und die Gleichung verliert ihren Inhalt. Deshalb **nur mit $c \\neq 0$**.`,
     hints: [
       'Gilt die Regel für **jede** Zahl — auch für $0$?',
+      'Multipliziert man mit $0$, wird jede Gleichung zu $0 = 0$ — Information geht verloren.',
+      'Daher: Multiplikation/Division nur mit Termen $\\neq 0$ erhält die Lösungsmenge.',
     ],
       pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['gleichartige-terme'] },
 },
