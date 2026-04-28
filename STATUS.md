@@ -103,7 +103,7 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
 | Aufgaben (gesamt) | 2372 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1502 (63 %) | 100 % der Aufgaben | 🟡 |
+| Aufgaben mit 4-Block | 1506 (63 %) | 100 % der Aufgaben | 🟡 |
 | MC mit wrongAnswerExplanations | 1072 / 1072 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
@@ -127,7 +127,7 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
 - Aufgaben: **625** (Lesson-Path: 112 · Goal-Tasks: 513)
-- 4-Block: 581/625 (93 %) 🟡
+- 4-Block: 585/625 (94 %) 🟡
 - MC-wAE: 272/272 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
@@ -184,7 +184,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | `alg-2-2` Quadratische Gleichungen | 4 | 4/4 | 35 | 15/12/4/3/1 | 35/35 | 15/15 | ✅ | — |
 | `alg-2-3` Polynomgleichungen & Polynomdivision | 6 | 6/6 | 41 | 18/12/6/3/2 | 41/41 | 18/18 | ✅ | — |
 | `alg-2-4` Ungleichungen | 6 | 6/6 | 35 | 18/5/5/4/3 | 35/35 | 18/18 | ✅ | — |
-| `alg-3-1` Funktionsbegriff | 3 | 3/3 | 20 | 13/0/4/3/0 | 16/20 | 13/13 | ✅ | +4 4B |
+| `alg-3-1` Funktionsbegriff | 3 | 3/3 | 20 | 13/0/4/3/0 | 20/20 | 13/13 | ✅ | — |
 | `alg-3-2` Elementare Funktionen | 6 | 6/6 | 36 | 18/4/5/8/1 | 31/36 | 18/18 | ✅ | +5 4B |
 | `alg-3-3` Funktionsoperationen | 6 | 6/6 | 34 | 20/2/5/6/1 | 32/34 | 20/20 | ✅ | +2 4B |
 | `alg-3-4` Umkehrfunktionen | 6 | 6/6 | 35 | 19/5/7/3/1 | 32/35 | 19/19 | ✅ | +3 4B |
@@ -11351,50 +11351,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 33 Lessons
-
-#### `alg-3-1` · Funktionsbegriff
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-1-3` → `log-def`
-  - `alg-1-2` → `wurzel-def-bereich`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `fkt-def` — Funktion = jedes $x \in D$ erhält genau ein $y$ (SG 0)
-  2. `fkt-graph` — Funktionsgraph $\{(x,f(x))\}$ und vertikaler Linientest ⇐ `fkt-def` (SG 0)
-  3. `def-bereich` — Definitionsbereich: Division $\neq 0$, Wurzel $\geq 0$, $\log > 0$ ⇐ `fkt-def` (SG 1)
-  4. `wertebereich` — Wertebereich = Menge aller tatsächlich erreichten $y$ ⇐ `fkt-def` (SG 1)
-  5. `injektiv` — Injektiv: $f(x_1)=f(x_2) \Rightarrow x_1=x_2$ ⇐ `fkt-def` (SG 2)
-  6. `surjektiv` — Surjektiv: jedes $y$ der Zielmenge hat ein Urbild ⇐ `fkt-def` (SG 2)
-  7. `bijektiv` — Bijektiv = injektiv + surjektiv (Voraussetzung für Umkehrung) ⇐ `injektiv`, `surjektiv` (SG 2)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `fkt-def`, `fkt-graph` · **5/5+** — Funktion: jedem $x$ aus Definitionsbereich wird *genau ein* $y$ zugeordnet
-  - ✅ [1] _hoch_ · Konzepte: `def-bereich`, `wertebereich` · **6/5+** — Definitionsbereich $D$: alle zulässigen $x$ (Division durch 0 ausschließen, Radikand $\ge 0$, Logarithmus $>0$)
-  - ✅ [2] _mittel_ · Konzepte: `injektiv`, `surjektiv`, `bijektiv` · **5/5+** — Injektiv = verschiedene $x$ $\to$ verschiedene $y$; surjektiv = jedes $y$ im Bild wird getroffen; bijektiv = beides
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `fkt-def` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `fkt-graph` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `fkt-graph` | 1 | 1 | ✅ | Vertikaler Linientest |
-|  4 | 0 | error-analysis     | multiple-choice  | `fkt-def` | 1 | 1 | ✅ | Distraktor: Kreis als Funktionsgraph |
-|  5 | 0 | transfer           | matching         | `fkt-def` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `def-bereich` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `def-bereich` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `def-bereich`, `wertebereich` | 2 | 2 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `def-bereich` | 1 | 1 | ✅ | Distraktor: Polstelle nicht ausgeschlossen |
-| 10 | 1 | transfer           | matching         | `def-bereich` | 1 | 1 | ✅ | Funktion ↔ maximaler Definitionsbereich |
-| 11 | 2 | recognize          | matching         | `injektiv`, `surjektiv`, `bijektiv` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `injektiv` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `bijektiv` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `injektiv`, `surjektiv` | 1 | 1 | ✅ |  |
-| 15 | 2 | transfer           | true-false       | `bijektiv` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-3-1': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-3-1-a`, `ex-alg-3-1-b`, `ex-alg-3-1-c`, `ex-alg-3-1-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 32 Lessons
 
 #### `alg-1-2` · Wurzeln und gebrochene Exponenten
 

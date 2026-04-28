@@ -7420,9 +7420,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Gleiche $y$-Werte bei verschiedenen $x$?',
         ],
         {
-          1: 'Auf ganz $\\mathbb{R}$ nicht injektiv.',
-          2: 'Auf $[0, \\infty)$ tatsächlich ja — aber die Frage ist über $\\mathbb{R}$.',
-          3: '"Teilweise" ist keine mathematisch präzise Aussage.',
+          1: 'Auf ganz $\\mathbb{R}$ ist $f(x)=x^2$ nicht injektiv: $f(2) = f(-2) = 4$ liefert ein konkretes Gegenbeispiel. „Ja" gälte nur, wenn man den Definitionsbereich einschränkt — die Frage stellt aber explizit $D = \\mathbb{R}$.',
+          2: 'Diese Aussage ist isoliert wahr, beantwortet aber die Frage nicht: Gefragt ist die Injektivität *auf $\\mathbb{R}$*, nicht auf einem eingeschränkten Bereich. Auf $\\mathbb{R}$ scheitert die Injektivität an Paaren wie $\\pm 2 \\to 4$.',
+          3: 'Injektivität ist eine binäre Eigenschaft — eine Funktion ist auf einem festen Definitionsbereich entweder injektiv oder nicht. Eine korrekte Antwort wäre: nicht injektiv auf $\\mathbb{R}$, weil Gegenbeispiele wie $f(2) = f(-2) = 4$ existieren.',
         },
         { stage: 'apply-guided', subGoal: 2, uses: ['injektiv'] },
       ),
@@ -7430,22 +7430,22 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
         'Ist $f: \\mathbb{R} \\to \\mathbb{R}, f(x) = x^3 + 1$ bijektiv?',
         ['Ja', 'Nein, nicht injektiv', 'Nein, nicht surjektiv', 'Nicht entscheidbar'],
         0,
-        `**Ansatz:** $x^3$ ist bijektiv auf $\\mathbb{R}$; Verschiebung ändert das nicht.
+        `**Ansatz:** $x^3$ ist bijektiv auf $\\mathbb{R}$; eine konstante Verschiebung ändert das nicht.
 
-**Rechnung:** $f'(x) = 3x^2 \\geq 0$, streng monoton steigend → injektiv. Werte: $\\mathbb{R}$ vollständig → surjektiv.
+**Rechnung:** $f'(x) = 3x^2 \\geq 0$ und $= 0$ nur bei $x = 0$ — die Funktion ist streng monoton steigend, also *injektiv*. Wertebereich: für $x \\to \\pm\\infty$ geht $f(x) \\to \\pm\\infty$, also wird ganz $\\mathbb{R}$ getroffen — *surjektiv*. Beides zusammen: bijektiv.
 
-**Probe:** Zu jedem $y$ gibt es ein $x = \\sqrt[3]{y-1}$.
+**Probe:** Zu jedem $y$ existiert genau ein $x = \\sqrt[3]{y - 1}$. Beispiel: $y = 9 \\Rightarrow x = \\sqrt[3]{8} = 2$, und $f(2) = 8 + 1 = 9$ ✓.
 
-**Typischer Fehler:** Mit $x^2$ verwechseln.`,
+**Typischer Fehler:** Mit $x^2$ verwechseln — gerade Potenzen sind nicht injektiv, ungerade schon.`,
         [
           'Streng monoton?',
           'Wertebereich $\\mathbb{R}$?',
           'Beides ✓.',
         ],
         {
-          1: 'Streng monoton → injektiv.',
-          2: 'Wertebereich $\\mathbb{R}$.',
-          3: 'Entscheidbar durch Monotonie.',
+          1: 'Doch — $f$ ist injektiv. $f(x) = x^3 + 1$ ist streng monoton steigend ($f\'(x) = 3x^2 \\geq 0$, mit Gleichheit nur an einem isolierten Punkt). Verwechslung mit $x^2$: dort wäre $f(2)=f(-2)$, aber bei $x^3$ gilt $2^3 = 8 \\neq -8 = (-2)^3$.',
+          2: 'Doch — der Wertebereich ist ganz $\\mathbb{R}$. $x^3$ überstreicht alle reellen Werte ($x \\to \\pm\\infty \\Rightarrow x^3 \\to \\pm\\infty$); die Verschiebung um $+1$ verschiebt nur, ohne zu beschränken. Also surjektiv.',
+          3: 'Doch — die Bijektivität lässt sich klar entscheiden: streng monoton (Ableitung nicht-negativ und nur isoliert null) liefert Injektivität, $f(\\mathbb{R}) = \\mathbb{R}$ Surjektivität. Antwort: bijektiv.',
         },
         { stage: 'apply-independent', subGoal: 2, uses: ['bijektiv'] },
       ),
@@ -7471,9 +7471,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Wertebereich.',
         ],
         {
-          1: 'Gegenbeispiel widerlegt.',
-          2: 'Gegenbeispiel widerlegt.',
-          3: 'Auch das stimmt nicht generell.',
+          1: 'Das Gegenbeispiel widerlegt diese Implikation: $e^x$ ist injektiv (streng monoton steigend), aber nicht surjektiv auf $\\mathbb{R}$ — der Wert $-1$ liegt im Zielbereich, hat aber kein Urbild, weil $e^x > 0$ für alle $x$.',
+          2: 'Der Schüler liegt nicht richtig. Injektiv und surjektiv sind unabhängige Eigenschaften: $f(x) = e^x: \\mathbb{R} \\to \\mathbb{R}$ ist nur injektiv (Wertebereich $(0, \\infty)$ deckt nicht ganz $\\mathbb{R}$), $f(x) = x^2: \\mathbb{R} \\to [0, \\infty)$ ist nur surjektiv (aber $f(2)=f(-2)$).',
+          3: 'Falsche Implikationsrichtung — und auch die umgekehrte gilt nicht. Surjektivität sagt nichts über Eindeutigkeit aus: $f(x) = x^3 - x: \\mathbb{R} \\to \\mathbb{R}$ ist surjektiv, aber wegen $f(0) = f(1) = f(-1) = 0$ nicht injektiv.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['injektiv', 'surjektiv'] },
       ),

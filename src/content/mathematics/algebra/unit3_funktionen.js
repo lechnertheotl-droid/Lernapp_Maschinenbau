@@ -14,13 +14,11 @@ export const exercises_alg_u3 = {
     correctIndex: 0,
     explanation: `**Ansatz:** Die Funktionsdefinition ist der Kern — ohne sie kein Definitions- oder Wertebereich, keine Umkehrfunktion, keine Analysis.
 
-**Definition:** Eine Funktion $f: A \\to B$ ordnet **jedem** Element $x \\in A$ **genau ein** Element $y = f(x) \\in B$ zu. Zwei Bedingungen müssen gelten:
-- **Existenz:** Jedes $x \\in A$ hat ein Bild (darf nicht "leer" sein).
-- **Eindeutigkeit:** Zu jedem $x$ gehört nur *ein* einziges $y$.
+**Rechnung:** Eine Funktion $f: A \\to B$ ordnet **jedem** Element $x \\in A$ **genau ein** Element $y = f(x) \\in B$ zu. Zwei Bedingungen müssen gelten: *Existenz* (jedes $x \\in A$ hat ein Bild) und *Eindeutigkeit* (zu jedem $x$ gehört nur ein $y$). Grafisches Werkzeug: *Vertikaler Linientest* — jede Senkrechte $x = x_{0}$ darf den Graphen höchstens einmal schneiden.
 
-**Grafische Kontrolle:** *Vertikaler Linientest* — jede Senkrechte $x = x_{0}$ darf den Graphen höchstens einmal schneiden. Ein Kreis $x^{2} + y^{2} = 1$ ist also *keine* Funktion (zwei Schnittpunkte).
+**Probe:** $f(x) = x^{2}$ — jedes $x$ liefert genau einen Wert ($f(3) = 9$, eindeutig). Kreis $x^{2} + y^{2} = 1$ — bei $x = 0$ zwei $y$-Werte ($\\pm 1$): *keine* Funktion.
 
-**Typischer Fehler:** "Jedem $y$ genau ein $x$" verwechseln — das ist *Injektivität* und etwas anderes.`,
+**Typischer Fehler:** „Jedem $y$ genau ein $x$" verwechseln — das ist *Injektivität* und etwas anderes.`,
     wrongAnswerExplanations: {
       1: 'Du beschreibst hier eine *Relation* oder *mehrwertige Zuordnung*, keine Funktion. Wenn einem $x$ zwei oder mehr verschiedene $y$ zugeordnet wären, würde der vertikale Linientest versagen. Funktionen liefern zu jedem Input genau einen Output — nie mehrere.',
       2: 'Du beschreibst eine *partielle* Funktion, keine Funktion im strengen Sinn. Eine Funktion $f: A \\to B$ verlangt, dass *jedes* Element von $A$ ein Bild hat (Existenz). Elemente ohne Bild sind nur in Erweiterungen wie "partiellen Funktionen" erlaubt.',
@@ -45,13 +43,11 @@ export const exercises_alg_u3 = {
     correctIndex: 1,
     explanation: `**Ansatz:** Zwei Fragen getrennt stellen: (1) Welche $x$ darf ich einsetzen? (2) Welche $y$ können herauskommen?
 
-**Definitionsbereich $D$:** Quadrieren ist für *jede* reelle Zahl erlaubt, also $D = \\mathbb{R}$.
+**Rechnung:** Definitionsbereich — Quadrieren ist für *jede* reelle Zahl erlaubt: $D = \\mathbb{R}$. Wertebereich — für jedes $x$ gilt $x^{2} \\geq 0$, und jede nicht-negative Zahl $y \\geq 0$ lässt sich als $(\\sqrt{y})^{2}$ schreiben: $W = [0, \\infty)$.
 
-**Wertebereich $W$:** Für jedes $x$ gilt $x^{2} \\geq 0$, und jede nicht-negative Zahl $y \\geq 0$ lässt sich als $(\\sqrt{y})^{2}$ schreiben. Also $W = [0, \\infty)$.
+**Probe:** $f(-3) = 9 \\geq 0$ ✓, $f(0) = 0$ ✓, $f(0{,}5) = 0{,}25$ ✓. Negative Ausgaben kommen *nie* vor — also kein $y < 0$ im Wertebereich.
 
-**Probe:** $f(-3) = 9 \\geq 0$. $f(0) = 0$. Negative Werte kommen *nie* vor.
-
-**Typischer Fehler:** $W = \\mathbb{R}$ — nur dann richtig, wenn man Ausgaben *zulassen* würde, die nie auftreten. Wertebereich muss *exakt* die tatsächlich angenommenen Werte enthalten.`,
+**Typischer Fehler:** $W = \\mathbb{R}$ — der Wertebereich muss *exakt* die tatsächlich angenommenen Werte enthalten, nicht alle „erlaubten".`,
     wrongAnswerExplanations: {
       0: 'Der Definitionsbereich $D = \\mathbb{R}$ stimmt, aber $W = \\mathbb{R}$ ist falsch: negative Werte werden nie getroffen, weil $x^{2} \\geq 0$ für jedes reelle $x$. Der Wertebereich muss nur die *tatsächlich angenommenen* $y$-Werte enthalten, nicht alle "erlaubten". Richtig: $W = [0, \\infty)$.',
       2: 'Du hast den Definitionsbereich fälschlich eingeschränkt. Quadrieren ist für *jede* reelle Zahl möglich — auch für negative (z.B. $(-3)^{2} = 9$). $D = [0, \\infty)$ gilt nur für $\\sqrt{x}$, nicht für $x^{2}$. Richtig: $D = \\mathbb{R}$.',
@@ -62,44 +58,38 @@ export const exercises_alg_u3 = {
       'Fragen zu $W$: Kann $x^{2}$ negativ werden? Und wird jede nicht-negative Zahl getroffen?',
       'Quadrat einer reellen Zahl ist immer $\\geq 0$.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['fkt-def'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['def-bereich', 'wertebereich'] },
 },
   'ex-alg-3-1-c': {
     id: 'ex-alg-3-1-c', lessonId: 'alg-3-1', type: 'true-false',
     statement: '$f(x) = x^{2}$ (mit $D = \\mathbb{R}$) ist injektiv (verschiedene $x$-Werte haben verschiedene $y$-Werte).',
     correct: false,
-    explanation: `**Falsch.** Die Funktion $f(x) = x^{2}$ ist auf $\\mathbb{R}$ *nicht* injektiv.
+    explanation: `**Ansatz:** Injektivität prüfen heißt: ein Gegenbeispiel suchen, also zwei verschiedene $x_{1} \\neq x_{2}$ mit $f(x_{1}) = f(x_{2})$. Findet man eines, ist die Funktion nicht injektiv.
 
-**Gegenbeispiel:** $f(2) = 4$ und $f(-2) = 4$. Zwei verschiedene Eingaben liefern denselben Ausgangswert — das verletzt die Injektivitätsbedingung $f(x_{1}) = f(x_{2}) \\Rightarrow x_{1} = x_{2}$.
+**Rechnung:** $f(2) = 2^{2} = 4$ und $f(-2) = (-2)^{2} = 4$. Zwei verschiedene Eingaben ($2 \\neq -2$) liefern denselben Wert ($4 = 4$) — die Bedingung $f(x_{1}) = f(x_{2}) \\Rightarrow x_{1} = x_{2}$ ist verletzt. Grafisch: der horizontale Linientest scheitert — die Gerade $y = 4$ schneidet die Parabel in zwei Punkten.
 
-**Grafisch:** Der *horizontale* Linientest schlägt fehl — die Gerade $y = 4$ schneidet die Parabel in zwei Punkten.
+**Probe:** Beschränkt man $f$ auf $D = [0, \\infty)$, wird die Funktion streng monoton steigend — und damit injektiv. Genau deshalb existiert $\\sqrt{\\cdot}$ nur für $x \\geq 0$ als Umkehrung von $x^{2}$.
 
-**Einschränkung hilft:** Beschränkt man $f$ auf $D = [0, \\infty)$, wird sie streng monoton steigend und damit injektiv. Genau darum gibt es $\\sqrt{\\cdot}$ nur für $x \\geq 0$ als Umkehrung.
-
-**Typischer Fehler:** Injektivität mit "Funktion" verwechseln — jede Funktion ist eindeutig in Vorwärtsrichtung, aber nicht jede ist injektiv (eindeutig rückwärts).`,
+**Typischer Fehler:** Injektivität mit dem Funktionsbegriff verwechseln — *jede* Funktion ist eindeutig in Vorwärtsrichtung (pro $x$ ein $y$), aber nicht jede ist eindeutig rückwärts.`,
     hints: [
       'Injektiv prüft: Gibt es zwei verschiedene $x_{1} \\neq x_{2}$ mit $f(x_{1}) = f(x_{2})$?',
       'Probiere Gegenbeispiele mit betragsgleichen, aber verschieden vorzeichigen Zahlen.',
       '$f(2) = 4$ — gibt es noch eine andere Zahl mit demselben Bild?',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['fkt-def'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 2, uses: ['injektiv'] },
 },
   'ex-alg-3-1-mastery': {
     id: 'ex-alg-3-1-mastery', lessonId: 'alg-3-1', type: 'multiple-choice', isMasteryCheck: true,
     question: '[PRÜFUNG] Welche Eigenschaft muss eine Funktion haben, damit ihre Umkehrfunktion (auf dem gesamten Wertebereich) existiert?',
     options: ['Stetig', 'Differenzierbar', 'Bijektiv (injektiv + surjektiv)', 'Monoton fallend'],
     correctIndex: 2,
-    explanation: `**Ansatz:** Umkehren heißt: zu jedem $y \\in W$ eindeutig das $x \\in D$ finden, das auf $y$ abbildet. Dafür braucht es beides — Existenz und Eindeutigkeit.
+    explanation: `**Ansatz:** Umkehren heißt: zu jedem $y \\in W$ eindeutig das $x \\in D$ finden, das auf $y$ abbildet. Dafür braucht es beides — Existenz und Eindeutigkeit der Rückrichtung.
 
-**Bedingung: Bijektivität.**
-- **Injektiv:** Verschiedene $x$ geben verschiedene $y$. Dann gibt es zu jedem $y$ höchstens ein $x$. (Eindeutigkeit der Rückwärtsrichtung.)
-- **Surjektiv:** Jedes $y$ im Zielbereich wird *wirklich* getroffen. (Damit man überhaupt etwas umkehren kann.)
+**Rechnung:** Bijektivität ist die exakte Bedingung. *Injektiv* heißt: verschiedene $x$ geben verschiedene $y$ — zu jedem $y$ gehört höchstens ein $x$. *Surjektiv* heißt: jedes $y$ im Zielbereich wird wirklich getroffen — zu jedem $y$ existiert mindestens ein $x$. Beides zusammen: zu jedem $y$ genau ein $x$, also umkehrbar.
 
-**Rechnung/Beispiel:** $f: \\mathbb{R} \\to \\mathbb{R}, f(x) = x^{3}$ ist bijektiv — Umkehrfunktion $f^{-1}(x) = \\sqrt[3]{x}$ existiert.
+**Probe:** $f: \\mathbb{R} \\to \\mathbb{R},\\, f(x) = x^{3}$ ist bijektiv — Umkehrung $f^{-1}(x) = \\sqrt[3]{x}$ existiert. Nicht-bijektive Funktionen wie $x^{2}$ oder $\\sin(x)$ werden erst durch Einschränkung des Definitionsbereichs umkehrbar (so entstehen $\\sqrt{x}$ auf $[0,\\infty)$ bzw. $\\arcsin$ auf $[-\\pi/2, \\pi/2]$).
 
-**Trick bei Einschränkung:** Nicht-bijektive Funktionen wie $x^{2}$ oder $\\sin(x)$ werden durch Einschränkung des Definitionsbereichs künstlich bijektiv gemacht — so entstehen $\\sqrt{x}$ (auf $[0, \\infty)$) und $\\arcsin(x)$ (auf $[-\\pi/2, \\pi/2]$).
-
-**Typischer Fehler:** Stetigkeit oder Differenzierbarkeit mit Umkehrbarkeit verwechseln — die garantieren keine Umkehrung (z.B. $\\sin(x)$ ist stetig und differenzierbar, aber nicht bijektiv auf $\\mathbb{R}$).`,
+**Typischer Fehler:** Stetigkeit oder Differenzierbarkeit mit Umkehrbarkeit verwechseln — $\\sin(x)$ ist stetig *und* differenzierbar, aber auf $\\mathbb{R}$ nicht bijektiv und damit nicht umkehrbar.`,
     wrongAnswerExplanations: {
       0: 'Stetigkeit reicht nicht für Umkehrbarkeit. $\\sin(x)$ und $x^{2}$ sind stetig auf $\\mathbb{R}$, aber nicht umkehrbar (nicht injektiv). Stetigkeit garantiert keine eindeutige Rückabbildung — dafür braucht es Injektivität und Surjektivität zusammen: Bijektivität.',
       1: 'Differenzierbarkeit ist ein *stärkeres* Kriterium als Stetigkeit, reicht aber ebenfalls nicht. $x^{2}$ und $\\sin(x)$ sind auf $\\mathbb{R}$ differenzierbar, aber nicht umkehrbar, weil sie nicht injektiv sind. Umkehrbarkeit ist eine mengentheoretische Eigenschaft, keine analytische.',
@@ -110,7 +100,7 @@ export const exercises_alg_u3 = {
       '(a) heißt surjektiv, (b) heißt injektiv — zusammen: bijektiv.',
       'Stetigkeit reicht *nicht*: $\\sin(x)$ ist stetig, aber nicht umkehrbar auf ganz $\\mathbb{R}$.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['fkt-def'] },
+      pedagogy: { stage: 'transfer', subGoal: 2, uses: ['bijektiv', 'injektiv', 'surjektiv'] },
 },
 
   // ── Lesson 2: Elementare Funktionen ──
