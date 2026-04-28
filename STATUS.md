@@ -102,8 +102,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2327 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1435 (62 %) | 100 % der Aufgaben | 🟡 |
+| Aufgaben (gesamt) | 2332 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1440 (62 %) | 100 % der Aufgaben | 🟡 |
 | MC mit wrongAnswerExplanations | 1066 / 1066 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
@@ -126,8 +126,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **580** (Lesson-Path: 112 · Goal-Tasks: 468)
-- 4-Block: 514/580 (89 %) 🟡
+- Aufgaben: **585** (Lesson-Path: 112 · Goal-Tasks: 473)
+- 4-Block: 519/585 (89 %) 🟡
 - MC-wAE: 266/266 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
@@ -175,7 +175,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `alg-0-1` Grundrechnen, Klammern & Vorrang | 4 | 4/4 | 31 | 10/12/5/2/2 | 31/31 | 10/10 | ✅ | — |
 | `alg-0-2` Bruchrechnen sicher | 4 | 4/4 | 31 | 12/10/5/1/3 | 31/31 | 12/12 | ✅ | — |
-| `alg-0-3` Prozent & Dreisatz | 5 | 5/5 | 32 | 11/11/6/3/1 | 32/32 | 11/11 | ✅ | — |
+| `alg-0-3` Prozent & Dreisatz | 5 | 5/5 | 37 | 11/16/6/3/1 | 37/37 | 11/11 | ✅ | — |
 | `alg-0-4` Termumformung & Gleichungen | 5 | 5/5 | 31 | 12/9/5/2/3 | 30/31 | 12/12 | ✅ | +1 4B |
 | `alg-1-1` Potenzgesetze | 4 | 4/4 | 26 | 13/8/4/1/0 | 23/26 | 13/13 | ✅ | +3 4B |
 | `alg-1-2` Wurzeln und gebrochene Exponenten | 3 | 3/3 | 21 | 9/6/4/1/1 | 17/21 | 9/9 | ✅ | +4 4B |
@@ -12186,59 +12186,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
-#### `alg-0-3` · Prozent & Dreisatz
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-0-2` → `bruch-erweitern`, `bruch-mult`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `prozent-def` — $p\%$ bedeutet $\dfrac{p}{100}$ (SG 0)
-  2. `prozent-grund` — Grundformel $W = G \cdot \tfrac{p}{100}$ und Umstellungen nach $G$ / $p$ ⇐ `prozent-def` (SG 0)
-  3. `wachstumsfaktor` — Wachstumsfaktor: $\pm p\%$ als $\times (1 \pm p/100)$ ⇐ `prozent-def` (SG 1)
-  4. `prozent-kette` — Zwei Änderungen in Folge multiplizieren sich (nicht addieren) ⇐ `wachstumsfaktor` (SG 2)
-  5. `direkt-prop` — Direkte Proportionalität: $x_1/y_1 = x_2/y_2$ (SG 3)
-  6. `indirekt-prop` — Indirekte Proportionalität: $x_1 y_1 = x_2 y_2$ ⇐ `direkt-prop` (SG 3)
-  7. `prozentpunkt` — Prozentpunkt vs. Prozent: Differenz vs. relativer Anstieg ⇐ `wachstumsfaktor` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `prozent-def`, `prozent-grund` · **6/5+** — Grundformel: $W = G \cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$
-  - ✅ [1] _hoch_ · Konzepte: `wachstumsfaktor` · **5/5+** — Wachstumsfaktor: $+p\% \to \times(1 + p/100)$, $-p\% \to \times(1 - p/100)$
-  - ✅ [2] _hoch_ · Konzepte: `prozent-kette` · **5/5+** — Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\%$ dann $-10\% \neq 0$)
-  - ✅ [3] _hoch_ · Konzepte: `direkt-prop`, `indirekt-prop` · **5/5+** — Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$
-  - ✅ [4] _mittel_ · Konzepte: `prozentpunkt` · **5/5+** — Prozentpunkt vs. Prozent: $15\%$ auf $10\%$ erhöht ist $11{,}5\%$, nicht $25\%$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `prozent-def` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `prozent-grund` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `prozent-grund` | 2 | 2 | ✅ | Einmal $W$, einmal $G$ oder $p$ gesucht |
-|  4 | 0 | error-analysis     | multiple-choice  | `prozent-grund` | 1 | 1 | ✅ | Distraktor: durch $p$ statt $p/100$ geteilt |
-|  5 | 0 | transfer           | matching         | `prozent-grund` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `wachstumsfaktor` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `wachstumsfaktor` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `wachstumsfaktor` | 1 | 1 | ✅ | Rabatt-Rechnung |
-|  9 | 1 | error-analysis     | multiple-choice  | `wachstumsfaktor` | 1 | 1 | ✅ | Distraktor: Differenz statt Faktor gerechnet |
-| 10 | 1 | transfer           | number-input     | `wachstumsfaktor` | 1 | 1 | ✅ | Rückrechnen vom Endpreis zum Grundpreis |
-| 11 | 2 | recognize          | true-false       | `prozent-kette` | 1 | 1 | ✅ | +10% dann −10% ergibt 100%? — falsch |
-| 12 | 2 | apply-guided       | multiple-choice  | `prozent-kette` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `prozent-kette` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `prozent-kette` | 1 | 1 | ✅ | Distraktor: Prozente addiert |
-| 15 | 2 | transfer           | sorting          | `prozent-kette`, `wachstumsfaktor` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | true-false       | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `direkt-prop` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `indirekt-prop` | 1 | 1 | ✅ | Pumpen-Typ-Dreisatz |
-| 19 | 3 | error-analysis     | multiple-choice  | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ | Distraktor: direkt statt indirekt gerechnet |
-| 20 | 3 | transfer           | matching         | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ | Situation ↔ Typ |
-| 21 | 4 | recognize          | true-false       | `prozentpunkt` | 1 | 1 | ✅ |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `prozentpunkt` | 1 | 1 | ✅ |  |
-| 23 | 4 | apply-independent  | number-input     | `prozentpunkt` | 1 | 1 | ✅ |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `prozentpunkt` | 1 | 1 | ✅ | Distraktor: Prozentpunkte addiert statt multipliziert |
-| 25 | 4 | transfer           | number-input     | `prozentpunkt`, `wachstumsfaktor` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-3': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
 #### `mech-1-5` · Schwerpunkt
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
@@ -13057,6 +13004,59 @@ npm run build              # abschließender End-zu-End-Check
 
 - **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-4-1': { 0: [...], 1: [...], ... }`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-4-1-a`, `ex-alg-4-1-b`, `ex-alg-4-1-d`, `ex-alg-4-1-e`, `ex-alg-4-1-f`, `ex-alg-4-1-g`, `ex-alg-4-1-h`, `ex-alg-4-1-i` … (+2 weitere)
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
+#### `alg-0-3` · Prozent & Dreisatz
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-0-2` → `bruch-erweitern`, `bruch-mult`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `prozent-def` — $p\%$ bedeutet $\dfrac{p}{100}$ (SG 0)
+  2. `prozent-grund` — Grundformel $W = G \cdot \tfrac{p}{100}$ und Umstellungen nach $G$ / $p$ ⇐ `prozent-def` (SG 0)
+  3. `wachstumsfaktor` — Wachstumsfaktor: $\pm p\%$ als $\times (1 \pm p/100)$ ⇐ `prozent-def` (SG 1)
+  4. `prozent-kette` — Zwei Änderungen in Folge multiplizieren sich (nicht addieren) ⇐ `wachstumsfaktor` (SG 2)
+  5. `direkt-prop` — Direkte Proportionalität: $x_1/y_1 = x_2/y_2$ (SG 3)
+  6. `indirekt-prop` — Indirekte Proportionalität: $x_1 y_1 = x_2 y_2$ ⇐ `direkt-prop` (SG 3)
+  7. `prozentpunkt` — Prozentpunkt vs. Prozent: Differenz vs. relativer Anstieg ⇐ `wachstumsfaktor` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `prozent-def`, `prozent-grund` · **7/5+** — Grundformel: $W = G \cdot p/100$, nach $G$: $G = 100 W/p$, nach $p$: $p = 100 W/G$
+  - ✅ [1] _hoch_ · Konzepte: `wachstumsfaktor` · **6/5+** — Wachstumsfaktor: $+p\% \to \times(1 + p/100)$, $-p\% \to \times(1 - p/100)$
+  - ✅ [2] _hoch_ · Konzepte: `prozent-kette` · **6/5+** — Zwei aufeinanderfolgende Änderungen multiplizieren sich, nicht addieren ($+10\%$ dann $-10\% \neq 0$)
+  - ✅ [3] _hoch_ · Konzepte: `direkt-prop`, `indirekt-prop` · **6/5+** — Direkt proportional: $x_1/y_1 = x_2/y_2$; indirekt: $x_1 y_1 = x_2 y_2$
+  - ✅ [4] _mittel_ · Konzepte: `prozentpunkt` · **6/5+** — Prozentpunkt vs. Prozent: $15\%$ auf $10\%$ erhöht ist $11{,}5\%$, nicht $25\%$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `prozent-def` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `prozent-grund` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `prozent-grund` | 2 | 3 | ✅ | Einmal $W$, einmal $G$ oder $p$ gesucht |
+|  4 | 0 | error-analysis     | multiple-choice  | `prozent-grund` | 1 | 1 | ✅ | Distraktor: durch $p$ statt $p/100$ geteilt |
+|  5 | 0 | transfer           | matching         | `prozent-grund` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `wachstumsfaktor` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `wachstumsfaktor` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `wachstumsfaktor` | 1 | 2 | ✅ | Rabatt-Rechnung |
+|  9 | 1 | error-analysis     | multiple-choice  | `wachstumsfaktor` | 1 | 1 | ✅ | Distraktor: Differenz statt Faktor gerechnet |
+| 10 | 1 | transfer           | number-input     | `wachstumsfaktor` | 1 | 1 | ✅ | Rückrechnen vom Endpreis zum Grundpreis |
+| 11 | 2 | recognize          | true-false       | `prozent-kette` | 1 | 1 | ✅ | +10% dann −10% ergibt 100%? — falsch |
+| 12 | 2 | apply-guided       | multiple-choice  | `prozent-kette` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `prozent-kette` | 1 | 2 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `prozent-kette` | 1 | 1 | ✅ | Distraktor: Prozente addiert |
+| 15 | 2 | transfer           | sorting          | `prozent-kette`, `wachstumsfaktor` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `direkt-prop` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `indirekt-prop` | 1 | 1 | ✅ | Pumpen-Typ-Dreisatz |
+| 19 | 3 | error-analysis     | multiple-choice  | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ | Distraktor: direkt statt indirekt gerechnet |
+| 20 | 3 | transfer           | matching         | `direkt-prop`, `indirekt-prop` | 1 | 1 | ✅ | Situation ↔ Typ |
+| 21 | 4 | recognize          | true-false       | `prozentpunkt` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `prozentpunkt` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `prozentpunkt` | 1 | 2 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `prozentpunkt` | 1 | 1 | ✅ | Distraktor: Prozentpunkte addiert statt multipliziert |
+| 25 | 4 | transfer           | number-input     | `prozentpunkt`, `wachstumsfaktor` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 

@@ -345,6 +345,7 @@ export const exercises_alg_u0 = {
     hints: [
       'Rechne an einem Beispielwert (z. B. 100) durch.',
       'Der zweite Prozentsatz bezieht sich auf den **neuen** Wert, nicht den ursprünglichen.',
+      'Algebraisch: $x \\cdot 1{,}2 \\cdot 0{,}8 = 0{,}96\\,x$ — also $4\\%$ unter Start.',
     ],
       pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['prozent-def'] },
 },
@@ -366,6 +367,7 @@ export const exercises_alg_u0 = {
 **Typischer Fehler:** Wachstumsfaktor mit $p/100$ verwechseln — der Faktor enthält zusätzlich die $1$ (bei Abnahme $1 - p/100$).`,
     hints: [
       'Grundformel $W = G \\cdot p/100$ — alle anderen Formen durch Umstellen.',
+      'Nach $G$ umstellen: $G = W \\cdot 100/p$. Nach $p$: $p = W \\cdot 100/G$.',
       'Wachstumsfaktor $= 1 + p/100$ (Zunahme) bzw. $1 - p/100$ (Abnahme).',
     ],
       pedagogy: { stage: 'transfer', subGoal: 0, uses: ['prozent-def'] },

@@ -1275,6 +1275,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['prozent-grund'] },
       ),
+      // Zusatz-Aufgabe SG 0: apply-independent · number-input · uses=[prozent-grund]
+      // Prozentsatz p gesucht — die seltenste Umstellung, kommt im Studium oft als „Anteil bestimmen" vor.
+      ni(
+        'In einer Stahllegierung von $640\\,\\text{kg}$ sind $48\\,\\text{kg}$ Chrom enthalten. Wie hoch ist der Chrom-Anteil in Prozent?',
+        7.5, 0.05, '%',
+        `**Ansatz:** Formel nach $p$ umstellen: $p = \\dfrac{W \\cdot 100}{G}$.
+
+**Rechnung:** $p = \\dfrac{48 \\cdot 100}{640} = \\dfrac{4800}{640} = 7{,}5$. Also $7{,}5\\,\\%$.
+
+**Probe:** $7{,}5\\%$ von $640\\,\\text{kg}$: $640 \\cdot 0{,}075 = 48\\,\\text{kg}$. ✓
+
+**Typischer Fehler:** Das $\\cdot 100$ vergessen: $48/640 = 0{,}075$ als Antwort hinschreiben, ohne in Prozent umzurechnen — die Antwort wäre dann der Dezimalanteil, nicht der Prozentsatz.`,
+        [
+          'Welche Größe ist gesucht — $W$, $G$ oder $p$?',
+          'Formel nach $p$ umstellen: $p = W \\cdot 100 / G$.',
+          'Probe: $p\\%$ von $640$ muss $48$ ergeben.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['prozent-grund'] },
+      ),
       // transfer · matching · uses=[prozent-grund]
       matching(
         'Ordne jeder Situation die korrekte Formel zu.',
@@ -1386,6 +1405,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['wachstumsfaktor'] },
       ),
+      // Zusatz-Aufgabe SG 1: apply-independent · number-input · uses=[wachstumsfaktor]
+      // Aufschlag (MwSt) statt Reduktion — testet Faktor (1+p/100) explizit, nicht (1-p/100).
+      ni(
+        'Auf einen Nettopreis von $250\\,€$ werden $20\\%$ Mehrwertsteuer aufgeschlagen. Brutto-Preis in €?',
+        300, 0, '',
+        `**Ansatz:** Aufschlag um $p\\%$ = Faktor $(1 + p/100)$.
+
+**Rechnung:** $1 + 20/100 = 1{,}20$. $250 \\cdot 1{,}20 = 300$.
+
+**Probe:** Differenz: $300 - 250 = 50$. $50/250 = 0{,}20 = 20\\%$. ✓
+
+**Typischer Fehler:** Den MwSt-Betrag $50\\,€$ als Brutto-Preis lesen — der ist nur der Aufschlag, der Brutto-Preis ist $\\text{Netto} + \\text{MwSt}$.`,
+        [
+          'Aufschlag um $p\\%$ = Faktor $(1 + p/100)$.',
+          '$1 + 0{,}20 = 1{,}20$.',
+          '$250 \\cdot 1{,}20 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['wachstumsfaktor'] },
+      ),
       ni(
         'Nach einer Preissenkung von $25\\%$ kostet ein Gerät $450\\,€$. Ursprungspreis in €?',
         600, 0, '',
@@ -1485,6 +1523,25 @@ export const algebraSubGoalTasks = {
           3: '$90\\%$ wäre nur die Senkung auf das Original angewandt — die vorherige Erhöhung wurde vergessen.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['prozent-kette'] },
+      ),
+      // Zusatz-Aufgabe SG 2: apply-independent · number-input · uses=[prozent-kette, wachstumsfaktor]
+      // Drei Änderungen in Folge — Verallgemeinerung der 2-Schritt-Kette auf n Schritte.
+      ni(
+        'Eine Aktie verliert in drei Quartalen jeweils $4\\%$. Welcher Anteil (in Prozent, eine Dezimalstelle) bleibt vom Ausgangskurs übrig?',
+        88.5, 0.1, '%',
+        `**Ansatz:** Drei aufeinanderfolgende Änderungen $\\to$ Faktoren multiplizieren.
+
+**Rechnung:** Jeder Faktor: $1 - 0{,}04 = 0{,}96$. Gesamt: $0{,}96^3 = 0{,}884736 \\approx 0{,}885 = 88{,}5\\%$.
+
+**Probe:** Schrittweise: $100 \\to 96 \\to 92{,}16 \\to 88{,}47$. Anteil $88{,}47/100 \\approx 88{,}5\\%$. ✓
+
+**Typischer Fehler:** $3 \\cdot 4\\% = 12\\%$ Verlust annehmen → $88\\%$ — der wahre Verlust ist etwas kleiner als die Summe, weil jeder Folge-Verlust auf einen kleineren Bezugswert wirkt.`,
+        [
+          'Drei Quartale = drei Faktoren multiplizieren.',
+          'Jeder Faktor: $1 - 0{,}04 = 0{,}96$.',
+          '$0{,}96 \\cdot 0{,}96 \\cdot 0{,}96 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['prozent-kette', 'wachstumsfaktor'] },
       ),
       sorting(
         'Bringe die Schritte zur Berechnung von "Preis $200\\,€$, zuerst $+15\\%$ dann $-10\\%$" in die richtige Reihenfolge.',
@@ -1596,11 +1653,30 @@ export const algebraSubGoalTasks = {
           'Doppelte Rohre → halbe Zeit.',
         ],
         {
-          0: 'Die Antwort ist in Option 2 präziser formuliert: direkt statt indirekt.',
+          0: 'Diese Antwort beschreibt das Symptom („Tautologie"), trifft aber nicht den Konzeptfehler. Der eigentliche Fehler ist die Verwechslung direkt ↔ indirekt — siehe Vergleichsantwort.',
           2: 'Die Antwort $12\\,\\text{h}$ ist falsch. Doppelte Rohre müssen es schneller schaffen, nicht gleich lang.',
-          3: 'Die Zahl der Rohre $3$ und $6$ ist nicht das Problem.',
+          3: 'Die Zahl der Rohre $3$ und $6$ ist nicht das Problem — die Anwendung der Proportionalitätsformel ist es.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['direkt-prop', 'indirekt-prop'] },
+      ),
+      // Zusatz-Aufgabe SG 3: apply-independent · number-input · uses=[direkt-prop]
+      // Direkter Dreisatz mit nicht-runden Zahlen — testet sauberes Aufstellen der Proportion.
+      ni(
+        'Ein Auto verbraucht $42\\,\\text{L}$ Diesel auf $560\\,\\text{km}$. Wie viel verbraucht es auf $750\\,\\text{km}$ (in L, eine Dezimalstelle)?',
+        56.3, 0.05, 'L',
+        `**Ansatz:** Direkt proportional: längere Strecke $\\to$ mehr Verbrauch. Verhältnis $V/s$ konstant.
+
+**Rechnung:** $\\dfrac{42}{560} = \\dfrac{V_2}{750}$. Also $V_2 = \\dfrac{42 \\cdot 750}{560} = \\dfrac{31\\,500}{560} = 56{,}25\\,\\text{L} \\approx 56{,}3\\,\\text{L}$.
+
+**Probe:** Verbrauch pro km: $42/560 = 0{,}075\\,\\text{L/km}$. Auf $750\\,\\text{km}$: $750 \\cdot 0{,}075 = 56{,}25\\,\\text{L}$. ✓
+
+**Typischer Fehler:** Indirekt rechnen ($42 \\cdot 560 / 750 = 31{,}4\\,\\text{L}$) — funktioniert nur bei Größen wie „Pumpen × Zeit", nicht bei „Verbrauch × Strecke".`,
+        [
+          'Mehr km → mehr Verbrauch: direkt proportional.',
+          'Verhältnis $V/s$ konstant: $42/560 = V_2/750$.',
+          'Oder Stückwert: $V$ pro km berechnen, dann $\\times 750$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['direkt-prop'] },
       ),
       matching(
         'Ordne jeder Situation den Proportionalitätstyp zu.',
@@ -1720,6 +1796,25 @@ export const algebraSubGoalTasks = {
           3: '$60\\%$ wäre der Ausgangswert, nicht der Anstieg.',
         },
         { stage: 'error-analysis', subGoal: 4, uses: ['prozentpunkt'] },
+      ),
+      // Zusatz-Aufgabe SG 4: apply-independent · number-input · uses=[prozentpunkt]
+      // Rückwärts: aus relativer Änderung den absoluten Endwert in Prozentpunkten berechnen.
+      ni(
+        'Ein Aktien-Anteil von ursprünglich $40\\%$ steigt um $25\\%$ (relativ). Wie hoch ist der neue Anteil in Prozent?',
+        50, 0.05, '%',
+        `**Ansatz:** Relative Erhöhung $25\\%$ wirkt auf den Ausgangswert $40\\%$. Also Wachstumsfaktor $\\times 1{,}25$ — Ergebnis bleibt aber eine Prozentzahl (kein Doppelprozent).
+
+**Rechnung:** $40 \\cdot 1{,}25 = 50$. Neuer Anteil: $50\\,\\%$. Absolut: $+10$ Prozentpunkte.
+
+**Probe:** $50/40 = 1{,}25$ — relative Erhöhung um $25\\%$. ✓ Differenz $50 - 40 = 10$ Prozentpunkte.
+
+**Typischer Fehler:** $40\\% + 25\\% = 65\\%$ rechnen — vermischt Prozentpunkte (additiv) mit Prozent (multiplikativ).`,
+        [
+          'Relative Erhöhung wirkt auf den Ausgangswert.',
+          'Wachstumsfaktor $1{,}25$ angewandt auf $40$.',
+          'Antwort bleibt in Prozenteinheiten — Aktien-Anteil.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['prozentpunkt', 'wachstumsfaktor'] },
       ),
       ni(
         'Ein Rabatt wird von $12\\%$ auf $18\\%$ erhöht. Um wie viele Prozent (relativ, auf eine Dezimalstelle) ist der RABATT-Satz gewachsen?',
