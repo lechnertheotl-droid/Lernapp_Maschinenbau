@@ -7707,9 +7707,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Grenzwert $\\neq$ Wert.',
         ],
         {
-          1: 'Exponentialfunktion ist für alle $x$ definiert.',
-          2: 'Zahlentest widerlegt.',
-          3: '$x = -\\infty$ ist keine Zahl.',
+          1: 'Doch — $2^x$ ist für *alle* reellen $x$ definiert (auch für sehr negative). Das eigentliche Problem ist nicht der Definitionsbereich, sondern die Verwechslung von Grenzwert und erreichtem Wert: $2^x$ wird beliebig klein, aber nie gleich $0$.',
+          2: 'Der Schüler liegt nicht richtig. Konkret: $2^{-10} = 1/1024 \\approx 9{,}8 \\cdot 10^{-4}$, also positiv. Egal wie klein $x$ wird, $2^x$ bleibt strikt $> 0$ — das ist gerade die definierende Eigenschaft des Wertebereichs $(0, \\infty)$.',
+          3: '$-\\infty$ ist keine reelle Zahl, sondern nur ein Symbol für „beliebig klein". Daher ist $2^{-\\infty}$ kein einsetzbarer Wert — gemeint ist der Grenzwert $\\lim_{x \\to -\\infty} 2^x = 0$. Aber Grenzwert $\\neq$ erreichter Funktionswert.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['exp-fkt'] },
       ),
@@ -7817,9 +7817,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Existenz vor Berechnung.',
         ],
         {
-          1: 'Dasselbe Problem.',
-          2: 'Zahlentest widerlegt.',
-          3: '$\\log$ ist nicht linear (keine Distributivität).',
+          1: '$\\log(5) \\cdot (-1) = -\\log(5) \\approx -0{,}7$ ist eine berechenbare Zahl — aber das ändert nichts daran, dass $\\log(-5)$ in $\\mathbb{R}$ schlicht *nicht definiert* ist. Es gibt kein reelles $y$ mit $10^{y} = -5$, weil $10^{y} > 0$ für alle $y$.',
+          2: 'Doch, der Schüler liegt falsch. $\\log(-5) = -\\log(5)$ würde gelten, wenn $\\log$ irgendeine Vorzeichen-Symmetrie hätte — hat es aber nicht. $\\log$ ist auf $(0, \\infty)$ definiert, negative Argumente sind außerhalb des Definitionsbereichs.',
+          3: 'Das stimmt zwar als allgemeine Beobachtung ($\\log(a + b) \\neq \\log a + \\log b$), trifft aber nicht den Kernfehler. Hier ist das Problem nicht Linearität, sondern dass $\\log$ auf negativen Argumenten überhaupt nicht definiert ist.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['log-fkt'] },
       ),
@@ -7917,9 +7917,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Auch bei kleiner Basis.',
         ],
         {
-          1: 'Polynom wird letztendlich überholt.',
-          2: 'Ungleich in asymptotischem Verhalten.',
-          3: 'Hängt von $x$ ab, aber Exp gewinnt letztendlich.',
+          1: 'Auch $x^{1000}$ wird auf lange Sicht von $1{,}01^x$ überholt — das ist die Aussage der Wachstumshierarchie. $\\lim_{x \\to \\infty} x^{1000} / 1{,}01^x = 0$ gilt für *jeden* festen Polynomgrad, weil das Exponential-Wachstum $e^{x \\ln 1{,}01}$ jede Potenz schlägt.',
+          2: 'Beide wachsen *nicht* gleich — das wäre nur der Fall, wenn der Quotient gegen eine endliche Konstante $\\neq 0$ konvergiert. Hier geht der Quotient $x^{1000} / 1{,}01^x \\to 0$, also wächst $1{,}01^x$ asymptotisch *strikt schneller*.',
+          3: '„Hängt von $x$ ab" verfehlt das Asymptotische: für *kleine* $x$ ist $x^{1000}$ tatsächlich riesig im Vergleich zu $1{,}01^x \\approx 1$, aber gefragt ist das Verhalten für $x \\to \\infty$. Dort gewinnt das Exponential — eindeutig und nicht situationsabhängig.',
         },
         { stage: 'apply-independent', subGoal: 3, uses: ['wachstum-hierarchie'] },
       ),
@@ -7945,9 +7945,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Zahlentest bei $x = 100$.',
         ],
         {
-          1: 'Zahlentest widerlegt.',
-          2: 'Wachstumsraten unterschiedlich.',
-          3: 'Asymptotisch eindeutig.',
+          1: 'Der Schüler liegt falsch — und zwar deutlich. Bei $x = 100$ ist $e^{100} \\approx 2{,}7 \\cdot 10^{43}$, während $100^2 = 10^4$. Schon für moderat große $x$ ist $e^x$ um Größenordnungen größer als $x^2$.',
+          2: 'Beide wachsen nicht gleich: $e^x / x^2 \\to \\infty$ (Beweis z. B. mit zweimaliger Anwendung von l\'Hospital). Sie haben strukturell verschiedenes Wachstum — Exponential schlägt Polynom asymptotisch immer.',
+          3: 'Die Wachstumshierarchie hängt *nicht* vom Bereich ab — sie gilt asymptotisch für $x \\to \\infty$. Für kleine $x$ kann ein Polynom kurzzeitig größer sein (z. B. $x^2$ vs $e^x$ schneiden sich bei $x \\approx 1{,}48$), aber ab da überholt $e^x$ und kommt nie wieder zurück.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['wachstum-hierarchie'] },
       ),
@@ -8057,31 +8057,31 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Ergibt $x$.',
         ],
         {
-          1: 'Doch — das ergibt dasselbe: $2 \\cdot 1 = 2$. Die Fehler-Antwort ist $e^2$.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Unsinnige Formel.',
+          1: '$2 \\ln e = 2 \\cdot 1 = 2$ — das ist mathematisch korrekt und ergibt dasselbe wie die Umkehr-Identität. Der eigentliche Fehler des Schülers ist aber, dass er $\\ln(e^2) = e^2$ schreibt — also $\\ln$ wirkungslos lässt. Beide Wege ($\\ln(e^x) = x$ direkt, oder Log-Gesetz) führen zu $2$, nie zu $e^2$.',
+          2: 'Der Schüler liegt falsch. Probe: $\\ln(e^2) = 2 \\approx 2{,}00$, aber er behauptet $e^2 \\approx 7{,}39$. Das sind komplett verschiedene Werte. Die Identität $\\ln(e^y) = y$ vereinfacht den Ausdruck zu $2$.',
+          3: '$\\ln(e^2) = e^2 \\cdot 2$ ist keine bekannte Regel und ergibt $\\approx 14{,}78$ — weder das richtige Ergebnis $2$ noch der Schülerfehler $e^2$. Vermutlich Verwechslung mit dem Log-Gesetz $\\ln(a^b) = b \\ln a$, falsch angewandt.',
         },
         { stage: 'error-analysis', subGoal: 4, uses: ['euler-zahl'] },
       ),
       matching(
-        'Ordne jeder Eigenschaft von $e^x$ ihre Beschreibung zu.',
+        'Ordne jeder Aussage über $e^x$ die passende verbale Beschreibung zu.',
         [
-          { left: '$(e^x)\' = e^x$',           right: 'Ableitung gleicht der Funktion' },
-          { left: '$\\int e^x dx = e^x + C$',  right: 'Stammfunktion gleicht der Funktion' },
-          { left: '$e^x > 0$',                  right: 'immer positiv' },
-          { left: '$\\lim_{x \\to \\infty} e^x = \\infty$', right: 'streng monoton wachsend' },
+          { left: '$(e^x)\' = e^x$',                              right: 'Ableitung gleicht der Funktion' },
+          { left: '$\\int e^x \\, dx = e^x + C$',                  right: 'Stammfunktion gleicht der Funktion' },
+          { left: '$e^x > 0$ für alle $x$',                        right: 'Wertebereich $(0, \\infty)$' },
+          { left: '$\\lim_{x \\to \\infty} e^x = \\infty$',         right: 'unbeschränktes Wachstum nach rechts' },
         ],
-        `**Ansatz:** Schlüsseleigenschaften von $e^x$.
+        `**Ansatz:** Vier Schlüssel-Eigenschaften von $e^x$ präzise verbalisieren — Ableitung, Stammfunktion, Wertebereich, asymptotisches Verhalten.
 
-**Rechnung:** Einzigartig bei $e^x$: Ableitung und Stammfunktion sind gleich.
+**Rechnung:** $(e^x)' = e^x$ und $\\int e^x dx = e^x + C$ sind die einzigartige Eigenschaft, die $e^x$ unter allen Exponentialfunktionen auszeichnet (für $a^x$ gilt nur $(a^x)' = a^x \\ln a$). $e^x > 0$ folgt aus der Definition als Umkehrung von $\\ln$, deren Argument positiv sein muss. $\\lim_{x\\to\\infty} e^x = \\infty$ beschreibt das Verhalten nach rechts.
 
-**Probe:** Standard-Eigenschaften.
+**Probe:** Ableitung von $e^x$ an $x=0$: $1 = e^0$ ✓. Bei $x = -10$: $e^{-10} \\approx 4{,}5 \\cdot 10^{-5} > 0$ ✓. $e^{10} \\approx 22\\,026$ — wächst über alle Schranken.
 
-**Typischer Fehler:** Mit anderen Exponentialfunktionen verwechseln.`,
+**Typischer Fehler:** Die Eigenschaft $(e^x)' = e^x$ auf andere Exponentialfunktionen $a^x$ übertragen — dort kommt der Faktor $\\ln a$ ins Spiel.`,
         [
-          'Besondere Eigenschaft: Ableitung gleich Funktion.',
-          'Positivität, Monotonie.',
-          'Grund für die Bedeutung in Analysis.',
+          'Was ist die Ableitung von $e^x$?',
+          'Was ist die Stammfunktion?',
+          'Welcher Wertebereich, welches asymptotische Verhalten?',
         ],
         { stage: 'transfer', subGoal: 4, uses: ['euler-zahl'] },
       ),
@@ -8127,9 +8127,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Langsames Wachstum.',
         ],
         {
-          1: 'Parabel ist $y = x^2$.',
-          2: 'Keine Gerade.',
-          3: 'Hyperbel ist $y = 1/x$.',
+          1: 'Eine Parabel ist der Graph von $y = x^2$ (öffnet sich nach oben/unten, definiert für alle reellen $x$). $\\sqrt{x}$ ist hingegen die Umkehrfunktion und nur für $x \\geq 0$ definiert — der Graph ist eine *halbe* liegende Parabel im ersten Quadranten.',
+          2: 'Eine Gerade hätte konstante Steigung — $\\sqrt{x}$ wird aber immer flacher: zwischen $x=0$ und $x=1$ steigt sie um $1$, zwischen $x=1$ und $x=4$ nur um $1$ (auf $3$ Einheiten), zwischen $x=4$ und $x=9$ wieder nur um $1$ (auf $5$ Einheiten). Linear ist das nicht.',
+          3: 'Eine Hyperbel ist $y = 1/x$ und hat zwei getrennte Äste mit Polstelle bei $x = 0$. $\\sqrt{x}$ hat dagegen einen einzigen, durchgehenden Ast, der im Ursprung startet und nach rechts unbegrenzt wächst.',
         },
         { stage: 'apply-guided', subGoal: 5, uses: ['wurzel-fkt'] },
       ),
@@ -8179,24 +8179,24 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
         { stage: 'error-analysis', subGoal: 5, uses: ['wurzel-fkt'] },
       ),
       matching(
-        'Ordne jeder Wurzelart ihren Definitionsbereich zu.',
+        'Ordne jeder Wurzel-Berechnung das richtige Ergebnis zu.',
         [
-          { left: '$\\sqrt{x}$ (Quadratwurzel)',   right: '$x \\geq 0$' },
-          { left: '$\\sqrt[3]{x}$ (Kubikwurzel)',  right: '$x \\in \\mathbb{R}$' },
-          { left: '$\\sqrt[4]{x}$',                right: '$x \\geq 0$' },
-          { left: '$\\sqrt[5]{x}$',                right: '$x \\in \\mathbb{R}$' },
+          { left: '$\\sqrt{36}$',                right: '$6$' },
+          { left: '$\\sqrt[3]{-27}$',            right: '$-3$' },
+          { left: '$\\sqrt[4]{16}$',             right: '$2$' },
+          { left: '$\\sqrt{0{,}25}$',            right: '$0{,}5$' },
         ],
-        `**Ansatz:** Gerade Wurzel braucht $\\geq 0$; ungerade akzeptiert auch negativ.
+        `**Ansatz:** Gerade Wurzeln liefern den nicht-negativen Hauptwert; ungerade Wurzeln dürfen auch negative Argumente haben und behalten dabei das Vorzeichen.
 
-**Rechnung:** $\\sqrt[n]{-x}$ in $\\mathbb{R}$ nur für ungerade $n$.
+**Rechnung:** $\\sqrt{36} = 6$ (denn $6^{2} = 36$). $\\sqrt[3]{-27} = -3$ (denn $(-3)^{3} = -27$, und Kubikwurzeln sind in $\\mathbb{R}$ überall definiert). $\\sqrt[4]{16} = 2$ (denn $2^{4} = 16$, und nur der positive Wert ist Hauptwert). $\\sqrt{0{,}25} = 0{,}5$ (denn $0{,}5^{2} = 0{,}25$).
 
-**Probe:** $\\sqrt[3]{-8} = -2$; $\\sqrt[4]{-8}$ nicht definiert.
+**Probe:** Jeweils Ergebnis hoch Wurzelexponent zurückrechnen — alle vier ergeben das Argument.
 
-**Typischer Fehler:** Alle Wurzeln gleich behandeln.`,
+**Typischer Fehler:** Bei geraden Wurzeln das Minus vergessen — $\\sqrt{36} = \\pm 6$ ist falsch (Wurzelfunktion ist eindeutig); bei ungeraden Wurzeln den negativen Ast streichen ($\\sqrt[3]{-27}$ ist sehr wohl definiert).`,
         [
-          'Gerade Wurzel: $\\geq 0$.',
-          'Ungerade Wurzel: alle reellen Zahlen.',
-          'Parität entscheidet.',
+          'Gerade Wurzel: nur nicht-negativer Hauptwert.',
+          'Ungerade Wurzel: behält Vorzeichen des Arguments.',
+          'Probe: Ergebnis hoch Wurzelexponent = Argument.',
         ],
         { stage: 'transfer', subGoal: 5, uses: ['wurzel-fkt'] },
       ),

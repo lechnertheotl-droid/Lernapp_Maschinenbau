@@ -103,7 +103,7 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
 | Aufgaben (gesamt) | 2372 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1506 (63 %) | 100 % der Aufgaben | 🟡 |
+| Aufgaben mit 4-Block | 1511 (64 %) | 100 % der Aufgaben | 🟡 |
 | MC mit wrongAnswerExplanations | 1072 / 1072 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
@@ -127,7 +127,7 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
 - Aufgaben: **625** (Lesson-Path: 112 · Goal-Tasks: 513)
-- 4-Block: 585/625 (94 %) 🟡
+- 4-Block: 590/625 (94 %) 🟡
 - MC-wAE: 272/272 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
@@ -185,7 +185,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | `alg-2-3` Polynomgleichungen & Polynomdivision | 6 | 6/6 | 41 | 18/12/6/3/2 | 41/41 | 18/18 | ✅ | — |
 | `alg-2-4` Ungleichungen | 6 | 6/6 | 35 | 18/5/5/4/3 | 35/35 | 18/18 | ✅ | — |
 | `alg-3-1` Funktionsbegriff | 3 | 3/3 | 20 | 13/0/4/3/0 | 20/20 | 13/13 | ✅ | — |
-| `alg-3-2` Elementare Funktionen | 6 | 6/6 | 36 | 18/4/5/8/1 | 31/36 | 18/18 | ✅ | +5 4B |
+| `alg-3-2` Elementare Funktionen | 6 | 6/6 | 36 | 18/4/5/8/1 | 36/36 | 18/18 | ✅ | — |
 | `alg-3-3` Funktionsoperationen | 6 | 6/6 | 34 | 20/2/5/6/1 | 32/34 | 20/20 | ✅ | +2 4B |
 | `alg-3-4` Umkehrfunktionen | 6 | 6/6 | 35 | 19/5/7/3/1 | 32/35 | 19/19 | ✅ | +3 4B |
 | `alg-4-1` Prüfung: Algebra-Grundlagen | 5 | 5/5 | 36 | 17/5/7/3/4 | 26/36 | 17/17 | ✅ | +10 4B |
@@ -11351,7 +11351,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 32 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 31 Lessons
 
 #### `alg-1-2` · Wurzeln und gebrochene Exponenten
 
@@ -12629,68 +12629,6 @@ npm run build              # abschließender End-zu-End-Check
 
 - **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-4': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
-#### `alg-3-2` · Elementare Funktionen
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-3-1` → `fkt-def`, `def-bereich`, `wertebereich`
-  - `alg-1-1` → `pot-potenz`
-  - `alg-1-2` → `wurzel-bruchpot`
-  - `alg-1-3` → `log-def`, `log-umkehr`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `potenz-fkt` — Potenzfunktion $f(x)=x^n$: Symmetrie je nach gerade/ungerade $n$ (SG 0)
-  2. `exp-fkt` — Exponentialfunktion $f(x)=a^x$ ($a>0, a\neq 1$): $W = (0,\infty)$ (SG 1)
-  3. `log-fkt` — Logarithmusfunktion $f(x)=\log_a x$: $D = (0,\infty)$ ⇐ `exp-fkt` (SG 2)
-  4. `wurzel-fkt` — Wurzelfunktion $f(x)=\sqrt x$: $D = [0,\infty)$ (SG 5)
-  5. `euler-zahl` — $e \approx 2{,}718$ als Basis des natürlichen Logarithmus ⇐ `exp-fkt` (SG 4)
-  6. `wachstum-hierarchie` — Wachstumshierarchie $\ln x \ll x^n \ll a^x$ für $x \to \infty$ ⇐ `potenz-fkt`, `exp-fkt`, `log-fkt` (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `potenz-fkt` · **5/5+** — Potenzfunktion $x^n$: gerade $n$ → Parabel, ungerade $n$ → S-Form; Def.bereich $\mathbb{R}$
-  - ✅ [1] _hoch_ · Konzepte: `exp-fkt` · **5/5+** — Exponentialfunktion $a^x$ ($a>0, a\neq 1$): Wertebereich $(0,\infty)$, streng monoton
-  - ✅ [2] _hoch_ · Konzepte: `log-fkt` · **5/5+** — Logarithmusfunktion $\log_a x$: Def.bereich $(0,\infty)$, Umkehrung von $a^x$
-  - ✅ [3] _hoch_ · Konzepte: `wachstum-hierarchie` · **5/5+** — Wachstumshierarchie: $\ln x \ll x^n \ll a^x$ für $x \to \infty$ (mit $a > 1$)
-  - ✅ [4] _mittel_ · Konzepte: `euler-zahl` · **5/5+** — Eulersche Zahl $e \approx 2{,}718$: Basis des natürlichen Logarithmus
-  - ✅ [5] _mittel_ · Konzepte: `wurzel-fkt` · **5/5+** — Wurzelfunktion $\sqrt{x} = x^{1/2}$: Def.bereich $[0,\infty)$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `potenz-fkt` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `potenz-fkt` | 1 | 2 | ✅ |  |
-|  3 | 0 | apply-independent  | matching         | `potenz-fkt` | 1 | 1 | ✅ | Graph ↔ $x^n$ |
-|  4 | 0 | error-analysis     | multiple-choice  | `potenz-fkt` | 1 | 2 | ✅ |  |
-|  5 | 0 | transfer           | matching         | `potenz-fkt` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `exp-fkt` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `exp-fkt` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `exp-fkt` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `exp-fkt` | 1 | 1 | ✅ | Distraktor: $a^x$ kann $0$ sein |
-| 10 | 1 | transfer           | matching         | `exp-fkt` | 1 | 1 | ✅ |  |
-| 11 | 2 | recognize          | true-false       | `log-fkt` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `log-fkt` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `log-fkt` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `log-fkt` | 1 | 1 | ✅ |  |
-| 15 | 2 | transfer           | matching         | `log-fkt`, `exp-fkt` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | matching         | `wachstum-hierarchie` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `wachstum-hierarchie` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `wachstum-hierarchie` | 1 | 1 | ✅ |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `wachstum-hierarchie` | 1 | 1 | ✅ |  |
-| 20 | 3 | transfer           | sorting          | `wachstum-hierarchie` | 1 | 1 | ✅ |  |
-| 21 | 4 | recognize          | true-false       | `euler-zahl` | 1 | 1 | ✅ |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `euler-zahl` | 1 | 1 | ✅ |  |
-| 23 | 4 | apply-independent  | number-input     | `euler-zahl` | 1 | 1 | ✅ |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `euler-zahl` | 1 | 1 | ✅ |  |
-| 25 | 4 | transfer           | matching         | `euler-zahl` | 1 | 1 | ✅ |  |
-| 26 | 5 | recognize          | true-false       | `wurzel-fkt` | 1 | 1 | ✅ |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `wurzel-fkt` | 1 | 1 | ✅ |  |
-| 28 | 5 | apply-independent  | number-input     | `wurzel-fkt` | 1 | 1 | ✅ |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `wurzel-fkt` | 1 | 1 | ✅ |  |
-| 30 | 5 | transfer           | matching         | `wurzel-fkt` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-3-2': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-3-2-a`, `ex-alg-3-2-b`, `ex-alg-3-2-c`, `ex-alg-3-2-d`, `ex-alg-3-2-e`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-4-1` · Prüfung: Algebra-Grundlagen

@@ -113,17 +113,13 @@ export const exercises_alg_u3 = {
       { left: '$f(x) = \\ln(x)$', right: 'Logarithmusfunktion' },
       { left: '$f(x) = \\sin(x)$', right: 'Trigonometrische Funktion' },
     ],
-    explanation: `**Ansatz:** Unterscheidungsmerkmal ist die *Position der Variablen $x$* in der Formel.
+    explanation: `**Ansatz:** Unterscheidungsmerkmal ist die *Position der Variablen $x$* in der Formel — Basis, Exponent, oder als Argument einer trigonometrischen Funktion.
 
-**Die vier Grundtypen:**
-- **Potenzfunktion $x^{n}$:** $x$ in der **Basis**, Exponent $n$ ist konstant. Beispiel: $x^{2}, x^{3}, x^{-1}, x^{1/2}$.
-- **Exponentialfunktion $a^{x}$:** $x$ im **Exponenten**, Basis $a > 0$ ist konstant. Beispiel: $2^{x}, e^{x}, 10^{x}$.
-- **Logarithmusfunktion $\\log_{a}(x)$:** Umkehrung der Exponentialfunktion. Beispiel: $\\ln(x), \\log_{10}(x)$.
-- **Trigonometrische Funktion:** $\\sin, \\cos, \\tan$ und ihre Umkehrungen — periodisch.
+**Rechnung:** *Potenzfunktion $x^{n}$* — $x$ in der **Basis**, Exponent $n$ konstant ($x^{2}, x^{3}, x^{-1}, x^{1/2}$). *Exponentialfunktion $a^{x}$* — $x$ im **Exponenten**, Basis $a > 0$ konstant ($2^{x}, e^{x}, 10^{x}$). *Logarithmusfunktion $\\log_{a}(x)$* — Umkehrung der Exponentialfunktion ($\\ln(x), \\log_{10}(x)$). *Trigonometrische Funktion* — $\\sin, \\cos, \\tan$ und Umkehrungen, periodisch. Wachstumshierarchie für $x \\to \\infty$: $\\ln(x) \\ll x^{n} \\ll a^{x}$.
 
-**Typischer Fehler:** $x^{2}$ und $2^{x}$ verwechseln — völlig unterschiedliches Wachstum! $x^{2}$ ist polynomial, $2^{x}$ exponentiell.
+**Probe:** $x^{2}$ ist Potenzfunktion (Variable in Basis), $2^{x}$ ist Exponentialfunktion (Variable im Exponenten) — bei $x = 10$: $x^{2} = 100$, $2^{x} = 1024$. Komplett anderes Wachstum.
 
-**Hierarchie für große $x$:** $\\ln(x) \\ll x^{n} \\ll a^{x}$.`,
+**Typischer Fehler:** $x^{2}$ und $2^{x}$ verwechseln — beides hat $x$ und $2$, aber polynomiales und exponentielles Wachstum unterscheiden sich um Größenordnungen.`,
     hints: [
       'Sieh genau hin: Steht $x$ *unten* (in der Basis) oder *oben* (im Exponenten)?',
       '$x^{n}$ = Potenz, $a^{x}$ = Exponential. $\\log$ ist die Umkehrung von $a^{x}$.',
@@ -141,17 +137,13 @@ export const exercises_alg_u3 = {
       '$f$ hat eine Nullstelle bei $x = 0$',
     ],
     correctIndex: 3,
-    explanation: `**Ansatz:** Die Exponentialfunktion $e^{x}$ hat charakteristische Eigenschaften, die man auswendig kennen muss.
+    explanation: `**Ansatz:** Jede Aussage einzeln gegen die Standard-Eigenschaften von $e^{x}$ prüfen — gefragt ist die *falsche* Aussage.
 
-**Prüfen aller Aussagen:**
-- A: $e^{x} > 0$ für alle reellen $x$ — **richtig** (Wertebereich $(0, \\infty)$).
-- B: $f(0) = e^{0} = 1$ — **richtig** (Potenzgesetz $a^{0} = 1$).
-- C: Streng monoton steigend, da $f'(x) = e^{x} > 0$ — **richtig**.
-- D: Nullstelle bei $x = 0$? $f(0) = 1 \\neq 0$ — **falsch**! $e^{x}$ hat **überhaupt keine** Nullstelle, weil $e^{x} > 0$ stets gilt.
+**Rechnung:** A — $e^{x} > 0$ für alle reellen $x$ ist *richtig* (Wertebereich $(0, \\infty)$). B — $f(0) = e^{0} = 1$ ist *richtig* (Potenzgesetz $a^{0} = 1$). C — streng monoton steigend, da $f'(x) = e^{x} > 0$ überall, ist *richtig*. D — Nullstelle bei $x = 0$? $f(0) = 1 \\neq 0$, also *falsch*. $e^{x}$ hat überhaupt keine Nullstelle, weil $e^{x} > 0$ stets gilt.
 
-**Grafisch:** Der Graph von $e^{x}$ liegt komplett über der $x$-Achse, nähert sich ihr für $x \\to -\\infty$ asymptotisch ($\\lim_{x \\to -\\infty} e^{x} = 0$), berührt sie aber nie.
+**Probe:** Der Graph von $e^{x}$ liegt komplett über der $x$-Achse und nähert sich ihr für $x \\to -\\infty$ asymptotisch ($\\lim_{x \\to -\\infty} e^{x} = 0$), berührt sie aber nie. Schnittpunkt mit der $y$-Achse: $(0, 1)$ — Schnittpunkt mit der $x$-Achse: keiner.
 
-**Typischer Fehler:** Die Nullstelle mit dem $y$-Achsenabschnitt verwechseln — der *Schnittpunkt mit der y-Achse* ist bei $y = 1$, aber der Schnittpunkt mit der $x$-Achse (Nullstelle) existiert *nicht*.`,
+**Typischer Fehler:** Die Nullstelle mit dem $y$-Achsenabschnitt verwechseln — der Schnittpunkt mit der $y$-Achse ist bei $y = 1$, eine Nullstelle (Schnittpunkt mit der $x$-Achse) existiert *nicht*.`,
     wrongAnswerExplanations: {
       0: 'Diese Aussage ist *richtig* — $e^{x} > 0$ gilt tatsächlich für alle reellen $x$. Der Wertebereich von $e^{x}$ ist $(0, \\infty)$. Gefragt war aber die *falsche* Aussage; suche die Aussage, die nicht stimmt (Aussage D über eine Nullstelle).',
       1: 'Diese Aussage ist *richtig*: $e^{0} = 1$ folgt aus $a^{0} = 1$ für jede Basis $a \\neq 0$. Das ist eine Standardregel, kein Fehler. Gefragt war die falsche Aussage — das ist Aussage D.',
@@ -162,22 +154,20 @@ export const exercises_alg_u3 = {
       'Kann $e^{x} = 0$ für irgendein $x$ jemals passieren?',
       '$e^{x}$ ist *immer positiv* — damit kann es keine Nullstelle haben.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['potenz-fkt'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['exp-fkt'] },
 },
   'ex-alg-3-2-c': {
     id: 'ex-alg-3-2-c', lessonId: 'alg-3-2', type: 'multiple-choice',
     question: 'Was ist der Definitionsbereich von $f(x) = \\ln(x)$?',
     options: ['$\\mathbb{R}$', '$(0, \\infty)$', '$[0, \\infty)$', '$(-\\infty, 0)$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Der natürliche Logarithmus ist über die Umkehrung von $e^{x}$ definiert — und $e^{x}$ nimmt nur positive Werte an.
+    explanation: `**Ansatz:** Der natürliche Logarithmus ist über die Umkehrung von $e^{x}$ definiert — also entspricht der Definitionsbereich von $\\ln$ genau dem Wertebereich von $e^{x}$.
 
-**Regel:** $\\ln(x)$ ist nur für $x > 0$ definiert. $D = (0, \\infty)$ — offenes Intervall, da $x = 0$ nicht erlaubt ist.
+**Rechnung:** $e^{y} > 0$ für alle reellen $y$, daher liegt der Wertebereich von $\\exp$ in $(0, \\infty)$. Die Umkehrung $\\ln$ kann also nur auf positiven Argumenten definiert sein: $D = (0, \\infty)$ — offenes Intervall. Bei $x = 0$ divergiert $\\ln$: $\\lim_{x \\to 0^{+}} \\ln(x) = -\\infty$. Für $x < 0$ existiert kein reelles $y$ mit $e^{y} = x$.
 
-**Warum nicht $x = 0$?** $\\ln(0)$ würde bedeuten: "$e$ hoch wie viel ergibt $0$?" — aber $e^{y} > 0$ für *alle* $y$, also gibt es kein solches $y$. Grenzwert: $\\lim_{x \\to 0^{+}} \\ln(x) = -\\infty$.
+**Probe:** $\\ln(1) = 0$ ✓ ($e^{0} = 1$). $\\ln(e) = 1$ ✓ ($e^{1} = e$). $\\ln(0)$ und $\\ln(-2)$ — keine Definition in $\\mathbb{R}$.
 
-**Warum nicht $x < 0$?** Analog: $e^{y}$ wird nie negativ.
-
-**Typischer Fehler:** $[0, \\infty)$ wählen — das $0$ gehört aber *nicht* zu $D$, da $\\ln(0)$ undefiniert (divergent) ist. Die Klammer ist eine runde Klammer.`,
+**Typischer Fehler:** $[0, \\infty)$ wählen — die Null gehört aber *nicht* zu $D$, da $\\ln(0)$ divergiert. Die linke Klammer muss eine runde Klammer sein.`,
     wrongAnswerExplanations: {
       0: 'Du hast den Definitionsbereich von $\\ln(x)$ nicht eingeschränkt. Für $x \\leq 0$ ist $\\ln(x)$ nicht definiert, weil $e^{y} > 0$ für alle $y$ gilt — negative Argumente haben keine reelle Logarithmus-Antwort. Richtig: $D = (0, \\infty)$.',
       2: 'Fast richtig, aber die untere Grenze ist mit einer runden Klammer $($ zu schreiben: $x = 0$ ist *ausgeschlossen*. $\\ln(0)$ ist nicht definiert (Grenzwert $\\to -\\infty$). Nur positive Zahlen sind erlaubt: $D = (0, \\infty)$, nicht $[0, \\infty)$.',
@@ -188,29 +178,20 @@ export const exercises_alg_u3 = {
       '$e^{y}$ ist stets positiv — also kann $\\ln$ nur positive Zahlen als Argument nehmen.',
       'Achtung bei der Klammer: Ist $x = 0$ erlaubt oder ausgeschlossen?',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['potenz-fkt'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 2, uses: ['log-fkt', 'exp-fkt'] },
 },
   'ex-alg-3-2-d': {
     id: 'ex-alg-3-2-d', lessonId: 'alg-3-2', type: 'multiple-choice',
     question: 'Welche Funktion wächst für große $x$ am schnellsten?',
     options: ['$x^{10}$', '$10^{x}$', '$\\ln(x)$', '$1000 \\cdot x$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Für große $x$ ("im Unendlichen") gibt es eine feste Wachstumshierarchie.
+    explanation: `**Ansatz:** Für große $x$ („im Unendlichen") gilt eine feste Wachstumshierarchie: $\\ln(x) \\ll x \\ll x^{n} \\ll a^{x}$ für $a > 1$. Exponentialfunktionen schlagen jede Potenzfunktion, Potenzen schlagen den Logarithmus — unabhängig von Vorfaktoren oder Exponenten.
 
-**Die Wachstumshierarchie:**
-$$\\ln(x) \\ll x \\ll x^{n} \\ll a^{x} \\quad (\\text{für } a > 1, \\; x \\to \\infty)$$
+**Rechnung:** Vergleich der vier Kandidaten bei $x = 100$: $\\ln(100) \\approx 4{,}6$ (winzig), $1000 \\cdot 100 = 10^{5}$ (linear, mit großem Vorfaktor), $100^{10} = 10^{20}$ (Polynom Grad $10$), $10^{100}$ (Exponential — ein Googol). Allgemein: $\\lim_{x \\to \\infty} \\dfrac{10^{x}}{x^{10}} = \\infty$, also überholt $10^{x}$ jede Potenz.
 
-Exponentialfunktionen wachsen schneller als jede Potenzfunktion, die schneller als der Logarithmus.
+**Probe:** Schon bei $x = 50$ ist $10^{50}$ größer als $50^{10} \\approx 10^{17}$, $1000 \\cdot 50 = 5 \\cdot 10^{4}$ und $\\ln(50) \\approx 3{,}9$. Der Abstand wächst mit $x$ nur weiter.
 
-**Vergleich an konkreten Werten ($x = 100$):**
-- $\\ln(100) \\approx 4{,}6$
-- $1000 \\cdot 100 = 100\\,000 = 10^{5}$
-- $100^{10} = 10^{20}$
-- $10^{100}$ (gigantisch! Googol)
-
-**Probe mit Grenzwert:** $\\lim_{x \\to \\infty} \\dfrac{10^{x}}{x^{10}} = \\infty$ — die Exponentialfunktion "überholt" jede Potenz.
-
-**Typischer Fehler:** Sich vom riesigen Exponenten "$10$" in $x^{10}$ blenden lassen. Die *Struktur* entscheidet (Exponent bzw. Basis), nicht die Größe der Konstanten.`,
+**Typischer Fehler:** Sich vom hohen Exponenten „$10$" in $x^{10}$ blenden lassen. Die *Struktur* entscheidet — $x$ in der Basis (Polynom) oder im Exponenten (Exponential) — nicht die Größe der Konstanten.`,
     wrongAnswerExplanations: {
       0: 'Du hast dich vom großen Exponenten $10$ blenden lassen. $x^{10}$ ist zwar eine hohe Potenzfunktion, aber immer noch *polynomial*. Exponentialfunktionen $a^{x}$ (mit $a > 1$) überholen jede Potenzfunktion, egal wie groß der Exponent $n$ ist. Beweis: $\\lim_{x \\to \\infty} x^{10} / 10^{x} = 0$.',
       2: 'Der Logarithmus wächst am *langsamsten* von allen, nicht am schnellsten. $\\ln(x)$ wächst sogar langsamer als $\\sqrt{x}$ oder $x$. Für große $x$ gilt die Hierarchie $\\ln(x) \\ll x \\ll x^{n} \\ll a^{x}$. Am schnellsten wächst die Exponentialfunktion.',
@@ -221,26 +202,20 @@ Exponentialfunktionen wachsen schneller als jede Potenzfunktion, die schneller a
       'Exponentielles Wachstum schlägt *jedes* polynomiale Wachstum — egal wie groß der Exponent.',
       'Merke die Hierarchie: $\\ln(x) \\ll x^{n} \\ll a^{x}$.',
     ],
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['potenz-fkt'] },
+      pedagogy: { stage: 'error-analysis', subGoal: 3, uses: ['wachstum-hierarchie', 'potenz-fkt', 'exp-fkt', 'log-fkt'] },
 },
   'ex-alg-3-2-e': {
     id: 'ex-alg-3-2-e', lessonId: 'alg-3-2', type: 'multiple-choice',
     question: 'Vereinfache: $\\ln(e^{2x})$',
     options: ['$2x$', '$e^{2x}$', '$2 \\ln(x)$', '$x^{2}$'],
     correctIndex: 0,
-    explanation: `**Ansatz:** $\\ln$ und $e$ sind Umkehrfunktionen — sie heben sich gegenseitig auf. Dadurch gilt $\\ln(e^{y}) = y$ für jede reelle Zahl $y$.
+    explanation: `**Ansatz:** $\\ln$ und $\\exp$ sind Umkehrfunktionen — sie heben sich gegenseitig auf. Es gelten zwei Identitäten: $\\ln(e^{y}) = y$ für alle $y \\in \\mathbb{R}$ (Umkehrung „von innen nach außen") und $e^{\\ln(x)} = x$ für alle $x > 0$ (Umkehrung „von außen nach innen").
 
-**Rechnung:** Mit $y = 2x$: $\\ln(e^{2x}) = 2x$.
+**Rechnung:** Mit $y = 2x$ in der ersten Identität: $\\ln(e^{2x}) = 2x$. Alternativ über das Log-Gesetz $\\ln(a^{b}) = b \\cdot \\ln(a)$: $\\ln(e^{2x}) = 2x \\cdot \\ln(e) = 2x \\cdot 1 = 2x$ — dasselbe Ergebnis.
 
-**Alternativer Weg (Logarithmus-Gesetz):** $\\ln(e^{2x}) = 2x \\cdot \\ln(e) = 2x \\cdot 1 = 2x$, weil $\\ln(e) = 1$.
+**Probe:** Bei $x = 3$: $\\ln(e^{6}) = 6 = 2 \\cdot 3$ ✓. Bei $x = 0$: $\\ln(e^{0}) = \\ln(1) = 0 = 2 \\cdot 0$ ✓. Bei $x = -1$: $\\ln(e^{-2}) = -2$ ✓.
 
-**Probe bei $x = 3$:** $\\ln(e^{6}) = 6 = 2 \\cdot 3$. ✓
-
-**Zwei wichtige Identitäten:**
-- $\\ln(e^{y}) = y$ für alle $y \\in \\mathbb{R}$ (Umkehrung „von innen nach außen")
-- $e^{\\ln(x)} = x$ für alle $x > 0$ (Umkehrung „von außen nach innen")
-
-**Typischer Fehler:** $\\ln$ und $e$ werden als unabhängige Funktionen behandelt (als wäre $\\ln(e^{2x}) = e^{2x}$). Tatsächlich annullieren sie sich — wie $\\sqrt{x^{2}} = |x|$ oder $\\arcsin(\\sin(x)) = x$ (für Hauptwerte).`,
+**Typischer Fehler:** $\\ln$ und $e$ werden wie unabhängige Funktionen behandelt (als wäre $\\ln(e^{2x}) = e^{2x}$). Tatsächlich annullieren sie sich — analog zu $\\sqrt{x^{2}} = |x|$ oder $\\arcsin(\\sin(x)) = x$ (für Hauptwerte).`,
     wrongAnswerExplanations: {
       1: 'Du hast den $\\ln$ nicht angewandt und den Ausdruck stehen gelassen. Die Kern-Identität ist: $\\ln$ und $e$ sind Umkehrfunktionen, also gilt $\\ln(e^{y}) = y$. Hier mit $y = 2x$ folgt sofort $2x$.',
       2: 'Du hast das Logarithmus-Gesetz $\\ln(a^{b}) = b \\cdot \\ln(a)$ zwar angewandt, aber die Basis $e$ nicht vereinfacht. $\\ln(e) = 1$ — nicht $\\ln(x)$! Vollständig: $\\ln(e^{2x}) = 2x \\cdot \\ln(e) = 2x \\cdot 1 = 2x$, nicht $2\\ln(x)$.',
@@ -251,7 +226,7 @@ Exponentialfunktionen wachsen schneller als jede Potenzfunktion, die schneller a
       'Umkehrfunktionen: $\\ln(e^{y}) = y$ — egal was $y$ ist.',
       'Setze $y = 2x$ ein.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['potenz-fkt'] },
+      pedagogy: { stage: 'transfer', subGoal: 2, uses: ['log-fkt', 'exp-fkt'] },
 },
   'ex-alg-3-2-mastery': {
     id: 'ex-alg-3-2-mastery', lessonId: 'alg-3-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -281,7 +256,7 @@ $$f(0) = 2 \\cdot e^{0} - 1 = 2 \\cdot 1 - 1 = 2 - 1 = 1.$$
       'Also $e^{0} = 1$, damit wird aus $2 \\cdot e^{0}$ einfach $2$.',
       'Dann $2 - 1$ rechnen.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['potenz-fkt'] },
+      pedagogy: { stage: 'transfer', subGoal: 4, uses: ['euler-zahl', 'exp-fkt'] },
 },
 
   // ── Lesson 3: Funktionsoperationen ──
