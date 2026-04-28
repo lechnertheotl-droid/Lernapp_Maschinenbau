@@ -383,21 +383,13 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
     question: 'Was ist die Umkehrfunktion von $f(x) = 2x + 3$?',
     options: ['$f^{-1}(x) = \\dfrac{x-3}{2}$', '$f^{-1}(x) = 2x - 3$', '$f^{-1}(x) = \\dfrac{1}{2x+3}$', '$f^{-1}(x) = \\dfrac{x+3}{2}$'],
     correctIndex: 0,
-    explanation: `**Ansatz:** Umkehrfunktion — Dreischritt-Verfahren: (1) $y = f(x)$, (2) nach $x$ auflösen, (3) $x$ und $y$ vertauschen.
+    explanation: `**Ansatz:** Umkehrfunktion mit Dreischritt-Verfahren: (1) $y = f(x)$ ansetzen, (2) nach $x$ auflösen, (3) Variablen $x \\leftrightarrow y$ vertauschen. Alternativ-Bild: $f$ verdoppelt und addiert $3$ — die Umkehrung macht das rückwärts (erst $3$ abziehen, dann halbieren).
 
-**Rechnung:**
-1. Ansatz: $y = 2x + 3$.
-2. Nach $x$ auflösen: $y - 3 = 2x \\Rightarrow x = \\dfrac{y - 3}{2}$.
-3. Vertauschen: $f^{-1}(x) = \\dfrac{x - 3}{2}$.
+**Rechnung:** $y = 2x + 3 \\;\\Rightarrow\\; y - 3 = 2x \\;\\Rightarrow\\; x = \\dfrac{y - 3}{2}$. Variablen tauschen: $f^{-1}(x) = \\dfrac{x - 3}{2}$.
 
-**Alternativer Denkweg:** $f$ verdoppelt und addiert $3$. Die Umkehrung macht es *rückwärts*: erst $3$ abziehen, dann halbieren — genau $(x - 3)/2$.
+**Probe:** Verkettung $f(f^{-1}(x)) = 2 \\cdot \\dfrac{x - 3}{2} + 3 = (x - 3) + 3 = x$ ✓. Andere Richtung: $f^{-1}(f(x)) = \\dfrac{(2x+3) - 3}{2} = \\dfrac{2x}{2} = x$ ✓.
 
-**Probe (Verkettung):** $f(f^{-1}(x)) = 2 \\cdot \\dfrac{x - 3}{2} + 3 = (x - 3) + 3 = x$. ✓
-
-**Typischer Fehler:**
-- $2x - 3$: Nur "invertierte" Koeffizienten — funktioniert nicht.
-- $\\dfrac{x + 3}{2}$: Vorzeichenfehler beim Umstellen.
-- $\\dfrac{1}{2x + 3}$: *Kehrwert* statt Umkehrfunktion — das sind zwei völlig verschiedene Dinge!`,
+**Typischer Fehler:** $2x - 3$ („Koeffizienten umgedreht" — funktioniert nicht); $\\dfrac{x+3}{2}$ (Vorzeichen beim Umstellen verloren); $\\dfrac{1}{2x+3}$ (*Kehrwert* statt Umkehrfunktion — zwei verschiedene Konzepte).`,
     wrongAnswerExplanations: {
       1: 'Du hast „$2$ und $3$ einfach umgedreht" statt sauber die Gleichung aufzulösen. $2x - 3$ ist nicht die Umkehrung von $2x + 3$ — Probe: $f(f^{-1}(x)) = 2(2x - 3) + 3 = 4x - 3 \\neq x$. Richtig: $y = 2x + 3 \\Rightarrow x = (y-3)/2$, vertauschen liefert $f^{-1}(x) = (x-3)/2$.',
       2: 'Du hast den *Kehrwert* berechnet statt die Umkehrfunktion. $1/(2x+3)$ ist das multiplikative Inverse, erfüllt $f(x) \\cdot (1/f(x)) = 1$. Die Umkehrfunktion hingegen macht $f$ rückgängig: $f(f^{-1}(x)) = x$. Diese beiden Konzepte sind völlig verschieden.',
@@ -408,31 +400,20 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Dreischritt: (1) $y = 2x + 3$, (2) $x = ?$, (3) $x \\leftrightarrow y$ tauschen.',
       'Prüfe mit der Verkettung: $f(f^{-1}(x))$ muss $x$ ergeben.',
     ],
-      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['umkehr-existenz'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['umkehr-verfahren'] },
 },
   'ex-alg-3-4-b': {
     id: 'ex-alg-3-4-b', lessonId: 'alg-3-4', type: 'multiple-choice',
     question: 'Die Umkehrfunktion von $f(x) = e^{x}$ ist:',
     options: ['$f^{-1}(x) = \\dfrac{1}{e^{x}}$', '$f^{-1}(x) = \\ln(x)$', '$f^{-1}(x) = e^{-x}$', '$f^{-1}(x) = 10^{x}$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Umkehrfunktion der Exponentialfunktion zur Basis $e$ — das ist per Definition der natürliche Logarithmus.
+    explanation: `**Ansatz:** Die Umkehrfunktion der Exponentialfunktion zur Basis $e$ ist per Definition der natürliche Logarithmus $\\ln$. Wichtige Abgrenzung: *Kehrwert* ($1/e^x$) und *Umkehrfunktion* ($\\ln x$) sind zwei verschiedene Konzepte — ersterer erfüllt $f \\cdot (1/f) = 1$, letzterer $f(f^{-1}(x)) = x$.
 
-**Regel:** $f(x) = e^{x}$ und $f^{-1}(x) = \\ln(x)$ sind Umkehrfunktionen.
+**Rechnung:** Dreischritt-Verfahren: $y = e^{x} \\;\\Rightarrow\\; \\ln(y) = \\ln(e^{x}) = x$ (nach $x$ aufgelöst durch $\\ln$ auf beiden Seiten). Variablen tauschen: $f^{-1}(x) = \\ln(x)$.
 
-**Herleitung:**
-1. $y = e^{x}$.
-2. Nach $x$ auflösen: $\\ln(y) = \\ln(e^{x}) = x$.
-3. Tauschen: $f^{-1}(x) = \\ln(x)$.
+**Probe:** Beide Verkettungs-Identitäten prüfen: $\\ln(e^{x}) = x$ ✓ (für alle $x \\in \\mathbb{R}$) und $e^{\\ln(x)} = x$ ✓ (für $x > 0$). Konkret: $f(\\ln 5) = e^{\\ln 5} = 5$, $f^{-1}(e^2) = \\ln(e^2) = 2$.
 
-**Probe:** $\\ln(e^{x}) = x$ und $e^{\\ln(x)} = x$. ✓
-
-**Achtung bei Kehrwert vs. Umkehrung:**
-- **Kehrwert:** $\\dfrac{1}{e^{x}} = e^{-x}$ — multiplikative Inverse, $f(x) \\cdot \\dfrac{1}{f(x)} = 1$.
-- **Umkehrfunktion:** $\\ln(x)$ — macht die Operation rückgängig, $f(f^{-1}(x)) = x$.
-
-**Typischer Fehler:**
-- $e^{-x}$ als Umkehrfunktion — das ist der Kehrwert, nicht die Umkehrung.
-- $10^{x}$: Das ist die Exponentialfunktion zu einer *anderen* Basis, keine Umkehrung.`,
+**Typischer Fehler:** $e^{-x} = 1/e^{x}$ als Umkehrung wählen — das ist der *Kehrwert*. Oder $10^{x}$ als Umkehrung sehen — das ist eine Exponentialfunktion zu *anderer Basis*, nicht die Inverse von $e^{x}$.`,
     wrongAnswerExplanations: {
       0: 'Du hast den *Kehrwert* berechnet statt die Umkehrfunktion. $\\dfrac{1}{e^{x}} = e^{-x}$ ist das multiplikative Inverse, keine Umkehrung. Probe: $f(1/f(x)) = e^{1/e^{x}} \\neq x$. Die Umkehrfunktion von $e^{x}$ ist $\\ln(x)$, weil $\\ln(e^{x}) = x$.',
       2: '$e^{-x}$ ist der Kehrwert von $e^{x}$ ($e^{-x} = 1/e^{x}$), nicht die Umkehrfunktion. Probe: $e^{e^{-x}}$ liefert nicht $x$. Die Umkehrfunktion muss $f(f^{-1}(x)) = x$ erfüllen — das gilt nur für $\\ln(x)$: $e^{\\ln(x)} = x$.',
@@ -443,27 +424,25 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       '$\\ln$ ist *definiert* als Umkehrung von $e^{x}$.',
       'Prüfe die Verkettung: $\\ln(e^{x}) = ?$ und $e^{\\ln(x)} = ?$.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['umkehr-existenz'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['umkehr-verfahren'] },
 },
   'ex-alg-3-4-c': {
     id: 'ex-alg-3-4-c', lessonId: 'alg-3-4', type: 'true-false',
     statement: 'Der Graph einer Umkehrfunktion $f^{-1}$ entsteht durch Spiegelung des Graphen von $f$ an der Geraden $y = x$.',
     correct: true,
-    explanation: `**Wahr.** Das ist eine der schönsten geometrischen Eigenschaften der Umkehrfunktion.
+    explanation: `**Ansatz:** Bei der Umkehrung werden Argument und Funktionswert getauscht — geometrisch heißt das, dass jeder Punkt $(a, b)$ auf dem Graphen von $f$ zum Punkt $(b, a)$ auf dem Graphen von $f^{-1}$ wird. Die Abbildung $(a, b) \\mapsto (b, a)$ ist exakt die Spiegelung an der Winkelhalbierenden $y = x$.
 
-**Warum?** Bei der Umkehrung werden $x$ und $y$ vertauscht. Ein Punkt $(a, b)$ auf dem Graphen von $f$ (also $b = f(a)$) wird damit zum Punkt $(b, a)$ auf dem Graphen von $f^{-1}$ (da $a = f^{-1}(b)$). Die Abbildung $(a, b) \\to (b, a)$ ist geometrisch genau die *Spiegelung an der Geraden $y = x$*.
+**Rechnung:** Aus $b = f(a)$ folgt direkt $a = f^{-1}(b)$, sobald $f$ bijektiv ist. Das Punktepaar $\\{(a, b), (b, a)\\}$ liegt symmetrisch zur Geraden $y = x$ — diese ist die *Mittelsenkrechte* der Verbindungsstrecke der beiden Punkte. Damit ist der gesamte Graph von $f^{-1}$ das Spiegelbild des Graphen von $f$.
 
-**Beispiel:** $f(x) = e^{x}$ und $f^{-1}(x) = \\ln(x)$ — die beiden Graphen sind spiegelsymmetrisch zu $y = x$. Der Schnittpunkt ihrer Tangenten mit $y = x$ liegt genau auf dieser Geraden.
+**Probe:** Konkrete Punkte für $f(x) = e^{x}$ und $f^{-1}(x) = \\ln(x)$. Auf $e^x$ liegt $(0, 1)$ (denn $e^0 = 1$); gespiegelt an $y = x$ ergibt $(1, 0)$, und tatsächlich $\\ln(1) = 0$ ✓. Auf $e^x$ liegt $(1, e)$; gespiegelt $(e, 1)$, und $\\ln(e) = 1$ ✓.
 
-**Probe mit konkretem Punkt:** $(0, 1)$ liegt auf $e^{x}$ (da $e^{0} = 1$). Gespiegelt an $y = x$ ergibt $(1, 0)$, und tatsächlich: $\\ln(1) = 0$. ✓
-
-**Nützlich:** In Prüfungen kannst du den Graphen einer Umkehrfunktion schnell skizzieren, indem du den Originalgraphen an $y = x$ spiegelst — ohne die Formel zu kennen.`,
+**Typischer Fehler:** An der $x$-Achse spiegeln (wäre $-f(x)$) oder an der $y$-Achse (wäre $f(-x)$) — beides sind andere Transformationen. Die Umkehrfunktion verlangt explizit die Winkelhalbierende.`,
     hints: [
       'Was passiert mit einem Punkt $(a, b)$, wenn man Definitions- und Wertebereich vertauscht?',
       '$(a, b) \\to (b, a)$ — welche geometrische Operation ist das?',
       'Die Spiegelung an $y = x$ genau: jeder Punkt wechselt $x$- und $y$-Koordinate.',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['umkehr-existenz'] },
+      pedagogy: { stage: 'recognize', subGoal: 2, uses: ['umkehr-graph'] },
 },
   'ex-alg-3-4-mastery': {
     id: 'ex-alg-3-4-mastery', lessonId: 'alg-3-4', type: 'multiple-choice', isMasteryCheck: true,
@@ -499,7 +478,7 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Streng monoton steigend → injektiv. Bild $[0, \\infty)$ wird komplett erreicht → surjektiv.',
       'Dann $y = x^{2}$ nach $x$ auflösen und beachten: nur die *positive* Wurzel, da $x \\geq 0$ gefordert ist.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['umkehr-existenz'] },
+      pedagogy: { stage: 'transfer', subGoal: 5, uses: ['umkehr-einschraenken', 'umkehr-verfahren'] },
 },
 }
 
@@ -986,6 +965,34 @@ $$f(f^{-1}(x)) = x \\quad \\text{und} \\quad f^{-1}(f(x)) = x$$
 Beispiel: $e^{\\ln(x)} = x$ (für $x > 0$) und $\\ln(e^{x}) = x$ (für alle $x \\in \\mathbb{R}$).
 
 **Achtung:** Umkehrfunktion $\\neq$ Kehrwert. $\\dfrac{1}{f(x)}$ ist der *multiplikative* Kehrwert, $f^{-1}(x)$ macht die Operation *rückgängig*.`,
+      },
+      {
+        id: 'alg-3-4-s2b', type: 'explanation-intuitive',
+        title: 'Spiegelung an $y = x$ — drei Umkehrpaare im Vergleich',
+        content: `Die nächste Visualisierung zeigt drei klassische Funktionen *zusammen mit* ihren Umkehrfunktionen — und der Winkelhalbierenden $y = x$ als Spiegelachse:
+
+- $f(x) = 2x + 3$ (blau) und $f^{-1}(x) = (x - 3)/2$ (grün) — beide Geraden, symmetrisch zu $y = x$.
+- $f(x) = e^{x}$ (rot) und $f^{-1}(x) = \\ln(x)$ (orange) — der Klassiker; die exponentielle Kurve und die logarithmische sind exakte Spiegelbilder.
+- $y = x$ (grau) — die Spiegelachse selbst.
+
+Beobachte: Wo eine Originalkurve durch $(a, b)$ geht, geht ihre Umkehrung durch $(b, a)$. Der Schnittpunkt zweier zusammengehöriger Kurven mit der Geraden $y = x$ liegt immer auf dieser Geraden — Fixpunkt der Spiegelung.`,
+      },
+      {
+        id: 'alg-3-4-s2c', type: 'visualization',
+        title: 'Funktionen und ihre Umkehrungen',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => 2 * x + 3,        color: '#3b82f6', label: 'f(x) = 2x + 3' },
+            { fn: (x) => (x - 3) / 2,      color: '#10b981', label: 'f⁻¹(x) = (x − 3)/2' },
+            { fn: (x) => Math.exp(x),      color: '#ef4444', label: 'f(x) = eˣ' },
+            { fn: (x) => x > 0 ? Math.log(x) : NaN, color: '#f59e0b', label: 'f⁻¹(x) = ln(x)' },
+            { fn: (x) => x,                color: '#94a3b8', label: 'y = x' },
+          ],
+          xRange: [-3, 6],
+          yRange: [-4, 8],
+          showGrid: true,
+        },
       },
       { id: 'alg-3-4-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-alg-3-4-a' },
       { id: 'alg-3-4-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-alg-3-4-b' },
