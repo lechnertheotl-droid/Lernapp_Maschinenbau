@@ -714,6 +714,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['bruch-add'] },
       ),
+      // Zusatz-Aufgabe SG 0: apply-independent · number-input · uses=[kgv-hauptnenner, bruch-add]
+      // Subtraktion mit drei Brüchen — testet Vorzeichen + kgV-Bestimmung in Kombination.
+      ni(
+        'Berechne $\\dfrac{7}{10} - \\dfrac{1}{4} + \\dfrac{1}{5}$ und gib den Zähler über dem Hauptnenner $20$ an.',
+        13, 0, '',
+        `**Ansatz:** Hauptnenner aller Nenner bestimmen, alle Brüche darauf erweitern, dann Zähler mit Vorzeichen addieren/subtrahieren.
+
+**Rechnung:** $10 = 2 \\cdot 5$, $4 = 2^2$, $5 = 5$. Hauptnenner $= 2^2 \\cdot 5 = 20$. Erweitern: $\\tfrac{7}{10} = \\tfrac{14}{20}$, $\\tfrac{1}{4} = \\tfrac{5}{20}$, $\\tfrac{1}{5} = \\tfrac{4}{20}$. Zähler: $14 - 5 + 4 = 13$. Ergebnis $\\tfrac{13}{20}$.
+
+**Probe:** Dezimal: $0{,}7 - 0{,}25 + 0{,}2 = 0{,}65 = 13/20$. ✓
+
+**Typischer Fehler:** Vorzeichen verschlucken: $14 - 5 + 4$ als $14 - 9 = 5$ rechnen — Subtraktion vor Addition gemacht. Strichrechnung ist gleichrangig und geht streng von links nach rechts.`,
+        [
+          'Hauptnenner: $\\text{kgV}(10, 4, 5) = ?$',
+          'Erweitern: $20/10=2$, $20/4=5$, $20/5=4$. Damit Zähler bestimmen.',
+          'Strichrechnung links nach rechts: $14 - 5 = 9$, dann $+4$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['kgv-hauptnenner', 'bruch-add'] },
+      ),
       // transfer · sorting · uses=[kgv-hauptnenner, bruch-add]
       sorting(
         'Bringe die Schritte zur Berechnung von $\\dfrac{2}{9} + \\dfrac{5}{6}$ in die richtige Reihenfolge.',
@@ -830,6 +849,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['bruch-div-kehr'] },
       ),
+      // Zusatz-Aufgabe SG 1: apply-independent · number-input · uses=[bruch-div-kehr, bruch-mult]
+      // Ganze Zahl geteilt durch Bruch — testet Verständnis "Ganzzahl als n/1".
+      ni(
+        'Berechne $6 : \\dfrac{3}{4}$.',
+        8, 0, '',
+        `**Ansatz:** Ganze Zahl $6$ als $\\dfrac{6}{1}$ schreiben. Dann Division als Multiplikation mit Kehrwert.
+
+**Rechnung:** $6 : \\dfrac{3}{4} = \\dfrac{6}{1} \\cdot \\dfrac{4}{3} = \\dfrac{24}{3} = 8$.
+
+**Probe:** Wie oft passt $\\tfrac{3}{4}$ in $6$? In $1$ passt $\\tfrac{3}{4}$ etwas mehr als $1{,}33$-mal, in $6$ also $\\approx 8$-mal. ✓
+
+**Typischer Fehler:** $6$ einfach durch $3/4$ als „$6/3 \\cdot 4 = 8$" rechnen — gibt zwar zufällig dasselbe, ist aber unsystematisch. Häufiger: $6 \\cdot \\tfrac{3}{4} = 4{,}5$ — Kehrwert vergessen.`,
+        [
+          'Schreibe $6$ als Bruch: $\\dfrac{6}{1}$.',
+          'Kehrwert von $\\dfrac{3}{4}$ ist $\\dfrac{4}{3}$.',
+          'Multiplizieren: $\\dfrac{6}{1} \\cdot \\dfrac{4}{3} = \\dfrac{24}{3}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['bruch-div-kehr', 'bruch-mult'] },
+      ),
       // transfer · matching · uses=[bruch-div-kehr, bruch-mult]
       matching(
         'Ordne jedem Divisions-Ausdruck seine Multiplikations-Form zu.',
@@ -945,6 +983,31 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['doppelbruch'] },
       ),
+      // Zusatz-Aufgabe SG 2: apply-guided · multiple-choice · uses=[doppelbruch]
+      // Doppelbruch mit ganzer Zahl im Zähler oder Nenner — testet Erweiterung "Ganzzahl/1".
+      mc(
+        'Welcher Bruch ist gleich $\\dfrac{4}{\\tfrac{2}{5}}$?',
+        ['$10$', '$\\dfrac{8}{5}$', '$\\dfrac{2}{5}$', '$\\dfrac{4}{10}$'],
+        0,
+        `**Ansatz:** Ganze Zahl $4$ als $\\dfrac{4}{1}$ schreiben, dann Doppelbruch als Division.
+
+**Rechnung:** $\\dfrac{4}{2/5} = 4 : \\dfrac{2}{5} = \\dfrac{4}{1} \\cdot \\dfrac{5}{2} = \\dfrac{20}{2} = 10$.
+
+**Probe:** Dezimal: $4 / 0{,}4 = 10$. ✓
+
+**Typischer Fehler:** Statt zu stürzen einfach multiplizieren: $4 \\cdot \\tfrac{2}{5} = \\tfrac{8}{5}$ (Option 2). Genau das passiert, wenn man den Doppelbruch als „Produkt" liest.`,
+        [
+          'Doppelbruch = Division. Hier $4$ geteilt durch $\\tfrac{2}{5}$.',
+          'Kehrwert von $\\tfrac{2}{5}$ ist $\\tfrac{5}{2}$.',
+          'Mit Dezimalprobe gegenchecken: $4 / 0{,}4$.',
+        ],
+        {
+          1: '$\\tfrac{8}{5}$ entsteht bei $4 \\cdot \\tfrac{2}{5}$ — Multiplikation statt Division. Den Bruch im Nenner muss man stürzen.',
+          2: '$\\tfrac{2}{5}$ ist nur der Nenner-Bruch — die $4$ wurde komplett ignoriert.',
+          3: '$\\tfrac{4}{10}$ entsteht durch falsche Erweiterung: $\\tfrac{4 \\cdot 1}{1 \\cdot 10}$ ohne Verständnis der Doppelbruch-Regel.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['doppelbruch'] },
+      ),
       // transfer · number-input · uses=[doppelbruch, ggt-kuerzen]
       ni(
         'Berechne den Doppelbruch $\\dfrac{\\tfrac{7}{12}}{\\tfrac{14}{9}}$ vollständig und gib den Nenner des gekürzten Ergebnisses an (Zähler wird $3$).',
@@ -1054,6 +1117,25 @@ export const algebraSubGoalTasks = {
           3: 'Vollständig gekürzt hat eine exakte Definition: $\\text{ggT}(z,n) = 1$. Kein Subjektivismus.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['ggt-kuerzen'] },
+      ),
+      // Zusatz-Aufgabe SG 3: apply-independent · number-input · uses=[ggt-kuerzen]
+      // Größere Zahlen mit gemeinsamen Faktoren — testet ggT-Bestimmung mit Primfaktoren.
+      ni(
+        'Kürze $\\dfrac{210}{462}$ vollständig und gib den Zähler des Ergebnisses an (Nenner wird $11$).',
+        5, 0, '',
+        `**Ansatz:** Beide Zahlen in Primfaktoren zerlegen, ggT als Produkt der gemeinsamen Primfaktoren mit Minimum-Exponent bestimmen.
+
+**Rechnung:** $210 = 2 \\cdot 3 \\cdot 5 \\cdot 7$. $462 = 2 \\cdot 3 \\cdot 7 \\cdot 11$. Gemeinsam: $2 \\cdot 3 \\cdot 7 = 42$. Also $\\dfrac{210}{462} = \\dfrac{210/42}{462/42} = \\dfrac{5}{11}$.
+
+**Probe:** $\\text{ggT}(5, 11) = 1$ (beides Primzahlen, verschieden) — vollständig gekürzt. Dezimal: $210/462 \\approx 0{,}4545 = 5/11$. ✓
+
+**Typischer Fehler:** Stufenweise mit kleinen Faktoren (z. B. nur durch $2$): $\\tfrac{210}{462} \\to \\tfrac{105}{231}$ — rechnerisch richtig, aber nicht fertig. Oder gemeinsame Primfaktoren übersehen, etwa die $7$ vergessen.`,
+        [
+          'Primfaktorzerlegung beider Zahlen.',
+          'ggT = Produkt der gemeinsamen Primzahlen.',
+          'Sind $5$ und $11$ teilerfremd? — Endkontrolle.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['ggt-kuerzen'] },
       ),
       // transfer · sorting · uses=[ggt-kuerzen]
       sorting(

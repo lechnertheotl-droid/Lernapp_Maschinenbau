@@ -102,9 +102,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2323 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1431 (62 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1065 / 1065 (100 %) | 100 % | ✅ |
+| Aufgaben (gesamt) | 2327 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1435 (62 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1066 / 1066 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -126,9 +126,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **576** (Lesson-Path: 112 · Goal-Tasks: 464)
-- 4-Block: 510/576 (89 %) 🟡
-- MC-wAE: 265/265 (100 %) ✅
+- Aufgaben: **580** (Lesson-Path: 112 · Goal-Tasks: 468)
+- 4-Block: 514/580 (89 %) 🟡
+- MC-wAE: 266/266 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
 
@@ -174,7 +174,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `alg-0-1` Grundrechnen, Klammern & Vorrang | 4 | 4/4 | 31 | 10/12/5/2/2 | 31/31 | 10/10 | ✅ | — |
-| `alg-0-2` Bruchrechnen sicher | 4 | 4/4 | 27 | 11/7/5/1/3 | 27/27 | 11/11 | ✅ | — |
+| `alg-0-2` Bruchrechnen sicher | 4 | 4/4 | 31 | 12/10/5/1/3 | 31/31 | 12/12 | ✅ | — |
 | `alg-0-3` Prozent & Dreisatz | 5 | 5/5 | 32 | 11/11/6/3/1 | 32/32 | 11/11 | ✅ | — |
 | `alg-0-4` Termumformung & Gleichungen | 5 | 5/5 | 31 | 12/9/5/2/3 | 30/31 | 12/12 | ✅ | +1 4B |
 | `alg-1-1` Potenzgesetze | 4 | 4/4 | 26 | 13/8/4/1/0 | 23/26 | 13/13 | ✅ | +3 4B |
@@ -11626,53 +11626,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
-#### `alg-0-2` · Bruchrechnen sicher
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-0-1` → `prio-basic`, `prio-klammer`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `bruch-erweitern` — Erweitern/Kürzen: Zähler und Nenner mit/durch dieselbe Zahl (Wert bleibt) (SG 0)
-  2. `ggt-kuerzen` — Vollständiges Kürzen per ggT von Zähler und Nenner ⇐ `bruch-erweitern` (SG 3)
-  3. `kgv-hauptnenner` — Hauptnenner = kgV der Einzelnenner (Primfaktorzerlegung) ⇐ `bruch-erweitern` (SG 0)
-  4. `bruch-add` — Addition/Subtraktion: erst Hauptnenner, dann Zähler rechnen ⇐ `kgv-hauptnenner` (SG 0)
-  5. `bruch-mult` — Multiplikation: Zähler $\cdot$ Zähler, Nenner $\cdot$ Nenner (SG 1)
-  6. `bruch-div-kehr` — Division durch Bruch = Multiplikation mit Kehrwert ⇐ `bruch-mult` (SG 1)
-  7. `doppelbruch` — Doppelbruch auflösen über Division-Kehrwert-Regel ⇐ `bruch-div-kehr` (SG 2)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `bruch-erweitern`, `kgv-hauptnenner`, `bruch-add` · **6/5+** — Hauptnenner bei ungleichnamigen Brüchen finden (kgV)
-  - ✅ [1] _hoch_ · Konzepte: `bruch-mult`, `bruch-div-kehr` · **5/5+** — Division durch Bruch als Multiplikation mit Kehrwert
-  - ✅ [2] _mittel_ · Konzepte: `doppelbruch` · **5/5+** — Doppelbrüche auflösen
-  - ✅ [3] _mittel_ · Konzepte: `ggt-kuerzen` · **5/5+** — Bruch vollständig kürzen per ggT
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `kgv-hauptnenner` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `kgv-hauptnenner` | 1 | 2 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `kgv-hauptnenner`, `bruch-add` | 2 | 2 | ✅ | kgV bestimmen + Brüche addieren |
-|  4 | 0 | error-analysis     | multiple-choice  | `bruch-add` | 1 | 1 | ✅ | Distraktor: Zähler und Nenner einzeln addiert |
-|  5 | 0 | transfer           | sorting          | `kgv-hauptnenner`, `bruch-add` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `bruch-div-kehr` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `bruch-div-kehr` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `bruch-div-kehr` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `bruch-div-kehr` | 1 | 1 | ✅ | Distraktor: statt Kehrwert direkt dividiert |
-| 10 | 1 | transfer           | matching         | `bruch-div-kehr`, `bruch-mult` | 1 | 1 | ✅ |  |
-| 11 | 2 | recognize          | true-false       | `doppelbruch` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `doppelbruch` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `doppelbruch` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `doppelbruch` | 1 | 1 | ✅ | Distraktor: Zähler und Nenner falsch gruppiert |
-| 15 | 2 | transfer           | number-input     | `doppelbruch` | 1 | 1 | ✅ | Doppelbruch auflösen (ggT-Kürzung folgt in SG 3) |
-| 16 | 3 | recognize          | true-false       | `ggt-kuerzen` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `ggt-kuerzen` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `ggt-kuerzen` | 1 | 1 | ✅ |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `ggt-kuerzen` | 1 | 1 | ✅ | Distraktor: nicht vollständig gekürzt |
-| 20 | 3 | transfer           | sorting          | `ggt-kuerzen` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-2': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
 #### `alg-2-1` · Lineare Gleichungen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
@@ -12124,6 +12077,53 @@ npm run build              # abschließender End-zu-End-Check
 | 20 | 3 | transfer           | sorting          | `klammer-schachtel`, `prio-klammer` | 1 | 1 | ✅ |  |
 
 - **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-1': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
+#### `alg-0-2` · Bruchrechnen sicher
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-0-1` → `prio-basic`, `prio-klammer`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `bruch-erweitern` — Erweitern/Kürzen: Zähler und Nenner mit/durch dieselbe Zahl (Wert bleibt) (SG 0)
+  2. `ggt-kuerzen` — Vollständiges Kürzen per ggT von Zähler und Nenner ⇐ `bruch-erweitern` (SG 3)
+  3. `kgv-hauptnenner` — Hauptnenner = kgV der Einzelnenner (Primfaktorzerlegung) ⇐ `bruch-erweitern` (SG 0)
+  4. `bruch-add` — Addition/Subtraktion: erst Hauptnenner, dann Zähler rechnen ⇐ `kgv-hauptnenner` (SG 0)
+  5. `bruch-mult` — Multiplikation: Zähler $\cdot$ Zähler, Nenner $\cdot$ Nenner (SG 1)
+  6. `bruch-div-kehr` — Division durch Bruch = Multiplikation mit Kehrwert ⇐ `bruch-mult` (SG 1)
+  7. `doppelbruch` — Doppelbruch auflösen über Division-Kehrwert-Regel ⇐ `bruch-div-kehr` (SG 2)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `bruch-erweitern`, `kgv-hauptnenner`, `bruch-add` · **7/5+** — Hauptnenner bei ungleichnamigen Brüchen finden (kgV)
+  - ✅ [1] _hoch_ · Konzepte: `bruch-mult`, `bruch-div-kehr` · **6/5+** — Division durch Bruch als Multiplikation mit Kehrwert
+  - ✅ [2] _mittel_ · Konzepte: `doppelbruch` · **6/5+** — Doppelbrüche auflösen
+  - ✅ [3] _mittel_ · Konzepte: `ggt-kuerzen` · **6/5+** — Bruch vollständig kürzen per ggT
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `kgv-hauptnenner` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `kgv-hauptnenner` | 1 | 2 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `kgv-hauptnenner`, `bruch-add` | 2 | 3 | ✅ | kgV bestimmen + Brüche addieren |
+|  4 | 0 | error-analysis     | multiple-choice  | `bruch-add` | 1 | 1 | ✅ | Distraktor: Zähler und Nenner einzeln addiert |
+|  5 | 0 | transfer           | sorting          | `kgv-hauptnenner`, `bruch-add` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `bruch-div-kehr` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `bruch-div-kehr` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `bruch-div-kehr` | 1 | 2 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `bruch-div-kehr` | 1 | 1 | ✅ | Distraktor: statt Kehrwert direkt dividiert |
+| 10 | 1 | transfer           | matching         | `bruch-div-kehr`, `bruch-mult` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `doppelbruch` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `doppelbruch` | 1 | 2 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `doppelbruch` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `doppelbruch` | 1 | 1 | ✅ | Distraktor: Zähler und Nenner falsch gruppiert |
+| 15 | 2 | transfer           | number-input     | `doppelbruch` | 1 | 1 | ✅ | Doppelbruch auflösen (ggT-Kürzung folgt in SG 3) |
+| 16 | 3 | recognize          | true-false       | `ggt-kuerzen` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `ggt-kuerzen` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `ggt-kuerzen` | 1 | 2 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `ggt-kuerzen` | 1 | 1 | ✅ | Distraktor: nicht vollständig gekürzt |
+| 20 | 3 | transfer           | sorting          | `ggt-kuerzen` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-2': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 

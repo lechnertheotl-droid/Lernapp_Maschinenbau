@@ -217,6 +217,7 @@ export const exercises_alg_u0 = {
     hints: [
       'Ein Gegenbeispiel reicht, um eine Regel zu widerlegen.',
       'Teste $\\tfrac{1}{2} + \\tfrac{1}{2}$ — wird das $1$ oder $\\tfrac{2}{4}$?',
+      'Korrekt ist $\\tfrac{a}{b} + \\tfrac{c}{d} = \\tfrac{ad + cb}{bd}$ — die behauptete Regel ignoriert das.',
     ],
       pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['kgv-hauptnenner'] },
 },
@@ -239,6 +240,7 @@ export const exercises_alg_u0 = {
 **Typischer Fehler:** Zähler addieren vor dem Gleichnamigmachen — liefert falsches Ergebnis.`,
     hints: [
       'Addition braucht erst gleiche Nenner.',
+      'Erweitern heißt: Zähler UND Nenner mit demselben Faktor multiplizieren.',
       'Erst am Ende schauen, ob sich das Ergebnis kürzen lässt.',
     ],
       pedagogy: { stage: 'transfer', subGoal: 0, uses: ['kgv-hauptnenner'] },
