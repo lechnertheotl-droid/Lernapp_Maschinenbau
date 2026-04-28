@@ -103,7 +103,7 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
 | Aufgaben (gesamt) | 2372 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1501 (63 %) | 100 % der Aufgaben | 🟡 |
+| Aufgaben mit 4-Block | 1502 (63 %) | 100 % der Aufgaben | 🟡 |
 | MC mit wrongAnswerExplanations | 1072 / 1072 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
@@ -127,7 +127,7 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
 - Aufgaben: **625** (Lesson-Path: 112 · Goal-Tasks: 513)
-- 4-Block: 580/625 (93 %) 🟡
+- 4-Block: 581/625 (93 %) 🟡
 - MC-wAE: 272/272 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
@@ -183,7 +183,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | `alg-2-1` Lineare Gleichungen | 4 | 4/4 | 35 | 14/11/5/2/3 | 35/35 | 14/14 | ✅ | — |
 | `alg-2-2` Quadratische Gleichungen | 4 | 4/4 | 35 | 15/12/4/3/1 | 35/35 | 15/15 | ✅ | — |
 | `alg-2-3` Polynomgleichungen & Polynomdivision | 6 | 6/6 | 41 | 18/12/6/3/2 | 41/41 | 18/18 | ✅ | — |
-| `alg-2-4` Ungleichungen | 6 | 6/6 | 35 | 18/5/5/4/3 | 34/35 | 18/18 | ✅ | +1 4B |
+| `alg-2-4` Ungleichungen | 6 | 6/6 | 35 | 18/5/5/4/3 | 35/35 | 18/18 | ✅ | — |
 | `alg-3-1` Funktionsbegriff | 3 | 3/3 | 20 | 13/0/4/3/0 | 16/20 | 13/13 | ✅ | +4 4B |
 | `alg-3-2` Elementare Funktionen | 6 | 6/6 | 36 | 18/4/5/8/1 | 31/36 | 18/18 | ✅ | +5 4B |
 | `alg-3-3` Funktionsoperationen | 6 | 6/6 | 34 | 20/2/5/6/1 | 32/34 | 20/20 | ✅ | +2 4B |
@@ -11351,7 +11351,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 34 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 33 Lessons
 
 #### `alg-3-1` · Funktionsbegriff
 
@@ -12553,66 +12553,6 @@ npm run build              # abschließender End-zu-End-Check
 
 - **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-3-3': { 0: [...], 1: [...], ... }`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-3-c`, `ex-alg-3-3-mastery`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
-#### `alg-2-4` · Ungleichungen
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-2-1` → `iso-variable`, `koeff-dividieren`
-  - `alg-2-2` → `faktor-form`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `ungl-zeichen-flip` — Multiplikation/Division mit negativer Zahl → $<$ und $>$ tauschen (SG 0)
-  2. `betrag-kleiner` — $|x-a|<b \iff a-b < x < a+b$ (SG 1)
-  3. `betrag-groesser` — $|x-a|>b \iff x<a-b$ ODER $x>a+b$ ⇐ `betrag-kleiner` (SG 2)
-  4. `vz-tabelle` — Vorzeichentabelle für quadratische Ungleichungen (SG 3)
-  5. `intervall-notation` — Intervall-Notation $(-\infty, a) \cup (b, \infty)$ ⇐ `vz-tabelle` (SG 4)
-  6. `bruch-ungl-pol` — Bruchungleichung: Polstellen separat betrachten ⇐ `vz-tabelle`, `ungl-zeichen-flip` (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `ungl-zeichen-flip` · **5/5+** — Multiplikation/Division mit negativer Zahl: Ungleichheitszeichen umdrehen!
-  - ✅ [1] _hoch_ · Konzepte: `betrag-kleiner` · **5/5+** — Betragsungleichung $|x - a| < b$: $a - b < x < a + b$
-  - ✅ [2] _hoch_ · Konzepte: `betrag-groesser` · **5/5+** — Betragsungleichung $|x - a| > b$: $x < a - b$ ODER $x > a + b$
-  - ✅ [3] _hoch_ · Konzepte: `vz-tabelle` · **5/5+** — Quadratische Ungleichung: Nullstellen finden, Vorzeichentabelle aufstellen, Bereiche ablesen
-  - ✅ [4] _mittel_ · Konzepte: `intervall-notation` · **5/5+** — Lösungsmenge im Intervall-Notation: $(-\infty, a) \cup (b, \infty)$ statt $x < a$ oder $x > b$
-  - ✅ [5] _mittel_ · Konzepte: `bruch-ungl-pol` · **5/5+** — Bruchungleichungen: Polstellen des Nenners separat betrachten, nicht quer-multiplizieren
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `ungl-zeichen-flip` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `ungl-zeichen-flip` | 1 | 2 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `ungl-zeichen-flip` | 1 | 1 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `ungl-zeichen-flip` | 1 | 2 | ✅ | Distraktor: Zeichen nicht getauscht |
-|  5 | 0 | transfer           | sorting          | `ungl-zeichen-flip` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `betrag-kleiner` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `betrag-kleiner` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `betrag-kleiner` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `betrag-kleiner` | 1 | 1 | ✅ |  |
-| 10 | 1 | transfer           | matching         | `betrag-kleiner` | 1 | 1 | ✅ |  |
-| 11 | 2 | recognize          | true-false       | `betrag-groesser` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `betrag-groesser` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `betrag-groesser` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `betrag-groesser`, `betrag-kleiner` | 1 | 1 | ✅ | Distraktor: ODER als UND behandelt |
-| 15 | 2 | transfer           | matching         | `betrag-groesser`, `betrag-kleiner` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | true-false       | `vz-tabelle` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `vz-tabelle` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `vz-tabelle` | 1 | 1 | ✅ |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `vz-tabelle` | 1 | 1 | ✅ |  |
-| 20 | 3 | transfer           | sorting          | `vz-tabelle` | 1 | 1 | ✅ |  |
-| 21 | 4 | recognize          | matching         | `intervall-notation` | 1 | 1 | ✅ |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `intervall-notation` | 1 | 1 | ✅ |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `intervall-notation`, `vz-tabelle` | 1 | 1 | ✅ |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `intervall-notation` | 1 | 1 | ✅ | Distraktor: offene vs. geschlossene Grenze verwechselt |
-| 25 | 4 | transfer           | matching         | `intervall-notation` | 1 | 1 | ✅ |  |
-| 26 | 5 | recognize          | true-false       | `bruch-ungl-pol` | 1 | 1 | ✅ |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `bruch-ungl-pol` | 1 | 1 | ✅ |  |
-| 28 | 5 | apply-independent  | number-input     | `bruch-ungl-pol` | 1 | 1 | ✅ |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `bruch-ungl-pol` | 1 | 1 | ✅ | Distraktor: quer-multipliziert ohne Fallunterscheidung |
-| 30 | 5 | transfer           | sorting          | `bruch-ungl-pol` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-2-4': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-2-4-d`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 

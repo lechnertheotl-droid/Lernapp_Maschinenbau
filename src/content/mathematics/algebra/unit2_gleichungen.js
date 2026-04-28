@@ -533,9 +533,9 @@ $$-3x < 12 \\quad | : (-3) \\; (\\text{negativ! Zeichen dreht}) \\\\ x > -4$$
 **Rechnung:**
 $$|x - 3| < 5 \\; \\Leftrightarrow \\; -5 < x - 3 < 5 \\quad | +3 \\; (\\text{in allen drei Teilen}) \\\\ -2 < x < 8$$
 
-**Geometrische Deutung:** $|x - 3|$ ist der Abstand von $x$ zum Mittelpunkt $3$. Die Ungleichung $|x - 3| < 5$ beschreibt alle $x$, deren Abstand zu $3$ kleiner als $5$ ist — also das offene Intervall $(3-5,\\, 3+5) = (-2, 8)$.
+**Geometrische Deutung:** $|x - 3|$ ist der Abstand von $x$ zum Mittelpunkt $3$. Die Ungleichung beschreibt alle $x$, deren Abstand zu $3$ kleiner als $5$ ist — das offene Intervall $(3-5,\\, 3+5) = (-2, 8)$.
 
-**Probe:** $x = 0$: $|0 - 3| = 3 < 5$ ✓. $\\quad x = 8$: $|8 - 3| = 5$, *nicht* $< 5$. Korrekt: $8$ ist nicht in der Lösung.
+**Probe:** $x = 0$: $|0 - 3| = 3 < 5$ ✓. $\\quad x = 8$: $|8 - 3| = 5$, *nicht* $< 5$ — $8$ ist nicht in der Lösung.
 
 **Typischer Fehler:** Antwort A ($x < 8$) übersieht die untere Grenze. Antwort D ($-5 < x < 5$) addiert die $+3$ nicht korrekt. Merke: immer beide Ränder mitverschieben.`,
     wrongAnswerExplanations: {
@@ -548,7 +548,7 @@ $$|x - 3| < 5 \\; \\Leftrightarrow \\; -5 < x - 3 < 5 \\quad | +3 \\; (\\text{in
       'Setze ein und löse die Doppelungleichung: $-5 < x - 3 < 5$.',
       'Addiere in allen drei Teilen $+3$: $-5 + 3 < x < 5 + 3$, also $-2 < x < 8$.',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['ungl-zeichen-flip'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 1, uses: ['betrag-kleiner'] },
 },
   'ex-alg-2-4-d': {
     id: 'ex-alg-2-4-d', lessonId: 'alg-2-4', type: 'multiple-choice',
@@ -557,12 +557,7 @@ $$|x - 3| < 5 \\; \\Leftrightarrow \\; -5 < x - 3 < 5 \\quad | +3 \\; (\\text{in
     correctIndex: 1,
     explanation: `**Ansatz:** Faktorisieren, Nullstellen bestimmen, Vorzeichentabelle — oder geometrisch über die Parabel.
 
-**Schritt 1 — Faktorisieren:** Dritte binomische Formel liefert
-$$x^{2} - 4 = (x-2)(x+2)$$
-
-Die kritischen Stellen sind $x = -2$ und $x = 2$.
-
-**Schritt 2 — Vorzeichentabelle** (für jeden Teilbereich das Vorzeichen der Faktoren bestimmen):
+**Rechnung:** Dritte binomische Formel liefert $x^{2} - 4 = (x-2)(x+2)$, kritische Stellen $x=-2$ und $x=2$. Vorzeichentabelle (Faktoren in jedem Teilbereich):
 
 | Bereich | $x+2$ | $x-2$ | Produkt |
 |---|---|---|---|
@@ -570,11 +565,7 @@ Die kritischen Stellen sind $x = -2$ und $x = 2$.
 | $-2 < x < 2$ | $+$ | $-$ | $-$ |
 | $x > 2$ | $+$ | $+$ | $+$ |
 
-Gesucht ist "Produkt $> 0$" — das trifft in $x < -2$ und $x > 2$ zu.
-
-**Lösungsmenge:** $\\mathbb{L} = (-\\infty, -2) \\cup (2, \\infty)$.
-
-**Geometrische Deutung:** Die Parabel $y = x^{2} - 4$ ist nach oben offen mit Nullstellen $\\pm 2$. Sie liegt genau *außerhalb* des Intervalls $[-2, 2]$ über der $x$-Achse.
+Produkt $> 0$ ist erfüllt in $x < -2$ und $x > 2$. Lösungsmenge: $\\mathbb{L} = (-\\infty, -2) \\cup (2, \\infty)$. Geometrisch: Die nach oben offene Parabel liegt genau außerhalb $[-2, 2]$ über der $x$-Achse.
 
 **Probe:** $x = 3$: $9 - 4 = 5 > 0$ ✓. $x = 0$: $0 - 4 = -4$, nicht $> 0$. ✓
 
@@ -589,7 +580,7 @@ Gesucht ist "Produkt $> 0$" — das trifft in $x < -2$ und $x > 2$ zu.
       'Nullstellen sind $x = -2$ und $x = 2$. Zwischen und außerhalb gelten unterschiedliche Vorzeichen.',
       'Ein Produkt ist positiv, wenn beide Faktoren dasselbe Vorzeichen haben — das passiert für $x < -2$ *oder* $x > 2$.',
     ],
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['ungl-zeichen-flip'] },
+      pedagogy: { stage: 'error-analysis', subGoal: 3, uses: ['vz-tabelle'] },
 },
   'ex-alg-2-4-mastery': {
     id: 'ex-alg-2-4-mastery', lessonId: 'alg-2-4', type: 'multiple-choice', isMasteryCheck: true,
@@ -618,7 +609,7 @@ $$|2x + 1| \\leq 7 \\; \\Leftrightarrow \\; -7 \\leq 2x + 1 \\leq 7 \\quad | -1 
       'Subtrahiere in allen drei Teilen $1$: $-8 \\leq 2x \\leq 6$.',
       'Teile durch $2$ (positiv, kein Umdrehen): $-4 \\leq x \\leq 3$.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['ungl-zeichen-flip'] },
+      pedagogy: { stage: 'transfer', subGoal: 1, uses: ['betrag-kleiner'] },
 },
 }
 
@@ -1072,6 +1063,34 @@ $$-2x > 6 \\quad \\Rightarrow \\quad x < -3$$
 - Nullstellen: $x = -2, \\; x = 2$
 - Vorzeichen des Produkts: $(-\\infty, -2)$: $+$, $\\;\\;(-2, 2)$: $-$, $\\;\\;(2, \\infty)$: $+$
 - Lösung: $x < -2$ oder $x > 2$`,
+      },
+      {
+        id: 'alg-2-4-s1b', type: 'explanation-intuitive', title: 'Parabel + Vorzeichentabelle = quadratische Ungleichung',
+        content: `Eine quadratische Ungleichung wie $x^{2} - 4 > 0$ liest man am einfachsten **am Graphen ab**:
+
+- Linke Seite: $f(x) = x^{2} - 4$ — eine nach oben offene Parabel mit Nullstellen $x = -2$ und $x = 2$.
+- Gesucht: $f(x) > 0$ — also alle $x$, für die der Graph **oberhalb** der $x$-Achse liegt.
+
+Das ist genau **außerhalb** der Nullstellen: $x < -2$ ODER $x > 2$. Zwischen den Nullstellen liegt die Parabel unter der Achse — dort wäre $x^{2} - 4 < 0$.
+
+In der nächsten Visualisierung kannst du das selbst prüfen: Schau, wo die blaue Kurve über der $x$-Achse liegt.`,
+      },
+      {
+        id: 'alg-2-4-s1c', type: 'visualization',
+        title: 'Wo ist $x^{2} - 4 > 0$?',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => x * x - 4, color: '#3b82f6', label: 'f(x) = x² − 4' },
+          ],
+          xRange: [-4, 4],
+          yRange: [-5, 12],
+          showGrid: true,
+          marks: [
+            { x: -2, y: 0, label: 'x₁ = −2' },
+            { x: 2, y: 0, label: 'x₂ = 2' },
+          ],
+        },
       },
       { id: 'alg-2-4-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-alg-2-4-a' },
       { id: 'alg-2-4-s3', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-alg-2-4-b' },

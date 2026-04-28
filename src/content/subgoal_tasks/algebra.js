@@ -6460,9 +6460,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
         0,
         `**Ansatz:** Beide Seiten $:-3$, Zeichen umdrehen.
 
-**Rechnung:** $-3x \\geq 12 \\Rightarrow x \\leq -4$.
+**Rechnung:** $-3x \\geq 12 \\Rightarrow x \\leq -4$ (Division durch $-3$ flippt $\\geq$ zu $\\leq$).
 
-**Probe:** $x = -5$: $-3 \\cdot (-5) = 15 \\geq 12$ ✓.
+**Probe:** $x = -5$: $-3 \\cdot (-5) = 15 \\geq 12$ ✓. $x = 0$: $0 \\geq 12$ ist falsch — passt zu $x \\leq -4$.
 
 **Typischer Fehler:** Zeichen nicht umdrehen.`,
         [
@@ -6471,9 +6471,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Rechte Seite $12/(-3) = -4$.',
         ],
         {
-          1: 'Zeichen nicht umgedreht.',
-          2: 'Vorzeichen falsch.',
-          3: 'Beides falsch.',
+          1: 'Du hast $12/(-3) = -4$ richtig berechnet, aber das Ungleichheitszeichen nicht umgedreht. Bei Division durch eine negative Zahl wird $\\geq$ zu $\\leq$. Probe mit $x = 0$ widerlegt $x \\geq -4$: $-3 \\cdot 0 = 0$ ist nicht $\\geq 12$.',
+          2: 'Du hast $12/(-3) = +4$ statt $-4$ gerechnet (Vorzeichen-Fehler) und das Zeichen umgedreht — beide Korrekturen heben sich nicht auf. Korrekt: Quotient $-4$, Zeichen gedreht, Lösung $x \\leq -4$.',
+          3: 'Du hast das Vorzeichen beim Teilen ignoriert ($+4$ statt $-4$) und das Zeichen *nicht* umgedreht — zwei Fehler. Probe mit $x = 5$: $-3 \\cdot 5 = -15$, nicht $\\geq 12$ — widerlegt $x \\geq 4$.',
         },
         { stage: 'apply-guided', subGoal: 0, uses: ['ungl-zeichen-flip'] },
       ),
@@ -6516,9 +6516,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Zahlentest mit $x = 0$.',
         ],
         {
-          1: 'Mit $2$ multiplizieren liefert nicht die Lösung.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Lineare Ungleichung hat immer Lösung.',
+          1: 'Mit $2$ statt $-2$ zu multiplizieren wäre keine Äquivalenzumformung der Ausgangsungleichung — das Problem ist nicht der Operator, sondern dass beim Teilen durch eine negative Zahl das $<$ kippt. Mit korrekter Division durch $-2$ und Zeichen-Flip: $x > -3$.',
+          2: 'Zahlentest widerlegt die Schülerlösung: $x = 0$ liegt nicht in $x < -3$, aber $-2 \\cdot 0 = 0 < 6$ ✓ — also gehört $0$ zur Lösung. Damit ist $x < -3$ unvollständig (oder verkehrt). Korrekt: $x > -3$.',
+          3: 'Eine lineare Ungleichung mit nicht-verschwindendem Koeffizienten hat immer eine nicht-leere Lösungsmenge — entweder eine Halbgerade nach links oder nach rechts. Hier konkret $x > -3$.',
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['ungl-zeichen-flip'] },
       ),
@@ -6736,9 +6736,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Zahlentest.',
         ],
         {
-          1: 'Zahlen sind richtig, Logik falsch.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Betrag ist $\\geq 0$.',
+          1: 'Die Zahlen $3$ und $7$ sind als Intervallgrenzen richtig — der Schüler hat aber „innerhalb" und „außerhalb" verwechselt. $|x-5| > 2$ heißt **außerhalb** $[3, 7]$, nicht zwischen $3$ und $7$. Reine Zahlenkorrektur reicht hier nicht; die Logik kippt um.',
+          2: 'Zahlentest widerlegt: $x = 4$ liegt in der Schülerlösung $3 < x < 7$, aber $|4-5| = 1$, also $1 > 2$ ist *falsch* — $x=4$ darf nicht in der Lösung sein. Damit ist $3 < x < 7$ definitiv falsch.',
+          3: 'Beträge sind $\\geq 0$, aber das ist hier nicht das Problem — die Ungleichung $|x-5| > 2$ verlangt einen Abstand größer als $2$, was für viele $x$ erfüllbar ist. Der Fehler liegt darin, „außerhalb" mit „innerhalb" zu verwechseln.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['betrag-groesser', 'betrag-kleiner'] },
       ),
@@ -7059,28 +7059,28 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
       mc(
         'Ein Schüler multipliziert $\\dfrac{2}{x} > 1$ mit $x$ zu $2 > x$ und schreibt $x < 2$. Wo liegt der Fehler?',
         [
-          'Er hat nicht beachtet, dass $x < 0$ das Zeichen umdreht. Korrekt: $x < 0$ ODER $0 < x < 2$.',
+          'Er hat ohne Fallunterscheidung mit $x$ multipliziert — für $x < 0$ müsste das Zeichen umdrehen. Korrekt: $0 < x < 2$ (für $x < 0$ ist $2/x < 0 < 1$, keine Lösung).',
           'Die Rechnung ist korrekt.',
-          'Er hätte $x = 0$ ausschließen müssen (er hat es aber nicht).',
+          'Er hätte direkt nach $x$ auflösen müssen: $x > 2$.',
           'Die Ungleichung hat keine Lösung.',
         ],
         0,
-        `**Ansatz:** Beim Multiplizieren mit $x$ muss der Fall $x < 0$ separat behandelt werden.
+        `**Ansatz:** Beim Multiplizieren einer Ungleichung mit $x$ muss man Vorzeichen-Fälle unterscheiden — sonst flippt das Ergebnis im negativen Bereich.
 
-**Rechnung:** Fall $x > 0$: $2 > x \\Rightarrow 0 < x < 2$. Fall $x < 0$: $2 < x$ (Zeichen gedreht), also $x > 2$ UND $x < 0$ — unmöglich. Warte, $2/x > 1$ bei $x < 0$ wäre $2/x$ negativ, also nie $> 1$. Korrekt: $0 < x < 2$.
+**Rechnung:** Fall $x > 0$: $2 > x \\Rightarrow 0 < x < 2$. Fall $x < 0$: aus $\\frac{2}{x} > 1$ wird beim Multiplizieren mit dem negativen $x$ das Zeichen umgedreht: $2 < x$, also $x > 2$. Zusammen mit $x < 0$ ergibt das **keine Lösung** (leerer Schnitt). Polstelle $x = 0$ ist ausgeschlossen. Lösungsmenge: $\\mathbb{L} = (0, 2)$.
 
-**Probe:** $x = 1$: $2 > 1$ ✓.
+**Probe:** $x = 1$: $\\frac{2}{1} = 2 > 1$ ✓. $\\quad x = -1$: $\\frac{2}{-1} = -2$, nicht $> 1$ ✗ — der Bereich $x < 0$ aus der Schülerlösung ist falsch. $\\quad x = 3$: $\\frac{2}{3} \\approx 0{,}67$, nicht $> 1$ ✗ — auch $x > 2$ scheidet aus.
 
-**Typischer Fehler:** Quer-Multiplizieren ohne Fallunterscheidung.`,
+**Typischer Fehler:** Mit dem Nenner quer-multiplizieren, ohne sein Vorzeichen zu prüfen, und dabei zusätzlich die Polstelle übersehen.`,
         [
           'Vorzeichen des Nenners beachten.',
-          'Zwei Fälle.',
+          'Zwei Fälle: $x > 0$ und $x < 0$.',
           'Polstelle $x = 0$ ausschließen.',
         ],
         {
-          1: 'Polstelle muss ausgeschlossen werden.',
-          2: 'Er hat sie implizit übergangen — das ist auch falsch.',
-          3: '$x = 1$: $2 > 1$ ist Lösung.',
+          1: 'Die Schülerrechnung ist nicht korrekt: sie enthält $x = -1$ (wegen $-1 < 2$), aber dort ist $\\frac{2}{-1} = -2$, also *nicht* $> 1$. Außerdem fehlt der Ausschluss der Polstelle $x = 0$. Korrekt ist nur $0 < x < 2$.',
+          2: 'Direkt zu $x > 2$ aufzulösen wäre noch fataler — Probe mit $x = 3$: $\\frac{2}{3} \\approx 0{,}67$, das ist *nicht* $> 1$. Die richtige Lösung liegt zwischen $0$ und $2$, nicht darüber.',
+          3: 'Doch, die Ungleichung hat eine Lösung: $x = 1$ liefert $\\frac{2}{1} = 2 > 1$ ✓. Lösungsmenge ist das Intervall $(0, 2)$.',
         },
         { stage: 'error-analysis', subGoal: 5, uses: ['bruch-ungl-pol'] },
       ),
