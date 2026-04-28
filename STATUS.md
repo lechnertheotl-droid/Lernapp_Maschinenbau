@@ -102,8 +102,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2344 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1460 (62 %) | 100 % der Aufgaben | 🟡 |
+| Aufgaben (gesamt) | 2351 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1472 (63 %) | 100 % der Aufgaben | 🟡 |
 | MC mit wrongAnswerExplanations | 1066 / 1066 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
@@ -126,8 +126,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **597** (Lesson-Path: 112 · Goal-Tasks: 485)
-- 4-Block: 539/597 (90 %) 🟡
+- Aufgaben: **604** (Lesson-Path: 112 · Goal-Tasks: 492)
+- 4-Block: 551/604 (91 %) 🟡
 - MC-wAE: 266/266 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
@@ -179,7 +179,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | `alg-0-4` Termumformung & Gleichungen | 5 | 5/5 | 36 | 12/14/5/2/3 | 36/36 | 12/12 | ✅ | — |
 | `alg-1-1` Potenzgesetze | 4 | 4/4 | 30 | 13/12/4/1/0 | 30/30 | 13/13 | ✅ | — |
 | `alg-1-2` Wurzeln und gebrochene Exponenten | 3 | 3/3 | 24 | 9/9/4/1/1 | 24/24 | 9/9 | ✅ | — |
-| `alg-1-3` Logarithmen | 7 | 7/7 | 40 | 18/13/7/2/0 | 35/40 | 18/18 | ✅ | +5 4B |
+| `alg-1-3` Logarithmen | 7 | 7/7 | 47 | 18/19/8/2/0 | 47/47 | 18/18 | ✅ | — |
 | `alg-2-1` Lineare Gleichungen | 4 | 4/4 | 27 | 11/8/4/1/3 | 27/27 | 11/11 | ✅ | — |
 | `alg-2-2` Quadratische Gleichungen | 4 | 4/4 | 27 | 12/7/4/3/1 | 23/27 | 12/12 | ✅ | +4 4B |
 | `alg-2-3` Polynomgleichungen & Polynomdivision | 6 | 6/6 | 36 | 18/7/6/3/2 | 32/36 | 18/18 | ✅ | +4 4B |
@@ -11351,7 +11351,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 38 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 37 Lessons
 
 #### `alg-3-1` · Funktionsbegriff
 
@@ -13055,73 +13055,6 @@ npm run build              # abschließender End-zu-End-Check
 
 - **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
-#### `alg-1-3` · Logarithmen
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-1-1` → `pot-mult`, `pot-potenz`, `pot-negativ`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `log-def` — $\log_b(x) = y \iff b^y = x$ (für $b>0, b\neq 1, x>0$) (SG 0)
-  2. `log-spezialfaelle` — $\ln$ (Basis $e$), $\log$ (Basis 10), $\log_2$ (Bits) ⇐ `log-def` (SG 0)
-  3. `log-produkt` — Produktregel $\ln(ab) = \ln a + \ln b$ ⇐ `log-def` (SG 1)
-  4. `log-quotient` — Quotientenregel $\ln(a/b) = \ln a - \ln b$ ⇐ `log-produkt` (SG 2)
-  5. `log-potenz` — Potenzregel $\ln(a^n) = n \ln a$ ⇐ `log-produkt` (SG 3)
-  6. `log-basiswechsel` — Basiswechsel $\log_b x = \ln x / \ln b$ ⇐ `log-def`, `log-potenz` (SG 4)
-  7. `log-summe-nein` — $\ln(a+b) \neq \ln a + \ln b$ — keine Linearität ⇐ `log-produkt` (SG 5)
-  8. `log-umkehr` — $e^{\ln x} = x$ und $\ln(e^x) = x$ — Umkehrfunktions-Identität ⇐ `log-def` (SG 6)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `log-def`, `log-spezialfaelle` · **5/5+** — Definition: $\log_b x = y \iff b^y = x$ (für $b>0, b\neq 1, x>0$)
-  - ✅ [1] _hoch_ · Konzepte: `log-produkt` · **5/5+** — Produktregel: $\ln(ab) = \ln a + \ln b$
-  - ✅ [2] _hoch_ · Konzepte: `log-quotient` · **5/5+** — Quotientenregel: $\ln(a/b) = \ln a - \ln b$
-  - ✅ [3] _hoch_ · Konzepte: `log-potenz` · **5/5+** — Potenzregel: $\ln(a^n) = n \ln a$
-  - ✅ [4] _hoch_ · Konzepte: `log-basiswechsel` · **5/5+** — Basiswechsel: $\log_b x = \ln x / \ln b$
-  - ✅ [5] _hoch_ · Konzepte: `log-summe-nein` · **5/5+** — Typische Falle: $\ln(a+b) \neq \ln a + \ln b$ (kein Logarithmusgesetz für Summen)
-  - ✅ [6] _hoch_ · Konzepte: `log-umkehr` · **5/5+** — Exp-Log-Umkehrung: $e^{\ln x} = x$ (für $x > 0$), $\ln(e^x) = x$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `log-def` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `log-def` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `log-def` | 1 | 1 | ✅ | $\log_2 32$ |
-|  4 | 0 | error-analysis     | multiple-choice  | `log-def` | 1 | 2 | ✅ |  |
-|  5 | 0 | transfer           | matching         | `log-spezialfaelle` | 1 | 1 | ✅ | Basis ↔ Anwendungskontext |
-|  6 | 1 | recognize          | true-false       | `log-produkt` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `log-produkt` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `log-produkt` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `log-produkt` | 1 | 1 | ✅ |  |
-| 10 | 1 | transfer           | number-input     | `log-produkt` | 1 | 1 | ✅ |  |
-| 11 | 2 | recognize          | true-false       | `log-quotient` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `log-quotient` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `log-quotient`, `log-produkt` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `log-quotient` | 1 | 1 | ✅ |  |
-| 15 | 2 | transfer           | number-input     | `log-quotient`, `log-produkt` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | true-false       | `log-potenz` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `log-potenz` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `log-potenz` | 1 | 1 | ✅ |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `log-potenz` | 1 | 1 | ✅ | Distraktor: Potenz mit Exponent multipliziert |
-| 20 | 3 | transfer           | number-input     | `log-potenz`, `log-produkt` | 1 | 1 | ✅ |  |
-| 21 | 4 | recognize          | true-false       | `log-basiswechsel` | 1 | 1 | ✅ |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `log-basiswechsel` | 1 | 1 | ✅ |  |
-| 23 | 4 | apply-independent  | number-input     | `log-basiswechsel` | 1 | 1 | ✅ |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `log-basiswechsel` | 1 | 1 | ✅ |  |
-| 25 | 4 | transfer           | number-input     | `log-basiswechsel` | 1 | 1 | ✅ | Halbwertszeit / Zinseszins |
-| 26 | 5 | recognize          | true-false       | `log-summe-nein` | 1 | 1 | ✅ |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `log-summe-nein` | 1 | 1 | ✅ |  |
-| 28 | 5 | apply-independent  | multiple-choice  | `log-summe-nein` | 1 | 1 | ✅ | Aus Alternativ-Umformungen die richtige wählen |
-| 29 | 5 | error-analysis     | multiple-choice  | `log-summe-nein` | 1 | 1 | ✅ | Distraktor: Summe in Produkt zerlegt |
-| 30 | 5 | transfer           | matching         | `log-summe-nein`, `log-produkt` | 1 | 1 | ✅ | Erlaubte vs. verbotene Umformung |
-| 31 | 6 | recognize          | true-false       | `log-umkehr` | 1 | 1 | ✅ |  |
-| 32 | 6 | apply-guided       | multiple-choice  | `log-umkehr` | 1 | 1 | ✅ |  |
-| 33 | 6 | apply-independent  | number-input     | `log-umkehr` | 1 | 1 | ✅ | $e^x = 5$ lösen |
-| 34 | 6 | error-analysis     | multiple-choice  | `log-umkehr` | 1 | 1 | ✅ |  |
-| 35 | 6 | transfer           | number-input     | `log-umkehr`, `log-potenz` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-1-3': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-1-3-a`, `ex-alg-1-3-b`, `ex-alg-1-3-c`, `ex-alg-1-3-d`, `ex-alg-1-3-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-4-2` · Prüfung: Funktionen & Anwendungen

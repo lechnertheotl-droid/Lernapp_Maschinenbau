@@ -3492,6 +3492,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['log-def'] },
       ),
+      // Zusatz-Aufgabe SG 0: apply-independent · number-input · uses=[log-def]
+      // Logarithmus mit Basis 10 — testet log-def im dekadischen Standardfall.
+      ni(
+        'Berechne $\\log_{10}(10\\,000)$.',
+        4, 0, '',
+        `**Ansatz:** $\\log_{10}(x) = y$ heißt $10^{y} = x$. Welche Zehnerpotenz ist $10\\,000$?
+
+**Rechnung:** $10\\,000 = 10^{4}$, also $\\log_{10}(10\\,000) = 4$.
+
+**Probe:** $10 \\cdot 10 \\cdot 10 \\cdot 10 = 10\\,000$. ✓ Generell: $\\log_{10}(10^{n}) = n$ — Anzahl der Nullen einer Zehnerpotenz.
+
+**Typischer Fehler:** $10\\,000/10 = 1000$ rechnen — Logarithmus ist keine Division. Oder Zehnerpotenz falsch zählen ($10^{5}$ wäre $100\\,000$, $10^{3}$ ist $1000$).`,
+        [
+          'Wie oft passt $10$ in $10\\,000$ als Faktor?',
+          'Schreibe $10\\,000$ als Zehnerpotenz.',
+          'Anzahl der Nullen $=$ Logarithmus zur Basis $10$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['log-def'] },
+      ),
       matching(
         'Ordne jeder Basis den typischen Anwendungskontext zu.',
         [
@@ -3602,6 +3621,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['log-produkt'] },
       ),
+      // Zusatz-Aufgabe SG 1: apply-independent · number-input · uses=[log-produkt]
+      // Produktregel über drei Faktoren — testet iterierte Anwendung.
+      ni(
+        'Vereinfache $\\log_2(2) + \\log_2(4) + \\log_2(8)$ als ganze Zahl.',
+        6, 0, '',
+        `**Ansatz:** Drei Logarithmus-Summen zusammenfassen — Produktregel kann auf beliebig viele Faktoren ausgedehnt werden: $\\log_b(a_1 \\cdot a_2 \\cdot a_3) = \\log_b(a_1) + \\log_b(a_2) + \\log_b(a_3)$.
+
+**Rechnung:** $\\log_2(2) + \\log_2(4) + \\log_2(8) = \\log_2(2 \\cdot 4 \\cdot 8) = \\log_2(64) = 6$. Direkt: $1 + 2 + 3 = 6$.
+
+**Probe:** $2 \\cdot 4 \\cdot 8 = 64 = 2^{6}$. ✓ Beide Wege liefern $6$.
+
+**Typischer Fehler:** Logarithmen multiplizieren statt addieren: $1 \\cdot 2 \\cdot 3 = 6$ — zufällig richtige Zahl, aber falscher Weg. Bei anderen Werten ($\\log_2(2) + \\log_2(8) = 1+3 = 4$ vs. $1 \\cdot 3 = 3$) zeigt sich der Fehler.`,
+        [
+          'Produktregel $\\to$ Summe von Logs ist Log des Produkts.',
+          'Direktrechnung: $\\log_2(2) = 1$, $\\log_2(4) = 2$, $\\log_2(8) = 3$.',
+          '$1 + 2 + 3 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['log-produkt'] },
+      ),
       ni(
         'Vereinfache $\\ln(4) + \\ln(25)$ als $\\ln(\\text{Zahl})$ und gib diese Zahl an.',
         100, 0, '',
@@ -3706,6 +3744,25 @@ export const algebraSubGoalTasks = {
           3: '$\\ln$ ist für alle positiven Argumente definiert, auch $10/2$.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['log-quotient'] },
+      ),
+      // Zusatz-Aufgabe SG 2: apply-independent · number-input · uses=[log-quotient, log-produkt]
+      // Quotient + Produkt kombiniert — testet Reihenfolge der Regeln in einem Ausdruck.
+      ni(
+        'Vereinfache $\\log_2(48) - \\log_2(3)$ als ganze Zahl.',
+        4, 0, '',
+        `**Ansatz:** Differenz von Logarithmen $\\to$ Quotient. Dann Direktrechnung.
+
+**Rechnung:** $\\log_2(48) - \\log_2(3) = \\log_2(48/3) = \\log_2(16) = 4$ (da $2^{4} = 16$).
+
+**Probe:** $48/3 = 16$. $\\log_2(16) = 4$ direkt. Numerisch: $\\log_2(48) \\approx 5{,}585$ und $\\log_2(3) \\approx 1{,}585$. Differenz $\\approx 4$. ✓
+
+**Typischer Fehler:** Argumente subtrahieren: $\\log_2(48 - 3) = \\log_2(45)$ — Quotientenregel ist nicht „Subtraktion der Argumente", sondern „Division". Oder die Logs einzeln berechnen, was ohne Taschenrechner schwierig ist.`,
+        [
+          'Differenz von Logs $\\to$ Quotient: $\\log_b(a) - \\log_b(c) = \\log_b(a/c)$.',
+          '$48/3 = 16$.',
+          '$\\log_2(16) = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['log-quotient', 'log-produkt'] },
       ),
       ni(
         'Vereinfache $\\ln(30) - \\ln(5) - \\ln(2)$ als $\\ln(\\text{Zahl})$ und gib diese Zahl an.',
@@ -3812,6 +3869,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['log-potenz'] },
       ),
+      // Zusatz-Aufgabe SG 3: apply-independent · number-input · uses=[log-potenz]
+      // Wurzel als Bruchpotenz im Argument — testet log-potenz mit Bruchexponenten.
+      ni(
+        'Vereinfache $\\log_3(\\sqrt{27})$ als Dezimalzahl (eine Nachkommastelle).',
+        1.5, 0.05, '',
+        `**Ansatz:** Wurzel als Bruchpotenz schreiben, dann Potenzregel: $\\log_b(\\sqrt[n]{a}) = \\log_b(a^{1/n}) = \\tfrac{1}{n} \\log_b(a)$.
+
+**Rechnung:** $\\sqrt{27} = 27^{1/2}$. $\\log_3(27^{1/2}) = \\tfrac{1}{2} \\log_3(27) = \\tfrac{1}{2} \\cdot 3 = 1{,}5$.
+
+**Probe:** $3^{1{,}5} = 3 \\cdot \\sqrt{3} \\approx 5{,}196 \\approx \\sqrt{27} \\approx 5{,}196$. ✓
+
+**Typischer Fehler:** Wurzel als „normale Funktion" behandeln und nicht als Bruchpotenz erkennen — dann scheitert die Potenzregel-Anwendung. Oder $\\log_3(\\sqrt{27}) = \\sqrt{\\log_3(27)} = \\sqrt{3} \\approx 1{,}73$ rechnen — Wurzel auf den Logarithmus statt aufs Argument.`,
+        [
+          'Wurzel als Bruchpotenz: $\\sqrt{a} = a^{1/2}$.',
+          'Potenzregel: $\\log_b(a^{n}) = n \\cdot \\log_b(a)$.',
+          '$\\log_3(27) = 3$, also $\\tfrac{1}{2} \\cdot 3 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['log-potenz'] },
+      ),
       ni(
         'Vereinfache $\\ln(a^2 b^3) - \\ln(a b)$ und drücke das Ergebnis als Faktor$\\cdot \\ln a +$ Faktor$\\cdot \\ln b$ aus. Gib den Koeffizienten von $\\ln b$ an.',
         2, 0, '',
@@ -3916,6 +3992,25 @@ export const algebraSubGoalTasks = {
           3: 'Der Basiswechsel funktioniert mit jeder Basis.',
         },
         { stage: 'error-analysis', subGoal: 4, uses: ['log-basiswechsel'] },
+      ),
+      // Zusatz-Aufgabe SG 4: apply-independent · number-input · uses=[log-basiswechsel]
+      // Basiswechsel mit Taschenrechner-typischer Aufgabe — testet konkrete numerische Auswertung.
+      ni(
+        'Berechne $\\log_2(50)$ mit dem Basiswechsel und $\\ln$ auf 3 Dezimalen.',
+        5.644, 0.01, '',
+        `**Ansatz:** Basiswechsel: $\\log_b(x) = \\dfrac{\\ln(x)}{\\ln(b)}$. Damit lässt sich jeder Logarithmus mit dem Taschenrechner ($\\ln$ oder $\\log$) berechnen.
+
+**Rechnung:** $\\log_2(50) = \\dfrac{\\ln(50)}{\\ln(2)} \\approx \\dfrac{3{,}912}{0{,}693} \\approx 5{,}644$.
+
+**Probe:** $2^{5{,}644} \\approx 49{,}99 \\approx 50$. ✓ Plausibel: $2^{5} = 32$ und $2^{6} = 64$, also liegt $\\log_2(50)$ zwischen $5$ und $6$ — näher bei $6$ (denn $50$ liegt näher an $64$ als an $32$).
+
+**Typischer Fehler:** Zähler und Nenner vertauschen: $\\ln(2)/\\ln(50) \\approx 0{,}177$ — der Kehrwert. Oder $\\log_{10}/\\log_{10}$ (also $\\log_b(x) = \\log(x)/\\log(b)$) verwechseln: liefert numerisch dasselbe, ist aber konzeptuell ok.`,
+        [
+          'Basiswechsel: $\\log_b(x) = \\ln(x)/\\ln(b)$ — Basis im Nenner.',
+          '$\\ln(50) \\approx 3{,}912$, $\\ln(2) \\approx 0{,}693$.',
+          'Sanity-Check: Antwort sollte zwischen $5$ und $6$ liegen.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['log-basiswechsel'] },
       ),
       ni(
         'Eine radioaktive Substanz hat Halbwertszeit $T_{1/2} = 10\\,\\text{Jahre}$. Nach wie vielen Jahren sind nur noch $12{,}5\\%$ übrig? (ganze Zahl)',
@@ -4038,6 +4133,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 5, uses: ['log-summe-nein'] },
       ),
+      // Zusatz-Aufgabe SG 5: recognize · true-false · uses=[log-summe-nein, log-produkt]
+      // Direkter Vergleich Produkt vs. Summe — testet Unterscheidung der beiden Fälle.
+      tf(
+        'Es gilt $\\ln(5) + \\ln(2) = \\ln(7)$ — die Logarithmen lassen sich addieren wie ihre Argumente.',
+        false,
+        `**Ansatz:** Die Aussage verwechselt zwei verschiedene Operationen: tatsächliche Addition der Logarithmen entspricht der Multiplikation der Argumente, nicht der Addition.
+
+**Rechnung:** Korrekt: $\\ln(5) + \\ln(2) = \\ln(5 \\cdot 2) = \\ln(10) \\neq \\ln(7)$. Behauptung wäre nur korrekt, wenn $\\ln$ linear wäre — ist es nicht.
+
+**Probe:** Numerisch: $\\ln(5) \\approx 1{,}609$, $\\ln(2) \\approx 0{,}693$. Summe $\\approx 2{,}303$. Das ist $\\ln(10)$, nicht $\\ln(7) \\approx 1{,}946$.
+
+**Typischer Fehler:** „Hinten in der Klammer kann ich addieren wie die Argumente" — falsch. Addition der Logarithmen $\\Rightarrow$ Multiplikation der Argumente (Produktregel).`,
+        [
+          'Produktregel: $\\ln(a) + \\ln(b) = \\ln(a \\cdot b)$, nicht $\\ln(a + b)$.',
+          'Was ist $5 \\cdot 2$? Das ist das Argument im zusammengefassten Log.',
+          'Numerisch prüfen: $\\ln(7) \\approx 1{,}95$ vs. $\\ln(10) \\approx 2{,}30$.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['log-summe-nein', 'log-produkt'] },
+      ),
       matching(
         'Ordne jede Umformung als "korrekt" oder "falsch" zu.',
         [
@@ -4148,6 +4262,25 @@ export const algebraSubGoalTasks = {
           3: 'Gleichung ist perfekt lösbar.',
         },
         { stage: 'error-analysis', subGoal: 6, uses: ['log-umkehr'] },
+      ),
+      // Zusatz-Aufgabe SG 6: apply-independent · number-input · uses=[log-umkehr]
+      // Exponentialgleichung mit nicht-trivialem Argument — testet Umkehr-Identität in Anwendung.
+      ni(
+        'Löse $e^{x+2} = 10$ nach $x$ und gib das Ergebnis auf 3 Dezimalen an.',
+        0.303, 0.01, '',
+        `**Ansatz:** Beide Seiten logarithmieren — auf der linken Seite hebt $\\ln$ das $e$ auf: $\\ln(e^{x+2}) = x + 2$.
+
+**Rechnung:** $\\ln(e^{x+2}) = \\ln(10) \\Rightarrow x + 2 = \\ln(10) \\approx 2{,}303 \\Rightarrow x \\approx 0{,}303$.
+
+**Probe:** $e^{0{,}303 + 2} = e^{2{,}303} \\approx 10$. ✓
+
+**Typischer Fehler:** $\\ln$ nur auf das $e^{x}$ anwenden, $+2$ stehen lassen: $x = \\ln(10) - 2$? Stimmt zufällig — aber die korrekte Anwendung der Umkehr-Identität ist $\\ln(e^{x+2}) = x+2$ und dann erst umstellen. Andere Falle: $\\ln(10) = 1$ annehmen (das wäre $\\log_{10}(10) = 1$, aber $\\ln(10) \\approx 2{,}303$).`,
+        [
+          'Umkehr-Identität: $\\ln(e^{a}) = a$ — gilt für jeden Exponenten $a$.',
+          'Beide Seiten $\\ln$: $x + 2 = \\ln(10)$.',
+          '$\\ln(10) \\approx 2{,}303$ — zentrale Zahl, lohnt sich zu merken.',
+        ],
+        { stage: 'apply-independent', subGoal: 6, uses: ['log-umkehr'] },
       ),
       ni(
         'Löse $e^{2x} = 64$ nach $x$. Nutze $\\ln(64) = 6\\ln(2)$. Gib die Antwort als Bruch (auf 3 Dezimalen umgerechnet).',

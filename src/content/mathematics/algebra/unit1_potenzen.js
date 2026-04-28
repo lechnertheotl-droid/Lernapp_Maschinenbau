@@ -262,11 +262,13 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
     id: 'ex-alg-1-3-a', lessonId: 'alg-1-3', type: 'number-input',
     question: 'Berechne: $\\log_{2}(8)$',
     correctValue: 3, tolerance: 0, unit: '',
-    explanation: `**Ansatz:** $\\log_{2}(8) = y$ bedeutet: "$2$ hoch wie viel ergibt $8$?"
+    explanation: `**Ansatz:** $\\log_{2}(8) = y$ bedeutet: "$2$ hoch wie viel ergibt $8$?" Definition: $\\log_{b}(x) = y \\Leftrightarrow b^{y} = x$.
 
 **Rechnung:** $2^{y} = 8 = 2^{3} \\Rightarrow y = 3$.
 
-**Definition:** $\\log_{b}(x) = y \\Leftrightarrow b^{y} = x$.`,
+**Probe:** $2^{3} = 2 \\cdot 2 \\cdot 2 = 8$. ✓
+
+**Typischer Fehler:** $8/2 = 4$ rechnen — Logarithmus ist keine Division. Oder Basis und Argument vertauschen: $\\log_{8}(2) = 1/3$ ergeben.`,
     hints: [
       'Der Logarithmus fragt: "$\\text{Basis}^{?} = \\text{Argument}$".',
       'Hier: $2^{?} = 8$.',
@@ -278,13 +280,13 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
     id: 'ex-alg-1-3-b', lessonId: 'alg-1-3', type: 'number-input',
     question: 'Berechne: $\\ln(e^{3})$',
     correctValue: 3, tolerance: 0, unit: '',
-    explanation: `**Ansatz:** $\\ln$ und $e^{x}$ sind Umkehrfunktionen voneinander.
+    explanation: `**Ansatz:** $\\ln$ und $e^{x}$ sind Umkehrfunktionen voneinander. Regel: $\\ln(e^{x}) = x$ für alle reellen $x$.
 
-**Regel:** $\\ln(e^{x}) = x$ für alle reellen $x$.
+**Rechnung:** $\\ln(e^{3}) = 3$ direkt aus der Umkehr-Identität.
 
-**Rechnung:** $\\ln(e^{3}) = 3$.
+**Probe:** $e^{3} \\approx 20{,}086$; $\\ln(20{,}086) \\approx 3$. ✓ Die Identität funktioniert auf jedem $x \\in \\mathbb{R}$.
 
-**Merke:** Das ist die wichtigste Eigenschaft des natürlichen Logarithmus — sie macht $e^{x}$ und $\\ln$ zu einem Werkzeug für Wachstums- und Abklingprozesse (DGL, Radioaktivität, RC-Glied).`,
+**Typischer Fehler:** $\\ln$ als Multiplikation lesen: $\\ln(e^{3}) = \\ln \\cdot e \\cdot 3 = 3 \\ln e$. Stimmt zwar formal ($3 \\ln e = 3$), aber zeigt, dass die Umkehr-Identität nicht erkannt wurde — bei $\\ln(2^{3})$ scheitert dieser Weg.`,
     hints: [
       '$\\ln$ ist der Logarithmus zur Basis $e$.',
       'Welche Zahl muss $e$ hoch stehen, um $e^{3}$ zu ergeben?',
@@ -297,11 +299,11 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
     question: 'Was ist $\\ln(a \\cdot b)$ laut Logarithmusgesetz?',
     options: ['$\\ln(a) \\cdot \\ln(b)$', '$\\ln(a) + \\ln(b)$', '$\\ln(a) - \\ln(b)$', '$\\ln(a+b)$'],
     correctIndex: 1,
-    explanation: `**Regel:** $\\ln(a \\cdot b) = \\ln(a) + \\ln(b)$ (für $a, b > 0$).
+    explanation: `**Ansatz:** Logarithmusgesetz für Produkte. Regel: $\\ln(a \\cdot b) = \\ln(a) + \\ln(b)$ (für $a, b > 0$).
 
-**Warum?** Der Logarithmus verwandelt Multiplikation in Addition — das ist der Kerngedanke. Historisch war das vor Taschenrechnern essenziell für schnelles Rechnen.
+**Rechnung:** Herleitung: Mit $a = e^{u}$, $b = e^{v}$ ist $a \\cdot b = e^{u+v}$, also $\\ln(ab) = u+v = \\ln(a) + \\ln(b)$. Der Logarithmus verwandelt Multiplikation in Addition — historischer Kerngedanke vor Taschenrechnern.
 
-**Herleitung:** Mit $a = e^{u}$, $b = e^{v}$ ist $a \\cdot b = e^{u+v}$, also $\\ln(ab) = u+v = \\ln(a) + \\ln(b)$.
+**Probe:** Setze $a = 2, b = 3$: $\\ln(6) \\approx 1{,}792$. $\\ln(2) + \\ln(3) \\approx 0{,}693 + 1{,}099 = 1{,}792$. ✓
 
 **Typischer Fehler:** $\\ln(a) \\cdot \\ln(b)$ oder $\\ln(a+b)$ sind *beide* falsch — der Logarithmus ist weder multiplikativ noch linear.`,
     hints: [
@@ -321,11 +323,13 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
     question: 'Vereinfache: $\\ln(a^{5})$',
     options: ['$5 \\cdot \\ln(a)$', '$\\ln(a) + 5$', '$\\ln(5a)$', '$a \\cdot \\ln(5)$'],
     correctIndex: 0,
-    explanation: `**Regel:** $\\ln(a^{n}) = n \\cdot \\ln(a)$.
+    explanation: `**Ansatz:** Potenzregel des Logarithmus — Exponent als Faktor herausziehen. Regel: $\\ln(a^{n}) = n \\cdot \\ln(a)$.
 
-**Warum?** $a^{5} = a \\cdot a \\cdot a \\cdot a \\cdot a$. Mit dem Produkt-Gesetz: $\\ln(a \\cdot a \\cdot \\ldots) = \\ln(a) + \\ln(a) + \\ldots = 5 \\cdot \\ln(a)$.
+**Rechnung:** $\\ln(a^{5}) = 5 \\cdot \\ln(a)$. Herleitung: $a^{5} = a \\cdot a \\cdot a \\cdot a \\cdot a$, dann mit dem Produkt-Gesetz $\\ln(a) + \\ln(a) + \\ldots = 5 \\cdot \\ln(a)$.
 
-**Nützlich für Umformungen:** $\\ln(100^{3}) = 3 \\cdot \\ln(100) \\approx 3 \\cdot 4{,}605 \\approx 13{,}82$ — statt $100^{3}$ auszurechnen.`,
+**Probe:** Setze $a = 2$: $\\ln(2^{5}) = \\ln(32) \\approx 3{,}466$. $5 \\cdot \\ln(2) \\approx 5 \\cdot 0{,}693 = 3{,}466$. ✓ Praktisch: $\\ln(100^{3}) = 3 \\cdot \\ln(100) \\approx 3 \\cdot 4{,}605 \\approx 13{,}82$ — statt $100^{3} = 10^{6}$ auszurechnen.
+
+**Typischer Fehler:** Exponent additiv anhängen ($\\ln(a) + 5$) oder Basis und Exponent vertauschen ($a \\cdot \\ln(5)$). Auch häufig: $\\ln(a^{5}) = (\\ln a)^{5}$ — Exponent außerhalb des Logarithmus statt als Faktor.`,
     hints: [
       'Potenz im Logarithmus-Argument → wohin wandert der Exponent?',
       'Regel: $\\ln(a^{n}) = n \\cdot \\ln(a)$.',
@@ -343,14 +347,13 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
     question: '[PRÜFUNG] Löse nach $x$ auf: $e^{x} = 5$',
     options: ['$x = \\log(5)$', '$x = \\ln(5)$', '$x = 5/e$', '$x = e^{5}$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** $x$ steht im Exponenten — um es "herunterzuholen", logarithmiere beide Seiten zur passenden Basis.
+    explanation: `**Ansatz:** $x$ steht im Exponenten — um es „herunterzuholen", beide Seiten zur passenden Basis logarithmieren. Da die Basis der Potenz $e$ ist, ist der natürliche Logarithmus ($\\ln = \\log_{e}$) der Partner, der $e^{x}$ kürzt.
 
-**Rechnung:**
-$$e^{x} = 5 \\quad \\Big| \\ln(\\ldots) \\\\ \\ln(e^{x}) = \\ln(5) \\\\ x = \\ln(5) \\approx 1{,}609.$$
+**Rechnung:** $e^{x} = 5 \\;|\\; \\ln(\\ldots) \\Rightarrow \\ln(e^{x}) = \\ln(5) \\Rightarrow x = \\ln(5) \\approx 1{,}609$.
 
-**Warum $\\ln$ und nicht $\\log$?** Die Basis der Potenz ist $e$, also ist der natürliche Logarithmus ($\\ln = \\log_{e}$) der Partner, der $e^{x}$ kürzt.
+**Probe:** $e^{1{,}609} \\approx 4{,}998 \\approx 5$. ✓ Auch der Basiswechsel-Trick passt: $\\log(5)/\\log(e) \\approx 0{,}699/0{,}434 \\approx 1{,}609$ — gleicher Wert.
 
-**Typischer Fehler:** $x = \\log(5)$ (dekadischer Log) gibt einen *anderen* Wert ($\\approx 0{,}699$) und löst die Gleichung nicht.`,
+**Typischer Fehler:** $x = \\log(5)$ (dekadischer Log) gibt einen *anderen* Wert ($\\approx 0{,}699$) und löst die Gleichung nicht. Oder $x = 5/e$ rechnen — $e^{x}$ wird wie $e \\cdot x$ gelesen, ist aber eine Potenz.`,
     hints: [
       'Wende auf beide Seiten einen Logarithmus an — welche Basis passt zu $e^{x}$?',
       '$\\ln(e^{x}) = x$ — das ist der Trick.',
