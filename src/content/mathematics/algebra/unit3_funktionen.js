@@ -14,13 +14,11 @@ export const exercises_alg_u3 = {
     correctIndex: 0,
     explanation: `**Ansatz:** Die Funktionsdefinition ist der Kern — ohne sie kein Definitions- oder Wertebereich, keine Umkehrfunktion, keine Analysis.
 
-**Definition:** Eine Funktion $f: A \\to B$ ordnet **jedem** Element $x \\in A$ **genau ein** Element $y = f(x) \\in B$ zu. Zwei Bedingungen müssen gelten:
-- **Existenz:** Jedes $x \\in A$ hat ein Bild (darf nicht "leer" sein).
-- **Eindeutigkeit:** Zu jedem $x$ gehört nur *ein* einziges $y$.
+**Rechnung:** Eine Funktion $f: A \\to B$ ordnet **jedem** Element $x \\in A$ **genau ein** Element $y = f(x) \\in B$ zu. Zwei Bedingungen müssen gelten: *Existenz* (jedes $x \\in A$ hat ein Bild) und *Eindeutigkeit* (zu jedem $x$ gehört nur ein $y$). Grafisches Werkzeug: *Vertikaler Linientest* — jede Senkrechte $x = x_{0}$ darf den Graphen höchstens einmal schneiden.
 
-**Grafische Kontrolle:** *Vertikaler Linientest* — jede Senkrechte $x = x_{0}$ darf den Graphen höchstens einmal schneiden. Ein Kreis $x^{2} + y^{2} = 1$ ist also *keine* Funktion (zwei Schnittpunkte).
+**Probe:** $f(x) = x^{2}$ — jedes $x$ liefert genau einen Wert ($f(3) = 9$, eindeutig). Kreis $x^{2} + y^{2} = 1$ — bei $x = 0$ zwei $y$-Werte ($\\pm 1$): *keine* Funktion.
 
-**Typischer Fehler:** "Jedem $y$ genau ein $x$" verwechseln — das ist *Injektivität* und etwas anderes.`,
+**Typischer Fehler:** „Jedem $y$ genau ein $x$" verwechseln — das ist *Injektivität* und etwas anderes.`,
     wrongAnswerExplanations: {
       1: 'Du beschreibst hier eine *Relation* oder *mehrwertige Zuordnung*, keine Funktion. Wenn einem $x$ zwei oder mehr verschiedene $y$ zugeordnet wären, würde der vertikale Linientest versagen. Funktionen liefern zu jedem Input genau einen Output — nie mehrere.',
       2: 'Du beschreibst eine *partielle* Funktion, keine Funktion im strengen Sinn. Eine Funktion $f: A \\to B$ verlangt, dass *jedes* Element von $A$ ein Bild hat (Existenz). Elemente ohne Bild sind nur in Erweiterungen wie "partiellen Funktionen" erlaubt.',
@@ -45,13 +43,11 @@ export const exercises_alg_u3 = {
     correctIndex: 1,
     explanation: `**Ansatz:** Zwei Fragen getrennt stellen: (1) Welche $x$ darf ich einsetzen? (2) Welche $y$ können herauskommen?
 
-**Definitionsbereich $D$:** Quadrieren ist für *jede* reelle Zahl erlaubt, also $D = \\mathbb{R}$.
+**Rechnung:** Definitionsbereich — Quadrieren ist für *jede* reelle Zahl erlaubt: $D = \\mathbb{R}$. Wertebereich — für jedes $x$ gilt $x^{2} \\geq 0$, und jede nicht-negative Zahl $y \\geq 0$ lässt sich als $(\\sqrt{y})^{2}$ schreiben: $W = [0, \\infty)$.
 
-**Wertebereich $W$:** Für jedes $x$ gilt $x^{2} \\geq 0$, und jede nicht-negative Zahl $y \\geq 0$ lässt sich als $(\\sqrt{y})^{2}$ schreiben. Also $W = [0, \\infty)$.
+**Probe:** $f(-3) = 9 \\geq 0$ ✓, $f(0) = 0$ ✓, $f(0{,}5) = 0{,}25$ ✓. Negative Ausgaben kommen *nie* vor — also kein $y < 0$ im Wertebereich.
 
-**Probe:** $f(-3) = 9 \\geq 0$. $f(0) = 0$. Negative Werte kommen *nie* vor.
-
-**Typischer Fehler:** $W = \\mathbb{R}$ — nur dann richtig, wenn man Ausgaben *zulassen* würde, die nie auftreten. Wertebereich muss *exakt* die tatsächlich angenommenen Werte enthalten.`,
+**Typischer Fehler:** $W = \\mathbb{R}$ — der Wertebereich muss *exakt* die tatsächlich angenommenen Werte enthalten, nicht alle „erlaubten".`,
     wrongAnswerExplanations: {
       0: 'Der Definitionsbereich $D = \\mathbb{R}$ stimmt, aber $W = \\mathbb{R}$ ist falsch: negative Werte werden nie getroffen, weil $x^{2} \\geq 0$ für jedes reelle $x$. Der Wertebereich muss nur die *tatsächlich angenommenen* $y$-Werte enthalten, nicht alle "erlaubten". Richtig: $W = [0, \\infty)$.',
       2: 'Du hast den Definitionsbereich fälschlich eingeschränkt. Quadrieren ist für *jede* reelle Zahl möglich — auch für negative (z.B. $(-3)^{2} = 9$). $D = [0, \\infty)$ gilt nur für $\\sqrt{x}$, nicht für $x^{2}$. Richtig: $D = \\mathbb{R}$.',
@@ -62,44 +58,38 @@ export const exercises_alg_u3 = {
       'Fragen zu $W$: Kann $x^{2}$ negativ werden? Und wird jede nicht-negative Zahl getroffen?',
       'Quadrat einer reellen Zahl ist immer $\\geq 0$.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['fkt-def'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['def-bereich', 'wertebereich'] },
 },
   'ex-alg-3-1-c': {
     id: 'ex-alg-3-1-c', lessonId: 'alg-3-1', type: 'true-false',
     statement: '$f(x) = x^{2}$ (mit $D = \\mathbb{R}$) ist injektiv (verschiedene $x$-Werte haben verschiedene $y$-Werte).',
     correct: false,
-    explanation: `**Falsch.** Die Funktion $f(x) = x^{2}$ ist auf $\\mathbb{R}$ *nicht* injektiv.
+    explanation: `**Ansatz:** Injektivität prüfen heißt: ein Gegenbeispiel suchen, also zwei verschiedene $x_{1} \\neq x_{2}$ mit $f(x_{1}) = f(x_{2})$. Findet man eines, ist die Funktion nicht injektiv.
 
-**Gegenbeispiel:** $f(2) = 4$ und $f(-2) = 4$. Zwei verschiedene Eingaben liefern denselben Ausgangswert — das verletzt die Injektivitätsbedingung $f(x_{1}) = f(x_{2}) \\Rightarrow x_{1} = x_{2}$.
+**Rechnung:** $f(2) = 2^{2} = 4$ und $f(-2) = (-2)^{2} = 4$. Zwei verschiedene Eingaben ($2 \\neq -2$) liefern denselben Wert ($4 = 4$) — die Bedingung $f(x_{1}) = f(x_{2}) \\Rightarrow x_{1} = x_{2}$ ist verletzt. Grafisch: der horizontale Linientest scheitert — die Gerade $y = 4$ schneidet die Parabel in zwei Punkten.
 
-**Grafisch:** Der *horizontale* Linientest schlägt fehl — die Gerade $y = 4$ schneidet die Parabel in zwei Punkten.
+**Probe:** Beschränkt man $f$ auf $D = [0, \\infty)$, wird die Funktion streng monoton steigend — und damit injektiv. Genau deshalb existiert $\\sqrt{\\cdot}$ nur für $x \\geq 0$ als Umkehrung von $x^{2}$.
 
-**Einschränkung hilft:** Beschränkt man $f$ auf $D = [0, \\infty)$, wird sie streng monoton steigend und damit injektiv. Genau darum gibt es $\\sqrt{\\cdot}$ nur für $x \\geq 0$ als Umkehrung.
-
-**Typischer Fehler:** Injektivität mit "Funktion" verwechseln — jede Funktion ist eindeutig in Vorwärtsrichtung, aber nicht jede ist injektiv (eindeutig rückwärts).`,
+**Typischer Fehler:** Injektivität mit dem Funktionsbegriff verwechseln — *jede* Funktion ist eindeutig in Vorwärtsrichtung (pro $x$ ein $y$), aber nicht jede ist eindeutig rückwärts.`,
     hints: [
       'Injektiv prüft: Gibt es zwei verschiedene $x_{1} \\neq x_{2}$ mit $f(x_{1}) = f(x_{2})$?',
       'Probiere Gegenbeispiele mit betragsgleichen, aber verschieden vorzeichigen Zahlen.',
       '$f(2) = 4$ — gibt es noch eine andere Zahl mit demselben Bild?',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['fkt-def'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 2, uses: ['injektiv'] },
 },
   'ex-alg-3-1-mastery': {
     id: 'ex-alg-3-1-mastery', lessonId: 'alg-3-1', type: 'multiple-choice', isMasteryCheck: true,
     question: '[PRÜFUNG] Welche Eigenschaft muss eine Funktion haben, damit ihre Umkehrfunktion (auf dem gesamten Wertebereich) existiert?',
     options: ['Stetig', 'Differenzierbar', 'Bijektiv (injektiv + surjektiv)', 'Monoton fallend'],
     correctIndex: 2,
-    explanation: `**Ansatz:** Umkehren heißt: zu jedem $y \\in W$ eindeutig das $x \\in D$ finden, das auf $y$ abbildet. Dafür braucht es beides — Existenz und Eindeutigkeit.
+    explanation: `**Ansatz:** Umkehren heißt: zu jedem $y \\in W$ eindeutig das $x \\in D$ finden, das auf $y$ abbildet. Dafür braucht es beides — Existenz und Eindeutigkeit der Rückrichtung.
 
-**Bedingung: Bijektivität.**
-- **Injektiv:** Verschiedene $x$ geben verschiedene $y$. Dann gibt es zu jedem $y$ höchstens ein $x$. (Eindeutigkeit der Rückwärtsrichtung.)
-- **Surjektiv:** Jedes $y$ im Zielbereich wird *wirklich* getroffen. (Damit man überhaupt etwas umkehren kann.)
+**Rechnung:** Bijektivität ist die exakte Bedingung. *Injektiv* heißt: verschiedene $x$ geben verschiedene $y$ — zu jedem $y$ gehört höchstens ein $x$. *Surjektiv* heißt: jedes $y$ im Zielbereich wird wirklich getroffen — zu jedem $y$ existiert mindestens ein $x$. Beides zusammen: zu jedem $y$ genau ein $x$, also umkehrbar.
 
-**Rechnung/Beispiel:** $f: \\mathbb{R} \\to \\mathbb{R}, f(x) = x^{3}$ ist bijektiv — Umkehrfunktion $f^{-1}(x) = \\sqrt[3]{x}$ existiert.
+**Probe:** $f: \\mathbb{R} \\to \\mathbb{R},\\, f(x) = x^{3}$ ist bijektiv — Umkehrung $f^{-1}(x) = \\sqrt[3]{x}$ existiert. Nicht-bijektive Funktionen wie $x^{2}$ oder $\\sin(x)$ werden erst durch Einschränkung des Definitionsbereichs umkehrbar (so entstehen $\\sqrt{x}$ auf $[0,\\infty)$ bzw. $\\arcsin$ auf $[-\\pi/2, \\pi/2]$).
 
-**Trick bei Einschränkung:** Nicht-bijektive Funktionen wie $x^{2}$ oder $\\sin(x)$ werden durch Einschränkung des Definitionsbereichs künstlich bijektiv gemacht — so entstehen $\\sqrt{x}$ (auf $[0, \\infty)$) und $\\arcsin(x)$ (auf $[-\\pi/2, \\pi/2]$).
-
-**Typischer Fehler:** Stetigkeit oder Differenzierbarkeit mit Umkehrbarkeit verwechseln — die garantieren keine Umkehrung (z.B. $\\sin(x)$ ist stetig und differenzierbar, aber nicht bijektiv auf $\\mathbb{R}$).`,
+**Typischer Fehler:** Stetigkeit oder Differenzierbarkeit mit Umkehrbarkeit verwechseln — $\\sin(x)$ ist stetig *und* differenzierbar, aber auf $\\mathbb{R}$ nicht bijektiv und damit nicht umkehrbar.`,
     wrongAnswerExplanations: {
       0: 'Stetigkeit reicht nicht für Umkehrbarkeit. $\\sin(x)$ und $x^{2}$ sind stetig auf $\\mathbb{R}$, aber nicht umkehrbar (nicht injektiv). Stetigkeit garantiert keine eindeutige Rückabbildung — dafür braucht es Injektivität und Surjektivität zusammen: Bijektivität.',
       1: 'Differenzierbarkeit ist ein *stärkeres* Kriterium als Stetigkeit, reicht aber ebenfalls nicht. $x^{2}$ und $\\sin(x)$ sind auf $\\mathbb{R}$ differenzierbar, aber nicht umkehrbar, weil sie nicht injektiv sind. Umkehrbarkeit ist eine mengentheoretische Eigenschaft, keine analytische.',
@@ -110,7 +100,7 @@ export const exercises_alg_u3 = {
       '(a) heißt surjektiv, (b) heißt injektiv — zusammen: bijektiv.',
       'Stetigkeit reicht *nicht*: $\\sin(x)$ ist stetig, aber nicht umkehrbar auf ganz $\\mathbb{R}$.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['fkt-def'] },
+      pedagogy: { stage: 'transfer', subGoal: 2, uses: ['bijektiv', 'injektiv', 'surjektiv'] },
 },
 
   // ── Lesson 2: Elementare Funktionen ──
@@ -123,17 +113,13 @@ export const exercises_alg_u3 = {
       { left: '$f(x) = \\ln(x)$', right: 'Logarithmusfunktion' },
       { left: '$f(x) = \\sin(x)$', right: 'Trigonometrische Funktion' },
     ],
-    explanation: `**Ansatz:** Unterscheidungsmerkmal ist die *Position der Variablen $x$* in der Formel.
+    explanation: `**Ansatz:** Unterscheidungsmerkmal ist die *Position der Variablen $x$* in der Formel — Basis, Exponent, oder als Argument einer trigonometrischen Funktion.
 
-**Die vier Grundtypen:**
-- **Potenzfunktion $x^{n}$:** $x$ in der **Basis**, Exponent $n$ ist konstant. Beispiel: $x^{2}, x^{3}, x^{-1}, x^{1/2}$.
-- **Exponentialfunktion $a^{x}$:** $x$ im **Exponenten**, Basis $a > 0$ ist konstant. Beispiel: $2^{x}, e^{x}, 10^{x}$.
-- **Logarithmusfunktion $\\log_{a}(x)$:** Umkehrung der Exponentialfunktion. Beispiel: $\\ln(x), \\log_{10}(x)$.
-- **Trigonometrische Funktion:** $\\sin, \\cos, \\tan$ und ihre Umkehrungen — periodisch.
+**Rechnung:** *Potenzfunktion $x^{n}$* — $x$ in der **Basis**, Exponent $n$ konstant ($x^{2}, x^{3}, x^{-1}, x^{1/2}$). *Exponentialfunktion $a^{x}$* — $x$ im **Exponenten**, Basis $a > 0$ konstant ($2^{x}, e^{x}, 10^{x}$). *Logarithmusfunktion $\\log_{a}(x)$* — Umkehrung der Exponentialfunktion ($\\ln(x), \\log_{10}(x)$). *Trigonometrische Funktion* — $\\sin, \\cos, \\tan$ und Umkehrungen, periodisch. Wachstumshierarchie für $x \\to \\infty$: $\\ln(x) \\ll x^{n} \\ll a^{x}$.
 
-**Typischer Fehler:** $x^{2}$ und $2^{x}$ verwechseln — völlig unterschiedliches Wachstum! $x^{2}$ ist polynomial, $2^{x}$ exponentiell.
+**Probe:** $x^{2}$ ist Potenzfunktion (Variable in Basis), $2^{x}$ ist Exponentialfunktion (Variable im Exponenten) — bei $x = 10$: $x^{2} = 100$, $2^{x} = 1024$. Komplett anderes Wachstum.
 
-**Hierarchie für große $x$:** $\\ln(x) \\ll x^{n} \\ll a^{x}$.`,
+**Typischer Fehler:** $x^{2}$ und $2^{x}$ verwechseln — beides hat $x$ und $2$, aber polynomiales und exponentielles Wachstum unterscheiden sich um Größenordnungen.`,
     hints: [
       'Sieh genau hin: Steht $x$ *unten* (in der Basis) oder *oben* (im Exponenten)?',
       '$x^{n}$ = Potenz, $a^{x}$ = Exponential. $\\log$ ist die Umkehrung von $a^{x}$.',
@@ -151,17 +137,13 @@ export const exercises_alg_u3 = {
       '$f$ hat eine Nullstelle bei $x = 0$',
     ],
     correctIndex: 3,
-    explanation: `**Ansatz:** Die Exponentialfunktion $e^{x}$ hat charakteristische Eigenschaften, die man auswendig kennen muss.
+    explanation: `**Ansatz:** Jede Aussage einzeln gegen die Standard-Eigenschaften von $e^{x}$ prüfen — gefragt ist die *falsche* Aussage.
 
-**Prüfen aller Aussagen:**
-- A: $e^{x} > 0$ für alle reellen $x$ — **richtig** (Wertebereich $(0, \\infty)$).
-- B: $f(0) = e^{0} = 1$ — **richtig** (Potenzgesetz $a^{0} = 1$).
-- C: Streng monoton steigend, da $f'(x) = e^{x} > 0$ — **richtig**.
-- D: Nullstelle bei $x = 0$? $f(0) = 1 \\neq 0$ — **falsch**! $e^{x}$ hat **überhaupt keine** Nullstelle, weil $e^{x} > 0$ stets gilt.
+**Rechnung:** A — $e^{x} > 0$ für alle reellen $x$ ist *richtig* (Wertebereich $(0, \\infty)$). B — $f(0) = e^{0} = 1$ ist *richtig* (Potenzgesetz $a^{0} = 1$). C — streng monoton steigend, da $f'(x) = e^{x} > 0$ überall, ist *richtig*. D — Nullstelle bei $x = 0$? $f(0) = 1 \\neq 0$, also *falsch*. $e^{x}$ hat überhaupt keine Nullstelle, weil $e^{x} > 0$ stets gilt.
 
-**Grafisch:** Der Graph von $e^{x}$ liegt komplett über der $x$-Achse, nähert sich ihr für $x \\to -\\infty$ asymptotisch ($\\lim_{x \\to -\\infty} e^{x} = 0$), berührt sie aber nie.
+**Probe:** Der Graph von $e^{x}$ liegt komplett über der $x$-Achse und nähert sich ihr für $x \\to -\\infty$ asymptotisch ($\\lim_{x \\to -\\infty} e^{x} = 0$), berührt sie aber nie. Schnittpunkt mit der $y$-Achse: $(0, 1)$ — Schnittpunkt mit der $x$-Achse: keiner.
 
-**Typischer Fehler:** Die Nullstelle mit dem $y$-Achsenabschnitt verwechseln — der *Schnittpunkt mit der y-Achse* ist bei $y = 1$, aber der Schnittpunkt mit der $x$-Achse (Nullstelle) existiert *nicht*.`,
+**Typischer Fehler:** Die Nullstelle mit dem $y$-Achsenabschnitt verwechseln — der Schnittpunkt mit der $y$-Achse ist bei $y = 1$, eine Nullstelle (Schnittpunkt mit der $x$-Achse) existiert *nicht*.`,
     wrongAnswerExplanations: {
       0: 'Diese Aussage ist *richtig* — $e^{x} > 0$ gilt tatsächlich für alle reellen $x$. Der Wertebereich von $e^{x}$ ist $(0, \\infty)$. Gefragt war aber die *falsche* Aussage; suche die Aussage, die nicht stimmt (Aussage D über eine Nullstelle).',
       1: 'Diese Aussage ist *richtig*: $e^{0} = 1$ folgt aus $a^{0} = 1$ für jede Basis $a \\neq 0$. Das ist eine Standardregel, kein Fehler. Gefragt war die falsche Aussage — das ist Aussage D.',
@@ -172,22 +154,20 @@ export const exercises_alg_u3 = {
       'Kann $e^{x} = 0$ für irgendein $x$ jemals passieren?',
       '$e^{x}$ ist *immer positiv* — damit kann es keine Nullstelle haben.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['potenz-fkt'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['exp-fkt'] },
 },
   'ex-alg-3-2-c': {
     id: 'ex-alg-3-2-c', lessonId: 'alg-3-2', type: 'multiple-choice',
     question: 'Was ist der Definitionsbereich von $f(x) = \\ln(x)$?',
     options: ['$\\mathbb{R}$', '$(0, \\infty)$', '$[0, \\infty)$', '$(-\\infty, 0)$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Der natürliche Logarithmus ist über die Umkehrung von $e^{x}$ definiert — und $e^{x}$ nimmt nur positive Werte an.
+    explanation: `**Ansatz:** Der natürliche Logarithmus ist über die Umkehrung von $e^{x}$ definiert — also entspricht der Definitionsbereich von $\\ln$ genau dem Wertebereich von $e^{x}$.
 
-**Regel:** $\\ln(x)$ ist nur für $x > 0$ definiert. $D = (0, \\infty)$ — offenes Intervall, da $x = 0$ nicht erlaubt ist.
+**Rechnung:** $e^{y} > 0$ für alle reellen $y$, daher liegt der Wertebereich von $\\exp$ in $(0, \\infty)$. Die Umkehrung $\\ln$ kann also nur auf positiven Argumenten definiert sein: $D = (0, \\infty)$ — offenes Intervall. Bei $x = 0$ divergiert $\\ln$: $\\lim_{x \\to 0^{+}} \\ln(x) = -\\infty$. Für $x < 0$ existiert kein reelles $y$ mit $e^{y} = x$.
 
-**Warum nicht $x = 0$?** $\\ln(0)$ würde bedeuten: "$e$ hoch wie viel ergibt $0$?" — aber $e^{y} > 0$ für *alle* $y$, also gibt es kein solches $y$. Grenzwert: $\\lim_{x \\to 0^{+}} \\ln(x) = -\\infty$.
+**Probe:** $\\ln(1) = 0$ ✓ ($e^{0} = 1$). $\\ln(e) = 1$ ✓ ($e^{1} = e$). $\\ln(0)$ und $\\ln(-2)$ — keine Definition in $\\mathbb{R}$.
 
-**Warum nicht $x < 0$?** Analog: $e^{y}$ wird nie negativ.
-
-**Typischer Fehler:** $[0, \\infty)$ wählen — das $0$ gehört aber *nicht* zu $D$, da $\\ln(0)$ undefiniert (divergent) ist. Die Klammer ist eine runde Klammer.`,
+**Typischer Fehler:** $[0, \\infty)$ wählen — die Null gehört aber *nicht* zu $D$, da $\\ln(0)$ divergiert. Die linke Klammer muss eine runde Klammer sein.`,
     wrongAnswerExplanations: {
       0: 'Du hast den Definitionsbereich von $\\ln(x)$ nicht eingeschränkt. Für $x \\leq 0$ ist $\\ln(x)$ nicht definiert, weil $e^{y} > 0$ für alle $y$ gilt — negative Argumente haben keine reelle Logarithmus-Antwort. Richtig: $D = (0, \\infty)$.',
       2: 'Fast richtig, aber die untere Grenze ist mit einer runden Klammer $($ zu schreiben: $x = 0$ ist *ausgeschlossen*. $\\ln(0)$ ist nicht definiert (Grenzwert $\\to -\\infty$). Nur positive Zahlen sind erlaubt: $D = (0, \\infty)$, nicht $[0, \\infty)$.',
@@ -198,29 +178,20 @@ export const exercises_alg_u3 = {
       '$e^{y}$ ist stets positiv — also kann $\\ln$ nur positive Zahlen als Argument nehmen.',
       'Achtung bei der Klammer: Ist $x = 0$ erlaubt oder ausgeschlossen?',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['potenz-fkt'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 2, uses: ['log-fkt', 'exp-fkt'] },
 },
   'ex-alg-3-2-d': {
     id: 'ex-alg-3-2-d', lessonId: 'alg-3-2', type: 'multiple-choice',
     question: 'Welche Funktion wächst für große $x$ am schnellsten?',
     options: ['$x^{10}$', '$10^{x}$', '$\\ln(x)$', '$1000 \\cdot x$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Für große $x$ ("im Unendlichen") gibt es eine feste Wachstumshierarchie.
+    explanation: `**Ansatz:** Für große $x$ („im Unendlichen") gilt eine feste Wachstumshierarchie: $\\ln(x) \\ll x \\ll x^{n} \\ll a^{x}$ für $a > 1$. Exponentialfunktionen schlagen jede Potenzfunktion, Potenzen schlagen den Logarithmus — unabhängig von Vorfaktoren oder Exponenten.
 
-**Die Wachstumshierarchie:**
-$$\\ln(x) \\ll x \\ll x^{n} \\ll a^{x} \\quad (\\text{für } a > 1, \\; x \\to \\infty)$$
+**Rechnung:** Vergleich der vier Kandidaten bei $x = 100$: $\\ln(100) \\approx 4{,}6$ (winzig), $1000 \\cdot 100 = 10^{5}$ (linear, mit großem Vorfaktor), $100^{10} = 10^{20}$ (Polynom Grad $10$), $10^{100}$ (Exponential — ein Googol). Allgemein: $\\lim_{x \\to \\infty} \\dfrac{10^{x}}{x^{10}} = \\infty$, also überholt $10^{x}$ jede Potenz.
 
-Exponentialfunktionen wachsen schneller als jede Potenzfunktion, die schneller als der Logarithmus.
+**Probe:** Schon bei $x = 50$ ist $10^{50}$ größer als $50^{10} \\approx 10^{17}$, $1000 \\cdot 50 = 5 \\cdot 10^{4}$ und $\\ln(50) \\approx 3{,}9$. Der Abstand wächst mit $x$ nur weiter.
 
-**Vergleich an konkreten Werten ($x = 100$):**
-- $\\ln(100) \\approx 4{,}6$
-- $1000 \\cdot 100 = 100\\,000 = 10^{5}$
-- $100^{10} = 10^{20}$
-- $10^{100}$ (gigantisch! Googol)
-
-**Probe mit Grenzwert:** $\\lim_{x \\to \\infty} \\dfrac{10^{x}}{x^{10}} = \\infty$ — die Exponentialfunktion "überholt" jede Potenz.
-
-**Typischer Fehler:** Sich vom riesigen Exponenten "$10$" in $x^{10}$ blenden lassen. Die *Struktur* entscheidet (Exponent bzw. Basis), nicht die Größe der Konstanten.`,
+**Typischer Fehler:** Sich vom hohen Exponenten „$10$" in $x^{10}$ blenden lassen. Die *Struktur* entscheidet — $x$ in der Basis (Polynom) oder im Exponenten (Exponential) — nicht die Größe der Konstanten.`,
     wrongAnswerExplanations: {
       0: 'Du hast dich vom großen Exponenten $10$ blenden lassen. $x^{10}$ ist zwar eine hohe Potenzfunktion, aber immer noch *polynomial*. Exponentialfunktionen $a^{x}$ (mit $a > 1$) überholen jede Potenzfunktion, egal wie groß der Exponent $n$ ist. Beweis: $\\lim_{x \\to \\infty} x^{10} / 10^{x} = 0$.',
       2: 'Der Logarithmus wächst am *langsamsten* von allen, nicht am schnellsten. $\\ln(x)$ wächst sogar langsamer als $\\sqrt{x}$ oder $x$. Für große $x$ gilt die Hierarchie $\\ln(x) \\ll x \\ll x^{n} \\ll a^{x}$. Am schnellsten wächst die Exponentialfunktion.',
@@ -231,26 +202,20 @@ Exponentialfunktionen wachsen schneller als jede Potenzfunktion, die schneller a
       'Exponentielles Wachstum schlägt *jedes* polynomiale Wachstum — egal wie groß der Exponent.',
       'Merke die Hierarchie: $\\ln(x) \\ll x^{n} \\ll a^{x}$.',
     ],
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['potenz-fkt'] },
+      pedagogy: { stage: 'error-analysis', subGoal: 3, uses: ['wachstum-hierarchie', 'potenz-fkt', 'exp-fkt', 'log-fkt'] },
 },
   'ex-alg-3-2-e': {
     id: 'ex-alg-3-2-e', lessonId: 'alg-3-2', type: 'multiple-choice',
     question: 'Vereinfache: $\\ln(e^{2x})$',
     options: ['$2x$', '$e^{2x}$', '$2 \\ln(x)$', '$x^{2}$'],
     correctIndex: 0,
-    explanation: `**Ansatz:** $\\ln$ und $e$ sind Umkehrfunktionen — sie heben sich gegenseitig auf. Dadurch gilt $\\ln(e^{y}) = y$ für jede reelle Zahl $y$.
+    explanation: `**Ansatz:** $\\ln$ und $\\exp$ sind Umkehrfunktionen — sie heben sich gegenseitig auf. Es gelten zwei Identitäten: $\\ln(e^{y}) = y$ für alle $y \\in \\mathbb{R}$ (Umkehrung „von innen nach außen") und $e^{\\ln(x)} = x$ für alle $x > 0$ (Umkehrung „von außen nach innen").
 
-**Rechnung:** Mit $y = 2x$: $\\ln(e^{2x}) = 2x$.
+**Rechnung:** Mit $y = 2x$ in der ersten Identität: $\\ln(e^{2x}) = 2x$. Alternativ über das Log-Gesetz $\\ln(a^{b}) = b \\cdot \\ln(a)$: $\\ln(e^{2x}) = 2x \\cdot \\ln(e) = 2x \\cdot 1 = 2x$ — dasselbe Ergebnis.
 
-**Alternativer Weg (Logarithmus-Gesetz):** $\\ln(e^{2x}) = 2x \\cdot \\ln(e) = 2x \\cdot 1 = 2x$, weil $\\ln(e) = 1$.
+**Probe:** Bei $x = 3$: $\\ln(e^{6}) = 6 = 2 \\cdot 3$ ✓. Bei $x = 0$: $\\ln(e^{0}) = \\ln(1) = 0 = 2 \\cdot 0$ ✓. Bei $x = -1$: $\\ln(e^{-2}) = -2$ ✓.
 
-**Probe bei $x = 3$:** $\\ln(e^{6}) = 6 = 2 \\cdot 3$. ✓
-
-**Zwei wichtige Identitäten:**
-- $\\ln(e^{y}) = y$ für alle $y \\in \\mathbb{R}$ (Umkehrung „von innen nach außen")
-- $e^{\\ln(x)} = x$ für alle $x > 0$ (Umkehrung „von außen nach innen")
-
-**Typischer Fehler:** $\\ln$ und $e$ werden als unabhängige Funktionen behandelt (als wäre $\\ln(e^{2x}) = e^{2x}$). Tatsächlich annullieren sie sich — wie $\\sqrt{x^{2}} = |x|$ oder $\\arcsin(\\sin(x)) = x$ (für Hauptwerte).`,
+**Typischer Fehler:** $\\ln$ und $e$ werden wie unabhängige Funktionen behandelt (als wäre $\\ln(e^{2x}) = e^{2x}$). Tatsächlich annullieren sie sich — analog zu $\\sqrt{x^{2}} = |x|$ oder $\\arcsin(\\sin(x)) = x$ (für Hauptwerte).`,
     wrongAnswerExplanations: {
       1: 'Du hast den $\\ln$ nicht angewandt und den Ausdruck stehen gelassen. Die Kern-Identität ist: $\\ln$ und $e$ sind Umkehrfunktionen, also gilt $\\ln(e^{y}) = y$. Hier mit $y = 2x$ folgt sofort $2x$.',
       2: 'Du hast das Logarithmus-Gesetz $\\ln(a^{b}) = b \\cdot \\ln(a)$ zwar angewandt, aber die Basis $e$ nicht vereinfacht. $\\ln(e) = 1$ — nicht $\\ln(x)$! Vollständig: $\\ln(e^{2x}) = 2x \\cdot \\ln(e) = 2x \\cdot 1 = 2x$, nicht $2\\ln(x)$.',
@@ -261,7 +226,7 @@ Exponentialfunktionen wachsen schneller als jede Potenzfunktion, die schneller a
       'Umkehrfunktionen: $\\ln(e^{y}) = y$ — egal was $y$ ist.',
       'Setze $y = 2x$ ein.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['potenz-fkt'] },
+      pedagogy: { stage: 'transfer', subGoal: 2, uses: ['log-fkt', 'exp-fkt'] },
 },
   'ex-alg-3-2-mastery': {
     id: 'ex-alg-3-2-mastery', lessonId: 'alg-3-2', type: 'multiple-choice', isMasteryCheck: true,
@@ -291,7 +256,7 @@ $$f(0) = 2 \\cdot e^{0} - 1 = 2 \\cdot 1 - 1 = 2 - 1 = 1.$$
       'Also $e^{0} = 1$, damit wird aus $2 \\cdot e^{0}$ einfach $2$.',
       'Dann $2 - 1$ rechnen.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['potenz-fkt'] },
+      pedagogy: { stage: 'transfer', subGoal: 4, uses: ['euler-zahl', 'exp-fkt'] },
 },
 
   // ── Lesson 3: Funktionsoperationen ──
@@ -356,27 +321,20 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Minus kommt *vor* die Funktion (außen), nicht ins Argument.',
       'Regel: $g(x) = -f(x)$.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['trafo-hor-verschieben'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['trafo-spiegel-x'] },
 },
   'ex-alg-3-3-c': {
     id: 'ex-alg-3-3-c', lessonId: 'alg-3-3', type: 'multiple-choice',
     question: '$f(x) = x^{2}$ wird vertikal um Faktor $3$ gestreckt. Wie lautet $g(x)$?',
     options: ['$g(x) = x^{6}$', '$g(x) = 3x^{2}$', '$g(x) = (3x)^{2}$', '$g(x) = x^{2} + 3$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Vertikale Streckung um Faktor $c$ multipliziert alle $y$-Werte mit $c$ — das heißt: $c$ kommt *vor* die Funktion.
+    explanation: `**Ansatz:** Vertikale Streckung um Faktor $c$ multipliziert alle $y$-Werte mit $c$ — der Faktor steht *vor* der Funktion: $g(x) = c \\cdot f(x)$.
 
-**Regel:** $g(x) = c \\cdot f(x)$. Hier $c = 3$, also $g(x) = 3 \\cdot x^{2} = 3x^{2}$.
+**Rechnung:** Mit $c = 3$ und $f(x) = x^{2}$: $g(x) = 3 \\cdot x^{2} = 3x^{2}$. Alle $y$-Werte verdreifacht: aus $f(1) = 1$ wird $g(1) = 3$, aus $f(2) = 4$ wird $g(2) = 12$. Abgrenzung: $(3x)^{2} = 9x^{2}$ wäre eine *horizontale* Stauchung (Faktor im Argument wirkt invers) — andere Funktion.
 
-**Rechnung:** Aus $f(1) = 1$ wird $g(1) = 3$, aus $f(2) = 4$ wird $g(2) = 12$ — alle $y$-Werte verdreifacht.
+**Probe:** $g(1)/f(1) = 3/1 = 3$ ✓. $g(2)/f(2) = 12/4 = 3$ ✓. Das Verhältnis ist konstant gleich dem Streckfaktor — typisch für lineare $y$-Skalierung. $(3x)^{2}$ liefert dagegen $9 \\cdot 1^{2} = 9$ und $9 \\cdot 2^{2} = 36$, also nicht das Dreifache.
 
-**Abgrenzung — $(3x)^{2}$:** Das wäre eine *horizontale* Stauchung (um Faktor $1/3$). Ausrechnen: $(3x)^{2} = 9x^{2}$, also andere Funktion.
-
-**Typischer Fehler:**
-- $x^{6}$: Verwechselt "Potenz der Potenz" mit Streckung.
-- $(3x)^{2}$: $3$ wirkt hier *im Argument*, also horizontal statt vertikal.
-- $x^{2} + 3$: Das ist Verschiebung, keine Streckung.
-
-**Merke:** Streckung/Stauchung = *multiplikativ*, Verschiebung = *additiv*.`,
+**Typischer Fehler:** $x^{6}$ (verwechselt „Potenz der Potenz" mit Streckung — wäre Verkettung), $(3x)^{2}$ (Faktor im Argument wirkt horizontal), $x^{2} + 3$ (Verschiebung statt Streckung — additiv vs. multiplikativ).`,
     wrongAnswerExplanations: {
       0: 'Du hast die Streckung mit "Potenz der Potenz" verwechselt: $x^{6} = (x^{2})^{3}$ — das wäre eine Verkettung mit $x^{3}$, nicht eine Streckung. Vertikale Streckung um Faktor $c$ multipliziert die $y$-Werte: $g(x) = c \\cdot f(x) = 3x^{2}$, nicht $x^{6}$.',
       2: '$(3x)^{2} = 9x^{2}$ ist eine *horizontale* Stauchung um Faktor $1/3$ (im Argument). Gefragt war aber eine *vertikale* Streckung. Regel: Ein Faktor *im Argument* wirkt horizontal (und invers), ein Faktor *vor der Funktion* wirkt vertikal (und direkt). Richtig: $g(x) = 3 \\cdot x^{2} = 3x^{2}$.',
@@ -387,7 +345,7 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Wo muss der Faktor $3$ also hin — ins Argument oder außen vor $f$?',
       'Regel: $g(x) = c \\cdot f(x)$. Setze $c = 3$ und $f(x) = x^{2}$ ein.',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['trafo-hor-verschieben'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 2, uses: ['trafo-vert-streck'] },
 },
   'ex-alg-3-3-mastery': {
     id: 'ex-alg-3-3-mastery', lessonId: 'alg-3-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -399,19 +357,13 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Spiegelung und Verschiebung',
     ],
     correctIndex: 0,
-    explanation: `**Ansatz:** $g(x)$ in die Standardform $f(x - a) + b$ bringen und die Parameter $a, b$ ablesen.
+    explanation: `**Ansatz:** $g(x)$ in die Standardform $f(x - a) + b$ bringen, dann die Parameter $a$ und $b$ ablesen — und nach der Merkregel umsetzen: Argument-Änderung wirkt horizontal und kontraintuitiv, äußere Änderung vertikal und intuitiv.
 
-**Analyse der Formel:** $g(x) = e^{x-2} + 1 = f(x - 2) + 1$ mit $f(x) = e^{x}$.
-- $(x - 2)$ im Argument → Verschiebung um $a = 2$ nach **rechts** (Merksatz: *Minus → Rechts*).
-- $+1$ außen → Verschiebung um $b = 1$ nach **oben**.
+**Rechnung:** $g(x) = e^{x-2} + 1 = f(x - 2) + 1$ mit $f(x) = e^{x}$. Vergleich mit $f(x - a) + b$ liefert $a = 2$ und $b = 1$. Damit: $(x - 2)$ im Argument → Verschiebung um $2$ nach *rechts* (Merksatz „Minus → Rechts"); $+1$ außen → Verschiebung um $1$ nach *oben*. Keine Spiegelung (kein Vorzeichen vor der Funktion), keine Streckung (kein multiplikativer Faktor).
 
-**Probe:** Der Graph von $e^{x}$ geht durch $(0, 1)$. Nach der Transformation sollte er durch $(0 + 2, 1 + 1) = (2, 2)$ gehen. Einsetzen: $g(2) = e^{2-2} + 1 = e^{0} + 1 = 1 + 1 = 2$. ✓
+**Probe:** Der Graph von $e^{x}$ geht durch $(0, 1)$. Nach Verschiebung um $(+2, +1)$ sollte der entsprechende Punkt bei $(2, 2)$ liegen. Einsetzen: $g(2) = e^{2-2} + 1 = e^{0} + 1 = 2$ ✓. Asymptote von $e^{x}$ ist $y = 0$; nach Verschiebung um $+1$ wird daraus $y = 1$ — guter Kontroll-Anker.
 
-**Asymptote:** $e^{x}$ hat $y = 0$ als waagrechte Asymptote. Nach Verschiebung um $+1$ wird daraus $y = 1$. Das ist ein guter Kontrollmechanismus.
-
-**Typischer Fehler:**
-- *Links* statt rechts bei $(x - 2)$ — Minus im Argument heißt *rechts*.
-- Das "$+1$" als Streckung fehldeuten — Streckung wäre ein multiplikativer Faktor, kein additiver.`,
+**Typischer Fehler:** *Links* statt rechts bei $(x - 2)$ — im Argument zählt das umgekehrte Vorzeichen. Das „$+1$" als Streckung fehldeuten — Streckung wäre multiplikativ ($c \\cdot e^{x}$), nicht additiv.`,
     wrongAnswerExplanations: {
       1: 'Du hast die Richtung der Horizontalverschiebung gedreht. $(x - 2)$ im Argument heißt Verschiebung nach *rechts* um $2$, nicht nach links. Merksatz: *Minus → Rechts*. Der verschobene Graph erreicht den Wert $f(0) = 1$ bei $x = 2$ (dort wird $x - 2 = 0$) — also liegt der ursprüngliche Startpunkt jetzt weiter rechts.',
       2: 'Das "$+1$" ist keine Streckung, sondern eine Vertikalverschiebung. Streckung wäre ein *multiplikativer* Faktor (wie $2 \\cdot e^{x}$), während $+1$ ein *additiver* Term ist. Richtig: Verschiebung um $2$ nach rechts (aus $x - 2$) und $1$ nach oben (aus $+1$).',
@@ -422,7 +374,7 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Lese $a$ und $b$ ab: $a = 2, b = 1$.',
       '$(x - a)$ heißt Verschiebung um $a$ nach rechts. $+b$ heißt Verschiebung um $b$ nach oben.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['trafo-hor-verschieben'] },
+      pedagogy: { stage: 'transfer', subGoal: 4, uses: ['trafo-merkregel', 'trafo-hor-verschieben', 'trafo-vert-verschieben'] },
 },
 
   // ── Lesson 4: Umkehrfunktionen ──
@@ -431,21 +383,13 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
     question: 'Was ist die Umkehrfunktion von $f(x) = 2x + 3$?',
     options: ['$f^{-1}(x) = \\dfrac{x-3}{2}$', '$f^{-1}(x) = 2x - 3$', '$f^{-1}(x) = \\dfrac{1}{2x+3}$', '$f^{-1}(x) = \\dfrac{x+3}{2}$'],
     correctIndex: 0,
-    explanation: `**Ansatz:** Umkehrfunktion — Dreischritt-Verfahren: (1) $y = f(x)$, (2) nach $x$ auflösen, (3) $x$ und $y$ vertauschen.
+    explanation: `**Ansatz:** Umkehrfunktion mit Dreischritt-Verfahren: (1) $y = f(x)$ ansetzen, (2) nach $x$ auflösen, (3) Variablen $x \\leftrightarrow y$ vertauschen. Alternativ-Bild: $f$ verdoppelt und addiert $3$ — die Umkehrung macht das rückwärts (erst $3$ abziehen, dann halbieren).
 
-**Rechnung:**
-1. Ansatz: $y = 2x + 3$.
-2. Nach $x$ auflösen: $y - 3 = 2x \\Rightarrow x = \\dfrac{y - 3}{2}$.
-3. Vertauschen: $f^{-1}(x) = \\dfrac{x - 3}{2}$.
+**Rechnung:** $y = 2x + 3 \\;\\Rightarrow\\; y - 3 = 2x \\;\\Rightarrow\\; x = \\dfrac{y - 3}{2}$. Variablen tauschen: $f^{-1}(x) = \\dfrac{x - 3}{2}$.
 
-**Alternativer Denkweg:** $f$ verdoppelt und addiert $3$. Die Umkehrung macht es *rückwärts*: erst $3$ abziehen, dann halbieren — genau $(x - 3)/2$.
+**Probe:** Verkettung $f(f^{-1}(x)) = 2 \\cdot \\dfrac{x - 3}{2} + 3 = (x - 3) + 3 = x$ ✓. Andere Richtung: $f^{-1}(f(x)) = \\dfrac{(2x+3) - 3}{2} = \\dfrac{2x}{2} = x$ ✓.
 
-**Probe (Verkettung):** $f(f^{-1}(x)) = 2 \\cdot \\dfrac{x - 3}{2} + 3 = (x - 3) + 3 = x$. ✓
-
-**Typischer Fehler:**
-- $2x - 3$: Nur "invertierte" Koeffizienten — funktioniert nicht.
-- $\\dfrac{x + 3}{2}$: Vorzeichenfehler beim Umstellen.
-- $\\dfrac{1}{2x + 3}$: *Kehrwert* statt Umkehrfunktion — das sind zwei völlig verschiedene Dinge!`,
+**Typischer Fehler:** $2x - 3$ („Koeffizienten umgedreht" — funktioniert nicht); $\\dfrac{x+3}{2}$ (Vorzeichen beim Umstellen verloren); $\\dfrac{1}{2x+3}$ (*Kehrwert* statt Umkehrfunktion — zwei verschiedene Konzepte).`,
     wrongAnswerExplanations: {
       1: 'Du hast „$2$ und $3$ einfach umgedreht" statt sauber die Gleichung aufzulösen. $2x - 3$ ist nicht die Umkehrung von $2x + 3$ — Probe: $f(f^{-1}(x)) = 2(2x - 3) + 3 = 4x - 3 \\neq x$. Richtig: $y = 2x + 3 \\Rightarrow x = (y-3)/2$, vertauschen liefert $f^{-1}(x) = (x-3)/2$.',
       2: 'Du hast den *Kehrwert* berechnet statt die Umkehrfunktion. $1/(2x+3)$ ist das multiplikative Inverse, erfüllt $f(x) \\cdot (1/f(x)) = 1$. Die Umkehrfunktion hingegen macht $f$ rückgängig: $f(f^{-1}(x)) = x$. Diese beiden Konzepte sind völlig verschieden.',
@@ -456,31 +400,20 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Dreischritt: (1) $y = 2x + 3$, (2) $x = ?$, (3) $x \\leftrightarrow y$ tauschen.',
       'Prüfe mit der Verkettung: $f(f^{-1}(x))$ muss $x$ ergeben.',
     ],
-      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['umkehr-existenz'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['umkehr-verfahren'] },
 },
   'ex-alg-3-4-b': {
     id: 'ex-alg-3-4-b', lessonId: 'alg-3-4', type: 'multiple-choice',
     question: 'Die Umkehrfunktion von $f(x) = e^{x}$ ist:',
     options: ['$f^{-1}(x) = \\dfrac{1}{e^{x}}$', '$f^{-1}(x) = \\ln(x)$', '$f^{-1}(x) = e^{-x}$', '$f^{-1}(x) = 10^{x}$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Umkehrfunktion der Exponentialfunktion zur Basis $e$ — das ist per Definition der natürliche Logarithmus.
+    explanation: `**Ansatz:** Die Umkehrfunktion der Exponentialfunktion zur Basis $e$ ist per Definition der natürliche Logarithmus $\\ln$. Wichtige Abgrenzung: *Kehrwert* ($1/e^x$) und *Umkehrfunktion* ($\\ln x$) sind zwei verschiedene Konzepte — ersterer erfüllt $f \\cdot (1/f) = 1$, letzterer $f(f^{-1}(x)) = x$.
 
-**Regel:** $f(x) = e^{x}$ und $f^{-1}(x) = \\ln(x)$ sind Umkehrfunktionen.
+**Rechnung:** Dreischritt-Verfahren: $y = e^{x} \\;\\Rightarrow\\; \\ln(y) = \\ln(e^{x}) = x$ (nach $x$ aufgelöst durch $\\ln$ auf beiden Seiten). Variablen tauschen: $f^{-1}(x) = \\ln(x)$.
 
-**Herleitung:**
-1. $y = e^{x}$.
-2. Nach $x$ auflösen: $\\ln(y) = \\ln(e^{x}) = x$.
-3. Tauschen: $f^{-1}(x) = \\ln(x)$.
+**Probe:** Beide Verkettungs-Identitäten prüfen: $\\ln(e^{x}) = x$ ✓ (für alle $x \\in \\mathbb{R}$) und $e^{\\ln(x)} = x$ ✓ (für $x > 0$). Konkret: $f(\\ln 5) = e^{\\ln 5} = 5$, $f^{-1}(e^2) = \\ln(e^2) = 2$.
 
-**Probe:** $\\ln(e^{x}) = x$ und $e^{\\ln(x)} = x$. ✓
-
-**Achtung bei Kehrwert vs. Umkehrung:**
-- **Kehrwert:** $\\dfrac{1}{e^{x}} = e^{-x}$ — multiplikative Inverse, $f(x) \\cdot \\dfrac{1}{f(x)} = 1$.
-- **Umkehrfunktion:** $\\ln(x)$ — macht die Operation rückgängig, $f(f^{-1}(x)) = x$.
-
-**Typischer Fehler:**
-- $e^{-x}$ als Umkehrfunktion — das ist der Kehrwert, nicht die Umkehrung.
-- $10^{x}$: Das ist die Exponentialfunktion zu einer *anderen* Basis, keine Umkehrung.`,
+**Typischer Fehler:** $e^{-x} = 1/e^{x}$ als Umkehrung wählen — das ist der *Kehrwert*. Oder $10^{x}$ als Umkehrung sehen — das ist eine Exponentialfunktion zu *anderer Basis*, nicht die Inverse von $e^{x}$.`,
     wrongAnswerExplanations: {
       0: 'Du hast den *Kehrwert* berechnet statt die Umkehrfunktion. $\\dfrac{1}{e^{x}} = e^{-x}$ ist das multiplikative Inverse, keine Umkehrung. Probe: $f(1/f(x)) = e^{1/e^{x}} \\neq x$. Die Umkehrfunktion von $e^{x}$ ist $\\ln(x)$, weil $\\ln(e^{x}) = x$.',
       2: '$e^{-x}$ ist der Kehrwert von $e^{x}$ ($e^{-x} = 1/e^{x}$), nicht die Umkehrfunktion. Probe: $e^{e^{-x}}$ liefert nicht $x$. Die Umkehrfunktion muss $f(f^{-1}(x)) = x$ erfüllen — das gilt nur für $\\ln(x)$: $e^{\\ln(x)} = x$.',
@@ -491,27 +424,25 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       '$\\ln$ ist *definiert* als Umkehrung von $e^{x}$.',
       'Prüfe die Verkettung: $\\ln(e^{x}) = ?$ und $e^{\\ln(x)} = ?$.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['umkehr-existenz'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['umkehr-verfahren'] },
 },
   'ex-alg-3-4-c': {
     id: 'ex-alg-3-4-c', lessonId: 'alg-3-4', type: 'true-false',
     statement: 'Der Graph einer Umkehrfunktion $f^{-1}$ entsteht durch Spiegelung des Graphen von $f$ an der Geraden $y = x$.',
     correct: true,
-    explanation: `**Wahr.** Das ist eine der schönsten geometrischen Eigenschaften der Umkehrfunktion.
+    explanation: `**Ansatz:** Bei der Umkehrung werden Argument und Funktionswert getauscht — geometrisch heißt das, dass jeder Punkt $(a, b)$ auf dem Graphen von $f$ zum Punkt $(b, a)$ auf dem Graphen von $f^{-1}$ wird. Die Abbildung $(a, b) \\mapsto (b, a)$ ist exakt die Spiegelung an der Winkelhalbierenden $y = x$.
 
-**Warum?** Bei der Umkehrung werden $x$ und $y$ vertauscht. Ein Punkt $(a, b)$ auf dem Graphen von $f$ (also $b = f(a)$) wird damit zum Punkt $(b, a)$ auf dem Graphen von $f^{-1}$ (da $a = f^{-1}(b)$). Die Abbildung $(a, b) \\to (b, a)$ ist geometrisch genau die *Spiegelung an der Geraden $y = x$*.
+**Rechnung:** Aus $b = f(a)$ folgt direkt $a = f^{-1}(b)$, sobald $f$ bijektiv ist. Das Punktepaar $\\{(a, b), (b, a)\\}$ liegt symmetrisch zur Geraden $y = x$ — diese ist die *Mittelsenkrechte* der Verbindungsstrecke der beiden Punkte. Damit ist der gesamte Graph von $f^{-1}$ das Spiegelbild des Graphen von $f$.
 
-**Beispiel:** $f(x) = e^{x}$ und $f^{-1}(x) = \\ln(x)$ — die beiden Graphen sind spiegelsymmetrisch zu $y = x$. Der Schnittpunkt ihrer Tangenten mit $y = x$ liegt genau auf dieser Geraden.
+**Probe:** Konkrete Punkte für $f(x) = e^{x}$ und $f^{-1}(x) = \\ln(x)$. Auf $e^x$ liegt $(0, 1)$ (denn $e^0 = 1$); gespiegelt an $y = x$ ergibt $(1, 0)$, und tatsächlich $\\ln(1) = 0$ ✓. Auf $e^x$ liegt $(1, e)$; gespiegelt $(e, 1)$, und $\\ln(e) = 1$ ✓.
 
-**Probe mit konkretem Punkt:** $(0, 1)$ liegt auf $e^{x}$ (da $e^{0} = 1$). Gespiegelt an $y = x$ ergibt $(1, 0)$, und tatsächlich: $\\ln(1) = 0$. ✓
-
-**Nützlich:** In Prüfungen kannst du den Graphen einer Umkehrfunktion schnell skizzieren, indem du den Originalgraphen an $y = x$ spiegelst — ohne die Formel zu kennen.`,
+**Typischer Fehler:** An der $x$-Achse spiegeln (wäre $-f(x)$) oder an der $y$-Achse (wäre $f(-x)$) — beides sind andere Transformationen. Die Umkehrfunktion verlangt explizit die Winkelhalbierende.`,
     hints: [
       'Was passiert mit einem Punkt $(a, b)$, wenn man Definitions- und Wertebereich vertauscht?',
       '$(a, b) \\to (b, a)$ — welche geometrische Operation ist das?',
       'Die Spiegelung an $y = x$ genau: jeder Punkt wechselt $x$- und $y$-Koordinate.',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['umkehr-existenz'] },
+      pedagogy: { stage: 'recognize', subGoal: 2, uses: ['umkehr-graph'] },
 },
   'ex-alg-3-4-mastery': {
     id: 'ex-alg-3-4-mastery', lessonId: 'alg-3-4', type: 'multiple-choice', isMasteryCheck: true,
@@ -547,7 +478,7 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Streng monoton steigend → injektiv. Bild $[0, \\infty)$ wird komplett erreicht → surjektiv.',
       'Dann $y = x^{2}$ nach $x$ auflösen und beachten: nur die *positive* Wurzel, da $x \\geq 0$ gefordert ist.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['umkehr-existenz'] },
+      pedagogy: { stage: 'transfer', subGoal: 5, uses: ['umkehr-einschraenken', 'umkehr-verfahren'] },
 },
 }
 
@@ -884,6 +815,34 @@ Beispiel: $f(x) = 2x + 1$ ist bijektiv (als $\\mathbb{R} \\to \\mathbb{R}$).
 
 **Standardform:** $g(x) = c \\cdot f(x - a) + b$ — mit Streckfaktor $c$, Horizontalverschiebung $a$ und Vertikalverschiebung $b$.`,
       },
+      {
+        id: 'alg-3-3-s1b', type: 'explanation-intuitive',
+        title: 'Drei Transformationen am Beispiel $f(x) = x^{2}$',
+        content: `Die nächste Visualisierung zeigt drei Transformationen einer Standardparabel auf einmal:
+
+- $f(x) = x^{2}$ — Original (blau).
+- $g(x) = (x - 3)^{2}$ — um $3$ nach rechts (grün; Argument-Minus heißt rechts).
+- $h(x) = -x^{2}$ — an der $x$-Achse gespiegelt (rot; Minus außen → $y$-Werte negiert).
+- $k(x) = 2x^{2}$ — vertikal um Faktor $2$ gestreckt (orange; Faktor außen wirkt direkt auf $y$).
+
+Vergleiche die vier Kurven: gleicher Scheitelpunkt-Stil, aber an unterschiedlicher Stelle, geöffnet nach oben/unten, schmaler/breiter. Genau diese Operationen werden in den Aufgaben gefragt.`,
+      },
+      {
+        id: 'alg-3-3-s1c', type: 'visualization',
+        title: 'Verschiebung, Streckung, Spiegelung — vier Parabeln im Vergleich',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => x * x,             color: '#3b82f6', label: 'f(x) = x²' },
+            { fn: (x) => (x - 3) * (x - 3), color: '#10b981', label: 'g(x) = (x − 3)²' },
+            { fn: (x) => -x * x,            color: '#ef4444', label: 'h(x) = −x²' },
+            { fn: (x) => 2 * x * x,         color: '#f59e0b', label: 'k(x) = 2x²' },
+          ],
+          xRange: [-3, 6],
+          yRange: [-9, 12],
+          showGrid: true,
+        },
+      },
       { id: 'alg-3-3-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-alg-3-3-a' },
       { id: 'alg-3-3-s3', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-alg-3-3-b' },
       { id: 'alg-3-3-s4', type: 'exercise', title: 'Aufgabe 3', exerciseRef: 'ex-alg-3-3-c' },
@@ -1006,6 +965,34 @@ $$f(f^{-1}(x)) = x \\quad \\text{und} \\quad f^{-1}(f(x)) = x$$
 Beispiel: $e^{\\ln(x)} = x$ (für $x > 0$) und $\\ln(e^{x}) = x$ (für alle $x \\in \\mathbb{R}$).
 
 **Achtung:** Umkehrfunktion $\\neq$ Kehrwert. $\\dfrac{1}{f(x)}$ ist der *multiplikative* Kehrwert, $f^{-1}(x)$ macht die Operation *rückgängig*.`,
+      },
+      {
+        id: 'alg-3-4-s2b', type: 'explanation-intuitive',
+        title: 'Spiegelung an $y = x$ — drei Umkehrpaare im Vergleich',
+        content: `Die nächste Visualisierung zeigt drei klassische Funktionen *zusammen mit* ihren Umkehrfunktionen — und der Winkelhalbierenden $y = x$ als Spiegelachse:
+
+- $f(x) = 2x + 3$ (blau) und $f^{-1}(x) = (x - 3)/2$ (grün) — beide Geraden, symmetrisch zu $y = x$.
+- $f(x) = e^{x}$ (rot) und $f^{-1}(x) = \\ln(x)$ (orange) — der Klassiker; die exponentielle Kurve und die logarithmische sind exakte Spiegelbilder.
+- $y = x$ (grau) — die Spiegelachse selbst.
+
+Beobachte: Wo eine Originalkurve durch $(a, b)$ geht, geht ihre Umkehrung durch $(b, a)$. Der Schnittpunkt zweier zusammengehöriger Kurven mit der Geraden $y = x$ liegt immer auf dieser Geraden — Fixpunkt der Spiegelung.`,
+      },
+      {
+        id: 'alg-3-4-s2c', type: 'visualization',
+        title: 'Funktionen und ihre Umkehrungen',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => 2 * x + 3,        color: '#3b82f6', label: 'f(x) = 2x + 3' },
+            { fn: (x) => (x - 3) / 2,      color: '#10b981', label: 'f⁻¹(x) = (x − 3)/2' },
+            { fn: (x) => Math.exp(x),      color: '#ef4444', label: 'f(x) = eˣ' },
+            { fn: (x) => x > 0 ? Math.log(x) : NaN, color: '#f59e0b', label: 'f⁻¹(x) = ln(x)' },
+            { fn: (x) => x,                color: '#94a3b8', label: 'y = x' },
+          ],
+          xRange: [-3, 6],
+          yRange: [-4, 8],
+          showGrid: true,
+        },
       },
       { id: 'alg-3-4-s3', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-alg-3-4-a' },
       { id: 'alg-3-4-s4', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-alg-3-4-b' },

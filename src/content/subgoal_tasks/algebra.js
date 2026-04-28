@@ -6460,9 +6460,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
         0,
         `**Ansatz:** Beide Seiten $:-3$, Zeichen umdrehen.
 
-**Rechnung:** $-3x \\geq 12 \\Rightarrow x \\leq -4$.
+**Rechnung:** $-3x \\geq 12 \\Rightarrow x \\leq -4$ (Division durch $-3$ flippt $\\geq$ zu $\\leq$).
 
-**Probe:** $x = -5$: $-3 \\cdot (-5) = 15 \\geq 12$ ✓.
+**Probe:** $x = -5$: $-3 \\cdot (-5) = 15 \\geq 12$ ✓. $x = 0$: $0 \\geq 12$ ist falsch — passt zu $x \\leq -4$.
 
 **Typischer Fehler:** Zeichen nicht umdrehen.`,
         [
@@ -6471,9 +6471,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Rechte Seite $12/(-3) = -4$.',
         ],
         {
-          1: 'Zeichen nicht umgedreht.',
-          2: 'Vorzeichen falsch.',
-          3: 'Beides falsch.',
+          1: 'Du hast $12/(-3) = -4$ richtig berechnet, aber das Ungleichheitszeichen nicht umgedreht. Bei Division durch eine negative Zahl wird $\\geq$ zu $\\leq$. Probe mit $x = 0$ widerlegt $x \\geq -4$: $-3 \\cdot 0 = 0$ ist nicht $\\geq 12$.',
+          2: 'Du hast $12/(-3) = +4$ statt $-4$ gerechnet (Vorzeichen-Fehler) und das Zeichen umgedreht — beide Korrekturen heben sich nicht auf. Korrekt: Quotient $-4$, Zeichen gedreht, Lösung $x \\leq -4$.',
+          3: 'Du hast das Vorzeichen beim Teilen ignoriert ($+4$ statt $-4$) und das Zeichen *nicht* umgedreht — zwei Fehler. Probe mit $x = 5$: $-3 \\cdot 5 = -15$, nicht $\\geq 12$ — widerlegt $x \\geq 4$.',
         },
         { stage: 'apply-guided', subGoal: 0, uses: ['ungl-zeichen-flip'] },
       ),
@@ -6516,9 +6516,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Zahlentest mit $x = 0$.',
         ],
         {
-          1: 'Mit $2$ multiplizieren liefert nicht die Lösung.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Lineare Ungleichung hat immer Lösung.',
+          1: 'Mit $2$ statt $-2$ zu multiplizieren wäre keine Äquivalenzumformung der Ausgangsungleichung — das Problem ist nicht der Operator, sondern dass beim Teilen durch eine negative Zahl das $<$ kippt. Mit korrekter Division durch $-2$ und Zeichen-Flip: $x > -3$.',
+          2: 'Zahlentest widerlegt die Schülerlösung: $x = 0$ liegt nicht in $x < -3$, aber $-2 \\cdot 0 = 0 < 6$ ✓ — also gehört $0$ zur Lösung. Damit ist $x < -3$ unvollständig (oder verkehrt). Korrekt: $x > -3$.',
+          3: 'Eine lineare Ungleichung mit nicht-verschwindendem Koeffizienten hat immer eine nicht-leere Lösungsmenge — entweder eine Halbgerade nach links oder nach rechts. Hier konkret $x > -3$.',
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['ungl-zeichen-flip'] },
       ),
@@ -6736,9 +6736,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Zahlentest.',
         ],
         {
-          1: 'Zahlen sind richtig, Logik falsch.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Betrag ist $\\geq 0$.',
+          1: 'Die Zahlen $3$ und $7$ sind als Intervallgrenzen richtig — der Schüler hat aber „innerhalb" und „außerhalb" verwechselt. $|x-5| > 2$ heißt **außerhalb** $[3, 7]$, nicht zwischen $3$ und $7$. Reine Zahlenkorrektur reicht hier nicht; die Logik kippt um.',
+          2: 'Zahlentest widerlegt: $x = 4$ liegt in der Schülerlösung $3 < x < 7$, aber $|4-5| = 1$, also $1 > 2$ ist *falsch* — $x=4$ darf nicht in der Lösung sein. Damit ist $3 < x < 7$ definitiv falsch.',
+          3: 'Beträge sind $\\geq 0$, aber das ist hier nicht das Problem — die Ungleichung $|x-5| > 2$ verlangt einen Abstand größer als $2$, was für viele $x$ erfüllbar ist. Der Fehler liegt darin, „außerhalb" mit „innerhalb" zu verwechseln.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['betrag-groesser', 'betrag-kleiner'] },
       ),
@@ -7059,28 +7059,28 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
       mc(
         'Ein Schüler multipliziert $\\dfrac{2}{x} > 1$ mit $x$ zu $2 > x$ und schreibt $x < 2$. Wo liegt der Fehler?',
         [
-          'Er hat nicht beachtet, dass $x < 0$ das Zeichen umdreht. Korrekt: $x < 0$ ODER $0 < x < 2$.',
+          'Er hat ohne Fallunterscheidung mit $x$ multipliziert — für $x < 0$ müsste das Zeichen umdrehen. Korrekt: $0 < x < 2$ (für $x < 0$ ist $2/x < 0 < 1$, keine Lösung).',
           'Die Rechnung ist korrekt.',
-          'Er hätte $x = 0$ ausschließen müssen (er hat es aber nicht).',
+          'Er hätte direkt nach $x$ auflösen müssen: $x > 2$.',
           'Die Ungleichung hat keine Lösung.',
         ],
         0,
-        `**Ansatz:** Beim Multiplizieren mit $x$ muss der Fall $x < 0$ separat behandelt werden.
+        `**Ansatz:** Beim Multiplizieren einer Ungleichung mit $x$ muss man Vorzeichen-Fälle unterscheiden — sonst flippt das Ergebnis im negativen Bereich.
 
-**Rechnung:** Fall $x > 0$: $2 > x \\Rightarrow 0 < x < 2$. Fall $x < 0$: $2 < x$ (Zeichen gedreht), also $x > 2$ UND $x < 0$ — unmöglich. Warte, $2/x > 1$ bei $x < 0$ wäre $2/x$ negativ, also nie $> 1$. Korrekt: $0 < x < 2$.
+**Rechnung:** Fall $x > 0$: $2 > x \\Rightarrow 0 < x < 2$. Fall $x < 0$: aus $\\frac{2}{x} > 1$ wird beim Multiplizieren mit dem negativen $x$ das Zeichen umgedreht: $2 < x$, also $x > 2$. Zusammen mit $x < 0$ ergibt das **keine Lösung** (leerer Schnitt). Polstelle $x = 0$ ist ausgeschlossen. Lösungsmenge: $\\mathbb{L} = (0, 2)$.
 
-**Probe:** $x = 1$: $2 > 1$ ✓.
+**Probe:** $x = 1$: $\\frac{2}{1} = 2 > 1$ ✓. $\\quad x = -1$: $\\frac{2}{-1} = -2$, nicht $> 1$ ✗ — der Bereich $x < 0$ aus der Schülerlösung ist falsch. $\\quad x = 3$: $\\frac{2}{3} \\approx 0{,}67$, nicht $> 1$ ✗ — auch $x > 2$ scheidet aus.
 
-**Typischer Fehler:** Quer-Multiplizieren ohne Fallunterscheidung.`,
+**Typischer Fehler:** Mit dem Nenner quer-multiplizieren, ohne sein Vorzeichen zu prüfen, und dabei zusätzlich die Polstelle übersehen.`,
         [
           'Vorzeichen des Nenners beachten.',
-          'Zwei Fälle.',
+          'Zwei Fälle: $x > 0$ und $x < 0$.',
           'Polstelle $x = 0$ ausschließen.',
         ],
         {
-          1: 'Polstelle muss ausgeschlossen werden.',
-          2: 'Er hat sie implizit übergangen — das ist auch falsch.',
-          3: '$x = 1$: $2 > 1$ ist Lösung.',
+          1: 'Die Schülerrechnung ist nicht korrekt: sie enthält $x = -1$ (wegen $-1 < 2$), aber dort ist $\\frac{2}{-1} = -2$, also *nicht* $> 1$. Außerdem fehlt der Ausschluss der Polstelle $x = 0$. Korrekt ist nur $0 < x < 2$.',
+          2: 'Direkt zu $x > 2$ aufzulösen wäre noch fataler — Probe mit $x = 3$: $\\frac{2}{3} \\approx 0{,}67$, das ist *nicht* $> 1$. Die richtige Lösung liegt zwischen $0$ und $2$, nicht darüber.',
+          3: 'Doch, die Ungleichung hat eine Lösung: $x = 1$ liefert $\\frac{2}{1} = 2 > 1$ ✓. Lösungsmenge ist das Intervall $(0, 2)$.',
         },
         { stage: 'error-analysis', subGoal: 5, uses: ['bruch-ungl-pol'] },
       ),
@@ -7420,9 +7420,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Gleiche $y$-Werte bei verschiedenen $x$?',
         ],
         {
-          1: 'Auf ganz $\\mathbb{R}$ nicht injektiv.',
-          2: 'Auf $[0, \\infty)$ tatsächlich ja — aber die Frage ist über $\\mathbb{R}$.',
-          3: '"Teilweise" ist keine mathematisch präzise Aussage.',
+          1: 'Auf ganz $\\mathbb{R}$ ist $f(x)=x^2$ nicht injektiv: $f(2) = f(-2) = 4$ liefert ein konkretes Gegenbeispiel. „Ja" gälte nur, wenn man den Definitionsbereich einschränkt — die Frage stellt aber explizit $D = \\mathbb{R}$.',
+          2: 'Diese Aussage ist isoliert wahr, beantwortet aber die Frage nicht: Gefragt ist die Injektivität *auf $\\mathbb{R}$*, nicht auf einem eingeschränkten Bereich. Auf $\\mathbb{R}$ scheitert die Injektivität an Paaren wie $\\pm 2 \\to 4$.',
+          3: 'Injektivität ist eine binäre Eigenschaft — eine Funktion ist auf einem festen Definitionsbereich entweder injektiv oder nicht. Eine korrekte Antwort wäre: nicht injektiv auf $\\mathbb{R}$, weil Gegenbeispiele wie $f(2) = f(-2) = 4$ existieren.',
         },
         { stage: 'apply-guided', subGoal: 2, uses: ['injektiv'] },
       ),
@@ -7430,22 +7430,22 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
         'Ist $f: \\mathbb{R} \\to \\mathbb{R}, f(x) = x^3 + 1$ bijektiv?',
         ['Ja', 'Nein, nicht injektiv', 'Nein, nicht surjektiv', 'Nicht entscheidbar'],
         0,
-        `**Ansatz:** $x^3$ ist bijektiv auf $\\mathbb{R}$; Verschiebung ändert das nicht.
+        `**Ansatz:** $x^3$ ist bijektiv auf $\\mathbb{R}$; eine konstante Verschiebung ändert das nicht.
 
-**Rechnung:** $f'(x) = 3x^2 \\geq 0$, streng monoton steigend → injektiv. Werte: $\\mathbb{R}$ vollständig → surjektiv.
+**Rechnung:** $f'(x) = 3x^2 \\geq 0$ und $= 0$ nur bei $x = 0$ — die Funktion ist streng monoton steigend, also *injektiv*. Wertebereich: für $x \\to \\pm\\infty$ geht $f(x) \\to \\pm\\infty$, also wird ganz $\\mathbb{R}$ getroffen — *surjektiv*. Beides zusammen: bijektiv.
 
-**Probe:** Zu jedem $y$ gibt es ein $x = \\sqrt[3]{y-1}$.
+**Probe:** Zu jedem $y$ existiert genau ein $x = \\sqrt[3]{y - 1}$. Beispiel: $y = 9 \\Rightarrow x = \\sqrt[3]{8} = 2$, und $f(2) = 8 + 1 = 9$ ✓.
 
-**Typischer Fehler:** Mit $x^2$ verwechseln.`,
+**Typischer Fehler:** Mit $x^2$ verwechseln — gerade Potenzen sind nicht injektiv, ungerade schon.`,
         [
           'Streng monoton?',
           'Wertebereich $\\mathbb{R}$?',
           'Beides ✓.',
         ],
         {
-          1: 'Streng monoton → injektiv.',
-          2: 'Wertebereich $\\mathbb{R}$.',
-          3: 'Entscheidbar durch Monotonie.',
+          1: 'Doch — $f$ ist injektiv. $f(x) = x^3 + 1$ ist streng monoton steigend ($f\'(x) = 3x^2 \\geq 0$, mit Gleichheit nur an einem isolierten Punkt). Verwechslung mit $x^2$: dort wäre $f(2)=f(-2)$, aber bei $x^3$ gilt $2^3 = 8 \\neq -8 = (-2)^3$.',
+          2: 'Doch — der Wertebereich ist ganz $\\mathbb{R}$. $x^3$ überstreicht alle reellen Werte ($x \\to \\pm\\infty \\Rightarrow x^3 \\to \\pm\\infty$); die Verschiebung um $+1$ verschiebt nur, ohne zu beschränken. Also surjektiv.',
+          3: 'Doch — die Bijektivität lässt sich klar entscheiden: streng monoton (Ableitung nicht-negativ und nur isoliert null) liefert Injektivität, $f(\\mathbb{R}) = \\mathbb{R}$ Surjektivität. Antwort: bijektiv.',
         },
         { stage: 'apply-independent', subGoal: 2, uses: ['bijektiv'] },
       ),
@@ -7471,9 +7471,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Wertebereich.',
         ],
         {
-          1: 'Gegenbeispiel widerlegt.',
-          2: 'Gegenbeispiel widerlegt.',
-          3: 'Auch das stimmt nicht generell.',
+          1: 'Das Gegenbeispiel widerlegt diese Implikation: $e^x$ ist injektiv (streng monoton steigend), aber nicht surjektiv auf $\\mathbb{R}$ — der Wert $-1$ liegt im Zielbereich, hat aber kein Urbild, weil $e^x > 0$ für alle $x$.',
+          2: 'Der Schüler liegt nicht richtig. Injektiv und surjektiv sind unabhängige Eigenschaften: $f(x) = e^x: \\mathbb{R} \\to \\mathbb{R}$ ist nur injektiv (Wertebereich $(0, \\infty)$ deckt nicht ganz $\\mathbb{R}$), $f(x) = x^2: \\mathbb{R} \\to [0, \\infty)$ ist nur surjektiv (aber $f(2)=f(-2)$).',
+          3: 'Falsche Implikationsrichtung — und auch die umgekehrte gilt nicht. Surjektivität sagt nichts über Eindeutigkeit aus: $f(x) = x^3 - x: \\mathbb{R} \\to \\mathbb{R}$ ist surjektiv, aber wegen $f(0) = f(1) = f(-1) = 0$ nicht injektiv.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['injektiv', 'surjektiv'] },
       ),
@@ -7707,9 +7707,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Grenzwert $\\neq$ Wert.',
         ],
         {
-          1: 'Exponentialfunktion ist für alle $x$ definiert.',
-          2: 'Zahlentest widerlegt.',
-          3: '$x = -\\infty$ ist keine Zahl.',
+          1: 'Doch — $2^x$ ist für *alle* reellen $x$ definiert (auch für sehr negative). Das eigentliche Problem ist nicht der Definitionsbereich, sondern die Verwechslung von Grenzwert und erreichtem Wert: $2^x$ wird beliebig klein, aber nie gleich $0$.',
+          2: 'Der Schüler liegt nicht richtig. Konkret: $2^{-10} = 1/1024 \\approx 9{,}8 \\cdot 10^{-4}$, also positiv. Egal wie klein $x$ wird, $2^x$ bleibt strikt $> 0$ — das ist gerade die definierende Eigenschaft des Wertebereichs $(0, \\infty)$.',
+          3: '$-\\infty$ ist keine reelle Zahl, sondern nur ein Symbol für „beliebig klein". Daher ist $2^{-\\infty}$ kein einsetzbarer Wert — gemeint ist der Grenzwert $\\lim_{x \\to -\\infty} 2^x = 0$. Aber Grenzwert $\\neq$ erreichter Funktionswert.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['exp-fkt'] },
       ),
@@ -7817,9 +7817,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Existenz vor Berechnung.',
         ],
         {
-          1: 'Dasselbe Problem.',
-          2: 'Zahlentest widerlegt.',
-          3: '$\\log$ ist nicht linear (keine Distributivität).',
+          1: '$\\log(5) \\cdot (-1) = -\\log(5) \\approx -0{,}7$ ist eine berechenbare Zahl — aber das ändert nichts daran, dass $\\log(-5)$ in $\\mathbb{R}$ schlicht *nicht definiert* ist. Es gibt kein reelles $y$ mit $10^{y} = -5$, weil $10^{y} > 0$ für alle $y$.',
+          2: 'Doch, der Schüler liegt falsch. $\\log(-5) = -\\log(5)$ würde gelten, wenn $\\log$ irgendeine Vorzeichen-Symmetrie hätte — hat es aber nicht. $\\log$ ist auf $(0, \\infty)$ definiert, negative Argumente sind außerhalb des Definitionsbereichs.',
+          3: 'Das stimmt zwar als allgemeine Beobachtung ($\\log(a + b) \\neq \\log a + \\log b$), trifft aber nicht den Kernfehler. Hier ist das Problem nicht Linearität, sondern dass $\\log$ auf negativen Argumenten überhaupt nicht definiert ist.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['log-fkt'] },
       ),
@@ -7917,9 +7917,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Auch bei kleiner Basis.',
         ],
         {
-          1: 'Polynom wird letztendlich überholt.',
-          2: 'Ungleich in asymptotischem Verhalten.',
-          3: 'Hängt von $x$ ab, aber Exp gewinnt letztendlich.',
+          1: 'Auch $x^{1000}$ wird auf lange Sicht von $1{,}01^x$ überholt — das ist die Aussage der Wachstumshierarchie. $\\lim_{x \\to \\infty} x^{1000} / 1{,}01^x = 0$ gilt für *jeden* festen Polynomgrad, weil das Exponential-Wachstum $e^{x \\ln 1{,}01}$ jede Potenz schlägt.',
+          2: 'Beide wachsen *nicht* gleich — das wäre nur der Fall, wenn der Quotient gegen eine endliche Konstante $\\neq 0$ konvergiert. Hier geht der Quotient $x^{1000} / 1{,}01^x \\to 0$, also wächst $1{,}01^x$ asymptotisch *strikt schneller*.',
+          3: '„Hängt von $x$ ab" verfehlt das Asymptotische: für *kleine* $x$ ist $x^{1000}$ tatsächlich riesig im Vergleich zu $1{,}01^x \\approx 1$, aber gefragt ist das Verhalten für $x \\to \\infty$. Dort gewinnt das Exponential — eindeutig und nicht situationsabhängig.',
         },
         { stage: 'apply-independent', subGoal: 3, uses: ['wachstum-hierarchie'] },
       ),
@@ -7945,9 +7945,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Zahlentest bei $x = 100$.',
         ],
         {
-          1: 'Zahlentest widerlegt.',
-          2: 'Wachstumsraten unterschiedlich.',
-          3: 'Asymptotisch eindeutig.',
+          1: 'Der Schüler liegt falsch — und zwar deutlich. Bei $x = 100$ ist $e^{100} \\approx 2{,}7 \\cdot 10^{43}$, während $100^2 = 10^4$. Schon für moderat große $x$ ist $e^x$ um Größenordnungen größer als $x^2$.',
+          2: 'Beide wachsen nicht gleich: $e^x / x^2 \\to \\infty$ (Beweis z. B. mit zweimaliger Anwendung von l\'Hospital). Sie haben strukturell verschiedenes Wachstum — Exponential schlägt Polynom asymptotisch immer.',
+          3: 'Die Wachstumshierarchie hängt *nicht* vom Bereich ab — sie gilt asymptotisch für $x \\to \\infty$. Für kleine $x$ kann ein Polynom kurzzeitig größer sein (z. B. $x^2$ vs $e^x$ schneiden sich bei $x \\approx 1{,}48$), aber ab da überholt $e^x$ und kommt nie wieder zurück.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['wachstum-hierarchie'] },
       ),
@@ -8057,31 +8057,31 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Ergibt $x$.',
         ],
         {
-          1: 'Doch — das ergibt dasselbe: $2 \\cdot 1 = 2$. Die Fehler-Antwort ist $e^2$.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Unsinnige Formel.',
+          1: '$2 \\ln e = 2 \\cdot 1 = 2$ — das ist mathematisch korrekt und ergibt dasselbe wie die Umkehr-Identität. Der eigentliche Fehler des Schülers ist aber, dass er $\\ln(e^2) = e^2$ schreibt — also $\\ln$ wirkungslos lässt. Beide Wege ($\\ln(e^x) = x$ direkt, oder Log-Gesetz) führen zu $2$, nie zu $e^2$.',
+          2: 'Der Schüler liegt falsch. Probe: $\\ln(e^2) = 2 \\approx 2{,}00$, aber er behauptet $e^2 \\approx 7{,}39$. Das sind komplett verschiedene Werte. Die Identität $\\ln(e^y) = y$ vereinfacht den Ausdruck zu $2$.',
+          3: '$\\ln(e^2) = e^2 \\cdot 2$ ist keine bekannte Regel und ergibt $\\approx 14{,}78$ — weder das richtige Ergebnis $2$ noch der Schülerfehler $e^2$. Vermutlich Verwechslung mit dem Log-Gesetz $\\ln(a^b) = b \\ln a$, falsch angewandt.',
         },
         { stage: 'error-analysis', subGoal: 4, uses: ['euler-zahl'] },
       ),
       matching(
-        'Ordne jeder Eigenschaft von $e^x$ ihre Beschreibung zu.',
+        'Ordne jeder Aussage über $e^x$ die passende verbale Beschreibung zu.',
         [
-          { left: '$(e^x)\' = e^x$',           right: 'Ableitung gleicht der Funktion' },
-          { left: '$\\int e^x dx = e^x + C$',  right: 'Stammfunktion gleicht der Funktion' },
-          { left: '$e^x > 0$',                  right: 'immer positiv' },
-          { left: '$\\lim_{x \\to \\infty} e^x = \\infty$', right: 'streng monoton wachsend' },
+          { left: '$(e^x)\' = e^x$',                              right: 'Ableitung gleicht der Funktion' },
+          { left: '$\\int e^x \\, dx = e^x + C$',                  right: 'Stammfunktion gleicht der Funktion' },
+          { left: '$e^x > 0$ für alle $x$',                        right: 'Wertebereich $(0, \\infty)$' },
+          { left: '$\\lim_{x \\to \\infty} e^x = \\infty$',         right: 'unbeschränktes Wachstum nach rechts' },
         ],
-        `**Ansatz:** Schlüsseleigenschaften von $e^x$.
+        `**Ansatz:** Vier Schlüssel-Eigenschaften von $e^x$ präzise verbalisieren — Ableitung, Stammfunktion, Wertebereich, asymptotisches Verhalten.
 
-**Rechnung:** Einzigartig bei $e^x$: Ableitung und Stammfunktion sind gleich.
+**Rechnung:** $(e^x)' = e^x$ und $\\int e^x dx = e^x + C$ sind die einzigartige Eigenschaft, die $e^x$ unter allen Exponentialfunktionen auszeichnet (für $a^x$ gilt nur $(a^x)' = a^x \\ln a$). $e^x > 0$ folgt aus der Definition als Umkehrung von $\\ln$, deren Argument positiv sein muss. $\\lim_{x\\to\\infty} e^x = \\infty$ beschreibt das Verhalten nach rechts.
 
-**Probe:** Standard-Eigenschaften.
+**Probe:** Ableitung von $e^x$ an $x=0$: $1 = e^0$ ✓. Bei $x = -10$: $e^{-10} \\approx 4{,}5 \\cdot 10^{-5} > 0$ ✓. $e^{10} \\approx 22\\,026$ — wächst über alle Schranken.
 
-**Typischer Fehler:** Mit anderen Exponentialfunktionen verwechseln.`,
+**Typischer Fehler:** Die Eigenschaft $(e^x)' = e^x$ auf andere Exponentialfunktionen $a^x$ übertragen — dort kommt der Faktor $\\ln a$ ins Spiel.`,
         [
-          'Besondere Eigenschaft: Ableitung gleich Funktion.',
-          'Positivität, Monotonie.',
-          'Grund für die Bedeutung in Analysis.',
+          'Was ist die Ableitung von $e^x$?',
+          'Was ist die Stammfunktion?',
+          'Welcher Wertebereich, welches asymptotische Verhalten?',
         ],
         { stage: 'transfer', subGoal: 4, uses: ['euler-zahl'] },
       ),
@@ -8127,9 +8127,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Langsames Wachstum.',
         ],
         {
-          1: 'Parabel ist $y = x^2$.',
-          2: 'Keine Gerade.',
-          3: 'Hyperbel ist $y = 1/x$.',
+          1: 'Eine Parabel ist der Graph von $y = x^2$ (öffnet sich nach oben/unten, definiert für alle reellen $x$). $\\sqrt{x}$ ist hingegen die Umkehrfunktion und nur für $x \\geq 0$ definiert — der Graph ist eine *halbe* liegende Parabel im ersten Quadranten.',
+          2: 'Eine Gerade hätte konstante Steigung — $\\sqrt{x}$ wird aber immer flacher: zwischen $x=0$ und $x=1$ steigt sie um $1$, zwischen $x=1$ und $x=4$ nur um $1$ (auf $3$ Einheiten), zwischen $x=4$ und $x=9$ wieder nur um $1$ (auf $5$ Einheiten). Linear ist das nicht.',
+          3: 'Eine Hyperbel ist $y = 1/x$ und hat zwei getrennte Äste mit Polstelle bei $x = 0$. $\\sqrt{x}$ hat dagegen einen einzigen, durchgehenden Ast, der im Ursprung startet und nach rechts unbegrenzt wächst.',
         },
         { stage: 'apply-guided', subGoal: 5, uses: ['wurzel-fkt'] },
       ),
@@ -8179,24 +8179,24 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
         { stage: 'error-analysis', subGoal: 5, uses: ['wurzel-fkt'] },
       ),
       matching(
-        'Ordne jeder Wurzelart ihren Definitionsbereich zu.',
+        'Ordne jeder Wurzel-Berechnung das richtige Ergebnis zu.',
         [
-          { left: '$\\sqrt{x}$ (Quadratwurzel)',   right: '$x \\geq 0$' },
-          { left: '$\\sqrt[3]{x}$ (Kubikwurzel)',  right: '$x \\in \\mathbb{R}$' },
-          { left: '$\\sqrt[4]{x}$',                right: '$x \\geq 0$' },
-          { left: '$\\sqrt[5]{x}$',                right: '$x \\in \\mathbb{R}$' },
+          { left: '$\\sqrt{36}$',                right: '$6$' },
+          { left: '$\\sqrt[3]{-27}$',            right: '$-3$' },
+          { left: '$\\sqrt[4]{16}$',             right: '$2$' },
+          { left: '$\\sqrt{0{,}25}$',            right: '$0{,}5$' },
         ],
-        `**Ansatz:** Gerade Wurzel braucht $\\geq 0$; ungerade akzeptiert auch negativ.
+        `**Ansatz:** Gerade Wurzeln liefern den nicht-negativen Hauptwert; ungerade Wurzeln dürfen auch negative Argumente haben und behalten dabei das Vorzeichen.
 
-**Rechnung:** $\\sqrt[n]{-x}$ in $\\mathbb{R}$ nur für ungerade $n$.
+**Rechnung:** $\\sqrt{36} = 6$ (denn $6^{2} = 36$). $\\sqrt[3]{-27} = -3$ (denn $(-3)^{3} = -27$, und Kubikwurzeln sind in $\\mathbb{R}$ überall definiert). $\\sqrt[4]{16} = 2$ (denn $2^{4} = 16$, und nur der positive Wert ist Hauptwert). $\\sqrt{0{,}25} = 0{,}5$ (denn $0{,}5^{2} = 0{,}25$).
 
-**Probe:** $\\sqrt[3]{-8} = -2$; $\\sqrt[4]{-8}$ nicht definiert.
+**Probe:** Jeweils Ergebnis hoch Wurzelexponent zurückrechnen — alle vier ergeben das Argument.
 
-**Typischer Fehler:** Alle Wurzeln gleich behandeln.`,
+**Typischer Fehler:** Bei geraden Wurzeln das Minus vergessen — $\\sqrt{36} = \\pm 6$ ist falsch (Wurzelfunktion ist eindeutig); bei ungeraden Wurzeln den negativen Ast streichen ($\\sqrt[3]{-27}$ ist sehr wohl definiert).`,
         [
-          'Gerade Wurzel: $\\geq 0$.',
-          'Ungerade Wurzel: alle reellen Zahlen.',
-          'Parität entscheidet.',
+          'Gerade Wurzel: nur nicht-negativer Hauptwert.',
+          'Ungerade Wurzel: behält Vorzeichen des Arguments.',
+          'Probe: Ergebnis hoch Wurzelexponent = Argument.',
         ],
         { stage: 'transfer', subGoal: 5, uses: ['wurzel-fkt'] },
       ),
@@ -8294,9 +8294,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Scheitel dort.',
         ],
         {
-          1: 'Quadratische Ergänzung ist unnötig — schon in Scheitelform.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Scheitel ist nicht immer bei $(0, 0)$.',
+          1: 'Quadratische Ergänzung ist unnötig — $(x-4)^2$ steht bereits in Scheitelform $(x-h)^2 + k$ mit $h = 4, k = 0$. Aus dieser Form liest man Scheitel direkt ab: $(4, 0)$, nicht $(-4, 0)$.',
+          2: 'Doch — der Schüler liegt falsch. Probe mit $g(4) = (4-4)^2 = 0$ und $g(-4) = (-4-4)^2 = 64$ ≠ 0. Der Scheitel (also der Tiefpunkt der nach oben offenen Parabel) liegt bei $x = 4$, nicht bei $x = -4$.',
+          3: 'Doch, der Scheitel kann verschoben sein. Original $f(x) = x^2$ hat Scheitel bei $(0, 0)$, aber jede Verschiebung verändert ihn. Hier liegt der Scheitel bei $(4, 0)$, eben weil $(x-4)^2 = 0$ erst bei $x = 4$ erfüllt ist.',
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['trafo-hor-verschieben'] },
       ),
@@ -8359,9 +8359,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Nach unten.',
         ],
         {
-          1: 'Minus außen = nach unten.',
-          2: 'Horizontal braucht Argument-Änderung.',
-          3: 'Ebenso.',
+          1: 'Genau umgekehrt — $-7$ außen verringert die $y$-Werte, also Verschiebung nach *unten*. Nach oben wäre $f(x) + 7$, nicht $f(x) - 7$.',
+          2: 'Horizontale Verschiebung tritt nur auf, wenn das Argument geändert wird, also $f(x \\pm a)$. Hier wird aber außerhalb der Funktion subtrahiert ($-7$), was rein vertikal wirkt.',
+          3: 'Wie bei Antwort 2: außerhalb der Funktion subtrahieren wirkt nicht horizontal. Für eine Rechtsverschiebung um $7$ müsste das Argument $x - 7$ sein, also $f(x - 7)$.',
         },
         { stage: 'apply-guided', subGoal: 1, uses: ['trafo-vert-verschieben'] },
       ),
@@ -8404,9 +8404,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Außen = vertikal.',
         ],
         {
-          1: 'Auch horizontal wäre falsch.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Wenn es im Argument wäre, wäre es $f(x+2)$ = links.',
+          1: 'Auch „rechts" wäre falsch — $+2$ außen wirkt rein vertikal, gar nicht horizontal. Eine Horizontalverschiebung würde verlangen, dass die $2$ im Argument steht (z. B. $f(x \\pm 2)$).',
+          2: 'Doch, der Schüler liegt falsch. Probe mit $f(x) = x^2$: $g(0) = 0 + 2 = 2$, $g(1) = 1 + 2 = 3$. Die $y$-Werte sind alle um $2$ größer als bei $f$ — das ist Verschiebung *nach oben*, nicht nach links.',
+          3: 'Genau — *wenn* die $+2$ im Argument stünde ($f(x+2)$), wäre die Verschiebung $2$ nach links. Hier steht sie aber außen ($f(x) + 2$), also wirkt sie vertikal. Dass „außen" und „im Argument" unterschiedlich wirken, ist die zentrale Merkregel.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['trafo-vert-verschieben'] },
       ),
@@ -8469,9 +8469,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           '$y$-Werte werden mal $3$.',
         ],
         {
-          1: 'Horizontale Stauchung wäre $f(3x)$.',
-          2: 'Verschiebung wäre Addition, nicht Multiplikation.',
-          3: 'Ebenso.',
+          1: 'Horizontale Stauchung wäre $f(3x)$ — der Faktor stünde dann *im Argument*. Bei $3 \\cdot f(x)$ ist die $3$ außen, also vertikal. Außerdem ist Stauchung das *Schmaler-werden*, hier wird die Funktion vertikal *gestreckt* (steiler).',
+          2: '$3f(x) = 3 \\cdot f(x)$ ist eine Multiplikation, nicht eine Addition. Verschiebung nach oben um $3$ wäre $f(x) + 3$ (additiv). Multiplikativ vs. additiv ist der Kernunterschied: das eine streckt, das andere verschiebt.',
+          3: 'Auch das ist eine Verschiebung statt einer Multiplikation. „Nach rechts" käme zudem aus einer Argument-Änderung wie $f(x - 3)$ — hier ist die $3$ aber außen und multiplikativ. Effekt: vertikale Streckung.',
         },
         { stage: 'apply-guided', subGoal: 2, uses: ['trafo-vert-streck'] },
       ),
@@ -8520,9 +8520,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Inverse Beziehung.',
         ],
         {
-          1: '$3f(x)$ wäre vertikale Streckung um $3$.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Vertikal wäre $3 \\cdot f(x)$.',
+          1: '$3f(x)$ wäre eine *vertikale* Streckung um Faktor $3$ — der Schüler hätte das schreiben müssen, wenn er „strecken" gemeint hätte. Aber er hat $f(3x)$ — das wirkt im Argument und ist *horizontale Stauchung*.',
+          2: 'Probe widerlegt: $f(x) = x^2$, $f(3x) = (3x)^2 = 9x^2$. Bei $x = 1$: $f(3) = 9$, $g(1) = 9$ — der ursprüngliche Wert von $f$ bei $x = 3$ taucht jetzt schon bei $x = 1$ auf. Die Kurve ist gestaucht (auf ein Drittel der ursprünglichen Breite), nicht gestreckt.',
+          3: 'Doch, $f(3x)$ wirkt horizontal — der Faktor $3$ steht im Argument, also auf der $x$-Achse. Eine vertikale Veränderung würde $3 \\cdot f(x)$ bedeuten, mit dem Faktor außerhalb der Funktion.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['trafo-hor-streck'] },
       ),
@@ -8641,9 +8641,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Innen → $y$-Achse.',
         ],
         {
-          1: 'Nur bei ungeraden Funktionen ($f(-x) = -f(x)$) zufällig gleich.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Beide können Graphen verändern.',
+          1: 'Stimmt nur bei *ungeraden* Funktionen: dort gilt $f(-x) = -f(x)$, also $f(-x) = -f(x)$ als Spezialfall — z. B. $f(x) = x^3$. Bei *geraden* Funktionen ($f(-x) = f(x)$) wäre $f(-x) = f(x) \\neq -f(x)$. Generell sind die beiden Spiegelungen aber verschiedene Operationen.',
+          2: 'Doch, der Schüler liegt falsch. Probe: $f(x) = x^2 + 1$, dann $-f(x) = -x^2 - 1$ (Parabel nach unten verschoben), aber $f(-x) = (-x)^2 + 1 = x^2 + 1 = f(x)$ (unverändert). Zwei komplett verschiedene Graphen.',
+          3: 'Beide können den Graphen verändern, ja — aber das ist keine Erklärung dafür, warum sie *verschieden* sind. Die eigentliche Frage: *welche* Spiegelung passiert? $-f$ wirkt vertikal (an $x$-Achse), $f(-x)$ horizontal (an $y$-Achse).',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['trafo-spiegel-x', 'trafo-spiegel-y'] },
       ),
@@ -8743,28 +8743,28 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
       mc(
         'Ein Schüler zeichnet $g(x) = f(x - 5) + 3$ als "$5$ nach links und $3$ nach unten". Wo liegt der Fehler?',
         [
-          '$x - 5$ im Argument ist nach RECHTS (nicht links); $+3$ außen ist nach OBEN (nicht unten).',
-          'Er hat nur die Vorzeichen verwechselt — korrekt wäre rechts + oben.',
-          'Das ist richtig.',
-          'Er hätte quadratische Ergänzung anwenden müssen.',
+          '$x - 5$ im Argument ist nach RECHTS (nicht links); $+3$ außen ist nach OBEN (nicht unten). Beide Vorzeichen wurden falsch interpretiert.',
+          'Er hat die Reihenfolge falsch: Erst $+3$ und dann $x - 5$ ergäbe einen anderen Graphen.',
+          'Das ist richtig — Argument-Änderungen wirken kontraintuitiv und außen genauso.',
+          'Er hätte quadratische Ergänzung anwenden müssen, um die Verschiebungen zu erkennen.',
         ],
         0,
-        `**Ansatz:** Merkregel + Intuition.
+        `**Ansatz:** Argument-Änderung wirkt horizontal und mit umgekehrtem Vorzeichen; äußere Änderung wirkt vertikal und intuitiv.
 
-**Rechnung:** $x - 5$ im Argument → $5$ nach rechts. $+3$ außen → $3$ nach oben.
+**Rechnung:** $f(x - 5)$: Argument wird $0$, wenn $x = 5$ — der Punkt, der bei $f$ an $x = 0$ lag, ist bei $g$ an $x = 5$, also $5$ nach *rechts*. $+3$ außen: jeder $y$-Wert um $3$ erhöht, also $3$ nach *oben*. Die Schülerlösung dreht beide Vorzeichen falsch herum.
 
-**Probe:** Zahlentest. $f(0) \\to g(5) = f(0) + 3$.
+**Probe:** Zahlentest mit $f(x) = x^2$: $g(5) = f(0) + 3 = 0 + 3 = 3$ — Scheitel bei $(5, 3)$. Schülerlösung („links + unten") würde Scheitel bei $(-5, -3)$ behaupten — falsch.
 
-**Typischer Fehler:** Beide Richtungen verwechseln.`,
+**Typischer Fehler:** Beide Richtungen verwechseln. Merkregel: *Innen invers, außen direkt*.`,
         [
           'Wo ist das Minus?',
           'Im Argument = rechts.',
           'Außen = oben.',
         ],
         {
-          1: 'Das ist die Antwort — beide Vorzeichen verwechselt.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Quadratische Ergänzung unnötig.',
+          1: 'Verschiebungen sind in jeder Reihenfolge kommutativ (das gilt nur für Streckungen mit Verschiebungen, da ist Reihenfolge wichtig). Hier ist das Ergebnis dasselbe — der Fehler des Schülers liegt in den Richtungen, nicht in der Reihenfolge.',
+          2: 'Argument-Änderungen wirken kontraintuitiv (Vorzeichen flippt), aber äußere Änderungen wirken *intuitiv* — nicht „genauso kontraintuitiv". $+3$ außen heißt direkt nach oben, nicht nach unten.',
+          3: 'Quadratische Ergänzung wäre nötig, wenn die Funktion in ausmultiplizierter Form vorläge (z.B. $x^2 - 10x + 28$). $f(x-5)+3$ ist aber bereits in Verschiebungs-Standardform — die Parameter $5$ und $3$ sind direkt ablesbar.',
         },
         { stage: 'error-analysis', subGoal: 4, uses: ['trafo-merkregel'] },
       ),
@@ -8874,9 +8874,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Generell unterschiedlich.',
         ],
         {
-          1: 'Nur bei speziellen Funktionen gleich.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Kommutativ nur bei $f = g$ oder ähnlich.',
+          1: 'Beide Formen sind nur in Spezialfällen gleich (z. B. wenn $f$ und $g$ Umkehrfunktionen voneinander sind: $f(g(x)) = x = g(f(x))$). Im Allgemeinen ist das aber falsch — Funktionskomposition ist *nicht* kommutativ.',
+          2: 'Doch, der Schüler liegt falsch. Probe: $f(x) = x^2$, $g(x) = x + 1$. $(f \\circ g)(x) = (x+1)^2 = x^2 + 2x + 1$, aber $(g \\circ f)(x) = x^2 + 1$. Bei $x = 2$: $9$ vs. $5$ — komplett verschieden.',
+          3: 'Auch im Spezialfall $f = g$ ist Kommutativität nicht der Punkt: dann sind beide Schreibweisen trivialerweise dieselbe Funktion ($f \\circ f$). Generelle Kommutativität gilt aber für Komposition *nicht* — im Gegensatz zu Addition oder Multiplikation.',
         },
         { stage: 'error-analysis', subGoal: 5, uses: ['fkt-komposition'] },
       ),
@@ -9066,9 +9066,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Dann Namen tauschen.',
         ],
         {
-          1: 'Vorzeichen von $5$ falsch.',
-          2: 'Das ist $f$ selbst (vergrößert).',
-          3: 'Komplett falsch.',
+          1: 'Vorzeichen-Fehler beim Umstellen: aus $y = 3x - 5$ folgt durch Addition von $5$ auf beiden Seiten $y + 5 = 3x$, also $x = (y+5)/3$ — *plus* $5$ im Zähler, nicht *minus*. Probe: $f^{-1}(7) = (7-5)/3 = 2/3$, aber $f(2/3) = 2 - 5 = -3 \\neq 7$.',
+          2: 'Du hast die Operation nicht umgekehrt: $3x + 5$ wäre eine andere Funktion mit Steigung $3$ und Verschiebung $+5$. Die Umkehrung muss aber eine Steigung von $1/3$ haben (Kehrwert) und in entgegengesetzte Richtung verschieben. Probe: $f(f^{-1}(x)) = 3(3x+5) - 5 = 9x + 10 \\neq x$.',
+          3: 'Beide Vorzeichen falsch: $-3x + 5$ entspricht einer Funktion mit Steigung $-3$ — das entsteht, wenn du sowohl $f$ und $f^{-1}$ als auch das Vorzeichen vertauschst. Korrekt: Steigung $1/3$ (Kehrwert von $3$), Konstante $+5/3$.',
         },
         { stage: 'apply-guided', subGoal: 1, uses: ['umkehr-verfahren'] },
       ),
@@ -9128,9 +9128,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Alle Operationen umkehren.',
         ],
         {
-          1: 'Exponent ist da — aber falsche Richtung.',
-          2: 'Zahlentest widerlegt.',
-          3: '$x^3 + 1$ ist bijektiv auf $\\mathbb{R}$.',
+          1: 'Der Exponent muss komplett umgekehrt werden — aus „hoch $3$" wird „dritte Wurzel". Der Schüler hat zwar erkannt, dass etwas mit dem Exponent passiert, aber das Vorzeichen $+1 \\to -1$ getauscht statt die Operation zu invertieren.',
+          2: 'Zahlentest mit $x = 2$: $f(2) = 8 + 1 = 9$, also $f^{-1}(9) = 2$. Schülervorschlag: $f^{-1}(9) = 9^3 - 1 = 728 \\neq 2$. Korrekt: $f^{-1}(9) = \\sqrt[3]{9-1} = \\sqrt[3]{8} = 2$.',
+          3: 'Doch — $x^3 + 1$ ist auf $\\mathbb{R}$ streng monoton steigend (Ableitung $3x^2 \\geq 0$, nur in $x = 0$ verschwindend) und durchläuft alle reellen Werte. Damit ist $f$ bijektiv und die Umkehrfunktion $\\sqrt[3]{x - 1}$ existiert.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['umkehr-verfahren'] },
       ),
@@ -9222,9 +9222,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Spiegelung an Winkelhalbierenden.',
         ],
         {
-          1: 'Deutlich verschieden.',
-          2: '$x$-Achse wäre $-e^x$ und $-\\ln$.',
-          3: 'Nicht parallel.',
+          1: 'Sie sind nicht identisch — Probe mit $x = 1$: $e^1 \\approx 2{,}72$, aber $\\ln(1) = 0$. Komplett verschiedene Funktionswerte. Die beiden Graphen verlaufen aber spiegelsymmetrisch zur Geraden $y = x$.',
+          2: 'Spiegelung an der $x$-Achse würde alle $y$-Werte negieren: aus $e^x$ würde $-e^x$, aus $\\ln(x)$ würde $-\\ln(x)$. $\\ln(x)$ ist aber *nicht* das Negative von $e^x$ — die Spiegelung läuft an der Winkelhalbierenden $y = x$, nicht an einer Koordinatenachse.',
+          3: 'Parallele Graphen hätten überall denselben Abstand und denselben Verlauf — $e^x$ wächst aber exponentiell, $\\ln(x)$ logarithmisch. Sie schneiden $y = x$ jeweils, sind also keinesfalls parallel zueinander oder zu einer Achse.',
         },
         { stage: 'apply-independent', subGoal: 2, uses: ['umkehr-graph'] },
       ),
@@ -9250,9 +9250,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Nicht Koordinatenachsen.',
         ],
         {
-          1: '$y$-Achse wäre $f(-x)$.',
-          2: 'Ist eben nicht korrekt.',
-          3: 'Doch — Spiegelung ist der Kern.',
+          1: '$y$-Achse-Spiegelung wäre $f(-x)$ — da werden die $x$-Vorzeichen gespiegelt, nicht die Rollen von $x$ und $y$ getauscht. Beide Achsen-Spiegelungen sind keine Umkehrfunktion. Die richtige Achse ist die *Diagonale* $y = x$.',
+          2: 'Doch, der Schüler liegt falsch: Spiegelung an der $x$-Achse liefert $-f(x)$ — Probe mit $f(x) = 2x$: $-f(x) = -2x$. Die Umkehrfunktion ist aber $f^{-1}(x) = x/2$. Komplett verschiedene Funktionen.',
+          3: 'Doch — Spiegelung ist tatsächlich der zentrale Mechanismus, nur an der *richtigen* Achse: der Winkelhalbierenden $y = x$. Sie tauscht die Rollen von $x$ und $y$, was genau dem Vertauschen von Argument und Funktionswert bei der Umkehrung entspricht.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['umkehr-graph'] },
       ),
@@ -9315,9 +9315,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           '$(0, \\infty)$.',
         ],
         {
-          1: 'Das wäre $D(f)$.',
-          2: '$0$ nicht enthalten.',
-          3: 'Negativ geht bei $e^x$ nicht.',
+          1: '$\\mathbb{R}$ ist der *Definitionsbereich* von $f$ — er wird durch die Umkehrung zum *Wertebereich* von $f^{-1}$, nicht zum Definitionsbereich. Tausch-Regel: $D(f^{-1}) = W(f) = (0, \\infty)$.',
+          2: '$[0, \\infty)$ enthält die $0$ als geschlossene Grenze — aber $\\ln(0)$ ist nicht definiert (divergiert nach $-\\infty$). Daher muss die untere Grenze offen sein: $(0, \\infty)$ statt $[0, \\infty)$.',
+          3: '$e^x$ ist immer strikt positiv, also nimmt $f$ keine negativen Werte an — der Wertebereich ist $(0, \\infty)$. Damit kann die Umkehrung $\\ln$ keine negativen Argumente verarbeiten — kein $\\ln(-2)$ in $\\mathbb{R}$.',
         },
         { stage: 'apply-guided', subGoal: 3, uses: ['umkehr-bereiche'] },
       ),
@@ -9338,9 +9338,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           '$[5, 23]$.',
         ],
         {
-          1: 'Das wäre $D(f)$.',
-          2: '$\\mathbb{R}$ wäre unbeschränkt.',
-          3: 'Andere Zahlen.',
+          1: '$[2, 8]$ ist der Definitionsbereich von $f$ — bei der Umkehrung wird er aber zum Wertebereich von $f^{-1}$, nicht zum Definitionsbereich. Die Umkehrung verarbeitet, was $f$ ausgegeben hat: $D(f^{-1}) = W(f) = [5, 23]$.',
+          2: '$\\mathbb{R}$ wäre nur dann der Definitionsbereich, wenn $f$ alle reellen Zahlen treffen würde. Aber $f([2, 8]) = [5, 23]$ — nur dieser Bereich. Werte außerhalb haben keine Urbilder, also kann $f^{-1}$ sie nicht verarbeiten.',
+          3: '$[-1, 7]$ entsteht z. B., wenn man rückwärts $(y - 1)/3$ rechnet *und* die Bereich-Bedeutung verwechselt. Korrekt: $f^{-1}(x) = (x+1)/3$, definiert auf $[5, 23]$ — bei $x = 5$ liefert sie $2$, bei $x = 23$ liefert sie $8$. Beides liegt im ursprünglichen $D(f) = [2, 8]$.',
         },
         { stage: 'apply-independent', subGoal: 3, uses: ['umkehr-bereiche'] },
       ),
@@ -9476,9 +9476,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Ergebnis ist $x$.',
         ],
         {
-          1: 'Auch Addition wäre falsch.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Gilt für jede bijektive Funktion.',
+          1: 'Auch Addition wäre falsch — $f^{-1}(f(x))$ ist eine *Komposition*, kein arithmetisches Verknüpfen. Komposition heißt: das Ergebnis der einen Funktion als Argument der anderen einsetzen, und gerade die Umkehrung hebt die Operation komplett auf — Ergebnis ist $x$, nicht $f^{-1}(x) + f(x)$.',
+          2: 'Zahlentest mit $f(x) = 2x$, also $f^{-1}(x) = x/2$. Bei $x = 4$: $f^{-1}(f(4)) = f^{-1}(8) = 4 = x$ ✓. Schülervorschlag: $f^{-1}(4) \\cdot f(4) = 2 \\cdot 8 = 16 \\neq 4$. Komposition $\\neq$ Multiplikation.',
+          3: 'Genau das Gegenteil — die Identität $f^{-1}(f(x)) = x$ gilt für *jede* bijektive Funktion, nicht nur für lineare. Sie ist die *definierende* Eigenschaft der Umkehrung: alles, was $f$ tut, macht $f^{-1}$ rückgängig — egal wie kompliziert $f$ ist.',
         },
         { stage: 'error-analysis', subGoal: 4, uses: ['umkehr-identitaet'] },
       ),
