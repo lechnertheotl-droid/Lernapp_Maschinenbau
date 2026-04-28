@@ -102,8 +102,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2341 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1453 (62 %) | 100 % der Aufgaben | 🟡 |
+| Aufgaben (gesamt) | 2344 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1460 (62 %) | 100 % der Aufgaben | 🟡 |
 | MC mit wrongAnswerExplanations | 1066 / 1066 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
@@ -126,8 +126,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **594** (Lesson-Path: 112 · Goal-Tasks: 482)
-- 4-Block: 532/594 (90 %) 🟡
+- Aufgaben: **597** (Lesson-Path: 112 · Goal-Tasks: 485)
+- 4-Block: 539/597 (90 %) 🟡
 - MC-wAE: 266/266 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
@@ -178,7 +178,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | `alg-0-3` Prozent & Dreisatz | 5 | 5/5 | 37 | 11/16/6/3/1 | 37/37 | 11/11 | ✅ | — |
 | `alg-0-4` Termumformung & Gleichungen | 5 | 5/5 | 36 | 12/14/5/2/3 | 36/36 | 12/12 | ✅ | — |
 | `alg-1-1` Potenzgesetze | 4 | 4/4 | 30 | 13/12/4/1/0 | 30/30 | 13/13 | ✅ | — |
-| `alg-1-2` Wurzeln und gebrochene Exponenten | 3 | 3/3 | 21 | 9/6/4/1/1 | 17/21 | 9/9 | ✅ | +4 4B |
+| `alg-1-2` Wurzeln und gebrochene Exponenten | 3 | 3/3 | 24 | 9/9/4/1/1 | 24/24 | 9/9 | ✅ | — |
 | `alg-1-3` Logarithmen | 7 | 7/7 | 40 | 18/13/7/2/0 | 35/40 | 18/18 | ✅ | +5 4B |
 | `alg-2-1` Lineare Gleichungen | 4 | 4/4 | 27 | 11/8/4/1/3 | 27/27 | 11/11 | ✅ | — |
 | `alg-2-2` Quadratische Gleichungen | 4 | 4/4 | 27 | 12/7/4/3/1 | 23/27 | 12/12 | ✅ | +4 4B |
@@ -11411,31 +11411,30 @@ npm run build              # abschließender End-zu-End-Check
   6. `wurzel-vereinfachen` — Quadratzahl-Faktor herausziehen: $\sqrt{12}=2\sqrt 3$ ⇐ `wurzel-produkt` (SG 1)
   7. `nenner-rational` — Nenner rational machen durch Erweitern mit $\sqrt{\cdots}$ ⇐ `wurzel-produkt` (SG 2)
 - **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `wurzel-bruchpot`, `wurzel-def-bereich` · **5/5+** — Wurzel als Bruchpotenz: $\sqrt[n]{x} = x^{1/n}$, dadurch gelten alle Potenzgesetze
-  - ✅ [1] _hoch_ · Konzepte: `wurzel-produkt`, `wurzel-quotient`, `wurzel-summe-nein`, `wurzel-vereinfachen` · **6/5+** — Wurzel des Produkts: $\sqrt{ab} = \sqrt a \cdot \sqrt b$ — aber $\sqrt{a+b} \neq \sqrt a + \sqrt b$
-  - ✅ [2] _mittel_ · Konzepte: `nenner-rational` · **5/5+** — Nenner rational machen: Erweitern mit passender Wurzel löst Wurzeln aus dem Nenner
+  - ✅ [0] _hoch_ · Konzepte: `wurzel-bruchpot`, `wurzel-def-bereich` · **6/5+** — Wurzel als Bruchpotenz: $\sqrt[n]{x} = x^{1/n}$, dadurch gelten alle Potenzgesetze
+  - ✅ [1] _hoch_ · Konzepte: `wurzel-produkt`, `wurzel-quotient`, `wurzel-summe-nein`, `wurzel-vereinfachen` · **7/5+** — Wurzel des Produkts: $\sqrt{ab} = \sqrt a \cdot \sqrt b$ — aber $\sqrt{a+b} \neq \sqrt a + \sqrt b$
+  - ✅ [2] _mittel_ · Konzepte: `nenner-rational` · **6/5+** — Nenner rational machen: Erweitern mit passender Wurzel löst Wurzeln aus dem Nenner
 - **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
 
 | #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
 |----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
 |  1 | 0 | recognize          | true-false       | `wurzel-bruchpot` | 1 | 1 | ✅ |  |
 |  2 | 0 | apply-guided       | multiple-choice  | `wurzel-bruchpot` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `wurzel-bruchpot` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `wurzel-bruchpot` | 1 | 2 | ✅ |  |
 |  4 | 0 | error-analysis     | multiple-choice  | `wurzel-def-bereich` | 1 | 1 | ✅ | $\sqrt{-4}$ in $\mathbb R$? |
 |  5 | 0 | transfer           | matching         | `wurzel-bruchpot` | 1 | 1 | ✅ | Wurzel ↔ Potenzschreibweise |
 |  6 | 1 | recognize          | true-false       | `wurzel-summe-nein` | 1 | 1 | ✅ |  |
 |  7 | 1 | apply-guided       | multiple-choice  | `wurzel-produkt` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `wurzel-vereinfachen` | 2 | 2 | ✅ | $\sqrt{50}$, $\sqrt{72}$ vereinfachen |
+|  8 | 1 | apply-independent  | number-input     | `wurzel-vereinfachen` | 2 | 3 | ✅ | $\sqrt{50}$, $\sqrt{72}$ vereinfachen |
 |  9 | 1 | error-analysis     | multiple-choice  | `wurzel-summe-nein` | 1 | 1 | ✅ | Distraktor: Wurzel auf Summe verteilt |
 | 10 | 1 | transfer           | sorting          | `wurzel-produkt`, `wurzel-vereinfachen` | 1 | 1 | ✅ |  |
 | 11 | 2 | recognize          | true-false       | `nenner-rational` | 1 | 1 | ✅ |  |
 | 12 | 2 | apply-guided       | multiple-choice  | `nenner-rational` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `nenner-rational` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `nenner-rational` | 1 | 2 | ✅ |  |
 | 14 | 2 | error-analysis     | multiple-choice  | `nenner-rational` | 1 | 1 | ✅ |  |
 | 15 | 2 | transfer           | number-input     | `nenner-rational`, `wurzel-vereinfachen` | 1 | 1 | ✅ |  |
 
 - **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-1-2': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-1-2-a`, `ex-alg-1-2-b`, `ex-alg-1-2-d`, `ex-alg-1-2-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 

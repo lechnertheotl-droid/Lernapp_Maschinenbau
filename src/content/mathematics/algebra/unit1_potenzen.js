@@ -152,11 +152,11 @@ export const exercises_alg_u1 = {
     question: 'Was ist $\\sqrt{x^{2}}$?',
     options: ['$x$', '$|x|$', '$x^{2}$', '$\\dfrac{1}{x}$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Eine Quadratwurzel liefert per Definition immer ein nicht-negatives Ergebnis.
+    explanation: `**Ansatz:** Eine Quadratwurzel liefert per Definition immer ein nicht-negatives Ergebnis. Daher ist der Betrag nötig, wenn $x$ nicht als nicht-negativ vorausgesetzt ist.
 
-**Warum?** Für $x = -3$ ist $x^{2} = 9$ und $\\sqrt{9} = 3 = |-3|$. Die Wurzel "vergisst" das Vorzeichen.
+**Rechnung:** Regel $\\sqrt{x^{2}} = |x|$. Beispiel $x = -3$: $x^{2} = 9$ und $\\sqrt{9} = 3 = |-3|$. Für $x \\geq 0$ vereinfacht sich $|x|$ zu $x$.
 
-**Regel:** $\\sqrt{x^{2}} = |x|$ (Betrag von $x$). Für $x \\geq 0$ gilt $|x| = x$.
+**Probe:** Setze $x = -5$: $\\sqrt{(-5)^{2}} = \\sqrt{25} = 5 = |-5|$. Setze $x = 4$: $\\sqrt{16} = 4 = |4|$. Beide Vorzeichenfälle stimmen. ✓
 
 **Typischer Fehler:** $\\sqrt{x^{2}} = x$ ist nur richtig, wenn $x \\geq 0$ *bekannt* ist. Ohne diese Zusatzinfo muss der Betrag stehen.`,
     hints: [
@@ -177,9 +177,11 @@ export const exercises_alg_u1 = {
     correctValue: 2, tolerance: 0, unit: '',
     explanation: `**Ansatz:** Dritte Wurzel suchen — welche Zahl hoch 3 ergibt 8?
 
-**Rechnung:** $\\sqrt[3]{8} = 8^{1/3}$. Da $2^{3} = 8$, folgt $\\sqrt[3]{8} = 2$.
+**Rechnung:** $\\sqrt[3]{8} = 8^{1/3}$. Da $2^{3} = 8$, folgt $\\sqrt[3]{8} = 2$. Alternative Schreibweise: $\\sqrt[3]{x} = x^{1/3}$.
 
-**Alternative Schreibweise:** $\\sqrt[3]{x} = x^{1/3}$.`,
+**Probe:** $2^{3} = 2 \\cdot 2 \\cdot 2 = 8$. ✓ Damit ist $2$ tatsächlich die dritte Wurzel aus $8$.
+
+**Typischer Fehler:** $\\sqrt[3]{8}$ als $8/3 \\approx 2{,}67$ rechnen — Wurzel ist keine Division. Oder $\\sqrt{8} \\approx 2{,}83$ statt der dritten Wurzel berechnen (Wurzelgrad übersehen).`,
     hints: [
       'Welche Zahl hoch $3$ ergibt $8$?',
       '$2^{3} = 8$. Also ist $\\sqrt[3]{8} = 2$.',
@@ -216,13 +218,13 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
     id: 'ex-alg-1-2-d', lessonId: 'alg-1-2', type: 'true-false',
     statement: 'Für alle reellen Zahlen $a, b \\geq 0$ gilt: $\\sqrt{a+b} = \\sqrt{a} + \\sqrt{b}$.',
     correct: false,
-    explanation: `**Falsch.** Die Wurzel ist *nicht* linear — sie darf **nicht** einfach auf jeden Summanden verteilt werden.
+    explanation: `**Ansatz:** Aussage durch ein Gegenbeispiel widerlegen — eine einzige falsche Stelle reicht.
 
-**Gegenbeispiel:** $\\sqrt{9+16} = \\sqrt{25} = 5$, aber $\\sqrt{9} + \\sqrt{16} = 3 + 4 = 7$. $5 \\neq 7$.
+**Rechnung:** Setze $a = 9$, $b = 16$. Linke Seite: $\\sqrt{9+16} = \\sqrt{25} = 5$. Rechte Seite: $\\sqrt{9} + \\sqrt{16} = 3 + 4 = 7$. $5 \\neq 7$ — Aussage falsch.
 
-**Was gilt dagegen:** $\\sqrt{a \\cdot b} = \\sqrt{a} \\cdot \\sqrt{b}$ (Produkt, nicht Summe!).
+**Probe:** Was tatsächlich gilt: $\\sqrt{a \\cdot b} = \\sqrt{a} \\cdot \\sqrt{b}$ (Produkt, für $a, b \\geq 0$). Die Summenregel gibt es nicht.
 
-**Merke:** Wurzel von Summe ≠ Summe der Wurzeln. Typischer Schulfehler in Prüfungen!`,
+**Typischer Fehler:** Distributivgesetz auf Wurzeln übertragen — Wurzel ist keine Multiplikation. Klassischer Schulfehler in Prüfungen.`,
     hints: [
       'Teste mit einfachen Zahlen: $a=9$, $b=16$.',
       'Rechne beide Seiten der Gleichung aus und vergleiche.',
@@ -235,15 +237,13 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
     question: '[PRÜFUNG] Zu welchem Ausdruck ist $x^{2/3}$ äquivalent?',
     options: ['$(\\sqrt[3]{x})^{2}$', '$\\sqrt{x^{3}}$', '$\\dfrac{2x}{3}$', '$x^{2} \\cdot x^{3}$'],
     correctIndex: 0,
-    explanation: `**Ansatz:** Ein Bruchexponent $m/n$ bedeutet: $n$-te Wurzel ziehen, dann mit $m$ potenzieren.
+    explanation: `**Ansatz:** Ein Bruchexponent $m/n$ bedeutet: $n$-te Wurzel ziehen, dann mit $m$ potenzieren. Regel: $x^{m/n} = \\sqrt[n]{x^{m}} = (\\sqrt[n]{x})^{m}$.
 
-**Regel:** $x^{m/n} = \\sqrt[n]{x^{m}} = (\\sqrt[n]{x})^{m}$.
+**Rechnung:** $x^{2/3} = \\sqrt[3]{x^{2}} = (\\sqrt[3]{x})^{2}$. Hier $m = 2$, $n = 3$. Beide Schreibweisen sind gleichwertig.
 
-**Rechnung:** $x^{2/3} = \\sqrt[3]{x^{2}} = (\\sqrt[3]{x})^{2}$. Beide Schreibweisen sind gleichwertig.
+**Probe:** Setze $x = 64$: $64^{2/3} = (\\sqrt[3]{64})^{2} = 4^{2} = 16$. Andere Schreibweise: $\\sqrt[3]{64^{2}} = \\sqrt[3]{4096} = 16$. ✓ Antwort B wäre $\\sqrt{64^{3}} = \\sqrt{262\\,144} = 512 = 64^{3/2}$ — das ist nicht $64^{2/3}$.
 
-**Warum nicht B?** $\\sqrt{x^{3}} = x^{3/2}$, nicht $x^{2/3}$.
-
-**Typischer Fehler:** Zähler und Nenner des Bruchexponenten verwechseln.`,
+**Typischer Fehler:** Zähler und Nenner des Bruchexponenten verwechseln und $\\sqrt{x^{3}} = x^{3/2}$ als Antwort wählen.`,
     hints: [
       'Schreibe den Bruchexponenten als Wurzel: $x^{m/n} = \\sqrt[n]{x^{m}}$.',
       'Hier: $m=2$ (Potenz), $n=3$ (Wurzelgrad).',

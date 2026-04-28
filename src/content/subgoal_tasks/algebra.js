@@ -3086,6 +3086,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['wurzel-def-bereich'] },
       ),
+      // Zusatz-Aufgabe SG 0: apply-independent · number-input · uses=[wurzel-bruchpot]
+      // Bruchpotenz mit negativem Zähler — testet Kombination von wurzel-bruchpot und pot-negativ.
+      ni(
+        'Berechne $16^{-1/2}$ als Dezimalzahl.',
+        0.25, 0.001, '',
+        `**Ansatz:** Negativer Bruchexponent $\\to$ Kehrwert der Wurzel: $x^{-1/n} = 1/\\sqrt[n]{x}$.
+
+**Rechnung:** $16^{-1/2} = 1/16^{1/2} = 1/\\sqrt{16} = 1/4 = 0{,}25$.
+
+**Probe:** $0{,}25 \\cdot \\sqrt{16} = 0{,}25 \\cdot 4 = 1 = 16^{0}$. ✓ (Definition des Kehrwerts.)
+
+**Typischer Fehler:** Vorzeichen auf Zahlwert übertragen: $16^{-1/2} = -\\sqrt{16} = -4$ — das wäre nur mit Vorzeichen vor der Basis ($-\\sqrt{16}$), aber der Minus-Exponent macht den Kehrwert.`,
+        [
+          'Negativer Exponent $\\to$ Kehrwert.',
+          'Bruchexponent $1/2$ $\\to$ Quadratwurzel.',
+          '$1/\\sqrt{16} = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['wurzel-bruchpot'] },
+      ),
       matching(
         'Ordne jedem Wurzelausdruck seine Potenzschreibweise zu.',
         [
@@ -3213,6 +3232,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['wurzel-summe-nein'] },
       ),
+      // Zusatz-Aufgabe SG 1: apply-independent · number-input · uses=[wurzel-vereinfachen, wurzel-produkt]
+      // Wurzeln addieren — testet, dass nur gleichartige Wurzeln zusammenfassbar sind (nach Vereinfachen).
+      ni(
+        'Vereinfache $\\sqrt{18} + \\sqrt{50}$ und gib den Koeffizienten vor $\\sqrt{2}$ an.',
+        8, 0, '',
+        `**Ansatz:** Beide Wurzeln auf gleiche Form $k\\sqrt{2}$ bringen, dann Koeffizienten addieren.
+
+**Rechnung:** $\\sqrt{18} = \\sqrt{9 \\cdot 2} = 3\\sqrt{2}$. $\\sqrt{50} = \\sqrt{25 \\cdot 2} = 5\\sqrt{2}$. Summe: $3\\sqrt{2} + 5\\sqrt{2} = 8\\sqrt{2}$. Koeffizient $8$.
+
+**Probe:** Dezimal: $\\sqrt{18} \\approx 4{,}243$; $\\sqrt{50} \\approx 7{,}071$; Summe $\\approx 11{,}314$. $8\\sqrt{2} \\approx 8 \\cdot 1{,}414 = 11{,}314$. ✓
+
+**Typischer Fehler:** $\\sqrt{18} + \\sqrt{50} = \\sqrt{18 + 50} = \\sqrt{68}$ — Wurzel auf Summe verteilen verboten. Oder ohne Vereinfachen direkt addieren: $\\sqrt{18} + \\sqrt{50}$ stehen lassen, ohne dass die Gleichartigkeit sichtbar wird.`,
+        [
+          'Beide Wurzeln zuerst auf $k\\sqrt{2}$-Form vereinfachen.',
+          '$18 = 9 \\cdot 2$, $50 = 25 \\cdot 2$.',
+          'Gleichartige Wurzeln $\\to$ Koeffizienten addieren.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['wurzel-vereinfachen', 'wurzel-produkt'] },
+      ),
       sorting(
         'Bringe die Schritte zur Vereinfachung von $\\sqrt{200}$ in die richtige Reihenfolge.',
         [
@@ -3323,6 +3361,25 @@ export const algebraSubGoalTasks = {
           3: 'Der Nenner war $\\sqrt{3}$ — nicht rational.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['nenner-rational'] },
+      ),
+      // Zusatz-Aufgabe SG 2: apply-independent · number-input · uses=[nenner-rational]
+      // Bruch mit Wurzelpotenz im Nenner — testet Erweitern mit passender Restwurzel.
+      ni(
+        'Mache den Nenner von $\\dfrac{5}{\\sqrt{20}}$ rational und gib den Koeffizienten vor $\\sqrt{5}$ im vollständig gekürzten Ergebnis an.',
+        0.5, 0.01, '',
+        `**Ansatz:** Erst Wurzel im Nenner vereinfachen, dann erweitern und kürzen.
+
+**Rechnung:** $\\sqrt{20} = 2\\sqrt{5}$, also $\\dfrac{5}{\\sqrt{20}} = \\dfrac{5}{2\\sqrt{5}}$. Erweitern mit $\\sqrt{5}$: $\\dfrac{5\\sqrt{5}}{2 \\cdot 5} = \\dfrac{5\\sqrt{5}}{10} = \\dfrac{\\sqrt{5}}{2}$. Koeffizient vor $\\sqrt{5}$ ist $\\tfrac{1}{2} = 0{,}5$.
+
+**Probe:** Dezimal: $5/\\sqrt{20} = 5/4{,}472 \\approx 1{,}118$. $\\sqrt{5}/2 \\approx 2{,}236/2 = 1{,}118$. ✓
+
+**Typischer Fehler:** Direkt mit $\\sqrt{20}$ erweitern statt erst vereinfachen: $5\\sqrt{20}/20 = \\sqrt{20}/4$. Stimmt rechnerisch, aber das Endergebnis ist nicht in einfachster Form ($\\sqrt{20} = 2\\sqrt{5}$, dann $2\\sqrt{5}/4 = \\sqrt{5}/2$).`,
+        [
+          'Erst $\\sqrt{20}$ vereinfachen: $\\sqrt{20} = 2\\sqrt{5}$.',
+          'Erweitern mit $\\sqrt{5}$: $\\sqrt{5} \\cdot \\sqrt{5} = 5$.',
+          'Endform: $\\sqrt{5}/2$ — Koeffizient $1/2$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['nenner-rational'] },
       ),
       ni(
         'Mache $\\dfrac{\\sqrt{6}}{\\sqrt{2}}$ zum Nenner-rationalen Ausdruck und gib den Wert als Quadratzahl-Wurzel an (Radikand).',
