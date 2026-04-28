@@ -151,6 +151,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['prio-basic'] },
       ),
+      // Zusatz-Aufgabe SG 0: apply-independent · number-input · uses=[prio-basic, prio-potenz]
+      // Variation mit Division im Nenner — testet Punkt-Bindung in beiden Richtungen.
+      ni(
+        'Berechne $20 - 6 / 2 \\cdot 3 + 4$.',
+        15, 0, '',
+        `**Ansatz:** Division und Multiplikation sind beide „Punkt"-Operationen mit gleichem Rang — strikt von links nach rechts.
+
+**Rechnung:** $6 / 2 = 3$, dann $3 \\cdot 3 = 9$. Danach Strichrechnung: $20 - 9 + 4 = 15$.
+
+**Probe:** Mit Klammern: $20 - ((6/2)\\cdot 3) + 4 = 20 - 9 + 4 = 15$. ✓
+
+**Typischer Fehler:** $6 / (2 \\cdot 3) = 6/6 = 1$ — fälschlich erst die Multiplikation rechnen, weil sie „rechts vom Bruchstrich steht". Bei gleichem Rang gilt: links zuerst.`,
+        [
+          '$/$ und $\\cdot$ haben denselben Rang.',
+          'Bei Gleichrang: strikt links nach rechts.',
+          'Erst $6/2$, dann $\\cdot 3$ — nicht erst $2\\cdot 3$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['prio-basic'] },
+      ),
       // Zeile 5: transfer · sorting · uses=[prio-basic, prio-potenz]
       sorting(
         'Bringe die Schritte zur Auswertung von $2 + 3^2 \\cdot 4 - 5$ in die richtige Reihenfolge.',
@@ -267,6 +286,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['minus-vorklammer'] },
       ),
+      // Zusatz-Aufgabe SG 1: apply-independent · number-input · uses=[minus-vorklammer]
+      // Längere Kette mit zwei Minus-Klammern — testet Vorzeichen-Konsequenz mehrfach.
+      ni(
+        'Berechne $20 - (5 - 3) - (8 - 6 + 1)$.',
+        15, 0, '',
+        `**Ansatz:** Beide Minus-Klammern getrennt auflösen — alle Vorzeichen in jeder Klammer kippen.
+
+**Rechnung:** $20 - (5-3) - (8-6+1) = 20 - 5 + 3 - 8 + 6 - 1 = 15$. Alternative: Klammern zuerst $20 - 2 - 3 = 15$.
+
+**Probe:** Beide Wege liefern $15$. ✓
+
+**Typischer Fehler:** Bei der zweiten Klammer das $+1$ nicht zu $-1$ kippen: $20 - 5 + 3 - 8 + 6 + 1 = 17$. Häufig, wenn die Klammer drei Summanden hat und der dritte „vergessen" wird.`,
+        [
+          'Beide Klammern haben ein Minus davor — beide komplett kippen.',
+          'Aus $-(5-3)$ wird $-5+3$. Aus $-(8-6+1)$ wird $-8+6-1$.',
+          'Alternativer Weg: erst jede Klammer separat ausrechnen.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['minus-vorklammer'] },
+      ),
       // Zeile 10: transfer · matching · uses=[minus-vorklammer]
       matching(
         'Ordne jedem Klammer-Ausdruck seine korrekt aufgelöste Form zu.',
@@ -382,6 +420,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['minus-mal-minus'] },
       ),
+      // Zusatz-Aufgabe SG 2: apply-independent · number-input · uses=[minus-mal-minus]
+      // Vier Faktoren — testet Paritätsregel bei größerer Anzahl Minuszeichen.
+      ni(
+        'Berechne $(-2) \\cdot (-3) \\cdot (-1) \\cdot (-5)$.',
+        30, 0, '',
+        `**Ansatz:** Anzahl Minuszeichen zählen — gerade $\\to +$, ungerade $\\to -$. Beträge separat multiplizieren.
+
+**Rechnung:** Vier Minuszeichen $\\to (-1)^4 = +1$. Beträge: $2 \\cdot 3 \\cdot 1 \\cdot 5 = 30$. Ergebnis: $+30$.
+
+**Probe:** Schrittweise: $(-2)(-3) = +6$; $+6 \\cdot (-1) = -6$; $-6 \\cdot (-5) = +30$. ✓
+
+**Typischer Fehler:** Vorzeichen erst am Ende anhängen, ohne wirklich zu zählen — bei vier Faktoren leicht zu verzählen. Sicherer: Vorzeichen jedes Schritts neu bestimmen oder Paritätsregel.`,
+        [
+          'Zähl die Minuszeichen — gerade oder ungerade?',
+          'Gerade Anzahl $\\Rightarrow$ positives Ergebnis.',
+          'Beträge multiplizieren: $2 \\cdot 3 \\cdot 1 \\cdot 5$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['minus-mal-minus'] },
+      ),
       // Zeile 15: transfer · number-input · uses=[minus-mal-minus, minus-vorklammer]
       ni(
         'Berechne $6 - (-(4 - 9))$.',
@@ -392,7 +449,7 @@ export const algebraSubGoalTasks = {
 
 **Probe:** Alternative: $6 - (-(4-9)) = 6 + (4-9) = 6 + (-5) = 1$. ✓
 
-**Typischer Fehler:** Doppel-Minus nicht auflösen: $6 - (-5)$ als $6 - 5 = 1$ direkt OK; aber falsch: $6 - (-(4-9)) = 6 - (-4+9) = 6 + 4 - 9 = 1$? Halt, Vorsicht — hier ist das Minus VOR der äußeren Klammer und das Minus in $-(4-9)$ sind zwei verschiedene Operationen. Eins nach dem anderen.`,
+**Typischer Fehler:** Eines der beiden Minuszeichen vor der inneren Klammer übersehen, etwa $6 - (-(4-9)) = 6 - (4-9) = 6 - (-5) = 11$. Das äußere Minus wird einfach gestrichen, ohne dass die Doppel-Negation $-(-(\\ldots)) = +(\\ldots)$ angewendet wird.`,
         [
           'Zuerst die innerste Klammer $(4-9)$ ausrechnen.',
           'Dann das Minus vor dieser Klammer: $-(-5) = ?$',
@@ -427,7 +484,7 @@ export const algebraSubGoalTasks = {
         [
           'Innere Klammer berechnen: $5 - 2 = 3$.',
           'Faktor verteilen: $3 \\cdot 4 + 3 \\cdot 5 - 3 \\cdot 2$.',
-          'Eckige Klammer aufösen: $[4 + 5 - 2] = 7$.',
+          'Eckige Klammer auflösen: $[4 + 5 - 2] = 7$.',
           'Erste Operation von links: $3 \\cdot 4 = 12$.',
         ],
         0,
@@ -444,9 +501,9 @@ export const algebraSubGoalTasks = {
           'Multiplikation erst, wenn die eckige Klammer zu einer Zahl geworden ist.',
         ],
         {
-          1: 'Distributivgesetz kann man erst anwenden, nachdem die innere Klammer eine Zahl ist — sonst erhöht sich die Fehlergefahr.',
-          2: 'Die runde Klammer ist noch nicht aufgelöst. $[4 + (5-2)] \\neq [4+5-2]$? Doch, rechnerisch gleich, aber die Regel lautet: innere Klammer zuerst.',
-          3: 'Punkt-vor-Strich — die Multiplikation würde regulär zuerst kommen, aber hier erzwingt die eckige Klammer, dass der Inhalt in Klammer zuerst ausgewertet wird.',
+          1: 'Distributiv ist zwar mathematisch gültig, aber kein elementarer „Rechenschritt" — die Aufgabe fragt nach der Reihenfolge der Auswertung. Standard ist: innerste Klammer zuerst.',
+          2: 'Die runde Klammer wurde stillschweigend weggelassen, ohne sie auszurechnen. Erlaubt ist nur, eine Klammer aufzulösen, nachdem ihr Inhalt zu einer Zahl ($5-2=3$) reduziert wurde.',
+          3: 'Punkt-vor-Strich gilt nur, wenn keine Klammer erzwingt, was zuerst auszuwerten ist. Hier umfasst die eckige Klammer den Faktor $4$, also muss ihr Inhalt vor der Multiplikation eine Zahl sein.',
         },
         { stage: 'apply-guided', subGoal: 3, uses: ['klammer-schachtel'] },
       ),
@@ -496,6 +553,25 @@ export const algebraSubGoalTasks = {
           3: 'Das Ergebnis $5$ ist falsch — korrekt ist $1$. Der Weg ist also auch falsch.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['klammer-schachtel'] },
+      ),
+      // Zusatz-Aufgabe SG 3: apply-independent · number-input · uses=[klammer-schachtel, prio-klammer]
+      // Drei verschachtelte Klammern mit Vorzeichen — testet alle drei Konzepte zusammen.
+      ni(
+        'Berechne $5 \\cdot [3 + (10 - 2 \\cdot (1 + 3))]$.',
+        25, 0, '',
+        `**Ansatz:** Strikt von innen nach außen. Innerhalb der inneren Klammer wieder Punkt vor Strich.
+
+**Rechnung:** Innerste $(1+3) = 4$. Dann $2 \\cdot 4 = 8$. Dann $10 - 8 = 2$. Dann $[3 + 2] = 5$. Zuletzt $5 \\cdot 5 = 25$.
+
+**Probe:** Mit allen Klammern explizit: $5 \\cdot [3 + (10 - (2 \\cdot 4))] = 5 \\cdot [3 + 2] = 5 \\cdot 5 = 25$. ✓
+
+**Typischer Fehler:** Faktor $2$ falsch zuordnen, z. B. $2 \\cdot 1 + 3 = 5$ statt $2 \\cdot (1+3) = 8$ — die Klammer um $(1+3)$ wird ignoriert und $2$ nur auf den ersten Summanden multipliziert.`,
+        [
+          'Innerste Klammer ist $(1+3)$ — diese als Erstes.',
+          'Innerhalb der mittleren Klammer dann Punkt vor Strich: $2 \\cdot 4$ vor $10 - \\ldots$.',
+          'Erst ganz zum Schluss die Multiplikation mit $5$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['klammer-schachtel', 'prio-klammer'] },
       ),
       // Zeile 20: transfer · sorting · uses=[klammer-schachtel, prio-klammer]
       sorting(

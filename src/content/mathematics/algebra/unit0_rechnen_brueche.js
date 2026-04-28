@@ -84,8 +84,9 @@ export const exercises_alg_u0 = {
 
 **Typischer Fehler:** Von links nach rechts rechnen ignoriert die Vorrangregel.`,
     hints: [
-      'Punkt-vor-Strich prüfen.',
+      'Punkt-vor-Strich prüfen — welche Operation kommt zuerst?',
       'Was müsste geklammert sein, damit $14$ richtig wäre?',
+      'Rechne $4 \\cdot 2$ zuerst und addiere dann $3$ — vergleiche mit $14$.',
     ],
       pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['prio-basic'] },
 },
@@ -111,7 +112,8 @@ export const exercises_alg_u0 = {
 **Typischer Fehler:** Klammern ignorieren ändert das Ergebnis dramatisch — siehe erste vs. zweite Zeile.`,
     hints: [
       'Rechne jeden Ausdruck einzeln aus, dann zuordnen.',
-      'Bei Klammern: innen zuerst.',
+      'Bei Klammern: innen zuerst, dann Punkt vor Strich.',
+      'Vorzeichen sorgfältig: $-(2-5) = -(-3) = +3$, nicht $-2-5 = -7$.',
     ],
       pedagogy: { stage: 'transfer', subGoal: 0, uses: ['prio-basic'] },
 },

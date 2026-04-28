@@ -1,6 +1,6 @@
 # Lernapp Status — Lehrplan & Content
 
-_auto-generiert · 2026-04-27 · `npm run status`_
+_auto-generiert · 2026-04-28 · `npm run status`_
 
 Single Source of Truth: Lehrplan (Phasen, Fächer, Tipps) **und** Content-Kennzahlen (Topics, Lessons, Aufgaben, Goal-Tasks, Qualitätsgaps). Quelle für den Lehrplan-Teil ist `src/content/curriculum.js` — dieselbe Datei, aus der auch die UI-Seite `/lehrplan` rendert.
 
@@ -102,8 +102,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2319 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1427 (62 %) | 100 % der Aufgaben | 🟡 |
+| Aufgaben (gesamt) | 2323 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1431 (62 %) | 100 % der Aufgaben | 🟡 |
 | MC mit wrongAnswerExplanations | 1065 / 1065 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
@@ -126,8 +126,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **572** (Lesson-Path: 112 · Goal-Tasks: 460)
-- 4-Block: 506/572 (88 %) 🟡
+- Aufgaben: **576** (Lesson-Path: 112 · Goal-Tasks: 464)
+- 4-Block: 510/576 (89 %) 🟡
 - MC-wAE: 265/265 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
@@ -173,7 +173,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
-| `alg-0-1` Grundrechnen, Klammern & Vorrang | 4 | 4/4 | 27 | 10/8/5/2/2 | 27/27 | 10/10 | ✅ | — |
+| `alg-0-1` Grundrechnen, Klammern & Vorrang | 4 | 4/4 | 31 | 10/12/5/2/2 | 31/31 | 10/10 | ✅ | — |
 | `alg-0-2` Bruchrechnen sicher | 4 | 4/4 | 27 | 11/7/5/1/3 | 27/27 | 11/11 | ✅ | — |
 | `alg-0-3` Prozent & Dreisatz | 5 | 5/5 | 32 | 11/11/6/3/1 | 32/32 | 11/11 | ✅ | — |
 | `alg-0-4` Termumformung & Gleichungen | 5 | 5/5 | 31 | 12/9/5/2/3 | 30/31 | 12/12 | ✅ | +1 4B |
@@ -11626,51 +11626,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
-#### `alg-0-1` · Grundrechnen, Klammern & Vorrang
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Prerequisites:** keine (Einstiegs-Lesson).
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `prio-basic` — Vorrangregel: Punkt- vor Strichrechnung (SG 0)
-  2. `prio-potenz` — Potenz- vor Punktrechnung ⇐ `prio-basic` (SG 0)
-  3. `prio-klammer` — Klammern überschreiben die Präzedenz (zuerst ausrechnen) ⇐ `prio-basic` (SG 3)
-  4. `minus-vorklammer` — $-(a+b) = -a - b$ — Minuszeichen auf alle Summanden (SG 1)
-  5. `minus-mal-minus` — $(-a)(-b) = +ab$ — Doppel-Minus = Plus ⇐ `minus-vorklammer` (SG 2)
-  6. `klammer-schachtel` — Geschachtelte Klammern: innerste zuerst auflösen ⇐ `prio-klammer` (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `prio-basic`, `prio-potenz` · **6/5+** — Vorrangregel Punkt-vor-Strich bei gemischten Termen
-  - ✅ [1] _hoch_ · Konzepte: `minus-vorklammer` · **5/5+** — Minuszeichen vor Klammer auf alle Summanden anwenden
-  - ✅ [2] _mittel_ · Konzepte: `minus-mal-minus` · **5/5+** — Doppel-Minus aufgelöst: $(-a)(-b)=+ab$
-  - ✅ [3] _mittel_ · Konzepte: `prio-klammer`, `klammer-schachtel` · **5/5+** — Klammerschachtelung von innen nach außen abarbeiten
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `prio-basic` | 1 | 1 | ✅ | Aussage „$3+4\cdot 2 = 11$" prüfen |
-|  2 | 0 | apply-guided       | multiple-choice  | `prio-basic` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `prio-basic`, `prio-potenz` | 2 | 2 | ✅ | Term mit Potenz + Mult + Strich |
-|  4 | 0 | error-analysis     | multiple-choice  | `prio-basic` | 1 | 1 | ✅ | Distraktor: von links nach rechts gerechnet |
-|  5 | 0 | transfer           | sorting          | `prio-basic`, `prio-potenz` | 1 | 1 | ✅ | Schritte in korrekte Reihenfolge bringen |
-|  6 | 1 | recognize          | true-false       | `minus-vorklammer` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `minus-vorklammer` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `minus-vorklammer` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `minus-vorklammer` | 1 | 1 | ✅ | Distraktor: nur ersten Summanden umgedreht |
-| 10 | 1 | transfer           | matching         | `minus-vorklammer` | 1 | 1 | ✅ | Klammer-Term ↔ aufgelöstes Ergebnis |
-| 11 | 2 | recognize          | true-false       | `minus-mal-minus` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `minus-mal-minus` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `minus-mal-minus` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `minus-mal-minus` | 1 | 1 | ✅ | Distraktor: Vorzeichen übersehen |
-| 15 | 2 | transfer           | number-input     | `minus-mal-minus`, `minus-vorklammer` | 1 | 1 | ✅ | Kombi: $-(-(2-5))$ oder ähnlich |
-| 16 | 3 | recognize          | true-false       | `klammer-schachtel` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `klammer-schachtel` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `klammer-schachtel` | 1 | 1 | ✅ |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `klammer-schachtel` | 1 | 1 | ✅ | Distraktor: äußerste Klammer zuerst gerechnet |
-| 20 | 3 | transfer           | sorting          | `klammer-schachtel`, `prio-klammer` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-1': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
 #### `alg-0-2` · Bruchrechnen sicher
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
@@ -12126,6 +12081,51 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-1-4': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+
+#### `alg-0-1` · Grundrechnen, Klammern & Vorrang
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `prio-basic` — Vorrangregel: Punkt- vor Strichrechnung (SG 0)
+  2. `prio-potenz` — Potenz- vor Punktrechnung ⇐ `prio-basic` (SG 0)
+  3. `prio-klammer` — Klammern überschreiben die Präzedenz (zuerst ausrechnen) ⇐ `prio-basic` (SG 3)
+  4. `minus-vorklammer` — $-(a+b) = -a - b$ — Minuszeichen auf alle Summanden (SG 1)
+  5. `minus-mal-minus` — $(-a)(-b) = +ab$ — Doppel-Minus = Plus ⇐ `minus-vorklammer` (SG 2)
+  6. `klammer-schachtel` — Geschachtelte Klammern: innerste zuerst auflösen ⇐ `prio-klammer` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `prio-basic`, `prio-potenz` · **7/5+** — Vorrangregel Punkt-vor-Strich bei gemischten Termen
+  - ✅ [1] _hoch_ · Konzepte: `minus-vorklammer` · **6/5+** — Minuszeichen vor Klammer auf alle Summanden anwenden
+  - ✅ [2] _mittel_ · Konzepte: `minus-mal-minus` · **6/5+** — Doppel-Minus aufgelöst: $(-a)(-b)=+ab$
+  - ✅ [3] _mittel_ · Konzepte: `prio-klammer`, `klammer-schachtel` · **6/5+** — Klammerschachtelung von innen nach außen abarbeiten
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `prio-basic` | 1 | 1 | ✅ | Aussage „$3+4\cdot 2 = 11$" prüfen |
+|  2 | 0 | apply-guided       | multiple-choice  | `prio-basic` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `prio-basic`, `prio-potenz` | 2 | 2 | ✅ | Term mit Potenz + Mult + Strich |
+|  4 | 0 | error-analysis     | multiple-choice  | `prio-basic` | 1 | 1 | ✅ | Distraktor: von links nach rechts gerechnet |
+|  5 | 0 | transfer           | sorting          | `prio-basic`, `prio-potenz` | 1 | 1 | ✅ | Schritte in korrekte Reihenfolge bringen |
+|  6 | 1 | recognize          | true-false       | `minus-vorklammer` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `minus-vorklammer` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `minus-vorklammer` | 1 | 2 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `minus-vorklammer` | 1 | 1 | ✅ | Distraktor: nur ersten Summanden umgedreht |
+| 10 | 1 | transfer           | matching         | `minus-vorklammer` | 1 | 1 | ✅ | Klammer-Term ↔ aufgelöstes Ergebnis |
+| 11 | 2 | recognize          | true-false       | `minus-mal-minus` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `minus-mal-minus` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `minus-mal-minus` | 1 | 2 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `minus-mal-minus` | 1 | 1 | ✅ | Distraktor: Vorzeichen übersehen |
+| 15 | 2 | transfer           | number-input     | `minus-mal-minus`, `minus-vorklammer` | 1 | 1 | ✅ | Kombi: $-(-(2-5))$ oder ähnlich |
+| 16 | 3 | recognize          | true-false       | `klammer-schachtel` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `klammer-schachtel` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `klammer-schachtel` | 1 | 2 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `klammer-schachtel` | 1 | 1 | ✅ | Distraktor: äußerste Klammer zuerst gerechnet |
+| 20 | 3 | transfer           | sorting          | `klammer-schachtel`, `prio-klammer` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-1': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-0-4` · Termumformung & Gleichungen
 
