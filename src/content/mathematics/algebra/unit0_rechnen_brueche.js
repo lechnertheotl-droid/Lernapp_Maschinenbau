@@ -472,6 +472,8 @@ $$2x + 6 = 14 \\quad | -6 \\\\ 2x = 8 \\quad | :2 \\\\ x = 4$$
 **Typischer Fehler:** Multiplikation mit $0$ — dann steht immer $0 = 0$, und die Gleichung verliert ihren Inhalt. Deshalb **nur mit $c \\neq 0$**.`,
     hints: [
       'Gilt die Regel für **jede** Zahl — auch für $0$?',
+      'Multipliziert man mit $0$, wird jede Gleichung zu $0 = 0$ — Information geht verloren.',
+      'Daher: Multiplikation/Division nur mit Termen $\\neq 0$ erhält die Lösungsmenge.',
     ],
       pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['gleichartige-terme'] },
 },

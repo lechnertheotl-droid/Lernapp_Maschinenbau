@@ -102,8 +102,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2332 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1440 (62 %) | 100 % der Aufgaben | 🟡 |
+| Aufgaben (gesamt) | 2337 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1446 (62 %) | 100 % der Aufgaben | 🟡 |
 | MC mit wrongAnswerExplanations | 1066 / 1066 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
@@ -126,8 +126,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **585** (Lesson-Path: 112 · Goal-Tasks: 473)
-- 4-Block: 519/585 (89 %) 🟡
+- Aufgaben: **590** (Lesson-Path: 112 · Goal-Tasks: 478)
+- 4-Block: 525/590 (89 %) 🟡
 - MC-wAE: 266/266 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
@@ -176,7 +176,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | `alg-0-1` Grundrechnen, Klammern & Vorrang | 4 | 4/4 | 31 | 10/12/5/2/2 | 31/31 | 10/10 | ✅ | — |
 | `alg-0-2` Bruchrechnen sicher | 4 | 4/4 | 31 | 12/10/5/1/3 | 31/31 | 12/12 | ✅ | — |
 | `alg-0-3` Prozent & Dreisatz | 5 | 5/5 | 37 | 11/16/6/3/1 | 37/37 | 11/11 | ✅ | — |
-| `alg-0-4` Termumformung & Gleichungen | 5 | 5/5 | 31 | 12/9/5/2/3 | 30/31 | 12/12 | ✅ | +1 4B |
+| `alg-0-4` Termumformung & Gleichungen | 5 | 5/5 | 36 | 12/14/5/2/3 | 36/36 | 12/12 | ✅ | — |
 | `alg-1-1` Potenzgesetze | 4 | 4/4 | 26 | 13/8/4/1/0 | 23/26 | 13/13 | ✅ | +3 4B |
 | `alg-1-2` Wurzeln und gebrochene Exponenten | 3 | 3/3 | 21 | 9/6/4/1/1 | 17/21 | 9/9 | ✅ | +4 4B |
 | `alg-1-3` Logarithmen | 7 | 7/7 | 40 | 18/13/7/2/0 | 35/40 | 18/18 | ✅ | +5 4B |
@@ -12127,65 +12127,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
-#### `alg-0-4` · Termumformung & Gleichungen
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-0-1` → `prio-basic`, `minus-vorklammer`
-  - `alg-0-2` → `bruch-erweitern`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `gleichartige-terme` — Gleichartige Terme: gleiche Variable mit gleichem Exponenten (SG 0)
-  2. `koeff-addieren` — Nur die Koeffizienten gleichartiger Terme addieren ⇐ `gleichartige-terme` (SG 0)
-  3. `distributiv` — Distributivgesetz: $a(b+c) = ab + ac$ (SG 1)
-  4. `ausklammern` — Ausklammern als Umkehrung des Distributivgesetzes ⇐ `distributiv` (SG 1)
-  5. `binom-1` — 1. binomische Formel: $(a+b)^2 = a^2 + 2ab + b^2$ ⇐ `distributiv` (SG 2)
-  6. `binom-2` — 2. binomische Formel: $(a-b)^2 = a^2 - 2ab + b^2$ ⇐ `distributiv` (SG 2)
-  7. `binom-3` — 3. binomische Formel: $(a+b)(a-b) = a^2 - b^2$ ⇐ `distributiv` (SG 2)
-  8. `aequivalenz` — Äquivalenzumformung: auf beiden Seiten dasselbe tun (SG 3)
-  9. `nicht-durch-null` — Division durch Null verboten (verliert Lösungen) ⇐ `aequivalenz` (SG 3)
-  10. `formel-umstellen` — Formel nach Variable umstellen: Operationen umkehren ⇐ `aequivalenz` (SG 3)
-  11. `quadrieren-probe` — Beim Quadrieren Probe nötig — Scheinlösungen möglich ⇐ `aequivalenz` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `gleichartige-terme`, `koeff-addieren` · **5/5+** — Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren
-  - ✅ [1] _hoch_ · Konzepte: `distributiv`, `ausklammern` · **5/5+** — Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)
-  - ✅ [2] _hoch_ · Konzepte: `binom-1`, `binom-2`, `binom-3` · **5/5+** — Binomische Formeln: $(a\pm b)^2 = a^2 \pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$
-  - ✅ [3] _hoch_ · Konzepte: `aequivalenz`, `nicht-durch-null`, `formel-umstellen` · **5/5+** — Äquivalenzumformungen: auf beiden Seiten dasselbe tun, nicht durch Null teilen
-  - ✅ [4] _mittel_ · Konzepte: `quadrieren-probe` · **5/5+** — Beim Quadrieren Probe nötig (Scheinlösungen möglich)
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `gleichartige-terme` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `gleichartige-terme`, `koeff-addieren` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `koeff-addieren` | 1 | 1 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `gleichartige-terme` | 1 | 1 | ✅ | Distraktor: $x+x^2$ als gleichartig behandelt |
-|  5 | 0 | transfer           | matching         | `gleichartige-terme` | 1 | 1 | ✅ | Terme ↔ gleichartige Gruppe |
-|  6 | 1 | recognize          | true-false       | `distributiv` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `distributiv` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `distributiv` | 1 | 1 | ✅ | Ausmultiplizieren |
-|  9 | 1 | error-analysis     | multiple-choice  | `distributiv` | 1 | 1 | ✅ | Distraktor: Faktor nur auf ersten Summanden |
-| 10 | 1 | transfer           | number-input     | `ausklammern` | 1 | 1 | ✅ | Ausklammern des größten gemeinsamen Faktors |
-| 11 | 2 | recognize          | matching         | `binom-1`, `binom-2`, `binom-3` | 1 | 1 | ✅ | Formel ↔ Typ |
-| 12 | 2 | apply-guided       | multiple-choice  | `binom-1` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `binom-2` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `binom-1`, `binom-2` | 1 | 1 | ✅ | Distraktor: mittleren Term vergessen |
-| 15 | 2 | transfer           | number-input     | `binom-3` | 1 | 1 | ✅ | Anwendung 3. binomische Formel in Zahlenrechnung |
-| 16 | 3 | recognize          | true-false       | `aequivalenz`, `nicht-durch-null` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `aequivalenz` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `formel-umstellen` | 1 | 1 | ✅ | Formel nach Variable umstellen |
-| 19 | 3 | error-analysis     | multiple-choice  | `nicht-durch-null` | 1 | 1 | ✅ | Distraktor: durch 0-Term geteilt |
-| 20 | 3 | transfer           | sorting          | `aequivalenz`, `formel-umstellen` | 1 | 1 | ✅ |  |
-| 21 | 4 | recognize          | true-false       | `quadrieren-probe` | 1 | 1 | ✅ |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `quadrieren-probe` | 1 | 1 | ✅ |  |
-| 23 | 4 | apply-independent  | number-input     | `quadrieren-probe` | 1 | 1 | ✅ |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `quadrieren-probe` | 1 | 1 | ✅ | Distraktor: Scheinlösung akzeptiert |
-| 25 | 4 | transfer           | sorting          | `quadrieren-probe`, `aequivalenz` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-4': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-0-4-goal-sg1-3`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
 #### `mech-1-5` · Schwerpunkt
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
@@ -12827,6 +12768,64 @@ npm run build              # abschließender End-zu-End-Check
 
 - **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-3-4': { 0: [...], 1: [...], ... }`
 - **4-Block-Erklärung fehlt bei:** `ex-alg-3-4-a`, `ex-alg-3-4-b`, `ex-alg-3-4-c`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
+#### `alg-0-4` · Termumformung & Gleichungen
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-0-1` → `prio-basic`, `minus-vorklammer`
+  - `alg-0-2` → `bruch-erweitern`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `gleichartige-terme` — Gleichartige Terme: gleiche Variable mit gleichem Exponenten (SG 0)
+  2. `koeff-addieren` — Nur die Koeffizienten gleichartiger Terme addieren ⇐ `gleichartige-terme` (SG 0)
+  3. `distributiv` — Distributivgesetz: $a(b+c) = ab + ac$ (SG 1)
+  4. `ausklammern` — Ausklammern als Umkehrung des Distributivgesetzes ⇐ `distributiv` (SG 1)
+  5. `binom-1` — 1. binomische Formel: $(a+b)^2 = a^2 + 2ab + b^2$ ⇐ `distributiv` (SG 2)
+  6. `binom-2` — 2. binomische Formel: $(a-b)^2 = a^2 - 2ab + b^2$ ⇐ `distributiv` (SG 2)
+  7. `binom-3` — 3. binomische Formel: $(a+b)(a-b) = a^2 - b^2$ ⇐ `distributiv` (SG 2)
+  8. `aequivalenz` — Äquivalenzumformung: auf beiden Seiten dasselbe tun (SG 3)
+  9. `nicht-durch-null` — Division durch Null verboten (verliert Lösungen) ⇐ `aequivalenz` (SG 3)
+  10. `formel-umstellen` — Formel nach Variable umstellen: Operationen umkehren ⇐ `aequivalenz` (SG 3)
+  11. `quadrieren-probe` — Beim Quadrieren Probe nötig — Scheinlösungen möglich ⇐ `aequivalenz` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `gleichartige-terme`, `koeff-addieren` · **6/5+** — Gleichartige Terme: gleiche Variable + gleicher Exponent; nur Koeffizienten addieren
+  - ✅ [1] _hoch_ · Konzepte: `distributiv`, `ausklammern` · **6/5+** — Distributivgesetz: $a(b+c) = ab + ac$ (Aus­klammern/Aus­multi­plizieren)
+  - ✅ [2] _hoch_ · Konzepte: `binom-1`, `binom-2`, `binom-3` · **6/5+** — Binomische Formeln: $(a\pm b)^2 = a^2 \pm 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$
+  - ✅ [3] _hoch_ · Konzepte: `aequivalenz`, `nicht-durch-null`, `formel-umstellen` · **6/5+** — Äquivalenzumformungen: auf beiden Seiten dasselbe tun, nicht durch Null teilen
+  - ✅ [4] _mittel_ · Konzepte: `quadrieren-probe` · **6/5+** — Beim Quadrieren Probe nötig (Scheinlösungen möglich)
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `gleichartige-terme` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `gleichartige-terme`, `koeff-addieren` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `koeff-addieren` | 1 | 2 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `gleichartige-terme` | 1 | 1 | ✅ | Distraktor: $x+x^2$ als gleichartig behandelt |
+|  5 | 0 | transfer           | matching         | `gleichartige-terme` | 1 | 1 | ✅ | Terme ↔ gleichartige Gruppe |
+|  6 | 1 | recognize          | true-false       | `distributiv` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `distributiv` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `distributiv` | 1 | 2 | ✅ | Ausmultiplizieren |
+|  9 | 1 | error-analysis     | multiple-choice  | `distributiv` | 1 | 1 | ✅ | Distraktor: Faktor nur auf ersten Summanden |
+| 10 | 1 | transfer           | number-input     | `ausklammern` | 1 | 1 | ✅ | Ausklammern des größten gemeinsamen Faktors |
+| 11 | 2 | recognize          | matching         | `binom-1`, `binom-2`, `binom-3` | 1 | 1 | ✅ | Formel ↔ Typ |
+| 12 | 2 | apply-guided       | multiple-choice  | `binom-1` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `binom-2` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `binom-1`, `binom-2` | 1 | 1 | ✅ | Distraktor: mittleren Term vergessen |
+| 15 | 2 | transfer           | number-input     | `binom-3` | 1 | 1 | ✅ | Anwendung 3. binomische Formel in Zahlenrechnung |
+| 16 | 3 | recognize          | true-false       | `aequivalenz`, `nicht-durch-null` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `aequivalenz` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `formel-umstellen` | 1 | 2 | ✅ | Formel nach Variable umstellen |
+| 19 | 3 | error-analysis     | multiple-choice  | `nicht-durch-null` | 1 | 1 | ✅ | Distraktor: durch 0-Term geteilt |
+| 20 | 3 | transfer           | sorting          | `aequivalenz`, `formel-umstellen` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `quadrieren-probe` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `quadrieren-probe` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `quadrieren-probe` | 1 | 2 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `quadrieren-probe` | 1 | 1 | ✅ | Distraktor: Scheinlösung akzeptiert |
+| 25 | 4 | transfer           | sorting          | `quadrieren-probe`, `aequivalenz` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-4': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 

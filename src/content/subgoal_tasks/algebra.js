@@ -1926,6 +1926,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['gleichartige-terme'] },
       ),
+      // Zusatz-Aufgabe SG 0: apply-independent · number-input · uses=[koeff-addieren]
+      // Mehrere Variablen mit unterschiedlichen Termen — testet Trennung in zwei Sammelgruppen.
+      ni(
+        'Vereinfache $4a + 7b - 2a + 3b - a$ und gib den Koeffizienten von $a$ im Ergebnis an.',
+        1, 0, '',
+        `**Ansatz:** Zwei Sammelgruppen — alles mit $a$ und alles mit $b$ getrennt zusammenfassen.
+
+**Rechnung:** $a$-Terme: $4a - 2a - a = (4 - 2 - 1)a = a$ (Koeffizient $1$). $b$-Terme: $7b + 3b = 10b$. Ergebnis: $a + 10b$.
+
+**Probe:** Zahlentest $a = 1, b = 1$: Original $4 + 7 - 2 + 3 - 1 = 11$. Ergebnis $1 + 10 = 11$. ✓
+
+**Typischer Fehler:** $a$- und $b$-Terme mischen: $4a + 7b - 2a + 3b - a$ als $(4+7-2+3-1)\\cdot ab = 11ab$ — das setzt $a = b$ voraus, was nicht gegeben ist.`,
+        [
+          'Ungleiche Variablen $\\to$ getrennte Sammelgruppen.',
+          'Erst alle $a$-Terme zusammenfassen, dann alle $b$-Terme.',
+          'Vorzeichen sorgfältig: $4a - 2a - a = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['koeff-addieren'] },
+      ),
       matching(
         'Ordne jedem Term den gleichartigen Partner zu.',
         [
@@ -1993,18 +2012,18 @@ export const algebraSubGoalTasks = {
       ),
       ni(
         'Berechne: $5(2x + 3) - 3(x - 4)$ bei $x = 1$.',
-        20, 0, '',
-        `**Ansatz:** Ausmultiplizieren, vereinfachen, einsetzen.
+        34, 0, '',
+        `**Ansatz:** Beide Klammern ausmultiplizieren (Distributivgesetz), Vorzeichen vor der zweiten Klammer beachten, vereinfachen, einsetzen.
 
-**Rechnung:** $5(2x+3) = 10x + 15$. $3(x-4) = 3x - 12$. Differenz: $10x + 15 - (3x - 12) = 10x + 15 - 3x + 12 = 7x + 27$. Bei $x=1$: $7 + 27 = 34$.
+**Rechnung:** $5(2x+3) = 10x + 15$. $-3(x-4) = -3x + 12$ (Minus auf beide Summanden). Summe: $10x + 15 - 3x + 12 = 7x + 27$. Bei $x = 1$: $7 \\cdot 1 + 27 = 34$.
 
-Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) = 25$; $3(1-4) = -9$; $25 - (-9) = 25 + 9 = 34$. Das Ziel war $20$ — Aufgabe stimmt nicht.
+**Probe:** Direkt einsetzen vor dem Vereinfachen: $5 \\cdot (2+3) - 3 \\cdot (1-4) = 5 \\cdot 5 - 3 \\cdot (-3) = 25 + 9 = 34$. ✓
 
-**Rechnung (korrigiert):** Bei $x=1$: $5 \\cdot (2+3) - 3 \\cdot (1-4) = 5 \\cdot 5 - 3 \\cdot (-3) = 25 + 9 = 34$.`,
+**Typischer Fehler:** Das Minus vor der zweiten Klammer nur auf das $x$ anwenden, nicht auf $-4$: $10x + 15 - 3x - 12 = 7x + 3 \\Rightarrow 10$ bei $x=1$ — Vorzeichen-Fehler beim zweiten Summanden.`,
         [
-          'Ausmultiplizieren zuerst: Distributivgesetz.',
-          'Minus vor Klammer: alle Summanden negieren.',
-          'Dann $x=1$ einsetzen.',
+          'Beide Klammern ausmultiplizieren — Distributivgesetz.',
+          'Minus vor der zweiten Klammer: alle Summanden negieren.',
+          'Erst vereinfachen, dann $x = 1$ einsetzen — oder umgekehrt zur Probe.',
         ],
         { stage: 'apply-independent', subGoal: 1, uses: ['distributiv'] },
       ),
@@ -2035,6 +2054,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
           3: 'Die Rechnung ist eben nicht korrekt — Zahlentest widerlegt sie.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['distributiv'] },
+      ),
+      // Zusatz-Aufgabe SG 1: apply-independent · number-input · uses=[distributiv]
+      // Doppel-Distributiv (FOIL) ohne binomische Formel — testet systematisches Ausmultiplizieren.
+      ni(
+        'Multipliziere $(2x + 3)(x - 5)$ aus und gib den Koeffizienten von $x$ im Ergebnis an.',
+        -7, 0, '',
+        `**Ansatz:** Jeder Summand der ersten Klammer mit jedem Summanden der zweiten — vier Produkte.
+
+**Rechnung:** $(2x)(x) + (2x)(-5) + 3 \\cdot x + 3 \\cdot (-5) = 2x^2 - 10x + 3x - 15 = 2x^2 - 7x - 15$. Koeffizient von $x$: $-7$.
+
+**Probe:** Zahlentest $x = 2$: $(4+3)(2-5) = 7 \\cdot (-3) = -21$. Ergebnis: $2 \\cdot 4 - 7 \\cdot 2 - 15 = 8 - 14 - 15 = -21$. ✓
+
+**Typischer Fehler:** Nur „erstes mit erstem, zweites mit zweitem" rechnen: $(2x)(x) + (3)(-5) = 2x^2 - 15$ — die gemischten Produkte $(2x)(-5)$ und $3 \\cdot x$ fehlen. Ohne diese fehlt der lineare Term ganz.`,
+        [
+          'Vier Produkte: jeder Summand der einen Klammer mit jedem der anderen.',
+          '$(2x)(x), (2x)(-5), (3)(x), (3)(-5)$ — alle vier hinschreiben.',
+          'Linearer Koeffizient = $-10 + 3$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['distributiv'] },
       ),
       ni(
         'Klammere aus $6x^2 - 9x$ und gib den größten gemeinsamen Faktor (ohne Vorzeichen) an.',
@@ -2146,6 +2184,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['binom-1', 'binom-2'] },
       ),
+      // Zusatz-Aufgabe SG 2: apply-independent · number-input · uses=[binom-1]
+      // Faktorisieren rückwärts — testet Erkennen einer binomischen Formel im Termmuster.
+      ni(
+        'Faktorisiere $x^2 + 14x + 49$ als $(x + b)^2$ und gib $b$ an.',
+        7, 0, '',
+        `**Ansatz:** Muster der 1. binomischen Formel rückwärts: $a^2 + 2ab + b^2 = (a+b)^2$. Mit $a = x$ stimmt $b^2 = 49$ und $2ab = 14x$.
+
+**Rechnung:** $b^2 = 49 \\Rightarrow b = 7$ (positiv, weil mittlerer Term positiv). Probe: $2 \\cdot x \\cdot 7 = 14x$. ✓ Faktorisierung: $(x + 7)^2$.
+
+**Probe:** Ausmultiplizieren: $(x+7)^2 = x^2 + 14x + 49$. ✓
+
+**Typischer Fehler:** $b = \\sqrt{49} = 7$ erkennen, aber nicht prüfen, ob der mittlere Term zur Wahl passt. Bei z. B. $x^2 + 10x + 49$ gäbe es kein passendes $b$ (es wäre weder die 1. noch die 2. binomische Formel).`,
+        [
+          'Welche binomische Formel hat das Muster $? + ?\\cdot x + ?$ mit beiden Vorzeichen positiv?',
+          '$b^2 = 49 \\Rightarrow b = ?$',
+          'Probe: $2 \\cdot x \\cdot b$ muss den mittleren Term geben.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['binom-1'] },
+      ),
       ni(
         'Berechne mit der 3. binomischen Formel: $103 \\cdot 97$.',
         9991, 0, '',
@@ -2245,6 +2302,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
           3: 'Nein — die Division hat $x = 2$ verschluckt.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['nicht-durch-null'] },
+      ),
+      // Zusatz-Aufgabe SG 3: apply-independent · number-input · uses=[formel-umstellen]
+      // Formel mit Quotient — testet Multiplikation mit dem Nenner als ersten Schritt.
+      ni(
+        'Stelle $\\rho = \\dfrac{m}{V}$ nach dem Volumen $V$ um und berechne $V$ bei $m = 240\\,\\text{g}$ und $\\rho = 8\\,\\text{g/cm}^3$ in $\\text{cm}^3$.',
+        30, 0, '',
+        `**Ansatz:** Bruchgleichung: zuerst beide Seiten mit dem Nenner $V$ multiplizieren, dann durch $\\rho$ dividieren.
+
+**Rechnung:** $\\rho = m/V \\;|\\; \\cdot V \\Rightarrow \\rho \\cdot V = m \\;|\\; / \\rho \\Rightarrow V = m/\\rho$. Einsetzen: $V = 240/8 = 30\\,\\text{cm}^3$.
+
+**Probe:** $\\rho = m/V = 240/30 = 8\\,\\text{g/cm}^3$. ✓ Einheiten: $\\text{g}/(\\text{g/cm}^3) = \\text{cm}^3$.
+
+**Typischer Fehler:** Direkt $V = \\rho \\cdot m = 8 \\cdot 240 = 1920\\,\\text{cm}^3$ — Multiplikation statt Division (Formel falsch umgestellt).`,
+        [
+          'Erst Nenner weg: beide Seiten mit $V$ multiplizieren.',
+          'Dann durch $\\rho$ teilen: $V = m/\\rho$.',
+          'Einheiten-Check: $\\text{g}/(\\text{g/cm}^3) = \\text{cm}^3$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['formel-umstellen'] },
       ),
       sorting(
         'Bringe die Schritte zum Umstellen von $v = v_0 + a \\cdot t$ nach $t$ in die richtige Reihenfolge.',
@@ -2360,6 +2436,25 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
           3: 'Sie ist definiert für $x \\geq 0$ — nur hat sie keine Lösung, weil $\\sqrt{x} \\geq 0$.',
         },
         { stage: 'error-analysis', subGoal: 4, uses: ['quadrieren-probe'] },
+      ),
+      // Zusatz-Aufgabe SG 4: apply-independent · number-input · uses=[quadrieren-probe]
+      // Wurzelgleichung mit zwei Kandidaten — beide Werte testen, einer ist Scheinlösung.
+      ni(
+        'Löse $\\sqrt{x + 5} = x - 1$ und gib die EINZIGE reelle Lösung $x$ an.',
+        4, 0, '',
+        `**Ansatz:** Definitionsbereich klären (RHS $\\geq 0 \\Rightarrow x \\geq 1$), quadrieren, Kandidaten finden, Probe in Originalgleichung.
+
+**Rechnung:** Quadrieren: $x + 5 = (x-1)^2 = x^2 - 2x + 1 \\Rightarrow x^2 - 3x - 4 = 0 \\Rightarrow (x-4)(x+1) = 0$. Kandidaten: $x = 4$ oder $x = -1$.
+
+**Probe:** $x = 4$: $\\sqrt{9} = 3$ und $4 - 1 = 3$. ✓ $x = -1$: $\\sqrt{4} = 2$, aber $-1 - 1 = -2 \\neq 2$. Scheinlösung. Einzige Lösung: $x = 4$.
+
+**Typischer Fehler:** Beide Kandidaten ($4$ und $-1$) als Lösungen angeben, ohne in die Originalgleichung einzusetzen — die Wurzel ist per Definition $\\geq 0$, aber das Quadrieren akzeptiert auch negative rechte Seiten.`,
+        [
+          'Definitionsbereich: rechte Seite $x - 1 \\geq 0 \\Rightarrow x \\geq 1$.',
+          'Quadrieren $\\to$ quadratische Gleichung $\\to$ zwei Kandidaten.',
+          'PROBE in der Originalgleichung — Scheinlösung verwerfen.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['quadrieren-probe'] },
       ),
       sorting(
         'Bringe die Schritte zum Lösen von $\\sqrt{x + 3} = x - 1$ in die richtige Reihenfolge.',
