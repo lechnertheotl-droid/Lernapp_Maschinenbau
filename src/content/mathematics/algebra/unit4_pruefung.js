@@ -11,12 +11,7 @@ export const exercises_alg_u4 = {
     correctIndex: 0,
     explanation: `**Ansatz:** Bei $(a \\cdot b \\cdot c)^{n}$ wird jeder Faktor einzeln mit $n$ potenziert. Gebrochene Exponenten = Wurzel hoch Zähler.
 
-**Rechnung — Schritt für Schritt:**
-1. Jeden Faktor einzeln potenzieren: $(8x^{6}y^{3})^{2/3} = 8^{2/3} \\cdot (x^{6})^{2/3} \\cdot (y^{3})^{2/3}$
-2. Zahl berechnen: $8^{2/3} = (\\sqrt[3]{8})^{2} = 2^{2} = 4$
-3. $x$-Teil: $(x^{6})^{2/3} = x^{6 \\cdot 2/3} = x^{4}$
-4. $y$-Teil: $(y^{3})^{2/3} = y^{3 \\cdot 2/3} = y^{2}$
-5. Zusammen: $4x^{4}y^{2}$
+**Rechnung:** Schritt 1 — jeden Faktor einzeln: $(8x^{6}y^{3})^{2/3} = 8^{2/3} \\cdot (x^{6})^{2/3} \\cdot (y^{3})^{2/3}$. Schritt 2 — Zahl: $8^{2/3} = (\\sqrt[3]{8})^{2} = 2^{2} = 4$. Schritt 3 — $x$-Teil: $(x^{6})^{2/3} = x^{6 \\cdot 2/3} = x^{4}$. Schritt 4 — $y$-Teil: $(y^{3})^{2/3} = y^{3 \\cdot 2/3} = y^{2}$. Schritt 5 — zusammen: $4x^{4}y^{2}$.
 
 **Probe:** Setze $x=1, y=1$: $(8 \\cdot 1 \\cdot 1)^{2/3} = 8^{2/3} = 4$. Antwort: $4 \\cdot 1 \\cdot 1 = 4$. ✓
 
@@ -38,16 +33,11 @@ export const exercises_alg_u4 = {
     question: '[PRÜFUNG] Löse nach $x$ auf: $\\ln(2x - 1) = 3$',
     options: ['$x = (e^{3} + 1)/2$', '$x = e^{3}/2$', '$x = (e^{3} - 1)/2$', '$x = e^{3} + 1$'],
     correctIndex: 0,
-    explanation: `**Ansatz:** $\\ln$ auf der linken Seite "entfernen" durch Exponentialfunktion $e^{\\cdot}$ auf beiden Seiten — danach lineare Gleichung lösen.
+    explanation: `**Ansatz:** $\\ln$ auf der linken Seite "entfernen" durch Exponentialfunktion $e^{\\cdot}$ auf beiden Seiten — danach lineare Gleichung lösen. Definitionsbereich vorab: $2x - 1 > 0$, also $x > 0{,}5$.
 
-**Rechnung — Schritt für Schritt:**
-1. Exponentieren: $\\ln(2x - 1) = 3 \\Rightarrow e^{\\ln(2x-1)} = e^{3} \\Rightarrow 2x - 1 = e^{3}$
-2. Nach $x$ auflösen: $2x = e^{3} + 1$
-3. Durch $2$ teilen: $x = (e^{3} + 1)/2 \\approx (20{,}09 + 1)/2 \\approx 10{,}54$
+**Rechnung:** Schritt 1 — exponentieren: $\\ln(2x - 1) = 3 \\Rightarrow e^{\\ln(2x-1)} = e^{3} \\Rightarrow 2x - 1 = e^{3}$. Schritt 2 — nach $x$ auflösen: $2x = e^{3} + 1$. Schritt 3 — durch $2$ teilen: $x = (e^{3} + 1)/2 \\approx (20{,}09 + 1)/2 \\approx 10{,}54$.
 
-**Probe:** $2 \\cdot 10{,}54 - 1 = 20{,}08 \\approx e^{3}$, also $\\ln(e^{3}) = 3$. ✓
-
-**Definitionsbereich:** $2x - 1 > 0$, d.h. $x > 0{,}5$. Lösung erfüllt das.
+**Probe:** $2 \\cdot 10{,}54 - 1 = 20{,}08 \\approx e^{3}$, also $\\ln(e^{3}) = 3$. ✓ Lösung liegt im Definitionsbereich ($10{,}54 > 0{,}5$).
 
 **Typischer Fehler:** Antwort C ($x = (e^{3}-1)/2$) entsteht durch Vorzeichenfehler beim Umstellen ($-1$ statt $+1$ auf die andere Seite). Antwort B vergisst die Konstante $-1$ komplett.`,
     wrongAnswerExplanations: {
@@ -91,16 +81,11 @@ Also $\\log_{2}(128) = 7$.
     id: 'ex-alg-4-1-d', lessonId: 'alg-4-1', type: 'true-false',
     statement: '[PRÜFUNG] Es gilt: $\\log(a \\cdot b) = \\log(a) \\cdot \\log(b)$.',
     correct: false,
-    explanation: `**Ansatz:** Teste die Behauptung mit konkreten Zahlen.
+    explanation: `**Ansatz:** Teste die Behauptung mit konkreten Zahlen — ein Gegenbeispiel reicht zur Widerlegung.
 
-**Rechnung (Gegenbeispiel):** Setze $a = b = 10$:
-- Linke Seite: $\\log(10 \\cdot 10) = \\log(100) = 2$
-- Rechte Seite: $\\log(10) \\cdot \\log(10) = 1 \\cdot 1 = 1$
-- $2 \\neq 1$, also **falsch**.
+**Rechnung:** Gegenbeispiel mit $a = b = 10$. Linke Seite: $\\log(10 \\cdot 10) = \\log(100) = 2$. Rechte Seite: $\\log(10) \\cdot \\log(10) = 1 \\cdot 1 = 1$. Da $2 \\neq 1$, ist die Behauptung **falsch**. Richtige Regel: $\\log(a \\cdot b) = \\log(a) + \\log(b)$ — Multiplikation wird zu **Addition**, nicht zu Multiplikation.
 
-**Richtige Regel:** $\\log(a \\cdot b) = \\log(a) + \\log(b)$. Der Logarithmus verwandelt Multiplikation in **Addition**, nicht in Multiplikation.
-
-**Probe der korrekten Regel:** $\\log(100) = \\log(10) + \\log(10) = 1 + 1 = 2$. ✓
+**Probe:** Mit der korrekten Produktregel: $\\log(100) = \\log(10) + \\log(10) = 1 + 1 = 2$. ✓ Stimmt mit $\\log(100) = 2$ überein.
 
 **Typischer Fehler:** Den Logarithmus als "linear" oder "multiplikativ" anzusehen. Er ist weder linear ($\\log(a+b) \\neq \\log(a) + \\log(b)$) noch multiplikativ — er ist eine spezielle Umformung: Multiplikation $\\to$ Addition.`,
     hints: [
@@ -117,16 +102,9 @@ Also $\\log_{2}(128) = 7$.
     correctIndex: 0,
     explanation: `**Ansatz:** Zwei Wege — (a) beide Logarithmen einzeln ausrechnen, oder (b) Quotientenregel anwenden.
 
-**Rechnung — Weg (a), direkt:**
-1. $\\log_{3}(81) = \\log_{3}(3^{4}) = 4$
-2. $\\log_{3}(3) = \\log_{3}(3^{1}) = 1$
-3. Differenz: $4 - 1 = 3$
+**Rechnung:** Weg (a) direkt — Schritt 1: $\\log_{3}(81) = \\log_{3}(3^{4}) = 4$. Schritt 2: $\\log_{3}(3) = \\log_{3}(3^{1}) = 1$. Schritt 3 — Differenz: $4 - 1 = 3$. Weg (b) Quotientenregel: $\\log_{3}(81) - \\log_{3}(3) = \\log_{3}(81/3) = \\log_{3}(27)$, und mit $27 = 3^{3}$ folgt $\\log_{3}(27) = 3$.
 
-**Rechnung — Weg (b), Quotientenregel:**
-1. $\\log_{3}(81) - \\log_{3}(3) = \\log_{3}(81/3) = \\log_{3}(27)$
-2. $27 = 3^{3}$, also $\\log_{3}(27) = 3$
-
-**Probe:** $3^{3} = 27 = 81/3$. ✓
+**Probe:** $3^{3} = 27 = 81/3$. ✓ Beide Wege liefern $3$.
 
 **Typischer Fehler:** $\\log_{3}(81 - 3) = \\log_{3}(78)$ zu rechnen — das wäre falsch, Logarithmus ist *nicht* linear. Die Quotientenregel gilt nur für Differenzen **von Logarithmen**, nicht im Argument.`,
     wrongAnswerExplanations: {
@@ -146,19 +124,11 @@ Also $\\log_{2}(128) = 7$.
     question: '[PRÜFUNG] Löse die quadratische Gleichung: $x^{2} - 5x + 6 = 0$',
     options: ['$x_{1} = 2, x_{2} = 3$', '$x_{1} = 1, x_{2} = 6$', '$x_{1} = -2, x_{2} = -3$', '$x_{1} = -1, x_{2} = 6$'],
     correctIndex: 0,
-    explanation: `**Ansatz:** Faktorisierung nach Satz von Vieta — suche zwei Zahlen mit Produkt $c = 6$ und Summe $-b = 5$. Oder abc-Formel.
+    explanation: `**Ansatz:** Faktorisierung nach Satz von Vieta — suche zwei Zahlen mit Produkt $c = 6$ und Summe $-b = 5$. Alternativ: abc-Formel.
 
-**Rechnung — Weg (a), Vieta:**
-1. Produkt $= 6$, Summe $= 5$: Probiere Teiler von $6$: $(1,6), (2,3)$. $2 + 3 = 5$ ✓
-2. Also $x^{2} - 5x + 6 = (x - 2)(x - 3) = 0$
-3. Nullstellen: $x_{1} = 2, x_{2} = 3$
+**Rechnung:** Weg (a) Vieta — Schritt 1: Teiler von $6$ probieren: $(1,6)$ hat Summe $7$, $(2,3)$ hat Summe $5$ ✓. Schritt 2: Faktorisieren $x^{2} - 5x + 6 = (x - 2)(x - 3) = 0$. Schritt 3: Nullstellen $x_{1} = 2,\\, x_{2} = 3$. Weg (b) abc-Formel: $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1} = 3,\\, x_{2} = 2$.
 
-**Rechnung — Weg (b), abc-Formel:**
-$x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1} = 3, x_{2} = 2$.
-
-**Probe:**
-- $x = 2$: $4 - 10 + 6 = 0$ ✓
-- $x = 3$: $9 - 15 + 6 = 0$ ✓
+**Probe:** $x = 2$: $4 - 10 + 6 = 0$ ✓. $x = 3$: $9 - 15 + 6 = 0$ ✓.
 
 **Typischer Fehler:** Vorzeichen vergessen: bei $(x-2)(x-3) = 0$ sind die Nullstellen $+2$ und $+3$, **nicht** $-2$ und $-3$ (Antwort C).`,
     wrongAnswerExplanations: {
@@ -181,15 +151,9 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
     unit: '',
     explanation: `**Ansatz:** Durch Division auf Normalform bringen, dann abc-Formel (oder pq-Formel).
 
-**Rechnung — Schritt für Schritt:**
-1. Durch $2$ dividieren: $x^{2} + 2x - 3 = 0$
-2. abc-Formel: $x_{1,2} = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$ mit $a=1, b=2, c=-3$
-3. Diskriminante: $D = 2^{2} - 4 \\cdot 1 \\cdot (-3) = 4 + 12 = 16$
-4. $\\sqrt{D} = 4$
-5. $x_{1,2} = \\frac{-2 \\pm 4}{2}$, also $x_{1} = 1, x_{2} = -3$
-6. Größere Lösung: $x = 1$
+**Rechnung:** Schritt 1 — durch $2$ dividieren: $x^{2} + 2x - 3 = 0$. Schritt 2 — abc-Formel mit $a=1,\\, b=2,\\, c=-3$: $x_{1,2} = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$. Schritt 3 — Diskriminante: $D = 2^{2} - 4 \\cdot 1 \\cdot (-3) = 4 + 12 = 16$, also $\\sqrt{D} = 4$. Schritt 4: $x_{1,2} = \\frac{-2 \\pm 4}{2}$, also $x_{1} = 1$ und $x_{2} = -3$. Schritt 5 — größere Lösung: $x = 1$.
 
-**Probe:** Einsetzen von $x = 1$: $2 \\cdot 1 + 4 \\cdot 1 - 6 = 0$ ✓. Einsetzen von $x = -3$: $2 \\cdot 9 - 12 - 6 = 0$ ✓.
+**Probe:** $x = 1$: $2 \\cdot 1 + 4 \\cdot 1 - 6 = 0$ ✓. $x = -3$: $2 \\cdot 9 - 12 - 6 = 0$ ✓.
 
 **Typischer Fehler:** Vergessen, die Gleichung zuerst auf $a=1$ zu normieren, oder Vorzeichen bei $b$/$c$ falsch in die Formel einsetzen.`,
     hints: [
@@ -205,14 +169,9 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
     correct: true,
     explanation: `**Ansatz:** Umstellen und Eigenschaft "Quadrat ist nicht-negativ" nutzen.
 
-**Rechnung:**
-1. $x^{2} + 4 = 0 \\Rightarrow x^{2} = -4$
-2. Aber $x^{2} \\geq 0$ für alle $x \\in \\mathbb{R}$, insbesondere niemals negativ.
-3. Also gibt es in $\\mathbb{R}$ keine Lösung.
+**Rechnung:** Schritt 1: $x^{2} + 4 = 0 \\Rightarrow x^{2} = -4$. Schritt 2: Aber $x^{2} \\geq 0$ für alle $x \\in \\mathbb{R}$, niemals negativ. Schritt 3: Also gibt es in $\\mathbb{R}$ keine Lösung. Bestätigung über Diskriminante: $D = b^{2} - 4ac = 0 - 4 \\cdot 1 \\cdot 4 = -16 < 0$ — $D < 0$ heißt keine reellen Lösungen. In $\\mathbb{C}$ hingegen: $x = \\pm 2i$ mit $i = \\sqrt{-1}$.
 
-**Bestätigung über Diskriminante:** $D = b^{2} - 4ac = 0 - 4 \\cdot 1 \\cdot 4 = -16 < 0$. $D < 0$ bedeutet: keine reellen Lösungen.
-
-**In $\\mathbb{C}$ hingegen:** $x = \\pm 2i$ mit $i = \\sqrt{-1}$. In der Ingenieurmathematik (z.B. Schwingungen, Wechselstrom) wichtig, auf TU-Prüfungen aber meist Reellwertigkeit gefragt.
+**Probe:** Für jedes reelle $x$: $x^{2} \\geq 0$, also $x^{2} + 4 \\geq 4 > 0$. Somit kann $x^{2} + 4 = 0$ in $\\mathbb{R}$ nicht erfüllt werden ✓. Im Komplexen: $(2i)^{2} + 4 = -4 + 4 = 0$ ✓.
 
 **Typischer Fehler:** $x = \\sqrt{-4}$ als Lösung anzugeben ohne zu prüfen, ob $\\mathbb{R}$ oder $\\mathbb{C}$ gesucht ist. Ohne Angabe ist immer $\\mathbb{R}$ gemeint.`,
     hints: [
@@ -231,16 +190,11 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
       { left: '$\\log(a) - \\log(b)$', right: '$\\log(a/b)$' },
       { left: '$e^{\\ln(x)}$', right: '$x$' },
     ],
-    explanation: `**Ansatz:** Jedes Paar gehört zu einem der vier Grundgesetze.
+    explanation: `**Ansatz:** Jedes Paar gehört zu einem der vier Grundgesetze des Logarithmus.
 
-**Zuordnung und Begründung:**
-1. **Potenzregel:** $\\log(a^{n}) = n \\cdot \\log(a)$ — der Exponent wandert als Faktor vor den Logarithmus.
-2. **Produktregel:** $\\log(a) + \\log(b) = \\log(a \\cdot b)$ — Summe von Logarithmen wird Logarithmus eines Produkts.
-3. **Quotientenregel:** $\\log(a) - \\log(b) = \\log(a/b)$ — Differenz wird Quotient.
-4. **Umkehreigenschaft:** $e^{\\ln(x)} = x$ — $e^{\\cdot}$ und $\\ln$ heben sich gegenseitig auf.
+**Rechnung:** Zuordnung — (1) Potenzregel: $\\log(a^{n}) = n \\cdot \\log(a)$, der Exponent wandert als Faktor vor den Logarithmus. (2) Produktregel: $\\log(a) + \\log(b) = \\log(a \\cdot b)$, Summe von Logarithmen wird Logarithmus eines Produkts. (3) Quotientenregel: $\\log(a) - \\log(b) = \\log(a/b)$, Differenz wird Quotient. (4) Umkehreigenschaft: $e^{\\ln(x)} = x$, weil $\\ln$ und $e^{\\cdot}$ Umkehrfunktionen sind.
 
-**Probe Regel 1:** $\\log(100^{2}) = \\log(10000) = 4$, $2 \\cdot \\log(100) = 2 \\cdot 2 = 4$. ✓
-**Probe Regel 4:** $e^{\\ln(5)} = 5$. ✓
+**Probe:** Regel 1 mit Zahlen: $\\log(100^{2}) = \\log(10000) = 4$ und $2 \\cdot \\log(100) = 2 \\cdot 2 = 4$ ✓. Regel 4 mit Zahlen: $e^{\\ln(5)} = 5$ ✓.
 
 **Typischer Fehler:** Produktregel mit Quotientenregel verwechseln oder $\\log(a+b)$ fälschlich zu $\\log(a) + \\log(b)$ umformen (das gilt **nicht**).`,
     hints: [
@@ -257,15 +211,9 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
     correctIndex: 1,
     explanation: `**Ansatz:** Diskriminante berechnen; bei $D = 0$ gibt es genau eine (Doppel-)Lösung.
 
-**Rechnung — Schritt für Schritt:**
-1. $a = 1, b = -6, c = 9$
-2. Diskriminante: $D = b^{2} - 4ac = 36 - 36 = 0$
-3. Bei $D = 0$: genau eine reelle Lösung (Doppelnullstelle)
-4. Lösung: $x = -b/(2a) = 6/2 = 3$
+**Rechnung:** Schritt 1 — Koeffizienten: $a = 1,\\, b = -6,\\, c = 9$. Schritt 2 — Diskriminante: $D = b^{2} - 4ac = 36 - 36 = 0$. Schritt 3 — bei $D = 0$ gibt es genau eine reelle Lösung (Doppelnullstelle). Schritt 4 — Lösung: $x = -b/(2a) = 6/2 = 3$. Alternative über Faktorisieren: $x^{2} - 6x + 9 = (x - 3)^{2} = 0$, also $x = 3$ mit Vielfachheit $2$.
 
-**Alternative — Faktorisieren:** $x^{2} - 6x + 9 = (x - 3)^{2} = 0$, also $x = 3$ mit Vielfachheit 2.
-
-**Probe:** $(3 - 3)^{2} = 0$ ✓
+**Probe:** $(3 - 3)^{2} = 0$ ✓. Einsetzen in Originalform: $9 - 18 + 9 = 0$ ✓.
 
 **Typischer Fehler:** Doppellösung als "zwei Lösungen" zählen (Antwort C). In der Prüfung wird explizit gefragt: "verschiedene" — eine Doppelnullstelle zählt als *eine* Lösung (mit algebraischer Vielfachheit 2).`,
     wrongAnswerExplanations: {
@@ -287,16 +235,9 @@ $x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$, also $x_{1}
     correctIndex: 0,
     explanation: `**Ansatz:** Bedingung "halbe Menge nach $5$ s" einsetzen, dann durch Logarithmieren nach $k$ auflösen.
 
-**Rechnung — Schritt für Schritt:**
-1. Bedingung: $p(5) = p_{0}/2$, also $p_{0} \\cdot e^{-5k} = p_{0}/2$
-2. Durch $p_{0}$ dividieren: $e^{-5k} = 1/2$
-3. Beide Seiten logarithmieren: $-5k = \\ln(1/2)$
-4. Logarithmus­regel: $\\ln(1/2) = \\ln(1) - \\ln(2) = -\\ln(2)$
-5. Also $-5k = -\\ln(2) \\Rightarrow k = \\ln(2)/5 \\approx 0{,}693/5 \\approx 0{,}139$ s$^{-1}$
+**Rechnung:** Schritt 1 — Bedingung: $p(5) = p_{0}/2$, also $p_{0} \\cdot e^{-5k} = p_{0}/2$. Schritt 2 — durch $p_{0}$ dividieren: $e^{-5k} = 1/2$. Schritt 3 — beide Seiten logarithmieren: $-5k = \\ln(1/2)$. Schritt 4 — Logarithmus­regel $\\ln(1/2) = \\ln(1) - \\ln(2) = -\\ln(2)$. Schritt 5 — auflösen: $k = \\ln(2)/5 \\approx 0{,}693/5 \\approx 0{,}139$ s$^{-1}$.
 
-**Probe:** $p(5) = p_{0} \\cdot e^{-5 \\cdot \\ln(2)/5} = p_{0} \\cdot e^{-\\ln(2)} = p_{0} \\cdot (1/2) = p_{0}/2$ ✓
-
-**Einheitencheck:** $[k] = [1/t] = $ s$^{-1}$. ✓
+**Probe:** $p(5) = p_{0} \\cdot e^{-5 \\cdot \\ln(2)/5} = p_{0} \\cdot e^{-\\ln(2)} = p_{0} \\cdot (1/2) = p_{0}/2$ ✓. Einheitencheck: $[k] = [1/t] = $ s$^{-1}$ ✓.
 
 **Typischer Fehler:** Antwort D ($k = 5/\\ln(2)$) entsteht durch Kehrwertbildung zum falschen Zeitpunkt. Und $k = 1/5$ (Antwort B) ignoriert die exponentielle Natur des Zerfalls — das wäre ein linearer Ansatz.`,
     wrongAnswerExplanations: {
@@ -1129,6 +1070,36 @@ const lessons_alg_u4 = [
 *Quadratische Gleichungen:*
 $$x_{1,2} = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}, \\quad D = b^{2} - 4ac$$
 - $D > 0$: zwei Lösungen, $D = 0$: Doppellösung, $D < 0$: keine reellen Lösungen`,
+      },
+      {
+        id: 'alg-4-1-s1b', type: 'explanation-intuitive', title: 'Diskriminante grafisch — drei Fälle',
+        content: `**Vor den Aufgaben: das Diskriminanten-Bild im Kopf haben.**
+
+Eine quadratische Gleichung $ax^{2} + bx + c = 0$ ist nichts anderes als die Frage "wo schneidet die Parabel $y = ax^{2} + bx + c$ die $x$-Achse?". Die Diskriminante $D = b^{2} - 4ac$ entscheidet das in drei Fällen:
+
+- **$D > 0$ — zwei Schnittpunkte:** Die Parabel kreuzt die $x$-Achse zweimal. Beispiel $y = x^{2} - 1$ mit $D = 4 > 0$ → Nullstellen $x = \\pm 1$.
+- **$D = 0$ — Berührung:** Die Parabel berührt die $x$-Achse genau in einem Punkt (Doppelnullstelle). Beispiel $y = x^{2} - 2x + 1 = (x-1)^{2}$ mit $D = 0$ → Doppellösung $x = 1$.
+- **$D < 0$ — kein Schnitt:** Die Parabel liegt komplett über (oder unter) der $x$-Achse. Beispiel $y = x^{2} + 1$ mit $D = -4 < 0$ → keine reelle Lösung.
+
+In der nächsten Visualisierung siehst du genau diese drei Fälle übereinandergelegt. Im Prüfungsstress hilft das Bild: erst $D$ berechnen, dann weißt du sofort, was rauskommen muss.`,
+      },
+      {
+        id: 'alg-4-1-s1c', type: 'visualization', title: 'Drei Parabeln, drei Diskriminanten-Fälle',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => x * x - 1,         color: '#3b82f6', label: 'D > 0:  x² − 1' },
+            { fn: (x) => (x - 1) * (x - 1), color: '#10b981', label: 'D = 0:  (x − 1)²' },
+            { fn: (x) => x * x + 1,         color: '#ef4444', label: 'D < 0:  x² + 1' },
+          ],
+          xRange: [-3, 3],
+          yRange: [-2, 5],
+          showGrid: true,
+          marks: [
+            { x: -1, y: 0, label: 'Nullstelle' },
+            { x: 1, y: 0, label: 'Doppelnullstelle' },
+          ],
+        },
       },
       { id: 'alg-4-1-s2', type: 'exercise', title: 'Aufgabe 1 (Potenzen)', exerciseRef: 'ex-alg-4-1-a' },
       { id: 'alg-4-1-s3', type: 'exercise', title: 'Aufgabe 2 (Logarithmus­gleichung)', exerciseRef: 'ex-alg-4-1-b' },

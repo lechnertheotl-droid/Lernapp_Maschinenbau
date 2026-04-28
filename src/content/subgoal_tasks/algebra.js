@@ -9708,23 +9708,68 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
       matching(
         '[PRÜFUNG] Ordne jedem Diskriminantenfall die Lösungsanzahl zu.',
         [
-          { left: '$D > 0$',  right: 'zwei verschiedene reelle' },
-          { left: '$D = 0$',  right: 'eine (doppelte)' },
-          { left: '$D < 0$',  right: 'keine reelle' },
-          { left: '$D = 16$', right: 'zwei verschiedene (positive $D$)' },
+          { left: '$D > 0$',  right: 'zwei verschiedene reelle Lösungen' },
+          { left: '$D = 0$',  right: 'genau eine Doppellösung' },
+          { left: '$D < 0$',  right: 'keine reelle Lösung' },
+          { left: '$D = 16$', right: 'konkret: $\\sqrt{D} = 4$ in der abc-Formel' },
         ],
-        `**Ansatz:** Diskriminante-Fälle.
+        `**Ansatz:** Diskriminante $D = b^{2} - 4ac$ entscheidet die Anzahl reeller Lösungen über das Vorzeichen.
 
-**Rechnung:** Standardtabelle.
+**Rechnung:** Drei Fälle systematisch — $D > 0$ liefert zwei Lösungen $(-b \\pm \\sqrt{D})/(2a)$ mit $\\sqrt{D}$ reell und $\\neq 0$. $D = 0$ kollabiert beide Lösungen zu einer Doppellösung $-b/(2a)$. $D < 0$ macht $\\sqrt{D}$ in $\\mathbb{R}$ undefiniert. Das vierte Paar ist eine Konkretisierung: Bei $D = 16$ steht $\\sqrt{16} = 4$ direkt im Zähler der abc-Formel.
 
-**Probe:** Jede Lösung prüfen.
+**Probe:** $x^{2} - 5x + 6 = 0$: $D = 25 - 24 = 1 > 0$ → $x = (5 \\pm 1)/2 \\in \\{2,3\\}$ ✓. $x^{2} - 6x + 9 = 0$: $D = 0$ → $x = 3$ (Doppellösung) ✓. $x^{2} + 4 = 0$: $D = -16 < 0$ → keine reelle Lösung ✓.
 
-**Typischer Fehler:** $D = 0$ als keine.`,
+**Typischer Fehler:** $D = 0$ als "keine Lösung" werten — es gibt eine, sie ist nur doppelt. Oder $D < 0$ als "negative Lösung" lesen — gemeint ist: die Wurzel aus $D$ ist im Reellen nicht definiert.`,
         [
-          'Drei Fälle.',
-          'Vorzeichen von $D$.',
-          'Anzahl Lösungen.',
+          'Vorzeichen von $D$ entscheidet die Anzahl.',
+          'Drei Fälle: $D > 0$, $D = 0$, $D < 0$.',
+          'Bei $D = 16$ steckt $\\sqrt{16} = 4$ direkt im Zähler $-b \\pm \\sqrt{D}$.',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['pr-diskriminante'] },
+      ),
+      ni(
+        '[PRÜFUNG] Für welchen Wert $k \\in \\mathbb{R}$ hat $x^{2} - 6x + k = 0$ genau eine reelle Lösung (Doppelnullstelle)?',
+        9, 0, '',
+        `**Ansatz:** Genau eine Lösung $\\Leftrightarrow D = 0$. Diskriminantenformel auf den Parameter $k$ anwenden.
+
+**Rechnung:** Mit $a = 1,\\, b = -6,\\, c = k$ folgt $D = b^{2} - 4ac = 36 - 4k$. Bedingung $D = 0$: $36 - 4k = 0 \\Rightarrow k = 9$.
+
+**Probe:** Mit $k = 9$ wird die Gleichung $x^{2} - 6x + 9 = (x - 3)^{2} = 0$, also Doppellösung $x = 3$ ✓. Diskriminante: $36 - 36 = 0$ ✓.
+
+**Typischer Fehler:** Zwischenschritt $D = 0$ vergessen und stattdessen die Funktion direkt nullsetzen, oder Vorzeichen bei $-4ac$ falsch übernehmen ($-4 \\cdot 1 \\cdot k = -4k$, nicht $+4k$).`,
+        [
+          'Genau eine Lösung heißt $D = 0$.',
+          'Setze $a = 1,\\, b = -6,\\, c = k$ in $D = b^{2} - 4ac$ ein.',
+          'Löse $36 - 4k = 0$ nach $k$ auf.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['pr-diskriminante'] },
+      ),
+      mc(
+        '[PRÜFUNG] Für welche Werte des Parameters $a \\in \\mathbb{R}_{>0}$ hat $a x^{2} + 4x + 1 = 0$ KEINE reelle Lösung?',
+        [
+          '$a > 4$',
+          '$a < 4$',
+          '$a = 4$',
+          '$a > 0$ beliebig',
+        ],
+        0,
+        `**Ansatz:** Keine reelle Lösung $\\Leftrightarrow D < 0$. Diskriminante in Abhängigkeit von $a$ aufstellen, dann nach $a$ auflösen.
+
+**Rechnung:** $D = b^{2} - 4ac = 16 - 4a \\cdot 1 = 16 - 4a$. Bedingung $D < 0$: $16 - 4a < 0 \\Rightarrow 4a > 16 \\Rightarrow a > 4$. (Voraussetzung $a > 0$ ist gegeben — sonst wäre die Gleichung gar nicht quadratisch.)
+
+**Probe:** Test mit $a = 5$: $D = 16 - 20 = -4 < 0$ ✓ — keine reelle Lösung. Test mit $a = 4$: $D = 0$, Doppellösung $x = -4/(2 \\cdot 4) = -1/2$ — also nicht "keine". Test mit $a = 1$: $D = 12 > 0$, zwei Lösungen.
+
+**Typischer Fehler:** Vorzeichen bei $-4ac$ vertauschen und $16 + 4a$ schreiben — dann wäre $D$ immer positiv und die Antwort widersprüchlich. Oder $a = 4$ als Grenzfall fälschlich als "keine Lösung" deuten ($D = 0$ ist eine Doppellösung, keine fehlende Lösung).`,
+        [
+          'Kein reelles Lösung-Paar bedeutet $D < 0$.',
+          'Setze $D = 16 - 4a$ und löse $D < 0$ nach $a$ auf.',
+          'Beachte: $a > 0$ ist Voraussetzung, sonst wäre die Gleichung nicht quadratisch.',
+        ],
+        {
+          1: 'Bei $a < 4$ ist $D = 16 - 4a > 0$ — also zwei verschiedene reelle Lösungen, nicht keine.',
+          2: 'Bei $a = 4$ wird $D = 0$ — eine Doppellösung, nicht keine.',
+          3: 'Für $a \\in (0, 4)$ gibt es zwei Lösungen, für $a = 4$ eine, erst für $a > 4$ keine. "Beliebig" ist falsch.',
+        },
         { stage: 'transfer', subGoal: 0, uses: ['pr-diskriminante'] },
       ),
     ],
@@ -9823,18 +9868,63 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Exponenten vergleichen: $x = 3$',
         ],
         [0, 1, 2],
-        `**Ansatz:** Erst isolieren, dann logarithmieren.
+        `**Ansatz:** Erst Koeffizient isolieren, dann Exponenten vergleichen.
 
-**Rechnung:** $x = 3$.
+**Rechnung:** Schritt 1 — durch $2$ teilen: $3^x = 27$. Schritt 2 — $27 = 3^3$. Schritt 3 — Basen identisch, also Exponenten vergleichen: $x = 3$.
 
 **Probe:** $2 \\cdot 3^3 = 2 \\cdot 27 = 54$ ✓.
 
-**Typischer Fehler:** Direkt logarithmieren ohne $2$ zu eliminieren.`,
+**Typischer Fehler:** Direkt logarithmieren ohne $2$ zu eliminieren — dann steht $\\log(2 \\cdot 3^x) = \\log(54)$, was zu $\\log 2 + x \\log 3 = \\log 54$ führt, also Mehraufwand. Oder den Faktor $2$ als zusätzlichen Exponenten interpretieren ($6^x = 54$ — falsch).`,
         [
-          'Erst Koeffizient isolieren.',
-          'Dann vergleichen.',
-          'Einfach, wenn Basen passen.',
+          'Den konstanten Faktor immer ZUERST eliminieren.',
+          'Dann Argument als Potenz der Basis schreiben.',
+          'Exponentenvergleich braucht identische Basen.',
         ],
+        { stage: 'transfer', subGoal: 1, uses: ['pr-exp-gleichung'] },
+      ),
+      ni(
+        '[PRÜFUNG] Löse die Gleichung $5 \\cdot 2^{x} = 80$ nach $x$ auf. Gib eine ganze Zahl ein.',
+        4, 0, '',
+        `**Ansatz:** Erst durch $5$ teilen, dann $2^{x} = 16$ als Potenz von $2$ erkennen.
+
+**Rechnung:** Schritt 1 — durch $5$ teilen: $2^{x} = 80/5 = 16$. Schritt 2 — $16 = 2^{4}$. Schritt 3 — Basen identisch, Exponentenvergleich: $x = 4$.
+
+**Probe:** $5 \\cdot 2^{4} = 5 \\cdot 16 = 80$ ✓.
+
+**Typischer Fehler:** Den Faktor $5$ als Teil der Potenz behandeln ($10^{x} = 80$) — das ist eine andere Gleichung. Oder Logarithmus auf $5 \\cdot 2^{x}$ unsauber: $\\log(5 \\cdot 2^{x}) = \\log 5 + x \\log 2$, NICHT $5 x \\log 2$.`,
+        [
+          'Den Vorfaktor zuerst durch Division eliminieren.',
+          'Schreibe $16$ als Potenz von $2$: $2 \\cdot 2 \\cdot 2 \\cdot 2$.',
+          'Bei gleicher Basis kannst du Exponenten direkt vergleichen.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['pr-exp-gleichung'] },
+      ),
+      mc(
+        '[PRÜFUNG] Eine heiße Lötspitze kühlt nach $T(t) = 25 + 75 \\cdot e^{-kt}$ (in °C, $t$ in Sekunden) auf Raumtemperatur $25$ °C ab. Nach $20$ s misst man $T = 50$ °C. Welcher Wert für $k$ ist korrekt?',
+        [
+          '$k = \\dfrac{\\ln 3}{20}$ s$^{-1}$',
+          '$k = \\dfrac{\\ln 2}{20}$ s$^{-1}$',
+          '$k = \\dfrac{1}{20}$ s$^{-1}$',
+          '$k = \\dfrac{20}{\\ln 3}$ s$^{-1}$',
+        ],
+        0,
+        `**Ansatz:** Bedingung $T(20) = 50$ einsetzen, $25$ subtrahieren, dann durch Logarithmieren nach $k$ auflösen.
+
+**Rechnung:** Schritt 1 — einsetzen: $25 + 75 e^{-20k} = 50 \\Rightarrow 75 e^{-20k} = 25 \\Rightarrow e^{-20k} = 1/3$. Schritt 2 — logarithmieren: $-20k = \\ln(1/3) = -\\ln 3$. Schritt 3 — auflösen: $k = \\ln(3)/20 \\approx 1{,}0986/20 \\approx 0{,}0549$ s$^{-1}$.
+
+**Probe:** $T(20) = 25 + 75 \\cdot e^{-20 \\cdot \\ln(3)/20} = 25 + 75 \\cdot e^{-\\ln 3} = 25 + 75 \\cdot (1/3) = 25 + 25 = 50$ ✓. Einheitencheck: $[k] = [1/t] = $ s$^{-1}$ ✓ (Argument $kt$ dimensionslos).
+
+**Typischer Fehler:** Den Offset $25$ vergessen und direkt $75 e^{-20k} = 50$ statt $e^{-20k} = 1/3$ rechnen. Oder $\\ln(1/3) = +\\ln 3$ statt $-\\ln 3$ setzen — Vorzeichen geht dann verloren.`,
+        [
+          'Erst $25$ abziehen, damit nur die Exponentialfunktion steht.',
+          'Dividiere durch $75$, um $e^{-20k}$ zu isolieren.',
+          'Die Differenz $T - 25 = 25$ ist genau ein Drittel von $75$, also $e^{-20k} = 1/3$.',
+        ],
+        {
+          1: 'Du hast $e^{-20k} = 1/2$ angenommen — das wäre die Halbwertszeit-Bedingung. Hier kühlt die Spitze aber nur auf $1/3$ der Anfangsdifferenz, nicht auf $1/2$.',
+          2: 'Linearer Ansatz "halbiert nach $20$ s, also $k = 1/20$" ignoriert die exponentielle Abkühlung. Beim e-Funktions-Modell muss logarithmiert werden — Ergebnis $k = \\ln(3)/20$, nicht $1/20$.',
+          3: 'Zähler und Nenner vertauscht. Aus $-20k = -\\ln 3$ folgt $k = \\ln(3)/20$, nicht $20/\\ln 3$. Dimensionscheck hilft: $[\\ln 3]$ ist dimensionslos, $[k] = 1/$s, also $\\ln(3) / \\text{s}$, nicht $\\text{s} / \\ln 3$.',
+        },
         { stage: 'transfer', subGoal: 1, uses: ['pr-exp-gleichung'] },
       ),
     ],
@@ -9935,19 +10025,64 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Probe bei $x = 5$: $\\sqrt{16} = 4 = 5 - 1$ ✓',
         ],
         [0, 1, 2, 3, 4],
-        `**Ansatz:** Systematisch mit Probe.
+        `**Ansatz:** Wurzelgleichung systematisch — Definitionsbereich vorab, dann quadrieren, dann zwingend Probe.
 
-**Rechnung:** $x = 5$.
+**Rechnung:** Definitionsbereich $x \\geq 1$ (beide Seiten müssen $\\geq 0$ sein, weil rechts $\\sqrt{\\cdot}$ steht). Quadrieren liefert $3x + 1 = x^{2} - 2x + 1$, umgestellt $x^{2} - 5x = 0$, also $x(x-5) = 0$ mit Kandidaten $x = 0$ und $x = 5$. Probe in der Originalgleichung: $x = 0$ verletzt schon den Definitionsbereich; $x = 5$: $\\sqrt{16} = 4 = 5 - 1$ ✓. Einzige Lösung: $x = 5$.
 
-**Probe:** ✓.
+**Probe:** $x = 5$ in der Originalgleichung: $\\sqrt{15 + 1} = \\sqrt{16} = 4$ und $5 - 1 = 4$ ✓.
 
-**Typischer Fehler:** Probe-Schritt überspringen.`,
+**Typischer Fehler:** Den Probe-Schritt überspringen und beide Kandidaten ($0, 5$) als Lösung angeben — dann fällt die Scheinlösung $x = 0$ nicht auf. Oder den Definitionsbereich erst nachträglich prüfen, statt vor dem Quadrieren.`,
         [
-          'Def.bereich zuerst.',
-          'Quadrieren.',
-          'Probe Pflicht.',
+          'Definitionsbereich VOR dem Quadrieren festlegen — das spart Scheinlösungen.',
+          'Quadrieren ist eine zulässige, aber nicht-äquivalente Umformung.',
+          'Probe in der Originalgleichung ist Pflicht, sonst keine Punkte.',
         ],
         { stage: 'transfer', subGoal: 2, uses: ['pr-wurzel-gleichung'] },
+      ),
+      ni(
+        '[PRÜFUNG] Löse $\\sqrt{x^{2} - 5} = x - 1$. Gib die einzige reelle Lösung als ganze Zahl ein.',
+        3, 0, '',
+        `**Ansatz:** Definitionsbereich festlegen ($x^{2} - 5 \\geq 0$ UND $x - 1 \\geq 0$), quadrieren, Linearteile gegeneinander auflösen, Probe.
+
+**Rechnung:** Schritt 1 — Definitionsbereich: $x^{2} \\geq 5$ liefert $|x| \\geq \\sqrt{5} \\approx 2{,}24$. Zusätzlich $x \\geq 1$. Beides zusammen: $x \\geq \\sqrt{5}$. Schritt 2 — quadrieren: $x^{2} - 5 = (x - 1)^{2} = x^{2} - 2x + 1$. Schritt 3 — die $x^{2}$-Terme heben sich auf: $-5 = -2x + 1 \\Rightarrow 2x = 6 \\Rightarrow x = 3$. Schritt 4 — Bereichscheck: $3 \\geq \\sqrt{5}$ ✓.
+
+**Probe:** $\\sqrt{9 - 5} = \\sqrt{4} = 2$ und $3 - 1 = 2$ ✓.
+
+**Typischer Fehler:** Vergessen, dass die rechte Seite $x - 1$ zusätzlich $\\geq 0$ sein muss (weil sie gleich einer Wurzel ist). Negative Kandidaten wie $x = -3$ scheitern an dieser Bedingung — bei $x = -3$ wäre $x^{2} - 5 = 4$ ✓, aber $x - 1 = -4 < 0$ kann nicht $= \\sqrt{4} = 2$ sein.`,
+        [
+          'Definitionsbereich: links Argument $\\geq 0$, rechts gesamte Seite $\\geq 0$.',
+          'Quadrieren — die $x^{2}$-Terme kürzen sich oft heraus.',
+          'Aus $-5 = -2x + 1$ folgt $x = 3$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['pr-wurzel-gleichung'] },
+      ),
+      mc(
+        '[PRÜFUNG] Welche Aussage über $\\sqrt{x + 3} = x - 3$ trifft zu?',
+        [
+          'Nur $x = 6$ ist Lösung; $x = 1$ ist Scheinlösung.',
+          'Beide Werte $x = 1$ und $x = 6$ sind Lösungen.',
+          'Die Gleichung hat keine reelle Lösung.',
+          'Nur $x = 1$ ist Lösung.',
+        ],
+        0,
+        `**Ansatz:** Quadrieren liefert quadratische Gleichung, Probe sortiert Scheinlösungen aus.
+
+**Rechnung:** Quadrieren: $x + 3 = (x - 3)^{2} = x^{2} - 6x + 9$. Auf Null: $x^{2} - 7x + 6 = 0$. Vieta: Produkt $6$, Summe $7$, also $(x - 1)(x - 6) = 0$ mit Kandidaten $x \\in \\{1, 6\\}$. Probe in der Originalgleichung: bei $x = 1$ ist $\\sqrt{4} = 2$, aber $1 - 3 = -2$ — eine Wurzel ist nie negativ, also Scheinlösung. Bei $x = 6$ ist $\\sqrt{9} = 3$ und $6 - 3 = 3$ ✓.
+
+**Probe:** Einzige Lösung $x = 6$ erfüllt die Original-Gleichung. Definitionsbereich: $x + 3 \\geq 0$ und $x - 3 \\geq 0$ (rechte Seite muss $\\geq 0$ sein), also $x \\geq 3$ — $x = 1$ verletzt das ohnehin.
+
+**Typischer Fehler:** Beide Kandidaten ohne Probe als Lösung angeben (Antwort B). Quadrieren ist KEINE Äquivalenzumformung — es kann Scheinlösungen erzeugen, weil $\\sqrt{a} = b$ nur für $b \\geq 0$ äquivalent zu $a = b^{2}$ ist.`,
+        [
+          'Quadrieren kann Scheinlösungen erzeugen, deshalb Probe.',
+          'Quadratische Gleichung $x^{2} - 7x + 6 = 0$ hat zwei Kandidaten.',
+          'Eine Wurzel ist niemals negativ — daran scheitert ein Kandidat.',
+        ],
+        {
+          1: 'Probe bei $x = 1$: $\\sqrt{4} = 2$, aber $1 - 3 = -2$ — eine Wurzel ist niemals negativ. $x = 1$ ist Scheinlösung, nur $x = 6$ erfüllt die Original-Gleichung.',
+          2: '$x = 6$ erfüllt die Original-Gleichung ($\\sqrt{9} = 3 = 6 - 3$ ✓), die Gleichung hat sehr wohl eine Lösung.',
+          3: 'Bei $x = 1$: $\\sqrt{4} = 2$, aber $1 - 3 = -2$ — Widerspruch. Bei $x = 6$: $\\sqrt{9} = 3 = 3$ ✓. Du hast die beiden Kandidaten vertauscht — Scheinlösung ist $x = 1$, echte Lösung ist $x = 6$.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['pr-wurzel-gleichung'] },
       ),
     ],
     // [3] Dimensionslose Argumente
@@ -10061,19 +10196,36 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           { left: '$\\sin(x)$',        right: 'Argument in Bogenmaß (rad), dimensionslos' },
           { left: '$\\sqrt{x}$',       right: 'nur $x \\geq 0$' },
         ],
-        `**Ansatz:** Typische Einschränkungen.
+        `**Ansatz:** Jede transzendente Funktion stellt eigene Anforderungen an ihr Argument — Definitionsbereich und Dimensionalität.
 
-**Rechnung:** Jede Funktion hat Anforderungen.
+**Rechnung:** $\\ln$ ist nur für strikt positive reelle Zahlen definiert ($\\lim_{x \\to 0^{+}} \\ln x = -\\infty$); das Argument muss dimensionslos sein. $e^{x}$ akzeptiert jede reelle Zahl, ebenfalls dimensionslos. $\\sin$ erwartet einen Winkel im Bogenmaß (rad ist dimensionslos: Verhältnis Bogen/Radius). $\\sqrt{\\cdot}$ ist im Reellen für $x \\geq 0$ definiert; die Einheit ist die Wurzel der Argumenteinheit.
 
-**Probe:** Standardliste.
+**Probe:** $\\ln(0)$ ist undefiniert ✓. $e^{-100}$ funktioniert ($\\approx 4 \\cdot 10^{-44}$) ✓. $\\sin(\\pi/2) = 1$, Argument $\\pi/2$ rad dimensionslos ✓. $\\sqrt{4\\,\\text{m}^{2}} = 2\\,\\text{m}$ ✓.
 
-**Typischer Fehler:** Einheiten im Argument.`,
+**Typischer Fehler:** Einheiten im Argument von $\\ln, e^{\\cdot}, \\sin$ stehen lassen — z. B. $\\ln(100\\,\\text{m})$ ist mathematisch undefiniert, weil der Logarithmus nur reine Zahlenverhältnisse abbildet.`,
         [
-          'Jede Funktion hat Regeln.',
-          'Transzendente Funktionen dimensionslos.',
-          'Einschränkungen prüfen.',
+          'Jede Funktion hat Definitionsbereich UND Dimensionsregeln.',
+          'Transzendente Funktionen ($\\ln, e^{\\cdot}, \\sin$) verlangen dimensionslose Argumente.',
+          'Wurzel braucht $x \\geq 0$, behält aber Einheiten.',
         ],
         { stage: 'transfer', subGoal: 3, uses: ['pr-dimensionslos'] },
+      ),
+      tf(
+        '[PRÜFUNG] In der barometrischen Höhenformel $p(h) = p_{0} \\cdot e^{-h/H}$ mit $H = 8400\\,$m muss $h$ in Metern angegeben werden, damit das Argument von $e^{(\\cdot)}$ dimensionslos bleibt.',
+        true,
+        `**Ansatz:** Argument einer Exponentialfunktion muss dimensionslos sein. Prüfen, welche Einheiten sich kürzen müssen.
+
+**Rechnung:** Das Argument ist $-h/H$. Damit $[h/H]$ dimensionslos wird, müssen Zähler und Nenner dieselbe Einheit haben. Da $H = 8400\\,$m vorgegeben ist (Längeneinheit Meter), muss auch $h$ in Metern stehen — dann kürzt sich m/m = 1, das Argument ist dimensionslos und $e^{-h/H}$ wohldefiniert.
+
+**Probe:** Konkret: $h = 1000$ m, $H = 8400$ m → $h/H = 1000/8400 \\approx 0{,}119$ (dimensionslos) → $p \\approx p_{0} \\cdot e^{-0{,}119} \\approx 0{,}888 \\, p_{0}$ ✓. Wenn man $h$ in km nähme ($h = 1$ km), würde $h/H = 1\\,\\text{km}/8400\\,\\text{m}$ — undefinierte Einheit, fehleranfällig.
+
+**Typischer Fehler:** Höhe in km eingeben und vergessen, dass $H$ in m angegeben ist — das Verhältnis wird dimensional inkonsistent. Faustregel: vor dem Einsetzen Einheiten vereinheitlichen.`,
+        [
+          'Was steht im Exponenten? Argument muss dimensionslos sein.',
+          'Vergleiche Einheit von $h$ mit Einheit von $H$.',
+          'Beide in m → Quotient dimensionslos → $e^{(\\cdot)}$ wohldefiniert.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['pr-dimensionslos'] },
       ),
     ],
     // [4] Rechenweg
@@ -10185,17 +10337,39 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Probe: $(x-2)(x-4) = x^2 - 6x + 8$ ✓',
         ],
         [0, 1, 2, 3, 4],
-        `**Ansatz:** Beispielhaft vollständige Lösung.
+        `**Ansatz:** Eine vollständige Klausurlösung folgt fünf Schritten — gegeben, Ansatz, Rechnung, Lösungen explizit hinschreiben, Probe.
 
-**Rechnung:** Jeder Schritt klar.
+**Rechnung:** Konkret bei $x^{2} - 6x + 8 = 0$: pq-Formel mit $p = -6, q = 8$ liefert $x_{1,2} = -p/2 \\pm \\sqrt{(p/2)^{2} - q} = 3 \\pm \\sqrt{9 - 8} = 3 \\pm 1$. Lösungen sind also $x_{1} = 4$ und $x_{2} = 2$. Probe durch Faktorisierung: $(x - 2)(x - 4) = x^{2} - 6x + 8$ ✓.
 
-**Probe:** Beim Gutachter sichtbar.
+**Probe:** Einsetzen einzeln: $x = 2 \\Rightarrow 4 - 12 + 8 = 0$ ✓. $x = 4 \\Rightarrow 16 - 24 + 8 = 0$ ✓.
 
-**Typischer Fehler:** Schritte zusammenfassen.`,
+**Typischer Fehler:** Schritte zusammenfassen oder die Probe weglassen — beides kostet in der Klausur Teilpunkte. Fehlende Probe ist besonders riskant bei Wurzel- und Bruchgleichungen, bei quadratischen Gleichungen "nur" Punkteverlust.`,
         [
-          'Jeder Schritt sichtbar.',
-          'Systematisch.',
-          'Probe als letzter Schritt.',
+          'Fünf Schritte: Gegeben → Ansatz → Rechnung → Lösungen → Probe.',
+          'Jeder Schritt einzeln und nachvollziehbar.',
+          'Probe ist der letzte, nicht zu vergessende Schritt.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['pr-rechenweg'] },
+      ),
+      matching(
+        '[PRÜFUNG] Ordne jedem Bestandteil eines Klausur-Rechenwegs seinen Hauptzweck zu.',
+        [
+          { left: 'Gegeben/Gesucht markieren', right: 'Aufgabe sauber erfassen, Einheiten festhalten' },
+          { left: 'Ansatz benennen',           right: 'Methode begründet wählen (Vieta, abc-Formel, Logarithmieren, …)' },
+          { left: 'Zwischenschritte nummerieren', right: 'Teilpunkte sichern, falls das Endergebnis falsch wird' },
+          { left: 'Probe in der Originalgleichung', right: 'Scheinlösungen ausschließen, Vorzeichen verifizieren' },
+        ],
+        `**Ansatz:** Jeder Teil eines vollständigen Rechenwegs erfüllt eine eigene Funktion in der Klausurbewertung — kein Schritt ist nur Beiwerk.
+
+**Rechnung:** "Gegeben/Gesucht" macht beim Gutachter sofort klar, welche Größen mit welchen Einheiten ins Spiel kommen — Einheitenfehler werden so vermeidbar. "Ansatz benennen" zeigt Methodenkenntnis: selbst bei Rechenfehler gibt es Punkte für die richtige Methode. "Zwischenschritte nummerieren" macht Teilpunkte greifbar: ein Vorzeichenfehler in Schritt 4 zerstört Schritt 5, aber die Schritte 1–3 bleiben bewertbar. "Probe" eliminiert Scheinlösungen (Quadrieren, Bruchgleichungen) und fängt Rechenfehler.
+
+**Probe:** Beispiel Wurzelgleichung — ohne Probe gibt der Prüfling beide Kandidaten an, mit Probe nur den korrekten. Ohne Ansatz-Begründung gibt der Korrektor Methodenpunkte ungern, weil unklar ist, ob der Lerner versteht, was er tut.
+
+**Typischer Fehler:** Den Rechenweg als reine Formalie sehen ("ich kenne das Ergebnis ja"). Korrektoren bewerten Methodensicherheit und Sorgfalt — bei nur dem Endergebnis ist's alles oder nichts.`,
+        [
+          'Jeder Schritt hat eine eigene Funktion in der Bewertung.',
+          'Methodenwahl (Ansatz) und Sicherung (Probe) zählen genauso wie die Rechnung.',
+          'Probe schützt vor Scheinlösungen, Zwischenschritte vor Vollverlust.',
         ],
         { stage: 'transfer', subGoal: 4, uses: ['pr-rechenweg'] },
       ),
