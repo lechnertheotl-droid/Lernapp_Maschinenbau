@@ -33,9 +33,9 @@ export const exercises_alg_u1 = {
     correctIndex: 1,
     explanation: `**Ansatz:** Potenz einer Potenz → Exponenten multiplizieren.
 
-**Rechnung:** $(x^{3})^{4} = x^{3 \\cdot 4} = x^{12}$.
+**Rechnung:** $(x^{3})^{4} = x^{3 \\cdot 4} = x^{12}$. Anschaulich: $(x^{3})^{4}$ bedeutet $x^{3} \\cdot x^{3} \\cdot x^{3} \\cdot x^{3}$, und die Exponenten addieren sich: $3+3+3+3 = 12$.
 
-**Warum?** $(x^{3})^{4}$ bedeutet $x^{3} \\cdot x^{3} \\cdot x^{3} \\cdot x^{3}$. Addierst du alle Exponenten: $3+3+3+3 = 12$.
+**Probe:** Setze $x = 2$: $(2^{3})^{4} = 8^{4} = 4096 = 2^{12}$. ✓
 
 **Typischer Fehler:** $x^{7}$ kommt heraus, wenn man die Multiplikation mit der Potenz verwechselt — dort addierst du.`,
     hints: [
@@ -83,11 +83,9 @@ export const exercises_alg_u1 = {
     correctIndex: 2,
     explanation: `**Ansatz:** Bei $(a \\cdot b \\cdot c)^{n}$ wird *jeder* Faktor einzeln potenziert.
 
-**Rechnung:** $(2x^{2}y)^{3} = 2^{3} \\cdot (x^{2})^{3} \\cdot y^{3} = 8 \\cdot x^{6} \\cdot y^{3}$.
+**Rechnung:** $(2x^{2}y)^{3} = 2^{3} \\cdot (x^{2})^{3} \\cdot y^{3}$. Schrittweise: $2^{3} = 8$, $(x^{2})^{3} = x^{2 \\cdot 3} = x^{6}$, $y^{3}$ bleibt $y^{3}$. Ergebnis: $8x^{6}y^{3}$.
 
-- $2^{3} = 8$
-- $(x^{2})^{3} = x^{2 \\cdot 3} = x^{6}$
-- $y^{3} = y^{3}$
+**Probe:** Setze $x = y = 1$: $(2 \\cdot 1 \\cdot 1)^{3} = 8$. Ergebnis $8 \\cdot 1 \\cdot 1 = 8$. ✓ Bei $x = 1, y = 2$: $(2 \\cdot 1 \\cdot 2)^{3} = 64 = 8 \\cdot 1 \\cdot 8$. ✓
 
 **Typischer Fehler:** Die Zahl 2 unverändert lassen ($2x^{6}y^{3}$) oder mit 3 multiplizieren ($6x^{6}y^{3}$). Die äußere Potenz wirkt auf *alles* in der Klammer.`,
     hints: [
@@ -110,7 +108,9 @@ export const exercises_alg_u1 = {
 
 **Rechnung:** $\\dfrac{2^{10}}{2^{7}} = 2^{10-7} = 2^{3} = 8$.
 
-**Probe:** $2^{10} = 1024$, $2^{7} = 128$, und $1024/128 = 8$. ✓`,
+**Probe:** $2^{10} = 1024$, $2^{7} = 128$, und $1024/128 = 8$. ✓
+
+**Typischer Fehler:** Werte direkt subtrahieren statt Exponenten: $1024 - 128 = 896$ — verwechselt Division mit Subtraktion.`,
     hints: [
       'Division gleicher Basen → Exponenten subtrahieren.',
       'Regel: $x^{a}/x^{b} = x^{a-b}$.',

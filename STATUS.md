@@ -102,8 +102,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2337 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1446 (62 %) | 100 % der Aufgaben | 🟡 |
+| Aufgaben (gesamt) | 2341 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1453 (62 %) | 100 % der Aufgaben | 🟡 |
 | MC mit wrongAnswerExplanations | 1066 / 1066 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
@@ -126,8 +126,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **590** (Lesson-Path: 112 · Goal-Tasks: 478)
-- 4-Block: 525/590 (89 %) 🟡
+- Aufgaben: **594** (Lesson-Path: 112 · Goal-Tasks: 482)
+- 4-Block: 532/594 (90 %) 🟡
 - MC-wAE: 266/266 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
@@ -177,7 +177,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | `alg-0-2` Bruchrechnen sicher | 4 | 4/4 | 31 | 12/10/5/1/3 | 31/31 | 12/12 | ✅ | — |
 | `alg-0-3` Prozent & Dreisatz | 5 | 5/5 | 37 | 11/16/6/3/1 | 37/37 | 11/11 | ✅ | — |
 | `alg-0-4` Termumformung & Gleichungen | 5 | 5/5 | 36 | 12/14/5/2/3 | 36/36 | 12/12 | ✅ | — |
-| `alg-1-1` Potenzgesetze | 4 | 4/4 | 26 | 13/8/4/1/0 | 23/26 | 13/13 | ✅ | +3 4B |
+| `alg-1-1` Potenzgesetze | 4 | 4/4 | 30 | 13/12/4/1/0 | 30/30 | 13/13 | ✅ | — |
 | `alg-1-2` Wurzeln und gebrochene Exponenten | 3 | 3/3 | 21 | 9/6/4/1/1 | 17/21 | 9/9 | ✅ | +4 4B |
 | `alg-1-3` Logarithmen | 7 | 7/7 | 40 | 18/13/7/2/0 | 35/40 | 18/18 | ✅ | +5 4B |
 | `alg-2-1` Lineare Gleichungen | 4 | 4/4 | 27 | 11/8/4/1/3 | 27/27 | 11/11 | ✅ | — |
@@ -11577,55 +11577,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
-#### `alg-1-1` · Potenzgesetze
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-0-4` → `distributiv`, `aequivalenz`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `potenz-def` — $x^n$ = $n$-fache Multiplikation von $x$ (SG 0)
-  2. `pot-mult` — Gleiche Basis Multiplikation: $x^a \cdot x^b = x^{a+b}$ ⇐ `potenz-def` (SG 0)
-  3. `pot-div` — Gleiche Basis Division: $x^a / x^b = x^{a-b}$ ⇐ `pot-mult` (SG 0)
-  4. `pot-potenz` — Potenz einer Potenz: $(x^a)^b = x^{a\cdot b}$ ⇐ `potenz-def` (SG 1)
-  5. `pot-produkt` — Produkt in Klammer: $(xy)^n = x^n y^n$ ⇐ `potenz-def` (SG 3)
-  6. `pot-quotient` — Quotient in Klammer: $(x/y)^n = x^n/y^n$ ⇐ `pot-produkt` (SG 3)
-  7. `pot-null` — $x^0 = 1$ für $x \neq 0$ ⇐ `pot-div` (SG 2)
-  8. `pot-negativ` — $x^{-n} = 1/x^n$ ⇐ `pot-div` (SG 2)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `potenz-def`, `pot-mult`, `pot-div` · **5/5+** — Gleiche Basis: $x^a \cdot x^b = x^{a+b}$ und $x^a/x^b = x^{a-b}$
-  - ✅ [1] _hoch_ · Konzepte: `pot-potenz` · **5/5+** — Potenz einer Potenz: $(x^a)^b = x^{a \cdot b}$ — niemals mit Multiplikation verwechseln
-  - ✅ [2] _hoch_ · Konzepte: `pot-null`, `pot-negativ` · **5/5+** — Negativer Exponent $x^{-n} = 1/x^n$ und nullter Exponent $x^0 = 1$ (für $x \neq 0$)
-  - ✅ [3] _mittel_ · Konzepte: `pot-produkt`, `pot-quotient` · **5/5+** — Produkt/Quotient in Klammer: $(xy)^n = x^n y^n$, $(x/y)^n = x^n/y^n$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `pot-mult` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `pot-mult`, `pot-div` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `pot-mult` | 1 | 1 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `pot-mult` | 1 | 2 | ✅ | Distraktor: Exponenten multipliziert statt addiert |
-|  5 | 0 | transfer           | number-input     | `pot-mult`, `pot-div` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `pot-potenz` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `pot-potenz` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `pot-potenz` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `pot-potenz`, `pot-mult` | 1 | 1 | ✅ | Distraktor: mit Multiplikation-Regel verwechselt |
-| 10 | 1 | transfer           | matching         | `pot-potenz`, `pot-mult` | 1 | 1 | ✅ | Term ↔ Regel |
-| 11 | 2 | recognize          | true-false       | `pot-null`, `pot-negativ` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `pot-negativ` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `pot-negativ` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `pot-null` | 1 | 1 | ✅ | Distraktor: $x^0 = 0$ |
-| 15 | 2 | transfer           | number-input     | `pot-negativ`, `pot-mult` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | true-false       | `pot-produkt` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `pot-produkt` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `pot-produkt` | 1 | 1 | ✅ | $(2x)^3$ auflösen |
-| 19 | 3 | error-analysis     | multiple-choice  | `pot-produkt` | 1 | 1 | ✅ | Distraktor: Exponent nur auf Variable |
-| 20 | 3 | transfer           | number-input     | `pot-quotient`, `pot-produkt` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-1-1': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-1-1-b`, `ex-alg-1-1-d`, `ex-alg-1-1-e`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
 #### `alg-2-1` · Lineare Gleichungen
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
@@ -12034,6 +11985,54 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-1-4': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+
+#### `alg-1-1` · Potenzgesetze
+
+- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Potenzen, Wurzeln & Logarithmen
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `alg-0-4` → `distributiv`, `aequivalenz`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `potenz-def` — $x^n$ = $n$-fache Multiplikation von $x$ (SG 0)
+  2. `pot-mult` — Gleiche Basis Multiplikation: $x^a \cdot x^b = x^{a+b}$ ⇐ `potenz-def` (SG 0)
+  3. `pot-div` — Gleiche Basis Division: $x^a / x^b = x^{a-b}$ ⇐ `pot-mult` (SG 0)
+  4. `pot-potenz` — Potenz einer Potenz: $(x^a)^b = x^{a\cdot b}$ ⇐ `potenz-def` (SG 1)
+  5. `pot-produkt` — Produkt in Klammer: $(xy)^n = x^n y^n$ ⇐ `potenz-def` (SG 3)
+  6. `pot-quotient` — Quotient in Klammer: $(x/y)^n = x^n/y^n$ ⇐ `pot-produkt` (SG 3)
+  7. `pot-null` — $x^0 = 1$ für $x \neq 0$ ⇐ `pot-div` (SG 2)
+  8. `pot-negativ` — $x^{-n} = 1/x^n$ ⇐ `pot-div` (SG 2)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `potenz-def`, `pot-mult`, `pot-div` · **6/5+** — Gleiche Basis: $x^a \cdot x^b = x^{a+b}$ und $x^a/x^b = x^{a-b}$
+  - ✅ [1] _hoch_ · Konzepte: `pot-potenz` · **6/5+** — Potenz einer Potenz: $(x^a)^b = x^{a \cdot b}$ — niemals mit Multiplikation verwechseln
+  - ✅ [2] _hoch_ · Konzepte: `pot-null`, `pot-negativ` · **6/5+** — Negativer Exponent $x^{-n} = 1/x^n$ und nullter Exponent $x^0 = 1$ (für $x \neq 0$)
+  - ✅ [3] _mittel_ · Konzepte: `pot-produkt`, `pot-quotient` · **6/5+** — Produkt/Quotient in Klammer: $(xy)^n = x^n y^n$, $(x/y)^n = x^n/y^n$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `pot-mult` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `pot-mult`, `pot-div` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `pot-mult` | 1 | 2 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `pot-mult` | 1 | 2 | ✅ | Distraktor: Exponenten multipliziert statt addiert |
+|  5 | 0 | transfer           | number-input     | `pot-mult`, `pot-div` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `pot-potenz` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `pot-potenz` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `pot-potenz` | 1 | 2 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `pot-potenz`, `pot-mult` | 1 | 1 | ✅ | Distraktor: mit Multiplikation-Regel verwechselt |
+| 10 | 1 | transfer           | matching         | `pot-potenz`, `pot-mult` | 1 | 1 | ✅ | Term ↔ Regel |
+| 11 | 2 | recognize          | true-false       | `pot-null`, `pot-negativ` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pot-negativ` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `pot-negativ` | 1 | 2 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `pot-null` | 1 | 1 | ✅ | Distraktor: $x^0 = 0$ |
+| 15 | 2 | transfer           | number-input     | `pot-negativ`, `pot-mult` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `pot-produkt` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `pot-produkt` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `pot-produkt` | 1 | 1 | ✅ | $(2x)^3$ auflösen |
+| 19 | 3 | error-analysis     | multiple-choice  | `pot-produkt` | 1 | 1 | ✅ | Distraktor: Exponent nur auf Variable |
+| 20 | 3 | transfer           | number-input     | `pot-quotient`, `pot-produkt` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-1-1': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-0-1` · Grundrechnen, Klammern & Vorrang
 

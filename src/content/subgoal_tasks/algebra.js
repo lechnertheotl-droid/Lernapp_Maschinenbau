@@ -2575,6 +2575,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['pot-mult'] },
       ),
+      // Zusatz-Aufgabe SG 0: apply-independent · number-input · uses=[pot-mult, pot-div]
+      // Zwei verschiedene Basen mischen — testet Trennung der Potenzgesetze pro Basis.
+      ni(
+        'Vereinfache $\\dfrac{2^5 \\cdot 5^3}{2^3 \\cdot 5}$ und gib den Wert als ganze Zahl an.',
+        100, 0, '',
+        `**Ansatz:** Potenzgesetze gelten pro Basis. Also $2$-Potenzen separat von $5$-Potenzen behandeln.
+
+**Rechnung:** $2^5 / 2^3 = 2^2 = 4$. $5^3 / 5^1 = 5^2 = 25$. Produkt: $4 \\cdot 25 = 100$.
+
+**Probe:** Direkt: $2^5 \\cdot 5^3 = 32 \\cdot 125 = 4000$; $2^3 \\cdot 5 = 8 \\cdot 5 = 40$; $4000/40 = 100$. ✓
+
+**Typischer Fehler:** Exponenten unabhängig von der Basis zusammenrechnen, etwa $5+3-3-1 = 4$ und Antwort $2^4 = 16$ — die Basen $2$ und $5$ dürfen aber nicht „zusammengeworfen" werden, weil $x^a/x^b = x^{a-b}$ nur bei gleicher Basis gilt.`,
+        [
+          'Verschiedene Basen $\\to$ getrennte Behandlung.',
+          '$2$-Anteil: $2^5/2^3 = 2^2$. $5$-Anteil: $5^3/5^1 = 5^2$.',
+          '$2^2 \\cdot 5^2 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['pot-mult', 'pot-div'] },
+      ),
       ni(
         'Vereinfache $\\dfrac{3^4 \\cdot 3^6}{3^5}$ und gib den Wert als ganze Zahl an.',
         243, 0, '',
@@ -2679,6 +2698,25 @@ export const algebraSubGoalTasks = {
           3: 'Subtraktion gilt bei Division gleicher Basen — nicht hier.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['pot-potenz', 'pot-mult'] },
+      ),
+      // Zusatz-Aufgabe SG 1: apply-independent · number-input · uses=[pot-potenz]
+      // Doppelte Schachtelung — testet Anwendung der Potenz-der-Potenz-Regel mehrfach.
+      ni(
+        'Vereinfache $\\left((x^2)^3\\right)^4$ und gib den resultierenden Exponenten an.',
+        24, 0, '',
+        `**Ansatz:** Bei mehrfach geschachtelten Potenzen wird die Regel $(x^a)^b = x^{a \\cdot b}$ einfach mehrmals angewandt — alle Exponenten multiplizieren.
+
+**Rechnung:** $\\left((x^2)^3\\right)^4 = (x^{2 \\cdot 3})^4 = (x^6)^4 = x^{6 \\cdot 4} = x^{24}$. Oder direkt: $x^{2 \\cdot 3 \\cdot 4} = x^{24}$.
+
+**Probe:** Setze $x = 2$: Innerstes $2^2 = 4$, dann $4^3 = 64$, dann $64^4 = 16\\,777\\,216 = 2^{24}$. ✓
+
+**Typischer Fehler:** Exponenten addieren statt multiplizieren: $2 + 3 + 4 = 9 \\Rightarrow x^9$ — verwechselt die Regel mit der Multiplikations-Regel gleicher Basen.`,
+        [
+          'Geschachtelt $\\to$ mehrfach Potenz-der-Potenz.',
+          'Alle Exponenten miteinander multiplizieren.',
+          '$2 \\cdot 3 \\cdot 4 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['pot-potenz'] },
       ),
       matching(
         'Ordne jedem Ausdruck seine vereinfachte Form zu.',
@@ -2794,6 +2832,25 @@ export const algebraSubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['pot-null'] },
       ),
+      // Zusatz-Aufgabe SG 2: apply-independent · number-input · uses=[pot-negativ, pot-mult]
+      // Bruch mit gemischten Vorzeichen-Exponenten — testet Mehrfach-Anwendung der Negativ-Regel.
+      ni(
+        'Berechne $4^{-2} \\cdot 4^3$ und gib den Wert als Dezimalzahl an.',
+        4, 0.001, '',
+        `**Ansatz:** Gleiche Basis $\\to$ Exponenten addieren. Negative Exponenten zählen ganz normal mit.
+
+**Rechnung:** $4^{-2} \\cdot 4^3 = 4^{-2+3} = 4^1 = 4$.
+
+**Probe:** Direkt: $4^{-2} = 1/16 = 0{,}0625$ und $4^3 = 64$. Produkt: $0{,}0625 \\cdot 64 = 4$. ✓
+
+**Typischer Fehler:** Negativen Exponenten als Subtraktion bei der Multiplikation interpretieren: $4^3 - 4^2 = 64 - 16 = 48$ — verwechselt Multiplikation gleicher Basen mit Subtraktion der Werte.`,
+        [
+          'Gleiche Basis bei Multiplikation $\\to$ Exponenten addieren.',
+          '$-2 + 3 = ?$',
+          '$4^1 = 4$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['pot-negativ', 'pot-mult'] },
+      ),
       ni(
         'Vereinfache $\\dfrac{x^{-3} \\cdot x^5}{x^{-1}}$ und gib den Exponenten an.',
         3, 0, '',
@@ -2898,6 +2955,25 @@ export const algebraSubGoalTasks = {
           3: 'Nein, der Exponent gilt für ALLE Faktoren in der Klammer — Zahlen und Variablen.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['pot-produkt'] },
+      ),
+      // Zusatz-Aufgabe SG 3: apply-independent · number-input · uses=[pot-quotient]
+      // Quotient mit Variablen + Zahlenbeispiel — testet pot-quotient mit konkretem Endwert.
+      ni(
+        'Berechne $\\left(\\dfrac{6}{2}\\right)^4$ direkt über die Quotientenregel.',
+        81, 0, '',
+        `**Ansatz:** Quotient-in-Klammer-Regel: $(a/b)^n = a^n/b^n$. Beide Faktoren einzeln potenzieren.
+
+**Rechnung:** $\\left(\\dfrac{6}{2}\\right)^4 = \\dfrac{6^4}{2^4} = \\dfrac{1296}{16} = 81$. Direkter Weg: erst kürzen $6/2 = 3$, dann $3^4 = 81$.
+
+**Probe:** $3^4 = 81$. ✓ Beide Wege liefern dasselbe Ergebnis.
+
+**Typischer Fehler:** $(6/2)^4 = 6^4 / 2 = 1296/2 = 648$ — Exponent nur auf Zähler angewandt, nicht auf Nenner.`,
+        [
+          'Quotient-in-Klammer: jeden Faktor hoch $n$.',
+          '$6^4 = 1296$ und $2^4 = 16$.',
+          'Kürzen-Trick: $6/2 = 3$, dann $3^4$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['pot-quotient'] },
       ),
       ni(
         'Vereinfache $\\left(\\dfrac{2x^2}{y}\\right)^3$ und gib den Exponenten von $x$ an.',
