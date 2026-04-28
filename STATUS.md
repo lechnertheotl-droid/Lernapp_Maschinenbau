@@ -103,7 +103,7 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
 | Aufgaben (gesamt) | 2372 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1511 (64 %) | 100 % der Aufgaben | 🟡 |
+| Aufgaben mit 4-Block | 1513 (64 %) | 100 % der Aufgaben | 🟡 |
 | MC mit wrongAnswerExplanations | 1072 / 1072 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
@@ -127,7 +127,7 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
 - Aufgaben: **625** (Lesson-Path: 112 · Goal-Tasks: 513)
-- 4-Block: 590/625 (94 %) 🟡
+- 4-Block: 592/625 (95 %) 🟡
 - MC-wAE: 272/272 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
@@ -186,7 +186,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | `alg-2-4` Ungleichungen | 6 | 6/6 | 35 | 18/5/5/4/3 | 35/35 | 18/18 | ✅ | — |
 | `alg-3-1` Funktionsbegriff | 3 | 3/3 | 20 | 13/0/4/3/0 | 20/20 | 13/13 | ✅ | — |
 | `alg-3-2` Elementare Funktionen | 6 | 6/6 | 36 | 18/4/5/8/1 | 36/36 | 18/18 | ✅ | — |
-| `alg-3-3` Funktionsoperationen | 6 | 6/6 | 34 | 20/2/5/6/1 | 32/34 | 20/20 | ✅ | +2 4B |
+| `alg-3-3` Funktionsoperationen | 6 | 6/6 | 34 | 20/2/5/6/1 | 34/34 | 20/20 | ✅ | — |
 | `alg-3-4` Umkehrfunktionen | 6 | 6/6 | 35 | 19/5/7/3/1 | 32/35 | 19/19 | ✅ | +3 4B |
 | `alg-4-1` Prüfung: Algebra-Grundlagen | 5 | 5/5 | 36 | 17/5/7/3/4 | 26/36 | 17/17 | ✅ | +10 4B |
 | `alg-4-2` Prüfung: Funktionen & Anwendungen | 6 | 6/6 | 41 | 19/10/8/1/3 | 32/41 | 19/19 | ✅ | +9 4B |
@@ -11351,7 +11351,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 31 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 30 Lessons
 
 #### `alg-1-2` · Wurzeln und gebrochene Exponenten
 
@@ -12451,67 +12451,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-2-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
-
-#### `alg-3-3` · Funktionsoperationen
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Funktionen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-3-1` → `fkt-def`, `fkt-graph`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `trafo-hor-verschieben` — Horizontale Verschiebung: $f(x-a)$ um $a$ nach rechts (SG 0)
-  2. `trafo-vert-verschieben` — Vertikale Verschiebung: $f(x)+b$ um $b$ nach oben (SG 1)
-  3. `trafo-vert-streck` — Vertikale Streckung: $c \cdot f(x)$ ⇐ `trafo-vert-verschieben` (SG 2)
-  4. `trafo-hor-streck` — Horizontale Streckung: $f(x/c)$ (umgekehrt!) ⇐ `trafo-hor-verschieben` (SG 2)
-  5. `trafo-spiegel-x` — Spiegelung an $x$-Achse: $-f(x)$ (SG 3)
-  6. `trafo-spiegel-y` — Spiegelung an $y$-Achse: $f(-x)$ (SG 3)
-  7. `trafo-merkregel` — Argument-Änderungen wirken horizontal und umgekehrt ⇐ `trafo-hor-verschieben`, `trafo-hor-streck` (SG 4)
-  8. `fkt-komposition` — $(f \circ g)(x) = f(g(x))$ — Reihenfolge beachten (SG 5)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `trafo-hor-verschieben` · **5/5+** — Horizontale Verschiebung: $f(x - a)$ = $a$ nach rechts (Vorzeichen kontraintuitiv!)
-  - ✅ [1] _hoch_ · Konzepte: `trafo-vert-verschieben` · **5/5+** — Vertikale Verschiebung: $f(x) + b$ = $b$ nach oben
-  - ✅ [2] _hoch_ · Konzepte: `trafo-vert-streck`, `trafo-hor-streck` · **5/5+** — Streckung vertikal: $c \cdot f(x)$ (für $c > 1$), horizontal: $f(x/c)$
-  - ✅ [3] _hoch_ · Konzepte: `trafo-spiegel-x`, `trafo-spiegel-y` · **5/5+** — Spiegelung an $x$-Achse: $-f(x)$, an $y$-Achse: $f(-x)$
-  - ✅ [4] _mittel_ · Konzepte: `trafo-merkregel` · **5/5+** — Merkregel: Änderungen im Argument wirken horizontal und **umgekehrt**
-  - ✅ [5] _mittel_ · Konzepte: `fkt-komposition` · **5/5+** — Funktionskomposition: $(f \circ g)(x) = f(g(x))$ (Reihenfolge beachten)
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `trafo-hor-verschieben` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `trafo-hor-verschieben` | 1 | 2 | ✅ |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `trafo-hor-verschieben` | 1 | 2 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `trafo-hor-verschieben` | 1 | 1 | ✅ | Distraktor: Vorzeichen nicht getauscht |
-|  5 | 0 | transfer           | matching         | `trafo-hor-verschieben` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `trafo-vert-verschieben` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `trafo-vert-verschieben` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `trafo-vert-verschieben` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `trafo-vert-verschieben` | 1 | 1 | ✅ |  |
-| 10 | 1 | transfer           | matching         | `trafo-vert-verschieben`, `trafo-hor-verschieben` | 1 | 1 | ✅ |  |
-| 11 | 2 | recognize          | true-false       | `trafo-vert-streck`, `trafo-hor-streck` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `trafo-vert-streck` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `trafo-hor-streck` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `trafo-hor-streck` | 1 | 1 | ✅ | Distraktor: horizontale Streckung intuitiv gerechnet |
-| 15 | 2 | transfer           | matching         | `trafo-vert-streck`, `trafo-hor-streck` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | matching         | `trafo-spiegel-x`, `trafo-spiegel-y` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `trafo-spiegel-x` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `trafo-spiegel-y` | 1 | 1 | ✅ |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `trafo-spiegel-x`, `trafo-spiegel-y` | 1 | 1 | ✅ |  |
-| 20 | 3 | transfer           | matching         | `trafo-spiegel-x`, `trafo-spiegel-y` | 1 | 1 | ✅ |  |
-| 21 | 4 | recognize          | true-false       | `trafo-merkregel` | 1 | 1 | ✅ |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `trafo-merkregel` | 1 | 1 | ✅ |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `trafo-merkregel` | 1 | 1 | ✅ |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `trafo-merkregel` | 1 | 1 | ✅ |  |
-| 25 | 4 | transfer           | sorting          | `trafo-merkregel` | 1 | 1 | ✅ |  |
-| 26 | 5 | recognize          | true-false       | `fkt-komposition` | 1 | 1 | ✅ |  |
-| 27 | 5 | apply-guided       | multiple-choice  | `fkt-komposition` | 1 | 1 | ✅ |  |
-| 28 | 5 | apply-independent  | number-input     | `fkt-komposition` | 1 | 1 | ✅ |  |
-| 29 | 5 | error-analysis     | multiple-choice  | `fkt-komposition` | 1 | 1 | ✅ | Distraktor: Reihenfolge vertauscht |
-| 30 | 5 | transfer           | matching         | `fkt-komposition` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-3-3': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-alg-3-3-c`, `ex-alg-3-3-mastery`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
 #### `alg-3-4` · Umkehrfunktionen
 

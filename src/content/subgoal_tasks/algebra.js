@@ -8294,9 +8294,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Scheitel dort.',
         ],
         {
-          1: 'Quadratische Ergänzung ist unnötig — schon in Scheitelform.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Scheitel ist nicht immer bei $(0, 0)$.',
+          1: 'Quadratische Ergänzung ist unnötig — $(x-4)^2$ steht bereits in Scheitelform $(x-h)^2 + k$ mit $h = 4, k = 0$. Aus dieser Form liest man Scheitel direkt ab: $(4, 0)$, nicht $(-4, 0)$.',
+          2: 'Doch — der Schüler liegt falsch. Probe mit $g(4) = (4-4)^2 = 0$ und $g(-4) = (-4-4)^2 = 64$ ≠ 0. Der Scheitel (also der Tiefpunkt der nach oben offenen Parabel) liegt bei $x = 4$, nicht bei $x = -4$.',
+          3: 'Doch, der Scheitel kann verschoben sein. Original $f(x) = x^2$ hat Scheitel bei $(0, 0)$, aber jede Verschiebung verändert ihn. Hier liegt der Scheitel bei $(4, 0)$, eben weil $(x-4)^2 = 0$ erst bei $x = 4$ erfüllt ist.',
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['trafo-hor-verschieben'] },
       ),
@@ -8359,9 +8359,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Nach unten.',
         ],
         {
-          1: 'Minus außen = nach unten.',
-          2: 'Horizontal braucht Argument-Änderung.',
-          3: 'Ebenso.',
+          1: 'Genau umgekehrt — $-7$ außen verringert die $y$-Werte, also Verschiebung nach *unten*. Nach oben wäre $f(x) + 7$, nicht $f(x) - 7$.',
+          2: 'Horizontale Verschiebung tritt nur auf, wenn das Argument geändert wird, also $f(x \\pm a)$. Hier wird aber außerhalb der Funktion subtrahiert ($-7$), was rein vertikal wirkt.',
+          3: 'Wie bei Antwort 2: außerhalb der Funktion subtrahieren wirkt nicht horizontal. Für eine Rechtsverschiebung um $7$ müsste das Argument $x - 7$ sein, also $f(x - 7)$.',
         },
         { stage: 'apply-guided', subGoal: 1, uses: ['trafo-vert-verschieben'] },
       ),
@@ -8404,9 +8404,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Außen = vertikal.',
         ],
         {
-          1: 'Auch horizontal wäre falsch.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Wenn es im Argument wäre, wäre es $f(x+2)$ = links.',
+          1: 'Auch „rechts" wäre falsch — $+2$ außen wirkt rein vertikal, gar nicht horizontal. Eine Horizontalverschiebung würde verlangen, dass die $2$ im Argument steht (z. B. $f(x \\pm 2)$).',
+          2: 'Doch, der Schüler liegt falsch. Probe mit $f(x) = x^2$: $g(0) = 0 + 2 = 2$, $g(1) = 1 + 2 = 3$. Die $y$-Werte sind alle um $2$ größer als bei $f$ — das ist Verschiebung *nach oben*, nicht nach links.',
+          3: 'Genau — *wenn* die $+2$ im Argument stünde ($f(x+2)$), wäre die Verschiebung $2$ nach links. Hier steht sie aber außen ($f(x) + 2$), also wirkt sie vertikal. Dass „außen" und „im Argument" unterschiedlich wirken, ist die zentrale Merkregel.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['trafo-vert-verschieben'] },
       ),
@@ -8469,9 +8469,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           '$y$-Werte werden mal $3$.',
         ],
         {
-          1: 'Horizontale Stauchung wäre $f(3x)$.',
-          2: 'Verschiebung wäre Addition, nicht Multiplikation.',
-          3: 'Ebenso.',
+          1: 'Horizontale Stauchung wäre $f(3x)$ — der Faktor stünde dann *im Argument*. Bei $3 \\cdot f(x)$ ist die $3$ außen, also vertikal. Außerdem ist Stauchung das *Schmaler-werden*, hier wird die Funktion vertikal *gestreckt* (steiler).',
+          2: '$3f(x) = 3 \\cdot f(x)$ ist eine Multiplikation, nicht eine Addition. Verschiebung nach oben um $3$ wäre $f(x) + 3$ (additiv). Multiplikativ vs. additiv ist der Kernunterschied: das eine streckt, das andere verschiebt.',
+          3: 'Auch das ist eine Verschiebung statt einer Multiplikation. „Nach rechts" käme zudem aus einer Argument-Änderung wie $f(x - 3)$ — hier ist die $3$ aber außen und multiplikativ. Effekt: vertikale Streckung.',
         },
         { stage: 'apply-guided', subGoal: 2, uses: ['trafo-vert-streck'] },
       ),
@@ -8520,9 +8520,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Inverse Beziehung.',
         ],
         {
-          1: '$3f(x)$ wäre vertikale Streckung um $3$.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Vertikal wäre $3 \\cdot f(x)$.',
+          1: '$3f(x)$ wäre eine *vertikale* Streckung um Faktor $3$ — der Schüler hätte das schreiben müssen, wenn er „strecken" gemeint hätte. Aber er hat $f(3x)$ — das wirkt im Argument und ist *horizontale Stauchung*.',
+          2: 'Probe widerlegt: $f(x) = x^2$, $f(3x) = (3x)^2 = 9x^2$. Bei $x = 1$: $f(3) = 9$, $g(1) = 9$ — der ursprüngliche Wert von $f$ bei $x = 3$ taucht jetzt schon bei $x = 1$ auf. Die Kurve ist gestaucht (auf ein Drittel der ursprünglichen Breite), nicht gestreckt.',
+          3: 'Doch, $f(3x)$ wirkt horizontal — der Faktor $3$ steht im Argument, also auf der $x$-Achse. Eine vertikale Veränderung würde $3 \\cdot f(x)$ bedeuten, mit dem Faktor außerhalb der Funktion.',
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['trafo-hor-streck'] },
       ),
@@ -8641,9 +8641,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Innen → $y$-Achse.',
         ],
         {
-          1: 'Nur bei ungeraden Funktionen ($f(-x) = -f(x)$) zufällig gleich.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Beide können Graphen verändern.',
+          1: 'Stimmt nur bei *ungeraden* Funktionen: dort gilt $f(-x) = -f(x)$, also $f(-x) = -f(x)$ als Spezialfall — z. B. $f(x) = x^3$. Bei *geraden* Funktionen ($f(-x) = f(x)$) wäre $f(-x) = f(x) \\neq -f(x)$. Generell sind die beiden Spiegelungen aber verschiedene Operationen.',
+          2: 'Doch, der Schüler liegt falsch. Probe: $f(x) = x^2 + 1$, dann $-f(x) = -x^2 - 1$ (Parabel nach unten verschoben), aber $f(-x) = (-x)^2 + 1 = x^2 + 1 = f(x)$ (unverändert). Zwei komplett verschiedene Graphen.',
+          3: 'Beide können den Graphen verändern, ja — aber das ist keine Erklärung dafür, warum sie *verschieden* sind. Die eigentliche Frage: *welche* Spiegelung passiert? $-f$ wirkt vertikal (an $x$-Achse), $f(-x)$ horizontal (an $y$-Achse).',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['trafo-spiegel-x', 'trafo-spiegel-y'] },
       ),
@@ -8743,28 +8743,28 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
       mc(
         'Ein Schüler zeichnet $g(x) = f(x - 5) + 3$ als "$5$ nach links und $3$ nach unten". Wo liegt der Fehler?',
         [
-          '$x - 5$ im Argument ist nach RECHTS (nicht links); $+3$ außen ist nach OBEN (nicht unten).',
-          'Er hat nur die Vorzeichen verwechselt — korrekt wäre rechts + oben.',
-          'Das ist richtig.',
-          'Er hätte quadratische Ergänzung anwenden müssen.',
+          '$x - 5$ im Argument ist nach RECHTS (nicht links); $+3$ außen ist nach OBEN (nicht unten). Beide Vorzeichen wurden falsch interpretiert.',
+          'Er hat die Reihenfolge falsch: Erst $+3$ und dann $x - 5$ ergäbe einen anderen Graphen.',
+          'Das ist richtig — Argument-Änderungen wirken kontraintuitiv und außen genauso.',
+          'Er hätte quadratische Ergänzung anwenden müssen, um die Verschiebungen zu erkennen.',
         ],
         0,
-        `**Ansatz:** Merkregel + Intuition.
+        `**Ansatz:** Argument-Änderung wirkt horizontal und mit umgekehrtem Vorzeichen; äußere Änderung wirkt vertikal und intuitiv.
 
-**Rechnung:** $x - 5$ im Argument → $5$ nach rechts. $+3$ außen → $3$ nach oben.
+**Rechnung:** $f(x - 5)$: Argument wird $0$, wenn $x = 5$ — der Punkt, der bei $f$ an $x = 0$ lag, ist bei $g$ an $x = 5$, also $5$ nach *rechts*. $+3$ außen: jeder $y$-Wert um $3$ erhöht, also $3$ nach *oben*. Die Schülerlösung dreht beide Vorzeichen falsch herum.
 
-**Probe:** Zahlentest. $f(0) \\to g(5) = f(0) + 3$.
+**Probe:** Zahlentest mit $f(x) = x^2$: $g(5) = f(0) + 3 = 0 + 3 = 3$ — Scheitel bei $(5, 3)$. Schülerlösung („links + unten") würde Scheitel bei $(-5, -3)$ behaupten — falsch.
 
-**Typischer Fehler:** Beide Richtungen verwechseln.`,
+**Typischer Fehler:** Beide Richtungen verwechseln. Merkregel: *Innen invers, außen direkt*.`,
         [
           'Wo ist das Minus?',
           'Im Argument = rechts.',
           'Außen = oben.',
         ],
         {
-          1: 'Das ist die Antwort — beide Vorzeichen verwechselt.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Quadratische Ergänzung unnötig.',
+          1: 'Verschiebungen sind in jeder Reihenfolge kommutativ (das gilt nur für Streckungen mit Verschiebungen, da ist Reihenfolge wichtig). Hier ist das Ergebnis dasselbe — der Fehler des Schülers liegt in den Richtungen, nicht in der Reihenfolge.',
+          2: 'Argument-Änderungen wirken kontraintuitiv (Vorzeichen flippt), aber äußere Änderungen wirken *intuitiv* — nicht „genauso kontraintuitiv". $+3$ außen heißt direkt nach oben, nicht nach unten.',
+          3: 'Quadratische Ergänzung wäre nötig, wenn die Funktion in ausmultiplizierter Form vorläge (z.B. $x^2 - 10x + 28$). $f(x-5)+3$ ist aber bereits in Verschiebungs-Standardform — die Parameter $5$ und $3$ sind direkt ablesbar.',
         },
         { stage: 'error-analysis', subGoal: 4, uses: ['trafo-merkregel'] },
       ),
@@ -8874,9 +8874,9 @@ Konkret: Start $2$; $2 \\cdot (-2) + 1 = -3$; $-3 \\cdot (-2) + (-3) = 6 - 3 = 3
           'Generell unterschiedlich.',
         ],
         {
-          1: 'Nur bei speziellen Funktionen gleich.',
-          2: 'Zahlentest widerlegt.',
-          3: 'Kommutativ nur bei $f = g$ oder ähnlich.',
+          1: 'Beide Formen sind nur in Spezialfällen gleich (z. B. wenn $f$ und $g$ Umkehrfunktionen voneinander sind: $f(g(x)) = x = g(f(x))$). Im Allgemeinen ist das aber falsch — Funktionskomposition ist *nicht* kommutativ.',
+          2: 'Doch, der Schüler liegt falsch. Probe: $f(x) = x^2$, $g(x) = x + 1$. $(f \\circ g)(x) = (x+1)^2 = x^2 + 2x + 1$, aber $(g \\circ f)(x) = x^2 + 1$. Bei $x = 2$: $9$ vs. $5$ — komplett verschieden.',
+          3: 'Auch im Spezialfall $f = g$ ist Kommutativität nicht der Punkt: dann sind beide Schreibweisen trivialerweise dieselbe Funktion ($f \\circ f$). Generelle Kommutativität gilt aber für Komposition *nicht* — im Gegensatz zu Addition oder Multiplikation.',
         },
         { stage: 'error-analysis', subGoal: 5, uses: ['fkt-komposition'] },
       ),

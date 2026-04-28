@@ -321,27 +321,20 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Minus kommt *vor* die Funktion (außen), nicht ins Argument.',
       'Regel: $g(x) = -f(x)$.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['trafo-hor-verschieben'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['trafo-spiegel-x'] },
 },
   'ex-alg-3-3-c': {
     id: 'ex-alg-3-3-c', lessonId: 'alg-3-3', type: 'multiple-choice',
     question: '$f(x) = x^{2}$ wird vertikal um Faktor $3$ gestreckt. Wie lautet $g(x)$?',
     options: ['$g(x) = x^{6}$', '$g(x) = 3x^{2}$', '$g(x) = (3x)^{2}$', '$g(x) = x^{2} + 3$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Vertikale Streckung um Faktor $c$ multipliziert alle $y$-Werte mit $c$ — das heißt: $c$ kommt *vor* die Funktion.
+    explanation: `**Ansatz:** Vertikale Streckung um Faktor $c$ multipliziert alle $y$-Werte mit $c$ — der Faktor steht *vor* der Funktion: $g(x) = c \\cdot f(x)$.
 
-**Regel:** $g(x) = c \\cdot f(x)$. Hier $c = 3$, also $g(x) = 3 \\cdot x^{2} = 3x^{2}$.
+**Rechnung:** Mit $c = 3$ und $f(x) = x^{2}$: $g(x) = 3 \\cdot x^{2} = 3x^{2}$. Alle $y$-Werte verdreifacht: aus $f(1) = 1$ wird $g(1) = 3$, aus $f(2) = 4$ wird $g(2) = 12$. Abgrenzung: $(3x)^{2} = 9x^{2}$ wäre eine *horizontale* Stauchung (Faktor im Argument wirkt invers) — andere Funktion.
 
-**Rechnung:** Aus $f(1) = 1$ wird $g(1) = 3$, aus $f(2) = 4$ wird $g(2) = 12$ — alle $y$-Werte verdreifacht.
+**Probe:** $g(1)/f(1) = 3/1 = 3$ ✓. $g(2)/f(2) = 12/4 = 3$ ✓. Das Verhältnis ist konstant gleich dem Streckfaktor — typisch für lineare $y$-Skalierung. $(3x)^{2}$ liefert dagegen $9 \\cdot 1^{2} = 9$ und $9 \\cdot 2^{2} = 36$, also nicht das Dreifache.
 
-**Abgrenzung — $(3x)^{2}$:** Das wäre eine *horizontale* Stauchung (um Faktor $1/3$). Ausrechnen: $(3x)^{2} = 9x^{2}$, also andere Funktion.
-
-**Typischer Fehler:**
-- $x^{6}$: Verwechselt "Potenz der Potenz" mit Streckung.
-- $(3x)^{2}$: $3$ wirkt hier *im Argument*, also horizontal statt vertikal.
-- $x^{2} + 3$: Das ist Verschiebung, keine Streckung.
-
-**Merke:** Streckung/Stauchung = *multiplikativ*, Verschiebung = *additiv*.`,
+**Typischer Fehler:** $x^{6}$ (verwechselt „Potenz der Potenz" mit Streckung — wäre Verkettung), $(3x)^{2}$ (Faktor im Argument wirkt horizontal), $x^{2} + 3$ (Verschiebung statt Streckung — additiv vs. multiplikativ).`,
     wrongAnswerExplanations: {
       0: 'Du hast die Streckung mit "Potenz der Potenz" verwechselt: $x^{6} = (x^{2})^{3}$ — das wäre eine Verkettung mit $x^{3}$, nicht eine Streckung. Vertikale Streckung um Faktor $c$ multipliziert die $y$-Werte: $g(x) = c \\cdot f(x) = 3x^{2}$, nicht $x^{6}$.',
       2: '$(3x)^{2} = 9x^{2}$ ist eine *horizontale* Stauchung um Faktor $1/3$ (im Argument). Gefragt war aber eine *vertikale* Streckung. Regel: Ein Faktor *im Argument* wirkt horizontal (und invers), ein Faktor *vor der Funktion* wirkt vertikal (und direkt). Richtig: $g(x) = 3 \\cdot x^{2} = 3x^{2}$.',
@@ -352,7 +345,7 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Wo muss der Faktor $3$ also hin — ins Argument oder außen vor $f$?',
       'Regel: $g(x) = c \\cdot f(x)$. Setze $c = 3$ und $f(x) = x^{2}$ ein.',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['trafo-hor-verschieben'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 2, uses: ['trafo-vert-streck'] },
 },
   'ex-alg-3-3-mastery': {
     id: 'ex-alg-3-3-mastery', lessonId: 'alg-3-3', type: 'multiple-choice', isMasteryCheck: true,
@@ -364,19 +357,13 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Spiegelung und Verschiebung',
     ],
     correctIndex: 0,
-    explanation: `**Ansatz:** $g(x)$ in die Standardform $f(x - a) + b$ bringen und die Parameter $a, b$ ablesen.
+    explanation: `**Ansatz:** $g(x)$ in die Standardform $f(x - a) + b$ bringen, dann die Parameter $a$ und $b$ ablesen — und nach der Merkregel umsetzen: Argument-Änderung wirkt horizontal und kontraintuitiv, äußere Änderung vertikal und intuitiv.
 
-**Analyse der Formel:** $g(x) = e^{x-2} + 1 = f(x - 2) + 1$ mit $f(x) = e^{x}$.
-- $(x - 2)$ im Argument → Verschiebung um $a = 2$ nach **rechts** (Merksatz: *Minus → Rechts*).
-- $+1$ außen → Verschiebung um $b = 1$ nach **oben**.
+**Rechnung:** $g(x) = e^{x-2} + 1 = f(x - 2) + 1$ mit $f(x) = e^{x}$. Vergleich mit $f(x - a) + b$ liefert $a = 2$ und $b = 1$. Damit: $(x - 2)$ im Argument → Verschiebung um $2$ nach *rechts* (Merksatz „Minus → Rechts"); $+1$ außen → Verschiebung um $1$ nach *oben*. Keine Spiegelung (kein Vorzeichen vor der Funktion), keine Streckung (kein multiplikativer Faktor).
 
-**Probe:** Der Graph von $e^{x}$ geht durch $(0, 1)$. Nach der Transformation sollte er durch $(0 + 2, 1 + 1) = (2, 2)$ gehen. Einsetzen: $g(2) = e^{2-2} + 1 = e^{0} + 1 = 1 + 1 = 2$. ✓
+**Probe:** Der Graph von $e^{x}$ geht durch $(0, 1)$. Nach Verschiebung um $(+2, +1)$ sollte der entsprechende Punkt bei $(2, 2)$ liegen. Einsetzen: $g(2) = e^{2-2} + 1 = e^{0} + 1 = 2$ ✓. Asymptote von $e^{x}$ ist $y = 0$; nach Verschiebung um $+1$ wird daraus $y = 1$ — guter Kontroll-Anker.
 
-**Asymptote:** $e^{x}$ hat $y = 0$ als waagrechte Asymptote. Nach Verschiebung um $+1$ wird daraus $y = 1$. Das ist ein guter Kontrollmechanismus.
-
-**Typischer Fehler:**
-- *Links* statt rechts bei $(x - 2)$ — Minus im Argument heißt *rechts*.
-- Das "$+1$" als Streckung fehldeuten — Streckung wäre ein multiplikativer Faktor, kein additiver.`,
+**Typischer Fehler:** *Links* statt rechts bei $(x - 2)$ — im Argument zählt das umgekehrte Vorzeichen. Das „$+1$" als Streckung fehldeuten — Streckung wäre multiplikativ ($c \\cdot e^{x}$), nicht additiv.`,
     wrongAnswerExplanations: {
       1: 'Du hast die Richtung der Horizontalverschiebung gedreht. $(x - 2)$ im Argument heißt Verschiebung nach *rechts* um $2$, nicht nach links. Merksatz: *Minus → Rechts*. Der verschobene Graph erreicht den Wert $f(0) = 1$ bei $x = 2$ (dort wird $x - 2 = 0$) — also liegt der ursprüngliche Startpunkt jetzt weiter rechts.',
       2: 'Das "$+1$" ist keine Streckung, sondern eine Vertikalverschiebung. Streckung wäre ein *multiplikativer* Faktor (wie $2 \\cdot e^{x}$), während $+1$ ein *additiver* Term ist. Richtig: Verschiebung um $2$ nach rechts (aus $x - 2$) und $1$ nach oben (aus $+1$).',
@@ -387,7 +374,7 @@ $$g(x) = f(x - 3) + 2 = (x - 3)^{2} + 2.$$
       'Lese $a$ und $b$ ab: $a = 2, b = 1$.',
       '$(x - a)$ heißt Verschiebung um $a$ nach rechts. $+b$ heißt Verschiebung um $b$ nach oben.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['trafo-hor-verschieben'] },
+      pedagogy: { stage: 'transfer', subGoal: 4, uses: ['trafo-merkregel', 'trafo-hor-verschieben', 'trafo-vert-verschieben'] },
 },
 
   // ── Lesson 4: Umkehrfunktionen ──
@@ -848,6 +835,34 @@ Beispiel: $f(x) = 2x + 1$ ist bijektiv (als $\\mathbb{R} \\to \\mathbb{R}$).
 **Merkregel:** Alles, was "im $x$ passiert" (im Argument), wirkt **horizontal und umgekehrt**. Alles, was "außen passiert" (vor oder nach $f$), wirkt **vertikal und wie erwartet**.
 
 **Standardform:** $g(x) = c \\cdot f(x - a) + b$ — mit Streckfaktor $c$, Horizontalverschiebung $a$ und Vertikalverschiebung $b$.`,
+      },
+      {
+        id: 'alg-3-3-s1b', type: 'explanation-intuitive',
+        title: 'Drei Transformationen am Beispiel $f(x) = x^{2}$',
+        content: `Die nächste Visualisierung zeigt drei Transformationen einer Standardparabel auf einmal:
+
+- $f(x) = x^{2}$ — Original (blau).
+- $g(x) = (x - 3)^{2}$ — um $3$ nach rechts (grün; Argument-Minus heißt rechts).
+- $h(x) = -x^{2}$ — an der $x$-Achse gespiegelt (rot; Minus außen → $y$-Werte negiert).
+- $k(x) = 2x^{2}$ — vertikal um Faktor $2$ gestreckt (orange; Faktor außen wirkt direkt auf $y$).
+
+Vergleiche die vier Kurven: gleicher Scheitelpunkt-Stil, aber an unterschiedlicher Stelle, geöffnet nach oben/unten, schmaler/breiter. Genau diese Operationen werden in den Aufgaben gefragt.`,
+      },
+      {
+        id: 'alg-3-3-s1c', type: 'visualization',
+        title: 'Verschiebung, Streckung, Spiegelung — vier Parabeln im Vergleich',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => x * x,             color: '#3b82f6', label: 'f(x) = x²' },
+            { fn: (x) => (x - 3) * (x - 3), color: '#10b981', label: 'g(x) = (x − 3)²' },
+            { fn: (x) => -x * x,            color: '#ef4444', label: 'h(x) = −x²' },
+            { fn: (x) => 2 * x * x,         color: '#f59e0b', label: 'k(x) = 2x²' },
+          ],
+          xRange: [-3, 6],
+          yRange: [-9, 12],
+          showGrid: true,
+        },
       },
       { id: 'alg-3-3-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-alg-3-3-a' },
       { id: 'alg-3-3-s3', type: 'exercise', title: 'Aufgabe 2', exerciseRef: 'ex-alg-3-3-b' },
