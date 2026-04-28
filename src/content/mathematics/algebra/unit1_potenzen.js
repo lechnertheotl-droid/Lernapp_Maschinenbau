@@ -33,9 +33,9 @@ export const exercises_alg_u1 = {
     correctIndex: 1,
     explanation: `**Ansatz:** Potenz einer Potenz → Exponenten multiplizieren.
 
-**Rechnung:** $(x^{3})^{4} = x^{3 \\cdot 4} = x^{12}$.
+**Rechnung:** $(x^{3})^{4} = x^{3 \\cdot 4} = x^{12}$. Anschaulich: $(x^{3})^{4}$ bedeutet $x^{3} \\cdot x^{3} \\cdot x^{3} \\cdot x^{3}$, und die Exponenten addieren sich: $3+3+3+3 = 12$.
 
-**Warum?** $(x^{3})^{4}$ bedeutet $x^{3} \\cdot x^{3} \\cdot x^{3} \\cdot x^{3}$. Addierst du alle Exponenten: $3+3+3+3 = 12$.
+**Probe:** Setze $x = 2$: $(2^{3})^{4} = 8^{4} = 4096 = 2^{12}$. ✓
 
 **Typischer Fehler:** $x^{7}$ kommt heraus, wenn man die Multiplikation mit der Potenz verwechselt — dort addierst du.`,
     hints: [
@@ -83,11 +83,9 @@ export const exercises_alg_u1 = {
     correctIndex: 2,
     explanation: `**Ansatz:** Bei $(a \\cdot b \\cdot c)^{n}$ wird *jeder* Faktor einzeln potenziert.
 
-**Rechnung:** $(2x^{2}y)^{3} = 2^{3} \\cdot (x^{2})^{3} \\cdot y^{3} = 8 \\cdot x^{6} \\cdot y^{3}$.
+**Rechnung:** $(2x^{2}y)^{3} = 2^{3} \\cdot (x^{2})^{3} \\cdot y^{3}$. Schrittweise: $2^{3} = 8$, $(x^{2})^{3} = x^{2 \\cdot 3} = x^{6}$, $y^{3}$ bleibt $y^{3}$. Ergebnis: $8x^{6}y^{3}$.
 
-- $2^{3} = 8$
-- $(x^{2})^{3} = x^{2 \\cdot 3} = x^{6}$
-- $y^{3} = y^{3}$
+**Probe:** Setze $x = y = 1$: $(2 \\cdot 1 \\cdot 1)^{3} = 8$. Ergebnis $8 \\cdot 1 \\cdot 1 = 8$. ✓ Bei $x = 1, y = 2$: $(2 \\cdot 1 \\cdot 2)^{3} = 64 = 8 \\cdot 1 \\cdot 8$. ✓
 
 **Typischer Fehler:** Die Zahl 2 unverändert lassen ($2x^{6}y^{3}$) oder mit 3 multiplizieren ($6x^{6}y^{3}$). Die äußere Potenz wirkt auf *alles* in der Klammer.`,
     hints: [
@@ -110,7 +108,9 @@ export const exercises_alg_u1 = {
 
 **Rechnung:** $\\dfrac{2^{10}}{2^{7}} = 2^{10-7} = 2^{3} = 8$.
 
-**Probe:** $2^{10} = 1024$, $2^{7} = 128$, und $1024/128 = 8$. ✓`,
+**Probe:** $2^{10} = 1024$, $2^{7} = 128$, und $1024/128 = 8$. ✓
+
+**Typischer Fehler:** Werte direkt subtrahieren statt Exponenten: $1024 - 128 = 896$ — verwechselt Division mit Subtraktion.`,
     hints: [
       'Division gleicher Basen → Exponenten subtrahieren.',
       'Regel: $x^{a}/x^{b} = x^{a-b}$.',
@@ -152,11 +152,11 @@ export const exercises_alg_u1 = {
     question: 'Was ist $\\sqrt{x^{2}}$?',
     options: ['$x$', '$|x|$', '$x^{2}$', '$\\dfrac{1}{x}$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Eine Quadratwurzel liefert per Definition immer ein nicht-negatives Ergebnis.
+    explanation: `**Ansatz:** Eine Quadratwurzel liefert per Definition immer ein nicht-negatives Ergebnis. Daher ist der Betrag nötig, wenn $x$ nicht als nicht-negativ vorausgesetzt ist.
 
-**Warum?** Für $x = -3$ ist $x^{2} = 9$ und $\\sqrt{9} = 3 = |-3|$. Die Wurzel "vergisst" das Vorzeichen.
+**Rechnung:** Regel $\\sqrt{x^{2}} = |x|$. Beispiel $x = -3$: $x^{2} = 9$ und $\\sqrt{9} = 3 = |-3|$. Für $x \\geq 0$ vereinfacht sich $|x|$ zu $x$.
 
-**Regel:** $\\sqrt{x^{2}} = |x|$ (Betrag von $x$). Für $x \\geq 0$ gilt $|x| = x$.
+**Probe:** Setze $x = -5$: $\\sqrt{(-5)^{2}} = \\sqrt{25} = 5 = |-5|$. Setze $x = 4$: $\\sqrt{16} = 4 = |4|$. Beide Vorzeichenfälle stimmen. ✓
 
 **Typischer Fehler:** $\\sqrt{x^{2}} = x$ ist nur richtig, wenn $x \\geq 0$ *bekannt* ist. Ohne diese Zusatzinfo muss der Betrag stehen.`,
     hints: [
@@ -177,9 +177,11 @@ export const exercises_alg_u1 = {
     correctValue: 2, tolerance: 0, unit: '',
     explanation: `**Ansatz:** Dritte Wurzel suchen — welche Zahl hoch 3 ergibt 8?
 
-**Rechnung:** $\\sqrt[3]{8} = 8^{1/3}$. Da $2^{3} = 8$, folgt $\\sqrt[3]{8} = 2$.
+**Rechnung:** $\\sqrt[3]{8} = 8^{1/3}$. Da $2^{3} = 8$, folgt $\\sqrt[3]{8} = 2$. Alternative Schreibweise: $\\sqrt[3]{x} = x^{1/3}$.
 
-**Alternative Schreibweise:** $\\sqrt[3]{x} = x^{1/3}$.`,
+**Probe:** $2^{3} = 2 \\cdot 2 \\cdot 2 = 8$. ✓ Damit ist $2$ tatsächlich die dritte Wurzel aus $8$.
+
+**Typischer Fehler:** $\\sqrt[3]{8}$ als $8/3 \\approx 2{,}67$ rechnen — Wurzel ist keine Division. Oder $\\sqrt{8} \\approx 2{,}83$ statt der dritten Wurzel berechnen (Wurzelgrad übersehen).`,
     hints: [
       'Welche Zahl hoch $3$ ergibt $8$?',
       '$2^{3} = 8$. Also ist $\\sqrt[3]{8} = 2$.',
@@ -216,13 +218,13 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
     id: 'ex-alg-1-2-d', lessonId: 'alg-1-2', type: 'true-false',
     statement: 'Für alle reellen Zahlen $a, b \\geq 0$ gilt: $\\sqrt{a+b} = \\sqrt{a} + \\sqrt{b}$.',
     correct: false,
-    explanation: `**Falsch.** Die Wurzel ist *nicht* linear — sie darf **nicht** einfach auf jeden Summanden verteilt werden.
+    explanation: `**Ansatz:** Aussage durch ein Gegenbeispiel widerlegen — eine einzige falsche Stelle reicht.
 
-**Gegenbeispiel:** $\\sqrt{9+16} = \\sqrt{25} = 5$, aber $\\sqrt{9} + \\sqrt{16} = 3 + 4 = 7$. $5 \\neq 7$.
+**Rechnung:** Setze $a = 9$, $b = 16$. Linke Seite: $\\sqrt{9+16} = \\sqrt{25} = 5$. Rechte Seite: $\\sqrt{9} + \\sqrt{16} = 3 + 4 = 7$. $5 \\neq 7$ — Aussage falsch.
 
-**Was gilt dagegen:** $\\sqrt{a \\cdot b} = \\sqrt{a} \\cdot \\sqrt{b}$ (Produkt, nicht Summe!).
+**Probe:** Was tatsächlich gilt: $\\sqrt{a \\cdot b} = \\sqrt{a} \\cdot \\sqrt{b}$ (Produkt, für $a, b \\geq 0$). Die Summenregel gibt es nicht.
 
-**Merke:** Wurzel von Summe ≠ Summe der Wurzeln. Typischer Schulfehler in Prüfungen!`,
+**Typischer Fehler:** Distributivgesetz auf Wurzeln übertragen — Wurzel ist keine Multiplikation. Klassischer Schulfehler in Prüfungen.`,
     hints: [
       'Teste mit einfachen Zahlen: $a=9$, $b=16$.',
       'Rechne beide Seiten der Gleichung aus und vergleiche.',
@@ -235,15 +237,13 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
     question: '[PRÜFUNG] Zu welchem Ausdruck ist $x^{2/3}$ äquivalent?',
     options: ['$(\\sqrt[3]{x})^{2}$', '$\\sqrt{x^{3}}$', '$\\dfrac{2x}{3}$', '$x^{2} \\cdot x^{3}$'],
     correctIndex: 0,
-    explanation: `**Ansatz:** Ein Bruchexponent $m/n$ bedeutet: $n$-te Wurzel ziehen, dann mit $m$ potenzieren.
+    explanation: `**Ansatz:** Ein Bruchexponent $m/n$ bedeutet: $n$-te Wurzel ziehen, dann mit $m$ potenzieren. Regel: $x^{m/n} = \\sqrt[n]{x^{m}} = (\\sqrt[n]{x})^{m}$.
 
-**Regel:** $x^{m/n} = \\sqrt[n]{x^{m}} = (\\sqrt[n]{x})^{m}$.
+**Rechnung:** $x^{2/3} = \\sqrt[3]{x^{2}} = (\\sqrt[3]{x})^{2}$. Hier $m = 2$, $n = 3$. Beide Schreibweisen sind gleichwertig.
 
-**Rechnung:** $x^{2/3} = \\sqrt[3]{x^{2}} = (\\sqrt[3]{x})^{2}$. Beide Schreibweisen sind gleichwertig.
+**Probe:** Setze $x = 64$: $64^{2/3} = (\\sqrt[3]{64})^{2} = 4^{2} = 16$. Andere Schreibweise: $\\sqrt[3]{64^{2}} = \\sqrt[3]{4096} = 16$. ✓ Antwort B wäre $\\sqrt{64^{3}} = \\sqrt{262\\,144} = 512 = 64^{3/2}$ — das ist nicht $64^{2/3}$.
 
-**Warum nicht B?** $\\sqrt{x^{3}} = x^{3/2}$, nicht $x^{2/3}$.
-
-**Typischer Fehler:** Zähler und Nenner des Bruchexponenten verwechseln.`,
+**Typischer Fehler:** Zähler und Nenner des Bruchexponenten verwechseln und $\\sqrt{x^{3}} = x^{3/2}$ als Antwort wählen.`,
     hints: [
       'Schreibe den Bruchexponenten als Wurzel: $x^{m/n} = \\sqrt[n]{x^{m}}$.',
       'Hier: $m=2$ (Potenz), $n=3$ (Wurzelgrad).',
@@ -262,11 +262,13 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
     id: 'ex-alg-1-3-a', lessonId: 'alg-1-3', type: 'number-input',
     question: 'Berechne: $\\log_{2}(8)$',
     correctValue: 3, tolerance: 0, unit: '',
-    explanation: `**Ansatz:** $\\log_{2}(8) = y$ bedeutet: "$2$ hoch wie viel ergibt $8$?"
+    explanation: `**Ansatz:** $\\log_{2}(8) = y$ bedeutet: "$2$ hoch wie viel ergibt $8$?" Definition: $\\log_{b}(x) = y \\Leftrightarrow b^{y} = x$.
 
 **Rechnung:** $2^{y} = 8 = 2^{3} \\Rightarrow y = 3$.
 
-**Definition:** $\\log_{b}(x) = y \\Leftrightarrow b^{y} = x$.`,
+**Probe:** $2^{3} = 2 \\cdot 2 \\cdot 2 = 8$. ✓
+
+**Typischer Fehler:** $8/2 = 4$ rechnen — Logarithmus ist keine Division. Oder Basis und Argument vertauschen: $\\log_{8}(2) = 1/3$ ergeben.`,
     hints: [
       'Der Logarithmus fragt: "$\\text{Basis}^{?} = \\text{Argument}$".',
       'Hier: $2^{?} = 8$.',
@@ -278,13 +280,13 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
     id: 'ex-alg-1-3-b', lessonId: 'alg-1-3', type: 'number-input',
     question: 'Berechne: $\\ln(e^{3})$',
     correctValue: 3, tolerance: 0, unit: '',
-    explanation: `**Ansatz:** $\\ln$ und $e^{x}$ sind Umkehrfunktionen voneinander.
+    explanation: `**Ansatz:** $\\ln$ und $e^{x}$ sind Umkehrfunktionen voneinander. Regel: $\\ln(e^{x}) = x$ für alle reellen $x$.
 
-**Regel:** $\\ln(e^{x}) = x$ für alle reellen $x$.
+**Rechnung:** $\\ln(e^{3}) = 3$ direkt aus der Umkehr-Identität.
 
-**Rechnung:** $\\ln(e^{3}) = 3$.
+**Probe:** $e^{3} \\approx 20{,}086$; $\\ln(20{,}086) \\approx 3$. ✓ Die Identität funktioniert auf jedem $x \\in \\mathbb{R}$.
 
-**Merke:** Das ist die wichtigste Eigenschaft des natürlichen Logarithmus — sie macht $e^{x}$ und $\\ln$ zu einem Werkzeug für Wachstums- und Abklingprozesse (DGL, Radioaktivität, RC-Glied).`,
+**Typischer Fehler:** $\\ln$ als Multiplikation lesen: $\\ln(e^{3}) = \\ln \\cdot e \\cdot 3 = 3 \\ln e$. Stimmt zwar formal ($3 \\ln e = 3$), aber zeigt, dass die Umkehr-Identität nicht erkannt wurde — bei $\\ln(2^{3})$ scheitert dieser Weg.`,
     hints: [
       '$\\ln$ ist der Logarithmus zur Basis $e$.',
       'Welche Zahl muss $e$ hoch stehen, um $e^{3}$ zu ergeben?',
@@ -297,11 +299,11 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
     question: 'Was ist $\\ln(a \\cdot b)$ laut Logarithmusgesetz?',
     options: ['$\\ln(a) \\cdot \\ln(b)$', '$\\ln(a) + \\ln(b)$', '$\\ln(a) - \\ln(b)$', '$\\ln(a+b)$'],
     correctIndex: 1,
-    explanation: `**Regel:** $\\ln(a \\cdot b) = \\ln(a) + \\ln(b)$ (für $a, b > 0$).
+    explanation: `**Ansatz:** Logarithmusgesetz für Produkte. Regel: $\\ln(a \\cdot b) = \\ln(a) + \\ln(b)$ (für $a, b > 0$).
 
-**Warum?** Der Logarithmus verwandelt Multiplikation in Addition — das ist der Kerngedanke. Historisch war das vor Taschenrechnern essenziell für schnelles Rechnen.
+**Rechnung:** Herleitung: Mit $a = e^{u}$, $b = e^{v}$ ist $a \\cdot b = e^{u+v}$, also $\\ln(ab) = u+v = \\ln(a) + \\ln(b)$. Der Logarithmus verwandelt Multiplikation in Addition — historischer Kerngedanke vor Taschenrechnern.
 
-**Herleitung:** Mit $a = e^{u}$, $b = e^{v}$ ist $a \\cdot b = e^{u+v}$, also $\\ln(ab) = u+v = \\ln(a) + \\ln(b)$.
+**Probe:** Setze $a = 2, b = 3$: $\\ln(6) \\approx 1{,}792$. $\\ln(2) + \\ln(3) \\approx 0{,}693 + 1{,}099 = 1{,}792$. ✓
 
 **Typischer Fehler:** $\\ln(a) \\cdot \\ln(b)$ oder $\\ln(a+b)$ sind *beide* falsch — der Logarithmus ist weder multiplikativ noch linear.`,
     hints: [
@@ -321,11 +323,13 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
     question: 'Vereinfache: $\\ln(a^{5})$',
     options: ['$5 \\cdot \\ln(a)$', '$\\ln(a) + 5$', '$\\ln(5a)$', '$a \\cdot \\ln(5)$'],
     correctIndex: 0,
-    explanation: `**Regel:** $\\ln(a^{n}) = n \\cdot \\ln(a)$.
+    explanation: `**Ansatz:** Potenzregel des Logarithmus — Exponent als Faktor herausziehen. Regel: $\\ln(a^{n}) = n \\cdot \\ln(a)$.
 
-**Warum?** $a^{5} = a \\cdot a \\cdot a \\cdot a \\cdot a$. Mit dem Produkt-Gesetz: $\\ln(a \\cdot a \\cdot \\ldots) = \\ln(a) + \\ln(a) + \\ldots = 5 \\cdot \\ln(a)$.
+**Rechnung:** $\\ln(a^{5}) = 5 \\cdot \\ln(a)$. Herleitung: $a^{5} = a \\cdot a \\cdot a \\cdot a \\cdot a$, dann mit dem Produkt-Gesetz $\\ln(a) + \\ln(a) + \\ldots = 5 \\cdot \\ln(a)$.
 
-**Nützlich für Umformungen:** $\\ln(100^{3}) = 3 \\cdot \\ln(100) \\approx 3 \\cdot 4{,}605 \\approx 13{,}82$ — statt $100^{3}$ auszurechnen.`,
+**Probe:** Setze $a = 2$: $\\ln(2^{5}) = \\ln(32) \\approx 3{,}466$. $5 \\cdot \\ln(2) \\approx 5 \\cdot 0{,}693 = 3{,}466$. ✓ Praktisch: $\\ln(100^{3}) = 3 \\cdot \\ln(100) \\approx 3 \\cdot 4{,}605 \\approx 13{,}82$ — statt $100^{3} = 10^{6}$ auszurechnen.
+
+**Typischer Fehler:** Exponent additiv anhängen ($\\ln(a) + 5$) oder Basis und Exponent vertauschen ($a \\cdot \\ln(5)$). Auch häufig: $\\ln(a^{5}) = (\\ln a)^{5}$ — Exponent außerhalb des Logarithmus statt als Faktor.`,
     hints: [
       'Potenz im Logarithmus-Argument → wohin wandert der Exponent?',
       'Regel: $\\ln(a^{n}) = n \\cdot \\ln(a)$.',
@@ -343,14 +347,13 @@ $$\\sqrt{12} = \\sqrt{4 \\cdot 3} = \\sqrt{4} \\cdot \\sqrt{3} = 2\\sqrt{3}.$$
     question: '[PRÜFUNG] Löse nach $x$ auf: $e^{x} = 5$',
     options: ['$x = \\log(5)$', '$x = \\ln(5)$', '$x = 5/e$', '$x = e^{5}$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** $x$ steht im Exponenten — um es "herunterzuholen", logarithmiere beide Seiten zur passenden Basis.
+    explanation: `**Ansatz:** $x$ steht im Exponenten — um es „herunterzuholen", beide Seiten zur passenden Basis logarithmieren. Da die Basis der Potenz $e$ ist, ist der natürliche Logarithmus ($\\ln = \\log_{e}$) der Partner, der $e^{x}$ kürzt.
 
-**Rechnung:**
-$$e^{x} = 5 \\quad \\Big| \\ln(\\ldots) \\\\ \\ln(e^{x}) = \\ln(5) \\\\ x = \\ln(5) \\approx 1{,}609.$$
+**Rechnung:** $e^{x} = 5 \\;|\\; \\ln(\\ldots) \\Rightarrow \\ln(e^{x}) = \\ln(5) \\Rightarrow x = \\ln(5) \\approx 1{,}609$.
 
-**Warum $\\ln$ und nicht $\\log$?** Die Basis der Potenz ist $e$, also ist der natürliche Logarithmus ($\\ln = \\log_{e}$) der Partner, der $e^{x}$ kürzt.
+**Probe:** $e^{1{,}609} \\approx 4{,}998 \\approx 5$. ✓ Auch der Basiswechsel-Trick passt: $\\log(5)/\\log(e) \\approx 0{,}699/0{,}434 \\approx 1{,}609$ — gleicher Wert.
 
-**Typischer Fehler:** $x = \\log(5)$ (dekadischer Log) gibt einen *anderen* Wert ($\\approx 0{,}699$) und löst die Gleichung nicht.`,
+**Typischer Fehler:** $x = \\log(5)$ (dekadischer Log) gibt einen *anderen* Wert ($\\approx 0{,}699$) und löst die Gleichung nicht. Oder $x = 5/e$ rechnen — $e^{x}$ wird wie $e \\cdot x$ gelesen, ist aber eine Potenz.`,
     hints: [
       'Wende auf beide Seiten einen Logarithmus an — welche Basis passt zu $e^{x}$?',
       '$\\ln(e^{x}) = x$ — das ist der Trick.',
