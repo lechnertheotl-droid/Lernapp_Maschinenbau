@@ -25,7 +25,7 @@ $$3x + 7 = 22 \\quad | -7 \\\\ 3x = 15 \\quad | :3 \\\\ x = 5$$
       'Regel: Was du links machst, musst du auch rechts machen (Waagenprinzip).',
       'Nach dem Subtrahieren von $7$ bleibt $3x = 15$. Jetzt durch $3$ teilen.',
     ],
-      pedagogy: { stage: 'recognize', subGoal: 0, uses: ['lin-form'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
 },
   'ex-alg-2-1-b': {
     id: 'ex-alg-2-1-b', lessonId: 'alg-2-1', type: 'number-input',
@@ -46,7 +46,7 @@ $$5x - 3 = 2x + 9 \\quad | -2x \\\\ 3x - 3 = 9 \\quad | +3 \\\\ 3x = 12 \\quad |
       'Rechenschritt: $5x - 2x = 9 + 3$, also $3x = 12$.',
       'Teile am Ende durch den Koeffizienten vor $x$.',
     ],
-      pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['lin-form'] },
+      pedagogy: { stage: 'apply-independent', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
 },
   'ex-alg-2-1-c': {
     id: 'ex-alg-2-1-c', lessonId: 'alg-2-1', type: 'multiple-choice',
@@ -75,7 +75,7 @@ Also: Breite $= 5$ cm, Länge $= 10$ cm.
       'Umfangsformel: $U = 2(l + b)$. Setze $l = 2b$ ein.',
       'Du erhältst $30 = 6b$. Löse nach $b$ auf.',
     ],
-      pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['lin-form'] },
+      pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['text-uebersetzung'] },
 },
   'ex-alg-2-1-d': {
     id: 'ex-alg-2-1-d', lessonId: 'alg-2-1', type: 'multiple-choice',
@@ -104,7 +104,7 @@ Alternative: Aufholgeschwindigkeit $= v_{2} - v_{1} = 40$ km/h. Zeit $= 160 \\te
       'Pro Stunde holt Zug 2 um $v_{2} - v_{1} = 40$ km auf. Wie lange braucht er für $160$ km Vorsprung?',
       'Rechne $160 / 40 = ?$',
     ],
-      pedagogy: { stage: 'error-analysis', subGoal: 0, uses: ['lin-form'] },
+      pedagogy: { stage: 'transfer', subGoal: 2, uses: ['text-uebersetzung'] },
 },
   'ex-alg-2-1-mastery': {
     id: 'ex-alg-2-1-mastery', lessonId: 'alg-2-1', type: 'number-input', isMasteryCheck: true,
@@ -125,7 +125,7 @@ $$6 \\cdot \\dfrac{2x+1}{3} = 6 \\cdot \\dfrac{x-2}{2} + 6 \\cdot 1 \\\\ 2(2x+1)
       'Hauptnenner von $3$ und $2$ ist $6$. Denke daran: Auch die $+1$ wird mit $6$ multipliziert!',
       'Nach dem Multiplizieren: $2(2x+1) = 3(x-2) + 6$. Klammern auflösen und nach $x$ sortieren.',
     ],
-      pedagogy: { stage: 'transfer', subGoal: 0, uses: ['lin-form'] },
+      pedagogy: { stage: 'transfer', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
 },
 
   // ── Lesson 2: Quadratische Gleichungen ──
@@ -710,6 +710,33 @@ const lessons_alg_u2 = [
 2. Zusammenhang als Gleichung aufschreiben
 3. Gleichung lösen
 4. Probe im Sachkontext!`,
+      },
+      {
+        id: 'alg-2-1-s1b', type: 'explanation-intuitive',
+        title: 'Lösung = Schnittpunkt zweier Geraden',
+        content: `Eine lineare Gleichung wie $5x - 3 = 2x + 9$ kannst du auch **geometrisch** lesen:
+
+- Linke Seite: $f_{1}(x) = 5x - 3$ — eine Gerade mit Steigung $5$.
+- Rechte Seite: $f_{2}(x) = 2x + 9$ — eine Gerade mit Steigung $2$.
+
+**Lösung ist der $x$-Wert des Schnittpunkts.** Wo sich beide Geraden treffen, sind sie für dasselbe $x$ gleich groß — genau das verlangt die Gleichung.
+
+In der nächsten Visualisierung siehst du: Schnittpunkt bei $x = 4$, $y = 17$ — also $x = 4$.`,
+      },
+      {
+        id: 'alg-2-1-s1c', type: 'visualization',
+        title: 'Schnittpunkt von $5x - 3$ und $2x + 9$',
+        visualizationId: 'function-graph',
+        params: {
+          functions: [
+            { fn: (x) => 5 * x - 3, color: '#3b82f6', label: 'f₁(x) = 5x − 3' },
+            { fn: (x) => 2 * x + 9, color: '#ef4444', label: 'f₂(x) = 2x + 9' },
+          ],
+          xRange: [-2, 8],
+          yRange: [-15, 30],
+          showGrid: true,
+          marks: [{ x: 4, y: 17, label: 'Schnittpunkt (4, 17)' }],
+        },
       },
       { id: 'alg-2-1-s2', type: 'exercise', title: 'Aufgabe 1', exerciseRef: 'ex-alg-2-1-a' },
       { id: 'alg-2-1-s3', type: 'exercise', title: 'Aufgabe 2 (Rechnung)', exerciseRef: 'ex-alg-2-1-b' },

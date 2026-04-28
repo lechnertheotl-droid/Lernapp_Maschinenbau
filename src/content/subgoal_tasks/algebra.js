@@ -3801,6 +3801,41 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
         ],
         { stage: 'transfer', subGoal: 0, uses: ['iso-variable'] },
       ),
+      tf(
+        'Multipliziert man beide Seiten einer Gleichung mit derselben Zahl ungleich Null, bleibt die Lösungsmenge erhalten.',
+        true,
+        `**Ansatz:** Auch Multiplikation/Division mit $c \\neq 0$ ist eine Äquivalenzumformung — solange $c$ nicht Null ist.
+
+**Rechnung:** $a = b \\iff a \\cdot c = b \\cdot c$ für $c \\neq 0$.
+
+**Probe:** $x = 3 \\iff 2x = 6 \\iff -5x = -15$. Lösungsmenge unverändert.
+
+**Typischer Fehler:** Multiplikation mit $0$ — daraus folgt $0 = 0$ unabhängig von $x$, alle Information geht verloren.`,
+        [
+          'Welche Operationen sind erlaubt: $+$, $-$, $\\cdot$, $:$ ?',
+          'Wichtige Bedingung: Faktor darf nicht $0$ sein.',
+          'Warum ist $0$ verboten? $x = 3$ wird zu $0 = 0$ — wahr für jedes $x$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['iso-variable'] },
+      ),
+      ni(
+        'Löse $-x + 8 = 3$ und gib $x$ an.',
+        5, 0, '',
+        `**Ansatz:** Die $8$ auf die rechte Seite bringen, dann mit $-1$ multiplizieren — oder direkt nach $x$ umstellen.
+
+**Rechnung:**
+$$-x + 8 = 3 \\quad | -8 \\\\ -x = -5 \\quad | \\cdot (-1) \\\\ x = 5$$
+
+**Probe:** $-5 + 8 = 3$. ✓
+
+**Typischer Fehler:** Vergessen, das Vorzeichen umzukehren — und $x = -5$ als Antwort schreiben. $-x$ ist nicht $x$, deshalb muss am Ende mit $-1$ multipliziert (oder beide Seiten negiert) werden.`,
+        [
+          '$-x$ heißt: Koeffizient von $x$ ist $-1$.',
+          'Bringe die Konstante zuerst auf die andere Seite.',
+          'Letzter Schritt: beide Seiten mit $-1$ multiplizieren.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['iso-variable'] },
+      ),
     ],
     // [1] Standardvorgehen
     1: [
@@ -3926,6 +3961,53 @@ Hmm — bei $x=1$ ergibt das $34$, nicht $20$. Berechnung überprüft: $5(2+3) =
           'Klammer zuerst.',
           'Gleichartige Terme sammeln.',
           'Dann standard umformen.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
+      ),
+      mc(
+        'Ein Schüler löst $-3(2x - 4) = 6$ und schreibt im ersten Schritt $-6x - 12 = 6$. Wo liegt der Fehler?',
+        [
+          'Beim Verteilen von $-3$ auf $-4$ wurde das Vorzeichen falsch behandelt: $-3 \\cdot (-4) = +12$, nicht $-12$. Richtig: $-6x + 12 = 6$.',
+          'Er hätte $-3$ direkt auf beiden Seiten teilen müssen.',
+          'Die Klammer darf nicht aufgelöst werden.',
+          'Das Ergebnis $-6x - 12$ ist korrekt.',
+        ],
+        0,
+        `**Ansatz:** Distributivgesetz mit Vorzeichen — $-3 \\cdot (2x - 4) = -3 \\cdot 2x + (-3) \\cdot (-4) = -6x + 12$. Minus mal Minus ist Plus.
+
+**Rechnung:** Korrekte Umformung:
+$$-3(2x - 4) = 6 \\\\ -6x + 12 = 6 \\quad | -12 \\\\ -6x = -6 \\quad | :(-6) \\\\ x = 1$$
+
+**Probe:** $-3(2 \\cdot 1 - 4) = -3 \\cdot (-2) = 6$. ✓
+
+**Typischer Fehler:** Vorzeichen beim Ausmultiplizieren nur auf den ersten Summanden anwenden — der zweite ($-4$) bekommt dann fälschlich auch ein Minus.`,
+        [
+          'Erste Frage: $-3 \\cdot (-4) = ?$',
+          'Distributiv: jeder Summand in der Klammer wird mit dem Faktor multipliziert.',
+          'Vorzeichenregel: Minus mal Minus = Plus.',
+        ],
+        {
+          1: 'Durch $-3$ teilen wäre auch ein gültiger Weg, aber das ist nicht der gemachte Fehler — der liegt im Vorzeichen.',
+          2: 'Klammern müssen aufgelöst werden, sonst kann man nicht weiterrechnen.',
+          3: 'Zahlentest widerlegt: $-3(2 \\cdot 1 - 4) = 6$, aber $-6 \\cdot 1 - 12 = -18 \\neq 6$.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
+      ),
+      ni(
+        'Löse $\\dfrac{x - 1}{2} + \\dfrac{x + 3}{4} = 4$ und gib $x$ an.',
+        5, 0, '',
+        `**Ansatz:** Beide Seiten mit dem Hauptnenner $4$ multiplizieren, dann linear lösen.
+
+**Rechnung:** Hauptnenner von $2$ und $4$ ist $4$:
+$$\\dfrac{x-1}{2} + \\dfrac{x+3}{4} = 4 \\quad | \\cdot 4 \\\\ 2(x-1) + (x+3) = 16 \\\\ 2x - 2 + x + 3 = 16 \\\\ 3x + 1 = 16 \\quad | -1 \\\\ 3x = 15 \\quad | :3 \\\\ x = 5$$
+
+**Probe:** $\\dfrac{5-1}{2} + \\dfrac{5+3}{4} = \\dfrac{4}{2} + \\dfrac{8}{4} = 2 + 2 = 4$. ✓
+
+**Typischer Fehler:** Die rechte Seite $4$ nicht mit dem Hauptnenner multiplizieren — dann landest du bei $3x + 1 = 4$ und bekommst $x = 1$ als falsches Ergebnis.`,
+        [
+          'Hauptnenner von $2$ und $4$ ist $4$.',
+          'Multipliziere ALLE Terme mit $4$ — auch die $4$ rechts.',
+          'Klammern auflösen, gleichartige Terme zusammenfassen, Standardumformung.',
         ],
         { stage: 'transfer', subGoal: 1, uses: ['iso-variable', 'koeff-dividieren'] },
       ),
@@ -4057,6 +4139,54 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
         ],
         { stage: 'transfer', subGoal: 2, uses: ['text-uebersetzung'] },
       ),
+      ni(
+        'Ein Vater ist heute $40$ Jahre alt, sein Sohn $10$. In wie vielen Jahren ist der Vater nur noch doppelt so alt wie der Sohn?',
+        20, 0, '',
+        `**Ansatz:** Variable $t$ = Anzahl Jahre, die vergehen. In $t$ Jahren: Vater $40 + t$, Sohn $10 + t$. Bedingung: Vater $= 2 \\cdot$ Sohn.
+
+**Rechnung:**
+$$40 + t = 2(10 + t) \\\\ 40 + t = 20 + 2t \\quad | -t, -20 \\\\ 20 = t$$
+
+In $20$ Jahren ist der Vater $60$, der Sohn $30$ — Vater doppelt so alt.
+
+**Probe:** $40 + 20 = 60$, $10 + 20 = 30$, $60 = 2 \\cdot 30$. ✓
+
+**Typischer Fehler:** Nur das Alter des Sohnes oder nur das des Vaters wachsen lassen — beide altern gleichzeitig, also bekommen beide $+t$.`,
+        [
+          'Variable: $t$ = Jahre, die vergehen.',
+          'Beide altern: $V(t) = 40 + t$, $S(t) = 10 + t$.',
+          'Bedingung als Gleichung: Vater = $2 \\cdot$ Sohn.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['text-uebersetzung'] },
+      ),
+      mc(
+        'Ein Schwimmbecken wird durch zwei Zuflüsse gefüllt. Allein braucht der erste Zufluss $6$ Stunden, der zweite $4$ Stunden. Welche Gleichung beschreibt die Zeit $t$ (in Stunden) bis zur vollen Füllung, wenn beide gleichzeitig laufen?',
+        [
+          '$\\dfrac{t}{6} + \\dfrac{t}{4} = 1$',
+          '$6t + 4t = 1$',
+          '$\\dfrac{1}{6} + \\dfrac{1}{4} = t$',
+          '$t = 6 + 4 = 10$',
+        ],
+        0,
+        `**Ansatz:** "Volle Füllung" = $1$ (=100 %). Pro Stunde füllt Zufluss 1 den Anteil $1/6$, Zufluss 2 den Anteil $1/4$. Nach $t$ Stunden zusammen: $t \\cdot 1/6 + t \\cdot 1/4 = t/6 + t/4$. Das soll $1$ sein.
+
+**Rechnung:** $\\dfrac{t}{6} + \\dfrac{t}{4} = 1 \\Rightarrow \\dfrac{2t + 3t}{12} = 1 \\Rightarrow 5t = 12 \\Rightarrow t = 2{,}4$ h.
+
+**Probe:** $\\dfrac{2{,}4}{6} + \\dfrac{2{,}4}{4} = 0{,}4 + 0{,}6 = 1$. ✓
+
+**Typischer Fehler:** Zeiten direkt addieren ($6 + 4 = 10$) — gemeinsam fließen die Zuflüsse aber **schneller** als jeder einzeln, nicht langsamer.`,
+        [
+          'Was bedeutet "voll" als Zahl? — Setze $1$.',
+          'Pro Stunde füllt Zufluss 1 einen Anteil $1/6$ des Beckens.',
+          'Nach $t$ Stunden zusammen: $t/6 + t/4 = 1$.',
+        ],
+        {
+          1: 'Das wäre korrekt, wenn $6$ und $4$ Geschwindigkeiten (Becken pro Stunde) wären — sie sind aber Zeiten (Stunden pro Becken). Du musst die Kehrwerte $1/6$ und $1/4$ verwenden.',
+          2: 'Die rechte Seite ist falsch — gesucht ist die Zeit $t$, nicht ein Anteil. Außerdem fehlt $t$ auf der linken Seite.',
+          3: '$10$ h würde bedeuten, gemeinsam dauert es länger als jeder einzeln — physikalisch unsinnig. Gemeinsam muss es schneller gehen als die schnellere Einzelzeit ($4$ h).',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['text-uebersetzung'] },
+      ),
     ],
     // [3] Probe
     3: [
@@ -4172,6 +4302,62 @@ Schülerlösung würde $2x + 10 = 21$ geben ($x = 5{,}5$) — anderes Ergebnis.
           'Probe IMMER gegen Original.',
         ],
         { stage: 'transfer', subGoal: 3, uses: ['probe-einsetzen', 'iso-variable'] },
+      ),
+      matching(
+        'Welche Lösung gehört zu welcher Gleichung? Setze ein und prüfe.',
+        [
+          { left: '$2x + 5 = 11$',          right: '$x = 3$' },
+          { left: '$3x - 4 = 8$',           right: '$x = 4$' },
+          { left: '$5(x - 1) = 20$',        right: '$x = 5$' },
+          { left: '$-2x + 7 = -7$',         right: '$x = 7$' },
+          { left: '$\\dfrac{x}{2} + 1 = 5$', right: '$x = 8$' },
+        ],
+        `**Ansatz:** Jede Lösung in die zugehörige Gleichung einsetzen — die linke Seite muss die rechte ergeben.
+
+**Rechnung:**
+- $2 \\cdot 3 + 5 = 11$ ✓
+- $3 \\cdot 4 - 4 = 8$ ✓
+- $5(5 - 1) = 20$ ✓
+- $-2 \\cdot 7 + 7 = -7$ ✓
+- $8/2 + 1 = 5$ ✓
+
+**Probe:** Bei richtiger Zuordnung gilt für jede Zeile linke Seite = rechte Seite der ursprünglichen Gleichung.
+
+**Typischer Fehler:** Beim ersten Hinsehen "raten" — immer einsetzen und ausrechnen, nicht im Kopf abschätzen.`,
+        [
+          'Setze die Lösung in die linke Seite der Gleichung ein.',
+          'Rechne aus.',
+          'Vergleiche mit der rechten Seite — passt es?',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['probe-einsetzen'] },
+      ),
+      mc(
+        'Du sollst $2(x + 3) = 14$ lösen. Ein Schüler bekommt $x = 5$ heraus, ein anderer $x = 4$. Wer hat recht — und wie zeigt das die Probe?',
+        [
+          '$x = 4$ ist richtig: Probe $2(4+3) = 14$ ✓. $x = 5$ scheitert: $2(5+3) = 16 \\neq 14$.',
+          '$x = 5$ ist richtig: $2(5+3) = 14$ ✓.',
+          'Beide sind richtig — die Gleichung hat zwei Lösungen.',
+          'Keine der beiden ist richtig — die Lösung ist $x = 7$.',
+        ],
+        0,
+        `**Ansatz:** Lineare Gleichungen haben genau eine Lösung. Probe entscheidet zwischen den beiden Schülerergebnissen.
+
+**Rechnung:** $2(x+3) = 14 \\Rightarrow 2x + 6 = 14 \\Rightarrow 2x = 8 \\Rightarrow x = 4$.
+
+**Probe:** Für $x = 4$: $2(4 + 3) = 2 \\cdot 7 = 14$ ✓. Für $x = 5$: $2(5 + 3) = 2 \\cdot 8 = 16 \\neq 14$ ✗.
+
+**Typischer Fehler:** $x = 5$ entsteht z. B. dann, wenn der Schüler $14 - 6 = 8$ richtig erkennt, aber im letzten Schritt durcheinander gerät und die $-3$ an falscher Stelle einsetzt. Die Probe entlarvt diesen Fehler sofort.`,
+        [
+          'Setze beide Werte in die Original-Gleichung ein.',
+          'Rechne $2(x+3)$ für $x = 4$ und $x = 5$ aus.',
+          'Welcher Wert ergibt $14$?',
+        ],
+        {
+          1: 'Probe widerspricht: $2(5+3) = 16 \\neq 14$.',
+          2: 'Lineare Gleichungen mit Koeffizient $\\neq 0$ haben genau eine Lösung — nicht zwei.',
+          3: 'Probe für $x = 7$: $2(7+3) = 20 \\neq 14$. Auch falsch.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['probe-einsetzen'] },
       ),
     ],
   },

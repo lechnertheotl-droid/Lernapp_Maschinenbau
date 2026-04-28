@@ -1,6 +1,6 @@
 # Lernapp Status — Lehrplan & Content
 
-_auto-generiert · 2026-04-27 · `npm run status`_
+_auto-generiert · 2026-04-28 · `npm run status`_
 
 Single Source of Truth: Lehrplan (Phasen, Fächer, Tipps) **und** Content-Kennzahlen (Topics, Lessons, Aufgaben, Goal-Tasks, Qualitätsgaps). Quelle für den Lehrplan-Teil ist `src/content/curriculum.js` — dieselbe Datei, aus der auch die UI-Seite `/lehrplan` rendert.
 
@@ -102,9 +102,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2319 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1427 (62 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1065 / 1065 (100 %) | 100 % | ✅ |
+| Aufgaben (gesamt) | 2327 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1435 (62 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1068 / 1068 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -126,9 +126,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: grundlage
 - Units: 5 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **572** (Lesson-Path: 112 · Goal-Tasks: 460)
-- 4-Block: 506/572 (88 %) 🟡
-- MC-wAE: 265/265 (100 %) ✅
+- Aufgaben: **580** (Lesson-Path: 112 · Goal-Tasks: 468)
+- 4-Block: 514/580 (89 %) 🟡
+- MC-wAE: 268/268 (100 %) ✅
 - Sub-Goals: 90/90 Goal-Tasks verknüpft ✅
 - Practice-Exercises: 3 ✅
 
@@ -180,7 +180,7 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 | `alg-1-1` Potenzgesetze | 4 | 4/4 | 26 | 13/8/4/1/0 | 23/26 | 13/13 | ✅ | +3 4B |
 | `alg-1-2` Wurzeln und gebrochene Exponenten | 3 | 3/3 | 21 | 9/6/4/1/1 | 17/21 | 9/9 | ✅ | +4 4B |
 | `alg-1-3` Logarithmen | 7 | 7/7 | 40 | 18/13/7/2/0 | 35/40 | 18/18 | ✅ | +5 4B |
-| `alg-2-1` Lineare Gleichungen | 4 | 4/4 | 27 | 11/8/4/1/3 | 27/27 | 11/11 | ✅ | — |
+| `alg-2-1` Lineare Gleichungen | 4 | 4/4 | 35 | 14/11/5/2/3 | 35/35 | 14/14 | ✅ | — |
 | `alg-2-2` Quadratische Gleichungen | 4 | 4/4 | 27 | 12/7/4/3/1 | 23/27 | 12/12 | ✅ | +4 4B |
 | `alg-2-3` Polynomgleichungen & Polynomdivision | 6 | 6/6 | 36 | 18/7/6/3/2 | 32/36 | 18/18 | ✅ | +4 4B |
 | `alg-2-4` Ungleichungen | 6 | 6/6 | 35 | 18/5/5/4/3 | 34/35 | 18/18 | ✅ | +1 4B |
@@ -11351,7 +11351,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 38 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 37 Lessons
 
 #### `alg-3-1` · Funktionsbegriff
 
@@ -11715,51 +11715,6 @@ npm run build              # abschließender End-zu-End-Check
 | 20 | 3 | transfer           | sorting          | `ggt-kuerzen` | 1 | 1 | ✅ |  |
 
 - **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-2': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
-
-#### `alg-2-1` · Lineare Gleichungen
-
-- **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Gleichungen & Ungleichungen
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `alg-0-4` → `aequivalenz`, `distributiv`, `formel-umstellen`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `lin-form` — Lineare Gleichung $ax + b = 0$ als Standardform (SG 0)
-  2. `iso-variable` — Variable auf eine Seite isolieren (Äquivalenz) ⇐ `lin-form` (SG 0)
-  3. `koeff-dividieren` — Durch Koeffizient von $x$ dividieren ($\neq 0$) ⇐ `iso-variable` (SG 1)
-  4. `text-uebersetzung` — Textaufgabe → Variable definieren → Gleichung aufstellen ⇐ `iso-variable` (SG 2)
-  5. `probe-einsetzen` — Probe: Lösung in Original-Gleichung einsetzen ⇐ `koeff-dividieren` (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `lin-form`, `iso-variable` · **5/5+** — Äquivalenzumformungen: gleiche Operation auf beiden Seiten — Gleichung bleibt erhalten
-  - ✅ [1] _hoch_ · Konzepte: `iso-variable`, `koeff-dividieren` · **6/5+** — Standardvorgehen: Klammern auflösen $\to$ Variable auf eine Seite $\to$ durch Koeffizient teilen
-  - ✅ [2] _mittel_ · Konzepte: `text-uebersetzung` · **6/5+** — Textaufgaben: Variable definieren, Gleichung aufstellen, lösen, zurück in den Kontext interpretieren
-  - ✅ [3] _hoch_ · Konzepte: `probe-einsetzen` · **5/5+** — Probe durch Einsetzen in Original-Gleichung schützt vor Vorzeichen- und Umformungsfehlern
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `iso-variable` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `iso-variable` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `iso-variable` | 1 | 1 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `iso-variable` | 1 | 1 | ✅ | Distraktor: Operation nur auf einer Seite |
-|  5 | 0 | transfer           | sorting          | `iso-variable` | 1 | 1 | ✅ | Umformungsschritte ordnen |
-|  6 | 1 | recognize          | true-false       | `koeff-dividieren` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `iso-variable`, `koeff-dividieren` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `iso-variable`, `koeff-dividieren` | 2 | 2 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `koeff-dividieren` | 1 | 1 | ✅ | Distraktor: Vorzeichen beim Umstellen übersehen |
-| 10 | 1 | transfer           | sorting          | `iso-variable`, `koeff-dividieren` | 1 | 1 | ✅ |  |
-| 11 | 2 | recognize          | matching         | `text-uebersetzung` | 1 | 1 | ✅ | Textbaustein ↔ Variable |
-| 12 | 2 | apply-guided       | multiple-choice  | `text-uebersetzung` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `text-uebersetzung` | 2 | 2 | ✅ | Altersaufgabe + Flächenaufgabe |
-| 14 | 2 | error-analysis     | multiple-choice  | `text-uebersetzung` | 1 | 1 | ✅ | Distraktor: falsche Variable definiert |
-| 15 | 2 | transfer           | number-input     | `text-uebersetzung` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | true-false       | `probe-einsetzen` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `probe-einsetzen` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | true-false       | `probe-einsetzen` | 1 | 1 | ✅ | Lösung gegeben — prüfen ob richtig |
-| 19 | 3 | error-analysis     | multiple-choice  | `probe-einsetzen` | 1 | 1 | ✅ | Distraktor: Probe auf umgeformter Gleichung statt Original |
-| 20 | 3 | transfer           | sorting          | `probe-einsetzen`, `iso-variable` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-2-1': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
