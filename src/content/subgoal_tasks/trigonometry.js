@@ -2255,6 +2255,23 @@ export const trigonometrySubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 0, uses: ['vorzeichen-ASTC'] },
       ),
+      tf(
+        '$\\tan(\\alpha) > 0$ gilt genau dann, wenn $\\sin(\\alpha)$ und $\\cos(\\alpha)$ dasselbe Vorzeichen haben.',
+        true,
+        `**Ansatz:** $\\tan = \\dfrac{\\sin}{\\cos}$ — ein Quotient ist positiv genau dann, wenn Zähler und Nenner gleiches Vorzeichen tragen.
+
+**Rechnung:** Q1: $\\sin > 0$, $\\cos > 0$ → $\\tan > 0$. Q2: $\\sin > 0$, $\\cos < 0$ → $\\tan < 0$. Q3: $\\sin < 0$, $\\cos < 0$ → $\\tan > 0$. Q4: $\\sin < 0$, $\\cos > 0$ → $\\tan < 0$. Stimmt mit ASTC überein (Q1+Q3 positiv).
+
+**Probe:** $\\tan(135°) = \\sin(135°)/\\cos(135°) = (+0{,}707)/(-0{,}707) = -1 < 0$ — verschiedene Vorzeichen, also negativ ✓.
+
+**Typischer Fehler:** ASTC als reines Auswendigwissen ohne Begründung — die Regel folgt direkt aus $\\tan = \\sin/\\cos$.`,
+        [
+          'Schreibe $\\tan(\\alpha) = \\sin(\\alpha)/\\cos(\\alpha)$.',
+          'Ein Bruch ist positiv genau dann, wenn Zähler und Nenner gleiches Vorzeichen haben.',
+          'Prüfe alle vier Quadranten mit ASTC: Q1 beide positiv, Q2 sin+/cos−, Q3 beide negativ, Q4 sin−/cos+.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['vorzeichen-ASTC'] },
+      ),
     ],
 
     // ── [1] Symmetrien: sin(180°-α) = sin α, cos(180°-α) = -cos α ──────────
@@ -2297,7 +2314,7 @@ export const trigonometrySubGoalTasks = {
           2: '$-1/2$ wäre $\\cos(120°)$, nicht $\\cos(150°)$.',
           3: '$+1/2$ wäre $\\cos(60°)$, hat mit $150°$ nichts zu tun.',
         },
-        { stage: 'apply-guided', subGoal: 1, uses: ['symmetrie-sin'] },
+        { stage: 'apply-guided', subGoal: 1, uses: ['symmetrie-cos'] },
       ),
       ni(
         'Berechne $\\cos(135°)$ mithilfe der Symmetrie-Formel. (3 NK)',
@@ -2360,6 +2377,23 @@ export const trigonometrySubGoalTasks = {
           '$\\cos(135°) = -0{,}707$.',
         ],
         { stage: 'transfer', subGoal: 1, uses: ['symmetrie-sin', 'symmetrie-cos'] },
+      ),
+      ni(
+        'Berechne $\\sin(120°)$ mithilfe der Symmetrie-Formel. (3 NK)',
+        0.866, 0.001, '',
+        `**Ansatz:** $\\sin(180° - \\alpha) = \\sin(\\alpha)$ — Spiegelung am $90°$-Strahl, Vorzeichen bleibt gleich.
+
+**Rechnung:** $120° = 180° - 60°$, also $\\alpha = 60°$. Damit: $\\sin(120°) = \\sin(60°) = \\dfrac{\\sqrt{3}}{2} \\approx 0{,}866$.
+
+**Probe:** $120°$ liegt im 2. Quadranten → ASTC: $\\sin > 0$ ✓. Betrag $\\approx 0{,}866$ ist der bekannte Grundwert für $60°$.
+
+**Typischer Fehler:** Vorzeichen negieren wie bei der Kosinus-Formel ($\\cos$ bekommt ein Minus, $\\sin$ nicht).`,
+        [
+          'Symmetrie-Formel: $\\sin(180° - \\alpha) = \\sin(\\alpha)$.',
+          '$120° = 180° - 60°$ → $\\alpha = 60°$.',
+          '$\\sin(60°) = \\sqrt{3}/2 \\approx 0{,}866$ (Grundwert).',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['symmetrie-sin'] },
       ),
     ],
 
@@ -2467,8 +2501,27 @@ export const trigonometrySubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 2, uses: ['referenzwinkel', 'vorzeichen-ASTC'] },
       ),
+      sorting(
+        'Sortiere diese vier Winkel nach der Größe ihres Referenzwinkels — aufsteigend (kleinster Referenzwinkel zuerst).',
+        ['$170°$', '$260°$', '$210°$', '$310°$'],
+        [0, 2, 3, 1],
+        `**Ansatz:** Für jeden Winkel den Referenzwinkel (Abstand zur nächsten $x$-Achse) bestimmen, dann aufsteigend ordnen.
+
+**Rechnung:** $170°$ → Q2: $180° - 170° = 10°$. $\\;$ $210°$ → Q3: $210° - 180° = 30°$. $\\;$ $310°$ → Q4: $360° - 310° = 50°$. $\\;$ $260°$ → Q3: $260° - 180° = 80°$. Aufsteigend: $10° < 30° < 50° < 80°$ → Reihenfolge: $170°, 210°, 310°, 260°$.
+
+**Probe:** Alle Referenzwinkel liegen zwischen $0°$ und $90°$ ✓. Kein Winkel führt auf denselben Referenzwinkel → eindeutige Sortierung ✓.
+
+**Typischer Fehler:** Die Originalwinkel selbst sortieren ($170° < 210° < 260° < 310°$) statt die Referenzwinkel zu vergleichen.`,
+        [
+          'Referenzwinkel = Abstand zur nächsten $x$-Achse ($0°$, $180°$ oder $360°$).',
+          'Berechne für jeden der vier Winkel den Referenzwinkel einzeln.',
+          'Vergleiche: $10° < 30° < 50° < 80°$ — das ist die Sortierreihenfolge.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['referenzwinkel'] },
+      ),
     ],
   },
+
 
   // ────────────────────────────────────────────────────────────────────────
   // trig-2-1 — Der Einheitskreis  (4 subGoals)
