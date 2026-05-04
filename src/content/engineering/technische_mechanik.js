@@ -115,7 +115,11 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 **Probe:** $2{,}5\\,\\text{GPa} = 2500\\,\\text{MPa} = 2\\,500\\,000\\,\\text{kPa} = 2\\,500\\,000\\,000\\,\\text{Pa}$.
 
 **Typischer Fehler:** „M" (mega) mit „G" (giga) verwechseln — Faktor $1000$ Unterschied.`,
-              hints: ['Präfix G = giga = $10^{9}$.', 'Die Zahl bleibt, der Faktor wird angefügt.'],
+              hints: [
+                'Ein Präfix multipliziert die Einheit mit einer Zehnerpotenz.',
+                'Präfix G = giga = $10^{9}$.',
+                'Die Zahl bleibt erhalten, nur die Einheit wird durch $10^{9}\\,\\text{Pa}$ ersetzt.',
+              ],
               wrongAnswerExplanations: {
                 1: 'Das wäre $2{,}5\\,\\text{MPa}$ (mega). Der Präfix G bedeutet giga = $10^{9}$, nicht mega = $10^{6}$.',
                 2: 'Das wäre $2{,}5\\,\\text{kPa}$ (kilo). Zu weit unterschätzt — G ist $10^{9}$.',
@@ -136,8 +140,9 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 
 **Typischer Fehler:** Nur einmal den Faktor $1000$ anwenden statt zweimal (km → m → mm).`,
               hints: [
+                'Über die Basiseinheit Meter gehen — nicht direkt von km nach mm springen.',
                 'km → m: Faktor $10^{3}$. m → mm: Faktor $10^{3}$.',
-                'Insgesamt also Faktor $10^{6}$.',
+                'Insgesamt also Faktor $10^{6}$ von km nach mm.',
               ],
             },
             {
@@ -151,7 +156,11 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 **Probe:** Keine andere SI-Basiseinheit hat einen Präfix im Namen — das Kilogramm ist die Ausnahme.
 
 **Typischer Fehler:** Annehmen, Gramm sei die Grundeinheit. Im SI-System ist es historisch anders.`,
-              hints: ['Nur eine Basiseinheit hat bereits ein Präfix im Namen.'],
+              hints: [
+                'Welche der sieben SI-Basiseinheiten enthält bereits einen Präfix im Symbol?',
+                'Nur das Kilogramm trägt mit dem „k" einen Präfix in der Basiseinheit selbst.',
+                'Daraus folgt: Gramm $=10^{-3}\\,\\text{kg}$ ist die abgeleitete Größe.',
+              ],
             },
             {
               type: 'matching',
@@ -170,7 +179,11 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 **Probe:** Prüfbeispiel: $1\\,\\text{mm} = 10^{-3}\\,\\text{m}$, $1\\,\\text{kg} = 10^{3}\\,\\text{g}$. ✓
 
 **Typischer Fehler:** Groß-/Kleinschreibung: **m**illi (klein) vs. **M**ega (groß).`,
-              hints: ['Jeder Schritt ist ein Faktor $1000$ auseinander.'],
+              hints: [
+                'Negative Exponenten = Bruchteile (kleiner als 1), positive Exponenten = Vielfache.',
+                'Jeder Schritt im Präfix-Kalender ist ein Faktor $1000$ auseinander.',
+                'Symbolregel: kleiner Buchstabe = klein (m, µ, n), Großbuchstabe = groß (k ist die Ausnahme — auch klein, aber positiv).',
+              ],
             },
             {
               type: 'number-input',
