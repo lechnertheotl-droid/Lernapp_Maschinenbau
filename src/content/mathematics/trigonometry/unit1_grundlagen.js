@@ -16,7 +16,8 @@ export const exercises_u1 = {
 **Typischer Fehler:** $180°$ ist ein gestreckter Winkel (Halbkreis, zwei gerade aufeinanderfolgende Linien) — das ist doppelt so viel wie ein rechter Winkel.`,
     hints: [
       'Denk an die Ecke eines Buches oder eines Fensters — wie groß ist der Winkel dort?',
-      'Ein Viertel eines vollen Kreises ($360°$).',
+      'Ein voller Kreis hat $360°$. Wie viele rechte Winkel passen in einen vollen Kreis?',
+      'Ein Viertel eines vollen Kreises: $360°/4 = ?$',
     ],
     wrongAnswerExplanations: {
       1: 'Das wäre ein **gestreckter** Winkel (zwei Geraden bilden eine Linie). Ein rechter Winkel ist halb so groß.',
@@ -36,8 +37,9 @@ export const exercises_u1 = {
 
 **Typischer Fehler:** Die Hälfte des vollen Kreises ($180°$) mit dem halben rechten Winkel verwechseln.`,
     hints: [
-      '$45° + 45° = ?$',
-      'Denk an die Diagonale eines Quadrats.',
+      'Halb von $90°$ ist?',
+      '$45° + 45° = ?$ — passt das zum rechten Winkel?',
+      'Denk an die Diagonale eines Quadrats: sie teilt die $90°$-Ecke in zwei gleich große Teile.',
     ],
   },
   'ex-trig-1-0-c': {
@@ -65,6 +67,7 @@ export const exercises_u1 = {
     hints: [
       'Spitz = schmal, stumpf = weit offen.',
       'Rechter Winkel = $90°$, gestreckter Winkel = $180°$.',
+      'Vier Klassen, zwei Grenzen ($90°$ und $180°$): unterhalb spitz, dazwischen stumpf, exakt $90°$ recht, exakt $180°$ gestreckt.',
     ],
     wrongAnswerExplanations: {
       1: 'Die Größenbeziehungen sind umgekehrt. Spitz ist **kleiner**, stumpf **zwischen $90°$ und $180°$**.',
@@ -89,7 +92,9 @@ export const exercises_u1 = {
 
 **Typischer Fehler:** $90°$ fälschlich als „spitz" klassifizieren — $90°$ ist genau die Grenze und heißt **rechter** Winkel.`,
     hints: [
-      'Klassen: 0°–90° spitz, 90° rechter, 90°–180° stumpf, 180° gestreckt.',
+      'Klassen: $0°$–$90°$ spitz, exakt $90°$ recht, $90°$–$180°$ stumpf, exakt $180°$ gestreckt.',
+      'Sortier zuerst nach Größe: $30° < 90° < 135° < 180°$.',
+      'Grenzwerte ($90°$, $180°$) gehören eindeutig zur jeweiligen Klasse — nicht doppelt zuordnen.',
     ],
   },
   'ex-trig-1-0-mastery': {
@@ -105,6 +110,7 @@ export const exercises_u1 = {
 **Typischer Fehler:** Mit $360°$ rechnen (das ist die Winkelsumme im Viereck, nicht im Dreieck).`,
     hints: [
       'Die drei Innenwinkel eines Dreiecks summieren sich auf $180°$.',
+      'Stelle die Formel $\\alpha + \\beta + \\gamma = 180°$ nach $x$ um.',
       '$x = 180° - 60° - 80°$.',
     ],
   },
@@ -174,7 +180,7 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
 1. Winkel in Radiant: $\\alpha_{\\text{rad}} = 60 \\cdot \\dfrac{\\pi}{180} = \\dfrac{\\pi}{3} \\approx 1{,}047$.
 2. Bogenlänge: $s = 0{,}5 \\cdot \\dfrac{\\pi}{3} = \\dfrac{\\pi}{6} \\approx 0{,}524\\,\\text{m}$.
 
-**Warum Bogenmaß?** Die Formel $s = r\\cdot\\alpha$ gilt **nur**, wenn $\\alpha$ in Radiant eingesetzt wird. Mit Grad stünde ein Zusatzfaktor $\\pi/180$ drin.
+**Probe:** Voller Umfang bei $r = 0{,}5$: $U = 2\\pi r = \\pi \\approx 3{,}14$ m. Ein $60°$-Bogen ist $1/6$ davon: $\\pi/6 \\approx 0{,}524$ m ✓. Die Formel $s = r\\cdot\\alpha$ gilt **nur** mit $\\alpha$ in Radiant — mit Grad stünde ein Zusatzfaktor $\\pi/180$ drin.
 
 **Typischer Fehler:** Direkt $s = r \\cdot 60 = 30$ rechnen — ohne Umrechnung. Oder DEG statt RAD beim Taschenrechner.`,
     hints: [
@@ -193,13 +199,11 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
       '$225°$, 3. Quadrant',
     ],
     correctIndex: 0,
-    explanation: `**Ansatz:** Zuerst in Grad umrechnen, dann lokalisieren.
+    explanation: `**Ansatz:** Zuerst in Grad umrechnen, dann anhand der Quadranten-Grenzen ($90°/180°/270°$) lokalisieren.
 
-**Rechnung:** $\\dfrac{5\\pi}{6} \\cdot \\dfrac{180}{\\pi} = \\dfrac{5 \\cdot 180}{6} = 150°$.
+**Rechnung:** $\\dfrac{5\\pi}{6} \\cdot \\dfrac{180}{\\pi} = \\dfrac{5 \\cdot 180}{6} = 150°$. Da $90° < 150° < 180°$ → **2. Quadrant** (links-oben). Am Einheitskreis: Punkt $\\left(-\\dfrac{\\sqrt{3}}{2}, \\dfrac{1}{2}\\right)$.
 
-**Quadrant:** $150°$ liegt zwischen $90°$ und $180°$ → **2. Quadrant** (links-oben). Am Einheitskreis: Punkt $\\left(-\\dfrac{\\sqrt{3}}{2}, \\dfrac{1}{2}\\right)$.
-
-**Synthese-Check:** Ohne Umrechnung kannst du auch direkt sehen: $\\dfrac{5\\pi}{6}$ liegt zwischen $\\dfrac{\\pi}{2}$ ($=90°$) und $\\pi$ ($=180°$) — das ist der 2. Quadrant.
+**Probe:** Rückrechnung $150° \\cdot \\pi/180 = 150\\pi/180 = 5\\pi/6$ ✓. Alternativ ohne Umrechnung: $\\dfrac{5\\pi}{6}$ liegt zwischen $\\dfrac{\\pi}{2}$ ($=90°$) und $\\pi$ ($=180°$) — passt zum 2. Quadrant.
 
 **Typischer Fehler:** Option C („$120°$"): dies entspricht $\\dfrac{2\\pi}{3}$, nicht $\\dfrac{5\\pi}{6}$.`,
     hints: [
@@ -220,13 +224,11 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
     question: 'In einem rechtwinkligen Dreieck ist $\\sin(\\alpha)$ definiert als:',
     options: ['Ankathete / Hypotenuse', 'Gegenkathete / Hypotenuse', 'Gegenkathete / Ankathete', 'Hypotenuse / Gegenkathete'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Eselsbrücke SOH-CAH-TOA anwenden.
+    explanation: `**Ansatz:** Eselsbrücke SOH-CAH-TOA anwenden — **S**inus = **O**pposite/**H**ypotenuse.
 
-**Regel:** $\\sin(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Hypotenuse}} = \\dfrac{G}{H}$ (SOH).
+**Rechnung:** $\\sin(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Hypotenuse}} = \\dfrac{G}{H}$. Am Einheitskreis ist die y-Koordinate gleich $\\sin(\\alpha)$ — die Gegenkathete entspricht der senkrechten Projektion, geteilt durch $H$.
 
-**Warum?** Am Einheitskreis ist die y-Koordinate gleich $\\sin(\\alpha)$. In einem rechtwinkligen Dreieck mit Hypotenuse $H$ entspricht die Gegenkathete der senkrechten Projektion — geteilt durch $H$ ergibt sich der Sinuswert.
-
-**Probe:** Bei $\\alpha = 30°$ in einem $30°-60°-90°$-Dreieck: $G = 1$, $H = 2$, also $\\sin(30°) = \\dfrac{1}{2}$. ✓
+**Probe:** Bei $\\alpha = 30°$ in einem $30°{-}60°{-}90°$-Dreieck mit $G = 1$, $H = 2$: $\\sin(30°) = 1/2$ ✓ — passt zur Tabelle der Grundwerte.
 
 **Typischer Fehler:** Gegenkathete und Ankathete verwechseln. Merke: Die Gegenkathete liegt *gegenüber* von $\\alpha$.`,
     hints: [
@@ -245,13 +247,11 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
     question: '$\\cos(\\alpha)$ ist definiert als:',
     options: ['Gegenkathete / Hypotenuse', 'Ankathete / Hypotenuse', 'Gegenkathete / Ankathete', 'Hypotenuse / Ankathete'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Eselsbrücke CAH anwenden.
+    explanation: `**Ansatz:** Eselsbrücke CAH — **C**osinus = **A**djacent/**H**ypotenuse.
 
-**Regel:** $\\cos(\\alpha) = \\dfrac{\\text{Ankathete}}{\\text{Hypotenuse}} = \\dfrac{A}{H}$ (CAH).
+**Rechnung:** $\\cos(\\alpha) = \\dfrac{\\text{Ankathete}}{\\text{Hypotenuse}} = \\dfrac{A}{H}$. Am Einheitskreis ist $\\cos(\\alpha)$ die x-Koordinate; die Ankathete ist die horizontale Projektion, geteilt durch $H$ ergibt den Kosinuswert.
 
-**Am Einheitskreis:** $\\cos(\\alpha)$ ist die x-Koordinate des Punkts auf dem Kreis. Die Ankathete ist die horizontale Projektion; geteilt durch $H$ ergibt den Kosinuswert.
-
-**Probe:** Bei $\\alpha = 60°$ in einem $30°-60°-90°$-Dreieck: $A = 1$, $H = 2$, also $\\cos(60°) = \\dfrac{1}{2}$. ✓
+**Probe:** Bei $\\alpha = 60°$ in einem $30°{-}60°{-}90°$-Dreieck mit $A = 1$, $H = 2$: $\\cos(60°) = 1/2$ ✓ — passt zur Grundwerte-Tabelle.
 
 **Typischer Fehler:** Ankathete mit Hypotenuse verwechseln. Die Hypotenuse liegt *gegenüber* vom rechten Winkel, die Ankathete *neben* $\\alpha$.`,
     hints: [
@@ -270,15 +270,13 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
     question: '$\\tan(\\alpha)$ ist definiert als:',
     options: ['Hypotenuse / Gegenkathete', 'Ankathete / Gegenkathete', 'Gegenkathete / Ankathete', 'Ankathete / Hypotenuse'],
     correctIndex: 2,
-    explanation: `**Ansatz:** Eselsbrücke TOA oder Quotientenformel.
+    explanation: `**Ansatz:** Eselsbrücke TOA — **T**angens = **O**pposite/**A**djacent.
 
-**Regel:** $\\tan(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Ankathete}} = \\dfrac{G}{A} = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)}$ (TOA).
+**Rechnung:** $\\tan(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Ankathete}} = \\dfrac{G}{A} = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)}$. Am Einheitskreis ist $\\tan(\\alpha) = y/x$ — die *Steigung* der Geraden vom Ursprung zum Punkt auf dem Kreis.
 
-**Am Einheitskreis:** $\\tan(\\alpha) = \\dfrac{y}{x}$ ist die *Steigung* der Geraden vom Ursprung zum Punkt auf dem Kreis.
+**Probe:** Bei $\\alpha = 45°$ ist $G = A$ (gleichschenklig-rechtwinklig), also $\\tan(45°) = G/A = 1$ ✓.
 
-**Probe:** Bei $\\alpha = 45°$: $G = A$, also $\\tan(45°) = 1$. ✓
-
-**Typischer Fehler:** $\\dfrac{A}{G}$ statt $\\dfrac{G}{A}$ — das wäre $\\cot(\\alpha)$ (Kotangens).`,
+**Typischer Fehler:** $A/G$ statt $G/A$ — das wäre $\\cot(\\alpha)$ (Kotangens), der Kehrwert.`,
     hints: [
       'Welche Eselsbrücke? TOA. Skizze mit $\\alpha$.',
       'TOA: **T**angens = **O**pposite (Gegenkathete) / **A**dj (Ankathete).',
@@ -295,17 +293,13 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
     question: '[PRÜFUNG] Ein Dreieck hat Gegenkathete $= 3$, Ankathete $= 4$, Hypotenuse $= 5$. Was ist $\\sin(\\alpha)$?',
     options: ['$\\dfrac{3}{5}$', '$\\dfrac{4}{5}$', '$\\dfrac{3}{4}$', '$\\dfrac{4}{3}$'],
     correctIndex: 0,
-    explanation: `**Ansatz:** SOH anwenden: $\\sin(\\alpha) = \\dfrac{G}{H}$.
+    explanation: `**Ansatz:** SOH anwenden: $\\sin(\\alpha) = G/H$.
 
 **Rechnung:** $\\sin(\\alpha) = \\dfrac{G}{H} = \\dfrac{3}{5} = 0{,}6$.
 
-**Probe mit Pythagoras:** $3^{2} + 4^{2} = 9 + 16 = 25 = 5^{2}$ ✓ — das ist das klassische $3{-}4{-}5$-Dreieck.
+**Probe:** Pythagoras bestätigt das Dreieck: $3^2 + 4^2 = 9 + 16 = 25 = 5^2$ ✓ (klassisches $3{-}4{-}5$). Trigonometrie-Identität: $\\cos(\\alpha) = 4/5 = 0{,}8$, also $\\sin^2 + \\cos^2 = 0{,}36 + 0{,}64 = 1$ ✓. Am Einheitskreis (Skalierung mit Divisor $5$): Punkt $(4/5, 3/5) = (\\cos\\alpha, \\sin\\alpha)$.
 
-**Probe mit Identität:** $\\cos(\\alpha) = \\dfrac{4}{5} = 0{,}8$. Dann $\\sin^{2}(\\alpha) + \\cos^{2}(\\alpha) = 0{,}36 + 0{,}64 = 1$. ✓
-
-**Am Einheitskreis:** Skaliere das Dreieck so, dass $H = 1$ wird (Divisor $5$). Dann liegt der Punkt bei $\\left(\\dfrac{4}{5}, \\dfrac{3}{5}\\right) = (\\cos\\alpha, \\sin\\alpha)$.
-
-**Typischer Fehler:** $\\dfrac{4}{5}$ (das wäre $\\cos(\\alpha)$) oder $\\dfrac{3}{4}$ (das wäre $\\tan(\\alpha)$).`,
+**Typischer Fehler:** $4/5$ angeben (das wäre $\\cos(\\alpha)$) oder $3/4$ (das wäre $\\tan(\\alpha)$). SOH konsequent anwenden — die Gegenkathete ($G = 3$) gehört in den Zähler.`,
     hints: [
       'Welcher Winkel? $\\alpha$. Welche Formel? SOH: $\\sin = G/H$.',
       'Formel: $\\sin(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Hypotenuse}}$.',
@@ -351,15 +345,13 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
     question: '$\\cos(60°) = $?',
     options: ['$\\dfrac{\\sqrt{3}}{2}$', '$\\dfrac{\\sqrt{2}}{2}$', '$\\dfrac{1}{2}$', '$0$'],
     correctIndex: 2,
-    explanation: `**Ansatz:** Grundwert oder Komplementärformel nutzen.
+    explanation: `**Ansatz:** Komplementärformel: $\\cos(\\alpha) = \\sin(90° - \\alpha)$.
 
-**Regel:** $\\cos(\\alpha) = \\sin(90° - \\alpha)$. Also $\\cos(60°) = \\sin(30°) = \\dfrac{1}{2}$.
+**Rechnung:** $\\cos(60°) = \\sin(90° - 60°) = \\sin(30°) = 1/2$. Am Einheitskreis ($60° = \\pi/3$) liegt der Punkt bei $(1/2, \\sqrt{3}/2)$ — die x-Koordinate ist $1/2$.
 
-**Am Einheitskreis:** $60° = \\dfrac{\\pi}{3}$. Der Punkt liegt bei $\\left(\\dfrac{1}{2}, \\dfrac{\\sqrt{3}}{2}\\right)$ — die x-Koordinate ist $\\dfrac{1}{2}$.
+**Probe:** $\\sin^2(60°) + \\cos^2(60°) = 3/4 + 1/4 = 1$ ✓. Aus dem $30°{-}60°{-}90°$-Dreieck mit Hypotenuse $2$ ist die Ankathete zu $60°$ gleich $1$, also $\\cos(60°) = 1/2$ ✓.
 
-**Probe:** $\\sin^{2}(60°) + \\cos^{2}(60°) = \\dfrac{3}{4} + \\dfrac{1}{4} = 1$. ✓
-
-**Typischer Fehler:** $\\dfrac{\\sqrt{3}}{2}$ wählen — das ist $\\sin(60°)$, nicht $\\cos(60°)$. Merke: Bei $60°$ ist $\\cos$ der *kleinere* Wert, bei $30°$ ist $\\sin$ der *kleinere*.`,
+**Typischer Fehler:** $\\sqrt{3}/2$ wählen — das ist $\\sin(60°) = \\cos(30°)$, nicht $\\cos(60°)$. Merke: Bei $60°$ ist $\\cos$ der *kleinere* Wert, bei $30°$ ist $\\sin$ der *kleinere*.`,
     hints: [
       'Welches Winkelmaß? Grad. Skizze am Einheitskreis: wo liegt $60°$?',
       'Nutze $\\cos(\\alpha) = \\sin(90° - \\alpha)$.',
@@ -376,16 +368,15 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
     question: '$\\sin(45°) = $?',
     options: ['$\\dfrac{1}{2}$', '$\\dfrac{\\sqrt{2}}{2}$', '$\\dfrac{\\sqrt{3}}{2}$', '$1$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Aus dem gleichschenklig-rechtwinkligen Dreieck.
+    explanation: `**Ansatz:** Aus dem gleichschenklig-rechtwinkligen Dreieck — beide nicht-rechte Winkel sind $45°$, also Katheten gleich lang.
 
-**Herleitung:** Ein rechtwinkliges Dreieck mit zwei $45°$-Winkeln hat gleiche Katheten ($G = A$) und Hypotenuse $H = \\sqrt{2} \\cdot G$ (Pythagoras). Also:
-$$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2} \\cdot G} = \\dfrac{1}{\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2} \\approx 0{,}707.$$
+**Rechnung:** Mit Katheten $G = A$ ergibt der Pythagoras Hypotenuse $H = \\sqrt{G^2 + A^2} = \\sqrt{2}\\cdot G$. Daher
+$$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2}\\,G} = \\dfrac{1}{\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2} \\approx 0{,}707.$$
+Am Einheitskreis ($45° = \\pi/4$) liegt der Punkt auf der Winkelhalbierenden $y = x$ bei $(\\sqrt{2}/2,\\,\\sqrt{2}/2)$.
 
-**Am Einheitskreis:** $45° = \\dfrac{\\pi}{4}$. Der Punkt liegt bei $\\left(\\dfrac{\\sqrt{2}}{2}, \\dfrac{\\sqrt{2}}{2}\\right)$ — x = y, die Winkelhalbierende.
+**Probe:** $\\sin^2(45°) + \\cos^2(45°) = 1/2 + 1/2 = 1$ ✓. Bei $45°$ gilt $\\sin = \\cos$, daher $\\tan(45°) = 1$.
 
-**Wichtig:** Bei $45°$ gilt $\\sin(45°) = \\cos(45°)$, daher $\\tan(45°) = 1$.
-
-**Typischer Fehler:** $\\dfrac{1}{\\sqrt{2}}$ nicht rationalisieren und als Endform stehen lassen.`,
+**Typischer Fehler:** $1/\\sqrt{2}$ als Endform stehen lassen statt zu rationalisieren — Prüfungs-Konvention erwartet $\\sqrt{2}/2$.`,
     hints: [
       'Welches Winkelmaß? Grad. Skizze: gleichschenkliges rechtwinkliges Dreieck.',
       'Bei $45°$: Katheten gleich lang, Hypotenuse $= \\sqrt{2} \\cdot$ Kathete.',
@@ -427,15 +418,15 @@ $$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2} \\cdot G} = \\dfrac{1}{\\sq
     question: '[PRÜFUNG] Welcher Wert ist FALSCH?',
     options: ['$\\sin(0°) = 0$', '$\\cos(0°) = 1$', '$\\sin(90°) = 0$', '$\\tan(0°) = 0$'],
     correctIndex: 2,
-    explanation: `**Ansatz:** Jede Aussage am Einheitskreis prüfen.
+    explanation: `**Ansatz:** Jede der vier Aussagen am Einheitskreis prüfen — Punkt-Koordinaten ablesen und mit der Behauptung vergleichen.
 
-**Prüfung:**
-- $\\sin(0°) = 0$: Punkt $(1,0)$, y-Koordinate $= 0$ ✓
-- $\\cos(0°) = 1$: Punkt $(1,0)$, x-Koordinate $= 1$ ✓
-- $\\sin(90°) = 0$: FALSCH. Punkt $(0,1)$, y-Koordinate $= 1$, also $\\sin(90°) = 1$.
-- $\\tan(0°) = 0$: $\\tan(0°) = \\dfrac{0}{1} = 0$ ✓
+**Rechnung:**
+- $\\sin(0°) = 0$: Punkt $(1,0)$, $y$-Koordinate $= 0$ ✓ (richtig)
+- $\\cos(0°) = 1$: Punkt $(1,0)$, $x$-Koordinate $= 1$ ✓ (richtig)
+- $\\sin(90°) = 0$: Punkt $(0,1)$, $y$-Koordinate $= 1$, also $\\sin(90°) = 1$ — die Aussage ist **falsch**.
+- $\\tan(0°) = 0$: $\\sin(0°)/\\cos(0°) = 0/1 = 0$ ✓ (richtig)
 
-**Am Einheitskreis:** Bei $90°$ steht der Punkt oben auf $(0, 1)$. Die y-Koordinate ist $1$, die x-Koordinate ist $0$. Also $\\sin(90°) = 1$ (nicht $0$!) und $\\cos(90°) = 0$.
+**Probe:** Drei Aussagen stimmen, eine ist falsch — passt zur Aufgabenstellung. Pythagoras-Identität: $\\sin^2(90°) + \\cos^2(90°) = 1 + 0 = 1$ ✓. Mit der falschen Aussage $\\sin(90°) = 0$ käme $0 + 0 = 0 \\ne 1$ — Widerspruch.
 
 **Typischer Fehler:** $\\sin$ und $\\cos$ bei $0°/90°$ verwechseln. Merke: $\\sin(0°) = 0$ (kein Anteil nach oben), $\\sin(90°) = 1$ (maximaler Anteil nach oben).`,
     hints: [
@@ -608,6 +599,25 @@ $$\\alpha + \\beta + \\gamma = 180°$$
 **Warum das wichtig ist:** Wenn du zwei Winkel kennst, kannst du den dritten direkt ausrechnen.`,
       },
       {
+        id: 'trig-1-0-s2c', type: 'explanation-formal', title: 'Scheitel- und Nebenwinkel am Geradenkreuz',
+        content: `Schneiden sich zwei Geraden in einem Punkt, entstehen vier Winkel. Sie ordnen sich in zwei Paare:
+
+| Beziehung | Lage | Formel |
+|---|---|---|
+| **Scheitelwinkel** | gegenüberliegend (diagonal) | $\\alpha_{\\text{Scheitel}} = \\alpha$ |
+| **Nebenwinkel** | direkt daneben (auf einer Geraden) | $\\beta = 180° - \\alpha$ |
+
+**Konsequenzen:**
+
+- Scheitelwinkel sind **immer gleich groß** — Symmetrie am Schnittpunkt.
+- Nebenwinkel **ergänzen sich auf $180°$** (gestreckter Winkel auf einer Geraden).
+- Die Summe aller vier Winkel um den Schnittpunkt beträgt $360°$ (voller Kreis).
+
+**Beispiel:** $\\alpha = 70°$ → Scheitelwinkel $= 70°$, Nebenwinkel $= 180° - 70° = 110°$. Probe: $70° + 70° + 110° + 110° = 360°$ ✓.
+
+**Achtung — nicht verwechseln:** Komplementärwinkel ergänzen zu $90°$ (nicht $180°$) und treten nur in rechtwinkligen Konfigurationen auf.`,
+      },
+      {
         id: 'trig-1-0-s2b', type: 'visualization', title: 'Einheitskreis — Winkel visuell erfassen',
         visualizationId: 'unit-circle',
         params: { showSine: false, showCosine: false, interactive: true, showQuadrants: true, showLabels: true, initialAngle: 45 },
@@ -711,6 +721,29 @@ $$\\alpha_{\\circ} = \\alpha_{\\text{rad}} \\cdot \\dfrac{180}{\\pi}$$
 
 **Merke:** Am Taschenrechner *immer* zuerst DEG/RAD prüfen. Im Zweifel mit $\\sin(90°) = 1$ oder $\\sin(\\pi/2) = 1$ testen.`,
       },
+      {
+        id: 'trig-1-1-s2c', type: 'explanation-formal', title: 'Bogenlänge am Kreis',
+        content: `**Bogenlänge eines Kreissektors mit Radius $r$ und Winkel $\\alpha$:**
+
+$$b = r \\cdot \\alpha_{\\mathrm{rad}}$$
+
+| Größe | Bedeutung | Einheit |
+|---|---|---|
+| $b$ | Bogenlänge (zurückgelegter Weg auf der Kreislinie) | Meter (m) |
+| $r$ | Kreisradius | Meter (m) |
+| $\\alpha_{\\mathrm{rad}}$ | Winkel im **Bogenmaß** (Radiant) | dimensionslos |
+
+**Wichtig:** Die Formel gilt **nur**, wenn $\\alpha$ in Radiant eingesetzt wird. Mit Grad müsstest du den Faktor $\\pi/180$ ergänzen: $b = r \\cdot \\alpha_\\circ \\cdot \\pi/180$.
+
+**Spezialfall Einheitskreis** ($r = 1$): $b = \\alpha_{\\mathrm{rad}}$ — die Bogenlänge **ist** das Bogenmaß. Daher heißt es "Bogen-Maß".
+
+**Beispiel:** Welle dreht sich um $60° = \\pi/3$, Radius $r = 0{,}5$ m. Ein Punkt am Rand legt $b = 0{,}5 \\cdot \\pi/3 \\approx 0{,}524$ m zurück.`,
+      },
+      {
+        id: 'trig-1-1-s2b', type: 'visualization', title: 'Einheitskreis — π-Vielfache erkennen',
+        visualizationId: 'unit-circle',
+        params: { showSine: true, showCosine: false, interactive: true, showQuadrants: true, showLabels: true, initialAngle: 90 },
+      },
       { id: 'trig-1-1-s3', type: 'exercise', title: 'Aufgabe 1 — 90° in Radiant', exerciseRef: 'ex-trig-1-1-a' },
       { id: 'trig-1-1-s4', type: 'exercise', title: 'Aufgabe 2 — π in Grad', exerciseRef: 'ex-trig-1-1-b' },
       { id: 'trig-1-1-s5', type: 'exercise', title: 'Aufgabe 3 — 270° in Radiant', exerciseRef: 'ex-trig-1-1-c' },
@@ -789,6 +822,27 @@ $$\\cos(\\alpha) = \\dfrac{A}{H} = \\dfrac{\\text{Ankathete}}{\\text{Hypotenuse}
 $$\\tan(\\alpha) = \\dfrac{G}{A} = \\dfrac{\\text{Gegenkathete}}{\\text{Ankathete}} = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)}$$
 
 **Wichtig:** Diese Definitionen gelten im rechtwinkligen Dreieck direkt nur für Winkel zwischen $0°$ und $90°$. Für beliebige Winkel brauchen wir den Einheitskreis — dort gilt $\\sin(\\alpha) = y$ und $\\cos(\\alpha) = x$ für *jeden* reellen $\\alpha$.`,
+      },
+      {
+        id: 'trig-1-2-s2b', type: 'explanation-formal', title: 'Umkehrfunktionen: arcsin / arccos / arctan',
+        content: `Wenn der **Winkel** gesucht ist (statt eines Funktionswerts), nutzt man die Umkehrfunktionen:
+
+| Bekanntes Verhältnis | Umkehrfunktion | Formel |
+|---|---|---|
+| $\\sin(\\alpha) = G/H$ | $\\arcsin$ | $\\alpha = \\arcsin(G/H)$ |
+| $\\cos(\\alpha) = A/H$ | $\\arccos$ | $\\alpha = \\arccos(A/H)$ |
+| $\\tan(\\alpha) = G/A$ | $\\arctan$ | $\\alpha = \\arctan(G/A)$ |
+
+**Wichtig — Hauptwerte:** Taschenrechner liefern den Hauptwert: $\\arcsin \\in [-90°, 90°]$, $\\arccos \\in [0°, 180°]$, $\\arctan \\in (-90°, 90°)$. Andere Lösungen einer Gleichung wie $\\sin x = c$ ergeben sich aus den Symmetrien des Einheitskreises (siehe Lesson "Vorzeichen und Quadranten").
+
+**Definitionsbereich:** $\\arcsin$ und $\\arccos$ nur für Argumente in $[-1, 1]$. $\\arctan$ akzeptiert jede reelle Zahl.
+
+**Rechner-Modus:** Im DEG-Modus liefern die Umkehrfunktionen Grad, im RAD-Modus Radiant. Vor jeder Klausur prüfen!`,
+      },
+      {
+        id: 'trig-1-2-s2c', type: 'visualization', title: 'Einheitskreis — sin und cos als Koordinaten',
+        visualizationId: 'unit-circle',
+        params: { showSine: true, showCosine: true, interactive: true, showQuadrants: true, showLabels: true, initialAngle: 30 },
       },
       {
         id: 'trig-1-2-s-herleitung',
