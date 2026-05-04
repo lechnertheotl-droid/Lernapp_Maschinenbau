@@ -131,6 +131,52 @@ export const trigonometrySubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 0, uses: ['winkel-typen'] },
       ),
+      mc(
+        'Welcher der folgenden Winkel ist **überstumpf** (also $> 180°$)?',
+        ['$200°$', '$150°$', '$90°$', '$45°$'],
+        0,
+        `**Ansatz:** Überstumpf bedeutet strikt mehr als $180°$ und weniger als $360°$.
+
+**Rechnung:** Nur $200°$ liegt im Bereich $180° < \\alpha < 360°$ — also überstumpf. $150°$ ist stumpf, $90°$ ist recht, $45°$ ist spitz.
+
+**Probe:** Skizze: bei $200°$ ist man bereits über die Halbkreis-Linie hinaus, im "unteren Halbkreis".
+
+**Typischer Fehler:** "Stumpf" mit "überstumpf" verwechseln. Stumpf hat eine Obergrenze bei $180°$.`,
+        [
+          'Überstumpf $> 180°$.',
+          'Welcher Winkel ist überhaupt größer als $180°$?',
+          'Sortiere alle vier nach Größe: $45° < 90° < 150° < 200°$.',
+        ],
+        {
+          1: '$150°$ ist stumpf (zwischen $90°$ und $180°$), nicht überstumpf.',
+          2: '$90°$ ist exakt der rechte Winkel.',
+          3: '$45°$ ist spitz — weit unter $90°$.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['winkel-typen'] },
+      ),
+      sorting(
+        'Sortiere die Winkelklassen nach ihrer typischen Größe von **klein nach groß** (Klein = spitz, groß = gestreckt).',
+        [
+          'spitz (z. B. $30°$)',
+          'recht ($90°$)',
+          'stumpf (z. B. $120°$)',
+          'gestreckt ($180°$)',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Reihenfolge der Klassen nach Grenzwerten merken.
+
+**Rechnung:** $0° < \\text{spitz} < 90° = \\text{recht} < \\text{stumpf} < 180° = \\text{gestreckt}$.
+
+**Probe:** Klein nach groß: $30°$ → $90°$ → $120°$ → $180°$.
+
+**Typischer Fehler:** "stumpf" und "gestreckt" vertauschen. Gestreckt ist die Obergrenze bei $180°$, stumpf liegt darunter.`,
+        [
+          'Klein → groß: welche Klasse hat den kleinsten typischen Wert?',
+          'Reihenfolge der Grenzwerte: $90°$, dann $180°$.',
+          'Spitz < recht ($=90°$) < stumpf < gestreckt ($=180°$).',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['winkel-typen'] },
+      ),
     ],
 
     // ── [1] Innenwinkelsumme im Dreieck = 180° ─────────────────────────────
@@ -240,6 +286,40 @@ export const trigonometrySubGoalTasks = {
           'Formel zuerst.',
           'Dann umstellen auf die gesuchte Größe.',
           'Zahlen erst am Ende.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['winkelsumme-180'] },
+      ),
+      ni(
+        'Im **gleichseitigen Dreieck** sind alle drei Innenwinkel gleich groß. Wie groß ist jeder dieser Winkel (in Grad)?',
+        60, 0, '°',
+        `**Ansatz:** Gleichseitig $\\Rightarrow$ gleichwinklig $\\Rightarrow$ alle Winkel gleich. Mit Winkelsumme $180°$ folgt jeder Winkel $= 180°/3$.
+
+**Rechnung:** $\\alpha = \\beta = \\gamma$ und $\\alpha + \\beta + \\gamma = 180°$, also $3\\alpha = 180°$ und $\\alpha = 60°$.
+
+**Probe:** $60° + 60° + 60° = 180°$ ✓.
+
+**Typischer Fehler:** $90°$ angeben (Verwechslung mit rechtwinklig-gleichschenklig — dort wäre einer $90°$ und die zwei anderen je $45°$).`,
+        [
+          'Im gleichseitigen Dreieck: alle drei Winkel gleich.',
+          '$3\\alpha = 180°$.',
+          '$180° / 3 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['winkelsumme-180'] },
+      ),
+      ni(
+        'Ein **gleichschenkliges Dreieck** hat einen Spitzenwinkel von $40°$. Wie groß ist jeder der beiden gleichen Basiswinkel (in Grad)?',
+        70, 0, '°',
+        `**Ansatz:** Gleichschenklig $\\Rightarrow$ die beiden Basiswinkel sind gleich groß. Mit der Winkelsumme $180°$ kann der Rest auf beide gleichmäßig verteilt werden.
+
+**Rechnung:** $40° + 2\\beta = 180° \\Rightarrow 2\\beta = 140° \\Rightarrow \\beta = 70°$.
+
+**Probe:** $40° + 70° + 70° = 180°$ ✓.
+
+**Typischer Fehler:** $140°$ angeben (Summe beider Basiswinkel statt eines einzelnen) oder die $180°$ vergessen und $90° - 40° = 50°$ rechnen (unzulässige rechtwinklige Annahme).`,
+        [
+          'Beide Basiswinkel sind gleich groß.',
+          'Reststand zur $180°$-Summe gleichmäßig auf beide aufteilen.',
+          '$(180° - 40°)/2 = ?$',
         ],
         { stage: 'transfer', subGoal: 1, uses: ['winkelsumme-180'] },
       ),
@@ -355,6 +435,40 @@ export const trigonometrySubGoalTasks = {
           'Zum Schluss: Summe $= 360°$ als Probe.',
         ],
         { stage: 'transfer', subGoal: 2, uses: ['scheitel-nebenwinkel'] },
+      ),
+      ni(
+        'An einem Geradenkreuz ist ein Winkel $\\alpha$ viermal so groß wie sein Nebenwinkel $\\beta$. Wie groß ist $\\alpha$ in Grad?',
+        144, 0, '°',
+        `**Ansatz:** Nebenwinkel ergänzen sich zu $180°$: $\\alpha + \\beta = 180°$. Bedingung $\\alpha = 4\\beta$ einsetzen und nach $\\beta$ auflösen.
+
+**Rechnung:** $4\\beta + \\beta = 180° \\Rightarrow 5\\beta = 180° \\Rightarrow \\beta = 36°$. Daraus $\\alpha = 4 \\cdot 36° = 144°$.
+
+**Probe:** $144° + 36° = 180°$ ✓ und $144°/36° = 4$ ✓.
+
+**Typischer Fehler:** $\\alpha + \\beta = 90°$ verwenden (Komplementärwinkel-Regel statt Nebenwinkel) — ergäbe $\\beta = 18°, \\alpha = 72°$, was aber kein Nebenwinkel-Paar ist.`,
+        [
+          'Nebenwinkel ergänzen auf $180°$ — Gleichung aufstellen.',
+          '$\\alpha = 4\\beta$ und $\\alpha + \\beta = 180°$ kombinieren.',
+          '$5\\beta = 180°$, dann $\\alpha = 4\\beta$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['scheitel-nebenwinkel'] },
+      ),
+      tf(
+        'An einem Geradenkreuz: die beiden Nebenwinkel zu einem Winkel $\\alpha$ sind zueinander Scheitelwinkel.',
+        true,
+        `**Ansatz:** An einem Geradenkreuz entstehen vier Winkel in der Reihenfolge $\\alpha, \\beta, \\alpha, \\beta$ (gegen den Uhrzeigersinn).
+
+**Rechnung:** Die beiden Nebenwinkel zu $\\alpha$ liegen direkt links und rechts von $\\alpha$ — beide haben Größe $\\beta = 180° - \\alpha$. Diese beiden $\\beta$-Winkel liegen einander **gegenüber** am Schnittpunkt, sind also Scheitelwinkel zueinander.
+
+**Probe:** Skizze mit $\\alpha = 50°$: Vier Winkel $50°, 130°, 50°, 130°$ rundherum. Die beiden $130°$ stehen sich diagonal gegenüber → Scheitelwinkel.
+
+**Typischer Fehler:** Sich vorstellen, dass nur "der" eine Nebenwinkel existiert. Ein Winkel hat ZWEI Nebenwinkel (auf jeder Seite einen) — und die sind gleich groß und einander gegenüber.`,
+        [
+          'Wie viele Nebenwinkel hat ein Winkel an einem Geradenkreuz?',
+          'Zeichne alle vier Winkel: $\\alpha, \\beta, \\alpha, \\beta$.',
+          'Sind die beiden $\\beta$-Winkel gegenüber oder daneben?',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['scheitel-nebenwinkel'] },
       ),
     ],
   },

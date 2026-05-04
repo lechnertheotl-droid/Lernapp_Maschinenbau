@@ -16,7 +16,8 @@ export const exercises_u1 = {
 **Typischer Fehler:** $180°$ ist ein gestreckter Winkel (Halbkreis, zwei gerade aufeinanderfolgende Linien) — das ist doppelt so viel wie ein rechter Winkel.`,
     hints: [
       'Denk an die Ecke eines Buches oder eines Fensters — wie groß ist der Winkel dort?',
-      'Ein Viertel eines vollen Kreises ($360°$).',
+      'Ein voller Kreis hat $360°$. Wie viele rechte Winkel passen in einen vollen Kreis?',
+      'Ein Viertel eines vollen Kreises: $360°/4 = ?$',
     ],
     wrongAnswerExplanations: {
       1: 'Das wäre ein **gestreckter** Winkel (zwei Geraden bilden eine Linie). Ein rechter Winkel ist halb so groß.',
@@ -36,8 +37,9 @@ export const exercises_u1 = {
 
 **Typischer Fehler:** Die Hälfte des vollen Kreises ($180°$) mit dem halben rechten Winkel verwechseln.`,
     hints: [
-      '$45° + 45° = ?$',
-      'Denk an die Diagonale eines Quadrats.',
+      'Halb von $90°$ ist?',
+      '$45° + 45° = ?$ — passt das zum rechten Winkel?',
+      'Denk an die Diagonale eines Quadrats: sie teilt die $90°$-Ecke in zwei gleich große Teile.',
     ],
   },
   'ex-trig-1-0-c': {
@@ -65,6 +67,7 @@ export const exercises_u1 = {
     hints: [
       'Spitz = schmal, stumpf = weit offen.',
       'Rechter Winkel = $90°$, gestreckter Winkel = $180°$.',
+      'Vier Klassen, zwei Grenzen ($90°$ und $180°$): unterhalb spitz, dazwischen stumpf, exakt $90°$ recht, exakt $180°$ gestreckt.',
     ],
     wrongAnswerExplanations: {
       1: 'Die Größenbeziehungen sind umgekehrt. Spitz ist **kleiner**, stumpf **zwischen $90°$ und $180°$**.',
@@ -89,7 +92,9 @@ export const exercises_u1 = {
 
 **Typischer Fehler:** $90°$ fälschlich als „spitz" klassifizieren — $90°$ ist genau die Grenze und heißt **rechter** Winkel.`,
     hints: [
-      'Klassen: 0°–90° spitz, 90° rechter, 90°–180° stumpf, 180° gestreckt.',
+      'Klassen: $0°$–$90°$ spitz, exakt $90°$ recht, $90°$–$180°$ stumpf, exakt $180°$ gestreckt.',
+      'Sortier zuerst nach Größe: $30° < 90° < 135° < 180°$.',
+      'Grenzwerte ($90°$, $180°$) gehören eindeutig zur jeweiligen Klasse — nicht doppelt zuordnen.',
     ],
   },
   'ex-trig-1-0-mastery': {
@@ -105,6 +110,7 @@ export const exercises_u1 = {
 **Typischer Fehler:** Mit $360°$ rechnen (das ist die Winkelsumme im Viereck, nicht im Dreieck).`,
     hints: [
       'Die drei Innenwinkel eines Dreiecks summieren sich auf $180°$.',
+      'Stelle die Formel $\\alpha + \\beta + \\gamma = 180°$ nach $x$ um.',
       '$x = 180° - 60° - 80°$.',
     ],
   },
@@ -606,6 +612,25 @@ $$\\alpha + \\beta + \\gamma = 180°$$
 **Beispiel:** Ein rechtwinkliges Dreieck hat einen $90°$-Winkel. Die anderen beiden müssen zusammen $90°$ ergeben.
 
 **Warum das wichtig ist:** Wenn du zwei Winkel kennst, kannst du den dritten direkt ausrechnen.`,
+      },
+      {
+        id: 'trig-1-0-s2c', type: 'explanation-formal', title: 'Scheitel- und Nebenwinkel am Geradenkreuz',
+        content: `Schneiden sich zwei Geraden in einem Punkt, entstehen vier Winkel. Sie ordnen sich in zwei Paare:
+
+| Beziehung | Lage | Formel |
+|---|---|---|
+| **Scheitelwinkel** | gegenüberliegend (diagonal) | $\\alpha_{\\text{Scheitel}} = \\alpha$ |
+| **Nebenwinkel** | direkt daneben (auf einer Geraden) | $\\beta = 180° - \\alpha$ |
+
+**Konsequenzen:**
+
+- Scheitelwinkel sind **immer gleich groß** — Symmetrie am Schnittpunkt.
+- Nebenwinkel **ergänzen sich auf $180°$** (gestreckter Winkel auf einer Geraden).
+- Die Summe aller vier Winkel um den Schnittpunkt beträgt $360°$ (voller Kreis).
+
+**Beispiel:** $\\alpha = 70°$ → Scheitelwinkel $= 70°$, Nebenwinkel $= 180° - 70° = 110°$. Probe: $70° + 70° + 110° + 110° = 360°$ ✓.
+
+**Achtung — nicht verwechseln:** Komplementärwinkel ergänzen zu $90°$ (nicht $180°$) und treten nur in rechtwinkligen Konfigurationen auf.`,
       },
       {
         id: 'trig-1-0-s2b', type: 'visualization', title: 'Einheitskreis — Winkel visuell erfassen',

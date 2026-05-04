@@ -102,9 +102,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2372 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1516 (64 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1072 / 1072 (100 %) | 100 % | ✅ |
+| Aufgaben (gesamt) | 2378 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1522 (64 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1073 / 1073 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -199,9 +199,9 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **397** (Lesson-Path: 66 · Goal-Tasks: 331)
-- 4-Block: 372/397 (94 %) 🟡
-- MC-wAE: 215/215 (100 %) ✅
+- Aufgaben: **403** (Lesson-Path: 66 · Goal-Tasks: 337)
+- 4-Block: 378/403 (94 %) 🟡
+- MC-wAE: 216/216 (100 %) ✅
 - Sub-Goals: 66/87 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
 
@@ -244,7 +244,7 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
-| `trig-1-0` Winkel-Intuition (Einstieg) | 3 | 3/3 | 20 | 8/4/4/2/2 | 20/20 | 8/8 | ✅ | — |
+| `trig-1-0` Winkel-Intuition (Einstieg) | 3 | 3/3 | 26 | 9/7/5/2/3 | 26/26 | 9/9 | ✅ | — |
 | `trig-1-1` Winkel und ihre Maße | 4 | 4/4 | 25 | 12/7/3/3/0 | 23/25 | 12/12 | ✅ | +2 4B |
 | `trig-1-2` Rechtwinkliges Dreieck | 3 | 3/3 | 19 | 11/4/2/2/0 | 15/19 | 11/11 | ✅ | +4 4B |
 | `trig-1-3` Die Grundwerte | 4 | 4/4 | 25 | 13/5/3/3/1 | 22/25 | 13/13 | ✅ | +3 4B |
