@@ -1631,6 +1631,40 @@ export const trigonometrySubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['grundwerte-sin'] },
       ),
+      tf(
+        '$\\sin(60°) > \\sin(30°)$.',
+        true,
+        `**Ansatz:** $\\sin$ ist im ersten Quadranten ($0°$ bis $90°$) monoton wachsend.
+
+**Rechnung:** $\\sin(30°) = 1/2 = 0{,}5$ und $\\sin(60°) = \\sqrt{3}/2 \\approx 0{,}866$. Also $0{,}866 > 0{,}5$.
+
+**Probe:** Am Einheitskreis: bei $60°$ liegt der Punkt höher (näher an $(0,1)$) als bei $30°$. Die $y$-Koordinate ist die größere — passt.
+
+**Typischer Fehler:** Annehmen, kleinere Gradzahl bedeute größeren $\\sin$-Wert (Verwechslung mit $\\cos$, der monoton fallend ist).`,
+        [
+          'Wie verhält sich $\\sin$ zwischen $0°$ und $90°$?',
+          'Vergleiche $1/2$ mit $\\sqrt{3}/2$.',
+          'Am Einheitskreis: höherer Punkt = größerer $\\sin$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['grundwerte-sin'] },
+      ),
+      ni(
+        'Berechne $\\sin(60°) - \\sin(30°)$ als Dezimalzahl (3 NK).',
+        0.366, 0.005, '',
+        `**Ansatz:** Beide Grundwerte einsetzen und subtrahieren — **nicht** mit $\\sin(60° - 30°) = \\sin(30°)$ verwechseln.
+
+**Rechnung:** $\\sin(60°) - \\sin(30°) = \\sqrt{3}/2 - 1/2 = (\\sqrt{3} - 1)/2 \\approx (1{,}732 - 1)/2 = 0{,}366$.
+
+**Probe:** Wäre Sinus linear, käme $\\sin(30°) = 0{,}5$ heraus — der tatsächliche Wert $0{,}366$ zeigt deutlich, dass Sinus **nicht** linear ist.
+
+**Typischer Fehler:** $\\sin(60°) - \\sin(30°) = \\sin(30°)$ ansetzen (falsche Linearitäts-Annahme). Sinus ist keine lineare Funktion.`,
+        [
+          '$\\sin(60°) = \\sqrt{3}/2$, $\\sin(30°) = 1/2$.',
+          'Differenz $\\sqrt{3}/2 - 1/2$.',
+          '$(\\sqrt{3}-1)/2 \\approx ?$',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['grundwerte-sin'] },
+      ),
       matching(
         'Ordne jeden Sinus-Wert seinem Winkel zu.',
         [
@@ -1741,6 +1775,46 @@ export const trigonometrySubGoalTasks = {
           3: '$1{,}118 > 1$ — unmöglich für Sinus.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['wurzel-n-muster'] },
+      ),
+      ni(
+        'Wende die Merkregel $\\sqrt{n}/2$ auf $n = 4$ an. Welcher Dezimalwert kommt heraus?',
+        1, 0.001, '',
+        `**Ansatz:** $n = 4$ entspricht dem höchsten Standardwinkel ($90°$).
+
+**Rechnung:** $\\sqrt{4}/2 = 2/2 = 1$.
+
+**Probe:** Dies ist $\\sin(90°) = 1$ — der Maximalwert ✓. Reihenfolge: $n = 0, 1, 2, 3, 4$ → $0, 0{,}5, 0{,}707, 0{,}866, 1$.
+
+**Typischer Fehler:** $\\sqrt{4} = 4$ statt $2$ rechnen — die Quadratwurzel von $4$ ist $2$, nicht $4$.`,
+        [
+          '$\\sqrt{4} = ?$',
+          'Geteilt durch $2$.',
+          'Welchem Standardwinkel entspricht $n = 4$?',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['wurzel-n-muster'] },
+      ),
+      mc(
+        'Ein Schüler liest in der Formelsammlung „$\\sin(\\alpha) = \\sqrt{1}/2$". Welcher Winkel $\\alpha$ ist gemeint?',
+        ['$30°$', '$0°$', '$45°$', '$60°$'],
+        0,
+        `**Ansatz:** $\\sqrt{1}/2 = 1/2$. In der Merkregel-Tabelle entspricht $n = 1$ dem Winkel $30°$.
+
+**Rechnung:** $\\sqrt{1}/2 = 1/2 = \\sin(30°)$.
+
+**Probe:** Andere Standardwerte: $\\sin(0°) = 0 = \\sqrt{0}/2$, $\\sin(45°) = \\sqrt{2}/2$, $\\sin(60°) = \\sqrt{3}/2$ — alle haben andere Wurzeln.
+
+**Typischer Fehler:** $\\sqrt{1} = 1$ als "Index" lesen und $1°$ ableiten. $n = 1$ ist die Position in der Tabelle, nicht der Winkel.`,
+        [
+          '$\\sqrt{1}/2$ vereinfachen.',
+          'Welcher Standardwinkel hat $\\sin = 1/2$?',
+          'Tabelle: $n = 1 \\to ?°$.',
+        ],
+        {
+          1: '$\\sin(0°) = 0$, nicht $1/2$.',
+          2: '$\\sin(45°) = \\sqrt{2}/2 \\approx 0{,}707$, nicht $1/2$.',
+          3: '$\\sin(60°) = \\sqrt{3}/2 \\approx 0{,}866$, nicht $1/2$.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['wurzel-n-muster'] },
       ),
       sorting(
         'Bringe die fünf Sinus-Grundwerte nach aufsteigender Größe in die richtige Reihenfolge.',
@@ -1855,6 +1929,40 @@ export const trigonometrySubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 2, uses: ['grundwerte-cos', 'grundwerte-sin'] },
       ),
+      ni(
+        'Berechne $\\tan(30°)$ als Dezimalzahl (3 NK).',
+        0.577, 0.005, '',
+        `**Ansatz:** $\\tan = \\sin/\\cos$.
+
+**Rechnung:** $\\tan(30°) = \\sin(30°)/\\cos(30°) = (1/2)/(\\sqrt{3}/2) = 1/\\sqrt{3} = \\sqrt{3}/3 \\approx 0{,}577$.
+
+**Probe:** Standardwert aus der Formelsammlung: $\\tan(30°) = 1/\\sqrt{3}$ ✓. Komplementär-Check: $\\tan(60°) = \\sqrt{3}$ und $\\tan(30°) \\cdot \\tan(60°) = (1/\\sqrt{3}) \\cdot \\sqrt{3} = 1$ — Komplementär-Tangenten sind reziprok.
+
+**Typischer Fehler:** $\\tan(30°) = 1/2$ angeben (mit $\\sin(30°)$ verwechselt) oder $\\sqrt{3}$ (mit $\\tan(60°)$ verwechselt).`,
+        [
+          '$\\tan = \\sin/\\cos$.',
+          'Brüche teilen: $(1/2) \\div (\\sqrt{3}/2)$.',
+          '$1/\\sqrt{3} = \\sqrt{3}/3 \\approx ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['grundwerte-tan'] },
+      ),
+      tf(
+        '$\\tan(45°) = \\tan(135°)$, weil beide Winkel symmetrisch zur $90°$-Linie liegen.',
+        false,
+        `**Ansatz:** Tangens hat das Vorzeichen von $\\sin/\\cos$. Symmetrie-Argument prüfen, nicht annehmen.
+
+**Rechnung:** $\\tan(45°) = 1$ (1. Quadrant, $\\sin$ und $\\cos$ beide positiv). $\\tan(135°)$: im 2. Quadrant ist $\\sin > 0$, aber $\\cos < 0$ → Quotient negativ. Konkret: $\\sin(135°) = \\sqrt{2}/2$, $\\cos(135°) = -\\sqrt{2}/2$, also $\\tan(135°) = -1$.
+
+**Probe:** Vorzeichenregel ASTC: 1. Q "All" positiv, 2. Q nur "Sinus" positiv → Tangens im 2. Quadrant negativ. Daher $\\tan(135°) = -1 \\ne 1 = \\tan(45°)$.
+
+**Typischer Fehler:** Spiegelsymmetrie ohne Vorzeichen-Check übernehmen. Sinus ist achsensymmetrisch zu $90°$ ($\\sin(135°) = \\sin(45°)$), aber **nicht** Tangens.`,
+        [
+          'Welches Vorzeichen hat $\\cos(135°)$?',
+          'Tangens-Vorzeichen im 2. Quadrant?',
+          '$\\tan(180° - x) = -\\tan(x)$.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['grundwerte-tan'] },
+      ),
       matching(
         'Ordne jedem Winkel sein Paar $(\\sin, \\cos)$ zu.',
         [
@@ -1966,6 +2074,46 @@ export const trigonometrySubGoalTasks = {
           3: '$\\cos(120°)$ ist selbstverständlich definiert — $-0{,}5$.',
         },
         { stage: 'error-analysis', subGoal: 3, uses: ['komplementaer'] },
+      ),
+      mc(
+        'Welcher Ausdruck ist gleich $\\cos(20°)$?',
+        ['$\\sin(70°)$', '$\\sin(20°)$', '$\\sin(110°)$', '$\\sin(0°)$'],
+        0,
+        `**Ansatz:** Komplementär-Formel: $\\cos(\\alpha) = \\sin(90° - \\alpha)$.
+
+**Rechnung:** $\\cos(20°) = \\sin(90° - 20°) = \\sin(70°)$.
+
+**Probe:** Dezimal: $\\cos(20°) \\approx 0{,}9397$ und $\\sin(70°) \\approx 0{,}9397$ ✓.
+
+**Typischer Fehler:** $\\cos(20°) = \\sin(20°)$ annehmen (gilt nur bei $45°$).`,
+        [
+          'Komplementär-Formel: $\\cos(\\alpha) = \\sin(90° - \\alpha)$.',
+          '$90° - 20° = ?$',
+          'Komplementärer Winkel.',
+        ],
+        {
+          1: '$\\sin(20°) \\ne \\cos(20°)$ — Gleichheit nur bei $45°$.',
+          2: '$\\sin(110°) = \\sin(70°)$ wäre rechnerisch dasselbe, aber die Komplementär-Formel verlangt $90° - 20° = 70°$, nicht $110°$.',
+          3: '$\\sin(0°) = 0$, $\\cos(20°) \\approx 0{,}94$ — passt nicht.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['komplementaer'] },
+      ),
+      ni(
+        'Im Bereich $0° \\leq \\alpha \\leq 90°$ gilt $\\cos(\\alpha) = \\sin(75°)$. Wie groß ist $\\alpha$ in Grad?',
+        15, 0, '°',
+        `**Ansatz:** Komplementär-Formel: $\\cos(\\alpha) = \\sin(90° - \\alpha)$. Setze gleich mit $\\sin(75°)$.
+
+**Rechnung:** $\\sin(90° - \\alpha) = \\sin(75°) \\Rightarrow 90° - \\alpha = 75° \\Rightarrow \\alpha = 15°$.
+
+**Probe:** $\\cos(15°) \\approx 0{,}9659$, $\\sin(75°) \\approx 0{,}9659$ ✓.
+
+**Typischer Fehler:** $\\alpha = 75°$ angeben (Komplementär-Schritt vergessen — direkt den Argument-Winkel übernehmen).`,
+        [
+          '$\\cos(\\alpha) = \\sin(90° - \\alpha)$.',
+          'Setze $90° - \\alpha = 75°$.',
+          'Nach $\\alpha$ umstellen.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['komplementaer'] },
       ),
       ni(
         'Berechne $\\sin(30°) + \\cos(60°)$ (beide Grundwerte kombiniert).',

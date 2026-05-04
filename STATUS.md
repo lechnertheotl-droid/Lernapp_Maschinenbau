@@ -102,9 +102,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2392 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1542 (64 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1075 / 1075 (100 %) | 100 % | ✅ |
+| Aufgaben (gesamt) | 2400 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1553 (65 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1077 / 1077 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -199,9 +199,9 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **417** (Lesson-Path: 66 · Goal-Tasks: 351)
-- 4-Block: 398/417 (95 %) 🟡
-- MC-wAE: 218/218 (100 %) ✅
+- Aufgaben: **425** (Lesson-Path: 66 · Goal-Tasks: 359)
+- 4-Block: 409/425 (96 %) 🟡
+- MC-wAE: 220/220 (100 %) ✅
 - Sub-Goals: 66/87 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
 
@@ -247,7 +247,7 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 | `trig-1-0` Winkel-Intuition (Einstieg) | 3 | 3/3 | 26 | 9/7/5/2/3 | 26/26 | 9/9 | ✅ | — |
 | `trig-1-1` Winkel und ihre Maße | 4 | 4/4 | 33 | 13/12/5/3/0 | 33/33 | 13/13 | ✅ | — |
 | `trig-1-2` Rechtwinkliges Dreieck | 3 | 3/3 | 25 | 12/6/5/2/0 | 25/25 | 12/12 | ✅ | — |
-| `trig-1-3` Die Grundwerte | 4 | 4/4 | 25 | 13/5/3/3/1 | 22/25 | 13/13 | ✅ | +3 4B |
+| `trig-1-3` Die Grundwerte | 4 | 4/4 | 33 | 15/9/5/3/1 | 33/33 | 15/15 | ✅ | — |
 | `trig-1-4` Vorzeichen und Quadranten | 3 | 3/3 | 18 | 10/4/3/1/0 | 18/18 | 10/10 | ✅ | — |
 | `trig-2-1` Der Einheitskreis | 4 | 4/4 | 23 | 13/4/3/3/0 | 23/23 | 13/13 | ✅ | — |
 | `trig-2-2` sin und cos als Koordinaten | 5 | 5/5 | 28 | 16/4/5/3/0 | 27/28 | 16/16 | ✅ | +1 4B |
@@ -11312,7 +11312,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 28 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 27 Lessons
 
 #### `alg-1-2` · Wurzeln und gebrochene Exponenten
 
@@ -11401,52 +11401,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-0-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-
-#### `trig-1-3` · Die Grundwerte
-
-- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Grundlagen der Trigonometrie
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `trig-1-2` → `soh-cah-toa`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `grundwerte-sin` — $\sin$-Grundwerte: $0, \tfrac12, \tfrac{\sqrt2}{2}, \tfrac{\sqrt3}{2}, 1$ für $0°,30°,45°,60°,90°$ (SG 0)
-  2. `grundwerte-cos` — $\cos$-Grundwerte: $1, \tfrac{\sqrt3}{2}, \tfrac{\sqrt2}{2}, \tfrac12, 0$ (Sinus rückwärts) ⇐ `grundwerte-sin` (SG 2)
-  3. `wurzel-n-muster` — Merkregel $\sqrt{n}/2$ für $n=0,1,2,3,4$ ⇐ `grundwerte-sin` (SG 1)
-  4. `grundwerte-tan` — $\tan$-Grundwerte: $0, 1/\sqrt3, 1, \sqrt3$, undef. ⇐ `grundwerte-sin`, `grundwerte-cos` (SG 2)
-  5. `komplementaer` — $\cos\alpha = \sin(90°-\alpha)$ und $\sin\alpha = \cos(90°-\alpha)$ ⇐ `grundwerte-sin`, `grundwerte-cos` (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `grundwerte-sin` · **5/5+** — Auswendig: $\sin 0° = 0$, $\sin 30° = 1/2$, $\sin 45° = \sqrt2/2$, $\sin 60° = \sqrt3/2$, $\sin 90° = 1$
-  - ✅ [1] _hoch_ · Konzepte: `wurzel-n-muster` · **5/5+** — Merkregel: $\sin$-Werte folgen dem Muster $\sqrt n / 2$ für $n = 0, 1, 2, 3, 4$
-  - ✅ [2] _hoch_ · Konzepte: `grundwerte-cos`, `grundwerte-tan` · **5/5+** — Kosinus ist Sinus rückwärts: $\cos 0° = 1, \cos 90° = 0$, dazwischen symmetrisch
-  - ✅ [3] _mittel_ · Konzepte: `komplementaer` · **5/5+** — Komplementärwinkel: $\cos\alpha = \sin(90° - \alpha)$ und umgekehrt
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | matching         | `grundwerte-sin` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `grundwerte-sin` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `grundwerte-sin` | 1 | 1 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `grundwerte-sin` | 1 | 1 | ✅ |  |
-|  5 | 0 | transfer           | matching         | `grundwerte-sin` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `wurzel-n-muster` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `wurzel-n-muster` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `wurzel-n-muster` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `wurzel-n-muster` | 1 | 1 | ✅ |  |
-| 10 | 1 | transfer           | sorting          | `wurzel-n-muster` | 1 | 1 | ✅ |  |
-| 11 | 2 | recognize          | true-false       | `grundwerte-cos` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `grundwerte-cos` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `grundwerte-tan` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `grundwerte-cos`, `grundwerte-sin` | 1 | 1 | ✅ | Distraktor: sin/cos verwechselt |
-| 15 | 2 | transfer           | matching         | `grundwerte-cos`, `grundwerte-sin` | 1 | 1 | ✅ |  |
-| 16 | 3 | recognize          | true-false       | `komplementaer` | 1 | 1 | ✅ |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `komplementaer` | 1 | 1 | ✅ |  |
-| 18 | 3 | apply-independent  | number-input     | `komplementaer` | 1 | 1 | ✅ |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `komplementaer` | 1 | 1 | ✅ |  |
-| 20 | 3 | transfer           | number-input     | `komplementaer`, `grundwerte-sin` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/trigonometry.js` unter `'trig-1-3': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-trig-1-3-b`, `ex-trig-1-3-c`, `ex-trig-1-3-mastery`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
 #### `trig-2-2` · sin und cos als Koordinaten
 

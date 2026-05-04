@@ -345,15 +345,13 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
     question: '$\\cos(60°) = $?',
     options: ['$\\dfrac{\\sqrt{3}}{2}$', '$\\dfrac{\\sqrt{2}}{2}$', '$\\dfrac{1}{2}$', '$0$'],
     correctIndex: 2,
-    explanation: `**Ansatz:** Grundwert oder Komplementärformel nutzen.
+    explanation: `**Ansatz:** Komplementärformel: $\\cos(\\alpha) = \\sin(90° - \\alpha)$.
 
-**Regel:** $\\cos(\\alpha) = \\sin(90° - \\alpha)$. Also $\\cos(60°) = \\sin(30°) = \\dfrac{1}{2}$.
+**Rechnung:** $\\cos(60°) = \\sin(90° - 60°) = \\sin(30°) = 1/2$. Am Einheitskreis ($60° = \\pi/3$) liegt der Punkt bei $(1/2, \\sqrt{3}/2)$ — die x-Koordinate ist $1/2$.
 
-**Am Einheitskreis:** $60° = \\dfrac{\\pi}{3}$. Der Punkt liegt bei $\\left(\\dfrac{1}{2}, \\dfrac{\\sqrt{3}}{2}\\right)$ — die x-Koordinate ist $\\dfrac{1}{2}$.
+**Probe:** $\\sin^2(60°) + \\cos^2(60°) = 3/4 + 1/4 = 1$ ✓. Aus dem $30°{-}60°{-}90°$-Dreieck mit Hypotenuse $2$ ist die Ankathete zu $60°$ gleich $1$, also $\\cos(60°) = 1/2$ ✓.
 
-**Probe:** $\\sin^{2}(60°) + \\cos^{2}(60°) = \\dfrac{3}{4} + \\dfrac{1}{4} = 1$. ✓
-
-**Typischer Fehler:** $\\dfrac{\\sqrt{3}}{2}$ wählen — das ist $\\sin(60°)$, nicht $\\cos(60°)$. Merke: Bei $60°$ ist $\\cos$ der *kleinere* Wert, bei $30°$ ist $\\sin$ der *kleinere*.`,
+**Typischer Fehler:** $\\sqrt{3}/2$ wählen — das ist $\\sin(60°) = \\cos(30°)$, nicht $\\cos(60°)$. Merke: Bei $60°$ ist $\\cos$ der *kleinere* Wert, bei $30°$ ist $\\sin$ der *kleinere*.`,
     hints: [
       'Welches Winkelmaß? Grad. Skizze am Einheitskreis: wo liegt $60°$?',
       'Nutze $\\cos(\\alpha) = \\sin(90° - \\alpha)$.',
@@ -370,16 +368,15 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
     question: '$\\sin(45°) = $?',
     options: ['$\\dfrac{1}{2}$', '$\\dfrac{\\sqrt{2}}{2}$', '$\\dfrac{\\sqrt{3}}{2}$', '$1$'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Aus dem gleichschenklig-rechtwinkligen Dreieck.
+    explanation: `**Ansatz:** Aus dem gleichschenklig-rechtwinkligen Dreieck — beide nicht-rechte Winkel sind $45°$, also Katheten gleich lang.
 
-**Herleitung:** Ein rechtwinkliges Dreieck mit zwei $45°$-Winkeln hat gleiche Katheten ($G = A$) und Hypotenuse $H = \\sqrt{2} \\cdot G$ (Pythagoras). Also:
-$$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2} \\cdot G} = \\dfrac{1}{\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2} \\approx 0{,}707.$$
+**Rechnung:** Mit Katheten $G = A$ ergibt der Pythagoras Hypotenuse $H = \\sqrt{G^2 + A^2} = \\sqrt{2}\\cdot G$. Daher
+$$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2}\\,G} = \\dfrac{1}{\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2} \\approx 0{,}707.$$
+Am Einheitskreis ($45° = \\pi/4$) liegt der Punkt auf der Winkelhalbierenden $y = x$ bei $(\\sqrt{2}/2,\\,\\sqrt{2}/2)$.
 
-**Am Einheitskreis:** $45° = \\dfrac{\\pi}{4}$. Der Punkt liegt bei $\\left(\\dfrac{\\sqrt{2}}{2}, \\dfrac{\\sqrt{2}}{2}\\right)$ — x = y, die Winkelhalbierende.
+**Probe:** $\\sin^2(45°) + \\cos^2(45°) = 1/2 + 1/2 = 1$ ✓. Bei $45°$ gilt $\\sin = \\cos$, daher $\\tan(45°) = 1$.
 
-**Wichtig:** Bei $45°$ gilt $\\sin(45°) = \\cos(45°)$, daher $\\tan(45°) = 1$.
-
-**Typischer Fehler:** $\\dfrac{1}{\\sqrt{2}}$ nicht rationalisieren und als Endform stehen lassen.`,
+**Typischer Fehler:** $1/\\sqrt{2}$ als Endform stehen lassen statt zu rationalisieren — Prüfungs-Konvention erwartet $\\sqrt{2}/2$.`,
     hints: [
       'Welches Winkelmaß? Grad. Skizze: gleichschenkliges rechtwinkliges Dreieck.',
       'Bei $45°$: Katheten gleich lang, Hypotenuse $= \\sqrt{2} \\cdot$ Kathete.',
@@ -421,15 +418,15 @@ $$\\sin(45°) = \\dfrac{G}{H} = \\dfrac{G}{\\sqrt{2} \\cdot G} = \\dfrac{1}{\\sq
     question: '[PRÜFUNG] Welcher Wert ist FALSCH?',
     options: ['$\\sin(0°) = 0$', '$\\cos(0°) = 1$', '$\\sin(90°) = 0$', '$\\tan(0°) = 0$'],
     correctIndex: 2,
-    explanation: `**Ansatz:** Jede Aussage am Einheitskreis prüfen.
+    explanation: `**Ansatz:** Jede der vier Aussagen am Einheitskreis prüfen — Punkt-Koordinaten ablesen und mit der Behauptung vergleichen.
 
-**Prüfung:**
-- $\\sin(0°) = 0$: Punkt $(1,0)$, y-Koordinate $= 0$ ✓
-- $\\cos(0°) = 1$: Punkt $(1,0)$, x-Koordinate $= 1$ ✓
-- $\\sin(90°) = 0$: FALSCH. Punkt $(0,1)$, y-Koordinate $= 1$, also $\\sin(90°) = 1$.
-- $\\tan(0°) = 0$: $\\tan(0°) = \\dfrac{0}{1} = 0$ ✓
+**Rechnung:**
+- $\\sin(0°) = 0$: Punkt $(1,0)$, $y$-Koordinate $= 0$ ✓ (richtig)
+- $\\cos(0°) = 1$: Punkt $(1,0)$, $x$-Koordinate $= 1$ ✓ (richtig)
+- $\\sin(90°) = 0$: Punkt $(0,1)$, $y$-Koordinate $= 1$, also $\\sin(90°) = 1$ — die Aussage ist **falsch**.
+- $\\tan(0°) = 0$: $\\sin(0°)/\\cos(0°) = 0/1 = 0$ ✓ (richtig)
 
-**Am Einheitskreis:** Bei $90°$ steht der Punkt oben auf $(0, 1)$. Die y-Koordinate ist $1$, die x-Koordinate ist $0$. Also $\\sin(90°) = 1$ (nicht $0$!) und $\\cos(90°) = 0$.
+**Probe:** Drei Aussagen stimmen, eine ist falsch — passt zur Aufgabenstellung. Pythagoras-Identität: $\\sin^2(90°) + \\cos^2(90°) = 1 + 0 = 1$ ✓. Mit der falschen Aussage $\\sin(90°) = 0$ käme $0 + 0 = 0 \\ne 1$ — Widerspruch.
 
 **Typischer Fehler:** $\\sin$ und $\\cos$ bei $0°/90°$ verwechseln. Merke: $\\sin(0°) = 0$ (kein Anteil nach oben), $\\sin(90°) = 1$ (maximaler Anteil nach oben).`,
     hints: [
