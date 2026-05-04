@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2413 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1566 (65 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1079 / 1079 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2455 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1608 (65 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1098 / 1098 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 232 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -919,10 +919,10 @@ _Signalverarbeitung, Regelungstechnik, Elektrotechnik. Laplace vereinfacht DGL z
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **188** (Lesson-Path: 59 · Goal-Tasks: 129)
-- 4-Block: 154/188 (82 %) 🟡
-- MC-wAE: 40/40 (100 %) ✅
-- Sub-Goals: 24/76 Goal-Tasks verknüpft 🔴
+- Aufgaben: **230** (Lesson-Path: 59 · Goal-Tasks: 171)
+- 4-Block: 196/230 (85 %) 🟡
+- MC-wAE: 59/59 (100 %) ✅
+- Sub-Goals: 31/76 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Statik (Kräftegleichgewicht) und Dynamik (Newtonsche Gesetze, Energie) — die klassischen Grundlagen des Maschinenbaus.**
@@ -963,8 +963,8 @@ _Mechanik ist das Herzfach im Maschinenbau-Bachelor und Basis für Festigkeitsle
 
 | Lesson | SubG | Goal✅ | Aufg. | Typen (mc/ni/tf/ma/so) | 4B✅ | MC-wAE | Mastery | Lücken |
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
-| `mech-0-1` SI-Basiseinheiten & Präfixe | 3 | 0/3 | 5 | 1/2/1/1/0 | 5/5 | 1/1 | ✅ | +3 Goal |
-| `mech-0-2` Abgeleitete Einheiten (N, J, Pa, W) | 4 | 0/4 | 5 | 1/2/1/1/0 | 5/5 | 1/1 | ✅ | +4 Goal |
+| `mech-0-1` SI-Basiseinheiten & Präfixe | 3 | 3/3 | 23 | 9/5/4/3/2 | 23/23 | 9/9 | ✅ | — |
+| `mech-0-2` Abgeleitete Einheiten (N, J, Pa, W) | 4 | 4/4 | 29 | 12/7/5/5/0 | 29/29 | 12/12 | ✅ | — |
 | `mech-0-3` Dimensionsanalyse — Einheitencheck | 4 | 4/4 | 24 | 5/7/5/3/4 | 24/24 | 5/5 | ✅ | — |
 | `mech-1-1` Kräfte und Freikörperbild | 4 | 0/4 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +4 Goal, +3 4B |
 | `mech-1-2` Momente und Hebelarm | 4 | 0/4 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +4 Goal, +3 4B |
@@ -8293,7 +8293,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 36 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 34 Lessons
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -9334,89 +9334,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-1-3-a`, `ex-dgl-1-3-b`, `ex-dgl-1-3-c`, `ex-dgl-1-3-d`, `ex-dgl-1-3-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
-
-#### `mech-0-1` · SI-Basiseinheiten & Präfixe
-
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Einheiten & Dimensionsanalyse (Einstieg)
-- **Prerequisites:** keine (Einstiegs-Lesson).
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `si-basis-7` — 7 SI-Basiseinheiten: m, kg, s, A, K, mol, cd (SG 0)
-  2. `praefixe-1000` — Präfixe in 1000er-Schritten: giga ($10^9$), mega ($10^6$), kilo ($10^3$), milli, mikro, nano (SG 0)
-  3. `kg-anomalie` — kg ist die einzige Basiseinheit mit eingebautem Präfix ⇐ `si-basis-7` (SG 1)
-  4. `sci-notation` — Wissenschaftliche Notation $a\cdot 10^n$ (SG 2)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `si-basis-7`, `praefixe-1000` · **0/5+** — SI-Präfixe giga, mega, kilo, milli, mikro, nano zuordnen
-  - 🔴 [1] _mittel_ · Konzepte: `kg-anomalie` · **0/5+** — Kilogramm als einzige SI-Basiseinheit mit Präfix
-  - 🔴 [2] _hoch_ · Konzepte: `sci-notation` · **0/5+** — Wissenschaftliche Notation $a \cdot 10^n$ sicher schreiben
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `praefixe-1000` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `praefixe-1000` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `praefixe-1000` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `praefixe-1000` | 1 | 0 | 🔴 | M (mega) mit G (giga) verwechselt |
-|  5 | 0 | transfer           | matching         | `praefixe-1000` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `kg-anomalie` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `kg-anomalie`, `si-basis-7` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `kg-anomalie` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `kg-anomalie` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `si-basis-7` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `sci-notation` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `sci-notation` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `sci-notation` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `sci-notation` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `sci-notation`, `praefixe-1000` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 15 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-0-1': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-
-#### `mech-0-2` · Abgeleitete Einheiten (N, J, Pa, W)
-
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Einheiten & Dimensionsanalyse (Einstieg)
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `mech-0-1` → `si-basis-7`, `praefixe-1000`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `newton-zerlegung` — $1\,\text{N}=1\,\text{kg}\cdot\text{m}/\text{s}^2$ (SG 0)
-  2. `mpa-nmm2` — $1\,\text{MPa}=1\,\text{N}/\text{mm}^2$ — Ingenieur-Konvention (SG 1)
-  3. `bar-pa` — bar↔Pa: $1\,\text{bar}=10^5\,\text{Pa}$ (SG 2)
-  4. `dim-check` — Dimensionsanalyse als Kontrollschritt — links/rechts dieselbe Einheit ⇐ `newton-zerlegung` (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `newton-zerlegung` · **0/5+** — Newton $1\,\text{N} = 1\,\text{kg}\cdot\text{m}/\text{s}^2$ zerlegen
-  - 🔴 [1] _hoch_ · Konzepte: `mpa-nmm2` · **0/5+** — $1\,\text{MPa} = 1\,\text{N}/\text{mm}^2$ (Ingenieur-Konvention)
-  - 🔴 [2] _mittel_ · Konzepte: `bar-pa` · **0/5+** — bar $\leftrightarrow$ Pa: $1\,\text{bar}=10^5\,\text{Pa}$
-  - 🔴 [3] _hoch_ · Konzepte: `dim-check` · **0/5+** — Dimensionsanalyse als Kontrollschritt
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `newton-zerlegung` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `newton-zerlegung` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `newton-zerlegung` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `newton-zerlegung` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | matching         | `newton-zerlegung` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `mpa-nmm2` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `mpa-nmm2` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `mpa-nmm2` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `mpa-nmm2` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | number-input     | `mpa-nmm2` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `bar-pa` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `bar-pa` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `bar-pa` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `bar-pa` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | matching         | `bar-pa` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `dim-check` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `dim-check` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `dim-check` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `dim-check` | 1 | 0 | 🔴 | Inkonsistente Einheiten übersehen |
-| 20 | 3 | transfer           | multiple-choice  | `dim-check` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-0-2': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `mech-1-3` · Schnittkräfte N(x), Q(x), M(x)
 
@@ -11273,7 +11190,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 28 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 30 Lessons
 
 #### `trig-1-4` · Vorzeichen und Quadranten
 
@@ -11314,6 +11231,43 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/trigonometry.js` unter `'trig-1-4': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
+
+#### `mech-0-1` · SI-Basiseinheiten & Präfixe
+
+- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Einheiten & Dimensionsanalyse (Einstieg)
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `si-basis-7` — 7 SI-Basiseinheiten: m, kg, s, A, K, mol, cd (SG 0)
+  2. `praefixe-1000` — Präfixe in 1000er-Schritten: giga ($10^9$), mega ($10^6$), kilo ($10^3$), milli, mikro, nano (SG 0)
+  3. `kg-anomalie` — kg ist die einzige Basiseinheit mit eingebautem Präfix ⇐ `si-basis-7` (SG 1)
+  4. `sci-notation` — Wissenschaftliche Notation $a\cdot 10^n$ (SG 2)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `si-basis-7`, `praefixe-1000` · **6/5+** — SI-Präfixe giga, mega, kilo, milli, mikro, nano zuordnen
+  - ✅ [1] _mittel_ · Konzepte: `kg-anomalie` · **6/5+** — Kilogramm als einzige SI-Basiseinheit mit Präfix
+  - ✅ [2] _hoch_ · Konzepte: `sci-notation` · **6/5+** — Wissenschaftliche Notation $a \cdot 10^n$ sicher schreiben
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `praefixe-1000` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `praefixe-1000` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `praefixe-1000` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `praefixe-1000` | 1 | 1 | ✅ | M (mega) mit G (giga) verwechselt |
+|  5 | 0 | transfer           | matching         | `praefixe-1000` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `kg-anomalie` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `kg-anomalie`, `si-basis-7` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `kg-anomalie` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `kg-anomalie` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | multiple-choice  | `si-basis-7` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `sci-notation` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `sci-notation` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `sci-notation` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `sci-notation` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `sci-notation`, `praefixe-1000` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-0-1': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `alg-1-2` · Wurzeln und gebrochene Exponenten
 
@@ -11718,6 +11672,50 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/festigkeitslehre.js` unter `'fest-1-4': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `stress-strain`, `mohr-circle`, `interactive-beam`, `beam-reactions`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Einheiten $\text{N/mm}^2$ vs. $\text{MPa}$ (identisch) sorgen für Panikmomente. · Bei Biegung ein statt Widerstandsmoment Flächenträgheitsmoment benutzt. · Sicherheitszahl vergessen: zulässige Spannung ist immer $\sigma_{\text{zul}}=R_e/S$.
+
+#### `mech-0-2` · Abgeleitete Einheiten (N, J, Pa, W)
+
+- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Einheiten & Dimensionsanalyse (Einstieg)
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-0-1` → `si-basis-7`, `praefixe-1000`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `newton-zerlegung` — $1\,\text{N}=1\,\text{kg}\cdot\text{m}/\text{s}^2$ (SG 0)
+  2. `mpa-nmm2` — $1\,\text{MPa}=1\,\text{N}/\text{mm}^2$ — Ingenieur-Konvention (SG 1)
+  3. `bar-pa` — bar↔Pa: $1\,\text{bar}=10^5\,\text{Pa}$ (SG 2)
+  4. `dim-check` — Dimensionsanalyse als Kontrollschritt — links/rechts dieselbe Einheit ⇐ `newton-zerlegung` (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `newton-zerlegung` · **6/5+** — Newton $1\,\text{N} = 1\,\text{kg}\cdot\text{m}/\text{s}^2$ zerlegen
+  - ✅ [1] _hoch_ · Konzepte: `mpa-nmm2` · **6/5+** — $1\,\text{MPa} = 1\,\text{N}/\text{mm}^2$ (Ingenieur-Konvention)
+  - ✅ [2] _mittel_ · Konzepte: `bar-pa` · **6/5+** — bar $\leftrightarrow$ Pa: $1\,\text{bar}=10^5\,\text{Pa}$
+  - ✅ [3] _hoch_ · Konzepte: `dim-check` · **6/5+** — Dimensionsanalyse als Kontrollschritt
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `newton-zerlegung` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `newton-zerlegung` | 1 | 2 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `newton-zerlegung` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `newton-zerlegung` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | matching         | `newton-zerlegung` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `mpa-nmm2` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `mpa-nmm2` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `mpa-nmm2` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `mpa-nmm2` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `mpa-nmm2` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `bar-pa` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `bar-pa` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `bar-pa` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `bar-pa` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | matching         | `bar-pa` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `dim-check` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `dim-check` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `dim-check` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `dim-check` | 1 | 1 | ✅ | Inkonsistente Einheiten übersehen |
+| 20 | 3 | transfer           | multiple-choice  | `dim-check` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-0-2': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `alg-1-1` · Potenzgesetze
 

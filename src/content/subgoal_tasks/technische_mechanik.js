@@ -17,6 +17,1010 @@ import { mc, ni, tf, matching, sorting } from './_helpers'
 export const technischeMechanikSubGoalTasks = {
 
   // ────────────────────────────────────────────────────────────────────────
+  // mech-0-1 — SI-Basiseinheiten & Präfixe  (3 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-0-1': {
+
+    // ── [0] SI-Präfixe giga, mega, kilo, milli, mikro, nano zuordnen ────
+    0: [
+      tf(
+        'Der Präfix mega (M) entspricht dem Faktor $10^{6}$.',
+        true,
+        `**Ansatz:** Im Präfix-Kalender steigt jeder Schritt um Faktor $1000$: kilo ($10^{3}$) → mega ($10^{6}$) → giga ($10^{9}$).
+
+**Rechnung:** mega liegt zwei Stufen über „keinem Präfix": $10^{0} \\cdot 1000 \\cdot 1000 = 10^{6}$.
+
+**Probe:** $1\\,\\text{MW} = 10^{6}\\,\\text{W} = 1\\,000\\,000\\,\\text{W}$ — entspricht der Leistung mehrerer Großverbraucher. ✓
+
+**Typischer Fehler:** mega mit giga ($10^{9}$) verwechseln — beide Großbuchstaben (M/G), aber Faktor $1000$ Unterschied.`,
+        [
+          'Ein Schritt im Präfix-Kalender ist Faktor $1000$.',
+          'Zähle vom Grundwert ($10^{0}$): kilo, mega, giga.',
+          'mega = zwei Stufen über $10^{0}$ = $10^{6}$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['praefixe-1000'] },
+      ),
+      mc(
+        'Wie viele Watt sind $5\\,\\text{MW}$?',
+        [
+          '$5 \\cdot 10^{6}\\,\\text{W}$',
+          '$5 \\cdot 10^{3}\\,\\text{W}$',
+          '$5 \\cdot 10^{9}\\,\\text{W}$',
+          '$5 \\cdot 10^{-6}\\,\\text{W}$',
+        ],
+        0,
+        `**Ansatz:** Präfix M = mega = $10^{6}$. Die Zahl bleibt erhalten, das Symbol wird durch die Zehnerpotenz ersetzt.
+
+**Rechnung:** $5\\,\\text{MW} = 5 \\cdot 10^{6}\\,\\text{W} = 5\\,000\\,000\\,\\text{W}$.
+
+**Probe:** Eine Windkraftanlage hat typischerweise $2$–$5\\,\\text{MW}$, also Millionen Watt — Größenordnung passt. ✓
+
+**Typischer Fehler:** mega ($10^{6}$) mit kilo ($10^{3}$) oder giga ($10^{9}$) verwechseln — alle drei sind positive Präfixe, der Faktor unterscheidet sich aber jeweils um $1000$.`,
+        [
+          'Präfix M steht für mega.',
+          'mega entspricht dem Faktor $10^{6}$.',
+          '$5\\,\\text{MW}$ heißt: Zahl mal $10^{6}$ in der Einheit Watt.',
+        ],
+        {
+          1: 'Das wäre $5\\,\\text{kW}$ (kilo, $10^{3}$). M steht für mega, nicht kilo.',
+          2: 'Das wäre $5\\,\\text{GW}$ (giga, $10^{9}$). Faktor $1000$ zu groß.',
+          3: 'Hier wurde mega mit mikro ($10^{-6}$) verwechselt. Großbuchstabe M = mega, Kleinbuchstabe „µ" = mikro.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['praefixe-1000'] },
+      ),
+      ni(
+        'Wie viele Watt sind $0{,}25\\,\\text{GW}$? Gib das Ergebnis in $\\text{W}$ an.',
+        250000000, 1, 'W',
+        `**Ansatz:** Präfix G = giga = $10^{9}$. Zahl mal Zehnerpotenz.
+
+**Rechnung:** $0{,}25\\,\\text{GW} = 0{,}25 \\cdot 10^{9}\\,\\text{W} = 2{,}5 \\cdot 10^{8}\\,\\text{W} = 250\\,000\\,000\\,\\text{W}$.
+
+**Probe:** $0{,}25\\,\\text{GW} = 250\\,\\text{MW}$ (Faktor $1000$ kleiner). $250\\,\\text{MW} = 250 \\cdot 10^{6}\\,\\text{W} = 2{,}5 \\cdot 10^{8}\\,\\text{W}$. ✓
+
+**Typischer Fehler:** giga mit mega ($10^{6}$) verwechseln — dann käme nur $250\\,000\\,\\text{W}$ heraus (Faktor $1000$ zu klein).`,
+        [
+          'G = giga = $10^{9}$.',
+          'Schreibe $0{,}25 \\cdot 10^{9}$ als Dezimalzahl — neun Stellen verschieben.',
+          'Das Komma wandert um neun Stellen nach rechts; Nullen auffüllen.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['praefixe-1000'] },
+      ),
+      mc(
+        'Ein Studierender rechnet: $4\\,\\text{MJ} = 4 \\cdot 10^{9}\\,\\text{J}$. Welcher Fehler liegt vor?',
+        [
+          'M (mega) wurde mit G (giga) verwechselt — richtig ist $4 \\cdot 10^{6}\\,\\text{J}$.',
+          'M und G unterscheiden sich nur in der Schreibweise — beide stehen für $10^{9}$.',
+          'Korrekt — $\\text{MJ}$ bedeutet immer $10^{9}\\,\\text{J}$.',
+          'Die Mantisse $4$ ist falsch; richtig wäre $40 \\cdot 10^{9}\\,\\text{J}$.',
+        ],
+        0,
+        `**Ansatz:** mega = $10^{6}$, giga = $10^{9}$. Beide Großbuchstaben (M/G), aber Faktor $1000$ Unterschied.
+
+**Rechnung:** $4\\,\\text{MJ} = 4 \\cdot 10^{6}\\,\\text{J} = 4\\,000\\,000\\,\\text{J}$. Der Studierende hat den Exponenten $9$ statt $6$ angesetzt.
+
+**Probe:** $1\\,\\text{MJ}$ ist die Energie zum Heben von $\\approx 100\\,\\text{kg}$ um $1000\\,\\text{m}$ — eine alltägliche Größenordnung. $1\\,\\text{GJ} = 1000\\,\\text{MJ}$ wäre ein viel größerer Energiebetrag. ✓
+
+**Typischer Fehler:** Bei Großbuchstaben (M, G, T, P) den Exponenten raten, statt den Präfix-Kalender abzulesen.`,
+        [
+          'Präfix-Kalender: kilo $10^{3}$, mega $10^{6}$, giga $10^{9}$.',
+          'M und G sind nicht dasselbe — vergleiche die Faktoren.',
+          'Welcher Exponent gehört zu M (mega)?',
+        ],
+        {
+          1: 'Falsch — M und G unterscheiden sich um Faktor $1000$. M = mega = $10^{6}$, G = giga = $10^{9}$.',
+          2: 'Falsch — $\\text{MJ}$ bedeutet $10^{6}\\,\\text{J}$, nicht $10^{9}\\,\\text{J}$.',
+          3: 'Die Mantisse $4$ ist korrekt; der Fehler liegt im Exponenten, nicht in der Vorzahl.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['praefixe-1000'] },
+      ),
+      matching(
+        'Ordne jeder Zeitangabe ihren Wert in Sekunden zu.',
+        [
+          { left: '$5\\,\\text{ns}$', right: '$5 \\cdot 10^{-9}\\,\\text{s}$' },
+          { left: '$5\\,\\text{µs}$', right: '$5 \\cdot 10^{-6}\\,\\text{s}$' },
+          { left: '$5\\,\\text{ms}$', right: '$5 \\cdot 10^{-3}\\,\\text{s}$' },
+          { left: '$5\\,\\text{ks}$', right: '$5 \\cdot 10^{3}\\,\\text{s}$' },
+          { left: '$5\\,\\text{Ms}$', right: '$5 \\cdot 10^{6}\\,\\text{s}$' },
+        ],
+        `**Ansatz:** Jede Präfix-Stufe ändert den Exponenten um $\\pm 3$. Negative Exponenten = Bruchteile, positive = Vielfache.
+
+**Rechnung:** n $= 10^{-9}$, µ $= 10^{-6}$, m $= 10^{-3}$, k $= 10^{3}$, M $= 10^{6}$.
+
+**Probe:** Quervergleich: $5\\,\\text{ms}$ ist eine typische Reaktionszeit (Bruchteil einer Sekunde), $5\\,\\text{Ms}$ sind etwa $58\\,$ Tage — passt zu $5 \\cdot 10^{6}\\,\\text{s}$. ✓
+
+**Typischer Fehler:** Klein-„m" (milli) mit Groß-„M" (mega) verwechseln — beide schreibt man im Symbol, der Größen-Unterschied ist Faktor $10^{9}$.`,
+        [
+          'Negative Exponenten gehören zu Präfixen kleiner als $1$ (n, µ, m).',
+          'Positive Exponenten gehören zu Präfixen größer als $1$ (k, M, G).',
+          'Schreibweise zählt: m (klein) = milli = $10^{-3}$, M (groß) = mega = $10^{6}$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['praefixe-1000'] },
+      ),
+      sorting(
+        'Sortiere die Präfixe nach **steigendem** Faktor (kleinster zuerst).',
+        ['nano (n)', 'mikro (µ)', 'milli (m)', 'kilo (k)', 'mega (M)', 'giga (G)'],
+        [0, 1, 2, 3, 4, 5],
+        `**Ansatz:** Präfixe stehen in Faktoren von $1000$ auseinander. Negative Exponenten zuerst, dann positive.
+
+**Rechnung:** n $10^{-9}$ < µ $10^{-6}$ < m $10^{-3}$ < k $10^{3}$ < M $10^{6}$ < G $10^{9}$.
+
+**Probe:** Ein $\\text{nm}$ ist deutlich kleiner als ein $\\text{km}$ — die Reihenfolge passt zur physikalischen Anschauung. ✓
+
+**Typischer Fehler:** mikro und milli vertauschen — milli ist $1000$-fach größer als mikro.`,
+        [
+          'Negative Exponenten kommen vor positiven.',
+          'Innerhalb beider Gruppen: kleiner Exponent = kleinerer Wert.',
+          'Reihenfolge: n, µ, m, (kein Präfix), k, M, G.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['praefixe-1000'] },
+      ),
+    ],
+
+    // ── [1] Kilogramm als einzige SI-Basiseinheit mit Präfix ─────────────
+    1: [
+      tf(
+        'Das Kilogramm ist die einzige SI-Basiseinheit, die bereits einen dezimalen Präfix im Namen trägt.',
+        true,
+        `**Ansatz:** Liste der sieben SI-Basiseinheiten durchgehen: m, kg, s, A, K, mol, cd. Nur „kg" enthält den Präfix „k" (kilo).
+
+**Rechnung:** m, s, A, K, mol, cd haben keinen Präfix. kg hat „kilo" (= $10^{3}$) bereits eingebaut. Konsequenz: $1\\,\\text{g} = 10^{-3}\\,\\text{kg}$, nicht umgekehrt.
+
+**Probe:** Wenn man Tonnen umrechnet, gilt $1\\,\\text{t} = 10^{3}\\,\\text{kg} = 10^{6}\\,\\text{g}$ — die Umrechnung über die Basiseinheit kg läuft sauber. ✓
+
+**Typischer Fehler:** Annehmen, Gramm sei die Basiseinheit. Historisch wurde das Kilogramm als Urkilogramm (Platin-Iridium) festgelegt — daher der Präfix-Sonderfall.`,
+        [
+          'SI-Basiseinheiten: m, kg, s, A, K, mol, cd — sieben Stück.',
+          'Welche dieser sieben Symbole enthält einen Präfix-Buchstaben?',
+          'Nur „kg" — das „k" ist der Präfix kilo.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['kg-anomalie'] },
+      ),
+      mc(
+        'Welche der folgenden Aussagen über Gramm und Kilogramm ist **richtig**?',
+        [
+          '$1\\,\\text{g} = 10^{-3}\\,\\text{kg}$ — das Gramm ist die abgeleitete Einheit, das Kilogramm die SI-Basiseinheit.',
+          '$1\\,\\text{g} = 10^{3}\\,\\text{kg}$ — Gramm und Kilogramm verhalten sich umgekehrt.',
+          'Gramm und Kilogramm sind beide SI-Basiseinheiten, je nach Anwendung.',
+          'Gramm ist die SI-Basiseinheit, Kilogramm ist daraus mit dem Präfix „k" abgeleitet.',
+        ],
+        0,
+        `**Ansatz:** Im SI ist genau das Kilogramm Basiseinheit der Masse. Das Gramm ist daraus über den Präfix milli abgeleitet — als wäre das kg „milli-mal" genommen.
+
+**Rechnung:** $1\\,\\text{g} = 1\\,\\text{m kg} = 10^{-3}\\,\\text{kg}$.
+
+**Probe:** $500\\,\\text{g} = 0{,}5\\,\\text{kg}$ — das passt zu unserer Alltagsanschauung von Gewichtsangaben. ✓
+
+**Typischer Fehler:** Annehmen, das Gramm sei die Grundeinheit. Genau umgekehrt — und genau diese Anomalie ist das Lernziel.`,
+        [
+          'Welche der sieben SI-Basiseinheiten betrifft Masse?',
+          'Es ist das Kilogramm — nicht das Gramm.',
+          'Folge: Gramm = $10^{-3}\\,\\text{kg}$ ist abgeleitet.',
+        ],
+        {
+          1: 'Vorzeichen des Exponenten falsch — $1\\,\\text{kg}$ ist $1000$ mal so schwer wie $1\\,\\text{g}$, also $1\\,\\text{g} = 10^{-3}\\,\\text{kg}$.',
+          2: 'Falsch — eine SI-Größe hat genau eine Basiseinheit. Für Masse ist das das Kilogramm.',
+          3: 'Genau umgekehrt — das Kilogramm ist die historisch festgelegte Basiseinheit, das Gramm leitet sich daraus ab.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['kg-anomalie', 'si-basis-7'] },
+      ),
+      mc(
+        'Welche der sieben SI-Basiseinheiten enthält bereits einen dezimalen Präfix im Symbol?',
+        [
+          'kg (Kilogramm)',
+          'm (Meter)',
+          's (Sekunde)',
+          'mol (Mol)',
+        ],
+        0,
+        `**Ansatz:** Symbol für Symbol prüfen, ob ein Präfix-Buchstabe (k, M, G, m, µ, n, …) am Anfang steht.
+
+**Rechnung:** „kg" beginnt mit „k" = kilo (Präfix). „m", „s", „mol" enthalten keinen Präfix-Buchstaben (das „m" in „mol" ist Teil des Wortes, nicht der Präfix milli).
+
+**Probe:** $1\\,\\text{kg} = 10^{3}\\,\\text{g}$ — der Präfix wirkt also tatsächlich. ✓
+
+**Typischer Fehler:** Das „m" in „mol" oder „min" als Präfix milli interpretieren. Symbole sind atomar — nur das Kilogramm hat tatsächlich einen Präfix als Bestandteil.`,
+        [
+          'Präfixe sind: k (kilo), M (mega), G (giga), m (milli), µ (mikro), n (nano) und einige mehr.',
+          'Welches Basiseinheiten-Symbol beginnt mit einem dieser Buchstaben?',
+          'Nur „kg" — das „k" ist hier echt der Präfix kilo.',
+        ],
+        {
+          1: '„m" ist das Symbol Meter — kein Präfix, sondern selbst eine Basiseinheit.',
+          2: '„s" ist das Symbol Sekunde — kein Präfix.',
+          3: '„mol" beginnt zwar mit „m", aber „mol" ist atomar — das „m" ist nicht der Präfix milli.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['kg-anomalie'] },
+      ),
+      mc(
+        'Eine Studentin rechnet: „$5\\,\\text{Mg} = 5 \\cdot 10^{6}\\,\\text{kg}$". Welcher Fehler liegt vor?',
+        [
+          'Das Mega-Präfix wirkt auf das Gramm, nicht auf das Kilogramm: $5\\,\\text{Mg} = 5 \\cdot 10^{6}\\,\\text{g} = 5 \\cdot 10^{3}\\,\\text{kg}$ ($= 5\\,\\text{t}$).',
+          'Sie hat die Faktoren $10^{6}$ und $10^{9}$ verwechselt — richtig wäre $5 \\cdot 10^{9}\\,\\text{kg}$.',
+          'Das Mega-Präfix wirkt auf das Kilogramm — die Rechnung stimmt.',
+          'Der Präfix M bedeutet hier mikro, also $5\\,\\text{Mg} = 5 \\cdot 10^{-6}\\,\\text{kg}$.',
+        ],
+        0,
+        `**Ansatz:** „Mg" wird gelesen als „mega-gramm" — der Präfix M ($10^{6}$) wirkt auf die Buchstabenfolge „g" (Gramm). Nicht auf das Kilogramm.
+
+**Rechnung:** $5\\,\\text{Mg} = 5 \\cdot 10^{6}\\,\\text{g} = 5 \\cdot 10^{6} \\cdot 10^{-3}\\,\\text{kg} = 5 \\cdot 10^{3}\\,\\text{kg} = 5000\\,\\text{kg} = 5\\,\\text{t}$.
+
+**Probe:** $1\\,\\text{Mg} = 1\\,\\text{t}$ ist eine ingenieurübliche Schreibweise (z. B. Tragfähigkeit von Kränen). $5\\,\\text{Mg} = 5\\,\\text{t}$ — sinnvolle Größenordnung. ✓
+
+**Typischer Fehler:** Den Präfix M auf das volle Symbol „kg" anwenden, statt zu erkennen, dass der Präfix nur das „g" trifft. Daraus entstehen Fehler um Faktor $1000$.`,
+        [
+          'Was bedeutet das Symbol „Mg" wörtlich? Welcher Buchstabe ist Präfix, welcher die Einheit?',
+          'M = mega = $10^{6}$, g = Gramm. Mg heißt also $10^{6}\\,\\text{g}$.',
+          'Umrechnung in kg: $10^{6}\\,\\text{g} = 10^{3}\\,\\text{kg}$.',
+        ],
+        {
+          1: 'Faktoren stimmen nicht — der Präfix mega ist $10^{6}$, das Endergebnis in kg ist $10^{3}$ wegen der g↔kg-Umrechnung.',
+          2: 'Genau das ist der Fehler — der Präfix M wirkt auf das Gramm, nicht auf das Kilogramm.',
+          3: 'M (groß) ist mega, nicht mikro. Mikro hätte das Symbol µ (klein).',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['kg-anomalie'] },
+      ),
+      mc(
+        'Welche der folgenden Größen wird **nicht** in einer SI-Basiseinheit gemessen?',
+        [
+          'Kraft',
+          'Lichtstärke',
+          'Stoffmenge',
+          'thermodynamische Temperatur',
+        ],
+        0,
+        `**Ansatz:** Sieben SI-Basiseinheiten: m (Länge), kg (Masse), s (Zeit), A (Stromstärke), K (Temperatur), mol (Stoffmenge), cd (Lichtstärke).
+
+**Rechnung:** Lichtstärke (cd), Stoffmenge (mol) und Temperatur (K) gehören zu den sieben Basisgrößen. Kraft hingegen ist abgeleitet: $1\\,\\text{N} = 1\\,\\text{kg}\\cdot\\text{m}/\\text{s}^{2}$.
+
+**Probe:** Newton lässt sich durch kg, m, s ausdrücken — also abgeleitet, nicht Basis. ✓
+
+**Typischer Fehler:** Annehmen, dass Kraft eine Basisgröße sei, weil sie so oft vorkommt. SI-Basisgrößen sind aber die mengen-mäßig elementarsten — Kraft setzt Masse und Beschleunigung zusammen.`,
+        [
+          'Liste der sieben SI-Basiseinheiten durchgehen.',
+          'Kraft hat die Einheit Newton — N. Steht N in der Liste?',
+          'Nein. Kraft ist abgeleitet aus kg, m, s.',
+        ],
+        {
+          1: 'Lichtstärke wird in Candela (cd) gemessen — eine der sieben Basiseinheiten.',
+          2: 'Stoffmenge wird in mol gemessen — eine der sieben Basiseinheiten.',
+          3: 'Thermodynamische Temperatur wird in Kelvin (K) gemessen — eine der sieben Basiseinheiten.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['si-basis-7'] },
+      ),
+      matching(
+        'Ordne jeder SI-Basisgröße ihre Basiseinheit zu.',
+        [
+          { left: 'Länge', right: 'Meter (m)' },
+          { left: 'Masse', right: 'Kilogramm (kg)' },
+          { left: 'Zeit', right: 'Sekunde (s)' },
+          { left: 'elektrische Stromstärke', right: 'Ampere (A)' },
+          { left: 'thermodynamische Temperatur', right: 'Kelvin (K)' },
+          { left: 'Stoffmenge', right: 'Mol (mol)' },
+          { left: 'Lichtstärke', right: 'Candela (cd)' },
+        ],
+        `**Ansatz:** Sieben Basisgrößen, sieben Basiseinheiten — jeweils 1:1 zugeordnet.
+
+**Rechnung:** Länge → m, Masse → kg, Zeit → s, Stromstärke → A, Temperatur → K, Stoffmenge → mol, Lichtstärke → cd.
+
+**Probe:** Jede andere physikalische Größe lässt sich aus diesen sieben kombinieren — z. B. Kraft = $\\text{kg}\\cdot\\text{m}/\\text{s}^{2}$, Energie = $\\text{kg}\\cdot\\text{m}^{2}/\\text{s}^{2}$. ✓
+
+**Typischer Fehler:** Gramm statt Kilogramm bei Masse angeben — kg ist Basiseinheit, das Gramm $10^{-3}\\,\\text{kg}$ daraus abgeleitet.`,
+        [
+          'Sieben Größen, sieben Symbole — keine doppelte Zuordnung.',
+          'Die mechanischen Größen Länge, Masse, Zeit haben m, kg, s.',
+          'Die nicht-mechanischen Größen sind A (Strom), K (Temperatur), mol (Stoff), cd (Licht).',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['si-basis-7'] },
+      ),
+    ],
+
+    // ── [2] Wissenschaftliche Notation $a \cdot 10^n$ sicher schreiben ──
+    2: [
+      tf(
+        'Die Zahl $4500$ in wissenschaftlicher Notation lautet $4{,}5 \\cdot 10^{3}$.',
+        true,
+        `**Ansatz:** Wissenschaftliche Notation verlangt $1 \\leq |a| < 10$. Komma so verschieben, dass genau eine Vorkomma-Ziffer übrig bleibt — der Exponent zählt die Verschiebungen.
+
+**Rechnung:** $4500 \\to 4{,}500 \\to 4{,}5$. Komma um $3$ Stellen nach links → Exponent $+3$. Also $4{,}5 \\cdot 10^{3}$.
+
+**Probe:** Rückrechnung: $4{,}5 \\cdot 10^{3} = 4500$. ✓
+
+**Typischer Fehler:** Mantisse $45$ wählen ($45 \\cdot 10^{2}$) — das ist nicht normiert, weil $|a|$ kleiner als $10$ sein muss.`,
+        [
+          'Normierungsregel: $1 \\leq |a| < 10$.',
+          'Komma so verschieben, dass eine Vorkommaziffer steht.',
+          'Anzahl der Verschiebungen = Exponent (nach links: positiv).',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['sci-notation'] },
+      ),
+      mc(
+        'Welche der folgenden Schreibweisen ist die **korrekte** wissenschaftliche Notation von $0{,}000045$?',
+        [
+          '$4{,}5 \\cdot 10^{-5}$',
+          '$45 \\cdot 10^{-6}$',
+          '$4{,}5 \\cdot 10^{5}$',
+          '$0{,}45 \\cdot 10^{-4}$',
+        ],
+        0,
+        `**Ansatz:** Komma so verschieben, dass die erste Vorkommaziffer zwischen $1$ und $9$ liegt. Bei einer Zahl $<1$ wird der Exponent negativ.
+
+**Rechnung:** $0{,}000045 \\to 4{,}5$. Komma um $5$ Stellen nach **rechts** → Exponent $-5$. Also $4{,}5 \\cdot 10^{-5}$.
+
+**Probe:** Rückrechnung: $4{,}5 \\cdot 10^{-5} = 4{,}5/100\\,000 = 0{,}000045$. ✓
+
+**Typischer Fehler:** Vorzeichen des Exponenten umkehren, weil das Komma "rechts" verschoben wurde. Merke: $<1$ → negativer Exponent, $\\geq 10$ → positiver Exponent.`,
+        [
+          'Bei Zahlen kleiner als $1$ ist der Exponent negativ.',
+          'Komma so verschieben, dass eine Vorkommaziffer übrig ist (zwischen $1$ und $9$).',
+          'Zähle die Verschiebungen.',
+        ],
+        {
+          1: 'Mantisse nicht normiert: $|a|$ muss zwischen $1$ und $10$ liegen, nicht $45$.',
+          2: 'Vorzeichen-Fehler: $0{,}000045 < 1$, also negativer Exponent. $4{,}5 \\cdot 10^{5} = 450\\,000$ — viel zu groß.',
+          3: 'Mantisse nicht normiert: $0{,}45 < 1$. Korrekt verschieben: $0{,}45 \\cdot 10^{-4} = 4{,}5 \\cdot 10^{-5}$.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['sci-notation'] },
+      ),
+      ni(
+        'Schreibe die Zahl $7\\,200\\,000$ in der Form $a \\cdot 10^{n}$ mit $1 \\leq a < 10$. Welcher Wert hat der Exponent $n$?',
+        6, 0, '',
+        `**Ansatz:** Komma so verschieben, dass nur eine Vorkommaziffer steht. Die Anzahl der Schritte nach links liefert den Exponenten.
+
+**Rechnung:** $7\\,200\\,000 = 7{,}2 \\cdot 10^{6}$. Komma um $6$ Stellen nach links verschoben → $n = 6$.
+
+**Probe:** $7{,}2 \\cdot 10^{6} = 7{,}2 \\cdot 1\\,000\\,000 = 7\\,200\\,000$. ✓
+
+**Typischer Fehler:** $n = 7$ angeben (Anzahl der Stellen statt Anzahl der Verschiebungen). Die Mantisse $7{,}2$ steht **vor** der Verschiebung — daher zählt jede Verschiebung um eine Stelle als $+1$.`,
+        [
+          'Mantisse: $7{,}2$ (eine Vorkommaziffer).',
+          'Wie viele Stellen wurde das Komma nach links verschoben?',
+          'Genau diese Anzahl ist der Exponent $n$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['sci-notation'] },
+      ),
+      mc(
+        'Ein Schüler schreibt: „$0{,}0034 = 3{,}4 \\cdot 10^{3}$". Welcher Fehler liegt vor?',
+        [
+          'Bei einer Zahl $<1$ ist der Exponent negativ — richtig: $3{,}4 \\cdot 10^{-3}$.',
+          'Die Mantisse $3{,}4$ ist nicht normiert; sie muss zwischen $0$ und $1$ liegen.',
+          'Die Schreibweise ist korrekt — $3{,}4 \\cdot 10^{3}$ ergibt $0{,}0034$.',
+          'Statt $10^{3}$ müsste $10^{2}$ stehen, weil das Komma um $2$ Stellen verschoben wurde.',
+        ],
+        0,
+        `**Ansatz:** Vorzeichen des Exponenten überprüfen: $0{,}0034 < 1$ → Exponent muss negativ sein.
+
+**Rechnung:** $0{,}0034 \\to 3{,}4$. Komma um $3$ Stellen nach **rechts** → Exponent $-3$. Korrekt: $3{,}4 \\cdot 10^{-3}$.
+
+**Probe:** Rückrechnung Schüler: $3{,}4 \\cdot 10^{3} = 3400$ — nicht $0{,}0034$. Klarer Vorzeichenfehler. ✓
+
+**Typischer Fehler:** Beim Komma-Verschieben das Vorzeichen vergessen. Faustregel: kleiner als $1$ → negativer Exponent; größer-gleich $10$ → positiver Exponent.`,
+        [
+          'Vergleiche: ist $0{,}0034$ kleiner oder größer als $1$?',
+          'Bei Zahlen $<1$ muss der Exponent negativ sein.',
+          'Anzahl der Komma-Schritte hier: $3$ — Vorzeichen kommt aus der Größe der Zahl.',
+        ],
+        {
+          1: 'Die Normierungsregel ist $1 \\leq |a| < 10$ — $3{,}4$ ist also korrekt normiert.',
+          2: 'Rückrechnung: $3{,}4 \\cdot 10^{3} = 3400$, nicht $0{,}0034$. Die Schreibweise ist also nicht korrekt.',
+          3: 'Die Anzahl der Verschiebungen ist tatsächlich $3$ — nur das Vorzeichen ist falsch, nicht der Betrag.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['sci-notation'] },
+      ),
+      ni(
+        'Eine Spannung von $4{,}5\\,\\text{kV}$ soll in der Einheit V als $a \\cdot 10^{n}$ mit $1 \\leq a < 10$ geschrieben werden. Welcher Wert hat der Exponent $n$?',
+        3, 0, '',
+        `**Ansatz:** Erst Präfix auflösen ($\\text{kV} \\to \\text{V}$), dann normieren.
+
+**Rechnung:** $4{,}5\\,\\text{kV} = 4{,}5 \\cdot 10^{3}\\,\\text{V}$. Mantisse $4{,}5$ liegt bereits in $[1; 10)$ → keine weitere Verschiebung nötig. Also $n = 3$.
+
+**Probe:** $4{,}5 \\cdot 10^{3}\\,\\text{V} = 4500\\,\\text{V} = 4{,}5\\,\\text{kV}$. ✓
+
+**Typischer Fehler:** Den Präfix kilo nicht auflösen und $n = 0$ angeben. Oder: die Mantisse zusätzlich verschieben und $4{,}5 \\cdot 10^{3} = 0{,}45 \\cdot 10^{4}$ schreiben — das wäre nicht normiert.`,
+        [
+          'Erst kV → V umrechnen: Faktor $10^{3}$.',
+          'Prüfen, ob die Mantisse $4{,}5$ schon zwischen $1$ und $10$ liegt.',
+          'Falls ja: $n$ entspricht direkt dem Präfix-Exponenten.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['sci-notation', 'praefixe-1000'] },
+      ),
+      sorting(
+        'Sortiere die Zahlen nach **steigendem** Wert (kleinste zuerst).',
+        [
+          '$9 \\cdot 10^{-3}$',
+          '$1{,}5 \\cdot 10^{-1}$',
+          '$2 \\cdot 10^{0}$',
+          '$5 \\cdot 10^{1}$',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Bei wissenschaftlicher Notation entscheidet zuerst der **Exponent**: kleinerer Exponent = kleinere Zahl. Bei gleichem Exponenten zählt die Mantisse.
+
+**Rechnung:** Werte: $0{,}009$ < $0{,}15$ < $2$ < $50$. Reihenfolge nach Exponent: $-3 < -1 < 0 < 1$ — alle Exponenten verschieden, Mantisse-Vergleich nicht nötig.
+
+**Probe:** Dezimalwerte einsetzen: $9 \\cdot 10^{-3} = 0{,}009$, $1{,}5 \\cdot 10^{-1} = 0{,}15$, $2 \\cdot 10^{0} = 2$, $5 \\cdot 10^{1} = 50$. Reihenfolge stimmt. ✓
+
+**Typischer Fehler:** Nur die Mantisse vergleichen (z. B. „$9$ ist größer als $1{,}5$, also kommt $9 \\cdot 10^{-3}$ später"). Bei unterschiedlichen Exponenten zählt zuerst die Zehnerpotenz.`,
+        [
+          'Bei verschiedenen Exponenten zählt der Exponent zuerst.',
+          'Wandle bei Bedarf alle Werte in Dezimalzahlen um zum Vergleich.',
+          'Negative Exponenten gehören zu Werten kleiner als $1$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['sci-notation'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // mech-0-2 — Abgeleitete Einheiten (N, J, Pa, W)  (4 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-0-2': {
+
+    // ── [0] Newton zerlegen: $1\,\text{N} = 1\,\text{kg}\cdot\text{m}/\text{s}^2$ ─
+    0: [
+      tf(
+        '$1\\,\\text{N}$ entspricht der Einheit $1\\,\\text{kg}\\cdot\\text{m}/\\text{s}^{2}$.',
+        true,
+        `**Ansatz:** Newton ist abgeleitete Einheit aus dem 2. Newtonschen Gesetz $F = m\\cdot a$. Einheit der Masse: kg. Einheit der Beschleunigung: $\\text{m}/\\text{s}^{2}$.
+
+**Rechnung:** $[F] = [m]\\cdot[a] = \\text{kg}\\cdot\\text{m}/\\text{s}^{2}$. Diese Kombination heißt $1\\,\\text{N}$.
+
+**Probe:** Eine Masse von $1\\,\\text{kg}$ unter Erdanziehung ($g\\approx 9{,}81\\,\\text{m}/\\text{s}^{2}$) erfährt $F\\approx 9{,}81\\,\\text{kg}\\cdot\\text{m}/\\text{s}^{2}=9{,}81\\,\\text{N}$. ✓
+
+**Typischer Fehler:** $\\text{s}^{2}$ in den Zähler ziehen ($\\text{kg}\\cdot\\text{m}\\cdot\\text{s}^{2}$) — das wäre nicht Newton, sondern eine völlig andere Größe.`,
+        [
+          'Newton-Definition aus $F = m\\cdot a$.',
+          'Welche Einheit hat $a$? — $\\text{m}/\\text{s}^{2}$ — und welche $m$? — $\\text{kg}$.',
+          'Multiplikation der Einheiten: $\\text{kg}\\cdot\\text{m}/\\text{s}^{2}$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['newton-zerlegung'] },
+      ),
+      mc(
+        'Ein Körper mit Masse $m = 5\\,\\text{kg}$ wird mit $a = 4\\,\\text{m}/\\text{s}^{2}$ beschleunigt. Welche Kraft wirkt auf ihn?',
+        [
+          '$20\\,\\text{N}$',
+          '$1{,}25\\,\\text{N}$',
+          '$9\\,\\text{N}$',
+          '$0{,}8\\,\\text{N}$',
+        ],
+        0,
+        `**Ansatz:** Newtonsches Grundgesetz $F = m\\cdot a$. Einheiten: $\\text{kg}\\cdot\\text{m}/\\text{s}^{2} = \\text{N}$.
+
+**Rechnung:** $F = 5\\,\\text{kg}\\cdot 4\\,\\text{m}/\\text{s}^{2} = 20\\,\\text{N}$.
+
+**Probe:** Einheitencheck: $\\text{kg}\\cdot\\text{m}/\\text{s}^{2} = \\text{N}$ ✓.
+
+**Typischer Fehler:** Masse durch Beschleunigung dividieren ($5/4 = 1{,}25$) statt zu multiplizieren — Verwechslung mit der umgekehrten Aufgabenstellung.`,
+        [
+          '$F = m\\cdot a$ — Multiplikation, nicht Division.',
+          'Setze $m = 5$ und $a = 4$ ein.',
+          'Einheit: $\\text{kg}\\cdot\\text{m}/\\text{s}^{2} = \\text{N}$.',
+        ],
+        {
+          1: 'Hier wurde dividiert ($5/4$) statt multipliziert. $F = m\\cdot a$ verlangt das **Produkt**.',
+          2: 'Hier wurde addiert ($5+4$). Newtonsches Gesetz ist multiplikativ.',
+          3: 'Hier wurde Beschleunigung durch Masse dividiert ($4/5$) — falsche Operation **und** falsche Reihenfolge.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['newton-zerlegung'] },
+      ),
+      ni(
+        'Auf eine Masse von $m = 3\\,\\text{kg}$ wirkt die Kraft $F = 12\\,\\text{N}$. Welche Beschleunigung erfährt der Körper in $\\text{m}/\\text{s}^{2}$?',
+        4, 0.01, 'm/s²',
+        `**Ansatz:** Aus $F = m\\cdot a$ folgt durch Umstellung $a = F/m$.
+
+**Rechnung:** $a = 12\\,\\text{N}/3\\,\\text{kg} = 4\\,\\text{m}/\\text{s}^{2}$. Einheit: $\\text{N}/\\text{kg} = (\\text{kg}\\cdot\\text{m}/\\text{s}^{2})/\\text{kg} = \\text{m}/\\text{s}^{2}$ ✓.
+
+**Probe:** Rückrechnung: $F = m\\cdot a = 3\\cdot 4 = 12\\,\\text{N}$. ✓
+
+**Typischer Fehler:** $a = m\\cdot F$ rechnen ($36$) statt zu dividieren — die Umstellung der Formel.`,
+        [
+          'Stelle $F = m\\cdot a$ nach $a$ um.',
+          '$a = F/m$.',
+          'Einheit: $\\text{N}/\\text{kg} = \\text{m}/\\text{s}^{2}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['newton-zerlegung'] },
+      ),
+      mc(
+        'Ein Studierender schreibt: „$F = m\\cdot a = 8\\,\\text{kg}\\cdot 5\\,\\text{m}/\\text{s}^{2} = 40\\,\\text{kg}\\cdot\\text{m}\\cdot\\text{s}^{2}$". Welcher Fehler liegt vor?',
+        [
+          'Die Einheit ist falsch — $\\text{s}^{2}$ steht im **Nenner**: $\\text{kg}\\cdot\\text{m}/\\text{s}^{2} = \\text{N}$.',
+          'Die Zahl ist falsch — richtig wäre $13\\,\\text{N}$ (Addition statt Multiplikation).',
+          'Korrekt — die Einheit $\\text{kg}\\cdot\\text{m}\\cdot\\text{s}^{2}$ ist äquivalent zu Newton.',
+          'Die Masse muss in g angegeben werden, nicht in kg.',
+        ],
+        0,
+        `**Ansatz:** Die Beschleunigung hat Einheit $\\text{m}/\\text{s}^{2}$ — also $\\text{s}^{2}$ im **Nenner**. Beim Multiplizieren bleibt das so.
+
+**Rechnung:** $F = 8\\,\\text{kg}\\cdot 5\\,\\text{m}/\\text{s}^{2} = 40\\,\\text{kg}\\cdot\\text{m}/\\text{s}^{2} = 40\\,\\text{N}$. Der Studierende hat die Einheit $\\text{s}^{2}$ in den Zähler gezogen.
+
+**Probe:** Definition: $1\\,\\text{N} = 1\\,\\text{kg}\\cdot\\text{m}/\\text{s}^{2}$ — Sekunden im Nenner. ✓
+
+**Typischer Fehler:** Beim Übertragen von Einheiten Brüche ignorieren — $\\text{m}/\\text{s}^{2}$ ist ein Bruch, nicht $\\text{m}\\cdot\\text{s}^{2}$.`,
+        [
+          'Was ist die Einheit der Beschleunigung? Achte auf den Bruch.',
+          'Beim Multiplizieren: Zähler-Faktoren bleiben oben, Nenner-Faktoren unten.',
+          'Vergleiche: Zahl $40$ stimmt — passt die Einheit zu Newton?',
+        ],
+        {
+          1: 'Die Zahl $8\\cdot 5 = 40$ ist korrekt — der Fehler liegt in der Einheit, nicht in der Zahl.',
+          2: '$\\text{kg}\\cdot\\text{m}\\cdot\\text{s}^{2}$ ist nicht Newton — Newton hat $\\text{s}^{2}$ im Nenner.',
+          3: 'In der Mechanik wird Masse in kg verwendet — das ist die SI-Basiseinheit. kg ist hier korrekt.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['newton-zerlegung'] },
+      ),
+      matching(
+        'Auf jeden Körper (Masse $m = 2\\,\\text{kg}$) wirkt eine andere Kraft. Ordne jeder Kraft die richtige Beschleunigung zu.',
+        [
+          { left: '$F = 10\\,\\text{N}$', right: '$5\\,\\text{m}/\\text{s}^{2}$' },
+          { left: '$F = 20\\,\\text{N}$', right: '$10\\,\\text{m}/\\text{s}^{2}$' },
+          { left: '$F = 50\\,\\text{N}$', right: '$25\\,\\text{m}/\\text{s}^{2}$' },
+          { left: '$F = 100\\,\\text{N}$', right: '$50\\,\\text{m}/\\text{s}^{2}$' },
+        ],
+        `**Ansatz:** $a = F/m$. Mit $m = 2\\,\\text{kg}$ wird $a = F/2$.
+
+**Rechnung:** $10/2 = 5$, $20/2 = 10$, $50/2 = 25$, $100/2 = 50$. Einheit: $\\text{N}/\\text{kg} = \\text{m}/\\text{s}^{2}$.
+
+**Probe:** Größere Kraft → größere Beschleunigung (linear) — alle Werte passen zur halben Kraft. ✓
+
+**Typischer Fehler:** Statt $a = F/m$ die Formel $a = F\\cdot m$ anwenden — dann wären die Werte um Faktor $4$ daneben.`,
+        [
+          '$a = F/m$ und $m = 2\\,\\text{kg}$ ist konstant.',
+          'Die Beschleunigung ist immer die halbe Zahl der Kraft (in passenden Einheiten).',
+          'Einheit: $\\text{N}/\\text{kg} = \\text{m}/\\text{s}^{2}$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['newton-zerlegung'] },
+      ),
+      mc(
+        'Welche der folgenden Kombinationen aus Basiseinheiten ist die SI-Zerlegung der Einheit Newton?',
+        [
+          '$\\text{kg}\\cdot\\text{m}/\\text{s}^{2}$',
+          '$\\text{kg}\\cdot\\text{m}^{2}/\\text{s}^{2}$',
+          '$\\text{kg}/(\\text{m}\\cdot\\text{s}^{2})$',
+          '$\\text{kg}/\\text{s}$',
+        ],
+        0,
+        `**Ansatz:** $1\\,\\text{N} = 1\\,\\text{kg}\\cdot\\text{m}/\\text{s}^{2}$ — direkt aus $F = m\\cdot a$.
+
+**Rechnung:** Masse $\\text{kg}$ × Beschleunigung $\\text{m}/\\text{s}^{2}$ = $\\text{kg}\\cdot\\text{m}/\\text{s}^{2}$.
+
+**Probe:** Energie $\\text{J} = \\text{N}\\cdot\\text{m} = \\text{kg}\\cdot\\text{m}^{2}/\\text{s}^{2}$ — eine $\\text{m}$-Potenz höher als Newton. ✓
+
+**Typischer Fehler:** Newton mit Joule (Energie) oder Pascal (Druck) verwechseln — alle drei nutzen kg, m, s, aber in verschiedenen Potenzen.`,
+        [
+          'Newton = Kraft = Masse $\\cdot$ Beschleunigung.',
+          'Beschleunigung hat $\\text{m}^{1}/\\text{s}^{2}$, nicht $\\text{m}^{2}$.',
+          'Das Ergebnis hat $\\text{m}^{1}$ im Zähler.',
+        ],
+        {
+          1: 'Das ist Joule (Energie): $\\text{J} = \\text{N}\\cdot\\text{m}$ — eine $\\text{m}$-Potenz mehr.',
+          2: 'Das ist Pascal (Druck): $\\text{Pa} = \\text{N}/\\text{m}^{2}$ — Newton mit zusätzlicher Fläche im Nenner.',
+          3: 'Das wäre eine Massenstrom-Einheit, keine Kraft.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['newton-zerlegung'] },
+      ),
+    ],
+
+    // ── [1] $1\,\text{MPa} = 1\,\text{N}/\text{mm}^{2}$ ───────────────────
+    1: [
+      tf(
+        'Die Spannungseinheit $1\\,\\text{MPa}$ ist identisch mit $1\\,\\text{N}/\\text{mm}^{2}$.',
+        true,
+        `**Ansatz:** $1\\,\\text{MPa} = 10^{6}\\,\\text{Pa} = 10^{6}\\,\\text{N}/\\text{m}^{2}$. Fläche umrechnen: $1\\,\\text{m}^{2} = 10^{6}\\,\\text{mm}^{2}$.
+
+**Rechnung:** $10^{6}\\,\\text{N}/\\text{m}^{2} = 10^{6}\\,\\text{N}/(10^{6}\\,\\text{mm}^{2}) = 1\\,\\text{N}/\\text{mm}^{2}$. Die beiden Faktoren $10^{6}$ kürzen sich.
+
+**Probe:** Stahl S235 hat $R_{e} = 235\\,\\text{MPa} = 235\\,\\text{N}/\\text{mm}^{2}$ — beide Schreibweisen sind in Maschinenbau-Tabellen üblich. ✓
+
+**Typischer Fehler:** Den Präfix mega ($10^{6}$) mit dem Flächenfaktor ($10^{6}$ wegen quadratischer Umrechnung) verwechseln — die kürzen sich nur, weil der Exponent zufällig gleich ist.`,
+        [
+          '$\\text{MPa} = 10^{6}\\,\\text{Pa}$.',
+          '$1\\,\\text{m}^{2} = (10^{3}\\,\\text{mm})^{2} = 10^{6}\\,\\text{mm}^{2}$ — Fläche ist quadratisch!',
+          'Beide Faktoren $10^{6}$ heben sich exakt auf.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['mpa-nmm2'] },
+      ),
+      mc(
+        'Stahl S355 hat eine Streckgrenze von $355\\,\\text{N}/\\text{mm}^{2}$. Wie groß ist diese Spannung in $\\text{MPa}$?',
+        [
+          '$355\\,\\text{MPa}$',
+          '$0{,}355\\,\\text{MPa}$',
+          '$355\\,000\\,\\text{MPa}$',
+          '$3{,}55\\,\\text{MPa}$',
+        ],
+        0,
+        `**Ansatz:** $1\\,\\text{N}/\\text{mm}^{2} = 1\\,\\text{MPa}$ — die Werte sind direkt austauschbar (Ingenieur-Konvention).
+
+**Rechnung:** $355\\,\\text{N}/\\text{mm}^{2} = 355\\,\\text{MPa}$.
+
+**Probe:** Andersrum gerechnet: $355\\,\\text{MPa} = 355\\cdot 10^{6}\\,\\text{Pa} = 355\\cdot 10^{6}\\,\\text{N}/\\text{m}^{2} = 355\\,\\text{N}/\\text{mm}^{2}$. ✓
+
+**Typischer Fehler:** Annehmen, der Wert müsse durch $1000$ oder $10^{6}$ skaliert werden, weil „Präfix M" und „mm" beides Faktoren bringen — sie kürzen sich aber.`,
+        [
+          'Identitäts-Regel: $1\\,\\text{N}/\\text{mm}^{2} \\equiv 1\\,\\text{MPa}$.',
+          'Die Zahl bleibt unverändert.',
+          'Probe: $\\text{m}^{2}\\to\\text{mm}^{2}$ bringt Faktor $10^{6}$, $\\text{Pa}\\to\\text{MPa}$ ebenfalls — sie kürzen sich.',
+        ],
+        {
+          1: 'Hier wurde durch $1000$ geteilt — falscher Faktor. $\\text{N}/\\text{mm}^{2}$ und MPa sind exakt gleich.',
+          2: 'Hier wurde mit $1000$ multipliziert — auch falsch. Kein Skalierungsfaktor nötig.',
+          3: 'Hier wurde durch $100$ geteilt — keine sinnvolle Umrechnung in dieser Einheiten-Familie.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['mpa-nmm2'] },
+      ),
+      ni(
+        'Eine Schraube mit Querschnittsfläche $A = 20\\,\\text{mm}^{2}$ wird mit der Zugkraft $F = 15\\,\\text{kN}$ belastet. Welche Spannung herrscht im Querschnitt in $\\text{MPa}$?',
+        750, 0.5, 'MPa',
+        `**Ansatz:** Spannung $\\sigma = F/A$. In Ingenieur-Einheiten: $F$ in N, $A$ in $\\text{mm}^{2}$ → Ergebnis automatisch in $\\text{N}/\\text{mm}^{2} = \\text{MPa}$.
+
+**Rechnung:** $F = 15\\,\\text{kN} = 15\\,000\\,\\text{N}$. $\\sigma = 15\\,000\\,\\text{N}/20\\,\\text{mm}^{2} = 750\\,\\text{N}/\\text{mm}^{2} = 750\\,\\text{MPa}$.
+
+**Probe:** Werkstoffeinordnung: $750\\,\\text{MPa}$ liegt im Bereich hochfester Schraubenstähle (z. B. Festigkeitsklasse $8.8$ hat $R_{m}\\approx 800\\,\\text{MPa}$). ✓
+
+**Typischer Fehler:** $15\\,\\text{kN}$ in N umrechnen vergessen und $15/20 = 0{,}75\\,\\text{MPa}$ angeben — Faktor $1000$ daneben.`,
+        [
+          'Spannung = Kraft pro Fläche, $\\sigma = F/A$.',
+          'Ingenieur-Trick: $\\text{N}/\\text{mm}^{2} = \\text{MPa}$ direkt.',
+          'Vorher kN in N umrechnen: Faktor $10^{3}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['mpa-nmm2'] },
+      ),
+      mc(
+        'Ein Studierender schreibt: „$\\sigma = 200\\,\\text{MPa} = 200\\,\\text{N}/\\text{m}^{2}$". Welcher Fehler liegt vor?',
+        [
+          '$1\\,\\text{MPa} = 10^{6}\\,\\text{N}/\\text{m}^{2}$ — der Faktor $10^{6}$ wurde vergessen, richtig: $200\\cdot 10^{6}\\,\\text{N}/\\text{m}^{2}$.',
+          'Korrekt — MPa und $\\text{N}/\\text{m}^{2}$ sind dasselbe.',
+          'Der Faktor $10^{3}$ wurde vergessen — richtig wäre $200\\,000\\,\\text{N}/\\text{m}^{2}$.',
+          'MPa ist nur für Drücke definiert, nicht für mechanische Spannungen.',
+        ],
+        0,
+        `**Ansatz:** Präfix mega = $10^{6}$. Pa = $\\text{N}/\\text{m}^{2}$. Also $1\\,\\text{MPa} = 10^{6}\\,\\text{N}/\\text{m}^{2}$.
+
+**Rechnung:** Korrekt: $200\\,\\text{MPa} = 200\\cdot 10^{6}\\,\\text{N}/\\text{m}^{2} = 2\\cdot 10^{8}\\,\\text{N}/\\text{m}^{2}$. Der Studierende hat Präfix M ignoriert.
+
+**Probe:** $200\\,\\text{MPa} = 200\\,\\text{N}/\\text{mm}^{2}$ (Ingenieur-Konvention). Umrechnung in $\\text{m}^{2}$: $200\\,\\text{N}/\\text{mm}^{2} = 200\\cdot 10^{6}\\,\\text{N}/\\text{m}^{2}$ — Fläche bringt Faktor $10^{6}$. ✓
+
+**Typischer Fehler:** Den Präfix M weglassen, weil er „bei Stahl-Spannungen halt immer dabei" steht. M ist immer $10^{6}$.`,
+        [
+          'Schreibe MPa explizit als $10^{6}\\,\\text{Pa}$.',
+          'Pa ist $\\text{N}/\\text{m}^{2}$.',
+          'Setze ein und prüfe, ob beide Seiten gleiche Größenordnung haben.',
+        ],
+        {
+          1: 'Die beiden sind nicht dasselbe — MPa hat den Faktor $10^{6}$.',
+          2: 'Falscher Faktor — der Präfix mega ist $10^{6}$, nicht $10^{3}$.',
+          3: 'MPa ist dieselbe Einheit für Druck **und** mechanische Spannung — beide haben Dimension Kraft/Fläche.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['mpa-nmm2'] },
+      ),
+      ni(
+        'Eine Werkstoffprobe hat eine Streckgrenze $R_{e} = 240\\,\\text{MPa}$. Welcher minimale Querschnitt $A$ in $\\text{mm}^{2}$ ist nötig, damit eine Last von $F = 60\\,\\text{kN}$ die Streckgrenze gerade erreicht?',
+        250, 1, 'mm²',
+        `**Ansatz:** Spannung $\\sigma = F/A$. Bedingung $\\sigma = R_{e}$ — nach $A$ umstellen: $A = F/R_{e}$.
+
+**Rechnung:** $F = 60\\,\\text{kN} = 60\\,000\\,\\text{N}$. Mit $R_{e} = 240\\,\\text{MPa} = 240\\,\\text{N}/\\text{mm}^{2}$: $A = 60\\,000\\,\\text{N}/(240\\,\\text{N}/\\text{mm}^{2}) = 250\\,\\text{mm}^{2}$.
+
+**Probe:** Rückrechnung: $\\sigma = 60\\,000/250 = 240\\,\\text{N}/\\text{mm}^{2} = 240\\,\\text{MPa} = R_{e}$. ✓
+
+**Typischer Fehler:** Kraft nicht in N umrechnen ($60$ statt $60\\,000$) — $A$ wäre dann $0{,}25\\,\\text{mm}^{2}$, viel zu klein.`,
+        [
+          'Stelle $\\sigma = F/A$ nach $A$ um.',
+          'Setze die Einheiten passend: $F$ in N, $\\sigma$ in $\\text{N}/\\text{mm}^{2}$.',
+          'Vergiss nicht: $\\text{kN}\\to\\text{N}$ ist Faktor $10^{3}$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['mpa-nmm2'] },
+      ),
+      matching(
+        'Ordne jeden Spannungswert seinem korrekten Wert in $\\text{N}/\\text{mm}^{2}$ zu.',
+        [
+          { left: '$1\\,\\text{Pa}$', right: '$10^{-6}\\,\\text{N}/\\text{mm}^{2}$' },
+          { left: '$1\\,\\text{kPa}$', right: '$10^{-3}\\,\\text{N}/\\text{mm}^{2}$' },
+          { left: '$1\\,\\text{MPa}$', right: '$1\\,\\text{N}/\\text{mm}^{2}$' },
+          { left: '$1\\,\\text{GPa}$', right: '$1000\\,\\text{N}/\\text{mm}^{2}$' },
+        ],
+        `**Ansatz:** $1\\,\\text{Pa} = 1\\,\\text{N}/\\text{m}^{2}$. Mit $1\\,\\text{m}^{2} = 10^{6}\\,\\text{mm}^{2}$ folgt $1\\,\\text{Pa} = 10^{-6}\\,\\text{N}/\\text{mm}^{2}$. Alle anderen über Präfixe.
+
+**Rechnung:** kPa hat Faktor $10^{3}$ → $10^{-3}\\,\\text{N}/\\text{mm}^{2}$. MPa hat Faktor $10^{6}$ → $1\\,\\text{N}/\\text{mm}^{2}$. GPa hat Faktor $10^{9}$ → $10^{3}\\,\\text{N}/\\text{mm}^{2} = 1000\\,\\text{N}/\\text{mm}^{2}$.
+
+**Probe:** Werkstoff-E-Modul: Stahl $E\\approx 210\\,\\text{GPa} = 210\\,000\\,\\text{N}/\\text{mm}^{2}$ — passt. ✓
+
+**Typischer Fehler:** Den Flächenfaktor $10^{6}$ vergessen — dann wären die Zahlen alle um $10^{6}$ daneben.`,
+        [
+          '$1\\,\\text{Pa} = 1\\,\\text{N}/\\text{m}^{2}$ und $1\\,\\text{m}^{2} = 10^{6}\\,\\text{mm}^{2}$.',
+          'Die MPa-Stufe ist die „natürliche" — $1\\,\\text{MPa} = 1\\,\\text{N}/\\text{mm}^{2}$.',
+          'Andere Stufen verschieben um Faktoren $10^{3}$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['mpa-nmm2'] },
+      ),
+    ],
+
+    // ── [2] bar $\leftrightarrow$ Pa: $1\,\text{bar} = 10^5\,\text{Pa}$ ─
+    2: [
+      tf(
+        '$1\\,\\text{bar} = 10^{5}\\,\\text{Pa}$.',
+        true,
+        `**Ansatz:** Bar ist eine ingenieurübliche Druckeinheit, definiert als $1\\,\\text{bar} = 100\\,000\\,\\text{Pa} = 10^{5}\\,\\text{Pa}$.
+
+**Rechnung:** $1\\,\\text{bar} = 10^{5}\\,\\text{Pa} = 10^{5}\\,\\text{N}/\\text{m}^{2} = 0{,}1\\,\\text{MPa} = 100\\,\\text{kPa}$.
+
+**Probe:** Atmosphärischer Luftdruck: $\\approx 1{,}013\\,\\text{bar} \\approx 1{,}013\\cdot 10^{5}\\,\\text{Pa} \\approx 101{,}3\\,\\text{kPa}$. ✓
+
+**Typischer Fehler:** $1\\,\\text{bar} = 10^{6}\\,\\text{Pa}$ (Verwechslung mit MPa) oder $10^{3}\\,\\text{Pa}$ (Verwechslung mit kPa).`,
+        [
+          'Atmosphärendruck als Anker: $\\approx 1\\,\\text{bar}$.',
+          '$1\\,\\text{Atm}\\approx 100\\,\\text{kPa}$ — also $10^{5}\\,\\text{Pa}$.',
+          '$1\\,\\text{bar} = 10^{5}\\,\\text{Pa}$.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['bar-pa'] },
+      ),
+      mc(
+        'Ein Reifen ist mit $2{,}5\\,\\text{bar}$ befüllt. Wie viel Pa entspricht das?',
+        [
+          '$250\\,000\\,\\text{Pa}$',
+          '$2500\\,\\text{Pa}$',
+          '$25\\,000\\,\\text{Pa}$',
+          '$2{,}5\\cdot 10^{8}\\,\\text{Pa}$',
+        ],
+        0,
+        `**Ansatz:** $1\\,\\text{bar} = 10^{5}\\,\\text{Pa}$. Zahl mal Faktor.
+
+**Rechnung:** $2{,}5\\,\\text{bar} = 2{,}5\\cdot 10^{5}\\,\\text{Pa} = 250\\,000\\,\\text{Pa}$.
+
+**Probe:** $250\\,000\\,\\text{Pa} = 250\\,\\text{kPa} = 0{,}25\\,\\text{MPa}$ — typischer Reifendruck (PKW: $\\approx 200$–$300\\,\\text{kPa}$). ✓
+
+**Typischer Fehler:** bar mit dem Faktor $10^{3}$ (kPa) verwechseln — dann wäre das Ergebnis $1000$-fach zu klein.`,
+        [
+          'Faustregel: $1\\,\\text{bar} = 10^{5}\\,\\text{Pa}$.',
+          'Multipliziere die Zahl mit $10^{5}$.',
+          'Komma um $5$ Stellen nach rechts verschieben.',
+        ],
+        {
+          1: 'Hier wurde der Faktor $10^{3}$ verwendet — $\\text{bar}$ ist aber $10^{5}\\,\\text{Pa}$, nicht $10^{3}$.',
+          2: 'Hier wurde der Faktor $10^{4}$ verwendet — auch falsch.',
+          3: 'Hier wurde der Faktor $10^{8}$ verwendet — Faktor $1000$ zu groß. bar ist nicht GPa.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['bar-pa'] },
+      ),
+      ni(
+        'Im Hydraulikzylinder herrscht ein Druck von $7\\,\\text{bar}$. Wie groß ist der Druck in Pa?',
+        700000, 1, 'Pa',
+        `**Ansatz:** $1\\,\\text{bar} = 10^{5}\\,\\text{Pa}$ — direkt einsetzen.
+
+**Rechnung:** $7\\,\\text{bar} = 7\\cdot 10^{5}\\,\\text{Pa} = 700\\,000\\,\\text{Pa}$.
+
+**Probe:** $700\\,000\\,\\text{Pa} = 0{,}7\\,\\text{MPa} = 700\\,\\text{kPa}$ — sinnvolle Größenordnung für einen Niederdruck-Hydraulikzylinder. ✓
+
+**Typischer Fehler:** $7\\cdot 10^{6}\\,\\text{Pa}$ rechnen (Verwechslung bar↔MPa) — dann liegt das Ergebnis um Faktor $10$ daneben.`,
+        [
+          '$1\\,\\text{bar} = 10^{5}\\,\\text{Pa}$.',
+          'Multipliziere $7$ mit $10^{5}$.',
+          'Schreibe als Dezimalzahl: $7$ und fünf Nullen.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['bar-pa'] },
+      ),
+      mc(
+        'Ein Lernender schreibt: „$1\\,\\text{mbar} = 1\\,\\text{Pa}$". Welcher Fehler liegt vor?',
+        [
+          '$1\\,\\text{mbar} = 10^{-3}\\,\\text{bar} = 10^{-3}\\cdot 10^{5}\\,\\text{Pa} = 100\\,\\text{Pa}$.',
+          '$1\\,\\text{mbar} = 1000\\,\\text{Pa}$ — der Präfix m bedeutet $10^{3}$.',
+          'Korrekt — m und bar gleichen sich aus.',
+          '$1\\,\\text{mbar} = 10^{-5}\\,\\text{Pa}$.',
+        ],
+        0,
+        `**Ansatz:** Der Präfix m (milli) bedeutet $10^{-3}$ — wirkt auf die Einheit dahinter. „mbar" $= 10^{-3}\\,\\text{bar}$.
+
+**Rechnung:** $1\\,\\text{mbar} = 10^{-3}\\,\\text{bar} = 10^{-3}\\cdot 10^{5}\\,\\text{Pa} = 10^{2}\\,\\text{Pa} = 100\\,\\text{Pa}$.
+
+**Probe:** Wetterbericht: Luftdruck z. B. $1013\\,\\text{mbar} \\approx 1013\\cdot 100\\,\\text{Pa} = 101\\,300\\,\\text{Pa}$ — passt zu $1{,}013\\,\\text{bar}$. ✓
+
+**Typischer Fehler:** Annehmen, $\\text{mbar}$ und $\\text{Pa}$ seien gleich, weil sie „beide kleine Druckeinheiten" sind. Tatsächlich gilt $1\\,\\text{mbar} = 100\\,\\text{Pa}$.`,
+        [
+          'Lese „mbar" als „milli mal bar".',
+          'milli ist $10^{-3}$, bar ist $10^{5}\\,\\text{Pa}$.',
+          'Multipliziere die beiden: Ergebnis $100\\,\\text{Pa}$.',
+        ],
+        {
+          1: 'milli (m) ist $10^{-3}$, nicht $10^{3}$. Vorzeichen des Exponenten verwechselt.',
+          2: 'Faktor $100$ Unterschied — $1\\,\\text{mbar} = 100\\,\\text{Pa}$, nicht gleich.',
+          3: 'Falscher Faktor: $10^{-3}\\cdot 10^{5} = 10^{2}$, nicht $10^{-5}$.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['bar-pa'] },
+      ),
+      matching(
+        'Ordne jedem Druckwert die korrekte Umrechnung in Pa zu.',
+        [
+          { left: '$1\\,\\text{mbar}$', right: '$100\\,\\text{Pa}$' },
+          { left: '$1\\,\\text{kPa}$', right: '$1000\\,\\text{Pa}$' },
+          { left: '$1\\,\\text{bar}$', right: '$10^{5}\\,\\text{Pa}$' },
+          { left: '$1\\,\\text{MPa}$', right: '$10^{6}\\,\\text{Pa}$' },
+        ],
+        `**Ansatz:** Faktor jeder Einheit zu Pa: mbar $= 10^{-3}\\cdot 10^{5} = 10^{2}$; kPa $= 10^{3}$; bar $= 10^{5}$; MPa $= 10^{6}$.
+
+**Rechnung:** $1\\,\\text{mbar} = 100\\,\\text{Pa}$, $1\\,\\text{kPa} = 1000\\,\\text{Pa}$, $1\\,\\text{bar} = 10^{5}\\,\\text{Pa}$, $1\\,\\text{MPa} = 10^{6}\\,\\text{Pa}$.
+
+**Probe:** Größenordnung steigend: mbar < kPa < bar < MPa — passt. ✓
+
+**Typischer Fehler:** mbar und kPa für gleich groß halten — tatsächlich liegt zwischen ihnen Faktor $10$ ($1\\,\\text{kPa} = 10\\,\\text{mbar}$).`,
+        [
+          'Trick: erst alles über bar gehen, dann bar = $10^{5}\\,\\text{Pa}$ einsetzen.',
+          'mbar = $10^{-3}\\,\\text{bar}$; MPa = $10^{6}\\,\\text{Pa}$ direkt.',
+          'kPa = $10^{3}\\,\\text{Pa}$ — hat keinen Bezug zu bar, nur zu Pa.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['bar-pa'] },
+      ),
+      ni(
+        'Ein Reifenhersteller gibt den Reifendruck in kPa an. Wie viel kPa entsprechen $2{,}5\\,\\text{bar}$?',
+        250, 0.5, 'kPa',
+        `**Ansatz:** Erst in Pa, dann in kPa.
+
+**Rechnung:** $2{,}5\\,\\text{bar} = 2{,}5\\cdot 10^{5}\\,\\text{Pa} = 250\\,000\\,\\text{Pa} = 250\\,\\text{kPa}$.
+
+**Probe:** Faustregel: $1\\,\\text{bar} = 100\\,\\text{kPa}$. Also $2{,}5\\,\\text{bar} = 250\\,\\text{kPa}$. ✓
+
+**Typischer Fehler:** bar mit kPa direkt gleichsetzen ($2{,}5\\,\\text{kPa}$ statt $250\\,\\text{kPa}$) — der Faktor $100$ zwischen bar und kPa fehlt.`,
+        [
+          'Faustregel: $1\\,\\text{bar} = 100\\,\\text{kPa}$.',
+          'Oder: bar $\\to$ Pa $\\to$ kPa.',
+          'Multipliziere die Zahl mit $100$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['bar-pa'] },
+      ),
+    ],
+
+    // ── [3] Dimensionsanalyse als Kontrollschritt ────────────────────────
+    3: [
+      tf(
+        'In einer korrekten physikalischen Gleichung müssen auf beiden Seiten dieselben Einheiten stehen.',
+        true,
+        `**Ansatz:** Eine Gleichung $A = B$ macht physikalisch nur Sinn, wenn beide Seiten dieselbe Größe (und damit Einheit) haben.
+
+**Rechnung:** Beispiel: $E = mc^{2}$. Links: $\\text{J} = \\text{kg}\\cdot\\text{m}^{2}/\\text{s}^{2}$. Rechts: $\\text{kg}\\cdot(\\text{m}/\\text{s})^{2} = \\text{kg}\\cdot\\text{m}^{2}/\\text{s}^{2}$. ✓
+
+**Probe:** Wenn die Einheiten **nicht** stimmen, kann man die Gleichung sofort als falsch verwerfen — ohne Zahlen einzusetzen.
+
+**Typischer Fehler:** Annehmen, dass Einheiten „später schon irgendwie passen". Dimensionsanalyse ist immer der erste Plausibilitäts-Check.`,
+        [
+          'Eine Gleichung gleichsetzt **Größen**, nicht nur Zahlen.',
+          'Größen mit unterschiedlichen Einheiten sind nicht gleich.',
+          'Daher: links und rechts muss dieselbe Einheit stehen.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['dim-check'] },
+      ),
+      mc(
+        'Welche der folgenden Formeln ist dimensional konsistent für die potentielle Energie?',
+        [
+          '$E = m\\cdot g\\cdot h$ mit $m$ in kg, $g$ in $\\text{m}/\\text{s}^{2}$, $h$ in m',
+          '$E = m\\cdot v$ mit $m$ in kg, $v$ in $\\text{m}/\\text{s}$',
+          '$E = F + s$ mit $F$ in N, $s$ in m',
+          '$E = m/t$ mit $m$ in kg, $t$ in s',
+        ],
+        0,
+        `**Ansatz:** Energie hat Einheit $\\text{J} = \\text{kg}\\cdot\\text{m}^{2}/\\text{s}^{2}$. Rechte Seite muss diese Einheit liefern.
+
+**Rechnung:** $m\\cdot g\\cdot h$: $\\text{kg}\\cdot(\\text{m}/\\text{s}^{2})\\cdot\\text{m} = \\text{kg}\\cdot\\text{m}^{2}/\\text{s}^{2} = \\text{J}$. ✓
+
+**Probe:** $E_\\text{pot} = mgh$ ist die bekannte Formel — passt zur Anschauung (Masse hochheben kostet Energie). ✓
+
+**Typischer Fehler:** Größen einfach addieren ($F + s$) — Addition setzt voraus, dass beide Summanden **dieselbe** Einheit haben. $\\text{N} + \\text{m}$ ist dimensional sinnlos.`,
+        [
+          'Energie hat Einheit $\\text{J} = \\text{kg}\\cdot\\text{m}^{2}/\\text{s}^{2}$.',
+          'Für jede Option Einheiten der Faktoren multiplizieren.',
+          'Welche Option ergibt $\\text{kg}\\cdot\\text{m}^{2}/\\text{s}^{2}$?',
+        ],
+        {
+          1: '$m\\cdot v$ hat Einheit $\\text{kg}\\cdot\\text{m}/\\text{s}$ — das ist Impuls, nicht Energie. Eine $\\text{m}/\\text{s}$-Potenz fehlt.',
+          2: '$\\text{N} + \\text{m}$ ist nicht definiert — Addition verlangt gleiche Einheiten. Die Formel ist nicht dimensional konsistent.',
+          3: '$m/t$ hat Einheit $\\text{kg}/\\text{s}$ — das ist ein Massenstrom, nicht Energie.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['dim-check'] },
+      ),
+      mc(
+        'Welche Kombination der angegebenen Größen liefert die Einheit Watt?',
+        [
+          '$F\\cdot v$ (Kraft mal Geschwindigkeit)',
+          '$F\\cdot s$ (Kraft mal Strecke)',
+          '$m\\cdot a$ (Masse mal Beschleunigung)',
+          '$F/A$ (Kraft pro Fläche)',
+        ],
+        0,
+        `**Ansatz:** Watt = Leistung = Energie/Zeit = $\\text{J}/\\text{s} = \\text{N}\\cdot\\text{m}/\\text{s}$.
+
+**Rechnung:** $F\\cdot v = \\text{N}\\cdot(\\text{m}/\\text{s}) = \\text{N}\\cdot\\text{m}/\\text{s} = \\text{W}$. ✓
+
+**Probe:** Anschauliches Beispiel: Auto fährt mit $F = 500\\,\\text{N}$ Vortrieb bei $v = 20\\,\\text{m}/\\text{s}$ — Leistung $P = 10\\,000\\,\\text{W} = 10\\,\\text{kW}$. Plausibel. ✓
+
+**Typischer Fehler:** $F\\cdot s$ (Arbeit, $\\text{J}$) mit $F\\cdot v$ (Leistung, $\\text{W}$) verwechseln — eine Zeit-Dimension Unterschied.`,
+        [
+          'Watt $= \\text{J}/\\text{s}$ — Leistung ist Energie pro Zeit.',
+          'Suche eine Operation, deren Einheit $\\text{N}\\cdot\\text{m}/\\text{s}$ ergibt.',
+          'Geschwindigkeit hat Einheit $\\text{m}/\\text{s}$ — Multiplikation mit Kraft passt.',
+        ],
+        {
+          1: '$F\\cdot s$ hat Einheit $\\text{N}\\cdot\\text{m} = \\text{J}$ — das ist Arbeit/Energie, nicht Leistung.',
+          2: '$m\\cdot a$ hat Einheit $\\text{kg}\\cdot\\text{m}/\\text{s}^{2} = \\text{N}$ — das ist Kraft, nicht Leistung.',
+          3: '$F/A$ hat Einheit $\\text{N}/\\text{m}^{2} = \\text{Pa}$ — das ist Druck/Spannung, nicht Leistung.',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['dim-check'] },
+      ),
+      mc(
+        'Ein Studierender setzt in $E_\\text{kin} = \\tfrac{1}{2}mv^{2}$ ein: $m = 2\\,\\text{kg}$, $v = 30\\,\\text{km/h}$ und erhält $E = 900\\,\\text{J}$. Welcher Fehler liegt vor?',
+        [
+          'Geschwindigkeit nicht in $\\text{m}/\\text{s}$ umgerechnet — $30\\,\\text{km/h}\\approx 8{,}33\\,\\text{m}/\\text{s}$, korrekt $E\\approx 69{,}4\\,\\text{J}$.',
+          'Die Masse muss in g angegeben werden — richtig wäre $E = 1{,}8\\,\\text{J}$.',
+          'Korrekt — km/h und m/s sind in der Energieformel gleichwertig.',
+          'Die Formel müsste $\\tfrac{1}{2}mv^{3}$ heißen.',
+        ],
+        0,
+        `**Ansatz:** Kinetische Energie: $E_\\text{kin} = \\tfrac{1}{2}mv^{2}$. Damit das Ergebnis in Joule herauskommt, muss $v$ in $\\text{m}/\\text{s}$ stehen.
+
+**Rechnung:** Korrekt: $v = 30\\,\\text{km/h} = 30/3{,}6\\,\\text{m}/\\text{s} \\approx 8{,}33\\,\\text{m}/\\text{s}$. $E = \\tfrac{1}{2}\\cdot 2\\cdot 8{,}33^{2} \\approx 69{,}4\\,\\text{J}$.
+
+**Probe:** Mit km/h gerechnet: $\\tfrac{1}{2}\\cdot 2\\cdot 30^{2} = 900$ — aber Einheit wäre $\\text{kg}\\cdot(\\text{km/h})^{2}$, nicht J. Faktor $3{,}6^{2}\\approx 13$ daneben. ✓
+
+**Typischer Fehler:** Im Kopf rechnen, ohne erst die Einheit von $v$ in SI ($\\text{m}/\\text{s}$) zu bringen.`,
+        [
+          'Welche Einheit muss $v$ haben, damit $\\tfrac{1}{2}mv^{2}$ in Joule herauskommt?',
+          '$\\text{m}/\\text{s}$, weil $\\text{kg}\\cdot(\\text{m}/\\text{s})^{2} = \\text{kg}\\cdot\\text{m}^{2}/\\text{s}^{2} = \\text{J}$.',
+          'Umrechnung: $1\\,\\text{km/h} = 1/3{,}6\\,\\text{m}/\\text{s}$.',
+        ],
+        {
+          1: 'Die Masse $2\\,\\text{kg}$ ist bereits in der SI-Einheit — kg ist die SI-Basiseinheit der Masse.',
+          2: 'Falsch — die Einheiten passen nicht zusammen, also ist die Rechnung dimensional inkonsistent.',
+          3: 'Die Formel ist gesichert $\\tfrac{1}{2}mv^{2}$ — der Exponent passt zur Einheit Joule.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['dim-check'] },
+      ),
+      mc(
+        'Welche Einheit hat der Ausdruck $\\sqrt{l/g}$ mit $l$ in m und $g$ in $\\text{m}/\\text{s}^{2}$ (typisch für die Schwingungsdauer eines Fadenpendels)?',
+        [
+          'Sekunde (s)',
+          'Meter (m)',
+          'Hertz ($1/\\text{s}$)',
+          'Quadratmeter ($\\text{m}^{2}$)',
+        ],
+        0,
+        `**Ansatz:** Einheit unter der Wurzel ausrechnen, dann Wurzel ziehen.
+
+**Rechnung:** $[l/g] = \\text{m}/(\\text{m}/\\text{s}^{2}) = \\text{m}\\cdot\\text{s}^{2}/\\text{m} = \\text{s}^{2}$. Wurzel: $\\sqrt{\\text{s}^{2}} = \\text{s}$.
+
+**Probe:** Schwingungsdauer eines Fadenpendels: $T = 2\\pi\\sqrt{l/g}$ — Ergebnis in Sekunden, passt zum Pendel-Experiment. ✓
+
+**Typischer Fehler:** Die Wurzel ignorieren und $\\text{s}^{2}$ als Einheit angeben — die Wurzel halbiert den Exponenten der Zeit.`,
+        [
+          'Erst Einheiten getrennt behandeln: $[l]$ und $[g]$.',
+          '$\\text{m}/(\\text{m}/\\text{s}^{2}) = \\text{s}^{2}$ (Doppelbruch auflösen).',
+          'Wurzel: $\\sqrt{\\text{s}^{2}} = \\text{s}$.',
+        ],
+        {
+          1: 'Meter wäre, wenn die Wurzel auf $\\text{m}^{2}$ wirkte — aber unter der Wurzel steht $\\text{s}^{2}$, nicht $\\text{m}^{2}$.',
+          2: 'Hertz ist $1/\\text{s}$ — das wäre der Kehrwert. Schwingungsdauer und Frequenz sind reziprok zueinander.',
+          3: 'Quadratmeter wäre, wenn die Längen multipliziert würden, ohne Wurzel.',
+        },
+        { stage: 'transfer', subGoal: 3, uses: ['dim-check'] },
+      ),
+      matching(
+        'Ordne jeder abgeleiteten Einheit ihre Zerlegung in SI-Basiseinheiten zu.',
+        [
+          { left: '$\\text{N}$ (Kraft)', right: '$\\text{kg}\\cdot\\text{m}/\\text{s}^{2}$' },
+          { left: '$\\text{J}$ (Energie)', right: '$\\text{kg}\\cdot\\text{m}^{2}/\\text{s}^{2}$' },
+          { left: '$\\text{W}$ (Leistung)', right: '$\\text{kg}\\cdot\\text{m}^{2}/\\text{s}^{3}$' },
+          { left: '$\\text{Pa}$ (Druck)', right: '$\\text{kg}/(\\text{m}\\cdot\\text{s}^{2})$' },
+        ],
+        `**Ansatz:** Jede abgeleitete Einheit aus ihrer Definition zerlegen.
+
+**Rechnung:** $\\text{N} = \\text{kg}\\cdot\\text{m}/\\text{s}^{2}$ (aus $F = m a$). $\\text{J} = \\text{N}\\cdot\\text{m} = \\text{kg}\\cdot\\text{m}^{2}/\\text{s}^{2}$. $\\text{W} = \\text{J}/\\text{s} = \\text{kg}\\cdot\\text{m}^{2}/\\text{s}^{3}$. $\\text{Pa} = \\text{N}/\\text{m}^{2} = \\text{kg}/(\\text{m}\\cdot\\text{s}^{2})$.
+
+**Probe:** Querbeziehung: $\\text{W}\\cdot\\text{s} = \\text{J}$ — eine Sekunde Leistung ergibt eine Energieportion, Exponent von s steigt um $1$. ✓
+
+**Typischer Fehler:** Joule und Watt verwechseln — beide nutzen $\\text{kg}\\cdot\\text{m}^{2}$, aber $\\text{W}$ hat $\\text{s}^{3}$ im Nenner (eine Zeit-Potenz mehr).`,
+        [
+          'Ankerformel: $\\text{N} = \\text{kg}\\cdot\\text{m}/\\text{s}^{2}$.',
+          'Energie = Kraft mal Weg → eine $\\text{m}$-Potenz mehr.',
+          'Leistung = Energie pro Zeit → eine $\\text{s}$-Potenz mehr im Nenner.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['dim-check'] },
+      ),
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // mech-0-3 — Dimensionsanalyse / Einheitencheck  (4 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'mech-0-3': {

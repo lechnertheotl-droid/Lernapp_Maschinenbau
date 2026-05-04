@@ -115,7 +115,11 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 **Probe:** $2{,}5\\,\\text{GPa} = 2500\\,\\text{MPa} = 2\\,500\\,000\\,\\text{kPa} = 2\\,500\\,000\\,000\\,\\text{Pa}$.
 
 **Typischer Fehler:** „M" (mega) mit „G" (giga) verwechseln — Faktor $1000$ Unterschied.`,
-              hints: ['Präfix G = giga = $10^{9}$.', 'Die Zahl bleibt, der Faktor wird angefügt.'],
+              hints: [
+                'Ein Präfix multipliziert die Einheit mit einer Zehnerpotenz.',
+                'Präfix G = giga = $10^{9}$.',
+                'Die Zahl bleibt erhalten, nur die Einheit wird durch $10^{9}\\,\\text{Pa}$ ersetzt.',
+              ],
               wrongAnswerExplanations: {
                 1: 'Das wäre $2{,}5\\,\\text{MPa}$ (mega). Der Präfix G bedeutet giga = $10^{9}$, nicht mega = $10^{6}$.',
                 2: 'Das wäre $2{,}5\\,\\text{kPa}$ (kilo). Zu weit unterschätzt — G ist $10^{9}$.',
@@ -136,8 +140,9 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 
 **Typischer Fehler:** Nur einmal den Faktor $1000$ anwenden statt zweimal (km → m → mm).`,
               hints: [
+                'Über die Basiseinheit Meter gehen — nicht direkt von km nach mm springen.',
                 'km → m: Faktor $10^{3}$. m → mm: Faktor $10^{3}$.',
-                'Insgesamt also Faktor $10^{6}$.',
+                'Insgesamt also Faktor $10^{6}$ von km nach mm.',
               ],
             },
             {
@@ -151,7 +156,11 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 **Probe:** Keine andere SI-Basiseinheit hat einen Präfix im Namen — das Kilogramm ist die Ausnahme.
 
 **Typischer Fehler:** Annehmen, Gramm sei die Grundeinheit. Im SI-System ist es historisch anders.`,
-              hints: ['Nur eine Basiseinheit hat bereits ein Präfix im Namen.'],
+              hints: [
+                'Welche der sieben SI-Basiseinheiten enthält bereits einen Präfix im Symbol?',
+                'Nur das Kilogramm trägt mit dem „k" einen Präfix in der Basiseinheit selbst.',
+                'Daraus folgt: Gramm $=10^{-3}\\,\\text{kg}$ ist die abgeleitete Größe.',
+              ],
             },
             {
               type: 'matching',
@@ -170,7 +179,11 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 **Probe:** Prüfbeispiel: $1\\,\\text{mm} = 10^{-3}\\,\\text{m}$, $1\\,\\text{kg} = 10^{3}\\,\\text{g}$. ✓
 
 **Typischer Fehler:** Groß-/Kleinschreibung: **m**illi (klein) vs. **M**ega (groß).`,
-              hints: ['Jeder Schritt ist ein Faktor $1000$ auseinander.'],
+              hints: [
+                'Negative Exponenten = Bruchteile (kleiner als 1), positive Exponenten = Vielfache.',
+                'Jeder Schritt im Präfix-Kalender ist ein Faktor $1000$ auseinander.',
+                'Symbolregel: kleiner Buchstabe = klein (m, µ, n), Großbuchstabe = groß (k ist die Ausnahme — auch klein, aber positiv).',
+              ],
             },
             {
               type: 'number-input',
@@ -279,7 +292,11 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 **Probe:** Einheit prüfen: $\\text{kg} \\cdot \\text{m/s}^{2} = \\text{N}$. ✓
 
 **Typischer Fehler:** Masse mit Gewichtskraft verwechseln. Masse ist ein Skalar in kg; die Gewichtskraft wäre $m \\cdot g \\approx 10 \\cdot 9{,}81 \\approx 98\\,\\text{N}$.`,
-              hints: ['Formel: $F = m \\cdot a$.', 'Einheiten: $\\text{kg} \\cdot \\text{m/s}^{2} = \\text{N}$.'],
+              hints: [
+                'Newtonsches Grundgesetz: Kraft = Masse $\\cdot$ Beschleunigung.',
+                'Formel: $F = m \\cdot a$.',
+                'Einheiten-Check: $\\text{kg} \\cdot \\text{m/s}^{2} = \\text{N}$ — die Newton-Zerlegung in SI-Basis.',
+              ],
             },
             {
               type: 'multiple-choice',
@@ -294,8 +311,9 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 
 **Typischer Fehler:** Präfix-Faktoren bei Flächen nicht quadrieren — dadurch Faktor $1000$ statt $10^{6}$.`,
               hints: [
+                'MPa hat den Präfix mega = $10^{6}$ vor Pa = $\\text{N}/\\text{m}^{2}$.',
                 '$1\\,\\text{MPa} = 10^{6}\\,\\text{Pa}$.',
-                '$1\\,\\text{m}^{2} = (10^{3}\\,\\text{mm})^{2} = 10^{6}\\,\\text{mm}^{2}$ — Fläche ist quadratisch!',
+                '$1\\,\\text{m}^{2} = (10^{3}\\,\\text{mm})^{2} = 10^{6}\\,\\text{mm}^{2}$ — Fläche ist quadratisch! Beide Faktoren $10^{6}$ kürzen sich.',
               ],
               wrongAnswerExplanations: {
                 1: 'Falscher Faktor: $1\\,\\text{MPa} = 1000\\,\\text{kN/m}^{2}$ ist richtig, nicht $1\\,\\text{kN/m}^{2}$.',
@@ -314,7 +332,11 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 **Probe:** In Basiseinheiten: $\\text{J} = \\text{kg} \\cdot \\text{m}^{2}/\\text{s}^{2}$ und $\\text{N}\\cdot\\text{m} = \\text{kg}\\cdot\\text{m}/\\text{s}^{2} \\cdot \\text{m}$. ✓
 
 **Typischer Fehler:** $1\\,\\text{J}$ mit $1\\,\\text{W}$ (Leistung) verwechseln — Energie vs. Leistung.`,
-              hints: ['Energie = Kraft mal Weg.'],
+              hints: [
+                'Joule ist die SI-Einheit der Energie/Arbeit.',
+                'Mechanische Arbeit: Kraft mal Weg, $W = F \\cdot s$.',
+                'Setze Einheiten ein: $\\text{N} \\cdot \\text{m}$ — entspricht das $\\text{J}$?',
+              ],
             },
             {
               type: 'matching',
@@ -333,7 +355,11 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 **Probe:** Alle leiten sich aus Basiseinheiten ab.
 
 **Typischer Fehler:** W (Watt, Leistung) mit J (Joule, Energie) verwechseln.`,
-              hints: ['J und W unterscheiden sich um eine Zeit-Dimension (J = W·s).'],
+              hints: [
+                'Jede abgeleitete Einheit gehört zu genau einer physikalischen Größe.',
+                'J und W unterscheiden sich um eine Zeit-Dimension ($\\text{J} = \\text{W} \\cdot \\text{s}$).',
+                'Pa = Druck/Spannung ($\\text{N}/\\text{m}^{2}$), Hz = Frequenz ($1/\\text{s}$).',
+              ],
             },
             {
               type: 'number-input',
