@@ -1,5 +1,5 @@
 ---
-description: Lesson-Aufgaben handgeschrieben ausbauen (Audit + Matrix-Lücken + Bonus + Verifikation + Commit)
+description: Lesson-Aufgaben handgeschrieben ausbauen (Audit + Matrix-Lücken + Bonus + Antworten-Verifikation + Formelverzeichnis + Commit)
 argument-hint: <lessonId>  (z. B. alg-2-4, trig-3-1)
 ---
 
@@ -72,7 +72,7 @@ Signaturen: `mc(question, options, correctIndex, explanation, hints, wrongAnswer
 ## Stolperfallen aus früheren Sessions (Pflichtlektüre)
 
 1. **4-Block-Regex ist streng:** `**Rechnung:**` matched, `**Rechnung (pq-Formel):**` matched NICHT. Subtitel als Inline-Text in den Block schreiben, nicht als eigenen Markdown-Header. Gleiches Problem mit `**Schritt 1 — Ausklammern:**` statt `**Rechnung:**`.
-2. **Eigene Aufgaben SELBST nachrechnen, bevor abgeschickt:** Bei `ni` muss `correctValue` zur Frage passen. Beim Schreiben der Erklärung das Ergebnis durchrechnen und mit `correctValue` abgleichen. Ich hatte schon: $\frac{1}{2}x^2-x-4=5$ mit $x=5$ als „korrekt" angegeben (richtig wäre $x = 19/3$, oder rechte Seite zu $4$ ändern), und Horner $P(-2)$ als $13$ statt $17$.
+2. **Eigene Aufgaben SELBST nachrechnen, bevor abgeschickt** (siehe Schritt 3 — Antworten-Verifikation). Konkrete Vorfälle: $\frac{1}{2}x^2-x-4=5$ mit $x=5$ als „korrekt" angegeben (richtig: $x = 19/3$), und Horner $P(-2)$ als $13$ statt $17$. Schritt 3 ist nicht optional.
 3. **`ni`-Aufgaben brauchen eindeutige Antwort:** „Die einzige negative Nullstelle" funktioniert nur, wenn das Polynom GENAU EINE negative Nullstelle hat. Vor dem Schreiben alle Nullstellen durchprüfen.
 4. **`matching`-Aufgaben: rechte Seiten eindeutig.** Wenn `right` mehrfach auftaucht (z. B. $x = 3$ bei drei verschiedenen Gleichungen), ist die Zuordnung mehrdeutig — Polynome/Werte so wählen, dass jede Lösung nur einmal vorkommt.
 5. **`type: 'visualization'`-Steps rendern KEIN `content`-Feld** — nur `title`, `visualizationId`, `params`. Wenn du Erklärtext zur Viz willst: separaten `type: 'explanation-intuitive'`-Step DAVOR setzen.
@@ -82,7 +82,41 @@ Signaturen: `mc(question, options, correctIndex, explanation, hints, wrongAnswer
 9. **PR bereits offen?** `gh pr list --head <branch>` prüfen vor `gh pr create`. Bestehenden Draft mit `gh pr edit <num>` aktualisieren — nicht neuen anlegen.
 10. **Niemals `Sub-Goal "...":`-Prefix in der Frage** — UI rendert das automatisch als Header. Bestandsaufgaben mit Prefix sind 🔧.
 
-## 3. Verifikation (PFLICHT, alles grün)
+## 3. Antworten-Verifikation (PFLICHT — jede Aufgabe einzeln durchrechnen)
+
+Bevor irgendeine neue oder geänderte Aufgabe stehen bleibt, **rechne sie selbst durch** und gleiche das Ergebnis mit dem Wert in der Aufgabe ab. Toolbasierte oder symbolische Rechnung ist erlaubt — aber **nicht** das blinde Übernehmen aus deinem Schreibprozess.
+
+Pro Aufgabentyp prüfen:
+
+| Typ | Was nachrechnen |
+|---|---|
+| **`ni`** | `correctValue` muss exakt zur Frage passen. Erklärung Schritt für Schritt durchrechnen, Endwert mit `correctValue` vergleichen. `tolerance` passt zur Rundungsgenauigkeit (z. B. $\pi/4 \approx 0{,}7854$ → tol $0{,}001$). `unit` stimmt mit Frage überein. |
+| **`mc`** | Korrekte Option ist tatsächlich korrekt. Jede falsche Option ist eindeutig falsch — und die `wrongAnswerExplanations` benennen genau **diesen** Fehler, nicht irgendeinen. Prüfe Mehrdeutigkeit: keine zwei Optionen gleichwertig. |
+| **`tf`** | Statement im Wortlaut prüfen — nicht den „Geist" der Aussage. „Immer", „nie", „genau dann wenn" sind tückisch. |
+| **`matching`** | Jede `right`-Seite ist eindeutig genau einer `left`-Seite zugeordnet (keine Mehrdeutigkeit, auch nicht versehentlich). |
+| **`sorting`** | `correctOrder` aus dem fachlich korrekten Schritt-Ablauf, nicht aus der Reihenfolge im Code. |
+| **Erklärung** | Endergebnis im **Rechnung:**-Block stimmt mit `correctValue` / korrektem Index überein. Probe-Block ist eine echte Probe (Einsetzen, Umkehrrechnung), keine Wiederholung. |
+| **Eindeutigkeit** | „Die einzige negative Nullstelle / der größte Eigenwert / …" funktioniert nur, wenn das tatsächlich eindeutig ist. Alle Fälle vor dem Festlegen prüfen. |
+
+**Bei Diskrepanz:** Aufgabe korrigieren (nicht „ist halt nah dran"). Häufige Quellen: Vorzeichenfehler, Klammerfehler, Logarithmus-Basis verwechselt, Polynom-Auswertung verrechnet, Trigo-Quadrant falsch.
+
+Schreibe dem User in 1–2 Zeilen eine Quittung: `N Aufgaben durchgerechnet · M korrigiert (kurze Liste der Korrekturen)`.
+
+## 4. Formelverzeichnis-Update (PFLICHT, wenn neue Konzepte/Formeln auftauchen)
+
+Das Formelverzeichnis ([src/utils/formulaIndex.js](src/utils/formulaIndex.js)) wird automatisch aus allen `type: 'explanation-formal'`-Steps der Lessons gebaut. Heißt: **eine Formel landet nur dann im Verzeichnis, wenn sie in einem `explanation-formal`-Step der Lesson steht.**
+
+Pflichtprüfung pro Lesson:
+
+1. **Konzept-Inventar:** Liste alle Konzepte / Formeln, die in den (alten + neuen) Aufgaben dieser Lesson genutzt werden — typischerweise deckungsgleich mit `lesson.blueprint.concepts[*].title`.
+2. **Coverage-Check:** Für jedes Konzept prüfen, ob es im **eigenen** `explanation-formal`-Step der Lesson auftaucht (Formel + Kurzbeschreibung). Konzepte aus `prerequisites` müssen NICHT hier auftauchen — die stehen in der Vorlauf-Lesson.
+3. **Lücke schließen:** Fehlt ein Konzept, ergänze es im bestehenden `explanation-formal`-Step (Tabelle erweitern, Formelzeile hinzufügen) oder lege einen zweiten `explanation-formal`-Step in `lesson.steps` an. Keine Formel als reines Inline-LaTeX in `explanation-intuitive` verstecken — sonst fehlt sie im Verzeichnis.
+4. **Form:** Formeln in paarigen `$...$` (inline) oder `$$...$$` (display). Tabellenform mit Spalten *Regel · Formel · Beispiel* hat sich bewährt (Beispiel: [src/content/mathematics/algebra/unit1_potenzen.js:434](src/content/mathematics/algebra/unit1_potenzen.js:434)). `priority: 'wichtig' | 'prüfungsrelevant' | 'nachschlagen'` setzen, falls genutzt.
+5. **Konsistenz:** Formel-Notation im `explanation-formal`-Step muss zur Notation in den Aufgaben-Erklärungen passen (gleiche Variablen, gleiche Schreibweise — sonst verwirrt es Lernende).
+
+Schreibe dem User 1 Zeile: `Formelverzeichnis: <N> Konzepte gecovered · <M> ergänzt (<Liste>)` oder `Formelverzeichnis: vollständig, keine Ergänzung nötig`.
+
+## 5. Verifikation (PFLICHT, alles grün)
 
 ```
 npm run validate:content
@@ -93,7 +127,7 @@ npm run build
 
 Bei Fehlern: Ursache fixen, nicht umgehen.
 
-## 4. Commit & PR
+## 6. Commit & PR
 
 - Branch: bestehend, **nicht** main.
 - Commit-Title: `$ARGUMENTS ausgebaut: <Vorher> → <Nachher> Aufgaben + <Kurzbeschreibung>`.
@@ -108,5 +142,7 @@ Bei Fehlern: Ursache fixen, nicht umgehen.
 - **Keine Slop-Distraktoren:** "Keine der Antworten", "Alle richtig", "Kommt darauf an" — verboten.
 - **Keine kopierten Aufgaben mit nur veränderten Zahlen** — jede Aufgabe trägt neuen Lerninhalt.
 - **Keine generischen Erklärungen** ("Reihenfolge ist wichtig") — konkret, fachlich, mit Beispielzahl.
+- **Keine ungeprüften Antworten** — jede Aufgabe vor Commit selbst durchgerechnet (Schritt 3). Auch „eigentlich klar"-Aufgaben können stille Vorzeichen-/Klammerfehler haben.
+- **Keine neuen Formeln nur in den Aufgaben-Erklärungen** — wenn eine Formel in dieser Lesson neu eingeführt wird, muss sie im `explanation-formal`-Step stehen, sonst fehlt sie im Formelverzeichnis (Schritt 4).
 
 Wenn `$ARGUMENTS` leer ist: nimm die oberste 🔴-Karte aus `STATUS.md` und frage zur Bestätigung.

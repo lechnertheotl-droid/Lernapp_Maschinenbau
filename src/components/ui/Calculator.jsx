@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useMemo } from 'react'
 import { createPortal } from 'react-dom'
 import { cn } from '@/utils/cn'
 
@@ -17,6 +17,7 @@ function calcEval(expr, isDeg) {
       .replace(/÷/g, '/')
       .replace(/−/g, '-')
       .replace(/\^/g, '**')
+      .replace(/√/g, 'sqrt')
       .replace(/(\([^()]+\)|\d+(?:\.\d+)?|π|ℯ)²/g, '($1**2)')
       .replace(/(\([^()]+\)|\d+(?:\.\d+)?|π|ℯ)³/g, '($1**3)')
       .replace(/(\d)(π|ℯ)/g, '$1*$2')
@@ -258,22 +259,11 @@ const BASIC_ROWS = [
   ['√', 'fn:sqrt', 'sci'], ['x²', 'sq', 'sci'], ['xʸ', 'sym:^', 'sci'], ['=', 'eq', 'eq'],
 ]
 
-const FUNCTION_ROWS = [
-  ['sin', 'fn:sin', 'sci'], ['cos', 'fn:cos', 'sci'], ['tan', 'fn:tan', 'sci'], ['=', 'eq', 'eq'],
-  ['arcsin', 'fn:asin', 'sci'], ['arccos', 'fn:acos', 'sci'], ['arctan', 'fn:atan', 'sci'], ['π', 'sym:π', 'sci'],
-  ['ln', 'fn:ln', 'sci'], ['log', 'fn:log', 'sci'], ['e^x', 'fn:exp', 'sci'], ['ℯ', 'sym:ℯ', 'sci'],
-  ['√', 'fn:sqrt', 'sci'], ['∛', 'fn:cbrt', 'sci'], ['|x|', 'fn:abs', 'sci'], ['1/x', 'inv', 'sci'],
-  ['x²', 'sq', 'sci'], ['x³', 'cube', 'sci'], ['+/-', 'sign', 'sci'], ['%', 'sym:%', 'op'],
-  ['AC', 'ac', 'clear'], ['⌫', 'del', 'del'], ['(', 'sym:(', 'paren'], [')', 'sym:)', 'paren'],
-]
-
-const SOLVER_ROWS = [
-  ['x', 'sym:x', 'sci'], ['=', 'sym:=', 'op'], ['(', 'sym:(', 'paren'], [')', 'sym:)', 'paren'],
-  ['7', 'num:7', 'num'], ['8', 'num:8', 'num'], ['9', 'num:9', 'num'], ['÷', 'sym:÷', 'op'],
-  ['4', 'num:4', 'num'], ['5', 'num:5', 'num'], ['6', 'num:6', 'num'], ['×', 'sym:×', 'op'],
-  ['1', 'num:1', 'num'], ['2', 'num:2', 'num'], ['3', 'num:3', 'num'], ['−', 'sym:−', 'op'],
-  ['0', 'num:0', 'num'], ['.', 'sym:.', 'num'], ['π', 'sym:π', 'sci'], ['+', 'sym:+', 'op'],
-  ['AC', 'ac', 'clear'], ['⌫', 'del', 'del'], ['x²', 'sq', 'sci'], ['Lösen', 'solve', 'eq'],
+const SCI_ROWS = [
+  ['sin', 'fn:sin', 'sci'], ['cos', 'fn:cos', 'sci'], ['tan', 'fn:tan', 'sci'], ['ℯ', 'sym:ℯ', 'sci'],
+  ['arcsin', 'fn:asin', 'sci'], ['arccos', 'fn:acos', 'sci'], ['arctan', 'fn:atan', 'sci'], ['e^x', 'fn:exp', 'sci'],
+  ['ln', 'fn:ln', 'sci'], ['log', 'fn:log', 'sci'], ['∛', 'fn:cbrt', 'sci'], ['|x|', 'fn:abs', 'sci'],
+  ['x³', 'cube', 'sci'], ['1/x', 'inv', 'sci'], ['+/-', 'sign', 'sci'], ['%', 'sym:%', 'op'],
 ]
 
 const cellStyles = {
@@ -286,43 +276,56 @@ const cellStyles = {
   eq: 'bg-lemon text-ink hover:bg-lemon-dark border-lemon-dark font-black text-lg',
 }
 
-// ── Multi-tab panel ───────────────────────────────────────────────────────────
-function MultiPanel({ isDeg }) {
-  const [vars, setVars] = useState([
-    { name: '', value: '' },
-    { name: '', value: '' },
-  ])
+// ── Solve panel (vereint Single-Var-Löser und Multi-Var-System) ───────────────
+function SolvePanel({ isDeg, solveResult, setSolveResult }) {
   const [equation, setEquation] = useState('')
+  const [varValues, setVarValues] = useState({})
   const [targetVar, setTargetVar] = useState('')
-  const [result, setResult] = useState(null)
 
-  const detectedVars = detectVarsInEquation(equation)
-  const knownNames = new Set(vars.map(v => v.name.trim()).filter(Boolean))
-  const unknowns = detectedVars.filter(v => !knownNames.has(v) || vars.find(r => r.name.trim() === v)?.value.trim() === '')
+  const detectedVars = useMemo(() => detectVarsInEquation(equation), [equation])
+  const hasMultipleVars = detectedVars.length > 1
 
-  function addVar() {
-    setVars(prev => [...prev, { name: '', value: '' }])
+  const autoTarget = useMemo(() => {
+    if (detectedVars.length === 0) return ''
+    if (detectedVars.length === 1) return detectedVars[0]
+    const empty = detectedVars.find((v) => !(varValues[v] ?? '').trim())
+    return empty ?? detectedVars[0]
+  }, [detectedVars, varValues])
+
+  const effectiveTarget = (targetVar && detectedVars.includes(targetVar)) ? targetVar : autoTarget
+
+  function updateVarValue(name, value) {
+    setVarValues((prev) => ({ ...prev, [name]: value }))
+    setSolveResult(null)
   }
 
-  function removeVar(i) {
-    setVars(prev => prev.filter((_, idx) => idx !== i))
-  }
-
-  function updateVar(i, field, val) {
-    setVars(prev => prev.map((v, idx) => idx === i ? { ...v, [field]: val } : v))
+  function insertSymbol(sym) {
+    setEquation((prev) => prev + sym)
+    setSolveResult(null)
   }
 
   function handleSolve() {
-    if (!equation.trim() || !targetVar.trim()) return
-    const res = solveWithVars(equation, vars, targetVar, isDeg)
-    setResult(res)
+    if (!equation.trim()) return
+    if (!effectiveTarget) {
+      setSolveResult({ error: 'Keine Variable in der Gleichung erkannt', equation })
+      return
+    }
+    const knownVars = detectedVars
+      .filter((name) => name !== effectiveTarget && (varValues[name] ?? '').trim())
+      .map((name) => ({ name, value: varValues[name] }))
+    const res = solveWithVars(equation, knownVars, effectiveTarget, isDeg)
+    setSolveResult({ ...res, equation })
   }
 
-  const resultText = result
-    ? result.error
-      ? result.error
-      : `${result.variable} = ${formatResult(result.value)}`
+  const resultText = solveResult
+    ? solveResult.error
+      ? solveResult.error
+      : `${solveResult.variable} = ${formatResult(solveResult.value)}`
     : null
+
+  const QUICK_INSERT = [
+    ['π', 'π'], ['²', '²'], ['³', '³'], ['√(', '√('], ['(', '('], [')', ')'],
+  ]
 
   return (
     <div className="flex flex-col gap-0 overflow-y-auto max-h-[calc(100dvh-180px)]">
@@ -330,105 +333,198 @@ function MultiPanel({ isDeg }) {
       <div className="px-4 py-2 bg-green-950 border-b-2 border-ink min-h-[52px] flex items-center justify-end">
         <p className={cn(
           'font-mono font-bold text-right text-xl leading-tight',
-          !result ? 'text-green-400/50 text-sm' : result.error ? 'text-red-400' : 'text-green-300'
+          !solveResult ? 'text-green-400/50 text-sm' : solveResult.error ? 'text-red-400' : 'text-green-300',
         )}>
           {resultText ?? 'Ergebnis erscheint hier'}
         </p>
       </div>
 
       <div className="p-3 flex flex-col gap-3">
-        {/* Hint */}
-        <p className="text-[10px] font-mono text-ink-soft text-center">Werte in SI-Einheiten (K, Pa, m³, …)</p>
-
-        {/* Variables */}
-        <div className="flex flex-col gap-1.5">
-          <p className="text-[10px] font-mono font-bold text-primary-700 uppercase tracking-widest">Bekannte Variablen</p>
-          {vars.map((v, i) => (
-            <div key={i} className="flex items-center gap-1.5">
-              <input
-                type="text"
-                value={v.name}
-                onChange={e => updateVar(i, 'name', e.target.value)}
-                placeholder="Name"
-                className="w-20 h-9 px-2 border-2 border-ink rounded-retro font-mono text-sm bg-white focus:outline-none focus:border-primary-700"
-              />
-              <span className="font-mono text-ink font-black">=</span>
-              <input
-                inputMode="decimal"
-                type="text"
-                value={v.value}
-                onChange={e => updateVar(i, 'value', e.target.value)}
-                placeholder="Wert"
-                className="flex-1 h-9 px-2 border-2 border-ink rounded-retro font-mono text-sm bg-white focus:outline-none focus:border-primary-700"
-              />
-              <button
-                type="button"
-                onClick={() => removeVar(i)}
-                className="w-8 h-9 flex items-center justify-center border-2 border-ink rounded-retro font-mono text-xs font-black bg-white text-ink-soft hover:bg-red-50 hover:text-red-600 tap-highlight-none"
-              >
-                ✕
-              </button>
-            </div>
-          ))}
-          <button
-            type="button"
-            onClick={addVar}
-            className="self-start text-xs font-mono font-black text-primary-700 hover:text-primary-900 underline underline-offset-2 tap-highlight-none"
-          >
-            + Variable hinzufügen
-          </button>
-        </div>
-
         {/* Equation */}
         <div className="flex flex-col gap-1">
           <p className="text-[10px] font-mono font-bold text-primary-700 uppercase tracking-widest">Gleichung</p>
           <input
             type="text"
             value={equation}
-            onChange={e => { setEquation(e.target.value); setResult(null) }}
-            placeholder="z.B. V_2/V_1 = T_2/T_1"
+            onChange={(e) => { setEquation(e.target.value); setSolveResult(null) }}
+            placeholder="z. B. 2*x+3=7  oder  V2/V1 = T2/T1"
             className="w-full h-10 px-3 border-2 border-ink rounded-retro font-mono text-sm bg-white focus:outline-none focus:border-primary-700"
           />
+          <div className="flex flex-wrap gap-1 mt-0.5">
+            {QUICK_INSERT.map(([label, sym]) => (
+              <button
+                key={label}
+                type="button"
+                onClick={() => insertSymbol(sym)}
+                className="h-7 min-w-[34px] px-1.5 border-2 border-ink rounded-retro font-mono text-sm font-bold bg-white hover:bg-surface-50 retro-press tap-highlight-none"
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Target variable + solve */}
+        {/* Detected vars list — nur bei mehreren Variablen */}
+        {hasMultipleVars && (
+          <div className="flex flex-col gap-1.5">
+            <p className="text-[10px] font-mono font-bold text-primary-700 uppercase tracking-widest">
+              Werte einsetzen <span className="text-ink-soft normal-case tracking-normal">(leer lassen = gesucht)</span>
+            </p>
+            {detectedVars.map((name) => {
+              const isTarget = name === effectiveTarget
+              return (
+                <div key={name} className="flex items-center gap-1.5">
+                  <span className={cn(
+                    'w-14 font-mono text-sm font-bold text-right',
+                    isTarget ? 'text-primary-700' : 'text-ink',
+                  )}>
+                    {name}
+                  </span>
+                  <span className="font-mono text-ink font-black">=</span>
+                  <input
+                    inputMode="decimal"
+                    type="text"
+                    value={varValues[name] ?? ''}
+                    onChange={(e) => updateVarValue(name, e.target.value)}
+                    placeholder={isTarget ? '— gesucht —' : 'Wert'}
+                    className={cn(
+                      'flex-1 h-9 px-2 border-2 rounded-retro font-mono text-sm bg-white focus:outline-none focus:border-primary-700',
+                      isTarget ? 'border-primary-700 bg-primary-50' : 'border-ink',
+                    )}
+                  />
+                </div>
+              )
+            })}
+          </div>
+        )}
+
+        {/* Target selector + solve */}
         <div className="flex items-end gap-2">
-          <div className="flex flex-col gap-1 flex-1">
-            <p className="text-[10px] font-mono font-bold text-primary-700 uppercase tracking-widest">Gesucht</p>
-            {unknowns.length > 0 ? (
+          {hasMultipleVars && (
+            <div className="flex flex-col gap-1 flex-1">
+              <p className="text-[10px] font-mono font-bold text-primary-700 uppercase tracking-widest">Gesucht</p>
               <select
-                value={targetVar}
-                onChange={e => { setTargetVar(e.target.value); setResult(null) }}
+                value={effectiveTarget}
+                onChange={(e) => { setTargetVar(e.target.value); setSolveResult(null) }}
                 className="h-10 px-2 border-2 border-ink rounded-retro font-mono text-sm bg-white focus:outline-none focus:border-primary-700"
               >
-                <option value="">– auswählen –</option>
-                {unknowns.map(v => <option key={v} value={v}>{v}</option>)}
+                {detectedVars.map((v) => <option key={v} value={v}>{v}</option>)}
               </select>
-            ) : (
-              <input
-                type="text"
-                value={targetVar}
-                onChange={e => { setTargetVar(e.target.value); setResult(null) }}
-                placeholder="Variable"
-                className="h-10 px-2 border-2 border-ink rounded-retro font-mono text-sm bg-white focus:outline-none focus:border-primary-700"
-              />
-            )}
-          </div>
+            </div>
+          )}
           <button
             type="button"
             onClick={handleSolve}
-            disabled={!equation.trim() || !targetVar.trim()}
+            disabled={!equation.trim() || !effectiveTarget}
             className={cn(
               'h-10 px-5 border-2 rounded-retro font-mono text-sm font-black tap-highlight-none retro-press',
-              equation.trim() && targetVar.trim()
+              !hasMultipleVars && 'flex-1',
+              equation.trim() && effectiveTarget
                 ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon'
-                : 'bg-surface-100 border-surface-300 text-ink-soft cursor-not-allowed'
+                : 'bg-surface-100 border-surface-300 text-ink-soft cursor-not-allowed',
             )}
           >
             Lösen
           </button>
         </div>
+
+        {!hasMultipleVars && detectedVars.length === 1 && (
+          <p className="text-[10px] font-mono text-ink-soft">
+            Eine Unbekannte erkannt: <span className="font-bold text-primary-700">{detectedVars[0]}</span> wird gesucht.
+          </p>
+        )}
+        {detectedVars.length === 0 && equation.trim() && (
+          <p className="text-[10px] font-mono text-red-600">
+            Keine Variable erkannt — Buchstaben wie x, t, V_1 verwenden.
+          </p>
+        )}
       </div>
+    </div>
+  )
+}
+
+// ── Notes panel ───────────────────────────────────────────────────────────────
+const NOTES_STORAGE_KEY = 'lernapp:calculator-notes'
+
+function NotesPanel({ expr, result, solveResult }) {
+  const [notes, setNotes] = useState(() => {
+    try { return localStorage.getItem(NOTES_STORAGE_KEY) ?? '' } catch { return '' }
+  })
+
+  function updateNotes(value) {
+    setNotes(value)
+    try { localStorage.setItem(NOTES_STORAGE_KEY, value) } catch {}
+  }
+
+  const hasSolveResult = !!(solveResult && !solveResult.error && solveResult.variable && solveResult.equation)
+  const hasBasicResult = !!(expr && result !== null)
+  const canTakeOver = hasSolveResult || hasBasicResult
+
+  function takeOver() {
+    let line
+    if (hasSolveResult) {
+      line = `${solveResult.equation}  →  ${solveResult.variable} = ${formatResult(solveResult.value)}`
+    } else if (hasBasicResult) {
+      line = `${formatExpression(expr)} = ${formatResult(result)}`
+    } else {
+      return
+    }
+    const sep = notes && !notes.endsWith('\n') ? '\n' : ''
+    updateNotes(notes + sep + line + '\n')
+  }
+
+  function clearNotes() {
+    if (!notes) return
+    if (!window.confirm('Alle Notizen löschen?')) return
+    updateNotes('')
+  }
+
+  return (
+    <div className="flex flex-col gap-2 p-3 overflow-y-auto max-h-[calc(100dvh-180px)]">
+      <div className="flex items-center justify-between gap-2">
+        <p className="text-[10px] font-mono font-bold text-primary-700 uppercase tracking-widest">Notizblatt</p>
+        <div className="flex items-center gap-1.5">
+          <button
+            type="button"
+            onClick={takeOver}
+            disabled={!canTakeOver}
+            title="Aktuelles Rechner-Ergebnis als neue Zeile übernehmen"
+            className={cn(
+              'h-8 px-2.5 border-2 rounded-retro font-mono text-[11px] font-black tap-highlight-none retro-press',
+              canTakeOver
+                ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon'
+                : 'bg-surface-100 border-surface-300 text-ink-soft cursor-not-allowed',
+            )}
+          >
+            ↓ Ergebnis
+          </button>
+          <button
+            type="button"
+            onClick={clearNotes}
+            disabled={!notes}
+            title="Notizen löschen"
+            className={cn(
+              'h-8 px-2.5 border-2 rounded-retro font-mono text-[11px] font-black tap-highlight-none retro-press',
+              notes
+                ? 'bg-white border-ink text-ink-soft hover:bg-red-50 hover:text-red-600'
+                : 'bg-surface-100 border-surface-300 text-ink-soft cursor-not-allowed',
+            )}
+          >
+            Leeren
+          </button>
+        </div>
+      </div>
+      <textarea
+        value={notes}
+        onChange={(e) => updateNotes(e.target.value)}
+        placeholder={`Hier Rechnungen, Zwischenergebnisse oder Skizzen-Notizen eintragen…
+Tipp: Mit „↓ Ergebnis" das aktuelle Rechner-Ergebnis als neue Zeile einfügen.`}
+        className="w-full min-h-[220px] p-3 border-2 border-ink rounded-retro font-mono text-sm leading-relaxed bg-white focus:outline-none focus:border-primary-700 resize-none whitespace-pre-wrap"
+        spellCheck={false}
+      />
+      <p className="text-[10px] font-mono text-ink-soft">
+        Notizen bleiben lokal gespeichert — auch nach Schließen des Rechners.
+      </p>
     </div>
   )
 }
@@ -438,17 +534,15 @@ export function Calculator({ isOpen, onClose }) {
   const [expr, setExpr] = useState('')
   const [isDeg, setIsDeg] = useState(true)
   const [justEq, setJustEq] = useState(false)
-  const [page, setPage] = useState('basic')
-  const [solverResult, setSolverResult] = useState(null)
+  const [page, setPage] = useState('calc')
+  const [showSci, setShowSci] = useState(false)
+  const [showNotes, setShowNotes] = useState(false)
+  const [solveResult, setSolveResult] = useState(null)
 
   const result = expr ? calcEval(expr, isDeg) : null
-  const isSolver = page === 'solver'
-  const isMulti = page === 'multi'
-  const displayExpr = expr ? (isSolver ? expr : formatExpression(expr)) : ' '
-  const displayResult = isSolver
-    ? (solverResult ? (solverResult.error ?? `${solverResult.variable} = ${formatResult(solverResult.value)}`) : 'Gleichung eingeben')
-    : (expr ? formatResult(result) : '0')
-  const rows = page === 'basic' ? BASIC_ROWS : page === 'functions' ? FUNCTION_ROWS : SOLVER_ROWS
+  const isSolve = page === 'solve'
+  const displayExpr = expr ? formatExpression(expr) : ' '
+  const displayResult = expr ? formatResult(result) : '0'
 
   const wrapCurrent = useCallback((wrapper) => {
     setExpr((e) => e ? wrapper(e) : '')
@@ -458,12 +552,8 @@ export function Calculator({ isOpen, onClose }) {
   const press = useCallback((action) => {
     if (!action) return
 
-    if (action === 'ac') { setExpr(''); setJustEq(false); setSolverResult(null); return }
+    if (action === 'ac') { setExpr(''); setJustEq(false); return }
     if (action === 'del') { setExpr((e) => e.slice(0, -1)); setJustEq(false); return }
-    if (action === 'solve') {
-      if (expr) setSolverResult(solveEquation(expr, isDeg))
-      return
-    }
     if (action === 'eq') {
       const val = calcEval(expr, isDeg)
       if (val !== null) { setExpr(String(val)); setJustEq(true) }
@@ -484,6 +574,14 @@ export function Calculator({ isOpen, onClose }) {
 
   if (!isOpen) return null
 
+  // Welche Bereiche sichtbar sind:
+  // - Notiz-Modus: nur NotesPanel.
+  // - Lösen-Modus: SolvePanel rendert eigene Display + Eingabe — kein globales Display.
+  // - Rechnen-Modus: globales Display + Tab-Bar + (optional Sci-Reihen) + Basic-Tastenfeld.
+  const showGlobalDisplay = !showNotes && !isSolve
+  const showTabBar = !showNotes
+  const showCalcBody = !showNotes && !isSolve
+
   return createPortal(
     <div className="fixed inset-0 z-[70] flex items-end justify-center">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm animate-fade-in" onClick={onClose} />
@@ -493,70 +591,135 @@ export function Calculator({ isOpen, onClose }) {
         <div className="flex items-center justify-between px-4 py-2.5 bg-ink border-b-2 border-ink">
           <div className="flex items-center gap-2">
             <span className="text-lemon font-mono font-black text-sm tracking-widest">RECHNER</span>
-            {!isMulti && (
+            {!showNotes && (
               <button onClick={() => setIsDeg((d) => !d)} className="ml-1 flex items-center border border-surface-600 rounded overflow-hidden text-xs font-mono font-bold">
                 <span className={cn('px-2 py-0.5 transition-colors', isDeg ? 'bg-lemon text-ink' : 'text-surface-500')}>DEG</span>
                 <span className={cn('px-2 py-0.5 transition-colors', !isDeg ? 'bg-lemon text-ink' : 'text-surface-500')}>RAD</span>
               </button>
             )}
           </div>
-          <button onClick={onClose} className="text-surface-400 hover:text-lemon text-lg leading-none font-mono transition-colors w-8 h-8 flex items-center justify-center">✕</button>
+          <div className="flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => setShowNotes((v) => !v)}
+              title="Notizblatt für Zwischenrechnungen"
+              aria-pressed={showNotes}
+              className={cn(
+                'px-2 py-0.5 border rounded text-xs font-mono font-bold tracking-wide transition-colors',
+                showNotes
+                  ? 'border-lemon bg-lemon text-ink'
+                  : 'border-surface-600 text-surface-300 hover:text-lemon hover:border-lemon',
+              )}
+            >
+              NOTIZ
+            </button>
+            <button onClick={onClose} className="text-surface-400 hover:text-lemon text-lg leading-none font-mono transition-colors w-8 h-8 flex items-center justify-center">✕</button>
+          </div>
         </div>
 
-        {/* Display (hidden for multi tab) */}
-        {!isMulti && (
+        {/* Display (nur Rechnen-Modus — Lösen-Modus hat eigenes) */}
+        {showGlobalDisplay && (
           <div className="px-4 py-3 bg-green-950 border-b-2 border-ink min-h-[78px] flex flex-col justify-end">
-            <p className="text-green-400/80 font-mono text-sm text-right truncate min-h-[20px]">{isSolver && !expr ? 'z.B. 2x+3=7' : displayExpr}</p>
-            <p className={cn('font-mono font-bold text-right text-3xl leading-tight',
-              isSolver
-                ? (solverResult?.error ? 'text-red-400' : solverResult ? 'text-green-300' : 'text-green-400/50 text-lg')
-                : (result === null && expr ? 'text-red-400' : 'text-green-300')
-            )}>{displayResult}</p>
+            <p className="text-green-400/80 font-mono text-sm text-right truncate min-h-[20px]">{displayExpr}</p>
+            <p className={cn(
+              'font-mono font-bold text-right text-3xl leading-tight',
+              result === null && expr ? 'text-red-400' : 'text-green-300',
+            )}>
+              {displayResult}
+            </p>
           </div>
         )}
 
         {/* Tab bar */}
-        <div className="grid grid-cols-4 gap-1.5 p-2 bg-paper border-b-2 border-ink">
-          {[
-            ['basic',     'Standard', '+ − × ÷ und Grundoperationen'],
-            ['functions', 'Funktion', 'sin, cos, log, exp, Wurzeln'],
-            ['solver',    'Löser',    'Gleichung f(x) = 0 mit Newton-Verfahren'],
-            ['multi',     'System',   'Mehrere Gleichungen zugleich lösen'],
-          ].map(([key, label, tooltip]) => (
-            <button
-              key={key}
-              type="button"
-              onClick={() => { setPage(key); setSolverResult(null) }}
-              title={tooltip}
-              aria-label={`${label} — ${tooltip}`}
-              className={cn(
-                'h-10 rounded-retro border-2 font-mono text-xs font-black uppercase tracking-wider retro-press',
-                page === key
-                  ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon'
-                  : 'bg-white dark:bg-surface-800 border-ink text-ink dark:text-surface-100 shadow-hard-sm'
-              )}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-
-        {/* Content */}
-        {isMulti ? (
-          <MultiPanel isDeg={isDeg} />
-        ) : (
-          <div className="grid grid-cols-4 gap-px bg-ink p-px">
-            {rows.map(([label, action, style], i) => (
+        {showTabBar && (
+          <div className="grid grid-cols-2 gap-1.5 p-2 bg-paper border-b-2 border-ink">
+            {[
+              ['calc',  'Rechnen', 'Standard- und wissenschaftliche Funktionen'],
+              ['solve', 'Lösen',   'Gleichungen mit einer oder mehreren Variablen'],
+            ].map(([key, label, tooltip]) => (
               <button
-                key={`${page}-${i}-${label}`}
-                onClick={() => press(action)}
-                className={cn('h-14 flex items-center justify-center font-mono font-black text-sm transition-colors select-none tap-highlight-none active:brightness-75', cellStyles[style] ?? cellStyles.num)}
+                key={key}
+                type="button"
+                onClick={() => setPage(key)}
+                title={tooltip}
+                aria-label={`${label} — ${tooltip}`}
+                className={cn(
+                  'h-10 rounded-retro border-2 font-mono text-xs font-black uppercase tracking-wider retro-press',
+                  page === key
+                    ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon'
+                    : 'bg-white dark:bg-surface-800 border-ink text-ink dark:text-surface-100 shadow-hard-sm',
+                )}
               >
                 {label}
               </button>
             ))}
           </div>
         )}
+
+        {/* Content */}
+        {showNotes ? (
+          <NotesPanel
+            expr={expr}
+            result={result}
+            solveResult={solveResult}
+          />
+        ) : isSolve ? (
+          <SolvePanel
+            isDeg={isDeg}
+            solveResult={solveResult}
+            setSolveResult={setSolveResult}
+          />
+        ) : showCalcBody ? (
+          <>
+            {/* Sci-Toggle-Reihe */}
+            <div className="flex items-center justify-between px-2 py-1.5 bg-paper border-b border-ink/20">
+              <span className="text-[10px] font-mono font-bold text-ink-soft uppercase tracking-widest pl-1">
+                {showSci ? 'Wissenschaftlich' : 'Standard'}
+              </span>
+              <button
+                type="button"
+                onClick={() => setShowSci((v) => !v)}
+                aria-pressed={showSci}
+                className={cn(
+                  'h-7 px-2.5 border-2 rounded-retro font-mono text-[11px] font-black tap-highlight-none retro-press',
+                  showSci
+                    ? 'bg-lemon border-lemon-dark text-ink shadow-hard-lemon'
+                    : 'bg-white border-ink text-ink hover:bg-surface-50',
+                )}
+              >
+                f(x) {showSci ? '▴' : '▾'}
+              </button>
+            </div>
+
+            {/* Sci-Reihen (optional) */}
+            {showSci && (
+              <div className="grid grid-cols-4 gap-px bg-ink p-px">
+                {SCI_ROWS.map(([label, action, style], i) => (
+                  <button
+                    key={`sci-${i}-${label}`}
+                    onClick={() => press(action)}
+                    className={cn('h-12 flex items-center justify-center font-mono font-black text-sm transition-colors select-none tap-highlight-none active:brightness-75', cellStyles[style] ?? cellStyles.num)}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Basic-Reihen */}
+            <div className="grid grid-cols-4 gap-px bg-ink p-px">
+              {BASIC_ROWS.map(([label, action, style], i) => (
+                <button
+                  key={`basic-${i}-${label}`}
+                  onClick={() => press(action)}
+                  className={cn('h-14 flex items-center justify-center font-mono font-black text-sm transition-colors select-none tap-highlight-none active:brightness-75', cellStyles[style] ?? cellStyles.num)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </>
+        ) : null}
 
         <div className="bg-paper" style={{ height: 'env(safe-area-inset-bottom, 0px)' }} />
       </div>
