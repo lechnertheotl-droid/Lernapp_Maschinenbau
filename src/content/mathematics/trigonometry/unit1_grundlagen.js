@@ -180,7 +180,7 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
 1. Winkel in Radiant: $\\alpha_{\\text{rad}} = 60 \\cdot \\dfrac{\\pi}{180} = \\dfrac{\\pi}{3} \\approx 1{,}047$.
 2. Bogenlänge: $s = 0{,}5 \\cdot \\dfrac{\\pi}{3} = \\dfrac{\\pi}{6} \\approx 0{,}524\\,\\text{m}$.
 
-**Warum Bogenmaß?** Die Formel $s = r\\cdot\\alpha$ gilt **nur**, wenn $\\alpha$ in Radiant eingesetzt wird. Mit Grad stünde ein Zusatzfaktor $\\pi/180$ drin.
+**Probe:** Voller Umfang bei $r = 0{,}5$: $U = 2\\pi r = \\pi \\approx 3{,}14$ m. Ein $60°$-Bogen ist $1/6$ davon: $\\pi/6 \\approx 0{,}524$ m ✓. Die Formel $s = r\\cdot\\alpha$ gilt **nur** mit $\\alpha$ in Radiant — mit Grad stünde ein Zusatzfaktor $\\pi/180$ drin.
 
 **Typischer Fehler:** Direkt $s = r \\cdot 60 = 30$ rechnen — ohne Umrechnung. Oder DEG statt RAD beim Taschenrechner.`,
     hints: [
@@ -199,13 +199,11 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
       '$225°$, 3. Quadrant',
     ],
     correctIndex: 0,
-    explanation: `**Ansatz:** Zuerst in Grad umrechnen, dann lokalisieren.
+    explanation: `**Ansatz:** Zuerst in Grad umrechnen, dann anhand der Quadranten-Grenzen ($90°/180°/270°$) lokalisieren.
 
-**Rechnung:** $\\dfrac{5\\pi}{6} \\cdot \\dfrac{180}{\\pi} = \\dfrac{5 \\cdot 180}{6} = 150°$.
+**Rechnung:** $\\dfrac{5\\pi}{6} \\cdot \\dfrac{180}{\\pi} = \\dfrac{5 \\cdot 180}{6} = 150°$. Da $90° < 150° < 180°$ → **2. Quadrant** (links-oben). Am Einheitskreis: Punkt $\\left(-\\dfrac{\\sqrt{3}}{2}, \\dfrac{1}{2}\\right)$.
 
-**Quadrant:** $150°$ liegt zwischen $90°$ und $180°$ → **2. Quadrant** (links-oben). Am Einheitskreis: Punkt $\\left(-\\dfrac{\\sqrt{3}}{2}, \\dfrac{1}{2}\\right)$.
-
-**Synthese-Check:** Ohne Umrechnung kannst du auch direkt sehen: $\\dfrac{5\\pi}{6}$ liegt zwischen $\\dfrac{\\pi}{2}$ ($=90°$) und $\\pi$ ($=180°$) — das ist der 2. Quadrant.
+**Probe:** Rückrechnung $150° \\cdot \\pi/180 = 150\\pi/180 = 5\\pi/6$ ✓. Alternativ ohne Umrechnung: $\\dfrac{5\\pi}{6}$ liegt zwischen $\\dfrac{\\pi}{2}$ ($=90°$) und $\\pi$ ($=180°$) — passt zum 2. Quadrant.
 
 **Typischer Fehler:** Option C („$120°$"): dies entspricht $\\dfrac{2\\pi}{3}$, nicht $\\dfrac{5\\pi}{6}$.`,
     hints: [
@@ -735,6 +733,29 @@ $$\\alpha_{\\circ} = \\alpha_{\\text{rad}} \\cdot \\dfrac{180}{\\pi}$$
 | $360°$ | $2\\pi$      |
 
 **Merke:** Am Taschenrechner *immer* zuerst DEG/RAD prüfen. Im Zweifel mit $\\sin(90°) = 1$ oder $\\sin(\\pi/2) = 1$ testen.`,
+      },
+      {
+        id: 'trig-1-1-s2c', type: 'explanation-formal', title: 'Bogenlänge am Kreis',
+        content: `**Bogenlänge eines Kreissektors mit Radius $r$ und Winkel $\\alpha$:**
+
+$$b = r \\cdot \\alpha_{\\mathrm{rad}}$$
+
+| Größe | Bedeutung | Einheit |
+|---|---|---|
+| $b$ | Bogenlänge (zurückgelegter Weg auf der Kreislinie) | Meter (m) |
+| $r$ | Kreisradius | Meter (m) |
+| $\\alpha_{\\mathrm{rad}}$ | Winkel im **Bogenmaß** (Radiant) | dimensionslos |
+
+**Wichtig:** Die Formel gilt **nur**, wenn $\\alpha$ in Radiant eingesetzt wird. Mit Grad müsstest du den Faktor $\\pi/180$ ergänzen: $b = r \\cdot \\alpha_\\circ \\cdot \\pi/180$.
+
+**Spezialfall Einheitskreis** ($r = 1$): $b = \\alpha_{\\mathrm{rad}}$ — die Bogenlänge **ist** das Bogenmaß. Daher heißt es "Bogen-Maß".
+
+**Beispiel:** Welle dreht sich um $60° = \\pi/3$, Radius $r = 0{,}5$ m. Ein Punkt am Rand legt $b = 0{,}5 \\cdot \\pi/3 \\approx 0{,}524$ m zurück.`,
+      },
+      {
+        id: 'trig-1-1-s2b', type: 'visualization', title: 'Einheitskreis — π-Vielfache erkennen',
+        visualizationId: 'unit-circle',
+        params: { showSine: true, showCosine: false, interactive: true, showQuadrants: true, showLabels: true, initialAngle: 90 },
       },
       { id: 'trig-1-1-s3', type: 'exercise', title: 'Aufgabe 1 — 90° in Radiant', exerciseRef: 'ex-trig-1-1-a' },
       { id: 'trig-1-1-s4', type: 'exercise', title: 'Aufgabe 2 — π in Grad', exerciseRef: 'ex-trig-1-1-b' },

@@ -571,6 +571,46 @@ export const trigonometrySubGoalTasks = {
         },
         { stage: 'error-analysis', subGoal: 0, uses: ['deg-rad-modus'] },
       ),
+      tf(
+        'Im DEG-Modus liefert ein Taschenrechner für $\\sin(\\pi)$ den Wert $0$.',
+        false,
+        `**Ansatz:** Im DEG-Modus interpretiert der Rechner die Zahl $\\pi \\approx 3{,}14159$ als **Grad**, nicht als Radiant.
+
+**Rechnung:** $\\sin(3{,}14159°) \\approx 0{,}0548$, **nicht** $0$. Im RAD-Modus dagegen wäre $\\sin(\\pi\\,\\text{rad}) = 0$ exakt.
+
+**Probe:** $\\sin(180°) = 0$, und $\\pi$ rad $= 180°$ — das gilt aber nur, wenn der Rechner $\\pi$ als Bogenmaß liest (RAD-Modus).
+
+**Typischer Fehler:** Den Term $\\pi$ automatisch mit Bogenmaß gleichsetzen. Der Rechner kennt nur Zahlen — wie er sie interpretiert, hängt vom Modus ab.`,
+        [
+          'Wie liest der Rechner die Zahl $\\pi \\approx 3{,}14$?',
+          'In DEG: als Gradzahl. In RAD: als Radiant.',
+          '$\\sin(3{,}14°)$ ist ungefähr $0$? Nein — sehr klein, aber nicht $0$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['deg-rad-modus'] },
+      ),
+      mc(
+        'Welche Eingabe liefert **eindeutig** den Wert $1$, **wenn** der Rechner im DEG-Modus steht (und nicht in RAD)?',
+        ['$\\sin(90)$', '$\\cos(0)$', '$\\sin(0)$', '$\\tan(0)$'],
+        0,
+        `**Ansatz:** Werte mit "Null" als Argument liefern in beiden Modi dasselbe Ergebnis (z. B. $\\sin(0) = 0$, $\\cos(0) = 1$, $\\tan(0) = 0$). Die unterscheiden also den Modus **nicht**.
+
+**Rechnung:** $\\sin(90°) = 1$ in DEG, aber $\\sin(90\\,\\text{rad}) \\approx 0{,}894$ in RAD. → unterscheidbar! $\\cos(0)$, $\\sin(0)$, $\\tan(0)$ ergeben in beiden Modi denselben Wert.
+
+**Probe:** Test: Rechner umstellen und nochmal $\\sin(90)$ eingeben — der Wert ändert sich, weil das Argument modusabhängig interpretiert wird.
+
+**Typischer Fehler:** Annehmen, dass jede Eingabe modusabhängig ist. Bei Null als Argument ist das Ergebnis immer dasselbe.`,
+        [
+          'Welche Werte hängen vom Modus ab?',
+          'Argument $0$ liefert in beiden Modi denselben Wert.',
+          'Suche eine Eingabe mit nicht-null Argument, die in DEG einen Standardwert liefert.',
+        ],
+        {
+          1: '$\\cos(0) = 1$ unabhängig vom Modus — kein Modus-Test.',
+          2: '$\\sin(0) = 0$ in beiden Modi — und der Wert ist nicht $1$.',
+          3: '$\\tan(0) = 0$ in beiden Modi — kein Test.',
+        },
+        { stage: 'transfer', subGoal: 0, uses: ['deg-rad-modus'] },
+      ),
       matching(
         'Ordne jedem Rechenergebnis den Modus des Taschenrechners zu (Eingabe: $\\sin(90)$).',
         [
@@ -686,6 +726,40 @@ export const trigonometrySubGoalTasks = {
           3: 'Die Aussage stimmt nicht — $\\pi/6 = 30°$, nicht $60°$.',
         },
         { stage: 'error-analysis', subGoal: 1, uses: ['pi-vielfache'] },
+      ),
+      ni(
+        'Wie viele Grad sind $\\dfrac{7\\pi}{6}$?',
+        210, 0, '°',
+        `**Ansatz:** $\\pi = 180°$, also $k\\pi/n = k \\cdot 180°/n$.
+
+**Rechnung:** $\\dfrac{7\\pi}{6} = 7 \\cdot \\dfrac{180°}{6} = 7 \\cdot 30° = 210°$.
+
+**Probe:** $210° \\cdot \\pi/180° = 210\\pi/180 = 7\\pi/6$ ✓.
+
+**Typischer Fehler:** $7 \\cdot 6 = 42°$ rechnen (Multiplizieren statt Dividieren). Oder $\\pi/6$ als $60°$ deuten und dann $7 \\cdot 60 = 420°$ erhalten.`,
+        [
+          '$k\\pi/n = k \\cdot 180°/n$.',
+          'Erst $180°/6$ ausrechnen, dann mit $7$ multiplizieren.',
+          '$7 \\cdot 30° = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['pi-vielfache'] },
+      ),
+      ni(
+        'Drücke $-90°$ in Radiant aus. Gib **nur den Koeffizienten** $k$ in $k\\pi$ als Dezimalzahl an (mit Vorzeichen).',
+        -0.5, 0.001, '',
+        `**Ansatz:** $-90° \\cdot \\pi/180 = -90\\pi/180 = -\\pi/2$. Der Koeffizient von $\\pi$ ist $-0{,}5$.
+
+**Rechnung:** $-90/180 = -1/2 = -0{,}5$. Also $-90° = -0{,}5\\pi = -\\pi/2$.
+
+**Probe:** Rückrechnung $-\\pi/2 \\cdot 180/\\pi = -90°$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen und $0{,}5$ angeben — bei negativen Winkeln zählt das Minus mit, weil die Drehrichtung umgekehrt ist (im Uhrzeigersinn).`,
+        [
+          '$-90°$ ist ein Viertelumlauf im Uhrzeigersinn.',
+          'Der Betrag ist $\\pi/2$, das Vorzeichen bleibt erhalten.',
+          'Koeffizient von $\\pi$: $\\pm 1/2 = \\pm 0{,}5$ — welches Vorzeichen?',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['pi-vielfache'] },
       ),
       matching(
         'Ordne jedem π-Vielfachen den korrekten Grad-Wert zu.',
@@ -820,6 +894,40 @@ export const trigonometrySubGoalTasks = {
         { stage: 'error-analysis', subGoal: 2, uses: ['umrechnung-formel'] },
       ),
       ni(
+        'Rechne $\\dfrac{7\\pi}{4}$ in Grad um.',
+        315, 0, '°',
+        `**Ansatz:** $\\alpha_\\circ = \\alpha_{\\mathrm{rad}} \\cdot 180/\\pi$.
+
+**Rechnung:** $(7\\pi/4) \\cdot 180/\\pi = 7 \\cdot 180/4 = 1260/4 = 315°$.
+
+**Probe:** $315 \\cdot \\pi/180 = 315\\pi/180 = 7\\pi/4$ ✓.
+
+**Typischer Fehler:** $4 \\cdot 180/7 \\approx 102{,}9°$ rechnen — Zähler und Nenner vertauscht.`,
+        [
+          'Formel: $\\cdot 180/\\pi$.',
+          '$\\pi$ kürzt sich.',
+          '$7 \\cdot 180/4 = ?$',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['umrechnung-formel'] },
+      ),
+      ni(
+        'Rechne $-\\dfrac{\\pi}{3}$ in Grad um. Gib die Gradzahl mit Vorzeichen an.',
+        -60, 0, '°',
+        `**Ansatz:** Negativer Winkel = Drehung im Uhrzeigersinn. Formel ist linear, also bleibt das Minus erhalten.
+
+**Rechnung:** $(-\\pi/3) \\cdot 180/\\pi = -180/3 = -60°$.
+
+**Probe:** $-60 \\cdot \\pi/180 = -\\pi/3$ ✓.
+
+**Typischer Fehler:** Vorzeichen vergessen und $60°$ angeben — die Information über die Drehrichtung geht verloren.`,
+        [
+          'Formel-Anwendung wie für positive Winkel.',
+          'Vorzeichen bleibt erhalten.',
+          '$-180/3 = ?$',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['umrechnung-formel'] },
+      ),
+      ni(
         'Rechne $135°$ in Radiant um. Gib den Bruch-Koeffizienten von $\\pi$ als Dezimalzahl an (also $k$ in $k\\pi$).',
         0.75, 0.001, '',
         `**Ansatz:** $135 \\cdot \\pi/180 = 135\\pi/180$. Kürzen: $135/180 = 3/4 = 0{,}75$.
@@ -939,6 +1047,40 @@ export const trigonometrySubGoalTasks = {
           'Umstellen von $b = r\\alpha$.',
           '$\\alpha = b/r$.',
           'Einfache Division.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['bogenlaenge'] },
+      ),
+      ni(
+        'Eine Welle vollführt zwei volle Umdrehungen ($720°$). Ein Punkt im Abstand $r = 0{,}1$ m von der Drehachse legt dabei welche Bogenlänge zurück (in m, 3 Nachkommastellen)?',
+        1.257, 0.005, 'm',
+        `**Ansatz:** Erst $720°$ in Radiant umrechnen, dann $b = r \\cdot \\alpha$.
+
+**Rechnung:** $\\alpha = 720° \\cdot \\pi/180 = 4\\pi$ rad. $b = 0{,}1 \\cdot 4\\pi = 0{,}4\\pi \\approx 1{,}257$ m.
+
+**Probe:** Pro Umdrehung legt der Punkt $2\\pi r = 0{,}2\\pi \\approx 0{,}628$ m zurück. Bei zwei Umdrehungen $\\approx 1{,}257$ m ✓.
+
+**Typischer Fehler:** $720$ direkt einsetzen ($b = 0{,}1 \\cdot 720 = 72$ m) — Faktor $\\pi/180$ vergessen, Größenordnung viel zu groß.`,
+        [
+          'Erst Grad → Radiant.',
+          '$720° = 4\\pi$ rad.',
+          '$b = r \\cdot 4\\pi$ mit $r = 0{,}1$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['bogenlaenge'] },
+      ),
+      tf(
+        'Verdoppelt man bei einem Kreissektor den Radius, ohne den Winkel zu ändern, verdoppelt sich auch die Bogenlänge.',
+        true,
+        `**Ansatz:** $b = r \\cdot \\alpha$ ist linear in $r$ (bei festem $\\alpha$).
+
+**Rechnung:** Mit $r' = 2r$: $b' = r' \\cdot \\alpha = 2r \\cdot \\alpha = 2b$.
+
+**Probe:** $r=1, \\alpha = \\pi/2 \\Rightarrow b = \\pi/2$. $r=2, \\alpha = \\pi/2 \\Rightarrow b = \\pi$. Verdopplung passt.
+
+**Typischer Fehler:** Annehmen, dass die Bogenlänge sich vervierfacht (Verwechslung mit Flächenformel $A = \\frac{1}{2}r^2\\alpha$, die quadratisch in $r$ ist).`,
+        [
+          'Wie hängt $b$ linear oder quadratisch von $r$ ab?',
+          'Formel $b = r\\alpha$.',
+          'Bei Verdopplung von $r$ und festem $\\alpha$: $b$ wird mit demselben Faktor multipliziert.',
         ],
         { stage: 'transfer', subGoal: 3, uses: ['bogenlaenge'] },
       ),
