@@ -292,7 +292,11 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 **Probe:** Einheit prüfen: $\\text{kg} \\cdot \\text{m/s}^{2} = \\text{N}$. ✓
 
 **Typischer Fehler:** Masse mit Gewichtskraft verwechseln. Masse ist ein Skalar in kg; die Gewichtskraft wäre $m \\cdot g \\approx 10 \\cdot 9{,}81 \\approx 98\\,\\text{N}$.`,
-              hints: ['Formel: $F = m \\cdot a$.', 'Einheiten: $\\text{kg} \\cdot \\text{m/s}^{2} = \\text{N}$.'],
+              hints: [
+                'Newtonsches Grundgesetz: Kraft = Masse $\\cdot$ Beschleunigung.',
+                'Formel: $F = m \\cdot a$.',
+                'Einheiten-Check: $\\text{kg} \\cdot \\text{m/s}^{2} = \\text{N}$ — die Newton-Zerlegung in SI-Basis.',
+              ],
             },
             {
               type: 'multiple-choice',
@@ -307,8 +311,9 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 
 **Typischer Fehler:** Präfix-Faktoren bei Flächen nicht quadrieren — dadurch Faktor $1000$ statt $10^{6}$.`,
               hints: [
+                'MPa hat den Präfix mega = $10^{6}$ vor Pa = $\\text{N}/\\text{m}^{2}$.',
                 '$1\\,\\text{MPa} = 10^{6}\\,\\text{Pa}$.',
-                '$1\\,\\text{m}^{2} = (10^{3}\\,\\text{mm})^{2} = 10^{6}\\,\\text{mm}^{2}$ — Fläche ist quadratisch!',
+                '$1\\,\\text{m}^{2} = (10^{3}\\,\\text{mm})^{2} = 10^{6}\\,\\text{mm}^{2}$ — Fläche ist quadratisch! Beide Faktoren $10^{6}$ kürzen sich.',
               ],
               wrongAnswerExplanations: {
                 1: 'Falscher Faktor: $1\\,\\text{MPa} = 1000\\,\\text{kN/m}^{2}$ ist richtig, nicht $1\\,\\text{kN/m}^{2}$.',
@@ -327,7 +332,11 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 **Probe:** In Basiseinheiten: $\\text{J} = \\text{kg} \\cdot \\text{m}^{2}/\\text{s}^{2}$ und $\\text{N}\\cdot\\text{m} = \\text{kg}\\cdot\\text{m}/\\text{s}^{2} \\cdot \\text{m}$. ✓
 
 **Typischer Fehler:** $1\\,\\text{J}$ mit $1\\,\\text{W}$ (Leistung) verwechseln — Energie vs. Leistung.`,
-              hints: ['Energie = Kraft mal Weg.'],
+              hints: [
+                'Joule ist die SI-Einheit der Energie/Arbeit.',
+                'Mechanische Arbeit: Kraft mal Weg, $W = F \\cdot s$.',
+                'Setze Einheiten ein: $\\text{N} \\cdot \\text{m}$ — entspricht das $\\text{J}$?',
+              ],
             },
             {
               type: 'matching',
@@ -346,7 +355,11 @@ Alle anderen Einheiten lassen sich daraus ableiten.
 **Probe:** Alle leiten sich aus Basiseinheiten ab.
 
 **Typischer Fehler:** W (Watt, Leistung) mit J (Joule, Energie) verwechseln.`,
-              hints: ['J und W unterscheiden sich um eine Zeit-Dimension (J = W·s).'],
+              hints: [
+                'Jede abgeleitete Einheit gehört zu genau einer physikalischen Größe.',
+                'J und W unterscheiden sich um eine Zeit-Dimension ($\\text{J} = \\text{W} \\cdot \\text{s}$).',
+                'Pa = Druck/Spannung ($\\text{N}/\\text{m}^{2}$), Hz = Frequenz ($1/\\text{s}$).',
+              ],
             },
             {
               type: 'number-input',
