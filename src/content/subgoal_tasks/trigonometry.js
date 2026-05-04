@@ -2637,6 +2637,64 @@ export const trigonometrySubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 0, uses: ['einheitskreis-def'] },
       ),
+      // ── Bonus SG 0 ────────────────────────────────────────────────────────
+      tf(
+        'Der Punkt $(\\tfrac{\\sqrt 2}{2}, \\tfrac{\\sqrt 2}{2})$ liegt auf dem Einheitskreis.',
+        true,
+        `**Ansatz:** Einsetzen in $x^2 + y^2 = 1$.
+
+**Rechnung:** $(\\sqrt 2/2)^2 + (\\sqrt 2/2)^2 = 1/2 + 1/2 = 1$ ✓.
+
+**Probe:** Das ist genau der Punkt bei $\\alpha = 45°$.
+
+**Typischer Fehler:** $(\\sqrt 2/2)^2 = \\sqrt 2/4$ rechnen — Quadrat von $\\sqrt 2$ ist $2$, nicht $\\sqrt 2$.`,
+        [
+          'Kreisgleichung anwenden.',
+          'Quadrat von $\\sqrt 2/2$ ist $2/4 = 1/2$.',
+          '$1/2 + 1/2 = 1$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['einheitskreis-def'] },
+      ),
+      ni(
+        'Berechne $x^2 + y^2$ für den Punkt $(0{,}3,\\ 0{,}4)$. Liegt er auf dem Einheitskreis?',
+        0.25, 0.001, '',
+        `**Ansatz:** Quadrate aufsummieren und mit $1$ vergleichen.
+
+**Rechnung:** $0{,}3^2 + 0{,}4^2 = 0{,}09 + 0{,}16 = 0{,}25$.
+
+**Probe:** $0{,}25 < 1$, also liegt $(0{,}3,\\ 0{,}4)$ INNERHALB des Einheitskreises (Abstand $\\sqrt{0{,}25} = 0{,}5$).
+
+**Typischer Fehler:** $0{,}3 + 0{,}4 = 0{,}7$ rechnen (linear statt quadratisch). Oder $(0{,}3)^2 = 0{,}9$ (Komma vergessen — richtig $0{,}09$).`,
+        [
+          'Erst quadrieren, dann addieren.',
+          '$0{,}3^2 = 0{,}09$ (zwei Nachkommastellen).',
+          '$0{,}4^2 = 0{,}16$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['einheitskreis-def'] },
+      ),
+      sorting(
+        'Sortiere die Punkte nach Abstand zum Ursprung — vom kleinsten zum größten.',
+        [
+          '$(0{,}3,\\ 0{,}4)$  (Abstand $0{,}5$)',
+          '$(\\tfrac{\\sqrt 2}{2},\\ \\tfrac{\\sqrt 2}{2})$  (Abstand $1$)',
+          '$(0{,}8,\\ 0{,}8)$  (Abstand $\\approx 1{,}13$)',
+          '$(2,\\ 0)$  (Abstand $2$)',
+        ],
+        [0, 1, 2, 3],
+        `**Ansatz:** Abstand $d = \\sqrt{x^2 + y^2}$ vergleichen.
+
+**Rechnung:** $d_1 = \\sqrt{0{,}09 + 0{,}16} = 0{,}5$. $d_2 = \\sqrt{1/2 + 1/2} = 1$. $d_3 = \\sqrt{0{,}64 + 0{,}64} = \\sqrt{1{,}28} \\approx 1{,}131$. $d_4 = 2$.
+
+**Probe:** $0{,}5 < 1 < 1{,}131 < 2$ ✓.
+
+**Typischer Fehler:** Nur die erste Koordinate vergleichen — $(0{,}3, 0{,}4)$ vor $(0{,}8, 0{,}8)$ richtig sortiert, aber $(\\sqrt 2/2, \\sqrt 2/2)$ ($x \\approx 0{,}707$) wäre dann fälschlich vor $(0{,}8, 0{,}8)$ gestellt — nach $x$-Wert.`,
+        [
+          'Abstandsformel zum Ursprung.',
+          '$d = \\sqrt{x^2 + y^2}$.',
+          'Erst $d$ berechnen, dann sortieren.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['einheitskreis-def'] },
+      ),
     ],
 
     // ── [1] Punkt = (cos α, sin α), Winkel gegen Uhrzeigersinn ─────────────
@@ -2747,6 +2805,64 @@ export const trigonometrySubGoalTasks = {
           'Erste Koordinate: Kosinus.',
         ],
         { stage: 'transfer', subGoal: 1, uses: ['punkt-parametrisierung'] },
+      ),
+      // ── Bonus SG 1 ────────────────────────────────────────────────────────
+      tf(
+        'Die Koordinaten des Punkts auf dem Einheitskreis bei Winkel $\\alpha$ sind $(\\sin\\alpha,\\ \\cos\\alpha)$.',
+        false,
+        `**Ansatz:** Konvention: erste Koordinate ist $\\cos$, zweite ist $\\sin$.
+
+**Rechnung:** Korrekt ist $P = (\\cos\\alpha,\\ \\sin\\alpha)$. Test bei $\\alpha = 0°$: $(\\cos 0°, \\sin 0°) = (1, 0)$ ✓. Mit der Behauptung wäre $(\\sin 0°, \\cos 0°) = (0, 1)$ — das ist aber der Punkt bei $90°$.
+
+**Probe:** Eselsbrücke: **c**os horizontal ($x$-Achse), **s**in vertikal ($y$-Achse). $\\cos$ kommt zuerst, weil $x$ vor $y$.
+
+**Typischer Fehler:** Reihenfolge spontan vertauschen, weil "sin häufiger gehört wird".`,
+        [
+          'Welche Koordinate ist horizontal?',
+          'cos → $x$, sin → $y$.',
+          'Bei $\\alpha = 0°$ muss $P = (1, 0)$ herauskommen.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['punkt-parametrisierung'] },
+      ),
+      ni(
+        'Bestimme die $x$-Koordinate des Punkts auf dem Einheitskreis bei $\\alpha = 45°$. (3 NK)',
+        0.7071, 0.001, '',
+        `**Ansatz:** $x = \\cos\\alpha$.
+
+**Rechnung:** $x = \\cos 45° = \\sqrt 2/2 \\approx 0{,}7071$.
+
+**Probe:** Bei $45°$ sind $x$ und $y$ gleich (Diagonale): $0{,}7071^2 + 0{,}7071^2 \\approx 0{,}5 + 0{,}5 = 1$ ✓.
+
+**Typischer Fehler:** $\\cos 45° = 1/2$ schreiben (Verwechslung mit $\\cos 60°$).`,
+        [
+          '$x = \\cos\\alpha$.',
+          'Grundwert: $\\cos 45° = \\sqrt 2/2$.',
+          '$\\sqrt 2 \\approx 1{,}4142$, also $\\sqrt 2/2 \\approx 0{,}7071$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['punkt-parametrisierung'] },
+      ),
+      mc(
+        'Welcher Winkel $\\alpha \\in [0°, 90°]$ gehört zum Punkt $P = (\\tfrac{\\sqrt 3}{2},\\ \\tfrac{1}{2})$ auf dem Einheitskreis?',
+        ['$\\alpha = 30°$', '$\\alpha = 60°$', '$\\alpha = 45°$', '$\\alpha = 0°$'],
+        0,
+        `**Ansatz:** $x = \\cos\\alpha = \\sqrt 3/2$, $y = \\sin\\alpha = 1/2$.
+
+**Rechnung:** $\\cos\\alpha = \\sqrt 3/2$ und $\\sin\\alpha = 1/2$ sind genau die Grundwerte bei $\\alpha = 30°$.
+
+**Probe:** $(\\cos 30°, \\sin 30°) = (\\sqrt 3/2, 1/2)$ ✓.
+
+**Typischer Fehler:** $60°$ wählen — bei $60°$ wären die Werte vertauscht: $(\\cos 60°, \\sin 60°) = (1/2, \\sqrt 3/2)$.`,
+        [
+          'Welcher Grundwinkel hat $\\sin = 1/2$?',
+          '$\\sin 30° = 1/2$.',
+          'Probe mit $\\cos 30° = \\sqrt 3/2$.',
+        ],
+        {
+          1: 'Bei $60°$ sind die Werte vertauscht: $(1/2, \\sqrt 3/2)$.',
+          2: 'Bei $45°$ sind beide Koordinaten gleich ($\\sqrt 2/2$).',
+          3: 'Bei $0°$ wäre $P = (1, 0)$ — keine $\\sqrt 3$ im Spiel.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['punkt-parametrisierung'] },
       ),
     ],
 
@@ -2865,6 +2981,41 @@ export const trigonometrySubGoalTasks = {
         },
         { stage: 'transfer', subGoal: 2, uses: ['quadrantenpunkte'] },
       ),
+      // ── Bonus SG 2 ────────────────────────────────────────────────────────
+      tf(
+        'Der Punkt $(-1,\\ 0)$ auf dem Einheitskreis entspricht dem Winkel $\\alpha = 270°$.',
+        false,
+        `**Ansatz:** Welcher Achsenpunkt ist $(-1, 0)$?
+
+**Rechnung:** $(-1, 0)$ liegt links auf der $x$-Achse — das entspricht einer halben Drehung, also $\\alpha = 180°$, nicht $270°$.
+
+**Probe:** $(\\cos 180°, \\sin 180°) = (-1, 0)$ ✓. Bei $270°$ ist $(\\cos 270°, \\sin 270°) = (0, -1)$.
+
+**Typischer Fehler:** Quadrantenpunkte $180°$ ($(-1, 0)$) und $270°$ ($(0, -1)$) verwechseln.`,
+        [
+          'Wo zeigt der Strahl bei $180°$ hin?',
+          '$180°$ = halbe Drehung, $270°$ = drei Viertel.',
+          '$(-1, 0)$ ist links auf der $x$-Achse.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['quadrantenpunkte'] },
+      ),
+      ni(
+        'Bei welchem Winkel (in Grad, im Bereich $[0°,\\ 360°)$) ist die $x$-Koordinate des Punkts auf dem Einheitskreis gleich $-1$?',
+        180, 0, '°',
+        `**Ansatz:** $x = \\cos\\alpha = -1$.
+
+**Rechnung:** $\\cos\\alpha = -1$ tritt nur bei $\\alpha = 180°$ im Hauptbereich auf.
+
+**Probe:** $(\\cos 180°, \\sin 180°) = (-1, 0)$ ✓.
+
+**Typischer Fehler:** $90°$ oder $270°$ angeben — dort ist $\\cos = 0$.`,
+        [
+          'Wo ist $\\cos$ minimal?',
+          '$\\cos$ erreicht $-1$ bei welcher Achsenposition?',
+          'Strahl zeigt nach links → halbe Drehung.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['quadrantenpunkte'] },
+      ),
     ],
 
     // ── [3] Durchmesser = 2 vs. Radius = 1 ────────────────────────────────
@@ -2981,6 +3132,47 @@ export const trigonometrySubGoalTasks = {
           3: 'Mit $y = 0$ ist $(x, 0)$ auf Einheitskreis nur wenn $x = \\pm 1$.',
         },
         { stage: 'transfer', subGoal: 3, uses: ['durchmesser-radius'] },
+      ),
+      // ── Bonus SG 3 ────────────────────────────────────────────────────────
+      ni(
+        'Berechne den Umfang des Einheitskreises (3 NK).',
+        6.283, 0.005, '',
+        `**Ansatz:** $U = 2\\pi r$ mit $r = 1$.
+
+**Rechnung:** $U = 2\\pi \\cdot 1 = 2\\pi \\approx 6{,}2832$.
+
+**Probe:** Im Bogenmaß entspricht ein voller Umlauf genau $2\\pi$ rad $= 360°$ — die Kreislänge ist also dasselbe Maß.
+
+**Typischer Fehler:** $\\pi \\cdot r^2 = \\pi$ (Fläche statt Umfang) oder $\\pi \\cdot d = 2\\pi$ verwechseln mit $\\pi \\cdot r = \\pi$.`,
+        [
+          'Umfangsformel: $U = 2\\pi r$.',
+          '$r = 1$.',
+          '$2\\pi \\approx 6{,}2832$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['durchmesser-radius'] },
+      ),
+      mc(
+        'Wie groß ist die Fläche, die der Einheitskreis einschließt?',
+        ['$\\pi$', '$2\\pi$', '$1$', '$4\\pi$'],
+        0,
+        `**Ansatz:** Kreisfläche $A = \\pi r^2$.
+
+**Rechnung:** $A = \\pi \\cdot 1^2 = \\pi \\approx 3{,}1416$.
+
+**Probe:** Beim Kreis mit $r = 2$ wäre $A = 4\\pi$ — viermal so groß, wie es zur quadratischen Abhängigkeit passt.
+
+**Typischer Fehler:** $A = 2\\pi r = 2\\pi$ rechnen — das ist der Umfang, nicht die Fläche.`,
+        [
+          'Flächenformel des Kreises.',
+          '$A = \\pi r^2$ (nicht $2\\pi r$).',
+          '$r = 1$.',
+        ],
+        {
+          1: '$2\\pi$ ist der Umfang, nicht die Fläche.',
+          2: '$1$ ist $r^2$, aber die Fläche enthält noch den Faktor $\\pi$.',
+          3: '$4\\pi$ wäre die Fläche bei $r = 2$.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['durchmesser-radius'] },
       ),
     ],
   },

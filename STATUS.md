@@ -102,9 +102,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2403 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1556 (65 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1077 / 1077 (100 %) | 100 % | ✅ |
+| Aufgaben (gesamt) | 2413 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1566 (65 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1079 / 1079 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -199,9 +199,9 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **428** (Lesson-Path: 66 · Goal-Tasks: 362)
-- 4-Block: 412/428 (96 %) 🟡
-- MC-wAE: 220/220 (100 %) ✅
+- Aufgaben: **438** (Lesson-Path: 66 · Goal-Tasks: 372)
+- 4-Block: 422/438 (96 %) 🟡
+- MC-wAE: 222/222 (100 %) ✅
 - Sub-Goals: 66/87 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
 
@@ -249,7 +249,7 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 | `trig-1-2` Rechtwinkliges Dreieck | 3 | 3/3 | 25 | 12/6/5/2/0 | 25/25 | 12/12 | ✅ | — |
 | `trig-1-3` Die Grundwerte | 4 | 4/4 | 33 | 15/9/5/3/1 | 33/33 | 15/15 | ✅ | — |
 | `trig-1-4` Vorzeichen und Quadranten | 3 | 3/3 | 21 | 10/5/4/1/1 | 21/21 | 10/10 | ✅ | — |
-| `trig-2-1` Der Einheitskreis | 4 | 4/4 | 23 | 13/4/3/3/0 | 23/23 | 13/13 | ✅ | — |
+| `trig-2-1` Der Einheitskreis | 4 | 4/4 | 33 | 15/8/6/3/1 | 33/33 | 15/15 | ✅ | — |
 | `trig-2-2` sin und cos als Koordinaten | 5 | 5/5 | 28 | 16/4/5/3/0 | 27/28 | 16/16 | ✅ | +1 4B |
 | `trig-2-3` Symmetrien und Periodizität | 6 | 6/6 | 33 | 15/8/6/4/0 | 31/33 | 15/15 | ✅ | +2 4B |
 | `trig-2-4` Tangens im Einheitskreis | 6 | 6/6 | 33 | 19/3/6/5/0 | 30/33 | 19/19 | ✅ | +3 4B |
