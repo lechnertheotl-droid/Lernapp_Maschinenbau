@@ -224,13 +224,11 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
     question: 'In einem rechtwinkligen Dreieck ist $\\sin(\\alpha)$ definiert als:',
     options: ['Ankathete / Hypotenuse', 'Gegenkathete / Hypotenuse', 'Gegenkathete / Ankathete', 'Hypotenuse / Gegenkathete'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Eselsbrücke SOH-CAH-TOA anwenden.
+    explanation: `**Ansatz:** Eselsbrücke SOH-CAH-TOA anwenden — **S**inus = **O**pposite/**H**ypotenuse.
 
-**Regel:** $\\sin(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Hypotenuse}} = \\dfrac{G}{H}$ (SOH).
+**Rechnung:** $\\sin(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Hypotenuse}} = \\dfrac{G}{H}$. Am Einheitskreis ist die y-Koordinate gleich $\\sin(\\alpha)$ — die Gegenkathete entspricht der senkrechten Projektion, geteilt durch $H$.
 
-**Warum?** Am Einheitskreis ist die y-Koordinate gleich $\\sin(\\alpha)$. In einem rechtwinkligen Dreieck mit Hypotenuse $H$ entspricht die Gegenkathete der senkrechten Projektion — geteilt durch $H$ ergibt sich der Sinuswert.
-
-**Probe:** Bei $\\alpha = 30°$ in einem $30°-60°-90°$-Dreieck: $G = 1$, $H = 2$, also $\\sin(30°) = \\dfrac{1}{2}$. ✓
+**Probe:** Bei $\\alpha = 30°$ in einem $30°{-}60°{-}90°$-Dreieck mit $G = 1$, $H = 2$: $\\sin(30°) = 1/2$ ✓ — passt zur Tabelle der Grundwerte.
 
 **Typischer Fehler:** Gegenkathete und Ankathete verwechseln. Merke: Die Gegenkathete liegt *gegenüber* von $\\alpha$.`,
     hints: [
@@ -249,13 +247,11 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
     question: '$\\cos(\\alpha)$ ist definiert als:',
     options: ['Gegenkathete / Hypotenuse', 'Ankathete / Hypotenuse', 'Gegenkathete / Ankathete', 'Hypotenuse / Ankathete'],
     correctIndex: 1,
-    explanation: `**Ansatz:** Eselsbrücke CAH anwenden.
+    explanation: `**Ansatz:** Eselsbrücke CAH — **C**osinus = **A**djacent/**H**ypotenuse.
 
-**Regel:** $\\cos(\\alpha) = \\dfrac{\\text{Ankathete}}{\\text{Hypotenuse}} = \\dfrac{A}{H}$ (CAH).
+**Rechnung:** $\\cos(\\alpha) = \\dfrac{\\text{Ankathete}}{\\text{Hypotenuse}} = \\dfrac{A}{H}$. Am Einheitskreis ist $\\cos(\\alpha)$ die x-Koordinate; die Ankathete ist die horizontale Projektion, geteilt durch $H$ ergibt den Kosinuswert.
 
-**Am Einheitskreis:** $\\cos(\\alpha)$ ist die x-Koordinate des Punkts auf dem Kreis. Die Ankathete ist die horizontale Projektion; geteilt durch $H$ ergibt den Kosinuswert.
-
-**Probe:** Bei $\\alpha = 60°$ in einem $30°-60°-90°$-Dreieck: $A = 1$, $H = 2$, also $\\cos(60°) = \\dfrac{1}{2}$. ✓
+**Probe:** Bei $\\alpha = 60°$ in einem $30°{-}60°{-}90°$-Dreieck mit $A = 1$, $H = 2$: $\\cos(60°) = 1/2$ ✓ — passt zur Grundwerte-Tabelle.
 
 **Typischer Fehler:** Ankathete mit Hypotenuse verwechseln. Die Hypotenuse liegt *gegenüber* vom rechten Winkel, die Ankathete *neben* $\\alpha$.`,
     hints: [
@@ -274,15 +270,13 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
     question: '$\\tan(\\alpha)$ ist definiert als:',
     options: ['Hypotenuse / Gegenkathete', 'Ankathete / Gegenkathete', 'Gegenkathete / Ankathete', 'Ankathete / Hypotenuse'],
     correctIndex: 2,
-    explanation: `**Ansatz:** Eselsbrücke TOA oder Quotientenformel.
+    explanation: `**Ansatz:** Eselsbrücke TOA — **T**angens = **O**pposite/**A**djacent.
 
-**Regel:** $\\tan(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Ankathete}} = \\dfrac{G}{A} = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)}$ (TOA).
+**Rechnung:** $\\tan(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Ankathete}} = \\dfrac{G}{A} = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)}$. Am Einheitskreis ist $\\tan(\\alpha) = y/x$ — die *Steigung* der Geraden vom Ursprung zum Punkt auf dem Kreis.
 
-**Am Einheitskreis:** $\\tan(\\alpha) = \\dfrac{y}{x}$ ist die *Steigung* der Geraden vom Ursprung zum Punkt auf dem Kreis.
+**Probe:** Bei $\\alpha = 45°$ ist $G = A$ (gleichschenklig-rechtwinklig), also $\\tan(45°) = G/A = 1$ ✓.
 
-**Probe:** Bei $\\alpha = 45°$: $G = A$, also $\\tan(45°) = 1$. ✓
-
-**Typischer Fehler:** $\\dfrac{A}{G}$ statt $\\dfrac{G}{A}$ — das wäre $\\cot(\\alpha)$ (Kotangens).`,
+**Typischer Fehler:** $A/G$ statt $G/A$ — das wäre $\\cot(\\alpha)$ (Kotangens), der Kehrwert.`,
     hints: [
       'Welche Eselsbrücke? TOA. Skizze mit $\\alpha$.',
       'TOA: **T**angens = **O**pposite (Gegenkathete) / **A**dj (Ankathete).',
@@ -299,17 +293,13 @@ Alternativ über die Formel: $\\alpha_{\\text{rad}} = \\alpha_{\\circ} \\cdot \\
     question: '[PRÜFUNG] Ein Dreieck hat Gegenkathete $= 3$, Ankathete $= 4$, Hypotenuse $= 5$. Was ist $\\sin(\\alpha)$?',
     options: ['$\\dfrac{3}{5}$', '$\\dfrac{4}{5}$', '$\\dfrac{3}{4}$', '$\\dfrac{4}{3}$'],
     correctIndex: 0,
-    explanation: `**Ansatz:** SOH anwenden: $\\sin(\\alpha) = \\dfrac{G}{H}$.
+    explanation: `**Ansatz:** SOH anwenden: $\\sin(\\alpha) = G/H$.
 
 **Rechnung:** $\\sin(\\alpha) = \\dfrac{G}{H} = \\dfrac{3}{5} = 0{,}6$.
 
-**Probe mit Pythagoras:** $3^{2} + 4^{2} = 9 + 16 = 25 = 5^{2}$ ✓ — das ist das klassische $3{-}4{-}5$-Dreieck.
+**Probe:** Pythagoras bestätigt das Dreieck: $3^2 + 4^2 = 9 + 16 = 25 = 5^2$ ✓ (klassisches $3{-}4{-}5$). Trigonometrie-Identität: $\\cos(\\alpha) = 4/5 = 0{,}8$, also $\\sin^2 + \\cos^2 = 0{,}36 + 0{,}64 = 1$ ✓. Am Einheitskreis (Skalierung mit Divisor $5$): Punkt $(4/5, 3/5) = (\\cos\\alpha, \\sin\\alpha)$.
 
-**Probe mit Identität:** $\\cos(\\alpha) = \\dfrac{4}{5} = 0{,}8$. Dann $\\sin^{2}(\\alpha) + \\cos^{2}(\\alpha) = 0{,}36 + 0{,}64 = 1$. ✓
-
-**Am Einheitskreis:** Skaliere das Dreieck so, dass $H = 1$ wird (Divisor $5$). Dann liegt der Punkt bei $\\left(\\dfrac{4}{5}, \\dfrac{3}{5}\\right) = (\\cos\\alpha, \\sin\\alpha)$.
-
-**Typischer Fehler:** $\\dfrac{4}{5}$ (das wäre $\\cos(\\alpha)$) oder $\\dfrac{3}{4}$ (das wäre $\\tan(\\alpha)$).`,
+**Typischer Fehler:** $4/5$ angeben (das wäre $\\cos(\\alpha)$) oder $3/4$ (das wäre $\\tan(\\alpha)$). SOH konsequent anwenden — die Gegenkathete ($G = 3$) gehört in den Zähler.`,
     hints: [
       'Welcher Winkel? $\\alpha$. Welche Formel? SOH: $\\sin = G/H$.',
       'Formel: $\\sin(\\alpha) = \\dfrac{\\text{Gegenkathete}}{\\text{Hypotenuse}}$.',
@@ -835,6 +825,27 @@ $$\\cos(\\alpha) = \\dfrac{A}{H} = \\dfrac{\\text{Ankathete}}{\\text{Hypotenuse}
 $$\\tan(\\alpha) = \\dfrac{G}{A} = \\dfrac{\\text{Gegenkathete}}{\\text{Ankathete}} = \\dfrac{\\sin(\\alpha)}{\\cos(\\alpha)}$$
 
 **Wichtig:** Diese Definitionen gelten im rechtwinkligen Dreieck direkt nur für Winkel zwischen $0°$ und $90°$. Für beliebige Winkel brauchen wir den Einheitskreis — dort gilt $\\sin(\\alpha) = y$ und $\\cos(\\alpha) = x$ für *jeden* reellen $\\alpha$.`,
+      },
+      {
+        id: 'trig-1-2-s2b', type: 'explanation-formal', title: 'Umkehrfunktionen: arcsin / arccos / arctan',
+        content: `Wenn der **Winkel** gesucht ist (statt eines Funktionswerts), nutzt man die Umkehrfunktionen:
+
+| Bekanntes Verhältnis | Umkehrfunktion | Formel |
+|---|---|---|
+| $\\sin(\\alpha) = G/H$ | $\\arcsin$ | $\\alpha = \\arcsin(G/H)$ |
+| $\\cos(\\alpha) = A/H$ | $\\arccos$ | $\\alpha = \\arccos(A/H)$ |
+| $\\tan(\\alpha) = G/A$ | $\\arctan$ | $\\alpha = \\arctan(G/A)$ |
+
+**Wichtig — Hauptwerte:** Taschenrechner liefern den Hauptwert: $\\arcsin \\in [-90°, 90°]$, $\\arccos \\in [0°, 180°]$, $\\arctan \\in (-90°, 90°)$. Andere Lösungen einer Gleichung wie $\\sin x = c$ ergeben sich aus den Symmetrien des Einheitskreises (siehe Lesson "Vorzeichen und Quadranten").
+
+**Definitionsbereich:** $\\arcsin$ und $\\arccos$ nur für Argumente in $[-1, 1]$. $\\arctan$ akzeptiert jede reelle Zahl.
+
+**Rechner-Modus:** Im DEG-Modus liefern die Umkehrfunktionen Grad, im RAD-Modus Radiant. Vor jeder Klausur prüfen!`,
+      },
+      {
+        id: 'trig-1-2-s2c', type: 'visualization', title: 'Einheitskreis — sin und cos als Koordinaten',
+        visualizationId: 'unit-circle',
+        params: { showSine: true, showCosine: true, interactive: true, showQuadrants: true, showLabels: true, initialAngle: 30 },
       },
       {
         id: 'trig-1-2-s-herleitung',

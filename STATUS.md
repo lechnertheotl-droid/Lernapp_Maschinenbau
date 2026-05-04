@@ -102,9 +102,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2386 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1532 (64 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1074 / 1074 (100 %) | 100 % | ✅ |
+| Aufgaben (gesamt) | 2392 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1542 (64 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1075 / 1075 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -199,9 +199,9 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **411** (Lesson-Path: 66 · Goal-Tasks: 345)
-- 4-Block: 388/411 (94 %) 🟡
-- MC-wAE: 217/217 (100 %) ✅
+- Aufgaben: **417** (Lesson-Path: 66 · Goal-Tasks: 351)
+- 4-Block: 398/417 (95 %) 🟡
+- MC-wAE: 218/218 (100 %) ✅
 - Sub-Goals: 66/87 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
 
@@ -246,7 +246,7 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `trig-1-0` Winkel-Intuition (Einstieg) | 3 | 3/3 | 26 | 9/7/5/2/3 | 26/26 | 9/9 | ✅ | — |
 | `trig-1-1` Winkel und ihre Maße | 4 | 4/4 | 33 | 13/12/5/3/0 | 33/33 | 13/13 | ✅ | — |
-| `trig-1-2` Rechtwinkliges Dreieck | 3 | 3/3 | 19 | 11/4/2/2/0 | 15/19 | 11/11 | ✅ | +4 4B |
+| `trig-1-2` Rechtwinkliges Dreieck | 3 | 3/3 | 25 | 12/6/5/2/0 | 25/25 | 12/12 | ✅ | — |
 | `trig-1-3` Die Grundwerte | 4 | 4/4 | 25 | 13/5/3/3/1 | 22/25 | 13/13 | ✅ | +3 4B |
 | `trig-1-4` Vorzeichen und Quadranten | 3 | 3/3 | 18 | 10/4/3/1/0 | 18/18 | 10/10 | ✅ | — |
 | `trig-2-1` Der Einheitskreis | 4 | 4/4 | 23 | 13/4/3/3/0 | 23/23 | 13/13 | ✅ | — |
@@ -10218,7 +10218,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
-### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 22 Lessons
+### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 21 Lessons
 
 #### `fl-1-1` · Fourier-Reihen — Grundbegriffe
 
@@ -11310,45 +11310,6 @@ npm run build              # abschließender End-zu-End-Check
 
 - **Ablage:** `src/content/subgoal_tasks/trigonometry.js` unter `'trig-1-4': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
-
-#### `trig-1-2` · Rechtwinkliges Dreieck
-
-- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Grundlagen der Trigonometrie
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `trig-1-0` → `winkel-def`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `dreieck-seiten` — Hypotenuse, Gegenkathete, Ankathete im rechtwinkligen Dreieck (SG 0)
-  2. `soh-cah-toa` — SOH-CAH-TOA: $\sin=G/H$, $\cos=A/H$, $\tan=G/A$ ⇐ `dreieck-seiten` (SG 0)
-  3. `kathete-orientierung` — Ankathete vs. Gegenkathete je nach Blickrichtung zum Winkel ⇐ `dreieck-seiten` (SG 1)
-  4. `arcsin-arccos-arctan` — Umkehrfunktionen arcsin/arccos/arctan liefern Hauptwinkel ⇐ `soh-cah-toa` (SG 2)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `dreieck-seiten`, `soh-cah-toa` · **5/5+** — SOH-CAH-TOA als Merkregel für Seitenverhältnisse
-  - ✅ [1] _hoch_ · Konzepte: `kathete-orientierung` · **5/5+** — Gegenkathete vs. Ankathete in beliebiger Dreiecksorientierung identifizieren
-  - ✅ [2] _mittel_ · Konzepte: `arcsin-arccos-arctan` · **5/5+** — Umkehrfunktionen arcsin/arccos/arctan sinnvoll einsetzen
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | matching         | `soh-cah-toa` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `soh-cah-toa` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | number-input     | `soh-cah-toa` | 1 | 1 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `soh-cah-toa` | 1 | 1 | ✅ | Distraktor: sin und cos vertauscht |
-|  5 | 0 | transfer           | number-input     | `soh-cah-toa` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `kathete-orientierung` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `kathete-orientierung` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `kathete-orientierung` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `kathete-orientierung` | 1 | 1 | ✅ |  |
-| 10 | 1 | transfer           | matching         | `kathete-orientierung` | 1 | 1 | ✅ |  |
-| 11 | 2 | recognize          | true-false       | `arcsin-arccos-arctan` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `arcsin-arccos-arctan` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `arcsin-arccos-arctan` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `arcsin-arccos-arctan` | 1 | 1 | ✅ |  |
-| 15 | 2 | transfer           | number-input     | `arcsin-arccos-arctan` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/trigonometry.js` unter `'trig-1-2': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-trig-1-2-a`, `ex-trig-1-2-b`, `ex-trig-1-2-c`, `ex-trig-1-2-mastery`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
 ### 🟢 Niedrig (4-Block / wAE nachziehen) — 28 Lessons
