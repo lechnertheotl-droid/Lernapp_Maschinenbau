@@ -487,6 +487,24 @@ Die Koordinaten von $P$ sind dann genau **$(\\cos(\\alpha), \\sin(\\alpha))$** �
 **Am Einheitskreis heißt das:** Jede Aussage über $\\sin$ und $\\cos$ lässt sich geometrisch ablesen — Koordinaten, Vorzeichen, Symmetrie, Periodizität. Der Einheitskreis ist das zentrale Werkzeug der Trigonometrie.`,
       },
       {
+        id: 'trig-2-1-s1f', type: 'explanation-formal', title: 'Definition Einheitskreis und Punktparametrisierung',
+        content: `**Definition · Formeln · Beispiel:**
+
+| Regel | Formel | Beispiel |
+|---|---|---|
+| Kreisgleichung des Einheitskreises | $x^2 + y^2 = 1$ | $(0{,}6, 0{,}8)$: $0{,}36 + 0{,}64 = 1$ ✓ |
+| Radius vs. Durchmesser | $r = 1$, $d = 2r = 2$ | Strecke von $(-1,0)$ nach $(1,0)$ hat Länge $2$ |
+| Umfang | $U = 2\\pi r = 2\\pi$ | $U \\approx 6{,}283$ — entspricht $360° = 2\\pi$ rad |
+| Winkelmessung | von positiver $x$-Achse, **gegen** den Uhrzeigersinn | $\\alpha = 90°$ → Punkt liegt oben |
+| Punktparametrisierung | $P(\\alpha) = (\\cos\\alpha, \\sin\\alpha)$ | $\\alpha = 60°$: $P = (\\tfrac{1}{2}, \\tfrac{\\sqrt 3}{2})$ |
+| Quadrantenpunkt $0°$ | $P = (1, 0)$ | Start auf positiver $x$-Achse |
+| Quadrantenpunkt $90°$ | $P = (0, 1)$ | $\\cos 90° = 0$, $\\sin 90° = 1$ |
+| Quadrantenpunkt $180°$ | $P = (-1, 0)$ | halbe Umdrehung |
+| Quadrantenpunkt $270°$ | $P = (0, -1)$ | drei Viertel — unten |
+
+**Merke:** Erste Koordinate ist immer $\\cos$, zweite immer $\\sin$ — egal in welchem Quadrant. Die Kreisgleichung $\\cos^2\\alpha + \\sin^2\\alpha = 1$ folgt direkt aus $x^2 + y^2 = 1$.`,
+      },
+      {
         id: 'trig-2-1-s2', type: 'visualization', title: 'Interaktiver Einheitskreis',
         visualizationId: 'trig-explorer',
         params: { initialAngle: 45, showTangent: false },
