@@ -1624,341 +1624,6 @@ export const trigonometrySubGoalTasks = {
     ],
   },
 
-  // ────────────────────────────────────────────────────────────────────────
-  // trig-1-4 — Vorzeichen und Quadranten  (3 subGoals)
-  // Je 5 Aufgaben = 15 Goal-Tasks
-  // ────────────────────────────────────────────────────────────────────────
-  'trig-1-4': {
-    // ── [0] Quadranten I-IV und Vorzeichen-Regel ASTC ─────────────────────
-    0: [
-      tf(
-        'Im 2. Quadranten ($90°$ bis $180°$) ist $\\sin > 0$ und $\\cos < 0$.',
-        true,
-        `**Ansatz:** ASTC-Regel: "All Students Take Calculus". Im 2. Quadranten ist nur $\\sin$ positiv.
-
-**Rechnung:** Am Einheitskreis im 2. Quadranten: $y > 0$ (also $\\sin > 0$), $x < 0$ (also $\\cos < 0$).
-
-**Probe:** $\\sin(120°) = +\\sqrt{3}/2 > 0$, $\\cos(120°) = -1/2 < 0$ ✓.
-
-**Typischer Fehler:** Quadranten und Grenzen verwechseln. Der 2. Quadrant beginnt bei $90°$, nicht bei $180°$.`,
-        [
-          'ASTC: Quadrant 2 → "Sinus positiv".',
-          'Am Einheitskreis: $x$ ist $\\cos$, $y$ ist $\\sin$.',
-          '2. Quadrant: $x < 0$, $y > 0$.',
-        ],
-        { stage: 'recognize', subGoal: 0, uses: ['vorzeichen-ASTC'] },
-      ),
-      mc(
-        'In welchem Quadranten liegt der Winkel $225°$?',
-        ['3. Quadrant', '2. Quadrant', '4. Quadrant', '1. Quadrant'],
-        0,
-        `**Ansatz:** Quadrantengrenzen: I ($0°$–$90°$), II ($90°$–$180°$), III ($180°$–$270°$), IV ($270°$–$360°$).
-
-**Rechnung:** $180° < 225° < 270°$ → **3. Quadrant**.
-
-**Probe:** $\\sin(225°) = -\\sin(45°) < 0$, $\\cos(225°) = -\\cos(45°) < 0$ — beide negativ, wie im 3. Quadranten erwartet (ASTC: "Take" = nur Tangens positiv).
-
-**Typischer Fehler:** Winkel in Grad falsch auf die Quadranten verteilen.`,
-        [
-          'Quadrantengrenzen auswendig.',
-          '$180° < 225° < 270°$.',
-          '3. Quadrant.',
-        ],
-        {
-          1: '$225° > 180°$, also nicht im 2. Quadranten.',
-          2: '$225° < 270°$, also nicht im 4. Quadranten.',
-          3: '$225° > 90°$, also nicht im 1. Quadranten.',
-        },
-        { stage: 'apply-guided', subGoal: 0, uses: ['vorzeichen-ASTC'] },
-      ),
-      mc(
-        'Bestimme das Vorzeichen von $\\cos(200°)$.',
-        ['negativ', 'positiv', 'Null', 'nicht definiert'],
-        0,
-        `**Ansatz:** $200°$ liegt im 3. Quadranten. ASTC: im 3. Quadranten ist nur $\\tan > 0$, $\\sin$ und $\\cos$ sind negativ.
-
-**Rechnung:** $\\cos(200°) < 0$.
-
-**Probe:** Direkt: $\\cos(200°) = -\\cos(20°) \\approx -0{,}94$ — negativ ✓.
-
-**Typischer Fehler:** Vorzeichen vergessen und einfach $\\cos(200°) = \\cos(20°)$ rechnen.`,
-        [
-          'Welcher Quadrant für $200°$?',
-          '3. Quadrant: ASTC → nur $\\tan$ positiv.',
-          'Also $\\cos < 0$.',
-        ],
-        {
-          1: 'Im 3. Quadranten ist $\\cos$ negativ.',
-          2: '$\\cos(200°) \\ne 0$ — das wäre nur bei $90°$ oder $270°$.',
-          3: '$\\cos$ ist für alle Winkel definiert.',
-        },
-        { stage: 'apply-independent', subGoal: 0, uses: ['vorzeichen-ASTC'] },
-      ),
-      mc(
-        'Ein Schüler rechnet $\\sin(150°) = -0{,}5$ und begründet: „$150°$ ist größer als $90°$, also negativ." Wo liegt der Fehler?',
-        [
-          '$150°$ liegt im 2. Quadranten, wo $\\sin$ positiv ist (ASTC). Korrekt: $\\sin(150°) = +0{,}5$.',
-          '$\\sin$ ist ab $180°$ negativ, ab $90°$ ist es noch positiv.',
-          '$\\sin(150°)$ ist tatsächlich $-0{,}5$.',
-          'Der Schüler müsste den Referenzwinkel verwenden.',
-        ],
-        0,
-        `**Ansatz:** Das Vorzeichen hängt vom Quadranten ab, nicht pauschal von "$>90°$".
-
-**Rechnung:** $150° \\in $ 2. Quadrant (zwischen $90°$ und $180°$). Dort ist $\\sin > 0$. $\\sin(150°) = \\sin(180°-150°) = \\sin(30°) = +0{,}5$.
-
-**Probe:** Am Einheitskreis: $y$-Koordinate bei $150°$ ist positiv.
-
-**Typischer Fehler:** Pauschales "größere Winkel sind negativ" statt ASTC-Regel anwenden.`,
-        [
-          'Welcher Quadrant für $150°$?',
-          'ASTC: 2. Quadrant → $\\sin > 0$.',
-          'Am Einheitskreis: $y$-Wert bei $150°$.',
-        ],
-        {
-          1: 'ASTC verteilt das Vorzeichen pro Quadrant. Nicht erst ab $180°$, sondern schon im 3. Quadranten wird $\\sin$ negativ.',
-          2: '$\\sin(150°) = +0{,}5$, nicht $-0{,}5$.',
-          3: 'Der Referenzwinkel ist nützlich, aber der Schüler hat hier das VORZEICHEN falsch.',
-        },
-        { stage: 'error-analysis', subGoal: 0, uses: ['vorzeichen-ASTC'] },
-      ),
-      matching(
-        'Ordne jedem Quadranten die ASTC-Eigenschaft zu.',
-        [
-          { left: '1. Quadrant (0°–90°)',   right: 'All: $\\sin, \\cos, \\tan$ alle positiv' },
-          { left: '2. Quadrant (90°–180°)', right: 'Students: nur $\\sin$ positiv' },
-          { left: '3. Quadrant (180°–270°)', right: 'Take: nur $\\tan$ positiv' },
-          { left: '4. Quadrant (270°–360°)', right: 'Calculus: nur $\\cos$ positiv' },
-        ],
-        `**Ansatz:** Merkhilfe "All Students Take Calculus" — jeder Buchstabe zeigt, welche Funktion im jeweiligen Quadrant positiv ist.
-
-**Rechnung:** I: alle positiv. II: nur $\\sin$. III: nur $\\tan$. IV: nur $\\cos$.
-
-**Probe:** Über das Vorzeichen von $x$ (Kosinus) und $y$ (Sinus) auf dem Einheitskreis: $\\tan = \\sin/\\cos$ — beide negativ (Quadrant III) → $\\tan > 0$.
-
-**Typischer Fehler:** Reihenfolge der Quadranten gegen den Uhrzeigersinn nicht eingehalten.`,
-        [
-          'ASTC = All Students Take Calculus.',
-          'Reihenfolge gegen Uhrzeigersinn.',
-          'Nur $\\sin, \\tan, \\cos$ werden pro Quadrant geprüft.',
-        ],
-        { stage: 'transfer', subGoal: 0, uses: ['vorzeichen-ASTC'] },
-      ),
-    ],
-
-    // ── [1] Symmetrien: sin(180°-α) = sin α, cos(180°-α) = -cos α ──────────
-    1: [
-      tf(
-        'Es gilt $\\sin(180° - \\alpha) = \\sin(\\alpha)$ für jeden Winkel $\\alpha$.',
-        true,
-        `**Ansatz:** Spiegelung am 90°-Strahl: der neue Winkel hat dieselbe $y$-Koordinate (Sinus) am Einheitskreis.
-
-**Rechnung:** Graphisch: Punkt bei $\\alpha$ ist $(x, y)$, Punkt bei $180°-\\alpha$ ist $(-x, y)$. Gleiche Höhe → gleicher Sinus.
-
-**Probe:** $\\sin(150°) = \\sin(180°-150°) = \\sin(30°) = 0{,}5$ ✓.
-
-**Typischer Fehler:** Formel mit $\\sin(-\\alpha)$ verwechseln — das wäre Punktspiegelung am Ursprung.`,
-        [
-          'Spiegelung am $y$-Strahl bei $90°$.',
-          '$y$-Koordinate bleibt gleich.',
-          'Sinus ist $y$-Koordinate.',
-        ],
-        { stage: 'recognize', subGoal: 1, uses: ['symmetrie-sin', 'symmetrie-cos'] },
-      ),
-      mc(
-        'Berechne $\\cos(150°)$ mithilfe der Symmetrie-Formel.',
-        ['$-\\dfrac{\\sqrt{3}}{2}$', '$+\\dfrac{\\sqrt{3}}{2}$', '$-\\dfrac{1}{2}$', '$+\\dfrac{1}{2}$'],
-        0,
-        `**Ansatz:** $\\cos(180°-\\alpha) = -\\cos(\\alpha)$. Hier $\\alpha = 30°$.
-
-**Rechnung:** $\\cos(150°) = -\\cos(30°) = -\\sqrt{3}/2$.
-
-**Probe:** $150°$ ist im 2. Quadranten → $\\cos < 0$ (ASTC). Betrag: $\\cos(30°) = \\sqrt{3}/2$. Daraus $-\\sqrt{3}/2$ ✓.
-
-**Typischer Fehler:** Vorzeichen vergessen — $+\\sqrt{3}/2$ statt $-\\sqrt{3}/2$.`,
-        [
-          'Formel: $\\cos(180°-\\alpha) = -\\cos(\\alpha)$.',
-          '$\\alpha = 30°$.',
-          '$\\cos(30°) = \\sqrt{3}/2$, dann negieren.',
-        ],
-        {
-          1: 'Vorzeichen fehlt — $150°$ liegt im 2. Quadranten ($\\cos < 0$).',
-          2: '$-1/2$ wäre $\\cos(120°)$, nicht $\\cos(150°)$.',
-          3: '$+1/2$ wäre $\\cos(60°)$, hat mit $150°$ nichts zu tun.',
-        },
-        { stage: 'apply-guided', subGoal: 1, uses: ['symmetrie-sin'] },
-      ),
-      ni(
-        'Berechne $\\cos(135°)$ mithilfe der Symmetrie-Formel. (3 NK)',
-        -0.707, 0.01, '',
-        `**Ansatz:** $\\cos(180°-\\alpha) = -\\cos(\\alpha)$ mit $\\alpha = 45°$.
-
-**Rechnung:** $\\cos(135°) = -\\cos(45°) = -\\sqrt{2}/2 \\approx -0{,}707$.
-
-**Probe:** $135°$ im 2. Quadranten → negativ. Betrag $\\approx 0{,}707$ (Grundwert) ✓.
-
-**Typischer Fehler:** Vorzeichen vergessen.`,
-        [
-          'Referenzwinkel $180°-135° = 45°$.',
-          '$\\cos(45°) = \\sqrt{2}/2$.',
-          '2. Quadrant → negativ.',
-        ],
-        { stage: 'apply-independent', subGoal: 1, uses: ['symmetrie-cos'] },
-      ),
-      mc(
-        'Ein Schüler rechnet: „$\\sin(180°-120°) = \\sin(60°) = \\sqrt{3}/2$. Also $\\sin(120°) = -\\sqrt{3}/2$, weil das Minus vor der Klammer greift." Wo liegt der Fehler?',
-        [
-          'Die Formel ist $\\sin(180°-\\alpha) = +\\sin(\\alpha)$, ohne Vorzeichenwechsel. Korrekt: $\\sin(120°) = +\\sqrt{3}/2$.',
-          'Die Rechnung ist richtig — $\\sin(120°) = -\\sqrt{3}/2$.',
-          'Er hätte $\\sin(180°+\\alpha)$ statt $\\sin(180°-\\alpha)$ nehmen müssen.',
-          'Sinus-Symmetrie gilt gar nicht bei $120°$.',
-        ],
-        0,
-        `**Ansatz:** Sinus: spiegelsymmetrisch am $90°$-Strahl, keine Vorzeichenumkehr.
-
-**Rechnung:** Korrekt: $\\sin(120°) = \\sin(180°-120°) = \\sin(60°) = +\\sqrt{3}/2$ (positive im 2. Quadranten, ASTC-konform).
-
-**Probe:** ASTC: 2. Quadrant → $\\sin > 0$. Schüler-Wert $-\\sqrt{3}/2$ verletzt das.
-
-**Typischer Fehler:** Die Formel aus "Minus vor Klammer" falsch übertragen. Die Formel selbst hat KEIN Minus (im Gegensatz zu $\\cos$).`,
-        [
-          'Sinus-Formel: $\\sin(180°-\\alpha) = \\sin(\\alpha)$ (gleich, kein Minus).',
-          'Kosinus hingegen: $\\cos(180°-\\alpha) = -\\cos(\\alpha)$.',
-          'ASTC: Vorzeichen per Quadrant prüfen.',
-        ],
-        {
-          1: '$-\\sqrt{3}/2$ im 2. Quadranten wäre für $\\sin$ falsch (ASTC).',
-          2: '$\\sin(180°+\\alpha) = -\\sin(\\alpha)$ — andere Formel.',
-          3: 'Sinus-Symmetrie gilt universell.',
-        },
-        { stage: 'error-analysis', subGoal: 1, uses: ['symmetrie-sin', 'symmetrie-cos'] },
-      ),
-      ni(
-        'Berechne $\\sin(150°) + \\cos(135°)$. (3 NK)',
-        -0.207, 0.01, '',
-        `**Ansatz:** Beide via Symmetrie.
-
-**Rechnung:** $\\sin(150°) = \\sin(30°) = 0{,}5$. $\\cos(135°) = -\\cos(45°) = -\\sqrt{2}/2 \\approx -0{,}707$. Summe $\\approx 0{,}5 - 0{,}707 = -0{,}207$.
-
-**Probe:** Vorzeichen stimmen (ASTC).
-
-**Typischer Fehler:** Beide gleich negativ machen und zu $-0{,}5 - 0{,}707 = -1{,}207$ kommen.`,
-        [
-          'Symmetrie für jeden Summanden einzeln.',
-          '$\\sin(150°) = +0{,}5$.',
-          '$\\cos(135°) = -0{,}707$.',
-        ],
-        { stage: 'transfer', subGoal: 1, uses: ['symmetrie-sin', 'symmetrie-cos'] },
-      ),
-    ],
-
-    // ── [2] Referenzwinkel: Reduktion auf 0°–90° ──────────────────────────
-    2: [
-      tf(
-        'Der Referenzwinkel zu $210°$ ist $30°$.',
-        true,
-        `**Ansatz:** Referenzwinkel = spitzer Winkel zur nächsten $x$-Achse.
-
-**Rechnung:** $210°$ im 3. Quadranten. Abstand zu $180°$: $210° - 180° = 30°$. Also Referenzwinkel $30°$.
-
-**Probe:** $\\sin(210°) = -\\sin(30°) = -0{,}5$ ✓ (3. Quadrant → $\\sin < 0$).
-
-**Typischer Fehler:** $360° - 210° = 150°$ rechnen (falsche Nähe-Achse).`,
-        [
-          'Referenzwinkel zur NÄCHSTEN $x$-Achse.',
-          '3. Quadrant → Abstand zu $180°$.',
-          '$210° - 180° = 30°$.',
-        ],
-        { stage: 'recognize', subGoal: 2, uses: ['referenzwinkel'] },
-      ),
-      mc(
-        'Bestimme den Referenzwinkel zu $300°$.',
-        ['$60°$', '$120°$', '$300°$', '$-60°$'],
-        0,
-        `**Ansatz:** $300°$ im 4. Quadranten. Nähe zur $x$-Achse bei $360°$.
-
-**Rechnung:** $360° - 300° = 60°$.
-
-**Probe:** $\\sin(300°) = -\\sin(60°) = -\\sqrt{3}/2$ (4. Quadrant → $\\sin < 0$).
-
-**Typischer Fehler:** $300° - 180° = 120°$ nehmen (falsche Achse).`,
-        [
-          '4. Quadrant: Referenz zu $360°$.',
-          '$360 - 300 = ?$',
-          'Referenzwinkel immer positiv und $\\leq 90°$.',
-        ],
-        {
-          1: '$120°$ wäre Referenz zu $180°$ — falsche Achse.',
-          2: '$300°$ ist der Originalwinkel selbst, nicht der Referenzwinkel.',
-          3: 'Referenzwinkel sind immer positiv ($0°$–$90°$).',
-        },
-        { stage: 'apply-guided', subGoal: 2, uses: ['referenzwinkel'] },
-      ),
-      ni(
-        'Bestimme den Referenzwinkel zu $225°$ (in Grad).',
-        45, 0, '°',
-        `**Ansatz:** $225°$ im 3. Quadranten. Abstand zu $180°$.
-
-**Rechnung:** $225° - 180° = 45°$.
-
-**Probe:** $\\sin(225°) = -\\sin(45°) = -\\sqrt{2}/2 \\approx -0{,}707$ ✓.
-
-**Typischer Fehler:** $225° - 90° = 135°$ rechnen (falsche Achse).`,
-        [
-          '3. Quadrant: Referenz zu $180°$.',
-          '$225 - 180 = ?$',
-          'Immer spitzer Winkel.',
-        ],
-        { stage: 'apply-independent', subGoal: 2, uses: ['referenzwinkel'] },
-      ),
-      mc(
-        'Ein Schüler bestimmt den Referenzwinkel zu $100°$ als $100° - 90° = 10°$. Wo liegt der Fehler?',
-        [
-          'Referenzwinkel werden zur $x$-Achse ($0°$ oder $180°$) gemessen, nicht zur $y$-Achse. Korrekt: $180° - 100° = 80°$.',
-          'Die Rechnung stimmt — Referenz zu $90°$ ist korrekt.',
-          'Er hätte $100°$ direkt übernehmen müssen.',
-          '$10°$ ist richtig — der Schüler hat einfach klein gemacht.',
-        ],
-        0,
-        `**Ansatz:** Der Referenzwinkel wird immer zur nächsten $x$-Achse (nicht $y$-Achse) gemessen.
-
-**Rechnung:** $100°$ im 2. Quadranten. Nächste $x$-Achse: $180°$. Referenz: $180° - 100° = 80°$.
-
-**Probe:** $\\sin(100°) = \\sin(80°) \\approx 0{,}985$ (nah bei $1$, weil $100°$ nah bei $90°$ — dem Maximum).
-
-**Typischer Fehler:** $y$-Achse bei $90°$ als Bezug nehmen — aber Referenzwinkel verwendet $x$-Achsen.`,
-        [
-          'Wohin wird der Referenzwinkel gemessen?',
-          'Zur nächsten $x$-Achse ($0°/180°$), nicht zu $90°$.',
-          '$100°$ im 2. Quadrant → zu $180°$.',
-        ],
-        {
-          1: 'Die Bezugsachse ist falsch — $x$- nicht $y$-Achse.',
-          2: '$100°$ ist kein Referenzwinkel (muss $\\leq 90°$ sein).',
-          3: '$10°$ passt zu keiner Sinus/Kosinus-Symmetrie von $100°$.',
-        },
-        { stage: 'error-analysis', subGoal: 2, uses: ['referenzwinkel'] },
-      ),
-      ni(
-        'Gegeben: $\\sin(40°) \\approx 0{,}643$. Berechne $\\sin(220°)$ via Referenzwinkel. (3 NK)',
-        -0.643, 0.01, '',
-        `**Ansatz:** $220°$ im 3. Quadranten. Referenzwinkel: $220° - 180° = 40°$. Vorzeichen: 3. Quadrant → $\\sin < 0$.
-
-**Rechnung:** $\\sin(220°) = -\\sin(40°) \\approx -0{,}643$.
-
-**Probe:** ASTC: 3. Quadrant → $\\sin < 0$ ✓.
-
-**Typischer Fehler:** Vorzeichen vergessen.`,
-        [
-          'Referenzwinkel bestimmen.',
-          'Vorzeichen über ASTC/Quadrant.',
-          'Wert aus der Angabe.',
-        ],
-        { stage: 'transfer', subGoal: 2, uses: ['referenzwinkel', 'vorzeichen-ASTC'] },
-      ),
-    ],
-  },
-
 
   // ────────────────────────────────────────────────────────────────────────
   // trig-1-2 — Rechtwinkliges Dreieck / SOH-CAH-TOA  (3 subGoals)
@@ -2873,6 +2538,23 @@ export const trigonometrySubGoalTasks = {
         ],
         { stage: 'transfer', subGoal: 0, uses: ['vorzeichen-ASTC'] },
       ),
+      tf(
+        '$\\tan(\\alpha) > 0$ gilt genau dann, wenn $\\sin(\\alpha)$ und $\\cos(\\alpha)$ dasselbe Vorzeichen haben.',
+        true,
+        `**Ansatz:** $\\tan = \\dfrac{\\sin}{\\cos}$ — ein Quotient ist positiv genau dann, wenn Zähler und Nenner gleiches Vorzeichen tragen.
+
+**Rechnung:** Q1: $\\sin > 0$, $\\cos > 0$ → $\\tan > 0$. Q2: $\\sin > 0$, $\\cos < 0$ → $\\tan < 0$. Q3: $\\sin < 0$, $\\cos < 0$ → $\\tan > 0$. Q4: $\\sin < 0$, $\\cos > 0$ → $\\tan < 0$. Stimmt mit ASTC überein (Q1+Q3 positiv).
+
+**Probe:** $\\tan(135°) = \\sin(135°)/\\cos(135°) = (+0{,}707)/(-0{,}707) = -1 < 0$ — verschiedene Vorzeichen, also negativ ✓.
+
+**Typischer Fehler:** ASTC als reines Auswendigwissen ohne Begründung — die Regel folgt direkt aus $\\tan = \\sin/\\cos$.`,
+        [
+          'Schreibe $\\tan(\\alpha) = \\sin(\\alpha)/\\cos(\\alpha)$.',
+          'Ein Bruch ist positiv genau dann, wenn Zähler und Nenner gleiches Vorzeichen haben.',
+          'Prüfe alle vier Quadranten mit ASTC: Q1 beide positiv, Q2 sin+/cos−, Q3 beide negativ, Q4 sin−/cos+.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['vorzeichen-ASTC'] },
+      ),
     ],
 
     // ── [1] Symmetrien: sin(180°-α) = sin α, cos(180°-α) = -cos α ──────────
@@ -2915,7 +2597,7 @@ export const trigonometrySubGoalTasks = {
           2: '$-1/2$ wäre $\\cos(120°)$, nicht $\\cos(150°)$.',
           3: '$+1/2$ wäre $\\cos(60°)$, hat mit $150°$ nichts zu tun.',
         },
-        { stage: 'apply-guided', subGoal: 1, uses: ['symmetrie-sin'] },
+        { stage: 'apply-guided', subGoal: 1, uses: ['symmetrie-cos'] },
       ),
       ni(
         'Berechne $\\cos(135°)$ mithilfe der Symmetrie-Formel. (3 NK)',
@@ -2978,6 +2660,23 @@ export const trigonometrySubGoalTasks = {
           '$\\cos(135°) = -0{,}707$.',
         ],
         { stage: 'transfer', subGoal: 1, uses: ['symmetrie-sin', 'symmetrie-cos'] },
+      ),
+      ni(
+        'Berechne $\\sin(120°)$ mithilfe der Symmetrie-Formel. (3 NK)',
+        0.866, 0.001, '',
+        `**Ansatz:** $\\sin(180° - \\alpha) = \\sin(\\alpha)$ — Spiegelung am $90°$-Strahl, Vorzeichen bleibt gleich.
+
+**Rechnung:** $120° = 180° - 60°$, also $\\alpha = 60°$. Damit: $\\sin(120°) = \\sin(60°) = \\dfrac{\\sqrt{3}}{2} \\approx 0{,}866$.
+
+**Probe:** $120°$ liegt im 2. Quadranten → ASTC: $\\sin > 0$ ✓. Betrag $\\approx 0{,}866$ ist der bekannte Grundwert für $60°$.
+
+**Typischer Fehler:** Vorzeichen negieren wie bei der Kosinus-Formel ($\\cos$ bekommt ein Minus, $\\sin$ nicht).`,
+        [
+          'Symmetrie-Formel: $\\sin(180° - \\alpha) = \\sin(\\alpha)$.',
+          '$120° = 180° - 60°$ → $\\alpha = 60°$.',
+          '$\\sin(60°) = \\sqrt{3}/2 \\approx 0{,}866$ (Grundwert).',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['symmetrie-sin'] },
       ),
     ],
 
@@ -3084,6 +2783,24 @@ export const trigonometrySubGoalTasks = {
           'Wert aus der Angabe.',
         ],
         { stage: 'transfer', subGoal: 2, uses: ['referenzwinkel', 'vorzeichen-ASTC'] },
+      ),
+      sorting(
+        'Sortiere diese vier Winkel nach der Größe ihres Referenzwinkels — aufsteigend (kleinster Referenzwinkel zuerst).',
+        ['$170°$', '$260°$', '$210°$', '$310°$'],
+        [0, 2, 3, 1],
+        `**Ansatz:** Für jeden Winkel den Referenzwinkel (Abstand zur nächsten $x$-Achse) bestimmen, dann aufsteigend ordnen.
+
+**Rechnung:** $170°$ → Q2: $180° - 170° = 10°$. $\\;$ $210°$ → Q3: $210° - 180° = 30°$. $\\;$ $310°$ → Q4: $360° - 310° = 50°$. $\\;$ $260°$ → Q3: $260° - 180° = 80°$. Aufsteigend: $10° < 30° < 50° < 80°$ → Reihenfolge: $170°, 210°, 310°, 260°$.
+
+**Probe:** Alle Referenzwinkel liegen zwischen $0°$ und $90°$ ✓. Kein Winkel führt auf denselben Referenzwinkel → eindeutige Sortierung ✓.
+
+**Typischer Fehler:** Die Originalwinkel selbst sortieren ($170° < 210° < 260° < 310°$) statt die Referenzwinkel zu vergleichen.`,
+        [
+          'Referenzwinkel = Abstand zur nächsten $x$-Achse ($0°$, $180°$ oder $360°$).',
+          'Berechne für jeden der vier Winkel den Referenzwinkel einzeln.',
+          'Vergleiche: $10° < 30° < 50° < 80°$ — das ist die Sortierreihenfolge.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['referenzwinkel'] },
       ),
     ],
   },

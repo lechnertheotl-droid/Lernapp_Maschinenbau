@@ -102,8 +102,8 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2372 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1516 (64 %) | 100 % der Aufgaben | 🟡 |
+| Aufgaben (gesamt) | 2375 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1519 (64 %) | 100 % der Aufgaben | 🟡 |
 | MC mit wrongAnswerExplanations | 1072 / 1072 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 225 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
@@ -199,8 +199,8 @@ _Jede Ingenieursformel wird früher oder später umgestellt. Wer hier nicht sich
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 18
-- Aufgaben: **397** (Lesson-Path: 66 · Goal-Tasks: 331)
-- 4-Block: 372/397 (94 %) 🟡
+- Aufgaben: **400** (Lesson-Path: 66 · Goal-Tasks: 334)
+- 4-Block: 375/400 (94 %) 🟡
 - MC-wAE: 215/215 (100 %) ✅
 - Sub-Goals: 66/87 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
@@ -248,7 +248,7 @@ _Jede Kraftzerlegung, jede Wechselspannung, jede Schwingung lebt von sin/cos. Oh
 | `trig-1-1` Winkel und ihre Maße | 4 | 4/4 | 25 | 12/7/3/3/0 | 23/25 | 12/12 | ✅ | +2 4B |
 | `trig-1-2` Rechtwinkliges Dreieck | 3 | 3/3 | 19 | 11/4/2/2/0 | 15/19 | 11/11 | ✅ | +4 4B |
 | `trig-1-3` Die Grundwerte | 4 | 4/4 | 25 | 13/5/3/3/1 | 22/25 | 13/13 | ✅ | +3 4B |
-| `trig-1-4` Vorzeichen und Quadranten | 3 | 3/3 | 18 | 10/4/3/1/0 | 18/18 | 10/10 | ✅ | — |
+| `trig-1-4` Vorzeichen und Quadranten | 3 | 3/3 | 21 | 10/5/4/1/1 | 21/21 | 10/10 | ✅ | — |
 | `trig-2-1` Der Einheitskreis | 4 | 4/4 | 23 | 13/4/3/3/0 | 23/23 | 13/13 | ✅ | — |
 | `trig-2-2` sin und cos als Koordinaten | 5 | 5/5 | 28 | 16/4/5/3/0 | 27/28 | 16/16 | ✅ | +1 4B |
 | `trig-2-3` Symmetrien und Periodizität | 6 | 6/6 | 33 | 15/8/6/4/0 | 31/33 | 15/15 | ✅ | +2 4B |
@@ -10218,7 +10218,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `derivative-graph`, `function-graph`, `limit-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Kettenregel-Anwendung vergessen bei $(\sin(2x))'$, $(e^{x^2})'$ etc. · Produktregel mit Summenregel verwechselt. · $f'(x)=0$ als hinreichend für Extremum angenommen (Sattelpunkte!). · …
 
-### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 22 Lessons
+### 🟡 Mittel (Baseline nicht erreicht oder Goal-Tasks fehlen) — 21 Lessons
 
 #### `fl-1-1` · Fourier-Reihen — Grundbegriffe
 
@@ -11273,45 +11273,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** $P(X<a)$ und $P(X\le a)$ bei stetigen Verteilungen identisch, bei diskreten NICHT. · Konfidenzintervall als "Wahrscheinlichkeit für Wert" interpretiert statt "Wahrscheinlichkeit für Intervall-Bildung". · Einseitiger vs. zweiseitiger Test verwechselt.
 
-#### `trig-1-4` · Vorzeichen und Quadranten
-
-- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Grundlagen der Trigonometrie
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `trig-1-3` → `grundwerte-sin`, `grundwerte-cos`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `quadranten-def` — Quadranten I–IV auf dem Einheitskreis (SG 0)
-  2. `vorzeichen-ASTC` — ASTC: All Students Take Calculus — Vorzeichen pro Quadrant ⇐ `quadranten-def` (SG 0)
-  3. `symmetrie-sin` — $\sin(180°-\alpha) = \sin\alpha$ (Sinus-Symmetrie) ⇐ `vorzeichen-ASTC` (SG 1)
-  4. `symmetrie-cos` — $\cos(180°-\alpha) = -\cos\alpha$ (Kosinus-Spiegel) ⇐ `vorzeichen-ASTC` (SG 1)
-  5. `referenzwinkel` — Referenzwinkel: jeder Winkel auf $0°$–$90°$ zurückführen ⇐ `vorzeichen-ASTC` (SG 2)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `quadranten-def`, `vorzeichen-ASTC` · **5/5+** — Quadranten I–IV durchnummerieren und Vorzeichen von $\sin$ (y-Koordinate) und $\cos$ (x-Koordinate) bestimmen
-  - ✅ [1] _hoch_ · Konzepte: `symmetrie-sin`, `symmetrie-cos` · **5/5+** — Symmetrien: $\sin(180° - \alpha) = \sin\alpha$, $\cos(180° - \alpha) = -\cos\alpha$
-  - ✅ [2] _mittel_ · Konzepte: `referenzwinkel` · **5/5+** — Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `vorzeichen-ASTC` | 1 | 1 | ✅ |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `vorzeichen-ASTC` | 1 | 1 | ✅ |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `vorzeichen-ASTC` | 1 | 1 | ✅ |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `vorzeichen-ASTC` | 1 | 1 | ✅ |  |
-|  5 | 0 | transfer           | matching         | `vorzeichen-ASTC` | 1 | 1 | ✅ |  |
-|  6 | 1 | recognize          | true-false       | `symmetrie-sin`, `symmetrie-cos` | 1 | 1 | ✅ |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `symmetrie-sin` | 1 | 1 | ✅ |  |
-|  8 | 1 | apply-independent  | number-input     | `symmetrie-cos` | 1 | 1 | ✅ |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `symmetrie-sin`, `symmetrie-cos` | 1 | 1 | ✅ | Distraktor: Vorzeichen übersehen |
-| 10 | 1 | transfer           | number-input     | `symmetrie-sin`, `symmetrie-cos` | 1 | 1 | ✅ |  |
-| 11 | 2 | recognize          | true-false       | `referenzwinkel` | 1 | 1 | ✅ |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `referenzwinkel` | 1 | 1 | ✅ |  |
-| 13 | 2 | apply-independent  | number-input     | `referenzwinkel` | 1 | 1 | ✅ |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `referenzwinkel` | 1 | 1 | ✅ |  |
-| 15 | 2 | transfer           | number-input     | `referenzwinkel`, `vorzeichen-ASTC` | 1 | 1 | ✅ |  |
-
-- **Ablage:** `src/content/subgoal_tasks/trigonometry.js` unter `'trig-1-4': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
-
 #### `trig-1-2` · Rechtwinkliges Dreieck
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Grundlagen der Trigonometrie
@@ -11351,7 +11312,47 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
-### 🟢 Niedrig (4-Block / wAE nachziehen) — 29 Lessons
+### 🟢 Niedrig (4-Block / wAE nachziehen) — 30 Lessons
+
+#### `trig-1-4` · Vorzeichen und Quadranten
+
+- **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Grundlagen der Trigonometrie
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `trig-1-3` → `grundwerte-sin`, `grundwerte-cos`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `quadranten-def` — Quadranten I–IV auf dem Einheitskreis (SG 0)
+  2. `vorzeichen-ASTC` — ASTC: All Students Take Calculus — Vorzeichen pro Quadrant ⇐ `quadranten-def` (SG 0)
+  3. `symmetrie-sin` — $\sin(180°-\alpha) = \sin\alpha$ (Sinus-Symmetrie) ⇐ `vorzeichen-ASTC` (SG 1)
+  4. `symmetrie-cos` — $\cos(180°-\alpha) = -\cos\alpha$ (Kosinus-Spiegel) ⇐ `vorzeichen-ASTC` (SG 1)
+  5. `referenzwinkel` — Referenzwinkel: jeder Winkel auf $0°$–$90°$ zurückführen ⇐ `vorzeichen-ASTC` (SG 2)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `quadranten-def`, `vorzeichen-ASTC` · **6/5+** — Quadranten I–IV durchnummerieren und Vorzeichen von $\sin$ (y-Koordinate) und $\cos$ (x-Koordinate) bestimmen
+  - ✅ [1] _hoch_ · Konzepte: `symmetrie-sin`, `symmetrie-cos` · **6/5+** — Symmetrien: $\sin(180° - \alpha) = \sin\alpha$, $\cos(180° - \alpha) = -\cos\alpha$
+  - ✅ [2] _mittel_ · Konzepte: `referenzwinkel` · **6/5+** — Reduktionsformel: jeder Winkel zwischen $0°$ und $360°$ lässt sich auf Referenzwinkel $0°$–$90°$ zurückführen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `vorzeichen-ASTC` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `vorzeichen-ASTC` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `vorzeichen-ASTC` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `vorzeichen-ASTC` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | matching         | `vorzeichen-ASTC` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `symmetrie-sin`, `symmetrie-cos` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `symmetrie-sin` | 1 | 0 | 🔴 |  |
+|  8 | 1 | apply-independent  | number-input     | `symmetrie-cos` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `symmetrie-sin`, `symmetrie-cos` | 1 | 1 | ✅ | Distraktor: Vorzeichen übersehen |
+| 10 | 1 | transfer           | number-input     | `symmetrie-sin`, `symmetrie-cos` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `referenzwinkel` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `referenzwinkel` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `referenzwinkel` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `referenzwinkel` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `referenzwinkel`, `vorzeichen-ASTC` | 1 | 1 | ✅ |  |
+
+- **Offene Aufgaben-Lücken:** 1 (Zeilen 7) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
+- **Ablage:** `src/content/subgoal_tasks/trigonometry.js` unter `'trig-1-4': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** ✅ vorhanden. Weitere möglich: `unit-circle`, `trig-explorer`, `sin-wave-explorer`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Taschenrechner steht auf DEG statt RAD (oder umgekehrt). · Bei $\sin(x)=c$ nur eine Lösung angegeben, Periodizität vergessen. · Bei trigonometrischen Gleichungen $\cos x$ rausgekürzt — Lösungen wo $\cos x = 0$ ist, gehen verloren. · …
 
 #### `alg-1-2` · Wurzeln und gebrochene Exponenten
 
