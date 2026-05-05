@@ -4,17 +4,18 @@ import { useAppState, useAppDispatch } from '@/context/AppContext'
 import { ACTIONS } from '@/context/appReducer'
 import { getLesson, getAllLessons } from '@/content/index'
 import { LessonStep } from '@/components/lesson/LessonStep'
+import { LessonToolStrip } from '@/components/lesson/LessonToolStrip'
 import { Modal } from '@/components/ui/Modal'
 import { Button } from '@/components/ui/Button'
-import { ToolButton } from '@/components/ui/ToolButton'
+import { ProgressBar } from '@/components/ui/ProgressBar'
 import { hasFormulas } from '@/components/ui/formulaTopics'
 import { NotFound } from '@/components/NotFound'
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { Confetti } from '@/components/ui/Confetti'
 import { LessonCompleteBadge } from '@/components/lesson/LessonCompleteBadge'
-import { getTopic } from '@/content/index'
 import { useFormulaPopover } from '@/utils/formulaPopoverContext'
 import { useSwipe } from '@/hooks/useSwipe'
+
+const SEGMENTED_PROGRESS_MAX = 7
 
 // Tool-Modals sind klassische On-Demand-UI: Nutzer öffnet sie per Icon-Klick.
 // Lazy-Loading hält Calculator (mathjs), FormulaSheet und VariableGlossary
@@ -62,7 +63,8 @@ export function LessonView() {
   const safeIndex   = Math.min(currentIndex, Math.max(totalSteps - 1, 0))
   const currentStep = lesson.steps[safeIndex]
   const canShowFormulas = hasFormulas(topicId)
-  const topic = getTopic(topicId)
+  const useSegmentedProgress = totalSteps <= SEGMENTED_PROGRESS_MAX
+  const progressPct = totalSteps > 0 ? Math.round(((safeIndex + 1) / totalSteps) * 100) : 0
 
   const handleStepComplete = () => {
     if (safeIndex >= totalSteps - 1) {
@@ -74,38 +76,43 @@ export function LessonView() {
     }
   }
 
-  const handleBack = () => {
+  const handlePrevStep = () => {
     if (safeIndex > 0) {
       dispatch({ type: ACTIONS.SET_STEP_INDEX, topicId, stepIndex: safeIndex - 1 })
-      return
     }
-    navigate(`/topics/${topicId}`)
   }
+
+  const handleGotoMenu = () => navigate(`/topics/${topicId}`)
 
   // Nur Swipe-nach-rechts (= einen Schritt zurück). Swipe-nach-links bewusst
   // NICHT, weil der nächste Step erst nach Abschluss freigeschaltet wird —
   // Swipe würde sonst Confusion beim Versuch den Schritt zu überspringen auslösen.
   const swipeHandlers = useSwipe({
-    onSwipeRight: () => { if (safeIndex > 0) handleBack() },
+    onSwipeRight: () => { if (safeIndex > 0) handlePrevStep() },
     threshold: 80,
   })
 
   return (
     <div className="max-w-xl mx-auto flex flex-col min-h-[100dvh]">
 
-      {/* Sticky header */}
-      <div className="sticky top-0 z-30 bg-paper/95 dark:bg-surface-900/95 backdrop-blur-sm border-b-2 border-ink dark:border-surface-500 px-4 py-3 flex items-center gap-3">
-        <ToolButton
-          onClick={handleBack}
-          label={safeIndex > 0 ? 'Einen Schritt zurück' : 'Zur Themenübersicht'}
-          className="flex-shrink-0"
-        >
-          ←
-        </ToolButton>
-        <div className="flex-1 min-w-0">
-          <p className="font-mono text-[10px] font-bold text-ink-soft uppercase tracking-widest line-clamp-2 leading-tight">{lesson.title}</p>
-          {/* Progress bar — segmented, visited steps clickable */}
-          <div className="flex items-center gap-2 mt-1.5">
+      {/* Sticky header — minimal: Menü + Titel + Progress */}
+      <div className="sticky top-0 z-30 bg-paper/95 dark:bg-surface-900/95 backdrop-blur-sm border-b-2 border-ink dark:border-surface-500 px-4 py-3 flex flex-col gap-2">
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={handleGotoMenu}
+            aria-label="Zurück zur Themenübersicht"
+            className="flex-shrink-0 inline-flex items-center gap-1.5 h-9 px-3 rounded-retro border-2 border-ink bg-white dark:bg-surface-800 dark:text-surface-100 shadow-hard-sm tap-highlight-none retro-press font-mono text-xs font-black uppercase tracking-wider"
+          >
+            <span aria-hidden className="text-base leading-none">≡</span>
+            <span>Menü</span>
+          </button>
+          <p className="flex-1 min-w-0 font-mono text-[11px] font-bold text-ink-soft uppercase tracking-widest line-clamp-2 leading-tight">
+            {lesson.title}
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          {useSegmentedProgress ? (
             <div className="flex-1 flex items-center gap-0.5">
               {lesson.steps.map((s, i) => {
                 const isVisited = i <= safeIndex
@@ -130,43 +137,15 @@ export function LessonView() {
                 )
               })}
             </div>
-            <span className="num text-[11px] text-ink-soft flex-shrink-0">{safeIndex + 1}/{totalSteps}</span>
-          </div>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <ToolButton onClick={() => setShowVariables(true)} label="Variablen-Glossar öffnen" className="text-[11px]">
-            x,y
-          </ToolButton>
-          {canShowFormulas && (
-            <ToolButton onClick={() => setShowFormulaSheet(true)} label="Formelsammlung öffnen" variant="lemon">
-              f
-            </ToolButton>
+          ) : (
+            <ProgressBar value={progressPct} size="md" className="flex-1" />
           )}
-          <ToolButton onClick={() => setShowCalculator(true)} label="Taschenrechner öffnen">
-            =
-          </ToolButton>
-          <ToolButton
-            onClick={() => navigate(`/topics/${topicId}/${lessonId}/zusammenfassung`)}
-            label="Zusammenfassung der Lektion öffnen"
-            className="text-[10px]"
-          >
-            ∑
-          </ToolButton>
+          <span className="num text-[11px] text-ink-soft flex-shrink-0">{safeIndex + 1}/{totalSteps}</span>
         </div>
       </div>
 
       {/* Step content — scrollable, mit Swipe-nach-rechts für "zurück" */}
       <div className="flex-1 px-4 py-5 overflow-y-auto" {...swipeHandlers}>
-
-        {/* Breadcrumbs */}
-        <Breadcrumbs
-          className="mb-3"
-          items={[
-            { label: 'Start', to: '/' },
-            { label: topic?.title ?? topicId, to: `/topics/${topicId}` },
-            { label: lesson.title },
-          ]}
-        />
 
         {/* Learning goals on first step */}
         {safeIndex === 0 && lesson.learningGoals?.length > 0 && (
@@ -184,16 +163,6 @@ export function LessonView() {
         )}
 
         <div className="animate-fade-in" key={currentStep?.id}>
-          {safeIndex > 0 && (
-            <Button
-              size="sm"
-              variant="secondary"
-              onClick={handleBack}
-              className="mb-3 font-mono uppercase tracking-wider"
-            >
-              ← Vorheriger Schritt
-            </Button>
-          )}
           <LessonStep
             step={currentStep}
             topicId={topicId}
@@ -201,7 +170,29 @@ export function LessonView() {
             onComplete={handleStepComplete}
           />
         </div>
+
+        {/* Schritt-zurück am Inhalts-Ende — klar getrennt vom Menü oben */}
+        <div className="mt-6 pt-4 border-t border-ink/15 dark:border-surface-700 pb-24 md:pb-4">
+          <Button
+            size="sm"
+            variant="secondary"
+            onClick={handlePrevStep}
+            disabled={safeIndex === 0}
+            className="font-mono uppercase tracking-wider"
+          >
+            ← Zurück
+          </Button>
+        </div>
       </div>
+
+      {/* Floating tool strip — alle Lesson-Tools an einer Stelle */}
+      <LessonToolStrip
+        showFormulas={canShowFormulas}
+        onOpenVariables={() => setShowVariables(true)}
+        onOpenFormulas={() => setShowFormulaSheet(true)}
+        onOpenCalculator={() => setShowCalculator(true)}
+        onOpenSummary={() => navigate(`/topics/${topicId}/${lessonId}/zusammenfassung`)}
+      />
 
       {/* Confetti celebration */}
       {showComplete && <Confetti />}
