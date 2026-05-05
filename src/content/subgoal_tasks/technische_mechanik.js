@@ -12,7 +12,7 @@
 //
 // ═══════════════════════════════════════════════════════════════════════════
 
-import { mc, ni, tf, matching, sorting } from './_helpers'
+import { mc, ni, tf, matching, sorting, tag } from './_helpers'
 
 export const technischeMechanikSubGoalTasks = {
 
@@ -1042,6 +1042,7 @@ export const technischeMechanikSubGoalTasks = {
           'Rechte Seite: kg·(m/s)^n.',
           'Exponentenvergleich an m und s.',
         ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['dim-konsistenz'] },
       ),
       mc(
         'Welche dieser Formeln ist **dimensional korrekt** für die Leistung $P$?',
@@ -1069,6 +1070,7 @@ export const technischeMechanikSubGoalTasks = {
           2: '$F/v$ hat Einheit $\\text{N}/(\\text{m/s}) = \\text{N}\\cdot\\text{s/m} = \\text{kg/s}$ — das ist keine Leistungseinheit.',
           3: '$m\\cdot g\\cdot h$ hat Einheit $\\text{kg}\\cdot(\\text{m/s}^2)\\cdot\\text{m} = \\text{J}$ — das ist potentielle **Energie**, nicht Leistung.',
         },
+        { stage: 'apply-independent', subGoal: 0, uses: ['dim-konsistenz'] },
       ),
       tf(
         'Die Formel $a = v \\cdot t$ für die Beschleunigung ist dimensional konsistent.',
@@ -1085,6 +1087,7 @@ export const technischeMechanikSubGoalTasks = {
           'Rechts: (m/s)·s = m.',
           'Sind m und m/s² gleich?',
         ],
+        { stage: 'recognize', subGoal: 0, uses: ['dim-konsistenz'] },
       ),
       matching(
         'Welche Einheit hat die **rechte Seite** jeweils?',
@@ -1106,6 +1109,7 @@ export const technischeMechanikSubGoalTasks = {
           'v² ≠ v — ein Faktor m/s mehr.',
           'N = kg·m/s² in Basiseinheiten.',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['dim-konsistenz'] },
       ),
       sorting(
         'Ordne die Schritte einer Dimensionsprüfung.',
@@ -1129,6 +1133,63 @@ export const technischeMechanikSubGoalTasks = {
           'Rechte Seite danach.',
           'Basiseinheiten-Reduktion vor dem Vergleich.',
         ],
+        { stage: 'apply-guided', subGoal: 0, uses: ['dim-konsistenz'] },
+      ),
+      mc(
+        'In welcher Aussage steckt ein **dimensionaler Fehler**?',
+        [
+          'Federkraft: $F = k\\cdot x$ mit $[k] = \\text{N/m}$, $[x]=\\text{m}$ ⇒ $[F] = \\text{N}$.',
+          'Beschleunigung: $a = F/m^2$ mit $[F]=\\text{N}$, $[m]=\\text{kg}$ ⇒ $[a] = \\text{m/s}^2$.',
+          'Kinetische Energie: $E = \\tfrac{1}{2} m v^2$ mit $[m]=\\text{kg}$, $[v]=\\text{m/s}$ ⇒ $[E]=\\text{kg}\\cdot\\text{m}^2/\\text{s}^2 = \\text{J}$.',
+          'Druck: $p = F/A$ mit $[F]=\\text{N}$, $[A]=\\text{m}^2$ ⇒ $[p]=\\text{N/m}^2 = \\text{Pa}$.',
+        ],
+        1,
+        `**Ansatz:** Jede Aussage einzeln nachrechnen — Einheit der rechten Seite mit der angegebenen Zieleinheit vergleichen.
+
+**Rechnung:** Aussage 2: $[F/m^2] = \\text{N}/\\text{kg}^2 = (\\text{kg}\\cdot\\text{m/s}^2)/\\text{kg}^2 = \\text{m}/(\\text{kg}\\cdot\\text{s}^2)$ — das ist **nicht** $\\text{m/s}^2$. Die korrekte Form wäre $a = F/m$ (Newton 2. Gesetz).
+
+**Probe:** $a = F/m$: $[F/m] = \\text{N/kg} = (\\text{kg}\\cdot\\text{m/s}^2)/\\text{kg} = \\text{m/s}^2$ ✓.
+
+**Typischer Fehler:** Bei Newton 2. Gesetz $m$ quadrieren — sieht zahlenmäßig oft "richtig" aus, ist aber dimensional sofort entlarvbar.`,
+        [
+          'Pro Aussage: Einheit links mit Einheit rechts vergleichen.',
+          'Bei Newton 2. Gesetz: nur einfaches $m$ im Nenner.',
+          '$\\text{N}/\\text{kg}^2 \\neq \\text{m/s}^2$.',
+        ],
+        {
+          0: 'Korrekt: $[k\\cdot x] = (\\text{N/m})\\cdot\\text{m} = \\text{N}$ — Einheiten passen.',
+          2: 'Korrekt: $[m\\cdot v^2] = \\text{kg}\\cdot(\\text{m/s})^2 = \\text{kg}\\cdot\\text{m}^2/\\text{s}^2 = \\text{J}$.',
+          3: 'Korrekt: $[F/A] = \\text{N/m}^2 = \\text{Pa}$ per Definition.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['dim-konsistenz'] },
+      ),
+      mc(
+        'Eine Formel für die Schwingdauer $T$ eines Feder-Masse-Schwingers wird gesucht. Welcher der vier Ausdrücke hat **Einheit Sekunde**, wenn $[m]=\\text{kg}$ und $[k]=\\text{N/m}$?',
+        [
+          '$\\sqrt{m/k}$',
+          '$\\sqrt{k/m}$',
+          '$m\\cdot k$',
+          '$m/k$',
+        ],
+        0,
+        `**Ansatz:** Reine Dimensionsanalyse — Einheit jedes Ausdrucks bestimmen und mit $\\text{s}$ vergleichen.
+
+**Rechnung:** $[m/k] = \\text{kg}/(\\text{N/m}) = \\text{kg}\\cdot\\text{m}/\\text{N} = \\text{kg}\\cdot\\text{m}/(\\text{kg}\\cdot\\text{m/s}^2) = \\text{s}^2$ ⇒ $\\sqrt{m/k}$ hat Einheit $\\text{s}$ ✓.
+
+**Probe:** Die bekannte Formel $T = 2\\pi\\sqrt{m/k}$ (Federpendel) hat genau diese Einheit. Vorfaktor $2\\pi$ ist dimensionslos.
+
+**Typischer Fehler:** $\\sqrt{k/m}$ ($\\omega_0$-Eigenkreisfrequenz, Einheit $\\text{s}^{-1}$) und $T$ verwechseln. $T$ ist die Dauer (s), $\\omega$ die Kreisfrequenz (1/s).`,
+        [
+          '$T$ hat Einheit Sekunde.',
+          'Aus $m$ (kg) und $k$ (N/m) Einheit Sekunde bilden — welche Kombination?',
+          '$\\text{kg}/(\\text{N/m}) = \\text{s}^2$ aufrollen.',
+        ],
+        {
+          1: '$\\sqrt{k/m}$ hat Einheit $\\text{s}^{-1}$ — das ist die Eigenkreisfrequenz $\\omega_0$, nicht die Schwingdauer.',
+          2: '$m\\cdot k$ hat Einheit $\\text{kg}\\cdot\\text{N/m} = \\text{N}\\cdot\\text{kg/m}$ — keine Sekunde.',
+          3: '$m/k$ hat Einheit $\\text{s}^2$, nicht $\\text{s}$. Erst die Wurzel macht daraus eine Sekunde.',
+        },
+        { stage: 'transfer', subGoal: 0, uses: ['dim-konsistenz'] },
       ),
     ],
 
@@ -1160,6 +1221,7 @@ export const technischeMechanikSubGoalTasks = {
           1: 'Kilogramm ist die Basiseinheit der Masse — ebenfalls in der Liste der 7.',
           3: 'Sekunde ist die Basiseinheit der Zeit — ebenfalls Basis-SI.',
         },
+        { stage: 'apply-guided', subGoal: 1, uses: ['basis-aufbau'] },
       ),
       matching(
         'Ordne jeder physikalischen Grundgröße ihre SI-Basiseinheit zu.',
@@ -1182,6 +1244,7 @@ export const technischeMechanikSubGoalTasks = {
           'Temperatur: Kelvin, nicht Celsius.',
           'Strom: Ampere.',
         ],
+        { stage: 'transfer', subGoal: 1, uses: ['basis-aufbau'] },
       ),
       tf(
         'Das SI-System hat genau **sieben** Basiseinheiten, aus denen alle anderen Einheiten zusammengesetzt werden.',
@@ -1198,6 +1261,7 @@ export const technischeMechanikSubGoalTasks = {
           'Das sind sieben Einheiten.',
           'Alles andere ist abgeleitet.',
         ],
+        { stage: 'recognize', subGoal: 1, uses: ['basis-aufbau'] },
       ),
       ni(
         'Drücke die Einheit **Newton** ausschließlich in SI-Basiseinheiten aus: $1\\,\\text{N} = 1\\,\\text{kg}^a \\cdot \\text{m}^b \\cdot \\text{s}^c$. Gib $a + b + |c|$ an.',
@@ -1214,6 +1278,7 @@ export const technischeMechanikSubGoalTasks = {
           '$[a] = \\text{m/s}^2$.',
           'Zeit-Exponent ist −2.',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['basis-aufbau'] },
       ),
       sorting(
         'Ordne die Einheiten von "direkte Basiseinheit" zu "drei Schritte abgeleitet".',
@@ -1236,6 +1301,63 @@ export const technischeMechanikSubGoalTasks = {
           'Jede Ableitungsstufe fügt Multiplikation/Division hinzu.',
           'Watt enthält Joule enthält Newton enthält Meter.',
         ],
+        { stage: 'apply-guided', subGoal: 1, uses: ['basis-aufbau'] },
+      ),
+      mc(
+        'Eine physikalische Größe hat in Basis-SI die Einheit $\\text{kg}\\cdot\\text{m}^2/\\text{s}^3$. Um welche Größe handelt es sich?',
+        [
+          'Energie (J)',
+          'Leistung (W)',
+          'Kraft (N)',
+          'Druck (Pa)',
+        ],
+        1,
+        `**Ansatz:** Jede Größe einmal in Basis-SI zerlegen und vergleichen.
+
+**Rechnung:** Energie $\\text{J} = \\text{N}\\cdot\\text{m} = \\text{kg}\\cdot\\text{m}^2/\\text{s}^2$. Leistung $\\text{W} = \\text{J/s} = \\text{kg}\\cdot\\text{m}^2/\\text{s}^3$ ✓. Kraft $\\text{N} = \\text{kg}\\cdot\\text{m/s}^2$. Druck $\\text{Pa} = \\text{N/m}^2 = \\text{kg}/(\\text{m}\\cdot\\text{s}^2)$.
+
+**Probe:** Leistung = Energie/Zeit ⇒ $\\text{J/s}$. Im Vergleich zu $\\text{J}$ ein zusätzliches $1/\\text{s}$ — also $\\text{s}^3$ statt $\\text{s}^2$ im Nenner.
+
+**Typischer Fehler:** Joule und Watt verwechseln — sie unterscheiden sich nur um einen Faktor $1/\\text{s}$. Wer nicht auf die Zeit-Potenz achtet, liegt schnell daneben.`,
+        [
+          '$\\text{kg}\\cdot\\text{m}^2/\\text{s}^2$ = Joule (Energie).',
+          '$\\text{s}^3$ statt $\\text{s}^2$ heißt: ein Mal $/\\text{s}$ mehr.',
+          'Energie/Zeit = Leistung.',
+        ],
+        {
+          0: 'Energie hat $\\text{s}^2$ im Nenner ($\\text{kg}\\cdot\\text{m}^2/\\text{s}^2$), nicht $\\text{s}^3$. Der Unterschied zu Watt ist genau ein Faktor Zeit.',
+          2: 'Kraft hat in Basis-SI $\\text{kg}\\cdot\\text{m}/\\text{s}^2$ — nur **eine** Potenz von $\\text{m}$, nicht zwei.',
+          3: 'Druck ist $\\text{kg}/(\\text{m}\\cdot\\text{s}^2)$ — Meter steht im **Nenner**, nicht im Zähler quadriert.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['basis-aufbau'] },
+      ),
+      mc(
+        'Studentin behauptet: "Joule lässt sich in Basis-SI als $\\text{kg}\\cdot\\text{m/s}^2$ schreiben." Was ist korrekt?',
+        [
+          'Stimmt — $1\\,\\text{J} = 1\\,\\text{kg}\\cdot\\text{m/s}^2$.',
+          '$\\text{kg}\\cdot\\text{m/s}^2$ ist die Einheit Newton, nicht Joule. Joule = N·m = $\\text{kg}\\cdot\\text{m}^2/\\text{s}^2$.',
+          'Joule ist eine SI-Basiseinheit und wird nicht weiter zerlegt.',
+          'Die richtige Zerlegung wäre $\\text{kg/s}^2$.',
+        ],
+        1,
+        `**Ansatz:** Joule ist abgeleitet: $\\text{J} = \\text{N}\\cdot\\text{m}$. Newton selbst ist $\\text{kg}\\cdot\\text{m/s}^2$. Beim Auflösen NICHT den zweiten Faktor $\\text{m}$ vergessen.
+
+**Rechnung:** $1\\,\\text{J} = 1\\,\\text{N}\\cdot\\text{m} = (1\\,\\text{kg}\\cdot\\text{m/s}^2)\\cdot 1\\,\\text{m} = 1\\,\\text{kg}\\cdot\\text{m}^2/\\text{s}^2$.
+
+**Probe:** Aus der Energieformel: $E = \\tfrac12 m v^2 \\Rightarrow [\\text{kg}]\\cdot[\\text{m/s}]^2 = \\text{kg}\\cdot\\text{m}^2/\\text{s}^2$ ✓.
+
+**Typischer Fehler:** Newton $\\text{kg}\\cdot\\text{m/s}^2$ und Joule $\\text{kg}\\cdot\\text{m}^2/\\text{s}^2$ gleichsetzen — der zweite Meter aus $\\text{N}\\cdot\\text{m}$ wird unterschlagen.`,
+        [
+          'Joule = N·m, nicht einfach N.',
+          'N selbst hat schon $\\text{kg}\\cdot\\text{m/s}^2$.',
+          'Beim Auflösen kommt **noch ein** $\\text{m}$ dazu.',
+        ],
+        {
+          0: 'Falsch — $\\text{kg}\\cdot\\text{m/s}^2$ ist Newton (Kraft), nicht Joule. Es fehlt der zweite Faktor $\\text{m}$ aus $\\text{J} = \\text{N}\\cdot\\text{m}$.',
+          2: 'Joule ist **nicht** Basis-SI. Basis-SI sind nur m, kg, s, A, K, mol, cd. J ist abgeleitet.',
+          3: '$\\text{kg/s}^2$ wäre weder Kraft noch Energie — diese Einheit hat in der Mechanik keine direkte Standardgröße.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['basis-aufbau'] },
       ),
     ],
 
@@ -1256,6 +1378,7 @@ export const technischeMechanikSubGoalTasks = {
           '1 MPa = 10^6 Pa.',
           'Als Zahl: 1 000 000.',
         ],
+        { stage: 'apply-guided', subGoal: 2, uses: ['pa-zerlegung'] },
       ),
       mc(
         'Welche Einheit ist **nicht** äquivalent zu Pascal?',
@@ -1283,6 +1406,7 @@ export const technischeMechanikSubGoalTasks = {
           1: '$\\text{kg}/(\\text{m}\\cdot\\text{s}^2) = (\\text{kg}\\cdot\\text{m/s}^2)/\\text{m}^2 = \\text{N/m}^2 = \\text{Pa}$ — genau die Basis-SI-Darstellung von Pascal.',
           2: '$\\text{J/m}^3 = (\\text{N}\\cdot\\text{m})/\\text{m}^3 = \\text{N/m}^2 = \\text{Pa}$. Energiedichte und Druck haben dieselbe Einheit.',
         },
+        { stage: 'error-analysis', subGoal: 2, uses: ['pa-zerlegung'] },
       ),
       tf(
         'Der Wert $1\\,\\text{N/mm}^2$ entspricht exakt $1\\,\\text{MPa}$.',
@@ -1299,6 +1423,7 @@ export const technischeMechanikSubGoalTasks = {
           '1 mm² = 10⁻⁶ m².',
           '1/10⁻⁶ = 10⁶.',
         ],
+        { stage: 'recognize', subGoal: 2, uses: ['pa-zerlegung'] },
       ),
       ni(
         'Ein Überdruck von $2{,}5\\,\\text{bar}$ entspricht wie vielen Kilopascal?',
@@ -1315,6 +1440,7 @@ export const technischeMechanikSubGoalTasks = {
           '2,5 × 100 = 250.',
           'bar ≈ Atmosphäre ≈ 100 kPa.',
         ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['pa-zerlegung'] },
       ),
       matching(
         'Ordne jede Druckangabe ihrem Wert in Pa zu.',
@@ -1337,6 +1463,91 @@ export const technischeMechanikSubGoalTasks = {
           'bar = 10⁵ Pa.',
           '1 N/mm² = 1 MPa.',
         ],
+        { stage: 'transfer', subGoal: 2, uses: ['pa-zerlegung'] },
+      ),
+      mc(
+        'Drücke $1\\,\\text{Pa}$ vollständig in **SI-Basiseinheiten** aus, indem du den Weg $\\text{Pa} = \\text{N/m}^2$ und $\\text{N} = \\text{kg}\\cdot\\text{m/s}^2$ gehst.',
+        [
+          '$\\text{kg}/(\\text{m}\\cdot\\text{s}^2)$',
+          '$\\text{kg}\\cdot\\text{m/s}^2$',
+          '$\\text{kg}\\cdot\\text{m}^2/\\text{s}^2$',
+          '$\\text{kg}/(\\text{m}^2\\cdot\\text{s}^2)$',
+        ],
+        0,
+        `**Ansatz:** Schrittweise einsetzen: $\\text{Pa} = \\text{N/m}^2$, dann $\\text{N}$ ersetzen.
+
+**Rechnung:** $\\text{Pa} = \\dfrac{\\text{N}}{\\text{m}^2} = \\dfrac{\\text{kg}\\cdot\\text{m/s}^2}{\\text{m}^2} = \\dfrac{\\text{kg}}{\\text{m}\\cdot\\text{s}^2}$.
+
+**Probe:** Eine Potenz von $\\text{m}$ kürzt sich (Zähler $\\text{m}$ gegen Nenner $\\text{m}^2$ ⇒ $1/\\text{m}$). Übrig bleibt eine $1/\\text{m}$, kombiniert mit $\\text{kg}/\\text{s}^2$.
+
+**Typischer Fehler:** Nur eine Potenz von $\\text{m}$ kürzen, dann landet man bei $\\text{kg}/\\text{s}^2$ (zu wenige Meter im Nenner). Sauber rechnen: $\\text{m}/\\text{m}^2 = 1/\\text{m}$.`,
+        [
+          'Pa = N/m².',
+          'N = kg·m/s² in N einsetzen.',
+          'Dann m im Zähler gegen m² im Nenner kürzen.',
+        ],
+        {
+          1: '$\\text{kg}\\cdot\\text{m/s}^2$ ist Newton, **nicht** Pascal. Es fehlt die Division durch eine Fläche.',
+          2: '$\\text{kg}\\cdot\\text{m}^2/\\text{s}^2$ ist Joule (Energie), nicht Druck.',
+          3: 'Zu viele Meter im Nenner. Im Zähler von $\\text{N}$ steht $\\text{m}^1$, im Nenner $\\text{m}^2$ — Differenz: $\\text{m}^{-1}$, nicht $\\text{m}^{-2}$.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['pa-zerlegung'] },
+      ),
+      mc(
+        'Auf einen Kolben mit Querschnittsfläche $A = 0{,}5\\,\\text{m}^2$ wirkt ein Druck $p = 200\\,\\text{kPa}$. Wie groß ist die resultierende Kraft auf den Kolben?',
+        [
+          '$400\\,\\text{N}$',
+          '$1\\,000\\,\\text{N}$',
+          '$100\\,000\\,\\text{N}$',
+          '$400\\,000\\,\\text{N}$',
+        ],
+        2,
+        `**Ansatz:** $p = F/A \\Rightarrow F = p\\cdot A$. Druck und Fläche müssen in konsistenten Einheiten stehen — Pa = N/m² verlangt $A$ in m² und $p$ in Pa.
+
+**Rechnung:** $p = 200\\,\\text{kPa} = 200\\,000\\,\\text{Pa}$. $F = 200\\,000\\,\\text{Pa}\\cdot 0{,}5\\,\\text{m}^2 = 100\\,000\\,\\text{N} = 100\\,\\text{kN}$.
+
+**Probe:** Einheitencheck: $\\text{Pa}\\cdot\\text{m}^2 = (\\text{N/m}^2)\\cdot\\text{m}^2 = \\text{N}$ ✓.
+
+**Typischer Fehler:** Druck in kPa belassen ($200\\cdot 0{,}5 = 100$ — als $100\\,\\text{N}$ interpretieren). Tatsächlich liefert $\\text{kPa}\\cdot\\text{m}^2 = \\text{kN}$, also $100\\,\\text{kN} = 100\\,000\\,\\text{N}$.`,
+        [
+          'Pa = N/m², deshalb erst kPa → Pa.',
+          'F = p·A.',
+          '200 000 · 0,5 = 100 000.',
+        ],
+        {
+          0: 'Da steckt ein Faktor $250$ zu wenig — vermutlich $200/0{,}5 = 400$ statt $200\\cdot 0{,}5 = 100$ gerechnet (Operation falsch).',
+          1: 'Faktor 100 zu wenig: kPa wurde nicht in Pa umgerechnet — $200\\cdot 0{,}5\\cdot 10$ statt $\\cdot 1000$.',
+          3: 'Faktor 4 zu groß — vermutlich $0{,}5\\,\\text{m}^2$ als $2\\,\\text{m}^2$ interpretiert (Kehrwert).',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['pa-zerlegung'] },
+      ),
+      mc(
+        'Eine Formelsammlung gibt für die Energiedichte des elektrischen Feldes $w = \\tfrac{1}{2}\\varepsilon_0 E^2$ die Einheit $\\text{J/m}^3$ an. Welche **äquivalente** Druck-Einheit hat dieselbe Größe?',
+        [
+          'Pa',
+          'N',
+          'W',
+          'm',
+        ],
+        0,
+        `**Ansatz:** Energiedichte hat Einheit Energie/Volumen. Mit $\\text{J} = \\text{N}\\cdot\\text{m}$ aufrollen.
+
+**Rechnung:** $\\text{J/m}^3 = (\\text{N}\\cdot\\text{m})/\\text{m}^3 = \\text{N/m}^2 = \\text{Pa}$.
+
+**Probe:** Auch in Basis-SI: $\\text{J/m}^3 = \\text{kg}\\cdot\\text{m}^2/\\text{s}^2/\\text{m}^3 = \\text{kg}/(\\text{m}\\cdot\\text{s}^2) = \\text{Pa}$ ✓.
+
+**Typischer Fehler:** "Energiedichte" hört sich an wie Energie — ist aber dimensional dieselbe Größe wie Druck. Dieser Zusammenhang taucht beim dynamischen Druck $p_\\text{dyn} = \\tfrac12\\rho v^2$ wieder auf (auch dort: kinetische Energiedichte = Druck).`,
+        [
+          'J = N·m.',
+          'J/m³ = (N·m)/m³.',
+          'm im Zähler gegen ein m³ im Nenner kürzen ⇒ N/m².',
+        ],
+        {
+          1: 'N ist Kraft, nicht Energie pro Volumen. Es fehlt der Bezug zur Fläche.',
+          2: 'W ist Leistung (Energie/Zeit), nicht Energie/Volumen. Falscher Nenner.',
+          3: 'm ist eine reine Längeneinheit — Energiedichte hat Volumen im Nenner, nicht nichts.',
+        },
+        { stage: 'transfer', subGoal: 2, uses: ['pa-zerlegung'] },
       ),
     ],
 
@@ -1357,6 +1568,7 @@ export const technischeMechanikSubGoalTasks = {
           'Bei Fläche Faktor quadrieren.',
           '250 × 10⁻⁶ = 2,5·10⁻⁴.',
         ],
+        { stage: 'apply-guided', subGoal: 3, uses: ['einheit-umform'] },
       ),
       ni(
         'Eine Stange hat $A = 100\\,\\text{mm}^2$ und trägt $F = 50\\,\\text{kN}$. Normalspannung $\\sigma = F/A$ in **MPa**?',
@@ -1373,6 +1585,7 @@ export const technischeMechanikSubGoalTasks = {
           'N und mm² passen direkt: N/mm² = MPa.',
           '50000/100 = 500.',
         ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['einheit-umform'] },
       ),
       mc(
         'Welche Umrechnung ist **falsch**?',
@@ -1400,6 +1613,7 @@ export const technischeMechanikSubGoalTasks = {
           1: 'MPa → Pa: Faktor $10^6$. $250\\cdot 10^6 = 2{,}5\\cdot 10^8$ — korrekt.',
           3: 'mm² → m²: Faktor $10^{-6}$. $100\\cdot 10^{-6} = 10^{-4}$ — korrekt.',
         },
+        { stage: 'error-analysis', subGoal: 3, uses: ['einheit-umform'] },
       ),
       tf(
         'Die Einheiten "N/mm²" und "MPa" haben denselben Zahlenwert — ein Stab mit $\\sigma = 350\\,\\text{MPa}$ trägt also $350\\,\\text{N/mm}^2$.',
@@ -1416,6 +1630,7 @@ export const technischeMechanikSubGoalTasks = {
           'N/mm² = 10⁶ N/m² = 10⁶ Pa.',
           '10⁶ Pa = 1 MPa.',
         ],
+        { stage: 'recognize', subGoal: 3, uses: ['einheit-umform'] },
       ),
       sorting(
         'Bringe die Arbeitsschritte einer sauberen Rechnung in die Reihenfolge, die Fehler vermeidet.',
@@ -1439,6 +1654,52 @@ export const technischeMechanikSubGoalTasks = {
           'Dann umrechnen.',
           'Dimensionsprüfung am Ende, nicht am Anfang.',
         ],
+        { stage: 'apply-guided', subGoal: 3, uses: ['einheit-umform'] },
+      ),
+      mc(
+        'Du sollst die Federenergie $E = \\tfrac{1}{2}\\,k\\,x^2$ berechnen. Gegeben: $k = 200\\,\\text{N/cm}$, $x = 5\\,\\text{cm}$. Was ist der **erste richtige Schritt**?',
+        [
+          'Erst Einheiten harmonisieren: $k = 200\\,\\text{N/cm} = 20\\,000\\,\\text{N/m}$, $x = 0{,}05\\,\\text{m}$, dann in $E = \\tfrac{1}{2}kx^2$ einsetzen.',
+          'Direkt einsetzen: $E = \\tfrac{1}{2}\\cdot 200\\cdot 5^2 = 2\\,500$ — Einheit ergibt sich am Ende automatisch.',
+          'Nur $x$ in mm umrechnen, $k$ in N/cm belassen — die Längeneinheiten kürzen sich später.',
+          'Einheiten ignorieren — sie kürzen sich am Ende automatisch heraus.',
+        ],
+        0,
+        `**Ansatz:** Vor dem Einsetzen alles in **ein** konsistentes System bringen — hier SI ($\\text{N}, \\text{m}$), damit das Ergebnis direkt in Joule herauskommt.
+
+**Rechnung:** $k = 200\\,\\text{N/cm} = 200\\cdot 100\\,\\text{N/m} = 20\\,000\\,\\text{N/m}$. $x = 5\\,\\text{cm} = 0{,}05\\,\\text{m}$. $E = \\tfrac12\\cdot 20\\,000\\cdot 0{,}05^2 = \\tfrac12\\cdot 20\\,000\\cdot 0{,}0025 = 25\\,\\text{J}$.
+
+**Probe:** Einheitencheck: $(\\text{N/m})\\cdot\\text{m}^2 = \\text{N}\\cdot\\text{m} = \\text{J}$ ✓.
+
+**Typischer Fehler:** Direkt $\\tfrac12\\cdot 200\\cdot 25 = 2\\,500$ rechnen und das Ergebnis als J interpretieren. Tatsächlich ist die Einheit $\\text{N/cm}\\cdot\\text{cm}^2 = \\text{N}\\cdot\\text{cm} = 0{,}01\\,\\text{N}\\cdot\\text{m} = 0{,}01\\,\\text{J}$, also $2\\,500\\cdot 0{,}01 = 25\\,\\text{J}$ — derselbe Wert, aber nur, weil cm² hier zufällig kompatibel ist. Bei $E = \\tfrac12 m v^2$ mit gemischten Einheiten geht das gnadenlos schief.`,
+        [
+          'Konsistente Einheiten ZUERST.',
+          'cm in m: $\\cdot 10^{-2}$ für Längen, $\\cdot 10^2$ für N/cm ⇒ N/m.',
+          'Erst dann einsetzen.',
+        ],
+        {
+          1: 'Direktes Einsetzen mit gemischten Einheiten ist die häufigste Fehlerquelle. Der Zahlenwert wird von der gewählten Einheit abhängig — ohne Einheit ist die "$2\\,500$" wertlos.',
+          2: 'Einheiten "kürzen sich automatisch" stimmt nur, wenn sie konsistent sind. cm bei $x$ und cm bei $k$ sind hier zwar kompatibel, aber spätestens beim Quadrat $x^2$ in cm² wird es heikel.',
+          3: '"Einheiten ignorieren" ist genau das, was Dimensionsanalyse zu verhindern versucht. Liefert Zahlenwerte, die auf falschen Einheiten basieren.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['einheit-umform'] },
+      ),
+      ni(
+        'Eine Schraube mit Spannungsquerschnitt $A_S = 84{,}3\\,\\text{mm}^2$ wird mit der Vorspannkraft $F_V = 25\\,\\text{kN}$ belastet. Berechne die Vorspannungs-Spannung $\\sigma = F_V/A_S$ in **MPa** (auf 1 Nachkommastelle).',
+        296.6, 0.5, 'MPa',
+        `**Ansatz:** Praktiker-Trick: $\\text{N}/\\text{mm}^2 = \\text{MPa}$. Also $F_V$ in Newton, $A_S$ in mm² einsetzen — Ergebnis steht direkt in MPa.
+
+**Rechnung:** $F_V = 25\\,\\text{kN} = 25\\,000\\,\\text{N}$. $\\sigma = 25\\,000\\,\\text{N}/84{,}3\\,\\text{mm}^2 = 296{,}56\\dots\\,\\text{N/mm}^2 \\approx 296{,}6\\,\\text{MPa}$.
+
+**Probe:** Gegenrechnung in Basis-SI: $A_S = 84{,}3\\cdot 10^{-6}\\,\\text{m}^2 = 8{,}43\\cdot 10^{-5}\\,\\text{m}^2$. $\\sigma = 25\\,000/8{,}43\\cdot 10^{-5} \\approx 2{,}966\\cdot 10^{8}\\,\\text{Pa} = 296{,}6\\,\\text{MPa}$ ✓.
+
+**Typischer Fehler:** $F_V$ in kN belassen ($25/84{,}3 \\approx 0{,}30$) — als $0{,}30\\,\\text{MPa}$ interpretieren. Tatsächlich ist $\\text{kN}/\\text{mm}^2 = 1000\\,\\text{MPa} = \\text{GPa}$ — der Wert wäre $0{,}30\\,\\text{GPa} = 300\\,\\text{MPa}$ (Faktor 1000 Differenz).`,
+        [
+          'kN → N: Faktor 1000.',
+          'N/mm² = MPa direkt.',
+          '25 000 / 84,3 ≈ 296,6.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['einheit-umform'] },
       ),
     ],
 

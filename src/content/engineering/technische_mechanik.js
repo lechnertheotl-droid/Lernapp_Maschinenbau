@@ -486,6 +486,7 @@ Alle anderen Einheiten lassen sich daraus ableiten.
                 2: 'Zähler hat Einheit Kraft (N), Nenner Länge (m). N/m ist Kraft pro Länge (z. B. Streckenlast), nicht Spannung.',
                 3: 'Gleiches Problem: $F/L$ hat Einheit N/m, nicht N/m² wie Spannung.',
               },
+              pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['dim-konsistenz'] },
             },
             {
               type: 'true-false',
