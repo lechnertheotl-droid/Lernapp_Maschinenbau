@@ -1220,18 +1220,101 @@ $$x_S = \frac{\sum A_i \cdot x_{S,i}}{\sum A_i}$$
               { subGoal: 4, stage: 'transfer',          type: 'multiple-choice', uses: ['masse-vs-fg'],       qty: 1 },
             ],
           },
-          content: String.raw`Die Grundgleichung der Dynamik lautet:
+          content: String.raw`Die drei Newtonschen Gesetze sind die Grundlage der gesamten klassischen Dynamik.
 
-$$\sum F = m \cdot a$$
+**1. Newton — Trägheitsprinzip:** Wirkt auf einen Körper keine resultierende Kraft, so behält er seinen Bewegungszustand bei (Ruhe oder gleichförmige Bewegung):
 
-Masse ist eine Eigenschaft des Körpers. Gewichtskraft ist die Kraft im Schwerefeld: $F_G = m \cdot g$.`,
+$$\sum \vec F = \vec 0 \;\Longleftrightarrow\; \vec v = \text{const}$$
+
+**2. Newton — Grundgleichung der Dynamik:** Die resultierende Kraft erzeugt eine zur Masse proportionale Beschleunigung:
+
+$$\sum \vec F = m \cdot \vec a \qquad [F] = \text{N} = \text{kg} \cdot \text{m/s}^2$$
+
+**3. Newton — Wechselwirkungsprinzip (actio = reactio):** Übt Körper $A$ eine Kraft auf $B$ aus, übt $B$ auf $A$ eine gleich große, entgegengesetzt gerichtete Kraft aus:
+
+$$\vec F_{AB} = -\vec F_{BA}$$
+
+Die beiden Kräfte greifen an **verschiedenen** Körpern an — sie heben sich daher im Freikörperbild eines einzelnen Körpers nicht gegenseitig auf.
+
+**Gewichtskraft im Schwerefeld der Erde:** Sonderfall des 2. Newton mit $a = g$:
+
+$$F_G = m \cdot g \qquad g \approx 9{,}81\,\text{m/s}^2$$
+
+**Masse vs. Gewichtskraft — Übersicht:**
+
+| Größe        | Symbol | Einheit       | Bedeutung                                              |
+|--------------|--------|---------------|--------------------------------------------------------|
+| Masse        | $m$    | $\text{kg}$   | Eigenschaft des Körpers, ortsunabhängig                |
+| Gewichtskraft| $F_G$  | $\text{N}$    | Kraft im Schwerefeld, ortsabhängig (Mond/Erde anders)  |
+| Beziehung    | —      | —             | $F_G = m \cdot g$ am jeweiligen Ort                    |
+
+Eine $1\,\text{kg}$-Masse hat auf der Erde $F_G \approx 9{,}81\,\text{N}$, auf dem Mond ($g_{\text{Mond}} \approx 1{,}62\,\text{m/s}^2$) nur $F_G \approx 1{,}62\,\text{N}$ — die Masse bleibt aber dieselbe.`,
           visualization: {
             title: 'Feder-Masse-Dämpfer System', visualizationId: 'spring-mass-damper', params: {},
           },
           exercises: [
-            { type: 'number-input', question: 'Welche Kraft beschleunigt 4 kg mit $3\\,m/s^2$?', correctValue: 12, tolerance: 0.01, unit: 'N', explanation: 'F = m·a = 4·3 = 12 N.', hints: ['Grundgleichung: F = m · a', 'F in Newton, m in kg, a in m/s²', '4 · 3 = 12 N'] },
-            { type: 'multiple-choice', question: 'Gewichtskraft wird berechnet mit:', options: ['m/a', 'm·g', 'g/m', 'm+g'], correctIndex: 1, explanation: 'F_G = m·g.', hints: ['Gewichtskraft: F_G = m · g', 'g ≈ 9,81 m/s² (Erdschwerebeschleunigung)', 'F_G = m · 9,81'], wrongAnswerExplanations: { 0: '$m/a$ hätte Einheit $\\mathrm{kg \\cdot s^2/m}$ — unphysikalisch. Gewichtskraft ist $F_G = m \\cdot g$ mit Einheit N.', 2: '$g/m$ hätte Einheit $\\mathrm{1/(kg \\cdot s^2) \\cdot m}$, keine Kraft. Multiplizieren, nicht dividieren: $F_G = m \\cdot g$.', 3: 'Addition ist unmöglich — Einheiten $\\mathrm{kg}$ und $\\mathrm{m/s^2}$ sind nicht gleich. Kraft entsteht durch Multiplikation: $F = m \\cdot g$.' } },
-            { type: 'true-false', statement: 'Bei doppelter Masse und gleicher Beschleunigung ist die nötige Kraft doppelt so groß.', correct: true, explanation: 'F ist proportional zu m.', hints: ['F = m · a — Kraft proportional zu Masse und Beschleunigung.', 'Doppelte Masse bei gleicher Beschleunigung → doppelte Kraft.', 'F ∝ m gilt direkt aus F = m·a.'] },
+            {
+              type: 'number-input',
+              question: 'Welche Kraft beschleunigt $4\\,\\text{kg}$ mit $3\\,\\text{m/s}^2$?',
+              correctValue: 12,
+              tolerance: 0.01,
+              unit: 'N',
+              explanation: `**Ansatz:** 2. Newton: $\\sum F = m \\cdot a$. Gesucht ist die resultierende Kraft.
+
+**Rechnung:** $F = m \\cdot a = 4\\,\\text{kg} \\cdot 3\\,\\text{m/s}^2 = 12\\,\\text{N}$.
+
+**Probe:** Einheit: $\\text{kg} \\cdot \\text{m/s}^2 = \\text{N}$ ✓. Plausibilität: kleine Masse, moderate Beschleunigung → zweistellige Kraft passt.
+
+**Typischer Fehler:** $m + a = 7$ rechnen — Kraft entsteht durch **Multiplikation**, nicht Addition; Einheiten kg und m/s² sind nicht addierbar.`,
+              hints: [
+                '2. Newton-Gesetz aufschreiben.',
+                '$F$ in N, $m$ in kg, $a$ in m/s² — SI-Einheiten passen direkt.',
+                '$4 \\cdot 3 = ?$',
+              ],
+              pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['newton-2'] },
+            },
+            {
+              type: 'multiple-choice',
+              question: 'Welche Formel liefert die Gewichtskraft $F_G$ einer Masse $m$ im Schwerefeld der Erde?',
+              options: ['$F_G = m / a$', '$F_G = m \\cdot g$', '$F_G = g / m$', '$F_G = m + g$'],
+              correctIndex: 1,
+              explanation: `**Ansatz:** Gewichtskraft ist die Kraft, die das Schwerefeld auf eine Masse ausübt: 2. Newton mit $a = g$.
+
+**Rechnung:** $F_G = m \\cdot g$ mit $g \\approx 9{,}81\\,\\text{m/s}^2$. Beispiel: $m = 10\\,\\text{kg}$ → $F_G = 98{,}1\\,\\text{N}$.
+
+**Probe:** Einheiten: $\\text{kg} \\cdot \\text{m/s}^2 = \\text{N}$ ✓. Auf der Erde wiegt $1\\,\\text{kg}$ rund $9{,}81\\,\\text{N}$ — bekannt.
+
+**Typischer Fehler:** Masse und Gewichtskraft gleichsetzen oder additiv verknüpfen — Masse ist eine Eigenschaft des Körpers (in kg), Gewichtskraft eine Kraft (in N).`,
+              hints: [
+                'Gewichtskraft ist ein Spezialfall von $F = m \\cdot a$.',
+                'Welches $a$ wirkt im Schwerefeld?',
+                '$g \\approx 9{,}81\\,\\text{m/s}^2$ ist konstant.',
+              ],
+              wrongAnswerExplanations: {
+                0: '$m/a$ hätte Einheit $\\mathrm{kg \\cdot s^2/m}$ — keine Kraft. Im Schwerefeld wirkt $g$ als Beschleunigung, also multiplizieren.',
+                2: '$g/m$ wäre eine Beschleunigung pro Masse — Einheit $\\mathrm{m/(s^2 \\cdot kg)}$, also keine Kraft.',
+                3: 'Addition unmöglich, weil $\\text{kg}$ und $\\text{m/s}^2$ unterschiedliche Dimensionen haben. Kraft entsteht durch Multiplikation: $F_G = m \\cdot g$.',
+              },
+              pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['gewichtskraft'] },
+            },
+            {
+              type: 'true-false',
+              statement: 'Bei doppelter Masse und gleicher Beschleunigung ist die nötige Kraft doppelt so groß.',
+              correct: true,
+              explanation: `**Ansatz:** 2. Newton: $F = m \\cdot a$. Frage: wie ändert sich $F$, wenn $m$ verdoppelt wird und $a$ konstant bleibt?
+
+**Rechnung:** $F_{\\text{neu}} = (2m) \\cdot a = 2 \\cdot (m \\cdot a) = 2 F_{\\text{alt}}$. Die Kraft skaliert linear mit der Masse.
+
+**Probe:** Beispiel: $m = 5\\,\\text{kg}$, $a = 2\\,\\text{m/s}^2$ → $F = 10\\,\\text{N}$. Mit $m = 10\\,\\text{kg}$ → $F = 20\\,\\text{N}$. Verdopplung bestätigt.
+
+**Typischer Fehler:** Nichtlinearität annehmen oder $m$ und $a$ verwechseln. $F = m \\cdot a$ ist linear in **beiden** Faktoren.`,
+              hints: [
+                '$F = m \\cdot a$ — beide Faktoren stehen multiplikativ.',
+                'Was passiert mit dem Produkt, wenn ein Faktor verdoppelt wird?',
+                'Formal: $F(2m, a) = 2m \\cdot a = 2(m a) = 2 F(m, a)$.',
+              ],
+              pedagogy: { stage: 'recognize', subGoal: 0, uses: ['newton-2'] },
+            },
           ],
         },
         {

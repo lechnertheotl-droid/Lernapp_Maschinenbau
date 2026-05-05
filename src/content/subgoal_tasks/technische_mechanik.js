@@ -4803,6 +4803,690 @@ export const technischeMechanikSubGoalTasks = {
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // mech-2-1 — Newtonsche Gesetze  (5 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-2-1': {
+
+    // ── [0] 2. Newton: ΣF = m·a (Grundgleichung der Dynamik) ────────────
+    0: [
+      mc(
+        'Auf einen Körper wirkt eine resultierende Kraft von $F = 50\\,\\text{N}$. Mit welcher Beschleunigung bewegt sich eine Masse von $m = 25\\,\\text{kg}$?',
+        ['$2\\,\\text{m/s}^2$', '$0{,}5\\,\\text{m/s}^2$', '$25\\,\\text{m/s}^2$', '$1250\\,\\text{m/s}^2$'],
+        0,
+        `**Ansatz:** 2. Newton nach der Beschleunigung umstellen: $a = F/m$.
+
+**Rechnung:** $a = \\dfrac{50\\,\\text{N}}{25\\,\\text{kg}} = 2\\,\\text{m/s}^2$.
+
+**Probe:** Rückwärts: $F = m \\cdot a = 25 \\cdot 2 = 50\\,\\text{N}$ ✓. Einheiten: $\\text{N}/\\text{kg} = (\\text{kg} \\cdot \\text{m/s}^2)/\\text{kg} = \\text{m/s}^2$ ✓.
+
+**Typischer Fehler:** $F$ und $m$ vertauschen ($m/F$) oder multiplizieren ($F \\cdot m = 1250$). Beschleunigung folgt aus $a = F/m$, nicht aus $m/F$ oder $F \\cdot m$.`,
+        [
+          '2. Newton aufschreiben und nach $a$ auflösen.',
+          '$a = F/m$ — Kraft durch Masse.',
+          '$50/25 = ?$',
+        ],
+        {
+          1: '$0{,}5$ entsteht aus $25/50$ — Zähler und Nenner vertauscht. Richtig: $a = F/m = 50/25$.',
+          2: '$25$ ist der Wert der Masse, nicht der Beschleunigung. Du hast $m$ direkt eingetragen.',
+          3: '$1250 = 50 \\cdot 25$ — du hast multipliziert statt dividiert. $F = m \\cdot a$ ergibt umgestellt $a = F/m$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['newton-2'] },
+      ),
+      mc(
+        'Eine Studentin rechnet für $m = 10\\,\\text{kg}$ und Resultierende $F = 80\\,\\text{N}$: „$a = F \\cdot m = 800\\,\\text{m/s}^2$". Wo steckt der Fehler?',
+        [
+          'Sie hat multipliziert statt dividiert. Richtig: $a = F/m = 80/10 = 8\\,\\text{m/s}^2$.',
+          'Die Rechnung stimmt — $a$ ist tatsächlich $800\\,\\text{m/s}^2$.',
+          'Sie hat $g$ vergessen. Richtig: $a = F/(m \\cdot g) \\approx 0{,}82\\,\\text{m/s}^2$.',
+          'Sie hat eine falsche Einheit benutzt — der Zahlenwert stimmt aber.',
+        ],
+        0,
+        `**Ansatz:** 2. Newton: $F = m \\cdot a$, umgestellt $a = F/m$. Multiplikation der beiden gegebenen Größen ergibt nicht die Beschleunigung.
+
+**Rechnung:** $a = \\dfrac{80\\,\\text{N}}{10\\,\\text{kg}} = 8\\,\\text{m/s}^2$.
+
+**Probe:** $F = m \\cdot a = 10 \\cdot 8 = 80\\,\\text{N}$ ✓. Einheit-Check: $\\text{N}/\\text{kg} = \\text{m/s}^2$ ✓. $800\\,\\text{m/s}^2$ wäre rund $80\\cdot g$ — physikalisch unrealistisch für eine Resultierende von nur $80\\,\\text{N}$.
+
+**Typischer Fehler:** Aus $F = m \\cdot a$ statt $a = F/m$ direkt $a = F \\cdot m$ machen — Umstellungs-Lücke.`,
+        [
+          '$F = m \\cdot a$ — wonach muss aufgelöst werden?',
+          'Beim Auflösen wird **dividiert**, nicht multipliziert.',
+          'Plausibilitäts-Check: $800\\,\\text{m/s}^2 \\approx 80\\,g$ — viel zu viel für $80\\,\\text{N}$.',
+        ],
+        {
+          1: '$800\\,\\text{m/s}^2$ wäre eine extreme Beschleunigung (etwa das 80-fache der Erdbeschleunigung). Das passt nicht zu einer Kraft von nur $80\\,\\text{N}$.',
+          2: '$g$ ist hier irrelevant — die Aufgabe gibt die **resultierende** Kraft direkt vor; man dividiert nur durch $m$.',
+          3: 'Die Einheit ist nicht das Problem — der Zahlenwert $800$ ist um den Faktor $100$ falsch (multiplikative statt dividierte Kombination).',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['newton-2'] },
+      ),
+      ni(
+        'Ein Auto mit $m = 1500\\,\\text{kg}$ bremst gleichmäßig von $90\\,\\text{km/h}$ auf $0$ in $5\\,\\text{s}$. Wie groß ist die Bremskraft (Betrag)?',
+        7500, 5, 'N',
+        `**Ansatz:** 1) Geschwindigkeit in m/s umrechnen. 2) Beschleunigung aus $a = \\Delta v/\\Delta t$. 3) Kraft aus $|F| = m \\cdot |a|$.
+
+**Rechnung:** $v_0 = 90\\,\\text{km/h} = 90/3{,}6 = 25\\,\\text{m/s}$. $|a| = 25/5 = 5\\,\\text{m/s}^2$. $|F| = 1500 \\cdot 5 = 7500\\,\\text{N}$.
+
+**Probe:** Plausibilitäts-Check: $7500\\,\\text{N}$ entsprechen rund $\\tfrac{7500}{9{,}81} \\approx 765\\,\\text{kgf}$ — typische Bremskraft eines Pkw bei moderater Bremsung. ✓ Einheiten: $\\text{kg} \\cdot \\text{m/s}^2 = \\text{N}$ ✓.
+
+**Typischer Fehler:** km/h direkt in $a = \\Delta v/\\Delta t$ einsetzen → falscher Zahlenwert um Faktor $3{,}6$. Immer in SI-Einheiten umrechnen, bevor man rechnet.`,
+        [
+          'Erst Einheiten umrechnen: $90\\,\\text{km/h} \\to \\text{m/s}$.',
+          '$a = \\Delta v / \\Delta t$.',
+          '$|F| = m \\cdot |a|$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['newton-2'] },
+      ),
+      mc(
+        'Bei gleicher Kraft, aber doppelter Masse — wie ändert sich die Beschleunigung?',
+        ['halbiert sich', 'verdoppelt sich', 'bleibt gleich', 'vervierfacht sich'],
+        0,
+        `**Ansatz:** 2. Newton: $a = F/m$. Bei festem $F$ ist $a$ umgekehrt proportional zu $m$.
+
+**Rechnung:** $a_{\\text{neu}} = F/(2m) = \\tfrac{1}{2} \\cdot F/m = \\tfrac{1}{2} a_{\\text{alt}}$.
+
+**Probe:** Beispiel: $F = 100\\,\\text{N}$, $m = 10\\,\\text{kg}$ → $a = 10\\,\\text{m/s}^2$. Mit $m = 20\\,\\text{kg}$ → $a = 5\\,\\text{m/s}^2$ — halbiert. ✓
+
+**Typischer Fehler:** Direkte statt umgekehrte Proportionalität annehmen ($a$ wachse mit $m$). $a$ und $m$ stehen aber im Nenner verbunden.`,
+        [
+          'Wo steht $m$ in der Formel $a = F/m$?',
+          'Nenner verdoppeln → Quotient halbieren.',
+          'Umgekehrt proportional, nicht direkt.',
+        ],
+        {
+          1: 'Verdopplung der Masse vergrößert die Trägheit — Beschleunigung wird **kleiner**, nicht größer.',
+          2: 'Bei festem $F$ hängt $a$ von $m$ ab. „Bleibt gleich" gilt nur, wenn auch $F$ entsprechend mitwächst.',
+          3: 'Vervierfachung träte ein, wenn $m$ geviertelt würde — hier ist $m$ verdoppelt, nicht geviertelt.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['newton-2'] },
+      ),
+      ni(
+        'Auf eine Masse $m = 5\\,\\text{kg}$ wirken zwei kollineare Kräfte: $F_1 = 30\\,\\text{N}$ nach rechts und $F_2 = 10\\,\\text{N}$ nach links. Welche Beschleunigung ergibt sich (positiv = nach rechts)?',
+        4, 0.05, 'm/s^2',
+        `**Ansatz:** Erst die **resultierende** Kraft bestimmen ($\\sum F$), dann $a = \\sum F / m$.
+
+**Rechnung:** $\\sum F = F_1 - F_2 = 30 - 10 = 20\\,\\text{N}$ (nach rechts). $a = 20/5 = 4\\,\\text{m/s}^2$.
+
+**Probe:** $F = m \\cdot a = 5 \\cdot 4 = 20\\,\\text{N}$ ✓. Vorzeichen passt: Rechts-Kraft überwiegt → Beschleunigung nach rechts (positiv).
+
+**Typischer Fehler:** Beide Kräfte einfach addieren ($30 + 10 = 40$) statt vorzeichenrichtig. Bei kollinearen Kräften unterschiedlicher Richtung: subtrahieren.`,
+        [
+          'Einzelkräfte vorzeichenrichtig in eine Achsenrichtung legen.',
+          '$\\sum F = F_1 - F_2$, weil $F_2$ entgegengesetzt zeigt.',
+          '$a = \\sum F / m$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['newton-2'] },
+      ),
+    ],
+
+    // ── [1] 1. Newton: Trägheit (ohne Kraft → gleichförmige Bewegung) ──
+    1: [
+      tf(
+        'Wirkt auf einen Körper keine resultierende Kraft, so behält er seinen Bewegungszustand bei: er ruht oder bewegt sich gleichförmig auf einer Geraden.',
+        true,
+        `**Ansatz:** Das ist exakt das 1. Newton-Gesetz (Trägheitsprinzip).
+
+**Rechnung:** Mathematisch: $\\sum \\vec F = \\vec 0 \\;\\Rightarrow\\; \\vec a = \\vec 0 \\;\\Rightarrow\\; \\vec v = \\text{const}$.
+
+**Probe:** Beispiel reibungsfreier Puck auf Eis: ohne resultierende Kraft gleitet er konstant geradeaus. Beispiel ruhender Stein: $\\vec v = \\vec 0 = \\text{const}$ — auch das ist „gleichförmig".
+
+**Typischer Fehler:** Glauben, dass „Bewegung Kraft braucht". Bewegung **erhält** sich von selbst, **Beschleunigung** braucht eine resultierende Kraft.`,
+        [
+          'Wie lautet das 1. Newton-Gesetz wörtlich?',
+          'Aus $\\sum F = 0$ folgt $a = 0$ — was heißt das für $v$?',
+          'Ruhe ist ein Spezialfall gleichförmiger Bewegung ($v = 0 = \\text{const}$).',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['newton-1'] },
+      ),
+      mc(
+        'Ein Eishockey-Puck gleitet auf nahezu reibungsfreiem Eis mit konstanter Geschwindigkeit auf einer Geraden. Welche Aussage über die resultierende Kraft auf den Puck stimmt?',
+        [
+          '$\\sum \\vec F = \\vec 0$ — keine resultierende Kraft, daher konstante Geschwindigkeit.',
+          '$\\sum \\vec F$ zeigt in Bewegungsrichtung und treibt den Puck an.',
+          '$\\sum \\vec F = m \\cdot \\vec v$ — Kraft proportional zur Geschwindigkeit.',
+          '$\\sum \\vec F$ zeigt entgegen der Bewegungsrichtung — sie hält den Puck gleichmäßig.',
+        ],
+        0,
+        `**Ansatz:** 1. Newton — gleichförmige Bewegung ⇔ resultierende Kraft null.
+
+**Rechnung:** Konstantes $\\vec v$ heißt $\\vec a = \\vec 0$. Mit 2. Newton folgt $\\sum \\vec F = m \\cdot \\vec a = \\vec 0$.
+
+**Probe:** Auf den Puck wirken einzelne Kräfte (Gewichtskraft, Normalkraft des Eises, evtl. minimale Reibung). In Summe heben sie sich auf — sonst würde sich $\\vec v$ ändern.
+
+**Typischer Fehler:** Annehmen, dass Bewegung eine antreibende Kraft erfordert. Das ist Aristoteles, nicht Newton.`,
+        [
+          'Was sagt das 1. Newton-Gesetz über konstante Geschwindigkeit?',
+          'Konstantes $v$ ⇒ $a = 0$ ⇒ $\\sum F = ?$',
+          'Antriebskraft braucht es nur für **Beschleunigung**, nicht für **Bewegung**.',
+        ],
+        {
+          1: 'Eine Kraft in Bewegungsrichtung würde den Puck **beschleunigen** — die Geschwindigkeit wäre dann nicht mehr konstant.',
+          2: '$F = m \\cdot v$ ist physikalisch nicht das 2. Newton (das wäre $F = m \\cdot a$). Geschwindigkeit allein erzeugt keine Kraft.',
+          3: 'Eine entgegengesetzte resultierende Kraft würde den Puck **abbremsen**, nicht „gleichmäßig halten".',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['newton-1'] },
+      ),
+      mc(
+        'Ein Aufzug fährt mit konstanter Geschwindigkeit aufwärts. Eine Person ($m = 75\\,\\text{kg}$) steht auf einer Personenwaage in der Kabine. Was zeigt die Waage an?',
+        [
+          'Genau die Gewichtskraft auf der Erde, also rund $736\\,\\text{N}$ (bzw. $75\\,\\text{kg}$ in kg-Anzeige).',
+          'Mehr als $736\\,\\text{N}$, weil der Aufzug die Person zusätzlich „hochdrückt".',
+          'Weniger als $736\\,\\text{N}$, weil die Person beim Aufwärtsfahren leichter wird.',
+          '$0\\,\\text{N}$ — die Kabine trägt die Person komplett.',
+        ],
+        0,
+        `**Ansatz:** Konstante Geschwindigkeit ⇒ $\\vec a = \\vec 0$ ⇒ $\\sum F = 0$ am Körper Person.
+
+**Rechnung:** Auf die Person wirken Gewichtskraft $F_G = m \\cdot g$ nach unten und Normalkraft $N$ der Waage nach oben. $\\sum F = N - F_G = 0 \\;\\Rightarrow\\; N = F_G = 75 \\cdot 9{,}81 \\approx 736\\,\\text{N}$.
+
+**Probe:** Die Waage misst die Normalkraft. Bei $a = 0$ ist sie identisch zur Gewichtskraft — egal ob die Kabine ruht, gleichförmig auf- oder abwärts fährt.
+
+**Typischer Fehler:** Aufwärtsfahren mit Aufwärtsbeschleunigung verwechseln. Nur **beschleunigte** Aufzüge (Anfahren/Bremsen) zeigen abweichende Werte; bei konstanter Geschwindigkeit nicht.`,
+        [
+          'Wie groß ist die Beschleunigung bei konstanter Geschwindigkeit?',
+          '$a = 0$ ⇒ $\\sum F = 0$ ⇒ Normalkraft = Gewichtskraft.',
+          'Die Personenwaage misst die Normalkraft.',
+        ],
+        {
+          1: 'Mehr Anzeige käme nur bei **Beschleunigung** nach oben (z. B. beim Anfahren). Bei konstantem $v$ ist $a = 0$.',
+          2: 'Weniger Anzeige käme bei **Beschleunigung** nach unten (z. B. beim Anhalten oben). Konstantes $v$ heißt $a = 0$.',
+          3: '$0\\,\\text{N}$ wäre freier Fall ($a = -g$). Die Kabine trägt die Person nicht — die Waage trägt sie.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['newton-1'] },
+      ),
+      mc(
+        'Ein Schüler argumentiert: „Da das Auto auf der Autobahn $130\\,\\text{km/h}$ konstant fährt, muss eine Antriebskraft konstant in Fahrtrichtung wirken." Wo steckt der Denkfehler?',
+        [
+          'Bei konstanter Geschwindigkeit ist $\\sum F = 0$. Antriebskraft und Widerstandskräfte (Luft, Roll) heben sich genau auf — netto wirkt keine Kraft, obwohl Antrieb nötig ist.',
+          'Der Schüler hat recht — Bewegung erfordert nach Newton immer eine resultierende Kraft.',
+          'Die Aussage stimmt, weil $F = m \\cdot v$ gilt: konstante Geschwindigkeit ⇒ konstante Kraft.',
+          'Falsch — auf das Auto wirkt nur die Gewichtskraft $m \\cdot g$ nach unten, sonst nichts.',
+        ],
+        0,
+        `**Ansatz:** 1. Newton: konstantes $v$ ⇒ $\\sum F = 0$. Das schließt **einzelne** Kräfte nicht aus — es heißt nur, dass sie sich aufheben.
+
+**Rechnung:** Antriebskraft $F_{\\text{Antrieb}}$ in Fahrtrichtung, Widerstandskräfte $F_{\\text{Wid}}$ (Luft + Roll) entgegen. $\\sum F = F_{\\text{Antrieb}} - F_{\\text{Wid}} = 0 \\;\\Rightarrow\\; F_{\\text{Antrieb}} = F_{\\text{Wid}}$.
+
+**Probe:** Würde der Antrieb wegfallen, bremste das Auto durch Widerstand ab. Würde der Widerstand verschwinden (Vakuum, ideales Lager), liefe das Auto ohne Antrieb gleichförmig — genau wie der Eishockey-Puck.
+
+**Typischer Fehler:** „Keine resultierende Kraft" mit „keine Einzelkräfte" verwechseln. Newton spricht von der **Summe**, nicht von einzelnen Kräften.`,
+        [
+          'Was sagt $\\sum F = 0$ über einzelne Kräfte aus?',
+          'Antrieb und Widerstand können sich aufheben.',
+          'Newton lebt nicht in einer reibungsfreien Welt — Antrieb braucht es als **Ausgleich**.',
+        ],
+        {
+          1: 'Das ist die Aristotelische Sicht. Newton sagt: für **Beschleunigung** braucht es Kraft, für gleichförmige Bewegung nicht.',
+          2: '$F = m \\cdot v$ ist falsch — Newton lautet $F = m \\cdot a$. Geschwindigkeit erzeugt keine Kraft.',
+          3: 'Doch — Antrieb, Widerstand, Normalkräfte der Räder. Die Gewichtskraft ist nur eine von vielen Kräften.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['newton-1'] },
+      ),
+      mc(
+        'Im Bus, der plötzlich bremst, kippen stehende Passagiere nach vorne. Welches Newtonsche Gesetz erklärt das am direktesten?',
+        [
+          '1. Newton: Die Passagiere wollen ihre Bewegung beibehalten; während der Bus abbremst, gleiten sie ohne Bremskraft am Boden noch mit Anfangsgeschwindigkeit weiter — relativ zum Bus also nach vorn.',
+          '2. Newton: Die Bremskraft $F = m \\cdot a$ wirkt auf den Bus und schiebt die Passagiere nach vorn.',
+          '3. Newton: Die Bremskraft des Busses erzeugt eine Reaktionskraft, die die Passagiere nach vorn drückt.',
+          'Gravitation: Die Erdbeschleunigung $g$ zieht Passagiere beim Bremsen nach vorn.',
+        ],
+        0,
+        `**Ansatz:** Frage zielt auf das Trägheitsprinzip. Die Passagiere bekommen nicht plötzlich eine Vorwärts-Kraft — sie behalten nur ihre alte Geschwindigkeit bei.
+
+**Rechnung:** Bus: $v$ nimmt rasch ab (Bremskraft über Reifen-Boden-Reibung). Passagier auf glattem Boden: $\\sum F \\approx 0$ ⇒ $v$ bleibt zunächst konstant. Im Bus-Bezugssystem fühlt sich das wie eine „Trägheitskraft" nach vorn an.
+
+**Probe:** Die Bremskraft greift nur an den **Rädern** des Busses an, nicht an den Passagieren. Über die Sohlen-Reibung wird ein Teil übertragen — wenn die zu klein ist, kippen die Personen.
+
+**Typischer Fehler:** Eine „Trägheitskraft" als reale Kraft im Inertialsystem deuten. Sie ist nur ein Effekt der Wahl eines beschleunigten Bezugssystems.`,
+        [
+          'Welche Kraft wirkt direkt auf den Passagier?',
+          'Wenn keine wirkt, was sagt das 1. Newton?',
+          'Relativ zum bremsenden Bus erscheint das wie ein Vorwärts-„Schub".',
+        ],
+        {
+          1: 'Die Bremskraft $F = m \\cdot a$ wirkt auf den **Bus**, nicht auf die Passagiere. Die müssen erst über Reibung „mitgenommen" werden.',
+          2: 'actio = reactio bezieht sich auf Kraftpaare zwischen zwei Körpern, nicht auf Bremsverhalten.',
+          3: 'Die Erdbeschleunigung wirkt nach **unten**, nicht nach vorn — sie erklärt nicht das Vorwärtskippen.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['newton-1'] },
+      ),
+      tf(
+        'Ein im All um die Erde kreisender Satellit ohne Antrieb erfährt keine resultierende Kraft und fliegt deshalb laut 1. Newton geradeaus weiter.',
+        false,
+        `**Ansatz:** 1. Newton gilt nur, wenn $\\sum \\vec F = \\vec 0$. Ein Satellit auf einer Kreisbahn erfährt aber durchgehend die Gravitationskraft der Erde als **Zentripetalkraft**.
+
+**Rechnung:** $\\sum \\vec F = \\vec F_{\\text{Grav}} \\neq \\vec 0$, gerichtet zum Erdmittelpunkt. Diese Kraft erzeugt die Zentripetalbeschleunigung $a = v^2/r$, die die Bahn vom Geradeaus-Pfad ablenkt.
+
+**Probe:** Wäre $\\sum F$ tatsächlich null, würde der Satellit die Erde verlassen (geradlinige Bewegung). Beobachtung: er bleibt im Orbit — also wirkt eine resultierende Kraft.
+
+**Typischer Fehler:** „Schwerelosigkeit" mit „kraftfrei" verwechseln. Der Astronaut **fühlt** keine Stützkraft, aber die Gravitation wirkt sehr wohl auf ihn — er fällt nur frei mit der Kapsel zusammen.`,
+        [
+          'Wirkt im Orbit eine Kraft auf den Satelliten?',
+          'Ohne Kraft → Geradeausflug. Was beobachten wir wirklich?',
+          'Schwerelosigkeit ≠ kraftfrei.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['newton-1'] },
+      ),
+    ],
+
+    // ── [2] 3. Newton: actio = reactio ──────────────────────────────────
+    2: [
+      tf(
+        'Ein Apfel ($F_G = 1\\,\\text{N}$) liegt auf einem Tisch. Die nach unten gerichtete Gewichtskraft $F_G$ und die nach oben gerichtete Normalkraft $N$ des Tisches auf den Apfel bilden zusammen das actio-reactio-Paar nach 3. Newton.',
+        false,
+        `**Ansatz:** actio-reactio-Paare greifen an **verschiedenen** Körpern an. $F_G$ und $N$ greifen aber **beide** am Apfel an — sie sind ein 1./2.-Newton-Gleichgewicht ($\\sum F = 0$), kein 3.-Newton-Paar.
+
+**Rechnung:** Die korrekten Paare sind:
+* zu $F_G$ (Erde → Apfel): Apfel zieht Erde mit gleicher Kraft an (Apfel → Erde).
+* zu $N$ (Tisch → Apfel): Apfel drückt Tisch mit gleicher Kraft nach unten (Apfel → Tisch).
+
+**Probe:** Faustregel: actio-reactio-Paare immer nach dem Schema „Körper A → Körper B" und „Körper B → Körper A". Wenn beide Kräfte am gleichen Körper angreifen, ist es **kein** 3.-Newton-Paar.
+
+**Typischer Fehler:** Im Freikörperbild des Apfels die nach oben wirkende Normalkraft als „Gegenkraft" zur Gewichtskraft missverstehen. Beide wirken am Apfel — das ist Gleichgewicht, nicht actio-reactio.`,
+        [
+          'An welchen Körpern greifen actio und reactio?',
+          '$F_G$ und $N$ greifen beide am Apfel an — kann das ein 3.-Newton-Paar sein?',
+          'Korrekte Reaktionspartner: Apfel auf Erde (zu $F_G$), Apfel auf Tisch (zu $N$).',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['newton-3'] },
+      ),
+      mc(
+        'Welches der folgenden Kräftepaare ist ein actio-reactio-Paar nach 3. Newton?',
+        [
+          'Schwimmer drückt Wasser nach hinten — Wasser drückt Schwimmer nach vorn.',
+          'Gewichtskraft und Normalkraft auf eine Vase, die auf einem Tisch steht.',
+          'Federkraft und Massenträgheit beim schwingenden Pendel.',
+          'Auftrieb und Gewichtskraft auf einen schwimmenden Körper.',
+        ],
+        0,
+        `**Ansatz:** Test: greifen die zwei Kräfte an **verschiedenen** Körpern an, sind sie gleich groß und entgegengesetzt?
+
+**Rechnung:** Schwimmer/Wasser: $\\vec F_{\\text{Schw}\\to\\text{Wasser}} = -\\vec F_{\\text{Wasser}\\to\\text{Schw}}$, je eine Kraft pro Körper — exakt 3. Newton.
+
+**Probe:** Die anderen Optionen sind alle **Gleichgewichte** am selben Körper (1./2. Newton mit $\\sum F = 0$).
+
+**Typischer Fehler:** Jedes Kraftpaar gleicher Größe und entgegengesetzter Richtung als actio-reactio fehlinterpretieren — der Punkt ist, dass die Kräfte an **zwei** Körpern angreifen müssen.`,
+        [
+          'Wie viele Körper sind beteiligt?',
+          'actio-reactio ⇒ ein Paar, zwei Körper.',
+          'Gleichgewicht am selben Körper ⇒ kein actio-reactio.',
+        ],
+        {
+          1: 'Beide Kräfte greifen an der **Vase** an. Das ist Gleichgewicht ($\\sum F = 0$), nicht actio-reactio.',
+          2: '„Massenträgheit" ist keine eigene Kraft im Sinne Newtons — sie beschreibt nur die Tendenz, $\\vec v$ zu erhalten. Echte Kraftpaare zwischen Pendel und Aufhängung wären ein 3.-Newton-Beispiel.',
+          3: 'Auftrieb und Gewichtskraft greifen beide am schwimmenden Körper an — Gleichgewicht, nicht actio-reactio.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['newton-3'] },
+      ),
+      mc(
+        'Eine Astronautin ($m_A = 60\\,\\text{kg}$) stößt sich von einer ruhenden Raumkapsel ($m_K = 1500\\,\\text{kg}$) ab. Während des Abstoßes wirkt auf die Astronautin die Stoßkraft $F = 300\\,\\text{N}$. Welche Aussage ist korrekt?',
+        [
+          'Auf die Kapsel wirkt zur selben Zeit eine Gegenkraft von $300\\,\\text{N}$ (3. Newton). Beschleunigung Astronautin: $a_A = 5\\,\\text{m/s}^2$, Kapsel: $a_K = 0{,}2\\,\\text{m/s}^2$.',
+          'Die Kapsel erfährt keine Kraft, weil die Astronautin sich „selbst" abstößt.',
+          'Auf die Kapsel wirkt nur ein Bruchteil von $300\\,\\text{N}$ — proportional zum Massenverhältnis.',
+          'Astronautin und Kapsel beschleunigen gleich stark, da das 3. Newton gleiche Beschleunigungen erzwingt.',
+        ],
+        0,
+        `**Ansatz:** 3. Newton liefert **gleiche Kräfte** an beiden Körpern. Die Beschleunigungen folgen über 2. Newton aus den jeweiligen Massen.
+
+**Rechnung:** $|F| = 300\\,\\text{N}$ auf jeden Körper.
+* Astronautin: $a_A = 300/60 = 5\\,\\text{m/s}^2$.
+* Kapsel: $a_K = 300/1500 = 0{,}2\\,\\text{m/s}^2$.
+Verhältnis $a_A/a_K = m_K/m_A = 25$ — die kleinere Masse wird stärker beschleunigt.
+
+**Probe:** Impuls-Erhaltung: $m_A \\cdot v_A = m_K \\cdot v_K$ nach gleicher Stoßdauer ⇒ $v_A/v_K = 25$. Konsistent. ✓
+
+**Typischer Fehler:** Glauben, das 3. Newton erzwinge gleiche **Beschleunigungen**. Es erzwingt nur gleiche **Kräfte**; Beschleunigungen unterscheiden sich invers zu den Massen.`,
+        [
+          'Welche Größe ist nach 3. Newton an beiden Körpern gleich — Kraft oder Beschleunigung?',
+          'Beschleunigung: $a = F/m$ — und $m$ ist hier sehr unterschiedlich.',
+          '$300/60$ vs. $300/1500$.',
+        ],
+        {
+          1: 'Doch — die Astronautin drückt die Kapsel mit $300\\,\\text{N}$ weg (3. Newton). Sie kann sich nicht „selbst" abstoßen.',
+          2: 'Massenverhältnis verändert die **Beschleunigung**, nicht die Kraft. Beide Körper erfahren $300\\,\\text{N}$.',
+          3: 'Das 3. Newton erzwingt gleiche **Kräfte**, nicht gleiche Beschleunigungen. Beschleunigungen folgen aus $a = F/m$.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['newton-3'] },
+      ),
+      mc(
+        'Im Freikörperbild eines auf dem Tisch ruhenden Buches zeichnet ein Studierender: „Gewichtskraft $F_G$ nach unten und actio-reactio-Gegenkraft $F_G$ nach oben — also $\\sum F = 0$, das Buch ruht." Wo steckt der Denkfehler?',
+        [
+          'actio-reactio-Paare greifen an verschiedenen Körpern an. Die Reaktion zu $F_G$ (Erde → Buch) wirkt auf die **Erde** (Buch → Erde), nicht auf das Buch. Die nach oben gerichtete Kraft am Buch ist die Normalkraft des **Tisches**.',
+          'Der Studierende hat recht — actio = reactio gilt immer am selben Körper.',
+          'Im Freikörperbild darf die Gewichtskraft nicht eingezeichnet werden; nur die Normalkraft.',
+          'Das Buch ruht nicht — $F_G$ ist immer größer als jede Reaktion.',
+        ],
+        0,
+        `**Ansatz:** Klassischer 3.-Newton-Fehler. Reaktion zu „Erde → Buch" ist „Buch → Erde", **nicht** eine andere Kraft am Buch.
+
+**Rechnung:** Am Buch wirken zwei Kräfte: $F_G$ (Erde → Buch) nach unten und $N$ (Tisch → Buch) nach oben. $\\sum F = N - F_G = 0$ liefert $N = F_G$ — aber $N$ ist **kein** actio-reactio-Partner zu $F_G$.
+
+**Probe:** Trick: Schreibe „A → B" und „B → A" auf. Reaktion zu $F_{\\text{Erde→Buch}}$ ist $F_{\\text{Buch→Erde}}$ — die wirkt nicht am Buch.
+
+**Typischer Fehler:** Im Freikörperbild Reaktionen als Gegenkräfte am selben Körper einzeichnen. Reaktionen wirken **nie** am selben Körper.`,
+        [
+          'An welchem Körper wirkt die Reaktion zu $F_G$?',
+          'Reaktion: „Buch zieht die Erde an" — Wirkung auf die Erde, nicht auf das Buch.',
+          'Was am Buch nach oben wirkt, kommt vom Tisch (Normalkraft).',
+        ],
+        {
+          1: '3. Newton verlangt **explizit**, dass actio und reactio an verschiedenen Körpern angreifen.',
+          2: 'Doch — im Freikörperbild des Buches gehört die Gewichtskraft ($F_G$) genauso hinein wie die Normalkraft.',
+          3: 'Falsch — am Buch greifen $F_G$ und $N$ an, beide gleich groß; das Buch ruht. Reaktion zu $F_G$ wirkt auf die Erde, nicht am Buch selbst.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['newton-3'] },
+      ),
+      mc(
+        'Ein Pferd zieht eine Kutsche horizontal an einem Seil. Nach 3. Newton zieht die Kutsche das Pferd mit gleicher Kraft entgegengesetzt. Warum bewegt sich die Kutsche dann überhaupt vorwärts?',
+        [
+          'Die Kräfte greifen an **unterschiedlichen** Körpern. Auf die Kutsche wirken Seilzug nach vorn und Reibung nach hinten — Seilzug überwiegt, also $\\sum F > 0$. Das Pferd treibt sich seinerseits über die Hufreibung am Boden vorwärts.',
+          'Das 3. Newton gilt nur bei stehenden Körpern, nicht im Fahrbetrieb.',
+          'Die Reaktionskraft ist tatsächlich kleiner als die actio, weil Reibung sie reduziert.',
+          'Pferd und Kutsche beschleunigen nicht — der Eindruck täuscht; sie ruhen relativ zum Boden.',
+        ],
+        0,
+        `**Ansatz:** Das Paradox löst sich, sobald man **Freikörperbilder** für Pferd und Kutsche **getrennt** zeichnet. Jeder Körper hat seine eigene resultierende Kraft.
+
+**Rechnung:** Auf die Kutsche: Seilzug $F_S$ (vorwärts) und Reibung $F_{R,K}$ (rückwärts). $\\sum F_K = F_S - F_{R,K} > 0$ ⇒ Beschleunigung. Auf das Pferd: Hufreibung $F_{R,P}$ (vorwärts) und Seilzug $F_S$ (rückwärts) ⇒ $\\sum F_P = F_{R,P} - F_S > 0$.
+
+**Probe:** Beide $\\sum F$ können positiv sein, weil sie verschiedene Reibungskräfte enthalten. Das 3.-Newton-Paar (Seilzug auf Kutsche vs. auf Pferd) hebt sich **systemweit** auf, aber **nicht** an einem einzelnen Körper.
+
+**Typischer Fehler:** Kräftegleichungen für Pferd und Kutsche „in einen Topf werfen". 3.-Newton-Paare auf verschiedenen Körpern dürfen im FKB des einzelnen Körpers nicht gemeinsam stehen.`,
+        [
+          'FKB für Kutsche und Pferd **getrennt** zeichnen.',
+          'Welche Kräfte wirken an der Kutsche? Welche am Pferd?',
+          'Die 3.-Newton-Partner stehen in **verschiedenen** FKBs.',
+        ],
+        {
+          1: 'Doch — 3. Newton gilt **immer**, auch bei beschleunigten Körpern. Es ist ein Naturgesetz, kein Sonderfall.',
+          2: 'Reaktion ist **immer** gleich groß und entgegengesetzt — Reibung reduziert sie nicht.',
+          3: 'Pferd und Kutsche beschleunigen tatsächlich (gleich, weil über Seil verbunden) — das ist im Alltag direkt beobachtbar.',
+        },
+        { stage: 'transfer', subGoal: 2, uses: ['newton-3'] },
+      ),
+      matching(
+        'Ordne jeder actio-Kraft die korrekte reactio-Kraft (nach 3. Newton) zu.',
+        [
+          { left: 'Hand schiebt einen Einkaufswagen nach vorn.', right: 'Wagen drückt die Hand mit gleicher Kraft nach hinten.' },
+          { left: 'Erde zieht den Mond an.', right: 'Mond zieht die Erde mit gleicher Kraft an.' },
+          { left: 'Rakete stößt Verbrennungsgase nach unten aus.', right: 'Gase drücken die Rakete mit gleicher Kraft nach oben.' },
+          { left: 'Magnet zieht einen Eisennagel an.', right: 'Eisennagel zieht den Magnet mit gleicher Kraft an.' },
+        ],
+        `**Ansatz:** Schema „A → B" / „B → A". Beide Kräfte gleich groß, entgegengesetzt, an verschiedenen Körpern.
+
+**Rechnung:** Jedes Paar nutzt das Muster $\\vec F_{AB} = -\\vec F_{BA}$. Der Schwimmer/Wasser-Fall, der Bezugskraft/Gegenkraft-Fall und der Gravitations-Fall folgen alle derselben Logik.
+
+**Probe:** Konsequenz beim Raketenstart: Die nach unten ausgestoßenen Gase tragen einen Impuls; die nach oben gerichtete Reaktion auf die Rakete ist exakt der Antrieb.
+
+**Typischer Fehler:** Die Reaktion „auf den Boden" zu schreiben statt auf den jeweiligen anderen Körper. Beim Magnet: die Reaktion wirkt am Eisennagel auf **den Magneten**, nicht auf eine dritte Instanz.`,
+        [
+          'Schema „A → B" und „B → A".',
+          'Beide Kräfte gleich groß, entgegengesetzt.',
+          'Reaktion immer am **anderen** Körper.',
+        ],
+        { stage: 'apply-guided', subGoal: 2, uses: ['newton-3'] },
+      ),
+    ],
+
+    // ── [3] Gewichtskraft: F_G = m·g ─────────────────────────────────────
+    3: [
+      tf(
+        'Auf der Erdoberfläche beträgt die Gewichtskraft einer Masse $m$ ungefähr $F_G = m \\cdot 9{,}81\\,\\text{m/s}^2$ — ausgedrückt in Newton.',
+        true,
+        `**Ansatz:** Definitionsgleichung Gewichtskraft im Schwerefeld der Erde.
+
+**Rechnung:** $F_G = m \\cdot g$ mit $g \\approx 9{,}81\\,\\text{m/s}^2$ auf der Erdoberfläche. Beispiel: $m = 1\\,\\text{kg} \\Rightarrow F_G \\approx 9{,}81\\,\\text{N}$.
+
+**Probe:** Einheiten: $\\text{kg} \\cdot \\text{m/s}^2 = \\text{N}$ ✓.
+
+**Typischer Fehler:** $g$ als „Konstante 10" mitnehmen — das ist nur eine Näherung. In Klausuren wird meist $9{,}81\\,\\text{m/s}^2$ erwartet, sofern nicht anders angegeben.`,
+        [
+          'Wie ist die Gewichtskraft definiert?',
+          'Welcher Wert hat $g$ auf der Erde?',
+          'Einheit der Gewichtskraft = Newton.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['gewichtskraft'] },
+      ),
+      ni(
+        'Welche Gewichtskraft wirkt auf eine Masse $m = 75\\,\\text{kg}$ auf der Erde? ($g = 9{,}81\\,\\text{m/s}^2$)',
+        735.75, 0.5, 'N',
+        `**Ansatz:** $F_G = m \\cdot g$ direkt einsetzen.
+
+**Rechnung:** $F_G = 75\\,\\text{kg} \\cdot 9{,}81\\,\\text{m/s}^2 = 735{,}75\\,\\text{N}$.
+
+**Probe:** Plausibilität — eine $75\\,\\text{kg}$-Person sollte rund $750\\,\\text{N}$ wiegen ($\\approx 75 \\cdot 10$). Stimmt. Einheiten: $\\text{kg} \\cdot \\text{m/s}^2 = \\text{N}$ ✓.
+
+**Typischer Fehler:** Einheit „kg" für die Gewichtskraft notieren — die Antwort wäre dann sprachlich „$75\\,\\text{kg-Gewicht}$", was im SI-System nicht zulässig ist. Korrekt: Newton.`,
+        [
+          '$F_G = m \\cdot g$.',
+          '$m = 75$, $g = 9{,}81$.',
+          'Einheit Newton, nicht kg.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['gewichtskraft'] },
+      ),
+      mc(
+        'Eine Studentin rechnet für $m = 5\\,\\text{kg}$: „$F_G = m + g = 5 + 9{,}81 = 14{,}81\\,\\text{N}$." Wo steckt der Fehler?',
+        [
+          'Masse und Beschleunigung werden **multipliziert**, nicht addiert: $F_G = m \\cdot g = 5 \\cdot 9{,}81 = 49{,}05\\,\\text{N}$. Einheiten kg und m/s² sind nicht addierbar.',
+          'Die Rechnung stimmt — $F_G$ beträgt tatsächlich $14{,}81\\,\\text{N}$.',
+          'Sie hat $g$ zu hoch angesetzt — richtig wäre $g = 9{,}8\\,\\text{m/s}^2$, der Rest passt.',
+          'Sie sollte durch $g$ dividieren: $F_G = m/g \\approx 0{,}51\\,\\text{N}$.',
+        ],
+        0,
+        `**Ansatz:** $F_G = m \\cdot g$ — multiplikative Verknüpfung. Eine Addition hat schon dimensionsmäßig keinen Sinn.
+
+**Rechnung:** $F_G = 5 \\cdot 9{,}81 = 49{,}05\\,\\text{N}$.
+
+**Probe:** Einheitenanalyse $\\text{kg} + \\text{m/s}^2$ ist undefiniert — das hätte sofort auffallen müssen. $\\text{kg} \\cdot \\text{m/s}^2 = \\text{N}$ ist korrekt.
+
+**Typischer Fehler:** Mathematisch oberflächlich rechnen, ohne Einheitencheck. Faustregel: vor jeder Antwort die Einheit prüfen.`,
+        [
+          'Wie ist $F_G$ definiert: addiert oder multipliziert?',
+          'Einheiten-Check: $\\text{kg} + \\text{m/s}^2$ — geht das?',
+          '$5 \\cdot 9{,}81 = ?$',
+        ],
+        {
+          1: '$14{,}81$ entstand durch Addition. Einheit $\\text{kg} + \\text{m/s}^2$ ist undefiniert — die „N"-Beschriftung kaschiert den Fehler.',
+          2: 'Der Wert von $g$ (ob $9{,}8$ oder $9{,}81$) ändert nichts am Grundfehler — Addition statt Multiplikation.',
+          3: 'Division wäre noch unphysikalischer: $\\text{kg}/(\\text{m/s}^2)$ liefert keine Kraft.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['gewichtskraft'] },
+      ),
+      ni(
+        'Auf dem Mond beträgt die Schwerebeschleunigung $g_{\\text{Mond}} \\approx 1{,}62\\,\\text{m/s}^2$. Welche Gewichtskraft hat eine Person mit Masse $m = 80\\,\\text{kg}$ auf dem Mond?',
+        129.6, 0.5, 'N',
+        `**Ansatz:** $F_G = m \\cdot g$ — auch auf dem Mond, nur mit dem Mond-$g$.
+
+**Rechnung:** $F_G = 80 \\cdot 1{,}62 = 129{,}6\\,\\text{N}$.
+
+**Probe:** Vergleich Erde: $80 \\cdot 9{,}81 = 784{,}8\\,\\text{N}$. Verhältnis $784{,}8/129{,}6 \\approx 6{,}05$ — Mond-Gewichtskraft ist rund $1/6$ der Erd-Gewichtskraft. Stimmt mit der bekannten Faustformel überein. ✓
+
+**Typischer Fehler:** Glauben, $F_G$ sei ortsunabhängig. Nur die **Masse** ist es; die Gewichtskraft skaliert linear mit dem lokalen $g$.`,
+        [
+          'Welche Größe ändert sich auf dem Mond: $m$ oder $g$?',
+          '$F_G = m \\cdot g_{\\text{Mond}}$.',
+          '$80 \\cdot 1{,}62$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['gewichtskraft'] },
+      ),
+      ni(
+        'Eine Bauteil-Aufhängung darf maximal $F_G = 2000\\,\\text{N}$ tragen. Welche Masse darf maximal aufgehängt werden? ($g = 9{,}81\\,\\text{m/s}^2$, Antwort in kg auf 2 Nachkommastellen)',
+        203.87, 0.05, 'kg',
+        `**Ansatz:** $F_G = m \\cdot g$ nach $m$ auflösen: $m = F_G / g$.
+
+**Rechnung:** $m = 2000/9{,}81 \\approx 203{,}87\\,\\text{kg}$.
+
+**Probe:** Rückwärts: $m \\cdot g = 203{,}87 \\cdot 9{,}81 \\approx 1999{,}97\\,\\text{N} \\approx 2000\\,\\text{N}$ ✓.
+
+**Typischer Fehler:** Statt $F_G/g$ direkt $F_G$ als kg-Wert übernehmen ($2000\\,\\text{kg}$) — Verwechslung Gewichtskraft (N) und Masse (kg).`,
+        [
+          'Aus $F_G = m \\cdot g$ nach $m$ umstellen.',
+          '$m = F_G/g$.',
+          '$2000/9{,}81$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['gewichtskraft'] },
+      ),
+    ],
+
+    // ── [4] Masse (kg) vs. Gewichtskraft (N) ────────────────────────────
+    4: [
+      tf(
+        'Die Masse eines Körpers ist auf Erde und Mond gleich, seine Gewichtskraft hingegen ist auf dem Mond etwa sechsmal kleiner als auf der Erde.',
+        true,
+        `**Ansatz:** Masse ist Eigenschaft des Körpers (ortsunabhängig). Gewichtskraft hängt linear vom lokalen $g$ ab.
+
+**Rechnung:** $g_{\\text{Erde}}/g_{\\text{Mond}} = 9{,}81/1{,}62 \\approx 6{,}05$. Die Gewichtskraft am gleichen Körper skaliert genauso.
+
+**Probe:** $m = 1\\,\\text{kg}$: $F_{G,\\text{Erde}} \\approx 9{,}81\\,\\text{N}$, $F_{G,\\text{Mond}} \\approx 1{,}62\\,\\text{N}$. Verhältnis ≈ $6$.
+
+**Typischer Fehler:** Masse und Gewichtskraft als „dasselbe in unterschiedlichen Einheiten" sehen. Sie sind **physikalisch verschiedene Größen**.`,
+        [
+          'Was ändert sich beim Ortswechsel: $m$ oder $g$?',
+          '$F_G = m \\cdot g$ — bei festem $m$, anderem $g$.',
+          'Faktor $g_{\\text{Erde}}/g_{\\text{Mond}} \\approx 6$.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['masse-vs-fg'] },
+      ),
+      mc(
+        'Welche Aussage über Masse und Gewichtskraft ist korrekt?',
+        [
+          'Masse hat die Einheit kg und ist eine Eigenschaft des Körpers; Gewichtskraft hat die Einheit N und hängt vom lokalen Schwerefeld ab.',
+          'Masse und Gewichtskraft sind zwei Namen für dieselbe Größe — die Einheiten kg und N sind austauschbar.',
+          'Masse ändert sich mit dem Ort (Erde, Mond), Gewichtskraft ist eine Konstante des Körpers.',
+          'Masse ist die Trägheit, Gewichtskraft ist nur ein älteres Wort für „Masse" und hat dieselbe Einheit.',
+        ],
+        0,
+        `**Ansatz:** Definitionen: Masse $m$ in kg ist invariant. Gewichtskraft $F_G = m \\cdot g$ in N hängt vom Ort ab.
+
+**Rechnung:** Auf der Erde wiegt $1\\,\\text{kg}$ rund $9{,}81\\,\\text{N}$, auf dem Mond rund $1{,}62\\,\\text{N}$ — die Masse bleibt $1\\,\\text{kg}$.
+
+**Probe:** Eine Balkenwaage misst Masse (vergleicht zwei Massen direkt — funktioniert auch auf dem Mond). Eine Federwaage misst Gewichtskraft (Federauslenkung — zeigt auf dem Mond andere Werte).
+
+**Typischer Fehler:** Im Alltag „Gewicht" und „Masse" synonym verwenden. Physikalisch sind sie verschiedene Größen mit unterschiedlichen Einheiten.`,
+        [
+          'Welche Einheit hat $m$? Welche $F_G$?',
+          'Was bleibt beim Ortswechsel gleich?',
+          'Federwaage vs. Balkenwaage als Anschauung.',
+        ],
+        {
+          1: 'kg und N sind verschiedene Einheiten verschiedener Größen — kg = Masse, N = Kraft.',
+          2: 'Genau umgekehrt: Masse bleibt konstant, Gewichtskraft ändert sich mit dem Ort.',
+          3: '„Trägheit" ist tatsächlich eine Eigenschaft der Masse, aber „Gewichtskraft" ist davon **getrennt** — sie hat die Einheit N, nicht kg.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['masse-vs-fg'] },
+      ),
+      mc(
+        'Eine Sportlerin liest auf einer Personenwaage „$65\\,\\text{kg}$" ab. Welche Aussage trifft physikalisch korrekt zu?',
+        [
+          'Ihre Masse ist $65\\,\\text{kg}$. Genaugenommen misst die Waage die Gewichtskraft (rund $638\\,\\text{N}$) und rechnet sie in eine kg-Anzeige um, indem sie durch $g$ teilt.',
+          'Ihr Gewicht beträgt $65\\,\\text{kg}$.',
+          'Ihre Gewichtskraft beträgt $65\\,\\text{kg}$.',
+          'Ihre Masse ändert sich beim Aufzugfahren — daher zeigt die Waage in beschleunigten Aufzügen verschiedene Werte.',
+        ],
+        0,
+        `**Ansatz:** Personenwaage = Federwaage. Sie misst die Normalkraft = Gewichtskraft (im Ruhefall) und beschriftet sie als Masse, kalibriert auf $g_{\\text{Erde}}$.
+
+**Rechnung:** Anzeige $65\\,\\text{kg}$: $F_G = 65 \\cdot 9{,}81 = 637{,}65\\,\\text{N}$.
+
+**Probe:** Im beschleunigten Aufzug zeigt die Waage abweichende Werte — nicht weil die Masse sich ändert, sondern weil die Normalkraft (≠ Gewichtskraft) sich ändert: $N = m(g + a)$.
+
+**Typischer Fehler:** Glauben, im Aufzug ändere sich die Masse. Es ändert sich nur die Normalkraft, weil eine zusätzliche Beschleunigung wirkt.`,
+        [
+          'Was misst die Federwaage physikalisch wirklich?',
+          'Warum zeigt sie trotzdem „kg"?',
+          'Im Aufzug: ändert sich $m$ oder $a$?',
+        ],
+        {
+          1: '„Gewicht" ist umgangssprachlich. Die Einheit „kg" gehört physikalisch zur **Masse**, nicht zur Gewichtskraft.',
+          2: 'Gewichtskraft hat die Einheit N, nicht kg.',
+          3: 'Die Masse ist invariant. Im beschleunigten Aufzug ändert sich nicht $m$, sondern die Normalkraft $N = m(g + a)$.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['masse-vs-fg'] },
+      ),
+      mc(
+        'Eine Studierende notiert in einer Aufgabe: „Die Gewichtskraft eines Buches beträgt $0{,}5\\,\\text{kg}$." Was ist der Fehler?',
+        [
+          'Sie hat die Einheit der **Masse** (kg) für die **Gewichtskraft** (N) verwendet. Bei $m = 0{,}5\\,\\text{kg}$ beträgt die Gewichtskraft $F_G = 0{,}5 \\cdot 9{,}81 \\approx 4{,}9\\,\\text{N}$.',
+          'Das Buch ist zu leicht — eine Gewichtskraft kleiner als $1\\,\\text{kg}$ ist physikalisch unmöglich.',
+          '$0{,}5\\,\\text{kg}$ ist die Masse — Gewichtskraft ist $g \\cdot m = 9{,}81 \\cdot 0{,}5 = 4{,}9\\,\\text{kg}$.',
+          'Die Einheiten kg und N sind im Alltag austauschbar, der Schreibfehler ist unkritisch.',
+        ],
+        0,
+        `**Ansatz:** Klassische Verwechslung Masse-Einheit (kg) mit Kraft-Einheit (N).
+
+**Rechnung:** Die Studierende hat vermutlich die **Masse** $0{,}5\\,\\text{kg}$ aufgeschrieben und „Gewichtskraft" davorgesetzt. Korrekt: $F_G = 0{,}5 \\cdot 9{,}81 \\approx 4{,}9\\,\\text{N}$.
+
+**Probe:** Eine Gewichtskraft hat **immer** die Einheit Newton. Wenn die Einheit kg auftaucht, ist es eine Masse, keine Kraft.
+
+**Typischer Fehler:** Im Alltag ist „kg-Gewicht" gebräuchlich. In der Physik strikt trennen: Masse = kg, Kraft = N.`,
+        [
+          'Welche Einheit hat eine Kraft im SI-System?',
+          'kg ist die Einheit für Masse, N für Kraft.',
+          'Wenn der Wert in kg steht, ist es die Masse, nicht die Gewichtskraft.',
+        ],
+        {
+          1: 'Eine Gewichtskraft kann durchaus kleiner als $1\\,\\text{kg-Gewicht}$ sein — aber das Problem ist die **Einheit** kg, nicht der Zahlenwert.',
+          2: 'Die Multiplikation $g \\cdot m$ ist richtig, aber die Einheit des Ergebnisses ist N, nicht kg.',
+          3: 'In Klausuren und in technischen Berechnungen sind kg und N **nicht** austauschbar — sie haben unterschiedliche Dimensionen.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['masse-vs-fg'] },
+      ),
+      mc(
+        'Ein Astronaut hat auf der Erde $80\\,\\text{kg}$ Masse und damit eine Gewichtskraft von rund $785\\,\\text{N}$. Auf einem Planeten X misst dieselbe Federwaage $320\\,\\text{N}$. Welche Masse hat der Astronaut auf Planet X, und welches $g$ hat Planet X?',
+        [
+          'Masse bleibt $80\\,\\text{kg}$ (ortsunabhängig). $g_X = F_G/m = 320/80 = 4\\,\\text{m/s}^2$.',
+          'Masse sinkt auf $320/9{,}81 \\approx 32{,}6\\,\\text{kg}$, $g_X$ bleibt $9{,}81\\,\\text{m/s}^2$.',
+          'Masse $80\\,\\text{kg}$, $g_X = 320 \\cdot 80 = 25\\,600\\,\\text{m/s}^2$.',
+          'Sowohl Masse als auch $g$ ändern sich proportional — die Größen sind nicht eindeutig bestimmbar.',
+        ],
+        0,
+        `**Ansatz:** Masse ist ortsunabhängig — sie bleibt $80\\,\\text{kg}$. Gewichtskraft ändert sich linear mit $g$, also liefert $F_G = m \\cdot g$ direkt das lokale $g$.
+
+**Rechnung:** $g_X = F_G/m = 320/80 = 4\\,\\text{m/s}^2$.
+
+**Probe:** Vergleich: $g_X/g_{\\text{Erde}} = 4/9{,}81 \\approx 0{,}41$. Die Gewichtskraft auf Planet X ist also rund $41\\,\\%$ der irdischen — passt zu $320/785 \\approx 0{,}408$. ✓
+
+**Typischer Fehler:** Annehmen, die Masse ändere sich, weil die Federwaage einen anderen Wert zeigt. Die Federwaage misst Kraft, nicht Masse.`,
+        [
+          'Bleibt die Masse beim Ortswechsel gleich?',
+          '$F_G = m \\cdot g$ — was ist hier gegeben, was gesucht?',
+          '$g_X = F_G / m$.',
+        ],
+        {
+          1: 'Masse ist invariant — die Federwaage zeigt nicht Masse, sondern Kraft.',
+          2: '$g_X = F_G \\cdot m$ wäre dimensional falsch ($\\text{N} \\cdot \\text{kg} \\neq \\text{m/s}^2$). Man muss $F_G$ durch $m$ teilen.',
+          3: 'Doch — eindeutig bestimmbar, weil $m$ ortsunabhängig ist und $F_G$ direkt gemessen wurde.',
+        },
+        { stage: 'transfer', subGoal: 4, uses: ['masse-vs-fg'] },
+      ),
+      matching(
+        'Ordne jeder Beobachtung die korrekte Größe (Masse oder Gewichtskraft) zu.',
+        [
+          { left: 'Eine Balkenwaage gleicht zwei unbekannte Mengen aus.', right: 'Misst die Masse $m$ (Einheit kg), funktioniert auf jedem Planeten gleich.' },
+          { left: 'Eine Federwaage misst die Auslenkung einer geeichten Feder.', right: 'Misst die Gewichtskraft $F_G$ (Einheit N), Anzeige hängt vom lokalen $g$ ab.' },
+          { left: 'Astronaut reist vom Mond zur Erde — was ändert sich?', right: 'Gewichtskraft steigt um Faktor rund $6$, Masse bleibt unverändert.' },
+          { left: 'Reise vom Pol zum Äquator (kleineres $g$ am Äquator).', right: 'Gewichtskraft sinkt minimal, Masse bleibt unverändert.' },
+        ],
+        `**Ansatz:** Masse-vs-Kraft-Unterscheidung über das **Messprinzip** des Geräts: Vergleich (Balkenwaage) oder Federauslenkung (Federwaage).
+
+**Rechnung:** Balkenwaage vergleicht $m_1 \\cdot g$ mit $m_2 \\cdot g$ — das $g$ kürzt sich, sie misst direkt das Massenverhältnis. Federwaage misst $F = c \\cdot \\Delta x$, also Kraft.
+
+**Probe:** Astronauten-Beispiel: $80\\,\\text{kg}$ bleiben überall $80\\,\\text{kg}$. Gewichtskraft Mond ≈ $130\\,\\text{N}$, Erde ≈ $785\\,\\text{N}$, Faktor 6.
+
+**Typischer Fehler:** Annehmen, Personenwaagen messen direkt Masse. Sie messen Kraft und teilen durch $g_{\\text{Erde}}$ — das funktioniert nur auf der Erde.`,
+        [
+          'Wie funktioniert eine Balkenwaage? Was kürzt sich?',
+          'Federwaage misst Auslenkung — direkt proportional zur **Kraft**.',
+          'Was bleibt beim Ortswechsel invariant?',
+        ],
+        { stage: 'apply-guided', subGoal: 4, uses: ['masse-vs-fg'] },
+      ),
+    ],
+
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // mech-2-4 — Schwingungen  (5 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'mech-2-4': {

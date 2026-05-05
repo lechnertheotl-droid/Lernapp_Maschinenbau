@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2545 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1710 (67 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1154 / 1154 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 245 / 1134 (22 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2573 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1741 (68 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1170 / 1170 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 250 / 1134 (22 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -919,10 +919,10 @@ _Signalverarbeitung, Regelungstechnik, Elektrotechnik. Laplace vereinfacht DGL z
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **320** (Lesson-Path: 59 · Goal-Tasks: 261)
-- 4-Block: 298/320 (93 %) 🟡
-- MC-wAE: 115/115 (100 %) ✅
-- Sub-Goals: 44/76 Goal-Tasks verknüpft 🔴
+- Aufgaben: **348** (Lesson-Path: 59 · Goal-Tasks: 289)
+- 4-Block: 329/348 (95 %) 🟡
+- MC-wAE: 131/131 (100 %) ✅
+- Sub-Goals: 49/76 Goal-Tasks verknüpft 🟡
 - Practice-Exercises: 3 ✅
 
 **Statik (Kräftegleichgewicht) und Dynamik (Newtonsche Gesetze, Energie) — die klassischen Grundlagen des Maschinenbaus.**
@@ -971,7 +971,7 @@ _Mechanik ist das Herzfach im Maschinenbau-Bachelor und Basis für Festigkeitsle
 | `mech-1-3` Schnittkräfte N(x), Q(x), M(x) | 5 | 5/5 | 30 | 17/6/6/1/0 | 30/30 | 17/17 | ✅ | — |
 | `mech-1-4` Reibung | 5 | 5/5 | 36 | 14/10/6/3/3 | 36/36 | 14/14 | ✅ | — |
 | `mech-1-5` Schwerpunkt | 5 | 5/5 | 40 | 12/15/6/4/3 | 40/40 | 12/12 | ✅ | — |
-| `mech-2-1` Newtonsche Gesetze | 5 | 0/5 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +5 Goal, +3 4B |
+| `mech-2-1` Newtonsche Gesetze | 5 | 5/5 | 31 | 17/6/6/2/0 | 31/31 | 17/17 | ✅ | — |
 | `mech-2-2` Arbeit und Energie | 6 | 0/6 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +6 Goal, +3 4B |
 | `mech-2-3` Kinematik | 6 | 0/6 | 5 | 0/5/0/0/0 | 0/5 | — | ✅ | +6 Goal, +5 4B |
 | `mech-2-4` Schwingungen | 5 | 5/5 | 33 | 9/12/5/4/3 | 33/33 | 9/9 | ✅ | — |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 123 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 122 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -2141,59 +2141,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-vek-1-4-b`, `ex-vek-1-4-mastery`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
-
-#### `mech-2-1` · Newtonsche Gesetze
-
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Dynamik
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `mech-1-1` → `kraft-vektor`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `newton-2` — 2. Newton: $\sum\vec F=m\vec a$ (SG 0)
-  2. `newton-1` — 1. Newton: Trägheitsprinzip (SG 1)
-  3. `newton-3` — 3. Newton: actio=reactio, $\vec F_{AB}=-\vec F_{BA}$ (SG 2)
-  4. `gewichtskraft` — $F_G=m\cdot g$ mit $g\approx 9{,}81$ m/s² ⇐ `newton-2` (SG 3)
-  5. `masse-vs-fg` — Masse (kg) vs. Gewichtskraft (N) ⇐ `gewichtskraft` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `newton-2` · **0/5+** — 2. Newton: $\sum \vec F = m \vec a$ (Grundgleichung der Dynamik)
-  - 🔴 [1] _hoch_ · Konzepte: `newton-1` · **0/5+** — 1. Newton: ohne Kraft → gleichförmige Bewegung (Trägheitsprinzip)
-  - 🔴 [2] _hoch_ · Konzepte: `newton-3` · **0/5+** — 3. Newton: actio = reactio, $\vec F_{AB} = -\vec F_{BA}$
-  - 🔴 [3] _hoch_ · Konzepte: `gewichtskraft` · **0/5+** — Gewichtskraft: $F_G = m \cdot g$ mit $g \approx 9{,}81$ m/s²
-  - 🔴 [4] _hoch_ · Konzepte: `masse-vs-fg` · **0/5+** — Masse (kg) ist Eigenschaft des Körpers, Gewichtskraft (N) Kraft im Schwerefeld
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `newton-2` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `newton-2` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `newton-2` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `newton-2` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | number-input     | `newton-2` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `newton-1` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `newton-1` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `newton-1` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `newton-1` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `newton-1` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `newton-3` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `newton-3` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `newton-3` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `newton-3` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | multiple-choice  | `newton-3` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `gewichtskraft` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `gewichtskraft` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `gewichtskraft` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `gewichtskraft` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `gewichtskraft` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `masse-vs-fg` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `masse-vs-fg` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `masse-vs-fg` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `masse-vs-fg` | 1 | 0 | 🔴 | kg/N verwechselt |
-| 25 | 4 | transfer           | multiple-choice  | `masse-vs-fg` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-2-1': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-mech-2-1-a`, `ex-mech-2-1-b`, `ex-mech-2-1-c`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `mech-2-2` · Arbeit und Energie
 
