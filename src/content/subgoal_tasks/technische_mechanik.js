@@ -3251,6 +3251,7 @@ export const technischeMechanikSubGoalTasks = {
           '$F_N = m \\cdot g$.',
           'Dann $F_R = \\mu \\cdot F_N$.',
         ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['coulomb'] },
       ),
       mc(
         'Ein Block liegt auf horizontalem Boden. Eine vertikale Zusatzkraft $F_Z = 50\\,\\text{N}$ drückt ihn **zusätzlich** nach unten. Der Block wiegt $mg = 100\\,\\text{N}$ und $\\mu = 0{,}4$. Wie groß ist die Reibkraft beim Gleiten?',
@@ -3273,6 +3274,7 @@ export const technischeMechanikSubGoalTasks = {
           2: '$20\\,\\text{N}$ wäre korrekt bei $F_N = 50\\,\\text{N}$ — aber die Summe der drückenden Kräfte ist $150\\,\\text{N}$, nicht $50\\,\\text{N}$.',
           3: 'Das ist das Gewicht selbst ($mg = 100\\,\\text{N}$), keine Reibkraft. Reibkraft folgt aus Coulomb mit Faktor $\\mu = 0{,}4$.',
         },
+        { stage: 'apply-guided', subGoal: 0, uses: ['coulomb'] },
       ),
       tf(
         'Die Reibkraft $F_R = \\mu F_N$ hängt von der Auflagefläche ab: je größer die Kontaktfläche, desto größer die Reibkraft.',
@@ -3289,6 +3291,7 @@ export const technischeMechanikSubGoalTasks = {
           'Die Kontaktfläche taucht nicht auf.',
           'Mikroskopisch: reale Kontaktfläche skaliert mit Druck.',
         ],
+        { stage: 'recognize', subGoal: 0, uses: ['coulomb'] },
       ),
       matching(
         'Ordne jedem Materialpaar den typischen Gleitreibwert zu.',
@@ -3300,7 +3303,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
         `**Ansatz:** Reibwerte sind materialpaarabhängig — nicht materialspezifisch pro Körper. Schmierung und Oberflächenbeschaffenheit reduzieren $\\mu$ drastisch.
 
-**Rechnung / Erfahrungswerte:** Gummi/Asphalt hoch (gute Traktion für Autos), geschmiertes Stahl-Stahl niedrig (Lagerauslegung), Eis extrem niedrig. Die Werte sind Faustregel; in Prüfungen stehen sie meistens in einer Tabelle oder in der Aufgabe.
+**Rechnung:** Erfahrungswerte aus Tabellen — Gummi/Asphalt hoch (gute Traktion für Autos), geschmiertes Stahl-Stahl niedrig (Lagerauslegung), Eis extrem niedrig. Die Werte sind Faustregel; in Prüfungen stehen sie meistens in einer Tabelle oder in der Aufgabe.
 
 **Probe:** Fahrzeugbremsweg $\\propto 1/\\mu$: Auf Eis ($\\mu \\approx 0{,}02$) ist der Bremsweg $\\approx 40 \\times$ länger als auf trockenem Asphalt ($\\mu \\approx 0{,}8$). Konsistent mit Alltagserfahrung.
 
@@ -3310,6 +3313,7 @@ export const technischeMechanikSubGoalTasks = {
           'Schmierung drückt $\\mu$ stark nach unten.',
           'Eis ist berüchtigt niedrig.',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['coulomb'] },
       ),
       ni(
         'Ein Werkstück (m = 40 kg) soll auf horizontalem Boden gezogen werden. Welcher **Mindestwert** des Gleitreibwerts $\\mu$ ist mit einer Zugkraft $F_Z = 100\\,\\text{N}$ gerade noch überwindbar? (Antwort auf 3 Nachkommastellen)',
@@ -3326,6 +3330,35 @@ export const technischeMechanikSubGoalTasks = {
           '$F_R = \\mu \\cdot mg$.',
           'Nach $\\mu$ auflösen.',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['coulomb'] },
+      ),
+      mc(
+        'Studierender berechnet die Reibkraft eines $50$-kg-Blocks auf horizontalem Boden mit $\\mu = 0{,}3$ als $F_R = \\mu \\cdot m = 0{,}3 \\cdot 50 = 15$. Welche Einheit hat dieses Ergebnis und wo steckt der Fehler?',
+        [
+          'Das Ergebnis hat Einheit kg (weil $\\mu$ dimensionslos × Masse). Korrekt: $F_R = \\mu \\cdot mg = 0{,}3 \\cdot 50 \\cdot 9{,}81 \\approx 147{,}2\\,\\text{N}$ — Erdbeschleunigung $g$ vergessen.',
+          'Stimmt — Reibkräfte werden in kg gemessen, das Ergebnis ist physikalisch korrekt.',
+          'Der Reibwert wäre $0{,}03$ statt $0{,}3$ — Faktor-10-Fehler bei der Eingabe.',
+          'Es muss $F_R = m/\\mu = 166{,}7$ heißen — Reibwert steht im Nenner.',
+        ],
+        0,
+        `**Ansatz:** Coulombsches Reibgesetz: $F_R = \\mu\\cdot F_N$. Auf horizontalem Boden: $F_N = mg$. Einheitencheck mitführen.
+
+**Rechnung:** $F_N = 50\\cdot 9{,}81 = 490{,}5\\,\\text{N}$. $F_R = 0{,}3\\cdot 490{,}5 \\approx 147{,}2\\,\\text{N}$. Der Studierende hat $g$ weggelassen und $\\mu\\cdot m$ gerechnet — das liefert eine Größe mit Einheit kg, kein Newton.
+
+**Probe:** Einheitencheck: $[\\mu] = $ dimensionslos, $[m] = \\text{kg}$, $[F_R]$ soll Newton sein. $[\\mu\\cdot m] = \\text{kg}$, nicht N. Erst $\\mu\\cdot mg$ liefert die richtige Einheit ($\\text{kg}\\cdot\\text{m/s}^2 = \\text{N}$).
+
+**Typischer Fehler:** $g$ in Reibrechnungen vergessen. Merksatz: "Reibung verlangt **Kraft**, nicht Masse" — also immer mit $g$ multiplizieren.`,
+        [
+          'Welche Einheit hat $\\mu \\cdot m$?',
+          'Reibgesetz braucht eine Kraft, nicht eine Masse.',
+          '$F_N = m\\cdot g$ erst, dann $F_R = \\mu\\cdot F_N$.',
+        ],
+        {
+          1: 'Reibkraft ist eine Kraft (Newton), nicht eine Masse (kg). Einheitencheck schlägt fehl.',
+          2: 'Reibwert wurde laut Aufgabe mit $0{,}3$ angegeben. Der Fehler steckt nicht in $\\mu$, sondern im fehlenden $g$.',
+          3: 'Die Coulomb-Formel ist multiplikativ ($F_R = \\mu F_N$), nicht reziprok. Verkleinerung von $F_N$ verkleinert $F_R$ — nicht umgekehrt.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['coulomb'] },
       ),
     ],
 
@@ -3346,6 +3379,7 @@ export const technischeMechanikSubGoalTasks = {
           'Vergleiche $\\mu_0$ und $\\mu$.',
           'Alltagsbeispiel: schwerer Schrank anschieben.',
         ],
+        { stage: 'recognize', subGoal: 1, uses: ['haft-gleit'] },
       ),
       ni(
         'Ein Block (m = 20 kg) auf horizontalem Boden hat Haftreibwert $\\mu_0 = 0{,}35$ und Gleitreibwert $\\mu = 0{,}25$. Welche Zugkraft ist **minimal nötig**, um den Block in Bewegung zu setzen? ($g = 9{,}81$, auf 1 Nachkommastelle in N)',
@@ -3362,6 +3396,7 @@ export const technischeMechanikSubGoalTasks = {
           '$F_{Z,\\text{min}} = \\mu_0 \\cdot F_N$.',
           '$F_N = m \\cdot g$ auf horizontalem Boden.',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['haft-gleit'] },
       ),
       mc(
         'Ein Block steht still. Ein waagerechter Zug $F_Z = 30\\,\\text{N}$ wirkt, während die maximale Haftreibung $\\mu_0 F_N = 50\\,\\text{N}$ beträgt. Wie groß ist die Reibkraft gerade jetzt?',
@@ -3384,6 +3419,7 @@ export const technischeMechanikSubGoalTasks = {
           2: 'Gleitreibung gilt nur, wenn der Körper gleitet. Hier ruht er (weil $F_Z < F_{H,\\text{max}}$).',
           3: 'Ohne Reibung würde der Block schon bei kleinster Kraft rutschen. Die Reibung wirkt aktiv — sie ist $30\\,\\text{N}$, nicht null.',
         },
+        { stage: 'apply-guided', subGoal: 1, uses: ['haft-gleit'] },
       ),
       sorting(
         'Bei wachsender Zugkraft $F_Z$ auf einen ruhenden Körper — bringe die Phasen in die richtige Reihenfolge.',
@@ -3407,6 +3443,7 @@ export const technischeMechanikSubGoalTasks = {
           'Bei Losreißen: Reibwert fällt auf $\\mu < \\mu_0$.',
           'Nach Losreißen: Newton bestimmt Beschleunigung.',
         ],
+        { stage: 'apply-guided', subGoal: 1, uses: ['haft-gleit'] },
       ),
       matching(
         'Ordne jedem Zustand den zutreffenden Reibwert zu.',
@@ -3428,6 +3465,91 @@ export const technischeMechanikSubGoalTasks = {
           'Am Losreißpunkt: Haft am Maximum.',
           'Nach Losreißen: Gleitreibung.',
         ],
+        { stage: 'transfer', subGoal: 1, uses: ['haft-gleit'] },
+      ),
+      mc(
+        'An einem ruhenden Block ($F_N = 200\\,\\text{N}$, $\\mu_0 = 0{,}5$, $\\mu = 0{,}3$) greift horizontal eine Zugkraft $F = 80\\,\\text{N}$ an. Welche Aussage stimmt?',
+        [
+          'Block bleibt in Ruhe; aktuelle Reibkraft = $80\\,\\text{N}$ (passive Anpassung, weil $80 < \\mu_0 F_N = 100$).',
+          'Block beginnt zu gleiten; Reibkraft = $\\mu F_N = 60\\,\\text{N}$.',
+          'Block bleibt in Ruhe; Reibkraft = $\\mu_0 F_N = 100\\,\\text{N}$ (immer Maximum).',
+          'Block bleibt in Ruhe; Reibkraft = $\\mu F_N = 60\\,\\text{N}$ (Gleitreibung gilt auch im Stillstand).',
+        ],
+        0,
+        `**Ansatz:** Erst Schwellenwert prüfen: $F_{H,\\max} = \\mu_0\\cdot F_N$. Wenn $F < F_{H,\\max}$, bleibt der Block stehen und Haftreibung ist **passiv** = $F$.
+
+**Rechnung:** $F_{H,\\max} = 0{,}5\\cdot 200 = 100\\,\\text{N}$. $F = 80\\,\\text{N} < 100\\,\\text{N}$ ⇒ Block ruht. Aktuelle Reibkraft $= F = 80\\,\\text{N}$ (Gleichgewicht horizontal: $F - F_R = 0$).
+
+**Probe:** Bei $F = 100\\,\\text{N}$ (genau Schwelle): Reibkraft am Maximum. Bei $F = 110\\,\\text{N}$: Block reißt los, Reibkraft fällt auf Gleitwert $0{,}3\\cdot 200 = 60\\,\\text{N}$.
+
+**Typischer Fehler:** Annahme, Reibkraft sei **immer** $\\mu_0 F_N$. Falsch — das ist die Obergrenze. Die aktuelle Haftreibung passt sich der angreifenden Kraft an.`,
+        [
+          'Schwellenwert: $\\mu_0 F_N$.',
+          'Solange $F < \\mu_0 F_N$: Block ruht, Reibung passt sich an.',
+          '$F_R = F$ (Gleichgewicht).',
+        ],
+        {
+          1: '$F = 80 < 100 = F_{H,\\max}$ — Block bleibt in Ruhe, kein Gleiten. Gleitreibung greift erst nach Losreißen.',
+          2: '$\\mu_0 F_N$ ist die **Maximalkraft**, nicht die aktuelle Haftreibung. Im konkreten Fall passt sie sich auf $80\\,\\text{N}$ an.',
+          3: 'Gleitreibung gilt nur, wenn der Körper tatsächlich gleitet. Im Stillstand wirkt Haftreibung mit dem aktuellen Wert (hier $80\\,\\text{N}$).',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['haft-gleit'] },
+      ),
+      mc(
+        'Studentin schreibt: "Bei einem Holzklotz auf einem Tisch beträgt die Reibkraft im Stillstand immer $\\mu_0 F_N$." Wo steckt der Fehler?',
+        [
+          'Im Stillstand stellt sich die Haftreibung **passiv** auf den Wert ein, der zur Haltung nötig ist. $\\mu_0 F_N$ ist die **Maximalkraft**, nicht die aktuelle. Ohne angreifende Zugkraft ist $F_R = 0$.',
+          'Stimmt — im Ruhezustand zieht $\\mu_0 F_N$ den Klotz immer in eine bevorzugte Richtung.',
+          'Es fehlt der Reibwinkel — korrekt wäre $F_R = \\mu_0 F_N \\sin\\rho$.',
+          'Die Aussage gilt nur bei rauen Oberflächen.',
+        ],
+        0,
+        `**Ansatz:** Haftreibung ist eine Zwangskraft — sie reagiert auf die angreifende Zugkraft, **nicht** unabhängig.
+
+**Rechnung:** Liegt ein Klotz frei auf einem Tisch ohne horizontale Last: $\\sum F_x = 0 \\Rightarrow F_R = 0$. Maximalwert $\\mu_0 F_N$ wird nur **erreicht**, wenn die Zugkraft genau diesen Wert hat.
+
+**Probe:** Anschaulich: Ein Klotz auf einem Tisch, niemand zieht — er wandert nicht spontan in eine Richtung. Folge: $F_R = 0$.
+
+**Typischer Fehler:** Aktive vs. passive Kraft verwechseln. Haftreibung ist passiv (reaktiv), nicht aktiv. Erst Coulomb-Maximum bei Schwelle.`,
+        [
+          'Haftreibung passiv, nicht aktiv.',
+          '$\\mu_0 F_N$ = Obergrenze.',
+          'Ohne Zugkraft: $F_R = 0$.',
+        ],
+        {
+          1: 'Haftreibung erzeugt **keine eigene Bewegung** — sie reagiert nur. Ein Klotz auf einem Tisch wandert nicht von alleine.',
+          2: 'Reibwinkel $\\rho$ tritt in dieser Formel nicht auf. Coulomb-Reibung ist $F_R \\leq \\mu_0 F_N$, ohne $\\sin\\rho$.',
+          3: 'Die Aussage stimmt **gar nicht** — auch bei rauen Oberflächen ist die aktuelle Haftreibung im Stillstand kleiner als $\\mu_0 F_N$, solange keine Zugkraft anliegt.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['haft-gleit'] },
+      ),
+      mc(
+        'Ein Auto bremst mit blockierten Rädern (Gleitreibung $\\mu \\approx 0{,}5$). Mit ABS bleibt das Rad knapp unterhalb der Haftgrenze (Haftreibung $\\mu_0 \\approx 0{,}8$). Wie verhält sich der **ABS-Bremsweg** zum **blockierten** Bremsweg?',
+        [
+          'ABS-Bremsweg $\\approx 5/8 \\cdot s_\\text{blockiert} = 0{,}625\\cdot s_\\text{blockiert}$ (kürzer, weil $\\mu_0 > \\mu$).',
+          'ABS-Bremsweg ist $1{,}6\\times s_\\text{blockiert}$ (länger).',
+          'Identischer Bremsweg — ABS verbessert nur die Lenkbarkeit.',
+          'ABS verlängert den Bremsweg, weil das Rad nicht voll greift.',
+        ],
+        0,
+        `**Ansatz:** Bremsweg-Formel: $s = v^2/(2\\mu g)$ — umgekehrt proportional zum effektiven Reibwert.
+
+**Rechnung:** $s_\\text{ABS}/s_\\text{blockiert} = \\mu/\\mu_0 = 0{,}5/0{,}8 = 0{,}625$. Bei $80\\,\\text{km/h}$ ($\\approx 22{,}2\\,\\text{m/s}$) und blockierten Rädern $s = 22{,}2^2/(2\\cdot 0{,}5\\cdot 9{,}81) \\approx 50{,}3\\,\\text{m}$, mit ABS $\\approx 31{,}4\\,\\text{m}$.
+
+**Probe:** Realität: ABS-Effekt ist signifikant (20-40 % kürzer), zusätzlich bleibt das Auto lenkbar — kombinierter Vorteil.
+
+**Typischer Fehler:** Annahme, dass blockierte Räder "härter" bremsen — aber Gleitreibung ist immer kleiner als Haftreibung, also weniger Bremskraft, längerer Weg.`,
+        [
+          'Bremsweg $\\propto 1/\\mu$.',
+          'ABS hält $\\mu$ nahe $\\mu_0$ (Haft).',
+          '$\\mu/\\mu_0 = 0{,}5/0{,}8$.',
+        ],
+        {
+          1: 'Falsche Richtung: ABS-Bremsweg ist **kürzer**, nicht länger. $\\mu_0 > \\mu \\Rightarrow$ größere Bremskraft $\\Rightarrow$ kürzerer Weg.',
+          2: 'ABS verbessert tatsächlich beides: Bremsweg UND Lenkbarkeit. Beide Vorteile durch denselben Effekt (Vermeidung des Blockierens).',
+          3: 'Falsch — der Begriff "voll greift" ist irreführend. Maximale Bremskraft entsteht bei knapp unterhalb der Haftgrenze, nicht beim Blockieren.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['haft-gleit'] },
       ),
     ],
 
@@ -3448,6 +3570,7 @@ export const technischeMechanikSubGoalTasks = {
           'Welche Winkelfunktion liefert den senkrechten Anteil?',
           'Merkregel: Bei $\\alpha = 0°$ muss $F_N = mg$ sein → $\\cos$.',
         ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['schiefe-zerleg-mech'] },
       ),
       ni(
         'Gleicher Körper (m = 10 kg) auf $\\alpha = 20°$ Ebene. Wie groß ist die Hangabtriebskraft? (auf 2 Nachkommastellen in N)',
@@ -3466,6 +3589,7 @@ export const technischeMechanikSubGoalTasks = {
           '$F_H = mg \\sin\\alpha$.',
           'Bei $\\alpha = 0°$ muss $F_H = 0$ sein → $\\sin$.',
         ],
+        { stage: 'transfer', subGoal: 2, uses: ['schiefe-zerleg-mech'] },
       ),
       mc(
         'Wieso taucht **derselbe Winkel** $\\alpha$ im Zerlegungsdreieck des Gewichtsvektors auf wie der Neigungswinkel der Ebene?',
@@ -3493,6 +3617,7 @@ export const technischeMechanikSubGoalTasks = {
           2: 'Reibung hat nichts mit dem Zerlegungsdreieck zu tun — die Zerlegung gilt auch ohne Reibung.',
           3: 'Die **Normalkraft** wirkt senkrecht zur Ebene, nicht die **Gewichtskraft**. Gewicht ist immer vertikal (entlang Schwerkraft).',
         },
+        { stage: 'apply-guided', subGoal: 2, uses: ['schiefe-zerleg-mech'] },
       ),
       tf(
         'Für einen reibungsfreien Körper auf geneigter Ebene ergibt sich die Beschleunigung zu $a = g\\sin\\alpha$ — unabhängig von der Masse.',
@@ -3509,6 +3634,7 @@ export const technischeMechanikSubGoalTasks = {
           'Stelle nach $a$ um — was passiert mit $m$?',
           'Wenn $m$ auf beiden Seiten: kürzen.',
         ],
+        { stage: 'recognize', subGoal: 2, uses: ['schiefe-zerleg-mech'] },
       ),
       sorting(
         'Bringe die Schritte der Reibungs-Analyse auf geneigter Ebene in die richtige Reihenfolge.',
@@ -3532,6 +3658,35 @@ export const technischeMechanikSubGoalTasks = {
           'Koordinatensystem entlang Ebene.',
           'Zerlegung, Gleichgewicht, Gleitentscheidung.',
         ],
+        { stage: 'apply-guided', subGoal: 2, uses: ['schiefe-zerleg-mech'] },
+      ),
+      mc(
+        'Studierender schreibt: "Auf einer geneigten Ebene mit $\\alpha = 30°$ ist die Normalkraft $F_N = mg\\sin 30° = 0{,}5\\,mg$." Wo steckt der Fehler?',
+        [
+          '$\\sin$ und $\\cos$ vertauscht — korrekt: $F_N = mg\\cos\\alpha$. Bei $\\alpha = 30°$: $F_N = mg\\cos 30° \\approx 0{,}866\\,mg$. Merkregel: $F_N$ muss bei $\\alpha = 0°$ gleich $mg$ sein, das erfüllt nur $\\cos$.',
+          '$0{,}5\\,mg$ ist korrekt — bei $30°$ liefern $\\sin$ und $\\cos$ denselben Wert.',
+          'Es fehlt der Faktor $\\mu_0$ — $F_N = \\mu_0 mg\\sin\\alpha$.',
+          'Korrekt für ruhende Körper, falsch nur bei gleitenden.',
+        ],
+        0,
+        `**Ansatz:** Geometrische Zerlegung des Gewichtsvektors: $F_N$ liegt **senkrecht** zur Ebene. Bei flachem $\\alpha$ ⇒ $F_N \\to mg$, bei steilem $\\alpha \\to 90°$ ⇒ $F_N \\to 0$. Diese Grenzfälle erfüllt **nur** $\\cos$.
+
+**Rechnung:** $F_N = mg\\cos\\alpha$. Bei $\\alpha = 30°$: $F_N = mg\\cdot\\cos 30° = mg\\cdot 0{,}866$. Mit $\\sin$ wäre $F_N(0°) = 0$ — dann würde der Körper schweben, was offensichtlich falsch ist.
+
+**Probe:** $\\sin 30° = 0{,}5$ und $\\cos 30° \\approx 0{,}866$ — **nicht gleich**. Die Werte unterscheiden sich um Faktor $\\sqrt 3 \\approx 1{,}73$.
+
+**Typischer Fehler:** Sin/Cos-Verwechslung. Standardregel: Anliegender Winkel des rechtwinkligen Dreiecks $\\to \\cos$, gegenüberliegender $\\to \\sin$. Hier ist $\\alpha$ der Winkel zwischen Gewicht und Normale ⇒ $F_N = mg\\cos\\alpha$.`,
+        [
+          'Grenzfall $\\alpha = 0°$: $F_N = mg$.',
+          'Welche Funktion erfüllt das?',
+          '$\\cos 0° = 1$, $\\sin 0° = 0$.',
+        ],
+        {
+          1: '$\\sin 30° = 0{,}5$ und $\\cos 30° \\approx 0{,}866$ sind **nicht** gleich — Verwechslung wäre folgenreich.',
+          2: 'Reibwert $\\mu_0$ tritt erst bei der Reibungs-Bedingung auf, nicht in der Zerlegung. $F_N$ folgt rein geometrisch aus $\\cos\\alpha$.',
+          3: 'Die geometrische Zerlegung gilt **unabhängig vom Bewegungszustand** — ob ruhend oder gleitend. Der Fehler ist universell.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['schiefe-zerleg-mech'] },
       ),
     ],
 
@@ -3558,6 +3713,7 @@ export const technischeMechanikSubGoalTasks = {
           2: '$66{,}4°$ wäre der Winkel mit $\\cos 66{,}4° \\approx 0{,}4$ — falscher Bezug. Selbsthemmung nutzt $\\tan$, nicht $\\cos$.',
           3: '$90°$ ist die senkrechte Wand — da rutscht jeder Körper unabhängig von $\\mu_0$.',
         },
+        { stage: 'apply-guided', subGoal: 3, uses: ['selbsthemmung'] },
       ),
       ni(
         'Ein Keil mit Neigung $\\alpha = 10°$ klemmt ein Werkstück gegen eine Wand. Wie groß muss $\\mu_0$ **mindestens** sein, damit der Keil nicht herausrutscht? (auf 3 Nachkommastellen)',
@@ -3574,6 +3730,7 @@ export const technischeMechanikSubGoalTasks = {
           'Grenzfall: Gleichheit.',
           '$\\mu_0 = \\tan\\alpha = \\tan 10°$.',
         ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['selbsthemmung'] },
       ),
       tf(
         'Die Selbsthemmung-Grenze ist massenunabhängig: ob ein 1-kg-Block oder ein 1-Tonnen-Block, die kritische Neigung ist dieselbe.',
@@ -3590,6 +3747,7 @@ export const technischeMechanikSubGoalTasks = {
           'Was passiert mit $m$ und $g$?',
           'Bleibt eine rein geometrische Bedingung übrig.',
         ],
+        { stage: 'recognize', subGoal: 3, uses: ['selbsthemmung'] },
       ),
       mc(
         'Ein Schraubgewinde ist **selbsthemmend**, wenn der Steigungswinkel kleiner als der Reibwinkel ist. Welches Gewinde garantiert sichere Fixierung ohne Kontermutter?',
@@ -3617,6 +3775,7 @@ export const technischeMechanikSubGoalTasks = {
           2: '$20° > 15°$ — kein Selbsthemmen trotz größerem Reibwinkel, weil der Steigungswinkel noch höher ist.',
           3: 'Doch — bei $\\alpha < \\rho$ ist das Gewinde statisch selbsthemmend. Option A erfüllt das.',
         },
+        { stage: 'transfer', subGoal: 3, uses: ['selbsthemmung'] },
       ),
       sorting(
         'Bringe die Schritte der Selbsthemm-Prüfung für eine Förderband-Neigung in die richtige Reihenfolge.',
@@ -3640,6 +3799,52 @@ export const technischeMechanikSubGoalTasks = {
           'Dann Vergleich.',
           'Sicherheitsfaktor einplanen.',
         ],
+        { stage: 'apply-guided', subGoal: 3, uses: ['selbsthemmung'] },
+      ),
+      mc(
+        'Studierender behauptet: "Ein Körper mit $\\mu_0 = 0{,}3$ rutscht erst bei einer Neigung von $30°$ — weil $0{,}3 \\cdot 100° = 30°$." Wo steckt der Fehler?',
+        [
+          '$\\mu_0$ ist **nicht** ein Bruchteil der Neigungsskala. Korrekt: $\\alpha_\\text{krit} = \\arctan\\mu_0 = \\arctan 0{,}3 \\approx 16{,}7°$. Reibwert und kritischer Winkel sind durch $\\arctan$ verknüpft, nicht durch lineare Skalierung.',
+          'Stimmt — der Reibwert in Prozent der vollen $90°$-Skala ergibt sinnvoll den kritischen Winkel.',
+          'Korrekt wäre $\\mu_0 \\cdot 90° = 27°$ statt $30°$.',
+          'Selbsthemmung gilt nur bei spezifischer Materialkombination — der Winkel ist nicht aus $\\mu_0$ berechenbar.',
+        ],
+        0,
+        `**Ansatz:** Selbsthemm-Bedingung: $\\tan\\alpha \\leq \\mu_0$. Daraus $\\alpha_\\text{krit} = \\arctan\\mu_0$, **nicht** lineare Multiplikation.
+
+**Rechnung:** $\\arctan 0{,}3 = 16{,}699° \\approx 16{,}7°$. Bei $\\alpha = 16{,}7°$ rutscht der Körper gerade an. Der "$30°$"-Wert wäre korrekt für $\\mu_0 = \\tan 30° \\approx 0{,}577$.
+
+**Probe:** Sonderfälle: $\\mu_0 = 1 \\Rightarrow \\alpha_\\text{krit} = 45°$, $\\mu_0 = \\sqrt 3 \\Rightarrow \\alpha_\\text{krit} = 60°$. Nichtlineare Beziehung — markante Werte beweisen das.
+
+**Typischer Fehler:** Lineare Verwechslung "Reibwert $\\Leftrightarrow$ Winkel". Die Beziehung ist trigonometrisch ($\\arctan$), nicht linear.`,
+        [
+          'Selbsthemmungsbedingung: $\\tan\\alpha \\leq \\mu_0$.',
+          'Auflösen: $\\alpha = \\arctan\\mu_0$.',
+          '$\\arctan 0{,}3 \\neq 30°$.',
+        ],
+        {
+          1: 'Lineare Skalierung von $\\mu_0$ auf $90°$ ist physikalisch sinnlos — die Beziehung folgt aus Trigonometrie, nicht aus Skalierung.',
+          2: '$\\mu_0\\cdot 90° = 27°$ ist auch lineare Skalierung — falscher Ansatz, nur eine andere falsche Zahl.',
+          3: 'Doch — $\\alpha_\\text{krit}$ ist genau aus $\\mu_0$ berechenbar, mittels $\\arctan$. Die Materialkombination geht nur durch $\\mu_0$ ein.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['selbsthemmung'] },
+      ),
+      ni(
+        'Eine Werkbank-Spannvorrichtung soll mit einem Keil ($\\alpha = 8°$) ein Werkstück fixieren. Welcher minimale Haftreibwert $\\mu_0$ ist nötig, damit der Keil im Betrieb durch Erschütterungen nicht herausrutscht (Selbsthemmung)? (auf 3 Nachkommastellen)',
+        0.141, 0.002, '',
+        `**Ansatz:** Selbsthemm-Bedingung: $\\tan\\alpha \\leq \\mu_0$. Im Grenzfall: $\\mu_{0,\\min} = \\tan\\alpha$.
+
+**Rechnung:** $\\mu_{0,\\min} = \\tan 8° \\approx 0{,}1405 \\approx 0{,}141$.
+
+**Probe:** Bei $\\mu_0 = 0{,}15 > 0{,}141$ ist Selbsthemmung gegeben. Bei $\\mu_0 = 0{,}10 < 0{,}141$ rutscht der Keil. Konkret: Stahl auf Stahl ($\\mu_0 \\approx 0{,}15$) ist gerade noch ausreichend; Schmierung verringert $\\mu_0$ und gefährdet die Selbsthemmung.
+
+**Typischer Fehler:** $\\sin 8°$ statt $\\tan 8°$ verwenden ($\\sin 8° \\approx 0{,}139$, nahe aber nicht gleich). Bei flachen Winkeln ist die Differenz klein, bei steilen Keilen aber signifikant.`,
+        [
+          'Selbsthemmung: $\\tan\\alpha \\leq \\mu_0$.',
+          'Grenzfall: $\\mu_{0,\\min} = \\tan\\alpha$.',
+          '$\\tan 8° \\approx 0{,}141$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['selbsthemmung'] },
       ),
     ],
 
@@ -3660,6 +3865,7 @@ export const technischeMechanikSubGoalTasks = {
           '$\\rho = \\arctan\\mu_0$.',
           'Rechner auf DEG stellen.',
         ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['reibwinkel'] },
       ),
       matching(
         'Ordne jedem Haftreibwert den zugehörigen Reibwinkel zu.',
@@ -3681,6 +3887,7 @@ export const technischeMechanikSubGoalTasks = {
           'Auswendige Paare: $(1, 45°)$, $(\\sqrt{3}, 60°)$, $(1/\\sqrt{3}, 30°)$.',
           'Monoton steigend, aber nichtlinear.',
         ],
+        { stage: 'apply-guided', subGoal: 4, uses: ['reibwinkel'] },
       ),
       tf(
         'Der Reibwinkel ist genau der Winkel zwischen der Richtung der resultierenden Kontaktkraft (Normal + Reibung) und der Flächennormale.',
@@ -3697,6 +3904,7 @@ export const technischeMechanikSubGoalTasks = {
           'Welchen Winkel bildet die Resultierende mit der Normale?',
           '$\\tan\\phi = F_R/F_N = \\mu$.',
         ],
+        { stage: 'recognize', subGoal: 4, uses: ['reibwinkel'] },
       ),
       mc(
         'Wie ist der Reibwinkel in einem **Selbsthemmungskriterium** zu verwenden?',
@@ -3724,6 +3932,7 @@ export const technischeMechanikSubGoalTasks = {
           2: 'Reibwinkel ist **genau** das Selbsthemmungskriterium in geometrischer Form. Sehr wohl relevant.',
           3: '$90° - \\rho$ wäre der Komplementärwinkel — taucht weder in der Herleitung noch in der Anwendung auf.',
         },
+        { stage: 'apply-guided', subGoal: 4, uses: ['reibwinkel'] },
       ),
       ni(
         'Ein Versuchsaufbau: Eine Ebene wird so lange geneigt, bis ein aufgelegter Stahlklotz gerade zu rutschen beginnt — bei $\\alpha = 11{,}31°$. Welcher Haftreibwert $\\mu_0$ lässt sich daraus bestimmen? (auf 2 Nachkommastellen)',
@@ -3740,6 +3949,35 @@ export const technischeMechanikSubGoalTasks = {
           '$\\mu_0 = \\tan\\rho$.',
           'Rechner: $\\tan 11{,}31°$.',
         ],
+        { stage: 'transfer', subGoal: 4, uses: ['reibwinkel'] },
+      ),
+      mc(
+        'Studentin behauptet: "Der Reibwinkel ist gleich dem Haftreibwert: $\\rho = \\mu_0$." Wo steckt der Fehler?',
+        [
+          'Reibwinkel und Reibwert sind unterschiedliche Größen, verknüpft durch $\\rho = \\arctan\\mu_0$. Beispiel: $\\mu_0 = 0{,}5 \\Rightarrow \\rho \\approx 26{,}6°$, nicht $0{,}5°$.',
+          'Stimmt für kleine Winkel — bei großen Winkeln gilt $\\rho = \\arctan\\mu_0$.',
+          '$\\rho = \\mu_0$ wäre richtig in Bogenmaß.',
+          'Falsch: korrekt wäre $\\rho = \\sin\\mu_0$.',
+        ],
+        0,
+        `**Ansatz:** Reibwinkel-Definition: $\\rho = \\arctan\\mu_0$. Reibwert ist dimensionslos, Reibwinkel hat Einheit Grad (oder Bogenmaß).
+
+**Rechnung:** Bei $\\mu_0 = 0{,}5$: $\\rho = \\arctan 0{,}5 \\approx 26{,}57°$. Wer $\\rho = \\mu_0 = 0{,}5°$ schreibt, vergisst die $\\arctan$-Beziehung. Die beiden Größen unterscheiden sich um Faktor $\\arctan/$Identität.
+
+**Probe:** Markante Paare: $(\\mu_0, \\rho)$: $(0{,}1, 5{,}71°)$, $(0{,}5, 26{,}57°)$, $(1, 45°)$, $(\\sqrt 3, 60°)$. Klar nichtlinear.
+
+**Typischer Fehler:** Auf einen Blick zwei unterschiedliche Größen gleichsetzen, weil sie konzeptuell zusammengehören. Verbindung über $\\arctan$.`,
+        [
+          'Reibwinkel-Definition.',
+          '$\\rho = \\arctan\\mu_0$.',
+          'Beispiel: $\\mu_0 = 0{,}5 \\Rightarrow \\rho \\approx 26{,}6°$.',
+        ],
+        {
+          1: 'Auch für kleine $\\mu_0$ ist $\\rho \\neq \\mu_0$. Allenfalls $\\rho_\\text{rad} \\approx \\mu_0$ in Bogenmaß bei sehr kleinen Werten — aber in Grad nie.',
+          2: 'Im Bogenmaß $\\rho_\\text{rad} = \\arctan\\mu_0$, nicht $\\mu_0$ direkt. Für $\\mu_0 = 0{,}5$: $\\rho_\\text{rad} \\approx 0{,}464$, nicht $0{,}5$.',
+          3: '$\\sin\\mu_0$ macht keinen Sinn — $\\mu_0$ ist dimensionslos und kein Winkel. Korrekt: $\\arctan\\mu_0$.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['reibwinkel'] },
       ),
     ],
 

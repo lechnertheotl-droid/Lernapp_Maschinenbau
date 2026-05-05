@@ -102,9 +102,9 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2487 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1651 (66 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1121 / 1121 (100 %) | 100 % | ✅ |
+| Aufgaben (gesamt) | 2495 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1660 (67 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1128 / 1128 (100 %) | 100 % | ✅ |
 | Sub-Goal-Tasks verknüpft | 238 / 1134 (21 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
@@ -919,9 +919,9 @@ _Signalverarbeitung, Regelungstechnik, Elektrotechnik. Laplace vereinfacht DGL z
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **262** (Lesson-Path: 59 · Goal-Tasks: 203)
-- 4-Block: 239/262 (91 %) 🟡
-- MC-wAE: 82/82 (100 %) ✅
+- Aufgaben: **270** (Lesson-Path: 59 · Goal-Tasks: 211)
+- 4-Block: 248/270 (92 %) 🟡
+- MC-wAE: 89/89 (100 %) ✅
 - Sub-Goals: 37/76 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
@@ -969,7 +969,7 @@ _Mechanik ist das Herzfach im Maschinenbau-Bachelor und Basis für Festigkeitsle
 | `mech-1-1` Kräfte und Freikörperbild | 4 | 4/4 | 23 | 10/5/5/2/1 | 23/23 | 10/10 | ✅ | — |
 | `mech-1-2` Momente und Hebelarm | 4 | 4/4 | 23 | 11/7/5/0/0 | 23/23 | 11/11 | ✅ | — |
 | `mech-1-3` Schnittkräfte N(x), Q(x), M(x) | 5 | 5/5 | 30 | 17/6/6/1/0 | 30/30 | 17/17 | ✅ | — |
-| `mech-1-4` Reibung | 5 | 5/5 | 28 | 7/9/6/3/3 | 27/28 | 7/7 | ✅ | +1 4B |
+| `mech-1-4` Reibung | 5 | 5/5 | 36 | 14/10/6/3/3 | 36/36 | 14/14 | ✅ | — |
 | `mech-1-5` Schwerpunkt | 5 | 5/5 | 32 | 5/14/6/4/3 | 32/32 | 5/5 | ✅ | — |
 | `mech-2-1` Newtonsche Gesetze | 5 | 0/5 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +5 Goal, +3 4B |
 | `mech-2-2` Arbeit und Energie | 6 | 0/6 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +6 Goal, +3 4B |
@@ -11353,59 +11353,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-#### `mech-1-4` · Reibung
-
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `mech-1-1` → `kraft-vektor`, `gleichgew-2d`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `coulomb` — Coulombsches Reibgesetz $F_R=\mu F_N$ (SG 0)
-  2. `haft-gleit` — Haftreibwert $\mu_0>\mu$ Gleitreibwert ⇐ `coulomb` (SG 1)
-  3. `schiefe-zerleg-mech` — Schiefe Ebene $F_N=mg\cos\alpha$, $F_H=mg\sin\alpha$ (SG 2)
-  4. `selbsthemmung` — Selbsthemmung: kein Gleiten solange $\tan\alpha\le\mu_0$ ⇐ `haft-gleit`, `schiefe-zerleg-mech` (SG 3)
-  5. `reibwinkel` — Reibwinkel $\rho=\arctan\mu$ — Grenzneigung ⇐ `coulomb`, `selbsthemmung` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `coulomb` · **5/5+** — Coulombsches Reibgesetz: $F_R = \mu F_N$
-  - ✅ [1] _hoch_ · Konzepte: `haft-gleit` · **5/5+** — Haftreibwert $\mu_0$ > Gleitreibwert $\mu$ (Losreißen braucht mehr Kraft)
-  - ✅ [2] _hoch_ · Konzepte: `schiefe-zerleg-mech` · **5/5+** — Auf geneigter Ebene: $F_N = mg\cos\alpha$, $F_H = mg\sin\alpha$
-  - ✅ [3] _hoch_ · Konzepte: `selbsthemmung` · **5/5+** — Selbsthemmung: Körper gleitet nicht, solange $\tan\alpha \leq \mu_0$
-  - ✅ [4] _mittel_ · Konzepte: `reibwinkel` · **5/5+** — Reibwinkel $\rho = \arctan\mu$: Neigung, bei der Körper gerade zu gleiten beginnt
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `coulomb` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `coulomb` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `coulomb` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `coulomb` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | number-input     | `coulomb` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `haft-gleit` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `haft-gleit` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `haft-gleit` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `haft-gleit` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `haft-gleit` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `schiefe-zerleg-mech` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `schiefe-zerleg-mech` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `schiefe-zerleg-mech` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `schiefe-zerleg-mech` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `schiefe-zerleg-mech` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `selbsthemmung` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `selbsthemmung` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `selbsthemmung` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `selbsthemmung` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `selbsthemmung` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `reibwinkel` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `reibwinkel` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `reibwinkel` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `reibwinkel` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | number-input     | `reibwinkel` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-4': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-mech-1-4-goal-sg0-4`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-
 #### `mech-2-5` · Dynamik starrer Körper
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Dynamik
@@ -12368,6 +12315,57 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-alg-4-1-a`, `ex-alg-4-1-b`, `ex-alg-4-1-d`, `ex-alg-4-1-e`, `ex-alg-4-1-f`, `ex-alg-4-1-g`, `ex-alg-4-1-h`, `ex-alg-4-1-i` … (+2 weitere)
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
+#### `mech-1-4` · Reibung
+
+- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-1-1` → `kraft-vektor`, `gleichgew-2d`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `coulomb` — Coulombsches Reibgesetz $F_R=\mu F_N$ (SG 0)
+  2. `haft-gleit` — Haftreibwert $\mu_0>\mu$ Gleitreibwert ⇐ `coulomb` (SG 1)
+  3. `schiefe-zerleg-mech` — Schiefe Ebene $F_N=mg\cos\alpha$, $F_H=mg\sin\alpha$ (SG 2)
+  4. `selbsthemmung` — Selbsthemmung: kein Gleiten solange $\tan\alpha\le\mu_0$ ⇐ `haft-gleit`, `schiefe-zerleg-mech` (SG 3)
+  5. `reibwinkel` — Reibwinkel $\rho=\arctan\mu$ — Grenzneigung ⇐ `coulomb`, `selbsthemmung` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `coulomb` · **6/5+** — Coulombsches Reibgesetz: $F_R = \mu F_N$
+  - ✅ [1] _hoch_ · Konzepte: `haft-gleit` · **8/5+** — Haftreibwert $\mu_0$ > Gleitreibwert $\mu$ (Losreißen braucht mehr Kraft)
+  - ✅ [2] _hoch_ · Konzepte: `schiefe-zerleg-mech` · **6/5+** — Auf geneigter Ebene: $F_N = mg\cos\alpha$, $F_H = mg\sin\alpha$
+  - ✅ [3] _hoch_ · Konzepte: `selbsthemmung` · **7/5+** — Selbsthemmung: Körper gleitet nicht, solange $\tan\alpha \leq \mu_0$
+  - ✅ [4] _mittel_ · Konzepte: `reibwinkel` · **6/5+** — Reibwinkel $\rho = \arctan\mu$: Neigung, bei der Körper gerade zu gleiten beginnt
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `coulomb` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `coulomb` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `coulomb` | 1 | 2 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `coulomb` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | number-input     | `coulomb` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `haft-gleit` | 1 | 2 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `haft-gleit` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `haft-gleit` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `haft-gleit` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | multiple-choice  | `haft-gleit` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `schiefe-zerleg-mech` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `schiefe-zerleg-mech` | 1 | 2 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `schiefe-zerleg-mech` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `schiefe-zerleg-mech` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `schiefe-zerleg-mech` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `selbsthemmung` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `selbsthemmung` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `selbsthemmung` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `selbsthemmung` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | number-input     | `selbsthemmung` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `reibwinkel` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `reibwinkel` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `reibwinkel` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `reibwinkel` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | number-input     | `reibwinkel` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-4': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `alg-0-3` · Prozent & Dreisatz
 
