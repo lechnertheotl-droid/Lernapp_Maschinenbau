@@ -4803,6 +4803,1443 @@ export const technischeMechanikSubGoalTasks = {
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // mech-2-1 — Newtonsche Gesetze  (5 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-2-1': {
+
+    // ── [0] 2. Newton: ΣF = m·a (Grundgleichung der Dynamik) ────────────
+    0: [
+      mc(
+        'Auf einen Körper wirkt eine resultierende Kraft von $F = 50\\,\\text{N}$. Mit welcher Beschleunigung bewegt sich eine Masse von $m = 25\\,\\text{kg}$?',
+        ['$2\\,\\text{m/s}^2$', '$0{,}5\\,\\text{m/s}^2$', '$25\\,\\text{m/s}^2$', '$1250\\,\\text{m/s}^2$'],
+        0,
+        `**Ansatz:** 2. Newton nach der Beschleunigung umstellen: $a = F/m$.
+
+**Rechnung:** $a = \\dfrac{50\\,\\text{N}}{25\\,\\text{kg}} = 2\\,\\text{m/s}^2$.
+
+**Probe:** Rückwärts: $F = m \\cdot a = 25 \\cdot 2 = 50\\,\\text{N}$ ✓. Einheiten: $\\text{N}/\\text{kg} = (\\text{kg} \\cdot \\text{m/s}^2)/\\text{kg} = \\text{m/s}^2$ ✓.
+
+**Typischer Fehler:** $F$ und $m$ vertauschen ($m/F$) oder multiplizieren ($F \\cdot m = 1250$). Beschleunigung folgt aus $a = F/m$, nicht aus $m/F$ oder $F \\cdot m$.`,
+        [
+          '2. Newton aufschreiben und nach $a$ auflösen.',
+          '$a = F/m$ — Kraft durch Masse.',
+          '$50/25 = ?$',
+        ],
+        {
+          1: '$0{,}5$ entsteht aus $25/50$ — Zähler und Nenner vertauscht. Richtig: $a = F/m = 50/25$.',
+          2: '$25$ ist der Wert der Masse, nicht der Beschleunigung. Du hast $m$ direkt eingetragen.',
+          3: '$1250 = 50 \\cdot 25$ — du hast multipliziert statt dividiert. $F = m \\cdot a$ ergibt umgestellt $a = F/m$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['newton-2'] },
+      ),
+      mc(
+        'Eine Studentin rechnet für $m = 10\\,\\text{kg}$ und Resultierende $F = 80\\,\\text{N}$: „$a = F \\cdot m = 800\\,\\text{m/s}^2$". Wo steckt der Fehler?',
+        [
+          'Sie hat multipliziert statt dividiert. Richtig: $a = F/m = 80/10 = 8\\,\\text{m/s}^2$.',
+          'Die Rechnung stimmt — $a$ ist tatsächlich $800\\,\\text{m/s}^2$.',
+          'Sie hat $g$ vergessen. Richtig: $a = F/(m \\cdot g) \\approx 0{,}82\\,\\text{m/s}^2$.',
+          'Sie hat eine falsche Einheit benutzt — der Zahlenwert stimmt aber.',
+        ],
+        0,
+        `**Ansatz:** 2. Newton: $F = m \\cdot a$, umgestellt $a = F/m$. Multiplikation der beiden gegebenen Größen ergibt nicht die Beschleunigung.
+
+**Rechnung:** $a = \\dfrac{80\\,\\text{N}}{10\\,\\text{kg}} = 8\\,\\text{m/s}^2$.
+
+**Probe:** $F = m \\cdot a = 10 \\cdot 8 = 80\\,\\text{N}$ ✓. Einheit-Check: $\\text{N}/\\text{kg} = \\text{m/s}^2$ ✓. $800\\,\\text{m/s}^2$ wäre rund $80\\cdot g$ — physikalisch unrealistisch für eine Resultierende von nur $80\\,\\text{N}$.
+
+**Typischer Fehler:** Aus $F = m \\cdot a$ statt $a = F/m$ direkt $a = F \\cdot m$ machen — Umstellungs-Lücke.`,
+        [
+          '$F = m \\cdot a$ — wonach muss aufgelöst werden?',
+          'Beim Auflösen wird **dividiert**, nicht multipliziert.',
+          'Plausibilitäts-Check: $800\\,\\text{m/s}^2 \\approx 80\\,g$ — viel zu viel für $80\\,\\text{N}$.',
+        ],
+        {
+          1: '$800\\,\\text{m/s}^2$ wäre eine extreme Beschleunigung (etwa das 80-fache der Erdbeschleunigung). Das passt nicht zu einer Kraft von nur $80\\,\\text{N}$.',
+          2: '$g$ ist hier irrelevant — die Aufgabe gibt die **resultierende** Kraft direkt vor; man dividiert nur durch $m$.',
+          3: 'Die Einheit ist nicht das Problem — der Zahlenwert $800$ ist um den Faktor $100$ falsch (multiplikative statt dividierte Kombination).',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['newton-2'] },
+      ),
+      ni(
+        'Ein Auto mit $m = 1500\\,\\text{kg}$ bremst gleichmäßig von $90\\,\\text{km/h}$ auf $0$ in $5\\,\\text{s}$. Wie groß ist die Bremskraft (Betrag)?',
+        7500, 5, 'N',
+        `**Ansatz:** 1) Geschwindigkeit in m/s umrechnen. 2) Beschleunigung aus $a = \\Delta v/\\Delta t$. 3) Kraft aus $|F| = m \\cdot |a|$.
+
+**Rechnung:** $v_0 = 90\\,\\text{km/h} = 90/3{,}6 = 25\\,\\text{m/s}$. $|a| = 25/5 = 5\\,\\text{m/s}^2$. $|F| = 1500 \\cdot 5 = 7500\\,\\text{N}$.
+
+**Probe:** Plausibilitäts-Check: $7500\\,\\text{N}$ entsprechen rund $\\tfrac{7500}{9{,}81} \\approx 765\\,\\text{kgf}$ — typische Bremskraft eines Pkw bei moderater Bremsung. ✓ Einheiten: $\\text{kg} \\cdot \\text{m/s}^2 = \\text{N}$ ✓.
+
+**Typischer Fehler:** km/h direkt in $a = \\Delta v/\\Delta t$ einsetzen → falscher Zahlenwert um Faktor $3{,}6$. Immer in SI-Einheiten umrechnen, bevor man rechnet.`,
+        [
+          'Erst Einheiten umrechnen: $90\\,\\text{km/h} \\to \\text{m/s}$.',
+          '$a = \\Delta v / \\Delta t$.',
+          '$|F| = m \\cdot |a|$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['newton-2'] },
+      ),
+      mc(
+        'Bei gleicher Kraft, aber doppelter Masse — wie ändert sich die Beschleunigung?',
+        ['halbiert sich', 'verdoppelt sich', 'bleibt gleich', 'vervierfacht sich'],
+        0,
+        `**Ansatz:** 2. Newton: $a = F/m$. Bei festem $F$ ist $a$ umgekehrt proportional zu $m$.
+
+**Rechnung:** $a_{\\text{neu}} = F/(2m) = \\tfrac{1}{2} \\cdot F/m = \\tfrac{1}{2} a_{\\text{alt}}$.
+
+**Probe:** Beispiel: $F = 100\\,\\text{N}$, $m = 10\\,\\text{kg}$ → $a = 10\\,\\text{m/s}^2$. Mit $m = 20\\,\\text{kg}$ → $a = 5\\,\\text{m/s}^2$ — halbiert. ✓
+
+**Typischer Fehler:** Direkte statt umgekehrte Proportionalität annehmen ($a$ wachse mit $m$). $a$ und $m$ stehen aber im Nenner verbunden.`,
+        [
+          'Wo steht $m$ in der Formel $a = F/m$?',
+          'Nenner verdoppeln → Quotient halbieren.',
+          'Umgekehrt proportional, nicht direkt.',
+        ],
+        {
+          1: 'Verdopplung der Masse vergrößert die Trägheit — Beschleunigung wird **kleiner**, nicht größer.',
+          2: 'Bei festem $F$ hängt $a$ von $m$ ab. „Bleibt gleich" gilt nur, wenn auch $F$ entsprechend mitwächst.',
+          3: 'Vervierfachung träte ein, wenn $m$ geviertelt würde — hier ist $m$ verdoppelt, nicht geviertelt.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['newton-2'] },
+      ),
+      ni(
+        'Auf eine Masse $m = 5\\,\\text{kg}$ wirken zwei kollineare Kräfte: $F_1 = 30\\,\\text{N}$ nach rechts und $F_2 = 10\\,\\text{N}$ nach links. Welche Beschleunigung ergibt sich (positiv = nach rechts)?',
+        4, 0.05, 'm/s^2',
+        `**Ansatz:** Erst die **resultierende** Kraft bestimmen ($\\sum F$), dann $a = \\sum F / m$.
+
+**Rechnung:** $\\sum F = F_1 - F_2 = 30 - 10 = 20\\,\\text{N}$ (nach rechts). $a = 20/5 = 4\\,\\text{m/s}^2$.
+
+**Probe:** $F = m \\cdot a = 5 \\cdot 4 = 20\\,\\text{N}$ ✓. Vorzeichen passt: Rechts-Kraft überwiegt → Beschleunigung nach rechts (positiv).
+
+**Typischer Fehler:** Beide Kräfte einfach addieren ($30 + 10 = 40$) statt vorzeichenrichtig. Bei kollinearen Kräften unterschiedlicher Richtung: subtrahieren.`,
+        [
+          'Einzelkräfte vorzeichenrichtig in eine Achsenrichtung legen.',
+          '$\\sum F = F_1 - F_2$, weil $F_2$ entgegengesetzt zeigt.',
+          '$a = \\sum F / m$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['newton-2'] },
+      ),
+    ],
+
+    // ── [1] 1. Newton: Trägheit (ohne Kraft → gleichförmige Bewegung) ──
+    1: [
+      tf(
+        'Wirkt auf einen Körper keine resultierende Kraft, so behält er seinen Bewegungszustand bei: er ruht oder bewegt sich gleichförmig auf einer Geraden.',
+        true,
+        `**Ansatz:** Das ist exakt das 1. Newton-Gesetz (Trägheitsprinzip).
+
+**Rechnung:** Mathematisch: $\\sum \\vec F = \\vec 0 \\;\\Rightarrow\\; \\vec a = \\vec 0 \\;\\Rightarrow\\; \\vec v = \\text{const}$.
+
+**Probe:** Beispiel reibungsfreier Puck auf Eis: ohne resultierende Kraft gleitet er konstant geradeaus. Beispiel ruhender Stein: $\\vec v = \\vec 0 = \\text{const}$ — auch das ist „gleichförmig".
+
+**Typischer Fehler:** Glauben, dass „Bewegung Kraft braucht". Bewegung **erhält** sich von selbst, **Beschleunigung** braucht eine resultierende Kraft.`,
+        [
+          'Wie lautet das 1. Newton-Gesetz wörtlich?',
+          'Aus $\\sum F = 0$ folgt $a = 0$ — was heißt das für $v$?',
+          'Ruhe ist ein Spezialfall gleichförmiger Bewegung ($v = 0 = \\text{const}$).',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['newton-1'] },
+      ),
+      mc(
+        'Ein Eishockey-Puck gleitet auf nahezu reibungsfreiem Eis mit konstanter Geschwindigkeit auf einer Geraden. Welche Aussage über die resultierende Kraft auf den Puck stimmt?',
+        [
+          '$\\sum \\vec F = \\vec 0$ — keine resultierende Kraft, daher konstante Geschwindigkeit.',
+          '$\\sum \\vec F$ zeigt in Bewegungsrichtung und treibt den Puck an.',
+          '$\\sum \\vec F = m \\cdot \\vec v$ — Kraft proportional zur Geschwindigkeit.',
+          '$\\sum \\vec F$ zeigt entgegen der Bewegungsrichtung — sie hält den Puck gleichmäßig.',
+        ],
+        0,
+        `**Ansatz:** 1. Newton — gleichförmige Bewegung ⇔ resultierende Kraft null.
+
+**Rechnung:** Konstantes $\\vec v$ heißt $\\vec a = \\vec 0$. Mit 2. Newton folgt $\\sum \\vec F = m \\cdot \\vec a = \\vec 0$.
+
+**Probe:** Auf den Puck wirken einzelne Kräfte (Gewichtskraft, Normalkraft des Eises, evtl. minimale Reibung). In Summe heben sie sich auf — sonst würde sich $\\vec v$ ändern.
+
+**Typischer Fehler:** Annehmen, dass Bewegung eine antreibende Kraft erfordert. Das ist Aristoteles, nicht Newton.`,
+        [
+          'Was sagt das 1. Newton-Gesetz über konstante Geschwindigkeit?',
+          'Konstantes $v$ ⇒ $a = 0$ ⇒ $\\sum F = ?$',
+          'Antriebskraft braucht es nur für **Beschleunigung**, nicht für **Bewegung**.',
+        ],
+        {
+          1: 'Eine Kraft in Bewegungsrichtung würde den Puck **beschleunigen** — die Geschwindigkeit wäre dann nicht mehr konstant.',
+          2: '$F = m \\cdot v$ ist physikalisch nicht das 2. Newton (das wäre $F = m \\cdot a$). Geschwindigkeit allein erzeugt keine Kraft.',
+          3: 'Eine entgegengesetzte resultierende Kraft würde den Puck **abbremsen**, nicht „gleichmäßig halten".',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['newton-1'] },
+      ),
+      mc(
+        'Ein Aufzug fährt mit konstanter Geschwindigkeit aufwärts. Eine Person ($m = 75\\,\\text{kg}$) steht auf einer Personenwaage in der Kabine. Was zeigt die Waage an?',
+        [
+          'Genau die Gewichtskraft auf der Erde, also rund $736\\,\\text{N}$ (bzw. $75\\,\\text{kg}$ in kg-Anzeige).',
+          'Mehr als $736\\,\\text{N}$, weil der Aufzug die Person zusätzlich „hochdrückt".',
+          'Weniger als $736\\,\\text{N}$, weil die Person beim Aufwärtsfahren leichter wird.',
+          '$0\\,\\text{N}$ — die Kabine trägt die Person komplett.',
+        ],
+        0,
+        `**Ansatz:** Konstante Geschwindigkeit ⇒ $\\vec a = \\vec 0$ ⇒ $\\sum F = 0$ am Körper Person.
+
+**Rechnung:** Auf die Person wirken Gewichtskraft $F_G = m \\cdot g$ nach unten und Normalkraft $N$ der Waage nach oben. $\\sum F = N - F_G = 0 \\;\\Rightarrow\\; N = F_G = 75 \\cdot 9{,}81 \\approx 736\\,\\text{N}$.
+
+**Probe:** Die Waage misst die Normalkraft. Bei $a = 0$ ist sie identisch zur Gewichtskraft — egal ob die Kabine ruht, gleichförmig auf- oder abwärts fährt.
+
+**Typischer Fehler:** Aufwärtsfahren mit Aufwärtsbeschleunigung verwechseln. Nur **beschleunigte** Aufzüge (Anfahren/Bremsen) zeigen abweichende Werte; bei konstanter Geschwindigkeit nicht.`,
+        [
+          'Wie groß ist die Beschleunigung bei konstanter Geschwindigkeit?',
+          '$a = 0$ ⇒ $\\sum F = 0$ ⇒ Normalkraft = Gewichtskraft.',
+          'Die Personenwaage misst die Normalkraft.',
+        ],
+        {
+          1: 'Mehr Anzeige käme nur bei **Beschleunigung** nach oben (z. B. beim Anfahren). Bei konstantem $v$ ist $a = 0$.',
+          2: 'Weniger Anzeige käme bei **Beschleunigung** nach unten (z. B. beim Anhalten oben). Konstantes $v$ heißt $a = 0$.',
+          3: '$0\\,\\text{N}$ wäre freier Fall ($a = -g$). Die Kabine trägt die Person nicht — die Waage trägt sie.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['newton-1'] },
+      ),
+      mc(
+        'Ein Schüler argumentiert: „Da das Auto auf der Autobahn $130\\,\\text{km/h}$ konstant fährt, muss eine Antriebskraft konstant in Fahrtrichtung wirken." Wo steckt der Denkfehler?',
+        [
+          'Bei konstanter Geschwindigkeit ist $\\sum F = 0$. Antriebskraft und Widerstandskräfte (Luft, Roll) heben sich genau auf — netto wirkt keine Kraft, obwohl Antrieb nötig ist.',
+          'Der Schüler hat recht — Bewegung erfordert nach Newton immer eine resultierende Kraft.',
+          'Die Aussage stimmt, weil $F = m \\cdot v$ gilt: konstante Geschwindigkeit ⇒ konstante Kraft.',
+          'Falsch — auf das Auto wirkt nur die Gewichtskraft $m \\cdot g$ nach unten, sonst nichts.',
+        ],
+        0,
+        `**Ansatz:** 1. Newton: konstantes $v$ ⇒ $\\sum F = 0$. Das schließt **einzelne** Kräfte nicht aus — es heißt nur, dass sie sich aufheben.
+
+**Rechnung:** Antriebskraft $F_{\\text{Antrieb}}$ in Fahrtrichtung, Widerstandskräfte $F_{\\text{Wid}}$ (Luft + Roll) entgegen. $\\sum F = F_{\\text{Antrieb}} - F_{\\text{Wid}} = 0 \\;\\Rightarrow\\; F_{\\text{Antrieb}} = F_{\\text{Wid}}$.
+
+**Probe:** Würde der Antrieb wegfallen, bremste das Auto durch Widerstand ab. Würde der Widerstand verschwinden (Vakuum, ideales Lager), liefe das Auto ohne Antrieb gleichförmig — genau wie der Eishockey-Puck.
+
+**Typischer Fehler:** „Keine resultierende Kraft" mit „keine Einzelkräfte" verwechseln. Newton spricht von der **Summe**, nicht von einzelnen Kräften.`,
+        [
+          'Was sagt $\\sum F = 0$ über einzelne Kräfte aus?',
+          'Antrieb und Widerstand können sich aufheben.',
+          'Newton lebt nicht in einer reibungsfreien Welt — Antrieb braucht es als **Ausgleich**.',
+        ],
+        {
+          1: 'Das ist die Aristotelische Sicht. Newton sagt: für **Beschleunigung** braucht es Kraft, für gleichförmige Bewegung nicht.',
+          2: '$F = m \\cdot v$ ist falsch — Newton lautet $F = m \\cdot a$. Geschwindigkeit erzeugt keine Kraft.',
+          3: 'Doch — Antrieb, Widerstand, Normalkräfte der Räder. Die Gewichtskraft ist nur eine von vielen Kräften.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['newton-1'] },
+      ),
+      mc(
+        'Im Bus, der plötzlich bremst, kippen stehende Passagiere nach vorne. Welches Newtonsche Gesetz erklärt das am direktesten?',
+        [
+          '1. Newton: Die Passagiere wollen ihre Bewegung beibehalten; während der Bus abbremst, gleiten sie ohne Bremskraft am Boden noch mit Anfangsgeschwindigkeit weiter — relativ zum Bus also nach vorn.',
+          '2. Newton: Die Bremskraft $F = m \\cdot a$ wirkt auf den Bus und schiebt die Passagiere nach vorn.',
+          '3. Newton: Die Bremskraft des Busses erzeugt eine Reaktionskraft, die die Passagiere nach vorn drückt.',
+          'Gravitation: Die Erdbeschleunigung $g$ zieht Passagiere beim Bremsen nach vorn.',
+        ],
+        0,
+        `**Ansatz:** Frage zielt auf das Trägheitsprinzip. Die Passagiere bekommen nicht plötzlich eine Vorwärts-Kraft — sie behalten nur ihre alte Geschwindigkeit bei.
+
+**Rechnung:** Bus: $v$ nimmt rasch ab (Bremskraft über Reifen-Boden-Reibung). Passagier auf glattem Boden: $\\sum F \\approx 0$ ⇒ $v$ bleibt zunächst konstant. Im Bus-Bezugssystem fühlt sich das wie eine „Trägheitskraft" nach vorn an.
+
+**Probe:** Die Bremskraft greift nur an den **Rädern** des Busses an, nicht an den Passagieren. Über die Sohlen-Reibung wird ein Teil übertragen — wenn die zu klein ist, kippen die Personen.
+
+**Typischer Fehler:** Eine „Trägheitskraft" als reale Kraft im Inertialsystem deuten. Sie ist nur ein Effekt der Wahl eines beschleunigten Bezugssystems.`,
+        [
+          'Welche Kraft wirkt direkt auf den Passagier?',
+          'Wenn keine wirkt, was sagt das 1. Newton?',
+          'Relativ zum bremsenden Bus erscheint das wie ein Vorwärts-„Schub".',
+        ],
+        {
+          1: 'Die Bremskraft $F = m \\cdot a$ wirkt auf den **Bus**, nicht auf die Passagiere. Die müssen erst über Reibung „mitgenommen" werden.',
+          2: 'actio = reactio bezieht sich auf Kraftpaare zwischen zwei Körpern, nicht auf Bremsverhalten.',
+          3: 'Die Erdbeschleunigung wirkt nach **unten**, nicht nach vorn — sie erklärt nicht das Vorwärtskippen.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['newton-1'] },
+      ),
+      tf(
+        'Ein im All um die Erde kreisender Satellit ohne Antrieb erfährt keine resultierende Kraft und fliegt deshalb laut 1. Newton geradeaus weiter.',
+        false,
+        `**Ansatz:** 1. Newton gilt nur, wenn $\\sum \\vec F = \\vec 0$. Ein Satellit auf einer Kreisbahn erfährt aber durchgehend die Gravitationskraft der Erde als **Zentripetalkraft**.
+
+**Rechnung:** $\\sum \\vec F = \\vec F_{\\text{Grav}} \\neq \\vec 0$, gerichtet zum Erdmittelpunkt. Diese Kraft erzeugt die Zentripetalbeschleunigung $a = v^2/r$, die die Bahn vom Geradeaus-Pfad ablenkt.
+
+**Probe:** Wäre $\\sum F$ tatsächlich null, würde der Satellit die Erde verlassen (geradlinige Bewegung). Beobachtung: er bleibt im Orbit — also wirkt eine resultierende Kraft.
+
+**Typischer Fehler:** „Schwerelosigkeit" mit „kraftfrei" verwechseln. Der Astronaut **fühlt** keine Stützkraft, aber die Gravitation wirkt sehr wohl auf ihn — er fällt nur frei mit der Kapsel zusammen.`,
+        [
+          'Wirkt im Orbit eine Kraft auf den Satelliten?',
+          'Ohne Kraft → Geradeausflug. Was beobachten wir wirklich?',
+          'Schwerelosigkeit ≠ kraftfrei.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['newton-1'] },
+      ),
+    ],
+
+    // ── [2] 3. Newton: actio = reactio ──────────────────────────────────
+    2: [
+      tf(
+        'Ein Apfel ($F_G = 1\\,\\text{N}$) liegt auf einem Tisch. Die nach unten gerichtete Gewichtskraft $F_G$ und die nach oben gerichtete Normalkraft $N$ des Tisches auf den Apfel bilden zusammen das actio-reactio-Paar nach 3. Newton.',
+        false,
+        `**Ansatz:** actio-reactio-Paare greifen an **verschiedenen** Körpern an. $F_G$ und $N$ greifen aber **beide** am Apfel an — sie sind ein 1./2.-Newton-Gleichgewicht ($\\sum F = 0$), kein 3.-Newton-Paar.
+
+**Rechnung:** Die korrekten Paare sind:
+* zu $F_G$ (Erde → Apfel): Apfel zieht Erde mit gleicher Kraft an (Apfel → Erde).
+* zu $N$ (Tisch → Apfel): Apfel drückt Tisch mit gleicher Kraft nach unten (Apfel → Tisch).
+
+**Probe:** Faustregel: actio-reactio-Paare immer nach dem Schema „Körper A → Körper B" und „Körper B → Körper A". Wenn beide Kräfte am gleichen Körper angreifen, ist es **kein** 3.-Newton-Paar.
+
+**Typischer Fehler:** Im Freikörperbild des Apfels die nach oben wirkende Normalkraft als „Gegenkraft" zur Gewichtskraft missverstehen. Beide wirken am Apfel — das ist Gleichgewicht, nicht actio-reactio.`,
+        [
+          'An welchen Körpern greifen actio und reactio?',
+          '$F_G$ und $N$ greifen beide am Apfel an — kann das ein 3.-Newton-Paar sein?',
+          'Korrekte Reaktionspartner: Apfel auf Erde (zu $F_G$), Apfel auf Tisch (zu $N$).',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['newton-3'] },
+      ),
+      mc(
+        'Welches der folgenden Kräftepaare ist ein actio-reactio-Paar nach 3. Newton?',
+        [
+          'Schwimmer drückt Wasser nach hinten — Wasser drückt Schwimmer nach vorn.',
+          'Gewichtskraft und Normalkraft auf eine Vase, die auf einem Tisch steht.',
+          'Federkraft und Massenträgheit beim schwingenden Pendel.',
+          'Auftrieb und Gewichtskraft auf einen schwimmenden Körper.',
+        ],
+        0,
+        `**Ansatz:** Test: greifen die zwei Kräfte an **verschiedenen** Körpern an, sind sie gleich groß und entgegengesetzt?
+
+**Rechnung:** Schwimmer/Wasser: $\\vec F_{\\text{Schw}\\to\\text{Wasser}} = -\\vec F_{\\text{Wasser}\\to\\text{Schw}}$, je eine Kraft pro Körper — exakt 3. Newton.
+
+**Probe:** Die anderen Optionen sind alle **Gleichgewichte** am selben Körper (1./2. Newton mit $\\sum F = 0$).
+
+**Typischer Fehler:** Jedes Kraftpaar gleicher Größe und entgegengesetzter Richtung als actio-reactio fehlinterpretieren — der Punkt ist, dass die Kräfte an **zwei** Körpern angreifen müssen.`,
+        [
+          'Wie viele Körper sind beteiligt?',
+          'actio-reactio ⇒ ein Paar, zwei Körper.',
+          'Gleichgewicht am selben Körper ⇒ kein actio-reactio.',
+        ],
+        {
+          1: 'Beide Kräfte greifen an der **Vase** an. Das ist Gleichgewicht ($\\sum F = 0$), nicht actio-reactio.',
+          2: '„Massenträgheit" ist keine eigene Kraft im Sinne Newtons — sie beschreibt nur die Tendenz, $\\vec v$ zu erhalten. Echte Kraftpaare zwischen Pendel und Aufhängung wären ein 3.-Newton-Beispiel.',
+          3: 'Auftrieb und Gewichtskraft greifen beide am schwimmenden Körper an — Gleichgewicht, nicht actio-reactio.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['newton-3'] },
+      ),
+      mc(
+        'Eine Astronautin ($m_A = 60\\,\\text{kg}$) stößt sich von einer ruhenden Raumkapsel ($m_K = 1500\\,\\text{kg}$) ab. Während des Abstoßes wirkt auf die Astronautin die Stoßkraft $F = 300\\,\\text{N}$. Welche Aussage ist korrekt?',
+        [
+          'Auf die Kapsel wirkt zur selben Zeit eine Gegenkraft von $300\\,\\text{N}$ (3. Newton). Beschleunigung Astronautin: $a_A = 5\\,\\text{m/s}^2$, Kapsel: $a_K = 0{,}2\\,\\text{m/s}^2$.',
+          'Die Kapsel erfährt keine Kraft, weil die Astronautin sich „selbst" abstößt.',
+          'Auf die Kapsel wirkt nur ein Bruchteil von $300\\,\\text{N}$ — proportional zum Massenverhältnis.',
+          'Astronautin und Kapsel beschleunigen gleich stark, da das 3. Newton gleiche Beschleunigungen erzwingt.',
+        ],
+        0,
+        `**Ansatz:** 3. Newton liefert **gleiche Kräfte** an beiden Körpern. Die Beschleunigungen folgen über 2. Newton aus den jeweiligen Massen.
+
+**Rechnung:** $|F| = 300\\,\\text{N}$ auf jeden Körper.
+* Astronautin: $a_A = 300/60 = 5\\,\\text{m/s}^2$.
+* Kapsel: $a_K = 300/1500 = 0{,}2\\,\\text{m/s}^2$.
+Verhältnis $a_A/a_K = m_K/m_A = 25$ — die kleinere Masse wird stärker beschleunigt.
+
+**Probe:** Impuls-Erhaltung: $m_A \\cdot v_A = m_K \\cdot v_K$ nach gleicher Stoßdauer ⇒ $v_A/v_K = 25$. Konsistent. ✓
+
+**Typischer Fehler:** Glauben, das 3. Newton erzwinge gleiche **Beschleunigungen**. Es erzwingt nur gleiche **Kräfte**; Beschleunigungen unterscheiden sich invers zu den Massen.`,
+        [
+          'Welche Größe ist nach 3. Newton an beiden Körpern gleich — Kraft oder Beschleunigung?',
+          'Beschleunigung: $a = F/m$ — und $m$ ist hier sehr unterschiedlich.',
+          '$300/60$ vs. $300/1500$.',
+        ],
+        {
+          1: 'Doch — die Astronautin drückt die Kapsel mit $300\\,\\text{N}$ weg (3. Newton). Sie kann sich nicht „selbst" abstoßen.',
+          2: 'Massenverhältnis verändert die **Beschleunigung**, nicht die Kraft. Beide Körper erfahren $300\\,\\text{N}$.',
+          3: 'Das 3. Newton erzwingt gleiche **Kräfte**, nicht gleiche Beschleunigungen. Beschleunigungen folgen aus $a = F/m$.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['newton-3'] },
+      ),
+      mc(
+        'Im Freikörperbild eines auf dem Tisch ruhenden Buches zeichnet ein Studierender: „Gewichtskraft $F_G$ nach unten und actio-reactio-Gegenkraft $F_G$ nach oben — also $\\sum F = 0$, das Buch ruht." Wo steckt der Denkfehler?',
+        [
+          'actio-reactio-Paare greifen an verschiedenen Körpern an. Die Reaktion zu $F_G$ (Erde → Buch) wirkt auf die **Erde** (Buch → Erde), nicht auf das Buch. Die nach oben gerichtete Kraft am Buch ist die Normalkraft des **Tisches**.',
+          'Der Studierende hat recht — actio = reactio gilt immer am selben Körper.',
+          'Im Freikörperbild darf die Gewichtskraft nicht eingezeichnet werden; nur die Normalkraft.',
+          'Das Buch ruht nicht — $F_G$ ist immer größer als jede Reaktion.',
+        ],
+        0,
+        `**Ansatz:** Klassischer 3.-Newton-Fehler. Reaktion zu „Erde → Buch" ist „Buch → Erde", **nicht** eine andere Kraft am Buch.
+
+**Rechnung:** Am Buch wirken zwei Kräfte: $F_G$ (Erde → Buch) nach unten und $N$ (Tisch → Buch) nach oben. $\\sum F = N - F_G = 0$ liefert $N = F_G$ — aber $N$ ist **kein** actio-reactio-Partner zu $F_G$.
+
+**Probe:** Trick: Schreibe „A → B" und „B → A" auf. Reaktion zu $F_{\\text{Erde→Buch}}$ ist $F_{\\text{Buch→Erde}}$ — die wirkt nicht am Buch.
+
+**Typischer Fehler:** Im Freikörperbild Reaktionen als Gegenkräfte am selben Körper einzeichnen. Reaktionen wirken **nie** am selben Körper.`,
+        [
+          'An welchem Körper wirkt die Reaktion zu $F_G$?',
+          'Reaktion: „Buch zieht die Erde an" — Wirkung auf die Erde, nicht auf das Buch.',
+          'Was am Buch nach oben wirkt, kommt vom Tisch (Normalkraft).',
+        ],
+        {
+          1: '3. Newton verlangt **explizit**, dass actio und reactio an verschiedenen Körpern angreifen.',
+          2: 'Doch — im Freikörperbild des Buches gehört die Gewichtskraft ($F_G$) genauso hinein wie die Normalkraft.',
+          3: 'Falsch — am Buch greifen $F_G$ und $N$ an, beide gleich groß; das Buch ruht. Reaktion zu $F_G$ wirkt auf die Erde, nicht am Buch selbst.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['newton-3'] },
+      ),
+      mc(
+        'Ein Pferd zieht eine Kutsche horizontal an einem Seil. Nach 3. Newton zieht die Kutsche das Pferd mit gleicher Kraft entgegengesetzt. Warum bewegt sich die Kutsche dann überhaupt vorwärts?',
+        [
+          'Die Kräfte greifen an **unterschiedlichen** Körpern. Auf die Kutsche wirken Seilzug nach vorn und Reibung nach hinten — Seilzug überwiegt, also $\\sum F > 0$. Das Pferd treibt sich seinerseits über die Hufreibung am Boden vorwärts.',
+          'Das 3. Newton gilt nur bei stehenden Körpern, nicht im Fahrbetrieb.',
+          'Die Reaktionskraft ist tatsächlich kleiner als die actio, weil Reibung sie reduziert.',
+          'Pferd und Kutsche beschleunigen nicht — der Eindruck täuscht; sie ruhen relativ zum Boden.',
+        ],
+        0,
+        `**Ansatz:** Das Paradox löst sich, sobald man **Freikörperbilder** für Pferd und Kutsche **getrennt** zeichnet. Jeder Körper hat seine eigene resultierende Kraft.
+
+**Rechnung:** Auf die Kutsche: Seilzug $F_S$ (vorwärts) und Reibung $F_{R,K}$ (rückwärts). $\\sum F_K = F_S - F_{R,K} > 0$ ⇒ Beschleunigung. Auf das Pferd: Hufreibung $F_{R,P}$ (vorwärts) und Seilzug $F_S$ (rückwärts) ⇒ $\\sum F_P = F_{R,P} - F_S > 0$.
+
+**Probe:** Beide $\\sum F$ können positiv sein, weil sie verschiedene Reibungskräfte enthalten. Das 3.-Newton-Paar (Seilzug auf Kutsche vs. auf Pferd) hebt sich **systemweit** auf, aber **nicht** an einem einzelnen Körper.
+
+**Typischer Fehler:** Kräftegleichungen für Pferd und Kutsche „in einen Topf werfen". 3.-Newton-Paare auf verschiedenen Körpern dürfen im FKB des einzelnen Körpers nicht gemeinsam stehen.`,
+        [
+          'FKB für Kutsche und Pferd **getrennt** zeichnen.',
+          'Welche Kräfte wirken an der Kutsche? Welche am Pferd?',
+          'Die 3.-Newton-Partner stehen in **verschiedenen** FKBs.',
+        ],
+        {
+          1: 'Doch — 3. Newton gilt **immer**, auch bei beschleunigten Körpern. Es ist ein Naturgesetz, kein Sonderfall.',
+          2: 'Reaktion ist **immer** gleich groß und entgegengesetzt — Reibung reduziert sie nicht.',
+          3: 'Pferd und Kutsche beschleunigen tatsächlich (gleich, weil über Seil verbunden) — das ist im Alltag direkt beobachtbar.',
+        },
+        { stage: 'transfer', subGoal: 2, uses: ['newton-3'] },
+      ),
+      matching(
+        'Ordne jeder actio-Kraft die korrekte reactio-Kraft (nach 3. Newton) zu.',
+        [
+          { left: 'Hand schiebt einen Einkaufswagen nach vorn.', right: 'Wagen drückt die Hand mit gleicher Kraft nach hinten.' },
+          { left: 'Erde zieht den Mond an.', right: 'Mond zieht die Erde mit gleicher Kraft an.' },
+          { left: 'Rakete stößt Verbrennungsgase nach unten aus.', right: 'Gase drücken die Rakete mit gleicher Kraft nach oben.' },
+          { left: 'Magnet zieht einen Eisennagel an.', right: 'Eisennagel zieht den Magnet mit gleicher Kraft an.' },
+        ],
+        `**Ansatz:** Schema „A → B" / „B → A". Beide Kräfte gleich groß, entgegengesetzt, an verschiedenen Körpern.
+
+**Rechnung:** Jedes Paar nutzt das Muster $\\vec F_{AB} = -\\vec F_{BA}$. Der Schwimmer/Wasser-Fall, der Bezugskraft/Gegenkraft-Fall und der Gravitations-Fall folgen alle derselben Logik.
+
+**Probe:** Konsequenz beim Raketenstart: Die nach unten ausgestoßenen Gase tragen einen Impuls; die nach oben gerichtete Reaktion auf die Rakete ist exakt der Antrieb.
+
+**Typischer Fehler:** Die Reaktion „auf den Boden" zu schreiben statt auf den jeweiligen anderen Körper. Beim Magnet: die Reaktion wirkt am Eisennagel auf **den Magneten**, nicht auf eine dritte Instanz.`,
+        [
+          'Schema „A → B" und „B → A".',
+          'Beide Kräfte gleich groß, entgegengesetzt.',
+          'Reaktion immer am **anderen** Körper.',
+        ],
+        { stage: 'apply-guided', subGoal: 2, uses: ['newton-3'] },
+      ),
+    ],
+
+    // ── [3] Gewichtskraft: F_G = m·g ─────────────────────────────────────
+    3: [
+      tf(
+        'Auf der Erdoberfläche beträgt die Gewichtskraft einer Masse $m$ ungefähr $F_G = m \\cdot 9{,}81\\,\\text{m/s}^2$ — ausgedrückt in Newton.',
+        true,
+        `**Ansatz:** Definitionsgleichung Gewichtskraft im Schwerefeld der Erde.
+
+**Rechnung:** $F_G = m \\cdot g$ mit $g \\approx 9{,}81\\,\\text{m/s}^2$ auf der Erdoberfläche. Beispiel: $m = 1\\,\\text{kg} \\Rightarrow F_G \\approx 9{,}81\\,\\text{N}$.
+
+**Probe:** Einheiten: $\\text{kg} \\cdot \\text{m/s}^2 = \\text{N}$ ✓.
+
+**Typischer Fehler:** $g$ als „Konstante 10" mitnehmen — das ist nur eine Näherung. In Klausuren wird meist $9{,}81\\,\\text{m/s}^2$ erwartet, sofern nicht anders angegeben.`,
+        [
+          'Wie ist die Gewichtskraft definiert?',
+          'Welcher Wert hat $g$ auf der Erde?',
+          'Einheit der Gewichtskraft = Newton.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['gewichtskraft'] },
+      ),
+      ni(
+        'Welche Gewichtskraft wirkt auf eine Masse $m = 75\\,\\text{kg}$ auf der Erde? ($g = 9{,}81\\,\\text{m/s}^2$)',
+        735.75, 0.5, 'N',
+        `**Ansatz:** $F_G = m \\cdot g$ direkt einsetzen.
+
+**Rechnung:** $F_G = 75\\,\\text{kg} \\cdot 9{,}81\\,\\text{m/s}^2 = 735{,}75\\,\\text{N}$.
+
+**Probe:** Plausibilität — eine $75\\,\\text{kg}$-Person sollte rund $750\\,\\text{N}$ wiegen ($\\approx 75 \\cdot 10$). Stimmt. Einheiten: $\\text{kg} \\cdot \\text{m/s}^2 = \\text{N}$ ✓.
+
+**Typischer Fehler:** Einheit „kg" für die Gewichtskraft notieren — die Antwort wäre dann sprachlich „$75\\,\\text{kg-Gewicht}$", was im SI-System nicht zulässig ist. Korrekt: Newton.`,
+        [
+          '$F_G = m \\cdot g$.',
+          '$m = 75$, $g = 9{,}81$.',
+          'Einheit Newton, nicht kg.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['gewichtskraft'] },
+      ),
+      mc(
+        'Eine Studentin rechnet für $m = 5\\,\\text{kg}$: „$F_G = m + g = 5 + 9{,}81 = 14{,}81\\,\\text{N}$." Wo steckt der Fehler?',
+        [
+          'Masse und Beschleunigung werden **multipliziert**, nicht addiert: $F_G = m \\cdot g = 5 \\cdot 9{,}81 = 49{,}05\\,\\text{N}$. Einheiten kg und m/s² sind nicht addierbar.',
+          'Die Rechnung stimmt — $F_G$ beträgt tatsächlich $14{,}81\\,\\text{N}$.',
+          'Sie hat $g$ zu hoch angesetzt — richtig wäre $g = 9{,}8\\,\\text{m/s}^2$, der Rest passt.',
+          'Sie sollte durch $g$ dividieren: $F_G = m/g \\approx 0{,}51\\,\\text{N}$.',
+        ],
+        0,
+        `**Ansatz:** $F_G = m \\cdot g$ — multiplikative Verknüpfung. Eine Addition hat schon dimensionsmäßig keinen Sinn.
+
+**Rechnung:** $F_G = 5 \\cdot 9{,}81 = 49{,}05\\,\\text{N}$.
+
+**Probe:** Einheitenanalyse $\\text{kg} + \\text{m/s}^2$ ist undefiniert — das hätte sofort auffallen müssen. $\\text{kg} \\cdot \\text{m/s}^2 = \\text{N}$ ist korrekt.
+
+**Typischer Fehler:** Mathematisch oberflächlich rechnen, ohne Einheitencheck. Faustregel: vor jeder Antwort die Einheit prüfen.`,
+        [
+          'Wie ist $F_G$ definiert: addiert oder multipliziert?',
+          'Einheiten-Check: $\\text{kg} + \\text{m/s}^2$ — geht das?',
+          '$5 \\cdot 9{,}81 = ?$',
+        ],
+        {
+          1: '$14{,}81$ entstand durch Addition. Einheit $\\text{kg} + \\text{m/s}^2$ ist undefiniert — die „N"-Beschriftung kaschiert den Fehler.',
+          2: 'Der Wert von $g$ (ob $9{,}8$ oder $9{,}81$) ändert nichts am Grundfehler — Addition statt Multiplikation.',
+          3: 'Division wäre noch unphysikalischer: $\\text{kg}/(\\text{m/s}^2)$ liefert keine Kraft.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['gewichtskraft'] },
+      ),
+      ni(
+        'Auf dem Mond beträgt die Schwerebeschleunigung $g_{\\text{Mond}} \\approx 1{,}62\\,\\text{m/s}^2$. Welche Gewichtskraft hat eine Person mit Masse $m = 80\\,\\text{kg}$ auf dem Mond?',
+        129.6, 0.5, 'N',
+        `**Ansatz:** $F_G = m \\cdot g$ — auch auf dem Mond, nur mit dem Mond-$g$.
+
+**Rechnung:** $F_G = 80 \\cdot 1{,}62 = 129{,}6\\,\\text{N}$.
+
+**Probe:** Vergleich Erde: $80 \\cdot 9{,}81 = 784{,}8\\,\\text{N}$. Verhältnis $784{,}8/129{,}6 \\approx 6{,}05$ — Mond-Gewichtskraft ist rund $1/6$ der Erd-Gewichtskraft. Stimmt mit der bekannten Faustformel überein. ✓
+
+**Typischer Fehler:** Glauben, $F_G$ sei ortsunabhängig. Nur die **Masse** ist es; die Gewichtskraft skaliert linear mit dem lokalen $g$.`,
+        [
+          'Welche Größe ändert sich auf dem Mond: $m$ oder $g$?',
+          '$F_G = m \\cdot g_{\\text{Mond}}$.',
+          '$80 \\cdot 1{,}62$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['gewichtskraft'] },
+      ),
+      ni(
+        'Eine Bauteil-Aufhängung darf maximal $F_G = 2000\\,\\text{N}$ tragen. Welche Masse darf maximal aufgehängt werden? ($g = 9{,}81\\,\\text{m/s}^2$, Antwort in kg auf 2 Nachkommastellen)',
+        203.87, 0.05, 'kg',
+        `**Ansatz:** $F_G = m \\cdot g$ nach $m$ auflösen: $m = F_G / g$.
+
+**Rechnung:** $m = 2000/9{,}81 \\approx 203{,}87\\,\\text{kg}$.
+
+**Probe:** Rückwärts: $m \\cdot g = 203{,}87 \\cdot 9{,}81 \\approx 1999{,}97\\,\\text{N} \\approx 2000\\,\\text{N}$ ✓.
+
+**Typischer Fehler:** Statt $F_G/g$ direkt $F_G$ als kg-Wert übernehmen ($2000\\,\\text{kg}$) — Verwechslung Gewichtskraft (N) und Masse (kg).`,
+        [
+          'Aus $F_G = m \\cdot g$ nach $m$ umstellen.',
+          '$m = F_G/g$.',
+          '$2000/9{,}81$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['gewichtskraft'] },
+      ),
+    ],
+
+    // ── [4] Masse (kg) vs. Gewichtskraft (N) ────────────────────────────
+    4: [
+      tf(
+        'Die Masse eines Körpers ist auf Erde und Mond gleich, seine Gewichtskraft hingegen ist auf dem Mond etwa sechsmal kleiner als auf der Erde.',
+        true,
+        `**Ansatz:** Masse ist Eigenschaft des Körpers (ortsunabhängig). Gewichtskraft hängt linear vom lokalen $g$ ab.
+
+**Rechnung:** $g_{\\text{Erde}}/g_{\\text{Mond}} = 9{,}81/1{,}62 \\approx 6{,}05$. Die Gewichtskraft am gleichen Körper skaliert genauso.
+
+**Probe:** $m = 1\\,\\text{kg}$: $F_{G,\\text{Erde}} \\approx 9{,}81\\,\\text{N}$, $F_{G,\\text{Mond}} \\approx 1{,}62\\,\\text{N}$. Verhältnis ≈ $6$.
+
+**Typischer Fehler:** Masse und Gewichtskraft als „dasselbe in unterschiedlichen Einheiten" sehen. Sie sind **physikalisch verschiedene Größen**.`,
+        [
+          'Was ändert sich beim Ortswechsel: $m$ oder $g$?',
+          '$F_G = m \\cdot g$ — bei festem $m$, anderem $g$.',
+          'Faktor $g_{\\text{Erde}}/g_{\\text{Mond}} \\approx 6$.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['masse-vs-fg'] },
+      ),
+      mc(
+        'Welche Aussage über Masse und Gewichtskraft ist korrekt?',
+        [
+          'Masse hat die Einheit kg und ist eine Eigenschaft des Körpers; Gewichtskraft hat die Einheit N und hängt vom lokalen Schwerefeld ab.',
+          'Masse und Gewichtskraft sind zwei Namen für dieselbe Größe — die Einheiten kg und N sind austauschbar.',
+          'Masse ändert sich mit dem Ort (Erde, Mond), Gewichtskraft ist eine Konstante des Körpers.',
+          'Masse ist die Trägheit, Gewichtskraft ist nur ein älteres Wort für „Masse" und hat dieselbe Einheit.',
+        ],
+        0,
+        `**Ansatz:** Definitionen: Masse $m$ in kg ist invariant. Gewichtskraft $F_G = m \\cdot g$ in N hängt vom Ort ab.
+
+**Rechnung:** Auf der Erde wiegt $1\\,\\text{kg}$ rund $9{,}81\\,\\text{N}$, auf dem Mond rund $1{,}62\\,\\text{N}$ — die Masse bleibt $1\\,\\text{kg}$.
+
+**Probe:** Eine Balkenwaage misst Masse (vergleicht zwei Massen direkt — funktioniert auch auf dem Mond). Eine Federwaage misst Gewichtskraft (Federauslenkung — zeigt auf dem Mond andere Werte).
+
+**Typischer Fehler:** Im Alltag „Gewicht" und „Masse" synonym verwenden. Physikalisch sind sie verschiedene Größen mit unterschiedlichen Einheiten.`,
+        [
+          'Welche Einheit hat $m$? Welche $F_G$?',
+          'Was bleibt beim Ortswechsel gleich?',
+          'Federwaage vs. Balkenwaage als Anschauung.',
+        ],
+        {
+          1: 'kg und N sind verschiedene Einheiten verschiedener Größen — kg = Masse, N = Kraft.',
+          2: 'Genau umgekehrt: Masse bleibt konstant, Gewichtskraft ändert sich mit dem Ort.',
+          3: '„Trägheit" ist tatsächlich eine Eigenschaft der Masse, aber „Gewichtskraft" ist davon **getrennt** — sie hat die Einheit N, nicht kg.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['masse-vs-fg'] },
+      ),
+      mc(
+        'Eine Sportlerin liest auf einer Personenwaage „$65\\,\\text{kg}$" ab. Welche Aussage trifft physikalisch korrekt zu?',
+        [
+          'Ihre Masse ist $65\\,\\text{kg}$. Genaugenommen misst die Waage die Gewichtskraft (rund $638\\,\\text{N}$) und rechnet sie in eine kg-Anzeige um, indem sie durch $g$ teilt.',
+          'Ihr Gewicht beträgt $65\\,\\text{kg}$.',
+          'Ihre Gewichtskraft beträgt $65\\,\\text{kg}$.',
+          'Ihre Masse ändert sich beim Aufzugfahren — daher zeigt die Waage in beschleunigten Aufzügen verschiedene Werte.',
+        ],
+        0,
+        `**Ansatz:** Personenwaage = Federwaage. Sie misst die Normalkraft = Gewichtskraft (im Ruhefall) und beschriftet sie als Masse, kalibriert auf $g_{\\text{Erde}}$.
+
+**Rechnung:** Anzeige $65\\,\\text{kg}$: $F_G = 65 \\cdot 9{,}81 = 637{,}65\\,\\text{N}$.
+
+**Probe:** Im beschleunigten Aufzug zeigt die Waage abweichende Werte — nicht weil die Masse sich ändert, sondern weil die Normalkraft (≠ Gewichtskraft) sich ändert: $N = m(g + a)$.
+
+**Typischer Fehler:** Glauben, im Aufzug ändere sich die Masse. Es ändert sich nur die Normalkraft, weil eine zusätzliche Beschleunigung wirkt.`,
+        [
+          'Was misst die Federwaage physikalisch wirklich?',
+          'Warum zeigt sie trotzdem „kg"?',
+          'Im Aufzug: ändert sich $m$ oder $a$?',
+        ],
+        {
+          1: '„Gewicht" ist umgangssprachlich. Die Einheit „kg" gehört physikalisch zur **Masse**, nicht zur Gewichtskraft.',
+          2: 'Gewichtskraft hat die Einheit N, nicht kg.',
+          3: 'Die Masse ist invariant. Im beschleunigten Aufzug ändert sich nicht $m$, sondern die Normalkraft $N = m(g + a)$.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['masse-vs-fg'] },
+      ),
+      mc(
+        'Eine Studierende notiert in einer Aufgabe: „Die Gewichtskraft eines Buches beträgt $0{,}5\\,\\text{kg}$." Was ist der Fehler?',
+        [
+          'Sie hat die Einheit der **Masse** (kg) für die **Gewichtskraft** (N) verwendet. Bei $m = 0{,}5\\,\\text{kg}$ beträgt die Gewichtskraft $F_G = 0{,}5 \\cdot 9{,}81 \\approx 4{,}9\\,\\text{N}$.',
+          'Das Buch ist zu leicht — eine Gewichtskraft kleiner als $1\\,\\text{kg}$ ist physikalisch unmöglich.',
+          '$0{,}5\\,\\text{kg}$ ist die Masse — Gewichtskraft ist $g \\cdot m = 9{,}81 \\cdot 0{,}5 = 4{,}9\\,\\text{kg}$.',
+          'Die Einheiten kg und N sind im Alltag austauschbar, der Schreibfehler ist unkritisch.',
+        ],
+        0,
+        `**Ansatz:** Klassische Verwechslung Masse-Einheit (kg) mit Kraft-Einheit (N).
+
+**Rechnung:** Die Studierende hat vermutlich die **Masse** $0{,}5\\,\\text{kg}$ aufgeschrieben und „Gewichtskraft" davorgesetzt. Korrekt: $F_G = 0{,}5 \\cdot 9{,}81 \\approx 4{,}9\\,\\text{N}$.
+
+**Probe:** Eine Gewichtskraft hat **immer** die Einheit Newton. Wenn die Einheit kg auftaucht, ist es eine Masse, keine Kraft.
+
+**Typischer Fehler:** Im Alltag ist „kg-Gewicht" gebräuchlich. In der Physik strikt trennen: Masse = kg, Kraft = N.`,
+        [
+          'Welche Einheit hat eine Kraft im SI-System?',
+          'kg ist die Einheit für Masse, N für Kraft.',
+          'Wenn der Wert in kg steht, ist es die Masse, nicht die Gewichtskraft.',
+        ],
+        {
+          1: 'Eine Gewichtskraft kann durchaus kleiner als $1\\,\\text{kg-Gewicht}$ sein — aber das Problem ist die **Einheit** kg, nicht der Zahlenwert.',
+          2: 'Die Multiplikation $g \\cdot m$ ist richtig, aber die Einheit des Ergebnisses ist N, nicht kg.',
+          3: 'In Klausuren und in technischen Berechnungen sind kg und N **nicht** austauschbar — sie haben unterschiedliche Dimensionen.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['masse-vs-fg'] },
+      ),
+      mc(
+        'Ein Astronaut hat auf der Erde $80\\,\\text{kg}$ Masse und damit eine Gewichtskraft von rund $785\\,\\text{N}$. Auf einem Planeten X misst dieselbe Federwaage $320\\,\\text{N}$. Welche Masse hat der Astronaut auf Planet X, und welches $g$ hat Planet X?',
+        [
+          'Masse bleibt $80\\,\\text{kg}$ (ortsunabhängig). $g_X = F_G/m = 320/80 = 4\\,\\text{m/s}^2$.',
+          'Masse sinkt auf $320/9{,}81 \\approx 32{,}6\\,\\text{kg}$, $g_X$ bleibt $9{,}81\\,\\text{m/s}^2$.',
+          'Masse $80\\,\\text{kg}$, $g_X = 320 \\cdot 80 = 25\\,600\\,\\text{m/s}^2$.',
+          'Sowohl Masse als auch $g$ ändern sich proportional — die Größen sind nicht eindeutig bestimmbar.',
+        ],
+        0,
+        `**Ansatz:** Masse ist ortsunabhängig — sie bleibt $80\\,\\text{kg}$. Gewichtskraft ändert sich linear mit $g$, also liefert $F_G = m \\cdot g$ direkt das lokale $g$.
+
+**Rechnung:** $g_X = F_G/m = 320/80 = 4\\,\\text{m/s}^2$.
+
+**Probe:** Vergleich: $g_X/g_{\\text{Erde}} = 4/9{,}81 \\approx 0{,}41$. Die Gewichtskraft auf Planet X ist also rund $41\\,\\%$ der irdischen — passt zu $320/785 \\approx 0{,}408$. ✓
+
+**Typischer Fehler:** Annehmen, die Masse ändere sich, weil die Federwaage einen anderen Wert zeigt. Die Federwaage misst Kraft, nicht Masse.`,
+        [
+          'Bleibt die Masse beim Ortswechsel gleich?',
+          '$F_G = m \\cdot g$ — was ist hier gegeben, was gesucht?',
+          '$g_X = F_G / m$.',
+        ],
+        {
+          1: 'Masse ist invariant — die Federwaage zeigt nicht Masse, sondern Kraft.',
+          2: '$g_X = F_G \\cdot m$ wäre dimensional falsch ($\\text{N} \\cdot \\text{kg} \\neq \\text{m/s}^2$). Man muss $F_G$ durch $m$ teilen.',
+          3: 'Doch — eindeutig bestimmbar, weil $m$ ortsunabhängig ist und $F_G$ direkt gemessen wurde.',
+        },
+        { stage: 'transfer', subGoal: 4, uses: ['masse-vs-fg'] },
+      ),
+      matching(
+        'Ordne jeder Beobachtung die korrekte Größe (Masse oder Gewichtskraft) zu.',
+        [
+          { left: 'Eine Balkenwaage gleicht zwei unbekannte Mengen aus.', right: 'Misst die Masse $m$ (Einheit kg), funktioniert auf jedem Planeten gleich.' },
+          { left: 'Eine Federwaage misst die Auslenkung einer geeichten Feder.', right: 'Misst die Gewichtskraft $F_G$ (Einheit N), Anzeige hängt vom lokalen $g$ ab.' },
+          { left: 'Astronaut reist vom Mond zur Erde — was ändert sich?', right: 'Gewichtskraft steigt um Faktor rund $6$, Masse bleibt unverändert.' },
+          { left: 'Reise vom Pol zum Äquator (kleineres $g$ am Äquator).', right: 'Gewichtskraft sinkt minimal, Masse bleibt unverändert.' },
+        ],
+        `**Ansatz:** Masse-vs-Kraft-Unterscheidung über das **Messprinzip** des Geräts: Vergleich (Balkenwaage) oder Federauslenkung (Federwaage).
+
+**Rechnung:** Balkenwaage vergleicht $m_1 \\cdot g$ mit $m_2 \\cdot g$ — das $g$ kürzt sich, sie misst direkt das Massenverhältnis. Federwaage misst $F = c \\cdot \\Delta x$, also Kraft.
+
+**Probe:** Astronauten-Beispiel: $80\\,\\text{kg}$ bleiben überall $80\\,\\text{kg}$. Gewichtskraft Mond ≈ $130\\,\\text{N}$, Erde ≈ $785\\,\\text{N}$, Faktor 6.
+
+**Typischer Fehler:** Annehmen, Personenwaagen messen direkt Masse. Sie messen Kraft und teilen durch $g_{\\text{Erde}}$ — das funktioniert nur auf der Erde.`,
+        [
+          'Wie funktioniert eine Balkenwaage? Was kürzt sich?',
+          'Federwaage misst Auslenkung — direkt proportional zur **Kraft**.',
+          'Was bleibt beim Ortswechsel invariant?',
+        ],
+        { stage: 'apply-guided', subGoal: 4, uses: ['masse-vs-fg'] },
+      ),
+    ],
+
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // mech-2-2 — Arbeit und Energie  (6 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-2-2': {
+
+    // ── [0] Arbeit: W = F·s·cos α (Skalarprodukt), Einheit Joule ───────
+    0: [
+      tf(
+        'Die mechanische Arbeit ist eine skalare Größe; ihre SI-Einheit ist das Joule mit $1\\,\\text{J} = 1\\,\\text{N} \\cdot 1\\,\\text{m}$.',
+        true,
+        `**Ansatz:** $W = \\vec F \\cdot \\vec s = F \\cdot s \\cdot \\cos\\alpha$ — das Skalarprodukt ist eine **Zahl** mit Einheit $\\text{N} \\cdot \\text{m}$.
+
+**Rechnung:** Definition: $1\\,\\text{J} := 1\\,\\text{N} \\cdot 1\\,\\text{m} = 1\\,\\text{kg} \\cdot \\text{m}^2/\\text{s}^2$.
+
+**Probe:** Energie und Arbeit haben dieselbe Einheit Joule — kein Vektor, keine Richtung.
+
+**Typischer Fehler:** „Arbeit hat eine Richtung" — falsch. Sie ist skalar; Vorzeichen erscheint höchstens als negativer Wert (Kraft entgegen dem Weg).`,
+        [
+          'Was ergibt das Skalarprodukt $\\vec F \\cdot \\vec s$ — eine Zahl oder einen Vektor?',
+          'SI-Einheit der Arbeit?',
+          '$1\\,\\text{J} = 1\\,\\text{N} \\cdot 1\\,\\text{m}$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['arbeit'] },
+      ),
+      mc(
+        'Eine konstante Kraft $F = 80\\,\\text{N}$ wirkt unter $\\alpha = 30°$ zur Bewegungsrichtung über $s = 5\\,\\text{m}$. Welche Arbeit verrichtet sie?',
+        ['$W \\approx 346\\,\\text{J}$', '$W = 400\\,\\text{J}$', '$W = 200\\,\\text{J}$', '$W \\approx 692\\,\\text{J}$'],
+        0,
+        `**Ansatz:** $W = F \\cdot s \\cdot \\cos\\alpha$.
+
+**Rechnung:** $W = 80 \\cdot 5 \\cdot \\cos(30°) = 400 \\cdot \\tfrac{\\sqrt 3}{2} \\approx 400 \\cdot 0{,}8660 = 346{,}4\\,\\text{J}$.
+
+**Probe:** Plausibilität: $W$ liegt zwischen $0$ (bei $90°$) und $400\\,\\text{J}$ (bei $0°$). Bei $30°$ erwarten wir einen Wert nahe dem Maximum — passt. Einheit: $\\text{N} \\cdot \\text{m} = \\text{J}$ ✓.
+
+**Typischer Fehler:** $\\sin$ statt $\\cos$ verwenden ($80 \\cdot 5 \\cdot \\sin 30° = 200$). Bei der Arbeitsformel steht **Cosinus**, weil nur die Kraft**komponente in Wegrichtung** Arbeit leistet.`,
+        [
+          '$W = F \\cdot s \\cdot \\cos\\alpha$ aufschreiben.',
+          '$\\cos(30°) = \\sqrt 3 / 2 \\approx 0{,}866$.',
+          '$80 \\cdot 5 \\cdot 0{,}866$.',
+        ],
+        {
+          1: '$400\\,\\text{J}$ wäre die Arbeit bei $\\alpha = 0°$ (Kraft parallel zum Weg). Hier ist $\\alpha = 30°$, also kommt der Faktor $\\cos 30°$ dazu.',
+          2: '$200\\,\\text{J}$ entsteht aus $80 \\cdot 5 \\cdot \\sin 30° = 400 \\cdot 0{,}5$. Die Arbeitsformel nutzt aber $\\cos\\alpha$, nicht $\\sin\\alpha$.',
+          3: '$692\\,\\text{J}$ entstünde aus Verdopplung — vermutlich $2 F \\cdot s \\cdot \\cos\\alpha$ statt $F \\cdot s \\cdot \\cos\\alpha$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['arbeit'] },
+      ),
+      mc(
+        'Ein Studierender rechnet bei $F = 100\\,\\text{N}$, $s = 4\\,\\text{m}$, $\\alpha = 60°$: „$W = F \\cdot s = 400\\,\\text{J}$". Wo steckt der Fehler?',
+        [
+          'Den $\\cos\\alpha$-Faktor vergessen. Korrekt: $W = 100 \\cdot 4 \\cdot \\cos(60°) = 400 \\cdot 0{,}5 = 200\\,\\text{J}$.',
+          'Die Rechnung stimmt — der Cosinus kommt erst bei $\\alpha = 90°$ ins Spiel.',
+          'Es muss $W = F + s = 104\\,\\text{J}$ heißen — Addition statt Multiplikation.',
+          'Bei $60°$ leistet die Kraft keine Arbeit, also $W = 0$.',
+        ],
+        0,
+        `**Ansatz:** Allgemeine Arbeitsformel $W = F \\cdot s \\cdot \\cos\\alpha$ — der Cosinus muss **immer** mit, nicht erst bei $90°$.
+
+**Rechnung:** $W = 100 \\cdot 4 \\cdot \\cos(60°) = 400 \\cdot 0{,}5 = 200\\,\\text{J}$.
+
+**Probe:** Der Studierende hätte sich gemerkt: bei $\\alpha = 0$ ist $\\cos = 1$ (Sonderfall), sonst muss der Faktor explizit auftauchen.
+
+**Typischer Fehler:** „Bei kleinen Winkeln spielt $\\cos$ keine Rolle" — falsch. $\\cos(60°) = 0{,}5$, das macht Faktor $2$ Unterschied.`,
+        [
+          'Wann gilt $W = F \\cdot s$ direkt?',
+          'Nur bei paralleler Kraft und Weg ($\\alpha = 0$).',
+          '$\\cos(60°) = 0{,}5$ — das halbiert das Ergebnis.',
+        ],
+        {
+          1: '$\\cos\\alpha$ gehört **immer** in die Formel; $\\cos(60°) = 0{,}5$, also halbiert sich die Arbeit gegenüber $F \\cdot s$.',
+          2: '$F + s$ wäre dimensional widersprüchlich ($\\text{N} + \\text{m}$). Die Arbeit entsteht aus Multiplikation.',
+          3: '$W = 0$ erst bei $\\alpha = 90°$. Bei $60°$ ist $\\cos(60°) = 0{,}5 \\neq 0$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['arbeit'] },
+      ),
+      ni(
+        'Ein Werker zieht eine Kiste über $s = 8\\,\\text{m}$ Boden mit einer Zugkraft $F = 150\\,\\text{N}$. Das Seil bildet $\\alpha = 25°$ mit dem Boden. Welche Arbeit verrichtet er an der Kiste? (auf $0{,}1\\,\\text{J}$ genau)',
+        1087.6, 1, 'J',
+        `**Ansatz:** $W = F \\cdot s \\cdot \\cos\\alpha$ — nur die horizontale Komponente der Zugkraft trägt zur Arbeit bei.
+
+**Rechnung:** $\\cos(25°) \\approx 0{,}9063$. $W = 150 \\cdot 8 \\cdot 0{,}9063 = 1200 \\cdot 0{,}9063 \\approx 1087{,}6\\,\\text{J}$.
+
+**Probe:** Vergleich: bei $\\alpha = 0°$ wäre $W = 1200\\,\\text{J}$. Mit kleinem Schrägwinkel verlieren wir nur etwa $9\\,\\%$ — passt zu $\\cos(25°) \\approx 0{,}906$. Einheit: $\\text{N} \\cdot \\text{m} = \\text{J}$ ✓.
+
+**Typischer Fehler:** $\\cos(25°)$ und $\\sin(25°)$ verwechseln ($\\sin(25°) \\approx 0{,}423$, das gäbe rund $507\\,\\text{J}$). Merkregel: $\\cos$ liefert die Komponente in Kraftrichtung-zur-Bewegung.`,
+        [
+          '$W = F \\cdot s \\cdot \\cos\\alpha$.',
+          '$\\cos(25°) \\approx 0{,}9063$.',
+          '$150 \\cdot 8 \\cdot 0{,}9063$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['arbeit'] },
+      ),
+      ni(
+        'Ein Aufzug hebt eine Last von $m = 250\\,\\text{kg}$ um $h = 10\\,\\text{m}$ vertikal an. Welche Hubarbeit wird gegen die Gewichtskraft verrichtet? ($g = 9{,}81\\,\\text{m/s}^2$)',
+        24525, 5, 'J',
+        `**Ansatz:** Hubkraft $F = m \\cdot g$ wirkt parallel zum Weg ($\\alpha = 0°$): $W = F \\cdot s = m \\cdot g \\cdot h$.
+
+**Rechnung:** $W = 250 \\cdot 9{,}81 \\cdot 10 = 24\\,525\\,\\text{J}$.
+
+**Probe:** Gleiche Größe wie der Zuwachs an potentieller Energie ($E_{\\text{pot}} = m g h$) — Energie ist erhalten. ✓ Plausibilität: 250 kg um 10 m heben ≈ $24{,}5\\,\\text{kJ}$ — typische Aufzugarbeit.
+
+**Typischer Fehler:** $g$ vergessen ($250 \\cdot 10 = 2500$) oder Höhen-Einheit verwechseln (cm statt m).`,
+        [
+          'Welche Kraft muss der Aufzug aufbringen?',
+          '$F = m \\cdot g$, parallel zur Bewegung.',
+          '$W = m g h$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['arbeit'] },
+      ),
+    ],
+
+    // ── [1] Senkrechte Kraft leistet keine Arbeit (cos 90° = 0) ────────
+    1: [
+      tf(
+        'Eine Kraft, die zu jedem Zeitpunkt senkrecht zur Bewegungsrichtung steht, leistet keine mechanische Arbeit am Körper.',
+        true,
+        `**Ansatz:** $W = F \\cdot s \\cdot \\cos\\alpha$ mit $\\alpha = 90°$ ⇒ $\\cos\\alpha = 0$.
+
+**Rechnung:** Auch bei großem $F$ und langem Weg $s$ bleibt $W = 0$, solange die Kraft permanent senkrecht zur Bewegung steht.
+
+**Probe:** Klassische Beispiele — Normalkraft auf einen rollenden Ball, Zentripetalkraft auf einen Satelliten, magnetische Kraft auf eine bewegte Ladung im Kreis.
+
+**Typischer Fehler:** Annehmen, dass eine Kraft, die „groß ist", auch immer Arbeit leistet. Entscheidend ist die Richtung relativ zur Bewegung.`,
+        [
+          'Welche Komponente von $\\vec F$ trägt zur Arbeit bei?',
+          'Bei $\\alpha = 90°$ ist diese Komponente null.',
+          '$\\cos 90° = 0$ — Arbeit verschwindet.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['arbeit-90'] },
+      ),
+      mc(
+        'Ein Satellit kreist auf einer Kreisbahn um die Erde. Welche Arbeit leistet die Gravitationskraft pro Umlauf an ihm?',
+        [
+          '$W = 0$ — die Gravitation steht stets senkrecht zur Bahngeschwindigkeit ($\\cos 90° = 0$).',
+          '$W = F_G \\cdot 2\\pi r$ — Kraft mal Umfang.',
+          '$W = m g h$ mit $h = $ Bahnhöhe.',
+          '$W < 0$ — die Gravitation hält den Satelliten zurück.',
+        ],
+        0,
+        `**Ansatz:** Auf einer Kreisbahn ist die Geschwindigkeit immer tangential, die Gravitation zeigt zum Mittelpunkt — die beiden stehen ständig senkrecht aufeinander.
+
+**Rechnung:** $\\vec F_G \\cdot \\vec v = 0$ in jedem Bahnpunkt ⇒ Arbeit pro Bahnabschnitt $\\mathrm{d}W = \\vec F_G \\cdot \\mathrm{d}\\vec s = 0$. Aufintegriert: $W = 0$.
+
+**Probe:** Das passt zur Energieerhaltung: $E_{\\text{kin}}$ bleibt auf der Kreisbahn konstant (gleiche Höhe ⇒ gleiches $E_{\\text{pot}}$, also kein Energieaustausch).
+
+**Typischer Fehler:** Glauben, eine wirkende Kraft müsse Arbeit leisten. Sie krümmt nur die Bahn (Zentripetalbeschleunigung), liefert aber keinen tangentialen Energiegewinn.`,
+        [
+          'Wie steht die Bahngeschwindigkeit zum Radiusvektor?',
+          'Wie zeigt die Gravitation auf einer Kreisbahn?',
+          'Senkrecht ⇒ $\\cos 90° = 0$ ⇒ keine Arbeit.',
+        ],
+        {
+          1: '$F_G \\cdot 2\\pi r$ wäre korrekt, wenn die Kraft tangential entlang des Umfangs zöge — sie zeigt aber radial.',
+          2: '$m g h$ ist die Höhenenergie, nicht die Arbeit der Gravitation auf einer Kreisbahn (gleiche Höhe ⇒ keine Höhenänderung).',
+          3: '$W < 0$ verlangt eine Kraftkomponente entgegen der Bewegung. Die Zentripetalkraft hat aber **keine** tangentiale Komponente.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['arbeit-90'] },
+      ),
+      mc(
+        'Ein Studierender argumentiert: „Beim Tragen einer schweren Tasche horizontal durch den Park ($s = 200\\,\\text{m}$) leiste ich Arbeit gegen die Gewichtskraft." Wo steckt der Fehler?',
+        [
+          'Die Tragkraft (vertikal nach oben) und die Bewegung (horizontal) stehen senkrecht aufeinander: $\\cos 90° = 0$, also $W = 0\\,\\text{J}$ am idealisierten Tasche-System.',
+          'Das stimmt — Tragen kostet immer mechanische Arbeit am System.',
+          'Arbeit wird nur bei vertikaler Bewegung an einer Last verrichtet, im Park wäre sie negativ.',
+          'Die Tragkraft wirkt in Bewegungsrichtung, also $W = F_G \\cdot s$.',
+        ],
+        0,
+        `**Ansatz:** Mechanische Arbeit hängt strikt am Skalarprodukt $\\vec F \\cdot \\vec s$. Eine vertikale Tragkraft hat keine horizontale Komponente.
+
+**Rechnung:** $\\alpha = 90°$ zwischen Tragkraft und Weg ⇒ $W = F \\cdot s \\cdot \\cos 90° = 0$.
+
+**Probe:** Auf das Werkstück „Tasche" wirkt netto keine vertikale Verschiebung; ihre potentielle Energie ändert sich nicht. Energieerhaltung am Tasche-System: $\\Delta E = 0$, im Einklang mit $W_{\\text{außen}} = 0$.
+
+**Typischer Fehler:** Mechanische Arbeit (am Tasche-System) mit der **biologischen** Anstrengung der Muskeln verwechseln. Letztere ist real, aber nicht das, was die Mechanik mit „Arbeit" bezeichnet.`,
+        [
+          'Wie steht die Tragkraft zur Bewegung?',
+          'Senkrecht ⇒ $\\cos\\alpha = ?$',
+          'Mechanische Arbeit ≠ menschliche Anstrengung.',
+        ],
+        {
+          1: 'Mechanisch falsch — am Tasche-System verändert sich keine Höhe, also keine Energieänderung. Anstrengung der Muskeln ist eine andere Größe.',
+          2: 'Bei horizontaler Bewegung ist die mechanische Arbeit der Gewichtskraft null, nicht „negativ".',
+          3: 'Die Tragkraft wirkt vertikal nach oben, nicht in horizontaler Bewegungsrichtung.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['arbeit-90'] },
+      ),
+      mc(
+        'Ein Eishockey-Puck gleitet reibungsfrei auf horizontalem Eis. Welche Arbeit leistet die Normalkraft des Eises am Puck während der Gleitbewegung?',
+        [
+          '$W = 0$ — Normalkraft steht senkrecht zur horizontalen Bewegungsrichtung.',
+          '$W = -F_N \\cdot s$ — die Normalkraft bremst den Puck.',
+          '$W = m g h$ — Energieänderung über die Höhe der Eisschicht.',
+          '$W = F_N \\cdot s$ — sie trägt den Puck und leistet positive Arbeit.',
+        ],
+        0,
+        `**Ansatz:** Die Normalkraft des Eises ist vertikal nach oben gerichtet, die Bewegung horizontal — Skalarprodukt verschwindet.
+
+**Rechnung:** $\\alpha = 90°$ ⇒ $W = F_N \\cdot s \\cdot \\cos 90° = 0\\,\\text{J}$.
+
+**Probe:** Im reibungsfreien Fall bleibt $E_{\\text{kin}}$ konstant — passt zu „keine resultierende Arbeit am Puck".
+
+**Typischer Fehler:** Die Normalkraft als „antreibende" oder „bremsende" Kraft missverstehen. Sie verhindert nur das Eindringen in den Boden, leistet aber keine Arbeit.`,
+        [
+          'In welche Richtung zeigt die Normalkraft auf horizontalem Eis?',
+          'In welche Richtung bewegt sich der Puck?',
+          'Senkrechte Anordnung ⇒ keine Arbeit.',
+        ],
+        {
+          1: 'Bremsen würde die Reibungskraft (entgegen der Bewegung) — die Normalkraft steht senkrecht und „bremst" nicht.',
+          2: '$m g h$ wäre Höhenenergie — der Puck ändert seine Höhe aber nicht.',
+          3: 'Tragen bedeutet vertikales Gleichgewicht, aber **keine** mechanische Arbeit, weil keine vertikale Verschiebung erfolgt.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['arbeit-90'] },
+      ),
+      matching(
+        'Ordne jeder Kraft-Weg-Lage die korrekte Arbeit zu.',
+        [
+          { left: 'Kraft parallel zur Bewegung ($\\alpha = 0°$)', right: '$W = F \\cdot s$ (maximal positiv)' },
+          { left: 'Kraft senkrecht zur Bewegung ($\\alpha = 90°$)', right: '$W = 0$' },
+          { left: 'Kraft entgegen der Bewegung ($\\alpha = 180°$)', right: '$W = -F \\cdot s$ (maximal negativ)' },
+          { left: 'Kraft schräg, $\\alpha = 60°$', right: '$W = \\tfrac{1}{2} F \\cdot s$' },
+        ],
+        `**Ansatz:** $\\cos\\alpha$ liefert den jeweiligen Faktor.
+
+**Rechnung:** $\\cos 0° = 1$, $\\cos 90° = 0$, $\\cos 180° = -1$, $\\cos 60° = 0{,}5$.
+
+**Probe:** Verlauf: positiv bei $\\alpha < 90°$, null bei $90°$, negativ darüber bis zur Maximalbremsung bei $180°$.
+
+**Typischer Fehler:** Den Cosinus-Verlauf nicht mit den drei Eckwinkeln $0/90/180°$ als Anker durchgehen. Das verhindert, dass man sich verrechnet.`,
+        [
+          '$\\cos 0° = 1$ — Maximalfall.',
+          '$\\cos 90° = 0$.',
+          '$\\cos 60° = 0{,}5$.',
+        ],
+        { stage: 'apply-guided', subGoal: 1, uses: ['arbeit-90', 'arbeit'] },
+      ),
+    ],
+
+    // ── [2] Kinetische Energie: E_kin = ½mv² ────────────────────────────
+    2: [
+      tf(
+        'Die kinetische Energie eines Körpers wächst quadratisch mit der Geschwindigkeit: bei doppelter Geschwindigkeit hat er viermal so viel kinetische Energie.',
+        true,
+        `**Ansatz:** $E_{\\text{kin}} = \\tfrac{1}{2} m v^2$ — der quadratische Term in $v$ ist entscheidend.
+
+**Rechnung:** $E_{\\text{kin}}(2v) = \\tfrac{1}{2} m (2v)^2 = \\tfrac{1}{2} m \\cdot 4 v^2 = 4 \\cdot E_{\\text{kin}}(v)$.
+
+**Probe:** Beispiel $m = 1\\,\\text{kg}$: $v = 1$ ⇒ $0{,}5\\,\\text{J}$; $v = 2$ ⇒ $2\\,\\text{J}$ (Faktor 4). ✓
+
+**Typischer Fehler:** Linearen Zusammenhang annehmen („Verdoppelung der Geschwindigkeit ⇒ doppelte Energie"). Konsequenz im Verkehr: Bremsweg wächst quadratisch mit $v$.`,
+        [
+          'Wo steht $v$ in der Formel — in welcher Potenz?',
+          '$(2v)^2 = 4 v^2$.',
+          'Energie skaliert mit dem Quadrat der Geschwindigkeit.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['e-kin'] },
+      ),
+      mc(
+        'Eine Masse $m = 4\\,\\text{kg}$ bewegt sich mit $v = 5\\,\\text{m/s}$. Wie groß ist ihre kinetische Energie?',
+        ['$E_{\\text{kin}} = 50\\,\\text{J}$', '$E_{\\text{kin}} = 100\\,\\text{J}$', '$E_{\\text{kin}} = 10\\,\\text{J}$', '$E_{\\text{kin}} = 20\\,\\text{J}$'],
+        0,
+        `**Ansatz:** $E_{\\text{kin}} = \\tfrac{1}{2} m v^2$.
+
+**Rechnung:** $E_{\\text{kin}} = 0{,}5 \\cdot 4 \\cdot 5^2 = 0{,}5 \\cdot 4 \\cdot 25 = 50\\,\\text{J}$.
+
+**Probe:** Einheit: $\\text{kg} \\cdot \\text{m}^2/\\text{s}^2 = \\text{J}$ ✓.
+
+**Typischer Fehler:** $v$ nicht quadrieren oder Faktor $\\tfrac{1}{2}$ vergessen.`,
+        [
+          '$E_{\\text{kin}} = \\tfrac{1}{2} m v^2$.',
+          'Erst $v$ quadrieren: $5^2 = 25$.',
+          '$0{,}5 \\cdot 4 \\cdot 25$.',
+        ],
+        {
+          1: '$100\\,\\text{J}$ entsteht aus $m \\cdot v^2 = 4 \\cdot 25$ — der Faktor $\\tfrac{1}{2}$ fehlt.',
+          2: '$10\\,\\text{J}$ entsteht aus $\\tfrac{1}{2} m v = 0{,}5 \\cdot 4 \\cdot 5$ — Quadrat von $v$ vergessen.',
+          3: '$20\\,\\text{J}$ entsteht aus $m \\cdot v = 4 \\cdot 5$ — sowohl $\\tfrac{1}{2}$ als auch das Quadrat fehlen.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['e-kin'] },
+      ),
+      ni(
+        'Ein Auto mit $m = 1200\\,\\text{kg}$ fährt mit $v = 20\\,\\text{m/s}$ (= $72\\,\\text{km/h}$). Welche kinetische Energie hat es?',
+        240000, 50, 'J',
+        `**Ansatz:** $E_{\\text{kin}} = \\tfrac{1}{2} m v^2$.
+
+**Rechnung:** $E_{\\text{kin}} = 0{,}5 \\cdot 1200 \\cdot 20^2 = 600 \\cdot 400 = 240\\,000\\,\\text{J} = 240\\,\\text{kJ}$.
+
+**Probe:** Plausibilität: 240 kJ entspricht etwa der Energie zum Erwärmen von 1 kg Wasser um 60 K — passt zur typischen Bewegungsenergie eines Pkw.
+
+**Typischer Fehler:** km/h ungerechnet einsetzen; oder $v$ nur einfach statt quadriert. $20^2 = 400$, nicht $40$.`,
+        [
+          '$v$ ist bereits in m/s — nicht erneut umrechnen.',
+          '$v^2 = 400$.',
+          '$\\tfrac{1}{2} \\cdot 1200 \\cdot 400$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['e-kin'] },
+      ),
+      mc(
+        'Eine Studierende rechnet $E_{\\text{kin}}$ für $m = 2\\,\\text{kg}$ und $v = 10\\,\\text{m/s}$ als „$E = \\tfrac{1}{2} m v = 0{,}5 \\cdot 2 \\cdot 10 = 10\\,\\text{J}$". Wo steckt der Fehler?',
+        [
+          '$v$ muss **quadriert** werden: $E_{\\text{kin}} = \\tfrac{1}{2} m v^2 = 0{,}5 \\cdot 2 \\cdot 100 = 100\\,\\text{J}$.',
+          'Die Rechnung stimmt — $E_{\\text{kin}}$ ist tatsächlich $10\\,\\text{J}$.',
+          'Der Faktor $\\tfrac{1}{2}$ ist falsch; korrekt $E_{\\text{kin}} = m \\cdot v = 20\\,\\text{J}$.',
+          'Die Einheit muss N statt J sein, sonst stimmt es.',
+        ],
+        0,
+        `**Ansatz:** Definitionsgleichung der kinetischen Energie sauber anwenden: das $v$ steht in **zweiter Potenz**.
+
+**Rechnung:** $E_{\\text{kin}} = \\tfrac{1}{2} \\cdot 2 \\cdot 10^2 = 100\\,\\text{J}$.
+
+**Probe:** Einheit: $\\text{kg} \\cdot \\text{m}^2/\\text{s}^2 = \\text{J}$ ✓.
+
+**Typischer Fehler:** Die Formel mit $v$ statt $v^2$ erinnern (wie etwa beim Impuls $p = m v$). Faustcheck: hat Energie die Einheit $\\text{kg} \\cdot \\text{m}^2/\\text{s}^2$? Das verlangt $v^2$.`,
+        [
+          'Welcher Exponent steht bei $v$ in der Energie-Formel?',
+          'Hinweis: Einheit der Energie ist $\\text{kg} \\cdot \\text{m}^2/\\text{s}^2$.',
+          '$v^2 = 100$, nicht $10$.',
+        ],
+        {
+          1: 'Mit $v$ statt $v^2$ wäre der Wert $10$ — aber die Einheit wäre $\\text{kg} \\cdot \\text{m/s}$ (Impuls!), nicht Joule.',
+          2: '$\\tfrac{1}{2}$ stimmt — der Fehler liegt am Quadrat von $v$, nicht am Vorfaktor.',
+          3: 'Die Einheit ist nicht das Problem — der Wert $10$ ist um Faktor $10$ falsch wegen fehlendem Quadrat.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['e-kin'] },
+      ),
+      ni(
+        'Ein LKW mit $m = 8000\\,\\text{kg}$ fährt mit $v = 60\\,\\text{km/h}$. Welche kinetische Energie hat er? (Antwort in kJ, auf $0{,}1\\,\\text{kJ}$ genau)',
+        1111.11, 1, 'kJ',
+        `**Ansatz:** Erst Geschwindigkeit auf SI-Einheit umrechnen: $v = 60/3{,}6 \\approx 16{,}667\\,\\text{m/s}$. Dann $E_{\\text{kin}} = \\tfrac{1}{2} m v^2$.
+
+**Rechnung:** $v^2 = (60/3{,}6)^2 = 277{,}78\\,\\text{m}^2/\\text{s}^2$. $E_{\\text{kin}} = 0{,}5 \\cdot 8000 \\cdot 277{,}78 = 4000 \\cdot 277{,}78 \\approx 1\\,111\\,111\\,\\text{J} \\approx 1111{,}1\\,\\text{kJ}$.
+
+**Probe:** Vergleich Auto bei gleicher $v$: $\\tfrac{1}{2} \\cdot 1500 \\cdot 277{,}78 \\approx 208\\,\\text{kJ}$. LKW ist 5,3-mal schwerer ⇒ 5,3-fache Energie. ✓ ($1111/208 \\approx 5{,}3$.)
+
+**Typischer Fehler:** km/h direkt einsetzen ($60^2 = 3600$ statt $277{,}78$) oder zwischen J und kJ verwechseln.`,
+        [
+          'Erst $\\text{km/h} \\to \\text{m/s}$ umrechnen.',
+          '$v = 60/3{,}6$.',
+          '$\\tfrac{1}{2} m v^2$, am Ende durch $1000$ teilen für kJ.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['e-kin'] },
+      ),
+      mc(
+        'Bei welcher Verdopplung wächst die kinetische Energie um den **Faktor 4**?',
+        [
+          'Verdopplung der Geschwindigkeit (Faktor $2^2 = 4$).',
+          'Verdopplung der Masse (Faktor 2).',
+          'Verdopplung von $m$ und $v$ gleichzeitig (Faktor $2 \\cdot 4 = 8$).',
+          'Halbierung der Masse (Faktor $0{,}5$).',
+        ],
+        0,
+        `**Ansatz:** $E_{\\text{kin}} = \\tfrac{1}{2} m v^2$ — linear in $m$, **quadratisch** in $v$.
+
+**Rechnung:** Faktor 4 ergibt sich aus Verdopplung der Größe, die quadratisch eingeht.
+
+**Probe:** Numerisch $m = 1, v = 2$: $E = 2\\,\\text{J}$. Mit $v = 4$: $E = 8\\,\\text{J}$ ⇒ Faktor 4. ✓
+
+**Typischer Fehler:** Quadratische und lineare Skalierung verwechseln.`,
+        [
+          'In welcher Potenz steht $v$? Welche $m$?',
+          'Quadratisch ⇒ $2^2 = 4$.',
+          'Linear ⇒ Faktor $2$.',
+        ],
+        {
+          1: 'Verdopplung von $m$ verdoppelt $E_{\\text{kin}}$ — Faktor 2, nicht 4.',
+          2: 'Beides verdoppeln gibt $2 \\cdot 2^2 = 8$, nicht 4.',
+          3: 'Halbierung von $m$ halbiert $E_{\\text{kin}}$ (Faktor $0{,}5$).',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['e-kin'] },
+      ),
+    ],
+
+    // ── [3] Potentielle Energie: E_pot = mgh ────────────────────────────
+    3: [
+      mc(
+        'Eine Masse $m = 5\\,\\text{kg}$ wird $h = 4\\,\\text{m}$ über das Bezugsniveau angehoben. Welche potentielle Energie hat sie? ($g = 9{,}81\\,\\text{m/s}^2$)',
+        ['$E_{\\text{pot}} \\approx 196\\,\\text{J}$', '$E_{\\text{pot}} = 20\\,\\text{J}$', '$E_{\\text{pot}} = 49\\,\\text{J}$', '$E_{\\text{pot}} = 9{,}81\\,\\text{J}$'],
+        0,
+        `**Ansatz:** $E_{\\text{pot}} = m g h$ direkt einsetzen.
+
+**Rechnung:** $E_{\\text{pot}} = 5 \\cdot 9{,}81 \\cdot 4 = 196{,}2\\,\\text{J}$.
+
+**Probe:** Einheit: $\\text{kg} \\cdot \\text{m/s}^2 \\cdot \\text{m} = \\text{J}$ ✓. Plausibilität: 5 kg auf 4 m hochheben ≈ 200 J — passt.
+
+**Typischer Fehler:** $g$ vergessen ($5 \\cdot 4 = 20$) oder mit anderen Formeln ($\\tfrac{1}{2} m g h$, $m + g + h$) durcheinanderkommen.`,
+        [
+          '$E_{\\text{pot}} = m \\cdot g \\cdot h$.',
+          'Drei Faktoren — keiner darf fehlen.',
+          '$5 \\cdot 9{,}81 \\cdot 4$.',
+        ],
+        {
+          1: '$20\\,\\text{J} = 5 \\cdot 4$ — du hast $g$ ausgelassen.',
+          2: '$49\\,\\text{J}$ entsteht aus $\\tfrac{1}{2} m g \\cdot 2$ oder ähnlicher Verwechslung. Die Formel hat **keinen** Faktor $\\tfrac{1}{2}$.',
+          3: '$9{,}81\\,\\text{J}$ wäre $E_{\\text{pot}}$ für $m = 1$, $h = 1$. Hier sind $m = 5$ und $h = 4$ größer.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['e-pot'] },
+      ),
+      ni(
+        'Ein Wassertank mit $m = 2000\\,\\text{kg}$ steht in $h = 15\\,\\text{m}$ Höhe über dem Bezugsniveau. Welche potentielle Energie speichert er? ($g = 9{,}81\\,\\text{m/s}^2$)',
+        294300, 50, 'J',
+        `**Ansatz:** $E_{\\text{pot}} = m g h$.
+
+**Rechnung:** $E_{\\text{pot}} = 2000 \\cdot 9{,}81 \\cdot 15 = 19\\,620 \\cdot 15 = 294\\,300\\,\\text{J}$.
+
+**Probe:** Vergleich: Diese Energie reicht aus, um eine 100-Watt-Lampe rund $49$ Minuten zu betreiben ($294\\,300/100 = 2943\\,\\text{s}$). ✓ Einheit: J ✓.
+
+**Typischer Fehler:** $h$ in cm statt m einsetzen oder $g$ als $10$ aufrunden, ohne das anzugeben.`,
+        [
+          '$E_{\\text{pot}} = m g h$.',
+          'Alle Größen in SI: m in kg, h in m, g in $\\text{m/s}^2$.',
+          '$2000 \\cdot 9{,}81 \\cdot 15$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['e-pot'] },
+      ),
+      mc(
+        'Ein Studierender berechnet die potentielle Energie eines $m = 10\\,\\text{kg}$-Körpers in $h = 3\\,\\text{m}$ Höhe als „$E_{\\text{pot}} = m + g + h = 10 + 9{,}81 + 3 = 22{,}81\\,\\text{J}$". Wo steckt der Fehler?',
+        [
+          'Multiplikation statt Addition: $E_{\\text{pot}} = m \\cdot g \\cdot h = 10 \\cdot 9{,}81 \\cdot 3 = 294{,}3\\,\\text{J}$.',
+          'Die Rechnung stimmt — $E_{\\text{pot}}$ ist tatsächlich rund $23\\,\\text{J}$.',
+          'Es fehlt der Faktor $\\tfrac{1}{2}$: $E_{\\text{pot}} = \\tfrac{1}{2} m g h \\approx 147\\,\\text{J}$.',
+          '$h$ muss in cm angegeben werden, dann passt die Addition.',
+        ],
+        0,
+        `**Ansatz:** Dimensionsanalyse: $\\text{kg} + \\text{m/s}^2 + \\text{m}$ ist undefiniert — Addition unterschiedlicher Einheiten ist unzulässig.
+
+**Rechnung:** Korrekt: $E_{\\text{pot}} = m \\cdot g \\cdot h = 10 \\cdot 9{,}81 \\cdot 3 = 294{,}3\\,\\text{J}$.
+
+**Probe:** Einheit: $\\text{kg} \\cdot \\text{m/s}^2 \\cdot \\text{m} = \\text{N} \\cdot \\text{m} = \\text{J}$ ✓.
+
+**Typischer Fehler:** Die J-Beschriftung neben der Zahl 22,81 kaschiert den Dimensionsfehler. Faustregel: Einheiten **vor** dem Rechnen prüfen.`,
+        [
+          'Wie sind $m$, $g$, $h$ in der Formel verknüpft?',
+          'Multiplikativ — Einheiten multiplizieren sich, $\\text{kg} \\cdot \\text{m/s}^2 \\cdot \\text{m} = \\text{J}$.',
+          '$10 \\cdot 9{,}81 \\cdot 3 \\neq 10 + 9{,}81 + 3$.',
+        ],
+        {
+          1: 'Addition unterschiedlicher Einheiten ist physikalisch ungültig — die Aussage „$23\\,\\text{J}$" ist falsch.',
+          2: 'Es gibt **keinen** Faktor $\\tfrac{1}{2}$ in $E_{\\text{pot}} = m g h$.',
+          3: '$h$ kann in beliebigen Längeneinheiten angegeben werden, solange sie passend mit $g$ kombiniert werden — die Addition bleibt ungültig.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['e-pot'] },
+      ),
+      ni(
+        'Eine Wanderin ($m = 70\\,\\text{kg}$) steigt $\\Delta h = 800\\,\\text{m}$ Höhenunterschied auf einen Berg. Welche potentielle Energie gewinnt sie gegenüber dem Ausgangspunkt? (Antwort in kJ, $g = 9{,}81\\,\\text{m/s}^2$)',
+        549.36, 0.5, 'kJ',
+        `**Ansatz:** Energiegewinn $\\Delta E_{\\text{pot}} = m g \\Delta h$ (Bezugsniveau frei wählbar — Energie**differenz** zählt).
+
+**Rechnung:** $\\Delta E_{\\text{pot}} = 70 \\cdot 9{,}81 \\cdot 800 = 686{,}7 \\cdot 800 = 549\\,360\\,\\text{J} = 549{,}36\\,\\text{kJ}$.
+
+**Probe:** Plausibilität: 549 kJ entspricht etwa $130\\,\\text{kcal}$. Eine Wanderung dieser Länge verbrennt biologisch deutlich mehr (Wirkungsgrad < 25 %), aber die rein **mechanische** Hubarbeit ist tatsächlich nur ~130 kcal. ✓
+
+**Typischer Fehler:** kJ und J verwechseln (Faktor 1000); oder $h$ in km statt m einsetzen.`,
+        [
+          '$\\Delta E_{\\text{pot}} = m g \\Delta h$.',
+          'Energiedifferenz zählt — Bezugsniveau frei.',
+          'Am Ende durch $1000$ teilen für kJ.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['e-pot'] },
+      ),
+      mc(
+        'Welche der folgenden Aussagen über $E_{\\text{pot}} = m g h$ ist korrekt?',
+        [
+          '$h$ ist die Höhe über einem **frei wählbaren** Bezugsniveau — physikalisch relevant sind nur Energie**differenzen**.',
+          'Das Bezugsniveau muss zwingend der Erdmittelpunkt sein.',
+          '$E_{\\text{pot}}$ ist nur für Höhen unter $1000\\,\\text{m}$ definiert.',
+          'Im Vakuum wirkt keine Gewichtskraft, also $E_{\\text{pot}} = 0$.',
+        ],
+        0,
+        `**Ansatz:** Potentielle Energie ist nicht absolut, sondern bezieht sich auf ein gewähltes Niveau.
+
+**Rechnung:** Wechselt man das Bezugsniveau um $h_0$, ändert sich $E_{\\text{pot}}$ um die Konstante $m g h_0$ — das hebt sich in jeder physikalischen Differenz auf.
+
+**Probe:** In Klausuren wird typisch der Boden, der Mittelpunkt oder der tiefste Punkt der Bahn als Nullniveau gesetzt — das vereinfacht Rechnungen, ändert aber nichts an der Physik.
+
+**Typischer Fehler:** Glauben, $E_{\\text{pot}}$ habe einen „echten" Nullpunkt. Hat sie nicht — nur Differenzen sind messbar.`,
+        [
+          'Was ist physikalisch messbar — Absolutwert oder Differenz?',
+          'Welche Wahl beim Bezugsniveau ist erlaubt?',
+          'Vakuum ändert $g$ nicht.',
+        ],
+        {
+          1: 'Falsch — der Erdmittelpunkt würde sogar das Modell „$g \\approx \\text{const}$" zerstören. Üblich ist Boden oder tiefster Bahnpunkt.',
+          2: 'Die Formel $E_{\\text{pot}} = m g h$ gilt nahe der Erdoberfläche — die Gültigkeit endet erst, wenn $g$ merklich variiert (km-Skala), nicht bei $1000\\,\\text{m}$.',
+          3: 'Vakuum hat nichts mit Gravitation zu tun. Ein Apfel im Vakuum erfährt dieselbe Schwerebeschleunigung wie an der Luft.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['e-pot'] },
+      ),
+    ],
+
+    // ── [4] Federenergie: E_Feder = ½cx² ────────────────────────────────
+    4: [
+      tf(
+        'Die in einer linearen Feder gespeicherte Energie ist $E_{\\text{Feder}} = \\tfrac{1}{2} c x^2$, wobei $c$ die Federkonstante und $x$ die Auslenkung aus der Ruhelage ist.',
+        true,
+        `**Ansatz:** Hooke-Gesetz $F(x) = c \\cdot x$ — die in der Feder gespeicherte Energie folgt aus $W = \\int_0^x c \\xi\\,\\mathrm{d}\\xi = \\tfrac{1}{2} c x^2$.
+
+**Rechnung:** Geometrisch: das Dreieck unter der linearen $F$-$x$-Kurve hat die Fläche $\\tfrac{1}{2} \\cdot \\text{Basis} \\cdot \\text{Höhe} = \\tfrac{1}{2} \\cdot x \\cdot (c x) = \\tfrac{1}{2} c x^2$.
+
+**Probe:** Einheit: $\\text{N/m} \\cdot \\text{m}^2 = \\text{N} \\cdot \\text{m} = \\text{J}$ ✓.
+
+**Typischer Fehler:** Faktor $\\tfrac{1}{2}$ vergessen oder $x$ nicht quadrieren — beides führt zu deutlich falschen Werten.`,
+        [
+          'Wie sieht das Hooke-Gesetz aus?',
+          'Wie berechnet man Energie aus $\\int F\\,\\mathrm{d}x$?',
+          'Lineares $F$ ⇒ Dreiecksfläche ⇒ Faktor $\\tfrac{1}{2}$.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['e-feder'] },
+      ),
+      mc(
+        'Eine Feder mit $c = 200\\,\\text{N/m}$ wird um $x = 0{,}1\\,\\text{m}$ ausgelenkt. Welche elastische Energie ist gespeichert?',
+        ['$E_{\\text{Feder}} = 1\\,\\text{J}$', '$E_{\\text{Feder}} = 20\\,\\text{J}$', '$E_{\\text{Feder}} = 10\\,\\text{J}$', '$E_{\\text{Feder}} = 0{,}5\\,\\text{J}$'],
+        0,
+        `**Ansatz:** $E_{\\text{Feder}} = \\tfrac{1}{2} c x^2$.
+
+**Rechnung:** $E = 0{,}5 \\cdot 200 \\cdot (0{,}1)^2 = 100 \\cdot 0{,}01 = 1\\,\\text{J}$.
+
+**Probe:** Einheit: $\\text{N/m} \\cdot \\text{m}^2 = \\text{N} \\cdot \\text{m} = \\text{J}$ ✓.
+
+**Typischer Fehler:** $x$ nicht quadrieren ($0{,}5 \\cdot 200 \\cdot 0{,}1 = 10$) — Faktor 10 zu viel.`,
+        [
+          'Faktor $\\tfrac{1}{2}$ und $x^2$ — beides darf nicht fehlen.',
+          '$(0{,}1)^2 = 0{,}01$.',
+          '$0{,}5 \\cdot 200 \\cdot 0{,}01$.',
+        ],
+        {
+          1: '$20\\,\\text{J} = c \\cdot x = 200 \\cdot 0{,}1$ — du hast Faktor $\\tfrac{1}{2}$ und $x^2$ ignoriert.',
+          2: '$10\\,\\text{J} = \\tfrac{1}{2} c x = 0{,}5 \\cdot 200 \\cdot 0{,}1$ — Quadrat von $x$ vergessen.',
+          3: '$0{,}5\\,\\text{J}$ entstünde aus $\\tfrac{1}{2} \\cdot c \\cdot x^2$ mit $x = 0{,}05$ — du hast vermutlich die Auslenkung halbiert.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['e-feder'] },
+      ),
+      ni(
+        'Eine Stahlfeder mit $c = 2500\\,\\text{N/m}$ wird um $x = 4\\,\\text{cm}$ zusammengedrückt. Welche Federenergie ist gespeichert? (Antwort in J)',
+        2, 0.01, 'J',
+        `**Ansatz:** Erst $x$ in m umrechnen, dann $E_{\\text{Feder}} = \\tfrac{1}{2} c x^2$.
+
+**Rechnung:** $x = 0{,}04\\,\\text{m}$, $x^2 = 0{,}0016\\,\\text{m}^2$. $E = 0{,}5 \\cdot 2500 \\cdot 0{,}0016 = 1250 \\cdot 0{,}0016 = 2\\,\\text{J}$.
+
+**Probe:** Einheit: $\\text{N/m} \\cdot \\text{m}^2 = \\text{J}$ ✓.
+
+**Typischer Fehler:** $x = 4$ in cm direkt einsetzen statt $0{,}04$ in m. Das ergibt $E = 0{,}5 \\cdot 2500 \\cdot 16 = 20\\,000$ — Faktor $10\\,000$ daneben.`,
+        [
+          'Erst cm $\\to$ m umrechnen.',
+          '$x^2 = 0{,}0016$.',
+          '$\\tfrac{1}{2} \\cdot 2500 \\cdot 0{,}0016$.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['e-feder'] },
+      ),
+      mc(
+        'Eine Studentin rechnet für $c = 400\\,\\text{N/m}$, $x = 0{,}2\\,\\text{m}$: „$E = c \\cdot x = 400 \\cdot 0{,}2 = 80\\,\\text{J}$". Wo steckt der Fehler?',
+        [
+          'Sowohl Faktor $\\tfrac{1}{2}$ als auch das Quadrat fehlen: $E_{\\text{Feder}} = \\tfrac{1}{2} c x^2 = 0{,}5 \\cdot 400 \\cdot 0{,}04 = 8\\,\\text{J}$.',
+          'Die Rechnung stimmt — $c \\cdot x$ ist die Federenergie.',
+          'Sie hat die Einheit verwechselt — der Wert ist $80\\,\\text{N}$, nicht $80\\,\\text{J}$.',
+          '$x$ muss in cm eingesetzt werden, dann passt die Rechnung.',
+        ],
+        0,
+        `**Ansatz:** $c \\cdot x$ ist die **Kraft** an der Feder bei Auslenkung $x$ (Hooke), nicht die Energie. Die Energie hat einen Faktor $\\tfrac{1}{2}$ und ein quadriertes $x$.
+
+**Rechnung:** $E_{\\text{Feder}} = \\tfrac{1}{2} \\cdot 400 \\cdot (0{,}2)^2 = 200 \\cdot 0{,}04 = 8\\,\\text{J}$.
+
+**Probe:** $c \\cdot x = 80$ ist tatsächlich richtig — als **Kraft** in N. Die Studentin hat F mit E verwechselt.
+
+**Typischer Fehler:** Die zwei Größen Federkraft ($F = c x$) und Federenergie ($E = \\tfrac{1}{2} c x^2$) durcheinanderbringen.`,
+          [
+          'Was bedeutet $c \\cdot x$ physikalisch?',
+          'Federkraft vs. Federenergie unterscheiden.',
+          'Energie hat $\\tfrac{1}{2}$ und $x^2$.',
+        ],
+        {
+          1: '$c \\cdot x$ ist die Federkraft (Einheit N), nicht die Energie. Die Energie verlangt Faktor $\\tfrac{1}{2}$ und $x^2$.',
+          2: '$80\\,\\text{N}$ ist tatsächlich die Federkraft — aber die Aufgabe fragte nach **Energie**, nicht nach Kraft.',
+          3: 'cm statt m würde nur Größenordnungen verfälschen, nicht den Strukturfehler $c x$ ↔ $\\tfrac{1}{2} c x^2$ beheben.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['e-feder'] },
+      ),
+      ni(
+        'An einer Feder mit $c = 1500\\,\\text{N/m}$ hängt eine Masse, die die Feder um $x = 5\\,\\text{cm}$ aus der Ruhelage zieht. Welche elastische Energie speichert die Feder im Gleichgewicht? (Antwort in J)',
+        1.875, 0.005, 'J',
+        `**Ansatz:** $E_{\\text{Feder}} = \\tfrac{1}{2} c x^2$ mit $x$ in m.
+
+**Rechnung:** $x = 0{,}05\\,\\text{m}$, $x^2 = 0{,}0025\\,\\text{m}^2$. $E = 0{,}5 \\cdot 1500 \\cdot 0{,}0025 = 750 \\cdot 0{,}0025 = 1{,}875\\,\\text{J}$.
+
+**Probe:** Energie-Bilanz im Gleichgewicht: die Hubarbeit gegen die Gewichtskraft entspricht **doppelt** so viel ($m g x$), denn die Feder speichert nur die Hälfte; die andere Hälfte ging an die langsame, quasistatische Bewegung verloren — passt zur klassischen Halbierung.
+
+**Typischer Fehler:** cm-Auslenkung in der Formel direkt belassen ($5^2 = 25$ statt $0{,}05^2 = 0{,}0025$).`,
+        [
+          'Erst cm $\\to$ m umrechnen.',
+          '$x^2 = 0{,}05^2 = 0{,}0025$.',
+          '$0{,}5 \\cdot 1500 \\cdot 0{,}0025$.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['e-feder'] },
+      ),
+      mc(
+        'Eine Feder wird auf doppelte Auslenkung gebracht. Wie ändert sich die in ihr gespeicherte Energie?',
+        [
+          'Sie vervierfacht sich (Faktor $2^2 = 4$).',
+          'Sie verdoppelt sich.',
+          'Sie bleibt gleich.',
+          'Sie verachtfacht sich.',
+        ],
+        0,
+        `**Ansatz:** $E_{\\text{Feder}} = \\tfrac{1}{2} c x^2$ — quadratisch in $x$.
+
+**Rechnung:** $E(2x) = \\tfrac{1}{2} c (2x)^2 = \\tfrac{1}{2} c \\cdot 4 x^2 = 4 \\cdot E(x)$.
+
+**Probe:** Beispiel $c = 100$, $x = 1$: $E = 50$. Mit $x = 2$: $E = 200$ ⇒ Faktor 4. ✓
+
+**Typischer Fehler:** Linearen Zusammenhang annehmen — die Energie wächst aber **quadratisch** mit der Auslenkung.`,
+        [
+          'Wo steht $x$ in der Energie-Formel?',
+          'In welcher Potenz?',
+          '$2^2 = 4$.',
+        ],
+        {
+          1: 'Linear wäre die Federkraft ($F = c x$) — die Energie ist quadratisch.',
+          2: 'Bleibt nur dann gleich, wenn $x$ unverändert bleibt — hier wird $x$ aber verdoppelt.',
+          3: 'Achtfach wäre $2^3$ — der Exponent ist aber $2$, nicht $3$.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['e-feder'] },
+      ),
+    ],
+
+    // ── [5] Energieerhaltung: E_kin + E_pot = const ─────────────────────
+    5: [
+      tf(
+        'In einem konservativen System (keine Reibung, keine externe Energiezufuhr oder -abfuhr) bleibt die Summe aus kinetischer und potentieller Energie konstant.',
+        true,
+        `**Ansatz:** Definition eines konservativen Systems: alle wirkenden Kräfte sind aus einem Potential ableitbar; mechanische Energie ist erhalten.
+
+**Rechnung:** Formal: $E_{\\text{ges}} = E_{\\text{kin}} + E_{\\text{pot}} = \\text{const}$ ⇒ $\\Delta E_{\\text{kin}} = -\\Delta E_{\\text{pot}}$.
+
+**Probe:** Klassische Beispiele: reibungsfreies Pendel, freier Fall im Vakuum, ungestörter Planetenorbit.
+
+**Typischer Fehler:** Reibung als „klein, vernachlässigbar" abtun — schon kleine Reibung verletzt die Erhaltung. Der Begriff „konservativ" ist mathematisch streng.`,
+        [
+          'Welche Bedingung verlangt das Wort „konservativ"?',
+          'Reibung gehört dazu — sie verletzt die Erhaltung.',
+          '$E_{\\text{ges}} = E_{\\text{kin}} + E_{\\text{pot}} = $ const.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['energie-erhalt'] },
+      ),
+      mc(
+        'Ein Pendel schwingt reibungsfrei in der Vertikalebene. Im Umkehrpunkt ist seine kinetische Energie null. Wo erreicht es die maximale kinetische Energie?',
+        [
+          'Im tiefsten Bahnpunkt — dort ist $E_{\\text{pot}}$ minimal, also $E_{\\text{kin}}$ wegen Energieerhaltung maximal.',
+          'Auf halbem Weg — die Energie verteilt sich gleichmäßig.',
+          'Wieder im höchsten Punkt der anderen Seite — dort schwingt es am schnellsten.',
+          'Überall gleich — $E_{\\text{kin}}$ ist während der Schwingung konstant.',
+        ],
+        0,
+        `**Ansatz:** Energieerhaltung: $E_{\\text{ges}} = E_{\\text{kin}} + E_{\\text{pot}}$ konstant. Wo $E_{\\text{pot}}$ minimal, dort ist $E_{\\text{kin}}$ maximal.
+
+**Rechnung:** Tiefster Punkt: $h = 0$ ⇒ $E_{\\text{pot}} = 0$ ⇒ $E_{\\text{kin}} = E_{\\text{ges}}$ (alles als Bewegungsenergie).
+
+**Probe:** Höchste Geschwindigkeit liegt also unten — beobachtet man auch beim Glockenpendel oder bei einer Schaukel.
+
+**Typischer Fehler:** Glauben, die Energie sei „verbraucht", wenn das Pendel oben anhält. In Wahrheit ist sie nur in $E_{\\text{pot}}$ umgewandelt.`,
+        [
+          'Wo ist $E_{\\text{pot}}$ minimal — oben oder unten?',
+          'Energieerhaltung: $E_{\\text{kin}} = E_{\\text{ges}} - E_{\\text{pot}}$.',
+          'Maximale Geschwindigkeit ⇔ minimale Höhe.',
+        ],
+        {
+          1: 'Auf halber Höhe ist $E_{\\text{kin}}$ etwa halb so groß wie maximal — Energie verteilt sich nicht „gleichmäßig", sondern lageabhängig.',
+          2: 'Im höchsten Punkt der anderen Seite ist die Geschwindigkeit wieder null — wie im Ausgangs-Umkehrpunkt.',
+          3: '$E_{\\text{kin}}$ schwankt während der Schwingung zwischen null (oben) und maximal (unten); konstant ist nur $E_{\\text{ges}}$.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['energie-erhalt'] },
+      ),
+      ni(
+        'Eine Masse $m = 2\\,\\text{kg}$ fällt frei (ohne Luftwiderstand) aus einer Höhe von $h = 5\\,\\text{m}$. Welche Geschwindigkeit hat sie kurz vor dem Aufprall? ($g = 9{,}81\\,\\text{m/s}^2$)',
+        9.9, 0.05, 'm/s',
+        `**Ansatz:** Energieerhaltung zwischen Anfangslage (oben, $v = 0$) und Aufprall (unten): $m g h = \\tfrac{1}{2} m v^2$ ⇒ $v = \\sqrt{2 g h}$.
+
+**Rechnung:** $v = \\sqrt{2 \\cdot 9{,}81 \\cdot 5} = \\sqrt{98{,}1} \\approx 9{,}90\\,\\text{m/s}$.
+
+**Probe:** Die Masse $m$ kürzt sich raus — der Wert hängt nicht von der Masse ab. Konsistent mit dem freien Fall (Galilei).
+
+**Typischer Fehler:** Faktor $2$ unter der Wurzel vergessen oder $h^2$ statt $h$ einsetzen.`,
+        [
+          'Energieerhaltung: $E_{\\text{pot,oben}} = E_{\\text{kin,unten}}$.',
+          '$m g h = \\tfrac{1}{2} m v^2$ ⇒ $v = \\sqrt{2 g h}$.',
+          '$\\sqrt{98{,}1}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['energie-erhalt', 'e-kin', 'e-pot'] },
+      ),
+      mc(
+        'In einer reibungsfreien Achterbahn wird ein Wagen aus $h_1 = 20\\,\\text{m}$ losgelassen und durchfährt einen Looping mit Höchstpunkt $h_2 = 15\\,\\text{m}$. Eine Studentin behauptet: „Im Looping-Höchstpunkt ist $v = 0$, weil die Energie bis dorthin verbraucht wurde." Wo steckt der Fehler?',
+        [
+          'Energie wird in einem konservativen System nicht „verbraucht", sondern nur umgewandelt: $E_{\\text{kin},2} = m g (h_1 - h_2) > 0$, also $v_2 = \\sqrt{2 g (h_1 - h_2)} \\approx 9{,}9\\,\\text{m/s}$.',
+          'Die Studentin hat recht — beim Hinaufrollen geht Energie verloren.',
+          'Im Looping-Höchstpunkt verschwindet die Erdanziehung kurz, daher $v = 0$.',
+          'Eine versteckte Reibungskraft im Looping bremst den Wagen tatsächlich auf $v = 0$.',
+        ],
+        0,
+        `**Ansatz:** Energieerhaltung zwischen Punkt 1 (oben Bahnstart) und Punkt 2 (Looping-Höchstpunkt): $m g h_1 = \\tfrac{1}{2} m v_2^2 + m g h_2$.
+
+**Rechnung:** $\\tfrac{1}{2} m v_2^2 = m g (h_1 - h_2)$ ⇒ $v_2 = \\sqrt{2 g (h_1 - h_2)} = \\sqrt{2 \\cdot 9{,}81 \\cdot 5} = \\sqrt{98{,}1} \\approx 9{,}9\\,\\text{m/s}$.
+
+**Probe:** $v_2 = 0$ würde nur eintreten, falls $h_2 = h_1$ — die Höhendifferenz von $5\\,\\text{m}$ liefert aber positive kinetische Energie.
+
+**Typischer Fehler:** „Verbraucht" als Synonym für „umgewandelt" verstehen. In konservativen Systemen ist Energie strikt erhalten, nicht verbrauchbar.`,
+        [
+          'Wieviel Höhendifferenz bleibt zwischen Start und Looping-Top?',
+          'Diese Differenz wird in $E_{\\text{kin}}$ umgesetzt.',
+          '$v_2 = \\sqrt{2 g (h_1 - h_2)}$.',
+        ],
+        {
+          1: '„Verloren" wäre nur bei Reibung. In einem konservativen System ist Energie streng erhalten.',
+          2: 'Die Erdanziehung verschwindet niemals — und schon gar nicht punktuell auf einer Achterbahn.',
+          3: 'Reibung ist im konservativen System per Definition ausgeschlossen — mit Reibung wäre die Aufgabe anders zu rechnen, aber das war hier nicht vorausgesetzt.',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['energie-erhalt'] },
+      ),
+      ni(
+        'Ein Skifahrer ($m = 75\\,\\text{kg}$) startet aus Ruhe an einem $h = 50\\,\\text{m}$ hohen Hang und gleitet reibungsfrei talwärts. Welche Geschwindigkeit hat er am Hangfuß? ($g = 9{,}81\\,\\text{m/s}^2$, Antwort in m/s)',
+        31.32, 0.05, 'm/s',
+        `**Ansatz:** Energieerhaltung: $m g h = \\tfrac{1}{2} m v^2$ ⇒ $v = \\sqrt{2 g h}$.
+
+**Rechnung:** $v = \\sqrt{2 \\cdot 9{,}81 \\cdot 50} = \\sqrt{981} \\approx 31{,}32\\,\\text{m/s} \\approx 113\\,\\text{km/h}$.
+
+**Probe:** Die Masse kürzt sich heraus — leichter und schwerer Fahrer hätten dieselbe Endgeschwindigkeit (im reibungsfreien Idealfall). Die hohen $113\\,\\text{km/h}$ erklären, warum reale Skifahrer dringend Luftwiderstand und Schneereibung brauchen.
+
+**Typischer Fehler:** $h$ in km eingesetzt; oder Wurzel vergessen ($v^2$ als $v$ ausgegeben).`,
+        [
+          '$v = \\sqrt{2 g h}$ — Masse kürzt sich.',
+          '$2 \\cdot 9{,}81 \\cdot 50 = 981$.',
+          '$\\sqrt{981} \\approx 31{,}3$.',
+        ],
+        { stage: 'transfer', subGoal: 5, uses: ['energie-erhalt'] },
+      ),
+      ni(
+        'Eine Stahlkugel ($m = 0{,}5\\,\\text{kg}$) trifft mit $v_0 = 4\\,\\text{m/s}$ horizontal auf eine ungespannte Feder ($c = 200\\,\\text{N/m}$) und drückt sie ein. Reibungsfrei. Wie weit drückt sie die Feder maximal zusammen? (Antwort in cm)',
+        20, 0.1, 'cm',
+        `**Ansatz:** Im Maximalpunkt steht die Kugel kurz still — gesamte $E_{\\text{kin}}$ ist in Federenergie umgewandelt. Energieerhaltung: $\\tfrac{1}{2} m v_0^2 = \\tfrac{1}{2} c x^2$.
+
+**Rechnung:** $x = v_0 \\sqrt{m/c} = 4 \\cdot \\sqrt{0{,}5/200} = 4 \\cdot \\sqrt{0{,}0025} = 4 \\cdot 0{,}05 = 0{,}2\\,\\text{m} = 20\\,\\text{cm}$.
+
+**Probe:** Einheiten: $\\sqrt{\\text{kg} \\cdot \\text{m/N}} = \\sqrt{\\text{kg} \\cdot \\text{m} \\cdot \\text{s}^2/(\\text{kg} \\cdot \\text{m})} = \\text{s}$. $v \\cdot \\sqrt{m/c}$ hat damit Einheit $\\text{m/s} \\cdot \\text{s} = \\text{m}$ ✓.
+
+**Typischer Fehler:** Kraft- statt Energiegleichung ansetzen ($m v_0 = c x$ — falsch, vermengt Impuls und Hooke). Energieerhaltung verlangt **quadrierte** Größen auf beiden Seiten.`,
+        [
+          'Was passiert mit $E_{\\text{kin}}$ am Maximalpunkt?',
+          'Sie wird komplett zu Federenergie.',
+          '$\\tfrac{1}{2} m v_0^2 = \\tfrac{1}{2} c x^2$ ⇒ $x = v_0 \\sqrt{m/c}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['energie-erhalt', 'e-kin', 'e-feder'] },
+      ),
+    ],
+
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // mech-2-4 — Schwingungen  (5 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'mech-2-4': {

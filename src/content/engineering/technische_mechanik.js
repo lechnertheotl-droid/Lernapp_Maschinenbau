@@ -1220,18 +1220,101 @@ $$x_S = \frac{\sum A_i \cdot x_{S,i}}{\sum A_i}$$
               { subGoal: 4, stage: 'transfer',          type: 'multiple-choice', uses: ['masse-vs-fg'],       qty: 1 },
             ],
           },
-          content: String.raw`Die Grundgleichung der Dynamik lautet:
+          content: String.raw`Die drei Newtonschen Gesetze sind die Grundlage der gesamten klassischen Dynamik.
 
-$$\sum F = m \cdot a$$
+**1. Newton — Trägheitsprinzip:** Wirkt auf einen Körper keine resultierende Kraft, so behält er seinen Bewegungszustand bei (Ruhe oder gleichförmige Bewegung):
 
-Masse ist eine Eigenschaft des Körpers. Gewichtskraft ist die Kraft im Schwerefeld: $F_G = m \cdot g$.`,
+$$\sum \vec F = \vec 0 \;\Longleftrightarrow\; \vec v = \text{const}$$
+
+**2. Newton — Grundgleichung der Dynamik:** Die resultierende Kraft erzeugt eine zur Masse proportionale Beschleunigung:
+
+$$\sum \vec F = m \cdot \vec a \qquad [F] = \text{N} = \text{kg} \cdot \text{m/s}^2$$
+
+**3. Newton — Wechselwirkungsprinzip (actio = reactio):** Übt Körper $A$ eine Kraft auf $B$ aus, übt $B$ auf $A$ eine gleich große, entgegengesetzt gerichtete Kraft aus:
+
+$$\vec F_{AB} = -\vec F_{BA}$$
+
+Die beiden Kräfte greifen an **verschiedenen** Körpern an — sie heben sich daher im Freikörperbild eines einzelnen Körpers nicht gegenseitig auf.
+
+**Gewichtskraft im Schwerefeld der Erde:** Sonderfall des 2. Newton mit $a = g$:
+
+$$F_G = m \cdot g \qquad g \approx 9{,}81\,\text{m/s}^2$$
+
+**Masse vs. Gewichtskraft — Übersicht:**
+
+| Größe        | Symbol | Einheit       | Bedeutung                                              |
+|--------------|--------|---------------|--------------------------------------------------------|
+| Masse        | $m$    | $\text{kg}$   | Eigenschaft des Körpers, ortsunabhängig                |
+| Gewichtskraft| $F_G$  | $\text{N}$    | Kraft im Schwerefeld, ortsabhängig (Mond/Erde anders)  |
+| Beziehung    | —      | —             | $F_G = m \cdot g$ am jeweiligen Ort                    |
+
+Eine $1\,\text{kg}$-Masse hat auf der Erde $F_G \approx 9{,}81\,\text{N}$, auf dem Mond ($g_{\text{Mond}} \approx 1{,}62\,\text{m/s}^2$) nur $F_G \approx 1{,}62\,\text{N}$ — die Masse bleibt aber dieselbe.`,
           visualization: {
             title: 'Feder-Masse-Dämpfer System', visualizationId: 'spring-mass-damper', params: {},
           },
           exercises: [
-            { type: 'number-input', question: 'Welche Kraft beschleunigt 4 kg mit $3\\,m/s^2$?', correctValue: 12, tolerance: 0.01, unit: 'N', explanation: 'F = m·a = 4·3 = 12 N.', hints: ['Grundgleichung: F = m · a', 'F in Newton, m in kg, a in m/s²', '4 · 3 = 12 N'] },
-            { type: 'multiple-choice', question: 'Gewichtskraft wird berechnet mit:', options: ['m/a', 'm·g', 'g/m', 'm+g'], correctIndex: 1, explanation: 'F_G = m·g.', hints: ['Gewichtskraft: F_G = m · g', 'g ≈ 9,81 m/s² (Erdschwerebeschleunigung)', 'F_G = m · 9,81'], wrongAnswerExplanations: { 0: '$m/a$ hätte Einheit $\\mathrm{kg \\cdot s^2/m}$ — unphysikalisch. Gewichtskraft ist $F_G = m \\cdot g$ mit Einheit N.', 2: '$g/m$ hätte Einheit $\\mathrm{1/(kg \\cdot s^2) \\cdot m}$, keine Kraft. Multiplizieren, nicht dividieren: $F_G = m \\cdot g$.', 3: 'Addition ist unmöglich — Einheiten $\\mathrm{kg}$ und $\\mathrm{m/s^2}$ sind nicht gleich. Kraft entsteht durch Multiplikation: $F = m \\cdot g$.' } },
-            { type: 'true-false', statement: 'Bei doppelter Masse und gleicher Beschleunigung ist die nötige Kraft doppelt so groß.', correct: true, explanation: 'F ist proportional zu m.', hints: ['F = m · a — Kraft proportional zu Masse und Beschleunigung.', 'Doppelte Masse bei gleicher Beschleunigung → doppelte Kraft.', 'F ∝ m gilt direkt aus F = m·a.'] },
+            {
+              type: 'number-input',
+              question: 'Welche Kraft beschleunigt $4\\,\\text{kg}$ mit $3\\,\\text{m/s}^2$?',
+              correctValue: 12,
+              tolerance: 0.01,
+              unit: 'N',
+              explanation: `**Ansatz:** 2. Newton: $\\sum F = m \\cdot a$. Gesucht ist die resultierende Kraft.
+
+**Rechnung:** $F = m \\cdot a = 4\\,\\text{kg} \\cdot 3\\,\\text{m/s}^2 = 12\\,\\text{N}$.
+
+**Probe:** Einheit: $\\text{kg} \\cdot \\text{m/s}^2 = \\text{N}$ ✓. Plausibilität: kleine Masse, moderate Beschleunigung → zweistellige Kraft passt.
+
+**Typischer Fehler:** $m + a = 7$ rechnen — Kraft entsteht durch **Multiplikation**, nicht Addition; Einheiten kg und m/s² sind nicht addierbar.`,
+              hints: [
+                '2. Newton-Gesetz aufschreiben.',
+                '$F$ in N, $m$ in kg, $a$ in m/s² — SI-Einheiten passen direkt.',
+                '$4 \\cdot 3 = ?$',
+              ],
+              pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['newton-2'] },
+            },
+            {
+              type: 'multiple-choice',
+              question: 'Welche Formel liefert die Gewichtskraft $F_G$ einer Masse $m$ im Schwerefeld der Erde?',
+              options: ['$F_G = m / a$', '$F_G = m \\cdot g$', '$F_G = g / m$', '$F_G = m + g$'],
+              correctIndex: 1,
+              explanation: `**Ansatz:** Gewichtskraft ist die Kraft, die das Schwerefeld auf eine Masse ausübt: 2. Newton mit $a = g$.
+
+**Rechnung:** $F_G = m \\cdot g$ mit $g \\approx 9{,}81\\,\\text{m/s}^2$. Beispiel: $m = 10\\,\\text{kg}$ → $F_G = 98{,}1\\,\\text{N}$.
+
+**Probe:** Einheiten: $\\text{kg} \\cdot \\text{m/s}^2 = \\text{N}$ ✓. Auf der Erde wiegt $1\\,\\text{kg}$ rund $9{,}81\\,\\text{N}$ — bekannt.
+
+**Typischer Fehler:** Masse und Gewichtskraft gleichsetzen oder additiv verknüpfen — Masse ist eine Eigenschaft des Körpers (in kg), Gewichtskraft eine Kraft (in N).`,
+              hints: [
+                'Gewichtskraft ist ein Spezialfall von $F = m \\cdot a$.',
+                'Welches $a$ wirkt im Schwerefeld?',
+                '$g \\approx 9{,}81\\,\\text{m/s}^2$ ist konstant.',
+              ],
+              wrongAnswerExplanations: {
+                0: '$m/a$ hätte Einheit $\\mathrm{kg \\cdot s^2/m}$ — keine Kraft. Im Schwerefeld wirkt $g$ als Beschleunigung, also multiplizieren.',
+                2: '$g/m$ wäre eine Beschleunigung pro Masse — Einheit $\\mathrm{m/(s^2 \\cdot kg)}$, also keine Kraft.',
+                3: 'Addition unmöglich, weil $\\text{kg}$ und $\\text{m/s}^2$ unterschiedliche Dimensionen haben. Kraft entsteht durch Multiplikation: $F_G = m \\cdot g$.',
+              },
+              pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['gewichtskraft'] },
+            },
+            {
+              type: 'true-false',
+              statement: 'Bei doppelter Masse und gleicher Beschleunigung ist die nötige Kraft doppelt so groß.',
+              correct: true,
+              explanation: `**Ansatz:** 2. Newton: $F = m \\cdot a$. Frage: wie ändert sich $F$, wenn $m$ verdoppelt wird und $a$ konstant bleibt?
+
+**Rechnung:** $F_{\\text{neu}} = (2m) \\cdot a = 2 \\cdot (m \\cdot a) = 2 F_{\\text{alt}}$. Die Kraft skaliert linear mit der Masse.
+
+**Probe:** Beispiel: $m = 5\\,\\text{kg}$, $a = 2\\,\\text{m/s}^2$ → $F = 10\\,\\text{N}$. Mit $m = 10\\,\\text{kg}$ → $F = 20\\,\\text{N}$. Verdopplung bestätigt.
+
+**Typischer Fehler:** Nichtlinearität annehmen oder $m$ und $a$ verwechseln. $F = m \\cdot a$ ist linear in **beiden** Faktoren.`,
+              hints: [
+                '$F = m \\cdot a$ — beide Faktoren stehen multiplikativ.',
+                'Was passiert mit dem Produkt, wenn ein Faktor verdoppelt wird?',
+                'Formal: $F(2m, a) = 2m \\cdot a = 2(m a) = 2 F(m, a)$.',
+              ],
+              pedagogy: { stage: 'recognize', subGoal: 0, uses: ['newton-2'] },
+            },
           ],
         },
         {
@@ -1299,15 +1382,100 @@ Masse ist eine Eigenschaft des Körpers. Gewichtskraft ist die Kraft im Schweref
               { subGoal: 5, stage: 'transfer',          type: 'number-input',    uses: ['energie-erhalt'],    qty: 1 },
             ],
           },
-          content: String.raw`Mechanische Arbeit bei konstanter Kraft:
+          content: String.raw`Arbeit und Energie sind die zwei zentralen Begriffe der Mechanik nach den Newtonschen Gesetzen.
 
-$$W = F \cdot s \cdot \cos(\alpha)$$
+**Mechanische Arbeit** bei konstanter Kraft entlang eines geraden Weges:
 
-Ist Kraft und Weg gleichgerichtet, gilt $W = F \cdot s$.`,
+$$W = F \cdot s \cdot \cos\alpha \qquad [W] = \text{J} = \text{N} \cdot \text{m}$$
+
+Dabei ist $\alpha$ der Winkel zwischen Kraft- und Wegrichtung. Drei Spezialfälle:
+
+| Lage Kraft/Weg          | $\alpha$ | $\cos\alpha$ | Arbeit                |
+|-------------------------|----------|--------------|------------------------|
+| parallel                | $0°$     | $1$          | $W = F \cdot s$ (positiv, maximal) |
+| senkrecht               | $90°$    | $0$          | $W = 0$                |
+| antiparallel            | $180°$   | $-1$         | $W = -F \cdot s$ (negativ) |
+
+**Kinetische Energie** (Bewegungsenergie) eines Körpers der Masse $m$ mit Geschwindigkeit $v$:
+
+$$E_{\text{kin}} = \tfrac{1}{2} m v^2$$
+
+**Potentielle Energie** im Schwerefeld nahe der Erdoberfläche, $h$ = Höhe über Bezugsniveau:
+
+$$E_{\text{pot}} = m \cdot g \cdot h$$
+
+**Federenergie** einer linearen Feder mit Federkonstante $c$ und Auslenkung $x$ aus der Ruhelage:
+
+$$E_{\text{Feder}} = \tfrac{1}{2} c x^2$$
+
+**Energieerhaltung** im konservativen System (keine Reibung, keine externe Energiezufuhr):
+
+$$E_{\text{kin}} + E_{\text{pot}} = \text{const}$$
+
+Anwendung: an zwei Bahnpunkten 1 und 2 gilt $\tfrac{1}{2} m v_1^2 + m g h_1 = \tfrac{1}{2} m v_2^2 + m g h_2$. Daraus folgt etwa der freie Fall aus Höhe $h$: $v = \sqrt{2 g h}$ am Boden.`,
           exercises: [
-            { type: 'number-input', question: 'Eine Kraft von 50 N wirkt 3 m in Wegrichtung. Arbeit?', correctValue: 150, tolerance: 0.01, unit: 'J', explanation: 'W = F·s = 50·3 = 150 J.', hints: ['Mechanische Arbeit: W = F · s (bei gleichgerichteter Kraft)', '1 Joule = 1 Newton · 1 Meter', '50 · 3 = 150 J'] },
-            { type: 'multiple-choice', question: 'Wenn Kraft senkrecht zum Weg steht, ist die Arbeit:', options: ['maximal', 'negativ maximal', 'null', 'immer F·s'], correctIndex: 2, explanation: 'cos(90°)=0, also W=0.', hints: ['W = F · s · cos(α) — cos(90°) = 0', 'Senkrechte Kraft leistet keine Arbeit am Weg.', 'Skalarprodukt F⃗ · s⃗ = 0 wenn 90° Winkel.'], wrongAnswerExplanations: { 0: 'Maximal wäre die Arbeit bei $\\alpha = 0°$ ($W = F \\cdot s$), da $\\cos(0°) = 1$. Bei $90°$ ist $\\cos = 0$.', 1: 'Negativ maximal wäre bei $\\alpha = 180°$ (entgegengesetzte Richtung, $\\cos(180°) = -1$). Senkrecht ($90°$) ergibt aber null, nicht $-F \\cdot s$.', 3: '$W = F \\cdot s$ gilt nur bei parallelen Vektoren ($\\alpha = 0$). Allgemein: $W = F \\cdot s \\cdot \\cos\\alpha$, und bei $90°$ ist $\\cos\\alpha = 0$.' } },
-            { type: 'true-false', statement: 'Potentielle Energie im Schwerefeld ist E = m·g·h.', correct: true, explanation: 'Diese Formel gilt nahe der Erdoberfläche bei konstanter Fallbeschleunigung.', hints: ['Potentielle Energie: E_pot = m · g · h', 'h ist die Höhe über dem Bezugsniveau.', 'E_pot steigt linear mit h.'] },
+            {
+              type: 'number-input',
+              question: 'Eine konstante Kraft von $F = 50\\,\\text{N}$ wirkt $s = 3\\,\\text{m}$ in Wegrichtung. Welche Arbeit wird verrichtet?',
+              correctValue: 150,
+              tolerance: 0.01,
+              unit: 'J',
+              explanation: `**Ansatz:** Kraft und Weg sind parallel ($\\alpha = 0°$, $\\cos\\alpha = 1$): $W = F \\cdot s$.
+
+**Rechnung:** $W = 50\\,\\text{N} \\cdot 3\\,\\text{m} = 150\\,\\text{J}$.
+
+**Probe:** Einheit: $\\text{N} \\cdot \\text{m} = \\text{J}$ ✓. Größenordnung: 150 J entspricht etwa der Hubarbeit, eine 15 kg-Last 1 m hochzuheben — plausibel.
+
+**Typischer Fehler:** Den $\\cos\\alpha$-Faktor unnötig anwenden (der ist hier $1$) oder umgekehrt vergessen, falls Kraft und Weg schräg zueinander stehen.`,
+              hints: [
+                'Bei paralleler Kraft und Weg: $W = F \\cdot s$.',
+                '$1\\,\\text{J} = 1\\,\\text{N} \\cdot 1\\,\\text{m}$.',
+                '$50 \\cdot 3 = ?$',
+              ],
+              pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['arbeit'] },
+            },
+            {
+              type: 'multiple-choice',
+              question: 'Wenn die Kraft senkrecht zum Weg steht, beträgt die mechanische Arbeit:',
+              options: ['$W = F \\cdot s$ (maximal positiv)', '$W = -F \\cdot s$ (maximal negativ)', '$W = 0$', '$W = F \\cdot s \\cdot \\sin\\alpha$ und damit immer $> 0$'],
+              correctIndex: 2,
+              explanation: `**Ansatz:** $W = F \\cdot s \\cdot \\cos\\alpha$. Bei $\\alpha = 90°$ ist $\\cos(90°) = 0$.
+
+**Rechnung:** $W = F \\cdot s \\cdot 0 = 0\\,\\text{J}$ — unabhängig von $F$ und $s$.
+
+**Probe:** Anschaulich: eine Tasche horizontal tragen (Tragkraft vertikal, Weg horizontal) leistet im idealisierten Modell keine mechanische Arbeit am Tasche-System.
+
+**Typischer Fehler:** Glauben, „Senkrecht-Wirken" bedeute „starkes Wirken" oder „negatives Wirken". Es bedeutet **kein** Beitrag zur Arbeit, weil der Weg keine Komponente in Kraftrichtung hat.`,
+              hints: [
+                '$W = F \\cdot s \\cdot \\cos\\alpha$ ansetzen.',
+                'Welcher Wert hat $\\cos(90°)$?',
+                'Senkrechte Kraft trägt nicht zum Weg in ihre Richtung bei.',
+              ],
+              wrongAnswerExplanations: {
+                0: 'Maximal wäre die Arbeit bei $\\alpha = 0°$ (parallele Kraft und Weg). Senkrecht heißt $\\alpha = 90°$ — und dort ist $\\cos = 0$.',
+                1: 'Maximal negativ wäre die Arbeit bei $\\alpha = 180°$ (Kraft entgegen dem Weg). Senkrecht ist $90°$, nicht $180°$.',
+                3: 'Die Arbeitsformel benutzt $\\cos\\alpha$, nicht $\\sin\\alpha$. Mit $\\cos(90°) = 0$ folgt $W = 0$.',
+              },
+              pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['arbeit-90'] },
+            },
+            {
+              type: 'true-false',
+              statement: 'Die potentielle Energie eines Körpers der Masse $m$ in der Höhe $h$ über einem Bezugsniveau im Schwerefeld der Erde lautet $E_{\\text{pot}} = m \\cdot g \\cdot h$.',
+              correct: true,
+              explanation: `**Ansatz:** Definitionsgleichung der Lageenergie nahe der Erdoberfläche, wo $g$ als konstant angenommen werden darf.
+
+**Rechnung:** $E_{\\text{pot}} = m \\cdot g \\cdot h$ mit $g \\approx 9{,}81\\,\\text{m/s}^2$. Beispiel: $m = 1\\,\\text{kg}$ auf $h = 1\\,\\text{m}$ ⇒ $E_{\\text{pot}} \\approx 9{,}81\\,\\text{J}$.
+
+**Probe:** Einheit: $\\text{kg} \\cdot \\text{m/s}^2 \\cdot \\text{m} = \\text{N} \\cdot \\text{m} = \\text{J}$ ✓.
+
+**Typischer Fehler:** $h$ als Höhe über dem Erdmittelpunkt missverstehen. Hier ist $h$ der relative Höhenunterschied zu einem **frei wählbaren** Bezugsniveau — physikalisch zählen nur Energie**differenzen**.`,
+              hints: [
+                'Wie ist die Lageenergie nahe der Erdoberfläche definiert?',
+                'Welche Einheit ergibt $\\text{kg} \\cdot \\text{m/s}^2 \\cdot \\text{m}$?',
+                '$h$ wird relativ zu einem Bezugsniveau gemessen.',
+              ],
+              pedagogy: { stage: 'recognize', subGoal: 3, uses: ['e-pot'] },
+            },
           ],
         },
         {
