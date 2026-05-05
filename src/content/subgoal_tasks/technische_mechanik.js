@@ -5487,6 +5487,759 @@ Verhältnis $a_A/a_K = m_K/m_A = 25$ — die kleinere Masse wird stärker beschl
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // mech-2-2 — Arbeit und Energie  (6 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-2-2': {
+
+    // ── [0] Arbeit: W = F·s·cos α (Skalarprodukt), Einheit Joule ───────
+    0: [
+      tf(
+        'Die mechanische Arbeit ist eine skalare Größe; ihre SI-Einheit ist das Joule mit $1\\,\\text{J} = 1\\,\\text{N} \\cdot 1\\,\\text{m}$.',
+        true,
+        `**Ansatz:** $W = \\vec F \\cdot \\vec s = F \\cdot s \\cdot \\cos\\alpha$ — das Skalarprodukt ist eine **Zahl** mit Einheit $\\text{N} \\cdot \\text{m}$.
+
+**Rechnung:** Definition: $1\\,\\text{J} := 1\\,\\text{N} \\cdot 1\\,\\text{m} = 1\\,\\text{kg} \\cdot \\text{m}^2/\\text{s}^2$.
+
+**Probe:** Energie und Arbeit haben dieselbe Einheit Joule — kein Vektor, keine Richtung.
+
+**Typischer Fehler:** „Arbeit hat eine Richtung" — falsch. Sie ist skalar; Vorzeichen erscheint höchstens als negativer Wert (Kraft entgegen dem Weg).`,
+        [
+          'Was ergibt das Skalarprodukt $\\vec F \\cdot \\vec s$ — eine Zahl oder einen Vektor?',
+          'SI-Einheit der Arbeit?',
+          '$1\\,\\text{J} = 1\\,\\text{N} \\cdot 1\\,\\text{m}$.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['arbeit'] },
+      ),
+      mc(
+        'Eine konstante Kraft $F = 80\\,\\text{N}$ wirkt unter $\\alpha = 30°$ zur Bewegungsrichtung über $s = 5\\,\\text{m}$. Welche Arbeit verrichtet sie?',
+        ['$W \\approx 346\\,\\text{J}$', '$W = 400\\,\\text{J}$', '$W = 200\\,\\text{J}$', '$W \\approx 692\\,\\text{J}$'],
+        0,
+        `**Ansatz:** $W = F \\cdot s \\cdot \\cos\\alpha$.
+
+**Rechnung:** $W = 80 \\cdot 5 \\cdot \\cos(30°) = 400 \\cdot \\tfrac{\\sqrt 3}{2} \\approx 400 \\cdot 0{,}8660 = 346{,}4\\,\\text{J}$.
+
+**Probe:** Plausibilität: $W$ liegt zwischen $0$ (bei $90°$) und $400\\,\\text{J}$ (bei $0°$). Bei $30°$ erwarten wir einen Wert nahe dem Maximum — passt. Einheit: $\\text{N} \\cdot \\text{m} = \\text{J}$ ✓.
+
+**Typischer Fehler:** $\\sin$ statt $\\cos$ verwenden ($80 \\cdot 5 \\cdot \\sin 30° = 200$). Bei der Arbeitsformel steht **Cosinus**, weil nur die Kraft**komponente in Wegrichtung** Arbeit leistet.`,
+        [
+          '$W = F \\cdot s \\cdot \\cos\\alpha$ aufschreiben.',
+          '$\\cos(30°) = \\sqrt 3 / 2 \\approx 0{,}866$.',
+          '$80 \\cdot 5 \\cdot 0{,}866$.',
+        ],
+        {
+          1: '$400\\,\\text{J}$ wäre die Arbeit bei $\\alpha = 0°$ (Kraft parallel zum Weg). Hier ist $\\alpha = 30°$, also kommt der Faktor $\\cos 30°$ dazu.',
+          2: '$200\\,\\text{J}$ entsteht aus $80 \\cdot 5 \\cdot \\sin 30° = 400 \\cdot 0{,}5$. Die Arbeitsformel nutzt aber $\\cos\\alpha$, nicht $\\sin\\alpha$.',
+          3: '$692\\,\\text{J}$ entstünde aus Verdopplung — vermutlich $2 F \\cdot s \\cdot \\cos\\alpha$ statt $F \\cdot s \\cdot \\cos\\alpha$.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['arbeit'] },
+      ),
+      mc(
+        'Ein Studierender rechnet bei $F = 100\\,\\text{N}$, $s = 4\\,\\text{m}$, $\\alpha = 60°$: „$W = F \\cdot s = 400\\,\\text{J}$". Wo steckt der Fehler?',
+        [
+          'Den $\\cos\\alpha$-Faktor vergessen. Korrekt: $W = 100 \\cdot 4 \\cdot \\cos(60°) = 400 \\cdot 0{,}5 = 200\\,\\text{J}$.',
+          'Die Rechnung stimmt — der Cosinus kommt erst bei $\\alpha = 90°$ ins Spiel.',
+          'Es muss $W = F + s = 104\\,\\text{J}$ heißen — Addition statt Multiplikation.',
+          'Bei $60°$ leistet die Kraft keine Arbeit, also $W = 0$.',
+        ],
+        0,
+        `**Ansatz:** Allgemeine Arbeitsformel $W = F \\cdot s \\cdot \\cos\\alpha$ — der Cosinus muss **immer** mit, nicht erst bei $90°$.
+
+**Rechnung:** $W = 100 \\cdot 4 \\cdot \\cos(60°) = 400 \\cdot 0{,}5 = 200\\,\\text{J}$.
+
+**Probe:** Der Studierende hätte sich gemerkt: bei $\\alpha = 0$ ist $\\cos = 1$ (Sonderfall), sonst muss der Faktor explizit auftauchen.
+
+**Typischer Fehler:** „Bei kleinen Winkeln spielt $\\cos$ keine Rolle" — falsch. $\\cos(60°) = 0{,}5$, das macht Faktor $2$ Unterschied.`,
+        [
+          'Wann gilt $W = F \\cdot s$ direkt?',
+          'Nur bei paralleler Kraft und Weg ($\\alpha = 0$).',
+          '$\\cos(60°) = 0{,}5$ — das halbiert das Ergebnis.',
+        ],
+        {
+          1: '$\\cos\\alpha$ gehört **immer** in die Formel; $\\cos(60°) = 0{,}5$, also halbiert sich die Arbeit gegenüber $F \\cdot s$.',
+          2: '$F + s$ wäre dimensional widersprüchlich ($\\text{N} + \\text{m}$). Die Arbeit entsteht aus Multiplikation.',
+          3: '$W = 0$ erst bei $\\alpha = 90°$. Bei $60°$ ist $\\cos(60°) = 0{,}5 \\neq 0$.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['arbeit'] },
+      ),
+      ni(
+        'Ein Werker zieht eine Kiste über $s = 8\\,\\text{m}$ Boden mit einer Zugkraft $F = 150\\,\\text{N}$. Das Seil bildet $\\alpha = 25°$ mit dem Boden. Welche Arbeit verrichtet er an der Kiste? (auf $0{,}1\\,\\text{J}$ genau)',
+        1087.6, 1, 'J',
+        `**Ansatz:** $W = F \\cdot s \\cdot \\cos\\alpha$ — nur die horizontale Komponente der Zugkraft trägt zur Arbeit bei.
+
+**Rechnung:** $\\cos(25°) \\approx 0{,}9063$. $W = 150 \\cdot 8 \\cdot 0{,}9063 = 1200 \\cdot 0{,}9063 \\approx 1087{,}6\\,\\text{J}$.
+
+**Probe:** Vergleich: bei $\\alpha = 0°$ wäre $W = 1200\\,\\text{J}$. Mit kleinem Schrägwinkel verlieren wir nur etwa $9\\,\\%$ — passt zu $\\cos(25°) \\approx 0{,}906$. Einheit: $\\text{N} \\cdot \\text{m} = \\text{J}$ ✓.
+
+**Typischer Fehler:** $\\cos(25°)$ und $\\sin(25°)$ verwechseln ($\\sin(25°) \\approx 0{,}423$, das gäbe rund $507\\,\\text{J}$). Merkregel: $\\cos$ liefert die Komponente in Kraftrichtung-zur-Bewegung.`,
+        [
+          '$W = F \\cdot s \\cdot \\cos\\alpha$.',
+          '$\\cos(25°) \\approx 0{,}9063$.',
+          '$150 \\cdot 8 \\cdot 0{,}9063$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['arbeit'] },
+      ),
+      ni(
+        'Ein Aufzug hebt eine Last von $m = 250\\,\\text{kg}$ um $h = 10\\,\\text{m}$ vertikal an. Welche Hubarbeit wird gegen die Gewichtskraft verrichtet? ($g = 9{,}81\\,\\text{m/s}^2$)',
+        24525, 5, 'J',
+        `**Ansatz:** Hubkraft $F = m \\cdot g$ wirkt parallel zum Weg ($\\alpha = 0°$): $W = F \\cdot s = m \\cdot g \\cdot h$.
+
+**Rechnung:** $W = 250 \\cdot 9{,}81 \\cdot 10 = 24\\,525\\,\\text{J}$.
+
+**Probe:** Gleiche Größe wie der Zuwachs an potentieller Energie ($E_{\\text{pot}} = m g h$) — Energie ist erhalten. ✓ Plausibilität: 250 kg um 10 m heben ≈ $24{,}5\\,\\text{kJ}$ — typische Aufzugarbeit.
+
+**Typischer Fehler:** $g$ vergessen ($250 \\cdot 10 = 2500$) oder Höhen-Einheit verwechseln (cm statt m).`,
+        [
+          'Welche Kraft muss der Aufzug aufbringen?',
+          '$F = m \\cdot g$, parallel zur Bewegung.',
+          '$W = m g h$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['arbeit'] },
+      ),
+    ],
+
+    // ── [1] Senkrechte Kraft leistet keine Arbeit (cos 90° = 0) ────────
+    1: [
+      tf(
+        'Eine Kraft, die zu jedem Zeitpunkt senkrecht zur Bewegungsrichtung steht, leistet keine mechanische Arbeit am Körper.',
+        true,
+        `**Ansatz:** $W = F \\cdot s \\cdot \\cos\\alpha$ mit $\\alpha = 90°$ ⇒ $\\cos\\alpha = 0$.
+
+**Rechnung:** Auch bei großem $F$ und langem Weg $s$ bleibt $W = 0$, solange die Kraft permanent senkrecht zur Bewegung steht.
+
+**Probe:** Klassische Beispiele — Normalkraft auf einen rollenden Ball, Zentripetalkraft auf einen Satelliten, magnetische Kraft auf eine bewegte Ladung im Kreis.
+
+**Typischer Fehler:** Annehmen, dass eine Kraft, die „groß ist", auch immer Arbeit leistet. Entscheidend ist die Richtung relativ zur Bewegung.`,
+        [
+          'Welche Komponente von $\\vec F$ trägt zur Arbeit bei?',
+          'Bei $\\alpha = 90°$ ist diese Komponente null.',
+          '$\\cos 90° = 0$ — Arbeit verschwindet.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['arbeit-90'] },
+      ),
+      mc(
+        'Ein Satellit kreist auf einer Kreisbahn um die Erde. Welche Arbeit leistet die Gravitationskraft pro Umlauf an ihm?',
+        [
+          '$W = 0$ — die Gravitation steht stets senkrecht zur Bahngeschwindigkeit ($\\cos 90° = 0$).',
+          '$W = F_G \\cdot 2\\pi r$ — Kraft mal Umfang.',
+          '$W = m g h$ mit $h = $ Bahnhöhe.',
+          '$W < 0$ — die Gravitation hält den Satelliten zurück.',
+        ],
+        0,
+        `**Ansatz:** Auf einer Kreisbahn ist die Geschwindigkeit immer tangential, die Gravitation zeigt zum Mittelpunkt — die beiden stehen ständig senkrecht aufeinander.
+
+**Rechnung:** $\\vec F_G \\cdot \\vec v = 0$ in jedem Bahnpunkt ⇒ Arbeit pro Bahnabschnitt $\\mathrm{d}W = \\vec F_G \\cdot \\mathrm{d}\\vec s = 0$. Aufintegriert: $W = 0$.
+
+**Probe:** Das passt zur Energieerhaltung: $E_{\\text{kin}}$ bleibt auf der Kreisbahn konstant (gleiche Höhe ⇒ gleiches $E_{\\text{pot}}$, also kein Energieaustausch).
+
+**Typischer Fehler:** Glauben, eine wirkende Kraft müsse Arbeit leisten. Sie krümmt nur die Bahn (Zentripetalbeschleunigung), liefert aber keinen tangentialen Energiegewinn.`,
+        [
+          'Wie steht die Bahngeschwindigkeit zum Radiusvektor?',
+          'Wie zeigt die Gravitation auf einer Kreisbahn?',
+          'Senkrecht ⇒ $\\cos 90° = 0$ ⇒ keine Arbeit.',
+        ],
+        {
+          1: '$F_G \\cdot 2\\pi r$ wäre korrekt, wenn die Kraft tangential entlang des Umfangs zöge — sie zeigt aber radial.',
+          2: '$m g h$ ist die Höhenenergie, nicht die Arbeit der Gravitation auf einer Kreisbahn (gleiche Höhe ⇒ keine Höhenänderung).',
+          3: '$W < 0$ verlangt eine Kraftkomponente entgegen der Bewegung. Die Zentripetalkraft hat aber **keine** tangentiale Komponente.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['arbeit-90'] },
+      ),
+      mc(
+        'Ein Studierender argumentiert: „Beim Tragen einer schweren Tasche horizontal durch den Park ($s = 200\\,\\text{m}$) leiste ich Arbeit gegen die Gewichtskraft." Wo steckt der Fehler?',
+        [
+          'Die Tragkraft (vertikal nach oben) und die Bewegung (horizontal) stehen senkrecht aufeinander: $\\cos 90° = 0$, also $W = 0\\,\\text{J}$ am idealisierten Tasche-System.',
+          'Das stimmt — Tragen kostet immer mechanische Arbeit am System.',
+          'Arbeit wird nur bei vertikaler Bewegung an einer Last verrichtet, im Park wäre sie negativ.',
+          'Die Tragkraft wirkt in Bewegungsrichtung, also $W = F_G \\cdot s$.',
+        ],
+        0,
+        `**Ansatz:** Mechanische Arbeit hängt strikt am Skalarprodukt $\\vec F \\cdot \\vec s$. Eine vertikale Tragkraft hat keine horizontale Komponente.
+
+**Rechnung:** $\\alpha = 90°$ zwischen Tragkraft und Weg ⇒ $W = F \\cdot s \\cdot \\cos 90° = 0$.
+
+**Probe:** Auf das Werkstück „Tasche" wirkt netto keine vertikale Verschiebung; ihre potentielle Energie ändert sich nicht. Energieerhaltung am Tasche-System: $\\Delta E = 0$, im Einklang mit $W_{\\text{außen}} = 0$.
+
+**Typischer Fehler:** Mechanische Arbeit (am Tasche-System) mit der **biologischen** Anstrengung der Muskeln verwechseln. Letztere ist real, aber nicht das, was die Mechanik mit „Arbeit" bezeichnet.`,
+        [
+          'Wie steht die Tragkraft zur Bewegung?',
+          'Senkrecht ⇒ $\\cos\\alpha = ?$',
+          'Mechanische Arbeit ≠ menschliche Anstrengung.',
+        ],
+        {
+          1: 'Mechanisch falsch — am Tasche-System verändert sich keine Höhe, also keine Energieänderung. Anstrengung der Muskeln ist eine andere Größe.',
+          2: 'Bei horizontaler Bewegung ist die mechanische Arbeit der Gewichtskraft null, nicht „negativ".',
+          3: 'Die Tragkraft wirkt vertikal nach oben, nicht in horizontaler Bewegungsrichtung.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['arbeit-90'] },
+      ),
+      mc(
+        'Ein Eishockey-Puck gleitet reibungsfrei auf horizontalem Eis. Welche Arbeit leistet die Normalkraft des Eises am Puck während der Gleitbewegung?',
+        [
+          '$W = 0$ — Normalkraft steht senkrecht zur horizontalen Bewegungsrichtung.',
+          '$W = -F_N \\cdot s$ — die Normalkraft bremst den Puck.',
+          '$W = m g h$ — Energieänderung über die Höhe der Eisschicht.',
+          '$W = F_N \\cdot s$ — sie trägt den Puck und leistet positive Arbeit.',
+        ],
+        0,
+        `**Ansatz:** Die Normalkraft des Eises ist vertikal nach oben gerichtet, die Bewegung horizontal — Skalarprodukt verschwindet.
+
+**Rechnung:** $\\alpha = 90°$ ⇒ $W = F_N \\cdot s \\cdot \\cos 90° = 0\\,\\text{J}$.
+
+**Probe:** Im reibungsfreien Fall bleibt $E_{\\text{kin}}$ konstant — passt zu „keine resultierende Arbeit am Puck".
+
+**Typischer Fehler:** Die Normalkraft als „antreibende" oder „bremsende" Kraft missverstehen. Sie verhindert nur das Eindringen in den Boden, leistet aber keine Arbeit.`,
+        [
+          'In welche Richtung zeigt die Normalkraft auf horizontalem Eis?',
+          'In welche Richtung bewegt sich der Puck?',
+          'Senkrechte Anordnung ⇒ keine Arbeit.',
+        ],
+        {
+          1: 'Bremsen würde die Reibungskraft (entgegen der Bewegung) — die Normalkraft steht senkrecht und „bremst" nicht.',
+          2: '$m g h$ wäre Höhenenergie — der Puck ändert seine Höhe aber nicht.',
+          3: 'Tragen bedeutet vertikales Gleichgewicht, aber **keine** mechanische Arbeit, weil keine vertikale Verschiebung erfolgt.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['arbeit-90'] },
+      ),
+      matching(
+        'Ordne jeder Kraft-Weg-Lage die korrekte Arbeit zu.',
+        [
+          { left: 'Kraft parallel zur Bewegung ($\\alpha = 0°$)', right: '$W = F \\cdot s$ (maximal positiv)' },
+          { left: 'Kraft senkrecht zur Bewegung ($\\alpha = 90°$)', right: '$W = 0$' },
+          { left: 'Kraft entgegen der Bewegung ($\\alpha = 180°$)', right: '$W = -F \\cdot s$ (maximal negativ)' },
+          { left: 'Kraft schräg, $\\alpha = 60°$', right: '$W = \\tfrac{1}{2} F \\cdot s$' },
+        ],
+        `**Ansatz:** $\\cos\\alpha$ liefert den jeweiligen Faktor.
+
+**Rechnung:** $\\cos 0° = 1$, $\\cos 90° = 0$, $\\cos 180° = -1$, $\\cos 60° = 0{,}5$.
+
+**Probe:** Verlauf: positiv bei $\\alpha < 90°$, null bei $90°$, negativ darüber bis zur Maximalbremsung bei $180°$.
+
+**Typischer Fehler:** Den Cosinus-Verlauf nicht mit den drei Eckwinkeln $0/90/180°$ als Anker durchgehen. Das verhindert, dass man sich verrechnet.`,
+        [
+          '$\\cos 0° = 1$ — Maximalfall.',
+          '$\\cos 90° = 0$.',
+          '$\\cos 60° = 0{,}5$.',
+        ],
+        { stage: 'apply-guided', subGoal: 1, uses: ['arbeit-90', 'arbeit'] },
+      ),
+    ],
+
+    // ── [2] Kinetische Energie: E_kin = ½mv² ────────────────────────────
+    2: [
+      tf(
+        'Die kinetische Energie eines Körpers wächst quadratisch mit der Geschwindigkeit: bei doppelter Geschwindigkeit hat er viermal so viel kinetische Energie.',
+        true,
+        `**Ansatz:** $E_{\\text{kin}} = \\tfrac{1}{2} m v^2$ — der quadratische Term in $v$ ist entscheidend.
+
+**Rechnung:** $E_{\\text{kin}}(2v) = \\tfrac{1}{2} m (2v)^2 = \\tfrac{1}{2} m \\cdot 4 v^2 = 4 \\cdot E_{\\text{kin}}(v)$.
+
+**Probe:** Beispiel $m = 1\\,\\text{kg}$: $v = 1$ ⇒ $0{,}5\\,\\text{J}$; $v = 2$ ⇒ $2\\,\\text{J}$ (Faktor 4). ✓
+
+**Typischer Fehler:** Linearen Zusammenhang annehmen („Verdoppelung der Geschwindigkeit ⇒ doppelte Energie"). Konsequenz im Verkehr: Bremsweg wächst quadratisch mit $v$.`,
+        [
+          'Wo steht $v$ in der Formel — in welcher Potenz?',
+          '$(2v)^2 = 4 v^2$.',
+          'Energie skaliert mit dem Quadrat der Geschwindigkeit.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['e-kin'] },
+      ),
+      mc(
+        'Eine Masse $m = 4\\,\\text{kg}$ bewegt sich mit $v = 5\\,\\text{m/s}$. Wie groß ist ihre kinetische Energie?',
+        ['$E_{\\text{kin}} = 50\\,\\text{J}$', '$E_{\\text{kin}} = 100\\,\\text{J}$', '$E_{\\text{kin}} = 10\\,\\text{J}$', '$E_{\\text{kin}} = 20\\,\\text{J}$'],
+        0,
+        `**Ansatz:** $E_{\\text{kin}} = \\tfrac{1}{2} m v^2$.
+
+**Rechnung:** $E_{\\text{kin}} = 0{,}5 \\cdot 4 \\cdot 5^2 = 0{,}5 \\cdot 4 \\cdot 25 = 50\\,\\text{J}$.
+
+**Probe:** Einheit: $\\text{kg} \\cdot \\text{m}^2/\\text{s}^2 = \\text{J}$ ✓.
+
+**Typischer Fehler:** $v$ nicht quadrieren oder Faktor $\\tfrac{1}{2}$ vergessen.`,
+        [
+          '$E_{\\text{kin}} = \\tfrac{1}{2} m v^2$.',
+          'Erst $v$ quadrieren: $5^2 = 25$.',
+          '$0{,}5 \\cdot 4 \\cdot 25$.',
+        ],
+        {
+          1: '$100\\,\\text{J}$ entsteht aus $m \\cdot v^2 = 4 \\cdot 25$ — der Faktor $\\tfrac{1}{2}$ fehlt.',
+          2: '$10\\,\\text{J}$ entsteht aus $\\tfrac{1}{2} m v = 0{,}5 \\cdot 4 \\cdot 5$ — Quadrat von $v$ vergessen.',
+          3: '$20\\,\\text{J}$ entsteht aus $m \\cdot v = 4 \\cdot 5$ — sowohl $\\tfrac{1}{2}$ als auch das Quadrat fehlen.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['e-kin'] },
+      ),
+      ni(
+        'Ein Auto mit $m = 1200\\,\\text{kg}$ fährt mit $v = 20\\,\\text{m/s}$ (= $72\\,\\text{km/h}$). Welche kinetische Energie hat es?',
+        240000, 50, 'J',
+        `**Ansatz:** $E_{\\text{kin}} = \\tfrac{1}{2} m v^2$.
+
+**Rechnung:** $E_{\\text{kin}} = 0{,}5 \\cdot 1200 \\cdot 20^2 = 600 \\cdot 400 = 240\\,000\\,\\text{J} = 240\\,\\text{kJ}$.
+
+**Probe:** Plausibilität: 240 kJ entspricht etwa der Energie zum Erwärmen von 1 kg Wasser um 60 K — passt zur typischen Bewegungsenergie eines Pkw.
+
+**Typischer Fehler:** km/h ungerechnet einsetzen; oder $v$ nur einfach statt quadriert. $20^2 = 400$, nicht $40$.`,
+        [
+          '$v$ ist bereits in m/s — nicht erneut umrechnen.',
+          '$v^2 = 400$.',
+          '$\\tfrac{1}{2} \\cdot 1200 \\cdot 400$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['e-kin'] },
+      ),
+      mc(
+        'Eine Studierende rechnet $E_{\\text{kin}}$ für $m = 2\\,\\text{kg}$ und $v = 10\\,\\text{m/s}$ als „$E = \\tfrac{1}{2} m v = 0{,}5 \\cdot 2 \\cdot 10 = 10\\,\\text{J}$". Wo steckt der Fehler?',
+        [
+          '$v$ muss **quadriert** werden: $E_{\\text{kin}} = \\tfrac{1}{2} m v^2 = 0{,}5 \\cdot 2 \\cdot 100 = 100\\,\\text{J}$.',
+          'Die Rechnung stimmt — $E_{\\text{kin}}$ ist tatsächlich $10\\,\\text{J}$.',
+          'Der Faktor $\\tfrac{1}{2}$ ist falsch; korrekt $E_{\\text{kin}} = m \\cdot v = 20\\,\\text{J}$.',
+          'Die Einheit muss N statt J sein, sonst stimmt es.',
+        ],
+        0,
+        `**Ansatz:** Definitionsgleichung der kinetischen Energie sauber anwenden: das $v$ steht in **zweiter Potenz**.
+
+**Rechnung:** $E_{\\text{kin}} = \\tfrac{1}{2} \\cdot 2 \\cdot 10^2 = 100\\,\\text{J}$.
+
+**Probe:** Einheit: $\\text{kg} \\cdot \\text{m}^2/\\text{s}^2 = \\text{J}$ ✓.
+
+**Typischer Fehler:** Die Formel mit $v$ statt $v^2$ erinnern (wie etwa beim Impuls $p = m v$). Faustcheck: hat Energie die Einheit $\\text{kg} \\cdot \\text{m}^2/\\text{s}^2$? Das verlangt $v^2$.`,
+        [
+          'Welcher Exponent steht bei $v$ in der Energie-Formel?',
+          'Hinweis: Einheit der Energie ist $\\text{kg} \\cdot \\text{m}^2/\\text{s}^2$.',
+          '$v^2 = 100$, nicht $10$.',
+        ],
+        {
+          1: 'Mit $v$ statt $v^2$ wäre der Wert $10$ — aber die Einheit wäre $\\text{kg} \\cdot \\text{m/s}$ (Impuls!), nicht Joule.',
+          2: '$\\tfrac{1}{2}$ stimmt — der Fehler liegt am Quadrat von $v$, nicht am Vorfaktor.',
+          3: 'Die Einheit ist nicht das Problem — der Wert $10$ ist um Faktor $10$ falsch wegen fehlendem Quadrat.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['e-kin'] },
+      ),
+      ni(
+        'Ein LKW mit $m = 8000\\,\\text{kg}$ fährt mit $v = 60\\,\\text{km/h}$. Welche kinetische Energie hat er? (Antwort in kJ, auf $0{,}1\\,\\text{kJ}$ genau)',
+        1111.11, 1, 'kJ',
+        `**Ansatz:** Erst Geschwindigkeit auf SI-Einheit umrechnen: $v = 60/3{,}6 \\approx 16{,}667\\,\\text{m/s}$. Dann $E_{\\text{kin}} = \\tfrac{1}{2} m v^2$.
+
+**Rechnung:** $v^2 = (60/3{,}6)^2 = 277{,}78\\,\\text{m}^2/\\text{s}^2$. $E_{\\text{kin}} = 0{,}5 \\cdot 8000 \\cdot 277{,}78 = 4000 \\cdot 277{,}78 \\approx 1\\,111\\,111\\,\\text{J} \\approx 1111{,}1\\,\\text{kJ}$.
+
+**Probe:** Vergleich Auto bei gleicher $v$: $\\tfrac{1}{2} \\cdot 1500 \\cdot 277{,}78 \\approx 208\\,\\text{kJ}$. LKW ist 5,3-mal schwerer ⇒ 5,3-fache Energie. ✓ ($1111/208 \\approx 5{,}3$.)
+
+**Typischer Fehler:** km/h direkt einsetzen ($60^2 = 3600$ statt $277{,}78$) oder zwischen J und kJ verwechseln.`,
+        [
+          'Erst $\\text{km/h} \\to \\text{m/s}$ umrechnen.',
+          '$v = 60/3{,}6$.',
+          '$\\tfrac{1}{2} m v^2$, am Ende durch $1000$ teilen für kJ.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['e-kin'] },
+      ),
+      mc(
+        'Bei welcher Verdopplung wächst die kinetische Energie um den **Faktor 4**?',
+        [
+          'Verdopplung der Geschwindigkeit (Faktor $2^2 = 4$).',
+          'Verdopplung der Masse (Faktor 2).',
+          'Verdopplung von $m$ und $v$ gleichzeitig (Faktor $2 \\cdot 4 = 8$).',
+          'Halbierung der Masse (Faktor $0{,}5$).',
+        ],
+        0,
+        `**Ansatz:** $E_{\\text{kin}} = \\tfrac{1}{2} m v^2$ — linear in $m$, **quadratisch** in $v$.
+
+**Rechnung:** Faktor 4 ergibt sich aus Verdopplung der Größe, die quadratisch eingeht.
+
+**Probe:** Numerisch $m = 1, v = 2$: $E = 2\\,\\text{J}$. Mit $v = 4$: $E = 8\\,\\text{J}$ ⇒ Faktor 4. ✓
+
+**Typischer Fehler:** Quadratische und lineare Skalierung verwechseln.`,
+        [
+          'In welcher Potenz steht $v$? Welche $m$?',
+          'Quadratisch ⇒ $2^2 = 4$.',
+          'Linear ⇒ Faktor $2$.',
+        ],
+        {
+          1: 'Verdopplung von $m$ verdoppelt $E_{\\text{kin}}$ — Faktor 2, nicht 4.',
+          2: 'Beides verdoppeln gibt $2 \\cdot 2^2 = 8$, nicht 4.',
+          3: 'Halbierung von $m$ halbiert $E_{\\text{kin}}$ (Faktor $0{,}5$).',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['e-kin'] },
+      ),
+    ],
+
+    // ── [3] Potentielle Energie: E_pot = mgh ────────────────────────────
+    3: [
+      mc(
+        'Eine Masse $m = 5\\,\\text{kg}$ wird $h = 4\\,\\text{m}$ über das Bezugsniveau angehoben. Welche potentielle Energie hat sie? ($g = 9{,}81\\,\\text{m/s}^2$)',
+        ['$E_{\\text{pot}} \\approx 196\\,\\text{J}$', '$E_{\\text{pot}} = 20\\,\\text{J}$', '$E_{\\text{pot}} = 49\\,\\text{J}$', '$E_{\\text{pot}} = 9{,}81\\,\\text{J}$'],
+        0,
+        `**Ansatz:** $E_{\\text{pot}} = m g h$ direkt einsetzen.
+
+**Rechnung:** $E_{\\text{pot}} = 5 \\cdot 9{,}81 \\cdot 4 = 196{,}2\\,\\text{J}$.
+
+**Probe:** Einheit: $\\text{kg} \\cdot \\text{m/s}^2 \\cdot \\text{m} = \\text{J}$ ✓. Plausibilität: 5 kg auf 4 m hochheben ≈ 200 J — passt.
+
+**Typischer Fehler:** $g$ vergessen ($5 \\cdot 4 = 20$) oder mit anderen Formeln ($\\tfrac{1}{2} m g h$, $m + g + h$) durcheinanderkommen.`,
+        [
+          '$E_{\\text{pot}} = m \\cdot g \\cdot h$.',
+          'Drei Faktoren — keiner darf fehlen.',
+          '$5 \\cdot 9{,}81 \\cdot 4$.',
+        ],
+        {
+          1: '$20\\,\\text{J} = 5 \\cdot 4$ — du hast $g$ ausgelassen.',
+          2: '$49\\,\\text{J}$ entsteht aus $\\tfrac{1}{2} m g \\cdot 2$ oder ähnlicher Verwechslung. Die Formel hat **keinen** Faktor $\\tfrac{1}{2}$.',
+          3: '$9{,}81\\,\\text{J}$ wäre $E_{\\text{pot}}$ für $m = 1$, $h = 1$. Hier sind $m = 5$ und $h = 4$ größer.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['e-pot'] },
+      ),
+      ni(
+        'Ein Wassertank mit $m = 2000\\,\\text{kg}$ steht in $h = 15\\,\\text{m}$ Höhe über dem Bezugsniveau. Welche potentielle Energie speichert er? ($g = 9{,}81\\,\\text{m/s}^2$)',
+        294300, 50, 'J',
+        `**Ansatz:** $E_{\\text{pot}} = m g h$.
+
+**Rechnung:** $E_{\\text{pot}} = 2000 \\cdot 9{,}81 \\cdot 15 = 19\\,620 \\cdot 15 = 294\\,300\\,\\text{J}$.
+
+**Probe:** Vergleich: Diese Energie reicht aus, um eine 100-Watt-Lampe rund $49$ Minuten zu betreiben ($294\\,300/100 = 2943\\,\\text{s}$). ✓ Einheit: J ✓.
+
+**Typischer Fehler:** $h$ in cm statt m einsetzen oder $g$ als $10$ aufrunden, ohne das anzugeben.`,
+        [
+          '$E_{\\text{pot}} = m g h$.',
+          'Alle Größen in SI: m in kg, h in m, g in $\\text{m/s}^2$.',
+          '$2000 \\cdot 9{,}81 \\cdot 15$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['e-pot'] },
+      ),
+      mc(
+        'Ein Studierender berechnet die potentielle Energie eines $m = 10\\,\\text{kg}$-Körpers in $h = 3\\,\\text{m}$ Höhe als „$E_{\\text{pot}} = m + g + h = 10 + 9{,}81 + 3 = 22{,}81\\,\\text{J}$". Wo steckt der Fehler?',
+        [
+          'Multiplikation statt Addition: $E_{\\text{pot}} = m \\cdot g \\cdot h = 10 \\cdot 9{,}81 \\cdot 3 = 294{,}3\\,\\text{J}$.',
+          'Die Rechnung stimmt — $E_{\\text{pot}}$ ist tatsächlich rund $23\\,\\text{J}$.',
+          'Es fehlt der Faktor $\\tfrac{1}{2}$: $E_{\\text{pot}} = \\tfrac{1}{2} m g h \\approx 147\\,\\text{J}$.',
+          '$h$ muss in cm angegeben werden, dann passt die Addition.',
+        ],
+        0,
+        `**Ansatz:** Dimensionsanalyse: $\\text{kg} + \\text{m/s}^2 + \\text{m}$ ist undefiniert — Addition unterschiedlicher Einheiten ist unzulässig.
+
+**Rechnung:** Korrekt: $E_{\\text{pot}} = m \\cdot g \\cdot h = 10 \\cdot 9{,}81 \\cdot 3 = 294{,}3\\,\\text{J}$.
+
+**Probe:** Einheit: $\\text{kg} \\cdot \\text{m/s}^2 \\cdot \\text{m} = \\text{N} \\cdot \\text{m} = \\text{J}$ ✓.
+
+**Typischer Fehler:** Die J-Beschriftung neben der Zahl 22,81 kaschiert den Dimensionsfehler. Faustregel: Einheiten **vor** dem Rechnen prüfen.`,
+        [
+          'Wie sind $m$, $g$, $h$ in der Formel verknüpft?',
+          'Multiplikativ — Einheiten multiplizieren sich, $\\text{kg} \\cdot \\text{m/s}^2 \\cdot \\text{m} = \\text{J}$.',
+          '$10 \\cdot 9{,}81 \\cdot 3 \\neq 10 + 9{,}81 + 3$.',
+        ],
+        {
+          1: 'Addition unterschiedlicher Einheiten ist physikalisch ungültig — die Aussage „$23\\,\\text{J}$" ist falsch.',
+          2: 'Es gibt **keinen** Faktor $\\tfrac{1}{2}$ in $E_{\\text{pot}} = m g h$.',
+          3: '$h$ kann in beliebigen Längeneinheiten angegeben werden, solange sie passend mit $g$ kombiniert werden — die Addition bleibt ungültig.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['e-pot'] },
+      ),
+      ni(
+        'Eine Wanderin ($m = 70\\,\\text{kg}$) steigt $\\Delta h = 800\\,\\text{m}$ Höhenunterschied auf einen Berg. Welche potentielle Energie gewinnt sie gegenüber dem Ausgangspunkt? (Antwort in kJ, $g = 9{,}81\\,\\text{m/s}^2$)',
+        549.36, 0.5, 'kJ',
+        `**Ansatz:** Energiegewinn $\\Delta E_{\\text{pot}} = m g \\Delta h$ (Bezugsniveau frei wählbar — Energie**differenz** zählt).
+
+**Rechnung:** $\\Delta E_{\\text{pot}} = 70 \\cdot 9{,}81 \\cdot 800 = 686{,}7 \\cdot 800 = 549\\,360\\,\\text{J} = 549{,}36\\,\\text{kJ}$.
+
+**Probe:** Plausibilität: 549 kJ entspricht etwa $130\\,\\text{kcal}$. Eine Wanderung dieser Länge verbrennt biologisch deutlich mehr (Wirkungsgrad < 25 %), aber die rein **mechanische** Hubarbeit ist tatsächlich nur ~130 kcal. ✓
+
+**Typischer Fehler:** kJ und J verwechseln (Faktor 1000); oder $h$ in km statt m einsetzen.`,
+        [
+          '$\\Delta E_{\\text{pot}} = m g \\Delta h$.',
+          'Energiedifferenz zählt — Bezugsniveau frei.',
+          'Am Ende durch $1000$ teilen für kJ.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['e-pot'] },
+      ),
+      mc(
+        'Welche der folgenden Aussagen über $E_{\\text{pot}} = m g h$ ist korrekt?',
+        [
+          '$h$ ist die Höhe über einem **frei wählbaren** Bezugsniveau — physikalisch relevant sind nur Energie**differenzen**.',
+          'Das Bezugsniveau muss zwingend der Erdmittelpunkt sein.',
+          '$E_{\\text{pot}}$ ist nur für Höhen unter $1000\\,\\text{m}$ definiert.',
+          'Im Vakuum wirkt keine Gewichtskraft, also $E_{\\text{pot}} = 0$.',
+        ],
+        0,
+        `**Ansatz:** Potentielle Energie ist nicht absolut, sondern bezieht sich auf ein gewähltes Niveau.
+
+**Rechnung:** Wechselt man das Bezugsniveau um $h_0$, ändert sich $E_{\\text{pot}}$ um die Konstante $m g h_0$ — das hebt sich in jeder physikalischen Differenz auf.
+
+**Probe:** In Klausuren wird typisch der Boden, der Mittelpunkt oder der tiefste Punkt der Bahn als Nullniveau gesetzt — das vereinfacht Rechnungen, ändert aber nichts an der Physik.
+
+**Typischer Fehler:** Glauben, $E_{\\text{pot}}$ habe einen „echten" Nullpunkt. Hat sie nicht — nur Differenzen sind messbar.`,
+        [
+          'Was ist physikalisch messbar — Absolutwert oder Differenz?',
+          'Welche Wahl beim Bezugsniveau ist erlaubt?',
+          'Vakuum ändert $g$ nicht.',
+        ],
+        {
+          1: 'Falsch — der Erdmittelpunkt würde sogar das Modell „$g \\approx \\text{const}$" zerstören. Üblich ist Boden oder tiefster Bahnpunkt.',
+          2: 'Die Formel $E_{\\text{pot}} = m g h$ gilt nahe der Erdoberfläche — die Gültigkeit endet erst, wenn $g$ merklich variiert (km-Skala), nicht bei $1000\\,\\text{m}$.',
+          3: 'Vakuum hat nichts mit Gravitation zu tun. Ein Apfel im Vakuum erfährt dieselbe Schwerebeschleunigung wie an der Luft.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['e-pot'] },
+      ),
+    ],
+
+    // ── [4] Federenergie: E_Feder = ½cx² ────────────────────────────────
+    4: [
+      tf(
+        'Die in einer linearen Feder gespeicherte Energie ist $E_{\\text{Feder}} = \\tfrac{1}{2} c x^2$, wobei $c$ die Federkonstante und $x$ die Auslenkung aus der Ruhelage ist.',
+        true,
+        `**Ansatz:** Hooke-Gesetz $F(x) = c \\cdot x$ — die in der Feder gespeicherte Energie folgt aus $W = \\int_0^x c \\xi\\,\\mathrm{d}\\xi = \\tfrac{1}{2} c x^2$.
+
+**Rechnung:** Geometrisch: das Dreieck unter der linearen $F$-$x$-Kurve hat die Fläche $\\tfrac{1}{2} \\cdot \\text{Basis} \\cdot \\text{Höhe} = \\tfrac{1}{2} \\cdot x \\cdot (c x) = \\tfrac{1}{2} c x^2$.
+
+**Probe:** Einheit: $\\text{N/m} \\cdot \\text{m}^2 = \\text{N} \\cdot \\text{m} = \\text{J}$ ✓.
+
+**Typischer Fehler:** Faktor $\\tfrac{1}{2}$ vergessen oder $x$ nicht quadrieren — beides führt zu deutlich falschen Werten.`,
+        [
+          'Wie sieht das Hooke-Gesetz aus?',
+          'Wie berechnet man Energie aus $\\int F\\,\\mathrm{d}x$?',
+          'Lineares $F$ ⇒ Dreiecksfläche ⇒ Faktor $\\tfrac{1}{2}$.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['e-feder'] },
+      ),
+      mc(
+        'Eine Feder mit $c = 200\\,\\text{N/m}$ wird um $x = 0{,}1\\,\\text{m}$ ausgelenkt. Welche elastische Energie ist gespeichert?',
+        ['$E_{\\text{Feder}} = 1\\,\\text{J}$', '$E_{\\text{Feder}} = 20\\,\\text{J}$', '$E_{\\text{Feder}} = 10\\,\\text{J}$', '$E_{\\text{Feder}} = 0{,}5\\,\\text{J}$'],
+        0,
+        `**Ansatz:** $E_{\\text{Feder}} = \\tfrac{1}{2} c x^2$.
+
+**Rechnung:** $E = 0{,}5 \\cdot 200 \\cdot (0{,}1)^2 = 100 \\cdot 0{,}01 = 1\\,\\text{J}$.
+
+**Probe:** Einheit: $\\text{N/m} \\cdot \\text{m}^2 = \\text{N} \\cdot \\text{m} = \\text{J}$ ✓.
+
+**Typischer Fehler:** $x$ nicht quadrieren ($0{,}5 \\cdot 200 \\cdot 0{,}1 = 10$) — Faktor 10 zu viel.`,
+        [
+          'Faktor $\\tfrac{1}{2}$ und $x^2$ — beides darf nicht fehlen.',
+          '$(0{,}1)^2 = 0{,}01$.',
+          '$0{,}5 \\cdot 200 \\cdot 0{,}01$.',
+        ],
+        {
+          1: '$20\\,\\text{J} = c \\cdot x = 200 \\cdot 0{,}1$ — du hast Faktor $\\tfrac{1}{2}$ und $x^2$ ignoriert.',
+          2: '$10\\,\\text{J} = \\tfrac{1}{2} c x = 0{,}5 \\cdot 200 \\cdot 0{,}1$ — Quadrat von $x$ vergessen.',
+          3: '$0{,}5\\,\\text{J}$ entstünde aus $\\tfrac{1}{2} \\cdot c \\cdot x^2$ mit $x = 0{,}05$ — du hast vermutlich die Auslenkung halbiert.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['e-feder'] },
+      ),
+      ni(
+        'Eine Stahlfeder mit $c = 2500\\,\\text{N/m}$ wird um $x = 4\\,\\text{cm}$ zusammengedrückt. Welche Federenergie ist gespeichert? (Antwort in J)',
+        2, 0.01, 'J',
+        `**Ansatz:** Erst $x$ in m umrechnen, dann $E_{\\text{Feder}} = \\tfrac{1}{2} c x^2$.
+
+**Rechnung:** $x = 0{,}04\\,\\text{m}$, $x^2 = 0{,}0016\\,\\text{m}^2$. $E = 0{,}5 \\cdot 2500 \\cdot 0{,}0016 = 1250 \\cdot 0{,}0016 = 2\\,\\text{J}$.
+
+**Probe:** Einheit: $\\text{N/m} \\cdot \\text{m}^2 = \\text{J}$ ✓.
+
+**Typischer Fehler:** $x = 4$ in cm direkt einsetzen statt $0{,}04$ in m. Das ergibt $E = 0{,}5 \\cdot 2500 \\cdot 16 = 20\\,000$ — Faktor $10\\,000$ daneben.`,
+        [
+          'Erst cm $\\to$ m umrechnen.',
+          '$x^2 = 0{,}0016$.',
+          '$\\tfrac{1}{2} \\cdot 2500 \\cdot 0{,}0016$.',
+        ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['e-feder'] },
+      ),
+      mc(
+        'Eine Studentin rechnet für $c = 400\\,\\text{N/m}$, $x = 0{,}2\\,\\text{m}$: „$E = c \\cdot x = 400 \\cdot 0{,}2 = 80\\,\\text{J}$". Wo steckt der Fehler?',
+        [
+          'Sowohl Faktor $\\tfrac{1}{2}$ als auch das Quadrat fehlen: $E_{\\text{Feder}} = \\tfrac{1}{2} c x^2 = 0{,}5 \\cdot 400 \\cdot 0{,}04 = 8\\,\\text{J}$.',
+          'Die Rechnung stimmt — $c \\cdot x$ ist die Federenergie.',
+          'Sie hat die Einheit verwechselt — der Wert ist $80\\,\\text{N}$, nicht $80\\,\\text{J}$.',
+          '$x$ muss in cm eingesetzt werden, dann passt die Rechnung.',
+        ],
+        0,
+        `**Ansatz:** $c \\cdot x$ ist die **Kraft** an der Feder bei Auslenkung $x$ (Hooke), nicht die Energie. Die Energie hat einen Faktor $\\tfrac{1}{2}$ und ein quadriertes $x$.
+
+**Rechnung:** $E_{\\text{Feder}} = \\tfrac{1}{2} \\cdot 400 \\cdot (0{,}2)^2 = 200 \\cdot 0{,}04 = 8\\,\\text{J}$.
+
+**Probe:** $c \\cdot x = 80$ ist tatsächlich richtig — als **Kraft** in N. Die Studentin hat F mit E verwechselt.
+
+**Typischer Fehler:** Die zwei Größen Federkraft ($F = c x$) und Federenergie ($E = \\tfrac{1}{2} c x^2$) durcheinanderbringen.`,
+          [
+          'Was bedeutet $c \\cdot x$ physikalisch?',
+          'Federkraft vs. Federenergie unterscheiden.',
+          'Energie hat $\\tfrac{1}{2}$ und $x^2$.',
+        ],
+        {
+          1: '$c \\cdot x$ ist die Federkraft (Einheit N), nicht die Energie. Die Energie verlangt Faktor $\\tfrac{1}{2}$ und $x^2$.',
+          2: '$80\\,\\text{N}$ ist tatsächlich die Federkraft — aber die Aufgabe fragte nach **Energie**, nicht nach Kraft.',
+          3: 'cm statt m würde nur Größenordnungen verfälschen, nicht den Strukturfehler $c x$ ↔ $\\tfrac{1}{2} c x^2$ beheben.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['e-feder'] },
+      ),
+      ni(
+        'An einer Feder mit $c = 1500\\,\\text{N/m}$ hängt eine Masse, die die Feder um $x = 5\\,\\text{cm}$ aus der Ruhelage zieht. Welche elastische Energie speichert die Feder im Gleichgewicht? (Antwort in J)',
+        1.875, 0.005, 'J',
+        `**Ansatz:** $E_{\\text{Feder}} = \\tfrac{1}{2} c x^2$ mit $x$ in m.
+
+**Rechnung:** $x = 0{,}05\\,\\text{m}$, $x^2 = 0{,}0025\\,\\text{m}^2$. $E = 0{,}5 \\cdot 1500 \\cdot 0{,}0025 = 750 \\cdot 0{,}0025 = 1{,}875\\,\\text{J}$.
+
+**Probe:** Energie-Bilanz im Gleichgewicht: die Hubarbeit gegen die Gewichtskraft entspricht **doppelt** so viel ($m g x$), denn die Feder speichert nur die Hälfte; die andere Hälfte ging an die langsame, quasistatische Bewegung verloren — passt zur klassischen Halbierung.
+
+**Typischer Fehler:** cm-Auslenkung in der Formel direkt belassen ($5^2 = 25$ statt $0{,}05^2 = 0{,}0025$).`,
+        [
+          'Erst cm $\\to$ m umrechnen.',
+          '$x^2 = 0{,}05^2 = 0{,}0025$.',
+          '$0{,}5 \\cdot 1500 \\cdot 0{,}0025$.',
+        ],
+        { stage: 'transfer', subGoal: 4, uses: ['e-feder'] },
+      ),
+      mc(
+        'Eine Feder wird auf doppelte Auslenkung gebracht. Wie ändert sich die in ihr gespeicherte Energie?',
+        [
+          'Sie vervierfacht sich (Faktor $2^2 = 4$).',
+          'Sie verdoppelt sich.',
+          'Sie bleibt gleich.',
+          'Sie verachtfacht sich.',
+        ],
+        0,
+        `**Ansatz:** $E_{\\text{Feder}} = \\tfrac{1}{2} c x^2$ — quadratisch in $x$.
+
+**Rechnung:** $E(2x) = \\tfrac{1}{2} c (2x)^2 = \\tfrac{1}{2} c \\cdot 4 x^2 = 4 \\cdot E(x)$.
+
+**Probe:** Beispiel $c = 100$, $x = 1$: $E = 50$. Mit $x = 2$: $E = 200$ ⇒ Faktor 4. ✓
+
+**Typischer Fehler:** Linearen Zusammenhang annehmen — die Energie wächst aber **quadratisch** mit der Auslenkung.`,
+        [
+          'Wo steht $x$ in der Energie-Formel?',
+          'In welcher Potenz?',
+          '$2^2 = 4$.',
+        ],
+        {
+          1: 'Linear wäre die Federkraft ($F = c x$) — die Energie ist quadratisch.',
+          2: 'Bleibt nur dann gleich, wenn $x$ unverändert bleibt — hier wird $x$ aber verdoppelt.',
+          3: 'Achtfach wäre $2^3$ — der Exponent ist aber $2$, nicht $3$.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['e-feder'] },
+      ),
+    ],
+
+    // ── [5] Energieerhaltung: E_kin + E_pot = const ─────────────────────
+    5: [
+      tf(
+        'In einem konservativen System (keine Reibung, keine externe Energiezufuhr oder -abfuhr) bleibt die Summe aus kinetischer und potentieller Energie konstant.',
+        true,
+        `**Ansatz:** Definition eines konservativen Systems: alle wirkenden Kräfte sind aus einem Potential ableitbar; mechanische Energie ist erhalten.
+
+**Rechnung:** Formal: $E_{\\text{ges}} = E_{\\text{kin}} + E_{\\text{pot}} = \\text{const}$ ⇒ $\\Delta E_{\\text{kin}} = -\\Delta E_{\\text{pot}}$.
+
+**Probe:** Klassische Beispiele: reibungsfreies Pendel, freier Fall im Vakuum, ungestörter Planetenorbit.
+
+**Typischer Fehler:** Reibung als „klein, vernachlässigbar" abtun — schon kleine Reibung verletzt die Erhaltung. Der Begriff „konservativ" ist mathematisch streng.`,
+        [
+          'Welche Bedingung verlangt das Wort „konservativ"?',
+          'Reibung gehört dazu — sie verletzt die Erhaltung.',
+          '$E_{\\text{ges}} = E_{\\text{kin}} + E_{\\text{pot}} = $ const.',
+        ],
+        { stage: 'recognize', subGoal: 5, uses: ['energie-erhalt'] },
+      ),
+      mc(
+        'Ein Pendel schwingt reibungsfrei in der Vertikalebene. Im Umkehrpunkt ist seine kinetische Energie null. Wo erreicht es die maximale kinetische Energie?',
+        [
+          'Im tiefsten Bahnpunkt — dort ist $E_{\\text{pot}}$ minimal, also $E_{\\text{kin}}$ wegen Energieerhaltung maximal.',
+          'Auf halbem Weg — die Energie verteilt sich gleichmäßig.',
+          'Wieder im höchsten Punkt der anderen Seite — dort schwingt es am schnellsten.',
+          'Überall gleich — $E_{\\text{kin}}$ ist während der Schwingung konstant.',
+        ],
+        0,
+        `**Ansatz:** Energieerhaltung: $E_{\\text{ges}} = E_{\\text{kin}} + E_{\\text{pot}}$ konstant. Wo $E_{\\text{pot}}$ minimal, dort ist $E_{\\text{kin}}$ maximal.
+
+**Rechnung:** Tiefster Punkt: $h = 0$ ⇒ $E_{\\text{pot}} = 0$ ⇒ $E_{\\text{kin}} = E_{\\text{ges}}$ (alles als Bewegungsenergie).
+
+**Probe:** Höchste Geschwindigkeit liegt also unten — beobachtet man auch beim Glockenpendel oder bei einer Schaukel.
+
+**Typischer Fehler:** Glauben, die Energie sei „verbraucht", wenn das Pendel oben anhält. In Wahrheit ist sie nur in $E_{\\text{pot}}$ umgewandelt.`,
+        [
+          'Wo ist $E_{\\text{pot}}$ minimal — oben oder unten?',
+          'Energieerhaltung: $E_{\\text{kin}} = E_{\\text{ges}} - E_{\\text{pot}}$.',
+          'Maximale Geschwindigkeit ⇔ minimale Höhe.',
+        ],
+        {
+          1: 'Auf halber Höhe ist $E_{\\text{kin}}$ etwa halb so groß wie maximal — Energie verteilt sich nicht „gleichmäßig", sondern lageabhängig.',
+          2: 'Im höchsten Punkt der anderen Seite ist die Geschwindigkeit wieder null — wie im Ausgangs-Umkehrpunkt.',
+          3: '$E_{\\text{kin}}$ schwankt während der Schwingung zwischen null (oben) und maximal (unten); konstant ist nur $E_{\\text{ges}}$.',
+        },
+        { stage: 'apply-guided', subGoal: 5, uses: ['energie-erhalt'] },
+      ),
+      ni(
+        'Eine Masse $m = 2\\,\\text{kg}$ fällt frei (ohne Luftwiderstand) aus einer Höhe von $h = 5\\,\\text{m}$. Welche Geschwindigkeit hat sie kurz vor dem Aufprall? ($g = 9{,}81\\,\\text{m/s}^2$)',
+        9.9, 0.05, 'm/s',
+        `**Ansatz:** Energieerhaltung zwischen Anfangslage (oben, $v = 0$) und Aufprall (unten): $m g h = \\tfrac{1}{2} m v^2$ ⇒ $v = \\sqrt{2 g h}$.
+
+**Rechnung:** $v = \\sqrt{2 \\cdot 9{,}81 \\cdot 5} = \\sqrt{98{,}1} \\approx 9{,}90\\,\\text{m/s}$.
+
+**Probe:** Die Masse $m$ kürzt sich raus — der Wert hängt nicht von der Masse ab. Konsistent mit dem freien Fall (Galilei).
+
+**Typischer Fehler:** Faktor $2$ unter der Wurzel vergessen oder $h^2$ statt $h$ einsetzen.`,
+        [
+          'Energieerhaltung: $E_{\\text{pot,oben}} = E_{\\text{kin,unten}}$.',
+          '$m g h = \\tfrac{1}{2} m v^2$ ⇒ $v = \\sqrt{2 g h}$.',
+          '$\\sqrt{98{,}1}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['energie-erhalt', 'e-kin', 'e-pot'] },
+      ),
+      mc(
+        'In einer reibungsfreien Achterbahn wird ein Wagen aus $h_1 = 20\\,\\text{m}$ losgelassen und durchfährt einen Looping mit Höchstpunkt $h_2 = 15\\,\\text{m}$. Eine Studentin behauptet: „Im Looping-Höchstpunkt ist $v = 0$, weil die Energie bis dorthin verbraucht wurde." Wo steckt der Fehler?',
+        [
+          'Energie wird in einem konservativen System nicht „verbraucht", sondern nur umgewandelt: $E_{\\text{kin},2} = m g (h_1 - h_2) > 0$, also $v_2 = \\sqrt{2 g (h_1 - h_2)} \\approx 9{,}9\\,\\text{m/s}$.',
+          'Die Studentin hat recht — beim Hinaufrollen geht Energie verloren.',
+          'Im Looping-Höchstpunkt verschwindet die Erdanziehung kurz, daher $v = 0$.',
+          'Eine versteckte Reibungskraft im Looping bremst den Wagen tatsächlich auf $v = 0$.',
+        ],
+        0,
+        `**Ansatz:** Energieerhaltung zwischen Punkt 1 (oben Bahnstart) und Punkt 2 (Looping-Höchstpunkt): $m g h_1 = \\tfrac{1}{2} m v_2^2 + m g h_2$.
+
+**Rechnung:** $\\tfrac{1}{2} m v_2^2 = m g (h_1 - h_2)$ ⇒ $v_2 = \\sqrt{2 g (h_1 - h_2)} = \\sqrt{2 \\cdot 9{,}81 \\cdot 5} = \\sqrt{98{,}1} \\approx 9{,}9\\,\\text{m/s}$.
+
+**Probe:** $v_2 = 0$ würde nur eintreten, falls $h_2 = h_1$ — die Höhendifferenz von $5\\,\\text{m}$ liefert aber positive kinetische Energie.
+
+**Typischer Fehler:** „Verbraucht" als Synonym für „umgewandelt" verstehen. In konservativen Systemen ist Energie strikt erhalten, nicht verbrauchbar.`,
+        [
+          'Wieviel Höhendifferenz bleibt zwischen Start und Looping-Top?',
+          'Diese Differenz wird in $E_{\\text{kin}}$ umgesetzt.',
+          '$v_2 = \\sqrt{2 g (h_1 - h_2)}$.',
+        ],
+        {
+          1: '„Verloren" wäre nur bei Reibung. In einem konservativen System ist Energie streng erhalten.',
+          2: 'Die Erdanziehung verschwindet niemals — und schon gar nicht punktuell auf einer Achterbahn.',
+          3: 'Reibung ist im konservativen System per Definition ausgeschlossen — mit Reibung wäre die Aufgabe anders zu rechnen, aber das war hier nicht vorausgesetzt.',
+        },
+        { stage: 'error-analysis', subGoal: 5, uses: ['energie-erhalt'] },
+      ),
+      ni(
+        'Ein Skifahrer ($m = 75\\,\\text{kg}$) startet aus Ruhe an einem $h = 50\\,\\text{m}$ hohen Hang und gleitet reibungsfrei talwärts. Welche Geschwindigkeit hat er am Hangfuß? ($g = 9{,}81\\,\\text{m/s}^2$, Antwort in m/s)',
+        31.32, 0.05, 'm/s',
+        `**Ansatz:** Energieerhaltung: $m g h = \\tfrac{1}{2} m v^2$ ⇒ $v = \\sqrt{2 g h}$.
+
+**Rechnung:** $v = \\sqrt{2 \\cdot 9{,}81 \\cdot 50} = \\sqrt{981} \\approx 31{,}32\\,\\text{m/s} \\approx 113\\,\\text{km/h}$.
+
+**Probe:** Die Masse kürzt sich heraus — leichter und schwerer Fahrer hätten dieselbe Endgeschwindigkeit (im reibungsfreien Idealfall). Die hohen $113\\,\\text{km/h}$ erklären, warum reale Skifahrer dringend Luftwiderstand und Schneereibung brauchen.
+
+**Typischer Fehler:** $h$ in km eingesetzt; oder Wurzel vergessen ($v^2$ als $v$ ausgegeben).`,
+        [
+          '$v = \\sqrt{2 g h}$ — Masse kürzt sich.',
+          '$2 \\cdot 9{,}81 \\cdot 50 = 981$.',
+          '$\\sqrt{981} \\approx 31{,}3$.',
+        ],
+        { stage: 'transfer', subGoal: 5, uses: ['energie-erhalt'] },
+      ),
+      ni(
+        'Eine Stahlkugel ($m = 0{,}5\\,\\text{kg}$) trifft mit $v_0 = 4\\,\\text{m/s}$ horizontal auf eine ungespannte Feder ($c = 200\\,\\text{N/m}$) und drückt sie ein. Reibungsfrei. Wie weit drückt sie die Feder maximal zusammen? (Antwort in cm)',
+        20, 0.1, 'cm',
+        `**Ansatz:** Im Maximalpunkt steht die Kugel kurz still — gesamte $E_{\\text{kin}}$ ist in Federenergie umgewandelt. Energieerhaltung: $\\tfrac{1}{2} m v_0^2 = \\tfrac{1}{2} c x^2$.
+
+**Rechnung:** $x = v_0 \\sqrt{m/c} = 4 \\cdot \\sqrt{0{,}5/200} = 4 \\cdot \\sqrt{0{,}0025} = 4 \\cdot 0{,}05 = 0{,}2\\,\\text{m} = 20\\,\\text{cm}$.
+
+**Probe:** Einheiten: $\\sqrt{\\text{kg} \\cdot \\text{m/N}} = \\sqrt{\\text{kg} \\cdot \\text{m} \\cdot \\text{s}^2/(\\text{kg} \\cdot \\text{m})} = \\text{s}$. $v \\cdot \\sqrt{m/c}$ hat damit Einheit $\\text{m/s} \\cdot \\text{s} = \\text{m}$ ✓.
+
+**Typischer Fehler:** Kraft- statt Energiegleichung ansetzen ($m v_0 = c x$ — falsch, vermengt Impuls und Hooke). Energieerhaltung verlangt **quadrierte** Größen auf beiden Seiten.`,
+        [
+          'Was passiert mit $E_{\\text{kin}}$ am Maximalpunkt?',
+          'Sie wird komplett zu Federenergie.',
+          '$\\tfrac{1}{2} m v_0^2 = \\tfrac{1}{2} c x^2$ ⇒ $x = v_0 \\sqrt{m/c}$.',
+        ],
+        { stage: 'apply-independent', subGoal: 5, uses: ['energie-erhalt', 'e-kin', 'e-feder'] },
+      ),
+    ],
+
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // mech-2-4 — Schwingungen  (5 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'mech-2-4': {

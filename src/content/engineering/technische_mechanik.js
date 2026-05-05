@@ -1382,15 +1382,100 @@ Eine $1\,\text{kg}$-Masse hat auf der Erde $F_G \approx 9{,}81\,\text{N}$, auf d
               { subGoal: 5, stage: 'transfer',          type: 'number-input',    uses: ['energie-erhalt'],    qty: 1 },
             ],
           },
-          content: String.raw`Mechanische Arbeit bei konstanter Kraft:
+          content: String.raw`Arbeit und Energie sind die zwei zentralen Begriffe der Mechanik nach den Newtonschen Gesetzen.
 
-$$W = F \cdot s \cdot \cos(\alpha)$$
+**Mechanische Arbeit** bei konstanter Kraft entlang eines geraden Weges:
 
-Ist Kraft und Weg gleichgerichtet, gilt $W = F \cdot s$.`,
+$$W = F \cdot s \cdot \cos\alpha \qquad [W] = \text{J} = \text{N} \cdot \text{m}$$
+
+Dabei ist $\alpha$ der Winkel zwischen Kraft- und Wegrichtung. Drei Spezialfälle:
+
+| Lage Kraft/Weg          | $\alpha$ | $\cos\alpha$ | Arbeit                |
+|-------------------------|----------|--------------|------------------------|
+| parallel                | $0°$     | $1$          | $W = F \cdot s$ (positiv, maximal) |
+| senkrecht               | $90°$    | $0$          | $W = 0$                |
+| antiparallel            | $180°$   | $-1$         | $W = -F \cdot s$ (negativ) |
+
+**Kinetische Energie** (Bewegungsenergie) eines Körpers der Masse $m$ mit Geschwindigkeit $v$:
+
+$$E_{\text{kin}} = \tfrac{1}{2} m v^2$$
+
+**Potentielle Energie** im Schwerefeld nahe der Erdoberfläche, $h$ = Höhe über Bezugsniveau:
+
+$$E_{\text{pot}} = m \cdot g \cdot h$$
+
+**Federenergie** einer linearen Feder mit Federkonstante $c$ und Auslenkung $x$ aus der Ruhelage:
+
+$$E_{\text{Feder}} = \tfrac{1}{2} c x^2$$
+
+**Energieerhaltung** im konservativen System (keine Reibung, keine externe Energiezufuhr):
+
+$$E_{\text{kin}} + E_{\text{pot}} = \text{const}$$
+
+Anwendung: an zwei Bahnpunkten 1 und 2 gilt $\tfrac{1}{2} m v_1^2 + m g h_1 = \tfrac{1}{2} m v_2^2 + m g h_2$. Daraus folgt etwa der freie Fall aus Höhe $h$: $v = \sqrt{2 g h}$ am Boden.`,
           exercises: [
-            { type: 'number-input', question: 'Eine Kraft von 50 N wirkt 3 m in Wegrichtung. Arbeit?', correctValue: 150, tolerance: 0.01, unit: 'J', explanation: 'W = F·s = 50·3 = 150 J.', hints: ['Mechanische Arbeit: W = F · s (bei gleichgerichteter Kraft)', '1 Joule = 1 Newton · 1 Meter', '50 · 3 = 150 J'] },
-            { type: 'multiple-choice', question: 'Wenn Kraft senkrecht zum Weg steht, ist die Arbeit:', options: ['maximal', 'negativ maximal', 'null', 'immer F·s'], correctIndex: 2, explanation: 'cos(90°)=0, also W=0.', hints: ['W = F · s · cos(α) — cos(90°) = 0', 'Senkrechte Kraft leistet keine Arbeit am Weg.', 'Skalarprodukt F⃗ · s⃗ = 0 wenn 90° Winkel.'], wrongAnswerExplanations: { 0: 'Maximal wäre die Arbeit bei $\\alpha = 0°$ ($W = F \\cdot s$), da $\\cos(0°) = 1$. Bei $90°$ ist $\\cos = 0$.', 1: 'Negativ maximal wäre bei $\\alpha = 180°$ (entgegengesetzte Richtung, $\\cos(180°) = -1$). Senkrecht ($90°$) ergibt aber null, nicht $-F \\cdot s$.', 3: '$W = F \\cdot s$ gilt nur bei parallelen Vektoren ($\\alpha = 0$). Allgemein: $W = F \\cdot s \\cdot \\cos\\alpha$, und bei $90°$ ist $\\cos\\alpha = 0$.' } },
-            { type: 'true-false', statement: 'Potentielle Energie im Schwerefeld ist E = m·g·h.', correct: true, explanation: 'Diese Formel gilt nahe der Erdoberfläche bei konstanter Fallbeschleunigung.', hints: ['Potentielle Energie: E_pot = m · g · h', 'h ist die Höhe über dem Bezugsniveau.', 'E_pot steigt linear mit h.'] },
+            {
+              type: 'number-input',
+              question: 'Eine konstante Kraft von $F = 50\\,\\text{N}$ wirkt $s = 3\\,\\text{m}$ in Wegrichtung. Welche Arbeit wird verrichtet?',
+              correctValue: 150,
+              tolerance: 0.01,
+              unit: 'J',
+              explanation: `**Ansatz:** Kraft und Weg sind parallel ($\\alpha = 0°$, $\\cos\\alpha = 1$): $W = F \\cdot s$.
+
+**Rechnung:** $W = 50\\,\\text{N} \\cdot 3\\,\\text{m} = 150\\,\\text{J}$.
+
+**Probe:** Einheit: $\\text{N} \\cdot \\text{m} = \\text{J}$ ✓. Größenordnung: 150 J entspricht etwa der Hubarbeit, eine 15 kg-Last 1 m hochzuheben — plausibel.
+
+**Typischer Fehler:** Den $\\cos\\alpha$-Faktor unnötig anwenden (der ist hier $1$) oder umgekehrt vergessen, falls Kraft und Weg schräg zueinander stehen.`,
+              hints: [
+                'Bei paralleler Kraft und Weg: $W = F \\cdot s$.',
+                '$1\\,\\text{J} = 1\\,\\text{N} \\cdot 1\\,\\text{m}$.',
+                '$50 \\cdot 3 = ?$',
+              ],
+              pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['arbeit'] },
+            },
+            {
+              type: 'multiple-choice',
+              question: 'Wenn die Kraft senkrecht zum Weg steht, beträgt die mechanische Arbeit:',
+              options: ['$W = F \\cdot s$ (maximal positiv)', '$W = -F \\cdot s$ (maximal negativ)', '$W = 0$', '$W = F \\cdot s \\cdot \\sin\\alpha$ und damit immer $> 0$'],
+              correctIndex: 2,
+              explanation: `**Ansatz:** $W = F \\cdot s \\cdot \\cos\\alpha$. Bei $\\alpha = 90°$ ist $\\cos(90°) = 0$.
+
+**Rechnung:** $W = F \\cdot s \\cdot 0 = 0\\,\\text{J}$ — unabhängig von $F$ und $s$.
+
+**Probe:** Anschaulich: eine Tasche horizontal tragen (Tragkraft vertikal, Weg horizontal) leistet im idealisierten Modell keine mechanische Arbeit am Tasche-System.
+
+**Typischer Fehler:** Glauben, „Senkrecht-Wirken" bedeute „starkes Wirken" oder „negatives Wirken". Es bedeutet **kein** Beitrag zur Arbeit, weil der Weg keine Komponente in Kraftrichtung hat.`,
+              hints: [
+                '$W = F \\cdot s \\cdot \\cos\\alpha$ ansetzen.',
+                'Welcher Wert hat $\\cos(90°)$?',
+                'Senkrechte Kraft trägt nicht zum Weg in ihre Richtung bei.',
+              ],
+              wrongAnswerExplanations: {
+                0: 'Maximal wäre die Arbeit bei $\\alpha = 0°$ (parallele Kraft und Weg). Senkrecht heißt $\\alpha = 90°$ — und dort ist $\\cos = 0$.',
+                1: 'Maximal negativ wäre die Arbeit bei $\\alpha = 180°$ (Kraft entgegen dem Weg). Senkrecht ist $90°$, nicht $180°$.',
+                3: 'Die Arbeitsformel benutzt $\\cos\\alpha$, nicht $\\sin\\alpha$. Mit $\\cos(90°) = 0$ folgt $W = 0$.',
+              },
+              pedagogy: { stage: 'apply-guided', subGoal: 1, uses: ['arbeit-90'] },
+            },
+            {
+              type: 'true-false',
+              statement: 'Die potentielle Energie eines Körpers der Masse $m$ in der Höhe $h$ über einem Bezugsniveau im Schwerefeld der Erde lautet $E_{\\text{pot}} = m \\cdot g \\cdot h$.',
+              correct: true,
+              explanation: `**Ansatz:** Definitionsgleichung der Lageenergie nahe der Erdoberfläche, wo $g$ als konstant angenommen werden darf.
+
+**Rechnung:** $E_{\\text{pot}} = m \\cdot g \\cdot h$ mit $g \\approx 9{,}81\\,\\text{m/s}^2$. Beispiel: $m = 1\\,\\text{kg}$ auf $h = 1\\,\\text{m}$ ⇒ $E_{\\text{pot}} \\approx 9{,}81\\,\\text{J}$.
+
+**Probe:** Einheit: $\\text{kg} \\cdot \\text{m/s}^2 \\cdot \\text{m} = \\text{N} \\cdot \\text{m} = \\text{J}$ ✓.
+
+**Typischer Fehler:** $h$ als Höhe über dem Erdmittelpunkt missverstehen. Hier ist $h$ der relative Höhenunterschied zu einem **frei wählbaren** Bezugsniveau — physikalisch zählen nur Energie**differenzen**.`,
+              hints: [
+                'Wie ist die Lageenergie nahe der Erdoberfläche definiert?',
+                'Welche Einheit ergibt $\\text{kg} \\cdot \\text{m/s}^2 \\cdot \\text{m}$?',
+                '$h$ wird relativ zu einem Bezugsniveau gemessen.',
+              ],
+              pedagogy: { stage: 'recognize', subGoal: 3, uses: ['e-pot'] },
+            },
           ],
         },
         {
