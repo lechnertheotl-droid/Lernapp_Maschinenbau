@@ -768,8 +768,15 @@ Dabei ist $l_\perp$ der senkrechte Abstand zwischen Drehpunkt und Wirkungslinie 
               correctValue: 10,
               tolerance: 0.01,
               unit: 'Nm',
-              explanation: 'M = F·l = 20·0,5 = 10 Nm.',
+              explanation: `**Ansatz:** Bei senkrecht zum Hebel angreifender Kraft ist der angegebene Abstand bereits der wirksame Hebelarm $l_\\perp$. Direkt einsetzen in $M = F\\cdot l_\\perp$.
+
+**Rechnung:** $M = F\\cdot l_\\perp = 20\\,\\text{N}\\cdot 0{,}5\\,\\text{m} = 10\\,\\text{Nm}$.
+
+**Probe:** Einheitencheck: $\\text{N}\\cdot\\text{m} = \\text{Nm}$ ✓. Bei doppelter Kraft (40 N) wäre $M = 20\\,\\text{Nm}$ — linear in $F$.
+
+**Typischer Fehler:** Hebelarm und Kraft addieren statt multiplizieren ("$20 + 0{,}5$") — geht durch Einheitencheck nicht durch ($\\text{N} + \\text{m}$ ist sinnlos).`,
               hints: ['Moment: M = F · l_perp', 'l_perp ist der senkrechte Abstand zur Kraftlinie.', 'Einheit: N · m = Nm'],
+              pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['moment-formel'] },
               visualization: {
                 id: 'beam-reactions',
                 params: {},
@@ -782,20 +789,34 @@ Dabei ist $l_\perp$ der senkrechte Abstand zwischen Drehpunkt und Wirkungslinie 
               question: 'Der wirksame Hebelarm ist ...',
               options: ['immer die Stablänge', 'der senkrechte Abstand zur Wirkungslinie', 'die Kraft mal Weg', 'der Winkel in Grad'],
               correctIndex: 1,
-              explanation: 'Nur der senkrechte Abstand zur Wirkungslinie zählt.',
+              explanation: `**Ansatz:** Definition: $M = F\\cdot l_\\perp$, wobei $l_\\perp$ der **senkrechte** Abstand vom Drehpunkt zur Wirkungslinie der Kraft ist.
+
+**Rechnung:** Bei einer schief angreifenden Kraft am Hebel der Länge $l$ unter Winkel $\\alpha$ zur Hebelachse gilt $l_\\perp = l\\sin\\alpha$ — die volle Stablänge ist nicht der wirksame Hebelarm.
+
+**Probe:** Sonderfall: Kraft senkrecht zum Hebel ($\\alpha = 90°$) ⇒ $l_\\perp = l\\sin 90° = l$ ✓. Kraft entlang des Hebels ($\\alpha = 0°$) ⇒ $l_\\perp = 0$, $M = 0$ ✓.
+
+**Typischer Fehler:** Hebelarm mit Stablänge gleichsetzen — gibt zu großes Moment, sobald die Kraft schief angreift.`,
               hints: ['Der Hebelarm ist senkrecht zur Wirkungslinie der Kraft.', 'Nicht die Stablänge, sondern der senkrechte Abstand zählt.', 'M = F · l_perp → nur l_perp relevant.'],
               wrongAnswerExplanations: {
                 0: 'Nur bei senkrechter Kraftrichtung stimmt das. Greift die Kraft schräg an, ist der Hebelarm $l_\\perp = l \\cdot \\sin(\\alpha)$, nicht die volle Stablänge $l$.',
                 2: 'Das ist die Definition der Arbeit $W = F \\cdot s$, nicht des Hebelarms. Das Moment ist $M = F \\cdot l_\\perp$, mit Einheit $\\text{Nm}$.',
                 3: 'Ein Winkel ist dimensionslos bzw. in rad/Grad angegeben. Der Hebelarm hat die Einheit Meter — er ist eine Strecke, kein Winkel.',
               },
+              pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['moment-formel'] },
             },
             {
               type: 'true-false',
               statement: 'Wenn die Wirkungslinie durch den Drehpunkt geht, ist das Moment null.',
               correct: true,
-              explanation: 'Dann ist der senkrechte Hebelarm 0.',
+              explanation: `**Ansatz:** Hebelarm $l_\\perp$ = senkrechter Abstand vom Drehpunkt zur Wirkungslinie. Geht die Wirkungslinie **durch** den Drehpunkt, beträgt dieser Abstand $0$.
+
+**Rechnung:** $M = F\\cdot l_\\perp = F\\cdot 0 = 0$. Egal wie groß $F$ ist — ohne Hebelarm kein Moment.
+
+**Probe:** Anschaulich: Eine Kraft, die direkt durch das Drehzentrum drückt, kann keine Drehung erzeugen. Nur das Bauteil als Ganzes wird translatorisch beansprucht.
+
+**Typischer Fehler:** Trotzdem ein Moment ansetzen, weil "ja eine Kraft anliegt". Erst der Hebelarm macht aus Kraft Drehmoment.`,
               hints: ['M = F · l_perp — l_perp ist der Senkrecht-Abstand.', 'Wenn Wirkungslinie durch Drehpunkt geht, ist l_perp = 0.', 'M = 0 bei l_perp = 0.'],
+              pedagogy: { stage: 'recognize', subGoal: 0, uses: ['moment-formel'] },
             },
           ],
         },

@@ -2180,6 +2180,479 @@ export const technischeMechanikSubGoalTasks = {
   },
 
   // ────────────────────────────────────────────────────────────────────────
+  // mech-1-2 — Momente und Hebelarm  (4 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-1-2': {
+
+    // ── [0] Moment $M = F\cdot l_\perp$ — senkrechter Abstand ──────────
+    0: [
+      tf(
+        'Bei einer Kraft, die senkrecht auf einen geraden Hebel wirkt, ist der wirksame Hebelarm gleich der vollen Hebellänge.',
+        true,
+        `**Ansatz:** $l_\\perp$ ist der **senkrechte** Abstand vom Drehpunkt zur Wirkungslinie der Kraft.
+
+**Rechnung:** Wirkt die Kraft senkrecht zum Hebel, läuft ihre Wirkungslinie senkrecht zur Hebelachse. Der Lotabstand vom Drehpunkt auf diese Wirkungslinie ist exakt die Hebellänge $l$.
+
+**Probe:** Kraft schief unter Winkel $\\alpha$ zur Hebelachse: $l_\\perp = l\\cdot\\sin\\alpha < l$ (außer bei $\\alpha = 90°$).
+
+**Typischer Fehler:** Bei schief angreifender Kraft trotzdem die volle Hebellänge als Hebelarm verwenden — das Moment wird zu groß angesetzt.`,
+        [
+          '$l_\\perp$ = senkrechter Abstand zum Drehpunkt.',
+          'Senkrecht angreifende Kraft → Wirkungslinie ⊥ Hebelachse.',
+          'Lotabstand = Hebellänge.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['moment-formel'] },
+      ),
+      mc(
+        'Eine Kraft $F = 50\\,\\text{N}$ wirkt am Ende eines Hebels (Länge $l = 0{,}8\\,\\text{m}$) unter dem Winkel $\\alpha = 60°$ zur Hebelachse. Berechne das Moment um den Drehpunkt.',
+        [
+          '$M = 50\\cdot 0{,}8 = 40\\,\\text{Nm}$',
+          '$M = 50\\cdot 0{,}8\\cdot\\sin 60° \\approx 34{,}6\\,\\text{Nm}$',
+          '$M = 50\\cdot 0{,}8\\cdot\\cos 60° = 20\\,\\text{Nm}$',
+          '$M = 50\\cdot 0{,}8\\cdot\\tan 60° \\approx 69{,}3\\,\\text{Nm}$',
+        ],
+        1,
+        `**Ansatz:** Bei schiefer Kraft ist der wirksame Hebelarm $l_\\perp = l\\cdot\\sin\\alpha$ ($\\alpha$ = Winkel zwischen Kraftvektor und Hebelachse).
+
+**Rechnung:** $l_\\perp = 0{,}8\\cdot\\sin 60° = 0{,}8\\cdot\\frac{\\sqrt{3}}{2} \\approx 0{,}693\\,\\text{m}$. $M = F\\cdot l_\\perp = 50\\cdot 0{,}693 \\approx 34{,}6\\,\\text{Nm}$.
+
+**Probe:** Alternativ: nur die Komponente der Kraft senkrecht zum Hebel zerlegen — $F_\\perp = F\\sin\\alpha = 50\\sin 60° \\approx 43{,}3\\,\\text{N}$. Dann $M = F_\\perp\\cdot l = 43{,}3\\cdot 0{,}8 \\approx 34{,}6\\,\\text{Nm}$ ✓.
+
+**Typischer Fehler:** Volle Hebellänge ohne $\\sin\\alpha$ ⇒ $40\\,\\text{Nm}$ (zu groß). Oder $\\sin$/$\\cos$ vertauschen ⇒ $20\\,\\text{Nm}$.`,
+        [
+          'Bei schiefer Kraft: $l_\\perp = l\\sin\\alpha$.',
+          '$\\sin 60° \\approx 0{,}866$.',
+          '$50\\cdot 0{,}8\\cdot 0{,}866 \\approx 34{,}6$.',
+        ],
+        {
+          0: 'Volle Hebellänge ohne Winkelfaktor — gilt nur, wenn die Kraft senkrecht zum Hebel angreift ($\\alpha = 90°$). Hier $\\alpha = 60°$.',
+          2: '$\\sin$ und $\\cos$ vertauscht: für den Winkel zur **Hebelachse** ist $\\sin\\alpha$ der richtige Faktor. $\\cos$ wäre korrekt, wenn $\\alpha$ zur Senkrechten gemessen würde.',
+          3: '$\\tan\\alpha$ kommt in der Drehmoment-Formel nicht vor. Hebelarm ist eine reine Längen-Projektion ($\\sin\\alpha$).',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['moment-formel'] },
+      ),
+      ni(
+        'Eine Kraft $F = 200\\,\\text{N}$ wirkt **senkrecht** auf einen Hebel der Länge $l = 0{,}3\\,\\text{m}$. Wie groß ist das Moment um den Drehpunkt am anderen Hebelende (in Nm)?',
+        60, 0.1, 'Nm',
+        `**Ansatz:** Senkrechte Krafteinleitung ⇒ $l_\\perp = l$.
+
+**Rechnung:** $M = F\\cdot l = 200\\cdot 0{,}3 = 60\\,\\text{Nm}$.
+
+**Probe:** Einheit: $\\text{N}\\cdot\\text{m} = \\text{Nm}$ ✓. Skalierung: bei verdoppelter Hebellänge ($l = 0{,}6$) wäre $M = 120\\,\\text{Nm}$ — linear.
+
+**Typischer Fehler:** Hebelarm in cm einsetzen ($30$) statt in Meter ($0{,}3$) ⇒ $6000$, dann fälschlich als $\\text{Nm}$ bezeichnet (wäre tatsächlich $\\text{N\\cdot cm}$, nicht $\\text{Nm}$).`,
+        [
+          'Senkrecht angreifend ⇒ Hebelarm = Hebellänge.',
+          '$M = F\\cdot l$ direkt.',
+          '$200\\cdot 0{,}3 = 60$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['moment-formel'] },
+      ),
+      mc(
+        'An einem Schlüssel der Länge $l = 0{,}25\\,\\text{m}$ wird eine Kraft $F = 40\\,\\text{N}$ unter $\\alpha = 30°$ zur Schlüsselachse aufgebracht. Studierende rechnet $M = F\\cdot l = 40\\cdot 0{,}25 = 10\\,\\text{Nm}$. Wo steckt der Fehler?',
+        [
+          'Der senkrechte Hebelarm ist $l_\\perp = l\\sin 30° = 0{,}125\\,\\text{m}$, also $M = 40\\cdot 0{,}125 = 5\\,\\text{Nm}$. Bei schiefer Krafteinleitung ist die volle Schlüssellänge nicht der wirksame Hebelarm.',
+          'Der Fehler ist die Einheit — es muss $\\text{N\\cdot mm}$ heißen, nicht $\\text{Nm}$.',
+          'Kein Fehler — bei kleinen Winkeln kann $\\sin\\alpha \\approx 1$ angenommen werden.',
+          'Die Kraft müsste in $\\text{kN}$ umgerechnet werden, sonst ist das Ergebnis um Faktor $1000$ zu klein.',
+        ],
+        0,
+        `**Ansatz:** Hebelarm ist $l_\\perp = l\\sin\\alpha$ — bei $\\alpha = 30°$ also nur die halbe Schlüssellänge.
+
+**Rechnung:** $l_\\perp = 0{,}25\\cdot\\sin 30° = 0{,}25\\cdot 0{,}5 = 0{,}125\\,\\text{m}$. $M = 40\\cdot 0{,}125 = 5\\,\\text{Nm}$.
+
+**Probe:** Für $\\alpha = 90°$ wäre $M = 40\\cdot 0{,}25 = 10\\,\\text{Nm}$ — das wäre dann das gerechnete Ergebnis. Bei $30°$ ist es genau halb so groß.
+
+**Typischer Fehler:** Sin-Faktor weglassen, weil "kleiner Winkel". $30°$ ist nicht klein — $\\sin 30° = 0{,}5$, das halbiert das Moment.`,
+        [
+          '$l_\\perp = l\\sin\\alpha$, nicht $l$ allein.',
+          '$\\sin 30° = 0{,}5$.',
+          '$40\\cdot 0{,}25\\cdot 0{,}5 = 5$.',
+        ],
+        {
+          1: 'Die Einheit $\\text{Nm}$ ist korrekt — Fehler liegt im Hebelarm, nicht in der Einheit.',
+          2: 'Bei $\\alpha = 30°$ ist $\\sin\\alpha = 0{,}5$ — keinesfalls $\\approx 1$. Die Näherung gilt nur für sehr kleine Winkel ($< 10°$).',
+          3: 'Die Krafteinheit Newton stimmt; das Ergebnis ist nicht um Faktor 1000 falsch, sondern um Faktor 2 (durch Sin-Faktor).',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['moment-formel'] },
+      ),
+      ni(
+        'Ein Drehmomentschlüssel mit Hebellänge $l = 0{,}5\\,\\text{m}$ wird verwendet. Beim Anziehen einer Schraube wird die Kraft so aufgebracht, dass sie unter $\\alpha = 80°$ zur Schlüsselachse steht. Welche Kraft $F$ ist nötig, um $M = 200\\,\\text{Nm}$ zu erzeugen (auf 1 Nachkommastelle, in N)?',
+        406.2, 0.5, 'N',
+        `**Ansatz:** $M = F\\cdot l\\sin\\alpha$ nach $F$ umstellen: $F = M/(l\\sin\\alpha)$.
+
+**Rechnung:** $\\sin 80° \\approx 0{,}9848$. $l\\sin\\alpha = 0{,}5\\cdot 0{,}9848 = 0{,}4924\\,\\text{m}$. $F = 200/0{,}4924 \\approx 406{,}2\\,\\text{N}$.
+
+**Probe:** Gegenrechnung: $M = 406{,}2\\cdot 0{,}5\\cdot 0{,}9848 \\approx 200{,}0\\,\\text{Nm}$ ✓. Vergleich mit senkrechter Krafteinleitung ($\\alpha = 90°$): da wäre $F = 200/0{,}5 = 400\\,\\text{N}$ — bei $80°$ knapp 6 N mehr nötig.
+
+**Typischer Fehler:** $\\sin 80°$ ignorieren und $F = 200/0{,}5 = 400\\,\\text{N}$ ansetzen — unterschätzt die nötige Kraft. Oder $\\cos 80° \\approx 0{,}1736$ verwenden ⇒ $F \\approx 2304\\,\\text{N}$ (massiv zu hoch).`,
+        [
+          '$M = F\\cdot l\\sin\\alpha$ nach $F$ auflösen.',
+          '$\\sin 80° \\approx 0{,}985$.',
+          '$200/(0{,}5\\cdot 0{,}985) \\approx 406$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['moment-formel'] },
+      ),
+    ],
+
+    // ── [1] Drehsinn-Konvention ─────────────────────────────────────────
+    1: [
+      tf(
+        'Im Maschinenbau gilt die Konvention: Drehmomente, die gegen den Uhrzeigersinn wirken, werden positiv gezählt; Drehmomente im Uhrzeigersinn negativ.',
+        true,
+        `**Ansatz:** Standard-Vorzeichenkonvention der ebenen Statik (rechte-Hand-Regel mit $z$-Achse aus der Zeichenebene heraus).
+
+**Rechnung:** $\\vec M = \\vec r\\times\\vec F$. Bei Aufsicht von $+z$ rotiert ein positiver $z$-Anteil des Moments **gegen** den Uhrzeigersinn — das ist die Konvention "CCW = positiv".
+
+**Probe:** Beispiel: $\\vec r = (1,0,0)$, $\\vec F = (0,1,0)$ ⇒ $\\vec r\\times\\vec F = (0,0,+1)$ — Kraft nach oben am rechten Hebelende dreht CCW = positiv ✓.
+
+**Typischer Fehler:** Beim Bauingenieurwesen gibt es teilweise die umgekehrte Konvention (CW positiv). Innerhalb einer Aufgabe muss man konsequent **eine** Konvention durchhalten — Wechseln führt zu Vorzeichenchaos.`,
+        [
+          'Konvention: CCW = positiv.',
+          'Folgt aus rechter-Hand-Regel mit $+z$ aus der Zeichenebene.',
+          'Innerhalb einer Aufgabe konsequent.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['drehsinn'] },
+      ),
+      mc(
+        'Ein horizontaler Balken wird durch zwei Kräfte belastet: links ($x = 0$) wirkt $F_1 = 100\\,\\text{N}$ **nach unten**, rechts ($x = 2\\,\\text{m}$) wirkt $F_2 = 100\\,\\text{N}$ **nach oben**. Welcher Drehsinn entsteht für das resultierende Kräftepaar bezüglich der Balkenmitte (Konvention: CCW = positiv)?',
+        [
+          'Im Uhrzeigersinn (negativ).',
+          'Gegen den Uhrzeigersinn (positiv).',
+          'Es entsteht kein Moment, weil sich die Kräfte aufheben.',
+          'Drehsinn unbestimmt ohne weiteren Bezugspunkt.',
+        ],
+        1,
+        `**Ansatz:** Beide Momentbeiträge um die Balkenmitte berechnen und vorzeichenrichtig summieren.
+
+**Rechnung:** $\\vec r_1 = (-1,0,0)$ (links), $\\vec F_1 = (0,-100,0)$ (nach unten) ⇒ $r_{1x} F_{1y} - r_{1y} F_{1x} = (-1)(-100) - 0 = +100\\,\\text{Nm}$. $\\vec r_2 = (1,0,0)$ (rechts), $\\vec F_2 = (0,+100,0)$ (nach oben) ⇒ $(1)(100) - 0 = +100\\,\\text{Nm}$. Gesamtmoment $M_\\text{ges} = +200\\,\\text{Nm}$ ⇒ CCW (positiv).
+
+**Probe:** Anschaulich: Linke Seite drückt nach unten, rechte Seite hebt — der Balken rotiert "rechte-Seite-hoch" um die Mitte. Vom Standpunkt $+z$ aus betrachtet ist das CCW.
+
+**Typischer Fehler:** Annahme, dass sich Kräfte mit gleichem Betrag und entgegengesetzten Richtungen aufheben — die **Kräfte** heben sich auf ($\\sum F_y = 0$), die **Momente** addieren sich aber zum Kräftepaar.`,
+        [
+          'Pro Kraft Moment um Balkenmitte berechnen.',
+          'Vorzeichen aus $r\\times F$ (z-Komponente).',
+          'Beide Beiträge gleichgerichtet.',
+        ],
+        {
+          0: 'Falsch — die Beiträge beider Kräfte sind beide CCW (positiv). Vorzeichen aus $\\vec r\\times\\vec F$ konsequent ausrechnen.',
+          2: 'Die Kraftsumme ist null ($-100 + 100 = 0$), aber das Momentensystem ist nicht null. Das ist genau die Definition eines **Kräftepaars**.',
+          3: 'Der Bezugspunkt **ist** angegeben (Balkenmitte). Bei einem reinen Kräftepaar ist das Moment ohnehin unabhängig vom Bezugspunkt — beide Wahlen liefern $+200\\,\\text{Nm}$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['drehsinn'] },
+      ),
+      mc(
+        'An einem T-förmigen Hebel greifen drei Momentbeiträge an: $M_1 = 100\\,\\text{N}\\cdot 0{,}4\\,\\text{m}$ **gegen Uhrzeiger**, $M_2 = 80\\,\\text{N}\\cdot 0{,}5\\,\\text{m}$ **gegen Uhrzeiger**, $M_3 = 200\\,\\text{N}\\cdot 0{,}3\\,\\text{m}$ **im Uhrzeigersinn**. Wie groß ist das **resultierende** Moment (Vorzeichen + Betrag, CCW = positiv)?',
+        [
+          '$+20\\,\\text{Nm}$',
+          '$-20\\,\\text{Nm}$',
+          '$+140\\,\\text{Nm}$',
+          '$-140\\,\\text{Nm}$',
+        ],
+        0,
+        `**Ansatz:** Jedes Einzelmoment vorzeichenrichtig berechnen (CCW $\\to +$, CW $\\to -$), dann summieren.
+
+**Rechnung:** $M_1 = +100\\cdot 0{,}4 = +40\\,\\text{Nm}$. $M_2 = +80\\cdot 0{,}5 = +40\\,\\text{Nm}$. $M_3 = -200\\cdot 0{,}3 = -60\\,\\text{Nm}$. $M_\\text{res} = 40 + 40 - 60 = +20\\,\\text{Nm}$.
+
+**Probe:** Vorzeichen-Plausibilität: zwei kleinere CCW-Beiträge schlagen knapp den größeren CW-Beitrag — Differenz $+20\\,\\text{Nm}$. Größenordnung passt.
+
+**Typischer Fehler:** Beträge ohne Vorzeichen addieren ⇒ $40 + 40 + 60 = 140\\,\\text{Nm}$, Drehsinn rätselhaft. Oder das CW-Moment positiv mitschleppen.`,
+        [
+          'CCW positiv, CW negativ.',
+          'Beiträge einzeln, dann summieren.',
+          '$+40 + 40 - 60 = +20$.',
+        ],
+        {
+          1: 'Vorzeichen falsch — zwei CCW-Beiträge ($+40, +40$) überwiegen das einzelne CW-Moment ($-60$).',
+          2: 'Beträge ohne Vorzeichen summiert ($40 + 40 + 60 = 140$). Das CW-Moment muss mit Minus eingehen.',
+          3: 'Alle Beiträge als negativ behandelt — die beiden CCW-Momente sind aber positiv.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['drehsinn'] },
+      ),
+      mc(
+        'Ein Studierender berechnet zwei Momente an einem Hebel und schreibt $+30\\,\\text{Nm}$ und $+25\\,\\text{Nm}$. Beide drehen den Hebel **im Uhrzeigersinn** (Konvention: CCW positiv). Was ist falsch?',
+        [
+          'Beide Momente sind tatsächlich negativ ($-30$ und $-25$); die Summe ist $-55\\,\\text{Nm}$. Vorzeichen wurden bei beiden vergessen.',
+          'Die Vorzeichen sind richtig, das Endergebnis ist $+55\\,\\text{Nm}$.',
+          'Eines der Momente ist positiv, das andere negativ — sie heben sich teilweise auf.',
+          'Bei gleichgerichteten Momenten muss man Beträge subtrahieren statt addieren.',
+        ],
+        0,
+        `**Ansatz:** Konvention: CCW = positiv, CW = negativ. CW-Drehsinn muss als negatives Moment eingetragen werden.
+
+**Rechnung:** Korrekte Werte: $M_1 = -30\\,\\text{Nm}$, $M_2 = -25\\,\\text{Nm}$. Summe: $-55\\,\\text{Nm}$ (insgesamt CW).
+
+**Probe:** Plausibilität: Wenn beide Beiträge CW drehen, muss die Resultierende ebenfalls CW sein — also negativ. Positives Vorzeichen wäre ein Widerspruch.
+
+**Typischer Fehler:** Die Konvention beim Aufschreiben "vergessen" — Beträge ablesen und das Vorzeichen erst am Ende manuell einfügen. Sicherer: bei jedem Moment direkt das passende Vorzeichen aus dem Drehsinn ableiten.`,
+        [
+          'CW = negativ.',
+          'Beide Beiträge CW ⇒ beide negativ.',
+          'Summe gleichgerichteter Beiträge: Beträge addieren, Vorzeichen behalten.',
+        ],
+        {
+          1: '$+55\\,\\text{Nm}$ wäre CCW — das widerspricht der Vorgabe "beide drehen CW".',
+          2: 'Die Aussage "beide drehen CW" schließt aus, dass eines positiv (CCW) ist. Beide müssen das gleiche Vorzeichen tragen.',
+          3: 'Subtraktion ist nur bei **entgegengesetzten** Drehsinnen sinnvoll. Gleichgerichtete Beiträge addieren sich vom Betrag her.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['drehsinn'] },
+      ),
+      mc(
+        'In einem Getriebe rotiert die Antriebswelle gegen den Uhrzeigersinn (positiv). Das **Antriebsmoment** beträgt $M_\\text{an} = +50\\,\\text{Nm}$. Welche Drehrichtung und welchen Betrag muss das **Reaktionsmoment** am Lager haben, damit das Gehäuse nicht mitrotiert?',
+        [
+          'Im Uhrzeigersinn ($-50\\,\\text{Nm}$), damit $\\sum M = 0$ gilt.',
+          'Gegen den Uhrzeigersinn ($+50\\,\\text{Nm}$), damit das Antriebsmoment verstärkt wird.',
+          'Gleicher Drehsinn, aber halber Betrag ($+25\\,\\text{Nm}$).',
+          'Das Lager überträgt grundsätzlich keine Momente.',
+        ],
+        0,
+        `**Ansatz:** Das Gehäuse befindet sich im statischen Gleichgewicht ⇒ $\\sum M = 0$. Antriebs- und Reaktionsmoment müssen sich gerade aufheben.
+
+**Rechnung:** $M_\\text{an} + M_\\text{lager} = 0 \\Rightarrow M_\\text{lager} = -M_\\text{an} = -50\\,\\text{Nm}$ (Vorzeichen umgekehrt = entgegengesetzter Drehsinn).
+
+**Probe:** Anschaulich: Wenn das Drehmoment den Rotor CCW dreht, müssen die Lager das Gehäuse mit gleichem Betrag CW "festhalten" — sonst würde das Gehäuse selbst zu rotieren beginnen.
+
+**Typischer Fehler:** Reaktionsmoment in dieselbe Richtung ansetzen — verdoppelt das Antriebsmoment statt es zu kompensieren. Klassischer Vorzeichen-Fehler bei Lagerreaktions-Aufgaben.`,
+        [
+          'Gleichgewicht: $\\sum M = 0$.',
+          'Reaktion = $-$(Aktion).',
+          'Vorzeichen umgekehrt = anderer Drehsinn, gleicher Betrag.',
+        ],
+        {
+          1: 'Reaktion mit gleichem Vorzeichen würde sich addieren ($+100\\,\\text{Nm}$ gesamt) — das Gehäuse würde rotieren, also kein Gleichgewicht.',
+          2: 'Halber Betrag bricht $\\sum M = 0$ — Restmoment bliebe und würde das Gehäuse beschleunigen.',
+          3: 'Lager **können** Momente übertragen — bei Einspannungen oder festen Lagerschalen sehr wohl. Bei einem rotierenden Wälzlager wird das Reaktionsmoment auf das Gehäuse übertragen.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['drehsinn'] },
+      ),
+    ],
+
+    // ── [2] Bezugspunkt frei wählbar — klug wählen ─────────────────────
+    2: [
+      tf(
+        'Bei der Aufstellung der Momentenbedingung in der ebenen Statik kann der Bezugspunkt frei gewählt werden — auch außerhalb des Bauteils.',
+        true,
+        `**Ansatz:** Im statischen Gleichgewicht gilt $\\sum M = 0$ um **jeden** Punkt der Ebene. Der Bezugspunkt ist eine reine Rechenwahl.
+
+**Rechnung:** Mathematisch folgt das aus der Identität: Verschiebt man den Bezugspunkt um $\\vec d$, ändert sich jedes Einzelmoment um $\\vec d\\times\\vec F_i$. Summiert über alle $i$ gibt $\\vec d\\times\\sum\\vec F_i = \\vec d\\times\\vec 0 = \\vec 0$ (im Gleichgewicht ist die Kraftsumme bereits null).
+
+**Probe:** Klügste Wahl: ein Punkt, durch den möglichst viele unbekannte Kräfte verlaufen — diese fallen aus der Momentenbilanz heraus und es bleiben weniger Unbekannte.
+
+**Typischer Fehler:** Glauben, der Bezugspunkt müsse "physikalisch sinnvoll" oder "auf dem Körper" liegen. Mathematisch ist jeder Punkt erlaubt — Lösungen sind identisch.`,
+        [
+          'Gleichgewicht: $\\sum M = 0$ um jeden Punkt.',
+          'Bezugspunkt-Verschiebung ändert nichts.',
+          'Klügste Wahl eliminiert Unbekannte.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['bezugspunkt'] },
+      ),
+      mc(
+        'Ein Balken mit Festlager A (links), Loslager B (rechts) und einer Punktlast $F$ in der Mitte soll auf $A_y$ und $B_y$ gerechnet werden. Welcher Bezugspunkt für die Momentenbilanz führt am schnellsten zu $B_y$?',
+        [
+          'Festlager A — eliminiert $A_x$ und $A_y$ aus der Momentenbilanz, sodass nur noch $B_y$ und $F$ verbleiben.',
+          'Loslager B — eliminiert $B_y$, gibt aber $A_y$ direkt.',
+          'Mitte des Balkens (Lastangriffspunkt) — eliminiert $F$, lässt aber $A_y$ und $B_y$ stehen.',
+          'Beliebig — Bezugspunkt ist egal, es kommt immer dasselbe heraus.',
+        ],
+        0,
+        `**Ansatz:** Klüge Bezugspunktwahl = Punkt, durch den möglichst viele unbekannte Kräfte verlaufen. Bei Festlager A gehen $A_x, A_y$ direkt durch den Bezugspunkt ⇒ Hebelarm $= 0$ ⇒ keine Beiträge zur Momentenbilanz.
+
+**Rechnung:** $\\sum M_A = 0$: $-F\\cdot\\frac{L}{2} + B_y\\cdot L = 0 \\Rightarrow B_y = F/2$. Eine Gleichung, eine Unbekannte.
+
+**Probe:** Im Gegenzug: Wahl Punkt $B$ liefert $A_y$ direkt — ebenfalls geschickt, aber für $B_y$ nicht optimal.
+
+**Typischer Fehler:** Bezugspunkt am Lastangriff wählen — eliminiert $F$, lässt aber sowohl $A_y$ als auch $B_y$ in der Bilanz stehen, was eine zweite Gleichung erfordert.`,
+        [
+          'Welche Unbekannten verlaufen durch welchen Punkt?',
+          'Punkt durch unbekannte Kraft ⇒ Beitrag = 0.',
+          'Festlager A: $A_x, A_y$ haben Hebelarm $0$.',
+        ],
+        {
+          1: 'Korrekt für die Bestimmung von $A_y$, nicht $B_y$. Die Frage zielt explizit auf $B_y$.',
+          2: 'Eliminiert $F$, aber beide Lagerreaktionen bleiben stehen — eine Gleichung mit zwei Unbekannten reicht nicht.',
+          3: 'Mathematisch korrekt (Lösungen identisch), aber praktisch deutlich aufwendiger — schlechte Wahl bringt gekoppelte Gleichungen.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['bezugspunkt'] },
+      ),
+      ni(
+        'Ein masseloser Balken ($L = 5\\,\\text{m}$) liegt auf Festlager A (links bei $x = 0$) und Loslager B (rechts bei $x = 5\\,\\text{m}$). Eine Punktlast $F = 600\\,\\text{N}$ greift bei $x_F = 4\\,\\text{m}$ vertikal nach unten an. Berechne $A_y$ direkt durch geschickte Wahl des Bezugspunkts (in N).',
+        120, 0.5, 'N',
+        `**Ansatz:** Um $A_y$ direkt zu erhalten, Bezugspunkt **B** wählen — dann fallen $B_y$ aus der Bilanz heraus.
+
+**Rechnung:** $\\sum M_B = 0$: $-A_y\\cdot L + F\\cdot(L - x_F) = 0$. Einsetzen: $-A_y\\cdot 5 + 600\\cdot 1 = 0 \\Rightarrow A_y = 600/5 = 120\\,\\text{N}$.
+
+**Probe:** Gegenrechnung über $A$: $\\sum M_A = 0$ liefert $B_y\\cdot 5 = 600\\cdot 4 = 2400 \\Rightarrow B_y = 480\\,\\text{N}$. $A_y + B_y = 120 + 480 = 600 = F$ ✓.
+
+**Typischer Fehler:** Hebelarm der Last falsch herum messen ($x_F = 4$ statt $L - x_F = 1$ als Abstand zu B) — das Vorzeichen oder die Größe wird falsch.`,
+        [
+          'Bezugspunkt B → eliminiert $B_y$.',
+          'Hebelarm der Last bzgl. B: $L - x_F = 1\\,\\text{m}$.',
+          '$A_y\\cdot 5 = 600\\cdot 1$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['bezugspunkt', 'moment-formel'] },
+      ),
+      mc(
+        'Bei einem Balken (Festlager A links, Loslager B rechts, Last $F$ in der Mitte) berechnet eine Studentin $\\sum M_A = 0$ und kommt auf $B_y = F$. Wo steckt der Fehler?',
+        [
+          'Sie hat den Hebelarm der Last falsch angesetzt — die Last greift bei $L/2$, nicht bei $L$, was zu $B_y = F/2$ führen muss.',
+          'Der Bezugspunkt $A$ war falsch gewählt — er muss bei $B$ liegen.',
+          'Die Momentenbilanz benötigt zusätzlich $\\sum F = 0$, sonst ist sie unvollständig.',
+          'Symmetrische Lasten haben kein Moment, $B_y = 0$ wäre korrekt.',
+        ],
+        0,
+        `**Ansatz:** Korrekte Momentenbilanz um $A$: $-F\\cdot\\frac{L}{2} + B_y\\cdot L = 0 \\Rightarrow B_y = \\frac{F\\cdot L/2}{L} = F/2$.
+
+**Rechnung:** Wer $B_y = F$ erhält, hat den Hebelarm der Last als $L$ (statt $L/2$) angesetzt: $F\\cdot L = B_y\\cdot L \\Rightarrow B_y = F$ — falscher Hebelarm.
+
+**Probe:** Plausibilität: Bei mittiger Last muss aus Symmetrie $A_y = B_y = F/2$ folgen. Wenn $B_y = F$, wäre $A_y = 0$ — würde bedeuten, dass das Lager A überhaupt nichts trägt, was bei mittiger Last absurd ist.
+
+**Typischer Fehler:** Die Last "in die Berechnung am Ende des Balkens" platzieren statt am tatsächlichen Angriffspunkt $L/2$ — ein simpler Geometrie-Fehler mit großen Folgen.`,
+        [
+          'Hebelarm der Last ist $L/2$, nicht $L$.',
+          '$\\sum M_A = -F\\cdot\\frac{L}{2} + B_y\\cdot L = 0$.',
+          'Symmetrie: $A_y = B_y = F/2$.',
+        ],
+        {
+          1: 'Bezugspunkt A ist eine **gute** Wahl, um $B_y$ direkt zu bekommen — der Fehler liegt nicht im Bezugspunkt, sondern im Hebelarm.',
+          2: '$\\sum F = 0$ ergänzt das System, ist hier aber nicht das Problem. Die Momentenbilanz allein liefert bei richtigem Hebelarm das korrekte $B_y$.',
+          3: '"Symmetrische Lasten haben kein Moment" ist falsch — symmetrische Aufteilung der Reaktionen ist gemeint. Beide Lager tragen $F/2$.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['bezugspunkt'] },
+      ),
+      ni(
+        'Ein masseloser Balken auf Festlager A (links bei $x = 0$) und Loslager B (rechts bei $x = 8\\,\\text{m}$) trägt zwei Lasten: $F_1 = 1500\\,\\text{N}$ bei $x_1 = 3\\,\\text{m}$ und $F_2 = 2000\\,\\text{N}$ bei $x_2 = 6\\,\\text{m}$ (beide vertikal nach unten). Berechne $A_y$ über die Momentenbilanz um Bezugspunkt $B$ (in N, auf 1 Nachkommastelle).',
+        1437.5, 1, 'N',
+        `**Ansatz:** Momentenbilanz um $B$ eliminiert $B_y$. Hebelarme der Lasten = Abstand vom jeweiligen Angriffspunkt zu $B$.
+
+**Rechnung:** $\\sum M_B = 0$: $-A_y\\cdot L + F_1\\cdot(L-x_1) + F_2\\cdot(L-x_2) = 0$. Einsetzen: $-A_y\\cdot 8 + 1500\\cdot 5 + 2000\\cdot 2 = 0$. $A_y\\cdot 8 = 7500 + 4000 = 11500$. $A_y = 11500/8 = 1437{,}5\\,\\text{N}$.
+
+**Probe:** $\\sum F_y = 0$: $A_y + B_y = F_1 + F_2 = 3500 \\Rightarrow B_y = 3500 - 1437{,}5 = 2062{,}5\\,\\text{N}$. Cross-Check $\\sum M_A = 0$: $-1500\\cdot 3 - 2000\\cdot 6 + 2062{,}5\\cdot 8 = -4500 - 12000 + 16500 = 0$ ✓.
+
+**Typischer Fehler:** Hebelarme von links statt rechts messen ($x_1$ statt $L - x_1$) — gibt einen anderen, falschen $A_y$-Wert. Bei Wahl des Bezugspunkts B muss der Abstand **bis B** gemessen werden.`,
+        [
+          'Bezugspunkt $B$ wählen → $B_y$ fällt heraus.',
+          'Hebelarm jeder Last = $L - x_i$.',
+          '$A_y\\cdot 8 = 1500\\cdot 5 + 2000\\cdot 2 = 11500$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['bezugspunkt'] },
+      ),
+    ],
+
+    // ── [3] Kreuzprodukt-Variante $\vec M = \vec r \times \vec F$ ──────
+    3: [
+      tf(
+        'In 3D oder bei schief angreifenden Kräften gilt $\\vec M = \\vec r \\times \\vec F$, wobei $\\vec r$ der Ortsvektor vom Bezugspunkt zum Kraftangriffspunkt ist.',
+        true,
+        `**Ansatz:** Vektorielle Definition des Drehmoments — verallgemeinert die skalare Formel $M = F\\cdot l_\\perp$ auf 3D und beliebige Vektorrichtungen.
+
+**Rechnung:** Komponentenformel: $\\vec r\\times\\vec F = (r_y F_z - r_z F_y,\\ r_z F_x - r_x F_z,\\ r_x F_y - r_y F_x)$. Der Betrag ist $|\\vec M| = |\\vec r||\\vec F|\\sin\\theta$, wobei $\\theta$ der Winkel zwischen $\\vec r$ und $\\vec F$ ist.
+
+**Probe:** In 2D mit $\\vec r = (l, 0, 0)$ und $\\vec F = (0, F, 0)$ (senkrecht angreifend): $\\vec r\\times\\vec F = (0, 0, lF)$ — Betrag $lF$, exakt das skalare Ergebnis ✓.
+
+**Typischer Fehler:** $\\vec r$ als Vektor vom Kraftangriff zum Bezugspunkt ansetzen (umgekehrt) — vertauscht das Vorzeichen, weil $\\vec r\\times\\vec F = -(\\vec F\\times\\vec r)$.`,
+        [
+          'Definition: $\\vec M = \\vec r\\times\\vec F$.',
+          '$\\vec r$ vom Bezugspunkt zum Kraftangriff.',
+          'Reduziert sich in 2D auf $M = F\\cdot l_\\perp$.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['m-kreuz'] },
+      ),
+      mc(
+        'Berechne $\\vec r\\times\\vec F$ für $\\vec r = (2,\\ 0,\\ 0)\\,\\text{m}$ und $\\vec F = (0,\\ 5,\\ 0)\\,\\text{N}$.',
+        [
+          '$(0,\\ 0,\\ 10)\\,\\text{Nm}$',
+          '$(10,\\ 0,\\ 0)\\,\\text{Nm}$',
+          '$(0,\\ 10,\\ 0)\\,\\text{Nm}$',
+          '$(0,\\ 0,\\ -10)\\,\\text{Nm}$',
+        ],
+        0,
+        `**Ansatz:** Komponentenformel $\\vec r\\times\\vec F = (r_y F_z - r_z F_y,\\ r_z F_x - r_x F_z,\\ r_x F_y - r_y F_x)$.
+
+**Rechnung:** $r_y F_z - r_z F_y = 0 - 0 = 0$. $r_z F_x - r_x F_z = 0 - 0 = 0$. $r_x F_y - r_y F_x = 2\\cdot 5 - 0 = 10$. Ergebnis: $(0,\\ 0,\\ 10)\\,\\text{Nm}$.
+
+**Probe:** Beide Vektoren liegen in der $xy$-Ebene — das Moment muss senkrecht dazu (in $z$-Richtung) zeigen. Vorzeichen aus rechte-Hand-Regel: Daumen $\\vec r$ (in $+x$), Zeigefinger $\\vec F$ (in $+y$) ⇒ Mittelfinger zeigt in $+z$ ✓.
+
+**Typischer Fehler:** Komponentenweise multiplizieren ($r_x F_x, r_y F_y, r_z F_z$) — das ist **kein** Kreuzprodukt, sondern eine Hadamard-Produkt-artige Operation. Liefert hier $(0, 0, 0)$.`,
+        [
+          'Komponentenformel des Kreuzprodukts.',
+          'Beide Vektoren in $xy$-Ebene → Moment in $z$.',
+          'Rechte-Hand-Regel zur Vorzeichen-Probe.',
+        ],
+        {
+          1: 'Falsche Komponente — Moment senkrecht zu $\\vec r$ und $\\vec F$ stehen, also nicht in $x$-Richtung.',
+          2: 'Auch falsche Komponente — Moment muss senkrecht zur Ebene der beiden Vektoren stehen, nicht entlang $\\vec F$.',
+          3: 'Vorzeichen falsch — rechte-Hand-Regel: $+x\\times +y = +z$, nicht $-z$. $\\vec F\\times\\vec r$ würde $-z$ ergeben.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['m-kreuz'] },
+      ),
+      ni(
+        'Eine Kraft $\\vec F = (0,\\ 0,\\ 100)\\,\\text{N}$ greift am Punkt $\\vec r = (3,\\ 4,\\ 0)\\,\\text{m}$ relativ zum Bezugspunkt an. Welchen Betrag $|\\vec M|$ hat das Moment um den Bezugspunkt (in Nm)?',
+        500, 1, 'Nm',
+        `**Ansatz:** $\\vec M = \\vec r\\times\\vec F$ ausrechnen, dann Betrag bilden.
+
+**Rechnung:** $\\vec M = (r_y F_z - r_z F_y,\\ r_z F_x - r_x F_z,\\ r_x F_y - r_y F_x) = (4\\cdot 100 - 0,\\ 0 - 3\\cdot 100,\\ 0 - 0) = (400,\\ -300,\\ 0)\\,\\text{Nm}$. $|\\vec M| = \\sqrt{400^2 + 300^2} = \\sqrt{160000 + 90000} = \\sqrt{250000} = 500\\,\\text{Nm}$.
+
+**Probe:** Alternativ über Betragsformel $|\\vec M| = |\\vec r||\\vec F|\\sin\\theta$. $|\\vec r| = \\sqrt{9 + 16} = 5$, $|\\vec F| = 100$. Hier stehen $\\vec r$ und $\\vec F$ senkrecht zueinander ($\\theta = 90°, \\sin\\theta = 1$) ⇒ $|\\vec M| = 5\\cdot 100\\cdot 1 = 500\\,\\text{Nm}$ ✓.
+
+**Typischer Fehler:** Beträge der einzelnen Komponenten $r_x F_z, r_y F_z$ addieren ($300 + 400 = 700$) statt Pythagoras anwenden. Liefert zu großen Wert.`,
+        [
+          '$\\vec M = \\vec r\\times\\vec F$ komponentenweise.',
+          '$|\\vec M|$ via Pythagoras über die Komponenten.',
+          '$\\sqrt{400^2 + 300^2} = 500$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['m-kreuz'] },
+      ),
+      mc(
+        'Studierende berechnet $\\vec r\\times\\vec F$ mit $\\vec r = (1, 2, 3)$, $\\vec F = (4, 5, 6)$ und schreibt $\\vec r\\times\\vec F = (1\\cdot 4,\\ 2\\cdot 5,\\ 3\\cdot 6) = (4,\\ 10,\\ 18)$. Wo steckt der Fehler?',
+        [
+          'Das ist nicht das Kreuzprodukt, sondern komponentenweise Multiplikation. Korrekt: $\\vec r\\times\\vec F = (r_y F_z - r_z F_y,\\ r_z F_x - r_x F_z,\\ r_x F_y - r_y F_x) = (12-15,\\ 12-6,\\ 5-8) = (-3,\\ 6,\\ -3)$.',
+          'Die Reihenfolge ist falsch — Kreuzprodukt heißt $\\vec F\\times\\vec r$, nicht $\\vec r\\times\\vec F$.',
+          'Kein Fehler — das Kreuzprodukt ist die komponentenweise Multiplikation.',
+          'Es fehlt ein $\\sin\\alpha$-Faktor, weil das Kreuzprodukt einen Winkel benötigt.',
+        ],
+        0,
+        `**Ansatz:** Kreuzprodukt ist **nicht** komponentenweise — es mischt die Komponenten nach der Determinanten-Formel.
+
+**Rechnung:** $\\vec r\\times\\vec F = \\det\\begin{pmatrix}\\vec i & \\vec j & \\vec k\\\\ 1 & 2 & 3\\\\ 4 & 5 & 6\\end{pmatrix} = \\vec i(2\\cdot 6 - 3\\cdot 5) - \\vec j(1\\cdot 6 - 3\\cdot 4) + \\vec k(1\\cdot 5 - 2\\cdot 4) = \\vec i(-3) - \\vec j(-6) + \\vec k(-3) = (-3, 6, -3)$.
+
+**Probe:** Skalarprodukte $\\vec r\\cdot\\vec M = 1(-3) + 2(6) + 3(-3) = -3 + 12 - 9 = 0$ ✓ (Moment senkrecht zu $\\vec r$). $\\vec F\\cdot\\vec M = 4(-3) + 5(6) + 6(-3) = -12 + 30 - 18 = 0$ ✓.
+
+**Typischer Fehler:** Aus dem Skalarprodukt $\\vec a\\cdot\\vec b = \\sum a_i b_i$ wird fälschlich abgeleitet, dass das Vektor-Kreuzprodukt komponentenweise sei. Sind aber zwei völlig unterschiedliche Operationen.`,
+        [
+          'Kreuzprodukt mischt Komponenten kreuzweise.',
+          'Determinantenformel mit $\\vec i, \\vec j, \\vec k$.',
+          'Probe: $\\vec M$ steht senkrecht auf $\\vec r$ und $\\vec F$.',
+        ],
+        {
+          1: '$\\vec F\\times\\vec r = -\\vec r\\times\\vec F = (3, -6, 3)$ — auch nicht das, was die Studierende geschrieben hat. Das Vorzeichen wäre umgekehrt.',
+          2: 'Falsch — Kreuzprodukt und komponentenweise Multiplikation sind verschiedene Operationen mit unterschiedlichem Ergebnis.',
+          3: 'Den $\\sin\\alpha$-Faktor enthält die Komponentenformel implizit. $\\sin$ explizit auftauchen lassen wäre nur in der Betragsformel $|\\vec r\\times\\vec F| = |\\vec r||\\vec F|\\sin\\theta$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['m-kreuz'] },
+      ),
+      ni(
+        'An einem Punkt $\\vec r = (2,\\ 1,\\ 0)\\,\\text{m}$ greift eine Kraft $\\vec F = (0,\\ 0,\\ 50)\\,\\text{N}$ an. Berechne den Betrag des Drehmoments $|\\vec M|$ um den Ursprung (in Nm, auf 2 Nachkommastellen).',
+        111.80, 0.1, 'Nm',
+        `**Ansatz:** $\\vec M = \\vec r\\times\\vec F$ komponentenweise, dann $|\\vec M|$.
+
+**Rechnung:** $\\vec M = (r_y F_z - r_z F_y,\\ r_z F_x - r_x F_z,\\ r_x F_y - r_y F_x) = (1\\cdot 50 - 0,\\ 0 - 2\\cdot 50,\\ 0 - 0) = (50,\\ -100,\\ 0)\\,\\text{Nm}$. $|\\vec M| = \\sqrt{50^2 + 100^2} = \\sqrt{2500 + 10000} = \\sqrt{12500} = 50\\sqrt{5} \\approx 111{,}80\\,\\text{Nm}$.
+
+**Probe:** Alternativ: $|\\vec r| = \\sqrt{4+1} = \\sqrt{5}$, $|\\vec F| = 50$, $\\vec r$ liegt in $xy$-Ebene und $\\vec F$ in $z$-Richtung ⇒ Winkel $90°$. $|\\vec M| = \\sqrt{5}\\cdot 50\\cdot 1 = 50\\sqrt{5} \\approx 111{,}80$ ✓.
+
+**Typischer Fehler:** Komponentenweise einfach addieren statt Pythagoras ⇒ $50 + 100 = 150$ — falsche Vektor-Addition.`,
+        [
+          'Komponentenformel des Kreuzprodukts.',
+          '$|\\vec M| = \\sqrt{M_x^2 + M_y^2 + M_z^2}$.',
+          '$\\sqrt{12500} = 50\\sqrt{5}$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['m-kreuz'] },
+      ),
+    ],
+
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
   // mech-1-4 — Reibung  (5 subGoals)
   // ────────────────────────────────────────────────────────────────────────
   'mech-1-4': {

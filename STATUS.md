@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2442 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1598 (65 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1096 / 1096 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 229 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2462 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1621 (66 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1106 / 1106 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 233 / 1134 (21 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -919,10 +919,10 @@ _Signalverarbeitung, Regelungstechnik, Elektrotechnik. Laplace vereinfacht DGL z
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **217** (Lesson-Path: 59 · Goal-Tasks: 158)
-- 4-Block: 186/217 (86 %) 🟡
-- MC-wAE: 57/57 (100 %) ✅
-- Sub-Goals: 28/76 Goal-Tasks verknüpft 🔴
+- Aufgaben: **237** (Lesson-Path: 59 · Goal-Tasks: 178)
+- 4-Block: 209/237 (88 %) 🟡
+- MC-wAE: 67/67 (100 %) ✅
+- Sub-Goals: 32/76 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Statik (Kräftegleichgewicht) und Dynamik (Newtonsche Gesetze, Energie) — die klassischen Grundlagen des Maschinenbaus.**
@@ -967,7 +967,7 @@ _Mechanik ist das Herzfach im Maschinenbau-Bachelor und Basis für Festigkeitsle
 | `mech-0-2` Abgeleitete Einheiten (N, J, Pa, W) | 4 | 0/4 | 5 | 1/2/1/1/0 | 5/5 | 1/1 | ✅ | +4 Goal |
 | `mech-0-3` Dimensionsanalyse — Einheitencheck | 4 | 4/4 | 33 | 13/8/5/3/4 | 33/33 | 13/13 | ✅ | — |
 | `mech-1-1` Kräfte und Freikörperbild | 4 | 4/4 | 23 | 10/5/5/2/1 | 23/23 | 10/10 | ✅ | — |
-| `mech-1-2` Momente und Hebelarm | 4 | 0/4 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +4 Goal, +3 4B |
+| `mech-1-2` Momente und Hebelarm | 4 | 4/4 | 23 | 11/7/5/0/0 | 23/23 | 11/11 | ✅ | — |
 | `mech-1-3` Schnittkräfte N(x), Q(x), M(x) | 5 | 0/5 | 5 | 2/2/1/0/0 | 0/5 | 2/2 | ✅ | +5 Goal, +5 4B |
 | `mech-1-4` Reibung | 5 | 5/5 | 28 | 7/9/6/3/3 | 27/28 | 7/7 | ✅ | +1 4B |
 | `mech-1-5` Schwerpunkt | 5 | 5/5 | 32 | 5/14/6/4/3 | 32/32 | 5/5 | ✅ | — |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 124 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 123 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -2141,52 +2141,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-vek-1-4-b`, `ex-vek-1-4-mastery`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
-
-#### `mech-1-2` · Momente und Hebelarm
-
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `mech-1-1` → `kraft-vektor`, `gleichgew-2d`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `moment-formel` — Moment $M=F\cdot l_\perp$ — senkrechter Abstand zur Wirkungslinie (SG 0)
-  2. `drehsinn` — Drehsinn: gegen Uhrzeiger positiv (Rechte-Hand-Regel) (SG 1)
-  3. `bezugspunkt` — Bezugspunkt frei wählbar — klug = unbekannte Kräfte eliminieren ⇐ `moment-formel` (SG 2)
-  4. `m-kreuz` — 3D-Variante: $\vec M=\vec r\times\vec F$ ⇐ `moment-formel` (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `moment-formel` · **0/5+** — Moment $M = F \cdot l_\perp$ — $l_\perp$ ist der SENKRECHTE Abstand vom Bezugspunkt zur Wirkungslinie
-  - 🔴 [1] _hoch_ · Konzepte: `drehsinn` · **0/5+** — Drehsinn-Konvention: gegen Uhrzeiger positiv (rechte Hand / Rechte-Hand-Regel in 3D)
-  - 🔴 [2] _hoch_ · Konzepte: `bezugspunkt` · **0/5+** — Bezugspunkt frei wählbar — klug wählen: Punkt mit vielen unbekannten Kräften eliminiert diese
-  - 🔴 [3] _mittel_ · Konzepte: `m-kreuz` · **0/5+** — Kreuzprodukt-Variante: $\vec M = \vec r \times \vec F$ in 3D oder bei schiefen Kräften
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `moment-formel` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `moment-formel` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `moment-formel` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `moment-formel` | 1 | 0 | 🔴 | Schräger Abstand statt senkrechter |
-|  5 | 0 | transfer           | number-input     | `moment-formel` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `drehsinn` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `drehsinn` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `drehsinn` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `drehsinn` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `drehsinn` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `bezugspunkt` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `bezugspunkt` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `bezugspunkt`, `moment-formel` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `bezugspunkt` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `bezugspunkt` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `m-kreuz` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `m-kreuz` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `m-kreuz` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `m-kreuz` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `m-kreuz` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-2': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-mech-1-2-a`, `ex-mech-1-2-b`, `ex-mech-1-2-c`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `mech-2-1` · Newtonsche Gesetze
 
