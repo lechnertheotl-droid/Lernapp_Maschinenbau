@@ -486,6 +486,7 @@ Alle anderen Einheiten lassen sich daraus ableiten.
                 2: 'Zähler hat Einheit Kraft (N), Nenner Länge (m). N/m ist Kraft pro Länge (z. B. Streckenlast), nicht Spannung.',
                 3: 'Gleiches Problem: $F/L$ hat Einheit N/m, nicht N/m² wie Spannung.',
               },
+              pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['dim-konsistenz'] },
             },
             {
               type: 'true-false',
@@ -632,13 +633,20 @@ Alle anderen Einheiten lassen sich daraus ableiten.
               question: 'Was gehört in ein Freikörperbild?',
               options: ['Nur bekannte Kräfte', 'Alle äußeren Kräfte und Lagerreaktionen', 'Nur Beschleunigungen', 'Nur Maße'],
               correctIndex: 1,
-              explanation: 'Ein Freikörperbild zeigt alle äußeren Kräfte und unbekannten Reaktionsgrößen.',
+              explanation: `**Ansatz:** Im FKB wird der Körper aus seiner Umgebung **freigeschnitten** und alle Stellen, an denen er mit der Umgebung in Kontakt steht, werden durch Kräfte/Momente ersetzt.
+
+**Rechnung:** Einzutragen sind: Eigengewicht (im Schwerpunkt), eingeprägte Lasten (Kräfte, Momente) und sämtliche Lagerreaktionen — auch die noch unbekannten. Erst damit ist das spätere Gleichgewicht $\\sum F = 0$, $\\sum M = 0$ überhaupt aufstellbar.
+
+**Probe:** Bei einem auf zwei Lagern liegenden Balken mit Eigengewicht stehen im FKB: $G$ (Schwerpunkt), $A_x, A_y$ (Festlager), $B_y$ (Loslager) — vier Kräfte, drei Bedingungen ⇒ statisch bestimmt lösbar.
+
+**Typischer Fehler:** Lagerreaktionen weglassen, weil sie "noch unbekannt" sind — das ist genau der Punkt: sie werden erst durch das Gleichgewicht **bestimmt**.`,
               hints: ['Kontakte werden durch Reaktionskräfte ersetzt.', 'Alle äußeren Einwirkungen auf den freigeschnittenen Körper eintragen.', 'Bekannte und unbekannte Kräfte + Lagerreaktionen gehören ins Bild.'],
               wrongAnswerExplanations: {
                 0: 'Unvollständig: Ein Freikörperbild muss auch die unbekannten Lagerreaktionen enthalten. Nur bekannte Kräfte einzutragen macht das Gleichgewicht $\\Sigma F = 0$ unlösbar.',
                 2: 'Beschleunigungen gehören in die kinetische Betrachtung (Newton: $\\Sigma F = m \\cdot a$), nicht ins Freikörperbild. Das FKB zeigt Kräfte und Momente, keine Bewegungsgrößen.',
                 3: 'Maße dienen nur der Geometrie und sind optional. Entscheidend sind Kräfte und Momente, sonst lässt sich $\\Sigma F = 0$ und $\\Sigma M = 0$ nicht auswerten.',
               },
+              pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['fkb'] },
               visualization: {
                 id: 'free-body-diagram',
                 params: {
@@ -658,8 +666,15 @@ Alle anderen Einheiten lassen sich daraus ableiten.
               correctValue: 5,
               tolerance: 0.01,
               unit: 'N',
-              explanation: 'R = $\\sqrt{3^2 + 4^2}$ = 5 N.',
+              explanation: `**Ansatz:** Stehen die beiden Kräfte senkrecht aufeinander, bilden sie die Katheten eines rechtwinkligen Dreiecks. Die Resultierende ist die Hypotenuse.
+
+**Rechnung:** $R = \\sqrt{F_x^2 + F_y^2} = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5\\,\\text{N}$.
+
+**Probe:** Klassisches 3-4-5-Pythagoras-Dreieck. Komponentenweise zurück: Aus $|R| = 5$ und Richtung $\\arctan(4/3) \\approx 53{,}13°$ folgt $R_x = 5\\cos 53{,}13° = 3$, $R_y = 5\\sin 53{,}13° = 4$ ✓.
+
+**Typischer Fehler:** Beträge addieren statt quadratisch zusammensetzen ($3 + 4 = 7$). Das ist nur korrekt, wenn beide Kräfte **dieselbe** Richtung haben — bei senkrechtem Stand falsch.`,
               hints: ['Resultierende zweier rechtwinkliger Kräfte: Pythagoras anwenden.', 'R = √(F_x² + F_y²)', '√(3² + 4²) = √25 = 5'],
+              pedagogy: { stage: 'apply-independent', subGoal: 1, uses: ['kraft-vektor'] },
               visualization: {
                 id: 'vector-diagram',
                 params: {
@@ -677,8 +692,15 @@ Alle anderen Einheiten lassen sich daraus ableiten.
               type: 'true-false',
               statement: 'Im statischen Gleichgewicht muss die Summe aller Kräfte null sein.',
               correct: true,
-              explanation: 'Für Translation gilt ΣF = 0; zusätzlich gilt für Rotation ΣM = 0.',
+              explanation: `**Ansatz:** Statisches Gleichgewicht heißt: Körper ist **in Ruhe** und bleibt es. Newton 2: $\\sum F = m\\cdot a$ — bei $a = 0$ folgt $\\sum F = 0$.
+
+**Rechnung:** $\\sum \\vec F = \\vec 0$ ist die translatorische Bedingung. In 2D zerfällt sie in $\\sum F_x = 0$ und $\\sum F_y = 0$.
+
+**Probe:** Hängt eine Last $G$ am Seil mit Zugkraft $S$, dann verlangt Gleichgewicht $S - G = 0 \\Rightarrow S = G$. Probe: ja, das Seil trägt genau das Gewicht.
+
+**Typischer Fehler:** Glauben, $\\sum F = 0$ allein reiche aus — für Rotation muss zusätzlich $\\sum M = 0$ gelten. Beide Bedingungen sind unverzichtbar; die Aussage hier ist trotzdem korrekt, weil sie nur eine **notwendige** (nicht hinreichende) Bedingung formuliert.`,
               hints: ['Statisches Gleichgewicht: Resultierende Kraft = 0.', 'ΣF = 0 für Translation, ΣM = 0 für Rotation.', 'Beide Bedingungen müssen erfüllt sein.'],
+              pedagogy: { stage: 'recognize', subGoal: 3, uses: ['gleichgew-2d'] },
             },
           ],
         },
@@ -746,8 +768,15 @@ Dabei ist $l_\perp$ der senkrechte Abstand zwischen Drehpunkt und Wirkungslinie 
               correctValue: 10,
               tolerance: 0.01,
               unit: 'Nm',
-              explanation: 'M = F·l = 20·0,5 = 10 Nm.',
+              explanation: `**Ansatz:** Bei senkrecht zum Hebel angreifender Kraft ist der angegebene Abstand bereits der wirksame Hebelarm $l_\\perp$. Direkt einsetzen in $M = F\\cdot l_\\perp$.
+
+**Rechnung:** $M = F\\cdot l_\\perp = 20\\,\\text{N}\\cdot 0{,}5\\,\\text{m} = 10\\,\\text{Nm}$.
+
+**Probe:** Einheitencheck: $\\text{N}\\cdot\\text{m} = \\text{Nm}$ ✓. Bei doppelter Kraft (40 N) wäre $M = 20\\,\\text{Nm}$ — linear in $F$.
+
+**Typischer Fehler:** Hebelarm und Kraft addieren statt multiplizieren ("$20 + 0{,}5$") — geht durch Einheitencheck nicht durch ($\\text{N} + \\text{m}$ ist sinnlos).`,
               hints: ['Moment: M = F · l_perp', 'l_perp ist der senkrechte Abstand zur Kraftlinie.', 'Einheit: N · m = Nm'],
+              pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['moment-formel'] },
               visualization: {
                 id: 'beam-reactions',
                 params: {},
@@ -760,20 +789,34 @@ Dabei ist $l_\perp$ der senkrechte Abstand zwischen Drehpunkt und Wirkungslinie 
               question: 'Der wirksame Hebelarm ist ...',
               options: ['immer die Stablänge', 'der senkrechte Abstand zur Wirkungslinie', 'die Kraft mal Weg', 'der Winkel in Grad'],
               correctIndex: 1,
-              explanation: 'Nur der senkrechte Abstand zur Wirkungslinie zählt.',
+              explanation: `**Ansatz:** Definition: $M = F\\cdot l_\\perp$, wobei $l_\\perp$ der **senkrechte** Abstand vom Drehpunkt zur Wirkungslinie der Kraft ist.
+
+**Rechnung:** Bei einer schief angreifenden Kraft am Hebel der Länge $l$ unter Winkel $\\alpha$ zur Hebelachse gilt $l_\\perp = l\\sin\\alpha$ — die volle Stablänge ist nicht der wirksame Hebelarm.
+
+**Probe:** Sonderfall: Kraft senkrecht zum Hebel ($\\alpha = 90°$) ⇒ $l_\\perp = l\\sin 90° = l$ ✓. Kraft entlang des Hebels ($\\alpha = 0°$) ⇒ $l_\\perp = 0$, $M = 0$ ✓.
+
+**Typischer Fehler:** Hebelarm mit Stablänge gleichsetzen — gibt zu großes Moment, sobald die Kraft schief angreift.`,
               hints: ['Der Hebelarm ist senkrecht zur Wirkungslinie der Kraft.', 'Nicht die Stablänge, sondern der senkrechte Abstand zählt.', 'M = F · l_perp → nur l_perp relevant.'],
               wrongAnswerExplanations: {
                 0: 'Nur bei senkrechter Kraftrichtung stimmt das. Greift die Kraft schräg an, ist der Hebelarm $l_\\perp = l \\cdot \\sin(\\alpha)$, nicht die volle Stablänge $l$.',
                 2: 'Das ist die Definition der Arbeit $W = F \\cdot s$, nicht des Hebelarms. Das Moment ist $M = F \\cdot l_\\perp$, mit Einheit $\\text{Nm}$.',
                 3: 'Ein Winkel ist dimensionslos bzw. in rad/Grad angegeben. Der Hebelarm hat die Einheit Meter — er ist eine Strecke, kein Winkel.',
               },
+              pedagogy: { stage: 'apply-guided', subGoal: 0, uses: ['moment-formel'] },
             },
             {
               type: 'true-false',
               statement: 'Wenn die Wirkungslinie durch den Drehpunkt geht, ist das Moment null.',
               correct: true,
-              explanation: 'Dann ist der senkrechte Hebelarm 0.',
+              explanation: `**Ansatz:** Hebelarm $l_\\perp$ = senkrechter Abstand vom Drehpunkt zur Wirkungslinie. Geht die Wirkungslinie **durch** den Drehpunkt, beträgt dieser Abstand $0$.
+
+**Rechnung:** $M = F\\cdot l_\\perp = F\\cdot 0 = 0$. Egal wie groß $F$ ist — ohne Hebelarm kein Moment.
+
+**Probe:** Anschaulich: Eine Kraft, die direkt durch das Drehzentrum drückt, kann keine Drehung erzeugen. Nur das Bauteil als Ganzes wird translatorisch beansprucht.
+
+**Typischer Fehler:** Trotzdem ein Moment ansetzen, weil "ja eine Kraft anliegt". Erst der Hebelarm macht aus Kraft Drehmoment.`,
               hints: ['M = F · l_perp — l_perp ist der Senkrecht-Abstand.', 'Wenn Wirkungslinie durch Drehpunkt geht, ist l_perp = 0.', 'M = 0 bei l_perp = 0.'],
+              pedagogy: { stage: 'recognize', subGoal: 0, uses: ['moment-formel'] },
             },
           ],
         },
@@ -870,8 +913,15 @@ $$M_\text{max} = R_A \cdot a = F \cdot \frac{a(L-a)}{L}$$
               correctValue: 450,
               tolerance: 0.5,
               unit: 'N',
-              explanation: 'R_A = F·(L−a)/L = 600·3/4 = 450 N. Kontrolle: R_A + R_B = 600 N ✓.',
+              explanation: `**Ansatz:** Auflagerreaktion über Momentenbilanz um B: $\\sum M_B = 0$ eliminiert $R_B$ und liefert $R_A$ direkt.
+
+**Rechnung:** $R_A\\cdot L = F\\cdot(L-a) \\Rightarrow R_A = F\\cdot(L-a)/L = 600\\cdot 3/4 = 450\\,\\text{N}$.
+
+**Probe:** $\\sum F_y = 0$: $R_A + R_B = F = 600\\,\\text{N}$ ⇒ $R_B = 150\\,\\text{N}$. Gegenrechnung: $R_B = F\\cdot a/L = 600\\cdot 1/4 = 150\\,\\text{N}$ ✓.
+
+**Typischer Fehler:** Hebelarme von der falschen Seite messen — Last greift bei $x = 1$, Abstand zu $B$ ist $L - a = 3$ (nicht $a = 1$).`,
               hints: ['ΣM um B: R_A·L = F·(L−a)', 'R_A = F·(L−a)/L', 'R_A = 600·3/4 = 450 N'],
+              pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['schnittgr-3'] },
               visualization: {
                 id: 'interactive-beam',
                 params: {},
@@ -885,8 +935,15 @@ $$M_\text{max} = R_A \cdot a = F \cdot \frac{a(L-a)}{L}$$
               correctValue: 450,
               tolerance: 1,
               unit: 'Nm',
-              explanation: 'M_max = R_A·a = 450·1 = 450 Nm. Liegt genau unter der Last.',
+              explanation: `**Ansatz:** Bei Einzellast auf Einfeldträger liegt $M_\\text{max}$ exakt unter der Lastangriffsstelle. Formel: $M_\\text{max} = R_A\\cdot a$.
+
+**Rechnung:** $M_\\text{max} = 450\\cdot 1 = 450\\,\\text{Nm}$.
+
+**Probe:** Alternativ über $R_B$ und Reststrecke: $M_\\text{max} = R_B\\cdot(L-a) = 150\\cdot 3 = 450\\,\\text{Nm}$ ✓. Oder Standardformel $F\\cdot a(L-a)/L = 600\\cdot 1\\cdot 3/4 = 450\\,\\text{Nm}$ ✓.
+
+**Typischer Fehler:** Hebelarm $L$ statt $a$ verwenden ⇒ $1800\\,\\text{Nm}$ (zu groß). $M_\\text{max}$ ist nur über die Strecke vom Auflager bis zur Last aufgebaut.`,
               hints: ['M_max liegt unter der Einzellast.', 'M_max = R_A · a', 'M_max = 450 · 1 = 450 Nm'],
+              pedagogy: { stage: 'apply-independent', subGoal: 3, uses: ['m-max'] },
               visualization: {
                 id: 'interactive-beam',
                 params: {},
@@ -899,21 +956,60 @@ $$M_\text{max} = R_A \cdot a = F \cdot \frac{a(L-a)}{L}$$
               question: 'Wo liegt das maximale Biegemoment bei Einzellast auf Einfeldträger?',
               options: ['Unter der Last', 'Am Festlager', 'Am Loslager', 'In der Balkenmitte'],
               correctIndex: 0,
-              explanation: 'Die M(x)-Linie ist dreieckförmig mit Maximum direkt unter der Einzellast.',
+              explanation: `**Ansatz:** Extrema von $M(x)$ liegen dort, wo $dM/dx = Q(x) = 0$ — also wo die Querkraft Vorzeichen wechselt.
+
+**Rechnung:** Bei Einzellast springt $Q$ am Lastangriff von $+R_A$ auf $-R_B$ (Vorzeichenwechsel). Genau hier ist $M$ maximal: $M_\\text{max} = R_A\\cdot a = F\\cdot a(L-a)/L$.
+
+**Probe:** Plausibel über die Extremwerte: An den Auflagern gilt $M = 0$ (gelenkige Randbedingung), in der Balkenmitte ist $M$ nicht zwingend maximal — nur bei mittiger Last fällt das zusammen. Allgemein: Maximum unter der Last.
+
+**Typischer Fehler:** "In der Balkenmitte" ist nur für $a = L/2$ richtig. Bei asymmetrischer Last greift $M_\\text{max}$ direkt unter dem Lastangriff, nicht in der geometrischen Mitte.`,
               hints: ['Die M-Linie ist dreieckförmig bei Einzellast.', 'Das Maximum liegt genau unter der Lastangriffsstelle.', 'Wo die Querkraft ihr Vorzeichen wechselt, ist M maximal.'],
               wrongAnswerExplanations: {
                 1: 'An den gelenkigen Lagern (Fest- oder Loslager) ist $M = 0$, da keine Momente übertragen werden. Dort ist $M$ minimal, nicht maximal.',
                 2: 'Am Loslager ist $M = 0$ (Randbedingung des gelenkigen Lagers). Verwechslung mit der Querkraft $Q$, die dort den Wert der Lagerreaktion hat.',
                 3: 'Nur bei mittiger Last stimmt das — allgemein liegt $M_{max}$ unter der Last, da dort die Querkraft $Q(x)$ ihr Vorzeichen wechselt ($\\mathrm{d}M/\\mathrm{d}x = Q = 0$).',
               },
+              pedagogy: { stage: 'apply-guided', subGoal: 3, uses: ['m-max'] },
               visualization: {
                 id: 'interactive-beam',
                 params: {},
                 alt: 'Einfeldträger mit Biegemomentenverlauf.',
               },
             },
-            { type: 'true-false', statement: 'Der Sprung in Q(x) am Lastangriff hat den Betrag F.', correct: true, explanation: 'Q springt um −F von R_A auf −R_B. Daraus ergibt sich die typische „Treppenstufe" im Querkraftverlauf.', hints: ['Querkraft Q(x) springt an der Lastangriffsstelle.', 'Der Sprung hat den Betrag der Einzellast F.', '|ΔQ| = |F| — Vorzeichen: von +R_A auf −R_B.'] },
-            { type: 'multiple-choice', question: '[PRÜFUNG] Warum interessiert uns M_max in der Festigkeitslehre besonders?', options: ['Weil dort die maximale Biegespannung auftritt', 'Weil dort N am größten ist', 'Weil dort Q am größten ist', 'Zufall'], correctIndex: 0, explanation: 'Die Biegespannung ist σ_b = M/W mit W = Widerstandsmoment. M_max liefert die größte Spannung und damit die gefährliche Stelle.', hints: ['Biegespannung: σ_b = M/W mit W = Widerstandsmoment.', 'M_max liefert die größte Biegespannung.', 'Die gefährliche Stelle ist dort, wo M am größten ist.'], wrongAnswerExplanations: { 1: 'Die Normalkraft $N$ und das Biegemoment $M$ sind unabhängige Schnittgrößen. $N_{max}$ liefert maximale Zug-/Druckspannung $\\sigma = N/A$, nicht Biegespannung.', 2: 'Die Querkraft $Q$ erzeugt Schubspannungen $\\tau = Q \\cdot S/(I \\cdot b)$, aber keine Biegespannungen. Biegung ist an $M$ gekoppelt, nicht an $Q$.', 3: 'Kein Zufall: Die Beziehung $\\sigma_b = M/W$ macht $M$ direkt proportional zur Biegespannung — daher liegt die gefährliche Stelle zwangsläufig bei $M_{max}$.' } },
+            {
+              type: 'true-false',
+              statement: 'Der Sprung in Q(x) am Lastangriff hat den Betrag F.',
+              correct: true,
+              explanation: `**Ansatz:** Sprung von $Q$ an einer Einzellast = vorzeichenbehaftete Größe der Last.
+
+**Rechnung:** Bei Einzellast $F$ nach unten: $Q$ links der Last $= R_A$, $Q$ rechts $= R_A - F = -R_B$. Differenz: $\\Delta Q = -F$. Betrag: $|\\Delta Q| = |F|$.
+
+**Probe:** Numerisch ($L = 4, F = 600, a = 1$): $R_A = 450, R_B = 150$. Sprung: $-450 - 150 = -600 = -F$ ✓.
+
+**Typischer Fehler:** Sprung mit Betrag $\\frac{F}{2}$ ansetzen — gilt nur bei Aufteilung auf zwei Punkte. Eine Einzellast erzeugt **vollen** Sprung um $F$.`,
+              hints: ['Querkraft Q(x) springt an der Lastangriffsstelle.', 'Der Sprung hat den Betrag der Einzellast F.', '|ΔQ| = |F| — Vorzeichen: von +R_A auf −R_B.'],
+              pedagogy: { stage: 'recognize', subGoal: 2, uses: ['sprung-knick'] },
+            },
+            {
+              type: 'multiple-choice',
+              question: '[PRÜFUNG] Warum interessiert uns M_max in der Festigkeitslehre besonders?',
+              options: ['Weil dort die maximale Biegespannung auftritt', 'Weil dort N am größten ist', 'Weil dort Q am größten ist', 'Zufall'],
+              correctIndex: 0,
+              explanation: `**Ansatz:** Biegespannung $\\sigma_b = M/W$ ist linear in $M$ — die kritische Stelle ist also dort, wo $M$ maximal wird.
+
+**Rechnung:** $W$ (Widerstandsmoment) hängt nur von der Querschnittsgeometrie ab, ist über die Balkenlänge konstant. Damit ist $\\sigma_b(x) = M(x)/W$ proportional zu $M(x)$ ⇒ Spannungs-Maximum = Momenten-Maximum.
+
+**Probe:** Beispiel: $W = 5\\cdot 10^{-5}\\,\\text{m}^3$, $M_\\text{max} = 450\\,\\text{Nm}$. $\\sigma_\\text{max} = 450/(5\\cdot 10^{-5}) = 9\\cdot 10^6\\,\\text{Pa} = 9\\,\\text{MPa}$.
+
+**Typischer Fehler:** $Q_\\text{max}$ und $M_\\text{max}$ verwechseln — $Q$ erzeugt Schubspannungen, $M$ erzeugt Biegespannungen. Beide sind separate Versagensformen.`,
+              hints: ['Biegespannung: σ_b = M/W mit W = Widerstandsmoment.', 'M_max liefert die größte Biegespannung.', 'Die gefährliche Stelle ist dort, wo M am größten ist.'],
+              wrongAnswerExplanations: {
+                1: 'Die Normalkraft $N$ und das Biegemoment $M$ sind unabhängige Schnittgrößen. $N_{max}$ liefert maximale Zug-/Druckspannung $\\sigma = N/A$, nicht Biegespannung.',
+                2: 'Die Querkraft $Q$ erzeugt Schubspannungen $\\tau = Q \\cdot S/(I \\cdot b)$, aber keine Biegespannungen. Biegung ist an $M$ gekoppelt, nicht an $Q$.',
+                3: 'Kein Zufall: Die Beziehung $\\sigma_b = M/W$ macht $M$ direkt proportional zur Biegespannung — daher liegt die gefährliche Stelle zwangsläufig bei $M_{max}$.',
+              },
+              pedagogy: { stage: 'transfer', subGoal: 3, uses: ['m-max'] },
+            },
           ],
         },
         {
@@ -984,9 +1080,9 @@ $\mu$ ist der Reibwert (dimensionslos), $F_N$ die Normalkraft. Man unterscheidet
 
 **Vorgehen bei geneigter Ebene:** Zuerst $F_N = m g \cos\alpha$ bestimmen, dann $F_{R,\text{max}} = \mu_0 F_N$ mit Hangabtriebskraft $F_H = m g \sin\alpha$ vergleichen.`,
           exercises: [
-            { type: 'number-input', question: 'Ein Block (m = 10 kg) liegt auf einer horizontalen Fläche (μ = 0,3, g = 9,81 m/s²). Reibkraft beim Gleiten?', correctValue: 29.43, tolerance: 0.1, unit: 'N', explanation: '**Ansatz:** Auf horizontaler Fläche ist $F_N = m \\cdot g$, die Reibkraft folgt aus dem Coulombschen Reibgesetz $F_R = \\mu \\cdot F_N$.\n\n**Rechnung:** $F_N = 10 \\cdot 9{,}81 = 98{,}1$ N, dann $F_R = 0{,}3 \\cdot 98{,}1 = 29{,}43$ N.\n\n**Probe:** Einheitencheck: $\\mathrm{kg} \\cdot \\mathrm{m/s^2} = \\mathrm{N}$, und $\\mu$ dimensionslos — passt. Größenordnung: ca. 30 N für 10 kg bei mäßigem Reibwert ist plausibel.\n\n**Typischer Fehler:** Reibwert $\\mu$ mit Gewichtskraft verwechseln und $F_R = \\mu \\cdot m$ rechnen — dann fehlt $g$.', hints: ['Normalkraft auf ebener Fläche: F_N = m·g', 'F_R = μ·F_N', 'μ·F_N einsetzen'] },
-            { type: 'true-false', statement: 'Der Haftreibwert ist in der Regel größer als der Gleitreibwert.', correct: true, explanation: '**Ansatz:** Vergleich der Reibwerte $\\mu_0$ (Haft) und $\\mu$ (Gleit) im Coulombschen Reibmodell.\n\n**Rechnung:** Zum Losreißen muss die treibende Kraft die maximale Haftreibkraft $F_{H,\\max} = \\mu_0 F_N$ übertreffen. Sobald der Körper gleitet, wirkt nur noch $F_R = \\mu F_N$ mit kleinerem $\\mu$, daher $\\mu_0 > \\mu$.\n\n**Probe:** Alltagsbeobachtung: Ein Schrank lässt sich nur mit einem Ruck anschieben, läuft dann aber leichter — genau das zeigt $\\mu_0 > \\mu$.\n\n**Typischer Fehler:** $\\mu_0 = \\mu$ annehmen und damit den Unterschied zwischen Losreiß- und Gleitkraft ignorieren.', hints: ['Haftreibwert μ_0 > Gleitreibwert μ.', 'Zum Losreißen braucht man mehr Kraft als zum Gleiterhalten.', 'Anlaufkraft > Gleithaltekraft.'] },
-            { type: 'multiple-choice', question: '[PRÜFUNG] Block (m = 5 kg) auf geneigter Ebene α = 30°, Gleitreibwert μ = 0,3, g = 9,81. Reibkraft beim Gleiten in N (gerundet auf ganze Zahlen)?', options: ['13 N', '15 N', '20 N', '25 N'], correctIndex: 0, explanation: '**Ansatz:** Auf geneigter Ebene steht die Normalkraft senkrecht zur Fläche: $F_N = m g \\cos\\alpha$. Die Reibkraft folgt aus $F_R = \\mu F_N$.\n\n**Rechnung:** $F_N = 5 \\cdot 9{,}81 \\cdot \\cos(30°) = 5 \\cdot 9{,}81 \\cdot 0{,}866 \\approx 42{,}47$ N. Damit $F_R = 0{,}3 \\cdot 42{,}47 \\approx 12{,}74$ N, gerundet $13$ N.\n\n**Probe:** Bei $\\alpha = 0°$ wäre $F_R = 0{,}3 \\cdot 5 \\cdot 9{,}81 = 14{,}7$ N — der gekippte Wert muss kleiner sein (weniger Normalkraft), was mit $13$ N passt.\n\n**Typischer Fehler:** $F_N = m g$ auf der Ebene annehmen (ergibt 14,7 N → 15 N) oder $\\sin\\alpha$ statt $\\cos\\alpha$ einsetzen.', hints: ['F_N = m·g·cosα auf geneigter Ebene', 'F_R = μ · F_N', 'cos30° ≈ 0,866'], wrongAnswerExplanations: { 1: 'Hier wurde vermutlich $F_N = m \\cdot g = 49{,}05$ N angenommen (horizontale Fläche). Auf geneigter Ebene gilt aber $F_N = m \\cdot g \\cdot \\cos\\alpha$, also $\\mu \\cdot m \\cdot g \\cdot \\cos(30°) \\approx 13$ N.', 2: 'Falsche Winkelfunktion: $\\sin(30°) = 0{,}5$ statt $\\cos(30°) = 0{,}866$ eingesetzt führt zu $0{,}3 \\cdot 5 \\cdot 9{,}81 \\cdot 0{,}5 \\approx 7{,}4$ N — nicht 20 N; 20 N deutet auf Vernachlässigung von $\\cos\\alpha$ und fehlerhafte Zwischenrechnung hin.', 3: 'Das wäre ohne Neigung und mit gerundetem $g = 10$: $0{,}5 \\cdot 50 = 25$. Korrekt ist $F_R = \\mu \\cdot m \\cdot g \\cdot \\cos\\alpha \\approx 13$ N.' } },
+            { type: 'number-input', question: 'Ein Block (m = 10 kg) liegt auf einer horizontalen Fläche (μ = 0,3, g = 9,81 m/s²). Reibkraft beim Gleiten?', correctValue: 29.43, tolerance: 0.1, unit: 'N', explanation: '**Ansatz:** Auf horizontaler Fläche ist $F_N = m \\cdot g$, die Reibkraft folgt aus dem Coulombschen Reibgesetz $F_R = \\mu \\cdot F_N$.\n\n**Rechnung:** $F_N = 10 \\cdot 9{,}81 = 98{,}1$ N, dann $F_R = 0{,}3 \\cdot 98{,}1 = 29{,}43$ N.\n\n**Probe:** Einheitencheck: $\\mathrm{kg} \\cdot \\mathrm{m/s^2} = \\mathrm{N}$, und $\\mu$ dimensionslos — passt. Größenordnung: ca. 30 N für 10 kg bei mäßigem Reibwert ist plausibel.\n\n**Typischer Fehler:** Reibwert $\\mu$ mit Gewichtskraft verwechseln und $F_R = \\mu \\cdot m$ rechnen — dann fehlt $g$.', hints: ['Normalkraft auf ebener Fläche: F_N = m·g', 'F_R = μ·F_N', 'μ·F_N einsetzen'], pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['coulomb'] } },
+            { type: 'true-false', statement: 'Der Haftreibwert ist in der Regel größer als der Gleitreibwert.', correct: true, explanation: '**Ansatz:** Vergleich der Reibwerte $\\mu_0$ (Haft) und $\\mu$ (Gleit) im Coulombschen Reibmodell.\n\n**Rechnung:** Zum Losreißen muss die treibende Kraft die maximale Haftreibkraft $F_{H,\\max} = \\mu_0 F_N$ übertreffen. Sobald der Körper gleitet, wirkt nur noch $F_R = \\mu F_N$ mit kleinerem $\\mu$, daher $\\mu_0 > \\mu$.\n\n**Probe:** Alltagsbeobachtung: Ein Schrank lässt sich nur mit einem Ruck anschieben, läuft dann aber leichter — genau das zeigt $\\mu_0 > \\mu$.\n\n**Typischer Fehler:** $\\mu_0 = \\mu$ annehmen und damit den Unterschied zwischen Losreiß- und Gleitkraft ignorieren.', hints: ['Haftreibwert μ_0 > Gleitreibwert μ.', 'Zum Losreißen braucht man mehr Kraft als zum Gleiterhalten.', 'Anlaufkraft > Gleithaltekraft.'], pedagogy: { stage: 'recognize', subGoal: 1, uses: ['haft-gleit'] } },
+            { type: 'multiple-choice', question: '[PRÜFUNG] Block (m = 5 kg) auf geneigter Ebene α = 30°, Gleitreibwert μ = 0,3, g = 9,81. Reibkraft beim Gleiten in N (gerundet auf ganze Zahlen)?', options: ['13 N', '15 N', '20 N', '25 N'], correctIndex: 0, explanation: '**Ansatz:** Auf geneigter Ebene steht die Normalkraft senkrecht zur Fläche: $F_N = m g \\cos\\alpha$. Die Reibkraft folgt aus $F_R = \\mu F_N$.\n\n**Rechnung:** $F_N = 5 \\cdot 9{,}81 \\cdot \\cos(30°) = 5 \\cdot 9{,}81 \\cdot 0{,}866 \\approx 42{,}47$ N. Damit $F_R = 0{,}3 \\cdot 42{,}47 \\approx 12{,}74$ N, gerundet $13$ N.\n\n**Probe:** Bei $\\alpha = 0°$ wäre $F_R = 0{,}3 \\cdot 5 \\cdot 9{,}81 = 14{,}7$ N — der gekippte Wert muss kleiner sein (weniger Normalkraft), was mit $13$ N passt.\n\n**Typischer Fehler:** $F_N = m g$ auf der Ebene annehmen (ergibt 14,7 N → 15 N) oder $\\sin\\alpha$ statt $\\cos\\alpha$ einsetzen.', hints: ['F_N = m·g·cosα auf geneigter Ebene', 'F_R = μ · F_N', 'cos30° ≈ 0,866'], wrongAnswerExplanations: { 1: 'Hier wurde vermutlich $F_N = m \\cdot g = 49{,}05$ N angenommen (horizontale Fläche). Auf geneigter Ebene gilt aber $F_N = m \\cdot g \\cdot \\cos\\alpha$, also $\\mu \\cdot m \\cdot g \\cdot \\cos(30°) \\approx 13$ N.', 2: 'Falsche Winkelfunktion: $\\sin(30°) = 0{,}5$ statt $\\cos(30°) = 0{,}866$ eingesetzt führt zu $0{,}3 \\cdot 5 \\cdot 9{,}81 \\cdot 0{,}5 \\approx 7{,}4$ N — nicht 20 N; 20 N deutet auf Vernachlässigung von $\\cos\\alpha$ und fehlerhafte Zwischenrechnung hin.', 3: 'Das wäre ohne Neigung und mit gerundetem $g = 10$: $0{,}5 \\cdot 50 = 25$. Korrekt ist $F_R = \\mu \\cdot m \\cdot g \\cdot \\cos\\alpha \\approx 13$ N.' }, pedagogy: { stage: 'apply-guided', subGoal: 2, uses: ['schiefe-zerleg-mech'] } },
           ],
         },
         {
@@ -1055,9 +1151,9 @@ $$x_S = \frac{\sum A_i \cdot x_{S,i}}{\sum A_i}$$
 
 **Loch = negative Fläche:** Ein Ausschnitt wird als negatives Teilgebiet subtrahiert.`,
           exercises: [
-            { type: 'number-input', question: 'Zwei Massen: $m_1 = 3$ kg bei $x_1 = 2$ m, $m_2 = 1$ kg bei $x_2 = 6$ m. Schwerpunkt $x_S$?', correctValue: 3, tolerance: 0.01, unit: 'm', explanation: '**Ansatz:** Schwerpunkt-Formel für diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$.\n\n**Rechnung:** Zähler $3 \\cdot 2 + 1 \\cdot 6 = 6 + 6 = 12\\,\\text{kg·m}$. Nenner $3 + 1 = 4\\,\\text{kg}$. $x_S = 12/4 = 3\\,\\text{m}$.\n\n**Probe:** Ergebnis liegt zwischen $x_1 = 2$ und $x_2 = 6$ — Schwerpunkt muss innerhalb der Massenpunkte liegen. ✓ Näher an $m_1$ (größere Masse) als an $m_2$: Abstand zu $m_1$ ist $1$ m, zu $m_2$ ist $3$ m — Verhältnis $3:1$ entspricht dem Massenverhältnis $m_2:m_1 = 1:3$. ✓\n\n**Typischer Fehler:** Arithmetisches Mittel $(2 + 6)/2 = 4$ m rechnen — ignoriert die unterschiedlichen Massen. Schwerpunkt ist **massengewichtetes** Mittel, nicht einfaches Mittel.', hints: ['Formel: $x_S = \\sum(m_i \\cdot x_i)/\\sum m_i$.', 'Zähler = $m_1 x_1 + m_2 x_2$, Nenner = Gesamtmasse.', 'Ergebnis muss zwischen $x_1$ und $x_2$ liegen, näher an der größeren Masse.'] },
-            { type: 'true-false', statement: 'Ein symmetrischer Körper hat seinen Schwerpunkt auf der Symmetrieachse.', correct: true, explanation: '**Ansatz:** Symmetrie bedeutet: zu jedem Massenelement bei $+x$ gibt es ein gleich großes Element bei $-x$ (bezogen auf die Symmetrieachse). In der Schwerpunktsumme heben sich die Beiträge paarweise auf.\n\n**Rechnung:** Für jedes Paar $(m, +x)$ und $(m, -x)$ gilt $m(+x) + m(-x) = 0$. Die Summe $\\sum m_i x_i$ verschwindet relativ zur Achse → $x_S = 0$ (Schwerpunkt liegt auf der Achse).\n\n**Probe:** Gilt für homogene Kugel, Zylinder, Quader, Kreisring usw. Bei einem symmetrischen Körper mit zwei Symmetrieachsen (z.B. Rechteck) liegt der Schwerpunkt im Schnittpunkt beider Achsen.\n\n**Typischer Fehler:** Symmetrie der **Form** mit Symmetrie der **Massenverteilung** verwechseln. Die Aussage gilt nur bei homogenem Material — ein asymmetrisch gebohrtes Rechteck hat den Schwerpunkt nicht mehr zentral.', hints: ['Überlege, was Symmetrie für die Verteilung der Massenelemente bedeutet.', 'Zu jedem $(m, +x)$ existiert ein $(m, -x)$ — wie verhält sich die Summe?', 'Gilt nur bei homogenem Material (konstante Dichte).'] },
-            { type: 'number-input', question: '[PRÜFUNG] L-Profil aus zwei Rechtecken: $R_1$ (20×80 mm, $x_{S1}=10$ mm) und $R_2$ (60×20 mm, $x_{S2}=50$ mm). Schwerpunkt $x_S$ des L-Profils?', correctValue: 27.1, tolerance: 0.5, unit: 'mm', explanation: '**Ansatz:** Zusammengesetzte Fläche: $x_S = \\sum A_i x_{S,i} / \\sum A_i$. Beide Teilrechtecke liefern Fläche × Teilschwerpunkt-Abstand.\n\n**Rechnung:** $A_1 = 20 \\cdot 80 = 1600\\,\\text{mm}^2$, $A_2 = 60 \\cdot 20 = 1200\\,\\text{mm}^2$. $x_S = (1600 \\cdot 10 + 1200 \\cdot 50)/(1600 + 1200) = (16\\,000 + 60\\,000)/2800 = 76\\,000/2800 \\approx 27{,}1\\,\\text{mm}$.\n\n**Probe:** Ergebnis liegt zwischen $x_{S1} = 10$ und $x_{S2} = 50$ — OK. Näher an $x_{S1}$, weil $A_1 > A_2$. Verhältnis der Abstände: $(27{,}1 - 10) : (50 - 27{,}1) = 17{,}1 : 22{,}9 \\approx 1200 : 1600 = A_2 : A_1$. ✓ (Hebelgesetz)\n\n**Typischer Fehler:** Flächen vergessen zu gewichten und nur die Teilschwerpunkte mitteln: $(10 + 50)/2 = 30\\,\\text{mm}$ — falsch, weil $A_1 \\neq A_2$. Jede Teilfläche wird mit ihrer **Größe** gewichtet, nicht mit $1$.', hints: ['Teilschwerpunkte gewichten mit den jeweiligen Flächen.', '$A_i = b_i \\cdot h_i$ für jedes Rechteck berechnen.', 'Ergebnis muss zwischen $x_{S1}$ und $x_{S2}$ liegen, näher an der größeren Fläche.'] },
+            { type: 'number-input', question: 'Zwei Massen: $m_1 = 3$ kg bei $x_1 = 2$ m, $m_2 = 1$ kg bei $x_2 = 6$ m. Schwerpunkt $x_S$?', correctValue: 3, tolerance: 0.01, unit: 'm', explanation: '**Ansatz:** Schwerpunkt-Formel für diskrete Massen: $x_S = \\sum m_i x_i / \\sum m_i$.\n\n**Rechnung:** Zähler $3 \\cdot 2 + 1 \\cdot 6 = 6 + 6 = 12\\,\\text{kg·m}$. Nenner $3 + 1 = 4\\,\\text{kg}$. $x_S = 12/4 = 3\\,\\text{m}$.\n\n**Probe:** Ergebnis liegt zwischen $x_1 = 2$ und $x_2 = 6$ — Schwerpunkt muss innerhalb der Massenpunkte liegen. ✓ Näher an $m_1$ (größere Masse) als an $m_2$: Abstand zu $m_1$ ist $1$ m, zu $m_2$ ist $3$ m — Verhältnis $3:1$ entspricht dem Massenverhältnis $m_2:m_1 = 1:3$. ✓\n\n**Typischer Fehler:** Arithmetisches Mittel $(2 + 6)/2 = 4$ m rechnen — ignoriert die unterschiedlichen Massen. Schwerpunkt ist **massengewichtetes** Mittel, nicht einfaches Mittel.', hints: ['Formel: $x_S = \\sum(m_i \\cdot x_i)/\\sum m_i$.', 'Zähler = $m_1 x_1 + m_2 x_2$, Nenner = Gesamtmasse.', 'Ergebnis muss zwischen $x_1$ und $x_2$ liegen, näher an der größeren Masse.'], pedagogy: { stage: 'apply-independent', subGoal: 0, uses: ['sp-diskret'] } },
+            { type: 'true-false', statement: 'Ein symmetrischer Körper hat seinen Schwerpunkt auf der Symmetrieachse.', correct: true, explanation: '**Ansatz:** Symmetrie bedeutet: zu jedem Massenelement bei $+x$ gibt es ein gleich großes Element bei $-x$ (bezogen auf die Symmetrieachse). In der Schwerpunktsumme heben sich die Beiträge paarweise auf.\n\n**Rechnung:** Für jedes Paar $(m, +x)$ und $(m, -x)$ gilt $m(+x) + m(-x) = 0$. Die Summe $\\sum m_i x_i$ verschwindet relativ zur Achse → $x_S = 0$ (Schwerpunkt liegt auf der Achse).\n\n**Probe:** Gilt für homogene Kugel, Zylinder, Quader, Kreisring usw. Bei einem symmetrischen Körper mit zwei Symmetrieachsen (z.B. Rechteck) liegt der Schwerpunkt im Schnittpunkt beider Achsen.\n\n**Typischer Fehler:** Symmetrie der **Form** mit Symmetrie der **Massenverteilung** verwechseln. Die Aussage gilt nur bei homogenem Material — ein asymmetrisch gebohrtes Rechteck hat den Schwerpunkt nicht mehr zentral.', hints: ['Überlege, was Symmetrie für die Verteilung der Massenelemente bedeutet.', 'Zu jedem $(m, +x)$ existiert ein $(m, -x)$ — wie verhält sich die Summe?', 'Gilt nur bei homogenem Material (konstante Dichte).'], pedagogy: { stage: 'recognize', subGoal: 3, uses: ['sp-symmetrie'] } },
+            { type: 'number-input', question: '[PRÜFUNG] L-Profil aus zwei Rechtecken: $R_1$ (20×80 mm, $x_{S1}=10$ mm) und $R_2$ (60×20 mm, $x_{S2}=50$ mm). Schwerpunkt $x_S$ des L-Profils?', correctValue: 27.1, tolerance: 0.5, unit: 'mm', explanation: '**Ansatz:** Zusammengesetzte Fläche: $x_S = \\sum A_i x_{S,i} / \\sum A_i$. Beide Teilrechtecke liefern Fläche × Teilschwerpunkt-Abstand.\n\n**Rechnung:** $A_1 = 20 \\cdot 80 = 1600\\,\\text{mm}^2$, $A_2 = 60 \\cdot 20 = 1200\\,\\text{mm}^2$. $x_S = (1600 \\cdot 10 + 1200 \\cdot 50)/(1600 + 1200) = (16\\,000 + 60\\,000)/2800 = 76\\,000/2800 \\approx 27{,}1\\,\\text{mm}$.\n\n**Probe:** Ergebnis liegt zwischen $x_{S1} = 10$ und $x_{S2} = 50$ — OK. Näher an $x_{S1}$, weil $A_1 > A_2$. Verhältnis der Abstände: $(27{,}1 - 10) : (50 - 27{,}1) = 17{,}1 : 22{,}9 \\approx 1200 : 1600 = A_2 : A_1$. ✓ (Hebelgesetz)\n\n**Typischer Fehler:** Flächen vergessen zu gewichten und nur die Teilschwerpunkte mitteln: $(10 + 50)/2 = 30\\,\\text{mm}$ — falsch, weil $A_1 \\neq A_2$. Jede Teilfläche wird mit ihrer **Größe** gewichtet, nicht mit $1$.', hints: ['Teilschwerpunkte gewichten mit den jeweiligen Flächen.', '$A_i = b_i \\cdot h_i$ für jedes Rechteck berechnen.', 'Ergebnis muss zwischen $x_{S1}$ und $x_{S2}$ liegen, näher an der größeren Fläche.'], pedagogy: { stage: 'transfer', subGoal: 1, uses: ['sp-flaechen'] } },
           ],
         },
       ],

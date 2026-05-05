@@ -12,7 +12,7 @@
 //
 // ═══════════════════════════════════════════════════════════════════════════
 
-import { mc, ni, tf, matching, sorting } from './_helpers'
+import { mc, ni, tf, matching, sorting, tag } from './_helpers'
 
 export const technischeMechanikSubGoalTasks = {
 
@@ -1042,6 +1042,7 @@ export const technischeMechanikSubGoalTasks = {
           'Rechte Seite: kg·(m/s)^n.',
           'Exponentenvergleich an m und s.',
         ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['dim-konsistenz'] },
       ),
       mc(
         'Welche dieser Formeln ist **dimensional korrekt** für die Leistung $P$?',
@@ -1069,6 +1070,7 @@ export const technischeMechanikSubGoalTasks = {
           2: '$F/v$ hat Einheit $\\text{N}/(\\text{m/s}) = \\text{N}\\cdot\\text{s/m} = \\text{kg/s}$ — das ist keine Leistungseinheit.',
           3: '$m\\cdot g\\cdot h$ hat Einheit $\\text{kg}\\cdot(\\text{m/s}^2)\\cdot\\text{m} = \\text{J}$ — das ist potentielle **Energie**, nicht Leistung.',
         },
+        { stage: 'apply-independent', subGoal: 0, uses: ['dim-konsistenz'] },
       ),
       tf(
         'Die Formel $a = v \\cdot t$ für die Beschleunigung ist dimensional konsistent.',
@@ -1085,6 +1087,7 @@ export const technischeMechanikSubGoalTasks = {
           'Rechts: (m/s)·s = m.',
           'Sind m und m/s² gleich?',
         ],
+        { stage: 'recognize', subGoal: 0, uses: ['dim-konsistenz'] },
       ),
       matching(
         'Welche Einheit hat die **rechte Seite** jeweils?',
@@ -1106,6 +1109,7 @@ export const technischeMechanikSubGoalTasks = {
           'v² ≠ v — ein Faktor m/s mehr.',
           'N = kg·m/s² in Basiseinheiten.',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['dim-konsistenz'] },
       ),
       sorting(
         'Ordne die Schritte einer Dimensionsprüfung.',
@@ -1129,6 +1133,63 @@ export const technischeMechanikSubGoalTasks = {
           'Rechte Seite danach.',
           'Basiseinheiten-Reduktion vor dem Vergleich.',
         ],
+        { stage: 'apply-guided', subGoal: 0, uses: ['dim-konsistenz'] },
+      ),
+      mc(
+        'In welcher Aussage steckt ein **dimensionaler Fehler**?',
+        [
+          'Federkraft: $F = k\\cdot x$ mit $[k] = \\text{N/m}$, $[x]=\\text{m}$ ⇒ $[F] = \\text{N}$.',
+          'Beschleunigung: $a = F/m^2$ mit $[F]=\\text{N}$, $[m]=\\text{kg}$ ⇒ $[a] = \\text{m/s}^2$.',
+          'Kinetische Energie: $E = \\tfrac{1}{2} m v^2$ mit $[m]=\\text{kg}$, $[v]=\\text{m/s}$ ⇒ $[E]=\\text{kg}\\cdot\\text{m}^2/\\text{s}^2 = \\text{J}$.',
+          'Druck: $p = F/A$ mit $[F]=\\text{N}$, $[A]=\\text{m}^2$ ⇒ $[p]=\\text{N/m}^2 = \\text{Pa}$.',
+        ],
+        1,
+        `**Ansatz:** Jede Aussage einzeln nachrechnen — Einheit der rechten Seite mit der angegebenen Zieleinheit vergleichen.
+
+**Rechnung:** Aussage 2: $[F/m^2] = \\text{N}/\\text{kg}^2 = (\\text{kg}\\cdot\\text{m/s}^2)/\\text{kg}^2 = \\text{m}/(\\text{kg}\\cdot\\text{s}^2)$ — das ist **nicht** $\\text{m/s}^2$. Die korrekte Form wäre $a = F/m$ (Newton 2. Gesetz).
+
+**Probe:** $a = F/m$: $[F/m] = \\text{N/kg} = (\\text{kg}\\cdot\\text{m/s}^2)/\\text{kg} = \\text{m/s}^2$ ✓.
+
+**Typischer Fehler:** Bei Newton 2. Gesetz $m$ quadrieren — sieht zahlenmäßig oft "richtig" aus, ist aber dimensional sofort entlarvbar.`,
+        [
+          'Pro Aussage: Einheit links mit Einheit rechts vergleichen.',
+          'Bei Newton 2. Gesetz: nur einfaches $m$ im Nenner.',
+          '$\\text{N}/\\text{kg}^2 \\neq \\text{m/s}^2$.',
+        ],
+        {
+          0: 'Korrekt: $[k\\cdot x] = (\\text{N/m})\\cdot\\text{m} = \\text{N}$ — Einheiten passen.',
+          2: 'Korrekt: $[m\\cdot v^2] = \\text{kg}\\cdot(\\text{m/s})^2 = \\text{kg}\\cdot\\text{m}^2/\\text{s}^2 = \\text{J}$.',
+          3: 'Korrekt: $[F/A] = \\text{N/m}^2 = \\text{Pa}$ per Definition.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['dim-konsistenz'] },
+      ),
+      mc(
+        'Eine Formel für die Schwingdauer $T$ eines Feder-Masse-Schwingers wird gesucht. Welcher der vier Ausdrücke hat **Einheit Sekunde**, wenn $[m]=\\text{kg}$ und $[k]=\\text{N/m}$?',
+        [
+          '$\\sqrt{m/k}$',
+          '$\\sqrt{k/m}$',
+          '$m\\cdot k$',
+          '$m/k$',
+        ],
+        0,
+        `**Ansatz:** Reine Dimensionsanalyse — Einheit jedes Ausdrucks bestimmen und mit $\\text{s}$ vergleichen.
+
+**Rechnung:** $[m/k] = \\text{kg}/(\\text{N/m}) = \\text{kg}\\cdot\\text{m}/\\text{N} = \\text{kg}\\cdot\\text{m}/(\\text{kg}\\cdot\\text{m/s}^2) = \\text{s}^2$ ⇒ $\\sqrt{m/k}$ hat Einheit $\\text{s}$ ✓.
+
+**Probe:** Die bekannte Formel $T = 2\\pi\\sqrt{m/k}$ (Federpendel) hat genau diese Einheit. Vorfaktor $2\\pi$ ist dimensionslos.
+
+**Typischer Fehler:** $\\sqrt{k/m}$ ($\\omega_0$-Eigenkreisfrequenz, Einheit $\\text{s}^{-1}$) und $T$ verwechseln. $T$ ist die Dauer (s), $\\omega$ die Kreisfrequenz (1/s).`,
+        [
+          '$T$ hat Einheit Sekunde.',
+          'Aus $m$ (kg) und $k$ (N/m) Einheit Sekunde bilden — welche Kombination?',
+          '$\\text{kg}/(\\text{N/m}) = \\text{s}^2$ aufrollen.',
+        ],
+        {
+          1: '$\\sqrt{k/m}$ hat Einheit $\\text{s}^{-1}$ — das ist die Eigenkreisfrequenz $\\omega_0$, nicht die Schwingdauer.',
+          2: '$m\\cdot k$ hat Einheit $\\text{kg}\\cdot\\text{N/m} = \\text{N}\\cdot\\text{kg/m}$ — keine Sekunde.',
+          3: '$m/k$ hat Einheit $\\text{s}^2$, nicht $\\text{s}$. Erst die Wurzel macht daraus eine Sekunde.',
+        },
+        { stage: 'transfer', subGoal: 0, uses: ['dim-konsistenz'] },
       ),
     ],
 
@@ -1160,6 +1221,7 @@ export const technischeMechanikSubGoalTasks = {
           1: 'Kilogramm ist die Basiseinheit der Masse — ebenfalls in der Liste der 7.',
           3: 'Sekunde ist die Basiseinheit der Zeit — ebenfalls Basis-SI.',
         },
+        { stage: 'apply-guided', subGoal: 1, uses: ['basis-aufbau'] },
       ),
       matching(
         'Ordne jeder physikalischen Grundgröße ihre SI-Basiseinheit zu.',
@@ -1182,6 +1244,7 @@ export const technischeMechanikSubGoalTasks = {
           'Temperatur: Kelvin, nicht Celsius.',
           'Strom: Ampere.',
         ],
+        { stage: 'transfer', subGoal: 1, uses: ['basis-aufbau'] },
       ),
       tf(
         'Das SI-System hat genau **sieben** Basiseinheiten, aus denen alle anderen Einheiten zusammengesetzt werden.',
@@ -1198,6 +1261,7 @@ export const technischeMechanikSubGoalTasks = {
           'Das sind sieben Einheiten.',
           'Alles andere ist abgeleitet.',
         ],
+        { stage: 'recognize', subGoal: 1, uses: ['basis-aufbau'] },
       ),
       ni(
         'Drücke die Einheit **Newton** ausschließlich in SI-Basiseinheiten aus: $1\\,\\text{N} = 1\\,\\text{kg}^a \\cdot \\text{m}^b \\cdot \\text{s}^c$. Gib $a + b + |c|$ an.',
@@ -1214,6 +1278,7 @@ export const technischeMechanikSubGoalTasks = {
           '$[a] = \\text{m/s}^2$.',
           'Zeit-Exponent ist −2.',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['basis-aufbau'] },
       ),
       sorting(
         'Ordne die Einheiten von "direkte Basiseinheit" zu "drei Schritte abgeleitet".',
@@ -1236,6 +1301,63 @@ export const technischeMechanikSubGoalTasks = {
           'Jede Ableitungsstufe fügt Multiplikation/Division hinzu.',
           'Watt enthält Joule enthält Newton enthält Meter.',
         ],
+        { stage: 'apply-guided', subGoal: 1, uses: ['basis-aufbau'] },
+      ),
+      mc(
+        'Eine physikalische Größe hat in Basis-SI die Einheit $\\text{kg}\\cdot\\text{m}^2/\\text{s}^3$. Um welche Größe handelt es sich?',
+        [
+          'Energie (J)',
+          'Leistung (W)',
+          'Kraft (N)',
+          'Druck (Pa)',
+        ],
+        1,
+        `**Ansatz:** Jede Größe einmal in Basis-SI zerlegen und vergleichen.
+
+**Rechnung:** Energie $\\text{J} = \\text{N}\\cdot\\text{m} = \\text{kg}\\cdot\\text{m}^2/\\text{s}^2$. Leistung $\\text{W} = \\text{J/s} = \\text{kg}\\cdot\\text{m}^2/\\text{s}^3$ ✓. Kraft $\\text{N} = \\text{kg}\\cdot\\text{m/s}^2$. Druck $\\text{Pa} = \\text{N/m}^2 = \\text{kg}/(\\text{m}\\cdot\\text{s}^2)$.
+
+**Probe:** Leistung = Energie/Zeit ⇒ $\\text{J/s}$. Im Vergleich zu $\\text{J}$ ein zusätzliches $1/\\text{s}$ — also $\\text{s}^3$ statt $\\text{s}^2$ im Nenner.
+
+**Typischer Fehler:** Joule und Watt verwechseln — sie unterscheiden sich nur um einen Faktor $1/\\text{s}$. Wer nicht auf die Zeit-Potenz achtet, liegt schnell daneben.`,
+        [
+          '$\\text{kg}\\cdot\\text{m}^2/\\text{s}^2$ = Joule (Energie).',
+          '$\\text{s}^3$ statt $\\text{s}^2$ heißt: ein Mal $/\\text{s}$ mehr.',
+          'Energie/Zeit = Leistung.',
+        ],
+        {
+          0: 'Energie hat $\\text{s}^2$ im Nenner ($\\text{kg}\\cdot\\text{m}^2/\\text{s}^2$), nicht $\\text{s}^3$. Der Unterschied zu Watt ist genau ein Faktor Zeit.',
+          2: 'Kraft hat in Basis-SI $\\text{kg}\\cdot\\text{m}/\\text{s}^2$ — nur **eine** Potenz von $\\text{m}$, nicht zwei.',
+          3: 'Druck ist $\\text{kg}/(\\text{m}\\cdot\\text{s}^2)$ — Meter steht im **Nenner**, nicht im Zähler quadriert.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['basis-aufbau'] },
+      ),
+      mc(
+        'Studentin behauptet: "Joule lässt sich in Basis-SI als $\\text{kg}\\cdot\\text{m/s}^2$ schreiben." Was ist korrekt?',
+        [
+          'Stimmt — $1\\,\\text{J} = 1\\,\\text{kg}\\cdot\\text{m/s}^2$.',
+          '$\\text{kg}\\cdot\\text{m/s}^2$ ist die Einheit Newton, nicht Joule. Joule = N·m = $\\text{kg}\\cdot\\text{m}^2/\\text{s}^2$.',
+          'Joule ist eine SI-Basiseinheit und wird nicht weiter zerlegt.',
+          'Die richtige Zerlegung wäre $\\text{kg/s}^2$.',
+        ],
+        1,
+        `**Ansatz:** Joule ist abgeleitet: $\\text{J} = \\text{N}\\cdot\\text{m}$. Newton selbst ist $\\text{kg}\\cdot\\text{m/s}^2$. Beim Auflösen NICHT den zweiten Faktor $\\text{m}$ vergessen.
+
+**Rechnung:** $1\\,\\text{J} = 1\\,\\text{N}\\cdot\\text{m} = (1\\,\\text{kg}\\cdot\\text{m/s}^2)\\cdot 1\\,\\text{m} = 1\\,\\text{kg}\\cdot\\text{m}^2/\\text{s}^2$.
+
+**Probe:** Aus der Energieformel: $E = \\tfrac12 m v^2 \\Rightarrow [\\text{kg}]\\cdot[\\text{m/s}]^2 = \\text{kg}\\cdot\\text{m}^2/\\text{s}^2$ ✓.
+
+**Typischer Fehler:** Newton $\\text{kg}\\cdot\\text{m/s}^2$ und Joule $\\text{kg}\\cdot\\text{m}^2/\\text{s}^2$ gleichsetzen — der zweite Meter aus $\\text{N}\\cdot\\text{m}$ wird unterschlagen.`,
+        [
+          'Joule = N·m, nicht einfach N.',
+          'N selbst hat schon $\\text{kg}\\cdot\\text{m/s}^2$.',
+          'Beim Auflösen kommt **noch ein** $\\text{m}$ dazu.',
+        ],
+        {
+          0: 'Falsch — $\\text{kg}\\cdot\\text{m/s}^2$ ist Newton (Kraft), nicht Joule. Es fehlt der zweite Faktor $\\text{m}$ aus $\\text{J} = \\text{N}\\cdot\\text{m}$.',
+          2: 'Joule ist **nicht** Basis-SI. Basis-SI sind nur m, kg, s, A, K, mol, cd. J ist abgeleitet.',
+          3: '$\\text{kg/s}^2$ wäre weder Kraft noch Energie — diese Einheit hat in der Mechanik keine direkte Standardgröße.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['basis-aufbau'] },
       ),
     ],
 
@@ -1256,6 +1378,7 @@ export const technischeMechanikSubGoalTasks = {
           '1 MPa = 10^6 Pa.',
           'Als Zahl: 1 000 000.',
         ],
+        { stage: 'apply-guided', subGoal: 2, uses: ['pa-zerlegung'] },
       ),
       mc(
         'Welche Einheit ist **nicht** äquivalent zu Pascal?',
@@ -1283,6 +1406,7 @@ export const technischeMechanikSubGoalTasks = {
           1: '$\\text{kg}/(\\text{m}\\cdot\\text{s}^2) = (\\text{kg}\\cdot\\text{m/s}^2)/\\text{m}^2 = \\text{N/m}^2 = \\text{Pa}$ — genau die Basis-SI-Darstellung von Pascal.',
           2: '$\\text{J/m}^3 = (\\text{N}\\cdot\\text{m})/\\text{m}^3 = \\text{N/m}^2 = \\text{Pa}$. Energiedichte und Druck haben dieselbe Einheit.',
         },
+        { stage: 'error-analysis', subGoal: 2, uses: ['pa-zerlegung'] },
       ),
       tf(
         'Der Wert $1\\,\\text{N/mm}^2$ entspricht exakt $1\\,\\text{MPa}$.',
@@ -1299,6 +1423,7 @@ export const technischeMechanikSubGoalTasks = {
           '1 mm² = 10⁻⁶ m².',
           '1/10⁻⁶ = 10⁶.',
         ],
+        { stage: 'recognize', subGoal: 2, uses: ['pa-zerlegung'] },
       ),
       ni(
         'Ein Überdruck von $2{,}5\\,\\text{bar}$ entspricht wie vielen Kilopascal?',
@@ -1315,6 +1440,7 @@ export const technischeMechanikSubGoalTasks = {
           '2,5 × 100 = 250.',
           'bar ≈ Atmosphäre ≈ 100 kPa.',
         ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['pa-zerlegung'] },
       ),
       matching(
         'Ordne jede Druckangabe ihrem Wert in Pa zu.',
@@ -1337,6 +1463,91 @@ export const technischeMechanikSubGoalTasks = {
           'bar = 10⁵ Pa.',
           '1 N/mm² = 1 MPa.',
         ],
+        { stage: 'transfer', subGoal: 2, uses: ['pa-zerlegung'] },
+      ),
+      mc(
+        'Drücke $1\\,\\text{Pa}$ vollständig in **SI-Basiseinheiten** aus, indem du den Weg $\\text{Pa} = \\text{N/m}^2$ und $\\text{N} = \\text{kg}\\cdot\\text{m/s}^2$ gehst.',
+        [
+          '$\\text{kg}/(\\text{m}\\cdot\\text{s}^2)$',
+          '$\\text{kg}\\cdot\\text{m/s}^2$',
+          '$\\text{kg}\\cdot\\text{m}^2/\\text{s}^2$',
+          '$\\text{kg}/(\\text{m}^2\\cdot\\text{s}^2)$',
+        ],
+        0,
+        `**Ansatz:** Schrittweise einsetzen: $\\text{Pa} = \\text{N/m}^2$, dann $\\text{N}$ ersetzen.
+
+**Rechnung:** $\\text{Pa} = \\dfrac{\\text{N}}{\\text{m}^2} = \\dfrac{\\text{kg}\\cdot\\text{m/s}^2}{\\text{m}^2} = \\dfrac{\\text{kg}}{\\text{m}\\cdot\\text{s}^2}$.
+
+**Probe:** Eine Potenz von $\\text{m}$ kürzt sich (Zähler $\\text{m}$ gegen Nenner $\\text{m}^2$ ⇒ $1/\\text{m}$). Übrig bleibt eine $1/\\text{m}$, kombiniert mit $\\text{kg}/\\text{s}^2$.
+
+**Typischer Fehler:** Nur eine Potenz von $\\text{m}$ kürzen, dann landet man bei $\\text{kg}/\\text{s}^2$ (zu wenige Meter im Nenner). Sauber rechnen: $\\text{m}/\\text{m}^2 = 1/\\text{m}$.`,
+        [
+          'Pa = N/m².',
+          'N = kg·m/s² in N einsetzen.',
+          'Dann m im Zähler gegen m² im Nenner kürzen.',
+        ],
+        {
+          1: '$\\text{kg}\\cdot\\text{m/s}^2$ ist Newton, **nicht** Pascal. Es fehlt die Division durch eine Fläche.',
+          2: '$\\text{kg}\\cdot\\text{m}^2/\\text{s}^2$ ist Joule (Energie), nicht Druck.',
+          3: 'Zu viele Meter im Nenner. Im Zähler von $\\text{N}$ steht $\\text{m}^1$, im Nenner $\\text{m}^2$ — Differenz: $\\text{m}^{-1}$, nicht $\\text{m}^{-2}$.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['pa-zerlegung'] },
+      ),
+      mc(
+        'Auf einen Kolben mit Querschnittsfläche $A = 0{,}5\\,\\text{m}^2$ wirkt ein Druck $p = 200\\,\\text{kPa}$. Wie groß ist die resultierende Kraft auf den Kolben?',
+        [
+          '$400\\,\\text{N}$',
+          '$1\\,000\\,\\text{N}$',
+          '$100\\,000\\,\\text{N}$',
+          '$400\\,000\\,\\text{N}$',
+        ],
+        2,
+        `**Ansatz:** $p = F/A \\Rightarrow F = p\\cdot A$. Druck und Fläche müssen in konsistenten Einheiten stehen — Pa = N/m² verlangt $A$ in m² und $p$ in Pa.
+
+**Rechnung:** $p = 200\\,\\text{kPa} = 200\\,000\\,\\text{Pa}$. $F = 200\\,000\\,\\text{Pa}\\cdot 0{,}5\\,\\text{m}^2 = 100\\,000\\,\\text{N} = 100\\,\\text{kN}$.
+
+**Probe:** Einheitencheck: $\\text{Pa}\\cdot\\text{m}^2 = (\\text{N/m}^2)\\cdot\\text{m}^2 = \\text{N}$ ✓.
+
+**Typischer Fehler:** Druck in kPa belassen ($200\\cdot 0{,}5 = 100$ — als $100\\,\\text{N}$ interpretieren). Tatsächlich liefert $\\text{kPa}\\cdot\\text{m}^2 = \\text{kN}$, also $100\\,\\text{kN} = 100\\,000\\,\\text{N}$.`,
+        [
+          'Pa = N/m², deshalb erst kPa → Pa.',
+          'F = p·A.',
+          '200 000 · 0,5 = 100 000.',
+        ],
+        {
+          0: 'Da steckt ein Faktor $250$ zu wenig — vermutlich $200/0{,}5 = 400$ statt $200\\cdot 0{,}5 = 100$ gerechnet (Operation falsch).',
+          1: 'Faktor 100 zu wenig: kPa wurde nicht in Pa umgerechnet — $200\\cdot 0{,}5\\cdot 10$ statt $\\cdot 1000$.',
+          3: 'Faktor 4 zu groß — vermutlich $0{,}5\\,\\text{m}^2$ als $2\\,\\text{m}^2$ interpretiert (Kehrwert).',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['pa-zerlegung'] },
+      ),
+      mc(
+        'Eine Formelsammlung gibt für die Energiedichte des elektrischen Feldes $w = \\tfrac{1}{2}\\varepsilon_0 E^2$ die Einheit $\\text{J/m}^3$ an. Welche **äquivalente** Druck-Einheit hat dieselbe Größe?',
+        [
+          'Pa',
+          'N',
+          'W',
+          'm',
+        ],
+        0,
+        `**Ansatz:** Energiedichte hat Einheit Energie/Volumen. Mit $\\text{J} = \\text{N}\\cdot\\text{m}$ aufrollen.
+
+**Rechnung:** $\\text{J/m}^3 = (\\text{N}\\cdot\\text{m})/\\text{m}^3 = \\text{N/m}^2 = \\text{Pa}$.
+
+**Probe:** Auch in Basis-SI: $\\text{J/m}^3 = \\text{kg}\\cdot\\text{m}^2/\\text{s}^2/\\text{m}^3 = \\text{kg}/(\\text{m}\\cdot\\text{s}^2) = \\text{Pa}$ ✓.
+
+**Typischer Fehler:** "Energiedichte" hört sich an wie Energie — ist aber dimensional dieselbe Größe wie Druck. Dieser Zusammenhang taucht beim dynamischen Druck $p_\\text{dyn} = \\tfrac12\\rho v^2$ wieder auf (auch dort: kinetische Energiedichte = Druck).`,
+        [
+          'J = N·m.',
+          'J/m³ = (N·m)/m³.',
+          'm im Zähler gegen ein m³ im Nenner kürzen ⇒ N/m².',
+        ],
+        {
+          1: 'N ist Kraft, nicht Energie pro Volumen. Es fehlt der Bezug zur Fläche.',
+          2: 'W ist Leistung (Energie/Zeit), nicht Energie/Volumen. Falscher Nenner.',
+          3: 'm ist eine reine Längeneinheit — Energiedichte hat Volumen im Nenner, nicht nichts.',
+        },
+        { stage: 'transfer', subGoal: 2, uses: ['pa-zerlegung'] },
       ),
     ],
 
@@ -1357,6 +1568,7 @@ export const technischeMechanikSubGoalTasks = {
           'Bei Fläche Faktor quadrieren.',
           '250 × 10⁻⁶ = 2,5·10⁻⁴.',
         ],
+        { stage: 'apply-guided', subGoal: 3, uses: ['einheit-umform'] },
       ),
       ni(
         'Eine Stange hat $A = 100\\,\\text{mm}^2$ und trägt $F = 50\\,\\text{kN}$. Normalspannung $\\sigma = F/A$ in **MPa**?',
@@ -1373,6 +1585,7 @@ export const technischeMechanikSubGoalTasks = {
           'N und mm² passen direkt: N/mm² = MPa.',
           '50000/100 = 500.',
         ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['einheit-umform'] },
       ),
       mc(
         'Welche Umrechnung ist **falsch**?',
@@ -1400,6 +1613,7 @@ export const technischeMechanikSubGoalTasks = {
           1: 'MPa → Pa: Faktor $10^6$. $250\\cdot 10^6 = 2{,}5\\cdot 10^8$ — korrekt.',
           3: 'mm² → m²: Faktor $10^{-6}$. $100\\cdot 10^{-6} = 10^{-4}$ — korrekt.',
         },
+        { stage: 'error-analysis', subGoal: 3, uses: ['einheit-umform'] },
       ),
       tf(
         'Die Einheiten "N/mm²" und "MPa" haben denselben Zahlenwert — ein Stab mit $\\sigma = 350\\,\\text{MPa}$ trägt also $350\\,\\text{N/mm}^2$.',
@@ -1416,6 +1630,7 @@ export const technischeMechanikSubGoalTasks = {
           'N/mm² = 10⁶ N/m² = 10⁶ Pa.',
           '10⁶ Pa = 1 MPa.',
         ],
+        { stage: 'recognize', subGoal: 3, uses: ['einheit-umform'] },
       ),
       sorting(
         'Bringe die Arbeitsschritte einer sauberen Rechnung in die Reihenfolge, die Fehler vermeidet.',
@@ -1439,6 +1654,1576 @@ export const technischeMechanikSubGoalTasks = {
           'Dann umrechnen.',
           'Dimensionsprüfung am Ende, nicht am Anfang.',
         ],
+        { stage: 'apply-guided', subGoal: 3, uses: ['einheit-umform'] },
+      ),
+      mc(
+        'Du sollst die Federenergie $E = \\tfrac{1}{2}\\,k\\,x^2$ berechnen. Gegeben: $k = 200\\,\\text{N/cm}$, $x = 5\\,\\text{cm}$. Was ist der **erste richtige Schritt**?',
+        [
+          'Erst Einheiten harmonisieren: $k = 200\\,\\text{N/cm} = 20\\,000\\,\\text{N/m}$, $x = 0{,}05\\,\\text{m}$, dann in $E = \\tfrac{1}{2}kx^2$ einsetzen.',
+          'Direkt einsetzen: $E = \\tfrac{1}{2}\\cdot 200\\cdot 5^2 = 2\\,500$ — Einheit ergibt sich am Ende automatisch.',
+          'Nur $x$ in mm umrechnen, $k$ in N/cm belassen — die Längeneinheiten kürzen sich später.',
+          'Einheiten ignorieren — sie kürzen sich am Ende automatisch heraus.',
+        ],
+        0,
+        `**Ansatz:** Vor dem Einsetzen alles in **ein** konsistentes System bringen — hier SI ($\\text{N}, \\text{m}$), damit das Ergebnis direkt in Joule herauskommt.
+
+**Rechnung:** $k = 200\\,\\text{N/cm} = 200\\cdot 100\\,\\text{N/m} = 20\\,000\\,\\text{N/m}$. $x = 5\\,\\text{cm} = 0{,}05\\,\\text{m}$. $E = \\tfrac12\\cdot 20\\,000\\cdot 0{,}05^2 = \\tfrac12\\cdot 20\\,000\\cdot 0{,}0025 = 25\\,\\text{J}$.
+
+**Probe:** Einheitencheck: $(\\text{N/m})\\cdot\\text{m}^2 = \\text{N}\\cdot\\text{m} = \\text{J}$ ✓.
+
+**Typischer Fehler:** Direkt $\\tfrac12\\cdot 200\\cdot 25 = 2\\,500$ rechnen und das Ergebnis als J interpretieren. Tatsächlich ist die Einheit $\\text{N/cm}\\cdot\\text{cm}^2 = \\text{N}\\cdot\\text{cm} = 0{,}01\\,\\text{N}\\cdot\\text{m} = 0{,}01\\,\\text{J}$, also $2\\,500\\cdot 0{,}01 = 25\\,\\text{J}$ — derselbe Wert, aber nur, weil cm² hier zufällig kompatibel ist. Bei $E = \\tfrac12 m v^2$ mit gemischten Einheiten geht das gnadenlos schief.`,
+        [
+          'Konsistente Einheiten ZUERST.',
+          'cm in m: $\\cdot 10^{-2}$ für Längen, $\\cdot 10^2$ für N/cm ⇒ N/m.',
+          'Erst dann einsetzen.',
+        ],
+        {
+          1: 'Direktes Einsetzen mit gemischten Einheiten ist die häufigste Fehlerquelle. Der Zahlenwert wird von der gewählten Einheit abhängig — ohne Einheit ist die "$2\\,500$" wertlos.',
+          2: 'Einheiten "kürzen sich automatisch" stimmt nur, wenn sie konsistent sind. cm bei $x$ und cm bei $k$ sind hier zwar kompatibel, aber spätestens beim Quadrat $x^2$ in cm² wird es heikel.',
+          3: '"Einheiten ignorieren" ist genau das, was Dimensionsanalyse zu verhindern versucht. Liefert Zahlenwerte, die auf falschen Einheiten basieren.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['einheit-umform'] },
+      ),
+      ni(
+        'Eine Schraube mit Spannungsquerschnitt $A_S = 84{,}3\\,\\text{mm}^2$ wird mit der Vorspannkraft $F_V = 25\\,\\text{kN}$ belastet. Berechne die Vorspannungs-Spannung $\\sigma = F_V/A_S$ in **MPa** (auf 1 Nachkommastelle).',
+        296.6, 0.5, 'MPa',
+        `**Ansatz:** Praktiker-Trick: $\\text{N}/\\text{mm}^2 = \\text{MPa}$. Also $F_V$ in Newton, $A_S$ in mm² einsetzen — Ergebnis steht direkt in MPa.
+
+**Rechnung:** $F_V = 25\\,\\text{kN} = 25\\,000\\,\\text{N}$. $\\sigma = 25\\,000\\,\\text{N}/84{,}3\\,\\text{mm}^2 = 296{,}56\\dots\\,\\text{N/mm}^2 \\approx 296{,}6\\,\\text{MPa}$.
+
+**Probe:** Gegenrechnung in Basis-SI: $A_S = 84{,}3\\cdot 10^{-6}\\,\\text{m}^2 = 8{,}43\\cdot 10^{-5}\\,\\text{m}^2$. $\\sigma = 25\\,000/8{,}43\\cdot 10^{-5} \\approx 2{,}966\\cdot 10^{8}\\,\\text{Pa} = 296{,}6\\,\\text{MPa}$ ✓.
+
+**Typischer Fehler:** $F_V$ in kN belassen ($25/84{,}3 \\approx 0{,}30$) — als $0{,}30\\,\\text{MPa}$ interpretieren. Tatsächlich ist $\\text{kN}/\\text{mm}^2 = 1000\\,\\text{MPa} = \\text{GPa}$ — der Wert wäre $0{,}30\\,\\text{GPa} = 300\\,\\text{MPa}$ (Faktor 1000 Differenz).`,
+        [
+          'kN → N: Faktor 1000.',
+          'N/mm² = MPa direkt.',
+          '25 000 / 84,3 ≈ 296,6.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['einheit-umform'] },
+      ),
+    ],
+
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // mech-1-1 — Kräfte und Freikörperbild  (4 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-1-1': {
+
+    // ── [0] Freikörperbild — Körper isolieren, alle äußeren Kräfte ─────
+    0: [
+      tf(
+        'Innere Kontaktkräfte zwischen den Bauteilen eines abgeschlossenen Systems gehören NICHT in das Freikörperbild des Gesamtsystems.',
+        true,
+        `**Ansatz:** Im FKB werden nur **äußere** Einwirkungen auf das freigeschnittene System eingetragen. Die Frage ist immer: Was wirkt von **außen** auf den abgegrenzten Körper?
+
+**Rechnung:** Innere Kräfte treten paarweise mit Gegenkraft auf (Newton 3.: actio = reactio) und heben sich beim Aufstellen von $\\sum F$ und $\\sum M$ am Gesamtsystem gegenseitig weg. Sie liefern keinen Beitrag.
+
+**Probe:** Schneidet man hingegen ein einzelnes Bauteil aus dem System heraus, werden die vormals inneren Kräfte zu äußeren Kräften an diesem Teilsystem und müssen ins FKB des Teilsystems.
+
+**Typischer Fehler:** Innere Kontakte zwischen verbundenen Körpern in das FKB des Gesamtsystems eintragen — produziert systematische Doppelzählung und verfälschte Reaktionskräfte.`,
+        [
+          'FKB = nur äußere Einwirkungen auf das freigeschnittene System.',
+          'Innere Kräfte: actio + reactio im selben System.',
+          'Sie heben sich paarweise weg, tragen nichts zu $\\sum F = 0$ bei.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['fkb'] },
+      ),
+      mc(
+        'Ein homogener Balken ($m = 20\\,\\text{kg}$, $g = 9{,}81\\,\\text{m/s}^2$) liegt waagrecht auf einem **Festlager A** (links) und einem **Loslager B** (rechts). Welche Kräfte gehören vollständig in das FKB des Balkens?',
+        [
+          'Gewichtskraft $G = 196{,}2\\,\\text{N}$ im Schwerpunkt + $A_x, A_y$ am Festlager + $B_y$ am Loslager.',
+          'Nur $G$ sowie $A_y$ und $B_y$ — Horizontalkomponenten weglassen, weil keine horizontale Last wirkt.',
+          '$G + A_x, A_y + B_x, B_y$ — am Loslager wird zusätzlich eine Horizontalreaktion mitgeführt.',
+          'Nur die Auflagerreaktionen $A_y$ und $B_y$ — Gewichtskraft wirkt im Schwerpunkt und ist deshalb keine äußere Kraft.',
+        ],
+        0,
+        `**Ansatz:** Festlager liefert in 2D **2 Reaktionen** ($A_x, A_y$), Loslager **1 Reaktion** senkrecht zur Lauffläche ($B_y$). Eigengewicht greift im Schwerpunkt an. Alle drei Punkte sind Pflicht im FKB.
+
+**Rechnung:** $G = m\\cdot g = 20\\cdot 9{,}81 = 196{,}2\\,\\text{N}$. Insgesamt 4 unbekannte/bekannte Kraftpfeile: $G, A_x, A_y, B_y$ — bei 3 Gleichgewichtsbedingungen ist das System trotzdem statisch bestimmt, weil $A_x = 0$ aus $\\sum F_x = 0$ herausfällt.
+
+**Probe:** Anzahl Reaktionen = gehemmte Freiheitsgrade. Festlager hemmt 2 (horiz. + vert.), Loslager 1 (vert.). Summe der Reaktionen = 3 = 2D-Gleichgewichtsbedingungen — passt.
+
+**Typischer Fehler:** $A_x$ weglassen, "weil ja keine horizontale Last anliegt". Im FKB werden alle **möglichen** Reaktionen eingetragen; die Rechnung zeigt dann, dass $A_x = 0$ ist. Wer $A_x$ gar nicht erst einzeichnet, vergisst es bei horizontalen Lastfällen.`,
+        [
+          'Festlager-Anzahl Reaktionen in 2D?',
+          'Loslager-Anzahl?',
+          'Gewichtskraft im Schwerpunkt nicht vergessen.',
+        ],
+        {
+          1: 'Im FKB gehören **alle möglichen** Reaktionen eines Lagers — auch wenn die Rechnung später $A_x = 0$ liefert. Das vorzeitige Weglassen ist eine häufige Fehlerquelle.',
+          2: 'Loslager überträgt nur **eine** Reaktion (senkrecht zur Lauffläche), keine Horizontalkomponente. $B_x$ einzutragen wäre eine Überbestimmung.',
+          3: 'Eigengewicht ist eine **äußere** Kraft (Gravitation), wirkt im Schwerpunkt und gehört unbedingt ins FKB.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['fkb'] },
+      ),
+      mc(
+        'Eine 50-kg-Last hängt frei an einem vertikalen Seil ($g = 9{,}81\\,\\text{m/s}^2$). Beim Aufbau des FKB der Last vergisst ein Studierender die Seilkraft. Welche Konsequenz hat das?',
+        [
+          'Das Gleichgewicht $\\sum F_y = 0$ liefert nur noch $-G = 0 \\Rightarrow G = 0$ — die Last erscheint rechnerisch gewichtslos.',
+          'Das Momentengleichgewicht ist betroffen, $\\sum F_y$ stimmt aber weiterhin.',
+          'Das Vorzeichen der Gewichtskraft kehrt sich automatisch um, das Endergebnis bleibt korrekt.',
+          'Der Fehler bemerkt sich erst bei der Schnittkraftberechnung, nicht beim FKB.',
+        ],
+        0,
+        `**Ansatz:** Korrektes FKB: Gewichtskraft $G = m\\cdot g \\downarrow$ und Seilkraft $S \\uparrow$. Gleichgewicht: $S - G = 0 \\Rightarrow S = G = 50\\cdot 9{,}81 = 490{,}5\\,\\text{N}$.
+
+**Rechnung:** Ohne Seilkraft im FKB bleibt nur $-G$ übrig. $\\sum F_y = -G = 0 \\Rightarrow G = 0$ — physikalisch unsinnig.
+
+**Probe:** Eine fehlende Lager- oder Bindungskraft macht das Gleichgewicht **strukturell** falsch — kein nachträglicher Plausibilitätscheck rettet das.
+
+**Typischer Fehler:** Bindungs-/Seilkräfte vergessen, weil sie "nicht offensichtlich am Körper angreifen". Jede gedachte Schnitt- oder Kontaktstelle ist eine **Quelle einer Reaktionskraft**.`,
+        [
+          'Korrektes FKB: $G \\downarrow$ und $S \\uparrow$.',
+          'Was passiert mit $\\sum F_y$, wenn $S$ fehlt?',
+          '$-G = 0 \\Rightarrow G = 0$ — Widerspruch.',
+        ],
+        {
+          1: 'Der Fehler tritt bei der Translation auf, nicht erst beim Moment. $\\sum F_y$ ist unmittelbar betroffen.',
+          2: 'Es findet keine "automatische" Vorzeichenkorrektur statt. Eine fehlende Kraft hinterlässt ein strukturelles Loch.',
+          3: 'Falsch — der Fehler manifestiert sich sofort beim Aufstellen der Gleichgewichtsgleichung, nicht später.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['fkb'] },
+      ),
+      matching(
+        'Wie viele Kräfte/Momente werden im FKB jeder Situation eingetragen? (Eigengewicht jeweils mitzählen.)',
+        [
+          { left: 'Klotz in Ruhe auf horizontalem, glattem Boden', right: '2: $G$ und Normalkraft $N$' },
+          { left: 'Klotz gleitet auf rauer schiefer Ebene', right: '3: $G$, $N$, Reibkraft $F_R$' },
+          { left: 'Balken auf Festlager A + Loslager B mit Eigengewicht', right: '4: $G$, $A_x$, $A_y$, $B_y$' },
+          { left: 'Eingespannter Kragträger mit Endlast $F$', right: '5: $G$, $F$, $A_x$, $A_y$, $M_A$' },
+        ],
+        `**Ansatz:** Anzahl Kräfte = Eigengewicht + eingeprägte Lasten + Lagerreaktionen passend zum Lagertyp.
+
+**Rechnung:** (1) Klotz auf glattem Boden: $G \\downarrow$ + $N \\uparrow$ = 2. (2) Mit Reibung: zusätzliche $F_R$ parallel zur Ebene = 3. (3) Festlager (2) + Loslager (1) + $G$ = 4. (4) Einspannung (3: $A_x, A_y, M_A$) + $G$ + Endlast $F$ = 5.
+
+**Probe:** Anzahl unbekannte Reaktionen darf 3 nicht überschreiten (sonst statisch unbestimmt). Festlager+Loslager: 2+1 = 3 ✓. Einspannung allein: 3 ✓ (Last $F$ und $G$ sind bekannt, keine Unbekannten).
+
+**Typischer Fehler:** Eigengewicht vergessen oder Lagerreaktionen falsch zählen — beides macht das FKB unvollständig.`,
+        [
+          'Pro Lager Reaktionsgrößen abzählen.',
+          'Eigengewicht zählt als Einzelkraft im Schwerpunkt.',
+          'Reibkraft nur, wenn die Oberfläche rau ist.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['fkb'] },
+      ),
+      sorting(
+        'Bringe die Schritte zum systematischen Aufbau eines FKB in die richtige Reihenfolge.',
+        [
+          'Bauteil gedanklich aus dem System freischneiden',
+          'Koordinatensystem und positive Zählrichtungen festlegen',
+          'Eigengewicht $G$ im Schwerpunkt eintragen (falls nicht zu vernachlässigen)',
+          'Lagerreaktionen passend zum Lagertyp eintragen (Fest-/Loslager/Einspannung)',
+          'Externe Lasten und Kontaktkräfte ergänzen (Punktlasten, Streckenlasten, Seilkräfte)',
+        ],
+        [0, 1, 2, 3, 4],
+        `**Ansatz:** Konsequente Reihenfolge verhindert, dass Kräfte vergessen werden.
+
+**Rechnung:** Erst freischneiden — dann Koordinatensystem (festlegt Vorzeichenkonvention) — dann Eigengewicht (immer da) — dann Lagerreaktionen (an jeder geschnittenen Lagerstelle) — schließlich eingeprägte Lasten.
+
+**Probe:** Wer dieselbe Reihenfolge konsequent anwendet, hat keine Lücken im FKB.
+
+**Typischer Fehler:** Mit den eingeprägten Lasten anfangen und am Ende die Lagerreaktionen vergessen — gerade die unbekannten Reaktionen sind aber das Ziel der ganzen Übung.`,
+        [
+          'Erst freischneiden, dann Pfeile setzen.',
+          'Koordinatensystem ZUERST — sonst sind Vorzeichen unklar.',
+          'Lagerreaktionen kommen vor den eingeprägten Lasten.',
+        ],
+        { stage: 'apply-guided', subGoal: 0, uses: ['fkb'] },
+      ),
+    ],
+
+    // ── [1] Kraft = Vektor (Betrag + Richtung) ─────────────────────────
+    1: [
+      tf(
+        'Eine Kraft ist vollständig durch ihren Betrag beschrieben — Richtung und Angriffspunkt sind nur Zusatzinformationen.',
+        false,
+        `**Ansatz:** Kraft ist ein **Vektor** — Betrag UND Richtung gehören zur vollständigen Beschreibung. Der Angriffspunkt entscheidet zusätzlich über die **Momentenwirkung**.
+
+**Rechnung:** Zwei Kräfte mit gleichem Betrag aber entgegengesetzter Richtung haben völlig unterschiedliche Wirkung: gleiche Linie, gleicher Angriffspunkt → Aufhebung. Senkrecht zueinander → Resultierende über Pythagoras.
+
+**Probe:** $\\vec F = F\\cdot\\hat e$ mit Betrag $F$ und Einheitsvektor $\\hat e$. Beides ist Pflicht.
+
+**Typischer Fehler:** Kraft wie eine skalare Größe (Masse, Temperatur) behandeln. In der Statik führt das sofort zu falschen Gleichgewichtsbilanzen.`,
+        [
+          'Vektor = Betrag + Richtung.',
+          'Zwei Kräfte mit gleichem Betrag, anderer Richtung — gleiche Wirkung?',
+          '$\\vec F = F\\cdot\\hat e$ — beides nötig.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['kraft-vektor'] },
+      ),
+      mc(
+        'Eine Kraft mit Betrag $F = 100\\,\\text{N}$ wirkt unter $30°$ über der Horizontalen (gegen den Uhrzeiger). Wie groß sind die Komponenten $F_x$ und $F_y$?',
+        [
+          '$F_x = 100\\,\\text{N}, F_y = 0$ — die Kraft ist horizontal.',
+          '$F_x \\approx 86{,}6\\,\\text{N}, F_y = 50\\,\\text{N}$',
+          '$F_x = 50\\,\\text{N}, F_y \\approx 86{,}6\\,\\text{N}$',
+          '$F_x \\approx 86{,}6\\,\\text{N}, F_y \\approx -50\\,\\text{N}$',
+        ],
+        1,
+        `**Ansatz:** Standard-Zerlegung relativ zur $x$-Achse: $F_x = F\\cos\\alpha$, $F_y = F\\sin\\alpha$. Winkel oberhalb der $x$-Achse (gegen Uhrzeiger) ⇒ $F_y > 0$.
+
+**Rechnung:** $F_x = 100\\cdot\\cos 30° = 100\\cdot\\frac{\\sqrt{3}}{2} \\approx 86{,}6\\,\\text{N}$. $F_y = 100\\cdot\\sin 30° = 100\\cdot 0{,}5 = 50\\,\\text{N}$.
+
+**Probe:** $\\sqrt{F_x^2 + F_y^2} = \\sqrt{86{,}6^2 + 50^2} = \\sqrt{7500 + 2500} = \\sqrt{10000} = 100\\,\\text{N}$ ✓.
+
+**Typischer Fehler:** $\\sin$ und $\\cos$ vertauschen. Merkregel: $\\cos$ ist auf der **An**liegenden Seite (zur Bezugsachse), $\\sin$ auf der **Gegen**überliegenden.`,
+        [
+          'Komponenten relativ zur x-Achse: $\\cos$ für x, $\\sin$ für y.',
+          '$\\cos 30° \\approx 0{,}866$, $\\sin 30° = 0{,}5$.',
+          'Probe via Pythagoras: Beträge wieder zur Resultierenden zusammensetzen.',
+        ],
+        {
+          0: 'Falsch — bei $30°$ über der Horizontalen ist $F_y \\neq 0$. Die Kraft hat eine deutliche Vertikalkomponente.',
+          2: '$\\sin$ und $\\cos$ vertauscht: $F_x = F\\cos\\alpha$ (anliegend), $F_y = F\\sin\\alpha$ (gegenüberliegend), nicht andersrum.',
+          3: 'Falsches Vorzeichen: Winkel **über** der $x$-Achse ⇒ $F_y$ positiv. Negativ wäre die Kraft unterhalb (nach unten gerichtet).',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['kraft-vektor'] },
+      ),
+      mc(
+        'Eine Kraft $F = 200\\,\\text{N}$ wirkt unter $60°$ **unterhalb** der Horizontalen (also schräg nach unten-rechts). Studierender setzt $F_x = 200\\sin 60°$ und $F_y = 200\\cos 60°$ ein. Was ist falsch?',
+        [
+          '$\\sin$ und $\\cos$ sind vertauscht — Standard ist $F_x = F\\cos\\alpha, F_y = F\\sin\\alpha$ relativ zur $x$-Achse. Außerdem fehlt das Minuszeichen vor $F_y$, weil die Kraft **nach unten** zeigt.',
+          'Der Winkel $60°$ muss zuerst in Bogenmaß umgerechnet werden — sonst funktionieren die Winkelfunktionen nicht.',
+          'Der Fehler ist nur kosmetisch — beide Komponenten haben numerisch denselben Betrag, weil $\\sin 60° = \\cos 60°$.',
+          'Es gibt keinen Fehler: $\\sin$ und $\\cos$ sind in der Statik austauschbar.',
+        ],
+        0,
+        `**Ansatz:** Korrekte Zerlegung: $F_x = F\\cos\\alpha = 200\\cos 60° = 100\\,\\text{N}$. $F_y = -F\\sin\\alpha = -200\\sin 60° \\approx -173{,}2\\,\\text{N}$ (Minus, weil unterhalb der $x$-Achse).
+
+**Rechnung:** Mit der falschen Formel: $F_x = 200\\sin 60° \\approx 173{,}2$ (zu groß), $F_y = 200\\cos 60° = 100$ (Vorzeichen falsch und Wert vertauscht). Die Resultante hätte trotzdem Betrag 200 — aber Komponenten und Vorzeichen sind völlig falsch.
+
+**Probe:** Bei $\\alpha = 60°$ unterhalb der $x$-Achse zeigt $\\vec F$ in Richtung $(\\cos 60°, -\\sin 60°) = (0{,}5,\\ -0{,}866)$. Komponenten: $F_x = +100$, $F_y \\approx -173{,}2$.
+
+**Typischer Fehler:** Mit dem Komplement-Winkel ($30°$ zur $y$-Achse) rechnen, ohne die Konvention zu klären — das vertauscht $\\sin$ und $\\cos$. Außerdem Richtung "unterhalb" beim $F_y$-Vorzeichen verschwiegen.`,
+        [
+          '$F_x = F\\cos\\alpha$, $F_y = F\\sin\\alpha$ — relativ zur $x$-Achse.',
+          'Unterhalb der $x$-Achse: $F_y < 0$.',
+          'Bei $60°$ ist $\\cos 60° = 0{,}5$, $\\sin 60° \\approx 0{,}866$ — ungleich.',
+        ],
+        {
+          1: 'Bogenmaß ist nur für analytische Ableitungen Pflicht. Taschenrechner und Winkelfunktionen verarbeiten Grad direkt — daran liegt es nicht.',
+          2: '$\\sin 60°$ und $\\cos 60°$ sind **nicht** gleich: $\\sin 60° \\approx 0{,}866$, $\\cos 60° = 0{,}5$. Verwechslung ändert die Werte massiv.',
+          3: 'Falsch — $\\sin$ und $\\cos$ sind **nicht** austauschbar. Die Konvention $F_x = F\\cos\\alpha$ ist eindeutig.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['kraft-vektor'] },
+      ),
+      ni(
+        'Drei Kräfte greifen am gleichen Punkt an: $\\vec F_1 = (40\\ |\\ 30)\\,\\text{N}$, $\\vec F_2 = (-20\\ |\\ 15)\\,\\text{N}$, $\\vec F_3 = (10\\ |\\ -25)\\,\\text{N}$. Wie groß ist der Betrag der Resultierenden $\\vec R$ in Newton (auf 2 Nachkommastellen)?',
+        36.06, 0.1, 'N',
+        `**Ansatz:** Komponentenweise addieren, dann Pythagoras.
+
+**Rechnung:** $R_x = 40 + (-20) + 10 = 30\\,\\text{N}$. $R_y = 30 + 15 + (-25) = 20\\,\\text{N}$. $|R| = \\sqrt{30^2 + 20^2} = \\sqrt{900 + 400} = \\sqrt{1300} \\approx 36{,}06\\,\\text{N}$.
+
+**Probe:** $\\sqrt{1300} = 10\\sqrt{13}$, $\\sqrt{13} \\approx 3{,}606$ ⇒ $|R| \\approx 36{,}06\\,\\text{N}$ ✓.
+
+**Typischer Fehler:** Beträge der Einzelkräfte einfach addieren ($\\sqrt{40^2+30^2} + \\sqrt{20^2+15^2} + \\sqrt{10^2+25^2} = 50 + 25 + 26{,}9 \\approx 101{,}9$) — ist falsch, weil Vektor- nicht Skalaraddition.`,
+        [
+          'Erst Komponenten getrennt summieren.',
+          '$R_x$ und $R_y$ einzeln berechnen.',
+          'Dann Pythagoras: $|R| = \\sqrt{R_x^2 + R_y^2}$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['kraft-vektor'] },
+      ),
+      ni(
+        'Eine Kraft hat in der Ebene die Komponenten $F_x = 60\\,\\text{N}$ und $F_y = 80\\,\\text{N}$. Wie groß ist ihr Betrag (in N)?',
+        100, 0.5, 'N',
+        `**Ansatz:** Pythagoras: $|F| = \\sqrt{F_x^2 + F_y^2}$.
+
+**Rechnung:** $|F| = \\sqrt{60^2 + 80^2} = \\sqrt{3600 + 6400} = \\sqrt{10000} = 100\\,\\text{N}$.
+
+**Probe:** Klassisches 3-4-5-Pythagoras-Tripel, hier um Faktor 20 skaliert: $60 = 3\\cdot 20$, $80 = 4\\cdot 20$, $100 = 5\\cdot 20$ ✓.
+
+**Typischer Fehler:** $|F| = F_x + F_y = 140\\,\\text{N}$ (lineare Addition). Das wäre nur korrekt, wenn beide Komponenten in dieselbe Richtung zeigten — bei senkrechtem Stand quadratisch.`,
+        [
+          'Pythagoras im rechtwinkligen Dreieck.',
+          '$\\sqrt{F_x^2 + F_y^2}$.',
+          '$60$ und $80$ → $\\sqrt{10000} = 100$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['kraft-vektor'] },
+      ),
+    ],
+
+    // ── [2] Lagersymbole — Festlager / Loslager / Einspannung ─────────
+    2: [
+      tf(
+        'Ein Loslager (Rollenlager) überträgt in 2D **eine** Reaktionskraft, ein Festlager **zwei** Reaktionskräfte und eine Einspannung **drei** Reaktionsgrößen.',
+        true,
+        `**Ansatz:** Anzahl Reaktionen = Anzahl gehemmte Freiheitsgrade. Ein Starrkörper in 2D hat 3 FG (2× Translation, 1× Rotation).
+
+**Rechnung:** Loslager hemmt 1 FG (verhindert Eindringen senkrecht zur Lauffläche): 1 Reaktion. Festlager hemmt 2 (beide Translationen): 2 Reaktionen ($A_x, A_y$). Einspannung hemmt 3 (alles): 2 Kräfte + 1 Moment ($A_x, A_y, M_A$).
+
+**Probe:** Festlager + Loslager = 2 + 1 = 3 Reaktionen = 3 Gleichgewichtsbedingungen ⇒ statisch bestimmt.
+
+**Typischer Fehler:** Loslager mit 2 Reaktionen ansetzen — dann ist das Tragwerk statisch unbestimmt (4 Unbekannte, 3 Gleichungen). Andersrum: Einspannung mit nur 2 Reaktionen — dann fehlt das Einspannmoment.`,
+        [
+          '2D-Starrkörper: 3 Freiheitsgrade.',
+          'Reaktionen = gehemmte Freiheitsgrade.',
+          'Loslager 1, Festlager 2, Einspannung 3.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['lagersymbole'] },
+      ),
+      mc(
+        'Ein Balken ist in 2D links durch eine **Einspannung** (Mauer) befestigt und rechts frei (Kragträger). Wie viele unbekannte Auflagerreaktionen treten an der Einspannung auf?',
+        ['1', '2', '3', '4'],
+        2,
+        `**Ansatz:** Eine 2D-Einspannung hemmt alle 3 Freiheitsgrade des Starrkörpers: zwei Translationen + eine Rotation.
+
+**Rechnung:** $A_x$ (horizontale Translation), $A_y$ (vertikale Translation), $M_A$ (Rotation um $A$). Macht 3 unbekannte Reaktionsgrößen.
+
+**Probe:** Statisch bestimmt? Kragträger hat 3 Unbekannte und 3 Gleichgewichtsgleichungen ⇒ ja, immer eindeutig lösbar.
+
+**Typischer Fehler:** Das Einspannmoment $M_A$ vergessen — typisch bei Studierenden, die "Lager" nur mit Kraftsymbolen verbinden. Eine Einspannung blockiert auch die Rotation.`,
+        [
+          'Einspannung verhindert auch Rotation.',
+          'Wie viele Freiheitsgrade hat ein 2D-Starrkörper?',
+          '$A_x + A_y + M_A$ = 3 Reaktionen.',
+        ],
+        {
+          0: 'Zu wenig — eine Einspannung ist deutlich starrer als ein Loslager (1 Reaktion).',
+          1: 'Zwei Reaktionen entspricht einem Festlager (gelenkig). Bei einer Einspannung kommt das Einspannmoment hinzu.',
+          3: 'Zu viele — in 2D gibt es nur 3 Freiheitsgrade, mehr als 3 Reaktionen wären überbestimmt.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['lagersymbole'] },
+      ),
+      mc(
+        'Ein 2D-Träger hat ein **Festlager A** (links) und ein **Loslager B** (rechts). Wie viele unbekannte Auflagerreaktionen sind insgesamt aufzustellen — und ist das Tragwerk statisch bestimmt?',
+        [
+          '2 Unbekannte — statisch unterbestimmt.',
+          '3 Unbekannte ($A_x, A_y, B_y$) — statisch bestimmt (3 Gleichungen, 3 Unbekannte).',
+          '4 Unbekannte — statisch unbestimmt vom Grad 1.',
+          '5 Unbekannte — statisch unbestimmt vom Grad 2.',
+        ],
+        1,
+        `**Ansatz:** Festlager: 2 Reaktionen ($A_x, A_y$). Loslager: 1 Reaktion ($B_y$). Summe = 3 Unbekannte. 2D-Gleichgewicht stellt 3 Gleichungen ($\\sum F_x = 0$, $\\sum F_y = 0$, $\\sum M = 0$) bereit.
+
+**Rechnung:** $n_\\text{unbek} = 3$, $n_\\text{Gl} = 3$ ⇒ Differenz 0 ⇒ statisch bestimmt.
+
+**Probe:** Klassisches Beispiel "Einfeldträger". Genau 3 Unbekannte sind die Voraussetzung dafür, dass die Aufgabe ohne zusätzliche Kompatibilitätsbedingungen lösbar ist.
+
+**Typischer Fehler:** Loslager mit 2 Reaktionen ansetzen ⇒ 4 Unbekannte ⇒ statisch unbestimmt. Oder Festlager mit 1 Reaktion ⇒ 2 Unbekannte ⇒ unterbestimmt (System bewegt sich).`,
+        [
+          'Festlager: 2 Reaktionen.',
+          'Loslager: 1 Reaktion.',
+          '2D-Gleichgewicht: 3 Gleichungen.',
+        ],
+        {
+          0: '2 Reaktionen wäre nur Festlager allein — dann wäre der Balken nicht in der Ebene fixiert (kann sich drehen).',
+          2: '4 Unbekannte entstünde, wenn das Loslager fälschlich als Festlager (2 Reaktionen) angesetzt wird.',
+          3: '5 Unbekannte hieße zwei Festlager + eine zusätzliche Bindung — kommt bei Einfeldträgern nicht vor.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['lagersymbole'] },
+      ),
+      mc(
+        'Ein 2D-Balken ist beidseitig fest **eingespannt** (z. B. links und rechts in Beton vergossen). Studentin setzt insgesamt 4 Auflagerreaktionen an (2 pro Einspannung). Was ist der Fehler?',
+        [
+          'Pro 2D-Einspannung sind es **3** Reaktionen ($A_x, A_y, M_A$). Insgesamt also $6$ Unbekannte. Mit nur 3 Gleichgewichtsbedingungen ist das System **3-fach statisch unbestimmt** — mit Statik allein nicht lösbar.',
+          'Es sind genau 4 — das Einspannmoment fließt nicht in die Auflagerreaktion ein.',
+          'Es sind 5 — die zweite Einspannung benötigt nur 2 Reaktionen.',
+          'Die Anzahl ist egal, solange $\\sum F = 0$ aufgestellt wird.',
+        ],
+        0,
+        `**Ansatz:** Eine Einspannung hemmt 3 Freiheitsgrade ⇒ 3 Reaktionen pro Lager. Zwei Einspannungen ⇒ $2\\cdot 3 = 6$ Reaktionen.
+
+**Rechnung:** $n_\\text{unbek} = 6$, $n_\\text{Gl} = 3$ ⇒ Differenz $+3$ ⇒ 3-fach statisch unbestimmt. Lösbar nur mit zusätzlichen Verformungsbedingungen (Festigkeitslehre).
+
+**Probe:** Beidseitig eingespannte Balken sind klassische Aufgaben der Festigkeitslehre — in der reinen Statik (nur Gleichgewicht) tatsächlich nicht lösbar.
+
+**Typischer Fehler:** Das Einspannmoment $M_A$ als "weiches" Reaktionselement übersehen und nur die Kraft-Komponenten zählen.`,
+        [
+          'Pro Einspannung: 3 Reaktionen, nicht 2.',
+          'Beide Einspannungen zusammen: $2\\cdot 3 = 6$.',
+          '6 Unbekannte vs. 3 Gleichungen ⇒ statisch unbestimmt.',
+        ],
+        {
+          1: 'Falsch — das Einspannmoment ist eine vollwertige Reaktionsgröße. Pro 2D-Einspannung gibt es 3, nicht 2.',
+          2: 'Beide Einspannungen sind gleichwertig: jeweils 3 Reaktionen ⇒ insgesamt 6.',
+          3: 'Die Anzahl entscheidet, ob das System statisch bestimmt, unter- oder überbestimmt ist — unverzichtbar für die Lösbarkeit.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['lagersymbole'] },
+      ),
+      matching(
+        'Ordne jedem Lagertyp die Anzahl bzw. Art der unbekannten Reaktionsgrößen in 2D zu.',
+        [
+          { left: 'Loslager (Rolle, verschieblich)', right: '1 Reaktion senkrecht zur Lauffläche' },
+          { left: 'Festlager (gelenkig, Pendelstütze)', right: '2 Reaktionen ($A_x, A_y$)' },
+          { left: 'Einspannung (eingemauert)', right: '3 Reaktionen ($A_x, A_y, M_A$)' },
+          { left: 'Pendelstab (gelenkig beidseitig, biegestarr)', right: '1 Reaktion entlang der Stabachse' },
+        ],
+        `**Ansatz:** Für jeden Lagertyp die gehemmten Freiheitsgrade auflisten — jeder gehemmte FG = eine Reaktionsgröße.
+
+**Rechnung:** Loslager: senkrecht zur Lauffläche (1). Festlager: beide Translationen (2). Einspannung: alles (3). Pendelstab: nur Längskraft (1, aber **entlang der Achse** — nicht senkrecht!).
+
+**Probe:** Pendelstab und Loslager liefern beide 1 Reaktion — aber mit unterschiedlicher Richtung. Diese Unterscheidung ist klausurkritisch.
+
+**Typischer Fehler:** Pendelstab mit Loslager verwechseln und seine Reaktion senkrecht zur Stabachse ansetzen — dann steht das Gleichgewicht falsch.`,
+        [
+          'Reaktionen = gehemmte Freiheitsgrade.',
+          'Pendelstab überträgt nur Kräfte entlang der Stabachse.',
+          'Loslager-Reaktion: senkrecht zur Lauffläche.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['lagersymbole'] },
+      ),
+    ],
+
+    // ── [3] 2D-Gleichgewicht $\\sum F_x = \\sum F_y = \\sum M = 0$ ──────
+    3: [
+      mc(
+        'Ein masseloser Balken ($L = 4\\,\\text{m}$) liegt auf Festlager A (links) und Loslager B (rechts). In der **Mitte** greift eine vertikale Last $F = 1000\\,\\text{N}$ nach unten an. Bestimme $A_y$ und $B_y$.',
+        [
+          '$A_y = 500\\,\\text{N}, B_y = 500\\,\\text{N}$',
+          '$A_y = 1000\\,\\text{N}, B_y = 0$',
+          '$A_y = 250\\,\\text{N}, B_y = 750\\,\\text{N}$',
+          '$A_y = 1000\\,\\text{N}, B_y = 1000\\,\\text{N}$',
+        ],
+        0,
+        `**Ansatz:** Drei Gleichgewichtsbedingungen aufstellen. Bei symmetrischer Mittellast erwartet man Symmetrie der Reaktionen — Probe via $\\sum M = 0$.
+
+**Rechnung:** $\\sum M_A = 0$: $-F\\cdot \\frac{L}{2} + B_y\\cdot L = 0 \\Rightarrow B_y = \\frac{F}{2} = 500\\,\\text{N}$. $\\sum F_y = 0$: $A_y + B_y - F = 0 \\Rightarrow A_y = 1000 - 500 = 500\\,\\text{N}$.
+
+**Probe:** $\\sum M_B = 0$: $A_y\\cdot L - F\\cdot \\frac{L}{2} = 0 \\Rightarrow A_y = F/2 = 500\\,\\text{N}$ ✓. Symmetrie bestätigt.
+
+**Typischer Fehler:** Annehmen, dass das ganze Gewicht auf einem Lager landet, oder die Hebelarme falsch ansetzen (z. B. Gesamtlänge $L$ statt halber Länge $L/2$ für die Mittellast).`,
+        [
+          'Symmetrische Mittellast → symmetrische Reaktionen.',
+          '$\\sum M_A = 0$ um Festlager A → $B_y$ direkt.',
+          'Dann $\\sum F_y = 0$ liefert $A_y$.',
+        ],
+        {
+          1: 'Das ganze Gewicht auf ein Lager wäre nur korrekt, wenn die Last direkt **über** dem Lager A angreifen würde.',
+          2: 'Falscher Hebelarm: Mittellast greift bei $L/2$ an, nicht bei $L/4$ oder $3L/4$.',
+          3: 'Doppelzählung — Summe der Reaktionen muss gleich Last sein ($A_y + B_y = F = 1000$).',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['gleichgew-2d'] },
+      ),
+      ni(
+        'Ein einseitig (links) eingespannter Kragträger der Länge $L = 2\\,\\text{m}$ trägt am freien Ende eine vertikale Last $F = 500\\,\\text{N}$ nach unten. Wie groß ist das **Einspannmoment** $M_A$ (in N·m)?',
+        1000, 1, 'N·m',
+        `**Ansatz:** Momentengleichgewicht um den Einspannpunkt $A$. Die Last $F$ erzeugt am Hebelarm $L$ ein Drehmoment, das durch $M_A$ kompensiert werden muss.
+
+**Rechnung:** $\\sum M_A = 0$: $-F\\cdot L + M_A = 0 \\Rightarrow M_A = F\\cdot L = 500\\cdot 2 = 1000\\,\\text{N\\cdot m}$.
+
+**Probe:** Einheitencheck: $\\text{N}\\cdot\\text{m}$ ✓. Plausibilität: Größeres $F$ oder größeres $L$ erhöht $M_A$ linear — passt.
+
+**Typischer Fehler:** Hebelarm nur halb ansetzen ($L/2$ statt $L$) — das gilt nur, wenn die Last in der Mitte angreift, nicht am Ende. Oder Vorzeichen verwechseln und $M_A$ negativ ansetzen.`,
+        [
+          'Momentensumme um den Einspannpunkt.',
+          '$M_A = F\\cdot L$ (Punktlast am Endpunkt).',
+          '$500\\cdot 2 = 1000$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['gleichgew-2d'] },
+      ),
+      mc(
+        'Ein 2D-Balken ist **links** auf einem Festlager $A$ gelagert und **rechts** in eine Wand eingespannt ($B$). Studentin setzt $2 + 3 = 5$ unbekannte Reaktionen an. Wie viele Gleichgewichtsbedingungen gibt es in 2D — und was bedeutet das?',
+        [
+          '3 Bedingungen ($\\sum F_x, \\sum F_y, \\sum M$). Mit 5 Unbekannten ist das System **2-fach statisch unbestimmt** und ohne Verformungsbetrachtung nicht lösbar.',
+          '5 Bedingungen — das System ist statisch bestimmt.',
+          '6 Bedingungen, weil pro Lager eine Bedingung.',
+          '2 Bedingungen — Momentengleichgewicht gilt nur in 3D.',
+        ],
+        0,
+        `**Ansatz:** In 2D gibt es 3 Freiheitsgrade ⇒ 3 unabhängige Gleichgewichtsbedingungen. Vergleich mit Anzahl Unbekannter entscheidet über statische Bestimmtheit.
+
+**Rechnung:** $n_\\text{Gl} = 3$, $n_\\text{unbek} = 5$ ⇒ Differenz $5 - 3 = 2$ ⇒ 2-fach statisch unbestimmt. Klassische Festigkeitslehre-Aufgabe.
+
+**Probe:** Gegenprobe Festlager + Loslager: $2 + 1 = 3 = n_\\text{Gl}$ ⇒ statisch bestimmt. Festlager + Einspannung übersteigt das.
+
+**Typischer Fehler:** Glauben, "mehr Lager = stabiler = besser". Aus Statik-Sicht ist überbestimmt **nicht** lösbar (mit reinen Gleichgewichtsbedingungen).`,
+        [
+          '2D: $\\sum F_x = 0$, $\\sum F_y = 0$, $\\sum M = 0$.',
+          '3 Gleichungen vs. 5 Unbekannte.',
+          'Differenz = Grad der statischen Unbestimmtheit.',
+        ],
+        {
+          1: 'Anzahl der Gleichgewichtsbedingungen ist eine Eigenschaft des **Raums** (2D ⇒ 3, 3D ⇒ 6), nicht der Anzahl der Lager.',
+          2: 'Pro Lager gibt es **Reaktionen**, keine zusätzlichen Gleichgewichtsbedingungen. Bedingungen kommen aus Newton 1.',
+          3: 'Momentengleichgewicht gilt auch in 2D — sogar einfacher, weil nur eine skalare Gleichung statt drei Komponenten.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['gleichgew-2d'] },
+      ),
+      ni(
+        'Ein masseloser Balken ($L = 6\\,\\text{m}$, Festlager A links bei $x = 0$, Loslager B rechts bei $x = L$) trägt eine Punktlast $F_1 = 800\\,\\text{N}$ bei $x_1 = 2\\,\\text{m}$ und $F_2 = 1200\\,\\text{N}$ bei $x_2 = 5\\,\\text{m}$ (beide vertikal nach unten). Berechne die Vertikalreaktion $B_y$ am Loslager (auf 2 Nachkommastellen, in N).',
+        1266.67, 1, 'N',
+        `**Ansatz:** Momentengleichgewicht um $A$ (eliminiert die unbekannten $A_x, A_y$): $\\sum M_A = 0$.
+
+**Rechnung:** $-F_1\\cdot x_1 - F_2\\cdot x_2 + B_y\\cdot L = 0$. $B_y = \\dfrac{F_1\\cdot x_1 + F_2\\cdot x_2}{L} = \\dfrac{800\\cdot 2 + 1200\\cdot 5}{6} = \\dfrac{1600 + 6000}{6} = \\dfrac{7600}{6} \\approx 1266{,}67\\,\\text{N}$.
+
+**Probe:** $\\sum F_y = 0 \\Rightarrow A_y = F_1 + F_2 - B_y = 800 + 1200 - 1266{,}67 = 733{,}33\\,\\text{N}$. $\\sum M_B = 0$ als Cross-Check: $A_y\\cdot L - F_1\\cdot(L - x_1) - F_2\\cdot(L - x_2) = 733{,}33\\cdot 6 - 800\\cdot 4 - 1200\\cdot 1 = 4400 - 3200 - 1200 = 0$ ✓.
+
+**Typischer Fehler:** Hebelarme von rechts statt von links messen und dabei nicht spiegelverkehrt umrechnen — gibt einen Faktor-Fehler. Oder das Vorzeichen der Lasten vergessen ($F_1, F_2$ negativ in $\\sum F_y$).`,
+        [
+          'Momentensumme um $A$ — eliminiert unbekannte $A_x, A_y$.',
+          '$B_y\\cdot L = \\sum F_i\\cdot x_i$ (Lasten nach unten, Hebelarme von $A$).',
+          '$(800\\cdot 2 + 1200\\cdot 5)/6 = 7600/6$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['gleichgew-2d'] },
+      ),
+      tf(
+        'Im 2D-Gleichgewicht reichen die zwei Bedingungen $\\sum F_x = 0$ und $\\sum F_y = 0$ aus, um Auflagerreaktionen eindeutig zu bestimmen.',
+        false,
+        `**Ansatz:** Ein 2D-Starrkörper hat **drei** Freiheitsgrade — zwei Translationen und eine Rotation. Entsprechend braucht es **drei** Gleichgewichtsbedingungen.
+
+**Rechnung:** Ohne $\\sum M = 0$ kann der Drehzustand nicht erfasst werden. Beispiel Balken mit symmetrischer Mittellast: aus $\\sum F_y = 0$ folgt nur $A_y + B_y = F$ — die Aufteilung ist erst über $\\sum M_A = 0$ ermittelbar.
+
+**Probe:** Mathematisch: zwei Gleichungen mit drei Unbekannten ($A_x, A_y, B_y$ z. B.) sind unterbestimmt — eine Lösung gibt es erst mit der dritten Gleichung.
+
+**Typischer Fehler:** Das Momenten-Gleichgewicht weglassen, weil "ich keine Drehung sehe". Auch ein **statischer** Balken erfüllt $\\sum M = 0$ — diese Bedingung ist Voraussetzung für Statik, nicht ein Sonderfall.`,
+        [
+          '2D-Starrkörper: 3 Freiheitsgrade.',
+          '3 unabhängige Gleichgewichtsbedingungen nötig.',
+          '$\\sum M = 0$ ist nicht optional.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['gleichgew-2d'] },
+      ),
+    ],
+
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // mech-1-2 — Momente und Hebelarm  (4 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-1-2': {
+
+    // ── [0] Moment $M = F\cdot l_\perp$ — senkrechter Abstand ──────────
+    0: [
+      tf(
+        'Bei einer Kraft, die senkrecht auf einen geraden Hebel wirkt, ist der wirksame Hebelarm gleich der vollen Hebellänge.',
+        true,
+        `**Ansatz:** $l_\\perp$ ist der **senkrechte** Abstand vom Drehpunkt zur Wirkungslinie der Kraft.
+
+**Rechnung:** Wirkt die Kraft senkrecht zum Hebel, läuft ihre Wirkungslinie senkrecht zur Hebelachse. Der Lotabstand vom Drehpunkt auf diese Wirkungslinie ist exakt die Hebellänge $l$.
+
+**Probe:** Kraft schief unter Winkel $\\alpha$ zur Hebelachse: $l_\\perp = l\\cdot\\sin\\alpha < l$ (außer bei $\\alpha = 90°$).
+
+**Typischer Fehler:** Bei schief angreifender Kraft trotzdem die volle Hebellänge als Hebelarm verwenden — das Moment wird zu groß angesetzt.`,
+        [
+          '$l_\\perp$ = senkrechter Abstand zum Drehpunkt.',
+          'Senkrecht angreifende Kraft → Wirkungslinie ⊥ Hebelachse.',
+          'Lotabstand = Hebellänge.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['moment-formel'] },
+      ),
+      mc(
+        'Eine Kraft $F = 50\\,\\text{N}$ wirkt am Ende eines Hebels (Länge $l = 0{,}8\\,\\text{m}$) unter dem Winkel $\\alpha = 60°$ zur Hebelachse. Berechne das Moment um den Drehpunkt.',
+        [
+          '$M = 50\\cdot 0{,}8 = 40\\,\\text{Nm}$',
+          '$M = 50\\cdot 0{,}8\\cdot\\sin 60° \\approx 34{,}6\\,\\text{Nm}$',
+          '$M = 50\\cdot 0{,}8\\cdot\\cos 60° = 20\\,\\text{Nm}$',
+          '$M = 50\\cdot 0{,}8\\cdot\\tan 60° \\approx 69{,}3\\,\\text{Nm}$',
+        ],
+        1,
+        `**Ansatz:** Bei schiefer Kraft ist der wirksame Hebelarm $l_\\perp = l\\cdot\\sin\\alpha$ ($\\alpha$ = Winkel zwischen Kraftvektor und Hebelachse).
+
+**Rechnung:** $l_\\perp = 0{,}8\\cdot\\sin 60° = 0{,}8\\cdot\\frac{\\sqrt{3}}{2} \\approx 0{,}693\\,\\text{m}$. $M = F\\cdot l_\\perp = 50\\cdot 0{,}693 \\approx 34{,}6\\,\\text{Nm}$.
+
+**Probe:** Alternativ: nur die Komponente der Kraft senkrecht zum Hebel zerlegen — $F_\\perp = F\\sin\\alpha = 50\\sin 60° \\approx 43{,}3\\,\\text{N}$. Dann $M = F_\\perp\\cdot l = 43{,}3\\cdot 0{,}8 \\approx 34{,}6\\,\\text{Nm}$ ✓.
+
+**Typischer Fehler:** Volle Hebellänge ohne $\\sin\\alpha$ ⇒ $40\\,\\text{Nm}$ (zu groß). Oder $\\sin$/$\\cos$ vertauschen ⇒ $20\\,\\text{Nm}$.`,
+        [
+          'Bei schiefer Kraft: $l_\\perp = l\\sin\\alpha$.',
+          '$\\sin 60° \\approx 0{,}866$.',
+          '$50\\cdot 0{,}8\\cdot 0{,}866 \\approx 34{,}6$.',
+        ],
+        {
+          0: 'Volle Hebellänge ohne Winkelfaktor — gilt nur, wenn die Kraft senkrecht zum Hebel angreift ($\\alpha = 90°$). Hier $\\alpha = 60°$.',
+          2: '$\\sin$ und $\\cos$ vertauscht: für den Winkel zur **Hebelachse** ist $\\sin\\alpha$ der richtige Faktor. $\\cos$ wäre korrekt, wenn $\\alpha$ zur Senkrechten gemessen würde.',
+          3: '$\\tan\\alpha$ kommt in der Drehmoment-Formel nicht vor. Hebelarm ist eine reine Längen-Projektion ($\\sin\\alpha$).',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['moment-formel'] },
+      ),
+      ni(
+        'Eine Kraft $F = 200\\,\\text{N}$ wirkt **senkrecht** auf einen Hebel der Länge $l = 0{,}3\\,\\text{m}$. Wie groß ist das Moment um den Drehpunkt am anderen Hebelende (in Nm)?',
+        60, 0.1, 'Nm',
+        `**Ansatz:** Senkrechte Krafteinleitung ⇒ $l_\\perp = l$.
+
+**Rechnung:** $M = F\\cdot l = 200\\cdot 0{,}3 = 60\\,\\text{Nm}$.
+
+**Probe:** Einheit: $\\text{N}\\cdot\\text{m} = \\text{Nm}$ ✓. Skalierung: bei verdoppelter Hebellänge ($l = 0{,}6$) wäre $M = 120\\,\\text{Nm}$ — linear.
+
+**Typischer Fehler:** Hebelarm in cm einsetzen ($30$) statt in Meter ($0{,}3$) ⇒ $6000$, dann fälschlich als $\\text{Nm}$ bezeichnet (wäre tatsächlich $\\text{N\\cdot cm}$, nicht $\\text{Nm}$).`,
+        [
+          'Senkrecht angreifend ⇒ Hebelarm = Hebellänge.',
+          '$M = F\\cdot l$ direkt.',
+          '$200\\cdot 0{,}3 = 60$.',
+        ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['moment-formel'] },
+      ),
+      mc(
+        'An einem Schlüssel der Länge $l = 0{,}25\\,\\text{m}$ wird eine Kraft $F = 40\\,\\text{N}$ unter $\\alpha = 30°$ zur Schlüsselachse aufgebracht. Studierende rechnet $M = F\\cdot l = 40\\cdot 0{,}25 = 10\\,\\text{Nm}$. Wo steckt der Fehler?',
+        [
+          'Der senkrechte Hebelarm ist $l_\\perp = l\\sin 30° = 0{,}125\\,\\text{m}$, also $M = 40\\cdot 0{,}125 = 5\\,\\text{Nm}$. Bei schiefer Krafteinleitung ist die volle Schlüssellänge nicht der wirksame Hebelarm.',
+          'Der Fehler ist die Einheit — es muss $\\text{N\\cdot mm}$ heißen, nicht $\\text{Nm}$.',
+          'Kein Fehler — bei kleinen Winkeln kann $\\sin\\alpha \\approx 1$ angenommen werden.',
+          'Die Kraft müsste in $\\text{kN}$ umgerechnet werden, sonst ist das Ergebnis um Faktor $1000$ zu klein.',
+        ],
+        0,
+        `**Ansatz:** Hebelarm ist $l_\\perp = l\\sin\\alpha$ — bei $\\alpha = 30°$ also nur die halbe Schlüssellänge.
+
+**Rechnung:** $l_\\perp = 0{,}25\\cdot\\sin 30° = 0{,}25\\cdot 0{,}5 = 0{,}125\\,\\text{m}$. $M = 40\\cdot 0{,}125 = 5\\,\\text{Nm}$.
+
+**Probe:** Für $\\alpha = 90°$ wäre $M = 40\\cdot 0{,}25 = 10\\,\\text{Nm}$ — das wäre dann das gerechnete Ergebnis. Bei $30°$ ist es genau halb so groß.
+
+**Typischer Fehler:** Sin-Faktor weglassen, weil "kleiner Winkel". $30°$ ist nicht klein — $\\sin 30° = 0{,}5$, das halbiert das Moment.`,
+        [
+          '$l_\\perp = l\\sin\\alpha$, nicht $l$ allein.',
+          '$\\sin 30° = 0{,}5$.',
+          '$40\\cdot 0{,}25\\cdot 0{,}5 = 5$.',
+        ],
+        {
+          1: 'Die Einheit $\\text{Nm}$ ist korrekt — Fehler liegt im Hebelarm, nicht in der Einheit.',
+          2: 'Bei $\\alpha = 30°$ ist $\\sin\\alpha = 0{,}5$ — keinesfalls $\\approx 1$. Die Näherung gilt nur für sehr kleine Winkel ($< 10°$).',
+          3: 'Die Krafteinheit Newton stimmt; das Ergebnis ist nicht um Faktor 1000 falsch, sondern um Faktor 2 (durch Sin-Faktor).',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['moment-formel'] },
+      ),
+      ni(
+        'Ein Drehmomentschlüssel mit Hebellänge $l = 0{,}5\\,\\text{m}$ wird verwendet. Beim Anziehen einer Schraube wird die Kraft so aufgebracht, dass sie unter $\\alpha = 80°$ zur Schlüsselachse steht. Welche Kraft $F$ ist nötig, um $M = 200\\,\\text{Nm}$ zu erzeugen (auf 1 Nachkommastelle, in N)?',
+        406.2, 0.5, 'N',
+        `**Ansatz:** $M = F\\cdot l\\sin\\alpha$ nach $F$ umstellen: $F = M/(l\\sin\\alpha)$.
+
+**Rechnung:** $\\sin 80° \\approx 0{,}9848$. $l\\sin\\alpha = 0{,}5\\cdot 0{,}9848 = 0{,}4924\\,\\text{m}$. $F = 200/0{,}4924 \\approx 406{,}2\\,\\text{N}$.
+
+**Probe:** Gegenrechnung: $M = 406{,}2\\cdot 0{,}5\\cdot 0{,}9848 \\approx 200{,}0\\,\\text{Nm}$ ✓. Vergleich mit senkrechter Krafteinleitung ($\\alpha = 90°$): da wäre $F = 200/0{,}5 = 400\\,\\text{N}$ — bei $80°$ knapp 6 N mehr nötig.
+
+**Typischer Fehler:** $\\sin 80°$ ignorieren und $F = 200/0{,}5 = 400\\,\\text{N}$ ansetzen — unterschätzt die nötige Kraft. Oder $\\cos 80° \\approx 0{,}1736$ verwenden ⇒ $F \\approx 2304\\,\\text{N}$ (massiv zu hoch).`,
+        [
+          '$M = F\\cdot l\\sin\\alpha$ nach $F$ auflösen.',
+          '$\\sin 80° \\approx 0{,}985$.',
+          '$200/(0{,}5\\cdot 0{,}985) \\approx 406$.',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['moment-formel'] },
+      ),
+    ],
+
+    // ── [1] Drehsinn-Konvention ─────────────────────────────────────────
+    1: [
+      tf(
+        'Im Maschinenbau gilt die Konvention: Drehmomente, die gegen den Uhrzeigersinn wirken, werden positiv gezählt; Drehmomente im Uhrzeigersinn negativ.',
+        true,
+        `**Ansatz:** Standard-Vorzeichenkonvention der ebenen Statik (rechte-Hand-Regel mit $z$-Achse aus der Zeichenebene heraus).
+
+**Rechnung:** $\\vec M = \\vec r\\times\\vec F$. Bei Aufsicht von $+z$ rotiert ein positiver $z$-Anteil des Moments **gegen** den Uhrzeigersinn — das ist die Konvention "CCW = positiv".
+
+**Probe:** Beispiel: $\\vec r = (1,0,0)$, $\\vec F = (0,1,0)$ ⇒ $\\vec r\\times\\vec F = (0,0,+1)$ — Kraft nach oben am rechten Hebelende dreht CCW = positiv ✓.
+
+**Typischer Fehler:** Beim Bauingenieurwesen gibt es teilweise die umgekehrte Konvention (CW positiv). Innerhalb einer Aufgabe muss man konsequent **eine** Konvention durchhalten — Wechseln führt zu Vorzeichenchaos.`,
+        [
+          'Konvention: CCW = positiv.',
+          'Folgt aus rechter-Hand-Regel mit $+z$ aus der Zeichenebene.',
+          'Innerhalb einer Aufgabe konsequent.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['drehsinn'] },
+      ),
+      mc(
+        'Ein horizontaler Balken wird durch zwei Kräfte belastet: links ($x = 0$) wirkt $F_1 = 100\\,\\text{N}$ **nach unten**, rechts ($x = 2\\,\\text{m}$) wirkt $F_2 = 100\\,\\text{N}$ **nach oben**. Welcher Drehsinn entsteht für das resultierende Kräftepaar bezüglich der Balkenmitte (Konvention: CCW = positiv)?',
+        [
+          'Im Uhrzeigersinn (negativ).',
+          'Gegen den Uhrzeigersinn (positiv).',
+          'Es entsteht kein Moment, weil sich die Kräfte aufheben.',
+          'Drehsinn unbestimmt ohne weiteren Bezugspunkt.',
+        ],
+        1,
+        `**Ansatz:** Beide Momentbeiträge um die Balkenmitte berechnen und vorzeichenrichtig summieren.
+
+**Rechnung:** $\\vec r_1 = (-1,0,0)$ (links), $\\vec F_1 = (0,-100,0)$ (nach unten) ⇒ $r_{1x} F_{1y} - r_{1y} F_{1x} = (-1)(-100) - 0 = +100\\,\\text{Nm}$. $\\vec r_2 = (1,0,0)$ (rechts), $\\vec F_2 = (0,+100,0)$ (nach oben) ⇒ $(1)(100) - 0 = +100\\,\\text{Nm}$. Gesamtmoment $M_\\text{ges} = +200\\,\\text{Nm}$ ⇒ CCW (positiv).
+
+**Probe:** Anschaulich: Linke Seite drückt nach unten, rechte Seite hebt — der Balken rotiert "rechte-Seite-hoch" um die Mitte. Vom Standpunkt $+z$ aus betrachtet ist das CCW.
+
+**Typischer Fehler:** Annahme, dass sich Kräfte mit gleichem Betrag und entgegengesetzten Richtungen aufheben — die **Kräfte** heben sich auf ($\\sum F_y = 0$), die **Momente** addieren sich aber zum Kräftepaar.`,
+        [
+          'Pro Kraft Moment um Balkenmitte berechnen.',
+          'Vorzeichen aus $r\\times F$ (z-Komponente).',
+          'Beide Beiträge gleichgerichtet.',
+        ],
+        {
+          0: 'Falsch — die Beiträge beider Kräfte sind beide CCW (positiv). Vorzeichen aus $\\vec r\\times\\vec F$ konsequent ausrechnen.',
+          2: 'Die Kraftsumme ist null ($-100 + 100 = 0$), aber das Momentensystem ist nicht null. Das ist genau die Definition eines **Kräftepaars**.',
+          3: 'Der Bezugspunkt **ist** angegeben (Balkenmitte). Bei einem reinen Kräftepaar ist das Moment ohnehin unabhängig vom Bezugspunkt — beide Wahlen liefern $+200\\,\\text{Nm}$.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['drehsinn'] },
+      ),
+      mc(
+        'An einem T-förmigen Hebel greifen drei Momentbeiträge an: $M_1 = 100\\,\\text{N}\\cdot 0{,}4\\,\\text{m}$ **gegen Uhrzeiger**, $M_2 = 80\\,\\text{N}\\cdot 0{,}5\\,\\text{m}$ **gegen Uhrzeiger**, $M_3 = 200\\,\\text{N}\\cdot 0{,}3\\,\\text{m}$ **im Uhrzeigersinn**. Wie groß ist das **resultierende** Moment (Vorzeichen + Betrag, CCW = positiv)?',
+        [
+          '$+20\\,\\text{Nm}$',
+          '$-20\\,\\text{Nm}$',
+          '$+140\\,\\text{Nm}$',
+          '$-140\\,\\text{Nm}$',
+        ],
+        0,
+        `**Ansatz:** Jedes Einzelmoment vorzeichenrichtig berechnen (CCW $\\to +$, CW $\\to -$), dann summieren.
+
+**Rechnung:** $M_1 = +100\\cdot 0{,}4 = +40\\,\\text{Nm}$. $M_2 = +80\\cdot 0{,}5 = +40\\,\\text{Nm}$. $M_3 = -200\\cdot 0{,}3 = -60\\,\\text{Nm}$. $M_\\text{res} = 40 + 40 - 60 = +20\\,\\text{Nm}$.
+
+**Probe:** Vorzeichen-Plausibilität: zwei kleinere CCW-Beiträge schlagen knapp den größeren CW-Beitrag — Differenz $+20\\,\\text{Nm}$. Größenordnung passt.
+
+**Typischer Fehler:** Beträge ohne Vorzeichen addieren ⇒ $40 + 40 + 60 = 140\\,\\text{Nm}$, Drehsinn rätselhaft. Oder das CW-Moment positiv mitschleppen.`,
+        [
+          'CCW positiv, CW negativ.',
+          'Beiträge einzeln, dann summieren.',
+          '$+40 + 40 - 60 = +20$.',
+        ],
+        {
+          1: 'Vorzeichen falsch — zwei CCW-Beiträge ($+40, +40$) überwiegen das einzelne CW-Moment ($-60$).',
+          2: 'Beträge ohne Vorzeichen summiert ($40 + 40 + 60 = 140$). Das CW-Moment muss mit Minus eingehen.',
+          3: 'Alle Beiträge als negativ behandelt — die beiden CCW-Momente sind aber positiv.',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['drehsinn'] },
+      ),
+      mc(
+        'Ein Studierender berechnet zwei Momente an einem Hebel und schreibt $+30\\,\\text{Nm}$ und $+25\\,\\text{Nm}$. Beide drehen den Hebel **im Uhrzeigersinn** (Konvention: CCW positiv). Was ist falsch?',
+        [
+          'Beide Momente sind tatsächlich negativ ($-30$ und $-25$); die Summe ist $-55\\,\\text{Nm}$. Vorzeichen wurden bei beiden vergessen.',
+          'Die Vorzeichen sind richtig, das Endergebnis ist $+55\\,\\text{Nm}$.',
+          'Eines der Momente ist positiv, das andere negativ — sie heben sich teilweise auf.',
+          'Bei gleichgerichteten Momenten muss man Beträge subtrahieren statt addieren.',
+        ],
+        0,
+        `**Ansatz:** Konvention: CCW = positiv, CW = negativ. CW-Drehsinn muss als negatives Moment eingetragen werden.
+
+**Rechnung:** Korrekte Werte: $M_1 = -30\\,\\text{Nm}$, $M_2 = -25\\,\\text{Nm}$. Summe: $-55\\,\\text{Nm}$ (insgesamt CW).
+
+**Probe:** Plausibilität: Wenn beide Beiträge CW drehen, muss die Resultierende ebenfalls CW sein — also negativ. Positives Vorzeichen wäre ein Widerspruch.
+
+**Typischer Fehler:** Die Konvention beim Aufschreiben "vergessen" — Beträge ablesen und das Vorzeichen erst am Ende manuell einfügen. Sicherer: bei jedem Moment direkt das passende Vorzeichen aus dem Drehsinn ableiten.`,
+        [
+          'CW = negativ.',
+          'Beide Beiträge CW ⇒ beide negativ.',
+          'Summe gleichgerichteter Beiträge: Beträge addieren, Vorzeichen behalten.',
+        ],
+        {
+          1: '$+55\\,\\text{Nm}$ wäre CCW — das widerspricht der Vorgabe "beide drehen CW".',
+          2: 'Die Aussage "beide drehen CW" schließt aus, dass eines positiv (CCW) ist. Beide müssen das gleiche Vorzeichen tragen.',
+          3: 'Subtraktion ist nur bei **entgegengesetzten** Drehsinnen sinnvoll. Gleichgerichtete Beiträge addieren sich vom Betrag her.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['drehsinn'] },
+      ),
+      mc(
+        'In einem Getriebe rotiert die Antriebswelle gegen den Uhrzeigersinn (positiv). Das **Antriebsmoment** beträgt $M_\\text{an} = +50\\,\\text{Nm}$. Welche Drehrichtung und welchen Betrag muss das **Reaktionsmoment** am Lager haben, damit das Gehäuse nicht mitrotiert?',
+        [
+          'Im Uhrzeigersinn ($-50\\,\\text{Nm}$), damit $\\sum M = 0$ gilt.',
+          'Gegen den Uhrzeigersinn ($+50\\,\\text{Nm}$), damit das Antriebsmoment verstärkt wird.',
+          'Gleicher Drehsinn, aber halber Betrag ($+25\\,\\text{Nm}$).',
+          'Das Lager überträgt grundsätzlich keine Momente.',
+        ],
+        0,
+        `**Ansatz:** Das Gehäuse befindet sich im statischen Gleichgewicht ⇒ $\\sum M = 0$. Antriebs- und Reaktionsmoment müssen sich gerade aufheben.
+
+**Rechnung:** $M_\\text{an} + M_\\text{lager} = 0 \\Rightarrow M_\\text{lager} = -M_\\text{an} = -50\\,\\text{Nm}$ (Vorzeichen umgekehrt = entgegengesetzter Drehsinn).
+
+**Probe:** Anschaulich: Wenn das Drehmoment den Rotor CCW dreht, müssen die Lager das Gehäuse mit gleichem Betrag CW "festhalten" — sonst würde das Gehäuse selbst zu rotieren beginnen.
+
+**Typischer Fehler:** Reaktionsmoment in dieselbe Richtung ansetzen — verdoppelt das Antriebsmoment statt es zu kompensieren. Klassischer Vorzeichen-Fehler bei Lagerreaktions-Aufgaben.`,
+        [
+          'Gleichgewicht: $\\sum M = 0$.',
+          'Reaktion = $-$(Aktion).',
+          'Vorzeichen umgekehrt = anderer Drehsinn, gleicher Betrag.',
+        ],
+        {
+          1: 'Reaktion mit gleichem Vorzeichen würde sich addieren ($+100\\,\\text{Nm}$ gesamt) — das Gehäuse würde rotieren, also kein Gleichgewicht.',
+          2: 'Halber Betrag bricht $\\sum M = 0$ — Restmoment bliebe und würde das Gehäuse beschleunigen.',
+          3: 'Lager **können** Momente übertragen — bei Einspannungen oder festen Lagerschalen sehr wohl. Bei einem rotierenden Wälzlager wird das Reaktionsmoment auf das Gehäuse übertragen.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['drehsinn'] },
+      ),
+    ],
+
+    // ── [2] Bezugspunkt frei wählbar — klug wählen ─────────────────────
+    2: [
+      tf(
+        'Bei der Aufstellung der Momentenbedingung in der ebenen Statik kann der Bezugspunkt frei gewählt werden — auch außerhalb des Bauteils.',
+        true,
+        `**Ansatz:** Im statischen Gleichgewicht gilt $\\sum M = 0$ um **jeden** Punkt der Ebene. Der Bezugspunkt ist eine reine Rechenwahl.
+
+**Rechnung:** Mathematisch folgt das aus der Identität: Verschiebt man den Bezugspunkt um $\\vec d$, ändert sich jedes Einzelmoment um $\\vec d\\times\\vec F_i$. Summiert über alle $i$ gibt $\\vec d\\times\\sum\\vec F_i = \\vec d\\times\\vec 0 = \\vec 0$ (im Gleichgewicht ist die Kraftsumme bereits null).
+
+**Probe:** Klügste Wahl: ein Punkt, durch den möglichst viele unbekannte Kräfte verlaufen — diese fallen aus der Momentenbilanz heraus und es bleiben weniger Unbekannte.
+
+**Typischer Fehler:** Glauben, der Bezugspunkt müsse "physikalisch sinnvoll" oder "auf dem Körper" liegen. Mathematisch ist jeder Punkt erlaubt — Lösungen sind identisch.`,
+        [
+          'Gleichgewicht: $\\sum M = 0$ um jeden Punkt.',
+          'Bezugspunkt-Verschiebung ändert nichts.',
+          'Klügste Wahl eliminiert Unbekannte.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['bezugspunkt'] },
+      ),
+      mc(
+        'Ein Balken mit Festlager A (links), Loslager B (rechts) und einer Punktlast $F$ in der Mitte soll auf $A_y$ und $B_y$ gerechnet werden. Welcher Bezugspunkt für die Momentenbilanz führt am schnellsten zu $B_y$?',
+        [
+          'Festlager A — eliminiert $A_x$ und $A_y$ aus der Momentenbilanz, sodass nur noch $B_y$ und $F$ verbleiben.',
+          'Loslager B — eliminiert $B_y$, gibt aber $A_y$ direkt.',
+          'Mitte des Balkens (Lastangriffspunkt) — eliminiert $F$, lässt aber $A_y$ und $B_y$ stehen.',
+          'Beliebig — Bezugspunkt ist egal, es kommt immer dasselbe heraus.',
+        ],
+        0,
+        `**Ansatz:** Klüge Bezugspunktwahl = Punkt, durch den möglichst viele unbekannte Kräfte verlaufen. Bei Festlager A gehen $A_x, A_y$ direkt durch den Bezugspunkt ⇒ Hebelarm $= 0$ ⇒ keine Beiträge zur Momentenbilanz.
+
+**Rechnung:** $\\sum M_A = 0$: $-F\\cdot\\frac{L}{2} + B_y\\cdot L = 0 \\Rightarrow B_y = F/2$. Eine Gleichung, eine Unbekannte.
+
+**Probe:** Im Gegenzug: Wahl Punkt $B$ liefert $A_y$ direkt — ebenfalls geschickt, aber für $B_y$ nicht optimal.
+
+**Typischer Fehler:** Bezugspunkt am Lastangriff wählen — eliminiert $F$, lässt aber sowohl $A_y$ als auch $B_y$ in der Bilanz stehen, was eine zweite Gleichung erfordert.`,
+        [
+          'Welche Unbekannten verlaufen durch welchen Punkt?',
+          'Punkt durch unbekannte Kraft ⇒ Beitrag = 0.',
+          'Festlager A: $A_x, A_y$ haben Hebelarm $0$.',
+        ],
+        {
+          1: 'Korrekt für die Bestimmung von $A_y$, nicht $B_y$. Die Frage zielt explizit auf $B_y$.',
+          2: 'Eliminiert $F$, aber beide Lagerreaktionen bleiben stehen — eine Gleichung mit zwei Unbekannten reicht nicht.',
+          3: 'Mathematisch korrekt (Lösungen identisch), aber praktisch deutlich aufwendiger — schlechte Wahl bringt gekoppelte Gleichungen.',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['bezugspunkt'] },
+      ),
+      ni(
+        'Ein masseloser Balken ($L = 5\\,\\text{m}$) liegt auf Festlager A (links bei $x = 0$) und Loslager B (rechts bei $x = 5\\,\\text{m}$). Eine Punktlast $F = 600\\,\\text{N}$ greift bei $x_F = 4\\,\\text{m}$ vertikal nach unten an. Berechne $A_y$ direkt durch geschickte Wahl des Bezugspunkts (in N).',
+        120, 0.5, 'N',
+        `**Ansatz:** Um $A_y$ direkt zu erhalten, Bezugspunkt **B** wählen — dann fallen $B_y$ aus der Bilanz heraus.
+
+**Rechnung:** $\\sum M_B = 0$: $-A_y\\cdot L + F\\cdot(L - x_F) = 0$. Einsetzen: $-A_y\\cdot 5 + 600\\cdot 1 = 0 \\Rightarrow A_y = 600/5 = 120\\,\\text{N}$.
+
+**Probe:** Gegenrechnung über $A$: $\\sum M_A = 0$ liefert $B_y\\cdot 5 = 600\\cdot 4 = 2400 \\Rightarrow B_y = 480\\,\\text{N}$. $A_y + B_y = 120 + 480 = 600 = F$ ✓.
+
+**Typischer Fehler:** Hebelarm der Last falsch herum messen ($x_F = 4$ statt $L - x_F = 1$ als Abstand zu B) — das Vorzeichen oder die Größe wird falsch.`,
+        [
+          'Bezugspunkt B → eliminiert $B_y$.',
+          'Hebelarm der Last bzgl. B: $L - x_F = 1\\,\\text{m}$.',
+          '$A_y\\cdot 5 = 600\\cdot 1$.',
+        ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['bezugspunkt', 'moment-formel'] },
+      ),
+      mc(
+        'Bei einem Balken (Festlager A links, Loslager B rechts, Last $F$ in der Mitte) berechnet eine Studentin $\\sum M_A = 0$ und kommt auf $B_y = F$. Wo steckt der Fehler?',
+        [
+          'Sie hat den Hebelarm der Last falsch angesetzt — die Last greift bei $L/2$, nicht bei $L$, was zu $B_y = F/2$ führen muss.',
+          'Der Bezugspunkt $A$ war falsch gewählt — er muss bei $B$ liegen.',
+          'Die Momentenbilanz benötigt zusätzlich $\\sum F = 0$, sonst ist sie unvollständig.',
+          'Symmetrische Lasten haben kein Moment, $B_y = 0$ wäre korrekt.',
+        ],
+        0,
+        `**Ansatz:** Korrekte Momentenbilanz um $A$: $-F\\cdot\\frac{L}{2} + B_y\\cdot L = 0 \\Rightarrow B_y = \\frac{F\\cdot L/2}{L} = F/2$.
+
+**Rechnung:** Wer $B_y = F$ erhält, hat den Hebelarm der Last als $L$ (statt $L/2$) angesetzt: $F\\cdot L = B_y\\cdot L \\Rightarrow B_y = F$ — falscher Hebelarm.
+
+**Probe:** Plausibilität: Bei mittiger Last muss aus Symmetrie $A_y = B_y = F/2$ folgen. Wenn $B_y = F$, wäre $A_y = 0$ — würde bedeuten, dass das Lager A überhaupt nichts trägt, was bei mittiger Last absurd ist.
+
+**Typischer Fehler:** Die Last "in die Berechnung am Ende des Balkens" platzieren statt am tatsächlichen Angriffspunkt $L/2$ — ein simpler Geometrie-Fehler mit großen Folgen.`,
+        [
+          'Hebelarm der Last ist $L/2$, nicht $L$.',
+          '$\\sum M_A = -F\\cdot\\frac{L}{2} + B_y\\cdot L = 0$.',
+          'Symmetrie: $A_y = B_y = F/2$.',
+        ],
+        {
+          1: 'Bezugspunkt A ist eine **gute** Wahl, um $B_y$ direkt zu bekommen — der Fehler liegt nicht im Bezugspunkt, sondern im Hebelarm.',
+          2: '$\\sum F = 0$ ergänzt das System, ist hier aber nicht das Problem. Die Momentenbilanz allein liefert bei richtigem Hebelarm das korrekte $B_y$.',
+          3: '"Symmetrische Lasten haben kein Moment" ist falsch — symmetrische Aufteilung der Reaktionen ist gemeint. Beide Lager tragen $F/2$.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['bezugspunkt'] },
+      ),
+      ni(
+        'Ein masseloser Balken auf Festlager A (links bei $x = 0$) und Loslager B (rechts bei $x = 8\\,\\text{m}$) trägt zwei Lasten: $F_1 = 1500\\,\\text{N}$ bei $x_1 = 3\\,\\text{m}$ und $F_2 = 2000\\,\\text{N}$ bei $x_2 = 6\\,\\text{m}$ (beide vertikal nach unten). Berechne $A_y$ über die Momentenbilanz um Bezugspunkt $B$ (in N, auf 1 Nachkommastelle).',
+        1437.5, 1, 'N',
+        `**Ansatz:** Momentenbilanz um $B$ eliminiert $B_y$. Hebelarme der Lasten = Abstand vom jeweiligen Angriffspunkt zu $B$.
+
+**Rechnung:** $\\sum M_B = 0$: $-A_y\\cdot L + F_1\\cdot(L-x_1) + F_2\\cdot(L-x_2) = 0$. Einsetzen: $-A_y\\cdot 8 + 1500\\cdot 5 + 2000\\cdot 2 = 0$. $A_y\\cdot 8 = 7500 + 4000 = 11500$. $A_y = 11500/8 = 1437{,}5\\,\\text{N}$.
+
+**Probe:** $\\sum F_y = 0$: $A_y + B_y = F_1 + F_2 = 3500 \\Rightarrow B_y = 3500 - 1437{,}5 = 2062{,}5\\,\\text{N}$. Cross-Check $\\sum M_A = 0$: $-1500\\cdot 3 - 2000\\cdot 6 + 2062{,}5\\cdot 8 = -4500 - 12000 + 16500 = 0$ ✓.
+
+**Typischer Fehler:** Hebelarme von links statt rechts messen ($x_1$ statt $L - x_1$) — gibt einen anderen, falschen $A_y$-Wert. Bei Wahl des Bezugspunkts B muss der Abstand **bis B** gemessen werden.`,
+        [
+          'Bezugspunkt $B$ wählen → $B_y$ fällt heraus.',
+          'Hebelarm jeder Last = $L - x_i$.',
+          '$A_y\\cdot 8 = 1500\\cdot 5 + 2000\\cdot 2 = 11500$.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['bezugspunkt'] },
+      ),
+    ],
+
+    // ── [3] Kreuzprodukt-Variante $\vec M = \vec r \times \vec F$ ──────
+    3: [
+      tf(
+        'In 3D oder bei schief angreifenden Kräften gilt $\\vec M = \\vec r \\times \\vec F$, wobei $\\vec r$ der Ortsvektor vom Bezugspunkt zum Kraftangriffspunkt ist.',
+        true,
+        `**Ansatz:** Vektorielle Definition des Drehmoments — verallgemeinert die skalare Formel $M = F\\cdot l_\\perp$ auf 3D und beliebige Vektorrichtungen.
+
+**Rechnung:** Komponentenformel: $\\vec r\\times\\vec F = (r_y F_z - r_z F_y,\\ r_z F_x - r_x F_z,\\ r_x F_y - r_y F_x)$. Der Betrag ist $|\\vec M| = |\\vec r||\\vec F|\\sin\\theta$, wobei $\\theta$ der Winkel zwischen $\\vec r$ und $\\vec F$ ist.
+
+**Probe:** In 2D mit $\\vec r = (l, 0, 0)$ und $\\vec F = (0, F, 0)$ (senkrecht angreifend): $\\vec r\\times\\vec F = (0, 0, lF)$ — Betrag $lF$, exakt das skalare Ergebnis ✓.
+
+**Typischer Fehler:** $\\vec r$ als Vektor vom Kraftangriff zum Bezugspunkt ansetzen (umgekehrt) — vertauscht das Vorzeichen, weil $\\vec r\\times\\vec F = -(\\vec F\\times\\vec r)$.`,
+        [
+          'Definition: $\\vec M = \\vec r\\times\\vec F$.',
+          '$\\vec r$ vom Bezugspunkt zum Kraftangriff.',
+          'Reduziert sich in 2D auf $M = F\\cdot l_\\perp$.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['m-kreuz'] },
+      ),
+      mc(
+        'Berechne $\\vec r\\times\\vec F$ für $\\vec r = (2,\\ 0,\\ 0)\\,\\text{m}$ und $\\vec F = (0,\\ 5,\\ 0)\\,\\text{N}$.',
+        [
+          '$(0,\\ 0,\\ 10)\\,\\text{Nm}$',
+          '$(10,\\ 0,\\ 0)\\,\\text{Nm}$',
+          '$(0,\\ 10,\\ 0)\\,\\text{Nm}$',
+          '$(0,\\ 0,\\ -10)\\,\\text{Nm}$',
+        ],
+        0,
+        `**Ansatz:** Komponentenformel $\\vec r\\times\\vec F = (r_y F_z - r_z F_y,\\ r_z F_x - r_x F_z,\\ r_x F_y - r_y F_x)$.
+
+**Rechnung:** $r_y F_z - r_z F_y = 0 - 0 = 0$. $r_z F_x - r_x F_z = 0 - 0 = 0$. $r_x F_y - r_y F_x = 2\\cdot 5 - 0 = 10$. Ergebnis: $(0,\\ 0,\\ 10)\\,\\text{Nm}$.
+
+**Probe:** Beide Vektoren liegen in der $xy$-Ebene — das Moment muss senkrecht dazu (in $z$-Richtung) zeigen. Vorzeichen aus rechte-Hand-Regel: Daumen $\\vec r$ (in $+x$), Zeigefinger $\\vec F$ (in $+y$) ⇒ Mittelfinger zeigt in $+z$ ✓.
+
+**Typischer Fehler:** Komponentenweise multiplizieren ($r_x F_x, r_y F_y, r_z F_z$) — das ist **kein** Kreuzprodukt, sondern eine Hadamard-Produkt-artige Operation. Liefert hier $(0, 0, 0)$.`,
+        [
+          'Komponentenformel des Kreuzprodukts.',
+          'Beide Vektoren in $xy$-Ebene → Moment in $z$.',
+          'Rechte-Hand-Regel zur Vorzeichen-Probe.',
+        ],
+        {
+          1: 'Falsche Komponente — Moment senkrecht zu $\\vec r$ und $\\vec F$ stehen, also nicht in $x$-Richtung.',
+          2: 'Auch falsche Komponente — Moment muss senkrecht zur Ebene der beiden Vektoren stehen, nicht entlang $\\vec F$.',
+          3: 'Vorzeichen falsch — rechte-Hand-Regel: $+x\\times +y = +z$, nicht $-z$. $\\vec F\\times\\vec r$ würde $-z$ ergeben.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['m-kreuz'] },
+      ),
+      ni(
+        'Eine Kraft $\\vec F = (0,\\ 0,\\ 100)\\,\\text{N}$ greift am Punkt $\\vec r = (3,\\ 4,\\ 0)\\,\\text{m}$ relativ zum Bezugspunkt an. Welchen Betrag $|\\vec M|$ hat das Moment um den Bezugspunkt (in Nm)?',
+        500, 1, 'Nm',
+        `**Ansatz:** $\\vec M = \\vec r\\times\\vec F$ ausrechnen, dann Betrag bilden.
+
+**Rechnung:** $\\vec M = (r_y F_z - r_z F_y,\\ r_z F_x - r_x F_z,\\ r_x F_y - r_y F_x) = (4\\cdot 100 - 0,\\ 0 - 3\\cdot 100,\\ 0 - 0) = (400,\\ -300,\\ 0)\\,\\text{Nm}$. $|\\vec M| = \\sqrt{400^2 + 300^2} = \\sqrt{160000 + 90000} = \\sqrt{250000} = 500\\,\\text{Nm}$.
+
+**Probe:** Alternativ über Betragsformel $|\\vec M| = |\\vec r||\\vec F|\\sin\\theta$. $|\\vec r| = \\sqrt{9 + 16} = 5$, $|\\vec F| = 100$. Hier stehen $\\vec r$ und $\\vec F$ senkrecht zueinander ($\\theta = 90°, \\sin\\theta = 1$) ⇒ $|\\vec M| = 5\\cdot 100\\cdot 1 = 500\\,\\text{Nm}$ ✓.
+
+**Typischer Fehler:** Beträge der einzelnen Komponenten $r_x F_z, r_y F_z$ addieren ($300 + 400 = 700$) statt Pythagoras anwenden. Liefert zu großen Wert.`,
+        [
+          '$\\vec M = \\vec r\\times\\vec F$ komponentenweise.',
+          '$|\\vec M|$ via Pythagoras über die Komponenten.',
+          '$\\sqrt{400^2 + 300^2} = 500$.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['m-kreuz'] },
+      ),
+      mc(
+        'Studierende berechnet $\\vec r\\times\\vec F$ mit $\\vec r = (1, 2, 3)$, $\\vec F = (4, 5, 6)$ und schreibt $\\vec r\\times\\vec F = (1\\cdot 4,\\ 2\\cdot 5,\\ 3\\cdot 6) = (4,\\ 10,\\ 18)$. Wo steckt der Fehler?',
+        [
+          'Das ist nicht das Kreuzprodukt, sondern komponentenweise Multiplikation. Korrekt: $\\vec r\\times\\vec F = (r_y F_z - r_z F_y,\\ r_z F_x - r_x F_z,\\ r_x F_y - r_y F_x) = (12-15,\\ 12-6,\\ 5-8) = (-3,\\ 6,\\ -3)$.',
+          'Die Reihenfolge ist falsch — Kreuzprodukt heißt $\\vec F\\times\\vec r$, nicht $\\vec r\\times\\vec F$.',
+          'Kein Fehler — das Kreuzprodukt ist die komponentenweise Multiplikation.',
+          'Es fehlt ein $\\sin\\alpha$-Faktor, weil das Kreuzprodukt einen Winkel benötigt.',
+        ],
+        0,
+        `**Ansatz:** Kreuzprodukt ist **nicht** komponentenweise — es mischt die Komponenten nach der Determinanten-Formel.
+
+**Rechnung:** $\\vec r\\times\\vec F = \\det\\begin{pmatrix}\\vec i & \\vec j & \\vec k\\\\ 1 & 2 & 3\\\\ 4 & 5 & 6\\end{pmatrix} = \\vec i(2\\cdot 6 - 3\\cdot 5) - \\vec j(1\\cdot 6 - 3\\cdot 4) + \\vec k(1\\cdot 5 - 2\\cdot 4) = \\vec i(-3) - \\vec j(-6) + \\vec k(-3) = (-3, 6, -3)$.
+
+**Probe:** Skalarprodukte $\\vec r\\cdot\\vec M = 1(-3) + 2(6) + 3(-3) = -3 + 12 - 9 = 0$ ✓ (Moment senkrecht zu $\\vec r$). $\\vec F\\cdot\\vec M = 4(-3) + 5(6) + 6(-3) = -12 + 30 - 18 = 0$ ✓.
+
+**Typischer Fehler:** Aus dem Skalarprodukt $\\vec a\\cdot\\vec b = \\sum a_i b_i$ wird fälschlich abgeleitet, dass das Vektor-Kreuzprodukt komponentenweise sei. Sind aber zwei völlig unterschiedliche Operationen.`,
+        [
+          'Kreuzprodukt mischt Komponenten kreuzweise.',
+          'Determinantenformel mit $\\vec i, \\vec j, \\vec k$.',
+          'Probe: $\\vec M$ steht senkrecht auf $\\vec r$ und $\\vec F$.',
+        ],
+        {
+          1: '$\\vec F\\times\\vec r = -\\vec r\\times\\vec F = (3, -6, 3)$ — auch nicht das, was die Studierende geschrieben hat. Das Vorzeichen wäre umgekehrt.',
+          2: 'Falsch — Kreuzprodukt und komponentenweise Multiplikation sind verschiedene Operationen mit unterschiedlichem Ergebnis.',
+          3: 'Den $\\sin\\alpha$-Faktor enthält die Komponentenformel implizit. $\\sin$ explizit auftauchen lassen wäre nur in der Betragsformel $|\\vec r\\times\\vec F| = |\\vec r||\\vec F|\\sin\\theta$.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['m-kreuz'] },
+      ),
+      ni(
+        'An einem Punkt $\\vec r = (2,\\ 1,\\ 0)\\,\\text{m}$ greift eine Kraft $\\vec F = (0,\\ 0,\\ 50)\\,\\text{N}$ an. Berechne den Betrag des Drehmoments $|\\vec M|$ um den Ursprung (in Nm, auf 2 Nachkommastellen).',
+        111.80, 0.1, 'Nm',
+        `**Ansatz:** $\\vec M = \\vec r\\times\\vec F$ komponentenweise, dann $|\\vec M|$.
+
+**Rechnung:** $\\vec M = (r_y F_z - r_z F_y,\\ r_z F_x - r_x F_z,\\ r_x F_y - r_y F_x) = (1\\cdot 50 - 0,\\ 0 - 2\\cdot 50,\\ 0 - 0) = (50,\\ -100,\\ 0)\\,\\text{Nm}$. $|\\vec M| = \\sqrt{50^2 + 100^2} = \\sqrt{2500 + 10000} = \\sqrt{12500} = 50\\sqrt{5} \\approx 111{,}80\\,\\text{Nm}$.
+
+**Probe:** Alternativ: $|\\vec r| = \\sqrt{4+1} = \\sqrt{5}$, $|\\vec F| = 50$, $\\vec r$ liegt in $xy$-Ebene und $\\vec F$ in $z$-Richtung ⇒ Winkel $90°$. $|\\vec M| = \\sqrt{5}\\cdot 50\\cdot 1 = 50\\sqrt{5} \\approx 111{,}80$ ✓.
+
+**Typischer Fehler:** Komponentenweise einfach addieren statt Pythagoras ⇒ $50 + 100 = 150$ — falsche Vektor-Addition.`,
+        [
+          'Komponentenformel des Kreuzprodukts.',
+          '$|\\vec M| = \\sqrt{M_x^2 + M_y^2 + M_z^2}$.',
+          '$\\sqrt{12500} = 50\\sqrt{5}$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['m-kreuz'] },
+      ),
+    ],
+
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // mech-1-3 — Schnittkräfte N(x), Q(x), M(x)  (5 subGoals)
+  // ────────────────────────────────────────────────────────────────────────
+  'mech-1-3': {
+
+    // ── [0] Drei Schnittgrößen $N, Q, M$ ───────────────────────────────
+    0: [
+      tf(
+        'Die drei Schnittgrößen am Balken sind: Normalkraft $N(x)$ in Balkenachse, Querkraft $Q(x)$ senkrecht zur Achse, und Biegemoment $M(x)$ um die Querachse.',
+        true,
+        `**Ansatz:** Schnittprinzip: An jedem gedachten Querschnitt müssen drei Schnittgrößen wirken, damit beide Hälften des Balkens für sich im Gleichgewicht stehen.
+
+**Rechnung:** $N(x)$ — entlang der Balkenachse (Zug/Druck). $Q(x)$ — senkrecht zur Balkenachse (Scherbeanspruchung). $M(x)$ — Moment um die Querachse (Biegung).
+
+**Probe:** Drei Schnittgrößen passen genau zu den drei 2D-Gleichgewichtsbedingungen ($\\sum F_x, \\sum F_y, \\sum M$) für jede Balkenhälfte.
+
+**Typischer Fehler:** $N$ und $Q$ vertauschen — $N$ ist **längs**, $Q$ ist **quer**. Merkregel: "Normal" wie "in Normalrichtung der Schnittfläche" = entlang der Balkenachse.`,
+        [
+          'Drei Schnittgrößen pro Schnitt.',
+          '$N$ längs, $Q$ quer, $M$ Moment.',
+          'Drei Gleichgewichtsbedingungen → drei Schnittgrößen.',
+        ],
+        { stage: 'recognize', subGoal: 0, uses: ['schnittgr-3'] },
+      ),
+      mc(
+        'Welche Schnittgröße entspricht einer reinen Druck- oder Zugbeanspruchung in **Längsrichtung** des Balkens?',
+        ['$N(x)$ — Normalkraft', '$Q(x)$ — Querkraft', '$M(x)$ — Biegemoment', 'Keine — Druck/Zug entstehen erst durch Spannungen $\\sigma$.'],
+        0,
+        `**Ansatz:** Schnittgrößen sind nach ihrer Wirkrichtung relativ zur Balkenachse benannt: längs ($N$), quer ($Q$), drehend ($M$).
+
+**Rechnung:** Reine Längsbeanspruchung (Zug/Druck entlang der Balkenachse) wird durch die Normalkraft $N$ getragen. Sie erzeugt eine über den Querschnitt gleichmäßige Normalspannung $\\sigma = N/A$.
+
+**Probe:** Beispiel Pendelstab: trägt nur $N$ (Zug oder Druck), keine $Q$ und $M$. Definitionsgemäß biegestarr aber ohne Biegung.
+
+**Typischer Fehler:** $Q$ als "Druck" deuten — $Q$ ist Quer-, nicht Längskraft.`,
+        [
+          'Längs = entlang der Balkenachse.',
+          'Quer = senkrecht dazu.',
+          'Druck/Zug ⇒ Normalkraft.',
+        ],
+        {
+          1: '$Q$ wirkt **senkrecht** zur Balkenachse — sie erzeugt Schub, nicht Druck/Zug in Längsrichtung.',
+          2: '$M$ ist ein Moment (Drehwirkung), keine reine Längskraft. Verursacht Biegespannungen.',
+          3: 'Spannung $\\sigma$ entsteht **aus** der Schnittgröße $N$ ($\\sigma = N/A$). Ohne $N$ gäbe es keine Längsspannung.',
+        },
+        { stage: 'apply-guided', subGoal: 0, uses: ['schnittgr-3'] },
+      ),
+      mc(
+        'An einem horizontalen Einfeldträger (Festlager A links, Loslager B rechts, $L = 6\\,\\text{m}$) hängt zwischen $A$ und $B$ eine vertikale Last $F = 1200\\,\\text{N}$ bei $x = 2\\,\\text{m}$. Welche Schnittgröße ist auf der Strecke $0 < x < 2\\,\\text{m}$ **konstant ungleich null**?',
+        ['Nur $N$', 'Nur $Q$', 'Nur $M$', '$N$ und $M$ gleichzeitig'],
+        1,
+        `**Ansatz:** Im Bereich vor der Last gibt es nur die Auflagerreaktion $R_A$ als äußere Vertikalkraft. Schnittprinzip auf das linke Stück anwenden.
+
+**Rechnung:** $R_A = F\\cdot(L-a)/L = 1200\\cdot 4/6 = 800\\,\\text{N}$. $\\sum F_y = 0$ am linken Stück: $R_A - Q(x) = 0 \\Rightarrow Q(x) = +R_A = 800\\,\\text{N}$ (konstant). $M(x) = R_A\\cdot x$ — linear, nicht konstant. $N(x) = 0$, weil keine horizontale Last.
+
+**Probe:** Bei $x = 0$: $M = 0$ (Randbedingung Festlager). Bei $x = 2$: $M = R_A\\cdot 2 = 1600\\,\\text{Nm}$ — beweist, dass $M$ nicht konstant ist.
+
+**Typischer Fehler:** $M$ als "konstant" wahrnehmen, weil "die Last erst bei $x = 2$ kommt". $M$ wächst aber linear bereits ab $x = 0$, weil $R_A$ am Hebelarm $x$ wirkt.`,
+        [
+          '$R_A$ ist die einzige äußere Kraft am linken Stück.',
+          '$\\sum F_y = 0$ liefert $Q(x)$.',
+          '$M(x) = R_A\\cdot x$ ist linear, nicht konstant.',
+        ],
+        {
+          0: '$N$ ist null in diesem Bereich (keine Längskräfte). Konstant null ist nicht "konstant ungleich null".',
+          2: '$M(x) = R_A\\cdot x$ wächst linear mit $x$ — also nicht konstant.',
+          3: '$N$ ist hier null, $M$ ist nicht konstant. Beide treffen die Bedingung "konstant ungleich null" nicht.',
+        },
+        { stage: 'apply-independent', subGoal: 0, uses: ['schnittgr-3'] },
+      ),
+      mc(
+        'Studentin schreibt: "Die Querkraft $Q$ hat dieselbe Einheit wie das Biegemoment $M$." Was ist falsch?',
+        [
+          '$Q$ ist eine **Kraft** (Einheit N), $M$ ist ein **Moment** (Einheit N·m). Sie unterscheiden sich um den Faktor Hebelarm.',
+          'Stimmt — beide sind Schnittgrößen, also gleiche Einheit.',
+          '$Q$ ist in N/m (Streckenlast), $M$ in N·m.',
+          'Beide sind dimensionslos, weil sie aus dem Gleichgewicht folgen.',
+        ],
+        0,
+        `**Ansatz:** Einheit folgt aus der Definition: $Q$ ist die senkrechte Schnittkraft, $M$ das resultierende Schnittmoment.
+
+**Rechnung:** $[Q] = \\text{N}$, $[M] = \\text{N}\\cdot\\text{m}$. Aus dem Differentialzusammenhang $Q = dM/dx$: $[Q] = [M]/[x] = \\text{N\\cdot m}/\\text{m} = \\text{N}$ ✓.
+
+**Probe:** Streckenlast $q$: $[q] = \\text{N/m}$ (Kraft pro Längeneinheit). $q = -dQ/dx$ ergibt $[q] = [Q]/[x] = \\text{N/m}$ ✓.
+
+**Typischer Fehler:** "Schnittgrößen haben alle dieselbe Einheit" — falsch, $N$, $Q$ in N, $M$ in N·m, $q$ in N/m. Vier verschiedene Einheiten.`,
+        [
+          'Einheiten aus den Definitionen.',
+          'Kraft N, Moment N·m.',
+          'Differentialzusammenhang $Q = dM/dx$.',
+        ],
+        {
+          1: 'Schnittgrößen haben **unterschiedliche** Einheiten — N, N·m, N/m. "Alle gleich" ist falsch.',
+          2: '$Q$ ist eine Punktgröße in N, nicht eine Streckenlast in N/m. Letztere wäre $q$.',
+          3: 'Schnittgrößen haben **physikalische** Einheiten, sie sind **nicht** dimensionslos.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['schnittgr-3'] },
+      ),
+      matching(
+        'Ordne jede Schnitt- bzw. Belastungsgröße ihrer Einheit und physikalischen Bedeutung zu.',
+        [
+          { left: 'Normalkraft $N(x)$', right: '$[\\text{N}]$, Längsbelastung (Zug/Druck) entlang der Balkenachse' },
+          { left: 'Querkraft $Q(x)$', right: '$[\\text{N}]$, Querbelastung senkrecht zur Balkenachse' },
+          { left: 'Biegemoment $M(x)$', right: '$[\\text{N}\\cdot\\text{m}]$, Biegebelastung um die Querachse' },
+          { left: 'Streckenlast $q(x)$', right: '$[\\text{N/m}]$, verteilte Belastung pro Längeneinheit' },
+        ],
+        `**Ansatz:** Einheit jeder Größe direkt aus der Definition.
+
+**Rechnung:** $N, Q$: Kräfte ⇒ N. $M$: Moment ⇒ N·m. $q$: Kraft pro Längeneinheit (Streckenlast) ⇒ N/m.
+
+**Probe:** Aus Differentialbeziehungen: $q = -dQ/dx$ ⇒ $[q] = [Q]/[x] = \\text{N/m}$ ✓. $Q = dM/dx$ ⇒ $[Q] = [M]/[x] = \\text{N}$ ✓.
+
+**Typischer Fehler:** $Q$ und $q$ verwechseln (groß vs. klein) — verschiedene Größen mit verschiedenen Einheiten. $Q$ ist Punktquerkraft, $q$ Streckenlast.`,
+        [
+          '$N, Q$: Kraft.',
+          '$M$: Moment (Kraft × Länge).',
+          '$q$: Kraft pro Länge (Streckenlast).',
+        ],
+        { stage: 'transfer', subGoal: 0, uses: ['schnittgr-3'] },
+      ),
+    ],
+
+    // ── [1] Differentialzusammenhang $Q = dM/dx$, $q = -dQ/dx$ ─────────
+    1: [
+      tf(
+        'Die Querkraft $Q(x)$ ist die Ableitung des Biegemoments $M(x)$ nach $x$.',
+        true,
+        `**Ansatz:** Differentialform der Gleichgewichtsbedingungen am infinitesimalen Balkenelement.
+
+**Rechnung:** Aus $\\sum M = 0$ am Element der Länge $dx$ folgt $dM = Q\\cdot dx \\Rightarrow Q = dM/dx$. Analog aus $\\sum F_y = 0$: $dQ = -q\\cdot dx \\Rightarrow q = -dQ/dx$.
+
+**Probe:** Praktisch: An Stellen mit konstantem $Q$ ist $M$ linear. An Stellen mit konstantem $q$ (Streckenlast) ist $Q$ linear und $M$ parabolisch.
+
+**Typischer Fehler:** Vorzeichen vertauschen: $q = +dQ/dx$ ist falsch. Konvention: $q$ nach unten = positiv ⇒ Querkraft nimmt ab ⇒ Minuszeichen.`,
+        [
+          'Aus Gleichgewicht am infinitesimalen Element.',
+          '$Q = dM/dx$ und $q = -dQ/dx$.',
+          'Folge: konstantes $Q$ ⇒ lineares $M$.',
+        ],
+        { stage: 'recognize', subGoal: 1, uses: ['schnitt-diff'] },
+      ),
+      mc(
+        'Auf einem unbelasteten Balkenabschnitt ($q = 0$) ist die Querkraft $Q$ konstant. Was folgt für $M(x)$ auf diesem Abschnitt?',
+        ['$M$ ist konstant.', '$M$ verläuft linear in $x$.', '$M$ verläuft quadratisch in $x$.', '$M$ ist null.'],
+        1,
+        `**Ansatz:** $Q = dM/dx$. Wenn $Q$ konstant, dann ist $dM/dx$ konstant ⇒ $M$ linear.
+
+**Rechnung:** $M(x) = M_0 + Q\\cdot x$ — Geradengleichung mit Steigung $Q$ und Anfangsmoment $M_0$.
+
+**Probe:** Numerisch: $Q = 500\\,\\text{N}$ konstant von $x = 0$ ($M = 0$) bis $x = 2\\,\\text{m}$ ergibt $M(2) = 0 + 500\\cdot 2 = 1000\\,\\text{Nm}$ (lineare Zunahme).
+
+**Typischer Fehler:** Konstantes $Q$ mit konstantem $M$ verwechseln. Konstantes $Q$ heißt $M$ wächst gleichmäßig (linear), nicht dass $M$ konstant ist.`,
+        [
+          '$Q = dM/dx$.',
+          'Konstante Ableitung ⇒ lineare Funktion.',
+          '$M(x) = M_0 + Q\\cdot x$.',
+        ],
+        {
+          0: 'Konstant $M$ würde $dM/dx = 0 = Q$ bedeuten. Das widerspricht "$Q$ konstant ungleich null".',
+          2: 'Quadratisches $M$ entsteht bei **konstanter Streckenlast** (linear $Q$, parabolisch $M$). Hier ist $q = 0$, also $Q$ konstant ⇒ $M$ linear.',
+          3: '$M = 0$ widerspricht der Annahme einer Belastung. Außerdem $M_0$ kann ungleich null sein.',
+        },
+        { stage: 'apply-guided', subGoal: 1, uses: ['schnitt-diff'] },
+      ),
+      ni(
+        'Bei einem Balken gilt $M(x) = 200x - 50x^2$ (in Nm, $x$ in m). Wie groß ist $Q(x = 1\\,\\text{m})$ in Newton?',
+        100, 0.5, 'N',
+        `**Ansatz:** $Q(x) = dM/dx$ — Polynom-Ableitung anwenden.
+
+**Rechnung:** $Q(x) = M'(x) = 200 - 100x$. Bei $x = 1$: $Q(1) = 200 - 100 = 100\\,\\text{N}$.
+
+**Probe:** Einheiten: $[M]/[x] = \\text{Nm/m} = \\text{N}$ ✓. Plausibilität: $Q(0) = 200\\,\\text{N}$ (am Auflager A), $Q(2) = 0$ (Vorzeichenwechsel — gefährliche Stelle), $Q(4) = -200\\,\\text{N}$ (am Auflager B).
+
+**Typischer Fehler:** $M(1)$ statt $M'(1)$ ausrechnen ⇒ $M(1) = 200 - 50 = 150\\,\\text{Nm}$. Das ist der Momentenwert, nicht die Querkraft.`,
+        [
+          '$Q(x) = dM/dx$.',
+          'Polynom-Ableitung: $200 - 100x$.',
+          'Bei $x = 1$: $200 - 100 = 100$.',
+        ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['schnitt-diff'] },
+      ),
+      mc(
+        'Studentin behauptet: "$q(x) = +dQ/dx$." Wo steckt der Fehler?',
+        [
+          'Vorzeichen falsch — die Standardkonvention lautet $q(x) = -dQ/dx$. Eine nach unten wirkende Streckenlast (positives $q$) lässt die Querkraft mit zunehmendem $x$ abnehmen.',
+          'Kein Fehler — beide Vorzeichen sind in unterschiedlichen Konventionen üblich.',
+          'Es muss $q(x) = +dM/dx$ heißen, nicht über $Q$.',
+          'Die Beziehung gilt nur für konstante Streckenlasten.',
+        ],
+        0,
+        `**Ansatz:** Vorzeichen folgt aus dem Gleichgewicht am infinitesimalen Element bei nach unten gerichteter $q$.
+
+**Rechnung:** $\\sum F_y = 0$ am Element: $Q(x) - Q(x+dx) - q\\cdot dx = 0 \\Rightarrow dQ/dx = -q$. Also $q = -dQ/dx$.
+
+**Probe:** Konstante Streckenlast $q > 0$: $Q$ nimmt linear ab ($dQ/dx = -q < 0$). Bei $q = 0$ (lastfrei): $Q$ konstant ($dQ/dx = 0$) ✓.
+
+**Typischer Fehler:** Beim Aufstellen von $\\sum F_y = 0$ das Vorzeichen der Streckenlast vergessen — $q$ wirkt nach unten, $Q$ wird dadurch reduziert.`,
+        [
+          'Konvention: $q$ nach unten = positiv.',
+          'Bei positivem $q$ nimmt $Q$ ab.',
+          'Daher: $q = -dQ/dx$.',
+        ],
+        {
+          1: 'Es ist eine **eindeutige** Konvention — Vorzeichen folgen aus den Definitionen, nicht aus persönlicher Wahl.',
+          2: '$dM/dx = Q$, nicht $q$. Verwechslung der beiden Differentialbeziehungen.',
+          3: 'Die Beziehung $q = -dQ/dx$ gilt **lokal** für jede stetige Streckenlast — auch für veränderliche.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['schnitt-diff'] },
+      ),
+      ni(
+        'Bei einem Balken mit konstanter Streckenlast $q = 100\\,\\text{N/m}$ und $Q(0) = 600\\,\\text{N}$: Wie groß ist $Q(x = 4\\,\\text{m})$ in Newton?',
+        200, 0.5, 'N',
+        `**Ansatz:** $dQ/dx = -q$. Integrieren: $Q(x) = Q(0) - q\\cdot x$.
+
+**Rechnung:** $Q(4) = 600 - 100\\cdot 4 = 200\\,\\text{N}$.
+
+**Probe:** Bei $x = 6$ wäre $Q(6) = 600 - 600 = 0$ — das ist die "gefährliche Stelle" mit $M_\\text{max}$ (sofern $x = 6$ im Balken liegt).
+
+**Typischer Fehler:** Plus-Zeichen einsetzen ($Q(4) = 600 + 400 = 1000\\,\\text{N}$) — wäre nur korrekt, wenn $q$ nach oben wirken würde (negative Streckenlast).`,
+        [
+          'Konvention: $dQ/dx = -q$.',
+          'Lineare Abnahme von $Q$ um $q$ pro Meter.',
+          '$Q(x) = Q_0 - q\\cdot x$.',
+        ],
+        { stage: 'transfer', subGoal: 1, uses: ['schnitt-diff'] },
+      ),
+    ],
+
+    // ── [2] Sprung in $Q$ und Knick in $M$ bei Einzellast ─────────────
+    2: [
+      tf(
+        'An der Stelle, wo eine Einzellast $F$ (nach unten) angreift, springt die Querkraft $Q(x)$ um $-F$ — gleichzeitig erhält das Biegemoment $M(x)$ einen Knick.',
+        true,
+        `**Ansatz:** Einzellast als Dirac-artige Konzentration der Streckenlast — verursacht Sprung in $Q$ und Knick (Steigungswechsel) in $M$.
+
+**Rechnung:** Sprung in $Q$: $Q(a^+) - Q(a^-) = -F$ (Vorzeichen-Konvention: $F$ nach unten = positiv). $M$ ist stetig (kein Sprung in $M$), aber die Steigung $dM/dx = Q$ ändert sich abrupt — das ist der Knick.
+
+**Probe:** Einfeldträger mit Einzellast $F$ bei $x = a$: $Q(a^-) = +R_A$, $Q(a^+) = -R_B$. Differenz $= -R_A - R_B = -F$ (wegen $R_A + R_B = F$) ✓.
+
+**Typischer Fehler:** $M$ ebenfalls als unstetig zeichnen — $M$ ist stetig, hat aber einen Knick. Sprung gibt es nur bei einem **konzentrierten Moment** (z. B. eingeleitetes Drehmoment), nicht bei Einzelkraft.`,
+        [
+          'Einzellast = Konzentration von $q$.',
+          'Sprung in $Q$, Knick in $M$.',
+          'Sprung-Betrag = Lastbetrag.',
+        ],
+        { stage: 'recognize', subGoal: 2, uses: ['sprung-knick'] },
+      ),
+      mc(
+        'Bei einem Einfeldträger mit einer Einzellast $F = 800\\,\\text{N}$ bei $x = a$: Was passiert mit $Q(x)$ am Lastangriff?',
+        [
+          '$Q$ springt um $-800\\,\\text{N}$ — von $+R_A$ auf $-R_B$.',
+          '$Q$ ist stetig — eine Einzellast beeinflusst nur das Moment.',
+          '$Q$ wird null an dieser Stelle.',
+          '$Q$ verdoppelt sich.',
+        ],
+        0,
+        `**Ansatz:** Sprungbetrag von $Q$ ist immer gleich der Last (mit Vorzeichen).
+
+**Rechnung:** $\\Delta Q = -F = -800\\,\\text{N}$. Beispiel mit $L = 4\\,\\text{m}, a = 1\\,\\text{m}$: $R_A = 800\\cdot 3/4 = 600\\,\\text{N}$, $R_B = 800\\cdot 1/4 = 200\\,\\text{N}$. $Q(a^-) = +600, Q(a^+) = -200 \\Rightarrow \\Delta Q = -800$ ✓.
+
+**Probe:** Auch wenn $Q(a)$ den Wert null annimmt (z. B. mittige Last bei symmetrischer Belastung), ist der Sprung trotzdem $-F$ — er führt von $+F/2$ auf $-F/2$.
+
+**Typischer Fehler:** "Einzellast nur Moment" — Einzellast wirkt erst aufs Gleichgewicht, dann auf Schnittgrößen. Querkraft springt **immer** an Einzellast.`,
+        [
+          'Sprungbetrag = Last (mit Vorzeichen).',
+          '$Q$ vor: $+R_A$, nach: $-R_B$.',
+          'Differenz: $-F$.',
+        ],
+        {
+          1: 'Falsch — Einzellasten erzeugen den charakteristischen $Q$-Sprung. Das Moment hat parallel dazu einen Knick.',
+          2: '$Q$ kann zwar null werden (z. B. bei mittiger Last), aber der **Sprung** ist trotzdem $-F$ — von $+F/2$ auf $-F/2$.',
+          3: 'Verdopplung wäre Sprung um $+F$ statt $-F$. Das Vorzeichen ist negativ (Last reduziert die Querkraft).',
+        },
+        { stage: 'apply-guided', subGoal: 2, uses: ['sprung-knick'] },
+      ),
+      mc(
+        'An einem Einfeldträger ($L = 5\\,\\text{m}$) wirkt eine Einzellast $F = 1500\\,\\text{N}$ nach unten bei $x = 2\\,\\text{m}$. Wie groß ist der **Sprungbetrag** $|\\Delta Q|$ am Lastangriff?',
+        ['$1500\\,\\text{N}$', '$0$', 'hängt von Hebelarmen ab', '$3000\\,\\text{N}$'],
+        0,
+        `**Ansatz:** Sprung von $Q$ entspricht **immer** dem Betrag der Einzellast — unabhängig vom Hebelarm oder der Position.
+
+**Rechnung:** $|\\Delta Q| = |F| = 1500\\,\\text{N}$.
+
+**Probe:** Mit konkreten Werten: $R_A = 1500\\cdot 3/5 = 900\\,\\text{N}$, $R_B = 1500\\cdot 2/5 = 600\\,\\text{N}$. $Q(a^-) = 900$, $Q(a^+) = 900 - 1500 = -600$. $|\\Delta Q| = |-600 - 900| = 1500\\,\\text{N}$ ✓.
+
+**Typischer Fehler:** Glauben, der Sprung hänge von der Position der Last ab — Position bestimmt nur den Wert von $Q$ vor und nach dem Sprung, aber der **Sprungbetrag** ist immer gleich $|F|$.`,
+        [
+          'Sprungbetrag = Lastbetrag.',
+          'Unabhängig von $a$ und $L$.',
+          '$|\\Delta Q| = |F|$.',
+        ],
+        {
+          1: '"Null Sprung" wäre eine stetige $Q$-Funktion — gilt nur bei lastfreiem Abschnitt.',
+          2: 'Hebelarme bestimmen $R_A, R_B$ (und damit $Q$-Werte), aber nicht den **Sprung** — der ist immer $|F|$.',
+          3: 'Doppelter Lastbetrag wäre nur, wenn die Last "doppelt wirkt" — z. B. zwei aufeinanderliegende Lasten.',
+        },
+        { stage: 'apply-independent', subGoal: 2, uses: ['sprung-knick'] },
+      ),
+      mc(
+        'Studierender skizziert $M(x)$ für einen Einfeldträger mit einer Einzellast und zeichnet die Linie als geschwungene (glatte) Kurve. Was ist falsch?',
+        [
+          '$M(x)$ ist zwischen Auflagern und Lastangriff **linear** (weil $Q$ konstant) — die Linie muss aus zwei Geradenstücken mit Knick unter der Last bestehen.',
+          'Die Kurve sollte glatt sein — Einzellasten verursachen keine Knicke.',
+          '$M(x)$ sollte quadratisch sein — wie bei Streckenlast.',
+          '$M(x)$ sollte konstant sein zwischen den Auflagern.',
+        ],
+        0,
+        `**Ansatz:** $M(x)$-Verlauf folgt aus $Q(x)$: $M = \\int Q\\,dx$. Konstantes $Q$ ⇒ lineares $M$.
+
+**Rechnung:** Bei Einfeldträger mit Einzellast: $Q = +R_A$ konstant für $0 < x < a$ ⇒ $M$ linear, $M(0)=0, M(a)=R_A\\cdot a$. Dann $Q = -R_B$ konstant für $a < x < L$ ⇒ wieder linear, von $M(a) = R_A\\cdot a$ auf $M(L) = 0$. Zwei Geradenstücke mit Knick bei $x = a$.
+
+**Probe:** Der Knick in $M$ entspricht dem Sprung in $Q$ (= Steigungssprung von $+R_A$ auf $-R_B$).
+
+**Typischer Fehler:** $M$-Verlauf wie eine Streckenlast-Parabel zeichnen, obwohl Einzellast vorliegt. Geradenstücke erkennen, parabolische Form nur bei verteilten Lasten.`,
+        [
+          '$Q$ konstant ⇒ $M$ linear (Geradenstücke).',
+          'Sprung in $Q$ ⇒ Knick in $M$.',
+          'Parabolisches $M$ nur bei Streckenlast.',
+        ],
+        {
+          1: 'Glatte Kurve würde $Q$ stetig bedeuten — bei Einzellast aber gibt es einen Sprung in $Q$ und damit einen Knick in $M$.',
+          2: 'Quadratisch (Parabel) gilt für **Streckenlast**, nicht für Einzellast. Einzellast führt zu linearen Stücken.',
+          3: 'Konstantes $M$ würde $Q = 0$ bedeuten — widerspricht den von null verschiedenen Lagerreaktionen.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['sprung-knick'] },
+      ),
+      mc(
+        'Auf einen Einfeldträger ($L = 6\\,\\text{m}$) wirken zwei Einzellasten $F_1 = 500\\,\\text{N}$ bei $x_1 = 2\\,\\text{m}$ und $F_2 = 300\\,\\text{N}$ bei $x_2 = 4\\,\\text{m}$ (beide nach unten). Wie viele **Knicke** hat der $M(x)$-Verlauf?',
+        ['$0$', '$1$', '$2$', '$3$'],
+        2,
+        `**Ansatz:** Pro Einzellast ein Knick in $M$ (bzw. ein Sprung in $Q$).
+
+**Rechnung:** Zwei Einzellasten → zwei Knicke. Zwischen den Lasten und an den Rändern verläuft $M$ stückweise linear.
+
+**Probe:** Konkret: drei lineare Stücke ($0 < x < 2$, $2 < x < 4$, $4 < x < 6$), getrennt durch zwei Knicke bei $x = 2$ und $x = 4$. An den gelenkigen Lagern $x = 0$ und $x = 6$ ist $M = 0$.
+
+**Typischer Fehler:** "Drei Knicke" zählen, indem man die Auflager mitzählt — an den Auflagern ist $M = 0$, aber das ist eine **Randbedingung**, kein Knick im üblichen Sinn.`,
+        [
+          'Pro Einzellast ein Knick.',
+          'Zwei Lasten → zwei Knicke.',
+          'Auflager sind Randbedingungen, keine Knicke.',
+        ],
+        {
+          0: '"Null Knicke" wäre eine glatte Funktion — gilt nur bei stetigen Belastungen ohne Punktlasten.',
+          1: 'Ein Knick wäre richtig bei einer einzelnen Einzellast. Hier sind zwei Lasten.',
+          3: 'Drei Knicke entsprächen drei Einzellasten. Hier nur zwei.',
+        },
+        { stage: 'transfer', subGoal: 2, uses: ['sprung-knick'] },
+      ),
+    ],
+
+    // ── [3] $M_{max}$ liegt bei $Q = 0$ (gefährliche Stelle) ──────────
+    3: [
+      tf(
+        'An der Stelle, wo die Querkraft $Q(x)$ ihr Vorzeichen wechselt (bzw. $Q = 0$ wird), liegt das Biegemoment $M(x)$ bei einem lokalen Extremum.',
+        true,
+        `**Ansatz:** Aus dem Differentialzusammenhang $Q = dM/dx$. Lokale Extrema einer Funktion liegen dort, wo die Ableitung null wird (notwendige Bedingung).
+
+**Rechnung:** $dM/dx = 0 \\Leftrightarrow Q(x) = 0$. Vorzeichenwechsel von $Q$ ⇒ entsprechender Vorzeichenwechsel von $dM/dx$ ⇒ Extremum.
+
+**Probe:** Einfeldträger mit Einzellast bei $a$: $Q = +R_A$ links, $-R_B$ rechts. $Q$ wechselt Vorzeichen exakt bei der Last ⇒ $M_\\text{max}$ liegt unter der Last ✓.
+
+**Typischer Fehler:** Maximum von $M$ an der Stelle suchen, wo $M = 0$ wird (Nullstelle) — Maximum liegt aber dort, wo $M' = Q = 0$.`,
+        [
+          'Extrema: $dM/dx = 0$.',
+          '$Q = dM/dx$.',
+          'Querkraft-Nullstelle = Momenten-Extremum.',
+        ],
+        { stage: 'recognize', subGoal: 3, uses: ['m-max'] },
+      ),
+      mc(
+        'Auf einem Einfeldträger mit gleichmäßig verteilter Streckenlast $q$ liegt das maximale Biegemoment ...',
+        ['... in der Balkenmitte ($x = L/2$).', '... am Festlager.', '... am Loslager.', '... nahe einem Auflager (Asymmetrie).'],
+        0,
+        `**Ansatz:** Stelle mit $Q(x) = 0$ finden. Bei symmetrischer Belastung liegt sie in der Mitte.
+
+**Rechnung:** $R_A = R_B = qL/2$. $Q(x) = R_A - q\\cdot x = qL/2 - qx$. Nullstelle: $qL/2 - qx = 0 \\Rightarrow x = L/2$. Dort $M_\\text{max} = qL^2/8$.
+
+**Probe:** Symmetrie: Aus $R_A = R_B$ und gleichmäßiger Last folgt symmetrischer $M$-Verlauf — Maximum muss in der Symmetrieachse $x = L/2$ liegen.
+
+**Typischer Fehler:** "Am Auflager" wegen größter Lagerreaktion — aber die Lagerreaktion ist eine **Querkraft**, kein Moment. An gelenkigen Auflagern ist $M = 0$.`,
+        [
+          'Symmetrie ⇒ $M_\\text{max}$ in der Mitte.',
+          '$Q(x) = 0$ finden.',
+          '$M_\\text{max} = qL^2/8$.',
+        ],
+        {
+          1: 'Am Festlager ist $M = 0$ (Randbedingung). Festlager überträgt nur Kräfte, keine Momente.',
+          2: 'Wie beim Festlager: $M(L) = 0$ am Loslager (gelenkig).',
+          3: 'Asymmetrie tritt nur bei asymmetrischer Last auf. Bei gleichmäßiger Streckenlast ist $M$-Verlauf symmetrisch ⇒ Maximum mittig.',
+        },
+        { stage: 'apply-guided', subGoal: 3, uses: ['m-max'] },
+      ),
+      ni(
+        'Ein Einfeldträger ($L = 8\\,\\text{m}$) trägt eine konstante Streckenlast $q = 200\\,\\text{N/m}$. Wie groß ist $M_\\text{max}$ in der Balkenmitte (in N·m)?',
+        1600, 1, 'Nm',
+        `**Ansatz:** Bei symmetrischer Streckenlast: $M_\\text{max} = qL^2/8$ in der Mitte.
+
+**Rechnung:** $M_\\text{max} = 200\\cdot 8^2/8 = 200\\cdot 64/8 = 200\\cdot 8 = 1600\\,\\text{Nm}$.
+
+**Probe:** Über $R_A = qL/2 = 800\\,\\text{N}$ und Schnitt bei $x = 4$: $M(4) = R_A\\cdot 4 - q\\cdot 4\\cdot 2 = 800\\cdot 4 - 200\\cdot 8 = 3200 - 1600 = 1600\\,\\text{Nm}$ ✓ (Hebelarm der Resultierenden der Last bis $x = 4$ ist $4/2 = 2$).
+
+**Typischer Fehler:** Formel $qL^2/4$ verwenden (Faktor 2 statt 8 im Nenner) ⇒ $3200\\,\\text{Nm}$. Standardformel: $qL^2/8$ für Streckenlast auf Einfeldträger.`,
+        [
+          'Streckenlast auf Einfeldträger: $M_\\text{max} = qL^2/8$.',
+          '$200\\cdot 64/8 = 1600$.',
+          'Maximum mittig.',
+        ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['m-max'] },
+      ),
+      mc(
+        'Studentin sucht $M_\\text{max}$, indem sie überall $M(x) = 0$ setzt und nach $x$ auflöst. Wo steckt der Fehler?',
+        [
+          'Sie sucht **Nullstellen** von $M$, nicht Extrema. Korrekt: $M_\\text{max}$ liegt dort, wo $dM/dx = Q(x) = 0$ — also Querkraft-Nullstellen, nicht Momenten-Nullstellen.',
+          'Kein Fehler — Maxima fallen in der Statik mit Nullstellen zusammen.',
+          'Sie muss $M\'\'(x) = 0$ setzen, das gibt Wendepunkte.',
+          'Die Suche nach $M_\\text{max}$ funktioniert nur grafisch, nicht analytisch.',
+        ],
+        0,
+        `**Ansatz:** Standardvorgehen aus der Analysis: Extrema einer Funktion bei Nullstellen ihrer **Ableitung**.
+
+**Rechnung:** $M_\\text{max}$ erfüllt $\\frac{dM}{dx} = 0 \\Leftrightarrow Q(x) = 0$. Wer $M(x) = 0$ setzt, findet die **Lager** (gelenkige Auflager mit $M = 0$).
+
+**Probe:** Einfeldträger, Streckenlast: $M(0) = M(L) = 0$ (Auflager) — keine Maxima. Maximum liegt bei $L/2$, dort ist aber $M \\neq 0$.
+
+**Typischer Fehler:** Mathematisches Standardvorgehen vergessen, weil "Schnittgrößen ungewohnt sind". Die Analysis bleibt dieselbe: Maximum = Ableitung null setzen.`,
+        [
+          'Maxima: Ableitung null setzen.',
+          '$M\' = Q$.',
+          'Querkraft-Nullstellen, nicht Momenten-Nullstellen.',
+        ],
+        {
+          1: 'Maxima und Nullstellen sind grundsätzlich verschiedene Konzepte. Bei $M$ liegen Nullstellen an den Lagern, das Maximum liegt dazwischen.',
+          2: '$M\'\'(x) = 0$ wären **Wendepunkte**, nicht Maxima. Korrekt: erste Ableitung ($M\' = Q$) null setzen.',
+          3: 'Falsch — die analytische Methode ($Q = 0$) liefert das Maximum exakt, ist sogar präziser als grafisch.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['m-max'] },
+      ),
+      ni(
+        'Ein Einfeldträger ($L = 4\\,\\text{m}$) hat eine Einzellast $F = 800\\,\\text{N}$ bei $x = 1{,}5\\,\\text{m}$. Berechne $M_\\text{max}$ (in N·m).',
+        750, 1, 'Nm',
+        `**Ansatz:** Bei Einzellast: $M_\\text{max} = R_A\\cdot a$ (Maximum direkt unter der Last).
+
+**Rechnung:** $R_A = F\\cdot(L-a)/L = 800\\cdot 2{,}5/4 = 500\\,\\text{N}$. $M_\\text{max} = R_A\\cdot a = 500\\cdot 1{,}5 = 750\\,\\text{Nm}$.
+
+**Probe:** Standardformel $F\\cdot a(L-a)/L = 800\\cdot 1{,}5\\cdot 2{,}5/4 = 800\\cdot 3{,}75/4 = 750\\,\\text{Nm}$ ✓.
+
+**Typischer Fehler:** Hebelarm $L$ statt $a$ verwenden ⇒ $R_A\\cdot L = 500\\cdot 4 = 2000\\,\\text{Nm}$ — viel zu groß. $M_\\text{max}$ liegt **unter der Last**, nicht am gegenüberliegenden Auflager.`,
+        [
+          '$R_A = F(L-a)/L$.',
+          '$M_\\text{max} = R_A\\cdot a$.',
+          'Maximum unter der Last.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['m-max'] },
+      ),
+    ],
+
+    // ── [4] Randbedingung am gelenkigen Auflager: $M = 0$ ─────────────
+    4: [
+      tf(
+        'An einem gelenkigen Auflager (Festlager oder Loslager) eines Balkens gilt als Randbedingung $M = 0$.',
+        true,
+        `**Ansatz:** Gelenk = Verbindung, die kein Moment übertragen kann. Daher kann an einem gelenkigen Auflager auch kein Biegemoment $M$ bestehen.
+
+**Rechnung:** Bei einem Festlager (gelenkig) werden nur **Kräfte** übertragen ($A_x, A_y$), kein Moment. Also $M(0) = 0$ als Randbedingung beim Aufstellen der $M(x)$-Funktion.
+
+**Probe:** Probe mit Einfeldträger: Bei $x = 0$ (Festlager A) und $x = L$ (Loslager B) ist $M = 0$. Maximum liegt **dazwischen**.
+
+**Typischer Fehler:** Mit Einspannung verwechseln — dort ist $M_A \\neq 0$ (Einspannmoment). Gelenkige Lager und Einspannungen liefern unterschiedliche Randbedingungen.`,
+        [
+          'Gelenk überträgt kein Moment.',
+          'Festlager und Loslager sind beide gelenkig.',
+          'Randbedingung: $M = 0$.',
+        ],
+        { stage: 'recognize', subGoal: 4, uses: ['rb-gelenk'] },
+      ),
+      mc(
+        'Bei einem Einfeldträger auf Festlager A (links) und Loslager B (rechts) gilt für das Biegemoment ...',
+        ['$M(0) = 0$ und $M(L) = 0$ — an beiden gelenkigen Auflagern.', '$M(0) = M_A \\neq 0$ (Einspannmoment).', '$M(0) = R_A$ (gleich der Lagerreaktion).', 'Randbedingung gilt nur am Festlager, nicht am Loslager.'],
+        0,
+        `**Ansatz:** Fest- und Loslager sind beide **gelenkig** — sie übertragen Kräfte, aber keine Momente.
+
+**Rechnung:** $M(0) = 0$ wegen Festlager (gelenkig). $M(L) = 0$ wegen Loslager (gelenkig). Beides Randbedingungen.
+
+**Probe:** Numerisch: Einfeldträger mit Einzellast: $M(x) = R_A\\cdot x - F\\cdot\\langle x-a\\rangle^1$ — bei $x = 0$ und $x = L$ wird $M = 0$ direkt verifiziert.
+
+**Typischer Fehler:** $M$ und Lagerreaktion verwechseln. $R_A$ ist die **Kraft** am Lager (Newton), $M$ ist das Moment (N·m) — verschiedene Größen.`,
+        [
+          'Beide Lagertypen sind gelenkig.',
+          '$M = 0$ als Randbedingung.',
+          '$R_A$ ist eine Kraft, nicht $M$.',
+        ],
+        {
+          1: 'Einspannmoment $M_A$ tritt nur bei einer **Einspannung** auf, nicht bei einem gelenkigen Lager.',
+          2: 'Verwechslung: $R_A$ ist eine Kraft (Lagerreaktion in N), $M$ ist ein Moment (N·m). Unterschiedliche Größen.',
+          3: 'Falsch — beide gelenkigen Lager (Fest- und Loslager) erzwingen $M = 0$. Sonst wäre Lager-Symbolik inkonsistent.',
+        },
+        { stage: 'apply-guided', subGoal: 4, uses: ['rb-gelenk'] },
+      ),
+      mc(
+        'Welcher Lagertyp führt **nicht** automatisch zu $M = 0$ am Lager?',
+        ['Festlager (gelenkig)', 'Loslager (Rolle)', 'Einspannung (in Mauer)', 'Internes Gelenk (im Träger)'],
+        2,
+        `**Ansatz:** Nur Verbindungen ohne Momentübertragung führen zu $M = 0$ — also gelenkige Lager und interne Gelenke.
+
+**Rechnung:** Einspannung überträgt **alle drei** Reaktionsgrößen ($A_x, A_y, M_A$). Das Einspannmoment $M_A$ ist im Allgemeinen $\\neq 0$ — Randbedingung dort lautet anders (z. B. Verformungsbedingung statt Kraftbedingung).
+
+**Probe:** Kragträger mit Endlast $F$: $M_A = -F\\cdot L \\neq 0$ am Einspannpunkt, $M = 0$ am freien Ende. Genau umgekehrt zu einem beidseitig gelenkigen Träger.
+
+**Typischer Fehler:** Einspannung und Festlager gleichsetzen — beide hemmen Verschiebungen, aber nur die Einspannung hemmt zusätzlich Rotation.`,
+        [
+          'Gelenk = kein Moment.',
+          'Einspannung hemmt auch Rotation.',
+          '$M_A = $ Einspannmoment $\\neq 0$.',
+        ],
+        {
+          0: 'Festlager (gelenkig) erlaubt Drehung um den Lagerpunkt — kann kein Moment aufnehmen, also $M = 0$.',
+          1: 'Loslager ist ebenfalls gelenkig (zusätzlich verschieblich) — kein Momentübertrag, $M = 0$.',
+          3: 'Internes Gelenk (Pin im Träger) ist eine Stelle, an der zwei Trägerteile gelenkig verbunden sind — kein Momentübertrag, $M = 0$.',
+        },
+        { stage: 'apply-independent', subGoal: 4, uses: ['rb-gelenk'] },
+      ),
+      mc(
+        'Studierende schreibt für einen Einfeldträger (Festlager A links, Loslager B rechts): "$M(0) = R_A$." Was ist falsch?',
+        [
+          'An gelenkigen Auflagern gilt $M = 0$, nicht $M = R_A$. $R_A$ ist die Lagerreaktion (eine Kraft, Einheit N), nicht das Biegemoment (Einheit N·m).',
+          '$M(0) = -R_A$ wäre korrekt — Vorzeichen vergessen.',
+          'Bei einem Festlager gilt tatsächlich $M(x) = R_A$ unabhängig von $x$.',
+          'Kein Fehler — Lagerreaktion und Moment haben dieselbe Einheit.',
+        ],
+        0,
+        `**Ansatz:** Schnittgröße $M(x)$ am Lager folgt aus dem Schnitt bei $x = 0$. Das gelenkige Lager erzwingt $M(0) = 0$.
+
+**Rechnung:** Schnitt bei $x = 0^+$: Linkes Stück ist null lang — kein Hebelarm für $R_A$. Also $M(0) = 0$. Wer $M(0) = R_A$ schreibt, verwechselt Schnittmoment und Lagerreaktion.
+
+**Probe:** Einheitencheck: $[M] = \\text{N\\cdot m}$, $[R_A] = \\text{N}$. Sie unterscheiden sich um den Faktor Hebelarm — können niemals gleich sein, außer beide null.
+
+**Typischer Fehler:** Bei der Auswertung von $M(x) = R_A\\cdot x$ den Wert bei $x = 0$ nicht null setzen, sondern den Vorfaktor $R_A$ allein nehmen.`,
+        [
+          'Gelenkiges Lager: $M = 0$.',
+          '$R_A$ ist eine Kraft, $M$ ein Moment.',
+          'Einheiten unterschiedlich.',
+        ],
+        {
+          1: 'Nicht das Vorzeichen ist das Problem — $M$ ist null, nicht $-R_A$. Vorzeichen-Fehler ist hier kein Faktor.',
+          2: '$M(x) = R_A\\cdot x$ ist linear, nicht konstant. $M(0) = 0$ und $M(a) = R_A\\cdot a$.',
+          3: 'Falsch — $\\text{N}$ und $\\text{N\\cdot m}$ sind unterschiedliche Einheiten.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['rb-gelenk'] },
+      ),
+      mc(
+        'Bei einem Kragträger (links eingespannt, rechts frei) mit einer Endlast $F$: An welchen Stellen gilt $M = 0$?',
+        ['Nur am freien Ende (rechtes Balkenende).', 'Nur am Einspannpunkt $A$.', 'Überall.', 'Nur unter der Last (mittig auf dem Balken).'],
+        0,
+        `**Ansatz:** Schnittprinzip am freien Ende: rechts vom Schnitt steht nur die Last $F$ am Punkt selbst (kein Hebelarm dahinter) ⇒ $M = 0$.
+
+**Rechnung:** $M(L) = 0$ (am freien Ende). $M(A)$ am Einspannpunkt: alle Lasten links von A bzw. rechts von A erzeugen ein Moment um A — bei Endlast $F$ am Hebelarm $L$ wird $M_A = F\\cdot L \\neq 0$.
+
+**Probe:** Konkret: $F = 100\\,\\text{N}, L = 2\\,\\text{m}$ ⇒ $M_A = 200\\,\\text{Nm}$ (am Einspannpunkt), $M(L) = 0$ (am freien Ende). Linearer Verlauf dazwischen.
+
+**Typischer Fehler:** Kragträger mit Einfeldträger verwechseln — beim Einfeldträger sind beide Auflager gelenkig ($M = 0$ an beiden). Beim Kragträger ist nur ein Ende gelenkig (das freie), das andere fest eingespannt.`,
+        [
+          'Freies Ende: keine Schnittgrößen rechts → $M = 0$.',
+          'Einspannpunkt: $M_A = F\\cdot L \\neq 0$.',
+          'Kragträger ≠ Einfeldträger.',
+        ],
+        {
+          1: 'Falsch — am Einspannpunkt ist $M_A = F\\cdot L$ (nicht null). Das ist gerade das Einspannmoment.',
+          2: '$M$ verläuft linear vom Einspannpunkt zum freien Ende — nicht überall null.',
+          3: 'Beim Kragträger mit Endlast greift die Last am freien Ende, nicht "mittig". $M$ wird in der Mitte zwar nicht null, aber hat keinen besonderen Wert.',
+        },
+        { stage: 'transfer', subGoal: 4, uses: ['rb-gelenk'] },
       ),
     ],
 
@@ -1466,6 +3251,7 @@ export const technischeMechanikSubGoalTasks = {
           '$F_N = m \\cdot g$.',
           'Dann $F_R = \\mu \\cdot F_N$.',
         ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['coulomb'] },
       ),
       mc(
         'Ein Block liegt auf horizontalem Boden. Eine vertikale Zusatzkraft $F_Z = 50\\,\\text{N}$ drückt ihn **zusätzlich** nach unten. Der Block wiegt $mg = 100\\,\\text{N}$ und $\\mu = 0{,}4$. Wie groß ist die Reibkraft beim Gleiten?',
@@ -1488,6 +3274,7 @@ export const technischeMechanikSubGoalTasks = {
           2: '$20\\,\\text{N}$ wäre korrekt bei $F_N = 50\\,\\text{N}$ — aber die Summe der drückenden Kräfte ist $150\\,\\text{N}$, nicht $50\\,\\text{N}$.',
           3: 'Das ist das Gewicht selbst ($mg = 100\\,\\text{N}$), keine Reibkraft. Reibkraft folgt aus Coulomb mit Faktor $\\mu = 0{,}4$.',
         },
+        { stage: 'apply-guided', subGoal: 0, uses: ['coulomb'] },
       ),
       tf(
         'Die Reibkraft $F_R = \\mu F_N$ hängt von der Auflagefläche ab: je größer die Kontaktfläche, desto größer die Reibkraft.',
@@ -1504,6 +3291,7 @@ export const technischeMechanikSubGoalTasks = {
           'Die Kontaktfläche taucht nicht auf.',
           'Mikroskopisch: reale Kontaktfläche skaliert mit Druck.',
         ],
+        { stage: 'recognize', subGoal: 0, uses: ['coulomb'] },
       ),
       matching(
         'Ordne jedem Materialpaar den typischen Gleitreibwert zu.',
@@ -1515,7 +3303,7 @@ export const technischeMechanikSubGoalTasks = {
         ],
         `**Ansatz:** Reibwerte sind materialpaarabhängig — nicht materialspezifisch pro Körper. Schmierung und Oberflächenbeschaffenheit reduzieren $\\mu$ drastisch.
 
-**Rechnung / Erfahrungswerte:** Gummi/Asphalt hoch (gute Traktion für Autos), geschmiertes Stahl-Stahl niedrig (Lagerauslegung), Eis extrem niedrig. Die Werte sind Faustregel; in Prüfungen stehen sie meistens in einer Tabelle oder in der Aufgabe.
+**Rechnung:** Erfahrungswerte aus Tabellen — Gummi/Asphalt hoch (gute Traktion für Autos), geschmiertes Stahl-Stahl niedrig (Lagerauslegung), Eis extrem niedrig. Die Werte sind Faustregel; in Prüfungen stehen sie meistens in einer Tabelle oder in der Aufgabe.
 
 **Probe:** Fahrzeugbremsweg $\\propto 1/\\mu$: Auf Eis ($\\mu \\approx 0{,}02$) ist der Bremsweg $\\approx 40 \\times$ länger als auf trockenem Asphalt ($\\mu \\approx 0{,}8$). Konsistent mit Alltagserfahrung.
 
@@ -1525,6 +3313,7 @@ export const technischeMechanikSubGoalTasks = {
           'Schmierung drückt $\\mu$ stark nach unten.',
           'Eis ist berüchtigt niedrig.',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['coulomb'] },
       ),
       ni(
         'Ein Werkstück (m = 40 kg) soll auf horizontalem Boden gezogen werden. Welcher **Mindestwert** des Gleitreibwerts $\\mu$ ist mit einer Zugkraft $F_Z = 100\\,\\text{N}$ gerade noch überwindbar? (Antwort auf 3 Nachkommastellen)',
@@ -1541,6 +3330,35 @@ export const technischeMechanikSubGoalTasks = {
           '$F_R = \\mu \\cdot mg$.',
           'Nach $\\mu$ auflösen.',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['coulomb'] },
+      ),
+      mc(
+        'Studierender berechnet die Reibkraft eines $50$-kg-Blocks auf horizontalem Boden mit $\\mu = 0{,}3$ als $F_R = \\mu \\cdot m = 0{,}3 \\cdot 50 = 15$. Welche Einheit hat dieses Ergebnis und wo steckt der Fehler?',
+        [
+          'Das Ergebnis hat Einheit kg (weil $\\mu$ dimensionslos × Masse). Korrekt: $F_R = \\mu \\cdot mg = 0{,}3 \\cdot 50 \\cdot 9{,}81 \\approx 147{,}2\\,\\text{N}$ — Erdbeschleunigung $g$ vergessen.',
+          'Stimmt — Reibkräfte werden in kg gemessen, das Ergebnis ist physikalisch korrekt.',
+          'Der Reibwert wäre $0{,}03$ statt $0{,}3$ — Faktor-10-Fehler bei der Eingabe.',
+          'Es muss $F_R = m/\\mu = 166{,}7$ heißen — Reibwert steht im Nenner.',
+        ],
+        0,
+        `**Ansatz:** Coulombsches Reibgesetz: $F_R = \\mu\\cdot F_N$. Auf horizontalem Boden: $F_N = mg$. Einheitencheck mitführen.
+
+**Rechnung:** $F_N = 50\\cdot 9{,}81 = 490{,}5\\,\\text{N}$. $F_R = 0{,}3\\cdot 490{,}5 \\approx 147{,}2\\,\\text{N}$. Der Studierende hat $g$ weggelassen und $\\mu\\cdot m$ gerechnet — das liefert eine Größe mit Einheit kg, kein Newton.
+
+**Probe:** Einheitencheck: $[\\mu] = $ dimensionslos, $[m] = \\text{kg}$, $[F_R]$ soll Newton sein. $[\\mu\\cdot m] = \\text{kg}$, nicht N. Erst $\\mu\\cdot mg$ liefert die richtige Einheit ($\\text{kg}\\cdot\\text{m/s}^2 = \\text{N}$).
+
+**Typischer Fehler:** $g$ in Reibrechnungen vergessen. Merksatz: "Reibung verlangt **Kraft**, nicht Masse" — also immer mit $g$ multiplizieren.`,
+        [
+          'Welche Einheit hat $\\mu \\cdot m$?',
+          'Reibgesetz braucht eine Kraft, nicht eine Masse.',
+          '$F_N = m\\cdot g$ erst, dann $F_R = \\mu\\cdot F_N$.',
+        ],
+        {
+          1: 'Reibkraft ist eine Kraft (Newton), nicht eine Masse (kg). Einheitencheck schlägt fehl.',
+          2: 'Reibwert wurde laut Aufgabe mit $0{,}3$ angegeben. Der Fehler steckt nicht in $\\mu$, sondern im fehlenden $g$.',
+          3: 'Die Coulomb-Formel ist multiplikativ ($F_R = \\mu F_N$), nicht reziprok. Verkleinerung von $F_N$ verkleinert $F_R$ — nicht umgekehrt.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['coulomb'] },
       ),
     ],
 
@@ -1561,6 +3379,7 @@ export const technischeMechanikSubGoalTasks = {
           'Vergleiche $\\mu_0$ und $\\mu$.',
           'Alltagsbeispiel: schwerer Schrank anschieben.',
         ],
+        { stage: 'recognize', subGoal: 1, uses: ['haft-gleit'] },
       ),
       ni(
         'Ein Block (m = 20 kg) auf horizontalem Boden hat Haftreibwert $\\mu_0 = 0{,}35$ und Gleitreibwert $\\mu = 0{,}25$. Welche Zugkraft ist **minimal nötig**, um den Block in Bewegung zu setzen? ($g = 9{,}81$, auf 1 Nachkommastelle in N)',
@@ -1577,6 +3396,7 @@ export const technischeMechanikSubGoalTasks = {
           '$F_{Z,\\text{min}} = \\mu_0 \\cdot F_N$.',
           '$F_N = m \\cdot g$ auf horizontalem Boden.',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['haft-gleit'] },
       ),
       mc(
         'Ein Block steht still. Ein waagerechter Zug $F_Z = 30\\,\\text{N}$ wirkt, während die maximale Haftreibung $\\mu_0 F_N = 50\\,\\text{N}$ beträgt. Wie groß ist die Reibkraft gerade jetzt?',
@@ -1599,6 +3419,7 @@ export const technischeMechanikSubGoalTasks = {
           2: 'Gleitreibung gilt nur, wenn der Körper gleitet. Hier ruht er (weil $F_Z < F_{H,\\text{max}}$).',
           3: 'Ohne Reibung würde der Block schon bei kleinster Kraft rutschen. Die Reibung wirkt aktiv — sie ist $30\\,\\text{N}$, nicht null.',
         },
+        { stage: 'apply-guided', subGoal: 1, uses: ['haft-gleit'] },
       ),
       sorting(
         'Bei wachsender Zugkraft $F_Z$ auf einen ruhenden Körper — bringe die Phasen in die richtige Reihenfolge.',
@@ -1622,6 +3443,7 @@ export const technischeMechanikSubGoalTasks = {
           'Bei Losreißen: Reibwert fällt auf $\\mu < \\mu_0$.',
           'Nach Losreißen: Newton bestimmt Beschleunigung.',
         ],
+        { stage: 'apply-guided', subGoal: 1, uses: ['haft-gleit'] },
       ),
       matching(
         'Ordne jedem Zustand den zutreffenden Reibwert zu.',
@@ -1643,6 +3465,91 @@ export const technischeMechanikSubGoalTasks = {
           'Am Losreißpunkt: Haft am Maximum.',
           'Nach Losreißen: Gleitreibung.',
         ],
+        { stage: 'transfer', subGoal: 1, uses: ['haft-gleit'] },
+      ),
+      mc(
+        'An einem ruhenden Block ($F_N = 200\\,\\text{N}$, $\\mu_0 = 0{,}5$, $\\mu = 0{,}3$) greift horizontal eine Zugkraft $F = 80\\,\\text{N}$ an. Welche Aussage stimmt?',
+        [
+          'Block bleibt in Ruhe; aktuelle Reibkraft = $80\\,\\text{N}$ (passive Anpassung, weil $80 < \\mu_0 F_N = 100$).',
+          'Block beginnt zu gleiten; Reibkraft = $\\mu F_N = 60\\,\\text{N}$.',
+          'Block bleibt in Ruhe; Reibkraft = $\\mu_0 F_N = 100\\,\\text{N}$ (immer Maximum).',
+          'Block bleibt in Ruhe; Reibkraft = $\\mu F_N = 60\\,\\text{N}$ (Gleitreibung gilt auch im Stillstand).',
+        ],
+        0,
+        `**Ansatz:** Erst Schwellenwert prüfen: $F_{H,\\max} = \\mu_0\\cdot F_N$. Wenn $F < F_{H,\\max}$, bleibt der Block stehen und Haftreibung ist **passiv** = $F$.
+
+**Rechnung:** $F_{H,\\max} = 0{,}5\\cdot 200 = 100\\,\\text{N}$. $F = 80\\,\\text{N} < 100\\,\\text{N}$ ⇒ Block ruht. Aktuelle Reibkraft $= F = 80\\,\\text{N}$ (Gleichgewicht horizontal: $F - F_R = 0$).
+
+**Probe:** Bei $F = 100\\,\\text{N}$ (genau Schwelle): Reibkraft am Maximum. Bei $F = 110\\,\\text{N}$: Block reißt los, Reibkraft fällt auf Gleitwert $0{,}3\\cdot 200 = 60\\,\\text{N}$.
+
+**Typischer Fehler:** Annahme, Reibkraft sei **immer** $\\mu_0 F_N$. Falsch — das ist die Obergrenze. Die aktuelle Haftreibung passt sich der angreifenden Kraft an.`,
+        [
+          'Schwellenwert: $\\mu_0 F_N$.',
+          'Solange $F < \\mu_0 F_N$: Block ruht, Reibung passt sich an.',
+          '$F_R = F$ (Gleichgewicht).',
+        ],
+        {
+          1: '$F = 80 < 100 = F_{H,\\max}$ — Block bleibt in Ruhe, kein Gleiten. Gleitreibung greift erst nach Losreißen.',
+          2: '$\\mu_0 F_N$ ist die **Maximalkraft**, nicht die aktuelle Haftreibung. Im konkreten Fall passt sie sich auf $80\\,\\text{N}$ an.',
+          3: 'Gleitreibung gilt nur, wenn der Körper tatsächlich gleitet. Im Stillstand wirkt Haftreibung mit dem aktuellen Wert (hier $80\\,\\text{N}$).',
+        },
+        { stage: 'apply-independent', subGoal: 1, uses: ['haft-gleit'] },
+      ),
+      mc(
+        'Studentin schreibt: "Bei einem Holzklotz auf einem Tisch beträgt die Reibkraft im Stillstand immer $\\mu_0 F_N$." Wo steckt der Fehler?',
+        [
+          'Im Stillstand stellt sich die Haftreibung **passiv** auf den Wert ein, der zur Haltung nötig ist. $\\mu_0 F_N$ ist die **Maximalkraft**, nicht die aktuelle. Ohne angreifende Zugkraft ist $F_R = 0$.',
+          'Stimmt — im Ruhezustand zieht $\\mu_0 F_N$ den Klotz immer in eine bevorzugte Richtung.',
+          'Es fehlt der Reibwinkel — korrekt wäre $F_R = \\mu_0 F_N \\sin\\rho$.',
+          'Die Aussage gilt nur bei rauen Oberflächen.',
+        ],
+        0,
+        `**Ansatz:** Haftreibung ist eine Zwangskraft — sie reagiert auf die angreifende Zugkraft, **nicht** unabhängig.
+
+**Rechnung:** Liegt ein Klotz frei auf einem Tisch ohne horizontale Last: $\\sum F_x = 0 \\Rightarrow F_R = 0$. Maximalwert $\\mu_0 F_N$ wird nur **erreicht**, wenn die Zugkraft genau diesen Wert hat.
+
+**Probe:** Anschaulich: Ein Klotz auf einem Tisch, niemand zieht — er wandert nicht spontan in eine Richtung. Folge: $F_R = 0$.
+
+**Typischer Fehler:** Aktive vs. passive Kraft verwechseln. Haftreibung ist passiv (reaktiv), nicht aktiv. Erst Coulomb-Maximum bei Schwelle.`,
+        [
+          'Haftreibung passiv, nicht aktiv.',
+          '$\\mu_0 F_N$ = Obergrenze.',
+          'Ohne Zugkraft: $F_R = 0$.',
+        ],
+        {
+          1: 'Haftreibung erzeugt **keine eigene Bewegung** — sie reagiert nur. Ein Klotz auf einem Tisch wandert nicht von alleine.',
+          2: 'Reibwinkel $\\rho$ tritt in dieser Formel nicht auf. Coulomb-Reibung ist $F_R \\leq \\mu_0 F_N$, ohne $\\sin\\rho$.',
+          3: 'Die Aussage stimmt **gar nicht** — auch bei rauen Oberflächen ist die aktuelle Haftreibung im Stillstand kleiner als $\\mu_0 F_N$, solange keine Zugkraft anliegt.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['haft-gleit'] },
+      ),
+      mc(
+        'Ein Auto bremst mit blockierten Rädern (Gleitreibung $\\mu \\approx 0{,}5$). Mit ABS bleibt das Rad knapp unterhalb der Haftgrenze (Haftreibung $\\mu_0 \\approx 0{,}8$). Wie verhält sich der **ABS-Bremsweg** zum **blockierten** Bremsweg?',
+        [
+          'ABS-Bremsweg $\\approx 5/8 \\cdot s_\\text{blockiert} = 0{,}625\\cdot s_\\text{blockiert}$ (kürzer, weil $\\mu_0 > \\mu$).',
+          'ABS-Bremsweg ist $1{,}6\\times s_\\text{blockiert}$ (länger).',
+          'Identischer Bremsweg — ABS verbessert nur die Lenkbarkeit.',
+          'ABS verlängert den Bremsweg, weil das Rad nicht voll greift.',
+        ],
+        0,
+        `**Ansatz:** Bremsweg-Formel: $s = v^2/(2\\mu g)$ — umgekehrt proportional zum effektiven Reibwert.
+
+**Rechnung:** $s_\\text{ABS}/s_\\text{blockiert} = \\mu/\\mu_0 = 0{,}5/0{,}8 = 0{,}625$. Bei $80\\,\\text{km/h}$ ($\\approx 22{,}2\\,\\text{m/s}$) und blockierten Rädern $s = 22{,}2^2/(2\\cdot 0{,}5\\cdot 9{,}81) \\approx 50{,}3\\,\\text{m}$, mit ABS $\\approx 31{,}4\\,\\text{m}$.
+
+**Probe:** Realität: ABS-Effekt ist signifikant (20-40 % kürzer), zusätzlich bleibt das Auto lenkbar — kombinierter Vorteil.
+
+**Typischer Fehler:** Annahme, dass blockierte Räder "härter" bremsen — aber Gleitreibung ist immer kleiner als Haftreibung, also weniger Bremskraft, längerer Weg.`,
+        [
+          'Bremsweg $\\propto 1/\\mu$.',
+          'ABS hält $\\mu$ nahe $\\mu_0$ (Haft).',
+          '$\\mu/\\mu_0 = 0{,}5/0{,}8$.',
+        ],
+        {
+          1: 'Falsche Richtung: ABS-Bremsweg ist **kürzer**, nicht länger. $\\mu_0 > \\mu \\Rightarrow$ größere Bremskraft $\\Rightarrow$ kürzerer Weg.',
+          2: 'ABS verbessert tatsächlich beides: Bremsweg UND Lenkbarkeit. Beide Vorteile durch denselben Effekt (Vermeidung des Blockierens).',
+          3: 'Falsch — der Begriff "voll greift" ist irreführend. Maximale Bremskraft entsteht bei knapp unterhalb der Haftgrenze, nicht beim Blockieren.',
+        },
+        { stage: 'transfer', subGoal: 1, uses: ['haft-gleit'] },
       ),
     ],
 
@@ -1663,6 +3570,7 @@ export const technischeMechanikSubGoalTasks = {
           'Welche Winkelfunktion liefert den senkrechten Anteil?',
           'Merkregel: Bei $\\alpha = 0°$ muss $F_N = mg$ sein → $\\cos$.',
         ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['schiefe-zerleg-mech'] },
       ),
       ni(
         'Gleicher Körper (m = 10 kg) auf $\\alpha = 20°$ Ebene. Wie groß ist die Hangabtriebskraft? (auf 2 Nachkommastellen in N)',
@@ -1681,6 +3589,7 @@ export const technischeMechanikSubGoalTasks = {
           '$F_H = mg \\sin\\alpha$.',
           'Bei $\\alpha = 0°$ muss $F_H = 0$ sein → $\\sin$.',
         ],
+        { stage: 'transfer', subGoal: 2, uses: ['schiefe-zerleg-mech'] },
       ),
       mc(
         'Wieso taucht **derselbe Winkel** $\\alpha$ im Zerlegungsdreieck des Gewichtsvektors auf wie der Neigungswinkel der Ebene?',
@@ -1708,6 +3617,7 @@ export const technischeMechanikSubGoalTasks = {
           2: 'Reibung hat nichts mit dem Zerlegungsdreieck zu tun — die Zerlegung gilt auch ohne Reibung.',
           3: 'Die **Normalkraft** wirkt senkrecht zur Ebene, nicht die **Gewichtskraft**. Gewicht ist immer vertikal (entlang Schwerkraft).',
         },
+        { stage: 'apply-guided', subGoal: 2, uses: ['schiefe-zerleg-mech'] },
       ),
       tf(
         'Für einen reibungsfreien Körper auf geneigter Ebene ergibt sich die Beschleunigung zu $a = g\\sin\\alpha$ — unabhängig von der Masse.',
@@ -1724,6 +3634,7 @@ export const technischeMechanikSubGoalTasks = {
           'Stelle nach $a$ um — was passiert mit $m$?',
           'Wenn $m$ auf beiden Seiten: kürzen.',
         ],
+        { stage: 'recognize', subGoal: 2, uses: ['schiefe-zerleg-mech'] },
       ),
       sorting(
         'Bringe die Schritte der Reibungs-Analyse auf geneigter Ebene in die richtige Reihenfolge.',
@@ -1747,6 +3658,35 @@ export const technischeMechanikSubGoalTasks = {
           'Koordinatensystem entlang Ebene.',
           'Zerlegung, Gleichgewicht, Gleitentscheidung.',
         ],
+        { stage: 'apply-guided', subGoal: 2, uses: ['schiefe-zerleg-mech'] },
+      ),
+      mc(
+        'Studierender schreibt: "Auf einer geneigten Ebene mit $\\alpha = 30°$ ist die Normalkraft $F_N = mg\\sin 30° = 0{,}5\\,mg$." Wo steckt der Fehler?',
+        [
+          '$\\sin$ und $\\cos$ vertauscht — korrekt: $F_N = mg\\cos\\alpha$. Bei $\\alpha = 30°$: $F_N = mg\\cos 30° \\approx 0{,}866\\,mg$. Merkregel: $F_N$ muss bei $\\alpha = 0°$ gleich $mg$ sein, das erfüllt nur $\\cos$.',
+          '$0{,}5\\,mg$ ist korrekt — bei $30°$ liefern $\\sin$ und $\\cos$ denselben Wert.',
+          'Es fehlt der Faktor $\\mu_0$ — $F_N = \\mu_0 mg\\sin\\alpha$.',
+          'Korrekt für ruhende Körper, falsch nur bei gleitenden.',
+        ],
+        0,
+        `**Ansatz:** Geometrische Zerlegung des Gewichtsvektors: $F_N$ liegt **senkrecht** zur Ebene. Bei flachem $\\alpha$ ⇒ $F_N \\to mg$, bei steilem $\\alpha \\to 90°$ ⇒ $F_N \\to 0$. Diese Grenzfälle erfüllt **nur** $\\cos$.
+
+**Rechnung:** $F_N = mg\\cos\\alpha$. Bei $\\alpha = 30°$: $F_N = mg\\cdot\\cos 30° = mg\\cdot 0{,}866$. Mit $\\sin$ wäre $F_N(0°) = 0$ — dann würde der Körper schweben, was offensichtlich falsch ist.
+
+**Probe:** $\\sin 30° = 0{,}5$ und $\\cos 30° \\approx 0{,}866$ — **nicht gleich**. Die Werte unterscheiden sich um Faktor $\\sqrt 3 \\approx 1{,}73$.
+
+**Typischer Fehler:** Sin/Cos-Verwechslung. Standardregel: Anliegender Winkel des rechtwinkligen Dreiecks $\\to \\cos$, gegenüberliegender $\\to \\sin$. Hier ist $\\alpha$ der Winkel zwischen Gewicht und Normale ⇒ $F_N = mg\\cos\\alpha$.`,
+        [
+          'Grenzfall $\\alpha = 0°$: $F_N = mg$.',
+          'Welche Funktion erfüllt das?',
+          '$\\cos 0° = 1$, $\\sin 0° = 0$.',
+        ],
+        {
+          1: '$\\sin 30° = 0{,}5$ und $\\cos 30° \\approx 0{,}866$ sind **nicht** gleich — Verwechslung wäre folgenreich.',
+          2: 'Reibwert $\\mu_0$ tritt erst bei der Reibungs-Bedingung auf, nicht in der Zerlegung. $F_N$ folgt rein geometrisch aus $\\cos\\alpha$.',
+          3: 'Die geometrische Zerlegung gilt **unabhängig vom Bewegungszustand** — ob ruhend oder gleitend. Der Fehler ist universell.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['schiefe-zerleg-mech'] },
       ),
     ],
 
@@ -1773,6 +3713,7 @@ export const technischeMechanikSubGoalTasks = {
           2: '$66{,}4°$ wäre der Winkel mit $\\cos 66{,}4° \\approx 0{,}4$ — falscher Bezug. Selbsthemmung nutzt $\\tan$, nicht $\\cos$.',
           3: '$90°$ ist die senkrechte Wand — da rutscht jeder Körper unabhängig von $\\mu_0$.',
         },
+        { stage: 'apply-guided', subGoal: 3, uses: ['selbsthemmung'] },
       ),
       ni(
         'Ein Keil mit Neigung $\\alpha = 10°$ klemmt ein Werkstück gegen eine Wand. Wie groß muss $\\mu_0$ **mindestens** sein, damit der Keil nicht herausrutscht? (auf 3 Nachkommastellen)',
@@ -1789,6 +3730,7 @@ export const technischeMechanikSubGoalTasks = {
           'Grenzfall: Gleichheit.',
           '$\\mu_0 = \\tan\\alpha = \\tan 10°$.',
         ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['selbsthemmung'] },
       ),
       tf(
         'Die Selbsthemmung-Grenze ist massenunabhängig: ob ein 1-kg-Block oder ein 1-Tonnen-Block, die kritische Neigung ist dieselbe.',
@@ -1805,6 +3747,7 @@ export const technischeMechanikSubGoalTasks = {
           'Was passiert mit $m$ und $g$?',
           'Bleibt eine rein geometrische Bedingung übrig.',
         ],
+        { stage: 'recognize', subGoal: 3, uses: ['selbsthemmung'] },
       ),
       mc(
         'Ein Schraubgewinde ist **selbsthemmend**, wenn der Steigungswinkel kleiner als der Reibwinkel ist. Welches Gewinde garantiert sichere Fixierung ohne Kontermutter?',
@@ -1832,6 +3775,7 @@ export const technischeMechanikSubGoalTasks = {
           2: '$20° > 15°$ — kein Selbsthemmen trotz größerem Reibwinkel, weil der Steigungswinkel noch höher ist.',
           3: 'Doch — bei $\\alpha < \\rho$ ist das Gewinde statisch selbsthemmend. Option A erfüllt das.',
         },
+        { stage: 'transfer', subGoal: 3, uses: ['selbsthemmung'] },
       ),
       sorting(
         'Bringe die Schritte der Selbsthemm-Prüfung für eine Förderband-Neigung in die richtige Reihenfolge.',
@@ -1855,6 +3799,52 @@ export const technischeMechanikSubGoalTasks = {
           'Dann Vergleich.',
           'Sicherheitsfaktor einplanen.',
         ],
+        { stage: 'apply-guided', subGoal: 3, uses: ['selbsthemmung'] },
+      ),
+      mc(
+        'Studierender behauptet: "Ein Körper mit $\\mu_0 = 0{,}3$ rutscht erst bei einer Neigung von $30°$ — weil $0{,}3 \\cdot 100° = 30°$." Wo steckt der Fehler?',
+        [
+          '$\\mu_0$ ist **nicht** ein Bruchteil der Neigungsskala. Korrekt: $\\alpha_\\text{krit} = \\arctan\\mu_0 = \\arctan 0{,}3 \\approx 16{,}7°$. Reibwert und kritischer Winkel sind durch $\\arctan$ verknüpft, nicht durch lineare Skalierung.',
+          'Stimmt — der Reibwert in Prozent der vollen $90°$-Skala ergibt sinnvoll den kritischen Winkel.',
+          'Korrekt wäre $\\mu_0 \\cdot 90° = 27°$ statt $30°$.',
+          'Selbsthemmung gilt nur bei spezifischer Materialkombination — der Winkel ist nicht aus $\\mu_0$ berechenbar.',
+        ],
+        0,
+        `**Ansatz:** Selbsthemm-Bedingung: $\\tan\\alpha \\leq \\mu_0$. Daraus $\\alpha_\\text{krit} = \\arctan\\mu_0$, **nicht** lineare Multiplikation.
+
+**Rechnung:** $\\arctan 0{,}3 = 16{,}699° \\approx 16{,}7°$. Bei $\\alpha = 16{,}7°$ rutscht der Körper gerade an. Der "$30°$"-Wert wäre korrekt für $\\mu_0 = \\tan 30° \\approx 0{,}577$.
+
+**Probe:** Sonderfälle: $\\mu_0 = 1 \\Rightarrow \\alpha_\\text{krit} = 45°$, $\\mu_0 = \\sqrt 3 \\Rightarrow \\alpha_\\text{krit} = 60°$. Nichtlineare Beziehung — markante Werte beweisen das.
+
+**Typischer Fehler:** Lineare Verwechslung "Reibwert $\\Leftrightarrow$ Winkel". Die Beziehung ist trigonometrisch ($\\arctan$), nicht linear.`,
+        [
+          'Selbsthemmungsbedingung: $\\tan\\alpha \\leq \\mu_0$.',
+          'Auflösen: $\\alpha = \\arctan\\mu_0$.',
+          '$\\arctan 0{,}3 \\neq 30°$.',
+        ],
+        {
+          1: 'Lineare Skalierung von $\\mu_0$ auf $90°$ ist physikalisch sinnlos — die Beziehung folgt aus Trigonometrie, nicht aus Skalierung.',
+          2: '$\\mu_0\\cdot 90° = 27°$ ist auch lineare Skalierung — falscher Ansatz, nur eine andere falsche Zahl.',
+          3: 'Doch — $\\alpha_\\text{krit}$ ist genau aus $\\mu_0$ berechenbar, mittels $\\arctan$. Die Materialkombination geht nur durch $\\mu_0$ ein.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['selbsthemmung'] },
+      ),
+      ni(
+        'Eine Werkbank-Spannvorrichtung soll mit einem Keil ($\\alpha = 8°$) ein Werkstück fixieren. Welcher minimale Haftreibwert $\\mu_0$ ist nötig, damit der Keil im Betrieb durch Erschütterungen nicht herausrutscht (Selbsthemmung)? (auf 3 Nachkommastellen)',
+        0.141, 0.002, '',
+        `**Ansatz:** Selbsthemm-Bedingung: $\\tan\\alpha \\leq \\mu_0$. Im Grenzfall: $\\mu_{0,\\min} = \\tan\\alpha$.
+
+**Rechnung:** $\\mu_{0,\\min} = \\tan 8° \\approx 0{,}1405 \\approx 0{,}141$.
+
+**Probe:** Bei $\\mu_0 = 0{,}15 > 0{,}141$ ist Selbsthemmung gegeben. Bei $\\mu_0 = 0{,}10 < 0{,}141$ rutscht der Keil. Konkret: Stahl auf Stahl ($\\mu_0 \\approx 0{,}15$) ist gerade noch ausreichend; Schmierung verringert $\\mu_0$ und gefährdet die Selbsthemmung.
+
+**Typischer Fehler:** $\\sin 8°$ statt $\\tan 8°$ verwenden ($\\sin 8° \\approx 0{,}139$, nahe aber nicht gleich). Bei flachen Winkeln ist die Differenz klein, bei steilen Keilen aber signifikant.`,
+        [
+          'Selbsthemmung: $\\tan\\alpha \\leq \\mu_0$.',
+          'Grenzfall: $\\mu_{0,\\min} = \\tan\\alpha$.',
+          '$\\tan 8° \\approx 0{,}141$.',
+        ],
+        { stage: 'transfer', subGoal: 3, uses: ['selbsthemmung'] },
       ),
     ],
 
@@ -1875,6 +3865,7 @@ export const technischeMechanikSubGoalTasks = {
           '$\\rho = \\arctan\\mu_0$.',
           'Rechner auf DEG stellen.',
         ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['reibwinkel'] },
       ),
       matching(
         'Ordne jedem Haftreibwert den zugehörigen Reibwinkel zu.',
@@ -1896,6 +3887,7 @@ export const technischeMechanikSubGoalTasks = {
           'Auswendige Paare: $(1, 45°)$, $(\\sqrt{3}, 60°)$, $(1/\\sqrt{3}, 30°)$.',
           'Monoton steigend, aber nichtlinear.',
         ],
+        { stage: 'apply-guided', subGoal: 4, uses: ['reibwinkel'] },
       ),
       tf(
         'Der Reibwinkel ist genau der Winkel zwischen der Richtung der resultierenden Kontaktkraft (Normal + Reibung) und der Flächennormale.',
@@ -1912,6 +3904,7 @@ export const technischeMechanikSubGoalTasks = {
           'Welchen Winkel bildet die Resultierende mit der Normale?',
           '$\\tan\\phi = F_R/F_N = \\mu$.',
         ],
+        { stage: 'recognize', subGoal: 4, uses: ['reibwinkel'] },
       ),
       mc(
         'Wie ist der Reibwinkel in einem **Selbsthemmungskriterium** zu verwenden?',
@@ -1939,6 +3932,7 @@ export const technischeMechanikSubGoalTasks = {
           2: 'Reibwinkel ist **genau** das Selbsthemmungskriterium in geometrischer Form. Sehr wohl relevant.',
           3: '$90° - \\rho$ wäre der Komplementärwinkel — taucht weder in der Herleitung noch in der Anwendung auf.',
         },
+        { stage: 'apply-guided', subGoal: 4, uses: ['reibwinkel'] },
       ),
       ni(
         'Ein Versuchsaufbau: Eine Ebene wird so lange geneigt, bis ein aufgelegter Stahlklotz gerade zu rutschen beginnt — bei $\\alpha = 11{,}31°$. Welcher Haftreibwert $\\mu_0$ lässt sich daraus bestimmen? (auf 2 Nachkommastellen)',
@@ -1955,6 +3949,35 @@ export const technischeMechanikSubGoalTasks = {
           '$\\mu_0 = \\tan\\rho$.',
           'Rechner: $\\tan 11{,}31°$.',
         ],
+        { stage: 'transfer', subGoal: 4, uses: ['reibwinkel'] },
+      ),
+      mc(
+        'Studentin behauptet: "Der Reibwinkel ist gleich dem Haftreibwert: $\\rho = \\mu_0$." Wo steckt der Fehler?',
+        [
+          'Reibwinkel und Reibwert sind unterschiedliche Größen, verknüpft durch $\\rho = \\arctan\\mu_0$. Beispiel: $\\mu_0 = 0{,}5 \\Rightarrow \\rho \\approx 26{,}6°$, nicht $0{,}5°$.',
+          'Stimmt für kleine Winkel — bei großen Winkeln gilt $\\rho = \\arctan\\mu_0$.',
+          '$\\rho = \\mu_0$ wäre richtig in Bogenmaß.',
+          'Falsch: korrekt wäre $\\rho = \\sin\\mu_0$.',
+        ],
+        0,
+        `**Ansatz:** Reibwinkel-Definition: $\\rho = \\arctan\\mu_0$. Reibwert ist dimensionslos, Reibwinkel hat Einheit Grad (oder Bogenmaß).
+
+**Rechnung:** Bei $\\mu_0 = 0{,}5$: $\\rho = \\arctan 0{,}5 \\approx 26{,}57°$. Wer $\\rho = \\mu_0 = 0{,}5°$ schreibt, vergisst die $\\arctan$-Beziehung. Die beiden Größen unterscheiden sich um Faktor $\\arctan/$Identität.
+
+**Probe:** Markante Paare: $(\\mu_0, \\rho)$: $(0{,}1, 5{,}71°)$, $(0{,}5, 26{,}57°)$, $(1, 45°)$, $(\\sqrt 3, 60°)$. Klar nichtlinear.
+
+**Typischer Fehler:** Auf einen Blick zwei unterschiedliche Größen gleichsetzen, weil sie konzeptuell zusammengehören. Verbindung über $\\arctan$.`,
+        [
+          'Reibwinkel-Definition.',
+          '$\\rho = \\arctan\\mu_0$.',
+          'Beispiel: $\\mu_0 = 0{,}5 \\Rightarrow \\rho \\approx 26{,}6°$.',
+        ],
+        {
+          1: 'Auch für kleine $\\mu_0$ ist $\\rho \\neq \\mu_0$. Allenfalls $\\rho_\\text{rad} \\approx \\mu_0$ in Bogenmaß bei sehr kleinen Werten — aber in Grad nie.',
+          2: 'Im Bogenmaß $\\rho_\\text{rad} = \\arctan\\mu_0$, nicht $\\mu_0$ direkt. Für $\\mu_0 = 0{,}5$: $\\rho_\\text{rad} \\approx 0{,}464$, nicht $0{,}5$.',
+          3: '$\\sin\\mu_0$ macht keinen Sinn — $\\mu_0$ ist dimensionslos und kein Winkel. Korrekt: $\\arctan\\mu_0$.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['reibwinkel'] },
       ),
     ],
 
@@ -1982,6 +4005,7 @@ export const technischeMechanikSubGoalTasks = {
           'Zähler: jedes $m_i \\cdot x_i$ aufsummieren.',
           'Ergebnis liegt immer zwischen den äußeren Positionen, näher an der größten Masse.',
         ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['sp-diskret'] },
       ),
       mc(
         'Zwei Massen auf einer Stange: $m_1 = 4\\,\\text{kg}$ bei $x_1 = 1\\,\\text{m}$ und $m_2 = 1\\,\\text{kg}$ bei $x_2 = 6\\,\\text{m}$. Wo liegt $x_S$?',
@@ -2004,6 +4028,7 @@ export const technischeMechanikSubGoalTasks = {
           2: '$5\\,\\text{m}$ wäre der Schwerpunkt, wenn $m_2$ viermal so schwer wie $m_1$ wäre — Verhältnis umgekehrt.',
           3: '$1{,}4\\,\\text{m}$ stammt aus falscher Zähler-Division: vermutlich $(4 \\cdot 1 + 1 \\cdot 6)/(1 + 6) \\approx 1{,}43$, wobei der Nenner die **Positionen** statt der **Massen** addiert.',
         },
+        { stage: 'apply-guided', subGoal: 0, uses: ['sp-diskret'] },
       ),
       ni(
         'Vier gleich schwere Kugeln ($m = 2\\,\\text{kg}$ jede) liegen bei $x = 0, 2, 5, 9\\,\\text{m}$. Wo ist $x_S$?',
@@ -2020,6 +4045,7 @@ export const technischeMechanikSubGoalTasks = {
           '$m$ kürzt sich im Zähler und Nenner.',
           'Übrig: arithmetisches Mittel der $x_i$.',
         ],
+        { stage: 'apply-independent', subGoal: 0, uses: ['sp-diskret'] },
       ),
       tf(
         'Die Schwerpunktformel liefert auch für dreidimensionale Massensysteme komponentenweise die Schwerpunktkoordinaten: $x_S, y_S, z_S$ werden mit derselben Formel unabhängig voneinander berechnet.',
@@ -2036,6 +4062,7 @@ export const technischeMechanikSubGoalTasks = {
           'Komponentenweise lesen: $x_S$ nutzt nur $x_i$.',
           'Drei unabhängige Gleichungen für 3D.',
         ],
+        { stage: 'recognize', subGoal: 0, uses: ['sp-diskret'] },
       ),
       matching(
         'Ordne jeder Situation die korrekte Schwerpunkt-Aussage zu.',
@@ -2057,6 +4084,7 @@ export const technischeMechanikSubGoalTasks = {
           'Hebelverhältnis umgekehrt zum Massenverhältnis.',
           'Gemeinsame Skalierung aller Massen ändert $x_S$ nicht.',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['sp-diskret'] },
       ),
       ni(
         'Fünf Kugeln: $m_1 = 1\\,\\text{kg}$ bei $x=0$, $m_2 = 2\\,\\text{kg}$ bei $x=1$, $m_3 = 3\\,\\text{kg}$ bei $x=2$, $m_4 = 2\\,\\text{kg}$ bei $x=3$, $m_5 = 1\\,\\text{kg}$ bei $x=4$. Wo liegt der Schwerpunkt? (auf 1 Nachkommastelle)',
@@ -2073,6 +4101,35 @@ export const technischeMechanikSubGoalTasks = {
           'Symmetrie ⇒ Schwerpunkt liegt auf der Achse.',
           'Auch rechnerisch durchführen: $\\sum m_i x_i / \\sum m_i$.',
         ],
+        { stage: 'transfer', subGoal: 0, uses: ['sp-diskret'] },
+      ),
+      mc(
+        'Studierende rechnet bei zwei Massen ($m_1 = 2\\,\\text{kg}$ bei $x = 0$, $m_2 = 8\\,\\text{kg}$ bei $x = 10\\,\\text{m}$) das arithmetische Mittel: $x_S = (0+10)/2 = 5\\,\\text{m}$. Wo steckt der Fehler?',
+        [
+          'Bei ungleichen Massen muss massengewichtet werden: $x_S = (2\\cdot 0 + 8\\cdot 10)/(2+8) = 80/10 = 8\\,\\text{m}$ — Schwerpunkt liegt nahe der schwereren Masse, nicht in der Mitte.',
+          'Stimmt — bei zwei Massen ist das arithmetische Mittel der Schwerpunkt.',
+          'Es fehlt nur ein Vorzeichen — korrekt wäre $x_S = -5\\,\\text{m}$.',
+          'Korrekt wäre $x_S = (m_1 + m_2)/2 = 5\\,\\text{m}$ — die Massensumme statt der Positionssumme.',
+        ],
+        0,
+        `**Ansatz:** Schwerpunkt-Formel: $x_S = \\sum m_i x_i / \\sum m_i$. Massen-**gewichtet**, nicht arithmetisch.
+
+**Rechnung:** $x_S = (2\\cdot 0 + 8\\cdot 10)/(2+8) = (0 + 80)/10 = 8\\,\\text{m}$. Schwerpunkt liegt **nahe** der schwereren Masse $m_2 = 8\\,\\text{kg}$.
+
+**Probe:** Hebelgesetz: Abstand zu $m_1$ ist $8$, zu $m_2$ ist $2$. Verhältnis $8:2 = 4:1$ — entspricht dem **umgekehrten** Massenverhältnis $8:2 = 4:1$ ✓.
+
+**Typischer Fehler:** Arithmetisches Mittel verwenden, wenn die Massen unterschiedlich sind. Funktioniert **nur** bei gleichen Massen.`,
+        [
+          'Massengewichtet, nicht arithmetisch.',
+          '$x_S$ liegt näher an der größeren Masse.',
+          '$80/10 = 8$.',
+        ],
+        {
+          1: 'Arithmetisches Mittel gilt nur bei gleichen Massen. Hier $m_2 = 4 m_1$ — also keinesfalls in der Mitte.',
+          2: 'Vorzeichen ist hier nicht das Problem — beide Positionen sind positiv. Der Fehler steckt in der Methode.',
+          3: '$(m_1 + m_2)/2$ ergibt eine Masse (kg), keine Position. Einheitenfehler — Schwerpunkt hat Einheit Meter.',
+        },
+        { stage: 'error-analysis', subGoal: 0, uses: ['sp-diskret'] },
       ),
     ],
 
@@ -2093,6 +4150,7 @@ export const technischeMechanikSubGoalTasks = {
           'Teilschwerpunkte kennst du aus der Aufgabe.',
           'Flächengewichtetes Mittel: $y_S = \\sum A_i y_{S,i} / \\sum A_i$.',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['sp-flaechen'] },
       ),
       mc(
         'Bei einem Profil aus zwei Rechtecken (gleiche Fläche $A$, Schwerpunkte $x_{S1}$ und $x_{S2}$) — wo liegt der Gesamtschwerpunkt?',
@@ -2120,6 +4178,7 @@ export const technischeMechanikSubGoalTasks = {
           2: 'Das zweite Teil hat denselben Flächenanteil, dominiert nicht.',
           3: 'Der linke Rand hängt vom konkreten Aufbau ab — hat nichts mit der Schwerpunktformel zu tun.',
         },
+        { stage: 'apply-guided', subGoal: 1, uses: ['sp-flaechen'] },
       ),
       ni(
         'Ein Profil besteht aus einem Quadrat ($100 \\times 100\\,\\text{mm}$, $x_{S1} = 50\\,\\text{mm}$) und einem angesetzten Rechteck ($200 \\times 50\\,\\text{mm}$, Schwerpunkt $x_{S2} = 200\\,\\text{mm}$ rechts vom Quadrat, bezogen auf denselben Ursprung). Wo liegt $x_S$?',
@@ -2136,6 +4195,7 @@ export const technischeMechanikSubGoalTasks = {
           'Wenn $A_1 = A_2$, wird die Formel zum arithmetischen Mittel.',
           'Sonst: gewogenes Mittel.',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['sp-flaechen'] },
       ),
       tf(
         'Für homogene Platten (konstante Dicke und Dichte) liefert die Flächen-Schwerpunktformel dasselbe Ergebnis wie die Massen-Schwerpunktformel.',
@@ -2152,6 +4212,7 @@ export const technischeMechanikSubGoalTasks = {
           'Was kürzt sich in Zähler und Nenner?',
           'Vorsicht bei inhomogenen Körpern.',
         ],
+        { stage: 'recognize', subGoal: 1, uses: ['sp-flaechen'] },
       ),
       sorting(
         'Bringe die Schritte zur Berechnung des Flächenschwerpunkts eines zusammengesetzten Profils in die richtige Reihenfolge.',
@@ -2175,6 +4236,7 @@ export const technischeMechanikSubGoalTasks = {
           'Koordinatensystem vor der Zerlegung.',
           'Formel am Ende.',
         ],
+        { stage: 'apply-guided', subGoal: 1, uses: ['sp-flaechen'] },
       ),
       ni(
         'Ein I-Profil (Doppel-T) besteht aus drei Rechtecken: Obergurt ($120 \\times 15\\,\\text{mm}$, $y_S = 142{,}5\\,\\text{mm}$), Steg ($15 \\times 120\\,\\text{mm}$, $y_S = 75\\,\\text{mm}$), Untergurt ($120 \\times 15\\,\\text{mm}$, $y_S = 7{,}5\\,\\text{mm}$). Wo liegt der Schwerpunkt $y_S$? (auf 1 Nachkommastelle)',
@@ -2191,6 +4253,35 @@ export const technischeMechanikSubGoalTasks = {
           'Obergurt und Untergurt: gleiche Fläche, gleicher Abstand zur Mitte.',
           'Symmetrie ⇒ $y_S$ auf der Mittelebene.',
         ],
+        { stage: 'apply-independent', subGoal: 1, uses: ['sp-flaechen'] },
+      ),
+      mc(
+        'Bei einem Profil aus zwei Rechtecken ($A_1 = 2000\\,\\text{mm}^2$ mit $x_{S1} = 20$, $A_2 = 500\\,\\text{mm}^2$ mit $x_{S2} = 80$) rechnet ein Studierender $x_S = (x_{S1} + x_{S2})/2 = 50\\,\\text{mm}$. Wo steckt der Fehler?',
+        [
+          'Bei ungleichen Flächen muss flächengewichtet werden: $x_S = (2000\\cdot 20 + 500\\cdot 80)/(2000+500) = 80\\,000/2500 = 32\\,\\text{mm}$.',
+          'Stimmt — die Mittelwertbildung ist eine etablierte Vereinfachung.',
+          'Fehler in den Daten — die Flächen müssten gleich sein, sonst gilt die Formel nicht.',
+          'Es muss $x_S = (A_1\\cdot x_{S2} + A_2\\cdot x_{S1})/(A_1 + A_2) = 32{,}8\\,\\text{mm}$ sein (Flächen und Schwerpunkte gekreuzt).',
+        ],
+        0,
+        `**Ansatz:** $x_S = \\sum A_i x_{S,i}/\\sum A_i$ — **flächen**gewichtet. Nur bei gleichen Flächen wird daraus arithmetisches Mittel.
+
+**Rechnung:** $x_S = (2000\\cdot 20 + 500\\cdot 80)/(2000+500) = (40\\,000 + 40\\,000)/2500 = 80\\,000/2500 = 32\\,\\text{mm}$.
+
+**Probe:** Plausibilität: $32 < 50$ — der Schwerpunkt liegt **näher** am größeren Teil ($A_1 = 2000$ bei $x = 20$). Größeres Teil "zieht" den Gesamtschwerpunkt zu sich.
+
+**Typischer Fehler:** Bei augenscheinlich symmetrischer Lage (Mitte zwischen $20$ und $80$) das arithmetische Mittel ansetzen, ohne Flächen anzusehen.`,
+        [
+          'Flächen sind ungleich — also gewichten.',
+          '$x_S = \\sum A_i x_{S,i}/\\sum A_i$.',
+          '$80\\,000/2500 = 32$.',
+        ],
+        {
+          1: 'Mittelwertbildung gilt nur bei gleichen Flächen. Hier $A_1 = 4 A_2$ — keine Symmetrie.',
+          2: 'Die Formel funktioniert für **beliebige** Flächen — auch bei ungleichen. Sie heißt explizit "flächen**gewichtet**".',
+          3: 'Kreuzung von Flächen und Schwerpunkten ergibt physikalisch keinen Sinn. Jede Fläche gewichtet ihren **eigenen** Teilschwerpunkt.',
+        },
+        { stage: 'error-analysis', subGoal: 1, uses: ['sp-flaechen'] },
       ),
     ],
 
@@ -2211,6 +4302,7 @@ export const technischeMechanikSubGoalTasks = {
           'Formel: $x_S = (A_V x_V - A_L x_L)/(A_V - A_L)$.',
           'Qualitativ: Schwerpunkt wandert weg vom Loch.',
         ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['sp-loch'] },
       ),
       mc(
         'Eine symmetrische Scheibe hat ein rundes Loch **oberhalb** der Mitte gebohrt. In welche Richtung verschiebt sich der Schwerpunkt gegenüber der unversehrten Scheibe?',
@@ -2238,6 +4330,7 @@ export const technischeMechanikSubGoalTasks = {
           2: 'Kleine Löcher haben kleinen Effekt, aber nicht null. Jede entfernte Fläche verschiebt den Schwerpunkt.',
           3: 'Das Loch liegt vertikal oberhalb der Mitte — die Verschiebung ist vertikal, nicht horizontal.',
         },
+        { stage: 'apply-guided', subGoal: 2, uses: ['sp-loch'] },
       ),
       ni(
         'Eine rechteckige Platte ($60 \\times 40\\,\\text{mm}$) hat ein quadratisches Loch ($20 \\times 20\\,\\text{mm}$) mit Mittelpunkt bei $x = 15\\,\\text{mm}$, $y = 20\\,\\text{mm}$ gebohrt (Ursprung in der linken unteren Ecke). Wo liegt $x_S$ der gelochten Platte? (auf 2 Nachkommastellen)',
@@ -2254,6 +4347,7 @@ export const technischeMechanikSubGoalTasks = {
           'Formel: $(A_V x_V - A_L x_L)/(A_V - A_L)$.',
           'Plausibilitätscheck: Schwerpunkt weg vom Loch.',
         ],
+        { stage: 'apply-independent', subGoal: 2, uses: ['sp-loch'] },
       ),
       matching(
         'Ordne jedem Szenario die richtige Formel zu.',
@@ -2275,6 +4369,7 @@ export const technischeMechanikSubGoalTasks = {
           'Vorzeichen im Zähler und Nenner gleich.',
           'Formel bleibt linear.',
         ],
+        { stage: 'transfer', subGoal: 2, uses: ['sp-loch'] },
       ),
       tf(
         'Wenn ein Loch **im Schwerpunkt** des Vollkörpers liegt, ändert sich die Schwerpunktposition durch das Loch nicht.',
@@ -2291,6 +4386,7 @@ export const technischeMechanikSubGoalTasks = {
           'Was passiert, wenn Zähler und Nenner denselben Faktor haben?',
           'Anschaulich: was hat das entfernte Material zum Schwerpunkt beigetragen?',
         ],
+        { stage: 'recognize', subGoal: 2, uses: ['sp-loch'] },
       ),
       sorting(
         'Bringe die Schritte zur Berechnung des Schwerpunkts einer gelochten Platte in die richtige Reihenfolge.',
@@ -2314,6 +4410,52 @@ export const technischeMechanikSubGoalTasks = {
           'Loch separat wie ein eigenes Teilkörper behandeln.',
           'Vorzeichen konsistent in Zähler und Nenner.',
         ],
+        { stage: 'apply-guided', subGoal: 2, uses: ['sp-loch'] },
+      ),
+      mc(
+        'Studentin rechnet den Schwerpunkt einer Platte mit Loch und **addiert** das Loch wie eine zusätzliche Fläche (statt zu subtrahieren). Welche Konsequenz hat das?',
+        [
+          'Das Loch wird wie zusätzliches Material behandelt — die Restfläche wird zu groß angesetzt und der Schwerpunkt wandert in die **falsche** Richtung (zum Loch hin statt davon weg).',
+          'Der Fehler hebt sich automatisch auf, wenn am Ende durch die Restfläche geteilt wird.',
+          'Stimmt — Vorzeichen sind in der Schwerpunktformel irrelevant.',
+          'Bei kleinen Löchern ist der Unterschied vernachlässigbar.',
+        ],
+        0,
+        `**Ansatz:** Loch = negative Fläche. Im Zähler wirkt es als Subtraktion ($-A_L x_L$), im Nenner ebenso ($-A_L$).
+
+**Rechnung:** Konkret: $A_V = 1000$, $x_V = 50$, $A_L = 200$, $x_L = 80$. Korrekt: $x_S = (1000\\cdot 50 - 200\\cdot 80)/(1000-200) = 34\\,000/800 = 42{,}5$ (weg vom Loch). Falsch addiert: $(1000\\cdot 50 + 200\\cdot 80)/(1000+200) = 66\\,000/1200 = 55$ (zum Loch).
+
+**Probe:** Anschaulich: ein Loch entfernt Masse — die verbleibende Masse "verlagert" den Schwerpunkt weg. Bei falscher Addition wird das Loch wie zusätzliches Material gerechnet, das den Schwerpunkt fälschlich anzieht.
+
+**Typischer Fehler:** Beim Aufstellen der Formel das Vorzeichen für das Loch vergessen — beide Vorzeichen (Zähler und Nenner) müssen negativ sein.`,
+        [
+          'Loch = negative Fläche, beidseitig minus.',
+          'Schwerpunkt verlagert sich **weg** vom Loch.',
+          'Falsche Addition kehrt die Richtung um.',
+        ],
+        {
+          1: 'Aufheben würde nur passieren, wenn beide Vorzeichen falsch wären — hier ist nur ein Term betroffen.',
+          2: 'Vorzeichen sind essentiell. Plus/Minus entscheidet, ob Material hinzugefügt oder entfernt wird.',
+          3: 'Auch kleine Löcher führen zu Verschiebungen — vernachlässigbar wäre nur, wenn $A_L \\to 0$. Hier wird die **Richtung** falsch, was unabhängig von der Größe gilt.',
+        },
+        { stage: 'error-analysis', subGoal: 2, uses: ['sp-loch'] },
+      ),
+      ni(
+        'Ein Quadrat ($60\\,\\text{mm}\\times 60\\,\\text{mm}$, Ursprung links unten) hat ein quadratisches Loch ($20\\,\\text{mm}\\times 20\\,\\text{mm}$) mit Mittelpunkt bei $(45, 45)\\,\\text{mm}$. Berechne $y_S$ der gelochten Platte (auf 2 Nachkommastellen).',
+        28.13, 0.05, 'mm',
+        `**Ansatz:** $y_S = (A_V y_V - A_L y_L)/(A_V - A_L)$.
+
+**Rechnung:** $A_V = 60\\cdot 60 = 3600\\,\\text{mm}^2$, $y_V = 30\\,\\text{mm}$. $A_L = 20\\cdot 20 = 400\\,\\text{mm}^2$, $y_L = 45\\,\\text{mm}$. $y_S = (3600\\cdot 30 - 400\\cdot 45)/(3600 - 400) = (108\\,000 - 18\\,000)/3200 = 90\\,000/3200 = 28{,}125 \\approx 28{,}13\\,\\text{mm}$.
+
+**Probe:** Loch oberhalb der Plattenmitte ($y_L = 45 > y_V = 30$) → Schwerpunkt wandert nach **unten** ($y_S = 28{,}13 < 30$) ✓. Verschiebung: $1{,}88\\,\\text{mm}$ — vernünftig für ein Loch mit $400/3600 \\approx 11\\,\\%$ der Fläche.
+
+**Typischer Fehler:** Im Nenner $A_V + A_L$ einsetzen (Loch addiert statt subtrahiert) — gibt $y_S = (108\\,000 - 18\\,000)/4000 = 22{,}5$, falsch.`,
+        [
+          'Loch als negative Teilfläche.',
+          '$y_S = (A_V y_V - A_L y_L)/(A_V - A_L)$.',
+          'Loch oberhalb Mitte → $y_S$ sinkt.',
+        ],
+        { stage: 'transfer', subGoal: 2, uses: ['sp-loch'] },
       ),
     ],
 
@@ -2334,6 +4476,7 @@ export const technischeMechanikSubGoalTasks = {
           'Zwei Achsen → beide Koordinaten fixiert.',
           'Vorsicht bei inhomogenen Körpern.',
         ],
+        { stage: 'recognize', subGoal: 3, uses: ['sp-symmetrie'] },
       ),
       mc(
         'Ein gleichseitiges Dreieck (Seitenlänge $a$) ist homogen. Wo liegt der Schwerpunkt?',
@@ -2361,6 +4504,7 @@ export const technischeMechanikSubGoalTasks = {
           2: 'Ecken sind Rand- und nicht Schwerpunkte — die Masse verteilt sich ja auf die ganze Fläche.',
           3: 'Bei konvexen Flächen (Dreieck, Rechteck, Kreis) liegt der Schwerpunkt **immer innerhalb**. Nur bei Ringen oder L-Formen kann er außerhalb liegen.',
         },
+        { stage: 'apply-guided', subGoal: 3, uses: ['sp-symmetrie'] },
       ),
       ni(
         'Ein Kreisring hat Außenradius $R = 50\\,\\text{mm}$ und Innenradius $r = 20\\,\\text{mm}$. Wie weit liegt der Schwerpunkt vom Mittelpunkt entfernt?',
@@ -2377,6 +4521,7 @@ export const technischeMechanikSubGoalTasks = {
           'Jede Achse enthält den Schwerpunkt.',
           'Zentralsymmetrie ⇒ Schwerpunkt im Zentrum.',
         ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['sp-symmetrie'] },
       ),
       matching(
         'Ordne jedem Körper die Lage seines Schwerpunkts zu.',
@@ -2398,6 +4543,7 @@ export const technischeMechanikSubGoalTasks = {
           'Schwerpunkt auf jeder Achse.',
           'Schnittpunkt aller Achsen.',
         ],
+        { stage: 'transfer', subGoal: 3, uses: ['sp-symmetrie'] },
       ),
       sorting(
         'Bringe die Checkliste "Symmetrie vor Rechnung" in die richtige Reihenfolge.',
@@ -2421,6 +4567,7 @@ export const technischeMechanikSubGoalTasks = {
           'Achsen einzeichnen **vor** der Rechnung.',
           'Nur die nicht durch Symmetrie fixierten Koordinaten rechnen.',
         ],
+        { stage: 'apply-guided', subGoal: 3, uses: ['sp-symmetrie'] },
       ),
       ni(
         'Ein symmetrisches T-Profil (Obergurt $100 \\times 10\\,\\text{mm}$ zentriert über Steg $10 \\times 80\\,\\text{mm}$) wird vertikal durch seine Symmetrieachse (Mitte des Stegs) betrachtet. Wie groß ist $x_S$ gemessen vom linken Rand des Obergurts? (auf 1 Nachkommastelle)',
@@ -2437,6 +4584,91 @@ export const technischeMechanikSubGoalTasks = {
           'Wo liegt sie relativ zum linken Rand?',
           'Symmetrieachse = $x_S$-Linie.',
         ],
+        { stage: 'apply-independent', subGoal: 3, uses: ['sp-symmetrie'] },
+      ),
+      mc(
+        'Welche Aussage trifft auf den Schwerpunkt eines homogenen U-Profils zu (Symmetrieachse vertikal durch die Mitte des Stegs)?',
+        [
+          '$x_S$ liegt auf der Symmetrieachse — das spart die $x$-Rechnung. $y_S$ muss separat über die Flächengewichtung berechnet werden.',
+          'Beide Koordinaten müssen über die Flächenformel bestimmt werden — Symmetrie hilft hier nicht.',
+          'Der Schwerpunkt liegt im geometrischen Mittelpunkt der Bounding-Box des Profils.',
+          'Symmetrie wirkt nur bei geschlossenen Profilen, nicht bei U-Formen.',
+        ],
+        0,
+        `**Ansatz:** Eine vertikale Symmetrieachse fixiert nur die $x$-Koordinate des Schwerpunkts — die $y$-Koordinate hängt von der Flächenverteilung in vertikaler Richtung ab.
+
+**Rechnung:** $x_S = $ Mitte des Stegs (Symmetrie). $y_S$ erfordert flächengewichtete Summation über Boden, beide Schenkel — typischerweise nicht in der Mitte, weil Boden + Schenkel nicht symmetrisch um die horizontale Mittelebene verteilt sind.
+
+**Probe:** Für ein U-Profil mit Bodenbreite $b$, Schenkelhöhe $h$, Wanddicke $t$: $x_S = b/2$ direkt aus Symmetrie. $y_S$ liegt aufgrund des Bodens **näher am Boden** als die geometrische Mitte $h/2$.
+
+**Typischer Fehler:** Annahme, "Symmetrie heißt Schwerpunkt = Mittelpunkt". Eine **einzige** Symmetrieachse fixiert nur **eine** Koordinate.`,
+        [
+          'Vertikale Symmetrieachse → fixiert $x_S$.',
+          '$y_S$ separat rechnen.',
+          'Eine Achse, eine fixierte Koordinate.',
+        ],
+        {
+          1: 'Symmetrie hilft sehr wohl — sie spart die $x$-Rechnung. Nur $y_S$ braucht die volle Formel.',
+          2: 'Bounding-Box-Mittelpunkt entspricht nur dann dem Schwerpunkt, wenn das Profil **rechteckig vollgefüllt** wäre. Beim U-Profil mit Hohlraum stimmt das nicht.',
+          3: 'Symmetrie ist eine geometrische Eigenschaft — sie funktioniert auch bei offenen Profilen (U, T, L mit symmetrischer Form).',
+        },
+        { stage: 'apply-independent', subGoal: 3, uses: ['sp-symmetrie'] },
+      ),
+      mc(
+        'Studierender behauptet: "Ein L-Profil hat eine Symmetrieachse durch die Diagonale, also liegt der Schwerpunkt darauf." Wo steckt der Fehler?',
+        [
+          'Ein L-Profil hat im **Allgemeinen keine** Symmetrieachse. Selbst bei gleichen Schenkellängen und gleicher Wanddicke ist die Diagonale nur dann eine Symmetrieachse, wenn das Profil exakt spiegelbildlich gleich ist — dann liegt der Schwerpunkt auf dieser Achse, allerdings nicht in der Mitte der Diagonale.',
+          'Stimmt — jedes L-Profil hat diagonale Symmetrie.',
+          'Der Fehler ist die Annahme, dass Schwerpunkt auf der Achse liegt — er liegt immer im Eckpunkt.',
+          'Die Diagonalsymmetrie gilt nur bei isotropem Material.',
+        ],
+        0,
+        `**Ansatz:** Symmetrie eines L-Profils prüfen: Spiegelung an der Diagonale ergibt nur dann dasselbe Profil, wenn die beiden Schenkel **identisch** sind (gleiche Länge, gleiche Dicke).
+
+**Rechnung:** Standard-L-Profil im Maschinenbau: gleichseitig (z. B. $50\\times 50\\times 5\\,\\text{mm}$) hat tatsächlich diagonale Symmetrie ⇒ Schwerpunkt auf der Diagonale. Aber: ungleichseitige L-Profile ($50\\times 100\\times 5$) haben **keine** Diagonalsymmetrie und brauchen die volle Flächenformel.
+
+**Probe:** Selbst beim symmetrischen L-Profil liegt der Schwerpunkt **nicht** in der Mitte der Diagonale — er liegt auf der Diagonale, aber näher am Innenwinkel (mehr Material im Eckbereich).
+
+**Typischer Fehler:** Diagonalsymmetrie auf alle L-Profile übertragen. Klausurkritisch: bei ungleichseitigen Profilen Flächenformel zwingend.`,
+        [
+          'Diagonalsymmetrie nur bei gleichseitigem L-Profil.',
+          'Bei ungleichen Schenkeln keine Symmetrie.',
+          'Schwerpunkt liegt nicht auf der Diagonale, wenn $b \\neq h$.',
+        ],
+        {
+          1: 'Falsch — nur **gleichseitige** L-Profile haben Diagonalsymmetrie. Ungleichseitige nicht.',
+          2: 'Schwerpunkt eines L-Profils liegt **innerhalb** des Profils, nicht im Eckpunkt. Eckpunkt ist Außengrenze, nicht Massenmittelpunkt.',
+          3: 'Symmetrie ist eine **geometrische** Eigenschaft, unabhängig vom Material. Isotropes Material hilft nicht.',
+        },
+        { stage: 'error-analysis', subGoal: 3, uses: ['sp-symmetrie'] },
+      ),
+      mc(
+        'Eine Maschinenkomponente besteht aus einer homogenen Kreisscheibe mit zwei symmetrisch angeordneten Bohrungen (gleicher Radius, gleicher Abstand vom Zentrum, auf gegenüberliegenden Seiten). Wo liegt der Schwerpunkt?',
+        [
+          'Im Zentrum der Kreisscheibe — die symmetrische Bohrungsanordnung erhält die ursprüngliche Punktsymmetrie.',
+          'Auf der Verbindungslinie der zwei Bohrungen, aber nicht im Zentrum.',
+          'Außerhalb der Scheibe, weil zwei Löcher den Schwerpunkt verschieben.',
+          'Im Mittelpunkt einer der Bohrungen.',
+        ],
+        0,
+        `**Ansatz:** Symmetrie analysieren — die Bohrungen sind punktsymmetrisch zum Zentrum angeordnet. Punktsymmetrie ist die strengste Form.
+
+**Rechnung:** Mathematisch: $x_S = (A_V \\cdot 0 - A_L \\cdot a - A_L \\cdot (-a))/(A_V - 2A_L) = 0$ ($a$ = Abstand der Bohrungen). Beide Bohrungen liefern entgegengesetzte Beiträge, die sich aufheben.
+
+**Probe:** Punktsymmetrie zwingt den Schwerpunkt in das Symmetriezentrum. Egal wie viele Löcher — solange sie punktsymmetrisch zum Zentrum verteilt sind, bleibt $S$ im Zentrum.
+
+**Typischer Fehler:** Aufwendig ausrechnen, ohne die Symmetrie zu erkennen. Zwei symmetrische Löcher heben sich gegenseitig auf — Rechnung überflüssig.`,
+        [
+          'Punktsymmetrie der Bohrungen erkennen.',
+          'Beiträge heben sich auf.',
+          'Schwerpunkt im Symmetriezentrum.',
+        ],
+        {
+          1: 'Falsch — die zwei symmetrischen Bohrungen heben sich gegenseitig auf. Verschiebung erfolgt nur bei **un**symmetrischer Anordnung.',
+          2: 'Schwerpunkt liegt **immer** innerhalb des konvexen Hülle-Bereichs. Eine Kreisscheibe ist konvex → Schwerpunkt innen.',
+          3: 'Schwerpunkt einer einzelnen Bohrung ist deren Mitte, nicht Schwerpunkt der ganzen Komponente. Beide Bohrungen tragen gleichermaßen.',
+        },
+        { stage: 'transfer', subGoal: 3, uses: ['sp-symmetrie'] },
       ),
     ],
 
@@ -2462,6 +4694,7 @@ export const technischeMechanikSubGoalTasks = {
           'Dreieck: näher an der Basis als an der Spitze.',
           'Halbkreis: knapp unter halbem Radius.',
         ],
+        { stage: 'transfer', subGoal: 4, uses: ['sp-standard'] },
       ),
       ni(
         'Wo liegt der Schwerpunkt eines Halbkreises mit Radius $r = 30\\,\\text{mm}$, gemessen vom Durchmesser? (auf 2 Nachkommastellen)',
@@ -2478,6 +4711,7 @@ export const technischeMechanikSubGoalTasks = {
           'Einsetzen: $r = 30$.',
           'Ergebnis: $\\approx 0{,}424\\,r$.',
         ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['sp-standard'] },
       ),
       mc(
         'Ein Dreieck hat Höhe $h = 90\\,\\text{mm}$. Wo liegt der Schwerpunkt gemessen **von der Spitze** aus?',
@@ -2500,6 +4734,7 @@ export const technischeMechanikSubGoalTasks = {
           2: '$h/2 = 45\\,\\text{mm}$ wäre der Rechteck-Schwerpunkt, nicht Dreieck.',
           3: 'Der Schwerpunkt liegt **nicht an der Basis**, sondern ein Drittel innerhalb des Dreiecks von der Basis aus.',
         },
+        { stage: 'apply-guided', subGoal: 4, uses: ['sp-standard'] },
       ),
       tf(
         'Der Schwerpunkt eines Halbkreises liegt genau in der Mitte seines Radius, also bei $r/2$ vom Durchmesser aus.',
@@ -2516,6 +4751,7 @@ export const technischeMechanikSubGoalTasks = {
           '$3\\pi \\approx 9{,}42$, also $4/9{,}42 \\approx 0{,}42 < 0{,}5$.',
           'Der Halbkreis ist am Durchmesser breiter.',
         ],
+        { stage: 'recognize', subGoal: 4, uses: ['sp-standard'] },
       ),
       ni(
         'Ein Profil besteht aus einem Rechteck ($60 \\times 40\\,\\text{mm}$) mit einem aufgesetzten Dreieck (Basis $60\\,\\text{mm}$ auf der Oberkante des Rechtecks, Höhe $30\\,\\text{mm}$ nach oben). Wo liegt $y_S$ des Gesamtprofils? (Ursprung in der linken unteren Ecke des Rechtecks, auf 1 Nachkommastelle)',
@@ -2532,6 +4768,35 @@ export const technischeMechanikSubGoalTasks = {
           'Dreieck-Schwerpunkt: $h/3$ über der Basis.',
           'Dreiecksfläche: $\\tfrac{1}{2} b h$ — Faktor 1/2 nicht vergessen.',
         ],
+        { stage: 'apply-independent', subGoal: 4, uses: ['sp-standard'] },
+      ),
+      mc(
+        'Studierende behauptet: "Bei einem Dreieck liegt der Schwerpunkt bei $h/2$ — wie beim Rechteck." Wo steckt der Fehler?',
+        [
+          'Beim Dreieck ist der Schwerpunkt bei $h/3$ über der Basis (näher an der breiteren Seite). $h/2$ wäre nur korrekt, wenn Dreieck oben und unten gleich breit wäre — also ein Rechteck.',
+          'Stimmt — alle ebenen Flächen haben Schwerpunkt in der Höhenmitte.',
+          'Korrekt, aber nur für gleichseitige Dreiecke.',
+          'Es fehlt der Faktor $\\sqrt{3}/2$: bei Dreieck ist $h_S = h\\sqrt{3}/2 \\cdot 1/2$.',
+        ],
+        0,
+        `**Ansatz:** Schwerpunkt-Lage hängt von der Massen-Verteilung über die Höhe ab. Beim Rechteck ist die Breite konstant ⇒ Schwerpunkt mittig ($h/2$). Beim Dreieck wächst die Breite linear von $0$ (Spitze) auf $b$ (Basis) ⇒ mehr Material unten ⇒ Schwerpunkt unter der Mitte ($h/3$).
+
+**Rechnung:** Standardformel: $y_S = h/3$ über der Basis (oder $2h/3$ von der Spitze). Allgemein für Flächen: Schwerpunkt aus Integral $\\int y \\cdot b(y)\\,dy / \\int b(y)\\,dy$. Für Rechteck $b(y) = $ const ⇒ $h/2$. Für Dreieck $b(y) = b(1 - y/h)$ ⇒ $h/3$.
+
+**Probe:** Anschaulich: ein Dreieck "kippt" leichter in Richtung Basis, weil dort mehr Material ist. Auch im Hebelversuch: an der Spitze hängend kippt es schon bei kleinem Auslenken.
+
+**Typischer Fehler:** Universelle "$h/2$"-Regel anwenden, weil sie beim Rechteck stimmt. Schwerpunkt-Lage ist **flächenabhängig** und kann je nach Form ganz unterschiedlich liegen.`,
+        [
+          'Vergleich Rechteck vs. Dreieck.',
+          'Konstante Breite vs. linear wachsende Breite.',
+          'Mehr Material an der Basis → tieferer Schwerpunkt.',
+        ],
+        {
+          1: 'Falsch — Schwerpunkt-Höhe hängt von der Form ab. Rechteck $h/2$, Dreieck $h/3$, Halbkreis $4r/(3\\pi) \\approx 0{,}424\\,r$ — alle unterschiedlich.',
+          2: 'Auch bei gleichseitigen Dreiecken gilt $h/3$, nicht $h/2$. Form bestimmt die Lage.',
+          3: 'Der Faktor $\\sqrt 3/2$ tritt bei der Höhenformel des **gleichseitigen Dreiecks** auf ($h = a\\sqrt 3/2$), aber nicht im Schwerpunkt-Verhältnis.',
+        },
+        { stage: 'error-analysis', subGoal: 4, uses: ['sp-standard'] },
       ),
     ],
 

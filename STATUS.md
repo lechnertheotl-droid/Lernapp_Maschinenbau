@@ -1,6 +1,6 @@
 # Lernapp Status — Lehrplan & Content
 
-_auto-generiert · 2026-05-04 · `npm run status`_
+_auto-generiert · 2026-05-05 · `npm run status`_
 
 Single Source of Truth: Lehrplan (Phasen, Fächer, Tipps) **und** Content-Kennzahlen (Topics, Lessons, Aufgaben, Goal-Tasks, Qualitätsgaps). Quelle für den Lehrplan-Teil ist `src/content/curriculum.js` — dieselbe Datei, aus der auch die UI-Seite `/lehrplan` rendert.
 
@@ -102,10 +102,10 @@ Fächer aus dem TU-Wien-Maschinenbau-Bachelor, die das Curriculum ergänzen wür
 | Topics | 22 | 22 | ✅ |
 | Units | 71 | — | — |
 | Lessons | 226 | — | — |
-| Aufgaben (gesamt) | 2455 | 4520+ (≥ 20/Lesson) | 🔴 |
-| Aufgaben mit 4-Block | 1608 (65 %) | 100 % der Aufgaben | 🟡 |
-| MC mit wrongAnswerExplanations | 1098 / 1098 (100 %) | 100 % | ✅ |
-| Sub-Goal-Tasks verknüpft | 232 / 1134 (20 %) | 100 % (≥ 5 pro SG) | 🔴 |
+| Aufgaben (gesamt) | 2545 | 4520+ (≥ 20/Lesson) | 🔴 |
+| Aufgaben mit 4-Block | 1710 (67 %) | 100 % der Aufgaben | 🟡 |
+| MC mit wrongAnswerExplanations | 1154 / 1154 (100 %) | 100 % | ✅ |
+| Sub-Goal-Tasks verknüpft | 245 / 1134 (22 %) | 100 % (≥ 5 pro SG) | 🔴 |
 | Practice-Topics ≥ 3 Exercises | 22 / 22 | 22 / 22 | ✅ |
 
 ## Qualitätskontrakt pro Aufgabe
@@ -919,10 +919,10 @@ _Signalverarbeitung, Regelungstechnik, Elektrotechnik. Laplace vereinfacht DGL z
 - Phase: **1. Sem** · Level: grundlagen · Exam-Relevanz: pflicht
 - Units: 4 (Prüfung am Ende ✅)
 - Lessons: 16
-- Aufgaben: **230** (Lesson-Path: 59 · Goal-Tasks: 171)
-- 4-Block: 196/230 (85 %) 🟡
-- MC-wAE: 59/59 (100 %) ✅
-- Sub-Goals: 31/76 Goal-Tasks verknüpft 🔴
+- Aufgaben: **320** (Lesson-Path: 59 · Goal-Tasks: 261)
+- 4-Block: 298/320 (93 %) 🟡
+- MC-wAE: 115/115 (100 %) ✅
+- Sub-Goals: 44/76 Goal-Tasks verknüpft 🔴
 - Practice-Exercises: 3 ✅
 
 **Statik (Kräftegleichgewicht) und Dynamik (Newtonsche Gesetze, Energie) — die klassischen Grundlagen des Maschinenbaus.**
@@ -965,12 +965,12 @@ _Mechanik ist das Herzfach im Maschinenbau-Bachelor und Basis für Festigkeitsle
 | --- | ---: | ---: | ---: | :---: | ---: | ---: | :---: | --- |
 | `mech-0-1` SI-Basiseinheiten & Präfixe | 3 | 3/3 | 23 | 9/5/4/3/2 | 23/23 | 9/9 | ✅ | — |
 | `mech-0-2` Abgeleitete Einheiten (N, J, Pa, W) | 4 | 4/4 | 29 | 12/7/5/5/0 | 29/29 | 12/12 | ✅ | — |
-| `mech-0-3` Dimensionsanalyse — Einheitencheck | 4 | 4/4 | 24 | 5/7/5/3/4 | 24/24 | 5/5 | ✅ | — |
-| `mech-1-1` Kräfte und Freikörperbild | 4 | 0/4 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +4 Goal, +3 4B |
-| `mech-1-2` Momente und Hebelarm | 4 | 0/4 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +4 Goal, +3 4B |
-| `mech-1-3` Schnittkräfte N(x), Q(x), M(x) | 5 | 0/5 | 5 | 2/2/1/0/0 | 0/5 | 2/2 | ✅ | +5 Goal, +5 4B |
-| `mech-1-4` Reibung | 5 | 5/5 | 28 | 7/9/6/3/3 | 27/28 | 7/7 | ✅ | +1 4B |
-| `mech-1-5` Schwerpunkt | 5 | 5/5 | 32 | 5/14/6/4/3 | 32/32 | 5/5 | ✅ | — |
+| `mech-0-3` Dimensionsanalyse — Einheitencheck | 4 | 4/4 | 33 | 13/8/5/3/4 | 33/33 | 13/13 | ✅ | — |
+| `mech-1-1` Kräfte und Freikörperbild | 4 | 4/4 | 23 | 10/5/5/2/1 | 23/23 | 10/10 | ✅ | — |
+| `mech-1-2` Momente und Hebelarm | 4 | 4/4 | 23 | 11/7/5/0/0 | 23/23 | 11/11 | ✅ | — |
+| `mech-1-3` Schnittkräfte N(x), Q(x), M(x) | 5 | 5/5 | 30 | 17/6/6/1/0 | 30/30 | 17/17 | ✅ | — |
+| `mech-1-4` Reibung | 5 | 5/5 | 36 | 14/10/6/3/3 | 36/36 | 14/14 | ✅ | — |
+| `mech-1-5` Schwerpunkt | 5 | 5/5 | 40 | 12/15/6/4/3 | 40/40 | 12/12 | ✅ | — |
 | `mech-2-1` Newtonsche Gesetze | 5 | 0/5 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +5 Goal, +3 4B |
 | `mech-2-2` Arbeit und Energie | 6 | 0/6 | 3 | 1/1/1/0/0 | 0/3 | 1/1 | ✅ | +6 Goal, +3 4B |
 | `mech-2-3` Kinematik | 6 | 0/6 | 5 | 0/5/0/0/0 | 0/5 | — | ✅ | +6 Goal, +5 4B |
@@ -1484,7 +1484,7 @@ npm test                   # Audit-Tests laufen lassen
 npm run build              # abschließender End-zu-End-Check
 ```
 
-### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 125 Lessons
+### 🔴 Kritisch (< 5 Aufgaben oder Prüfung unvollständig) — 123 Lessons
 
 #### `abl-5-2` · Stetigkeit von Funktionen
 
@@ -2141,98 +2141,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-vek-1-4-b`, `ex-vek-1-4-mastery`
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `vector-diagram`, `vector-3d`, `force-parallelogram`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Bei Kreuzprodukt $\vec a\times\vec b$ vs. $\vec b\times\vec a$ verwechselt — Vorzeichen! · $\cos\alpha$ für Winkel Gerade–Ebene benutzt statt $\sin\alpha$. · Skalarprodukt mit Summe verwechselt ($\vec a+\vec b \ne \vec a\cdot\vec b$).
-
-#### `mech-1-1` · Kräfte und Freikörperbild
-
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `mech-0-2` → `newton-zerlegung`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `fkb` — Freikörperbild: Körper isolieren, alle äußeren Kräfte eintragen (SG 0)
-  2. `kraft-vektor` — Kraft = Vektor (Betrag + Richtung) (SG 1)
-  3. `lagersymbole` — Festlager (2 Reaktionen), Loslager (1), Einspannung (2 + 1 Moment) (SG 2)
-  4. `gleichgew-2d` — 2D-Gleichgewicht $\sum F_x=0,\sum F_y=0,\sum M=0$ → 3 Unbekannte ⇐ `fkb`, `lagersymbole` (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `fkb` · **0/5+** — Freikörperbild: Körper isolieren, alle äußeren Kräfte (inkl. Gewicht, Lagerreaktionen) eintragen
-  - 🔴 [1] _hoch_ · Konzepte: `kraft-vektor` · **0/5+** — Kraft = Vektor: Betrag + Richtung — Pfeile in positives Koordinatensystem, Vorzeichen ergibt sich aus Rechnung
-  - 🔴 [2] _hoch_ · Konzepte: `lagersymbole` · **0/5+** — Standard-Lagersymbole: Festlager (2 Reaktionen), Loslager (1 Reaktion), Einspannung (2 Kräfte + 1 Moment)
-  - 🔴 [3] _hoch_ · Konzepte: `gleichgew-2d` · **0/5+** — Gleichgewicht in 2D: $\sum F_x = 0$, $\sum F_y = 0$, $\sum M = 0$ → max. 3 Unbekannte statisch bestimmbar
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `fkb` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `fkb` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `fkb` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `fkb` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | matching         | `fkb` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `kraft-vektor` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `kraft-vektor` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `kraft-vektor` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `kraft-vektor` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | number-input     | `kraft-vektor` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `lagersymbole` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `lagersymbole` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `lagersymbole` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `lagersymbole` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | matching         | `lagersymbole` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `gleichgew-2d` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `gleichgew-2d` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `gleichgew-2d` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `gleichgew-2d` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `gleichgew-2d` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-1': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-mech-1-1-a`, `ex-mech-1-1-b`, `ex-mech-1-1-c`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-
-#### `mech-1-2` · Momente und Hebelarm
-
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `mech-1-1` → `kraft-vektor`, `gleichgew-2d`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `moment-formel` — Moment $M=F\cdot l_\perp$ — senkrechter Abstand zur Wirkungslinie (SG 0)
-  2. `drehsinn` — Drehsinn: gegen Uhrzeiger positiv (Rechte-Hand-Regel) (SG 1)
-  3. `bezugspunkt` — Bezugspunkt frei wählbar — klug = unbekannte Kräfte eliminieren ⇐ `moment-formel` (SG 2)
-  4. `m-kreuz` — 3D-Variante: $\vec M=\vec r\times\vec F$ ⇐ `moment-formel` (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `moment-formel` · **0/5+** — Moment $M = F \cdot l_\perp$ — $l_\perp$ ist der SENKRECHTE Abstand vom Bezugspunkt zur Wirkungslinie
-  - 🔴 [1] _hoch_ · Konzepte: `drehsinn` · **0/5+** — Drehsinn-Konvention: gegen Uhrzeiger positiv (rechte Hand / Rechte-Hand-Regel in 3D)
-  - 🔴 [2] _hoch_ · Konzepte: `bezugspunkt` · **0/5+** — Bezugspunkt frei wählbar — klug wählen: Punkt mit vielen unbekannten Kräften eliminiert diese
-  - 🔴 [3] _mittel_ · Konzepte: `m-kreuz` · **0/5+** — Kreuzprodukt-Variante: $\vec M = \vec r \times \vec F$ in 3D oder bei schiefen Kräften
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `moment-formel` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `moment-formel` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `moment-formel` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `moment-formel` | 1 | 0 | 🔴 | Schräger Abstand statt senkrechter |
-|  5 | 0 | transfer           | number-input     | `moment-formel` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `drehsinn` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `drehsinn` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `drehsinn` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `drehsinn` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `drehsinn` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `bezugspunkt` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `bezugspunkt` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `bezugspunkt`, `moment-formel` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `bezugspunkt` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `bezugspunkt` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `m-kreuz` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `m-kreuz` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `m-kreuz` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `m-kreuz` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `m-kreuz` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-2': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-mech-1-2-a`, `ex-mech-1-2-b`, `ex-mech-1-2-c`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `mech-2-1` · Newtonsche Gesetze
 
@@ -8293,7 +8201,7 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
 
-### 🟠 Hoch (< 8 Aufgaben) — 34 Lessons
+### 🟠 Hoch (< 8 Aufgaben) — 33 Lessons
 
 #### `abl-1-1` · Was ist eine Ableitung?
 
@@ -9334,60 +9242,6 @@ npm run build              # abschließender End-zu-End-Check
 - **4-Block-Erklärung fehlt bei:** `ex-dgl-1-3-a`, `ex-dgl-1-3-b`, `ex-dgl-1-3-c`, `ex-dgl-1-3-d`, `ex-dgl-1-3-mastery`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `spring-mass-damper`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
-
-#### `mech-1-3` · Schnittkräfte N(x), Q(x), M(x)
-
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `mech-1-1` → `gleichgew-2d`
-  - `mech-1-2` → `moment-formel`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `schnittgr-3` — Drei Schnittgrößen $N(x),Q(x),M(x)$ (SG 0)
-  2. `schnitt-diff` — Differentialzusammenhang: $Q(x)=dM/dx$, $q(x)=-dQ/dx$ ⇐ `schnittgr-3` (SG 1)
-  3. `sprung-knick` — Sprung in $Q$ bei Einzellast, Knick in $M$ bei Einzellast ⇐ `schnittgr-3` (SG 2)
-  4. `m-max` — $M_{\max}$ an Stelle mit $Q=0$ (gefährliche Stelle) ⇐ `schnitt-diff` (SG 3)
-  5. `rb-gelenk` — Gelenkiges Auflager: $M=0$ als Randbedingung ⇐ `schnittgr-3` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - 🔴 [0] _hoch_ · Konzepte: `schnittgr-3` · **0/5+** — Drei Schnittgrößen: Normalkraft $N(x)$, Querkraft $Q(x)$, Biegemoment $M(x)$
-  - 🔴 [1] _hoch_ · Konzepte: `schnitt-diff` · **0/5+** — Zusammenhang: $Q(x) = dM/dx$, $q(x) = -dQ/dx$
-  - 🔴 [2] _hoch_ · Konzepte: `sprung-knick` · **0/5+** — Sprung in $Q$ bei Einzellast $F$, Knick in $M$ bei Einzellast
-  - 🔴 [3] _hoch_ · Konzepte: `m-max` · **0/5+** — $M_{\max}$ an Stelle mit $Q = 0$ (gefährliche Stelle)
-  - 🔴 [4] _hoch_ · Konzepte: `rb-gelenk` · **0/5+** — An gelenkigen Auflagern ist $M = 0$ (Randbedingung)
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `schnittgr-3` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `schnittgr-3` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `schnittgr-3` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `schnittgr-3` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | matching         | `schnittgr-3` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `schnitt-diff` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `schnitt-diff` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `schnitt-diff` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `schnitt-diff` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | number-input     | `schnitt-diff` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `sprung-knick` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `sprung-knick` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `sprung-knick` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `sprung-knick` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | multiple-choice  | `sprung-knick` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `m-max` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `m-max` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `m-max` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `m-max` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `m-max` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `rb-gelenk` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `rb-gelenk` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | multiple-choice  | `rb-gelenk` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `rb-gelenk` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | multiple-choice  | `rb-gelenk` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-3': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-mech-1-3-a`, `ex-mech-1-3-b`, `ex-mech-1-3-c`, `ex-mech-1-3-d`, `ex-mech-1-3-e`
-- **Visualisierung:** ✅ vorhanden. Weitere möglich: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `mech-2-3` · Kinematik
 
@@ -11311,52 +11165,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
-#### `mech-0-3` · Dimensionsanalyse — Einheitencheck
-
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Einheiten & Dimensionsanalyse (Einstieg)
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `mech-0-1` → `si-basis-7`, `praefixe-1000`
-  - `mech-0-2` → `newton-zerlegung`, `dim-check`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `dim-konsistenz` — Links/rechts des $=$ müssen dieselben Einheiten stehen (SG 0)
-  2. `basis-aufbau` — Alle Einheiten aus 7 SI-Basisgrößen aufgebaut (SG 1)
-  3. `pa-zerlegung` — Pa $=$ N/m² $=$ kg/(m·s²) ⇐ `basis-aufbau` (SG 2)
-  4. `einheit-umform` — Vorab umrechnen: mm→m, MPa→Pa, kN→N — niemals gemischt rechnen (SG 3)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `dim-konsistenz` · **5/5+** — Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen
-  - ✅ [1] _hoch_ · Konzepte: `basis-aufbau` · **5/5+** — Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut
-  - ✅ [2] _mittel_ · Konzepte: `pa-zerlegung` · **5/5+** — Einheit Pascal: $1\,\text{Pa} = 1\,\text{N/m}^2 = 1\,\text{kg}/(\text{m}\cdot\text{s}^2)$
-  - ✅ [3] _hoch_ · Konzepte: `einheit-umform` · **5/5+** — Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `dim-konsistenz` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `dim-konsistenz` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | multiple-choice  | `dim-konsistenz` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `dim-konsistenz` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | multiple-choice  | `dim-konsistenz` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `basis-aufbau` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `basis-aufbau` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `basis-aufbau` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `basis-aufbau` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | matching         | `basis-aufbau` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `pa-zerlegung` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `pa-zerlegung` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | multiple-choice  | `pa-zerlegung` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `pa-zerlegung` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | multiple-choice  | `pa-zerlegung` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `einheit-umform` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `einheit-umform` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `einheit-umform` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `einheit-umform` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `einheit-umform` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 20 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-0-3': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-
 #### `trig-2-2` · sin und cos als Koordinaten
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Einheitskreis und Winkelfunktionen
@@ -11461,59 +11269,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/integralrechnung.js` unter `'int-3-4': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `integral-area`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Integrationskonstante $+C$ bei unbestimmten Integralen vergessen. · Bei Substitution das $du$ nicht konsequent mitgeführt. · Bei partieller Integration $u$ und $v'$ falsch herum gewählt (Merkregel LIATE: Logarithmus, Inverse Trig, Algebraisch, Trigonometrisch, Exponential — links als $u$). · …
-
-#### `mech-1-4` · Reibung
-
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
-  - `mech-1-1` → `kraft-vektor`, `gleichgew-2d`
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `coulomb` — Coulombsches Reibgesetz $F_R=\mu F_N$ (SG 0)
-  2. `haft-gleit` — Haftreibwert $\mu_0>\mu$ Gleitreibwert ⇐ `coulomb` (SG 1)
-  3. `schiefe-zerleg-mech` — Schiefe Ebene $F_N=mg\cos\alpha$, $F_H=mg\sin\alpha$ (SG 2)
-  4. `selbsthemmung` — Selbsthemmung: kein Gleiten solange $\tan\alpha\le\mu_0$ ⇐ `haft-gleit`, `schiefe-zerleg-mech` (SG 3)
-  5. `reibwinkel` — Reibwinkel $\rho=\arctan\mu$ — Grenzneigung ⇐ `coulomb`, `selbsthemmung` (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `coulomb` · **5/5+** — Coulombsches Reibgesetz: $F_R = \mu F_N$
-  - ✅ [1] _hoch_ · Konzepte: `haft-gleit` · **5/5+** — Haftreibwert $\mu_0$ > Gleitreibwert $\mu$ (Losreißen braucht mehr Kraft)
-  - ✅ [2] _hoch_ · Konzepte: `schiefe-zerleg-mech` · **5/5+** — Auf geneigter Ebene: $F_N = mg\cos\alpha$, $F_H = mg\sin\alpha$
-  - ✅ [3] _hoch_ · Konzepte: `selbsthemmung` · **5/5+** — Selbsthemmung: Körper gleitet nicht, solange $\tan\alpha \leq \mu_0$
-  - ✅ [4] _mittel_ · Konzepte: `reibwinkel` · **5/5+** — Reibwinkel $\rho = \arctan\mu$: Neigung, bei der Körper gerade zu gleiten beginnt
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `coulomb` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `coulomb` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `coulomb` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `coulomb` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | number-input     | `coulomb` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `haft-gleit` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `haft-gleit` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | multiple-choice  | `haft-gleit` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `haft-gleit` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | multiple-choice  | `haft-gleit` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `schiefe-zerleg-mech` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `schiefe-zerleg-mech` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `schiefe-zerleg-mech` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `schiefe-zerleg-mech` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `schiefe-zerleg-mech` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `selbsthemmung` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `selbsthemmung` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | number-input     | `selbsthemmung` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `selbsthemmung` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | number-input     | `selbsthemmung` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `reibwinkel` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `reibwinkel` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `reibwinkel` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `reibwinkel` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | number-input     | `reibwinkel` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-4': { 0: [...], 1: [...], ... }`
-- **4-Block-Erklärung fehlt bei:** `ex-mech-1-4-goal-sg0-4`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `mech-2-5` · Dynamik starrer Körper
 
@@ -11857,57 +11612,6 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
-#### `mech-1-5` · Schwerpunkt
-
-- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
-- **Prerequisites:** keine (Einstiegs-Lesson).
-- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
-  1. `sp-diskret` — Diskrete Massen: $x_S=\sum m_i x_i/\sum m_i$ (SG 0)
-  2. `sp-flaechen` — Zusammengesetzte Flächen: $x_S=\sum A_i x_{S,i}/\sum A_i$ (SG 1)
-  3. `sp-loch` — Loch als negative Fläche subtrahieren ⇐ `sp-flaechen` (SG 2)
-  4. `sp-symmetrie` — Symmetrie: Schwerpunkt liegt auf Symmetrieachse (SG 3)
-  5. `sp-standard` — Standard: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\pi)$ (SG 4)
-- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
-  - ✅ [0] _hoch_ · Konzepte: `sp-diskret` · **6/5+** — Diskrete Massen: $x_S = \sum m_i x_i / \sum m_i$
-  - ✅ [1] _hoch_ · Konzepte: `sp-flaechen` · **6/5+** — Zusammengesetzte Flächen: $x_S = \sum A_i x_{S,i} / \sum A_i$
-  - ✅ [2] _hoch_ · Konzepte: `sp-loch` · **6/5+** — Loch als negative Fläche subtrahieren
-  - ✅ [3] _mittel_ · Konzepte: `sp-symmetrie` · **6/5+** — Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse
-  - ✅ [4] _mittel_ · Konzepte: `sp-standard` · **5/5+** — Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\pi)$
-- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
-
-| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
-|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
-|  1 | 0 | recognize          | true-false       | `sp-diskret` | 1 | 0 | 🔴 |  |
-|  2 | 0 | apply-guided       | multiple-choice  | `sp-diskret` | 1 | 0 | 🔴 |  |
-|  3 | 0 | apply-independent  | number-input     | `sp-diskret` | 1 | 0 | 🔴 |  |
-|  4 | 0 | error-analysis     | multiple-choice  | `sp-diskret` | 1 | 0 | 🔴 |  |
-|  5 | 0 | transfer           | number-input     | `sp-diskret` | 1 | 0 | 🔴 |  |
-|  6 | 1 | recognize          | true-false       | `sp-flaechen` | 1 | 0 | 🔴 |  |
-|  7 | 1 | apply-guided       | multiple-choice  | `sp-flaechen` | 1 | 0 | 🔴 |  |
-|  8 | 1 | apply-independent  | number-input     | `sp-flaechen` | 1 | 0 | 🔴 |  |
-|  9 | 1 | error-analysis     | multiple-choice  | `sp-flaechen` | 1 | 0 | 🔴 |  |
-| 10 | 1 | transfer           | number-input     | `sp-flaechen` | 1 | 0 | 🔴 |  |
-| 11 | 2 | recognize          | true-false       | `sp-loch` | 1 | 0 | 🔴 |  |
-| 12 | 2 | apply-guided       | multiple-choice  | `sp-loch` | 1 | 0 | 🔴 |  |
-| 13 | 2 | apply-independent  | number-input     | `sp-loch` | 1 | 0 | 🔴 |  |
-| 14 | 2 | error-analysis     | multiple-choice  | `sp-loch` | 1 | 0 | 🔴 |  |
-| 15 | 2 | transfer           | number-input     | `sp-loch` | 1 | 0 | 🔴 |  |
-| 16 | 3 | recognize          | true-false       | `sp-symmetrie` | 1 | 0 | 🔴 |  |
-| 17 | 3 | apply-guided       | multiple-choice  | `sp-symmetrie` | 1 | 0 | 🔴 |  |
-| 18 | 3 | apply-independent  | multiple-choice  | `sp-symmetrie` | 1 | 0 | 🔴 |  |
-| 19 | 3 | error-analysis     | multiple-choice  | `sp-symmetrie` | 1 | 0 | 🔴 |  |
-| 20 | 3 | transfer           | multiple-choice  | `sp-symmetrie` | 1 | 0 | 🔴 |  |
-| 21 | 4 | recognize          | true-false       | `sp-standard` | 1 | 0 | 🔴 |  |
-| 22 | 4 | apply-guided       | multiple-choice  | `sp-standard` | 1 | 0 | 🔴 |  |
-| 23 | 4 | apply-independent  | number-input     | `sp-standard` | 1 | 0 | 🔴 |  |
-| 24 | 4 | error-analysis     | multiple-choice  | `sp-standard` | 1 | 0 | 🔴 |  |
-| 25 | 4 | transfer           | matching         | `sp-standard` | 1 | 0 | 🔴 |  |
-
-- **Offene Aufgaben-Lücken:** 25 (Zeilen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — jede 🔴/🟡-Zeile muss bis auf "Soll" aufgefüllt werden; Aufgaben mit gleicher Sub-Goal × Stage × Typ × uses zählen.
-- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-5': { 0: [...], 1: [...], ... }`
-- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
-- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
-
 #### `trig-2-3` · Symmetrien und Periodizität
 
 - **Topic:** `trigonometry` (Trigonometrie) · **Unit:** Einheitskreis und Winkelfunktionen
@@ -12207,6 +11911,51 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** ✅ vorhanden. Weitere möglich: `spring-mass-damper`, `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Anfangsbedingung vergessen — nur allgemeine Lösung angegeben. · Partikulärlösung fehlt bei inhomogener DGL. · Bei charakteristischer Gleichung den Fall "doppelte Wurzel" mit $x\cdot e^{\lambda x}$ vergessen.
 
+#### `mech-0-3` · Dimensionsanalyse — Einheitencheck
+
+- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Einheiten & Dimensionsanalyse (Einstieg)
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-0-1` → `si-basis-7`, `praefixe-1000`
+  - `mech-0-2` → `newton-zerlegung`, `dim-check`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `dim-konsistenz` — Links/rechts des $=$ müssen dieselben Einheiten stehen (SG 0)
+  2. `basis-aufbau` — Alle Einheiten aus 7 SI-Basisgrößen aufgebaut (SG 1)
+  3. `pa-zerlegung` — Pa $=$ N/m² $=$ kg/(m·s²) ⇐ `basis-aufbau` (SG 2)
+  4. `einheit-umform` — Vorab umrechnen: mm→m, MPa→Pa, kN→N — niemals gemischt rechnen (SG 3)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `dim-konsistenz` · **7/5+** — Dimensionskonsistenz: links und rechts des Gleichheitszeichens müssen dieselben Einheiten stehen
+  - ✅ [1] _hoch_ · Konzepte: `basis-aufbau` · **7/5+** — Basis-SI-Einheiten (m, kg, s, A, K, mol, cd) — alle anderen Einheiten daraus aufgebaut
+  - ✅ [2] _mittel_ · Konzepte: `pa-zerlegung` · **8/5+** — Einheit Pascal: $1\,\text{Pa} = 1\,\text{N/m}^2 = 1\,\text{kg}/(\text{m}\cdot\text{s}^2)$
+  - ✅ [3] _hoch_ · Konzepte: `einheit-umform` · **7/5+** — Umrechnungen (mm → m, MPa → Pa, kN → N) vor dem Einsetzen in Formeln — NIE im Kopf in gemischten Einheiten rechnen
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `dim-konsistenz` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `dim-konsistenz` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | multiple-choice  | `dim-konsistenz` | 1 | 1 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `dim-konsistenz` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | multiple-choice  | `dim-konsistenz` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `basis-aufbau` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `basis-aufbau` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `basis-aufbau` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `basis-aufbau` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | matching         | `basis-aufbau` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `pa-zerlegung` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `pa-zerlegung` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | multiple-choice  | `pa-zerlegung` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `pa-zerlegung` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | multiple-choice  | `pa-zerlegung` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `einheit-umform` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `einheit-umform` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `einheit-umform` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `einheit-umform` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | number-input     | `einheit-umform` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-0-3': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+
 #### `mech-2-4` · Schwingungen
 
 - **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Dynamik
@@ -12433,6 +12182,57 @@ npm run build              # abschließender End-zu-End-Check
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
 
+#### `mech-1-4` · Reibung
+
+- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
+- **Prerequisites (muss sitzen, bevor Aufgaben dieser Lesson beginnen):**
+  - `mech-1-1` → `kraft-vektor`, `gleichgew-2d`
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `coulomb` — Coulombsches Reibgesetz $F_R=\mu F_N$ (SG 0)
+  2. `haft-gleit` — Haftreibwert $\mu_0>\mu$ Gleitreibwert ⇐ `coulomb` (SG 1)
+  3. `schiefe-zerleg-mech` — Schiefe Ebene $F_N=mg\cos\alpha$, $F_H=mg\sin\alpha$ (SG 2)
+  4. `selbsthemmung` — Selbsthemmung: kein Gleiten solange $\tan\alpha\le\mu_0$ ⇐ `haft-gleit`, `schiefe-zerleg-mech` (SG 3)
+  5. `reibwinkel` — Reibwinkel $\rho=\arctan\mu$ — Grenzneigung ⇐ `coulomb`, `selbsthemmung` (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `coulomb` · **6/5+** — Coulombsches Reibgesetz: $F_R = \mu F_N$
+  - ✅ [1] _hoch_ · Konzepte: `haft-gleit` · **8/5+** — Haftreibwert $\mu_0$ > Gleitreibwert $\mu$ (Losreißen braucht mehr Kraft)
+  - ✅ [2] _hoch_ · Konzepte: `schiefe-zerleg-mech` · **6/5+** — Auf geneigter Ebene: $F_N = mg\cos\alpha$, $F_H = mg\sin\alpha$
+  - ✅ [3] _hoch_ · Konzepte: `selbsthemmung` · **7/5+** — Selbsthemmung: Körper gleitet nicht, solange $\tan\alpha \leq \mu_0$
+  - ✅ [4] _mittel_ · Konzepte: `reibwinkel` · **6/5+** — Reibwinkel $\rho = \arctan\mu$: Neigung, bei der Körper gerade zu gleiten beginnt
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `coulomb` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `coulomb` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `coulomb` | 1 | 2 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `coulomb` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | number-input     | `coulomb` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `haft-gleit` | 1 | 2 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `haft-gleit` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | multiple-choice  | `haft-gleit` | 1 | 1 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `haft-gleit` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | multiple-choice  | `haft-gleit` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `schiefe-zerleg-mech` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `schiefe-zerleg-mech` | 1 | 2 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `schiefe-zerleg-mech` | 1 | 1 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `schiefe-zerleg-mech` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `schiefe-zerleg-mech` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `selbsthemmung` | 1 | 1 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `selbsthemmung` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | number-input     | `selbsthemmung` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `selbsthemmung` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | number-input     | `selbsthemmung` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `reibwinkel` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `reibwinkel` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `reibwinkel` | 1 | 1 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `reibwinkel` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | number-input     | `reibwinkel` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-4': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
+
 #### `alg-0-3` · Prozent & Dreisatz
 
 - **Topic:** `algebra` (Algebra & Funktionen) · **Unit:** Rechnen & Brüche (Vorkurs-Einstieg)
@@ -12485,6 +12285,56 @@ npm run build              # abschließender End-zu-End-Check
 - **Ablage:** `src/content/subgoal_tasks/algebra.js` unter `'alg-0-3': { 0: [...], 1: [...], ... }`
 - **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `function-graph`.
 - **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Minuszeichen vor Klammer nicht auf alle Summanden verteilt. · Beim Quadrieren Scheinlösungen übersehen (Probe vergessen). · Logarithmus auf Summe angewandt: $\log(a+b) \neq \log a + \log b$. · …
+
+#### `mech-1-5` · Schwerpunkt
+
+- **Topic:** `technische-mechanik` (Technische Mechanik) · **Unit:** Statik
+- **Prerequisites:** keine (Einstiegs-Lesson).
+- **Konzept-Sequenz (in dieser Reihenfolge einführen — spätere Aufgaben dürfen NUR auf bereits eingeführte Konzepte zurückgreifen):**
+  1. `sp-diskret` — Diskrete Massen: $x_S=\sum m_i x_i/\sum m_i$ (SG 0)
+  2. `sp-flaechen` — Zusammengesetzte Flächen: $x_S=\sum A_i x_{S,i}/\sum A_i$ (SG 1)
+  3. `sp-loch` — Loch als negative Fläche subtrahieren ⇐ `sp-flaechen` (SG 2)
+  4. `sp-symmetrie` — Symmetrie: Schwerpunkt liegt auf Symmetrieachse (SG 3)
+  5. `sp-standard` — Standard: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\pi)$ (SG 4)
+- **Sub-Goals (mindestens 5 Aufgaben je Sub-Goal — mehr ist besser):**
+  - ✅ [0] _hoch_ · Konzepte: `sp-diskret` · **7/5+** — Diskrete Massen: $x_S = \sum m_i x_i / \sum m_i$
+  - ✅ [1] _hoch_ · Konzepte: `sp-flaechen` · **7/5+** — Zusammengesetzte Flächen: $x_S = \sum A_i x_{S,i} / \sum A_i$
+  - ✅ [2] _hoch_ · Konzepte: `sp-loch` · **8/5+** — Loch als negative Fläche subtrahieren
+  - ✅ [3] _mittel_ · Konzepte: `sp-symmetrie` · **9/5+** — Symmetrie ausnutzen: Schwerpunkt liegt auf Symmetrieachse
+  - ✅ [4] _mittel_ · Konzepte: `sp-standard` · **6/5+** — Schwerpunkte von Standardflächen auswendig: Rechteck Mitte, Dreieck $h/3$, Halbkreis $4r/(3\pi)$
+- **Aufgaben-Bauplan (Matrix — jede Zeile ist eine Pflicht-Aufgabe; Spalte "Nutzt" listet die Konzepte, die die Aufgabe testen soll):**
+
+| #  | SG | Stufe              | Typ              | Nutzt                              | Soll | Ist | Status | Hinweis |
+|----|----|--------------------|------------------|------------------------------------|------|-----|--------|---------|
+|  1 | 0 | recognize          | true-false       | `sp-diskret` | 1 | 1 | ✅ |  |
+|  2 | 0 | apply-guided       | multiple-choice  | `sp-diskret` | 1 | 1 | ✅ |  |
+|  3 | 0 | apply-independent  | number-input     | `sp-diskret` | 1 | 3 | ✅ |  |
+|  4 | 0 | error-analysis     | multiple-choice  | `sp-diskret` | 1 | 1 | ✅ |  |
+|  5 | 0 | transfer           | number-input     | `sp-diskret` | 1 | 1 | ✅ |  |
+|  6 | 1 | recognize          | true-false       | `sp-flaechen` | 1 | 1 | ✅ |  |
+|  7 | 1 | apply-guided       | multiple-choice  | `sp-flaechen` | 1 | 1 | ✅ |  |
+|  8 | 1 | apply-independent  | number-input     | `sp-flaechen` | 1 | 3 | ✅ |  |
+|  9 | 1 | error-analysis     | multiple-choice  | `sp-flaechen` | 1 | 1 | ✅ |  |
+| 10 | 1 | transfer           | number-input     | `sp-flaechen` | 1 | 1 | ✅ |  |
+| 11 | 2 | recognize          | true-false       | `sp-loch` | 1 | 1 | ✅ |  |
+| 12 | 2 | apply-guided       | multiple-choice  | `sp-loch` | 1 | 1 | ✅ |  |
+| 13 | 2 | apply-independent  | number-input     | `sp-loch` | 1 | 2 | ✅ |  |
+| 14 | 2 | error-analysis     | multiple-choice  | `sp-loch` | 1 | 1 | ✅ |  |
+| 15 | 2 | transfer           | number-input     | `sp-loch` | 1 | 1 | ✅ |  |
+| 16 | 3 | recognize          | true-false       | `sp-symmetrie` | 1 | 2 | ✅ |  |
+| 17 | 3 | apply-guided       | multiple-choice  | `sp-symmetrie` | 1 | 1 | ✅ |  |
+| 18 | 3 | apply-independent  | multiple-choice  | `sp-symmetrie` | 1 | 1 | ✅ |  |
+| 19 | 3 | error-analysis     | multiple-choice  | `sp-symmetrie` | 1 | 1 | ✅ |  |
+| 20 | 3 | transfer           | multiple-choice  | `sp-symmetrie` | 1 | 1 | ✅ |  |
+| 21 | 4 | recognize          | true-false       | `sp-standard` | 1 | 1 | ✅ |  |
+| 22 | 4 | apply-guided       | multiple-choice  | `sp-standard` | 1 | 1 | ✅ |  |
+| 23 | 4 | apply-independent  | number-input     | `sp-standard` | 1 | 2 | ✅ |  |
+| 24 | 4 | error-analysis     | multiple-choice  | `sp-standard` | 1 | 1 | ✅ |  |
+| 25 | 4 | transfer           | matching         | `sp-standard` | 1 | 1 | ✅ |  |
+
+- **Ablage:** `src/content/subgoal_tasks/technische_mechanik.js` unter `'mech-1-5': { 0: [...], 1: [...], ... }`
+- **Visualisierung:** 🟡 fehlt — passende Viz-IDs: `free-body-diagram`, `force-parallelogram`, `beam-reactions`, `interactive-beam`, `vector-diagram`.
+- **Typische Fehler (für error-analysis-Zeilen als Distraktoren):** Lagerreaktionen im FKB vergessen. · Vorzeichen von Kräften falsch — Richtung im FKB festlegen und konsequent halten. · Hebelarm bei Momenten senkrecht zur Kraft messen, nicht entlang der Wirklinie. · …
 
 #### `alg-4-2` · Prüfung: Funktionen & Anwendungen
 
